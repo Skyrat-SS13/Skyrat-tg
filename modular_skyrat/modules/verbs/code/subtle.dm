@@ -7,7 +7,7 @@
 /datum/emote/living/subtle/proc/check_invalid(mob/user, input)
 	/* TO DO
 	if(stop_bad_mime.Find(input, 1, 1))
-		to_chat(user, "<span class='danger'>Invalid emote.</span>")
+		to_chat(user, span_danger("Invalid emote."))
 		return TRUE
 	*/
 	return FALSE
@@ -50,7 +50,7 @@
 	var/space = should_have_space_before_emote(subtle_message) ? " " : ""
 	subtle_message = html_encode(subtle_message)
 
-	subtle_message = "<span class='emote'><b>[user]</b>[space]<i>[user.say_emphasis(subtle_message)]</i></span>"
+	subtle_message = span_emote("<b>[user]</b>[space]<i>[user.say_emphasis(subtle_message)]</i>")
 
 	for(var/mob/ghosts in GLOB.dead_mob_list)
 		if(!ghosts.client || isnewplayer(ghosts))
@@ -77,7 +77,7 @@
 /datum/emote/living/subtler/proc/check_invalid(mob/user, input)
 	/* TO DO
 	if(stop_bad_mime.Find(input, 1, 1))
-		to_chat(user, "<span class='danger'>Invalid emote.</span>")
+		to_chat(user, span_danger("Invalid emote."))
 		return TRUE
 	*/
 	return FALSE
@@ -119,7 +119,7 @@
 	var/space = should_have_space_before_emote(subtler_message) ? " " : ""
 	subtler_message = html_encode(subtler_message)
 
-	subtler_message = "<span class='emote'><b>[user]</b>[space]<i>[user.say_emphasis(subtler_message)]</i></span>"
+	subtler_message = span_emote("<b>[user]</b>[space]<i>[user.say_emphasis(subtler_message)]</i>")
 
 	if(emote_type == EMOTE_AUDIBLE)
 		user.audible_message_subtler(message = subtler_message, hearing_distance = 1, ignored_mobs = GLOB.dead_mob_list, separation = space)

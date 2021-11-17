@@ -235,6 +235,7 @@
 		"comp_length",
 		"comp_light",
 		"comp_list_literal",
+		"comp_list_assoc_literal",
 		"comp_logic",
 		"comp_matscanner",
 		"comp_mmi",
@@ -1460,6 +1461,19 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	required_experiments = list(/datum/experiment/explosion/maxcap)
+
+// SKYRAT EDIT START: SECBORG TECHWEB
+/datum/techweb_node/secborg_node
+	id = "secborg_node"
+	display_name = "Cyborg Module: Security"
+	description = "Known to cause silicon law violations in all twelve sectors of space!"
+	prereq_ids = list("adv_weaponry")
+	design_ids = list(
+		"security_cyborg_module",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
+	required_experiments = list(/datum/experiment/explosion/maxcap)
+// SKYRAT EDIT END: SECBORG TECHWEB
 
 /datum/techweb_node/ballistic_weapons
 	id = "ballistic_weapons"

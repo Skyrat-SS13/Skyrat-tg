@@ -36,7 +36,7 @@
 /datum/reagent/drug/opium/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel euphoric.", "You feel on top of the world.")
 	if(DT_PROB(2.5, delta_time))
-		to_chat(M, "<span class='notice'>[high_message]</span>")
+		to_chat(M, span_notice("[high_message]"))
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "smacked out", /datum/mood_event/narcotic_heavy, name)
 	M.adjustBruteLoss(-0.1 * REM * delta_time, 0) //can be used as a (shitty) painkiller
 	M.adjustFireLoss(-0.1 * REM * delta_time, 0)
@@ -72,7 +72,7 @@
 /datum/reagent/drug/opium/heroin/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel like nothing can stop you.", "You feel like God.")
 	if(DT_PROB(2.5, delta_time))
-		to_chat(M, "<span class='notice'>[high_message]</span>")
+		to_chat(M, span_notice("[high_message]"))
 	M.adjustBruteLoss(-0.4 * REM * delta_time, 0) //more powerful as a painkiller, possibly actually useful to medical now
 	M.adjustFireLoss(-0.4 * REM * delta_time, 0)
 	..()
@@ -91,7 +91,7 @@
 /datum/reagent/drug/opium/blacktar/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel like tar.", "The blood in your veins feel like syrup.")
 	if(DT_PROB(2.5, delta_time))
-		to_chat(M, "<span class='notice'>[high_message]</span>")
+		to_chat(M, span_notice("[high_message]"))
 	M.set_drugginess(15 * REM * delta_time)
 	M.adjustToxLoss(0.5 * REM * delta_time, 0) //toxin damage
 	..()

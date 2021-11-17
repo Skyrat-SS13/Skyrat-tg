@@ -25394,9 +25394,6 @@
 	},
 /turf/open/openspace,
 /area/commons/storage/mining)
-"jfd" = (
-/turf/closed/wall,
-/area/commons/dorms)
 "jfh" = (
 /obj/structure/transit_tube_pod,
 /obj/structure/transit_tube/station/reverse/flipped{
@@ -31654,6 +31651,9 @@
 "mIi" = (
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
+/obj/machinery/cryopod{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
 "mIk" = (
@@ -32621,6 +32621,10 @@
 /area/service/library)
 "nhU" = (
 /obj/machinery/light/directional/north,
+/obj/machinery/computer/cryopod{
+	pixel_y = 30
+	},
+/obj/machinery/cryopod,
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
 "nhZ" = (
@@ -37313,8 +37317,7 @@
 /obj/item/storage/secure/safe/directional/north,
 /obj/machinery/camera/directional/north{
 	c_tag = "Virology Break Room";
-	network = list(;
-	"ss13","medbay")
+	network = list("ss13","medbay")
 	},
 /obj/machinery/light/warm/directional/north,
 /obj/effect/turf_decal/tile/green{
@@ -42400,6 +42403,9 @@
 /turf/open/floor/iron,
 /area/commons/locker)
 "sMn" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
 "sMq" = (
@@ -44485,6 +44491,9 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
+/obj/machinery/cryopod{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
 "tTO" = (
@@ -46404,7 +46413,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/trinary/filter/flipped/critical{
 	dir = 8;
-	filter_type = "n2"
+	filter_type = list(/datum/gas/nitrogen)
 	},
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
@@ -48180,6 +48189,7 @@
 /area/maintenance/starboard/fore)
 "vYo" = (
 /obj/machinery/airalarm/directional/north,
+/obj/machinery/cryopod,
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
 "vYr" = (
@@ -48636,6 +48646,9 @@
 	dir = 1
 	},
 /obj/machinery/light_switch/directional/south,
+/obj/machinery/cryopod{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
 "whY" = (
@@ -82587,12 +82600,12 @@ dfj
 hTM
 buo
 toV
-jfd
+hTM
 puW
 sMn
 mIi
 jES
-jfd
+hTM
 boP
 aJn
 aJq
@@ -82844,12 +82857,12 @@ tLZ
 hTM
 pLQ
 kxl
-jfd
+hTM
 nhU
 viz
 jmT
 tTw
-jfd
+hTM
 boP
 aJn
 aLY
@@ -83101,12 +83114,12 @@ rQm
 hTM
 kxw
 hnN
-jfd
+hTM
 vYo
 luV
 jmu
 whN
-jfd
+hTM
 aJw
 aJw
 beX
@@ -83358,12 +83371,12 @@ eYo
 hTM
 hTM
 xTz
-jfd
+hTM
 vXm
 xWa
 gSD
 vXm
-jfd
+hTM
 aJv
 aKG
 aMg

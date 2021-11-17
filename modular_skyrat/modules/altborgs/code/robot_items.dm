@@ -15,10 +15,10 @@
 	var/mob/living/mob = target
 
 	if(check_zone(borg.zone_selected) == "head")
-		borg.visible_message("<span class='warning'>\the [borg] affectionally licks \the [mob]'s face!</span>", "<span class='notice'>You affectionally lick \the [mob]'s face!</span>")
+		borg.visible_message(span_warning("\the [borg] affectionally licks \the [mob]'s face!"), span_notice("You affectionally lick \the [mob]'s face!"))
 		playsound(borg, 'sound/effects/attackblob.ogg', 50, 1)
 	else
-		borg.visible_message("<span class='warning'>\the [borg] affectionally licks \the [mob]!</span>", "<span class='notice'>You affectionally lick \the [mob]!</span>")
+		borg.visible_message(span_warning("\the [borg] affectionally licks \the [mob]!"), span_notice("You affectionally lick \the [mob]!"))
 		playsound(borg, 'sound/effects/attackblob.ogg', 50, 1)
 
 /obj/item/dogborg_nose
@@ -34,4 +34,4 @@
 	if(!proximity)
 		return
 	do_attack_animation(target, null, src)
-	user.visible_message("<span class='notice'>[user] [pick("nuzzles", "pushes", "boops")] \the [target.name] with their nose!</span>")
+	user.visible_message(span_notice("[user] [pick("nuzzles", "pushes", "boops")] \the [target.name] with their nose!"))

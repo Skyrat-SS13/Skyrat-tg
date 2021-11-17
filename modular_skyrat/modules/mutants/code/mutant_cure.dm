@@ -8,12 +8,12 @@
 
 /obj/item/rna_extractor/attackby(obj/item/O, mob/living/user)
 	if((istype(O, /obj/item/rna_vial) && loaded_vial != null))
-		to_chat(user, "<span class='warning'>[src] can not hold more than one vial!</span>")
+		to_chat(user, span_warning("[src] can not hold more than one vial!"))
 		return FALSE
 	if(istype(O, /obj/item/rna_vial))
 		if(!user.transferItemToLoc(O, src))
 			return FALSE
-		to_chat(user, "<span class='notce'>You insert [O] into [src]!")
+		to_chat(user, span_notice("You insert [O] into [src]!"))
 		loaded_vial = O
 		playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
 		update_appearance()
@@ -30,36 +30,36 @@
 		return
 	var/mob/living/carbon/human/H = target
 	if(!loaded_vial)
-		to_chat(user, "<span class='danger'>[src] is empty!</span>")
+		to_chat(user, span_danger("[src] is empty!"))
 		return
 	if(loaded_vial.contains_rna)
-		to_chat(user, "<span class='danger'>[src] already has RNA data in it, upload it to the combinator!</span>")
+		to_chat(user, span_danger("[src] already has RNA data in it, upload it to the combinator!"))
 		return
 	if(!ismutant(H))
-		to_chat(user, "<span class='danger'>[H] does not register as infected!</span>")
+		to_chat(user, span_danger("[H] does not register as infected!"))
 		return
 	var/datum/component/mutant_infection/ZI = H.GetComponent(/datum/component/mutant_infection)
 	if(!ZI)
-		to_chat(user, "<span class='danger'>[H] does not register as infected!</span>")
+		to_chat(user, span_danger("[H] does not register as infected!"))
 		return
 	if(ZI.extract_rna())
 		loaded_vial.load_rna(H)
-		to_chat(user, "<span class='notice'>[src] successfully scanned [H], and now holds a sample virus RNA data.</span>")
+		to_chat(user, span_notice("[src] successfully scanned [H], and now holds a sample virus RNA data."))
 		playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE, -6)
 		update_appearance()
 	else
-		to_chat(user, "<span class='warning'>[H] has no useable RNA!</span>")
+		to_chat(user, span_warning("[H] has no useable RNA!"))
 
 /obj/item/rna_extractor/proc/unload_vial(mob/living/user)
 	if(loaded_vial)
 		loaded_vial.forceMove(user.loc)
 		user.put_in_hands(loaded_vial)
-		to_chat(user, "<span class='notice'>You remove [loaded_vial] from [src].</span>")
+		to_chat(user, span_notice("You remove [loaded_vial] from [src]."))
 		loaded_vial = null
 		update_appearance()
 		playsound(loc, 'sound/weapons/empty.ogg', 50, 1)
 	else
-		to_chat(user, "<span class='notice'>[src] isn't loaded!</span>")
+		to_chat(user, span_notice("[src] isn't loaded!"))
 		return
 
 /obj/item/rna_extractor/update_overlays()
@@ -110,17 +110,17 @@
 /obj/item/hnz_cure/attack(mob/living/M, mob/living/user, params)
 	. = ..()
 	if(used)
-		to_chat(user, "<span class='danger'>[src] has been used and is useless!</span>")
+		to_chat(user, span_danger("[src] has been used and is useless!"))
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!H.GetComponent(/datum/component/mutant_infection))
-			to_chat(user, "<span class='danger'>[H] does not register as infected!</span>")
+			to_chat(user, span_danger("[H] does not register as infected!"))
 			return
 		if(do_after(user, 4 SECONDS))
 			cure_target(H)
 			playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE, -6)
-			to_chat(user, "<span class='notice'>You inject [H] wth [src]!")
+			to_chat(user, span_notice("You inject [H] wth [src]!"))
 			used = TRUE
 			update_appearance()
 
@@ -172,7 +172,7 @@
 	if(!user.transferItemToLoc(O, src))
 		return FALSE
 	loaded_item = O
-	to_chat(user, "<span class='notice'>You insert [O] to into [src] reciprocal.</span>")
+	to_chat(user, span_notice("You insert [O] to into [src] reciprocal."))
 	flick("h_lathe_load", src)
 	update_appearance()
 	playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
@@ -223,11 +223,11 @@
 		updateUsrDialog()
 	else
 		if(status != STATUS_IDLE)
-			to_chat(usr, "<span class='warning'>[src] is currently recombinating!</span>")
+			to_chat(usr, span_warning("[src] is currently recombinating!"))
 		else if(!loaded_item)
-			to_chat(usr, "<span class='warning'>[src] is not currently loaded!</span>")
+			to_chat(usr, span_warning("[src] is not currently loaded!"))
 		else if(!process || process != loaded_item) //Interface exploit protection (such as hrefs or swapping items with interface set to old item)
-			to_chat(usr, "<span class='danger'>Interface failure detected in [src]. Please try again.</span>")
+			to_chat(usr, span_danger("Interface failure detected in [src]. Please try again."))
 		else
 			if(operation == "virus")
 				status = STATUS_RECOMBINATING_VIRUS

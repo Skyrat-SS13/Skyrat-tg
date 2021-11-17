@@ -15,12 +15,12 @@
 	playsound(get_turf(user), 'sound/items/change_jaws.ogg', 50, TRUE)
 	if(tool_behaviour == TOOL_CROWBAR)
 		tool_behaviour = TOOL_WIRECUTTER
-		to_chat(user, "<span class='notice'>You attach the cutting jaws to [src].</span>")
+		to_chat(user, span_notice("You attach the cutting jaws to [src]."))
 		icon_state = "jaws_cutter_cyborg"
 		usesound = 'sound/items/jaws_cut.ogg'
 	else
 		tool_behaviour = TOOL_CROWBAR
-		to_chat(user, "<span class='notice'>You attach the prying jaws to [src].</span>")
+		to_chat(user, span_notice("You attach the prying jaws to [src]."))
 		icon_state = "jaws_pry_cyborg"
 		usesound = 'sound/items/jaws_pry.ogg'
 
@@ -42,9 +42,9 @@
 	playsound(get_turf(user), 'sound/items/change_drill.ogg', 50, TRUE)
 	if(tool_behaviour == TOOL_SCREWDRIVER)
 		tool_behaviour = TOOL_WRENCH
-		to_chat(user, "<span class='notice'>You attach the bolt bit to [src].</span>")
+		to_chat(user, span_notice("You attach the bolt bit to [src]."))
 		icon_state = "drill_bolt_cyborg"
 	else
 		tool_behaviour = TOOL_SCREWDRIVER
-		to_chat(user, "<span class='notice'>You attach the screw bit to [src].</span>")
+		to_chat(user, span_notice("You attach the screw bit to [src]."))
 		icon_state = "drill_screw_cyborg"

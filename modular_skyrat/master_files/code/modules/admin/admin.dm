@@ -17,4 +17,4 @@ GLOBAL_VAR_INIT(dchat_allowed, TRUE)
 			return
 	else //otherwise just toggle it
 		GLOB.dchat_allowed = !GLOB.dchat_allowed
-	to_chat(world, "<span class='oocplain'><B>The dead chat channel has been globally [GLOB.dchat_allowed ? "enabled" : "disabled"].</B></span>")
+	to_chat(world, span_oocplain("<B>The dead chat channel has been globally [GLOB.dchat_allowed ? "enabled" : "disabled"].</B>"))

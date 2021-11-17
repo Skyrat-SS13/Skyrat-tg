@@ -180,7 +180,7 @@
 			var/mob/living/carbon/human/human_to_dunk = hit_atom
 			if(!human_to_dunk.get_item_by_slot(ITEM_SLOT_HEAD) && prob(50)) //Anything on de head stops the head hump
 				if(zombify(human_to_dunk))
-					to_chat(human_to_dunk, "<span class='userdanger'>[src] latches onto your head as it pierces your skull, instantly killing you!</span>")
+					to_chat(human_to_dunk, span_userdanger("[src] latches onto your head as it pierces your skull, instantly killing you!"))
 					playsound(src, 'modular_skyrat/master_files/sound/blackmesa/headcrab/headbite.ogg', 100)
 					human_to_dunk.death(FALSE)
 
@@ -207,7 +207,7 @@
 	H.forceMove(src)
 	oldguy = H
 	update_appearance()
-	visible_message("<span class='warning'>The corpse of [H.name] suddenly rises!</span>")
+	visible_message(span_warning("The corpse of [H.name] suddenly rises!"))
 	charger = FALSE
 	return TRUE
 

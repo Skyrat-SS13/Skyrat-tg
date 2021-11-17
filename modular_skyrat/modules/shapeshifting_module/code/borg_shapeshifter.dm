@@ -128,18 +128,18 @@
 		if (isturf(user.loc))
 			toggle(user)
 		else
-			to_chat(user, "<span class='warning'>You can't use [src] while inside something!</span>")
+			to_chat(user, span_warning("You can't use [src] while inside something!"))
 	else
-		to_chat(user, "<span class='warning'>You need at least [activationCost] charge in your cell to use [src]!</span>")
+		to_chat(user, span_warning("You need at least [activationCost] charge in your cell to use [src]!"))
 
 /obj/item/borg_shapeshifter/proc/toggle(mob/living/silicon/robot/user)
 	if(active)
 		playsound(src, 'sound/effects/pop.ogg', 100, TRUE, -6)
-		to_chat(user, "<span class='notice'>You deactivate \the [src].</span>")
+		to_chat(user, span_notice("You deactivate \the [src]."))
 		deactivate(user)
 	else
 		if(animation_playing)
-			to_chat(user, "<span class='notice'>\the [src] is recharging.</span>")
+			to_chat(user, span_notice("\the [src] is recharging."))
 			return
 		var/mob/living/silicon/robot/R = loc
 		var/static/list/model_icons = sort_list(list(
@@ -1037,7 +1037,7 @@
 				return FALSE
 
 		animation_playing = TRUE
-		to_chat(user, "<span class='notice'>You activate \the [src].</span>")
+		to_chat(user, span_notice("You activate \the [src]."))
 		playsound(src, 'sound/effects/seedling_chargeup.ogg', 100, TRUE, -6)
 		var/start = user.filters.len
 		var/X,Y,rsq,i,f
@@ -1054,10 +1054,10 @@
 			animate(offset=f:offset-1, time=rand()*20+10)
 		if (do_after(user, 50, target=user) && user.cell.use(activationCost))
 			playsound(src, 'sound/effects/bamf.ogg', 100, TRUE, -6)
-			to_chat(user, "<span class='notice'>You are now disguised.</span>")
+			to_chat(user, span_notice("You are now disguised."))
 			activate(user, model_selection)
 		else
-			to_chat(user, "<span class='warning'>The chameleon field fizzles.</span>")
+			to_chat(user, span_warning("The chameleon field fizzles."))
 			do_sparks(3, FALSE, user)
 			for(i=1, i<=min(7, user.filters.len), ++i) // removing filters that are animating does nothing, we gotta stop the animations first
 				f = user.filters[start+i]
@@ -1123,5 +1123,5 @@
 /obj/item/borg_shapeshifter/proc/disrupt(mob/living/silicon/robot/user)
 	SIGNAL_HANDLER
 	if(active)
-		to_chat(user, "<span class='danger'>Your chameleon field deactivates.</span>")
+		to_chat(user, span_danger("Your chameleon field deactivates."))
 		deactivate(user)

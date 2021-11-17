@@ -6,7 +6,7 @@
 	icon_state = "vial"
 
 /obj/item/bloodcrawlbottle/attack_self(mob/user)
-	to_chat(user, "<span class='notice'>You drink the bottle's contents.</span>")
+	to_chat(user, span_notice("You drink the bottle's contents."))
 	var/obj/effect/proc_holder/spell/bloodcrawl/S = new()
 	user.mind.AddSpell(S)
 	user.log_message("learned the spell bloodcrawl ([S])", LOG_ATTACK, color="orange")
@@ -22,7 +22,7 @@
 			perform(target)
 			return
 	revert_cast()
-	to_chat(user, "<span class='warning'>There must be a nearby source of plentiful blood!</span>")
+	to_chat(user, span_warning("There must be a nearby source of plentiful blood!"))
 
 /obj/effect/proc_holder/spell/bloodcrawl/lesser/perform(obj/effect/decal/cleanable/target, recharge = 1, mob/living/user = usr)
 	if(istype(user) && user.canUseTopic(user, TRUE))
@@ -38,7 +38,7 @@
 		start_recharge()
 		return
 	revert_cast()
-	to_chat(user, "<span class='warning'>You are unable to blood crawl!</span>")
+	to_chat(user, span_warning("You are unable to blood crawl!"))
 
 /obj/item/storage/box/hero/ronin
     name = "Sword Saint, Wandering Vagabond - 1600's."

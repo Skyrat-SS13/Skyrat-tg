@@ -31,7 +31,7 @@
 	if(C.mob_biotypes & MOB_ROBOTIC)
 		return
 	if(method == INGEST)
-		to_chat(C, pick("<span class = 'danger'>That was awful!</span>", "<span class = 'danger'>That was disgusting!</span>"))
+		to_chat(C, pick(span_danger("That was awful!"), span_danger("That was disgusting!")))
 
 /datum/reagent/consumable/ethanol/synthanol/robottears
 	name = "Robot Tears"
@@ -109,7 +109,7 @@
 
 /datum/reagent/consumable/ethanol/gunfire/on_mob_life(mob/living/carbon/M)
 	if (prob(3))
-		to_chat(M,"<span class='notice'>You feel the gunfire pop in your mouth.</span>")
+		to_chat(M,span_notice("You feel the gunfire pop in your mouth."))
 	return ..()
 
 /datum/reagent/consumable/ethanol/hellfire

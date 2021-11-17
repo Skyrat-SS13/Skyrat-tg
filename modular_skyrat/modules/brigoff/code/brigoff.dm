@@ -39,8 +39,8 @@
 
 /datum/job/brigoff/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
-	to_chat(M, "<span class='userdanger'>You are a <b><u>GUARD</b></u> not a Security Officer, do <b><u>NOT</b></u> run off and be Security unless it's red alert!.")
-	to_chat(M, "<span class='warning'>You shouldn't leave the brig for long peroids of time. <b>Remember: You aren't a Security Officer.</b>")
+	to_chat(M, span_userdanger("You are a <b><u>GUARD</b></u> not a Security Officer, do <b><u>NOT</b></u> run off and be Security unless it's red alert!."))
+	to_chat(M, span_warning("You shouldn't leave the brig for long peroids of time. <b>Remember: You aren't a Security Officer.</b>"))
 	to_chat(M, "<b>You are a Brig Officer of the Frontier Space Station 13, your duties include Prisoner escort and ensuring the Prisoners stay in line.</b>")
 
 
