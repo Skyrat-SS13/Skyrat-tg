@@ -217,7 +217,7 @@
 		qdel(titanium_energy)
 
 // funny borg inducer upgrade
-/obj/item/borg/upgrade/inducer//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/borg/upgrade/inducer
 	name = "engineering cyborg inducer upgrade"
 	desc = "An inducer device for the engineering cyborg."
 	icon_state = "cyborg_upgrade3"
