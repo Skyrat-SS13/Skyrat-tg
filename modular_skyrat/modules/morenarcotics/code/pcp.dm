@@ -47,7 +47,7 @@
 		var/atom/movable/plane_master_controller/game_plane_master_controller = M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 		game_plane_master_controller.add_filter("pcp_blur", 10, angular_blur_filter(0, 0, 0.7))
 	if(DT_PROB(2.5, delta_time))
-		to_chat(M, "<span class='warning'>[high_message]</span>")
+		to_chat(M, span_warning("[high_message]"))
 	M.AdjustKnockdown(-20 * REM * delta_time)
 	M.AdjustImmobilized(-20 * REM * delta_time)
 	M.adjustStaminaLoss(-10 * REM * delta_time, 0)
@@ -71,7 +71,7 @@
 		QDEL_NULL(pcp_rage)
 	if(pcp_tenacity)
 		QDEL_NULL(pcp_tenacity)
-	L.visible_message("<span class='danger'>[L] collapses onto the floor!</span>") //you pretty much pass out
+	L.visible_message(span_danger("[L] collapses onto the floor!")) //you pretty much pass out
 	L.Paralyze(pcp_lifetime,TRUE)
 	L.drop_all_held_items()
 	..()
@@ -85,7 +85,7 @@
 	if(DT_PROB(2.5, delta_time))
 		M.emote(pick("twitch","drool"))
 	if(DT_PROB(1.5, delta_time))
-		M.visible_message("<span class='danger'>[M] flails their arms around everywhere!</span>")
+		M.visible_message(span_danger("[M] flails their arms around everywhere!"))
 		M.drop_all_held_items()
 	..()
 	. = TRUE

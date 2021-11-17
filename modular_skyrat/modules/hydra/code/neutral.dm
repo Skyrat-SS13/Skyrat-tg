@@ -3,8 +3,8 @@
 	desc = "You are a tri-headed creature. To use, format name like (Rucks-Sucks-Ducks)"
 	value = 0
 	mob_trait = TRAIT_HYDRA_HEADS
-	gain_text = "<span class='notice'>You hear two other voices inside of your head(s).</span>"
-	lose_text = "<span class='danger'>All of your minds become singular.</span>"
+	gain_text = span_notice("You hear two other voices inside of your head(s).")
+	lose_text = span_danger("All of your minds become singular.")
 	medical_record_text = "There are multiple heads and personalities affixed to one body."
 	icon = "horse-head"
 
@@ -34,13 +34,13 @@
 /datum/action/innate/hydrareset/Activate()
 	var/mob/living/carbon/human/hydra = owner
 	hydra.real_name = hydra.name_archive
-	hydra.visible_message("<span class='notice'>[hydra.name] pushes all three heads forwards; they seem to be talking as a collective.</span>", \
-							"<span class='notice'>You are now talking as [hydra.name_archive]!</span>", ignored_mobs=owner)
+	hydra.visible_message(span_notice("[hydra.name] pushes all three heads forwards; they seem to be talking as a collective."), \
+							span_notice("You are now talking as [hydra.name_archive]!"), ignored_mobs=owner)
 
 /datum/action/innate/hydra/Activate() //Oops, all hydra!
 	var/mob/living/carbon/human/hydra = owner
 	var/list/names = splittext(hydra.name_archive,"-")
 	var/selhead = input("Who would you like to speak as?","Heads:") in names
 	hydra.real_name = selhead
-	hydra.visible_message("<span class='notice'>[hydra.name] pulls the rest of their heads back; and puts [selhead]'s forward.</span>", \
-							"<span class='notice'>You are now talking as [selhead]!</span>", ignored_mobs=owner)
+	hydra.visible_message(span_notice("[hydra.name] pulls the rest of their heads back; and puts [selhead]'s forward."), \
+							span_notice("You are now talking as [selhead]!"), ignored_mobs=owner)

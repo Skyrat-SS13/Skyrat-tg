@@ -314,9 +314,9 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		return
 
 	if(target == user)
-		visible_message("<span class='infoplain'>[user] starts climbing into the cryo pod.</span>")
+		visible_message(span_info("plain'>[user] starts climbing into the cryo pod."))
 	else
-		visible_message("<span class='infoplain'>[user] starts putting [target] into the cryo pod.</span>")
+		visible_message(span_info("plain'>[user] starts putting [target] into the cryo pod."))
 
 	to_chat(target, span_warning("<b>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</b>"))
 

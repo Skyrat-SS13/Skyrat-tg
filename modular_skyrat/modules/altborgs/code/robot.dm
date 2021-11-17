@@ -23,7 +23,7 @@
 	set category = "AI Commands"
 	set desc = "Select your resting pose."
 	if(!is_dogborg())
-		to_chat(src, "<span class='warning'>You can't do that!</span>")
+		to_chat(src, span_warning("You can't do that!"))
 		return
 	var/choice = tgui_alert(src, "Select resting pose", "", list("Resting", "Sitting", "Belly up"))
 	switch(choice)
@@ -41,17 +41,17 @@
 	set name = "Lay down"
 	set category = "AI Commands"
 	if(!is_dogborg())
-		to_chat(src, "<span class='warning'>You can't do that!</span>")
+		to_chat(src, span_warning("You can't do that!"))
 		return
 	if(stat != CONSCIOUS) //Make sure we don't enable movement when not concious
 		return
 	if(robot_resting)
-		to_chat(src, "<span class='notice'>You are now getting up.</span>")
+		to_chat(src, span_notice("You are now getting up."))
 		robot_resting = FALSE
 		mobility_flags = MOBILITY_FLAGS_DEFAULT
 		on_standing_up()
 	else
-		to_chat(src, "<span class='notice'>You are now laying down.</span>")
+		to_chat(src, span_notice("You are now laying down."))
 		robot_resting = robot_rest_style
 		on_lying_down()
 	update_icons()
@@ -82,7 +82,7 @@
 		return
 
 	if(wires.is_cut(WIRE_RESET_MODEL))
-		to_chat(src,"<span class='userdanger'>ERROR: Module installer reply timeout. Please check internal connections.</span>")
+		to_chat(src,span_userdanger("ERROR: Module installer reply timeout. Please check internal connections."))
 		return
 
 	var/list/skyratmodel = list(

@@ -80,19 +80,19 @@
 		unjam_time = clamp((jam_chance*10)/(durability/10), 0, 50)
 		jammed = TRUE
 		playsound(src, 'sound/effects/stall.ogg', 60, TRUE)
-		to_chat(user, "<span class='danger'>The [src] jams!</span>")
+		to_chat(user, span_danger("The [src] jams!"))
 		SEND_SIGNAL(src, COMSIG_GUN_JAMMED)
 	else if(jammed)
 		to_chat(user, "You start to unjam the bolt!")
 		if(do_after(user, unjam_time))
 			jammed = FALSE
-			to_chat(user, "<span class='notice'>You unjam the [src]'s bolt.</span>")
+			to_chat(user, span_notice("You unjam the [src]'s bolt."))
 			playsound(src, 'sound/weapons/gun/l6/l6_rack.ogg', 60, TRUE)
 
 /obj/item/gun/ballistic/can_trigger_gun(mob/living/user)
 	. = ..()
 	if(realistic && jammed)
-		to_chat(user, "<span class='warning'>[src] is jammed!</span>")
+		to_chat(user, span_warning("[src] is jammed!"))
 		return FALSE
 
 /obj/item/gun/ballistic/shoot_live_shot(mob/living/user, pointblank, atom/pbtarget, message)
@@ -149,13 +149,13 @@
 			if(51 to 70)
 				. += "It looks very dirty."
 			else
-				. += "<span class='warning'>It is filthy!</span>"
+				. += span_warning("It is filthy!")
 
 		switch(FLOOR(durability, 1))
 			if(0 to 9)
-				. += "<span class='warning'><b>It is falling apart!</b></span>"
+				. += span_warning("<b>It is falling apart!</b>")
 			if(10 to 29)
-				. += "<span class='warning'>It looks battle scarred!</span>"
+				. += span_warning("It looks battle scarred!")
 			if(30 to 49)
 				. += "It looks well worn."
 			if(50 to 69)
@@ -164,9 +164,9 @@
 				. += "It looks factory new."
 
 		if(jammed)
-			. += "<span class='warning'><b>It is jammed, alt+click it to unjam it!</b></span>"
+			. += span_warning("<b>It is jammed, alt+click it to unjam it!</b>")
 		else if(durability < 10)
-			. += "<span class='warning'><b>It is barely functioning!</b></span>"
+			. += span_warning("<b>It is barely functioning!</b>")
 		else
 			. += "It is functioning normally."
 
@@ -181,17 +181,17 @@
 				if(C.amount < 5)
 					to_chat(user, "There's not enough [C] to clean the gun with!")
 				else
-					to_chat(user, "<span class='notice'>You start cleaning the [src].</span>")
+					to_chat(user, span_notice("You start cleaning the [src]."))
 					if(do_after(user, 20 SECONDS))
 						dirt_level -= 35
 						if(dirt_level < 0)
 							dirt_level = 0
 						C.use(5)
-						to_chat(user, "<span class='notice'>You clean the [src], improving it's reliability!</span>")
+						to_chat(user, span_notice("You clean the [src], improving it's reliability!"))
 		if(istype(A, /obj/item/gun_maintenance_supplies))
-			to_chat(user, "<span class='notice'>You start maintaining the [src].</span>")
+			to_chat(user, span_notice("You start maintaining the [src]."))
 			if(do_after(user, 10 SECONDS, target = src))
-				user.visible_message("<span class='notice'>[user] finishes maintenance of [src].</span>")
+				user.visible_message(span_notice("[user] finishes maintenance of [src]."))
 				dirt_level = 0
 				qdel(A)
 

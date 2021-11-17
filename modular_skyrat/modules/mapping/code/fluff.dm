@@ -97,7 +97,7 @@
 	if(atom_integrity >= 50)	//breaks it a bit earlier than it should, but still takes a few hits to kill it
 		return
 	else if(. && !QDELETED(src))
-		visible_message("<span class='notice'>[src] sparks and explodes! You hear a faint, buzzy scream...</span>","<span class='hear'>You hear a loud pop, followed by a faint, buzzy scream.</span>")
+		visible_message(span_notice("[src] sparks and explodes! You hear a faint, buzzy scream..."), span_hear("You hear a loud pop, followed by a faint, buzzy scream."))
 		playsound(src.loc, 'modular_skyrat/modules/mapping/sounds/MachineDeath.ogg', 75, TRUE)	//Credit to @yungfunnyman#3798 on the SR Discord
 		do_sparks(2, TRUE, src)
 		qdel(src)

@@ -29,6 +29,6 @@
 		return FALSE
 	if(!isliving(target))
 		if(!silent)
-			to_chat(user, "<span class='warning'>You are unable to swap with [target]!</span>")
+			to_chat(user, span_warning("You are unable to swap with [target]!"))
 		return FALSE
 	return TRUE

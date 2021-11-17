@@ -16,8 +16,8 @@
 	if(flags_1 & NODECONSTRUCT_1)
 		return TRUE
 
-	user.visible_message("<span class='warning'>[user] disassembles [src].</span>",
-		"<span class='notice'>You start to disassemble [src]...</span>", "<span class='hear'>You hear clanking and banging noises.</span>")
+	user.visible_message(span_warning("[user] disassembles [src]."),
+		span_notice("You start to disassemble [src]..."), span_hear("You hear clanking and banging noises."))
 	if(I.use_tool(src, user, 20, volume=50))
 		new /obj/item/gps/spaceruin(loc)	//really the only non-aesthetic change, gives the space ruin GPS signal
 		qdel(src)
