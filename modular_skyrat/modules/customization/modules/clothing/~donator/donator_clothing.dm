@@ -289,7 +289,7 @@
 				return
 			if("Maybe")
 				playsound(src, 'sound/machines/buzz-sigh.ogg', 50, FALSE)
-				audible_message("<span class='warning'>The [src] buzzes!</span>")
+				audible_message(span_warning("The [src] buzzes!"))
 				return
 
 /obj/item/canvas/drawingtablet/get_paint_tool_color()
@@ -558,11 +558,11 @@
 	if(goggles)
 		icon_state = "avipilotup"
 		inhand_icon_state = "avipilotup"
-		to_chat(user, "<span class='notice'>You put all your effort into pulling the goggles up.</span>")
+		to_chat(user, span_notice("You put all your effort into pulling the goggles up."))
 	else
 		icon_state = "avipilotdown"
 		inhand_icon_state = "avipilotdown"
-		to_chat(user, "<span class='notice'>You focus all your willpower to put the goggles down on your eyes.</span>")
+		to_chat(user, span_notice("You focus all your willpower to put the goggles down on your eyes."))
 	goggles = !goggles
 	if(user)
 		user.head_update(src, forced = 1)
@@ -714,7 +714,7 @@
 		update_icon()
 		ooser.update_inv_wear_mask()
 		ooser.update_action_buttons_icon()
-		to_chat(ooser, "<span class='notice'>You toggle the [src] to [possible_colors[c_color_index]].</span>")
+		to_chat(ooser, span_notice("You toggle the [src] to [possible_colors[c_color_index]]."))
 
 //Donation reward for asky / Zulie
 /obj/item/clothing/suit/hooded/cloak/zuliecloak

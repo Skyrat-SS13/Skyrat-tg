@@ -11375,7 +11375,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/effect/turf_decal/trimline/brown/filled/end,
-/obj/machinery/computer/cargo/request{
+/obj/machinery/computer/department_orders/medical{
 	dir = 8
 	},
 /turf/open/floor/iron,
@@ -35209,7 +35209,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/trinary/filter/flipped/critical{
 	dir = 8;
-	filter_type = "n2"
+	filter_type = list(/datum/gas/nitrogen)
 	},
 /turf/open/floor/engine,
 /area/engineering/main)
@@ -44280,8 +44280,8 @@
 /area/ai_monitored/command/nuke_storage)
 "kCD" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
-/obj/machinery/computer/cargo/request,
 /obj/effect/turf_decal/stripes/white/line,
+/obj/machinery/computer/department_orders/service,
 /turf/open/floor/wood,
 /area/hallway/secondary/service)
 "kCI" = (
@@ -44729,14 +44729,14 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/computer/cargo/request{
-	dir = 8
-	},
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 2.9
 	},
 /obj/effect/turf_decal/tile/brown/full,
+/obj/machinery/computer/department_orders/engineering{
+	dir = 8
+	},
 /turf/open/floor/iron/smooth_large,
 /area/engineering/break_room)
 "kYN" = (
@@ -56139,7 +56139,7 @@
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 6
 	},
-/obj/machinery/computer/cargo/request,
+/obj/machinery/computer/department_orders/security,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "vWE" = (
@@ -56395,10 +56395,10 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/siding/purple,
-/obj/machinery/computer/cargo/request{
+/obj/structure/railing,
+/obj/machinery/computer/department_orders/science{
 	dir = 1
 	},
-/obj/structure/railing,
 /turf/open/floor/iron/textured_large,
 /area/science/research)
 "whr" = (

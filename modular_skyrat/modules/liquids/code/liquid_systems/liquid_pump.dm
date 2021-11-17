@@ -28,24 +28,24 @@
 
 /obj/structure/liquid_pump/attack_hand(mob/user)
 	if(!anchored)
-		to_chat(user, "<span class='warning'>[src] needs to be anchored first!</span>")
+		to_chat(user, span_warning("[src] needs to be anchored first!"))
 		return
-	to_chat(user, "<span class='notice'>You turn [src] [turned_on ? "off" : "on"].</span>")
+	to_chat(user, span_notice("You turn [src] [turned_on ? "off" : "on"]."))
 	toggle_working()
 
 /obj/structure/liquid_pump/AltClick(mob/living/user)
 	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
 		return
-	to_chat(user, "<span class='notice'>You flick [src]'s spewing mode [spewing_mode ? "off" : "on"].</span>")
+	to_chat(user, span_notice("You flick [src]'s spewing mode [spewing_mode ? "off" : "on"]."))
 	spewing_mode = !spewing_mode
 	update_icon()
 
 /obj/structure/liquid_pump/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It's anchor bolts are [anchored ? "down and secured" : "up"].</span>"
-	. += "<span class='notice'>It's currently [turned_on ? "ON" : "OFF"].</span>"
-	. += "<span class='notice'>It's mode currently is set to [spewing_mode ? "SPEWING" : "SIPHONING"].</span> (Alt-click to switch)"
-	. += "<span class='notice'>The pressure gauge shows [reagents.total_volume]/[reagents.maximum_volume].</span>"
+	. += span_notice("It's anchor bolts are [anchored ? "down and secured" : "up"].")
+	. += span_notice("It's currently [turned_on ? "ON" : "OFF"].")
+	. += span_notice("It's mode currently is set to [spewing_mode ? "SPEWING" : "SIPHONING"]. (Alt-click to switch)")
+	. += span_notice("The pressure gauge shows [reagents.total_volume]/[reagents.maximum_volume].")
 
 /obj/structure/liquid_pump/process()
 	if(!isturf(loc))

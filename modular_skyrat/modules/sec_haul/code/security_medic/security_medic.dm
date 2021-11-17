@@ -45,8 +45,8 @@
 
 /datum/job/security_medic/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
-	to_chat(M, "<span class='redtext'>As the Security Medic, you are comparable in medical knowledge to a Paramedic, not a one man surgical bay. \
-	your main duty is healing on the field or in combat situations. Leave revivals and chemistry work to trained professionals.")
+	to_chat(M, span_redtext("As the Security Medic, you are comparable in medical knowledge to a Paramedic, not a one man surgical bay. \
+	your main duty is healing on the field or in combat situations. Leave revivals and chemistry work to trained professionals."))
 
 /datum/outfit/job/security_medic
 	name = "Security Medic"

@@ -141,6 +141,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 	. = ..()
 	if(!equipped)
 		if(user.client)
+			//SKYRAT EDIT ADDITION BEGIN - Per-character PDA settings
+			ttone = sanitize(trim(user.client.prefs.read_preference(/datum/preference/text/pda_ringer), 20))
+			//SKYRAT EDIT ADDITION END
 			background_color = user.client.prefs.read_preference(/datum/preference/color/pda_color)
 			switch(user.client.prefs.read_preference(/datum/preference/choiced/pda_style))
 				if(MONO)

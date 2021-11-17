@@ -238,7 +238,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /obj/effect/cme/proc/burst()
 	if(neutralized)
-		visible_message("<span class='notice'>[src] fizzles out into nothingness.")
+		visible_message(span_notice("[src] fizzles out into nothingness."))
 		new /obj/effect/particle_effect/smoke/bad(loc)
 		qdel(src)
 		return
@@ -252,7 +252,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /obj/effect/cme/armageddon/burst()
 	if(neutralized)
-		visible_message("<span class='notice'>[src] fizzles out into nothingness.")
+		visible_message(span_notice("[src] fizzles out into nothingness."))
 		new /obj/effect/particle_effect/smoke/bad(loc)
 		qdel(src)
 		return

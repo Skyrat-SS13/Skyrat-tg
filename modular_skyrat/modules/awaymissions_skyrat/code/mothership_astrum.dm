@@ -314,7 +314,7 @@
 	flags_1 = NODECONSTRUCT_1
 
 /obj/machinery/scanner_gate/anti_nanite/emag_act(mob/user)
-	to_chat(user, "<span class='notice'>This gate has advanced security measures!</span>")
+	to_chat(user, span_notice("This gate has advanced security measures!"))
 	return
 
 /obj/machinery/scanner_gate/anti_nanite/attackby(obj/item/W, mob/user, params)
