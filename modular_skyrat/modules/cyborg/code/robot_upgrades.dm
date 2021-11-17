@@ -229,18 +229,18 @@
 	. = ..()
 	if(.)
 
-		var/obj/item/inducer/cyborg/Inducer = locate() in target_robot
-		if(Inducer)
+		var/obj/item/inducer/cyborg/inducer = locate() in target_robot
+		if(inducer)
 			to_chat(user, span_warning("This unit is already equipped with an inducer module!"))
 			return FALSE
 
-		Inducer = new(target_robot.model)
-		target_robot.model.basic_modules += Inducer
-		target_robot.model.add_module(Inducer, FALSE, TRUE)
+		inducer = new(target_robot.model)
+		target_robot.model.basic_modules += inducer
+		target_robot.model.add_module(inducer, FALSE, TRUE)
 
 /obj/item/borg/upgrade/inducer/deactivate(mob/living/silicon/robot/target_robot, user = usr)
 	. = ..()
 	if (.)
-		var/obj/item/inducer/cyborg/Inducer = locate() in target_robot.model
-		if (Inducer)
-			target_robot.model.remove_module(Inducer, TRUE)
+		var/obj/item/inducer/cyborg/inducer = locate() in target_robot.model
+		if (inducer)
+			target_robot.model.remove_module(inducer, TRUE)
