@@ -215,3 +215,33 @@
 		qdel(plasteel_energy)
 	for(var/datum/robot_energy_storage/titanium/titanium_energy in borgo.model.storages)
 		qdel(titanium_energy)
+
+// funny borg inducer upgrade
+/obj/item/borg/upgrade/inducer//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+	name = "engineering cyborg inducer upgrade"
+	desc = "An inducer device for the engineering cyborg."
+	//icon = 'icons/obj/storage.dmi'
+	icon_state = "cyborg_upgrade3"
+	require_model = TRUE
+	model_type = list(/obj/item/robot_model/engineering, /obj/item/robot_model/saboteur)
+	model_flags = BORG_MODEL_ENGINEERING
+
+/obj/item/borg/upgrade/inducer/action(mob/living/silicon/robot/R, user = usr)
+	. = ..()
+	if(.)
+
+		var/obj/item/inducer/cyborg/INDUCER = locate() in R
+		if(INDUCER)
+			to_chat(user, span_warning("This unit is already equipped with an inducer module!"))
+			return FALSE
+
+		INDUCER = new(R.model)
+		R.model.basic_modules += INDUCER
+		R.model.add_module(INDUCER, FALSE, TRUE)
+
+/obj/item/borg/upgrade/inducer/deactivate(mob/living/silicon/robot/R, user = usr)
+	. = ..()
+	if (.)
+		var/obj/item/inducer/cyborg/INDUCER = locate() in R.model
+		if (INDUCER)
+			R.model.remove_module(INDUCER, TRUE)
