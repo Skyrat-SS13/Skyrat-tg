@@ -30,7 +30,7 @@ GLOBAL_LIST_INIT(emergency_responders, list())
 	..()
 
 /datum/antagonist/ert/request_911/greet()
-	var/missiondesc =  "<span class='warningplain'><B><font size=6 color=red>You are the [name].</font></B>"
+	var/missiondesc =  span_warningplain("<B><font size=6 color=red>You are the [name].</font></B>")
 	missiondesc += "<BR><B><font size=5 color=red>You are NOT a Nanotrasen Employee. You work for the Sol Federation as a [role].</font></B>"
 	missiondesc += "<BR>You are responding to emergency calls from the station for immediate SolFed [department] assistance!\n"
 	missiondesc += "<BR><B>Your Mission</B>:"

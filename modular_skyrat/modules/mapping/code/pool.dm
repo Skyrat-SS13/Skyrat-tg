@@ -49,7 +49,7 @@
 	SEND_SIGNAL(A, COMSIG_ADD_MOOD_EVENT, "hotspring", /datum/mood_event/hotspring)
 
 /datum/mood_event/hotspring
-	description = "<span class='nicegreen'>I recently a paddle in some nice warm water! It was so refreshing!</span>\n"
+	description = span_nicegreen("I recently had a paddle in some nice warm water! It was so refreshing!\n")
 	mood_change = 4
 	timeout = 20 MINUTES
 /////////////   MOOD  EVENT   /////////////

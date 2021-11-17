@@ -45,7 +45,7 @@
 /datum/reagent/drug/cocaine/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	if(DT_PROB(2.5, delta_time))
 		var/high_message = pick("You feel jittery.", "You feel like you gotta go fast.", "You feel like you need to step it up.")
-		to_chat(M, "<span class='notice'>[high_message]</span>")
+		to_chat(M, span_notice("[high_message]"))
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "zoinked", /datum/mood_event/stimulant_heavy, name)
 	M.AdjustStun(-15 * REM * delta_time)
 	M.AdjustKnockdown(-15 * REM * delta_time)
@@ -59,7 +59,7 @@
 	. = TRUE
 
 /datum/reagent/drug/cocaine/overdose_start(mob/living/M)
-	to_chat(M, "<span class='userdanger'>Your heart beats is beating so fast, it hurts...</span>")
+	to_chat(M, span_userdanger("Your heart beats is beating so fast, it hurts..."))
 
 /datum/reagent/drug/cocaine/overdose_process(mob/living/M, delta_time, times_fired)
 	M.adjustToxLoss(1 * REM * delta_time, 0)
@@ -69,7 +69,7 @@
 		M.emote(pick("twitch","drool"))
 	if(!HAS_TRAIT(M, TRAIT_FLOORED))
 		if(DT_PROB(1.5, delta_time))
-			M.visible_message("<span class='danger'>[M] collapses onto the floor!</span>")
+			M.visible_message(span_danger("[M] collapses onto the floor!"))
 			M.Paralyze(135,TRUE)
 			M.drop_all_held_items()
 	..()
