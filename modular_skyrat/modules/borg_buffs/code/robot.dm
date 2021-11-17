@@ -117,7 +117,7 @@
 		to_chat(user, span_notice("You attach the knife bit to [src]."))
 		icon_state = "knife_screw_cyborg"
 
-obj/item/inducer/cyborg
+/obj/item/inducer/cyborg
 	name = "Cyborg Inducer"
 	desc = "A tool for inductively charging internal power cells using the battery of a cyborg"
 	powertransfer = 250
