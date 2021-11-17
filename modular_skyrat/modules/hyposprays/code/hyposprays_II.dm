@@ -164,7 +164,7 @@
 	return
 
 /obj/item/hypospray/mkii/afterattack(atom/target, mob/living/user, proximity)
-	if((istype(target, /obj/item/reagent_containers/glass/vial)))
+	if(istype(target, /obj/item/reagent_containers/glass/vial))
 		insert_vial(target, user, vial)
 		return TRUE
 
@@ -202,7 +202,7 @@
 		return
 	log_attack("<font color='red'>[user.name] ([user.ckey]) applied [src] to [injectee.name] ([injectee.ckey]), which had [contained] (COMBAT MODE: [uppertext(user.combat_mode)]) (MODE: [mode])</font>")
 	if(injectee != user)
-		injectee.visible_message(span_danger("[user] uses the [src] on [injectee]!</span>"), \
+		injectee.visible_message(span_danger("[user] uses the [src] on [injectee]!"), \
 						span_userdanger("[user] uses the [src] on you!"))
 	else
 		injectee.log_message("<font color='orange'>applied [src] to themselves ([contained]).</font>", LOG_ATTACK)
@@ -215,7 +215,7 @@
 
 	var/long_sound = vial.amount_per_transfer_from_this >= 15
 	playsound(loc, long_sound ? 'modular_skyrat/modules/hyposprays/sound/hypospray_long.ogg' : pick('modular_skyrat/modules/hyposprays/sound/hypospray.ogg','modular_skyrat/modules/hyposprays/sound/hypospray2.ogg'), 50, 1, -1)
-	to_chat(user, span_notice("You [fp_verb] [vial.amount_per_transfer_from_this] units of the solution. The hypospray's cartridge now contains [vial.reagents.total_volume] units.</span>"))
+	to_chat(user, span_notice("You [fp_verb] [vial.amount_per_transfer_from_this] units of the solution. The hypospray's cartridge now contains [vial.reagents.total_volume] units."))
 	update_appearance()
 
 /obj/item/hypospray/mkii/attack_self(mob/living/user)

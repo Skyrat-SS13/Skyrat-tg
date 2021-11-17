@@ -2765,7 +2765,7 @@
 /area/ai_monitored/turret_protected/ai)
 "ajq" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/computer/cargo/request{
+/obj/machinery/computer/department_orders/service{
 	dir = 8
 	},
 /turf/open/floor/plating{
@@ -16777,11 +16777,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/computer/cargo/request{
-	dir = 1
-	},
 /obj/effect/turf_decal/trimline/brown/filled/end{
 	dir = 4
+	},
+/obj/machinery/computer/department_orders/science{
+	dir = 1
 	},
 /turf/open/floor/iron/dark,
 /area/science/research)
@@ -30321,7 +30321,7 @@
 /turf/open/floor/iron,
 /area/security/brig)
 "cmB" = (
-/obj/machinery/computer/cargo/request{
+/obj/machinery/computer/department_orders/engineering{
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
@@ -36824,7 +36824,7 @@
 "cYo" = (
 /obj/machinery/atmospherics/components/trinary/filter/flipped/critical{
 	dir = 8;
-	filter_type = "n2"
+	filter_type = list(/datum/gas/nitrogen)
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable,
@@ -66774,10 +66774,10 @@
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/machinery/computer/cargo/request{
+/obj/structure/disposalpipe/segment,
+/obj/machinery/computer/department_orders/medical{
 	dir = 8
 	},
-/obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/showroomfloor,
 /area/medical/medbay/central)
 "qIv" = (
@@ -71737,11 +71737,11 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/computer/cargo/request{
-	dir = 1
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/computer/department_orders/security{
+	dir = 1
 	},
 /turf/open/floor/iron/dark,
 /area/security/office)

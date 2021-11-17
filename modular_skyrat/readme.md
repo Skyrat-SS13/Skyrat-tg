@@ -242,7 +242,7 @@ In those cases, we've decided to apply the following convention, with examples:
   SSshuttle.emergency.request()
   SSblackbox.record_feedback("tally", "admin_verb", 1, "Call Shuttle") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
   log_admin("[key_name(usr)] admin-called the emergency shuttle.")
-  message_admins("<span class='adminnotice'>[key_name_admin(usr)] admin-called the emergency shuttle.</span>")
+  message_admins(span_adminnotice("[key_name_admin(usr)] admin-called the emergency shuttle."))
   return
   */
   //SKYRAT EDIT REMOVAL END

@@ -28,7 +28,7 @@
 			break
 
 	if(!prisoner_id)
-		to_chat(user, "<span class='danger'>Access Denied.</span>")
+		to_chat(user, span_danger("Access Denied."))
 		return FALSE
 
 	qdel(registered_id)
@@ -36,7 +36,7 @@
 	locked = FALSE
 	open(user)
 	desc = "It's a secure locker for prisoner effects."
-	to_chat(user, "<span class='notice'>You insert your prisoner id into \the [src] and it springs open!</span>")
+	to_chat(user, span_notice("You insert your prisoner id into \the [src] and it springs open!"))
 
 	return TRUE
 

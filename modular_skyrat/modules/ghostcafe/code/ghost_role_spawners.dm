@@ -33,7 +33,7 @@
 		/area/centcom/holding/cafebuild, /area/centcom/holding/cafevox, /area/centcom/holding/cafedorms, /area/centcom/holding/cafepark, /area/centcom/holding/cafeplumbing))
 		ADD_TRAIT(new_spawn, TRAIT_SIXTHSENSE, GHOSTROLE_TRAIT)
 		ADD_TRAIT(new_spawn, TRAIT_FREE_GHOST, GHOSTROLE_TRAIT)
-		to_chat(new_spawn,"<span class='warning'><b>Ghosting is free!</b></span>")
+		to_chat(new_spawn,span_warning("<b>Ghosting is free!</b>"))
 		var/datum/action/toggle_dead_chat_mob/D = new(new_spawn)
 		D.Grant(new_spawn)
 
@@ -62,8 +62,8 @@
 		/area/centcom/holding/cafebuild, /area/centcom/holding/cafevox, /area/centcom/holding/cafedorms, /area/centcom/holding/cafepark, /area/centcom/holding/cafeplumbing))
 		ADD_TRAIT(new_spawn, TRAIT_SIXTHSENSE, GHOSTROLE_TRAIT)
 		ADD_TRAIT(new_spawn, TRAIT_FREE_GHOST, GHOSTROLE_TRAIT)
-		to_chat(new_spawn,"<span class='warning'><b>Ghosting is free!</b></span>")
-		//to_chat(new_spawn,"<span class='narsiesmall'>Be warned: People who opt out of EORG will come here. Do not make the area uninhabitable and do NOT commit EORG. This is a safe-zone. If you attack people in EORG, you will be banned for griefing.</span>")
+		to_chat(new_spawn,span_warning("<b>Ghosting is free!</b>"))
+		//to_chat(new_spawn,span_narsiesmall("Be warned: People who opt out of EORG will come here. Do not make the area uninhabitable and do NOT commit EORG. This is a safe-zone. If you attack people in EORG, you will be banned for griefing."))
 		var/datum/action/toggle_dead_chat_mob/D = new(new_spawn)
 		new_spawn.put_in_hand(new /obj/item/storage/box/syndie_kit/chameleon/ghostcafe, LEFT_HANDS, forced = TRUE)
 		new_spawn.equip_outfit_and_loadout(/datum/outfit/ghostcafe, new_spawn.client.prefs, FALSE, null)
@@ -87,10 +87,10 @@
 	var/mob/M = target
 	if(HAS_TRAIT_FROM(M,TRAIT_SIXTHSENSE,GHOSTROLE_TRAIT))
 		REMOVE_TRAIT(M,TRAIT_SIXTHSENSE,GHOSTROLE_TRAIT)
-		to_chat(M,"<span class='notice'>You're no longer hearing deadchat.</span>")
+		to_chat(M,span_notice("You're no longer hearing deadchat."))
 	else
 		ADD_TRAIT(M,TRAIT_SIXTHSENSE,GHOSTROLE_TRAIT)
-		to_chat(M,"<span class='notice'>You're once again hearing deadchat.</span>")
+		to_chat(M,span_notice("You're once again hearing deadchat."))
 
 /obj/item/storage/box/syndie_kit/chameleon/ghostcafe
 	name = "cafe costuming kit"

@@ -7,7 +7,7 @@
 /datum/emote/living/subtle/proc/check_invalid(mob/user, input)
 	/* TO DO
 	if(stop_bad_mime.Find(input, 1, 1))
-		to_chat(user, "<span class='danger'>Invalid emote.</span>")
+		to_chat(user, span_danger("Invalid emote."))
 		return TRUE
 	*/
 	return FALSE
@@ -45,7 +45,7 @@
 
 	var/prefix_log_message = "(SUBTLE) [subtle_message]"
 	user.log_message(prefix_log_message, LOG_EMOTE)
-	subtle_message = "<span class='emote'><b>[user]</b> " + "<i>[user.say_emphasis(subtle_message)]</i></span>"
+	subtle_message = span_emote("<b>[user]</b> " + "<i>[user.say_emphasis(subtle_message)]</i>")
 
 	for(var/mob/M in GLOB.dead_mob_list)
 		if(!M.client || isnewplayer(M))
@@ -72,7 +72,7 @@
 /datum/emote/living/subtler/proc/check_invalid(mob/user, input)
 	/* TO DO
 	if(stop_bad_mime.Find(input, 1, 1))
-		to_chat(user, "<span class='danger'>Invalid emote.</span>")
+		to_chat(user, span_danger("Invalid emote."))
 		return TRUE
 	*/
 	return FALSE
@@ -109,7 +109,7 @@
 		return FALSE
 
 	user.log_message(subtler_message, LOG_SUBTLER)
-	subtler_message = "<span class='emote'><b>[user]</b> " + "<i>[user.say_emphasis(subtler_message)]</i></span>"
+	subtler_message = span_emote("<b>[user]</b> " + "<i>[user.say_emphasis(subtler_message)]</i>")
 
 	if(emote_type == EMOTE_AUDIBLE)
 		user.audible_message_subtler(message=subtler_message,hearing_distance=1, ignored_mobs = GLOB.dead_mob_list)
@@ -127,7 +127,7 @@
 	set name = "Subtle"
 	set category = "IC"
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 	usr.emote("subtle")
 
@@ -136,7 +136,7 @@
 	set name = "Subtler Anti-Ghost"
 	set category = "IC"
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 	usr.emote("subtler")
 

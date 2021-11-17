@@ -297,7 +297,7 @@ GLOBAL_LIST_INIT(food, list(
 				message_admins("[usr] is bypassing the flavor text requirements.")
 				return TRUE
 		if(inform_client)
-			to_chat(parent, "<span class='userdanger'>You must have a flavor text!</span>")
+			to_chat(parent, span_userdanger("You must have a flavor text!"))
 		return FALSE
 	if(length(replacetext(features["flavor_text"], " ", "")) < FLAVORTEXT_JOIN_MINIMUM) // No you can't use whitespace to meet the requirement
 		if(check_rights(R_ADMIN, FALSE))
@@ -306,7 +306,7 @@ GLOBAL_LIST_INIT(food, list(
 				message_admins("[usr] is bypassing the flavor text requirements.")
 				return TRUE
 		if(inform_client)
-			to_chat(parent, "<span class='userdanger'>Your flavor text must be longer than [FLAVORTEXT_JOIN_MINIMUM] characters!</span>")
+			to_chat(parent, span_userdanger("Your flavor text must be longer than [FLAVORTEXT_JOIN_MINIMUM] characters!"))
 		return FALSE
 	return TRUE
 
@@ -1448,7 +1448,7 @@ GLOBAL_LIST_INIT(food, list(
 			if(job.alt_titles.len)
 				rank_title_line = "<a href='?_src_=prefs;preference=job;task=alt_title;job_title=[job.title]'>[rank_title_line]</a>"
 			else
-				rank_title_line = "<span class='dark'>[rank_title_line]</span>" //Make it dark if we're not adding a button for alt titles
+				rank_title_line = span_dark("[rank_title_line]") //Make it dark if we're not adding a button for alt titles
 			HTML += rank_title_line
 
 
@@ -1738,7 +1738,7 @@ GLOBAL_LIST_INIT(food, list(
 						to_chat(user, span_warning("You can't have more than [MAX_QUIRKS] positive quirks!"))
 						return
 					if(balance - value < 0)
-						to_chat(user, "<span class='warning'>You don't have enough balance to gain this quirk!</span>")
+						to_chat(user, span_warning("You don't have enough balance to gain this quirk!"))
 						return
 					all_quirks += quirk
 				SetQuirks(user)
@@ -3538,7 +3538,7 @@ GLOBAL_LIST_INIT(food, list(
 		if(language_skill && !required)
 			unlearn_button = "<a href='?_src_=prefs;lang=[lang_path];level=0;preference=language;task=input'>Unlearn</a>"
 		else
-			unlearn_button = "<span class='linkOff'>Unlearn</span>"
+			unlearn_button = span_linkOff("Unlearn")
 		var/understood_button
 		if(languages[lang_path])
 			//Has a href in case you want to downgrade from spoken to understood
@@ -3546,14 +3546,14 @@ GLOBAL_LIST_INIT(food, list(
 		else if(can_buy_language(lang_path, LANGUAGE_UNDERSTOOD))
 			understood_button = "<a href='?_src_=prefs;lang=[lang_path];level=1;preference=language;task=input'>Understood</a>"
 		else
-			understood_button = "<span class='linkOff'>Understood</span>"
+			understood_button = span_linkOff("Understood")
 		var/spoken_button
 		if(languages[lang_path] >= LANGUAGE_SPOKEN)
 			spoken_button = "<a class='linkOn' href='?_src_=prefs;lang=[lang_path];level=2;preference=language;task=input'>Spoken</a>"
 		else if(can_buy_language(lang_path, LANGUAGE_SPOKEN))
 			spoken_button = "<a href='?_src_=prefs;lang=[lang_path];level=2;preference=language;task=input'>Spoken</a>"
 		else
-			spoken_button = "<span class='linkOff'>Spoken</span>"
+			spoken_button = span_linkOff("Spoken")
 		dat += "<tr style='background-color: [background_cl]'>"
 		dat += "<td><b>[initial(lang_datum.name)]</b></td>"
 		dat += "<td><i>[initial(lang_datum.desc)]</i></td>"
