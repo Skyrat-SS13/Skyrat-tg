@@ -130,62 +130,62 @@
 	if(istype(Weapon, /obj/item/stock_parts/cell))
 		return
 
-/obj/item/inducer/cyborg/recharge(atom/movable/TargetAtom, mob/user)
+/obj/item/inducer/cyborg/recharge(atom/movable/target_atom, mob/user)
 	if(!iscyborg(user))
 		return
-	var/mob/living/silicon/robot/borgUser = user
-	cell = borgUser.cell
-	if(!isturf(TargetAtom) && user.loc == TargetAtom)
+	var/mob/living/silicon/robot/borg_user = user
+	cell = borg_user.cell
+	if(!isturf(target_atom) && user.loc == target_atom)
 		return FALSE
 	if(recharging)
 		return TRUE
 	else
 		recharging = TRUE
-	var/obj/item/stock_parts/cell/targetCell = TargetAtom.get_cell()
-	var/obj/targetObject
+	var/obj/item/stock_parts/cell/target_cell = target_atom.get_cell()
+	var/obj/target_object
 	var/coefficient = 1
-	if(istype(TargetAtom, /obj/item/gun/energy))
+	if(istype(target_atom, /obj/item/gun/energy))
 		to_chat(user, span_alert("Error unable to interface with device."))
 		return FALSE
-	if(istype(TargetAtom, /obj/item/clothing/suit/space))
+	if(istype(target_atom, /obj/item/clothing/suit/space))
 		to_chat(user, span_alert("Error unable to interface with device."))
 		return FALSE
 	if(cell.charge <= 1000 ) // Cyborg charge safety. Prevents a borg from inducing themself to death.
 		to_chat(user, span_alert("Unable to charge device. User battery safety engaged."))
 		return
-	if(istype(TargetAtom, /obj))
-		targetObject = TargetAtom
-	if(targetCell)
+	if(istype(target_atom, /obj))
+		target_object = target_atom
+	if(target_cell)
 		var/done_any = FALSE
-		if(targetCell.charge >= targetCell.maxcharge)
-			to_chat(user, span_notice("[TargetAtom] is fully charged!"))
+		if(target_cell.charge >= target_cell.maxcharge)
+			to_chat(user, span_notice("[target_atom] is fully charged!"))
 			recharging = FALSE
 			return TRUE
-		user.visible_message(span_notice("[user] starts recharging [TargetAtom] with [src]."), span_notice("You start recharging [TargetAtom] with [src]."))
-		while(targetCell.charge < targetCell.maxcharge)
+		user.visible_message(span_notice("[user] starts recharging [target_atom] with [src]."), span_notice("You start recharging [target_atom] with [src]."))
+		while(target_cell.charge < target_cell.maxcharge)
 			if(do_after(user, 10, target = user) && cell.charge)
 				done_any = TRUE
-				induce(targetCell, coefficient)
-				do_sparks(1, FALSE, TargetAtom)
-				if(targetObject)
-					targetObject.update_appearance()
+				induce(target_cell, coefficient)
+				do_sparks(1, FALSE, target_atom)
+				if(target_object)
+					target_object.update_appearance()
 			else
 				break
 		if(done_any) // Only show a message if we succeeded at least once
-			user.visible_message(span_notice("[user] recharged [TargetAtom]!"), span_notice("You recharged [TargetAtom]!"))
+			user.visible_message(span_notice("[user] recharged [target_atom]!"), span_notice("You recharged [target_atom]!"))
 		recharging = FALSE
 		return TRUE
 	recharging = FALSE
 
 
-/obj/item/inducer/attack(mob/targetMob, mob/living/user)
+/obj/item/inducer/attack(mob/target_mob, mob/living/user)
 	if(user.combat_mode)
 		return ..()
 
 	if(cantbeused(user))
 		return
 
-	if(recharge(targetMob, user))
+	if(recharge(target_mob, user))
 		return
 	return ..()
 
