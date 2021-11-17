@@ -1,6 +1,6 @@
 //Blueshield
 /obj/item/clothing/under/rank/security/blueshield
-	desc = "A expensive designer shirt with snazzy suit pants, complete with a blue tie."
+	desc = "An expensive designer shirt with snazzy suit pants, complete with a blue tie."
 	name = "blueshield's suit"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
@@ -13,17 +13,17 @@
 
 /obj/item/clothing/under/rank/security/blueshield/turtleneck
 	name = "blueshield's skivvy"
-	desc = "A cozier alternative to the normal Blueshield's Suit, made out of expensive all-natural wool."
+	desc = "A cozier alternative to the normal Blueshield's suit. It's made out of an expensive, all-natural wool."
 	icon_state = "bs_turtleneck"
 	fitted = FEMALE_UNIFORM_TOP
 
 /obj/item/clothing/under/rank/security/blueshield/turtleneck/skirt
 	name = "blueshield's skirtleneck"
-	desc = "A alternative to the normal turtleneck, with the pants replaced with a low-cut skirt. It's still made out of expensive all-natural wool."
+	desc = "An alternative to the normal turtleneck with the pants replaced with a low-cut skirt. It's still made out of an expensive, all-natural wool."
 	icon_state = "bs_skirtleneck"
 
 /obj/item/clothing/under/rank/security/blueshield/skirt
-	desc = "A \"tactical\" skirt, seemingly outfitted in Nanotrasen's standard corporate-chic."
+	desc = "A \"tactical\" skirt seemingly outfitted in Nanotrasen's standard corporate-chic."
 	name = "Blueshield's skirt"
 	icon_state = "blueshieldskirt"
 	fitted = FEMALE_UNIFORM_TOP
