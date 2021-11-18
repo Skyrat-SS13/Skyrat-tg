@@ -142,6 +142,12 @@
 		vial.attack_self(user)
 		return TRUE
 
+/obj/item/hypospray/mkii/AltClick(mob/user)
+	. = ..()
+	if(vial)
+		vial.attack_self_secondary(user)
+		return TRUE
+
 /obj/item/hypospray/mkii/emag_act(mob/user)
 	. = ..()
 	if(obj_flags & EMAGGED)
