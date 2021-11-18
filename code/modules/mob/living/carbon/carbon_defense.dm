@@ -491,8 +491,16 @@
 					null, span_hear("You hear a soft patter."), DEFAULT_MESSAGE_RANGE, list(M, src))
 		to_chat(M, span_notice("You pull on [src]'s tail!"))
 		to_chat(src, span_notice("[M] pulls on your tail!"))
+<<<<<<< HEAD
 		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "tailpulled", /datum/mood_event/tailpulled)
 	*/ // SKYRAT EDIT END
+=======
+		if(HAS_TRAIT(src, TRAIT_BADTOUCH)) //How dare they!
+			to_chat(M, span_warning("[src] makes a grumbling noise as you pull on [p_their()] tail."))
+		else
+			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "tailpulled", /datum/mood_event/tailpulled)
+
+>>>>>>> 666fcdbd9cf (Fixes an oversight with tail pulling and the Bad Touch trait (#62784))
 	else
 		SEND_SIGNAL(src, COMSIG_CARBON_HUGGED, M)
 		SEND_SIGNAL(M, COMSIG_CARBON_HUG, M, src)
