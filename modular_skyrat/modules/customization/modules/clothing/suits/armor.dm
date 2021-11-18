@@ -60,8 +60,8 @@
 /obj/item/clothing/suit/armor/vest/warden/syndicate/syndicate_winter
 	name = "master at arms' winter vest"
 	desc = "Brooding. Tasteful. Perfect for never leaving the brig. Copycat. You aren't even in the same sector as Icebox, why are you wearing this?"
-	icon = 'modular_skyrat/modules/syndie_edits/icons/obj/syndievest_winter_items.dmi'
-	worn_icon = 'modular_skyrat/modules/syndie_edits/icons/suit/syndievest_winter.dmi'
+	icon = 'modular_skyrat/modules/syndie_edits/icons/syndievest_winter_items.dmi'
+	worn_icon = 'modular_skyrat/modules/syndie_edits/icons/syndievest_winter.dmi'
 	icon_state = "syndievest_winter_maa"
 	body_parts_covered = CHEST|GROIN
 	cold_protection = CHEST|GROIN|ARMS

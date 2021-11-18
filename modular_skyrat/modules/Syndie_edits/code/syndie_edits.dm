@@ -13,7 +13,7 @@
 	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
-	worn_icon = 'modular_skyrat/modules/syndie_edits/icons/suit/syndievest_winter.dmi'
+	worn_icon = 'modular_skyrat/modules/syndie_edits/icons/syndievest_winter.dmi'
 
 //Syndicate hardsuit changes
 
