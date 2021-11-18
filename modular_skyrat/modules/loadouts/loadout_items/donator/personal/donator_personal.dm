@@ -316,4 +316,4 @@
 /datum/loadout_item/neck/silvercross
 	name = "Silver Cross"
 	item_path = /obj/item/clothing/neck/cross
-	ckeywhitelist = list("M97screwsyourparents")
+	ckeywhitelist = list("m97screwsyourparents")
