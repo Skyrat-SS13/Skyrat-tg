@@ -23,7 +23,8 @@
 	desc = "A new development from DeForest Medical, this hypospray takes 60-unit vials as the drug supply for easy swapping."
 	w_class = WEIGHT_CLASS_TINY
 	var/list/allowed_containers = list(/obj/item/reagent_containers/glass/vial/small)
-	var/small_only = TRUE //Is the hypospray only able to use small vials. Relates to the loaded overlays
+	/// Is the hypospray only able to use small vials. Relates to the loaded overlays
+	var/small_only = TRUE
 	//Inject or spray?
 	var/mode = HYPO_INJECT
 	var/obj/item/reagent_containers/glass/vial/vial
