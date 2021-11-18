@@ -23,6 +23,8 @@
 	desc = "A new development from DeForest Medical, this hypospray takes 60-unit vials as the drug supply for easy swapping."
 	w_class = WEIGHT_CLASS_TINY
 	var/list/allowed_containers = list(/obj/item/reagent_containers/glass/vial/small)
+	/// Is the hypospray only able to use small vials. Relates to the loaded overlays
+	var/small_only = TRUE
 	//Inject or spray?
 	var/mode = HYPO_INJECT
 	var/obj/item/reagent_containers/glass/vial/vial
@@ -50,6 +52,7 @@
 	desc = "The deluxe hypospray can take larger 120-unit vials. It also acts faster and can deliver more reagents per spray."
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	start_vial = /obj/item/reagent_containers/glass/vial/large/deluxe
+	small_only = FALSE
 	inject_wait = DELUXE_WAIT_INJECT
 	spray_wait = DELUXE_WAIT_SPRAY
 	spray_self = DELUXE_SELF_SPRAY
@@ -71,8 +74,10 @@
 	if(!vial.reagents.total_volume)
 		return
 	var/vial_spritetype = "chem-color"
-	if(/obj/item/reagent_containers/glass/vial/large in allowed_containers)
-		vial_spritetype += "-cmo"
+	if(!small_only)
+		vial_spritetype += "[vial.type_suffix]"
+	else
+		vial_spritetype += "-s"
 	var/mutable_appearance/chem_loaded = mutable_appearance('modular_skyrat/modules/hyposprays/icons/hyposprays.dmi', vial_spritetype)
 	chem_loaded.color = vial.chem_color
 	. += chem_loaded
@@ -83,7 +88,10 @@
 
 /obj/item/hypospray/mkii/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)][vial ? "" : "-e"]"
+	var/icon_suffix = "-s"
+	if(!small_only && vial)
+		icon_suffix = vial.type_suffix //Sets the suffix used to the correspoding vial.
+	icon_state = "[initial(icon_state)][vial ? "[icon_suffix]" : ""]"
 
 /obj/item/hypospray/mkii/examine(mob/user)
 	. = ..()
