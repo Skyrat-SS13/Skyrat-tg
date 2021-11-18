@@ -73,8 +73,10 @@
 	if(!vial.reagents.total_volume)
 		return
 	var/vial_spritetype = "chem-color"
-	if(/obj/item/reagent_containers/glass/vial/large in allowed_containers)
-		vial_spritetype += "-cmo"
+	if(!small_only) //Can the hyposray handle more than small vials?
+		vial_spritetype += "[vial.type_suffix]"
+	else
+		vial_spritetype += "-s"
 	var/mutable_appearance/chem_loaded = mutable_appearance('modular_skyrat/modules/hyposprays/icons/hyposprays.dmi', vial_spritetype)
 	chem_loaded.color = vial.chem_color
 	. += chem_loaded
