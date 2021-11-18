@@ -86,6 +86,7 @@
 	var/list/extreme_aroused_thoughts = list("You need to fuck someone!", "You're bursting with sexual tension!", "You can't get sex off your mind!")
 
 /datum/reagent/drug/aphrodisiac/crocin/hexacrocin/life_effects(mob/living/carbon/human/exposed_mob)
+	. = ..()
 	if(prob(thought_probability) && current_cycle > 25)
 		var/displayed_extreme_thought = pick(extreme_aroused_thoughts)
 		to_chat(exposed_mob, span_purple("[displayed_extreme_thought]"))
@@ -183,6 +184,7 @@
 	var/reagent_reduction_amount = 20
 
 /datum/reagent/drug/aphrodisiac/camphor/pentacamphor/life_effects(mob/living/carbon/human/exposed_mob)
+	. = ..()
 	if(exposed_mob.reagents.has_reagent(/datum/reagent/drug/aphrodisiac/crocin))
 		exposed_mob.reagents.remove_reagent(/datum/reagent/drug/aphrodisiac/crocin, reagent_reduction_amount)
 	if(exposed_mob.reagents.has_reagent(/datum/reagent/drug/aphrodisiac/crocin/hexacrocin))
