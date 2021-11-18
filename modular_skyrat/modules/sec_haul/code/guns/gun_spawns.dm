@@ -132,4 +132,5 @@
 	guns = list(
 		/obj/item/gun/ballistic/automatic/c20r/unrestricted,
 		/obj/item/gun/ballistic/automatic/m90,
+		/obj/item/gun/ballistic/automatic/sniper_rifle/modular,
 	)
