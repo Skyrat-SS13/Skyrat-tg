@@ -5,7 +5,8 @@
 	icon_state = "hypovial"
 	spillable = FALSE
 	volume = 10
-	var/type_suffix = "-s"//The overlay texture that the hypovial uses when loading textures
+	/// The suffix of the overlay texture that the hypovial uses when loading textures.
+	var/type_suffix = "-s"
 	possible_transfer_amounts = list(1,2,5,10)
 	fill_icon_thresholds = list(10, 25, 50, 75, 100)
 	var/chem_color //Used for hypospray overlay
