@@ -136,7 +136,7 @@
 		insert_vial(used_item, user)
 		return TRUE
 
-/obj/item/hypospray/mkii/AltClick(mob/user)
+/obj/item/hypospray/mkii/attack_self(mob/user)
 	. = ..()
 	if(vial)
 		vial.attack_self(user)
@@ -218,7 +218,7 @@
 	to_chat(user, span_notice("You [fp_verb] [vial.amount_per_transfer_from_this] units of the solution. The hypospray's cartridge now contains [vial.reagents.total_volume] units."))
 	update_appearance()
 
-/obj/item/hypospray/mkii/attack_self(mob/living/user)
+/obj/item/hypospray/mkii/attack_self_secondary(mob/living/user)
 	if(user)
 		if(user.incapacitated())
 			return
