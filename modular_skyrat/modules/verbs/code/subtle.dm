@@ -14,6 +14,7 @@
 
 /datum/emote/living/subtle/run_emote(mob/user, params, type_override = null)
 	var/subtle_message
+	var/subtle_emote = params
 	if(is_banned_from(user, "emote"))
 		to_chat(user, "You cannot send subtle emotes (banned).")
 		return FALSE
@@ -21,7 +22,7 @@
 		to_chat(user, "You cannot send IC messages (muted).")
 		return FALSE
 	else if(!params)
-		var/subtle_emote = stripped_multiline_input(user, "Choose an emote to display.", "Subtle", null, MAX_MESSAGE_LEN)
+		subtle_emote = stripped_multiline_input(user, "Choose an emote to display.", "Subtle", null, MAX_MESSAGE_LEN)
 		if(subtle_emote && !check_invalid(user, subtle_emote))
 			var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
 			switch(type)
@@ -46,7 +47,7 @@
 	var/prefix_log_message = "(SUBTLE) [subtle_message]"
 	user.log_message(prefix_log_message, LOG_EMOTE)
 
-	var/space = should_have_space_before_emote(html_decode(params)[1]) ? " " : ""
+	var/space = should_have_space_before_emote(html_decode(subtle_emote)[1]) ? " " : ""
 
 	subtle_message = span_emote("<b>[user]</b>[space]<i>[user.say_emphasis(subtle_message)]</i>")
 
@@ -82,6 +83,7 @@
 
 /datum/emote/living/subtler/run_emote(mob/user, params, type_override = null)
 	var/subtler_message
+	var/subtler_emote = params
 	if(is_banned_from(user, "emote"))
 		to_chat(user, "You cannot send subtle emotes (banned).")
 		return FALSE
@@ -89,8 +91,8 @@
 		to_chat(user, "You cannot send IC messages (muted).")
 		return FALSE
 	else if(!params)
-		var/subtle_emote = stripped_multiline_input(user, "Choose an emote to display.", "Subtler" , null, MAX_MESSAGE_LEN)
-		if(subtle_emote && !check_invalid(user, subtle_emote))
+		subtler_emote = stripped_multiline_input(user, "Choose an emote to display.", "Subtler" , null, MAX_MESSAGE_LEN)
+		if(subtler_emote && !check_invalid(user, subtler_emote))
 			var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
 			switch(type)
 				if("Visible")
@@ -100,7 +102,7 @@
 				else
 					alert("Unable to use this emote, must be either hearable or visible.")
 					return
-			subtler_message = subtle_emote
+			subtler_message = subtler_emote
 		else
 			return FALSE
 	else
@@ -113,7 +115,7 @@
 
 	user.log_message(subtler_message, LOG_SUBTLER)
 
-	var/space = should_have_space_before_emote(html_decode(params)[1]) ? " " : ""
+	var/space = should_have_space_before_emote(html_decode(subtler_emote)[1]) ? " " : ""
 
 	subtler_message = span_emote("<b>[user]</b>[space]<i>[user.say_emphasis(subtler_message)]</i>")
 
