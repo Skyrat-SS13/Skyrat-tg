@@ -8,7 +8,7 @@
 	for(var/obj/item/bodypart/L in src.bodyparts)
 		if(L.status == BODYPART_ROBOTIC)
 			if(!informed)
-				to_chat(src, "<span class='userdanger'>You feel a sharp pain as your robotic limbs overload.</span>")
+				to_chat(src, span_userdanger("You feel a sharp pain as your robotic limbs overload."))
 				informed = TRUE
 			switch(severity)
 				if(1)

@@ -379,7 +379,7 @@
 							if(!(C.shoes && C.shoes.clothing_flags & NOSLIP))
 								step(C, dir)
 								if(prob(60) && C.body_position != LYING_DOWN)
-									to_chat(C, "<span class='userdanger'>The current knocks you down!</span>")
+									to_chat(C, span_userdanger("The current knocks you down!"))
 									C.Paralyze(60)
 						else
 							step(AM, dir)
@@ -419,7 +419,7 @@
 		if(iscarbon(M))
 			var/mob/living/carbon/C = M
 			if(C.wear_mask && C.wear_mask.flags_cover & MASKCOVERSMOUTH)
-				to_chat(C, "<span class='userdanger'>You fall in the water!</span>")
+				to_chat(C, span_userdanger("You fall in the water!"))
 			else
 				var/datum/reagents/tempr = take_reagents_flat(CHOKE_REAGENTS_INGEST_ON_FALL_AMOUNT)
 				tempr.trans_to(C, tempr.total_volume, methods = INGEST)
@@ -427,9 +427,9 @@
 				C.adjustOxyLoss(5)
 				//C.emote("cough")
 				INVOKE_ASYNC(C, /mob.proc/emote, "cough")
-				to_chat(C, "<span class='userdanger'>You fall in and swallow some water!</span>")
+				to_chat(C, span_userdanger("You fall in and swallow some water!"))
 		else
-			to_chat(M, "<span class='userdanger'>You fall in the water!</span>")
+			to_chat(M, span_userdanger("You fall in the water!"))
 
 /obj/effect/abstract/liquid_turf/Initialize()
 	. = ..()

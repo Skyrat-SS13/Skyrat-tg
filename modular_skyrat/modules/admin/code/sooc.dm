@@ -10,7 +10,7 @@ GLOBAL_LIST_EMPTY(ckey_to_sooc_name)
 	set category = "OOC"
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 
 	if(!mob)
@@ -20,16 +20,16 @@ GLOBAL_LIST_EMPTY(ckey_to_sooc_name)
 	if(!holder)
 		var/job = mob?.mind.assigned_role.title
 		if(!job || !job_lookup[job])
-			to_chat(src, "<span class='danger'>You're not a security role!</span>")
+			to_chat(src, span_danger("You're not a security role!"))
 			return
 		if(!GLOB.sooc_allowed)
-			to_chat(src, "<span class='danger'>SOOC is globally muted.</span>")
+			to_chat(src, span_danger("SOOC is globally muted."))
 			return
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")
+			to_chat(src, span_danger("You cannot use OOC (muted)."))
 			return
 	if(is_banned_from(ckey, "OOC"))
-		to_chat(src, "<span class='danger'>You have been banned from OOC.</span>")
+		to_chat(src, span_danger("You have been banned from OOC."))
 		return
 	if(QDELETED(src))
 		return
@@ -43,7 +43,7 @@ GLOBAL_LIST_EMPTY(ckey_to_sooc_name)
 	msg = emoji_parse(msg)
 
 	if(!(prefs.chat_toggles & CHAT_OOC))
-		to_chat(src, "<span class='danger'>You have OOC muted.</span>")
+		to_chat(src, span_danger("You have OOC muted."))
 		return
 
 	mob.log_talk(raw_msg, LOG_OOC, tag="SOOC")
@@ -76,7 +76,7 @@ GLOBAL_LIST_EMPTY(ckey_to_sooc_name)
 		var/mode = listeners[c]
 		var/color = (!anon && CONFIG_GET(flag/allow_admin_ooccolor) && C.prefs?.read_preference(/datum/preference/color/ooc_color)) ? C.prefs?.read_preference(/datum/preference/color/ooc_color) : GLOB.SOOC_COLOR
 		var/name = (mode == SOOC_LISTEN_ADMIN && anon) ? "([key])[keyname]" : keyname
-		to_chat(C, "<span class='oocplain'><font color='[color]'><b><span class='prefix'>SOOC:</span> <EM>[name]:</EM> <span class='message linkify'>[msg]</span></b></font></span>")
+		to_chat(C, span_oocplain("<font color='[color]'><b><span class='prefix'>SOOC:</span> <EM>[name]:</EM> <span class='message linkify'>[msg]</span></b></font>"))
 
 #undef SOOC_LISTEN_PLAYER
 #undef SOOC_LISTEN_ADMIN
@@ -102,7 +102,7 @@ GLOBAL_LIST_EMPTY(ckey_to_sooc_name)
 					listeners[M.client] = TRUE
 	for(var/c in listeners)
 		var/client/C = c
-		to_chat(C, "<span class='oocplain'><B>The SOOC channel has been globally [GLOB.sooc_allowed ? "enabled" : "disabled"].</B></span>")
+		to_chat(C, span_oocplain("<B>The SOOC channel has been globally [GLOB.sooc_allowed ? "enabled" : "disabled"].</B>"))
 
 /datum/admins/proc/togglesooc()
 	set category = "Server"
