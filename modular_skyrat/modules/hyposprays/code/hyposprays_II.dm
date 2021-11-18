@@ -23,6 +23,7 @@
 	desc = "A new development from DeForest Medical, this hypospray takes 60-unit vials as the drug supply for easy swapping."
 	w_class = WEIGHT_CLASS_TINY
 	var/list/allowed_containers = list(/obj/item/reagent_containers/glass/vial/small)
+	var/small_only = TRUE //Is the hypospray only able to use small vials. Relates to the loaded overlays
 	//Inject or spray?
 	var/mode = HYPO_INJECT
 	var/obj/item/reagent_containers/glass/vial/vial
@@ -50,6 +51,7 @@
 	desc = "The deluxe hypospray can take larger 120-unit vials. It also acts faster and can deliver more reagents per spray."
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	start_vial = /obj/item/reagent_containers/glass/vial/large/deluxe
+	small_only = FALSE
 	inject_wait = DELUXE_WAIT_INJECT
 	spray_wait = DELUXE_WAIT_SPRAY
 	spray_self = DELUXE_SELF_SPRAY
@@ -83,7 +85,10 @@
 
 /obj/item/hypospray/mkii/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)][vial ? "" : "-e"]"
+	var/icon_suffix = "-s" //The default icon for a small vial.
+	if(!small_only && vial)//Is the hypospray capable of loading more than small vials and is there a vial inside?
+		icon_suffix = vial.type_suffix //Sets the suffix used to the correspoding vial.
+	icon_state = "[initial(icon_state)][vial ? "[icon_suffix]" : ""]"
 
 /obj/item/hypospray/mkii/examine(mob/user)
 	. = ..()

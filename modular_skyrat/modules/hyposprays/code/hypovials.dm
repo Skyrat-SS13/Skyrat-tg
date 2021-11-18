@@ -5,6 +5,7 @@
 	icon_state = "hypovial"
 	spillable = FALSE
 	volume = 10
+	var/type_suffix = "-s"//The overlay texture that the hypovial uses when loading textures
 	possible_transfer_amounts = list(1,2,5,10)
 	fill_icon_thresholds = list(10, 25, 50, 75, 100)
 	var/chem_color //Used for hypospray overlay
@@ -53,6 +54,7 @@
 	icon_state = "hypoviallarge"
 	desc = "A large, 120u capacity vial that fits only in the most deluxe hyposprays."
 	volume = 120
+	type_suffix = "-l"
 	possible_transfer_amounts = list(1,2,5,10,20,30,40,50,100,120)
 
 //Hypos that are in the CMO's kit round start
