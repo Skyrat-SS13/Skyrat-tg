@@ -114,6 +114,9 @@
 	overdose_pref_datum = /datum/preference/toggle/erp/aphro
 	var/drugginess_amount = 5
 	var/drugginess_chance = 7
+	var/arousal_adjust_amount = 0.5
+	var/pleasure_adjust_amount = 0.3
+	var/pain_adjust_amount = -0.5
 
 /datum/reagent/drug/aphrodisiac/dopamine/on_mob_add(mob/living/carbon/human/exposed_mob)
 	if(!(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/aphro)))
@@ -134,9 +137,9 @@
 /datum/reagent/drug/aphrodisiac/dopamine/overdose_effects(mob/living/carbon/human/exposed_mob)
 	if(!(exposed_mob.hallucination < volume && prob(20)))
 		return ..()
-	exposed_mob.adjustArousal(0.5)
-	exposed_mob.adjustPleasure(0.3)
-	exposed_mob.adjustPain(-0.5)
+	exposed_mob.adjustArousal(arousal_adjust_amount)
+	exposed_mob.adjustPleasure(pleasure_adjust_amount)
+	exposed_mob.adjustPain(pain_adjust_amount)
 	if(prob(2))
 		exposed_mob.emote(pick("moan","twitch_s"))
 
