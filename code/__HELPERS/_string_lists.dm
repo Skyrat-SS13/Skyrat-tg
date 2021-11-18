@@ -30,8 +30,15 @@ GLOBAL_VAR(string_filename_current_key)
 /proc/strings_subkey_lookup(match, group1)
 	return pick_list(GLOB.string_filename_current_key, group1)
 
+<<<<<<< HEAD
 /proc/load_strings_file(filepath)
 	filepath = sanitize_filepath(filepath) // in case we're called directly
+=======
+/proc/load_strings_file(filepath, directory = STRING_DIRECTORY)
+	if(IsAdminAdvancedProcCall())
+		return
+
+>>>>>>> 9da15545d2f (Fixes loading scars file (#62928))
 	GLOB.string_filename_current_key = filepath
 	if(filepath in GLOB.string_cache)
 		return //no work to do
