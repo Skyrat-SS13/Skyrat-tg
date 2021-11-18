@@ -73,7 +73,7 @@
 	if(!vial.reagents.total_volume)
 		return
 	var/vial_spritetype = "chem-color"
-	if(!small_only) //Can the hyposray handle more than small vials?
+	if(!small_only)
 		vial_spritetype += "[vial.type_suffix]"
 	else
 		vial_spritetype += "-s"
@@ -87,8 +87,8 @@
 
 /obj/item/hypospray/mkii/update_icon_state()
 	. = ..()
-	var/icon_suffix = "-s" //The default icon for a small vial.
-	if(!small_only && vial)//Is the hypospray capable of loading more than small vials and is there a vial inside?
+	var/icon_suffix = "-s"
+	if(!small_only && vial)
 		icon_suffix = vial.type_suffix //Sets the suffix used to the correspoding vial.
 	icon_state = "[initial(icon_state)][vial ? "[icon_suffix]" : ""]"
 
