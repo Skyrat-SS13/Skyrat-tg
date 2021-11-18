@@ -72,7 +72,7 @@
                     /obj/item/storage/box/medipens)
 	crate_name = "medipen crate"
 
-/datum/supply_pack/medical/hardsuit_mDedical
+/datum/supply_pack/medical/hardsuit_medical
 	name = "Medical Hardsuit Crate"
 	desc = "Contains a single hardsuit, built to standard medical specifications."
 	cost = CARGO_CRATE_VALUE * 13
