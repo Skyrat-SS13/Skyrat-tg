@@ -6247,6 +6247,7 @@
 /area/maintenance/fore)
 "aCd" = (
 /obj/machinery/airalarm/directional/north,
+/obj/machinery/cryopod,
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
 "aCe" = (
@@ -11374,7 +11375,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/effect/turf_decal/trimline/brown/filled/end,
-/obj/machinery/computer/cargo/request{
+/obj/machinery/computer/department_orders/medical{
 	dir = 8
 	},
 /turf/open/floor/iron,
@@ -35209,7 +35210,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/trinary/filter/flipped/critical{
 	dir = 8;
-	filter_type = "n2"
+	filter_type = list(/datum/gas/nitrogen)
 	},
 /turf/open/floor/engine,
 /area/engineering/main)
@@ -38291,6 +38292,9 @@
 	},
 /obj/machinery/light_switch{
 	pixel_y = -22
+	},
+/obj/machinery/cryopod{
+	dir = 1
 	},
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
@@ -44278,8 +44282,8 @@
 /area/ai_monitored/command/nuke_storage)
 "kCD" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
-/obj/machinery/computer/cargo/request,
 /obj/effect/turf_decal/stripes/white/line,
+/obj/machinery/computer/department_orders/service,
 /turf/open/floor/wood,
 /area/hallway/secondary/service)
 "kCI" = (
@@ -44727,14 +44731,14 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/computer/cargo/request{
-	dir = 8
-	},
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 2.9
 	},
 /obj/effect/turf_decal/tile/brown/full,
+/obj/machinery/computer/department_orders/engineering{
+	dir = 8
+	},
 /turf/open/floor/iron/smooth_large,
 /area/engineering/break_room)
 "kYN" = (
@@ -48053,6 +48057,9 @@
 "ooQ" = (
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
+/obj/machinery/cryopod{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
 "opE" = (
@@ -48452,6 +48459,19 @@
 	},
 /turf/open/floor/iron/freezer,
 /area/maintenance/starboard/fore)
+"oEv" = (
+/obj/effect/turf_decal/delivery/white{
+	color = "#00ff00";
+	name = "green"
+	},
+/obj/machinery/computer/cryopod{
+	pixel_x = -32
+	},
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/security/prison)
 "oEV" = (
 /obj/structure/fence/corner{
 	dir = 1
@@ -49386,6 +49406,7 @@
 /area/space/nearstation)
 "pAr" = (
 /obj/machinery/light/directional/north,
+/obj/machinery/cryopod,
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
 "pAx" = (
@@ -51263,6 +51284,9 @@
 /obj/effect/turf_decal/delivery/white{
 	color = "#00ff00";
 	name = "green"
+	},
+/obj/machinery/cryopod{
+	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/security/prison)
@@ -53212,6 +53236,9 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
+/obj/machinery/cryopod{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
 "tqp" = (
@@ -53263,6 +53290,12 @@
 /turf/open/floor/engine,
 /area/science/cytology)
 "tti" = (
+/obj/machinery/computer/cryopod{
+	pixel_x = -32
+	},
+/obj/machinery/cryopod{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
 "ttn" = (
@@ -56124,7 +56157,7 @@
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 6
 	},
-/obj/machinery/computer/cargo/request,
+/obj/machinery/computer/department_orders/security,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "vWE" = (
@@ -56380,10 +56413,10 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/siding/purple,
-/obj/machinery/computer/cargo/request{
+/obj/structure/railing,
+/obj/machinery/computer/department_orders/science{
 	dir = 1
 	},
-/obj/structure/railing,
 /turf/open/floor/iron/textured_large,
 /area/science/research)
 "whr" = (
@@ -83078,7 +83111,7 @@ mFq
 dJo
 ixi
 rrE
-rrE
+oEv
 rrE
 acd
 une

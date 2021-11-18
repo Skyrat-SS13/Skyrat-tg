@@ -164,6 +164,9 @@
 	dir = 8
 	},
 /obj/machinery/airalarm/directional/west,
+/obj/machinery/cryopod{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/security/prison)
 "aaI" = (
@@ -1346,6 +1349,9 @@
 	dir = 4
 	},
 /obj/effect/landmark/start/hangover,
+/obj/machinery/computer/cryopod{
+	pixel_y = 28
+	},
 /turf/open/floor/iron/cafeteria,
 /area/commons/locker)
 "afH" = (
@@ -1556,12 +1562,12 @@
 /turf/open/floor/iron/dark,
 /area/science/xenobiology)
 "agl" = (
-/obj/machinery/computer/cargo/request,
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 5
 	},
 /obj/machinery/airalarm/directional/north,
 /obj/machinery/light/directional/east,
+/obj/machinery/computer/department_orders/service,
 /turf/open/floor/iron,
 /area/hallway/primary/port)
 "agm" = (
@@ -1609,7 +1615,7 @@
 /obj/effect/turf_decal/trimline/red/filled/warning{
 	dir = 6
 	},
-/obj/machinery/computer/cargo/request,
+/obj/machinery/computer/department_orders/security,
 /turf/open/floor/iron,
 /area/security/office)
 "agx" = (
@@ -11422,6 +11428,9 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/machinery/cryopod{
+	dir = 8
+	},
 /turf/open/floor/iron/cafeteria,
 /area/commons/locker)
 "aUE" = (
@@ -15872,6 +15881,9 @@
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
+	},
+/obj/machinery/cryopod{
+	dir = 4
 	},
 /turf/open/floor/iron/cafeteria,
 /area/commons/locker)
@@ -45547,7 +45559,7 @@
 "oVv" = (
 /obj/machinery/atmospherics/components/trinary/filter/flipped/critical{
 	dir = 8;
-	filter_type = "n2"
+	filter_type = list(/datum/gas/nitrogen)
 	},
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
@@ -48201,6 +48213,12 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 8
+	},
+/obj/machinery/computer/cryopod{
+	pixel_x = -32
+	},
+/obj/machinery/cryopod{
+	dir = 4
 	},
 /turf/open/floor/iron,
 /area/security/prison)
@@ -54570,7 +54588,7 @@
 "sMu" = (
 /obj/effect/turf_decal/trimline/brown/filled/line,
 /obj/effect/turf_decal/trimline/blue/filled/warning,
-/obj/machinery/computer/cargo/request,
+/obj/machinery/computer/department_orders/medical,
 /turf/open/floor/iron,
 /area/medical/medbay/central)
 "sMB" = (
@@ -67175,9 +67193,6 @@
 /turf/open/openspace,
 /area/hallway/primary/tram/center)
 "xLP" = (
-/obj/machinery/computer/cargo/request{
-	dir = 8
-	},
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 5
 	},
@@ -67186,6 +67201,9 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/computer/department_orders/engineering{
+	dir = 1
 	},
 /turf/open/floor/iron,
 /area/engineering/break_room)
@@ -67501,9 +67519,6 @@
 	dir = 1;
 	pixel_y = 1
 	},
-/obj/machinery/computer/cargo/request{
-	dir = 8
-	},
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/brown{
 	dir = 8
@@ -67513,6 +67528,9 @@
 	},
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
+	},
+/obj/machinery/computer/department_orders/science{
+	dir = 8
 	},
 /turf/open/floor/iron,
 /area/science/research)
@@ -89252,10 +89270,10 @@ aRZ
 gmg
 aRW
 afF
-aUD
-aUD
+tfY
+tfY
 aAh
-aUD
+tfY
 ayq
 aKl
 uJR
@@ -89509,10 +89527,10 @@ aSb
 gmg
 arc
 suF
-cKs
-cKs
-cKs
 aUD
+aUD
+aUD
+tfY
 sZY
 aKl
 uJR
@@ -89766,10 +89784,10 @@ aSd
 joB
 aBx
 suF
+cKs
+cKs
+cKs
 tfY
-tfY
-tfY
-aUD
 aks
 aKl
 uJR
@@ -90279,7 +90297,7 @@ aOP
 kKP
 itG
 arc
-aUD
+tfY
 aau
 kTM
 aau
@@ -90536,10 +90554,10 @@ aRE
 aSb
 mgC
 aBx
-aUD
-aUD
-aUD
-aUD
+tfY
+tfY
+tfY
+tfY
 jdj
 aYM
 aKl
@@ -90793,7 +90811,7 @@ aRE
 aSd
 kaY
 aBx
-aUD
+tfY
 aDH
 aDH
 aDH
@@ -91050,7 +91068,7 @@ aRE
 aSf
 itG
 arc
-aUD
+tfY
 aDH
 aDH
 aDH
@@ -91309,7 +91327,7 @@ itG
 aRW
 aya
 qSd
-aUD
+tfY
 aAh
 aUL
 adR

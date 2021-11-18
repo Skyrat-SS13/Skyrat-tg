@@ -3,7 +3,7 @@
 /obj/item/gun/ballistic/automatic/pistol/m45a5
 	name = "\improper M45A5 Elite"
 	desc = "A hand-assembled custom sporting handgun by Alpha Centauri Armories, chambered in .460 Rowland Magnum. This model has a highly modular structure, to acommodate for ammo costs."
-	icon = 'modular_skyrat/modules/blueshield/icons/obj/guns/M45A5.dmi'
+	icon = 'modular_skyrat/modules/blueshield/icons/M45A5.dmi'
 	icon_state = "m45a5"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/m45a5
@@ -22,7 +22,7 @@
 /obj/item/ammo_box/magazine/m45a5
 	name = "ACA modular magazine"
 	desc = "A magazine able to chamber .460 Rowland Magnun. Made for the M45A5, as it's the only available sidearm with a smart multi-caliber mechanism."
-	icon = 'modular_skyrat/modules/blueshield/icons/obj/guns/M45A5.dmi'
+	icon = 'modular_skyrat/modules/blueshield/icons/M45A5.dmi'
 	icon_state = "rowlandmodular"
 	ammo_type = /obj/item/ammo_casing/b460
 	caliber = CALIBER_460

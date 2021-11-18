@@ -14515,7 +14515,7 @@
 /turf/open/floor/iron/white,
 /area/medical/surgery)
 "cXm" = (
-/obj/machinery/computer/cargo/request{
+/obj/machinery/computer/department_orders/science{
 	dir = 4
 	},
 /turf/open/floor/iron,
@@ -18166,7 +18166,7 @@
 /obj/effect/turf_decal/trimline/red/filled/warning{
 	dir = 8
 	},
-/obj/machinery/computer/cargo/request{
+/obj/machinery/computer/department_orders/security{
 	dir = 8
 	},
 /turf/open/floor/iron,
@@ -18500,6 +18500,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
+/obj/machinery/cryopod{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/commons/fitness/recreation)
 "elk" = (
@@ -26798,13 +26801,13 @@
 /turf/open/floor/iron,
 /area/commons/fitness/recreation)
 "hoa" = (
-/obj/machinery/computer/cargo/request,
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 4
 	},
 /obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 4
 	},
+/obj/machinery/computer/department_orders/engineering,
 /turf/open/floor/iron,
 /area/engineering/break_room)
 "hox" = (
@@ -32174,6 +32177,9 @@
 /area/security/prison)
 "jsJ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/cryopod{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/commons/fitness/recreation)
 "jsK" = (
@@ -38343,7 +38349,7 @@
 /area/science/misc_lab)
 "lGw" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/computer/cargo/request{
+/obj/machinery/computer/department_orders/service{
 	dir = 8
 	},
 /turf/open/floor/iron,
@@ -38415,6 +38421,9 @@
 "lHS" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/machinery/airalarm/directional/east,
+/obj/machinery/cryopod{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/commons/fitness/recreation)
 "lIb" = (
@@ -39553,6 +39562,9 @@
 /area/hallway/primary/central)
 "mbU" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/machinery/cryopod{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/commons/fitness/recreation)
 "mce" = (
@@ -40181,6 +40193,9 @@
 "mnI" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 6
+	},
+/obj/machinery/cryopod{
+	dir = 1
 	},
 /turf/open/floor/iron/white,
 /area/security/prison)
@@ -50453,7 +50468,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/components/trinary/filter/flipped/critical{
-	filter_type = "n2"
+	filter_type = list(/datum/gas/nitrogen)
 	},
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
@@ -57887,7 +57902,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
 	},
-/obj/machinery/computer/cargo/request{
+/obj/machinery/computer/department_orders/medical{
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
@@ -68416,6 +68431,12 @@
 /obj/machinery/iv_drip,
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
+"wkZ" = (
+/obj/machinery/computer/cryopod{
+	pixel_y = 28
+	},
+/turf/open/floor/iron/dark,
+/area/commons/fitness/recreation)
 "wli" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Medbay Maintenance";
@@ -68823,6 +68844,12 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/central)
+"wsX" = (
+/obj/machinery/cryopod{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/commons/fitness/recreation)
 "wsZ" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
@@ -73050,6 +73077,18 @@
 /obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/plating,
 /area/maintenance/starboard/secondary)
+"xSW" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 10
+	},
+/obj/machinery/cryopod{
+	dir = 1
+	},
+/obj/machinery/computer/cryopod{
+	pixel_y = -30
+	},
+/turf/open/floor/iron/white,
+/area/security/prison)
 "xTe" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/virology/glass{
@@ -97069,7 +97108,7 @@ lmr
 uzt
 lmr
 jNH
-nPZ
+xSW
 aio
 aol
 anb
@@ -109395,7 +109434,7 @@ aaa
 nYJ
 aaa
 ebG
-uBw
+wkZ
 uBw
 gsL
 dms
@@ -109652,8 +109691,8 @@ aaa
 lMJ
 aaa
 tdI
-uBw
-uBw
+wsX
+wsX
 lHS
 ndz
 mps

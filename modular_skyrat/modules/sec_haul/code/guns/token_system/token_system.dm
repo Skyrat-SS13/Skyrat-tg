@@ -32,7 +32,7 @@
 
 /obj/machinery/gun_vendor/proc/RedeemToken(obj/item/armament_token/token, mob/redeemer)
 	if(seclevel2num(get_security_level()) < token.minimum_sec_level)
-		to_chat(redeemer, "<span class='redtext'>Warning, this holochip is locked to [num2seclevel(token.minimum_sec_level)]!</span>")
+		to_chat(redeemer, span_redtext("Warning, this holochip is locked to [num2seclevel(token.minimum_sec_level)]!"))
 		message_admins("ARMAMENT LOG: [redeemer] attempted to redeem a [token.name] on the incorrect security level!")
 		return
 	var/list/radial_build = token.get_available_gunsets()
@@ -47,9 +47,9 @@
 	var/obj/item/storage/box/gunset/dispensed = new chosen_gunset(src.loc)
 
 	if(redeemer.CanReach(src) && redeemer.put_in_hands(dispensed))
-		to_chat(redeemer, "<span class='notice'>You take [dispensed] out of the slot.</span>")
+		to_chat(redeemer, span_notice("You take [dispensed] out of the slot."))
 	else
-		to_chat(redeemer, "<span class='warning'>[dispensed] falls onto the floor!</span>")
+		to_chat(redeemer, span_warning("[dispensed] falls onto the floor!"))
 	playsound(src, 'sound/machines/machine_vend.ogg', 50, TRUE, extrarange = -3)
 	to_chat(redeemer, "Thank you for redeeming your token. Remember. Do NOT take lethal ammo without permission or good reasoning.")
 	SSblackbox.record_feedback("tally", "armament_token_redeemed", 1, dispensed)
