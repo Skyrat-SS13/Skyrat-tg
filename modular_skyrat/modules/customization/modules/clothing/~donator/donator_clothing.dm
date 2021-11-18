@@ -1150,7 +1150,7 @@
 //Donation reward for Cherno_00
 /obj/item/clothing/head/ushanka/frosty
 	name = "blue ushanka"
-	desc = "A dark blue ushanka with a hand stitched snowflake on the front. Cool the the touch."
+	desc = "A dark blue ushanka with a hand-stitched snowflake on the front. Cool to the touch."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "fushankadown"
