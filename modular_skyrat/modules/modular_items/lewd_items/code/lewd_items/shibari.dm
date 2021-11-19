@@ -9,16 +9,10 @@
 
 	///color
 	var/current_color = "pink"
-	///color_changed
+	///if the thing's color has been changed or not
 	var/color_changed = FALSE
-	///ropes_designs
+	///cache for radial menu
 	var/static/list/ropes_designs
-
-	///torso_styles
-	var/list/torso_styles = list(
-		"Torso",
-		"Groin"
-	)
 
 	///Things this rope can transform into when it's tied to a person
 	var/obj/item/clothing/under/shibari/torso/shibari_body

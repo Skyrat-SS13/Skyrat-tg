@@ -13,9 +13,9 @@
 
 	///colors
 	var/current_color = "pink"
-	///tightness
+	///tightness of the ropes can be low, medium and hard.
 	var/tight = "low"
-	///rope amount
+	///rope amount yielded from this apparel
 	var/rope_amount = 1
 
 /obj/item/clothing/under/shibari/Destroy(force)
@@ -149,8 +149,10 @@
 	strip_delay = 100
 	breakouttime = 100
 	item_flags = DROPDEL
+	///color
 	var/current_color = "pink"
-	var/tight = "low" //can be low, medium and hard.
+	///tightness of the ropes can be low, medium and hard.
+	var/tight = "low"
 
 /obj/item/clothing/gloves/shibari_hands/Destroy()
 	var/obj/item/stack/shibari_rope/ropes = new(get_turf(src))
@@ -212,7 +214,9 @@
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 	slowdown = 4
 	item_flags = DROPDEL
+	///color
 	var/current_color = "pink"
+	///tightness of the ropes can be low, medium and hard.
 	var/tight = "low"
 
 /obj/item/clothing/shoes/shibari_legs/Destroy()
