@@ -9,10 +9,14 @@
 	icon_state = "shibari_stand"
 	max_buckled_mobs = 1
 	max_integrity = 75
+	///Overlays for ropes
 	var/static/mutable_appearance/shibari_rope_overlay
 	var/static/mutable_appearance/shibari_rope_overlay_behind
 	var/static/mutable_appearance/shibari_shadow_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi', "shibari_shadow", OBJ_LAYER)
+
 	var/mob/living/carbon/human/current_mob = null
+
+	///The rope inside the stand, that's actually tying the person to it
 	var/obj/item/stack/shibari_rope/ropee = null
 	var/current_color = "pink"
 

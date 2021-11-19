@@ -7,7 +7,7 @@
 	merge_type = /obj/item/stack/shibari_rope
 	singular_name = "ropes"
 
-	//customisation vars
+	///customisation vars
 	var/current_color = "pink"
 	var/color_changed = FALSE
 	var/static/list/ropes_designs
@@ -17,14 +17,12 @@
 		"Groin"
 	)
 
-	//SOME IMPORTANT STUFF
+	///Things this rope can transform into when it's tied to a person
 	var/obj/item/clothing/under/shibari/torso/shibari_body
 	var/obj/item/clothing/under/shibari/groin/shibari_groin
 	var/obj/item/clothing/under/shibari/full/shibari_fullbody
 	var/obj/item/clothing/shoes/shibari_legs/shibari_legs
 	var/obj/item/clothing/gloves/shibari_hands/shibari_hands
-
-//customisation stuff
 
 //create radial menu
 /obj/item/stack/shibari_rope/proc/populate_ropes_designs()
