@@ -40,7 +40,7 @@
 
 //to change model
 /obj/item/stack/shibari_rope/AltClick(mob/user, obj/item/thing)
-	if(color_changed == FALSE)
+	if(!color_changed)
 		. = ..()
 		if(.)
 			return

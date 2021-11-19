@@ -609,10 +609,6 @@
 /datum/mood_event/subspace
 	description = span_purple("Everything is so woozy... Pain feels so... Awesome.\n")
 	mood_change = 4
-
-//////////////////////
-///ROPEBUNNY EFFECT///
-//////////////////////
 /datum/status_effect/ropebunny
 	id = "ropebunny"
 	tick_interval = 10
@@ -630,7 +626,7 @@
 	SEND_SIGNAL(target, COMSIG_CLEAR_MOOD_EVENT, "ropebunny", /datum/mood_event/ropebunny)
 
 /datum/mood_event/ropebunny
-	description = "<font color=purple>I'm tied! Cannot move! These ropes... Ah!~</font>\n"
+	description = span_purple("I'm tied! Cannot move! These ropes... Ah!~")
 	mood_change = 5
 
 ///////////////////////

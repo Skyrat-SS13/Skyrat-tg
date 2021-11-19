@@ -1,7 +1,3 @@
-/////////////////////
-//s-stand code here//
-/////////////////////
-
 /obj/structure/chair/shibari_stand
 	name = "shibari stand"
 	desc = "A stand for buckling people with ropes."
@@ -198,10 +194,6 @@
 	name = "ropes"
 	desc = "A shibari rope for restraining hands."
 	breakouttime = 2 MINUTES
-
-///////////////////////////
-//s-stand construction kit/
-///////////////////////////
 
 /obj/item/shibari_stand_kit
 	name = "shibari stand construction kit"

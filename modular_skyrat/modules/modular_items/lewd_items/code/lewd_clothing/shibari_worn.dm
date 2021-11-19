@@ -64,10 +64,6 @@
 	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
 		hooman.remove_status_effect(/datum/status_effect/ropebunny)
 
-////////////////
-//BODY BONDAGE//
-////////////////
-
 /obj/item/clothing/under/shibari/torso
 	name = "Shibari ropes"
 	desc = "Nice looking rope bondage."
@@ -86,10 +82,6 @@
 			hooman.adjustPain(0.6 * delta_time)
 		if(prob(10))
 			hooman.adjustOxyLoss(5)
-
-/////////////////
-//GROIN BONDAGE//
-/////////////////
 
 /obj/item/clothing/under/shibari/groin
 	name = "Crotch rope shibari"
@@ -118,10 +110,6 @@
 		hooman.adjustArousal(0.6 * delta_time)
 		hooman.adjustPleasure(0.6 * delta_time)
 
-////////////////////
-//FULLBODY BONDAGE//
-////////////////////
-
 /obj/item/clothing/under/shibari/full
 	name = "Shibari fullbody ropes"
 	desc = "Bondage ropes that covers whole body"
@@ -144,10 +132,6 @@
 			hooman.adjustPain(0.6 * delta_time)
 		if(prob(10))
 			hooman.adjustOxyLoss(5)
-
-////////////////
-//ARMS BONDAGE//
-////////////////
 
 /obj/item/clothing/gloves/shibari_hands
 	name = "Shibari arms bondage"
@@ -207,10 +191,6 @@
 	var/mob/living/carbon/human/hooman = user
 	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
 		hooman.remove_status_effect(/datum/status_effect/ropebunny)
-
-////////////////
-//LEGS BONDAGE//
-////////////////
 
 /obj/item/clothing/shoes/shibari_legs
 	name = "Shibari arms bondage"
