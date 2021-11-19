@@ -109,8 +109,10 @@
 				if(BODY_ZONE_L_LEG || BODY_ZONE_R_LEG)
 					if(!(them.shoes))
 						if(them?.dna?.mutant_bodyparts["taur"])
-							to_chat(user, span_warning("You can't tie their feet, they're a taur!"))
-							return ..()
+							var/datum/sprite_accessory/taur/S = GLOB.sprite_accessories["taur"][them.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
+							if(S.hide_legs)
+								to_chat(user, span_warning("You can't tie their feet, they're a taur!"))
+								return ..()
 						them.visible_message(span_warning("[user] starts tying [them]'s feet!"),\
 							span_userdanger("[user] starts tying your feet!"),\
 							span_hear("You hear ropes being tightened."))
