@@ -16,7 +16,7 @@ const Vampire: Species = {
     }, {
       icon: "recycle",
       name: "Bat Form",
-      description: "Hemophages can become bats (During halloween). Bats are very weak, but \
+      description: "During Halloween, Hemophages can become bats. Bats are very weak, but \
         are great for escaping bad situations. They can also travel through \
         vents, giving Hemophages a lot of access. Just remember that access \
         doesn't equal permission, and people may be unhappy with you showing \
