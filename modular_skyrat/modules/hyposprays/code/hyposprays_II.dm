@@ -141,7 +141,7 @@
 		vial.attack_self(user)
 		return TRUE
 
-/obj/item/hypospray/mkii/CtrlClick(mob/user)
+/obj/item/hypospray/mkii/attack_self_secondary(mob/user)
 	. = ..()
 	if(vial)
 		vial.attack_self_secondary(user)
