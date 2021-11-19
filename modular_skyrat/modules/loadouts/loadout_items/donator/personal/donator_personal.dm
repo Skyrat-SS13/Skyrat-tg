@@ -307,3 +307,13 @@
 	item_path = /obj/item/clothing/under/rank/nanotrasen_representative/hubert
 	ckeywhitelist = list("hackertdog")
 	restricted_roles = list("Nanotrasen Representative")
+
+/datum/loadout_item/head/frostyushanka
+	name = "Blue Ushanka"
+	item_path = /obj/item/clothing/head/ushanka/frosty
+	ckeywhitelist = list("cherno00")
+
+/datum/loadout_item/neck/silvercross
+	name = "Silver Cross"
+	item_path = /obj/item/clothing/neck/cross
+	ckeywhitelist = list("m97screwsyourparents")

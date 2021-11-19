@@ -38,9 +38,9 @@
 	var/datum/action/innate/turn_to_human
 	var/datum/action/innate/devour
 	var/transformed_time = 0
-	var/playstyle_string = "<span class=infoplain><b><font size=3 color='red'>We have entered our true form!</font> We are unbelievably powerful, and regenerate life at a steady rate. However, most of \
+	var/playstyle_string = span_infoplain("<b><font size=3 color='red'>We have entered our true form!</font> We are unbelievably powerful, and regenerate life at a steady rate. However, most of \
 	our abilities are useless in this form, and we must utilise the abilities that we have gained as a result of our transformation. Currently, we are incapable of returning to a human. \
-	After several minutes, we will once again be able to revert into a human. Taking too much damage will cause us to reach equilibrium and our cells will combust into a shower of gore, watch out!</b></span>"
+	After several minutes, we will once again be able to revert into a human. Taking too much damage will cause us to reach equilibrium and our cells will combust into a shower of gore, watch out!</b>")
 	var/mob/living/carbon/human/stored_changeling = null //The changeling that transformed
 	var/devouring = FALSE //If the true changeling is currently devouring a human
 
@@ -71,7 +71,7 @@
 	if(stat)
 		return
 	if(act == "scream")
-		message = "<span class='emote'><B>[src]</B> makes a loud, bone-chilling roar!</span>"
+		message = span_emote("<B>[src]</B> makes a loud, bone-chilling roar!")
 		act = "me"
 		scream(message)
 		return
@@ -79,7 +79,7 @@
 
 /mob/living/simple_animal/hostile/true_changeling/proc/scream(message)
 	if(!message)
-		message = "<span class='emote'><B>[src]</B> makes a loud, bone-chilling roar!</span>"
+		message = span_emote("<B>[src]</B> makes a loud, bone-chilling roar!")
 	var/frequency = get_rand_frequency() //so sound frequency is consistent
 	for(var/mob/M in range(35, src)) //You can hear the scream 7 screens away
 		// Double check for client
@@ -101,17 +101,17 @@
 	scream()
 	spawn_gibs()
 	if(stored_changeling && mind)
-		visible_message("<span class='warning'>[src] lets out a furious scream as it reaches equilibrium, as it starts exploding into a shower of gore!</span>", \
-						"<span class='userdanger'>We lack the power to maintain our mass, we have reached critic-...</span>")
+		visible_message(span_warning("[src] lets out a furious scream as it reaches equilibrium, as it starts exploding into a shower of gore!"), \
+						span_userdanger("We lack the power to maintain our mass, we have reached critic-..."))
 		anchored = TRUE
 		turn_to_human.Remove()
 		AddComponent(/datum/component/pellet_cloud, projectile_type=/obj/projectile/bullet/pellet/bone_fragment, magnitude=8)
 		addtimer(CALLBACK(src, .proc/real_death), rand(3 SECONDS, 6 SECONDS))
 	else
-		visible_message("<span class='warning'>[src] lets out a waning scream as it falls, twitching, to the floor.</span>")
+		visible_message(span_warning("[src] lets out a waning scream as it falls, twitching, to the floor."))
 		spawn(450)
 			if(src)
-				visible_message("<span class='warning'>[src] stumbles upright and begins to move!</span>")
+				visible_message(span_warning("[src] stumbles upright and begins to move!"))
 				revive() //Changelings can self-revive, and true changelings are no exception
 				scream()
 
@@ -120,8 +120,8 @@
 		spawn_gibs()
 	scream()
 	icon_state = "horror_dead"
-	visible_message("<span class='warning'>[src] has surpassed equilibrium and can no longer support itself, exploding in a shower of bone and gore!</span>", \
-						"<span class='userdanger'>ARRRRRRGHHHH!!!</span>")
+	visible_message(span_warning("[src] has surpassed equilibrium and can no longer support itself, exploding in a shower of bone and gore!"), \
+						span_userdanger("ARRRRRRGHHHH!!!"))
 	stored_changeling.loc = get_turf(src)
 	mind.transfer_to(stored_changeling)
 	stored_changeling.Paralyze(10 SECONDS) //Make them helpless for 10 seconds
@@ -177,17 +177,17 @@
 /datum/action/innate/turn_to_human/Trigger()
 	var/mob/living/simple_animal/hostile/true_changeling/C = owner
 	if(!C.stored_changeling)
-		to_chat(C,"<span class='warning'>We do not have a form other than this!</span>")
+		to_chat(C,span_warning("We do not have a form other than this!"))
 		return FALSE
 	if(C.stored_changeling.stat == DEAD)
-		to_chat(C,"<span class='warning'>Our human form is dead!</span>")
+		to_chat(C,span_warning("Our human form is dead!"))
 		return FALSE
 	if(world.time - C.transformed_time < TRUE_CHANGELING_REFORM_THRESHOLD)
 		var/timeleft = (C.transformed_time + TRUE_CHANGELING_REFORM_THRESHOLD) - world.time
-		to_chat(C,"<span class='warning'>We are still unable to change back at will! We need to wait [round(timeleft/600)+1] minutes.</span>")
+		to_chat(C,span_warning("We are still unable to change back at will! We need to wait [round(timeleft/600)+1] minutes."))
 		return FALSE
-	C.visible_message("<span class='warning'>[C] suddenly crunches and twists into a smaller form!</span>", \
-						"<span class='danger'>We return to our lesser form.</span>")
+	C.visible_message(span_warning("[C] suddenly crunches and twists into a smaller form!"), \
+						span_danger("We return to our lesser form."))
 	C.stored_changeling.loc = get_turf(C)
 	C.mind.transfer_to(C.stored_changeling)
 	C.stored_changeling.Stun(2 SECONDS)
@@ -205,7 +205,7 @@
 /datum/action/innate/devour/Trigger()
 	var/mob/living/simple_animal/hostile/true_changeling/T = owner
 	if(T.devouring)
-		T << "<span class='warning'>We are already feasting on a human!</span>"
+		T << span_warning("We are already feasting on a human!")
 		return FALSE
 	var/list/potential_targets = list()
 	for(var/mob/living/carbon/human/H in range(1, usr))
@@ -213,7 +213,7 @@
 			continue
 		potential_targets.Add(H)
 	if(!potential_targets.len)
-		T << "<span class='warning'>There are no humans nearby!</span>"
+		T << span_warning("There are no humans nearby!")
 		return FALSE
 	var/mob/living/carbon/human/lunch
 	if(potential_targets.len == 1)
@@ -223,20 +223,20 @@
 	if(!lunch && !ishuman(lunch))
 		return FALSE
 	if(lunch.getBruteLoss() + lunch.getFireLoss() >= 200) //Overall physical damage, basically
-		T.visible_message("<span class='warning'>[lunch] provides no further nutrients for [T]!</span>", \
-						"<span class='danger'>[lunch] has no more useful flesh for us to consume!!</span>")
+		T.visible_message(span_warning("[lunch] provides no further nutrients for [T]!"), \
+						span_danger("[lunch] has no more useful flesh for us to consume!!"))
 		return FALSE
 	T.devouring = TRUE
-	T.visible_message("<span class='warning'>[T] begins ripping apart and feasting on [lunch]!</span>", \
-					"<span class='danger'>We begin to feast upon [lunch]...</span>")
+	T.visible_message(span_warning("[T] begins ripping apart and feasting on [lunch]!"), \
+					span_danger("We begin to feast upon [lunch]..."))
 	if(!do_mob(usr, 50, target = lunch))
 		T.devouring = FALSE
 		return FALSE
 	T.devouring = FALSE
 	lunch.adjustBruteLoss(60)
-	T.visible_message("<span class='warning'>[T] tears a chunk from [lunch]'s flesh!</span>", \
-					"<span class='danger'>We tear a chunk of flesh from [lunch] and devour it!</span>")
-	lunch << "<span class='userdanger'>[T] takes a huge bite out of you!</span>"
+	T.visible_message(span_warning("[T] tears a chunk from [lunch]'s flesh!"), \
+					span_danger("We tear a chunk of flesh from [lunch] and devour it!"))
+	lunch << span_userdanger("[T] takes a huge bite out of you!")
 	lunch.spawn_gibs()
 	var/dismembered = FALSE
 	for(var/obj/item/bodypart/BP in lunch.bodyparts)

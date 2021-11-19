@@ -107,8 +107,8 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	skill_name = "Fishing Master"
 	skill_description = "Master the ability to fish."
 	skill_icon = "certificate"
-	activate_message = "<span class='notice'>The fish and junk become far more visible beneath the surface.</span>"
-	deactivate_message = "<span class='notice'>The surface begins to cloud up, making it hard to see beneath.</span>"
+	activate_message = span_notice("The fish and junk become far more visible beneath the surface.")
+	deactivate_message = span_notice("The surface begins to cloud up, making it hard to see beneath.")
 
 /obj/item/fishing_rod
 	name = "fishing rod"

@@ -289,7 +289,7 @@
 				return
 			if("Maybe")
 				playsound(src, 'sound/machines/buzz-sigh.ogg', 50, FALSE)
-				audible_message("<span class='warning'>The [src] buzzes!</span>")
+				audible_message(span_warning("The [src] buzzes!"))
 				return
 
 /obj/item/canvas/drawingtablet/get_paint_tool_color()
@@ -558,11 +558,11 @@
 	if(goggles)
 		icon_state = "avipilotup"
 		inhand_icon_state = "avipilotup"
-		to_chat(user, "<span class='notice'>You put all your effort into pulling the goggles up.</span>")
+		to_chat(user, span_notice("You put all your effort into pulling the goggles up."))
 	else
 		icon_state = "avipilotdown"
 		inhand_icon_state = "avipilotdown"
-		to_chat(user, "<span class='notice'>You focus all your willpower to put the goggles down on your eyes.</span>")
+		to_chat(user, span_notice("You focus all your willpower to put the goggles down on your eyes."))
 	goggles = !goggles
 	if(user)
 		user.head_update(src, forced = 1)
@@ -714,7 +714,7 @@
 		update_icon()
 		ooser.update_inv_wear_mask()
 		ooser.update_action_buttons_icon()
-		to_chat(ooser, "<span class='notice'>You toggle the [src] to [possible_colors[c_color_index]].</span>")
+		to_chat(ooser, span_notice("You toggle the [src] to [possible_colors[c_color_index]]."))
 
 //Donation reward for asky / Zulie
 /obj/item/clothing/suit/hooded/cloak/zuliecloak
@@ -1123,6 +1123,7 @@
 	body_parts_covered = CHEST|LEGS|ARMS
 	mutant_variants = NONE
 
+//Donation reward for Hacker T.Dog
 /obj/item/clothing/head/nanotrasen_representative/hubert
 	name = "CC Ensign's cap"
 	desc = "A tailor made peaked cap, denoting the rank of Ensign."
@@ -1130,6 +1131,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "CCofficerhat"
 
+//Donation reward for Hacker T.Dog
 /obj/item/clothing/suit/armor/vest/nanotrasen_representative/hubert
 	name = "CC Ensign's armoured vest"
 	desc = "A tailor made Ensign's armoured vest, providing the same protection - but in a more stylish fashion."
@@ -1137,9 +1139,28 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "CCvest"
 
+//Donation reward for Hacker T.Dog
 /obj/item/clothing/under/rank/nanotrasen_representative/hubert
 	name = "CC Ensign's uniform"
 	desc = "A tailor-made Ensign's uniform, various medals and chains hang down from it."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "CCofficer"
+
+//Donation reward for Cherno_00
+/obj/item/clothing/head/ushanka/frosty
+	name = "blue ushanka"
+	desc = "A dark blue ushanka with a hand-stitched snowflake on the front. Cool to the touch."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "fushankadown"
+	upsprite = "fushankaup"
+	downsprite = "fushankadown"
+
+//Donation reward for M97screwsyourparents
+/obj/item/clothing/neck/cross
+	name = "silver cross"
+	desc = "A silver cross to be worn on a chain around your neck. Certain to bring you favour from up above."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/necklaces.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
+	icon_state = "cross"
