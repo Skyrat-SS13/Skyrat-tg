@@ -164,3 +164,32 @@
 	new /obj/item/clothing/accessory/badge/holo/hos(src)
 	new /obj/item/clothing/accessory/badge/holo/cord(src)
 	return
+
+/obj/item/clothing/accessory/pride
+	name = "rainbow pride pin"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/accessories.dmi'
+	desc = "A pin to show off your sexuality! Happy pride!"
+	icon_state = "pride"
+
+/obj/item/clothing/accessory/pride/bi
+	name = "bisexual pin"
+	icon_state = "pride_bi"
+
+/obj/item/clothing/accessory/pride/trans
+	name = "transgender pin"
+	desc = "A pin to show off your solidarity with trans people! Trans rights!"
+	icon_state = "pride_trans"
+
+/obj/item/clothing/accessory/pride/pan
+	name = "pansexual pin"
+	icon_state = "pride_pan"
+
+/obj/item/clothing/accessory/pride/ace
+	name = "asexual pin"
+	icon_state = "pride_ace"
+
+/obj/item/clothing/accessory/pride/enby
+	name = "non-binary pin"
+	icon_state = "pride_enby"
+	desc = "A pin to show off your chosen gender identity, or in this case, the lack thereof!"

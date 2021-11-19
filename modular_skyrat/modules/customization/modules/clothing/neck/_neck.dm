@@ -67,3 +67,29 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	icon_state = "capmantle"
 
+/obj/item/clothing/neck/pride
+	name = "rainbow flag cape"
+	desc = "A prideful cape to wear around your back. Happy pride!"
+	icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
+	icon_state = "pride"
+
+/obj/item/clothing/neck/pride/bi
+	name = "bisexual pride flag cape"
+	icon_state = "pride_bi"
+
+/obj/item/clothing/neck/pride/pan
+	name = "pansexual pride flag cape"
+	icon_state = "pride_pan"
+
+/obj/item/clothing/neck/pride/trans
+	name = "transgender pride flag cape"
+	icon_state = "pride_trans"
+
+/obj/item/clothing/neck/pride/enby
+	name = "non-binary pride flag cape"
+	icon_state = "pride_enby"
+
+/obj/item/clothing/neck/pride/ace
+	name = "asexual pride flag cape"
+	icon_state = "pride_ace"

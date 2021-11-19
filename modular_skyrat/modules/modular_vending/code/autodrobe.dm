@@ -42,6 +42,12 @@
 		/obj/item/clothing/under/suit/helltaker = 5,
 		/obj/item/clothing/under/suit/helltaker/skirt = 5,
 		/obj/item/clothing/suit/toggle/lawyer/white = 5,
+		/obj/item/clothing/neck/pride = 5,
+		/obj/item/clothing/neck/pride/bi = 5,
+		/obj/item/clothing/neck/pride/trans = 5,
+		/obj/item/clothing/neck/pride/pan = 5,
+		/obj/item/clothing/neck/pride/ace = 5,
+		/obj/item/clothing/neck/pride/enby = 5,
 		)
 
 	skyrat_contraband = list(

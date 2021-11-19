@@ -36,6 +36,30 @@ GLOBAL_LIST_INIT(loadout_accessory, generate_loadout_items(/datum/loadout_item/a
 	item_path = /obj/item/clothing/accessory/medal/ribbon
 
 
+/datum/loadout_item/accessory/pride
+	name = "Rainbow Flag Pin"
+	item_path = /obj/item/clothing/accessory/pride
+
+/datum/loadout_item/accessory/pride_bi
+	name = "Bisexual Flag Pin"
+	item_path = /obj/item/clothing/accessory/pride/bi
+
+/datum/loadout_item/accessory/pride_trans
+	name = "Transgender Flag Pin"
+	item_path = /obj/item/clothing/accessory/pride/trans
+
+/datum/loadout_item/accessory/pride_enby
+	name = "Non-binary Flag Pin"
+	item_path = /obj/item/clothing/accessory/pride/enby
+
+/datum/loadout_item/accessory/pride_pan
+	name = "Pansexual Flag Pin"
+	item_path = /obj/item/clothing/accessory/pride/pan
+
+/datum/loadout_item/accessory/pride_ace
+	name = "Asexual Flag Pin"
+	item_path = /obj/item/clothing/accessory/pride/ace
+
 /* TO DO - ADD THESE
 /datum/loadout_item/accessory/blue_green_armband
 	name = "Blue and Green Armband"
