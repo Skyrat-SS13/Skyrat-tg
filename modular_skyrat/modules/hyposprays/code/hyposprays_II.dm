@@ -141,7 +141,7 @@
 		vial.attack_self(user)
 		return TRUE
 
-/obj/item/hypospray/mkii/AltClick(mob/user)
+/obj/item/hypospray/mkii/CtrlClick(mob/user)
 	. = ..()
 	if(vial)
 		vial.attack_self_secondary(user)
@@ -241,21 +241,9 @@
 		else
 			unload_hypo(vial,user)
 
-/obj/item/hypospray/mkii/CtrlClick(mob/living/user)
-	. = ..()
-	if(user.canUseTopic(src, FALSE) && user.get_active_held_item(src))
-		switch(mode)
-			if(HYPO_SPRAY)
-				mode = HYPO_INJECT
-				to_chat(user, "[src] is now set to inject contents on application.")
-			if(HYPO_INJECT)
-				mode = HYPO_SPRAY
-				to_chat(user, "[src] is now set to spray contents on application.")
-		return TRUE
-
 /obj/item/hypospray/mkii/examine(mob/user)
 	. = ..()
-	. += span_notice("<b>Ctrl-Click</b> it to toggle its mode from spraying to injecting and vice versa.")
+	. += span_notice("<b>Left Click</b> on patients to inject, <b>Right Click</b> to spray.")
 
 #undef HYPO_SPRAY
 #undef HYPO_INJECT
