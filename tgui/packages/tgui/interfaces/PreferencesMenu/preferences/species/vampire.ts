@@ -1,7 +1,7 @@
 import { Species } from "./base";
 
 const Vampire: Species = {
-  description: "A crewmember afflicted with 'Hemophagia', whether it's supernatural or purely through science, is still unknown.",
+  description: "A crewmember afflicted with Hemophagia. Whether it's supernatural or purely through science, is still unknown.",
   features: {
     good: [{
       icon: "bed",
