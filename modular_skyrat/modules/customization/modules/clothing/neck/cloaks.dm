@@ -30,7 +30,7 @@
 
 //This one is greyscale :)
 /obj/item/clothing/neck/ranger_poncho
-	name = "cowboy poncho"	//tbh I dont know what else to name it now that its greyscale, so this is up for debate
+	name = "ranger poncho"
 	desc = "Aim for the Heart, Ramon."
 	icon_state = "ranger_poncho"
 	greyscale_config = /datum/greyscale_config/ranger_poncho
