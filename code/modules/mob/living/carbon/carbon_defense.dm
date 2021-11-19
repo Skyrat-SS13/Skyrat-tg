@@ -271,17 +271,7 @@
 			return
 	//SKYRAT EDIT ADDITION BEGIN - EMOTES
 	if(zone_selected == BODY_ZONE_PRECISE_GROIN && target.dir == src.dir)
-		if(HAS_TRAIT(target, TRAIT_IRONASS))
-			var/obj/item/bodypart/affecting = src.get_bodypart("[(src.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
-			if(affecting?.receive_damage(2))
-				src.update_damage_overlays()
-			visible_message("<span class='danger'>[src] tried slapping [target]'s ass, however it was much harder than expected!</span>",
-			"<span class='danger'>You tried slapping [target]'s ass, but it felt like metal, ouch!</span>",\
-			"You hear a sore sounding slap.", ignored_mobs = list(target))
-			playsound(target.loc, 'sound/effects/snap.ogg', 50, TRUE, ASS_SLAP_EXTRARANGE)
-			to_chat(target, "<span class='danger'>[src] tried slapping your ass, but it was deflected!")
-			return
-		else if(HAS_TRAIT(target, TRAIT_PERSONALSPACE) && (target.stat != UNCONSCIOUS) && (!target.handcuffed)) //You need to be conscious and uncuffed to use Personal Space
+		if(HAS_TRAIT(target, TRAIT_PERSONALSPACE) && (target.stat != UNCONSCIOUS) && (!target.handcuffed)) //You need to be conscious and uncuffed to use Personal Space
 			if(target.combat_mode && (!HAS_TRAIT(target, TRAIT_PACIFISM))) //Being pacified prevents violent counters
 				var/obj/item/bodypart/affecting = src.get_bodypart(BODY_ZONE_HEAD)
 				if(affecting?.receive_damage(PERSONAL_SPACE_DAMAGE))
