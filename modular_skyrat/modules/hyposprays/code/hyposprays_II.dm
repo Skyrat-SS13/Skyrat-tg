@@ -91,7 +91,6 @@
 		. += "[vial] has [vial.reagents.total_volume]u remaining."
 	else
 		. += "It has no vial loaded in."
-	. += "[src] is set to [mode ? "Inject" : "Spray"] contents on application."
 
 /obj/item/hypospray/mkii/proc/unload_hypo(obj/item/hypo, mob/user)
 	if((istype(hypo, /obj/item/reagent_containers/glass/vial)))
@@ -167,7 +166,12 @@
 	. = ..() //Don't bother changing this or removing it from containers will break.
 
 /obj/item/hypospray/mkii/attack(obj/item/hypo, mob/user, params)
+	mode = HYPO_INJECT
 	return
+
+/obj/item/hypospray/mkii/attack_secondary(obj/item/hypo, mob/user, params)
+	mode = HYPO_SPRAY
+	return SECONDARY_ATTACK_CONTINUE_CHAIN
 
 /obj/item/hypospray/mkii/afterattack(atom/target, mob/living/user, proximity)
 	if(istype(target, /obj/item/reagent_containers/glass/vial))
@@ -223,6 +227,9 @@
 	playsound(loc, long_sound ? 'modular_skyrat/modules/hyposprays/sound/hypospray_long.ogg' : pick('modular_skyrat/modules/hyposprays/sound/hypospray.ogg','modular_skyrat/modules/hyposprays/sound/hypospray2.ogg'), 50, 1, -1)
 	to_chat(user, span_notice("You [fp_verb] [vial.amount_per_transfer_from_this] units of the solution. The hypospray's cartridge now contains [vial.reagents.total_volume] units."))
 	update_appearance()
+
+/obj/item/hypospray/mkii/afterattack_secondary(atom/target, mob/living/user, proximity)
+	return SECONDARY_ATTACK_CALL_NORMAL
 
 /obj/item/hypospray/mkii/attack_self_secondary(mob/living/user)
 	if(user)
