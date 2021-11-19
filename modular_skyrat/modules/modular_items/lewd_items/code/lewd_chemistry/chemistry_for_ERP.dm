@@ -38,16 +38,22 @@
 	color = "#FFADFF"
 	life_pref_datum = /datum/preference/toggle/erp/aphro
 
-	//Probabilities of flavour messages, as a %, run on mob life
+	/// Probability of the chem triggering an emote, as a %, run on mob life
 	var/emote_probability = 3
+	/// Probability of the chem triggering a to_chat, as a %, run on mob life
 	var/thought_probability = 2
 
-	//The possible contents of those flavour messages
+	/// A list of possible emotes the chem is able to trigger
 	var/list/possible_aroused_emotes = list("moan", "blush")
+
+	/// A list of possible to_chat messages the chem is able to trigger
 	var/list/possible_aroused_thoughts = list("You feel frisky.", "You're having trouble suppressing your urges.", "You feel in the mood.")
 
+	/// The amount to adjust the mob's arousal by
 	var/arousal_adjust_amount = 1
+	/// The amount to adjust the mob's pleasure by
 	var/pleasure_adjust_amount = 0
+	/// The amount to adjust the mob's pain by
 	var/pain_adjust_amount = 0
 
 /datum/reagent/drug/aphrodisiac/crocin/life_effects(mob/living/carbon/human/exposed_mob)
