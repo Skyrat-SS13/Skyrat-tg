@@ -7,7 +7,7 @@ const Vampire: Species = {
       icon: "bed",
       name: "Locker Brooding",
       description: "Hemophage can delay The Thirst and heal by resting in a \
-        rectangular shaped object. So THAT'S why they do that!",
+        rectangular-shaped object. So THAT'S why they do that!",
     }, {
       icon: "skull",
       name: "Minor Undead",
