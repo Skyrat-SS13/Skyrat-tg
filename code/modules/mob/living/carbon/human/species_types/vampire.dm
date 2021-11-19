@@ -54,7 +54,7 @@
 	if(istype(C.loc, /obj/structure/closet)) // SKYRAT EDIT - NORMAL CLOSETS INSTEAD OF COFFINS.
 		C.heal_overall_damage(1.5 * delta_time, 1.5 * delta_time, 0, BODYPART_ORGANIC) // SKYRAT EDIT - ORIGINAL 2 - Fast, but not as fast due ot them being able to use normal lockers.
 		C.adjustToxLoss(-1 * delta_time) // SKYRAT EDIT - ORIGINAL 2 - 50% base speed to keep it fair
-		C.adjustOxyLoss(-2 * delta_time) // SKYRAT EDIT - ORIGINAL 2 - None here, oxy should heal fast
+		C.adjustOxyLoss(-2 * delta_time)
 		C.adjustCloneLoss(-0.5 * delta_time) // SKYRAT EDIT - ORIGINAL 2 - HARDMODE DAMAGE
 		return
 	C.blood_volume -= 0.125 * delta_time
