@@ -72,13 +72,6 @@
                     /obj/item/storage/box/medipens)
 	crate_name = "medipen crate"
 
-/datum/supply_pack/medical/medibeam
-	name = "Medical Beam Gun"
-	desc = "Nanotrasen offers you, for an exorbatant fee, the ability to lease one of their ERTs favorite gadgets, the Medical Beam Gun"
-	cost = 1000000 //Special case, we don't want to make this in terms of crates because having bikes be a million credits is the whole meme.
-	contains = list(/obj/item/gun/medbeam)
-	crate_name = "Medical Beamgun Crate"
-
 /datum/supply_pack/medical/hardsuit_medical
 	name = "Medical Hardsuit Crate"
 	desc = "Contains a single hardsuit, built to standard medical specifications."
@@ -271,6 +264,13 @@
 //////////////////////////// Misc Crates /////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
+/datum/supply_pack/misc/medibeam //Moved to Misc so Medical can't order them for free through department consoles and break the economy.
+	name = "Medical Beam Gun"
+	desc = "Nanotrasen offers you, for an exorbatant fee, the ability to lease one of their ERTs favorite gadgets, the Medical Beam Gun"
+	cost = 1000000 //Special case, we don't want to make this in terms of crates because having bikes be a million credits is the whole meme.
+	contains = list(/obj/item/gun/medbeam)
+	crate_name = "Medical Beamgun Crate"
+
 /datum/supply_pack/misc/painting
 	name = "Advanced Art Supplies"
 	desc = "Bring out your artistic spirit with these advanced art supplies. Contains coloring supplies, cloth for canvas, and two easels to work with!"
@@ -335,14 +335,6 @@
 	crate_name = "dance machine crate"
 */
 
-/datum/supply_pack/misc/fuel_pellets
-	name = "Exploration Drone Fuel Crate"
-	desc = "Atmos on fire, and you still really wanna explore the stars? We've got you covered, for the fuel atleast."
-	cost = CARGO_CRATE_VALUE * 15
-	contains = list(/obj/item/fuel_pellet,
-					/obj/item/fuel_pellet,
-					/obj/item/fuel_pellet)
-	crate_name = "drone fuel crate"
 
 /datum/supply_pack/service/snowmobile
 	name = "Snowmobile kit"
@@ -514,7 +506,7 @@
 					/obj/item/storage/bag/quiver,
 					/obj/item/clothing/head/helmet/knight/red,
 					/obj/item/clothing/head/helmet/knight/blue,
-					/obj/item/food/bread)
+					/obj/item/food/bread/plain)
 	crate_name = "vintage crate"
 
 /datum/supply_pack/service/hydrohelper

@@ -521,9 +521,9 @@
 /obj/item/melee/baton/security/proc/apply_stun_effect_end(mob/living/target)
 	var/trait_check = HAS_TRAIT(target, TRAIT_STUNRESISTANCE) //var since we check it in out to_chat as well as determine stun duration
 	if(!target.IsKnockdown())
-		to_chat(target, span_warning("Your muscles seize, making you collapse [trait_check ? ", but your body quickly recovers..." : "!"]"))
+		to_chat(target, span_warning("Your muscles seize, making you collapse[trait_check ? ", but your body quickly recovers..." : "!"]"))
 
-	//target.Knockdown(knockdown_time * (trait_check ? 0.1 : 1)) // SKYRAT EDIT DISABLE
+	target.Knockdown(knockdown_time * (trait_check ? 0.1 : 1))
 
 /obj/item/melee/baton/security/get_wait_description()
 	return span_danger("The baton is still charging!")

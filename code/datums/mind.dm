@@ -45,7 +45,6 @@
 	var/datum/job/assigned_role
 	var/special_role
 	var/list/restricted_roles = list()
-	var/list/datum/objective/objectives = list()
 
 	var/list/spell_list = list() // Wizard mode & "Give Spell" badmin button.
 
@@ -54,7 +53,7 @@
 	var/miming = FALSE // Mime's vow of silence
 	var/list/antag_datums
 	var/antag_hud_icon_state = null //this mind's ANTAG_HUD should have this icon_state
-	var/datum/atom_hud/antag/antag_hud = null //this mind's antag HUD
+	var/datum/atom_hud/alternate_appearance/basic/antagonist_hud/antag_hud = null //this mind's antag HUD
 	var/holy_role = NONE //is this person a chaplain or admin role allowed to use bibles, Any rank besides 'NONE' allows for this.
 
 	var/mob/living/enslaved_to //If this mind's master is another mob (i.e. adamantine golems)
@@ -93,6 +92,9 @@
 	var/list/active_addictions
 	///List of objective-specific equipment that couldn't properly be given to the mind
 	var/list/failed_special_equipment
+	// SKYRAT EDIT ADDITION -- EXPLOITABLE MENU
+	///Tracks if the target has the view_exploitables_verb verb. THIS MUST BE CHANGED IF THE VERB IS ADDED OR REMOVED OR ELSE STUFF BREAKS.
+	var/has_exploitable_menu = FALSE
 
 /datum/mind/New(_key)
 	key = _key
@@ -102,6 +104,7 @@
 
 /datum/mind/Destroy()
 	SSticker.minds -= src
+	QDEL_NULL(antag_hud)
 	QDEL_LIST(memories)
 	QDEL_NULL(memory_panel)
 	QDEL_LIST(antag_datums)
@@ -155,7 +158,6 @@
 	if(new_character.mind) //disassociate any mind currently in our new body's mind variable
 		new_character.mind.set_current(null)
 
-	var/datum/atom_hud/antag/hud_to_transfer = antag_hud//we need this because leave_hud() will clear this list
 	var/mob/living/old_current = current
 	if(current)
 		current.transfer_observers_to(new_character) //transfer anyone observing the old character to the new one
@@ -165,14 +167,15 @@
 		add_verb(new_character, /mob/proc/view_ambitions)
 	//SKYRAT CHANGE ADDITION END
 	set_current(new_character) //associate ourself with our new body
+	QDEL_NULL(antag_hud)
 	new_character.mind = src //and associate our new body with ourself
+	antag_hud = new_character.add_alt_appearance(/datum/atom_hud/alternate_appearance/basic/antagonist_hud, "combo_hud", src)
 	for(var/a in antag_datums) //Makes sure all antag datums effects are applied in the new body
 		var/datum/antagonist/A = a
 		A.on_body_transfer(old_current, current)
 	if(iscarbon(new_character))
 		var/mob/living/carbon/C = new_character
 		C.last_mind = src
-	transfer_antag_huds(hud_to_transfer) //inherit the antag HUD
 	transfer_actions(new_character)
 	transfer_martial_arts(new_character)
 	RegisterSignal(new_character, COMSIG_LIVING_DEATH, .proc/set_death_time)
@@ -274,6 +277,7 @@
 	last_death = world.time
 
 // Datum antag mind procs
+
 /datum/mind/proc/add_antag_datum(datum_type_or_instance, team)
 	if(!datum_type_or_instance)
 		return
@@ -309,6 +313,8 @@
 		if(my_ambitions.submitted)
 			A.ambitions_add()
 	//SKYRAT EDIT ADDITION END
+	//SKYRAT EDIT ADDITION - EXPLOITABLES MENU
+	src.handle_exploitables_menu()
 	return A
 
 /datum/mind/proc/remove_antag_datum(datum_type)
@@ -321,6 +327,9 @@
 		if(A.uses_ambitions && my_ambitions.submitted)
 			A.ambitions_removal()
 		//SKYRAT EDIT ADDITION END
+		//SKYRAT EDIT ADDITION - EXPLOITABLE MENU
+		src.handle_exploitables_menu()
+
 		return TRUE
 
 
@@ -328,6 +337,11 @@
 	for(var/a in antag_datums)
 		var/datum/antagonist/A = a
 		A.on_removal()
+	//SKYRAT EDIT ADDITION BEGIN - EXPLOITABLE MENU
+	if (has_exploitable_menu)
+		remove_verb(current, /mob/proc/view_exploitables_verb)
+		has_exploitable_menu = FALSE
+	//SKYRAT EDIT ADDITION END
 
 /datum/mind/proc/has_antag_datum(datum_type, check_subtypes = TRUE)
 	if(!datum_type)
@@ -865,7 +879,6 @@
 	if(!mind.name)
 		mind.name = real_name
 	mind.set_current(src)
-
 
 /mob/living/carbon/mind_initialize()
 	..()

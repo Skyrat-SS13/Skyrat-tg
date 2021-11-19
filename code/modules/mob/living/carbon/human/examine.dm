@@ -424,13 +424,17 @@
 				. += "<a href='?src=[REF(src)];hud=m;p_stat=1'>\[[health_r]\]</a>"
 				health_r = R.fields["m_stat"]
 				. += "<a href='?src=[REF(src)];hud=m;m_stat=1'>\[[health_r]\]</a>"
-			R = find_record("name", perpname, GLOB.data_core.medical)
-			if(R)
+			var/datum/data/record/M = find_record("name", perpname, GLOB.data_core.medical) //SKYRAT EDIT CHANGE - EXAMINE RECORDS - VAR WAS ORIGINALLY R
+			if(M)
 				. += "<a href='?src=[REF(src)];hud=m;evaluation=1'>\[Medical evaluation\]</a><br>"
 			. += "<a href='?src=[REF(src)];hud=m;quirk=1'>\[See quirks\]</a>"
 			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-			. += "<a href='?src=[REF(src)];hud=m;medrecords=1'>\[View medical records\]</a>"
-			. += "<a href='?src=[REF(src)];hud=m;genrecords=1'>\[View general records\]</a>"
+			var/medical_records_empty = (length(M.fields["past_records"]) < 2)
+			if (!(medical_records_empty))
+				. += "<a href='?src=[REF(src)];hud=m;medrecords=1'>\[View medical records\]</a>"
+			var/general_records_empty = (length(R.fields["past_records"]) < 2)
+			if (!(general_records_empty))
+				. += "<a href='?src=[REF(src)];hud=m;genrecords=1'>\[View general records\]</a>"
 			//SKYRAT EDIT END
 
 		if(HAS_TRAIT(user, TRAIT_SECURITY_HUD))
@@ -438,18 +442,24 @@
 			//|| !user.canmove || user.restrained()) Fluff: Sechuds have eye-tracking technology and sets 'arrest' to people that the wearer looks and blinks at.
 				var/criminal = "None"
 
-				R = find_record("name", perpname, GLOB.data_core.security)
-				if(R)
-					criminal = R.fields["criminal"]
+				var/datum/data/record/S = find_record("name", perpname, GLOB.data_core.security) //SKYRAT EDIT CHANGE - EXAMINE RECORDS - VAR WAS ORIGINALLY R
+				if(S)
+					criminal = S.fields["criminal"]
 
 				. += "<span class='deptradio'>Criminal status:</span> <a href='?src=[REF(src)];hud=s;status=1'>\[[criminal]\]</a>"
-				. += jointext(list("<span class='deptradio'>Security record:</span> <a href='?src=[REF(src)];hud=s;viewsec=1'>\[View security records\]</a>", //SKYRAT EDIT CHANGE - EXAMINE RECORDS (changed viewsec)
+				. += jointext(list("<span class='deptradio'>Misc. security record:</span> <a href='?src=[REF(src)];hud=s;view=1'>\[View security records\]</a>", //SKYRAT EDIT CHANGE - EXAMINE RECORDS - Security record > Misc. security record
 					"<a href='?src=[REF(src)];hud=s;add_citation=1'>\[Add citation\]</a>",
 					"<a href='?src=[REF(src)];hud=s;add_crime=1'>\[Add crime\]</a>",
 					"<a href='?src=[REF(src)];hud=s;view_comment=1'>\[View comment log\]</a>",
 					"<a href='?src=[REF(src)];hud=s;add_comment=1'>\[Add comment\]</a>"), "")
-
-				. += jointext(list("<span class='deptradio'>General record:</span> <a href='?src=[REF(src)];hud=s;genrecords=1'>\[View general records\]</a>"), "") //SKYRAT EDIT ADDITION - EXAMINE RECORDS
+				// SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
+				var/general_records_empty = (length(R.fields["past_records"]) < 2)
+				if (!(general_records_empty))
+					. += jointext(list("<span class='deptradio'>General record:</span> <a href='?src=[REF(src)];hud=s;genrecords=1'>\[View general records\]</a>"), "")
+				var/security_records_empty = (length(S.fields["past_records"]) < 2)
+				if (!(security_records_empty))
+					. += jointext(list("<span class='deptradio'>Security record:</span> <a href='?src=[REF(src)];hud=s;secrecords=1'>\[View security records\]</a>"), "")
+				// SKYRAT EDIT ADDITION END
 	else if(isobserver(user))
 		. += "<span class='info'><b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]</span>"
 	//SKYRAT EDIT ADDITION BEGIN - GUNPOINT
@@ -483,6 +493,15 @@
 			. += "<span class='notice'>[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a></span>"
 	//. += "*---------*</span>" SKYRAT EDIT REMOVAL
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
+
+	//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
+	var/datum/data/record/is_in_world = find_record("name", perpname, GLOB.data_core.general) //apparantly golden is okay with offstation roles having no records, FYI
+	var/exploitables_empty = (length(is_in_world.fields["exploitable_records"]) < 2)
+	for(var/datum/antagonist/antag_datum in user?.mind?.antag_datums)
+		if ((is_special_character(user)) && is_in_world && (antag_datum.view_exploitables) && !exploitables_empty)
+			. += "<a href='?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>"
+			break
+	//SKYRAT EDIT END
 
 /mob/living/proc/status_effect_examines(pronoun_replacement) //You can include this in any mob's examine() to show the examine texts of status effects!
 	var/list/dat = list()
