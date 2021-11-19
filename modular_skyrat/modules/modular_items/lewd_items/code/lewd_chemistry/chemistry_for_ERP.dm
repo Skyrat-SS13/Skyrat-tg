@@ -119,10 +119,15 @@
 	overdose_threshold = 10
 	life_pref_datum = /datum/preference/toggle/erp/aphro
 	overdose_pref_datum = /datum/preference/toggle/erp/aphro
+
 	var/drugginess_amount = 5
 	var/drugginess_chance = 7
+
+	/// The amount to adjust the mob's arousal by
 	var/arousal_adjust_amount = 0.5
+	/// The amount to adjust the mob's pleasure by
 	var/pleasure_adjust_amount = 0.3
+	/// The amount to adjust the mob's pain by
 	var/pain_adjust_amount = -0.5
 
 /datum/reagent/drug/aphrodisiac/dopamine/on_mob_add(mob/living/carbon/human/exposed_mob)
@@ -187,6 +192,8 @@
 	overdose_threshold = 20
 	arousal_change = -18
 	overdose_pref_datum = /datum/preference/toggle/erp/aphro
+
+	/// How much of the given reagent to remove per operation
 	var/reagent_reduction_amount = 20
 
 /datum/reagent/drug/aphrodisiac/camphor/pentacamphor/life_effects(mob/living/carbon/human/exposed_mob)
@@ -220,15 +227,11 @@
 
 /*
 * BREAST ENLARGEMENT
+* Normal function increases the player's breast size.
+* If the player's breasts are near or at the maximum size and they're wearing clothing, they press against the player's clothes and causes brute and oxygen damage.
+* Overdosing makes you female if male, sets the player's testicles to the minimum size, and shrinks the player's penis to a minimum size.
+* Credit to Citadel for the original code before modification
 */
-
-//Normal function increases your breast size by 0.05, 10units = 1 cup.
-//If you get stupid big, it presses against your clothes, causing brute and oxydamage. Then rips them off.
-//If you keep going, it makes you slower, in speed and action.
-//decreasing your size will return you to normal.
-//(see the status effect in chem.dm)
-//Overdosing on (what is essentially space estrogen) makes you female, removes balls and shrinks your dick.
-//Credit to Citadel for the original code before modification
 
 /datum/reagent/drug/aphrodisiac/breast_enlarger
 	name = "succubus milk"
@@ -297,11 +300,10 @@
 
 /*
 * PENIS ENLARGEMENT
+* Normal function increases the player's penis size.
+* If the player's penis is near or at the maximum size and they're wearing clothing, it presses against the player's clothes and causes brute damage.
+* Overdosing makes you male if female and shrinks the player's breasts to a minimum size.
 */
-
-//See breast explanation, it's the same but with taliwhackers
-//instead of slower movement and attacks, it slows you and increases the total blood you need in your system.
-//Since someone else made this in the time it took me to PR it, I merged them.
 
 /datum/reagent/drug/aphrodisiac/penis_enlarger
 	name = "Incubus draft"
@@ -355,7 +357,7 @@
 
 	return ..()
 
-/datum/reagent/drug/aphrodisiac/penis_enlarger/overdose_effects(mob/living/carbon/human/exposed_mob) //Turns you into a male if female and ODing, doesn't touch nonbinary and object genders.
+/datum/reagent/drug/aphrodisiac/penis_enlarger/overdose_effects(mob/living/carbon/human/exposed_mob)
 	var/obj/item/organ/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
 	if(exposed_mob.gender == FEMALE)
 		exposed_mob.set_gender(MALE)
