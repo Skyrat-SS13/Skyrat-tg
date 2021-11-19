@@ -41,6 +41,9 @@
 	update_appearance()
 
 /obj/item/clothing/under/shibari/attack_hand(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(iscarbon(user))
 		var/mob/living/carbon/human/hooman = user
 		if(src == hooman.w_uniform)
@@ -48,7 +51,6 @@
 				qdel(src)
 		else
 			return
-	. = ..()
 
 
 //stuff to apply processing on equip and add mood event for perverts
@@ -173,6 +175,9 @@
 
 //unequip stuff for adding rope to hands
 /obj/item/clothing/gloves/shibari_hands/attack_hand(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(iscarbon(user))
 		var/mob/living/carbon/human/hooman = user
 		if(src == hooman.gloves)
@@ -180,7 +185,6 @@
 				qdel(src)
 		else
 			return
-	. = ..()
 
 //stuff to apply mood event for perverts
 /obj/item/clothing/gloves/shibari_hands/equipped(mob/user, slot)
@@ -234,6 +238,9 @@
 
 //unequip stuff for adding rope to hands
 /obj/item/clothing/shoes/shibari_legs/attack_hand(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(iscarbon(user))
 		var/mob/living/carbon/human/hooman = user
 		if(src == hooman.shoes)
@@ -241,7 +248,6 @@
 				qdel(src)
 		else
 			return
-	. = ..()
 
 //stuff to apply mood event for perverts
 /obj/item/clothing/shoes/shibari_legs/equipped(mob/user, slot)
