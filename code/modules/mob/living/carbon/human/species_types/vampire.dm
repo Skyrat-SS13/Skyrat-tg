@@ -51,7 +51,7 @@
 
 /datum/species/vampire/spec_life(mob/living/carbon/human/C, delta_time, times_fired)
 	. = ..()
-	if(istype(C.loc, /obj/structure/closet)) // SKYRAT EDIT - NORMAL CLOSETS INSTEAD OF COFFINS.
+	if(istype(C.loc, /obj/structure/closet) && !istype(C.loc, /obj/structure/closet/body_bag)) // SKYRAT EDIT - NORMAL CLOSETS INSTEAD OF COFFINS.
 		C.heal_overall_damage(1.5 * delta_time, 1.5 * delta_time, 0, BODYPART_ORGANIC) // SKYRAT EDIT - ORIGINAL 2 - Fast, but not as fast due ot them being able to use normal lockers.
 		C.adjustToxLoss(-1 * delta_time) // SKYRAT EDIT - ORIGINAL 2 - 50% base speed to keep it fair
 		C.adjustOxyLoss(-2 * delta_time)
