@@ -35,7 +35,7 @@ const Vampire: Species = {
     {
       icon: "cross",
       name: "Against God and Nature",
-      description: "(During halloween) Almost all higher powers are disgusted by the existence of \
+      description: "During Halloween, almost all higher powers are disgusted by the existence of \
       Hemophages, and entering the chapel is essentially suicide. Do not do it!",
     }],
   },
