@@ -162,9 +162,6 @@
 	obj_flags |= EMAGGED
 	return TRUE
 
-/obj/item/hypospray/mkii/attack_hand(mob/user)
-	. = ..() //Don't bother changing this or removing it from containers will break.
-
 /obj/item/hypospray/mkii/attack(obj/item/hypo, mob/user, params)
 	mode = HYPO_INJECT
 	return
@@ -231,15 +228,17 @@
 /obj/item/hypospray/mkii/afterattack_secondary(atom/target, mob/living/user, proximity)
 	return SECONDARY_ATTACK_CALL_NORMAL
 
-/obj/item/hypospray/mkii/attack_self_secondary(mob/living/user)
-	if(user)
+/obj/item/hypospray/mkii/attack_hand(mob/living/user)
+	if(user && loc == user && user.is_holding(src))
 		if(user.incapacitated())
 			return
 		else if(!vial)
-			to_chat(user, "This Hypo needs to be loaded first!")
+			. = ..()
 			return
 		else
 			unload_hypo(vial,user)
+	else
+		. = ..()
 
 /obj/item/hypospray/mkii/examine(mob/user)
 	. = ..()
