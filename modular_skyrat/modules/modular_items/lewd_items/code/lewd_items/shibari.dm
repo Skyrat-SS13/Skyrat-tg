@@ -7,11 +7,14 @@
 	merge_type = /obj/item/stack/shibari_rope
 	singular_name = "ropes"
 
-	///customisation vars
+	///color
 	var/current_color = "pink"
+	///color_changed
 	var/color_changed = FALSE
+	///ropes_designs
 	var/static/list/ropes_designs
 
+	///torso_styles
 	var/list/torso_styles = list(
 		"Torso",
 		"Groin"

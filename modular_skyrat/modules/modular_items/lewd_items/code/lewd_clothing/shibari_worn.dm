@@ -10,8 +10,12 @@
 	strip_delay = 100
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 	item_flags = DROPDEL
+
+	///colors
 	var/current_color = "pink"
+	///tightness
 	var/tight = "low"
+	///rope amount
 	var/rope_amount = 1
 
 /obj/item/clothing/under/shibari/Destroy(force)
