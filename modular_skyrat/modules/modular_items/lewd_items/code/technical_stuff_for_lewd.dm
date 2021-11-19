@@ -90,6 +90,23 @@
 		/obj/item/wrench = 1)
 	generate_items_inside(items_inside,src)
 
+//Shibari stand
+/obj/item/storage/box/shibari_stand
+	name = "DIY Shibari stand kit"
+	desc = "Contains everything you need to build your own shibari stand!"
+
+/obj/item/storage/box/shibari_stand/PopulateContents()
+	var/static/items_inside = list(
+		/obj/item/shibari_stand_kit = 1,
+		/obj/item/wrench = 1,
+		/obj/item/screwdriver= 1,
+		/obj/item/paper/shibari_kit_instructions = 1)
+	generate_items_inside(items_inside,src)
+
+//Paper instructions for shibari kit
+
+/obj/item/paper/shibari_kit_instructions
+	info = "Hello! Congratulations on your purchase of shibari kit by LustWish! Some newbies may get confused by that gear, so we prepared a small instructions for you! First of all - you can use screwdriver to change color of your shibari stand. Just replace one plastic fittings to another! Second - if you want to tie somebody to bondage stand you need to apply full body bondage on them. To do that you need to use rope on body and then on groin of character, then you can just drag them to stand. Don't forget to hold ropes in your hands while doing this! You can't tie them to stand without ropes. And that's it!"
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////This code is supposed to be placed in "code/modules/mob/living/carbon/human/inventory.dm"/////////////
 //If you are nice person you can transfer this part of code to it, but i didn't for modularisation reasons//

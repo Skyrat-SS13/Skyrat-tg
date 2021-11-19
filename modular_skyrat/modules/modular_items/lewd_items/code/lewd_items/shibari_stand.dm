@@ -17,12 +17,32 @@
 	var/obj/item/stack/shibari_rope/ropee = null
 	///color
 	var/current_color = "pink"
+	var/static/list/shibaristand_designs
+
+//Required for color customisation for already assembled shibari stand
+/obj/structure/chair/shibari_stand/proc/populate_shibaristand_designs()
+	shibaristand_designs = list(
+		"pink" = image (icon = src.icon, icon_state = "shibari_stand_pink"),
+		"teal" = image (icon = src.icon, icon_state = "shibari_stand_teal"),
+		"black" = image (icon = src.icon, icon_state = "shibari_stand_black"),
+		"red" = image (icon = src.icon, icon_state = "shibari_stand_red"),
+		"white" = image (icon = src.icon, icon_state = "shibari_stand_white"))
+
+//Some checks so ghosts can't fuck with it in any way. Just a precaution
+/obj/structure/chair/shibari_stand/proc/check_menu(mob/living/user)
+	if(!istype(user))
+		return FALSE
+	if(user.incapacitated())
+		return FALSE
+	return TRUE
 
 // Default initialization
 /obj/structure/chair/shibari_stand/Initialize()
 	. = ..()
 	update_icon_state()
 	update_icon()
+	if(!length(shibaristand_designs))
+		populate_shibaristand_designs()
 
 /obj/structure/chair/shibari_stand/update_icon_state()
 	. = ..()
@@ -48,6 +68,12 @@
 		var/mob/living/buckled_mob = buckled_mobs[1]
 		user_unbuckle_mob(buckled_mob, user)
 
+//Examine changes for this structure
+/obj/structure/chair/shibari_stand/examine(mob/user)
+	.=..()
+	. += span_notice("Looks like it can be customized with a <b>screwdriver</b>.")
+	if(!has_buckled_mobs() && can_buckle)
+		. += span_notice("While standing on [src], drag and drop character <b>with shibari full-body bondage</b> onto [src] to tie a person to it, <b>while holding ropes in your hands</b>.")
 
 // Object cannot rotate
 /obj/structure/chair/shibari_stand/can_be_rotated(mob/user)
@@ -205,7 +231,6 @@
 	icon_state = "shibari_kit"
 	w_class = WEIGHT_CLASS_HUGE
 	var/current_color = "pink"
-	var/color_changed = FALSE
 	var/static/list/shibarikit_designs
 
 /obj/item/shibari_stand_kit/proc/populate_shibarikit_designs()
@@ -220,12 +245,19 @@
 /obj/item/shibari_stand_kit/Initialize()
 	. = ..()
 	populate_shibarikit_designs()
+	//random color variation on start. Because why not?
+	current_color = pick(shibarikit_designs)
 	update_icon_state()
 	update_icon()
 
 /obj/item/shibari_stand_kit/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]_[current_color]"
+
+//Changing examine for this item
+/obj/item/shibari_stand_kit/examine(mob/user)
+	.=..()
+	. += span_notice("Looks like it can be customized with a <b>screwdriver</b>.")
 
 //to change model
 /obj/item/shibari_stand_kit/screwdriver_act(mob/living/user, obj/item/tool)
@@ -245,23 +277,38 @@
 		return FALSE
 	return TRUE
 
+//Assembling shibari stand
 /obj/item/shibari_stand_kit/wrench_act(mob/living/user, obj/item/tool)
 	to_chat(user, span_notice("You begin fastening the frame to the floor."))
 	if(tool.use_tool(src, user, 8 SECONDS, volume=50))
 		to_chat(user, span_notice("You assemble the frame."))
 		var/obj/structure/chair/shibari_stand/stand = new
 		stand.icon_state = "shibari_stand_[current_color]"
+		stand.current_color = current_color
 		stand.forceMove(get_turf(src))
 		qdel(src)
 	return TRUE
 
+//Disassembling shibari stand
 /obj/structure/chair/shibari_stand/wrench_act(mob/living/user, obj/item/tool)
 	to_chat(user, span_notice("You begin unfastening the frame of \the [src]..."))
 	if(tool.use_tool(src, user, 8 SECONDS, volume=50))
 		to_chat(user, span_notice("You disassemble \the [src]."))
-		var/obj/item/shibari_stand_kit/stand = new
-		stand.icon_state = "shibari_kit_[current_color]"
-		stand.forceMove(get_turf(src))
+		var/obj/item/shibari_stand_kit/kit = new
+		kit.icon_state = "shibari_kit_[current_color]"
+		kit.current_color = current_color
+		kit.forceMove(get_turf(src))
 		unbuckle_all_mobs()
 		qdel(src)
+	return TRUE
+
+//Changing color of shibari stand
+/obj/structure/chair/shibari_stand/screwdriver_act(mob/living/user, obj/item/tool)
+	var/choice = show_radial_menu(user,src, shibaristand_designs, custom_check = CALLBACK(src, .proc/check_menu, user, tool), radius = 36, require_near = TRUE)
+	if(!choice)
+		return FALSE
+	if(tool.use_tool(src, user, 0, volume=40))
+		to_chat(user, span_notice("You switched the frame's plastic fittings color to [choice]."))
+		current_color = choice
+		update_appearance()
 	return TRUE
