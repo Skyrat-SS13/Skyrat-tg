@@ -57,7 +57,7 @@
 	fire_sound = 'sound/weapons/gun/smg/shot_suppressed.ogg'
 
 /obj/projectile/beam/laser/hardlight_bullet/vintorez
-	damage = 27 // All security armory firearms need to do, at minimum, laser gun damage.
+	damage = 30 // 11/20/21: Increased from 27 to 30 to improve underperforming guns.
 
 /obj/item/gun/energy/norwind
 	name = "\improper M112 'Norwind'"
@@ -123,9 +123,8 @@
 	fire_sound = 'sound/weapons/gun/smg/shot.ogg'
 
 /obj/projectile/beam/laser/hardlight_bullet/ostwind
-	damage = 27 // Minimum damage increase to at least base /tg/ laser gun damage.
-	embedding = list(embed_chance=10, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
-
+	damage = 30 // 11/20/21: Increased from 27 to 30 to improve underperforming guns.
+	// 11/20/21: Reduction in embedding removed to improve underperforming guns.
 /obj/item/gun/energy/pitbull
 	name = "\improper Pitbull PDW"
 	desc = "A sturdy personal defense weapon designed to fire 10mm Auto rounds."
@@ -155,7 +154,7 @@
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sfrifle_fire.ogg'
 
 /obj/projectile/beam/laser/hardlight_bullet/pitbull
-	damage = 27
+	damage = 30 // 11/20/21: Increased from 27 to 30 to improve underperforming guns.
 
 /obj/item/gun/energy/pcr
 	name = "\improper PCR-9 SMG"
@@ -184,7 +183,7 @@
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/smg_fire.ogg'
 
 /obj/projectile/beam/laser/hardlight_bullet/pcr
-	damage = 27 // Minimum damage increase to at least base /tg/ laser gun damage.
+	damage = 30 // 11/20/21: Increased from 27 to 30 to improve underperforming guns.
 
 /* TODO: Use for SolFed.
 /obj/item/gun/energy/peacemaker
@@ -208,14 +207,99 @@
 	damage = 60
 */
 
-//////////////RIFLE SPAWNER
+/// Shotguns (they dont miss)
+
+/obj/item/gun/ballistic/shotgun/m23
+	name = "\improper pump shotgun"
+	desc = "A common outdated police shotgun sporting a six-round tube."
+	icon_state = "riotshotgun"
+	inhand_icon_state = "shotgun"
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/m23
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
+
+/obj/item/ammo_box/magazine/internal/shot/m23
+	name = "m23 shotgun internal magazine"
+	caliber = CALIBER_SHOTGUN
+	ammo_type = /obj/item/ammo_casing/shotgun
+	max_ammo = 6
+
+/obj/item/gun/ballistic/shotgun/automatic/as2
+	name = "auto-shotgun"
+	desc = "A revolving automatic shotgun with a six round internal tube."
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+	icon_state = "as2"
+	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
+	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
+	inhand_icon_state = "riot_shotgun"
+	inhand_x_dimension = 32
+	inhand_y_dimension = 32
+	can_suppress = TRUE
+	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/suppressed_shotgun.ogg'
+	suppressed_volume = 100
+	vary_fire_sound = TRUE
+	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/shotgun_light.ogg'
+	fire_delay = 5
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/as2
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
+
+/obj/item/ammo_box/magazine/internal/shot/as2
+	name = "shotgun internal magazine"
+	caliber = CALIBER_SHOTGUN
+	ammo_type = /obj/item/ammo_casing/shotgun
+	max_ammo = 6
+
+/obj/item/gun/ballistic/shotgun/sas14
+	name = "box-fed shotgun"
+	desc = "A revolving automatic shotgun with a six round box magazine."
+	icon =  'modular_skyrat/modules/sec_haul/icons/guns/sas14.dmi'
+	icon_state = "sas14"
+	inhand_icon_state = "shotgun"
+	worn_icon_state = "shotgun"
+	can_suppress = TRUE
+	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/suppressed_shotgun.ogg'
+	suppressed_volume = 100
+	vary_fire_sound = TRUE
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/shotgun_bm.ogg'
+	fire_delay = 5
+	mag_type = /obj/item/ammo_box/magazine/sas14
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
+	weapon_weight = WEAPON_MEDIUM
+	burst_size = 1
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
+	semi_auto = FALSE
+	internal_magazine = FALSE
+	armadyne = TRUE
+
+/obj/item/ammo_box/magazine/sas14
+	name = "12G box magazine"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon_state = "sas14"
+	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	caliber = CALIBER_SHOTGUN
+	ammo_type = /obj/item/ammo_casing/shotgun
+	max_ammo = 6
+
+
+// Gun Spawners
 /obj/effect/spawner/armory_spawn/rifles
 	icon_state = "random_rifle"
-	gun_count = 4
 	guns = list(
 		/obj/item/gun/energy/pcr,
 		/obj/item/gun/energy/pitbull,
 		/obj/item/gun/energy/ostwind,
 		/obj/item/gun/energy/norwind,
 		/obj/item/gun/energy/vintorez,
+	)
+
+/obj/effect/spawner/armory_spawn/shotguns
+	icon_state = "random_shotgun"
+	guns = list(
+		/obj/item/gun/ballistic/shotgun/m23, // I used the shotgun.
+		/obj/item/gun/ballistic/shotgun/m23, // You know why?
+		/obj/item/gun/ballistic/shotgun/riot, // Because it stops crime.
+		/obj/item/gun/ballistic/shotgun/riot, // And it stops crime by reducing the number of criminals roaming the fucking halls.
 	)

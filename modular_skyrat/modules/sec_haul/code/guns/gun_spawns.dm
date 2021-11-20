@@ -2,11 +2,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/spawner.dmi'
 	icon_state = "random_gun"
 	layer = OBJ_LAYER
-	/// How many guns will be spawned here.
-	var/gun_count = 1
-	/// If the same gun can be spawned twice.
-	var/gun_doubles = TRUE
-	/// A list of possible guns to spawn.
+	/// A list of guns to spawn.
 	var/list/guns
 	/// Do we fan out the items spawned for a natural effect?
 	var/fan_out_items = TRUE
@@ -19,47 +15,28 @@
 
 /obj/effect/spawner/armory_spawn/Initialize(mapload)
 	..()
-	if(guns?.len)
-		var/guns_spawned = 0
-		while((gun_count - guns_spawned) && guns.len)
-			var/gunspawn = pick_weight(guns)
-			while(islist(gunspawn))
-				gunspawn = pick_weight(gunspawn)
-			if(!gun_doubles)
-				guns.Remove(gunspawn)
+	for(var/gun in guns) // 11/20/21: Gun spawners now spawn 1 of each gun in it's list no matter what, so as to reduce the RNG of the armory stock.
+		var/obj/item/gun/spawned_gun = new gun(loc)
 
-			if(gunspawn)
-				var/obj/item/gun/spawned_gun = new gunspawn(loc)
+		if(vertial_guns)
+			spawned_gun.place_on_rack()
+			spawned_gun.pixel_x = rand(-10,10)
 
-				if(vertial_guns)
-					spawned_gun.place_on_rack()
-					spawned_gun.pixel_x = rand(-10,10)
+		if(istype(spawned_gun, /obj/item/gun/ballistic))
+			var/obj/item/gun/ballistic/spawned_ballistic_gun = spawned_gun
+			if(spawned_ballistic_gun.magazine && !istype(spawned_ballistic_gun.magazine, /obj/item/ammo_box/magazine/internal))
+				var/obj/item/storage/box/ammo_box/spawned_box = new(loc)
+				spawned_box.name = "ammo box - [spawned_ballistic_gun.name]"
+				for(var/i in 1 to mags_to_spawn)
+					new spawned_ballistic_gun.mag_type (spawned_box)
 
-				if(istype(spawned_gun, /obj/item/gun/ballistic))
-					var/obj/item/gun/ballistic/spawned_ballistic_gun = spawned_gun
-					if(spawned_ballistic_gun.magazine && !istype(spawned_ballistic_gun.magazine, /obj/item/ammo_box/magazine/internal))
-						var/obj/item/storage/box/ammo_box/spawned_box = new(loc)
-						spawned_box.name = "ammo box - [spawned_ballistic_gun.name]"
-						for(var/i in 1 to mags_to_spawn)
-							new spawned_ballistic_gun.mag_type (spawned_box)
-
-			guns_spawned++
 	return INITIALIZE_HINT_QDEL
 
-/obj/effect/spawner/armory_spawn/shotguns
-	icon_state = "random_shotgun"
-	gun_count = 4
-	guns = list(
-		/obj/item/gun/ballistic/shotgun/m23,
-		/obj/item/gun/ballistic/shotgun/automatic/as2,
-		/obj/item/gun/ballistic/shotgun/sas14,
-	)
-
 /obj/structure/closet/ammunitionlocker/useful/PopulateContents()
-	new /obj/item/storage/box/rubbershot_14gauge(src)
-	new /obj/item/storage/box/rubbershot_14gauge(src)
-	new /obj/item/storage/box/rubbershot_14gauge(src)
-	new /obj/item/storage/box/rubbershot_14gauge(src)
+	new /obj/item/storage/box/rubbershot(src)
+	new /obj/item/storage/box/rubbershot(src)
+	new /obj/item/storage/box/rubbershot(src)
+	new /obj/item/storage/box/rubbershot(src)
 
 //////////////////////////AMMO BOXES
 /obj/item/storage/box/ammo_box
@@ -74,10 +51,8 @@
 	new /obj/item/storage/bag/ammo(src)
 	new /obj/item/gun_maintenance_supplies(src)
 
-
 /obj/effect/spawner/armory_spawn/centcom_rifles
 	icon_state = "random_rifle"
-	gun_count = 2
 	guns = list(
 		/obj/item/gun/ballistic/automatic/ar,
 		/obj/item/gun/ballistic/automatic/assault_rifle/m16,
@@ -85,7 +60,6 @@
 	)
 
 /obj/effect/spawner/armory_spawn/centcom_lasers
-	gun_count = 2
 	guns = list(
 		/obj/item/gun/energy/laser,
 		/obj/item/gun/energy/laser/cfa_paladin,
