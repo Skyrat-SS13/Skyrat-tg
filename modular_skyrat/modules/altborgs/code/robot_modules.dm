@@ -109,46 +109,46 @@
 			cyborg_base_icon = "qualified_doctor"
 		if("Zoomba")
 			cyborg_base_icon = "zoomba_med"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi'
 			model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)
 		if("Droid")
 			cyborg_base_icon = "medical"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi'
 			hat_offset = 4
 		if("Sleek")
 			cyborg_base_icon = "sleekmed"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi'
 		if("Marina")
 			cyborg_base_icon = "marinamed"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi'
 		if("Eyebot")
 			cyborg_base_icon = "eyebotmed"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi'
 			model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)
 		if("Heavy")
 			cyborg_base_icon = "heavymed"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi'
 		if("Bootyborg")
 			cyborg_base_icon = "bootymedical"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi'
 		if("Male Bootyborg")
 			cyborg_base_icon = "male_bootymedical"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi'
 		if("Protectron")
 			cyborg_base_icon = "protectron_medical"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi'
 		if("Miss M")
 			cyborg_base_icon = "missm_med"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi'
 		if("Arachne")
 			cyborg_base_icon = "arachne"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi'
 		if("Insekt")
 			cyborg_base_icon = "insekt-Med"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi'
 		if("Mech")
 			cyborg_base_icon = "gibbs"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi'
 		//Dogborgs
 		if("Hound")
 			cyborg_base_icon = "medihound"
