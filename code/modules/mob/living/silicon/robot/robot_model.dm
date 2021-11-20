@@ -417,31 +417,6 @@
 	model_select_icon = "medical"
 	model_traits = list(TRAIT_PUSHIMMUNE)
 	hat_offset = 3
-	// SKYRAT EDIT START: Adds all the cyborg skins.
-	borg_skins = list(
-		"Machinified Doctor" = list(SKIN_ICON_STATE = "medical", SKIN_TRAITS = list(R_TRAIT_SMALL)),
-		"Qualified Doctor" = list(SKIN_ICON_STATE = "qualified_doctor"),
-		"Zoomba" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "zoomba_med"),
-		"Droid" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "medical", SKIN_HAT_OFFSET = 4),
-		"Sleek" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "sleekmed"),
-		"Marina" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "marinamed"),
-		"Eyebot" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "eyebotmed", SKIN_TRAITS = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
-		"Heavy" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "heavymed"),
-		"Bootyborg" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "bootymedical"),
-		"Male Bootyborg" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "male_bootymedical"),
-		// PLEASE ASSUME THE POSITION
-		"Protectron" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "protectron_medical"),
-		"Miss M" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "missm_med"),
-		"Arachne" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "arachne"),
-		"Insekt" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "insekt-Med"),
-		"Mech" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "gibbs"),
-		"Hound" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/widerobot_med.dmi', SKIN_ICON_STATE = "medihound", SKIN_TRAITS = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
-		"Vale" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/widerobot_med.dmi', SKIN_ICON_STATE = "valemed", SKIN_TRAITS = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
-		"Alina" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/widerobot_med.dmi', SKIN_ICON_STATE = "alina-med", SKIN_TRAITS = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
-		"Drake" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/widerobot_med.dmi', SKIN_ICON_STATE = "drakemed", SKIN_TRAITS = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
-		"Borgi" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/widerobot_med.dmi', SKIN_ICON_STATE = "borgi-medi", SKIN_TRAITS = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
-	)
-	// SKYRAT EDIT END
 
 /obj/item/robot_model/miner
 	name = "Miner"
