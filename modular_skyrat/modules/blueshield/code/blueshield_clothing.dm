@@ -19,7 +19,7 @@
 
 /obj/item/clothing/under/rank/security/blueshield/turtleneck/skirt
 	name = "blueshield's skirtleneck"
-	desc = "An alternative to the normal turtleneck with the pants replaced with a low-cut skirt. It's still made out of an expensive, all-natural wool."
+	desc = "An alternative to the normal turtleneck with the pants replaced with a high-cut skirt. It's still made out of an expensive, all-natural wool."
 	icon_state = "bs_skirtleneck"
 
 /obj/item/clothing/under/rank/security/blueshield/skirt
