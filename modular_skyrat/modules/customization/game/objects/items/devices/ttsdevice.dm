@@ -1,6 +1,6 @@
 /obj/item/ttsdevice
 	name = "TTS Device"
-	desc = "A small device with a keyboard attached. Anything entered on the keyboard is played out the speaker. \n<span class='notice'>Alt-click the device to make it beep.</span> \n<span class='notice'>Ctrl-click to name the device.</span>"
+	desc = "A small device with a keyboard attached. Anything entered on the keyboard is played out the speaker. \n<span class='notice'>Alt-click the device to make it beep.</span> \n<span class='notice'>Ctrl-click to name the device."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gangtool-purple"
 	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
@@ -20,13 +20,13 @@
 /obj/item/ttsdevice/AltClick(mob/living/user)
 	var/noisechoice = input(user, "What noise would you like to make?", "Robot Noises") as null|anything in list("Beep","Buzz","Ping")
 	if(noisechoice == "Beep")
-		user.visible_message("<span class='notice'>[user] has made their TTS beep!", "You make your TTS beep!</span>")
+		user.visible_message(span_notice("[user] has made their TTS beep!"), "You make your TTS beep!")
 		playsound(user, 'sound/machines/twobeep.ogg', 50, 1, -1)
 	if(noisechoice == "Buzz")
-		user.visible_message("<span class='notice'>[user] has made their TTS buzz!", "You make your TTS buzz!</span>")
+		user.visible_message(span_notice("[user] has made their TTS buzz!"), "You make your TTS buzz!")
 		playsound(user, 'sound/machines/buzz-sigh.ogg', 50, 1, -1)
 	if(noisechoice == "Ping")
-		user.visible_message("<span class='notice'>[user] has made their TTS ping!", "You make your TTS ping!</span>")
+		user.visible_message(span_notice("[user] has made their TTS ping!"), "You make your TTS ping!")
 		playsound(user, 'sound/machines/ping.ogg', 50, 1, -1)
 
 /obj/item/ttsdevice/CtrlClick(mob/living/user)

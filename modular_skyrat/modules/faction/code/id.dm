@@ -25,7 +25,7 @@
 		if(extra_access)
 			for(var/acs in extra_access)
 				I.access |= acs
-		to_chat(user, "<span class='notice'>You upgrade [I] with extra access.</span>")
+		to_chat(user, span_notice("You upgrade [I] with extra access."))
 		qdel(src)
 
 /obj/item/card/faction_access/guest

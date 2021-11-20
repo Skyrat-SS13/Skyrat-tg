@@ -68,6 +68,12 @@ export const exploitable_info: Feature<string> = {
   component: FeatureTextInput,
 };
 
+export const pda_ringer: Feature<string> = {
+  name: "PDA Ringer Message",
+  description: "Want your PDA to say something other than \"beep\"? Accepts the first 20 characters.",
+  component: FeatureShortTextInput,
+};
+
 export const background_info: Feature<string> = {
   name: "Records - Background",
   description: "nobody uses this lmao",
