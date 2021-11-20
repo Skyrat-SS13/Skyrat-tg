@@ -69,7 +69,7 @@
 //In inches
 #define PENIS_MAX_GIRTH 15
 #define PENIS_MIN_LENGTH 1
-#define PENIS_MAX_LENGTH 20
+#define PENIS_MAX_LENGTH 26
 
 #define SHEATH_NONE	"None"
 #define SHEATH_NORMAL "Sheath"
