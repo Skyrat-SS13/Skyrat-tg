@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(altjob)
 	// Player also needs to be a human or we're aborting.
 	if(alt_title && istype(human))
 		// ID card
-		var/obj/item/card/id/card = human.wear_id
+		var/obj/item/card/id/card = human.get_idcard()
 		if(istype(card))
 			card.assignment = alt_title
 			card.update_label()
@@ -29,3 +29,7 @@ SUBSYSTEM_DEF(altjob)
 		for(var/obj/item/pda/pda in human)
 			pda.ownjob = alt_title
 			pda.update_label()
+
+		// Wallet
+		for(var/obj/item/storage/wallet/wallet in human)
+			wallet.update_label()

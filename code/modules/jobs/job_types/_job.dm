@@ -169,9 +169,9 @@
 			experiencer.mind.adjust_experience(i, roundstart_experience[i], TRUE)
 
 
-/datum/job/proc/announce_job(mob/living/joining_mob)
+/datum/job/proc/announce_job(mob/living/joining_mob, datum/preferences/used_pref) // SKYRAT EDIT CHANGE -- customization
 	if(head_announce)
-		announce_head(joining_mob, head_announce)
+		announce_head(joining_mob, head_announce, used_pref) // SKYRAT EDIT CHANGE -- customization
 
 
 //Used for a special check of whether to allow a client to latejoin as this job.
@@ -197,9 +197,10 @@
 	dna.species.pre_equip_species_outfit(equipping, src, visual_only)
 	equip_outfit_and_loadout(equipping.outfit, used_pref, visual_only, equipping) //SKYRAT EDIT CHANGE
 
-/datum/job/proc/announce_head(mob/living/carbon/human/H, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
+/// tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
+/datum/job/proc/announce_head(mob/living/carbon/human/H, channels, datum/preferences/used_pref)  // SKYRAT EDIT CHANGE - customization
 	if(H && GLOB.announcement_systems.len)
-		var/chosen_rank = H.client?.prefs.alt_job_titles[H.job] || H.job // SKYRAT EDIT ADDITION - customization
+		var/chosen_rank = used_pref?.alt_job_titles[H.job] || H.job // SKYRAT EDIT ADDITION - customization
 
 		//timer because these should come after the captain announcement
 		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, chosen_rank, channels), 1)) // SKYRAT EDIT CHANGE - customization

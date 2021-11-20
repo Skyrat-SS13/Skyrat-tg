@@ -256,12 +256,14 @@
 		humanc = character //Let's retypecast the var to be human,
 
 	if(humanc) //These procs all expect humans
-		var/chosen_rank = humanc.client?.prefs.alt_job_titles[rank] || rank // SKYRAT EDIT ADDITION - customization
-		GLOB.data_core.manifest_inject(humanc)
+		// BEGIN SKYRAT EDIT CHANGE - customization
+		var/chosen_rank = humanc.client?.prefs.alt_job_titles[rank] || rank
+		GLOB.data_core.manifest_inject(humanc, humanc.client)
 		if(SSshuttle.arrivals)
-			SSshuttle.arrivals.QueueAnnounce(humanc, chosen_rank) // SKYRAT EDIT CHANGE - customization
+			SSshuttle.arrivals.QueueAnnounce(humanc, chosen_rank)
 		else
-			announce_arrival(humanc, chosen_rank) // SKYRAT EDIT CHANGE - customization
+			announce_arrival(humanc, chosen_rank)
+		// END SKYRAT EDIT CHANGE - customization
 		AddEmploymentContract(humanc)
 
 		humanc.increment_scar_slot()

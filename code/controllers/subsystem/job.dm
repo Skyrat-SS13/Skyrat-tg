@@ -531,7 +531,7 @@ SUBSYSTEM_DEF(job)
 
 	equipping.on_job_equipping(job, player_client?.prefs) //SKYRAT EDIT CHANGE
 
-	job.announce_job(equipping)
+	job.announce_job(equipping, player_client?.prefs)  //SKYRAT EDIT CHANGE - customization
 
 	if(player_client?.holder)
 		if(CONFIG_GET(flag/auto_deadmin_players) || (player_client.prefs?.toggles & DEADMIN_ALWAYS))

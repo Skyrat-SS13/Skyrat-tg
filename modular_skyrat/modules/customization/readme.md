@@ -45,7 +45,8 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
  ./code/modules/mob/dead/new_player/new_player.dm > /mob/dead/new_player/proc/IsJobUnavailable(), /proc/get_job_unavailable_error_message(), /mob/dead/new_player/proc/AttemptLateSpawn()
 
  ./code/datums/datacore.dm > /datum/datacore/proc/get_manifest()
- ./code/modules/jobs/job_types/_job.dm > /datum/job/proc/announce_head()
+ ./code/modules/jobs/job_types/_job.dm > /datum/job/proc/announce_head(), /datum/job/proc/announce_job()
+ ./ >
 
 ### Defines:
 
