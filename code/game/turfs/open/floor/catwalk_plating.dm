@@ -21,6 +21,7 @@
 	. = ..()
 	update_icon(UPDATE_OVERLAYS)
 
+/* SKYRAT EDIT - moved to modular_skyrat\modules\aesthetics\catwalk_plating\catwalk_plating.dm
 /turf/open/floor/catwalk_floor/update_overlays()
 	. = ..()
 	var/static/image/catwalk_overlay
@@ -33,6 +34,7 @@
 		catwalk_overlay = catwalk_overlay.appearance
 	if(covered)
 		. += catwalk_overlay
+*/
 
 /turf/open/floor/catwalk_floor/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ..()
