@@ -155,7 +155,6 @@
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/widerobot_med.dmi'
 			sleeper_overlay = "msleeper"
 			model_select_icon = "medihound"
-			model_select_alternate_icon = 'modular_skyrat/modules/altborgs/icons/ui/screen_cyborg.dmi'
 			model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 		if("Darkhound")
 			cyborg_base_icon = "medihounddark"
@@ -169,7 +168,6 @@
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/widerobot_med.dmi'
 			sleeper_overlay = "valemedsleeper"
 			model_select_icon = "medihound"
-			model_select_alternate_icon = 'modular_skyrat/modules/altborgs/icons/ui/screen_cyborg.dmi'
 			model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 		if("Alina")
 			cyborg_base_icon = "alina-med"
@@ -177,21 +175,18 @@
 			special_light_key = "alina"
 			sleeper_overlay = "alinasleeper"
 			model_select_icon = "medihound"
-			model_select_alternate_icon = 'modular_skyrat/modules/altborgs/icons/ui/screen_cyborg.dmi'
 			model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 		if("Drake")
 			cyborg_base_icon = "drakemed"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/widerobot_med.dmi'
 			sleeper_overlay = "drakemedsleeper"
 			model_select_icon = "medihound"
-			model_select_alternate_icon = 'modular_skyrat/modules/altborgs/icons/ui/screen_cyborg.dmi'
 			model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 		if("Borgi")
 			cyborg_base_icon = "borgi-medi"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/widerobot_med.dmi'
 			sleeper_overlay = "borgi-medi-sleeper"
 			model_select_icon = "medihound"
-			model_select_alternate_icon = 'modular_skyrat/modules/altborgs/icons/ui/screen_cyborg.dmi'
 			model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE, R_TRAIT_SMALL)
 		else
 			return FALSE
