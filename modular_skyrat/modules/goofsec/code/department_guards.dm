@@ -424,7 +424,7 @@
 				if(non_departmental_uses_left)
 					say("[non_departmental_uses_left] non-departmental uses left!")
 				else
-					say("All your departmental baton usages have been expended! Return to your department to recharge by reactivating the baton in the department!")
+					say("[src] is out of non-departmental charges! Return to your department and reactivate the baton to recharge it!")
 			else
 				target.visible_message(span_warning("[user] prods [target] with [src]. Luckily, it shut off due to being in the wrong area."), \
 					span_warning("[user] prods you with [src]. Luckily, it shut off due to being in the wrong area."))
