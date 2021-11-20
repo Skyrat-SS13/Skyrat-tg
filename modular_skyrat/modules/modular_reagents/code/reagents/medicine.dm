@@ -38,7 +38,7 @@
 
 /datum/reagent/inverse/lidocaine/on_mob_life(mob/living/carbon/owner, delta_time, times_fired)
 	..()
-	to_chat(owner, "<span class='userdanger'>Your body aches with unimaginable pain!</span>")
+	to_chat(owner, span_userdanger("Your body aches with unimaginable pain!"))
 	owner.adjustOrganLoss(ORGAN_SLOT_HEART,3 * REM * delta_time, 85)
 	owner.adjustStaminaLoss(5 * REM * delta_time, 0)
 	if(prob(30))

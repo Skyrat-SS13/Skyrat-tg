@@ -29,7 +29,7 @@
 /obj/item/flashlight/examine(mob/user)
 	. = ..()
 	if(has_modes)
-		. += "<span class='notice'>This flashlight has modes! Ctrl+click it to change the mode.</span>"
+		. += span_notice("This flashlight has modes! Ctrl+click it to change the mode.")
 
 /obj/item/flashlight/CtrlClick(mob/user)
 	. = ..()
@@ -41,21 +41,21 @@
 				light_power = initial(light_power)
 				set_light_on(on)
 				flashlight_mode = 1
-				to_chat(user, "<span class='notice'>You set [src] to low.</span>")
+				to_chat(user, span_notice("You set [src] to low."))
 			if(1)
 				power_use_amount = POWER_CELL_USE_VERY_LOW
 				light_range = initial(light_range) + 2
 				light_power = initial(light_power) + 1
 				set_light_on(on)
 				flashlight_mode = 2
-				to_chat(user, "<span class='notice'>You set [src] to medium.</span>")
+				to_chat(user, span_notice("You set [src] to medium."))
 			if(2)
 				power_use_amount = POWER_CELL_USE_LOW
 				light_range = initial(light_range) + 4
 				light_power = initial(light_power) + 2
 				set_light_on(on)
 				flashlight_mode = 0
-				to_chat(user, "<span class='notice'>You set [src] to high.</span>")
+				to_chat(user, span_notice("You set [src] to high."))
 
 /obj/item/flashlight/attack_self(mob/user)
 	. = ..()

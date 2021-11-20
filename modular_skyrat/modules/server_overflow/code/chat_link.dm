@@ -30,6 +30,6 @@
 	for(var/client/C in GLOB.clients)
 		if(C.prefs.chat_toggles & CHAT_OOC)
 			if(GLOB.OOC_COLOR)
-				to_chat(C, "<span class='oocplain'><font color='[GLOB.OOC_COLOR]'><b><span class='prefix'>OOC:</span> <EM>[sender_name]:</EM> <span class='message linkify'>[message]</span></b></font></span>")
+				to_chat(C, span_oocplain("<font color='[GLOB.OOC_COLOR]'><b><span class='prefix'>OOC:</span> <EM>[sender_name]:</EM> <span class='message linkify'>[message]</span></b></font>"))
 			else
-				to_chat(C, "<span class='ooc'><span class='prefix'>OOC:</span> <EM>[sender_name]:</EM> <span class='message linkify'>[message]</span></span>")
+				to_chat(C, span_ooc(span_prefix("OOC:</span> <EM>[sender_name]:</EM> <span class='message linkify'>[message]</span>"))
