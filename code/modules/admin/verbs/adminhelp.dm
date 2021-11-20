@@ -201,11 +201,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
  * * msg_raw - The first message of this admin_help: used for the initial title of the ticket
  * * is_bwoink - Boolean operator, TRUE if this ticket was started by an admin PM
  */
-<<<<<<< HEAD
-/datum/admin_help/New(msg_raw, client/C, is_bwoink, client/admin_C) //SKYRAT EDIT CHANGE
-=======
-/datum/admin_help/New(msg_raw, client/C, is_bwoink, urgent = FALSE)
->>>>>>> fb8d95a2f52 (Allows players to send more visible adminhelps when no admins are on, which'll definitely alert admins (#62711))
+/datum/admin_help/New(msg_raw, client/C, is_bwoink, client/admin_C, urgent = FALSE) //SKYRAT EDIT CHANGE
 	//clean the input msg
 	var/msg = sanitize(copytext_char(msg_raw, 1, MAX_MESSAGE_LEN))
 	if(!msg || !C || !C.mob)
