@@ -41,7 +41,7 @@
 	description = "The creators of these vaults were a highly advanced and benevolent race, and launched many into the stars, hoping to aid fledgling civilizations. \
 	However, all the inhabitants seem to do is grow drugs and guns."
 	suffix = "lavaland_surface_seed_vault.dmm"
-	cost = 5
+	cost = 7
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/lavaland/ash_walker
