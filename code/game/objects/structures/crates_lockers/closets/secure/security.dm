@@ -119,23 +119,21 @@
 	new /obj/item/storage/belt/security/full(src)
 
 // SKYRAT EDIT CHANGE -- GOOFSEC DEP GUARDS
-// Due to there only being one of these lockers on most maps and 2 jobslots, we load it up with an extra set of gear.
 /obj/structure/closet/secure_closet/security/cargo
 	name = "\proper customs agent's locker"
 	req_access = list(ACCESS_SEC_DOORS, ACCESS_CARGO)
 	icon_state = "qm"
 
 /obj/structure/closet/secure_closet/security/cargo/PopulateContents()
-	for(var/i in 1 to 2)
-		new /obj/item/radio/headset/headset_cargo(src)
-		new /obj/item/clothing/shoes/sneakers/black(src)
-		new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent(src)
-		new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
-		new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent(src)
-		new /obj/item/restraints/handcuffs/cable/orange(src)
-		new /obj/item/assembly/flash/handheld(src)
-		new /obj/item/melee/baton/security/loaded/departmental/cargo(src)
-		new /obj/item/clothing/glasses/hud/security(src)
+	new /obj/item/radio/headset/headset_cargo(src)
+	new /obj/item/clothing/shoes/sneakers/black(src)
+	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent(src)
+	new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
+	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent(src)
+	new /obj/item/restraints/handcuffs/cable/orange(src)
+	new /obj/item/assembly/flash/handheld(src)
+	new /obj/item/melee/baton/security/loaded/departmental/cargo(src)
+	new /obj/item/clothing/glasses/hud/security(src)
 
 /obj/structure/closet/secure_closet/security/engine
 	name = "\proper engineering guard's locker"
@@ -143,16 +141,15 @@
 	icon_state = "eng_secure"
 
 /obj/structure/closet/secure_closet/security/engine/PopulateContents()
-	for(var/i in 1 to 2)
-		new /obj/item/radio/headset/headset_eng(src)
-		new /obj/item/clothing/shoes/workboots(src)
-		new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard(src)
-		new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
-		new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard(src)
-		new /obj/item/restraints/handcuffs/cable/yellow(src)
-		new /obj/item/assembly/flash/handheld(src)
-		new /obj/item/melee/baton/security/loaded/departmental/engineering(src)
-		new /obj/item/clothing/glasses/hud/security(src)
+	new /obj/item/radio/headset/headset_eng(src)
+	new /obj/item/clothing/shoes/workboots(src)
+	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard(src)
+	new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
+	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard(src)
+	new /obj/item/restraints/handcuffs/cable/yellow(src)
+	new /obj/item/assembly/flash/handheld(src)
+	new /obj/item/melee/baton/security/loaded/departmental/engineering(src)
+	new /obj/item/clothing/glasses/hud/security(src)
 
 /obj/structure/closet/secure_closet/security/science
 	name = "\proper science guard's locker"
@@ -160,16 +157,15 @@
 	icon_state = "science"
 
 /obj/structure/closet/secure_closet/security/science/PopulateContents()
-	for(var/i in 1 to 2)
-		new /obj/item/radio/headset/headset_sci(src)
-		new /obj/item/clothing/shoes/sneakers/black(src)
-		new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat(src)
-		new /obj/item/clothing/head/helmet/blueshirt/skyrat(src)
-		new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat(src)
-		new /obj/item/restraints/handcuffs/cable/pink(src)
-		new /obj/item/assembly/flash/handheld(src)
-		new /obj/item/melee/baton/security/loaded/departmental/science(src)
-		new /obj/item/clothing/glasses/hud/security(src)
+	new /obj/item/radio/headset/headset_sci(src)
+	new /obj/item/clothing/shoes/sneakers/black(src)
+	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat(src)
+	new /obj/item/clothing/head/helmet/blueshirt/skyrat(src)
+	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat(src)
+	new /obj/item/restraints/handcuffs/cable/pink(src)
+	new /obj/item/assembly/flash/handheld(src)
+	new /obj/item/melee/baton/security/loaded/departmental/science(src)
+	new /obj/item/clothing/glasses/hud/security(src)
 
 /obj/structure/closet/secure_closet/security/med
 	name = "\proper orderly's locker"
@@ -177,16 +173,15 @@
 	icon_state = "med_secure"
 
 /obj/structure/closet/secure_closet/security/med/PopulateContents()
-	for(var/i in 1 to 2)
-		new /obj/item/radio/headset/headset_med(src)
-		new /obj/item/clothing/shoes/sneakers/white(src)
-		new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/orderly(src)
-		new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
-		new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly(src)
-		new /obj/item/restraints/handcuffs/cable/blue(src)
-		new /obj/item/assembly/flash/handheld(src)
-		new /obj/item/melee/baton/security/loaded/departmental/medical(src)
-		new /obj/item/clothing/glasses/hud/security(src)
+	new /obj/item/radio/headset/headset_med(src)
+	new /obj/item/clothing/shoes/sneakers/white(src)
+	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/orderly(src)
+	new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
+	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly(src)
+	new /obj/item/restraints/handcuffs/cable/blue(src)
+	new /obj/item/assembly/flash/handheld(src)
+	new /obj/item/melee/baton/security/loaded/departmental/medical(src)
+	new /obj/item/clothing/glasses/hud/security(src)
 // SKYRAT EDIT CHANGE END -- GOOFSEC DEP GUARDS
 
 /obj/structure/closet/secure_closet/detective
