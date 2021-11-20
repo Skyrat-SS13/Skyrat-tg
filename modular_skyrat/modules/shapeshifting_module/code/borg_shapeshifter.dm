@@ -648,32 +648,32 @@
 						disguise_icon_override = 'icons/mob/robots.dmi'
 					if("(Janitor) Marina")
 						disguise = "marinajan"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_jani.dmi'
 					if("(Janitor) Sleek")
 						disguise = "sleekjan"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_jani.dmi'
 					if("(Janitor) Can")
 						disguise = "canjan"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_jani.dmi'
 					if("(Janitor) Heavy")
 						disguise = "heavyres"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_jani.dmi'
 					if("(Janitor) Zoomba")
 						disguise = "zoomba_jani"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_jani.dmi'
 						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)
 					if("(Janitor) Bootyborg")
 						disguise = "bootyjanitor"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_jani.dmi'
 					if("(Janitor) Male Bootyborg")
 						disguise = "male_bootyjanitor"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_jani.dmi'
 					if("(Janitor) Protectron")
 						disguise = "protectron_janitor"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_jani.dmi'
 					if("(Janitor) Miss M")
 						disguise = "missm_janitor"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_jani.dmi'
 
 					//Dogborgs
 					if("(Service) Darkhound")

@@ -8,10 +8,8 @@
 
 //SERVICE
 /obj/item/robot_model/service/skyrat
-	name = "Skyrat Service"
 	special_light_key = null
 
 //MINING
 /obj/item/robot_model/miner/skyrat
-	name = "Skyrat Miner"
 	special_light_key = null
