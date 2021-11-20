@@ -56,6 +56,7 @@
 
 	new /obj/item/cartridge/hos(src)
 	new /obj/item/radio/headset/heads/hos(src)
+	new /obj/item/radio/headset/heads/hos/alt(src) // SKYRAT EDIT ADDITION
 	new /obj/item/storage/bag/garment/hos(src)
 	new /obj/item/storage/lockbox/medal/sec(src)
 	new /obj/item/megaphone/sec(src)
@@ -63,7 +64,7 @@
 	new /obj/item/storage/lockbox/loyalty(src)
 	new /obj/item/storage/box/flashbangs(src)
 	new /obj/item/shield/riot/tele(src)
-	new /obj/item/storage/belt/security/peacekeeper/full(src) //SKYRAT EDIT CHANGE - SEC_HAUL
+	new /obj/item/storage/belt/security/full(src)
 	new /obj/item/gun/energy/e_gun/hos(src)
 	new /obj/item/pinpointer/nuke(src)
 	new /obj/item/circuitboard/machine/techfab/department/security(src)
@@ -91,7 +92,7 @@
 	new /obj/item/clothing/mask/gas/sechailer(src)
 	new /obj/item/storage/box/zipties(src)
 	new /obj/item/storage/box/flashbangs(src)
-	new /obj/item/storage/belt/security/peacekeeper/full(src) //SKYRAT EDIT CHANGE - SEC_HAUL
+	new /obj/item/storage/belt/security/full(src)
 	new /obj/item/flashlight/seclite(src)
 	new /obj/item/clothing/gloves/krav_maga/sec/peacekeeper(src) //SKYRAT EDIT CHANGE - SEC_HAUL
 	new /obj/item/door_remote/head_of_security(src)
@@ -100,52 +101,93 @@
 /obj/structure/closet/secure_closet/security
 	name = "security officer's locker"
 	req_access = list(ACCESS_SECURITY)
-	icon_state = "sec" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
+	icon_state = "sec"
 
 /obj/structure/closet/secure_closet/security/PopulateContents()
 	..()
-	new /obj/item/clothing/suit/armor/vest/peacekeeper(src) //SKRYAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/suit/armor/vest(src)
-	new /obj/item/clothing/head/helmet/sec/peacekeeper(src) //SKRYAT EDIT CHANGE - SEC_HAUL
-	new /obj/item/clothing/under/rank/security/peacekeeper/tactical(src) //SKYRAT EDIT ADDITON - SEC_HAUL
+	new /obj/item/clothing/suit/armor/vest(src)
+	new /obj/item/clothing/head/helmet/sec(src)
 	new /obj/item/radio/headset/headset_sec(src)
 	new /obj/item/radio/headset/headset_sec/alt(src)
-	new /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper(src) //SKRYAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/glasses/hud/security/sunglasses
+	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
 	new /obj/item/flashlight/seclite(src)
-	new /obj/item/holosign_creator/security(src) // SKYRAT EDIT ADD
 
 /obj/structure/closet/secure_closet/security/sec
 
 /obj/structure/closet/secure_closet/security/sec/PopulateContents()
 	..()
-	new /obj/item/storage/belt/security/peacekeeper/full(src) //SKYRAT EDIT CHANGE - SEC_HAUL
+	new /obj/item/storage/belt/security/full(src)
 
+// SKYRAT EDIT CHANGE -- GOOFSEC DEP GUARDS
+// Due to there only being one of these lockers on most maps and 2 jobslots, we load it up with an extra set of gear.
 /obj/structure/closet/secure_closet/security/cargo
+	name = "\proper customs agent's locker"
+	req_access = list(ACCESS_SEC_DOORS, ACCESS_CARGO)
+	icon_state = "qm"
 
 /obj/structure/closet/secure_closet/security/cargo/PopulateContents()
-	..()
-	new /obj/item/clothing/accessory/armband/cargo(src)
-	new /obj/item/encryptionkey/headset_cargo(src)
+	for(var/i in 1 to 2)
+		new /obj/item/radio/headset/headset_cargo(src)
+		new /obj/item/clothing/shoes/sneakers/black(src)
+		new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent(src)
+		new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
+		new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent(src)
+		new /obj/item/restraints/handcuffs/cable/orange(src)
+		new /obj/item/assembly/flash/handheld(src)
+		new /obj/item/melee/baton/security/loaded/departmental/cargo(src)
+		new /obj/item/clothing/glasses/hud/security(src)
 
 /obj/structure/closet/secure_closet/security/engine
+	name = "\proper engineering guard's locker"
+	req_access = list(ACCESS_SEC_DOORS, ACCESS_ENGINE_EQUIP)
+	icon_state = "eng_secure"
 
 /obj/structure/closet/secure_closet/security/engine/PopulateContents()
-	..()
-	new /obj/item/clothing/accessory/armband/engine(src)
-	new /obj/item/encryptionkey/headset_eng(src)
+	for(var/i in 1 to 2)
+		new /obj/item/radio/headset/headset_eng(src)
+		new /obj/item/clothing/shoes/workboots(src)
+		new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard(src)
+		new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
+		new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard(src)
+		new /obj/item/restraints/handcuffs/cable/yellow(src)
+		new /obj/item/assembly/flash/handheld(src)
+		new /obj/item/melee/baton/security/loaded/departmental/engineering(src)
+		new /obj/item/clothing/glasses/hud/security(src)
 
 /obj/structure/closet/secure_closet/security/science
+	name = "\proper science guard's locker"
+	req_access = list(ACCESS_SEC_DOORS, ACCESS_RESEARCH)
+	icon_state = "science"
 
 /obj/structure/closet/secure_closet/security/science/PopulateContents()
-	..()
-	new /obj/item/clothing/accessory/armband/science(src)
-	new /obj/item/encryptionkey/headset_sci(src)
+	for(var/i in 1 to 2)
+		new /obj/item/radio/headset/headset_sci(src)
+		new /obj/item/clothing/shoes/sneakers/black(src)
+		new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat(src)
+		new /obj/item/clothing/head/helmet/blueshirt/skyrat(src)
+		new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat(src)
+		new /obj/item/restraints/handcuffs/cable/pink(src)
+		new /obj/item/assembly/flash/handheld(src)
+		new /obj/item/melee/baton/security/loaded/departmental/science(src)
+		new /obj/item/clothing/glasses/hud/security(src)
 
 /obj/structure/closet/secure_closet/security/med
+	name = "\proper orderly's locker"
+	req_access = list(ACCESS_SEC_DOORS, ACCESS_MEDICAL)
+	icon_state = "med_secure"
 
 /obj/structure/closet/secure_closet/security/med/PopulateContents()
-	..()
-	new /obj/item/clothing/accessory/armband/medblue(src)
-	new /obj/item/encryptionkey/headset_med(src)
+	for(var/i in 1 to 2)
+		new /obj/item/radio/headset/headset_med(src)
+		new /obj/item/clothing/shoes/sneakers/white(src)
+		new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/orderly(src)
+		new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
+		new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly(src)
+		new /obj/item/restraints/handcuffs/cable/blue(src)
+		new /obj/item/assembly/flash/handheld(src)
+		new /obj/item/melee/baton/security/loaded/departmental/medical(src)
+		new /obj/item/clothing/glasses/hud/security(src)
+// SKYRAT EDIT CHANGE END -- GOOFSEC DEP GUARDS
 
 /obj/structure/closet/secure_closet/detective
 	name = "\improper detective's cabinet"

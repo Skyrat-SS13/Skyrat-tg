@@ -72,4 +72,5 @@
 
 /obj/effect/landmark/start/security_sergeant
 	name = "Security Sergeant"
-	icon_state = "Security Officer"
+	icon_state = "Security Sergeant"
+	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'

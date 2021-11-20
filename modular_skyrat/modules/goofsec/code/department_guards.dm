@@ -62,9 +62,13 @@
 	icon_state = "mallcop_helm"
 	worn_icon_state = "mallcop_helm"
 
+/obj/effect/landmark/start/orderly
+	name = "Orderly"
+	icon_state = "Orderly"
+	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
+
 /datum/job/orderly
 	title = "Orderly"
-	job_spawn_title = "Medical Doctor"
 	department_head = list("Chief Medical Officer")
 	faction = FACTION_STATION
 	total_positions = 2
@@ -107,11 +111,6 @@
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly
-	l_pocket = /obj/item/restraints/handcuffs
-	r_pocket = /obj/item/assembly/flash/handheld
-	backpack_contents = list(
-		/obj/item/melee/baton/security/loaded = 1,
-		)
 
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med
@@ -130,9 +129,13 @@
 	template_access = list(ACCESS_SEC_DOORS, ACCESS_CAPTAIN, ACCESS_CMO, ACCESS_CHANGE_IDS)
 	job = /datum/job/orderly
 
+/obj/effect/landmark/start/science_guard
+	name = "Science Guard"
+	icon_state = "Science Guard"
+	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
+
 /datum/job/science_guard
 	title = "Science Guard" // I'm a little busy here, Calhoun.
-	job_spawn_title = "Scientist"
 	department_head = list("Research Director")
 	faction = FACTION_STATION
 	total_positions = 2
@@ -175,11 +178,6 @@
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat
-	l_pocket = /obj/item/restraints/handcuffs
-	r_pocket = /obj/item/assembly/flash/handheld
-	backpack_contents = list(
-		/obj/item/melee/baton/security/loaded = 1,
-		)
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/science
@@ -200,9 +198,13 @@
 	template_access = list(ACCESS_CAPTAIN, ACCESS_RD, ACCESS_CHANGE_IDS)
 	job = /datum/job/science_guard
 
+/obj/effect/landmark/start/bouncer
+	name = "Bouncer"
+	icon_state = "Bouncer"
+	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
+
 /datum/job/bouncer
 	title = "Bouncer"
-	job_spawn_title = "Bartender"
 	department_head = list("Head of Personnel")
 	faction = FACTION_STATION
 	total_positions = 2
@@ -248,7 +250,7 @@
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
 	backpack_contents = list(
-		/obj/item/melee/baton/security/loaded = 1,
+		/obj/item/melee/baton/security/loaded/departmental/service = 1,
 		)
 	glasses = /obj/item/clothing/glasses/sunglasses
 
@@ -269,9 +271,13 @@
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
 	job = /datum/job/bouncer
 
+/obj/effect/landmark/start/customs_agent
+	name = "Customs Agent"
+	icon_state = "Customs Agent"
+	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
+
 /datum/job/customs_agent
 	title = "Customs Agent" // No, you don't get to ship ten kilograms of cocaine to the Spinward Stellar Coalition.
-	job_spawn_title = "Cargo Technician"
 	department_head = list("Quartermaster")
 	faction = FACTION_STATION
 	total_positions = 2
@@ -314,11 +320,6 @@
 	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent
-	l_pocket = /obj/item/restraints/handcuffs
-	r_pocket = /obj/item/assembly/flash/handheld
-	backpack_contents = list(
-		/obj/item/melee/baton/security/loaded = 1,
-		)
 
 	backpack = /obj/item/storage/backpack
 	satchel = /obj/item/storage/backpack/satchel
@@ -337,9 +338,13 @@
 	template_access = list(ACCESS_CAPTAIN, ACCESS_QM, ACCESS_CHANGE_IDS)
 	job = /datum/job/customs_agent
 
+/obj/effect/landmark/start/engineering_guard
+	name = "Engineering Guard"
+	icon_state = "Engineering Guard"
+	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
+
 /datum/job/engineering_guard
 	title = "Engineering Guard" // Listen here, this engine is a restricted area. Please leave if you aren't wearing a radioactive suit.
-	job_spawn_title = "Station Engineer"
 	department_head = list("Chief Engineer")
 	faction = FACTION_STATION
 	total_positions = 2
@@ -382,11 +387,6 @@
 	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard
-	l_pocket = /obj/item/restraints/handcuffs
-	r_pocket = /obj/item/assembly/flash/handheld
-	backpack_contents = list(
-		/obj/item/melee/baton/security/loaded = 1,
-		)
 
 	backpack = /obj/item/storage/backpack/industrial
 	satchel = /obj/item/storage/backpack/satchel/eng
@@ -406,3 +406,87 @@
 	config_job = "engineering_guard"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CE, ACCESS_CHANGE_IDS)
 	job = /datum/job/engineering_guard
+
+/obj/item/melee/baton/security/loaded/departmental
+	name = "departmental stun baton"
+	desc = "A stun baton that doesn't operate outside of the department it's assigned to. Can be used outside of a department up to three times before needing to return!"
+	icon = 'modular_skyrat/modules/goofsec/icons/departmental_batons.dmi'
+	var/list/valid_areas = list()
+	var/emagged = FALSE
+	var/non_departmental_uses_left = 3
+
+/obj/item/melee/baton/security/loaded/departmental/baton_attack(mob/living/target, mob/living/user, modifiers)
+	if(active && !emagged && cooldown_check <= world.time)
+		var/area/current_area = get_area(user)
+		if(!is_type_in_list(current_area, valid_areas))
+			if(non_departmental_uses_left)
+				non_departmental_uses_left--
+				if(non_departmental_uses_left)
+					say("[non_departmental_uses_left] non-departmental uses left!")
+				else
+					say("All your departmental baton usages have been expended! Return to your department to recharge by reactivating the baton in the department!")
+			else
+				target.visible_message(span_warning("[user] prods [target] with [src]. Luckily, it shut off due to being in the wrong area."), \
+					span_warning("[user] prods you with [src]. Luckily, it shut off due to being in the wrong area."))
+				active = FALSE
+				balloon_alert(user, "wrong department")
+				playsound(src, "sparks", 75, TRUE, -1)
+				update_appearance()
+				return BATON_ATTACK_DONE
+	. = ..()
+
+/obj/item/melee/baton/security/loaded/departmental/attack_self(mob/user)
+	. = ..()
+	if(active) // just turned on
+		var/area/current_area = get_area(user)
+		if(!is_type_in_list(current_area, valid_areas))
+			return
+		if(non_departmental_uses_left < 3)
+			say("Non-departmental uses refreshed!")
+			non_departmental_uses_left = 3
+
+/obj/item/melee/baton/security/loaded/departmental/emag_act(mob/user)
+	if(!emagged)
+		if(user)
+			user.visible_message(span_warning("Sparks fly from [src]!"),
+							span_warning("You scramble [src]'s departmental lock, allowing it to be used freely!"),
+							span_hear("You hear a faint electrical spark."))
+		balloon_alert(user, "emagged")
+		playsound(src, "sparks", 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+		emagged = TRUE
+
+/obj/item/melee/baton/security/loaded/departmental/medical
+	name = "medical stun baton"
+	desc = "A stun baton that doesn't operate outside of the Medical department. Can be used outside of Medical up to three times before needing to return!"
+	icon_state = "medical_baton"
+	valid_areas = list(/area/medical, /area/maintenance/department/medical, /area/shuttle/escape)
+
+/obj/item/melee/baton/security/loaded/departmental/engineering
+	name = "engineering stun baton"
+	desc = "A stun baton that doesn't operate outside of the Engineering department. Can be used outside of Engineering up to three times before needing to return!"
+	icon_state = "engineering_baton"
+	valid_areas = list(/area/engineering, /area/maintenance/department/engine, /area/shuttle/escape)
+
+/obj/item/melee/baton/security/loaded/departmental/science
+	name = "science stun baton"
+	desc = "A stun baton that doesn't operate outside of the Science department. Can be used outside of Science up to three times before needing to return!"
+	icon_state = "science_baton"
+	valid_areas = list(/area/science, /area/maintenance/department/science, /area/shuttle/escape)
+
+/obj/item/melee/baton/security/loaded/departmental/cargo
+	name = "cargo stun baton"
+	desc = "A stun baton that doesn't operate outside of the Cargo department. Can be used outside of Cargo up to three times before needing to return!"
+	icon_state = "cargo_baton"
+	valid_areas = list(/area/cargo, /area/maintenance/department/cargo, /area/shuttle/escape)
+
+/obj/item/melee/baton/security/loaded/departmental/service
+	name = "service stun baton"
+	desc = "A stun baton that doesn't operate outside of the Service department. Can be used outside of Service up to three times before needing to return!"
+	icon_state = "service_baton"
+	valid_areas = list(/area/service, /area/maintenance/department/chapel, /area/maintenance/department/crew_quarters, /area/shuttle/escape) // love mapping
+
+/obj/item/melee/baton/security/loaded/departmental/prison
+	name = "prison stun baton"
+	desc = "A stun baton that doesn't operate outside of the Prison. Can be used outside of the Prison up to three times before needing to return!"
+	icon_state = "prison_baton"
+	valid_areas = list(/area/security/prison, /area/security/processing, /area/shuttle/escape) // love mapping

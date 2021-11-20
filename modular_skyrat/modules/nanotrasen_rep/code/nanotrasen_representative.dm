@@ -91,7 +91,8 @@
 
 /obj/effect/landmark/start/nanotrasen_representative
 	name = "Nanotrasen Representative"
-	icon_state = "Captain"
+	icon_state = "Nanotrasen Representative"
+	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
 
 /obj/item/clothing/accessory/medal/gold/nanotrasen_representative
 	name = "medal of diplomacy"
