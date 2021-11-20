@@ -20,11 +20,7 @@
  *
  * make sure you add an update to the schema_version stable in the db changelog
  */
-<<<<<<< HEAD
-#define DB_MINOR_VERSION 20
-=======
-#define DB_MINOR_VERSION 19
->>>>>>> fb8d95a2f52 (Allows players to send more visible adminhelps when no admins are on, which'll definitely alert admins (#62711))
+#define DB_MINOR_VERSION 21
 
 
 //! ## Timing subsystem
