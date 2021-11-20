@@ -40,21 +40,15 @@
 		icon_state = base_icon_state
 		return ..()
 
-<<<<<<< HEAD
-	var/datum/reagent/largest_reagent = reagents.get_master_reagent()
-	if(largest_reagent?.glass_icon_state)
-		icon_state = largest_reagent.glass_icon_state
-		icon = largest_reagent.glass_icon || 'icons/obj/drinks.dmi' //SKYRAT EDIT ADDITION - CUSTOMIZATION
-=======
 	var/glass_icon = get_glass_icon(reagents.get_master_reagent())
 	if(glass_icon)
+		icon = largest_reagent.glass_icon || 'icons/obj/drinks.dmi' //SKYRAT EDIT ADDITION - CUSTOMIZATION
 		icon_state = glass_icon
 		fill_icon_thresholds = null
 	else
 		//Make sure the fill_icon_thresholds and the icon_state are reset. We'll use reagent overlays.
 		fill_icon_thresholds = fill_icon_thresholds || list(1)
 		icon_state = base_icon_state
->>>>>>> c29ee238ea6 (Fixes emptied shot glasses having the drinking glass filling icon. (#62920))
 	return ..()
 
 /obj/item/reagent_containers/food/drinks/proc/get_glass_icon(datum/reagent/largest_reagent)
