@@ -132,8 +132,8 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Green cowboy poncho"
 	item_path = /obj/item/clothing/neck/cowboylea
 
-/datum/loadout_item/neck/poncho_ranger
-	name = "Greyscale cowboy poncho"
+/datum/loadout_item/neck/ranger_poncho_greyscale
+	name = "Greyscale ranger poncho"
 	item_path = /obj/item/clothing/neck/ranger_poncho
 
 /datum/loadout_item/neck/crosscollar

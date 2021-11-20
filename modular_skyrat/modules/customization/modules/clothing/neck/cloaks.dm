@@ -35,7 +35,7 @@
 	icon_state = "ranger_poncho"
 	greyscale_config = /datum/greyscale_config/ranger_poncho
 	greyscale_config_worn = /datum/greyscale_config/ranger_poncho/worn
-	greyscale_colors = "#917A57,#858585"	//Roughly the same color as the original non-greyscale item was
+	greyscale_colors = "#917A57#858585"	//Roughly the same color as the original non-greyscale item was
 	flags_1 = IS_PLAYER_COLORABLE_1
 	mutant_variants = NONE
 	heat_protection = CHEST
