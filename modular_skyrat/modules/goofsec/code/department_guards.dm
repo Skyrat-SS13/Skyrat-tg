@@ -409,7 +409,7 @@
 
 /obj/item/melee/baton/security/loaded/departmental
 	name = "departmental stun baton"
-	desc = "A stun baton that doesn't operate outside of the department it's assigned to. Can be used outside of a department up to three times before needing to return!"
+	desc = "A stun baton fitted with a departmental area-lock - outside of its department, it only has three charges."
 	icon = 'modular_skyrat/modules/goofsec/icons/departmental_batons.dmi'
 	var/list/valid_areas = list()
 	var/emagged = FALSE
@@ -424,7 +424,7 @@
 				if(non_departmental_uses_left)
 					say("[non_departmental_uses_left] non-departmental uses left!")
 				else
-					say("All your departmental baton usages have been expended! Return to your department to recharge by reactivating the baton in the department!")
+					say("[src] is out of non-departmental charges! Return to your department and reactivate the baton to recharge it!")
 			else
 				target.visible_message(span_warning("[user] prods [target] with [src]. Luckily, it shut off due to being in the wrong area."), \
 					span_warning("[user] prods you with [src]. Luckily, it shut off due to being in the wrong area."))
