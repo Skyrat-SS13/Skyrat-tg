@@ -409,7 +409,7 @@
 
 /obj/item/melee/baton/security/loaded/departmental
 	name = "departmental stun baton"
-	desc = "A stun baton that doesn't operate outside of the department it's assigned to. Can be used outside of a department up to three times before needing to return!"
+	desc = "A stun baton fitted with a departmental area-lock - outside of its department, it only has three charges."
 	icon = 'modular_skyrat/modules/goofsec/icons/departmental_batons.dmi'
 	var/list/valid_areas = list()
 	var/emagged = FALSE
