@@ -96,10 +96,10 @@
 		)
 		var/list/L = list("Hound" = "medihound", "Darkhound" = "medihounddark", "Vale" = "valemed", "Borgi" = "borgi-medi")
 		for(var/a in L)
-			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi', icon_state = L[a])
+			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/widerobot_med.dmi', icon_state = L[a])
 			wide.pixel_x = -16
 			med_icons[a] = wide
-		med_icons = sortList(med_icons)
+		med_icons = sort_list(med_icons)
 	var/med_borg_icon = show_radial_menu(cyborg, cyborg , med_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(med_borg_icon)
 		if("Default")
