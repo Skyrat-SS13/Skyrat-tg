@@ -411,11 +411,15 @@
 	if(!ishuman(target) || !target.stat == DEAD)
 		return FALSE
 	var/mob/living/carbon/body = target
-	var/datum/effect_system/spark_spread/quantum/sparks = new /datum/effect_system/spark_spread/quantum //uses the teleport effect from quantum pads
-	sparks.set_up(5, 1, get_turf(target))
-	sparks.start()
+	teleport_effect(body.loc)
 	body.forceMove(firer.loc)
+	teleport_effect(body.loc)
 	body.visible_message(span_notice("[body]'s body teleports to [firer]!"))
+
+/obj/projectile/energy/medical/utility/body_teleporter/proc/teleport_effect(var/location)
+	var/datum/effect_system/spark_spread/quantum/sparks = new /datum/effect_system/spark_spread/quantum //uses the teleport effect from quantum pads
+	sparks.set_up(5, 1, get_turf(location))
+	sparks.start()
 
 //Objects Used by medicells.
 /obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
