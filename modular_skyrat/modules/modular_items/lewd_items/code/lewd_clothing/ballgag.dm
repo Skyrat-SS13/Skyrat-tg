@@ -4,7 +4,7 @@
 	desc = "Prevents the wearer from speaking."
 	icon_state = "ballgag"
 	inhand_icon_state = "ballgag"
-	worn_icon_state = "gag"
+	worn_icon_state = "ballgag"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_masks.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_masks.dmi'
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/mask_muzzled.dmi'
