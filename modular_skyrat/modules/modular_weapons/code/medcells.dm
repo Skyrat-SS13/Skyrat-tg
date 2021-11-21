@@ -401,6 +401,7 @@
 	projectile_type = /obj/projectile/energy/medical/utility/body_teleporter
 	select_name = "teleporter"
 	select_color = "#4400ff"
+	delay = 12 //This is a powerful cell, It'd be good for this to have a bit of a delay
 
 /obj/projectile/energy/medical/utility/body_teleporter
 	name = "bluespace transportation field"
@@ -410,7 +411,11 @@
 	if(!ishuman(target) || !target.stat == DEAD)
 		return FALSE
 	var/mob/living/carbon/body = target
+	var/datum/effect_system/spark_spread/quantum/sparks = new /datum/effect_system/spark_spread/quantum //uses the teleport effect from quantum pads
+	sparks.set_up(5, 1, get_turf(target))
+	sparks.start()
 	body.forceMove(firer.loc)
+	body.visible_message(span_notice("[body]'s body teleports to [firer]!"))
 
 //Objects Used by medicells.
 /obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
