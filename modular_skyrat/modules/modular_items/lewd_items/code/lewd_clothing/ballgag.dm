@@ -81,8 +81,18 @@
 	icon_state = "chokegag"
 	moan_volume = 40
 	resizable = TRUE
-	greyscale_config = /datum/greyscale_config/ballgag/choking
+	greyscale_config = /datum/greyscale_config/ballgag/choking_small
 	chokes_wearer = TRUE
+
+/obj/item/clothing/mask/ballgag/choking/attack_self(mob/user)
+	. = ..()
+	switch(gag_size)
+		if("small")
+			set_greyscale(new_config = /datum/greyscale_config/ballgag/choking_small)
+		if("medium")
+			set_greyscale(new_config = /datum/greyscale_config/ballgag/choking_medium)
+		if("large")
+			set_greyscale(new_config = /datum/greyscale_config/ballgag/choking_large)
 
 // Start processing choking on equip
 /obj/item/clothing/mask/ballgag/choking/equipped(mob/user, slot)
