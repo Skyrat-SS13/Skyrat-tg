@@ -316,6 +316,7 @@ GLOBAL_VAR_INIT(say_disabled, FALSE)
 		final.Insert(icon('icons/hud/screen_gen.dmi', "x[x_number == 1 ? "" : x_number]"), "x[x_number == 1 ? "" : x_number]")
 	fcopy(final, "icons/mob/landmarks.dmi")
 */
+// SKYRAT EDIT BEGIN: THIS SHIT WAS BROKEN due to an issue with byond and how icons cache
 //This generates the icon states for job starting location landmarks.
 /client/proc/create_mapping_job_icons()
 	set name = "Generate job landmarks icons"
@@ -348,7 +349,7 @@ GLOBAL_VAR_INIT(say_disabled, FALSE)
 		final.Insert(icon('icons/hud/screen_gen.dmi', "x[x_number == 1 ? "" : x_number]"), "x[x_number == 1 ? "" : x_number]")
 	fcopy(final, "icons/mob/landmarks.dmi")
 	to_chat(world, "Done generating landmarks.dmi.")
-
+// SKYRAT EDIT END
 /client/proc/debug_z_levels()
 	set name = "Debug Z-Levels"
 	set category = "Mapping"
