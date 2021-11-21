@@ -409,7 +409,7 @@
 
 /obj/item/melee/baton/security/loaded/departmental
 	name = "departmental stun baton"
-	desc = "A stun baton fitted with a departmental area-lock - outside of its department, it only has three charges."
+	desc = "A stun baton fitted with a departmental area-lock, based off the station's blueprint layout - outside of its department, it only has three uses."
 	icon = 'modular_skyrat/modules/goofsec/icons/departmental_batons.dmi'
 	var/list/valid_areas = list()
 	var/emagged = FALSE
@@ -424,7 +424,7 @@
 				if(non_departmental_uses_left)
 					say("[non_departmental_uses_left] non-departmental uses left!")
 				else
-					say("[src] is out of non-departmental charges! Return to your department and reactivate the baton to recharge it!")
+					say("[src] is out of non-departmental uses! Return to your department and reactivate the baton to refresh it!")
 			else
 				target.visible_message(span_warning("[user] prods [target] with [src]. Luckily, it shut off due to being in the wrong area."), \
 					span_warning("[user] prods you with [src]. Luckily, it shut off due to being in the wrong area."))
@@ -457,36 +457,36 @@
 
 /obj/item/melee/baton/security/loaded/departmental/medical
 	name = "medical stun baton"
-	desc = "A stun baton that doesn't operate outside of the Medical department. Can be used outside of Medical up to three times before needing to return!"
+	desc = "A stun baton that doesn't operate outside of the Medical department, based off the station's blueprint layout. Can be used outside of Medical up to three times before needing to return!"
 	icon_state = "medical_baton"
 	valid_areas = list(/area/medical, /area/maintenance/department/medical, /area/shuttle/escape)
 
 /obj/item/melee/baton/security/loaded/departmental/engineering
 	name = "engineering stun baton"
-	desc = "A stun baton that doesn't operate outside of the Engineering department. Can be used outside of Engineering up to three times before needing to return!"
+	desc = "A stun baton that doesn't operate outside of the Engineering department, based off the station's blueprint layout. Can be used outside of Engineering up to three times before needing to return!"
 	icon_state = "engineering_baton"
 	valid_areas = list(/area/engineering, /area/maintenance/department/engine, /area/shuttle/escape)
 
 /obj/item/melee/baton/security/loaded/departmental/science
 	name = "science stun baton"
-	desc = "A stun baton that doesn't operate outside of the Science department. Can be used outside of Science up to three times before needing to return!"
+	desc = "A stun baton that doesn't operate outside of the Science department, based off the station's blueprint layout. Can be used outside of Science up to three times before needing to return!"
 	icon_state = "science_baton"
 	valid_areas = list(/area/science, /area/maintenance/department/science, /area/shuttle/escape)
 
 /obj/item/melee/baton/security/loaded/departmental/cargo
 	name = "cargo stun baton"
-	desc = "A stun baton that doesn't operate outside of the Cargo department. Can be used outside of Cargo up to three times before needing to return!"
+	desc = "A stun baton that doesn't operate outside of the Cargo department, based off the station's blueprint layout. Can be used outside of Cargo up to three times before needing to return!"
 	icon_state = "cargo_baton"
 	valid_areas = list(/area/cargo, /area/maintenance/department/cargo, /area/shuttle/escape)
 
 /obj/item/melee/baton/security/loaded/departmental/service
 	name = "service stun baton"
-	desc = "A stun baton that doesn't operate outside of the Service department. Can be used outside of Service up to three times before needing to return!"
+	desc = "A stun baton that doesn't operate outside of the Service department, based off the station's blueprint layout. Can be used outside of Service up to three times before needing to return!"
 	icon_state = "service_baton"
 	valid_areas = list(/area/service, /area/maintenance/department/chapel, /area/maintenance/department/crew_quarters, /area/shuttle/escape) // love mapping
 
 /obj/item/melee/baton/security/loaded/departmental/prison
 	name = "prison stun baton"
-	desc = "A stun baton that doesn't operate outside of the Prison. Can be used outside of the Prison up to three times before needing to return!"
+	desc = "A stun baton that doesn't operate outside of the Prison, based off the station's blueprint layout. Can be used outside of the Prison up to three times before needing to return!"
 	icon_state = "prison_baton"
 	valid_areas = list(/area/security/prison, /area/security/processing, /area/shuttle/escape) // love mapping
