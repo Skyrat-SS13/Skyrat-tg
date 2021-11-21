@@ -397,6 +397,21 @@
 	else
 		return FALSE
 
+/obj/item/ammo_casing/energy/medical/utility/body_teleporter
+	projectile_type = /obj/projectile/energy/medical/utility/body_teleporter
+	select_name = "teleporter"
+	select_color = "#4400ff"
+
+/obj/projectile/energy/medical/utility/body_teleporter
+	name = "bluespace transportation field"
+
+/obj/projectile/energy/medical/utility/body_teleporter/on_hit(mob/living/target)
+	. = ..()
+	if(!ishuman(target) || !target.stat == DEAD)
+		return FALSE
+	var/mob/living/carbon/body = target
+	body.forceMove(firer.loc)
+
 //Objects Used by medicells.
 /obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
 	name = "Hardlight Hospital Gown"

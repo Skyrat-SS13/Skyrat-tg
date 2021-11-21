@@ -245,6 +245,12 @@
 	icon_state = "gown"
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/bed
 
+/obj/item/weaponcell/medical/utility/body_teleporter
+	name = "Body Transporter Medicell"
+	desc = "A medicell that allows the user to transport a dead body to themselves."
+	icon_state = "gown" //IMPORT A CUSTOM TEXTURE LATER
+	ammo_type = /obj/item/ammo_casing/energy/medical/utility/body_teleporter
+
 //Empty Medicell//
 /obj/item/device/custom_kit/empty_cell //Having the empty cell as an upgrade kit sounds jank, but it should work well.
 	name = "Empty Salve Medicell"
