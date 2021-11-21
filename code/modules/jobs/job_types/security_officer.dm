@@ -3,9 +3,9 @@
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Head of Security")
 	faction = FACTION_STATION
-	total_positions = 7 //Handled in /datum/controller/occupations/proc/setup_officer_positions() // SKYRAT EDIT: SET TO 7, WAS 5
-	spawn_positions = 7 //Handled in /datum/controller/occupations/proc/setup_officer_positions() // SKYRAT EDIT: SEE ABOVE
-	supervisors = "the head of security, security sergeants, and the head of your assigned department (if applicable)"	// SKYRAT EDIT: Adds mention of the security sergeant.
+	total_positions = 8 //Handled in /datum/controller/occupations/proc/setup_officer_positions() // SKYRAT EDIT: SET TO 8, WAS 5
+	spawn_positions = 8 //Handled in /datum/controller/occupations/proc/setup_officer_positions() // SKYRAT EDIT: SEE ABOVE
+	supervisors = "the head of security, and the head of your assigned department (if applicable)"	// SKYRAT EDIT: Adds mention of the security sergeant.
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 300

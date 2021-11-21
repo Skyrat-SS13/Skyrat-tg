@@ -360,7 +360,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/box/gunset/sarge/PopulateContents()
-	new /obj/item/trim_token/security_sergeant(src)
 	new /obj/item/melee/baton/telescopic(src)
 	new /obj/item/clothing/under/rank/security/peacekeeper/sergeant(src)
 	new /obj/item/clothing/head/sec/peacekeeper/sergeant(src)

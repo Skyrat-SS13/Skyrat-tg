@@ -30,12 +30,3 @@
 			// This is needed because trims are working off of singletons, which mean there's technically only one of each trim
 			// Complicated to explain in a comment but this should work.
 			valid_trims += list(SSid_access.trim_singletons_by_path[trim_path])
-
-/obj/item/trim_token/security_sergeant
-	name = "security sergeant trim token"
-	desc = "A token awarded to those seen fit to take the role of Security Sergeant."
-	assignment = "Security Sergeant"
-	token_trim = /datum/id_trim/job/security_sergeant
-	valid_trims_paths = list(/datum/id_trim/job/security_officer, /datum/id_trim/job/security_officer/engineering, /datum/id_trim/job/security_officer/medical,
-							 /datum/id_trim/job/security_officer/science, /datum/id_trim/job/security_officer/supply)
-	has_required_trim = TRUE

@@ -26,6 +26,12 @@
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
+		"Ironhammer Armor" = list(
+			RESKIN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/suit.dmi',
+			RESKIN_ICON_STATE = "armor_ironhammer",
+			RESKIN_WORN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/suit_worn.dmi',
+			RESKIN_WORN_ICON_STATE = "armor_ironhammer"
+		),
 		"Basic Armor" = list(
 			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
 			RESKIN_ICON_STATE = "armoralt",
@@ -124,6 +130,12 @@
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
+		"Ironhammer Greatcoat" = list(
+			RESKIN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/suit.dmi',
+			RESKIN_ICON_STATE = "greatcoat_ironhammer",
+			RESKIN_WORN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/suit_worn.dmi',
+			RESKIN_WORN_ICON_STATE = "greatcoat_ironhammer"
+		),
 		"Greatcoat" = list(
 			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
 			RESKIN_ICON_STATE = "hos",
@@ -197,6 +209,12 @@
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
+		"Ironhammer Fullbody Armor" = list(
+			RESKIN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/suit.dmi',
+			RESKIN_ICON_STATE = "armor_ironhammer_fullbody",
+			RESKIN_WORN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/suit_worn.dmi',
+			RESKIN_WORN_ICON_STATE = "armor_ironhammer_fullbody"
+		),
 		"Basic Warden Armor" = list(
 			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
 			RESKIN_ICON_STATE = "warden_alt",

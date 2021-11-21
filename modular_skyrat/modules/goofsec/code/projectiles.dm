@@ -208,6 +208,7 @@
 */
 
 /// Shotguns (they dont miss)
+/// Six shots before needing to reload in some form.
 
 /obj/item/gun/ballistic/shotgun/m23
 	name = "\improper pump shotgun"
@@ -221,7 +222,7 @@
 /obj/item/ammo_box/magazine/internal/shot/m23
 	name = "m23 shotgun internal magazine"
 	caliber = CALIBER_SHOTGUN
-	ammo_type = /obj/item/ammo_casing/shotgun
+	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
 	max_ammo = 6
 
 /obj/item/gun/ballistic/shotgun/automatic/as2
@@ -248,7 +249,7 @@
 /obj/item/ammo_box/magazine/internal/shot/as2
 	name = "shotgun internal magazine"
 	caliber = CALIBER_SHOTGUN
-	ammo_type = /obj/item/ammo_casing/shotgun
+	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
 	max_ammo = 6
 
 /obj/item/gun/ballistic/shotgun/sas14
@@ -280,7 +281,7 @@
 	icon_state = "sas14"
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	caliber = CALIBER_SHOTGUN
-	ammo_type = /obj/item/ammo_casing/shotgun
+	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
 	max_ammo = 6
 
 
