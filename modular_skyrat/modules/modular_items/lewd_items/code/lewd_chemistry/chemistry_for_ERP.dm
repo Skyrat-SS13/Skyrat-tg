@@ -122,6 +122,7 @@
 
 	/// How druggy the chem will make the mob
 	var/drugginess_amount = 5
+	/// How likely the drug is to make the mob druggy per life process
 	var/drugginess_chance = 7
 
 	/// The amount to adjust the mob's arousal by
