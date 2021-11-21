@@ -9,12 +9,14 @@
 		/obj/item/stack/tile/catwalk_tile/plated/flat_white,
 		/obj/item/stack/tile/catwalk_tile/plated/titanium
 	)
+
+/turf/open/floor/catwalk_floor
 	///The icon_state of the overlay applied when 'covered'
 	var/above_state = "catwalk_above"
 
 /turf/open/floor/catwalk_floor/update_overlays()
 	. = ..()
-	var/image/catwalk_overlay	///Per-tile, so we dont need to reset the icon file/plane/layer every single time its unscrewed
+	var/image/catwalk_overlay	///Per-tile instead of static, so we dont need to reset the icon file/plane/layer every single time its unscrewed
 	if(isnull(catwalk_overlay))
 		catwalk_overlay = new()
 		catwalk_overlay.icon = icon
