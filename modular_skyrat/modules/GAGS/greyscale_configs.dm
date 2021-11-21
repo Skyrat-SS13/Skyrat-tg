@@ -42,6 +42,20 @@
 	name = "Beret With Fancy Badge Worn - Vox"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/color_gags_vox.dmi'
 
+/*
+*	NECK
+*/
+
+// RANGER PONCHO
+/datum/greyscale_config/ranger_poncho
+	name = "Ranger Poncho"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/ranger_poncho.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/ranger_poncho/ranger_poncho.json'
+
+/datum/greyscale_config/ranger_poncho/worn
+	name = "Ranger Poncho Worn"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/ranger_poncho/ranger_poncho_worn.json'
+
 
 /*
 *	SUITS
