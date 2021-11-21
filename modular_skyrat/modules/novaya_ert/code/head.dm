@@ -5,12 +5,12 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "russian_green_helmet"
 	mutant_variants = NONE
-	armor = list("melee" = 40, "bullet" = 35, "laser" = 15, "energy" = 30, "bomb" = 25, "bio" = 0, "rad" = 20, "fire" = 50, "acid" = 50, "wound" = 20)
+	armor = list(MELEE = 40, BULLET = 35, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 20)
 
 /obj/item/clothing/head/beret/sec/nri
 	name = "commander's beret"
 	desc = "Za rodinu!!"
-	armor = list("melee" = 40, "bullet" = 35, "laser" = 15, "energy" = 30, "bomb" = 25, "bio" = 0, "rad" = 20, "fire" = 50, "acid" = 50, "wound" = 20)
+	armor = list(MELEE = 40, BULLET = 35, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 20)
 
 /obj/item/clothing/head/helmet/nri_heavy
 	name = "altyn helmet"
