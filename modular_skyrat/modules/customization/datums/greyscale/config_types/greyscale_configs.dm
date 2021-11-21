@@ -53,11 +53,6 @@
 	name = "Choke Gag"
 	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/mask/chokegag.json'
 
-/datum/greyscale_config/ballgag/choking/worn
-	name = "Choke Gag"
-	icon_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_masks.dmi'
-	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/mask/chokegag_worn.json'
-
 /// --- SUITS --- ///
 /// HOODIES ///
 /datum/greyscale_config/hoodie
