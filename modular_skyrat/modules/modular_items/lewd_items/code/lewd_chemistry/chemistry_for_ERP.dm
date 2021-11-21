@@ -120,6 +120,7 @@
 	life_pref_datum = /datum/preference/toggle/erp/aphro
 	overdose_pref_datum = /datum/preference/toggle/erp/aphro
 
+	/// How druggy the chem will make the mob
 	var/drugginess_amount = 5
 	var/drugginess_chance = 7
 
