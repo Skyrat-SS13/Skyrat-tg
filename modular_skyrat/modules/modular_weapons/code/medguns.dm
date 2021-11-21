@@ -248,7 +248,7 @@
 /obj/item/weaponcell/medical/utility/body_teleporter
 	name = "Body Transporter Medicell"
 	desc = "A medicell that allows the user to transport a dead body to themselves."
-	icon_state = "gown" //IMPORT A CUSTOM TEXTURE LATER
+	icon_state = "body" //IMPORT A CUSTOM TEXTURE LATER
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/body_teleporter
 
 //Empty Medicell//
@@ -256,10 +256,16 @@
 	name = "Empty Salve Medicell"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/upgrades.dmi'
 	icon_state = "empty"
-	desc = "A unactivated Salve Medicell, use this on an aloe leaf to make this into a usable cell"
+	desc = "an unactivated Salve Medicell, use this on an aloe leaf to make this into a usable cell"
 	from_obj = /obj/item/food/grown/aloe
 	to_obj = /obj/item/weaponcell/medical/utility/salve
 
 /obj/item/device/custom_kit/empty_cell/Initialize()
 	. = ..()
 	AddElement(/datum/element/item_scaling, 0.5, 1)
+
+/obj/item/device/custom_kit/empty_cell/body_teleporter
+	name = "Empty Body Teleporter Medicell"
+	desc = "an unactivated Body Teleporter Medicell, use this on a bluespace slime extract to make this into a usable cell"
+	from_obj = /obj/item/slime_extract/bluespace
+	to_obj = /obj/item/weaponcell/medical/utility/body_teleporter
