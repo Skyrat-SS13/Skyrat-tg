@@ -111,7 +111,7 @@
 			if(HUD_LIST_LIST)
 				hud_list[hud] = list()
 			else
-				var/image/I = image('icons/mob/hud.dmi', src, "")
+				var/image/I = image('modular_skyrat/master_files/icons/mob/hud.dmi', src, "")	//SKYRAT EDIT: original filepath 'icons/mob/hud.dmi'
 				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
 				hud_list[hud] = I
 

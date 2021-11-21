@@ -430,7 +430,6 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 //Mood boost
 /datum/mood_event/bimbo
 	description = span_purple("So-o... Help..less... Lo-ve it!\n")
-	mood_change = 20
 
 ///////////////
 ///MASOCHISM///
@@ -531,10 +530,8 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 			return TRUE
 	return FALSE
 
-//Mood boost
 /datum/mood_event/sadistic
 	description = span_purple("Others' suffering makes me happier\n")
-	mood_change = 4
 
 //////////////////
 ///EMPATH BOUNS///

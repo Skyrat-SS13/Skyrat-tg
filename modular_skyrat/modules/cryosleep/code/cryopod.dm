@@ -23,8 +23,10 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	req_one_access = list(ACCESS_HEADS, ACCESS_ARMORY) // Heads of staff or the warden can go here to claim recover items from their department that people went were cryodormed with.
 	var/mode = null
 
-	// Used for logging people entering cryosleep and important items they are carrying.
+	/// Used for logging people entering cryosleep and important items they are carrying.
 	var/list/frozen_crew = list()
+	/// The items currently stored in the cryopod control panel.
+	var/list/frozen_item = list()
 
 	var/storage_type = "crewmembers"
 	var/storage_name = "Cryogenic Oversight Control"
@@ -59,17 +61,58 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	var/list/data = list()
 	data["frozen_crew"] = frozen_crew
 
+	/// The list of references to the stored items.
+	var/list/item_ref_list = list()
+	/// The associative list of the reference to an item and its name.
+	var/list/item_ref_name = list()
+
+	for(var/obj/item/item in frozen_item)
+		var/ref = REF(item)
+		item_ref_list += ref
+		item_ref_name[ref] = item.name
+
+	data["item_ref_list"] = item_ref_list
+	data["item_ref_name"] = item_ref_name
+
+	// Check Access for item dropping.
+	var/item_retrieval_allowed = FALSE
+	if(isliving(user))
+		var/mob/living/living_user = user
+		var/obj/item/card/id/id = living_user.get_idcard()
+		if(id)
+			if((ACCESS_HEADS in id.access) || (ACCESS_ARMORY in id.access))
+				item_retrieval_allowed = TRUE
+	data["item_retrieval_allowed"] = item_retrieval_allowed
+
 	var/obj/item/card/id/id_card
-	var/datum/bank_account/current_user
 	if(isliving(user))
 		var/mob/living/person = user
 		id_card = person.get_idcard()
-	if(id_card?.registered_account)
-		current_user = id_card.registered_account
-	if(current_user)
-		data["account_name"] = current_user.account_holder
+	if(id_card?.registered_name)
+		data["account_name"] = id_card.registered_name
 
 	return data
+
+/obj/machinery/computer/cryopod/ui_act(action, list/params)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("item_get")
+			// This is using references, kinda clever, not gonna lie. Good work Zephyr
+			var/item_get = params["item_get"]
+			var/obj/item/item = locate(item_get)
+			if(item in frozen_item)
+				item.forceMove(drop_location())
+				frozen_item.Remove(item_get, item)
+				visible_message("[src] dispenses \the [item].")
+				message_admins("[item] was retrieved from cryostorage at [ADMIN_COORDJMP(src)]")
+			else
+				CRASH("Invalid REF# for ui_act. Not inside internal list!")
+			return TRUE
+
+		else
+			CRASH("Illegal action for ui_act: '[action]'")
 
 // Cryopods themselves.
 /obj/machinery/cryopod
@@ -269,7 +312,15 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 			continue
 		if (issilicon(mob_occupant) && istype(item_content, /obj/item/mmi))
 			continue
-		mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)
+		if(control_computer)
+			if(istype(item_content, /obj/item/pda))
+				var/obj/item/pda/pda = item_content
+				pda.toff = TRUE
+				pda.light_on = FALSE
+			item_content.dropped(mob_occupant)
+			mob_occupant.transferItemToLoc(item_content, control_computer, force = TRUE, silent = TRUE)
+			control_computer.frozen_item += item_content
+		else mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)
 
 	handle_objectives()
 	QDEL_NULL(occupant)
@@ -295,7 +346,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 			to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] conscious."))
 		return
 
-	if(target == user && (tgalert(target, "Would you like to enter cryosleep?", "Enter Cryopod?", "Yes", "No") != "Yes"))
+	if(target == user && (tgui_alert(target, "Would you like to enter cryosleep?", "Enter Cryopod?", list("Yes", "No")) != "Yes"))
 		return
 
 	if(target == user)
@@ -314,9 +365,9 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		return
 
 	if(target == user)
-		visible_message(span_info("plain'>[user] starts climbing into the cryo pod."))
+		visible_message(span_infoplain("[user] starts climbing into the cryo pod."))
 	else
-		visible_message(span_info("plain'>[user] starts putting [target] into the cryo pod."))
+		visible_message(span_infoplain("[user] starts putting [target] into the cryo pod."))
 
 	to_chat(target, span_warning("<b>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</b>"))
 
