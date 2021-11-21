@@ -61,6 +61,17 @@
 	name = "Choke Gag Large"
 	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/mask/choking_large.json'
 
+/// --- NECK --- ///
+/// RANGER PONCHO ///
+/datum/greyscale_config/ranger_poncho
+	name = "Ranger Poncho"
+	icon_file = 'modular_skyrat/master_files/icons/greyscale_clothes/ranger_poncho.dmi'
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/ranger_poncho/ranger_poncho.json'
+
+/datum/greyscale_config/ranger_poncho/worn
+	name = "Ranger Poncho Worn"
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/ranger_poncho/ranger_poncho_worn.json'
+
 /// --- SUITS --- ///
 /// HOODIES ///
 /datum/greyscale_config/hoodie
