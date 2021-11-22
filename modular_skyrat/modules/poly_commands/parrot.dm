@@ -10,7 +10,6 @@
 	. = ..()
 	if(check_command(message, speaker))
 		return
-	to_chat(speaker, span_warning("Command not recognised!"))
 	if(speaker != src && prob(50)) //Dont imitate ourselves
 		if(!radio_freq || prob(10))
 			if(speech_buffer.len >= 500)
