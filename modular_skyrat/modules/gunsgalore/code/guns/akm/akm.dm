@@ -42,7 +42,7 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/gun/ballistic/automatic/assault_rifle/akm/modern
-	name = "\improper Tactical AKMS"
+	name = "\improper tactical AKMS"
 	desc = "a modernized version of the most iconic infantry rifle ever produced. This one has aftermarket parts and attachments, making it a better contender against its modern buddies. It still uses the same outdated rounds."
 	icon_state = "akm_modern"
 	inhand_icon_state = "akm"

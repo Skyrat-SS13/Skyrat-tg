@@ -16,7 +16,7 @@
 
 /obj/item/food/grown/tea/catnip
 	seed = /obj/item/seeds/tea/catnip
-	name = "Catnip buds"
+	name = "catnip buds"
 	icon = 'modular_skyrat/master_files/icons/obj/hydroponics/harvest.dmi'
 	icon_state = "catnip"
 	filling_color = "#4582B4"

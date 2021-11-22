@@ -1,5 +1,5 @@
 /obj/item/organ/lungs/cold
-	name = "Cold Adapted Lungs"
+	name = "cold-adapted lungs"
 	icon = 'modular_skyrat/modules/organs/icons/lungs.dmi'
 	desc = "A set of lungs adapted to low temperatures, though they are more susceptible to high temperatures"
 	icon_state = "lungs_cold"
@@ -23,7 +23,7 @@
 
 
 /obj/item/organ/lungs/hot
-	name = "Heat Adapted Lungs"
+	name = "heat-adapted lungs"
 	icon = 'modular_skyrat/modules/organs/icons/lungs.dmi'
 	desc = "A set of lungs adapted to high temperatures, though they are more susceptible to low temperatures"
 	icon_state = "lungs_heat"
@@ -46,7 +46,7 @@
 	heat_damage_type = BURN
 
 /obj/item/organ/lungs/toxin
-	name = "Toxic Adapted Lungs"
+	name = "toxin-adapted lungs"
 	icon = 'modular_skyrat/modules/organs/icons/lungs.dmi'
 	desc = "A set of lungs adapted to toxic environments, though more susceptible to extreme temperatures."
 	icon_state = "lungs_toxin"
@@ -73,7 +73,7 @@
 	heat_damage_type = BURN
 
 /obj/item/organ/lungs/oxy
-	name = "Low-Oxygen Adapted Lungs"
+	name = "low-oxygen-adapted lungs"
 	icon = 'modular_skyrat/modules/organs/icons/lungs.dmi'
 	desc = "A set of lungs adapted to lower-pressure environments, though more susceptible to extreme temperatures."
 	icon_state = "lungs_toxin"

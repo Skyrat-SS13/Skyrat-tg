@@ -4,7 +4,7 @@
 	starting_organ = /obj/item/organ/corticalstack
 
 /obj/item/organ/corticalstack/syndicate
-	name = "Blood-Red Cortical Stack"
+	name = "blood-red cortical stack"
 	desc = "A strange, crystalline storage device containing 'DHF', digitised conciousness. This one has after-market modifications."
 	invasive = 0
 

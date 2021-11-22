@@ -628,7 +628,7 @@
 	spawnwithmagazine = FALSE
 
 /obj/structure/closet/secure_closet/smartgun
-	name = "Smartgun Locker"
+	name = "smartgun locker"
 	req_access = list(ACCESS_ARMORY)
 	icon_state = "shotguncase"
 

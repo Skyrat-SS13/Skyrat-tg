@@ -1,6 +1,6 @@
 //normal ball mittens
 /obj/item/clothing/gloves/ball_mittens
-	name = "Ball mittens"
+	name = "ball mittens"
 	desc = "A nice, comfortable pair of inflatable ball gloves."
 	icon_state = "ballmittens"
 	inhand_icon_state = "ballmittens"
@@ -39,7 +39,7 @@
 
 //latex gloves
 /obj/item/clothing/gloves/latex_gloves
-	name = "Latex gloves"
+	name = "latex gloves"
 	desc = "Awesome looking gloves that are satisfying to the touch."
 	icon_state = "latexgloves"
 	inhand_icon_state = "latexgloves"

@@ -1,5 +1,5 @@
 /obj/structure/particle_accelerator/particle_emitter
-	name = "EM Containment Grid"
+	name = "EM containment grid"
 	desc = "This launches the Alpha particles, might not want to stand near this end."
 	icon = 'modular_skyrat/modules/singularity_engine/icons/particle_accelerator.dmi'
 	icon_state = "none"

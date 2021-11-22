@@ -3,7 +3,7 @@
 #define BSRPD_CAPAC_NEW 250
 
 /obj/item/pipe_dispenser/bluespace
-	name = "Bluespace RPD"
+	name = "bluespace RPD"
 	desc = "State of the art technology being tested by NT scientists; this is their only working prototype."
 	icon = 'modular_skyrat/modules/bsrpd/icons/bsrpd.dmi'
 	icon_state = "bsrpd"

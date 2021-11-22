@@ -1,7 +1,7 @@
 #define FIREDOOR_CLOSE_OVERRIDE_RESET_TIME 3 MINUTES
 
 /obj/machinery/door/firedoor
-	name = "Emergency Shutter"
+	name = "emergency shutter"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This one has a glass panel. It has a mechanism to open it with just your hands."
 	icon = 'modular_skyrat/modules/aesthetics/firedoor/icons/firedoor_glass.dmi'
 
@@ -15,7 +15,7 @@
 	var/has_hotcold_sprite = TRUE //does it actually have the sprites needed
 
 /obj/machinery/door/firedoor/heavy
-	name = "Heavy Emergency Shutter"
+	name = "heavy emergency shutter"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas. It has a mechanism to open it with just your hands."
 	icon = 'modular_skyrat/modules/aesthetics/firedoor/icons/firedoor.dmi'
 

@@ -1,5 +1,5 @@
 /obj/structure/chair/milking_machine
-	name = "Milking machine"
+	name = "milking machine"
 	desc = "A stationary device for milking... things."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/milking_machine.dmi'
 	icon_state = "milking_pink_off"

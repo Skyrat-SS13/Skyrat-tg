@@ -129,7 +129,7 @@
 /obj/item/clothing/under/misc/greyshirt
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	name = "Grey Shirt"
+	name = "grey shirt"
 	desc = "A plain grey shirt and black pants - a much more rugged option compared to the jumpsuit."
 	icon_state = "greyshirt"
 

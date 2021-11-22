@@ -1,5 +1,5 @@
 /obj/item/melee/hammer
-	name = "D-4 Tactical hammer"
+	name = "D-4 tactical hammer"
 	desc = "A metallic-plastic composite breaching hammer, looks like a whack with this would severly harm or tire someone."
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
 	icon_state = "peacekeeper_hammer"

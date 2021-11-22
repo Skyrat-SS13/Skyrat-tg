@@ -34,14 +34,14 @@
 	worn_icon_state = "knight_hospitaller"
 
 /obj/item/storage/box/holy/teutonic
-	name = "Teutonic Kit"
+	name = "teutonic kit"
 
 /obj/item/storage/box/holy/teutonic/PopulateContents()
 	pick(new /obj/item/clothing/head/helmet/chaplain/bland/horned(src), new /obj/item/clothing/head/helmet/chaplain/bland/winged(src))
 	pick(new /obj/item/clothing/suit/armor/riot/chaplain/teutonic(src), new /obj/item/clothing/suit/armor/riot/chaplain/teutonic/alt(src))
 
 /obj/item/storage/box/holy/hospitaller
-	name = "Hospitaller Kit"
+	name = "hospitaller kit"
 
 /obj/item/storage/box/holy/hospitaller/PopulateContents()
 	new /obj/item/clothing/head/helmet/chaplain/bland(src)
@@ -67,7 +67,7 @@
 	armor = list(MELEE = 50, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 80, ACID = 80) //Chaplain Riot Helmet
 
 /obj/item/storage/box/holy/narsian
-	name = "Ancient Kit"
+	name = "ancient kit"
 
 /obj/item/storage/box/holy/narsian/PopulateContents()
 	new /obj/item/clothing/suit/hooded/cultlain_robe(src)
@@ -172,7 +172,7 @@
 		praying = FALSE
 
 /obj/item/nullrod/scythe/sickle
-	name = "Damned Sickle"
+	name = "damned sickle"
 	desc = "A green crescent blade, decorated with an ornamental eye. The pupil has faded..."
 	icon = 'icons/obj/eldritch.dmi'
 	icon_state = "eldritch_blade"
@@ -188,7 +188,7 @@
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "rend")
 
 /obj/item/nullrod/scythe/sickle/void
-	name = "Crystal Sickle"
+	name = "crystal sickle"
 	desc = "Made of clear crystal, the blade refracts the light slightly. Purity, so close yet unattainable in this form."
 	icon_state = "void_blade"
 	inhand_icon_state = "void_blade"

@@ -1,5 +1,5 @@
 /obj/item/rna_extractor
-	name = "Advanced virus RNA extractor"
+	name = "advanced virus RNA extractor"
 	desc = "A tool used to extract the RNA from viruses. Apply to skin."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "extractor"
@@ -79,7 +79,7 @@
 		loaded_vial = null
 
 /obj/item/rna_vial
-	name = "Raw RNA vial"
+	name = "raw RNA vial"
 	desc = "A glass vial containing raw virus RNA. Slot this into the combinator to upload the sample."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "rnavial"
@@ -101,7 +101,7 @@
 		. += "It has an RNA sample in it."
 
 /obj/item/hnz_cure
-	name = "HNZ-1 Cure Vial"
+	name = "HNZ-1 cure vial"
 	desc = "A counter to the HNZ-1 virus, used to rapidly reverse the effects of the virus."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "tvirus_cure"
@@ -142,7 +142,7 @@
 #define RECOMBINATION_STEP_AMOUNT 25
 
 /obj/machinery/rnd/rna_recombinator
-	name = "RNA Recombinator"
+	name = "RNA recombinator"
 	desc = "This machine is used to recombine RNA sequences from extracted vials of raw virus."
 	icon = 'modular_skyrat/modules/mutants/icons/cure_machine.dmi'
 	icon_state = "h_lathe"
@@ -351,7 +351,7 @@
 
 
 /obj/item/storage/briefcase/hnz
-	name = "HNZ-1 Biocontainer"
+	name = "HNZ-1 biocontainer"
 	desc = "An airtight biosealed box containing the highly reactive substance, HNZ1. Authorised personnel only."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "tvirus_box"

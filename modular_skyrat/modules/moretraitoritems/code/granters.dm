@@ -27,7 +27,7 @@
 
 /obj/item/book/granter/traitsr/ventcrawl_book
 	traits = TRAIT_VENTCRAWLER_ALWAYS
-	name = "Military Contortionist Guide"
+	name = "military contortionist guide"
 	traitname = "ventcrawling expert"
 	desc = "A special operations handbook for teaching people with at least a basic understanding of infiltration tactics how to most effectively utilize small spaces such as air ducts or pipes."
 	greet = span_boldannounce("You’ve mastered the art of climbing through air pipes!")

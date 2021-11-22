@@ -88,7 +88,7 @@
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
 
 /obj/item/gun/ballistic/automatic/mini_uzi
-	name = "\improper Type U3 Uzi"
+	name = "\improper type U3 uzi"
 	desc = "A lightweight, burst-fire submachine gun, for when you really want someone dead. Uses 9mm rounds."
 	icon_state = "miniuzi"
 	mag_type = /obj/item/ammo_box/magazine/uzim9mm
@@ -99,7 +99,7 @@
 	rack_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 
 /obj/item/gun/ballistic/automatic/m90
-	name = "\improper M-90gl Carbine"
+	name = "\improper M-90gl carbine"
 	desc = "A three-round burst 5.56 toploading carbine, designated 'M-90gl'. Has an attached underbarrel grenade launcher which can be fired using right click."
 	icon_state = "m90"
 	w_class = WEIGHT_CLASS_BULKY
@@ -159,7 +159,7 @@
 	show_bolt_icon = FALSE
 
 /obj/item/gun/ballistic/automatic/tommygun/therealtommy
-	name = "Tommygun"
+	name = "Tommy gun"
 
 /obj/item/gun/ballistic/automatic/ar
 	name = "\improper NT-ARG 'Boarder'"
@@ -296,7 +296,7 @@
 // Old Semi-Auto Rifle //
 
 /obj/item/gun/ballistic/automatic/surplus
-	name = "Surplus Rifle"
+	name = "surplus rifle"
 	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm Magnum ammo and its bulky frame prevents one-hand firing."
 	icon_state = "surplus"
 	inhand_icon_state = "moistnugget"

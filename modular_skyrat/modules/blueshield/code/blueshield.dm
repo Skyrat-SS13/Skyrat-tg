@@ -69,7 +69,7 @@
 
 
 /obj/item/storage/box/gunset/blueshield
-	name = "CFA 'Lynx' Gunset"
+	name = "CFA 'Lynx' gunset"
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/box/gunset/blueshield/PopulateContents()

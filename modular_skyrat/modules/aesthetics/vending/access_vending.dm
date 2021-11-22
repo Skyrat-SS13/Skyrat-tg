@@ -2,7 +2,7 @@
  * This vending machine supports a list of items that changes based on the user/card's access.
  */
 /obj/machinery/vending/access
-	name = "Access Based Vending Machine"
+	name = "access-based vending machine"
 	/// Internal variable to store our access list
 	var/list/access_lists
 	/// Should we auto build our product list? 0 means no

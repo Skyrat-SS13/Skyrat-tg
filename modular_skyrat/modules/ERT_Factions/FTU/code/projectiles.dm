@@ -1,5 +1,5 @@
 /obj/projectile/bullet/pulse/mm65
-	name = "6.5mm XJ Pulse flechette"
+	name = "6.5mm XJ pulse flechette"
 	icon = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/projectiles.dmi'
 	icon_state = "pulsebullet"
 	damage = 18 //Applied Twice, once BRUTE, once BURN
@@ -32,7 +32,7 @@
 
 
 /obj/projectile/bullet/pulse/mm72
-	name = "7.2mm XJ accelerated Pulse flechette"
+	name = "7.2mm XJ accelerated pulse flechette"
 	icon = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/projectiles.dmi'
 	icon_state = "pulsebullet_mg"
 	damage = 11 //Applied Twice, once BRUTE, once BURN

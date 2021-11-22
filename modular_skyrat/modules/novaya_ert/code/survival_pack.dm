@@ -15,7 +15,7 @@
 	new /obj/item/storage/pill_bottle/multiver(src)
 
 /obj/item/storage/box/rations
-	name = "Box of rations"
+	name = "box of rations"
 	desc = "A box containing ration packs!"
 
 /obj/item/storage/box/rations/PopulateContents()

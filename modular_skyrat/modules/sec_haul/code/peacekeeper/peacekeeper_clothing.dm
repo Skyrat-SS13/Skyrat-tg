@@ -317,7 +317,7 @@
 
 //HARDSUITS
 /obj/item/clothing/head/helmet/space/hardsuit/security_peacekeeper
-	name = "Armadyne SS-01 Voidsuit Helmet"
+	name = "Armadyne SS-01 voidsuit helmet"
 	desc = "An Armadyne brand voidsuit helmet, with a decent layer of armor, this one comes in the peacekeeper colors."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
@@ -327,7 +327,7 @@
 	armor = list(MELEE = 35, BULLET = 15, LASER = 30,ENERGY = 40, BOMB = 10, BIO = 100, FIRE = 75, ACID = 75, WOUND = 20)
 
 /obj/item/clothing/suit/space/hardsuit/security_peacekeeper
-	name = "Armadyne SS-01 Voidsuit"
+	name = "Armadyne SS-01 voidsuit"
 	desc = "An Armadyne brand voidsuit, with a decent layer of armor, this one comes in the peacekeeper colors."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
