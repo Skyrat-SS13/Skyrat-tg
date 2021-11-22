@@ -23,6 +23,7 @@
 		/obj/item/clothing/under/rank/captain/imperial = 1,
 		/obj/item/clothing/head/caphat/parade = 1,
 		/obj/item/clothing/under/rank/captain/parade = 1,
+		/obj/item/clothing/under/rank/captain/parade/female = 1,
 		/obj/item/clothing/under/rank/captain/kilt = 1,
 		/obj/item/clothing/suit/armor/vest/capcarapace/captains_formal = 1,
 		/obj/item/clothing/suit/captunic = 1,
