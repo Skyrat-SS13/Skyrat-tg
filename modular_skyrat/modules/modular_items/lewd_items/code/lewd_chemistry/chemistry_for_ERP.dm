@@ -8,6 +8,43 @@
 	/// What preference you need enabled for effects on overdose
 	var/overdose_pref_datum = /datum/preference/toggle/erp
 
+	// Vars for enlargement chems from here on
+	/// Counts up to a threshold before triggering enlargement effects
+	var/enlargement_amount = 0
+	/// How much to increase the count by each process
+	var/enlarger_increase_step = 5
+	/// Count to reach before effects
+	var/enlargement_threshold = 100
+
+	/// % chance for damage to be applied when the organ is too large and the mob is clothed
+	var/damage_chance = 20
+
+	/// Largest length the chem can make a mob's penis
+	var/penis_max_length = PENIS_MAX_LENGTH
+	/// Smallest size the chem can make a mob's penis
+	var/penis_min_length = PENIS_MIN_LENGTH
+	/// How much the penis is increased in size each time it's run
+	var/penis_length_increase_step = 1
+	/// How much the penis is increased in girth each time it's run
+	var/penis_girth_increase_step = 1
+	/// Largest girth the chem can make a mob's penis
+	var/penis_max_girth = PENIS_MAX_GIRTH
+	/// Smallest girth the chem can make a mob's penis
+	var/penis_minimum_girth = 2
+	/// How much to reduce the size of the penis each time it's run
+	var/penis_size_reduction_step = 2
+	/// How much to reduce the girth of the penis each time it's run
+	var/penis_girth_reduction_step = 2
+
+	/// Largest size the chem can make a mob's breasts
+	var/max_breast_size = 16
+	/// How much breasts are increased in size each time it's run
+	var/breast_size_increase_step = 1
+	/// Smallest size the chem can make a mob's breasts
+	var/breast_minimum_size = 2
+	/// How much to reduce the size of the breasts each time it's run
+	var/breast_size_reduction_step = 1
+
 /// Runs on life after preference checks. Use this instead of on_mob_life
 /datum/reagent/drug/aphrodisiac/proc/life_effects(mob/living/carbon/human/exposed_mob)
 	return
@@ -224,13 +261,6 @@
 * GENITAL ENLARGEMENT CHEMICALS
 */
 
-//Some global vars, you can make this stuff work more smart than i did.
-/mob/living/carbon/human
-	var/breast_enlarger_amount = 0
-
-/mob/living/carbon/human
-	var/penis_enlarger_amount = 0
-
 /*
 * BREAST ENLARGEMENT
 * Normal function increases the player's breast size.
@@ -249,47 +279,25 @@
 	life_pref_datum = /datum/preference/toggle/erp/breast_enlargement
 	overdose_pref_datum = /datum/preference/toggle/erp/gender_change
 
-	/// How much to increase the enlarger amount
-	var/enlarger_increase_step = 5
-	/// Amount of enlarger to reach before effects
-	var/enlarger_threshold = 100
-
-	/// Largest size the chem can make a mob's breasts
-	var/max_breast_size = 16
-	/// How much breasts are increased in size per process
-	var/breast_increase_step = 1
-	/// % chance for damage to be applied when the breasts are too large and the mob is clothed
-	var/damage_chance = 20
-
-	/// Smallest size the chem can make a mob's penis
-	var/penis_minimum_size = 2
-	/// How much to reduce the size of the penis each process
-	var/penis_size_reduction_step = 2
-	/// Smallest girth the chem can make a mob's penis
-	var/penis_minimum_girth = 2
-	/// How much to reduce the girth of the penis each process
-	var/penis_girth_reduction_step = 2
-
-
 /datum/reagent/drug/aphrodisiac/breast_enlarger/life_effects(mob/living/carbon/human/exposed_mob) //Increases breast size
 	var/obj/item/organ/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
-	exposed_mob.breast_enlarger_amount += enlarger_increase_step
-	if(exposed_mob.breast_enlarger_amount >= enlarger_threshold)
-		if(mob_breasts?.genital_size > max_breast_size)
+	enlargement_amount += enlarger_increase_step
+	if(enlargement_amount >= enlargement_threshold)
+		if(mob_breasts?.genital_size >= max_breast_size)
 			return
-		mob_breasts.genital_size += breast_increase_step
+		mob_breasts.genital_size += breast_size_increase_step
 		mob_breasts.update_sprite_suffix()
 		exposed_mob.update_body()
-		exposed_mob.breast_enlarger_amount = 0
+		enlargement_amount = 0
 
 	if(ISINRANGE_EX(mob_breasts?.genital_size, (max_breast_size - 2), (max_breast_size)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
-		var/target = exposed_mob.get_bodypart(BODY_ZONE_CHEST)
+		var/target_bodypart = exposed_mob.get_bodypart(BODY_ZONE_CHEST)
 		if(prob(damage_chance))
 			to_chat(exposed_mob, span_danger("Your breasts begin to strain against your clothes!"))
 			exposed_mob.adjustOxyLoss(5, 0)
-			exposed_mob.apply_damage(1, BRUTE, target)
+			exposed_mob.apply_damage(1, BRUTE, target_bodypart)
 
-/datum/reagent/drug/aphrodisiac/breast_enlarger/overdose_effects(mob/living/carbon/human/exposed_mob) //Turns you into a female if character is male. Also supposed to add breasts but i'm too dumb to figure out how to make it work
+/datum/reagent/drug/aphrodisiac/breast_enlarger/overdose_effects(mob/living/carbon/human/exposed_mob) //Turns you into a female if character is male. Also supposed to add breasts but enlargement_amount'm too dumb to figure out how to make it work
 	var/obj/item/organ/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
 	var/obj/item/organ/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 	if(exposed_mob.gender == MALE)
@@ -298,7 +306,7 @@
 		exposed_mob.update_body()
 		exposed_mob.update_mutations_overlay()
 
-	if(mob_penis.genital_size > penis_minimum_size && mob_penis.girth > penis_minimum_girth)
+	if(mob_penis.genital_size > penis_min_length && mob_penis.girth > penis_minimum_girth)
 		mob_penis.genital_size -= penis_size_reduction_step
 		mob_penis.girth -= penis_girth_reduction_step
 
@@ -321,45 +329,24 @@
 	life_pref_datum = /datum/preference/toggle/erp/penis_enlargement
 	overdose_pref_datum = /datum/preference/toggle/erp/gender_change
 
-	/// How much to increase the enlarger amount
-	var/enlarger_increase_step = 5
-	/// Amount of enlarger to reach before effects
-	var/enlarger_threshold = 100
-
-	/// Largest size the chem can make a mob's penis
-	var/max_penis_size = 20
-	/// How much penis is increased in size per process
-	var/penis_increase_step = 1
-	/// Largest girth the chem can make a mob's penis
-	var/max_penis_girth = 20
-	/// How much penis is increased in girth per process
-	var/penis_girth_increase_step = 1
-	/// % chance for damage to be applied when the penis is too large and the mob is clothed
-	var/damage_chance = 20
-
-	/// Smallest size the chem can make a mob's breasts
-	var/breast_minimum_size = 2
-	/// How much to reduce the size of the breasts each process
-	var/breast_size_reduction_step = 2
-
 /datum/reagent/drug/aphrodisiac/penis_enlarger/life_effects(mob/living/carbon/human/exposed_mob)
 	var/obj/item/organ/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
-	exposed_mob.penis_enlarger_amount += enlarger_increase_step
-	if(exposed_mob.penis_enlarger_amount >= enlarger_threshold)
-		if(mob_penis?.genital_size > max_penis_size)
+	enlargement_amount += enlarger_increase_step
+	if(enlargement_amount >= enlargement_threshold)
+		if(mob_penis?.genital_size >= penis_max_length || mob_penis?.girth >= penis_max_girth)
 			return ..()
-		mob_penis.genital_size += penis_increase_step
-		if(prob(20) && mob_penis.girth < max_penis_girth)
+		mob_penis.genital_size += penis_length_increase_step
+		if(prob(20))
 			mob_penis.girth += penis_girth_increase_step
 		mob_penis.update_sprite_suffix()
 		exposed_mob.update_body()
-		exposed_mob.penis_enlarger_amount = 0
+		enlargement_amount = 0
 
-	if(ISINRANGE_EX(mob_penis?.genital_size, (max_penis_size - 2), max_penis_size) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
-		var/target = exposed_mob.get_bodypart(BODY_ZONE_PRECISE_GROIN)
+	if(ISINRANGE_EX(mob_penis?.genital_size, (penis_max_length - 2), penis_max_length) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
+		var/target_bodypart = exposed_mob.get_bodypart(BODY_ZONE_PRECISE_GROIN)
 		if(prob(damage_chance))
 			to_chat(exposed_mob, span_danger("You feel a tightness in your pants!"))
-			exposed_mob.apply_damage(1, BRUTE, target)
+			exposed_mob.apply_damage(1, BRUTE, target_bodypart)
 
 	return ..()
 
