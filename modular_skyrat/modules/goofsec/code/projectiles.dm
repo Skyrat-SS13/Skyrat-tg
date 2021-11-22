@@ -39,8 +39,6 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 	inhand_icon_state = "vintorez"
-	burst_size = 2
-	fire_delay = 4
 	zoomable = TRUE
 	zoom_amt = 7
 	zoom_out_amt = 5
@@ -57,7 +55,7 @@
 	fire_sound = 'sound/weapons/gun/smg/shot_suppressed.ogg'
 
 /obj/projectile/beam/laser/hardlight_bullet/vintorez
-	damage = 30 // 11/20/21: Increased from 27 to 30 to improve underperforming guns.
+	damage = 27 // 11/20/21: Increased from 27 to 30 to improve underperforming guns.
 
 /obj/item/gun/energy/norwind
 	name = "\improper M112 'Norwind'"
@@ -81,8 +79,6 @@
 	fire_sound = null
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/norwind)
-	burst_size = 1
-	fire_delay = 10
 	shaded_charge = TRUE
 	cell_type = /obj/item/stock_parts/cell/super
 	supports_swapping_cells = TRUE
@@ -108,8 +104,6 @@
 	worn_icon_state = "ostwind_worn"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
-	fire_delay = 2
-	burst_size = 2
 	fire_sound = null
 	can_bayonet = TRUE
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/ostwind)
@@ -123,8 +117,8 @@
 	fire_sound = 'sound/weapons/gun/smg/shot.ogg'
 
 /obj/projectile/beam/laser/hardlight_bullet/ostwind
-	damage = 30 // 11/20/21: Increased from 27 to 30 to improve underperforming guns.
-	// 11/20/21: Reduction in embedding removed to improve underperforming guns.
+	damage = 27
+
 /obj/item/gun/energy/pitbull
 	name = "\improper Pitbull PDW"
 	desc = "A sturdy personal defense weapon designed to fire 10mm Auto rounds."
@@ -137,8 +131,6 @@
 	worn_icon_state = "ostwind_worn"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
-	fire_delay = 4.20
-	burst_size = 3
 	fire_sound = null
 	can_bayonet = TRUE
 	can_flashlight = TRUE
@@ -154,7 +146,7 @@
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sfrifle_fire.ogg'
 
 /obj/projectile/beam/laser/hardlight_bullet/pitbull
-	damage = 30 // 11/20/21: Increased from 27 to 30 to improve underperforming guns.
+	damage = 27
 
 /obj/item/gun/energy/pcr
 	name = "\improper PCR-9 SMG"
@@ -168,8 +160,6 @@
 	icon_state = "pcr"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
-	fire_delay = 1.80
-	burst_size = 5
 	can_flashlight = TRUE
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/pcr)
 	shaded_charge = TRUE
@@ -183,7 +173,7 @@
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/smg_fire.ogg'
 
 /obj/projectile/beam/laser/hardlight_bullet/pcr
-	damage = 30 // 11/20/21: Increased from 27 to 30 to improve underperforming guns.
+	damage = 27
 
 /* TODO: Use for SolFed.
 /obj/item/gun/energy/peacemaker
@@ -290,9 +280,10 @@
 	icon_state = "random_rifle"
 	guns = list(
 		/obj/item/gun/energy/pcr,
-		/obj/item/gun/energy/pitbull,
-		/obj/item/gun/energy/ostwind,
-		/obj/item/gun/energy/norwind,
+		/obj/item/gun/energy/pcr,
+		/obj/item/gun/energy/pcr,
+		/obj/item/gun/energy/vintorez,
+		/obj/item/gun/energy/vintorez,
 		/obj/item/gun/energy/vintorez,
 	)
 
