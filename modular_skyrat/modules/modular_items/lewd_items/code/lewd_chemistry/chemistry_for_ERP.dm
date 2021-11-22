@@ -217,8 +217,8 @@
 
 /datum/reagent/drug/aphrodisiac/camphor/life_effects(mob/living/carbon/human/exposed_mob)
 	var/old_arousal = exposed_mob.arousal
-	exposed_mob.adjustArousal(arousal_change)
-	exposed_mob.adjustPleasure(pleasure_change)
+	exposed_mob.adjustArousal(arousal_adjust_amount)
+	exposed_mob.adjustPleasure(pleasure_adjust_amount)
 	if(exposed_mob.arousal <= 0 && old_arousal > 0)
 		to_chat(exposed_mob, span_notice("You no longer feel aroused."))
 
