@@ -8,7 +8,6 @@
 #define CUM_FEMALE 2
 // #define ITEM_SLOT_PENIS (1<<20)
 
-#define TRAIT_NYMPHOMANIA	"nymphomania"
 #define TRAIT_MASOCHISM		"masochism"
 #define TRAIT_SADISM		"sadism"
 #define TRAIT_BIMBO 		"bimbo"
@@ -88,7 +87,7 @@
 	..()
 
 /datum/reagent/drug/dopamine/overdose_start(mob/living/carbon/human/M)
-	if(!HAS_TRAIT(M, TRAIT_NYMPHOMANIA) || !HAS_TRAIT(M, TRAIT_BIMBO))
+	if(!HAS_TRAIT(M, TRAIT_BIMBO))
 		to_chat(M, span_userdanger("You don't want to cum anymore!"))
 		SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overgasm, name)
 	return
@@ -234,9 +233,6 @@
 	else
 		arousal -= abs(arous)
 
-	if(HAS_TRAIT(src, TRAIT_NYMPHOMANIA))
-		arousal = min(max(arousal,20),100)
-	else
 		arousal = min(max(arousal,0),100)
 
 /datum/status_effect/aroused
@@ -259,9 +255,6 @@
 
 		if(HAS_TRAIT(H, TRAIT_MASOCHISM))
 			temp_pain -= 0.5
-		if(HAS_TRAIT(H, TRAIT_NYMPHOMANIA))
-			temp_pleasure += 0.25
-			temp_arousal += 0.05
 		if(HAS_TRAIT(H, TRAIT_NEVERBONER))
 			temp_pleasure -= 50
 			temp_arousal -= 50
