@@ -279,6 +279,8 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	var/chosen_victim  //The obsession target
 
 	for(var/mob/Player in GLOB.player_list)//prevents crewmembers falling in love with nuke ops they never met, and other annoying hijinks
+		if(SSticker.IsRoundInProgress() && istype(get_area(Player), /area/centcom/interlink))
+			continue
 		if(Player.mind && Player.stat != DEAD && !isnewplayer(Player) && !isbrain(Player) && Player.client && Player != owner && SSjob.GetJob(Player.mind.assigned_role))
 			if(Player.client.prefs?.read_preference(/datum/preference/toggle/erp/noncon))
 				viable_minds += Player.mind

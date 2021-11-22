@@ -136,7 +136,7 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 			continue
 		if(possible_target in blacklist)
 			continue
-		if(istype(target_area, /area/centcom/interlink)) //SKYRAT EDIT: people in the interlink can't be objective targets
+		if(SSticker.IsRoundInProgress() && istype(target_area, /area/centcom/interlink)) //SKYRAT EDIT: people in the interlink can't be objective targets
 			continue
 		possible_targets += possible_target
 	if(try_target_late_joiners)
