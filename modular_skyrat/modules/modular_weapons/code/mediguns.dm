@@ -141,7 +141,7 @@
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
-	/datum/design/bodymedicell
+/datum/design/bodymedicell
 	name = "Empty Body Teleporter Medicell"
 	desc = "A Empty Medicell that can be upgraded by a bluespace slime extract into a usable Body Teleporter Medicell."
 	id = "bodymedicell"
