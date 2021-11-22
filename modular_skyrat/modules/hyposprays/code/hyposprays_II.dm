@@ -45,7 +45,7 @@
 	//Does it go through hardsuits?
 	var/penetrates = null
 
-/obj/item/hypospray/mkii/CMO
+/obj/item/hypospray/mkii/cmo
 	name = "hypospray mk.II deluxe"
 	allowed_containers = list(/obj/item/reagent_containers/glass/vial/small, /obj/item/reagent_containers/glass/vial/large)
 	icon_state = "cmo2"
