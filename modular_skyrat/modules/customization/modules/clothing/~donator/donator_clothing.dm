@@ -1172,6 +1172,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "pcrc_clothes"
 	worn_icon_state = "pcrc_clothes"
+
 /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/pcrc
 	name = "PCRC Armored Jacket"
 	desc = "A heavy-looking armored jacket with the logo of the Proxima Centauri Risk Control firm embed into the back. A little tag inside reads the ID \"EX-EC-814-92\"."
