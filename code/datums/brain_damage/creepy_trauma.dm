@@ -88,7 +88,7 @@
 /datum/brain_trauma/special/obsessed/proc/on_failed_social_interaction()
 	if(QDELETED(owner) || owner.stat >= UNCONSCIOUS)
 		return
-	switch(rand(1, 100)) 
+	switch(rand(1, 100))
 		if(1 to 40)
 			INVOKE_ASYNC(owner, /mob.proc/emote, pick("blink", "blink_r"))
 			owner.blur_eyes(10)
@@ -126,6 +126,7 @@
 			continue
 		if(!(player.mind.assigned_role.job_flags & JOB_CREW_MEMBER))
 			continue
+		if(istype(get_area(player), /area/centcom/interlink))
 		viable_minds += player.mind
 	for(var/datum/mind/possible_target as anything in viable_minds)
 		if(possible_target != owner && ishuman(possible_target.current))
