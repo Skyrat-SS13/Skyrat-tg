@@ -8,6 +8,13 @@
 	/// What preference you need enabled for effects on overdose
 	var/overdose_pref_datum = /datum/preference/toggle/erp
 
+	/// The amount to adjust the mob's arousal by
+	var/arousal_adjust_amount = 1
+	/// The amount to adjust the mob's pleasure by
+	var/pleasure_adjust_amount = 0
+	/// The amount to adjust the mob's pain by
+	var/pain_adjust_amount = 0
+
 	// Vars for enlargement chems from here on
 	/// Counts up to a threshold before triggering enlargement effects
 	var/enlargement_amount = 0
@@ -74,6 +81,9 @@
 	taste_description = "strawberries"
 	color = "#FFADFF"
 	life_pref_datum = /datum/preference/toggle/erp/aphro
+	arousal_adjust_amount = 1
+	pleasure_adjust_amount = 0
+	pain_adjust_amount = 0
 
 	/// Probability of the chem triggering an emote, as a %, run on mob life
 	var/emote_probability = 3
@@ -86,12 +96,6 @@
 	/// A list of possible to_chat messages the chem is able to trigger
 	var/list/possible_aroused_thoughts = list("You feel frisky.", "You're having trouble suppressing your urges.", "You feel in the mood.")
 
-	/// The amount to adjust the mob's arousal by
-	var/arousal_adjust_amount = 1
-	/// The amount to adjust the mob's pleasure by
-	var/pleasure_adjust_amount = 0
-	/// The amount to adjust the mob's pain by
-	var/pain_adjust_amount = 0
 
 /datum/reagent/drug/aphrodisiac/crocin/life_effects(mob/living/carbon/human/exposed_mob)
 	if(prob(emote_probability))
@@ -160,18 +164,14 @@
 	overdose_threshold = 10
 	life_pref_datum = /datum/preference/toggle/erp/aphro
 	overdose_pref_datum = /datum/preference/toggle/erp/aphro
+	arousal_adjust_amount = 0.5
+	pleasure_adjust_amount = 0.3
+	pain_adjust_amount = -0.5
 
 	/// How druggy the chem will make the mob
 	var/drugginess_amount = 5
 	/// How likely the drug is to make the mob druggy per life process
 	var/drugginess_chance = 7
-
-	/// The amount to adjust the mob's arousal by
-	var/arousal_adjust_amount = 0.5
-	/// The amount to adjust the mob's pleasure by
-	var/pleasure_adjust_amount = 0.3
-	/// The amount to adjust the mob's pain by
-	var/pain_adjust_amount = -0.5
 
 /datum/reagent/drug/aphrodisiac/dopamine/on_mob_add(mob/living/carbon/human/exposed_mob)
 	if(!(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/aphro)))
@@ -212,11 +212,8 @@
 	color = "#D9D9D9"//rgb(157, 157, 157)
 	reagent_state = SOLID
 	life_pref_datum = /datum/preference/toggle/erp/aphro
-
-	/// Amount to reduce arousal by
-	var/arousal_change = -12
-	/// Amount to reduce pleasure by
-	var/pleasure_change = -3
+	arousal_adjust_amount = -12
+	pleasure_adjust_amount = -3
 
 /datum/reagent/drug/aphrodisiac/camphor/life_effects(mob/living/carbon/human/exposed_mob)
 	var/old_arousal = exposed_mob.arousal
@@ -233,7 +230,7 @@
 	color = "#D9D9D9"//rgb(255, 255, 255)
 	reagent_state = SOLID
 	overdose_threshold = 20
-	arousal_change = -18
+	arousal_adjust_amount = -18
 	overdose_pref_datum = /datum/preference/toggle/erp/aphro
 
 	/// How much of the given reagent to remove per operation
