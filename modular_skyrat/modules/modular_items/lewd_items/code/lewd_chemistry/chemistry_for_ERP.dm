@@ -89,11 +89,15 @@
 	pleasure_adjust_amount = 1.5
 	pain_adjust_amount = 0.2
 	possible_aroused_thoughts = list("You feel a bit hot.", "You feel strong sexual urges.", "You feel in the mood.", "You're ready to go down on someone.")
+
+	/// A list of possible to_chat messages the chem is able to trigger after enough cycles in the mobs system
 	var/list/extreme_aroused_thoughts = list("You need to fuck someone!", "You're bursting with sexual tension!", "You can't get sex off your mind!")
+	/// How many cycles the chem has to be in the mob's system before triggering extreme effects
+	var/extreme_thought_threshold = 25
 
 /datum/reagent/drug/aphrodisiac/crocin/hexacrocin/life_effects(mob/living/carbon/human/exposed_mob)
 	. = ..()
-	if(prob(thought_probability) && current_cycle > 25)
+	if(prob(thought_probability) && current_cycle >= extreme_thought_threshold)
 		var/displayed_extreme_thought = pick(extreme_aroused_thoughts)
 		to_chat(exposed_mob, span_purple("[displayed_extreme_thought]"))
 
