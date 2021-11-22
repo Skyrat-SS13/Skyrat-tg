@@ -724,8 +724,14 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 
 //Use this proc when an admin takes action that may be related to an open ticket on what
 //what can be a client, ckey, or mob
+<<<<<<< HEAD
 // /proc/admin_ticket_log(what, message) // SKYRAT EDIT ORIGINAL
 /proc/admin_ticket_log(what, message, admin_only = TRUE) // SKYRAT EDIT CHANGE -- Player ticket viewing
+=======
+//log_in_blackbox: Whether or not this message with the blackbox system.
+//If disabled, this message should be logged with a different proc call
+/proc/admin_ticket_log(what, message, log_in_blackbox = TRUE)
+>>>>>>> 2b411035c41 (Adds additional DB logging for admin help interactions (#62994))
 	var/client/C
 	var/mob/Mob = what
 	if(istype(Mob))
@@ -734,19 +740,29 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 		C = what
 	if(istype(C) && C.current_ticket)
 		C.current_ticket.AddInteraction(message)
+<<<<<<< HEAD
 		// SKYRAT EDIT ADDITION START -- Player ticket viewing
 		if(!admin_only)
 			C.current_ticket.AddInteractionPlayer(message)
 		// SKYRAT EDIT ADDITION END
+=======
+		if(log_in_blackbox)
+			SSblackbox.LogAhelp(C.current_ticket.id, "Interaction", message, C.ckey, usr.ckey)
+>>>>>>> 2b411035c41 (Adds additional DB logging for admin help interactions (#62994))
 		return C.current_ticket
 	if(istext(what)) //ckey
 		var/datum/admin_help/AH = GLOB.ahelp_tickets.CKey2ActiveTicket(what)
 		if(AH)
 			AH.AddInteraction(message)
+<<<<<<< HEAD
 			// SKYRAT EDIT ADDITION START -- Player ticket viewing
 			if(!admin_only)
 				AH.AddInteractionPlayer(message)
 			// SKYRAT EDIT ADDITION END
+=======
+			if(log_in_blackbox)
+				SSblackbox.LogAhelp(AH.id, "Interaction", message, what, usr.ckey)
+>>>>>>> 2b411035c41 (Adds additional DB logging for admin help interactions (#62994))
 			return AH
 
 //

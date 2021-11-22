@@ -236,6 +236,7 @@
 					confidential = TRUE)
 				//omg this is dumb, just fill in both their tickets
 				var/interaction_message = "<font color='purple'>PM from-<b>[key_name(src, recipient, 1)]</b> to-<b>[key_name(recipient, src, 1)]</b>: [keywordparsedmsg]</font>"
+<<<<<<< HEAD
 				// admin_ticket_log(src, interaction_message) // SKYRAT EDIT ORIGINAL
 				admin_ticket_log(src, interaction_message, FALSE) // SKYRAT EDIT CHANGE -- Player ticket viewing
 				if(recipient != src)//reeee
@@ -246,6 +247,15 @@
 				var/replymsg = "Reply PM from-<b>[key_name(src, recipient, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span>"
 				// admin_ticket_log(src, "<font color='red'>[replymsg]</font>") // SKYRAT EDIT ORIGINAL
 				admin_ticket_log(src, "<font color='red'>[replymsg]</font>", FALSE) // SKYRAT EDIT CHANGE -- Player ticket viewing
+=======
+				admin_ticket_log(src, interaction_message, log_in_blackbox = FALSE)
+				if(recipient != src) //reeee
+					admin_ticket_log(recipient, interaction_message, log_in_blackbox = FALSE)
+				SSblackbox.LogAhelp(current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
+			else //recipient is an admin but sender is not
+				var/replymsg = "Reply PM from-<b>[key_name(src, recipient, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span>"
+				admin_ticket_log(src, "<font color='red'>[replymsg]</font>", log_in_blackbox = FALSE)
+>>>>>>> 2b411035c41 (Adds additional DB logging for admin help interactions (#62994))
 				to_chat(recipient,
 					type = MESSAGE_TYPE_ADMINPM,
 					html = span_danger("[replymsg]"),
@@ -296,8 +306,12 @@
 					html = span_notice("Admin PM to-<b>[key_name(recipient, src, 1)]</b>: <span class='linkify'>[msg]</span>"),
 					confidential = TRUE)
 
+<<<<<<< HEAD
 				// admin_ticket_log(recipient, "<font color='purple'>PM From [key_name_admin(src)]: [keywordparsedmsg]</font>") // SKYRAT EDIT ORIGINAL
 				admin_ticket_log(recipient, "<font color='purple'>PM From [key_name_admin(src, FALSE)]: [keywordparsedmsg]</font>", FALSE) // SKYRAT EDIT CHANGE -- Player ticket viewing
+=======
+				admin_ticket_log(recipient, "<font color='purple'>PM From [key_name_admin(src)]: [keywordparsedmsg]</font>", log_in_blackbox = FALSE)
+>>>>>>> 2b411035c41 (Adds additional DB logging for admin help interactions (#62994))
 
 				if(!already_logged) //Reply to an existing ticket
 					SSblackbox.LogAhelp(recipient.current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
@@ -427,7 +441,7 @@
 		html = span_adminsay("<i>Click on the administrator's name to reply.</i>"),
 		confidential = TRUE)
 
-	admin_ticket_log(C, "<font color='purple'>PM From [tgs_tagged]: [msg]</font>")
+	admin_ticket_log(C, "<font color='purple'>PM From [tgs_tagged]: [msg]</font>", log_in_blackbox = FALSE)
 
 	window_flash(C, ignorepref = TRUE)
 	//always play non-admin recipients the adminhelp sound
