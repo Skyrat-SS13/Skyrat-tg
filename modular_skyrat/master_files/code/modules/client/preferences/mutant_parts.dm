@@ -1148,7 +1148,7 @@
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/head_acc/is_accessible(datum/preferences/preferences)
-	var/ckeycheck = preferences?.parent.ckey == "whirlsam"
+	var/ckeycheck = preferences?.parent?.ckey == "whirlsam"
 	var/passed_initial_check = ..(preferences)
 	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
 	return ckeycheck && (passed_initial_check || allowed)
@@ -1204,7 +1204,7 @@
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/neck_acc/is_accessible(datum/preferences/preferences)
-	var/ckeycheck = preferences?.parent.ckey == "whirlsam"
+	var/ckeycheck = preferences?.parent?.ckey == "whirlsam"
 	var/passed_initial_check = ..(preferences)
 	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
 	return ckeycheck && (passed_initial_check || allowed)
