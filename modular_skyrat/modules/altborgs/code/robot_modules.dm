@@ -557,6 +557,7 @@
 		"Bro" = image(icon = 'icons/mob/robots.dmi', icon_state = "brobot"),
 		"Can" = image(icon = 'icons/mob/robots.dmi', icon_state = "kent"),
 		"Tophat" = image(icon = 'icons/mob/robots.dmi', icon_state = "tophat"),
+		"Marina" = image(icon = 'modular_skyrat/modules/altborgs/icons/robots_jani.dmi', icon_state = "marinajan"),
 		"Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/robots_serv.dmi', icon_state = "sleekserv"),
 		"Heavy" = image(icon = 'modular_skyrat/modules/altborgs/icons/robots_serv.dmi', icon_state = "heavyserv"),
 		"Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/robots_serv.dmi', icon_state = "bootyservice"),
@@ -592,6 +593,9 @@
 			cyborg_base_icon = "tophat"
 			special_light_key = null
 			hat_offset = INFINITY
+		if("Marina")
+			cyborg_base_icon = "marinajan"
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_jani.dmi'
 		if("Sleek")
 			cyborg_base_icon = "sleekserv"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_serv.dmi'
