@@ -15,7 +15,7 @@ These are basically advanced cells.
 	charge_overlay_icon = 'modular_skyrat/modules/microfusion/icons/microfusion_cells.dmi'
 	icon_state = "microfusion"
 	w_class = WEIGHT_CLASS_NORMAL
-	maxcharge = 700 //7 shots
+	maxcharge = 1200 //12 shots
 	chargerate = 0 //Standard microfusion cells can't be recharged, they're single use.
 
 	var/list/attatched_upgrades = list()
@@ -28,52 +28,52 @@ These are basically advanced cells.
 	return ..()
 
 /obj/item/stock_parts/cell/microfusion/attackby(obj/item/attacking_item, mob/living/user, params)
-	if(istype(attacking_item, /obj/item/microfusion_attatchment))
+	if(istype(attacking_item, /obj/item/microfusion_attachment))
 		attatch_upgrade(attacking_item, user)
 		return
 	return ..()
 
 /obj/item/stock_parts/cell/microfusion/update_overlays()
 	. = ..()
-	for(var/obj/item/microfusion_attatchment/microfusion_attatchment in attatched_upgrades)
-		. += microfusion_attatchment.attatchment_overlay_icon_state
+	for(var/obj/item/microfusion_attachment/microfusion_attachment in attatched_upgrades)
+		. += microfusion_attachment.attachment_overlay_icon_state
 
 /obj/item/stock_parts/cell/microfusion/screwdriver_act(mob/living/user, obj/item/tool)
 	remove_upgrades()
 	to_chat(user, span_notice("You remove the upgrades from [src]."))
 
-/obj/item/stock_parts/cell/microfusion/proc/attatch_upgrade(obj/item/microfusion_attatchment/microfusion_attatchment, mob/living/user)
-	if(microfusion_attatchment in attatched_upgrades)
-		to_chat(user, span_warning("[src] already has [microfusion_attatchment] installed!"))
+/obj/item/stock_parts/cell/microfusion/proc/attatch_upgrade(obj/item/microfusion_attachment/microfusion_attachment, mob/living/user)
+	if(microfusion_attachment in attatched_upgrades)
+		to_chat(user, span_warning("[src] already has [microfusion_attachment] installed!"))
 		return FALSE
-	attatched_upgrades += microfusion_attatchment
-	microfusion_attatchment.forceMove(src)
-	microfusion_attatchment.run_upgrade(src)
-	to_chat(user, span_notice("You successfully install [microfusion_attatchment] onto [src]!"))
+	attatched_upgrades += microfusion_attachment
+	microfusion_attachment.forceMove(src)
+	microfusion_attachment.run_upgrade(src)
+	to_chat(user, span_notice("You successfully install [microfusion_attachment] onto [src]!"))
+	playsound(src, 'sound/effects/structure_stress/pop2.ogg', 70, TRUE)
 	return TRUE
 
 /obj/item/stock_parts/cell/microfusion/proc/remove_upgrades()
-	for(var/obj/item/microfusion_attatchment/microfusion_attatchment in attatched_upgrades)
-		microfusion_attatchment.remove_upgrade(src)
-		microfusion_attatchment.forceMove(get_turf(src))
-		attatched_upgrades -= microfusion_attatchment
+	for(var/obj/item/microfusion_attachment/microfusion_attachment in attatched_upgrades)
+		microfusion_attachment.remove_upgrade(src)
+		microfusion_attachment.forceMove(get_turf(src))
+		attatched_upgrades -= microfusion_attachment
 
 /obj/item/stock_parts/cell/microfusion/enhanced
 	name = "enhanced microfusion cell"
 	desc = "An enhanced microfusion cell."
 	icon_state = "microfusion_enhanced"
-	maxcharge = 1400
+	maxcharge = 1500
 
 /obj/item/stock_parts/cell/microfusion/advanced
 	name = "advanced microfusion cell"
 	desc = "An advanced microfusion cell."
 	icon_state = "microfusion_advanced"
-	maxcharge = 2100
+	maxcharge = 1700
 
 /obj/item/stock_parts/cell/microfusion/bluespace
 	name = "bluespace microfusion cell"
 	desc = "An advanced microfusion cell."
 	icon_state = "microfusion_advanced"
-	maxcharge = 2800
-
+	maxcharge = 2000
 
