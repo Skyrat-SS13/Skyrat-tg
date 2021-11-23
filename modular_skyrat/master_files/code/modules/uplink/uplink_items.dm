@@ -236,7 +236,6 @@
 	name = "12g Buckshot Drum"
 	desc = "An additional 8-round buckshot magazine for use with the Bulldog shotgun. Front towards enemy."
 	item = /obj/item/ammo_box/magazine/m12g
-	cost = 2
 	purchasable_from = ALL
 
 /datum/uplink_item/ammo/shotgun/dragon_traitor
@@ -244,7 +243,6 @@
 	desc = "An alternative 8-round dragon's breath magazine for use in the Bulldog shotgun. \
 			'I'm a fire starter, twisted fire starter!'"
 	item = /obj/item/ammo_box/magazine/m12g/dragon
-	cost = 2
 	purchasable_from = ALL
 
 /datum/uplink_item/ammo/shotgun/meteor_traitor
