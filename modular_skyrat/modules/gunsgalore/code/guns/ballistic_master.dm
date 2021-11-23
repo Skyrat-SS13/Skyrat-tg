@@ -49,13 +49,6 @@
 			return
 	. = ..()
 
-//gun pickup message
-/obj/item/gun/pickup(mob/user)
-	. = ..()
-	if(w_class > WEIGHT_CLASS_SMALL && !suppressed)
-		user.visible_message("<span class='warning'>[user] grabs <b>[src]</b>!</span>",
-		"<span class='warning'>You grab [src]!</span>")
-
 /obj/item/gun/ballistic/assault_rifle
 	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_cock.ogg'
 	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
