@@ -1,6 +1,6 @@
 // Master file for cell loadable energy guns. PROCS ONLY YOU MONKEYS!
 
-/obj/item/gun/energy/cell
+/obj/item/gun/energy/microfusion
 	name = "prototype detatchable cell energy projection aparatus"
 	desc = "The coders have obviously failed to realise this is broken."
 	icon = 'modular_skyrat/modules/advanced_energy_guns/icons/guns.dmi'
@@ -24,23 +24,23 @@
 	/// The volume at which we will play the removal sound.
 	var/sound_cell_remove_volume = 100
 
-/obj/item/gun/energy/cell/attackby(obj/item/attacking_item, mob/user, params)
+/obj/item/gun/energy/microfusion/attackby(obj/item/attacking_item, mob/user, params)
 	. = ..()
 	if (.)
 		return
 	if(istype(attacking_item, cell_type))
 		insert_cell(user, attacking_item)
 
-/obj/item/gun/energy/cell/attack_hand(mob/user, list/modifiers)
+/obj/item/gun/energy/microfusion/attack_hand(mob/user, list/modifiers)
 	if(loc == user && user.is_holding(src) && cell)
 		eject_cell(user)
 		return
 	return ..()
 
 /// Try to insert the cell into the gun, if successful, return TRUE
-/obj/item/gun/energy/cell/proc/insert_cell(mob/user, obj/item/stock_parts/cell/microfusion/inserting_cell, display_message = TRUE)
+/obj/item/gun/energy/microfusion/proc/insert_cell(mob/user, obj/item/stock_parts/cell/microfusion/inserting_cell, display_message = TRUE)
 	if(cell)
-		if(reload_time && !HAS_TRAIT(user, TRAIT_WEAPON_RELOAD)) //This only happens when you're attempting a tactical reload, e.g. there's a mag already inserted.
+		if(reload_time && !HAS_TRAIT(user, TRAIT_INSTANT_RELOAD)) //This only happens when you're attempting a tactical reload, e.g. there's a mag already inserted.
 			if(display_message)
 				to_chat(user, span_notice("You start to insert [inserting_cell] into [src]!"))
 			if(!do_after(user, reload_time, src))
@@ -60,7 +60,7 @@
 	return TRUE
 
 /// Ejecting a cell.
-/obj/item/gun/energy/cell/proc/eject_cell(mob/user, display_message = TRUE)
+/obj/item/gun/energy/microfusion/proc/eject_cell(mob/user, display_message = TRUE)
 	var/obj/item/stock_parts/cell/microfusion/old_cell = cell
 	old_cell.forceMove(get_turf(src))
 	if(user)

@@ -23,7 +23,7 @@
 #define TRAIT_ASH_ASPECT "ash_aspect"
 #define TRAIT_SPARKLE_ASPECT "sparkle_aspect"
 
-#define TRAIT_WEAPON_RELOAD "instant_reload" //Allows the user to instantly reload.
+#define TRAIT_INSTANT_RELOAD "instant_reload" //Allows the user to instantly reload.
 
 // Trait sources
 #define GHOSTROLE_TRAIT "ghostrole" // SKYRAT EDIT ADDITION -- Ghost Cafe Traits
