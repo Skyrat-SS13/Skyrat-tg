@@ -657,10 +657,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	)
 
 /obj/machinery/computer/communications/Topic(href, href_list)
-	. = ..()
-	if (.)
-		return
-
 	if (href_list["reject_cross_comms_message"])
 		if (!usr.client?.holder)
 			log_game("[key_name(usr)] tried to reject a cross-comms message without being an admin.")
@@ -678,6 +674,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		message_admins("[key_name(usr)] has cancelled the outgoing cross-comms message.")
 
 		return TRUE
+	
+	return ..()
 
 /// Returns whether or not the communications console can communicate with the station
 /obj/machinery/computer/communications/proc/has_communication()

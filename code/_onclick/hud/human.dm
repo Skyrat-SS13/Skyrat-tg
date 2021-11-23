@@ -26,7 +26,7 @@
 		for (var/atom/movable/screen/human/using in targetmob.hud_used.static_inventory)
 			if(using.screen_loc == ui_erp_inventory)
 				using.screen_loc = ui_erp_inventory_up // Move up ERP inventory button
-		for (var/atom/movable/screen/inventory/inv in targetmob.hud_used.ERP_toggleable_inventory)
+		for (var/atom/movable/screen/inventory/inv in targetmob.hud_used.erp_toggleable_inventory)
 			// Move up ERP hud slots
 			if(inv.screen_loc == ui_vagina_down)
 				inv.screen_loc = ui_vagina
@@ -40,7 +40,7 @@
 		for (var/atom/movable/screen/human/using in targetmob.hud_used.static_inventory)
 			if(using.screen_loc == ui_erp_inventory_up)
 				using.screen_loc = ui_erp_inventory // Move down ERP inventory button
-		for (var/atom/movable/screen/inventory/inv in targetmob.hud_used.ERP_toggleable_inventory)
+		for (var/atom/movable/screen/inventory/inv in targetmob.hud_used.erp_toggleable_inventory)
 			// Move up ERP hud slots
 			if(inv.screen_loc == ui_vagina)
 				inv.screen_loc = ui_vagina_down
@@ -234,7 +234,7 @@
 	static_inventory += using
 
 	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-	using = new /atom/movable/screen/human/ERP_toggle()
+	using = new /atom/movable/screen/human/erp_toggle()
 	using.icon = ui_style
 	using.screen_loc = ui_erp_inventory
 	using.hud = src
@@ -313,7 +313,7 @@
 	inv_box.screen_loc = ui_vagina_down
 	inv_box.slot_id = ITEM_SLOT_VAGINA
 	inv_box.hud = src
-	ERP_toggleable_inventory += inv_box
+	erp_toggleable_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "anus"
@@ -322,7 +322,7 @@
 	inv_box.screen_loc = ui_anus_down
 	inv_box.slot_id = ITEM_SLOT_ANUS
 	inv_box.hud = src
-	ERP_toggleable_inventory += inv_box
+	erp_toggleable_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "nipples"
@@ -331,7 +331,7 @@
 	inv_box.screen_loc = ui_nipples_down
 	inv_box.slot_id = ITEM_SLOT_NIPPLES
 	inv_box.hud = src
-	ERP_toggleable_inventory += inv_box
+	erp_toggleable_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "penis"
@@ -340,7 +340,7 @@
 	inv_box.screen_loc = ui_penis_down
 	inv_box.slot_id = ITEM_SLOT_PENIS
 	inv_box.hud = src
-	ERP_toggleable_inventory += inv_box
+	erp_toggleable_inventory += inv_box
 	//SKYRAT EDIT ADDITION END
 
 	throw_icon = new /atom/movable/screen/throw_catch()

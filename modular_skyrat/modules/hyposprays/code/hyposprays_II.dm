@@ -45,7 +45,7 @@
 	//Does it go through hardsuits?
 	var/penetrates = null
 
-/obj/item/hypospray/mkii/CMO
+/obj/item/hypospray/mkii/cmo
 	name = "hypospray mk.II deluxe"
 	allowed_containers = list(/obj/item/reagent_containers/glass/vial/small, /obj/item/reagent_containers/glass/vial/large)
 	icon_state = "cmo2"
@@ -116,10 +116,12 @@
 
 /obj/item/hypospray/mkii/proc/insert_vial(obj/item/new_vial, mob/living/user, obj/item/current_vial)
 	var/obj/item/reagent_containers/glass/vial/container = new_vial
+	var/old_loc //The location of and old vial.
 	if(!is_type_in_list(container, allowed_containers))
 		to_chat(user, span_notice("[src] doesn't accept this type of vial."))
 		return FALSE
 	if(current_vial)
+		old_loc = container.loc
 		var/obj/item/reagent_containers/glass/vial/old_container = current_vial
 		old_container.forceMove(drop_location())
 	if(!user.transferItemToLoc(container, src))
@@ -129,7 +131,10 @@
 	playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
 	update_appearance()
 	if(current_vial)
-		user.put_in_hands(current_vial)
+		if(old_loc == user)
+			user.put_in_hands(current_vial)
+		else
+			current_vial.forceMove(old_loc)
 
 /obj/item/hypospray/mkii/attackby(obj/item/used_item, mob/living/user)
 	if((istype(used_item, /obj/item/reagent_containers/glass/vial) && vial != null))
