@@ -104,8 +104,7 @@
 	access = ACCESS_MEDICAL
 	contains = list(/obj/item/weaponcell/medical/brute,
 					/obj/item/weaponcell/medical/burn,
-					/obj/item/weaponcell/medical/toxin,
-					/obj/item/weaponcell/medical)
+					/obj/item/weaponcell/medical/toxin)
 	crate_name = "Medicell Replacemnt Crate"
 
 //////////////////////////////////////////////////////////////////////////////

@@ -609,10 +609,12 @@ GENE SCANNER
 		return
 	//SKYRAT EDIT END
 
-	var/turf/location = user.loc
+	var/turf/location = get_turf(user)	//SKYRAT CHANGE - ORIGINAL var/turf/location = user.loc - pairs with below change, proc/scan_turf() in ranged_analyzer.dm
 	if(!istype(location))
 		return
 
+	//SKYRAT EDIT START - Functionality moved to proc/scan_turf() in ranged_analyzer.dm
+/*
 	var/render_list = list()
 	var/datum/gas_mixture/environment = location.return_air()
 	var/pressure = environment.return_pressure()
@@ -642,7 +644,10 @@ GENE SCANNER
 			var/gas_concentration = env_gases[id][MOLES]/total_moles
 			render_list += "[span_alert("[env_gases[id][GAS_META][META_GAS_NAME]]: [round(gas_concentration*100, 0.01)] % ([round(env_gases[id][MOLES], 0.01)] mol)")]\n"
 		render_list += "[span_info("Temperature: [round(environment.temperature-T0C, 0.01)] &deg;C ([round(environment.temperature, 0.01)] K)")]\n"
-	to_chat(user, examine_block(jointext(render_list, "")), trailing_newline = FALSE) // we handled the last <br> so we don't need handholding //SKYRAT EDIT CHANGE
+	to_chat(user, jointext(render_list, ""), trailing_newline = FALSE) // we handled the last <br> so we don't need handholding
+*/
+	scan_turf(user, location)
+	//SKYRAT EDIT END
 
 /obj/item/analyzer/AltClick(mob/user) //Barometer output for measuring when the next storm happens
 	..()
