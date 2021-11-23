@@ -125,7 +125,14 @@
 /obj/machinery/cell_charger/process(delta_time)
 	if(!charging || !anchored || (machine_stat & (BROKEN|NOPOWER)))
 		return
-
+	// SKYRAT EDIT ADDITION
+	if(charging.chargerate <= 0)
+		charging.forceMove(drop_location())
+		playsound(src, 'sound/machines/buzz-two.ogg', 30, TRUE)
+		say("[charging] cannot be recharged!")
+		removecell()
+		return
+	//SKYRAT EDIT END
 	if(charging.percent() >= 100)
 		return
 

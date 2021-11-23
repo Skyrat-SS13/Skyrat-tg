@@ -31,8 +31,8 @@ The cell is stable and will not emit sparks when firing.
 */
 
 /obj/item/microfusion_gun_attachment/scatter
-	name = "scattering microfusion lens upgrade"
-	desc = "Splits the microfusion laser beam entering the lens by 3!"
+	name = "diffuser microfusion lens upgrade"
+	desc = "Splits the microfusion laser beam entering the lens!"
 	icon_state = "attachment_scatter"
 	attachment_overlay_icon_state = "scatter_attachment"
 	/// How many pellets are we going to add to the existing amount on the gun?

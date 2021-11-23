@@ -7,7 +7,7 @@
 /obj/item/gun/energy/microfusion
 	name = "prototype detatchable cell energy projection aparatus"
 	desc = "The coders have obviously failed to realise this is broken."
-	icon = 'modular_skyrat/modules/microfusion/icons/guns.dmi'
+	icon = 'modular_skyrat/modules/microfusion/icons/guns40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/microfusion)
