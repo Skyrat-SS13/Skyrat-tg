@@ -89,6 +89,14 @@
 		return
 
 	for(var/obj/item/stock_parts/cell/charging in charging_batteries)
+		if(charging.chargerate <= 0)
+			charging.forceMove(drop_location())
+			charging.update_appearance()
+			charging_batteries -= charging
+			update_appearance()
+			playsound(src, 'sound/machines/buzz-two.ogg', 30, TRUE)
+			say("[charging] cannot be recharged!")
+			continue
 		if(charging.percent() >= 100)
 			continue
 		var/main_draw = use_power_from_net(charge_rate * delta_time, take_any = TRUE) //Pulls directly from the Powernet to dump into the cell
