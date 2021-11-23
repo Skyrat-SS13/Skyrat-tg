@@ -73,7 +73,7 @@
 						M.adjustArousal(2)
 						M.adjustPain(4)
 						M.apply_status_effect(/datum/status_effect/spanked)
-						if(HAS_TRAIT(M, TRAIT_MASOCHISM || TRAIT_NYMPHOMANIA || TRAIT_BIMBO))
+						if(HAS_TRAIT(M, TRAIT_MASOCHISM || TRAIT_BIMBO))
 							SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "pervert spanked", /datum/mood_event/perv_spanked)
 						if(prob(10) && (M.stat != DEAD))
 							M.apply_status_effect(/datum/status_effect/subspace)

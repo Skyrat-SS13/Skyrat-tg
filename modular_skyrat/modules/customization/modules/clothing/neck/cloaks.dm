@@ -28,15 +28,18 @@
 	. = ..()
 	AddComponent(/datum/component/toggle_clothes, "cowboy_poncho_t")
 
-/obj/item/clothing/neck/ponchoranger
-	name = "brown cowboy ponch"
+//This one is greyscale :)
+/obj/item/clothing/neck/ranger_poncho
+	name = "ranger poncho"
 	desc = "Aim for the Heart, Ramon."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
-	icon_state = "ranger_cloak"
+	icon_state = "ranger_poncho"
+	greyscale_config = /datum/greyscale_config/ranger_poncho
+	greyscale_config_worn = /datum/greyscale_config/ranger_poncho/worn
+	greyscale_colors = "#917A57#858585"	//Roughly the same color as the original non-greyscale item was
+	flags_1 = IS_PLAYER_COLORABLE_1
 	mutant_variants = NONE
 	heat_protection = CHEST
 
-/obj/item/clothing/neck/ponchoranger/ComponentInitialize()
+/obj/item/clothing/neck/ranger_poncho/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/toggle_clothes, "ranger_cloak_t")
+	AddComponent(/datum/component/toggle_clothes, "ranger_poncho_t")
