@@ -111,11 +111,7 @@
 			if(HUD_LIST_LIST)
 				hud_list[hud] = list()
 			else
-<<<<<<< HEAD
-				var/image/I = image('modular_skyrat/master_files/icons/mob/hud.dmi', src, "")	//SKYRAT EDIT: original filepath 'icons/mob/hud.dmi'
-=======
-				var/image/I = image('icons/mob/huds/hud.dmi', src, "")
->>>>>>> e6883178571 (Splits antag huds into their own .dmi file and de-hardcodes antag huds (#62767))
+				var/image/I = image('modular_skyrat/master_files/icons/mob/huds/hud.dmi', src, "")	//SKYRAT EDIT: original filepath 'icons/mob/huds/hud.dmi'
 				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
 				hud_list[hud] = I
 
