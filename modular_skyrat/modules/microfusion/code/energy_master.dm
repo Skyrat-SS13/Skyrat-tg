@@ -3,22 +3,22 @@
 /obj/item/gun/energy/microfusion
 	name = "prototype detatchable cell energy projection aparatus"
 	desc = "The coders have obviously failed to realise this is broken."
-	icon = 'modular_skyrat/modules/advanced_energy_guns/icons/guns.dmi'
-	lefthand_file = 'modular_skyrat/modules/advanced_energy_guns/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/advanced_energy_guns/icons/guns_lefthand.dmi'
+	icon = 'modular_skyrat/modules/microfusion/icons/guns.dmi'
+	lefthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/advanced)
 	cell_type = /obj/item/stock_parts/cell/microfusion
 
 	/// The time it takes for someone to (tactically) reload this gun. In deciseconds.
 	var/reload_time = 2 SECONDS
 	/// The sound played when you insert a cell.
-	var/sound_cell_insert = 'modular_skyrat/modules/advanced_energy_guns/sound/mag_insert.ogg'
+	var/sound_cell_insert = 'modular_skyrat/modules/microfusion/sound/mag_insert.ogg'
 	/// Should the insertion sound played vary?
 	var/sound_cell_insert_vary = TRUE
 	/// The volume at which we will play the insertion sound.
 	var/sound_cell_insert_volume = 100
 	/// The sound played when you remove a cell.
-	var/sound_cell_remove = 'modular_skyrat/modules/advanced_energy_guns/sound/mag_insert.ogg'
+	var/sound_cell_remove = 'modular_skyrat/modules/microfusion/sound/mag_insert.ogg'
 	/// Should the removal sound played vary?
 	var/sound_cell_remove_vary = TRUE
 	/// The volume at which we will play the removal sound.
