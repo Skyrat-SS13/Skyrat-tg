@@ -45,7 +45,7 @@
 	. = ..()
 	if(pick(1-10) == 1)
 		corpse = new(src)
-		corpse.outfit = pick(/datum/outfit/Lost_Husk_A, /datum/outfit/Lost_Husk_B, /datum/outfit/Lost_Husk_C) //I wish I could randomly select from uniform options but I guess this works
+		corpse.outfit = pick(/datum/outfit/lost_husk_a, /datum/outfit/lost_husk_b, /datum/outfit/lost_husk_c) //I wish I could randomly select from uniform options but I guess this works
 		corpse.forceMove(drop_location())
 		corpse.create()
 	else
@@ -54,18 +54,18 @@
 
 //Also the Lost Husk's outfit is raggy clothes :)
 
-/datum/outfit/Lost_Husk_A
+/datum/outfit/lost_husk_a
 	name = "Lost Husk A"
 	uniform = /obj/item/clothing/under/pants/jeanripped
 	r_pocket = /obj/item/storage/wallet/random
 
-/datum/outfit/Lost_Husk_B
+/datum/outfit/lost_husk_b
 	name = "Lost Husk B"
 	uniform = /obj/item/clothing/under/rank/civilian/linen
 	l_pocket = /obj/item/storage/wallet/random
 	r_pocket = /obj/item/flashlight/glowstick
 
-/datum/outfit/Lost_Husk_C
+/datum/outfit/lost_husk_c
 	name = "Lost Husk C"
 	uniform = /obj/item/clothing/under/pants/khaki
 	suit = /obj/item/clothing/suit/hawaiian_green
