@@ -46,8 +46,10 @@
 	if (override_maxcharge)
 		maxcharge = override_maxcharge
 	charge = maxcharge
+	/* SKYRAT EDIT REMOVAL
 	if(ratingdesc)
 		desc += " This one has a rating of [display_energy(maxcharge)], and you should not swallow it."
+	*/ // SKYRAT EDIT END
 	update_appearance()
 
 /obj/item/stock_parts/cell/create_reagents(max_vol, flags)
@@ -97,6 +99,10 @@
 
 /obj/item/stock_parts/cell/examine(mob/user)
 	. = ..()
+	// SKYRAT EDIT ADDITION
+	if(ratingdesc)
+		desc += " This one has a rating of [display_energy(maxcharge)], and you should not swallow it."
+	// SKYRAT EDIT END
 	if(rigged)
 		. += span_danger("This power cell seems to be faulty!")
 	else
