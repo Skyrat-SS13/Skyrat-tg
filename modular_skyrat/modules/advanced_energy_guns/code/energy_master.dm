@@ -4,17 +4,18 @@
 	name = "prototype detatchable cell energy projection aparatus"
 	desc = "The coders have obviously failed to realise this is broken."
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/advanced)
+	cell_type = /obj/item/stock_parts/cell/microfusion
 
 	/// The time it takes for someone to (tactically) reload this gun. In deciseconds.
 	var/reload_time = 2 SECONDS
 	/// The sound played when you insert a cell.
-	var/sound_cell_insert
+	var/sound_cell_insert = 'modular_skyrat/modules/advanced_energy_guns/sound/mag_insert.ogg'
 	/// Should the insertion sound played vary?
 	var/sound_cell_insert_vary = FALSE
 	/// The volume at which we will play the insertion sound.
 	var/sound_cell_insert_volume = 100
 	/// The sound played when you remove a cell.
-	var/sound_cell_remove
+	var/sound_cell_remove = 'modular_skyrat/modules/advanced_energy_guns/sound/mag_insert.ogg'
 	/// Should the removal sound played vary?
 	var/sound_cell_remove_vary = FALSE
 	/// The volume at which we will play the removal sound.
@@ -24,8 +25,8 @@
 	. = ..()
 	if (.)
 		return
-	if(istype(attacking_item, /obj/item/stock_parts/cell/advanced_gun))
-		try_insert_cell(attacking_item, user)
+	if(istype(attacking_item, cell_type))
+		insert_cell(user, attacking_item)
 
 /obj/item/gun/energy/cell/attack_hand(mob/user, list/modifiers)
 	if(loc == user && user.is_holding(src) && cell)
@@ -34,7 +35,7 @@
 	return ..()
 
 /// Try to insert the cell into the gun, if successful, return TRUE
-/obj/item/gun/energy/cell/proc/insert_cell(obj/item/stock_parts/cell/advanced_gun/inserting_cell, mob/user, display_message = TRUE)
+/obj/item/gun/energy/cell/proc/insert_cell(mob/user, obj/item/stock_parts/cell/microfusion/inserting_cell, display_message = TRUE)
 	if(cell)
 		if(reload_time && !HAS_TRAIT(user, TRAIT_WEAPON_RELOAD)) //This only happens when you're attempting a tactical reload, e.g. there's a mag already inserted.
 			if(display_message)
@@ -58,7 +59,7 @@
 
 /// Ejecting a cell.
 /obj/item/gun/energy/cell/proc/eject_cell(mob/user, display_message = TRUE)
-	var/obj/item/stock_parts/cell/advanced_gun/old_cell = cell
+	var/obj/item/stock_parts/cell/microfusion/old_cell = cell
 	old_cell.forceMove(get_turf(src))
 	if(user)
 		user.put_in_hands(old_cell)

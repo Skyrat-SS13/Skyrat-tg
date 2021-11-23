@@ -1,7 +1,7 @@
 /obj/item/ammo_casing/energy/laser/advanced
 	name = "advanced energy lens"
 	projectile_type = /obj/projectile/beam/laser/hardlight_bullet
-	e_cost = 83 // 12 shots with a normal cell.
+	e_cost = 100 // 10 shots with a normal cell.
 	select_name = "laser"
 	fire_sound = 'sound/weapons/gun/pistol/shot.ogg'
 
