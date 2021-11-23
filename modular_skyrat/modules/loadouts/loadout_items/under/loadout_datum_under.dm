@@ -551,7 +551,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Black Tango Dress"
 	item_path = /obj/item/clothing/under/dress/blacktango
 
-/datum/loadout_item/under/formal/Black_twopiece
+/datum/loadout_item/under/formal/black_twopiece
 	name = "Black Two-Piece Suit"
 	item_path = /obj/item/clothing/under/suit/blacktwopiece
 
@@ -796,7 +796,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Trekkie ENT Medsci Uniform"
 	item_path = /obj/item/clothing/under/trek/medsci/ent
 
-/datum/loadout_item/under/formal/the_Q
+/datum/loadout_item/under/formal/the_q
 	name = "French Marshall's Uniform"
 	item_path = /obj/item/clothing/under/trek/q
 
