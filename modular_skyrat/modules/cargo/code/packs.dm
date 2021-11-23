@@ -105,7 +105,6 @@
 	contains = list(/obj/item/weaponcell/medical/brute,
 					/obj/item/weaponcell/medical/burn,
 					/obj/item/weaponcell/medical/toxin,
-					/obj/item/weaponcell/medical)
 	crate_name = "medicell replacement crate"
 
 //////////////////////////////////////////////////////////////////////////////

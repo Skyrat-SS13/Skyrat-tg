@@ -12,7 +12,7 @@
 * **Website:** https://www.tgstation13.org
 * **Code:** https://github.com/tgstation/tgstation
 * **Wiki:** https://tgstation13.org/wiki/Main_Page
-* **Codedocs:** https://codedocs.tgstation13.org/
+* **Codedocs:** https://skyrat-ss13.github.io/Skyrat-tg/
 * **Skyrat 13 Discord:** https://discord.com/invite/hGpZ4Z3
 * **Coderbus Discord:** https://discord.gg/Vh8TJp9
 * ~~**IRC:** irc://irc.rizon.net/coderbus~~ (dead)

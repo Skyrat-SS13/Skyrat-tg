@@ -12,7 +12,8 @@
 GLOBAL_LIST_INIT(glass_recipes, list ( \
 	new/datum/stack_recipe("directional window", /obj/structure/window/unanchored, time = 0, on_floor = TRUE, window_checks = TRUE), \
 	new/datum/stack_recipe("fulltile window", /obj/structure/window/fulltile/unanchored, 2, time = 0, on_floor = TRUE, window_checks = TRUE), \
-	new/datum/stack_recipe("glass shard", /obj/item/shard, time = 0, on_floor = TRUE) \
+	new/datum/stack_recipe("glass shard", /obj/item/shard, time = 0, on_floor = TRUE), \
+	new/datum/stack_recipe("glass tile", /obj/item/stack/tile/glass, 1, 4, 20) \
 ))
 
 /obj/item/stack/sheet/glass//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
@@ -130,7 +131,8 @@ GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
 	null, \
 	new/datum/stack_recipe("directional reinforced window", /obj/structure/window/reinforced/unanchored, time = 0, on_floor = TRUE, window_checks = TRUE), \
 	new/datum/stack_recipe("fulltile reinforced window", /obj/structure/window/reinforced/fulltile/unanchored, 2, time = 0, on_floor = TRUE, window_checks = TRUE), \
-	new/datum/stack_recipe("glass shard", /obj/item/shard, time = 0, on_floor = TRUE) \
+	new/datum/stack_recipe("glass shard", /obj/item/shard, time = 0, on_floor = TRUE), \
+	new/datum/stack_recipe("reinforced glass tile", /obj/item/stack/tile/rglass, 1, 4, 20) \
 ))
 
 
