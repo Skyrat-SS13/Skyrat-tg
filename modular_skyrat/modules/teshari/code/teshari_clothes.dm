@@ -10,6 +10,10 @@
 	species_clothing_colors = list(list(SCARF_COLORPIXEL_X_1, SCARF_COLORPIXEL_Y_1))
 	species_clothing_icon_state = "scarf"
 
+/obj/item/clothing/neck/cloak
+	species_clothing_colors = list(list(CLOAK_COLORPIXEL_X_1, CLOAK_COLORPIXEL_Y_1), list(CLOAK_COLORPIXEL_X_2, CLOAK_COLORPIXEL_Y_2))
+	species_clothing_icon_state = "cloak"
+
 /obj/item/clothing/neck/tie
 	species_clothing_colors = list(list(TIE_COLORPIXEL_X_1, TIE_COLORPIXEL_Y_1))
 	species_clothing_icon_state = "tie"
@@ -18,18 +22,22 @@
 	species_clothing_colors = list(list(SHOES_COLORPIXEL_X_1, SHOES_COLORPIXEL_Y_1))
 	species_clothing_icon_state = "shoes"
 
-/obj/item/clothing/suit/space
-	species_clothing_colors = list(list(SPACESUIT_COLORPIXEL_X_1, SPACESUIT_COLORPIXEL_Y_1))
-	species_clothing_icon_state = "spacesuit"
-
-/obj/item/clothing/under
-	species_clothing_colors = list(list(UNDER_COLORPIXEL_X_1, UNDER_COLORPIXEL_Y_1), list(UNDER_COLORPIXEL_X_2, UNDER_COLORPIXEL_Y_2), list(UNDER_COLORPIXEL_X_3, UNDER_COLORPIXEL_Y_3))
-	species_clothing_icon_state = "under"
+/obj/item/clothing/suit
+	species_clothing_colors = list(list(COAT_COLORPIXEL_X_1, COAT_COLORPIXEL_Y_1))
+	species_clothing_icon_state = "coat"
 
 /obj/item/clothing/suit/armor
 	species_clothing_colors = list(list(ARMOR_COLORPIXEL_X_1, ARMOR_COLORPIXEL_Y_1))
 	species_clothing_icon_state = "armor"
 
-/obj/item/clothing/neck/cloak
-	species_clothing_colors = list(list(CLOAK_COLORPIXEL_X_1, CLOAK_COLORPIXEL_Y_1), list(CLOAK_COLORPIXEL_X_2, CLOAK_COLORPIXEL_Y_2))
-	species_clothing_icon_state = "cloak"
+/obj/item/clothing/suit/space
+	species_clothing_colors = list(list(SPACESUIT_COLORPIXEL_X_1, SPACESUIT_COLORPIXEL_Y_1))
+	species_clothing_icon_state = "spacesuit"
+
+/obj/item/clothing/suit/space/hardsuit
+	species_clothing_colors = list(list(HARDSUIT_COLORPIXEL_X_1, HARDSUIT_COLORPIXEL_Y_1), list(HARDSUIT_COLORPIXEL_X_2, HARDSUIT_COLORPIXEL_Y_2), list(HARDSUIT_COLORPIXEL_X_3, HARDSUIT_COLORPIXEL_Y_3))
+	species_clothing_icon_state = "hardsuit"
+
+/obj/item/clothing/under
+	species_clothing_colors = list(list(UNDER_COLORPIXEL_X_1, UNDER_COLORPIXEL_Y_1), list(UNDER_COLORPIXEL_X_2, UNDER_COLORPIXEL_Y_2), list(UNDER_COLORPIXEL_X_3, UNDER_COLORPIXEL_Y_3))
+	species_clothing_icon_state = "under"
