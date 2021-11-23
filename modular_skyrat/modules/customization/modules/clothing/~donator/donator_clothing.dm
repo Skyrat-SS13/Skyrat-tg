@@ -1164,3 +1164,19 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/necklaces.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
 	icon_state = "cross"
+
+/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/pcrc
+	name = "PCRC Business Clothes"
+	desc = "A formal set of simple business clothes with the logo of the Proxima Centauri Risk Control firm embroidered onto it."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "pcrc_clothes"
+	worn_icon_state = "pcrc_clothes"
+
+/obj/item/clothing/suit/armor/vest/blueshirt/skyrat/pcrc
+	name = "PCRC Armored Jacket"
+	desc = "A heavy-looking armored jacket with the logo of the Proxima Centauri Risk Control firm embedded into the back. A little tag inside reads the ID \"EX-EC-814-92\"."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "pcrc_jacket"
+	worn_icon_state = "pcrc_jacket"

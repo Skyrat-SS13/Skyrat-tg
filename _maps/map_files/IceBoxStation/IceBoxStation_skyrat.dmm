@@ -7835,7 +7835,7 @@
 /turf/open/floor/iron,
 /area/hallway/primary/central)
 "btP" = (
-/obj/machinery/computer/cargo/request,
+/obj/machinery/computer/department_orders/science,
 /turf/open/floor/iron,
 /area/science/research)
 "btS" = (
@@ -18912,7 +18912,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/purple,
-/obj/structure/chair/barber_chair{
+/obj/structure/chair/comfy/barber_chair{
 	dir = 8
 	},
 /turf/open/floor/iron,
@@ -22229,7 +22229,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/purple,
-/obj/structure/chair/barber_chair{
+/obj/structure/chair/comfy/barber_chair{
 	dir = 8
 	},
 /obj/effect/landmark/start/hangover,
@@ -22316,6 +22316,19 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/closed/wall/r_wall,
 /area/engineering/main)
+"hil" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/obj/machinery/modular_computer/console/preset/cargochat/medical{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/medical/medbay/aft)
 "hin" = (
 /obj/effect/spawner/random/maintenance/three,
 /obj/structure/closet/crate,
@@ -28444,10 +28457,10 @@
 /turf/open/floor/iron,
 /area/hallway/primary/fore)
 "kUH" = (
-/obj/machinery/computer/cargo/request{
+/obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/effect/turf_decal/stripes/line{
+/obj/machinery/computer/department_orders/service{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -29488,7 +29501,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/computer/cargo/request,
+/obj/machinery/computer/department_orders/security,
 /turf/open/floor/iron,
 /area/security/brig)
 "lyW" = (
@@ -29882,9 +29895,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/computer/cargo/request{
-	dir = 8
-	},
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 2.9
@@ -29899,6 +29909,9 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/brown,
+/obj/machinery/computer/department_orders/engineering{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/engineering/break_room)
 "lMh" = (
@@ -31933,6 +31946,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
+	},
+/obj/machinery/computer/department_orders/medical{
+	dir = 8
 	},
 /turf/open/floor/iron/white,
 /area/medical/medbay/aft)
@@ -91634,7 +91650,7 @@ brT
 bvo
 aUK
 mPI
-aUK
+hil
 eLU
 ygu
 qMQ
