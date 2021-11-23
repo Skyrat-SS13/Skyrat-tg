@@ -1,6 +1,6 @@
 /obj/item/clothing/shoes/wraps
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/feet.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	name = "gilded leg wraps"
 	desc = "Ankle coverings. These ones have a golden design."
 	icon_state = "gildedcuffs"
@@ -22,8 +22,8 @@
 	icon_state = "bluecuffs"
 
 /obj/item/clothing/shoes/cowboyboots
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/feet.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	name = "cowboy boots"
 	desc = "A standard pair of brown cowboy boots."
 	icon_state = "cowboyboots"
@@ -34,8 +34,87 @@
 	icon_state = "cowboyboots_black"
 
 /obj/item/clothing/shoes/high_heels
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/feet.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	name = "high heels"
 	desc = "A fancy pair of high heels. Won't compensate for your below average height that much."
 	icon_state = "heels"
+
+/obj/item/clothing/shoes/discoshoes
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+	name = "Green Snakeskin Shoes"
+	desc = "They may have lost some of their lustre over the years, but these green crocodile leather shoes fit you perfectly."
+	icon_state = "lizardskin_shoes"
+
+/obj/item/clothing/shoes/kimshoes
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+	name = "Aerostatic Boots"
+	desc = "A brown pair of boots, prim and proper, ready to set off and get a body out of a tree."
+	icon_state = "aerostatic_boots"
+
+
+/obj/item/clothing/shoes/jungleboots
+	name = "jungle boots"
+	desc = "Take me to your paradise, I want to see the Jungle. A brown pair of boots."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+	icon_state = "jungle"
+	inhand_icon_state = "jackboots"
+	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
+	strip_delay = 30
+	equip_delay_other = 50
+	resistance_flags = NONE
+	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
+	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
+	can_be_tied = TRUE //SKYRAT EDIT
+
+/obj/item/clothing/shoes/jackboots/black
+	name = "dark jackboots"
+	desc = "Nanotrasen-issue Security combat boots for combat scenarios or combat situations. All combat, all the time. These are fully black."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+	icon_state = "blackjack"
+
+/obj/item/clothing/shoes/wraps/poly
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+	name = "cloth foot wraps"
+	desc = "Boxer tape or bandages wrapped like a mummy, all left up to the choice of the wearer."
+	icon_state = "clothwrap"
+	body_parts_covered = FALSE
+
+/obj/item/clothing/shoes/wraps/poly/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("#FFFFFF"))
+
+/obj/item/clothing/shoes/sports
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+	name = "Sport shoes"
+	desc = "Shoes for the sporty individual. The giants of Charlton play host to the titans of Ipswich - making them both seem normal sized."
+	icon_state = "sportshoe"
+
+/obj/item/clothing/shoes/jackboots/thigh
+	name = "thigh boots"
+	desc = "Black leather boots that go up to the thigh."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+	icon_state = "thighboots"
+
+/obj/item/clothing/shoes/jackboots/knee
+	name = "knee boots"
+	desc = "Black leather boots that go up to the knee."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+	icon_state = "kneeboots"
+
+/obj/item/clothing/shoes/jackboots/timbs
+	name = "fashionable boots"
+	desc = "Fresh from Luna, deadass good for rappers."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+	icon_state = "timbs"
+

@@ -1,9 +1,10 @@
 /obj/item/gun/energy/e_gun/advtaser/mounted
 	name = "mounted taser"
 	desc = "An arm mounted dual-mode weapon that fires electrodes and disabler shots."
-	icon = 'icons/obj/items_cyborg.dmi'
+	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
 	icon_state = "taser"
 	inhand_icon_state = "armcannonstun4"
+	display_empty = FALSE
 	force = 5
 	selfcharge = 1
 	can_flashlight = FALSE
@@ -15,8 +16,8 @@
 /obj/item/gun/energy/laser/mounted
 	name = "mounted laser"
 	desc = "An arm mounted cannon that fires lethal lasers."
-	icon = 'icons/obj/items_cyborg.dmi'
-	icon_state = "laser"
+	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
+	icon_state = "laser_cyborg"
 	inhand_icon_state = "armcannonlase"
 	force = 5
 	selfcharge = 1
@@ -24,3 +25,7 @@
 
 /obj/item/gun/energy/laser/mounted/dropped()
 	..()
+
+/obj/item/gun/energy/laser/mounted/augment
+	icon = 'icons/obj/surgery.dmi'
+	icon_state = "arm_laser"

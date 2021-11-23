@@ -8,36 +8,14 @@
 	. = ..()
 	if(.)
 		return
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-			//see code/modules/mob/dead/new_player/preferences.dm at approx line 545 for comments!
-			//this is largely copypasted from there.
-
-			//handle facial hair (if necessary)
-		if(H.gender != FEMALE)
-			var/new_style = input(user, "Select a facial hair style", "Grooming")  as null|anything in GLOB.facial_hairstyles_list
-			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-				return	//no tele-grooming
-			if(new_style)
-				H.facial_hairstyle = new_style
-		else
-			H.facial_hairstyle = "Shaved"
-
-			//handle normal hair
-		var/new_style = input(user, "Select a hair style", "Grooming")  as null|anything in GLOB.hairstyles_list
-		if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-			return	//no tele-grooming
-		if(new_style)
-			H.hairstyle = new_style
-
-		H.update_hair()
+	to_chat(user, span_notice("Damn, that hairstyle be looking skewed, maybe head to the barber for a change?"))
 
 /obj/item/hhmirror/fullmagic
 	name = "Full Handheld Magic Mirror"
 	desc = "A handheld mirror that allows you to change your... self?" //Later, maybe add a charge to the description.
 	icon = 'modular_skyrat/master_files/icons/obj/hhmirror.dmi'
 	icon_state = "hhmirrormagic"
-	var/list/races_blacklist = list("skeleton", "agent", "angel", "military_synth", "memezombies", "clockwork golem servant", "android", "synth", "mush", "zombie", "memezombie")
+	var/list/races_blacklist = list(SPECIES_SKELETON, "agent", "angel", SPECIES_SYNTH_MILITARY, SPECIES_ZOMBIE, "clockwork golem servant", SPECIES_ANDROID, SPECIES_SYNTH, SPECIES_MUSHROOM, SPECIES_ZOMBIE_HALLOWEEN, "memezombie")
 	var/list/choosable_races = list()
 
 /obj/item/hhmirror/fullmagic/New()
@@ -92,7 +70,7 @@
 					H.dna.update_ui_block(DNA_SKIN_TONE_BLOCK)
 
 			if(MUTCOLORS in H.dna.species.species_traits)
-				var/new_mutantcolor = input(user, "Choose your skin color:", "Race change","#"+H.dna.features["mcolor"]) as color|null
+				var/new_mutantcolor = input(user, "Choose your skin color:", "Race change",H.dna.features["mcolor"]) as color|null
 				if(new_mutantcolor)
 					var/temp_hsv = RGBtoHSV(new_mutantcolor)
 
@@ -100,7 +78,7 @@
 						H.dna.features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
 
 					else
-						to_chat(H, "<span class='notice'>Invalid color. Your color is not bright enough.</span>")
+						to_chat(H, span_notice("Invalid color. Your color is not bright enough."))
 
 			H.update_body()
 			H.update_hair()
@@ -115,14 +93,14 @@
 			if(H.gender == "male")
 				if(alert(H, "Become a Witch?", "Confirmation", "Yes", "No") == "Yes")
 					H.gender = "female"
-					to_chat(H, "<span class='notice'>Man, you feel like a woman!</span>")
+					to_chat(H, span_notice("Man, you feel like a woman!"))
 				else
 					return
 
 			else
 				if(alert(H, "Become a Warlock?", "Confirmation", "Yes", "No") == "Yes")
 					H.gender = "male"
-					to_chat(H, "<span class='notice'>Whoa man, you feel like a man!</span>")
+					to_chat(H, span_notice("Whoa man, you feel like a man!"))
 				else
 					return
 			H.dna.update_ui_block(DNA_GENDER_BLOCK)
@@ -130,25 +108,25 @@
 			H.update_mutations_overlay() //(hulk male/female)
 
 		if("hair")
-			var/hairchoice = alert(H, "Hair style or hair color?", "Change Hair", "Style", "Color")
+			var/hairchoice = tgui_alert(H, "Hair style or hair color?", "Change Hair", list("Style", "Color"))
 			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 				return
 			if(hairchoice == "Style") //So you just want to use a mirror then?
 				..()
 			else
-				var/new_hair_color = input(H, "Choose your hair color", "Hair Color","#"+H.hair_color) as color|null
+				var/new_hair_color = input(H, "Choose your hair color", "Hair Color",H.hair_color) as color|null
 				if(new_hair_color)
 					H.hair_color = sanitize_hexcolor(new_hair_color)
 					H.dna.update_ui_block(DNA_HAIR_COLOR_BLOCK)
 				if(H.gender == "male")
-					var/new_face_color = input(H, "Choose your facial hair color", "Hair Color","#"+H.facial_hair_color) as color|null
+					var/new_face_color = input(H, "Choose your facial hair color", "Hair Color",H.facial_hair_color) as color|null
 					if(new_face_color)
 						H.facial_hair_color = sanitize_hexcolor(new_face_color)
 						H.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
 				H.update_hair()
 
 		if(BODY_ZONE_PRECISE_EYES)
-			var/new_eye_color = input(H, "Choose your eye color", "Eye Color","#"+H.eye_color) as color|null
+			var/new_eye_color = input(H, "Choose your eye color", "Eye Color",H.eye_color) as color|null
 			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 				return
 			if(new_eye_color)
@@ -201,14 +179,14 @@
 				if(H.gender == "male")
 					if(alert(H, "Become a Witch?", "Confirmation", "Yes", "No") == "Yes")
 						H.gender = "female"
-						to_chat(H, "<span class='notice'>Man, you feel like a woman!</span>")
+						to_chat(H, span_notice("Man, you feel like a woman!"))
 					else
 						return
 
 				else
 					if(alert(H, "Become a Warlock?", "Confirmation", "Yes", "No") == "Yes")
 						H.gender = "male"
-						to_chat(H, "<span class='notice'>Whoa man, you feel like a man!</span>")
+						to_chat(H, span_notice("Whoa man, you feel like a man!"))
 					else
 						return
 				H.dna.update_ui_block(DNA_GENDER_BLOCK)
@@ -216,25 +194,25 @@
 				H.update_mutations_overlay() //(hulk male/female)
 
 			if("hair")
-				var/hairchoice = alert(H, "Hair style or hair color?", "Change Hair", "Style", "Color")
+				var/hairchoice = tgui_alert(H, "Hair style or hair color?", "Change Hair", list("Style", "Color"))
 				if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 					return
 				if(hairchoice == "Style") //So you just want to use a mirror then?
 					..()
 				else
-					var/new_hair_color = input(H, "Choose your hair color", "Hair Color","#"+H.hair_color) as color|null
+					var/new_hair_color = input(H, "Choose your hair color", "Hair Color",H.hair_color) as color|null
 					if(new_hair_color)
 						H.hair_color = sanitize_hexcolor(new_hair_color)
 						H.dna.update_ui_block(DNA_HAIR_COLOR_BLOCK)
 					if(H.gender == "male")
-						var/new_face_color = input(H, "Choose your facial hair color", "Hair Color","#"+H.facial_hair_color) as color|null
+						var/new_face_color = input(H, "Choose your facial hair color", "Hair Color",H.facial_hair_color) as color|null
 						if(new_face_color)
 							H.facial_hair_color = sanitize_hexcolor(new_face_color)
 							H.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
 					H.update_hair()
 
 			if(BODY_ZONE_PRECISE_EYES)
-				var/new_eye_color = input(H, "Choose your eye color", "Eye Color","#"+H.eye_color) as color|null
+				var/new_eye_color = input(H, "Choose your eye color", "Eye Color",H.eye_color) as color|null
 				if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 					return
 				if(new_eye_color)

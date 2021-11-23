@@ -17,7 +17,7 @@
 	var/used = FALSE
 
 /obj/character_event_spawner/attack_ghost(mob/user)
-	TrySpawn(user)	
+	TrySpawn(user)
 
 /obj/character_event_spawner/proc/TrySpawn(mob/dead/observer/user)
 	if(!user || !user.client)
@@ -26,6 +26,9 @@
 		return
 	if(ckey_whitelist && !(lowertext(user.ckey) in ckey_whitelist))
 		alert(user, "Sorry, This spawner is not for you!", "", "Ok")
+		return
+	if(is_banned_from(user.ckey, BAN_GHOST_ROLE_SPAWNER))
+		to_chat(user, "Error, you are banned from playing ghost roles!")
 		return
 	var/species_string
 	if(species_whitelist)
@@ -45,12 +48,12 @@
 				gender_string += ", "
 			gender_string += "[spec_key]"
 			first = FALSE
-	var/warning_string = "WARNING: This spawner will use your currently selected character in prefs ([user.client.prefs.real_name])\nMake sure that the character is not used as a station crew, or would have a good reason to be this role.\nDo you wanna proceed?"
+	var/warning_string = "WARNING: This spawner will use your currently selected character in prefs ([user.client.prefs?.read_preference(/datum/preference/name/real_name)])\nMake sure that the character is not used as a station crew, or would have a good reason to be this role.\nDo you wanna proceed?"
 	if(species_string)
 		warning_string += "\nThis role is restricted to those species: [species_string]"
 	if(gender_string)
 		warning_string += "\nThis role is restricted to those genders: [gender_string]"
-	var/action = alert(user, warning_string, "", "Yes", "Yes with Alias", "No")
+	var/action = tgui_alert(user, warning_string, "", list("Yes", "Yes with Alias", "No"))
 	if(!action || action == "No")
 		return
 	var/alias
@@ -61,10 +64,10 @@
 		alias = msg
 	if(!user || !user.client)
 		return
-	if(species_whitelist && !(user.client.prefs.pref_species.id in species_whitelist))
+	if(species_whitelist && !(user.client.prefs?.read_preference(/datum/preference/choiced/species) in species_whitelist))
 		alert(user, "Sorry, This spawner is limited to those species: [species_string]. Please switch your character.", "", "Ok")
 		return
-	if(gender_whitelist && !(user.client.prefs.gender in gender_whitelist))
+	if(gender_whitelist && !(user.client.prefs?.read_preference(/datum/preference/choiced/gender) in gender_whitelist))
 		alert(user, "Sorry, This spawner is limited to those genders: [gender_string]. Please switch your character.", "", "Ok")
 		return
 	if(used)
@@ -80,7 +83,7 @@
 	name = "opened cryogenic sleeper"
 	//Spawn and copify prefs
 	var/mob/living/carbon/human/H = new(src)
-	user.client.prefs.copy_to(H)
+	user.client.prefs.safe_transfer_prefs_to(H)
 	H.dna.update_dna_identity()
 
 	if(alias)
@@ -89,7 +92,7 @@
 
 	H.forceMove(get_turf(src))
 	//Pre-job equips so Voxes dont die
-	H.dna.species.before_equip_job(null, H)
+	H.dna.species.pre_equip_species_outfit(null, H)
 
 	if(used_outfit && used_outfit != "Naked")
 		H.equipOutfit(used_outfit)
@@ -123,12 +126,9 @@
 				else
 					equipped.forceMove(get_turf(H))
 
-	var/list/packed_items
 	if(gets_loadout)
-		packed_items = user.client.prefs.equip_preference_loadout(H, FALSE, null)
-
-	if(packed_items)
-		user.client.prefs.add_packed_items(H, packed_items, FALSE)
+		for(var/datum/loadout_item/item as anything in loadout_list_to_datums(H?.client?.prefs?.loadout_list))
+			item.post_equip_item(H.client?.prefs, H)
 
 	//Override access of the ID card here
 	var/obj/item/card/id/ID
@@ -163,7 +163,7 @@
 		H.ckey = user.ckey
 
 	//Greet!
-	to_chat(H, "<span class='big'>You are the [job_name]</span>")
-	to_chat(H, "<span class='bold'>[flavor_text]</span>")
+	to_chat(H, span_big("You are the [job_name]"))
+	to_chat(H, span_bold("[flavor_text]"))
 	if(disappear_after_spawn)
 		qdel(src)

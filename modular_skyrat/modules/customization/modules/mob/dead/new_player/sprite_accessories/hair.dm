@@ -1,5 +1,7 @@
+// Hairstyles
+
 /datum/sprite_accessory/hair/skyrat
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/hair.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/hair.dmi'
 
 /datum/sprite_accessory/hair/skyrat/pigtails4
 	name = "Pigtails 4"
@@ -209,8 +211,162 @@
 	name = "Long Gloomy Bangs"
 	icon_state = "hair_gloomy_long"
 
+/datum/sprite_accessory/hair/skyrat/halfshave
+	name = "Half-shaved 2"
+	icon_state = "hair_halfshave"
+
+/datum/sprite_accessory/hair/skyrat/halfshave_snout
+	name = "Half-shaved 2 (clipped)"
+	icon_state = "hair_halfshave_snout"
+
+/datum/sprite_accessory/hair/skyrat/manbun
+	name = "Manbun"
+	icon_state = "hair_manbun"
+
+/datum/sprite_accessory/hair/skyrat/baum
+	name = "Baum"
+	icon_state = "hair_baum"
+
+/datum/sprite_accessory/hair/skyrat/bluntbangs
+	name = "Blunt Bangs"
+	icon_state = "hair_bluntbangs"
+
+/datum/sprite_accessory/hair/skyrat/bluntbangs_alt
+	name = "Blunt Bangs Alt"
+	icon_state = "hair_bluntbangs_alt"
+
+/datum/sprite_accessory/hair/skyrat/slightlymessy
+	name = "Slightly Messy"
+	icon_state = "hair_slightlymessy"
+
+/datum/sprite_accessory/hair/skyrat/longsidepartstraight
+	name = "Long Sideparted"
+	icon_state = "hair_longsidepartstraight"
+
+/datum/sprite_accessory/hair/skyrat/amazon
+	name = "Amazon"
+	icon_state = "hair_amazon"
+
+/datum/sprite_accessory/hair/skyrat/halfshaved
+	name = "Half-shaved Long"
+	icon_state = "hair_halfshaved"
+
+/datum/sprite_accessory/hair/skyrat/fortuneteller
+	name = "Fortune Teller"
+	icon_state = "hair_fortuneteller"
+
+/datum/sprite_accessory/hair/skyrat/fortuneteller_alt
+	name = "Fortune Teller Alt"
+	icon_state = "hair_fortuneteller_alt"
+
+/datum/sprite_accessory/hair/skyrat/combed
+	name = "Combed"
+	icon_state = "hair_combed"
+
+/datum/sprite_accessory/hair/skyrat/combedbob
+	name = "Combed Bob"
+	icon_state = "hair_combedbob"
+
+/datum/sprite_accessory/hair/skyrat/geisha
+	name = "Geisha"
+	icon_state = "hair_geisha"
+
+/datum/sprite_accessory/hair/skyrat/cotton
+	name = "Cotton"
+	icon_state = "hair_cotton"
+
+/datum/sprite_accessory/hair/skyrat/african_pigtails
+	name = "African Pigtails"
+	icon_state = "hair_africanpigtails"
+
+/datum/sprite_accessory/hair/skyrat/froofylong
+	name = "Froofy Long"
+	icon_state = "hair_froofylong"
+
+/datum/sprite_accessory/hair/skyrat/glammetal
+	name = "Glam Metal"
+	icon_state = "hair_glammetal"
+
+/datum/sprite_accessory/hair/skyrat/astolfo
+	name = "Astolfo"
+	icon_state = "hair_astolfo"
+
+/datum/sprite_accessory/hair/skyrat/afropuffdouble
+	name = "Afropuff, Double"
+	icon_state = "hair_afropuffdouble"
+
+/datum/sprite_accessory/hair/skyrat/afropuffleft
+	name = "Afropuff, Left"
+	icon_state = "hair_afropuffleft"
+
+/datum/sprite_accessory/hair/skyrat/afropuffright
+	name = "Afropuff, Right"
+	icon_state = "hair_afropuffright"
+
+/datum/sprite_accessory/hair/skyrat/longdtails
+	name = "Big Tails"
+	icon_state = "hair_longdtails"
+
+/datum/sprite_accessory/hair/skyrat/quadcurls
+	name = "Quad Curls"
+	icon_state = "hair_quadcurls"
+
+/datum/sprite_accessory/hair/skyrat/slime_tendrils
+	name = "Slime Tendrils"
+	icon_state = "hair_slimetendrils"
+
+/datum/sprite_accessory/hair/skyrat/slime_tendrils_alt
+	name = "Slime Tendrils Alt"
+	icon_state = "hair_slimetendrils_alt"
+
+/datum/sprite_accessory/hair/skyrat/slime_spikes
+	name = "Slime Spikes"
+	icon_state = "hair_slimespikes"
+
+/datum/sprite_accessory/hair/skyrat/slime_droplet
+	name = "Slime Droplet"
+	icon_state = "hair_slimedroplet"
+
+/datum/sprite_accessory/hair/skyrat/slime_droplet_alt
+	name = "Slime Droplet Alt"
+	icon_state = "hair_slimedroplet_alt"
+
+/datum/sprite_accessory/hair/skyrat/newyou
+	name = "New You"
+	icon_state = "hair_newyou"
+
+/datum/sprite_accessory/hair/skyrat/spicy
+	name = "Spicy"
+	icon_state = "hair_spicy"
+
+/datum/sprite_accessory/hair/skyrat/sabitsuki
+	name = "Sabitsuki"
+	icon_state = "hair_sabitsuki"
+
+/datum/sprite_accessory/hair/skyrat/jessica
+	name = "Jessica"
+	icon_state = "hair_jessica"
+
+/datum/sprite_accessory/hair/skyrat/gentle21
+	name = "Gently Brushed"
+	icon_state = "hair_gentle21"
+
+/datum/sprite_accessory/hair/skyrat/country_s
+	name = "Country Side-Braid"
+	icon_state = "hair_country_s"
+
+/datum/sprite_accessory/hair/skyrat/beachwave
+	name = "Beachwave"
+	icon_state = "hair_beachwave"
+
+/datum/sprite_accessory/hair/skyrat/hyenamane
+	name = "Hyena mane"
+	icon_state = "hair_hyenamane"
+
+// Facial hair
+
 /datum/sprite_accessory/facial_hair/skyrat
-	icon = 'modular_skyrat/modules/customization//icons/mob/sprite_accessory/facialhair.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/facialhair.dmi'
 
 /datum/sprite_accessory/facial_hair/skyrat/sideburns
 	name = "Sideburns"
@@ -235,3 +391,13 @@
 /datum/sprite_accessory/facial_hair/skyrat/tribeard
 	name = "Tri-beard"
 	icon_state = "facial_tribeard"
+
+/datum/sprite_accessory/facial_hair/skyrat/neckfluff
+	name = "Neckfluff"
+	icon_state = "facial_neckfluff"
+
+/datum/sprite_accessory/facial_hair/skyrat/squid
+	name = "Tentacle Beard"
+	icon_state = "facial_squid"
+
+

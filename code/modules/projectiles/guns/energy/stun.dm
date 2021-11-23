@@ -6,15 +6,6 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode)
 	ammo_x_offset = 3
 
-/obj/item/gun/energy/tesla_revolver
-	name = "tesla gun"
-	desc = "An experimental gun based on an experimental engine, it's about as likely to kill its operator as it is the target."
-	icon_state = "tesla"
-	inhand_icon_state = "tesla"
-	ammo_type = list(/obj/item/ammo_casing/energy/tesla_revolver)
-	can_flashlight = FALSE
-	shaded_charge = 1
-
 /obj/item/gun/energy/e_gun/advtaser
 	name = "hybrid taser"
 	desc = "A dual-mode taser designed to fire both short-range high-power electrodes and long-range disabler beams."
@@ -37,11 +28,12 @@
 	desc = "A self-defense weapon that exhausts organic targets, weakening them until they collapse."
 	icon_state = "disabler"
 	inhand_icon_state = null
-	ammo_type = list(/obj/item/ammo_casing/energy/disabler)
+	ammo_type = list(/obj/item/ammo_casing/energy/disabler/skyrat) // SKYRAT EDIT: 	ammo_type = list(/obj/item/ammo_casing/energy/disabler)
 	ammo_x_offset = 2
 	can_flashlight = TRUE
 	flight_x_offset = 15
 	flight_y_offset = 10
+	cell_type = /obj/item/stock_parts/cell/super // SKYRAT EDIT ADDITION
 
 /obj/item/gun/energy/disabler/cyborg
 	name = "cyborg disabler"

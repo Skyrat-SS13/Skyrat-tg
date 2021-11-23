@@ -311,7 +311,7 @@ em {
   font-weight: bold;
 }
 
-.say, .emote, .infoplain {
+.say, .emote, .infoplain, .oocplain, .warningplain, .mentor {
 }
 
 .deadsay {
@@ -329,6 +329,9 @@ em {
 .binarysay a:active, .binarysay a:visited {
   color: #88ff88;
 }
+
+/* RADIO COLORS */
+/* IF YOU CHANGE THIS KEEP IT IN SYNC WITH TGUI CONSTANTS */
 
 .radio {
   color: #1ecc43;
@@ -366,6 +369,10 @@ em {
   color: #8f4a4b;
 }
 
+.gangradio {
+  color: #ac2ea1;
+}
+
 .centcomradio {
   color: #2681a5;
 }
@@ -380,6 +387,14 @@ em {
 
 .blueteamradio {
   color: #3434fd;
+}
+
+.greenteamradio {
+  color: #34fd34;
+}
+
+.yellowteamradio {
+  color: #fdfd34;
 }
 
 .yell {
@@ -749,6 +764,57 @@ em {
   }
 }
 
+// SKYRAT ADDITION BEGIN
+.velvet {
+  color: #660015;
+  font-weight: bold;
+  animation: velvet 5000ms infinite;
+}
+@keyframes velvet {
+  0% {
+    color: #400020;
+  }
+  40% {
+    color: #ff0000;
+  }
+  50% {
+    color: #ff8888;
+  }
+  60% {
+    color: #ff0000;
+  }
+  100% {
+    color: #400020;
+  }
+}
+
+.hexnut {
+  color: #0099ff;
+  font-weight: bold;
+  animation: hexnut 5000ms infinite;
+  animation-direction: alternate;
+}
+
+@keyframes hexnut {
+  0% {
+    color: #0099ff;
+  }
+  35% {
+    color: #a64dff;
+  }
+  50% {
+    color: #00997a;
+  }
+  60% {
+    color: #ffb31a;
+  }
+  100% {
+    color: #ff33cc;
+  }
+}
+
+// SKYRAT ADDITION END
+
 .phobia {
   color: #dd0000;
   font-weight: bold;
@@ -775,7 +841,7 @@ em {
 }
 
 .bigicon {
-  font-size: 5em;
+  font-size: 2.5em;
 }
 
 .memo {
@@ -875,3 +941,25 @@ em {
 .mentor         {color: #8a2be2;}
 .looc         {color: #d8b555;}
 .rlooc          {color: #b09448;}
+
+.examine_block {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(55, 55, 55, 0.33);
+  margin: 7px 4px;
+  padding: 8px 12px;
+  max-width: 550px;
+}
+
+.examine_block hr {
+  border: none;
+  background: #222;
+  height: 1px;
+  margin: 8px 16px 8px 16px;
+}
+
+.userlove	{
+  color: #FF1493;
+  font-style: italic;
+  font-weight: bold;
+  text-shadow: 0 0 6px #ff6dbc;
+}

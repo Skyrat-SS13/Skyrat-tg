@@ -1,3 +1,5 @@
+#define EMAG_LOCKED_SHUTTLE_COST (CARGO_CRATE_VALUE * 50)
+
 /datum/map_template/shuttle
 	name = "Base Shuttle Template"
 	var/prefix = "_maps/shuttles/"
@@ -10,8 +12,10 @@
 	var/admin_notes
 	/// How much does this shuttle cost the cargo budget to purchase? Put in terms of CARGO_CRATE_VALUE to properly scale the cost with the current balance of cargo's income.
 	var/credit_cost = INFINITY
-	/// Can the  be legitimately purchased by the station? Used by hardcoded or pre-mapped shuttles like the lavaland or cargo shuttle.
-	var/can_be_bought = TRUE
+	/// What job accesses can buy this shuttle? If null, this shuttle cannot be bought.
+	var/list/who_can_purchase = list(ACCESS_CAPTAIN)
+	/// Whether or not this shuttle is locked to emags only.
+	var/emag_only = FALSE
 	/// If set, overrides default movement_force on shuttle
 	var/list/movement_force
 
@@ -108,12 +112,13 @@
 
 /datum/map_template/shuttle/emergency
 	port_id = "emergency"
+	suffix = "skyrat" //SKYRAT EDIT CHANGE
 	name = "Base Shuttle Template (Emergency)"
 
 /datum/map_template/shuttle/cargo
 	port_id = "cargo"
 	name = "Base Shuttle Template (Cargo)"
-	can_be_bought = FALSE
+	who_can_purchase = null
 
 /datum/map_template/shuttle/ferry
 	port_id = "ferry"
@@ -124,58 +129,58 @@
 
 /datum/map_template/shuttle/labour
 	port_id = "labour"
-	can_be_bought = FALSE
+	who_can_purchase = null
 
 /datum/map_template/shuttle/mining
 	port_id = "mining"
-	can_be_bought = FALSE
+	who_can_purchase = null
 
 /datum/map_template/shuttle/mining_common
 	port_id = "mining_common"
-	can_be_bought = FALSE
+	who_can_purchase = null
 
 /datum/map_template/shuttle/arrival
 	port_id = "arrival"
-	can_be_bought = FALSE
+	who_can_purchase = null
 
 /datum/map_template/shuttle/infiltrator
 	port_id = "infiltrator"
-	can_be_bought = FALSE
+	who_can_purchase = null
 
 /datum/map_template/shuttle/aux_base
 	port_id = "aux_base"
-	can_be_bought = FALSE
+	who_can_purchase = null
 
 /datum/map_template/shuttle/escape_pod
 	port_id = "escape_pod"
-	can_be_bought = FALSE
+	who_can_purchase = null
 
 /datum/map_template/shuttle/assault_pod
 	port_id = "assault_pod"
-	can_be_bought = FALSE
+	who_can_purchase = null
 
 /datum/map_template/shuttle/pirate
 	port_id = "pirate"
-	can_be_bought = FALSE
+	who_can_purchase = null
 
 /datum/map_template/shuttle/hunter
 	port_id = "hunter"
-	can_be_bought = FALSE
+	who_can_purchase = null
 
 /datum/map_template/shuttle/ruin //For random shuttles in ruins
 	port_id = "ruin"
-	can_be_bought = FALSE
+	who_can_purchase = null
 
 /datum/map_template/shuttle/snowdin
 	port_id = "snowdin"
-	can_be_bought = FALSE
+	who_can_purchase = null
 
 // Shuttles start here:
 
 /datum/map_template/shuttle/emergency/backup
 	suffix = "backup"
 	name = "Backup Shuttle"
-	can_be_bought = FALSE
+	who_can_purchase = null
 
 /datum/map_template/shuttle/emergency/construction
 	suffix = "construction"
@@ -183,6 +188,7 @@
 	description = "For the enterprising shuttle engineer! The chassis will dock upon purchase, but launch will have to be authorized as usual via shuttle call. Comes stocked with construction materials. Unlocks the ability to buy shuttle engine crates from cargo."
 	admin_notes = "No brig, no medical facilities, no shuttle console."
 	credit_cost = CARGO_CRATE_VALUE * 5
+	who_can_purchase = list(ACCESS_CAPTAIN, ACCESS_CE)
 
 /datum/map_template/shuttle/emergency/airless/post_load()
 	. = ..()
@@ -210,7 +216,7 @@
 	name = "Emergency Pods"
 	description = "We did not expect an evacuation this quickly. All we have available is two escape pods."
 	admin_notes = "For player punishment."
-	can_be_bought = FALSE
+	who_can_purchase = null
 
 /datum/map_template/shuttle/emergency/russiafightpit
 	suffix = "russiafightpit"
@@ -232,9 +238,10 @@
 	name = "Grand Corporate Monastery"
 	description = "Originally built for a public station, this grand edifice to religion, due to budget cuts, is now available as an escape shuttle for the right... donation. Due to its large size and callous owners, this shuttle may cause collateral damage."
 	admin_notes = "WARNING: This shuttle WILL destroy a fourth of the station, likely picking up a lot of objects with it."
-	credit_cost = CARGO_CRATE_VALUE * 250
+	emag_only = TRUE
+	credit_cost = EMAG_LOCKED_SHUTTLE_COST * 1.8
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 5)
-	can_be_bought = FALSE //SKYRAT EDIT: Addition
+	who_can_purchase = null //SKYRAT EDIT CHANGE
 
 /datum/map_template/shuttle/emergency/luxury
 	suffix = "luxury"
@@ -259,8 +266,8 @@
 	name = "Disco Inferno"
 	description = "The glorious results of centuries of plasma research done by Nanotrasen employees. This is the reason why you are here. Get on and dance like you're on fire, burn baby burn!"
 	admin_notes = "Flaming hot. The main area has a dance machine as well as plasma floor tiles that will be ignited by players every single time."
-	credit_cost = CARGO_CRATE_VALUE * 20
-	can_be_bought = FALSE
+	emag_only = TRUE
+	credit_cost = EMAG_LOCKED_SHUTTLE_COST
 
 /datum/map_template/shuttle/emergency/arena
 	suffix = "arena"
@@ -342,6 +349,12 @@
 	credit_cost = CARGO_CRATE_VALUE * 2
 	description = "Despite its namesake, this shuttle is actually only slightly smaller than standard, and still complete with a brig and medbay."
 
+/datum/map_template/shuttle/emergency/tram
+	suffix = "tram"
+	name = "Tram Station Emergency Shuttle"
+	credit_cost = CARGO_CRATE_VALUE * 4
+	description = "A train but in space, choo choo!"
+
 /datum/map_template/shuttle/emergency/scrapheap
 	suffix = "scrapheap"
 	name = "Standby Evacuation Vessel \"Scrapheap Challenge\""
@@ -387,7 +400,8 @@
 	Outside of admin intervention, it cannot explode. \
 	It does, however, still dust anything on contact, emits high levels of radiation, and induce hallucinations in anyone looking at it without protective goggles. \
 	Emitters spawn powered on, expect admin notices, they are harmless."
-	credit_cost = CARGO_CRATE_VALUE * 200
+	emag_only = TRUE
+	credit_cost = EMAG_LOCKED_SHUTTLE_COST
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 2)
 
 /datum/map_template/shuttle/emergency/imfedupwiththisworld
@@ -396,7 +410,8 @@
 	description = "How was space work today? Oh, pretty good. We got a new space station and the company will make a lot of money. What space station? I cannot tell you; it's space confidential. \
 	Aw, come space on. Why not? No, I can't. Anyway, how is your space roleplay life?"
 	admin_notes = "Tiny, with a single airlock and wooden walls. What could go wrong?"
-	can_be_bought = FALSE
+	emag_only = TRUE
+	credit_cost = EMAG_LOCKED_SHUTTLE_COST
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 2)
 
 /datum/map_template/shuttle/emergency/goon
@@ -441,6 +456,13 @@
 	description = "A large shuttle with a center biodome that is flourishing with life. Frolick with the monkeys! (Extra monkeys are stored on the bridge.)"
 	admin_notes = "Pretty freakin' large, almost as big as Raven or Cere. Excercise caution with it."
 	credit_cost = CARGO_CRATE_VALUE * 16
+
+/datum/map_template/shuttle/emergency/casino
+	suffix = "casino"
+	name = "Lucky Jackpot Casino Shuttle"
+	description = "A luxurious casino packed to the brim with everything you need to start new gambling addicitions!"
+	admin_notes = "The ship is a bit chunky, so watch where you park it."
+	credit_cost = 7777
 
 /datum/map_template/shuttle/ferry/base
 	suffix = "base"
@@ -497,6 +519,10 @@
 /datum/map_template/shuttle/whiteship/donut
 	suffix = "donut"
 	name = "NT Long-Distance Bluespace Jumper"
+
+/datum/map_template/shuttle/whiteship/tram
+	suffix = "tram"
+	name = "NT Long-Distance Bluespace Freighter"
 
 /datum/map_template/shuttle/whiteship/delta
 	suffix = "delta"
@@ -633,9 +659,11 @@
 	suffix = "small"
 	name = "auxilliary base (Small)"
 
+/* SKYRAT EDIT REMOVAL
 /datum/map_template/shuttle/escape_pod/default
 	suffix = "default"
 	name = "escape pod (Default)"
+*/
 
 /datum/map_template/shuttle/escape_pod/large
 	suffix = "large"
@@ -692,3 +720,5 @@
 /datum/map_template/shuttle/snowdin/excavation
 	suffix = "excavation"
 	name = "Snowdin Excavation Elevator"
+
+#undef EMAG_LOCKED_SHUTTLE_COST

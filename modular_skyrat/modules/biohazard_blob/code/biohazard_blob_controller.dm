@@ -1,9 +1,9 @@
-#define SPREAD_PROCESS 3
-#define SPREAD_STALLED_PROCESS 20
+#define SPREAD_PROCESS 2
+#define SPREAD_STALLED_PROCESS 10
 
-#define PROGRESSION_FOR_STRUCTURE 30
-#define PROGRESSION_RETALIATED 3
-#define STRUCTURE_PROGRESSION_START 23
+#define PROGRESSION_FOR_STRUCTURE 20
+#define PROGRESSION_RETALIATED 5
+#define STRUCTURE_PROGRESSION_START 20
 
 #define RESIN_CANT_SPREAD 0
 #define RESIN_DID_SPREAD 1
@@ -33,9 +33,10 @@
 
 /datum/biohazard_blob_controller/proc/SpawnExpansion()
 	var/list/turfs = list()
-	var/hatcheries_to_spawn = 2
-	var/bulbs_to_spawn = 1
-	var/spread_radius = 3
+	var/hatcheries_to_spawn = 3
+	var/bulbs_to_spawn = rand(3, 5)
+	var/conditioners_to_spawn = 2
+	var/spread_radius = 5
 	var/our_turf = get_turf(our_core)
 	turfs[our_turf] = TRUE
 	for(var/i in 1 to spread_radius)
@@ -54,6 +55,9 @@
 		else if(bulbs_to_spawn && prob(40))
 			bulbs_to_spawn--
 			SpawnStructureLoc(1, T)
+		else if(conditioners_to_spawn && prob(40))
+			conditioners_to_spawn--
+			SpawnStructureLoc(3, T)
 
 /datum/biohazard_blob_controller/proc/SpawnStructureLoc(index, location)
 	var/spawn_type
@@ -62,35 +66,27 @@
 			spawn_type = /obj/structure/biohazard_blob/structure/bulb
 		if(2)
 			spawn_type = /obj/structure/biohazard_blob/structure/spawner
+		if(3)
+			spawn_type = /obj/structure/biohazard_blob/structure/conditioner
+
 	var/struct = new spawn_type(location, blob_type)
 	other_structures[struct] = TRUE
 	our_core.max_integrity += 10
-	our_core.obj_integrity += 10
+	our_core.repair_damage(10)
 	return struct
 
 /datum/biohazard_blob_controller/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	all_resin = null
+	active_resin = null
+	our_core = null
+	other_structures = null
 	return ..()
 
 /datum/biohazard_blob_controller/proc/CoreRetaliated()
 	structure_progression += PROGRESSION_RETALIATED
 	active_resin.Cut()
 	ActivateAdjacentResinRecursive(get_turf(our_core), 4)
-
-/datum/biohazard_blob_controller/proc/CoreDeath()
-	active_resin.Cut()
-	for(var/t in all_resin)
-		var/obj/structure/biohazard_blob/resin/a_resin = t
-		a_resin.color = null
-		if(a_resin.blooming)
-			a_resin.blooming = FALSE
-			a_resin.set_light(0)
-			a_resin.update_overlays()
-	//With the death of the core, we kill all structures
-	for(var/t in other_structures)
-		var/obj/structure/biohazard_blob/structure/our_structure = t
-		qdel(our_structure)
-	return
 
 /datum/biohazard_blob_controller/proc/TrySpreadResin(obj/structure/biohazard_blob/resin/spreaded_resin)
 	. = RESIN_CANT_SPREAD
@@ -103,25 +99,24 @@
 				break
 		if(!forbidden)
 			structure_progression -= PROGRESSION_FOR_STRUCTURE
-			var/random = rand(1,2)
+			var/random = rand(1,3)
 			SpawnStructureLoc(random, ownturf)
 
 	//Check if we can attack an airlock
 	for(var/a in get_adjacent_open_turfs(spreaded_resin))
 		var/turf/open/open_turf = a
 		for(var/obj/O in open_turf)
-			if(istype(O, /obj/machinery/door/airlock) || istype(O, /obj/machinery/door/firedoor) || istype(O, /obj/structure/door_assembly))
-				if(O.density)
-					spreaded_resin.do_attack_animation(O, ATTACK_EFFECT_PUNCH)
-					playsound(O, 'sound/effects/attackblob.ogg', 50, TRUE)
-					O.take_damage(40, BRUTE, MELEE, 1, get_dir(O, spreaded_resin))
-					. = RESIN_ATTACKED_DOOR
-					break
+			if(istype(O, /obj/machinery/door/airlock) || istype(O, /obj/machinery/door/firedoor) || istype(O, /obj/machinery/door/window) || istype(O, /obj/structure/door_assembly) || istype(O, /obj/machinery/door/window))
+				spreaded_resin.do_attack_animation(O, ATTACK_EFFECT_PUNCH)
+				playsound(O, 'sound/effects/attackblob.ogg', 50, TRUE)
+				O.take_damage(40, BRUTE, MELEE, 1, get_dir(O, spreaded_resin))
+				. = RESIN_ATTACKED_DOOR
+				break
 		if(.)
 			break
 
 	var/list/possible_locs = list(ownturf) //Ownturf, because it could spread into the same turf, but on the wall
-	for(var/T in ownturf.GetAtmosAdjacentTurfs())
+	for(var/T in ownturf.get_atmos_adjacent_turfs())
 		//We encounter a space turf? Make a thick wall to block of that nasty vacuum
 		if(isspaceturf(T))
 			if(!locate(/obj/structure/biohazard_blob/structure/wall, ownturf))
@@ -162,7 +157,7 @@
 	active_resin[new_resin] = TRUE
 	new_resin.CalcDir()
 	our_core.max_integrity += 2
-	our_core.obj_integrity += 2
+	our_core.repair_damage(2)
 	return new_resin
 
 /datum/biohazard_blob_controller/proc/ActivateAdjacentResinRecursive(turf/centrum_turf, iterations = 1)
@@ -171,7 +166,7 @@
 	for(var/i in 1 to iterations)
 		for(var/t in turfs)
 			var/turf/open = t
-			for(var/atmoadj in open.GetAtmosAdjacentTurfs())
+			for(var/atmoadj in open.get_atmos_adjacent_turfs())
 				turfs[atmoadj] = TRUE
 	for(var/t in turfs)
 		var/turf/ite_turf = t
@@ -185,7 +180,7 @@
 		//We're dead, no point in doing this
 		return
 	var/list/turfs = list(centrum_turf)
-	for(var/t in centrum_turf.GetAtmosAdjacentTurfs())
+	for(var/t in centrum_turf.get_atmos_adjacent_turfs())
 		turfs += t
 	for(var/t in turfs)
 		var/turf/ite_turf = t

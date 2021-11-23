@@ -5,7 +5,7 @@
 	var/default_name = "prisoner closet"
 	req_access = list(ACCESS_BRIG)
 	var/obj/item/card/id/advanced/prisoner/registered_id = null
-	icon = 'modular_skyrat/modules/mapping/icons/turnstile.dmi'
+	icon = 'modular_skyrat/modules/mapping/icons/unique/turnstile.dmi'
 	icon_state = "prisoner"
 	locked = FALSE
 	anchored = TRUE
@@ -28,7 +28,7 @@
 			break
 
 	if(!prisoner_id)
-		to_chat(user, "<span class='danger'>Access Denied.</span>")
+		to_chat(user, span_danger("Access Denied."))
 		return FALSE
 
 	qdel(registered_id)
@@ -36,18 +36,18 @@
 	locked = FALSE
 	open(user)
 	desc = "It's a secure locker for prisoner effects."
-	to_chat(user, "<span class='notice'>You insert your prisoner id into \the [src] and it springs open!</span>")
+	to_chat(user, span_notice("You insert your prisoner id into \the [src] and it springs open!"))
 
 	return TRUE
 
 /obj/structure/closet/secure_closet/genpop/proc/handle_edit_sentence(mob/user)
-	var/prisoner_name = input(user, "Please input the name of the prisoner.", "Prisoner Name", registered_id.registered_name) as text|null
+	var/prisoner_name = sanitize_text(input(user, "Please input the name of the prisoner.", "Prisoner Name", registered_id.registered_name) as text|null)
 	if(prisoner_name == null | !user.Adjacent(src))
 		return FALSE
 	var/sentence_length = input(user, "Please input the length of their sentence in minutes (0 for perma).", "Sentence Length", registered_id.sentence) as num|null
 	if(sentence_length == null | !user.Adjacent(src))
 		return FALSE
-	var/crimes = input(user, "Please input their crimes.", "Crimes", registered_id.crime) as text|null
+	var/crimes = sanitize_text(input(user, "Please input their crimes.", "Crimes", registered_id.crime) as text|null)
 	if(crimes == null | !user.Adjacent(src))
 		return FALSE
 
@@ -72,7 +72,7 @@
 
 	if(!broken && locked && registered_id != null)
 		var/name = registered_id.registered_name
-		var/result = alert(user, "This locker currently contains [name]'s personal belongings ","Locker In Use","Reset","Amend ID", "Open")
+		var/result = tgui_alert(user, "This locker currently contains [name]'s personal belongings ", "Locker In Use", list("Reset", "Amend ID", "Open"))
 		if(!user.Adjacent(src))
 			return
 		if(result == "Reset")
@@ -108,7 +108,32 @@
 			locked = TRUE
 			update_icon()
 			registered_id.forceMove(src.loc)
-			new /obj/item/clothing/under/rank/prisoner(src.loc)
+			if(prob(1)) // 1% chance to get cartoon prison outfit, cause it's funny
+				new /obj/item/clothing/under/rank/prisoner/classic(src.loc)
+				new /obj/item/clothing/shoes/sneakers/orange(src.loc)
+				return // early return to prevent 2 outfits
+			var/sentence = registered_id.sentence
+			switch(sentence)
+				if(0) // perma = supermax
+					if(prob(50))
+						new /obj/item/clothing/under/rank/prisoner/supermax(src.loc)
+					else
+						new /obj/item/clothing/under/rank/prisoner/skirt/supermax(src.loc)
+				if(1 to 18000) // up to 30 mins = minsec
+					if(prob(50))
+						new /obj/item/clothing/under/rank/prisoner/lowsec(src.loc)
+					else
+						new /obj/item/clothing/under/rank/prisoner/skirt/lowsec(src.loc)
+				if(18001 to 36000) // 30min-1hr = medsec
+					if(prob(50))
+						new /obj/item/clothing/under/rank/prisoner(src.loc)
+					else
+						new /obj/item/clothing/under/rank/prisoner/skirt(src.loc)
+				else // 1hr+ (not perma) = maxsec
+					if(prob(50))
+						new /obj/item/clothing/under/rank/prisoner/highsec(src.loc)
+					else
+						new /obj/item/clothing/under/rank/prisoner/skirt/highsec(src.loc)
 			new /obj/item/clothing/shoes/sneakers/orange(src.loc)
 		else
 			qdel(registered_id)

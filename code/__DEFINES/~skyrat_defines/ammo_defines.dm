@@ -2,3 +2,5 @@
 #define AMMO_TYPE_RUBBER "rubber"
 #define AMMO_TYPE_HOLLOWPOINT "hollowpoint"
 #define AMMO_TYPE_IHDF "ihdf"
+#define AMMO_TYPE_AP "ap"
+#define AMMO_TYPE_INCENDIARY "incendiary"

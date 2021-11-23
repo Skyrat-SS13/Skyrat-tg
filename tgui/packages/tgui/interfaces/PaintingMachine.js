@@ -16,11 +16,13 @@ export const PaintingMachine = (props, context) => {
 
   const [
     selectedPDA,
-  ] = useSharedState(context, "pdaSelection");
+  ] = useSharedState(context, "pdaSelection", pdaTypes[Object.keys(pdaTypes)[0]]);
 
   const [
     selectedTrim,
-  ] = useSharedState(context, "trimSelection");
+  ] = useSharedState(context, "trimSelection", cardTrims[Object.keys(cardTrims)[0]]);
+
+
 
   return (
     <Window
@@ -55,6 +57,11 @@ export const PaintingMachine = (props, context) => {
           title="ID Trim Imprinter"
           buttons={
             <>
+              <Button.Confirm
+                disabled={!hasID}
+                content="Reset ID Account"
+                confirmContent="Confirm?"
+                onClick={() => act("reset_card")} />
               <Button.Confirm
                 disabled={!hasID}
                 content="Imprint ID Trim"

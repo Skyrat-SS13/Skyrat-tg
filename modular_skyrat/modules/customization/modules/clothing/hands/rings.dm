@@ -1,11 +1,11 @@
 /obj/item/clothing/gloves/ring
-	icon = 'modular_skyrat/modules/customization/icons/obj/ring.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/hands.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/ring.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	name = "gold ring"
 	desc = "A tiny gold ring, sized to wrap around a finger."
 	gender = NEUTER
 	w_class = WEIGHT_CLASS_TINY
-	icon = 'modular_skyrat/modules/customization/icons/obj/ring.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/ring.dmi'
 	icon_state = "ringgold"
 	inhand_icon_state = "gring"
 	worn_icon_state = "gring"
@@ -14,7 +14,7 @@
 	strip_delay = 40
 
 /obj/item/clothing/gloves/ring/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>\[user] is putting the [src] in [user.p_their()] mouth! It looks like [user] is trying to choke on the [src]!</span>")
+	user.visible_message(span_suicide("\[user] is putting the [src] in [user.p_their()] mouth! It looks like [user] is trying to choke on the [src]!"))
 	return OXYLOSS
 
 
@@ -26,7 +26,7 @@
 	worn_icon_state = "dring"
 
 /obj/item/clothing/gloves/ring/diamond/attack_self(mob/user)
-	user.visible_message("<span class='warning'>\The [user] gets down on one knee, presenting \the [src].</span>","<span class='warning'>You get down on one knee, presenting \the [src].</span>")
+	user.visible_message(span_warning("\The [user] gets down on one knee, presenting \the [src]."),span_warning("You get down on one knee, presenting \the [src]."))
 
 /obj/item/clothing/gloves/ring/silver
 	name = "silver ring"

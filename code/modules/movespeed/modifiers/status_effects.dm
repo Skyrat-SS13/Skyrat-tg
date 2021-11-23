@@ -5,7 +5,7 @@
 	multiplicative_slowdown = 3
 
 /datum/movespeed_modifier/status_effect/lightpink
-	multiplicative_slowdown = -0.25 //SKYRAT EDIT: Oiriginal value (-0.5)
+	multiplicative_slowdown = -0.5
 	blacklisted_movetypes = (FLYING|FLOATING)
 
 /datum/movespeed_modifier/status_effect/tarfoot
@@ -15,3 +15,4 @@
 /datum/movespeed_modifier/status_effect/sepia
 	variable = TRUE
 	blacklisted_movetypes = (FLYING|FLOATING)
+

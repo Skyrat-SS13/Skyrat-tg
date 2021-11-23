@@ -5,7 +5,7 @@
 	resistance_flags = FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	var/turf_loc_check = TRUE
 
-/obj/effect/decal/Initialize()
+/obj/effect/decal/Initialize(mapload)
 	. = ..()
 	if(turf_loc_check && (!isturf(loc) || NeverShouldHaveComeHere(loc)))
 		return INITIALIZE_HINT_QDEL
@@ -36,18 +36,13 @@
 	icon_state = "warningline"
 	layer = TURF_DECAL_LAYER
 
-/obj/effect/turf_decal/Initialize()
+/obj/effect/turf_decal/Initialize(mapload)
 	..()
-	//SKYRAT EDIT CHANGE - ASSAULTOPS - ORIGINAL: return INITIALIZE_HINT_QDEL
-	var/area/loc_area = get_area(src)
-	if(!istype(loc_area, /area/shuttle))
-		return INITIALIZE_HINT_QDEL
-	else
-		return INITIALIZE_HINT_NORMAL
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/turf_decal/ComponentInitialize()
 	. = ..()
 	var/turf/T = loc
 	if(!istype(T)) //you know this will happen somehow
 		CRASH("Turf decal initialized in an object/nullspace")
-	T.AddElement(/datum/element/decal, icon, icon_state, dir, FALSE, color, null, null, alpha)
+	T.AddElement(/datum/element/decal, icon, icon_state, dir, null, null, alpha, color, null, FALSE, null)

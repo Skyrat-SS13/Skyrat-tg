@@ -1,17 +1,18 @@
 /datum/sprite_accessory/fluff/moth
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/moth_fluff.dmi'
-	default_color = "FFF"
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/moth_fluff.dmi'
+	default_color = "#FFFFFF"
 	key = "fluff"
 	generic = "Fluff"
-	recommended_species = list("moth", "mammal", "insect")
+	recommended_species = list(SPECIES_MOTH, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_INSECT)
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	genetic = TRUE
 
 /datum/sprite_accessory/fluff/moth/none
 	name = "None"
 	icon_state = "none"
 
 /datum/sprite_accessory/fluff/moth/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
+	if((H.head && (H.head.flags_inv & HIDEHAIR)) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)))
 		return TRUE
 	return FALSE
 

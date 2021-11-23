@@ -1,9 +1,16 @@
 //Mutant variants needs to be a property of all items, because all items can be equipped, despite the mob code only expecting clothing items (ugh)
 /obj/item
 	var/mutant_variants = NONE
+	///Icon file for mob worn overlays, if the user is digi.
+	var/icon/worn_icon_digi
+	///The config type to use for greyscaled worn sprites for digitigrade characters. Both this and greyscale_colors must be assigned to work.
+	var/greyscale_config_worn_digi
+	/// Icon file for mob worn overlays, if the user is a vox.
+	var/icon/worn_icon_vox
+	/// The config type to use for greyscaled worn sprites for vox characters. Both this and greyscale_colors must be assigned to work.
+	var/greyscale_config_worn_vox
 
 /obj/item/clothing
-	var/worn_icon_digi
 	var/worn_icon_taur_snake
 	var/worn_icon_taur_paw
 	var/worn_icon_taur_hoof
@@ -19,19 +26,22 @@
 	mutant_variants = STYLE_VOX
 
 /obj/item/clothing/under
-	mutant_variants = STYLE_DIGITIGRADE
+	mutant_variants = STYLE_DIGITIGRADE|STYLE_VOX
 
 /obj/item/clothing/suit
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
+	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL|STYLE_VOX
+
+/obj/item/clothing/gloves
+	mutant_variants = STYLE_VOX
 
 /obj/item/clothing/shoes
-	mutant_variants = STYLE_DIGITIGRADE
+	mutant_variants = STYLE_DIGITIGRADE|STYLE_VOX
 
 /obj/item/clothing/suit/armor
-	mutant_variants = NONE
+	mutant_variants = STYLE_VOX
 
 /obj/item/clothing/under/color/jumpskirt
-	mutant_variants = NONE
+	mutant_variants = STYLE_VOX
 
 /obj/item/clothing/under/rank/engineering/chief_engineer/skirt
 	mutant_variants = NONE
@@ -52,7 +62,7 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/under/dress
-	mutant_variants = NONE
+	mutant_variants = STYLE_VOX
 
 /obj/item/clothing/under/rank/security/officer/skirt
 	mutant_variants = NONE

@@ -45,6 +45,14 @@
 /datum/crafting_recipe/proc/on_craft_completion(mob/user, atom/result)
 	return
 
+///Check if the pipe used for atmospheric device crafting is the proper one
+/datum/crafting_recipe/proc/atmos_pipe_check(mob/user, list/collected_requirements)
+	var/obj/item/pipe/required_pipe = collected_requirements[/obj/item/pipe][1]
+	if(ispath(required_pipe.pipe_type, /obj/machinery/atmospherics/pipe/smart))
+		return TRUE
+	to_chat(user, span_boldwarning("You can't craft \a [name] without a pipe fitting!"))
+	return FALSE
+
 /datum/crafting_recipe/improv_explosive
 	name = "IED"
 	result = /obj/item/grenade/iedcasing
@@ -95,7 +103,7 @@
 
 /datum/crafting_recipe/stunprod
 	name = "Stunprod"
-	result = /obj/item/melee/baton/cattleprod
+	result = /obj/item/melee/baton/security/cattleprod
 	reqs = list(/obj/item/restraints/handcuffs/cable = 1,
 				/obj/item/stack/rods = 1,
 				/obj/item/assembly/igniter = 1)
@@ -105,7 +113,7 @@
 
 /datum/crafting_recipe/teleprod
 	name = "Teleprod"
-	result = /obj/item/melee/baton/cattleprod/teleprod
+	result = /obj/item/melee/baton/security/cattleprod/teleprod
 	reqs = list(/obj/item/restraints/handcuffs/cable = 1,
 				/obj/item/stack/rods = 1,
 				/obj/item/assembly/igniter = 1,
@@ -138,6 +146,7 @@
 	result = /obj/item/tailclub
 	reqs = list(/obj/item/organ/tail/lizard = 1,
 				/obj/item/stack/sheet/iron = 1)
+	blacklist = list(/obj/item/organ/tail/lizard/fake)
 	time = 40
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
@@ -147,6 +156,7 @@
 	result = /obj/item/melee/chainofcommand/tailwhip
 	reqs = list(/obj/item/organ/tail/lizard = 1,
 				/obj/item/stack/cable_coil = 1)
+	blacklist = list(/obj/item/organ/tail/lizard/fake)
 	time = 40
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
@@ -307,10 +317,10 @@
 	..()
 	blacklist += subtypesof(/obj/item/gun/energy/laser)
 
-/datum/crafting_recipe/teslarevolver
-	name = "Tesla Revolver"
+/datum/crafting_recipe/teslacannon
+	name = "Tesla Cannon"
 	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
-	result = /obj/item/gun/energy/tesla_revolver
+	result = /obj/item/gun/energy/tesla_cannon
 	reqs = list(/obj/item/assembly/signaler/anomaly/flux = 1,
 				/obj/item/stack/cable_coil = 5,
 				/obj/item/weaponcrafting/gunkit/tesla = 1)
@@ -339,7 +349,7 @@
 	result = /mob/living/simple_animal/bot/secbot
 	reqs = list(/obj/item/assembly/signaler = 1,
 				/obj/item/clothing/head/helmet/sec = 1,
-				/obj/item/melee/baton = 1,
+				/obj/item/melee/baton/security/ = 1,
 				/obj/item/assembly/prox_sensor = 1,
 				/obj/item/bodypart/r_arm/robot = 1)
 	tool_behaviors = list(TOOL_WELDER)
@@ -421,7 +431,7 @@
 	tool_behaviors = list(TOOL_WELDER, TOOL_WRENCH)
 	reqs = list(/obj/item/stack/sheet/iron = 4,
 				/obj/item/stack/package_wrap = 8,
-				/obj/item/pipe = 2)
+				/obj/item/pipe/quaternary = 2)
 	time = 50
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
@@ -537,10 +547,36 @@
 				/obj/item/spear = 1,
 				/obj/item/storage/toolbox= 1)
 	tool_behaviors = list(TOOL_SCREWDRIVER)
-	tool_paths = list(/obj/item/clothing/gloves/color/yellow, /obj/item/clothing/mask/gas, /obj/item/melee/baton/cattleprod)
+	tool_paths = list(/obj/item/clothing/gloves/color/yellow, /obj/item/clothing/mask/gas, /obj/item/melee/baton/security/cattleprod)
 	time = 300 //contemplate for a bit
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+
+/datum/crafting_recipe/trash_cannon
+	name = "Trash Cannon"
+	always_available = FALSE
+	tool_behaviors = list(TOOL_WELDER, TOOL_SCREWDRIVER)
+	result = /obj/structure/cannon/trash
+	reqs = list(
+		/obj/item/melee/skateboard/improvised = 1,
+		/obj/item/tank/internals/oxygen = 1,
+		/datum/reagent/drug/maint/tar = 15,
+		/obj/item/restraints/handcuffs/cable = 1,
+		/obj/item/storage/toolbox = 1,
+	)
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
+
+/datum/crafting_recipe/trashball
+	name = "Trashball"
+	always_available = FALSE
+	result = /obj/item/stack/cannonball/trashball
+	reqs = list(
+		/obj/item/stack/sheet = 5,
+		/datum/reagent/consumable/space_cola = 10,
+	)
+	category = CAT_WEAPONRY
+	subcategory = CAT_AMMO
 
 /datum/crafting_recipe/chainsaw
 	name = "Chainsaw"
@@ -861,7 +897,7 @@
 
 /datum/crafting_recipe/bonedagger
 	name = "Bone Dagger"
-	result = /obj/item/kitchen/knife/combat/bone
+	result = /obj/item/knife/combat/bone
 	time = 20
 	reqs = list(/obj/item/stack/sheet/bone = 2)
 	category = CAT_PRIMAL
@@ -999,7 +1035,7 @@
 	if(!aicard.AI)
 		return TRUE
 
-	to_chat(user, "<span class='boldwarning'>You can't craft an intelliTater with an AI in the card!</span>")
+	to_chat(user, span_boldwarning("You can't craft an intelliTater with an AI in the card!"))
 	return FALSE
 
 /datum/crafting_recipe/aispook
@@ -1019,14 +1055,6 @@
 	reqs = list(/obj/item/tank/internals/oxygen = 2, /obj/item/extinguisher = 1, /obj/item/pipe = 3, /obj/item/stack/cable_coil = MAXCOIL)
 	category = CAT_MISC
 	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER, TOOL_WIRECUTTER)
-
-/datum/crafting_recipe/multiduct
-	name = "Multi-layer duct"
-	result = /obj/machinery/duct/multilayered
-	time = 5
-	reqs = list(/obj/item/stack/ducts = 5)
-	category = CAT_MISC
-	tool_behaviors = list(TOOL_WELDER)
 
 /datum/crafting_recipe/rib
 	name = "Collosal Rib"
@@ -1100,7 +1128,7 @@
 	name = "Improvised Pickaxe"
 	reqs = list(
 		/obj/item/crowbar = 1,
-		/obj/item/kitchen/knife = 1,
+		/obj/item/knife = 1,
 		/obj/item/stack/sticky_tape = 1,
 	)
 	result = /obj/item/pickaxe/improvised
@@ -1155,6 +1183,16 @@
 				)
 	category = CAT_MISC
 
+/datum/crafting_recipe/bluespace_vendor_mount
+	name = "Bluespace Vendor Wall Mount"
+	result = /obj/item/wallframe/bluespace_vendor_mount
+	time = 6 SECONDS
+	reqs = list(/obj/item/stack/sheet/iron = 15,
+				/obj/item/stack/sheet/glass = 10,
+				/obj/item/stack/cable_coil = 10,
+				)
+	category = CAT_MISC
+
 /datum/crafting_recipe/shutters
 	name = "Shutters"
 	reqs = list(/obj/item/stack/sheet/plasteel = 10,
@@ -1193,7 +1231,7 @@
 	name = "Alcohol burner"
 	result = /obj/item/burner
 	time = 5 SECONDS
-	reqs = list(/obj/item/reagent_containers/glass/beaker  = 1,
+	reqs = list(/obj/item/reagent_containers/glass/beaker = 1,
 				/datum/reagent/consumable/ethanol = 15,
 				/obj/item/paper = 1
 				)
@@ -1203,7 +1241,7 @@
 	name = "Oil burner"
 	result = /obj/item/burner/oil
 	time = 5 SECONDS
-	reqs = list(/obj/item/reagent_containers/glass/beaker  = 1,
+	reqs = list(/obj/item/reagent_containers/glass/beaker = 1,
 				/datum/reagent/fuel/oil = 15,
 				/obj/item/paper = 1
 				)
@@ -1213,7 +1251,7 @@
 	name = "Fuel burner"
 	result = /obj/item/burner/fuel
 	time = 5 SECONDS
-	reqs = list(/obj/item/reagent_containers/glass/beaker  = 1,
+	reqs = list(/obj/item/reagent_containers/glass/beaker = 1,
 				/datum/reagent/fuel = 15,
 				/obj/item/paper = 1
 				)
@@ -1256,8 +1294,8 @@
 	tool_behaviors = list(TOOL_WELDER)
 	time = 5 SECONDS
 	reqs = list(
-				/obj/item/stack/sheet/glass  = 1,
-				)
+		/obj/item/stack/sheet/glass = 1,
+	)
 	category = CAT_CHEMISTRY
 
 /datum/crafting_recipe/improvised_chem_heater
@@ -1295,6 +1333,319 @@
 			/datum/reagent/consumable/ice = 10
 			)
 	category = CAT_CHEMISTRY
+
+/**
+ * Recipe used for upgrading fake N-spect scanners to bananium HONK-spect scanners
+ */
+/datum/crafting_recipe/clown_scanner_upgrade
+	name = "Bananium HONK-spect scanner"
+	result = /obj/item/inspector/clown/bananium
+	reqs = list(/obj/item/inspector/clown = 1, /obj/item/stack/sticky_tape = 3, /obj/item/stack/sheet/mineral/bananium = 5) //the chainsaw of prank tools
+	tool_paths = list(/obj/item/bikehorn)
+	time = 40 SECONDS
+	category = CAT_MISC
+
+/datum/crafting_recipe/pipe
+	name = "Smart pipe fitting"
+	tool_behaviors = list(TOOL_WRENCH)
+	result = /obj/item/pipe/quaternary
+	reqs = list(/obj/item/stack/sheet/iron = 1)
+	time = 0.5 SECONDS
+	category = CAT_ATMOSPHERIC
+
+/datum/crafting_recipe/pipe/on_craft_completion(mob/user, atom/result)
+	var/obj/item/pipe/crafted_pipe = result
+	crafted_pipe.pipe_type = /obj/machinery/atmospherics/pipe/smart
+	crafted_pipe.pipe_color = COLOR_VERY_LIGHT_GRAY
+	crafted_pipe.p_init_dir = ALL_CARDINALS
+	crafted_pipe.setDir(SOUTH)
+	crafted_pipe.update()
+
+/datum/crafting_recipe/layer_adapter
+	name = "Layer manifold fitting"
+	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
+	result = /obj/item/pipe/binary
+	reqs = list(
+		/obj/item/pipe = 1,
+		/obj/item/stack/sheet/iron = 1)
+	time = 1 SECONDS
+	category = CAT_ATMOSPHERIC
+
+/datum/crafting_recipe/layer_adapter/check_requirements(mob/user, list/collected_requirements)
+	return atmos_pipe_check(user, collected_requirements)
+
+/datum/crafting_recipe/layer_adapter/on_craft_completion(mob/user, atom/result)
+	var/obj/item/pipe/crafted_pipe = result
+	crafted_pipe.pipe_type = /obj/machinery/atmospherics/pipe/layer_manifold
+	crafted_pipe.pipe_color = COLOR_VERY_LIGHT_GRAY
+	crafted_pipe.setDir(user.dir)
+	crafted_pipe.update()
+
+/datum/crafting_recipe/color_adapter
+	name = "Color adapter fitting"
+	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
+	result = /obj/item/pipe/binary
+	reqs = list(
+		/obj/item/pipe = 1,
+		/obj/item/stack/sheet/iron = 1)
+	time = 1 SECONDS
+	category = CAT_ATMOSPHERIC
+
+/datum/crafting_recipe/color_adapter/check_requirements(mob/user, list/collected_requirements)
+	return atmos_pipe_check(user, collected_requirements)
+
+/datum/crafting_recipe/color_adapter/on_craft_completion(mob/user, atom/result)
+	var/obj/item/pipe/crafted_pipe = result
+	crafted_pipe.pipe_type = /obj/machinery/atmospherics/pipe/color_adapter
+	crafted_pipe.pipe_color = COLOR_VERY_LIGHT_GRAY
+	crafted_pipe.setDir(user.dir)
+	crafted_pipe.update()
+
+/datum/crafting_recipe/he_pipe
+	name = "H/E pipe fitting"
+	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
+	result = /obj/item/pipe/quaternary
+	reqs = list(
+		/obj/item/pipe = 1,
+		/obj/item/stack/sheet/iron = 1)
+	time = 1 SECONDS
+	category = CAT_ATMOSPHERIC
+
+/datum/crafting_recipe/he_pipe/check_requirements(mob/user, list/collected_requirements)
+	return atmos_pipe_check(user, collected_requirements)
+
+/datum/crafting_recipe/he_pipe/on_craft_completion(mob/user, atom/result)
+	var/obj/item/pipe/crafted_pipe = result
+	crafted_pipe.pipe_type = /obj/machinery/atmospherics/pipe/heat_exchanging/manifold4w
+	crafted_pipe.pipe_color = COLOR_VERY_LIGHT_GRAY
+	crafted_pipe.setDir(user.dir)
+	crafted_pipe.update()
+
+/datum/crafting_recipe/he_junction
+	name = "H/E junction fitting"
+	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
+	result = /obj/item/pipe/directional
+	reqs = list(
+		/obj/item/pipe = 1,
+		/obj/item/stack/sheet/iron = 1)
+	time = 1 SECONDS
+	category = CAT_ATMOSPHERIC
+
+/datum/crafting_recipe/he_junction/check_requirements(mob/user, list/collected_requirements)
+	return atmos_pipe_check(user, collected_requirements)
+
+/datum/crafting_recipe/he_junction/on_craft_completion(mob/user, atom/result)
+	var/obj/item/pipe/crafted_pipe = result
+	crafted_pipe.pipe_type = /obj/machinery/atmospherics/pipe/heat_exchanging/junction
+	crafted_pipe.pipe_color = COLOR_VERY_LIGHT_GRAY
+	crafted_pipe.setDir(user.dir)
+	crafted_pipe.update()
+
+/datum/crafting_recipe/pressure_pump
+	name = "Pressure pump fitting"
+	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
+	result = /obj/item/pipe/binary
+	reqs = list(
+		/obj/item/pipe = 1,
+		/obj/item/stack/sheet/iron = 5,
+		/obj/item/stack/cable_coil = 5)
+	time = 2 SECONDS
+	category = CAT_ATMOSPHERIC
+
+/datum/crafting_recipe/pressure_pump/check_requirements(mob/user, list/collected_requirements)
+	return atmos_pipe_check(user, collected_requirements)
+
+/datum/crafting_recipe/pressure_pump/on_craft_completion(mob/user, atom/result)
+	var/obj/item/pipe/crafted_pipe = result
+	crafted_pipe.pipe_type = /obj/machinery/atmospherics/components/binary/pump
+	crafted_pipe.pipe_color = COLOR_VERY_LIGHT_GRAY
+	crafted_pipe.setDir(user.dir)
+	crafted_pipe.update()
+
+/datum/crafting_recipe/manual_valve
+	name = "Manual valve fitting"
+	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
+	result = /obj/item/pipe/binary
+	reqs = list(
+		/obj/item/pipe = 1,
+		/obj/item/stack/sheet/iron = 1)
+	time = 2 SECONDS
+	category = CAT_ATMOSPHERIC
+
+/datum/crafting_recipe/manual_valve/check_requirements(mob/user, list/collected_requirements)
+	return atmos_pipe_check(user, collected_requirements)
+
+/datum/crafting_recipe/manual_valve/on_craft_completion(mob/user, atom/result)
+	var/obj/item/pipe/crafted_pipe = result
+	crafted_pipe.pipe_type = /obj/machinery/atmospherics/components/binary/valve
+	crafted_pipe.pipe_color = COLOR_VERY_LIGHT_GRAY
+	crafted_pipe.setDir(user.dir)
+	crafted_pipe.update()
+
+/datum/crafting_recipe/vent
+	name = "Vent pump fitting"
+	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
+	result = /obj/item/pipe/directional
+	reqs = list(
+		/obj/item/pipe = 1,
+		/obj/item/stack/sheet/iron = 5,
+		/obj/item/stack/cable_coil = 5)
+	time = 2 SECONDS
+	category = CAT_ATMOSPHERIC
+
+/datum/crafting_recipe/vent/check_requirements(mob/user, list/collected_requirements)
+	return atmos_pipe_check(user, collected_requirements)
+
+/datum/crafting_recipe/vent/on_craft_completion(mob/user, atom/result)
+	var/obj/item/pipe/crafted_pipe = result
+	crafted_pipe.pipe_type = /obj/machinery/atmospherics/components/unary/vent_pump
+	crafted_pipe.pipe_color = COLOR_VERY_LIGHT_GRAY
+	crafted_pipe.setDir(user.dir)
+	crafted_pipe.update()
+
+/datum/crafting_recipe/scrubber
+	name = "Scrubber fitting"
+	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
+	result = /obj/item/pipe/directional
+	reqs = list(
+		/obj/item/pipe = 1,
+		/obj/item/stack/sheet/iron = 5,
+		/obj/item/stack/cable_coil = 5)
+	time = 2 SECONDS
+	category = CAT_ATMOSPHERIC
+
+/datum/crafting_recipe/scrubber/check_requirements(mob/user, list/collected_requirements)
+	return atmos_pipe_check(user, collected_requirements)
+
+/datum/crafting_recipe/scrubber/on_craft_completion(mob/user, atom/result)
+	var/obj/item/pipe/crafted_pipe = result
+	crafted_pipe.pipe_type = /obj/machinery/atmospherics/components/unary/vent_scrubber
+	crafted_pipe.pipe_color = COLOR_VERY_LIGHT_GRAY
+	crafted_pipe.setDir(user.dir)
+	crafted_pipe.update()
+
+/datum/crafting_recipe/filter
+	name = "Filter fitting"
+	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
+	result = /obj/item/pipe/trinary/flippable
+	reqs = list(
+		/obj/item/pipe = 1,
+		/obj/item/stack/sheet/iron = 5,
+		/obj/item/stack/cable_coil = 5)
+	time = 2 SECONDS
+	category = CAT_ATMOSPHERIC
+
+/datum/crafting_recipe/filter/check_requirements(mob/user, list/collected_requirements)
+	return atmos_pipe_check(user, collected_requirements)
+
+/datum/crafting_recipe/filter/on_craft_completion(mob/user, atom/result)
+	var/obj/item/pipe/crafted_pipe = result
+	crafted_pipe.pipe_type = /obj/machinery/atmospherics/components/trinary/filter
+	crafted_pipe.pipe_color = COLOR_VERY_LIGHT_GRAY
+	crafted_pipe.setDir(user.dir)
+	crafted_pipe.update()
+
+/datum/crafting_recipe/mixer
+	name = "Mixer fitting"
+	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
+	result = /obj/item/pipe/trinary/flippable
+	reqs = list(
+		/obj/item/pipe = 1,
+		/obj/item/stack/sheet/iron = 5,
+		/obj/item/stack/cable_coil = 5)
+	time = 2 SECONDS
+	category = CAT_ATMOSPHERIC
+
+/datum/crafting_recipe/mixer/check_requirements(mob/user, list/collected_requirements)
+	return atmos_pipe_check(user, collected_requirements)
+
+/datum/crafting_recipe/mixer/on_craft_completion(mob/user, atom/result)
+	var/obj/item/pipe/crafted_pipe = result
+	crafted_pipe.pipe_type = /obj/machinery/atmospherics/components/trinary/mixer
+	crafted_pipe.pipe_color = COLOR_VERY_LIGHT_GRAY
+	crafted_pipe.setDir(user.dir)
+	crafted_pipe.update()
+
+/datum/crafting_recipe/connector
+	name = "Portable connector fitting"
+	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
+	result = /obj/item/pipe/directional
+	reqs = list(
+		/obj/item/pipe = 1,
+		/obj/item/stack/sheet/iron = 1)
+	time = 2 SECONDS
+	category = CAT_ATMOSPHERIC
+
+/datum/crafting_recipe/connector/check_requirements(mob/user, list/collected_requirements)
+	return atmos_pipe_check(user, collected_requirements)
+
+/datum/crafting_recipe/connector/on_craft_completion(mob/user, atom/result)
+	var/obj/item/pipe/crafted_pipe = result
+	crafted_pipe.pipe_type = /obj/machinery/atmospherics/components/unary/portables_connector
+	crafted_pipe.pipe_color = COLOR_VERY_LIGHT_GRAY
+	crafted_pipe.setDir(user.dir)
+	crafted_pipe.update()
+
+/datum/crafting_recipe/passive_vent
+	name = "Passive vent fitting"
+	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
+	result = /obj/item/pipe/directional
+	reqs = list(
+		/obj/item/pipe = 1,
+		/obj/item/stack/sheet/iron = 1)
+	time = 2 SECONDS
+	category = CAT_ATMOSPHERIC
+
+/datum/crafting_recipe/passive_vent/check_requirements(mob/user, list/collected_requirements)
+	return atmos_pipe_check(user, collected_requirements)
+
+/datum/crafting_recipe/passive_vent/on_craft_completion(mob/user, atom/result)
+	var/obj/item/pipe/crafted_pipe = result
+	crafted_pipe.pipe_type = /obj/machinery/atmospherics/components/unary/passive_vent
+	crafted_pipe.pipe_color = COLOR_VERY_LIGHT_GRAY
+	crafted_pipe.setDir(user.dir)
+	crafted_pipe.update()
+
+/datum/crafting_recipe/injector
+	name = "Outlet injector fitting"
+	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
+	result = /obj/item/pipe/directional
+	reqs = list(
+		/obj/item/pipe = 1,
+		/obj/item/stack/sheet/iron = 1,
+		/obj/item/stack/cable_coil = 5)
+	time = 2 SECONDS
+	category = CAT_ATMOSPHERIC
+
+/datum/crafting_recipe/injector/check_requirements(mob/user, list/collected_requirements)
+	return atmos_pipe_check(user, collected_requirements)
+
+/datum/crafting_recipe/injector/on_craft_completion(mob/user, atom/result)
+	var/obj/item/pipe/crafted_pipe = result
+	crafted_pipe.pipe_type = /obj/machinery/atmospherics/components/unary/outlet_injector
+	crafted_pipe.pipe_color = COLOR_VERY_LIGHT_GRAY
+	crafted_pipe.setDir(user.dir)
+	crafted_pipe.update()
+
+/datum/crafting_recipe/he_exchanger
+	name = "Heat exchanger fitting"
+	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
+	result = /obj/item/pipe/directional
+	reqs = list(
+		/obj/item/pipe = 1,
+		/obj/item/stack/sheet/plasteel = 1)
+	time = 2 SECONDS
+	category = CAT_ATMOSPHERIC
+
+/datum/crafting_recipe/he_exchanger/check_requirements(mob/user, list/collected_requirements)
+	return atmos_pipe_check(user, collected_requirements)
+
+/datum/crafting_recipe/he_exchanger/on_craft_completion(mob/user, atom/result)
+	var/obj/item/pipe/crafted_pipe = result
+	crafted_pipe.pipe_type = /obj/machinery/atmospherics/components/unary/heat_exchanger
+	crafted_pipe.pipe_color = COLOR_VERY_LIGHT_GRAY
+	crafted_pipe.setDir(user.dir)
+	crafted_pipe.update()
 
 #undef CRAFTING_MACHINERY_CONSUME
 #undef CRAFTING_MACHINERY_USE

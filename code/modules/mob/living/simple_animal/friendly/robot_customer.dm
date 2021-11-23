@@ -26,7 +26,7 @@
 	ADD_TRAIT(src, TRAIT_NOMOBSWAP, INNATE_TRAIT) //dont push me bitch
 	ADD_TRAIT(src, TRAIT_NO_TELEPORT, INNATE_TRAIT) //dont teleport me bitch
 	ADD_TRAIT(src, TRAIT_STRONG_GRABBER, INNATE_TRAIT) //strong arms bitch
-	AddComponent(/datum/component/footstep, FOOTSTEP_OBJ_ROBOT, 1, -6, vary = TRUE)
+	AddElement(/datum/element/footstep, FOOTSTEP_OBJ_ROBOT, 1, -6, sound_vary = TRUE)
 	var/datum/customer_data/customer_info = SSrestaurant.all_customers[customer_data]
 	clothes_set = pick(customer_info.clothing_sets)
 	ai_controller = customer_info.ai_controller_used
@@ -35,7 +35,7 @@
 	ai_controller.blackboard[BB_CUSTOMER_ATTENDING_VENUE] = attending_venue
 	ai_controller.blackboard[BB_CUSTOMER_PATIENCE] = customer_info.total_patience
 	icon_state = customer_info.base_icon
-	name = "[pick(customer_info.name_prefixes)]-bot ([customer_info.nationality])"
+	name = "[pick(customer_info.name_prefixes)]-bot"
 	color = rgb(rand(80,255), rand(80,255), rand(80,255))
 	update_icon()
 
@@ -61,6 +61,14 @@
 
 /mob/living/simple_animal/robot_customer/update_overlays()
 	. = ..()
+
+	var/datum/customer_data/customer_info = ai_controller.blackboard[BB_CUSTOMER_CUSTOMERINFO]
+
+	var/new_underlays = customer_info.get_underlays(src)
+	if (new_underlays)
+		underlays.Cut()
+		underlays += new_underlays
+
 	var/mutable_appearance/features = mutable_appearance(icon, "[icon_state]_features")
 	features.appearance_flags = RESET_COLOR
 	. += features
@@ -68,8 +76,6 @@
 	var/mutable_appearance/clothes = mutable_appearance(icon, clothes_set)
 	clothes.appearance_flags = RESET_COLOR
 	. += clothes
-
-	var/datum/customer_data/customer_info = ai_controller.blackboard[BB_CUSTOMER_CUSTOMERINFO]
 
 	var/bonus_overlays = customer_info.get_overlays(src)
 	if(bonus_overlays)
@@ -84,4 +90,4 @@
 	. = ..()
 	if(ai_controller.blackboard[BB_CUSTOMER_CURRENT_ORDER])
 		var/datum/venue/attending_venue = ai_controller.blackboard[BB_CUSTOMER_ATTENDING_VENUE]
-		. += "<span class='notice'>Their order was: \"[attending_venue.order_food_line(ai_controller.blackboard[BB_CUSTOMER_CURRENT_ORDER])].\"</span>"
+		. += span_notice("Their order was: \"[attending_venue.order_food_line(ai_controller.blackboard[BB_CUSTOMER_CURRENT_ORDER])].\"")

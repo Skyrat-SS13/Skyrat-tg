@@ -5,28 +5,32 @@
 	icon = 'icons/mob/human.dmi'
 	icon_state = "human_basic"
 	appearance_flags = KEEP_TOGETHER|TILE_BOUND|PIXEL_SCALE|LONG_GLIDE
-	hud_possible = list(HEALTH_HUD,STATUS_HUD,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPCHEM_HUD,IMPTRACK_HUD, NANITE_HUD, DIAG_NANITE_FULL_HUD,ANTAG_HUD,GLAND_HUD,SENTIENT_DISEASE_HUD,FAN_HUD)
+	hud_possible = list(HEALTH_HUD,STATUS_HUD,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPCHEM_HUD,IMPTRACK_HUD,ANTAG_HUD,GLAND_HUD,SENTIENT_DISEASE_HUD,FAN_HUD)
 	hud_type = /datum/hud/human
 	pressure_resistance = 25
 	can_buckle = TRUE
 	buckle_lying = 0
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
 	can_be_shoved_into = TRUE
 
 	maxHealth = MAX_HUMAN_LIFE //SKYRAT EDIT ADDITION
 	health = MAX_HUMAN_LIFE //SKYRAT EDIT ADDITION
 
 	//Hair colour and style
-	var/hair_color = "000"
+	var/hair_color = "#000000"
 	var/hairstyle = "Bald"
 
+	///Colour used for the hair gradient.
+	var/grad_color = "#000000"
+	///Style used for the hair gradient.
+	var/grad_style
+
 	//Facial hair colour and style
-	var/facial_hair_color = "000"
+	var/facial_hair_color = "#000000"
 	var/facial_hairstyle = "Shaved"
 
 	//Eye colour
-	var/eye_color = "000"
+	var/eye_color = "#000000"
 
 	var/skin_tone = "caucasian1" //Skin tone
 
@@ -35,12 +39,16 @@
 
 	var/age = 30 //Player's age
 
+	//consider updating /mob/living/carbon/human/copy_clothing_prefs() if adding more of these
 	var/underwear = "Nude" //Which underwear the player wants
-	var/underwear_color = "000"
+	var/underwear_color = "#000000"
 	var/undershirt = "Nude" //Which undershirt the player wants
 	var/socks = "Nude" //Which socks the player wants
 	var/backpack = DBACKPACK //Which backpack type the player has chosen.
 	var/jumpsuit_style = PREF_SUIT //suit/skirt
+
+	var/datum/scream_type/selected_scream //SKRYAT EDIT ADDITION
+	var/datum/laugh_type/selected_laugh //SKYRAT EDIT ADDITION
 
 	//Equipment slots
 	var/obj/item/clothing/wear_suit = null
@@ -66,7 +74,7 @@
 	var/account_id
 
 	var/hardcore_survival_score = 0
-	/// For agendered spessmen, which body type to use
+	/// Which body type to use
 	var/body_type = MALE
 
 	/// How many "units of blood" we have on our hands
@@ -80,3 +88,5 @@
 
 	///human specific screwyhuds from hallucinations (define key (bodypart) to int value (severity)) - see /datum/hallucination/fake_health_doll
 	var/hal_screwydoll
+	/// When an braindead player has their equipment fiddled with, we log that info here for when they come back so they know who took their ID while they were DC'd for 30 seconds
+	var/list/afk_thefts

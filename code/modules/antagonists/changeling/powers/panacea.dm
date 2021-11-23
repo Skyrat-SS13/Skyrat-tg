@@ -9,11 +9,14 @@
 
 //Heals the things that the other regenerative abilities don't.
 /datum/action/changeling/panacea/sting_action(mob/user)
-	to_chat(user, "<span class='notice'>We cleanse impurities from our form.</span>")
+	to_chat(user, span_notice("We cleanse impurities from our form."))
 	..()
 	var/list/bad_organs = list(
 		user.getorgan(/obj/item/organ/body_egg),
-		user.getorgan(/obj/item/organ/zombie_infection))
+		user.getorgan(/obj/item/organ/zombie_infection)
+		)
+
+	try_to_mutant_cure(user) //SKYRAT EDIT ADDITION
 
 	for(var/o in bad_organs)
 		var/obj/item/organ/O = o
@@ -25,7 +28,11 @@
 			var/mob/living/carbon/C = user
 			C.vomit(0)
 		O.forceMove(get_turf(user))
-
+	//Skyrat Edit Start: Cortical Borer
+	var/mob/living/simple_animal/cortical_borer/cb_inside = user.has_borer()
+	if(cb_inside)
+		cb_inside.leave_host()
+	//Skyrat Edit Stop: Cortical Borer
 	user.reagents.add_reagent(/datum/reagent/medicine/mutadone, 10)
 	user.reagents.add_reagent(/datum/reagent/medicine/pen_acid, 20)
 	user.reagents.add_reagent(/datum/reagent/medicine/antihol, 10)

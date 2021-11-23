@@ -275,22 +275,6 @@
 	category = list("Computer Boards")
 	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
 
-/datum/design/board/nanite_chamber_control
-	name = "Computer Design (Nanite Chamber Control)"
-	desc = "Allows for the construction of circuit boards used to build a new nanite chamber control console."
-	id = "nanite_chamber_control"
-	build_path = /obj/item/circuitboard/computer/nanite_chamber_control
-	category = list("Computer Boards")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
-
-/datum/design/board/nanite_cloud_control
-	name = "Computer Design (Nanite Cloud Control)"
-	desc = "Allows for the construction of circuit boards used to build a new nanite cloud control console."
-	id = "nanite_cloud_control"
-	build_path = /obj/item/circuitboard/computer/nanite_cloud_controller
-	category = list("Computer Boards")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
-
 /datum/design/board/advanced_camera
 	name = "Computer Design (Advanced Camera Console)"
 	desc = "Allows for the construction of circuit boards used to build advanced camera consoles."
@@ -304,4 +288,20 @@
 	desc = "Allows for the construction of circuit boards used to build a new civilian bounty pad console."
 	id = "bounty_pad_control"
 	build_path = /obj/item/circuitboard/computer/bountypad
+	category = list("Computer Boards")
+
+/datum/design/board/exoscanner_console
+	name = "Computer Design (Scanner Array Control Console)"
+	desc = "Allows for the construction of circuit boards used to build a new scanner array control console."
+	id = "exoscanner_console"
+	build_type = IMPRINTER
+	build_path = /obj/item/circuitboard/computer/exoscanner_console
+	category = list("Computer Boards")
+
+/datum/design/board/exodrone_console
+	name = "Computer Design (Exploration Drone Control Console)"
+	desc = "Allows for the construction of circuit boards used to build a new exploration drone control console."
+	id = "exodrone_console"
+	build_type = IMPRINTER
+	build_path = /obj/item/circuitboard/computer/exodrone_console
 	category = list("Computer Boards")

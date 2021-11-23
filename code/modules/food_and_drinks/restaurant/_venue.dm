@@ -1,11 +1,16 @@
+#define VENUE_RESTAURANT "Restaurant Venue"
+#define VENUE_BAR "Bar Venue"
+
 ///Represents the abstract concept of a food venue in the code.
 /datum/venue
 	///Name of the venue, also used for the icon state of any radials it can be selected in
 	var/name = "unnamed venue"
+	///What kind of Venue are we
+	var/venue_type = VENUE_RESTAURANT
 	///Max amount of guests at any time
 	var/max_guests = 6
 	///Weighted list of customer types
-	var/list/customer_types = list(/datum/customer_data/american = 5, /datum/customer_data/italian = 3, /datum/customer_data/french = 3, /datum/customer_data/japanese = 3, /datum/customer_data/japanese/salaryman = 2, /datum/customer_data/mexican = 10)
+	var/list/customer_types
 	///Is the venue open at the moment?
 	var/open
 	///Portal linked to this venue at the moment
@@ -20,11 +25,14 @@
 	var/max_time_between_visitor = 90 SECONDS
 	///Required access to mess with the venue
 	var/req_access = ACCESS_KITCHEN
+	///how many robots got their wanted thing
+	var/customers_served = 0
+	///Total income of those venue
+	var/total_income = 0
 	///Blacklist for idiots that attack bots. Key is the mob that did it, and the value is the amount of warnings they've received.
 	var/list/mob_blacklist = list()
 	///Seats linked to this venue, assoc list of key holosign of seat position, and value of robot assigned to it, if any.
 	var/list/linked_seats = list()
-
 
 /datum/venue/process(delta_time)
 	if(!COOLDOWN_FINISHED(src, visit_cooldown))
@@ -35,7 +43,27 @@
 
 ///Spawns a new customer at the portal
 /datum/venue/proc/create_new_customer()
-	var/mob/living/simple_animal/robot_customer/new_customer = new /mob/living/simple_animal/robot_customer(get_turf(restaurant_portal), pickweight(customer_types), src)
+	var/list/customer_types_to_choose = customer_types
+	var/datum/customer_data/customer_type
+
+	// In practice, the list will never run out, but this is for sanity.
+	while (customer_types_to_choose.len)
+		customer_type = pick_weight(customer_types_to_choose)
+
+		var/datum/customer_data/customer = SSrestaurant.all_customers[customer_type]
+		if (customer.can_use(src))
+			break
+
+		// Only copy the list once, so that we're not mutating ourselves.
+		if (customer_types_to_choose == customer_types)
+			customer_types_to_choose = customer_types.Copy()
+
+		customer_types_to_choose -= customer_type
+
+	if (initial(customer_type.is_unique))
+		customer_types -= customer_type
+
+	var/mob/living/simple_animal/robot_customer/new_customer = new /mob/living/simple_animal/robot_customer(get_turf(restaurant_portal), customer_type, src)
 	current_visitors += new_customer
 
 /datum/venue/proc/order_food(mob/living/simple_animal/robot_customer/customer_pawn, datum/customer_data/customer_data)
@@ -51,7 +79,7 @@
 
 ///Effects for when a customer receives their order at this venue
 /datum/venue/proc/on_get_order(mob/living/simple_animal/robot_customer/customer_pawn, obj/item/order_item)
-	SEND_SIGNAL(order_item, COMSIG_ITEM_SOLD_TO_CUSTOMER, order_item)
+	SEND_SIGNAL(order_item, COMSIG_ITEM_SOLD_TO_CUSTOMER, customer_pawn, order_item)
 
 ///Toggles whether the venue is open or not
 /datum/venue/proc/toggle_open()
@@ -78,21 +106,21 @@
 	desc = "A robot-only gate into the wonders of Space Station cuisine!"
 	icon = 'icons/obj/machines/restaurant_portal.dmi'
 	icon_state = "portal"
-	density = TRUE
+	anchored = TRUE
+	density = FALSE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 10
 	active_power_usage = 100
 	circuit = /obj/item/circuitboard/machine/restaurant_portal
-
 	layer = BELOW_OBJ_LAYER
-	density = FALSE
-	anchored = TRUE
 	resistance_flags = INDESTRUCTIBLE | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	///What venue is this portal for? Uses a typepath which is turned into an instance on Initialize
 	var/datum/venue/linked_venue = /datum/venue
 
+	/// A weak reference to the mob who turned on the portal
+	var/datum/weakref/turned_on_portal
 
-/obj/machinery/restaurant_portal/Initialize()
+/obj/machinery/restaurant_portal/Initialize(mapload)
 	. = ..()
 	if(linked_venue)
 		linked_venue = SSrestaurant.all_venues[linked_venue]
@@ -100,6 +128,9 @@
 
 /obj/machinery/restaurant_portal/Destroy()
 	. = ..()
+	turned_on_portal = null
+	linked_venue.restaurant_portal = null
+	linked_venue = null
 
 /obj/machinery/restaurant_portal/update_overlays()
 	. = ..()
@@ -113,7 +144,7 @@
 		return ..()
 
 	if(!(linked_venue.req_access in used_id.GetAccess()))
-		to_chat(user, "<span class='warning'>This card lacks the access to change this venues status.</span>")
+		to_chat(user, span_warning("This card lacks the access to change this venues status."))
 		return
 
 	linked_venue.toggle_open()
@@ -126,7 +157,7 @@
 	var/obj/item/card/id/used_id = I
 
 	if(!(linked_venue.req_access in used_id.GetAccess()))
-		to_chat(user, "<span class='warning'>This card lacks the access to change this venues status.</span>")
+		to_chat(user, span_warning("This card lacks the access to change this venues status."))
 		return
 
 	var/list/radial_items = list()
@@ -144,18 +175,19 @@
 
 	var/datum/venue/chosen_venue = radial_results[choice]
 
-
+	turned_on_portal = WEAKREF(user)
 
 	if(!(chosen_venue.req_access in used_id.GetAccess()))
-		to_chat(user, "<span class='warning'>This card lacks the access to change this venues status.</span>")
+		to_chat(user, span_warning("This card lacks the access to change this venues status."))
 		return
 
-	to_chat(user, "<span class='notice'>You change the portal's linked venue.</span>")
+	to_chat(user, span_notice("You change the portal's linked venue."))
 
 	if(linked_venue && linked_venue.restaurant_portal) //We're already linked, unlink us.
 		if(linked_venue.open)
 			linked_venue.close()
 		linked_venue.restaurant_portal.linked_venue = null
+		linked_venue.restaurant_portal = null
 
 	linked_venue = chosen_venue
 	linked_venue.restaurant_portal = src
@@ -180,7 +212,7 @@
 	use_vis_overlay = FALSE
 	var/datum/venue/linked_venue = /datum/venue
 
-/obj/structure/holosign/robot_seat/Initialize(loc, source_projector)
+/obj/structure/holosign/robot_seat/Initialize(mapload, loc, source_projector)
 	. = ..()
 	linked_venue = SSrestaurant.all_venues[linked_venue]
 	linked_venue.linked_seats[src] += null

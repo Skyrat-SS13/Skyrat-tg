@@ -24,7 +24,8 @@ em						{font-style: normal;	font-weight: bold;}
 .bold					{					font-weight: bold;}
 
 .prefix					{					font-weight: bold;}
-
+.oocplain				{}
+.warningplain			{}
 .ooc					{					font-weight: bold;}
 .adminobserverooc		{color: #0099cc;	font-weight: bold;}
 .adminooc				{color: #700038;	font-weight: bold;}
@@ -52,6 +53,9 @@ em						{font-style: normal;	font-weight: bold;}
 .aiprivradio			{color: #ff00ff;}
 .redteamradio			{color: #ff0000;}
 .blueteamradio			{color: #0000ff;}
+.greenteamradio			{color: #00ff00;}
+.yellowteamradio		{color: #d1ba22;}
+.gangradio				{color: #ac2ea1;}
 
 .yell					{					font-weight: bold;}
 
@@ -60,6 +64,7 @@ h1.alert, h2.alert		{color: #000000;}
 
 .emote					{}
 .infoplain				{}
+.mentor					{}
 
 .userdanger				{color: #ff0000;	font-weight: bold;	font-size: 3;}
 .danger					{color: #ff0000;	font-weight: bold;}
@@ -105,6 +110,8 @@ h1.alert, h2.alert		{color: #000000;}
 .revenwarning			{color: #760fbb;	font-style: italic;}
 .revendanger			{color: #760fbb;	font-weight: bold;	font-size: 3;}
 
+.sentientdisease		{color: #446600;}
+
 .deconversion_message	{color: #5000A0;	font-size: 3;	font-style: italic;}
 
 .ghostalert				{color: #5c00e6;	font-style: italic;	font-weight: bold;}
@@ -140,6 +147,26 @@ h1.alert, h2.alert		{color: #000000;}
 		75%		{color: #410194;}
 		100%	{color: #3bb5d3;}
 }
+
+// SKYRAT ADDITION BEGIN
+.velvet					{color: #660015; 	font-weight: bold; animation: velvet 5000ms infinite;}
+	@keyframes velvet {
+		0% 		{color: #400020; }
+		40% 	{color: #FF0000; }
+		50% 	{color: #FF8888; }
+		60% 	{color: #FF0000; }
+		100% 	{color: #400020; }
+}
+
+.hexnut 				{color: #0099ff;	font-weight: bold;	animation: hexnut 5000ms infinite;	animation-direction: alternate;}
+	@keyframes hexnut {
+		0% 	{color: #0099ff;}
+		35% 	{color: #a64dff;}
+		50% 	{color: #00997a;}
+		60% 	{color: #ffb31a;}
+		100% 	{color: #ff33cc;}
+}
+// SKYRAT ADDITION END
 
 .phobia			{color: #dd0000;	font-weight: bold;	animation: phobia 750ms infinite;}
 	@keyframes phobia {

@@ -38,7 +38,7 @@
 	///Visual overlay of the bot commiting warcrimes.
 	var/mutable_appearance/fire_overlay
 
-/mob/living/simple_animal/bot/hygienebot/Initialize()
+/mob/living/simple_animal/bot/hygienebot/Initialize(mapload)
 	. = ..()
 	update_appearance(UPDATE_ICON)
 
@@ -46,23 +46,22 @@
 	var/datum/id_trim/job/jani_trim = SSid_access.trim_singletons_by_path[/datum/id_trim/job/janitor]
 	access_card.add_access(jani_trim.access + jani_trim.wildcard_access)
 	prev_access = access_card.access.Copy()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /mob/living/simple_animal/bot/hygienebot/explode()
 	walk_to(src,0)
-	visible_message("<span class='boldannounce'>[src] blows apart in a foamy explosion!</span>")
+	visible_message(span_boldannounce("[src] blows apart in a foamy explosion!"))
 	do_sparks(3, TRUE, src)
 	on = FALSE
 	new /obj/effect/particle_effect/foam(loc)
 
 	..()
 
-/mob/living/simple_animal/bot/hygienebot/Cross(atom/movable/AM)
-	. = ..()
-	if(washing)
-		do_wash(AM)
-
-/mob/living/simple_animal/bot/hygienebot/Crossed(atom/movable/AM)
-	. = ..()
+/mob/living/simple_animal/bot/hygienebot/proc/on_entered(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
 	if(washing)
 		do_wash(AM)
 
@@ -206,25 +205,8 @@
 	washing = FALSE
 	update_appearance()
 
-
-
-/mob/living/simple_animal/bot/hygienebot/get_controls(mob/user)
-	var/list/dat = list()
-	dat += hack(user)
-	dat += showpai(user)
-	dat += {"
-<TT><B>Hygienebot X2 controls</B></TT><BR><BR>
-Status: ["<A href='?src=[REF(src)];power=[TRUE]'>[on ? "On" : "Off"]</A>"]<BR>
-Behaviour controls are [locked ? "locked" : "unlocked"]<BR>
-Maintenance panel is [open ? "opened" : "closed"]"}
-
-	if(!locked || issilicon(user) || isAdminGhostAI(user))
-		dat += {"<BR> Auto Patrol: ["<A href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "On" : "Off"]</A>"]"}
-
-	return dat.Join("")
-
 /mob/living/simple_animal/bot/hygienebot/proc/check_purity(mob/living/L)
-	if((emagged == 2) && L.stat != DEAD)
+	if((emagged) && L.stat != DEAD)
 		return FALSE
 
 	for(var/X in list(ITEM_SLOT_HEAD, ITEM_SLOT_MASK, ITEM_SLOT_ICLOTHING, ITEM_SLOT_OCLOTHING, ITEM_SLOT_FEET))

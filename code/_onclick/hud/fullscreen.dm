@@ -111,6 +111,10 @@
 	layer = CURSE_LAYER
 	plane = FULLSCREEN_PLANE
 
+/atom/movable/screen/fullscreen/ivanov_display
+	icon_state = "ivanov"
+	alpha = 180
+
 /atom/movable/screen/fullscreen/impaired
 	icon_state = "impairedoverlay"
 
@@ -118,6 +122,11 @@
 	icon = 'icons/hud/screen_gen.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "flash"
+
+/atom/movable/screen/fullscreen/flash/black
+	icon = 'icons/hud/screen_gen.dmi'
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
+	icon_state = "black"
 
 /atom/movable/screen/fullscreen/flash/static
 	icon = 'icons/hud/screen_gen.dmi'
@@ -149,7 +158,7 @@
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "flash"
 	plane = SPLASHSCREEN_PLANE
-	layer = SPLASHSCREEN_LAYER - 1
+	layer = CINEMATIC_LAYER
 	color = "#000000"
 	show_when_dead = TRUE
 
@@ -176,6 +185,5 @@
 /atom/movable/screen/fullscreen/see_through_darkness
 	icon_state = "nightvision"
 	plane = LIGHTING_PLANE
-	layer = LIGHTING_LAYER
 	blend_mode = BLEND_ADD
 	show_when_dead = TRUE

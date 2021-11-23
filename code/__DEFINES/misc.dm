@@ -13,37 +13,51 @@
 #define REVERSE_DIR(dir) ( ((dir & 85) << 1) | ((dir & 170) >> 1) )
 
 //Human Overlays Indexes/////////
-#define MUTATIONS_LAYER 30 //mutations. Tk headglows, cold resistance glow, etc
-#define BODY_BEHIND_LAYER 29 //certain mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODYPARTS_LAYER 28 //Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
-#define BODY_ADJ_LAYER 27 //certain mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_LAYER 26 //underwear, undershirts, socks, eyes, lips(makeup)
-#define FRONT_MUTATIONS_LAYER 25 //mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define DAMAGE_LAYER 24 //damage indicators (cuts and burns)
-#define UNIFORM_LAYER 23
-#define BANDAGE_LAYER 22 //Overlays related to wounds, bandages and splints too //SKYRAT EDIT ADDITION - MEDICAL
-#define ID_LAYER 21
-#define ID_CARD_LAYER 20
-#define HANDS_PART_LAYER 19
-#define GLOVES_LAYER 18
-#define SHOES_LAYER 17
-#define EARS_LAYER 16
-#define SUIT_LAYER 15
-#define GLASSES_LAYER 14
-#define BELT_LAYER 13 //Possible make this an overlay of somethign required to wear a belt?
-#define SUIT_STORE_LAYER 12
-#define NECK_LAYER 11
-#define BACK_LAYER 10
-#define HAIR_LAYER 9 //TODO: make part of head layer?
-#define FACEMASK_LAYER 8
-#define HEAD_LAYER 7
-#define HANDCUFF_LAYER 6
-#define LEGCUFF_LAYER 5
-#define HANDS_LAYER 4
-#define BODY_FRONT_LAYER 3
+#define MUTATIONS_LAYER 36 //mutations. Tk headglows, cold resistance glow, etc
+#define BODY_BEHIND_LAYER 35 //certain mutantrace features (tail when looking south) that must appear behind the body parts
+#define BODYPARTS_LAYER 34 //Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
+#define BODY_ADJ_LAYER 33 //certain mutantrace features (snout, body markings) that must appear above the body parts
+#define BODY_LAYER 32 //underwear, undershirts, socks, eyes, lips(makeup)
+#define FRONT_MUTATIONS_LAYER 31 //mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
+#define DAMAGE_LAYER 30 //damage indicators (cuts and burns)
+#define UNIFORM_LAYER 29
+//SKYRAT EDIT ADDITION BEGIN - ERP UPDATE
+#define ANUS_LAYER 28
+#define VAGINA_LAYER 27
+#define PENIS_LAYER 26
+#define NIPPLES_LAYER 25
+//SKYRAT EDIT ADDITION END
+#define BANDAGE_LAYER 24 //Overlays related to wounds, bandages and splints too //SKYRAT EDIT ADDITION - MEDICAL
+#define ID_LAYER 23
+#define ID_CARD_LAYER 22
+#define HANDS_PART_LAYER 21
+#define GLOVES_LAYER 20
+#define SHOES_LAYER 19
+#define EARS_LAYER 18
+#define SUIT_LAYER 17
+#define GLASSES_LAYER 16
+#define BELT_LAYER 15 //Possible make this an overlay of somethign required to wear a belt?
+#define SUIT_STORE_LAYER 14
+#define NECK_LAYER 13
+#define BACK_LAYER 12
+#define HAIR_LAYER 11 //TODO: make part of head layer?
+#define FACEMASK_LAYER 10
+#define HEAD_LAYER 9
+#define HANDCUFF_LAYER 8
+#define LEGCUFF_LAYER 7
+#define HANDS_LAYER 6
+#define BODY_FRONT_LAYER 5 // Usually used for mutant bodyparts that need to be in front of stuff (e.g. cat ears)
+#define ABOVE_BODY_FRONT_GLASSES_LAYER 4 // For the special glasses that actually require to be above the hair (e.g. lifted welding goggles)
+#define ABOVE_BODY_FRONT_HEAD_LAYER 3 // For the rare cases where something on the head needs to be above everything else (e.g. flowers)
 #define HALO_LAYER 2 //blood cult ascended halo, because there's currently no better solution for adding/removing
 #define FIRE_LAYER 1 //If you're on fire
-#define TOTAL_LAYERS 30	//KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_; //SKYRAT EDIT CHANGE - 30 from 29. Added BANDAGE_LAYER
+#define TOTAL_LAYERS MUTATIONS_LAYER //KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_; SKYRAT EDIT - Made it the final define so it updates on its own.
+
+//Bitflags for the layers an external organ can draw on
+#define EXTERNAL_FRONT (1 << 1)
+#define EXTERNAL_ADJACENT (1 << 2)
+#define EXTERNAL_BEHIND (1 << 3)
+#define ALL_EXTERNAL_OVERLAYS EXTERNAL_FRONT | EXTERNAL_ADJACENT | EXTERNAL_BEHIND
 
 
 //Human Overlay Index Shortcuts for alternate_worn_layer, layers
@@ -179,15 +193,6 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 //Maximum amount of time, (in deciseconds) a tile can be wet for.
 #define MAXIMUM_WET_TIME 5 MINUTES
 
-//unmagic-strings for types of polls
-#define POLLTYPE_OPTION "OPTION"
-#define POLLTYPE_TEXT "TEXT"
-#define POLLTYPE_RATING "NUMVAL"
-#define POLLTYPE_MULTI "MULTICHOICE"
-#define POLLTYPE_IRV "IRV"
-
-
-
 //subtypesof(), typesof() without the parent path
 #define subtypesof(typepath) ( typesof(typepath) - typepath )
 
@@ -214,33 +219,20 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 #define GHOST_ORBIT_PENTAGON "pentagon"
 
 //Ghost showing preferences:
-#define GHOST_ACCS_NONE 1
-#define GHOST_ACCS_DIR 50
-#define GHOST_ACCS_FULL 100
-
-#define GHOST_ACCS_NONE_NAME "default sprites"
-#define GHOST_ACCS_DIR_NAME "only directional sprites"
-#define GHOST_ACCS_FULL_NAME "full accessories"
+#define GHOST_ACCS_NONE "Default sprites"
+#define GHOST_ACCS_DIR "Only directional sprites"
+#define GHOST_ACCS_FULL "Full accessories"
 
 #define GHOST_ACCS_DEFAULT_OPTION GHOST_ACCS_FULL
 
-GLOBAL_LIST_INIT(ghost_accs_options, list(GHOST_ACCS_NONE, GHOST_ACCS_DIR, GHOST_ACCS_FULL)) //So save files can be sanitized properly.
-
-#define GHOST_OTHERS_SIMPLE 1
-#define GHOST_OTHERS_DEFAULT_SPRITE 50
-#define GHOST_OTHERS_THEIR_SETTING 100
-
-#define GHOST_OTHERS_SIMPLE_NAME "white ghost"
-#define GHOST_OTHERS_DEFAULT_SPRITE_NAME "default sprites"
-#define GHOST_OTHERS_THEIR_SETTING_NAME "their setting"
+#define GHOST_OTHERS_SIMPLE "White ghosts"
+#define GHOST_OTHERS_DEFAULT_SPRITE "Default sprites"
+#define GHOST_OTHERS_THEIR_SETTING "Their sprites"
 
 #define GHOST_OTHERS_DEFAULT_OPTION GHOST_OTHERS_THEIR_SETTING
 
 #define GHOST_MAX_VIEW_RANGE_DEFAULT 10
 #define GHOST_MAX_VIEW_RANGE_MEMBER 14
-
-
-GLOBAL_LIST_INIT(ghost_others_options, list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DEFAULT_SPRITE, GHOST_OTHERS_THEIR_SETTING)) //Same as ghost_accs_options.
 
 //pda fonts
 #define MONO "Monospaced"
@@ -248,7 +240,7 @@ GLOBAL_LIST_INIT(ghost_others_options, list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DE
 #define ORBITRON "Orbitron"
 #define SHARE "Share Tech Mono"
 
-GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
+GLOBAL_LIST_INIT(pda_styles, sort_list(list(MONO, VT, ORBITRON, SHARE)))
 
 /////////////////////////////////////
 // atom.appearence_flags shortcuts //
@@ -362,14 +354,6 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 #define GANG_DESTROYED 25
 #define GANG_OPERATING 26
 
-//SKYRAT EDIT ADDITION BEGIN - ASSAULTOPS
-#define ASSAULTOPS_STALEMATE 27
-#define ASSAULTOPS_ASSAULT_WIN 28
-#define ASSAULTOPS_CREW_WIN 29
-#define ASSAULTOPS_ASSAULT_LOSS 30
-#define ASSAULTOPS_CREW_LOSS 31
-//SKYRAT EDIT ADDITION END
-
 #define FIELD_TURF 1
 #define FIELD_EDGE 2
 
@@ -403,9 +387,9 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 #define SECURITY_TRUSTED 3
 
 //Dummy mob reserve slots
-#define DUMMY_HUMAN_SLOT_PREFERENCES "dummy_preference_preview"
 #define DUMMY_HUMAN_SLOT_ADMIN "admintools"
 #define DUMMY_HUMAN_SLOT_MANIFEST "dummy_manifest_generation"
+#define DUMMY_HUMAN_SLOT_CTF "dummy_ctf_preview_generation"
 
 #define PR_ANNOUNCEMENTS_PER_ROUND 5 //The number of unique PR announcements allowed per round
 									//This makes sure that a single person can only spam 3 reopens and 3 closes before being ignored
@@ -442,6 +426,9 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 #define FLESH_SCAR_FILE "wounds/flesh_scar_desc.json"
 #define BONE_SCAR_FILE "wounds/bone_scar_desc.json"
 #define SCAR_LOC_FILE "wounds/scar_loc.json"
+#define EXODRONE_FILE "exodrone.json"
+#define CLOWN_NONSENSE_FILE "clown_nonsense.json"
+#define CULT_SHUTTLE_CURSE "cult_shuttle_curse.json"
 
 //Fullscreen overlay resolution in tiles.
 #define FULLSCREEN_OVERLAY_RESOLUTION_X 15
@@ -466,12 +453,6 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 
 #define EGG_LAYING_MESSAGES list("lays an egg.","squats down and croons.","begins making a huge racket.","begins clucking raucously.")
 
-// Used by PDA and cartridge code to reduce repetitiveness of spritesheets
-#define PDAIMG(what) {"<span class="pda16x16 [#what]"></span>"}
-
-/// Prepares a text to be used for maptext. Use this so it doesn't look hideous.
-#define MAPTEXT(text) {"<span class='maptext'>[##text]</span>"}
-
 //Filters
 #define AMBIENT_OCCLUSION filter(type="drop_shadow", x=0, y=-2, size=4, color="#04080FAA")
 #define GAUSSIAN_BLUR(filter_size) filter(type="blur", size=filter_size)
@@ -493,18 +474,12 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 #define AREASELECT_CORNERA "corner A"
 #define AREASELECT_CORNERB "corner B"
 
-#define VARSET_FROM_LIST(L, V) if(L && L[#V]) V = L[#V]
-#define VARSET_FROM_LIST_IF(L, V, C...) if(L && L[#V] && (C)) V = L[#V]
-#define VARSET_TO_LIST(L, V) if(L) L[#V] = V
-#define VARSET_TO_LIST_IF(L, V, C...) if(L && (C)) L[#V] = V
-
 #define DICE_NOT_RIGGED 1
 #define DICE_BASICALLY_RIGGED 2
 #define DICE_TOTALLY_RIGGED 3
 
 #define VOMIT_TOXIC 1
 #define VOMIT_PURPLE 2
-#define VOMIT_NANITE 3
 
 //chem grenades defines
 #define GRENADE_EMPTY 1
@@ -514,25 +489,10 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 //Misc text define. Does 4 spaces. Used as a makeshift tabulator.
 #define FOURSPACES "&nbsp;&nbsp;&nbsp;&nbsp;"
 
-// art quality defines, used in datums/components/art.dm, elsewhere
-#define BAD_ART 12.5
-#define OK_ART 20
-#define GOOD_ART 25
-#define GREAT_ART 50
-
 // possible bitflag return values of intercept_zImpact(atom/movable/AM, levels = 1) calls
 #define FALL_INTERCEPTED (1<<0) //Stops the movable from falling further and crashing on the ground
 #define FALL_NO_MESSAGE (1<<1) //Used to suppress the "[A] falls through [old_turf]" messages where it'd make little sense at all, like going downstairs.
 #define FALL_STOP_INTERCEPTING (1<<2) //Used in situations where halting the whole "intercept" loop would be better, like supermatter dusting (and thus deleting) the atom.
-
-//Religion
-
-#define HOLY_ROLE_PRIEST 1 //default priestly role
-#define HOLY_ROLE_HIGHPRIEST 2 //the one who designates the religion
-
-#define ALIGNMENT_GOOD "good"
-#define ALIGNMENT_NEUT "neutral"
-#define ALIGNMENT_EVIL "evil"
 
 
 // Play time / EXP
@@ -556,11 +516,16 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 #define IGNORE_TARGET_LOC_CHANGE (1<<1)
 #define IGNORE_HELD_ITEM (1<<2)
 #define IGNORE_INCAPACITATED (1<<3)
+///Used to prevent important slowdowns from being abused by drugs like kronkaine
+#define IGNORE_SLOWDOWNS (1<<4)
 
 // Skillchip categories
 //Various skillchip categories. Use these when setting which categories a skillchip restricts being paired with
 //while using the SKILLCHIP_RESTRICTED_CATEGORIES flag
 #define SKILLCHIP_CATEGORY_GENERAL "general"
 #define SKILLCHIP_CATEGORY_JOB "job"
-#define SKILLCHIP_CATEGORY_FIREMAN_CARRYING "fireman carrying"
-#define SKILLCHIP_CATEGORY_SYNDICATE "syndicate"
+
+/// Emoji icon set
+#define EMOJI_SET 'modular_skyrat/master_files/icons/emoji.dmi' // SKYRAT EDIT
+/// Achievements icon set
+#define ACHIEVEMENTS_SET 'icons/ui_icons/achievements/achievements.dmi'

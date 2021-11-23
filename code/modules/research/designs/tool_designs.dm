@@ -22,7 +22,9 @@
 	materials = list(/datum/material/iron = 4500, /datum/material/silver = 2500, /datum/material/titanium = 3500)
 	category = list("Tool Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
+	autolathe_exportable = FALSE
 
+/*	SKYRAT EDIT - MOVED TO modular_skyrat/modules/electric_welder/code/electric_welder.dm
 /datum/design/exwelder
 	name = "Experimental Welding Tool"
 	desc = "An experimental welder capable of self-fuel generation."
@@ -32,6 +34,7 @@
 	build_path = /obj/item/weldingtool/experimental
 	category = list("Tool Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
+*/
 
 /datum/design/rpd
 	name = "Rapid Pipe Dispenser (RPD)"
@@ -40,7 +43,7 @@
 	materials = list(/datum/material/iron = 75000, /datum/material/glass = 37500)
 	build_path = /obj/item/pipe_dispenser
 	category = list("Tool Designs")
-	departmental_flags =  DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_CARGO
+	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_CARGO
 
 /datum/design/rcd_loaded
 	name = "Rapid Construction Device"
@@ -50,8 +53,19 @@
 	materials = list(/datum/material/iron = 60000, /datum/material/glass = 5000)  // costs more than what it did in the autolathe, this one comes loaded.
 	build_path = /obj/item/construction/rcd/loaded
 	category = list("Tool Designs")
-	departmental_flags =  DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_CARGO
+	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_CARGO
 
+//SKYRAT EDIT ADDITION//
+/datum/design/engi_plumbing
+	name = "Engineering Plumbing Constructor"
+	desc = "A tool that can construct several plumbing devices, useful for liquid management."
+	id = "engi_plumbing"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 60000, /datum/material/glass = 5000)  // Costs the same as an RCD.
+	build_path = /obj/item/construction/plumbing/engineering
+	category = list("Tool Designs")
+	departmental_flags =  DEPARTMENTAL_FLAG_ENGINEERING
+//SKYRAT EDIT END//
 
 /datum/design/rcd_upgrade/frames
 	name = "RCD frames designs upgrade"
@@ -111,7 +125,7 @@
 	materials = list(/datum/material/iron = 20000, /datum/material/glass = 10000, /datum/material/plastic = 8000, /datum/material/gold = 2000)
 	build_path = /obj/item/construction/rld/mini
 	category = list("Tool Designs")
-	departmental_flags =  DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_CARGO
+	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_CARGO
 
 /datum/design/geneshears
 	name = "Botanogenetic Plant Shears"
@@ -122,16 +136,6 @@
 	materials = list(/datum/material/iron=4000, /datum/material/uranium=1500, /datum/material/silver=500)
 	category = list("Tool Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
-
-/datum/design/crystal_stabilizer
-	name = "Supermatter Matrix Stabilizer"
-	desc = "A tool that is used to restore the stability of the Crystal Matrix by injecting it with the anomaly liquid"
-	id = "crystal_stabilizer"
-	build_path = /obj/item/crystal_stabilizer
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 3000, /datum/material/glass = 4500, /datum/material/silver = 2500)
-	category = list("Tool Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
 
 /datum/design/plumbing_rcd_sci
 	name = "Research Plumbing Constructor"
@@ -278,3 +282,14 @@
 	materials = list(/datum/material/iron = 2000, /datum/material/silver = 1500, /datum/material/plasma = 500, /datum/material/titanium = 1500)
 	category = list("Tool Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+/datum/design/wirebrush
+	name = "Wirebrush"
+	desc = "A tool to remove rust from walls."
+	id = "wirebrush"
+	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
+	category = list("initial", "Tools")
+	materials = list(/datum/material/iron = 200, /datum/material/glass = 200)
+	build_path = /obj/item/wirebrush
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_SERVICE

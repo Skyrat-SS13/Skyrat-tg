@@ -12,7 +12,6 @@ GLOBAL_LIST_INIT(ratking_trash, list(//Garbage: used by the regal rat mob when s
 	/obj/item/trash/candy,
 	/obj/item/trash/chips,
 	/obj/item/trash/pistachios,
-	/obj/item/trash/plate,
 	/obj/item/trash/popcorn,
 	/obj/item/trash/raisins,
 	/obj/item/trash/sosjerky,

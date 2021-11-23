@@ -1,26 +1,32 @@
 //Synth snouts (This is the most important part)
 /datum/sprite_accessory/snouts/synthliz
-	recommended_species = list("synthliz")
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/synthliz_snouts.dmi'
+	recommended_species = list(SPECIES_SYNTHLIZ)
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/synthliz_snouts.dmi'
 	color_src = USE_ONE_COLOR
 	default_color = null
 	name = "Synthetic Lizard - Snout"
 	icon_state = "synthliz_basic"
+	genetic = FALSE
 
 /datum/sprite_accessory/snouts/synthliz/synthliz_under
 	color_src = USE_MATRIXED_COLORS
 	name = "Synthetic Lizard - Snout Under"
 	icon_state = "synthliz_under"
+	extra = TRUE
 
 /datum/sprite_accessory/snouts/synthliz/synthliz_tert
 	color_src = USE_MATRIXED_COLORS
 	name = "Synthetic Lizard - Snout Tertiary"
 	icon_state = "synthliz_tert"
+	extra = TRUE
+	extra_color_src = USE_MATRIXED_COLORS
 
 /datum/sprite_accessory/snouts/synthliz/synthliz_tertunder
 	color_src = USE_MATRIXED_COLORS
 	name = "Synthetic Lizard - Snout Tertiary Under"
 	icon_state = "synthliz_tertunder"
+	extra = TRUE
+	extra_color_src = USE_MATRIXED_COLORS
 
 /datum/sprite_accessory/snouts/synthliz/synthliz_long
 	color_src = USE_ONE_COLOR
@@ -32,19 +38,69 @@
 	name = "Synthetic Lizard - Snout Long & Thick"
 	icon_state = "synthliz_thicklong"
 
+/datum/sprite_accessory/snouts/synthliz/barlessbasic
+	color_src = USE_ONE_COLOR
+	name = "Synthetic Lizard - Barless"
+	icon_state = "synthliz_barless_basic"
+
+/datum/sprite_accessory/snouts/synthliz/barlessunder
+	color_src = USE_MATRIXED_COLORS
+	name = "Synthetic Lizard - Barless Under"
+	icon_state = "synthliz_barless_under"
+	extra = TRUE
+	extra_color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/snouts/synthliz/barlessover
+	color_src = USE_MATRIXED_COLORS
+	name = "Synthetic Lizard - Barless Over"
+	icon_state = "synthliz_barless_over"
+	extra = TRUE
+	extra_color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/snouts/synthliz/barlesstert
+	color_src = USE_MATRIXED_COLORS
+	name = "Synthetic Lizard - Barless Tertiary"
+	icon_state = "synthliz_barless_tert"
+	extra = TRUE
+	extra_color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/snouts/synthliz/barlesstertunder
+	color_src = USE_MATRIXED_COLORS
+	name = "Synthetic Lizard - Barless Tertiary Under"
+	icon_state = "synthliz_barless_tertunder"
+	extra = TRUE
+	extra_color_src = USE_MATRIXED_COLORS
+
+//Protogen snoot
+/datum/sprite_accessory/snouts/synthliz/protogen
+	color_src = USE_MATRIXED_COLORS
+	name = "Protogen"
+	icon_state = "protogen"
+	extra = TRUE
+	extra_color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/snouts/synthliz/protogen_withbolt
+	color_src = USE_MATRIXED_COLORS
+	name = "Protogen - With Bolt"
+	icon_state = "protogen_withbolt"
+	extra = TRUE
+	extra_color_src = USE_MATRIXED_COLORS
+
+
 //Synth tails
 /datum/sprite_accessory/tails/synthliz
-	recommended_species = list("synthliz")
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/synthliz_tails.dmi'
+	recommended_species = list(SPECIES_SYNTHLIZ)
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/synthliz_tails.dmi'
 	color_src = USE_ONE_COLOR
 	name = "Synthetic Lizard"
 	icon_state = "synthliz"
-	general_type = "lizard"
+	general_type = SPECIES_LIZARD
+	genetic = FALSE
 
 //Synth Antennae
 /datum/sprite_accessory/antenna/synthliz
-	recommended_species = list("synthliz")
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/synthliz_antennas.dmi'
+	recommended_species = list(SPECIES_SYNTHLIZ)
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/synthliz_antennas.dmi'
 	color_src = USE_ONE_COLOR
 	name = "Synthetic Lizard - Antennae"
 	icon_state = "synth_antennae"
@@ -105,7 +161,8 @@
 	name = "Cybernetic Lizard"
 	icon_state = "synthlizard"
 	taur_mode = STYLE_TAUR_PAW
-	recommended_species = list("synthliz")
+	recommended_species = list(SPECIES_SYNTHLIZ)
+	genetic = FALSE
 
 /datum/sprite_accessory/taur/synthliz/inv
 	name = "Cybernetic Lizard (Inverted)"

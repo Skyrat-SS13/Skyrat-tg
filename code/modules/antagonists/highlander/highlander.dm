@@ -4,6 +4,7 @@
 	show_in_antagpanel = FALSE
 	show_name_in_check_antagonists = TRUE
 	can_elimination_hijack = ELIMINATION_ENABLED
+	suicide_cry = "FOR SCOTLAND!!" // If they manage to lose their no-drop stuff somehow
 
 /datum/antagonist/highlander/apply_innate_effects(mob/living/mob_override)
 	var/mob/living/L = owner.current || mob_override
@@ -70,7 +71,7 @@
 	H.equip_to_slot_or_del(W, ITEM_SLOT_ID)
 
 	sword = new(H)
-	if(!GLOB.highlander)
+	if(!GLOB.highlander_controller)
 		sword.flags_1 |= ADMIN_SPAWNED_1 //To prevent announcing
 	sword.pickup(H) //For the stun shielding
 	H.put_in_hands(sword)

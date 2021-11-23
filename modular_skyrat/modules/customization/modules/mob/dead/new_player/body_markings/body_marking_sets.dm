@@ -4,7 +4,7 @@
 	///List of the body markings in this set
 	var/body_marking_list
 	///Which species is this marking recommended to. Important for randomisations.
-	var/recommended_species = list("mammal", "tajaran", "vulpkanin", "aquatic", "akula")
+	var/recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_TAJARAN, SPECIES_VULP, SPECIES_AQUATIC, SPECIES_AKULA)
 
 /datum/body_marking_set/none
 	name = "None"
@@ -58,7 +58,7 @@
 /datum/body_marking_set/possum
 	name = "Possum"
 	body_marking_list = list("Possum")
-	
+
 /datum/body_marking_set/corgi
 	name = "Corgi"
 	body_marking_list = list("Corgi")
@@ -74,7 +74,7 @@
 /datum/body_marking_set/tiger
 	name = "Tiger"
 	body_marking_list = list("Tiger Spot", "Tiger Stripe")
-	
+
 /datum/body_marking_set/otter
 	name = "Otter"
 	body_marking_list = list("Otter", "Otter Head")
@@ -90,7 +90,7 @@
 /datum/body_marking_set/orca
 	name = "Orca"
 	body_marking_list = list("Orca")
-	
+
 /datum/body_marking_set/hawk
 	name = "Hawk"
 	body_marking_list = list("Hawk", "Hawk Talon")
@@ -197,7 +197,7 @@
 
 //VOX MARKINGS
 /datum/body_marking_set/vox
-	recommended_species = list("vox")
+	recommended_species = list(SPECIES_VOX)
 
 /datum/body_marking_set/vox/vox
 	name = "Vox"
@@ -220,7 +220,7 @@
 	body_marking_list = list("Vox Talon", "Vox Heart Tattoo")
 
 /datum/body_marking_set/synthliz
-	recommended_species = list("synthliz")
+	recommended_species = list(SPECIES_SYNTHLIZ)
 
 /datum/body_marking_set/synthliz/scutes
 	name = "Synth Scutes"
@@ -237,7 +237,7 @@
 //MOTH
 
 /datum/body_marking_set/moth
-	recommended_species = list("moth")
+	recommended_species = list(SPECIES_MOTH)
 
 /datum/body_marking_set/moth/reddish
 	name = "Reddish"

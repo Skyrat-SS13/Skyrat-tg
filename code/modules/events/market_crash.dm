@@ -20,8 +20,8 @@
 	var/list/poss_reasons = list("the alignment of the moon and the sun",\
 		"some risky housing market outcomes",\
 		"The B.E.P.I.S. team's untimely downfall",\
-		"speculative Terragov grants backfiring",\
-		"greatly exaggerated reports of Nanotrasen accountancy personnel committing mass suicide")
+		"speculative SolGov grants backfiring",\
+		"greatly exaggerated reports of Nanotrasen accountancy personnel committing mass suicide") //Skyrat Edit; original was "speculative Terragov grants backfiring"
 	var/reason = pick(poss_reasons)
 	priority_announce("Due to [reason], prices for on-station vendors will be increased for a short period.", "Nanotrasen Accounting Division")
 
@@ -30,12 +30,12 @@
 	market_dip = rand(1000,10000) * length(SSeconomy.bank_accounts_by_id)
 	SSeconomy.station_target = max(SSeconomy.station_target - market_dip, 1)
 	SSeconomy.price_update()
-	SSeconomy.market_crashing = TRUE
+	ADD_TRAIT(SSeconomy, TRAIT_MARKET_CRASHING, MARKET_CRASH_EVENT_TRAIT)
 
 /datum/round_event/market_crash/end()
 	. = ..()
 	SSeconomy.station_target += market_dip
-	SSeconomy.market_crashing = FALSE
+	REMOVE_TRAIT(SSeconomy, TRAIT_MARKET_CRASHING, MARKET_CRASH_EVENT_TRAIT)
 	SSeconomy.price_update()
 	priority_announce("Prices for on-station vendors have now stabilized.", "Nanotrasen Accounting Division")
 

@@ -61,8 +61,22 @@
 /// Legcuff slot (bolas, beartraps)
 #define ITEM_SLOT_LEGCUFFED (1<<19)
 
+//SKYRAT EDIT ADDITION BEGIN - ERP UPDATE
+/// Penis slot
+#define ITEM_SLOT_PENIS (1<<20)
+/// Vagina slot
+#define ITEM_SLOT_VAGINA (1<<21)
+/// Anus slot
+#define ITEM_SLOT_ANUS (1<<22)
+/// Nipples slot
+#define ITEM_SLOT_NIPPLES (1<<23)
+//SKYRATE EDIT ADDITION END
+
 /// Total amount of slots
-#define SLOTS_AMT 20 // Keep this up to date!
+//SKYRAT EDIT CHANGE BEGIN
+// #define SLOTS_AMT 20 // Keep this up to date! - SKYRAT EDIT - ORIGINAL
+#define SLOTS_AMT 24 // Keep this up to date!
+//SKYRAT EDIT CHANGE END
 
 //SLOT GROUP HELPERS
 #define ITEM_SLOT_POCKETS (ITEM_SLOT_LPOCKET|ITEM_SLOT_RPOCKET)
@@ -84,6 +98,9 @@
 #define HIDEHEADGEAR (1<<11)
 ///for lizard snouts, because some HIDEFACE clothes don't actually conceal that portion of the head.
 #define HIDESNOUT (1<<12)
+//SKYRAT EDIT ADDITION BEGIN - ERP UPDATE
+#define HIDESEXTOY (1<<13)
+//SKYRAT EDIT ADDITION END
 
 //bitflags for clothing coverage - also used for limbs
 #define HEAD (1<<0)
@@ -137,6 +154,18 @@
 #define TINT_DARKENED 2 //Threshold of tint level to apply weld mask overlay
 #define TINT_BLIND 3 //Threshold of tint level to obscure vision fully
 
+// defines for AFK theft
+/// How many messages you can remember while logged out before you stop remembering new ones
+#define AFK_THEFT_MAX_MESSAGES 10
+/// If someone logs back in and there are entries older than this, just tell them they can't remember who it was or when
+#define AFK_THEFT_FORGET_DETAILS_TIME 5 MINUTES
+/// The index of the entry in 'afk_thefts' with the person's visible name at the time
+#define AFK_THEFT_NAME 1
+/// The index of the entry in 'afk_thefts' with the text
+#define AFK_THEFT_MESSAGE 2
+/// The index of the entry in 'afk_thefts' with the time it happened
+#define AFK_THEFT_TIME 3
+
 //Allowed equipment lists for security vests and hardsuits.
 
 GLOBAL_LIST_INIT(advanced_hardsuit_allowed, typecacheof(list(
@@ -145,10 +174,10 @@ GLOBAL_LIST_INIT(advanced_hardsuit_allowed, typecacheof(list(
 	/obj/item/flashlight,
 	/obj/item/gun,
 	/obj/item/melee/baton,
-	/obj/item/melee/classic_baton,
 	/obj/item/reagent_containers/spray/pepper,
 	/obj/item/restraints/handcuffs,
-	/obj/item/tank/internals)))
+	/obj/item/tank/internals,
+	)))
 
 GLOBAL_LIST_INIT(security_hardsuit_allowed, typecacheof(list(
 	/obj/item/ammo_box,
@@ -157,27 +186,29 @@ GLOBAL_LIST_INIT(security_hardsuit_allowed, typecacheof(list(
 	/obj/item/gun/ballistic,
 	/obj/item/gun/energy,
 	/obj/item/melee/baton,
-	/obj/item/melee/classic_baton,
 	/obj/item/reagent_containers/spray/pepper,
 	/obj/item/restraints/handcuffs,
-	/obj/item/tank/internals)))
+	/obj/item/tank/internals,
+	)))
 
 GLOBAL_LIST_INIT(detective_vest_allowed, typecacheof(list(
 	/obj/item/ammo_box,
 	/obj/item/ammo_casing,
 	/obj/item/detective_scanner,
 	/obj/item/flashlight,
-	/obj/item/taperecorder,
 	/obj/item/gun/ballistic,
 	/obj/item/gun/energy,
 	/obj/item/lighter,
 	/obj/item/melee/baton,
-	/obj/item/melee/classic_baton,
 	/obj/item/reagent_containers/spray/pepper,
 	/obj/item/restraints/handcuffs,
 	/obj/item/storage/fancy/cigarettes,
+	/obj/item/taperecorder,
 	/obj/item/tank/internals/emergency_oxygen,
-	/obj/item/tank/internals/plasmaman)))
+	/obj/item/tank/internals/plasmaman,
+	/obj/item/storage/belt/holster/detective,
+	/obj/item/storage/belt/holster/nukie,
+	)))
 
 GLOBAL_LIST_INIT(security_vest_allowed, typecacheof(list(
 	/obj/item/ammo_box,
@@ -185,26 +216,41 @@ GLOBAL_LIST_INIT(security_vest_allowed, typecacheof(list(
 	/obj/item/flashlight,
 	/obj/item/gun/ballistic,
 	/obj/item/gun/energy,
-	/obj/item/kitchen/knife/combat,
+	/obj/item/knife/combat,
 	/obj/item/melee/baton,
-	/obj/item/melee/classic_baton,
-	/obj/item/reagent_containers/spray/pepper,
-	/obj/item/restraints/handcuffs,
-	/obj/item/tank/internals/emergency_oxygen,
-	/obj/item/tank/internals/plasmaman)))
-
-GLOBAL_LIST_INIT(security_wintercoat_allowed, typecacheof(list(
-	/obj/item/ammo_box,
-	/obj/item/ammo_casing,
-	/obj/item/flashlight,
-	/obj/item/storage/fancy/cigarettes,
-	/obj/item/gun/ballistic,
-	/obj/item/gun/energy,
-	/obj/item/lighter,
-	/obj/item/melee/baton,
-	/obj/item/melee/classic_baton,
 	/obj/item/reagent_containers/spray/pepper,
 	/obj/item/restraints/handcuffs,
 	/obj/item/tank/internals/emergency_oxygen,
 	/obj/item/tank/internals/plasmaman,
-	/obj/item/toy)))
+	/obj/item/storage/belt/holster/detective,
+	/obj/item/storage/belt/holster/nukie,
+	)))
+
+GLOBAL_LIST_INIT(security_wintercoat_allowed, typecacheof(list(
+	/obj/item/ammo_box,
+	/obj/item/ammo_casing,
+	/obj/item/gun/ballistic,
+	/obj/item/gun/energy,
+	/obj/item/melee/baton,
+	/obj/item/reagent_containers/spray/pepper,
+	/obj/item/restraints/handcuffs,
+	/obj/item/storage/belt/holster/detective,
+	/obj/item/storage/belt/holster/nukie,
+	)))
+
+/// String for items placed into the left pocket.
+#define LOCATION_LPOCKET "in your left pocket"
+/// String for items placed into the right pocket
+#define LOCATION_RPOCKET "in your right pocket"
+/// String for items placed into the backpack.
+#define LOCATION_BACKPACK "in your backpack"
+/// String for items placed into the hands.
+#define LOCATION_HANDS "in your hands"
+/// String for items placed in the glove slot.
+#define LOCATION_GLOVES "on your hands"
+/// String for items placed in the eye/glasses slot.
+#define LOCATION_EYES "covering your eyes"
+/// String for items placed on the head/hat slot.
+#define LOCATION_HEAD "on your head"
+/// String for items placed in the neck slot.
+#define LOCATION_NECK "around your neck"

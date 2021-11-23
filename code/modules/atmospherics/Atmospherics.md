@@ -37,8 +37,8 @@ Now then, into the breach.
 
  The air controller is, at its core, quite simple, yet it is absolutely fundamental to the atmospheric system. The air controller is the clock which triggers all continuous actions within the atmos system, such as vents distributing air or gas moving between tiles. The actions taken by the air controller are quite simple, and will be enumerated here. Much of the substance of the air ticker is due to the game's master controller, whose intricacies I will not delve into for this document. I will however go into more detail about how SSAir in particular works in Chapter 6. In any case, this is a simplified list of the air controller's actions in a single tick:
 1. Rebuild Pipenets
-    - Runs each time SSAir processes, sometimes out of order. It ensures that no pipenets sit unresolved or unbuilt
-    - Calls `build_network()` on each `/obj/machinery/atmospherics` in the `pipenets_needing_rebuilt` list
+    - Runs each time SSAir processes, sometimes out of order. It ensures that no pipeline sit unresolved or unbuilt
+    - Processes the `rebuild_queue` list into the `expansion_queue` list, and then builds a full pipeline piecemeal. We do a ton of fenagling here to reduce overrun 
 2. Pipenets
     - Updates the internal gasmixes of attached pipe machinery, and reacts the gases in a pipeline
 	- Calls `process()` on each `/datum/pipenet` in the `networks` list
@@ -239,7 +239,7 @@ So then, what does superconduction do, and what do all these damn vars mean.
 
 As I mentioned above, superconduction shares heat where heat can't normally travel. It does this by heating up the turf the heat is in, not the gasmix, the turf itself. This temperature is then shared with adjacent turfs, based on `thermal_conductivity`, a value between 0 and 1 that slows the heat share. Turfs also have a `heat_capacity`, which is how hard it is to heat, along with providing a threshold for the lowest temperature that can melt the turf.
 
-There's one more, and it's a doozy. `atmos_superconductivity` is a set of directions that we cannot share with. I know. It's set in CanAtmosPass(), a rather heady set of procs that build `atmos_adjacent_turfs`, and also modify `atmos_superconductivity`.
+There's one more, and it's a doozy. `atmos_superconductivity` is a set of directions that we cannot share with. I know. It's set in can_atmos_pass(), a rather heady set of procs that build `atmos_adjacent_turfs`, and also modify `atmos_superconductivity`.
 
 So then, a review.
 
@@ -272,7 +272,7 @@ All of these are averages by the way.
 * *`tick_overrun`* A percentage of how far past our allotted time we ran. This is what causes Time Dilation, it's bad.
 * *`ticks`* The amount of subsystem fires it takes to run through all the subprocesses once.
 
-The second line is the cost each subprocess contributed per full cycle, this is a rolling average. It'll give you a good feel for what is misbehaving.
+The second line is the cost each subprocess contributed per full cycle, this is a rolling average. It'll give you a good feel for what is misbehaving. (The only exception to this is pipenet rebuilds, the last entry. Because of its nature as something that can happen at any time, it doesn't have a rolling average, instead it just displays the time it used last process)
 
 The third line is the amount of "whatever" in each subprocess. Handy for noticing dupe bugs and crying at active turf cost. Speaking of, the last entry is the active turfs per overall cost. Not a great metric, but larger is better.
 
@@ -342,7 +342,16 @@ On that note, I'd like to be clear about something. In lines of connected pipes,
 
 Oh, and pipelines react the gas mixture inside them, thought I should mention that.
 
+### A short note on rebuilding
+
+Everything that needs a pipeline should have it before it's allowed to do any processing. This is to prevent runtimes and shitcode related things.
+
+The act of rebuilding a pipeline is quite expensive however, since it involves iterating over all the connected pipes/components.
+That's why we go to such great pains to make sure no large amount of work is allowed to happen at once. It's in an attempt to avoid the excited group settling type of lag I discussed above. It's ok for atmos to lock up for a short period if the system isn't killing the game as a whole.
+
+
 All the other behavior of pipes and pipe components are handled by atmos machinery. I'll give a brief rundown of how they're classified, but the details of each machine are left as an exercise to the reader.
+
 
 #### Pipes
 
@@ -382,9 +391,17 @@ This is for the oddballs, the one offs, the half useless things. Things that are
 
 These are the atmos machines you can move around. They interface with connectors to talk to pipelines, and can contain tanks. Not a whole lot more to discuss here.
 
+## 9. A word on processing
+
+You may have noticed that a large portion of the optimizations we do are focused around not checking to see if we need to do work.
+
+This is essentially what active turfs are built around, and it's a somewhat unfinished project. There's still quite a few things in atmos, mostly machinery, that check each fire to see if they should be doing work. There's a general pattern to solving this sort of thing by the way, centralize the ways a bit of outside code can interact with a "thing", and then when the outside code does something that might warrant processing, start processing.
+
+This attitude needs to be applied to a few large targets, and you may see it crop up when reading through the code. Keep this in mind, and make sure to respect the rules that describe how to work with the object, or things will go to shit.
+
 ## Appendix A - Glossary
 
-* *LINDA* - Our environmental gas system, created by Aranclanos, Beautiful in Spanish
+* *LINDA* - Our environmental gas system, created by Aranclanos, allegedly Beautiful in Spanish
 * *Naps* - A healthy pastime
 * *Gas mixtures* - The datums that store gas information, key to listmos and our underlying method of handling well gas
 * *Diffs* - The differences between gasmixes. We want to get rid of these over time, and clump them up with their sources so we don't need to process too many turfs

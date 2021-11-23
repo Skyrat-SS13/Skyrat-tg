@@ -1,7 +1,7 @@
 /datum/body_marking/moth
-	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/moth_markings.dmi'
-	default_color = "FFF"
-	recommended_species = list("moth")
+	icon = 'modular_skyrat/master_files/icons/mob/body_markings/moth_markings.dmi'
+	default_color = "#FFFFFF"
+	recommended_species = list(SPECIES_MOTH)
 	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | LEG_RIGHT | LEG_LEFT
 
 /datum/body_marking/moth/reddish
@@ -57,7 +57,7 @@
 	icon_state = "lovers"
 
 /datum/body_marking/moth/grayscale
-	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/moth_grayscale_markings.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/body_markings/moth_grayscale_markings.dmi'
 
 /datum/body_marking/moth/grayscale/reddish
 	name = "Reddish Grayscale"

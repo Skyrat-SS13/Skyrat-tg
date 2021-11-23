@@ -3,22 +3,24 @@
 	generic = "Ears"
 	organ_type = /obj/item/organ/ears/mutant
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	genetic = TRUE
 
 /datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
+	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
 		return TRUE
 	return FALSE
 
 
 /datum/sprite_accessory/ears/cat
-	recommended_species = list("mammal", "human", "felinid", "humanoid")
+	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_HUMANOID, SPECIES_GHOUL)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/ears.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/ears.dmi'
 	organ_type = /obj/item/organ/ears/mutant
 	color_src = USE_MATRIXED_COLORS
-	recommended_species = list("mammal", "human", "felinid", "humanoid")
+	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_HUMANOID, SPECIES_GHOUL)
+	uses_emissives = TRUE
 
 /datum/sprite_accessory/ears/mutant/none
 	name = "None"
@@ -27,13 +29,13 @@
 	factual = FALSE
 
 /datum/sprite_accessory/ears/mutant/vulpkanin
-	recommended_species = list("mammal", "human", "felinid", "vulpkanin", "humanoid")
+	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_VULP, SPECIES_HUMANOID, SPECIES_GHOUL)
 
 /datum/sprite_accessory/ears/mutant/tajaran
-	recommended_species = list("mammal", "human", "felinid", "tajaran", "humanoid")
+	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_TAJARAN, SPECIES_HUMANOID, SPECIES_GHOUL)
 
 /datum/sprite_accessory/ears/mutant/akula
-	recommended_species = list("mammal", "human", "felinid", "aquatic", "akula", "humanoid")
+	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_AQUATIC, SPECIES_AKULA, SPECIES_HUMANOID, SPECIES_GHOUL)
 
 /datum/sprite_accessory/ears/mutant/axolotl
 	name = "Axolotl"
@@ -93,7 +95,7 @@
 	default_color = DEFAULT_TERTIARY
 
 /datum/sprite_accessory/ears/mutant/deer
-	name = "Deer"
+	name = "Deer (Antler)"
 	icon_state = "deer"
 	color_src = USE_ONE_COLOR
 	default_color = DEFAULT_TERTIARY
@@ -101,7 +103,6 @@
 /datum/sprite_accessory/ears/mutant/eevee
 	name = "Eevee"
 	icon_state = "eevee"
-	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/ears/mutant/eevee_alt
 	name = "Eevee ALT"
@@ -157,6 +158,10 @@
 /datum/sprite_accessory/ears/mutant/vulpkanin/otie
 	name = "Otusian"
 	icon_state = "otie"
+
+/datum/sprite_accessory/ears/mutant/protogen
+	name = "Protogen"
+	icon_state = "protogen"
 
 /datum/sprite_accessory/ears/mutant/rabbit
 	name = "Rabbit"
@@ -221,3 +226,85 @@
 /datum/sprite_accessory/ears/mutant/miqote
 	name = "Miqo'te"
 	icon_state = "miqote"
+
+/datum/sprite_accessory/ears/mutant/hare
+	name = "Hare"
+	icon_state = "rabbitalt"
+
+/datum/sprite_accessory/ears/mutant/bunnyalt
+	name = "Curved Rabbit Ears"
+	icon_state = "bunnyalt"
+
+/datum/sprite_accessory/ears/mutant/deerear
+	name = "Deer (ear)"
+	icon_state = "deerear"
+
+/datum/sprite_accessory/ears/mutant/teshari
+	recommended_species = list(SPECIES_TESHARI)
+
+/datum/sprite_accessory/ears/mutant/teshari/regular
+	name = "Teshari Regular"
+	icon_state = "teshari_regular"
+
+/datum/sprite_accessory/ears/mutant/teshari/feathers_bushy
+	name = "Teshari Feathers Bushy"
+	icon_state = "teshari_feathers_bushy"
+
+/datum/sprite_accessory/ears/mutant/teshari/feathers_mohawk
+	name = "Teshari Feathers Mohawk"
+	icon_state = "teshari_feathers_mohawk"
+
+/datum/sprite_accessory/ears/mutant/teshari/feathers_spiky
+	name = "Teshari Feathers Spiky"
+	icon_state = "teshari_feathers_spiky"
+
+/datum/sprite_accessory/ears/mutant/teshari/feathers_pointy
+	name = "Teshari Feathers Pointy"
+	icon_state = "teshari_feathers_pointy"
+
+/datum/sprite_accessory/ears/mutant/teshari/feathers_upright
+	name = "Teshari Feathers Upright"
+	icon_state = "teshari_feathers_upright"
+
+/datum/sprite_accessory/ears/mutant/teshari/feathers_mane
+	name = "Teshari Feathers Mane"
+	icon_state = "teshari_feathers_mane"
+
+/datum/sprite_accessory/ears/mutant/teshari/feathers_droopy
+	name = "Teshari Feathers Droopy"
+	icon_state = "teshari_feathers_droopy"
+
+/datum/sprite_accessory/ears/mutant/teshari/feathers_longway
+	name = "Teshari Feathers Longway"
+	icon_state = "teshari_feathers_longway"
+
+/datum/sprite_accessory/ears/mutant/teshari/feathers_tree
+	name = "Teshari Feathers Tree"
+	icon_state = "teshari_feathers_tree"
+
+/datum/sprite_accessory/ears/mutant/teshari/feathers_mushroom
+	name = "Teshari Feathers Mushroom"
+	icon_state = "teshari_feathers_mushroom"
+	color_src = USE_ONE_COLOR 
+	// Converting each one of these to rbg matrixed is like a 20+ minute process per sprite to make it look good
+	// and this one looks kinda meh anyway so I cba, it stays greyscale
+
+/datum/sprite_accessory/ears/mutant/teshari/feathers_backstrafe
+	name = "Teshari Feathers Backstrafe"
+	icon_state = "teshari_feathers_backstrafe"
+	color_src = USE_ONE_COLOR 
+
+/datum/sprite_accessory/ears/mutant/teshari/feathers_thinmohawk
+	name = "Teshari Feathers Thin Mohawk"
+	icon_state = "teshari_feathers_thinmohawk"
+	color_src = USE_ONE_COLOR 
+
+/datum/sprite_accessory/ears/mutant/teshari/feathers_thinmane
+	name = "Teshari Feathers Thin Mane"
+	icon_state = "teshari_feathers_thinmane"
+	color_src = USE_ONE_COLOR 
+
+/datum/sprite_accessory/ears/mutant/deer2
+	name = "Deer 2"
+	icon_state = "deer2"
+	color_src = USE_ONE_COLOR

@@ -15,14 +15,14 @@
 	/obj/item/key/collar))
 
 /obj/item/clothing/neck/human_petcollar
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	name = "pet collar"
 	desc = "It's for pets. Though you probably could wear it yourself, you'd doubtless be the subject of ridicule. It seems to be made out of a polychromic material."
 	icon_state = "petcollar_poly"
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/collar
 	var/is_polychromic = TRUE
-	var/poly_colors = list("0BB", "FC0", "FFF")
+	var/poly_colors = list("#00BBBB", "#FFCC00", "#FFFFFF")
 	var/tagname = null
 	var/treat_path = /obj/item/food/cookie
 
@@ -43,7 +43,7 @@
 /obj/item/clothing/neck/human_petcollar/leather
 	name = "leather pet collar"
 	icon_state = "leathercollar_poly"
-	poly_colors = list("222", "888", "888")
+	poly_colors = list("#222222", "#888888", "#888888")
 
 /obj/item/clothing/neck/human_petcollar/choker
 	desc = "Quite fashionable... if you're somebody who's just read their first BDSM-themed erotica novel."
@@ -62,23 +62,23 @@
 /obj/item/clothing/neck/human_petcollar/locked/attackby(obj/item/K, mob/user, params)
 	if(istype(K, /obj/item/key/collar))
 		if(lock != FALSE)
-			to_chat(user, "<span class='warning'>With a click the collar unlocks!</span>")
+			to_chat(user, span_warning("With a click the collar unlocks!"))
 			lock = FALSE
 		else
-			to_chat(user, "<span class='warning'>With a click the collar locks!</span>")
+			to_chat(user, span_warning("With a click the collar locks!"))
 			lock = TRUE
 	return
 
 /obj/item/clothing/neck/human_petcollar/locked/attack_hand(mob/user)
 	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK) && lock != FALSE)
-		to_chat(user, "<span class='warning'>The collar is locked! You'll need unlock the collar before you can take it off!</span>")
+		to_chat(user, span_warning("The collar is locked! You'll need unlock the collar before you can take it off!"))
 		return
 	..()
 
 /obj/item/clothing/neck/human_petcollar/locked/leather
 	name = "leather pet collar"
 	icon_state = "leathercollar_poly"
-	poly_colors = list("222", "888", "888")
+	poly_colors = list("#222222", "#888888", "#888888")
 
 /obj/item/clothing/neck/human_petcollar/locked/choker
 	name = "choker"
@@ -90,3 +90,45 @@
 /obj/item/key/collar
 	name = "Collar Key"
 	desc = "A key for a tiny lock on a collar or bag."
+
+/obj/item/clothing/neck/human_petcollar/locked/cowcollar
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
+	name = "cowbell collar"
+	desc = "Don't fear the reaper, now your pet doesn't have to."
+	icon_state = "collar_cowbell"
+
+/obj/item/clothing/neck/human_petcollar/locked/bellcollar
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
+	name = "bell collar"
+	desc = "A loud and annoying collar for your little kittens!"
+	icon_state = "collar_bell"
+
+
+/obj/item/clothing/neck/human_petcollar/locked/spikecollar
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
+	name = "spiked collar"
+	desc = "A collar for moody pets. Or pitbulls."
+	icon_state = "collar_spik"
+	is_polychromic = FALSE
+
+/obj/item/clothing/neck/human_petcollar/locked/holocollar
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
+	name = "holocollar"
+	desc = "A collar with holographic information, like a microchip, but around the neck."
+	icon_state = "collar_holo"
+	is_polychromic = FALSE
+
+/obj/item/clothing/neck/human_petcollar/locked/cross
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
+	name = "cross collar"
+	desc = "A religious punishment, probably."
+	icon_state = "collar_blk"
+
+
+
+

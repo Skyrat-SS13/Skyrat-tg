@@ -3,11 +3,15 @@
 ************** IPC SCREENS ****************
 *******************************************/
 /datum/sprite_accessory/screen
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/ipc_screens.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/ipc_screens.dmi'
 	color_src = null
 	key = "ipc_screen"
 	generic = "Screen"
 	relevent_layers = list(BODY_ADJ_LAYER)
+
+/datum/sprite_accessory/screen/none
+	name = "None"
+	icon_state = "none"
 
 /datum/sprite_accessory/screen/blank
 	name = "Blank"
@@ -134,13 +138,14 @@
 *******************************************/
 
 /datum/sprite_accessory/antenna
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/ipc_antennas.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/ipc_antennas.dmi'
 	color_src = USE_ONE_COLOR
 	default_color = DEFAULT_SECONDARY
-	recommended_species = list("ipc")
+	recommended_species = list(SPECIES_IPC)
 	key = "ipc_antenna"
 	generic = "Antenna"
 	relevent_layers = list(BODY_ADJ_LAYER)
+	genetic = FALSE
 
 /datum/sprite_accessory/antenna/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
@@ -180,6 +185,10 @@
 	factual = FALSE
 	key = "ipc_chassis"
 	generic = "Chassis Type"
+
+/datum/sprite_accessory/ipc_chassis/none
+	name = "None"
+	icon_state = "none"
 
 /datum/sprite_accessory/ipc_chassis/mcgreyscale
 	name = "Morpheus Cyberkinetics(Greyscale)"

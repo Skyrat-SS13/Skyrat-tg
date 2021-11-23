@@ -19,3 +19,6 @@
 			GM.parse_gas_string(F.initial_gas_mix)
 			F.copy_air(GM)
 			F.update_visuals()
+
+			if(F.pollution) //SKYRAT EDIT ADDITION
+				qdel(F.pollution)

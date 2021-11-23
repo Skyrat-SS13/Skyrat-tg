@@ -24,23 +24,9 @@
 	light_power = 3
 
 
-/mob/living/simple_animal/bot/vibebot/Initialize()
+/mob/living/simple_animal/bot/vibebot/Initialize(mapload)
 	. = ..()
 	update_appearance()
-
-/mob/living/simple_animal/bot/vibebot/get_controls(mob/user)
-	var/list/dat = list()
-	dat += hack(user)
-	dat += showpai(user)
-	dat += "<TT><B>DiscoMatic Vibebot v1.0</B></TT><BR><BR>"
-	dat += "Status: <A href='?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A><BR>"
-	dat += "Maintenance panel panel is [open ? "opened" : "closed"]<BR>"
-
-	dat += "Behaviour controls are [locked ? "locked" : "unlocked"]<BR>"
-	if(!locked || issilicon(user) || isAdminGhostAI(user))
-		dat += "Patrol Station: <A href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</A><BR>"
-
-	return dat.Join("")
 
 /mob/living/simple_animal/bot/vibebot/turn_off()
 	. = ..()

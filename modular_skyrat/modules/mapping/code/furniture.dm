@@ -3,7 +3,7 @@
 /obj/structure/decorative/shelf
 	name = "shelf"
 	desc = "A sturdy wooden shelf to store a variety of items on."
-	icon = 'modular_skyrat/modules/mapping/icons/furniture.dmi'
+	icon = 'modular_skyrat/modules/mapping/icons/unique/furniture.dmi'
 	icon_state = "empty_shelf_1"
 	density = 0
 
@@ -57,6 +57,6 @@
 /obj/structure/ladder/wood
 	name = "wooden ladder"
 	desc = "It's kind of fun to go up or down these once in a while."
-	icon = 'modular_skyrat/modules/mapping/icons/furniture.dmi'
+	icon = 'modular_skyrat/modules/mapping/icons/unique/furniture.dmi'
 	icon_state = "ladder"
 /////////////      LADDER     /////////////

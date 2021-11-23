@@ -7,6 +7,9 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/skillchip/job/engineer = 10,
 		/obj/item/skillchip/job/roboticist = 10,
 		/obj/item/skillchip/light_remover = 10,
+		/obj/item/skillchip/glassblowing_master = 10,
+		/obj/item/skillchip/ceramic_master = 10,
+		/obj/item/skillchip/fishing_master = 10,
 		/obj/item/skillchip/useless_adapter = 25,
 		/obj/item/skillchip/wine_taster = 50
 	) = 50,
@@ -52,7 +55,6 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/cartridge/roboticist = 50,
 		/obj/item/cartridge/security = 50,
 		/obj/item/cartridge/signal = 100,
-		/obj/item/cartridge/signal/toxins = 50,
 		/obj/item/cartridge/virus/clown = 5,
 		/obj/item/cartridge/virus/mime = 5
 	) = 50,
@@ -118,7 +120,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/language_manual/roundstart_species = 5,
 		/obj/item/lazarus_injector = 5,
 		/obj/item/melee/baseball_bat = 50,
-		/obj/item/melee/baton/cattleprod = 100,
+		/obj/item/melee/baton/security/cattleprod = 100,
 		/obj/item/melee/skateboard/pro = 25,
 		/obj/item/melee/skateboard = 25,
 		/obj/item/mining_voucher = 5,
@@ -143,9 +145,9 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/ammo_casing/a762 = 25,
 		/obj/item/ammo_casing/c10mm = 25,
 		/obj/item/ammo_casing/c32 = 50,
-		/obj/item/ammo_casing/c32_ap = 10,
+		/obj/item/ammo_casing/c32/ap = 10,
 		/obj/item/ammo_casing/c32_incendiary = 10,
-		/obj/item/ammo_casing/c32_rubber = 50,
+		/obj/item/ammo_casing/c32/rubber = 50,
 		/obj/item/ammo_casing/c38 = 100,
 		/obj/item/ammo_casing/c38/dumdum = 20,
 		/obj/item/ammo_casing/c38/hotshot = 20,
@@ -193,7 +195,6 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/instrument/musicalmoth = 5,
 		/obj/item/instrument/piano_synth/headphones/spacepods = 5,
 		/obj/item/instrument/violin/golden = 5,
-		/obj/item/melee/baton/cattleprod/teleprod = 100,
 		/obj/item/melee/chainofcommand/tailwhip/kitty = 25,
 		/obj/item/melee/chainofcommand/tailwhip = 25,
 		/obj/item/melee/flyswatter = 100,
@@ -212,7 +213,8 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/storage/toolbox/emergency/old = 25,
 		/obj/item/storage/toolbox/mechanical/old = 25,
 		/obj/item/tailclub = 25,
-		/obj/item/taster = 25
+		/obj/item/taster = 25,
+		/obj/item/disk/holodisk/woospider = 25
 	) = 50,
 	list( //Meme-level injectors
 		/obj/item/dnainjector/chavmut = 1,
@@ -238,8 +240,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/dnainjector/olfaction = 1,
 		/obj/item/dnainjector/shock = 1,
 		/obj/item/dnainjector/thermal = 1,
-		/obj/item/dnainjector/void = 1,
-		/obj/item/dnainjector/xraymut = 1
+		/obj/item/dnainjector/void = 1
 	) = 25,
 	list( //INSULS!
 		/obj/item/clothing/gloves/color/yellow = 100,
@@ -268,7 +269,6 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/hot_potato/harmless = 25,
 		/obj/item/implanter/sad_trombone = 25,
 		/obj/item/reagent_containers/food/drinks/waterbottle = 25,
-		/obj/item/soapstone/empty = 25,
 		/obj/item/stamp = 5,
 		/obj/item/storage/backpack = 100,
 		/obj/item/storage/belt = 100,

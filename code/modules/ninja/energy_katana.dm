@@ -32,7 +32,7 @@
 	var/datum/effect_system/spark_spread/spark_system
 	var/datum/action/innate/dash/ninja/jaunt
 
-/obj/item/energy_katana/Initialize()
+/obj/item/energy_katana/Initialize(mapload)
 	. = ..()
 	jaunt = new(src)
 	spark_system = new /datum/effect_system/spark_spread()
@@ -45,7 +45,7 @@
 	var/list/modifiers = params2list(click_parameters)
 
 	if(LAZYACCESS(modifiers, RIGHT_CLICK) && !target.density)
-		jaunt.Teleport(user, target)
+		jaunt.teleport(user, target)
 
 /obj/item/energy_katana/pickup(mob/living/user)
 	. = ..()
@@ -111,10 +111,10 @@
 			msg = "Your Energy Katana lands at your feet!"
 
 	if(msg)
-		to_chat(user, "<span class='notice'>[msg]</span>")
+		to_chat(user, span_notice("[msg]"))
 
 /datum/action/innate/dash/ninja
 	current_charges = 3
 	max_charges = 3
-	charge_rate = 200
+	charge_rate = 350 //SKYRAT EDIT CHANGE - ORIGINAL: 200
 	recharge_sound = null

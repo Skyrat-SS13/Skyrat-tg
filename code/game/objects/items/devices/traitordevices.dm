@@ -36,7 +36,7 @@ effective or pretty fucking useless.
 /obj/item/batterer/attack_self(mob/living/carbon/user, flag = 0, emp = 0)
 	if(!user) return
 	if(times_used >= max_uses)
-		to_chat(user, "<span class='danger'>The mind batterer has been burnt out!</span>")
+		to_chat(user, span_danger("The mind batterer has been burnt out!"))
 		return
 
 	log_combat(user, null, "knocked down people in the area", src)
@@ -45,13 +45,13 @@ effective or pretty fucking useless.
 		if(prob(50))
 
 			M.Paralyze(rand(200,400))
-			to_chat(M, "<span class='userdanger'>You feel a tremendous, paralyzing wave flood your mind.</span>")
+			to_chat(M, span_userdanger("You feel a tremendous, paralyzing wave flood your mind."))
 
 		else
-			to_chat(M, "<span class='userdanger'>You feel a sudden, electric jolt travel through your head.</span>")
+			to_chat(M, span_userdanger("You feel a sudden, electric jolt travel through your head."))
 
 	playsound(src.loc, 'sound/misc/interference.ogg', 50, TRUE)
-	to_chat(user, "<span class='notice'>You trigger [src].</span>")
+	to_chat(user, span_notice("You trigger [src]."))
 	times_used += 1
 	if(times_used >= max_uses)
 		icon_state = "battererburnt"
@@ -82,6 +82,10 @@ effective or pretty fucking useless.
 		..()
 	if(!irradiate)
 		return
+	var/mob/living/carbon/human/human_target = M
+	if(istype(human_target) && !used && SSradiation.wearing_rad_protected_clothing(human_target)) //intentionally not checking for TRAIT_RADIMMUNE here so that tatortot can still fuck up and waste their cooldown.
+		to_chat(user, span_warning("[M]'s clothing is fully protecting [M.p_them()] from irradiation!"))
+		return
 	if(!used)
 		log_combat(user, M, "irradiated", src)
 		var/cooldown = get_cooldown()
@@ -89,17 +93,16 @@ effective or pretty fucking useless.
 		icon_state = "health1"
 		addtimer(VARSET_CALLBACK(src, used, FALSE), cooldown)
 		addtimer(VARSET_CALLBACK(src, icon_state, "health"), cooldown)
-		to_chat(user, "<span class='warning'>Successfully irradiated [M].</span>")
+		to_chat(user, span_warning("Successfully irradiated [M]."))
 		addtimer(CALLBACK(src, .proc/radiation_aftereffect, M, intensity), (wavelength+(intensity*4))*5)
-	else
-		to_chat(user, "<span class='warning'>The radioactive microlaser is still recharging.</span>")
+		return
+	to_chat(user, span_warning("The radioactive microlaser is still recharging."))
 
 /obj/item/healthanalyzer/rad_laser/proc/radiation_aftereffect(mob/living/M, passed_intensity)
 	if(QDELETED(M) || !ishuman(M) || HAS_TRAIT(M, TRAIT_RADIMMUNE))
 		return
 	if(passed_intensity >= 5)
 		M.apply_effect(round(passed_intensity/0.075), EFFECT_UNCONSCIOUS) //to save you some math, this is a round(intensity * (4/3)) second long knockout
-	M.rad_act(passed_intensity*10)
 
 /obj/item/healthanalyzer/rad_laser/proc/get_cooldown()
 	return round(max(10, (stealth*30 + intensity*5 - wavelength/4)))
@@ -215,14 +218,14 @@ effective or pretty fucking useless.
 /obj/item/shadowcloak/proc/Activate(mob/living/carbon/human/user)
 	if(!user)
 		return
-	to_chat(user, "<span class='notice'>You activate [src].</span>")
+	to_chat(user, span_notice("You activate [src]."))
 	src.user = user
 	START_PROCESSING(SSobj, src)
 	old_alpha = user.alpha
 	on = TRUE
 
 /obj/item/shadowcloak/proc/Deactivate()
-	to_chat(user, "<span class='notice'>You deactivate [src].</span>")
+	to_chat(user, span_notice("You deactivate [src]."))
 	STOP_PROCESSING(SSobj, src)
 	if(user)
 		user.alpha = old_alpha
@@ -257,15 +260,49 @@ effective or pretty fucking useless.
 	special_desc_jobs = list("Station Engineer", "Chief Engineer", "Cyborg", "AI") //SKYRAT CHANGE //As telecommunications equipment, Engineering would be knowledgeable.
 	special_desc = "This is a black market radio jammer. Used to disrupt nearby radio communication."
 	var/active = FALSE
-	var/range = 12
+	var/range = 20 //SKYRAT EDIT CHANGE - ORIGINAL:12
+
+	//SKYRAT EDIT ADDITION BEGIN
+/obj/item/jammer/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/cell, null, CALLBACK(src, .proc/turn_off))
+
+/obj/item/jammer/proc/turn_on()
+	active = TRUE
+	GLOB.active_jammers |= src
+	START_PROCESSING(SSobj, src)
+
+/obj/item/jammer/proc/turn_off()
+	active = FALSE
+	GLOB.active_jammers -= src
+	STOP_PROCESSING(SSobj, src)
+
+/obj/item/jammer/process(delta_time)
+	if(!active)
+		STOP_PROCESSING(SSobj, src)
+		return
+	if(!(item_use_power(power_use_amount) & COMPONENT_POWER_SUCCESS))
+		turn_off()
+		return
+
+/obj/item/jammer/examine(mob/user)
+	. = ..()
+	. += "[src] is currently [active ? "on" : "off"]."
+	//SKYRAT EDIT END
 
 /obj/item/jammer/attack_self(mob/user)
-	to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>")
+	//SKYRAT EDIT ADDITON
+	if(!active && !(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
+		return
+	//SKYRAT EDIT END
+	//to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>") SKYRAT EDIT REMOVAL
 	active = !active
 	if(active)
-		GLOB.active_jammers |= src
+		turn_on() //SKYRAT EDIT CHANGE
 	else
-		GLOB.active_jammers -= src
+		turn_off() //SKYRAT EDIT CHANGE
+
+	to_chat(user,"<span class='notice'>You [active ? "activate" : "deactivate"] [src].</span>") //SKYRAT EDIT MOVE
 	update_appearance()
 
 /obj/item/storage/toolbox/emergency/turret
@@ -281,8 +318,8 @@ effective or pretty fucking useless.
 
 /obj/item/storage/toolbox/emergency/turret/attackby(obj/item/I, mob/living/user, params)
 	if(I.tool_behaviour == TOOL_WRENCH && user.combat_mode)
-		user.visible_message("<span class='danger'>[user] bashes [src] with [I]!</span>", \
-			"<span class='danger'>You bash [src] with [I]!</span>", null, COMBAT_MESSAGE_RANGE)
+		user.visible_message(span_danger("[user] bashes [src] with [I]!"), \
+			span_danger("You bash [src] with [I]!"), null, COMBAT_MESSAGE_RANGE)
 		playsound(src, "sound/items/drill_use.ogg", 80, TRUE, -1)
 		var/obj/machinery/porta_turret/syndicate/pod/toolbox/turret = new(get_turf(loc))
 		turret.faction = list("[REF(user)]")

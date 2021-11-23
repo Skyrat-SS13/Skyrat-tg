@@ -2,10 +2,32 @@
 	make_sprite_accessory_references()
 	make_body_marking_references()
 	make_body_marking_set_references()
-	make_loadout_references()
+	make_body_marking_dna_block_references()
 	make_augment_references()
+	make_culture_references()
 	//We're loading donators here because it's the least intrusive way modularly
 	load_donators()
+	load_veteran_players()
+
+/proc/make_culture_references()
+	for(var/path in subtypesof(/datum/cultural_info/culture))
+		var/datum/cultural_info/L = path
+		if(!initial(L.name))
+			continue
+		L = new path()
+		GLOB.culture_cultures[path] = L
+	for(var/path in subtypesof(/datum/cultural_info/location))
+		var/datum/cultural_info/L = path
+		if(!initial(L.name))
+			continue
+		L = new path()
+		GLOB.culture_locations[path] = L
+	for(var/path in subtypesof(/datum/cultural_info/faction))
+		var/datum/cultural_info/L = path
+		if(!initial(L.name))
+			continue
+		L = new path()
+		GLOB.culture_factions[path] = L
 
 /proc/make_sprite_accessory_references()
 	// Here we build the global list for all accessories
@@ -16,6 +38,13 @@
 			if(!GLOB.sprite_accessories[P.key])
 				GLOB.sprite_accessories[P.key] = list()
 			GLOB.sprite_accessories[P.key][P.name] = P
+			if(P.genetic)
+				if(!GLOB.dna_mutant_bodypart_blocks[P.key])
+					GLOB.dna_mutant_bodypart_blocks[P.key] = GLOB.dna_total_feature_blocks+1
+				if(!GLOB.genetic_accessories[P.key])
+					GLOB.genetic_accessories[P.key] = list()
+					GLOB.dna_total_feature_blocks += DNA_BLOCKS_PER_FEATURE
+				GLOB.genetic_accessories[P.key] += P.name
 			//TODO: Replace "generic" definitions with something better
 			if(P.generic && !GLOB.generic_accessories[P.key])
 				GLOB.generic_accessories[P.key] = P.generic
@@ -43,18 +72,10 @@
 			BM = new path()
 			GLOB.body_marking_sets[BM.name] = BM
 
-/proc/make_loadout_references()
-	// Here we build the global loadout lists
-	for(var/path in subtypesof(/datum/loadout_item))
-		var/datum/loadout_item/L = path
-		if(initial(L.path))
-			L = new path()
-			GLOB.loadout_items[L.path] = L
-			if(!GLOB.loadout_category_to_subcategory_to_items[L.category])
-				GLOB.loadout_category_to_subcategory_to_items[L.category] = list()
-			if(!GLOB.loadout_category_to_subcategory_to_items[L.category][L.subcategory])
-				GLOB.loadout_category_to_subcategory_to_items[L.category][L.subcategory] = list()
-			GLOB.loadout_category_to_subcategory_to_items[L.category][L.subcategory] += L.path
+/proc/make_body_marking_dna_block_references()
+	for(var/marking_zone in GLOB.marking_zones)
+		GLOB.dna_body_marking_blocks[marking_zone] = GLOB.dna_total_feature_blocks+1
+		GLOB.dna_total_feature_blocks += DNA_BLOCKS_PER_MARKING_ZONE
 
 /proc/make_augment_references()
 	// Here we build the global loadout lists

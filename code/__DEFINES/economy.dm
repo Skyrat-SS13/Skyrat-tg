@@ -1,13 +1,18 @@
+/// Number of paychecks jobs start with at the creation of a new bank account for a player (So at shift-start or game join, but not a blank new account.)
 #define STARTING_PAYCHECKS 7
+/// How much mail the Economy SS will create per minute, regardless of firing time.
+#define MAX_MAIL_PER_MINUTE 3
+/// Probability of using letters of envelope sprites on all letters.
+#define FULL_CRATE_LETTER_ODDS 70
 
 //Experimental change: These are subject to tweaking based on the /tg/ economy overhaul.
 //Current design direction: Higher paying jobs are vastly outnumbered by lower paying jobs, so anything above medium hurts inflation, common jobs help inflation
 #define PAYCHECK_PRISONER 25
 #define PAYCHECK_ASSISTANT 50
-#define PAYCHECK_MINIMAL 55
-#define PAYCHECK_EASY 60
-#define PAYCHECK_MEDIUM 75
-#define PAYCHECK_HARD 100
+#define PAYCHECK_MINIMAL 70 //SKYRAT EDIT ORIGINAL = (55) - Pay Raise
+#define PAYCHECK_EASY 80 //SKYRAT EDIT ORIGINAL = (60) - Pay Raise
+#define PAYCHECK_MEDIUM 100 //SKYRAT EDIT ORIGINAL = (75) - Pay Raise
+#define PAYCHECK_HARD 125 //SKYRAT EDIT ORIGINAL = (100)  - Pay Raise
 #define PAYCHECK_COMMAND 200
 
 #define STATION_TARGET_BUFFER 40
@@ -31,6 +36,8 @@
 #define ACCOUNT_CAR_NAME "Cargo Budget"
 #define ACCOUNT_SEC "SEC"
 #define ACCOUNT_SEC_NAME "Defense Budget"
+#define ACCOUNT_CMD "CMD" // SKYRAT EDIT
+#define ACCOUNT_CMD_NAME "Command Budget" // SKYRAT EDIT
 
 #define NO_FREEBIES "commies go home"
 

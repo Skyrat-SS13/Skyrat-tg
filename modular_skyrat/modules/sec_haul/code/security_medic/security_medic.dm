@@ -2,17 +2,19 @@
 	title = "Security Medic"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Head of Security")
-	faction = "Station"
+	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of security and any security sergeants"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 120
-	exp_type = EXP_TYPE_MEDICAL
-
+	exp_required_type = EXP_TYPE_CREW
+	exp_required_type_department = EXP_TYPE_SECURITY
+	exp_granted_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/security_medic
+	plasmaman_outfit = /datum/outfit/plasmaman/security
 
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_SEC
@@ -22,9 +24,29 @@
 
 	display_order = JOB_DISPLAY_ORDER_SECURITY_MEDIC
 	bounty_types = CIV_JOB_SEC
+	departments_list = list(
+		/datum/job_department/security,
+		/datum/job_department/medical,
+	)
 
 	family_heirlooms = list(/obj/item/clothing/neck/stethoscope, /obj/item/roller, /obj/item/book/manual/wiki/security_space_law)
 
+	//This is the paramedic goodie list. Secmedics are paramedics more or less so they can use these instead of raiding medbay.
+	mail_goodies = list(
+		/obj/item/reagent_containers/hypospray/medipen = 20,
+		/obj/item/reagent_containers/hypospray/medipen/oxandrolone = 10,
+		/obj/item/reagent_containers/hypospray/medipen/salacid = 10,
+		/obj/item/reagent_containers/hypospray/medipen/salbutamol = 10,
+		/obj/item/reagent_containers/hypospray/medipen/penacid = 10,
+		/obj/item/reagent_containers/hypospray/medipen/survival/luxury = 5
+	)
+	rpg_title = "Battle Cleric"
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
+
+/datum/job/security_medic/after_spawn(mob/living/carbon/human/H, mob/M)
+	. = ..()
+	to_chat(M, span_redtext("As the Security Medic, you are comparable in medical knowledge to a Paramedic, not a one man surgical bay. \
+	your main duty is healing on the field or in combat situations. Leave revivals and chemistry work to trained professionals."))
 
 /datum/outfit/job/security_medic
 	name = "Security Medic"
@@ -40,7 +62,7 @@
 	l_hand = /obj/item/storage/firstaid/brute
 	head = /obj/item/clothing/head/beret/sec/peacekeeper/security_medic
 
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic, /obj/item/storage/box/gunset/security_medic)
+	backpack_contents = list(/obj/item/melee/baton/telescopic, /obj/item/storage/box/gunset/security_medic)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
@@ -84,3 +106,4 @@
 	new /obj/item/clothing/suit/straight_jacket(src)
 	new /obj/item/storage/belt/medical(src)
 	new /obj/item/storage/belt/security/peacekeeper/full(src)
+	new /obj/item/clothing/under/rank/medical/doctor/red(src)

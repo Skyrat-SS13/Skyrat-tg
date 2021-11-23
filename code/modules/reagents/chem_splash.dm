@@ -37,7 +37,7 @@
 		var/list/viewable = view(affected_range, epicenter)
 
 		var/list/accessible = list(epicenter)
-		for(var/i=1; i<=affected_range; i++)
+		for(var/i in 1 to affected_range)
 			var/list/turflist = list()
 			for(var/turf/T in (orange(i, epicenter) - orange(i-1, epicenter)))
 				turflist |= T
@@ -48,7 +48,7 @@
 			for(var/turf/T in turflist)
 				if(accessible[T])
 					continue
-				for(var/thing in T.GetAtmosAdjacentTurfs(alldir = TRUE))
+				for(var/thing in T.get_atmos_adjacent_turfs(alldir = TRUE))
 					var/turf/NT = thing
 					if(!(NT in accessible))
 						continue
@@ -58,7 +58,7 @@
 					break
 		var/list/reactable = accessible
 		for(var/turf/T in accessible)
-			for(var/atom/A in T.GetAllContents())
+			for(var/atom/A in T.get_all_contents())
 				if(!(A in viewable))
 					continue
 				reactable |= A
@@ -72,6 +72,7 @@
 			var/fraction = 0.5/(2 ** distance) //50/25/12/6... for a 200u splash, 25/12/6/3... for a 100u, 12/6/3/1 for a 50u
 			splash_holder.expose(A, TOUCH, fraction)
 
+	epicenter.add_liquid_from_reagents(splash_holder) //SKYRAT EDIT ADDITION
 	qdel(splash_holder)
 	return 1
 

@@ -6,7 +6,7 @@
 	///Sprite name of the genital, it's what shows up on character creation
 	var/genital_name = "Human"
 	///Type of the genital. For penises tapered/horse/human etc. for breasts quadruple/sixtuple etc...
-	var/genital_type = "human"
+	var/genital_type = SPECIES_HUMAN
 	///Used for determining what sprite is being used, derrives from size and type
 	var/sprite_suffix
 	///Used for input from the user whether to show a genital through clothing or not, always or never etc.
@@ -15,6 +15,8 @@
 	var/aroused = AROUSAL_NONE
 	///Whether the organ is supposed to use a skintoned variant of the sprite
 	var/uses_skintones
+	/// Where the genital is actually located, for clothing checks.
+	var/genital_location = GROIN
 
 //This translates the float size into a sprite string
 /obj/item/organ/genital/proc/get_sprite_size_string()
@@ -51,21 +53,42 @@
 		uses_skintones = SA.uses_skintones
 	update_sprite_suffix()
 
+/obj/item/organ/genital/proc/is_exposed()
+	if(!owner)
+		return TRUE
+
+	if(!ishuman(owner))
+		return TRUE
+
+	var/mob/living/carbon/human/human = owner
+
+	switch(visibility_preference)
+		if(GENITAL_ALWAYS_SHOW)
+			return TRUE
+		if(GENITAL_HIDDEN_BY_CLOTHES)
+			if((human.w_uniform && human.w_uniform.body_parts_covered & genital_location) || (human.wear_suit && human.wear_suit.body_parts_covered & genital_location))
+				return FALSE
+			else
+				return TRUE
+		else
+			return FALSE
+
+
 /obj/item/organ/genital/penis
 	name = "penis"
 	desc = "A male reproductive organ."
 	icon_state = "penis"
-	icon = 'modular_skyrat/modules/customization/icons/obj/genitals/penis.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/genitals/penis.dmi'
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_PENIS
 	mutantpart_key = "penis"
-	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("FEB"))
+	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
 	var/girth = 9
 	var/sheath = SHEATH_NONE
 
 /obj/item/organ/genital/penis/get_description_string(datum/sprite_accessory/genital/gas)
 	var/returned_string = ""
-	var/pname = lowertext(genital_name)
+	var/pname = lowertext(genital_name) == "nondescript" ? "" : lowertext(genital_name) + " "
 	if(sheath != SHEATH_NONE && aroused != AROUSAL_FULL) //Hidden in sheath
 		switch(sheath)
 			if(SHEATH_NORMAL)
@@ -73,9 +96,9 @@
 			if(SHEATH_SLIT)
 				returned_string = "You see genital slit."
 		if(aroused == AROUSAL_PARTIAL)
-			returned_string += " There's a [pname] penis poking out of it."
+			returned_string += " There's a [pname]penis poking out of it."
 	else
-		returned_string = "You see a [pname] penis. You estimate it's [genital_size] inches long, and [girth] inches in circumference."
+		returned_string = "You see a [pname]penis. You estimate it's [genital_size] inches long, and [girth] inches in circumference."
 		switch(aroused)
 			if(AROUSAL_NONE)
 				returned_string += " It seems flaccid."
@@ -144,12 +167,13 @@
 	name = "testicles"
 	desc = "A male reproductive organ."
 	icon_state = "testicles"
-	icon = 'modular_skyrat/modules/customization/icons/obj/genitals/testicles.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/genitals/testicles.dmi'
 	mutantpart_key = "testicles"
-	mutantpart_info = list(MUTANT_INDEX_NAME = "Pair", MUTANT_INDEX_COLOR_LIST = list("FEB"))
+	mutantpart_info = list(MUTANT_INDEX_NAME = "Pair", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_TESTICLES
 	aroused = AROUSAL_CANT
+	genital_location = GROIN
 
 /obj/item/organ/genital/testicles/update_genital_icon_state()
 	var/measured_size = clamp(genital_size, 1, 3)
@@ -159,7 +183,10 @@
 	icon_state = passed_string
 
 /obj/item/organ/genital/testicles/get_description_string(datum/sprite_accessory/genital/gas)
-	return "You see a pair of testicles, they look [lowertext(balls_size_to_description(genital_size))]."
+	if(genital_name == "Internal") //Checks if Testicles are of Internal Variety
+		visibility_preference = GENITAL_SKIP_VISIBILITY //Removes visibility if yes.
+	else
+		return "You see a pair of testicles, they look [lowertext(balls_size_to_description(genital_size))]."
 
 /obj/item/organ/genital/testicles/build_from_dna(datum/dna/DNA, associated_key)
 	..()
@@ -175,12 +202,13 @@
 
 /obj/item/organ/genital/vagina
 	name = "vagina"
-	icon = 'modular_skyrat/modules/customization/icons/obj/genitals/vagina.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/genitals/vagina.dmi'
 	icon_state = "vagina"
 	mutantpart_key = "vagina"
-	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("FEB"))
+	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_VAGINA
+	genital_location = GROIN
 
 /obj/item/organ/genital/vagina/get_description_string(datum/sprite_accessory/genital/gas)
 	var/returned_string = "You see a [lowertext(genital_name)] vagina."
@@ -204,25 +232,46 @@
 /obj/item/organ/genital/womb
 	name = "womb"
 	desc = "A female reproductive organ."
-	icon = 'modular_skyrat/modules/customization/icons/obj/genitals/vagina.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/genitals/vagina.dmi'
 	icon_state = "womb"
 	mutantpart_key = "womb"
-	mutantpart_info = list(MUTANT_INDEX_NAME = "Normal", MUTANT_INDEX_COLOR_LIST = list("FEB"))
+	mutantpart_info = list(MUTANT_INDEX_NAME = "Normal", MUTANT_INDEX_COLOR_LIST = list("FFEEBB"))
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_WOMB
 	visibility_preference = GENITAL_SKIP_VISIBILITY
 	aroused = AROUSAL_CANT
+	genital_location = GROIN
+
+/obj/item/organ/genital/anus
+	name = "anus"
+	desc = "What do you want me to tell you?"
+	icon = 'modular_skyrat/master_files/icons/obj/genitals/anus.dmi'
+	icon_state = "anus"
+	mutantpart_key = "anus"
+	mutantpart_info = list(MUTANT_INDEX_NAME = "Normal", MUTANT_INDEX_COLOR_LIST = list("FEB"))
+	zone = BODY_ZONE_PRECISE_GROIN
+	slot = ORGAN_SLOT_ANUS
+	genital_location = GROIN
+
+/obj/item/organ/genital/anus/get_description_string(datum/sprite_accessory/genital/gas)
+	var/returned_string = "You see an [lowertext(genital_name)]."
+	if(aroused == AROUSAL_PARTIAL)
+		returned_string += " It looks tight."
+	if(aroused == AROUSAL_FULL)
+		returned_string += " It looks very tight."
+	return returned_string
 
 /obj/item/organ/genital/breasts
 	name = "breasts"
 	desc = "Female milk producing organs."
 	icon_state = "breasts"
-	icon = 'modular_skyrat/modules/customization/icons/obj/genitals/breasts.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/genitals/breasts.dmi'
 	genital_type = "pair"
-	mutantpart_key = "penis"
-	mutantpart_info = list(MUTANT_INDEX_NAME = "Pair", MUTANT_INDEX_COLOR_LIST = list("FEB"))
+	mutantpart_key = "breasts"
+	mutantpart_info = list(MUTANT_INDEX_NAME = "Pair", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_BREASTS
+	genital_location = CHEST
 	var/lactates = FALSE
 
 /obj/item/organ/genital/breasts/get_description_string(datum/sprite_accessory/genital/gas)
@@ -309,7 +358,7 @@
 	set desc = "Allows you to toggle which genitals should show through clothes or not."
 
 	if(stat != CONSCIOUS)
-		to_chat(usr, "<span class='warning'>You can't toggle genitals visibility right now...</span>")
+		to_chat(usr, span_warning("You can't toggle genitals visibility right now..."))
 		return
 
 	var/list/genital_list = list()
@@ -338,7 +387,7 @@
 	set desc = "Allows you to toggle how aroused your private parts are."
 
 	if(stat != CONSCIOUS)
-		to_chat(usr, "<span class='warning'>You can't toggle arousal right now...</span>")
+		to_chat(usr, span_warning("You can't toggle arousal right now..."))
 		return
 
 	var/list/genital_list = list()

@@ -50,6 +50,11 @@
 	unit_name = "alien hide"
 	export_types = list(/obj/item/stack/sheet/animalhide/xeno)
 
+/datum/export/stack/skin/carp
+	cost = CARGO_CRATE_VALUE * 0.5
+	unit_name = "carp skin"
+	export_types = list(/obj/item/stack/sheet/animalhide/carp)
+
 /datum/export/stack/licenseplate
 	cost = CARGO_CRATE_VALUE * 0.125
 	unit_name = "license plate"
@@ -118,14 +123,13 @@
 	cost = CARGO_CRATE_VALUE * 0.06
 	unit_name = "of sheetza"
 	export_types = list(/obj/item/stack/sheet/pizza)
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/export/stack/meat
 	cost = CARGO_CRATE_VALUE * 0.04
 	unit_name = "of meat"
 	export_types = list(/obj/item/stack/sheet/meat)
-*/
-//SKYRAT EDIT REMOVAL END
-
 
 // Weird Stuff
 

@@ -5,13 +5,6 @@
 //Ready states at roundstart for mob/dead/new_player
 #define PLAYER_NOT_READY 0
 #define PLAYER_READY_TO_PLAY 1
-#define PLAYER_READY_TO_OBSERVE 2
-
-//Game mode list indexes
-#define CURRENT_LIVING_PLAYERS "living_players_list"
-#define CURRENT_LIVING_ANTAGS "living_antags_list"
-#define CURRENT_DEAD_PLAYERS "dead_players_list"
-#define CURRENT_OBSERVERS "current_observers_list"
 
 //movement intent defines for the m_intent var
 #define MOVE_INTENT_WALK "walk"
@@ -54,6 +47,7 @@
 #define MOB_EPIC (1 << 7) //megafauna
 #define MOB_REPTILE (1 << 8)
 #define MOB_SPIRIT (1 << 9)
+#define MOB_PLANT (1 << 10)
 
 //Organ defines for carbon mobs
 #define ORGAN_ORGANIC   1
@@ -68,6 +62,13 @@
 #define MONKEY_BODYPART "monkey"
 #define ALIEN_BODYPART "alien"
 #define LARVA_BODYPART "larva"
+
+
+///Body type bitfields for allowed_animal_origin used to check compatible surgery body types (use NONE for no matching body type)
+#define HUMAN_BODY (1 << 0)
+#define MONKEY_BODY (1 << 1)
+#define ALIEN_BODY (1 << 2)
+#define LARVA_BODY (1 << 3)
 /*see __DEFINES/inventory.dm for bodypart bitflag defines*/
 
 // Health/damage defines
@@ -229,7 +230,7 @@
 //Sentience types, to prevent things like sentience potions from giving bosses sentience
 #define SENTIENCE_ORGANIC 1
 #define SENTIENCE_ARTIFICIAL 2
-// #define SENTIENCE_OTHER 3 unused
+#define SENTIENCE_HUMANOID 3
 #define SENTIENCE_MINEBOT 4
 #define SENTIENCE_BOSS 5
 
@@ -286,9 +287,26 @@
 //ED209's ignore monkeys
 #define JUDGE_IGNOREMONKEYS (1<<4)
 
-#define MEGAFAUNA_DEFAULT_RECOVERY_TIME 5
-
 #define SHADOW_SPECIES_LIGHT_THRESHOLD 0.2
+
+#define COOLDOWN_UPDATE_SET_MELEE "set_melee"
+#define COOLDOWN_UPDATE_ADD_MELEE "add_melee"
+#define COOLDOWN_UPDATE_SET_RANGED "set_ranged"
+#define COOLDOWN_UPDATE_ADD_RANGED "add_ranged"
+#define COOLDOWN_UPDATE_SET_ENRAGE "set_enrage"
+#define COOLDOWN_UPDATE_ADD_ENRAGE "add_enrage"
+#define COOLDOWN_UPDATE_SET_SPAWN "set_spawn"
+#define COOLDOWN_UPDATE_ADD_SPAWN "add_spawn"
+#define COOLDOWN_UPDATE_SET_HELP "set_help"
+#define COOLDOWN_UPDATE_ADD_HELP "add_help"
+#define COOLDOWN_UPDATE_SET_DASH "set_dash"
+#define COOLDOWN_UPDATE_ADD_DASH "add_dash"
+#define COOLDOWN_UPDATE_SET_TRANSFORM "set_transform"
+#define COOLDOWN_UPDATE_ADD_TRANSFORM "add_transform"
+#define COOLDOWN_UPDATE_SET_CHASER "set_chaser"
+#define COOLDOWN_UPDATE_ADD_CHASER "add_chaser"
+#define COOLDOWN_UPDATE_SET_ARENA "set_arena"
+#define COOLDOWN_UPDATE_ADD_ARENA "add_arena"
 
 // Offsets defines
 
@@ -306,6 +324,7 @@
 #define OFFSET_BACK "back"
 #define OFFSET_SUIT "suit"
 #define OFFSET_NECK "neck"
+#define OFFSET_ACCESSORY "accessory" // Skyrat edit - addition
 
 //MINOR TWEAKS/MISC
 //#define AGE_MIN 17	//youngest a character can be //ORIGINAL
@@ -317,7 +336,7 @@
 
 #define SHOES_SLOWDOWN 0 //How much shoes slow you down by default. Negative values speed you up
 #define SHOES_SPEED_SLIGHT  SHOES_SLOWDOWN - 1 // slightest speed boost to movement
-#define POCKET_STRIP_DELAY 40 //time taken (in deciseconds) to search somebody's pockets
+#define POCKET_STRIP_DELAY (4 SECONDS) //time taken to search somebody's pockets
 #define DOOR_CRUSH_DAMAGE 15 //the amount of damage that airlocks deal when they crush you
 
 #define HUNGER_FACTOR 0.05 //factor at which mob nutrition decreases
@@ -380,6 +399,7 @@
 #define DEFIB_FAIL_FAILING_BRAIN (1<<6)
 #define DEFIB_FAIL_NO_BRAIN (1<<7)
 #define DEFIB_FAIL_NO_INTELLIGENCE (1<<8)
+#define DEFIB_NOGRAB_AGHOST (1<<9)
 
 // Bit mask of possible return values by can_defib that would result in a revivable patient
 #define DEFIB_REVIVABLE_STATES (DEFIB_FAIL_NO_HEART | DEFIB_FAIL_FAILING_HEART | DEFIB_FAIL_HUSK | DEFIB_FAIL_TISSUE_DAMAGE | DEFIB_FAIL_FAILING_BRAIN | DEFIB_POSSIBLE)
@@ -391,10 +411,19 @@
 #define DOING_INTERACTION_WITH_TARGET(user, target) (LAZYACCESS(user.do_afters, target))
 #define DOING_INTERACTION_WITH_TARGET_LIMIT(user, target, max_interaction_count) ((LAZYACCESS(user.do_afters, target) || 0) >= max_interaction_count)
 
+// recent examine defines
+/// How long it takes for an examined atom to be removed from recent_examines. Should be the max of the below time windows
+#define RECENT_EXAMINE_MAX_WINDOW 2 SECONDS
 /// If you examine the same atom twice in this timeframe, we call examine_more() instead of examine()
-#define EXAMINE_MORE_TIME 1 SECONDS
+#define EXAMINE_MORE_WINDOW 1 SECONDS
+/// If you examine another mob who's successfully examined you during this duration of time, you two try to make eye contact. Cute!
+#define EYE_CONTACT_WINDOW 2 SECONDS
+/// If you yawn while someone nearby has examined you within this time frame, it will force them to yawn as well. Tradecraft!
+#define YAWN_PROPAGATION_EXAMINE_WINDOW 2 SECONDS
+
 /// How far away you can be to make eye contact with someone while examining
 #define EYE_CONTACT_RANGE 5
+
 
 #define SILENCE_RANGED_MESSAGE (1<<0)
 
@@ -450,3 +479,12 @@
 #define THROW_MODE_TOGGLE 1
 #define THROW_MODE_HOLD 2
 
+//Saves a proc call, life is suffering. If who has no targets_from var, we assume it's just who
+#define GET_TARGETS_FROM(who) (who.targets_from ? who.get_targets_from() : who)
+
+/// Sign Language defines
+#define SIGN_ONE_HAND 0
+#define SIGN_HANDS_FULL 1
+#define SIGN_ARMLESS 2
+#define SIGN_TRAIT_BLOCKED 3
+#define SIGN_CUFFED 4

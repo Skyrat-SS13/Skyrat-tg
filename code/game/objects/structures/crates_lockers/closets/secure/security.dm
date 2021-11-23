@@ -5,30 +5,17 @@
 
 /obj/structure/closet/secure_closet/captains/PopulateContents()
 	..()
-	new /obj/item/clothing/suit/hooded/wintercoat/captain(src)
+
 	new /obj/item/storage/backpack/captain(src)
 	new /obj/item/storage/backpack/satchel/cap(src)
 	new /obj/item/storage/backpack/duffelbag/captain(src)
-	new /obj/item/clothing/neck/cloak/cap(src)
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
-	new /obj/item/clothing/shoes/sneakers/brown(src)
-	new /obj/item/clothing/under/rank/captain(src)
-	new /obj/item/clothing/under/rank/captain/skirt(src)
-	new /obj/item/clothing/suit/armor/vest/capcarapace(src)
-	new /obj/item/clothing/head/caphat(src)
-	new /obj/item/clothing/under/rank/captain/parade(src)
-	new /obj/item/clothing/suit/armor/captain/parade/female(src) //SKYRAT EDIT ADD
-	new /obj/item/clothing/suit/armor/vest/capcarapace/alt(src)
-	new /obj/item/clothing/head/caphat/parade(src)
-	new /obj/item/clothing/suit/captunic(src)
-	new /obj/item/clothing/head/crown/fancy(src)
+	new /obj/item/storage/bag/garment/captain(src)
 	new /obj/item/cartridge/captain(src)
 	new /obj/item/storage/box/silver_ids(src)
 	new /obj/item/radio/headset/heads/captain/alt(src)
 	new /obj/item/radio/headset/heads/captain(src)
-	new /obj/item/clothing/glasses/sunglasses/gar/supergar(src)
-	new /obj/item/clothing/gloves/color/captain(src)
 	new /obj/item/storage/belt/sabre(src)
 	new /obj/item/storage/box/gunset/pdh_captain(src) //SKYRAT EDIT CHANGE - SEC_HAUL
 	new /obj/item/door_remote/captain(src)
@@ -38,61 +25,42 @@
 	name = "\proper head of personnel's locker"
 	req_access = list(ACCESS_HOP)
 	icon_state = "hop"
+	storage_capacity = 40 //SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/hop/PopulateContents()
 	..()
-	new /obj/item/clothing/neck/cloak/hop(src)
+	new /obj/item/storage/bag/garment/hop(src)
 	new /obj/item/storage/lockbox/medal/service(src)
-	new /obj/item/clothing/under/rank/civilian/head_of_personnel(src)
-	new /obj/item/clothing/under/rank/civilian/head_of_personnel/skirt(src)
-	new /obj/item/clothing/head/hopcap(src)
 	new /obj/item/cartridge/hop(src)
 	new /obj/item/radio/headset/heads/hop(src)
-	new /obj/item/clothing/shoes/sneakers/brown(src)
 	new /obj/item/storage/box/ids(src)
 	new /obj/item/storage/box/ids(src)
 	new /obj/item/megaphone/command(src)
-	new /obj/item/clothing/suit/armor/vest/alt(src)
 	new /obj/item/assembly/flash/handheld(src)
-	new /obj/item/clothing/glasses/sunglasses(src)
-	new /obj/item/storage/box/gunset/pdh_hop(src) //SKYRAT EDIT CHANGE - SEC_HAUL
+	new /obj/item/gun/energy/e_gun(src)
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
 	new /obj/item/door_remote/civilian(src)
 	new /obj/item/circuitboard/machine/techfab/department/service(src)
 	new /obj/item/storage/photo_album/hop(src)
 	new /obj/item/storage/lockbox/medal/hop(src)
-	new /obj/item/clothing/suit/hooded/wintercoat/hop(src)
-
 
 /obj/structure/closet/secure_closet/hos
 	name = "\proper head of security's locker"
 	req_access = list(ACCESS_HOS)
-	icon_state = "hos"
+	icon_state = "hos" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
+	storage_capacity = 40 //SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/hos/PopulateContents()
 	..()
-	new /obj/item/clothing/neck/cloak/hos(src)
+
 	new /obj/item/cartridge/hos(src)
 	new /obj/item/radio/headset/heads/hos(src)
-	new /obj/item/clothing/suit/armor/hos/parade/female(src) // SKYRAT EDIT CHANGE - ORIGINAL: new /obj/item/clothing/under/rank/security/head_of_security/parade/female(src)
-	new /obj/item/clothing/under/rank/security/head_of_security/parade(src)
-	new /obj/item/clothing/suit/armor/hos/parade(src) // SKYRAT EDIT ADDITION
-	new /obj/item/clothing/suit/armor/vest/leather(src)
-	new /obj/item/clothing/suit/armor/hos(src)
-	new /obj/item/clothing/under/rank/security/head_of_security/skirt(src)
-	new /obj/item/clothing/under/rank/security/head_of_security/alt(src)
-	new /obj/item/clothing/under/rank/security/head_of_security/alt/skirt(src)
-	new /obj/item/clothing/under/rank/security/peacekeeper/tactical(src) //SKYRAT EDIT ADDITON - SEC_HAUL
-	new /obj/item/clothing/head/hos(src)
-	new /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch(src)
-	new /obj/item/clothing/glasses/hud/security/sunglasses/gars/supergars(src)
-	new /obj/item/clothing/under/rank/security/head_of_security/grey(src)
+	new /obj/item/storage/bag/garment/hos(src)
 	new /obj/item/storage/lockbox/medal/sec(src)
 	new /obj/item/megaphone/sec(src)
 	new /obj/item/holosign_creator/security(src)
 	new /obj/item/storage/lockbox/loyalty(src)
-	new /obj/item/clothing/mask/gas/sechailer/swat(src)
 	new /obj/item/storage/box/flashbangs(src)
 	new /obj/item/shield/riot/tele(src)
 	new /obj/item/storage/belt/security/peacekeeper/full(src) //SKYRAT EDIT CHANGE - SEC_HAUL
@@ -100,24 +68,23 @@
 	new /obj/item/pinpointer/nuke(src)
 	new /obj/item/circuitboard/machine/techfab/department/security(src)
 	new /obj/item/storage/photo_album/hos(src)
-	new /obj/item/clothing/suit/hooded/wintercoat/security/hos(src)
-	new /obj/item/storage/box/gunset/glock18_hos(src)
+	new /obj/item/storage/box/armament_tokens_sarge(src) // SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/warden
 	name = "\proper warden's locker"
 	req_access = list(ACCESS_ARMORY)
-	icon_state = "warden"
+	icon_state = "warden" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
 
 /obj/structure/closet/secure_closet/warden/PopulateContents()
 	..()
 	new /obj/item/radio/headset/headset_sec(src)
-	//new /obj/item/clothing/suit/armor/vest/warden(src) - SKRYAT EDIT REMOVAL - SEC_HUAL
+	// new /obj/item/clothing/suit/armor/vest/warden(src) - SKRYAT EDIT REMOVAL - SEC_HUAL
 	new /obj/item/clothing/head/warden(src)
 	new /obj/item/clothing/head/warden/drill(src)
 	new /obj/item/clothing/head/beret/sec/navywarden(src)
-	//new /obj/item/clothing/suit/armor/vest/warden/alt(src) - SKRYAT EDIT REMOVAL - SEC_HUAL
-	//new /obj/item/clothing/under/rank/security/warden/formal(src) - SKRYAT EDIT REMOVAL - SEC_HUAL
-	//new /obj/item/clothing/under/rank/security/warden/skirt(src) - SKRYAT EDIT REMOVAL - SEC_HUAL
+	// new /obj/item/clothing/suit/armor/vest/warden/alt(src) - SKRYAT EDIT REMOVAL - SEC_HUAL
+	// new /obj/item/clothing/under/rank/security/warden/formal(src) - SKRYAT EDIT REMOVAL - SEC_HUAL
+	// new /obj/item/clothing/under/rank/security/warden/skirt(src) - SKRYAT EDIT REMOVAL - SEC_HUAL
 	new /obj/item/clothing/under/rank/security/peacekeeper/tactical(src) //SKYRAT EDIT ADDITON - SEC_HAUL
 	new /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper(src) //SKYRAT EDIT CHANGE - SEC_HAUL
 	new /obj/item/holosign_creator/security(src)
@@ -128,11 +95,12 @@
 	new /obj/item/flashlight/seclite(src)
 	new /obj/item/clothing/gloves/krav_maga/sec/peacekeeper(src) //SKYRAT EDIT CHANGE - SEC_HAUL
 	new /obj/item/door_remote/head_of_security(src)
+	new /obj/item/circuitboard/machine/gun_vendor(src) // SKYRAT EDIT CHANGE
 
 /obj/structure/closet/secure_closet/security
 	name = "security officer's locker"
 	req_access = list(ACCESS_SECURITY)
-	icon_state = "sec"
+	icon_state = "sec" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
 
 /obj/structure/closet/secure_closet/security/PopulateContents()
 	..()
@@ -143,6 +111,7 @@
 	new /obj/item/radio/headset/headset_sec/alt(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper(src) //SKRYAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/glasses/hud/security/sunglasses
 	new /obj/item/flashlight/seclite(src)
+	new /obj/item/holosign_creator/security(src) // SKYRAT EDIT ADD
 
 /obj/structure/closet/secure_closet/security/sec
 
@@ -184,6 +153,7 @@
 	icon_state = "cabinet"
 	resistance_flags = FLAMMABLE
 	max_integrity = 70
+	door_anim_time = 0 // no animation
 	open_sound = 'sound/machines/wooden_closet_open.ogg'
 	close_sound = 'sound/machines/wooden_closet_close.ogg'
 
@@ -200,6 +170,7 @@
 	new /obj/item/pinpointer/crew(src)
 	new /obj/item/binoculars(src)
 	new /obj/item/storage/box/rxglasses/spyglasskit(src)
+	new /obj/item/taperoll/police(src) //SKYRAT EDIT ADDITION - Detective starts with this in their locker :)
 
 /obj/structure/closet/secure_closet/injection
 	name = "lethal injections"
@@ -255,7 +226,7 @@
 /obj/structure/closet/secure_closet/armory1
 	name = "armory armor locker"
 	req_access = list(ACCESS_ARMORY)
-	icon_state = "armory"
+	icon_state = "armory" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
 
 /obj/structure/closet/secure_closet/armory1/PopulateContents()
 	..()
@@ -270,7 +241,7 @@
 /obj/structure/closet/secure_closet/armory2
 	name = "armory ballistics locker"
 	req_access = list(ACCESS_ARMORY)
-	icon_state = "armory"
+	icon_state = "armory" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
 
 /obj/structure/closet/secure_closet/armory2/PopulateContents()
 	..()
@@ -283,7 +254,7 @@
 /obj/structure/closet/secure_closet/armory3
 	name = "armory energy gun locker"
 	req_access = list(ACCESS_ARMORY)
-	icon_state = "armory"
+	icon_state = "armory" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
 
 /obj/structure/closet/secure_closet/armory3/PopulateContents()
 	..()

@@ -3,7 +3,7 @@
 	update_turf_movespeed(loc)
 
 
-/mob/living/CanAllowThrough(atom/movable/mover, turf/target)
+/mob/living/CanAllowThrough(atom/movable/mover, border_dir)
 	. = ..()
 	if(.)
 		return
@@ -34,9 +34,16 @@
 
 
 /mob/living/proc/update_pull_movespeed()
+	SEND_SIGNAL(src, COMSIG_LIVING_UPDATING_PULL_MOVESPEED)
+
 	if(pulling)
 		if(isliving(pulling))
 			var/mob/living/L = pulling
+			//SKYRAT EDIT ADDITION
+			if(HAS_TRAIT(L, TRAIT_OVERSIZED) && !HAS_TRAIT(src, TRAIT_OVERSIZED) && !iscyborg(src))
+				add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/bulky_drag, multiplicative_slowdown = PULL_OVERSIZED_SLOWDOWN)
+				return
+			//SKYRAT EDIT END
 			if(!slowed_by_drag || L.body_position == STANDING_UP || L.buckled || grab_state >= GRAB_AGGRESSIVE)
 				remove_movespeed_modifier(/datum/movespeed_modifier/bulky_drag)
 				return
@@ -52,6 +59,8 @@
 	remove_movespeed_modifier(/datum/movespeed_modifier/bulky_drag)
 
 /mob/living/canZMove(dir, turf/target)
+	if(buckled)
+		return buckled.can_zTravel(target, dir) && (buckled.movement_type & FLYING | FLOATING)
 	return can_zTravel(target, dir) && (movement_type & FLYING | FLOATING)
 
 /mob/living/keybind_face_direction(direction)

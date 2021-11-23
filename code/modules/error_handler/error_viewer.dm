@@ -86,7 +86,7 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 		var/datum/error_viewer/error_source/error_source
 		for (var/erroruid in error_sources)
 			error_source = error_sources[erroruid]
-			html += "[error_source.make_link(null, src)]<br>"
+			html += "[error_source.make_link(null, src)] x [error_source.errors.len]<br>" //SKYRAT EDIT - RUNTIME TRANSPARENCY
 
 	else
 		html += "[make_link("organized", null)] | linear<hr>"
@@ -122,7 +122,7 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 			err_msg_delay = CONFIG_GET(number/error_msg_delay)
 		else
 			var/datum/config_entry/CE = /datum/config_entry/number/error_msg_delay
-			err_msg_delay = initial(CE.config_entry_value)
+			err_msg_delay = initial(CE.default)
 		error_source.next_message_at = world.time + err_msg_delay
 
 /datum/error_viewer/error_source

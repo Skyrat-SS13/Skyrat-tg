@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
+
 /datum/sprite_accessory
 	///Unique key of an accessroy. All tails should have "tail", ears "ears" etc.
 	var/key = null
@@ -39,6 +41,10 @@
 	var/extra2_color_src
 	///If defined, the accessory will be only available to ckeys inside the list. ITS ASSOCIATIVE, ie. ("ckey" = TRUE). For speed
 	var/list/ckey_whitelist
+	///Whether this feature is genetic, and thus modifiable by DNA consoles
+	var/genetic = FALSE
+	var/uses_emissives = FALSE
+	var/color_layer_names
 
 /datum/sprite_accessory/New()
 	if(!default_color)
@@ -48,11 +54,23 @@
 			if(USE_MATRIXED_COLORS)
 				default_color = DEFAULT_MATRIXED
 			else
-				default_color = "FFF"
+				default_color = "#FFFFFF"
 	if(name == "None")
 		factual = FALSE
 	if(color_src == USE_MATRIXED_COLORS && default_color != DEFAULT_MATRIXED)
 		default_color = DEFAULT_MATRIXED
+	if (color_src == USE_MATRIXED_COLORS)
+		color_layer_names = list()
+		if (!GLOB.cached_mutant_icon_files[icon])
+			GLOB.cached_mutant_icon_files[icon] = icon_states(new /icon(icon))
+		for (var/layer in relevent_layers)
+			var/layertext = layer == BODY_BEHIND_LAYER ? "BEHIND" : (layer == BODY_ADJ_LAYER ? "ADJ" : "FRONT")
+			if ("m_[key]_[icon_state]_[layertext]_primary" in GLOB.cached_mutant_icon_files[icon])
+				color_layer_names["1"] = "primary"
+			if ("m_[key]_[icon_state]_[layertext]_secondary" in GLOB.cached_mutant_icon_files[icon])
+				color_layer_names["2"] = "secondary"
+			if ("m_[key]_[icon_state]_[layertext]_tertiary" in GLOB.cached_mutant_icon_files[icon])
+				color_layer_names["3"] = "tertiary"
 
 /datum/sprite_accessory/proc/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/BP)
 	return FALSE
@@ -101,11 +119,12 @@
 /datum/sprite_accessory/spines
 	key = "spines"
 	generic = "Spines"
-	icon = 'modular_skyrat/modules/customization/icons/mob/mutant_bodyparts.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/mutant_bodyparts.dmi'
 	special_render_case = TRUE
 	default_color = DEFAULT_SECONDARY
-	recommended_species = list("lizard", "unathi", "ashlizard", "silverlizard")
+	recommended_species = list(SPECIES_LIZARD, SPECIES_UNATHI, SPECIES_LIZARD_ASH, SPECIES_LIZARD_SILVER)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
+	genetic = TRUE
 
 /datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
@@ -132,9 +151,10 @@
 	key = "legs"
 	generic = "Leg Type"
 	color_src = null
+	genetic = TRUE
 
 /datum/sprite_accessory/socks
-	icon = 'modular_skyrat/modules/customization/icons/mob/clothing/underwear.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
 	use_static = TRUE
 
 /datum/sprite_accessory/socks/socks_knee
@@ -175,15 +195,15 @@
 	name = "Knee-high - Bee (Old)"
 	icon_state = "bee_knee_old"
 
-/datum/sprite_accessory/underwear/socks/christmas_norm
+/datum/sprite_accessory/socks/christmas_norm
 	name = "Normal - Christmas"
 	icon_state = "christmas_norm"
 
-/datum/sprite_accessory/underwear/socks/candycaner_norm
+/datum/sprite_accessory/socks/candycaner_norm
 	name = "Normal - Red Candy Cane"
 	icon_state = "candycaner_norm"
 
-/datum/sprite_accessory/underwear/socks/candycaneg_norm
+/datum/sprite_accessory/socks/candycaneg_norm
 	name = "Normal - Green Candy Cane"
 	icon_state = "candycaneg_norm"
 
@@ -219,9 +239,17 @@
 	name = "Thigh-high - Rainbow"
 	icon_state = "rainbow_thigh"
 
+/datum/sprite_accessory/socks/fishnet_thigh
+	name = "Thigh-high - Fishnet"
+	icon_state = "fishnet"
+
+/datum/sprite_accessory/socks/pantyhose_ripped
+	name = "Pantyhose - Ripped"
+	icon_state = "pantyhose_ripped"
+	use_static = null
 
 /datum/sprite_accessory/underwear
-	icon = 'modular_skyrat/modules/customization/icons/mob/clothing/underwear.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
 	///Whether the underwear uses a special sprite for digitigrade style (i.e. briefs, not panties). Adds a "_d" suffix to the icon state
 	var/has_digitigrade = FALSE
 
@@ -343,6 +371,20 @@
 	icon_state = "thong_babydoll"
 	gender = FEMALE
 
+/datum/sprite_accessory/underwear/chastbelt
+	name = "Chastity Belt"
+	icon_state = "chastbelt"
+	use_static = TRUE
+
+/datum/sprite_accessory/underwear/chastcage
+	name = "Chastity Cage"
+	icon_state = "chastcage"
+	use_static = null
+
+/datum/sprite_accessory/underwear/lizared
+	name = "LIZARED Underwear"
+	icon_state = "lizared"
+	use_static = TRUE
 
 /datum/sprite_accessory/underwear/male_briefs
 	has_digitigrade = TRUE
@@ -373,7 +415,7 @@
 
 
 /datum/sprite_accessory/undershirt
-	icon = 'modular_skyrat/modules/customization/icons/mob/clothing/underwear.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
 	use_static = TRUE
 
 /datum/sprite_accessory/undershirt/tanktop_alt
@@ -534,3 +576,39 @@
 	icon_state = "tubetop"
 	gender = FEMALE
 	use_static = null
+
+/datum/sprite_accessory/undershirt/chastbra
+	name = "Chastity Bra"
+	icon_state = "chastbra"
+	gender = FEMALE
+	use_static = TRUE
+
+/datum/sprite_accessory/undershirt/pasties
+	name = "Pasties"
+	icon_state = "pasties"
+	gender = FEMALE
+	use_static = null
+
+/datum/sprite_accessory/undershirt/pasties_alt
+	name = "Pasties - Alt"
+	icon_state = "pasties_alt"
+	gender = FEMALE
+	use_static = null
+
+/datum/sprite_accessory/undershirt/shibari
+	name = "Shibari"
+	icon_state = "shibari"
+	gender = FEMALE
+	use_static = null
+
+/datum/sprite_accessory/undershirt/shibari_sleeves
+	name = "Shibari Sleeves"
+	icon_state = "shibari_sleeves"
+	gender = FEMALE
+	use_static = null
+
+/datum/sprite_accessory/undershirt/bulletclub //4 life
+	name = "Shirt - Black Skull"
+	icon_state = "shirt_bc"
+	gender = NEUTER
+

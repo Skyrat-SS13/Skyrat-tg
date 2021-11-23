@@ -1,10 +1,7 @@
 /datum/round_event_control/alien_infestation
 	name = "Alien Infestation"
 	typepath = /datum/round_event/ghost_role/alien_infestation
-	//SKYRAT EDIT CHANGE BEGIN
-	//weight = 5 - SKYRAT EDIT - ORIGINAL
-	weight = 2
-	//SKYRAT EDIT CHANGE END
+	weight = 4 //SKYRAT EDIT CHANGE
 
 	min_players = 10
 
@@ -21,10 +18,8 @@
 
 /datum/round_event/ghost_role/alien_infestation
 	announceWhen = 400
-	//SKYRAT EDIT CHANGE BEGIN
-	//minimum_required = 1 - SKYRAT EDIT - ORIGINAL
-	minimum_required = 2
-	//SKYRAT EDIT CHANGE END
+
+	minimum_required = 1
 	role_name = "alien larva"
 
 	// 50% chance of being incremented by one
@@ -58,24 +53,29 @@
 				continue//no parent vent
 			//Stops Aliens getting stuck in small networks.
 			//See: Security, Virology
-			if(temp_vent_parent.other_atmosmch.len > 20)
+			if(temp_vent_parent.other_atmos_machines.len > 20)
 				vents += temp_vent
 
 	if(!vents.len)
 		message_admins("An event attempted to spawn an alien but no suitable vents were found. Shutting down.")
 		return MAP_ERROR
 
-	var/list/candidates = get_candidates(ROLE_ALIEN, null, ROLE_ALIEN)
+	var/list/candidates = get_candidates(ROLE_ALIEN, ROLE_ALIEN)
 
 	if(!candidates.len)
 		return NOT_ENOUGH_PLAYERS
 
 	while(spawncount > 0 && vents.len && candidates.len)
 		var/obj/vent = pick_n_take(vents)
-		var/client/C = pick_n_take(candidates)
-
+		var/client/candidate_client = pick_n_take(candidates)
+		var/datum/mind/candidate_mind = candidate_client.mob.mind
+		if(!candidate_mind)
+			continue
 		var/mob/living/carbon/alien/larva/new_xeno = new(vent.loc)
-		new_xeno.key = C.key
+		candidate_mind.transfer_to(new_xeno)
+		candidate_mind.set_assigned_role(SSjob.GetJobType(/datum/job/xenomorph))
+		candidate_mind.special_role = ROLE_ALIEN
+		new_xeno.move_into_vent(vent)
 
 		spawncount--
 		message_admins("[ADMIN_LOOKUPFLW(new_xeno)] has been made into an alien by an event.")

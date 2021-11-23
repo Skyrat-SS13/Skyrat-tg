@@ -9,6 +9,15 @@
 	opacity = FALSE
 	var/table_type = /obj/structure/table
 
+/obj/structure/flippedtable/Initialize()
+	. = ..()
+
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_EXIT = .proc/on_exit,
+	)
+
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 /obj/structure/flippedtable/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	var/attempted_dir = get_dir(loc, target)
@@ -26,25 +35,28 @@
 	else if(attempted_dir != dir)
 		return TRUE
 
-/obj/structure/flippedtable/CheckExit(atom/movable/O, turf/target)
+/obj/structure/flippedtable/proc/on_exit(datum/source, atom/movable/leaving, atom/new_location)
+	SIGNAL_HANDLER
+
 	if(table_type == /obj/structure/table/glass) //Glass table, jolly ranchers pass
-		if(istype(O) && (O.pass_flags & PASSGLASS))
-			return TRUE
-	if(istype(O, /obj/projectile))
-		return TRUE
-	if(get_dir(O.loc, target) == dir)
-		return FALSE
-	return TRUE
+		if(istype(leaving) && (leaving.pass_flags & PASSGLASS))
+			return
+
+	if(istype(leaving, /obj/projectile))
+		return
+
+	if(get_dir(leaving.loc, new_location) == dir)
+		return COMPONENT_ATOM_BLOCK_EXIT
 
 /obj/structure/flippedtable/CtrlShiftClick(mob/user)
 	. = ..()
-	if(!istype(user) || !user.can_interact_with(src))
+	if(!istype(user) || !user.can_interact_with(src) || iscorticalborer(user)) //skyrat edit: no borer flipping
 		return FALSE
-	user.visible_message("<span class='danger'>[user] starts flipping [src]!</span>", "<span class='notice'>You start flipping over the [src]!</span>")
+	user.visible_message(span_danger("[user] starts flipping [src]!"), span_notice("You start flipping over the [src]!"))
 	if(do_after(user, max_integrity/4))
 		var/obj/structure/table/T = new table_type(src.loc)
-		T.obj_integrity = src.obj_integrity
-		user.visible_message("<span class='danger'>[user] flips over the [src]!</span>", "<span class='notice'>You flip over the [src]!</span>")
+		T.update_integrity(src.get_integrity())
+		user.visible_message(span_danger("[user] flips over the [src]!"), span_notice("You flip over the [src]!"))
 		playsound(src, 'sound/items/trayhit2.ogg', 100)
 		qdel(src)
 
@@ -52,10 +64,10 @@
 
 /obj/structure/table/CtrlShiftClick(mob/living/user)
 	. = ..()
-	if(!istype(user) || !user.can_interact_with(src))
+	if(!istype(user) || !user.can_interact_with(src) || isobserver(user) || iscorticalborer(user)) //skyrat edit: no borer flipping
 		return
 	if(can_flip)
-		user.visible_message("<span class='danger'>[user] starts flipping [src]!</span>", "<span class='notice'>You start flipping over the [src]!</span>")
+		user.visible_message(span_danger("[user] starts flipping [src]!"), span_notice("You start flipping over the [src]!"))
 		if(do_after(user, max_integrity/4))
 			var/obj/structure/flippedtable/T = new flipped_table_type(src.loc)
 			T.name = "flipped [src.name]"
@@ -66,9 +78,9 @@
 			if(new_dir == NORTH)
 				T.layer = BELOW_MOB_LAYER
 			T.max_integrity = src.max_integrity
-			T.obj_integrity = src.obj_integrity
+			T.update_integrity(src.get_integrity())
 			T.table_type = src.type
-			user.visible_message("<span class='danger'>[user] flips over the [src]!</span>", "<span class='notice'>You flip over the [src]!</span>")
+			user.visible_message(span_danger("[user] flips over the [src]!"), span_notice("You flip over the [src]!"))
 			playsound(src, 'sound/items/trayhit2.ogg', 100)
 			qdel(src)
 

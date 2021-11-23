@@ -1,12 +1,13 @@
 /datum/sprite_accessory/horns
 	key = "horns"
 	generic = "Horns"
-	relevent_layers = list(BODY_FRONT_LAYER)
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/horns.dmi'
-	default_color = "555"
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/horns.dmi'
+	default_color = "#555555"
+	genetic = TRUE
 
 /datum/sprite_accessory/horns/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
+	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
 		return TRUE
 	return FALSE
 
@@ -28,3 +29,7 @@
 /datum/sprite_accessory/horns/knight
 	name = "Knight"
 	icon_state = "knight"
+
+/datum/sprite_accessory/horns/uni
+	name = "Uni"
+	icon_state = "uni"

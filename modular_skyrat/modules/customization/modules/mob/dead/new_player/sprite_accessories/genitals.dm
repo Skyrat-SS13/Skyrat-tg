@@ -1,7 +1,9 @@
 /datum/sprite_accessory/genital
 	special_render_case = TRUE
-	var/associated_organ_slot 
+	var/associated_organ_slot
 	var/uses_skintones
+	///Where the genital is on the body. If clothing doesn't cover it, it shows up!
+	var/genital_location = GROIN
 
 /datum/sprite_accessory/genital/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	var/obj/item/organ/genital/badonkers = H.getorganslot(associated_organ_slot)
@@ -11,7 +13,7 @@
 		if(GENITAL_ALWAYS_SHOW)
 			return FALSE
 		if(GENITAL_HIDDEN_BY_CLOTHES)
-			if(H.w_uniform || H.wear_suit)
+			if((H.w_uniform && H.w_uniform.body_parts_covered & genital_location) || (H.wear_suit && H.wear_suit.body_parts_covered & genital_location))
 				return TRUE
 			else
 				return FALSE
@@ -26,7 +28,7 @@
 		return null
 
 /datum/sprite_accessory/genital/penis
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/genitals/penis_onmob.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/penis_onmob.dmi'
 	organ_type = /obj/item/organ/genital/penis
 	associated_organ_slot = ORGAN_SLOT_PENIS
 	key = "penis"
@@ -37,6 +39,7 @@
 	special_x_dimension = TRUE
 	//default_color = DEFAULT_SKIN_OR_PRIMARY //This is the price we're paying for sheaths
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
+	genetic = TRUE
 	var/can_have_sheath = TRUE
 
 /datum/sprite_accessory/genital/penis/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -49,7 +52,7 @@
 	if(H.dna.species.mutant_bodyparts["taur"] && H.dna.features["penis_taur_mode"])
 		var/datum/sprite_accessory/taur/SP = GLOB.sprite_accessories["taur"][H.dna.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
 		if(!(SP.taur_mode & STYLE_TAUR_SNAKE))
-			returned = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/genitals/taur_penis_onmob.dmi'
+			returned = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/taur_penis_onmob.dmi'
 	return returned
 
 /datum/sprite_accessory/genital/penis/get_special_x_dimension(mob/living/carbon/human/H)
@@ -73,6 +76,10 @@
 	default_color = DEFAULT_SKIN_OR_PRIMARY
 	uses_skintones = TRUE
 	can_have_sheath = FALSE
+
+/datum/sprite_accessory/genital/penis/nondescript
+	icon_state = "nondescript"
+	name = "Nondescript"
 
 /datum/sprite_accessory/genital/penis/knotted
 	icon_state = "knotted"
@@ -103,7 +110,7 @@
 	name = "Knotted Hemi"
 
 /datum/sprite_accessory/genital/testicles
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/genitals/testicles_onmob.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/testicles_onmob.dmi'
 	organ_type = /obj/item/organ/genital/testicles
 	associated_organ_slot = ORGAN_SLOT_TESTICLES
 	key = "testicles"
@@ -112,6 +119,7 @@
 	special_x_dimension = TRUE
 	default_color = DEFAULT_SKIN_OR_PRIMARY
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_BEHIND_LAYER)
+	genetic = TRUE
 	var/has_size = TRUE
 
 /datum/sprite_accessory/genital/testicles/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -124,7 +132,7 @@
 	if(H.dna.species.mutant_bodyparts["taur"] && H.dna.features["penis_taur_mode"])
 		var/datum/sprite_accessory/taur/SP = GLOB.sprite_accessories["taur"][H.dna.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
 		if(!(SP.taur_mode & STYLE_TAUR_SNAKE))
-			returned = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/genitals/taur_testicles_onmob.dmi'
+			returned = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/taur_testicles_onmob.dmi'
 	return returned
 
 /datum/sprite_accessory/genital/testicles/get_special_x_dimension(mob/living/carbon/human/H)
@@ -153,13 +161,14 @@
 	has_size = FALSE
 
 /datum/sprite_accessory/genital/vagina
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/genitals/vagina_onmob.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/vagina_onmob.dmi'
 	organ_type = /obj/item/organ/genital/vagina
 	associated_organ_slot = ORGAN_SLOT_VAGINA
 	key = "vagina"
 	always_color_customizable = TRUE
-	default_color = "fcc"
+	default_color = "#FFCCCC"
 	relevent_layers = list(BODY_FRONT_LAYER)
+	genetic = TRUE
 	var/alt_aroused = TRUE
 
 /datum/sprite_accessory/genital/vagina/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -220,6 +229,7 @@
 	organ_type = /obj/item/organ/genital/womb
 	associated_organ_slot = ORGAN_SLOT_WOMB
 	key = "womb"
+	genetic = TRUE
 
 /datum/sprite_accessory/genital/womb/none
 	icon_state = "none"
@@ -232,8 +242,25 @@
 	name = "Normal"
 	color_src = null
 
+/datum/sprite_accessory/genital/anus
+	organ_type = /obj/item/organ/genital/anus
+	associated_organ_slot = ORGAN_SLOT_ANUS
+	key = "anus"
+	genetic = TRUE
+
+/datum/sprite_accessory/genital/anus/none
+	icon_state = "none"
+	name = "None"
+	factual = FALSE
+	color_src = null
+
+/datum/sprite_accessory/genital/anus/normal
+	icon_state = "anus"
+	name = "Anus"
+	color_src = null
+
 /datum/sprite_accessory/genital/breasts
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/genitals/breasts_onmob.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/breasts_onmob.dmi'
 	organ_type = /obj/item/organ/genital/breasts
 	associated_organ_slot = ORGAN_SLOT_BREASTS
 	key = "breasts"
@@ -241,6 +268,8 @@
 	default_color = DEFAULT_SKIN_OR_PRIMARY
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	uses_skintones = TRUE
+	genital_location = CHEST
+	genetic = TRUE
 
 /datum/sprite_accessory/genital/breasts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.undershirt != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_SHIRT))

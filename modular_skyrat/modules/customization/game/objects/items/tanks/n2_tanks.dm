@@ -18,9 +18,10 @@
 	air_contents.gases[/datum/gas/nitrogen][MOLES] = (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
 
 /obj/item/tank/internals/nitrogen/belt
-	icon = 'modular_skyrat/modules/customization/icons/obj/tank.dmi'
-	lefthand_file = 'modular_skyrat/modules/customization/icons/mob/inhands/equipment/tanks_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/customization/icons/mob/inhands/equipment/tanks_righthand.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/tank.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/belt.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/equipment/tanks_lefthand.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/equipment/tanks_righthand.dmi'
 	icon_state = "nitrogen_extended"
 	slot_flags = ITEM_SLOT_BELT
 	force = 5

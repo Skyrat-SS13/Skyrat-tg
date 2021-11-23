@@ -1,3 +1,4 @@
+
 /obj/structure/closet/secure_closet/hos
 	icon = 'modular_skyrat/modules/sec_haul/icons/lockers/closet.dmi'
 

@@ -14,8 +14,9 @@
 	uses_ambitions = TRUE
 
 /datum/antagonist/traitor/ambitions_add()
-	if(traitor_kind == TRAITOR_HUMAN && should_equip)
-		equip()
+	if(give_uplink)
+		owner.give_uplink(silent = TRUE, antag_datum = src)
+	uplink = owner.find_syndicate_uplink()
 
 /datum/antagonist/changeling
 	uses_ambitions = TRUE
@@ -27,6 +28,15 @@
 
 /datum/antagonist/changeling/ambitions_removal()
 	remove_changeling_powers()
+
+/datum/antagonist/wizard
+	uses_ambitions = TRUE
+
+/datum/antagonist/wizard/ambitions_add()
+	equip_wizard() //This apparently give the book if you didn't comment it in the antag one, you could use it and if you did get spells and then submit your ambitions, You actually could get twice as much spells. :pain:
+
+/datum/antagonist/wizard/ambitions_removal()
+	owner.RemoveAllSpells()
 
 /datum/objective/ambitions
 	name = "ambitions"

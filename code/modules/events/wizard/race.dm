@@ -1,6 +1,6 @@
 /datum/round_event_control/wizard/race //Lizard Wizard? Lizard Wizard.
 	name = "Race Swap"
-	weight = 2
+	weight = 0 //SKYRAT EDIT CHANGE - WIZARD CHANGE - ORIGINAL weight = 2
 	typepath = /datum/round_event/wizard/race
 	max_occurrences = 5
 	earliest_start = 0 MINUTES
@@ -24,6 +24,6 @@
 		var/mob/living/carbon/human/H = i
 		H.set_species(new_species)
 		H.dna.unique_enzymes = H.dna.generate_unique_enzymes()
-		to_chat(H, "<span class='notice'>You feel somehow... different?</span>")
+		to_chat(H, span_notice("You feel somehow... different?"))
 		if(!all_the_same)
 			new_species = pick(all_species)

@@ -5,29 +5,29 @@
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
 	desc = "A cube of shining metal, four inches to a side and covered in shallow grooves. It has an IPC serial number engraved on the top. It is usually slotted into the chest of synthetic crewmembers."
-	icon = 'modular_skyrat/modules/customization/icons/obj/surgery.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "posibrain-ipc"
 
-/obj/item/organ/brain/ipc_positron/Insert(mob/living/carbon/C, special = 0, drop_if_replaced = TRUE)
+/obj/item/organ/brain/ipc_positron/Insert(mob/living/carbon/user, special = 0, drop_if_replaced = TRUE)
 	..()
-	if(C.stat == DEAD && ishuman(C))
-		var/mob/living/carbon/human/H = C
-		if(H?.dna?.species && (REVIVES_BY_HEALING in H.dna.species.species_traits))
-			if(H.health > 50)
-				H.revive(FALSE)
+	if(user.stat == DEAD && ishuman(user))
+		var/mob/living/carbon/human/user_human = user
+		if(user_human?.dna?.species && (REVIVES_BY_HEALING in user_human.dna.species.species_traits))
+			if(user_human.health > 50)
+				user_human.revive(FALSE)
 
 /obj/item/organ/brain/ipc_positron/emp_act(severity)
 	switch(severity)
 		if(1)
 			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 75, 150)
-			to_chat(owner, "<span class='warning'>Alert: Posibrain heavily damaged.</span>")
+			to_chat(owner, span_warning("Alert: Posibrain heavily damaged."))
 		if(2)
 			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 25, 150)
-			to_chat(owner, "<span class='warning'>Alert: Posibrain damaged.</span>")
+			to_chat(owner, span_warning("Alert: Posibrain damaged."))
 
 /obj/item/organ/stomach/robot_ipc
 	name = "IPC micro cell"
-	icon = 'modular_skyrat/modules/customization/icons/obj/surgery.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "stomach-ipc"
 	w_class = WEIGHT_CLASS_NORMAL
 	zone = "chest"
@@ -43,14 +43,14 @@
 	switch(severity)
 		if(1)
 			owner.nutrition = 50
-			to_chat(owner, "<span class='warning'>Alert: Detected severe battery discharge!</span>")
+			to_chat(owner, span_warning("Alert: Detected severe battery discharge!"))
 		if(2)
 			owner.nutrition = 250
-			to_chat(owner, "<span class='warning'>Alert: Minor battery discharge!</span>")
+			to_chat(owner, span_warning("Alert: Minor battery discharge!"))
 
 /obj/item/organ/ears/robot_ipc
 	name = "auditory sensors"
-	icon = 'modular_skyrat/modules/customization/icons/obj/surgery.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "ears-ipc"
 	desc = "A pair of microphones intended to be installed in an IPC head, that grant the ability to hear."
 	zone = BODY_ZONE_HEAD
@@ -69,18 +69,18 @@
 			owner.Dizzy(30)
 			owner.Knockdown(80)
 			deaf = 30
-			to_chat(owner, "<span class='warning'>Your robotic ears are ringing, uselessly.</span>")
+			to_chat(owner, span_warning("Your robotic ears are ringing, uselessly."))
 		if(2)
 			owner.Jitter(15)
 			owner.Dizzy(15)
 			owner.Knockdown(40)
-			to_chat(owner, "<span class='warning'>Your robotic ears buzz.</span>")
+			to_chat(owner, span_warning("Your robotic ears buzz."))
 
 /obj/item/organ/tongue/robot_ipc
 	name = "robotic voicebox"
 	desc = "A voice synthesizer that can interface with organic lifeforms."
 	status = ORGAN_ROBOTIC
-	icon = 'modular_skyrat/modules/customization/icons/obj/surgery.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "tongue-ipc"
 	say_mod = "beeps"
 	modifies_speech = TRUE
@@ -102,7 +102,7 @@
 	. = ..()
 	if(!owner || . & EMP_PROTECT_SELF)
 		return
-	to_chat(owner, "<span class='warning'>Static obfuscates your vision!</span>")
+	to_chat(owner, span_warning("Static obfuscates your vision!"))
 	owner.flash_act(visual = 1)
 	if(severity == EMP_HEAVY)
 		owner.adjustOrganLoss(ORGAN_SLOT_EYES, 20)
@@ -110,14 +110,14 @@
 /obj/item/organ/lungs/robot_ipc
 	name = "heat sink"
 	desc = "A device that transfers generated heat to a fluid medium to cool it down. Required to keep your synthetics cool-headed. It's shape resembles lungs." //Purposefully left the 'fluid medium' ambigious for interpretation of the character, whether it be air or fluid cooling
-	icon = 'modular_skyrat/modules/customization/icons/obj/surgery.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "lungs-ipc"
 	safe_nitro_min = 0
 	safe_nitro_max = 0
 	safe_co2_min = 0
 	safe_co2_max = 0
-	safe_toxins_min = 0
-	safe_toxins_max = 0
+	safe_plasma_min = 0
+	safe_plasma_max = 0
 	safe_oxygen_min = 0	//What are you doing man, dont breathe with those!
 	safe_oxygen_max = 0
 	cold_level_1_damage = 0
@@ -132,7 +132,7 @@
 		return
 	switch(severity)
 		if(1)
-			to_chat(owner, "<span class='warning'>Alert: Critical cooling system failure!</span>")
+			to_chat(owner, span_warning("Alert: Critical cooling system failure!"))
 			owner.adjust_bodytemperature(100*TEMPERATURE_DAMAGE_COEFFICIENT)
 		if(2)
 			owner.adjust_bodytemperature(30*TEMPERATURE_DAMAGE_COEFFICIENT)
@@ -142,7 +142,7 @@
 	desc = "An electronic device that handles the hydraulic pumps, powering one's robotic limbs."
 	organ_flags = ORGAN_SYNTHETIC
 	status = ORGAN_ROBOTIC
-	icon = 'modular_skyrat/modules/customization/icons/obj/surgery.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "heart-ipc"
 
 /obj/item/organ/liver/robot_ipc
@@ -150,7 +150,7 @@
 	desc = "An electronic device that processes the beneficial chemicals for the synthetic user."
 	organ_flags = ORGAN_SYNTHETIC
 	status = ORGAN_ROBOTIC
-	icon = 'modular_skyrat/modules/customization/icons/obj/surgery.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "liver-c"
 	filterToxins = FALSE //We dont filter them, we're immune ot them
 
@@ -170,44 +170,62 @@
 	if(!istype(target, /obj/machinery/power/apc) || !ishuman(user) || !proximity_flag)
 		return ..()
 	user.changeNext_move(CLICK_CD_MELEE)
-	var/obj/machinery/power/apc/A = target
-	var/mob/living/carbon/human/H = user
-	var/obj/item/organ/stomach/robot_ipc/cell = locate(/obj/item/organ/stomach/robot_ipc) in H.internal_organs
+	var/obj/machinery/power/apc/target_apc = target
+	var/mob/living/carbon/human/ipc = user
+	var/obj/item/organ/stomach/robot_ipc/cell = locate(/obj/item/organ/stomach/robot_ipc) in ipc.internal_organs
 	if(!cell)
-		to_chat(H, "<span class='warning'>You try to siphon energy from the [A], but your power cell is gone!</span>")
+		to_chat(ipc, span_warning("You try to siphon energy from the [target_apc], but your power cell is gone!"))
 		return
 
-	if(A.cell && A.cell.charge > 0)
-		if(H.nutrition >= NUTRITION_LEVEL_WELL_FED)
-			to_chat(user, "<span class='warning'>You are already fully charged!</span>")
+	if(target_apc.cell && target_apc.cell.charge > 0)
+		if(ipc.nutrition >= NUTRITION_LEVEL_WELL_FED)
+			to_chat(user, span_warning("You are already fully charged!"))
 			return
 		else
-			powerdraw_loop(A, H)
+			powerdraw_loop(target_apc, ipc)
 			return
 
-	to_chat(user, "<span class='warning'>There is no charge to draw from that APC.</span>")
+	to_chat(user, span_warning("There is no charge to draw from that APC."))
 
-/obj/item/apc_powercord/proc/powerdraw_loop(obj/machinery/power/apc/A, mob/living/carbon/human/H)
-	H.visible_message("<span class='notice'>[H] inserts a power connector into the [A].</span>", "<span class='notice'>You begin to draw power from the [A].</span>")
-	while(do_after(H, 10, target = A))
-		if(loc != H)
-			to_chat(H, "<span class='warning'>You must keep your connector out while charging!</span>")
+#define IPC_CHARGE_MAX 150
+#define IPC_CHARGE_MIN 50
+#define IPC_CHARGE_PER_NUTRITION 10
+#define IPC_CHARGE_DELAY_PER_100 10
+
+/obj/item/apc_powercord/proc/powerdraw_loop(obj/machinery/power/apc/target_apc, mob/living/carbon/human/user)
+	user.visible_message(span_notice("[user] inserts a power connector into the [target_apc]."), span_notice("You begin to draw power from the [target_apc]."))
+
+	while(TRUE)
+		var/power_needed = NUTRITION_LEVEL_WELL_FED - user.nutrition // How much charge do we need in total?
+		// Do we even need anything?
+		if(power_needed <= 0)
+			to_chat(user, span_notice("You are fully charged."))
 			break
-		if(A.cell.charge == 0)
-			to_chat(H, "<span class='warning'>The [A] doesn't have enough charge to spare.</span>")
+		// Is the APC almost empty?
+		if(target_apc.cell.percent() < 10)
+			to_chat(user, span_warning("[target_apc]'s emergency power is active."))
 			break
-		A.charging = 1
-		if(A.cell.charge >= 500)
-			do_sparks(1, FALSE, A)
-			H.nutrition += 50
-			A.cell.charge -= 150
-			to_chat(H, "<span class='notice'>You siphon off some of the stored charge for your own use.</span>")
-		else
-			H.nutrition += A.cell.charge/10
-			A.cell.charge = 0
-			to_chat(H, "<span class='notice'>You siphon off as much as the [A] can spare.</span>")
+		// Calculate how much to draw this cycle
+		var/power_use = clamp(power_needed, IPC_CHARGE_MIN, IPC_CHARGE_MAX)
+		power_use = clamp(power_use, 0, target_apc.cell.charge)
+		// Are we able to draw anything?
+		if(power_use==0)
+			to_chat(user, span_warning("[target_apc] lacks the power to charge you."))
 			break
-		if(H.nutrition > NUTRITION_LEVEL_WELL_FED)
-			to_chat(H, "<span class='notice'>You are now fully charged.</span>")
+		// Calculate the delay.
+		var/power_delay = (power_use/100) * IPC_CHARGE_DELAY_PER_100
+		// Attempt to run a charging cycle.
+		if(!do_after(user, power_delay, target = target_apc))
+			to_chat(user, span_warning("You accidentally rip the powercord from [target_apc]."))
 			break
-	H.visible_message("<span class='notice'>[H] unplugs from the [A].</span>", "<span class='notice'>You unplug from the [A].</span>")
+		// Use the power and increase nutrition.
+		target_apc.cell.use(power_use)
+		user.nutrition += power_use / IPC_CHARGE_PER_NUTRITION
+		do_sparks(1, FALSE, target_apc)
+
+	user.visible_message(span_notice("[user] unplugs from the [target_apc]."), span_notice("You unplug from the [target_apc]."))
+
+#undef IPC_CHARGE_MAX
+#undef IPC_CHARGE_MIN
+#undef IPC_CHARGE_PER_NUTRITION
+#undef IPC_CHARGE_DELAY_PER_100

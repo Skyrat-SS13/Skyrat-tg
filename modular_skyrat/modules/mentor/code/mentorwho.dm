@@ -18,5 +18,5 @@
 
 			if(C.is_afk())
 				suffix += " (AFK)"
-		msg += "\t[C][suffix]\n"
+		msg += span_infoplain("\t[C][suffix]\n")
 	to_chat(src, msg)

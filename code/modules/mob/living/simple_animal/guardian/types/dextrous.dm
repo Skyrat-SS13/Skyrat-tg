@@ -19,13 +19,13 @@
 
 /mob/living/simple_animal/hostile/guardian/dextrous/examine(mob/user)
 	if(dextrous)
-		. = list("<span class='info'>*---------*\nThis is [icon2html(src)] \a <b>[src]</b>!\n[desc]")
+		. = list("<span class='info'>This is [icon2html(src)] \a <b>[src]</b>!\n[desc]<hr>") //SKYRAT EDIT CHANGE
 		for(var/obj/item/I in held_items)
 			if(!(I.item_flags & ABSTRACT))
 				. += "It has [I.get_examine_string(user)] in its [get_held_index_name(get_held_index_of_item(I))]."
 		if(internal_storage && !(internal_storage.item_flags & ABSTRACT))
 			. += "It is holding [internal_storage.get_examine_string(user)] in its internal storage."
-		. += "*---------*</span>"
+		//. += "*---------*</span>" SKYRAT EDIT REMOVAL
 	else
 		return ..()
 
@@ -67,7 +67,7 @@
 			internal_storage = I
 			update_inv_internal_storage()
 		else
-			to_chat(src, "<span class='danger'>You are trying to equip this item to an unsupported inventory slot. Report this to a coder!</span>")
+			to_chat(src, span_danger("You are trying to equip this item to an unsupported inventory slot. Report this to a coder!"))
 
 /mob/living/simple_animal/hostile/guardian/dextrous/getBackSlot()
 	return ITEM_SLOT_DEX_STORAGE

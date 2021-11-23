@@ -37,7 +37,7 @@
 		mentor_datum.owner = src
 		GLOB.mentors[src] = TRUE
 		add_mentor_verbs()
-		if(check_rights_for(src, R_ADMIN,0))
+		if(check_rights_for(src, R_ADMIN,0) && prefs.read_preference(/datum/preference/toggle/admin/auto_dementor))
 			cmd_mentor_dementor()
 
 /client/proc/is_mentor() // admins are mentors too.

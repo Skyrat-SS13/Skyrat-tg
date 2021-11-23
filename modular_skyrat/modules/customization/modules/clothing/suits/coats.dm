@@ -2,43 +2,43 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/suit/hooded/wintercoat/paramedic
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "paramedic winter coat"
 	desc = "A winter coat with blue markings. Warm, but probably won't protect from biological agents. For the cozy doctor on the go."
 	icon_state = "coatparamed"
 	inhand_icon_state = "coatparamed"
-	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/flashlight/pen, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/beaker, /obj/item/reagent_containers/pill, /obj/item/storage/pill_bottle, /obj/item/paper, /obj/item/melee/classic_baton/telescopic, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 50, "rad" = 0, "fire" = 0, "acid" = 45, "wound" = 3)
+	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/flashlight/pen, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/beaker, /obj/item/reagent_containers/pill, /obj/item/storage/pill_bottle, /obj/item/paper, /obj/item/melee/baton/telescopic, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 50, "fire" = 0, "acid" = 45, "wound" = 3)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/paramedic
 
 /obj/item/clothing/head/hooded/winterhood/paramedic
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	desc = "A white winter coat hood with blue markings."
 	icon_state = "winterhood_paramed"
 
 /obj/item/clothing/suit/hooded/wintercoat/robotics
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "robotics winter coat"
 	desc = "A black winter coat with a badass flaming robotic skull for the zipper tab. This one has bright red designs and a few useless buttons."
 	icon_state = "coatrobotics"
 	inhand_icon_state = "coatrobotics"
-	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/melee/classic_baton/telescopic, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/screwdriver, /obj/item/crowbar, /obj/item/wrench, /obj/item/stack/cable_coil, /obj/item/weldingtool, /obj/item/multitool)
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 10, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "wound" = 0)
+	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/melee/baton/telescopic, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/screwdriver, /obj/item/crowbar, /obj/item/wrench, /obj/item/stack/cable_coil, /obj/item/weldingtool, /obj/item/multitool)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 10, "bio" = 0, "fire" = 0, "acid" = 0, "wound" = 0)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/robotics
 
 /obj/item/clothing/head/hooded/winterhood/robotics
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	desc = "A black winter coat hood. You can pull it down over your eyes and pretend that you're an outdated, late 1980s interpretation of a futuristic mechanized police force. They'll fix you. They fix everything."
 	icon_state = "winterhood_robotics"
 
 
 /obj/item/clothing/suit/hooded/wintercoat/aformal
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "assistant's formal winter coat"
 	desc = "A black button up winter coat."
 	icon_state = "coataformal"
@@ -47,25 +47,25 @@
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/aformal
 
 /obj/item/clothing/head/hooded/winterhood/aformal
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	desc = "A black winter coat hood."
 	icon_state = "winterhood_aformal"
 
 /obj/item/clothing/suit/hooded/wintercoat/ratvar
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "ratvarian winter coat"
 	desc = "A brass-plated button up winter coat. Instead of a zipper tab, it has a brass cog with a tiny red gemstone inset."
 	icon_state = "coatratvar"
 	inhand_icon_state = "coatratvar"
-	armor = list("melee" = 30, "bullet" = 45, "laser" = -10, "energy" = 0, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 60, "wound" = 10)
+	armor = list("melee" = 30, "bullet" = 45, "laser" = -10, "energy" = 0, "bomb" = 30, "bio" = 0, "fire" = 60, "acid" = 60, "wound" = 10)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/ratvar
 	var/real = TRUE
 
 /obj/item/clothing/head/hooded/winterhood/ratvar
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "winterhood_ratvar"
 	desc = "A brass-plated winter hood that glows softly, hinting at its divinity."
 	light_range = 3
@@ -80,18 +80,18 @@
 		return
 	else
 		user.dropItemToGround(src)
-		to_chat(user,"<span class='large_brass'>\"Amusing that you think you are fit to wear this.\"</span>")
-		to_chat(user,"<span class='userdanger'>Your skin burns where the coat touched your skin!</span>")
+		to_chat(user,span_largebrass("\"Amusing that you think you are fit to wear this.\""))
+		to_chat(user,span_userdanger("Your skin burns where the coat touched your skin!"))
 		user.adjustFireLoss(rand(10,16))*/
 
 /obj/item/clothing/suit/hooded/wintercoat/narsie
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "narsian winter coat"
 	desc = "A somber button-up in tones of grey entropy and a wicked crimson zipper. When pulled all the way up, the zipper looks like a bloody gash. The zipper pull looks like a single drop of blood."
 	icon_state = "coatnarsie"
 	inhand_icon_state = "coatnarsie"
-	armor = list("melee" = 30, "bullet" = 20, "laser" = 30,"energy" = 10, "bomb" = 30, "bio" = 10, "rad" = 10, "fire" = 30, "acid" = 30, "wound" = 10)
+	armor = list("melee" = 30, "bullet" = 20, "laser" = 30,"energy" = 10, "bomb" = 30, "bio" = 10, "fire" = 30, "acid" = 30, "wound" = 10)
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/restraints/legcuffs/bola/cult,/obj/item/melee/cultblade,/obj/item/melee/cultblade/dagger,/obj/item/reagent_containers/glass/beaker/unholywater,/obj/item/cult_shift,/obj/item/flashlight/flare/culttorch,/obj/item/melee/cultblade/halberd)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/narsie
 	var/real = TRUE
@@ -104,13 +104,13 @@
 		return
 	else
 		user.dropItemToGround(src)
-		to_chat(user,"<span class='cultlarge'>\"You are not fit to wear my follower's coat!\"</span>")
-		to_chat(user,"<span class='userdanger'>Sharp spines jab you from within the coat!</span>")
+		to_chat(user,span_cultlarge("\"You are not fit to wear my follower's coat!\""))
+		to_chat(user,span_userdanger("Sharp spines jab you from within the coat!"))
 		user.adjustBruteLoss(rand(10,16))*/
 
 /obj/item/clothing/head/hooded/winterhood/narsie
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	desc = "A black winter hood full of whispering secrets that only She shall ever know."
 	icon_state = "winterhood_narsie"
 
@@ -120,7 +120,7 @@
 	icon_state = "coatratvar"
 	inhand_icon_state = "coatratvar"
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter)
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "wound" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 0, "acid" = 0, "wound" = 0)
 	real = FALSE
 
 /obj/item/clothing/suit/hooded/wintercoat/narsie/fake
@@ -129,12 +129,12 @@
 	icon_state = "coatnarsie"
 	inhand_icon_state = "coatnarsie"
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter)
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "wound" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 0, "acid" = 0, "wound" = 0)
 	real = FALSE
 
 /obj/item/clothing/suit/flakjack
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "flak jacket"
 	desc = "A dilapidated jacket made of a supposedly bullet-proof material (Hint: It isn't.). Smells faintly of napalm."
 	icon_state = "flakjack"
@@ -142,12 +142,12 @@
 	blood_overlay_type = "armor"
 	body_parts_covered = CHEST
 	resistance_flags = NONE
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 5, "bio" = 0, "rad" = 0, "fire" = -5, "acid" = -15, "wound" = 0) //nylon sucks against acid
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 5, "bio" = 0, "fire" = -5, "acid" = -15, "wound" = 0) //nylon sucks against acid
 	mutant_variants = NONE
 
 /obj/item/clothing/suit/hooded/cloak/david
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "red cloak"
 	icon_state = "goliath_cloak"
 	desc = "Ever wanted to look like a badass without ANY effort? Try this nanotrasen brand red cloak, perfect for kids"
@@ -156,10 +156,104 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/head/hooded/cloakhood/david
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	name = "red cloak hood"
 	icon_state = "golhood"
 	desc = "conceal your face in shame with this nanotrasen brand hood"
 	flags_inv = HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACIALHAIR
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/urban/polychromic
+	name = "urban coat"
+	desc = "A coat built for urban life."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "urbanjacket"
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/urban/polychromic/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("#55DD55", "#EEEEAA", "#333333"))
+
+
+/obj/item/clothing/suit/toggle/deckard
+	name = "runner coat"
+	desc = "They say you overused reference. Tell them you're eating in this lovely coat, a long flowing brown one."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "deckard"
+	mutant_variants = NONE
+	inhand_icon_state = "det_suit"
+	blood_overlay_type = "coat"
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	armor = list(MELEE = 25, BULLET = 10, LASER = 25, ENERGY = 35, BOMB = 0, BIO = 0, FIRE = 0, ACID = 45)
+	cold_protection = CHEST|GROIN|LEGS|ARMS
+	heat_protection = CHEST|GROIN|LEGS|ARMS
+
+/obj/item/clothing/suit/jacket/leather/polychromic
+	desc = "Now with more color!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "polyleatherjacket"
+
+/obj/item/clothing/suit/jacket/leather/polychromic/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("#55DD55"))
+
+/obj/item/clothing/suit/toggle/brit/sec
+	name = "high vis armored vest"
+	desc = "Oi bruv' you got a loicence for that?"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "hazardbg"
+	mutant_variants = NONE
+	blood_overlay_type = "coat"
+	toggle_noun = "zipper"
+	armor = list(MELEE = 10, BULLET = 5, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+
+
+/obj/item/clothing/suit/toggle/lawyer/black/better
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "suitjacket_black"
+	mutant_variants = NONE
+
+
+/obj/item/clothing/suit/duster/colorable
+	name = "colorable duster"
+	desc = "This station aint big enough for the both of us."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "duster"
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/duster/colorable/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("#55DD55"))
+
+/obj/item/clothing/suit/toggle/peacoat
+	name = "colorable peacoat"
+	desc = "The way you guys are blending in with the local colour. I mean, Flag Girl was bad enough, but U-Boat Captain?"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "peacoat"
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/toggle/peacoat/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("#55DD55"))
+
+/obj/item/clothing/suit/poncho
+    mutant_variants = STYLE_TAUR_ALL
+
+/obj/item/clothing/suit/apron
+    mutant_variants = STYLE_TAUR_ALL
+
+/obj/item/clothing/suit/toggle/lawyer/white
+	name = "white suit jacket"
+	desc = "A very versatile part of a suit ensable. Oddly in fashion with mobsters."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "suitjacket_white"
 	mutant_variants = NONE

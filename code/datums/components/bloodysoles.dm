@@ -68,6 +68,9 @@
 	bloody_shoes[last_blood_state] = new_our_bloodiness
 	pool.bloodiness = total_bloodiness - new_our_bloodiness // Give the pool the remaining blood incase we were limited
 
+	if(HAS_TRAIT(parent_atom, TRAIT_LIGHT_STEP)) //the character is agile enough to don't mess their clothing and hands just from one blood splatter at floor
+		return TRUE
+
 	parent_atom.add_blood_DNA(pool.return_blood_DNA())
 	update_icon()
 
@@ -148,12 +151,13 @@
 			update_icon()
 
 			oldLocFP = new(oldLocTurf)
-			oldLocFP.blood_state = last_blood_state
-			oldLocFP.exited_dirs |= wielder.dir
-			add_parent_to_footprint(oldLocFP)
-			oldLocFP.bloodiness = half_our_blood
-			oldLocFP.add_blood_DNA(parent_atom.return_blood_DNA())
-			oldLocFP.update_appearance()
+			if(!QDELETED(oldLocFP)) ///prints merged
+				oldLocFP.blood_state = last_blood_state
+				oldLocFP.exited_dirs |= wielder.dir
+				add_parent_to_footprint(oldLocFP)
+				oldLocFP.bloodiness = half_our_blood
+				oldLocFP.add_blood_DNA(parent_atom.return_blood_DNA())
+				oldLocFP.update_appearance()
 
 			half_our_blood = bloody_shoes[last_blood_state] / 2
 
@@ -167,12 +171,13 @@
 		update_icon()
 
 		var/obj/effect/decal/cleanable/blood/footprints/FP = new(get_turf(parent_atom))
-		FP.blood_state = last_blood_state
-		FP.entered_dirs |= wielder.dir
-		add_parent_to_footprint(FP)
-		FP.bloodiness = half_our_blood
-		FP.add_blood_DNA(parent_atom.return_blood_DNA())
-		FP.update_appearance()
+		if(!QDELETED(FP)) ///prints merged
+			FP.blood_state = last_blood_state
+			FP.entered_dirs |= wielder.dir
+			add_parent_to_footprint(FP)
+			FP.bloodiness = half_our_blood
+			FP.add_blood_DNA(parent_atom.return_blood_DNA())
+			FP.update_appearance()
 
 
 /**
@@ -225,12 +230,8 @@
 		return COMPONENT_INCOMPATIBLE
 	parent_atom = parent
 	wielder = parent
-	//SKYRAT EDIT REMOVAL BEGIN -DIGI_BLOODSOLE
-	/*
 	if(!bloody_feet)
 		bloody_feet = mutable_appearance('icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
-	*/
-	//SKYRAT EDIT REMOVAL END
 	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, .proc/on_clean)
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/on_moved)
 	RegisterSignal(parent, COMSIG_STEP_ON_BLOOD, .proc/on_step_blood)
@@ -240,6 +241,7 @@
 /datum/component/bloodysoles/feet/update_icon()
 	if(ishuman(wielder))
 		var/mob/living/carbon/human/human = wielder
+		fix_soles() //SKYRAT ADDITION - DIGI_BLOODSOLE
 		if(NOBLOODOVERLAY in human.dna.species.species_traits)
 			return
 		if(bloody_shoes[BLOOD_STATE_HUMAN] > 0 && !is_obscured())
@@ -275,19 +277,20 @@
 	..()
 
 /datum/component/bloodysoles/feet/on_step_blood(datum/source, obj/effect/decal/cleanable/pool)
-	//SKYRAT EDIT ADDITION BEGIN - DIGI_BLOODSOLE
-	//this is done in on_step_blood because both update_icon() and initialize() are called before copy_to() is called, which means we wouldn't be able to see if they had digitigrade legs
-	if(!bloody_feet)
-		var/mob/living/carbon/H = parent
-		if (DIGITIGRADE in H.dna.species.species_traits)
-			bloody_feet = mutable_appearance('modular_skyrat/modules/digi_bloodsole/icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
-		else
-			bloody_feet = mutable_appearance('icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
-	//SKYRAT EDIT ADDITION END
 	if(wielder.num_legs < 2)
 		return
 
 	..()
+
+//SKYRAT EDIT ADDITION BEGIN - DIGI_BLOODSOLE
+/datum/component/bloodysoles/feet/proc/fix_soles()
+	var/mob/living/carbon/H = parent
+	if (DIGITIGRADE in H.dna.species.species_traits)
+		if (bloody_feet.icon_state != "shoeblood_digi")
+			bloody_feet = mutable_appearance('modular_skyrat/modules/digi_bloodsole/icons/blood.dmi', "shoeblood_digi", SHOES_LAYER)
+	else if (bloody_feet.icon_state != "shoeblood")
+		bloody_feet = mutable_appearance('icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
+//SKYRAT EDIT ADDITION END
 
 /datum/component/bloodysoles/feet/proc/unequip_shoecover(datum/source)
 	SIGNAL_HANDLER

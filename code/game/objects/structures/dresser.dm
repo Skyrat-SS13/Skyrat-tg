@@ -1,3 +1,5 @@
+//THIS FILE HAS BEEN EDITED BY SKYRAT EDIT
+
 /obj/structure/dresser//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "dresser"
 	desc = "A nicely-crafted wooden dresser. It's filled with lots of undies."
@@ -8,9 +10,9 @@
 
 /obj/structure/dresser/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_WRENCH)
-		to_chat(user, "<span class='notice'>You begin to [anchored ? "unwrench" : "wrench"] [src].</span>")
+		to_chat(user, span_notice("You begin to [anchored ? "unwrench" : "wrench"] [src]."))
 		if(I.use_tool(src, user, 20, volume=50))
-			to_chat(user, "<span class='notice'>You successfully [anchored ? "unwrench" : "wrench"] [src].</span>")
+			to_chat(user, span_notice("You successfully [anchored ? "unwrench" : "wrench"] [src]."))
 			set_anchored(!anchored)
 	else
 		return ..()
@@ -30,10 +32,10 @@
 		var/mob/living/carbon/human/H = user
 
 		if(H.dna && H.dna.species && (NO_UNDERWEAR in H.dna.species.species_traits))
-			to_chat(user, "<span class='warning'>You are not capable of wearing underwear.</span>")
+			to_chat(user, span_warning("You are not capable of wearing underwear."))
 			return
 
-		var/choice = input(user, "Underwear, Undershirt, or Socks?", "Changing") as null|anything in list("Underwear","Underwear Color","Undershirt","Socks")
+		var/choice = input(user, "Underwear, Undershirt, or Socks?", "Changing") as null|anything in list("Underwear","Underwear Color","Undershirt","Undershirt Color","Socks","Socks Color") //SKYRAT EDIT ADDITION - Colorable Undershirt/Socks
 
 		if(!Adjacent(user))
 			return
@@ -42,18 +44,28 @@
 				var/new_undies = input(user, "Select your underwear", "Changing")  as null|anything in GLOB.underwear_list
 				if(new_undies)
 					H.underwear = new_undies
+
 			if("Underwear Color")
-				var/new_underwear_color = input(H, "Choose your underwear color", "Underwear Color","#"+H.underwear_color) as color|null
+				var/new_underwear_color = input(H, "Choose your underwear color", "Underwear Color",H.underwear_color) as color|null
 				if(new_underwear_color)
 					H.underwear_color = sanitize_hexcolor(new_underwear_color)
 			if("Undershirt")
 				var/new_undershirt = input(user, "Select your undershirt", "Changing") as null|anything in GLOB.undershirt_list
 				if(new_undershirt)
 					H.undershirt = new_undershirt
+			//SKYRAT EDIT ADDITION BEGIN - Colorable Undershirt/Socks
+			if("Undershirt Color")
+				var/new_undershirt_color = input(H, "Choose your undershirt color", "Undershirt Color",H.undershirt_color) as color|null
+				if(new_undershirt_color)
+					H.undershirt_color = sanitize_hexcolor(new_undershirt_color)
 			if("Socks")
 				var/new_socks = input(user, "Select your socks", "Changing") as null|anything in GLOB.socks_list
 				if(new_socks)
 					H.socks= new_socks
-
+			if("Socks Color")
+				var/new_socks_color = input(H, "Choose your socks color", "Socks Color",H.socks_color) as color|null
+				if(new_socks_color)
+					H.socks_color = sanitize_hexcolor(new_socks_color)
+			//SKYRAT EDIT ADDITION END - Colorable Undershirt/Socks
 		add_fingerprint(H)
 		H.update_body()

@@ -1,4 +1,4 @@
-/obj/machinery/button/door
+/obj/machinery/button
 	icon = 'modular_skyrat/modules/aesthetics/buttons/icons/buttons.dmi'
 	var/light_mask = "button-light-mask"
 
@@ -9,4 +9,4 @@
 
 	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	if(!(machine_stat & (NOPOWER|BROKEN)) && !panel_open)
-		SSvis_overlays.add_vis_overlay(src, icon, light_mask, EMISSIVE_LAYER, EMISSIVE_PLANE)
+		SSvis_overlays.add_vis_overlay(src, icon, light_mask, 0, EMISSIVE_PLANE)

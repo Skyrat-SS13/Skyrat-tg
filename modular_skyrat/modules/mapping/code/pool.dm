@@ -1,7 +1,7 @@
 ///////////// OVERLAY EFFECTS /////////////
 /obj/effect/overlay/water
 	name = "water"
-	icon = 'modular_skyrat/modules/mapping/icons/pool.dmi'
+	icon = 'modular_skyrat/modules/mapping/icons/unique/pool.dmi'
 	icon_state = "bottom"
 	density = 0
 	mouse_opacity = 0
@@ -35,7 +35,7 @@
 	wash_atom(loc)
 
 /turf/open/water/overlay/proc/wash_atom(atom/A)
-	A.wash(CLEAN_RAD | CLEAN_TYPE_WEAK) // Clean radiation non-instantly
+	A.wash(CLEAN_RAD) // Clean radiation non-instantly
 	A.wash(CLEAN_WASH)
 ///////////// CLEANING  BLOCK /////////////
 ///////////////////////////////////////////
@@ -49,7 +49,7 @@
 	SEND_SIGNAL(A, COMSIG_ADD_MOOD_EVENT, "hotspring", /datum/mood_event/hotspring)
 
 /datum/mood_event/hotspring
-	description = "<span class='nicegreen'>I recently a paddle in some nice warm water! It was so refreshing!</span>\n"
+	description = span_nicegreen("I recently had a paddle in some nice warm water! It was so refreshing!\n")
 	mood_change = 4
 	timeout = 20 MINUTES
 /////////////   MOOD  EVENT   /////////////
@@ -59,7 +59,7 @@
 /turf/open/water/overlay
 	name = "shallow water"
 	desc = "A natural body of shallow water."
-	icon = 'modular_skyrat/modules/mapping/icons/pool.dmi'
+	icon = 'modular_skyrat/modules/mapping/icons/unique/pool.dmi'
 	icon_state = "rocky"
 	baseturfs = /turf/open/water/overlay
 	var/obj/effect/overlay/water/water_overlay

@@ -26,57 +26,6 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/voxrustle.ogg'
 
-/datum/emote/living/scream
-	message = "screams!"
-	mob_type_blacklist_typecache = list(/mob/living/simple_animal/slime, /mob/living/brain)
-	vary = TRUE
-
-/datum/emote/living/scream/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(!user.is_muzzled() && !(user.mind && user.mind.miming))
-		if(ishuman(user))
-			user.adjustOxyLoss(5)
-		var/sound = get_sound(user, TRUE)
-		playsound(user.loc, sound, sound_volume, vary, 4, 1.2)
-
-/datum/emote/living/scream/select_message_type(mob/user, intentional)
-	if(!intentional && isanimal(user))
-		return "makes a loud and pained whimper."
-	if(user.is_muzzled())
-		return "makes a very loud noise."
-	. = ..()
-
-/datum/emote/living/scream/get_sound(mob/living/user, override = FALSE)
-	if(!override)
-		return
-	if(iscyborg(user))
-		return 'modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg'
-	if(ismonkey(user))
-		return 'modular_skyrat/modules/emotes/sound/voice/scream_monkey.ogg'
-	if(istype(user, /mob/living/simple_animal/hostile/gorilla))
-		return 'sound/creatures/gorilla.ogg'
-	if(isalien(user))
-		return 'sound/voice/hiss6.ogg'
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		var/datum/species/userspecies = H.dna.species
-
-		if(user.gender == MALE || !LAZYLEN(userspecies.femalescreamsounds))
-			return pick(userspecies.screamsounds)
-		else
-			return pick(userspecies.femalescreamsounds)
-	return
-
-/datum/emote/living/scream/can_run_emote(mob/living/user, status_check, intentional)
-	if(iscyborg(user))
-		var/mob/living/silicon/robot/R = user
-
-		if(R.cell?.charge < 200)
-			to_chat(R, "<span class='warning'>Scream module deactivated. Please recharge.</span>")
-			return FALSE
-		R.cell.use(200)
-	return ..()
 
 /datum/emote/living/cough/get_sound(mob/living/user)
 	if(isvox(user))
@@ -181,6 +130,14 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/mothsqueak.ogg'
 
+/datum/emote/living/mousesqueak
+	key = "squeak"
+	key_third_person = "squeaks"
+	message = "squeaks!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'sound/effects/mousesqueek.ogg'
+
 /datum/emote/living/merp
 	key = "merp"
 	key_third_person = "merps"
@@ -283,9 +240,10 @@
 	key = "clap"
 	key_third_person = "claps"
 	message = "claps."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
 	hands_use_check = TRUE
+	emote_type = EMOTE_AUDIBLE
+	audio_cooldown = 5 SECONDS
 	vary = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
@@ -318,28 +276,6 @@
 	if(user.usable_hands < 2)
 		return FALSE
 	return ..()
-
-/datum/emote/living/laugh
-	key = "laugh"
-	key_third_person = "laughs"
-	message = "laughs."
-	message_mime = "laughs silently!"
-	emote_type = EMOTE_AUDIBLE
-	vary = TRUE
-	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
-
-/datum/emote/living/laugh/get_sound(mob/living/user)
-	if(ismoth(user))
-		return 'modular_skyrat/modules/emotes/sound/emotes/mothlaugh.ogg'
-	if(isinsect(user))
-		return 'modular_skyrat/modules/emotes/sound/emotes/mothlaugh.ogg'
-	if(iscarbon(user))
-		if(user.gender == MALE)
-			return pick('sound/voice/human/manlaugh1.ogg',
-						'sound/voice/human/manlaugh2.ogg')
-		return pick('modular_skyrat/modules/emotes/sound/emotes/female/female_giggle_1.ogg',
-					'modular_skyrat/modules/emotes/sound/emotes/female/female_giggle_2.ogg')
-	return
 
 /datum/emote/living/headtilt
 	key = "tilt"
@@ -406,7 +342,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/hoot.ogg'
-	//cooldown = 2 SECONDS -- Removed as the current global cooldown is larger
 
 /datum/emote/living/growl
 	key = "growl"
@@ -449,15 +384,6 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/wurble.ogg'
 
-/datum/emote/living/awoo2
-	key = "awoo2"
-	key_third_person = "awoos"
-	message = "lets out an awoo!"
-	emote_type = EMOTE_AUDIBLE
-	vary = TRUE
-	sound = 'modular_skyrat/modules/emotes/sound/voice/long_awoo.ogg'
-	//cooldown = 3 SECONDS -- Removed as the current global cooldown is larger
-
 /datum/emote/living/rattle
 	key = "rattle"
 	key_third_person = "rattles"
@@ -486,3 +412,52 @@
 	animate(gloveimg, alpha = 175, transform = matrix() * 0.75, pixel_x = 0, pixel_y = -5, pixel_z = 0, time = 3)
 	animate(time = 1)
 	animate(alpha = 0, time = 3, easing = CIRCULAR_EASING|EASE_OUT)
+
+//Froggie Revolution
+/datum/emote/living/warble
+	key = "warble"
+	key_third_person = "warbles"
+	message = "warbles!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/warbles.ogg'
+
+/datum/emote/living/trills
+	key = "trills"
+	key_third_person = "trills!"
+	message = "trills!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/trills.ogg'
+
+/datum/emote/living/rpurr
+	key = "rpurr"
+	key_third_person = "purrs!"
+	message = "purrs!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/raptor_purr.ogg'
+
+/datum/emote/living/purr //Ported from CitRP originally by buffyuwu.
+	key = "purr"
+	key_third_person = "purrs!"
+	message = "purrs!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/feline_purr.ogg'
+
+/datum/emote/living/moo
+	key = "moo"
+	key_third_person = "moos!"
+	message = "moos!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/moo.ogg'
+
+/datum/emote/living/honk
+	key = "honk1"
+	key_third_person = "honks loudly like a goose!"
+	message = "honks loudly like a goose!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/goose_honk.ogg'
