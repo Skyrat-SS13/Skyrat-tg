@@ -1,6 +1,6 @@
 /obj/item/ammo_casing/energy/laser/advanced
 	name = "advanced energy lens"
-	projectile_type = /obj/projectile/beam/laser/hardlight_bullet
+	projectile_type = /obj/projectile/beam/laser/advanced
 	e_cost = 100 // 10 shots with a normal cell.
 	select_name = "laser"
 	fire_sound = 'modular_skyrat/modules/advanced_energy_guns/sound/incinerate.ogg'

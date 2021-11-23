@@ -2,6 +2,7 @@
 	name = "basic microfusion cell"
 	desc = "A compact cell designed to be inserted into Nanotrasen approved energy weapons."
 	icon = 'modular_skyrat/modules/advanced_energy_guns/icons/microfusion_cells.dmi'
+	charge_overlay_icon = 'modular_skyrat/modules/advanced_energy_guns/icons/microfusion_cells.dmi'
 	icon_state = "microfusion"
 	maxcharge = 1000
 	chargerate = 100

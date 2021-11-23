@@ -14,13 +14,13 @@
 	/// The sound played when you insert a cell.
 	var/sound_cell_insert = 'modular_skyrat/modules/advanced_energy_guns/sound/mag_insert.ogg'
 	/// Should the insertion sound played vary?
-	var/sound_cell_insert_vary = FALSE
+	var/sound_cell_insert_vary = TRUE
 	/// The volume at which we will play the insertion sound.
 	var/sound_cell_insert_volume = 100
 	/// The sound played when you remove a cell.
 	var/sound_cell_remove = 'modular_skyrat/modules/advanced_energy_guns/sound/mag_insert.ogg'
 	/// Should the removal sound played vary?
-	var/sound_cell_remove_vary = FALSE
+	var/sound_cell_remove_vary = TRUE
 	/// The volume at which we will play the removal sound.
 	var/sound_cell_remove_volume = 100
 
