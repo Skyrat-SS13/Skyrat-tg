@@ -56,8 +56,7 @@
 		playsound(src, sound_cell_insert, sound_cell_insert_volume, sound_cell_insert_vary)
 	cell = inserting_cell
 	inserting_cell.forceMove(src)
-	cut_overlays()
-	update_overlays()
+	update_appearance()
 	return TRUE
 
 /// Ejecting a cell.
@@ -72,6 +71,5 @@
 		playsound(src, sound_cell_remove, sound_cell_remove_volume, sound_cell_remove_vary)
 	old_cell.update_appearance()
 	cell = null
-	cut_overlays()
-	update_overlays()
+	update_appearance()
 
