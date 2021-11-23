@@ -237,6 +237,7 @@
 	desc = "An additional 8-round buckshot magazine for use with the Bulldog shotgun. Front towards enemy."
 	item = /obj/item/ammo_box/magazine/m12g
 	cost = 2
+	purchasable_from = ALL
 
 /datum/uplink_item/ammo/shotgun/dragon_traitor
 	name = "12g Dragon's Breath Drum"
@@ -244,6 +245,7 @@
 			'I'm a fire starter, twisted fire starter!'"
 	item = /obj/item/ammo_box/magazine/m12g/dragon
 	cost = 2
+	purchasable_from = ALL
 
 /datum/uplink_item/ammo/shotgun/meteor_traitor
 	name = "12g Meteorslug Shells"
@@ -251,13 +253,15 @@
 		Great for blasting airlocks off their frames and knocking down enemies."
 	item = /obj/item/ammo_box/magazine/m12g/meteor
 	cost = 3
+	purchasable_from = ALL
 
 /datum/uplink_item/ammo/shotgun/slug_traitor
 	name = "12g Slug Drum"
 	desc = "An additional 8-round slug magazine for use with the Bulldog shotgun. \
 			Now 8 times less likely to shoot your pals."
-	cost = 3
 	item = /obj/item/ammo_box/magazine/m12g/slug
+	cost = 3
+	purchasable_from = ALL
 
 //SUITS
 
