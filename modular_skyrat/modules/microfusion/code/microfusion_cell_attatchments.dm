@@ -116,3 +116,11 @@ If the cell isn't stabalised by a stabaliser, it may emit a radaition pulse.
 	microfusion_cell.charge = clamp(microfusion_cell.charge + (microfusion_cell.chargerate + self_charge_amount * delta_time / 2), 0, microfusion_cell.maxcharge)
 	if(!microfusion_cell.stabalised && DT_PROB(5, delta_time))
 		radiation_pulse(src, 1, RAD_MEDIUM_INSULATION)
+
+/obj/item/microfusion_cell_attachment/selfcharging/run_upgrade(obj/item/stock_parts/cell/microfusion/microfusion_cell)
+	. = ..()
+	START_PROCESSING(SSobj, microfusion_cell)
+
+/obj/item/microfusion_cell_attachment/selfcharging/remove_upgrade(obj/item/stock_parts/cell/microfusion/microfusion_cell)
+	. = ..()
+	STOP_PROCESSING(SSobj, microfusion_cell)

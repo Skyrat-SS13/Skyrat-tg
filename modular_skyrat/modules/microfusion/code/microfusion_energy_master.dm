@@ -51,8 +51,8 @@
 	return ..()
 
 /obj/item/gun/energy/microfusion/auxiliary_update_overlays()
-	for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment in attached_upgrades)
-		. += "[icon_state]_[microfusion_cell_attachment.attachment_overlay_icon_state]"
+	for(var/obj/item/microfusion_gun_attachment/microfusion_gun_attachment in attached_upgrades)
+		. += "[icon_state]_[microfusion_gun_attachment.attachment_overlay_icon_state]"
 	return .
 
 /obj/item/gun/energy/microfusion/examine(mob/user)
