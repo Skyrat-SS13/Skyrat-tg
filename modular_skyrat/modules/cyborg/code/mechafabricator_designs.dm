@@ -46,8 +46,9 @@
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/inducer
 	materials = list(
-		/datum/material/iron=3000,
-		/datum/material/glass = 1000,
+		/datum/material/iron=10000,
+		/datum/material/gold=4000,
+		/datum/material/plasma=2000,
 	)
 	category = list("Cyborg Upgrade Modules")
 
