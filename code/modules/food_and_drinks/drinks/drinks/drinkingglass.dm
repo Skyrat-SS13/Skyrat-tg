@@ -42,7 +42,6 @@
 
 	var/glass_icon = get_glass_icon(reagents.get_master_reagent())
 	if(glass_icon)
-		icon = glass_icon || 'icons/obj/drinks.dmi' //SKYRAT EDIT ADDITION - CUSTOMIZATION
 		icon_state = glass_icon
 		fill_icon_thresholds = null
 	else
