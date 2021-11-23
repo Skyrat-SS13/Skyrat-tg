@@ -40,12 +40,8 @@ Assistant
 	id_trim = /datum/id_trim/job/assistant
 	uniform = /obj/item/clothing/under/color/random
 
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL - THIS OVERRIDES CLOTHING LOADOUTS
-/datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/H)
-=======
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/target)
->>>>>>> a94e0ca3925 (Add station trait for varying colored assistant jumpsuits (#62998))
 	..()
 	give_jumpsuit(target)
 
@@ -62,25 +58,14 @@ Assistant
 	if (target.jumpsuit_style == PREF_SUIT)
 		uniform = GLOB.colored_assistant.jumpsuits[index]
 	else
-<<<<<<< HEAD
-		uniform = /obj/item/clothing/under/color/jumpskirt/grey
+		uniform = GLOB.colored_assistant.jumpskirts[index]
 */
 /datum/outfit/job/assistant/consistent
 	name = "Assistant - Consistent"
 
 /* SKYRAT EDIT REMOVAL
-/datum/outfit/job/assistant/consistent/pre_equip(mob/living/carbon/human/H)
-	..()
-	give_grey_suit(H)
-=======
-		uniform = GLOB.colored_assistant.jumpskirts[index]
-
-/datum/outfit/job/assistant/consistent
-	name = "Assistant - Consistent"
-
 /datum/outfit/job/assistant/consistent/give_jumpsuit(mob/living/carbon/human/target)
 	uniform = /obj/item/clothing/under/color/grey
->>>>>>> a94e0ca3925 (Add station trait for varying colored assistant jumpsuits (#62998))
 
 /datum/outfit/job/assistant/consistent/post_equip(mob/living/carbon/human/H, visualsOnly)
 	..()
@@ -88,9 +73,7 @@ Assistant
 	// This outfit is used by the assets SS, which is ran before the atoms SS
 	if (SSatoms.initialized == INITIALIZATION_INSSATOMS)
 		H.w_uniform?.update_greyscale()
-<<<<<<< HEAD
 */
-=======
 
 /proc/get_configured_colored_assistant_type()
 	return CONFIG_GET(flag/grey_assistants) ? /datum/colored_assistant/grey : /datum/colored_assistant/random
@@ -212,4 +195,3 @@ Assistant
 
 	// Couldn't find a matching jumpskirt, oh well
 	jumpskirts = list(get_random_jumpskirt())
->>>>>>> a94e0ca3925 (Add station trait for varying colored assistant jumpsuits (#62998))
