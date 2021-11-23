@@ -20,7 +20,11 @@
  *
  * make sure you add an update to the schema_version stable in the db changelog
  */
+<<<<<<< HEAD
 #define DB_MINOR_VERSION 21
+=======
+#define DB_MINOR_VERSION 20
+>>>>>>> d0f33354f6f (Add admin ckey to known alts panel (#62761))
 
 
 //! ## Timing subsystem
