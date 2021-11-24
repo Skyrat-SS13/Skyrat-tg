@@ -46,7 +46,7 @@
 		/obj/item/storage/pill_bottle/paxpsych,
 		/obj/item/storage/pill_bottle/psicodine,
 		)
-	belt = /obj/item/pda/medical
+	belt = /obj/item/pda/psychologist //SKYRAT EDIT - Allows the Psych to spawn with respective PDA cart
 	ears = /obj/item/radio/headset/headset_srvmed
 	shoes = /obj/item/clothing/shoes/laceup
 	l_hand = /obj/item/clipboard
