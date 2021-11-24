@@ -49,6 +49,10 @@ The cell is stable and will not emit sparks when firing.
 	/// How much recoil are we adding?
 	var/recoil_to_add = 1
 
+/obj/item/microfusion_gun_attachment/scatter/multitool_act(mob/living/user, obj/item/tool)
+	variance_to_add = clamp(input(user, "Please input a new lens variance adjustment (5-30):", "Lens Adjustment") as null|num, 5, 30)
+	to_chat(user, span_notice("Lens variance percent set to: [variance_to_add]."))
+
 /obj/item/microfusion_gun_attachment/scatter/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	microfusion_gun.recoil += recoil_to_add
@@ -76,7 +80,7 @@ The cell is stable and will not emit sparks when firing.
 	desc = "Focuses the microfusion beam into a more concentrated lane, increasing accuracy!"
 	icon_state = "attachment_focus"
 	attachment_overlay_icon_state = "focus_attachment"
-	/// How much recoil are we adding?
+	/// How much recoil are we removing?
 	var/recoil_to_remove = 0.5
 
 /obj/item/microfusion_gun_attachment/focus/run_attachment(obj/item/gun/microfusion/microfusion_gun)
@@ -101,8 +105,6 @@ The gun can fire volleys of shots.
 	/// How much recoil are we adding?
 	var/burst_to_add = 1
 	var/delay_to_add = 1
-
-
 
 /obj/item/microfusion_gun_attachment/repeater/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
@@ -207,6 +209,8 @@ Basically the heart of the gun, can be upgraded.
 	if(damaged)
 		. += span_danger("It is damaged beyond repair.")
 	else
+		. += span_notice("It has a thermal rating of: [max_heat] C")
+		. += span_notice("It dissipates heat at: [heat_dissipation_per_tick] C")
 		. += span_notice("Heat capacity: [get_heat_percent()]%")
 		. += span_notice("Integrity: [integrity]%")
 		. += span_notice("Thermal throttle: [throttle_percentage]%")
@@ -228,3 +232,24 @@ Basically the heart of the gun, can be upgraded.
 	name = "damaged [name]"
 	say("ERROR: Integrity failure!")
 	STOP_PROCESSING(SSobj, src)
+
+/obj/item/microfusion_phase_emitter/enhanced
+	name = "enhanced microfusion phase emitter"
+	desc = "The core of a microfusion projection weapon, produces the laser."
+	max_heat = 1500
+	throttle_percentage = 85
+	heat_dissipation_per_tick = 15
+
+/obj/item/microfusion_phase_emitter/advanced
+	name = "advanced microfusion phase emitter"
+	desc = "The core of a microfusion projection weapon, produces the laser."
+	max_heat = 2000
+	throttle_percentage = 85
+	heat_dissipation_per_tick = 25
+
+/obj/item/microfusion_phase_emitter/bluespace
+	name = "advanced microfusion phase emitter"
+	desc = "The core of a microfusion projection weapon, produces the laser."
+	max_heat = 2500
+	throttle_percentage = 90
+	heat_dissipation_per_tick = 25
