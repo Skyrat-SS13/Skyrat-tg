@@ -13,7 +13,7 @@ const Hemophage: Species = {
       name: "Viral Symbiosis",
       description: "Hemophages, due to their condition, cannot get infected by \
         other viruses and don't actually require an external source of oxygen \
-        to stay alive."",
+        to stay alive.",
     }, {
       icon: "recycle",
       name: "Bat Form",
