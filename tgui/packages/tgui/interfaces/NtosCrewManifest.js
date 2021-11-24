@@ -11,7 +11,7 @@ export const NtosCrewManifest = (props, context) => {
   } = data;
   return (
     <NtosWindow
-      width={400}
+      width={500 /* SKYRAT EDIT CHANGE - Alternative Job Titles - Original: 400 */}
       height={480}>
       <NtosWindow.Content scrollable>
         <Section
@@ -37,7 +37,7 @@ export const NtosCrewManifest = (props, context) => {
                       {entry.name}
                     </Table.Cell>
                     <Table.Cell>
-                      ({entry.rank})
+                      {entry.rank == entry.trim ? entry.rank : <>{entry.rank} ({entry.trim})</>} {/* SKYRAT EDIT CHANGE - Alternative Job Titles - Original: (entry.rank) */}
                     </Table.Cell>
                   </Table.Row>
                 ))}

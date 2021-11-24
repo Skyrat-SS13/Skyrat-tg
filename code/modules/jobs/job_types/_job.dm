@@ -169,9 +169,9 @@
 			experiencer.mind.adjust_experience(i, roundstart_experience[i], TRUE)
 
 
-/datum/job/proc/announce_job(mob/living/joining_mob, datum/preferences/used_pref) // SKYRAT EDIT CHANGE -- customization
+/datum/job/proc/announce_job(mob/living/joining_mob, job_title) // SKYRAT EDIT CHANGE - Alternative Job Titles - Original: /datum/job/proc/announce_job(mob/living/joining_mob)
 	if(head_announce)
-		announce_head(joining_mob, head_announce, used_pref) // SKYRAT EDIT CHANGE -- customization
+		announce_head(joining_mob, head_announce, job_title) // SKYRAT EDIT CHANGE - Alternative Job Titles - Original: announce_head(joining_mob, head_announce)
 
 
 //Used for a special check of whether to allow a client to latejoin as this job.
@@ -198,12 +198,10 @@
 	equip_outfit_and_loadout(equipping.outfit, used_pref, visual_only, equipping) //SKYRAT EDIT CHANGE
 
 /// tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
-/datum/job/proc/announce_head(mob/living/carbon/human/H, channels, datum/preferences/used_pref)  // SKYRAT EDIT CHANGE - customization
+/datum/job/proc/announce_head(mob/living/carbon/human/H, channels, job_title) // SKYRAT EDIT CHANGE - Alternative Job Titles - Original: /datum/job/proc/announce_head(mob/living/carbon/human/H, channels)
 	if(H && GLOB.announcement_systems.len)
-		var/chosen_rank = used_pref?.alt_job_titles[H.job] || H.job // SKYRAT EDIT ADDITION - customization
-
 		//timer because these should come after the captain announcement
-		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, chosen_rank, channels), 1)) // SKYRAT EDIT CHANGE - customization
+		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, job_title, channels), 1)) // SKYRAT EDIT CHANGE - Alternative Job Titles - Original: SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
 
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/C)
@@ -295,12 +293,18 @@
 	if(!J)
 		J = SSjob.GetJob(H.job)
 
+	// SKYRAT EDIT ADDITION BEGIN - Alternative Job Titles
+	// The alt job title, if user picked one, or the default
+	var/chosen_title = H.client?.prefs.alt_job_titles[J.title] || J.title
+	// SKYRAT EDIT ADDITION END - Alternative Job Titles
+
 	var/obj/item/card/id/C = H.wear_id
 	if(istype(C))
 		shuffle_inplace(C.access) // Shuffle access list to make NTNet passkeys less predictable
 		C.registered_name = H.real_name
 		if(H.age)
 			C.registered_age = H.age
+		C.assignment = chosen_title // SKYRAT EDIT ADDITION - Alternative Job Titles
 		C.update_label()
 		C.update_icon()
 		var/datum/bank_account/B = SSeconomy.bank_accounts_by_id["[H.account_id]"]
@@ -312,7 +316,7 @@
 	var/obj/item/pda/PDA = H.get_item_by_slot(pda_slot)
 	if(istype(PDA))
 		PDA.owner = H.real_name
-		PDA.ownjob = J.title
+		PDA.ownjob = chosen_title // SKYRAT EDIT CHANGE - Alternative Job Titles - Original: PDA.ownjob = J.title
 		PDA.update_label()
 
 

@@ -39,7 +39,7 @@ export const CrewManifest = (props, context) => {
                     ])}
                     collapsing
                   >
-                    {positions[dept].exceptions.includes(crewMember.rank) && (
+                    {positions[dept].exceptions.includes(crewMember.trim) && ( // SKYRAT CHANGE EDIT - Alternative Job Titles - OriginaL: {positions[dept].exceptions.includes(crewMember.rank) && (
 
                       <Tooltip
                         content="No position limit"
@@ -48,7 +48,7 @@ export const CrewManifest = (props, context) => {
                         <Icon className="CrewManifest__Icon" name="infinity" />
                       </Tooltip>
                     )}
-                    {crewMember.rank === "Captain" && (
+                    {crewMember.trim === "Captain" && ( // SKYRAT CHANGE EDIT - Alternative Job Titles - OriginaL: {crewMember.rank === "Captain" && (
                       <Tooltip
                         content="Captain"
                         position="bottom"
@@ -62,7 +62,7 @@ export const CrewManifest = (props, context) => {
                         />
                       </Tooltip>
                     )}
-                    {commandJobs.includes(crewMember.rank) && (
+                    {commandJobs.includes(crewMember.trim) && ( // SKYRAT CHANGE EDIT - Alternative Job Titles - OriginaL: {commandJobs.includes(crewMember.rank) && (
                       <Tooltip
                         content="Member of command"
                         position="bottom"

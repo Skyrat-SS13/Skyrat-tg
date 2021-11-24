@@ -256,7 +256,7 @@
 		humanc = character //Let's retypecast the var to be human,
 
 	if(humanc) //These procs all expect humans
-		// BEGIN SKYRAT EDIT CHANGE - customization
+		// BEGIN SKYRAT EDIT CHANGE - Alternative Job Titles
 		var/chosen_rank = humanc.client?.prefs.alt_job_titles[rank] || rank
 		GLOB.data_core.manifest_inject(humanc, humanc.client)
 		if(SSshuttle.arrivals)
