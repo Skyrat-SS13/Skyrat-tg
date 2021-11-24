@@ -1,24 +1,26 @@
 import { Species } from "./base";
 
 const Vampire: Species = {
-  description: "A crewmember afflicted with Hemophagia. Whether it's supernatural or purely through science, is still unknown.",
+  description: "A classy Vampire! They descend upon Space Station Thirteen \
+    Every year to spook the crew! \"Bleeg!!\"",
   features: {
     good: [{
       icon: "bed",
-      name: "Locker Brooding",
-      description: "Hemophages can delay The Thirst and heal by resting in a \
-        rectangular-shaped object. So THAT'S why they do that!",
+      name: "Coffin Brooding",
+      description: "Vampires can delay The Thirst and heal by resting in a \
+        coffin. So THAT'S why they do that!",
     }, {
       icon: "skull",
       name: "Minor Undead",
-      description: "Hemophage can delay their thirst and heal by resting in any \
-        locker. Useful, not entirely practical, though.",
+      description: "Minor undead enjoy some of the perks of being dead, like \
+        not needing to breathe or eat, but do not get many of the \
+        environmental immunities involved with being fully undead.",
     }, {
       icon: "recycle",
       name: "Bat Form",
-      description: "During Halloween, Hemophages can become bats. Bats are very weak, but \
+      description: "Vampires can become bats. Bats are very weak, but \
         are great for escaping bad situations. They can also travel through \
-        vents, giving Hemophages a lot of access. Just remember that access \
+        vents, giving Vampires a lot of access. Just remember that access \
         doesn't equal permission, and people may be unhappy with you showing \
         up uninvited!",
     }],
@@ -26,25 +28,22 @@ const Vampire: Species = {
     bad: [{
       icon: "tint",
       name: "The Thirst",
-      description: "In place of eating, Hemophages suffer from The Thirst. \
+      description: "In place of eating, vampires suffer from The Thirst. \
       Thirst of what? Blood! Their tongue allows them to grab people and drink \
-      their blood, and they will suffer severe consequences if they run out. As a note, it doesn't \
+      their blood, and they will die if they run out. As a note, it doesn't \
       matter whose blood you drink, it will all be converted into your blood \
       type when consumed.",
     },
     {
       icon: "cross",
       name: "Against God and Nature",
-      description: "During Halloween, almost all higher powers are disgusted by the existence of \
-      Hemophages, and entering the chapel is essentially suicide. Do not do it!",
+      description: "Almost all higher powers are disgusted by the existence of \
+      vampires, and entering the chapel is essentially suicide. Do not do it!",
     }],
   },
   lore: [
-    "Though known by many other names, 'Hemophages' are those that have found themselves the host of a bloodthirsty infection. Initially entering their hosts through the bloodstream, or activating after a period of dormancy in infants, this infection initially travels to the chest first. Afterwards, it infects several cells, making countless alterations to their genetic sequence, until it starts rapidly expanding and taking over every nearby organ, notably the heart, lungs, and stomach, forming a massive tumor vaguely reminiscent of an overgrown, coal-black heart, that hijacks them for its own benefit, and in exchange, allows the host to 'sense' the quality, and amount of blood currently occupying their body.", 
-    "While this kills the host initially, the virus will jumpstart the body and begin functioning as a surrogate to keep their host going. This does confer certain advantages to the host, in the interest of keeping them alive; working anaerobically, requiring no food to function, and extending their lifespan dramatically. However, this comes at a cost, as the tumor changes their host into an obligate hemophage; only the enzymes, and iron in blood being able to fuel them. If they are to run out of blood, the tumor will begin consuming its own host.",
-    "Historically, Hemophages have caused great societal strife through their very existence. Many have reported dread on having someone reveal they require blood to survive, worse on learning they have been undead, espiecally in 'superstitious' communities. In many places they occupy a sort of second class, unable to live normal lives due to their condition being a sort of skeleton in their closet. Some can actually be found in slaughterhouses or the agricultural industry, gaining easy access to a large supply of animal blood to feed their eternal thirst.", 
-    "Others find their way into mostly-vampiric communities, turning others into their own kind; though, the virus can only transmit to hosts that are incredibly low on blood, taking advantage of their reduced immune system efficiency and higher rate of blood creation to be able to survive the initial few days within their host.",
-    "\"What the fuck does any of this mean\" - Doctor Micheals, reading their centcomm report about the new 'hires'.",
+    "Vampires are unholy beings blessed and cursed with The Thirst. The Thirst requires them to feast on blood to stay alive, and in return it gives them many bonuses. Because of this, Vampires have split into two clans, one that embraces their powers as a blessing and one that rejects it.",
+    "\"I'm not doing the bat trick. It's self deprecating. Okay, fine, but I'm not doing it again!\" - Count Baz, before venting into security for the third time this week.",
   ],
 };
 
