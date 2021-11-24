@@ -106,6 +106,10 @@ const TARGET_SPECIES_LIST = [
   {
     name: 'Teshari',
     value: 'teshari',
+ },
+ {
+    name: 'Hemophage',
+    value: 'hemophage',
   },
 ];
 
