@@ -29,9 +29,9 @@
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	var/info_text = "You are a <span class='danger'>Hemophage</span>. You will slowly but constantly lose blood if outside of a coffin. If inside a coffin, you will slowly heal. You may gain more blood by grabbing a live victim and using your drain ability."
 	var/obj/effect/proc_holder/spell/targeted/shapeshift/bat/batform //attached to the datum itself to avoid cloning memes, and other duplicates
-	///SKYRAT EDIT: Allow a neutered version of hemophages without batform
+	/// Is it currently Halloween and are we the Halloween version? If not, we do not get a batform nor do we burn in the chapel.
 	var/halloween_version = FALSE
-	veteran_only = TRUE // SKYRAT EDIT - Hemophages roundstart
+	veteran_only = TRUE
 
 /datum/species/hemophage/check_roundstart_eligible()
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN]) // SKYRAT EDIT - sleepy time roundstart check
