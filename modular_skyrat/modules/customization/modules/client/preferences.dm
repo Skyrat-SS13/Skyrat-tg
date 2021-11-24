@@ -2228,8 +2228,8 @@ GLOBAL_LIST_INIT(food, list(
 							sextoys_pref = "Yes"
 							// User set ERP pref to "Yes", make the ERP button of the inventory visible and interactive again
 							if(user.hud_used)
-								for(var/atom/movable/screen/human/ERP_toggle/E in user.hud_used.static_inventory)
-									if(istype(E, /atom/movable/screen/human/ERP_toggle))
+								for(var/atom/movable/screen/human/erp_toggle/E in user.hud_used.static_inventory)
+									if(istype(E, /atom/movable/screen/human/erp_toggle))
 										E.invisibility = 0
 						// Perform standard inventory updates
 						if("Yes")
@@ -2248,10 +2248,10 @@ GLOBAL_LIST_INIT(food, list(
 							if(user.hud_used)
 								if(user.hud_used.ERP_inventory_shown)
 									user.hud_used.ERP_inventory_shown = FALSE
-									user.client.screen -= user.hud_used.ERP_toggleable_inventory
+									user.client.screen -= user.hud_used.erp_toggleable_inventory
 								// Find the ERP button of the inventory and make it invisible so that the user cannot interact with it
-								for(var/atom/movable/screen/human/ERP_toggle/E in user.hud_used.static_inventory)
-									if(istype(E, /atom/movable/screen/human/ERP_toggle))
+								for(var/atom/movable/screen/human/erp_toggle/E in user.hud_used.static_inventory)
+									if(istype(E, /atom/movable/screen/human/erp_toggle))
 										E.invisibility = 100
 								user.hud_used.hidden_inventory_update(user)
 								user.hud_used.persistent_inventory_update(user)
