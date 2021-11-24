@@ -127,6 +127,25 @@ These are basically advanced cells.
 		attached_upgrades -= microfusion_cell_attachment
 	update_appearance()
 
+/datum/crafting_recipe/makeshift/microfusion_cell
+	name = "Makeshift Microfusion Cell"
+	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER, TOOL_WELDER)
+	result = /obj/item/stock_parts/cell/microfusion/makeshift
+	reqs = list(/obj/item/trash/can = 1,
+				/obj/item/stack/sheet/minreal/iron = 1,
+				/obj/item/stack/cable_coil = 1)
+	time = 120
+	category = CAT_MISC
+
+//WHY WOULD YOU MAKE THIS?
+/obj/item/stock_parts/cell/microfusion/makeshift
+	name = "makeshift microfusion cell"
+	desc = "This can with ducttape resembles a microfusion cell. What the hell were you thinking? A makeshift microfusion battery? Are you out of your mind?!"
+	icon_state = "microfusion_makeshift"
+	maxcharge = 600
+	instability = 20
+	max_attachments = 0
+
 /obj/item/stock_parts/cell/microfusion/enhanced
 	name = "enhanced microfusion cell"
 	desc = "An enhanced microfusion cell."

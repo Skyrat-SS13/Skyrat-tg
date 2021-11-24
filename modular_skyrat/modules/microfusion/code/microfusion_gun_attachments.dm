@@ -141,7 +141,7 @@ The gun can fire X-RAY shots.
 
 /obj/item/microfusion_gun_attachment/xray/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
 	. = ..()
-	chambered.loaded_projectile?.projectile_piercing |= PASSCLOSEDTURF|PASSGRILLE|PASSGLASS
+	chambered.loaded_projectile?.projectile_piercing = PASSCLOSEDTURF|PASSGRILLE|PASSGLASS
 
 /obj/item/microfusion_gun_attachment/xray/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
@@ -274,13 +274,15 @@ Basically the heart of the gun, can be upgraded.
 	if(heat == 0)
 		return
 	var/calculated_heat_dissipation_per_tick = heat_dissipation_per_tick
+	if(isspaceturf(get_turf(src)))
+		calculated_heat_dissipation_per_tick += 30 // Passive cooling in space boost!
 	if(parent_gun)
 		calculated_heat_dissipation_per_tick += parent_gun.heat_dissipation_bonus
 	else
 		calculated_heat_dissipation_per_tick += 10 //We get some passive cooling from being out of the gun.
 	heat = clamp(heat - calculated_heat_dissipation_per_tick * delta_time, 0, INFINITY)
 	if(heat > max_heat)
-		integrity = integrity - (current_heat - max_heat) * delta_time
+		integrity = integrity - ((current_heat - max_heat) * delta_time)
 	if(integrity <= 0)
 		kill()
 	update_appearance()
@@ -345,6 +347,7 @@ Basically the heart of the gun, can be upgraded.
 	max_heat = 1500
 	throttle_percentage = 85
 	heat_dissipation_per_tick = 20
+	integrity = 120
 
 /obj/item/microfusion_phase_emitter/advanced
 	name = "advanced microfusion phase emitter"
@@ -352,6 +355,7 @@ Basically the heart of the gun, can be upgraded.
 	max_heat = 2000
 	throttle_percentage = 85
 	heat_dissipation_per_tick = 30
+	integrity = 150
 
 /obj/item/microfusion_phase_emitter/bluespace
 	name = "advanced microfusion phase emitter"
@@ -359,3 +363,4 @@ Basically the heart of the gun, can be upgraded.
 	max_heat = 2500
 	throttle_percentage = 90
 	heat_dissipation_per_tick = 40
+	integrity = 200
