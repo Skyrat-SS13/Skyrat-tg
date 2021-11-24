@@ -52,10 +52,10 @@
 		C.AddSpell(batform)
 	C.set_safe_hunger_level()
 
-/datum/species/hemophage/on_species_loss(mob/living/carbon/C)
+/datum/species/hemophage/on_species_loss(mob/living/carbon/ex_vampire)
 	. = ..()
 	if(!isnull(batform))
-		C.RemoveSpell(batform)
+		ex_vampire.RemoveSpell(batform)
 		QDEL_NULL(batform)
 
 /datum/species/hemophage/spec_life(mob/living/carbon/human/C, delta_time, times_fired)
