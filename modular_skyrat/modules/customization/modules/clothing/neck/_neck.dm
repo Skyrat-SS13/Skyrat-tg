@@ -26,7 +26,7 @@
 	icon_state = "hopmantle"
 
 /obj/item/clothing/neck/mantle/cmomantle
-	name = "\proper chief medical officer's mantle"
+	name = "\proper the chief medical officer's mantle"
 	desc = "A light blue shoulder draping for THE medical professional. Contrasts well with blood."
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
