@@ -453,7 +453,12 @@
 			update(FALSE, TRUE) //SKYRAT EDIT CHANGE
 			sleep(rand(5, 15))
 		on = (status == LIGHT_OK)
+<<<<<<< HEAD
 		update(FALSE, TRUE) //SKYRAT EDIT CHANGE
+=======
+		update(FALSE)
+		. = TRUE //did we actually flicker?
+>>>>>>> e100f3ca8c7 (Fixes ghosts' boo ability going on cooldown when the light they tried to flicker didn't flick (#62965))
 	flickering = FALSE
 
 // ai attack - make lights flicker, because why not
