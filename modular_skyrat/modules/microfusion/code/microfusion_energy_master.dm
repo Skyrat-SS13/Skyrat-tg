@@ -1,3 +1,4 @@
+#define DUALWIELD_PENALTY_EXTRA_MULTIPLIER 1.4
 
 // Master file for cell loadable energy guns. PROCS ONLY YOU MONKEYS!
 
@@ -7,6 +8,12 @@
 	icon = 'modular_skyrat/modules/microfusion/icons/guns40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
+	has_gun_safety = TRUE
+	can_flashlight = FALSE
+	can_bayonet = FALSE
+	zoomable = FALSE
+
+	w_class = WEIGHT_CLASS_BULKY
 
 	/// What type of power cell this uses
 	var/obj/item/stock_parts/cell/microfusion/cell
@@ -60,7 +67,11 @@
 	/// The phase emitter that this gun currently has.
 	var/obj/item/microfusion_phase_emitter/phase_emitter
 	/// The amount of heat produced per shot
-	var/heat_per_shot = 10
+	var/heat_per_shot = 100
+	/// The heat dissipation bonus granted by the weapon.
+	var/heat_dissipation_bonus = 0
+
+/obj/item/clothing/suit/armor/vest/russian/nri
 
 /obj/item/gun/microfusion/emp_act(severity)
 	. = ..()
@@ -184,33 +195,30 @@
 
 /obj/item/gun/microfusion/update_overlays()
 	. = ..()
+
+	if(automatic_charge_overlays && cell)
+		var/overlay_icon_state = "[icon_state]_charge"
+		if(modifystate)
+			var/obj/item/ammo_casing/energy/shot = ammo_type[select]
+			if(single_shot_type_overlay)
+				. += "[icon_state]_[shot.select_name]"
+			overlay_icon_state += "_[shot.select_name]"
+
+		var/ratio = get_charge_ratio()
+		if(ratio == 0 && display_empty)
+			. += "[icon_state]_empty"
+		else if(shaded_charge)
+			. += "[icon_state]_charge[ratio]"
+		else
+			var/mutable_appearance/charge_overlay = mutable_appearance(icon, overlay_icon_state)
+			for(var/i = ratio, i >= 1, i--)
+				charge_overlay.pixel_x = ammo_x_offset * (i - 1)
+				charge_overlay.pixel_y = ammo_y_offset * (i - 1)
+				. += new /mutable_appearance(charge_overlay)
 	for(var/obj/item/microfusion_gun_attachment/microfusion_gun_attachment in attached_upgrades)
 		. += "[icon_state]_[microfusion_gun_attachment.attachment_overlay_icon_state]"
 	if(phase_emitter)
 		. += "[icon_state]_[phase_emitter.icon_state]"
-
-	if(!automatic_charge_overlays || !cell)
-		return
-
-	var/overlay_icon_state = "[icon_state]_charge"
-	if(modifystate)
-		var/obj/item/ammo_casing/energy/shot = ammo_type[select]
-		if(single_shot_type_overlay)
-			. += "[icon_state]_[shot.select_name]"
-		overlay_icon_state += "_[shot.select_name]"
-
-	var/ratio = get_charge_ratio()
-	if(ratio == 0 && display_empty)
-		. += "[icon_state]_empty"
-		return
-	if(shaded_charge)
-		. += "[icon_state]_charge[ratio]"
-		return
-	var/mutable_appearance/charge_overlay = mutable_appearance(icon, overlay_icon_state)
-	for(var/i = ratio, i >= 1, i--)
-		charge_overlay.pixel_x = ammo_x_offset * (i - 1)
-		charge_overlay.pixel_y = ammo_y_offset * (i - 1)
-		. += new /mutable_appearance(charge_overlay)
 
 /obj/item/gun/microfusion/ignition_effect(atom/A, mob/living/user)
 	if(!can_shoot() || !ammo_type[select])
@@ -364,6 +372,73 @@
 				addtimer(CALLBACK(G, /obj/item/gun.proc/process_fire, target, user, TRUE, params, null, bonus_spread), loop_counter)
 
 	return process_fire(target, user, TRUE, params, null, bonus_spread)
+
+// To maintain modularity, I am moving this proc override here.
+/obj/item/gun/microfusion/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
+	if(user)
+		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, user, target, params, zone_override)
+
+	SEND_SIGNAL(src, COMSIG_GUN_FIRED, user, target, params, zone_override)
+
+	add_fingerprint(user)
+
+	if(semicd)
+		return
+
+	//Vary by at least this much
+	var/base_bonus_spread = 0
+	var/sprd = 0
+	var/randomized_gun_spread = 0
+	var/rand_spr = rand()
+	if(user && HAS_TRAIT(user, TRAIT_POOR_AIM)) //Nice job hotshot
+		bonus_spread += 35
+		base_bonus_spread += 10
+
+	if(spread)
+		randomized_gun_spread =	rand(0,spread)
+	var/randomized_bonus_spread = rand(base_bonus_spread, bonus_spread)
+
+	if(burst_size > 1)
+		firing_burst = TRUE
+		for(var/i = 1 to burst_size)
+			addtimer(CALLBACK(src, .proc/process_burst, user, target, message, params, zone_override, sprd, randomized_gun_spread, randomized_bonus_spread, rand_spr, i), fire_delay * (i - 1))
+	else
+		if(chambered)
+			if(HAS_TRAIT(user, TRAIT_PACIFISM)) // If the user has the pacifist trait, then they won't be able to fire [src] if the round chambered inside of [src] is lethal.
+				if(chambered.harmful) // Is the bullet chambered harmful?
+					to_chat(user, span_warning("[src] is lethally chambered! You don't want to risk harming anyone..."))
+					return
+			sprd = round((rand(0, 1) - 0.5) * DUALWIELD_PENALTY_EXTRA_MULTIPLIER * (randomized_gun_spread + randomized_bonus_spread))
+			before_firing(target,user)
+			process_microfusion()
+			if(!chambered.fire_casing(target, user, params, , suppressed, zone_override, sprd, src))
+				shoot_with_empty_chamber(user)
+				return
+			else
+				if(get_dist(user, target) <= 1) //Making sure whether the target is in vicinity for the pointblank shot
+					shoot_live_shot(user, 1, target, message)
+				else
+					shoot_live_shot(user, 0, target, message)
+		else
+			shoot_with_empty_chamber(user)
+			return
+		process_chamber()
+		update_appearance()
+		semicd = TRUE
+		addtimer(CALLBACK(src, .proc/reset_semicd), fire_delay)
+
+	if(user)
+		user.update_inv_hands()
+	SSblackbox.record_feedback("tally", "gun_fired", 1, type)
+
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
+
+	return TRUE
+
+/obj/item/gun/microfusion/proc/process_microfusion()
+	if(attached_upgrades.len)
+		for(var/obj/item/microfusion_gun_attachment/attachment in attached_upgrades)
+			attachment.process_fire(src, chambered)
 
 /obj/item/gun/microfusion/proc/process_emitter()
 	if(!phase_emitter)
