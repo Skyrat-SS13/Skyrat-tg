@@ -1,6 +1,6 @@
 /obj/item/cartridge/psychologist
 	name = "\improper P.A.T cartridge"
-	desc = "Flaunt that Psychology Degree with this Cartridge!"
+	desc = "Flaunt that Psychology degree with this cartridge!"
 	icon_state = "cart-m"
 	access = CART_MEDICAL
 	spam_enabled = TRUE
