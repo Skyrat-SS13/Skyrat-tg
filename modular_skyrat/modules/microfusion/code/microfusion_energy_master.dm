@@ -29,6 +29,8 @@
 	var/sound_cell_remove_volume = 100
 	/// A list of attached upgrades
 	var/list/attached_upgrades = list()
+	/// How many attachments can this gun hold?
+	var/max_attachments = 1
 
 /obj/item/gun/energy/microfusion/attackby(obj/item/attacking_item, mob/user, params)
 	. = ..()
@@ -100,6 +102,9 @@
 
 /// Attatching an upgrade.
 /obj/item/gun/energy/microfusion/proc/attach_upgrade(obj/item/microfusion_gun_attachment/microfusion_gun_attachment, mob/living/user)
+	if(attached_upgrades.len >= max_attachments)
+		to_chat(user, span_warning("[src] cannot fit any more attachments!"))
+		return FALSE
 	if(is_type_in_list(microfusion_gun_attachment, attached_upgrades))
 		to_chat(user, span_warning("[src] already has [microfusion_gun_attachment] installed!"))
 		return FALSE

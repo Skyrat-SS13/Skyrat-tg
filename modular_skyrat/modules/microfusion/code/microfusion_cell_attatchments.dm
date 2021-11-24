@@ -13,9 +13,16 @@ For adding unique abilities to microfusion cells. These cannot directly interact
 	var/attachment_overlay_icon_state
 	/// Does this attatchment process with the cell?
 	var/processing_attachment = FALSE
+	/// How much stability does this cost the cell?
+	var/stability_impact = 0
+
+/obj/item/microfusion_cell_attachment/examine(mob/user)
+	. = ..()
+	. += span_notice("It has a stability impact factor of [stability_impact]%.")
 
 /obj/item/microfusion_cell_attachment/proc/run_upgrade(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	SHOULD_CALL_PARENT(TRUE)
+	microfusion_cell.instability += stability_impact
 	microfusion_cell.update_appearance()
 	return
 
@@ -24,6 +31,7 @@ For adding unique abilities to microfusion cells. These cannot directly interact
 
 /obj/item/microfusion_cell_attachment/proc/remove_upgrade(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	SHOULD_CALL_PARENT(TRUE)
+	microfusion_cell.instability -= stability_impact
 	microfusion_cell.update_appearance()
 	return
 
@@ -41,6 +49,7 @@ Allows the cell to be recharged at a gun recharger OR cell recharger.
 	/// The bonus charge rate by adding this upgrade.
 	var/charge_rate = 100
 	var/initial_charge_rate = 0
+	stability_impact = 0.5
 
 /obj/item/microfusion_cell_attachment/rechargeable/run_upgrade(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	. = ..()
@@ -66,6 +75,7 @@ Increases the cell capacity by a set percentage.
 	/// The amount of capacity adding this attachment to the cell gives.
 	var/capacity_increase = 20 //PRECENT
 	var/initial_charge_capacity = 0
+	stability_impact = 1
 
 /obj/item/microfusion_cell_attachment/overcapacity/run_upgrade(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	. = ..()
@@ -90,6 +100,7 @@ The cell is stable and will not emit sparks when firing.
 	desc = "Stabalises the internal fusion reaction of microfusion cells."
 	icon_state = "attachment_stabaliser"
 	attachment_overlay_icon_state = "microfusion_stabaliser"
+	stability_impact = -10
 
 /obj/item/microfusion_cell_attachment/stabaliser/run_upgrade(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	. = ..()
@@ -106,11 +117,12 @@ The cell will charge itself.
 If the cell isn't stabalised by a stabaliser, it may emit a radaition pulse.
 */
 /obj/item/microfusion_cell_attachment/selfcharging
-	name = "stabalisation microfusion cell upgrade"
+	name = "self charging microfusion cell upgrade"
 	desc = "Contains a small amount of infinitely decaying nuclear material, causing the fusion reaction to be self sustaining. WARNING: May cause radiation burns if not stabalised."
 	icon_state = "attachment_selfcharge"
 	attachment_overlay_icon_state = "microfusion_selfcharge"
 	var/self_charge_amount = 20
+	stability_impact = 5
 
 /obj/item/microfusion_cell_attachment/selfcharging/process_upgrade(obj/item/stock_parts/cell/microfusion/microfusion_cell, delta_time)
 	microfusion_cell.charge = clamp(microfusion_cell.charge + (microfusion_cell.chargerate + self_charge_amount * delta_time / 2), 0, microfusion_cell.maxcharge)
