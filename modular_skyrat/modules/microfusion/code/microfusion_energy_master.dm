@@ -53,6 +53,8 @@
 		insert_cell(user, attacking_item)
 	if(istype(attacking_item, /obj/item/microfusion_gun_attachment))
 		attach_upgrade(attacking_item, user)
+	if(istype(attacking_item, /obj/item/microfusion_phase_emitter))
+		insert_emitter(attacking_item, user)
 
 /obj/item/gun/energy/microfusion/process_chamber(empty_chamber, from_firing, chamber_next_round)
 	. = ..()
@@ -69,16 +71,24 @@
 		return FALSE
 	return TRUE
 
-
 /obj/item/gun/energy/microfusion/attack_hand(mob/user, list/modifiers)
 	if(loc == user && user.is_holding(src) && cell)
 		eject_cell(user)
 		return
 	return ..()
 
+/obj/item/gun/energy/microfusion/crowbar_act(mob/living/user, obj/item/tool)
+	if(!phase_emitter)
+		to_chat(user, span_danger("There is no phase emitter for you to remove!"))
+		return
+	playsound(src, 'sound/items/screwdriver.ogg', 70, TRUE)
+	remove_emitter()
+
 /obj/item/gun/energy/microfusion/auxiliary_update_overlays()
 	for(var/obj/item/microfusion_gun_attachment/microfusion_gun_attachment in attached_upgrades)
 		. += "[icon_state]_[microfusion_gun_attachment.attachment_overlay_icon_state]"
+	if(phase_emitter)
+		. += "[icon_state]_[phase_emitter.icon_state]"
 	return .
 
 /obj/item/gun/energy/microfusion/examine(mob/user)
@@ -92,6 +102,22 @@
 		. += span_notice("Use a crowbar to remove the phase emitter.")
 	else
 		. += span_danger("It does not have a phase emitter installed!")
+
+/obj/item/gun/energy/microfusion/proc/remove_emitter()
+	phase_emitter.forceMove(get_turf(src))
+	phase_emitter = null
+	update_appearance()
+
+/obj/item/gun/energy/microfusion/proc/insert_emitter(obj/item/microfusion_phase_emitter/inserting_phase_emitter, mob/living/user)
+	if(phase_emitter)
+		to_chat(user, span_danger("There is already a phase emitter installed!"))
+		return FALSE
+	to_chat(user, span_notice("You carefully insert [inserting_phase_emitter] into the slot."))
+
+	inserting_phase_emitter.forceMove(src)
+	phase_emitter = inserting_phase_emitter
+	update_appearance()
+
 
 /// Try to insert the cell into the gun, if successful, return TRUE
 /obj/item/gun/energy/microfusion/proc/insert_cell(mob/user, obj/item/stock_parts/cell/microfusion/inserting_cell, display_message = TRUE)

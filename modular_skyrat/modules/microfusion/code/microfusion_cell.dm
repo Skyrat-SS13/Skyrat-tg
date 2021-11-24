@@ -83,6 +83,9 @@ These are basically advanced cells.
 		. += microfusion_cell_attachment.attachment_overlay_icon_state
 
 /obj/item/stock_parts/cell/microfusion/screwdriver_act(mob/living/user, obj/item/tool)
+	if(!attached_upgrades.len)
+		to_chat(user, span_danger("There are no attachments to remove!"))
+		return
 	remove_upgrades()
 	playsound(src, 'sound/items/screwdriver.ogg', 70, TRUE)
 	to_chat(user, span_notice("You remove the upgrades from [src]."))

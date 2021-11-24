@@ -126,7 +126,6 @@ The gun can fire X-RAY shots.
 	. = ..()
 	microfusion_gun.heat_per_shot += heat_addition
 	for(var/obj/item/ammo_casing/ammo_casing in microfusion_gun.ammo_type)
-		var/obj/projectile/our_projectile = ammo_casing.projectile_type
 		ammo_casing.projectile_piercing = PASSCLOSEDTURF|PASSGRILLE|PASSGLASS
 
 /obj/item/microfusion_gun_attachment/xray/remove_upgrade(obj/item/gun/energy/microfusion/microfusion_gun)
@@ -162,14 +161,17 @@ Basically the heart of the gun, can be upgraded.
 
 /obj/item/microfusion_phase_emitter/update_icon_state()
 	. = ..()
+
 	if(damaged)
 		icon_state = "[base_icon_state]_damaged"
 	else
-		switch(get_heat_percent())
-			if(40)
+		switch(heat_percent)
+			if(40 to 69)
 				icon_state = "[base_icon_state]_hot"
-			if(70)
+			if(70 to INFINITY)
 				icon_state = "[base_icon_state]_critical"
+			else
+				icon_state = base_icon_state
 
 /obj/item/microfusion_phase_emitter/examine(mob/user)
 	. = ..()
@@ -194,3 +196,4 @@ Basically the heart of the gun, can be upgraded.
 	damaged = TRUE
 	name = "damaged [name]"
 	say("ERROR: Integrity failure!")
+	STOP_PROCESSING(SSobj, src)
