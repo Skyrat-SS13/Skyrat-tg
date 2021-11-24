@@ -43,26 +43,32 @@
 	if(has_modes)
 		switch(flashlight_mode)
 			if(FLASHLIGHT_MODE_LOW)
-				power_use_amount = POWER_CELL_USE_MINIMUM
-				light_range = initial(light_range)
-				light_power = initial(light_power)
-				set_light_on(on)
 				flashlight_mode = FLASHLIGHT_MODE_MEDIUM
-				to_chat(user, span_notice("You set [src] to low."))
-			if(FLASHLIGHT_MODE_MEDIUM)
-				power_use_amount = POWER_CELL_USE_VERY_LOW
+				power_use_amount = POWER_CELL_USE_LOW
 				light_range = initial(light_range) + 2
 				light_power = initial(light_power) + 1
-				set_light_on(on)
-				flashlight_mode = FLASHLIGHT_MODE_HIGH
+				if(on)
+					set_light_on(FALSE)
+					set_light_on(TRUE)
 				to_chat(user, span_notice("You set [src] to medium."))
-			if(FLASHLIGHT_MODE_HIGH)
+			if(FLASHLIGHT_MODE_MEDIUM)
+				flashlight_mode = FLASHLIGHT_MODE_HIGH
 				power_use_amount = POWER_CELL_USE_LOW
 				light_range = initial(light_range) + 4
 				light_power = initial(light_power) + 2
-				set_light_on(on)
-				flashlight_mode = FLASHLIGHT_MODE_LOW
+				if(on)
+					set_light_on(FALSE)
+					set_light_on(TRUE)
 				to_chat(user, span_notice("You set [src] to high."))
+			if(FLASHLIGHT_MODE_HIGH)
+				flashlight_mode = FLASHLIGHT_MODE_LOW
+				power_use_amount = POWER_CELL_USE_MINIMUM
+				light_range = initial(light_range)
+				light_power = initial(light_power)
+				if(on)
+					set_light_on(FALSE)
+					set_light_on(TRUE)
+				to_chat(user, span_notice("You set [src] to low."))
 
 /obj/item/flashlight/attack_self(mob/user)
 	. = ..()
