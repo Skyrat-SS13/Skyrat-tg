@@ -27,7 +27,8 @@
 	mutanttongue = /obj/item/organ/tongue/vampire
 	limbs_id = SPECIES_HUMAN
 	skinned_type = /obj/item/stack/sheet/animalhide/human
-	var/info_text = "You are a <span class='danger'>Hemophage</span>. You will slowly but constantly lose blood if outside of a coffin. If inside a coffin, you will slowly heal. You may gain more blood by grabbing a live victim and using your drain ability."
+	/// Some starter text sent to the vampire initially, because vampires have shit to do to stay alive.
+	var/info_text = "You are a [span_danger("Hemophage")]. You will slowly but constantly lose blood if outside of a coffin. If inside a coffin, you will slowly heal. You may gain more blood by grabbing a live victim and using your drain ability."
 	/// The shapeshifting action, attached to the datum itself to avoid cloning memes, and other duplicates.
 	var/obj/effect/proc_holder/spell/targeted/shapeshift/bat/batform
 	/// Is it currently Halloween and are we the Halloween version? If not, we do not get a batform nor do we burn in the chapel.
