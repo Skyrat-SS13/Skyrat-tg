@@ -10,9 +10,10 @@ const Hemophage: Species = {
         rectangular-shaped object. So THAT'S why they do that!",
     }, {
       icon: "skull",
-      name: "Minor Undead",
-      description: "Hemophage can delay their thirst and heal by resting in any \
-        locker. Useful, not entirely practical, though.",
+      name: "Viral Symbiosis",
+      description: "Hemophages, due to their condition, cannot get infected by \
+        other viruses and don't actually require an external source of oxygen \
+        to stay alive."",
     }, {
       icon: "recycle",
       name: "Bat Form",
@@ -26,7 +27,7 @@ const Hemophage: Species = {
     bad: [{
       icon: "tint",
       name: "The Thirst",
-      description: "In place of eating, Hemophages suffer from The Thirst. \
+      description: "In place of eating, Hemophages suffer from the Thirst. \
       Thirst of what? Blood! Their tongue allows them to grab people and drink \
       their blood, and they will suffer severe consequences if they run out. As a note, it doesn't \
       matter whose blood you drink, it will all be converted into your blood \
