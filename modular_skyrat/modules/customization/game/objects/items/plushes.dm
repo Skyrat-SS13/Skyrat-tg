@@ -127,7 +127,7 @@
 
 /obj/item/toy/plush/sarmieplush
 	name = "cosplayer plushie"
-	desc = "A stuffed toy who look like a familiar cosplayer, <b>He looks sad.</b>"
+	desc = "A stuffed toy who look like a familiar cosplayer, <b>he looks sad.</b>"
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_sarmie"
 	inhand_icon_state = "plushie_sarmie"
