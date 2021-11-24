@@ -277,7 +277,7 @@
 	taste_description = "dissapointment"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "zenstar"
-	glass_name = "glass of zen Star"
+	glass_name = "glass of zen star"
 	glass_desc = "You'd think something so balanced would actually taste nice... you'd be dead wrong."
 
 // RACE SPECIFIC DRINKS
