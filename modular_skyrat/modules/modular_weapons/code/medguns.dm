@@ -92,7 +92,7 @@
 
 /obj/item/storage/briefcase/medicalgunset/standard
 	name = "VeyMedical CWM-479 cell-powered medigun case"
-	desc = "Contains the CWM-479 medigun"
+	desc = "Contains the CWM-479 medigun."
 
 /obj/item/storage/briefcase/medicalgunset/standard/PopulateContents()
 	new /obj/item/gun/energy/cell_loaded/medigun/standard(src)
