@@ -100,7 +100,7 @@ These are basically advanced cells.
 		for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment in attached_upgrades)
 			. += span_notice("It has a [microfusion_cell_attachment.name] installed.")
 		. += span_notice("Use a <b>screwdriver</b> to remove the upgrades.")
-	if(!instability)
+	if(instability <= 0)
 		. += span_notice("The fusion containment field is nominal.")
 	else
 		. += span_warning("WARNING: Fusion containment field compromised by [instability]%!")
