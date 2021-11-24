@@ -132,7 +132,7 @@ These are basically advanced cells.
 	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER, TOOL_WELDER)
 	result = /obj/item/stock_parts/cell/microfusion/makeshift
 	reqs = list(/obj/item/trash/can = 1,
-				/obj/item/stack/sheet/minreal/iron = 1,
+				/obj/item/stack/sheet/iron = 1,
 				/obj/item/stack/cable_coil = 1)
 	time = 120
 	category = CAT_MISC
