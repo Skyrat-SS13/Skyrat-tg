@@ -1,6 +1,6 @@
-#define FLASHLIGHT_MODE_LOW 0
-#define FLASHLIGHT_MODE_MEDIUM 1
-#define FLASHLIGHT_MODE_HIGH 2
+#define FLASHLIGHT_MODE_LOW "low"
+#define FLASHLIGHT_MODE_MEDIUM "medium"
+#define FLASHLIGHT_MODE_HIGH "high"
 
 /obj/item/flashlight
 	/// Does this flashlight utilize batteries?
@@ -9,7 +9,7 @@
 	var/cell_override
 	/// How much power (per process) does this flashlight use, if uses_battery = TRUE
 	power_use_amount = POWER_CELL_USE_MINIMUM
-	/// Flashlight mode, 0 = low, 1 = medium, 2 = high
+	/// Mode of the flashlight, how strong the light is and how much the power usage is affected.
 	var/flashlight_mode = FLASHLIGHT_MODE_LOW
 	/// Does this flashlight have modes?
 	var/has_modes = TRUE
@@ -36,7 +36,8 @@
 /obj/item/flashlight/examine(mob/user)
 	. = ..()
 	if(has_modes)
-		. += span_notice("This flashlight has modes! Ctrl+click it to change the mode.")
+		. += "This flashlight has modes! Ctrl-click it to change the mode."
+		. += "It is currently set to [flashlight_mode] intensity."
 
 /obj/item/flashlight/CtrlClick(mob/user)
 	. = ..()
@@ -44,30 +45,21 @@
 		switch(flashlight_mode)
 			if(FLASHLIGHT_MODE_LOW)
 				flashlight_mode = FLASHLIGHT_MODE_MEDIUM
-				power_use_amount = POWER_CELL_USE_LOW
-				light_range = initial(light_range) + 2
-				light_power = initial(light_power) + 1
-				if(on)
-					set_light_on(FALSE)
-					set_light_on(TRUE)
+				power_use_amount = POWER_CELL_USE_VERY_LOW
+				set_light_range(initial(light_range) + 1)
+				set_light_power(initial(light_power) + 1)
 				to_chat(user, span_notice("You set [src] to medium."))
 			if(FLASHLIGHT_MODE_MEDIUM)
 				flashlight_mode = FLASHLIGHT_MODE_HIGH
 				power_use_amount = POWER_CELL_USE_LOW
-				light_range = initial(light_range) + 4
-				light_power = initial(light_power) + 2
-				if(on)
-					set_light_on(FALSE)
-					set_light_on(TRUE)
+				set_light_range(initial(light_range) + 2)
+				set_light_power(initial(light_power) + 2)
 				to_chat(user, span_notice("You set [src] to high."))
 			if(FLASHLIGHT_MODE_HIGH)
 				flashlight_mode = FLASHLIGHT_MODE_LOW
 				power_use_amount = POWER_CELL_USE_MINIMUM
-				light_range = initial(light_range)
-				light_power = initial(light_power)
-				if(on)
-					set_light_on(FALSE)
-					set_light_on(TRUE)
+				set_light_range(initial(light_range))
+				set_light_power(initial(light_power))
 				to_chat(user, span_notice("You set [src] to low."))
 
 /obj/item/flashlight/attack_self(mob/user)
