@@ -84,7 +84,7 @@
 /obj/effect/proc_holder/spell/targeted/shapeshift/bat
 	name = "Bat Form"
 	desc = "Take on the shape a space bat."
-	invocation = "Squeak!"
-	charge_max = 50
-	cooldown_min = 50
+	invocation = "*snap"
+	charge_max = 5 SECONDS
+	cooldown_min = 5 SECONDS
 	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/bat
