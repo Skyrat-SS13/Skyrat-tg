@@ -102,7 +102,7 @@ The gun can fire volleys of shots.
 	icon_state = "attachment_repeater"
 	attachment_overlay_icon_state = "repeater_attachment"
 	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter)
-	/// How much recoil are we adding?
+	heat_addition = 40
 	var/burst_to_add = 1
 	var/delay_to_add = 1
 
