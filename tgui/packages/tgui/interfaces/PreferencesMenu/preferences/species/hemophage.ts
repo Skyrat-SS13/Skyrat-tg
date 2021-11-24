@@ -6,8 +6,8 @@ const Hemophage: Species = {
     good: [{
       icon: "bed",
       name: "Locker Brooding",
-      description: "Hemophages can delay The Thirst and heal by resting in a \
-        rectangular-shaped object. So THAT'S why they do that!",
+      description: "Hemophages can delay their Thirst and mend their injuries by \
+        resting in a sturdy rectangular-shaped object. So THAT'S why they do that!",
     }, {
       icon: "skull",
       name: "Viral Symbiosis",
