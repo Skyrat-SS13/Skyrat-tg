@@ -40,19 +40,16 @@
 		return TRUE
 	return ..()
 
-/datum/species/hemophage/on_species_gain(mob/living/carbon/human/C, datum/species/old_species)
+/datum/species/vampire/on_species_gain(mob/living/carbon/human/new_vampire, datum/species/old_species)
 	. = ..()
-	to_chat(C, "[info_text]")
-	// C.skin_tone = "albino" SKYRAT EDIT: Allow hemophages to be different skin tones beside one
-	C.update_body(0)
-	//SKYRAT EDIT: Allow a neutered version of hemophages without batform
+	to_chat(new_vampire, "[info_text]")
+	new_vampire.update_body(0)
+	new_vampire.set_safe_hunger_level()
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
 		halloween_version = TRUE
-	if(isnull(batform) && halloween_version)
-	//SKYRAT EDIT: Allow a neutered version of hemophages without batform
+	if(isnull(batform) && halloween_version) // You can only have a batform during Halloween.
 		batform = new
-		C.AddSpell(batform)
-	C.set_safe_hunger_level()
+		new_vampire.AddSpell(batform)
 
 /datum/species/hemophage/on_species_loss(mob/living/carbon/ex_vampire)
 	. = ..()
