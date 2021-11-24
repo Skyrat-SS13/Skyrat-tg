@@ -60,27 +60,27 @@
 		ex_vampire.RemoveSpell(batform)
 		QDEL_NULL(batform)
 
-/datum/species/hemophage/spec_life(mob/living/carbon/human/C, delta_time, times_fired)
+/datum/species/hemophage/spec_life(mob/living/carbon/human/vampire, delta_time, times_fired)
 	. = ..()
-	if(istype(C.loc, /obj/structure/closet) && !istype(C.loc, /obj/structure/closet/body_bag)) // SKYRAT EDIT - NORMAL CLOSETS INSTEAD OF COFFINS.
-		C.heal_overall_damage(1.5 * delta_time, 1.5 * delta_time, 0, BODYPART_ORGANIC) // SKYRAT EDIT - ORIGINAL 2 - Fast, but not as fast due ot them being able to use normal lockers.
-		C.adjustToxLoss(-1 * delta_time) // SKYRAT EDIT - ORIGINAL 2 - 50% base speed to keep it fair
-		C.adjustOxyLoss(-2 * delta_time)
-		C.adjustCloneLoss(-0.5 * delta_time) // SKYRAT EDIT - ORIGINAL 2 - HARDMODE DAMAGE
+	if(istype(vampire.loc, /obj/structure/closet) && !istype(vampire.loc, /obj/structure/closet/body_bag))
+		vampire.heal_overall_damage(1.5 * delta_time, 1.5 * delta_time, 0, BODYPART_ORGANIC) // Fast, but not as fast due to them being able to use normal lockers.
+		vampire.adjustToxLoss(-1 * delta_time) // 50% base speed to keep it fair.
+		vampire.adjustOxyLoss(-2 * delta_time)
+		vampire.adjustCloneLoss(-0.5 * delta_time) // HARDMODE DAMAGE
 		return
-	C.blood_volume -= 0.125 * delta_time
-	if(C.blood_volume <= BLOOD_VOLUME_SURVIVE)
-		to_chat(C, span_danger("You ran out of blood!"))
-		var/obj/shapeshift_holder/H = locate() in C
-		if(H)
-			H.shape.death() //make sure we're killing the bat if you are out of blood, if you don't it creates weird situations where the bat is alive but the caster is dusted.
-		C.death() // Skyrat Edit - Owch! Ran out of blood.
-	var/area/A = get_area(C)
-	if(istype(A, /area/service/chapel) && halloween_version) // SKYRAT EDIT: If hemophages have bat form, they cannot enter the church
-		to_chat(C, span_warning("You don't belong here!"))
-		C.adjustFireLoss(10 * delta_time)
-		C.adjust_fire_stacks(3 * delta_time)
-		C.IgniteMob()
+	vampire.blood_volume -= 0.125 * delta_time
+	if(vampire.blood_volume <= BLOOD_VOLUME_SURVIVE)
+		to_chat(vampire, span_danger("You ran out of blood!"))
+		var/obj/shapeshift_holder/holder = locate() in vampire
+		if(holder)
+			holder.shape.death() //make sure we're killing the bat if you are out of blood, if you don't it creates weird situations where the bat is alive but the caster is dead.
+		vampire.death() // Owch! Ran out of blood.
+	var/area/A = get_area(vampire)
+	if(istype(A, /area/service/chapel) && halloween_version) // If hemophages have bat form, they cannot enter the church
+		to_chat(vampire, span_warning("You don't belong here!"))
+		vampire.adjustFireLoss(10 * delta_time)
+		vampire.adjust_fire_stacks(3 * delta_time)
+		vampire.IgniteMob()
 
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/bat
