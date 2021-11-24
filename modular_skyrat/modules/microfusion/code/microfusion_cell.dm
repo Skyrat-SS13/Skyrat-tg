@@ -1,8 +1,3 @@
-#define MICROFUSION_CELL_DRAIN_FAILURE 500
-/// in deciseconds.
-#define MICROFUSION_CELL_FAILURE_LOWER 100
-#define MICROFUSION_CELL_FAILURE_UPPER 150
-
 /*
 MICROFUSION CELL SYSTEM
 
@@ -30,7 +25,10 @@ These are basically advanced cells.
 	var/meltdown = FALSE
 	/// How many upgrades can you have on this cell?
 	var/max_attachments = 1
+	/// Do we show the microfusion readout instead of KJ?
 	microfusion_readout = TRUE
+	/// Hard ref to the parent gun.
+	var/obj/item/gun/microfusion/parent_gun
 
 /obj/item/stock_parts/cell
 	/// Is this cell stabalised? (used in microfusion guns)
@@ -43,6 +41,7 @@ These are basically advanced cells.
 		for(var/obj/item/iterating_item in attached_upgrades)
 			iterating_item.forceMove(get_turf(src))
 		attached_upgrades = null
+	parent_gun = null
 	return ..()
 
 /obj/item/stock_parts/cell/microfusion/attackby(obj/item/attacking_item, mob/living/user, params)

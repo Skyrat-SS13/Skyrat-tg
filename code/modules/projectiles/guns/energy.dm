@@ -211,7 +211,6 @@
 /obj/item/gun/energy/update_overlays()
 	. = ..()
 	// SKYRAT EDIT START
-	. += auxiliary_update_overlays()
 	if(!automatic_charge_overlays || !cell)
 		return
 	// SKYRAT EDIT END

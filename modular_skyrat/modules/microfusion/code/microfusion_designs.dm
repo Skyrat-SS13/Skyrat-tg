@@ -45,7 +45,7 @@
 /datum/design/bluespace_microfusion_cell
 	name = "Enhanced Microfusion Cell"
 	desc = "A bluespace microfusion cell with a capacity of 2000 MF and 4 attachment points."
-	id = "enhanced_microfusion_cell"
+	id = "bluespace_microfusion_cell"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	materials = list(/datum/material/iron = 1000, /datum/material/gold = 300, /datum/material/glass = 300, /datum/material/diamond = 300, /datum/material/uranium = 300, /datum/material/titanium = 300, /datum/material/bluespace = 300)
 	construction_time = 100

@@ -114,4 +114,3 @@
 	dismemberment = 50
 	pierces = 1
 	projectile_piercing = PASSCLOSEDTURF|PASSGRILLE|PASSGLASS
-	projectile_phasing = 0

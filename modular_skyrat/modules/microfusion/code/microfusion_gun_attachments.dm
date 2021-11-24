@@ -16,16 +16,16 @@ For adding unique abilities to microfusion guns, these can directly interact wit
 	/// The added heat produced by having this module installed.
 	var/heat_addition = 0
 
-/obj/item/microfusion_gun_attachment/proc/run_attachment(obj/item/gun/energy/microfusion/microfusion_gun)
+/obj/item/microfusion_gun_attachment/proc/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	SHOULD_CALL_PARENT(TRUE)
 	microfusion_gun.heat_per_shot += heat_addition
 	microfusion_gun.update_appearance()
 	return
 
-/obj/item/microfusion_gun_attachment/proc/process_upgrade(obj/item/gun/energy/microfusion/microfusion_gun)
+/obj/item/microfusion_gun_attachment/proc/process_upgrade(obj/item/gun/microfusion/microfusion_gun)
 	return
 
-/obj/item/microfusion_gun_attachment/proc/remove_upgrade(obj/item/gun/energy/microfusion/microfusion_gun)
+/obj/item/microfusion_gun_attachment/proc/remove_upgrade(obj/item/gun/microfusion/microfusion_gun)
 	SHOULD_CALL_PARENT(TRUE)
 	microfusion_gun.heat_per_shot -= heat_addition
 	microfusion_gun.update_appearance()
@@ -49,7 +49,7 @@ The cell is stable and will not emit sparks when firing.
 	/// How much recoil are we adding?
 	var/recoil_to_add = 1
 
-/obj/item/microfusion_gun_attachment/scatter/run_attachment(obj/item/gun/energy/microfusion/microfusion_gun)
+/obj/item/microfusion_gun_attachment/scatter/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	microfusion_gun.recoil += recoil_to_add
 	for(var/obj/item/ammo_casing/ammo_casing in microfusion_gun.ammo_type)
@@ -58,7 +58,7 @@ The cell is stable and will not emit sparks when firing.
 		ammo_casing.damage_override = initial(our_projectile.damage) / ammo_casing.pellets
 		ammo_casing.variance += variance_to_add
 
-/obj/item/microfusion_gun_attachment/scatter/remove_upgrade(obj/item/gun/energy/microfusion/microfusion_gun)
+/obj/item/microfusion_gun_attachment/scatter/remove_upgrade(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	microfusion_gun.recoil -= recoil_to_add
 	for(var/obj/item/ammo_casing/ammo_casing in microfusion_gun.ammo_type)
@@ -79,11 +79,11 @@ The cell is stable and will not emit sparks when firing.
 	/// How much recoil are we adding?
 	var/recoil_to_remove = 0.5
 
-/obj/item/microfusion_gun_attachment/focus/run_attachment(obj/item/gun/energy/microfusion/microfusion_gun)
+/obj/item/microfusion_gun_attachment/focus/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	microfusion_gun.recoil -= recoil_to_remove
 
-/obj/item/microfusion_gun_attachment/focus/remove_upgrade(obj/item/gun/energy/microfusion/microfusion_gun)
+/obj/item/microfusion_gun_attachment/focus/remove_upgrade(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	microfusion_gun.recoil += recoil_to_remove
 
@@ -99,15 +99,20 @@ The gun can fire volleys of shots.
 	attachment_overlay_icon_state = "repeater_attachment"
 	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter)
 	/// How much recoil are we adding?
-	var/burst_to_add = 2
+	var/burst_to_add = 1
+	var/delay_to_add = 1
 
-/obj/item/microfusion_gun_attachment/repeater/run_attachment(obj/item/gun/energy/microfusion/microfusion_gun)
+
+
+/obj/item/microfusion_gun_attachment/repeater/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	microfusion_gun.burst_size += burst_to_add
+	microfusion_gun.fire_delay += delay_to_add
 
-/obj/item/microfusion_gun_attachment/repeater/remove_upgrade(obj/item/gun/energy/microfusion/microfusion_gun)
+/obj/item/microfusion_gun_attachment/repeater/remove_upgrade(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	microfusion_gun.burst_size -= burst_to_add
+	microfusion_gun.fire_delay -= delay_to_add
 
 /*
 X-RAY ATTACHMENT
@@ -122,13 +127,13 @@ The gun can fire X-RAY shots.
 	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter)
 	heat_addition = 90
 
-/obj/item/microfusion_gun_attachment/xray/run_attachment(obj/item/gun/energy/microfusion/microfusion_gun)
+/obj/item/microfusion_gun_attachment/xray/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	microfusion_gun.heat_per_shot += heat_addition
 	for(var/obj/item/ammo_casing/ammo_casing in microfusion_gun.ammo_type)
 		ammo_casing.projectile_piercing = PASSCLOSEDTURF|PASSGRILLE|PASSGLASS
 
-/obj/item/microfusion_gun_attachment/xray/remove_upgrade(obj/item/gun/energy/microfusion/microfusion_gun)
+/obj/item/microfusion_gun_attachment/xray/remove_upgrade(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	microfusion_gun.heat_per_shot -= heat_addition
 	for(var/obj/item/ammo_casing/ammo_casing in microfusion_gun.ammo_type)
@@ -147,17 +152,41 @@ Basically the heart of the gun, can be upgraded.
 	var/max_heat = 1000
 	/// Current heat level
 	var/current_heat = 0
+	/// Thermal throttle percentage
+	var/throttle_percentage = 80
 	/// How much heat it dissipates passively
 	var/heat_dissipation_per_tick = 10
+	/// What is our dynamic integrity?
+	var/integrity = 100
 	/// Are we fucked?
 	var/damaged = FALSE
+	/// Hard ref to the gun.
+	var/obj/item/gun/microfusion/parent_gun
 
 /obj/item/microfusion_phase_emitter/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
+/obj/item/microfusion_phase_emitter/Destroy()
+	parent_gun = null
+	return ..()
+
 /obj/item/microfusion_phase_emitter/process(delta_time)
 	heat = clamp(heat - heat_dissipation_per_tick * delta_time, 0, INFINITY)
+	if(heat > max_heat)
+		integrity = integrity - (current_heat - max_heat * delta_time)
+	if(integrity <= 0)
+		kill()
+
+/obj/item/microfusion_phase_emitter/multitool_act(mob/living/user, obj/item/tool)
+	var/new_throttle = clamp(input(user, "Please input a new thermal throttle percentage(0-300):", "Phase Emitter Overclock") as null|num, 1, 300)
+
+	to_chat(user, span_notice("Thermal throttle percent set to: [new_throttle]."))
+
+	if(new_throttle > 100)
+		to_chat(user, span_danger("WARNING: You have input a throttle percentage of more than 100, this may cause emitter damage."))
+
+	throttle_percentage = new_throttle
 
 /obj/item/microfusion_phase_emitter/update_icon_state()
 	. = ..()
@@ -165,7 +194,7 @@ Basically the heart of the gun, can be upgraded.
 	if(damaged)
 		icon_state = "[base_icon_state]_damaged"
 	else
-		switch(heat_percent)
+		switch(get_heat_percent())
 			if(40 to 69)
 				icon_state = "[base_icon_state]_hot"
 			if(70 to INFINITY)
@@ -179,18 +208,20 @@ Basically the heart of the gun, can be upgraded.
 		. += span_danger("It is damaged beyond repair.")
 	else
 		. += span_notice("Heat capacity: [get_heat_percent()]%")
+		. += span_notice("Integrity: [integrity]%")
+		. += span_notice("Thermal throttle: [throttle_percentage]%")
 
 /obj/item/microfusion_phase_emitter/proc/get_heat_percent()
 	return round(heat / max_heat * 100)
 
 /obj/item/microfusion_phase_emitter/proc/generate_shot(heat_to_add)
 	if(damaged)
-		return FALSE
+		return PHASE_FAILURE_DAMAGED
+	if(get_heat_percent() >= throttle_percentage)
+		return PHASE_FAILURE_THROTTLE
 	heat += heat_to_add
-	if(heat > max_heat)
-		kill()
 	update_appearance()
-	return TRUE
+	return SHOT_SUCCESS
 
 /obj/item/microfusion_phase_emitter/proc/kill()
 	damaged = TRUE

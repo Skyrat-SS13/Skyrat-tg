@@ -59,7 +59,7 @@
 		"explosive_weapons",
 	)
 	design_ids = list(
-		"bluespace_power_cell",
+		"bluespace_microfusion_cell",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 

@@ -1,17 +1,41 @@
+
 // Master file for cell loadable energy guns. PROCS ONLY YOU MONKEYS!
 
-/// This is called regardless of if a cell is in the gun.
-/obj/item/gun/energy/proc/auxiliary_update_overlays()
-	return
-
-/obj/item/gun/energy/microfusion
+/obj/item/gun/microfusion
 	name = "prototype detatchable cell energy projection aparatus"
 	desc = "The coders have obviously failed to realise this is broken."
 	icon = 'modular_skyrat/modules/microfusion/icons/guns40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
-	ammo_type = list(/obj/item/ammo_casing/energy/laser/microfusion)
-	cell_type = /obj/item/stock_parts/cell/microfusion
+
+	/// What type of power cell this uses
+	var/obj/item/stock_parts/cell/microfusion/cell
+	var/cell_type = /obj/item/stock_parts/cell/microfusion
+	///if the weapon has custom icons for individual ammo types it can switch between. ie disabler beams, taser, laser/lethals, ect.
+	var/modifystate = FALSE
+	var/list/ammo_type = list(/obj/item/ammo_casing/energy/laser/microfusion)
+	///The state of the select fire switch. Determines from the ammo_type list what kind of shot is fired next.
+	var/select = 1
+	///If the user can select the firemode through attack_self.
+	var/can_select = TRUE
+	///Can it be charged in a recharger?
+	var/can_charge = TRUE
+	///Do we handle overlays with base update_icon()?
+	var/automatic_charge_overlays = TRUE
+	var/charge_sections = 4
+	ammo_x_offset = 2
+	///if this gun uses a stateful charge bar for more detail
+	var/shaded_charge = FALSE
+	///If this gun has a "this is loaded with X" overlay alongside chargebars and such
+	var/single_shot_type_overlay = TRUE
+	///Should we give an overlay to empty guns?
+	var/display_empty = TRUE
+	///whether the gun's cell drains the cyborg user's cell to recharge
+	var/use_cyborg_cell = FALSE
+	///set to true so the gun is given an empty cell
+	var/dead_cell = FALSE
+
+	// MICROFUSION SPECIFIC VARS
 
 	/// The time it takes for someone to (tactically) reload this gun. In deciseconds.
 	var/reload_time = 2 SECONDS
@@ -38,14 +62,186 @@
 	/// The amount of heat produced per shot
 	var/heat_per_shot = 10
 
-/obj/item/gun/energy/microfusion/Initialize(mapload)
+/obj/item/gun/microfusion/emp_act(severity)
 	. = ..()
+	if(!(. & EMP_PROTECT_CONTENTS))
+		cell.use(round(cell.charge / severity))
+		chambered = null //we empty the chamber
+		recharge_newshot() //and try to charge a new shot
+		update_appearance()
+
+/obj/item/gun/microfusion/get_cell()
+	return cell
+
+/obj/item/gun/microfusion/Initialize(mapload)
+	. = ..()
+	if(cell_type)
+		cell = new cell_type(src)
+	else
+		cell = new(src)
+	cell.parent_gun = src
+	if(!dead_cell)
+		cell.give(cell.maxcharge)
 	if(phase_emitter_type)
 		phase_emitter = new phase_emitter_type(src)
 	else
 		phase_emitter = new(src)
+	phase_emitter.parent_gun = src
+	update_ammo_types()
+	recharge_newshot(TRUE)
+	update_appearance()
+	RegisterSignal(src, COMSIG_ITEM_RECHARGED, .proc/instant_recharge)
 
-/obj/item/gun/energy/microfusion/attackby(obj/item/attacking_item, mob/user, params)
+/obj/item/gun/microfusion/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
+
+/obj/item/gun/microfusion/add_weapon_description()
+	AddElement(/datum/element/weapon_description, attached_proc = .proc/add_notes_energy)
+
+/obj/item/gun/microfusion/Destroy()
+	if(cell)
+		QDEL_NULL(cell)
+	if(attached_upgrades.len)
+		for(var/obj/item/iterating_item in attached_upgrades)
+			qdel(iterating_item)
+		attached_upgrades = null
+	if(phase_emitter)
+		QDEL_NULL(phase_emitter)
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/item/gun/microfusion/handle_atom_del(atom/A)
+	if(A == cell)
+		cell = null
+		update_appearance()
+	if(A == phase_emitter)
+		phase_emitter = null
+		update_appearance()
+	return ..()
+
+/obj/item/gun/microfusion/attack_self(mob/living/user as mob)
+	if(ammo_type.len > 1 && can_select)
+		select_fire(user)
+
+/obj/item/gun/microfusion/can_shoot()
+	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
+	return !QDELETED(cell) ? (cell.charge >= shot.e_cost) : FALSE
+
+/obj/item/gun/microfusion/recharge_newshot(no_cyborg_drain)
+	if (!ammo_type || !cell)
+		return
+	if(use_cyborg_cell && !no_cyborg_drain)
+		if(iscyborg(loc))
+			var/mob/living/silicon/robot/R = loc
+			if(R.cell)
+				var/obj/item/ammo_casing/energy/shot = ammo_type[select] //Necessary to find cost of shot
+				if(R.cell.use(shot.e_cost)) //Take power from the borg...
+					cell.give(shot.e_cost) //... to recharge the shot
+	if(!chambered)
+		var/obj/item/ammo_casing/energy/AC = ammo_type[select]
+		if(cell.charge >= AC.e_cost) //if there's enough power in the cell cell...
+			chambered = AC //...prepare a new shot based on the current ammo type selected
+			if(!chambered.loaded_projectile)
+				chambered.newshot()
+
+/obj/item/gun/microfusion/handle_chamber()
+	if(chambered && !chambered.loaded_projectile) //if loaded_projectile is null, i.e the shot has been fired...
+		var/obj/item/ammo_casing/energy/shot = chambered
+		cell.use(shot.e_cost)//... drain the cell
+	chambered = null //either way, released the prepared shot
+	recharge_newshot() //try to charge a new shot
+
+/obj/item/gun/microfusion/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
+	if(!chambered && can_shoot())
+		process_chamber() // If the gun was drained and then recharged, load a new shot.
+	return ..()
+
+/obj/item/gun/microfusion/process_burst(mob/living/user, atom/target, message = TRUE, params = null, zone_override="", sprd = 0, randomized_gun_spread = 0, randomized_bonus_spread = 0, rand_spr = 0, iteration = 0)
+	if(!chambered && can_shoot())
+		process_chamber() // Ditto.
+	return ..()
+
+/obj/item/gun/microfusion/update_icon_state()
+	var/skip_inhand = initial(inhand_icon_state) //only build if we aren't using a preset inhand icon
+	var/skip_worn_icon = initial(worn_icon_state) //only build if we aren't using a preset worn icon
+
+	if(skip_inhand && skip_worn_icon) //if we don't have either, don't do the math.
+		return ..()
+
+	var/ratio = get_charge_ratio()
+	var/temp_icon_to_use = initial(icon_state)
+	if(modifystate)
+		var/obj/item/ammo_casing/energy/shot = ammo_type[select]
+		temp_icon_to_use += "[shot.select_name]"
+
+	temp_icon_to_use += "[ratio]"
+	if(!skip_inhand)
+		inhand_icon_state = temp_icon_to_use
+	if(!skip_worn_icon)
+		worn_icon_state = temp_icon_to_use
+	return ..()
+
+/obj/item/gun/microfusion/update_overlays()
+	. = ..()
+	for(var/obj/item/microfusion_gun_attachment/microfusion_gun_attachment in attached_upgrades)
+		. += "[icon_state]_[microfusion_gun_attachment.attachment_overlay_icon_state]"
+	if(phase_emitter)
+		. += "[icon_state]_[phase_emitter.icon_state]"
+
+	if(!automatic_charge_overlays || !cell)
+		return
+
+	var/overlay_icon_state = "[icon_state]_charge"
+	if(modifystate)
+		var/obj/item/ammo_casing/energy/shot = ammo_type[select]
+		if(single_shot_type_overlay)
+			. += "[icon_state]_[shot.select_name]"
+		overlay_icon_state += "_[shot.select_name]"
+
+	var/ratio = get_charge_ratio()
+	if(ratio == 0 && display_empty)
+		. += "[icon_state]_empty"
+		return
+	if(shaded_charge)
+		. += "[icon_state]_charge[ratio]"
+		return
+	var/mutable_appearance/charge_overlay = mutable_appearance(icon, overlay_icon_state)
+	for(var/i = ratio, i >= 1, i--)
+		charge_overlay.pixel_x = ammo_x_offset * (i - 1)
+		charge_overlay.pixel_y = ammo_y_offset * (i - 1)
+		. += new /mutable_appearance(charge_overlay)
+
+/obj/item/gun/microfusion/ignition_effect(atom/A, mob/living/user)
+	if(!can_shoot() || !ammo_type[select])
+		shoot_with_empty_chamber()
+		. = ""
+	else
+		var/obj/item/ammo_casing/energy/E = ammo_type[select]
+		var/obj/projectile/energy/loaded_projectile = E.loaded_projectile
+		if(!loaded_projectile)
+			. = ""
+		else if(loaded_projectile.nodamage || !loaded_projectile.damage || loaded_projectile.damage_type == STAMINA)
+			user.visible_message(span_danger("[user] tries to light [A.loc == user ? "[user.p_their()] [A.name]" : A] with [src], but it doesn't do anything. Dumbass."))
+			playsound(user, E.fire_sound, 50, TRUE)
+			playsound(user, loaded_projectile.hitsound, 50, TRUE)
+			cell.use(E.e_cost)
+			. = ""
+		else if(loaded_projectile.damage_type != BURN)
+			user.visible_message(span_danger("[user] tries to light [A.loc == user ? "[user.p_their()] [A.name]" : A] with [src], but only succeeds in utterly destroying it. Dumbass."))
+			playsound(user, E.fire_sound, 50, TRUE)
+			playsound(user, loaded_projectile.hitsound, 50, TRUE)
+			cell.use(E.e_cost)
+			qdel(A)
+			. = ""
+		else
+			playsound(user, E.fire_sound, 50, TRUE)
+			playsound(user, loaded_projectile.hitsound, 50, TRUE)
+			cell.use(E.e_cost)
+			. = span_danger("[user] casually lights [A.loc == user ? "[user.p_their()] [A.name]" : A] with [src]. Damn.")
+
+
+/obj/item/gun/microfusion/attackby(obj/item/attacking_item, mob/user, params)
 	. = ..()
 	if (.)
 		return
@@ -56,42 +252,25 @@
 	if(istype(attacking_item, /obj/item/microfusion_phase_emitter))
 		insert_emitter(attacking_item, user)
 
-/obj/item/gun/energy/microfusion/process_chamber(empty_chamber, from_firing, chamber_next_round)
+/obj/item/gun/microfusion/process_chamber(empty_chamber, from_firing, chamber_next_round)
 	. = ..()
 	if(!cell.stabalised && prob(50))
 		do_sparks(2, FALSE, src) //Microfusion guns create sparks!
 
-/obj/item/gun/energy/microfusion/can_shoot()
-	if(!phase_emitter)
-		return FALSE
-	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
-	if(QDELETED(cell) || cell.charge < shot.e_cost )
-		return FALSE
-	if(!phase_emitter.generate_shot(heat_per_shot))
-		return FALSE
-	return TRUE
-
-/obj/item/gun/energy/microfusion/attack_hand(mob/user, list/modifiers)
+/obj/item/gun/microfusion/attack_hand(mob/user, list/modifiers)
 	if(loc == user && user.is_holding(src) && cell)
 		eject_cell(user)
 		return
 	return ..()
 
-/obj/item/gun/energy/microfusion/crowbar_act(mob/living/user, obj/item/tool)
+/obj/item/gun/microfusion/crowbar_act(mob/living/user, obj/item/tool)
 	if(!phase_emitter)
 		to_chat(user, span_danger("There is no phase emitter for you to remove!"))
 		return
-	playsound(src, 'sound/items/screwdriver.ogg', 70, TRUE)
+	playsound(src, 'sound/items/crowbar.ogg', 70, TRUE)
 	remove_emitter()
 
-/obj/item/gun/energy/microfusion/auxiliary_update_overlays()
-	for(var/obj/item/microfusion_gun_attachment/microfusion_gun_attachment in attached_upgrades)
-		. += "[icon_state]_[microfusion_gun_attachment.attachment_overlay_icon_state]"
-	if(phase_emitter)
-		. += "[icon_state]_[phase_emitter.icon_state]"
-	return .
-
-/obj/item/gun/energy/microfusion/examine(mob/user)
+/obj/item/gun/microfusion/examine(mob/user)
 	. = ..()
 	if(attached_upgrades.len)
 		for(var/obj/item/microfusion_gun_attachment/microfusion_gun_attachment in attached_upgrades)
@@ -103,12 +282,173 @@
 	else
 		. += span_danger("It does not have a phase emitter installed!")
 
-/obj/item/gun/energy/microfusion/proc/remove_emitter()
+	if(cell)
+		. += span_notice("It has a [cell.name] installed, with a capacity of [cell.charge]/[cell.maxcharge] MF.")
+
+/obj/item/gun/microfusion/suicide_act(mob/living/user)
+	if (istype(user) && can_shoot() && can_trigger_gun(user) && user.get_bodypart(BODY_ZONE_HEAD))
+		user.visible_message(span_suicide("[user] is putting the barrel of [src] in [user.p_their()] mouth. It looks like [user.p_theyre()] trying to commit suicide!"))
+		sleep(25)
+		if(user.is_holding(src))
+			user.visible_message(span_suicide("[user] melts [user.p_their()] face off with [src]!"))
+			playsound(loc, fire_sound, 50, TRUE, -1)
+			var/obj/item/ammo_casing/energy/shot = ammo_type[select]
+			cell.use(shot.e_cost)
+			update_appearance()
+			return(FIRELOSS)
+		else
+			user.visible_message(span_suicide("[user] panics and starts choking to death!"))
+			return(OXYLOSS)
+	else
+		user.visible_message(span_suicide("[user] is pretending to melt [user.p_their()] face off with [src]! It looks like [user.p_theyre()] trying to commit suicide!</b>"))
+		playsound(src, dry_fire_sound, 30, TRUE)
+		return (OXYLOSS)
+
+// To maintain modularity, I am moving this proc override here.
+/obj/item/gun/microfusion/fire_gun(atom/target, mob/living/user, flag, params)
+	if(QDELETED(target))
+		return
+	if(firing_burst)
+		return
+	if(flag) //It's adjacent, is the user, or is on the user's person
+		if(target in user.contents) //can't shoot stuff inside us.
+			return
+		if(!ismob(target) || user.combat_mode) //melee attack
+			return
+		if(target == user && user.zone_selected != BODY_ZONE_PRECISE_MOUTH) //so we can't shoot ourselves (unless mouth selected)
+			return
+		if(iscarbon(target))
+			var/mob/living/carbon/C = target
+			for(var/i in C.all_wounds)
+				var/datum/wound/W = i
+				if(W.try_treating(src, user))
+					return // another coward cured!
+
+	if(istype(user))//Check if the user can use the gun, if the user isn't alive(turrets) assume it can.
+		var/mob/living/L = user
+		if(!can_trigger_gun(L))
+			return
+	if(flag)
+		if(user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
+			handle_suicide(user, target, params)
+			return
+
+	if(!can_shoot()) //Just because you can pull the trigger doesn't mean it can shoot.
+		shoot_with_empty_chamber(user)
+		return
+
+	var/attempted_shot = process_emitter()
+	if(attempted_shot != SHOT_SUCCESS)
+		if(attempted_shot)
+			to_chat(user, span_danger(attempted_shot))
+		return
+
+	if(check_botched(user))
+		return
+
+	var/obj/item/bodypart/other_hand = user.has_hand_for_held_index(user.get_inactive_hand_index()) //returns non-disabled inactive hands
+	if(weapon_weight == WEAPON_HEAVY && (user.get_inactive_held_item() || !other_hand))
+		to_chat(user, span_warning("You need two hands to fire [src]!"))
+		return
+	//DUAL (or more!) WIELDING
+	var/bonus_spread = 0
+	var/loop_counter = 0
+	if(ishuman(user) && user.combat_mode)
+		var/mob/living/carbon/human/H = user
+		for(var/obj/item/gun/G in H.held_items)
+			if(G == src || G.weapon_weight >= WEAPON_MEDIUM)
+				continue
+			else if(G.can_trigger_gun(user))
+				bonus_spread += dual_wield_spread
+				loop_counter++
+				addtimer(CALLBACK(G, /obj/item/gun.proc/process_fire, target, user, TRUE, params, null, bonus_spread), loop_counter)
+
+	return process_fire(target, user, TRUE, params, null, bonus_spread)
+
+/obj/item/gun/microfusion/proc/process_emitter()
+	if(!phase_emitter)
+		return SHOT_FAILURE_NO_EMITTER
+	var/phase_emitter_process = phase_emitter.generate_shot(heat_per_shot)
+	if(phase_emitter_process != SHOT_SUCCESS)
+		return phase_emitter_process
+	return SHOT_SUCCESS
+
+/obj/item/gun/microfusion/proc/instant_recharge()
+	SIGNAL_HANDLER
+	if(!cell)
+		return
+	cell.charge = cell.maxcharge
+	recharge_newshot(no_cyborg_drain = TRUE)
+	update_appearance()
+
+///Used by update_icon_state() and update_overlays()
+/obj/item/gun/microfusion/proc/get_charge_ratio()
+	return can_shoot() ? CEILING(clamp(cell.charge / cell.maxcharge, 0, 1) * charge_sections, 1) : 0
+	// Sets the ratio to 0 if the gun doesn't have enough charge to fire, or if its power cell is removed.
+
+/obj/item/gun/microfusion/proc/select_fire(mob/living/user)
+	select++
+	if (select > ammo_type.len)
+		select = 1
+	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
+	fire_sound = shot.fire_sound
+	fire_sound_volume = shot.fire_sound_volume
+	fire_delay = shot.delay
+	if (shot.select_name && user)
+		balloon_alert(user, "set to [shot.select_name]")
+	chambered = null
+	recharge_newshot(TRUE)
+	update_appearance()
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
+
+/**
+ *
+ * Outputs type-specific weapon stats for energy-based firearms based on its firing modes
+ * and the stats of those firing modes. Esoteric firing modes like ion are currently not supported
+ * but can be added easily
+ *
+ */
+/obj/item/gun/microfusion/proc/add_notes_energy()
+	var/list/readout = list()
+	// Make sure there is something to actually retrieve
+	if(!ammo_type.len)
+		return
+	var/obj/projectile/exam_proj
+	readout += "\nStandard models of this projectile weapon have [span_warning("[ammo_type.len] mode\s")]"
+	readout += "Our heroic interns have shown that one can theoretically stay standing after..."
+	for(var/obj/item/ammo_casing/energy/for_ammo as anything in ammo_type)
+		exam_proj = GLOB.proj_by_path_key[for_ammo?.projectile_type]
+		if(!istype(exam_proj))
+			continue
+
+		if(exam_proj.damage > 0) // Don't divide by 0!!!!!
+			readout += "[span_warning("[HITS_TO_CRIT(exam_proj.damage * for_ammo.pellets)] shot\s")] on [span_warning("[for_ammo.select_name]")] mode before collapsing from [exam_proj.damage_type == STAMINA ? "immense pain" : "their wounds"]."
+			if(exam_proj.stamina > 0) // In case a projectile does damage AND stamina damage (Energy Crossbow)
+				readout += "[span_warning("[HITS_TO_CRIT(exam_proj.stamina * for_ammo.pellets)] shot\s")] on [span_warning("[for_ammo.select_name]")] mode before collapsing from immense pain."
+		else
+			readout += "a theoretically infinite number of shots on [span_warning("[for_ammo.select_name]")] mode."
+
+	return readout.Join("\n") // Sending over the singular string, rather than the whole list
+
+/obj/item/gun/microfusion/proc/update_ammo_types()
+	var/obj/item/ammo_casing/energy/shot
+	for (var/i in 1 to ammo_type.len)
+		var/shottype = ammo_type[i]
+		shot = new shottype(src)
+		ammo_type[i] = shot
+	shot = ammo_type[select]
+	fire_sound = shot.fire_sound
+	fire_sound_volume = shot.fire_sound_volume
+	fire_delay = shot.delay
+
+// Cell, emitter and upgrade interactions
+
+/obj/item/gun/microfusion/proc/remove_emitter()
 	phase_emitter.forceMove(get_turf(src))
 	phase_emitter = null
 	update_appearance()
 
-/obj/item/gun/energy/microfusion/proc/insert_emitter(obj/item/microfusion_phase_emitter/inserting_phase_emitter, mob/living/user)
+/obj/item/gun/microfusion/proc/insert_emitter(obj/item/microfusion_phase_emitter/inserting_phase_emitter, mob/living/user)
 	if(phase_emitter)
 		to_chat(user, span_danger("There is already a phase emitter installed!"))
 		return FALSE
@@ -120,7 +460,7 @@
 
 
 /// Try to insert the cell into the gun, if successful, return TRUE
-/obj/item/gun/energy/microfusion/proc/insert_cell(mob/user, obj/item/stock_parts/cell/microfusion/inserting_cell, display_message = TRUE)
+/obj/item/gun/microfusion/proc/insert_cell(mob/user, obj/item/stock_parts/cell/microfusion/inserting_cell, display_message = TRUE)
 	if(cell)
 		if(reload_time && !HAS_TRAIT(user, TRAIT_INSTANT_RELOAD)) //This only happens when you're attempting a tactical reload, e.g. there's a mag already inserted.
 			if(display_message)
@@ -142,7 +482,7 @@
 	return TRUE
 
 /// Ejecting a cell.
-/obj/item/gun/energy/microfusion/proc/eject_cell(mob/user, display_message = TRUE)
+/obj/item/gun/microfusion/proc/eject_cell(mob/user, display_message = TRUE)
 	var/obj/item/stock_parts/cell/microfusion/old_cell = cell
 	old_cell.forceMove(get_turf(src))
 	if(user)
@@ -156,7 +496,7 @@
 	update_appearance()
 
 /// Attatching an upgrade.
-/obj/item/gun/energy/microfusion/proc/attach_upgrade(obj/item/microfusion_gun_attachment/microfusion_gun_attachment, mob/living/user)
+/obj/item/gun/microfusion/proc/attach_upgrade(obj/item/microfusion_gun_attachment/microfusion_gun_attachment, mob/living/user)
 	if(attached_upgrades.len >= max_attachments)
 		to_chat(user, span_warning("[src] cannot fit any more attachments!"))
 		return FALSE
