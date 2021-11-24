@@ -31,6 +31,19 @@
 	var/list/attached_upgrades = list()
 	/// How many attachments can this gun hold?
 	var/max_attachments = 1
+	/// The starting phase emitter in this weapon.
+	var/phase_emitter_type = /obj/item/microfusion_phase_emitter
+	/// The phase emitter that this gun currently has.
+	var/obj/item/microfusion_phase_emitter/phase_emitter
+	/// The amount of heat produced per shot
+	var/heat_per_shot = 10
+
+/obj/item/gun/energy/microfusion/Initialize(mapload)
+	. = ..()
+	if(phase_emitter_type)
+		phase_emitter = new phase_emitter_type(src)
+	else
+		phase_emitter = new(src)
 
 /obj/item/gun/energy/microfusion/attackby(obj/item/attacking_item, mob/user, params)
 	. = ..()
@@ -45,6 +58,17 @@
 	. = ..()
 	if(!cell.stabalised && prob(50))
 		do_sparks(2, FALSE, src) //Microfusion guns create sparks!
+
+/obj/item/gun/energy/microfusion/can_shoot()
+	if(!phase_emitter)
+		return FALSE
+	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
+	if(QDELETED(cell) || cell.charge < shot.e_cost )
+		return FALSE
+	if(!phase_emitter.generate_shot(heat_per_shot))
+		return FALSE
+	return TRUE
+
 
 /obj/item/gun/energy/microfusion/attack_hand(mob/user, list/modifiers)
 	if(loc == user && user.is_holding(src) && cell)
@@ -63,6 +87,11 @@
 		for(var/obj/item/microfusion_gun_attachment/microfusion_gun_attachment in attached_upgrades)
 			. += span_notice("It has a [microfusion_gun_attachment.name] installed.")
 		. += span_notice("Use a <b>screwdriver</b> to remove the upgrades.")
+	if(phase_emitter)
+		. += span_notice("It has a [phase_emitter.name] installed, at [phase_emitter.get_heat_percent()]% heat capacity.")
+		. += span_notice("Use a crowbar to remove the phase emitter.")
+	else
+		. += span_danger("It does not have a phase emitter installed!")
 
 /// Try to insert the cell into the gun, if successful, return TRUE
 /obj/item/gun/energy/microfusion/proc/insert_cell(mob/user, obj/item/stock_parts/cell/microfusion/inserting_cell, display_message = TRUE)
@@ -108,9 +137,13 @@
 	if(is_type_in_list(microfusion_gun_attachment, attached_upgrades))
 		to_chat(user, span_warning("[src] already has [microfusion_gun_attachment] installed!"))
 		return FALSE
+	for(var/obj/item/microfusion_gun_attachment/iterating_attachment in attached_upgrades)
+		if(is_type_in_list(microfusion_gun_attachment, iterating_attachment.incompatable_attachments))
+			to_chat(user, span_warning("[microfusion_gun_attachment] is not compatible with [iterating_attachment]!"))
+			return FALSE
 	attached_upgrades += microfusion_gun_attachment
 	microfusion_gun_attachment.forceMove(src)
-	microfusion_gun_attachment.run_upgrade(src)
+	microfusion_gun_attachment.run_attachment(src)
 	to_chat(user, span_notice("You successfully install [microfusion_gun_attachment] onto [src]!"))
 	playsound(src, 'sound/effects/structure_stress/pop2.ogg', 70, TRUE)
 	return TRUE

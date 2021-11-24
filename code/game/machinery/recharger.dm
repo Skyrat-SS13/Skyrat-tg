@@ -136,6 +136,16 @@
 	if(charging)
 		var/obj/item/stock_parts/cell/C = charging.get_cell()
 		if(C)
+			//SKYRAT EDIT ADDITION
+			if(C.chargerate <= 0)
+				playsound(src, 'sound/machines/buzz-two.ogg', 30, TRUE)
+				say("[charging] cannot be recharged!")
+				charging.update_appearance()
+				charging.forceMove(drop_location())
+				setCharging(null)
+				update_appearance()
+				return
+			//SKYRAT EDIT END
 			if(C.charge < C.maxcharge)
 				C.give(C.chargerate * recharge_coeff * delta_time / 2)
 				use_power(125 * recharge_coeff * delta_time)

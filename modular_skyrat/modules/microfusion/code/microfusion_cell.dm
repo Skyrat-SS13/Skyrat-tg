@@ -29,11 +29,14 @@ These are basically advanced cells.
 	/// Are we melting down? For icon stuffs.
 	var/meltdown = FALSE
 	/// How many upgrades can you have on this cell?
-	var/max_attachments = 2
+	var/max_attachments = 1
+	microfusion_readout = TRUE
 
 /obj/item/stock_parts/cell
 	/// Is this cell stabalised? (used in microfusion guns)
 	var/stabalised = FALSE
+	/// Thanks modularity.
+	var/microfusion_readout = FALSE
 
 /obj/item/stock_parts/cell/microfusion/Destroy()
 	if(attached_upgrades.len)
@@ -55,14 +58,15 @@ These are basically advanced cells.
 /obj/item/stock_parts/cell/microfusion/proc/process_instability()
 	if(prob(instability))
 		var/seconds_to_explode = rand(MICROFUSION_CELL_FAILURE_LOWER, MICROFUSION_CELL_FAILURE_UPPER)
-		say("ERROR: Microfusion unit malfunction in [seconds_to_explode / 10] seconds!")
-		playsound(src, 'sound/machines/warning-buzzer.ogg', 50, FALSE, FALSE)
-		add_filter("rad_glow", 2, list("type" = "outline", "color" = "#ff5e00a1", "size" = 2))
+		say("Malfunction in [seconds_to_explode / 10] seconds!")
+		playsound(src, 'sound/machines/warning-buzzer.ogg', 30, FALSE, FALSE)
+		add_filter("rad_glow", 2, list("type" = "outline", "color" = "#ff5e0049", "size" = 2))
 		addtimer(CALLBACK(src, .proc/process_failure), seconds_to_explode)
 
 /obj/item/stock_parts/cell/microfusion/proc/process_failure()
 	var/fuckup_type = rand(1,4)
 	remove_filter("rad_glow")
+	playsound(src, 'sound/effects/spray.ogg', 70)
 	switch(fuckup_type)
 		if(1)
 			charge = clamp(charge - MICROFUSION_CELL_DRAIN_FAILURE, 0, maxcharge)
@@ -85,11 +89,11 @@ These are basically advanced cells.
 
 /obj/item/stock_parts/cell/microfusion/process(delta_time)
 	for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment in attached_upgrades)
-		microfusion_cell_attachment.process_upgrade(src, delta_time)
-	return ..()
+		microfusion_cell_attachment.process_attachment(src, delta_time)
 
 /obj/item/stock_parts/cell/microfusion/examine(mob/user)
 	. = ..()
+	. += span_notice("It can hold [max_attachments] attatchment(s).")
 	if(attached_upgrades.len)
 		for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment in attached_upgrades)
 			. += span_notice("It has a [microfusion_cell_attachment.name] installed.")
@@ -108,16 +112,18 @@ These are basically advanced cells.
 		return FALSE
 	attached_upgrades += microfusion_cell_attachment
 	microfusion_cell_attachment.forceMove(src)
-	microfusion_cell_attachment.run_upgrade(src)
+	microfusion_cell_attachment.run_attachment(src)
 	to_chat(user, span_notice("You successfully install [microfusion_cell_attachment] onto [src]!"))
 	playsound(src, 'sound/effects/structure_stress/pop2.ogg', 70, TRUE)
+	update_appearance()
 	return TRUE
 
 /obj/item/stock_parts/cell/microfusion/proc/remove_upgrades()
 	for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment in attached_upgrades)
-		microfusion_cell_attachment.remove_upgrade(src)
+		microfusion_cell_attachment.remove_attachment(src)
 		microfusion_cell_attachment.forceMove(get_turf(src))
 		attached_upgrades -= microfusion_cell_attachment
+	update_appearance()
 
 /obj/item/stock_parts/cell/microfusion/enhanced
 	name = "enhanced microfusion cell"
@@ -135,7 +141,7 @@ These are basically advanced cells.
 /obj/item/stock_parts/cell/microfusion/bluespace
 	name = "bluespace microfusion cell"
 	desc = "An advanced microfusion cell."
-	icon_state = "microfusion_advanced"
+	icon_state = "microfusion_bluespace"
 	maxcharge = 2000
 	max_attachments = 4
 

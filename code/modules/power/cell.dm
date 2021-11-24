@@ -100,11 +100,15 @@
 /obj/item/stock_parts/cell/examine(mob/user)
 	. = ..()
 	// SKYRAT EDIT ADDITION
-	if(ratingdesc)
-		desc += " This one has a rating of [display_energy(maxcharge)], and you should not swallow it."
+	if(ratingdesc && !microfusion_readout)
+		. += "This one has a rating of [display_energy(maxcharge)], and you should not swallow it."
 	// SKYRAT EDIT END
 	if(rigged)
 		. += span_danger("This power cell seems to be faulty!")
+	// SKYRAT EDIT ADDITION
+	else if(microfusion_readout)
+		. += "The charge meter reads [charge]/[maxcharge] MF."
+	// SKYRAT EDIT END
 	else
 		. += "The charge meter reads [round(src.percent() )]%."
 

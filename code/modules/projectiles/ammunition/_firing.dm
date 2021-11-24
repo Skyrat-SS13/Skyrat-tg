@@ -69,6 +69,12 @@
 		loaded_projectile.preparePixelProjectile(target, user, modifiers, spread)
 	var/obj/projectile/loaded_projectile_cache = loaded_projectile
 	loaded_projectile = null
+	//SKYRAT EDIT ADDITION
+	if(damage_override)
+		loaded_projectile_cache.damage = damage_override
+	if(projectile_piercing)
+		loaded_projectile_cache.projectile_piercing = projectile_piercing
+	//SKYRAT EDIT END
 	loaded_projectile_cache.fire(null, direct_target)
 	return TRUE
 
