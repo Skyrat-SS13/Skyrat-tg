@@ -75,6 +75,7 @@
 			"sexes" = species.sexes,
 
 			"enabled_features" = species.get_features(),
+			"veteran_only" = species.veteran_only,
 		) + diet
 
 	return data
