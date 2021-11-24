@@ -2,7 +2,15 @@
 	name = "Hemophage"
 	id = SPECIES_HEMOPHAGE
 	default_color = "FFFFFF"
-	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,DRINKSBLOOD, HAS_FLESH, HAS_BONE)
+	species_traits = list(
+		EYECOLOR,
+		HAIR,
+		FACEHAIR,
+		LIPS,
+		DRINKSBLOOD,
+		HAS_FLESH,
+		HAS_BONE,
+	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
