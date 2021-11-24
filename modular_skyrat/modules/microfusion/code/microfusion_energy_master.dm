@@ -6,6 +6,7 @@
 	name = "prototype detatchable cell energy projection aparatus"
 	desc = "The coders have obviously failed to realise this is broken."
 	icon = 'modular_skyrat/modules/microfusion/icons/guns40x32.dmi'
+	icon_state = "mcr01"
 	lefthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
 	has_gun_safety = TRUE
