@@ -570,6 +570,7 @@
 					"(Service) Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/robots_serv.dmi', icon_state = "male_bootyservice"),
 					"(Service) Protectron" = image(icon = 'modular_skyrat/modules/altborgs/icons/robots_serv.dmi', icon_state = "protectron_service"),
 					"(Service) Miss M" = image(icon = 'modular_skyrat/modules/altborgs/icons/robots_serv.dmi', icon_state = "missm_service"),
+					"(Service) Marina" = image(icon = 'modular_skyrat/modules/altborgs/icons/robots_serv.dmi', icon_state = "marinaserv"),
 					"(Service) Mech" = image(icon = 'modular_skyrat/modules/altborgs/icons/robots_serv.dmi', icon_state = "lloyd"),
 					"(Service) Handy" = image(icon = 'modular_skyrat/modules/altborgs/icons/robots_serv.dmi', icon_state = "handy-service"),
 
@@ -635,6 +636,9 @@
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_serv.dmi'
 					if("(Service) Miss M")
 						disguise = "missm_service"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_serv.dmi'
+					if("(Service) Marina")
+						disguise = "marinaserv"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/robots_serv.dmi'
 					if("(Service) Mech")
 						disguise = "lloyd"
