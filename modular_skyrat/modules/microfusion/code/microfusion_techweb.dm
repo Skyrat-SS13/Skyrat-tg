@@ -21,6 +21,20 @@
 	design_ids = list(
 		"enhanced_microfusion_cell",
 		"microfusion_cell_attachment_overcapacity",
+		"enhanced_microfusion_phase_emitter",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3500)
+
+/datum/techweb_node/military_microfusion
+	id = "military_microfusion"
+	display_name = "Military Grade Microfusion Technology"
+	description = "Of course the military wanted in on microfusion."
+	prereq_ids = list(
+		"enhanced_microfusion",
+	)
+	design_ids = list(
+		"microfusion_gun_attachment_grip",
+		"microfusion_gun_attachment_rail",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3500)
 
@@ -38,9 +52,10 @@
 	)
 	design_ids = list(
 		"advanced_microfusion_cell",
-		"microfusion_cell_attachment_rechargable",
+		"microfusion_cell_attachment_rechargeable",
 		"microfusion_cell_attachment_stabaliser",
 		"microfusion_gun_attachment_scatter",
+		"advanced_microfusion_phase_emitter",
 
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
@@ -55,26 +70,25 @@
 		"advanced_microfusion",
 		"bluespace_power",
 		"beam_weapons",
-		"alientech",
 		"explosive_weapons",
 	)
 	design_ids = list(
 		"bluespace_microfusion_cell",
+		"microfusion_gun_attachment_repeater",
+		"bluespace_microfusion_phase_emitter",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 
 // Bluespace microfusion
-/datum/techweb_node/alien_microfusion
-	id = "alien_microfusion"
-	display_name = "Alien Microfusion Technology"
+/datum/techweb_node/quantum_microfusion
+	id = "quantum_microfusion"
+	display_name = "Quantum Microfusion Technology"
 	description = "Microfusion tech that is so advanced we don't quite understand how it's achieved."
 	prereq_ids = list(
-		"bluespace_power",
+		"bluespace_microfusion",
 		"alientech",
 	)
 	design_ids = list(
 		"microfusion_cell_attachment_selfcharging",
-		"microfusion_gun_attachment_repeater",
-		"microfusion_cell_attachment_selfcharging",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 15000)

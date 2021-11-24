@@ -44,8 +44,8 @@ The cell is stable and will not emit sparks when firing.
 	name = "diffuser microfusion lens upgrade"
 	desc = "Splits the microfusion laser beam entering the lens!"
 	icon_state = "attachment_scatter"
-	attachment_overlay_icon_state = "scatter_attachment"
-	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/repeater)
+	attachment_overlay_icon_state = "attachment_scatter"
+	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/repeater, /obj/item/microfusion_gun_attachment/xray)
 	/// How many pellets are we going to add to the existing amount on the gun?
 	var/pellets_to_add = 2
 	/// The variation in pellet scatter.
@@ -60,16 +60,20 @@ The cell is stable and will not emit sparks when firing.
 /obj/item/microfusion_gun_attachment/scatter/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	microfusion_gun.recoil += recoil_to_add
+	for(var/obj/item/ammo_casing/ammo_casing in microfusion_gun.ammo_type)
+		ammo_casing.pellets += pellets_to_add
+		ammo_casing.variance += variance_to_add
 
 /obj/item/microfusion_gun_attachment/scatter/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
 	. = ..()
-	chambered.pellets += pellets_to_add
-	chambered.variance += variance_to_add
 	chambered.loaded_projectile?.damage = chambered.loaded_projectile.damage / chambered.pellets
 
 /obj/item/microfusion_gun_attachment/scatter/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	microfusion_gun.recoil -= recoil_to_add
+	for(var/obj/item/ammo_casing/ammo_casing in microfusion_gun.ammo_type)
+		ammo_casing.pellets -= ammo_casing.pellets
+		ammo_casing.variance -= ammo_casing.variance
 
 /*
 FOCUSING ATTACHMENT
@@ -124,8 +128,8 @@ X-RAY ATTACHMENT
 The gun can fire X-RAY shots.
 */
 /obj/item/microfusion_gun_attachment/xray
-	name = "phase inverter emitter array"
-	desc = "Inverts the central phase emitter causing the wave frequency to shift into X-ray. CAUTION: Phase emitter heats up very quickly."
+	name = "quantum phase inverter emitter array" //Yes quantum makes things sound cooler.
+	desc = "Experimental technology that inverts the central phase emitter causing the wave frequency to shift into X-ray. CAUTION: Phase emitter heats up very quickly."
 	icon_state = "attachment_xray"
 	attachment_overlay_icon_state = "attachment_xray"
 	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter)
@@ -176,23 +180,17 @@ Allows for flashlights bayonets and adds 1 slot to equipment.
 	microfusion_gun.max_attachments -= attachment_slots_to_add
 
 /*
-X-RAY ATTACHMENT
+GRIP ATTACHMENT
 
-The gun can fire X-RAY shots.
+Does nothing right now.
 */
 /obj/item/microfusion_gun_attachment/grip
 	name = "grip attachment"
 	desc = "A simple grip that increases accuracy."
 	icon_state = "attachment_grip"
-	attachment_overlay_icon_state = "attachment_repeater"
+	attachment_overlay_icon_state = "attachment_grip"
 	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/rail)
 
-/obj/item/microfusion_gun_attachment/grip/run_attachment(obj/item/gun/microfusion/microfusion_gun)
-	. = ..()
-
-
-/obj/item/microfusion_gun_attachment/grip/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
-	. = ..()
 
 /*
 HEATSINK ATTACHMENT
@@ -204,7 +202,7 @@ HEATSINK ATTACHMENT
 	desc = "Greatly increases the phase emitter cooling rate."
 	icon_state = "attachment_heatsink"
 	attachment_overlay_icon_state = "attachment_heatsink"
-	var/cooling_rate_increase = 10
+	var/cooling_rate_increase = 50
 
 /obj/item/microfusion_gun_attachment/heatsink/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
