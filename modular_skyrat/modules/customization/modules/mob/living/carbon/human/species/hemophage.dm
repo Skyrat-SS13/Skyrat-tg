@@ -18,7 +18,7 @@
 		TRAIT_NOBREATH,
 		TRAIT_VIRUSIMMUNE,
 	)
-	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID
+	inherent_biotypes = MOB_UNDEAD | MOB_HUMANOID
 	mutant_bodyparts = list("wings" = "None")
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | ERT_SPAWN
 	exotic_bloodtype = "U"
