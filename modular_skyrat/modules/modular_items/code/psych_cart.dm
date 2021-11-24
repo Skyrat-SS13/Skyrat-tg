@@ -3,7 +3,7 @@
 	desc = "Flaunt that Psychology Degree with this Cartridge!"
 	icon_state = "cart-m"
 	access = CART_MEDICAL
-	spam_enabled = 1
+	spam_enabled = TRUE
 
 /obj/item/pda/psychologist
 	name = "Psychologist PDA"
