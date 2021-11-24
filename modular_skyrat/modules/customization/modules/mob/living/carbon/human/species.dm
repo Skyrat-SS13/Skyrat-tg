@@ -315,6 +315,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/vampire
 	mutant_bodyparts = list()
 
+/datum/species/hemophage
+	mutant_bodyparts = list()
+
 /datum/species/plasmaman
 	mutant_bodyparts = list()
 	can_have_genitals = FALSE
