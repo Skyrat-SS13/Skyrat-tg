@@ -20,11 +20,11 @@
 	)
 	inherent_biotypes = MOB_UNDEAD | MOB_HUMANOID
 	mutant_bodyparts = list("wings" = "None")
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	exotic_bloodtype = "U"
 	use_skintones = TRUE
 	mutantheart = /obj/item/organ/heart/vampire
 	mutanttongue = /obj/item/organ/tongue/vampire
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_id = SPECIES_HUMAN
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	/// Some starter text sent to the vampire initially, because vampires have shit to do to stay alive.
