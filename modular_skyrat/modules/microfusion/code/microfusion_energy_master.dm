@@ -251,7 +251,6 @@
 			cell.use(E.e_cost)
 			. = span_danger("[user] casually lights [A.loc == user ? "[user.p_their()] [A.name]" : A] with [src]. Damn.")
 
-
 /obj/item/gun/microfusion/attackby(obj/item/attacking_item, mob/user, params)
 	. = ..()
 	if (.)
@@ -372,12 +371,6 @@
 		shoot_with_empty_chamber(user)
 		return
 
-	var/attempted_shot = process_emitter()
-	if(attempted_shot != SHOT_SUCCESS)
-		if(attempted_shot)
-			to_chat(user, span_danger(attempted_shot))
-		return
-
 	if(check_botched(user))
 		return
 
@@ -385,6 +378,14 @@
 	if(weapon_weight == WEAPON_HEAVY && (user.get_inactive_held_item() || !other_hand))
 		to_chat(user, span_warning("You need two hands to fire [src]!"))
 		return
+
+	var/attempted_shot = process_emitter()
+	if(attempted_shot != SHOT_SUCCESS)
+		if(attempted_shot)
+			to_chat(user, span_danger(attempted_shot))
+		return
+
+
 	//DUAL (or more!) WIELDING
 	var/bonus_spread = 0
 	var/loop_counter = 0
