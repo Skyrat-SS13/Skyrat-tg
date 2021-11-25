@@ -87,3 +87,10 @@
 	unique_reskin = list("Formal" = "winterhood_hop",
 						"Classic" = "hood_hop"
 						)
+
+// CAPTAIN
+/obj/item/clothing/suit/armor/vest/capcarapace/jacket
+    name = "captain's jacket"
+    desc = "A lightweight armored jacket in the Captain's colors. For when you want something sleeker."
+    icon_state = "capjacket"
+    body_parts_covered = CHEST|ARMS

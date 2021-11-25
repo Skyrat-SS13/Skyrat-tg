@@ -256,12 +256,6 @@
 	inhand_icon_state = "capspacesuit"
 	body_parts_covered = CHEST|GROIN|ARMS
 
-/obj/item/clothing/suit/armor/vest/capcarapace/jacket
-	name = "captain's jacket"
-	desc = "A lightweight armored jacket in the Captain's colors. For when you want something sleeker."
-	icon_state = "capjacket"
-	body_parts_covered = CHEST|ARMS
-
 /obj/item/clothing/suit/armor/vest/capcarapace/captains_formal/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/toggle_icon)
