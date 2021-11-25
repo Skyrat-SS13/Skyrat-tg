@@ -263,7 +263,7 @@
 
 /obj/item/gun/microfusion/process_chamber(empty_chamber, from_firing, chamber_next_round)
 	. = ..()
-	if(!cell.stabalised && prob(50))
+	if(!cell.stabalised && prob(40))
 		do_sparks(2, FALSE, src) //Microfusion guns create sparks!
 
 /obj/item/gun/microfusion/attack_hand(mob/user, list/modifiers)
@@ -278,6 +278,30 @@
 		return
 	playsound(src, 'sound/items/crowbar.ogg', 70, TRUE)
 	remove_emitter()
+
+/obj/item/gun/microfusion/AltClick(mob/user)
+	. = ..()
+	if(can_interact(user))
+		remove_attachment(user)
+
+/obj/item/gun/microfusion/proc/remove_attachment(mob/user)
+	var/obj/item/microfusion_gun_attachment/to_remove = input(user, "Please select what part you'd like to remove.", "Remove attachment")  as null|obj in sort_names(attached_upgrades)
+	if(!to_remove)
+		return
+	to_chat(user, span_notice("You remove [to_remove] from [src]!"))
+	playsound(src, 'sound/items/screwdriver.ogg', 70)
+	to_remove.forceMove(get_turf(src))
+	attached_upgrades -= to_remove
+	to_remove.remove_attachment(src)
+	update_appearance()
+
+/obj/item/gun/microfusion/proc/remove_all_attachments()
+	if(attached_upgrades.len)
+		for(var/obj/item/microfusion_gun_attachment/attachment in attached_upgrades)
+			attachment.remove_attachment(src)
+			attachment.forceMove(get_turf(src))
+			attached_upgrades -= attachment
+		update_appearance()
 
 /obj/item/gun/microfusion/examine(mob/user)
 	. = ..()
@@ -529,7 +553,7 @@
 		to_chat(user, span_danger("There is already a phase emitter installed!"))
 		return FALSE
 	to_chat(user, span_notice("You carefully insert [inserting_phase_emitter] into the slot."))
-
+	playsound(src, 'sound/machines/terminal_eject.ogg', 50, TRUE)
 	inserting_phase_emitter.forceMove(src)
 	phase_emitter = inserting_phase_emitter
 	update_appearance()
@@ -554,6 +578,8 @@
 		playsound(src, sound_cell_insert, sound_cell_insert_volume, sound_cell_insert_vary)
 	cell = inserting_cell
 	inserting_cell.forceMove(src)
+	if(!chambered)
+		recharge_newshot()
 	update_appearance()
 	return TRUE
 

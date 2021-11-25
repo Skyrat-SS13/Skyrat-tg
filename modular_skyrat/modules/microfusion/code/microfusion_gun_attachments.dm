@@ -109,16 +109,19 @@ The gun can fire volleys of shots.
 	attachment_overlay_icon_state = "attachment_repeater"
 	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter)
 	heat_addition = 40
+	var/recoil_to_add = 1
 	var/burst_to_add = 1
-	var/delay_to_add = 1
+	var/delay_to_add = 2
 
 /obj/item/microfusion_gun_attachment/repeater/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
+	microfusion_gun.recoil += recoil_to_add
 	microfusion_gun.burst_size += burst_to_add
 	microfusion_gun.fire_delay += delay_to_add
 
 /obj/item/microfusion_gun_attachment/repeater/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
+	microfusion_gun.recoil -= recoil_to_add
 	microfusion_gun.burst_size -= burst_to_add
 	microfusion_gun.fire_delay -= delay_to_add
 
@@ -141,7 +144,7 @@ The gun can fire X-RAY shots.
 
 /obj/item/microfusion_gun_attachment/xray/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
 	. = ..()
-	chambered.loaded_projectile?.projectile_piercing = PASSCLOSEDTURF|PASSGRILLE|PASSGLASS
+	chambered.loaded_projectile.projectile_piercing = PASSCLOSEDTURF|PASSGRILLE|PASSGLASS
 
 /obj/item/microfusion_gun_attachment/xray/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
@@ -155,11 +158,11 @@ Allows for flashlights bayonets and adds 1 slot to equipment.
 */
 /obj/item/microfusion_gun_attachment/rail
 	name = "gun rail attachment"
-	desc = "A simple set of rails that attaches to weapon hardpoints."
+	desc = "A simple set of rails that attaches to weapon hardpoints. Allows for 3 more attachment slots."
 	icon_state = "attachment_rail"
 	attachment_overlay_icon_state = "attachment_rail"
 	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/grip)
-	var/attachment_slots_to_add = 1
+	var/attachment_slots_to_add = 3
 
 /obj/item/microfusion_gun_attachment/rail/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
@@ -178,6 +181,7 @@ Allows for flashlights bayonets and adds 1 slot to equipment.
 		microfusion_gun.bayonet.forceMove(get_turf(microfusion_gun))
 		microfusion_gun.clear_bayonet()
 	microfusion_gun.max_attachments -= attachment_slots_to_add
+	microfusion_gun.remove_all_attachments()
 
 /*
 GRIP ATTACHMENT
@@ -271,7 +275,7 @@ Basically the heart of the gun, can be upgraded.
 	return ..()
 
 /obj/item/microfusion_phase_emitter/process(delta_time)
-	if(heat == 0)
+	if(current_heat == 0)
 		return
 	var/calculated_heat_dissipation_per_tick = heat_dissipation_per_tick
 	if(isspaceturf(get_turf(src)))
@@ -280,8 +284,8 @@ Basically the heart of the gun, can be upgraded.
 		calculated_heat_dissipation_per_tick += parent_gun.heat_dissipation_bonus
 	else
 		calculated_heat_dissipation_per_tick += 10 //We get some passive cooling from being out of the gun.
-	heat = clamp(heat - calculated_heat_dissipation_per_tick * delta_time, 0, INFINITY)
-	if(heat > max_heat)
+	current_heat = clamp(current_heat - calculated_heat_dissipation_per_tick * delta_time, 0, INFINITY)
+	if(current_heat > max_heat)
 		integrity = integrity - ((current_heat - max_heat) * delta_time)
 	if(integrity <= 0)
 		kill()
@@ -324,14 +328,14 @@ Basically the heart of the gun, can be upgraded.
 		. += span_notice("Thermal throttle: [throttle_percentage]%")
 
 /obj/item/microfusion_phase_emitter/proc/get_heat_percent()
-	return round(heat / max_heat * 100)
+	return round(current_heat / max_heat * 100)
 
 /obj/item/microfusion_phase_emitter/proc/generate_shot(heat_to_add)
 	if(damaged)
 		return PHASE_FAILURE_DAMAGED
 	if(get_heat_percent() >= throttle_percentage)
 		return PHASE_FAILURE_THROTTLE
-	heat += heat_to_add
+	current_heat += heat_to_add
 	update_appearance()
 	return SHOT_SUCCESS
 
@@ -348,6 +352,7 @@ Basically the heart of the gun, can be upgraded.
 	throttle_percentage = 85
 	heat_dissipation_per_tick = 20
 	integrity = 120
+	color = "#ffffcc"
 
 /obj/item/microfusion_phase_emitter/advanced
 	name = "advanced microfusion phase emitter"
@@ -356,11 +361,13 @@ Basically the heart of the gun, can be upgraded.
 	throttle_percentage = 85
 	heat_dissipation_per_tick = 30
 	integrity = 150
+	color = "#99ffcc"
 
 /obj/item/microfusion_phase_emitter/bluespace
-	name = "advanced microfusion phase emitter"
+	name = "bluespace microfusion phase emitter"
 	desc = "The core of a microfusion projection weapon, produces the laser."
 	max_heat = 2500
 	throttle_percentage = 90
 	heat_dissipation_per_tick = 40
 	integrity = 200
+	color = "#66ccff"
