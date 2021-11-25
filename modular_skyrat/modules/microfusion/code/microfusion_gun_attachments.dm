@@ -9,7 +9,7 @@ For adding unique abilities to microfusion guns, these can directly interact wit
 	desc = "broken"
 	icon = 'modular_skyrat/modules/microfusion/icons/guns.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
-	/// The attatchment overlay icon state.
+	/// The attachment overlay icon state.
 	var/attachment_overlay_icon_state
 	/// Any incompatable upgrade types.
 	var/list/incompatable_attachments = list()

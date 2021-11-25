@@ -1,6 +1,7 @@
 #define DUALWIELD_PENALTY_EXTRA_MULTIPLIER 1.4
 
 // Master file for cell loadable energy guns. PROCS ONLY YOU MONKEYS!
+// This file is a copy/paste of _energy.dm with extensive modification.
 
 /obj/item/gun/microfusion
 	name = "prototype detatchable cell energy projection aparatus"
