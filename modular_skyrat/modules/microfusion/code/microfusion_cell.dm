@@ -31,7 +31,7 @@ These are basically advanced cells.
 	var/obj/item/gun/microfusion/parent_gun
 
 /obj/item/stock_parts/cell
-	/// Is this cell stabalised? (used in microfusion guns)
+	/// Is this cell stabilised? (used in microfusion guns)
 	var/stabalised = FALSE
 	/// Thanks modularity.
 	var/microfusion_readout = FALSE
