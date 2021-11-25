@@ -12,11 +12,11 @@
 /obj/item/lipstick/quantum
 	name = "Quantum Lipstick"
 
-/obj/item/lipstick/quantum/attack(mob/M, mob/user)
-	if(!open || !ismob(M))
+/obj/item/lipstick/quantum/attack(mob/attacked_mob, mob/user)
+	if(!open || !ismob(attacked_mob))
 		return
 
-	if(!ishuman(M))
+	if(!ishuman(attacked_mob))
 		to_chat(user, span_warning("Where are the lips on that?"))
 		return
 
@@ -27,7 +27,7 @@
 			COLOR_WHITE,
 		) as color | null
 
-	var/mob/living/carbon/human/target = M
+	var/mob/living/carbon/human/target = attacked_mob
 	if(target.is_mouth_covered())
 		to_chat(user, span_warning("Remove [ target == user ? "your" : "[target.p_their()]" ] mask!"))
 		return
@@ -75,6 +75,8 @@
 	icon_state = "razor"
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_TINY
+	// How long do we take to shave someone's (facial) hair?
+	var/shaving_time = 5 SECONDS
 
 /obj/item/razor/suicide_act(mob/living/carbon/user)
 	user.visible_message(span_suicide("[user] begins shaving [user.p_them()]self without the razor guard! It looks like [user.p_theyre()] trying to commit suicide!"))
@@ -82,78 +84,64 @@
 	shave(user, BODY_ZONE_HEAD)//doesnt need to be BODY_ZONE_HEAD specifically, but whatever
 	return BRUTELOSS
 
-/obj/item/razor/proc/shave(mob/living/carbon/human/H, location = BODY_ZONE_PRECISE_MOUTH)
+/obj/item/razor/proc/shave(mob/living/carbon/human/target_human, location = BODY_ZONE_PRECISE_MOUTH)
 	if(location == BODY_ZONE_PRECISE_MOUTH)
-		H.facial_hairstyle = "Shaved"
+		target_human.facial_hairstyle = "Shaved"
 	else
-		H.hairstyle = "Bald"
+		target_human.hairstyle = "Bald"
 
-	H.update_hair()
+	target_human.update_hair()
 	playsound(loc, 'sound/items/unsheath.ogg', 20, TRUE)
 
 
-/obj/item/razor/attack(mob/M, mob/living/user)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+/obj/item/razor/attack(mob/attacked_mob, mob/living/user)
+	if(ishuman(attacked_mob))
+		var/mob/living/carbon/human/target_human = attacked_mob
 		var/location = user.zone_selected
 		if(!(location in list(BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_HEAD)) && !user.combat_mode)
-			to_chat(user, span_warning("You stop, look down at what you're currently holding and ponder to yourself, \"This is probably to be used on their hair.\""))
+			to_chat(user, span_warning("You stop, look down at what you're currently holding and ponder to yourself, \"This is probably to be used on their hair or their facial hair.\""))
 			return
-		if((location in list(BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_HEAD)) && !H.get_bodypart(BODY_ZONE_HEAD))
-			to_chat(user, span_warning("[H] doesn't have a head!"))
+		if((location in list(BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_HEAD)) && !target_human.get_bodypart(BODY_ZONE_HEAD))
+			to_chat(user, span_warning("[target_human] doesn't have a head!"))
 			return
+
 		if(location == BODY_ZONE_PRECISE_MOUTH)
-			if(!(FACEHAIR in H.dna.species.species_traits))
+			if(!(FACEHAIR in target_human.dna.species.species_traits))
 				to_chat(user, span_warning("There is no facial hair to shave!"))
 				return
-			if(!get_location_accessible(H, location))
+			if(!get_location_accessible(target_human, location))
 				to_chat(user, span_warning("The mask is in the way!"))
 				return
-			if(H.facial_hairstyle == "Shaved")
+			if(target_human.facial_hairstyle == "Shaved")
 				to_chat(user, span_warning("Already clean-shaven!"))
 				return
 
-			if(H == user) //shaving yourself
-				user.visible_message(span_notice("[user] starts to shave [user.p_their()] facial hair with [src]."), \
-					span_notice("You take a moment to shave your facial hair with [src]..."))
-				if(do_after(user, 50, target = H))
-					user.visible_message(span_notice("[user] shaves [user.p_their()] facial hair clean with [src]."), \
-						span_notice("You finish shaving with [src]. Fast and clean!"))
-					shave(H, location)
-			else
-				user.visible_message(span_warning("[user] tries to shave [H]'s facial hair with [src]."), \
-					span_notice("You start shaving [H]'s facial hair..."))
-				if(do_after(user, 50, target = H))
-					user.visible_message(span_warning("[user] shaves off [H]'s facial hair with [src]."), \
-						span_notice("You shave [H]'s facial hair clean off."))
-					shave(H, location)
+			var/self_shaving = target_human == user // Shaving yourself?
+			user.visible_message(span_notice("[user] starts to shave [self_shaving ? user.p_their() : "[target_human]'s"] hair with [src]."), \
+				span_notice("You take a moment to shave [self_shaving ? "your" : "[target_human]'s" ] hair with [src]..."))
+			if(do_after(user, shaving_time, target = target_human))
+				user.visible_message(span_notice("[user] shaves [self_shaving ? user.p_their() : "[target_human]'s"] hair clean with [src]."), \
+					span_notice("You finish shaving [self_shaving ? "your" : " [target_human]'s"] hair with [src]. Fast and clean!"))
+				shave(target_human, location)
+			
 		else if(location == BODY_ZONE_HEAD)
-			if(!(HAIR in H.dna.species.species_traits))
+			if(!(HAIR in target_human.dna.species.species_traits))
 				to_chat(user, span_warning("There is no hair to shave!"))
 				return
-			if(!get_location_accessible(H, location))
+			if(!get_location_accessible(target_human, location))
 				to_chat(user, span_warning("The headgear is in the way!"))
 				return
-			if(H.hairstyle == "Bald" || H.hairstyle == "Balding Hair" || H.hairstyle == "Skinhead")
+			if(target_human.hairstyle == "Bald" || target_human.hairstyle == "Balding Hair" || target_human.hairstyle == "Skinhead")
 				to_chat(user, span_warning("There is not enough hair left to shave!"))
 				return
 
-			if(H == user) //shaving yourself
-				user.visible_message(span_notice("[user] starts to shave [user.p_their()] head with [src]."), \
-					span_notice("You start to shave your head with [src]..."))
-				if(do_after(user, 5, target = H))
-					user.visible_message(span_notice("[user] shaves [user.p_their()] head with [src]."), \
-						span_notice("You finish shaving with [src]."))
-					shave(H, location)
-			else
-				var/turf/H_loc = H.loc
-				user.visible_message(span_warning("[user] tries to shave [H]'s head with [src]!"), \
-					span_notice("You start shaving [H]'s head..."))
-				if(do_after(user, 50, target = H))
-					if(H_loc == H.loc)
-						user.visible_message(span_warning("[user] shaves [H]'s head bald with [src]!"), \
-							span_notice("You shave [H]'s head bald."))
-						shave(H, location)
+			var/self_shaving = target_human == user // Shaving yourself?
+			user.visible_message(span_notice("[user] starts to shave [self_shaving ? user.p_their() : "[target_human]'s"] hair with [src]."), \
+				span_notice("You take a moment to shave [self_shaving ? "your" : "[target_human]'s" ] hair with [src]..."))
+			if(do_after(user, shaving_time, target = target_human))
+				user.visible_message(span_notice("[user] shaves [self_shaving ? user.p_their() : "[target_human]'s"] hair clean with [src]."), \
+					span_notice("You finish shaving [self_shaving ? "your" : " [target_human]'s"] hair with [src]. Fast and clean!"))
+				shave(target_human, location)
 		else
 			..()
 	else
@@ -164,6 +152,7 @@
 	desc = "A glowing red-blue-white stripe you won't mistake for any other!"
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "barber"
+	buildable_sign = FALSE // Don't want them removed, they look too jank.
 
 /obj/item/storage/box/perfume
 	name = "box of perfumes"

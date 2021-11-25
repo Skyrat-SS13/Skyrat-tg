@@ -13,7 +13,7 @@
 
 /datum/reagent/consumable/tea/pinkmilk/on_mob_life(mob/living/carbon/M)
 	if(prob(15))
-		to_chat(M, "<span class = 'notice'>[pick("You cant help to smile.","You feel nostalgia all of sudden.","You remember to relax.")]</span>")
+		to_chat(M, span_notice("[pick("You cant help to smile.","You feel nostalgia all of sudden.","You remember to relax.")]"))
 	..()
 	. = 1
 
@@ -30,7 +30,7 @@
 
 /datum/reagent/consumable/tea/pinktea/on_mob_life(mob/living/carbon/M)
 	if(prob(10))
-		to_chat(M, "<span class = 'notice'>[pick("Diamond skies where white deer fly.","Sipping strawberry tea.","Silver raindrops drift through timeless, Neverending June.","Crystal ... pearls free, with love!","Beaming love into me.")]</span>")
+		to_chat(M, span_notice("[pick("Diamond skies where white deer fly.","Sipping strawberry tea.","Silver raindrops drift through timeless, Neverending June.","Crystal ... pearls free, with love!","Beaming love into me.")]"))
 	..()
 	. = 1
 
@@ -49,7 +49,7 @@
 	if(prob(20))
 		M.emote("nya")
 	if(prob(20))
-		to_chat(M, "<span class = 'notice'>[pick("Headpats feel nice.", "Backrubs would be nice.", "Mew")]</span>")
+		to_chat(M, span_notice("[pick("Headpats feel nice.", "Backrubs would be nice.", "Mew")]"))
 	..()
 
 /datum/reagent/consumable/milkshake

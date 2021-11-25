@@ -87,9 +87,9 @@
 			RESKIN_WORN_ICON_STATE = "junior_officer"
 		),
 		"Battle Dress Uniform" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/modular_items/icons/obj/modular_clothing.dmi',
+			RESKIN_ICON = 'modular_skyrat/modules/modular_items/icons/modular_clothing.dmi',
 			RESKIN_ICON_STATE = "fatigues",
-			RESKIN_WORN_ICON = 'modular_skyrat/modules/modular_items/icons/mob/modular_clothing.dmi',
+			RESKIN_WORN_ICON = 'modular_skyrat/modules/modular_items/icons/modular_clothing.dmi',
 			RESKIN_WORN_ICON_STATE = "fatigues"
 		),
 		"Sol" = list(
@@ -418,7 +418,7 @@
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit_prison_inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit_prison_inhand_right
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit_prison_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit_prison_worn_digi
+	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit_prison_worn/digi // SKYRAT EDIT ADD
 	has_sensor = LOCKED_SENSORS
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
@@ -432,7 +432,7 @@
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit_prison_inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit_prison_inhand_right
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit_prison_worn
-	greyscale_config_worn_digi = null
+	greyscale_config_worn_digi = null // SKYRAT EDIT ADD
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
