@@ -40,14 +40,16 @@
 		icon_state = base_icon_state
 		return ..()
 
-	var/glass_icon = get_glass_icon(reagents.get_master_reagent())
+	var/datum/reagent/master_reagent = reagents.get_master_reagent() // SKYRAT EDIT ADDITION - Modular drinks
+	var/glass_icon = get_glass_icon(master_reagent) // SKYRAT EDIT - Modular drinks - Original: var/glass_icon = get_glass_icon(reagents.get_master_reagent())
 	if(glass_icon)
-		icon = glass_icon || 'icons/obj/drinks.dmi' //SKYRAT EDIT ADDITION - CUSTOMIZATION
+		icon = master_reagent.glass_icon // SKYRAT EDIT ADDITION - Modular drinks
 		icon_state = glass_icon
 		fill_icon_thresholds = null
 	else
 		//Make sure the fill_icon_thresholds and the icon_state are reset. We'll use reagent overlays.
 		fill_icon_thresholds = fill_icon_thresholds || list(1)
+		icon = initial(icon) // SKYRAT EDIT ADDITION - Modular drinks
 		icon_state = base_icon_state
 	return ..()
 
