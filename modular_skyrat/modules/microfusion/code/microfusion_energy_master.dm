@@ -62,7 +62,7 @@
 	/// A list of attached upgrades
 	var/list/attached_upgrades = list()
 	/// How many attachments can this gun hold?
-	var/max_attachments = 1
+	var/max_attachments = 2
 	/// The starting phase emitter in this weapon.
 	var/phase_emitter_type = /obj/item/microfusion_phase_emitter
 	/// The phase emitter that this gun currently has.

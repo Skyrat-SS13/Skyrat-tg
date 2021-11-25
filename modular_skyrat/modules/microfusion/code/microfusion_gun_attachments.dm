@@ -290,7 +290,7 @@ Basically the heart of the gun, can be upgraded.
 	if(integrity <= 0)
 		kill()
 	update_appearance()
-	parent_gun.update_appearance()
+	parent_gun?.update_appearance()
 
 /obj/item/microfusion_phase_emitter/multitool_act(mob/living/user, obj/item/tool)
 	var/new_throttle = clamp(input(user, "Please input a new thermal throttle percentage(0-300):", "Phase Emitter Overclock") as null|num, 1, 300)
