@@ -108,8 +108,8 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/microfusion_cell_attachment_stabiliser
-    name = "Stabilisation Microfusion Cell Attachment"
-    desc = "Stabilises the internal fusion reaction of microfusion cells."
+	name = "Stabilisation Microfusion Cell Attachment"
+	desc = "Stabilises the internal fusion reaction of microfusion cells."
 	id = "microfusion_cell_attachment_stabiliser"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/plasma = 1000)
