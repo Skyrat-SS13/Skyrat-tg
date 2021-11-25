@@ -44,6 +44,8 @@
 	SIGNAL_HANDLER
 	var/list/climbers = LAZYACCESS(current_climbers, climbed_thing)
 	for(var/i in climbers)
+		if(!in_range(i, user))
+			continue
 		var/mob/living/structure_climber = i
 		if(structure_climber == user)
 			return
