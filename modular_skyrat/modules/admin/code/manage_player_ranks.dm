@@ -20,7 +20,7 @@
 	if(!check_rights(R_PERMISSIONS))
 		return
 
-	var/choice = tgui_alert(usr, "Which rank would you like to manage?", "Manage Player Ranks", SKYRAT_PLAYER_RANKS + "Cancel")
+	var/choice = tgui_alert(usr, "Which rank would you like to manage?", "Manage Player Ranks", SKYRAT_PLAYER_RANKS)
 	if(!choice || !(choice in SKYRAT_PLAYER_RANKS))
 		return
 

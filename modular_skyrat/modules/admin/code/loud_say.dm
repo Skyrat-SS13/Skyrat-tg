@@ -21,7 +21,7 @@
 		confidential = TRUE)
 
 	for(var/client/admin_client in GLOB.admins)
-		if(admin_client.prefs.toggles & SOUND_ADMINHELP)
+		if(admin_client?.prefs?.toggles & SOUND_ADMINHELP)
 			SEND_SOUND(admin_client, sound('modular_skyrat/modules/admin/sound/duckhonk.ogg')) //Stop using loud mode if you don't need to.
 		window_flash(admin_client, ignorepref = TRUE)
 

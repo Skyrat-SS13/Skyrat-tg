@@ -67,13 +67,13 @@ GLOBAL_LIST_EMPTY(ckey_to_aooc_name)
 	for(var/iterated_player as anything in GLOB.player_list)
 		var/mob/iterated_mob = iterated_player
 		//Admins with muted OOC do not get to listen to AOOC, but normal players do, as it could be admins talking important stuff to them
-		if(iterated_mob.client && iterated_mob.client.holder && !iterated_mob.client.holder.deadmined && iterated_mob.client.prefs.chat_toggles & CHAT_OOC)
+		if(!iterated_mob.client?.holder?.deadmined && iterated_mob.client?.prefs?.chat_toggles & CHAT_OOC)
 			listeners[iterated_mob.client] = AOOC_LISTEN_ADMIN
 
 	for(var/iterated_listener as anything in listeners)
 		var/client/iterated_client = iterated_listener
 		var/mode = listeners[iterated_listener]
-		var/color = (!anon && CONFIG_GET(flag/allow_admin_ooccolor) && iterated_client.prefs?.read_preference(/datum/preference/color/ooc_color)) ? iterated_client.prefs?.read_preference(/datum/preference/color/ooc_color) : GLOB.AOOC_COLOR
+		var/color = (!anon && CONFIG_GET(flag/allow_admin_ooccolor) && iterated_client?.prefs?.read_preference(/datum/preference/color/ooc_color)) ? iterated_client?.prefs?.read_preference(/datum/preference/color/ooc_color) : GLOB.AOOC_COLOR
 		var/name = (mode == AOOC_LISTEN_ADMIN && anon) ? "([key])[keyname]" : keyname
 		to_chat(iterated_client, span_oocplain("<font color='[color]'><b><span class='prefix'>AOOC:</span> <EM>[name]:</EM> <span class='message linkify'>[msg]</span></b></font>"))
 
@@ -96,7 +96,7 @@ GLOBAL_LIST_EMPTY(ckey_to_aooc_name)
 
 	for(var/iterated_player in GLOB.player_list)
 		var/mob/iterated_mob = iterated_player
-		if(iterated_mob.client && iterated_mob.client.holder && !iterated_mob.client.holder.deadmined)
+		if(!iterated_mob.client?.holder?.deadmined)
 			listeners[iterated_mob.client] = TRUE
 	for(var/iterated_listener in listeners)
 		var/client/iterated_client = iterated_listener
@@ -104,7 +104,7 @@ GLOBAL_LIST_EMPTY(ckey_to_aooc_name)
 
 /datum/admins/proc/toggleaooc()
 	set category = "Server"
-	set name="Toggle Antag OOC"
+	set name = "Toggle Antag OOC"
 	toggle_aooc()
 	log_admin("[key_name(usr)] toggled Antagonist OOC.")
 	message_admins("[key_name_admin(usr)] toggled Antagonist OOC.")
