@@ -306,6 +306,7 @@
 
 /obj/item/gun/microfusion/examine(mob/user)
 	. = ..()
+	. += span_notice("It can hold <b>[max_attachments]</b> attachments.")
 	if(attached_upgrades.len)
 		for(var/obj/item/microfusion_gun_attachment/microfusion_gun_attachment in attached_upgrades)
 			. += span_notice("It has a [microfusion_gun_attachment.name] installed.")
@@ -384,7 +385,6 @@
 		if(attempted_shot)
 			to_chat(user, span_danger(attempted_shot))
 		return
-
 
 	//DUAL (or more!) WIELDING
 	var/bonus_spread = 0
