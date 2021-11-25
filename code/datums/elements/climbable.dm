@@ -44,7 +44,7 @@
 	SIGNAL_HANDLER
 	var/list/climbers = LAZYACCESS(current_climbers, climbed_thing)
 	for(var/i in climbers)
-		if(!in_range(i, user))
+		if(!in_range(i, user)) //SKYRAT CHANGE: fixes borgs shoving people off tables
 			continue
 		var/mob/living/structure_climber = i
 		if(structure_climber == user)
