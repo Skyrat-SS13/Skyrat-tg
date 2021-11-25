@@ -32,7 +32,7 @@ These are basically advanced cells.
 
 /obj/item/stock_parts/cell
 	/// Is this cell stabilised? (used in microfusion guns)
-	var/stabalised = FALSE
+	var/stabilised = FALSE
 	/// Thanks modularity.
 	var/microfusion_readout = FALSE
 
