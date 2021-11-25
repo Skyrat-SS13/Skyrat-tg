@@ -98,11 +98,11 @@ The cell is stable and will not emit sparks when firing.
     attachment_overlay_icon_state = "microfusion_stabiliser"
 	stability_impact = -10
 
-/obj/item/microfusion_cell_attachment/stabaliser/run_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
+/obj/item/microfusion_cell_attachment/stabiliser/run_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	. = ..()
 	microfusion_cell.stabalised = TRUE
 
-/obj/item/microfusion_cell_attachment/stabaliser/remove_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
+/obj/item/microfusion_cell_attachment/stabiliser/remove_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	. = ..()
 	microfusion_cell.stabalised = FALSE
 
@@ -110,7 +110,7 @@ The cell is stable and will not emit sparks when firing.
 SELFCHARGE ATTACHMENT
 
 The cell will charge itself.
-If the cell isn't stabalised by a stabaliser, it may emit a radaition pulse.
+If the cell isn't stabalised by a stabiliser, it may emit a radaition pulse.
 */
 /obj/item/microfusion_cell_attachment/selfcharging
 	name = "self charging microfusion cell attachment"

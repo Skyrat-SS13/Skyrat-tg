@@ -47,7 +47,7 @@ These are basically advanced cells.
 
 /obj/item/stock_parts/cell/microfusion/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(istype(attacking_item, /obj/item/microfusion_cell_attachment))
-		attatch_upgrade(attacking_item, user)
+		attach_upgrade(attacking_item, user)
 		return
 	return ..()
 
@@ -68,14 +68,14 @@ These are basically advanced cells.
 	remove_filter("rad_glow")
 	playsound(src, 'sound/effects/spray.ogg', 70)
 	switch(fuckup_type)
-		if(1)
+		if(MICROFUSION_CELL_FAILURE_TYPE_CHARGE_DRAIN)
 			charge = clamp(charge - MICROFUSION_CELL_DRAIN_FAILURE, 0, maxcharge)
-		if(2)
+		if(MICROFUSION_CELL_FAILURE_TYPE_EXPLOSION)
 			explode()
-		if(3)
-			empulse(get_turf(src), 2, 4, FALSE)
-		if(4)
-			radiation_pulse(src, 1, RAD_MEDIUM_INSULATION)
+		if(MICROFUSION_CELL_FAILURE_TYPE_EMP)
+			empulse(get_turf(src), MICROFUSION_CELL_EMP_HEAVY_FAILURE, MICROFUSION_CELL_EMP_LIGHT_FAILURE, FALSE)
+		if(MICROFUSION_CELL_FAILURE_TYPE_RADIATION)
+			radiation_pulse(src, MICROFUSION_CELL_RADIATION_RANGE_FAILURE, RAD_MEDIUM_INSULATION)
 
 /obj/item/stock_parts/cell/microfusion/update_overlays()
 	. = ..()
@@ -135,7 +135,7 @@ These are basically advanced cells.
 	reqs = list(/obj/item/trash/can = 1,
 				/obj/item/stack/sheet/iron = 1,
 				/obj/item/stack/cable_coil = 1)
-	time = 120
+	time = 12 SECONDS
 	category = CAT_MISC
 
 //WHY WOULD YOU MAKE THIS?

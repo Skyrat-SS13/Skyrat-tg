@@ -53,7 +53,7 @@
 	design_ids = list(
 		"advanced_microfusion_cell",
 		"microfusion_cell_attachment_rechargeable",
-		"microfusion_cell_attachment_stabaliser",
+		"microfusion_cell_attachment_stabiliser",
 		"microfusion_gun_attachment_scatter",
 		"advanced_microfusion_phase_emitter",
 

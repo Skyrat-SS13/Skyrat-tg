@@ -107,10 +107,10 @@
 	category = list("Misc","Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
-/datum/design/microfusion_cell_attachment_stabaliser
+/datum/design/microfusion_cell_attachment_stabiliser
 	name = "Stabalisation Microfusion Cell Attachment"
 	desc = "Stabalises the internal fusion reaction of microfusion cells."
-	id = "microfusion_cell_attachment_stabaliser"
+	id = "microfusion_cell_attachment_stabiliser"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/plasma = 1000)
 	build_path = /obj/item/microfusion_cell_attachment/stabaliser
