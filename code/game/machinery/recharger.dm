@@ -87,6 +87,13 @@
 					to_chat(user, span_notice("Your gun has no external power connector."))
 					return 1
 
+			//SKYRAT EDIT ADDITION
+			if(istype(G, /obj/item/stock_parts/cell/microfusion))
+				var/obj/item/stock_parts/cell/microfusion/inserting_cell = G
+				if(inserting_cell.chargerate <= 0)
+					to_chat(user, span_notice("[inserting_cell] cannot be recharged!"))
+					return 1 //???
+			//SKYRAT EDIT END
 			if(!user.transferItemToLoc(G, src))
 				return 1
 			setCharging(G)
@@ -136,16 +143,6 @@
 	if(charging)
 		var/obj/item/stock_parts/cell/C = charging.get_cell()
 		if(C)
-			//SKYRAT EDIT ADDITION
-			if(C.chargerate <= 0)
-				playsound(src, 'sound/machines/buzz-two.ogg', 30, TRUE)
-				say("[charging] cannot be recharged!")
-				charging.update_appearance()
-				charging.forceMove(drop_location())
-				setCharging(null)
-				update_appearance()
-				return
-			//SKYRAT EDIT END
 			if(C.charge < C.maxcharge)
 				C.give(C.chargerate * recharge_coeff * delta_time / 2)
 				use_power(125 * recharge_coeff * delta_time)
@@ -160,24 +157,6 @@
 				using_power = TRUE
 			update_appearance()
 			return
-		//SKYRAT EDIT ADDITION
-		if(istype(charging, /obj/item/stock_parts/cell/microfusion))
-			var/obj/item/stock_parts/cell/microfusion/microfusion_cell = charging
-			if(microfusion_cell.charge < microfusion_cell.maxcharge)
-				if(microfusion_cell.chargerate <= 0)
-					playsound(src, 'sound/machines/buzz-two.ogg', 30, TRUE)
-					say("[microfusion_cell] cannot be recharged!")
-					charging.update_appearance()
-					charging.forceMove(drop_location())
-					setCharging(null)
-					update_appearance()
-					return
-				microfusion_cell.give(microfusion_cell.chargerate * recharge_coeff * delta_time * 0.5)
-				use_power(microfusion_cell.chargerate * recharge_coeff * delta_time)
-				using_power = TRUE
-			update_appearance()
-			return
-		//SKYRAT EDIT END
 		if(!using_power && !finished_recharging) //Inserted thing is at max charge/ammo, notify those around us
 			finished_recharging = TRUE
 			playsound(src, 'sound/machines/ping.ogg', 30, TRUE)

@@ -59,6 +59,10 @@
 		if(!anchored)
 			to_chat(user, span_warning("[src] isn't attached to the ground!"))
 			return
+		var/obj/item/stock_parts/cell/inserting_cell = W
+		if(inserting_cell.chargerate <= 0)
+			to_chat(user, span_warning("[inserting_cell] cannot be recharged!"))
+			return
 		if(charging_batteries.len >= 4)
 			to_chat(user, span_warning("[src] is full, and cannot hold anymore cells!"))
 			return
@@ -89,14 +93,6 @@
 		return
 
 	for(var/obj/item/stock_parts/cell/charging in charging_batteries)
-		if(charging.chargerate <= 0)
-			charging.forceMove(drop_location())
-			charging.update_appearance()
-			charging_batteries -= charging
-			update_appearance()
-			playsound(src, 'sound/machines/buzz-two.ogg', 30, TRUE)
-			say("[charging] cannot be recharged!")
-			continue
 		if(charging.percent() >= 100)
 			continue
 		var/main_draw = use_power_from_net(charge_rate * delta_time, take_any = TRUE) //Pulls directly from the Powernet to dump into the cell
