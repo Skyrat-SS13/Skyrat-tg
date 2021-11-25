@@ -34,7 +34,8 @@
 		if("Belly up")
 			robot_rest_style = ROBOT_REST_BELLY_UP
 	robot_resting = robot_rest_style
-	on_lying_down()
+	if (robot_resting)
+		on_lying_down()
 	update_icons()
 
 /mob/living/silicon/robot/proc/robot_lay_down()
@@ -66,16 +67,6 @@
 	..()
 	if(hands)
 		hands.icon = (model.model_select_alternate_icon ? model.model_select_alternate_icon : initial(hands.icon))
-
-/mob/living/silicon/robot/start_pulling(atom/movable/AM, state, force, supress_message)
-	. = ..()
-	if(is_dogborg())
-		pixel_x = -16
-
-/mob/living/silicon/robot/stop_pulling()
-	. = ..()
-	if(is_dogborg())
-		pixel_x = -16
 
 /mob/living/silicon/robot/pick_model()
 	if(model.type != /obj/item/robot_model)

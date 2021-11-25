@@ -191,8 +191,7 @@
 	log_silicon("CYBORG: [key_name(cyborg)] has transformed into the [new_model] model.")
 
 	//SKYRAT EDIT ADDITION BEGIN - ALTBORGS - Old check for 'dogborg' var no longer necessary, refactored into model_features instead.
-	if(cyborg.is_dogborg()) //Should pass because model was set previously.
-		new_model.dogborg_equip()
+	new_model.update_dogborg()
 	//SKYRAT EDIT ADDITION END
 
 	INVOKE_ASYNC(new_model, .proc/do_transform_animation)
@@ -206,6 +205,9 @@
 		for(var/skin in borg_skins)
 			var/list/details = borg_skins[skin]
 			reskin_icons[skin] = image(icon = details[SKIN_ICON] || 'icons/mob/robots.dmi', icon_state = details[SKIN_ICON_STATE])
+			if (!isnull(details[SKIN_FEATURES]))
+				if (R_TRAIT_WIDE in details[SKIN_FEATURES])
+					reskin_icons[skin].pixel_x -= 16
 		var/borg_skin = show_radial_menu(cyborg, cyborg, reskin_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 38, require_near = TRUE)
 		if(!borg_skin)
 			return FALSE
@@ -225,6 +227,10 @@
 			hat_offset = details[SKIN_HAT_OFFSET]
 		if(!isnull(details[SKIN_TRAITS]))
 			model_traits += details[SKIN_TRAITS]
+		//SKYRAT EDIT ADDITION
+		if(!isnull(details[SKIN_FEATURES]))
+			model_features += details[SKIN_FEATURES]
+		//SKYRAT EDIT END
 	for(var/i in old_model.added_modules)
 		added_modules += i
 		old_model.added_modules -= i
@@ -306,6 +312,17 @@
 	model_select_icon = "service"
 	cyborg_base_icon = "clown"
 	hat_offset = -2
+	//SKYRAT EDIT ADDITION
+	borg_skins = list(
+		"Default" = list(SKIN_ICON_STATE = "clown"),
+		"Bootyborg" = list(SKIN_ICON_STATE = "bootyclown", SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_clown.dmi'),
+		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootyclown", SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_clown.dmi'),
+		"Marina" = list(SKIN_ICON_STATE = "marina_mommy", SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_clown.dmi', SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK)),
+		"Garish" = list(SKIN_ICON_STATE = "garish", SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_clown.dmi'),
+		"Robot" = list(SKIN_ICON_STATE = "clownbot", SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_clown.dmi'),
+		"Sleek" = list(SKIN_ICON_STATE = "clownman", SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_clown.dmi', SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK))
+	)
+	//SKYRAT EDIT END
 
 /obj/item/robot_model/engineering
 	name = "Engineering"
@@ -338,6 +355,35 @@
 	model_select_icon = "engineer"
 	magpulsing = TRUE
 	hat_offset = -4
+	//SKYRAT EDIT ADDITION BEGIN
+	borg_skins = list(
+		"Default" = list(SKIN_ICON_STATE = "engineer", SKIN_FEATURES = list(R_TRAIT_SMALL)),
+		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_engi", SKIN_ICON = R_ICON_ENG, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
+		"Default - Treads" = list(SKIN_ICON_STATE = "engi-tread", SKIN_LIGHT_KEY = "engineer", SKIN_ICON = R_ICON_ENG),
+		"Loader" = list(SKIN_ICON_STATE = "loaderborg", SKIN_ICON = R_ICON_ENG, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK)),
+		"Handy" = list(SKIN_ICON_STATE = "handyeng", SKIN_ICON = R_ICON_ENG),
+		"Sleek" = list(SKIN_ICON_STATE = "sleekeng", SKIN_ICON = R_ICON_ENG),
+		"Can" = list(SKIN_ICON_STATE = "caneng", SKIN_ICON = R_ICON_ENG),
+		"Marina" = list(SKIN_ICON_STATE = "marinaeng", SKIN_ICON = R_ICON_ENG),
+		"Spider" = list(SKIN_ICON_STATE = "spidereng", SKIN_ICON = R_ICON_ENG),
+		"Heavy" = list(SKIN_ICON_STATE = "heavyeng", SKIN_ICON = R_ICON_ENG),
+		"Bootyborg" = list(SKIN_ICON_STATE = "bootyeng", SKIN_ICON = R_ICON_ENG),
+		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootyeng", SKIN_ICON = R_ICON_ENG),
+		"Protectron" = list(SKIN_ICON_STATE = "protectron_eng", SKIN_ICON = R_ICON_ENG),
+		"Miss M" = list(SKIN_ICON_STATE = "missm_eng", SKIN_ICON = R_ICON_ENG),
+		"Mech" = list(SKIN_ICON_STATE = "conagher", SKIN_ICON = R_ICON_ENG),
+		"Wide" = list(SKIN_ICON_STATE = "wide-engi", SKIN_ICON = R_ICON_ENG),
+		"Eyebot" = list(SKIN_ICON_STATE = "eyeboteng", SKIN_ICON = R_ICON_ENG, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
+		"Pup Dozer" = list(SKIN_ICON_STATE = "pupdozer", SKIN_ICON = R_ICON_ENG_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)), //SLEEPER_OVERLAY = "dozersleeper"
+		"Vale" = list(SKIN_ICON_STATE = "valeeng", SKIN_ICON = R_ICON_ENG_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)), //SLEEPER_OVERLAY = "valeengsleeper"
+		"Hound" = list(SKIN_ICON_STATE = "engihound", SKIN_ICON = R_ICON_ENG_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)), //SLEEPER_OVERLAY = "engihoundsleeper"
+		"Darkhound" = list(SKIN_ICON_STATE = "engihounddark", SKIN_ICON = R_ICON_ENG_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)), //SLEEPER_OVERLAY = "engihounddarksleeper"
+		"Alina" = list(SKIN_ICON_STATE = "alina-eng", SKIN_LIGHT_KEY = "alina", SKIN_ICON = R_ICON_ENG_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)), //SLEEPER_OVERLAY = "alinasleeper"
+		"Drake" = list(SKIN_ICON_STATE = "drakeeng", SKIN_ICON = R_ICON_ENG_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)), //SLEEPER_OVERLAY = "drakesecsleeper"
+		"Borgi" = list(SKIN_ICON_STATE = "borgi-eng", SKIN_ICON = R_ICON_ENG_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE, R_TRAIT_SMALL)), //SLEEPER_OVERLAY = "borgi-eng-sleeper"
+		"Otie" = list(SKIN_ICON_STATE = "otiee", SKIN_ICON = R_ICON_ENG_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)) //SLEEPER_OVERLAY = "otiee-sleeper"
+	)
+	//SKYRAT EDIT END
 
 /obj/item/robot_model/janitor
 	name = "Janitor"
@@ -362,6 +408,30 @@
 	model_select_icon = "janitor"
 	hat_offset = -5
 	clean_on_move = TRUE
+	//SKYRAT EDIT ADDITION
+	borg_skins = list(
+		"Default" = list(SKIN_ICON_STATE = "janitor"),
+		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_jani", SKIN_ICON = R_ICON_JANI, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
+		"Marina" = list(SKIN_ICON_STATE = "marinajan", SKIN_ICON = R_ICON_JANI),
+		"Sleek" = list(SKIN_ICON_STATE = "sleekjan", SKIN_ICON = R_ICON_JANI),
+		"Can" = list(SKIN_ICON_STATE = "canjan", SKIN_ICON = R_ICON_JANI),
+		"Heavy" = list(SKIN_ICON_STATE = "heavyres", SKIN_ICON = R_ICON_JANI),
+		"Bootyborg" = list(SKIN_ICON_STATE = "bootyjanitor", SKIN_ICON = R_ICON_JANI),
+		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootyjanitor", SKIN_ICON = R_ICON_JANI),
+		"Protectron" = list(SKIN_ICON_STATE = "protectron_janitor", SKIN_ICON = R_ICON_JANI),
+		"Miss M" = list(SKIN_ICON_STATE = "missm_janitor", SKIN_ICON = R_ICON_JANI),
+		"Mech" = list(SKIN_ICON_STATE = "flynn", SKIN_ICON = R_ICON_JANI),
+		"Eyebot" = list(SKIN_ICON_STATE = "eyebotjani", SKIN_ICON = R_ICON_JANI, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
+		"Insekt" = list(SKIN_ICON_STATE = "insekt-Sci", SKIN_ICON = R_ICON_JANI),
+		"Wide" = list(SKIN_ICON_STATE = "wide-jani", SKIN_ICON = R_ICON_JANI),
+		"Spider" = list(SKIN_ICON_STATE = "spidersci", SKIN_ICON = R_ICON_JANI),
+		"Scrubpuppy" = list(SKIN_ICON_STATE = "scrubpup", SKIN_ICON = R_ICON_JANI_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)), //SLEEPER_OVERLAY = "jsleeper"
+		"Otie" = list(SKIN_ICON_STATE = "otiej", SKIN_ICON = R_ICON_JANI_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)), //SLEEPER_OVERLAY = "otiejsleeper"
+		"Drake" = list(SKIN_ICON_STATE = "drakejanit", SKIN_ICON = R_ICON_JANI_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)), //SLEEPER_OVERLAY = "drakesecsleeper"
+		"Vale" = list(SKIN_ICON_STATE = "J9", SKIN_ICON = R_ICON_JANI_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)), //SLEEPER_OVERLAY = "J9-sleeper"
+		"Borgi" = list(SKIN_ICON_STATE = "borgi-jani", SKIN_ICON = R_ICON_JANI_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE, R_TRAIT_SMALL)) //SLEEPER_OVERLAY = "borgi-jani-sleeper"
+	)
+	//SKYRAT EDIT END
 
 /obj/item/reagent_containers/spray/cyborg_drying
 	name = "drying agent spray"
@@ -421,25 +491,25 @@
 	borg_skins = list(
 		"Machinified Doctor" = list(SKIN_ICON_STATE = "medical", SKIN_TRAITS = list(R_TRAIT_SMALL)),
 		"Qualified Doctor" = list(SKIN_ICON_STATE = "qualified_doctor"),
-		"Zoomba" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "zoomba_med"),
-		"Droid" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "medical", SKIN_HAT_OFFSET = 4),
-		"Sleek" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "sleekmed"),
-		"Marina" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "marinamed"),
-		"Eyebot" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "eyebotmed", SKIN_TRAITS = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
-		"Heavy" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "heavymed"),
-		"Bootyborg" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "bootymedical"),
-		"Male Bootyborg" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "male_bootymedical"),
+		"Zoomba" = list(SKIN_ICON = R_ICON_MED, SKIN_ICON_STATE = "zoomba_med"),
+		"Droid" = list(SKIN_ICON = R_ICON_MED, SKIN_ICON_STATE = "medical", SKIN_HAT_OFFSET = 4),
+		"Sleek" = list(SKIN_ICON = R_ICON_MED, SKIN_ICON_STATE = "sleekmed"),
+		"Marina" = list(SKIN_ICON = R_ICON_MED, SKIN_ICON_STATE = "marinamed"),
+		"Eyebot" = list(SKIN_ICON = R_ICON_MED, SKIN_ICON_STATE = "eyebotmed", SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
+		"Heavy" = list(SKIN_ICON = R_ICON_MED, SKIN_ICON_STATE = "heavymed"),
+		"Bootyborg" = list(SKIN_ICON = R_ICON_MED, SKIN_ICON_STATE = "bootymedical"),
+		"Male Bootyborg" = list(SKIN_ICON = R_ICON_MED, SKIN_ICON_STATE = "male_bootymedical"),
 		// PLEASE ASSUME THE POSITION
-		"Protectron" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "protectron_medical"),
-		"Miss M" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "missm_med"),
-		"Arachne" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "arachne"),
-		"Insekt" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "insekt-Med"),
-		"Mech" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_med.dmi', SKIN_ICON_STATE = "gibbs"),
-		"Hound" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/widerobot_med.dmi', SKIN_ICON_STATE = "medihound", SKIN_TRAITS = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
-		"Vale" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/widerobot_med.dmi', SKIN_ICON_STATE = "valemed", SKIN_TRAITS = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
-		"Alina" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/widerobot_med.dmi', SKIN_ICON_STATE = "alina-med", SKIN_TRAITS = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
-		"Drake" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/widerobot_med.dmi', SKIN_ICON_STATE = "drakemed", SKIN_TRAITS = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
-		"Borgi" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/widerobot_med.dmi', SKIN_ICON_STATE = "borgi-medi", SKIN_TRAITS = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
+		"Protectron" = list(SKIN_ICON = R_ICON_MED, SKIN_ICON_STATE = "protectron_medical"),
+		"Miss M" = list(SKIN_ICON = R_ICON_MED, SKIN_ICON_STATE = "missm_med"),
+		"Arachne" = list(SKIN_ICON = R_ICON_MED, SKIN_ICON_STATE = "arachne"),
+		"Insekt" = list(SKIN_ICON = R_ICON_MED, SKIN_ICON_STATE = "insekt-Med"),
+		"Mech" = list(SKIN_ICON = R_ICON_MED, SKIN_ICON_STATE = "gibbs"),
+		"Hound" = list(SKIN_ICON = R_ICON_MED_WIDE, SKIN_ICON_STATE = "medihound", SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
+		"Vale" = list(SKIN_ICON = R_ICON_MED_WIDE, SKIN_ICON_STATE = "valemed", SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
+		"Alina" = list(SKIN_ICON = R_ICON_MED_WIDE, SKIN_ICON_STATE = "alina-med", SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
+		"Drake" = list(SKIN_ICON = R_ICON_MED_WIDE, SKIN_ICON_STATE = "drakemed", SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
+		"Borgi" = list(SKIN_ICON = R_ICON_MED_WIDE, SKIN_ICON_STATE = "borgi-medi", SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE))
 	)
 	// SKYRAT EDIT END
 
@@ -495,6 +565,22 @@
 	model_select_icon = "standard"
 	model_traits = list(TRAIT_PUSHIMMUNE)
 	hat_offset = -2
+	//SKYRAT EDIT ADDITION BEGIN
+	borg_skins = list(
+		"Default" = list(SKIN_ICON_STATE = "peace"),
+		"Sleek" = list(SKIN_ICON_STATE = "sleekpeace", SKIN_ICON = R_ICON_PEACEKEEPER, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK)),
+		"Spider" = list(SKIN_ICON_STATE = "whitespider", SKIN_ICON = R_ICON_PEACEKEEPER, SKIN_FEATURES = list(R_TRAIT_SMALL)),
+		"Marina" = list(SKIN_ICON_STATE = "marinapeace", SKIN_ICON = R_ICON_PEACEKEEPER, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK)),
+		"Bootyborg" = list(SKIN_ICON_STATE = "bootypeace", SKIN_ICON = R_ICON_PEACEKEEPER),
+		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootypeace", SKIN_ICON = R_ICON_PEACEKEEPER),
+		"Protectron" = list(SKIN_ICON_STATE = "protectron_peacekeeper", SKIN_ICON = R_ICON_PEACEKEEPER),
+		"Insekt" = list(SKIN_ICON_STATE = "insekt-Default", SKIN_ICON = R_ICON_PEACEKEEPER),
+		"Omni" = list(SKIN_ICON_STATE = "omoikane", SKIN_ICON = R_ICON_PEACEKEEPER, SKIN_FEATURES = list(R_TRAIT_SMALL)),
+		"Drake" = list(SKIN_ICON_STATE = "drakepeace", SKIN_ICON = R_ICON_PEACEKEEPER_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)), //SLEEPER_OVERLAY = "drakepeacesleeper"
+		"Borgi" = list(SKIN_ICON_STATE = "borgi", SKIN_ICON = R_ICON_PEACEKEEPER_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE, R_TRAIT_SMALL)), //SLEEPER_OVERLAY = "borgi-sleeper"
+		"Vale" = list(SKIN_ICON_STATE = "valepeace", SKIN_ICON = R_ICON_PEACEKEEPER_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)) //SLEEPER_OVERLAY = "valepeace-sleeper"
+	)
+	//SKYRAT EDIT END
 
 /obj/item/robot_model/peacekeeper/do_transform_animation()
 	..()
@@ -516,6 +602,30 @@
 	model_select_icon = "security"
 	model_traits = list(TRAIT_PUSHIMMUNE)
 	hat_offset = 3
+	borg_skins = list(
+		"Default" = list(SKIN_ICON_STATE = "sec"),
+		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_sec", SKIN_ICON = R_ICON_SEC, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
+		"Default - Treads" = list(SKIN_ICON_STATE = "sec-tread", SKIN_LIGHT_KEY = "sec", SKIN_ICON = R_ICON_SEC),
+		"Sleek" = list(SKIN_ICON_STATE = "sleeksec", SKIN_ICON = R_ICON_SEC),
+		"Marina" = list(SKIN_ICON_STATE = "marinasec", SKIN_ICON = R_ICON_SEC),
+		"Can" = list(SKIN_ICON_STATE = "cansec", SKIN_ICON = R_ICON_SEC),
+		"Spider" = list(SKIN_ICON_STATE = "spidersec", SKIN_ICON = R_ICON_SEC),
+		"Heavy" = list(SKIN_ICON_STATE = "heavysec", SKIN_ICON = R_ICON_SEC),
+		"Bootyborg" = list(SKIN_ICON_STATE = "bootysecurity", SKIN_ICON = R_ICON_SEC),
+		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootysecurity", SKIN_ICON = R_ICON_SEC),
+		"Protectron" = list(SKIN_ICON_STATE = "protectron_security", SKIN_ICON = R_ICON_SEC),
+		"Miss M" = list(SKIN_ICON_STATE = "missm_security", SKIN_ICON = R_ICON_SEC),
+		"Eyebot" = list(SKIN_ICON_STATE = "eyebotsec", SKIN_ICON = R_ICON_SEC, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
+		"Insekt" = list(SKIN_ICON_STATE = "insekt-Sec", SKIN_ICON = R_ICON_SEC),
+		"Mech" = list(SKIN_ICON_STATE = "woody", SKIN_ICON = R_ICON_SEC),
+		"Hound" = list(SKIN_ICON_STATE = "k9", SKIN_ICON = R_ICON_SEC_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)), //SLEEPER_OVERLAY = "ksleeper"
+		"Otie" = list(SKIN_ICON_STATE = "oties", SKIN_ICON = R_ICON_SEC_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)), //SLEEPER_OVERLAY = "otiessleeper"
+		"Alina" = list(SKIN_ICON_STATE = "alina-sec", SKIN_LIGHT_KEY = "alina", SKIN_ICON = R_ICON_SEC_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)), //SLEEPER_OVERLAY = "alinasleeper"
+		"Darkhound" = list(SKIN_ICON_STATE = "k9dark", SKIN_ICON = R_ICON_SEC_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)), //SLEEPER_OVERLAY = "k9darksleeper"
+		"Vale" = list(SKIN_ICON_STATE = "valesec", SKIN_ICON = R_ICON_SEC_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)), //SLEEPER_OVERLAY = "valesecsleeper"
+		"Drake" = list(SKIN_ICON_STATE = "drakesec", SKIN_ICON = R_ICON_SEC_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)), //SLEEPER_OVERLAY = "drakesecsleeper"
+		"Borgi" = list(SKIN_ICON_STATE = "borgi-sec", SKIN_ICON = R_ICON_SEC_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE, R_TRAIT_SMALL)) //SLEEPER_OVERLAY = "borgi-sec-sleeper"
+	)
 
 /obj/item/robot_model/security/do_transform_animation()
 	..()

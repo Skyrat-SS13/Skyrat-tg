@@ -33,8 +33,8 @@
 /mob/living/unpixel_shift()
 	if(is_shifted)
 		is_shifted = FALSE
-		pixel_x = body_position_pixel_x_offset
-		pixel_y = body_position_pixel_y_offset
+		pixel_x = body_position_pixel_x_offset + base_pixel_x
+		pixel_y = body_position_pixel_y_offset + base_pixel_y
 
 /mob/proc/pixel_shift(direction)
 	return
@@ -44,24 +44,24 @@
 		if(NORTH)
 			if(!canface())
 				return FALSE
-			if(pixel_y <= 16)
+			if(pixel_y <= 16 + base_pixel_y)
 				pixel_y++
 				is_shifted = TRUE
 		if(EAST)
 			if(!canface())
 				return FALSE
-			if(pixel_x <= 16)
+			if(pixel_x <= 16 + base_pixel_x)
 				pixel_x++
 				is_shifted = TRUE
 		if(SOUTH)
 			if(!canface())
 				return FALSE
-			if(pixel_y >= -16)
+			if(pixel_y >= -16 + base_pixel_y)
 				pixel_y--
 				is_shifted = TRUE
 		if(WEST)
 			if(!canface())
 				return FALSE
-			if(pixel_x >= -16)
+			if(pixel_x >= -16 + base_pixel_x)
 				pixel_x--
 				is_shifted = TRUE
