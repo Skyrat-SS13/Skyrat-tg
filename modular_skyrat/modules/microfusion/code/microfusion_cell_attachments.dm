@@ -11,7 +11,7 @@ For adding unique abilities to microfusion cells. These cannot directly interact
 	w_class = WEIGHT_CLASS_NORMAL
 	/// The overlay that will be automatically added, must be in the cells icon.
 	var/attachment_overlay_icon_state
-	/// Does this attatchment process with the cell?
+	 /// Does this attachment process with the cell?
 	var/processing_attachment = FALSE
 	/// How much stability does this cost the cell?
 	var/stability_impact = 0
@@ -42,23 +42,20 @@ Allows the cell to be recharged at a gun recharger OR cell recharger.
 */
 /obj/item/microfusion_cell_attachment/rechargeable
 	name = "rechargeable microfusion cell attachment"
-	desc = "Enables recharging on the microfusion cell its attatched to."
+	desc = "Enables recharging on the microfusion cell it's attached to."
 	icon_state = "attachment_rechargeable"
 	attachment_overlay_icon_state = "microfusion_rechargeable"
 	/// The bonus charge rate by adding this attachment.
-	var/charge_rate = 100
-	var/initial_charge_rate = 0
+	var/bonus_charge_rate = 100
 	stability_impact = 0.5
 
 /obj/item/microfusion_cell_attachment/rechargeable/run_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	. = ..()
-	initial_charge_rate = microfusion_cell.chargerate
-	microfusion_cell.chargerate += charge_rate
+	microfusion_cell.chargerate += bonus_charge_rate
 
 /obj/item/microfusion_cell_attachment/rechargeable/remove_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	. = ..()
-	microfusion_cell.chargerate -= initial_charge_rate
-	initial_charge_rate = 0
+	microfusion_cell.chargerate -= bonus_charge_rate
 
 /*
 OVERCAPACITY ATTACHMENT
@@ -67,11 +64,12 @@ Increases the cell capacity by a set percentage.
 */
 /obj/item/microfusion_cell_attachment/overcapacity
 	name = "overcapacity microfusion cell attachment"
-	desc = "Increases the capacity on the microfusion cell its attatched to."
+	desc = "Increases the capacity on the microfusion cell it's attached to."
 	icon_state = "attachment_overcapacity"
 	attachment_overlay_icon_state = "microfusion_overcapacity"
-	/// The amount of capacity adding this attachment to the cell gives.
-	var/capacity_increase = 20 //PRECENT
+	/// How much the attachment increases the cell's capacity by, as a percentage
+    var/capacity_increase = 20
+	/// The initial capacity of the cell before this upgrade is added!
 	var/initial_charge_capacity = 0
 	stability_impact = 1
 
@@ -88,16 +86,16 @@ Increases the cell capacity by a set percentage.
 	initial_charge_capacity = 0
 
 /*
-STABALISER ATTACHMENT
+STABILISER ATTACHMENT
 
 The cell is stable and will not emit sparks when firing.
 */
 
-/obj/item/microfusion_cell_attachment/stabaliser
-	name = "stabalisation microfusion cell attachment"
-	desc = "Stabalises the internal fusion reaction of microfusion cells."
-	icon_state = "attachment_stabaliser"
-	attachment_overlay_icon_state = "microfusion_stabaliser"
+/obj/item/microfusion_cell_attachment/stabiliser
+    name = "stabilisation microfusion cell attachment"
+    desc = "Stabilises the internal fusion reaction of microfusion cells."
+    icon_state = "attachment_stabiliser"
+    attachment_overlay_icon_state = "microfusion_stabiliser"
 	stability_impact = -10
 
 /obj/item/microfusion_cell_attachment/stabaliser/run_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
@@ -116,9 +114,10 @@ If the cell isn't stabalised by a stabaliser, it may emit a radaition pulse.
 */
 /obj/item/microfusion_cell_attachment/selfcharging
 	name = "self charging microfusion cell attachment"
-	desc = "Contains a small amount of infinitely decaying nuclear material, causing the fusion reaction to be self sustaining. WARNING: May cause radiation burns if not stabalised."
+	desc = "Contains a small amount of infinitely decaying nuclear material, causing the fusion reaction to be self sustaining. WARNING: May cause radiation burns if not stabilised."
 	icon_state = "attachment_selfcharge"
 	attachment_overlay_icon_state = "microfusion_selfcharge"
+	/// The amount of charge this cell will passively gain!
 	var/self_charge_amount = 20
 	stability_impact = 5
 
