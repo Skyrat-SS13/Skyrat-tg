@@ -18,6 +18,7 @@ These are basically advanced cells.
 	maxcharge = 1200 //12 shots
 	chargerate = 0 //Standard microfusion cells can't be recharged, they're single use.
 
+	/// A hard referenced list of upgrades currently attached to the weapon.
 	var/list/attached_upgrades = list()
 	/// How stable is this, percentage wise?
 	var/instability = 0
@@ -32,7 +33,7 @@ These are basically advanced cells.
 
 /obj/item/stock_parts/cell
 	/// Is this cell stabilised? (used in microfusion guns)
-	var/stabilised = FALSE
+	var/stabalised = FALSE
 	/// Thanks modularity.
 	var/microfusion_readout = FALSE
 
@@ -95,7 +96,7 @@ These are basically advanced cells.
 
 /obj/item/stock_parts/cell/microfusion/examine(mob/user)
 	. = ..()
-	. += span_notice("It can hold [max_attachments] attatchment(s).")
+	. += span_notice("It can hold [max_attachments] attachment(s).")
 	if(attached_upgrades.len)
 		for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment in attached_upgrades)
 			. += span_notice("It has a [microfusion_cell_attachment.name] installed.")
@@ -105,7 +106,7 @@ These are basically advanced cells.
 	else
 		. += span_warning("WARNING: Fusion containment field compromised by [instability]%!")
 
-/obj/item/stock_parts/cell/microfusion/proc/attatch_upgrade(obj/item/microfusion_cell_attachment/microfusion_cell_attachment, mob/living/user)
+/obj/item/stock_parts/cell/microfusion/proc/attach_upgrade(obj/item/microfusion_cell_attachment/microfusion_cell_attachment, mob/living/user)
 	if(attached_upgrades.len >= max_attachments)
 		to_chat(user, span_warning("[src] cannot fit any more attachments!"))
 		return FALSE
