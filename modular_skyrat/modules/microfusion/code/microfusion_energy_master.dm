@@ -310,15 +310,17 @@
 	if(attached_upgrades.len)
 		for(var/obj/item/microfusion_gun_attachment/microfusion_gun_attachment in attached_upgrades)
 			. += span_notice("It has a [microfusion_gun_attachment.name] installed.")
-		. += span_notice("Use a <b>screwdriver</b> to remove the upgrades.")
+		. += span_notice("<b>Alt+click</b> it to remove an upgrade.")
 	if(phase_emitter)
-		. += span_notice("It has a [phase_emitter.name] installed, at [phase_emitter.get_heat_percent()]% heat capacity.")
+		. += span_notice("It has a [phase_emitter.name] installed, at <b>[phase_emitter.get_heat_percent()]%</b> heat capacity.")
+		. += span_notice("The [phase_emitter.name] is at <b>[phase_emitter.integrity]%</b> integrity.")
+		. += span_notice("The [phase_emitter.name] will thermal throttle at <b>[phase_emitter.throttle_percentage]%</b> heat capacity.")
 		. += span_notice("Use a crowbar to remove the phase emitter.")
 	else
 		. += span_danger("It does not have a phase emitter installed!")
 
 	if(cell)
-		. += span_notice("It has a [cell.name] installed, with a capacity of [cell.charge]/[cell.maxcharge] MF.")
+		. += span_notice("It has a [cell.name] installed, with a capacity of <b>[cell.charge]/[cell.maxcharge] MF</b>.")
 
 /obj/item/gun/microfusion/suicide_act(mob/living/user)
 	if (istype(user) && can_shoot() && can_trigger_gun(user) && user.get_bodypart(BODY_ZONE_HEAD))
