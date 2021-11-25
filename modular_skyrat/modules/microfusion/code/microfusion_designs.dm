@@ -113,7 +113,7 @@
 	id = "microfusion_cell_attachment_stabiliser"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/plasma = 1000)
-	build_path = /obj/item/microfusion_cell_attachment/stabaliser
+	build_path = /obj/item/microfusion_cell_attachment/stabiliser
 	category = list("Misc","Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
