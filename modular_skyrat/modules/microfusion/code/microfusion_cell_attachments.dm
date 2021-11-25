@@ -68,7 +68,7 @@ Increases the cell capacity by a set percentage.
 	icon_state = "attachment_overcapacity"
 	attachment_overlay_icon_state = "microfusion_overcapacity"
 	/// How much the attachment increases the cell's capacity by, as a percentage
-    var/capacity_increase = 20
+	var/capacity_increase = 20
 	/// The initial capacity of the cell before this upgrade is added!
 	var/initial_charge_capacity = 0
 	stability_impact = 1
@@ -92,25 +92,25 @@ The cell is stable and will not emit sparks when firing.
 */
 
 /obj/item/microfusion_cell_attachment/stabiliser
-    name = "stabilisation microfusion cell attachment"
-    desc = "Stabilises the internal fusion reaction of microfusion cells."
-    icon_state = "attachment_stabiliser"
-    attachment_overlay_icon_state = "microfusion_stabiliser"
+	name = "stabilisation microfusion cell attachment"
+	desc = "Stabilises the internal fusion reaction of microfusion cells."
+	icon_state = "attachment_stabiliser"
+	attachment_overlay_icon_state = "microfusion_stabiliser"
 	stability_impact = -10
 
 /obj/item/microfusion_cell_attachment/stabiliser/run_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	. = ..()
-	microfusion_cell.stabalised = TRUE
+	microfusion_cell.stabilised = TRUE
 
 /obj/item/microfusion_cell_attachment/stabiliser/remove_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	. = ..()
-	microfusion_cell.stabalised = FALSE
+	microfusion_cell.stabilised = FALSE
 
 /*
 SELFCHARGE ATTACHMENT
 
 The cell will charge itself.
-If the cell isn't stabalised by a stabiliser, it may emit a radaition pulse.
+If the cell isn't stabilised by a stabiliser, it may emit a radaition pulse.
 */
 /obj/item/microfusion_cell_attachment/selfcharging
 	name = "self charging microfusion cell attachment"
@@ -123,7 +123,7 @@ If the cell isn't stabalised by a stabiliser, it may emit a radaition pulse.
 
 /obj/item/microfusion_cell_attachment/selfcharging/process_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell, delta_time)
 	if(microfusion_cell.charge < microfusion_cell.maxcharge)
-		microfusion_cell.charge = clamp(microfusion_cell.charge + (microfusion_cell.chargerate + self_charge_amount * delta_time / 2), 0, microfusion_cell.maxcharge)
+		microfusion_cell.charge = clamp(microfusion_cell.charge + (microfusion_cell.chargerate + self_charge_amount * delta_time * 0.5), 0, microfusion_cell.maxcharge)
 		if(microfusion_cell.parent_gun)
 			microfusion_cell.parent_gun.update_appearance()
 		if(!microfusion_cell.instability && DT_PROB(1, delta_time))

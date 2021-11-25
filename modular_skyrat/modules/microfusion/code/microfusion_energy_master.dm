@@ -265,7 +265,7 @@
 
 /obj/item/gun/microfusion/process_chamber(empty_chamber, from_firing, chamber_next_round)
 	. = ..()
-	if(!cell.stabalised && prob(40))
+	if(!cell.stabilised && prob(40))
 		do_sparks(2, FALSE, src) //Microfusion guns create sparks!
 
 /obj/item/gun/microfusion/attack_hand(mob/user, list/modifiers)

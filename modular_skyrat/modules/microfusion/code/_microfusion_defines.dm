@@ -18,7 +18,7 @@
 /// EMP failure.
 #define MICROFUSION_CELL_FAILURE_TYPE_EMP 3
 /// Radiation failure.
-#define MICROFUSION_CELL_FAILURE_TYPE_EMP 4
+#define MICROFUSION_CELL_FAILURE_TYPE_RADIATION 4
 
 
 /// Returned when the phase emtiter process is successful.

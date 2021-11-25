@@ -129,7 +129,7 @@
 
 /datum/design/microfusion_cell_attachment_selfcharging
 	name = "Selfcharging Microfusion Cell Attachment"
-	desc = "Contains a small amount of infinitely decaying nuclear material, causing the fusion reaction to be self sustaining. WARNING: May cause radiation burns if not stabalised."
+	desc = "Contains a small amount of infinitely decaying nuclear material, causing the fusion reaction to be self sustaining. WARNING: May cause radiation burns if not stabilised."
 	id = "microfusion_cell_attachment_selfcharging"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/uranium = 1000)
