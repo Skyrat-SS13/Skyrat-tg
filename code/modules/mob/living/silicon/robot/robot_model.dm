@@ -602,6 +602,7 @@
 	model_select_icon = "security"
 	model_traits = list(TRAIT_PUSHIMMUNE)
 	hat_offset = 3
+	//SKYRAT EDIT ADDITION
 	borg_skins = list(
 		"Default" = list(SKIN_ICON_STATE = "sec"),
 		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_sec", SKIN_ICON = R_ICON_SEC, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
@@ -626,6 +627,7 @@
 		"Drake" = list(SKIN_ICON_STATE = "drakesec", SKIN_ICON = R_ICON_SEC_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)), //SLEEPER_OVERLAY = "drakesecsleeper"
 		"Borgi" = list(SKIN_ICON_STATE = "borgi-sec", SKIN_ICON = R_ICON_SEC_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE, R_TRAIT_SMALL)) //SLEEPER_OVERLAY = "borgi-sec-sleeper"
 	)
+	//SKYRAT EDIT END
 
 /obj/item/robot_model/security/do_transform_animation()
 	..()
