@@ -339,15 +339,10 @@
 		//SKYRAT EDIT END  -
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
-<<<<<<< HEAD
-	required_experiments = list(/datum/experiment/scanning/points/slime/easy)
+	required_experiments = list(/datum/experiment/dissection/nonhuman)
 	// ORIGINAL: discount_experiments = list(/datum/experiment/scanning/random/material/meat = 4000) //Big discount to reinforce doing it.
 	discount_experiments = list(/datum/experiment/scanning/random/material/silver = 4000) //Big discount to reinforce doing it.
 	// SKYRAT EDIT END - MATERIAL MEAT WAS REMOVED
-=======
-	required_experiments = list(/datum/experiment/dissection/nonhuman)
-	discount_experiments = list(/datum/experiment/scanning/random/material/meat = 4000) //Big discount to reinforce doing it.
->>>>>>> d9b874197be (Replace slime extract experiments, required for biotech, with dissection surgery (#63033))
 
 /datum/techweb_node/xenoorgan_biotech
 	id = "xenoorgan_bio"
