@@ -1,9 +1,7 @@
-/obj/item/clothing/suit/pizzahoodie
+/obj/item/clothing/suit/toggle/jacket/hoodie/pizza
 	name = "dogginos hoodie"
 	desc = "A hoodie often worn by the delivery boys of this intergalactically known brand of pizza."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "red_hoodie"
+	greyscale_colors = "#c40000"
 
 /obj/item/clothing/suit/pizzaleader
 	name = "dogginos manager coat"
