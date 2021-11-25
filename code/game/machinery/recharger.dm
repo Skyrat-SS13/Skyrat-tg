@@ -172,7 +172,7 @@
 					setCharging(null)
 					update_appearance()
 					return
-				microfusion_cell.give(microfusion_cell.chargerate * recharge_coeff * delta_time / 2)
+				microfusion_cell.give(microfusion_cell.chargerate * recharge_coeff * delta_time * 0.5)
 				use_power(microfusion_cell.chargerate * recharge_coeff * delta_time)
 				using_power = TRUE
 			update_appearance()
