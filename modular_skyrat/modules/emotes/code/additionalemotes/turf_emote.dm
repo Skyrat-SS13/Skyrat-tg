@@ -33,7 +33,7 @@ var/current_turf
 		if(isroundstartslime(user) || isslimeperson(user) || isjellyperson(user))
 			user.allowed_turfs += "slime"
 
-		if(isxenohybrid(user))
+		if(isxenohybrid(user) || HAS_TRAIT(user, TRAIT_XENO_ASPECT))
 			user.allowed_turfs += "xenoresin"
 
 		if(isinsect(user) || HAS_TRAIT(user, TRAIT_WEBBING_ASPECT))

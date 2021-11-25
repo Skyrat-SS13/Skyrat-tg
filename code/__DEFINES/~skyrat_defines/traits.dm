@@ -22,6 +22,7 @@
 #define TRAIT_FLORAL_ASPECT "floral_aspect"
 #define TRAIT_ASH_ASPECT "ash_aspect"
 #define TRAIT_SPARKLE_ASPECT "sparkle_aspect"
+#define TRAIT_XENO_ASPECT "xeno_aspect"
 
 // Trait sources
 #define GHOSTROLE_TRAIT "ghostrole" // SKYRAT EDIT ADDITION -- Ghost Cafe Traits

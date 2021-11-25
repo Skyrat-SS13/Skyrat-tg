@@ -67,6 +67,16 @@
 	value = 0
 	mob_trait = TRAIT_SPARKLE_ASPECT
 	gain_text = span_notice("You're covered in sparkling dust!")
-	lose_text = span_danger("Somehow, you've completely cleaned yourself of glitter..")
+	lose_text = span_danger("Somehow, you've completely cleaned yourself of glitter...")
 	medical_record_text = "Patient seems to be looking fabulous."
 	icon = "hand-sparkles"
+
+/datum/quirk/xeno_aspect
+	name = "Resin aspect (Emotes)"
+	desc = "(Xeno innate) Xeno-hibridity is a result of science left rampant in space. (Say *turf to cast)"
+	value = 0
+	mob_trait = TRAIT_XENO_ASPECT
+	gain_text = span_notice("You feel your resin-gland churn.")
+	lose_text = span_danger("You no longer feel a resin-gland within your body...")
+	medical_record_text = "Patient in posession of a resin-production gland."
+	icon = "xeno"
