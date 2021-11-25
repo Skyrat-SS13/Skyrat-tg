@@ -40,7 +40,7 @@
 		return TRUE
 	return ..()
 
-/datum/species/vampire/on_species_gain(mob/living/carbon/human/new_vampire, datum/species/old_species)
+/datum/species/hemophage/on_species_gain(mob/living/carbon/human/new_vampire, datum/species/old_species)
 	. = ..()
 	to_chat(new_vampire, "[info_text]")
 	new_vampire.update_body(0)
