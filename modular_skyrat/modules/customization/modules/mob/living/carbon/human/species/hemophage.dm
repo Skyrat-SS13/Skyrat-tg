@@ -59,6 +59,8 @@
 
 /datum/species/hemophage/spec_life(mob/living/carbon/human/vampire, delta_time, times_fired)
 	. = ..()
+	if(vampire.stat == DEAD)
+		return
 	if(istype(vampire.loc, /obj/structure/closet) && !istype(vampire.loc, /obj/structure/closet/body_bag))
 		vampire.heal_overall_damage(1.5 * delta_time, 1.5 * delta_time, 0, BODYPART_ORGANIC) // Fast, but not as fast due to them being able to use normal lockers.
 		vampire.adjustToxLoss(-1 * delta_time) // 50% base speed to keep it fair.
