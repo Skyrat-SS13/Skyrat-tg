@@ -10,7 +10,7 @@
 	var/base_spread = 0
 	var/durability = 100 //How used this gun is.
 	var/durability_factor = 0.1 //How quickly a gun will degrade. 0.1 = 1000 shots. Edit this to change a guns base reliability.
-	var/reload_time = 2 SECONDS //How long, in deciseconds, it takes to reload a magazine.
+	var/reload_time = 2 SECONDS //How long it takes to reload a magazine.
 
 
 /obj/item/gun/ballistic/Initialize()
