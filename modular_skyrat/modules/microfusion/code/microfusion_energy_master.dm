@@ -113,6 +113,7 @@
 
 /obj/item/gun/microfusion/Destroy()
 	if(cell)
+		cell.parent_gun = null
 		QDEL_NULL(cell)
 	if(attached_upgrades.len)
 		for(var/obj/item/iterating_item in attached_upgrades)
@@ -545,6 +546,7 @@
 
 /obj/item/gun/microfusion/proc/remove_emitter()
 	phase_emitter.forceMove(get_turf(src))
+	phase_emitter.parent_gun = null
 	phase_emitter = null
 	update_appearance()
 
@@ -556,6 +558,7 @@
 	playsound(src, 'sound/machines/terminal_eject.ogg', 50, TRUE)
 	inserting_phase_emitter.forceMove(src)
 	phase_emitter = inserting_phase_emitter
+	phase_emitter.parent_gun = src
 	update_appearance()
 
 
@@ -578,6 +581,7 @@
 		playsound(src, sound_cell_insert, sound_cell_insert_volume, sound_cell_insert_vary)
 	cell = inserting_cell
 	inserting_cell.forceMove(src)
+	cell.parent_gun = src
 	if(!chambered)
 		recharge_newshot()
 	update_appearance()
@@ -594,6 +598,7 @@
 	if(sound_cell_remove)
 		playsound(src, sound_cell_remove, sound_cell_remove_volume, sound_cell_remove_vary)
 	old_cell.update_appearance()
+	cell.parent_gun = null
 	cell = null
 	update_appearance()
 

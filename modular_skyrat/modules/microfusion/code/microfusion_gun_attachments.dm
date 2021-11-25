@@ -359,7 +359,7 @@ Basically the heart of the gun, can be upgraded.
 	desc = "The core of a microfusion projection weapon, produces the laser."
 	max_heat = 2000
 	throttle_percentage = 85
-	heat_dissipation_per_tick = 30
+	heat_dissipation_per_tick = 40
 	integrity = 150
 	color = "#99ffcc"
 
@@ -368,6 +368,6 @@ Basically the heart of the gun, can be upgraded.
 	desc = "The core of a microfusion projection weapon, produces the laser."
 	max_heat = 2500
 	throttle_percentage = 90
-	heat_dissipation_per_tick = 40
+	heat_dissipation_per_tick = 60
 	integrity = 200
 	color = "#66ccff"
