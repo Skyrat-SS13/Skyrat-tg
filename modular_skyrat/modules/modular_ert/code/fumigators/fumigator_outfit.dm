@@ -1,7 +1,7 @@
 /datum/outfit/ert/weedkiller
 	name = "Fumigator"
 	id = /obj/item/card/id/advanced/centcom/ert
-	suit =  /obj/item/clothing/suit/apron/waders
+	suit = /obj/item/clothing/suit/apron/waders
 	glasses = /obj/item/clothing/glasses/biker
 	head = /obj/item/clothing/head/soft/red
 	mask = /obj/item/clothing/mask/breathmuzzle/speak
@@ -19,9 +19,8 @@
 
 /datum/outfit/ert/weedkiller/leader
 	name = "Fumigator Leader"
-
 	id = /obj/item/card/id/advanced/centcom/ert
-	suit =  /obj/item/clothing/suit/bio_suit/scientist
+	suit = /obj/item/clothing/suit/bio_suit/scientist
 	glasses = /obj/item/clothing/glasses/biker
 	head = /obj/item/clothing/head/bio_hood/scientist
 	mask = /obj/item/clothing/mask/breathmuzzle/speak
@@ -36,5 +35,3 @@
 		/obj/item/reagent_containers/glass/bottle/killer/weedkiller,\
 		/obj/item/grenade/chem_grenade/antiweed,\
 		)
-
-

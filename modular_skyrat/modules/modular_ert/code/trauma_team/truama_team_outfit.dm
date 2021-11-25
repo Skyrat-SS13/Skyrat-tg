@@ -1,7 +1,6 @@
 /datum/outfit/centcom/ert/medic/traumateam //Medical ERT Trauma Team, Admin spawn only obviously
 	name = "Trauma Team"
-
-	suit =  /obj/item/clothing/suit/space/hardsuit/ert/traumateam
+	suit = /obj/item/clothing/suit/space/hardsuit/ert/traumateam
 	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	ears = /obj/item/radio/headset/headset_cent/alt
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile/infiltrator/ntrauma
@@ -17,7 +16,7 @@
 		)
 
 /obj/item/storage/belt/military/ntrauma
-	desc = "A set of tactical webbing worn by Nanotrasen Elite Squad Members"
+	desc = "A set of tactical webbing worn by Nanotrasen Elite Squad members"
 
 /obj/item/storage/belt/military/ntrauma/PopulateContents()
 	new /obj/item/surgical_drapes(src)
@@ -39,4 +38,4 @@
 
 /obj/item/clothing/gloves/color/latex/nitrile/infiltrator/ntrauma
 	name = "specialist gloves"
-	desc = "A pair of gloves used by Trauma Team Specialists"
+	desc = "A pair of gloves used by Trauma Team specialists"

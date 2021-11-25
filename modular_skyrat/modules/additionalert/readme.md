@@ -3,9 +3,9 @@ https://github.com/Skyrat-SS13/Skyrat-tg/pull/4781
 
 ## Title: Additional Emergency Response Teams
 
-MODULE ID: additionalert
+MODULE ID: modular_ert
 
-### Description: 
+### Description:
 
 - Adds a specialized medical team ERT that allows for a better medical response.
 - Adds a specialized orbital shok droop trooper ERT that allows for a quick security response via pod.
@@ -24,7 +24,6 @@ MODULE ID: additionalert
 - master_files/icons/mob/clothing/suit_digi.dmi // Added Trauma Digi Team Suit
 - master_files/icons/mob/clothing/head_muzzled.dmi // Added Trauma Muzzled Team Helmet
 - master_files/icons/mob/clothing/vox
-
 - // ODST Additions
 - master_files/icons/mob/clothing/suit_digi.dmi // Added Trauma Digi Team Suit
 - master_files/icons/mob/clothing/head_muzzled.dmi // Added Trauma Muzzled Team Helmet
@@ -35,4 +34,5 @@ MODULE ID: additionalert
 - N/A
 
 ### Credits:
+
 - pinkblossom6 - Sprites & Code
