@@ -33,3 +33,10 @@
 /datum/sprite_accessory/horns/uni
 	name = "Uni"
 	icon_state = "uni"
+
+/datum/sprite_accessory/horns/big
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/horns_big.dmi'
+
+/datum/sprite_accessory/horns/big/antlers
+	name = "Antlers"
+	icon_state = "antlers"
