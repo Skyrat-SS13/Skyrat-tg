@@ -27,49 +27,53 @@
 		new /mob/living/simple_animal/hostile/venus_human_trap(spawning_turf)
 
 /datum/spacevine_mutation
+	/// The name of the mutation, it will be displayed in the examine of any vine objects.
 	var/name = ""
+	/// How severe the plant it, think of it as the usefullness. Used in probability calculations.
 	var/severity = 1
-	var/hue
+	/// The color of the plant
+	var/plant_color
+	/// What kind of mutation is it, good, bad, really bad?
 	var/quality
 
-/datum/spacevine_mutation/proc/add_mutation_to_vinepiece(obj/structure/spacevine/holder)
-	holder.mutations |= src
-	holder.add_atom_colour(hue, FIXED_COLOUR_PRIORITY)
+/datum/spacevine_mutation/proc/add_mutation_to_vinepiece(obj/structure/spacevine/vine_object)
+	vine_object.mutations |= src
+	vine_object.add_atom_colour(plant_color, FIXED_COLOUR_PRIORITY)
 
-/datum/spacevine_mutation/proc/process_mutation(obj/structure/spacevine/holder)
+/datum/spacevine_mutation/proc/process_mutation(obj/structure/spacevine/vine_object)
 	return
 
-/datum/spacevine_mutation/proc/process_temperature(obj/structure/spacevine/holder, temp, volume)
+/datum/spacevine_mutation/proc/process_temperature(obj/structure/spacevine/vine_object, temp, volume)
 	return
 
-/datum/spacevine_mutation/proc/on_birth(obj/structure/spacevine/holder)
+/datum/spacevine_mutation/proc/on_birth(obj/structure/spacevine/vine_object)
 	return
 
-/datum/spacevine_mutation/proc/on_grow(obj/structure/spacevine/holder)
+/datum/spacevine_mutation/proc/on_grow(obj/structure/spacevine/vine_object)
 	return
 
-/datum/spacevine_mutation/proc/on_death(obj/structure/spacevine/holder)
+/datum/spacevine_mutation/proc/on_death(obj/structure/spacevine/vine_object)
 	return
 
-/datum/spacevine_mutation/proc/on_hit(obj/structure/spacevine/holder, mob/hitter, obj/item/I, expected_damage)
+/datum/spacevine_mutation/proc/on_hit(obj/structure/spacevine/vine_object, mob/hitter, obj/item/I, expected_damage)
 	. = expected_damage
 
-/datum/spacevine_mutation/proc/on_cross(obj/structure/spacevine/holder, mob/crosser)
+/datum/spacevine_mutation/proc/on_cross(obj/structure/spacevine/vine_object, mob/crosser)
 	return
 
-/datum/spacevine_mutation/proc/on_chem(obj/structure/spacevine/holder, datum/reagent/R)
+/datum/spacevine_mutation/proc/on_chem(obj/structure/spacevine/vine_object, datum/reagent/R)
 	return
 
-/datum/spacevine_mutation/proc/on_eat(obj/structure/spacevine/holder, mob/living/eater)
+/datum/spacevine_mutation/proc/on_eat(obj/structure/spacevine/vine_object, mob/living/eater)
 	return
 
-/datum/spacevine_mutation/proc/on_spread(obj/structure/spacevine/holder, turf/target)
+/datum/spacevine_mutation/proc/on_spread(obj/structure/spacevine/vine_object, turf/target)
 	return
 
-/datum/spacevine_mutation/proc/on_buckle(obj/structure/spacevine/holder, mob/living/buckled)
+/datum/spacevine_mutation/proc/on_buckle(obj/structure/spacevine/vine_object, mob/living/buckled)
 	return
 
-/datum/spacevine_mutation/proc/on_explosion(severity, target, obj/structure/spacevine/holder)
+/datum/spacevine_mutation/proc/on_explosion(severity, target, obj/structure/spacevine/vine_object)
 	return
 
 /datum/spacevine_mutation/aggressive_spread/proc/aggrospread_act(obj/structure/spacevine/S, mob/living/M)
@@ -78,30 +82,30 @@
 // Creates light
 /datum/spacevine_mutation/light
 	name = "light"
-	hue = "#ffff00"
+	plant_color = "#ffff00"
 	quality = POSITIVE
 	severity = 4
 
-/datum/spacevine_mutation/light/on_grow(obj/structure/spacevine/holder)
-	if(holder.energy)
-		holder.set_light(severity, 0.3)
+/datum/spacevine_mutation/light/on_grow(obj/structure/spacevine/vine_object)
+	if(vine_object.energy)
+		vine_object.set_light(severity, 0.3)
 
 
 // Deals toxin damage when crossed or eaten
 /datum/spacevine_mutation/toxicity
 	name = "toxic"
-	hue = "#ff00ff"
+	plant_color = "#ff00ff"
 	severity = 10
 	quality = NEGATIVE
 
-/datum/spacevine_mutation/toxicity/on_cross(obj/structure/spacevine/holder, mob/living/crosser)
+/datum/spacevine_mutation/toxicity/on_cross(obj/structure/spacevine/vine_object, mob/living/crosser)
 	if(issilicon(crosser))
 		return
 	if(prob(severity) && istype(crosser) && !isvineimmune(crosser))
 		to_chat(crosser, span_alert("You accidentally touch the vine and feel a strange sensation."))
 		crosser.adjustToxLoss(5)
 
-/datum/spacevine_mutation/toxicity/on_eat(obj/structure/spacevine/holder, mob/living/eater)
+/datum/spacevine_mutation/toxicity/on_eat(obj/structure/spacevine/vine_object, mob/living/eater)
 	if(!isvineimmune(eater))
 		eater.adjustToxLoss(5)
 
@@ -109,31 +113,31 @@
 // Explodes - chain reaction, or on death
 /datum/spacevine_mutation/explosive
 	name = "explosive"
-	hue = "#ff0000"
+	plant_color = "#ff0000"
 	quality = NEGATIVE
 	severity = 2
 
-/datum/spacevine_mutation/explosive/on_explosion(explosion_severity, target, obj/structure/spacevine/holder)
+/datum/spacevine_mutation/explosive/on_explosion(explosion_severity, target, obj/structure/spacevine/vine_object)
 	if(explosion_severity < 3)
-		qdel(holder)
+		qdel(vine_object)
 	else
 		. = 1
-		QDEL_IN(holder, 5)
+		QDEL_IN(vine_object, 5)
 
-/datum/spacevine_mutation/explosive/on_death(obj/structure/spacevine/holder, mob/hitter, obj/item/I)
-	explosion(holder, light_impact_range = severity, adminlog = FALSE)
+/datum/spacevine_mutation/explosive/on_death(obj/structure/spacevine/vine_object, mob/hitter, obj/item/I)
+	explosion(vine_object, light_impact_range = severity, adminlog = FALSE)
 
 
 // Immune to fire and fire damage
 /datum/spacevine_mutation/fire_proof
 	name = "fire proof"
-	hue = "#ff8888"
+	plant_color = "#ff8888"
 	quality = MINOR_NEGATIVE
 
-/datum/spacevine_mutation/fire_proof/process_temperature(obj/structure/spacevine/holder, temp, volume)
+/datum/spacevine_mutation/fire_proof/process_temperature(obj/structure/spacevine/vine_object, temp, volume)
 	return 1
 
-/datum/spacevine_mutation/fire_proof/on_hit(obj/structure/spacevine/holder, mob/hitter, obj/item/weapon_used, expected_damage)
+/datum/spacevine_mutation/fire_proof/on_hit(obj/structure/spacevine/vine_object, mob/hitter, obj/item/weapon_used, expected_damage)
 	if(weapon_used && weapon_used.damtype == BURN)
 		. = 0
 	else
@@ -143,11 +147,11 @@
 // Overrides existing vines when spreading to a tile
 /datum/spacevine_mutation/vine_eating
 	name = "vine eating"
-	hue = "#ff7700"
+	plant_color = "#ff7700"
 	quality = MINOR_NEGATIVE
 
 /// Destroys any vine on spread-target's tile. The checks for if this should be done are in the spread() proc.
-/datum/spacevine_mutation/vine_eating/on_spread(obj/structure/spacevine/holder, turf/target)
+/datum/spacevine_mutation/vine_eating/on_spread(obj/structure/spacevine/vine_object, turf/target)
 	for(var/obj/structure/spacevine/prey in target)
 		qdel(prey)
 
@@ -155,19 +159,19 @@
 // Hurts mobs when interacting with a mob - either on spread or buckle
 /datum/spacevine_mutation/aggressive_spread  //very OP, but im out of other ideas currently
 	name = "aggressive spreading"
-	hue = "#333333"
+	plant_color = "#333333"
 	severity = 3
 	quality = NEGATIVE
 
 /// Checks mobs on spread-target's turf to see if they should be hit by a damaging proc or not.
-/datum/spacevine_mutation/aggressive_spread/on_spread(obj/structure/spacevine/holder, turf/target, mob/living)
+/datum/spacevine_mutation/aggressive_spread/on_spread(obj/structure/spacevine/vine_object, turf/target, mob/living)
 	for(var/mob/living/damaged_mob in target)
 		if(!isvineimmune(damaged_mob) && damaged_mob.stat != DEAD) // Don't kill immune creatures. Dead check to prevent log spam when a corpse is trapped between vine eaters.
-			aggrospread_act(holder, damaged_mob)
+			aggrospread_act(vine_object, damaged_mob)
 
 /// What happens if an aggr spreading vine buckles a mob.
-/datum/spacevine_mutation/aggressive_spread/on_buckle(obj/structure/spacevine/holder, mob/living/buckled)
-	aggrospread_act(holder, buckled)
+/datum/spacevine_mutation/aggressive_spread/on_buckle(obj/structure/spacevine/vine_object, mob/living/buckled)
+	aggrospread_act(vine_object, buckled)
 
 /// Hurts mobs. To be used when a vine with aggressive spread mutation spreads into the mob's tile or buckles them.
 /datum/spacevine_mutation/aggressive_spread/aggrospread_act(obj/structure/spacevine/attacking_vine, mob/living/hit_mob)
@@ -209,100 +213,100 @@
 // See-through
 /datum/spacevine_mutation/transparency
 	name = "transparent"
-	hue = ""
+	plant_color = ""
 	quality = POSITIVE
 
-/datum/spacevine_mutation/transparency/on_grow(obj/structure/spacevine/holder)
-	holder.set_opacity(0)
-	holder.alpha = 125
+/datum/spacevine_mutation/transparency/on_grow(obj/structure/spacevine/vine_object)
+	vine_object.set_opacity(0)
+	vine_object.alpha = 125
 
 
 // Consumes oxygen gas on process
 /datum/spacevine_mutation/oxy_eater
 	name = "oxygen consuming"
-	hue = "#ffff88"
+	plant_color = "#ffff88"
 	severity = 3
 	quality = NEGATIVE
 
-/datum/spacevine_mutation/oxy_eater/process_mutation(obj/structure/spacevine/holder)
-	var/turf/open/floor/current_turf = holder.loc
+/datum/spacevine_mutation/oxy_eater/process_mutation(obj/structure/spacevine/vine_object)
+	var/turf/open/floor/current_turf = vine_object.loc
 	if(!istype(current_turf))
 		return
 	var/datum/gas_mixture/gas_mix = current_turf.air
 	if(!gas_mix.gases[/datum/gas/oxygen])
 		return
-	gas_mix.gases[/datum/gas/oxygen][MOLES] = max(gas_mix.gases[/datum/gas/oxygen][MOLES] - severity * holder.energy, 0)
+	gas_mix.gases[/datum/gas/oxygen][MOLES] = max(gas_mix.gases[/datum/gas/oxygen][MOLES] - severity * vine_object.energy, 0)
 	gas_mix.garbage_collect()
 
 
 // Consumes nitrogen gas on process
 /datum/spacevine_mutation/nitro_eater
 	name = "nitrogen consuming"
-	hue = "#8888ff"
+	plant_color = "#8888ff"
 	severity = 3
 	quality = NEGATIVE
 
-/datum/spacevine_mutation/nitro_eater/process_mutation(obj/structure/spacevine/holder)
-	var/turf/open/floor/current_turf = holder.loc
+/datum/spacevine_mutation/nitro_eater/process_mutation(obj/structure/spacevine/vine_object)
+	var/turf/open/floor/current_turf = vine_object.loc
 	if(!istype(current_turf))
 		return
 	var/datum/gas_mixture/gas_mix = current_turf.air
 	if(!gas_mix.gases[/datum/gas/nitrogen])
 		return
-	gas_mix.gases[/datum/gas/nitrogen][MOLES] = max(gas_mix.gases[/datum/gas/nitrogen][MOLES] - severity * holder.energy, 0)
+	gas_mix.gases[/datum/gas/nitrogen][MOLES] = max(gas_mix.gases[/datum/gas/nitrogen][MOLES] - severity * vine_object.energy, 0)
 	gas_mix.garbage_collect()
 
 
 // Consumes carbon dioxide gas on process
 /datum/spacevine_mutation/carbondioxide_eater
 	name = "CO2 consuming"
-	hue = "#00ffff"
+	plant_color = "#00ffff"
 	severity = 3
 	quality = POSITIVE
 
-/datum/spacevine_mutation/carbondioxide_eater/process_mutation(obj/structure/spacevine/holder)
-	var/turf/open/floor/current_turf = holder.loc
+/datum/spacevine_mutation/carbondioxide_eater/process_mutation(obj/structure/spacevine/vine_object)
+	var/turf/open/floor/current_turf = vine_object.loc
 	if(!istype(current_turf))
 		return
 	var/datum/gas_mixture/gas_mix = current_turf.air
 	if(!gas_mix.gases[/datum/gas/carbon_dioxide])
 		return
-	gas_mix.gases[/datum/gas/carbon_dioxide][MOLES] = max(gas_mix.gases[/datum/gas/carbon_dioxide][MOLES] - severity * holder.energy, 0)
+	gas_mix.gases[/datum/gas/carbon_dioxide][MOLES] = max(gas_mix.gases[/datum/gas/carbon_dioxide][MOLES] - severity * vine_object.energy, 0)
 	gas_mix.garbage_collect()
 
 
 // Consumes plasma gas on process
 /datum/spacevine_mutation/plasma_eater
 	name = "toxins consuming"
-	hue = "#ffbbff"
+	plant_color = "#ffbbff"
 	severity = 3
 	quality = POSITIVE
 
-/datum/spacevine_mutation/plasma_eater/process_mutation(obj/structure/spacevine/holder)
-	var/turf/open/floor/current_turf = holder.loc
+/datum/spacevine_mutation/plasma_eater/process_mutation(obj/structure/spacevine/vine_object)
+	var/turf/open/floor/current_turf = vine_object.loc
 	if(!istype(current_turf))
 		return
 	var/datum/gas_mixture/gas_mix = current_turf.air
 	if(!gas_mix.gases[/datum/gas/plasma])
 		return
-	gas_mix.gases[/datum/gas/plasma][MOLES] = max(gas_mix.gases[/datum/gas/plasma][MOLES] - severity * holder.energy, 0)
+	gas_mix.gases[/datum/gas/plasma][MOLES] = max(gas_mix.gases[/datum/gas/plasma][MOLES] - severity * vine_object.energy, 0)
 	gas_mix.garbage_collect()
 
 
 // Deals damage to mobs that cross or attack it
 /datum/spacevine_mutation/thorns
 	name = "thorny"
-	hue = "#666666"
+	plant_color = "#666666"
 	severity = 10
 	quality = NEGATIVE
 
-/datum/spacevine_mutation/thorns/on_cross(obj/structure/spacevine/holder, mob/living/crosser)
+/datum/spacevine_mutation/thorns/on_cross(obj/structure/spacevine/vine_object, mob/living/crosser)
 	if(prob(severity) && istype(crosser) && !isvineimmune(crosser))
 		var/mob/living/living_crosser = crosser
 		living_crosser.adjustBruteLoss(5)
 		to_chat(living_crosser, span_alert("You cut yourself on the thorny vines."))
 
-/datum/spacevine_mutation/thorns/on_hit(obj/structure/spacevine/holder, mob/living/hitter, obj/item/I, expected_damage)
+/datum/spacevine_mutation/thorns/on_hit(obj/structure/spacevine/vine_object, mob/living/hitter, obj/item/I, expected_damage)
 	if(prob(severity) && istype(hitter) && !isvineimmune(hitter))
 		var/mob/living/attacking_mob = hitter
 		attacking_mob.adjustBruteLoss(5)
@@ -313,15 +317,15 @@
 // Dense, with reduced damage from sharp weapons
 /datum/spacevine_mutation/woodening
 	name = "hardened"
-	hue = "#997700"
+	plant_color = "#997700"
 	quality = NEGATIVE
 
-/datum/spacevine_mutation/woodening/on_grow(obj/structure/spacevine/holder)
-	if(holder.energy)
-		holder.density = TRUE
-	holder.modify_max_integrity(100)
+/datum/spacevine_mutation/woodening/on_grow(obj/structure/spacevine/vine_object)
+	if(vine_object.energy)
+		vine_object.density = TRUE
+	vine_object.modify_max_integrity(100)
 
-/datum/spacevine_mutation/woodening/on_hit(obj/structure/spacevine/holder, mob/living/hitter, obj/item/weapon, expected_damage)
+/datum/spacevine_mutation/woodening/on_hit(obj/structure/spacevine/vine_object, mob/living/hitter, obj/item/weapon, expected_damage)
 	if(weapon?.get_sharpness())
 		. = expected_damage * 0.5
 	else
@@ -331,27 +335,27 @@
 // Creates flower buds on growth - these spawn venus human traps
 /datum/spacevine_mutation/flowering
 	name = "flowering"
-	hue = "#0A480D"
+	plant_color = "#0A480D"
 	quality = NEGATIVE
 	severity = 10
 
-/datum/spacevine_mutation/flowering/on_grow(obj/structure/spacevine/holder)
-	if(holder.energy == 2 && prob(severity) && !locate(/obj/structure/alien/resin/flower_bud) in range(5,holder))
-		new/obj/structure/alien/resin/flower_bud(get_turf(holder))
+/datum/spacevine_mutation/flowering/on_grow(obj/structure/spacevine/vine_object)
+	if(vine_object.energy == 2 && prob(severity) && !locate(/obj/structure/alien/resin/flower_bud) in range(5,vine_object))
+		new/obj/structure/alien/resin/flower_bud(get_turf(vine_object))
 
-/datum/spacevine_mutation/flowering/on_cross(obj/structure/spacevine/holder, mob/living/crosser)
+/datum/spacevine_mutation/flowering/on_cross(obj/structure/spacevine/vine_object, mob/living/crosser)
 	if(prob(25))
-		holder.entangle(crosser)
+		vine_object.entangle(crosser)
 
 
 // Slips on cross
 /datum/spacevine_mutation/slipping
 	name = "slipping"
-	hue = "#97eaff"
+	plant_color = "#97eaff"
 	severity = 1
 	quality = NEGATIVE
 
-/datum/spacevine_mutation/slipping/on_cross(obj/structure/spacevine/holder, mob/living/crosser)
+/datum/spacevine_mutation/slipping/on_cross(obj/structure/spacevine/vine_object, mob/living/crosser)
 	if(issilicon(crosser))
 		return
 	if(ishuman(crosser))
@@ -360,31 +364,14 @@
 		to_chat(living_crosser, span_alert("The vines slip you!"))
 
 
-// Teleports on hit
-/datum/spacevine_mutation/teleporting
-	name = "teleporting"
-	hue = "#1105b6"
-	severity = 3
-	quality = NEGATIVE
-
-/datum/spacevine_mutation/teleporting/on_hit(obj/structure/spacevine/holder, mob/hitter, obj/item/I, expected_damage)
-	if(isliving(hitter))
-		var/mob/living/attacking_mob = hitter
-		if(isvineimmune(attacking_mob))
-			return
-		if(prob(25))
-			do_teleport(attacking_mob, get_turf(attacking_mob), 8, asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
-	. = expected_damage
-
-
 // Has a chance to reflect melee damage
 /datum/spacevine_mutation/meleereflecting
 	name = "melee reflecting"
-	hue = "#b6054f"
+	plant_color = "#b6054f"
 	severity = 2
 	quality = NEGATIVE
 
-/datum/spacevine_mutation/meleereflecting/on_hit(obj/structure/spacevine/holder, mob/hitter, obj/item/I, expected_damage)
+/datum/spacevine_mutation/meleereflecting/on_hit(obj/structure/spacevine/vine_object, mob/hitter, obj/item/I, expected_damage)
 	if(isliving(hitter))
 		var/mob/living/attacking_mob = hitter
 		if(isvineimmune(attacking_mob))
@@ -398,7 +385,7 @@
 // Has a chance to plant more kudzu when crossed or hit
 /datum/spacevine_mutation/seeding
 	name = "seeding"
-	hue = "#68b95d"
+	plant_color = "#68b95d"
 	severity = 3
 	quality = NEGATIVE
 
@@ -409,7 +396,7 @@
 	new /datum/spacevine_controller(planted_turf, added_mut_list, 50, 5)
 	new /mob/living/simple_animal/hostile/venus_human_trap(planted_turf)
 
-/datum/spacevine_mutation/seeding/on_cross(obj/structure/spacevine/holder, mob/crosser)
+/datum/spacevine_mutation/seeding/on_cross(obj/structure/spacevine/vine_object, mob/crosser)
 	if(isliving(crosser))
 		var/mob/living/living_crosser = crosser
 		if(isvineimmune(living_crosser) || living_crosser.stat == DEAD)
@@ -417,7 +404,7 @@
 		if(prob(10))
 			addtimer(CALLBACK(living_crosser, /mob/living/proc/plant_kudzu), 1 MINUTES)
 
-/datum/spacevine_mutation/seeding/on_hit(obj/structure/spacevine/holder, mob/hitter, obj/item/weapon, expected_damage)
+/datum/spacevine_mutation/seeding/on_hit(obj/structure/spacevine/vine_object, mob/hitter, obj/item/weapon, expected_damage)
 	if(isliving(hitter))
 		var/mob/living/living_hitter = hitter
 		if(isvineimmune(living_hitter))
@@ -429,39 +416,39 @@
 // Has a chance to electrocute mobs that hit it
 /datum/spacevine_mutation/electrify
 	name = "electrified"
-	hue = "#f7eb86"
+	plant_color = "#f7eb86"
 	severity = 3
 	quality = NEGATIVE
 
-/datum/spacevine_mutation/electrify/on_hit(obj/structure/spacevine/holder, mob/hitter, obj/item/I, expected_damage)
+/datum/spacevine_mutation/electrify/on_hit(obj/structure/spacevine/vine_object, mob/hitter, obj/item/I, expected_damage)
 	if(isliving(hitter))
 		var/mob/living/living_hitter = hitter
 		if(isvineimmune(living_hitter))
 			return
 		if(prob(20))
-			living_hitter.electrocute_act(10, holder)
+			living_hitter.electrocute_act(10, vine_object)
 	. = expected_damage
 
 
 // EMP explosion on death
 /datum/spacevine_mutation/emp
 	name = "emp"
-	hue = "#ffffff"
+	plant_color = "#ffffff"
 	severity = 3
 	quality = NEGATIVE
 
-/datum/spacevine_mutation/emp/on_death(obj/structure/spacevine/holder)
-	empulse(holder, 1, 2)
+/datum/spacevine_mutation/emp/on_death(obj/structure/spacevine/vine_object)
+	empulse(vine_object, 1, 2)
 
 
 // Has a chance to inject a random reagent into crossing mobs
 /datum/spacevine_mutation/randreagent
 	name = "reagent injecting"
-	hue = "#003cff"
+	plant_color = "#003cff"
 	severity = 3
 	quality = NEGATIVE
 
-/datum/spacevine_mutation/randreagent/on_cross(obj/structure/spacevine/holder, mob/crosser)
+/datum/spacevine_mutation/randreagent/on_cross(obj/structure/spacevine/vine_object, mob/crosser)
 	if(isliving(crosser))
 		var/mob/living/living_crosser = crosser
 		if(isvineimmune(living_crosser))
@@ -474,77 +461,111 @@
 // Pulses radiation on growth
 /datum/spacevine_mutation/radiation
 	name = "radiation pulsing"
-	hue = "#ffef62"
+	plant_color = "#ffef62"
 	severity = 3
 	quality = NEGATIVE
 
-/datum/spacevine_mutation/radiation/on_grow(obj/structure/spacevine/holder)
-	radiation_pulse(holder, 100, 3)
+/datum/spacevine_mutation/radiation/on_grow(obj/structure/spacevine/vine_object)
+	radiation_pulse(src, max_range = 5, threshold = RAD_EXTREME_INSULATION)
 
 
 // Generates miasma on growth
 /datum/spacevine_mutation/miasmagenerating
 	name = "miasma"
-	hue = "#470566"
+	plant_color = "#470566"
 	severity = 5
 	quality = NEGATIVE
 
-/datum/spacevine_mutation/miasmagenerating/on_grow(obj/structure/spacevine/holder)
-	var/turf/holder_turf = get_turf(holder)
-	holder_turf.atmos_spawn_air("miasma=100;TEMP=293")
+/datum/spacevine_mutation/miasmagenerating/on_grow(obj/structure/spacevine/vine_object)
+	var/turf/vine_object_turf = get_turf(vine_object)
+	vine_object_turf.atmos_spawn_air("miasma=100;TEMP=293")
 
 
 // Heals crossing or eating mobs
 /datum/spacevine_mutation/fleshmending
 	name = "flesh-mending"
-	hue = "#470566"
+	plant_color = "#470566"
 	severity = 10
 	quality = POSITIVE
 
-/datum/spacevine_mutation/fleshmending/on_cross(obj/structure/spacevine/holder, mob/crosser)
+/datum/spacevine_mutation/fleshmending/on_cross(obj/structure/spacevine/vine_object, mob/crosser)
 	if(isliving(crosser))
 		var/mob/living/living_crosser = crosser
 		living_crosser.adjustBruteLoss(-1)
 		living_crosser.adjustFireLoss(-1)
 		living_crosser.adjustToxLoss(-1)
 
-/datum/spacevine_mutation/fleshmending/on_eat(obj/structure/spacevine/holder, mob/living/eater)
+/datum/spacevine_mutation/fleshmending/on_eat(obj/structure/spacevine/vine_object, mob/living/eater)
 	if(isliving(eater))
 		var/mob/living/living_eater = eater
 		living_eater.adjustBruteLoss(-5)
 		living_eater.adjustFireLoss(-5)
 		living_eater.adjustToxLoss(-5)
 
-
-//Produces oxygen gas on growth
-/datum/spacevine_mutation/oxygen_producing
-	name = "oxygen-producing"
-	hue = "#4620ee"
-	severity = 10
-	quality = POSITIVE
-
-/datum/spacevine_mutation/oxygen_producing/on_grow(obj/structure/spacevine/holder)
-	var/turf/holder_turf = get_turf(holder)
-	holder_turf.atmos_spawn_air("o2=100;TEMP=293")
-
-
-//Produces nitrogen gas on growth
-/datum/spacevine_mutation/nitrogen_producing
-	name = "nitrogen-producing"
-	hue = "#ce2929"
-	severity = 10
-	quality = POSITIVE
-
-/datum/spacevine_mutation/nitrogen_producing/on_grow(obj/structure/spacevine/holder)
-	var/turf/holder_turf = get_turf(holder)
-	holder_turf.atmos_spawn_air("n2=100;TEMP=293")
-
 //allows the vine to walk 1 tile away from turfs
 /datum/spacevine_mutation/spacewalking
 	name = "space-walking"
-	hue = "#0a1330"
-	severity = 5
+	plant_color = "#0a1330"
+	severity = 6
 	quality = NEGATIVE
+
+/datum/spacevine_mutation/domesticated
+	name = "domesticated"
+	plant_color = "#a9adb1"
+	severity = 3
+	quality = POSITIVE
+
+/datum/spacevine_mutation/domesticated/on_spread(obj/structure/spacevine/vine_object, turf/target)
+	vine_object.layer = TURF_LAYER
+	vine_object.plane = FLOOR_PLANE
+
+/datum/spacevine_mutation/breach_fixing
+	name = "breach-fixing"
+	plant_color = "#43a1ff"
+	severity = 10
+	quality = POSITIVE
+
+/datum/spacevine_mutation/breach_fixing/on_spread(obj/structure/spacevine/vine_object, turf/grown_turf)
+	for(var/turf/open/space/space_turf in range(1, grown_turf))
+		var/range_check = FALSE
+		for(var/turf/locking_turf in range(2, space_turf))
+			if(!istype(get_area(locking_turf), /area/space))
+				range_check = TRUE
+		if(!range_check)
+			continue
+		space_turf.ChangeTurf(/turf/open/floor/plating/kudzu)
+		space_turf.color = plant_color
+
+/turf/open/floor/plating/kudzu
+	name = "vine flooring"
+	icon = 'modular_skyrat/modules/aesthetics/floors/icons/floors.dmi'
+	icon_state = "vinefloor"
+
+/turf/open/floor/plating/kudzu/attacked_by(obj/item/attacking_item, mob/living/user)
+	if(istype(attacking_item, /obj/item/wirecutters))
+		ChangeTurf(/turf/open/space)
+	else
+		return ..()
+
+/datum/spacevine_mutation/carbon_recycling
+	name = "carbon-recycling"
+	plant_color = "#008a50"
+	severity = 5
+	quality = POSITIVE
+
+/datum/spacevine_mutation/carbon_recycling/process_mutation(obj/structure/spacevine/vine_object)
+	var/turf/open/floor/current_turf = vine_object.loc
+	if(!istype(current_turf))
+		return
+	var/datum/gas_mixture/gas_mix = current_turf.air
+	if(!gas_mix.gases[/datum/gas/carbon_dioxide])
+		return
+	var/moles_to_replace = severity * vine_object.energy
+	gas_mix.gases[/datum/gas/carbon_dioxide][MOLES] = max(gas_mix.gases[/datum/gas/carbon_dioxide][MOLES] - moles_to_replace, 0)
+	gas_mix.garbage_collect()
+
+	var/happy_atmos = "oxygen=[moles_to_replace];TEMP=296"
+	current_turf.atmos_spawn_air(happy_atmos)
 
 // SPACE VINES (Note that this code is very similar to Biomass code)
 /obj/structure/spacevine
@@ -666,11 +687,17 @@
 	eat(user)
 
 /datum/spacevine_controller
+	/// A hard referenced list of all of the current vines...
 	var/list/obj/structure/spacevine/vines
+	/// The queue relating to what is to be grown next
 	var/list/growth_queue
+	/// How quickly it spreads
 	var/spread_multiplier = 5
+	/// The actual cap to how quickly it spreads.
 	var/spread_cap = 30
+	/// A referenced list to all of the current mutations the vine has!
 	var/list/vine_mutations_list
+	/// How likely it is to mutate!
 	var/mutativeness = 1
 
 /datum/spacevine_controller/New(turf/location, list/muts, potency, production, datum/round_event/event = null)
@@ -782,7 +809,8 @@
 		vine_mutation.on_grow(src)
 
 /obj/structure/spacevine/proc/entangle_mob()
-	if(!has_buckled_mobs() && prob(25))
+	var/datum/spacevine_mutation/domesticated/domesticated = locate() in mutations
+	if(!has_buckled_mobs() && prob(25) && !domesticated)
 		for(var/mob/living/entangled_mob in src.loc)
 			entangle(entangled_mob)
 			if(has_buckled_mobs())
@@ -793,7 +821,7 @@
 		return
 	for(var/datum/spacevine_mutation/vine_mutation in mutations)
 		vine_mutation.on_buckle(src, entangled_mob)
-	if((entangled_mob.stat != DEAD) && (entangled_mob.buckled != src)) //not dead or captured
+	if((entangled_mob.stat != DEAD) && (entangled_mob.buckled != src) && ishuman(entangled_mob)) //not dead or captured
 		to_chat(entangled_mob, span_danger("The vines [pick("wind", "tangle", "tighten")] around you!"))
 		buckle_mob(entangled_mob, 1)
 
@@ -801,9 +829,11 @@
 /obj/structure/spacevine/proc/spread()
 	var/direction = pick(GLOB.cardinals)
 	var/turf/stepturf = get_step(src,direction)
-	for(var/obj/machinery/door/target_door in stepturf.contents)
-		if(prob(50))
-			target_door.open()
+	var/datum/spacevine_mutation/domesticated/domesticated = locate() in mutations
+	if(!domesticated)
+		for(var/obj/machinery/door/target_door in stepturf.contents)
+			if(prob(50))
+				target_door.open()
 	var/datum/spacevine_mutation/spacewalking/space_mutation = locate() in mutations
 	if(!isspaceturf(stepturf) && stepturf.Enter(src))
 		spread_two(stepturf, direction)

@@ -2,159 +2,6 @@
 ///CODE FOR LEWD QUIRKS///
 //////////////////////////
 
-/////////////////
-///NYMPHOMANIA///
-/////////////////
-
-/datum/quirk/nymphomania
-	name = "Nymphomania"
-	desc = "You have an overwhelming urge to have sex with someone. Constantly."
-	value = -2 //This gives you uncomfortable stuff. But you can change it to 0. Don't change to positive values, it will be dumb.
-	mob_trait = TRAIT_NYMPHOMANIA
-	gain_text = span_purple("You feel much hornier than before...")
-	lose_text = span_notice("A pleasant coolness spreads throughout your body. You are in control of your sexual desires once again.")
-	medical_record_text = "Subject has nymphomania."
-	var/obj/item/sextoy
-	var/where
-	icon = "grin-hearts"
-
-//nymphomania players need to satisfy lust, so they need "tools" to "cool" them from time to time. In case if there is NO PLAYERS AROUND.
-/datum/quirk/nymphomania/add_unique()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/obj/item/sextoy_type
-	var/obj/item/organ/genital/vagina = quirk_holder.getorganslot(ORGAN_SLOT_VAGINA)
-	var/obj/item/organ/genital/penis = quirk_holder.getorganslot(ORGAN_SLOT_PENIS)
-	if(vagina && penis)
-		sextoy_type = /obj/item/clothing/sextoy/magic_wand
-	else if(penis)
-		sextoy_type = /obj/item/clothing/sextoy/fleshlight
-	else if(vagina)
-		sextoy_type = /obj/item/clothing/sextoy/dildo
-	else
-		sextoy_type = /obj/item/clothing/sextoy/magic_wand
-
-	sextoy = new sextoy_type(get_turf(quirk_holder))
-	H.put_in_hands(sextoy)
-
-/datum/quirk/nymphomania/post_add()
-	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	H.gain_trauma(/datum/brain_trauma/special/nymphomania, TRAUMA_RESILIENCE_ABSOLUTE)
-
-/datum/quirk/nymphomania/remove()
-	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	H?.cure_trauma_type(/datum/brain_trauma/special/nymphomania, TRAUMA_RESILIENCE_ABSOLUTE)
-
-//Brain trauma for quirk
-//Nymphomania brain trauma code
-
-/datum/brain_trauma/special/nymphomania
-	name = "Nymphomania"
-	desc = "The patient constantly feels aroused and supposed to satisfy their sexual desires."
-	scan_desc = "constant sexual arousal"
-	gain_text = span_purple("You feel much hornier than before...")
-	lose_text = span_notice("A pleasant coolness spreads throughout your body. You are in control of your sexual desires once again.")
-	can_gain = TRUE
-	random_gain = FALSE
-	resilience = TRAUMA_RESILIENCE_ABSOLUTE
-	var/satisfaction = 1000
-	var/stress = 0
-
-
-/datum/brain_trauma/special/nymphomania/on_gain()
-	var/mob/living/carbon/human/H = owner
-	ADD_TRAIT(H, TRAIT_NYMPHOMANIA, APHRO_TRAIT)
-
-/datum/brain_trauma/special/nymphomania/on_lose()
-	var/mob/living/carbon/human/H = owner
-	REMOVE_TRAIT(H, TRAIT_NYMPHOMANIA, APHRO_TRAIT)
-
-/datum/brain_trauma/special/nymphomania/on_life(delta_time, times_fired)
-	if(owner.stat != CONSCIOUS)
-		return
-
-	if(satisfaction <= 0)
-		if(prob(10))
-			switch(rand(1,6))
-				if(1)
-					if(stress >= 100)
-						to_chat(owner, span_purple("You feel slightly aroused..."))
-					else
-						to_chat(owner, span_purple("Lust spreads over your body!"))
-						owner.emote("moan")
-				if(2)
-					if(stress >= 100)
-						to_chat(owner, span_purple("You can't stop shaking..."))
-						owner.do_jitter_animation(20)
-					else
-						to_chat(owner, span_purple("You feel hot and seduced!"))
-						owner.dizziness += 20
-						owner.add_confusion(20)
-						owner.Jitter(20)
-						owner.do_jitter_animation(20)
-						owner.adjustStaminaLoss(50)
-				if(3, 4)
-					if(stress >= 100)
-						to_chat(owner, span_purple("You bring your hips together in lust."))
-					else
-						to_chat(owner, span_purple("Desire is driving you mad!"))
-						owner.hallucination += 30
-				if(5)
-					if(stress >= 100)
-						to_chat(owner, span_purple("You feel like your genitals are burning..."))
-						owner.adjustOxyLoss(8)
-						owner.blur_eyes(10)
-					else
-						to_chat(owner, span_purple("You need something to satisfy this desire! Something... Or someone?"))
-						owner.adjustOxyLoss(16)
-						owner.blur_eyes(15)
-						owner.visible_message(pick(span_purple("[owner] seductively wags [owner.p_their()] hips.") + "\n",
-											span_purple("[owner] moans in lust!") + "\n",
-											span_purple("[owner] touches [owner.p_them()]self in intimate places...") + "\n",
-											span_purple("[owner] trembling longingly.") + "\n",
-											span_purple("[owner] moans indecently!") + "\n"))
-
-	if(in_company() && satisfaction >= 0)
-		satisfaction -= 1
-
-	if(in_company() && satisfaction == 300)
-		to_chat(owner, span_purple("Jeez, it's hot in here..."))
-
-	if(in_company() && satisfaction == 250)
-		to_chat(owner, span_purple("Desire fogs your decisions."))
-
-	if(in_company() && satisfaction == 200)
-		to_chat(owner, span_purple("Your clothes grow uncomfortable."))
-
-	if(in_company() && satisfaction == 150)
-		to_chat(owner, span_purple("You'd hit that. Yeah. That's at least a six."))
-
-	if(in_company() && satisfaction == 100)
-		to_chat(owner, span_purple("You can't STAND it, you need a partner NOW!")	)
-
-	if(in_company() && satisfaction <= 0)
-		if(stress <= 100)
-			stress +=1
-
-	if(in_company() && owner.has_status_effect(/datum/status_effect/climax))
-		stress = 0
-		satisfaction = 1000
-
-	if(!(in_company()) && owner.has_status_effect(/datum/status_effect/climax) && satisfaction <= 500)
-		stress = 0
-		satisfaction = 500
-
-/datum/brain_trauma/special/nymphomania/proc/in_company()
-	if(HAS_TRAIT(owner, TRAIT_BLIND))
-		return FALSE
-	for(var/mob/living/carbon/human/M in oview(owner, 4))
-		if(!isliving(M)) //ghosts ain't people
-			continue
-		if(istype(M))
-			return TRUE
-	return FALSE
-
 //////////////////////
 ///SEXUAL OBSESSION///
 //////////////////////
@@ -430,7 +277,6 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 //Mood boost
 /datum/mood_event/bimbo
 	description = span_purple("So-o... Help..less... Lo-ve it!\n")
-	mood_change = 20
 
 ///////////////
 ///MASOCHISM///
@@ -531,10 +377,8 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 			return TRUE
 	return FALSE
 
-//Mood boost
 /datum/mood_event/sadistic
 	description = span_purple("Others' suffering makes me happier\n")
-	mood_change = 4
 
 //////////////////
 ///EMPATH BOUNS///

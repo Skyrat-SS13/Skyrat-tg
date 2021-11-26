@@ -9,13 +9,13 @@
 
 /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/orderly
 	name = "orderly uniform"
-	icon_state = "medical_uniform"
-	worn_icon_state = "medical_uniform"
+	icon_state = "orderly_uniform"
+	worn_icon_state = "orderly_uniform"
 
 /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard
 	name = "engineering guard uniform"
-	icon_state = "engineer_uniform"
-	worn_icon_state = "engineer_uniform"
+	icon_state = "engineering_guard_uniform"
+	worn_icon_state = "engineering_guard_uniform"
 
 /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent
 	name = "customs agent uniform"
