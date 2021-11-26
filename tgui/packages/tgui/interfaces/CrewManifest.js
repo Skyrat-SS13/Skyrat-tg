@@ -11,7 +11,7 @@ const commandJobs = [
   "Chief Medical Officer",
 ];
 
-// SKYRAT EDIT CHANGE BEGIN - Alternative Job Titles
+// SKYRAT EDIT CHANGE BEGIN - ALTERNATIVE_JOB_TITLES
 // Any instance of crewMember.trim was originally crewMember.trim
 export const CrewManifest = (props, context) => {
   const { data: { manifest, positions } } = useBackend(context);
@@ -97,4 +97,4 @@ export const CrewManifest = (props, context) => {
     </Window>
   );
 };
-// SKYRAT EDIT CHANGE END - Alternative Job Titles
+// SKYRAT EDIT CHANGE END - ALTERNATIVE_JOB_TITLES

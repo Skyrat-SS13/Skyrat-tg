@@ -1,4 +1,4 @@
-// Alternative Job Titles
+// ALTERNATIVE_JOB_TITLES
 
 /datum/controller/subsystem/job/proc/setup_alt_job_items(mob/living/carbon/human/equipping, datum/job/job, client/player_client)
 	if(!player_client)
