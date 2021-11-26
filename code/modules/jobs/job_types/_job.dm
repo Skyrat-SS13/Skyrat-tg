@@ -293,18 +293,12 @@
 	if(!J)
 		J = SSjob.GetJob(H.job)
 
-	// SKYRAT EDIT ADDITION BEGIN - Alternative Job Titles
-	// The alt job title, if user picked one, or the default
-	var/chosen_title = H.client?.prefs.alt_job_titles[J.title] || J.title
-	// SKYRAT EDIT ADDITION END - Alternative Job Titles
-
 	var/obj/item/card/id/C = H.wear_id
 	if(istype(C))
 		shuffle_inplace(C.access) // Shuffle access list to make NTNet passkeys less predictable
 		C.registered_name = H.real_name
 		if(H.age)
 			C.registered_age = H.age
-		C.assignment = chosen_title // SKYRAT EDIT ADDITION - Alternative Job Titles
 		C.update_label()
 		C.update_icon()
 		var/datum/bank_account/B = SSeconomy.bank_accounts_by_id["[H.account_id]"]
@@ -316,7 +310,7 @@
 	var/obj/item/pda/PDA = H.get_item_by_slot(pda_slot)
 	if(istype(PDA))
 		PDA.owner = H.real_name
-		PDA.ownjob = chosen_title // SKYRAT EDIT CHANGE - Alternative Job Titles - Original: PDA.ownjob = J.title
+		PDA.ownjob = J.title
 		PDA.update_label()
 
 
