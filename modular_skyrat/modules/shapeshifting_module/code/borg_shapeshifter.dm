@@ -96,7 +96,7 @@
 		"Peacekeeper" = image(icon = 'icons/mob/robots.dmi', icon_state = "peace"),
 		"Clown" = image(icon = 'icons/mob/robots.dmi', icon_state = "clown"),
 		"Syndicate" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec"),
-		"Spider Clan" = image(icon = R_ICON_NINJA, icon_state = "ninja_engi")
+		"Spider Clan" = image(icon = CYBORG_ICON_NINJA, icon_state = "ninja_engi")
 		))
 		var/model_selection = show_radial_menu(user, user, model_icons, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 42, require_near = TRUE)
 		if(!model_selection)
