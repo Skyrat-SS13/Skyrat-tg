@@ -234,7 +234,7 @@
 
 /datum/sprite_accessory/wings/mammal/spider
 	name = "Spider legs"
-	icon_state = "spider"
+	icon_state = "spider_legs"
 	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/wings/mammal/robowing
