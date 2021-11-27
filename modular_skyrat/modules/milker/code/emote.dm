@@ -9,9 +9,9 @@
 /datum/emote/living/carbon/milker/can_run_emote(mob/living/carbon/user, status_check = TRUE, intentional)
 	if(!iscarbon(user) || user.usable_hands < 1)
 		return FALSE
-	if(!user.client?.prefs?.read_preference(/datum/preference/toggle/master_erp_preferences))
+	if(!user.client?.prefs.read_preference(/datum/preference/toggle/master_erp_preferences))
 		return FALSE
-	if(!user.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy)) // I guess its a sextoy!
+	if(!user.client?.prefs.read_preference(/datum/preference/toggle/erp/sex_toy)) // I guess its a sextoy!
 		return FALSE
 	return ..()
 
@@ -19,7 +19,7 @@
 	. = ..()
 	if(!.)
 		return
-	var/obj/item/expression_device/milk_hand = new(user)
+	var/obj/item/milker/milk_hand = new(user)
 	if(user.put_in_hands(milk_hand))
 		to_chat(user, span_notice("You ready your milking hand."))
 	else
