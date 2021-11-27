@@ -67,11 +67,6 @@
 	if(!length(shackles_designs))
 		populate_shackles_designs()
 
-	//random color variation on start. Because why not?
-	current_color = pick(shackles_designs)
-	update_icon_state()
-	update_icon()
-
 /obj/item/clothing/suit/straight_jacket/shackles/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]_[current_color]"
@@ -104,13 +99,6 @@
         qdel(src)
         return
     . = ..()
-
-//examine stuff
-
-/obj/item/clothing/suit/straight_jacket/shackles/examine(mob/user)
-	.=..()
-	if(color_changed == FALSE)
-		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
 
 //reinforced version.
 /obj/item/clothing/suit/straight_jacket/shackles/reinforced

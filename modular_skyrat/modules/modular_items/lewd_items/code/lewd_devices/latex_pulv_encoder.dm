@@ -34,7 +34,7 @@
 
 // Handler for clicking an empty hand on an encoder
 /obj/item/latex_pulv_encoder/ui_interact(mob/user, datum/tgui/ui)
-	var/obj/item/latex_pulv_encoder/E = src
+	// var/obj/item/latex_pulv_encoder/E = src
 
 	// There wil be checks for encoder in hands
 

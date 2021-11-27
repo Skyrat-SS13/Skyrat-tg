@@ -84,12 +84,6 @@
 	if(!length(buttplug_forms))
 		populate_buttplug_forms()
 
-	//random color variation on start. Because why not?
-	current_color = pick(buttplug_designs)
-	current_size = pick(buttplug_forms)
-	update_icon_state()
-	update_icon()
-
 /obj/item/clothing/sextoy/buttplug/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]_[current_color]_[current_size]"
@@ -126,10 +120,3 @@
 		U.adjustPleasure(1 * delta_time)
 	if(current_size == "big" && U.pain < 22.5) //yeah, this will cause pain. No buttplug gib intended, sry
 		U.adjustPain (1*delta_time)
-
-//examine stuff
-
-/obj/item/clothing/sextoy/buttplug/examine(mob/user)
-	.=..()
-	if(color_changed == FALSE && form_changed == FALSE)
-		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"

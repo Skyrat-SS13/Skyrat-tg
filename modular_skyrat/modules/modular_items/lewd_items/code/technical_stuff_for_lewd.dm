@@ -3,11 +3,6 @@
 //I made this file to prevent myself from touching normal files///////////
 //////////////////////////////////////////////////////////////////////////
 
-/// Global list of all itemslot
-GLOBAL_LIST_INIT(all_item_slots, list(ITEM_SLOT_OCLOTHING, ITEM_SLOT_ICLOTHING, ITEM_SLOT_GLOVES, ITEM_SLOT_EYES, ITEM_SLOT_EARS, ITEM_SLOT_MASK, ITEM_SLOT_HEAD, ITEM_SLOT_FEET, ITEM_SLOT_ID,
-										ITEM_SLOT_BELT, ITEM_SLOT_BACK, ITEM_SLOT_DEX_STORAGE, ITEM_SLOT_NECK, ITEM_SLOT_HANDS, ITEM_SLOT_BACKPACK, ITEM_SLOT_SUITSTORE, ITEM_SLOT_LPOCKET, ITEM_SLOT_RPOCKET,
-										ITEM_SLOT_HANDCUFFED, ITEM_SLOT_LEGCUFFED, ITEM_SLOT_PENIS, ITEM_SLOT_VAGINA, ITEM_SLOT_ANUS, ITEM_SLOT_NIPPLES))
-
 //moved from my old interactions file 'cause skyrats already did interactions
 
 #define REQUIRE_NONE 0
@@ -1240,7 +1235,6 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 	client.mob.hud_used.persistent_inventory_update(client.mob)
 
 ////
-
 /datum/status_effect/incapacitating/livniglatexspread
 	id = "livniglatexspread"
 	var/obj/effect/temp_visual/curse/latexspread_effect = new
@@ -1260,10 +1254,74 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 	return ..()
 
 //Укажем имя анимации для эффекта распространения живого латекса
-/obj/effect/temp_visual/latexspread
+/obj/effect/temp_visual/latexspread_effect
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "curse"
 
 // /mob/living/carbon/human/Latexspread(amount, ignore_canstun = FALSE)
 // 	amount = dna.species.spec_stun(src, amount)
 // 	return ..()
+
+
+// Все что ниже нужно детально переработать для адекватной поддержки латекса в игре
+// За основу взят материал пластика
+/datum/material/livinglatex
+	name = "livinglatex"
+	desc = "livinglatex"
+	color = "#caccd9"
+	greyscale_colors = "#caccd9"
+	strength_modifier = 0.85
+	sheet_type = /obj/item/stack/sheet/livinglatex
+	categories = list(MAT_CATEGORY_RIGID = TRUE, MAT_CATEGORY_BASE_RECIPES = TRUE, MAT_CATEGORY_ITEM_MATERIAL=TRUE)
+	value_per_unit = 0.0125
+	beauty_modifier = -0.01
+	armor_modifiers = list(MELEE = 1.5, BULLET = 1.1, LASER = 0.3, ENERGY = 0.5, BOMB = 1, BIO = 1, FIRE = 1.1, ACID = 1)
+
+/datum/material/livinglatex/on_accidental_mat_consumption(mob/living/carbon/eater, obj/item/food)
+	eater.reagents.add_reagent(/datum/reagent/livinglatex_polymers, rand(6, 8))
+	food?.reagents?.add_reagent(/datum/reagent/livinglatex_polymers, food.reagents.total_volume*(2/5))
+	return TRUE
+
+
+GLOBAL_LIST_INIT(livinglatex_recipes, list(
+	new /datum/stack_recipe("plastic floor tile", /obj/item/stack/tile/plastic, 1, 4, 20), \
+	new /datum/stack_recipe("folding plastic chair", /obj/structure/chair/plastic, 2), \
+	new /datum/stack_recipe("plastic flaps", /obj/structure/plasticflaps, 5, one_per_turf = TRUE, on_floor = TRUE, time = 40), \
+	new /datum/stack_recipe("water bottle", /obj/item/reagent_containers/food/drinks/waterbottle/empty), \
+	new /datum/stack_recipe("large water bottle", /obj/item/reagent_containers/food/drinks/waterbottle/large/empty, 3), \
+	new /datum/stack_recipe("colo cups", /obj/item/reagent_containers/food/drinks/colocup, 1), \
+	new /datum/stack_recipe("wet floor sign", /obj/item/clothing/suit/caution, 2), \
+	new /datum/stack_recipe("warning cone", /obj/item/clothing/head/cone, 2), \
+	new /datum/stack_recipe("blank wall sign", /obj/item/sign, 1)))
+
+/obj/item/stack/sheet/livinglatex
+	name = "livinglatex"
+	desc = "Compress dinosaur over millions of years, then refine, split and mold, and voila! You have livinglatex."
+	singular_name = "livinglatex sheet"
+	icon_state = "sheet-livinglatex"
+	inhand_icon_state = "sheet-livinglatex"
+	mats_per_unit = list(/datum/material/livinglatex=MINERAL_MATERIAL_AMOUNT)
+	throwforce = 7
+	material_type = /datum/material/livinglatex
+	merge_type = /obj/item/stack/sheet/livinglatex
+
+/obj/item/stack/sheet/livinglatex/fifty
+	amount = 50
+
+/obj/item/stack/sheet/livinglatex/five
+	amount = 5
+
+/obj/item/stack/sheet/livinglatex/get_main_recipes()
+	. = ..()
+	. += GLOB.livinglatex_recipes
+
+/datum/reagent/livinglatex_polymers
+	name = "livinglatex polymers"
+	description = "the petroleum based components of livinglatex."
+	color = "#f7eded"
+	taste_description = "livinglatex"
+	ph = 6
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+// List of available latex colors. If you add additional color - add it to this list and acces to it through this list
+GLOBAL_LIST_INIT(latexcolorlist, list("black", "pink", "yellow", "red", "green", "teal"))

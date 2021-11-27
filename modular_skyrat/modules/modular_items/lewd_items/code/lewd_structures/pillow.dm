@@ -159,13 +159,6 @@
 		qdel(src)
 	return
 
-//examine stuff
-
-/obj/item/pillow/examine(mob/user)
-	.=..()
-	if(color_changed == FALSE && form_changed == FALSE)
-		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
-
 ////////////////////////////////////
 ///CODE FOR TINY PILLOW FURNITURE///
 ////////////////////////////////////

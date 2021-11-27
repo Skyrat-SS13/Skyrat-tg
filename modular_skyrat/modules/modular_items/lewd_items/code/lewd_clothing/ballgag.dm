@@ -5,7 +5,7 @@
 
 /obj/item/clothing/mask/ballgag
 	name = "ball gag"
-	desc = "Prevents wearer from speaking"
+	desc = "Prevents the wearer from speaking."
 	icon_state = "ballgag"
 	inhand_icon_state = "ballgag"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_masks.dmi'
@@ -36,14 +36,10 @@
 	var/list/gag_sizes // Populated after init, the available sizes it can be (if any)
 	var/list/gag_choices
 
-	var/was_recolored = FALSE
-	var/was_reformed = FALSE
-	var/color_changed = FALSE
-
 // A ballgag, but it chokes! Also its a dick!
 /obj/item/clothing/mask/ballgag/phallic
 	name = "phallic ball gag"
-	desc = "Prevents the wearer from speaking, as well as make breathing even harder."
+	desc = "Prevents the wearer from speaking, as well as making breathing harder."
 	icon_state = "chokegag"
 	inhand_icon_state = "blindfold"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_masks.dmi'
@@ -79,7 +75,7 @@
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f1.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f2.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f3.ogg',
-						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f4.ogg'), moan_volume, 1, -1)
+						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f4.ogg'), moan_volume, 1, -1, ignore_walls = FALSE)
 
 //to update model lol
 /obj/item/clothing/mask/ballgag/ComponentInitialize()
@@ -100,16 +96,10 @@
 	icon_state = icon_state = "[initial(icon_state)]_[gag_color]"
 	inhand_icon_state = "[initial(icon_state)]_[gag_color]"
 
-//examine stuff
-
-/obj/item/clothing/mask/ballgag/examine(mob/user)
-	.=..()
-	if(color_changed == FALSE)
-		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
-
-/////////////////////////////////////////////////////////////////////
-/////////here goes code for choking version of ballgag///////////////
-/////////////////////////////////////////////////////////////////////
+/obj/item/clothing/mask/ballgag/phallic/update_icon_state()
+	. = ..()
+	icon_state = "[initial(icon_state)]_[gag_size]_[gag_color]"
+	inhand_icon_state = "[initial(icon_state)]_[gag_size]_[gag_color]"
 
 // Fill the list of gag colors with gag colors
 /obj/item/clothing/mask/ballgag/proc/populate_gag_colors()
@@ -182,7 +172,7 @@
 /obj/item/clothing/mask/ballgag/equipped(mob/user, slot)
 	if(chokes_wearer)
 		var/mob/living/carbon/human/U = loc
-		if(src == U.wear_mask && U.client?.prefs.sextoys_pref == "Yes") //To prevent abusing this thing on non-erp players. We care about them, yes.
+		if(src == U.wear_mask && U.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy)) //To prevent abusing this thing on non-erp players. We care about them, yes.
 			START_PROCESSING(SSobj, src)
 	return ..()
 
@@ -194,29 +184,28 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/clothing/mask/ballgag/ballgag_phallic/process(delta_time)
-	var/mob/living/carbon/human/U = loc
-	tt += delta_time
-	if(tt >= time)
-		if(gag_size == "small")
-			U.adjustOxyLoss(rand(0, 2))
-			if(prob(15))
-				U.emote(pick("gasp","choke","moan"))
-			tt = 0
-		if(gag_size == "medium")
-			U.adjustOxyLoss(rand(0, 3))
-			if(prob(20))
-				U.emote(pick("gasp","choke","moan"))
-			tt = 0
-		if(gag_size == "big")
-			U.adjustOxyLoss(rand(1, 4))
-			if(prob(25))
-				U.emote(pick("gasp","choke","moan"))
-			tt = 0
+/obj/item/clothing/mask/ballgag/process(delta_time)
+	if(chokes_wearer)
+		var/mob/living/carbon/human/U = loc
+		tt += delta_time
+		if(tt >= time)
+			if(gag_size == "small")
+				U.adjustOxyLoss(rand(0, 2))
+				if(prob(15))
+					U.emote(pick("gasp","choke","moan"))
+				tt = 0
+			if(gag_size == "medium")
+				U.adjustOxyLoss(rand(0, 3))
+				if(prob(20))
+					U.emote(pick("gasp","choke","moan"))
+				tt = 0
+			if(gag_size == "big")
+				U.adjustOxyLoss(rand(1, 4))
+				if(prob(25))
+					U.emote(pick("gasp","choke","moan"))
+				tt = 0
 
-//examine stuff
-
-/obj/item/clothing/mask/ballgag/ballgag_phallic/examine(mob/user)
-	.=..()
-	if(was_reformed == FALSE && was_recolored == FALSE)
-		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
+// Be kind, undefined
+#undef GAG_SIZABLE
+#undef GAG_COLORABLE
+#undef GAG_COLORABLE_AND_SIZABLE

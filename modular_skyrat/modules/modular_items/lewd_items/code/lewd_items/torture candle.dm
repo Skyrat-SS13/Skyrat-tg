@@ -319,11 +319,4 @@
 		to_chat(user, span_danger("Candle should be lit to produce hot liquid wax!"))
 		return
 
-//examine stuff
-
-/obj/item/bdsm_candle/examine(mob/user)
-	.=..()
-	if(color_changed == FALSE)
-		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
-
 #undef CANDLE_LUMINOSITY
