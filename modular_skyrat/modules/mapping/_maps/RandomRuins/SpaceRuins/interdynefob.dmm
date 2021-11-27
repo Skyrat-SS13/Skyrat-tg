@@ -827,15 +827,10 @@
 /turf/open/floor/iron/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms/fitness)
 "cX" = (
+/obj/structure/rack/gunrack,
+/obj/effect/spawner/armory_spawn/syndie_rifles,
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 4
-	},
-/obj/structure/rack/shelf,
-/obj/item/storage/backpack/duffelbag/syndie/suppressors{
-	pixel_y = -4
-	},
-/obj/item/storage/backpack/duffelbag/syndie/suppressors{
-	pixel_y = 8
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -3848,15 +3843,19 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
 "no" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 8
+/obj/structure/rack/gunrack,
+/obj/item/gun/ballistic/shotgun/bulldog/unrestricted{
+	pixel_y = 3
 	},
-/obj/structure/rack/shelf,
-/obj/item/storage/backpack/duffelbag/syndie/emag{
+/obj/item/gun/ballistic/shotgun/bulldog/unrestricted,
+/obj/item/gun/ballistic/shotgun/bulldog/unrestricted{
 	pixel_y = -5
 	},
-/obj/item/storage/backpack/duffelbag/syndie/doorjack{
-	pixel_y = 8
+/obj/item/storage/box/ammo_box/bulldog,
+/obj/item/storage/box/ammo_box/bulldog,
+/obj/item/storage/box/ammo_box/bulldog,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -5082,17 +5081,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
-"rm" = (
-/obj/structure/rack/shelf,
-/obj/item/device/custom_kit/winterized,
-/obj/item/device/custom_kit/winterized,
-/obj/item/paper/crumpled{
-	desc = A letter from the Gorlex Marauders, it's written hastily with pen.;
-	info = "I am going to fucking kill whoever didn't label these. For reference left is the one with tassles, Jeez. - Nora Edison, Gorlex Marauders Supply Dept.";
-	name = "A Note from the Gorlex Marauders Supply Department"
-	},
-/turf/open/floor/iron/dark/smooth_large,
-/area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "rn" = (
 /obj/machinery/door/airlock/external{
 	req_access_txt = "150"
@@ -8503,7 +8491,7 @@
 /obj/structure/displaycase{
 	alert = 0;
 	req_access_txt = "151";
-	start_showpiece_type = /obj/item/gun/ballistic/shotgun/bulldog/unrestricted
+	start_showpiece_type = /obj/item/gun/ballistic/automatic/l6_saw/unrestricted
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
@@ -8840,9 +8828,9 @@
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
 "DB" = (
-/obj/structure/rack/shelf,
-/obj/item/device/custom_kit/winterized_notasset,
-/obj/item/device/custom_kit/winterized_notasset,
+/obj/machinery/suit_storage_unit/syndicate{
+	suit_type = /obj/item/clothing/suit/space/hardsuit/cybersun
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "DC" = (
@@ -10819,7 +10807,6 @@
 	req_access_txt = "150"
 	},
 /obj/item/clothing/head/hos/syndicate,
-/obj/item/clothing/head/hos/beret/syndicate,
 /obj/item/clothing/suit/armor/vest/capcarapace/syndicate,
 /obj/item/clothing/under/utility/com/syndicate,
 /obj/item/radio/headset/interdyne/command,
@@ -10828,6 +10815,7 @@
 /obj/item/encryptionkey/headset_interdyne,
 /obj/item/encryptionkey/headset_interdyne,
 /obj/item/encryptionkey/headset_interdyne,
+/obj/item/clothing/head/caphat/beret/syndicate,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
 "Kz" = (
@@ -12325,6 +12313,8 @@
 /obj/effect/turf_decal/trimline/red/line{
 	color = "#fc0303"
 	},
+/obj/item/device/custom_kit/winterized,
+/obj/item/device/custom_kit/winterized,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "Pp" = (
@@ -12724,6 +12714,8 @@
 /obj/effect/turf_decal/trimline/red/line{
 	color = "#fc0303"
 	},
+/obj/item/device/custom_kit/winterized_notasset,
+/obj/item/device/custom_kit/winterized_notasset,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "QE" = (
@@ -12868,6 +12860,11 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/mining_equipment)
 "QX" = (
 /obj/structure/table/reinforced,
+/obj/item/paper/crumpled{
+	desc = A letter from the Gorlex Marauders, it's written hastily with pen.;
+	info = "I am going to fucking kill whoever didn't label these. For reference left is the one with tassles, Jeez. - Nora Edison, Gorlex Marauders Supply Dept.";
+	name = "A Note from the Gorlex Marauders Supply Department"
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "QY" = (
@@ -17619,7 +17616,7 @@ bS
 ZM
 Tu
 Sx
-rm
+DB
 qU
 WB
 nX
