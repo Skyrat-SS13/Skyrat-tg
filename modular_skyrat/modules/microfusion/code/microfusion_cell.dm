@@ -19,9 +19,7 @@ These are basically advanced cells.
 	chargerate = 0 //Standard microfusion cells can't be recharged, they're single use.
 
 	/// A hard referenced list of upgrades currently attached to the weapon.
-	var/list/attached_upgrades = list()
-	/// How stable is this, percentage wise?
-	var/instability = 0
+	var/list/attachments = list()
 	/// Are we melting down? For icon stuffs.
 	var/meltdown = FALSE
 	/// How many upgrades can you have on this cell?
@@ -38,30 +36,31 @@ These are basically advanced cells.
 	var/microfusion_readout = FALSE
 
 /obj/item/stock_parts/cell/microfusion/Destroy()
-	if(attached_upgrades.len)
-		for(var/obj/item/iterating_item in attached_upgrades)
+	if(attachments.len)
+		for(var/obj/item/iterating_item in attachments)
 			iterating_item.forceMove(get_turf(src))
-		attached_upgrades = null
+		attachments = null
 	parent_gun = null
 	return ..()
 
 /obj/item/stock_parts/cell/microfusion/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(istype(attacking_item, /obj/item/microfusion_cell_attachment))
-		attach_upgrade(attacking_item, user)
+		add_attachment(attacking_item, user)
 		return
 	return ..()
 
-/obj/item/stock_parts/cell/microfusion/use(amount)
-	process_instability()
-	return ..()
+/obj/item/stock_parts/cell/microfusion/emp_act(severity)
+	. = ..()
+	var/prob_percent = charge / 100 * severity
+	if(prob(prob_percent))
+		process_instability()
 
 /obj/item/stock_parts/cell/microfusion/proc/process_instability()
-	if(prob(instability))
-		var/seconds_to_explode = rand(MICROFUSION_CELL_FAILURE_LOWER, MICROFUSION_CELL_FAILURE_UPPER)
-		say("Malfunction in [seconds_to_explode / 10] seconds!")
-		playsound(src, 'sound/machines/warning-buzzer.ogg', 30, FALSE, FALSE)
-		add_filter("rad_glow", 2, list("type" = "outline", "color" = "#ff5e0049", "size" = 2))
-		addtimer(CALLBACK(src, .proc/process_failure), seconds_to_explode)
+	var/seconds_to_explode = rand(MICROFUSION_CELL_FAILURE_LOWER, MICROFUSION_CELL_FAILURE_UPPER)
+	say("Malfunction in [seconds_to_explode / 10] seconds!")
+	playsound(src, 'sound/machines/warning-buzzer.ogg', 30, FALSE, FALSE)
+	add_filter("rad_glow", 2, list("type" = "outline", "color" = "#ff5e0049", "size" = 2))
+	addtimer(CALLBACK(src, .proc/process_failure), seconds_to_explode)
 
 /obj/item/stock_parts/cell/microfusion/proc/process_failure()
 	var/fuckup_type = rand(1,4)
@@ -79,53 +78,49 @@ These are basically advanced cells.
 
 /obj/item/stock_parts/cell/microfusion/update_overlays()
 	. = ..()
-	for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment in attached_upgrades)
+	for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment in attachments)
 		. += microfusion_cell_attachment.attachment_overlay_icon_state
 
 /obj/item/stock_parts/cell/microfusion/screwdriver_act(mob/living/user, obj/item/tool)
-	if(!attached_upgrades.len)
+	if(!attachments.len)
 		to_chat(user, span_danger("There are no attachments to remove!"))
 		return
-	remove_upgrades()
+	remove_attachments()
 	playsound(src, 'sound/items/screwdriver.ogg', 70, TRUE)
 	to_chat(user, span_notice("You remove the upgrades from [src]."))
 
 /obj/item/stock_parts/cell/microfusion/process(delta_time)
-	for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment in attached_upgrades)
+	for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment in attachments)
 		microfusion_cell_attachment.process_attachment(src, delta_time)
 
 /obj/item/stock_parts/cell/microfusion/examine(mob/user)
 	. = ..()
 	. += span_notice("It can hold [max_attachments] attachment(s).")
-	if(attached_upgrades.len)
-		for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment in attached_upgrades)
+	if(attachments.len)
+		for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment in attachments)
 			. += span_notice("It has a [microfusion_cell_attachment.name] installed.")
 		. += span_notice("Use a <b>screwdriver</b> to remove the upgrades.")
-	if(instability <= 0)
-		. += span_notice("The fusion containment field is nominal.")
-	else
-		. += span_warning("WARNING: Fusion containment field compromised by [instability]%!")
 
-/obj/item/stock_parts/cell/microfusion/proc/attach_upgrade(obj/item/microfusion_cell_attachment/microfusion_cell_attachment, mob/living/user)
-	if(attached_upgrades.len >= max_attachments)
+/obj/item/stock_parts/cell/microfusion/proc/add_attachment(obj/item/microfusion_cell_attachment/microfusion_cell_attachment, mob/living/user)
+	if(attachments.len >= max_attachments)
 		to_chat(user, span_warning("[src] cannot fit any more attachments!"))
 		return FALSE
-	if(is_type_in_list(microfusion_cell_attachment, attached_upgrades))
+	if(is_type_in_list(microfusion_cell_attachment, attachments))
 		to_chat(user, span_warning("[src] already has [microfusion_cell_attachment] installed!"))
 		return FALSE
-	attached_upgrades += microfusion_cell_attachment
+	attachments += microfusion_cell_attachment
 	microfusion_cell_attachment.forceMove(src)
-	microfusion_cell_attachment.run_attachment(src)
+	microfusion_cell_attachment.add_attachment(src)
 	to_chat(user, span_notice("You successfully install [microfusion_cell_attachment] onto [src]!"))
 	playsound(src, 'sound/effects/structure_stress/pop2.ogg', 70, TRUE)
 	update_appearance()
 	return TRUE
 
-/obj/item/stock_parts/cell/microfusion/proc/remove_upgrades()
-	for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment in attached_upgrades)
+/obj/item/stock_parts/cell/microfusion/proc/remove_attachments()
+	for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment in attachments)
 		microfusion_cell_attachment.remove_attachment(src)
 		microfusion_cell_attachment.forceMove(get_turf(src))
-		attached_upgrades -= microfusion_cell_attachment
+		attachments -= microfusion_cell_attachment
 	update_appearance()
 
 /datum/crafting_recipe/makeshift/microfusion_cell
@@ -144,8 +139,13 @@ These are basically advanced cells.
 	desc = "This can with ducttape resembles a microfusion cell. What the hell were you thinking? A makeshift microfusion battery? Are you out of your mind?!"
 	icon_state = "microfusion_makeshift"
 	maxcharge = 600
-	instability = 20
 	max_attachments = 0
+	/// The probability of it failing
+	var/fail_prob = 10
+
+/obj/item/stock_parts/cell/microfusion/makeshift/use()
+	if(prob(fail_prob))
+		process_instability()
 
 /obj/item/stock_parts/cell/microfusion/enhanced
 	name = "enhanced microfusion cell"

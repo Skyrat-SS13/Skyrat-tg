@@ -6,7 +6,7 @@
 /obj/item/gun/microfusion
 	name = "prototype detatchable cell energy projection aparatus"
 	desc = "The coders have obviously failed to realise this is broken."
-	icon = 'modular_skyrat/modules/microfusion/icons/guns40x32.dmi'
+	icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun40x32.dmi'
 	icon_state = "mcr01"
 	lefthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
@@ -40,8 +40,6 @@
 	///Should we give an overlay to empty guns?
 	var/display_empty = TRUE
 	///whether the gun's cell drains the cyborg user's cell to recharge
-	var/use_cyborg_cell = FALSE
-	///set to true so the gun is given an empty cell
 	var/dead_cell = FALSE
 
 	// MICROFUSION SPECIFIC VARS
@@ -61,7 +59,7 @@
 	/// The volume at which we will play the removal sound.
 	var/sound_cell_remove_volume = 100
 	/// A list of attached upgrades
-	var/list/attached_upgrades = list()
+	var/list/attachments = list()
 	/// How many attachments can this gun hold?
 	var/max_attachments = 2
 	/// The starting phase emitter in this weapon.
@@ -72,8 +70,6 @@
 	var/heat_per_shot = 100
 	/// The heat dissipation bonus granted by the weapon.
 	var/heat_dissipation_bonus = 0
-
-/obj/item/clothing/suit/armor/vest/russian/nri
 
 /obj/item/gun/microfusion/emp_act(severity)
 	. = ..()
@@ -116,10 +112,10 @@
 	if(cell)
 		cell.parent_gun = null
 		QDEL_NULL(cell)
-	if(attached_upgrades.len)
-		for(var/obj/item/iterating_item in attached_upgrades)
+	if(attachments.len)
+		for(var/obj/item/iterating_item in attachments)
 			qdel(iterating_item)
-		attached_upgrades = null
+		attachments = null
 	if(phase_emitter)
 		QDEL_NULL(phase_emitter)
 	STOP_PROCESSING(SSobj, src)
@@ -142,19 +138,12 @@
 	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
 	return !QDELETED(cell) ? (cell.charge >= shot.e_cost) : FALSE
 
-/obj/item/gun/microfusion/recharge_newshot(no_cyborg_drain)
-	if (!ammo_type || !cell)
+/obj/item/gun/microfusion/recharge_newshot()
+	if (!ammo_type || !cell || !phase_emitter)
 		return
-	if(use_cyborg_cell && !no_cyborg_drain)
-		if(iscyborg(loc))
-			var/mob/living/silicon/robot/R = loc
-			if(R.cell)
-				var/obj/item/ammo_casing/energy/shot = ammo_type[select] //Necessary to find cost of shot
-				if(R.cell.use(shot.e_cost)) //Take power from the borg...
-					cell.give(shot.e_cost) //... to recharge the shot
 	if(!chambered)
 		var/obj/item/ammo_casing/energy/AC = ammo_type[select]
-		if(cell.charge >= AC.e_cost) //if there's enough power in the cell cell...
+		if(cell.charge >= AC.e_cost) //if there's enough power in the cell...
 			chambered = AC //...prepare a new shot based on the current ammo type selected
 			if(!chambered.loaded_projectile)
 				chambered.newshot()
@@ -218,7 +207,7 @@
 				charge_overlay.pixel_x = ammo_x_offset * (i - 1)
 				charge_overlay.pixel_y = ammo_y_offset * (i - 1)
 				. += new /mutable_appearance(charge_overlay)
-	for(var/obj/item/microfusion_gun_attachment/microfusion_gun_attachment in attached_upgrades)
+	for(var/obj/item/microfusion_gun_attachment/microfusion_gun_attachment in attachments)
 		. += "[icon_state]_[microfusion_gun_attachment.attachment_overlay_icon_state]"
 	if(phase_emitter)
 		. += "[icon_state]_[phase_emitter.icon_state]"
@@ -258,7 +247,7 @@
 	if(istype(attacking_item, cell_type))
 		insert_cell(user, attacking_item)
 	if(istype(attacking_item, /obj/item/microfusion_gun_attachment))
-		attach_upgrade(attacking_item, user)
+		add_attachment(attacking_item, user)
 	if(istype(attacking_item, /obj/item/microfusion_phase_emitter))
 		insert_emitter(attacking_item, user)
 
@@ -285,30 +274,19 @@
 	if(can_interact(user))
 		remove_attachment(user)
 
-/obj/item/gun/microfusion/proc/remove_attachment(mob/user)
-	var/obj/item/microfusion_gun_attachment/to_remove = input(user, "Please select what part you'd like to remove.", "Remove attachment")  as null|obj in sort_names(attached_upgrades)
-	if(!to_remove)
-		return
-	to_chat(user, span_notice("You remove [to_remove] from [src]!"))
-	playsound(src, 'sound/items/screwdriver.ogg', 70)
-	to_remove.forceMove(get_turf(src))
-	attached_upgrades -= to_remove
-	to_remove.remove_attachment(src)
-	update_appearance()
-
 /obj/item/gun/microfusion/proc/remove_all_attachments()
-	if(attached_upgrades.len)
-		for(var/obj/item/microfusion_gun_attachment/attachment in attached_upgrades)
+	if(attachments.len)
+		for(var/obj/item/microfusion_gun_attachment/attachment in attachments)
 			attachment.remove_attachment(src)
 			attachment.forceMove(get_turf(src))
-			attached_upgrades -= attachment
+			attachments -= attachment
 		update_appearance()
 
 /obj/item/gun/microfusion/examine(mob/user)
 	. = ..()
 	. += span_notice("It can hold <b>[max_attachments]</b> attachments.")
-	if(attached_upgrades.len)
-		for(var/obj/item/microfusion_gun_attachment/microfusion_gun_attachment in attached_upgrades)
+	if(attachments.len)
+		for(var/obj/item/microfusion_gun_attachment/microfusion_gun_attachment in attachments)
 			. += span_notice("It has a [microfusion_gun_attachment.name] installed.")
 		. += span_notice("<b>Alt+click</b> it to remove an upgrade.")
 	if(phase_emitter)
@@ -466,8 +444,8 @@
 	return TRUE
 
 /obj/item/gun/microfusion/proc/process_microfusion()
-	if(attached_upgrades.len)
-		for(var/obj/item/microfusion_gun_attachment/attachment in attached_upgrades)
+	if(attachments.len)
+		for(var/obj/item/microfusion_gun_attachment/attachment in attachments)
 			attachment.process_fire(src, chambered)
 
 /obj/item/gun/microfusion/proc/process_emitter()
@@ -483,7 +461,7 @@
 	if(!cell)
 		return
 	cell.charge = cell.maxcharge
-	recharge_newshot(no_cyborg_drain = TRUE)
+	recharge_newshot()
 	update_appearance()
 
 ///Used by update_icon_state() and update_overlays()
@@ -607,20 +585,31 @@
 	update_appearance()
 
 /// Attatching an upgrade.
-/obj/item/gun/microfusion/proc/attach_upgrade(obj/item/microfusion_gun_attachment/microfusion_gun_attachment, mob/living/user)
-	if(attached_upgrades.len >= max_attachments)
+/obj/item/gun/microfusion/proc/add_attachment(obj/item/microfusion_gun_attachment/microfusion_gun_attachment, mob/living/user)
+	if(attachments.len >= max_attachments)
 		to_chat(user, span_warning("[src] cannot fit any more attachments!"))
 		return FALSE
-	if(is_type_in_list(microfusion_gun_attachment, attached_upgrades))
+	if(is_type_in_list(microfusion_gun_attachment, attachments))
 		to_chat(user, span_warning("[src] already has [microfusion_gun_attachment] installed!"))
 		return FALSE
-	for(var/obj/item/microfusion_gun_attachment/iterating_attachment in attached_upgrades)
+	for(var/obj/item/microfusion_gun_attachment/iterating_attachment in attachments)
 		if(is_type_in_list(microfusion_gun_attachment, iterating_attachment.incompatable_attachments))
 			to_chat(user, span_warning("[microfusion_gun_attachment] is not compatible with [iterating_attachment]!"))
 			return FALSE
-	attached_upgrades += microfusion_gun_attachment
+	attachments += microfusion_gun_attachment
 	microfusion_gun_attachment.forceMove(src)
 	microfusion_gun_attachment.run_attachment(src)
 	to_chat(user, span_notice("You successfully install [microfusion_gun_attachment] onto [src]!"))
 	playsound(src, 'sound/effects/structure_stress/pop2.ogg', 70, TRUE)
 	return TRUE
+
+/obj/item/gun/microfusion/proc/remove_attachment(mob/user)
+	var/obj/item/microfusion_gun_attachment/to_remove = input(user, "Please select what part you'd like to remove.", "Remove attachment")  as null|obj in sort_names(attachments)
+	if(!to_remove)
+		return
+	to_chat(user, span_notice("You remove [to_remove] from [src]!"))
+	playsound(src, 'sound/items/screwdriver.ogg', 70)
+	to_remove.forceMove(get_turf(src))
+	attachments -= to_remove
+	to_remove.remove_attachment(src)
+	update_appearance()

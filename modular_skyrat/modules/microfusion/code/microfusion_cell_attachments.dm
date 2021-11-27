@@ -13,17 +13,11 @@ For adding unique abilities to microfusion cells. These cannot directly interact
 	var/attachment_overlay_icon_state
 	 /// Does this attachment process with the cell?
 	var/processing_attachment = FALSE
-	/// How much stability does this cost the cell?
-	var/stability_impact = 0
 
-/obj/item/microfusion_cell_attachment/examine(mob/user)
-	. = ..()
-	. += span_notice("It has a stability impact factor of [stability_impact]%.")
 
-/obj/item/microfusion_cell_attachment/proc/run_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
+/obj/item/microfusion_cell_attachment/proc/add_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	SHOULD_CALL_PARENT(TRUE)
 	START_PROCESSING(SSobj, microfusion_cell)
-	microfusion_cell.instability += stability_impact
 	return
 
 /obj/item/microfusion_cell_attachment/proc/process_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell, delta_time)
@@ -32,7 +26,6 @@ For adding unique abilities to microfusion cells. These cannot directly interact
 /obj/item/microfusion_cell_attachment/proc/remove_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	SHOULD_CALL_PARENT(TRUE)
 	STOP_PROCESSING(SSobj, microfusion_cell)
-	microfusion_cell.instability -= stability_impact
 	return
 
 /*
@@ -47,9 +40,8 @@ Allows the cell to be recharged at a gun recharger OR cell recharger.
 	attachment_overlay_icon_state = "microfusion_rechargeable"
 	/// The bonus charge rate by adding this attachment.
 	var/bonus_charge_rate = 100
-	stability_impact = 0.5
 
-/obj/item/microfusion_cell_attachment/rechargeable/run_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
+/obj/item/microfusion_cell_attachment/rechargeable/add_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	. = ..()
 	microfusion_cell.chargerate += bonus_charge_rate
 
@@ -71,9 +63,8 @@ Increases the cell capacity by a set percentage.
 	var/capacity_increase = 20
 	/// The initial capacity of the cell before this upgrade is added!
 	var/initial_charge_capacity = 0
-	stability_impact = 1
 
-/obj/item/microfusion_cell_attachment/overcapacity/run_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
+/obj/item/microfusion_cell_attachment/overcapacity/add_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	. = ..()
 	initial_charge_capacity = microfusion_cell.maxcharge
 	var/capacity_to_add = microfusion_cell.maxcharge / 100 * capacity_increase
@@ -96,9 +87,8 @@ The cell is stable and will not emit sparks when firing.
 	desc = "Stabilises the internal fusion reaction of microfusion cells."
 	icon_state = "attachment_stabiliser"
 	attachment_overlay_icon_state = "microfusion_stabiliser"
-	stability_impact = -10
 
-/obj/item/microfusion_cell_attachment/stabiliser/run_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
+/obj/item/microfusion_cell_attachment/stabiliser/add_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	. = ..()
 	microfusion_cell.stabilised = TRUE
 
@@ -119,13 +109,12 @@ If the cell isn't stabilised by a stabiliser, it may emit a radaition pulse.
 	attachment_overlay_icon_state = "microfusion_selfcharge"
 	/// The amount of charge this cell will passively gain!
 	var/self_charge_amount = 20
-	stability_impact = 5
 
 /obj/item/microfusion_cell_attachment/selfcharging/process_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell, delta_time)
 	if(microfusion_cell.charge < microfusion_cell.maxcharge)
 		microfusion_cell.charge = clamp(microfusion_cell.charge + (microfusion_cell.chargerate + self_charge_amount * delta_time * 0.5), 0, microfusion_cell.maxcharge)
 		if(microfusion_cell.parent_gun)
 			microfusion_cell.parent_gun.update_appearance()
-		if(!microfusion_cell.instability && DT_PROB(1, delta_time))
+		if(!microfusion_cell.stabilised && DT_PROB(1, delta_time))
 			radiation_pulse(src, 1, RAD_MEDIUM_INSULATION)
 
