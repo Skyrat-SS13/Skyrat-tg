@@ -260,12 +260,9 @@
 		if(heart.target && heart.target.stat == DEAD)
 			to_chat(carbon_user,span_danger("Your patrons accepts your offer.."))
 			var/mob/living/carbon/human/current_target = heart.target
-			//SKYRAT EDIT BEGIN: MAKES HERETICS NOT GIB PEOPLE
-			var/obj/item/bodypart/chest/chest = current_target.get_bodypart(BODY_ZONE_CHEST)
-			chest.dismember()
-			current_target.visible_message("<span class='danger'>[current_target.name] Is quickly surrounded by invisible claws; lacerating their chest open, spilling their organs out!</span>", \
-								"<span class='danger'>You feel claws tear your chest open; spilling your organs out onto the floor!</span>", ignored_mobs=current_target)
-			//SKYRAT EDIT END
+			current_target.spill_organs()
+			current_target.adjustBruteLoss(250)
+			new /obj/effect/gibspawner/generic(get_turf(current_target))
 			heart.target = null
 			var/datum/antagonist/heretic/heretic_datum = carbon_user.mind.has_antag_datum(/datum/antagonist/heretic)
 

@@ -14,6 +14,7 @@
 
 /datum/emote/living/subtle/run_emote(mob/user, params, type_override = null)
 	var/subtle_message
+	var/subtle_emote = params
 	if(is_banned_from(user, "emote"))
 		to_chat(user, "You cannot send subtle emotes (banned).")
 		return FALSE
@@ -21,7 +22,7 @@
 		to_chat(user, "You cannot send IC messages (muted).")
 		return FALSE
 	else if(!params)
-		var/subtle_emote = stripped_multiline_input(user, "Choose an emote to display.", "Subtle", null, MAX_MESSAGE_LEN)
+		subtle_emote = stripped_multiline_input(user, "Choose an emote to display.", "Subtle", null, MAX_MESSAGE_LEN)
 		if(subtle_emote && !check_invalid(user, subtle_emote))
 			var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
 			switch(type)
@@ -45,19 +46,22 @@
 
 	var/prefix_log_message = "(SUBTLE) [subtle_message]"
 	user.log_message(prefix_log_message, LOG_EMOTE)
-	subtle_message = span_emote("<b>[user]</b> " + "<i>[user.say_emphasis(subtle_message)]</i>")
 
-	for(var/mob/M in GLOB.dead_mob_list)
-		if(!M.client || isnewplayer(M))
+	var/space = should_have_space_before_emote(html_decode(subtle_emote)[1]) ? " " : ""
+
+	subtle_message = span_emote("<b>[user]</b>[space]<i>[user.say_emphasis(subtle_message)]</i>")
+
+	for(var/mob/ghosts in GLOB.dead_mob_list)
+		if(!ghosts.client || isnewplayer(ghosts))
 			continue
-		var/T = get_turf(src)
-		if(M.stat == DEAD && M.client && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(T, null)))
-			M.show_message(subtle_message)
+		var/their_turf = get_turf(src)
+		if(ghosts.stat == DEAD && ghosts.client && (ghosts.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(ghosts in viewers(their_turf, null)))
+			ghosts.show_message(subtle_message)
 
 	if(emote_type == EMOTE_AUDIBLE)
-		user.audible_message(message=subtle_message,hearing_distance=1)
+		user.audible_message(message = subtle_message, hearing_distance = 1, separation = space)
 	else
-		user.visible_message(message=subtle_message,self_message=subtle_message,vision_distance=1)
+		user.visible_message(message = subtle_message, self_message = subtle_message, vision_distance = 1, separation = space)
 
 
 ///////////////// SUBTLE 2: NO GHOST BOOGALOO
@@ -79,6 +83,7 @@
 
 /datum/emote/living/subtler/run_emote(mob/user, params, type_override = null)
 	var/subtler_message
+	var/subtler_emote = params
 	if(is_banned_from(user, "emote"))
 		to_chat(user, "You cannot send subtle emotes (banned).")
 		return FALSE
@@ -86,8 +91,8 @@
 		to_chat(user, "You cannot send IC messages (muted).")
 		return FALSE
 	else if(!params)
-		var/subtle_emote = stripped_multiline_input(user, "Choose an emote to display.", "Subtler" , null, MAX_MESSAGE_LEN)
-		if(subtle_emote && !check_invalid(user, subtle_emote))
+		subtler_emote = stripped_multiline_input(user, "Choose an emote to display.", "Subtler" , null, MAX_MESSAGE_LEN)
+		if(subtler_emote && !check_invalid(user, subtler_emote))
 			var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
 			switch(type)
 				if("Visible")
@@ -97,7 +102,7 @@
 				else
 					alert("Unable to use this emote, must be either hearable or visible.")
 					return
-			subtler_message = subtle_emote
+			subtler_message = subtler_emote
 		else
 			return FALSE
 	else
@@ -109,12 +114,15 @@
 		return FALSE
 
 	user.log_message(subtler_message, LOG_SUBTLER)
-	subtler_message = span_emote("<b>[user]</b> " + "<i>[user.say_emphasis(subtler_message)]</i>")
+
+	var/space = should_have_space_before_emote(html_decode(subtler_emote)[1]) ? " " : ""
+
+	subtler_message = span_emote("<b>[user]</b>[space]<i>[user.say_emphasis(subtler_message)]</i>")
 
 	if(emote_type == EMOTE_AUDIBLE)
-		user.audible_message_subtler(message=subtler_message,hearing_distance=1, ignored_mobs = GLOB.dead_mob_list)
+		user.audible_message_subtler(message = subtler_message, hearing_distance = 1, ignored_mobs = GLOB.dead_mob_list, separation = space)
 	else
-		user.visible_message(message=subtler_message,self_message=subtler_message,vision_distance=1, ignored_mobs = GLOB.dead_mob_list)
+		user.visible_message(message = subtler_message, self_message = subtler_message, vision_distance = 1, ignored_mobs = GLOB.dead_mob_list, separation = space)
 
 ///////////////// VERB CODE
 /mob/living/proc/subtle_keybind()
@@ -141,15 +149,15 @@
 	usr.emote("subtler")
 
 //This is bad code.
-/atom/proc/audible_message_subtler(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, self_message, audible_message_flags = NONE)
+/atom/proc/audible_message_subtler(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, self_message, audible_message_flags = NONE, separation = " ")
 	var/list/hearers = get_hearers_in_view(hearing_distance, src)
 	if(self_message)
 		hearers -= src
 	hearers -= ignored_mobs
 	var/raw_msg = message
 	if(audible_message_flags & EMOTE_MESSAGE)
-		message = "<b>[src]</b> [message]"
-	for(var/mob/M in hearers)
-		if(audible_message_flags & EMOTE_MESSAGE && runechat_prefs_check(M, audible_message_flags) && M.can_hear())
-			M.create_chat_message(src, raw_message = raw_msg, runechat_flags = audible_message_flags)
-		M.show_message(message, MSG_AUDIBLE, deaf_message, MSG_VISUAL)
+		message = "<b>[src]</b>[separation][message]"
+	for(var/mob/listener in hearers)
+		if(audible_message_flags & EMOTE_MESSAGE && runechat_prefs_check(listener, audible_message_flags) && listener.can_hear())
+			listener.create_chat_message(src, raw_message = raw_msg, runechat_flags = audible_message_flags)
+		listener.show_message(message, MSG_AUDIBLE, deaf_message, MSG_VISUAL)

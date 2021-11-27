@@ -1,5 +1,5 @@
 /obj/item/storage/backpack/duffelbag/syndie/loadout/robohand/PopulateContents()
-	new /obj/item/gun/ballistic/automatic/pistol/j3516(src)
+	new /obj/item/gun/ballistic/automatic/pistol/robohand(src)
 	new /obj/item/ammo_box/magazine/m14mm(src)
 	new /obj/item/ammo_box/magazine/m14mm(src)
 	new /obj/item/ammo_box/magazine/m14mm(src)
