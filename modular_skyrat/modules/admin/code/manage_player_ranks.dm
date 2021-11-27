@@ -10,16 +10,17 @@
 	set category = "Admin"
 	set name = "Manage Player Ranks"
 	set desc = "Manage who has the special player ranks while the server is running."
+
 	if(!check_rights(R_PERMISSIONS))
 		return
-	usr.client.holder.manage_player_ranks()
+	usr.client?.holder.manage_player_ranks()
 
 /// Proc for admins to change people's "player" ranks (donator, mentor, veteran, etc.)
 /datum/admins/proc/manage_player_ranks()
 	if(!check_rights(R_PERMISSIONS))
 		return
 
-	var/choice = tgui_alert(usr, "Which rank would you like to manage?", "Manage Player Ranks", SKYRAT_PLAYER_RANKS+"Cancel")
+	var/choice = tgui_alert(usr, "Which rank would you like to manage?", "Manage Player Ranks", SKYRAT_PLAYER_RANKS)
 	if(!choice || !(choice in SKYRAT_PLAYER_RANKS))
 		return
 
