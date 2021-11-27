@@ -478,14 +478,7 @@
 		secbot_assembly.add_overlay("hs_hole")
 		secbot_assembly.created_name = name
 		new /obj/item/assembly/prox_sensor(Tsec)
-<<<<<<< HEAD
-		// drop_part(weapon, Tsec) - SKYRAT EDIT REMOVAL - no more baton farms
-
-		if(prob(50))
-			drop_part(robot_arm, Tsec)
-=======
-		drop_part(baton_type, Tsec)
->>>>>>> 03604bfb776 (Bot code improvement (2/??) (#62671))
+		// drop_part(baton_type, Tsec) // SKYRAT EDIT REMOVAL - no more baton farms
 
 	do_sparks(3, TRUE, src)
 
