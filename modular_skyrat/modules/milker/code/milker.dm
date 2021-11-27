@@ -89,14 +89,12 @@
 /// Checks if the breasts are present, exposed, lactating, in range, and containing some kind of fluid. Returns a message if not!
 /obj/item/milker/proc/breastCheck(mob/living/carbon/being_milked, mob/living/carbon/human/milker, obj/item/organ/genital/breasts/breasts)
 	var/self_suckle = (being_milked == milker) // Grammarize
-	if(!self_suckle) // Already checks your prefs to give you the thing, also you gave yourself consent, right?
-		if(!being_milked.client?.prefs?.read_preference(/datum/preference/toggle/master_erp_preferences))
-			to_chat(milker, span_warning("[being_milked] would prefer to have no part in this!"))
-			return FALSE
-		if(!being_milked.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy)) // I guess its a sextoy!
-			to_chat(milker, span_warning("[being_milked] would prefer you to keep your hands to yourself!"))
-			return FALSE
-
+	if(!being_milked.client?.prefs?.read_preference(/datum/preference/toggle/master_erp_preferences))
+		to_chat(milker, span_warning("[self_suckle ? "You would prefer to leave those alone!" : "[being_milked] would prefer you leave those alone!"]"))
+		return FALSE
+	if(!being_milked.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy)) // I guess its a sextoy!
+		to_chat(milker, span_warning("[self_suckle ? "You would prefer to put your hands somewhere else!" : "[being_milked] would prefer you to keep your hands to yourself!"]"))
+		return FALSE
 	if(!iscarbon(being_milked)) // Trying to milk a robot? A megarachnid? *IAN*?
 		to_chat(milker, span_warning("You can't milk that!"))
 		return FALSE
@@ -209,7 +207,7 @@
 					blind_message = span_purple("You hear a plapping noise."),
 					vision_distance = 1)
 
-	if(!do_mob(milker, being_milked, 1 SECOND))
+	if(!do_mob(milker, being_milked, 1 SECONDS))
 		milker.visible_message(
 		message = span_purple("[milker] was interrupted!"),
 		self_message = span_purple("You were interrupted!"),
