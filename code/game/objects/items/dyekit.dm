@@ -8,17 +8,10 @@
 	var/uses = 40 //SKYRAT EDIT ADDITION
 
 /obj/item/dyespray/attack_self(mob/user)
-<<<<<<< HEAD
-	dye(user, user) // SKYRAT EDIT - Making the dyespray change hair color
-
-/obj/item/dyespray/pre_attack(atom/target, mob/living/user, params)
-	dye(target, user) // SKYRAT EDIT - Making the dyespray change hair color
-=======
 	dye(user, user)
 
 /obj/item/dyespray/pre_attack(atom/target, mob/living/user, params)
 	dye(target, user)
->>>>>>> 79c8b3a8cac (Gradients can now be applied to facial hair too. (#62996))
 	return ..()
 
 /**
@@ -27,13 +20,8 @@
  * Arguments:
  * * target - The mob who we will apply the gradient and gradient color to.
  */
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL - MOVED TO MODULAR (modular_skyrat\master_files\code\game\objects\items\dyekit.dm)
-/obj/item/dyespray/proc/dye(mob/target)
-=======
-
 /obj/item/dyespray/proc/dye(mob/target, mob/user)
->>>>>>> 79c8b3a8cac (Gradients can now be applied to facial hair too. (#62996))
 	if(!ishuman(target))
 		return
 
