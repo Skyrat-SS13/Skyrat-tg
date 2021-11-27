@@ -248,6 +248,11 @@
 	key = "anus"
 	genetic = TRUE
 
+/datum/sprite_accessory/genital/anus/is_hidden(mob/living/carbon/human/owner, obj/item/bodypart/bodypart)
+	if(owner.underwear != "Nude" && !(owner.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
+		return TRUE
+	. = ..()
+
 /datum/sprite_accessory/genital/anus/none
 	icon_state = "none"
 	name = "None"
