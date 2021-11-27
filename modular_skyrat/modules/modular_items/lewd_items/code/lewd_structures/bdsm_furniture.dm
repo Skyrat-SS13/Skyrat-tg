@@ -221,10 +221,6 @@
 	update_icon()
 	playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 
-// Machine deconstruction process handler
-/obj/structure/chair/x_stand/deconstruct()
-	qdel(src)
-	return TRUE
 
 //Place the mob in the desired position after buckling
 /obj/structure/chair/x_stand/post_buckle_mob(mob/living/M)
