@@ -5,7 +5,7 @@ Basically the heart of the gun, can be upgraded.
 /obj/item/microfusion_phase_emitter
 	name = "basic microfusion phase emitter"
 	desc = "The core of a microfusion projection weapon, produces the laser."
-	icon = 'modular_skyrat/modules/microfusion/icons/guns.dmi'
+	icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun_attachments.dmi'
 	icon_state = "phase_emitter"
 	base_icon_state = "phase_emitter"
 	/// Max heat before it breaks
@@ -22,7 +22,8 @@ Basically the heart of the gun, can be upgraded.
 	var/damaged = FALSE
 	/// Hard ref to the gun.
 	var/obj/item/gun/microfusion/parent_gun
-
+	/// Are we "hacked" thus allowing overclocking?
+	var/hacked = FALSE
 
 /obj/item/microfusion_phase_emitter/Initialize(mapload)
 	. = ..()
@@ -51,6 +52,17 @@ Basically the heart of the gun, can be upgraded.
 	parent_gun?.update_appearance()
 
 /obj/item/microfusion_phase_emitter/multitool_act(mob/living/user, obj/item/tool)
+	if(hacked)
+		to_chat(user, span_warning("[src] is already unlocked!"))
+		return
+	to_chat(user, span_notice("You begin to override the thermal overclock safety..."))
+	if(do_after(user, 5 SECONDS, src))
+		hacked = TRUE
+		to_chat(user, span_notice("You override the thermal overclock safety."))
+
+/obj/item/microfusion_phase_emitter/proc/set_overclock(mob/living/user)
+	if(!hacked)
+		return
 	var/new_throttle = clamp(input(user, "Please input a new thermal throttle percentage(0-300):", "Phase Emitter Overclock") as null|num, 1, 300)
 
 	to_chat(user, span_notice("Thermal throttle percent set to: [new_throttle]."))

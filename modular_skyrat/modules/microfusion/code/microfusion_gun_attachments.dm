@@ -35,6 +35,15 @@ For adding unique abilities to microfusion guns, these can directly interact wit
 	microfusion_gun.update_appearance()
 	return
 
+/obj/item/microfusion_gun_attachment/proc/get_modify_data()
+	return
+
+/obj/item/microfusion_gun_attachment/proc/run_modify_data(params, mob/living/user)
+	return
+
+/obj/item/microfusion_gun_attachment/proc/get_information_data()
+	return
+
 /*
 SCATTER ATTACHMENT
 
@@ -52,10 +61,39 @@ The cell is stable and will not emit sparks when firing.
 	var/variance_to_add = 10
 	/// How much recoil are we adding?
 	var/recoil_to_add = 1
+	/// Have we been 'hacked?'
+	var/hacked = FALSE
 
 /obj/item/microfusion_gun_attachment/scatter/multitool_act(mob/living/user, obj/item/tool)
+	if(hacked)
+		to_chat(user, span_warning("[src] is already overriden!"))
+		return
+	to_chat(user, span_notice("You begin to override the automatic variance control..."))
+	if(do_after(user, 5 SECONDS, src))
+		hacked = TRUE
+		to_chat(user, span_notice("You override the automatic variance control."))
+
+/obj/item/microfusion_gun_attachment/scatter/proc/set_variance(mob/living/user)
 	variance_to_add = clamp(input(user, "Please input a new lens variance adjustment (5-30):", "Lens Adjustment") as null|num, 5, 30)
 	to_chat(user, span_notice("Lens variance percent set to: [variance_to_add]."))
+
+/obj/item/microfusion_gun_attachment/scatter/attack_self(mob/user, modifiers)
+	. = ..()
+	set_variance(user)
+
+/obj/item/microfusion_gun_attachment/scatter/get_information_data()
+	return "Variance: [variance_to_add] | [hacked ? "UNLOCKED" : "LOCKED"]"
+
+/obj/item/microfusion_gun_attachment/scatter/get_modify_data()
+	if(!hacked)
+		return
+	var/list/params = list()
+	params["variance"] = "Variance"
+	return params
+
+/obj/item/microfusion_gun_attachment/scatter/run_modify_data(params, mob/living/user)
+	if(params == "variance")
+		set_variance(user)
 
 /obj/item/microfusion_gun_attachment/scatter/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
@@ -231,14 +269,26 @@ HEATSINK ATTACHMENT
 	. = ..()
 	chambered.loaded_projectile.color = color_to_apply
 
-/obj/item/microfusion_gun_attachment/rgb/attack_self(mob/user, modifiers)
-	. = ..()
+/obj/item/microfusion_gun_attachment/rgb/proc/select_color(mob/living/user)
 	var/new_color = input(user, "Please select your new projectile color", "Laser color", color_to_apply) as null|color
 
 	if(!new_color)
 		return
 
 	color_to_apply = new_color
+
+/obj/item/microfusion_gun_attachment/rgb/attack_self(mob/user, modifiers)
+	. = ..()
+	select_color(user)
+
+/obj/item/microfusion_gun_attachment/rgb/get_modify_data()
+	var/list/params = list()
+	params["color"] = "Color: <span style='border: 1px solid #161616; background-color: #[color_to_apply];'>&nbsp;&nbsp;&nbsp;</span>"
+	return params
+
+/obj/item/microfusion_gun_attachment/rgb/run_modify_data(params, mob/living/user)
+	if(params == "color")
+		select_color(user)
 
 /*
 UNDERCHARGER ATTACHMENT
