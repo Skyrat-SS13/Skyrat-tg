@@ -283,7 +283,7 @@ HEATSINK ATTACHMENT
 
 /obj/item/microfusion_gun_attachment/rgb/get_modify_data()
 	var/list/params = list()
-	params["color"] = "Color: <span style='border: 1px solid #161616; background-color: #[color_to_apply];'>&nbsp;&nbsp;&nbsp;</span>"
+	params["color"] = "Color: [color_to_apply]"
 	return params
 
 /obj/item/microfusion_gun_attachment/rgb/run_modify_data(params, mob/living/user)

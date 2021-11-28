@@ -189,29 +189,20 @@
 /obj/item/gun/microfusion/update_overlays()
 	. = ..()
 
-	if(automatic_charge_overlays && cell)
-		var/overlay_icon_state = "[icon_state]_charge"
-		if(modifystate)
-			var/obj/item/ammo_casing/energy/shot = ammo_type[select]
-			if(single_shot_type_overlay)
-				. += "[icon_state]_[shot.select_name]"
-			overlay_icon_state += "_[shot.select_name]"
-
+	if(!phase_emitter)
+		. += "[icon_state]_phase_emitter_missing"
+	else if(cell && !phase_emitter.damaged)
 		var/ratio = get_charge_ratio()
 		if(ratio == 0 && display_empty)
 			. += "[icon_state]_empty"
 		else if(shaded_charge)
-			. += "[icon_state]_charge[ratio]"
-		else
-			var/mutable_appearance/charge_overlay = mutable_appearance(icon, overlay_icon_state)
-			for(var/i = ratio, i >= 1, i--)
-				charge_overlay.pixel_x = ammo_x_offset * (i - 1)
-				charge_overlay.pixel_y = ammo_y_offset * (i - 1)
-				. += new /mutable_appearance(charge_overlay)
+			. += "[icon_state]_charge[ratio]_[phase_emitter.icon_state]"
+	else
+		. += "[icon_state]_phase_emitter_damaged"
+
 	for(var/obj/item/microfusion_gun_attachment/microfusion_gun_attachment in attachments)
 		. += "[icon_state]_[microfusion_gun_attachment.attachment_overlay_icon_state]"
-	if(phase_emitter)
-		. += "[icon_state]_[phase_emitter.icon_state]"
+
 
 /obj/item/gun/microfusion/ignition_effect(atom/A, mob/living/user)
 	if(!can_shoot() || !ammo_type[select])
@@ -615,102 +606,92 @@
 	microfusion_gun_attachment.remove_attachment(src)
 	update_appearance()
 
-// Temporary HTML menu until I get it switched to
+/obj/item/gun/microfusion/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "MicrofusionGunControl")
+		ui.open()
 
-/obj/item/gun/microfusion/ui_interact(mob/user)
-	var/list/dat = list("")
+/obj/item/gun/microfusion/ui_data(mob/user)
+	var/list/data = list()
 
-	dat += "<b>[name] Control Interface</b>"
+	data["gun_name"] = name
+	data["max_attachments"] = max_attachments
 
-	dat += "<br>"
-
-	dat += "<b>Phase Emitter:</b>"
 	if(phase_emitter)
-		if(phase_emitter.damaged)
-			dat += "Damaged!"
-		else
-			dat += "Type: [phase_emitter.name]"
-			dat += "Integrity: [phase_emitter.integrity]"
-			dat += "Heat: [phase_emitter.current_heat] C"
-			dat += "Heat throttle percent: [phase_emitter.throttle_percentage]%[phase_emitter.hacked ? " | UNLOCKED" : ""]"
-			if(phase_emitter.hacked)
-				dat += "<b><a href='byond://?src=[REF(src)];function=overclock_phase_emitter'>Overclock</a></b>"
-			dat += "Passive heat dissipation: [phase_emitter.heat_dissipation_per_tick] C"
-			dat += "Maxmimum heat capacity: [phase_emitter.max_heat] C"
-
+		data["has_emitter"] = TRUE
+		data["phase_emitter_data"] = list(
+			"type" = phase_emitter.name,
+			"integrity" = phase_emitter.integrity,
+			"current_heat" = phase_emitter.current_heat,
+			"throttle_percentage" = phase_emitter.throttle_percentage,
+			"heat_dissipation_per_tick" = phase_emitter.heat_dissipation_per_tick,
+			"max_heat" = phase_emitter.max_heat,
+			"damaged" = phase_emitter.damaged,
+			"hacked" = phase_emitter.hacked,
+			"heat_percent" = phase_emitter.get_heat_percent(),
+		)
 	else
-		dat += "Not installed!"
+		data["has_emitter"] = FALSE
 
-	dat += "<br>"
-
-	dat += "<b>Power Supply:</b>"
 	if(cell)
-		dat += "Type: [cell.name]"
-		dat += "Charge: [cell.charge]/[cell.maxcharge] MF"
-		dat += "Status: [cell.meltdown ? "INTEGRITY FAILURE" : "NOMINAL"]"
-		if(cell.attachments.len)
-			dat += "Attachments:"
-			for(var/obj/item/microfusion_cell_attachment/attachment in cell.attachments)
-				dat += " - [attachment.name]"
+		var/list/attachments = list()
+		for(var/obj/item/microfusion_cell_attachment/attachment in cell.attachments)
+			attachments += attachment.name
+		data["has_cell"] = TRUE
+		data["cell_data"] = list(
+			"type" = cell.name,
+			"charge" = cell.charge,
+			"max_charge" = cell.maxcharge,
+			"status" = cell.meltdown,
+			"attachments" = attachments,
+		)
 	else
-		dat += "Not installed!"
+		data["has_cell"] = FALSE
 
-	dat += "<br>"
-
-	dat += "<b>Beam Analysis:</b>"
 	if(chambered?.loaded_projectile)
 		var/obj/projectile/loaded_projectile = chambered.loaded_projectile
-		dat += "Predicted impact strength: [loaded_projectile.damage]"
-		dat += "Predicted impact type: [loaded_projectile.damage_type]"
+		data["has_loaded_projectile"] = TRUE
+		data["loaded_projectile_data"] = list(
+			"damage" = loaded_projectile.damage,
+			"damage_type" = loaded_projectile.damage_type,
+		)
 	else
-		dat += "ERROR"
-
-	dat += "<br>"
+		data["has_loaded_projectile"] = FALSE
 
 	if(attachments.len)
-		dat += "<b>Installed Attachments:</b>"
+		data["has_attachments"] = TRUE
+		data["attachments"] = list()
 		for(var/obj/item/microfusion_gun_attachment/attachment in attachments)
-			dat += "<b>[uppertext(attachment.name)]</b>"
-			dat += attachment.desc
-			dat += attachment.get_information_data()
-			var/list/attachment_params = attachment.get_modify_data()
-			if(attachment_params) // We got stuff to change!
-				for(var/param in attachment_params)
-					dat += "<b><a href='byond://?src=[REF(src)];item=[REF(attachment)];function=modify_attachment;modify=[param]'>[attachment_params[param]]</a></b>"
-			dat += "<b><a href='byond://?src=[REF(src)];item=[REF(attachment)];function=remove_attachment'>Detach</a></b>"
-			dat += "<hr>"
+			data["attachments"] += list(list(
+				"name" = uppertext(attachment.name),
+				"desc" = attachment.desc,
+				"information" = attachment.get_information_data(),
+				"modify" = attachment.get_modify_data(),
+				"ref" = REF(attachment),
+			))
 
-	var/datum/browser/popup = new(user, "microfusion_gun_interface", "Micron Control Systems Incorporated: [name]", 600, 700, src)
-	popup.set_content(dat.Join("<br>"))
-	popup.open()
-	onclose(user, "microfusion_gun_interface")
+	else
+		data["has_attachments"] = FALSE
 
-/obj/item/gun/microfusion/Topic(href, list/href_list)
-	if(..())
+	return data
+
+/obj/item/gun/microfusion/ui_act(action, list/params)
+	. = ..()
+	if(.)
 		return
 
-	var/operation = href_list["function"]
-
-	if(href_list["close"])
-		usr << browse(null, "window=microfusion_gun_interface")
-		return
-
-	if(operation == "remove_attachment")
-		var/obj/item/microfusion_gun_attachment/to_remove = locate(href_list["item"]) in src
-		remove_attachment(to_remove, usr)
-
-	if(operation == "modify_attachment")
-		var/obj/item/microfusion_gun_attachment/to_modify = locate(href_list["item"]) in src
-		to_chat(world, href_list["modify"])
-		to_modify.run_modify_data(href_list["modify"], usr)
-
-	if(operation == "overclock_phase_emitter")
-		if(!phase_emitter)
-			return
-		if(!phase_emitter.hacked)
-			return
-
-		phase_emitter.set_overclock(usr)
+	switch(action)
+		if("overclock_emitter")
+			phase_emitter.set_overclock(usr)
+		if("eject_emitter")
+			if(!phase_emitter)
+				return
+			remove_emitter()
+		if("remove_attachment")
+			var/obj/item/microfusion_gun_attachment/to_remove = locate(params["attachment_ref"]) in src
+			remove_attachment(to_remove, usr)
+		if("modify_attachment")
+			var/obj/item/microfusion_gun_attachment/to_remove = locate(params["attachment_ref"]) in src
 
 
-	updateUsrDialog()
