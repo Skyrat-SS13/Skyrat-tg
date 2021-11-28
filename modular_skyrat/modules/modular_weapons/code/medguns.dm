@@ -253,7 +253,7 @@
 
 //Empty Medicell//
 /obj/item/device/custom_kit/empty_cell //Having the empty cell as an upgrade kit sounds jank, but it should work well.
-	name = "Empty Salve Medicell"
+	name = "empty salve medicell"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/upgrades.dmi'
 	icon_state = "empty"
 	desc = "an unactivated Salve Medicell, use this on an aloe leaf to make this into a usable cell"
