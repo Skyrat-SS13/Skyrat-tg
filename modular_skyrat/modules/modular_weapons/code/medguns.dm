@@ -265,7 +265,7 @@
 	AddElement(/datum/element/item_scaling, 0.5, 1)
 
 /obj/item/device/custom_kit/empty_cell/body_teleporter
-	name = "Empty Body Teleporter Medicell"
-	desc = "an unactivated Body Teleporter Medicell, use this on a bluespace slime extract to make this into a usable cell"
+	name = "empty body teleporter medicell"
+	desc = "An inactive body teleporter medicell, use this on a bluespace slime extract to make this into a usable cell."
 	from_obj = /obj/item/slime_extract/bluespace
 	to_obj = /obj/item/weaponcell/medical/utility/body_teleporter
