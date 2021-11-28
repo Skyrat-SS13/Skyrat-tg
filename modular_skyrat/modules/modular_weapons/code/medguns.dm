@@ -100,7 +100,7 @@
 
 /obj/item/storage/briefcase/medicalgunset/cmo
 	name = "VeyMedical CWM-479-CC cell-powered medigun case"
-	desc = "A case that includes the experimental CWM-479-CC medigun and Tier I medicells"
+	desc = "A case that includes the experimental CWM-479-CC medigun and tier I medicells"
 	icon_state = "case_cmo"
 
 /obj/item/storage/briefcase/medicalgunset/cmo/PopulateContents()
