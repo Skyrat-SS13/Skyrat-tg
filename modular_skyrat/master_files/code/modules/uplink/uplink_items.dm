@@ -263,7 +263,7 @@
 	cost = 3
 	item = /obj/item/ammo_box/magazine/m12g/slug
 
-/datum/uplink_item/ammo/shotgun/slug_traitor
+/datum/uplink_item/ammo/shotgun/empty_traitor
 	name = "Empty 12g Drum"
 	desc = "An empty 8-round magazine for use in the Bulldog shotgun. \
 			Ammunition not included."
