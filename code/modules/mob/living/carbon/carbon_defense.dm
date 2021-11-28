@@ -286,12 +286,12 @@
 				visible_message(span_danger("[src] tried slapping [target]'s ass, but they were blocked!"),
 				span_danger("You tried slapping [target]'s ass, but they blocked you!"),
 				"You hear a slap.", ignored_mobs = list(target))
-				playsound(target.loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
+				playsound(target.loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, ASS_SLAP_EXTRA_RANGE)
 				to_chat(target, span_danger("[src] tried slapping your ass, but you blocked them!"))
 				return
 		else
 			do_ass_slap_animation(target)
-			playsound(target.loc, 'sound/weapons/slap.ogg', 50, TRUE, -1)
+			playsound(target.loc, 'sound/weapons/slap.ogg', 50, TRUE, ASS_SLAP_EXTRA_RANGE)
 			visible_message("<span class='danger'>[src] slaps [target] right on the ass!</span>",\
 				"<span class='notice'>You slap [target] on the ass, how satisfying.</span>",\
 				"You hear a slap.", ignored_mobs = list(target))
@@ -795,4 +795,4 @@
 
 #undef SHAKE_ANIMATION_OFFSET
 #undef PERSONAL_SPACE_DAMAGE
-#undef ASS_SLAP_EXTRARANGE
+#undef ASS_SLAP_EXTRA_RANGE
