@@ -57,16 +57,16 @@
 	var/mob/living/carbon/being_milked = M
 
 	var/obj/item/organ/genital/breasts/breasts = being_milked.getorganslot(ORGAN_SLOT_BREASTS)
-	if(!breastCheck(being_milked, user, breasts))
+	if(!breast_check(being_milked, user, breasts))
 		return FALSE
 
 	/// What's in our other hand? If it's a reagent container, we could try bottling it!
 	/// Holding a reagent container implies wanting to *use* the container, so if the container doesn't work, don't proceed!
 	var/obj/item/reagent_containers/milk_bottle = user.get_inactive_held_item()
 	if(istype(milk_bottle))
-		bottleMilk(being_milked, user, breasts, milk_bottle)
+		bottle_milk(being_milked, user, breasts, milk_bottle)
 	else // Or just drink it
-		drinkMilk(being_milked, user, breasts)
+		drink_milk(being_milked, user, breasts)
 
 /// Set how vigorously you want to make the stuff come out
 /obj/item/milker/attack_self(mob/user)
@@ -104,7 +104,7 @@
 			squirt_volume = VOLUME_STRONG
 
 /// Checks if the breasts are present, exposed, lactating, in range, and containing some kind of fluid. Returns a message if not!
-/obj/item/milker/proc/breastCheck(mob/living/carbon/being_milked, mob/living/carbon/human/milker, obj/item/organ/genital/breasts/breasts)
+/obj/item/milker/proc/breast_check(mob/living/carbon/being_milked, mob/living/carbon/human/milker, obj/item/organ/genital/breasts/breasts)
 	var/self_suckle = (being_milked == milker) // Grammarize
 	if(!being_milked.client?.prefs?.read_preference(/datum/preference/toggle/master_erp_preferences))
 		to_chat(milker, span_warning("[self_suckle ? "You would prefer to leave those alone!" : "[being_milked] would prefer you leave those alone!"]"))
@@ -136,7 +136,7 @@
 	return TRUE
 
 /// Checks if the drinker can, in fact, get their mouth onto the thing they're drinking
-/obj/item/milker/proc/mouthCheck(mob/living/carbon/human/milker)
+/obj/item/milker/proc/mouth_check(mob/living/carbon/human/milker)
 	if(!ishuman(milker))
 		return FALSE
 	var/covered
@@ -150,7 +150,7 @@
 	return TRUE
 
 /// Checks if the container is a container, unsealed, and has room. Retyrns a message if not!
-/obj/item/milker/proc/bottleCheck(mob/living/carbon/being_milked, mob/living/carbon/human/milker, obj/item/reagent_containers/milk_bottle)
+/obj/item/milker/proc/bottle_check(mob/living/carbon/being_milked, mob/living/carbon/human/milker, obj/item/reagent_containers/milk_bottle)
 	if(!istype(milk_bottle)) // Not a container?
 		return FALSE
 	if(!milk_bottle.is_open_container()) // Sealed container?
@@ -162,8 +162,8 @@
 	return TRUE
 
 /// Attempt to consume the contents of someone's breasts.
-/obj/item/milker/proc/drinkMilk(mob/living/carbon/human/being_milked, mob/living/carbon/human/milker, obj/item/organ/genital/breasts/breasts)
-	if(!breastCheck(being_milked, milker, breasts) || !mouthCheck(milker))
+/obj/item/milker/proc/drink_milk(mob/living/carbon/human/being_milked, mob/living/carbon/human/milker, obj/item/organ/genital/breasts/breasts)
+	if(!breast_check(being_milked, milker, breasts) || !mouth_check(milker))
 		return FALSE
 
 	var/self_suckle = (being_milked == milker) // Feeding off your own supply?
@@ -231,7 +231,7 @@
 		blind_message = span_purple("You hear someone's lips slip."),
 		vision_distance = 1)
 		return FALSE
-	if(!breastCheck(being_milked, milker, breasts)) // Their breasts may have changed state (gutted, clothes, drained...)
+	if(!breast_check(being_milked, milker, breasts)) // Their breasts may have changed state (gutted, clothes, drained...)
 		return FALSE
 
 	milker.adjustArousal(arousal_amount)
@@ -280,10 +280,10 @@
 	return TRUE
 
 /// Attempt to bottle the contents of someone's breasts.
-/obj/item/milker/proc/bottleMilk(mob/living/carbon/human/being_milked, mob/living/carbon/human/milker, obj/item/organ/genital/breasts/target_breasts, obj/item/reagent_containers/milk_bottle)
-	if(!bottleCheck(being_milked, milker, milk_bottle))
+/obj/item/milker/proc/bottle_milk(mob/living/carbon/human/being_milked, mob/living/carbon/human/milker, obj/item/organ/genital/breasts/target_breasts, obj/item/reagent_containers/milk_bottle)
+	if(!bottle_check(being_milked, milker, milk_bottle))
 		return FALSE
-	if(!breastCheck(being_milked, milker, target_breasts))
+	if(!breast_check(being_milked, milker, target_breasts))
 		return FALSE
 
 	var/self_bottle = (being_milked == milker) // Feeding off your own supply?
@@ -301,9 +301,9 @@
 		blind_message = span_purple("You hear someone's fingers slip."),
 		vision_distance = 1)
 		return FALSE
-	if(!breastCheck(being_milked, milker, target_breasts)) // Their breasts may have changed state (gutted, clothes, drained...)
+	if(!breast_check(being_milked, milker, target_breasts)) // Their breasts may have changed state (gutted, clothes, drained...)
 		return FALSE
-	if(!bottleCheck(being_milked, milker, milk_bottle)) // Their container may have changed state (filled, sealed, dropped...)
+	if(!bottle_check(being_milked, milker, milk_bottle)) // Their container may have changed state (filled, sealed, dropped...)
 		return FALSE
 
 	being_milked.adjustArousal(arousal_amount)
