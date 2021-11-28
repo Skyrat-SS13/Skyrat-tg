@@ -35,11 +35,16 @@
 	attack_verb_continuous = list("slaps")
 	attack_verb_simple = list("slap")
 	hitsound = 'sound/effects/snap.ogg'
+	/// Amount of pleasure inflicted from an action
 	var/pleasure_amount = PLEASURE_LIGHT
+	/// Amount of arousal inflicted from an action
 	var/arousal_amount = AROUSAL_LIGHT
+	/// Amount of pain inflicted from an action
 	var/pain_amount = PAIN_LIGHT // *chomp*
-	var/handle_mode = HANDLE_LIGHT // How aggressively we're going to milk someone
-	var/squirt_volume = VOLUME_LIGHT // How much we're trying to express per squeeze / suck / CHOMP
+	/// How aggressively we're going to milk someone
+	var/handle_mode = HANDLE_LIGHT
+	/// How much we're trying to express per squeeze / suck / CHOMP
+	var/squirt_volume = VOLUME_LIGHT
 
 /obj/item/milker/Initialize(mapload)
 	. = ..()
