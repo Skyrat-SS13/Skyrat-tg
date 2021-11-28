@@ -78,15 +78,15 @@
 	if(blocknumber <= DNA_MANDATORY_COLOR_BLOCKS)
 		switch(blocknumber)
 			if(DNA_MUTANT_COLOR_BLOCK)
-				setblock(unique_features, blocknumber, sanitize_hexcolor(features["mcolor"]))
+				set_uni_feature_block(blocknumber, sanitize_hexcolor(features["mcolor"]))
 			if(DNA_MUTANT_COLOR_2_BLOCK)
-				setblock(unique_features, blocknumber, sanitize_hexcolor(features["mcolor2"]))
+				set_uni_feature_block(blocknumber, sanitize_hexcolor(features["mcolor2"]))
 			if(DNA_MUTANT_COLOR_3_BLOCK)
-				setblock(unique_features, blocknumber, sanitize_hexcolor(features["mcolor3"]))
+				set_uni_feature_block(blocknumber, sanitize_hexcolor(features["mcolor3"]))
 			if(DNA_ETHEREAL_COLOR_BLOCK)
-				setblock(unique_features, blocknumber, sanitize_hexcolor(features["ethcolor"]))
+				set_uni_feature_block(blocknumber, sanitize_hexcolor(features["ethcolor"]))
 			if(DNA_SKIN_COLOR_BLOCK)
-				setblock(unique_features, blocknumber, sanitize_hexcolor(features["skin_color"]))
+				set_uni_feature_block(blocknumber, sanitize_hexcolor(features["skin_color"]))
 	else if(blocknumber <= DNA_MANDATORY_COLOR_BLOCKS+(GLOB.genetic_accessories.len*DNA_BLOCKS_PER_FEATURE))
 		var/block_index = blocknumber - DNA_MANDATORY_COLOR_BLOCKS
 		var/block_zero_index = block_index-1
@@ -96,11 +96,11 @@
 		if(mutant_bodyparts[key])
 			var/list/color_list = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
 			if(color_index && color_index <= color_list.len)
-				setblock(unique_features, blocknumber, sanitize_hexcolor(color_list[color_index]))
+				set_uni_feature_block(blocknumber, sanitize_hexcolor(color_list[color_index]))
 			else
 				var/list/accessories_for_key = GLOB.genetic_accessories[key]
 				if(mutant_bodyparts[key][MUTANT_INDEX_NAME] in accessories_for_key)
-					setblock(unique_features, blocknumber, construct_block(mutant_bodyparts.Find(mutant_bodyparts[key][MUTANT_INDEX_NAME]), accessories_for_key.len))
+					set_uni_feature_block(blocknumber, construct_block(mutant_bodyparts.Find(mutant_bodyparts[key][MUTANT_INDEX_NAME]), accessories_for_key.len))
 	else
 		var/block_index = blocknumber - (DNA_MANDATORY_COLOR_BLOCKS+(GLOB.genetic_accessories.len*DNA_BLOCKS_PER_FEATURE))
 		var/block_zero_index = block_index-1
@@ -110,17 +110,17 @@
 			var/markings = 0
 			if(body_markings[zone])
 				markings = body_markings[zone].len
-			setblock(unique_features, blocknumber, construct_block(markings+1, MAXIMUM_MARKINGS_PER_LIMB+1))
+			set_uni_feature_block(blocknumber, construct_block(markings+1, MAXIMUM_MARKINGS_PER_LIMB+1))
 		else
 			var/color_block = ((block_zero_index%DNA_BLOCKS_PER_MARKING_ZONE)+1)%DNA_BLOCKS_PER_MARKING
 			var/marking_index = (((block_zero_index-1)%DNA_BLOCKS_PER_MARKING_ZONE)/DNA_BLOCKS_PER_MARKING)+1
 			if(body_markings[zone] && marking_index <= body_markings[zone].len)
 				var/marking = body_markings[zone][marking_index]
 				if(color_block)
-					setblock(unique_features, blocknumber, sanitize_hexcolor(body_markings[zone][marking]))
+					set_uni_feature_block(blocknumber, sanitize_hexcolor(body_markings[zone][marking]))
 				else
 					var/list/marking_list = GLOB.body_markings_per_limb[zone]
-					setblock(unique_features, blocknumber, construct_block(marking_list.Find(marking), marking_list.len))
+					set_uni_feature_block(blocknumber, construct_block(marking_list.Find(marking), marking_list.len))
 
 /datum/dna/proc/update_body_size()
 	if(!holder || species.body_size_restricted || current_body_size == features["body_size"])
@@ -197,23 +197,23 @@
 /mob/living/carbon/human/updateappearance(icon_update=1, mutcolor_update=0, mutations_overlay_update=0)
 	..()
 	var/structure = dna.unique_identity
-	hair_color = sanitize_hexcolor(getblock(structure, DNA_HAIR_COLOR_BLOCK))
-	facial_hair_color = sanitize_hexcolor(getblock(structure, DNA_FACIAL_HAIR_COLOR_BLOCK))
-	skin_tone = GLOB.skin_tones[deconstruct_block(getblock(structure, DNA_SKIN_TONE_BLOCK), GLOB.skin_tones.len)]
-	eye_color = sanitize_hexcolor(getblock(structure, DNA_EYE_COLOR_BLOCK))
-	facial_hairstyle = GLOB.facial_hairstyles_list[deconstruct_block(getblock(structure, DNA_FACIAL_HAIRSTYLE_BLOCK), GLOB.facial_hairstyles_list.len)]
-	hairstyle = GLOB.hairstyles_list[deconstruct_block(getblock(structure, DNA_HAIRSTYLE_BLOCK), GLOB.hairstyles_list.len)]
+	hair_color = sanitize_hexcolor(get_uni_identity_block(structure, DNA_HAIR_COLOR_BLOCK))
+	facial_hair_color = sanitize_hexcolor(get_uni_identity_block(structure, DNA_FACIAL_HAIR_COLOR_BLOCK))
+	skin_tone = GLOB.skin_tones[deconstruct_block(get_uni_identity_block(structure, DNA_SKIN_TONE_BLOCK), GLOB.skin_tones.len)]
+	eye_color = sanitize_hexcolor(get_uni_identity_block(structure, DNA_EYE_COLOR_BLOCK))
+	facial_hairstyle = GLOB.facial_hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_FACIAL_HAIRSTYLE_BLOCK), GLOB.facial_hairstyles_list.len)]
+	hairstyle = GLOB.hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_HAIRSTYLE_BLOCK), GLOB.hairstyles_list.len)]
 	var/features = dna.unique_features
 	if(dna.features["mcolor"])
-		dna.features["mcolor"] = sanitize_hexcolor(getblock(features, DNA_MUTANT_COLOR_BLOCK))
+		dna.features["mcolor"] = sanitize_hexcolor(get_uni_identity_block(features, DNA_MUTANT_COLOR_BLOCK))
 	if(dna.features["mcolor2"])
-		dna.features["mcolor2"] = sanitize_hexcolor(getblock(features, DNA_MUTANT_COLOR_2_BLOCK))
+		dna.features["mcolor2"] = sanitize_hexcolor(get_uni_identity_block(features, DNA_MUTANT_COLOR_2_BLOCK))
 	if(dna.features["mcolor3"])
-		dna.features["mcolor3"] = sanitize_hexcolor(getblock(features, DNA_MUTANT_COLOR_3_BLOCK))
+		dna.features["mcolor3"] = sanitize_hexcolor(get_uni_identity_block(features, DNA_MUTANT_COLOR_3_BLOCK))
 	if(dna.features["ethcolor"])
-		dna.features["ethcolor"] = sanitize_hexcolor(getblock(features, DNA_ETHEREAL_COLOR_BLOCK))
+		dna.features["ethcolor"] = sanitize_hexcolor(get_uni_identity_block(features, DNA_ETHEREAL_COLOR_BLOCK))
 	if(dna.features["skin_color"])
-		dna.features["skin_color"] = sanitize_hexcolor(getblock(features, DNA_SKIN_COLOR_BLOCK))
+		dna.features["skin_color"] = sanitize_hexcolor(get_uni_identity_block(features, DNA_SKIN_COLOR_BLOCK))
 
 	if(icon_update)
 		dna.species.handle_body(src) // We want 'update_body_parts()' to be called only if mutcolor_update is TRUE, so no 'update_body()' here.

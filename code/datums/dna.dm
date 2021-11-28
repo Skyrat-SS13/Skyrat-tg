@@ -213,17 +213,12 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(features["tail_monkey"])
 		L[DNA_MONKEY_TAIL_BLOCK] = construct_block(GLOB.tails_list_monkey.Find(features["tail_monkey"]), GLOB.tails_list_monkey.len)
 
-<<<<<<< HEAD
-	for(var/i in 1 to DNA_FEATURE_BLOCKS)
-		data += (L[i] || random_string(DNA_BLOCK_SIZE,GLOB.hex_characters))
+	for(var/blocknum in 1 to DNA_FEATURE_BLOCKS)
+		. += L[blocknum] || random_string(GET_UI_BLOCK_LEN(blocknum), GLOB.hex_characters)
 
 	return data.Join()
 */
 //SKYRAT EDIT REMOVAL END
-=======
-	for(var/blocknum in 1 to DNA_FEATURE_BLOCKS)
-		. += L[blocknum] || random_string(GET_UI_BLOCK_LEN(blocknum), GLOB.hex_characters)
->>>>>>> 41b8d99401f (DNA code now supports unique identity and features blocks of different size. (#62303))
 
 /datum/dna/proc/generate_dna_blocks()
 	var/bonus
@@ -354,15 +349,9 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		if(DNA_MUSHROOM_CAPS_BLOCK)
 			set_uni_feature_block(blocknumber, construct_block(GLOB.caps_list.Find(features["caps"]), GLOB.caps_list.len))
 		if(DNA_MONKEY_TAIL_BLOCK)
-<<<<<<< HEAD
-			setblock(unique_features, blocknumber, construct_block(GLOB.tails_list_monkey.Find(features["tail_monkey"]), GLOB.tails_list_monkey.len))
+			set_uni_feature_block(blocknumber, construct_block(GLOB.tails_list_monkey.Find(features["tail_monkey"]), GLOB.tails_list_monkey.len))
 */
 //SKYRAT EDIT REMOVAL END
-
-#undef sanitize_shortcolor
-=======
-			set_uni_feature_block(blocknumber, construct_block(GLOB.tails_list_monkey.Find(features["tail_monkey"]), GLOB.tails_list_monkey.len))
->>>>>>> 41b8d99401f (DNA code now supports unique identity and features blocks of different size. (#62303))
 
 //Please use add_mutation or activate_mutation instead
 /datum/dna/proc/force_give(datum/mutation/human/HM)
