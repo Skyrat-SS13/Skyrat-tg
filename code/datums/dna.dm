@@ -41,7 +41,6 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 
 /proc/populate_total_uf_len_by_block()
 	. = list()
-	make_sprite_accessory_references() //SKYRAT EDIT ADDITION - We need this list populated before we can figure outt he total UF's, naturally.
 	var/total_block_len = 1
 	for(var/blocknumber in 1 to DNA_FEATURE_BLOCKS)
 		. += total_block_len
