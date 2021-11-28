@@ -234,7 +234,6 @@
 
 //mecha_kineticgun version of the projectile
 /obj/projectile/kinetic/mech
-	damage = 40
 	range = 5
 
 //Modkits
