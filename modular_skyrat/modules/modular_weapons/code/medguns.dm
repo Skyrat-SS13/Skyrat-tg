@@ -256,7 +256,7 @@
 	name = "empty salve medicell"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/upgrades.dmi'
 	icon_state = "empty"
-	desc = "an unactivated Salve Medicell, use this on an aloe leaf to make this into a usable cell"
+	desc = "An inactive salve medicell, use this on an aloe leaf to make this into a usable cell."
 	from_obj = /obj/item/food/grown/aloe
 	to_obj = /obj/item/weaponcell/medical/utility/salve
 
