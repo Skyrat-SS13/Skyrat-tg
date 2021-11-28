@@ -1,4 +1,5 @@
-
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular_skyrat/modules/customization/code/datums/dna.dm)
+/*
 /**
  * Some identity blocks (basically pieces of the unique_identity string variable of the dna datum, commonly abbreviated with ui)
  * may have a length that differ from standard length of 3 ASCII characters. This list is necessary
@@ -45,7 +46,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	for(var/blocknumber in 1 to DNA_FEATURE_BLOCKS)
 		. += total_block_len
 		total_block_len += GET_UF_BLOCK_LEN(blocknumber)
-
+*/
+//SKYRAT EDIT REMOVAL END
 /////////////////////////// DNA DATUM
 /datum/dna
 	///An md5 hash of the dna holder's real name
@@ -728,7 +730,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(!has_dna())
 		CRASH("[src] does not have DNA")
 	var/num = rand(1, DNA_UNI_IDENTITY_BLOCKS)
-	dna.set_uni_feature_block(num, random_string(GET_UI_BLOCK_LEN(num), GLOB.hex_characters))
+	dna.set_uni_identity_block(num, random_string(GET_UI_BLOCK_LEN(num), GLOB.hex_characters))
 	updateappearance(mutations_overlay_update=1)
 
 /mob/living/carbon/proc/random_mutate_unique_features()
@@ -758,7 +760,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(ui)
 		for(var/blocknum in 1 to DNA_UNI_IDENTITY_BLOCKS)
 			if(prob(probability))
-				M.dna.set_uni_feature_block(blocknum, random_string(GET_UI_BLOCK_LEN(blocknum), GLOB.hex_characters))
+				M.dna.set_uni_identity_block(blocknum, random_string(GET_UI_BLOCK_LEN(blocknum), GLOB.hex_characters))
 	if(uf)
 		for(var/blocknum in 1 to DNA_FEATURE_BLOCKS)
 			if(prob(probability))
