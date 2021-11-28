@@ -34,7 +34,6 @@
 				for(var/i in 1 to mags_to_spawn)
 					new spawned_ballistic_gun.mag_type (spawned_box)
 
-			guns_spawned++
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/spawner/armory_spawn/shotguns
