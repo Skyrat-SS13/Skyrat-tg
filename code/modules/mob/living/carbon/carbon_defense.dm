@@ -1,6 +1,6 @@
 #define SHAKE_ANIMATION_OFFSET 4
 #define PERSONAL_SPACE_DAMAGE 2
-#define ASS_SLAP_EXTRARANGE -1
+#define ASS_SLAP_EXTRA_RANGE -1
 
 /mob/living/carbon/get_eye_protection()
 	. = ..()
@@ -279,7 +279,7 @@
 				visible_message(span_danger("[src] tried slapping [target]'s ass, but they were slapped instead!"),
 				span_danger("You tried slapping [target]'s ass, but they hit you back, ouch!"),
 				"You hear a slap.", ignored_mobs = list(target))
-				playsound(target.loc, 'sound/effects/snap.ogg', 50, TRUE, -1)
+				playsound(target.loc, 'sound/effects/snap.ogg', 50, TRUE, ASS_SLAP_EXTRA_RANGE)
 				to_chat(target, span_danger("[src] tried slapping your ass, but you hit them back!"))
 				return
 			else
