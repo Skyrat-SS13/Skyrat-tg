@@ -354,7 +354,7 @@
 		if(iscarbon(mob))
 			if(ishuman(mob))
 				var/mob/living/carbon/human/H = mob
-				if(H.dna && H.dna.species)
+				if(H.dna && H.dna.species && !HAS_TRAIT(H, TRAIT_VIRUSIMMUNE)) // SKYRAT EDIT - No more funny purple hair
 					H.dna.species.handle_hair(H,"#1d2953") //will be reset when blight is cured
 				var/blightfound = FALSE
 				for(var/datum/disease/revblight/blight in H.diseases)
