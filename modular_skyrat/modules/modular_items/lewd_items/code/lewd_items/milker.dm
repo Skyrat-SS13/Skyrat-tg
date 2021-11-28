@@ -1,16 +1,27 @@
-#define VOLUME_LIGHT 1 // Volume 'light' mode extracts per action
-#define VOLUME_STRONG 5 // Volume 'strong' mode extracts per action
-#define HANDLE_LIGHT 1 // 'light' mode
-#define HANDLE_STRONG 2 // 'strong' mode
-#define HANDLE_MODE_LOWEST 1 // The lowest numbered setting currently available (so we dont need yet another list)
-#define HANDLE_MODE_HIGHEST 2 // The highest numbered setting currently available
-#define PLEASURE_LIGHT 1 // How much pleasure is gained through 'light' mode
-#define PLEASURE_STRONG 3 // How much pleasure is gained through 'strong' mode
-#define AROUSAL_LIGHT 1 // How much arousal is gained through 'light' mode
-#define AROUSAL_STRONG 3 // How much arousal is gained through 'strong' mode
-#define PAIN_LIGHT 3 // How much pain is gained through 'light' mode
-#define PAIN_STRONG 10 // How much pain is gained through 'strong' mode
-// Self-(and otherwise) Expression (of mammary organs)
+/// Volume 'light' mode extracts per action
+#define VOLUME_LIGHT 1
+/// Volume 'strong' mode extracts per action
+#define VOLUME_STRONG 5
+/// 'light' mode
+#define HANDLE_LIGHT 1
+/// 'strong' mode
+#define HANDLE_STRONG 2
+/// The lowest numbered setting currently available (so we dont need yet another list)
+#define HANDLE_MODE_LOWEST 1
+/// The highest numbered setting currently available
+#define HANDLE_MODE_HIGHEST 2
+/// How much pleasure is gained through 'light' mode
+#define PLEASURE_LIGHT 1
+/// How much pleasure is gained through 'strong' mode
+#define PLEASURE_STRONG 3
+/// How much arousal is gained through 'light' mode
+#define AROUSAL_LIGHT 1
+/// How much arousal is gained through 'strong' mode
+#define AROUSAL_STRONG 3
+/// How much pain is gained through 'light' mode
+#define PAIN_LIGHT 3
+
+#define PAIN_STRONG 10 // How much pain is gained through 'strong' mode// Self-(and otherwise) Expression (of mammary organs)
 
 /// The expression device
 /obj/item/milker
@@ -24,15 +35,15 @@
 	attack_verb_continuous = list("slaps")
 	attack_verb_simple = list("slap")
 	hitsound = 'sound/effects/snap.ogg'
-	var/pleasure_amt = PLEASURE_LIGHT
-	var/arousal_amt = AROUSAL_LIGHT
-	var/pain_amt = PAIN_LIGHT // *chomp*
+	var/pleasure_amount = PLEASURE_LIGHT
+	var/arousal_amount = AROUSAL_LIGHT
+	var/pain_amount = PAIN_LIGHT // *chomp*
 	var/handle_mode = HANDLE_LIGHT // How aggressively we're going to milk someone
 	var/squirt_volume = VOLUME_LIGHT // How much we're trying to express per squeeze / suck / CHOMP
 
 /obj/item/milker/Initialize(mapload)
 	. = ..()
-	toggleMode(null, TRUE)
+	toggle_mode(null, TRUE)
 
 /obj/item/milker/attack(mob/living/M, mob/living/carbon/human/user)
 	if(!in_range(M, user))
@@ -54,9 +65,10 @@
 
 /// Set how vigorously you want to make the stuff come out
 /obj/item/milker/attack_self(mob/user)
-	toggleMode(user, FALSE)
+	toggle_mode(user, FALSE)
 
-/obj/item/milker/proc/toggleMode(mob/user, milker_setup)
+/// Cycles through all the modes, looping around once it gets to the end
+/obj/item/milker/proc/toggle_mode(mob/user, milker_setup)
 	if(!milker_setup)
 		if(handle_mode++ > HANDLE_MODE_HIGHEST)
 			handle_mode = HANDLE_MODE_LOWEST
@@ -69,9 +81,9 @@
 				blind_message = span_purple("You hear a relaxed rustle."),
 				vision_distance = 1)
 			desc = "[initial(desc)]" + "\n[span_purple("It looks somewhat gentle.")]"
-			pleasure_amt = PLEASURE_LIGHT
-			arousal_amt = AROUSAL_LIGHT
-			pain_amt = PAIN_LIGHT
+			pleasure_amount = PLEASURE_LIGHT
+			arousal_amount = AROUSAL_LIGHT
+			pain_amount = PAIN_LIGHT
 			squirt_volume = VOLUME_LIGHT
 		if(HANDLE_STRONG)
 			if(user)
@@ -81,9 +93,9 @@
 				blind_message = span_purple("You hear a vigorous rustle."),
 				vision_distance = 1)
 			desc = "[initial(desc)]" + "\n[span_purple("It looks rather aggressive!")]"
-			pleasure_amt = PLEASURE_STRONG
-			arousal_amt = AROUSAL_STRONG
-			pain_amt = PAIN_STRONG
+			pleasure_amount = PLEASURE_STRONG
+			arousal_amount = AROUSAL_STRONG
+			pain_amount = PAIN_STRONG
 			squirt_volume = VOLUME_STRONG
 
 /// Checks if the breasts are present, exposed, lactating, in range, and containing some kind of fluid. Returns a message if not!
@@ -217,7 +229,7 @@
 	if(!breastCheck(being_milked, milker, breasts)) // Their breasts may have changed state (gutted, clothes, drained...)
 		return FALSE
 
-	milker.adjustArousal(arousal_amt)
+	milker.adjustArousal(arousal_amount)
 
 	switch(handle_mode)
 		if(HANDLE_LIGHT) // Gentle paws...
@@ -227,7 +239,7 @@
 				self_message = span_purple("You nibble into [self_suckle ? "your own" : "[being_milked]'s"] nipple and feel a stream of milk spray into your mouth!"),
 				blind_message = span_purple("You hear a nibble, and a squirt."),
 				vision_distance = 1)
-				being_milked.adjustPain(pain_amt)
+				being_milked.adjustPain(pain_amount)
 				playsound(milker.loc,'sound/weapons/bite.ogg', rand(10,50), TRUE)
 			else
 				milker.visible_message(
@@ -235,8 +247,8 @@
 				self_message = span_purple("You suckle down a gentle stream of [self_suckle ? "your own" : "[being_milked]'s"] milk!"),
 				blind_message = span_purple("You hear a slurp."),
 				vision_distance = 1)
-				being_milked.adjustArousal(arousal_amt)
-				being_milked.adjustPleasure(pleasure_amt)
+				being_milked.adjustArousal(arousal_amount)
+				being_milked.adjustPleasure(pleasure_amount)
 				playsound(milker.loc,'sound/items/drink.ogg', rand(10,50), TRUE)
 		if(HANDLE_STRONG) // SQUISH
 			if(milker.combat_mode) // CHOMP
@@ -245,7 +257,7 @@
 				self_message = span_purple("You chomp down into [self_suckle ? "your own" : "[being_milked]'s"] breast and feast upon the milk within!"),
 				blind_message = span_purple("You hear a hungry nibble."),
 				vision_distance = 1)
-				being_milked.adjustPain(pain_amt)
+				being_milked.adjustPain(pain_amount)
 				playsound(milker.loc,'sound/weapons/bite.ogg', rand(10,50), TRUE)
 			else
 				milker.visible_message(
@@ -253,11 +265,9 @@
 				self_message = span_purple("You suckle down a mouthful of [self_suckle ? "your own" : "[being_milked]'s"] milk!"),
 				blind_message = span_purple("You hear a faint slurp."),
 				vision_distance = 1)
-				being_milked.adjustArousal(arousal_amt)
-				being_milked.adjustPleasure(pleasure_amt)
+				being_milked.adjustArousal(arousal_amount)
+				being_milked.adjustPleasure(pleasure_amount)
 				playsound(milker.loc,'sound/items/drink.ogg', rand(10,50), TRUE)
-
-	log_combat(milker, being_milked, "fed_boob", breasts.internal_fluids.log_list())
 
 	var/gulp_size = squirt_volume
 	SEND_SIGNAL(breasts, COMSIG_DRINK_DRANK, being_milked, milker)
@@ -265,10 +275,10 @@
 	return TRUE
 
 /// Attempt to bottle the contents of someone's breasts.
-/obj/item/milker/proc/bottleMilk(mob/living/carbon/human/being_milked, mob/living/carbon/human/milker, obj/item/organ/genital/breasts/breasts, obj/item/reagent_containers/milk_bottle)
+/obj/item/milker/proc/bottleMilk(mob/living/carbon/human/being_milked, mob/living/carbon/human/milker, obj/item/organ/genital/breasts/target_breasts, obj/item/reagent_containers/milk_bottle)
 	if(!bottleCheck(being_milked, milker, milk_bottle))
 		return FALSE
-	if(!breastCheck(being_milked, milker, breasts))
+	if(!breastCheck(being_milked, milker, target_breasts))
 		return FALSE
 
 	var/self_bottle = (being_milked == milker) // Feeding off your own supply?
@@ -286,20 +296,19 @@
 		blind_message = span_purple("You hear someone's fingers slip."),
 		vision_distance = 1)
 		return FALSE
-	if(!breastCheck(being_milked, milker, breasts)) // Their breasts may have changed state (gutted, clothes, drained...)
+	if(!breastCheck(being_milked, milker, target_breasts)) // Their breasts may have changed state (gutted, clothes, drained...)
 		return FALSE
 	if(!bottleCheck(being_milked, milker, milk_bottle)) // Their container may have changed state (filled, sealed, dropped...)
 		return FALSE
 
-	being_milked.adjustArousal(arousal_amt)
-	being_milked.adjustPleasure(pleasure_amt)
-	milker.adjustArousal(arousal_amt)
+	being_milked.adjustArousal(arousal_amount)
+	being_milked.adjustPleasure(pleasure_amount)
+	milker.adjustArousal(arousal_amount)
 
-	breasts.internal_fluids.trans_to(milk_bottle, squirt_volume, transfered_by = milker)
+	target_breasts.internal_fluids.trans_to(milk_bottle, squirt_volume, transfered_by = milker)
 	milker.visible_message(
 	message = span_purple("[milker] takes aim and squirts some of [self_bottle ? "[milker.p_their()]" : "[being_milked]'s"] milk into \a [milk_bottle]!"),
 	self_message = span_purple("You take aim and squirt some of [self_bottle ? "your" : "[being_milked]'s"] milk into \the [milk_bottle]!"),
 	blind_message = span_purple("You hear a faint trickle."),
 	vision_distance = 1)
-	log_combat(milker, being_milked, "bottled_boob", breasts.internal_fluids.log_list())
 	return TRUE
