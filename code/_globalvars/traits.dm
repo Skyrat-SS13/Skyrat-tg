@@ -169,7 +169,11 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_UNNATURAL_RED_GLOWY_EYES" = TRAIT_UNNATURAL_RED_GLOWY_EYES,
 		"TRAIT_BLOODSHOT_EYES" = TRAIT_BLOODSHOT_EYES,
 		"TRAIT_SHIFTY_EYES" = TRAIT_SHIFTY_EYES,
+<<<<<<< HEAD
 		"TRAIT_OVERSIZED" = TRAIT_OVERSIZED, //SKYRAT EDIT ADDITION
+=======
+		"TRAIT_CANNOT_BE_UNBUCKLED" = TRAIT_CANNOT_BE_UNBUCKLED,
+>>>>>>> 1d88b2895b5 (The Tramstation Tram no longer shoves the handicapped out of their wheelchairs when moved (#63041))
 	),
 	/obj/item/bodypart = list(
 		"TRAIT_PARALYSIS" = TRAIT_PARALYSIS,
