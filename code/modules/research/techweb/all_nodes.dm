@@ -335,6 +335,7 @@
 		"toxin2medicell",
 		"oxy2medicell",
 		"tempmedicell",
+		"bodymedicell",
 		"clotmedicell",
 		//SKYRAT EDIT END  -
 	)
