@@ -10,10 +10,8 @@
 /datum/antagonist/ert/odst/proc/equip_odst()
 	if(!ishuman(owner.current))
 		return
-	var/mob/living/carbon/human/H = owner.current
-
-	H.set_species(/datum/species/human) //ODST are apparently human only.
-
+	var/mob/living/carbon/human/human_target = owner.current
+	human_target.set_species(/datum/species/human) //ODST are apparently human only.
 	return TRUE
 
 /datum/antagonist/ert/odst/leader

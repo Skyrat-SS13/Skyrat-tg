@@ -4,4 +4,4 @@
 	rename_team = "Dogginos"
 	code = "Green"
 	mission = "Serve the station with a smile, remember to get a tip!"
-	polldesc = "a group of Trained Pizza Delivery Boys"
+	polldesc = "a group of trained pizza delivery boys"

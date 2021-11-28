@@ -5,6 +5,3 @@
 	inhand_icon_state = "breathmuzzle"
 	body_parts_covered = NONE
 	clothing_flags = MASKINTERNALS
-
-
-

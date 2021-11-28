@@ -7,4 +7,3 @@
 	name = "Dogginos Regional Manager"
 	outfit = /datum/outfit/centcom/ert/pizza/leader
 	role = "Manager"
-

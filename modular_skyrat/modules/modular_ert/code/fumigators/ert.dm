@@ -7,4 +7,3 @@
 	name = "Fumigator Leader"
 	outfit = /datum/outfit/ert/weedkiller/leader
 	role = "Head Exterminator"
-
