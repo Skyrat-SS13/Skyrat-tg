@@ -3,6 +3,8 @@
 	make_body_marking_references()
 	make_body_marking_set_references()
 	make_body_marking_dna_block_references()
+	// Finally, we need to re-run this proc so the value of the total_uf_len_by_block global variable is accurate.
+	GLOB.total_uf_len_by_block = populate_total_uf_len_by_block()
 	make_augment_references()
 	make_culture_references()
 	//We're loading donators here because it's the least intrusive way modularly
