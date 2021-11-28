@@ -865,6 +865,7 @@
 		"borg_upgrade_lavaproof",
 		"borg_upgrade_rped",
 		"advanced_materials", // SKYRAT ADDITION - ADVANCED MATERIALS UPGRADE
+		"inducer_module", // SKYRAT ADDITION - INDUCER MODULE UPGRADE
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
