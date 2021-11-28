@@ -248,7 +248,7 @@
 /obj/item/weaponcell/medical/utility/body_teleporter
 	name = "Body Transporter Medicell"
 	desc = "A medicell that allows the user to transport a dead body to themselves."
-	icon_state = "body" //IMPORT A CUSTOM TEXTURE LATER
+	icon_state = "body"
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/body_teleporter
 
 //Empty Medicell//
