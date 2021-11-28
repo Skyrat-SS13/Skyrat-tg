@@ -49,8 +49,6 @@ GLOBAL_LIST_INIT(features_block_lengths, list(
 		"[DNA_ETHEREAL_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
 	))
 
-GLOBAL_VAR_INIT(dna_total_feature_blocks, DNA_MANDATORY_COLOR_BLOCKS) // SKYRAT EDIT - Gotta put it here for this to work, it seems.
-
 /**
  * A list of numbers that keeps track of where ui blocks start in the unique_identity string variable of the dna datum.
  * Commonly used by the datum/dna/set_uni_identity_block and datum/dna/get_uni_identity_block procs.
