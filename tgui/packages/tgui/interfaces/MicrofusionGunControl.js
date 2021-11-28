@@ -12,6 +12,7 @@ export const MicrofusionGunControl = (props, context) => {
     gun_name,
     has_cell,
     has_emitter,
+    has_loaded_projectile,
     has_attachments,
     attachments = [],
   } = data;
@@ -21,7 +22,7 @@ export const MicrofusionGunControl = (props, context) => {
       width={700}
       height={600}>
       <Window.Content>
-        <Stack vertical>
+        <Stack vertical grow>
           <Stack.Item>
             <Section
               title="Power Cell"
@@ -145,14 +146,20 @@ export const MicrofusionGunControl = (props, context) => {
           </Stack.Item>
           <Stack.Item>
             <Section title="Beam Data">
-              <LabeledList>
-                <LabeledList.Item label="Damage">
-                  {loaded_projectile_data.damage}
-                </LabeledList.Item>
-                <LabeledList.Item label="Damange Type">
-                  {loaded_projectile_data.damage_type}
-                </LabeledList.Item>
-              </LabeledList>
+              {has_loaded_projectile ? (
+                <LabeledList>
+                  <LabeledList.Item label="Damage">
+                    {loaded_projectile_data.damage}
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Damange Type">
+                    {loaded_projectile_data.damage_type}
+                  </LabeledList.Item>
+                </LabeledList>
+              ) : (
+                <NoticeBox color="bad">
+                  Projectile data failure!
+                </NoticeBox>
+              )}
             </Section>
           </Stack.Item>
           <Stack.Item>
