@@ -66,6 +66,13 @@ GLOBAL_LIST_INIT(total_ui_len_by_block, populate_total_ui_len_by_block())
 
 ///Ditto but for unique features. Used by the datum/dna/set_uni_feature_block and datum/dna/get_uni_feature_block procs.
 GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
+
+/proc/populate_total_uf_len_by_block()
+	. = list()
+	var/total_block_len = 1
+	for(var/blocknumber in 1 to DNA_FEATURE_BLOCKS)
+		. += total_block_len
+		total_block_len += GET_UF_BLOCK_LEN(blocknumber)
 */
 //SKYRAT EDIT REMOVAL END
 /////////////////////////// DNA DATUM
