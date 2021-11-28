@@ -234,7 +234,7 @@
 
 //mecha_kineticgun version of the projectile
 /obj/projectile/kinetic/mech
-	damage = 60 //SKYRAT EDIT; Original damage = 40
+	damage = 40
 	range = 5
 
 //Modkits
