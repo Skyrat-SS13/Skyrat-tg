@@ -12,7 +12,7 @@ const commandJobs = [
 ];
 
 // SKYRAT EDIT CHANGE BEGIN - ALTERNATIVE_JOB_TITLES
-// Any instance of crewMember.trim was originally crewMember.trim
+// Any instance of crewMember.trim was originally crewMember.rank
 export const CrewManifest = (props, context) => {
   const { data: { manifest, positions } } = useBackend(context);
 
