@@ -23,6 +23,8 @@ GLOBAL_LIST_INIT(features_block_lengths, list(
 		"[DNA_ETHEREAL_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
 	))
 
+GLOBAL_VAR_INIT(dna_total_feature_blocks, DNA_MANDATORY_COLOR_BLOCKS) // SKYRAT EDIT - Gotta put it here for this to work, it seems.
+
 /**
  * A list of numbers that keeps track of where ui blocks start in the unique_identity string variable of the dna datum.
  * Commonly used by the datum/dna/set_uni_identity_block and datum/dna/get_uni_identity_block procs.
@@ -37,7 +39,7 @@ GLOBAL_LIST_INIT(total_ui_len_by_block, populate_total_ui_len_by_block())
 		total_block_len += GET_UI_BLOCK_LEN(blocknumber)
 
 ///Ditto but for unique features. Used by the datum/dna/set_uni_feature_block and datum/dna/get_uni_feature_block procs.
-GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
+GLOBAL_LIST_EMPTY(total_uf_len_by_block) // SKYRAT EDIT - MOVED TO modular_skyrat\modules\customization\__HELPERS\global_lists.dm LINE 7 - ORIGINAL: GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 
 /proc/populate_total_uf_len_by_block()
 	. = list()
