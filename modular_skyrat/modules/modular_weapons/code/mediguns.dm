@@ -143,7 +143,7 @@
 
 /datum/design/bodymedicell
 	name = "Empty Body Teleporter Medicell"
-	desc = "A Empty Medicell that can be upgraded by a bluespace slime extract into a usable Body Teleporter Medicell."
+	desc = "An empty medicell that can be upgraded by a bluespace slime extract into an usable body teleporter medicell."
 	id = "bodymedicell"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000, /datum/material/diamond = 500, /datum/material/bluespace = 2000)
