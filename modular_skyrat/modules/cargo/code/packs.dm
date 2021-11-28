@@ -104,8 +104,7 @@
 	access = ACCESS_MEDICAL
 	contains = list(/obj/item/weaponcell/medical/brute,
 					/obj/item/weaponcell/medical/burn,
-					/obj/item/weaponcell/medical/toxin,
-					/obj/item/weaponcell/medical)
+					/obj/item/weaponcell/medical/toxin)
 	crate_name = "Medicell Replacemnt Crate"
 
 //////////////////////////////////////////////////////////////////////////////
@@ -246,7 +245,7 @@
 	name = "Atmospherics Hardsuit Crate"
 	desc = "Contains a single hardsuit, built to standard atmospherics suit specifications."
 	access = ACCESS_ENGINE_EQUIP
-	contains = list(/obj/item/clothing/suit/space/hardsuit/engine/atmos)
+	contains = list(/obj/item/clothing/suit/space/hardsuit/atmos)
 	cost = CARGO_CRATE_VALUE * 16
 	crate_name = "atmospherics hardsuit crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering

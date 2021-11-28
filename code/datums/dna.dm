@@ -25,6 +25,33 @@ GLOBAL_LIST_INIT(features_block_lengths, list(
 	))
 
 /**
+
+ * Some identity blocks (basically pieces of the unique_identity string variable of the dna datum, commonly abbreviated with ui)
+ * may have a length that differ from standard length of 3 ASCII characters. This list is necessary
+ * for these non-standard blocks to work, as well as the entire unique identity string.
+ * Should you add a new ui block which size differ from the standard (again, 3 ASCII characters), like for example, a color,
+ * please do not forget to also include it in this list in the following format:
+ *  "[dna block number]" = dna block size,
+ * Failure to do that may result in bugs. Thanks.
+ */
+GLOBAL_LIST_INIT(identity_block_lengths, list(
+		"[DNA_HAIR_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+		"[DNA_FACIAL_HAIR_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+		"[DNA_EYE_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+	))
+
+/**
+ * The same rules of the above also apply here, with the exception that this is for the unique_features string variable
+ * (commonly abbreviated with uf) and its blocks. Both ui and uf have a standard block length of 3 ASCII characters.
+ */
+GLOBAL_LIST_INIT(features_block_lengths, list(
+		"[DNA_MUTANT_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+		"[DNA_ETHEREAL_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+	))
+
+GLOBAL_VAR_INIT(dna_total_feature_blocks, DNA_MANDATORY_COLOR_BLOCKS) // SKYRAT EDIT - Gotta put it here for this to work, it seems.
+
+/**
  * A list of numbers that keeps track of where ui blocks start in the unique_identity string variable of the dna datum.
  * Commonly used by the datum/dna/set_uni_identity_block and datum/dna/get_uni_identity_block procs.
  */
@@ -39,13 +66,6 @@ GLOBAL_LIST_INIT(total_ui_len_by_block, populate_total_ui_len_by_block())
 
 ///Ditto but for unique features. Used by the datum/dna/set_uni_feature_block and datum/dna/get_uni_feature_block procs.
 GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
-
-/proc/populate_total_uf_len_by_block()
-	. = list()
-	var/total_block_len = 1
-	for(var/blocknumber in 1 to DNA_FEATURE_BLOCKS)
-		. += total_block_len
-		total_block_len += GET_UF_BLOCK_LEN(blocknumber)
 */
 //SKYRAT EDIT REMOVAL END
 /////////////////////////// DNA DATUM

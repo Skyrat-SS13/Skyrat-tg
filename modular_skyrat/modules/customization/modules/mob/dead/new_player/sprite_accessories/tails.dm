@@ -167,6 +167,11 @@
 	color_src = USE_ONE_COLOR
 	default_color = DEFAULT_PRIMARY*/
 
+/datum/sprite_accessory/tails/mammal/deer
+	name = "Deer"
+	icon_state = "deer"
+	general_type = "deer"
+
 /datum/sprite_accessory/tails/mammal/wagging/eevee
 	name = "Eevee"
 	icon_state = "eevee"
@@ -392,7 +397,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/snakedual
 	name = "Snake dual"
 	icon_state = "snakedual"
-	
+
 /datum/sprite_accessory/tails/mammal/wagging/datashark
 	name = "Data shark"
 	icon_state = "datashark"

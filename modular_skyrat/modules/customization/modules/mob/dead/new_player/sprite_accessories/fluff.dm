@@ -107,3 +107,7 @@
 	name = "Snow (Top)"
 	icon_state = "fsnow"
 
+/datum/sprite_accessory/fluff/moth/snowdual
+	name = "Snow (Dual-Color)"
+	icon_state = "snowdual"
+	color_src = USE_MATRIXED_COLORS
