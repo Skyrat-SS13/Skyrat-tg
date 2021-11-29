@@ -73,23 +73,23 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	if(features["mcolor"])
 		data += sanitize_hexcolor(features["mcolor"], include_crunch = FALSE)
 	else
-		data += random_string(DNA_BLOCK_SIZE_COLOR,GLOB.hex_characters)
+		data += random_string(DNA_BLOCK_SIZE_COLOR, GLOB.hex_characters)
 	if(features["mcolor2"])
 		data += sanitize_hexcolor(features["mcolor2"], include_crunch = FALSE)
 	else
-		data += random_string(DNA_BLOCK_SIZE_COLOR,GLOB.hex_characters)
+		data += random_string(DNA_BLOCK_SIZE_COLOR, GLOB.hex_characters)
 	if(features["mcolor3"])
 		data += sanitize_hexcolor(features["mcolor3"], include_crunch = FALSE)
 	else
-		data += random_string(DNA_BLOCK_SIZE_COLOR,GLOB.hex_characters)
+		data += random_string(DNA_BLOCK_SIZE_COLOR, GLOB.hex_characters)
 	if(features["ethcolor"])
 		data += sanitize_hexcolor(features["ethcolor"], include_crunch = FALSE)
 	else
-		data += random_string(DNA_BLOCK_SIZE_COLOR,GLOB.hex_characters)
+		data += random_string(DNA_BLOCK_SIZE_COLOR, GLOB.hex_characters)
 	if(features["skin_color"])
 		data += sanitize_hexcolor(features["skin_color"], include_crunch = FALSE)
 	else
-		data += random_string(DNA_BLOCK_SIZE_COLOR,GLOB.hex_characters)
+		data += random_string(DNA_BLOCK_SIZE_COLOR, GLOB.hex_characters)
 	for(var/key in GLOB.genetic_accessories)
 		if(mutant_bodyparts[key] && (mutant_bodyparts[key][MUTANT_INDEX_NAME] in GLOB.genetic_accessories[key]))
 			var/list/accessories_for_key = GLOB.genetic_accessories[key]
