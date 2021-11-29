@@ -51,7 +51,7 @@
 		update_overlays()
 
 	//Breasts overlay for catsuit
-	if(B?.genital_size >= 6 || B?.genital_type == "pair")
+	if(B?.genital_size >= 6 & B?.genital_type == "pair")
 		breasts_overlay.icon_state = "breasts_double"
 		breasts_icon_overlay.icon_state = "iconbreasts_double"
 		accessory_overlay = breasts_overlay
