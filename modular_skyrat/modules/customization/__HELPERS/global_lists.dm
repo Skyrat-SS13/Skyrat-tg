@@ -46,7 +46,7 @@
 				if(!GLOB.genetic_accessories[P.key])
 					GLOB.genetic_accessories[P.key] = list()
 					for(var/color_block in 1 to DNA_FEATURE_COLOR_BLOCKS_PER_FEATURE)
-						GLOB.features_block_lengths["[GLOB.dna_mutant_bodypart_blocks[P.key]+color_block]"] = DNA_BLOCK_SIZE_COLOR
+						GLOB.features_block_lengths["[GLOB.dna_mutant_bodypart_blocks[P.key] + color_block]"] = DNA_BLOCK_SIZE_COLOR
 					GLOB.dna_total_feature_blocks += DNA_BLOCKS_PER_FEATURE
 
 				GLOB.genetic_accessories[P.key] += P.name
@@ -82,7 +82,7 @@
 		GLOB.dna_body_marking_blocks[marking_zone] = GLOB.dna_total_feature_blocks+1
 		for(var/feature_block_set in 1 to MAXIMUM_MARKINGS_PER_LIMB)
 			for(var/color_block in 1 to DNA_MARKING_COLOR_BLOCKS_PER_MARKING)
-				GLOB.features_block_lengths["[GLOB.dna_body_marking_blocks[marking_zone]+(feature_block_set-1)*DNA_BLOCKS_PER_MARKING+color_block]"] = DNA_BLOCK_SIZE_COLOR
+				GLOB.features_block_lengths["[GLOB.dna_body_marking_blocks[marking_zone] + (feature_block_set - 1) * DNA_BLOCKS_PER_MARKING + color_block]"] = DNA_BLOCK_SIZE_COLOR
 		GLOB.dna_total_feature_blocks += DNA_BLOCKS_PER_MARKING_ZONE
 
 /proc/make_augment_references()

@@ -99,7 +99,7 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 				colors_to_randomize--
 				data += sanitize_hexcolor(color, include_crunch = FALSE)
 			if(colors_to_randomize)
-				data += random_string(DNA_BLOCK_SIZE_COLOR*colors_to_randomize, GLOB.hex_characters)
+				data += random_string(DNA_BLOCK_SIZE_COLOR * colors_to_randomize, GLOB.hex_characters)
 		else
 			data += random_string(DNA_FEATURE_BLOCKS_TOTAL_SIZE_PER_FEATURE, GLOB.hex_characters)
 	for(var/zone in GLOB.marking_zones)
@@ -112,10 +112,10 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 				data += construct_block(marking_list.Find(marking), marking_list.len)
 				data += sanitize_hexcolor(body_markings[zone][marking], include_crunch = FALSE)
 			if(markings_to_randomize)
-				data += random_string(markings_to_randomize*DNA_MARKING_BLOCKS_TOTAL_SIZE_PER_MARKING,GLOB.hex_characters)
+				data += random_string(markings_to_randomize * DNA_MARKING_BLOCKS_TOTAL_SIZE_PER_MARKING,GLOB.hex_characters)
 		else
-			data += construct_block(1, MAXIMUM_MARKINGS_PER_LIMB+1)
-			data += random_string(MAXIMUM_MARKINGS_PER_LIMB*DNA_MARKING_BLOCKS_TOTAL_SIZE_PER_MARKING,GLOB.hex_characters)
+			data += construct_block(1, MAXIMUM_MARKINGS_PER_LIMB + 1)
+			data += random_string(MAXIMUM_MARKINGS_PER_LIMB * DNA_MARKING_BLOCKS_TOTAL_SIZE_PER_MARKING,GLOB.hex_characters)
 	return data.Join()
 
 /datum/dna/proc/update_uf_block(blocknumber)
