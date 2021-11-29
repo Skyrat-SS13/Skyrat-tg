@@ -280,7 +280,7 @@
 	custom_materials = list(/datum/material/glass=1500, /datum/material/plastic=2000)
 	volume = 50
 	possible_transfer_amounts = list(1,2,3,4,5)
-	list_reagents = list(/datum/reagent/drug/crocin = 50) //You can make it strating empty, but i'm pretty sure 90% of players will use just aphrodisiacs, so why just don't make their life easier?
+	list_reagents = list(/datum/reagent/drug/aphrodisiac/crocin = 50)
 
 // Standard initialize code for filter
 /obj/item/reagent_containers/glass/lewd_filter/Initialize()

@@ -83,7 +83,7 @@
 			. += "fireplace_fire2"
 		if(60000 to 79999) //SKYRAT EDIT original: if(1500 to 2000)
 			. += "fireplace_fire3"
-		if(800000 to MAXIMUM_BURN_TIMER) //SKYRAT EDIT original: if(2000 to MAXIMUM_BURN_TIMER)
+		if(80000 to MAXIMUM_BURN_TIMER) //SKYRAT EDIT original: if(2000 to MAXIMUM_BURN_TIMER)
 			. += "fireplace_fire4"
 	. += "fireplace_glow"
 

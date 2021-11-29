@@ -487,11 +487,9 @@
 /turf/open/floor/iron/dark,
 /area/service/chapel)
 "bB" = (
-/obj/structure/bed,
-/obj/item/bedsheet/dorms,
 /obj/machinery/newscaster/directional/north,
-/turf/open/floor/plating,
-/area/security/prison/safe)
+/turf/open/floor/iron,
+/area/security/prison/visit)
 "bE" = (
 /obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 8
@@ -3660,9 +3658,11 @@
 /turf/open/floor/plating/snowed/icemoon,
 /area/maintenance/starboard/fore)
 "ld" = (
-/obj/structure/frame/machine,
-/turf/open/floor/plating,
-/area/security/prison/safe)
+/obj/machinery/computer/cryopod{
+	pixel_y = 30
+	},
+/turf/open/floor/iron,
+/area/security/prison/visit)
 "le" = (
 /obj/structure/sign/poster/official/random{
 	pixel_y = 32
@@ -4244,10 +4244,11 @@
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "mN" = (
-/obj/structure/fence/door,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plating,
-/area/security/prison/safe)
+/obj/machinery/cryopod{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/security/prison/visit)
 "mO" = (
 /turf/open/openspace/icemoon/keep_below,
 /area/icemoon/underground/explored)
@@ -4367,9 +4368,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/department/medical)
-"ng" = (
-/turf/open/floor/iron,
-/area/security/prison)
 "nh" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -6542,6 +6540,11 @@
 /obj/machinery/camera/directional/east{
 	c_tag = "Prison - Visitation East";
 	network = list("ss13","prison")
+	},
+/obj/item/radio/intercom/directional/east{
+	desc = "If the microphones on prison intercoms weren't removed, you'd be talking through one of these.";
+	name = "prison intercom";
+	prison_radio = 1
 	},
 /turf/open/floor/iron,
 /area/security/prison/visit)
@@ -11442,9 +11445,6 @@
 /obj/structure/stairs/north,
 /turf/open/floor/iron,
 /area/cargo/storage)
-"Jl" = (
-/turf/open/floor/iron,
-/area/security/prison)
 "Jm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment,
@@ -13157,17 +13157,6 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/science/xenobiology)
-"Ou" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/item/radio/intercom/directional/east{
-	desc = "If the microphones on prison intercoms weren't removed, you'd be talking through one of these.";
-	name = "prison intercom";
-	prison_radio = 1
-	},
-/turf/open/floor/iron,
-/area/security/prison/visit)
 "Ov" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/machinery/power/apc/auto_name/directional/north,
@@ -15426,10 +15415,12 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "Vf" = (
-/obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/light/small/directional/east,
-/turf/open/floor/plating,
-/area/security/prison/safe)
+/obj/machinery/cryopod{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/security/prison/visit)
 "Vg" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line,
 /obj/machinery/light/small/directional/south,
@@ -44393,8 +44384,8 @@ So
 Fg
 co
 Bh
-ng
-Jl
+OQ
+OQ
 xO
 Gx
 OQ
@@ -44660,7 +44651,7 @@ xm
 Mi
 qM
 tN
-Ou
+Mi
 Mi
 An
 Qj
@@ -44917,8 +44908,8 @@ pA
 pA
 pA
 pA
-pA
-pA
+kq
+mN
 VV
 nR
 VV
@@ -45173,10 +45164,10 @@ So
 Qg
 kW
 wl
-VV
+pA
 bB
-Vb
-NB
+mN
+VV
 Vb
 yN
 ya
@@ -45430,10 +45421,10 @@ So
 Qg
 Mj
 DU
-VV
+pA
 ld
 Vf
-mN
+VV
 KV
 Vb
 hf
@@ -45687,9 +45678,9 @@ So
 So
 RA
 So
-VV
-VV
-VV
+pA
+pA
+pA
 VV
 nR
 VV

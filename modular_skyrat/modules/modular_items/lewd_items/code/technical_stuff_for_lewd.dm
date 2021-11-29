@@ -903,16 +903,16 @@
 
 // Add to hud class additional ERP variable boolean for check inventiry status (equipped or not)
 /datum/hud
-	var/list/ERP_toggleable_inventory = list() //the screen ERP objects which can be hidden
+	var/list/erp_toggleable_inventory = list() //the screen ERP objects which can be hidden
 	var/ERP_inventory_shown = FALSE //Equipped item ERP inventory
 
 // Define additional button for ERP hud slots for expand/collapse like default inventory
-/atom/movable/screen/human/ERP_toggle
-	name = "ERP_toggle"
+/atom/movable/screen/human/erp_toggle
+	name = "erp_toggle"
 	icon_state = "toggle"
 
 // ERP inventory button logic. Just expand/collapse
-/atom/movable/screen/human/ERP_toggle/Click()
+/atom/movable/screen/human/erp_toggle/Click()
 
 	var/mob/targetmob = usr
 
@@ -923,10 +923,10 @@
 
 	if(usr.hud_used.ERP_inventory_shown && targetmob.hud_used)
 		usr.hud_used.ERP_inventory_shown = FALSE
-		usr.client.screen -= targetmob.hud_used.ERP_toggleable_inventory
+		usr.client.screen -= targetmob.hud_used.erp_toggleable_inventory
 	else
 		usr.hud_used.ERP_inventory_shown = TRUE
-		usr.client.screen += targetmob.hud_used.ERP_toggleable_inventory
+		usr.client.screen += targetmob.hud_used.erp_toggleable_inventory
 
 	targetmob.hud_used.hidden_inventory_update(usr)
 
@@ -1208,8 +1208,8 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 	. = ..()
 	if(client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		if(client.mob.hud_used)
-			for(var/atom/movable/screen/human/ERP_toggle/E in client.mob.hud_used.static_inventory)
-				if(istype(E, /atom/movable/screen/human/ERP_toggle))
+			for(var/atom/movable/screen/human/erp_toggle/E in client.mob.hud_used.static_inventory)
+				if(istype(E, /atom/movable/screen/human/erp_toggle))
 					E.invisibility = 0
 	else
 		if(ishuman(client.mob))
@@ -1225,10 +1225,10 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 		if(client.mob.hud_used)
 			if(client.mob.hud_used.ERP_inventory_shown)
 				client.mob.hud_used.ERP_inventory_shown = FALSE
-				client.screen -= client.mob.hud_used.ERP_toggleable_inventory
+				client.screen -= client.mob.hud_used.erp_toggleable_inventory
 
-			for(var/atom/movable/screen/human/ERP_toggle/E in client.mob.hud_used.static_inventory)
-				if(istype(E, /atom/movable/screen/human/ERP_toggle))
+			for(var/atom/movable/screen/human/erp_toggle/E in client.mob.hud_used.static_inventory)
+				if(istype(E, /atom/movable/screen/human/erp_toggle))
 					E.invisibility = 100
 
 

@@ -10,6 +10,7 @@
 * **Code:** https://github.com/Sea-of-Lost-Souls/Tannhauser-Gate
 * **Wiki:** https://tgstation13.org/wiki/Main_Page
 * **Codedocs:** https://sea-of-lost-souls.github.io/Tannhauser-Gate/
+* **Skyrat 13 Discord:** https://discord.com/invite/hGpZ4Z3
 * **Coderbus Discord:** https://discord.gg/Vh8TJp9
 
 This is Sea of Lost Souls' downstream fork of Skyrat 13 created in byond.

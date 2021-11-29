@@ -307,3 +307,25 @@
 	item_path = /obj/item/clothing/under/rank/nanotrasen_representative/hubert
 	ckeywhitelist = list("hackertdog")
 	restricted_roles = list("Nanotrasen Representative")
+
+/datum/loadout_item/head/frostyushanka
+	name = "Blue Ushanka"
+	item_path = /obj/item/clothing/head/ushanka/frosty
+	ckeywhitelist = list("cherno00")
+
+/datum/loadout_item/neck/silvercross
+	name = "Silver Cross"
+	item_path = /obj/item/clothing/neck/cross
+	ckeywhitelist = list("m97screwsyourparents")
+
+/datum/loadout_item/suit/pcrc_jacket
+	name = "PCRC Armored Jacket"
+	item_path = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/pcrc
+	ckeywhitelist = list("1ceres")
+	restricted_roles = list("Orderly", "Bouncer", "Customs Agent", "Engineering Guard", "Science Guard")
+
+/datum/loadout_item/under/jumpsuit/pcrc_clothes
+	name = "PCRC Business Clothes"
+	item_path = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/pcrc
+	ckeywhitelist = list("1ceres")
+	restricted_roles = list("Orderly", "Bouncer", "Customs Agent", "Engineering Guard", "Science Guard")

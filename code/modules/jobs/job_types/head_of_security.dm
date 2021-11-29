@@ -53,6 +53,7 @@
 	suit_store = /obj/item/flashlight/seclite //SKYRAT EDIT CHANGE - SEC_HAUL & HOS_NERF - ORIGINAL: /obj/item/gun/energy/e_gun SEC_HAUL: /obj/item/gun/ballistic/automatic/pistol/g18
 	backpack_contents = list(
 		/obj/item/melee/baton/security/loaded = 1,
+		/obj/item/evidencebag = 1,
 		/obj/item/modular_computer/tablet/preset/advanced/command = 1,
 		)
 	belt = /obj/item/pda/heads/hos

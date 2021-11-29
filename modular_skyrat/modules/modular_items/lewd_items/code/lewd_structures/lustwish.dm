@@ -38,8 +38,7 @@
 
 					//clothing facial/head
 					/obj/item/clothing/mask/ballgag = 8,
-					/obj/item/clothing/mask/ballgag/phallic = 8,
-					/obj/item/clothing/mask/ballgag/phallic/kazoo = 8,
+					/obj/item/clothing/mask/ballgag/choking = 8,
 					/obj/item/clothing/mask/muzzle/ring = 4,
 					/obj/item/clothing/head/domina_cap = 5,
 					/obj/item/clothing/head/helmet/space/deprivation_helmet = 5,

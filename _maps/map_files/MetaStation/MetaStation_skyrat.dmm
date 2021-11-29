@@ -640,11 +640,7 @@
 /area/security/prison)
 "afW" = (
 /obj/effect/turf_decal/tile/neutral,
-/mob/living/simple_animal/bot/cleanbot{
-	auto_patrol = 1;
-	icon_state = "cleanbot1";
-	name = "Mopficcer Sweepsky"
-	},
+/mob/living/simple_animal/bot/cleanbot/autopatrol,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -2685,12 +2681,7 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
 	},
-/mob/living/simple_animal/bot/secbot/beepsky{
-	desc = "It's Officer Beepsky! Powered by a potato and a shot of whiskey, and with a sturdier reinforced chassis, too.";
-	health = 45;
-	maxHealth = 45;
-	name = "Officer Beepsky"
-	},
+/mob/living/simple_animal/bot/secbot/beepsky/officer,
 /turf/open/floor/iron,
 /area/security/brig)
 "awj" = (
@@ -17909,7 +17900,7 @@
 /obj/machinery/computer/secure_data{
 	dir = 8
 	},
-/obj/structure/reagent_dispensers/peppertank/directional/east,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/east,
 /turf/open/floor/iron/dark,
 /area/security/checkpoint/science)
 "ecG" = (
@@ -22751,11 +22742,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/mob/living/simple_animal/bot/medbot{
-	auto_patrol = 1;
-	desc = "A little medical robot, officially part of the Nanotrasen medical inspectorate. He looks somewhat underwhelmed.";
-	name = "Inspector Johnson"
-	},
+/mob/living/simple_animal/bot/medbot/autopatrol,
 /turf/open/floor/iron/white/corner{
 	dir = 8
 	},
@@ -32460,7 +32447,7 @@
 /area/service/chapel/office)
 "jzk" = (
 /obj/structure/table/glass,
-/obj/structure/reagent_dispensers/virusfood/directional/west,
+/obj/structure/reagent_dispensers/wall/virusfood/directional/west,
 /obj/machinery/requests_console/directional/south{
 	department = "Virology";
 	name = "Virology Requests Console";
@@ -40194,6 +40181,9 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 6
 	},
+/obj/machinery/cryopod{
+	dir = 1
+	},
 /turf/open/floor/iron/white,
 /area/security/prison)
 "mnP" = (
@@ -41013,7 +41003,7 @@
 /turf/open/floor/iron,
 /area/engineering/main)
 "mCd" = (
-/obj/structure/reagent_dispensers/peppertank/directional/north,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/north,
 /obj/structure/closet/secure_closet/security,
 /obj/machinery/firealarm/directional/east,
 /obj/effect/turf_decal/tile/red{
@@ -48817,7 +48807,7 @@
 "por" = (
 /obj/item/pen,
 /obj/structure/table/reinforced,
-/obj/structure/reagent_dispensers/peppertank/directional/east,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/east,
 /obj/item/folder/red,
 /obj/item/book/manual/wiki/security_space_law{
 	pixel_x = 3;
@@ -55595,7 +55585,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/purple,
-/obj/structure/chair/barber_chair{
+/obj/structure/chair/comfy/barber_chair{
 	dir = 4
 	},
 /turf/open/floor/iron,
@@ -57206,7 +57196,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/purple,
-/obj/structure/chair/barber_chair{
+/obj/structure/chair/comfy/barber_chair{
 	dir = 4
 	},
 /turf/open/floor/iron,
@@ -58732,7 +58722,7 @@
 /turf/open/floor/iron/dark,
 /area/commons/locker)
 "sSO" = (
-/obj/structure/reagent_dispensers/peppertank/directional/north,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/north,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
@@ -62356,7 +62346,7 @@
 /turf/open/floor/iron,
 /area/science/xenobiology)
 "ujj" = (
-/obj/structure/reagent_dispensers/peppertank/directional/east,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/east,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/landmark/start/depsec/supply,
@@ -65320,7 +65310,7 @@
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
-/obj/structure/reagent_dispensers/peppertank/directional/east,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/east,
 /obj/item/radio/intercom/directional/north{
 	pixel_x = 32
 	},
@@ -67256,7 +67246,7 @@
 /turf/open/floor/iron,
 /area/service/janitor)
 "vPa" = (
-/obj/structure/reagent_dispensers/peppertank/directional/east,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/east,
 /obj/machinery/camera/directional/east{
 	c_tag = "Security - Gear Room"
 	},
@@ -69097,7 +69087,7 @@
 "wzD" = (
 /obj/structure/table,
 /obj/item/flashlight/lamp,
-/obj/structure/reagent_dispensers/peppertank/directional/west,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/west,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/security/execution/education)
@@ -71518,7 +71508,7 @@
 /turf/open/floor/engine/co2,
 /area/engineering/atmos)
 "xsa" = (
-/obj/structure/reagent_dispensers/peppertank/directional/east,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/east,
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
@@ -73074,6 +73064,18 @@
 /obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/plating,
 /area/maintenance/starboard/secondary)
+"xSW" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 10
+	},
+/obj/machinery/cryopod{
+	dir = 1
+	},
+/obj/machinery/computer/cryopod{
+	pixel_y = -30
+	},
+/turf/open/floor/iron/white,
+/area/security/prison)
 "xTe" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/virology/glass{
@@ -97093,7 +97095,7 @@ lmr
 uzt
 lmr
 jNH
-nPZ
+xSW
 aio
 aol
 anb

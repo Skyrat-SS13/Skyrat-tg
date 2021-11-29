@@ -13,47 +13,43 @@
 	wound_bonus = 10
 	bare_wound_bonus = 15
 	tool_behaviour = TOOL_KNIFE
+	// How long do we take to shave someone's facial hair?
+	var/shaving_time = 10 SECONDS
 
-/obj/item/straight_razor/proc/shave(mob/living/carbon/human/H)
-	H.facial_hairstyle = "Shaved"
-	H.update_hair()
+/obj/item/straight_razor/proc/shave(mob/living/carbon/human/target_human)
+	target_human.facial_hairstyle = "Shaved"
+	target_human.update_hair()
 	playsound(loc, 'sound/items/unsheath.ogg', 20, TRUE)
 
-/obj/item/straight_razor/attack(mob/M, mob/living/user)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+/obj/item/straight_razor/attack(mob/attacked_mob, mob/living/user)
+	if(ishuman(attacked_mob))
+		var/mob/living/carbon/human/target_human = attacked_mob
 		var/location = user.zone_selected
 		if(!(location in list(BODY_ZONE_PRECISE_MOUTH)) && !user.combat_mode)
 			to_chat(user, span_warning("You stop, look down at what you're currently holding and ponder to yourself, \"This is probably to be used on their facial hair.\""))
 			return
-		if(location == BODY_ZONE_PRECISE_MOUTH && !H.get_bodypart(BODY_ZONE_HEAD))
-			to_chat(user, span_warning("[H] doesn't have a head!"))
+		if(location == BODY_ZONE_PRECISE_MOUTH && !target_human.get_bodypart(BODY_ZONE_HEAD))
+			to_chat(user, span_warning("[target_human] doesn't have a head!"))
 			return
 		if(location == BODY_ZONE_PRECISE_MOUTH)
-			if(!(FACEHAIR in H.dna.species.species_traits))
+			if(!(FACEHAIR in target_human.dna.species.species_traits))
 				to_chat(user, span_warning("There is no facial hair to shave!"))
 				return
-			if(!get_location_accessible(H, location))
+			if(!get_location_accessible(target_human, location))
 				to_chat(user, span_warning("The mask is in the way!"))
 				return
-			if(H.facial_hairstyle == "Shaved")
+			if(target_human.facial_hairstyle == "Shaved")
 				to_chat(user, span_warning("Already clean-shaven!"))
 				return
 
-			if(H == user) //shaving yourself
-				user.visible_message(span_notice("[user] starts to shave [user.p_their()] facial hair with [src]."), \
-					span_notice("You take a moment to shave your facial hair with [src]..."))
-				if(do_after(user, 10 SECONDS, target = H))
-					user.visible_message(span_notice("[user] shaves [user.p_their()] facial hair clean with [src]."), \
-						span_notice("You finish shaving with [src]. Fast and clean!"))
-					shave(H)
-			else
-				user.visible_message(span_warning("[user] tries to shave [H]'s facial hair with [src]."), \
-					span_notice("You start shaving [H]'s facial hair..."))
-				if(do_after(user, 10 SECONDS, target = H))
-					user.visible_message(span_warning("[user] shaves off [H]'s facial hair with [src]."), \
-						span_notice("You shave [H]'s facial hair clean off."))
-					shave(H)
+			var/self_shaving = target_human == user // Shaving yourself?
+			user.visible_message(span_notice("[user] starts to shave [self_shaving ? user.p_their() : "[target_human]'s"] facial hair with [src]."), \
+				span_notice("You take a moment to shave [self_shaving ? "your" : "[target_human]'s" ] facial hair with [src]..."))
+			if(do_after(user, shaving_time, target = target_human))
+				user.visible_message(span_notice("[user] shaves [self_shaving ? user.p_their() : "[target_human]'s"] facial hair clean with [src]."), \
+					span_notice("You finish shaving[self_shaving ? "" : " [target_human]'s facial hair"] with [src]. Fast and clean!"))
+				shave(target_human)
+			
 		else
 			..()
 	else

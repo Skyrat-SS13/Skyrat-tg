@@ -1,8 +1,7 @@
-
 //Blueshield
 /obj/item/clothing/under/rank/security/blueshield
-	desc = "Expensive designer shirt with snazzy suit pants, complete with a blue tie."
-	name = "Blueshield's suit"
+	desc = "An expensive designer shirt with snazzy suit pants, complete with a blue tie."
+	name = "blueshield's suit"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
@@ -12,29 +11,22 @@
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
-/obj/item/clothing/under/rank/security/blueshieldturtleneck
-	name = "Blueshield's turtleneck"
-	desc = "A cozier alternative to the normal Blueshield's Suit, the wool is still expensive."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
+/obj/item/clothing/under/rank/security/blueshield/turtleneck
+	name = "blueshield's skivvy"
+	desc = "A cozier alternative to the normal Blueshield's suit. It's made out of an expensive, all-natural wool."
 	icon_state = "bs_turtleneck"
-	armor = list("melee" = 10, "bullet" = 5, "laser" = 5,"energy" = 10, "bomb" =10, "bio" = 0, "fire" = 50, "acid" = 50)
-	can_adjust = FALSE
-	sensor_mode = SENSOR_COORDS
-	random_sensor = FALSE
+	fitted = FEMALE_UNIFORM_TOP
 
-/obj/item/clothing/under/rank/security/blueshieldskirt
-	desc = "A tactical skirt, seemingly outfitted in NanoTrasen's standard corporate-chic."
+/obj/item/clothing/under/rank/security/blueshield/turtleneck/skirt
+	name = "blueshield's skirtleneck"
+	desc = "An alternative to the normal turtleneck with the pants replaced with a high-cut skirt. It's still made out of an expensive, all-natural wool."
+	icon_state = "bs_skirtleneck"
+
+/obj/item/clothing/under/rank/security/blueshield/skirt
+	desc = "A \"tactical\" skirt seemingly outfitted in Nanotrasen's standard corporate-chic."
 	name = "Blueshield's skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
 	icon_state = "blueshieldskirt"
-	armor = list("melee" = 10, "bullet" = 5, "laser" = 5,"energy" = 10, "bomb" = 10, "bio" = 0, "fire" = 50, "acid" = 50)
-	can_adjust = FALSE
-	sensor_mode = SENSOR_COORDS
-	random_sensor = FALSE
+	fitted = FEMALE_UNIFORM_TOP
 
 /obj/item/clothing/head/helmet/space/plasmaman/blueshield
 	name = "blueshield envirosuit helmet"
@@ -51,7 +43,6 @@
     icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
     icon_state = "combat"
     worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
-
     resistance_flags = FIRE_PROOF |  ACID_PROOF
     armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 100, "acid" = 100)
 

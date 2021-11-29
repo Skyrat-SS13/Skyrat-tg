@@ -348,7 +348,7 @@
 	glass_desc = "Red and white drink for the upper classes or undead."
 
 /datum/reagent/consumable/ethanol/velvet_kiss/on_mob_life(mob/living/carbon/M)
-	if(iszombie(M) || isvampire(M) || isdullahan(M)) //Rare races!
+	if(iszombie(M) || isvampire(M) || isdullahan(M) || ishemophage(M)) //Rare races!
 		quality = RACE_DRINK
 	else
 		M.adjust_disgust(25)

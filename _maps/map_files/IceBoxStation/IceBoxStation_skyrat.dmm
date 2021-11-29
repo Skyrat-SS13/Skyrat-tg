@@ -296,7 +296,7 @@
 /area/security/office)
 "acf" = (
 /obj/structure/frame/machine,
-/obj/structure/reagent_dispensers/peppertank/directional/south,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/south,
 /turf/open/floor/iron,
 /area/security/office)
 "aci" = (
@@ -361,7 +361,7 @@
 /obj/structure/rack/gunrack,
 /obj/effect/turf_decal/delivery/blue,
 /obj/effect/spawner/armory_spawn/shotguns,
-/obj/structure/reagent_dispensers/peppertank/directional/east,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/east,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "acV" = (
@@ -3866,7 +3866,7 @@
 /obj/structure/table,
 /obj/item/storage/toolbox/emergency,
 /obj/structure/extinguisher_cabinet/directional/west,
-/obj/structure/reagent_dispensers/peppertank/directional/north,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/north,
 /turf/open/floor/iron,
 /area/hallway/secondary/exit/departure_lounge)
 "aOe" = (
@@ -4877,7 +4877,7 @@
 /obj/item/reagent_containers/syringe/antiviral,
 /obj/item/reagent_containers/dropper,
 /obj/item/reagent_containers/spray/cleaner,
-/obj/structure/reagent_dispensers/virusfood/directional/south,
+/obj/structure/reagent_dispensers/wall/virusfood/directional/south,
 /obj/effect/turf_decal/trimline/green/filled/line,
 /turf/open/floor/iron/white,
 /area/medical/virology)
@@ -7835,7 +7835,7 @@
 /turf/open/floor/iron,
 /area/hallway/primary/central)
 "btP" = (
-/obj/machinery/computer/cargo/request,
+/obj/machinery/computer/department_orders/science,
 /turf/open/floor/iron,
 /area/science/research)
 "btS" = (
@@ -13276,7 +13276,7 @@
 /area/hallway/primary/central)
 "cpJ" = (
 /obj/machinery/computer/security,
-/obj/structure/reagent_dispensers/peppertank/directional/north,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/north,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
@@ -18912,7 +18912,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/purple,
-/obj/structure/chair/barber_chair{
+/obj/structure/chair/comfy/barber_chair{
 	dir = 8
 	},
 /turf/open/floor/iron,
@@ -22229,7 +22229,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/purple,
-/obj/structure/chair/barber_chair{
+/obj/structure/chair/comfy/barber_chair{
 	dir = 8
 	},
 /obj/effect/landmark/start/hangover,
@@ -22316,6 +22316,19 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/closed/wall/r_wall,
 /area/engineering/main)
+"hil" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/obj/machinery/modular_computer/console/preset/cargochat/medical{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/medical/medbay/aft)
 "hin" = (
 /obj/effect/spawner/random/maintenance/three,
 /obj/structure/closet/crate,
@@ -22997,7 +23010,7 @@
 /area/engineering/storage/tech)
 "hFs" = (
 /obj/structure/closet/secure_closet/security/sec,
-/obj/structure/reagent_dispensers/peppertank/directional/south,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/south,
 /obj/effect/turf_decal/bot_blue,
 /turf/open/floor/iron/dark,
 /area/security/office)
@@ -24305,7 +24318,7 @@
 /turf/open/floor/plating,
 /area/engineering/atmos)
 "iuW" = (
-/obj/structure/reagent_dispensers/peppertank/directional/west,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/west,
 /obj/machinery/airalarm/directional/north,
 /obj/structure/closet/secure_closet{
 	name = "Security Post Locker";
@@ -28444,10 +28457,10 @@
 /turf/open/floor/iron,
 /area/hallway/primary/fore)
 "kUH" = (
-/obj/machinery/computer/cargo/request{
+/obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/effect/turf_decal/stripes/line{
+/obj/machinery/computer/department_orders/service{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -29488,7 +29501,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/computer/cargo/request,
+/obj/machinery/computer/department_orders/security,
 /turf/open/floor/iron,
 /area/security/brig)
 "lyW" = (
@@ -29882,9 +29895,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/computer/cargo/request{
-	dir = 8
-	},
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 2.9
@@ -29899,6 +29909,9 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/brown,
+/obj/machinery/computer/department_orders/engineering{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/engineering/break_room)
 "lMh" = (
@@ -31651,6 +31664,9 @@
 "mIi" = (
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
+/obj/machinery/cryopod{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
 "mIk" = (
@@ -31930,6 +31946,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
+	},
+/obj/machinery/computer/department_orders/medical{
+	dir = 8
 	},
 /turf/open/floor/iron/white,
 /area/medical/medbay/aft)
@@ -32423,7 +32442,7 @@
 	},
 /obj/item/reagent_containers/dropper,
 /obj/item/reagent_containers/syringe,
-/obj/structure/reagent_dispensers/peppertank/directional/south,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/south,
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark,
 /area/security/execution/education)
@@ -32618,6 +32637,10 @@
 /area/service/library)
 "nhU" = (
 /obj/machinery/light/directional/north,
+/obj/machinery/computer/cryopod{
+	pixel_y = 30
+	},
+/obj/machinery/cryopod,
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
 "nhZ" = (
@@ -36079,7 +36102,7 @@
 	pixel_y = 9
 	},
 /obj/item/pen,
-/obj/structure/reagent_dispensers/peppertank/directional/east,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/east,
 /obj/effect/turf_decal/tile/yellow/anticorner,
 /turf/open/floor/iron/textured_corner{
 	dir = 1
@@ -42396,6 +42419,9 @@
 /turf/open/floor/iron,
 /area/commons/locker)
 "sMn" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
 "sMq" = (
@@ -44479,6 +44505,9 @@
 /area/science/robotics/lab)
 "tTw" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/obj/machinery/cryopod{
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
@@ -47057,7 +47086,7 @@
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "vrd" = (
-/obj/structure/reagent_dispensers/peppertank/directional/east,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/east,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "vrn" = (
@@ -48176,6 +48205,7 @@
 /area/maintenance/starboard/fore)
 "vYo" = (
 /obj/machinery/airalarm/directional/north,
+/obj/machinery/cryopod,
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
 "vYr" = (
@@ -48632,6 +48662,9 @@
 	dir = 1
 	},
 /obj/machinery/light_switch/directional/south,
+/obj/machinery/cryopod{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
 "whY" = (
@@ -50609,7 +50642,7 @@
 	},
 /area/maintenance/port/fore)
 "xlX" = (
-/obj/structure/reagent_dispensers/peppertank/directional/east,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/east,
 /obj/machinery/newscaster/directional/south,
 /obj/machinery/camera/directional/south{
 	c_tag = "Security Post - Cargo"
@@ -51623,12 +51656,7 @@
 /turf/open/openspace/icemoon,
 /area/science/mixing/chamber)
 "xPk" = (
-/mob/living/simple_animal/bot/secbot/beepsky{
-	desc = "It's Officer Beepsky! Powered by a potato and a shot of whiskey, and with a sturdier reinforced chassis, too.";
-	health = 45;
-	maxHealth = 45;
-	name = "Officer Beepsky"
-	},
+/mob/living/simple_animal/bot/secbot/beepsky,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
@@ -91617,7 +91645,7 @@ brT
 bvo
 aUK
 mPI
-aUK
+hil
 eLU
 ygu
 qMQ
