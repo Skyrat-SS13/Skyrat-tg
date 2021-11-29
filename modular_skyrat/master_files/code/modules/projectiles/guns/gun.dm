@@ -61,8 +61,11 @@
 	var/obj/item/flashlight/seclite/gun_light
 	var/datum/action/item_action/toggle_gunlight/alight
 	var/gunlight_state = "flight"
+	var/gunlight_icon = 'icons/obj/guns/flashlights.dmi'
 
 	var/can_bayonet = FALSE //if a bayonet can be added or removed if it already has one.
+	var/bayonet_state = "bayonet"
+	var/bayonet_icon = 'icons/obj/guns/bayonets.dmi'
 	var/obj/item/knife/bayonet
 	var/knife_x_offset = 0
 	var/knife_y_offset = 0
@@ -728,20 +731,19 @@
 	if(gun_light)
 		var/mutable_appearance/flashlight_overlay
 		var/state = "[gunlight_state][gun_light.on? "_on":""]" //Generic state.
-		if(gun_light.icon_state in icon_states('icons/obj/guns/flashlights.dmi')) //Snowflake state?
+		if(gun_light.icon_state in icon_states(gunlight_icon)) //Snowflake state?
 			state = gun_light.icon_state
-		flashlight_overlay = mutable_appearance('icons/obj/guns/flashlights.dmi', state)
+		flashlight_overlay = mutable_appearance(gunlight_icon, state)
 		flashlight_overlay.pixel_x = flight_x_offset
 		flashlight_overlay.pixel_y = flight_y_offset
 		. += flashlight_overlay
 
 	if(bayonet)
 		var/mutable_appearance/knife_overlay
-		var/state = "bayonet" //Generic state.
-		if(bayonet.icon_state in icon_states('icons/obj/guns/bayonets.dmi')) //Snowflake state?
+		var/state = bayonet_state
+		if(bayonet.icon_state in icon_states(bayonet_icon)) //Snowflake state?
 			state = bayonet.icon_state
-		var/icon/bayonet_icons = 'icons/obj/guns/bayonets.dmi'
-		knife_overlay = mutable_appearance(bayonet_icons, state)
+		knife_overlay = mutable_appearance(bayonet_icon, state)
 		knife_overlay.pixel_x = knife_x_offset
 		knife_overlay.pixel_y = knife_y_offset
 		. += knife_overlay

@@ -316,8 +316,8 @@ Allows for flashlights bayonets and adds 1 slot to equipment.
 SCOPE ATTACHMENT
 
 Allows for a scope to be attached to the gun.
+DANGER: SNOWFLAKE ZONE
 */
-
 /obj/item/microfusion_gun_attachment/scope
 	name = "scope attachment"
 	desc = "A simple scope that allows for a zoom level."
@@ -332,9 +332,11 @@ Allows for a scope to be attached to the gun.
 
 	microfusion_gun.azoom = new()
 	microfusion_gun.azoom.gun = src
+	microfusion_gun.update_action_buttons()
 
 /obj/item/microfusion_gun_attachment/scope/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	if(microfusion_gun.azoom)
-		microfusion_gun.azoom.remove(azoom.owner)
-		QDEL_NULL(azoom)
+		microfusion_gun.azoom.Remove(microfusion_gun.azoom.owner)
+		QDEL_NULL(microfusion_gun.azoom)
+	microfusion_gun.update_action_buttons()
