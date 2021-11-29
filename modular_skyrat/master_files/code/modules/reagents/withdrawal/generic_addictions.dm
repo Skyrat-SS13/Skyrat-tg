@@ -22,7 +22,7 @@
 				affected_carbon.Dizzy(3 * strength)
 		if(8 to 10)
 			to_chat(affected_carbon, span_warning("You feel tired."))
-			affected_carbon.adjustStaminaLoss(6*strength)
+			affected_carbon.adjustStaminaLoss(6 * strength)
 
 /datum/addiction/nicotine/withdrawal_enters_stage_1(mob/living/carbon/affected_carbon, delta_time)
 	. = ..()
