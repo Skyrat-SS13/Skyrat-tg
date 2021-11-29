@@ -20,14 +20,14 @@
 	status_flags = CANPUSH
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
-	maxHealth = 750 //Very durable
-	health = 500
+	maxHealth = 500 //3 3/4ths crewman worth of health, vaguely.
+	health = 200 
 	healable = FALSE
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	environment_smash = TRUE
-	melee_damage_lower = 40
-	melee_damage_upper = 40
+	melee_damage_lower = 30
+	melee_damage_upper = 30 // equal to an esword, coupled with their faster attacks this is more then enough.
 	wander = FALSE
 	attack_verb_continuous = "rips into"
 	attack_verb_simple = "rip into"
