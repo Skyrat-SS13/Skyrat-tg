@@ -13,7 +13,7 @@
 	has_gun_safety = TRUE
 	can_flashlight = FALSE
 	can_bayonet = FALSE
-	zoomable = FALSE
+
 
 	w_class = WEIGHT_CLASS_BULKY
 
@@ -70,6 +70,8 @@
 	var/heat_per_shot = 100
 	/// The heat dissipation bonus granted by the weapon.
 	var/heat_dissipation_bonus = 0
+	/// What slots does this gun have?
+	var/attachment_slots = list(GUN_SLOT_BARREL, GUN_SLOT_UNDERBARREL, GUN_SLOT_RAIL, GUN_SLOT_UNIQUE)
 
 /obj/item/gun/microfusion/emp_act(severity)
 	. = ..()
@@ -522,6 +524,7 @@
 // Cell, emitter and upgrade interactions
 
 /obj/item/gun/microfusion/proc/remove_emitter()
+	playsound(src, 'sound/machines/terminal_eject.ogg', 50, TRUE)
 	phase_emitter.forceMove(get_turf(src))
 	phase_emitter.parent_gun = null
 	phase_emitter = null
@@ -587,9 +590,15 @@
 	if(is_type_in_list(microfusion_gun_attachment, attachments))
 		to_chat(user, span_warning("[src] already has [microfusion_gun_attachment] installed!"))
 		return FALSE
+	if(!(microfusion_gun_attachment.slot in attachment_slots))
+		to_chat(user, span_warning("[src] cannot install [microfusion_gun_attachment]!"))
+		return FALSE
 	for(var/obj/item/microfusion_gun_attachment/iterating_attachment in attachments)
 		if(is_type_in_list(microfusion_gun_attachment, iterating_attachment.incompatable_attachments))
 			to_chat(user, span_warning("[microfusion_gun_attachment] is not compatible with [iterating_attachment]!"))
+			return FALSE
+		if(iterating_attachment.slot == microfusion_gun_attachment.slot)
+			to_chat(user, span_warning("[microfusion_gun_attachment] cannot be installed in the same slot as [iterating_attachment]!"))
 			return FALSE
 	attachments += microfusion_gun_attachment
 	microfusion_gun_attachment.forceMove(src)
@@ -605,6 +614,23 @@
 	attachments -= microfusion_gun_attachment
 	microfusion_gun_attachment.remove_attachment(src)
 	update_appearance()
+
+/obj/item/gun/microfusion/proc/change_name(mob/user)
+	var/new_name = input(user, "Enter new name:", "Change gun name") as null|text
+	if(!new_name)
+		return
+	var/name_length = length(new_name)
+	if(name_length > 20)
+		to_chat(user, span_warning("New name cannot be longer than 20 characters!"))
+		return
+	if(name_length < 5)
+		to_chat(user, span_warning("New name cannot be less than 5 characters!"))
+		return
+
+	name = new_name
+	update_appearance()
+
+// UI CONTROL
 
 /obj/item/gun/microfusion/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -663,11 +689,17 @@
 		data["has_attachments"] = TRUE
 		data["attachments"] = list()
 		for(var/obj/item/microfusion_gun_attachment/attachment in attachments)
+			var/list/attachment_functions = attachment.get_modify_data()
+			var/has_modifications = FALSE
+			if(attachment_functions?.len > 0)
+				has_modifications = TRUE
 			data["attachments"] += list(list(
 				"name" = uppertext(attachment.name),
 				"desc" = attachment.desc,
+				"slot" = attachment.slot,
 				"information" = attachment.get_information_data(),
-				"modify" = attachment.get_modify_data(),
+				"has_modifications" = has_modifications,
+				"modify" = attachment_functions,
 				"ref" = REF(attachment),
 			))
 
@@ -682,7 +714,17 @@
 		return
 
 	switch(action)
+		if("eject_cell")
+			if(!cell)
+				return
+			eject_cell(usr)
+		if("change_gun_name")
+			change_name(usr)
 		if("overclock_emitter")
+			if(!phase_emitter)
+				return
+			if(!phase_emitter.hacked)
+				return
 			phase_emitter.set_overclock(usr)
 		if("eject_emitter")
 			if(!phase_emitter)
@@ -690,8 +732,12 @@
 			remove_emitter()
 		if("remove_attachment")
 			var/obj/item/microfusion_gun_attachment/to_remove = locate(params["attachment_ref"]) in src
+			if(!to_remove)
+				return
 			remove_attachment(to_remove, usr)
 		if("modify_attachment")
-			var/obj/item/microfusion_gun_attachment/to_remove = locate(params["attachment_ref"]) in src
-
+			var/obj/item/microfusion_gun_attachment/to_modify = locate(params["attachment_ref"]) in src
+			if(!to_modify)
+				return
+			to_modify.run_modify_data(params["modify_ref"], usr)
 

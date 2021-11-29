@@ -10,6 +10,7 @@ export const MicrofusionGunControl = (props, context) => {
   const { loaded_projectile_data } = data;
   const {
     gun_name,
+    gun_desc,
     has_cell,
     has_emitter,
     has_loaded_projectile,
@@ -20,9 +21,28 @@ export const MicrofusionGunControl = (props, context) => {
     <Window
       title={'Micron Contol Systems Incorporated: ' + gun_name}
       width={700}
-      height={600}>
+      height={800}>
       <Window.Content>
         <Stack vertical grow>
+          <Stack.Item>
+            <Section
+              title={'Gun Info'}
+              buttons={(
+                <Button
+                  icon="info-circle"
+                  content="Change Name"
+                  onClick={() => act('change_gun_name')} />
+              )}>
+              <LabeledList>
+                <LabeledList.Item label="Gun Name">
+                  {gun_name}
+                </LabeledList.Item>
+                <LabeledList.Item label="Gun Description">
+                  {gun_desc}
+                </LabeledList.Item>
+              </LabeledList>
+            </Section>
+          </Stack.Item>
           <Stack.Item>
             <Section
               title="Power Cell"
@@ -157,7 +177,7 @@ export const MicrofusionGunControl = (props, context) => {
                 </LabeledList>
               ) : (
                 <NoticeBox color="bad">
-                  Projectile data failure!
+                  Projectile data unavailable!
                 </NoticeBox>
               )}
             </Section>
@@ -165,23 +185,46 @@ export const MicrofusionGunControl = (props, context) => {
           <Stack.Item>
             <Section title={"Attachments"}>
               {has_attachments ? (
-                <LabeledList>
-                  {attachments.map(attachment => (
-                    <LabeledList.Item
-                      label={attachment.name}
-                      key={attachment.ref}
-                      buttons={(
-                        <Button
-                          icon="eject"
-                          content="Eject Attachment"
-                          onClick={() => act('remove_attachment', {
-                            attachment_ref: attachment.ref,
-                          })} />
-                      )}>
-                      {attachment.desc}
-                    </LabeledList.Item>
-                  ))}
-                </LabeledList>
+                attachments.map((attachment, index) => (
+                  <Section
+                    key={index}
+                    title={attachment.name}
+                    buttons={(
+                      <Button
+                        icon="eject"
+                        content="Eject Attachment"
+                        onClick={() => act('remove_attachment', {
+                          attachment_ref: attachment.ref,
+                        })} />
+                    )}>
+                    <LabeledList>
+                      <LabeledList.Item label="Description">
+                        {attachment.desc}
+                      </LabeledList.Item>
+                      {attachment.information && (
+                        <LabeledList.Item label="Information">
+                          {attachment.information}
+                        </LabeledList.Item>
+                      )}
+                      {!!attachment.has_modifications && (
+                        attachment.modify.map((mod, index) => (
+                          <LabeledList.Item
+                            key={index}
+                            buttons={(
+                              <Button
+                                key={index}
+                                icon={mod.icon}
+                                content={mod.title}
+                                onClick={() => act('modify_attachment', {
+                                  attachment_ref: attachment.ref,
+                                  modify_ref: mod.reference,
+                                })} />
+                            )} />
+                        ))
+                      )}
+                    </LabeledList>
+                  </Section>
+                ))
               ) : (
                 <NoticeBox color="blue">
                   No attachments installed!

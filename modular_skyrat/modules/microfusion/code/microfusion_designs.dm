@@ -188,16 +188,6 @@
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
-/datum/design/microfusion_gun_attachment_focus
-	name = "Focusing Microfusion Lens Attachment"
-	desc = "Splits the microfusion laser beam entering the lens!"
-	id = "microfusion_gun_attachment_focus"
-	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/silver = 500)
-	build_path = /obj/item/microfusion_gun_attachment/focus
-	category = list("Weapons")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
-
 /datum/design/microfusion_gun_attachment_repeater
 	name = "Repeating Phase Emitter Upgrade"
 	desc = "Upgrades the central phase emitter to repeat twice."

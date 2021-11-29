@@ -90,5 +90,6 @@
 	)
 	design_ids = list(
 		"microfusion_cell_attachment_selfcharging",
+		"microfusion_gun_attachment_xray",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 15000)

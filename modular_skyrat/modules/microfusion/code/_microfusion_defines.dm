@@ -30,3 +30,13 @@
 #define PHASE_FAILURE_DAMAGED "PHASE EMITTER: Emitter damaged!"
 /// The error message returned when the phase emitter has reached it's htermal throttle.
 #define PHASE_FAILURE_THROTTLE "PHASE EMITTER: Thermal throttle active!"
+
+// Slot defines for the gun.
+/// The gun barrel slot.
+#define GUN_SLOT_BARREL "barrel"
+/// The gun underbarrel slot.
+#define GUN_SLOT_UNDERBARREL "underbarrel"
+/// The gun rail slot.
+#define GUN_SLOT_RAIL "rail"
+/// Unique slots, can hold as many as you want.
+#define GUN_SLOT_UNIQUE "unique"
