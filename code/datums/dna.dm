@@ -1,4 +1,5 @@
-
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular_skyrat/modules/customization/code/datums/dna.dm)
+/*
 /**
  * Some identity blocks (basically pieces of the unique_identity string variable of the dna datum, commonly abbreviated with ui)
  * may have a length that differ from standard length of 3 ASCII characters. This list is necessary
@@ -23,7 +24,30 @@ GLOBAL_LIST_INIT(features_block_lengths, list(
 		"[DNA_ETHEREAL_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
 	))
 
-GLOBAL_VAR_INIT(dna_total_feature_blocks, DNA_MANDATORY_COLOR_BLOCKS) // SKYRAT EDIT - Gotta put it here for this to work, it seems.
+/**
+
+ * Some identity blocks (basically pieces of the unique_identity string variable of the dna datum, commonly abbreviated with ui)
+ * may have a length that differ from standard length of 3 ASCII characters. This list is necessary
+ * for these non-standard blocks to work, as well as the entire unique identity string.
+ * Should you add a new ui block which size differ from the standard (again, 3 ASCII characters), like for example, a color,
+ * please do not forget to also include it in this list in the following format:
+ *  "[dna block number]" = dna block size,
+ * Failure to do that may result in bugs. Thanks.
+ */
+GLOBAL_LIST_INIT(identity_block_lengths, list(
+		"[DNA_HAIR_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+		"[DNA_FACIAL_HAIR_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+		"[DNA_EYE_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+	))
+
+/**
+ * The same rules of the above also apply here, with the exception that this is for the unique_features string variable
+ * (commonly abbreviated with uf) and its blocks. Both ui and uf have a standard block length of 3 ASCII characters.
+ */
+GLOBAL_LIST_INIT(features_block_lengths, list(
+		"[DNA_MUTANT_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+		"[DNA_ETHEREAL_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+	))
 
 /**
  * A list of numbers that keeps track of where ui blocks start in the unique_identity string variable of the dna datum.
@@ -39,7 +63,7 @@ GLOBAL_LIST_INIT(total_ui_len_by_block, populate_total_ui_len_by_block())
 		total_block_len += GET_UI_BLOCK_LEN(blocknumber)
 
 ///Ditto but for unique features. Used by the datum/dna/set_uni_feature_block and datum/dna/get_uni_feature_block procs.
-GLOBAL_LIST_EMPTY(total_uf_len_by_block) // SKYRAT EDIT - MOVED TO modular_skyrat\modules\customization\__HELPERS\global_lists.dm LINE 7 - ORIGINAL: GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
+GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 
 /proc/populate_total_uf_len_by_block()
 	. = list()
@@ -47,7 +71,8 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block) // SKYRAT EDIT - MOVED TO modular_skyra
 	for(var/blocknumber in 1 to DNA_FEATURE_BLOCKS)
 		. += total_block_len
 		total_block_len += GET_UF_BLOCK_LEN(blocknumber)
-
+*/
+//SKYRAT EDIT REMOVAL END
 /////////////////////////// DNA DATUM
 /datum/dna
 	///An md5 hash of the dna holder's real name
@@ -730,7 +755,7 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block) // SKYRAT EDIT - MOVED TO modular_skyra
 	if(!has_dna())
 		CRASH("[src] does not have DNA")
 	var/num = rand(1, DNA_UNI_IDENTITY_BLOCKS)
-	dna.set_uni_feature_block(num, random_string(GET_UI_BLOCK_LEN(num), GLOB.hex_characters))
+	dna.set_uni_identity_block(num, random_string(GET_UI_BLOCK_LEN(num), GLOB.hex_characters))
 	updateappearance(mutations_overlay_update=1)
 
 /mob/living/carbon/proc/random_mutate_unique_features()
@@ -760,7 +785,7 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block) // SKYRAT EDIT - MOVED TO modular_skyra
 	if(ui)
 		for(var/blocknum in 1 to DNA_UNI_IDENTITY_BLOCKS)
 			if(prob(probability))
-				M.dna.set_uni_feature_block(blocknum, random_string(GET_UI_BLOCK_LEN(blocknum), GLOB.hex_characters))
+				M.dna.set_uni_identity_block(blocknum, random_string(GET_UI_BLOCK_LEN(blocknum), GLOB.hex_characters))
 	if(uf)
 		for(var/blocknum in 1 to DNA_FEATURE_BLOCKS)
 			if(prob(probability))

@@ -1,3 +1,53 @@
+/**
+ * Some identity blocks (basically pieces of the unique_identity string variable of the dna datum, commonly abbreviated with ui)
+ * may have a length that differ from standard length of 3 ASCII characters. This list is necessary
+ * for these non-standard blocks to work, as well as the entire unique identity string.
+ * Should you add a new ui block which size differ from the standard (again, 3 ASCII characters), like for example, a color,
+ * please do not forget to also include it in this list in the following format:
+ *  "[dna block number]" = dna block size,
+ * Failure to do that may result in bugs. Thanks.
+ */
+GLOBAL_LIST_INIT(identity_block_lengths, list(
+		"[DNA_HAIR_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+		"[DNA_FACIAL_HAIR_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+		"[DNA_EYE_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+	))
+
+/**
+ * The same rules of the above also apply here, with the exception that this is for the unique_features string variable
+ * (commonly abbreviated with uf) and its blocks. Both ui and uf have a standard block length of 3 ASCII characters.
+ */
+GLOBAL_LIST_INIT(features_block_lengths, list(
+		"[DNA_MUTANT_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+		"[DNA_MUTANT_COLOR_2_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+		"[DNA_MUTANT_COLOR_3_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+		"[DNA_ETHEREAL_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+		"[DNA_SKIN_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+	))
+
+/**
+ * A list of numbers that keeps track of where ui blocks start in the unique_identity string variable of the dna datum.
+ * Commonly used by the datum/dna/set_uni_identity_block and datum/dna/get_uni_identity_block procs.
+ */
+GLOBAL_LIST_EMPTY(total_ui_len_by_block)
+
+/proc/populate_total_ui_len_by_block()
+	GLOB.total_ui_len_by_block = list()
+	var/total_block_len = 1
+	for(var/blocknumber in 1 to DNA_UNI_IDENTITY_BLOCKS)
+		GLOB.total_ui_len_by_block += total_block_len
+		total_block_len += GET_UI_BLOCK_LEN(blocknumber)
+
+///Ditto but for unique features. Used by the datum/dna/set_uni_feature_block and datum/dna/get_uni_feature_block procs.
+GLOBAL_LIST_EMPTY(total_uf_len_by_block)
+
+/proc/populate_total_uf_len_by_block()
+	GLOB.total_uf_len_by_block = list()
+	var/total_block_len = 1
+	for(var/blocknumber in 1 to GLOB.dna_total_feature_blocks)
+		GLOB.total_uf_len_by_block += total_block_len
+		total_block_len += GET_UF_BLOCK_LEN(blocknumber)
+
 /datum/dna
 	var/list/list/mutant_bodyparts = list()
 	features = MANDATORY_FEATURE_LIST
@@ -21,25 +71,25 @@
 	var/list/data = list()
 
 	if(features["mcolor"])
-		data += sanitize_hexcolor(features["mcolor"])
+		data += sanitize_hexcolor(features["mcolor"], include_crunch = FALSE)
 	else
-		data += random_string(DNA_BLOCK_SIZE,GLOB.hex_characters)
+		data += random_string(DNA_BLOCK_SIZE_COLOR, GLOB.hex_characters)
 	if(features["mcolor2"])
-		data += sanitize_hexcolor(features["mcolor2"])
+		data += sanitize_hexcolor(features["mcolor2"], include_crunch = FALSE)
 	else
-		data += random_string(DNA_BLOCK_SIZE,GLOB.hex_characters)
+		data += random_string(DNA_BLOCK_SIZE_COLOR, GLOB.hex_characters)
 	if(features["mcolor3"])
-		data += sanitize_hexcolor(features["mcolor3"])
+		data += sanitize_hexcolor(features["mcolor3"], include_crunch = FALSE)
 	else
-		data += random_string(DNA_BLOCK_SIZE,GLOB.hex_characters)
+		data += random_string(DNA_BLOCK_SIZE_COLOR, GLOB.hex_characters)
 	if(features["ethcolor"])
-		data += sanitize_hexcolor(features["ethcolor"])
+		data += sanitize_hexcolor(features["ethcolor"], include_crunch = FALSE)
 	else
-		data += random_string(DNA_BLOCK_SIZE,GLOB.hex_characters)
+		data += random_string(DNA_BLOCK_SIZE_COLOR, GLOB.hex_characters)
 	if(features["skin_color"])
-		data += sanitize_hexcolor(features["skin_color"])
+		data += sanitize_hexcolor(features["skin_color"], include_crunch = FALSE)
 	else
-		data += random_string(DNA_BLOCK_SIZE,GLOB.hex_characters)
+		data += random_string(DNA_BLOCK_SIZE_COLOR, GLOB.hex_characters)
 	for(var/key in GLOB.genetic_accessories)
 		if(mutant_bodyparts[key] && (mutant_bodyparts[key][MUTANT_INDEX_NAME] in GLOB.genetic_accessories[key]))
 			var/list/accessories_for_key = GLOB.genetic_accessories[key]
@@ -47,11 +97,11 @@
 			var/colors_to_randomize = DNA_BLOCKS_PER_FEATURE-1
 			for(var/color in mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST])
 				colors_to_randomize--
-				data += sanitize_hexcolor(color)
+				data += sanitize_hexcolor(color, include_crunch = FALSE)
 			if(colors_to_randomize)
-				data += random_string(DNA_BLOCK_SIZE*colors_to_randomize,GLOB.hex_characters)
+				data += random_string(DNA_BLOCK_SIZE_COLOR * colors_to_randomize, GLOB.hex_characters)
 		else
-			data += random_string(DNA_BLOCK_SIZE*DNA_BLOCKS_PER_FEATURE,GLOB.hex_characters)
+			data += random_string(DNA_FEATURE_BLOCKS_TOTAL_SIZE_PER_FEATURE, GLOB.hex_characters)
 	for(var/zone in GLOB.marking_zones)
 		if(body_markings[zone])
 			data += construct_block(body_markings[zone].len+1, MAXIMUM_MARKINGS_PER_LIMB+1)
@@ -60,12 +110,12 @@
 			for(var/marking in body_markings[zone])
 				markings_to_randomize--
 				data += construct_block(marking_list.Find(marking), marking_list.len)
-				data += sanitize_hexcolor(body_markings[zone][marking])
+				data += sanitize_hexcolor(body_markings[zone][marking], include_crunch = FALSE)
 			if(markings_to_randomize)
-				data += random_string(DNA_BLOCK_SIZE*markings_to_randomize*DNA_BLOCKS_PER_MARKING,GLOB.hex_characters)
+				data += random_string(markings_to_randomize * DNA_MARKING_BLOCKS_TOTAL_SIZE_PER_MARKING,GLOB.hex_characters)
 		else
-			data += construct_block(1, MAXIMUM_MARKINGS_PER_LIMB+1)
-			data += random_string(DNA_BLOCK_SIZE*MAXIMUM_MARKINGS_PER_LIMB*DNA_BLOCKS_PER_MARKING,GLOB.hex_characters)
+			data += construct_block(1, MAXIMUM_MARKINGS_PER_LIMB + 1)
+			data += random_string(MAXIMUM_MARKINGS_PER_LIMB * DNA_MARKING_BLOCKS_TOTAL_SIZE_PER_MARKING,GLOB.hex_characters)
 	return data.Join()
 
 /datum/dna/proc/update_uf_block(blocknumber)
@@ -78,15 +128,15 @@
 	if(blocknumber <= DNA_MANDATORY_COLOR_BLOCKS)
 		switch(blocknumber)
 			if(DNA_MUTANT_COLOR_BLOCK)
-				set_uni_feature_block(blocknumber, sanitize_hexcolor(features["mcolor"]))
+				set_uni_feature_block(blocknumber, sanitize_hexcolor(features["mcolor"], include_crunch = FALSE))
 			if(DNA_MUTANT_COLOR_2_BLOCK)
-				set_uni_feature_block(blocknumber, sanitize_hexcolor(features["mcolor2"]))
+				set_uni_feature_block(blocknumber, sanitize_hexcolor(features["mcolor2"], include_crunch = FALSE))
 			if(DNA_MUTANT_COLOR_3_BLOCK)
-				set_uni_feature_block(blocknumber, sanitize_hexcolor(features["mcolor3"]))
+				set_uni_feature_block(blocknumber, sanitize_hexcolor(features["mcolor3"], include_crunch = FALSE))
 			if(DNA_ETHEREAL_COLOR_BLOCK)
-				set_uni_feature_block(blocknumber, sanitize_hexcolor(features["ethcolor"]))
+				set_uni_feature_block(blocknumber, sanitize_hexcolor(features["ethcolor"], include_crunch = FALSE))
 			if(DNA_SKIN_COLOR_BLOCK)
-				set_uni_feature_block(blocknumber, sanitize_hexcolor(features["skin_color"]))
+				set_uni_feature_block(blocknumber, sanitize_hexcolor(features["skin_color"], include_crunch = FALSE))
 	else if(blocknumber <= DNA_MANDATORY_COLOR_BLOCKS+(GLOB.genetic_accessories.len*DNA_BLOCKS_PER_FEATURE))
 		var/block_index = blocknumber - DNA_MANDATORY_COLOR_BLOCKS
 		var/block_zero_index = block_index-1
@@ -96,7 +146,7 @@
 		if(mutant_bodyparts[key])
 			var/list/color_list = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
 			if(color_index && color_index <= color_list.len)
-				set_uni_feature_block(blocknumber, sanitize_hexcolor(color_list[color_index]))
+				set_uni_feature_block(blocknumber, sanitize_hexcolor(color_list[color_index], include_crunch = FALSE))
 			else
 				var/list/accessories_for_key = GLOB.genetic_accessories[key]
 				if(mutant_bodyparts[key][MUTANT_INDEX_NAME] in accessories_for_key)
@@ -117,7 +167,7 @@
 			if(body_markings[zone] && marking_index <= body_markings[zone].len)
 				var/marking = body_markings[zone][marking_index]
 				if(color_block)
-					set_uni_feature_block(blocknumber, sanitize_hexcolor(body_markings[zone][marking]))
+					set_uni_feature_block(blocknumber, sanitize_hexcolor(body_markings[zone][marking], include_crunch = FALSE))
 				else
 					var/list/marking_list = GLOB.body_markings_per_limb[zone]
 					set_uni_feature_block(blocknumber, construct_block(marking_list.Find(marking), marking_list.len))

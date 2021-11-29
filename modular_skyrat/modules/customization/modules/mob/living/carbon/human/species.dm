@@ -337,9 +337,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 /datum/species/proc/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
-	returned["mcolor"] = random_short_color()
-	returned["mcolor2"] = random_short_color()
-	returned["mcolor3"] = random_short_color()
+	returned["mcolor"] = random_color()
+	returned["mcolor2"] = random_color()
+	returned["mcolor3"] = random_color()
 	return returned
 
 /datum/species/proc/get_random_mutant_bodyparts(list/features) //Needs features to base the colour off of
