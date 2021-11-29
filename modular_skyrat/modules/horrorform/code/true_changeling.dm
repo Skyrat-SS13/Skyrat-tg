@@ -20,7 +20,7 @@
 	status_flags = CANPUSH
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
-	maxHealth = 500 //3 3/4ths crewman worth of health, vaguely.
+	maxHealth = 500 //3 and 3/4ths crewmen worth of health, vaguely.
 	health = 200 
 	healable = FALSE
 	see_in_dark = 8
@@ -56,7 +56,6 @@
 	devour = new /datum/action/innate/devour
 	turn_to_human.Grant(src)
 	devour.Grant(src)
-	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
 /mob/living/simple_animal/hostile/true_changeling/Life()
 	. = ..()
