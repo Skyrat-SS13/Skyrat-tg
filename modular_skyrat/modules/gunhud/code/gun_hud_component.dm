@@ -154,7 +154,14 @@
 
 	else if(istype(parent, /obj/item/gun/microfusion))
 		var/obj/item/gun/microfusion/pew = parent
-		hud.icon_state = "eammo_counter"
+		if(!pew.phase_emitter)
+			hud.icon_state = "microfusion_counter_no_emitter"
+			return
+		if(pew.phase_emitter.damaged)
+			hud.icon_state = "microfusion_counter_damaged"
+			return
+		var/phase_emitter_state = pew.phase_emitter.get_heat_icon_state()
+		hud.icon_state = "microfusion_counter_[phase_emitter_state]"
 		hud.cut_overlays()
 		hud.maptext_x = -12
 		var/obj/item/ammo_casing/energy/shot = pew.ammo_type[pew.select]
@@ -165,7 +172,7 @@
 		else
 			hud.maptext_x = -8
 		if(!pew.can_shoot())
-			hud.icon_state = "eammo_counter_empty"
+			hud.icon_state = "microfusion_counter_no_emitter"
 			hud.maptext = span_maptext("<div align='center' valign='middle' style='position:relative'><font color='[COLOR_RED]'><b>[batt_percent]%</b></font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div>")
 			return
 		if(batt_percent <= 25)

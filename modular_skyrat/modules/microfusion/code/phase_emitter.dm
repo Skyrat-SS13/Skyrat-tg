@@ -86,6 +86,15 @@ Basically the heart of the gun, can be upgraded.
 			else
 				icon_state = base_icon_state
 
+/obj/item/microfusion_phase_emitter/proc/get_heat_icon_state()
+	switch(get_heat_percent())
+		if(40 to 69)
+			return "hot"
+		if(70 to INFINITY)
+			return "critical"
+		else
+			return "normal"
+
 /obj/item/microfusion_phase_emitter/examine(mob/user)
 	. = ..()
 	if(damaged)

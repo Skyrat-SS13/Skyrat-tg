@@ -15,8 +15,6 @@
 	has_gun_safety = TRUE
 	can_flashlight = FALSE
 	can_bayonet = FALSE
-
-
 	w_class = WEIGHT_CLASS_BULKY
 
 	/// What type of power cell this uses
@@ -103,7 +101,10 @@
 	update_ammo_types()
 	recharge_newshot(TRUE)
 	update_appearance()
+	AddComponent(/datum/component/ammo_hud)
 	RegisterSignal(src, COMSIG_ITEM_RECHARGED, .proc/instant_recharge)
+
+
 
 /obj/item/gun/microfusion/ComponentInitialize()
 	. = ..()
@@ -192,17 +193,20 @@
 
 /obj/item/gun/microfusion/update_overlays()
 	. = ..()
-
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //update the ammo hud since it's heavily dependent on the gun's state
 	if(!phase_emitter)
 		. += "[icon_state]_phase_emitter_missing"
-	else if(cell && !phase_emitter.damaged)
+	else if(phase_emitter.damaged)
+		. += "[icon_state]_phase_emitter_damaged"
+	else if(cell)
 		var/ratio = get_charge_ratio()
 		if(ratio == 0 && display_empty)
 			. += "[icon_state]_empty"
 		else if(shaded_charge)
 			. += "[icon_state]_charge[ratio]_[phase_emitter.icon_state]"
 	else
-		. += "[icon_state]_phase_emitter_damaged"
+		. += "[icon_state]_phase_emitter_missing"
+
 
 	for(var/obj/item/microfusion_gun_attachment/microfusion_gun_attachment in attachments)
 		. += "[icon_state]_[microfusion_gun_attachment.attachment_overlay_icon_state]"
@@ -644,6 +648,7 @@
 	var/list/data = list()
 
 	data["gun_name"] = name
+	data["gun_desc"] = desc
 	data["max_attachments"] = max_attachments
 
 	if(phase_emitter)
@@ -678,12 +683,16 @@
 		data["has_cell"] = FALSE
 
 	if(chambered?.loaded_projectile)
-		var/obj/projectile/loaded_projectile = chambered.loaded_projectile
+		var/obj/item/ammo_casing/test_ammo_casing = new ammo_type[select]
+		if(attachments.len)
+			for(var/obj/item/microfusion_gun_attachment/attachment in attachments)
+				attachment.process_fire(src, test_ammo_casing)
 		data["has_loaded_projectile"] = TRUE
 		data["loaded_projectile_data"] = list(
-			"damage" = loaded_projectile.damage,
-			"damage_type" = loaded_projectile.damage_type,
+			"damage" = test_ammo_casing.loaded_projectile.damage,
+			"damage_type" = test_ammo_casing.loaded_projectile.damage_type,
 		)
+		qdel(test_ammo_casing)
 	else
 		data["has_loaded_projectile"] = FALSE
 

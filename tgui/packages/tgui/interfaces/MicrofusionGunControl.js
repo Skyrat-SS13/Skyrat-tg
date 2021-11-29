@@ -11,6 +11,7 @@ export const MicrofusionGunControl = (props, context) => {
   const {
     gun_name,
     gun_desc,
+    max_attachments,
     has_cell,
     has_emitter,
     has_loaded_projectile,
@@ -19,7 +20,7 @@ export const MicrofusionGunControl = (props, context) => {
   } = data;
   return (
     <Window
-      title={'Micron Contol Systems Incorporated: ' + gun_name}
+      title={'Micron Control Systems Incorporated: ' + gun_name}
       width={700}
       height={800}>
       <Window.Content>
@@ -29,16 +30,19 @@ export const MicrofusionGunControl = (props, context) => {
               title={'Gun Info'}
               buttons={(
                 <Button
-                  icon="info-circle"
+                  icon="pen"
                   content="Change Name"
                   onClick={() => act('change_gun_name')} />
               )}>
               <LabeledList>
-                <LabeledList.Item label="Gun Name">
+                <LabeledList.Item label="Name">
                   {gun_name}
                 </LabeledList.Item>
-                <LabeledList.Item label="Gun Description">
+                <LabeledList.Item label="Description">
                   {gun_desc}
+                </LabeledList.Item>
+                <LabeledList.Item label="Max attachments">
+                  {max_attachments}
                 </LabeledList.Item>
               </LabeledList>
             </Section>
@@ -79,6 +83,13 @@ export const MicrofusionGunControl = (props, context) => {
                 <NoticeBox color="bad">
                   No cell installed!
                 </NoticeBox>
+              )}
+              {cell_data.charge <= 0 && (
+                <Section>
+                  <NoticeBox color="bad">
+                    Charge depleted!
+                  </NoticeBox>
+                </Section>
               )}
             </Section>
           </Stack.Item>
