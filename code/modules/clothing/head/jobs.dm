@@ -143,12 +143,6 @@
 	dynamic_hair_suffix = ""
 	//SKYRAT EDIT ADDITION START
 	unique_reskin = list(
-		"Ironhammer Hat" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/head.dmi',
-			RESKIN_ICON_STATE = "hoshat",
-			RESKIN_WORN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/head_worn.dmi',
-			RESKIN_WORN_ICON_STATE = "hoshat"
-		),
 		"Sheriff" = list(
 			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi',
 			RESKIN_ICON_STATE = "cowboyhat_sec",
@@ -204,23 +198,6 @@
 	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 30, ACID = 60, WOUND = 6)
 	strip_delay = 60
 	dog_fashion = /datum/dog_fashion/head/warden
-	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Ironhammer Beret" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/head.dmi',
-			RESKIN_ICON_STATE = "beret_navy_warden",
-			RESKIN_WORN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/head_worn.dmi',
-			RESKIN_WORN_ICON_STATE = "beret_navy_warden"
-		),
-		"Warden Hat" = list(
-			RESKIN_ICON = 'icons/obj/clothing/hats.dmi',
-			RESKIN_ICON_STATE = "wardendrill",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/head.dmi',
-			RESKIN_WORN_ICON_STATE = "wardendrill"
-		)
-	)
-	/// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/head/warden/drill
 	name = "warden's campaign hat"

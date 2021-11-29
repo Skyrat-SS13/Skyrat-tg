@@ -35,21 +35,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
 	icon_state = "security_medic_jumpsuit"
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Ironhammer Medic" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/under.dmi',
-			RESKIN_ICON_STATE = "medspec",
-			RESKIN_WORN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/under_worn.dmi',
-			RESKIN_WORN_ICON_STATE = "medspec"
-		),
-		"Basic Medic" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "security_medic_jumpsuit",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "security_medic_jumpsuit"
-		)
-	)
 
 /obj/item/clothing/head/beret/sec/peacekeeper/security_medic
 	name = "security medic's beret"

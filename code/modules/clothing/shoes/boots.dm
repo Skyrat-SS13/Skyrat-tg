@@ -44,12 +44,6 @@
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
-		"Ironhammer Jackboots" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/shoes.dmi',
-			RESKIN_ICON_STATE = "jackboots_ironhammer",
-			RESKIN_WORN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/shoes_worn.dmi',
-			RESKIN_WORN_ICON_STATE = "jackboots_ironhammer"
-		),
 		"Basic Jackboots" = list(
 			RESKIN_ICON = 'icons/obj/clothing/shoes.dmi',
 			RESKIN_ICON_STATE = "jackboots",

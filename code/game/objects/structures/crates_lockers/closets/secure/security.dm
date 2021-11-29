@@ -49,14 +49,12 @@
 	name = "\proper head of security's locker"
 	req_access = list(ACCESS_HOS)
 	icon_state = "hos" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
-	storage_capacity = 40 //SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/hos/PopulateContents()
 	..()
 
 	new /obj/item/cartridge/hos(src)
 	new /obj/item/radio/headset/heads/hos(src)
-	new /obj/item/radio/headset/heads/hos/alt(src) // SKYRAT EDIT ADDITION
 	new /obj/item/storage/bag/garment/hos(src)
 	new /obj/item/storage/lockbox/medal/sec(src)
 	new /obj/item/megaphone/sec(src)
@@ -85,8 +83,7 @@
 	new /obj/item/clothing/suit/armor/vest/warden/alt(src)
 	new /obj/item/clothing/under/rank/security/warden/formal(src)
 	new /obj/item/clothing/under/rank/security/warden/skirt(src)
-	new /obj/item/clothing/under/rank/security/peacekeeper/tactical(src) //SKYRAT EDIT ADDITON - SEC_HAUL
-	new /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper(src) //SKYRAT EDIT CHANGE - SEC_HAUL
+	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
 	new /obj/item/holosign_creator/security(src)
 	new /obj/item/clothing/mask/gas/sechailer(src)
 	new /obj/item/storage/box/zipties(src)
@@ -100,7 +97,7 @@
 /obj/structure/closet/secure_closet/security
 	name = "security officer's locker"
 	req_access = list(ACCESS_SECURITY)
-	icon_state = "sec"
+	icon_state = "sec" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
 
 /obj/structure/closet/secure_closet/security/PopulateContents()
 	..()
@@ -122,6 +119,7 @@
 	name = "\proper customs agent's locker"
 	req_access = list(ACCESS_SEC_DOORS, ACCESS_CARGO)
 	icon_state = "qm"
+	icon = 'icons/obj/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/cargo/PopulateContents()
 	new /obj/item/radio/headset/headset_cargo(src)
@@ -138,6 +136,7 @@
 	name = "\proper engineering guard's locker"
 	req_access = list(ACCESS_SEC_DOORS, ACCESS_ENGINE_EQUIP)
 	icon_state = "eng_secure"
+	icon = 'icons/obj/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/engine/PopulateContents()
 	new /obj/item/radio/headset/headset_eng(src)
@@ -154,6 +153,7 @@
 	name = "\proper science guard's locker"
 	req_access = list(ACCESS_SEC_DOORS, ACCESS_RESEARCH)
 	icon_state = "science"
+	icon = 'icons/obj/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/science/PopulateContents()
 	new /obj/item/radio/headset/headset_sci(src)
@@ -170,6 +170,7 @@
 	name = "\proper orderly's locker"
 	req_access = list(ACCESS_SEC_DOORS, ACCESS_MEDICAL)
 	icon_state = "med_secure"
+	icon = 'icons/obj/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/med/PopulateContents()
 	new /obj/item/radio/headset/headset_med(src)

@@ -149,12 +149,6 @@
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
-		"Ironhammer Sports Backpack" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/back.dmi',
-			RESKIN_ICON_STATE = "backsport_ironhammer",
-			RESKIN_WORN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/back_worn.dmi',
-			RESKIN_WORN_ICON_STATE = "backsport_ironhammer"
-		),
 		"Basic Backpack" = list(
 			RESKIN_ICON = 'icons/obj/storage.dmi',
 			RESKIN_ICON_STATE = "securitypack",
@@ -318,12 +312,6 @@
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
-		"Ironhammer Satchel" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/back.dmi',
-			RESKIN_ICON_STATE = "satchel_ironhammer",
-			RESKIN_WORN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/back_worn.dmi',
-			RESKIN_WORN_ICON_STATE = "satchel_ironhammer"
-		),
 		"Basic Satchel" = list(
 			RESKIN_ICON = 'icons/obj/storage.dmi',
 			RESKIN_ICON_STATE = "satchel-sec",
@@ -500,12 +488,6 @@
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
-		"Ironhammer Backpack" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/back.dmi',
-			RESKIN_ICON_STATE = "backpack_ironhammer",
-			RESKIN_WORN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/back_worn.dmi',
-			RESKIN_WORN_ICON_STATE = "backpack_ironhammer"
-		),
 		"Basic Dufflebag" = list(
 			RESKIN_ICON = 'icons/obj/storage.dmi',
 			RESKIN_ICON_STATE = "duffel-sec",

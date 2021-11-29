@@ -60,23 +60,6 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	var/recent_uses = 0
 	var/broken_hailer = FALSE
 	var/safety = TRUE
-	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Ironhammer Gas Mask" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/mask.dmi',
-			RESKIN_ICON_STATE = "IHSgasmask",
-			RESKIN_WORN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/mask_worn.dmi',
-			RESKIN_WORN_ICON_STATE = "IHSgasmask"
-		),
-		"Security Hailer" = list(
-			RESKIN_ICON = 'icons/obj/clothing/masks.dmi',
-			RESKIN_ICON_STATE = "sechailer",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/mask.dmi',
-			RESKIN_WORN_ICON_STATE = "sechailer"
-		)
-	)
-	/// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/mask/gas/sechailer/swat
 	name = "\improper SWAT mask"

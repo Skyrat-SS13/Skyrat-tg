@@ -137,6 +137,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 	) = 200,
 	list( //Ammo
 		/obj/item/ammo_casing/shotgun/beanbag = 50,
+		/obj/item/ammo_casing/shotgun/buckshot = 50,
 		/obj/item/ammo_casing/shotgun/improvised = 200,
 		/obj/item/ammo_casing/a357 = 25,
 		/obj/item/ammo_casing/a556 = 50,

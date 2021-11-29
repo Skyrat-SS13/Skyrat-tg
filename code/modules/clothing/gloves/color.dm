@@ -107,12 +107,6 @@
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
-		"Ironhammer Gloves" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/hands.dmi',
-			RESKIN_ICON_STATE = "security_ironhammer",
-			RESKIN_WORN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/hands_worn.dmi',
-			RESKIN_WORN_ICON_STATE = "security_ironhammer"
-		),
 		"Basic Gloves" = list(
 			RESKIN_ICON = 'icons/obj/clothing/gloves.dmi',
 			RESKIN_ICON_STATE = "black",

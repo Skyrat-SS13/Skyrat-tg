@@ -168,6 +168,7 @@
 					/obj/item/gun/ballistic/rifle/ishotgun,
 					/obj/item/gun/ballistic/rifle/ishotgun/sawn, //Why not, helps pad the list.
 					/obj/item/storage/box/beanbag,
+					/obj/item/storage/box/lethalshot,
 					/obj/item/ammo_box/c38, //Revolver rifle ammo.
 					/obj/item/ammo_box/a762, //rifle ammo.
 					/obj/item/gun/ballistic/automatic/surplus, //It's bad

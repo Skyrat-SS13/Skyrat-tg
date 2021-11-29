@@ -74,12 +74,6 @@
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
-		"Ironhammer Helmet" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/head.dmi',
-			RESKIN_ICON_STATE = "helmet_ironhammer",
-			RESKIN_WORN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/head_worn.dmi',
-			RESKIN_WORN_ICON_STATE = "helmet_ironhammer"
-		),
 		"Basic Helmet" = list(
 			RESKIN_ICON = 'icons/obj/clothing/hats.dmi',
 			RESKIN_ICON_STATE = "helmet",

@@ -26,12 +26,6 @@
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
-		"Ironhammer Security" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/under.dmi',
-			RESKIN_ICON_STATE = "security",
-			RESKIN_WORN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/under_worn.dmi',
-			RESKIN_WORN_ICON_STATE = "security"
-		),
 		"Basic Security" = list(
 			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
 			RESKIN_ICON_STATE = "rsecurity",
@@ -180,12 +174,6 @@
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
-		"Ironhammer Warden" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/under.dmi',
-			RESKIN_ICON_STATE = "warden",
-			RESKIN_WORN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/under_worn.dmi',
-			RESKIN_WORN_ICON_STATE = "warden"
-		),
 		"Basic Warden" = list(
 			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
 			RESKIN_ICON_STATE = "rwarden",
@@ -292,12 +280,6 @@
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
-		"Ironhammer HoS" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/under.dmi',
-			RESKIN_ICON_STATE = "hos",
-			RESKIN_WORN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/under_worn.dmi',
-			RESKIN_WORN_ICON_STATE = "hos"
-		),
 		"Basic HoS" = list(
 			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
 			RESKIN_ICON_STATE = "rhos",

@@ -32,6 +32,15 @@
 
 	return INITIALIZE_HINT_QDEL
 
+/obj/effect/spawner/armory_spawn/shotguns
+	icon_state = "random_shotgun"
+	gun_count = 4
+	guns = list(
+		/obj/item/gun/ballistic/shotgun/m23,
+		/obj/item/gun/ballistic/shotgun/automatic/as2,
+		/obj/item/gun/ballistic/shotgun/sas14,
+	)
+
 /obj/structure/closet/ammunitionlocker/useful/PopulateContents()
 	new /obj/item/storage/box/rubbershot(src)
 	new /obj/item/storage/box/rubbershot(src)
