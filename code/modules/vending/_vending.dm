@@ -524,7 +524,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 	var/crit_case
 	if(crit)
-		crit_case = rand(1,6)
+		crit_case = rand(1, 5) // SKYRAT EDIT - Less stupid permanent effects from the vendors - ORIGINAL: crit_case = rand(1,6)
 
 	if(forcecrit)
 		crit_case = forcecrit
