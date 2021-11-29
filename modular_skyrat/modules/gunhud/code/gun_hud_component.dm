@@ -156,9 +156,15 @@
 		var/obj/item/gun/microfusion/pew = parent
 		if(!pew.phase_emitter)
 			hud.icon_state = "microfusion_counter_no_emitter"
+			hud.maptext = null
 			return
 		if(pew.phase_emitter.damaged)
 			hud.icon_state = "microfusion_counter_damaged"
+			hud.maptext = null
+			return
+		if(!pew.cell)
+			hud.icon_state = "microfusion_counter_no_emitter"
+			hud.maptext = null
 			return
 		var/phase_emitter_state = pew.phase_emitter.get_heat_icon_state()
 		hud.icon_state = "microfusion_counter_[phase_emitter_state]"
@@ -173,12 +179,12 @@
 			hud.maptext_x = -8
 		if(!pew.can_shoot())
 			hud.icon_state = "microfusion_counter_no_emitter"
-			hud.maptext = span_maptext("<div align='center' valign='middle' style='position:relative'><font color='[COLOR_RED]'><b>[batt_percent]%</b></font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div>")
+			hud.maptext = span_maptext("<div align='center' valign='middle' style='position:relative'><font color='[COLOR_RED]'>[batt_percent]%</font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div>")
 			return
 		if(batt_percent <= 25)
-			hud.maptext = span_maptext("<div align='center' valign='middle' style='position:relative'><font color='[COLOR_YELLOW]'><b>[batt_percent]%</b></font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div>")
+			hud.maptext = span_maptext("<div align='center' valign='middle' style='position:relative'><font color='[COLOR_YELLOW]'>[batt_percent]%</font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div>")
 			return
-		hud.maptext = span_maptext("<div align='center' valign='middle' style='position:relative'><font color='[COLOR_VIBRANT_LIME]'><b>[batt_percent]%</b></font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div>")
+		hud.maptext = span_maptext("<div align='center' valign='middle' style='position:relative'><font color='[COLOR_VIBRANT_LIME]'>[batt_percent]%</font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div>")
 
 
 /obj/item/gun/ballistic/ComponentInitialize()

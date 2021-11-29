@@ -238,6 +238,7 @@ Converts shots to STAMNINA damage.
 /obj/item/microfusion_gun_attachment/undercharger/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
 	. = ..()
 	chambered.loaded_projectile?.damage_type = STAMINA
+	chambered.loaded_projectile?.icon_state = "disabler"
 
 /obj/item/microfusion_gun_attachment/undercharger/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
@@ -260,6 +261,7 @@ Enables you to change the light color of the laser.
 	. = ..()
 	chambered?.loaded_projectile.icon_state = "laser_greyscale"
 	chambered?.loaded_projectile.color = color_to_apply
+	chambered?.loaded_projectile.light_color = color_to_apply
 
 /obj/item/microfusion_gun_attachment/rgb/proc/select_color(mob/living/user)
 	var/new_color = input(user, "Please select your new projectile color", "Laser color", color_to_apply) as null|color
@@ -331,7 +333,7 @@ DANGER: SNOWFLAKE ZONE
 		return
 
 	microfusion_gun.azoom = new()
-	microfusion_gun.azoom.gun = src
+	microfusion_gun.azoom.gun = microfusion_gun
 	microfusion_gun.update_action_buttons()
 
 /obj/item/microfusion_gun_attachment/scope/remove_attachment(obj/item/gun/microfusion/microfusion_gun)

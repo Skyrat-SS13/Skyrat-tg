@@ -121,6 +121,7 @@ Basically the heart of the gun, can be upgraded.
 /obj/item/microfusion_phase_emitter/proc/kill()
 	damaged = TRUE
 	name = "damaged [name]"
+	playsound(src, 'sound/effects/can_pop.ogg', 70)
 	say("ERROR: Integrity failure!")
 	STOP_PROCESSING(SSobj, src)
 

@@ -147,12 +147,11 @@
 /obj/item/gun/microfusion/recharge_newshot()
 	if (!ammo_type || !cell || !phase_emitter)
 		return
-	if(!chambered)
-		var/obj/item/ammo_casing/energy/AC = ammo_type[select]
-		if(cell.charge >= AC.e_cost) //if there's enough power in the cell...
-			chambered = AC //...prepare a new shot based on the current ammo type selected
-			if(!chambered.loaded_projectile)
-				chambered.newshot()
+	var/obj/item/ammo_casing/energy/AC = ammo_type[select]
+	if(cell.charge >= AC.e_cost) //if there's enough power in the cell...
+		chambered = AC //...prepare a new shot based on the current ammo type selected
+		if(!chambered.loaded_projectile)
+			chambered.newshot()
 
 /obj/item/gun/microfusion/handle_chamber()
 	if(chambered && !chambered.loaded_projectile) //if loaded_projectile is null, i.e the shot has been fired...
@@ -650,6 +649,7 @@
 	data["gun_name"] = name
 	data["gun_desc"] = desc
 	data["max_attachments"] = max_attachments
+	data["gun_heat_dissipation"] = heat_dissipation_bonus
 
 	if(phase_emitter)
 		data["has_emitter"] = TRUE
@@ -681,20 +681,6 @@
 		)
 	else
 		data["has_cell"] = FALSE
-
-	if(chambered?.loaded_projectile)
-		var/obj/item/ammo_casing/test_ammo_casing = new ammo_type[select]
-		if(attachments.len)
-			for(var/obj/item/microfusion_gun_attachment/attachment in attachments)
-				attachment.process_fire(src, test_ammo_casing)
-		data["has_loaded_projectile"] = TRUE
-		data["loaded_projectile_data"] = list(
-			"damage" = test_ammo_casing.loaded_projectile.damage,
-			"damage_type" = test_ammo_casing.loaded_projectile.damage_type,
-		)
-		qdel(test_ammo_casing)
-	else
-		data["has_loaded_projectile"] = FALSE
 
 	if(attachments.len)
 		data["has_attachments"] = TRUE

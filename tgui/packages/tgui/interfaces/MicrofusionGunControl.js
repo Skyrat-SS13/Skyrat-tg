@@ -7,14 +7,13 @@ export const MicrofusionGunControl = (props, context) => {
   const { act, data } = useBackend(context);
   const { cell_data } = data;
   const { phase_emitter_data } = data;
-  const { loaded_projectile_data } = data;
   const {
     gun_name,
     gun_desc,
     max_attachments,
+    gun_heat_dissipation,
     has_cell,
     has_emitter,
-    has_loaded_projectile,
     has_attachments,
     attachments = [],
   } = data;
@@ -43,6 +42,9 @@ export const MicrofusionGunControl = (props, context) => {
                 </LabeledList.Item>
                 <LabeledList.Item label="Max attachments">
                   {max_attachments}
+                </LabeledList.Item>
+                <LabeledList.Item label="Active Heat Dissipation">
+                  {gun_heat_dissipation + ' C/s'}
                 </LabeledList.Item>
               </LabeledList>
             </Section>
@@ -78,18 +80,20 @@ export const MicrofusionGunControl = (props, context) => {
                       {cell_data.charge + '/' + cell_data.max_charge + 'MF'}
                     </ProgressBar>
                   </LabeledList.Item>
+                  {!!cell_data.charge <= 0 && (
+                    <LabeledList.Item>
+                      <Section>
+                        <NoticeBox color="bad">
+                          Charge depleted!
+                        </NoticeBox>
+                      </Section>
+                    </LabeledList.Item>
+                  )}
                 </LabeledList>
               ) : (
                 <NoticeBox color="bad">
                   No cell installed!
                 </NoticeBox>
-              )}
-              {cell_data.charge <= 0 && (
-                <Section>
-                  <NoticeBox color="bad">
-                    Charge depleted!
-                  </NoticeBox>
-                </Section>
               )}
             </Section>
           </Stack.Item>
@@ -156,39 +160,25 @@ export const MicrofusionGunControl = (props, context) => {
                     </LabeledList.Item>
                     {phase_emitter_data.heat_percent
                     >= phase_emitter_data.throttle_percentage && (
-                      <NoticeBox color="orange">
-                        Thermal throttle active!
-                      </NoticeBox>
+                      <LabeledList.Item>
+                        <NoticeBox color="orange">
+                          Thermal throttle active!
+                        </NoticeBox>
+                      </LabeledList.Item>
                     )}
                     {phase_emitter_data.current_heat
                     >= phase_emitter_data.max_heat && (
-                      <NoticeBox color="bad">
-                        Overheating!
-                      </NoticeBox>
+                      <LabeledList.Item>
+                        <NoticeBox color="bad">
+                          Overheating!
+                        </NoticeBox>
+                      </LabeledList.Item>
                     )}
                   </LabeledList>
                 )
               ) : (
                 <NoticeBox color="bad">
                   No phase emitter installed!
-                </NoticeBox>
-              )}
-            </Section>
-          </Stack.Item>
-          <Stack.Item>
-            <Section title="Beam Data">
-              {has_loaded_projectile ? (
-                <LabeledList>
-                  <LabeledList.Item label="Damage">
-                    {loaded_projectile_data.damage}
-                  </LabeledList.Item>
-                  <LabeledList.Item label="Damange Type">
-                    {loaded_projectile_data.damage_type}
-                  </LabeledList.Item>
-                </LabeledList>
-              ) : (
-                <NoticeBox color="bad">
-                  Projectile data unavailable!
                 </NoticeBox>
               )}
             </Section>
@@ -211,6 +201,9 @@ export const MicrofusionGunControl = (props, context) => {
                     <LabeledList>
                       <LabeledList.Item label="Description">
                         {attachment.desc}
+                      </LabeledList.Item>
+                      <LabeledList.Item label="Slot">
+                        {attachment.slot}
                       </LabeledList.Item>
                       {attachment.information && (
                         <LabeledList.Item label="Information">
