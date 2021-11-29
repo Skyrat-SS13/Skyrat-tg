@@ -640,11 +640,7 @@
 /area/security/prison)
 "afW" = (
 /obj/effect/turf_decal/tile/neutral,
-/mob/living/simple_animal/bot/cleanbot{
-	auto_patrol = 1;
-	icon_state = "cleanbot1";
-	name = "Mopficcer Sweepsky"
-	},
+/mob/living/simple_animal/bot/cleanbot/autopatrol,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -2685,12 +2681,7 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
 	},
-/mob/living/simple_animal/bot/secbot/beepsky{
-	desc = "It's Officer Beepsky! Powered by a potato and a shot of whiskey, and with a sturdier reinforced chassis, too.";
-	health = 45;
-	maxHealth = 45;
-	name = "Officer Beepsky"
-	},
+/mob/living/simple_animal/bot/secbot/beepsky/officer,
 /turf/open/floor/iron,
 /area/security/brig)
 "awj" = (
@@ -22751,11 +22742,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/mob/living/simple_animal/bot/medbot{
-	auto_patrol = 1;
-	desc = "A little medical robot, officially part of the Nanotrasen medical inspectorate. He looks somewhat underwhelmed.";
-	name = "Inspector Johnson"
-	},
+/mob/living/simple_animal/bot/medbot/autopatrol,
 /turf/open/floor/iron/white/corner{
 	dir = 8
 	},
