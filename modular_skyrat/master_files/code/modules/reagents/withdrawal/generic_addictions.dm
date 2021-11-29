@@ -15,7 +15,7 @@
 			affected_carbon.emote("cough")
 		if(5 to 7)
 			to_chat(affected_carbon, span_warning("Your head hurts."))
-			affected_carbon.adjustStaminaLoss(4*strength)
+			affected_carbon.adjustStaminaLoss(4 * strength)
 		if(8)
 			if(strength >= 2)
 				to_chat(affected_carbon, span_warning("You feel a little dizzy."))
