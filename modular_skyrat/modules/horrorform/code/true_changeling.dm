@@ -27,7 +27,7 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	environment_smash = TRUE
 	melee_damage_lower = 30
-	melee_damage_upper = 30 // equal to an esword, coupled with their faster attacks this is more then enough.
+	melee_damage_upper = 30 // equal to an esword, coupled with their faster attacks this is more than enough.
 	wander = FALSE
 	attack_verb_continuous = "rips into"
 	attack_verb_simple = "rip into"
