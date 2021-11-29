@@ -141,12 +141,6 @@
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
-		"Ironhammer Goggles" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/eyes.dmi',
-			RESKIN_ICON_STATE = "swatgoggles",
-			RESKIN_WORN_ICON = 'modular_skyrat/modules/goofsec/icons/clothing/eyes_worn.dmi',
-			RESKIN_WORN_ICON_STATE = "swatgoggles"
-		),
 		"Basic HUDSunglasses" = list(
 			RESKIN_ICON = 'icons/obj/clothing/glasses.dmi',
 			RESKIN_ICON_STATE = "sunhudsec",

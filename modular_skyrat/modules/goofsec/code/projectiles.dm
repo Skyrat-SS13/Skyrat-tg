@@ -211,7 +211,6 @@
 //////////////RIFLE SPAWNER
 /obj/effect/spawner/armory_spawn/rifles
 	icon_state = "random_rifle"
-	gun_count = 4
 	guns = list(
 		/obj/item/gun/energy/pcr,
 		/obj/item/gun/energy/pitbull,
