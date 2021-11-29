@@ -153,6 +153,7 @@ The gun can fire X-RAY shots.
 	name = "quantum phase inverter emitter array" //Yes quantum makes things sound cooler.
 	desc = "Experimental technology that inverts the central phase emitter causing the wave frequency to shift into X-ray. CAUTION: Phase emitter heats up very quickly."
 	icon_state = "attachment_xray"
+	slot = GUN_SLOT_BARREL
 	attachment_overlay_icon_state = "attachment_xray"
 	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter)
 	heat_addition = 90

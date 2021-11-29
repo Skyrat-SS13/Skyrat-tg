@@ -179,7 +179,6 @@
 			hud.maptext_x = -8
 		if(!pew.can_shoot())
 			hud.icon_state = "microfusion_counter_no_emitter"
-			hud.maptext = span_maptext("<div align='center' valign='middle' style='position:relative'><font color='[COLOR_RED]'>[batt_percent]%</font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div>")
 			return
 		if(batt_percent <= 25)
 			hud.maptext = span_maptext("<div align='center' valign='middle' style='position:relative'><font color='[COLOR_YELLOW]'>[batt_percent]%</font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div>")

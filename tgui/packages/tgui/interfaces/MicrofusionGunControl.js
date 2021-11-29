@@ -20,8 +20,8 @@ export const MicrofusionGunControl = (props, context) => {
   return (
     <Window
       title={'Micron Control Systems Incorporated: ' + gun_name}
-      width={700}
-      height={800}>
+      width={500}
+      height={700}>
       <Window.Content>
         <Stack vertical grow>
           <Stack.Item>

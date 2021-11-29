@@ -445,6 +445,46 @@
 
 	return TRUE
 
+// Same goes for this!
+/obj/item/gun/microfusion/process_burst(mob/living/user, atom/target, message = TRUE, params=null, zone_override = "", sprd = 0, randomized_gun_spread = 0, randomized_bonus_spread = 0, rand_spr = 0, iteration = 0)
+	if(!user || !firing_burst)
+		firing_burst = FALSE
+		return FALSE
+	if(!issilicon(user))
+		if(iteration > 1 && !(user.is_holding(src))) //for burst firing
+			firing_burst = FALSE
+			return FALSE
+	if(chambered?.loaded_projectile)
+		if(HAS_TRAIT(user, TRAIT_PACIFISM)) // If the user has the pacifist trait, then they won't be able to fire [src] if the round chambered inside of [src] is lethal.
+			if(chambered.harmful) // Is the bullet chambered harmful?
+				to_chat(user, span_warning("[src] is lethally chambered! You don't want to risk harming anyone..."))
+				return
+		if(randomspread)
+			sprd = round((rand(0, 1) - 0.5) * DUALWIELD_PENALTY_EXTRA_MULTIPLIER * (randomized_gun_spread + randomized_bonus_spread))
+		else //Smart spread
+			sprd = round((((rand_spr/burst_size) * iteration) - (0.5 + (rand_spr * 0.25))) * (randomized_gun_spread + randomized_bonus_spread))
+		before_firing(target,user)
+		process_microfusion()
+		if(!chambered.fire_casing(target, user, params, ,suppressed, zone_override, sprd, src))
+			shoot_with_empty_chamber(user)
+			firing_burst = FALSE
+			return FALSE
+		else
+			if(get_dist(user, target) <= 1) //Making sure whether the target is in vicinity for the pointblank shot
+				shoot_live_shot(user, 1, target, message)
+			else
+				shoot_live_shot(user, 0, target, message)
+			if (iteration >= burst_size)
+				firing_burst = FALSE
+	else
+		shoot_with_empty_chamber(user)
+		firing_burst = FALSE
+		return FALSE
+	process_chamber()
+	update_appearance()
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
+	return TRUE
+
 /obj/item/gun/microfusion/proc/process_microfusion()
 	if(attachments.len)
 		for(var/obj/item/microfusion_gun_attachment/attachment in attachments)
@@ -602,7 +642,7 @@
 		if(is_type_in_list(microfusion_gun_attachment, iterating_attachment.incompatable_attachments))
 			to_chat(user, span_warning("[microfusion_gun_attachment] is not compatible with [iterating_attachment]!"))
 			return FALSE
-		if(iterating_attachment.slot == microfusion_gun_attachment.slot)
+		if(iterating_attachment.slot != GUN_SLOT_UNIQUE && iterating_attachment.slot == microfusion_gun_attachment.slot)
 			to_chat(user, span_warning("[microfusion_gun_attachment] cannot be installed in the same slot as [iterating_attachment]!"))
 			return FALSE
 	attachments += microfusion_gun_attachment
@@ -618,6 +658,7 @@
 	microfusion_gun_attachment.forceMove(get_turf(src))
 	attachments -= microfusion_gun_attachment
 	microfusion_gun_attachment.remove_attachment(src)
+	user?.put_in_hands(microfusion_gun_attachment)
 	update_appearance()
 
 /obj/item/gun/microfusion/proc/change_name(mob/user)
@@ -654,7 +695,7 @@
 	if(phase_emitter)
 		data["has_emitter"] = TRUE
 		data["phase_emitter_data"] = list(
-			"type" = phase_emitter.name,
+			"type" = capitalize(phase_emitter.name),
 			"integrity" = phase_emitter.integrity,
 			"current_heat" = phase_emitter.current_heat,
 			"throttle_percentage" = phase_emitter.throttle_percentage,
@@ -673,7 +714,7 @@
 			attachments += attachment.name
 		data["has_cell"] = TRUE
 		data["cell_data"] = list(
-			"type" = cell.name,
+			"type" = capitalize(cell.name),
 			"charge" = cell.charge,
 			"max_charge" = cell.maxcharge,
 			"status" = cell.meltdown,
@@ -681,6 +722,8 @@
 		)
 	else
 		data["has_cell"] = FALSE
+
+
 
 	if(attachments.len)
 		data["has_attachments"] = TRUE
@@ -693,7 +736,7 @@
 			data["attachments"] += list(list(
 				"name" = uppertext(attachment.name),
 				"desc" = attachment.desc,
-				"slot" = attachment.slot,
+				"slot" = capitalize(attachment.slot),
 				"information" = attachment.get_information_data(),
 				"has_modifications" = has_modifications,
 				"modify" = attachment_functions,
