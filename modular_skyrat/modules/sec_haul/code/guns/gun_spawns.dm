@@ -13,7 +13,7 @@
 	/// How many mags per gun do we spawn, if it takes magazines.
 	var/mags_to_spawn = 3
 	/// Do we want to angle it so that it is horizontal?
-	var/vertial_guns = TRUE
+	var/vertical_guns = TRUE
 
 /obj/structure/rack/shelf
 
@@ -22,7 +22,7 @@
 	for(var/gun in guns) // 11/20/21: Gun spawners now spawn 1 of each gun in it's list no matter what, so as to reduce the RNG of the armory stock.
 		var/obj/item/gun/spawned_gun = new gun(loc)
 
-		if(vertial_guns)
+		if(vertical_guns)
 			spawned_gun.place_on_rack()
 			spawned_gun.pixel_x = rand(-10, 10)
 
