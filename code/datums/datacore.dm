@@ -162,6 +162,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			misc_list[++misc_list.len] = list(
 				"name" = name,
 				"rank" = rank,
+				"trim" = trim, // SKYRAT CHANGE ADDITION - ALTERNATIVE_JOB_TITLES
 				)
 			continue
 		for(var/department_type as anything in job.departments_list)
@@ -172,6 +173,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			var/list/entry = list(
 				"name" = name,
 				"rank" = rank,
+				"trim" = trim, // SKYRAT CHANGE ADDITION - ALTERNATIVE_JOB_TITLES
 				)
 			var/list/department_list = manifest_out[department.department_name]
 			if(istype(job, department.department_head))
@@ -208,7 +210,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		var/even = FALSE
 		for(var/entry in entries)
 			var/list/entry_list = entry
-			dat += "<tr[even ? " class='alt'" : ""]><td>[entry_list["name"]]</td><td>[entry_list["rank"]]</td></tr>"
+			dat += "<tr[even ? " class='alt'" : ""]><td>[entry_list["name"]]</td><td>[entry_list["rank"] == entry_list["trim"] ? entry_list["rank"] : "[entry_list["rank"]] ([entry_list["trim"]])"]</td></tr>" // SKYRAT CHANGE EDIT - ALTERNATIVE_JOB_TITLES - Original: dat += "<tr[even ? " class='alt'" : ""]><td>[entry_list["name"]]</td><td>[entry_list["rank"]]</td></tr>"
 			even = !even
 
 	dat += "</table>"
@@ -222,6 +224,10 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/static/list/show_directions = list(SOUTH, WEST)
 	if(H.mind?.assigned_role.job_flags & JOB_CREW_MANIFEST)
 		var/assignment = H.mind.assigned_role.title
+		// SKYRAT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+		// The alt job title, if user picked one, or the default
+		var/chosen_assignment = C?.prefs.alt_job_titles[assignment] || assignment
+		// SKYRAT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES
 
 		var/static/record_id_num = 1001
 		var/id = num2hex(record_id_num++,6)
@@ -244,7 +250,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		var/datum/data/record/G = new()
 		G.fields["id"] = id
 		G.fields["name"] = H.real_name
-		G.fields["rank"] = assignment
+		G.fields["rank"] = chosen_assignment // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: G.fields["rank"] = assignment
 		G.fields["trim"] = assignment
 		G.fields["initial_rank"] = assignment
 		G.fields["age"] = H.age
@@ -315,7 +321,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		var/datum/data/record/L = new()
 		L.fields["id"] = md5("[H.real_name][assignment]") //surely this should just be id, like the others?
 		L.fields["name"] = H.real_name
-		L.fields["rank"] = assignment
+		L.fields["rank"] = chosen_assignment  // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: L.fields["rank"] = assignment
 		L.fields["trim"] = assignment
 		G.fields["initial_rank"] = assignment
 		L.fields["age"] = H.age
