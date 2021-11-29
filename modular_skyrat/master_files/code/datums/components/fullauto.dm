@@ -53,11 +53,11 @@
 		stop_autofiring() //Let's stop shooting to avoid issues.
 		return
 
-	var/obj/item/gun/G = parent
+	var/obj/item/gun/parent_gun = parent
 
 	if(iscarbon(user))
 		var/mob/living/carbon/shooter = user
-		if(shooter.is_holding(parent) && G.fire_select == SELECT_FULLY_AUTOMATIC)
+		if(shooter.is_holding(parent) && parent_gun.fire_select == SELECT_FULLY_AUTOMATIC)
 			autofire_on(shooter.client)
 		else
 			autofire_off()

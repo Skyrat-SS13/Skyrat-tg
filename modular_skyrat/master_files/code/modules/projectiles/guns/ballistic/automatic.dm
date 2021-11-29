@@ -133,11 +133,11 @@
 	underbarrel.afterattack(target, user, flag, params)
 	return SECONDARY_ATTACK_CONTINUE_CHAIN
 
-/obj/item/gun/ballistic/automatic/m90/attackby(obj/item/A, mob/user, params)
-	if(istype(A, /obj/item/ammo_casing))
-		if(istype(A, underbarrel.magazine.ammo_type))
+/obj/item/gun/ballistic/automatic/m90/attackby(obj/item/attacking_item, mob/user, params)
+	if(istype(attacking_item, /obj/item/ammo_casing))
+		if(istype(attacking_item, underbarrel.magazine.ammo_type))
 			underbarrel.attack_self(user)
-			underbarrel.attackby(A, user, params)
+			underbarrel.attackby(attacking_item, user, params)
 	else
 		..()
 
@@ -250,8 +250,8 @@
 		return
 	..()
 
-/obj/item/gun/ballistic/automatic/l6_saw/attackby(obj/item/A, mob/user, params)
-	if(!cover_open && istype(A, mag_type))
+/obj/item/gun/ballistic/automatic/l6_saw/attackby(obj/item/attacking_item, mob/user, params)
+	if(!cover_open && istype(attacking_item, mag_type))
 		to_chat(user, span_warning("[src]'s dust cover prevents a magazine from being fit."))
 		return
 	..()
