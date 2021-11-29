@@ -24,7 +24,7 @@
 
 		if(vertial_guns)
 			spawned_gun.place_on_rack()
-			spawned_gun.pixel_x = rand(-10,10)
+			spawned_gun.pixel_x = rand(-10, 10)
 
 		if(istype(spawned_gun, /obj/item/gun/ballistic))
 			var/obj/item/gun/ballistic/spawned_ballistic_gun = spawned_gun
