@@ -120,7 +120,7 @@ If the cell isn't stabilised by a stabiliser, it may emit a radaition pulse.
 
 /obj/item/microfusion_cell_attachment/selfcharging/process_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell, delta_time)
 	if(microfusion_cell.charge < microfusion_cell.maxcharge)
-		microfusion_cell.charge = clamp(microfusion_cell.charge + (microfusion_cell.chargerate + self_charge_amount * delta_time * 0.5), 0, microfusion_cell.maxcharge)
+		microfusion_cell.charge = clamp(microfusion_cell.charge + (self_charge_amount * delta_time), 0, microfusion_cell.maxcharge)
 		if(microfusion_cell.parent_gun)
 			microfusion_cell.parent_gun.update_appearance()
 		if(!microfusion_cell.stabilised && DT_PROB(1, delta_time))

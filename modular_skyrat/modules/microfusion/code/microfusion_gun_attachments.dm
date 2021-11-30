@@ -17,6 +17,8 @@ For adding unique abilities to microfusion guns, these can directly interact wit
 	var/heat_addition = 0
 	/// The slot this attachment is installed in.
 	var/slot = GUN_SLOT_UNIQUE
+	/// How much extra power do we use?
+	var/power_usage = 0
 
 /obj/item/microfusion_gun_attachment/examine(mob/user)
 	. = ..()
@@ -26,6 +28,7 @@ For adding unique abilities to microfusion guns, these can directly interact wit
 	SHOULD_CALL_PARENT(TRUE)
 	microfusion_gun.heat_per_shot += heat_addition
 	microfusion_gun.update_appearance()
+	microfusion_gun.extra_power_usage += power_usage
 	return
 
 /obj/item/microfusion_gun_attachment/proc/process_attachment(obj/item/gun/microfusion/microfusion_gun)
@@ -39,6 +42,7 @@ For adding unique abilities to microfusion guns, these can directly interact wit
 	SHOULD_CALL_PARENT(TRUE)
 	microfusion_gun.heat_per_shot -= heat_addition
 	microfusion_gun.update_appearance()
+	microfusion_gun.extra_power_usage -= power_usage
 	return
 
 /obj/item/microfusion_gun_attachment/proc/get_modify_data()
@@ -158,9 +162,19 @@ The gun can fire X-RAY shots.
 	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter)
 	heat_addition = 90
 
+/obj/item/microfusion_gun_attachment/xray/run_attachment(obj/item/gun/microfusion/microfusion_gun)
+	. = ..()
+	microfusion_gun.fire_sound = 'modular_skyrat/modules/microfusion/sound/incinerate.ogg'
+
+/obj/item/microfusion_gun_attachment/xray/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
+	. = ..()
+	microfusion_gun.fire_sound = microfusion_gun.chambered?.fire_sound
+
 /obj/item/microfusion_gun_attachment/xray/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
 	. = ..()
-	chambered.fire_sound = 'modular_skyrat/modules/microfusion/sound/incinerate.ogg'
+	chambered.loaded_projectile.icon_state = "laser_greyscale"
+	chambered.loaded_projectile.color = COLOR_GREEN
+	chambered.loaded_projectile.light_color = COLOR_GREEN
 	chambered.loaded_projectile.projectile_piercing = PASSCLOSEDTURF|PASSGRILLE|PASSGLASS
 
 /*
@@ -223,22 +237,23 @@ Converts shots to STAMNINA damage.
 	icon_state = "attachment_undercharger"
 	attachment_overlay_icon_state = "attachment_undercharger"
 	slot = GUN_SLOT_UNDERBARREL
-	var/cooling_rate_increase = 5
+	var/cooling_rate_increase = 10
 
 /obj/item/microfusion_gun_attachment/undercharger/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	microfusion_gun.heat_dissipation_bonus += cooling_rate_increase
+	microfusion_gun.fire_sound = 'modular_skyrat/modules/microfusion/sound/burn.ogg'
 
 /obj/item/microfusion_gun_attachment/undercharger/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
 	. = ..()
 	chambered.loaded_projectile?.damage_type = STAMINA
 	chambered.loaded_projectile?.icon_state = "disabler"
 	chambered.loaded_projectile?.light_color = COLOR_DARK_CYAN
-	chambered.fire_sound = 'modular_skyrat/modules/microfusion/sound/burn.ogg'
 
 /obj/item/microfusion_gun_attachment/undercharger/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	microfusion_gun.heat_dissipation_bonus -= cooling_rate_increase
+	microfusion_gun.fire_sound = microfusion_gun.chambered?.fire_sound
 
 /*
 RGB ATTACHMENT

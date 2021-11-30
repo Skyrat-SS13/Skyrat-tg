@@ -51,13 +51,13 @@
 	/// Should the insertion sound played vary?
 	var/sound_cell_insert_vary = TRUE
 	/// The volume at which we will play the insertion sound.
-	var/sound_cell_insert_volume = 100
+	var/sound_cell_insert_volume = 50
 	/// The sound played when you remove a cell.
 	var/sound_cell_remove = 'modular_skyrat/modules/microfusion/sound/mag_insert.ogg'
 	/// Should the removal sound played vary?
 	var/sound_cell_remove_vary = TRUE
 	/// The volume at which we will play the removal sound.
-	var/sound_cell_remove_volume = 100
+	var/sound_cell_remove_volume = 50
 	/// A list of attached upgrades
 	var/list/attachments = list()
 	/// How many attachments can this gun hold?
@@ -74,6 +74,8 @@
 	var/attachment_slots = list(GUN_SLOT_BARREL, GUN_SLOT_UNDERBARREL, GUN_SLOT_RAIL, GUN_SLOT_UNIQUE)
 	/// Our base firedelay.
 	var/base_fire_delay = 0
+	/// Do we use more power because of attachments?
+	var/extra_power_usage = 0
 
 /obj/item/gun/microfusion/emp_act(severity)
 	. = ..()
@@ -129,14 +131,14 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/gun/microfusion/handle_atom_del(atom/A)
-	if(A == cell)
-		cell = null
-		update_appearance()
-	if(A == phase_emitter)
-		phase_emitter = null
-		update_appearance()
-	return ..()
+/obj/item/gun/microfusion/handle_atom_del(atom/to_handle)
+    if(to_handle == cell)
+        cell = null
+        update_appearance()
+    if(to_handle == phase_emitter)
+        phase_emitter = null
+        update_appearance()
+    return ..()
 
 /obj/item/gun/microfusion/attack_self(mob/living/user as mob)
 	. = ..()
@@ -159,7 +161,7 @@
 /obj/item/gun/microfusion/handle_chamber()
 	if(chambered && !chambered.loaded_projectile && cell) //if loaded_projectile is null, i.e the shot has been fired...
 		var/obj/item/ammo_casing/energy/shot = chambered
-		cell.use(shot.e_cost)//... drain the cell
+		cell.use(shot.e_cost + extra_power_usage)//... drain the cell
 	chambered = null //either way, released the prepared shot
 	recharge_newshot() //try to charge a new shot
 
@@ -214,33 +216,33 @@
 		. += "[icon_state]_[microfusion_gun_attachment.attachment_overlay_icon_state]"
 
 
-/obj/item/gun/microfusion/ignition_effect(atom/A, mob/living/user)
+/obj/item/gun/microfusion/ignition_effect(atom/to_ignite, mob/living/user)
 	if(!can_shoot() || !ammo_type[select])
 		shoot_with_empty_chamber()
 		. = ""
 	else
-		var/obj/item/ammo_casing/energy/E = ammo_type[select]
-		var/obj/projectile/energy/loaded_projectile = E.loaded_projectile
+		var/obj/item/ammo_casing/energy/lens = ammo_type[select]
+		var/obj/projectile/energy/loaded_projectile = lens.loaded_projectile
 		if(!loaded_projectile)
 			. = ""
 		else if(loaded_projectile.nodamage || !loaded_projectile.damage || loaded_projectile.damage_type == STAMINA)
-			user.visible_message(span_danger("[user] tries to light [A.loc == user ? "[user.p_their()] [A.name]" : A] with [src], but it doesn't do anything. Dumbass."))
-			playsound(user, E.fire_sound, 50, TRUE)
+			user.visible_message(span_danger("[user] tries to light [to_ignite.loc == user ? "[user.p_their()] [to_ignite.name]" : to_ignite] with [src], but it doesn't do anything. Dumbass."))
+			playsound(user, lens.fire_sound, 50, TRUE)
 			playsound(user, loaded_projectile.hitsound, 50, TRUE)
-			cell.use(E.e_cost)
+			cell.use(lens.e_cost)
 			. = ""
 		else if(loaded_projectile.damage_type != BURN)
-			user.visible_message(span_danger("[user] tries to light [A.loc == user ? "[user.p_their()] [A.name]" : A] with [src], but only succeeds in utterly destroying it. Dumbass."))
-			playsound(user, E.fire_sound, 50, TRUE)
+			user.visible_message(span_danger("[user] tries to light [to_ignite.loc == user ? "[user.p_their()] [to_ignite.name]" : to_ignite] with [src], but only succeeds in utterly destroying it. Dumbass."))
+			playsound(user, lens.fire_sound, 50, TRUE)
 			playsound(user, loaded_projectile.hitsound, 50, TRUE)
-			cell.use(E.e_cost)
-			qdel(A)
+			cell.use(lens.e_cost)
+			qdel(to_ignite)
 			. = ""
 		else
-			playsound(user, E.fire_sound, 50, TRUE)
+			playsound(user, lens.fire_sound, 50, TRUE)
 			playsound(user, loaded_projectile.hitsound, 50, TRUE)
-			cell.use(E.e_cost)
-			. = span_danger("[user] casually lights [A.loc == user ? "[user.p_their()] [A.name]" : A] with [src]. Damn.")
+			cell.use(lens.e_cost)
+			. = span_danger("[user] casually lights [to_ignite.loc == user ? "[user.p_their()] [to_ignite.name]" : to_ignite] with [src]. Damn.")
 
 /obj/item/gun/microfusion/attackby(obj/item/attacking_item, mob/user, params)
 	. = ..()
@@ -338,15 +340,15 @@
 		if(target == user && user.zone_selected != BODY_ZONE_PRECISE_MOUTH) //so we can't shoot ourselves (unless mouth selected)
 			return
 		if(iscarbon(target))
-			var/mob/living/carbon/C = target
-			for(var/i in C.all_wounds)
+			var/mob/living/carbon/carbon = target
+			for(var/i in carbon.all_wounds)
 				var/datum/wound/W = i
 				if(W.try_treating(src, user))
 					return // another coward cured!
 
 	if(istype(user))//Check if the user can use the gun, if the user isn't alive(turrets) assume it can.
-		var/mob/living/L = user
-		if(!can_trigger_gun(L))
+		var/mob/living/living = user
+		if(!can_trigger_gun(living))
 			return
 	if(flag)
 		if(user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
@@ -376,13 +378,13 @@
 	var/loop_counter = 0
 	if(ishuman(user) && user.combat_mode)
 		var/mob/living/carbon/human/H = user
-		for(var/obj/item/gun/G in H.held_items)
-			if(G == src || G.weapon_weight >= WEAPON_MEDIUM)
+		for(var/obj/item/gun/gun in H.held_items)
+			if(gun == src || gun.weapon_weight >= WEAPON_MEDIUM)
 				continue
-			else if(G.can_trigger_gun(user))
+			else if(gun.can_trigger_gun(user))
 				bonus_spread += dual_wield_spread
 				loop_counter++
-				addtimer(CALLBACK(G, /obj/item/gun.proc/process_fire, target, user, TRUE, params, null, bonus_spread), loop_counter)
+				addtimer(CALLBACK(gun, /obj/item/gun.proc/process_fire, target, user, TRUE, params, null, bonus_spread), loop_counter)
 
 	return process_fire(target, user, TRUE, params, null, bonus_spread)
 
@@ -500,7 +502,7 @@
 
 	var/sound_freq_to_add = 0
 
-	if(phase_emitter)
+	if(phase_emitter && phase_emitter.sound_freq > 1)
 		sound_freq_to_add = phase_emitter.sound_freq
 
 	if(suppressed)
@@ -617,9 +619,12 @@
 
 // Cell, emitter and upgrade interactions
 
-/obj/item/gun/microfusion/proc/remove_emitter()
-	playsound(src, 'sound/machines/terminal_eject.ogg', 50, TRUE)
+/obj/item/gun/microfusion/proc/remove_emitter(mob/user)
+	playsound(src, sound_cell_insert, 50, TRUE)
 	phase_emitter.forceMove(get_turf(src))
+	if(user)
+		user.put_in_hands(phase_emitter)
+		to_chat(user, span_notice("You remove [phase_emitter] from [src]!"))
 	phase_emitter.parent_gun = null
 	phase_emitter = null
 	update_appearance()
@@ -629,7 +634,7 @@
 		to_chat(user, span_danger("There is already a phase emitter installed!"))
 		return FALSE
 	to_chat(user, span_notice("You carefully insert [inserting_phase_emitter] into the slot."))
-	playsound(src, 'sound/machines/terminal_eject.ogg', 50, TRUE)
+	playsound(src, sound_cell_remove, 50, TRUE)
 	inserting_phase_emitter.forceMove(src)
 	phase_emitter = inserting_phase_emitter
 	phase_emitter.parent_gun = src
@@ -638,6 +643,8 @@
 
 /// Try to insert the cell into the gun, if successful, return TRUE
 /obj/item/gun/microfusion/proc/insert_cell(mob/user, obj/item/stock_parts/cell/microfusion/inserting_cell, display_message = TRUE)
+	var/tactical_reload = FALSE //We need to do this so that cells don't fall on the ground.
+	var/obj/item/stock_parts/cell/old_cell = cell
 	if(cell)
 		if(reload_time && !HAS_TRAIT(user, TRAIT_INSTANT_RELOAD)) //This only happens when you're attempting a tactical reload, e.g. there's a mag already inserted.
 			if(display_message)
@@ -648,7 +655,8 @@
 				return FALSE
 		if(display_message)
 			to_chat(user, span_notice("You tactically reload [src], replacing [cell] inside!"))
-		eject_cell(user, FALSE)
+		tactical_reload = TRUE
+		eject_cell(user, FALSE, FALSE)
 	else if(display_message)
 		to_chat(user, span_notice("You insert [inserting_cell] into [src]!"))
 	if(sound_cell_insert)
@@ -656,16 +664,19 @@
 	cell = inserting_cell
 	inserting_cell.forceMove(src)
 	cell.parent_gun = src
+	if(tactical_reload)
+		old_cell.put_in_hands(user)
 	recharge_newshot()
 	update_appearance()
 	return TRUE
 
 /// Ejecting a cell.
-/obj/item/gun/microfusion/proc/eject_cell(mob/user, display_message = TRUE)
+/obj/item/gun/microfusion/proc/eject_cell(mob/user, display_message = TRUE, put_in_hands = TRUE)
 	var/obj/item/stock_parts/cell/microfusion/old_cell = cell
 	old_cell.forceMove(get_turf(src))
 	if(user)
-		user.put_in_hands(old_cell)
+		if(put_in_hands)
+			user.put_in_hands(old_cell)
 		if(display_message)
 			to_chat(user, span_notice("You remove [old_cell] from [src]!"))
 	if(sound_cell_remove)
@@ -721,7 +732,7 @@
 		to_chat(user, span_warning("New name cannot be less than 5 characters!"))
 		return
 
-	name = new_name
+	name = sanitize(new_name)
 	update_appearance()
 
 // UI CONTROL

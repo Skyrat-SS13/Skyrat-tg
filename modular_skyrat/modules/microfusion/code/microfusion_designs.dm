@@ -7,7 +7,7 @@
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 200)
 	construction_time = 10 SECONDS
 	build_path = /obj/item/stock_parts/cell/microfusion
-	category = list("Misc","Power Designs","Machinery","initial")
+	category = list("Misc", "Power Designs", "Machinery", "initial")
 
 /datum/design/microfusion_phase_emitter_undercharger
 	name = "Microfusion Phase Emitter Undercharger"
@@ -17,7 +17,7 @@
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 200)
 	construction_time = 10 SECONDS
 	build_path = /obj/item/microfusion_gun_attachment/undercharger
-	category = list("Misc","Power Designs","Machinery","initial")
+	category = list("Misc", "Power Designs", "Machinery", "initial")
 
 /datum/design/enhanced_microfusion_cell
 	name = "Enhanced Microfusion Cell"
@@ -27,7 +27,7 @@
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 200, /datum/material/uranium = 200)
 	construction_time = 10 SECONDS
 	build_path = /obj/item/stock_parts/cell/microfusion/enhanced
-	category = list("Misc","Power Designs")
+	category = list("Misc", "Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/enhanced_microfusion_phase_emitter
@@ -38,7 +38,7 @@
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/alloy/plastitanium = 500)
 	construction_time = 10 SECONDS
 	build_path = /obj/item/microfusion_phase_emitter/enhanced
-	category = list("Misc","Power Designs")
+	category = list("Misc", "Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/advanced_microfusion_cell
@@ -49,7 +49,7 @@
 	materials =  list(/datum/material/iron = 1000, /datum/material/gold = 300, /datum/material/silver = 300, /datum/material/glass = 300, /datum/material/uranium = 300)
 	construction_time = 10 SECONDS
 	build_path = /obj/item/stock_parts/cell/microfusion/advanced
-	category = list("Misc","Power Designs")
+	category = list("Misc", "Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/advanced_microfusion_phase_emitter
@@ -60,7 +60,7 @@
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/alloy/plastitanium = 500, /datum/material/gold = 500)
 	construction_time = 10 SECONDS
 	build_path = /obj/item/microfusion_phase_emitter/advanced
-	category = list("Misc","Power Designs")
+	category = list("Misc", "Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/bluespace_microfusion_cell
@@ -71,7 +71,7 @@
 	materials = list(/datum/material/iron = 1000, /datum/material/gold = 300, /datum/material/glass = 300, /datum/material/diamond = 300, /datum/material/uranium = 300, /datum/material/titanium = 300, /datum/material/bluespace = 300)
 	construction_time = 10 SECONDS
 	build_path = /obj/item/stock_parts/cell/microfusion/bluespace
-	category = list("Misc","Power Designs")
+	category = list("Misc", "Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/bluespace_microfusion_phase_emitter
@@ -82,7 +82,7 @@
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/alloy/plastitanium = 500, /datum/material/gold = 500, /datum/material/diamond = 500)
 	construction_time = 10 SECONDS
 	build_path = /obj/item/microfusion_phase_emitter/bluespace
-	category = list("Misc","Power Designs")
+	category = list("Misc", "Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 // CELL UPGRADES
@@ -93,7 +93,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/gold = 1000)
 	build_path = /obj/item/microfusion_cell_attachment/rechargeable
-	category = list("Misc","Power Designs")
+	category = list("Misc", "Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/microfusion_cell_attachment_stabiliser
@@ -103,7 +103,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/plasma = 1000)
 	build_path = /obj/item/microfusion_cell_attachment/stabiliser
-	category = list("Misc","Power Designs")
+	category = list("Misc", "Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/microfusion_cell_attachment_overcapacity
@@ -113,7 +113,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/plasma = 500, /datum/material/gold = 500)
 	build_path = /obj/item/microfusion_cell_attachment/overcapacity
-	category = list("Misc","Power Designs")
+	category = list("Misc", "Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/microfusion_cell_attachment_selfcharging
@@ -123,7 +123,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/uranium = 1000)
 	build_path = /obj/item/microfusion_cell_attachment/selfcharging
-	category = list("Misc","Power Designs")
+	category = list("Misc", "Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 // GUN UPGRADES

@@ -105,7 +105,7 @@ Basically the heart of the gun, can be upgraded.
 
 	sound_freq = clamp(sound_speed_to_add, 1, 3)
 
-	fire_delay = fire_delay_to_add
+	fire_delay = round(fire_delay_to_add, 0.1)
 
 /obj/item/microfusion_phase_emitter/proc/get_heat_icon_state()
 	switch(get_heat_percent())

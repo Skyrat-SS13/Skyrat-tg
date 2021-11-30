@@ -173,17 +173,17 @@
 		var/obj/item/ammo_casing/energy/shot = pew.ammo_type[pew.select]
 		var/battery_percent = FLOOR(clamp(pew.cell.charge / pew.cell.maxcharge, 0, 1) * 100, 1)
 		var/shot_cost_percent = FLOOR(clamp(shot.e_cost / pew.cell.maxcharge, 0, 1) * 100, 1)
-		if(batt_percent > 99 || shot_cost_percent > 99)
+		if(battery_percent > 99 || shot_cost_percent > 99)
 			hud.maptext_x = -12
 		else
 			hud.maptext_x = -8
 		if(!pew.can_shoot())
 			hud.icon_state = "microfusion_counter_no_emitter"
 			return
-		if(batt_percent <= 25)
-			hud.maptext = span_maptext("<div align='center' valign='middle' style='position:relative'><font color='[COLOR_YELLOW]'>[batt_percent]%</font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div>")
+		if(battery_percent <= 25)
+			hud.maptext = span_maptext("<div align='center' valign='middle' style='position:relative'><font color='[COLOR_YELLOW]'>[battery_percent]%</font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div>")
 			return
-		hud.maptext = span_maptext("<div align='center' valign='middle' style='position:relative'><font color='[COLOR_VIBRANT_LIME]'>[batt_percent]%</font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div>")
+		hud.maptext = span_maptext("<div align='center' valign='middle' style='position:relative'><font color='[COLOR_VIBRANT_LIME]'>[battery_percent]%</font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div>")
 
 
 /obj/item/gun/ballistic/ComponentInitialize()
