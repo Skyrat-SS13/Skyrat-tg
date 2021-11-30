@@ -838,7 +838,7 @@
 			var/obj/item/microfusion_gun_attachment/to_modify = locate(params["attachment_ref"]) in src
 			if(!to_modify)
 				return
-			to_modify.run_modify_data(params["modify_ref"], usr)
+			to_modify.run_modify_data(params["modify_ref"], usr, src)
 		if("toggle_cooling_system")
 			if(!phase_emitter)
 				return

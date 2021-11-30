@@ -48,7 +48,7 @@ For adding unique abilities to microfusion guns, these can directly interact wit
 /obj/item/microfusion_gun_attachment/proc/get_modify_data()
 	return
 
-/obj/item/microfusion_gun_attachment/proc/run_modify_data(params, mob/living/user)
+/obj/item/microfusion_gun_attachment/proc/run_modify_data(params, mob/living/user, obj/item/gun/microfusion/microfusion_gun)
 	return
 
 /obj/item/microfusion_gun_attachment/proc/get_information_data()
@@ -238,11 +238,29 @@ Converts shots to STAMNINA damage.
 	icon_state = "attachment_undercharger"
 	attachment_overlay_icon_state = "attachment_undercharger"
 	slot = GUN_SLOT_UNDERBARREL
+	var/toggle = FALSE
 	var/cooling_rate_increase = 10
+
+/obj/item/microfusion_gun_attachment/undercharger/get_modify_data()
+	return list(list("title" = "Toggle [toggle ? "OFF" : "ON"]", "icon" = "power-off", "reference" = "toggle_on_off"))
+
+/obj/item/microfusion_gun_attachment/undercharger/run_modify_data(params, mob/living/user, obj/item/gun/microfusion/microfusion_gun)
+	if(params == "toggle_on_off")
+		toggle(microfusion_gun, user)
+
+/obj/item/microfusion_gun_attachment/undercharger/proc/toggle(obj/item/gun/microfusion/microfusion_gun, mob/user)
+	if(toggle)
+		toggle = FALSE
+		microfusion_gun.heat_dissipation_bonus -= cooling_rate_increase
+	else
+		toggle = TRUE
+		microfusion_gun.heat_dissipation_bonus += cooling_rate_increase
+
+	if(user)
+		to_chat(user, span_notice("You toggle [src] [toggle ? "ON" : "OFF"]."))
 
 /obj/item/microfusion_gun_attachment/undercharger/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
-	microfusion_gun.heat_dissipation_bonus += cooling_rate_increase
 	microfusion_gun.fire_sound = 'modular_skyrat/modules/microfusion/sound/burn.ogg'
 
 /obj/item/microfusion_gun_attachment/undercharger/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
@@ -253,7 +271,8 @@ Converts shots to STAMNINA damage.
 
 /obj/item/microfusion_gun_attachment/undercharger/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
-	microfusion_gun.heat_dissipation_bonus -= cooling_rate_increase
+	if(toggle)
+		microfusion_gun.heat_dissipation_bonus -= cooling_rate_increase
 	microfusion_gun.fire_sound = microfusion_gun.chambered?.fire_sound
 
 /*
