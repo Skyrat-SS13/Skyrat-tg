@@ -157,7 +157,7 @@
 			chambered.newshot()
 
 /obj/item/gun/microfusion/handle_chamber()
-	if(chambered && !chambered.loaded_projectile) //if loaded_projectile is null, i.e the shot has been fired...
+	if(chambered && !chambered.loaded_projectile && cell) //if loaded_projectile is null, i.e the shot has been fired...
 		var/obj/item/ammo_casing/energy/shot = chambered
 		cell.use(shot.e_cost)//... drain the cell
 	chambered = null //either way, released the prepared shot
@@ -255,7 +255,7 @@
 
 /obj/item/gun/microfusion/process_chamber(empty_chamber, from_firing, chamber_next_round)
 	. = ..()
-	if(!cell.stabilised && prob(40))
+	if(!cell?.stabilised && prob(40))
 		do_sparks(2, FALSE, src) //Microfusion guns create sparks!
 
 /obj/item/gun/microfusion/attack_hand(mob/user, list/modifiers)
@@ -526,16 +526,16 @@
 
 	phase_emitter.add_heat(heat_per_shot)
 
-	if(phase_emitter.heat >= phase_emitter.max_heat)
+	if(phase_emitter.current_heat > phase_emitter.max_heat)
 		if(ishuman(user))
 			var/mob/living/carbon/human/human = user
 			var/obj/item/bodypart/affecting = human.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
 			if(affecting?.receive_damage( 0, 1 )) // 1 burn damage
 				to_chat(user, span_warning("[src] burns your hand, it's too hot!"))
 	var/phase_emitter_failure_threshold = phase_emitter.max_heat / 100 * MICROFUSION_GUN_FAILURE_GRACE_PERCENT
-	if(phase_emitter.heat > phase_emitter_failure_threshold)
+	if(phase_emitter.current_heat > phase_emitter_failure_threshold)
 		to_chat(user, span_danger("[src] fizzles violently!"))
-		var/fuck_me_prob = clamp((phase_emitter.heat - phase_emitter.max_heat) / 10, 1, MICROFUSION_GUN_MAX_FAILURE_CHANCE)
+		var/fuck_me_prob = clamp((phase_emitter.current_heat - phase_emitter.max_heat) / 10, 1, MICROFUSION_GUN_MAX_FAILURE_CHANCE)
 		if(prob(fuck_me_prob))
 			process_failure(user)
 
@@ -671,8 +671,7 @@
 	cell = inserting_cell
 	inserting_cell.forceMove(src)
 	cell.parent_gun = src
-	if(!chambered)
-		recharge_newshot()
+	recharge_newshot()
 	update_appearance()
 	return TRUE
 

@@ -95,7 +95,7 @@ Basically the heart of the gun, can be upgraded.
 
 /obj/item/microfusion_phase_emitter/proc/process_fire_delay_and_sound()
 	var/fire_delay_to_add = 0
-	var/sound_speed_to_add = 0
+	var/sound_speed_to_add = 1
 	if(integrity < 100)
 		fire_delay_to_add = fire_delay_to_add + (100 - integrity) / 10
 
@@ -103,7 +103,7 @@ Basically the heart of the gun, can be upgraded.
 		fire_delay_to_add = fire_delay_to_add + (current_heat - max_heat) / 100 //Holy shit this emitter is tanking
 		sound_speed_to_add = sound_speed_to_add + (current_heat - max_heat) / 200
 
-	sound_freq = clamp(sound_speed_to_add, 0, 3)
+	sound_freq = clamp(sound_speed_to_add, 1, 3)
 
 	fire_delay = fire_delay_to_add
 

@@ -21,9 +21,9 @@
 #define MICROFUSION_CELL_FAILURE_TYPE_RADIATION 4
 
 /// Percent chance grace period for a gun to fail.
-#define MICROFUSION_GUN_FAILURE_GRACE_PERCENT 20
-/// The max prob chance for a gun to fail and explode.area
-#define MICROFUSION_GUN_MAX_FAILURE_CHANCE 20
+#define MICROFUSION_GUN_FAILURE_GRACE_PERCENT 10
+/// The max prob chance for a gun to fail and explode.
+#define MICROFUSION_GUN_MAX_FAILURE_CHANCE 5
 
 /// Returned when the phase emtiter process is successful.
 #define SHOT_SUCCESS "success"

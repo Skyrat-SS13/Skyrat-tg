@@ -171,7 +171,7 @@ export const MicrofusionGunControl = (props, context) => {
                           "average": [1, 3],
                           "bad": [3, 5],
                         }}>
-                        {phase_emitter_data.process_time + 's'}
+                        {phase_emitter_data.process_time / 10 + 's'}
                       </ProgressBar>
                     </LabeledList.Item>
                     {phase_emitter_data.heat_percent

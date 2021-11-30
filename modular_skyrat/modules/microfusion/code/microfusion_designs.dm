@@ -9,16 +9,6 @@
 	build_path = /obj/item/stock_parts/cell/microfusion
 	category = list("Misc","Power Designs","Machinery","initial")
 
-/datum/design/basic_microfusion_phase_emitter
-	name = "Basic Microfusion Phase Emitter"
-	desc = "The core of a microfusion projection weapon, produces the laser."
-	id = "basic_microfusion_phase_emitter"
-	build_type = PROTOLATHE | AWAY_LATHE | AUTOLATHE
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000)
-	construction_time = 10 SECONDS
-	build_path = /obj/item/microfusion_phase_emitter
-	category = list("Misc","Power Designs","Machinery","initial")
-
 /datum/design/microfusion_phase_emitter_undercharger
 	name = "Microfusion Phase Emitter Undercharger"
 	desc = "Inverts the output beam of the phase emitter, popular amongst law enforcement as a non-lethal upgrade."
@@ -28,7 +18,6 @@
 	construction_time = 10 SECONDS
 	build_path = /obj/item/microfusion_gun_attachment/undercharger
 	category = list("Misc","Power Designs","Machinery","initial")
-
 
 /datum/design/enhanced_microfusion_cell
 	name = "Enhanced Microfusion Cell"

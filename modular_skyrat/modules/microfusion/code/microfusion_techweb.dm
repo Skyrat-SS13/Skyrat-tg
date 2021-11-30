@@ -20,7 +20,7 @@
 	)
 	design_ids = list(
 		"enhanced_microfusion_cell",
-		"microfusion_cell_attachment_overcapacity",
+		"microfusion_cell_attachment_rechargeable",
 		"enhanced_microfusion_phase_emitter",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3500)
@@ -52,7 +52,7 @@
 	)
 	design_ids = list(
 		"advanced_microfusion_cell",
-		"microfusion_cell_attachment_rechargeable",
+		"microfusion_cell_attachment_overcapacity",
 		"microfusion_cell_attachment_stabiliser",
 		"microfusion_gun_attachment_scatter",
 		"advanced_microfusion_phase_emitter",
