@@ -181,9 +181,3 @@ These are basically advanced cells.
 	maxcharge = 2000
 	max_attachments = 4
 
-/obj/item/stock_parts/cell/microfusion/testing
-	name = "quantum infinity microfusion cell"
-	desc = "You're coding, I see."
-	icon_state = "microfusion_bluespace"
-	maxcharge = INFINITY
-	max_attachments = 4

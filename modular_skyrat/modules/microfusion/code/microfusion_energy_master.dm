@@ -665,7 +665,7 @@
 	inserting_cell.forceMove(src)
 	cell.parent_gun = src
 	if(tactical_reload)
-		old_cell.put_in_hands(user)
+		user.put_in_hands(old_cell)
 	recharge_newshot()
 	update_appearance()
 	return TRUE
@@ -829,7 +829,7 @@
 		if("eject_emitter")
 			if(!phase_emitter)
 				return
-			remove_emitter()
+			remove_emitter(usr)
 		if("remove_attachment")
 			var/obj/item/microfusion_gun_attachment/to_remove = locate(params["attachment_ref"]) in src
 			if(!to_remove)

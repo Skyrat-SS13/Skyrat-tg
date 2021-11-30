@@ -161,6 +161,7 @@ The gun can fire X-RAY shots.
 	attachment_overlay_icon_state = "attachment_xray"
 	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter)
 	heat_addition = 90
+	power_usage = 50
 
 /obj/item/microfusion_gun_attachment/xray/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
