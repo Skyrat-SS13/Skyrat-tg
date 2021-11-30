@@ -45,6 +45,15 @@ For adding unique abilities to microfusion guns, these can directly interact wit
 	microfusion_gun.extra_power_usage -= power_usage
 	return
 
+/*
+Returns a list of modifications of this attachment, it must return a list within a list list(list()).
+All of the following must be returned.
+list(list("title" = "Toggle [toggle ? "OFF" : "ON"]", "icon" = "power-off", "color" = "blue" "reference" = "toggle_on_off"))
+title - The title of the modification button
+icon - The icon of the modification button
+color - The color of the modification button
+reference - The reference of the modification button, this is used to call the proc when the run modify data proc is called.
+*/
 /obj/item/microfusion_gun_attachment/proc/get_modify_data()
 	return
 
@@ -68,37 +77,18 @@ The cell is stable and will not emit sparks when firing.
 	/// How many pellets are we going to add to the existing amount on the gun?
 	var/pellets_to_add = 2
 	/// The variation in pellet scatter.
-	var/variance_to_add = 10
+	var/variance_to_add = 20
 	/// How much recoil are we adding?
 	var/recoil_to_add = 1
 	/// The spread to add.
 	var/spread_to_add = 10
 
-/obj/item/microfusion_gun_attachment/scatter/proc/set_variance(mob/living/user)
-	variance_to_add = clamp(input(user, "Please input a new lens variance adjustment (5-30):", "Lens Adjustment") as null|num, 5, 30)
-	to_chat(user, span_notice("Lens variance percent set to: [variance_to_add]."))
-
-/obj/item/microfusion_gun_attachment/scatter/attack_self(mob/user, modifiers)
-	. = ..()
-	set_variance(user)
-
-/obj/item/microfusion_gun_attachment/scatter/get_information_data()
-	return "Variance: [variance_to_add]"
-
-/obj/item/microfusion_gun_attachment/scatter/get_modify_data()
-	return list(list("title" = "Change Variance", "icon" = "wrench", "reference" = "variance"))
-
-/obj/item/microfusion_gun_attachment/scatter/run_modify_data(params, mob/living/user)
-	if(params == "variance")
-		set_variance(user)
-
 /obj/item/microfusion_gun_attachment/scatter/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	microfusion_gun.recoil += recoil_to_add
 	microfusion_gun.spread += spread_to_add
-	for(var/obj/item/ammo_casing/ammo_casing in microfusion_gun.ammo_type)
-		ammo_casing.pellets += pellets_to_add
-		ammo_casing.variance += variance_to_add
+	microfusion_gun.microfusion_lens.pellets += pellets_to_add
+	microfusion_gun.microfusion_lens.variance += variance_to_add
 
 /obj/item/microfusion_gun_attachment/scatter/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
 	. = ..()
@@ -108,9 +98,40 @@ The cell is stable and will not emit sparks when firing.
 	. = ..()
 	microfusion_gun.recoil -= recoil_to_add
 	microfusion_gun.spread -= spread_to_add
-	for(var/obj/item/ammo_casing/ammo_casing in microfusion_gun.ammo_type)
-		ammo_casing.pellets -= ammo_casing.pellets
-		ammo_casing.variance -= ammo_casing.variance
+	microfusion_gun.microfusion_lens.pellets -= microfusion_gun.microfusion_lens.pellets
+	microfusion_gun.microfusion_lens.variance -= microfusion_gun.microfusion_lens.variance
+
+/*
+REPEATER ATTACHMENT
+
+The gun can fire volleys of shots.
+*/
+/obj/item/microfusion_gun_attachment/superheat
+	name = "superheating phase emitter upgrade"
+	desc = "Superheats the phase emitter beam output, causing targets to ignite."
+	icon_state = "attachment_superheat"
+	attachment_overlay_icon_state = "attachment_superheat"
+	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter)
+	heat_addition = 70
+	slot = GUN_SLOT_BARREL
+
+/obj/item/microfusion_gun_attachment/superheat/run_attachment(obj/item/gun/microfusion/microfusion_gun)
+	. = ..()
+	microfusion_gun.fire_sound = 'modular_skyrat/modules/microfusion/sound/vaporize.ogg'
+
+/obj/item/microfusion_gun_attachment/superheat/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
+	. = ..()
+	microfusion_gun.fire_sound = microfusion_gun.chambered?.fire_sound
+
+
+/obj/item/microfusion_gun_attachment/superheat/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
+	. = ..()
+	if(istype(chambered?.loaded_projectile, /obj/projectile/beam/laser/microfusion))
+		var/obj/projectile/beam/laser/microfusion/microfusion_beam = chambered?.loaded_projectile
+		microfusion_beam.superheated = TRUE
+		microfusion_beam.fire_stacks = 2
+		microfusion_beam.icon_state = "laser_greyscale"
+		microfusion_beam.color = LIGHT_COLOR_FIRE
 
 /*
 REPEATER ATTACHMENT
@@ -122,11 +143,10 @@ The gun can fire volleys of shots.
 	desc = "Upgrades the central phase emitter to repeat twice."
 	icon_state = "attachment_repeater"
 	attachment_overlay_icon_state = "attachment_repeater"
-	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter)
 	heat_addition = 40
 	slot = GUN_SLOT_BARREL
 	/// The spread to add to the gun.
-	var/spread_to_add = 10
+	var/spread_to_add = 15
 	/// The recoil to add to the gun.
 	var/recoil_to_add = 1
 	/// The burst to add to the gun.
@@ -159,7 +179,6 @@ The gun can fire X-RAY shots.
 	icon_state = "attachment_xray"
 	slot = GUN_SLOT_BARREL
 	attachment_overlay_icon_state = "attachment_xray"
-	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter)
 	heat_addition = 90
 	power_usage = 50
 
@@ -192,7 +211,7 @@ Greatly reduces recoil and spread.
 	/// How much recoil are we removing?
 	var/recoil_to_remove = 1
 	/// How much spread are we removing?
-	var/spread_to_remove = 5
+	var/spread_to_remove = 10
 
 /obj/item/microfusion_gun_attachment/grip/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
@@ -242,7 +261,7 @@ Converts shots to STAMNINA damage.
 	var/cooling_rate_increase = 10
 
 /obj/item/microfusion_gun_attachment/undercharger/get_modify_data()
-	return list(list("title" = "Toggle [toggle ? "OFF" : "ON"]", "icon" = "power-off", "reference" = "toggle_on_off"))
+	return list(list("title" = "Turn [toggle ? "OFF" : "ON"]", "icon" = "power-off", "color" = "[toggle ? "red" : "green"]", "reference" = "toggle_on_off"))
 
 /obj/item/microfusion_gun_attachment/undercharger/run_modify_data(params, mob/living/user, obj/item/gun/microfusion/microfusion_gun)
 	if(params == "toggle_on_off")
@@ -265,9 +284,10 @@ Converts shots to STAMNINA damage.
 
 /obj/item/microfusion_gun_attachment/undercharger/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
 	. = ..()
-	chambered.loaded_projectile?.damage_type = STAMINA
-	chambered.loaded_projectile?.icon_state = "disabler"
-	chambered.loaded_projectile?.light_color = COLOR_DARK_CYAN
+	if(toggle)
+		chambered.loaded_projectile?.damage_type = STAMINA
+		chambered.loaded_projectile?.icon_state = "disabler"
+		chambered.loaded_projectile?.light_color = COLOR_DARK_CYAN
 
 /obj/item/microfusion_gun_attachment/undercharger/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
@@ -307,7 +327,7 @@ Enables you to change the light color of the laser.
 	select_color(user)
 
 /obj/item/microfusion_gun_attachment/rgb/get_modify_data()
-	return list(list("title" = "Change Color", "icon" = "wrench", "reference" = "color"))
+	return list(list("title" = "Change Color", "icon" = "wrench", "reference" = "color", "color" = "blue"))
 
 /obj/item/microfusion_gun_attachment/rgb/run_modify_data(params, mob/living/user)
 	if(params == "color")
@@ -324,13 +344,11 @@ Allows for flashlights bayonets and adds 1 slot to equipment.
 	icon_state = "attachment_rail"
 	attachment_overlay_icon_state = "attachment_rail"
 	slot = GUN_SLOT_RAIL
-	var/attachment_slots_to_add = 3
 
 /obj/item/microfusion_gun_attachment/rail/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	microfusion_gun.can_flashlight = TRUE
 	microfusion_gun.can_bayonet = TRUE
-	microfusion_gun.max_attachments += attachment_slots_to_add
 
 /obj/item/microfusion_gun_attachment/rail/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
@@ -342,7 +360,6 @@ Allows for flashlights bayonets and adds 1 slot to equipment.
 	if(microfusion_gun.bayonet)
 		microfusion_gun.bayonet.forceMove(get_turf(microfusion_gun))
 		microfusion_gun.clear_bayonet()
-	microfusion_gun.max_attachments -= attachment_slots_to_add
 	microfusion_gun.remove_all_attachments()
 
 /*

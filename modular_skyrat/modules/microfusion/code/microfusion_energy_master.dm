@@ -22,11 +22,7 @@
 	var/cell_type = /obj/item/stock_parts/cell/microfusion
 	///if the weapon has custom icons for individual ammo types it can switch between. ie disabler beams, taser, laser/lethals, ect.
 	var/modifystate = FALSE
-	var/list/ammo_type = list(/obj/item/ammo_casing/energy/laser/microfusion)
-	///The state of the select fire switch. Determines from the ammo_type list what kind of shot is fired next.
-	var/select = 1
-	///If the user can select the firemode through attack_self.
-	var/can_select = TRUE
+	var/obj/item/ammo_casing/energy/laser/microfusion/microfusion_lens
 	///Can it be charged in a recharger?
 	var/can_charge = TRUE
 	///Do we handle overlays with base update_icon()?
@@ -60,8 +56,6 @@
 	var/sound_cell_remove_volume = 50
 	/// A list of attached upgrades
 	var/list/attachments = list()
-	/// How many attachments can this gun hold?
-	var/max_attachments = 2
 	/// The starting phase emitter in this weapon.
 	var/phase_emitter_type = /obj/item/microfusion_phase_emitter
 	/// The phase emitter that this gun currently has.
@@ -102,7 +96,7 @@
 	else
 		phase_emitter = new(src)
 	phase_emitter.parent_gun = src
-	update_ammo_types()
+	update_microfusion_lens()
 	recharge_newshot(TRUE)
 	update_appearance()
 	AddComponent(/datum/component/ammo_hud)
@@ -138,20 +132,13 @@
         update_appearance()
     return ..()
 
-/obj/item/gun/microfusion/attack_self(mob/living/user as mob)
-	. = ..()
-	if(ammo_type.len > 1 && can_select)
-		select_fire(user)
-
 /obj/item/gun/microfusion/can_shoot()
-	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
-	return !QDELETED(cell) ? (cell.charge >= shot.e_cost) : FALSE
+	return !QDELETED(cell) ? (cell.charge >= microfusion_lens.e_cost) : FALSE
 
 /obj/item/gun/microfusion/recharge_newshot()
-	if (!ammo_type || !cell || !phase_emitter)
+	if (!microfusion_lens || !cell || !phase_emitter)
 		return
-	var/obj/item/ammo_casing/energy/AC = ammo_type[select]
-	chambered = AC //...prepare a new shot based on the current ammo type selected
+	chambered = microfusion_lens
 	if(!chambered.loaded_projectile)
 		chambered.newshot()
 
@@ -182,8 +169,7 @@
 	var/ratio = get_charge_ratio()
 	var/temp_icon_to_use = initial(icon_state)
 	if(modifystate)
-		var/obj/item/ammo_casing/energy/shot = ammo_type[select]
-		temp_icon_to_use += "[shot.select_name]"
+		temp_icon_to_use += "[microfusion_lens.select_name]"
 
 	temp_icon_to_use += "[ratio]"
 	if(!skip_inhand)
@@ -214,31 +200,30 @@
 
 
 /obj/item/gun/microfusion/ignition_effect(atom/to_ignite, mob/living/user)
-	if(!can_shoot() || !ammo_type[select])
+	if(!can_shoot() || !microfusion_lens)
 		shoot_with_empty_chamber()
 		. = ""
 	else
-		var/obj/item/ammo_casing/energy/lens = ammo_type[select]
-		var/obj/projectile/energy/loaded_projectile = lens.loaded_projectile
+		var/obj/projectile/energy/loaded_projectile = microfusion_lens.loaded_projectile
 		if(!loaded_projectile)
 			. = ""
 		else if(loaded_projectile.nodamage || !loaded_projectile.damage || loaded_projectile.damage_type == STAMINA)
 			user.visible_message(span_danger("[user] tries to light [to_ignite.loc == user ? "[user.p_their()] [to_ignite.name]" : to_ignite] with [src], but it doesn't do anything. Dumbass."))
-			playsound(user, lens.fire_sound, 50, TRUE)
+			playsound(user, microfusion_lens.fire_sound, 50, TRUE)
 			playsound(user, loaded_projectile.hitsound, 50, TRUE)
-			cell.use(lens.e_cost)
+			cell.use(microfusion_lens.e_cost)
 			. = ""
 		else if(loaded_projectile.damage_type != BURN)
 			user.visible_message(span_danger("[user] tries to light [to_ignite.loc == user ? "[user.p_their()] [to_ignite.name]" : to_ignite] with [src], but only succeeds in utterly destroying it. Dumbass."))
-			playsound(user, lens.fire_sound, 50, TRUE)
+			playsound(user, microfusion_lens.fire_sound, 50, TRUE)
 			playsound(user, loaded_projectile.hitsound, 50, TRUE)
-			cell.use(lens.e_cost)
+			cell.use(microfusion_lens.e_cost)
 			qdel(to_ignite)
 			. = ""
 		else
-			playsound(user, lens.fire_sound, 50, TRUE)
+			playsound(user, microfusion_lens.fire_sound, 50, TRUE)
 			playsound(user, loaded_projectile.hitsound, 50, TRUE)
-			cell.use(lens.e_cost)
+			cell.use(microfusion_lens.e_cost)
 			. = span_danger("[user] casually lights [to_ignite.loc == user ? "[user.p_their()] [to_ignite.name]" : to_ignite] with [src]. Damn.")
 
 /obj/item/gun/microfusion/attackby(obj/item/attacking_item, mob/user, params)
@@ -288,7 +273,6 @@
 
 /obj/item/gun/microfusion/examine(mob/user)
 	. = ..()
-	. += span_notice("It can hold <b>[max_attachments]</b> attachments.")
 	if(attachments.len)
 		for(var/obj/item/microfusion_gun_attachment/microfusion_gun_attachment in attachments)
 			. += span_notice("It has a [microfusion_gun_attachment.name] installed.")
@@ -311,8 +295,7 @@
 		if(user.is_holding(src))
 			user.visible_message(span_suicide("[user] melts [user.p_their()] face off with [src]!"))
 			playsound(loc, fire_sound, 50, TRUE, -1)
-			var/obj/item/ammo_casing/energy/shot = ammo_type[select]
-			cell.use(shot.e_cost)
+			cell.use(microfusion_lens.e_cost)
 			update_appearance()
 			return(FIRELOSS)
 		else
@@ -559,21 +542,6 @@
 	return can_shoot() ? CEILING(clamp(cell.charge / cell.maxcharge, 0, 1) * charge_sections, 1) : 0
 	// Sets the ratio to 0 if the gun doesn't have enough charge to fire, or if its power cell is removed.
 
-/obj/item/gun/microfusion/proc/select_fire(mob/living/user)
-	select++
-	if (select > ammo_type.len)
-		select = 1
-	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
-	fire_sound = shot.fire_sound
-	fire_sound_volume = shot.fire_sound_volume
-	fire_delay = shot.delay
-	if (shot.select_name && user)
-		balloon_alert(user, "set to [shot.select_name]")
-	chambered = null
-	recharge_newshot(TRUE)
-	update_appearance()
-	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
-
 /**
  *
  * Outputs type-specific weapon stats for energy-based firearms based on its firing modes
@@ -584,35 +552,30 @@
 /obj/item/gun/microfusion/proc/add_notes_energy()
 	var/list/readout = list()
 	// Make sure there is something to actually retrieve
-	if(!ammo_type.len)
+	if(!microfusion_lens)
 		return
 	var/obj/projectile/exam_proj
-	readout += "\nStandard models of this projectile weapon have [span_warning("[ammo_type.len] mode\s")]"
 	readout += "Our heroic interns have shown that one can theoretically stay standing after..."
-	for(var/obj/item/ammo_casing/energy/for_ammo as anything in ammo_type)
-		exam_proj = GLOB.proj_by_path_key[for_ammo?.projectile_type]
-		if(!istype(exam_proj))
-			continue
+	exam_proj = GLOB.proj_by_path_key[microfusion_lens?.projectile_type]
 
-		if(exam_proj.damage > 0) // Don't divide by 0!!!!!
-			readout += "[span_warning("[HITS_TO_CRIT(exam_proj.damage * for_ammo.pellets)] shot\s")] on [span_warning("[for_ammo.select_name]")] mode before collapsing from [exam_proj.damage_type == STAMINA ? "immense pain" : "their wounds"]."
-			if(exam_proj.stamina > 0) // In case a projectile does damage AND stamina damage (Energy Crossbow)
-				readout += "[span_warning("[HITS_TO_CRIT(exam_proj.stamina * for_ammo.pellets)] shot\s")] on [span_warning("[for_ammo.select_name]")] mode before collapsing from immense pain."
-		else
-			readout += "a theoretically infinite number of shots on [span_warning("[for_ammo.select_name]")] mode."
+	if(!istype(exam_proj))
+		return readout.Join("\n")
+
+	if(exam_proj.damage > 0) // Don't divide by 0!!!!!
+		readout += "[span_warning("[HITS_TO_CRIT(exam_proj.damage * microfusion_lens.pellets)] shot\s")] on [span_warning("[microfusion_lens.select_name]")] mode before collapsing from [exam_proj.damage_type == STAMINA ? "immense pain" : "their wounds"]."
+		if(exam_proj.stamina > 0) // In case a projectile does damage AND stamina damage (Energy Crossbow)
+			readout += "[span_warning("[HITS_TO_CRIT(exam_proj.stamina * microfusion_lens.pellets)] shot\s")] on [span_warning("[microfusion_lens.select_name]")] mode before collapsing from immense pain."
+	else
+		readout += "a theoretically infinite number of shots on [span_warning("[microfusion_lens.select_name]")] mode."
 
 	return readout.Join("\n") // Sending over the singular string, rather than the whole list
 
-/obj/item/gun/microfusion/proc/update_ammo_types()
-	var/obj/item/ammo_casing/energy/shot
-	for (var/i in 1 to ammo_type.len)
-		var/shottype = ammo_type[i]
-		shot = new shottype(src)
-		ammo_type[i] = shot
-	shot = ammo_type[select]
-	fire_sound = shot.fire_sound
-	fire_sound_volume = shot.fire_sound_volume
-	fire_delay = shot.delay
+/obj/item/gun/microfusion/proc/update_microfusion_lens()
+	if(!microfusion_lens)
+		microfusion_lens = new microfusion_lens
+	fire_sound = microfusion_lens.fire_sound
+	fire_sound_volume = microfusion_lens.fire_sound_volume
+	fire_delay = microfusion_lens.delay
 
 // Cell, emitter and upgrade interactions
 
@@ -685,9 +648,6 @@
 
 /// Attatching an upgrade.
 /obj/item/gun/microfusion/proc/add_attachment(obj/item/microfusion_gun_attachment/microfusion_gun_attachment, mob/living/user)
-	if(attachments.len >= max_attachments)
-		to_chat(user, span_warning("[src] cannot fit any more attachments!"))
-		return FALSE
 	if(is_type_in_list(microfusion_gun_attachment, attachments))
 		to_chat(user, span_warning("[src] already has [microfusion_gun_attachment] installed!"))
 		return FALSE
@@ -745,7 +705,6 @@
 
 	data["gun_name"] = name
 	data["gun_desc"] = desc
-	data["max_attachments"] = max_attachments
 	data["gun_heat_dissipation"] = heat_dissipation_bonus
 
 	if(phase_emitter)

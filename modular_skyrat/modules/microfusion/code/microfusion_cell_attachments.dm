@@ -29,7 +29,7 @@ For adding unique abilities to microfusion cells. These cannot directly interact
 	return
 
 /*
-RECHARGABLE ATTACHMENT
+rechargeable ATTACHMENT
 
 Allows the cell to be recharged at a gun recharger OR cell recharger.
 */

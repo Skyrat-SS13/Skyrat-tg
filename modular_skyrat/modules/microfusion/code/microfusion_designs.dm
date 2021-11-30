@@ -177,6 +177,16 @@
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
+/datum/design/microfusion_gun_attachment_superheat
+	name = "Superheating Phase Emitter Upgrade"
+	desc = "Superheats the beam causing targets to ignite!"
+	id = "microfusion_gun_attachment_superheat"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/plasma = 500)
+	build_path = /obj/item/microfusion_gun_attachment/superheat
+	category = list("Weapons")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
+
 /datum/design/microfusion_gun_attachment_repeater
 	name = "Repeating Phase Emitter Upgrade"
 	desc = "Upgrades the central phase emitter to repeat twice."

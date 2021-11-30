@@ -10,7 +10,6 @@ export const MicrofusionGunControl = (props, context) => {
   const {
     gun_name,
     gun_desc,
-    max_attachments,
     gun_heat_dissipation,
     has_cell,
     has_emitter,
@@ -39,9 +38,6 @@ export const MicrofusionGunControl = (props, context) => {
                 </LabeledList.Item>
                 <LabeledList.Item label="Description">
                   {gun_desc}
-                </LabeledList.Item>
-                <LabeledList.Item label="Max attachments">
-                  {max_attachments}
                 </LabeledList.Item>
                 <LabeledList.Item label="Active Heat Dissipation">
                   {gun_heat_dissipation + ' C/s'}
@@ -247,6 +243,7 @@ export const MicrofusionGunControl = (props, context) => {
                               <Button
                                 key={index}
                                 icon={mod.icon}
+                                color={mod.color}
                                 content={mod.title}
                                 onClick={() => act('modify_attachment', {
                                   attachment_ref: attachment.ref,

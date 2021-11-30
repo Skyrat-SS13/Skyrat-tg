@@ -13,4 +13,15 @@
 /obj/projectile/beam/laser/microfusion
 	name = "microfusion laser"
 	icon = 'modular_skyrat/modules/microfusion/icons/projectiles.dmi'
+	/// Do we set people alight on impact?
+	var/superheated = FALSE
+	/// If so, how much firestacks?
+	var/fire_stacks = 0
 
+/obj/projectile/beam/laser/microfusion/on_hit(atom/target, blocked)
+	. = ..()
+	if(superheated)
+		if(isliving(target))
+			var/mob/living/living
+			living.fire_stacks += firestacks
+			living.IgniteMob()

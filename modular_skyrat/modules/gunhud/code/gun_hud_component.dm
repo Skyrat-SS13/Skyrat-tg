@@ -170,7 +170,7 @@
 		hud.icon_state = "microfusion_counter_[phase_emitter_state]"
 		hud.cut_overlays()
 		hud.maptext_x = -12
-		var/obj/item/ammo_casing/energy/shot = pew.ammo_type[pew.select]
+		var/obj/item/ammo_casing/energy/shot = pew.microfusion_lens
 		var/battery_percent = FLOOR(clamp(pew.cell.charge / pew.cell.maxcharge, 0, 1) * 100, 1)
 		var/shot_cost_percent = FLOOR(clamp(shot.e_cost / pew.cell.maxcharge, 0, 1) * 100, 1)
 		if(battery_percent > 99 || shot_cost_percent > 99)

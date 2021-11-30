@@ -55,8 +55,8 @@
 		"microfusion_cell_attachment_overcapacity",
 		"microfusion_cell_attachment_stabiliser",
 		"microfusion_gun_attachment_scatter",
+		"microfusion_gun_attachment_superheat",
 		"advanced_microfusion_phase_emitter",
-
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 
