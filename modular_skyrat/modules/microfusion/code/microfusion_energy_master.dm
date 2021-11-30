@@ -495,7 +495,36 @@
 	return TRUE
 
 /obj/item/gun/microfusion/shoot_live_shot(mob/living/user, pointblank, atom/pbtarget, message)
-	phase_emitter.add_heat(heat_per_shot)
+	if(recoil)
+		shake_camera(user, recoil + 1, recoil)
+
+	var/sound_freq_to_add = 0
+
+	if(phase_emitter)
+		sound_freq_to_add = phase_emitter.sound_freq
+
+	if(suppressed)
+		playsound(user, suppressed_sound, suppressed_volume, vary_fire_sound, ignore_walls = FALSE, extrarange = SILENCED_SOUND_EXTRARANGE, frequency = sound_freq_to_add, falloff_distance = 0)
+	else
+		playsound(user, fire_sound, fire_sound_volume, vary_fire_sound, frequency = sound_freq_to_add)
+		if(message)
+			if(pointblank)
+				user.visible_message(span_danger("[user] fires [src] point blank at [pbtarget]!"), \
+								span_danger("You fire [src] point blank at [pbtarget]!"), \
+								span_hear("You hear a gunshot!"), COMBAT_MESSAGE_RANGE, pbtarget)
+				to_chat(pbtarget, span_userdanger("[user] fires [src] point blank at you!"))
+				if(pb_knockback > 0 && ismob(pbtarget))
+					var/mob/PBT = pbtarget
+					var/atom/throw_target = get_edge_target_turf(PBT, user.dir)
+					PBT.throw_at(throw_target, pb_knockback, 2)
+			else
+				user.visible_message(span_danger("[user] fires [src]!"), \
+								span_danger("You fire [src]!"), \
+								span_hear("You hear a gunshot!"), COMBAT_MESSAGE_RANGE)
+	if(user.resting)
+		user.Immobilize(20, TRUE)
+
+		phase_emitter.add_heat(heat_per_shot)
 	if(phase_emitter.heat >= phase_emitter.max_heat)
 		if(ishuman(user))
 			var/mob/living/carbon/human/human = user
@@ -505,13 +534,14 @@
 	var/phase_emitter_failure_threshold = phase_emitter.max_heat / 100 * MICROFUSION_GUN_FAILURE_GRACE_PERCENT
 	if(phase_emitter.heat > phase_emitter_failure_threshold)
 		to_chat(user, span_danger("[src] fizzles violently!"))
-		var/fuck_me_prob = clamp((phase_emitter.heat - phase_emitter.max_heat) / 10, 1, 30)
+		var/fuck_me_prob = clamp((phase_emitter.heat - phase_emitter.max_heat) / 10, 1, MICROFUSION_GUN_MAX_FAILURE_CHANCE)
 		if(prob(fuck_me_prob))
 			process_failure(user)
-	return ..()
 
 /obj/item/gun/microfusion/proc/process_failure(mob/living/user)
-	to_chat(user, span_userdanger("[src] violently explodes!"))
+	user.visible_message(span_danger("[src] violently explodes in your hands!"), \
+						span_danger("[src] violently explodes in [user]'s hands!!"), \
+						span_hear("You hear an explosion!"), COMBAT_MESSAGE_RANGE)
 	eject_cell()
 	remove_emitter()
 	remove_all_attachments()

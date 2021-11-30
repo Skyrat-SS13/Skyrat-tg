@@ -26,6 +26,8 @@ Basically the heart of the gun, can be upgraded.
 	var/hacked = FALSE
 	/// The fire delay this emitter adds to the gun.
 	var/fire_delay = 0
+	/// The sound playback speed, used for overheating sound effects on fire.
+	var/sound_freq = 0
 
 /obj/item/microfusion_phase_emitter/Initialize(mapload)
 	. = ..()
@@ -49,7 +51,7 @@ Basically the heart of the gun, can be upgraded.
 	if(current_heat > max_heat)
 		integrity = integrity - current_heat / 1000 * delta_time
 
-	process_fire_delay()
+	process_fire_delay_and_sound()
 
 	if(integrity <= 0)
 		kill()
@@ -91,13 +93,17 @@ Basically the heart of the gun, can be upgraded.
 			else
 				icon_state = base_icon_state
 
-/obj/item/microfusion_phase_emitter/proc/process_fire_delay()
+/obj/item/microfusion_phase_emitter/proc/process_fire_delay_and_sound()
 	var/fire_delay_to_add = 0
+	var/sound_speed_to_add = 0
 	if(integrity < 100)
 		fire_delay_to_add = fire_delay_to_add + (100 - integrity) / 10
 
 	if(current_heat > max_heat)
 		fire_delay_to_add = fire_delay_to_add + (current_heat - max_heat) / 100 //Holy shit this emitter is tanking
+		sound_speed_to_add = sound_speed_to_add + (current_heat - max_heat) / 200
+
+	sound_freq = clamp(sound_speed_to_add, 0, 3)
 
 	fire_delay = fire_delay_to_add
 
@@ -138,7 +144,7 @@ Basically the heart of the gun, can be upgraded.
 /obj/item/microfusion_phase_emitter/proc/kill()
 	damaged = TRUE
 	name = "damaged [name]"
-	playsound(src, 'sound/effects/can_pop.ogg', 70)
+	playsound(src, 'modular_skyrat/modules/microfusion/sound/overheat.ogg', 70)
 	say("ERROR: Integrity failure!")
 	STOP_PROCESSING(SSobj, src)
 
