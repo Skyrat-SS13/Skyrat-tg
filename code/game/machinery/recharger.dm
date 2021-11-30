@@ -92,7 +92,7 @@
 				var/obj/item/stock_parts/cell/microfusion/inserting_cell = G
 				if(inserting_cell.chargerate <= 0)
 					to_chat(user, span_notice("[inserting_cell] cannot be recharged!"))
-					return 1 //???
+					return TRUE
 			//SKYRAT EDIT END
 			if(!user.transferItemToLoc(G, src))
 				return 1
