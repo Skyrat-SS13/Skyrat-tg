@@ -1,4 +1,4 @@
-#define TRUE_CHANGELING_REFORM_THRESHOLD 2 MINUTES
+#define TRUE_CHANGELING_REFORM_THRESHOLD 40 SECONDS // 40s so they cant jump in and out of it to reset the health
 #define TRUE_CHANGELING_PASSIVE_HEAL 3 //Amount of brute damage restored per tick
 
 //Changelings in their true form.
