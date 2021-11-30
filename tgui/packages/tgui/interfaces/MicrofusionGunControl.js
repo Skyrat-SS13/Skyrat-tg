@@ -161,6 +161,19 @@ export const MicrofusionGunControl = (props, context) => {
                         {phase_emitter_data.integrity + '%'}
                       </ProgressBar>
                     </LabeledList.Item>
+                    <LabeledList.Item label="Process Time Per Shot">
+                      <ProgressBar
+                        value={phase_emitter_data.process_time}
+                        minValue={0}
+                        maxValue={5}
+                        ranges={{
+                          "good": [0, 1],
+                          "average": [1, 3],
+                          "bad": [3, 5],
+                        }}>
+                        {phase_emitter_data.process_time + 's'}
+                      </ProgressBar>
+                    </LabeledList.Item>
                     {phase_emitter_data.heat_percent
                     >= phase_emitter_data.throttle_percentage && (
                       <LabeledList.Item>

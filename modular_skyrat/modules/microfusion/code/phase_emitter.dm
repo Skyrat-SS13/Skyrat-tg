@@ -42,11 +42,11 @@ Basically the heart of the gun, can be upgraded.
 		return
 	var/calculated_heat_dissipation_per_tick = heat_dissipation_per_tick
 	if(isspaceturf(get_turf(src)))
-		calculated_heat_dissipation_per_tick += 30 // Passive cooling in space boost!
+		calculated_heat_dissipation_per_tick += PHASE_HEAT_DISSIPATION_BONUS_SPACE // Passive cooling in space boost!
 	if(parent_gun)
 		calculated_heat_dissipation_per_tick += parent_gun.heat_dissipation_bonus
 	else
-		calculated_heat_dissipation_per_tick += 10 //We get some passive cooling from being out of the gun.
+		calculated_heat_dissipation_per_tick += PHASE_HEAT_DISSIPATION_BONUS_AIR //We get some passive cooling from being out of the gun.
 	current_heat = clamp(current_heat - calculated_heat_dissipation_per_tick * delta_time, 0, INFINITY)
 	if(current_heat > max_heat)
 		integrity = integrity - current_heat / 1000 * delta_time

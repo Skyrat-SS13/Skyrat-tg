@@ -35,6 +35,11 @@
 /// The error message returned when the phase emitter has reached it's htermal throttle.
 #define PHASE_FAILURE_THROTTLE "PHASE EMITTER: Thermal throttle active!"
 
+/// The heat dissipation bonus of an emitter being in space!
+#define PHASE_HEAT_DISSIPATION_BONUS_SPACE 30
+/// The heat dissipation bonus of an emitter being in air!
+#define PHASE_HEAT_DISSIPATION_BONUS_AIR 10
+
 // Slot defines for the gun.
 /// The gun barrel slot.
 #define GUN_SLOT_BARREL "barrel"

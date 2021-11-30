@@ -524,7 +524,8 @@
 	if(user.resting)
 		user.Immobilize(20, TRUE)
 
-		phase_emitter.add_heat(heat_per_shot)
+	phase_emitter.add_heat(heat_per_shot)
+
 	if(phase_emitter.heat >= phase_emitter.max_heat)
 		if(ishuman(user))
 			var/mob/living/carbon/human/human = user
