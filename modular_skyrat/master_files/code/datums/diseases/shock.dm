@@ -34,7 +34,7 @@
 				to_chat(affected_mob, span_warning(pick("You feel panicky!", "You feel like you're about to have a heart attack!")))
 				affected_mob.add_confusion(rand(6,8))
 			if(DT_PROB(0.5, delta_time))
-				affected_mob.vomit()
+				affected_mob.vomit(stun = FALSE)
 		if(3) //the big one: the heart attack
 			if(DT_PROB(5, delta_time) && !affected_mob.undergoing_cardiac_arrest() && affected_mob.can_heartattack())
 				affected_mob.set_heartattack(TRUE)
