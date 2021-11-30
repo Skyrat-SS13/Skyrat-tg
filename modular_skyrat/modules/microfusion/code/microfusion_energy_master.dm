@@ -111,6 +111,8 @@
 	AddElement(/datum/element/weapon_description, attached_proc = .proc/add_notes_energy)
 
 /obj/item/gun/microfusion/Destroy()
+	if(microfusion_lens)
+		QDEL_NULL(microfusion_lens)
 	if(cell)
 		cell.parent_gun = null
 		QDEL_NULL(cell)
@@ -572,7 +574,7 @@
 
 /obj/item/gun/microfusion/proc/update_microfusion_lens()
 	if(!microfusion_lens)
-		microfusion_lens = new microfusion_lens
+		microfusion_lens = new(src)
 	fire_sound = microfusion_lens.fire_sound
 	fire_sound_volume = microfusion_lens.fire_sound_volume
 	fire_delay = microfusion_lens.delay
