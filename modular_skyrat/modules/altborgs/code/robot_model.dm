@@ -37,13 +37,13 @@
 	)
 
 //SERVICE
-/obj/item/robot_model/service/skyrat
-	name = "Skyrat Service"
+/obj/item/robot_model/service
 	special_light_key = null
 	borg_skins = list(
 		"Waitress" = list(SKIN_ICON_STATE = "service_f", SKIN_LIGHT_KEY = "service"),
 		"Butler" = list(SKIN_ICON_STATE = "service_m", SKIN_LIGHT_KEY = "service"),
 		"Bro" = list(SKIN_ICON_STATE = "brobot", SKIN_LIGHT_KEY = "service"),
+		"Kent" = list(SKIN_ICON_STATE = "kent", SKIN_LIGHT_KEY = "medical", SKIN_HAT_OFFSET = 3),
 		"Can" = list(SKIN_ICON_STATE = "kent", SKIN_LIGHT_KEY = "medical", SKIN_HAT_OFFSET = 3),
 		"Tophat" = list(SKIN_ICON_STATE = "tophat", SKIN_HAT_OFFSET = INFINITY),
 		"Sleek" = list(SKIN_ICON_STATE = "sleekserv", SKIN_ICON = CYBORG_ICON_SERVICE),
@@ -63,12 +63,12 @@
 	)
 
 //MINING
-/obj/item/robot_model/miner/skyrat
-	name = "Skyrat Miner"
+/obj/item/robot_model/miner
 	special_light_key = null
 	borg_skins = list(
-		"Lavaland" = list(SKIN_ICON_STATE = "miner"),
+		"Lavaland" = list(SKIN_ICON_STATE = "miner", SKIN_LIGHT_KEY = "miner"),
 		"Asteroid" = list(SKIN_ICON_STATE = "minerOLD", SKIN_LIGHT_KEY = "miner"),
+		"Spider Miner" = list(SKIN_ICON_STATE = "spidermin", SKIN_LIGHT_KEY = "miner"),
 		"Droid" = list(SKIN_ICON_STATE = "miner", SKIN_ICON = CYBORG_ICON_MINING, SKIN_HAT_OFFSET = 4),
 		"Sleek" = list(SKIN_ICON_STATE = "sleekmin", SKIN_ICON = CYBORG_ICON_MINING),
 		"Can" = list(SKIN_ICON_STATE = "canmin", SKIN_ICON = CYBORG_ICON_MINING),
@@ -302,7 +302,7 @@
 		"Medical" = list(SKIN_ICON_STATE = "ninja_medical", SKIN_ICON = CYBORG_ICON_NINJA),
 		"Assault" = list(SKIN_ICON_STATE = "ninja_sec", SKIN_ICON = CYBORG_ICON_NINJA),
 		"Heavy" = list(SKIN_ICON_STATE = "ninjaheavy", SKIN_ICON = CYBORG_ICON_NINJA),
-		"Miss m" = list(SKIN_ICON_STATE = "missm_ninja", SKIN_ICON = CYBORG_ICON_NINJA),
+		"Miss M" = list(SKIN_ICON_STATE = "missm_ninja", SKIN_ICON = CYBORG_ICON_NINJA),
 		"Spider" = list(SKIN_ICON_STATE = "ninjaspider", SKIN_ICON = CYBORG_ICON_NINJA),
 		"BootyBorg" = list(SKIN_ICON_STATE = "bootyninja", SKIN_ICON = CYBORG_ICON_NINJA),
 		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootyninja", SKIN_ICON = CYBORG_ICON_NINJA)

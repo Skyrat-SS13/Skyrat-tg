@@ -68,25 +68,6 @@
 	if(hands)
 		hands.icon = (model.model_select_alternate_icon ? model.model_select_alternate_icon : initial(hands.icon))
 
-/mob/living/silicon/robot/pick_model()
-	if(model.type != /obj/item/robot_model)
-		return
-
-	if(wires.is_cut(WIRE_RESET_MODEL))
-		to_chat(src,span_userdanger("ERROR: Module installer reply timeout. Please check internal connections."))
-		return
-
-	var/list/skyratmodel = list(
-	"Departmental Modules" = "next",
-	"Skyrat Service(alt skins)" = /obj/item/robot_model/service/skyrat,
-	"Skyrat Miner(alt skins)" = /obj/item/robot_model/miner/skyrat
-	)
-	var/input_model_sk = input("Please select a module, or choose a reskin.", "Robot", null, null) as null|anything in sort_list(skyratmodel)
-	if(input_model_sk == "Departmental Modules" || !input_model_sk || model.type != /obj/item/robot_model)
-		return ..()
-	else
-		model.transform_to(skyratmodel[input_model_sk])
-		return
 /**
  * Safe check of the cyborg's model_features list to see if they're 'wide'/dogborg/drakeborg/etc.
  *
