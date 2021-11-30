@@ -402,6 +402,34 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/tactical_skirt
 	name = "Tactitool Skirtleneck"
 	item_path = /obj/item/clothing/under/syndicate/tacticool/skirt/sensors
+	
+/datum/loadout_item/under/miscellaneous/cream_sweater
+	name = "cream sweater"
+	item_path = /obj/item/clothing/under/sweater
+
+/datum/loadout_item/under/miscellaneous/black_sweater
+	name = "black sweater"
+	item_path = /obj/item/clothing/under/sweater/black
+
+/datum/loadout_item/under/miscellaneous/purple_sweater
+	name = "purple sweater"
+	item_path = /obj/item/clothing/under/sweater/purple
+
+/datum/loadout_item/under/miscellaneous/green_sweater
+	name = "green sweater"
+	item_path = /obj/item/clothing/under/sweater/green
+
+/datum/loadout_item/under/miscellaneous/red_sweater
+	name = "red sweater"
+	item_path = /obj/item/clothing/under/sweater/red
+
+/datum/loadout_item/under/miscellaneous/blue_sweater
+	name = "blue sweater"
+	item_path = /obj/item/clothing/under/sweater/blue
+
+/datum/loadout_item/under/miscellaneous/keyhole
+	name = "keyhole sweater"
+	item_path = /obj/item/clothing/under/sweater/keyhole
 
 /datum/loadout_item/under/miscellaneous/blacknwhite
 	name = "Classic Prisoner Jumpsuit"

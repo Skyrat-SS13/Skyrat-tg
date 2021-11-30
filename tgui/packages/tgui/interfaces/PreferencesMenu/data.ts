@@ -46,6 +46,8 @@ export type ServerSpeciesData = {
   liked_food: Food[];
   disliked_food: Food[];
   toxic_food: Food[];
+
+  veteran_only: boolean; // SKYRAT EDIT - Veteran quirks
 };
 
 export type Quirk = {

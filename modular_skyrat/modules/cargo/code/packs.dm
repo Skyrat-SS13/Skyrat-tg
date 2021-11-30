@@ -245,7 +245,7 @@
 	name = "Atmospherics Hardsuit Crate"
 	desc = "Contains a single hardsuit, built to standard atmospherics suit specifications."
 	access = ACCESS_ENGINE_EQUIP
-	contains = list(/obj/item/clothing/suit/space/hardsuit/engine/atmos)
+	contains = list(/obj/item/clothing/suit/space/hardsuit/atmos)
 	cost = CARGO_CRATE_VALUE * 16
 	crate_name = "atmospherics hardsuit crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering

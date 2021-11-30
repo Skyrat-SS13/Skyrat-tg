@@ -154,7 +154,7 @@
 	new /obj/item/cartridge/captain(src)
 	new /obj/item/radio/headset/heads/nanotrasen_representative/alt(src)
 	new /obj/item/radio/headset/heads/nanotrasen_representative(src)
-	new /obj/item/clothing/glasses/sunglasses/gar/supergar(src)
+	new /obj/item/clothing/glasses/sunglasses/gar/giga(src)
 	new /obj/item/clothing/gloves/combat(src)
 	new /obj/item/storage/box/gunset/nanotrasen_representative(src)
 	new /obj/item/storage/photo_album/personal(src)
