@@ -28,6 +28,12 @@ These are basically advanced cells.
 	microfusion_readout = TRUE
 	/// Hard ref to the parent gun.
 	var/obj/item/gun/microfusion/parent_gun
+	/// Do we play an alarm when empty?
+	var/empty_alarm = TRUE
+	/// What sound do we play when empty?
+	var/empty_alarm_sound = 'sound/weapons/gun/general/empty_alarm.ogg'
+	/// Do we have the self charging upgrade?
+	var/self_charging = FALSE
 
 /obj/item/stock_parts/cell
 	/// Is this cell stabilised? (used in microfusion guns)
@@ -54,6 +60,13 @@ These are basically advanced cells.
 	var/prob_percent = charge / 100 * severity
 	if(prob(prob_percent))
 		process_instability()
+
+/obj/item/stock_parts/cell/microfusion/use(amount)
+	if(charge >= amount)
+		var/check_if_empty = charge - amount
+		if(check_if_empty < amount && empty_alarm && !self_charging)
+			playsound(src, empty_alarm_sound, 50)
+	return ..()
 
 /obj/item/stock_parts/cell/microfusion/proc/process_instability()
 	var/seconds_to_explode = rand(MICROFUSION_CELL_FAILURE_LOWER, MICROFUSION_CELL_FAILURE_UPPER)
@@ -143,9 +156,10 @@ These are basically advanced cells.
 	/// The probability of it failing
 	var/fail_prob = 10
 
-/obj/item/stock_parts/cell/microfusion/makeshift/use()
+/obj/item/stock_parts/cell/microfusion/makeshift/use(amount)
 	if(prob(fail_prob))
 		process_instability()
+	return ..()
 
 /obj/item/stock_parts/cell/microfusion/enhanced
 	name = "enhanced microfusion cell"

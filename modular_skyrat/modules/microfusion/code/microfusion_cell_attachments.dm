@@ -110,6 +110,14 @@ If the cell isn't stabilised by a stabiliser, it may emit a radaition pulse.
 	/// The amount of charge this cell will passively gain!
 	var/self_charge_amount = 20
 
+/obj/item/microfusion_cell_attachment/selfcharging/add_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
+	. = ..()
+	microfusion_cell.self_charging = TRUE
+
+/obj/item/microfusion_cell_attachment/selfcharging/remove_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
+	. = ..()
+	microfusion_cell.self_charging = FALSE
+
 /obj/item/microfusion_cell_attachment/selfcharging/process_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell, delta_time)
 	if(microfusion_cell.charge < microfusion_cell.maxcharge)
 		microfusion_cell.charge = clamp(microfusion_cell.charge + (microfusion_cell.chargerate + self_charge_amount * delta_time * 0.5), 0, microfusion_cell.maxcharge)

@@ -24,6 +24,8 @@ Basically the heart of the gun, can be upgraded.
 	var/obj/item/gun/microfusion/parent_gun
 	/// Are we "hacked" thus allowing overclocking?
 	var/hacked = FALSE
+	/// The fire delay this emitter adds to the gun.
+	var/fire_delay = 0
 
 /obj/item/microfusion_phase_emitter/Initialize(mapload)
 	. = ..()
@@ -46,6 +48,9 @@ Basically the heart of the gun, can be upgraded.
 	current_heat = clamp(current_heat - calculated_heat_dissipation_per_tick * delta_time, 0, INFINITY)
 	if(current_heat > max_heat)
 		integrity = integrity - current_heat / 1000 * delta_time
+
+	process_fire_delay()
+
 	if(integrity <= 0)
 		kill()
 	update_appearance()
@@ -86,6 +91,16 @@ Basically the heart of the gun, can be upgraded.
 			else
 				icon_state = base_icon_state
 
+/obj/item/microfusion_phase_emitter/proc/process_fire_delay()
+	var/fire_delay_to_add = 0
+	if(integrity < 100)
+		fire_delay_to_add = fire_delay_to_add + (100 - integrity) / 10
+
+	if(current_heat > max_heat)
+		fire_delay_to_add = fire_delay_to_add + (current_heat - max_heat) / 100 //Holy shit this emitter is tanking
+
+	fire_delay = fire_delay_to_add
+
 /obj/item/microfusion_phase_emitter/proc/get_heat_icon_state()
 	switch(get_heat_percent())
 		if(40 to 69)
@@ -109,14 +124,16 @@ Basically the heart of the gun, can be upgraded.
 /obj/item/microfusion_phase_emitter/proc/get_heat_percent()
 	return round(current_heat / max_heat * 100)
 
-/obj/item/microfusion_phase_emitter/proc/generate_shot(heat_to_add)
+/obj/item/microfusion_phase_emitter/proc/check_emitter()
 	if(damaged)
 		return PHASE_FAILURE_DAMAGED
 	if(get_heat_percent() >= throttle_percentage)
 		return PHASE_FAILURE_THROTTLE
+	return SHOT_SUCCESS
+
+/obj/item/microfusion_phase_emitter/proc/add_heat(heat_to_add)
 	current_heat += heat_to_add
 	update_appearance()
-	return SHOT_SUCCESS
 
 /obj/item/microfusion_phase_emitter/proc/kill()
 	damaged = TRUE

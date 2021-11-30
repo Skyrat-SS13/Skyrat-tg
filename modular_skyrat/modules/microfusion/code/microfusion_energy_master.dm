@@ -72,6 +72,8 @@
 	var/heat_dissipation_bonus = 0
 	/// What slots does this gun have?
 	var/attachment_slots = list(GUN_SLOT_BARREL, GUN_SLOT_UNDERBARREL, GUN_SLOT_RAIL, GUN_SLOT_UNIQUE)
+	/// Our base firedelay.
+	var/base_fire_delay = 0
 
 /obj/item/gun/microfusion/emp_act(severity)
 	. = ..()
@@ -103,6 +105,7 @@
 	update_appearance()
 	AddComponent(/datum/component/ammo_hud)
 	RegisterSignal(src, COMSIG_ITEM_RECHARGED, .proc/instant_recharge)
+	base_fire_delay = fire_delay
 
 
 
@@ -410,8 +413,11 @@
 
 	if(burst_size > 1)
 		firing_burst = TRUE
+		var/fire_delay_to_add = 0
+		if(phase_emitter)
+			fire_delay_to_add = phase_emitter.fire_delay
 		for(var/i = 1 to burst_size)
-			addtimer(CALLBACK(src, .proc/process_burst, user, target, message, params, zone_override, sprd, randomized_gun_spread, randomized_bonus_spread, rand_spr, i), fire_delay * (i - 1))
+			addtimer(CALLBACK(src, .proc/process_burst, user, target, message, params, zone_override, sprd, randomized_gun_spread, randomized_bonus_spread, rand_spr, i), (fire_delay + fire_delay_to_add) * (i - 1))
 	else
 		if(chambered)
 			if(HAS_TRAIT(user, TRAIT_PACIFISM)) // If the user has the pacifist trait, then they won't be able to fire [src] if the round chambered inside of [src] is lethal.
@@ -435,7 +441,10 @@
 		process_chamber()
 		update_appearance()
 		semicd = TRUE
-		addtimer(CALLBACK(src, .proc/reset_semicd), fire_delay)
+		var/fire_delay_to_add = 0
+		if(phase_emitter)
+			fire_delay_to_add = phase_emitter.fire_delay
+		addtimer(CALLBACK(src, .proc/reset_semicd), fire_delay + fire_delay_to_add)
 
 	if(user)
 		user.update_inv_hands()
@@ -485,15 +494,39 @@
 	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
 	return TRUE
 
+/obj/item/gun/microfusion/shoot_live_shot(mob/living/user, pointblank, atom/pbtarget, message)
+	phase_emitter.add_heat(heat_per_shot)
+	if(phase_emitter.heat >= phase_emitter.max_heat)
+		if(ishuman(user))
+			var/mob/living/carbon/human/human = user
+			var/obj/item/bodypart/affecting = human.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
+			if(affecting?.receive_damage( 0, 1 )) // 1 burn damage
+				to_chat(user, span_warning("[src] burns your hand, it's too hot!"))
+	var/phase_emitter_failure_threshold = phase_emitter.max_heat / 100 * MICROFUSION_GUN_FAILURE_GRACE_PERCENT
+	if(phase_emitter.heat > phase_emitter_failure_threshold)
+		to_chat(user, span_danger("[src] fizzles violently!"))
+		var/fuck_me_prob = clamp((phase_emitter.heat - phase_emitter.max_heat) / 10, 1, 30)
+		if(prob(fuck_me_prob))
+			process_failure(user)
+	return ..()
+
+/obj/item/gun/microfusion/proc/process_failure(mob/living/user)
+	to_chat(user, span_userdanger("[src] violently explodes!"))
+	eject_cell()
+	remove_emitter()
+	remove_all_attachments()
+	explosion(src, 0, 0, 1, 1)
+
 /obj/item/gun/microfusion/proc/process_microfusion()
 	if(attachments.len)
 		for(var/obj/item/microfusion_gun_attachment/attachment in attachments)
 			attachment.process_fire(src, chambered)
+	return TRUE
 
 /obj/item/gun/microfusion/proc/process_emitter()
 	if(!phase_emitter)
 		return SHOT_FAILURE_NO_EMITTER
-	var/phase_emitter_process = phase_emitter.generate_shot(heat_per_shot)
+	var/phase_emitter_process = phase_emitter.check_emitter()
 	if(phase_emitter_process != SHOT_SUCCESS)
 		return phase_emitter_process
 	return SHOT_SUCCESS
@@ -704,6 +737,7 @@
 			"damaged" = phase_emitter.damaged,
 			"hacked" = phase_emitter.hacked,
 			"heat_percent" = phase_emitter.get_heat_percent(),
+			"process_time" = phase_emitter.fire_delay,
 		)
 	else
 		data["has_emitter"] = FALSE

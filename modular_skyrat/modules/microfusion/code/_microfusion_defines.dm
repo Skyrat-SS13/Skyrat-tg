@@ -20,6 +20,8 @@
 /// Radiation failure.
 #define MICROFUSION_CELL_FAILURE_TYPE_RADIATION 4
 
+/// Percent chance grace period for a gun to fail.
+#define MICROFUSION_GUN_FAILURE_GRACE_PERCENT 20
 
 /// Returned when the phase emtiter process is successful.
 #define SHOT_SUCCESS "success"

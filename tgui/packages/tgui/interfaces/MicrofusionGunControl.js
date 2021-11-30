@@ -145,6 +145,9 @@ export const MicrofusionGunControl = (props, context) => {
                     <LabeledList.Item label="Passive Heat Dissipation">
                       {phase_emitter_data.heat_dissipation_per_tick + ' C/s'}
                     </LabeledList.Item>
+                    <LabeledList.Item label="Total Heat Dissipation">
+                      {phase_emitter_data.heat_dissipation_per_tick + gun_heat_dissipation + ' C/s'}
+                    </LabeledList.Item>
                     <LabeledList.Item label="Integrity">
                       <ProgressBar
                         value={phase_emitter_data.integrity}

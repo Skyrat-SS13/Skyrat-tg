@@ -158,22 +158,15 @@ The gun can fire X-RAY shots.
 	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter)
 	heat_addition = 90
 
-/obj/item/microfusion_gun_attachment/xray/run_attachment(obj/item/gun/microfusion/microfusion_gun)
-	. = ..()
-	microfusion_gun.heat_per_shot += heat_addition
-
 /obj/item/microfusion_gun_attachment/xray/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
 	. = ..()
+	chambered.fire_sound = 'modular_skyrat/modules/microfusion/sound/incinerate.ogg'
 	chambered.loaded_projectile.projectile_piercing = PASSCLOSEDTURF|PASSGRILLE|PASSGLASS
-
-/obj/item/microfusion_gun_attachment/xray/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
-	. = ..()
-	microfusion_gun.heat_per_shot -= heat_addition
 
 /*
 GRIP ATTACHMENT
 
-Does nothing right now.
+Greatly reduces recoil and spread.
 */
 /obj/item/microfusion_gun_attachment/grip
 	name = "grip attachment"
@@ -240,6 +233,8 @@ Converts shots to STAMNINA damage.
 	. = ..()
 	chambered.loaded_projectile?.damage_type = STAMINA
 	chambered.loaded_projectile?.icon_state = "disabler"
+	chambered.loaded_projectile?.light_color = COLOR_DARK_CYAN
+	chambered.fire_sound = 'modular_skyrat/modules/microfusion/sound/burn.ogg'
 
 /obj/item/microfusion_gun_attachment/undercharger/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
