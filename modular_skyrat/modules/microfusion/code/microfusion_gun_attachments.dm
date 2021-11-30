@@ -154,7 +154,7 @@ X-RAY ATTACHMENT
 The gun can fire X-RAY shots.
 */
 /obj/item/microfusion_gun_attachment/xray
-	name = "quantum phase inverter emitter array" //Yes quantum makes things sound cooler.
+	name = "quantum phase inverter array" //Yes quantum makes things sound cooler.
 	desc = "Experimental technology that inverts the central phase emitter causing the wave frequency to shift into X-ray. CAUTION: Phase emitter heats up very quickly."
 	icon_state = "attachment_xray"
 	slot = GUN_SLOT_BARREL
