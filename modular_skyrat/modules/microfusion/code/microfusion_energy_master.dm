@@ -530,23 +530,8 @@
 		if(ishuman(user))
 			var/mob/living/carbon/human/human = user
 			var/obj/item/bodypart/affecting = human.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
-			if(affecting?.receive_damage( 0, 1 )) // 1 burn damage
+			if(affecting?.receive_damage( 0, 5 )) // 1 burn damage
 				to_chat(user, span_warning("[src] burns your hand, it's too hot!"))
-	var/phase_emitter_failure_threshold = phase_emitter.max_heat / 100 * MICROFUSION_GUN_FAILURE_GRACE_PERCENT
-	if(phase_emitter.current_heat > phase_emitter_failure_threshold)
-		to_chat(user, span_danger("[src] fizzles violently!"))
-		var/fuck_me_prob = clamp((phase_emitter.current_heat - phase_emitter.max_heat) / 10, 1, MICROFUSION_GUN_MAX_FAILURE_CHANCE)
-		if(prob(fuck_me_prob))
-			process_failure(user)
-
-/obj/item/gun/microfusion/proc/process_failure(mob/living/user)
-	user.visible_message(span_danger("[src] violently explodes in your hands!"), \
-						span_danger("[src] violently explodes in [user]'s hands!!"), \
-						span_hear("You hear an explosion!"), COMBAT_MESSAGE_RANGE)
-	eject_cell()
-	remove_emitter()
-	remove_all_attachments()
-	explosion(src, 0, 0, 1, 1)
 
 /obj/item/gun/microfusion/proc/process_microfusion()
 	if(attachments.len)
