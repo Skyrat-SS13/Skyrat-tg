@@ -58,7 +58,7 @@ These are basically advanced cells.
 /obj/item/stock_parts/cell/microfusion/emp_act(severity)
 	. = ..()
 	var/prob_percent = charge / 100 * severity
-	if(prob(prob_percent))
+	if(prob(prob_percent) && !meltdown && !stabilised)
 		process_instability()
 
 /obj/item/stock_parts/cell/microfusion/use(amount)
@@ -70,6 +70,7 @@ These are basically advanced cells.
 
 /obj/item/stock_parts/cell/microfusion/proc/process_instability()
 	var/seconds_to_explode = rand(MICROFUSION_CELL_FAILURE_LOWER, MICROFUSION_CELL_FAILURE_UPPER)
+	meltdown = TRUE
 	say("Malfunction in [seconds_to_explode / 10] seconds!")
 	playsound(src, 'sound/machines/warning-buzzer.ogg', 30, FALSE, FALSE)
 	add_filter("rad_glow", 2, list("type" = "outline", "color" = "#ff5e0049", "size" = 2))
@@ -88,6 +89,7 @@ These are basically advanced cells.
 			empulse(get_turf(src), MICROFUSION_CELL_EMP_HEAVY_FAILURE, MICROFUSION_CELL_EMP_LIGHT_FAILURE, FALSE)
 		if(MICROFUSION_CELL_FAILURE_TYPE_RADIATION)
 			radiation_pulse(src, MICROFUSION_CELL_RADIATION_RANGE_FAILURE, RAD_MEDIUM_INSULATION)
+	meltdown = FALSE
 
 /obj/item/stock_parts/cell/microfusion/update_overlays()
 	. = ..()
