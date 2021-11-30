@@ -20,6 +20,8 @@
 	scan_machinery()
 
 /obj/machinery/computer/prisoner/gulag_teleporter_computer/ui_interact(mob/user, datum/tgui/ui)
+	to_chat(user, span_warning("The Gulag Teleporter is currently disabled server-side pending approval via rules!<br>It is not advised to utilize the Gulag system manually at this time, at risk of a potential ban occuring due to a lack of written policy on the Gulag.")) // Skyrat EDIT ADDITION
+	return // SKYRAT EDIT ADDITION
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "GulagTeleporterConsole", name)
