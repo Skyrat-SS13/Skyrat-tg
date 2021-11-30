@@ -15,7 +15,11 @@ Basically the heart of the gun, can be upgraded.
 	/// Thermal throttle percentage
 	var/throttle_percentage = 80
 	/// How much heat it dissipates passively
-	var/heat_dissipation_per_tick = 10
+	var/heat_dissipation_per_tick = 20
+	/// Active cooling system
+	var/cooling_system = FALSE
+	/// How quickly does the active cooling system cool - 1/1 ratio of cell charge to cooling point
+	var/cooling_system_rate = 20
 	/// What is our dynamic integrity?
 	var/integrity = 100
 	/// Are we fucked?
@@ -28,6 +32,7 @@ Basically the heart of the gun, can be upgraded.
 	var/fire_delay = 0
 	/// The sound playback speed, used for overheating sound effects on fire.
 	var/sound_freq = 0
+
 
 /obj/item/microfusion_phase_emitter/Initialize(mapload)
 	. = ..()
@@ -47,16 +52,38 @@ Basically the heart of the gun, can be upgraded.
 		calculated_heat_dissipation_per_tick += parent_gun.heat_dissipation_bonus
 	else
 		calculated_heat_dissipation_per_tick += PHASE_HEAT_DISSIPATION_BONUS_AIR //We get some passive cooling from being out of the gun.
-	current_heat = clamp(current_heat - calculated_heat_dissipation_per_tick * delta_time, 0, INFINITY)
+	if(cooling_system && parent_gun && parent_gun.cell && parent_gun.cell.use(cooling_system_rate))
+		calculated_heat_dissipation_per_tick += cooling_system_rate
+	else
+		cooling_system = FALSE
+	current_heat = clamp(current_heat - (calculated_heat_dissipation_per_tick * delta_time) * 0.5, 0, INFINITY)
 	if(current_heat > max_heat)
-		integrity = integrity - current_heat / 1000 * delta_time
+		integrity = integrity - current_heat / 1000 * delta_time * 0.5
 
 	process_fire_delay_and_sound()
+
+
 
 	if(integrity <= 0)
 		kill()
 	update_appearance()
 	parent_gun?.update_appearance()
+
+/obj/item/microfusion_phase_emitter/proc/toggle_cooling_system(mob/user)
+	if(!parent_gun)
+		return
+	if(!cooling_system && !parent_gun.cell)
+		if(user)
+			to_chat(user, span_warning("You need a cell to turn on the cooling system."))
+		return
+
+	if(cooling_system)
+		cooling_system = FALSE
+	else
+		cooling_system = TRUE
+
+	if(user)
+		to_chat(user, span_notice("You toggle the cooling system [cooling_system ? "ON" : "OFF"]."))
 
 /obj/item/microfusion_phase_emitter/multitool_act(mob/living/user, obj/item/tool)
 	if(hacked)
@@ -122,6 +149,7 @@ Basically the heart of the gun, can be upgraded.
 		. += span_notice("Heat capacity: [get_heat_percent()]%")
 		. += span_notice("Integrity: [integrity]%")
 		. += span_notice("Thermal throttle: [throttle_percentage]%")
+		. += span_notice("Cooling system: [cooling_system ? "enabled, cooling at [cooling_system_rate] C/s" : "disabled"].")
 
 /obj/item/microfusion_phase_emitter/proc/get_heat_percent()
 	return round(current_heat / max_heat * 100)
@@ -149,7 +177,8 @@ Basically the heart of the gun, can be upgraded.
 	desc = "The core of a microfusion projection weapon, produces the laser."
 	max_heat = 1500
 	throttle_percentage = 85
-	heat_dissipation_per_tick = 20
+	heat_dissipation_per_tick = 30
+	cooling_system_rate = 30
 	integrity = 120
 	color = "#ffffcc"
 
@@ -159,6 +188,7 @@ Basically the heart of the gun, can be upgraded.
 	max_heat = 2000
 	throttle_percentage = 85
 	heat_dissipation_per_tick = 40
+	cooling_system_rate = 40
 	integrity = 150
 	color = "#99ffcc"
 
@@ -167,6 +197,7 @@ Basically the heart of the gun, can be upgraded.
 	desc = "The core of a microfusion projection weapon, produces the laser."
 	max_heat = 2500
 	throttle_percentage = 90
-	heat_dissipation_per_tick = 60
+	heat_dissipation_per_tick = 50
+	cooling_system_rate = 50
 	integrity = 200
 	color = "#66ccff"

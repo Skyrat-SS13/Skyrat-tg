@@ -109,8 +109,6 @@
 	RegisterSignal(src, COMSIG_ITEM_RECHARGED, .proc/instant_recharge)
 	base_fire_delay = fire_delay
 
-
-
 /obj/item/gun/microfusion/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
@@ -153,10 +151,9 @@
 	if (!ammo_type || !cell || !phase_emitter)
 		return
 	var/obj/item/ammo_casing/energy/AC = ammo_type[select]
-	if(cell.charge >= AC.e_cost) //if there's enough power in the cell...
-		chambered = AC //...prepare a new shot based on the current ammo type selected
-		if(!chambered.loaded_projectile)
-			chambered.newshot()
+	chambered = AC //...prepare a new shot based on the current ammo type selected
+	if(!chambered.loaded_projectile)
+		chambered.newshot()
 
 /obj/item/gun/microfusion/handle_chamber()
 	if(chambered && !chambered.loaded_projectile && cell) //if loaded_projectile is null, i.e the shot has been fired...
@@ -764,6 +761,8 @@
 			"hacked" = phase_emitter.hacked,
 			"heat_percent" = phase_emitter.get_heat_percent(),
 			"process_time" = phase_emitter.fire_delay,
+			"cooling_system" = phase_emitter.cooling_system,
+			"cooling_system_rate" = phase_emitter.cooling_system_rate,
 		)
 	else
 		data["has_emitter"] = FALSE
@@ -840,4 +839,8 @@
 			if(!to_modify)
 				return
 			to_modify.run_modify_data(params["modify_ref"], usr)
+		if("toggle_cooling_system")
+			if(!phase_emitter)
+				return
+			phase_emitter.toggle_cooling_system(usr)
 

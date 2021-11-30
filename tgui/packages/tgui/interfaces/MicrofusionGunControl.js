@@ -145,8 +145,21 @@ export const MicrofusionGunControl = (props, context) => {
                     <LabeledList.Item label="Passive Heat Dissipation">
                       {phase_emitter_data.heat_dissipation_per_tick + ' C/s'}
                     </LabeledList.Item>
+                    <LabeledList.Item label="Cooling System">
+                      <Button
+                        icon="snowflake"
+                        content={phase_emitter_data.cooling_system ? "ONLINE" : "OFFLINE"}
+                        color={phase_emitter_data.cooling_system ? "blue" : "bad"}
+                        disabled={!has_cell}
+                        onClick={() => act('toggle_cooling_system')} />
+                      {' Cooling System Rate: ' + phase_emitter_data.cooling_system_rate + ' C/s'}
+                    </LabeledList.Item>
                     <LabeledList.Item label="Total Heat Dissipation">
-                      {phase_emitter_data.heat_dissipation_per_tick + gun_heat_dissipation + ' C/s'}
+                      {phase_emitter_data.cooling_system ? (
+                        phase_emitter_data.heat_dissipation_per_tick + gun_heat_dissipation + phase_emitter_data.cooling_system_rate + ' C/s'
+                      ) : (
+                        phase_emitter_data.heat_dissipation_per_tick + gun_heat_dissipation + ' C/s'
+                      )}
                     </LabeledList.Item>
                     <LabeledList.Item label="Integrity">
                       <ProgressBar
