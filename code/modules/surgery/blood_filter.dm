@@ -31,7 +31,10 @@
 /datum/surgery_step/filter_blood/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	if(target.reagents?.total_volume)
 		for(var/datum/reagent/chem as anything in target.reagents.reagent_list)
-			target.reagents.remove_reagent(chem.type, min(chem.volume * 0.22, 10))
+			//SKYRAT EDIT BEGIN - Blood filtering no longer filters out formaldehyde
+			if(!istype(chem, /datum/reagent/toxin/formaldehyde))
+				target.reagents.remove_reagent(chem.type, min(chem.volume * 0.22, 10))
+			//SKYRAT EDIT END - Blood filtering no longer filters out formaldehyde
 	display_results(user, target, span_notice("\The [tool] pings as it finishes filtering [target]'s blood."),
 		span_notice("\The [tool] pings as it stops pumping [target]'s blood."),
 		"\The [tool] pings as it stops pumping.")
