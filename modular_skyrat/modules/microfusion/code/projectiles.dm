@@ -22,6 +22,6 @@
 	. = ..()
 	if(superheated)
 		if(isliving(target))
-			var/mob/living/living
+			var/mob/living/living = target
 			living.fire_stacks += fire_stacks
 			living.IgniteMob()
