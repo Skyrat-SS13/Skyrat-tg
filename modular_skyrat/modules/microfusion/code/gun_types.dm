@@ -11,4 +11,7 @@
 	gun_count = 4
 	guns = list(
 		/obj/item/gun/microfusion/mcr01,
+		/obj/item/gun/microfusion/mcr01,
+		/obj/item/gun/microfusion/mcr01,
+		/obj/item/gun/microfusion/mcr01,
 	)

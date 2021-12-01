@@ -166,6 +166,10 @@
 			hud.icon_state = "microfusion_counter_no_emitter"
 			hud.maptext = null
 			return
+		if(!pew.cell.charge)
+			hud.icon_state = "microfusion_counter_no_emitter"
+			hud.maptext = null
+			return
 		var/phase_emitter_state = pew.phase_emitter.get_heat_icon_state()
 		hud.icon_state = "microfusion_counter_[phase_emitter_state]"
 		hud.cut_overlays()
