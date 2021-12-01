@@ -32,6 +32,9 @@
 /area/shuttle/mining/advanced
 	name = "NMC Phoenix"
 
+/area/shuttle/mining/advanced/public
+	name = "NMC Chimera"
+
 /area/shuttle/mining/large/advanced
 	name = "NMC Manticore"
 
