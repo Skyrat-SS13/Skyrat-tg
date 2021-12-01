@@ -2,14 +2,18 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/spawner.dmi'
 	icon_state = "random_gun"
 	layer = OBJ_LAYER
-	/// A list of guns to spawn.
+	/// How many guns will be spawned here.
+	var/gun_count = 1
+	/// If the same gun can be spawned twice.
+	var/gun_doubles = TRUE
+	/// A list of possible guns to spawn.
 	var/list/guns
 	/// Do we fan out the items spawned for a natural effect?
 	var/fan_out_items = TRUE
 	/// How many mags per gun do we spawn, if it takes magazines.
 	var/mags_to_spawn = 3
 	/// Do we want to angle it so that it is horizontal?
-	var/vertial_guns = TRUE
+	var/vertical_guns = TRUE
 
 /obj/structure/rack/shelf
 
@@ -18,9 +22,9 @@
 	for(var/gun in guns) // 11/20/21: Gun spawners now spawn 1 of each gun in it's list no matter what, so as to reduce the RNG of the armory stock.
 		var/obj/item/gun/spawned_gun = new gun(loc)
 
-		if(vertial_guns)
+		if(vertical_guns)
 			spawned_gun.place_on_rack()
-			spawned_gun.pixel_x = rand(-10,10)
+			spawned_gun.pixel_x = rand(-10, 10)
 
 		if(istype(spawned_gun, /obj/item/gun/ballistic))
 			var/obj/item/gun/ballistic/spawned_ballistic_gun = spawned_gun
@@ -34,6 +38,7 @@
 
 /obj/effect/spawner/armory_spawn/shotguns
 	icon_state = "random_shotgun"
+	gun_count = 4
 	guns = list(
 		/obj/item/gun/ballistic/shotgun/m23,
 		/obj/item/gun/ballistic/shotgun/automatic/as2,
@@ -41,10 +46,10 @@
 	)
 
 /obj/structure/closet/ammunitionlocker/useful/PopulateContents()
-	new /obj/item/storage/box/rubbershot(src)
-	new /obj/item/storage/box/rubbershot(src)
-	new /obj/item/storage/box/rubbershot(src)
-	new /obj/item/storage/box/rubbershot(src)
+	new /obj/item/storage/box/rubbershot_14gauge(src)
+	new /obj/item/storage/box/rubbershot_14gauge(src)
+	new /obj/item/storage/box/rubbershot_14gauge(src)
+	new /obj/item/storage/box/rubbershot_14gauge(src)
 
 //////////////////////////AMMO BOXES
 /obj/item/storage/box/ammo_box
@@ -59,8 +64,10 @@
 	new /obj/item/storage/bag/ammo(src)
 	new /obj/item/gun_maintenance_supplies(src)
 
+
 /obj/effect/spawner/armory_spawn/centcom_rifles
 	icon_state = "random_rifle"
+	gun_count = 2
 	guns = list(
 		/obj/item/gun/ballistic/automatic/ar,
 		/obj/item/gun/ballistic/automatic/assault_rifle/m16,
@@ -68,6 +75,7 @@
 	)
 
 /obj/effect/spawner/armory_spawn/centcom_lasers
+	gun_count = 2
 	guns = list(
 		/obj/item/gun/energy/laser,
 		/obj/item/gun/energy/laser/cfa_paladin,
