@@ -153,35 +153,35 @@
 		hud.set_hud(backing_color, oth_o, oth_t, oth_h, indicator)
 
 	else if(istype(parent, /obj/item/gun/microfusion))
-		var/obj/item/gun/microfusion/pew = parent
-		if(!pew.phase_emitter)
+		var/obj/item/gun/microfusion/parent_gun = parent
+		if(!parent_gun.phase_emitter)
 			hud.icon_state = "microfusion_counter_no_emitter"
 			hud.maptext = null
 			return
-		if(pew.phase_emitter.damaged)
+		if(parent_gun.phase_emitter.damaged)
 			hud.icon_state = "microfusion_counter_damaged"
 			hud.maptext = null
 			return
-		if(!pew.cell)
+		if(!parent_gun.cell)
 			hud.icon_state = "microfusion_counter_no_emitter"
 			hud.maptext = null
 			return
-		if(!pew.cell.charge)
+		if(!parent_gun.cell.charge)
 			hud.icon_state = "microfusion_counter_no_emitter"
 			hud.maptext = null
 			return
-		var/phase_emitter_state = pew.phase_emitter.get_heat_icon_state()
+		var/phase_emitter_state = parent_gun.phase_emitter.get_heat_icon_state()
 		hud.icon_state = "microfusion_counter_[phase_emitter_state]"
 		hud.cut_overlays()
 		hud.maptext_x = -12
-		var/obj/item/ammo_casing/energy/shot = pew.microfusion_lens
-		var/battery_percent = FLOOR(clamp(pew.cell.charge / pew.cell.maxcharge, 0, 1) * 100, 1)
-		var/shot_cost_percent = FLOOR(clamp(shot.e_cost / pew.cell.maxcharge, 0, 1) * 100, 1)
+		var/obj/item/ammo_casing/energy/shot = parent_gun.microfusion_lens
+		var/battery_percent = FLOOR(clamp(parent_gun.cell.charge / parent_gun.cell.maxcharge, 0, 1) * 100, 1)
+		var/shot_cost_percent = FLOOR(clamp(shot.e_cost / parent_gun.cell.maxcharge, 0, 1) * 100, 1)
 		if(battery_percent > 99 || shot_cost_percent > 99)
 			hud.maptext_x = -12
 		else
 			hud.maptext_x = -8
-		if(!pew.can_shoot())
+		if(!parent_gun.can_shoot())
 			hud.icon_state = "microfusion_counter_no_emitter"
 			return
 		if(battery_percent <= 25)

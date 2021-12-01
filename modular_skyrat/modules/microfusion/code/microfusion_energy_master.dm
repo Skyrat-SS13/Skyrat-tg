@@ -20,25 +20,26 @@
 	/// What type of power cell this uses
 	var/obj/item/stock_parts/cell/microfusion/cell
 	var/cell_type = /obj/item/stock_parts/cell/microfusion
-	///if the weapon has custom icons for individual ammo types it can switch between. ie disabler beams, taser, laser/lethals, ect.
+	/// If the weapon has custom icons for individual ammo types it can switch between. ie disabler beams, taser, laser/lethals, ect.
 	var/modifystate = FALSE
-	var/obj/item/ammo_casing/energy/laser/microfusion/microfusion_lens
-	///Can it be charged in a recharger?
+	/// Can it be charged in a recharger?
 	var/can_charge = TRUE
 	/// How many charge sections do we have?
 	var/charge_sections = 4
 	ammo_x_offset = 2
-	///if this gun uses a stateful charge bar for more detail
+	/// if this gun uses a stateful charge bar for more detail
 	var/shaded_charge = FALSE
-	///If this gun has a "this is loaded with X" overlay alongside chargebars and such
+	/// If this gun has a "this is loaded with X" overlay alongside chargebars and such
 	var/single_shot_type_overlay = TRUE
-	///Should we give an overlay to empty guns?
+	/// Should we give an overlay to empty guns?
 	var/display_empty = TRUE
-	///whether the gun's cell drains the cyborg user's cell to recharge
+	/// whether the gun's cell drains the cyborg user's cell to recharge
 	var/dead_cell = FALSE
 
 	// MICROFUSION SPECIFIC VARS
 
+	/// The microfusion lens used for generating the beams.
+	var/obj/item/ammo_casing/energy/laser/microfusion/microfusion_lens
 	/// The time it takes for someone to (tactically) reload this gun. In deciseconds.
 	var/reload_time = 2 SECONDS
 	/// The sound played when you insert a cell.
@@ -77,9 +78,6 @@
 		chambered = null //we empty the chamber
 		recharge_newshot() //and try to charge a new shot
 		update_appearance()
-
-/obj/item/gun/microfusion/get_cell()
-	return cell
 
 /obj/item/gun/microfusion/Initialize(mapload)
 	. = ..()
