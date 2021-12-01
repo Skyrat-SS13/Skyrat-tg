@@ -156,7 +156,6 @@
 	build_path = /obj/item/microfusion_gun_attachment/heatsink
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
-=
 
 /datum/design/microfusion_gun_attachment_scatter
 	name = "Diffuser Microfusion Lens Attachment"
