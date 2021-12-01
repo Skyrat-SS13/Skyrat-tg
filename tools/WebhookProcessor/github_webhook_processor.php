@@ -311,7 +311,10 @@ function check_dismiss_changelog_review($payload){
 }
 
 function handle_pr($payload) {
+	global $discord_announce_blacklist;
 	global $no_changelog;
+	global $game_announce_whitelist;
+	
 	$action = 'opened';
 	$validated = validate_user($payload);
 	switch ($payload["action"]) {
