@@ -3,18 +3,14 @@
 	desc = "Micron Control Systems Incorporated supplied MCR-01 Microfusion weapons platform. Comes with 4 guns and 4 advanced cells!"
 	cost = CARGO_CRATE_VALUE * 20
 	contains = list(
-		/obj/item/gun/microfusion/mcr01,
-		/obj/item/gun/microfusion/mcr01,
-		/obj/item/gun/microfusion/mcr01,
-		/obj/item/gun/microfusion/mcr01,
-		/obj/item/stock_parts/cell/microfusion/advanced,
-		/obj/item/stock_parts/cell/microfusion/advanced,
-		/obj/item/stock_parts/cell/microfusion/advanced,
-		/obj/item/stock_parts/cell/microfusion/advanced,
-		/obj/item/microfusion_phase_emitter/advanced,
-		/obj/item/microfusion_phase_emitter/advanced,
-		/obj/item/microfusion_phase_emitter/advanced,
-		/obj/item/microfusion_phase_emitter/advanced,
+		/obj/item/gun/microfusion/mcr01/advanced,
+		/obj/item/gun/microfusion/mcr01/advanced,
+		/obj/item/gun/microfusion/mcr01/advanced,
+		/obj/item/gun/microfusion/mcr01/advanced,
+		/obj/item/storage/box/ammo_box/microfusion/advanced,
+		/obj/item/storage/box/ammo_box/microfusion/advanced,
+		/obj/item/storage/box/ammo_box/microfusion/advanced,
+		/obj/item/storage/box/ammo_box/microfusion/advanced,
 	)
 	crate_name = "MCR-01 Microfusion Crate"
 

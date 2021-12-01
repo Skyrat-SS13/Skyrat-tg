@@ -72,9 +72,8 @@
 	name = "microfusion cell container"
 	desc = "A box filled with microfusion cells."
 
-/obj/item/storage/box/ammo_box/PopulateContents()
+/obj/item/storage/box/ammo_box/microfusion/PopulateContents()
 	new /obj/item/storage/bag/ammo(src)
-	new /obj/item/gun_maintenance_supplies(src)
 
 
 /obj/effect/spawner/armory_spawn/centcom_rifles
