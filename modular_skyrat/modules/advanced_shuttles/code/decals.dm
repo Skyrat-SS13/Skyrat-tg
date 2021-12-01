@@ -10,3 +10,6 @@
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/effects.dmi'
 	icon_state = "forcefield"
 
+//Floor Decals -----
+
+
