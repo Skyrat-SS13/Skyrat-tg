@@ -35,14 +35,14 @@
 	desc = "The core of a microfusion projection weapon, produces the laser."
 	id = "enhanced_microfusion_phase_emitter"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/alloy/plastitanium = 500)
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/silver = 500)
 	construction_time = 10 SECONDS
 	build_path = /obj/item/microfusion_phase_emitter/enhanced
 	category = list("Misc", "Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/advanced_microfusion_cell
-	name = "advanced Microfusion Cell"
+	name = "Advanced Microfusion Cell"
 	desc = "An advanced microfusion cell with a capacity of 1700 MF and 3 attachment points."
 	id = "advanced_microfusion_cell"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
@@ -57,14 +57,14 @@
 	desc = "The core of a microfusion projection weapon, produces the laser."
 	id = "advanced_microfusion_phase_emitter"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/alloy/plastitanium = 500, /datum/material/gold = 500)
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/silver = 500, /datum/material/gold = 500)
 	construction_time = 10 SECONDS
 	build_path = /obj/item/microfusion_phase_emitter/advanced
 	category = list("Misc", "Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/bluespace_microfusion_cell
-	name = "Enhanced Microfusion Cell"
+	name = "Bluespace Microfusion Cell"
 	desc = "A bluespace microfusion cell with a capacity of 2000 MF and 4 attachment points."
 	id = "bluespace_microfusion_cell"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
@@ -79,7 +79,7 @@
 	desc = "The core of a microfusion projection weapon, produces the laser."
 	id = "bluespace_microfusion_phase_emitter"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/alloy/plastitanium = 500, /datum/material/gold = 500, /datum/material/diamond = 500)
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/silver = 500, /datum/material/gold = 500, /datum/material/diamond = 500)
 	construction_time = 10 SECONDS
 	build_path = /obj/item/microfusion_phase_emitter/bluespace
 	category = list("Misc", "Power Designs")
@@ -156,16 +156,7 @@
 	build_path = /obj/item/microfusion_gun_attachment/heatsink
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
-
-/datum/design/microfusion_gun_attachment_heatsink
-	name = "Phase Emitter Heatsink"
-	desc = "A heatsink attachment for your microfusion weapon. Massively increases cooling potential."
-	id = "microfusion_gun_attachment_heatsink"
-	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/silver = 500, /datum/material/bronze = 500)
-	build_path = /obj/item/microfusion_gun_attachment/heatsink
-	category = list("Weapons")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
+=
 
 /datum/design/microfusion_gun_attachment_scatter
 	name = "Diffuser Microfusion Lens Attachment"
@@ -192,7 +183,7 @@
 	desc = "Upgrades the central phase emitter to repeat twice."
 	id = "microfusion_gun_attachment_repeater"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/bluespace = 100)
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/bluespace = 500)
 	build_path = /obj/item/microfusion_gun_attachment/repeater
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
@@ -202,7 +193,7 @@
 	desc = "Experimental technology that inverts the central phase emitter causing the wave frequency to shift into X-ray. CAUTION: Phase emitter heats up very quickly."
 	id = "microfusion_gun_attachment_xray"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/alloy/alien = 500, /datum/material/uranium = 500)
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 1000, /datum/material/uranium = 500, /datum/material/bluespace = 500)
 	build_path = /obj/item/microfusion_gun_attachment/xray
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE

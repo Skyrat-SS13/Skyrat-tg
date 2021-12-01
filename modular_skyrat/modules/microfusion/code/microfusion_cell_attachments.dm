@@ -83,7 +83,7 @@ The cell is stable and will not emit sparks when firing.
 */
 
 /obj/item/microfusion_cell_attachment/stabiliser
-	name = "stabilisation microfusion cell attachment"
+	name = "stabilising microfusion cell attachment"
 	desc = "Stabilises the internal fusion reaction of microfusion cells."
 	icon_state = "attachment_stabiliser"
 	attachment_overlay_icon_state = "microfusion_stabiliser"
@@ -100,11 +100,11 @@ The cell is stable and will not emit sparks when firing.
 SELFCHARGE ATTACHMENT
 
 The cell will charge itself.
-If the cell isn't stabilised by a stabiliser, it may emit a radaition pulse.
+If the cell isn't stabilised by a stabiliser, it may emit a radiation pulse.
 */
 /obj/item/microfusion_cell_attachment/selfcharging
-	name = "self charging microfusion cell attachment"
-	desc = "Contains a small amount of infinitely decaying nuclear material, causing the fusion reaction to be self sustaining. WARNING: May cause radiation burns if not stabilised."
+	name = "self-charging microfusion cell attachment"
+	desc = "Contains a small amount of infinitely decaying nuclear material, causing the fusion reaction to be self-sustaining. WARNING: May cause radiation burns if not stabilised."
 	icon_state = "attachment_selfcharge"
 	attachment_overlay_icon_state = "microfusion_selfcharge"
 	/// The amount of charge this cell will passively gain!

@@ -7,6 +7,7 @@
 /// The radiation range for when a cell suffers a radiation failure.
 #define MICROFUSION_CELL_RADIATION_RANGE_FAILURE 1
 
+/// The lower most time for a microfusion cell meltdown.
 #define MICROFUSION_CELL_FAILURE_LOWER 10 SECONDS
 /// The upper most time for a microfusion cell meltdown.
 #define MICROFUSION_CELL_FAILURE_UPPER 15 SECONDS
