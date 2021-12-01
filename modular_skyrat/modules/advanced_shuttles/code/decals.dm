@@ -12,7 +12,7 @@
 
 //Floor Decals -----
 /obj/effect/turf_decal/shuttle/exploration
-	icon = 'modular_skyrat/modules/advanced_shuttles/icons/rndfloor.dmi'
+	icon = 'modular_skyrat/modules/advanced_shuttles/icons/mining_floor.dmi'
 	icon_state = "none"
 
 /obj/effect/turf_decal/shuttle/exploration/medbay
@@ -41,3 +41,6 @@
 
 /obj/effect/turf_decal/shuttle/exploration/hazardstripe
 	icon_state = "hazard_decal"
+
+/obj/effect/turf_decal/shuttle/exploration/bot
+	icon_state = "bot_decal"

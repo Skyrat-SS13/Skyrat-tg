@@ -29,3 +29,11 @@
 /area/shuttle/supply/cockpit
 	name = "NLV Consign Cockpit"
 
+/area/shuttle/mining/advanced
+	name = "NMC Phoenix"
+
+/area/shuttle/mining/large/advanced
+	name = "NMC Manticore"
+
+/area/shuttle/labor/advanced
+	name = "NMC Drudge"

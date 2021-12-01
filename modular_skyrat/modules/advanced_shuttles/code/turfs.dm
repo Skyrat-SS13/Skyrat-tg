@@ -8,7 +8,7 @@
 /turf/closed/wall/mineral/titanium/shuttle_wall
 	name = "shuttle wall"
 	desc = "A light-weight titanium wall used in shuttles."
-	icon = 'modular_skyrat/modules/advanced_shuttles/icons/shuttle.dmi'
+	icon = 'modular_skyrat/modules/advanced_shuttles/icons/pod.dmi'
 	icon_state = ""
 	base_icon_state = ""
 	smoothing_flags = null
@@ -86,18 +86,22 @@
 /turf/closed/wall/mineral/titanium/shuttle_wall/mining_large
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/mining_large.dmi'
 	icon_state = "2,2"
+	dir = NORTH
 
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/mining_large
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/mining_large.dmi'
 	icon_state = "6,3"
+	dir = NORTH
 
 /turf/closed/wall/mineral/titanium/shuttle_wall/mining_labor
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/mining_labor.dmi'
 	icon_state = "4,6"
+	dir = NORTH
 
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/mining_labor
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/mining_labor.dmi'
 	icon_state = "4,4"
+	dir = NORTH
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////// MINING/RND/EXPLORATION FLOORS //////////////////////////////////////////////////////////
