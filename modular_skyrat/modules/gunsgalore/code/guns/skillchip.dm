@@ -1,5 +1,5 @@
 /obj/item/skillchip/chameleon/reload
-	name = "Military T.A.C.T.I.C00L skillchip"
+	name = "T.A.C.T.I.C00L skillchip"
 	desc = "If used, allows the user to perform tactical and instant reloads on all weapons with a magazine."
 	auto_traits = list(TRAIT_INSTANT_RELOAD)
 	skill_name = "Tactical Reloading"

@@ -1,16 +1,28 @@
 /obj/item/gun/ballistic
-	var/alt_icons = FALSE //Does this gun have mag and nomag on mob variance?
-	var/alt_icon_state //What the icon state is for the on-back guns
-	var/realistic = FALSE //realistic guns that use reliability and dirt
-	var/jammed = FALSE //Is it jammed?
-	var/dirt_level = 0 //how dirty a gun is.
-	var/dirt_modifier = 0.1 //Tied in with how good a gun is, if firing it causes a lot of dirt to form, then change this accordingly.
-	var/jam_chance = 0 //Used when calculating if a gun will jam or not.
-	var/unjam_time = 0 //Used when calculating how long a gun takes to unjam.
+	/// Does this gun have mag and nomag on mob variance?
+	var/alt_icons = FALSE
+	/// What the icon state is for the on-back guns
+	var/alt_icon_state
+	/// Realistic guns that use reliability and dirt
+	var/realistic = FALSE
+	/// Is it jammed?
+	var/jammed = FALSE
+	/// How dirty a gun is.
+	var/dirt_level = 0
+	/// Tied in with how good a gun is, if firing it causes a lot of dirt to form, then change this accordingly.
+	var/dirt_modifier = 0.1
+	/// Used when calculating if a gun will jam or not.
+	var/jam_chance = 0
+	/// Used when calculating how long a gun takes to unjam.
+	var/unjam_time = 0
+	/// Tracking gun base spred.
 	var/base_spread = 0
-	var/durability = 100 //How used this gun is.
-	var/durability_factor = 0.1 //How quickly a gun will degrade. 0.1 = 1000 shots. Edit this to change a guns base reliability.
-	var/reload_time = 2 SECONDS //How long it takes to reload a magazine.
+	/// How used this gun is.
+	var/durability = 100
+	/// How quickly a gun will degrade. 0.1 = 1000 shots. Edit this to change a guns base reliability.
+	var/durability_factor = 0.1
+	/// How long it takes to reload a magazine.
+	var/reload_time = 2 SECONDS
 
 
 /obj/item/gun/ballistic/Initialize()

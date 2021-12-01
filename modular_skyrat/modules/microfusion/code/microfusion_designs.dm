@@ -97,7 +97,7 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/microfusion_cell_attachment_stabiliser
-	name = "Stabilisation Microfusion Cell Attachment"
+	name = "Stabilising Microfusion Cell Attachment"
 	desc = "Stabilises the internal fusion reaction of microfusion cells."
 	id = "microfusion_cell_attachment_stabiliser"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
@@ -117,7 +117,7 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/microfusion_cell_attachment_selfcharging
-	name = "Selfcharging Microfusion Cell Attachment"
+	name = "Self-Charging Microfusion Cell Attachment"
 	desc = "Contains a small amount of infinitely decaying nuclear material, causing the fusion reaction to be self sustaining. WARNING: May cause radiation burns if not stabilised."
 	id = "microfusion_cell_attachment_selfcharging"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
