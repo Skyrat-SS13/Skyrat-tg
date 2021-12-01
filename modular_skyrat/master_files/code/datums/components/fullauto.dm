@@ -249,7 +249,7 @@
 // Gun procs.
 
 /obj/item/gun/proc/on_autofire_start(mob/living/shooter)
-	if(!can_shoot(shooter) || !can_trigger_gun(shooter) || semicd)
+	if(!can_shoot(shooter) || !can_trigger_gun(shooter) || shooter.incapacitated() || semicd)
 		return FALSE
 	var/obj/item/bodypart/other_hand = shooter.has_hand_for_held_index(shooter.get_inactive_hand_index())
 	if(weapon_weight == WEAPON_HEAVY && (shooter.get_inactive_held_item() || !other_hand))
@@ -265,6 +265,8 @@
 
 /obj/item/gun/proc/do_autofire(datum/source, atom/target, mob/living/shooter, params)
     SIGNAL_HANDLER
+	if(shooter.incapacitated())
+		return FALSE
     if(!can_shoot())
         shoot_with_empty_chamber(shooter)
         return FALSE
