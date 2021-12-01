@@ -92,7 +92,7 @@
 /datum/supply_pack/medical/medigun
 	name = "CWM-479 Medigun"
 	desc = "Contains a single VeyMedical CWM-479 model medical gun; cells not included."
-	cost = CARGO_CRATE_VALUE * 100
+	cost = CARGO_CRATE_VALUE * 30
 	access = ACCESS_MEDICAL
 	contains = list(/obj/item/storage/briefcase/medicalgunset/standard)
 	crate_name = "CWM-479 Medigun Crate"

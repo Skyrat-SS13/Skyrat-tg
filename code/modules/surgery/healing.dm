@@ -39,7 +39,7 @@
 		TOOL_SCREWDRIVER = 65,
 		/obj/item/pen = 55)
 	repeatable = TRUE
-	time = 12 //SKYRAT EDIT - tend wound surgery time reduced by half
+	time = 25
 	var/brutehealing = 0
 	var/burnhealing = 0
 	var/brute_multiplier = 0 //multiplies the damage that the patient has. if 0 the patient wont get any additional healing from the damage he has.

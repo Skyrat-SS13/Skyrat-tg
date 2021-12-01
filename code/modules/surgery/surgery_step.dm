@@ -80,7 +80,7 @@
 		implement_speed_mod = implements[implement_type] / 100.0
 
 	speed_mod /= (get_location_modifier(target) * (1 + surgery.speed_modifier) * implement_speed_mod) * target.mob_surgery_speed_mod
-	var/modded_time = time * speed_mod * 2 //SKYRAT EDIT - all surgery times multiplied by 2
+	var/modded_time = time * speed_mod
 
 	// SKYRAT REMOVAL //fail_prob = min(max(0, modded_time - (time * SURGERY_SLOWDOWN_CAP_MULTIPLIER)),99)//if modded_time > time * modifier, then fail_prob = modded_time - time*modifier. starts at 0, caps at 99
 	modded_time = min(modded_time, time * SURGERY_SLOWDOWN_CAP_MULTIPLIER)//also if that, then cap modded_time at time*modifier
