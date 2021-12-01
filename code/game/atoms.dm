@@ -1589,17 +1589,14 @@
 			log_whisper(log_text)
 		if(LOG_EMOTE)
 			log_emote(log_text)
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN
 		if(LOG_SUBTLER)
 			log_subtler(log_text)
 		if(LOG_AMBITION)
 			log_ambition(log_text)
 		//SKYRAT EDIT ADDITION END
-=======
 		if(LOG_RADIO_EMOTE)
 			log_radio_emote(log_text)
->>>>>>> abfc52cb303 (Improved logging for custom radio emote based messages (#62942))
 		if(LOG_DSAY)
 			log_dsay(log_text)
 		if(LOG_PDA)
