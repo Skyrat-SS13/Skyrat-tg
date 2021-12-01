@@ -1,5 +1,5 @@
 /obj/item/claymore/bone
-	name = "Bone Sword"
+	name = "bone sword"
 	desc = "Jagged pieces of bone are tied to what looks like a goliaths femur."
 	icon = 'modular_skyrat/modules/tribal_extended/icons/items_and_weapons.dmi'
 	lefthand_file = 'modular_skyrat/modules/tribal_extended/icons/swords_lefthand.dmi'

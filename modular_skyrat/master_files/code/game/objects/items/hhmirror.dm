@@ -1,5 +1,5 @@
 /obj/item/hhmirror
-	name = "Handheld Mirror"
+	name = "handheld mirror"
 	desc = "A handheld mirror that allows you to change your looks."
 	icon = 'modular_skyrat/master_files/icons/obj/hhmirror.dmi'
 	icon_state = "hhmirror"
@@ -11,7 +11,7 @@
 	to_chat(user, span_notice("Damn, that hairstyle be looking skewed, maybe head to the barber for a change?"))
 
 /obj/item/hhmirror/fullmagic
-	name = "Full Handheld Magic Mirror"
+	name = "full handheld magic mirror"
 	desc = "A handheld mirror that allows you to change your... self?" //Later, maybe add a charge to the description.
 	icon = 'modular_skyrat/master_files/icons/obj/hhmirror.dmi'
 	icon_state = "hhmirrormagic"
@@ -139,7 +139,7 @@
 				human_user.dna.species.handle_body()
 
 /obj/item/hhmirror/wracemagic
-	name = "Raceless Handheld Magic Mirror"
+	name = "raceless handheld magic mirror"
 	desc = "A handheld mirror that allows you to change your... self?" //Later, maybe add a charge to the description.
 	icon = 'modular_skyrat/master_files/icons/obj/hhmirror.dmi'
 	icon_state = "hhmirrormagic"

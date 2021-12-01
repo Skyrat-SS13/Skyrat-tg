@@ -13,7 +13,7 @@
 	subcategory = CAT_MISCFOOD
 
 /datum/crafting_recipe/food/neep_tatty_haggis
-	name = "Haggis with neeps and tatties"
+	name = "Haggis With Neeps and Tatties"
 	reqs = list(
 		/obj/item/food/snacks/breadslice/haggis = 1,
 		/obj/item/food/grown/potato = 1,
