@@ -80,7 +80,7 @@
 	loot = list(/obj/effect/gibspawner/human)
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 7.5
-	faction = list("hostile","cultist")
+	faction = list("hostile", "cultist")
 	status_flags = CANPUSH
 	del_on_death = 1
 	rapid_melee = 2
@@ -197,7 +197,7 @@
 	turns_per_move = 5
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
-	faction = list("hostile","cultist")
+	faction = list("hostile", "cultist")
 	footstep_type = FOOTSTEP_MOB_SHOE
 	weather_immunities = list(TRAIT_LAVA_IMMUNE, TRAIT_ASHSTORM_IMMUNE)
 	minbodytemp = 0
@@ -591,7 +591,7 @@
 	atmos_requirements = list("min_oxy" = 10, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 1500
-	faction = list("hostile","vines","plants")
+	faction = list("hostile", "vines", "plants")
 	pressure_resistance = 200
 	gold_core_spawnable = HOSTILE_SPAWN
 

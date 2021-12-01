@@ -95,7 +95,7 @@
 	damage = 45
 
 /obj/item/gun/energy/ostwind
-	name = "\improper DTR-6 Rifle"
+	name = "\improper DTR-6 rifle"
 	desc = "A 6.3mm special-purpose rifle designed for specific situations."
 	icon = 'modular_skyrat/modules/goofsec/icons/gun_sprites.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'

@@ -49,12 +49,12 @@
 	new /obj/item/reagent_containers/hypospray(src)
 
 /obj/structure/closet/shuttle/erokez
-	name = "Closet"
+	name = "closet"
 	desc = "It's wall-mounted storage unit"
 	icon_state = "wallcloset"
 
 /obj/structure/closet/shuttle/evacvent
-	name = "Engine ventilation"
+	name = "engine ventilation"
 	desc = "Looks like you can get in this small engine ventilation shaft."
 	icon_state = "shuttle"
 	anchored = TRUE

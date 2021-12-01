@@ -1,5 +1,5 @@
 /obj/machinery/particle_accelerator/control_box
-	name = "Particle Accelerator Control Console"
+	name = "particle accelerator control console"
 	desc = "This controls the density of the particles."
 	icon = 'modular_skyrat/modules/singularity_engine/icons/particle_accelerator_controlbox.dmi'
 	icon_state = "control_box"
