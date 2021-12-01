@@ -254,7 +254,7 @@
 	AddElement(/datum/element/polychromic, list("#FFFFFF"))
 
 /obj/item/clothing/head/flowerpin
-	name = "Flower Pin"
+	name = "flower pin"
 	desc = "A small polychromic flower pin"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
@@ -411,7 +411,7 @@
 	soft_type = "yankeenobrim"
 
 /obj/item/clothing/head/fedora/fedbrown
-	name = "Brown fedora"
+	name = "brown fedora"
 	desc = "A noir-inspired fedora. Covers the eyes. Makes you look menacing, assuming you don't have a neckbeard."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
@@ -419,7 +419,7 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/head/fedora/fedblack
-	name = "Black fedora"
+	name = "black fedora"
 	desc = "A matte-black fedora. Looks solid enough. It'll only look good on you if you don't have a neckbeard."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'

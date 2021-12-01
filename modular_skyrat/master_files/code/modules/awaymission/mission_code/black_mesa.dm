@@ -184,13 +184,13 @@
 					playsound(src, 'modular_skyrat/master_files/sound/blackmesa/headcrab/headbite.ogg', 100)
 					human_to_dunk.death(FALSE)
 
-/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/proc/zombify(mob/living/carbon/human/H)
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/proc/zombify(mob/living/carbon/human/zombified_human)
 	if(is_zombie)
 		return FALSE
 	is_zombie = TRUE
-	if(H.wear_suit)
-		var/obj/item/clothing/suit/armor/A = H.wear_suit
-		maxHealth += A.armor.melee //That zombie's got armor, I want armor!
+	if(zombified_human.wear_suit)
+		var/obj/item/clothing/suit/armor/zombie_suit = zombified_human.wear_suit
+		maxHealth += zombie_suit.armor.melee //That zombie's got armor, I want armor!
 	maxHealth += 40
 	health = maxHealth
 	name = "zombie"
@@ -202,12 +202,12 @@
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	movement_type = GROUND
 	icon_state = ""
-	H.hairstyle = null
-	H.update_hair()
-	H.forceMove(src)
-	oldguy = H
+	zombified_human.hairstyle = null
+	zombified_human.update_hair()
+	zombified_human.forceMove(src)
+	oldguy = zombified_human
 	update_appearance()
-	visible_message(span_warning("The corpse of [H.name] suddenly rises!"))
+	visible_message(span_warning("The corpse of [zombified_human.name] suddenly rises!"))
 	charger = FALSE
 	return TRUE
 
@@ -534,9 +534,9 @@
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/science_team
 
-/datum/outfit/science_team/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/science_team/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
 	. = ..()
-	H.faction |= FACTION_BLACKMESA
+	equipped_human.faction |= FACTION_BLACKMESA
 
 /datum/id_trim/science_team
 	assignment = "Science Team Scientist"
@@ -564,9 +564,9 @@
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/security_guard
 
-/datum/outfit/security_guard/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/security_guard/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
 	. = ..()
-	H.faction |= FACTION_BLACKMESA
+	equipped_human.faction |= FACTION_BLACKMESA
 
 /datum/id_trim/security_guard
 	assignment = "Security Guard"
@@ -599,14 +599,14 @@
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu
 
-/datum/outfit/hecu/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/hecu/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
 	. = ..()
-	H.faction |= FACTION_XEN
-	H.hairstyle = "Crewcut"
-	H.hair_color = COLOR_ALMOST_BLACK
-	H.facial_hairstyle = "Shaved"
-	H.facial_hair_color = COLOR_ALMOST_BLACK
-	H.update_hair()
+	equipped_human.faction |= FACTION_XEN
+	equipped_human.hairstyle = "Crewcut"
+	equipped_human.hair_color = COLOR_ALMOST_BLACK
+	equipped_human.facial_hairstyle = "Shaved"
+	equipped_human.facial_hair_color = COLOR_ALMOST_BLACK
+	equipped_human.update_hair()
 
 /datum/id_trim/hecu
 	assignment = "HECU Soldier"

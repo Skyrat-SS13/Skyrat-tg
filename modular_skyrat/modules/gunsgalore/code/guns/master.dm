@@ -223,7 +223,7 @@
 	new /obj/item/ammo_box/magazine/pps(src)
 
 /obj/structure/closet/crate/secure/weapon/ww2
-	name = "Modern weapons crate"
+	name = "modern weapons crate"
 	desc = "A secure weapons crate. Looks like it's from the 25th century."
 	icon_state = "weaponcrate"
 

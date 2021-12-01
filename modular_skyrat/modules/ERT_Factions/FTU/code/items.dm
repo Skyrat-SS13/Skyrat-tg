@@ -33,7 +33,7 @@
 
 ///////40x32 R37 PULSE RIFLE
 /obj/item/gun/ballistic/automatic/pitbull/pulse/r37
-	name = "\improper Xan-Jing R37 'Killer Hornet' Pulse Rifle"
+	name = "\improper Xan-Jing R37 'Killer Hornet' pulse rifle"
 	desc = "A Xan-Jing Armories pulse rifle, nicknamed 'Killer Hornet' by FTU Mercenaries and Expeditioners. This one has an integrated computer that displays an objective compass, ammo counter and comes with a HUD link for easy targetting."
 	icon = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/serviceguns.dmi'
 	righthand_file = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/lefthand.dmi'
@@ -70,7 +70,7 @@
 
 ///////40x32 R40 MACHINE GUN
 /obj/item/gun/ballistic/automatic/pitbull/pulse/r40
-	name = "\improper Xan-Jing R40 'Enforcer' Pulse MMG"
+	name = "\improper Xan-Jing R40 'Enforcer' pulse MMG"
 	desc = "A Xan-Jing Armories medium machine gun, nicknamed 'Enforcer' by FTU Mercenaries and Private Militaries. This one has a custom wood furnishing and its batteries power up the sights."
 	icon = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/serviceguns.dmi'
 	righthand_file = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/righthand.dmi'
@@ -106,7 +106,7 @@
 
 //////////12.7 SAPHE GOLDEN EAGLE
 /obj/item/gun/ballistic/automatic/pistol/pdh/pulse/golden_eagle
-	name = "\improper FTU PDH-6G 'Sea Serpent' Magnum"
+	name = "\improper FTU PDH-6G 'Sea Serpent' magnum"
 	desc = "A custom-made high-power combat pistol seen in the hands of high ranking FTU Mercenaries and important executives, with a custom 24-karat gold finish and green laser sight. It has a chinese dragon engraved along its slide."
 	icon = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/serviceguns.dmi'
 	icon_state = "eagle"
@@ -129,7 +129,7 @@
 	emp_damageable = FALSE
 
 /obj/item/ammo_box/magazine/pulse/mm12/saphe
-	name = "12.7x35mm SAP-HE Magnum magazine"
+	name = "12.7x35mm SAP-HE magnum magazine"
 	icon_state = "50ae"
 	ammo_type = /obj/item/ammo_casing/pulse/mm12
 	caliber = "12mm SAP-HE"

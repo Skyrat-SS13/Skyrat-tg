@@ -20,7 +20,7 @@
 			return TRUE
 	return FALSE
 
-/obj/machinery/door/firedoor/try_to_crowbar(obj/item/I, mob/user)
+/obj/machinery/door/firedoor/try_to_crowbar(obj/item/used_object, mob/user)
 	if(welded || operating)
 		to_chat(user, span_warning("[src] refuses to budge!"))
 		return
