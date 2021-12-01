@@ -7,7 +7,7 @@
 	/// If the same gun can be spawned twice.
 	var/gun_doubles = TRUE
 	/// A list of possible guns to spawn.
-	var/list/guns
+	var/list/guns = list()
 	/// Do we fan out the items spawned for a natural effect?
 	var/fan_out_items = TRUE
 	/// How many mags per gun do we spawn, if it takes magazines.
