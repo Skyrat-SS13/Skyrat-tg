@@ -145,7 +145,7 @@
 	if(GLOB.deity)
 		deity_name = GLOB.deity
 
-/obj/item/nullrod/rosary/attack(mob/living/M, mob/living/user, params)
+/obj/item/nullrod/rosary/attack(mob/living/target, mob/living/user, params)
 	if(!user.mind || user.mind.assigned_role != "Chaplain")
 		to_chat(user, span_notice("You are not close enough with [deity_name] to use [src]."))
 		return
@@ -155,17 +155,17 @@
 		to_chat(user, span_notice("You are already using [src]."))
 		return
 
-	user.visible_message(span_info("[user] kneels[M == user ? null : " next to [M]"] and begins to utter a prayer to [deity_name]."), \
-		span_info("You kneel[M == user ? null : " next to [M]"] and begin a prayer to [deity_name]."))
+	user.visible_message(span_info("[user] kneels[target == user ? null : " next to [target]"] and begins to utter a prayer to [deity_name]."), \
+		span_info("You kneel[target == user ? null : " next to [target]"] and begin a prayer to [deity_name]."))
 
 	praying = TRUE
-	if(do_after(user, 20, target = M))
-		M.reagents?.add_reagent(/datum/reagent/water/holywater, 5)
-		to_chat(M, span_notice("[user]'s prayer to [deity_name] has eased your pain!"))
-		M.adjustToxLoss(-5, TRUE, TRUE)
-		M.adjustOxyLoss(-5)
-		M.adjustBruteLoss(-5)
-		M.adjustFireLoss(-5)
+	if(do_after(user, 20, target = target))
+		target.reagents?.add_reagent(/datum/reagent/water/holywater, 5)
+		to_chat(target, span_notice("[user]'s prayer to [deity_name] has eased your pain!"))
+		target.adjustToxLoss(-5, TRUE, TRUE)
+		target.adjustOxyLoss(-5)
+		target.adjustBruteLoss(-5)
+		target.adjustFireLoss(-5)
 		praying = FALSE
 	else
 		to_chat(user, span_notice("Your prayer to [deity_name] was interrupted."))

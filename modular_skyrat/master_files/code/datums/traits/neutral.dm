@@ -88,7 +88,7 @@
 	..()
 	icon_state = "joker"
 
-/obj/item/paper/joker/AltClick(mob/living/carbon/user, obj/item/I)
+/obj/item/paper/joker/AltClick(mob/living/carbon/user, obj/item/card)
 	if(flipped)
 		info = initial(info)
 		flipped = FALSE
