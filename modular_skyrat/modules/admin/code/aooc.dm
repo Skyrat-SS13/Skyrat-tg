@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(ckey_to_aooc_name)
 	for(var/iterated_player as anything in GLOB.player_list)
 		var/mob/iterated_mob = iterated_player
 		//Admins with muted OOC do not get to listen to AOOC, but normal players do, as it could be admins talking important stuff to them
-		if(!iterated_mob.client?.holder?.deadmined && iterated_mob.client?.prefs?.chat_toggles & CHAT_OOC)
+		if(iterated_mob.client?.holder && !iterated_mob.client?.holder.deadmined && iterated_mob.client?.prefs?.chat_toggles & CHAT_OOC)
 			listeners[iterated_mob.client] = AOOC_LISTEN_ADMIN
 
 	for(var/iterated_listener as anything in listeners)
