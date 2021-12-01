@@ -8,6 +8,7 @@ Basically the heart of the gun, can be upgraded.
 	icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun_attachments.dmi'
 	icon_state = "phase_emitter"
 	base_icon_state = "phase_emitter"
+	w_class = WEIGHT_CLASS_NORMAL
 	/// Max heat before it breaks
 	var/max_heat = 1000
 	/// Current heat level
