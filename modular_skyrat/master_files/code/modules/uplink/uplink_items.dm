@@ -232,6 +232,13 @@
 	item = /obj/item/ammo_box/magazine/smgm45/incen
 	cost = 2
 
+/datum/uplink_item/ammo/smgempty_traitor
+	name = "Empty .45 SMG Magazine"
+	desc = "An additional, empty 24-round .45 magazine suitable for use with the C-20r submachine gun.\
+			Ammunition not included."
+	item = /obj/item/ammo_box/magazine/smgm45/empty
+	cost = 1
+
 /datum/uplink_item/ammo/shotgun/buck_traitor
 	name = "12g Buckshot Drum"
 	desc = "An additional 8-round buckshot magazine for use with the Bulldog shotgun. Front towards enemy."
@@ -260,6 +267,13 @@
 	item = /obj/item/ammo_box/magazine/m12g/slug
 	cost = 3
 	purchasable_from = ALL
+
+/datum/uplink_item/ammo/shotgun/empty_traitor
+	name = "Empty 12g Drum"
+	desc = "An empty 8-round magazine for use in the Bulldog shotgun. \
+			Ammunition not included."
+	cost = 1
+	item = /obj/item/ammo_box/magazine/m12g/empty
 
 //SUITS
 

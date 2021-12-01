@@ -670,8 +670,7 @@
 	return TRUE
 
 // Machine deconstruction process handler
-/obj/structure/chair/milking_machine/deconstruct()
-
+/obj/structure/chair/milking_machine/deconstruct(disassembled)
 	if(beaker)
 		beaker.forceMove(drop_location())
 		adjust_item_drop_location(beaker)
@@ -684,20 +683,12 @@
 		cell = null
 		update_all_visuals()
 
-	if(machine_color == machine_color_list[1])
-		var/obj/item/milking_machine/constructionkit/P = new(src.loc)
-		P.current_color = "pink"
-		P.update_icon_state()
-		P.update_icon()
+	var/obj/item/milking_machine/constructionkit/construction_kit = new(src.loc)
+	construction_kit.current_color = machine_color
+	construction_kit.update_icon_state()
+	construction_kit.update_icon()
 
-	if(machine_color == machine_color_list[2])
-		var/obj/item/milking_machine/constructionkit/P = new(src.loc)
-		P.current_color = "teal"
-		P.update_icon_state()
-		P.update_icon()
-
-	qdel(src)
-	return TRUE
+	return ..()
 
 // Handler of the process of dispensing a glass from a machine to a tile
 /obj/structure/chair/milking_machine/proc/adjust_item_drop_location(atom/movable/AM)

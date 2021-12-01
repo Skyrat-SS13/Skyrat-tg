@@ -282,7 +282,8 @@
 	ACCESS_ATMOSPHERICS, \
 	ACCESS_ORDNANCE_STORAGE, \
 	ACCESS_ORDNANCE, \
-)
+	ACCESS_BARBER, \
+) // SKYRAT EDIT ADD ACCESS_BARBER
 
 /// Command staff/secure accesses, think bridge/armoury, AI upload, notably access to modify ID cards themselves. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_COMMAND)
 #define COMMAND_ACCESS list( \
