@@ -264,14 +264,14 @@
 		return COMPONENT_AUTOFIRE_ONMOUSEDOWN_BYPASS
 
 /obj/item/gun/proc/do_autofire(datum/source, atom/target, mob/living/shooter, params)
-    SIGNAL_HANDLER
+	SIGNAL_HANDLER
 	if(shooter.incapacitated())
 		return FALSE
-    if(!can_shoot())
-        shoot_with_empty_chamber(shooter)
-        return FALSE
-    INVOKE_ASYNC(src, .proc/do_autofire_shot, source, target, shooter, params)
-    return COMPONENT_AUTOFIRE_SHOT_SUCCESS
+	if(!can_shoot())
+		shoot_with_empty_chamber(shooter)
+		return FALSE
+	INVOKE_ASYNC(src, .proc/do_autofire_shot, source, target, shooter, params)
+	return COMPONENT_AUTOFIRE_SHOT_SUCCESS
 
 /obj/item/gun/proc/do_autofire_shot(datum/source, atom/target, mob/living/shooter, params)
 	var/obj/item/gun/akimbo_gun = shooter.get_inactive_held_item()
