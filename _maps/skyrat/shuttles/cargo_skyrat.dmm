@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ay" = (
-/obj/structure/extinguisher_cabinet/directional/north,
+"au" = (
+/obj/effect/decal/cleanable/oil/slippery,
 /turf/open/floor/iron/shuttle/cargo,
 /area/shuttle/supply)
 "bm" = (
@@ -10,7 +10,9 @@
 /area/shuttle/supply/cockpit)
 "bT" = (
 /obj/machinery/light/directional/west,
-/obj/machinery/computer,
+/obj/machinery/computer{
+	desc = "This WAS a helmsman's console, before it became a coffee console."
+	},
 /turf/open/floor/iron/shuttle/cargo,
 /area/shuttle/supply/cockpit)
 "do" = (
@@ -31,11 +33,6 @@
 "dv" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/cargo{
 	icon_state = "1,1"
-	},
-/area/shuttle/supply)
-"dF" = (
-/turf/open/floor/iron/shuttle/cargo{
-	icon_state = "floor_out"
 	},
 /area/shuttle/supply)
 "eb" = (
@@ -67,6 +64,10 @@
 	icon_state = "1,8"
 	},
 /area/shuttle/supply/cockpit)
+"ku" = (
+/obj/structure/extinguisher_cabinet/directional/north,
+/turf/open/floor/iron/shuttle/cargo,
+/area/shuttle/supply)
 "kz" = (
 /obj/machinery/light/directional/west,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -111,10 +112,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/shuttle/cargo,
 /area/shuttle/supply/cockpit)
-"rx" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron/shuttle/cargo,
-/area/shuttle/supply)
 "rY" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/shuttle/cargo{
@@ -138,11 +135,6 @@
 	icon_state = "2,0"
 	},
 /area/shuttle/supply)
-"tM" = (
-/turf/open/floor/iron/shuttle/cargo{
-	icon_state = "floor_in"
-	},
-/area/shuttle/supply)
 "uk" = (
 /obj/machinery/conveyor{
 	dir = 8;
@@ -159,6 +151,12 @@
 	icon_state = "2,11"
 	},
 /area/shuttle/supply/cockpit)
+"uR" = (
+/obj/structure/closet/shuttle/engivent{
+	pixel_y = -33
+	},
+/turf/open/floor/iron/shuttle/cargo,
+/area/shuttle/supply)
 "vy" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/cargo{
 	icon_state = "0,5"
@@ -183,11 +181,7 @@
 	icon_state = "4,11"
 	},
 /area/shuttle/supply)
-"AO" = (
-/obj/effect/decal/cleanable/oil/slippery,
-/turf/open/floor/iron/shuttle/cargo,
-/area/shuttle/supply)
-"Fg" = (
+"FT" = (
 /turf/open/floor/iron/shuttle/cargo{
 	icon_state = "floor_box"
 	},
@@ -205,6 +199,12 @@
 "Ho" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/cargo{
 	icon_state = "3,0"
+	},
+/area/shuttle/supply)
+"Il" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/shuttle/cargo{
+	icon_state = "floor_box"
 	},
 /area/shuttle/supply)
 "Is" = (
@@ -232,12 +232,6 @@
 	icon_state = "0,9"
 	},
 /area/shuttle/supply/cockpit)
-"Ou" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron/shuttle/cargo{
-	icon_state = "floor_box"
-	},
-/area/shuttle/supply)
 "OI" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/cargo{
 	icon_state = "6,9"
@@ -272,25 +266,24 @@
 	icon_state = "6,0"
 	},
 /area/shuttle/supply)
+"Sb" = (
+/turf/open/floor/iron/shuttle/cargo{
+	icon_state = "floor_out"
+	},
+/area/shuttle/supply)
+"SD" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/shuttle/cargo,
+/area/shuttle/supply)
 "Tj" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/cargo{
 	icon_state = "0,8"
 	},
 /area/shuttle/supply/cockpit)
-"Tz" = (
-/obj/structure/closet/shuttle/engivent{
-	pixel_y = -33
-	},
-/turf/open/floor/iron/shuttle/cargo,
-/area/shuttle/supply)
 "TR" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/cargo{
 	icon_state = "6,2"
 	},
-/area/shuttle/supply)
-"UL" = (
-/obj/effect/decal/cleanable/oil/streak,
-/turf/open/floor/iron/shuttle/cargo,
 /area/shuttle/supply)
 "UP" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/cargo{
@@ -302,6 +295,10 @@
 	icon_state = "0,10"
 	},
 /area/shuttle/supply/cockpit)
+"Vx" = (
+/obj/effect/decal/cleanable/oil/streak,
+/turf/open/floor/iron/shuttle/cargo,
+/area/shuttle/supply)
 "VT" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/cargo{
 	icon_state = "6,1"
@@ -349,6 +346,11 @@
 	icon_state = "0,0"
 	},
 /area/shuttle/supply)
+"ZO" = (
+/turf/open/floor/iron/shuttle/cargo{
+	icon_state = "floor_in"
+	},
+/area/shuttle/supply)
 
 (1,1,1) = {"
 me
@@ -371,10 +373,10 @@ qN
 jn
 rY
 kz
-Fg
-Fg
-Ou
-Ou
+FT
+FT
+Il
+Il
 dv
 Is
 "}
@@ -384,11 +386,11 @@ sa
 PA
 WL
 Xq
-rx
-Fg
-Fg
-Fg
-Fg
+SD
+FT
+FT
+FT
+FT
 OZ
 tp
 "}
@@ -397,12 +399,12 @@ MI
 do
 Ro
 Zv
-ay
+ku
 Xq
 Xq
 Xq
 Xq
-Tz
+uR
 mp
 Ho
 "}
@@ -410,11 +412,11 @@ Ho
 zx
 Jp
 lz
-rx
+SD
 Xq
-AO
-UL
-rx
+au
+Vx
+SD
 Xq
 Xq
 fr
@@ -424,11 +426,11 @@ lq
 Ys
 Hd
 Xq
-tM
-Fg
+ZO
+FT
 go
-Fg
-dF
+FT
+Sb
 Xq
 Xq
 GD
