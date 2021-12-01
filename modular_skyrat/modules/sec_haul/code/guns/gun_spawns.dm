@@ -15,16 +15,18 @@
 	/// Do we want to angle it so that it is horizontal?
 	var/vertical_guns = TRUE
 
-/obj/structure/rack/shelf
 
 /obj/effect/spawner/armory_spawn/Initialize(mapload)
 	..()
+	var/current_offset = -10
+	var/offset_percent = 20 / guns.len
 	for(var/gun in guns) // 11/20/21: Gun spawners now spawn 1 of each gun in it's list no matter what, so as to reduce the RNG of the armory stock.
 		var/obj/item/gun/spawned_gun = new gun(loc)
 
 		if(vertical_guns)
 			spawned_gun.place_on_rack()
-			spawned_gun.pixel_x = rand(-10, 10)
+			spawned_gun.pixel_x = current_offset
+			current_offset += offset_percent
 
 		if(istype(spawned_gun, /obj/item/gun/ballistic))
 			var/obj/item/gun/ballistic/spawned_ballistic_gun = spawned_gun
