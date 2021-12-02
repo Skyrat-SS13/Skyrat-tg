@@ -170,7 +170,7 @@
 	var/leverage = 0
 	if(current_aug)
 		leverage += current_aug.cost
-	if((quirk_points+leverage)>= target_aug.cost)
+	if((quirk_points + leverage)>= target_aug.cost)
 		return TRUE
 	else
 		return FALSE

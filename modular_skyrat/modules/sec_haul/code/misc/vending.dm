@@ -71,4 +71,4 @@
 	light_color = COLOR_MOSTLY_PURE_RED
 
 /obj/item/vending_refill/wardrobe/peacekeeper_wardrobe
-	machine_name = "Peacekeeper Outfitting Station"
+	machine_name = "Peacekeeper outfitting station"

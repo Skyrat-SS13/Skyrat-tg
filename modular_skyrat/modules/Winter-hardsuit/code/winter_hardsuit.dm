@@ -18,7 +18,7 @@
 	inhand_icon_state = "syndie_hardsuit"
 	hardsuit_type = "syndi-winter"
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/syndi/winter
-	hardsuit_tail_colors = list("EEE", "111", "211")
+	hardsuit_tail_colors = list("#DDDDDD", "#111111", "#d8d8d8")
 
 /obj/item/clothing/head/helmet/space/hardsuit/syndi/wintertas
 	name = "winterized Syndicate hardsuit helmet"
@@ -40,7 +40,7 @@
 	inhand_icon_state = "syndie_hardsuit"
 	hardsuit_type = "syndi-wintertas"
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/syndi/wintertas
-	hardsuit_tail_colors = list("EEE", "111", "211")
+	hardsuit_tail_colors = list("#DDDDDD", "#111111", "#d8d8d8")
 
 /obj/item/device/custom_kit/winterized
 	name = "syndicate Hardsuit winterized plating kit"
