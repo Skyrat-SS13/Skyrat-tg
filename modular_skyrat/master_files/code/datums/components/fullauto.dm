@@ -53,11 +53,11 @@
 		stop_autofiring() //Let's stop shooting to avoid issues.
 		return
 
-	var/obj/item/gun/G = parent
+	var/obj/item/gun/parent_gun = parent
 
 	if(iscarbon(user))
 		var/mob/living/carbon/shooter = user
-		if(shooter.is_holding(parent) && G.fire_select == SELECT_FULLY_AUTOMATIC)
+		if(shooter.is_holding(parent) && parent_gun.fire_select == SELECT_FULLY_AUTOMATIC)
 			autofire_on(shooter.client)
 		else
 			autofire_off()
@@ -249,7 +249,7 @@
 // Gun procs.
 
 /obj/item/gun/proc/on_autofire_start(mob/living/shooter)
-	if(!can_shoot(shooter) || !can_trigger_gun(shooter) || semicd)
+	if(!can_shoot(shooter) || !can_trigger_gun(shooter) || shooter.incapacitated() || semicd)
 		return FALSE
 	var/obj/item/bodypart/other_hand = shooter.has_hand_for_held_index(shooter.get_inactive_hand_index())
 	if(weapon_weight == WEAPON_HEAVY && (shooter.get_inactive_held_item() || !other_hand))
@@ -264,12 +264,14 @@
 		return COMPONENT_AUTOFIRE_ONMOUSEDOWN_BYPASS
 
 /obj/item/gun/proc/do_autofire(datum/source, atom/target, mob/living/shooter, params)
-    SIGNAL_HANDLER
-    if(!can_shoot())
-        shoot_with_empty_chamber(shooter)
-        return FALSE
-    INVOKE_ASYNC(src, .proc/do_autofire_shot, source, target, shooter, params)
-    return COMPONENT_AUTOFIRE_SHOT_SUCCESS
+	SIGNAL_HANDLER
+	if(shooter.incapacitated())
+		return FALSE
+	if(!can_shoot())
+		shoot_with_empty_chamber(shooter)
+		return FALSE
+	INVOKE_ASYNC(src, .proc/do_autofire_shot, source, target, shooter, params)
+	return COMPONENT_AUTOFIRE_SHOT_SUCCESS
 
 /obj/item/gun/proc/do_autofire_shot(datum/source, atom/target, mob/living/shooter, params)
 	var/obj/item/gun/akimbo_gun = shooter.get_inactive_held_item()

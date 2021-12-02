@@ -318,7 +318,7 @@
 /datum/uplink_item/loadout_skyrat
 	category = "Loadout"
 	surplus = 0
-	cant_discount = TRUE //I honestly don't think discount is worth it for those things, sorry.
+	cant_discount = TRUE // I honestly don't think discount is worth it for those things, sorry.
 
 /datum/uplink_item/loadout_skyrat/recon
 	name = "Reconnaisance bundle"

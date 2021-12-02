@@ -1,5 +1,5 @@
 /obj/effect/accelerated_particle
-	name = "Accelerated Particles"
+	name = "accelerated particles"
 	desc = "Small things moving very fast."
 	icon = 'modular_skyrat/modules/singularity_engine/icons/particle_accelerator.dmi'
 	icon_state = "particle"

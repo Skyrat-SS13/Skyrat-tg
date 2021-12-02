@@ -424,7 +424,7 @@
 
 //Objects Used by medicells.
 /obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
-	name = "Hardlight Hospital Gown"
+	name = "hardlight hospital gown"
 	desc = "A hospital Gown made out of hardlight, you can barely feel it on your body"
 	icon_state = "lgown"
 
@@ -464,7 +464,7 @@
 
 //Hardlight Roller Bed.
 /obj/structure/bed/roller/medigun
-	name = "Hardlight Roller Bed"
+	name = "hardlight roller bed"
 	desc = "A Roller Bed made out of Hardlight"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/misc.dmi'
 	max_integrity = 1
