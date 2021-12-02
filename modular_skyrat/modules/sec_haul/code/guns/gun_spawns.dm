@@ -121,4 +121,7 @@
 	gun_count = 4
 	guns = list(
 		/obj/item/gun/ballistic/automatic/c20r/unrestricted,
+		/obj/item/gun/ballistic/automatic/c20r/unrestricted,
+		/obj/item/gun/ballistic/automatic/c20r/unrestricted,
+		/obj/item/gun/ballistic/automatic/c20r/unrestricted,
 	)
