@@ -13,7 +13,7 @@
 
 /obj/item/clothing/under/rank/security/blueshield/turtleneck
 	name = "blueshield's skivvy"
-	desc = "A cozier alternative to the normal Blueshield's suit. It's made out of an expensive, all-natural wool."
+	desc = "A cozier alternative to the normal blueshield's suit. It's made out of an expensive, all-natural wool."
 	icon_state = "bs_turtleneck"
 	fitted = FEMALE_UNIFORM_TOP
 
@@ -24,7 +24,7 @@
 
 /obj/item/clothing/under/rank/security/blueshield/skirt
 	desc = "A \"tactical\" skirt seemingly outfitted in Nanotrasen's standard corporate-chic."
-	name = "Blueshield's skirt"
+	name = "blueshield's skirt"
 	icon_state = "blueshieldskirt"
 	fitted = FEMALE_UNIFORM_TOP
 
@@ -108,7 +108,7 @@
 
 //blueshield armor
 /obj/item/clothing/suit/armor/vest/blueshield
-	name = "Blueshield's jacket"
+	name = "blueshield's jacket"
 	desc = "An expensive kevlar-lined jacket with a golden badge on the chest and \"NT\" emblazoned on the back. It weighs surprisingly little, despite how heavy it looks. There's a tight-fitting vest tucked in underneath."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
@@ -118,7 +118,7 @@
 	armor = list("melee" = 35, "bullet" = 25, "laser" = 25,"energy" = 25, "bomb" = 30, "bio" = 0, "fire" = 75, "acid" = 75)
 
 /obj/item/clothing/suit/armor/vest/blueshieldarmor
-	name = "Blueshield's Armor"
+	name = "blueshield's armor"
 	desc = "A tight-fitting kevlar-lined vest with a golden badge on the chest and \"NT\" emblazoned on the back. It weighs surprisingly little, despite how heavy it looks."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'

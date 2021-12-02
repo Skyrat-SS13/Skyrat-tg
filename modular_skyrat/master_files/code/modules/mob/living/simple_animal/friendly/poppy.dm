@@ -7,7 +7,7 @@
 	icon_dead = "poppypossum_dead"
 	maxHealth = 30
 	health = 30
-	speak = list("Hiss!","HISS!","Hissss?")
+	speak = list("Hiss!", "HISS!", "Hissss?")
 	speak_emote = list("hisses")
 	emote_hear = list("hisses.")
 	emote_see = list("runs in a circle.", "shakes.")

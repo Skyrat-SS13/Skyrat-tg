@@ -42,8 +42,7 @@
 
 						//clothing
 						/obj/item/clothing/mask/ballgag,
-						/obj/item/clothing/mask/ballgag/phallic,
-						/obj/item/clothing/mask/ballgag/phallic/kazoo,
+						/obj/item/clothing/mask/ballgag/choking,
 						/obj/item/clothing/head/domina_cap,
 						/obj/item/clothing/head/maid,
 						/obj/item/clothing/glasses/blindfold/kinky,
