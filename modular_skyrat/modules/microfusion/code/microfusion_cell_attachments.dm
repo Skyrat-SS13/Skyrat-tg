@@ -39,7 +39,7 @@ Allows the cell to be recharged at a gun recharger OR cell recharger.
 	icon_state = "attachment_rechargeable"
 	attachment_overlay_icon_state = "microfusion_rechargeable"
 	/// The bonus charge rate by adding this attachment.
-	var/bonus_charge_rate = 100
+	var/bonus_charge_rate = 300
 
 /obj/item/microfusion_cell_attachment/rechargeable/add_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	. = ..()

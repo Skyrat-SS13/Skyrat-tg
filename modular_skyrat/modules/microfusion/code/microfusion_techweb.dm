@@ -26,19 +26,6 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3500)
 
-/datum/techweb_node/military_microfusion
-	id = "military_microfusion"
-	display_name = "Military Grade Microfusion Technology"
-	description = "Of course the military wanted in on microfusion."
-	prereq_ids = list(
-		"enhanced_microfusion",
-	)
-	design_ids = list(
-		"microfusion_gun_attachment_grip",
-		"microfusion_gun_attachment_rail",
-	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3500)
-
 //Advanced microfusion
 /datum/techweb_node/advanced_microfusion
 	id = "advanced_microfusion"
@@ -58,6 +45,9 @@
 		"microfusion_gun_attachment_scatter",
 		"microfusion_gun_attachment_superheat",
 		"advanced_microfusion_phase_emitter",
+		"microfusion_gun_attachment_grip",
+		"microfusion_gun_attachment_rail",
+		"microfusion_gun_attachment_grip",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 
@@ -77,6 +67,7 @@
 		"bluespace_microfusion_cell",
 		"microfusion_gun_attachment_repeater",
 		"bluespace_microfusion_phase_emitter",
+		"microfusion_cell_attachment_selfcharging",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 
@@ -90,7 +81,6 @@
 		"alientech",
 	)
 	design_ids = list(
-		"microfusion_cell_attachment_selfcharging",
 		"microfusion_gun_attachment_xray",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 15000)

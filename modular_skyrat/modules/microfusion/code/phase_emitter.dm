@@ -10,17 +10,17 @@ Basically the heart of the gun, can be upgraded.
 	base_icon_state = "phase_emitter"
 	w_class = WEIGHT_CLASS_NORMAL
 	/// Max heat before it breaks
-	var/max_heat = 1000
+	var/max_heat = 2000
 	/// Current heat level
 	var/current_heat = 0
 	/// Thermal throttle percentage
 	var/throttle_percentage = 80
 	/// How much heat it dissipates passively
-	var/heat_dissipation_per_tick = 20
+	var/heat_dissipation_per_tick = 30
 	/// Active cooling system
 	var/cooling_system = FALSE
 	/// How quickly does the active cooling system cool - 1/1 ratio of cell charge to cooling point
-	var/cooling_system_rate = 20
+	var/cooling_system_rate = 30
 	/// What is our dynamic integrity?
 	var/integrity = 100
 	/// Are we fucked?
@@ -55,15 +55,12 @@ Basically the heart of the gun, can be upgraded.
 		calculated_heat_dissipation_per_tick += PHASE_HEAT_DISSIPATION_BONUS_AIR //We get some passive cooling from being out of the gun.
 	if(cooling_system && parent_gun && parent_gun.cell && parent_gun.cell.use(cooling_system_rate))
 		calculated_heat_dissipation_per_tick += cooling_system_rate
-	else
-		cooling_system = FALSE
+
 	current_heat = clamp(current_heat - (calculated_heat_dissipation_per_tick * delta_time) * 0.5, 0, INFINITY)
 	if(current_heat > max_heat)
 		integrity = integrity - current_heat / 1000 * delta_time * 0.5
 
 	process_fire_delay_and_sound()
-
-
 
 	if(integrity <= 0)
 		kill()
@@ -176,29 +173,29 @@ Basically the heart of the gun, can be upgraded.
 /obj/item/microfusion_phase_emitter/enhanced
 	name = "enhanced microfusion phase emitter"
 	desc = "The core of a microfusion projection weapon, produces the laser."
-	max_heat = 1500
+	max_heat = 3000
 	throttle_percentage = 85
-	heat_dissipation_per_tick = 30
-	cooling_system_rate = 30
+	heat_dissipation_per_tick = 40
+	cooling_system_rate = 40
 	integrity = 120
 	color = "#ffffcc"
 
 /obj/item/microfusion_phase_emitter/advanced
 	name = "advanced microfusion phase emitter"
 	desc = "The core of a microfusion projection weapon, produces the laser."
-	max_heat = 2000
-	throttle_percentage = 85
-	heat_dissipation_per_tick = 40
-	cooling_system_rate = 40
+	max_heat = 4000
+	throttle_percentage = 90
+	heat_dissipation_per_tick = 50
+	cooling_system_rate = 50
 	integrity = 150
 	color = "#99ffcc"
 
 /obj/item/microfusion_phase_emitter/bluespace
 	name = "bluespace microfusion phase emitter"
 	desc = "The core of a microfusion projection weapon, produces the laser."
-	max_heat = 2500
-	throttle_percentage = 90
-	heat_dissipation_per_tick = 50
-	cooling_system_rate = 50
+	max_heat = 5000
+	throttle_percentage = 95
+	heat_dissipation_per_tick = 60
+	cooling_system_rate = 60
 	integrity = 200
 	color = "#66ccff"
