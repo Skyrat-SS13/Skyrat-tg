@@ -10,7 +10,7 @@
 	new /obj/item/lipstick/black(src)
 
 /obj/item/lipstick/quantum
-	name = "Quantum Lipstick"
+	name = "quantum lipstick"
 
 /obj/item/lipstick/quantum/attack(mob/attacked_mob, mob/user)
 	if(!open || !ismob(attacked_mob))
@@ -123,7 +123,7 @@
 				user.visible_message(span_notice("[user] shaves [self_shaving ? user.p_their() : "[target_human]'s"] hair clean with [src]."), \
 					span_notice("You finish shaving [self_shaving ? "your" : " [target_human]'s"] hair with [src]. Fast and clean!"))
 				shave(target_human, location)
-			
+
 		else if(location == BODY_ZONE_HEAD)
 			if(!(HAIR in target_human.dna.species.species_traits))
 				to_chat(user, span_warning("There is no hair to shave!"))

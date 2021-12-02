@@ -1,5 +1,5 @@
 /obj/item/robot_model/ninja
-	name = "Spider Clan Assault"
+	name = "spider clan assault"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/katana/ninja_blade,
@@ -71,7 +71,7 @@
 	return ..()
 
 /obj/item/robot_model/ninja/ninja_medical
-	name = "Spider Clan Medical"
+	name = "spider clan medical"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/katana/ninja_blade,
@@ -97,7 +97,7 @@
 	model_select_alternate_icon = 'modular_skyrat/modules/specborg/icons/screen_cyborg.dmi'
 
 /obj/item/robot_model/ninja_saboteur
-	name = "Spider Clan Saboteur"
+	name = "spider clan saboteur"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/borg/sight/thermal,

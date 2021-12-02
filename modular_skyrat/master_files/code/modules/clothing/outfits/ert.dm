@@ -22,10 +22,10 @@
 
 	skillchips = list(/obj/item/skillchip/disk_verifier)
 
-	backpack_contents = list(/obj/item/storage/box/survival/engineer=1,\
-		/obj/item/storage/firstaid/regular=1,\
-		/obj/item/flashlight=1,\
-		/obj/item/storage/box/handcuffs=1)
+	backpack_contents = list(/obj/item/storage/box/survival/engineer = 1,\
+		/obj/item/storage/firstaid/regular = 1,\
+		/obj/item/flashlight = 1,\
+		/obj/item/storage/box/handcuffs = 1)
 
 /datum/outfit/centcom/asset_protection/post_equip(mob/living/carbon/human/person, visualsOnly = FALSE)
 	if(visualsOnly)
