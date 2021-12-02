@@ -9,7 +9,10 @@
 	permeability_coefficient = 0.01
 	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH | PEPPERPROOF
 	resistance_flags = NONE
-	tint = 1.5
+	//SKYRAT EDIT CHANGE BEGIN - gasmasktint
+	//tint = 1.5 - SKYRAT EDIT - ORIGINAL
+	tint = 0
+	//SKYRAT EDIT CHANGE END
 	///Max numbers of installable filters
 	var/max_filters = 1
 	///List to keep track of each filter
@@ -160,7 +163,10 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	strip_delay = 60
 	w_class = WEIGHT_CLASS_SMALL
-	tint = 0.25
+	//SKYRAT EDIT CHANGE BEGIN - gasmasktint
+	//tint = 0.25 - SKYRAT EDIT - ORIGINAL
+	tint = 0
+	//SKYRAT EDIT CHANGE END
 
 /obj/item/clothing/mask/gas/clown_hat
 	name = "clown wig and mask"
