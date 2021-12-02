@@ -261,6 +261,10 @@ Converts shots to STAMNINA damage.
 	var/cooling_rate_increase = 10
 	/// The projectile we override
 	var/projectile_override = /obj/projectile/beam/microfusion_disabler
+	/// How much recoil are we removing?
+	var/recoil_to_remove = 1
+	/// How much spread are we removing?
+	var/spread_to_remove = 10
 
 /obj/item/microfusion_gun_attachment/undercharger/get_modify_data()
 	return list(list("title" = "Turn [toggle ? "OFF" : "ON"]", "icon" = "power-off", "color" = "[toggle ? "red" : "green"]", "reference" = "toggle_on_off"))
@@ -273,9 +277,13 @@ Converts shots to STAMNINA damage.
 	if(toggle)
 		toggle = FALSE
 		microfusion_gun.heat_dissipation_bonus -= cooling_rate_increase
+		microfusion_gun.recoil -= recoil_to_remove
+		microfusion_gun.spread -= spread_to_remove
 	else
 		toggle = TRUE
 		microfusion_gun.heat_dissipation_bonus += cooling_rate_increase
+		microfusion_gun.recoil += recoil_to_remove
+		microfusion_gun.spread += spread_to_remove
 
 	if(user)
 		to_chat(user, span_notice("You toggle [src] [toggle ? "ON" : "OFF"]."))
@@ -293,6 +301,8 @@ Converts shots to STAMNINA damage.
 	. = ..()
 	if(toggle)
 		microfusion_gun.heat_dissipation_bonus -= cooling_rate_increase
+		microfusion_gun.recoil -= recoil_to_remove
+		microfusion_gun.spread -= spread_to_remove
 	microfusion_gun.fire_sound = microfusion_gun.chambered?.fire_sound
 
 /*
@@ -395,6 +405,7 @@ DANGER: SNOWFLAKE ZONE
 BLACK CAMO ATTACHMENT
 
 Allows for a black camo to be applied to the gun.
+All tactical, all the time.
 */
 /obj/item/microfusion_gun_attachment/black_camo
 	name = "black camo microfusion frame"
