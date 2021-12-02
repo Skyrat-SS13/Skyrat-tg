@@ -13,4 +13,7 @@
 	inhand_icon_state = "s-ninja_mask"
 	strip_delay = 120
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
-	tint = 0.25
+	//SKYRAT EDIT CHANGE BEGIN - gasmasktint
+	//tint = 0.25 - SKYRAT EDIT - ORIGINAL
+	tint = 0
+	//SKYRAT EDIT CHANGE END
