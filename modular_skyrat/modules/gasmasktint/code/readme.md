@@ -9,7 +9,9 @@ The PR removes the tinting from gas masks added by Ghilker's PR, as shown here:h
 ### TG Proc/File Changes:
 
 code/modules/clothing/masks/gasmask.dm
+
 code/modules/mining/equipment/explorer_gear.dm
+
 code/modules/ninja/suit/mask.dm
 <!-- If you had to edit, or append to any core procs in the process of making this PR, list them here. APPEND: Also, please include any files that you've changed. .DM files that is. -->
 
