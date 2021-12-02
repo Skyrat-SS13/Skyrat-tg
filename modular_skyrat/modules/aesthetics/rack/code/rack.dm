@@ -2,10 +2,10 @@
 	icon = 'modular_skyrat/modules/aesthetics/rack/icons/rack.dmi'
 
 /obj/structure/rack/shelf
+	name = "shelf"
+	desc = "A shelf, for storing things on. Conveinent!"
 	icon = 'modular_skyrat/modules/aesthetics/rack/icons/rack.dmi'
 	icon_state = "shelf"
-	name = "Shelf"
-	desc = "A shelf, for storing things on. Conveinent!"
 
 /obj/item/gun
 	var/on_rack = FALSE
@@ -27,9 +27,9 @@
 	remove_from_rack()
 
 /obj/structure/rack/gunrack
-	icon_state = "gunrack"
 	name = "gun rack"
 	desc = "A gun rack for storing guns."
+	icon_state = "gunrack"
 
 /obj/structure/rack/gunrack/attackby(obj/item/W, mob/living/user, params)
 	var/list/modifiers = params2list(params)

@@ -23,6 +23,8 @@
 	desc = "A new development from DeForest Medical, this hypospray takes 60-unit vials as the drug supply for easy swapping."
 	w_class = WEIGHT_CLASS_TINY
 	var/list/allowed_containers = list(/obj/item/reagent_containers/glass/vial/small)
+	/// Is the hypospray only able to use small vials. Relates to the loaded overlays
+	var/small_only = TRUE
 	//Inject or spray?
 	var/mode = HYPO_INJECT
 	var/obj/item/reagent_containers/glass/vial/vial
@@ -43,13 +45,14 @@
 	//Does it go through hardsuits?
 	var/penetrates = null
 
-/obj/item/hypospray/mkii/CMO
+/obj/item/hypospray/mkii/cmo
 	name = "hypospray mk.II deluxe"
 	allowed_containers = list(/obj/item/reagent_containers/glass/vial/small, /obj/item/reagent_containers/glass/vial/large)
 	icon_state = "cmo2"
 	desc = "The deluxe hypospray can take larger 120-unit vials. It also acts faster and can deliver more reagents per spray."
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	start_vial = /obj/item/reagent_containers/glass/vial/large/deluxe
+	small_only = FALSE
 	inject_wait = DELUXE_WAIT_INJECT
 	spray_wait = DELUXE_WAIT_SPRAY
 	spray_self = DELUXE_SELF_SPRAY
@@ -71,8 +74,10 @@
 	if(!vial.reagents.total_volume)
 		return
 	var/vial_spritetype = "chem-color"
-	if(/obj/item/reagent_containers/glass/vial/large in allowed_containers)
-		vial_spritetype += "-cmo"
+	if(!small_only)
+		vial_spritetype += "[vial.type_suffix]"
+	else
+		vial_spritetype += "-s"
 	var/mutable_appearance/chem_loaded = mutable_appearance('modular_skyrat/modules/hyposprays/icons/hyposprays.dmi', vial_spritetype)
 	chem_loaded.color = vial.chem_color
 	. += chem_loaded
@@ -83,7 +88,10 @@
 
 /obj/item/hypospray/mkii/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)][vial ? "" : "-e"]"
+	var/icon_suffix = "-s"
+	if(!small_only && vial)
+		icon_suffix = vial.type_suffix //Sets the suffix used to the correspoding vial.
+	icon_state = "[initial(icon_state)][vial ? "[icon_suffix]" : ""]"
 
 /obj/item/hypospray/mkii/examine(mob/user)
 	. = ..()
@@ -91,7 +99,6 @@
 		. += "[vial] has [vial.reagents.total_volume]u remaining."
 	else
 		. += "It has no vial loaded in."
-	. += "[src] is set to [mode ? "Inject" : "Spray"] contents on application."
 
 /obj/item/hypospray/mkii/proc/unload_hypo(obj/item/hypo, mob/user)
 	if((istype(hypo, /obj/item/reagent_containers/glass/vial)))
@@ -108,10 +115,12 @@
 
 /obj/item/hypospray/mkii/proc/insert_vial(obj/item/new_vial, mob/living/user, obj/item/current_vial)
 	var/obj/item/reagent_containers/glass/vial/container = new_vial
+	var/old_loc //The location of and old vial.
 	if(!is_type_in_list(container, allowed_containers))
 		to_chat(user, span_notice("[src] doesn't accept this type of vial."))
 		return FALSE
 	if(current_vial)
+		old_loc = container.loc
 		var/obj/item/reagent_containers/glass/vial/old_container = current_vial
 		old_container.forceMove(drop_location())
 	if(!user.transferItemToLoc(container, src))
@@ -121,7 +130,10 @@
 	playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
 	update_appearance()
 	if(current_vial)
-		user.put_in_hands(current_vial)
+		if(old_loc == user)
+			user.put_in_hands(current_vial)
+		else
+			current_vial.forceMove(old_loc)
 
 /obj/item/hypospray/mkii/attackby(obj/item/used_item, mob/living/user)
 	if((istype(used_item, /obj/item/reagent_containers/glass/vial) && vial != null))
@@ -136,10 +148,16 @@
 		insert_vial(used_item, user)
 		return TRUE
 
-/obj/item/hypospray/mkii/AltClick(mob/user)
+/obj/item/hypospray/mkii/attack_self(mob/user)
 	. = ..()
 	if(vial)
 		vial.attack_self(user)
+		return TRUE
+
+/obj/item/hypospray/mkii/attack_self_secondary(mob/user)
+	. = ..()
+	if(vial)
+		vial.attack_self_secondary(user)
 		return TRUE
 
 /obj/item/hypospray/mkii/emag_act(mob/user)
@@ -157,11 +175,13 @@
 	obj_flags |= EMAGGED
 	return TRUE
 
-/obj/item/hypospray/mkii/attack_hand(mob/user)
-	. = ..() //Don't bother changing this or removing it from containers will break.
-
 /obj/item/hypospray/mkii/attack(obj/item/hypo, mob/user, params)
+	mode = HYPO_INJECT
 	return
+
+/obj/item/hypospray/mkii/attack_secondary(obj/item/hypo, mob/user, params)
+	mode = HYPO_SPRAY
+	return SECONDARY_ATTACK_CONTINUE_CHAIN
 
 /obj/item/hypospray/mkii/afterattack(atom/target, mob/living/user, proximity)
 	if(istype(target, /obj/item/reagent_containers/glass/vial))
@@ -218,31 +238,24 @@
 	to_chat(user, span_notice("You [fp_verb] [vial.amount_per_transfer_from_this] units of the solution. The hypospray's cartridge now contains [vial.reagents.total_volume] units."))
 	update_appearance()
 
-/obj/item/hypospray/mkii/attack_self(mob/living/user)
-	if(user)
+/obj/item/hypospray/mkii/afterattack_secondary(atom/target, mob/living/user, proximity)
+	return SECONDARY_ATTACK_CALL_NORMAL
+
+/obj/item/hypospray/mkii/attack_hand(mob/living/user)
+	if(user && loc == user && user.is_holding(src))
 		if(user.incapacitated())
 			return
 		else if(!vial)
-			to_chat(user, "This Hypo needs to be loaded first!")
+			. = ..()
 			return
 		else
 			unload_hypo(vial,user)
-
-/obj/item/hypospray/mkii/CtrlClick(mob/living/user)
-	. = ..()
-	if(user.canUseTopic(src, FALSE) && user.get_active_held_item(src))
-		switch(mode)
-			if(HYPO_SPRAY)
-				mode = HYPO_INJECT
-				to_chat(user, "[src] is now set to inject contents on application.")
-			if(HYPO_INJECT)
-				mode = HYPO_SPRAY
-				to_chat(user, "[src] is now set to spray contents on application.")
-		return TRUE
+	else
+		. = ..()
 
 /obj/item/hypospray/mkii/examine(mob/user)
 	. = ..()
-	. += span_notice("<b>Ctrl-Click</b> it to toggle its mode from spraying to injecting and vice versa.")
+	. += span_notice("<b>Left-Click</b> on patients to inject, <b>Right-Click</b> to spray.")
 
 #undef HYPO_SPRAY
 #undef HYPO_INJECT

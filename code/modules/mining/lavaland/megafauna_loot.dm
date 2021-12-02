@@ -710,7 +710,7 @@
 		return
 
 	var/mob/living/carbon/human/consumer = user
-	var/random = rand(1,4)
+	var/random = rand(2,4) //SKYRAT EDIT - Commenting out #1 because it makes people invisible.
 
 	switch(random)
 		if(1)

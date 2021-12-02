@@ -324,7 +324,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				dat += "<h4>Utilities</h4>"
 				dat += "<ul>"
 				if (cartridge)
-					if(cartridge.bot_access_flags)
+					if(!isnull(cartridge.bot_access))
 						dat += "<li><a href='byond://?src=[REF(src)];choice=[PDA_UI_BOTS_ACCESS]'>[PDAIMG(medbot)]Bots Access</a></li>"
 					if (cartridge.access & CART_JANITOR)
 						dat += "<li><a href='byond://?src=[REF(src)];choice=[PDA_UI_JANNIE_LOCATOR]'>[PDAIMG(bucket)]Custodial Locator</a></li>"
@@ -406,7 +406,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 						var/exp = targetmind.get_skill_exp(type)
 						var/xp_prog_to_level = targetmind.exp_needed_to_level_up(type)
 						var/xp_req_to_level = 0
-						if (xp_prog_to_level)//is it even possible to level up?
+						if (xp_prog_to_level && lvl_num < length(SKILL_EXP_LIST)) // is it even possible to level up?
 							xp_req_to_level = SKILL_EXP_LIST[lvl_num+1] - SKILL_EXP_LIST[lvl_num]
 						dat += "<HR><b>[S.name]</b>"
 						dat += "<br><i>[S.desc]</i>"
@@ -775,12 +775,12 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if((last_text && world.time < last_text + 10) || (everyone && last_everyone && world.time < last_everyone + PDA_SPAM_DELAY))
 		return FALSE
 
-	var/list/filter_result = is_ic_filtered_for_pdas(message)
+	var/list/filter_result = CAN_BYPASS_FILTER(user) ? null : is_ic_filtered_for_pdas(message)
 	if (filter_result)
 		REPORT_CHAT_FILTER_TO_USER(user, filter_result)
 		return FALSE
 
-	var/list/soft_filter_result = is_soft_ic_filtered_for_pdas(message)
+	var/list/soft_filter_result = CAN_BYPASS_FILTER(user) ? null : is_soft_ic_filtered_for_pdas(message)
 	if (soft_filter_result)
 		if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to send it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
 			return FALSE
@@ -1178,6 +1178,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 		M.show_message(span_userdanger("Your [src] explodes!"), MSG_VISUAL, span_warning("You hear a loud *pop*!"), MSG_AUDIBLE)
 	else
 		visible_message(span_danger("[src] explodes!"), span_warning("You hear a loud *pop*!"))
+
+	target.client?.give_award(/datum/award/achievement/misc/clickbait, target)
 
 	if(T)
 		T.hotspot_expose(700,125)

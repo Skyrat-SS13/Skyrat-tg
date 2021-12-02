@@ -88,7 +88,7 @@
 	new /obj/item/multitool(src)
 	new /obj/item/stack/cable_coil(src)
 	new /obj/item/extinguisher/mini(src)
-	new /obj/item/analyzer(src)
+	new /obj/item/analyzer/ranged(src)	//SKYRAT EDIT - original: new /obj/item/analyzer(src)
 	//much roomier now that we've managed to remove two tools
 
 /obj/item/storage/belt/utility/full/PopulateContents()
@@ -185,6 +185,7 @@
 		/obj/item/clothing/suit/toggle/labcoat/hospitalgown,	//SKYRAT EDIT ADDITION - adds surgery gowns to belts
 		/obj/item/weaponcell/medical, //SKYRAT EDIT MEDIGUNS
 		/obj/item/reagent_containers/glass/vial, //SKYRAT EDIT HYPOSPRAYS
+		/obj/item/hypospray/mkii, //SKYRAT EDIT HYPOSPRAYS
 		/obj/item/scalpel,
 		/obj/item/circular_saw,
 		/obj/item/bonesetter,

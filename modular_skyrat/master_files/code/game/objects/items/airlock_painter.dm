@@ -7,7 +7,7 @@
 	worn_icon_state = "painter"
 	w_class = WEIGHT_CLASS_SMALL
 
-	custom_materials = list(/datum/material/iron=50, /datum/material/glass=50)
+	custom_materials = list(/datum/material/iron = 50, /datum/material/glass = 50)
 
 	flags_1 = CONDUCT_1
 	item_flags = NOBLUDGEON
@@ -71,9 +71,9 @@
 	return TRUE
 
 /obj/item/airlock_painter/suicide_act(mob/user)
-	var/obj/item/organ/lungs/L = user.getorganslot(ORGAN_SLOT_LUNGS)
+	var/obj/item/organ/lungs/mob_lungs = user.getorganslot(ORGAN_SLOT_LUNGS)
 
-	if(can_use(user) && L)
+	if(can_use(user) && mob_lungs)
 		user.visible_message(span_suicide("[user] is inhaling toner from [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
 		use(user)
 
@@ -82,31 +82,31 @@
 
 		// Find out if there is an open turf in front of us,
 		// and if not, pick the turf we are standing on.
-		var/turf/T = get_step(get_turf(src), user.dir)
-		if(!isopenturf(T))
-			T = get_turf(src)
+		var/turf/target_turf = get_step(get_turf(src), user.dir)
+		if(!isopenturf(target_turf))
+			target_turf = get_turf(src)
 
 		// they managed to lose their lungs between then and
 		// now. Good job.
-		if(!L)
+		if(!mob_lungs)
 			return OXYLOSS
 
-		L.Remove(user)
+		mob_lungs.Remove(user)
 
 		// make some colorful reagent, and apply it to the lungs
-		L.create_reagents(10)
-		L.reagents.add_reagent(/datum/reagent/colorful_reagent, 10)
-		L.reagents.expose(L, TOUCH, 1)
+		mob_lungs.create_reagents(10)
+		mob_lungs.reagents.add_reagent(/datum/reagent/colorful_reagent, 10)
+		mob_lungs.reagents.expose(mob_lungs, TOUCH, 1)
 
 		// TODO maybe add some colorful vomit?
 
-		user.visible_message(span_suicide("[user] vomits out [user.p_their()] [L]!"))
+		user.visible_message(span_suicide("[user] vomits out [user.p_their()] [mob_lungs]!"))
 		playsound(user.loc, 'sound/effects/splat.ogg', 50, TRUE)
 
-		L.forceMove(T)
+		mob_lungs.forceMove(target_turf)
 
 		return (TOXLOSS|OXYLOSS)
-	else if(can_use(user) && !L)
+	else if(can_use(user) && !mob_lungs)
 		user.visible_message(span_suicide("[user] is spraying toner on [user.p_them()]self from [src]! It looks like [user.p_theyre()] trying to commit suicide."))
 		user.reagents.add_reagent(/datum/reagent/colorful_reagent, 1)
 		user.reagents.expose(user, TOUCH, 1)
@@ -122,32 +122,32 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "decal_sprayer"
 	inhand_icon_state = "decalsprayer"
-	custom_materials = list(/datum/material/iron=50, /datum/material/glass=50)
+	custom_materials = list(/datum/material/iron = 50, /datum/material/glass = 50)
 	var/stored_dir = 2
 	var/stored_color = ""
 	var/stored_decal = "warningline"
 	var/stored_decal_total = "warningline"
-	var/color_list = list("","red","white")
-	var/dir_list = list(1,2,4,8)
-	var/decal_list = list(list("Warning Line","warningline"),
-			list("Warning Line Corner","warninglinecorner"),
-			list("Caution Label","caution"),
-			list("Directional Arrows","arrows"),
-			list("Stand Clear Label","stand_clear"),
-			list("Box","box"),
-			list("Box Corner","box_corners"),
-			list("Delivery Marker","delivery"),
-			list("Warning Box","warn_full"))
+	var/color_list = list("", "red", "white")
+	var/dir_list = list(1, 2, 4, 8)
+	var/decal_list = list(list("Warning Line", "warningline"),
+			list("Warning Line Corner", "warninglinecorner"),
+			list("Caution Label", "caution"),
+			list("Directional Arrows", "arrows"),
+			list("Stand Clear Label", "stand_clear"),
+			list("Box", "box"),
+			list("Box Corner", "box_corners"),
+			list("Delivery Marker", "delivery"),
+			list("Warning Box", "warn_full"))
 	cell_override = /obj/item/stock_parts/cell/upgraded/plus
 
 /obj/item/airlock_painter/decal/afterattack(atom/target, mob/user, proximity)
 	. = ..()
-	var/turf/open/floor/F = target
+	var/turf/open/floor/target_floor = target
 	if(!proximity)
 		to_chat(user, span_notice("You need to get closer!"))
 		return
-	if(use_paint(user) && isturf(F))
-		F.AddElement(/datum/element/decal, 'icons/turf/decals.dmi', stored_decal_total, stored_dir, null, null, alpha, color, null, CLEAN_TYPE_PAINT, null)
+	if(use_paint(user) && isturf(target_floor))
+		target_floor.AddElement(/datum/element/decal, 'icons/turf/decals.dmi', stored_decal_total, stored_dir, null, null, alpha, color, null, CLEAN_TYPE_PAINT, null)
 
 /obj/item/airlock_painter/decal/AltClick(mob/user)
 	. = ..()
@@ -190,7 +190,7 @@
 		))
 	return data
 
-/obj/item/airlock_painter/decal/ui_act(action,list/params)
+/obj/item/airlock_painter/decal/ui_act(action, list/params)
 	. = ..()
 	if(.)
 		return

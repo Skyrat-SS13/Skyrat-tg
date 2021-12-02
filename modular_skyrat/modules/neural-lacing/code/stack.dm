@@ -1,5 +1,5 @@
 /obj/item/organ/corticalstack
-	name = "Cortical Stack"
+	name = "cortical stack"
 	desc = "A strange, crystalline storage device containing 'DHF', digitised conciousness."
 	icon = 'modular_skyrat/modules/neural-lacing/icons/Neuralstack.dmi'
 	icon_state = "cortical-stack"
@@ -58,7 +58,7 @@
 
 	else
 		MSTACK.visible_message(span_danger("[MSTACK] twinges in discomfort; although remains concious."))
-		
+
 /obj/item/organ/corticalstack/Destroy()
 	. = ..()
 	ownerckey = null
