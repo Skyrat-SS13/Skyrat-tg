@@ -13,15 +13,32 @@
 /obj/projectile/beam/laser/microfusion
 	name = "microfusion laser"
 	icon = 'modular_skyrat/modules/microfusion/icons/projectiles.dmi'
-	/// Do we set people alight on impact?
-	var/superheated = FALSE
-	/// If so, how much firestacks?
-	var/fire_stacks = 0
 
-/obj/projectile/beam/laser/microfusion/on_hit(atom/target, blocked)
+/obj/projectile/beam/microfusion_disabler
+	name = "microfusion disabler laser"
+	icon = 'modular_skyrat/modules/microfusion/icons/projectiles.dmi'
+	icon_state = "disabler"
+	damage = 41
+	damage_type = STAMINA
+	flag = ENERGY
+	hitsound = 'sound/weapons/tap.ogg'
+	eyeblur = 0
+	impact_effect_type = /obj/effect/temp_visual/impact_effect/blue_laser
+	light_color = LIGHT_COLOR_BLUE
+	tracer_type = /obj/effect/projectile/tracer/disabler
+	muzzle_type = /obj/effect/projectile/muzzle/disabler
+	impact_type = /obj/effect/projectile/impact/disabler
+
+/obj/projectile/beam/laser/microfusion/superheated
+	name = "superheated microfusion laser"
+	icon_state = "laser_greyscale"
+	color = LIGHT_COLOR_FIRE
+	light_color = LIGHT_COLOR_FIRE
+
+
+/obj/projectile/beam/laser/microfusion/superheated/on_hit(atom/target, blocked)
 	. = ..()
-	if(superheated)
-		if(isliving(target))
-			var/mob/living/living = target
-			living.fire_stacks += fire_stacks
-			living.IgniteMob()
+	if(isliving(target))
+		var/mob/living/living = target
+		living.fire_stacks += 2
+		living.IgniteMob()

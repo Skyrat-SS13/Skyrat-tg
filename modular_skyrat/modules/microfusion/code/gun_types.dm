@@ -1,6 +1,6 @@
 /obj/item/gun/microfusion/mcr01
 	name = "MCR-01"
-	desc = "An advanced energy gun design that sports a removable microfusion cell platform, produced by Allstar Lasers Incorporated."
+	desc = "An advanced, modular energy weapon produced by Allstar Lasers Incorporated. These cutting edge weapons differ from traditional beam weaponry in producing individual bolts, as well as utilizing hotswapped cells rather than being tied to immobile power sources."
 	icon_state = "mcr01"
 	inhand_icon_state = "mcr01"
 	shaded_charge = TRUE

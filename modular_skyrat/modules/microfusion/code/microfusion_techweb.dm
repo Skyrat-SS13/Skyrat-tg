@@ -75,7 +75,7 @@
 /datum/techweb_node/quantum_microfusion
 	id = "quantum_microfusion"
 	display_name = "Quantum Microfusion Technology"
-	description = "Microfusion tech that is so advanced we don't quite understand how it's achieved."
+	description = "Bleeding edge microfusion tech, making use of the latest in materials and components, bluespace or otherwise."
 	prereq_ids = list(
 		"bluespace_microfusion",
 		"alientech",

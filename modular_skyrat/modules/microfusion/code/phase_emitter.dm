@@ -4,7 +4,7 @@ Basically the heart of the gun, can be upgraded.
 */
 /obj/item/microfusion_phase_emitter
 	name = "basic microfusion phase emitter"
-	desc = "The core of a microfusion projection weapon, produces the laser."
+	desc = "A first-generation phase emitter, this is the core of the weapon and the source of the beam."
 	icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun_attachments.dmi'
 	icon_state = "phase_emitter"
 	base_icon_state = "phase_emitter"
@@ -172,7 +172,7 @@ Basically the heart of the gun, can be upgraded.
 
 /obj/item/microfusion_phase_emitter/enhanced
 	name = "enhanced microfusion phase emitter"
-	desc = "The core of a microfusion projection weapon, produces the laser."
+	desc = "A second-generation phase emitter, this one is made of more robust materials which allow for a higher capacity for heat, a faster dissipation and cooling of it, and more capacity for thermal throttling."
 	max_heat = 3000
 	throttle_percentage = 85
 	heat_dissipation_per_tick = 40
@@ -182,7 +182,7 @@ Basically the heart of the gun, can be upgraded.
 
 /obj/item/microfusion_phase_emitter/advanced
 	name = "advanced microfusion phase emitter"
-	desc = "The core of a microfusion projection weapon, produces the laser."
+	desc = "A third-generation phase emitter, boasting a high capacity for heat, greater dissipation and cooling, and is built using higher-grade materials for more durability."
 	max_heat = 4000
 	throttle_percentage = 90
 	heat_dissipation_per_tick = 50
@@ -192,10 +192,20 @@ Basically the heart of the gun, can be upgraded.
 
 /obj/item/microfusion_phase_emitter/bluespace
 	name = "bluespace microfusion phase emitter"
-	desc = "The core of a microfusion projection weapon, produces the laser."
+	desc = "A fourth-generation phase emitter, utilizing a bluespace medium to store and manage heat, allowing for much cooler temperatures than realspace would allow. This is made of nothing but the latest materials, leading to the highest durability of any phase emitter on the market."
 	max_heat = 5000
 	throttle_percentage = 95
 	heat_dissipation_per_tick = 60
 	cooling_system_rate = 60
 	integrity = 200
 	color = "#66ccff"
+
+/obj/item/microfusion_phase_emitter/bluespace
+	name = "nanocarbon microfusion phase emitter"
+	desc = "An experimental phase emitter, made of nanocarbon, which is the most durable material on the market. It is capable of storing and managing heat, and is capable of cooling at a much higher rate than the other phase emitters."
+	max_heat = 15000
+	throttle_percentage = 95
+	heat_dissipation_per_tick = 130
+	cooling_system_rate = 60
+	integrity = 500
+	color = "#6966ff"

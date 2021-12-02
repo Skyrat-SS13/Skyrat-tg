@@ -10,7 +10,7 @@ These are basically advanced cells.
 
 /obj/item/stock_parts/cell/microfusion //Just a standard cell.
 	name = "microfusion cell"
-	desc = "A compact microfusion cell."
+	desc = "A standard-issue microfusion cell, produced by Micron Control Systems. Smaller than a can of soda, these fulfill the need for a power source where plugging into a recharger is inconvenient or unavailable; although they will eventually run dry due to being shipped without a fuel source."
 	icon = 'modular_skyrat/modules/microfusion/icons/microfusion_cells.dmi'
 	charge_overlay_icon = 'modular_skyrat/modules/microfusion/icons/microfusion_cells.dmi'
 	icon_state = "microfusion"
@@ -149,7 +149,7 @@ These are basically advanced cells.
 //WHY WOULD YOU MAKE THIS?
 /obj/item/stock_parts/cell/microfusion/makeshift
 	name = "makeshift microfusion cell"
-	desc = "This can with duct tape resembles a microfusion cell. What the hell were you thinking? A makeshift microfusion battery? Are you out of your mind?!"
+	desc = "An.. apparatus, comprised of an everyday aluminum can with several civilian-grade batteries tightly packed together and plugged in. This vaguely resembles a microfusion cell, if the user tilts their head to a precise fifty degree angle. While the effects on enemy combatants may be dubious, it will certainly do incredible damage to the gun's warranty. What the hell were you thinking when you came up with this?"
 	icon_state = "microfusion_makeshift"
 	maxcharge = 600
 	max_attachments = 0
@@ -163,21 +163,27 @@ These are basically advanced cells.
 
 /obj/item/stock_parts/cell/microfusion/enhanced
 	name = "enhanced microfusion cell"
-	desc = "An enhanced microfusion cell."
+	desc = "A second generation microfusion cell, weighing about the same as the standard-issue cell and having the same space for attachments; however, it has a higher capacity."
 	icon_state = "microfusion_enhanced"
 	maxcharge = 1500
 
 /obj/item/stock_parts/cell/microfusion/advanced
 	name = "advanced microfusion cell"
-	desc = "An advanced microfusion cell."
+	desc = "A third generation microfusion cell, boasting a much higher shot count. Additionally, these come with support for up to three modifications to the cell itself."
 	icon_state = "microfusion_advanced"
 	maxcharge = 1700
 	max_attachments = 3
 
 /obj/item/stock_parts/cell/microfusion/bluespace
 	name = "bluespace microfusion cell"
-	desc = "A bluespace microfusion cell."
+	desc = "A fourth generation microfusion cell, employing bluespace technology to store power in a medium that's bigger on the inside. This has the highest capacity of any man-portable cell, and has flexibility for four different attachments to the cell itself."
 	icon_state = "microfusion_bluespace"
 	maxcharge = 2000
 	max_attachments = 4
 
+/obj/item/stock_parts/cell/microfusion/nanocarbon
+	name = "nanocarbon fusion cell"
+	desc = "This cell combines both top-of-the-line nanotech and advanced microfusion power to brute force the most common issue of Nanotrasen Asset Protection operatives, ammunition, through sheer volume. Intended for use with Nanotrasen-brand capacitor arrays only. Warranty void if dropped in toilet."
+	icon_state = "microfusion_bluespace"
+	maxcharge = 30000
+	max_attachments = 4

@@ -35,7 +35,7 @@ Allows the cell to be recharged at a gun recharger OR cell recharger.
 */
 /obj/item/microfusion_cell_attachment/rechargeable
 	name = "rechargeable microfusion cell attachment"
-	desc = "Enables recharging on the microfusion cell it's attached to."
+	desc = "An adapter meant to be plugged into a microfusion cell, allowing the cell to be recharged at recharge stations for both weapons and civilian-grade batteries. Neither Allstar Lasers Incorporated or Micron Control Systems Incorporated suggest licking the prongs."
 	icon_state = "attachment_rechargeable"
 	attachment_overlay_icon_state = "microfusion_rechargeable"
 	/// The bonus charge rate by adding this attachment.
@@ -56,7 +56,7 @@ Increases the cell capacity by a set percentage.
 */
 /obj/item/microfusion_cell_attachment/overcapacity
 	name = "overcapacity microfusion cell attachment"
-	desc = "Increases the capacity on the microfusion cell it's attached to."
+	desc = "An attachment which increases the capacity of the microfusion cell it's attached to. These are an additional, smaller capacitor, using a system to automatically switch from the cell to the capacitor as it's depleted, maximizing the weapon's charge."
 	icon_state = "attachment_overcapacity"
 	attachment_overlay_icon_state = "microfusion_overcapacity"
 	/// How much the attachment increases the cell's capacity by, as a percentage
@@ -84,7 +84,7 @@ The cell is stable and will not emit sparks when firing.
 
 /obj/item/microfusion_cell_attachment/stabiliser
 	name = "stabilising microfusion cell attachment"
-	desc = "Stabilises the internal fusion reaction of microfusion cells."
+	desc = "A stabilizer system attachment combining a grounding system with additional containment coils for self-charging purposes, this gives additional safety to the cell it's attached to; preventing both sparks and leakage."
 	icon_state = "attachment_stabiliser"
 	attachment_overlay_icon_state = "microfusion_stabiliser"
 
@@ -104,11 +104,15 @@ If the cell isn't stabilised by a stabiliser, it may emit a radiation pulse.
 */
 /obj/item/microfusion_cell_attachment/selfcharging
 	name = "self-charging microfusion cell attachment"
-	desc = "Contains a small amount of infinitely decaying nuclear material, causing the fusion reaction to be self-sustaining. WARNING: May cause radiation burns if not stabilised."
+	desc = "While microfusion cells are normally shipped without their fuel source, this attachment comes with fifteen grams of hydrogen fuel; allowing the cell to sustain a small, yet active reaction to self-charge. These can keep going for weeks to months in ideal conditions, making them more than enough for most campaigns."
 	icon_state = "attachment_selfcharge"
 	attachment_overlay_icon_state = "microfusion_selfcharge"
 	/// The amount of charge this cell will passively gain!
 	var/self_charge_amount = 20
+
+/obj/item/microfusion_cell_attachment/selfcharging/examine(mob/user)
+	. = ..()
+	. += span_warning("WARNING: May cause radiation burns and weapon instability if not stabilized with recommended attachment!")
 
 /obj/item/microfusion_cell_attachment/selfcharging/add_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	. = ..()

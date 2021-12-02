@@ -70,7 +70,7 @@ The cell is stable and will not emit sparks when firing.
 */
 /obj/item/microfusion_gun_attachment/scatter
 	name = "diffuser microfusion lens upgrade"
-	desc = "Splits the microfusion laser beam entering the lens!"
+	desc = "A diffusing lens system capable of splitting one beam into three. However, the additional ionizing of the air will cause higher recoil."
 	icon_state = "attachment_scatter"
 	attachment_overlay_icon_state = "attachment_scatter"
 	slot = GUN_SLOT_BARREL
@@ -108,12 +108,13 @@ The gun can fire volleys of shots.
 */
 /obj/item/microfusion_gun_attachment/superheat
 	name = "superheating phase emitter upgrade"
-	desc = "Superheats the phase emitter beam output, causing targets to ignite."
+	desc = "A barrel attachment hooked to the phase emitter, this adjusts the beam's wavelength to carry an intense wave of heat; causing targets to ignite."
 	icon_state = "attachment_superheat"
 	attachment_overlay_icon_state = "attachment_superheat"
 	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter)
 	heat_addition = 70
 	slot = GUN_SLOT_BARREL
+	var/projectile_override =/obj/projectile/beam/laser/microfusion/superheated
 
 /obj/item/microfusion_gun_attachment/superheat/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
@@ -126,12 +127,7 @@ The gun can fire volleys of shots.
 
 /obj/item/microfusion_gun_attachment/superheat/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
 	. = ..()
-	if(istype(chambered?.loaded_projectile, /obj/projectile/beam/laser/microfusion))
-		var/obj/projectile/beam/laser/microfusion/microfusion_beam = chambered?.loaded_projectile
-		microfusion_beam.superheated = TRUE
-		microfusion_beam.fire_stacks = 2
-		microfusion_beam.icon_state = "laser_greyscale"
-		microfusion_beam.color = LIGHT_COLOR_FIRE
+	chambered.loaded_projectile = new /obj/projectile/beam/laser/microfusion/superheated
 
 /*
 REPEATER ATTACHMENT
@@ -140,7 +136,7 @@ The gun can fire volleys of shots.
 */
 /obj/item/microfusion_gun_attachment/repeater
 	name = "repeating phase emitter upgrade"
-	desc = "Upgrades the central phase emitter to repeat twice."
+	desc = "This barrel attachment upgrades the central phase emitter to fire off two beams in quick succession. While offering an increased rate of fire, the heat output and recoil rises too."
 	icon_state = "attachment_repeater"
 	attachment_overlay_icon_state = "attachment_repeater"
 	heat_addition = 40
@@ -175,12 +171,16 @@ The gun can fire X-RAY shots.
 */
 /obj/item/microfusion_gun_attachment/xray
 	name = "quantum phase inverter array" //Yes quantum makes things sound cooler.
-	desc = "Experimental technology that inverts the central phase emitter causing the wave frequency to shift into X-ray. CAUTION: Phase emitter heats up very quickly."
+	desc = "An experimental barrel attachment that modifies the central phase emitter, causing the wave frequency to shift into X-ray. Capable of penetrating both glass and solid matter with ease, though the bolts don't carry a greater effect against armor, due to going through the target and doing more minimal internal damage. These attachments are power-hungry and overheat easily, though engineers have deemed the costs necessary drawbacks."
 	icon_state = "attachment_xray"
 	slot = GUN_SLOT_BARREL
 	attachment_overlay_icon_state = "attachment_xray"
 	heat_addition = 90
 	power_usage = 50
+
+/obj/item/microfusion_gun_attachment/xray/examine(mob/user)
+	. = ..()
+	. += span_warning("CAUTION: Phase emitter heats up extremely quickly, sustained fire not recommended!")
 
 /obj/item/microfusion_gun_attachment/xray/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
@@ -253,12 +253,14 @@ Converts shots to STAMNINA damage.
 */
 /obj/item/microfusion_gun_attachment/undercharger
 	name = "phase emitter undercharger"
-	desc = "Inverts the output beam of the phase emitter."
+	desc = "An underbarrel system hooked to the phase emitter, this allows the weapon to also fire an electron bolt, producing a short-lived underpowered electric charge capable of stunning targets. These shots are less demanding on the weapon, leading to an increase in cooling rate."
 	icon_state = "attachment_undercharger"
 	attachment_overlay_icon_state = "attachment_undercharger"
 	slot = GUN_SLOT_UNDERBARREL
 	var/toggle = FALSE
 	var/cooling_rate_increase = 10
+	/// The projectile we override
+	var/projectile_override = /obj/projectile/beam/microfusion_disabler
 
 /obj/item/microfusion_gun_attachment/undercharger/get_modify_data()
 	return list(list("title" = "Turn [toggle ? "OFF" : "ON"]", "icon" = "power-off", "color" = "[toggle ? "red" : "green"]", "reference" = "toggle_on_off"))
@@ -285,9 +287,7 @@ Converts shots to STAMNINA damage.
 /obj/item/microfusion_gun_attachment/undercharger/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
 	. = ..()
 	if(toggle)
-		chambered.loaded_projectile?.damage_type = STAMINA
-		chambered.loaded_projectile?.icon_state = "disabler"
-		chambered.loaded_projectile?.light_color = COLOR_DARK_CYAN
+		chambered.loaded_projectile = new projectile_override
 
 /obj/item/microfusion_gun_attachment/undercharger/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
@@ -302,7 +302,7 @@ Enables you to change the light color of the laser.
 */
 /obj/item/microfusion_gun_attachment/rgb
 	name = "phase emitter spectrograph"
-	desc = "Enables the phase emitter to change it's output color."
+	desc = "An attachment hooked up to the phase emitter, allowing the user to adjust the color of the beam outputted. This has seen widespread use by various factions capable of getting their hands on microfusion weapons, whether as a calling card or simply for entertainment."
 	icon_state = "attachment_rgb"
 	attachment_overlay_icon_state = "attachment_rgb"
 	/// What color are we changing the sprite to?
@@ -370,7 +370,7 @@ DANGER: SNOWFLAKE ZONE
 */
 /obj/item/microfusion_gun_attachment/scope
 	name = "scope attachment"
-	desc = "A simple scope that allows for a zoom level."
+	desc = "A simple telescopic scope, allowing for long-ranged use of the weapon. However, these do not provide any night vision."
 	icon_state = "attachment_scope"
 	attachment_overlay_icon_state = "attachment_scope"
 	slot = GUN_SLOT_RAIL
@@ -390,3 +390,14 @@ DANGER: SNOWFLAKE ZONE
 		microfusion_gun.azoom.Remove(microfusion_gun.azoom.owner)
 		QDEL_NULL(microfusion_gun.azoom)
 	microfusion_gun.update_action_buttons()
+
+/*
+BLACK CAMO ATTACHMENT
+
+Allows for a black camo to be applied to the gun.
+*/
+/obj/item/microfusion_gun_attachment/black_camo
+	name = "black camo microfusion frame"
+	desc = "A frame modification for the MCR-10, changing the color of the gun to black."
+	icon_state = "attachment_black"
+	attachment_overlay_icon_state = "attachment_black"
