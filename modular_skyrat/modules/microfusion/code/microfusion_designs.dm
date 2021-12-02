@@ -137,13 +137,23 @@
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
-/datum/design/microfusion_gun_attachment_grip
+/datum/design/microfusion_gun_attachment_scope
 	name = "Microfusion Weapon Scope"
 	desc = "A scope... for microfusion weapon platforms."
-	id = "microfusion_gun_attachment_grip"
+	id = "microfusion_gun_attachment_scope"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/silver = 500)
 	build_path = /obj/item/microfusion_gun_attachment/scope
+	category = list("Weapons")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/microfusion_gun_attachment_black_camo
+	name = "Black Camo Microfusion Frame"
+	desc = "A frame modification for the MCR-10, changing the color of the gun to black."
+	id = "microfusion_gun_attachment_black_camo"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/gold = 500)
+	build_path = /obj/item/microfusion_gun_attachment/black_camo
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 

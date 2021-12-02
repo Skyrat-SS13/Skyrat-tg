@@ -23,6 +23,7 @@
 		"enhanced_microfusion_cell",
 		"microfusion_cell_attachment_rechargeable",
 		"enhanced_microfusion_phase_emitter",
+		"microfusion_gun_attachment_black_camo",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3500)
 
@@ -47,7 +48,7 @@
 		"advanced_microfusion_phase_emitter",
 		"microfusion_gun_attachment_grip",
 		"microfusion_gun_attachment_rail",
-		"microfusion_gun_attachment_grip",
+		"microfusion_gun_attachment_scope",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 
