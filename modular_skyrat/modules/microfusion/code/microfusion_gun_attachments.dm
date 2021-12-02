@@ -434,12 +434,12 @@ The gun can fire PULSE shots.
 /obj/item/microfusion_gun_attachment/pulse/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	microfusion_gun.burst_size += 2
-	microfusion_gun.fire_delay += 1
+	microfusion_gun.fire_delay += 2
 
 /obj/item/microfusion_gun_attachment/pulse/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	microfusion_gun.burst_size += 2
-	microfusion_gun.fire_delay += 1
+	microfusion_gun.fire_delay += 2
 
 /obj/item/microfusion_gun_attachment/pulse/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
 	. = ..()
