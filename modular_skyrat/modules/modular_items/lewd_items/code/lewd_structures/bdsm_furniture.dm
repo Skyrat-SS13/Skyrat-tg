@@ -271,7 +271,7 @@
 /obj/item/x_stand_kit/attackby(obj/item/P, mob/user, params) //constructing a bed here.
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
-		if (!(item_flags & IN_INVENTORY))
+		if (!(item_flags & IN_INVENTORY) && !(item_flags & IN_STORAGE))
 			to_chat(user, span_notice("You begin fastening the frame to the floor."))
 			if(P.use_tool(src, user, 8 SECONDS, volume=50))
 				to_chat(user, span_notice("You assemble the x-stand."))
