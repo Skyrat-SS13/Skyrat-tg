@@ -11,6 +11,13 @@
 	cell_type = /obj/item/stock_parts/cell/microfusion/advanced
 	phase_emitter_type = /obj/item/microfusion_phase_emitter/advanced
 
+/obj/item/gun/microfusion/mcr01/nanocarbon
+	name = "Nanocarbon Destroyer"
+	desc = "The pinnacle of the Nanocarbon weapon line. This weapon is the ultimate in power and performance. It is capable of firing a wide variety of beams, including a wide range of energy types, and is capable of firing a wide variety of frequencies."
+	icon_state = "mcr01"
+	inhand_icon_state = "mcr01"
+	shaded_charge = TRUE
+
 /obj/item/storage/box/ammo_box/microfusion/advanced
 	name = "advanced microfusion cell container"
 	desc = "A box filled with microfusion cells."

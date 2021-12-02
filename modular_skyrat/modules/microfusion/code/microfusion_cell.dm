@@ -186,4 +186,4 @@ These are basically advanced cells.
 	desc = "This cell combines both top-of-the-line nanotech and advanced microfusion power to brute force the most common issue of Nanotrasen Asset Protection operatives, ammunition, through sheer volume. Intended for use with Nanotrasen-brand capacitor arrays only. Warranty void if dropped in toilet."
 	icon_state = "microfusion_bluespace"
 	maxcharge = 30000
-	max_attachments = 4
+	max_attachments = 420

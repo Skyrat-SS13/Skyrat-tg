@@ -200,7 +200,7 @@ Basically the heart of the gun, can be upgraded.
 	integrity = 200
 	color = "#66ccff"
 
-/obj/item/microfusion_phase_emitter/bluespace
+/obj/item/microfusion_phase_emitter/nanocarbon
 	name = "nanocarbon microfusion phase emitter"
 	desc = "An experimental phase emitter, made of nanocarbon, which is the most durable material on the market. It is capable of storing and managing heat, and is capable of cooling at a much higher rate than the other phase emitters."
 	max_heat = 15000

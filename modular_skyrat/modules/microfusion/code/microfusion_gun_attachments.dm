@@ -412,3 +412,35 @@ All tactical, all the time.
 	desc = "A frame modification for the MCR-10, changing the color of the gun to black."
 	icon_state = "attachment_black"
 	attachment_overlay_icon_state = "attachment_black"
+
+/*
+PULSE ATTACHMENT
+
+The gun can fire PULSE shots.
+*/
+/obj/item/microfusion_gun_attachment/pulse
+	name = "pulse induction carriage"
+	desc = "A cutting-edge bluespace capacitor array and distributing lens overhaul produced in laboratories by Nanotrasen scientists that allow microfusion rifles to fire military-grade pulse rounds. Comes equipped with cyclic cooling to ensure maximum combat efficiency, a munitions counter, and an extra-secure drop cage for the power source. May shorten trigger lifetime."
+	icon_state = "attachment_pulse"
+	slot = GUN_SLOT_BARREL
+	attachment_overlay_icon_state = "attachment_pulse"
+	heat_addition = 150
+	power_usage = 50
+
+/obj/item/microfusion_gun_attachment/pulse/examine(mob/user)
+	. = ..()
+	. += span_warning("CAUTION: Phase emitter heats up extremely quickly, sustained fire not recommended!")
+
+/obj/item/microfusion_gun_attachment/pulse/run_attachment(obj/item/gun/microfusion/microfusion_gun)
+	. = ..()
+	microfusion_gun.burst_size += 2
+	microfusion_gun.fire_delay += 1
+
+/obj/item/microfusion_gun_attachment/pulse/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
+	. = ..()
+	microfusion_gun.burst_size += 2
+	microfusion_gun.fire_delay += 1
+
+/obj/item/microfusion_gun_attachment/pulse/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
+	. = ..()
+	chambered.loaded_projectile = new /obj/projectile/beam/pulse
