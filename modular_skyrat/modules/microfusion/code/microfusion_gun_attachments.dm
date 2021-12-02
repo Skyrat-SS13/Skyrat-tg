@@ -127,7 +127,7 @@ The gun can fire volleys of shots.
 
 /obj/item/microfusion_gun_attachment/superheat/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
 	. = ..()
-	chambered.loaded_projectile = new /obj/projectile/beam/laser/microfusion/superheated
+	chambered.loaded_projectile = new projectile_override
 
 /*
 REPEATER ATTACHMENT
