@@ -91,7 +91,7 @@
 			//SKYRAT EDIT ADDITION
 			if (istype(G, /obj/item/gun/microfusion))
 				var/obj/item/gun/microfusion/microfusion_gun = G
-				if(!microfusion_gun.cell || microfusion_gun.cell.chargerate <= 0)
+				if(microfusion_gun.cell?.chargerate <= 0)
 					to_chat(user, span_notice("[microfusion_gun] cannot be recharged!"))
 					return TRUE
 
