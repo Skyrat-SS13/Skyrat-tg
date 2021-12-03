@@ -45,3 +45,8 @@
 #define GUN_SLOT_RAIL "rail"
 /// Unique slots, can hold as many as you want.
 #define GUN_SLOT_UNIQUE "unique"
+
+/// Max name size for changing names
+#define GUN_MAX_NAME_CHARS 20
+/// Min name size for changing names
+#define GUN_MIN_NAME_CHARS 3

@@ -1,7 +1,6 @@
-/*
-MICROFUSION GUN UPGRADE ATTACHMENTS
-
-For adding unique abilities to microfusion guns, these can directly interact with the gun!
+/**
+*MICROFUSION GUN UPGRADE ATTACHMENTS
+*For adding unique abilities to microfusion guns, these can directly interact with the gun!
 */
 
 /obj/item/microfusion_gun_attachment
