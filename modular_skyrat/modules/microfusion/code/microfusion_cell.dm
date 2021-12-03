@@ -149,7 +149,7 @@ These are basically advanced cells.
 //WHY WOULD YOU MAKE THIS?
 /obj/item/stock_parts/cell/microfusion/makeshift
 	name = "makeshift microfusion cell"
-	desc = "An.. apparatus, comprised of an everyday aluminum can with several civilian-grade batteries tightly packed together and plugged in. This vaguely resembles a microfusion cell, if the user tilts their head to a precise fifty degree angle. While the effects on enemy combatants may be dubious, it will certainly do incredible damage to the gun's warranty. What the hell were you thinking when you came up with this?"
+	desc = "An... Apparatus, comprised of an everyday aluminum can with several civilian-grade batteries tightly packed together and plugged in. This vaguely resembles a microfusion cell, if you tilt your head to a precise fifty degree angle. While the effects on enemy combatants may be dubious, it will certainly do incredible damage to the gun's warranty. What the hell were you thinking when you came up with this?"
 	icon_state = "microfusion_makeshift"
 	maxcharge = 600
 	max_attachments = 0
