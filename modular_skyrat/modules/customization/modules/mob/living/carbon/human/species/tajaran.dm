@@ -1,6 +1,7 @@
 /datum/species/tajaran
 	name = "Tajaran"
 	id = SPECIES_TAJARAN
+	say_mod = "meows"
 	default_color = "#4B4B4B"
 	species_traits = list(
 		MUTCOLORS,
@@ -25,7 +26,6 @@
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
-	say_mod = "meows"
 	liked_food = GROSS | MEAT | FRIED
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT

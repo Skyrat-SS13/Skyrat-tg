@@ -539,3 +539,21 @@
 	speaker.verb_whisper = initial(verb_whisper)
 	speaker.verb_sing = initial(verb_sing)
 	speaker.verb_yell = initial(verb_yell)
+
+/obj/item/organ/tongue/cat
+	name = "feline tongue"
+	desc = "Like sandpaper, but in cat form."
+	say_mod = "meows"
+	icon_state = "tonguenormal"
+	modifies_speech = TRUE
+
+/obj/item/organ/tongue/cat/Insert(mob/living/carbon/signer)
+	. = ..()
+
+/obj/item/organ/tongue/cat/Remove(mob/living/carbon/speaker, special = 0)
+	..()
+	speaker.verb_ask = initial(verb_ask)
+	speaker.verb_exclaim = initial(verb_exclaim)
+	speaker.verb_whisper = initial(verb_whisper)
+	speaker.verb_sing = initial(verb_sing)
+	speaker.verb_yell = initial(verb_yell)
