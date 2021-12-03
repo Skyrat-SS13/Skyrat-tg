@@ -15,7 +15,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 	. = ..()
 	if(icon_state == "mirror_broke" && !broken)
 		atom_break(null, mapload)
-/* SKYRAT EDIT REMOVAL
+
 /obj/structure/mirror/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
@@ -49,7 +49,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 			H.hairstyle = new_style
 
 		H.update_hair()
-*/
+
 /obj/structure/mirror/examine_status(mob/user)
 	if(broken)
 		return list()// no message spam
