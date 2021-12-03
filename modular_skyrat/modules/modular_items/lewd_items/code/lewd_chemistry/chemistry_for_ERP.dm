@@ -1,3 +1,4 @@
+/*
 // The base ERP chem. It handles pref and human type checks for you, so ALL chems relating to ERP should be subtypes of this.
 /datum/reagent/drug/aphrodisiac
 	name = "liquid ERP"
@@ -479,3 +480,4 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_pills.dmi'
 	icon_state = "pentacamphor"
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/camphor/pentacamphor = 10)
+*/
