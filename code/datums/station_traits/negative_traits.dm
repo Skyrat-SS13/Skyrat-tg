@@ -106,10 +106,15 @@
 
 /datum/station_trait/overflow_job_bureaucracy/New()
 	. = ..()
-<<<<<<< HEAD
-	/* SKYRAT EDIT START - Nice try
+	RegisterSignal(SSjob, COMSIG_SUBSYSTEM_POST_INITIALIZE, .proc/set_overflow_job_override)
+
+/datum/station_trait/overflow_job_bureaucracy/get_report()
+	return "[name] - It seems for some reason we put out the wrong job-listing for the overflow role this shift...I hope you like [chosen_job_name]s."
+
+/datum/station_trait/overflow_job_bureaucracy/proc/set_overflow_job_override(datum/source)
+	SIGNAL_HANDLER
+	/* SKYRAT EDIT START - Nice try lol
 	var/datum/job/picked_job = pick(SSjob.joinable_occupations)
-	chosen_job = picked_job.type
 	*/ // ORIGINAL END
 	var/list/jobs_to_use = list(
 		/datum/job/clown,
@@ -121,18 +126,8 @@
 		/datum/job/janitor,
 		/datum/job/prisoner,
 		)
-	chosen_job = pick(jobs_to_use)
+	var/datum/job/picked_job = pick(jobs_to_use)
 	// SKYRAT EDIT END
-=======
->>>>>>> a606652e328 (Fixes the overflow station trait not working (#63205))
-	RegisterSignal(SSjob, COMSIG_SUBSYSTEM_POST_INITIALIZE, .proc/set_overflow_job_override)
-
-/datum/station_trait/overflow_job_bureaucracy/get_report()
-	return "[name] - It seems for some reason we put out the wrong job-listing for the overflow role this shift...I hope you like [chosen_job_name]s."
-
-/datum/station_trait/overflow_job_bureaucracy/proc/set_overflow_job_override(datum/source)
-	SIGNAL_HANDLER
-	var/datum/job/picked_job = pick(SSjob.joinable_occupations)
 	chosen_job_name = lowertext(picked_job.title) // like Chief Engineers vs like chief engineers
 	SSjob.set_overflow_role(picked_job.type)
 
