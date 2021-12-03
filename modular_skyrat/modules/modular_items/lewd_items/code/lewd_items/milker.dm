@@ -50,7 +50,7 @@
 
 /obj/item/milker/Initialize(mapload)
 	. = ..()
-	toggle_mode(null, TRUE)
+	toggle_mode(null)
 
 /obj/item/milker/attack(mob/living/target, mob/living/carbon/human/user)
 	if(!in_range(target, user))
@@ -71,7 +71,7 @@
 		drink_milk(being_milked, user, breasts)
 
 /obj/item/milker/attack_self(mob/user)
-	toggle_mode(user, FALSE)
+	toggle_mode(user)
 
 /**
  * Cycles through how intense the milking will be
