@@ -184,6 +184,6 @@ These are basically advanced cells.
 /obj/item/stock_parts/cell/microfusion/nanocarbon
 	name = "nanocarbon fusion cell"
 	desc = "This cell combines both top-of-the-line nanotech and advanced microfusion power to brute force the most common issue of Nanotrasen Asset Protection operatives, ammunition, through sheer volume. Intended for use with Nanotrasen-brand capacitor arrays only. Warranty void if dropped in toilet."
-	icon_state = "microfusion_bluespace"
+	icon_state = "microfusion_nanocarbon"
 	maxcharge = 30000
 	max_attachments = 420

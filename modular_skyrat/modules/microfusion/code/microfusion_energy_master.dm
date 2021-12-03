@@ -19,7 +19,10 @@
 
 	/// What type of power cell this uses
 	var/obj/item/stock_parts/cell/microfusion/cell
+	/// The cell we will spawn with
 	var/cell_type = /obj/item/stock_parts/cell/microfusion
+	/// The cell type we check when inserting a cell
+	var/base_cell_type = /obj/item/stock_parts/cell/microfusion
 	/// If the weapon has custom icons for individual ammo types it can switch between. ie disabler beams, taser, laser/lethals, ect.
 	var/modifystate = FALSE
 	/// Can it be charged in a recharger?
@@ -58,6 +61,8 @@
 	var/list/attachments = list()
 	/// The starting phase emitter in this weapon.
 	var/phase_emitter_type = /obj/item/microfusion_phase_emitter
+	/// The base emitter type that we check when putting a new emitter in.
+	var/base_phase_emitter_type = /obj/item/microfusion_phase_emitter
 	/// The phase emitter that this gun currently has.
 	var/obj/item/microfusion_phase_emitter/phase_emitter
 	/// The amount of heat produced per shot
@@ -229,11 +234,11 @@
 	. = ..()
 	if (.)
 		return
-	if(istype(attacking_item, cell_type))
+	if(istype(attacking_item, base_cell_type))
 		insert_cell(user, attacking_item)
 	if(istype(attacking_item, /obj/item/microfusion_gun_attachment))
 		add_attachment(attacking_item, user)
-	if(istype(attacking_item, /obj/item/microfusion_phase_emitter))
+	if(istype(attacking_item, base_phase_emitter_type))
 		insert_emitter(attacking_item, user)
 
 /obj/item/gun/microfusion/process_chamber(empty_chamber, from_firing, chamber_next_round)
