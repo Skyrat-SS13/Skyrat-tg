@@ -5,6 +5,10 @@
 			return "loosely signs"
 		else
 			return "slurs"
+	//SKYRAT EDIT ADDITION BEGIN - TRAIT_FELINE
+	if(HAS_TRAIT(src, TRAIT_FELINE))
+		return "meows"
+	//SKYRAT EDIT ADDITION END
 	else
 		. = ..()
 
