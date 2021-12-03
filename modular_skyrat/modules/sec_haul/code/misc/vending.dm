@@ -12,7 +12,7 @@
 		/obj/item/restraints/handcuffs/cable/zipties = 10,
 		/obj/item/grenade/flashbang = 4,
 		/obj/item/assembly/flash/handheld = 5,
-		/obj/item/food/donut = 12,
+		/obj/item/food/donut/plain = 12,
 		/obj/item/storage/box/evidence = 6,
 		/obj/item/flashlight/seclite = 4,
 		/obj/item/restraints/legcuffs/bola/energy = 7
@@ -71,4 +71,4 @@
 	light_color = COLOR_MOSTLY_PURE_RED
 
 /obj/item/vending_refill/wardrobe/peacekeeper_wardrobe
-	machine_name = "Peacekeeper Outfitting Station"
+	machine_name = "Peacekeeper outfitting station"

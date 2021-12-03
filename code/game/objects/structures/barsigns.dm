@@ -3,7 +3,7 @@
 	desc = "A bar sign which has not been initialized, somehow. Complain at a coder!"
 	//SKYRAT EDIT CHANGE BEGIN - BARSIGNS
 	//icon = 'icons/obj/barsigns.dmi'
-	icon = 'modular_skyrat/modules/barsigns/icons/obj/barsigns.dmi'
+	icon = 'modular_skyrat/modules/barsigns/icons/barsigns.dmi'
 	//SKYRAT EDIT CHANGE END
 	icon_state = "empty"
 	req_access = list(ACCESS_BAR)

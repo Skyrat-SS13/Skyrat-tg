@@ -28,7 +28,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/worn_icon_state
 	///Icon state for the belt overlay, if null the normal icon_state will be used.
 	var/belt_icon_state
-	///Forced mob worn layer instead of the standard preferred ssize.
+	///Forced mob worn layer instead of the standard preferred size.
 	var/alternate_worn_layer
 	///The config type to use for greyscaled worn sprites. Both this and greyscale_colors must be assigned to work.
 	var/greyscale_config_worn
@@ -94,7 +94,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/custom_premium_price
 	///Whether spessmen with an ID with an age below AGE_MINOR (20 by default) can buy this item
 	var/age_restricted = FALSE
-	
+
 	///flags which determine which body parts are protected from heat. [See here][HEAD]
 	var/heat_protection = 0
 	///flags which determine which body parts are protected from cold. [See here][HEAD]
@@ -295,10 +295,12 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		return
 	if(greyscale_config_worn)
 		worn_icon = SSgreyscale.GetColoredIconByType(greyscale_config_worn, greyscale_colors)
-	if(greyscale_config_worn_digi) // Skyrat Edit
+	// SKYRAT EDIT ADD START
+	if(greyscale_config_worn_digi)
 		worn_icon_digi = SSgreyscale.GetColoredIconByType(greyscale_config_worn_digi, greyscale_colors)
-	if(greyscale_config_worn_vox) // Skyrat Edit
+	if(greyscale_config_worn_vox)
 		worn_icon_vox = SSgreyscale.GetColoredIconByType(greyscale_config_worn_vox, greyscale_colors)
+	// SKYRAT EDIT ADD END
 	if(greyscale_config_inhand_left)
 		lefthand_file = SSgreyscale.GetColoredIconByType(greyscale_config_inhand_left, greyscale_colors)
 	if(greyscale_config_inhand_right)

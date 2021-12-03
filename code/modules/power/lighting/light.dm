@@ -454,6 +454,7 @@
 			sleep(rand(5, 15))
 		on = (status == LIGHT_OK)
 		update(FALSE, TRUE) //SKYRAT EDIT CHANGE
+		. = TRUE //did we actually flicker?
 	flickering = FALSE
 
 // ai attack - make lights flicker, because why not

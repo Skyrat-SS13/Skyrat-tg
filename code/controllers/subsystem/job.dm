@@ -210,21 +210,18 @@ SUBSYSTEM_DEF(job)
 	job.current_positions++
 	return TRUE
 
-/datum/controller/subsystem/job/proc/FreeRole(rank)
-	if(!rank)
-		return
-	JobDebug("Freeing role: [rank]")
-	var/datum/job/job = GetJob(rank)
-	if(!job)
-		return FALSE
-	job.current_positions = max(0, job.current_positions - 1)
-
 /datum/controller/subsystem/job/proc/FindOccupationCandidates(datum/job/job, level)
 	JobDebug("Running FOC, Job: [job], Level: [job_priority_level_to_string(level)]")
 	var/list/candidates = list()
 	for(var/mob/dead/new_player/player in unassigned)
+		if(!player)
+			JobDebug("FOC player no longer exists.")
+			continue
+		if(!player.client)
+			JobDebug("FOC player client no longer exists, Player: [player]")
+			continue
 		// Initial screening check. Does the player even have the job enabled, if they do - Is it at the correct priority level?
-		var/player_job_level = player.client.prefs.job_preferences[job.title]
+		var/player_job_level = player.client?.prefs.job_preferences[job.title]
 		if(isnull(player_job_level))
 			JobDebug("FOC player job not enabled, Player: [player]")
 			continue
@@ -519,17 +516,22 @@ SUBSYSTEM_DEF(job)
 
 //Gives the player the stuff he should have with his rank
 /datum/controller/subsystem/job/proc/EquipRank(mob/living/equipping, datum/job/job, client/player_client)
+	// SKYRAT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+	// The alt job title, if user picked one, or the default
+	var/chosen_title = player_client?.prefs.alt_job_titles[job.title] || job.title
+	// SKYRAT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES
+
 	equipping.job = job.title
 
 	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
 
 	equipping.mind?.set_assigned_role(job)
 	if(player_client)
-		to_chat(player_client, span_infoplain("You are the [job.title]."))
+		to_chat(player_client, span_infoplain("You are the [chosen_title].")) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: to_chat(player_client, span_infoplain("You are the [job.title]."))
 
 	equipping.on_job_equipping(job, player_client?.prefs) //SKYRAT EDIT CHANGE
 
-	job.announce_job(equipping)
+	job.announce_job(equipping, chosen_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: job.announce_job(equipping)
 
 	if(player_client?.holder)
 		if(CONFIG_GET(flag/auto_deadmin_players) || (player_client.prefs?.toggles & DEADMIN_ALWAYS))
@@ -539,7 +541,7 @@ SUBSYSTEM_DEF(job)
 
 
 	if(player_client)
-		to_chat(player_client, span_infoplain("As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this.")) // SKYRAT EDIT ORIGINAL
+		to_chat(player_client, span_infoplain("As the [chosen_title == job.title ? chosen_title : "[chosen_title] ([job.title])"] you answer directly to [job.supervisors]. Special circumstances may change this.")) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: to_chat(player_client, span_infoplain("As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this."))
 
 	job.radio_help_message(equipping)
 
@@ -557,6 +559,7 @@ SUBSYSTEM_DEF(job)
 		var/mob/living/carbon/human/wageslave = equipping
 		wageslave.mind.add_memory(MEMORY_ACCOUNT, list(DETAIL_ACCOUNT_ID = wageslave.account_id), story_value = STORY_VALUE_SHIT, memory_flags = MEMORY_FLAG_NOLOCATION)
 
+		setup_alt_job_items(wageslave, job, player_client) // SKYRAT EDIT ADDITION - ALTERNATIVE_JOB_TITLES
 
 	job.after_spawn(equipping, player_client)
 
@@ -808,7 +811,8 @@ SUBSYSTEM_DEF(job)
 	additional_jobs_with_icons = list("Emergency Response Team Commander", "Security Response Officer", "Engineering Response Officer", "Medical Response Officer", \
 		"Entertainment Response Officer", "Religious Response Officer", "Janitorial Response Officer", "Death Commando", "Security Officer (Engineering)", \
 		"Security Officer (Cargo)", "Security Officer (Medical)", "Security Officer (Science)", "Blueshield", "Nanotrasen Representative", "Shuttle Pilot", \
-		"Security Medic", "Security Sergeant", "Civil Disputes Officer", "Vanguard Operative")
+		"Security Medic", "Security Sergeant", "Civil Disputes Officer", "Vanguard Operative", "Space Police", "SolGov", "SolGov Liasion", "Barber", "Orderly", "Science Guard", "Bouncer", "Customs Agent", "Engineering Guard")
+	//SKYRAT EDIT ADDITIONS: Blueshield, NT Rep, Shuttle Pilot, Sec Medic, Sec Sarge, CDO, Vanguard Op, Space Police, SolGov, SolGov Liasion, Barber, Orderly, Science Guard, Bouncer, Customs Agent, Engineering Guard
 
 	centcom_jobs = list("Central Command", "VIP Guest", "Custodian", "Thunderdome Overseer", "CentCom Official", "Medical Officer", "Research Officer", \
 		"Special Ops Officer", "Admiral", "CentCom Commander", "CentCom Bartender", "Private Security Force", "Fleetmaster", "Bridge Officer", "Operations Inspector", \

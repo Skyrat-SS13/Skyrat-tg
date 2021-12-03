@@ -28,7 +28,7 @@
 	if(!query || query == "No" || !src || QDELETED(src))
 		return
 	if(key)
-		to_chat(user, "<span class='warning'>Someone else already took this mob!</span>")
+		to_chat(user, span_warning("Someone else already took this mob!"))
 		return
 	key = user.key
 	var/string_to_send = CONFIG_GET(string/pc_mob_text)

@@ -1,0 +1,103 @@
+2021-12-01:
+  SkyratBot:
+  - imageadd: Resprited the lipsticks
+  - refactor: pAI interfaces have been converted to TGUI.
+  - refactor: Requesting a holographic pAI friend now correctly notifies ghosts of
+      your loneliness.
+  - rscadd: pAI door jacks have been given a bit more UI feedback.
+  - rscdel: Requesting and downloading a pAI no longer uses two separate screens.
+  - bugfix: Fixed nuke ops leader not having an antag HUD to other nuke ops.
+  - bugfix: Baseball bats now correctly knockback targets in the direction of the
+      bat to the target.
+  tastyfish:
+  - bugfix: Cleanbots no longer disappear.
+  - bugfix: Fixed edgecase causing PDA Skill Tracker to hard lock the PDA as your
+      reward for getting legendary level.
+2021-12-02:
+  Ebin-Halcyon:
+  - imageadd: Winter Hardsuit EVA sprite changes
+  - bugfix: Winter Hardsuit tails now color themselves correctly
+  GoldenAlpharex:
+  - bugfix: Numpad keys are now properly recognized by the keybinds menu.
+  Guillaume Prata:
+  - bugfix: Swaps the engineer jumpsuit description still referencing them being resistant
+      to radiation, now it correctly reference them being resistant to fire.
+  Iamgoofball:
+  - bugfix: Fixes the Armory not spawning guns by reworking how the armory spawners
+      work.
+  Melbert:
+  - bugfix: Mjol the Creative's summons can't be dispelled by observers anymore
+  Melbert, Orion_the_Fox:
+  - rscadd: Deltastation - Service and arrivals complete revamp! Cargo tweaks! (Manually
+      added to our Modular map as well, PLUS NT rep office! -Orion)
+  SkyratBot:
+  - balance: the Head of Personnel no longer has access to Security Office nor Mechs
+      (outside of mining ones).
+  - bugfix: fullauto now checks for incapacitated instead of stat
+  - bugfix: Fixed being scared of the dark even if you have mesons.
+  - bugfix: TK can no longer be used to teleport onto weight machines.
+  - balance: gasmasks give a slightly darkening overlay, effect will stack with other
+      items that have tint.
+  - code_imp: tint code has been updated to properly work.
+  - admin: Improved logging for radio emotes in game logs and player panel logs.
+  - imageadd: Makes mob ID sprites smaller, mob PDA sprites more consistent
+  - bugfix: Fix telecomms relays to work across multi-z
+  - bugfix: Fixes an exploit with regenerative mesh and burn wounds.
+  - code_imp: increased atmos performances a bit more
+  - balance: Proto nitrate BZ reaction will now produce gases, instead of just deleting
+      BZ. The gases it produces is nitrogen, helium, and plasma.
+  - balance: Tritium combustion and proto nitrate tritium response will release radiation
+      again, even if it's in a pipenet or canister. Proto nitrate BZ response will
+      also release radiation.
+  - balance: Proto nitrate BZ and tritium responses reaction rates has been changed
+      and is no longer capped at 5 moles per second. Given a fixed amount of combined
+      moles, the composition for the fastest reaction rate in tritium response is
+      different than the composition of the consumption rates.
+  - balance: Energy released from proto nitrate BZ and tritium responses has been
+      increased.
+  - balance: Proto nitrate BZ response hallucination and gas production now occur
+      at the same time, instead of hallucinations only appearing below 30 moles and
+      gas production + radiation (previously it just deleted BZ) above 30 moles.
+  - bugfix: tanks being destroyed in cans/pumps/scrubbers wont cause errors now
+  - bugfix: ED-209s can be constructed once more!
+  - bugfix: The ship-in-a-bottle is now resistant to icebox/snowdin plasma rivers.
+  - balance: Downgrades the purchasable knives in cargo from Combat Knives to Survival
+      Knives, moves them from Security to Service.
+  - spellcheck: Made reagents consistently capitalized.
+  tf-4:
+  - spellcheck: Converted the names of a lot of items to lower case
+2021-12-03:
+  Guillaume Prata:
+  - bugfix: Fixes a rogue airlock at the SM room on Icebox having the wrong access
+      requirement.
+  Melbert:
+  - bugfix: The lathe in Deltastation's service hall can print circuit boards again.
+  Reco201:
+  - bugfix: Cyborg pka can now be seen again.
+  Ryll/Shaps:
+  - admin: Simplified the "Transformation/Rudimentary Transformation" part of the
+      admin player panel, you can now choose from ghost/human/monkey/cyborg/AI, and
+      all options work whether the target is currently a human/other living mob/ghost.
+  Seris02:
+  - bugfix: mediborgs now have proper pixel placement
+  - bugfix: borgs no longer have pixel shifting issues, specifically dogborgs
+  - bugfix: silicons now show laws on examine
+  - refactor: remade the borg modules to rely on the upstream system
+  - code_imp: made the borg shapeshifting module better
+  SkyratBot:
+  - imageadd: Fire mutation now has the sprite of old space adaption while Pressure
+      is a blue version of it.
+  - bugfix: Fixed some bugged lighting
+  - balance: The Irish Car Bomb + clown car interaction has been nerfed from a big
+      gibbing explosion to throwing out all the mobs (with the usual chance of spilling
+      out slipping foam)
+  - admin: You now have to confirm that you want to reset the station name from the
+      secrets panel.
+  - bugfix: Fixes the cult sacrifice softlocking if the target is deleted before being
+      sacced. It'll reroll a new target if that happens.
+  - bugfix: Removed two map-based runtimes for Syndicate Lavaland Base and The Derelict
+  - bugfix: Blind people now get a chat message when being cuffed.
+  Zonespace27:
+  - bugfix: Stripper poles and all other ERP equipment can no longer be built in boxes.
+  tf-4:
+  - bugfix: The Titan no longer has too many APCs. Again.

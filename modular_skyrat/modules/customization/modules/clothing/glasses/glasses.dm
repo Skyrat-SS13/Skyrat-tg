@@ -29,13 +29,13 @@
 	if(!can_use(usr))
 		return
 	if(!can_switch_eye)
-		to_chat(usr, "<span class='warning'>You cannot wear this any differently!</span>")
+		to_chat(usr, span_warning("You cannot wear this any differently!"))
 		return
 	eyepatch_do_switch()
 	if(current_eye == "_L")
-		to_chat(usr, "<span class='notice'>You adjust the eyepatch to wear it over your left eye.</span>")
+		to_chat(usr, span_notice("You adjust the eyepatch to wear it over your left eye."))
 	else if(current_eye == "_R")
-		to_chat(usr, "<span class='notice'>You adjust the eyepatch to wear it over your right eye.</span>")
+		to_chat(usr, span_notice("You adjust the eyepatch to wear it over your right eye."))
 	usr.update_inv_glasses()
 	usr.update_overlays()
 

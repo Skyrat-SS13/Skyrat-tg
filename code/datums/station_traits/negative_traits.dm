@@ -106,6 +106,10 @@
 
 /datum/station_trait/overflow_job_bureaucracy/New()
 	. = ..()
+	/* SKYRAT EDIT START - Nice try
+	var/datum/job/picked_job = pick(SSjob.joinable_occupations)
+	chosen_job = picked_job.type
+	*/ // ORIGINAL END
 	var/list/jobs_to_use = list(
 		/datum/job/clown,
 		/datum/job/bartender,
@@ -117,6 +121,7 @@
 		/datum/job/prisoner,
 		)
 	chosen_job = pick(jobs_to_use)
+	// SKYRAT EDIT END
 	RegisterSignal(SSjob, COMSIG_SUBSYSTEM_POST_INITIALIZE, .proc/set_overflow_job_override)
 
 /datum/station_trait/overflow_job_bureaucracy/get_report()
