@@ -1,3 +1,4 @@
+/*
 // Basic ball gag
 /obj/item/clothing/mask/ballgag
 	name = "ball gag"
@@ -131,3 +132,4 @@
 	if(prob(10))
 		wearer.emote(pick("gasp","choke","moan"))
 	choke_timer = 0
+*/
