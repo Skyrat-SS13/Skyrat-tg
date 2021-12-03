@@ -1,35 +1,38 @@
-/* Removed until someone fixes it.
-/obj/item/melee/energy/sword/ignis
+/obj/item/melee/energy/ignis
 	name = "\improper FTU 'Ignis' plasma sword"
 	desc = "An expensive FTU design, the Ignis is one of many prototypes at making an energy sword out of plasma, rather than hardlight. This one has the FTU flag imprinted on its high-quality wooden hilt, and unlike earlier models, can sustain several hits without exhausting its battery. "
 	icon = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/serviceguns.dmi'
 	icon_state = "ignis"
-	icon_state_on = "ignis_active"
 	lefthand_file = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/righthand.dmi'
 	force = 3
-	force_on = 48
+	active_force = 48
 	block_chance = 65
 	sharpness = SHARP_EDGED
-	sword_color = null
 	throwforce = 5
-	throwforce_on = 40
+	active_throwforce = 40
 	wound_bonus = 50
 	hitsound = 'modular_skyrat/modules/ERT_Factions/FTU/sound/ignis_hit.ogg'
 	throw_speed = 4
 	throw_range = 10
 	w_class = WEIGHT_CLASS_SMALL
-	w_class_on = WEIGHT_CLASS_HUGE
+	active_w_class = WEIGHT_CLASS_HUGE
 	armour_penetration = 90
-	attack_verb_on = list("rips", "evaporates", "penetrates", "tears", "lacerates", "impales", "masterfully brutalizes")
+	attack_verb_continuous = list("rips", "evaporates", "penetrates", "tears", "lacerates", "impales", "masterfully brutalizes")
+	attack_verb_simple = list("rip", "evaporate", "penetrate", "tear", "lacerate", "impale", "masterfully brutalize")
 	resistance_flags = FIRE_PROOF
 	damtype = BURN
+	enable_sound = 'modular_skyrat/modules/ERT_Factions/FTU/sound/ignis_toggle.ogg'
+	disable_sound = 'modular_skyrat/modules/ERT_Factions/FTU/sound/ignis_toggle.ogg'
 
-/obj/item/melee/energy/sword/ignis/transform_messages(mob/living/user, supress_message_text)
-	playsound(user, 'modular_skyrat/modules/ERT_Factions/FTU/sound/ignis_toggle.ogg', 35, TRUE)  //changed it from 50% volume to 35% because deafness
-	if(!supress_message_text)
-		to_chat(user, span_notice("[src] [active ? "is now active":"can now be concealed"]."))
-*/
+/obj/item/melee/energy/ignis/make_transformable()
+	AddComponent(/datum/component/transforming, \
+		force_on = active_force, \
+		throwforce_on = active_throwforce, \
+		throw_speed_on = throw_speed, \
+		sharpness_on = sharpness, \
+		w_class_on = active_w_class)
+	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, .proc/on_transform)
 
 ///////40x32 R37 PULSE RIFLE
 /obj/item/gun/ballistic/automatic/pitbull/pulse/r37
