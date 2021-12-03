@@ -158,11 +158,6 @@
 		process_chamber() // If the gun was drained and then recharged, load a new shot.
 	return ..()
 
-/obj/item/gun/microfusion/process_burst(mob/living/user, atom/target, message = TRUE, params = null, zone_override="", sprd = 0, randomized_gun_spread = 0, randomized_bonus_spread = 0, rand_spr = 0, iteration = 0)
-	if(!chambered && can_shoot())
-		process_chamber() // Ditto.
-	return ..()
-
 /obj/item/gun/microfusion/update_icon_state()
 	var/skip_inhand = initial(inhand_icon_state) //only build if we aren't using a preset inhand icon
 	var/skip_worn_icon = initial(worn_icon_state) //only build if we aren't using a preset worn icon
@@ -445,6 +440,11 @@
 	if(!user || !firing_burst)
 		firing_burst = FALSE
 		return FALSE
+	if(!can_shoot())
+		firing_burst = FALSE
+		return FALSE
+	if(!chambered)
+		process_chamber() // Ditto.
 	if(!issilicon(user))
 		if(iteration > 1 && !(user.is_holding(src))) //for burst firing
 			firing_burst = FALSE
