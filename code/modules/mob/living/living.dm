@@ -1073,13 +1073,19 @@
 	if(!what.canStrip(who))
 		to_chat(src, span_warning("You can't remove \the [what.name], it appears to be stuck!"))
 		return
-	who.visible_message(span_warning("[src] tries to remove [who]'s [what.name]."), \
-					span_userdanger("[src] tries to remove your [what.name]."), null, null, src)
+	//SKYRAT EDIT ADDITION BEGIN - THIEVING GLOVES
+	var/silent = HAS_TRAIT(who, TRAIT_STICKY_FINGERS) && (where & (ITEM_SLOT_ID|ITEM_SLOT_LPOCKET|ITEM_SLOT_RPOCKET))
+	if (!silent)
+		who.visible_message(span_warning("[src] tries to remove [who]'s [what.name]."), \
+						span_userdanger("[src] tries to remove your [what.name]."), null, null, src)
+	//SKYRAT EDIT ADDITION END
 	to_chat(src, span_danger("You try to remove [who]'s [what.name]..."))
 	log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red")
 	who.log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_VICTIM, color="red", log_globally = FALSE)
 	what.add_fingerprint(src)
-	if(do_mob(src, who, what.strip_delay, interaction_key = what))
+	//SKYRAT EDIT CHANGE - THIEVING GLOVES
+	//if(do_mob(src, who, what.strip_delay, interaction_key = what))
+	if(do_mob(src, who, what.strip_delay * (HAS_TRAIT(who, TRAIT_STICKY_FINGERS) ? 0.5 : 1), interaction_key = what))
 		if(what && Adjacent(who))
 			if(islist(where))
 				var/list/L = where
@@ -1269,7 +1275,7 @@
 			Robot.connected_ai.disconnect_shell()
 		if(Robot.mmi)
 			qdel(Robot.mmi)
-		Robot.notify_ai(NEW_BORG)
+		Robot.notify_ai(AI_NOTIFICATION_NEW_BORG)
 	else
 		for(var/obj/item/item in src)
 			if(!dropItemToGround(item))
@@ -1560,7 +1566,7 @@
 
 /mob/living/forceMove(atom/destination)
 	stop_pulling()
-	if(buckled)
+	if(buckled && !HAS_TRAIT(src, TRAIT_CANNOT_BE_UNBUCKLED))
 		buckled.unbuckle_mob(src, force = TRUE)
 	if(has_buckled_mobs())
 		unbuckle_all_mobs(force = TRUE)
@@ -1843,7 +1849,10 @@
 	SIGNAL_HANDLER
 	var/turf/ceiling = get_step_multiz(src, UP)
 	if(!ceiling) //We are at the highest z-level.
-		to_chat(src, span_warning("You can't see through the ceiling above you."))
+		if (prob(0.1))
+			to_chat(src, span_warning("You gaze out into the infinite vastness of deep space, for a moment, you have the impulse to continue travelling, out there, out into the deep beyond, before your conciousness reasserts itself and you decide to stay within travelling distance of the station."))
+			return
+		to_chat(src, span_warning("There's nothing interesting up there."))
 		return
 	else if(!istransparentturf(ceiling)) //There is no turf we can look through above us
 		var/turf/front_hole = get_step(ceiling, dir)

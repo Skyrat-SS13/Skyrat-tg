@@ -19,7 +19,7 @@
 	time = 120
 
 /datum/surgery_step/pry_off_plating/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to pry off [target]'s plating...</span>",
+	display_results(user, target, span_notice("You begin to pry off [target]'s plating..."),
 			"[user] begins to pry off [target]'s plating.",
 			"[user] begins to pry off [target]'s plating.")
 
@@ -27,7 +27,7 @@
 	time = 120
 
 /datum/surgery_step/cut_wires/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to cut [target]'s loose wires...</span>",
+	display_results(user, target, span_notice("You begin to cut [target]'s loose wires..."),
 			"[user] begins to cut [target]'s loose wires.",
 			"[user] begins to cut [target]'s loose wires.")
 
@@ -35,7 +35,7 @@
 	time = 120
 
 /datum/surgery_step/weld_plating/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to weld [target]'s plating...</span>",
+	display_results(user, target, span_notice("You begin to weld [target]'s plating..."),
 			"[user] begins to weld [target]'s plating.",
 			"[user] begins to weld [target]'s plating.")
 
@@ -44,7 +44,7 @@
 	cableamount = 15
 
 /datum/surgery_step/replace_wires/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to replace [target]'s wiring...</span>",
+	display_results(user, target, span_notice("You begin to replace [target]'s wiring..."),
 			"[user] begins to replace [target]'s wiring.",
 			"[user] begins to replace [target]'s wiring.")
 
@@ -53,7 +53,7 @@
 	ironamount = 15
 
 /datum/surgery_step/add_plating/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to add plating to [target]...</span>",
+	display_results(user, target, span_notice("You begin to add plating to [target]..."),
 			"[user] begins to add plating to [target].",
 			"[user] begins to add plating to [target].")
 
@@ -64,7 +64,7 @@
 	time = 120
 
 /datum/surgery_step/finalize_chassis_restoration/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to finalize [target]'s chassis...</span>",
+	display_results(user, target, span_notice("You begin to finalize [target]'s chassis..."),
 			"[user] begins to finalize [target]'s chassis.",
 			"[user] begins to finalize [target]'s chassis.")
 

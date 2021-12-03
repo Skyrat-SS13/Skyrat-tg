@@ -254,7 +254,7 @@
 	AddElement(/datum/element/polychromic, list("#FFFFFF"))
 
 /obj/item/clothing/head/flowerpin
-	name = "Flower Pin"
+	name = "flower pin"
 	desc = "A small polychromic flower pin"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
@@ -343,10 +343,10 @@
 		return
 	if(goggles)
 		icon_state = "gblast_helmet"
-		to_chat(user, "<span class='notice'>You put all your effort into pulling the goggles up.</span>")
+		to_chat(user, span_notice("You put all your effort into pulling the goggles up."))
 	else
 		icon_state = "gblast_helmetv"
-		to_chat(user, "<span class='notice'>You focus all your willpower to put the goggles down on your eyes.</span>")
+		to_chat(user, span_notice("You focus all your willpower to put the goggles down on your eyes."))
 	goggles = !goggles
 	if(user)
 		user.head_update(src, forced = 1)
@@ -411,7 +411,7 @@
 	soft_type = "yankeenobrim"
 
 /obj/item/clothing/head/fedora/fedbrown
-	name = "Brown fedora"
+	name = "brown fedora"
 	desc = "A noir-inspired fedora. Covers the eyes. Makes you look menacing, assuming you don't have a neckbeard."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
@@ -419,7 +419,7 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/head/fedora/fedblack
-	name = "Black fedora"
+	name = "black fedora"
 	desc = "A matte-black fedora. Looks solid enough. It'll only look good on you if you don't have a neckbeard."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'

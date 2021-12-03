@@ -52,11 +52,11 @@
 	. = ..()
 	if(!istype(user) || !user.can_interact_with(src) || iscorticalborer(user)) //skyrat edit: no borer flipping
 		return FALSE
-	user.visible_message("<span class='danger'>[user] starts flipping [src]!</span>", "<span class='notice'>You start flipping over the [src]!</span>")
+	user.visible_message(span_danger("[user] starts flipping [src]!"), span_notice("You start flipping over the [src]!"))
 	if(do_after(user, max_integrity/4))
 		var/obj/structure/table/T = new table_type(src.loc)
 		T.update_integrity(src.get_integrity())
-		user.visible_message("<span class='danger'>[user] flips over the [src]!</span>", "<span class='notice'>You flip over the [src]!</span>")
+		user.visible_message(span_danger("[user] flips over the [src]!"), span_notice("You flip over the [src]!"))
 		playsound(src, 'sound/items/trayhit2.ogg', 100)
 		qdel(src)
 
@@ -67,7 +67,7 @@
 	if(!istype(user) || !user.can_interact_with(src) || isobserver(user) || iscorticalborer(user)) //skyrat edit: no borer flipping
 		return
 	if(can_flip)
-		user.visible_message("<span class='danger'>[user] starts flipping [src]!</span>", "<span class='notice'>You start flipping over the [src]!</span>")
+		user.visible_message(span_danger("[user] starts flipping [src]!"), span_notice("You start flipping over the [src]!"))
 		if(do_after(user, max_integrity/4))
 			var/obj/structure/flippedtable/T = new flipped_table_type(src.loc)
 			T.name = "flipped [src.name]"
@@ -80,7 +80,7 @@
 			T.max_integrity = src.max_integrity
 			T.update_integrity(src.get_integrity())
 			T.table_type = src.type
-			user.visible_message("<span class='danger'>[user] flips over the [src]!</span>", "<span class='notice'>You flip over the [src]!</span>")
+			user.visible_message(span_danger("[user] flips over the [src]!"), span_notice("You flip over the [src]!"))
 			playsound(src, 'sound/items/trayhit2.ogg', 100)
 			qdel(src)
 

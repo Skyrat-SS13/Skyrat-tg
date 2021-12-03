@@ -9,7 +9,7 @@
 		if("Yes.")
 			src.ghostize(FALSE)
 			var/announce_rank = "Artificial Intelligence,"
-			if(GLOB.announcement_systems.len) 
+			if(GLOB.announcement_systems.len)
 				// Sends an announcement the AI has cryoed.
 				var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
 				announcer.announce("CRYOSTORAGE", src.real_name, announce_rank, list())

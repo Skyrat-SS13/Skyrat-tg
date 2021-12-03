@@ -142,7 +142,7 @@
 			continue
 		cb_owner.human_host.temporarilyRemoveItemFromInventory(hosts_items, TRUE)
 		playsound(cb_owner.human_host, 'sound/effects/blobattack.ogg', 30, TRUE)
-		cb_owner.human_host.visible_message(span_warning("With a sickening crunch, [cb_owner.human_host] reforms [cb_owner.human_host.p_their()] armblade into an arm!"), span_notice("We assimilate the armblade back into our body."), "<span class='italics>You hear organic matter ripping and tearing!</span>")
+		cb_owner.human_host.visible_message(span_warning("With a sickening crunch, [cb_owner.human_host] reforms [cb_owner.human_host.p_their()] armblade into an arm!"), span_notice("We assimilate the armblade back into our body."), span_italics("You hear organic matter ripping and tearing!"))
 		cb_owner.human_host.update_inv_hands()
 		return
 	var/obj/item/spawn_armblade = new /obj/item/melee/arm_blade(cb_owner.human_host) //if you dont have the armblade, add it

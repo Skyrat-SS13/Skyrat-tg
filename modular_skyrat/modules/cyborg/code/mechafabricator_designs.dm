@@ -38,3 +38,17 @@
 		/datum/material/plasma=7500,
 	)
 	category = list("Cyborg Upgrade Modules")
+
+/datum/design/inducer_upgrade
+	name = "Cyborg Upgrade (Inducer)"
+	id = "inducer_module"
+	construction_time = 60
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/inducer
+	materials = list(
+		/datum/material/iron=10000,
+		/datum/material/gold=4000,
+		/datum/material/plasma=2000,
+	)
+	category = list("Cyborg Upgrade Modules")
+

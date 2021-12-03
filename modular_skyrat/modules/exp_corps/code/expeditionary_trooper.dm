@@ -33,8 +33,8 @@
 
 /datum/job/expeditionary_trooper/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
-	to_chat(M, "<span class='redtext'>As a Vanguard Operative you are not part of security! You must not perform security duties unless absolutely nessecary. \
-	Do not valid hunt using your equipment. Use common sense. Failure to follow these simple rules will result in a job ban.")
+	to_chat(M, span_redtext("As a Vanguard Operative you are not part of security! You must not perform security duties unless absolutely nessecary. \
+	Do not valid hunt using your equipment. Use common sense. Failure to follow these simple rules will result in a job ban."))
 
 /datum/outfit/job/expeditionary_trooper
 	name = "Vanguard Operative"

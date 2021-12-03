@@ -43,12 +43,12 @@
 		H.adjustFireLoss(1) //Still deal some damage in case a cold environment would be preventing us from the sweet release to robot heaven
 		H.adjust_bodytemperature(13) //We're overheating!!
 		if(prob(10))
-			to_chat(H, "<span class='warning'>Alert: Critical damage taken! Cooling systems failing!</span>")
+			to_chat(H, span_warning("Alert: Critical damage taken! Cooling systems failing!"))
 			do_sparks(3, TRUE, H)
 
 /datum/species/robotic/spec_revival(mob/living/carbon/human/H)
 	playsound(H.loc, 'sound/machines/chime.ogg', 50, 1, -1)
-	H.visible_message("<span class='notice'>[H]'s monitor lights up.</span>", "<span class='notice'>All systems nominal. You're back online!</span>")
+	H.visible_message(span_notice("[H]'s monitor lights up."), span_notice("All systems nominal. You're back online!"))
 
 /datum/species/robotic/on_species_gain(mob/living/carbon/human/C)
 	. = ..()

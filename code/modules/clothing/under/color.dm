@@ -6,7 +6,7 @@
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit_inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit_inhand_right
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit_worn_digi
+	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit_worn/digi // SKYRAT EDIT ADD
 	icon = 'icons/obj/clothing/under/color.dmi'
 	icon_state = "jumpsuit"
 	inhand_icon_state = "jumpsuit"
@@ -21,12 +21,23 @@
 	icon_state = "jumpskirt"
 	greyscale_config_worn_digi = null
 
+/// Returns a random, acceptable jumpsuit typepath
+/proc/get_random_jumpsuit()
+	return pick(
+		subtypesof(/obj/item/clothing/under/color) \
+			- typesof(/obj/item/clothing/under/color/jumpskirt) \
+			- /obj/item/clothing/under/color/random \
+			- /obj/item/clothing/under/color/grey/ancient \
+			- /obj/item/clothing/under/color/black/ghost \
+			- /obj/item/clothing/under/rank/prisoner \
+	)
+
 /obj/item/clothing/under/color/random
 	icon_state = "random_jumpsuit"
 
 /obj/item/clothing/under/color/random/Initialize(mapload)
 	..()
-	var/obj/item/clothing/under/color/C = pick(subtypesof(/obj/item/clothing/under/color) - typesof(/obj/item/clothing/under/color/jumpskirt) - /obj/item/clothing/under/color/random - /obj/item/clothing/under/color/grey/ancient - /obj/item/clothing/under/color/black/ghost - /obj/item/clothing/under/rank/prisoner)
+	var/obj/item/clothing/under/color/C = get_random_jumpsuit()
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		H.equip_to_slot_or_del(new C(H), ITEM_SLOT_ICLOTHING, initial=TRUE) //or else you end up with naked assistants running around everywhere...
@@ -34,12 +45,20 @@
 		new C(loc)
 	return INITIALIZE_HINT_QDEL
 
+/// Returns a random, acceptable jumpskirt typepath
+/proc/get_random_jumpskirt()
+	return pick(
+		subtypesof(/obj/item/clothing/under/color/jumpskirt) \
+			- /obj/item/clothing/under/color/jumpskirt/random \
+			- /obj/item/clothing/under/rank/prisoner/skirt \
+	)
+
 /obj/item/clothing/under/color/jumpskirt/random
 	icon_state = "random_jumpsuit" //Skirt variant needed
 
 /obj/item/clothing/under/color/jumpskirt/random/Initialize(mapload)
 	..()
-	var/obj/item/clothing/under/color/jumpskirt/C = pick(subtypesof(/obj/item/clothing/under/color/jumpskirt) - /obj/item/clothing/under/color/jumpskirt/random - /obj/item/clothing/under/rank/prisoner/skirt)
+	var/obj/item/clothing/under/color/jumpskirt/C = get_random_jumpskirt()
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		H.equip_to_slot_or_del(new C(H), ITEM_SLOT_ICLOTHING, initial=TRUE)

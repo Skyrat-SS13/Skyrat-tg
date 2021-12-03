@@ -33,39 +33,6 @@
 	user.visible_message(span_suicide("[user] begins to swipe [user.p_their()] neck with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
 	return BRUTELOSS
 
-/obj/item/card/data
-	name = "data card"
-	desc = "A plastic magstripe card for simple and speedy data storage and transfer. This one has a stripe running down the middle."
-	icon_state = "data_1"
-	obj_flags = UNIQUE_RENAME
-	var/function = "storage"
-	var/data = "null"
-	var/special = null
-	inhand_icon_state = "card-id"
-	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	var/detail_color = COLOR_ASSEMBLY_ORANGE
-
-/obj/item/card/data/Initialize(mapload)
-	.=..()
-	update_appearance()
-
-/obj/item/card/data/update_overlays()
-	. = ..()
-	if(detail_color == COLOR_FLOORTILE_GRAY)
-		return
-	var/mutable_appearance/detail_overlay = mutable_appearance('icons/obj/card.dmi', "[icon_state]-color")
-	detail_overlay.color = detail_color
-	. += detail_overlay
-
-/obj/item/card/data/full_color
-	desc = "A plastic magstripe card for simple and speedy data storage and transfer. This one has the entire card colored."
-	icon_state = "data_2"
-
-/obj/item/card/data/disk
-	desc = "A plastic magstripe card for simple and speedy data storage and transfer. This one inexplicibly looks like a floppy disk."
-	icon_state = "data_3"
-
 /*
  * ID CARDS
  */
@@ -562,7 +529,7 @@
 		registered_account.bank_card_talk(span_warning("内部服务器错误"), TRUE)
 		return
 
-	var/amount_to_remove =  FLOOR(input(user, "How much do you want to withdraw? Current Balance: [registered_account.account_balance]", "Withdraw Funds", 5) as num|null, 1)
+	var/amount_to_remove = FLOOR(input(user, "How much do you want to withdraw? Current Balance: [registered_account.account_balance]", "Withdraw Funds", 5) as num|null, 1)
 
 	if(!amount_to_remove || amount_to_remove < 0)
 		return
@@ -645,6 +612,10 @@
 		assignment_string = " ([assignment])"
 
 	name = "[name_string][assignment_string]"
+
+/// Returns the trim assignment name.
+/obj/item/card/id/proc/get_trim_assignment()
+	return trim?.assignment || assignment
 
 /obj/item/card/id/away
 	name = "\proper a perfectly generic identification card"
@@ -838,6 +809,15 @@
 
 	. += mutable_appearance(trim_icon_file, trim_icon_state)
 
+/obj/item/card/id/advanced/get_trim_assignment()
+	if(trim_assignment_override)
+		return trim_assignment_override
+	else if(ispath(trim))
+		var/datum/id_trim/trim_singleton = SSid_access.trim_singletons_by_path[trim]
+		return trim_singleton.assignment
+
+	return ..()
+
 /obj/item/card/id/advanced/silver
 	name = "silver identification card"
 	desc = "A silver card which shows honour and dedication."
@@ -1021,7 +1001,7 @@
 			if(isliving(loc))
 				to_chat(loc, "<span class='boldnotice'>[src]</span><span class='notice'> buzzes: You have served your sentence! You may now exit prison through the turnstiles and collect your belongings.</span>")
 		else
-			playsound(loc, 'modular_skyrat/modules/mapping/code/sounds/quest_succeeded.ogg', 50, 1)
+			playsound(loc, 'modular_skyrat/modules/mapping/sounds/quest_succeeded.ogg', 50, 1)
 			if(isliving(loc))
 				to_chat(loc, "<span class='boldnotice'>[src]</span><span class='notice'><b>Quest Completed!</b> <i>Serve your prison sentence</i>. You may now leave the prison through the turnstiles and return this ID to the locker to retrieve your belongings.</span>")
 		STOP_PROCESSING(SSobj, src)

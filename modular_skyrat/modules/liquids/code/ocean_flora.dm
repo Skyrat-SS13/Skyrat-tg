@@ -63,11 +63,11 @@
 
 	playsound(src, 'sound/items/welder2.ogg', 50, TRUE)
 	if(first)
-		to_chat(user, "<span class='notice'>You start slicing the [src]...</span>")
+		to_chat(user, span_notice("You start slicing the [src]..."))
 	if(I.use_tool(src, user, 2 SECONDS))
 		welds_remaining--
 		if(welds_remaining <= 0)
-			to_chat(user, "<span class='notice'>You successfully salvage [src].</span>")
+			to_chat(user, span_notice("You successfully salvage [src]."))
 			new /obj/item/stack/sheet/iron(get_turf(src), rand(SCRAP_METAL_YIELD_LOW, SCRAP_METAL_YIELD_HIGH))
 			qdel(src)
 		else

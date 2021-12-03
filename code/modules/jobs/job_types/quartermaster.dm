@@ -8,6 +8,8 @@
 	//supervisors = "the head of personnel" //ORIGINAL
 	supervisors = "the captain" //SKYRAT EDIT CHANGE
 	selection_color = "#d7b088"
+	exp_requirements = 180 //SKYRAT EDIT CHANGE
+	exp_required_type = EXP_TYPE_CREW //SKYRAT EDIT CHANGE
 	exp_required_type_department = EXP_TYPE_SUPPLY
 	exp_granted_type = EXP_TYPE_CREW
 

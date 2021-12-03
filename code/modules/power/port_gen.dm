@@ -94,9 +94,6 @@
 	if(anchored)
 		connect_to_network()
 
-/obj/machinery/power/port_gen/pacman/Initialize(mapload)
-	. = ..()
-
 	var/obj/S = sheet_path
 	sheet_name = initial(S.name)
 
@@ -250,7 +247,7 @@
 	data["power_output"] = display_power(power_gen * power_output)
 	data["power_available"] = (powernet == null ? 0 : display_power(avail()))
 	data["current_heat"] = current_heat
-	. =  data
+	. = data
 
 /obj/machinery/power/port_gen/pacman/ui_act(action, params)
 	. = ..()

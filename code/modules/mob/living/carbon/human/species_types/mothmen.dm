@@ -67,3 +67,6 @@
 	human_mob.update_body()
 */
 //SKYRAT EDIT REMOVAL END
+
+/datum/species/moth/get_scream_sound(mob/living/carbon/human/human)
+	return 'sound/voice/moth/scream_moth.ogg'

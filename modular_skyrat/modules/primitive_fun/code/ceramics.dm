@@ -8,8 +8,8 @@
 	skill_name = "Ceramic Master"
 	skill_description = "Master the ability to use clay within ceramics."
 	skill_icon = "certificate"
-	activate_message = "<span class='notice'>The faults within the clay are now to be seen.</span>"
-	deactivate_message = "<span class='notice'>Clay becomes more obscured.</span>"
+	activate_message = span_notice("The faults within the clay are now to be seen.")
+	deactivate_message = span_notice("Clay becomes more obscured.")
 
 /obj/structure/water_source/puddle/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/stack/ore/glass))

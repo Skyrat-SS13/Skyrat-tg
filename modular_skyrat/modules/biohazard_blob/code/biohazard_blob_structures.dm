@@ -96,7 +96,7 @@
 		var/turf/my_turf = get_turf(src)
 		switch(blob_type)
 			if(BIO_BLOB_TYPE_FUNGUS)
-				visible_message("<span class='warning'>The [src] emitts a cloud!</span>")
+				visible_message(span_warning("The [src] emitts a cloud!"))
 				var/datum/reagents/R = new/datum/reagents(300)
 				R.my_atom = src
 				R.add_reagent(/datum/reagent/cordycepsspores, 50)
@@ -105,10 +105,10 @@
 				smoke.attach(src)
 				smoke.start()
 			if(BIO_BLOB_TYPE_FIRE)
-				visible_message("<span class='warning'>The [src] puffs a cloud of flames!</span>")
+				visible_message(span_warning("The [src] puffs a cloud of flames!"))
 				my_turf.atmos_spawn_air("o2=20;plasma=20;TEMP=600")
 			if(BIO_BLOB_TYPE_EMP)
-				visible_message("<span class='warning'>The [src] sends out electrical discharges!</span>")
+				visible_message(span_warning("The [src] sends out electrical discharges!"))
 				empulse(src, 5, 10)
 				if(prob(50))
 					for(var/mob/living/M in get_hearers_in_view(3, my_turf))
@@ -120,7 +120,7 @@
 					do_sparks(3, TRUE, src)
 					tesla_zap(src, 4, 10000, ZAP_MOB_DAMAGE | ZAP_OBJ_DAMAGE)
 			if(BIO_BLOB_TYPE_TOXIC)
-				visible_message("<span class='warning'>The [src] spews out foam!</span>")
+				visible_message(span_warning("The [src] spews out foam!"))
 				var/datum/reagents/R = new/datum/reagents(300)
 				R.my_atom = src
 				R.add_reagent(/datum/reagent/toxin, 30)
@@ -128,7 +128,7 @@
 				foam.set_up(40, my_turf, R)
 				foam.start()
 			if(BIO_BLOB_TYPE_RADIOACTIVE)
-				visible_message("<span class='warning'>The [src] emits a strong radiation pulse!</span>")
+				visible_message(span_warning("The [src] emits a strong radiation pulse!"))
 				radiation_pulse(src, 1500, 10, FALSE, TRUE)
 				var/datum/reagents/R = new/datum/reagents(300)
 				R.my_atom = src
@@ -287,7 +287,7 @@
 	if(!is_full)
 		return
 	var/turf/T = get_turf(src)
-	visible_message("<span class='warning'>The [src] ruptures!</span>")
+	visible_message(span_warning("The [src] ruptures!"))
 	switch(blob_type)
 		if(BIO_BLOB_TYPE_FUNGUS)
 			var/datum/reagents/R = new/datum/reagents(300)
