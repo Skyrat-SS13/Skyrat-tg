@@ -12810,12 +12810,10 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/engineering{
-	desc = "A rectangular steel crate caked in dust, probably from an era long gone, you wonder how it got here and if it's contents are still relevant.";
-	name = "Dusty Old Engine Crate"
+	name = "Turbine Board Crate"
 	},
-/obj/item/circuitboard/machine/circulator,
-/obj/item/circuitboard/machine/circulator,
-/obj/item/circuitboard/machine/generator,
+/obj/item/circuitboard/computer/turbine_computer,
+/obj/item/circuitboard/machine/power_turbine,
 /turf/open/floor/iron/dark/side{
 	dir = 4
 	},
@@ -22163,15 +22161,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/brig)
-"ijS" = (
-/obj/effect/turf_decal/bot,
-/obj/structure/closet/crate/engineering{
-	name = "Turbine Board Crate"
-	},
-/obj/item/circuitboard/machine/power_turbine,
-/obj/item/circuitboard/computer/turbine_computer,
-/turf/open/floor/iron,
-/area/engineering/main)
 "ijV" = (
 /obj/structure/railing{
 	dir = 8
@@ -41769,6 +41758,11 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
+/obj/machinery/button/crematorium{
+	id = "crematoriumChapel";
+	pixel_y = 26;
+	req_access_txt = "27"
+	},
 /turf/open/floor/iron,
 /area/service/chapel)
 "pYG" = (
@@ -46011,7 +46005,6 @@
 /area/hallway/primary/port)
 "rLf" = (
 /obj/effect/turf_decal/bot,
-/obj/machinery/the_singularitygen/tesla,
 /turf/open/floor/iron,
 /area/engineering/main)
 "rLl" = (
@@ -46882,10 +46875,6 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
-/obj/structure/closet/crate/radiation{
-	name = "Supermatter Shard Crate"
-	},
-/obj/machinery/power/supermatter_crystal/shard,
 /turf/open/floor/iron/dark/side{
 	dir = 8
 	},
@@ -58960,18 +58949,16 @@
 "wNZ" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/yellow,
-/obj/structure/closet/crate/engineering,
-/obj/machinery/particle_accelerator/control_box,
-/obj/structure/particle_accelerator/end_cap,
-/obj/structure/particle_accelerator/fuel_chamber,
-/obj/structure/particle_accelerator/power_box,
-/obj/structure/particle_accelerator/particle_emitter/center,
-/obj/structure/particle_accelerator/particle_emitter/left,
-/obj/structure/particle_accelerator/particle_emitter/right,
-/obj/item/paper/fluff{
-	info = "If you are stupid enough to build a singularity please don't get it higher then level 2, our last engineering team got eaten by the damn thing when it reached level 3, or y'know just stick with a tesla instead like the area is designed for.";
-	name = "Note to Engineering part 2"
+/obj/structure/closet/crate,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/gps/engineering,
+/obj/item/gps/engineering,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 20
 	},
+/obj/item/crowbar/red,
 /turf/open/floor/iron/dark/side{
 	dir = 9
 	},
@@ -95496,7 +95483,7 @@ rjM
 uMO
 huy
 joZ
-ijS
+rLf
 qvA
 qvA
 qvA
