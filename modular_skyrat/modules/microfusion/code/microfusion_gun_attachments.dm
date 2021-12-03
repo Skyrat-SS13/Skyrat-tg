@@ -425,6 +425,8 @@ The gun can fire PULSE shots.
 	attachment_overlay_icon_state = "attachment_pulse"
 	heat_addition = 150
 	power_usage = 50
+	var/added_burst_size = 2
+	var/added_fire_delay = 2
 
 /obj/item/microfusion_gun_attachment/pulse/examine(mob/user)
 	. = ..()
@@ -432,13 +434,13 @@ The gun can fire PULSE shots.
 
 /obj/item/microfusion_gun_attachment/pulse/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
-	microfusion_gun.burst_size += 2
-	microfusion_gun.fire_delay += 2
+	microfusion_gun.burst_size += added_burst_size
+	microfusion_gun.fire_delay += added_fire_delay
 
 /obj/item/microfusion_gun_attachment/pulse/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
-	microfusion_gun.burst_size -= 2
-	microfusion_gun.fire_delay -= 2
+	microfusion_gun.burst_size -= added_burst_size
+	microfusion_gun.fire_delay -= added_fire_delay
 
 /obj/item/microfusion_gun_attachment/pulse/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
 	. = ..()
