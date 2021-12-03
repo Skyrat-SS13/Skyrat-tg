@@ -112,7 +112,7 @@ These are basically advanced cells.
 	if(attachments.len)
 		for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment as anything in attachments)
 			. += span_notice("It has a [microfusion_cell_attachment.name] installed.")
-		. += span_notice("Use a <b>screwdriver</b> to remove the upgrades.")
+		. += span_notice("Use a <b>screwdriver</b> to remove the attachments.")
 
 /obj/item/stock_parts/cell/microfusion/proc/add_attachment(obj/item/microfusion_cell_attachment/microfusion_cell_attachment, mob/living/user)
 	if(attachments.len >= max_attachments)
