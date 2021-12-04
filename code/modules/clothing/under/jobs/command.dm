@@ -5,7 +5,7 @@
 	inhand_icon_state = "b_suit"
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
-	icon = 'icons/obj/clothing/under/captain.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/under/captain.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/captain.dmi'
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 15)
 

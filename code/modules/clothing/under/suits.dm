@@ -1,6 +1,6 @@
 /obj/item/clothing/under/suit
-	icon = 'icons/obj/clothing/under/suits.dmi'
-	worn_icon = 'icons/mob/clothing/under/suits.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/suits.dmi'
 	can_adjust = FALSE
 
 /obj/item/clothing/under/suit/white_on_white

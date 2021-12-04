@@ -1,7 +1,7 @@
 //Contains: Engineering department jumpsuits
 
 /obj/item/clothing/under/rank/engineering
-	icon = 'icons/obj/clothing/under/engineering.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/engineering.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/engineering.dmi'
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 60, ACID = 20)
 	resistance_flags = NONE

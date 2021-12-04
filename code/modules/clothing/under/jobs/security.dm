@@ -10,7 +10,7 @@
  */
 
 /obj/item/clothing/under/rank/security
-	icon = 'icons/obj/clothing/under/security.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 30, ACID = 30, WOUND = 10)
 	strip_delay = 50
@@ -24,68 +24,20 @@
 	icon_state = "rsecurity"
 	inhand_icon_state = "r_suit"
 	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Basic Security" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "rsecurity",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "rsecurity"
-		),
-		"Grey Security" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "security",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "security"
-		),
-		"Security Jumpskirt" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "secskirt",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "secskirt"
-		),
-		"Formal Security Uniform" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "officerblueclothes",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "officerblueclothes"
-		),
-		"Blue Shift" = list( // Uses the better sprites for the Blue Shift clothing.
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "barney_uniform",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "barney_uniform"
-		),
-		"Constable" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "constable",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "constable"
-		),
-		"Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "peacekeeper",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeper"
-		),
-		"Tactical Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "peacekeeper_tac",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeper_tac"
-		),
-		"Blue Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "bsecurity",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "bsecurity"
-		),
-		"Junior Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "junior_officer",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "junior_officer"
-		),
+	unique_reskin = list("Basic Security" = "rsecurity",
+						"Grey Security" = "security",
+						"Security Jumpskirt" = "secskirt",
+						"Formal Security Uniform" = "officerblueclothes",
+						"Blue Shift" = "barney_uniform",
+						"Constable" = "constable",
+						"Peacekeeper" = "peacekeeper",
+						"Tactical Peacekeeper" = "peacekeeper_tac",
+						"Blue Peacekeeper" = "bsecurity",
+						"Junior Peacekeeper" = "junior_officer",
+						"Tactical Peacekeeper" = "peacekeeper_tac",
+						"Tactical Peacekeeper" = "peacekeeper_tac",
+						"Tactical Peacekeeper" = "peacekeeper_tac",
+						)
 		"Battle Dress Uniform" = list(
 			RESKIN_ICON = 'modular_skyrat/modules/modular_items/icons/modular_clothing.dmi',
 			RESKIN_ICON_STATE = "fatigues",

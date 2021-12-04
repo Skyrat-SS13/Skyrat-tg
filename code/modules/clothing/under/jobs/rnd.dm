@@ -1,5 +1,5 @@
 /obj/item/clothing/under/rank/rnd
-	icon = 'icons/obj/clothing/under/rnd.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/rnd.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/rnd.dmi'
 
 /obj/item/clothing/under/rank/rnd/research_director

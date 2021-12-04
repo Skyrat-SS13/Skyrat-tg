@@ -1,6 +1,6 @@
 /obj/item/clothing/under/utility
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/misc.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/misc.dmi'
 	name = "general utility uniform"
 	desc = "A utility uniform worn by civilian-ranked crew."
 	icon_state = "util_gen"
@@ -53,22 +53,22 @@
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
 	has_sensor = NO_SENSORS
 
-/obj/item/clothing/under/utility/cargo/gorka
+/obj/item/clothing/under/rank/cargo/gorka
 	name = "supply gorka"
 	desc = "A fancy gorka worn by Supply and Delivery services."
 	icon_state = "gorka_cargo"
 
-/obj/item/clothing/under/utility/cargo/turtleneck
+/obj/item/clothing/under/rank/cargo/turtleneck
 	name = "supply turtleneck"
 	desc = "A snug turtleneck sweater worn by Supply and Delivery services."
 	icon_state = "turtleneck_cargo"
 
-/obj/item/clothing/under/utility/cargo/gorka/head
+/obj/item/clothing/under/rank/cargo/gorka/head
 	name = "quartermaster's gorka"
 	desc = "A fancy gorka worn by Supply and Delivery's head of staff, as shown by the fancy silver badge."
 	icon_state = "gorka_qm"
 
-/obj/item/clothing/under/utility/cargo/turtleneck/head
+/obj/item/clothing/under/rank/cargo/turtleneck/head
 	name = "quartermaster's turtleneck"
 	desc = "A snug turtleneck sweater worn by Supply and Delivery's head of staff, as shown by the fancy silver badge."
 	icon_state = "turtleneck_qm"

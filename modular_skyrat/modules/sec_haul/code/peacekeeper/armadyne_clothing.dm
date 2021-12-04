@@ -2,8 +2,8 @@
 	name = "armadyne corporate uniform"
 	desc = "A robust uniform worn by Armadyne corporate."
 	icon_state = "armadyne_shirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/centcom.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/uniform.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
 	worn_icon_state = "armadyne_shirt"
 
