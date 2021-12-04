@@ -16,7 +16,7 @@
 #define PA_CONSTRUCTION_COMPLETE   3
 
 /obj/structure/particle_accelerator
-	name = "Particle Accelerator"
+	name = "particle accelerator"
 	desc = "Part of a Particle Accelerator."
 	icon = 'modular_skyrat/modules/singularity_engine/icons/particle_accelerator.dmi'
 	icon_state = "none"
@@ -158,21 +158,21 @@
 
 
 /obj/structure/particle_accelerator/end_cap
-	name = "Alpha Particle Generation Array"
-	desc = "This is where Alpha particles are generated from \[REDACTED\]."
+	name = "alpha particle generation array"
+	desc = "This is where alpha particles are generated from \[REDACTED\]."
 	icon_state = "end_cap"
 	reference = "end_cap"
 
 /obj/structure/particle_accelerator/power_box
-	name = "Particle Focusing EM Lens"
-	desc = "This uses electromagnetic waves to focus the Alpha particles."
+	name = "particle focusing EM lens"
+	desc = "This uses electromagnetic waves to focus the alpha particles."
 	icon = 'modular_skyrat/modules/singularity_engine/icons/particle_accelerator.dmi'
 	icon_state = "power_box"
 	reference = "power_box"
 
 /obj/structure/particle_accelerator/fuel_chamber
-	name = "EM Acceleration Chamber"
-	desc = "This is where the Alpha particles are accelerated to <b><i>radical speeds</i></b>."
+	name = "EM acceleration chamber"
+	desc = "This is where the alpha particles are accelerated to <b><i>radical speeds</i></b>."
 	icon = 'modular_skyrat/modules/singularity_engine/icons/particle_accelerator.dmi'
 	icon_state = "fuel_chamber"
 	reference = "fuel_chamber"

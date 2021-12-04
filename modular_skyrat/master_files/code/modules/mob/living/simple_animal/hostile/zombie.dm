@@ -23,22 +23,13 @@
 
 /mob/living/simple_animal/hostile/zombie/proc/setup_visuals()
 	var/picked_job = pick(possible_jobs)
-	var/datum/job/J = SSjob.GetJob(picked_job)
-	var/datum/outfit/O
-	if(J.outfit)
-		O = new J.outfit
+	var/datum/job/zombie_job = SSjob.GetJob(picked_job)
+	var/datum/outfit/zombie_outfit
+	if(zombie_job.outfit)
+		zombie_outfit = new zombie_job.outfit
 		//They have claws now.
-		O.r_hand = null
-		O.l_hand = null
-/*
-	var/icon/P = get_flat_human_icon_skyrat("zombie_[picked_job]", J, /datum/species/zombie/infectious, SPECIES_ZOMBIE_HALLOWEEN, outfit_override = O)
-	icon = P
-	if(!no_corpse)
-		corpse = new(src)
-		corpse.outfit = O
-		corpse.mob_species = /datum/species/zombie
-		corpse.mob_name = name
-*/
+		zombie_outfit.r_hand = null
+		zombie_outfit.l_hand = null
 
 /mob/living/simple_animal/hostile/zombie/cheesezombie
 	name = "Cheese Zombie"

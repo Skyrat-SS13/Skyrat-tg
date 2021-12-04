@@ -1,5 +1,5 @@
 /obj/item/shield/riot/goliath
-	name = "Goliath shield"
+	name = "goliath shield"
 	desc = "A shield made from interwoven plates of goliath hide."
 	icon = 'modular_skyrat/modules/tribal_extended/icons/shields.dmi'
 	icon_state = "goliath_shield"

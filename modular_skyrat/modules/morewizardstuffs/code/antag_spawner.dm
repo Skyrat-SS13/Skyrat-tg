@@ -1,5 +1,5 @@
 /obj/item/antag_spawner/impostors //I don't remember why i've added this but this is problably the worst way to make it
-	name = "Magical Device"
+	name = "magical device"
 	desc = "A magical device that will multiply your bodies."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state ="lovestone"
