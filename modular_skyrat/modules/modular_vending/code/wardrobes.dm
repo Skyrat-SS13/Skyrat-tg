@@ -39,8 +39,8 @@
 /obj/machinery/vending/wardrobe/cargo_wardrobe
 	skyrat_products = list(
 		/obj/item/clothing/under/misc/cargo_long = 3,
-		/obj/item/clothing/under/utility/cargo/gorka = 3,
-		/obj/item/clothing/under/utility/cargo/turtleneck = 3,
+		/obj/item/clothing/under/rank/cargo/gorka = 3,
+		/obj/item/clothing/under/rank/cargo/turtleneck = 3,
 		/obj/item/clothing/under/utility/cargo = 3,
 		/obj/item/clothing/under/rank/cargo/casualman = 3,
 		/obj/item/clothing/suit/gorka/supply = 3,
@@ -119,11 +119,9 @@
 		/obj/item/clothing/suit/toggle/deckard = 2,
 		/obj/item/clothing/suit/discoblazer = 2,
 		/obj/item/clothing/suit/toggle/labcoat/highvis = 2,
-		/obj/item/clothing/under/misc/discounder = 2,
 		/obj/item/clothing/shoes/discoshoes = 2,
 		/obj/item/clothing/neck/tie/disco = 2,
 		/obj/item/clothing/suit/kimjacket = 2,
-		/obj/item/clothing/under/misc/kimunder = 2,
 		/obj/item/clothing/shoes/kimshoes = 2,
 		/obj/item/clothing/glasses/kim = 2,
 		/obj/item/clothing/gloves/kim = 2,

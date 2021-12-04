@@ -34,7 +34,7 @@
 
 /datum/outfit/lavaland_syndicate/shaftminer/deckofficer
 	name = "Lavaland Syndicate Deck Officer"
-	uniform = /obj/item/clothing/under/rank/cargo/qm/syndie
+	uniform = /obj/item/clothing/under/syndicate/deckofficer
 	neck = /obj/item/clothing/neck/cloak/qm/syndie
 	ears = /obj/item/radio/headset/interdyne/command
 	id = /obj/item/card/id/advanced/silver/generic

@@ -23,7 +23,7 @@
 		/obj/item/clothing/under/whiterussian = 5,
 		/obj/item/clothing/under/misc/tactical1 = 5,
 		/obj/item/clothing/under/uvf = 5,
-		/obj/item/clothing/under/doug_dimmadome = 5,
+		/obj/item/clothing/under/texas/doug_dimmadome = 5,
 		/obj/item/clothing/glasses/biker = 5, //remind me to give these an up state later
 		/obj/item/clothing/head/cowboyhat/blackwide = 5,
 		/obj/item/clothing/head/cowboyhat/wide = 5,

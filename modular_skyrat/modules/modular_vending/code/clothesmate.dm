@@ -65,7 +65,7 @@
 		/obj/item/clothing/under/rancher/cowboy = 5,
 		/obj/item/clothing/under/rancher/checkered = 5,
 		/obj/item/clothing/under/texas = 5,
-		/obj/item/clothing/under/westender = 5,
+		/obj/item/clothing/under/texas/westender = 5,
 		/obj/item/clothing/under/tachawaiian = 5,
 		/obj/item/clothing/under/tachawaiian/purple = 5,
 		/obj/item/clothing/under/tachawaiian/green = 5,

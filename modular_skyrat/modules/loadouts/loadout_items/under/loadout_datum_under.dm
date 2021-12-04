@@ -128,7 +128,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/disco
 	name = "Superstar Cop Suit"
-	item_path = /obj/item/clothing/under/misc/discounder
+	item_path = /obj/item/clothing/under/rank/security/detective/disco
 	restricted_roles = list("Detective")
 
 /datum/loadout_item/under/jumpsuit/seckilt
@@ -325,7 +325,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/croptop
 	name = "Croptop"
-	item_path = /obj/item/clothing/under/croptop
+	item_path = /obj/item/clothing/under/misc/croptop
 
 /datum/loadout_item/under/miscellaneous/royalkilt
 	name = "Royal Kilt"
@@ -402,7 +402,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/tactical_skirt
 	name = "Tactitool Skirtleneck"
 	item_path = /obj/item/clothing/under/syndicate/tacticool/skirt/sensors
-	
+
 /datum/loadout_item/under/miscellaneous/cream_sweater
 	name = "cream sweater"
 	item_path = /obj/item/clothing/under/sweater
@@ -476,7 +476,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/kimunder
 	name = "Aerostatic Suit"
-	item_path = /obj/item/clothing/under/misc/kimunder
+	item_path = /obj/item/clothing/under/rank/security/detective/kim
 
 /datum/loadout_item/under/miscellaneous/countess
 	name = "Countess Dress"

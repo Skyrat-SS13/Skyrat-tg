@@ -87,7 +87,8 @@
 
 /obj/item/clothing/under/misc/peakyblinder
 	name = "birmingham bling"
-	desc = "A grey suit with a white vest, maybe you run a whiskey plant, maybe you have a frenemy relationship with that guy out of that one film, whatever it is, it's still a nice looking suit."	icon_state = "peakyblinder"
+	desc = "A grey suit with a white vest, maybe you run a whiskey plant, maybe you have a frenemy relationship with that guy out of that one film, whatever it is, it's still a nice looking suit."
+	icon_state = "peakyblinder"
 
 /obj/item/clothing/under/misc/taccas
 	name = "tacticasual uniform"
