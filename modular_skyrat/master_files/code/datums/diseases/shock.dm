@@ -23,16 +23,16 @@
 		if(1) //just warning signs
 			if(DT_PROB(2.5, delta_time))
 				to_chat(affected_mob, span_warning(pick("You feel anxious.", "Your heart feels faster.")))
-				affected_mob.add_confusion(rand(2,3))
+				affected_mob.add_confusion(rand(2, 3))
 		if(2) //actual symptoms
 			if(DT_PROB(3, delta_time))
 				affected_mob.visible_message(span_warning("[affected_mob] starts to look pale."))
 			if(DT_PROB(2.5, delta_time))
 				to_chat(affected_mob, span_warning(pick("You have trouble breathing!", "You feel like you are going to pass out at any moment!")))
-				affected_mob.jitteriness += (rand(6,8))
+				affected_mob.jitteriness += (rand(6, 8))
 			if(DT_PROB(1, delta_time))
 				to_chat(affected_mob, span_warning(pick("You feel panicky!", "You feel like you're about to have a heart attack!")))
-				affected_mob.add_confusion(rand(6,8))
+				affected_mob.add_confusion(rand(6, 8))
 			if(DT_PROB(0.5, delta_time))
 				affected_mob.vomit(stun = FALSE)
 		if(3) //the big one: the heart attack
