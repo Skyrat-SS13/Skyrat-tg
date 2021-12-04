@@ -1,6 +1,6 @@
 /obj/item/clothing/under/misc
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/misc.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/misc.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/misc.dmi' //SKYRAT EDIT
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/misc.dmi' //SKYRAT EDIT
 
 /obj/item/clothing/under/misc/pj
 	name = "\improper PJs"

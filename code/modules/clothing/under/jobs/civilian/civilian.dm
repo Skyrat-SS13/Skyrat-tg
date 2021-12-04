@@ -1,8 +1,8 @@
 //Alphabetical order of civilian jobs.
 
 /obj/item/clothing/under/rank/civilian
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/civilian.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/civilian.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/civilian.dmi' //SKYRAT EDIT
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/civilian.dmi' //SKYRAT EDIT
 
 /obj/item/clothing/under/rank/civilian/bartender
 	desc = "It looks like it could use some more flair."

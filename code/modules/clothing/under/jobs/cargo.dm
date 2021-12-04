@@ -1,6 +1,6 @@
 /obj/item/clothing/under/rank/cargo
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/cargo.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/cargo.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/cargo.dmi' //SKYRAT EDIT
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/cargo.dmi' //SKYRAT EDIT
 
 /obj/item/clothing/under/rank/cargo/qm
 	name = "quartermaster's jumpsuit"

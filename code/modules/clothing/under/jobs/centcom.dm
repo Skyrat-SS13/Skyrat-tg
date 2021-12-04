@@ -1,6 +1,6 @@
 /obj/item/clothing/under/rank/centcom
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/centcom.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/centcom.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/centcom.dmi' //SKYRAT EDIT
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/centcom.dmi' //SKYRAT EDIT
 
 /obj/item/clothing/under/rank/centcom/commander
 	name = "\improper CentCom officer's suit"
