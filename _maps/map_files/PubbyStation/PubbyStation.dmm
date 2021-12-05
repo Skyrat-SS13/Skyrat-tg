@@ -2545,6 +2545,7 @@
 "aix" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/darkblue/corner,
+/obj/vehicle/ridden/secway,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "aiy" = (
@@ -2687,8 +2688,8 @@
 /area/ai_monitored/security/armory)
 "aiM" = (
 /obj/effect/turf_decal/bot_blue,
-/obj/structure/rack,
 /obj/effect/spawner/armory_spawn/shotguns,
+/obj/structure/rack/gunrack,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "aiN" = (
@@ -2811,6 +2812,29 @@
 /area/security/brig)
 "ajg" = (
 /obj/structure/rack,
+/obj/effect/turf_decal/bot_blue,
+/obj/item/clothing/suit/armor/riot{
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/obj/item/clothing/suit/armor/riot{
+	pixel_y = 2
+	},
+/obj/item/clothing/suit/armor/riot{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/obj/item/clothing/head/helmet/riot{
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/obj/item/clothing/head/helmet/riot{
+	pixel_y = 2
+	},
+/obj/item/clothing/head/helmet/riot{
+	pixel_x = 3;
+	pixel_y = 2
+	},
 /obj/item/shield/riot{
 	pixel_x = -3;
 	pixel_y = 3
@@ -2820,7 +2844,6 @@
 	pixel_x = 3;
 	pixel_y = -3
 	},
-/obj/effect/turf_decal/bot_blue,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "ajj" = (
@@ -3013,17 +3036,6 @@
 /area/security/brig)
 "ajP" = (
 /obj/structure/rack,
-/obj/item/clothing/suit/armor/riot{
-	pixel_x = 3;
-	pixel_y = 2
-	},
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = 2
-	},
-/obj/item/clothing/suit/armor/riot{
-	pixel_x = -3;
-	pixel_y = 2
-	},
 /obj/item/clothing/suit/armor/bulletproof{
 	pixel_x = 3;
 	pixel_y = -2
@@ -3036,6 +3048,17 @@
 	pixel_y = -2
 	},
 /obj/effect/turf_decal/bot_blue,
+/obj/item/clothing/head/helmet/alt{
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/obj/item/clothing/head/helmet/alt{
+	pixel_y = -2
+	},
+/obj/item/clothing/head/helmet/alt{
+	pixel_x = -3;
+	pixel_y = -2
+	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "ajQ" = (
@@ -3059,6 +3082,9 @@
 "ajT" = (
 /obj/structure/rack,
 /obj/item/gun/energy/ionrifle,
+/obj/item/storage/box/emps{
+	pixel_y = 11
+	},
 /obj/item/gun/energy/temperature/security,
 /obj/item/clothing/suit/hooded/ablative,
 /obj/effect/turf_decal/bot_blue,
@@ -3358,29 +3384,29 @@
 /area/security/brig)
 "akL" = (
 /obj/structure/rack,
-/obj/item/clothing/head/helmet/riot{
-	pixel_x = 3;
-	pixel_y = 2
-	},
-/obj/item/clothing/head/helmet/riot{
-	pixel_y = 2
-	},
-/obj/item/clothing/head/helmet/riot{
-	pixel_x = -3;
-	pixel_y = 2
-	},
-/obj/item/clothing/head/helmet/alt{
-	pixel_x = 3;
-	pixel_y = -2
-	},
-/obj/item/clothing/head/helmet/alt{
-	pixel_y = -2
-	},
-/obj/item/clothing/head/helmet/alt{
-	pixel_x = -3;
-	pixel_y = -2
-	},
 /obj/effect/turf_decal/bot_blue,
+/obj/item/clothing/head/helmet{
+	layer = 3.00001;
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/clothing/head/helmet{
+	layer = 3.00001
+	},
+/obj/item/clothing/head/helmet{
+	layer = 3.00001;
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/clothing/suit/armor/bulletproof,
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = -3;
+	pixel_y = 3
+	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "akM" = (
@@ -3416,6 +3442,16 @@
 	name = "Armory Shutters";
 	pixel_x = 26;
 	req_access_txt = "3"
+	},
+/obj/structure/rack,
+/obj/item/storage/box/rubbershot{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/storage/box/rubbershot,
+/obj/item/storage/box/rubbershot{
+	pixel_x = -3;
+	pixel_y = 3
 	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
@@ -3649,6 +3685,13 @@
 /area/security/office)
 "alD" = (
 /obj/structure/table/wood,
+/obj/item/flashlight/seclite{
+	pixel_y = 8
+	},
+/obj/item/flashlight/seclite{
+	pixel_y = 4
+	},
+/obj/item/flashlight/seclite,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "alF" = (
@@ -3944,6 +3987,9 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 6
+	},
+/obj/item/clothing/mask/gas/sechailer{
+	pixel_x = -1
 	},
 /turf/open/floor/iron/dark,
 /area/security/office)
@@ -52825,9 +52871,9 @@
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
 "qgK" = (
-/obj/structure/rack,
 /obj/effect/turf_decal/bot_blue,
 /obj/effect/spawner/armory_spawn/microfusion,
+/obj/structure/rack/gunrack,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "qgQ" = (
@@ -55134,6 +55180,7 @@
 /obj/effect/turf_decal/trimline/darkblue/line{
 	dir = 1
 	},
+/obj/item/key/security,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "sdV" = (
@@ -57530,9 +57577,12 @@
 	name = "contraband locker";
 	req_access_txt = "3"
 	},
-/obj/effect/spawner/random/maintenance/three,
+/obj/effect/spawner/random/contraband/armory,
+/obj/effect/spawner/random/contraband/armory,
+/obj/effect/spawner/random/contraband/armory,
 /obj/effect/spawner/random/contraband/armory,
 /obj/item/gun/ballistic/rifle/boltaction,
+/obj/effect/spawner/random/maintenance/three,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "ulY" = (
