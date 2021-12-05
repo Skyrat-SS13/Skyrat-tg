@@ -1,7 +1,6 @@
 // THE MARKED ONE
 /mob/living/simple_animal/hostile/megafauna/gladiator
 	name = "\proper The Marked One"
-	desc = "A former miner burnt and battered by the lands around him, encased in ancient armor suitable for a slayer of megafauna. Perhaps this is the same fate that awaits you..."
 	icon = 'modular_skyrat/master_files/icons/mob/markedone.dmi'
 	icon_state = "marked1"
 	icon_dead = "marked_dying"
@@ -26,6 +25,7 @@
 	movement_type = GROUND
 	weather_immunities = list("lava","ash")
 	var/phase = 1
+	var/list/enemies = list()
 	var/list/introduced = list()
 	var/speen = FALSE
 	var/speenrange = 4
@@ -41,6 +41,9 @@
 	var/chosenlength
 	var/chosenlengthstring
 	var/songend
+	var/retaliated = FALSE
+	var/retaliatedcooldowntime = 6000
+	var/retaliatedcooldown
 	loot = list(/obj/structure/closet/crate/necropolis/gladiator)
 	crusher_loot = list(/obj/structure/closet/crate/necropolis/gladiator/crusher)
 
@@ -61,20 +64,6 @@
 						M.stop_sound_channel(CHANNEL_JUKEBOX)
 						songend = chosenlength + world.time
 						SEND_SOUND(M, chosensong) // so silence ambience will mute moosic for people who don't want that, or it just doesn't play at all if prefs disable it
-				if(!retaliated)
-					src.visible_message("<span class='userdanger'>[src] seems pretty pissed off at [M]!</span>")
-					retaliated = TRUE
-					retaliatedcooldown = world.time + retaliatedcooldowntime
-		else if(ismecha(A))
-			var/obj/mecha/M = A
-			if(M.occupant && M.occupant.client)
-				enemies |= M
-				enemies |= M.occupant
-				var/mob/living/O = M.occupant
-				if(O?.client?.prefs?.toggles & SOUND_MEGAFAUNA)
-					O.stop_sound_channel(CHANNEL_JUKEBOX)
-					songend = chosenlength + world.time
-					SEND_SOUND(O, chosensong)
 				if(!retaliated)
 					src.visible_message("<span class='userdanger'>[src] seems pretty pissed off at [M]!</span>")
 					retaliated = TRUE
@@ -275,7 +264,7 @@
 	var/list/hit_things = list()
 	for(var/turf/T in speenturfs)
 		src.dir = get_dir(src, T)
-		for(var/turf/U in (getline(src, T) - get_turf(src)))
+		for(var/turf/U in (get_turf(src)))
 			var/obj/effect/temp_visual/small_smoke/smonk = new /obj/effect/temp_visual/small_smoke(U)
 			QDEL_IN(smonk, 1.25)
 			for(var/mob/living/M in U)
@@ -344,7 +333,7 @@
 		teleport(target)
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/boneappletea(atom/target)
-	var/obj/item/kitchen/knife/combat/bone/boned = new /obj/item/kitchen/knife/combat/bone(get_turf(src))
+	var/obj/item/knife/combat/bone/boned = new /obj/item/knife/combat/bone(get_turf(src))
 	boned.throwforce = 35
 	playsound(src, 'sound/weapons/fwoosh.wav', 60, 0)
 	boned.throw_at(target, 7, 3, src)
