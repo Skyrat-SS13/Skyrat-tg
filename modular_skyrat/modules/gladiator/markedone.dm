@@ -1,4 +1,4 @@
-/* THE MARKED ONE
+// THE MARKED ONE
 /mob/living/simple_animal/hostile/megafauna/gladiator
 	name = "\proper The Marked One"
 	desc = "A former miner burnt and battered by the lands around him, encased in ancient armor suitable for a slayer of megafauna. Perhaps this is the same fate that awaits you..."
@@ -37,8 +37,48 @@
 	var/stunduration = 15
 	var/move_to_charge = 1.5
 	var/list/songs = list("3850" = sound(file = '/modular_skyrat/master_files/sound/ambience/archnemesis.ogg', repeat = 0, wait = 0, volume = 70, channel = CHANNEL_JUKEBOX))
+	var/sound/chosensong
+	var/chosenlength
+	var/chosenlengthstring
+	var/songend
 	loot = list(/obj/structure/closet/crate/necropolis/gladiator)
 	crusher_loot = list(/obj/structure/closet/crate/necropolis/gladiator/crusher)
+
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/Retaliate()
+	var/list/around = view(src, vision_range)
+	for(var/atom/movable/A in around)
+		if(A == src)
+			continue
+		if(isliving(A))
+			var/mob/living/M = A
+			if(faction_check_mob(M) && attack_same || !faction_check_mob(M) && M.client)
+				enemies |= M
+				chosenlengthstring = pick(songs)
+				chosenlength = text2num(chosenlengthstring)
+				chosensong = songs[chosenlengthstring]
+				if(chosensong && !songend)
+					if(M?.client?.prefs?.toggles & SOUND_AMBIENCE)
+						M.stop_sound_channel(CHANNEL_JUKEBOX)
+						songend = chosenlength + world.time
+						SEND_SOUND(M, chosensong) // so silence ambience will mute moosic for people who don't want that, or it just doesn't play at all if prefs disable it
+				if(!retaliated)
+					src.visible_message("<span class='userdanger'>[src] seems pretty pissed off at [M]!</span>")
+					retaliated = TRUE
+					retaliatedcooldown = world.time + retaliatedcooldowntime
+		else if(ismecha(A))
+			var/obj/mecha/M = A
+			if(M.occupant && M.occupant.client)
+				enemies |= M
+				enemies |= M.occupant
+				var/mob/living/O = M.occupant
+				if(O?.client?.prefs?.toggles & SOUND_MEGAFAUNA)
+					O.stop_sound_channel(CHANNEL_JUKEBOX)
+					songend = chosenlength + world.time
+					SEND_SOUND(O, chosensong)
+				if(!retaliated)
+					src.visible_message("<span class='userdanger'>[src] seems pretty pissed off at [M]!</span>")
+					retaliated = TRUE
+					retaliatedcooldown = world.time + retaliatedcooldowntime
 
 /obj/item/gps/internal/gladiator
 	icon_state = null
