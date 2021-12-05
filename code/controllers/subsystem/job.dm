@@ -263,7 +263,7 @@ SUBSYSTEM_DEF(job)
 			JobDebug("GRJ skipping Central Command role, Player: [player], Job: [job]")
 			continue
 		//SKYRAT EDIT END
-		
+
 		// This check handles its own output to JobDebug.
 		if(check_job_eligibility(player, job, "GRJ", add_job_to_log = TRUE) != JOB_AVAILABLE)
 			continue
@@ -519,7 +519,8 @@ SUBSYSTEM_DEF(job)
 	// SKYRAT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
 	// The alt job title, if user picked one, or the default
 	var/chosen_title = player_client?.prefs.alt_job_titles[job.title] || job.title
-	// SKYRAT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES
+	var/default_title = job.title
+	// SKYRAT EDIT ADDITION END - job.title
 
 	equipping.job = job.title
 
@@ -550,7 +551,11 @@ SUBSYSTEM_DEF(job)
 			to_chat(player_client, "<span class='infoplain'><b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b></span>")
 		if(CONFIG_GET(number/minimal_access_threshold))
 			to_chat(player_client, span_notice("<B>As this station was initially staffed with a [CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] have been added to your ID card.</B>"))
-
+		//SKYRAT EDIT START - ALTERNATIVE_JOB_TITLES
+		if(chosen_title != default_title)
+			to_chat(player_client, "<span class='warning'>Remember that alternate titles are, for the most part, for flavor and roleplay. \
+					<b>Do not use your alt title as an excuse to forego your duties as a [job.title].</b></span>")
+		//SKYRAT EDIT END
 		var/related_policy = get_policy(job.title)
 		if(related_policy)
 			to_chat(player_client, related_policy)
