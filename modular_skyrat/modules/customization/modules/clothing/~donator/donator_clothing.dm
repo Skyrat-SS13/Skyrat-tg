@@ -868,7 +868,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
 	icon_state = "zentai"
 	inhand_icon_state = "zentai"
-	tint = 1
+	tint = 0
 	glass_colour_type = /datum/client_colour/glass_colour/red
 
 /datum/action/item_action/demonic_whisper
