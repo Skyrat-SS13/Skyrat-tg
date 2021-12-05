@@ -2,18 +2,18 @@
 /mob/living/simple_animal/hostile/megafauna/gladiator
 	name = "\proper The Marked One"
 	desc = "A former miner burnt and battered by the lands around him, encased in ancient armor suitable for a slayer of megafauna. Perhaps this is the same fate that awaits you..."
-	icon = 'modular_skyrat/icons/mob/lavaland/lavaland_monsters.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/markedone.dmi'
 	icon_state = "marked1"
 	icon_dead = "marked_dying"
-	attack_verb_simple = "slashes"
-	attack_verb_continuous = "slash"
+	attack_verb_simple = "cleaves"
+	attack_verb_continuous = "cleave"
 	attack_sound = 'sound/weapons/resonator_fire.ogg'
 	death_sound = 'sound/creatures/space_dragon_roar.ogg'
 	deathmessage = "falls on his sword, ash evaporating from every hole in his armor."
 	rapid_melee = 1
 	melee_queue_distance = 2
-	melee_damage_lower = 35
-	melee_damage_upper = 35
+	melee_damage_lower = 40
+	melee_damage_upper = 40
 	speed = 1
 	move_to_delay = 2.25
 	wander = FALSE
