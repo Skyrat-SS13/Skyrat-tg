@@ -7,8 +7,8 @@
 	icon_dead = "marked_dying"
 	attack_verb_simple = "slashes"
 	attack_verb_continuous = "slash"
-	attack_sound = 'modular_skyrat/sound/weapons/zweihanderslice.ogg'
-	death_sound = 'modular_skyrat/sound/effects/gladiatordeathsound.ogg'
+	attack_sound = 'sound/weapons/resonator_fire.ogg'
+	death_sound = 'sound/creatures/space_dragon_roar.ogg'
 	deathmessage = "falls on his sword, ash evaporating from every hole in his armor."
 	rapid_melee = 1
 	melee_queue_distance = 2
@@ -36,7 +36,7 @@
 	var/stunned = FALSE
 	var/stunduration = 15
 	var/move_to_charge = 1.5
-	songs = list("3850" = sound(file = 'modular_skyrat/sound/ambience/archnemesis.ogg', repeat = 0, wait = 0, volume = 70, channel = CHANNEL_JUKEBOX))
+	var/list/songs = list("3850" = sound(file = '/modular_skyrat/master_files/sound/ambience/archnemesis.ogg', repeat = 0, wait = 0, volume = 70, channel = CHANNEL_JUKEBOX))
 	loot = list(/obj/structure/closet/crate/necropolis/gladiator)
 	crusher_loot = list(/obj/structure/closet/crate/necropolis/gladiator/crusher)
 
