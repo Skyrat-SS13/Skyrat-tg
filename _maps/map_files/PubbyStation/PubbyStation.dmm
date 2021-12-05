@@ -15638,12 +15638,19 @@
 /obj/machinery/light/directional/north,
 /obj/structure/table,
 /obj/effect/spawner/random/food_or_drink/donkpockets,
+/obj/item/storage/box/donkpockets,
+/obj/item/clothing/head/chefhat,
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
 "aYV" = (
 /obj/structure/table,
-/obj/item/storage/box/donkpockets,
-/obj/item/clothing/head/chefhat,
+/obj/item/plate/oven_tray,
+/obj/item/plate/oven_tray{
+	pixel_y = 2
+	},
+/obj/item/plate/oven_tray{
+	pixel_y = 4
+	},
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
 "aYX" = (
@@ -16773,10 +16780,18 @@
 	desc = "Used to grind things up into raw materials and liquids.";
 	pixel_y = 5
 	},
+/obj/item/storage/box/beakers{
+	pixel_x = -4;
+	pixel_y = -5
+	},
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
 "bch" = (
 /obj/machinery/oven,
+/obj/machinery/pollution_scrubber{
+	pixel_x = 16;
+	pixel_y = 15
+	},
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
 "bck" = (
@@ -35033,14 +35048,11 @@
 /area/service/bar)
 "cpm" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/condiment/saltshaker{
-	pixel_x = -8;
-	pixel_y = 5
+/obj/item/knife{
+	pixel_x = -13
 	},
-/obj/item/reagent_containers/food/condiment/peppermill{
-	pixel_x = -8
-	},
-/obj/item/knife/kitchen,
+/obj/item/knife/butcher,
+/obj/item/serviette_pack,
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
 "cpn" = (
@@ -36940,6 +36952,9 @@
 	dir = 4
 	},
 /obj/item/holosign_creator/robot_seat/bar,
+/obj/machinery/pollution_scrubber{
+	pixel_x = -15
+	},
 /turf/open/floor/iron/dark,
 /area/service/bar)
 "cyP" = (
@@ -55096,6 +55111,13 @@
 	dir = 8
 	},
 /obj/structure/displaycase/forsale/kitchen,
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = -8
+	},
+/obj/item/reagent_containers/food/condiment/saltshaker{
+	pixel_x = -8;
+	pixel_y = 5
+	},
 /turf/open/floor/iron/dark,
 /area/service/kitchen)
 "sbS" = (
