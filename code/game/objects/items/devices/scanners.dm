@@ -522,11 +522,7 @@ GENE SCANNER
 		else
 			to_chat(user, "<span class='notice ml-1'>No wounds detected in subject.</span>")
 	else
-<<<<<<< HEAD
-		to_chat(user, examine_block(jointext(render_list, ""))) //SKYRAT EDIT CHANGE
-=======
-		to_chat(user, jointext(render_list, ""), type = MESSAGE_TYPE_INFO)
->>>>>>> 56940b8b9b3 (Move scan results from health analyzers/other scanners from local chat to info tab (#63245))
+		to_chat(user, examine_block(jointext(render_list, "")), type = MESSAGE_TYPE_INFO) //SKYRAT EDIT CHANGE
 
 /obj/item/healthanalyzer/wound
 	name = "first aid analyzer"
@@ -763,13 +759,8 @@ GENE SCANNER
 		if(cached_scan_results && cached_scan_results["fusion"]) //notify the user if a fusion reaction was detected
 			render_list += "[span_boldnotice("Large amounts of free neutrons detected in the air indicate that a fusion reaction took place.")]\
 						\n[span_notice("Instability of the last fusion reaction: [round(cached_scan_results["fusion"], 0.01)].")]"
-<<<<<<< HEAD
-
-	to_chat(user, examine_block(jointext(render_list, "\n"))) // we let the join apply newlines so we do need handholding //SKYRAT EDIT CHANGE
-=======
 	// we let the join apply newlines so we do need handholding
-	to_chat(user, jointext(render_list, "\n"), type = MESSAGE_TYPE_INFO)
->>>>>>> 56940b8b9b3 (Move scan results from health analyzers/other scanners from local chat to info tab (#63245))
+	to_chat(user, examine_block(jointext(render_list, "\n")), type = MESSAGE_TYPE_INFO) //SKYRAT EDIT CHANGE
 	return TRUE
 
 //slime scanner
