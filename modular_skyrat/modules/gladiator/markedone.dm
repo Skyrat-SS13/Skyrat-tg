@@ -101,7 +101,7 @@
 		visible_message("<span class='danger'>[src] brushes off all incoming attacks!")
 		return FALSE
 	else if(prob(50) && (phase == 1) && !stunned)
-		visible_message("<span class='danger'>[src] blocks all incoming damage with his shield!")
+		visible_message("<span class='danger'>[src] blocks all incoming damage with his arm!")
 		return FALSE
 	..()
 	update_phase()
