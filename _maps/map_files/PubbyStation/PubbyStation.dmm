@@ -2545,14 +2545,15 @@
 "aix" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/darkblue/corner,
+/obj/vehicle/ridden/secway,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "aiy" = (
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 10
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
 	},
 /turf/open/floor/iron/white,
 /area/security/prison)
@@ -2687,8 +2688,8 @@
 /area/ai_monitored/security/armory)
 "aiM" = (
 /obj/effect/turf_decal/bot_blue,
-/obj/structure/rack,
 /obj/effect/spawner/armory_spawn/shotguns,
+/obj/structure/rack/gunrack,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "aiN" = (
@@ -2783,14 +2784,10 @@
 /turf/open/floor/iron/dark,
 /area/security/office)
 "ajb" = (
-/obj/machinery/cryopod{
-	dir = 1
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 6
 	},
-/obj/effect/turf_decal/delivery/white{
-	color = "#00ff00";
-	name = "green"
-	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/white,
 /area/security/prison)
 "ajc" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2811,6 +2808,29 @@
 /area/security/brig)
 "ajg" = (
 /obj/structure/rack,
+/obj/effect/turf_decal/bot_blue,
+/obj/item/clothing/suit/armor/riot{
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/obj/item/clothing/suit/armor/riot{
+	pixel_y = 2
+	},
+/obj/item/clothing/suit/armor/riot{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/obj/item/clothing/head/helmet/riot{
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/obj/item/clothing/head/helmet/riot{
+	pixel_y = 2
+	},
+/obj/item/clothing/head/helmet/riot{
+	pixel_x = 3;
+	pixel_y = 2
+	},
 /obj/item/shield/riot{
 	pixel_x = -3;
 	pixel_y = 3
@@ -2820,7 +2840,6 @@
 	pixel_x = 3;
 	pixel_y = -3
 	},
-/obj/effect/turf_decal/bot_blue,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "ajj" = (
@@ -3013,17 +3032,6 @@
 /area/security/brig)
 "ajP" = (
 /obj/structure/rack,
-/obj/item/clothing/suit/armor/riot{
-	pixel_x = 3;
-	pixel_y = 2
-	},
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = 2
-	},
-/obj/item/clothing/suit/armor/riot{
-	pixel_x = -3;
-	pixel_y = 2
-	},
 /obj/item/clothing/suit/armor/bulletproof{
 	pixel_x = 3;
 	pixel_y = -2
@@ -3036,6 +3044,17 @@
 	pixel_y = -2
 	},
 /obj/effect/turf_decal/bot_blue,
+/obj/item/clothing/head/helmet/alt{
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/obj/item/clothing/head/helmet/alt{
+	pixel_y = -2
+	},
+/obj/item/clothing/head/helmet/alt{
+	pixel_x = -3;
+	pixel_y = -2
+	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "ajQ" = (
@@ -3358,29 +3377,29 @@
 /area/security/brig)
 "akL" = (
 /obj/structure/rack,
-/obj/item/clothing/head/helmet/riot{
-	pixel_x = 3;
-	pixel_y = 2
-	},
-/obj/item/clothing/head/helmet/riot{
-	pixel_y = 2
-	},
-/obj/item/clothing/head/helmet/riot{
-	pixel_x = -3;
-	pixel_y = 2
-	},
-/obj/item/clothing/head/helmet/alt{
-	pixel_x = 3;
-	pixel_y = -2
-	},
-/obj/item/clothing/head/helmet/alt{
-	pixel_y = -2
-	},
-/obj/item/clothing/head/helmet/alt{
-	pixel_x = -3;
-	pixel_y = -2
-	},
 /obj/effect/turf_decal/bot_blue,
+/obj/item/clothing/head/helmet{
+	layer = 3.00001;
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/clothing/head/helmet{
+	layer = 3.00001
+	},
+/obj/item/clothing/head/helmet{
+	layer = 3.00001;
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/clothing/suit/armor/bulletproof,
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = -3;
+	pixel_y = 3
+	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "akM" = (
@@ -3416,6 +3435,16 @@
 	name = "Armory Shutters";
 	pixel_x = 26;
 	req_access_txt = "3"
+	},
+/obj/structure/rack,
+/obj/item/storage/box/rubbershot{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/storage/box/rubbershot,
+/obj/item/storage/box/rubbershot{
+	pixel_x = -3;
+	pixel_y = 3
 	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
@@ -3649,6 +3678,13 @@
 /area/security/office)
 "alD" = (
 /obj/structure/table/wood,
+/obj/item/flashlight/seclite{
+	pixel_y = 8
+	},
+/obj/item/flashlight/seclite{
+	pixel_y = 4
+	},
+/obj/item/flashlight/seclite,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "alF" = (
@@ -3944,6 +3980,9 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 6
+	},
+/obj/item/clothing/mask/gas/sechailer{
+	pixel_x = -1
 	},
 /turf/open/floor/iron/dark,
 /area/security/office)
@@ -15599,12 +15638,19 @@
 /obj/machinery/light/directional/north,
 /obj/structure/table,
 /obj/effect/spawner/random/food_or_drink/donkpockets,
+/obj/item/storage/box/donkpockets,
+/obj/item/clothing/head/chefhat,
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
 "aYV" = (
 /obj/structure/table,
-/obj/item/storage/box/donkpockets,
-/obj/item/clothing/head/chefhat,
+/obj/item/plate/oven_tray,
+/obj/item/plate/oven_tray{
+	pixel_y = 2
+	},
+/obj/item/plate/oven_tray{
+	pixel_y = 4
+	},
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
 "aYX" = (
@@ -16734,10 +16780,18 @@
 	desc = "Used to grind things up into raw materials and liquids.";
 	pixel_y = 5
 	},
+/obj/item/storage/box/beakers{
+	pixel_x = -4;
+	pixel_y = -5
+	},
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
 "bch" = (
 /obj/machinery/oven,
+/obj/machinery/pollution_scrubber{
+	pixel_x = 16;
+	pixel_y = 15
+	},
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
 "bck" = (
@@ -34994,14 +35048,7 @@
 /area/service/bar)
 "cpm" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/condiment/saltshaker{
-	pixel_x = -8;
-	pixel_y = 5
-	},
-/obj/item/reagent_containers/food/condiment/peppermill{
-	pixel_x = -8
-	},
-/obj/item/knife/kitchen,
+/obj/item/knife,
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
 "cpn" = (
@@ -36901,6 +36948,9 @@
 	dir = 4
 	},
 /obj/item/holosign_creator/robot_seat/bar,
+/obj/machinery/pollution_scrubber{
+	pixel_x = -15
+	},
 /turf/open/floor/iron/dark,
 /area/service/bar)
 "cyP" = (
@@ -40605,6 +40655,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/space/basic,
 /area/space/nearstation)
+"fBT" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/science/mixing/chamber)
 "fDg" = (
 /obj/machinery/door/airlock/security{
 	id_tag = "IsolationCell";
@@ -46455,6 +46511,10 @@
 	},
 /turf/open/floor/engine,
 /area/science/cytology)
+"kPF" = (
+/obj/machinery/atmospherics/pipe/layer_manifold/supply,
+/turf/closed/wall/r_wall,
+/area/science/mixing)
 "kPV" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/structure/flora/ausbushes/lavendergrass,
@@ -50694,12 +50754,6 @@
 /obj/item/storage/backpack/duffelbag,
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
-"ota" = (
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 6
-	},
-/turf/open/floor/iron/white,
-/area/security/prison)
 "ots" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
@@ -52825,9 +52879,9 @@
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
 "qgK" = (
-/obj/structure/rack,
 /obj/effect/turf_decal/bot_blue,
 /obj/effect/spawner/armory_spawn/microfusion,
+/obj/structure/rack/gunrack,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "qgQ" = (
@@ -55063,6 +55117,13 @@
 	dir = 8
 	},
 /obj/structure/displaycase/forsale/kitchen,
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = -8
+	},
+/obj/item/reagent_containers/food/condiment/saltshaker{
+	pixel_x = -8;
+	pixel_y = 5
+	},
 /turf/open/floor/iron/dark,
 /area/service/kitchen)
 "sbS" = (
@@ -55134,6 +55195,7 @@
 /obj/effect/turf_decal/trimline/darkblue/line{
 	dir = 1
 	},
+/obj/item/key/security,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "sdV" = (
@@ -56108,7 +56170,10 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/turf/open/floor/iron/dark,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 10
+	},
+/turf/open/floor/iron/white,
 /area/security/prison)
 "sZP" = (
 /obj/structure/closet,
@@ -57530,9 +57595,12 @@
 	name = "contraband locker";
 	req_access_txt = "3"
 	},
-/obj/effect/spawner/random/maintenance/three,
+/obj/effect/spawner/random/contraband/armory,
+/obj/effect/spawner/random/contraband/armory,
+/obj/effect/spawner/random/contraband/armory,
 /obj/effect/spawner/random/contraband/armory,
 /obj/item/gun/ballistic/rifle/boltaction,
+/obj/effect/spawner/random/maintenance/three,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "ulY" = (
@@ -58839,7 +58907,9 @@
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
 "viN" = (
-/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/incinerator_ordmix,
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/incinerator_ordmix{
+	dir = 8
+	},
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
 "vjH" = (
@@ -81050,7 +81120,7 @@ agF
 agF
 agF
 iPU
-ajb
+aiZ
 siC
 aiZ
 aiZ
@@ -81566,8 +81636,8 @@ agV
 ahl
 ahz
 ahX
-ota
-aeU
+ahz
+ajb
 ajI
 akz
 alo
@@ -108634,9 +108704,9 @@ mES
 mES
 mES
 ePI
-mES
-bmu
-bmu
+kPF
+fBT
+fBT
 bmu
 bmu
 bmu
