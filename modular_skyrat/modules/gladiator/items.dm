@@ -21,7 +21,7 @@
 
 /obj/item/gun/magic/staff/spellblade/agateram
 	name = "ancient blade agateram"
-	desc = "A millenia-old blade from a material that you can't even begin to fathom. It flows with the power of the Marked One who once held it."
+	desc = "A millenia-old blade from a material that you can't even begin to fathom. It flows with the power of the Marked One who once held it." //That thing was too big to be called a sword. Too big, too thick, too heavy, and too rough, it was more like a large hunk of iron.
 	fire_sound = 'sound/magic/fireball.ogg'
 	ammo_type = /obj/item/ammo_casing/magic/spellblade
 	icon_state = "agateram"
@@ -29,13 +29,16 @@
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	hitsound = 'sound/weapons/rapierhit.ogg'
-	force = 25
-  var/faction_bonus_force = 50
-  var/static/list/nemesis_factions = list("mining", "boss")
+	w_class = WEIGHT_CLASS_HUGE
+	slot_flags = NULL
+	force = 20
+	resistance_flags = INDESTRUCTIBLE
+ 	var/faction_bonus_force = 55
+ 	var/static/list/nemesis_factions = list("mining", "boss")
 	armour_penetration = 20
-	block_chance = 50
+	block_chance = 30
 	sharpness = SHARP_EDGED
-	max_charges = 3
+	max_charges = 1
 
 /obj/item/gun/magic/staff/spellblade/agateram/attack(mob/living/target, mob/living/carbon/human/user)
 	var/is_nemesis_faction = FALSE
