@@ -428,13 +428,8 @@ GENE SCANNER
 		if(cyberimp_detect)
 			render_list += "<span class='notice ml-1'>Detected cybernetic modifications:</span>\n"
 			render_list += "<span class='notice ml-2'>[cyberimp_detect]</span>\n"
-<<<<<<< HEAD
-
-	to_chat(user, examine_block(jointext(render_list, "")), trailing_newline = FALSE) // we handled the last <br> so we don't need handholding //SKYRAT EDIT CHANGE
-=======
-	// we handled the last <br> so we don't need handholding
-	to_chat(user, jointext(render_list, ""), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO)
->>>>>>> 56940b8b9b3 (Move scan results from health analyzers/other scanners from local chat to info tab (#63245))
+	// we handled the last <br> so we don't need handholding 
+	to_chat(user, examine_block(jointext(render_list, "")), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO) //SKYRAT EDIT CHANGE
 
 /proc/chemscan(mob/living/user, mob/living/M)
 	if(user.incapacitated())
@@ -481,13 +476,8 @@ GENE SCANNER
 
 		if(M.has_status_effect(/datum/status_effect/eigenstasium))
 			render_list += "<span class='notice ml-1'>Subject is temporally unstable. Stabilising agent is recommended to reduce disturbances.</span>\n"
-<<<<<<< HEAD
-
-		to_chat(user, examine_block(jointext(render_list, "")), trailing_newline = FALSE) // we handled the last <br> so we don't need handholding //SKYRAT EDIT CHANGE
-=======
 		// we handled the last <br> so we don't need handholding
-		to_chat(user, jointext(render_list, ""), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO)
->>>>>>> 56940b8b9b3 (Move scan results from health analyzers/other scanners from local chat to info tab (#63245))
+		to_chat(user, examine_block(jointext(render_list, "")), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO) //SKYRAT EDIT CHANGE
 
 /obj/item/healthanalyzer/verb/toggle_mode()
 	set name = "Switch Verbosity"
