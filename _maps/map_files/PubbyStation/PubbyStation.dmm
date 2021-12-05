@@ -40658,6 +40658,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/space/basic,
 /area/space/nearstation)
+"fBT" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/science/mixing/chamber)
 "fDg" = (
 /obj/machinery/door/airlock/security{
 	id_tag = "IsolationCell";
@@ -41086,10 +41092,6 @@
 /obj/machinery/vending/medical,
 /turf/open/floor/iron/white,
 /area/medical/virology)
-"fXK" = (
-/obj/machinery/atmospherics/pipe/layer_manifold/supply,
-/turf/closed/wall/r_wall,
-/area/science/mixing)
 "fYY" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -46512,6 +46514,10 @@
 	},
 /turf/open/floor/engine,
 /area/science/cytology)
+"kPF" = (
+/obj/machinery/atmospherics/pipe/layer_manifold/supply,
+/turf/closed/wall/r_wall,
+/area/science/mixing)
 "kPV" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/structure/flora/ausbushes/lavendergrass,
@@ -48483,12 +48489,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/fore)
-"mxU" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
-	dir = 4
-	},
-/turf/closed/wall/r_wall,
-/area/science/mixing/chamber)
 "mxV" = (
 /obj/machinery/holopad,
 /obj/effect/turf_decal/tile/green,
@@ -58910,7 +58910,9 @@
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
 "viN" = (
-/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/incinerator_ordmix,
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/incinerator_ordmix{
+	dir = 8
+	},
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
 "vjH" = (
@@ -108705,9 +108707,9 @@ mES
 mES
 mES
 ePI
-fXK
-mxU
-mxU
+kPF
+fBT
+fBT
 bmu
 bmu
 bmu
