@@ -370,7 +370,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "Thong - Alt"
 	icon_state = "thong_babydoll"
 	gender = FEMALE
-
+/*
 /datum/sprite_accessory/underwear/chastbelt
 	name = "Chastity Belt"
 	icon_state = "chastbelt"
@@ -380,7 +380,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "Chastity Cage"
 	icon_state = "chastcage"
 	use_static = null
-
+*/
 /datum/sprite_accessory/underwear/lizared
 	name = "LIZARED Underwear"
 	icon_state = "lizared"
