@@ -304,7 +304,7 @@
 		new /obj/effect/temp_visual/small_smoke/halfsecond(T)
 		forceMove(T)
 	else
-		var/list/possiblelocs = (view(3, target) - view(1, target))
+		var/list/possible_locs = (view(3, target) - view(1, target))
 		for(var/atom/A in possiblelocs)
 			if(!isturf(A))
 				possiblelocs -= A
