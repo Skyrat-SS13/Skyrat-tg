@@ -101,8 +101,8 @@
 		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/istarget = target
-		var/datum/species/targetspecies = H.dna.species
-		if(Hspecies.id == "ashlizard")
+		var/datum/species/targetspecies = target.dna.species
+		if(targetspecies.id == "ashlizard")
 			var/list/messages = list("Another dweller comes to die!",\
 									"Let my blade help you to see, walker!",\
 									"Have you come to die, fool?")
@@ -110,7 +110,7 @@
 			introduced |= istarget
 			GiveTarget(istarget)
 			Retaliate()
-		else if(Hspecies.id == "human")
+		else if(targetspecies.id == "human")
 			var/list/messages = list("Let us see how worthy you are!",\
 									"Die!!",\
 									"I will not let you suffer the same fate!")
@@ -367,22 +367,3 @@
 			else
 				teleport(target)
 				ranged_cooldown += 20
-
-//Aggression helpers
-/obj/effect/step_trigger/gladiator
-	var/mob/living/simple_animal/hostile/megafauna/gladiator/glady
-
-/obj/effect/step_trigger/gladiator/Initialize()
-	. = ..()
-	for(var/mob/living/simple_animal/hostile/megafauna/gladiator/G in view(7, src))
-		if(!glady)
-			glady = G
-
-/obj/effect/step_trigger/gladiator/Trigger(atom/movable/A)
-	if(isliving(A))
-		glady.enemies |= targeted
-		glady.GiveTarget(targeted)
-		for(var/obj/effect/step_trigger/gladiator/glad in view(7, src))
-			qdel(glad)
-		return TRUE
-	return FALSE
