@@ -30,6 +30,9 @@
 	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = null
 	force = 20
+	// This is a fuck off huge weapon that literally can only be held or dragged around, this is fine imho
+	wound_bonus = 10
+	bare_wound_bonus = 5
 	resistance_flags = INDESTRUCTIBLE
 	armour_penetration = 20
 	block_chance = 30
