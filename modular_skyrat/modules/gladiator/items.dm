@@ -9,15 +9,15 @@
 /obj/item/crusher_trophy/gladiator/effect_desc()
 	return "the crusher to have a <b>[bonus_value]%</b> chance to block any incoming attack."
 
-/obj/item/crusher_trophy/gladiator/add_to(obj/item/kinetic_crusher/H, mob/living/user)
+/obj/item/crusher_trophy/gladiator/add_to(obj/item/kinetic_crusher/incomingchance, mob/living/user)
 	. = ..()
 	if(.)
-		H.block_chance += bonus_value
+		incomingchance.block_chance += bonus_value
 
-/obj/item/crusher_trophy/gladiator/remove_from(obj/item/kinetic_crusher/H, mob/living/user)
+/obj/item/crusher_trophy/gladiator/remove_from(obj/item/kinetic_crusher/incomingchance, mob/living/user)
 	. = ..()
 	if(.)
-		H.block_chance -= bonus_value
+		incomingchance.block_chance -= bonus_value
 
 /obj/item/gun/magic/staff/spellblade/agateram
 	name = "ancient blade agateram"
