@@ -63,6 +63,20 @@
 	icon_state = "floor"
 
 ///////////////////////////////////////////// ARRIVALS //////////////////////////////////////////////////////////
+/turf/closed/wall/mineral/titanium/shuttle_wall/arrivals
+	icon = 'modular_skyrat/modules/advanced_shuttles/icons/wagon.dmi'
+	icon_state = "3,1"
+
+/turf/closed/wall/mineral/titanium/shuttle_wall/window/arrivals
+	icon = 'modular_skyrat/modules/advanced_shuttles/icons/wagon.dmi'
+	icon_state = "3,1"
+
+/turf/open/floor/iron/shuttle/arrivals
+	name = "shuttle floor"
+	icon = 'modular_skyrat/modules/advanced_shuttles/icons/wagon.dmi'
+	icon_state = "floor"
+
+///////////////////////////////////////////// CARGO //////////////////////////////////////////////////////////
 /turf/closed/wall/mineral/titanium/shuttle_wall/cargo
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/cargo.dmi'
 	icon_state = "3,1"
