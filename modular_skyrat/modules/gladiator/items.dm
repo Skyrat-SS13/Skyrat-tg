@@ -34,7 +34,7 @@
 	slot_flags = null
 	force = 20
 	resistance_flags = INDESTRUCTIBLE
- 	var/faction_bonus_force = 55
+	var/faction_bonus_force = 55
  	var/static/list/nemesis_factions = list("mining", "boss")
 	armour_penetration = 20
 	block_chance = 30
