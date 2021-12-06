@@ -61,12 +61,12 @@
 				chosenlength = text2num(chosenlengthstring)
 				chosensong = songs[chosenlengthstring]
 				if(chosensong && !songend)
-					if(M?.client?.prefs?.toggles & SOUND_AMBIENCE)
+					if(mobs?.client?.prefs?.toggles & SOUND_AMBIENCE)
 						M.stop_sound_channel(CHANNEL_JUKEBOX)
 						songend = chosenlength + world.time
-						SEND_SOUND(M, chosensong) // so silence ambience will mute moosic for people who don't want that, or it just doesn't play at all if prefs disable it
+						SEND_SOUND(mobs, chosensong) // so silence ambience will mute moosic for people who don't want that, or it just doesn't play at all if prefs disable it
 				if(!retaliated)
-					src.visible_message("<span class='userdanger'>[src] seems pretty pissed off at [M]!</span>")
+					src.visible_message("<span class='userdanger'>[src] seems pretty pissed off at [mobs]!</span>")
 					retaliated = TRUE
 					retaliatedcooldown = world.time + retaliatedcooldowntime
 
@@ -101,7 +101,7 @@
 		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/istarget = target
-		var/datum/species/Hspecies = H.dna.species
+		var/datum/species/Hspecies = target.dna.species
 		if(Hspecies.id == "ashlizard")
 			var/list/messages = list("Another dweller comes to die!",\
 									"Let my blade help you to see, walker!",\
@@ -237,25 +237,25 @@
 		start = i
 	for(var/i in 1 to (speenrange*2))
 		var/turf/targeted = speenturfs[start]
-		speenturfs[start+i] = locate(T.x, T.y + i, T.z)
+		speenturfs[start+i] = locate(targeted.x, targeted.y + i, targeted.z)
 		if(i == (speenrange*2))
 			start = (start+i)
 	for(var/i in 1 to (speenrange*2))
 		var/turf/targeted = speenturfs[start]
-		speenturfs[start+i] = locate(T.x + i, T.y, T.z)
+		speenturfs[start+i] = locate(targeted.x + i, targeted.y, targeted.z)
 		if(i == (speenrange*2))
 			start = (start+i)
 	for(var/i in 1 to (speenrange*2))
 		var/turf/targeted = speenturfs[start]
-		speenturfs[start+i] = locate(T.x, T.y - i, T.z)
+		speenturfs[start+i] = locate(targeted.x, targeted.y - i, targeted.z)
 		if(i == (speenrange*2))
 			start = (start+i)
 	for(var/i in 1 to speenrange)
 		var/turf/targeted = speenturfs[start]
-		speenturfs[start+i] = locate(T.x - i, T.y, T.z)
+		speenturfs[start+i] = locate(targeted.x - i, targeted.y, targeted.z)
 	var/list/hit_things = list()
 	for(var/turf/targeted in speenturfs)
-		src.dir = get_dir(src, T)
+		src.dir = get_dir(src, targeted)
 		for(var/turf/U in (get_turf(src)))
 			var/obj/effect/temp_visual/small_smoke/smonk = new /obj/effect/temp_visual/small_smoke(U)
 			QDEL_IN(smonk, 1.25)
@@ -299,8 +299,8 @@
 	var/turf/targeted = get_step(target, -target.dir)
 	new /obj/effect/temp_visual/small_smoke/halfsecond(get_turf(src))
 	sleep(4)
-	if(!ischasm(T) && !(/mob/living in T))
-		new /obj/effect/temp_visual/small_smoke/halfsecond(T)
+	if(!ischasm(T) && !(/mob/living in targeted))
+		new /obj/effect/temp_visual/small_smoke/halfsecond(targeted)
 		forceMove(T)
 	else
 		var/list/possible_locs = (view(3, target) - view(1, target))
@@ -311,9 +311,9 @@
 				if(ischasm(A) || istype(A, /turf/closed) || (/mob/living in A))
 					possible_locs -= A
 		if(possible_locs.len)
-			T = pick(possible_locs)
-			new /obj/effect/temp_visual/small_smoke/halfsecond(T)
-			forceMove(T)
+			targeted = pick(possible_locs)
+			new /obj/effect/temp_visual/small_smoke/halfsecond(targeted)
+			forceMove(targeted)
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/AttackingTarget()
 	. = ..()
