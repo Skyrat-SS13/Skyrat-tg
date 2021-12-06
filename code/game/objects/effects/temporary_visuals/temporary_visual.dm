@@ -3,7 +3,7 @@
 	icon_state = "nothing"
 	anchored = TRUE
 	layer = ABOVE_MOB_LAYER
-	plane = GAME_PLANE_FOV_HIDDEN
+	plane = GAME_PLANE_FOV_HIDDEN // SKYRAT EDIT ADDITION
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	///time, in deciseconds, that this object will exist
 	var/duration = 10

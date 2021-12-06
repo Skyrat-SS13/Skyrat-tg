@@ -80,8 +80,10 @@
 	var/contents_thermal_insulation = 0
 	/// The degree of pressure protection that mobs in list/contents have from the external environment, between 0 and 1
 	var/contents_pressure_protection = 0
+	// SKYRAT EDIT ADDITION
 	/// Time until we stop "sticky" facing towards something. Set on face_atom() if someone with combat mode faces
 	var/sticky_facing_until = 0
+	// SKYRAT EDIT END
 
 
 /atom/movable/Initialize(mapload)
@@ -516,7 +518,7 @@
 						moving_diagonally = SECOND_DIAG_STEP
 						. = step(src, SOUTH)
 			if(moving_diagonally == SECOND_DIAG_STEP)
-				if(!. && set_dir_on_move && sticky_facing_until < world.time)
+				if(!. && set_dir_on_move && sticky_facing_until < world.time) //SKYRAT EDIT CHANGE
 					setDir(first_step_dir)
 				else if (!inertia_moving)
 					inertia_next_move = world.time + inertia_move_delay
@@ -548,7 +550,7 @@
 
 	last_move = direct
 
-	if(set_dir_on_move && sticky_facing_until < world.time)
+	if(set_dir_on_move && sticky_facing_until < world.time) //SKYRAT EDIT CHANGE
 		setDir(direct)
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
 		return FALSE
