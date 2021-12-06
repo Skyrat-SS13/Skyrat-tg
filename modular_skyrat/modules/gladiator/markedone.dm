@@ -18,7 +18,7 @@
 	speed = 1
 	move_to_delay = 2.25
 	wander = FALSE
-	var/block_chance = 50
+	var/block_chance = 10 //chance he'll block an attack with his arm during phase 1
 	ranged = 1
 	ranged_cooldown_time = 30
 	minimum_distance = 1
