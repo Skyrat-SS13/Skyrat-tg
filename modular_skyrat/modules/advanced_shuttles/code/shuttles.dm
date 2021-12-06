@@ -46,7 +46,7 @@
 	port_id = "cargo"
 	suffix = "skyrat"
 
-/datum/map_template/shuttle/cargo_skyrat/delta
+/datum/map_template/shuttle/cargo/skyrat/delta
 	suffix = "delta_skyrat"	//I hate this. Delta station is one tile different docking-wise, which fucks it ALL up unless we either a) change the map (this would be nonmodular and also press the engine against disposals) or b) this (actually easy, just dumb)
 
 /datum/map_template/shuttle/arrivals_skyrat
