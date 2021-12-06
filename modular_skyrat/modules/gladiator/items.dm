@@ -31,7 +31,7 @@
 	righthand_file = 'modular_skyrat/master_files/icons/mob/agateraminhandsright.dmi'
 	hitsound = 'sound/weapons/rapierhit.ogg'
 	w_class = WEIGHT_CLASS_HUGE
-	slot_flags = NULL
+	slot_flags = null
 	force = 20
 	resistance_flags = INDESTRUCTIBLE
  	var/faction_bonus_force = 55
