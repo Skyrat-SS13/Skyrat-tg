@@ -548,7 +548,7 @@
 
 	last_move = direct
 
-	if(set_dir_on_move && sticky_facing_until < world.time)
+	if(set_dir_on_move && sticky_facing_until < world.time) //SKYRAT EDIT CHANGE
 		setDir(direct)
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
 		return FALSE
