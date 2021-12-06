@@ -37,7 +37,7 @@
 	block_chance = 30
 	sharpness = SHARP_EDGED
 
-/obj/item/gun/magic/staff/spellblade/agateram/attack(mob/living/target, mob/living/carbon/human/user)
+/obj/item/claymore/agateram/attack(mob/living/target, mob/living/carbon/human/user)
 	var/is_nemesis_faction = FALSE
 	for(var/found_faction in target.faction)
 		if(found_faction in nemesis_factions)
