@@ -37,6 +37,7 @@
 	armour_penetration = 20
 	block_chance = 30
 	sharpness = SHARP_EDGED
+	// aughhghghgh this really should be elementized but this works for now
 	var/faction_bonus_force = 100
 	var/static/list/nemesis_factions = list("mining", "boss")
 

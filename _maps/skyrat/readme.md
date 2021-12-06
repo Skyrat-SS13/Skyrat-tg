@@ -5,4 +5,4 @@ USE THIS FORMAT: ./MAPDIR.DMM > TYPE: (SHUTTLE, MAP), MODULE: (MODULE ID)
 
 ### MAP FILES:
 	- ./shuttles/syndicate_cruiser.dmm > TYPE: SHUTTLE, MODULE: ASSAULTOPS
-
+	- ./RandomRuins/LavaRuins/lavaland_surface_arena.dmm > TYPE: LAVALAND RUIN, MODULE: GLADIATOR

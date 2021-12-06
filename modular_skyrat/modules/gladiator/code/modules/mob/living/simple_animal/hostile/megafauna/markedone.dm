@@ -29,7 +29,6 @@
 	health = 2000
 	maxHealth = 2000
 	movement_type = GROUND
-	weather_immunities = list("lava","ash")
 	loot = list(/obj/structure/closet/crate/necropolis/gladiator)
 	crusher_loot = list(/obj/structure/closet/crate/necropolis/gladiator/crusher)
 	/// Boss phase, from 1 to 3

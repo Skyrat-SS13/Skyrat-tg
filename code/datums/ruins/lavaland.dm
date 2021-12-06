@@ -259,12 +259,3 @@
 	suffix = "lavaland_surface_elephant_graveyard.dmm"
 	allow_duplicates = FALSE
 	cost = 10
-
-/datum/map_template/ruin/lavaland/arena //SKYRAT ADDITION
-	name = "Grand Arena"
-	id = "arena"
-	description = "An ancient gladitorial arena containing a deadly warrior within."
-	suffix = "lavaland_arena.dmm"
-	cost = 10
-	always_place = TRUE
-	allow_duplicates = FALSE
