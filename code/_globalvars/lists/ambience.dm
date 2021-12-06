@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL BEGIN
 GLOBAL_LIST_INIT(generic_ambience,list(
 	'sound/ambience/ambigen1.ogg', 'sound/ambience/ambigen3.ogg',
 	'sound/ambience/ambigen4.ogg', 'sound/ambience/ambigen5.ogg',
@@ -7,7 +6,6 @@ GLOBAL_LIST_INIT(generic_ambience,list(
 	'sound/ambience/ambigen10.ogg', 'sound/ambience/ambigen11.ogg',
 	'sound/ambience/ambigen12.ogg', 'sound/ambience/ambigen14.ogg',
 	'sound/ambience/ambigen15.ogg'))
-*/ //SKYRAT EDIT REMOVAL END
 
 GLOBAL_LIST_INIT(holy_ambience,list(
 	'sound/ambience/ambicha1.ogg', 'sound/ambience/ambicha2.ogg',
