@@ -19,7 +19,7 @@
 	if(.)
 		incomingchance.block_chance -= bonus_value
 
-/obj/item/gun/magic/staff/spellblade/agateram
+/obj/item/claymore/agateram //it just works
 	name = "ancient blade agateram"
 	desc = "A millenia-old blade made from a material that you can't even begin to fathom. It flows with the power of the Marked One who once held it." //That thing was too big to be called a sword. Too big, too thick, too heavy, and too rough, it was more like a large hunk of iron.
 	icon = 'modular_skyrat/master_files/icons/obj/agateram.dmi'
@@ -27,7 +27,6 @@
 	inhand_icon_state = "demonsword"
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/agateraminhandsleft.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/agateraminhandsright.dmi'
-	hitsound = 'sound/weapons/rapierhit.ogg'
 	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = null
 	force = 20
@@ -57,8 +56,8 @@
 	name = "dreadful gladiator chest"
 
 /obj/structure/closet/crate/necropolis/gladiator/PopulateContents()
-	new /obj/item/gun/magic/staff/spellblade/agateram(src)
+	new /obj/item/claymore/agateram(src)
 
 /obj/structure/closet/crate/necropolis/gladiator/crusher/PopulateContents()
-	new /obj/item/gun/magic/staff/spellblade/agateram(src)
+	new /obj/item/claymore/agateram(src)
 	new /obj/item/crusher_trophy/gladiator(src)
