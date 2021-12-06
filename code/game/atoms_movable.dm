@@ -80,8 +80,10 @@
 	var/contents_thermal_insulation = 0
 	/// The degree of pressure protection that mobs in list/contents have from the external environment, between 0 and 1
 	var/contents_pressure_protection = 0
+	// SKYRAT EDIT ADDITION
 	/// Time until we stop "sticky" facing towards something. Set on face_atom() if someone with combat mode faces
 	var/sticky_facing_until = 0
+	// SKYRAT EDIT END
 
 
 /atom/movable/Initialize(mapload)
