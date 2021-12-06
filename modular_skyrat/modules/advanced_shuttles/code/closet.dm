@@ -66,7 +66,8 @@
 	wall_mounted = TRUE
 	name = "engine ventilation"
 	desc = "An exhaust vent for the shuttle's engines. It looks just big enough to fit a person..."
-	icon_state = "shuttle"
+	icon_state = "vent"
+	icon_door = "vent"
 
 //Wall closets
 /obj/structure/closet/firecloset/wall
