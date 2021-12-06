@@ -1040,10 +1040,8 @@
 	if(I.tool_behaviour == TOOL_WRENCH)
 		if(user.get_held_items_for_side(LEFT_HANDS) == src || user.get_held_items_for_side(RIGHT_HANDS) == src)
 			return
-		if(get_turf(user) == get_turf(src))
-			return
 		else if(I.use_tool(src, user, 8 SECONDS, volume=50))
-			var/obj/structure/chair/milking_machine/N = new M(src.loc)
+			var/obj/structure/chair/milking_machine/N = new(get_turf(user))
 			if(istype(src, /obj/item/milking_machine/constructionkit))
 				if(current_color == "pink")
 					N.machine_color = N.machine_color_list[1]
