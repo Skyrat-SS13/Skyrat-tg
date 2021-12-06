@@ -7,8 +7,9 @@
 	attack_verb_simple = "cleaves"
 	attack_verb_continuous = "cleave"
 	attack_sound = 'sound/weapons/resonator_fire.ogg'
-	death_sound = 'sound/creatures/space_dragon_roar.ogg'
+	deathsound = 'sound/creatures/space_dragon_roar.ogg'
 	deathmessage = "falls on his sword, ash evaporating from every hole in his armor."
+	gps_name = "Forgotten Signal"
 	rapid_melee = 1
 	melee_queue_distance = 2
 	melee_damage_lower = 40
@@ -36,7 +37,7 @@
 	var/stunned = FALSE
 	var/stunduration = 15
 	var/move_to_charge = 1.5
-	var/list/songs = list("3850" = sound(file = '/modular_skyrat/master_files/sound/ambience/archnemesis.ogg', repeat = 0, wait = 0, volume = 70, channel = CHANNEL_JUKEBOX))
+	var/list/songs = list("3850" = sound(file = 'modular_skyrat/master_files/sound/ambience/archnemesis.ogg', repeat = 0, wait = 0, volume = 70, channel = CHANNEL_JUKEBOX))
 	var/sound/chosensong
 	var/chosenlength
 	var/chosenlengthstring
@@ -69,11 +70,6 @@
 					retaliated = TRUE
 					retaliatedcooldown = world.time + retaliatedcooldowntime
 
-/obj/item/gps/internal/gladiator
-	icon_state = null
-	gpstag = "Forgotten Signal"
-	desc = "False eyes hide what true men doth know."
-
 /mob/living/simple_animal/hostile/megafauna/gladiator/Initialize(mapload)
 	. = ..()
 	internal = new /obj/item/gps/internal/gladiator(src)
@@ -85,7 +81,7 @@
 			if(!(M in introduced) && (stat != DEAD))
 				introduction(M)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/apply_damage(damage = 0,damagetype = BRUTE, def_zone = null, blocked = FALSE, forced = FALSE, spread_damage = FALSE, wound_bonus = 0, bare_wound_bonus = 0, sharpness = SHARP_NONE)
+/mob/living/simple_animal/hostile/megafauna/gladiator/apply_damage(damage = 0,damagetype = BRUTE, def_zone = null, blocked = FALSE, forced = FALSE, spread_damage = FALSE, wound_bonus = 0, bare_wound_bonus = 0)
 	if(speen)
 		visible_message("<span class='danger'>[src] brushes off all incoming attacks!")
 		return FALSE
@@ -335,7 +331,7 @@
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/boneappletea(atom/target)
 	var/obj/item/knife/combat/bone/boned = new /obj/item/knife/combat/bone(get_turf(src))
 	boned.throwforce = 35
-	playsound(src, 'sound/weapons/fwoosh.wav', 60, 0)
+	playsound(src, 'sound/weapons/bolathrow.wav', 60, 0)
 	boned.throw_at(target, 7, 3, src)
 	QDEL_IN(boned, 30)
 
