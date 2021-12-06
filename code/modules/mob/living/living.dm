@@ -1065,6 +1065,7 @@
 		if(!was_weightless)
 			ADD_TRAIT(src, TRAIT_MOVE_FLOATING, NO_GRAVITY_TRAIT)
 
+<<<<<<< HEAD
 // The src mob is trying to strip an item from someone
 // Override if a certain type of mob should be behave differently when stripping items (can't, for example)
 /mob/living/stripPanelUnequip(obj/item/what, mob/who, where)
@@ -1142,6 +1143,8 @@
 					log_message("[key_name(who)] had [what] put on them by [key_name(src)]", LOG_ATTACK, color="red")
 					who.log_message("[key_name(who)] had [what] put on them by [key_name(src)]", LOG_VICTIM, color="red", log_globally = FALSE)
 
+=======
+>>>>>>> fea3637316f (Finish off the old strip menu, add tk checks (#63219))
 /mob/living/singularity_pull(S, current_size)
 	..()
 	if(move_resist == INFINITY)
