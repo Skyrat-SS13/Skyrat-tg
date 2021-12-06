@@ -40,12 +40,14 @@
 	suffix = "skyrat"
 	who_can_purchase = null
 
-/datum/map_template/shuttle/cargo
+/datum/map_template/shuttle/cargo/skyrat
 	name = "NLV Consign (Cargo)"
 	prefix = "_maps/skyrat/shuttles/"
 	port_id = "cargo"
 	suffix = "skyrat"
-	who_can_purchase = null
+
+/datum/map_template/shuttle/cargo_skyrat/delta
+	suffix = "delta_skyrat"	//I hate this. Delta station is one tile different docking-wise, which fucks it ALL up unless we either a) change the map (this would be nonmodular and also press the engine against disposals) or b) this (actually easy, just dumb)
 
 /datum/map_template/shuttle/arrivals_skyrat
 	name = "NTV Relay (Arrivals)"
