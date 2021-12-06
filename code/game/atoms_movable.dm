@@ -516,7 +516,7 @@
 						moving_diagonally = SECOND_DIAG_STEP
 						. = step(src, SOUTH)
 			if(moving_diagonally == SECOND_DIAG_STEP)
-				if(!. && set_dir_on_move && sticky_facing_until < world.time)
+				if(!. && set_dir_on_move && sticky_facing_until < world.time) //SKYRAT EDIT CHANGE
 					setDir(first_step_dir)
 				else if (!inertia_moving)
 					inertia_next_move = world.time + inertia_move_delay
