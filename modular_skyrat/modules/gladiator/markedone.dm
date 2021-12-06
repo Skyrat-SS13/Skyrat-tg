@@ -192,7 +192,7 @@
 			var/mob/living/LM = A
 			forceMove(LM.loc)
 			visible_message("<span class='userdanger'>[src] knocks [LM] down!</span>")
-			LM.DefaultCombatKnockdown(60)
+			living_mob.Knockdown(60)
 			discharge()
 		else if(istype(A, /turf/closed))
 			visible_message("<span class='userdanger'>[src] crashes headfirst into [A]!</span>")
