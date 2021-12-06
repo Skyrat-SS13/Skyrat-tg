@@ -36,7 +36,6 @@
 	armour_penetration = 20
 	block_chance = 30
 	sharpness = SHARP_EDGED
-	max_charges = 0
 
 /obj/item/gun/magic/staff/spellblade/agateram/attack(mob/living/target, mob/living/carbon/human/user)
 	var/is_nemesis_faction = FALSE
