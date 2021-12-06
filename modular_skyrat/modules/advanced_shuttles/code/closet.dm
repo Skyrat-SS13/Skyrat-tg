@@ -72,6 +72,7 @@
 //Wall closets
 /obj/structure/closet/firecloset/wall
 	wall_mounted = TRUE
+	max_mob_size = MOB_SIZE_SMALL
 	anchored = TRUE
 	density = TRUE
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
@@ -80,6 +81,7 @@
 
 /obj/structure/closet/emcloset/wall
 	wall_mounted = TRUE
+	max_mob_size = MOB_SIZE_SMALL
 	anchored = TRUE
 	density = TRUE
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
@@ -88,6 +90,7 @@
 
 /obj/structure/closet/secure_closet/wall
 	wall_mounted = TRUE
+	max_mob_size = MOB_SIZE_SMALL
 	anchored = TRUE
 	density = TRUE
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
@@ -96,6 +99,7 @@
 
 /obj/structure/closet/secure_closet/personal/wall
 	wall_mounted = TRUE
+	max_mob_size = MOB_SIZE_SMALL
 	anchored = TRUE
 	density = TRUE
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
