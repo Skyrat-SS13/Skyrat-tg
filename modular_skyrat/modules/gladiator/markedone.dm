@@ -70,10 +70,6 @@
 					retaliated = TRUE
 					retaliatedcooldown = world.time + retaliatedcooldowntime
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/Initialize(mapload)
-	. = ..()
-	internal = new /obj/item/gps/internal/gladiator(src)
-
 /mob/living/simple_animal/hostile/megafauna/gladiator/Life()
 	. = ..()
 	if(!wander)
@@ -192,7 +188,7 @@
 			var/mob/living/LM = A
 			forceMove(LM.loc)
 			visible_message("<span class='userdanger'>[src] knocks [LM] down!</span>")
-			living_mob.Knockdown(60)
+			LM.EFFECT_KNOCKDOWN(60)
 			discharge()
 		else if(istype(A, /turf/closed))
 			visible_message("<span class='userdanger'>[src] crashes headfirst into [A]!</span>")
@@ -331,7 +327,7 @@
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/boneappletea(atom/target)
 	var/obj/item/knife/combat/bone/boned = new /obj/item/knife/combat/bone(get_turf(src))
 	boned.throwforce = 35
-	playsound(src, 'sound/weapons/bolathrow.wav', 60, 0)
+	playsound(src, 'sound/weapons/bolathrow.ogg', 60, 0)
 	boned.throw_at(target, 7, 3, src)
 	QDEL_IN(boned, 30)
 
