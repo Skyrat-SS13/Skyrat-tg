@@ -21,7 +21,7 @@
 
 /obj/item/gun/magic/staff/spellblade/agateram
 	name = "ancient blade agateram"
-	desc = "A millenia-old blade from a material that you can't even begin to fathom. It flows with the power of the Marked One who once held it." //That thing was too big to be called a sword. Too big, too thick, too heavy, and too rough, it was more like a large hunk of iron.
+	desc = "A millenia-old blade made from a material that you can't even begin to fathom. It flows with the power of the Marked One who once held it." //That thing was too big to be called a sword. Too big, too thick, too heavy, and too rough, it was more like a large hunk of iron.
 	icon = 'modular_skyrat/master_files/icons/obj/agateram.dmi'
 	icon_state = "demonsword"
 	inhand_icon_state = "demonsword"
@@ -32,7 +32,7 @@
 	slot_flags = null
 	force = 20
 	resistance_flags = INDESTRUCTIBLE
-	var/faction_bonus_force = 55
+	var/faction_bonus_force = 100
 	var/static/list/nemesis_factions = list("mining", "boss")
 	armour_penetration = 20
 	block_chance = 30
