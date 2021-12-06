@@ -5,8 +5,8 @@
 	icon = 'modular_skyrat/master_files/icons/mob/markedone.dmi'
 	icon_state = "marked1"
 	icon_dead = "marked_dying"
-	attack_verb_simple = "cleaves"
-	attack_verb_continuous = "cleave"
+	attack_verb_simple = "cleave"
+	attack_verb_continuous = "cleaves"
 	attack_sound = 'sound/weapons/resonator_blast.ogg'
 	deathsound = 'sound/creatures/space_dragon_roar.ogg'
 	deathmessage = "falls on his sword, ash evaporating from every hole in his armor."
