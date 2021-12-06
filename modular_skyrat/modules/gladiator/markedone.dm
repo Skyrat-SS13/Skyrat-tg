@@ -101,7 +101,7 @@
 		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/istarget = target
-		var/datum/species/targetspecies = target.dna.species
+		var/datum/species/targetspecies = target
 		if(targetspecies.id == "ashlizard")
 			var/list/messages = list("Another dweller comes to die!",\
 									"Let my blade help you to see, walker!",\
