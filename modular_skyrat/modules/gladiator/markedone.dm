@@ -37,7 +37,7 @@
 	var/stunned = FALSE //whether or not he's a stunned boi
 	var/stunduration = 15 //how long he's a stunned boi for
 	var/move_to_charge = 1.5 //charge speed
-	var/list/songs = list("3850" = sound(file = 'modular_skyrat/master_files/sound/ambience/berserk.ogg', repeat = 0, wait = 0, volume = 70, channel = CHANNEL_JUKEBOX)) //what boppin music do you get to hear while kicking his shit in?
+	var/list/songs = null //what boppin music do you get to hear while kicking his shit in?
 	var/sound/chosensong //the chosen boppen music if there's more than one possible song in the var above
 	var/chosenlength //how long the song is
 	var/chosenlengthstring //ditto
