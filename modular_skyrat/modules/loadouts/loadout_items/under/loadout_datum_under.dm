@@ -82,23 +82,23 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/impcommand
 	name = "Light Grey Officer's Naval Jumpsuit"
-	item_path = /obj/item/clothing/under/imperial
+	item_path = /obj/item/clothing/under/costume/imperial
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
 
 /datum/loadout_item/under/jumpsuit/impcom
 	name = "Grey Officer's Naval Jumpsuit"
-	item_path = /obj/item/clothing/under/imperial/grey
+	item_path = /obj/item/clothing/under/costume/imperial/grey
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
 
 /datum/loadout_item/under/jumpsuit/impred
 	name = "Red Officer's Naval Jumpsuit"
-	item_path = /obj/item/clothing/under/imperial/red
+	item_path = /obj/item/clothing/under/costume/imperial/red
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")	//NT Reps would never wear red, it's unbefitting
 
 
 /datum/loadout_item/under/jumpsuit/impcomtrous
 	name = "Grey Officer's Naval Jumpsuit (Trousers)"
-	item_path = /obj/item/clothing/under/imperial/grey/trouser
+	item_path = /obj/item/clothing/under/costume/imperial/grey/trouser
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
 
 /datum/loadout_item/under/jumpsuit/solwarden
@@ -492,23 +492,23 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/rancher
 	name = "Rancher Outfit"
-	item_path = /obj/item/clothing/under/rancher
+	item_path = /obj/item/clothing/under/costume/rancher
 
 /datum/loadout_item/under/miscellaneous/rancher_pioneer
 	name = "Pioneer Outfit"
-	item_path = /obj/item/clothing/under/rancher/pioneer
+	item_path = /obj/item/clothing/under/costume/rancher/pioneer
 
 /datum/loadout_item/under/miscellaneous/rancher_worker
 	name = "Western Worker Outfit"
-	item_path = /obj/item/clothing/under/rancher/worker
+	item_path = /obj/item/clothing/under/costume/rancher/worker
 
 /datum/loadout_item/under/miscellaneous/rancher_cowboy
 	name = "Cowboy Outfit"
-	item_path = /obj/item/clothing/under/rancher/cowboy
+	item_path = /obj/item/clothing/under/costume/rancher/cowboy
 
 /datum/loadout_item/under/miscellaneous/rancher_checkered
 	name = "Western Checkered Outfit"
-	item_path = /obj/item/clothing/under/rancher/checkered
+	item_path = /obj/item/clothing/under/costume/rancher/checkered
 
 /datum/loadout_item/under/miscellaneous/cargo_casual
 	name = "Cargo Tech Casual Wear"
@@ -526,7 +526,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/adam
 	name = "leaf"
-	item_path = /obj/item/clothing/under/costume/loincloth/sensor/adam
+	item_path = /obj/item/clothing/under/misc/gear_harness/adam
 
 /datum/loadout_item/under/miscellaneous/loincloth_leather
 	name = "leather loincloth"

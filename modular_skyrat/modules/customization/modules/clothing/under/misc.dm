@@ -158,20 +158,18 @@
 	name = "green tactical hawaiian outfit"
 	icon_state = "tacticool_hawaiian_green"
 
-/obj/item/clothing/under/clothing/rancher/texas
+/obj/item/clothing/under/costume/rancher/texas
 	name = "texan formal outfit"
 	desc = "A premium quality shirt and pants combo straight from Texas."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/suits.dmi'
 	icon_state = "texas"
 	mutant_variants = NONE
 
-/obj/item/clothing/under/clothing/rancher/texas/doug_dimmadome
+/obj/item/clothing/under/costume/rancher/texas/doug_dimmadome
 	name = "dimmadome formal outfit"
 	desc = "A tight fitting suit with a belt that is surely made out of gold."
 	icon_state = "doug_dimmadome"
 
-/obj/item/clothing/under/clothing/rancher/texas/westender
+/obj/item/clothing/under/costume/rancher/texas/westender
 	name = "westender outfit"
 	desc = "An outfit harking back to a pre-industrial revolution era."
 	icon_state = "westender"
