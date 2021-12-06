@@ -122,7 +122,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /turf/open/floor/iron/shuttle/exploration
 	name = "shuttle floor"
-	icon = 'modular_skyrat/modules/advanced_shuttles/icons/mining_floor.dmi'
+	icon = 'modular_skyrat/modules/advanced_shuttles/icons/exploration_floor.dmi'
 	icon_state = "oside"
 
 /turf/open/floor/iron/shuttle/exploration/uside
