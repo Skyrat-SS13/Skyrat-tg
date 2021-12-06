@@ -50,14 +50,14 @@
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/Retaliate()
 	var/list/around = view(src, vision_range)
-	for(var/atom/movable/A in around)
-		if(A == src)
+	for(var/atom/movable/attack in around)
+		if(attack == src)
 			continue
-		if(isliving(A))
-			var/mob/living/M = A
-			if(faction_check_mob(M) && attack_same || !faction_check_mob(M) && M.client)
-				enemies |= M
-				chosenlengthstring = pick(songs)
+		if(isliving(attack))
+			var/mob/living/mobs = attack
+			if(faction_check_mob(mobs) && attack_same || !faction_check_mob(mobs) && mobs.client)
+				enemies |= mobs
+				chosenlengthstring = pick(songs) 
 				chosenlength = text2num(chosenlengthstring)
 				chosensong = songs[chosenlengthstring]
 				if(chosensong && !songend)
@@ -100,23 +100,23 @@
 		introduced += src
 		return
 	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
+		var/mob/living/carbon/human/istarget = target
 		var/datum/species/Hspecies = H.dna.species
 		if(Hspecies.id == "ashlizard")
 			var/list/messages = list("Another dweller comes to die!",\
 									"Let my blade help you to see, walker!",\
 									"Have you come to die, fool?")
 			say(message = pick(messages), language = /datum/language/draconic)
-			introduced |= H
-			GiveTarget(H)
+			introduced |= istarget
+			GiveTarget(istarget)
 			Retaliate()
 		else if(Hspecies.id == "human")
 			var/list/messages = list("Let us see how worthy you are!",\
 									"Die!!",\
 									"I will not let you suffer the same fate!")
 			say(message = pick(messages))
-			introduced |= H
-			GiveTarget(H)
+			introduced |= istarget
+			GiveTarget(istarget)
 			Retaliate()
 		else
 			var/list/messages = list("Burn beneath my foot!",\
@@ -124,8 +124,8 @@
 									"Let us see how worthy you are!",\
 									"C'MERE!!")
 			say(message = pick(messages))
-			introduced |= H
-			GiveTarget(H)
+			introduced |= istarget
+			GiveTarget(istarget)
 			Retaliate()
 
 	else
@@ -230,31 +230,31 @@
 	var/list/speenturfs = list()
 	var/list/temp = (view(speenrange, src) - view(speenrange-1, src))
 	speenturfs.len = temp.len
-	var/woop = FALSE
+	var/spinning = FALSE
 	var/start = 0
 	for(var/i in 0 to speenrange)
 		speenturfs[1+i] = locate(x - i, y - speenrange, z)
 		start = i
 	for(var/i in 1 to (speenrange*2))
-		var/turf/T = speenturfs[start]
+		var/turf/targeted = speenturfs[start]
 		speenturfs[start+i] = locate(T.x, T.y + i, T.z)
 		if(i == (speenrange*2))
 			start = (start+i)
 	for(var/i in 1 to (speenrange*2))
-		var/turf/T = speenturfs[start]
+		var/turf/targeted = speenturfs[start]
 		speenturfs[start+i] = locate(T.x + i, T.y, T.z)
 		if(i == (speenrange*2))
 			start = (start+i)
 	for(var/i in 1 to (speenrange*2))
-		var/turf/T = speenturfs[start]
+		var/turf/targeted = speenturfs[start]
 		speenturfs[start+i] = locate(T.x, T.y - i, T.z)
 		if(i == (speenrange*2))
 			start = (start+i)
 	for(var/i in 1 to speenrange)
-		var/turf/T = speenturfs[start]
+		var/turf/targeted = speenturfs[start]
 		speenturfs[start+i] = locate(T.x - i, T.y, T.z)
 	var/list/hit_things = list()
-	for(var/turf/T in speenturfs)
+	for(var/turf/targeted in speenturfs)
 		src.dir = get_dir(src, T)
 		for(var/turf/U in (get_turf(src)))
 			var/obj/effect/temp_visual/small_smoke/smonk = new /obj/effect/temp_visual/small_smoke(U)
@@ -266,9 +266,9 @@
 						visible_message("<span class = 'userdanger'>[src] slashes [M] with his spinning blade!</span>")
 					else
 						visible_message("<span class = 'userdanger'>[src]'s spinning blade is stopped by [M]!</span>")
-						woop = TRUE
+						spinning = TRUE
 					hit_things += M
-		if(woop)
+		if(spinning)
 			break
 		sleep(1.25)
 	animate(src, color = initial(color), 3)
@@ -296,7 +296,7 @@
 	stunned = FALSE
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/teleport(atom/target)
-	var/turf/T = get_step(target, -target.dir)
+	var/turf/targeted = get_step(target, -target.dir)
 	new /obj/effect/temp_visual/small_smoke/halfsecond(get_turf(src))
 	sleep(4)
 	if(!ischasm(T) && !(/mob/living in T))
@@ -380,9 +380,9 @@
 
 /obj/effect/step_trigger/gladiator/Trigger(atom/movable/A)
 	if(isliving(A))
-		var/mob/living/bruh = A
-		glady.enemies |= bruh
-		glady.GiveTarget(bruh)
+		var/mob/living/badguy = A
+		glady.enemies |= targeted
+		glady.GiveTarget(targeted)
 		for(var/obj/effect/step_trigger/gladiator/glad in view(7, src))
 			qdel(glad)
 		return TRUE
