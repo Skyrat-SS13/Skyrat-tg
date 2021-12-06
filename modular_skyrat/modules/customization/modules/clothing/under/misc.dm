@@ -158,7 +158,7 @@
 	name = "green tactical hawaiian outfit"
 	icon_state = "tacticool_hawaiian_green"
 
-/obj/item/clothing/under/texas
+/obj/item/clothing/under/clothing/rancher/texas
 	name = "texan formal outfit"
 	desc = "A premium quality shirt and pants combo straight from Texas."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
@@ -166,12 +166,12 @@
 	icon_state = "texas"
 	mutant_variants = NONE
 
-/obj/item/clothing/under/texas/doug_dimmadome
+/obj/item/clothing/under/clothing/rancher/texas/doug_dimmadome
 	name = "dimmadome formal outfit"
 	desc = "A tight fitting suit with a belt that is surely made out of gold."
 	icon_state = "doug_dimmadome"
 
-/obj/item/clothing/under/texas/westender
+/obj/item/clothing/under/clothing/rancher/texas/westender
 	name = "westender outfit"
 	desc = "An outfit harking back to a pre-industrial revolution era."
 	icon_state = "westender"
@@ -186,35 +186,35 @@
 	flags_inv = HIDESHOES
 
 ///COWBOY
-/obj/item/clothing/under/rancher
+/obj/item/clothing/under/costume/rancher
 	name = "rancher outfit"
 	desc = "An outfit from the desert outback, phrases around family murder or revenge seem to echo from this get-up."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "rancher"
 
-/obj/item/clothing/under/rancher/pioneer
+/obj/item/clothing/under/costume/rancher/pioneer
 	name = "pioneer outfit"
 	desc = "An outfit from the desert outback, this one seems like one on the frontline, don't trust a german, or anyone trying to get you to go to Callifornia."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "pioneer"
 
-/obj/item/clothing/under/rancher/worker
+/obj/item/clothing/under/costume/rancher/worker
 	name = "western worker outfit"
 	desc = "An outfit from the desert outback, this one seems something a coffin maker would wear, hope you're good at eyeballing size."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "worker"
 
-/obj/item/clothing/under/rancher/cowboy
+/obj/item/clothing/under/costume/rancher/cowboy
 	name = "cowboy outfit"
 	desc = "An outfit from the desert outback, this one seems fitting for a hat and poncho, maybe a long flowing coat."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "cowboy"
 
-/obj/item/clothing/under/rancher/checkered
+/obj/item/clothing/under/costume/rancher/checkered
 	name = "western checkered outfit"
 	desc = "An outfit from the desert outback, this one seems like something someone with no fashion sense would wear."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
@@ -317,29 +317,21 @@
 /obj/item/clothing/under/uvf
 	name = "british combat sweater"
 	desc = "Thankfully doesn't include the sash your father wore."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "uvf"
 
 /obj/item/clothing/under/suit/black/female/skirt
 	name = "feminine skirt"
 	desc = "Perfect for a secretary that does no work."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "black_suit_fem_skirt"
 
-/obj/item/clothing/under/whiterussian
+/obj/item/clothing/under/costume/whiterussian
 	name = "army baron uniform"
 	desc = "Space Communism? That's just like...your opinion man."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "rusuni"
 
-/obj/item/clothing/under/nostalgiacritic
+/obj/item/clothing/under/costume/nostalgiacritic
 	name = "nostalgic outfit"
 	desc = "He remembers it so you don't have to."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "cia"
 
 /obj/item/clothing/under/rank/medical/doctor/red/unarm
@@ -350,8 +342,6 @@
 /obj/item/clothing/under/suit/white/scarface
 	name = "cuban suit"
 	desc = "A yayo coloured silk suit with a crimson shirt. You just know how to hide, how to lie. Me, I don't have that problem. Me, I always tell the truth. Even when I lie."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/suits.dmi'
 	icon_state = "scarface"
 
 /obj/item/clothing/under/misc/gear_harness/eve
@@ -359,9 +349,7 @@
 	desc = "Three leaves, designed to cover the nipples and genetalia of the wearer. A foe so proud will first the weaker seek."
 	icon_state = "eve"
 
-/obj/item/clothing/under/costume/loincloth/sensor/adam
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+/obj/item/clothing/under/misc/gear_harness/adam
 	name = "leaf"
 	desc = "A single leaf, designed to cover the genitalia of the wearer. Seek not temptation."
 	icon_state = "adam"
@@ -374,7 +362,6 @@
 	desc = "Yep, here’s your problem. Someone set this thing to evil."
 	icon_state = "qmsynd"
 	can_adjust = FALSE
-
 
 /obj/item/clothing/under/rank/medical/doctor/white
 	name = "white scrubs"
@@ -445,24 +432,22 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
-/obj/item/clothing/under/imperial
+/obj/item/clothing/under/costume/imperial
 	desc = "A light grey jumpsuit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
 	name = "light grey officer's naval jumpsuit"
 	icon_state = "impcom"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/costume.dmi'
 
-/obj/item/clothing/under/imperial/grey
+/obj/item/clothing/under/costume/imperial/grey
 	desc = "A grey jumpsuit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
 	name = "grey officer's naval jumpsuit"
 	icon_state = "impcommand"
 
-/obj/item/clothing/under/imperial/grey/trouser
+/obj/item/clothing/under/costume/imperial/grey/trouser
 	desc = "A grey jumpsuit with a rank badge denoting an Officer. This one has grey trousers."
 	name = "grey officer's naval jumpsuit"
 	icon_state = "admiral_uniform"
 
-/obj/item/clothing/under/imperial/red
+/obj/item/clothing/under/costume/imperial/red
 	desc = "A red jumpsuit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
 	name = "red officer's naval jumpsuit"
 	icon_state = "impred_uniform"
@@ -530,8 +515,6 @@
 /obj/item/clothing/under/suit/helltaker
 	name = "red shirt with white pants"
 	desc = "No time. Busy gathering girls."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/suits.dmi'
 	icon_state = "helltaker"
 
 /obj/item/clothing/under/suit/helltaker/skirt

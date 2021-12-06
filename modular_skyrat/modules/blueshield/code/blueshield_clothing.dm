@@ -2,8 +2,8 @@
 /obj/item/clothing/under/rank/security/blueshield
 	desc = "An expensive designer shirt with snazzy suit pants, complete with a blue tie."
 	name = "blueshield's suit"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/captain.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/captain.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
 	icon_state = "blueshield"
 	armor = list("melee" = 10, "bullet" = 5, "laser" = 5,"energy" = 10, "bomb" =10, "bio" = 0, "fire" = 50, "acid" = 50)
@@ -87,18 +87,24 @@
 	desc = "A robust backpack issued to Nanotrasen's finest."
 	icon_state = "blueshieldpack"
 	inhand_icon_state = "securitypack"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
 
 /obj/item/storage/backpack/satchel/blueshield
 	name = "blueshield satchel"
 	desc = "A robust satchel issued to Nanotrasen's finest."
 	icon_state = "satchel-blueshield"
 	inhand_icon_state = "satchel-sec"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
 
 /obj/item/storage/backpack/duffel/blueshield
 	name = "blueshield duffelbag"
 	desc = "A robust duffelbag issued to Nanotrasen's finest."
 	icon_state = "duffel-blueshield"
 	inhand_icon_state = "duffel-sec"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
 
 //blueshield armor
 /obj/item/clothing/suit/armor/vest/blueshield
