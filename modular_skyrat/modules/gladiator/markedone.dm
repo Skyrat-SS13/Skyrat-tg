@@ -22,8 +22,8 @@
 	ranged = 1
 	ranged_cooldown_time = 30
 	minimum_distance = 1
-	health = 2500
-	maxHealth = 2500
+	health = 2000
+	maxHealth = 2000
 	movement_type = GROUND
 	weather_immunities = list("lava","ash")
 	var/phase = 1
