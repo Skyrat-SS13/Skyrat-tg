@@ -176,7 +176,7 @@
 		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/human_target = target
-		var/datum/species/targetspecies = target
+		var/datum/species/targetspecies = human_target.dna.species
 		// The gladiator is extremely racist against anyone but humans (he is based)
 		// He especially hates ash l words
 		if(targetspecies.id == SPECIES_HUMAN)
@@ -197,7 +197,7 @@
 			say(message = pick(ashie_messages), language = /datum/language/draconic)
 			introduced |= WEAKREF(target)
 			get_angry()
-			GiveTarget(istarget)
+			GiveTarget(target)
 		else
 			var/static/list/other_humanoid_messages = list(
 									"I will smite you!", \
@@ -208,7 +208,7 @@
 			say(message = pick(other_humanoid_messages))
 			introduced |= WEAKREF(target)
 			get_angry()
-			GiveTarget(istarget)
+			GiveTarget(target)
 	else
 		//FUNNY SKYRIM REFERENCE LOL!!!! XD!!!!
 		say("Never should have come here!")
