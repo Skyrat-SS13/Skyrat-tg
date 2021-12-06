@@ -38,7 +38,7 @@
 	var/stunned = FALSE
 	var/stunduration = 15
 	var/move_to_charge = 1.5
-	var/list/songs = list("3850" = sound(file = 'modular_skyrat/master_files/sound/ambience/archnemesis.ogg', repeat = 0, wait = 0, volume = 70, channel = CHANNEL_JUKEBOX))
+	var/list/songs = null
 	var/sound/chosensong
 	var/chosenlength
 	var/chosenlengthstring
@@ -138,37 +138,37 @@
 		return FALSE
 	else
 		if(ischasm(newloc))
-			var/list/possiblelocs = list()
+			var/list/possible_locs = list()
 			switch(dir)
 				if(NORTH)
-					possiblelocs += locate(x +1, y + 1, z)
-					possiblelocs += locate(x -1, y + 1, z)
+					possible_locs += locate(x +1, y + 1, z)
+					possible_locs += locate(x -1, y + 1, z)
 				if(EAST)
-					possiblelocs += locate(x + 1, y + 1, z)
-					possiblelocs += locate(x + 1, y - 1, z)
+					possible_locs += locate(x + 1, y + 1, z)
+					possible_locs += locate(x + 1, y - 1, z)
 				if(WEST)
-					possiblelocs += locate(x - 1, y + 1, z)
-					possiblelocs += locate(x - 1, y - 1, z)
+					possible_locs += locate(x - 1, y + 1, z)
+					possible_locs += locate(x - 1, y - 1, z)
 				if(SOUTH)
-					possiblelocs += locate(x - 1, y - 1, z)
-					possiblelocs += locate(x + 1, y - 1, z)
+					possible_locs += locate(x - 1, y - 1, z)
+					possible_locs += locate(x + 1, y - 1, z)
 				if(SOUTHEAST)
-					possiblelocs += locate(x + 1, y, z)
-					possiblelocs += locate(x + 1, y + 1, z)
+					possible_locs += locate(x + 1, y, z)
+					possible_locs += locate(x + 1, y + 1, z)
 				if(SOUTHWEST)
-					possiblelocs += locate(x - 1, y, z)
-					possiblelocs += locate(x - 1, y + 1, z)
+					possible_locs += locate(x - 1, y, z)
+					possible_locs += locate(x - 1, y + 1, z)
 				if(NORTHWEST)
-					possiblelocs += locate(x - 1, y, z)
-					possiblelocs += locate(x - 1, y - 1, z)
+					possible_locs += locate(x - 1, y, z)
+					possible_locs += locate(x - 1, y - 1, z)
 				if(NORTHEAST)
-					possiblelocs += locate(x + 1, y - 1, z)
-					possiblelocs += locate(x + 1, y, z)
-			for(var/turf/T in possiblelocs)
+					possible_locs += locate(x + 1, y - 1, z)
+					possible_locs += locate(x + 1, y, z)
+			for(var/turf/T in possible_locs)
 				if(ischasm(T))
-					possiblelocs -= T
-			if(possiblelocs.len)
-				var/turf/validloc = pick(possiblelocs)
+					possible_locs -= T
+			if(possible_locs.len)
+				var/turf/validloc = pick(possible_locss)
 				if(charging)
 					chargetiles++
 					if(chargetiles >= chargerange)
@@ -305,14 +305,14 @@
 		forceMove(T)
 	else
 		var/list/possible_locs = (view(3, target) - view(1, target))
-		for(var/atom/A in possiblelocs)
+		for(var/atom/A in possible_locs)
 			if(!isturf(A))
-				possiblelocs -= A
+				possible_locs -= A
 			else
 				if(ischasm(A) || istype(A, /turf/closed) || (/mob/living in A))
-					possiblelocs -= A
-		if(possiblelocs.len)
-			T = pick(possiblelocs)
+					possible_locs -= A
+		if(possible_locs.len)
+			T = pick(possible_locs)
 			new /obj/effect/temp_visual/small_smoke/halfsecond(T)
 			forceMove(T)
 
