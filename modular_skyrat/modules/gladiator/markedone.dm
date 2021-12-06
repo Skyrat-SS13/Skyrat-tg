@@ -26,26 +26,25 @@
 	maxHealth = 2000
 	movement_type = GROUND
 	weather_immunities = list("lava","ash")
-	var/phase = 1
-	var/list/enemies = list()
-	var/list/introduced = list()
-	var/speen = FALSE
-	var/speenrange = 4
-	var/obj/savedloot = null
-	var/charging = FALSE
-	var/chargetiles = 0
-	var/chargerange = 21
-	var/stunned = FALSE
-	var/stunduration = 15
-	var/move_to_charge = 1.5
-	var/list/songs = null
-	var/sound/chosensong
-	var/chosenlength
-	var/chosenlengthstring
-	var/songend
-	var/retaliated = FALSE
-	var/retaliatedcooldowntime = 6000
-	var/retaliatedcooldown
+	var/phase = 1 //boss phase
+	var/list/enemies = list() //guys this guy hates
+	var/list/introduced = list() //guys this guy's seen before
+	var/speen = FALSE //whether he's doing the helicopter or not
+	var/speenrange = 4 //range of helicoptering
+	var/charging = FALSE //whether he's running at you or not
+	var/chargetiles = 0 //how many tiles hes ran over in one run
+	var/chargerange = 21 //range of him running at you
+	var/stunned = FALSE //whether or not he's a stunned boi
+	var/stunduration = 15 //how long he's a stunned boi for
+	var/move_to_charge = 1.5 //charge speed
+	var/list/songs = null //what boppin music do you get to hear while kicking his shit in?
+	var/sound/chosensong //the chosen boppen music if there's more than one possible song in the var above
+	var/chosenlength //how long the song is
+	var/chosenlengthstring //ditto
+	var/songend //when it ends
+	var/retaliated = FALSE //if he retaliates or goes after your ass immediately
+	var/retaliatedcooldowntime = 6000 //timer on the above
+	var/retaliatedcooldown //ditto
 	loot = list(/obj/structure/closet/crate/necropolis/gladiator)
 	crusher_loot = list(/obj/structure/closet/crate/necropolis/gladiator/crusher)
 
