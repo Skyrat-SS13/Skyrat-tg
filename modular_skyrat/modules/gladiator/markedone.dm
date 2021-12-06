@@ -62,7 +62,7 @@
 				chosensong = songs[chosenlengthstring]
 				if(chosensong && !songend)
 					if(mobs?.client?.prefs?.toggles & SOUND_AMBIENCE)
-						M.stop_sound_channel(CHANNEL_JUKEBOX)
+						mobs.stop_sound_channel(CHANNEL_JUKEBOX)
 						songend = chosenlength + world.time
 						SEND_SOUND(mobs, chosensong) // so silence ambience will mute moosic for people who don't want that, or it just doesn't play at all if prefs disable it
 				if(!retaliated)
@@ -101,7 +101,7 @@
 		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/istarget = target
-		var/datum/species/Hspecies = target.dna.species
+		var/datum/species/targetspecies = H.dna.species
 		if(Hspecies.id == "ashlizard")
 			var/list/messages = list("Another dweller comes to die!",\
 									"Let my blade help you to see, walker!",\
@@ -167,7 +167,7 @@
 				if(ischasm(T))
 					possible_locs -= T
 			if(possible_locs.len)
-				var/turf/validloc = pick(possible_locss)
+				var/turf/validloc = pick(possible_locs)
 				if(charging)
 					chargetiles++
 					if(chargetiles >= chargerange)
@@ -299,9 +299,9 @@
 	var/turf/targeted = get_step(target, -target.dir)
 	new /obj/effect/temp_visual/small_smoke/halfsecond(get_turf(src))
 	sleep(4)
-	if(!ischasm(T) && !(/mob/living in targeted))
+	if(!ischasm(targeted) && !(/mob/living in targeted))
 		new /obj/effect/temp_visual/small_smoke/halfsecond(targeted)
-		forceMove(T)
+		forceMove(targeted)
 	else
 		var/list/possible_locs = (view(3, target) - view(1, target))
 		for(var/atom/A in possible_locs)
@@ -380,7 +380,6 @@
 
 /obj/effect/step_trigger/gladiator/Trigger(atom/movable/A)
 	if(isliving(A))
-		var/mob/living/badguy = A
 		glady.enemies |= targeted
 		glady.GiveTarget(targeted)
 		for(var/obj/effect/step_trigger/gladiator/glad in view(7, src))
