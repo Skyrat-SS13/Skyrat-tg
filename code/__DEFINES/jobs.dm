@@ -78,8 +78,15 @@
 #define DEPARTMENT_MEDICAL "Medical"
 #define DEPARTMENT_BITFLAG_SILICON (1<<7)
 #define DEPARTMENT_SILICON "Silicon"
+<<<<<<< HEAD
 #define DEPARTMENT_BITFLAG_CENTRAL_COMMAND (1<<8) //SKYRAT EDIT CHANGE
 #define DEPARTMENT_CENTRAL_COMMAND "Central Command" //SKYRAT EDIT CHANGE
+=======
+#define DEPARTMENT_BITFLAG_ASSISTANT (1<<8)
+#define DEPARTMENT_ASSISTANT "Assistant"
+#define DEPARTMENT_BITFLAG_CAPTAIN (1<<9)
+#define DEPARTMENT_CAPTAIN "Captain"
+>>>>>>> 0989ce2d6fd (Remove job .tsx files from preferences menu, use compiled data instead (#63200))
 
 /* Job datum job_flags */
 /// Whether the mob is announced on arrival.

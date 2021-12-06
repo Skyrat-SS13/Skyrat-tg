@@ -1,7 +1,13 @@
 /datum/job/quartermaster
 	title = "Quartermaster"
+<<<<<<< HEAD
 	//department_head = list("Head of Personnel") //ORIGINAL
 	department_head = list("Captain") //SKYRAT EDIT CHANGE
+=======
+	description = "Coordinate cargo technicians and shaft miners, assist with \
+		economical purchasing."
+	department_head = list("Head of Personnel")
+>>>>>>> 0989ce2d6fd (Remove job .tsx files from preferences menu, use compiled data instead (#63200))
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1

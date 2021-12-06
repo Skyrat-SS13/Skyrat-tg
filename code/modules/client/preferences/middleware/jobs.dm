@@ -32,10 +32,47 @@
 	var/default_job_title = params["job"]
 	var/new_job_title = params["new_title"]
 
+<<<<<<< HEAD
 	preferences.alt_job_titles[default_job_title] = new_job_title
 
 	return TRUE
 // SKYRAT EDIT END
+=======
+/datum/preference_middleware/jobs/get_constant_data()
+	var/list/data = list()
+
+	var/list/departments = list()
+	var/list/jobs = list()
+
+	for (var/datum/job/job as anything in SSjob.joinable_occupations)
+		var/datum/job_department/department_type = job.department_for_prefs || job.departments_list?[1]
+		if (isnull(department_type))
+			stack_trace("[job] does not have a department set, yet is a joinable occupation!")
+			continue
+
+		if (isnull(job.description))
+			stack_trace("[job] does not have a description set, yet is a joinable occupation!")
+			continue
+
+		var/department_name = initial(department_type.department_name)
+		if (isnull(departments[department_name]))
+			var/datum/job/department_head_type = initial(department_type.department_head)
+
+			departments[department_name] = list(
+				"head" = department_head_type && initial(department_head_type.title),
+			)
+
+		jobs[job.title] = list(
+			"description" = job.description,
+			"department" = department_name,
+		)
+
+	data["departments"] = departments
+	data["jobs"] = jobs
+
+	return data
+
+>>>>>>> 0989ce2d6fd (Remove job .tsx files from preferences menu, use compiled data instead (#63200))
 /datum/preference_middleware/jobs/get_ui_data(mob/user)
 	var/list/data = list()
 	// SKYRAT EDIT
