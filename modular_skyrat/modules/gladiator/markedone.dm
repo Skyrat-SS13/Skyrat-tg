@@ -1,12 +1,13 @@
 // THE MARKED ONE
 /mob/living/simple_animal/hostile/megafauna/gladiator
 	name = "\proper The Marked One"
+	desc = "An ancient miner lost to time, chosen and changed by the Necropolis, encased in a suit of armor. His sword glows with unusual light..."
 	icon = 'modular_skyrat/master_files/icons/mob/markedone.dmi'
 	icon_state = "marked1"
 	icon_dead = "marked_dying"
 	attack_verb_simple = "cleaves"
 	attack_verb_continuous = "cleave"
-	attack_sound = 'sound/weapons/resonator_fire.ogg'
+	attack_sound = 'sound/weapons/resonator_blast.ogg'
 	deathsound = 'sound/creatures/space_dragon_roar.ogg'
 	deathmessage = "falls on his sword, ash evaporating from every hole in his armor."
 	gps_name = "Forgotten Signal"
