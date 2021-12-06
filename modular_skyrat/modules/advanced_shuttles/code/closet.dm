@@ -15,10 +15,12 @@
 	can_be_unanchored = FALSE
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
 	icon_state = "wallcloset"
+	icon_door = "wallcloset_mesh"
 	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
 
 /obj/structure/closet/shuttle/white
 	icon_state = "wallcloset_white"
+	icon_door = "wallcloset_white"
 
 /obj/structure/closet/shuttle/emergency
 	name = "emergency closet"
@@ -61,6 +63,7 @@
 	new /obj/item/clothing/suit/space(src)
 
 /obj/structure/closet/shuttle/engivent
+	wall_mounted = TRUE
 	name = "engine ventilation"
 	desc = "An exhaust vent for the shuttle's engines. It looks just big enough to fit a person..."
 	icon_state = "shuttle"
