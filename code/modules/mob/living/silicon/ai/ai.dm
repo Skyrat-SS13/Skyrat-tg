@@ -30,6 +30,7 @@
 	mob_size = MOB_SIZE_LARGE
 	radio = /obj/item/radio/headset/silicon/ai
 	can_buckle_to = FALSE
+	has_field_of_view = FALSE // SKYRAT EDIT ADDITION - FoV
 	var/battery = 200 //emergency power if the AI's APC is off
 	var/list/network = list("ss13")
 	var/obj/machinery/camera/current
