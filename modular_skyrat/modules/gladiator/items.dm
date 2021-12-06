@@ -7,7 +7,7 @@
 	bonus_value = 10
 
 /obj/item/crusher_trophy/gladiator/effect_desc()
-	return "the crusher to have a <b>[bonus_value]%</b> chance to block any incoming attack."
+	return "the crusher to have a <b>[bonus_value]%</b> chance to block incoming attacks."
 
 /obj/item/crusher_trophy/gladiator/add_to(obj/item/kinetic_crusher/incomingchance, mob/living/user)
 	. = ..()
@@ -31,11 +31,11 @@
 	slot_flags = null
 	force = 20
 	resistance_flags = INDESTRUCTIBLE
-	var/faction_bonus_force = 100
-	var/static/list/nemesis_factions = list("mining", "boss")
 	armour_penetration = 20
 	block_chance = 30
 	sharpness = SHARP_EDGED
+	var/faction_bonus_force = 100
+	var/static/list/nemesis_factions = list("mining", "boss")
 
 /obj/item/claymore/agateram/attack(mob/living/target, mob/living/carbon/human/user)
 	var/is_nemesis_faction = FALSE
