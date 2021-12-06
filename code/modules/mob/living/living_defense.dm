@@ -77,6 +77,7 @@
 		return
 	. = combat_mode
 	combat_mode = new_mode
+	SEND_SIGNAL(src, COMSIG_LIVING_COMBAT_MODE_TOGGLE, new_mode) //SKYRAT EDIT ADDITION
 	if(hud_used?.action_intent)
 		hud_used.action_intent.update_appearance()
 	//SKYRAT EDIT ADDITION BEGIN
@@ -93,7 +94,9 @@
 		else
 			set_combat_indicator(FALSE)
 	//SKYRAT EDIT ADDITION END
-
+	// SKYRAT EDIT ADDITION BEGIN - FOV
+	plane = combat_mode ? GAME_PLANE_FOV_HIDDEN : GAME_PLANE
+	// SKYRAT EDIT ADDITION END
 	if(silent || !(client?.prefs.toggles & SOUND_COMBATMODE))
 		return
 	if(combat_mode)

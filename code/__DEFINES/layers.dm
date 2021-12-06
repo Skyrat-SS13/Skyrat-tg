@@ -4,6 +4,9 @@
 //NEVER HAVE ANYTHING BELOW THIS PLANE ADJUST IF YOU NEED MORE SPACE
 #define LOWEST_EVER_PLANE -200
 
+#define FIELD_OF_VISION_BLOCKER_PLANE -199
+#define FIELD_OF_VISION_BLOCKER_RENDER_TARGET "*FIELD_OF_VISION_BLOCKER_RENDER_TARGET"
+
 #define CLICKCATCHER_PLANE -99
 
 #define PLANE_SPACE -95
@@ -19,8 +22,9 @@
 
 #define FLOOR_PLANE -7
 #define GAME_PLANE -4
+#define GAME_PLANE_FOV_HIDDEN -3 //SKYRAT EDIT ADDITION - FoV
 
-#define MOUSE_TRANSPARENT_PLANE -3 //SKYRAT EDIT ADDITION - Pollution port
+#define MOUSE_TRANSPARENT_PLANE -2 //SKYRAT EDIT ADDITION - Pollution port
 
 #define SPACE_LAYER 1.8
 //#define TURF_LAYER 2 //For easy recordkeeping; this is a byond define
@@ -111,6 +115,9 @@
 
 ///Things that should render ignoring lighting
 #define ABOVE_LIGHTING_PLANE 120
+
+///Plane for sounds creating visual indicators
+#define FOV_VISUAL_EFFECTS_PLANE 121
 
 #define LIGHTING_PRIMARY_LAYER 15	//The layer for the main lights of the station
 #define LIGHTING_PRIMARY_DIMMER_LAYER 15.1	//The layer that dims the main lights of the station

@@ -77,3 +77,7 @@
 #define COMSIG_LIVING_SLAM_TABLE "living_slam_table"
 ///(NOT on humans) from mob/living/*/UnarmedAttack(): (atom/target, proximity, modifiers)
 #define COMSIG_LIVING_UNARMED_ATTACK "living_unarmed_attack"
+
+//SKYRAT LIVING SIGNALS
+/// From mob/living/*/set_combat_mode(): (new_state)
+#define COMSIG_LIVING_COMBAT_MODE_TOGGLE "living_combat_mode_toggle"

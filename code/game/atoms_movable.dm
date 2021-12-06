@@ -80,6 +80,8 @@
 	var/contents_thermal_insulation = 0
 	/// The degree of pressure protection that mobs in list/contents have from the external environment, between 0 and 1
 	var/contents_pressure_protection = 0
+	/// Time until we stop "sticky" facing towards something. Set on face_atom() if someone with combat mode faces
+	var/sticky_facing_until = 0
 
 
 /atom/movable/Initialize(mapload)
@@ -387,7 +389,7 @@
 	if(!direction)
 		direction = get_dir(src, newloc)
 
-	if(set_dir_on_move)
+	if(set_dir_on_move && sticky_facing_until < world.time)
 		setDir(direction)
 
 	var/is_multi_tile_object = bound_width > 32 || bound_height > 32
@@ -514,7 +516,7 @@
 						moving_diagonally = SECOND_DIAG_STEP
 						. = step(src, SOUTH)
 			if(moving_diagonally == SECOND_DIAG_STEP)
-				if(!. && set_dir_on_move)
+				if(!. && set_dir_on_move && sticky_facing_until < world.time)
 					setDir(first_step_dir)
 				else if (!inertia_moving)
 					inertia_next_move = world.time + inertia_move_delay
@@ -546,7 +548,7 @@
 
 	last_move = direct
 
-	if(set_dir_on_move)
+	if(set_dir_on_move && sticky_facing_until < world.time)
 		setDir(direct)
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
 		return FALSE
