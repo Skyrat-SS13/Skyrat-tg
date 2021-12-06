@@ -7,7 +7,7 @@
 	bonus_value = 10
 
 /obj/item/crusher_trophy/gladiator/effect_desc()
-	return "the crusher to have a <b>[bonus_value]%</b> chance to block any incoming attack."
+	return "the crusher to have a <b>[bonus_value]%</b> chance to block incoming attacks."
 
 /obj/item/crusher_trophy/gladiator/add_to(obj/item/kinetic_crusher/incomingchance, mob/living/user)
 	. = ..()
@@ -30,12 +30,15 @@
 	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = null
 	force = 20
+	// This is a fuck off huge weapon that literally can only be held or dragged around, this is fine imho
+	wound_bonus = 10
+	bare_wound_bonus = 5
 	resistance_flags = INDESTRUCTIBLE
-	var/faction_bonus_force = 100
-	var/static/list/nemesis_factions = list("mining", "boss")
 	armour_penetration = 20
 	block_chance = 30
 	sharpness = SHARP_EDGED
+	var/faction_bonus_force = 100
+	var/static/list/nemesis_factions = list("mining", "boss")
 
 /obj/item/claymore/agateram/attack(mob/living/target, mob/living/carbon/human/user)
 	var/is_nemesis_faction = FALSE
