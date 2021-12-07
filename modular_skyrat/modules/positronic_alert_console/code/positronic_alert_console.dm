@@ -18,6 +18,7 @@
 /obj/machinery/posialert/Destroy()
 	QDEL_NULL(radio)
 	. = ..()
+
 /obj/machinery/posialert/attack_ghost(mob/user)
 	. = ..()
 	if(inuse)
