@@ -64,6 +64,20 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 		return
 	set_combat_indicator(!combat_indicator)
 
+/obj/vehicle/sealed/proc/handle_ci_migration(mob/living/user)
+	if(!typesof(user.loc, /obj/vehicle/sealed))
+		return
+	if (user.combat_indicator)
+		combat_indicator_vehicle = TRUE
+		add_overlay(GLOB.combat_indicator_overlay)
+	else
+		return
+
+/obj/vehicle/sealed/proc/disable_ci()
+	if (combat_indicator_vehicle)
+		combat_indicator_vehicle = FALSE
+		cut_overlay(GLOB.combat_indicator_overlay)
+
 #undef COMBAT_NOTICE_COOLDOWN
 
 /datum/keybinding/living/combat_indicator

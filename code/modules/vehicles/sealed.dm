@@ -3,6 +3,8 @@
 	var/enter_delay = 2 SECONDS
 	var/mouse_pointer
 	var/headlights_toggle = FALSE
+	// SKYRAT EDIT ADDITION -- MECH CI
+	var/combat_indicator_vehicle = FALSE
 
 /obj/vehicle/sealed/generate_actions()
 	. = ..()
@@ -87,6 +89,7 @@
 
 	if(!silent)
 		M.visible_message(span_notice("[M] drops out of \the [src]!"))
+	src.disable_ci()
 	return TRUE
 
 /obj/vehicle/sealed/proc/exit_location(M)
