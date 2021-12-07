@@ -100,16 +100,22 @@
 	var/target_alpha = parent_mob.client.prefs.read_preference(pref_to_read)
 	visual_shadow.alpha = target_alpha
 
+/// When a mob logs out, delete the component
+/datum/component/field_of_vision/proc/mob_logout(mob/source)
+	SIGNAL_HANDLER
+	qdel(src)
+
 /datum/component/field_of_vision/RegisterWithParent()
 	. = ..()
 	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, .proc/on_dir_change)
 	RegisterSignal(parent, COMSIG_LIVING_DEATH, .proc/remove_mask)
 	RegisterSignal(parent, COMSIG_LIVING_REVIVE, .proc/add_mask)
 	RegisterSignal(parent, COMSIG_LIVING_COMBAT_MODE_TOGGLE, .proc/toggled_combat_mode)
+	RegisterSignal(parent, COMSIG_MOB_LOGOUT, .proc/mob_logout)
 
 /datum/component/field_of_vision/UnregisterFromParent()
 	. = ..()
-	UnregisterSignal(parent, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_LIVING_DEATH, COMSIG_LIVING_REVIVE, COMSIG_LIVING_COMBAT_MODE_TOGGLE))
+	UnregisterSignal(parent, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_LIVING_DEATH, COMSIG_LIVING_REVIVE, COMSIG_LIVING_COMBAT_MODE_TOGGLE, COMSIG_MOB_LOGOUT))
 
 /mob/living
 	var/has_field_of_view = TRUE
@@ -118,12 +124,6 @@
 	. = ..()
 	if(has_field_of_view && CONFIG_GET(flag/fov_enabled))
 		AddComponent(/datum/component/field_of_vision)
-
-/mob/living/Logout()
-	var/fov_component = GetComponent(/datum/component/field_of_vision)
-	if(fov_component)
-		qdel(fov_component)
-	. = ..()
 
 /atom/movable/screen/fov_blocker
 	icon = 'modular_skyrat/modules/field_of_view/icons/field_of_view.dmi'
