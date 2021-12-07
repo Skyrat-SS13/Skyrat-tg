@@ -54,6 +54,10 @@
 	/// This mob will not attack mobs randomly if not in anger, the time doubles as a check for anger
 	var/anger_timer_id = null
 
+/mob/living/simple_animal/hostile/megafauna/gladiator/Destroy()
+	get_calm()
+	return ..()
+
 /mob/living/simple_animal/hostile/megafauna/gladiator/Life()
 	. = ..()
 	if(stat >= DEAD)
@@ -61,7 +65,7 @@
 	/// Try introducing ourselvess to people while not pissed off
 	if(!anger_timer_id)
 		/// Yes, i am calling view on life! I don't think i can avoid this!
-		for(var/mob/living/friend_or_foe in view(4, src))
+		for(var/mob/living/friend_or_foe in (view(4, src)-src))
 			var/datum/weakref/friend_or_foe_ref = WEAKREF(friend_or_foe)
 			if(!(friend_or_foe_ref in introduced) && (friend_or_foe.stat != DEAD))
 				introduction(friend_or_foe)
@@ -71,6 +75,11 @@
 	//We only attac when pissed off
 	if(!anger_timer_id)
 		return FALSE
+	return ..()
+
+/mob/living/simple_animal/hostile/megafauna/gladiator/ListTargets()
+	if(!anger_timer_id)
+		return list()
 	return ..()
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/adjustHealth(amount, updating_health, forced)
@@ -160,9 +169,11 @@
 		discharge(1.33)
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/get_angry()
+	if(stat >= DEAD)
+		return
 	if(anger_timer_id)
 		deltimer(anger_timer_id)
-	anger_timer_id = addtimer(CALLBACK(src, .proc/get_calm), TIMER_STOPPABLE)
+	anger_timer_id = addtimer(CALLBACK(src, .proc/get_calm), MARKED_ONE_ANGER_DURATION, TIMER_STOPPABLE)
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/get_calm()
 	if(anger_timer_id)
@@ -170,9 +181,6 @@
 	anger_timer_id = null
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/introduction(mob/living/target)
-	if(src == target)
-		introduced += src
-		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/human_target = target
 		var/datum/species/targetspecies = human_target.dna.species
@@ -252,7 +260,9 @@
 	var/list/spinningturfs = list()
 	var/current_angle = 360
 	while(current_angle > 0)
-		var/turf/target_turf = get_turf_in_angle(current_angle, our_turf)
+		var/turf/target_turf = get_turf_in_angle(current_angle, our_turf, spinning_range)
+		if(!istype(target_turf))
+			continue
 		// Yes, there may be repeats with previous turfs! Yes, this is intentional!
 		spinningturfs += get_line(our_turf, target_turf)
 		current_angle -= 30
