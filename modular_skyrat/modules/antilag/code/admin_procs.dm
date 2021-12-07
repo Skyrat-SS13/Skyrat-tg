@@ -21,6 +21,7 @@
 				kicked_client_names.Add("[iterating_client.key]")
 				qdel(iterating_client)
 		message_admins("[key_name(usr)] has kicked ALL AFK clients. Kicked [length(kicked_client_names)] players.")
+		log_admin("[key_name(usr)] has kicked ALL AFK clients. Kicked [length(kicked_client_names)] players.")
 	else
 		for(var/client/iterating_client as anything in GLOB.clients)
 			if(!iterating_client)
@@ -30,6 +31,7 @@
 				kicked_client_names.Add("[iterating_client.key]")
 				qdel(iterating_client)
 		message_admins("[key_name(usr)] has kicked all AFK clients in the lobby/observing. Kicked [length(kicked_client_names)] players.")
+		log_admin("[key_name(usr)] has kicked all AFK clients in the lobby/observing. Kicked [length(kicked_client_names)] players.")
 
 	to_chat(usr, span_admin("Total kicked clients: [length(kicked_client_names)] | Kicked clients: " + kicked_client_names.Join(", ")))
 
@@ -63,5 +65,6 @@
 			qdel(iterating_client.mob)
 
 	message_admins("[key_name(usr)] has moved [length(ghost_client_names)] ghosts to the lobby.")
+	log_admin("[key_name(usr)] has moved [length(ghost_client_names)] ghosts to the lobby.")
 
 	to_chat(usr, span_admin("Total moved observers: [length(ghost_client_names)] | Moved observers: " + ghost_client_names.Join(", ")))

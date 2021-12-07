@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(autokick)
 	return ..()
 
 /datum/controller/subsystem/autokick/Initialize(start_timeofday)
-	if(CONFIG_GET(flag/ssdecay_disabled))
+	if(CONFIG_GET(flag/disable_afk_autokick))
 		flags = SS_NO_FIRE
 	return ..()
 
@@ -54,7 +54,7 @@ SUBSYSTEM_DEF(autokick)
 						kick_player(iterating_client)
 						continue
 				if(AUTOKICK_SEVERITY_NORMAL)
-					 if(isnewplayer(iterating_client?.mob)) // Kicking anyone in the lobby.
+					if(isnewplayer(iterating_client?.mob)) // Kicking anyone in the lobby.
 						kicked_lobby += "[iterating_client.key]"
 						kick_player(iterating_client)
 						continue
@@ -63,7 +63,7 @@ SUBSYSTEM_DEF(autokick)
 			return
 	var/total = length(kicked_lobby)+ length(kicked_ghosts)+ length(kicked_clients)
 	message_admins("AUTOKICK: Kicked [total] total clients | Lobby: [length(kicked_lobby)] | Ghosts: [length(kicked_ghosts)] | Clients: [length(kicked_clients)]")
-
-/datum/controller/subsystem/autockick/proc/kick_player(client/client_to_kick)
+	log_admin("AUTOKICK: Kicked [total] total clients | Lobby: [length(kicked_lobby)] | Ghosts: [length(kicked_ghosts)] | Clients: [length(kicked_clients)]")
+/datum/controller/subsystem/autokick/proc/kick_player(client/client_to_kick)
 	to_chat_immediate(client_to_kick, "You have been kicked for being AFK.")
 	qdel(client_to_kick)
