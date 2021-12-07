@@ -95,7 +95,7 @@
 			set_combat_indicator(FALSE)
 	//SKYRAT EDIT ADDITION END
 	// SKYRAT EDIT ADDITION BEGIN - FOV
-	plane = combat_mode ? GAME_PLANE_FOV_HIDDEN : GAME_PLANE
+	plane = (combat_mode && client) ? GAME_PLANE_FOV_HIDDEN : GAME_PLANE
 	// SKYRAT EDIT ADDITION END
 	if(silent || !(client?.prefs.toggles & SOUND_COMBATMODE))
 		return
