@@ -165,7 +165,7 @@
 		to_chat(user, span_warning("You cannot buckle yourself to this stand, there is no way that level of self-bondage exists!"))
 		return FALSE
 
-/obj/structure/chair/shibari_stand/deconstruct()
+/obj/structure/chair/shibari_stand/deconstruct(disassembled)
 	qdel(src)
 	return TRUE
 
