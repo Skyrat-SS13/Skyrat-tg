@@ -12,7 +12,7 @@
 	icon_dead = "marked_dying"
 	attack_verb_simple = "cleave"
 	attack_verb_continuous = "cleaves"
-	attack_sound = 'sound/weapons/resonator_blast.ogg'
+	attack_sound = 'modular_skyrat/master_files/sound/weapons/bloodyslice.ogg'
 	deathsound = 'sound/creatures/space_dragon_roar.ogg'
 	deathmessage = "falls on his sword, ash evaporating from every hole in his armor."
 	gps_name = "Forgotten Signal"
