@@ -1,5 +1,5 @@
 /obj/machinery/ammo_workbench
-	name = "Ammunitions Workbench"
+	name = "ammunitions workbench"
 	desc = "A machine, somewhat akin to a lathe, made specifically for manufacturing ammunition. It has a slot for magazines."
 	icon = 'modular_skyrat/modules/ammo_workbench/icons/ammo_workbench.dmi'
 	icon_state = "ammobench"
@@ -485,7 +485,7 @@
 // WIRE DATUM
 /datum/wires/ammo_workbench
 	holder_type = /obj/machinery/ammo_workbench
-	proper_name = "Ammunitions Workbench"
+	proper_name = "ammunitions workbench"
 
 /datum/wires/ammo_workbench/New(atom/holder)
 	wires = list(

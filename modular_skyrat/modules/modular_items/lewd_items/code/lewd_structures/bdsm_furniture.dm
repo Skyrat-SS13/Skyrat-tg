@@ -17,7 +17,7 @@
 /obj/item/bdsm_bed_kit/attackby(obj/item/P, mob/user, params) //constructing a bed here.
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
-		if (!(item_flags & IN_INVENTORY))
+		if (!(item_flags & IN_INVENTORY) && !(item_flags & IN_STORAGE))
 			to_chat(user, span_notice("You fasten the frame to the floor and begin to inflate the latex pillows..."))
 			if(P.use_tool(src, user, 8 SECONDS, volume=50))
 				to_chat(user, span_notice("You assemble the bdsm bed."))
@@ -221,10 +221,6 @@
 	update_icon()
 	playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 
-// Machine deconstruction process handler
-/obj/structure/chair/x_stand/deconstruct()
-	qdel(src)
-	return TRUE
 
 //Place the mob in the desired position after buckling
 /obj/structure/chair/x_stand/post_buckle_mob(mob/living/M)
@@ -275,7 +271,7 @@
 /obj/item/x_stand_kit/attackby(obj/item/P, mob/user, params) //constructing a bed here.
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
-		if (!(item_flags & IN_INVENTORY))
+		if (!(item_flags & IN_INVENTORY) && !(item_flags & IN_STORAGE))
 			to_chat(user, span_notice("You begin fastening the frame to the floor."))
 			if(P.use_tool(src, user, 8 SECONDS, volume=50))
 				to_chat(user, span_notice("You assemble the x-stand."))

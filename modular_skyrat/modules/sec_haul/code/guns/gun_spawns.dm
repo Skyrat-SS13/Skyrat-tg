@@ -13,37 +13,36 @@
 	/// How many mags per gun do we spawn, if it takes magazines.
 	var/mags_to_spawn = 3
 	/// Do we want to angle it so that it is horizontal?
-	var/vertial_guns = TRUE
+	var/vertical_guns = TRUE
 
-/obj/structure/rack/shelf
 
 /obj/effect/spawner/armory_spawn/Initialize(mapload)
 	..()
-	if(guns?.len)
-		var/guns_spawned = 0
-		while((gun_count - guns_spawned) && guns.len)
-			var/gunspawn = pick_weight(guns)
-			while(islist(gunspawn))
-				gunspawn = pick_weight(gunspawn)
-			if(!gun_doubles)
-				guns.Remove(gunspawn)
+	if(guns)
+		var/current_offset = -10
+		var/offset_percent = 20 / guns.len
+		for(var/gun in guns) // 11/20/21: Gun spawners now spawn 1 of each gun in it's list no matter what, so as to reduce the RNG of the armory stock.
+			var/obj/item/gun/spawned_gun = new gun(loc)
 
-			if(gunspawn)
-				var/obj/item/gun/spawned_gun = new gunspawn(loc)
+			if(vertical_guns)
+				spawned_gun.place_on_rack()
+				spawned_gun.pixel_x = current_offset
+				current_offset += offset_percent
 
-				if(vertial_guns)
-					spawned_gun.place_on_rack()
-					spawned_gun.pixel_x = rand(-10,10)
+			if(istype(spawned_gun, /obj/item/gun/ballistic))
+				var/obj/item/gun/ballistic/spawned_ballistic_gun = spawned_gun
+				if(spawned_ballistic_gun.magazine && !istype(spawned_ballistic_gun.magazine, /obj/item/ammo_box/magazine/internal))
+					var/obj/item/storage/box/ammo_box/spawned_box = new(loc)
+					spawned_box.name = "ammo box - [spawned_ballistic_gun.name]"
+					for(var/i in 1 to mags_to_spawn)
+						new spawned_ballistic_gun.mag_type (spawned_box)
 
-				if(istype(spawned_gun, /obj/item/gun/ballistic))
-					var/obj/item/gun/ballistic/spawned_ballistic_gun = spawned_gun
-					if(spawned_ballistic_gun.magazine && !istype(spawned_ballistic_gun.magazine, /obj/item/ammo_box/magazine/internal))
-						var/obj/item/storage/box/ammo_box/spawned_box = new(loc)
-						spawned_box.name = "ammo box - [spawned_ballistic_gun.name]"
-						for(var/i in 1 to mags_to_spawn)
-							new spawned_ballistic_gun.mag_type (spawned_box)
+			if(istype(spawned_gun, /obj/item/gun/microfusion))
+				var/obj/item/gun/microfusion/spawned_microfusion_gun = spawned_gun
+				var/obj/item/storage/box/ammo_box/microfusion/spawned_box = new(loc)
+				for(var/i in 1 to mags_to_spawn)
+					new spawned_microfusion_gun.cell_type (spawned_box)
 
-			guns_spawned++
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/spawner/armory_spawn/shotguns
@@ -70,9 +69,12 @@
 	illustration = null
 	layer = 2.9
 
-/obj/item/storage/box/ammo_box/PopulateContents()
+/obj/item/storage/box/ammo_box/microfusion
+	name = "microfusion cell container"
+	desc = "A box filled with microfusion cells."
+
+/obj/item/storage/box/ammo_box/microfusion/PopulateContents()
 	new /obj/item/storage/bag/ammo(src)
-	new /obj/item/gun_maintenance_supplies(src)
 
 
 /obj/effect/spawner/armory_spawn/centcom_rifles
