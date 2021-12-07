@@ -27,6 +27,7 @@
 	inhand_icon_state = "demonsword"
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/agateraminhandsleft.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/agateraminhandsright.dmi'
+	hitsound = 'modular_skyrat/master_files/sound/weapons/bloodyslice.ogg'
 	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = null
 	force = 20
