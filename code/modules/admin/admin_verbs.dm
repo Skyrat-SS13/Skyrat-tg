@@ -77,6 +77,8 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/datum/admins/proc/open_shuttlepanel, /* Opens shuttle manipulator UI */
 	/client/proc/respawn_character,
 	/client/proc/admin_open_event_spawners_menu, //SKYRAT EDIT ADDITION - EVENTS
+	/client/proc/kick_afk, //SKYRAT EDIT ADDITION
+	/client/proc/move_ghost_to_lobby, //SKYRAT EDIT ADDITION
 	/datum/admins/proc/toggleaooc,		//SKYRAT EDIT ADDITION - ADMIN
 	/datum/admins/proc/togglesooc,		//SKYRAT EDIT ADDITION - ADMIN
 	/datum/admins/proc/open_borgopanel,
