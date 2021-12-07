@@ -12,6 +12,8 @@
 
 	if(kick_type_choice == "All of them")
 		for(var/client/iterating_client as anything in GLOB.clients)
+			if(!iterating_client)
+				continue
 			if(iterating_client.is_afk())
 				to_chat_immediate(iterating_client, "You have been kicked for being AFK.")
 				kicked_client_names.Add("[iterating_client.key]")
@@ -19,6 +21,8 @@
 		message_admins("[key_name(usr)] has kicked ALL AFK clients. Kicked [kicked_client_names.len] players.")
 	else
 		for(var/client/iterating_client as anything in GLOB.clients)
+			if(!iterating_client)
+				continue
 			if(iterating_client.is_afk() && isnewplayer(iterating_client.mob) || isobserver(iterating_client.mob))
 				to_chat_immediate(iterating_client, "You have been kicked for being AFK.")
 				kicked_client_names.Add("[iterating_client.key]")
@@ -44,6 +48,8 @@
 	var/list/ghost_client_names = list()
 
 	for(var/client/iterating_client as anything in GLOB.clients)
+		if(!iterating_client)
+			continue
 		if(isobserver(iterating_client.mob))
 			to_chat(iterating_client, span_danger("You have been moved to the lobby, either join a game or disconnect. You will shortly be kicked."))
 			SSautockick.clients_to_check_lobby.Add(iterating_client)

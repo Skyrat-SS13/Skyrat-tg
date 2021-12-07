@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(autockick)
 	var/list/clients_to_check_lobby = list()
 
 /datum/controller/subsystem/autockick/stat_entry(msg)
-	msg += "|CHK:[clients_to_check_lobby.len]"
+	msg += "|CHK:[clients_to_check_lobby.len]|TIME:[next_fire - world.time]"
 	return ..()
 
 /datum/controller/subsystem/autockick/fire(resumed)
@@ -24,6 +24,8 @@ SUBSYSTEM_DEF(autockick)
 
 	message_admins("AUTOKICK: Running AFK check... Population: [TGS_CLIENT_COUNT] | PRIORITY: [severity]")
 	for(var/client/iterating_client as anything in GLOB.clients) //Copied code is there for performance, why run two for loops when we can run one?
+		if(!iterating_client)
+			continue
 		if((iterating_client in clients_to_check_lobby) && isnewplayer(iterating_client.mob))
 			clients_to_check_lobby -= iterating_client
 			to_chat_immediate(iterating_client, "As you have not joined the game, you have been kicked.")
