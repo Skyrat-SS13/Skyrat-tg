@@ -26,7 +26,7 @@
 	inuse = TRUE
 	flick("posialertflash",src)
 	say("There are positronic personalities available.")
-	radio.talk_into(src,"There are positronic personalities available.", RADIO_CHANNEL_SCIENCE)
+	radio.talk_into(src, "There are positronic personalities available.", RADIO_CHANNEL_SCIENCE)
 	playsound(loc, 'sound/machines/ping.ogg', 50)
 	addtimer(CALLBACK(src, /obj/machinery/posialert.proc/liftcooldown), 30 SECONDS)
 
