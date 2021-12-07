@@ -1,9 +1,9 @@
 /// Component which applies a visual and blocker masks which rotate with the user, blocking his vision from behind
 /datum/component/field_of_vision
 	/// Currently applied x size of the fov masks
-	var/current_fov_x = 15
+	var/current_fov_x = BASE_FOV_MASK_X_DIMENSION
 	/// Currently applied y size of the fov masks
-	var/current_fov_y = 15
+	var/current_fov_y = BASE_FOV_MASK_Y_DIMENSION
 	/// Whether we are applying the masks now
 	var/applied_mask = FALSE
 	/// The angle of the mask we are applying
@@ -17,6 +17,10 @@
 	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
 	var/mob/living/mob_parent = parent
+	var/client/parent_client = mob_parent.client
+	if(!parent_client) //Love client volatility!!
+		qdel(src)
+		return
 	shadow_angle = fov_type
 
 	blocker_mask = new
@@ -31,31 +35,42 @@
 		add_mask()
 
 /datum/component/field_of_vision/Destroy()
-	QDEL_NULL(blocker_mask)
-	QDEL_NULL(visual_shadow)
+	if(applied_mask)
+		remove_mask()
+	if(blocker_mask) // In a case of early deletion due to volatile client
+		QDEL_NULL(blocker_mask)
+	if(visual_shadow) // In a case of early deletion due to volatile client
+		QDEL_NULL(visual_shadow)
 	return ..()
 
 /// Updates the size of the FOV masks by comparing them to client view size.
 /datum/component/field_of_vision/proc/update_fov_size()
 	var/mob/parent_mob = parent
 	var/client/parent_client = parent_mob.client
+	if(!parent_client) //Love client volatility!!
+		return
 	var/list/view_size = getviewsize(parent_client.view)
 	if(view_size[1] == current_fov_x && view_size[2] == current_fov_y)
 		return
+	current_fov_x = BASE_FOV_MASK_X_DIMENSION
+	current_fov_y = BASE_FOV_MASK_Y_DIMENSION
+	var/matrix/new_matrix = new
 	var/x_shift = view_size[1] - current_fov_x
 	var/y_shift = view_size[2] - current_fov_y
 	var/x_scale = view_size[1] / current_fov_x
 	var/y_scale = view_size[2] / current_fov_y
 	current_fov_x = view_size[1]
 	current_fov_y = view_size[2]
-	visual_shadow.transform = blocker_mask.transform = blocker_mask.transform.Scale(x_scale, y_scale)
-	visual_shadow.transform = blocker_mask.transform = blocker_mask.transform.Translate(x_shift * 16, y_shift * 16)
+	visual_shadow.transform = blocker_mask.transform = new_matrix.Scale(x_scale, y_scale)
+	visual_shadow.transform = blocker_mask.transform = new_matrix.Translate(x_shift * 16, y_shift * 16)
 
 /// Adds the masks to the user
 /datum/component/field_of_vision/proc/add_mask()
 	SIGNAL_HANDLER
 	var/mob/parent_mob = parent
 	var/client/parent_client = parent_mob.client
+	if(!parent_client) //Love client volatility!!
+		return
 	parent_client.screen += blocker_mask
 	parent_client.screen += visual_shadow
 	applied_mask = TRUE
@@ -65,6 +80,8 @@
 	SIGNAL_HANDLER
 	var/mob/parent_mob = parent
 	var/client/parent_client = parent_mob.client
+	if(!parent_client) //Love client volatility!!
+		return
 	parent_client.screen -= blocker_mask
 	parent_client.screen -= visual_shadow
 	applied_mask = FALSE
@@ -79,7 +96,8 @@
 /datum/component/field_of_vision/proc/toggled_combat_mode(mob/source, new_state)
 	SIGNAL_HANDLER
 	var/mob/parent_mob = parent
-	var/target_alpha = new_state ? 255 : parent_mob.client.prefs.read_preference(/datum/preference/numeric/out_of_combat_fov_alpha)
+	var/pref_to_read = new_state ? /datum/preference/numeric/fov_alpha : /datum/preference/numeric/out_of_combat_fov_alpha
+	var/target_alpha = parent_mob.client.prefs.read_preference(pref_to_read)
 	visual_shadow.alpha = target_alpha
 
 /datum/component/field_of_vision/RegisterWithParent()
@@ -120,7 +138,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	plane = ABOVE_LIGHTING_PLANE
 	screen_loc = "BOTTOM,LEFT"
-	alpha = 50
+	alpha = 0
 
 /datum/preference/numeric/out_of_combat_fov_alpha
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
@@ -132,6 +150,17 @@
 
 /datum/preference/numeric/out_of_combat_fov_alpha/create_default_value()
 	return 0
+
+/datum/preference/numeric/fov_alpha
+	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
+	savefile_key = "fov_alpha"
+	savefile_identifier = PREFERENCE_PLAYER
+
+	minimum = 0
+	maximum = 255
+
+/datum/preference/numeric/fov_alpha/create_default_value()
+	return 180
 
 /datum/preference/toggle/combat_mode_sticky_directions
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES

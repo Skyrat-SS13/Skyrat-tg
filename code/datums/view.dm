@@ -80,11 +80,6 @@
 /datum/view_data/proc/apply()
 	chief.change_view(getView())
 	safeApplyFormat()
-	/// SKYRAT EDIT ADDITION BEGIN - FOV //"Waah this is not how components work use signals", yeah go ahead and use signals like a super expensive proc call
-	var/datum/component/field_of_vision/fov = chief.mob.GetComponent(/datum/component/field_of_vision)
-	if(fov)
-		fov.update_fov_size()
-	/// SKYRAT EDIT ADDITION END
 
 /datum/view_data/proc/supress()
 	is_suppressed = TRUE

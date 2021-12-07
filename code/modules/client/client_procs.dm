@@ -1068,6 +1068,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		M.update_damage_hud()
 	if (prefs.read_preference(/datum/preference/toggle/auto_fit_viewport))
 		addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
+	/// SKYRAT EDIT ADDITION BEGIN - FOV //"Waah this is not how components work use signals", yeah go ahead and use signals like a super expensive proc call
+	var/datum/component/field_of_vision/fov = mob.GetComponent(/datum/component/field_of_vision)
+	if(fov)
+		fov.update_fov_size()
+	/// SKYRAT EDIT ADDITION END
 
 /client/proc/generate_clickcatcher()
 	if(!void)
