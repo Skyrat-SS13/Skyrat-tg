@@ -81,10 +81,10 @@
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS, HEAD_RESTRICTED_QUIRKS)
 
 /datum/job/chief_medical_officer
-	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS, "Blind" = TRUE)
 
 /datum/job/chief_engineer
-	banned_quirks = list(HEAD_RESTRICTED_QUIRKS, "Paraplegic" = TRUE)
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS, TECH_RESTRICTED_QUIRKS "Paraplegic" = TRUE)
 
 /datum/job/research_director
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
