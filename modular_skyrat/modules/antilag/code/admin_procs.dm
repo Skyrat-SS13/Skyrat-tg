@@ -31,7 +31,7 @@
 				qdel(iterating_client)
 		message_admins("[key_name(usr)] has kicked all AFK clients in the lobby/observing. Kicked [length(kicked_client_names)] players.")
 
-	to_chat(usr, span_admin("Total kicked clients: [kicked_client_names.len] | Kicked clients: " + kicked_client_names.Join(", ")))
+	to_chat(usr, span_admin("Total kicked clients: [length(kicked_client_names)] | Kicked clients: " + kicked_client_names.Join(", ")))
 
 /client/proc/move_ghost_to_lobby()
 	set category = "Admin"
