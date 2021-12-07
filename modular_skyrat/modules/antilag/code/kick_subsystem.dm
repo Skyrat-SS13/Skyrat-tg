@@ -64,6 +64,7 @@ SUBSYSTEM_DEF(autokick)
 	var/total = length(kicked_lobby)+ length(kicked_ghosts)+ length(kicked_clients)
 	message_admins("AUTOKICK: Kicked [total] total clients | Lobby: [length(kicked_lobby)] | Ghosts: [length(kicked_ghosts)] | Clients: [length(kicked_clients)]")
 	log_admin("AUTOKICK: Kicked [total] total clients | Lobby: [length(kicked_lobby)] | Ghosts: [length(kicked_ghosts)] | Clients: [length(kicked_clients)]")
+
 /datum/controller/subsystem/autokick/proc/kick_player(client/client_to_kick)
 	to_chat_immediate(client_to_kick, "You have been kicked for being AFK.")
 	qdel(client_to_kick)
