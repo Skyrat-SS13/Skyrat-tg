@@ -56,8 +56,8 @@ SUBSYSTEM_DEF(autockick)
 		if(MC_TICK_CHECK)
 			message_admins("AUTOKICK: MC check failed, aborting.")
 			return
-	var/total = kicked_lobby.len + kicked_ghosts.len + kicked_clients.len
-	message_admins("AUTOKICK: Kicked [total] total clients | Lobby: [kicked_lobby.len] | Ghosts: [kicked_ghosts.len] | Clients: [kicked_clients.len]")
+	var/total = length(kicked_lobby)+ length(kicked_ghosts)+ length(kicked_clients)
+	message_admins("AUTOKICK: Kicked [total] total clients | Lobby: [length(kicked_lobby)] | Ghosts: [length(kicked_ghosts)] | Clients: [length(kicked_clients)]")
 
 /datum/controller/subsystem/autockick/proc/kick_player(client/client_to_kick)
 	to_chat_immediate(client_to_kick, "You have been kicked for being AFK.")
