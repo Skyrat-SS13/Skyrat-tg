@@ -6,9 +6,9 @@
 	var/inuse = FALSE
 
 	/// The encryption key typepath that will be used by the console.
-	/var/radio_key = /obj/item/encryptionkey/headset_sci
+	var/radio_key = /obj/item/encryptionkey/headset_sci
 	/// The radio used to send messages over the science channel.
-	/var/obj/item/radio/radio
+	var/obj/item/radio/radio
 
 /obj/machinery/posialert/Initialize(mapload)
 	. = ..()
