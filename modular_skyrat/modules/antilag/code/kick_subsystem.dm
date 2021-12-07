@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(autockick)
 	name = "Autokick"
 	init_order = INIT_ORDER_TIMER
 	runlevels = RUNLEVEL_SETUP | RUNLEVEL_GAME
-	wait = 30 SECONDS
+	wait = DEFAULT_AUTOKICK_SS_WAIT
 
 	/// A list of clients we have been handed to check for lobby autokicking.
 	var/list/clients_to_check_lobby = list()
