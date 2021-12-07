@@ -38,23 +38,23 @@ SUBSYSTEM_DEF(autokick)
 			to_chat_immediate(iterating_client, "As you have not joined the game, you have been kicked.")
 			qdel(iterating_client)
 			continue
-		if(iterating_client.is_afk())
+		if(iterating_client?.is_afk())
 			switch(severity)
 				if(AUTOKICK_SEVERITY_CRITICAL)
 					kicked_clients += "[iterating_client.key]"
 					kick_player(iterating_client)
 					continue
 				if(AUTOKICK_SEVERITY_MODERATE)
-					if(isobserver(iterating_client.mob))
+					if(isobserver(iterating_client?.mob))
 						kicked_ghosts += "[iterating_client.key]"
 						kick_player(iterating_client)
 						continue
-					if(isnewplayer(iterating_client.mob)) // Kicking anyone in the lobby.
+					if(isnewplayer(iterating_client?.mob)) // Kicking anyone in the lobby.
 						kicked_lobby += "[iterating_client.key]"
 						kick_player(iterating_client)
 						continue
 				if(AUTOKICK_SEVERITY_NORMAL)
-					if(isnewplayer(iterating_client.mob)) // Kicking anyone in the lobby.
+					 if(isnewplayer(iterating_client?.mob)) // Kicking anyone in the lobby.
 						kicked_lobby += "[iterating_client.key]"
 						kick_player(iterating_client)
 						continue

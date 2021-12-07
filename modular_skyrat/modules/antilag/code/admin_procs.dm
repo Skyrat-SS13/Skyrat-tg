@@ -16,7 +16,7 @@
 				continue
 			if(is_admin(iterating_client))
 				continue
-			if(iterating_client.is_afk())
+			if(iterating_client?.is_afk())
 				to_chat_immediate(iterating_client, "You have been kicked for being AFK.")
 				kicked_client_names.Add("[iterating_client.key]")
 				qdel(iterating_client)
@@ -25,7 +25,7 @@
 		for(var/client/iterating_client as anything in GLOB.clients)
 			if(!iterating_client)
 				continue
-			if(iterating_client.is_afk() && isnewplayer(iterating_client.mob) || isobserver(iterating_client.mob))
+			if(iterating_client?.is_afk() && isnewplayer(iterating_client.mob) || isobserver(iterating_client.mob))
 				to_chat_immediate(iterating_client, "You have been kicked for being AFK.")
 				kicked_client_names.Add("[iterating_client.key]")
 				qdel(iterating_client)
@@ -44,7 +44,7 @@
 
 	var/choice = tgui_alert("Are you sure you want to move all ghosts to the lobby?", "Yes", "No")
 
-	if(!choice || choice == "No")
+	if(!(choice == "Yes"))
 		return
 
 	var/list/ghost_client_names = list()
@@ -54,9 +54,9 @@
 			continue
 		if(is_admin(iterating_client))
 			continue
-		if(isobserver(iterating_client.mob))
+		if(isobserver(iterating_client?.mob))
 			to_chat(iterating_client, span_danger("You have been moved to the lobby, either join a game or disconnect. You will shortly be kicked."))
-			SSautockick.clients_to_check_lobby.Add(iterating_client)
+			SSautokick.clients_to_check_lobby.Add(iterating_client)
 			var/mob/dead/new_player/new_player = new()
 			new_player.ckey = iterating_client.ckey
 			ghost_client_names.Add("[iterating_client.key]")
