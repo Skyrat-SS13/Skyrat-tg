@@ -62,6 +62,6 @@
 			ghost_client_names.Add("[iterating_client.key]")
 			qdel(iterating_client.mob)
 
-	message_admins("[key_name(usr)] has moved [ghost_client_names.len] ghosts to the lobby.")
+	message_admins("[key_name(usr)] has moved [length(ghost_client_names)] ghosts to the lobby.")
 
 	to_chat(usr, span_admin("Total moved observers: [ghost_client_names.len] | Moved observers: " + ghost_client_names.Join(", ")))
