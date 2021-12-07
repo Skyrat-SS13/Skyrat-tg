@@ -1042,14 +1042,14 @@
 		if(get_turf(user) == get_turf(src))
 			return
 		else if(I.use_tool(src, user, 8 SECONDS, volume=50))
-			var/obj/structure/chair/milking_machine/N = new(get_turf(user))
+			var/obj/structure/chair/milking_machine/new_milker = new(get_turf(user))
 			if(istype(src, /obj/item/milking_machine/constructionkit))
 				if(current_color == "pink")
-					N.machine_color = N.machine_color_list[1]
-					N.icon_state = "milking_pink_off"
+					new_milker.machine_color = new_milker.machine_color_list[1]
+					new_milker.icon_state = "milking_pink_off"
 				if(current_color == "teal")
-					N.machine_color = N.machine_color_list[2]
-					N.icon_state = "milking_teal_off"
+					new_milker.machine_color = new_milker.machine_color_list[2]
+					new_milker.icon_state = "milking_teal_off"
 			qdel(src)
 			to_chat(user, span_notice("You assemble the milking machine."))
 			return
