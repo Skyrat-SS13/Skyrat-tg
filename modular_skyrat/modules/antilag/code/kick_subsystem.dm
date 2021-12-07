@@ -26,6 +26,8 @@ SUBSYSTEM_DEF(autockick)
 	for(var/client/iterating_client as anything in GLOB.clients) //Copied code is there for performance, why run two for loops when we can run one?
 		if(!iterating_client)
 			continue
+		if(is_admin(iterating_client))
+			continue
 		if((iterating_client in clients_to_check_lobby) && isnewplayer(iterating_client.mob))
 			clients_to_check_lobby -= iterating_client
 			to_chat_immediate(iterating_client, "As you have not joined the game, you have been kicked.")

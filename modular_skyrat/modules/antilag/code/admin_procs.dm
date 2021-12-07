@@ -14,6 +14,8 @@
 		for(var/client/iterating_client as anything in GLOB.clients)
 			if(!iterating_client)
 				continue
+			if(is_admin(iterating_client))
+				continue
 			if(iterating_client.is_afk())
 				to_chat_immediate(iterating_client, "You have been kicked for being AFK.")
 				kicked_client_names.Add("[iterating_client.key]")
@@ -49,6 +51,8 @@
 
 	for(var/client/iterating_client as anything in GLOB.clients)
 		if(!iterating_client)
+			continue
+		if(is_admin(iterating_client))
 			continue
 		if(isobserver(iterating_client.mob))
 			to_chat(iterating_client, span_danger("You have been moved to the lobby, either join a game or disconnect. You will shortly be kicked."))
