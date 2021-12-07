@@ -5,8 +5,10 @@
 	icon_state = "posialert"
 	var/inuse = FALSE
 
-/var/radio_key = /obj/item/encryptionkey/headset_sci
-/var/obj/item/radio/radio
+	/// The encryption key typepath that will be used by the console.
+	/var/radio_key = /obj/item/encryptionkey/headset_sci
+	/// The radio used to send messages over the science channel.
+	/var/obj/item/radio/radio
 
 /obj/machinery/posialert/Initialize(mapload)
 	. = ..()
