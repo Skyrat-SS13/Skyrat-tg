@@ -20,7 +20,7 @@
 				to_chat_immediate(iterating_client, "You have been kicked for being AFK.")
 				kicked_client_names.Add("[iterating_client.key]")
 				qdel(iterating_client)
-		message_admins("[key_name(usr)] has kicked ALL AFK clients. Kicked [kicked_client_names.len] players.")
+		message_admins("[key_name(usr)] has kicked ALL AFK clients. Kicked [length(kicked_client_names)] players.")
 	else
 		for(var/client/iterating_client as anything in GLOB.clients)
 			if(!iterating_client)
