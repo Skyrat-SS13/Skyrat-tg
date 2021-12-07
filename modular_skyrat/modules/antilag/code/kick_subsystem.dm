@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(autockick)
 	var/list/clients_to_check_lobby = list()
 
 /datum/controller/subsystem/autockick/stat_entry(msg)
-	msg += "|CHK:[clients_to_check_lobby.len]|TIME:[next_fire - world.time]"
+	msg += "|CHK:[length(clients_to_check_lobby)]|TIME:[next_fire - world.time]"
 	return ..()
 
 /datum/controller/subsystem/autockick/fire(resumed)
