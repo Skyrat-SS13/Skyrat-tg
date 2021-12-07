@@ -34,15 +34,6 @@
 	min_players = 60
 
 /**
- * Heart attack
- *
- * Weight lowered:
- * ?
- */
-/datum/round_event_control/heart_attack
-	weight = 10
-
-/**
  * Radiation storm
  *
  * Removed for:
