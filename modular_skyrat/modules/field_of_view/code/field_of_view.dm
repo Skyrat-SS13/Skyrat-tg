@@ -1,13 +1,16 @@
+/// Component which applies a visual and blocker masks which rotate with the user, blocking his vision from behind
 /datum/component/field_of_vision
+	/// Currently applied x size of the fov masks
 	var/current_fov_x = 15
+	/// Currently applied y size of the fov masks
 	var/current_fov_y = 15
-
+	/// Whether we are applying the masks now
 	var/applied_mask = FALSE
-
-	var/shadow_angle = FOV_90_DEGREES
-
+	/// The angle of the mask we are applying
+	var/shadow_angle = FOV_180_DEGREES
+	/// The blocker mask applied to a client's screen
 	var/atom/movable/screen/fov_blocker/blocker_mask
-
+	/// The shadow mask applied to a client's screen
 	var/atom/movable/screen/fov_shadow/visual_shadow
 
 /datum/component/field_of_vision/Initialize(fov_type = FOV_180_DEGREES)
@@ -24,13 +27,15 @@
 	visual_shadow.dir = mob_parent.dir
 	toggled_combat_mode(mob_parent, mob_parent.combat_mode)
 	update_fov_size()
-	add_mask()
+	if(mob_parent.stat != DEAD)
+		add_mask()
 
 /datum/component/field_of_vision/Destroy()
 	QDEL_NULL(blocker_mask)
 	QDEL_NULL(visual_shadow)
 	return ..()
 
+/// Updates the size of the FOV masks by comparing them to client view size.
 /datum/component/field_of_vision/proc/update_fov_size()
 	var/mob/parent_mob = parent
 	var/client/parent_client = parent_mob.client
@@ -46,6 +51,7 @@
 	visual_shadow.transform = blocker_mask.transform = blocker_mask.transform.Scale(x_scale, y_scale)
 	visual_shadow.transform = blocker_mask.transform = blocker_mask.transform.Translate(x_shift * 16, y_shift * 16)
 
+/// Adds the masks to the user
 /datum/component/field_of_vision/proc/add_mask()
 	SIGNAL_HANDLER
 	var/mob/parent_mob = parent
@@ -54,6 +60,7 @@
 	parent_client.screen += visual_shadow
 	applied_mask = TRUE
 
+/// Removes the masks from the user
 /datum/component/field_of_vision/proc/remove_mask()
 	SIGNAL_HANDLER
 	var/mob/parent_mob = parent
@@ -62,11 +69,13 @@
 	parent_client.screen -= visual_shadow
 	applied_mask = FALSE
 
+/// When a direction of the user changes, so do the masks
 /datum/component/field_of_vision/proc/on_dir_change(mob/source, old_dir, new_dir)
 	SIGNAL_HANDLER
 	blocker_mask.dir = new_dir
 	visual_shadow.dir = new_dir
 
+/// When toggling combat mode, we update the alpha of the shadow mask
 /datum/component/field_of_vision/proc/toggled_combat_mode(mob/source, new_state)
 	SIGNAL_HANDLER
 	var/mob/parent_mob = parent
