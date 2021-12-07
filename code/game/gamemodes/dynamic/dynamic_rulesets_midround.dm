@@ -251,8 +251,13 @@
 	antag_flag = ROLE_FAMILY_HEAD_ASPIRANT
 	antag_flag_override = ROLE_FAMILIES
 	protected_roles = list("Prisoner", "Head of Personnel")
+<<<<<<< HEAD
 	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative", "Nanotrasen Representative", "Blueshield", "Civil Disputes Officer", "Security Sergeant", "Orderly", "Bouncer", "Customs Agent", "Engineering Guard", "Science Guard") //SKYRAT EDIT - Sec_haul
 	required_candidates = 9
+=======
+	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Research Director")
+	required_candidates = 3
+>>>>>>> fba6c611111 (Families Bugfixes + Tweaks: Even Distribution of Leaders, Fixes HoS-Family-Leaders, Adds Admin Tool to make Leaders (#63115))
 	weight = 2
 	cost = 19
 	requirements = list(101,101,40,40,30,20,10,10,10,10)
@@ -272,6 +277,8 @@
 		else if(player.mind && (player.mind.special_role || player.mind.antag_datums?.len > 0))
 			candidates -= player
 		else if(HAS_TRAIT(player, TRAIT_MINDSHIELD))
+			candidates -= player
+		else if(player.mind.assigned_role.title in restricted_roles)
 			candidates -= player
 
 
