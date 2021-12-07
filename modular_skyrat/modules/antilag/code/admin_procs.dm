@@ -29,7 +29,7 @@
 				to_chat_immediate(iterating_client, "You have been kicked for being AFK.")
 				kicked_client_names.Add("[iterating_client.key]")
 				qdel(iterating_client)
-		message_admins("[key_name(usr)] has kicked all AFK clients in the lobby/observing. Kicked [kicked_client_names.len] players.")
+		message_admins("[key_name(usr)] has kicked all AFK clients in the lobby/observing. Kicked [length(kicked_client_names)] players.")
 
 	to_chat(usr, span_admin("Total kicked clients: [kicked_client_names.len] | Kicked clients: " + kicked_client_names.Join(", ")))
 
