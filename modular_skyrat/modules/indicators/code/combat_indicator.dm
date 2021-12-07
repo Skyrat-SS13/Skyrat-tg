@@ -70,8 +70,6 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	if (user.combat_indicator)
 		combat_indicator_vehicle = TRUE
 		add_overlay(GLOB.combat_indicator_overlay)
-	else
-		return
 
 /obj/vehicle/sealed/proc/disable_ci()
 	if (combat_indicator_vehicle)
