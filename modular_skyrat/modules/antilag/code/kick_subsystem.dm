@@ -1,4 +1,4 @@
-SUBSYSTEM_DEF(autockick)
+SUBSYSTEM_DEF(autokick)
 	name = "Autokick"
 	init_order = INIT_ORDER_TIMER
 	runlevels = RUNLEVEL_SETUP | RUNLEVEL_GAME
@@ -7,11 +7,16 @@ SUBSYSTEM_DEF(autockick)
 	/// A list of clients we have been handed to check for lobby autokicking.
 	var/list/clients_to_check_lobby = list()
 
-/datum/controller/subsystem/autockick/stat_entry(msg)
+/datum/controller/subsystem/autokick/stat_entry(msg)
 	msg += "|CHK:[length(clients_to_check_lobby)]|TIME:[next_fire - world.time]"
 	return ..()
 
-/datum/controller/subsystem/autockick/fire(resumed)
+/datum/controller/subsystem/autokick/Initialize(start_timeofday)
+	if(CONFIG_GET(flag/ssdecay_disabled))
+		flags = SS_NO_FIRE
+	return ..()
+
+/datum/controller/subsystem/autokick/fire(resumed)
 	var/list/kicked_lobby = list()
 	var/list/kicked_ghosts = list()
 	var/list/kicked_clients = list()
