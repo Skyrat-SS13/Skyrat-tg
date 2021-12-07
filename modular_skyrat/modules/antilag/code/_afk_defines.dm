@@ -1,4 +1,4 @@
-#define DEFAULT_AUTOKICK_SS_WAIT 15 MINUTES
+#define DEFAULT_AUTOKICK_SS_WAIT 10 MINUTES
 
 /// Anything above this will result in all afk players being kicked, also used by the lagswitch SS to determine what lagswitches to turn on/off
 #define PERFORMANCE_THRESHOLD_CRITICAL 120
