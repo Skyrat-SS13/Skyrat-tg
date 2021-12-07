@@ -15,6 +15,3 @@
 
 // To turn off SSDecay based on a config. You're welcome.
 /datum/config_entry/flag/ssdecay_disabled
-
-// Stops the AFK SS from running.
-/datum/config_entry/flag/disable_afk_autokick

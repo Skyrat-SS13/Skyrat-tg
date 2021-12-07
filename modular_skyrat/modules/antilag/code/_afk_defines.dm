@@ -8,3 +8,6 @@
 #define AUTOKICK_SEVERITY_CRITICAL "CRITICAL - All AFK clients"
 #define AUTOKICK_SEVERITY_MODERATE "MODERATE - All AFK clients that are in the lobby or observing"
 #define AUTOKICK_SEVERITY_NORMAL "NORMAL - All AFK clients that are in the lobby"
+
+// Stops the AFK SS from running.
+/datum/config_entry/flag/disable_afk_autokick
