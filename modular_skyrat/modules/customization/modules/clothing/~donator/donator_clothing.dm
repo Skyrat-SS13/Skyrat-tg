@@ -407,11 +407,12 @@
 	inhand_icon_state = "sechailer"
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS //same flags as actual sec hailer gas mask
 	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
-	flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES | PEPPERPROOF
+	flags_cover = MASKCOVERSMOUTH
 	visor_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
 	visor_flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
-	visor_flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES | PEPPERPROOF
+	visor_flags_cover = MASKCOVERSMOUTH
 	w_class = WEIGHT_CLASS_SMALL
+	tint = 0
 
 /obj/item/clothing/mask/gas/nightlight/ui_action_click(mob/user, action)
 	adjustmask(user)
@@ -1180,3 +1181,43 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "pcrc_jacket"
 	worn_icon_state = "pcrc_jacket"
+
+/obj/item/storage/belt/fannypack/occult
+	name = "trinket belt"
+	desc = "A belt covered in various trinkets collected through time. Doesn't look like there's much space for anything else nowadays."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/belts.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/belt.dmi'
+	icon_state = "occultfannypack"
+	worn_icon_state = "occultfannypack"
+
+/obj/item/clothing/under/occult
+	name = "occult collector's outfit"
+	desc = "A set of clothes fit for someone dapper that isn't afraid of getting dirty."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "occultoutfit"
+	mutant_variants = NONE
+
+/obj/item/clothing/head/hooded/occult
+	name = "hood"
+	desc = "Certainly makes you look more ominous."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "occulthood"
+	mutant_variants = NONE
+	dynamic_hair_suffix = "+generic"
+
+/obj/item/clothing/suit/hooded/occult
+	name = "occult collector's coat"
+	desc = "A big, heavy coat lined with leather and ivory cloth, adorned with a hood. It looks dusty."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "occultcoat"
+	hoodtype = /obj/item/clothing/head/hooded/occult
+	mutant_variants = NONE
+
+/obj/item/toy/plush/donator/voodoo
+	name = "voodoo doll"
+	desc = "A not so small voodoo doll made out of cut and sewn potato bags. It almost looks cute."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	icon_state = "voodoo"
