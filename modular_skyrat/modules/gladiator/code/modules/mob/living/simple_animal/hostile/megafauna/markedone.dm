@@ -50,7 +50,7 @@
 	/// Move_to_delay but only while we are charging
 	var/move_to_delay_charge = 1.5
 	/// Chance to block damage entirely on phase 1
-	var/phase_1_block_chance = 10
+	var/phase_1_block_chance = 50
 	/// This mob will not attack mobs randomly if not in anger, the time doubles as a check for anger
 	var/anger_timer_id = null
 
