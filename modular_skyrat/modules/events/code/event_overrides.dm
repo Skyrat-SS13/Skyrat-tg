@@ -28,7 +28,7 @@
  * Blob
  *
  * Min players:
- * Lowered to accomodate for lower population not being able to cope with the blob.
+ * Raised to accomodate for lower population not being able to cope with the blob.
  */
 /datum/round_event_control/blob
 	min_players = 60
