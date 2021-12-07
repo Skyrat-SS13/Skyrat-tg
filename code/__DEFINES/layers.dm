@@ -138,10 +138,10 @@
 #define CAMERA_STATIC_PLANE 200
 
 ///Popup Chat Messages
-#define RUNECHAT_PLANE 501
+#define RUNECHAT_PLANE 501 //SKYRAT EDIT - ORIGINAL 250
 
 /// Plane for balloon text (text that fades up)
-#define BALLOON_CHAT_PLANE 502
+#define BALLOON_CHAT_PLANE 502 //SKYRAT EDIT - ORIGINAL 251
 
 ///Debug Atmos Overlays
 #define ATMOS_GROUP_PLANE 450
