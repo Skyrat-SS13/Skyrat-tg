@@ -17,6 +17,9 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 
 /mob/living/proc/combat_indicator_unconscious_signal()
 	SIGNAL_HANDLER
+	if(stat < UNCONSCIOUS) // sanity check because something is calling this signal improperly
+		stack_trace("Improper COMSIG_LIVING_STATUS_UNCONSCIOUS sent; mob is not unconscious")
+		return
 	set_combat_indicator(FALSE)
 
 /mob/living/proc/set_combat_indicator(state)
