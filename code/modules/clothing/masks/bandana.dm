@@ -13,6 +13,10 @@
 
 /obj/item/clothing/mask/bandana/attack_self(mob/user)
 	adjustmask(user)
+	if(slot_flags & ITEM_SLOT_HEAD)
+		mutant_variants = NONE
+	if(slot_flags & ITEM_SLOT_MASK)
+		mutant_variants = initial(mutant_variants)
 
 /obj/item/clothing/mask/bandana/AltClick(mob/user)
 	. = ..()
