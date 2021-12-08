@@ -981,6 +981,7 @@
 	if(!internal_damage)
 		SEND_SOUND(newoccupant, sound('sound/mecha/nominal.ogg',volume=50))
 	src.handle_ci_migration(newoccupant)
+	RegisterSignal(newoccupant, COMSIG_MOB_CI_TOGGLED, .proc/mob_toggled_ci)
 	return TRUE
 
 /obj/vehicle/sealed/mecha/proc/mmi_move_inside(obj/item/mmi/brain_obj, mob/user)
@@ -1058,9 +1059,12 @@
 	else if(isAI(M))
 		var/mob/living/silicon/ai/AI = M
 		if(forced)//This should only happen if there are multiple AIs in a round, and at least one is Malf.
+			src.disable_ci()
+			UnregisterSignal(AI, COMSIG_MOB_CI_TOGGLED)
 			AI.gib()  //If one Malf decides to steal a mech from another AI (even other Malfs!), they are destroyed, as they have nowhere to go when replaced.
 			AI = null
 			mecha_flags &= ~SILICON_PILOT
+			RegisterSignal(AI, COMSIG_MOB_CI_TOGGLED, .proc/mob_toggled_ci) //NOTE TO MAINTAINER: if this comment is still here niko hasnt tested this. beat his ass.
 			return
 		else
 			if(!AI.linked_core)
@@ -1074,8 +1078,12 @@
 			AI.remote_control = null
 			mob_container = AI
 			newloc = get_turf(AI.linked_core)
+			src.disable_ci()
+			UnregisterSignal(AI, COMSIG_MOB_CI_TOGGLED)
 			qdel(AI.linked_core)
 	else
+		src.disable_ci()
+		UnregisterSignal(M, COMSIG_MOB_CI_TOGGLED)
 		return ..()
 	var/mob/living/ejector = M
 	mecha_flags  &= ~SILICON_PILOT
@@ -1089,6 +1097,8 @@
 			ejector.forceMove(mmi)
 			ejector.reset_perspective()
 			remove_occupant(ejector)
+			src.disable_ci()
+			UnregisterSignal(M, COMSIG_MOB_CI_TOGGLED)
 		mmi.set_mecha(null)
 		mmi.update_appearance()
 	setDir(dir_in)

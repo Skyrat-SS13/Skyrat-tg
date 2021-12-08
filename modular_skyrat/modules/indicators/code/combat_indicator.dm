@@ -10,6 +10,9 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	var/combat_indicator = FALSE
 	var/nextcombatpopup = 0
 
+/obj/vehicle/sealed/proc/mob_toggled_ci(mob/living/source, state)
+	SIGNAL_HANDLER
+
 /mob/living/proc/combat_indicator_unconscious_signal()
 	SIGNAL_HANDLER
 	set_combat_indicator(FALSE)
@@ -25,6 +28,8 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 		return
 
 	combat_indicator = state
+
+	SEND_SIGNAL(src, COMSIG_MOB_CI_TOGGLED, state)
 
 	if(combat_indicator)
 		if(world.time > nextcombatpopup)
