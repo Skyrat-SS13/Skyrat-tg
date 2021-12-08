@@ -1058,14 +1058,12 @@
 		var/mob/living/silicon/ai/AI = M
 		if(forced)//This should only happen if there are multiple AIs in a round, and at least one is Malf.
 			//SKYRAT EDIT ADDITION BEGIN -- MECH CI
-			src.disable_ci()
+			disable_ci()
 			UnregisterSignal(AI, COMSIG_MOB_CI_TOGGLED)
 			//SKYRAT EDIT ADDITION END
 			AI.gib()  //If one Malf decides to steal a mech from another AI (even other Malfs!), they are destroyed, as they have nowhere to go when replaced.
 			AI = null
 			mecha_flags &= ~SILICON_PILOT
-			//SKYRAT EDIT ADDITION -- MECH CI
-			RegisterSignal(AI, COMSIG_MOB_CI_TOGGLED, .proc/mob_toggled_ci) //NOTE TO MAINTAINER: this wasnt tested because the malf powers' tgui script was broken locally
 			return
 		else
 			if(!AI.linked_core)
