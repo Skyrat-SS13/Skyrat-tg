@@ -119,11 +119,85 @@
 
 /mob/living
 	var/has_field_of_view = TRUE
+	var/fov_degrees = FOV_180_DEGREES
 
 /mob/living/Login()
 	. = ..()
 	if(has_field_of_view && CONFIG_GET(flag/fov_enabled))
-		AddComponent(/datum/component/field_of_vision)
+		AddComponent(/datum/component/field_of_vision, fov_degrees)
+
+/mob/living/face_atom(atom/A)
+	. = ..()
+	if(combat_mode && client?.prefs?.read_preference(/datum/preference/toggle/combat_mode_sticky_directions))
+		sticky_facing_until = world.time + 2 SECONDS
+
+/// Is `observed_atom` in a mob's field of view? This takes blindness, nearsightness and FOV into consideration
+/mob/living/proc/in_fov(atom/observed_atom)
+	if(is_blind())
+		return FALSE
+	if(!has_field_of_view)
+		return TRUE
+	var/turf/my_turf = get_turf(src) //Because being inside contents of something will cause our x,y to not be updated
+	// If turf doesn't exist, then we wouldn't get a fov check called by `play_fov_effect` or presumably other new stuff that might check this.
+	//  ^ If that case has changed and you need that check, add it.
+	var/rel_x = observed_atom.x - my_turf.x
+	var/rel_y = observed_atom.y - my_turf.y
+
+	if(rel_x == 0 && rel_y == 0) //We are on top of the person, we are in his fov
+		return TRUE
+	if(rel_x >= -1 && rel_x <= 1 && rel_y >= -1 && rel_y <= 1) //Cheap way to check inside that 3x3 box around you
+		return TRUE
+	. = FALSE
+
+	// Converts the relative position into a 0-360 rotation
+	var/vector_len = sqrt(abs(rel_x) ** 2 + abs(rel_y) ** 2)
+
+	/// Getting a direction vector
+	var/dir_x
+	var/dir_y
+	switch(dir)
+		if(SOUTH)
+			dir_x = 0
+			dir_y = -vector_len
+		if(NORTH)
+			dir_x = 0
+			dir_y = vector_len
+		if(EAST)
+			dir_x = vector_len
+			dir_y = 0
+		if(WEST)
+			dir_x = -vector_len
+			dir_y = 0
+
+	///Calculate angle
+	var/angle = arccos((dir_x * rel_x + dir_y * rel_y) / (sqrt(dir_x**2 + dir_y**2) * sqrt(rel_x**2 + rel_y**2)))
+	
+	/// Calculate vision angle and compare
+	var/vision_angle = (360 - fov_degrees) / 2
+	if(angle < vision_angle)
+		. = TRUE
+
+	// Handling nearsightnedness
+	if(. && HAS_TRAIT(src, TRAIT_NEARSIGHT))
+		if((rel_x > 3 || rel_x < -3) || (rel_y > 3 || rel_y < -3))
+			return FALSE
+
+/proc/play_fov_effect(atom/center, range, icon_state, dir = SOUTH)
+	if(center.plane != GAME_PLANE_FOV_HIDDEN) //Skyrat bandaid to make non hidden people dont play those effects
+		return
+	var/turf/anchor_point = get_turf(center)
+	for(var/mob/living/living_mob in get_hearers_in_view(range, center))
+		var/client/mob_client = living_mob.client
+		if(!mob_client)
+			continue
+		if(living_mob.in_fov(anchor_point))
+			continue
+		var/image/fov_image = image(icon = 'modular_skyrat/modules/field_of_view/icons/fov_effects.dmi', icon_state = icon_state, loc = anchor_point)
+		fov_image.plane = FULLSCREEN_PLANE
+		fov_image.layer = FOV_EFFECTS_LAYER
+		fov_image.dir = dir
+		mob_client.images += fov_image
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/remove_image_from_client, fov_image, mob_client), 30)
 
 /atom/movable/screen/fov_blocker
 	icon = 'modular_skyrat/modules/field_of_view/icons/field_of_view.dmi'
@@ -167,11 +241,6 @@
 	default_value = TRUE
 	savefile_key = "combat_mode_sticky_directions"
 	savefile_identifier = PREFERENCE_PLAYER
-
-/mob/living/face_atom(atom/A)
-	. = ..()
-	if(combat_mode && client?.prefs?.read_preference(/datum/preference/toggle/combat_mode_sticky_directions))
-		sticky_facing_until = world.time + 2 SECONDS
 
 /client/proc/cmd_admin_toggle_fov()
 	set category = "Fun"
