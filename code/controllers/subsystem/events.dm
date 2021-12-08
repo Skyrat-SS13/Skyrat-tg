@@ -14,6 +14,8 @@ SUBSYSTEM_DEF(events)
 	var/list/holidays //List of all holidays occuring today or null if no holidays
 	var/wizardmode = FALSE
 
+	var/list/previously_run = list() //SKYRAT EDIT ADDITION
+
 /datum/controller/subsystem/events/Initialize(time, zlevel)
 	for(var/type in typesof(/datum/round_event_control))
 		var/datum/round_event_control/E = new type()
@@ -54,7 +56,7 @@ SUBSYSTEM_DEF(events)
 	scheduled = world.time + rand(frequency_lower, max(frequency_lower,frequency_upper))
 
 //selects a random event based on whether it can occur and it's 'weight'(probability)
-/datum/controller/subsystem/events/proc/spawnEvent()
+/datum/controller/subsystem/events/proc/spawnEvent(threat_override = FALSE) //SKYRAT EDIT CHANGE
 	set waitfor = FALSE //for the admin prompt
 	if(!CONFIG_GET(flag/allow_random_events))
 		return
@@ -65,6 +67,10 @@ SUBSYSTEM_DEF(events)
 	for(var/datum/round_event_control/E in control)
 		if(!E.canSpawnEvent(players_amt))
 			continue
+		//SKYRAT EDIT ADDITION
+		if(threat_override && (!E.min_players || !E.alert_observers))
+			continue
+		//SKYRAT EDIT END
 		if(E.weight < 0) //for round-start events etc.
 			var/res = TriggerEvent(E)
 			if(res == EVENT_INTERRUPTED)
@@ -82,6 +88,8 @@ SUBSYSTEM_DEF(events)
 
 		if(sum_of_weights <= 0) //we've hit our goal
 			if(TriggerEvent(E))
+				previously_run += E //SKYRAT EDIT ADDITION
+				threat_override = FALSE //SKYRAT EDIT ADDITION
 				return
 
 /datum/controller/subsystem/events/proc/TriggerEvent(datum/round_event_control/E)
