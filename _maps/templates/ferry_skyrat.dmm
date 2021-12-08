@@ -19,16 +19,17 @@
 	},
 /area/shuttle/transport)
 "bI" = (
-/obj/machinery/door/airlock/command/glass,
+/obj/machinery/door/airlock/command/glass{
+	name = "Cockpit";
+	req_access_txt = "101"
+	},
 /turf/open/floor/iron/stairs{
 	dir = 4
 	},
 /area/shuttle/transport)
 "cb" = (
-/obj/effect/turf_decal/caution/blue{
-	dir = 1
-	},
 /obj/machinery/light/red/directional/north,
+/obj/effect/turf_decal/caution,
 /turf/open/floor/iron/shuttle/ferry,
 /area/shuttle/transport)
 "cp" = (
@@ -154,9 +155,7 @@
 	},
 /area/shuttle/transport)
 "lz" = (
-/obj/effect/turf_decal/caution/blue{
-	dir = 1
-	},
+/obj/effect/turf_decal/caution,
 /turf/open/floor/iron/shuttle/ferry,
 /area/shuttle/transport)
 "mB" = (
@@ -249,7 +248,9 @@
 	},
 /area/shuttle/transport)
 "yz" = (
-/obj/effect/turf_decal/caution/blue,
+/obj/effect/turf_decal/caution{
+	dir = 1
+	},
 /turf/open/floor/iron/shuttle/ferry,
 /area/shuttle/transport)
 "yF" = (
@@ -332,8 +333,8 @@
 	},
 /area/shuttle/transport)
 "EY" = (
+/obj/structure/fans/tiny/forcefield,
 /obj/machinery/door/airlock/multi_tile/metal,
-/obj/structure/fans/tiny/invisible,
 /turf/open/floor/iron/shuttle/ferry{
 	icon_state = "floor"
 	},
@@ -349,7 +350,6 @@
 	},
 /area/shuttle/transport)
 "Gy" = (
-/obj/structure/fans/tiny/invisible,
 /obj/docking_port/mobile{
 	dheight = 7;
 	dir = 2;
@@ -361,6 +361,7 @@
 	preferred_direction = 8;
 	width = 20
 	},
+/obj/structure/fans/tiny/forcefield,
 /turf/open/floor/iron/shuttle/ferry{
 	icon_state = "floor"
 	},
@@ -489,7 +490,7 @@
 	},
 /area/shuttle/transport)
 "Qg" = (
-/obj/structure/fans/tiny/invisible,
+/obj/structure/fans/tiny/forcefield,
 /turf/open/floor/iron/shuttle/ferry{
 	icon_state = "floor"
 	},
@@ -558,8 +559,10 @@
 /turf/open/floor/iron/shuttle/ferry,
 /area/shuttle/transport)
 "Yd" = (
-/obj/effect/turf_decal/caution/blue,
 /obj/machinery/light/red/directional/south,
+/obj/effect/turf_decal/caution{
+	dir = 1
+	},
 /turf/open/floor/iron/shuttle/ferry,
 /area/shuttle/transport)
 "Ym" = (
