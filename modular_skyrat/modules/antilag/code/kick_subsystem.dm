@@ -58,9 +58,6 @@ SUBSYSTEM_DEF(autokick)
 						kicked_lobby += "[iterating_client.key]"
 						kick_player(iterating_client)
 						continue
-		if(MC_TICK_CHECK)
-			message_admins("AUTOKICK: MC check failed, aborting.")
-			return
 	var/total = length(kicked_lobby)+ length(kicked_ghosts)+ length(kicked_clients)
 	var/list/all_kicked = kicked_lobby + kicked_ghosts + kicked_clients
 	message_admins("AUTOKICK: Kicked [total] total clients | Lobby: [length(kicked_lobby)] | Ghosts: [length(kicked_ghosts)] | Playing: [length(kicked_clients)] | Kicked clients: " + all_kicked.Join(", "))

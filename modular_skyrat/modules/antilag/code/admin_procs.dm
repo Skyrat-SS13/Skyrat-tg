@@ -54,6 +54,7 @@
 			continue
 		if(isobserver(iterating_client?.mob) || isnewplayer(iterating_client?.mob))
 			to_chat(iterating_client, span_userdanger("The server is currently expereincing extreme load, please join the game or leave. You will shortly be kicked."))
+			ghost_client_names.Add("[iterating_client.key]")
 			SSautokick.clients_to_check_lobby.Add(iterating_client)
 
 	message_admins("[key_name(usr)] has set autokick for [length(ghost_client_names)] new players and ghosts.")
