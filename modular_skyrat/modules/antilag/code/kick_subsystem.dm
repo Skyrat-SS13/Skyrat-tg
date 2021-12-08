@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(autokick)
 			continue
 		if(is_admin(iterating_client))
 			continue
-		if((iterating_client in clients_to_check_lobby) && isnewplayer(iterating_client.mob))
+		if((iterating_client in clients_to_check_lobby) && (isnewplayer(iterating_client.mob) || isobserver(iterating_client.mob)))
 			clients_to_check_lobby -= iterating_client
 			to_chat_immediate(iterating_client, "As you have not joined the game, you have been kicked.")
 			qdel(iterating_client)
