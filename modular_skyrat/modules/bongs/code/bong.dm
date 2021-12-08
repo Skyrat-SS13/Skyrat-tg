@@ -126,7 +126,7 @@
 		bong_turf.visible_message(flavor_text)
 
 /obj/item/bong/lungbuster
-	name = "The Lungbuster"
+	name = "the lungbuster"
 	desc = "30 inches of doom."
 	icon_state = "lungbusteroff"
 	inhand_icon_state = "lungbusteroff"

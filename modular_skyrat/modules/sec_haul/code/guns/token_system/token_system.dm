@@ -4,7 +4,7 @@
 /////////////////
 
 /obj/machinery/gun_vendor
-	name = "Armadyne Weapons Dispensary"
+	name = "Armadyne weapons dispensary"
 	desc = "This accepts armament tokens in exchange for weapons, please present your token for redemption."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
 	icon_state = "gunvend"

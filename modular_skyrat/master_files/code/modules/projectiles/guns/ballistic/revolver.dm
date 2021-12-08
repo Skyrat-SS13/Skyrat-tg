@@ -1,17 +1,17 @@
 /obj/item/gun/ballistic/revolver/ocelot
-	name = "Colt Peacemaker Revolver"
-	desc = "A modified Peacemaker Revolver that chamber .357 ammo. Less powerful than the regular .357, but ricochets a lot more." //We need tension...conflict. The world today has become too soft. We're living in an age where true feelings are suppressed. So we're going to shake things up a bit. We'll create a world dripping with tension... ...a world filled with greed and suspicion, bravery and cowardice.
+	name = "Colt Peacemaker revolver"
+	desc = "A modified Peacemaker revolver that chambers .357 ammo. Less powerful than the regular .357, but ricochets a lot more." //We need tension...conflict. The world today has become too soft. We're living in an age where true feelings are suppressed. So we're going to shake things up a bit. We'll create a world dripping with tension... ...a world filled with greed and suspicion, bravery and cowardice.
 	icon_state = "detective_panther"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder
 
 /obj/item/ammo_casing/a357/peacemaker
-	name = ".357 peacemaker bullet casing"
-	desc = "A .357 peacemaker bullet casing."
+	name = ".357 Peacemaker bullet casing"
+	desc = "A .357 Peacemaker bullet casing."
 	caliber = CALIBER_357
 	projectile_type = /obj/projectile/bullet/a357/peacemaker
 
 /obj/projectile/bullet/a357/peacemaker
-	name = ".357 peacemaker bullet"
+	name = ".357 Peacemaker bullet"
 	damage = 25
 	wound_bonus = 0
 	ricochets_max = 6
@@ -22,7 +22,7 @@
 	ricochet_decay_chance = 1
 
 /datum/design/a357/peacemaker
-	name = ".357 peacemaker Speed Loader"
+	name = ".357 Peacemaker speed loader"
 	id = "a357PM"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 4000)
