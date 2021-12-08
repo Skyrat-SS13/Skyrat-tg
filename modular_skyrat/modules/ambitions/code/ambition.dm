@@ -293,6 +293,7 @@
 					log_action("DISCARDED: Review discarded without approval")
 					to_chat(my_mind.current, span_warning("<b>Your ambitions review request was discarded by [key_name(usr, FALSE, FALSE)].</b>"))
 					message_admins(span_adminhelp("[ADMIN_TPMONTY(my_mind.current)]'s ambitions review request was DISCARDED by [key_name(usr, FALSE, TRUE)]. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)"))
+					ticket_counter_add_handled(usr.key, 1)
 			if("approve")
 				cancel_auto_approve()
 				admin_approval = TRUE
@@ -302,6 +303,7 @@
 				log_action("APPROVED", FALSE)
 				to_chat(my_mind.current, span_nicegreen("<b>Your ambitions were approved by [key_name(usr, FALSE, FALSE)].</b>"))
 				message_admins(span_nicegreen("[ADMIN_TPMONTY(my_mind.current)]'s ambitions were approved by [key_name(usr, FALSE, TRUE)]. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)"))
+				ticket_counter_add_handled(usr.key, 1)
 				submit()
 			if("logs")
 				var/datum/browser/popup = new(usr, "Ambition logging", "Ambition logs", 500, 200)
