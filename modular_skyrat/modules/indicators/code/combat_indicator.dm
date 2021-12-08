@@ -20,7 +20,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	if (combat_indicator_vehicle)
 		if(world.time > vehicle_nextcombatpopup)
 			vehicle_nextcombatpopup = world.time + COMBAT_NOTICE_COOLDOWN
-			playsound(src.loc, 'sound/machines/chime.ogg', 10, ignore_walls = FALSE) //FIXME: doesn't work?
+			playsound(src, 'sound/machines/chime.ogg', 10, ignore_walls = FALSE) //FIXME: doesn't work?
 // 			flick_emote_popup_on_mob("combat", 20) figure out how to fix this
 			visible_message(span_boldwarning("[src]'s sensors deploy their shielding as the mech prepares for combat!"))
 		add_overlay(GLOB.combat_indicator_overlay)

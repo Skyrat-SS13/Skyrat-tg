@@ -1057,12 +1057,15 @@
 	else if(isAI(M))
 		var/mob/living/silicon/ai/AI = M
 		if(forced)//This should only happen if there are multiple AIs in a round, and at least one is Malf.
+			//SKYRAT EDIT ADDITION BEGIN -- MECH CI
 			src.disable_ci()
 			UnregisterSignal(AI, COMSIG_MOB_CI_TOGGLED)
+			//SKYRAT EDIT ADDITION END
 			AI.gib()  //If one Malf decides to steal a mech from another AI (even other Malfs!), they are destroyed, as they have nowhere to go when replaced.
 			AI = null
 			mecha_flags &= ~SILICON_PILOT
-			RegisterSignal(AI, COMSIG_MOB_CI_TOGGLED, .proc/mob_toggled_ci) //NOTE TO MAINTAINER: if this comment is still here niko hasnt tested this. beat his ass.
+			//SKYRAT EDIT ADDITION -- MECH CI
+			RegisterSignal(AI, COMSIG_MOB_CI_TOGGLED, .proc/mob_toggled_ci) //NOTE TO MAINTAINER: this wasnt tested because the malf powers' tgui script was broken locally
 			return
 		else
 			if(!AI.linked_core)
@@ -1098,6 +1101,7 @@
 
 
 /obj/vehicle/sealed/mecha/add_occupant(mob/M, control_flags)
+	//SKYRAT EDIT ADDITION -- MECH CI
 	RegisterSignal(M, COMSIG_MOB_CI_TOGGLED, .proc/mob_toggled_ci)
 	RegisterSignal(M, COMSIG_LIVING_DEATH, .proc/mob_exit)
 	RegisterSignal(M, COMSIG_MOB_CLICKON, .proc/on_mouseclick)
@@ -1105,14 +1109,16 @@
 	RegisterSignal(M, COMSIG_MOB_SAY, .proc/display_speech_bubble)
 	. = ..()
 	update_appearance()
+	//SKYRAT EDIT ADDITION -- MECH CI
 	handle_ci_migration(M)
 
 /obj/vehicle/sealed/mecha/remove_occupant(mob/M)
+	//SKYRAT EDIT ADDITION -- MECH CI
+	UnregisterSignal(M, COMSIG_MOB_CI_TOGGLED)
 	UnregisterSignal(M, COMSIG_LIVING_DEATH)
 	UnregisterSignal(M, COMSIG_MOB_CLICKON)
 	UnregisterSignal(M, COMSIG_MOB_MIDDLECLICKON)
 	UnregisterSignal(M, COMSIG_MOB_SAY)
-	UnregisterSignal(M, COMSIG_MOB_CI_TOGGLED)
 	M.clear_alert("charge")
 	M.clear_alert("mech damage")
 	if(M.client)
@@ -1121,6 +1127,7 @@
 		zoom_mode = FALSE
 	. = ..()
 	update_appearance()
+	//SKYRAT EDIT ADDITION -- MECH CI
 	disable_ci()
 
 /////////////////////////
