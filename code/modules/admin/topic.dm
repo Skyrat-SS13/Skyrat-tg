@@ -1573,7 +1573,7 @@
 			if(tgui_alert(usr,"Are you sure you want to kick all [afkonly ? "AFK" : ""] clients from the lobby??","Message",list("Yes","Cancel")) != "Yes")
 				to_chat(usr, "Kick clients from lobby aborted", confidential = TRUE)
 				return
-			var/list/listkicked = kick_clients_in_lobby(span_danger("You were kicked from the lobby by [usr.client.holder.fakekey ? "an Administrator" : "[usr.client.key]"]."), afkonly)
+			var/list/listkicked = kick_clients_in_lobby(span_danger("You were kicked from the lobby."), afkonly) //SKYRAT EDIT CHANGE
 
 			var/strkicked = ""
 			for(var/name in listkicked)
