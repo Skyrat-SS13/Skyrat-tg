@@ -9,7 +9,7 @@
 #define COMSIG_HORRORFORM_EXPLODE "horrorform_explode"
 ///Overlay for whitestuff
 #define COMSIG_MOB_CUMFACED "mob_cumfaced" //from /datum/component/cumfaced/Initialize(), when you get covered in cum
-//Fired in combat_indicator.dm
+///Fired in combat_indicator.dm, used for syncing CI between mech and pilot
 #define COMSIG_MOB_CI_TOGGLED "mob_ci_toggled"
 
 //Gun signals
