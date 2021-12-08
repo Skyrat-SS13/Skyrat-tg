@@ -408,7 +408,9 @@
 
 /obj/projectile/energy/medical/utility/body_teleporter/on_hit(mob/living/target)
 	. = ..()
-	if(!ishuman(target) || target.stat != DEAD)
+	if(!ishuman(target))
+		return FALSE
+	if((target.stat != DEAD && !HAS_TRAIT(target, TRAIT_DEATHCOMA)))
 		return FALSE
 	var/mob/living/carbon/body = target
 	teleport_effect(body.loc)
