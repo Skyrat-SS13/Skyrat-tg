@@ -37,14 +37,10 @@
 
 /client/proc/move_ghost_to_lobby()
 	set category = "Admin"
-	set name = "Move ghosts to lobby"
-	set desc = "Moves any ghosts to the lobby."
+	set name = "Notify ghost/lobby overpopulation"
+	set desc = "Notify ghosts/lobbiers to join the game or leave, autokick if they do not."
 
-	if(GLOB.clients.len < 150)
-		to_chat(usr, span_danger("There are not enough players to move ghosts to the lobby."))
-		return
-
-	var/choice = tgui_alert(usr, "Are you sure you want to move all ghosts to the lobby?", "Move ghosts to lobby", list("Yes", "No"))
+	var/choice = tgui_alert(usr, "Are you sure you want to notify all current ghosts/new players that they will be kicked soon?", "Notify kick", list("Yes", "No"))
 
 	if(!(choice == "Yes"))
 		return
@@ -56,15 +52,11 @@
 			continue
 		if(is_admin(iterating_client))
 			continue
-		if(isobserver(iterating_client?.mob))
-			to_chat(iterating_client, span_danger("You have been moved to the lobby, either join a game or disconnect. You will shortly be kicked."))
+		if(isobserver(iterating_client?.mob) || isnewplayer(iterating_client?.mob))
+			to_chat(iterating_client, span_userdanger("The server is currently expereincing extreme load, please join the game or leave. You will shortly be kicked."))
 			SSautokick.clients_to_check_lobby.Add(iterating_client)
-			var/mob/dead/new_player/new_player = new()
-			new_player.ckey = iterating_client.ckey
-			ghost_client_names.Add("[iterating_client.key]")
-			qdel(iterating_client.mob)
 
-	message_admins("[key_name(usr)] has moved [length(ghost_client_names)] ghosts to the lobby.")
-	log_admin("[key_name(usr)] has moved [length(ghost_client_names)] ghosts to the lobby.")
+	message_admins("[key_name(usr)] has set autokick for [length(ghost_client_names)] new players and ghosts.")
+	log_admin("[key_name(usr)] has set autokick for [length(ghost_client_names)] new players and ghosts.")
 
-	to_chat(usr, span_admin("Total moved observers: [length(ghost_client_names)] | Moved observers: " + ghost_client_names.Join(", ")))
+	to_chat(usr, span_admin("Total autokick tagged clients: [length(ghost_client_names)] | Tagged clients: " + ghost_client_names.Join(", ")))
