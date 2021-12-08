@@ -3,8 +3,6 @@
 	var/enter_delay = 2 SECONDS
 	var/mouse_pointer
 	var/headlights_toggle = FALSE
-	// SKYRAT EDIT ADDITION -- MECH CI
-	var/combat_indicator_vehicle = FALSE
 
 /obj/vehicle/sealed/generate_actions()
 	. = ..()

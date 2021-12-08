@@ -980,8 +980,6 @@
 	playsound(src, 'sound/machines/windowdoor.ogg', 50, TRUE)
 	if(!internal_damage)
 		SEND_SOUND(newoccupant, sound('sound/mecha/nominal.ogg',volume=50))
-	src.handle_ci_migration(newoccupant)
-	RegisterSignal(newoccupant, COMSIG_MOB_CI_TOGGLED, .proc/mob_toggled_ci)
 	return TRUE
 
 /obj/vehicle/sealed/mecha/proc/mmi_move_inside(obj/item/mmi/brain_obj, mob/user)
@@ -1078,12 +1076,8 @@
 			AI.remote_control = null
 			mob_container = AI
 			newloc = get_turf(AI.linked_core)
-			src.disable_ci()
-			UnregisterSignal(AI, COMSIG_MOB_CI_TOGGLED)
 			qdel(AI.linked_core)
 	else
-		src.disable_ci()
-		UnregisterSignal(M, COMSIG_MOB_CI_TOGGLED)
 		return ..()
 	var/mob/living/ejector = M
 	mecha_flags  &= ~SILICON_PILOT
@@ -1097,8 +1091,6 @@
 			ejector.forceMove(mmi)
 			ejector.reset_perspective()
 			remove_occupant(ejector)
-			src.disable_ci()
-			UnregisterSignal(M, COMSIG_MOB_CI_TOGGLED)
 		mmi.set_mecha(null)
 		mmi.update_appearance()
 	setDir(dir_in)
@@ -1106,18 +1098,21 @@
 
 
 /obj/vehicle/sealed/mecha/add_occupant(mob/M, control_flags)
+	RegisterSignal(M, COMSIG_MOB_CI_TOGGLED, .proc/mob_toggled_ci)
 	RegisterSignal(M, COMSIG_LIVING_DEATH, .proc/mob_exit)
 	RegisterSignal(M, COMSIG_MOB_CLICKON, .proc/on_mouseclick)
 	RegisterSignal(M, COMSIG_MOB_MIDDLECLICKON, .proc/on_middlemouseclick) //For AIs
 	RegisterSignal(M, COMSIG_MOB_SAY, .proc/display_speech_bubble)
 	. = ..()
 	update_appearance()
+	handle_ci_migration(M)
 
 /obj/vehicle/sealed/mecha/remove_occupant(mob/M)
 	UnregisterSignal(M, COMSIG_LIVING_DEATH)
 	UnregisterSignal(M, COMSIG_MOB_CLICKON)
 	UnregisterSignal(M, COMSIG_MOB_MIDDLECLICKON)
 	UnregisterSignal(M, COMSIG_MOB_SAY)
+	UnregisterSignal(M, COMSIG_MOB_CI_TOGGLED)
 	M.clear_alert("charge")
 	M.clear_alert("mech damage")
 	if(M.client)
@@ -1126,6 +1121,7 @@
 		zoom_mode = FALSE
 	. = ..()
 	update_appearance()
+	disable_ci()
 
 /////////////////////////
 ////// Access stuff /////
