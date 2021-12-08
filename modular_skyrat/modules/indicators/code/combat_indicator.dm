@@ -22,42 +22,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 			vehicle_nextcombatpopup = world.time + COMBAT_NOTICE_COOLDOWN
 			playsound(src, 'sound/machines/chime.ogg', 10, ignore_walls = FALSE) //FIXME: doesn't work?
 //			flick_emote_popup_on_mob("combat", 20) figure out how to fix this
-			var/mech_ciweapon
-			if (selected) //selected equipment for the mech
-				mech_ciweapon = selected //this if chain is hellish i am so sorry - niko
-				if (istype(mech_ciweapon, /obj/item/mecha_parts/mecha_equipment/weapon))
-					if (istype(mech_ciweapon, /obj/item/mecha_parts/mecha_equipment/weapon/ballistic))
-						if (istype(mech_ciweapon, /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack))
-							visible_message(span_boldwarning("[src]'s [mech_ciweapon] suddenly ticks ominously as its missiles' safeties disable, the mech readying for combat!"))
-						else if (istype(mech_ciweapon, /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/launcher))
-							visible_message(span_boldwarning("[src]'s [mech_ciweapon] suddenly ticks ominously as its grenades' safeties disable, the mech readying for combat!"))
-						else if (istype(mech_ciweapon, /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/launcher/punching_glove))
-							visible_message(span_boldwarning("[src] ominously honks as it's [mech_ciweapon] retracts, readying to punch something!"))
-						else
-							visible_message(span_boldwarning("[src] raises \the [mech_ciweapon] to it's chest level, the weapon ticking as its safety disables!"))
-					else if (istype(mech_ciweapon, /obj/item/mecha_parts/mecha_equipment/weapon/energy))
-						visible_message(span_boldwarning("[src] raises \the [mech_ciweapon] to it's chest level, the weapon whining as it's power rises to combat levels!"))
-					else if (istype(mech_ciweapon, /obj/item/mecha_parts/mecha_equipment/weapon/honker))
-						visible_message(span_boldwarning("[src]'s [mech_ciweapon] begins to emit quiet, ear-piercing feedback as power is redirected to it, the mech readying for combat!"))
-					else
-						visible_message(span_boldwarning("[src] raises the [mech_ciweapon] to it's chest level, readying for combat!"))
-				else if (istype(mech_ciweapon, /obj/item/mecha_parts/mecha_equipment/medical))
-					if (istype(mech_ciweapon, /obj/item/mecha_parts/mecha_equipment/medical/syringe_gun))
-						visible_message(span_boldwarning("[src] raises \the [mech_ciweapon] to it's chest level, the weapon ticking as its safety disables!"))
-					else if (istype(mech_ciweapon, /obj/item/mecha_parts/mecha_equipment/medical/mechmedbeam))
-						visible_message(span_boldwarning("[src]'s [mech_ciweapon] briefly has it's glowing color flicker, as power is redirected towards combat systems!"))
-					else
-						visible_message(span_boldwarning("[src]'s sensors deploy their shields as it readies for combat!"))
-				else if (istype(mech_ciweapon, /obj/item/mecha_parts/mecha_equipment/drill))
-					visible_message(span_boldwarning("[src] thrusts it's [mech_ciweapon] outwards, the drill bit spinning rapidly, readying for combat!"))
-				else if (istype(mech_ciweapon, /obj/item/mecha_parts/mecha_equipment/hydraulic_clamp))
-					visible_message(span_boldwarning("[src]'s draws it's [mech_ciweapon] forward and opens it's claws, readying to crush something!"))
-				else if (istype(mech_ciweapon, /obj/item/mecha_parts/mecha_equipment/gravcatapult))
-					visible_message(span_boldwarning("The area around [src] briefly distorts, as its [mech_ciweapon] enters combat mode!"))
-				else
-					visible_message(span_boldwarning("[src]'s sensors deploy their shields as it readies for combat!"))
-			else
-				visible_message(span_boldwarning("[src]'s sensors deploy their shields as it readies for combat!"))
+			visible_message(span_boldwarning("[src]'s sensors deploy their shielding as the mech prepares for combat!"))
 		add_overlay(GLOB.combat_indicator_overlay)
 		combat_indicator_vehicle = TRUE
 	else
