@@ -38,7 +38,7 @@
 
 /obj/structure/closet/shuttle/medical
 	name = "first-aid closet"
-	desc = "It's a storage unit for emergency medical supplies.."
+	desc = "It's a storage unit for emergency medical supplies."
 	icon_door = "wallcloset_med"
 
 /obj/structure/closet/shuttle/medical/PopulateContents()
