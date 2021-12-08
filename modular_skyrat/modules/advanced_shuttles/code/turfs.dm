@@ -14,13 +14,13 @@
 	smoothing_flags = null
 	smoothing_groups = null
 	canSmoothWith = null
-	fixed_underlay = list("space" = TRUE)
 
 /turf/closed/wall/mineral/titanium/shuttle_wall/Initialize(mapload)
 	. = ..()
-	var/mutable_appearance/underlay_appearance = mutable_appearance(layer = TURF_LAYER, plane = FLOOR_PLANE)
-	underlay_appearance.icon = 'icons/turf/space.dmi'
-	underlay_appearance.icon_state = "1"
+	var/mutable_appearance/underlay_appearance = mutable_appearance(layer = TURF_LAYER, plane = FLOOR_PLANE) //This already existed in the proc, just here for convenience
+	var/list/turf_to_underlay = src.baseturfs[length - 2]
+	underlay_appearance.icon = turf_to_underlay.icon
+	underlay_appearance.icon_state = turf_to_underlay.icon_state
 	underlays = list(underlay_appearance)
 
 /turf/closed/wall/mineral/titanium/shuttle_wall/window
