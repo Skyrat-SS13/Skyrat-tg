@@ -1,5 +1,6 @@
 /datum/job/expeditionary_trooper
 	title = "Vanguard Operative"
+	description = "Explore gateways, watch your friends die, find all the loot."
 	department_head = list("Captain")
 	faction = FACTION_STATION
 	total_positions = 4

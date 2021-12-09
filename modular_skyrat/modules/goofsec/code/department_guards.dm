@@ -69,7 +69,7 @@
 
 /datum/job/orderly
 	title = "Orderly"
-	department_head = list("Chief Medical Officer")
+	description = "Defend the medical department, hold down idiots who refuse the vaccine, flex your muscles at people who fuck with medical."	department_head = list("Chief Medical Officer")
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
@@ -136,7 +136,7 @@
 
 /datum/job/science_guard
 	title = "Science Guard" // I'm a little busy here, Calhoun.
-	department_head = list("Research Director")
+	description = "Figure out why the emails aren't working, keep an eye on those eggheads, keep them safe from their mistakes."	department_head = list("Research Director")
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
@@ -205,7 +205,7 @@
 
 /datum/job/bouncer
 	title = "Bouncer"
-	department_head = list("Head of Personnel")
+	description = "Tell people they aren't on the list. Check people's IDs. Tell them to fuck off and get real ID."	department_head = list("Head of Personnel")
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
@@ -278,7 +278,7 @@
 
 /datum/job/customs_agent
 	title = "Customs Agent" // No, you don't get to ship ten kilograms of cocaine to the Spinward Stellar Coalition.
-	department_head = list("Quartermaster")
+	description = "Inspect the packages coming to and from the station, protect the cargo department, beat the shit out of people trying to ship Cocaine to the Spinward Stellar Coalition."	department_head = list("Quartermaster")
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
@@ -345,7 +345,7 @@
 
 /datum/job/engineering_guard
 	title = "Engineering Guard" // Listen here, this engine is a restricted area. Please leave if you aren't wearing a radioactive suit.
-	department_head = list("Chief Engineer")
+	description = "Spy on the supermatter, keep an eye on atmospherics, fall asleep at your desk."	department_head = list("Chief Engineer")
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2

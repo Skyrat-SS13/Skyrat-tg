@@ -1,5 +1,6 @@
 /datum/job/barber
 	title = "Barber"
+	description = "Run your salon and meet the crews sanitary needs, such as hair cutting, massaging and more!"
 	department_head = list("Head of Personnel")
 	faction = FACTION_STATION
 	total_positions = 2
