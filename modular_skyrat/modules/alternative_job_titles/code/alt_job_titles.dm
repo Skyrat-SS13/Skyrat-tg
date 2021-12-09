@@ -74,7 +74,6 @@
 	alt_titles = list("Detective", "Forensic Technician", "Private Investigator", "Forensic Scientist")
 
 /datum/job/doctor
-	alt_titles = list("Medical Doctor", "Surgeon", "Nurse")
 
 /datum/job/engineering_guard
 
@@ -128,17 +127,7 @@
 
 
 /datum/job/scientist
-	alt_titles = list(
-    "Scientist",
-    "Circuitry Designer",
-    "Xenobiologist",
-    "Cytologist",
-    "Nanomachine Programmer",
-    "Plasma Researcher",
-    "Anomalist",
-    "Lab Technician",
-    "Theoretical Physicist",
-	)
+	alt_titles = list("Scientist", "Lab Technician", "Theoretical Physicist")
 
 /datum/job/security_medic
 	alt_titles = list("Security Medic", "Field Medic", "Security Corpsman", "Brig Physician")
