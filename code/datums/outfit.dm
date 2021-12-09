@@ -387,6 +387,8 @@
 	for(var/skillpath in skillchips)
 		preload += skillpath
 
+	preload -= typesof(/obj/item/clothing/under/color/random) // SKYRAT EDIT - Don't preload random jumpsuit spawners that delete themselves
+
 	return preload
 
 /// Return a json list of this outfit
