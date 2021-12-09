@@ -3,6 +3,7 @@
 		/obj/item/clothing/under/utility/sec/old = 3,
 		/obj/item/clothing/suit/toggle/jacket/sec/old = 3,
 		/obj/item/clothing/neck/security_cape = 10,
+		/obj/item/clothing/head/beret/sec/peacekeeper = 10,
 	)
 
 /obj/machinery/vending/wardrobe/medi_wardrobe
