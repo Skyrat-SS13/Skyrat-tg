@@ -64,6 +64,7 @@
 				eyes.applyOrganDamage(5)
 
 /obj/item/clothing/glasses/AltClick(mob/user)
+	. = ..() //SKYRAT EDIT ADDITION
 	if(glass_colour_type && ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 

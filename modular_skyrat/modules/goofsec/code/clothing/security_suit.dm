@@ -4,8 +4,11 @@
 
 /**
  * Standard security vest
+ * Needs to be a new type so we don't give random people a security themed vest.
  */
-/obj/item/clothing/suit/armor/vest
+/obj/item/clothing/suit/armor/vest/security
+	name = "armored security vest"
+	desc = "An armored vest designed for use in combat, used by security personnel."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "vest_black"
@@ -20,6 +23,7 @@
 			RESKIN_WORN_ICON_STATE = "vest_white"
 		),
 	)
+
 
 /**
  * Standard bulleproof vest

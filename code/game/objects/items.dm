@@ -1296,9 +1296,12 @@ attack_basic_mob
 	if(!unique_reskin[pick])
 		return
 	current_skin = pick
-	icon = unique_reskin[pick][RESKIN_ICON]
-	icon_state = unique_reskin[pick][RESKIN_ICON_STATE]
-	worn_icon = unique_reskin[pick][RESKIN_WORN_ICON]
+	if(unique_reskin[pick][RESKIN_ICON])
+		icon = unique_reskin[pick][RESKIN_ICON]
+	if(unique_reskin[pick][RESKIN_ICON_STATE])
+		icon_state = unique_reskin[pick][RESKIN_ICON_STATE]
+	if(unique_reskin[pick][RESKIN_WORN_ICON])
+		worn_icon = unique_reskin[pick][RESKIN_WORN_ICON]
 	if(unique_reskin[pick][RESKIN_WORN_ICON_STATE])
 		worn_icon_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
 	if(unique_reskin[pick][RESKIN_MUTANT_VARIANTS])

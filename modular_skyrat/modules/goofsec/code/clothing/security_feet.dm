@@ -1,5 +1,7 @@
 /**
  * New security boots.
+ *
+ * Specific type for approved boot sounds as well as a custom security look.
  */
 /obj/item/clothing/shoes/jackboots/security
 	name = "security jackboots"

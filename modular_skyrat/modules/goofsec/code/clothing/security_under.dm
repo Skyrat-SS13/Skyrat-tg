@@ -6,7 +6,7 @@
 /**
  * Standard security jumpsuit
  */
-/obj/item/clothing/under/rank/security
+/obj/item/clothing/under/rank/security/officer
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "security_black"

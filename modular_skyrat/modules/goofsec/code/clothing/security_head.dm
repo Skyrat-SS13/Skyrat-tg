@@ -7,9 +7,9 @@
 	icon_state = "security_helmet"
 	toggle_message = "You pull the visor down on"
 	alt_toggle_message = "You push the visor up on"
-	flags_inv = HIDEEARS|HIDEFACE|HIDESNOUT
+	flags_inv = HIDEEARS|HIDEFACE
 	actions_types = list(/datum/action/item_action/toggle)
-	visor_flags_inv = HIDEFACE|HIDESNOUT
+	visor_flags_inv = HIDEFACE
 	can_toggle = TRUE
 	toggle_cooldown = 0
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
