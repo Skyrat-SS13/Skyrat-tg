@@ -34,7 +34,8 @@
 		/obj/item/razor=3,
 		/obj/item/canvas/nineteen_nineteen = 5,
 		/obj/item/canvas/twentythree_nineteen = 5,
-		/obj/item/canvas/twentythree_twentythree = 5
+		/obj/item/canvas/twentythree_twentythree = 5,
+		/obj/item/paint_palette = 3
 	)
 	//SKYRAT EDIT: Adds Ceramic, Glassblowing, and Fishing Skillchips
 	contraband = list(
