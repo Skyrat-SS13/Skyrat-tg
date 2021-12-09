@@ -1,7 +1,7 @@
 /datum/quirk/equipping
 	abstract_parent_type = /datum/quirk/equipping
-	var/list/items
-	var/list/forced_items
+	var/list/items = list()
+	var/list/forced_items = list()
 
 /datum/quirk/equipping/add_unique()
 	var/mob/living/carbon/carbon_holder = quirk_holder
@@ -27,7 +27,8 @@
 				if (success)
 					break
 		equipped_items[item] = success
-	on_equip_items(equipped_items)
+	for (var/obj/item/equipped as anything in equipped_items)
+		on_equip_item(equipped, equipped_items[equipped])
 
 /datum/quirk/equipping/proc/force_equip_item(mob/living/carbon/target, obj/item/item, slot, check_nodrop = TRUE)
 	var/obj/item/item_in_slot = target.get_item_by_slot(slot)
@@ -37,14 +38,14 @@
 		target.dropItemToGround(item_in_slot, force = TRUE)
 	return target.equip_to_slot_if_possible(item, slot, disable_warning = TRUE) //this should never not work tbh
 
-/datum/quirk/equipping/proc/on_equip_items(list/items_equipped)
+/datum/quirk/equipping/proc/on_equip_item(obj/item/equipped, successful)
 	return
 
 /datum/quirk/equipping/lungs
 	abstract_parent_type = /datum/quirk/equipping/lungs
 	var/obj/item/organ/lungs/lungs_holding
 	var/obj/item/organ/lungs/lungs_added
-	var/lungs_typepath
+	var/lungs_typepath = /obj/item/organ/lungs
 	items = list(/obj/item/clothing/accessory/breathing = list(ITEM_SLOT_BACKPACK))
 	var/breath_type = "oxygen"
 
@@ -73,12 +74,14 @@
 	lungs_holding.organ_flags &= ~ORGAN_FROZEN
 	carbon_holder.update_internals_hud_icon(1)
 
-/datum/quirk/equipping/lungs/on_equip_items(list/items_equipped)
+/datum/quirk/equipping/lungs/on_equip_item(obj/item/equipped, successful)
 	var/mob/living/carbon/human/human_holder = quirk_holder
-	for (var/obj/item/clothing/accessory/breathing/acc in items_equipped)
-		acc.breath_type = breath_type
-		if (acc.can_attach_accessory(human_holder?.w_uniform))
-			acc.attach(human_holder.w_uniform, human_holder)
+	if (!istype(equipped, /obj/item/clothing/accessory/breathing))
+		return
+	var/obj/item/clothing/accessory/breathing/acc = equipped
+	acc.breath_type = breath_type
+	if (acc.can_attach_accessory(human_holder?.w_uniform))
+		acc.attach(human_holder.w_uniform, human_holder)
 
 /obj/item/clothing/accessory/breathing
 	name = "Breathing dogtag"
@@ -119,12 +122,10 @@
 	lungs_typepath = /obj/item/organ/lungs/nitrogen
 	breath_type = "nitrogen"
 
-/datum/quirk/equipping/lungs/nitrogen/on_equip_items(list/items_equipped)
+/datum/quirk/equipping/lungs/nitrogen/on_equip_item(obj/item/equipped, successful)
 	. = ..()
 	var/mob/living/carbon/carbon_holder = quirk_holder
-	if (!istype(carbon_holder))
+	if (!successful || !istype(carbon_holder) || !istype(equipped, /obj/item/tank/internals))
 		return
-	for (var/obj/item/tank/internals/tank in items_equipped)
-		if (items_equipped[tank])
-			carbon_holder.internal = tank
-			carbon_holder.update_internals_hud_icon(1)
+	carbon_holder.internal = equipped
+	carbon_holder.update_internals_hud_icon(1)
