@@ -97,7 +97,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 		add_overlay(GLOB.combat_indicator_overlay)
 
 /obj/vehicle/sealed/proc/disable_ci(mob/living/user)
-	if ((istype(src, /obj/vehicle/sealed/mecha/combat/savannah_ivanov)) && ((!(user in return_drivers()) && (src.driver_amount() > 0)) || ((user in return_drivers()) && (src.occupant_amount() > 0))))
+	if ((istype(src, /obj/vehicle/sealed/mecha/combat/savannah_ivanov)) && (((user in return_occupants()) && (src.driver_amount() > 0)) || ((user in return_drivers()) && (src.occupant_amount() > 0))))
 		return
 	if (combat_indicator_vehicle)
 		var/has_occupant_with_ci = FALSE
