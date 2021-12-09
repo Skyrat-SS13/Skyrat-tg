@@ -7,9 +7,7 @@
 	icon_state = "security_helmet"
 	toggle_message = "You pull the visor down on"
 	alt_toggle_message = "You push the visor up on"
-	flags_inv = HIDEEARS|HIDEFACE
 	actions_types = list(/datum/action/item_action/toggle)
-	visor_flags_inv = HIDEFACE
 	can_toggle = TRUE
 	toggle_cooldown = 0
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
@@ -43,11 +41,14 @@
 /**
  * Security cap
 */
-/obj/item/clothing/head/soft/sec
+/obj/item/clothing/head/security_cap
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "security_cap_black"
 	uses_advanced_reskins = TRUE
+	armor = list(MELEE = 30, BULLET = 25, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50)
+	strip_delay = 60
+	dog_fashion = null
 	unique_reskin = list(
 		"Blue Variant" = list(
 			RESKIN_ICON_STATE = "security_cap_blue",

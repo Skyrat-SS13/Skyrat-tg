@@ -1286,7 +1286,7 @@ attack_basic_mob
 
 	var/list/items = list()
 	for(var/reskin_option in unique_reskin)
-		var/image/item_image = image(icon = unique_reskin[reskin_option][RESKIN_ICON], icon_state = unique_reskin[reskin_option][RESKIN_ICON_STATE])
+		var/image/item_image = image(icon = unique_reskin[reskin_option][RESKIN_ICON] ? unique_reskin[reskin_option][RESKIN_ICON] : icon, icon_state = unique_reskin[reskin_option][RESKIN_ICON_STATE])
 		items += list("[reskin_option]" = item_image)
 	sort_list(items)
 

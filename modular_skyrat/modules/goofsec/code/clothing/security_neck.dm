@@ -37,3 +37,4 @@
 		worn_icon_state = icon_state
 	else
 		worn_icon_state = "[icon_state]_left"
+

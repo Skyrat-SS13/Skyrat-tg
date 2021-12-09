@@ -9,6 +9,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 	icon_state = "belt_black"
+	worn_icon_state = "belt_black"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"White Variant" = list(
