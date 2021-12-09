@@ -47,7 +47,7 @@
 
 	id_trim = /datum/id_trim/job/warden
 	uniform = /obj/item/clothing/under/rank/security/warden
-	suit = /obj/item/clothing/suit/armor/vest/warden/alt
+	suit = /obj/item/clothing/suit/armor/vest/warden //SKYRAT EDIT CHANGE
 	suit_store = /obj/item/gun/energy/disabler
 	backpack_contents = list(
 		/obj/item/melee/baton/security/loaded = 1,
