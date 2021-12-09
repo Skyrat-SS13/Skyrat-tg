@@ -38,7 +38,7 @@
 
 /obj/machinery/vending/wardrobe/cargo_wardrobe
 	skyrat_products = list(
-		/obj/item/clothing/under/misc/cargo_long = 3,
+		/obj/item/clothing/under/rank/cargo/cargo_long = 3,
 		/obj/item/clothing/under/rank/cargo/gorka = 3,
 		/obj/item/clothing/under/rank/cargo/turtleneck = 3,
 		/obj/item/clothing/under/utility/cargo = 3,
@@ -87,8 +87,8 @@
 	skyrat_products = list(
 		/obj/item/clothing/suit/nemes = 1,
 		/obj/item/clothing/head/nemes = 1,
-		/obj/item/clothing/head/pharaoh = 1, //dont google camel by camel worst mistake of my life
-		/obj/item/clothing/under/rank/pmarsrobe = 1
+		/obj/item/clothing/head/pharaoh = 1, //dont google camel by camel worst mistake of my life // edit: oh god
+		/obj/item/clothing/under/costume/pmarsrobe = 1
 	)
 
 	skyrat_contraband = list(

@@ -3,7 +3,7 @@
 	can_adjust = FALSE
 	body_parts_covered = CHEST|GROIN
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/dress.dmi' // SKYRAT EDIT
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/dress.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/dress.dmi' // SKYRAT EDIT
 
 /obj/item/clothing/under/dress/sundress
 	name = "sundress"

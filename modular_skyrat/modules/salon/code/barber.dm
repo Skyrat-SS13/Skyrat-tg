@@ -31,7 +31,7 @@
 	glasses = /obj/item/clothing/glasses/sunglasses
 	belt = /obj/item/pda
 	ears = /obj/item/radio/headset/headset_srv
-	uniform = /obj/item/clothing/under/rank/barber
+	uniform = /obj/item/clothing/under/rank/civilian/barber
 	shoes = /obj/item/clothing/shoes/laceup
 	id_trim = /datum/id_trim/job/barber
 

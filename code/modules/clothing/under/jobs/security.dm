@@ -170,7 +170,7 @@
 						"Parade HoS Uniform" = "hos_parade_male",
 						"Parade Woman's HoS Uniform" = "hos_parade_fem",
 						"Formal HoS Uniform" = "hosblueclothes",
-						"Peacekeeper" = "peacekeeper_hos"
+						"Peacekeeper" = "peacekeeper_hos",
 						"Imperial" = "imphos"
 	)
 	/// SKYRAT EDIT ADDITION END

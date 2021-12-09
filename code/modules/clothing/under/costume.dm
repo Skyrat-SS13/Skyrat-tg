@@ -1,6 +1,6 @@
 /obj/item/clothing/under/costume
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/costume.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/costume.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/costume.dmi' // SKYRAT EDIT
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/costume.dmi' // SKYRAT EDIT
 
 /obj/item/clothing/under/costume/roman
 	name = "\improper Roman armor"

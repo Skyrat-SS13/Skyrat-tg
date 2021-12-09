@@ -101,7 +101,7 @@
 
 	belt = /obj/item/pda/medical
 	ears = /obj/item/radio/headset/headset_med
-	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/orderly
+	uniform = /obj/item/clothing/under/rank/security/officer/orderly
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly
@@ -309,7 +309,7 @@
 	belt = /obj/item/pda/cargo
 	ears = /obj/item/radio/headset/headset_cargo
 	shoes = /obj/item/clothing/shoes/sneakers/black
-	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent
+	uniform = /obj/item/clothing/under/rank/security/officer/customs_agent
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent
 	l_pocket = /obj/item/restraints/handcuffs
@@ -377,7 +377,7 @@
 	belt = /obj/item/pda/engineering
 	ears = /obj/item/radio/headset/headset_eng
 	shoes = /obj/item/clothing/shoes/workboots
-	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard
+	uniform = /obj/item/clothing/under/rank/security/officer/engineering_guard
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard
 	l_pocket = /obj/item/restraints/handcuffs

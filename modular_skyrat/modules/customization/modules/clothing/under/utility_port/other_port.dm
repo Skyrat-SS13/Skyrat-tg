@@ -115,7 +115,7 @@
 	desc = "A plain grey shirt and black pants - a much more rugged option compared to the jumpsuit."
 	icon_state = "greyshirt"
 
-/obj/item/clothing/under/misc/rank/cargo/cargo_long
+/obj/item/clothing/under/rank/cargo/cargo_long
 	name = "cargo technician's long jumpsuit"
 	desc = "For crate-pushers who'd rather protect their legs than show them off."
 	icon_state = "cargo_long"
