@@ -5,6 +5,14 @@ SERVERSQLNAME
 ## Comment this out if you'd like a server that cares only about local bans in the database.
 RESPECT_GLOBAL_BANS
 
+## Automatic population control population limit, will send players(not admins) to the overflow server.
+## Set to 0 to disable
+## MAKE SURE YOU SET AN OVERFLOW IP!
+PLAYER_CAP 0
+
+## The IP of the overflow server. See above.
+OVERFLOW_SERVER_IP byond://skyrat13.tk:22095
+
 ## Comment this out if you want to use the SQL based mentor system, the legacy system uses mentors.txt.
 ## You need to set up your database to use the SQL based system.
 ## This flag is automatically enabled if SQL_ENABLED isn't

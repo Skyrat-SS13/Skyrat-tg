@@ -14,6 +14,19 @@
 	if(!. || !client)
 		return FALSE
 
+	//SKYRAT EDIT ADDITION
+	var/player_cap = CONFIG_GET(number/player_cap)
+	if(player_cap && TGS_CLIENT_COUNT >= player_cap && !is_admin(usr))
+		var/overflow_server_ip = CONFIG_GET(string/overflow_server_ip)
+		if(!overflow_server_ip)
+			message_admins("WARNING: Overflow server IP not set!")
+		else
+			to_chat_immediate(src, span_boldwarning("The round is full, please wait while you are transferred to the overflow server..."))
+			message_admins("[src] attempted to join however the server is full and has been sent to the overflow server.")
+			client << link(overflow_server_ip)
+			return
+	//SKYRAT EDIT END
+
 	var/motd = global.config.motd
 	if(motd)
 		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)

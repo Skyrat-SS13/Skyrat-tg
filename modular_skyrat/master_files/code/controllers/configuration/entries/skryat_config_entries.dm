@@ -6,6 +6,12 @@
 
 /datum/config_entry/flag/russian_text_formation
 
+// Overflow server pop cap
+/datum/config_entry/number/player_cap
+
+// Overflow server IP
+/datum/config_entry/string/overflow_server_ip
+
 //DISCORD GAME ALERT CONFIGS
 //Role id to ping
 /datum/config_entry/string/game_alert_role_id
