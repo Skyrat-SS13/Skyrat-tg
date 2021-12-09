@@ -1,5 +1,6 @@
 /datum/job/security_sergeant
 	title = "Security Sergeant"
+	description = "Instruct officers on what to do, demand they drop and give you twenty, cry as they refuse your authority over them."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Head of Security")
 	faction = FACTION_STATION

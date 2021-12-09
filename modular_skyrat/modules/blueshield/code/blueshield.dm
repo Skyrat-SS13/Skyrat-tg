@@ -1,5 +1,6 @@
 /datum/job/blueshield
 	title = "Blueshield"
+	description = "Protect heads of staff, get your fancy gun stolen, cry as the captain touches the supermatter."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Nanotrasen Representative")
 	faction = FACTION_STATION
@@ -20,6 +21,9 @@
 	plasmaman_outfit = /datum/outfit/plasmaman/blueshield
 	display_order = JOB_DISPLAY_ORDER_BLUESHIELD
 	bounty_types = CIV_JOB_SEC
+
+	department_for_prefs = /datum/job_department/captain
+
 	departments_list = list(
 		/datum/job_department/central_command,
 		/datum/job_department/command,

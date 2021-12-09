@@ -14,7 +14,7 @@
 	plasmaman_outfit = /datum/outfit/plasmaman/prisoner
 
 	display_order = JOB_DISPLAY_ORDER_PRISONER
-	department_for_prefs = /datum/job_department/security
+	department_for_prefs = /datum/job_department/assistant // SKYRAT EDIT - ORIGINAL: /datum/job_department/security
 
 	exclusive_mail_goodies = TRUE
 	mail_goodies = list (

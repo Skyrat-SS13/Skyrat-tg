@@ -57,6 +57,10 @@ export type Department = {
 export type Job = {
   description: string;
   department: string;
+  // SKYRAT EDIT
+  veteran?: boolean;
+  alt_titles?: string[];
+// SKYRAT EDIT END
 };
 
 export type Quirk = {
@@ -151,7 +155,7 @@ export type PreferencesMenuData = {
   preview_options: string; // SKYRAT EDIT ADDITION
   preview_selection: string; // SKYRAT EDIT ADDITION
 
-  is_veteran: BooleanLike;
+  is_veteran: BooleanLike; // SKYRAT EDIT - Veteran status
 
   character_preferences: {
     clothing: Record<string, string>;

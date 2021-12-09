@@ -32,12 +32,11 @@
 	var/default_job_title = params["job"]
 	var/new_job_title = params["new_title"]
 
-<<<<<<< HEAD
 	preferences.alt_job_titles[default_job_title] = new_job_title
 
 	return TRUE
 // SKYRAT EDIT END
-=======
+
 /datum/preference_middleware/jobs/get_constant_data()
 	var/list/data = list()
 
@@ -65,6 +64,8 @@
 		jobs[job.title] = list(
 			"description" = job.description,
 			"department" = department_name,
+			"veteran" = job.veteran_only, // SKYRAT EDIT
+			"alt_titles" = job.alt_titles, // SKYRAT EDIT
 		)
 
 	data["departments"] = departments
@@ -72,7 +73,6 @@
 
 	return data
 
->>>>>>> 0989ce2d6fd (Remove job .tsx files from preferences menu, use compiled data instead (#63200))
 /datum/preference_middleware/jobs/get_ui_data(mob/user)
 	var/list/data = list()
 	// SKYRAT EDIT

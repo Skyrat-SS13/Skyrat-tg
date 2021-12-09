@@ -2,7 +2,7 @@
 	title = "Research Director"
 	description = "Supervise research efforts, ensure Robotics is in working \
 		order, make sure the AI and its Cyborgs aren't rogue, replacing them if \
-		they are"
+		they are."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	department_head = list("Captain")
 	head_announce = list("Science")

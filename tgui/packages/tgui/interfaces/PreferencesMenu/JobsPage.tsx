@@ -3,6 +3,7 @@ import { classes } from "common/react";
 import { InfernoNode, SFC } from "inferno";
 import { useBackend } from "../../backend";
 import { Box, Button, Dropdown, Stack, Tooltip } from "../../components";
+import { logger } from "../../logging";
 import { createSetPreference, Job, JoblessRole, JobPriority, PreferencesMenuData } from "./data";
 import { ServerPreferencesFetcher } from "./ServerPreferencesFetcher";
 
@@ -188,26 +189,19 @@ const JobRow = (props: {
   const isOverflow = data.overflow_role === name;
   const priority = data.job_preferences[name];
 
-<<<<<<< HEAD
-  const createSetPriority = createCreateSetPriorityFromName(context, job.name);
+  const createSetPriority = createCreateSetPriorityFromName(context, name);
   // SKYRAT EDIT
   const { act } = useBackend<PreferencesMenuData>(context);
   // SKYRAT EDIT END
 
   const experienceNeeded = data.job_required_experience
-    && data.job_required_experience[job.name];
-  const daysLeft = data.job_days_left ? data.job_days_left[job.name] : 0;
-  // SKYRAT EDIT
-  const alt_title_selected = data.job_alt_titles[job.name]
-    ? data.job_alt_titles[job.name] : job.name;
-  // SKYRAT EDIT END
-=======
-  const createSetPriority = createCreateSetPriorityFromName(context, name);
-
-  const experienceNeeded = data.job_required_experience
     && data.job_required_experience[name];
   const daysLeft = data.job_days_left ? data.job_days_left[name] : 0;
->>>>>>> 0989ce2d6fd (Remove job .tsx files from preferences menu, use compiled data instead (#63200))
+
+  // SKYRAT EDIT
+  const alt_title_selected = data.job_alt_titles[name]
+    ? data.job_alt_titles[name] : name;
+  // SKYRAT EDIT END
 
   let rightSide: InfernoNode;
 
@@ -238,7 +232,7 @@ const JobRow = (props: {
         </Stack.Item>
       </Stack>
     );
-  // SKYRAT EDIT
+  // SKYRAT EDIT START
   } else if (job.veteran && !data.is_veteran) {
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
@@ -248,7 +242,7 @@ const JobRow = (props: {
       </Stack>
     );
   } else if (data.species_restricted_jobs
-            && data.species_restricted_jobs.indexOf(job.name) !== -1) {
+            && data.species_restricted_jobs.indexOf(name) !== -1) {
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
         <Stack.Item grow textAlign="right">
@@ -265,11 +259,7 @@ const JobRow = (props: {
     />);
   }
   return (
-<<<<<<< HEAD
-    <Box className={props.className} style={{ // SKYRAT EDIT
-=======
-    <Stack.Item className={className} height="100%" style={{
->>>>>>> 0989ce2d6fd (Remove job .tsx files from preferences menu, use compiled data instead (#63200))
+    <Box className={className} style={{ // SKYRAT EDIT
       "margin-top": 0,
     }}>
       <Stack align="center" /* SKYRAT EDIT */>
@@ -279,21 +269,15 @@ const JobRow = (props: {
         >
           <Stack.Item className="job-name" width="50%" style={{
             "padding-left": "0.3em",
-<<<<<<< HEAD
           }}> { // SKYRAT EDIT
-              (!job.alt_titles ? job.name : <Dropdown
+              (!job.alt_titles ? name : <Dropdown
                 width="100%"
                 options={job.alt_titles}
                 displayText={alt_title_selected}
-                onSelected={(value) => act("set_job_title", { job: job.name, new_title: value })}
+                onSelected={(value) => act("set_job_title", { job: name, new_title: value })}
               />)
             // SKYRAT EDIT END
             }
-=======
-          }}>
-
-            {name}
->>>>>>> 0989ce2d6fd (Remove job .tsx files from preferences menu, use compiled data instead (#63200))
           </Stack.Item>
         </Tooltip>
 
@@ -308,23 +292,9 @@ const JobRow = (props: {
 const Department: SFC<{ department: string}> = (props) => {
   const { children, department: name } = props;
   const className = `PreferencesMenu__Jobs__departments--${name}`;
+  logger.log(name + ": " + className);
 
   return (
-<<<<<<< HEAD
-    // SKYRAT EDIT START
-    <Box className="jobRow">
-      {jobs.head
-        && <JobRow className={`${className} head`} job={jobs.head} />}
-      {jobs.jobs.map((job) => {
-        if (job === jobs.head) {
-          return null;
-        }
-
-        return <JobRow className={className} key={job.name} job={job} />;
-      })}
-    </Box>
-    // SKYRAT EDIT END
-=======
     <ServerPreferencesFetcher
       render={(data) => {
         if (!data) {
@@ -349,27 +319,24 @@ const Department: SFC<{ department: string}> = (props) => {
           department.head
         );
 
+        logger.log(className);
         return (
           <Box>
-            <Stack
-              vertical
-              fill>
-              {jobsForDepartment.map(([name, job]) => {
-                return (<JobRow
-                  className={classes([className, name === department.head && "head"])}
-                  key={name}
-                  job={job}
-                  name={name}
-                />);
-              })}
-            </Stack>
+            {jobsForDepartment.map(([name, job]) => {
+              logger.log(name);
+              return (<JobRow /* SKYRAT EDIT START - Fixing alt titles */
+                className={classes([className, name === department.head && "head"])}
+                key={name}
+                job={job}
+                name={name}
+              />);
+            })/* SKYRAT EDIT END */}
 
             {children}
           </Box>
         );
       }}
     />
->>>>>>> 0989ce2d6fd (Remove job .tsx files from preferences menu, use compiled data instead (#63200))
   );
 };
 
