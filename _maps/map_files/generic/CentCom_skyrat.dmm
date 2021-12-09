@@ -207,9 +207,19 @@
 /turf/open/floor/iron/grimy,
 /area/centcom/control)
 "dx" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/space/basic,
-/area/centcom/ferry)
+/obj/docking_port/stationary{
+	dheight = 3;
+	dir = 8;
+	dwidth = 8;
+	height = 11;
+	id = "ferry_away";
+	json_key = null;
+	name = "CentCom Ferry Dock";
+	roundstart_template = /datum/map_template/shuttle/ferry;
+	width = 20
+	},
+/turf/open/space,
+/area/space)
 "dy" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Administrative Office";
@@ -6697,20 +6707,6 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/centcom/ferry)
-"vB" = (
-/obj/docking_port/stationary{
-	dheight = 3;
-	dir = 8;
-	dwidth = 8;
-	height = 11;
-	id = "ferry_away";
-	json_key = null;
-	name = "CentCom Ferry Dock";
-	roundstart_template = /datum/map_template/shuttle/ferry;
-	width = 20
-	},
-/turf/open/space/basic,
-/area/space)
 "vC" = (
 /obj/machinery/door/airlock/external{
 	name = "Ferry Airlock"
@@ -48117,8 +48113,8 @@ aa
 aa
 aa
 aa
-vB
-ad
+aa
+dx
 aa
 aa
 aa
@@ -48376,7 +48372,7 @@ aa
 oe
 vC
 DK
-dx
+oe
 aa
 aa
 aa
@@ -48633,7 +48629,7 @@ aa
 oe
 yn
 yn
-dx
+oe
 aa
 aa
 aa
@@ -48890,7 +48886,7 @@ aa
 oe
 Xy
 Xy
-dx
+oe
 aa
 aa
 aa
@@ -49147,7 +49143,7 @@ aa
 oe
 yn
 yn
-dx
+oe
 aa
 aa
 aa
