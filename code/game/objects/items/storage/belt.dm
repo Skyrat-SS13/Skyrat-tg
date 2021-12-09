@@ -256,6 +256,7 @@
 		/obj/item/restraints/legcuffs/bola,
 		/obj/item/holosign_creator/security,
 		/obj/item/stock_parts/cell/microfusion, //SKYRAT EDIT ADDITION
+		/obj/item/gun, //SKYRAT EDIT ADDITION
 		))
 
 /obj/item/storage/belt/security/full/PopulateContents()
