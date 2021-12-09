@@ -433,8 +433,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			else //Entries in the list should only ever be items or null, so if it's not an item, we can assume it's an empty hand
 				INVOKE_ASYNC(C, /mob/proc/put_in_hands, new mutanthands)
 
-<<<<<<< HEAD
-=======
 	if(ishuman(C))
 		var/mob/living/carbon/human/human = C
 		for(var/obj/item/organ/external/organ_path as anything in external_organs)
@@ -445,7 +443,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			new_organ.set_sprite(feature_key_name)
 			new_organ.Insert(human)
 
->>>>>>> 9b605b9cc0a (Speeds up the preference menu, significantly. Adds object pooling, other stuff too (#63225))
 	for(var/X in inherent_traits)
 		ADD_TRAIT(C, X, SPECIES_TRAIT)
 
