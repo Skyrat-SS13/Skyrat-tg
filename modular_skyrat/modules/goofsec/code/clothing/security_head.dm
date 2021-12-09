@@ -24,13 +24,15 @@
 /**
  * Security beret - now garrison
 */
-/obj/item/clothing/head/beret/sec
+/obj/item/clothing/head/security_garrison
 	name = "security garrison cap"
 	desc = "A robust garrison cap with the security insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "garrison_black"
 	uses_advanced_reskins = TRUE
+	armor = list(MELEE = 30, BULLET = 25, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50)
+	strip_delay = 60
 	unique_reskin = list(
 		"Blue Variant" = list(
 			RESKIN_ICON_STATE = "garrison_blue",
