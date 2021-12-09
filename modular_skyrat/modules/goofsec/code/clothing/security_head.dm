@@ -42,6 +42,8 @@
  * Security cap
 */
 /obj/item/clothing/head/security_cap
+	name = "security cap"
+	desc = "A robust cap with the security insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "security_cap_black"
