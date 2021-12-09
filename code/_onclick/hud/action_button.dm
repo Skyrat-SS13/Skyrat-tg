@@ -241,7 +241,7 @@
 
 	var/coord_row = "[row ? -row : "+0"]"
 
-	return "WEST[coord_col]:[coord_col_offset],NORTH[coord_row]:-6"
+	return "LEFT[coord_col]:[coord_col_offset],TOP[coord_row]:-6" //SKYRAT EDIT - Variable Viewport
 
 /datum/hud/proc/SetButtonCoords(atom/movable/screen/button,number)
 	var/row = round((number-1)/AB_MAX_COLUMNS)

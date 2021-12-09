@@ -448,17 +448,17 @@
 	var/atom/real_location = real_location()
 	var/cx = tx
 	var/cy = ty
-	boxes.screen_loc = "[tx]:,[ty] to [mx],[my]"
+	boxes.screen_loc = "LEFT+[tx],BOTTOM+[ty] to LEFT+[mx],BOTTOM+[my]" //SKYRAT EDIT - Variable Viewport
 	for(var/obj/O in real_location)
 		if(QDELETED(O))
 			continue
-		O.screen_loc = "[cx],[cy]"
+		O.screen_loc = "LEFT+[cx],BOTTOM+[cy]" //SKYRAT EDIT - Variable Viewport
 		O.plane = ABOVE_HUD_PLANE
 		cx++
 		if(cx > mx)
 			cx = tx
 			cy--
-	closer.screen_loc = "[mx+1],[my]"
+	closer.screen_loc = "LEFT+[mx+1],BOTTOM+[my]" //SKYRAT EDIT - Variable Viewport
 
 //Resets something that is being removed from storage.
 /datum/component/storage/proc/_removal_reset(atom/movable/thing)

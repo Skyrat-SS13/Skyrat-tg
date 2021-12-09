@@ -436,11 +436,11 @@
 		return ..()
 	icon_state = "[base_icon_state][user.resting ? 0 : null]"
 	return ..()
-
+#define storage_ui_default "LEFT+7,BOTTOM+7 to LEFT+10,BOTTOM+8" //SKYRAT EDIT - Variable Viewport
 /atom/movable/screen/storage
 	name = "storage"
 	icon_state = "block"
-	screen_loc = "7,7 to 10,8"
+	screen_loc = storage_ui_default //SKYRAT EDIT - Variable Viewport
 	plane = HUD_PLANE
 
 /atom/movable/screen/storage/Initialize(mapload, new_master)
@@ -593,7 +593,7 @@
 	name = "flash"
 	icon_state = "blank"
 	blend_mode = BLEND_ADD
-	screen_loc = "WEST,SOUTH to EAST,NORTH"
+	screen_loc = "LEFT,BOTTOM to RIGHT,TOP" //SKYRAT EDIT - Variable Viewport
 	layer = FLASH_LAYER
 	plane = FULLSCREEN_PLANE
 

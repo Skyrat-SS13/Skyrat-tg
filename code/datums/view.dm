@@ -117,6 +117,4 @@
 	setTo(radius)
 
 /proc/getScreenSize(widescreen)
-	if(widescreen)
-		return CONFIG_GET(string/default_view)
-	return CONFIG_GET(string/default_view_square)
+	return CONFIG_GET(string/default_view_square) // SKYRAT EDIT - Variable Viewport
