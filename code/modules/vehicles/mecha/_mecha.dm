@@ -1058,7 +1058,7 @@
 		var/mob/living/silicon/ai/AI = M
 		if(forced)//This should only happen if there are multiple AIs in a round, and at least one is Malf.
 			//SKYRAT EDIT ADDITION BEGIN -- MECH CI
-			disable_ci()
+			disable_ci(AI)
 			UnregisterSignal(AI, COMSIG_MOB_CI_TOGGLED)
 			//SKYRAT EDIT ADDITION END
 			AI.gib()  //If one Malf decides to steal a mech from another AI (even other Malfs!), they are destroyed, as they have nowhere to go when replaced.
@@ -1126,7 +1126,7 @@
 	. = ..()
 	update_appearance()
 	//SKYRAT EDIT ADDITION -- MECH CI
-	disable_ci()
+	disable_ci(M)
 
 /////////////////////////
 ////// Access stuff /////
