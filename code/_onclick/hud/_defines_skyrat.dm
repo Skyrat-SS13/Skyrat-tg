@@ -1,22 +1,3 @@
-/*
-	These defines specificy screen locations.  For more information, see the byond documentation on the screen_loc var.
-
-	The short version:
-
-	Everything is encoded as strings because apparently that's how Byond rolls.
-
-	"1,1" is the bottom left square of the user's screen.  This aligns perfectly with the turf grid.
-	"1:2,3:4" is the square (1,3) with pixel offsets (+2, +4); slightly right and slightly above the turf grid.
-	Pixel offsets are used so you don't perfectly hide the turf under them, that would be crappy.
-
-	In addition, the keywords NORTH, BOTTOM, RIGHT, LEFT and CENTER can be used to represent their respective
-	screen borders. NORTH-1, for example, is the row just below the upper edge. Useful if you want your
-	UI to scale with screen size.
-
-	The size of the user's screen is defined by client.view (indirectly by world.view), in our case "15x15".
-	Therefore, the top right corner (except during admin shenanigans) is at "15,15"
-
-
 /proc/ui_hand_position(i) //values based on old hand ui positions (CENTER:-/+16,BOTTOM:5)
 	var/x_off = -(!(i % 2))
 	var/y_off = round((i-1) / 2)
@@ -196,4 +177,3 @@
 
 //SKYRAT HUD DEFINES BELOW
 #define ui_ammocounter "RIGHT-1:28,CENTER-5:9"
-*/// SKYRAT REMOVAL - Variable Viewport

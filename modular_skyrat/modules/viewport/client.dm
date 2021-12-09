@@ -98,8 +98,8 @@
 /datum/controller/configuration
 	var/lock_client_view_x
 	var/lock_client_view_y
-	var/max_client_view_x
-	var/max_client_view_y
+	var/max_client_view_x = 21 //Change these for the maximum allowed view range
+	var/max_client_view_y = 16
 
 /datum/preferences
 	var/icon_size = 64
