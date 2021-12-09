@@ -10,6 +10,7 @@
 	inhand_icon_state = "security_boots"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+	clothing_traits = list(TRAIT_SILENT_FOOTSTEPS) // We have other footsteps.
 
 /obj/item/clothing/shoes/jackboots/security/Initialize(mapload)
 	. = ..()
