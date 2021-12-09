@@ -22,8 +22,8 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	if (combat_indicator_vehicle)
 		if(world.time > vehicle_nextcombatpopup)
 			vehicle_nextcombatpopup = world.time + COMBAT_NOTICE_COOLDOWN
-			playsound(src, 'sound/machines/chime.ogg', 10, TRUE) //so for some reason it considers a mech a wall
-// 			flick_emote_popup_on_mob("combat", 20) FIXME: figure out how to fix this
+			playsound(src, 'sound/machines/chime.ogg', 10, TRUE)
+ 			flick_emote_popup_on_obj("combat", 20)
 			visible_message(span_boldwarning("[src]'s sensors deploy their shielding as the mech prepares for combat!"))
 		add_overlay(GLOB.combat_indicator_overlay)
 		combat_indicator_vehicle = TRUE
@@ -129,7 +129,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 /datum/config_entry/flag/combat_indicator
 
 // Surrender shit
-/atom/movable/screen/alert/status_effect/surrender/
+/atom/movable/screen/alert/status_effect/surrender
 	desc = "You're either in combat or being held up. Click here to surrender and show that you don't wish to fight. You will be incapacitated. (You can also say '*surrender' at any time to do this.)"
 
 /datum/emote/living/surrender
