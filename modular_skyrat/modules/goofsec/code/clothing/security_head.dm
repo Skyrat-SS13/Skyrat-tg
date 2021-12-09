@@ -33,6 +33,7 @@
 	uses_advanced_reskins = TRUE
 	armor = list(MELEE = 30, BULLET = 25, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50)
 	strip_delay = 60
+	mutant_variants = NONE
 	unique_reskin = list(
 		"Blue Variant" = list(
 			RESKIN_ICON_STATE = "garrison_blue",
@@ -53,6 +54,7 @@
 	armor = list(MELEE = 30, BULLET = 25, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50)
 	strip_delay = 60
 	dog_fashion = null
+	mutant_variants = NONE
 	unique_reskin = list(
 		"Blue Variant" = list(
 			RESKIN_ICON_STATE = "security_cap_blue",
