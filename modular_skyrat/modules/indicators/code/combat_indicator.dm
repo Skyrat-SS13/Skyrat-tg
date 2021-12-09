@@ -23,7 +23,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 		if(world.time > vehicle_nextcombatpopup)
 			vehicle_nextcombatpopup = world.time + COMBAT_NOTICE_COOLDOWN
 			playsound(src, 'sound/machines/chime.ogg', 10, TRUE)
- 			flick_emote_popup_on_obj("combat", 20)
+			flick_emote_popup_on_obj("combat", 20)
 			visible_message(span_boldwarning("[src]'s sensors deploy their shielding as the mech prepares for combat!"))
 		add_overlay(GLOB.combat_indicator_overlay)
 		combat_indicator_vehicle = TRUE
