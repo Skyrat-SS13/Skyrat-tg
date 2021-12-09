@@ -85,34 +85,24 @@
 	preload = TRUE
 
 /obj/item/storage/belt/utility/chief/full/PopulateContents()
-<<<<<<< HEAD
-	new /obj/item/screwdriver/power(src)
-	new /obj/item/crowbar/power(src)
-	new /obj/item/weldingtool/electric(src) // SKYRAT EDIT - original: 	new /obj/item/weldingtool/experimental(src)
-	new /obj/item/multitool(src)
-	new /obj/item/stack/cable_coil(src)
-	new /obj/item/extinguisher/mini(src)
-	new /obj/item/analyzer/ranged(src)	//SKYRAT EDIT - original: new /obj/item/analyzer(src)
-=======
 	SSwardrobe.provide_type(/obj/item/screwdriver/power, src)
 	SSwardrobe.provide_type(/obj/item/crowbar/power, src)
-	SSwardrobe.provide_type(/obj/item/weldingtool/experimental, src)//This can be changed if this is too much //It's been 5 years
+	SSwardrobe.provide_type(/obj/item/weldingtool/electric, src)//This can be changed if this is too much //It's been 5 years // SKYRAT EDIT - ORIGINAL: SSwardrobe.provide_type(/obj/item/weldingtool/experimental, src)
 	SSwardrobe.provide_type(/obj/item/multitool, src)
 	SSwardrobe.provide_type(/obj/item/stack/cable_coil, src)
 	SSwardrobe.provide_type(/obj/item/extinguisher/mini, src)
-	SSwardrobe.provide_type(/obj/item/analyzer, src)
->>>>>>> 9b605b9cc0a (Speeds up the preference menu, significantly. Adds object pooling, other stuff too (#63225))
+	SSwardrobe.provide_type(/obj/item/analyzer/ranged, src) //SKYRAT EDIT - ORIGINAL: SSwardrobe.provide_type(/obj/item/analyzer, src)
 	//much roomier now that we've managed to remove two tools
 
 /obj/item/storage/belt/utility/chief/full/get_types_to_preload()
 	var/list/to_preload = list() //Yes this is a pain. Yes this is the point
 	to_preload += /obj/item/screwdriver/power
 	to_preload += /obj/item/crowbar/power
-	to_preload += /obj/item/weldingtool/experimental
+	to_preload += /obj/item/weldingtool/electric // SKYRAT EDIT - Electric welder
 	to_preload += /obj/item/multitool
 	to_preload += /obj/item/stack/cable_coil
 	to_preload += /obj/item/extinguisher/mini
-	to_preload += /obj/item/analyzer
+	to_preload += /obj/item/analyzer/ranged // SKYRAT EDIT - Ranged Analyzer
 	return to_preload
 
 /obj/item/storage/belt/utility/full/PopulateContents()
