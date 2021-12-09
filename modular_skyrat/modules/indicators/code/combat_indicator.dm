@@ -90,7 +90,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 /obj/vehicle/sealed/proc/handle_ci_migration(mob/living/user)
 	if(!typesof(user.loc, /obj/vehicle/sealed))
 		return
-	if ((istype(src, /obj/vehicle/sealed/mecha/combat/savannah_ivanov)) && (!(user in return_drivers())) && (src.driver_amount() > 0))
+	if ((istype(src, /obj/vehicle/sealed/mecha/combat/savannah_ivanov)) && (((user in return_occupants())) && (src.driver_amount() > 0)))
 		return
 	if (user.combat_indicator && !combat_indicator_vehicle)
 		combat_indicator_vehicle = TRUE
