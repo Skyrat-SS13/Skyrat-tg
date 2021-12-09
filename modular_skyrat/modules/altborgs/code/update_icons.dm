@@ -23,13 +23,6 @@
 	//if(sleeper_r && model.sleeper_overlay)
 	//	add_overlay("[model.sleeper_overlay]_r[sleeper_nv ? "_nv" : ""]")
 
-	if(model.cyborg_pixel_offset != null)
-		pixel_x = model.cyborg_pixel_offset
-
-	if(model.cyborg_base_icon == "robot")
-		icon = 'icons/mob/robots.dmi'
-		pixel_x = initial(pixel_x)
-
 	if(robot_resting)
 		if(stat != DEAD && is_dogborg())
 			switch(robot_resting)

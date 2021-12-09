@@ -88,7 +88,7 @@
 	color = "#222222"
 
 /obj/item/key/collar
-	name = "Collar Key"
+	name = "collar key"
 	desc = "A key for a tiny lock on a collar or bag."
 
 /obj/item/clothing/neck/human_petcollar/locked/cowcollar

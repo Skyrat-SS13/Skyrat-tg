@@ -486,15 +486,6 @@
 	contains = list(/obj/item/storage/box/chemimp)
 	crate_name = "chemical implant crate"
 
-/datum/supply_pack/security/armory/combatknives
-	name = "Combat Knives Crate"
-	desc = "Contains three sharpened combat knives. Each knife guaranteed to fit snugly inside any Nanotrasen-standard boot. Requires Armory access to open."
-	cost = CARGO_CRATE_VALUE * 3
-	contains = list(/obj/item/knife/combat,
-					/obj/item/knife/combat,
-					/obj/item/knife/combat)
-	crate_name = "combat knife crate"
-
 /datum/supply_pack/security/armory/ballistic
 	name = "Combat Shotguns Crate"
 	desc = "For when the enemy absolutely needs to be replaced with lead. Contains three Aussec-designed Combat Shotguns, and three Shotgun Bandoliers. Requires Armory access to open."
@@ -1654,6 +1645,15 @@
 	crate_name = "shaft miner starter kit"
 	crate_type = /obj/structure/closet/crate/secure
 
+/datum/supply_pack/service/survivalknives
+	name = "Survival Knives Crate"
+	desc = "Contains three sharpened survival knives. Each knife guaranteed to fit snugly inside any Nanotrasen-standard boot."
+	cost = CARGO_CRATE_VALUE * 3
+	contains = list(/obj/item/knife/combat/survival,
+					/obj/item/knife/combat/survival,
+					/obj/item/knife/combat/survival)
+	crate_name = "survival knife crate"
+
 /datum/supply_pack/service/wedding
 	name = "Wedding Crate"
 	desc = "Everything you need to host a wedding! Now you just need an officiant."
@@ -2391,7 +2391,8 @@
 		if(prob(50))
 			the_toy = pick_weight(GLOB.arcade_prize_pool)
 		else
-			the_toy = pick(subtypesof(/obj/item/toy/plush))
+			//the_toy = pick(subtypesof(/obj/item/toy/plush)) // SKYRAT EDIT -- Original
+			the_toy = pick(subtypesof(/obj/item/toy/plush) - typesof(/obj/item/toy/plush/donator)) // SKYRAT EDIT -- No more donator plushies in toy crates
 		new the_toy(C)
 
 /datum/supply_pack/costumes_toys/wizard
