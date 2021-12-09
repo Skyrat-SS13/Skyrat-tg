@@ -174,11 +174,9 @@
 	desc = "An outfit harking back to a pre-industrial revolution era."
 	icon_state = "westender"
 
-/obj/item/clothing/under/rank/pmarsrobe
+/obj/item/clothing/under/costume/pmarsrobe
 	name = "priestess robe"
 	desc = "A thick woolly robe adorned with black furs of a wolf. Keepers of the Flame of utter boredom. Sadly not flameproof"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "pmars_robe"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 	flags_inv = HIDESHOES
@@ -187,79 +185,57 @@
 /obj/item/clothing/under/costume/rancher
 	name = "rancher outfit"
 	desc = "An outfit from the desert outback, phrases around family murder or revenge seem to echo from this get-up."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "rancher"
 
 /obj/item/clothing/under/costume/rancher/pioneer
 	name = "pioneer outfit"
 	desc = "An outfit from the desert outback, this one seems like one on the frontline, don't trust a german, or anyone trying to get you to go to Callifornia."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "pioneer"
 
 /obj/item/clothing/under/costume/rancher/worker
 	name = "western worker outfit"
 	desc = "An outfit from the desert outback, this one seems something a coffin maker would wear, hope you're good at eyeballing size."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "worker"
 
 /obj/item/clothing/under/costume/rancher/cowboy
 	name = "cowboy outfit"
 	desc = "An outfit from the desert outback, this one seems fitting for a hat and poncho, maybe a long flowing coat."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "cowboy"
 
 /obj/item/clothing/under/costume/rancher/checkered
 	name = "western checkered outfit"
 	desc = "An outfit from the desert outback, this one seems like something someone with no fashion sense would wear."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "checkered"
 
 ///FORMAL DEPT
 /obj/item/clothing/under/rank/medical/virologist/formal ///Do NOT add this to the vendor unless you want Peter Griffen
 	desc = "It's not what you think, I swear."
 	name = "formal virologist suit"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "pathologist"
 	inhand_icon_state = "w_suit"
 
 /obj/item/clothing/under/rank/medical/virologist/formal/skirt
 	name = "formal virologist skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "pathologist_skirt"
 
 /obj/item/clothing/under/rank/medical/doctor/formal
 	desc = "A white shirt with blue pants, lined with a protection against some light biohazards."
 	name = "medical doctor's formal wear"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "senior_medical"
 
 /obj/item/clothing/under/rank/medical/doctor/formal/skirt
 	desc = "A white shirt with a blue skirt, lined with a protection against some light biohazards."
 	name = "medical doctor's formal skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "senior_medical_skirt"
 
 /obj/item/clothing/under/rank/medical/chemist/formal
 	desc = "A orange shirt with white pants, lined with protection against chemical spills."
 	name = "chemist's formal wear"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "pharmacist"
 
 /obj/item/clothing/under/rank/medical/chemist/formal/skirt
 	desc = "A orange shirt with a white skirt, lined with protection against chemical spills."
 	name = "chemist's formal skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "pharmacist_skirt"
 
 /obj/item/clothing/under/rank/engineering/engineer/formal
@@ -354,8 +330,8 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/misc/evilcargo
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/syndicate.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/syndicate.dmi'
 	name = "black cargo uniform"
 	desc = "Yep, here’s your problem. Someone set this thing to evil."
 	icon_state = "qmsynd"
@@ -427,8 +403,6 @@
 	desc = "A teal, sterile jumpsuit with a rank badge denoting the Officer of the Medical Corps. Doesn't protect against blaster fire."
 	name = "chief medical officer's naval jumpsuit"
 	icon_state = "impcmo"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 /obj/item/clothing/under/costume/imperial
 	desc = "A light grey jumpsuit with a rank badge denoting an Officer. Doesn't protect against blaster fire."

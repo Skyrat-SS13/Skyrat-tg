@@ -1,8 +1,8 @@
 /obj/item/clothing/under/rank/expeditionary_corps
 	name = "expeditionary corps uniform"
 	icon_state = "exp_corps"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/rnd.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/rnd.dmi'
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 10, BIO = 10, FIRE = 30, ACID = 30, WOUND = 10)
 	strip_delay = 70
 	alt_covers_chest = TRUE

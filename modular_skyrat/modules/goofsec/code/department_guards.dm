@@ -1,23 +1,21 @@
 // /obj/item/clothing/under/rank/security/officer/blueshirt
 
-/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat
+/obj/item/clothing/under/rank/security/officer/blueshirt
 	icon_state = "barney_uniform"
 	worn_icon_state = "barney_uniform"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	unique_reskin = null
 
-/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/orderly
+/obj/item/clothing/under/rank/security/officer/orderly
 	name = "orderly uniform"
 	icon_state = "orderly_uniform"
 	worn_icon_state = "orderly_uniform"
 
-/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard
+/obj/item/clothing/under/rank/security/officer/engineering_guard
 	name = "engineering guard uniform"
 	icon_state = "engineering_guard_uniform"
 	worn_icon_state = "engineering_guard_uniform"
 
-/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent
+/obj/item/clothing/under/rank/security/officer/customs_agent
 	name = "customs agent uniform"
 	icon_state = "customs_uniform"
 	worn_icon_state = "customs_uniform"

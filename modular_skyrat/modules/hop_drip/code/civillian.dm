@@ -2,8 +2,6 @@
 /obj/item/clothing/under/rank/civilian/head_of_personnel/turtleneck
 	name = "head of personnel's turtleneck"
 	desc = "A dark teal turtleneck and black khakis, for a second with a superior sense of style."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "hopturtle"
 	inhand_icon_state = "b_suit"
 	can_adjust = TRUE

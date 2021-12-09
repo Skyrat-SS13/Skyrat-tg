@@ -88,44 +88,12 @@
 	icon_state = "rwarden"
 	inhand_icon_state = "r_suit"
 	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Basic Warden" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "rwarden",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "rwarden"
-		),
-		"Grey Warden" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "warden",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "warden"
-		),
-		"Warden Jumpskirt" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "rwarden_skirt",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "rwarden_skirt"
-		),
-		"Formal Warden Uniform" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "wardenblueclothes",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "wardenblueclothes"
-		),
-		"Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "peacekeeper_warden",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeper_warden"
-		),
-		"Sol" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "policewardenalt",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "policewardenalt"
-		)
+	unique_reskin = list("Basic Warden" = "rwarden",
+						"Grey Warden" = "warden",
+						"Warden Jumpskirt" = "rwarden_skirt",
+						"Formal Warden Uniform" = "wardenblueclothes",
+						"Peacekeeper" = "peacekeeper_warden",
+						"Sol" = "policewardenalt"
 	)
 	/// SKYRAT EDIT ADDITION END
 
@@ -194,68 +162,16 @@
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 50, WOUND = 10)
 	strip_delay = 60
 	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Basic HoS" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "rhos",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "rhos"
-		),
-		"Grey HoS" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "hos",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "hos"
-		),
-		"HoS Jumpskirt" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "rhos_skirt",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "rhos_skirt"
-		),
-		"HoS Turtleneck" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "hosalt",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "hosalt"
-		),
-		"HoS Turtleskirt" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "hosalt_skirt",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "hosalt_skirt"
-		),
-		"Parade HoS Uniform" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "hos_parade_male",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "hos_parade_male"
-		),
-		"Parade Woman's HoS Uniform" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "hos_parade_fem",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "hos_parade_fem"
-		),
-		"Formal HoS Uniform" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "hosblueclothes",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "hosblueclothes"
-		),
-		"Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "peacekeeper_hos",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeper_hos"
-		),
-		"Imperial" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "imphos",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "imphos"
-		)
+	unique_reskin = list("Basic HoS" = "rhos",
+						"Grey HoS" = "hos",
+						"HoS Jumpskirt" = "rhos_skirt",
+						"HoS Turtleneck" = "hosalt",
+						"HoS Turtleskirt" = "hosalt_skirt",
+						"Parade HoS Uniform" = "hos_parade_male",
+						"Parade Woman's HoS Uniform" = "hos_parade_fem",
+						"Formal HoS Uniform" = "hosblueclothes",
+						"Peacekeeper" = "peacekeeper_hos"
+						"Imperial" = "imphos"
 	)
 	/// SKYRAT EDIT ADDITION END
 

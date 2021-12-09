@@ -10,9 +10,6 @@
 /obj/item/clothing/under/rank/security/peacekeeper/junior
 	name = "peacekeeper junior officer poloshirt"
 	desc = "A sleek peackeeper poloshirt and pants, this one is special. It's for junior officers."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
 	icon_state = "junior_officer"
 
 /obj/item/clothing/suit/toggle/labcoat/junior_officer

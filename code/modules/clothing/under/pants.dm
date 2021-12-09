@@ -4,8 +4,8 @@
 	fitted = NO_FEMALE_UNIFORM
 	can_adjust = FALSE
 	custom_price = PAYCHECK_EASY
-	icon = 'icons/obj/clothing/under/shorts_pants.dmi'
-	worn_icon = 'icons/mob/clothing/under/shorts_pants.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants.dmi' // SKYRAT EDIT
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants.dmi' // SKYRAT EDIT
 	species_exception = list(/datum/species/golem)
 
 /obj/item/clothing/under/pants/classicjeans

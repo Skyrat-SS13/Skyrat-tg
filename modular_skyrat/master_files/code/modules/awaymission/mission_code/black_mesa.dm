@@ -581,8 +581,6 @@
 /obj/item/clothing/under/rank/security/officer/hecu
 	name = "hecu jumpsuit"
 	desc = "A tactical HECU jumpsuit for officers complete with Nanotrasen belt buckle."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "hecu_uniform"
 	inhand_icon_state = "r_suit"
 

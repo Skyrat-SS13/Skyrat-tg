@@ -23,8 +23,8 @@
 	inhand_icon_state = "b_suit"
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/centcom.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/centcom.dmi'
 
 /obj/item/clothing/under/rank/nanotrasen_representative/skirt
 	name = "nanotrasen representative's jumpskirt"

@@ -48,8 +48,6 @@
 /obj/item/clothing/under/rank/security/peacekeeper
 	name = "peacekeeper uniform"
 	desc = "A sleek peacekeeper uniform, made to a price."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "peacekeeper"
 	can_adjust = TRUE
 	sensor_mode = SENSOR_COORDS
@@ -67,19 +65,12 @@
 /obj/item/clothing/under/rank/security/warden/peacekeeper
 	name = "peacekeeper wardens suit"
 	desc = "A formal security suit for officers complete with Armadyne belt buckle."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "peacekeeper_warden"
 	inhand_icon_state = "peacekeeper_warden"
-
-/obj/item/clothing/under/rank/security/warden
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 /obj/item/clothing/under/rank/security/head_of_security/peacekeeper
 	name = "head of security's peacekeeper jumpsuit"
 	desc = "A security jumpsuit decorated for those few with the dedication to achieve the position of Head of Security."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "peacekeeper_hos"
 	inhand_icon_state = "peacekeeper_hos"
 
