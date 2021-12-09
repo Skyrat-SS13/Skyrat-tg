@@ -68,7 +68,7 @@ SUBSYSTEM_DEF(events)
 		if(!E.canSpawnEvent(players_amt))
 			continue
 		//SKYRAT EDIT ADDITION
-		if(threat_override && (!E.min_players || !E.alert_observers))
+		if(threat_override && !E.alert_observers)
 			continue
 		//SKYRAT EDIT END
 		if(E.weight < 0) //for round-start events etc.
