@@ -64,6 +64,7 @@
 
 /datum/job/orderly
 	title = "Orderly"
+	description = "Defend the medical department, hold down idiots who refuse the vaccine, flex your muscles at people who fuck with medical."
 	job_spawn_title = "Medical Doctor"
 	department_head = list("Chief Medical Officer")
 	faction = FACTION_STATION
@@ -132,6 +133,7 @@
 
 /datum/job/science_guard
 	title = "Science Guard" // I'm a little busy here, Calhoun.
+	description = "Figure out why the emails aren't working, keep an eye on those eggheads, keep them safe from their mistakes."
 	job_spawn_title = "Scientist"
 	department_head = list("Research Director")
 	faction = FACTION_STATION
@@ -202,6 +204,7 @@
 
 /datum/job/bouncer
 	title = "Bouncer"
+	description = "Tell people they aren't on the list. Check people's IDs. Tell them to fuck off and get real ID."
 	job_spawn_title = "Bartender"
 	department_head = list("Head of Personnel")
 	faction = FACTION_STATION
@@ -271,6 +274,7 @@
 
 /datum/job/customs_agent
 	title = "Customs Agent" // No, you don't get to ship ten kilograms of cocaine to the Spinward Stellar Coalition.
+	description = "Inspect the packages coming to and from the station, protect the cargo department, beat the shit out of people trying to ship Cocaine to the Spinward Stellar Coalition."
 	job_spawn_title = "Cargo Technician"
 	department_head = list("Quartermaster")
 	faction = FACTION_STATION
@@ -339,6 +343,7 @@
 
 /datum/job/engineering_guard
 	title = "Engineering Guard" // Listen here, this engine is a restricted area. Please leave if you aren't wearing a radioactive suit.
+	description = "Spy on the supermatter, keep an eye on atmospherics, fall asleep at your desk."
 	job_spawn_title = "Station Engineer"
 	department_head = list("Chief Engineer")
 	faction = FACTION_STATION
