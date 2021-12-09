@@ -5,6 +5,7 @@
 		/obj/item/clothing/neck/security_cape = 10,
 		/obj/item/clothing/head/beret/sec/peacekeeper = 10,
 		/obj/item/clothing/head/security_garrison = 10,
+		/obj/item/clothing/head/security_cap = 10,
 	)
 
 /obj/machinery/vending/wardrobe/medi_wardrobe
