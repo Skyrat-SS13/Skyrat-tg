@@ -16,7 +16,7 @@
 
 	//SKYRAT EDIT ADDITION
 	var/player_cap = CONFIG_GET(number/player_cap)
-	if(player_cap && TGS_CLIENT_COUNT >= player_cap && !is_admin(usr))
+	if(player_cap && TGS_CLIENT_COUNT >= player_cap && !is_admin(client))
 		var/overflow_server_ip = CONFIG_GET(string/overflow_server_ip)
 		if(!overflow_server_ip)
 			message_admins("WARNING: Overflow server IP not set!")
