@@ -10,8 +10,8 @@ GLOBAL_LIST_INIT(ticket_counter, list())
 /datum/admin_help_tickets/stat_entry()
 	var/list/L = ..()
 	L[++L.len] = list(null, null, null, null)
-	L[++L.len] = list("Ticket statistics", null, null, null)
-	L[++L.len] = list("Admin:", "Tickets handled:", null, null)
+	L[++L.len] = list("Activity statistics", null, null, null)
+	L[++L.len] = list("Admin:", "Tickets/Ambitions handled:", null, null)
 
 	for(var/ckey in GLOB.ticket_counter)
 		//assumption, that there's no keys with empty values
