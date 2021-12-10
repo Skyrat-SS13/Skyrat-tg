@@ -7,6 +7,8 @@
 	desc = "An ancient access card with the words \"Cutter's Pod\" printed on in big bold letters. It'll be a miracle if this still works."
 	trim = /datum/id_trim/away/old/eng
 
+
+
 /* ----------------- Lore ----------------- */
 //Tape subtype for adding ruin lore -- the variables below are the ones you need to change
 /obj/item/tape/ruins
@@ -80,6 +82,39 @@
 		8 = 380
 	)
 
+/obj/item/tape/ruins/tarkon	//A passing message from the late officer .
+	icon_state = "tape_greyscale"
+	desc = "An old, dusty tape with a small, faded stamp, reading \"An officer's final order.\""
+
+	used_capacity = 380
+	storedinfo = list(
+		1 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording started.</span>\"</span></span>",
+		2 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>sighs, \"<span class=' '>Officer's Log, Year Twenty-six twenty-... oh to hell with it...</span>\"</span></span>",
+		3 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>says, \"<span class=' '>I.. Did the best that i could for them... The crew... The ones that were awake, that is...</span>\"</span></span>",
+		4 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>sighs, \"<span class=' '>The ones that are still asleep... They had a chance... Those in the understorage are still safe... The RTG's were disconnected topside so they would survive...</span>\"</span></span>",
+		5 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>sniffles, \"<span class=' '>... Overseer Tavus... I... did what I could for them... Asked the crew to board the cargo shuttle... Leave the main shuttle if the sleepers activated...</span>\"</span></span>",
+		6 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>groans, \"<span class=' '>God... Those.. Things. Aliens... They got Tavus... Severed his leg clean off... Told him that.. We'd clean out the port... And he'd wake up in the trauma bay...</span>\"</span></span>",
+		7 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>coughs then calmly states, \"<span class=' '>... If.. Anyone wakes up... If the Ensign... Is alive... They're in charge now... The.. The Tarkon Drill's designs are... In the solars room... Abandon the port or.. Clear it out... But dont let those designs go abandoned..</span>\"</span></span>",
+		8 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording stopped.</span>\"</span></span>"
+	)
+	timestamp = list(
+		1 = 0,
+		2 = 30,
+		3 = 130,
+		4 = 180,
+		5 = 230,
+		6 = 280,
+		7 = 330,
+		8 = 380
+	)
+
+/* ----------------- Fluff/Paper ----------------- */
+
+/obj/item/paper/fluff/ruins/tarkon
+	name = "paper - 'Port Integrity Printout'"
+	info = "<B>*Warning, Integrity Compromised*</B><BR><BR>Automated Integrity Printout, If printout is inconsistent with results, Please recalibrate sensors.<br><ol><li><b>Aft Hallway:</b> Integrity Nominal.</li><li><b>Fore Hallway:</b> Integrity Compromised. Cause unknown.</li><li><b>Port Hallway:</b> Integrity Compromised, Breached into space.</li><li><b>Starboard Hallway:</b> Integrity Nominal.</li></ol><br> <b>Please inform any awake maintenance crew and standby for assistance.</b>"
+
+
 /* ----------------- Fluff/Decor ----------------- */
 /obj/structure/decorative/fluff/ai_node //Budding AI's way of interfacing with stuff it couldn't normally do so with. Needed to be placed by a willing human, before borgs were created. Used in any ruins regarding pre-bluespace, self-aware AIs
 	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff.dmi'
@@ -102,6 +137,11 @@
 		do_sparks(2, TRUE, src)
 		qdel(src)
 		return
+
+/obj/structure/fluff/empty_sleeper/bloodied
+	name = "Occupied Sleeper"
+	desc = "A closed, occupied sleeper, bloodied handprints are seen on the inside, along with an odd, redish blur. It seems sealed shut."
+	icon_state = "sleeper-o"
 
 /* ----- Metal Poles (These shouldn't be in this file but there's not a better place tbh) -----*/
 //Just a re-done Tram Rail, but with all 4 directions instead of being stuck east/west - more varied placement, and a more vague name. Good for mapping support beams/antennae/etc
