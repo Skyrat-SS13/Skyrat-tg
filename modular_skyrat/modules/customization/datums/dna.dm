@@ -182,7 +182,7 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	holder.transform = holder.transform.Translate(0, translate)
 	current_body_size = features["body_size"]
 
-/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, var/list/override_features, var/list/override_mutantparts, var/list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE)
+/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, var/list/override_features, var/list/override_mutantparts, var/list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE)
 	if(QDELETED(src))
 		CRASH("You're trying to change your species post deletion, this is a recipe for madness")
 	if(mrace && has_dna())
@@ -194,7 +194,7 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 		else
 			return
 		deathsound = new_race.deathsound
-		dna.species.on_species_loss(src, new_race, pref_load)
+		dna.species.on_species_loss(src, new_race)
 		var/datum/species/old_species = dna.species
 		dna.species = new_race
 
@@ -221,7 +221,7 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 
 		dna.update_body_size()
 
-		dna.species.on_species_gain(src, old_species, pref_load)
+		dna.species.on_species_gain(src, old_species)
 
 
 		if(ishuman(src))

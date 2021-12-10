@@ -81,52 +81,24 @@
 	inhand_icon_state = "utility_ce"
 	worn_icon_state = "utility_ce"
 
-/obj/item/storage/belt/utility/chief/full
-	preload = TRUE
-
 /obj/item/storage/belt/utility/chief/full/PopulateContents()
-	SSwardrobe.provide_type(/obj/item/screwdriver/power, src)
-	SSwardrobe.provide_type(/obj/item/crowbar/power, src)
-	SSwardrobe.provide_type(/obj/item/weldingtool/electric, src)//This can be changed if this is too much //It's been 5 years // SKYRAT EDIT - ORIGINAL: SSwardrobe.provide_type(/obj/item/weldingtool/experimental, src)
-	SSwardrobe.provide_type(/obj/item/multitool, src)
-	SSwardrobe.provide_type(/obj/item/stack/cable_coil, src)
-	SSwardrobe.provide_type(/obj/item/extinguisher/mini, src)
-	SSwardrobe.provide_type(/obj/item/analyzer/ranged, src) //SKYRAT EDIT - ORIGINAL: SSwardrobe.provide_type(/obj/item/analyzer, src)
+	new /obj/item/screwdriver/power(src)
+	new /obj/item/crowbar/power(src)
+	new /obj/item/weldingtool/electric(src) // SKYRAT EDIT - original: 	new /obj/item/weldingtool/experimental(src)
+	new /obj/item/multitool(src)
+	new /obj/item/stack/cable_coil(src)
+	new /obj/item/extinguisher/mini(src)
+	new /obj/item/analyzer/ranged(src)	//SKYRAT EDIT - original: new /obj/item/analyzer(src)
 	//much roomier now that we've managed to remove two tools
 
-/obj/item/storage/belt/utility/chief/full/get_types_to_preload()
-	var/list/to_preload = list() //Yes this is a pain. Yes this is the point
-	to_preload += /obj/item/screwdriver/power
-	to_preload += /obj/item/crowbar/power
-	to_preload += /obj/item/weldingtool/electric // SKYRAT EDIT - Electric welder
-	to_preload += /obj/item/multitool
-	to_preload += /obj/item/stack/cable_coil
-	to_preload += /obj/item/extinguisher/mini
-	to_preload += /obj/item/analyzer/ranged // SKYRAT EDIT - Ranged Analyzer
-	return to_preload
-
 /obj/item/storage/belt/utility/full/PopulateContents()
-	SSwardrobe.provide_type(/obj/item/screwdriver, src)
-	SSwardrobe.provide_type(/obj/item/wrench, src)
-	SSwardrobe.provide_type(/obj/item/weldingtool, src)
-	SSwardrobe.provide_type(/obj/item/crowbar, src)
-	SSwardrobe.provide_type(/obj/item/wirecutters, src)
-	SSwardrobe.provide_type(/obj/item/multitool, src)
-	SSwardrobe.provide_type(/obj/item/stack/cable_coil, src)
-
-/obj/item/storage/belt/utility/full/get_types_to_preload()
-	var/list/to_preload = list() //Yes this is a pain. Yes this is the point
-	to_preload += /obj/item/screwdriver
-	to_preload += /obj/item/wrench
-	to_preload += /obj/item/weldingtool
-	to_preload += /obj/item/crowbar
-	to_preload += /obj/item/wirecutters
-	to_preload += /obj/item/multitool
-	to_preload += /obj/item/stack/cable_coil
-	return to_preload
-
-/obj/item/storage/belt/utility/full/powertools
-	preload = FALSE
+	new /obj/item/screwdriver(src)
+	new /obj/item/wrench(src)
+	new /obj/item/weldingtool(src)
+	new /obj/item/crowbar(src)
+	new /obj/item/wirecutters(src)
+	new /obj/item/multitool(src)
+	new /obj/item/stack/cable_coil(src)
 
 /obj/item/storage/belt/utility/full/powertools/PopulateContents()
 	new /obj/item/screwdriver/power(src)
@@ -147,47 +119,22 @@
 	new /obj/item/stack/cable_coil(src)
 
 /obj/item/storage/belt/utility/full/engi/PopulateContents()
-	SSwardrobe.provide_type(/obj/item/screwdriver, src)
-	SSwardrobe.provide_type(/obj/item/wrench, src)
-	SSwardrobe.provide_type(/obj/item/weldingtool/largetank, src)
-	SSwardrobe.provide_type(/obj/item/crowbar, src)
-	SSwardrobe.provide_type(/obj/item/wirecutters, src)
-	SSwardrobe.provide_type(/obj/item/multitool, src)
-	SSwardrobe.provide_type(/obj/item/stack/cable_coil, src)
-
-/obj/item/storage/belt/utility/full/engi/get_types_to_preload()
-	var/list/to_preload = list() //Yes this is a pain. Yes this is the point
-	to_preload += /obj/item/screwdriver
-	to_preload += /obj/item/wrench
-	to_preload += /obj/item/weldingtool/largetank
-	to_preload += /obj/item/crowbar
-	to_preload += /obj/item/wirecutters
-	to_preload += /obj/item/multitool
-	to_preload += /obj/item/stack/cable_coil
-	return to_preload
+	new /obj/item/screwdriver(src)
+	new /obj/item/wrench(src)
+	new /obj/item/weldingtool/largetank(src)
+	new /obj/item/crowbar(src)
+	new /obj/item/wirecutters(src)
+	new /obj/item/multitool(src)
+	new /obj/item/stack/cable_coil(src)
 
 /obj/item/storage/belt/utility/atmostech/PopulateContents()
-	SSwardrobe.provide_type(/obj/item/screwdriver, src)
-	SSwardrobe.provide_type(/obj/item/wrench, src)
-	SSwardrobe.provide_type(/obj/item/weldingtool, src)
-	SSwardrobe.provide_type(/obj/item/crowbar, src)
-	SSwardrobe.provide_type(/obj/item/wirecutters, src)
-	SSwardrobe.provide_type(/obj/item/t_scanner, src)
-	SSwardrobe.provide_type(/obj/item/extinguisher/mini, src)
-
-/obj/item/storage/belt/utility/atmostech/get_types_to_preload()
-	var/list/to_preload = list() //Yes this is a pain. Yes this is the point
-	to_preload += /obj/item/screwdriver
-	to_preload += /obj/item/wrench
-	to_preload += /obj/item/weldingtool
-	to_preload += /obj/item/crowbar
-	to_preload += /obj/item/wirecutters
-	to_preload += /obj/item/t_scanner
-	to_preload += /obj/item/extinguisher/mini
-	return to_preload
-
-/obj/item/storage/belt/utility/syndicate
-	preload = FALSE
+	new /obj/item/screwdriver(src)
+	new /obj/item/wrench(src)
+	new /obj/item/weldingtool(src)
+	new /obj/item/crowbar(src)
+	new /obj/item/wirecutters(src)
+	new /obj/item/t_scanner(src)
+	new /obj/item/extinguisher/mini(src)
 
 /obj/item/storage/belt/utility/syndicate/PopulateContents()
 	new /obj/item/screwdriver/nuke(src)
@@ -268,29 +215,15 @@
 		/obj/item/stack/sticky_tape //surgical tape
 		))
 
-/obj/item/storage/belt/medical/paramedic
-	preload = TRUE
-
 /obj/item/storage/belt/medical/paramedic/PopulateContents()
-	SSwardrobe.provide_type(/obj/item/sensor_device, src)
-	SSwardrobe.provide_type(/obj/item/pinpointer/crew/prox, src)
-	SSwardrobe.provide_type(/obj/item/stack/medical/gauze/twelve, src)
-	SSwardrobe.provide_type(/obj/item/reagent_containers/syringe, src)
-	SSwardrobe.provide_type(/obj/item/stack/medical/bone_gel, src)
-	SSwardrobe.provide_type(/obj/item/stack/sticky_tape/surgical, src)
-	SSwardrobe.provide_type(/obj/item/reagent_containers/glass/bottle/formaldehyde, src)
+	new /obj/item/sensor_device(src)
+	new /obj/item/pinpointer/crew/prox(src)
+	new /obj/item/stack/medical/gauze/twelve(src)
+	new /obj/item/reagent_containers/syringe(src)
+	new /obj/item/stack/medical/bone_gel(src)
+	new /obj/item/stack/sticky_tape/surgical(src)
+	new /obj/item/reagent_containers/glass/bottle/formaldehyde(src)
 	update_appearance()
-
-/obj/item/storage/belt/medical/paramedic/get_types_to_preload()
-	var/list/to_preload = list() //Yes this is a pain. Yes this is the point
-	to_preload += /obj/item/sensor_device
-	to_preload += /obj/item/pinpointer/crew/prox
-	to_preload += /obj/item/stack/medical/gauze/twelve
-	to_preload += /obj/item/reagent_containers/syringe
-	to_preload += /obj/item/stack/medical/bone_gel
-	to_preload += /obj/item/stack/sticky_tape/surgical
-	to_preload += /obj/item/reagent_containers/glass/bottle/formaldehyde
-	return to_preload
 
 /obj/item/storage/belt/security
 	name = "security belt"

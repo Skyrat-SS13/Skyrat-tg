@@ -62,9 +62,6 @@
 	randname = "[randname]-[rand(100, 999)]"
 	return randname
 
-/datum/species/robotic/get_types_to_preload()
-	return ..() - typesof(/obj/item/organ/cyberimp/arm/power_cord) // Don't cache things that lead to hard deletions.
-
 /datum/species/robotic/ipc
 	name = "I.P.C."
 	id = SPECIES_IPC
