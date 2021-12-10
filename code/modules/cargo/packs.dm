@@ -2391,7 +2391,8 @@
 		if(prob(50))
 			the_toy = pick_weight(GLOB.arcade_prize_pool)
 		else
-			the_toy = pick(subtypesof(/obj/item/toy/plush))
+			//the_toy = pick(subtypesof(/obj/item/toy/plush)) // SKYRAT EDIT -- Original
+			the_toy = pick(subtypesof(/obj/item/toy/plush) - typesof(/obj/item/toy/plush/donator)) // SKYRAT EDIT -- No more donator plushies in toy crates
 		new the_toy(C)
 
 /datum/supply_pack/costumes_toys/wizard

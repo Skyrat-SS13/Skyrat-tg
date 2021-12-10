@@ -50,6 +50,19 @@ export type ServerSpeciesData = {
   veteran_only: boolean; // SKYRAT EDIT - Veteran quirks
 };
 
+export type Department = {
+  head?: string;
+};
+
+export type Job = {
+  description: string;
+  department: string;
+  // SKYRAT EDIT
+  veteran?: boolean;
+  alt_titles?: string[];
+// SKYRAT EDIT END
+};
+
 export type Quirk = {
   description: string;
   icon: string;
@@ -142,7 +155,7 @@ export type PreferencesMenuData = {
   preview_options: string; // SKYRAT EDIT ADDITION
   preview_selection: string; // SKYRAT EDIT ADDITION
 
-  is_veteran: BooleanLike;
+  is_veteran: BooleanLike; // SKYRAT EDIT - Veteran status
 
   character_preferences: {
     clothing: Record<string, string>;
@@ -207,6 +220,10 @@ export type PreferencesMenuData = {
 };
 
 export type ServerData = {
+  jobs: {
+    departments: Record<string, Department>;
+    jobs: Record<string, Job>;
+  };
   names: {
     types: Record<string, Name>;
   };

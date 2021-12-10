@@ -1,5 +1,6 @@
 /datum/job/nanotrasen_representative
 	title = "Nanotrasen Representative"
+	description = "Represent Nanotrasen on the station, argue with the HoS about why he can't just field execute people for petty theft, get drunk in your office."
 	department_head = list("Central Command")
 	faction = FACTION_STATION
 	total_positions = 1
@@ -11,6 +12,8 @@
 	exp_required_type = EXP_TYPE_CREW
 	exp_required_type_department = EXP_TYPE_COMMAND
 	exp_granted_type = EXP_TYPE_CREW
+
+	department_for_prefs = /datum/job_department/captain
 
 	departments_list = list(
 		/datum/job_department/command,
@@ -141,25 +144,12 @@
 	new /obj/item/pet_carrier(src)
 	new /obj/item/clothing/shoes/sneakers/brown(src)
 	new /obj/item/clothing/suit/armor/vest(src)
-	// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR // I know this is modular and I don't have to do this, but just let me live man.
-	/*
-	// new /obj/item/clothing/suit/armor/vest/nanotrasen_representative(src)
-	// new /obj/item/clothing/under/rank/nanotrasen_representative(src)
-	// new /obj/item/clothing/under/rank/nanotrasen_representative/skirt(src)
-	// new /obj/item/clothing/head/nanotrasen_representative(src)
-	// new /obj/item/clothing/head/nanotrasen_representative/beret(src)
-	// new /obj/item/clothing/head/beret/centcom_formal/ntrep(src)
-	*/
-	// SKYRAT EDIT REMOVAL END
 	new /obj/item/cartridge/captain(src)
 	new /obj/item/radio/headset/heads/nanotrasen_representative/alt(src)
 	new /obj/item/radio/headset/heads/nanotrasen_representative(src)
 	new /obj/item/clothing/glasses/sunglasses/gar/giga(src)
 	new /obj/item/clothing/gloves/combat(src)
-	new /obj/item/storage/box/gunset/nanotrasen_representative(src)
 	new /obj/item/storage/photo_album/personal(src)
 	new /obj/item/bedsheet/centcom(src)
-	// new /obj/item/clothing/suit/toggle/armor/vest/centcom_formal/ntrep(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
 	new /obj/item/clothing/suit/hooded/wintercoat/centcom/ntrep(src)
-	// new /obj/item/clothing/head/centhat(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
-	// new /obj/item/clothing/head/centcom_cap(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
+	new /obj/item/gun/energy/e_gun(src)
