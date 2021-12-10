@@ -1,12 +1,16 @@
 /datum/job/nurse
 	title = "Nurse"
+	description = "Wear frilly dresses, fetch the MD a IV drip, STAT. Observe Surgery and take notes."
 	department_head = list("Chief Medical Officer")
 	faction = FACTION_STATION
+	job_spawn_title = "Medical Doctor"
 	total_positions = 3
 	spawn_positions = 3
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
 	exp_granted_type = EXP_TYPE_CREW
+
+	department_for_prefs = /datum/job_department/medical
 
 	outfit = /datum/outfit/job/nurse
 	plasmaman_outfit = /datum/outfit/plasmaman/medical
