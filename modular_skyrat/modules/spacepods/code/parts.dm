@@ -171,15 +171,6 @@
 	pod_desc = "An armed security spacepod with reinforced armor plating brandishing the Nanotrasen Military insignia"
 	pod_integrity = 350
 
-/obj/item/pod_parts/armor/ship
-	name = "ship pod armor"
-	icon_state = "pod_armor_mil"
-	desc = "Oops..."
-	pod_icon = 'modular_skyrat/modules/spacepods/icons/2x3.dmi'
-	pod_icon_state = "ship_civ"
-	pod_desc = "breok..."
-	pod_integrity = 650
-
 /obj/item/circuitboard/mecha/pod
 	name = "Circuit board (Space Pod Mainboard)"
 	icon_state = "mainboard"

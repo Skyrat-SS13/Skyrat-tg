@@ -64,20 +64,6 @@
 	update_integrity(rand(100, max_integrity))
 	brakes = FALSE
 
-/obj/spacepod/prebuilt/ship
-	name = "space pod"
-	desc = "A spacepod."
-	icon = 'modular_skyrat/modules/spacepods/icons/2x3.dmi'
-	icon_state = "ship_civ"
-	overlay_file = 'modular_skyrat/modules/spacepods/icons/2x3.dmi'
-	bound_x = 64
-	bound_y = 96
-	armor_type = /obj/item/pod_parts/armor/ship
-	cell_type = /obj/item/stock_parts/cell/infinite
-	equipment_types = list(/obj/item/spacepod_equipment/weaponry/laser,
-		/obj/item/spacepod_equipment/cargo/chair,
-		/obj/item/spacepod_equipment/cargo/chair)
-
 /obj/spacepod/prebuilt/military
 	name = "military pod"
 	icon_state = "pod_mil"
