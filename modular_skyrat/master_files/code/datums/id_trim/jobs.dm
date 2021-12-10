@@ -159,3 +159,13 @@
 	config_job = "barber"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
 	job = /datum/job/barber
+
+/datum/id_trim/job/nurse
+	assignment = "Nurse"
+	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
+	trim_state = "trim_nurse"
+	extra_access = list()
+	minimal_access = list(ACCESS_MEDICAL, ACCESS_MINERAL_STOREROOM, ACCESS_MORGUE, ACCESS_PHARMACY, ACCESS_SURGERY)
+	config_job = "nurse"
+	template_access = list(ACCESS_CAPTAIN, ACCESS_CMO, ACCESS_CHANGE_IDS)
+	job = /datum/job/doctor

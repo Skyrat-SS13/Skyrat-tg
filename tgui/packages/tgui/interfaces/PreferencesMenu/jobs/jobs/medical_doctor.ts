@@ -6,7 +6,7 @@ const MedicalDoctor: Job = {
   description: "Save lives, run around the station looking for victims, \
     scan everyone in sight",
   department: Medical,
-  alt_titles: ["Medical Doctor", "Surgeon", "Nurse"],
+  alt_titles: ["Medical Doctor", "Surgeon"],
 };
 
 export default MedicalDoctor;
