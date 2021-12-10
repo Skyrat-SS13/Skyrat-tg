@@ -283,6 +283,7 @@
 	ACCESS_ORDNANCE_STORAGE, \
 	ACCESS_ORDNANCE, \
 	ACCESS_BARBER, \
+	ACCESS_GUNDEALER, \
 ) // SKYRAT EDIT ADD ACCESS_BARBER
 
 /// Command staff/secure accesses, think bridge/armoury, AI upload, notably access to modify ID cards themselves. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_COMMAND)
@@ -448,6 +449,7 @@
 	ACCESS_CARGO, \
 	ACCESS_QM, \
 	ACCESS_VAULT, \
+	ACCESS_GUNDEALER, \ // SKYRAT EDIT: Added Gun Dealer
 )
 /// Name for the Command region.
 #define REGION_COMMAND "Command"
