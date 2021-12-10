@@ -70,3 +70,9 @@
 #define COMSIG_START_FISHING "start_fishing"
 //when someone pulls back their fishing rod
 #define COMSIG_FINISH_FISHING "finish_fishing"
+
+/// /client/MouseMove(object, location, control, params)
+#define COMSIG_MOB_CLIENT_MOUSE_MOVE "client_mob_mouse_move"
+
+/// /client/Click(atom/object, atom/location, control, params)
+#define COMSIG_MOB_CLIENT_MOUSE_DOWN "client_mob_mouse_down"
