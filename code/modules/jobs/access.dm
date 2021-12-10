@@ -124,3 +124,14 @@
 
 	// If none of the above apply, job name is unknown.
 	return "hudunknown"
+
+// SKYRAT EDIT ADDITION: Gun Permit HUD icon
+/obj/item/proc/get_gun_permit_iconstate()
+	var/obj/item/card/id/id_card = GetID()
+
+	if(!id_card)
+		return "hudfan_no"
+	if(ACCESS_WEAPONS in id_card.GetAccess())
+		return "hud_gunlicense"
+	return "hudfan_no"
+// SKYRAT EDIT ADDITION END

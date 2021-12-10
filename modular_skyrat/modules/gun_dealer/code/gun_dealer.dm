@@ -2,6 +2,7 @@
 	title = "Gun Dealer"
 	description = "Sell guns, sell ammo, sell excuses for Security to arrest people."
 	department_head = list("Quartermaster")
+	job_spawn_title = "Cargo Technician"
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
@@ -9,8 +10,8 @@
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
 
-	outfit = /datum/outfit/job/engineering_guard
-	plasmaman_outfit = /datum/outfit/plasmaman/engineering
+	outfit = /datum/outfit/job/gun_dealer
+	plasmaman_outfit = /datum/outfit/plasmaman/cargo
 
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_CAR
@@ -33,37 +34,64 @@
 
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
-/datum/outfit/job/engineering_guard
-	name = "Engineering Guard"
-	jobtype = /datum/job/engineering_guard
+/obj/item/clothing/glasses/hud/gun
+	name = "gun permit HUD"
+	desc = "A heads-up display that scans the humanoids in view and provides accurate data about their firearm licenses."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
+	icon_state = "gunhud"
+	hud_type = DATA_HUD_GUNDEALER
+	glass_colour_type = /datum/client_colour/glass_colour/orange
 
-	belt = /obj/item/pda/engineering
-	ears = /obj/item/radio/headset/headset_eng
-	shoes = /obj/item/clothing/shoes/workboots
-	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard
-	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
-	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard
-	l_pocket = /obj/item/restraints/handcuffs
-	r_pocket = /obj/item/assembly/flash/handheld
+/obj/item/clothing/under/rank/cargo/gun_dealer
+	name = "gun dealer outfit"
+	desc = "/advert raid"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "dealer_uniform"
+	worn_icon_state = "dealer_uniform"
+	mutant_variants = STYLE_DIGITIGRADE
+	can_adjust = TRUE
+
+/obj/item/clothing/suit/gun_dealer
+	name = "gun dealer coat"
+	desc = "What're ya buyin'?"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "dealer_coat"
+	worn_icon_state = "dealer_coat"
+	mutant_variants = null
+
+/obj/item/clothing/head/gun_dealer
+	name = "gun dealer beret"
+	desc = "Come back any time!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "dealer_beret"
+	worn_icon_state = "dealer_beret"
+	mutant_variants = null
+
+/datum/outfit/job/gun_dealer
+	name = "Gun Dealer"
+	jobtype = /datum/job/gun_dealer
+
+	id_trim = /datum/id_trim/job/gun_dealer
+	uniform = /obj/item/clothing/under/rank/cargo/gun_dealer
+	suit = /obj/item/clothing/suit/gun_dealer
+	head = /obj/item/clothing/head/gun_dealer
 	backpack_contents = list(
-		/obj/item/melee/baton/security/loaded = 1,
+		/obj/item/modular_computer/tablet/preset/cargo = 1,
 		)
+	belt = /obj/item/pda/cargo
+	ears = /obj/item/radio/headset/headset_cargo
+	glasses = /obj/item/clothing/glasses/hud/gun
 
-	backpack = /obj/item/storage/backpack/industrial
-	satchel = /obj/item/storage/backpack/satchel/eng
-	duffelbag = /obj/item/storage/backpack/duffelbag/engineering
-	box = /obj/item/storage/box/survival/engineer
-
-	id_trim = /datum/id_trim/job/engineering_guard
-
-/datum/id_trim/job/engineering_guard
-	assignment = "Engineering Guard"
+/datum/id_trim/job/gun_dealer
+	assignment = "Gun Dealer"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-	trim_state = "trim_engiguard"
-	extra_access = list(ACCESS_SEC_DOORS, ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE, ACCESS_AUX_BASE,
-					ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM)
-	minimal_access = list(ACCESS_SEC_DOORS, ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE, ACCESS_AUX_BASE,
-					ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM)
-	config_job = "engineering_guard"
-	template_access = list(ACCESS_CAPTAIN, ACCESS_CE, ACCESS_CHANGE_IDS)
-	job = /datum/job/engineering_guard
+	trim_state = "trim_gundealer"
+	extra_access = list(ACCESS_QM, ACCESS_MINING, ACCESS_MINING_STATION)
+	minimal_access = list(ACCESS_CARGO, ACCESS_MAILSORTING, ACCESS_MAINT_TUNNELS, ACCESS_MECH_MINING, ACCESS_MINERAL_STOREROOM, ACCESS_GUNDEALER, ACCESS_WEAPONS)
+	config_job = "gundealer"
+	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
+	job = /datum/job/gun_dealer

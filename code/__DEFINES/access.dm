@@ -440,6 +440,7 @@
 /// Name for the Supply region.
 #define REGION_SUPPLY "Supply"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all cargo regional accesses that are overseen by the HoP.
+// SKYRAT EDIT: Added Gun Dealer to this list
 #define REGION_ACCESS_SUPPLY list( \
 	ACCESS_MAILSORTING, \
 	ACCESS_MINING, \
@@ -449,7 +450,7 @@
 	ACCESS_CARGO, \
 	ACCESS_QM, \
 	ACCESS_VAULT, \
-	ACCESS_GUNDEALER, \ // SKYRAT EDIT: Added Gun Dealer
+	ACCESS_GUNDEALER, \
 )
 /// Name for the Command region.
 #define REGION_COMMAND "Command"
