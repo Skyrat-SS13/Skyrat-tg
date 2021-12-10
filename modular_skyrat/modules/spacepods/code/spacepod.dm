@@ -26,29 +26,46 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	max_integrity = 50
 	integrity_failure = 0.1
 
+	/// Hard ref to our equipment
 	var/list/equipment = list()
+	/// What slots the ship has and how many of them
 	var/list/equipment_slot_limits = list(
 		SPACEPOD_SLOT_MISC = 1,
 		SPACEPOD_SLOT_CARGO = 2,
 		SPACEPOD_SLOT_WEAPON = 1,
 		SPACEPOD_SLOT_LOCK = 1)
+	/// The lock on the ship
 	var/obj/item/spacepod_equipment/lock/lock
+	/// The weapon on the ship, thing that goes pew pew
 	var/obj/item/spacepod_equipment/weaponry/weapon
+	/// Next fire delay
 	var/next_firetime = 0
+	/// Are we...locked? or... unlocked.......
 	var/locked = FALSE
+	/// Is the door... open... or... closed.........
 	var/hatch_open = FALSE
+	/// What construction state we are in
 	var/construction_state = SPACEPOD_EMPTY
+	/// Our armor, stuff that deflects incoming badstuff, ye?
 	var/obj/item/pod_parts/armor/pod_armor = null
+	/// The cell that powers the ship.
 	var/obj/item/stock_parts/cell/cell = null
+	/// The air inside the cabin, no AC included.
 	var/datum/gas_mixture/cabin_air
+	/// The air inside the cabin.
 	var/obj/machinery/portable_atmospherics/canister/internal_tank
+	/// Control timer for slow process, please don't fuck with it.
 	var/last_slowprocess = 0
 
+	/// US!
 	var/mob/living/pilot
+	/// OUR FRIENDS!
 	var/list/passengers = list()
+	/// How many friends we can have!
 	var/max_passengers = 0
 
-	var/velocity_x = 0 // tiles per second.
+	// Physics stuff, we calculate our own velocity and acceleration, in tiles per second.
+	var/velocity_x = 0
 	var/velocity_y = 0
 	var/offset_x = 0 // like pixel_x/y but in tiles
 	var/offset_y = 0
@@ -59,15 +76,23 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/last_thrust_forward = 0
 	var/last_thrust_right = 0
 	var/last_rotate = 0
+	// End of physics stuff
 
+	/// Our RCS breaking system, if it's on, the ship will try to keep itself stable.
 	var/brakes = TRUE
+	/// Users thrust direction
 	var/user_thrust_dir = 0
+	/// Max forward thrust, in tiles per second
 	var/forward_maxthrust = 6
+	/// Max reverse thrust, in tiles per second
 	var/backward_maxthrust = 3
+	/// Max side thrust, in tiles per second
 	var/side_maxthrust = 1
-
-	var/lights = 0
+	/// Do we got them headlights my man? They on? y--- OH SHIT A DEER
+	var/lights = FALSE
+	/// Power of the light
 	var/lights_power = 6
+	/// Color of the light
 	var/static/list/icon_light_color = list("pod_civ" = COLOR_WHITE, \
 			"pod_mil" = "#BBF093", \
 			"pod_synd" = COLOR_RED, \
@@ -75,10 +100,13 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			"pod_black" = "#3B8FE5", \
 			"pod_industrial" = "#CCCC00"
 		)
-
+	/// Bounce factor, how much we bounce off walls
 	var/bump_impulse = 0.6
-	var/bounce_factor = 0.2 // how much of our velocity to keep on collision
-	var/lateral_bounce_factor = 0.95 // mostly there to slow you down when you drive (pilot?) down a 2x2 corridor
+	/// how much of our velocity to keep on collision
+	var/bounce_factor = 0.2
+	/// mostly there to slow you down when you drive (pilot?) down a 2x2 corridor
+	var/lateral_bounce_factor = 0.95
+	/// Our icon direction number.
 	var/icon_dir_num = 1
 
 /obj/spacepod/Initialize()
@@ -88,10 +116,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	cabin_air = new
 	cabin_air.temperature = T20C
 	cabin_air.volume = 200
-	/*cabin_air.assert_gas(/datum/gas/oxygen)
-	cabin_air.assert_gas(/datum/gas/nitrogen)
-	cabin_air.gases[/datum/gas/oxygen][MOLES] = ONE_ATMOSPHERE*O2STANDARD*cabin_air.volume/(R_IDEAL_GAS_EQUATION*cabin_air.temperature)
-	cabin_air.gases[/datum/gas/nitrogen][MOLES] = ONE_ATMOSPHERE*N2STANDARD*cabin_air.volume/(R_IDEAL_GAS_EQUATION*cabin_air.temperature)*/
 
 /obj/spacepod/Destroy()
 	GLOB.spacepods_list -= src
