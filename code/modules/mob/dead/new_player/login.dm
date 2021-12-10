@@ -22,7 +22,7 @@
 			message_admins("WARNING: Overflow server IP not set!")
 		else
 			to_chat_immediate(src, span_boldwarning("The round is full, please wait while you are transferred to the overflow server..."))
-			message_admins("[src] attempted to join however the server is full and has been sent to the overflow server.")
+			message_admins("[src] attempted to join, but the server was full and they've been sent to the overflow server.")
 			client << link(overflow_server_ip)
 			return
 	//SKYRAT EDIT END
