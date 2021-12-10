@@ -231,3 +231,59 @@
   - rscdel: Blueshift now only has one autolathe shift-start, located in cargo.
   - rscdel: Shift-start multi-cell chargers are now only single-cell chargers on Blueshift.
   - rscdel: The psychologist no longer has a spare skillchip on Blueshift.
+2021-12-09:
+  AtoriBirb:
+  - code_imp: Added mutant_variants = NONE to robes/cloak/mask for heretic
+  - code_imp: Adds two if statements to swap between mutant_variant = none and default.
+      I would do an else but I dunno what other variables might hit it on accident.
+      If it works, it works.
+  Seris02:
+  - rscadd: adds the nitrogen breathing quirk
+  SkyratBot:
+  - rscadd: TGUI input boxes are on the way! You can find new preferences in the menu.
+      They will be on by default.
+  - rscadd: IV drips now cause a moderate pierce wound when ripped out
+  - bugfix: You will once again see events that required a playercount to run.
+  - bugfix: You can no longer become a Family Leader as a restricted role, such as
+      a Head of Security.
+  - admin: Admins can now promote people to Family Leader with a button from the traitor
+      panel.
+  tf-4:
+  - bugfix: A charging microfusion gun will no longer runtime on examine
+  - bugfix: Removed multiple lattices from the same spot on Blueshift
+2021-12-10:
+  ArdentSpark:
+  - bugfix: Restores missing claw melee attack icons for species with the Claw unarmed
+      attack sound effects. Akula, Aquatic, Anthromorphic Insect, Anthromorph, Tajaran,
+      Unathi, Vox, Vulpkanin, Xenomorph Hybrid and Teshari. This is visual only and
+      does not give Sharp.
+  SkyratBot:
+  - bugfix: Fixed the strip menu not being warded against telekinesis shenanigeans
+      (No item was stripped from longer distances, but  warnings were still sent).
+  - bugfix: Plasma material objects that didn't spawn plasma gas when ignited due
+      to weird code reasons will now do just that.
+  - bugfix: Fixed plasma material objects exploding when used with condenser.
+  - bugfix: Fixed uranium manual doors and false walls not radiating.
+  - bugfix: You can no longer duplicate rods with rough false walls.
+  - code_imp: Due to code structural changes the mole amount from welding plasma related
+      objects may get buffed or nerfed. Mostly buffed.
+  - bugfix: Hints in bureaucracy forms
+  - rscadd: You can now become patron of your favorite painting by buying sponsorship
+      from Nanotrasen Trust Foundation.
+  - rscadd: 'Painter''s palettes are now available at library vendor. qol: Can use
+      strokes in paintings now'
+  - bugfix: Burnt-out flashes once again update their in-hands correctly
+  - bugfix: Flashing no longer goes through when the attempt has burnt out the flash
+  - bugfix: Fixes clothing protection tags being displayed incorrectly.
+  - bugfix: you can no longer buckle onto chairs that are under dense atoms (like
+      machines)
+  - bugfix: You can no longer use the disease browsing console to summon satan
+  - bugfix: The disease browsing console will now properly show you the mobs the disease
+      effects
+  - bugfix: AI shells will no longer be instantly converted into a construct shell
+      by the Twisted Construction spell.
+  jjpark-kb:
+  - bugfix: 'blueshift: medicals protolathe to techfab'
+  softcerv:
+  - bugfix: the body teleporter medicell no longer teleports people that are still
+      alive
