@@ -4,17 +4,17 @@
 	var/slot = SPACEPOD_SLOT_MISC
 	var/slot_space = 1
 
-/obj/item/spacepod_equipment/proc/on_install(obj/spacepod/SP)
-	spacepod = SP
-	SP.equipment |= src
-	forceMove(SP)
+/obj/item/spacepod_equipment/proc/on_install(obj/spacepod/attaching_spacepod)
+	spacepod = attaching_spacepod
+	attaching_spacepod.equipment |= src
+	forceMove(attaching_spacepod)
 
 /obj/item/spacepod_equipment/proc/on_uninstall()
 	spacepod.equipment -= src
 
-/obj/item/spacepod_equipment/proc/can_install(obj/spacepod/SP, mob/user)
-	var/room = SP.equipment_slot_limits[slot] || 0
-	for(var/obj/item/spacepod_equipment/EQ in SP.equipment)
+/obj/item/spacepod_equipment/proc/can_install(obj/spacepod/attaching_spacepod, mob/user)
+	var/room = attaching_spacepod.equipment_slot_limits[slot] || 0
+	for(var/obj/item/spacepod_equipment/EQ in attaching_spacepod.equipment)
 		if(EQ.slot == slot)
 			room -= EQ.slot_space
 	if(room < slot_space)
@@ -35,10 +35,10 @@
 	var/overlay_icon
 	var/overlay_icon_state
 
-/obj/item/spacepod_equipment/weaponry/on_install(obj/spacepod/SP)
+/obj/item/spacepod_equipment/weaponry/on_install(obj/spacepod/attaching_spacepod)
 	. = ..()
-	SP.weapon = src
-	SP.update_icon()
+	attaching_spacepod.weapon = src
+	attaching_spacepod.update_icon()
 
 /obj/item/spacepod_equipment/weaponry/on_uninstall()
 	. = ..()
@@ -67,100 +67,72 @@
 */
 
 /obj/item/spacepod_equipment/cargo // this one holds large crates and shit
-	name = "pod cargo"
-	desc = "You shouldn't be seeing this"
-	icon_state = "cargo_blank"
-	slot = SPACEPOD_SLOT_CARGO
-
-/obj/item/spacepod_equipment/cargo/large
 	name = "spacepod crate storage system"
 	desc = "A heavy duty storage system for spacepods. Holds one crate."
 	icon_state = "cargo_crate"
 	var/obj/storage = null
 	var/storage_type = /obj/structure/closet/crate
 
-/obj/item/spacepod_equipment/cargo/large/on_install(obj/spacepod/SP)
+/obj/item/spacepod_equipment/cargo/on_install(obj/spacepod/attaching_spacepod)
 	..()
-	// COMSIG - a way to make component signals sound more important than they actually are.
-	// it's not even limited to components. Does this look like a component to you?
-	// Okay here's a better name: It's a fucking *event handler*. Like the ones in javascript.
-	// a much more descriptive and less scary name than fucking "COMSIG". But noooooooooo
-	// the TG coders were too self important to pick a descriptive name and wanted to sound all scientific
-	RegisterSignal(SP, COMSIG_MOUSEDROPPED_ONTO, .proc/spacepod_mousedrop)
-	SP.verbs |= /obj/spacepod/proc/unload_cargo
+	RegisterSignal(attaching_spacepod, COMSIG_MOUSEDROPPED_ONTO, .proc/spacepod_mousedrop)
+	attaching_spacepod.cargo_bays += src
 
-/obj/item/spacepod_equipment/cargo/large/on_uninstall()
+/obj/item/spacepod_equipment/cargo/on_uninstall()
 	UnregisterSignal(spacepod, COMSIG_MOUSEDROPPED_ONTO)
 	..()
-	if(!(locate(/obj/item/spacepod_equipment/cargo/large) in spacepod.equipment))
-		spacepod.verbs -= /obj/spacepod/proc/unload_cargo
+	spacepod.cargo_bays -= src
 
-/obj/item/spacepod_equipment/cargo/large/can_uninstall(mob/user)
+/obj/item/spacepod_equipment/cargo/can_uninstall(mob/user)
 	if(storage)
 		to_chat(user, span_warning("Unload the cargo first!"))
 		return FALSE
 	return ..()
 
-/obj/spacepod/proc/unload_cargo() // if I could i'd put this on spacepod_equipment but unfortunately BYOND is stupid
-	set name = "Unload Cargo"
-	set category = "Spacepod"
-	set src = usr.loc
+/obj/item/spacepod_equipment/cargo/proc/unload_cargo()
+	if(storage)
+		storage.forceMove(get_turf(src))
+		storage = null
 
-	if(!verb_check())
-		return
-
-	var/used_key_list = list()
-	var/cargo_map = list()
-	for(var/obj/item/spacepod_equipment/cargo/large/E in equipment)
-		if(!E.storage)
-			continue
-		cargo_map[avoid_assoc_duplicate_keys("[E.name] ([E.storage.name])", used_key_list)] = E
-	var/selection = input(usr, "Unload which cargo?", null, null) as null|anything in cargo_map
-	var/obj/item/spacepod_equipment/cargo/large/E = cargo_map[selection]
-	if(!selection || !verb_check() || !E || !(E in equipment) || !E.storage)
-		return
-	E.storage.forceMove(loc)
-	E.storage = null
-
-/obj/item/spacepod_equipment/cargo/large/proc/spacepod_mousedrop(obj/spacepod/SP, obj/A, mob/user)
+/obj/item/spacepod_equipment/cargo/proc/spacepod_mousedrop(obj/spacepod/attaching_spacepod, obj/A, mob/user)
 	SIGNAL_HANDLER
-	INVOKE_ASYNC(src, .proc/spacepod_mousedrop_async, SP, A, user)
+	INVOKE_ASYNC(src, .proc/spacepod_mousedrop_async, attaching_spacepod, A, user)
 
-/obj/item/spacepod_equipment/cargo/large/proc/spacepod_mousedrop_async(obj/spacepod/SP, obj/A, mob/user)
-	if(user == SP.pilot || (user in SP.passengers))
+/obj/item/spacepod_equipment/cargo/proc/spacepod_mousedrop_async(obj/spacepod/attaching_spacepod, obj/A, mob/user)
+	if(user == attaching_spacepod.pilot || (user in attaching_spacepod.passengers))
 		return FALSE
-	if(istype(A, storage_type) && SP.Adjacent(A)) // For loading ore boxes
+	if(istype(A, storage_type) && attaching_spacepod.Adjacent(A)) // For loading ore boxes
 		if(!storage)
-			to_chat(user, span_notice("You begin loading [A] into [SP]'s [src]"))
-			if(do_after_mob(user, list(A, SP), 40))
+			to_chat(user, span_notice("You begin loading [A] into [attaching_spacepod]'s [src]"))
+			if(do_after_mob(user, list(A, attaching_spacepod), 40))
 				storage = A
 				A.forceMove(src)
-				to_chat(user, span_notice("You load [A] into [SP]'s [src]!"))
+				to_chat(user, span_notice("You load [A] into [attaching_spacepod]'s [src]!"))
 			else
-				to_chat(user, span_warning("You fail to load [A] into [SP]'s [src]"))
+				to_chat(user, span_warning("You fail to load [A] into [attaching_spacepod]'s [src]"))
 		else
-			to_chat(user, span_warning("[SP] already has \an [storage]"))
+			to_chat(user, span_warning("[attaching_spacepod] already has \an [storage]"))
 		return TRUE
 	return FALSE
 
-/obj/item/spacepod_equipment/cargo/large/ore
+/obj/item/spacepod_equipment/cargo/ore
 	name = "spacepod ore storage system"
 	desc = "An ore storage system for spacepods. Scoops up any ore you drive over. Needs to be loaded with an ore box to work"
 	icon_state = "cargo_ore"
 	storage_type = /obj/structure/ore_box
 
-/obj/item/spacepod_equipment/cargo/large/ore/on_install(obj/spacepod/SP)
+/obj/item/spacepod_equipment/cargo/ore/on_install(obj/spacepod/attaching_spacepod)
 	..()
-	RegisterSignal(SP, COMSIG_MOVABLE_MOVED, .proc/spacepod_moved)
+	RegisterSignal(attaching_spacepod, COMSIG_MOVABLE_MOVED, .proc/spacepod_moved)
 
-/obj/item/spacepod_equipment/cargo/large/ore/on_uninstall()
+/obj/item/spacepod_equipment/cargo/ore/on_uninstall()
 	UnregisterSignal(spacepod, COMSIG_MOVABLE_MOVED)
 	..()
 
-/obj/item/spacepod_equipment/cargo/large/ore/proc/spacepod_moved(obj/spacepod/SP)
+/obj/item/spacepod_equipment/cargo/ore/proc/spacepod_moved(obj/spacepod/attaching_spacepod)
 	SIGNAL_HANDLER
 	if(storage)
-		for(var/turf/T in SP.locs)
+		for(var/turf/T in attaching_spacepod.locs)
 			for(var/obj/item/stack/ore in T)
 				ore.forceMove(storage)
 
@@ -170,9 +142,9 @@
 	icon_state = "sec_cargo_chair"
 	var/occupant_mod = 1
 
-/obj/item/spacepod_equipment/cargo/chair/on_install(obj/spacepod/SP)
+/obj/item/spacepod_equipment/cargo/chair/on_install(obj/spacepod/attaching_spacepod)
 	..()
-	SP.max_passengers += occupant_mod
+	attaching_spacepod.max_passengers += occupant_mod
 
 /obj/item/spacepod_equipment/cargo/chair/on_uninstall()
 	spacepod.max_passengers -= occupant_mod
@@ -294,10 +266,10 @@
 	icon_state = "blank"
 	slot = SPACEPOD_SLOT_LOCK
 
-/obj/item/spacepod_equipment/lock/on_install(obj/spacepod/SP)
+/obj/item/spacepod_equipment/lock/on_install(obj/spacepod/attaching_spacepod)
 	..()
-	RegisterSignal(SP, COMSIG_PARENT_ATTACKBY, .proc/spacepod_attackby)
-	SP.lock = src
+	RegisterSignal(attaching_spacepod, COMSIG_PARENT_ATTACKBY, .proc/spacepod_attackby)
+	attaching_spacepod.lock = src
 
 /obj/item/spacepod_equipment/lock/on_uninstall()
 	UnregisterSignal(spacepod, COMSIG_PARENT_ATTACKBY)
@@ -306,7 +278,7 @@
 	spacepod.locked = FALSE
 	..()
 
-/obj/item/spacepod_equipment/lock/proc/spacepod_attackby(obj/spacepod/SP, I, mob/user)
+/obj/item/spacepod_equipment/lock/proc/spacepod_attackby(obj/spacepod/attaching_spacepod, I, mob/user)
 	SIGNAL_HANDLER
 	return FALSE
 
@@ -324,11 +296,11 @@
 		id = ++id_source
 
 
-/obj/item/spacepod_equipment/lock/keyed/spacepod_attackby(obj/spacepod/SP, obj/item/I, mob/user)
+/obj/item/spacepod_equipment/lock/keyed/spacepod_attackby(obj/spacepod/attaching_spacepod, obj/item/I, mob/user)
 	if(istype(I, /obj/item/spacepod_key))
 		var/obj/item/spacepod_key/key = I
 		if(key.id == id)
-			SP.lock_pod()
+			attaching_spacepod.toggle_locked(user)
 			return
 		else
 			to_chat(user, span_warning("This is the wrong key!"))
@@ -393,29 +365,3 @@
 	icon_state = "cargo_blank"
 	slot = SPACEPOD_SLOT_MISC
 
-/obj/spacepod/verb/wayback_me()
-	set name = "Back to lighthouse"
-	set category = "Spacepod"
-	set src = usr.loc
-
-	if(!(locate(/obj/item/spacepod_equipment/teleport) in equipment))
-		to_chat(usr, span_warning("No teleportation device!"))
-		return
-
-	if(!verb_check())
-		return
-
-	if(do_after(usr, 5 SECONDS, src, timed_action_flags = IGNORE_INCAPACITATED))
-		if(!cell || !cell.use(5000))
-			to_chat(usr, span_warning("Not enough energy!"))
-			return
-
-		for(var/atom/A in GLOB.spacepod_beacons)
-			var/turf/T = get_turf(A)
-			if(locate(/obj/spacepod) in T.contents)
-				continue
-			else
-				forceMove(T)
-				return
-
-		to_chat(usr, span_notice("TELEPORTING!"))

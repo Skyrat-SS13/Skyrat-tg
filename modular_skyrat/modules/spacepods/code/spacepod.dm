@@ -16,8 +16,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	opacity = 0
 	dir = NORTH // always points north because why not
 	layer = SPACEPOD_LAYER
-	bound_width = 32
-	bound_height = 32
 	animate_movement = NO_STEPS // we do our own gliding here
 
 	anchored = TRUE
@@ -38,6 +36,10 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/obj/item/spacepod_equipment/lock/lock
 	/// The weapon on the ship, thing that goes pew pew
 	var/obj/item/spacepod_equipment/weaponry/weapon
+	/// Is the weapon able to be fired?
+	var/weapon_safety = FALSE
+	/// A list of installed cargo bays
+	var/list/cargo_bays = list()
 	/// Next fire delay
 	var/next_firetime = 0
 	/// Are we...locked? or... unlocked.......
@@ -108,6 +110,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/lateral_bounce_factor = 0.95
 	/// Our icon direction number.
 	var/icon_dir_num = 1
+	base_pixel_x = -16
+	base_pixel_y = -16
 
 /obj/spacepod/Initialize()
 	. = ..()
@@ -573,101 +577,11 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		to_chat(user, span_danger("You can't fit in [src], it's full!"))
 	return FALSE
 
-/obj/spacepod/proc/verb_check(require_pilot = TRUE, mob/user = null)
-	if(!user)
-		user = usr
-	if(require_pilot && user != pilot)
-		to_chat(user, span_notice("You can't reach the controls from your chair"))
-		return FALSE
-	return !user.incapacitated() && isliving(user)
-
-/obj/spacepod/verb/exit_pod()
-	set name = "Exit pod"
-	set category = "Spacepod"
-	set src = usr.loc
-
-	if(!isliving(usr) || usr.stat > CONSCIOUS)
-		return
-
-	if(HAS_TRAIT(usr, TRAIT_RESTRAINED))
-		to_chat(usr, span_notice("You attempt to stumble out of [src]. This will take two minutes."))
-		if(pilot)
-			to_chat(pilot, span_warning("[usr] is trying to escape [src]."))
-		if(!do_after(usr, 1200, target = src))
-			return
-
-	if(remove_rider(usr))
-		to_chat(usr, span_notice("You climb out of [src]."))
-
-/obj/spacepod/verb/lock_pod()
-	set name = "Lock Doors"
-	set category = "Spacepod"
-	set src = usr.loc
-
-	if(!verb_check(FALSE))
-		return
-
-	if(!lock)
-		to_chat(usr, span_warning("[src] has no locking mechanism."))
-		locked = FALSE //Should never be false without a lock, but if it somehow happens, that will force an unlock.
-	else
-		locked = !locked
-		to_chat(usr, span_warning("You [locked ? "lock" : "unlock"] the doors."))
-
-/obj/spacepod/verb/toggle_brakes()
-	set name = "Toggle Brakes"
-	set category = "Spacepod"
-	set src = usr.loc
-
-	if(!verb_check())
-		return
-	brakes = !brakes
-	to_chat(usr, span_notice("You toggle the brakes [brakes ? "on" : "off"]."))
-
 /obj/spacepod/AltClick(user)
 	if(!verb_check(user = user))
 		return
 	brakes = !brakes
 	to_chat(usr, span_notice("You toggle the brakes [brakes ? "on" : "off"]."))
-
-/obj/spacepod/verb/toggleLights()
-	set name = "Toggle Lights"
-	set category = "Spacepod"
-	set src = usr.loc
-
-	if(!verb_check())
-		return
-
-	lights = !lights
-	if(lights)
-		set_light(lights_power)
-	else
-		set_light(0)
-	to_chat(usr, "Lights toggled [lights ? "on" : "off"].")
-	for(var/mob/M in passengers)
-		to_chat(M, "Lights toggled [lights ? "on" : "off"].")
-
-/obj/spacepod/verb/toggleDoors()
-	set name = "Toggle Nearby Pod Doors"
-	set category = "Spacepod"
-	set src = usr.loc
-
-	if(!verb_check())
-		return
-
-	for(var/obj/machinery/door/poddoor/multi_tile/P in orange(3,src))
-		for(var/mob/living/carbon/human/O in contents)
-			if(P.check_access(O.get_active_held_item()) || P.check_access(O.wear_id))
-				if(P.density)
-					P.open()
-					return TRUE
-				else
-					P.close()
-					return TRUE
-		to_chat(usr, span_warning("Access denied."))
-		return
-
-	to_chat(usr, span_warning("You are not close to any pod doors."))
 
 /obj/spacepod/proc/add_rider(mob/living/M, allow_pilot = TRUE)
 	if(M == pilot || (M in passengers))
@@ -693,6 +607,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 /obj/spacepod/proc/remove_rider(mob/living/M)
 	if(!M)
 		return
+	if(locked)
+		to_chat(M, span_warning("[src]'s doors are locked!"))
+		return
 	if(M == pilot)
 		pilot = null
 		removeverbs(M)
@@ -700,6 +617,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		if(M.client)
 			M.client.view_size.resetToDefault()
 		UnregisterSignal(M, COMSIG_MOB_CLIENT_MOUSE_MOVE)
+		UnregisterSignal(M, COMSIG_MOB_CLIENT_MOUSE_DOWN)
 		desired_angle = null // since there's no pilot there's no one aiming it.
 	else if(M in passengers)
 		passengers -= M
@@ -717,24 +635,248 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		return
 	user_thrust_dir = direction
 
+/**
+ * UI CONTROL FUNCTIONS
+ *
+ * These functions are called by the client to control the UI.
+ * The control menu is opened by a verb for now.
+ */
+
+/obj/spacepod/verb/open_menu()
+	set name = "Open Menu"
+	set category = "Spacepod"
+	set src = usr.loc
+
+	if(!verb_check())
+		return
+
+	if(!pilot)
+		to_chat(usr, span_warning("You are not in a pod."))
+	else if(pilot.incapacitated())
+		to_chat(usr, span_warning("You are incapacitated."))
+	else
+		ui_interact(pilot)
+
+/obj/spacepod/proc/check_interact(mob/living/user, require_pilot = TRUE)
+	if(require_pilot && user != pilot)
+		to_chat(user, span_notice("You can't reach the controls from your chair"))
+		return FALSE
+	return !user.incapacitated() && isliving(user) && user.loc == src
+
+
+/obj/spacepod/ui_interact(mob/user, datum/tgui/ui)
+	if(user != pilot)
+		return
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "SpacepodControl")
+		ui.open()
+
+/obj/spacepod/ui_state(mob/user)
+	return GLOB.conscious_state
+
 /obj/spacepod/ui_data(mob/user)
 	. = ..()
+	var/list/data = list()
 
+	data["pod_name"] = name
+
+	data["pod_pilot"] = pilot ? pilot.name : "none"
+
+	data["has_occupants"] = FALSE
+	if(LAZYLEN(passengers))
+		data["occupants"] = list()
+		for(var/mob/iterating_mob as anything in passengers)
+			data["occupants"] += iterating_mob.name
+		data["has_occupants"] = TRUE
+
+	data["integrity"] = round(get_integrity(),0.1)
+	data["max_integrity"] = max_integrity
+
+	data["velocity"] = round(sqrt(velocity_x*velocity_x+velocity_y*velocity_y), 0.1)
+
+	data["locked"] = locked
+	data["brakes"] = brakes
+	data["lights"] = lights
+
+	data["has_cell"] = FALSE
+	if(cell)
+		data["has_cell"] = TRUE
+		data["cell_data"] = list(
+			"type" = capitalize(cell.name),
+			"charge" = cell.charge,
+			"max_charge" = cell.maxcharge,
+		)
+
+	if(LAZYLEN(equipment))
+		data["has_equipment"] = TRUE
+		data["equipment"] = list()
+		for(var/obj/item/spacepod_equipment/spacepod_equipment as anything in equipment)
+			data["equipment"] += list(list(
+				"name" = uppertext(spacepod_equipment.name),
+				"desc" = spacepod_equipment.desc,
+				"slot" = capitalize(spacepod_equipment.slot) + " Slot",
+				"can_uninstall" = spacepod_equipment.can_uninstall(),
+				"ref" = REF(spacepod_equipment),
+			))
+	else
+		data["has_attachments"] = FALSE
+
+	if(LAZYLEN(cargo_bays))
+		data["has_bays"] = TRUE
+		data["cargo_bays"] = list()
+		for(var/obj/item/spacepod_equipment/cargo/cargo_bay as anything in cargo_bays)
+			data["cargo_bays"] += list(list(
+				"name" = uppertext(cargo_bay.name),
+				"ref" = REF(cargo_bay),
+				"storage" = cargo_bay.storage ? cargo_bay.storage.name : "none",
+			))
+	else
+		data["has_bays"] = FALSE
+
+	return data
+
+/obj/spacepod/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	if(!check_interact(usr))
+		return
+	switch(action)
+		if("exit_pod")
+			exit_pod(usr)
+		if("toggle_lights")
+			toggle_lights(usr)
+		if("toggle_brakes")
+			toggle_brakes(usr)
+		if("toggle_locked")
+			toggle_locked(usr)
+		if("toggle_doors")
+			toggle_doors(usr)
+		if("unload_cargo")
+			var/obj/item/spacepod_equipment/cargo/cargo = locate(params["cargo_bay_ref"]) in src
+			if(!cargo)
+				return
+			cargo.unload_cargo()
+		if("remove_equipment")
+			var/obj/item/spacepod_equipment/equipment_to_remove = locate(params["equipment_ref"]) in src
+			if(!equipment_to_remove)
+				return
+			if(!equipment_to_remove.can_uninstall(usr))
+				return
+			equipment_to_remove.on_uninstall()
+			equipment_to_remove.forceMove(get_turf(src))
+
+/obj/spacepod/proc/exit_pod(mob/living/user)
+	if(HAS_TRAIT(user, TRAIT_RESTRAINED))
+		to_chat(user, span_notice("You attempt to stumble out of [src]. This will take two minutes."))
+		if(pilot)
+			to_chat(pilot, span_warning("[user] is trying to escape [src]."))
+		if(!do_after(user, 1200, target = src))
+			return
+
+	if(remove_rider(user))
+		to_chat(user, span_notice("You climb out of [src]."))
+
+/obj/spacepod/proc/toggle_lights(mob/living/user)
+	lights = !lights
+	if(lights)
+		set_light(lights_power)
+	else
+		set_light(0)
+	to_chat(user, "Lights toggled [lights ? "on" : "off"].")
+	for(var/mob/mob in passengers)
+		to_chat(mob, "Lights toggled [lights ? "on" : "off"].")
+
+/obj/spacepod/proc/toggle_brakes(mob/living/user)
+	brakes = !brakes
+	to_chat(user, span_notice("You toggle the brakes [brakes ? "on" : "off"]."))
+
+/obj/spacepod/proc/toggle_locked(mob/living/user)
+	if(!lock)
+		to_chat(user, span_warning("[src] has no locking mechanism."))
+		locked = FALSE //Should never be false without a lock, but if it somehow happens, that will force an unlock.
+	else
+		locked = !locked
+		to_chat(user, span_warning("You [locked ? "lock" : "unlock"] the doors."))
+
+/obj/spacepod/proc/toggle_doors(mob/living/user)
+	for(var/obj/machinery/door/poddoor/multi_tile/P in orange(3,src))
+		for(var/mob/living/carbon/human/O in contents)
+			if(P.check_access(O.get_active_held_item()) || P.check_access(O.wear_id))
+				if(P.density)
+					P.open()
+					return TRUE
+				else
+					P.close()
+					return TRUE
+		to_chat(user, span_warning("Access denied."))
+		return
+
+	to_chat(user, span_warning("You are not close to any pod doors."))
 
 /obj/spacepod/proc/addverbs(mob/user)
-	add_verb(user, /obj/spacepod/verb/toggleDoors)
-	add_verb(user, /obj/spacepod/verb/toggleLights)
-	add_verb(user, /obj/spacepod/verb/toggle_brakes)
-	add_verb(user, /obj/spacepod/verb/lock_pod)
-	add_verb(user, /obj/spacepod/verb/exit_pod)
+	add_verb(user, /obj/spacepod/verb/open_menu)
+	add_verb(user, /obj/spacepod/verb/exit_pod_verb)
 	if((locate(/obj/item/spacepod_equipment/teleport) in equipment))
 		add_verb(user, /obj/spacepod/verb/wayback_me)
 
 /obj/spacepod/proc/removeverbs(mob/user)
-	remove_verb(user, /obj/spacepod/verb/toggleDoors)
-	remove_verb(user, /obj/spacepod/verb/toggleLights)
-	remove_verb(user, /obj/spacepod/verb/toggle_brakes)
-	remove_verb(user, /obj/spacepod/verb/lock_pod)
-	remove_verb(user, /obj/spacepod/verb/exit_pod)
+	remove_verb(user, /obj/spacepod/verb/open_menu)
+	add_verb(user, /obj/spacepod/verb/exit_pod_verb)
 	if((locate(/obj/item/spacepod_equipment/teleport) in equipment))
 		remove_verb(user, /obj/spacepod/verb/wayback_me)
+
+// LEGACY CONTROL - Important that this works at all times as we don't want to brick people.
+/obj/spacepod/proc/verb_check(require_pilot = TRUE, mob/user = null)
+	if(!user)
+		user = usr
+	if(require_pilot && user != pilot)
+		to_chat(user, span_notice("You can't reach the controls from your chair"))
+		return FALSE
+	return !user.incapacitated() && isliving(user)
+
+/obj/spacepod/verb/exit_pod_verb()
+	set name = "Exit pod"
+	set category = "Spacepod"
+	set src = usr.loc
+
+	if(!isliving(usr) || usr.stat > CONSCIOUS)
+		return
+
+	if(HAS_TRAIT(usr, TRAIT_RESTRAINED))
+		to_chat(usr, span_notice("You attempt to stumble out of [src]. This will take two minutes."))
+		if(pilot)
+			to_chat(pilot, span_warning("[usr] is trying to escape [src]."))
+		if(!do_after(usr, 1200, target = src))
+			return
+
+	if(remove_rider(usr))
+		to_chat(usr, span_notice("You climb out of [src]."))
+
+/obj/spacepod/verb/wayback_me()
+	set name = "Back to lighthouse"
+	set category = "Spacepod"
+	set src = usr.loc
+
+	if(!(locate(/obj/item/spacepod_equipment/teleport) in equipment))
+		to_chat(usr, span_warning("No teleportation device!"))
+		return
+
+	if(!verb_check())
+		return
+
+	if(do_after(usr, 5 SECONDS, src, timed_action_flags = IGNORE_INCAPACITATED))
+		if(!cell || !cell.use(5000))
+			to_chat(usr, span_warning("Not enough energy!"))
+			return
+
+		for(var/atom/A in GLOB.spacepod_beacons)
+			var/turf/T = get_turf(A)
+			if(locate(/obj/spacepod) in T.contents)
+				continue
+			else
+				forceMove(T)
+				return
+
+		to_chat(usr, span_notice("TELEPORTING!"))

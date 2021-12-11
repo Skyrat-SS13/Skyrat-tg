@@ -70,7 +70,7 @@
 	armor_type = /obj/item/pod_parts/armor/security
 	cell_type = /obj/item/stock_parts/cell/high
 	equipment_types = list(/obj/item/spacepod_equipment/weaponry/burst_disabler,
-		/obj/item/spacepod_equipment/cargo/large,
+		/obj/item/spacepod_equipment/cargo,
 		/obj/item/spacepod_equipment/lock/keyed/military,
 		/obj/item/spacepod_equipment/cargo/chair,
 		/obj/item/spacepod_equipment/teleport)
