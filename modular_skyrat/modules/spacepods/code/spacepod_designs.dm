@@ -165,7 +165,7 @@
 	id = "podcargo_ore"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron=20000, /datum/material/glass=2000)
-	build_path = /obj/item/spacepod_equipment/cargo/ore
+	build_path = /obj/item/spacepod_equipment/cargo/large/ore
 	category = list("Spacepods")
 	departmental_flags = DEPARTMENTAL_FLAG_CARGO
 
@@ -175,7 +175,7 @@
 	id = "podcargo_crate"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron=25000)
-	build_path = /obj/item/spacepod_equipment/cargo
+	build_path = /obj/item/spacepod_equipment/cargo/large
 	category = list("Spacepods")
 	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_SCIENCE
 

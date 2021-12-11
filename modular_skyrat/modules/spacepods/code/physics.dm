@@ -37,7 +37,7 @@
 	var/velocity_mag = sqrt(velocity_x*velocity_x+velocity_y*velocity_y) // magnitude
 	if(velocity_mag || angular_velocity)
 		var/drag = 0
-		for(var/turf/T in locs)
+		for(var/turf/T as anything in locs)
 			if(isspaceturf(T))
 				continue
 			drag += 0.001
@@ -76,7 +76,7 @@
 	last_thrust_right = 0
 	if(brakes)
 		if(user_thrust_dir)
-			to_chat(pilot, span_warning("Your brakes are on!"))
+			to_chat(pilot, span_warning("Vector thrust breaking online!"))
 		// basically calculates how much we can brake using the thrust
 		var/forward_thrust = -((fx * velocity_x) + (fy * velocity_y)) / time
 		var/right_thrust = -((sx * velocity_x) + (sy * velocity_y)) / time
@@ -207,7 +207,7 @@
 	pixel_y = base_pixel_y + last_offset_y*32
 	animate(src, transform=mat_to, pixel_x = base_pixel_x + offset_x*32, pixel_y = base_pixel_y + offset_y*32, time = time*10, flags=ANIMATION_END_NOW)
 	var/list/possible_smooth_viewers = contents | src | get_all_orbiters()
-	for(var/mob/M in possible_smooth_viewers)
+	for(var/mob/M as anything in possible_smooth_viewers)
 		var/client/C = M.client
 		if(!C)
 			continue
@@ -260,7 +260,7 @@
 		var/mob/living/M = A
 		M.apply_damage(bump_velocity * 2)
 		take_damage(bump_velocity, BRUTE, "melee", FALSE)
-		playsound(M.loc, "swing_hit", 1000, 1, -1)
+		playsound(M.loc, "swing_hit", 100, 1, -1)
 		M.Knockdown(bump_velocity * 2)
 		M.visible_message(span_warning("The force of the impact knocks [M] down!") ,span_userdanger("The force of the impact knocks you down!"))
 		log_combat(pilot, M, "impacted", src, "with velocity of [bump_velocity]")
@@ -271,10 +271,10 @@
 	var/fy = sin(90 - angle)
 	var/sx = fy
 	var/sy = -fx
-	var/ox = (offset_x * 32) + 16
-	var/oy = (offset_y * 32) + 16
+	var/ox = (offset_x * 32)
+	var/oy = (offset_y * 32)
 	var/list/origins = list(list(ox + fx*16 - sx*16, oy + fy*16 - sy*16), list(ox + fx*16 + sx*16, oy + fy*16 + sy*16))
-	for(var/list/origin in origins)
+	for(var/list/origin as anything in origins)
 		var/this_x = origin[1]
 		var/this_y = origin[2]
 		var/turf/T = get_turf(src)

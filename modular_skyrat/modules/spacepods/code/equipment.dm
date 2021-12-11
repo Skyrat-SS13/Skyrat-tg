@@ -66,39 +66,45 @@
 ///////////////////////////////////////
 */
 
-/obj/item/spacepod_equipment/cargo // this one holds large crates and shit
+/obj/item/spacepod_equipment/cargo
+	name = "pod cargo"
+	desc = "You shouldn't be seeing this"
+	icon_state = "cargo_blank"
+	slot = SPACEPOD_SLOT_CARGO
+
+/obj/item/spacepod_equipment/cargo/large// this one holds large crates and shit
 	name = "spacepod crate storage system"
 	desc = "A heavy duty storage system for spacepods. Holds one crate."
 	icon_state = "cargo_crate"
 	var/obj/storage = null
 	var/storage_type = /obj/structure/closet/crate
 
-/obj/item/spacepod_equipment/cargo/on_install(obj/spacepod/attaching_spacepod)
+/obj/item/spacepod_equipment/cargo/large/on_install(obj/spacepod/attaching_spacepod)
 	..()
 	RegisterSignal(attaching_spacepod, COMSIG_MOUSEDROPPED_ONTO, .proc/spacepod_mousedrop)
 	attaching_spacepod.cargo_bays += src
 
-/obj/item/spacepod_equipment/cargo/on_uninstall()
+/obj/item/spacepod_equipment/cargo/large/on_uninstall()
 	UnregisterSignal(spacepod, COMSIG_MOUSEDROPPED_ONTO)
 	..()
 	spacepod.cargo_bays -= src
 
-/obj/item/spacepod_equipment/cargo/can_uninstall(mob/user)
+/obj/item/spacepod_equipment/cargo/large/can_uninstall(mob/user)
 	if(storage)
 		to_chat(user, span_warning("Unload the cargo first!"))
 		return FALSE
 	return ..()
 
-/obj/item/spacepod_equipment/cargo/proc/unload_cargo()
+/obj/item/spacepod_equipment/cargo/large/proc/unload_cargo()
 	if(storage)
 		storage.forceMove(get_turf(src))
 		storage = null
 
-/obj/item/spacepod_equipment/cargo/proc/spacepod_mousedrop(obj/spacepod/attaching_spacepod, obj/A, mob/user)
+/obj/item/spacepod_equipment/cargo/large/proc/spacepod_mousedrop(obj/spacepod/attaching_spacepod, obj/A, mob/user)
 	SIGNAL_HANDLER
 	INVOKE_ASYNC(src, .proc/spacepod_mousedrop_async, attaching_spacepod, A, user)
 
-/obj/item/spacepod_equipment/cargo/proc/spacepod_mousedrop_async(obj/spacepod/attaching_spacepod, obj/A, mob/user)
+/obj/item/spacepod_equipment/cargo/large/proc/spacepod_mousedrop_async(obj/spacepod/attaching_spacepod, obj/A, mob/user)
 	if(user == attaching_spacepod.pilot || (user in attaching_spacepod.passengers))
 		return FALSE
 	if(istype(A, storage_type) && attaching_spacepod.Adjacent(A)) // For loading ore boxes
@@ -115,21 +121,21 @@
 		return TRUE
 	return FALSE
 
-/obj/item/spacepod_equipment/cargo/ore
+/obj/item/spacepod_equipment/cargo/large/ore
 	name = "spacepod ore storage system"
 	desc = "An ore storage system for spacepods. Scoops up any ore you drive over. Needs to be loaded with an ore box to work"
 	icon_state = "cargo_ore"
 	storage_type = /obj/structure/ore_box
 
-/obj/item/spacepod_equipment/cargo/ore/on_install(obj/spacepod/attaching_spacepod)
+/obj/item/spacepod_equipment/cargo/large/ore/on_install(obj/spacepod/attaching_spacepod)
 	..()
 	RegisterSignal(attaching_spacepod, COMSIG_MOVABLE_MOVED, .proc/spacepod_moved)
 
-/obj/item/spacepod_equipment/cargo/ore/on_uninstall()
+/obj/item/spacepod_equipment/cargo/large/ore/on_uninstall()
 	UnregisterSignal(spacepod, COMSIG_MOVABLE_MOVED)
 	..()
 
-/obj/item/spacepod_equipment/cargo/ore/proc/spacepod_moved(obj/spacepod/attaching_spacepod)
+/obj/item/spacepod_equipment/cargo/large/ore/proc/spacepod_moved(obj/spacepod/attaching_spacepod)
 	SIGNAL_HANDLER
 	if(storage)
 		for(var/turf/T in attaching_spacepod.locs)

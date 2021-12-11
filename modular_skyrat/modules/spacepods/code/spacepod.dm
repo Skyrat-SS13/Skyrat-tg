@@ -679,8 +679,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	. = ..()
 	var/list/data = list()
 
-	data["pod_name"] = name
-
 	data["pod_pilot"] = pilot ? pilot.name : "none"
 
 	data["has_occupants"] = FALSE
@@ -708,6 +706,14 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			"max_charge" = cell.maxcharge,
 		)
 
+	data["has_weapon"] = FALSE
+	if(weapon)
+		data["has_weapon"] = TRUE
+		data["weapon_data"] = list(
+			"type" = capitalize(weapon.name),
+			"desc" = weapon.desc,
+		)
+
 	if(LAZYLEN(equipment))
 		data["has_equipment"] = TRUE
 		data["equipment"] = list()
@@ -725,7 +731,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(LAZYLEN(cargo_bays))
 		data["has_bays"] = TRUE
 		data["cargo_bays"] = list()
-		for(var/obj/item/spacepod_equipment/cargo/cargo_bay as anything in cargo_bays)
+		for(var/obj/item/spacepod_equipment/cargo/large/cargo_bay as anything in cargo_bays)
 			data["cargo_bays"] += list(list(
 				"name" = uppertext(cargo_bay.name),
 				"ref" = REF(cargo_bay),
@@ -753,8 +759,10 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			toggle_locked(usr)
 		if("toggle_doors")
 			toggle_doors(usr)
+		if("toggle_weapon_lock")
+			toggle_weapon_lock(usr)
 		if("unload_cargo")
-			var/obj/item/spacepod_equipment/cargo/cargo = locate(params["cargo_bay_ref"]) in src
+			var/obj/item/spacepod_equipment/cargo/large/cargo = locate(params["cargo_bay_ref"]) in src
 			if(!cargo)
 				return
 			cargo.unload_cargo()
@@ -767,7 +775,13 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			equipment_to_remove.on_uninstall()
 			equipment_to_remove.forceMove(get_turf(src))
 
-/obj/spacepod/proc/exit_pod(mob/living/user)
+/obj/spacepod/proc/toggle_weapon_lock(mob/user)
+	if(!weapon)
+		return
+	weapon_safety = !weapon_safety
+	to_chat(user, span_notice("Weapon lock is now [weapon_safety ? "on" : "off"]."))
+
+/obj/spacepod/proc/exit_pod(mob/user)
 	if(HAS_TRAIT(user, TRAIT_RESTRAINED))
 		to_chat(user, span_notice("You attempt to stumble out of [src]. This will take two minutes."))
 		if(pilot)
@@ -778,7 +792,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(remove_rider(user))
 		to_chat(user, span_notice("You climb out of [src]."))
 
-/obj/spacepod/proc/toggle_lights(mob/living/user)
+/obj/spacepod/proc/toggle_lights(mob/user)
 	lights = !lights
 	if(lights)
 		set_light(lights_power)
@@ -788,11 +802,11 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	for(var/mob/mob in passengers)
 		to_chat(mob, "Lights toggled [lights ? "on" : "off"].")
 
-/obj/spacepod/proc/toggle_brakes(mob/living/user)
+/obj/spacepod/proc/toggle_brakes(mob/user)
 	brakes = !brakes
 	to_chat(user, span_notice("You toggle the brakes [brakes ? "on" : "off"]."))
 
-/obj/spacepod/proc/toggle_locked(mob/living/user)
+/obj/spacepod/proc/toggle_locked(mob/user)
 	if(!lock)
 		to_chat(user, span_warning("[src] has no locking mechanism."))
 		locked = FALSE //Should never be false without a lock, but if it somehow happens, that will force an unlock.
@@ -800,7 +814,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		locked = !locked
 		to_chat(user, span_warning("You [locked ? "lock" : "unlock"] the doors."))
 
-/obj/spacepod/proc/toggle_doors(mob/living/user)
+/obj/spacepod/proc/toggle_doors(mob/user)
 	for(var/obj/machinery/door/poddoor/multi_tile/P in orange(3,src))
 		for(var/mob/living/carbon/human/O in contents)
 			if(P.check_access(O.get_active_held_item()) || P.check_access(O.wear_id))
