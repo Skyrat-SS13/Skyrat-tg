@@ -26,11 +26,11 @@
 		occupant_actions[take_from] -= actiontype
 	return TRUE
 
-/obj/vehicle/proc/grant_passenger_actions(mob/grant_to)
-	for(var/action in pilot_actions)
+/obj/spacepod/proc/grant_passenger_actions(mob/grant_to)
+	for(var/action in passenger_actions)
 		grant_action_type_to_mob(action, grant_to)
 
-/obj/vehicle/proc/grant_pilot_actions(mob/grant_to)
+/obj/spacepod/proc/grant_pilot_actions(mob/grant_to)
 	for(var/action in pilot_actions)
 		grant_action_type_to_mob(action, grant_to)
 
@@ -69,4 +69,4 @@
 		return
 	if(!spacepod_target || !(owner in spacepod_target.occupants))
 		return
-	exit_pod(owner)
+	spacepod_target.exit_pod(owner)

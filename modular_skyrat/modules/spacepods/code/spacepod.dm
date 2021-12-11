@@ -59,6 +59,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	/// Control timer for slow process, please don't fuck with it.
 	var/last_slowprocess = 0
 
+	/// Total occupants
+	var/list/occupants = list()
+
 	/// US!
 	var/mob/living/pilot
 	/// OUR FRIENDS!
@@ -70,7 +73,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	/// List of action types for the pilot
 	var/list/pilot_actions = list(/datum/action/spacepod/exit)
 
-	var/list/mob/occupant_actions
+	var/list/mob/occupant_actions = list()
 
 	// Physics stuff, we calculate our own velocity and acceleration, in tiles per second.
 	var/velocity_x = 0
@@ -131,9 +134,14 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	GLOB.spacepods_list -= src
 	QDEL_NULL(pilot)
 	QDEL_LIST(passengers)
+	QDEL_LIST(occupants)
 	QDEL_LIST(equipment)
 	QDEL_NULL(cabin_air)
+	QDEL_NULL(internal_tank)
 	QDEL_NULL(cell)
+	QDEL_NULL(pod_armor)
+	QDEL_NULL(lock)
+	QDEL_NULL(weapon)
 	return ..()
 
 /obj/spacepod/attackby(obj/item/W, mob/living/user)
@@ -593,6 +601,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(M == pilot || (M in passengers))
 		return FALSE
 	if(!pilot && allow_pilot)
+		LAZYSET(occupants, M, NONE)
 		pilot = M
 		RegisterSignal(M, COMSIG_MOB_CLIENT_MOUSE_MOVE, .proc/on_mouse_moved)
 		RegisterSignal(M, COMSIG_MOB_CLIENT_MOUSE_DOWN, .proc/try_fire_weapon)
@@ -602,6 +611,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			M.client.view_size.setTo(2)
 			M.movement_type = GROUND
 	else if(passengers.len < max_passengers)
+		LAZYSET(occupants, M, NONE)
 		grant_passenger_actions(M)
 		passengers += M
 	else
@@ -620,7 +630,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(M == pilot)
 		pilot = null
 		remove_pilot_actions(M)
-		removeverbs(M)
 		REMOVE_TRAIT(M, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT)
 		if(M.client)
 			M.client.view_size.resetToDefault()
@@ -632,6 +641,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		passengers -= M
 	else
 		return FALSE
+	LAZYREMOVE(occupants, M)
 	if(M.loc == src)
 		M.forceMove(loc)
 	cleanup_actions_for_mob(M)
@@ -639,6 +649,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		M.client.pixel_x = 0
 		M.client.pixel_y = 0
 	return TRUE
+
+/obj/spacepod/proc/is_occupant(mob/M)
+	return !isnull(LAZYACCESS(occupants, M))
 
 /obj/spacepod/relaymove(mob/user, direction)
 	if(user != pilot || pilot.incapacitated())
