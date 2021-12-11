@@ -65,6 +65,12 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/list/passengers = list()
 	/// How many friends we can have!
 	var/max_passengers = 0
+	/// List of action types for passengers
+	var/list/passenger_actions = list(/datum/action/spacepod/exit)
+	/// List of action types for the pilot
+	var/list/pilot_actions = list(/datum/action/spacepod/exit)
+
+	var/list/mob/occupant_actions
 
 	// Physics stuff, we calculate our own velocity and acceleration, in tiles per second.
 	var/velocity_x = 0
@@ -298,7 +304,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(weapon)
 		weapon.fire_weapons(object)
 
-/obj/spacepod/take_damage()
+/obj/spacepod/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armour_penetration = 0)
 	..()
 	update_icon()
 
@@ -590,12 +596,13 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		pilot = M
 		RegisterSignal(M, COMSIG_MOB_CLIENT_MOUSE_MOVE, .proc/on_mouse_moved)
 		RegisterSignal(M, COMSIG_MOB_CLIENT_MOUSE_DOWN, .proc/try_fire_weapon)
-		addverbs(M)
+		grant_pilot_actions(M)
 		ADD_TRAIT(M, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT)
 		if(M.client)
 			M.client.view_size.setTo(2)
 			M.movement_type = GROUND
 	else if(passengers.len < max_passengers)
+		grant_passenger_actions(M)
 		passengers += M
 	else
 		return FALSE
@@ -612,6 +619,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		return
 	if(M == pilot)
 		pilot = null
+		remove_pilot_actions(M)
 		removeverbs(M)
 		REMOVE_TRAIT(M, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT)
 		if(M.client)
@@ -620,11 +628,13 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		UnregisterSignal(M, COMSIG_MOB_CLIENT_MOUSE_DOWN)
 		desired_angle = null // since there's no pilot there's no one aiming it.
 	else if(M in passengers)
+		remove_passenger_actions(M)
 		passengers -= M
 	else
 		return FALSE
 	if(M.loc == src)
 		M.forceMove(loc)
+	cleanup_actions_for_mob(M)
 	if(M.client)
 		M.client.pixel_x = 0
 		M.client.pixel_y = 0
@@ -829,18 +839,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 	to_chat(user, span_warning("You are not close to any pod doors."))
 
-/obj/spacepod/proc/addverbs(mob/user)
-	add_verb(user, /obj/spacepod/verb/open_menu)
-	add_verb(user, /obj/spacepod/verb/exit_pod_verb)
-	if((locate(/obj/item/spacepod_equipment/teleport) in equipment))
-		add_verb(user, /obj/spacepod/verb/wayback_me)
-
-/obj/spacepod/proc/removeverbs(mob/user)
-	remove_verb(user, /obj/spacepod/verb/open_menu)
-	add_verb(user, /obj/spacepod/verb/exit_pod_verb)
-	if((locate(/obj/item/spacepod_equipment/teleport) in equipment))
-		remove_verb(user, /obj/spacepod/verb/wayback_me)
-
 // LEGACY CONTROL - Important that this works at all times as we don't want to brick people.
 /obj/spacepod/proc/verb_check(require_pilot = TRUE, mob/user = null)
 	if(!user)
@@ -850,23 +848,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		return FALSE
 	return !user.incapacitated() && isliving(user)
 
-/obj/spacepod/verb/exit_pod_verb()
-	set name = "Exit pod"
-	set category = "Spacepod"
-	set src = usr.loc
-
-	if(!isliving(usr) || usr.stat > CONSCIOUS)
-		return
-
-	if(HAS_TRAIT(usr, TRAIT_RESTRAINED))
-		to_chat(usr, span_notice("You attempt to stumble out of [src]. This will take two minutes."))
-		if(pilot)
-			to_chat(pilot, span_warning("[usr] is trying to escape [src]."))
-		if(!do_after(usr, 1200, target = src))
-			return
-
-	if(remove_rider(usr))
-		to_chat(usr, span_notice("You climb out of [src]."))
 
 /obj/spacepod/verb/wayback_me()
 	set name = "Back to lighthouse"

@@ -37,7 +37,7 @@
 	var/velocity_mag = sqrt(velocity_x*velocity_x+velocity_y*velocity_y) // magnitude
 	if(velocity_mag || angular_velocity)
 		var/drag = 0
-		for(var/turf/T as anything in locs)
+		for(var/turf/T in locs)
 			if(isspaceturf(T))
 				continue
 			drag += 0.001
@@ -207,7 +207,7 @@
 	pixel_y = base_pixel_y + last_offset_y*32
 	animate(src, transform=mat_to, pixel_x = base_pixel_x + offset_x*32, pixel_y = base_pixel_y + offset_y*32, time = time*10, flags=ANIMATION_END_NOW)
 	var/list/possible_smooth_viewers = contents | src | get_all_orbiters()
-	for(var/mob/M as anything in possible_smooth_viewers)
+	for(var/mob/M in possible_smooth_viewers)
 		var/client/C = M.client
 		if(!C)
 			continue
@@ -245,6 +245,9 @@
 	var/atom/movable/AM = A
 	if(istype(AM) && !AM.anchored && bump_velocity > 1)
 		step(AM, dir)
+
+	if(bump_velocity > 5)
+		playsound(src, pick(list('modular_skyrat/modules/spacepods/sound/hit_hull_1.ogg', 'modular_skyrat/modules/spacepods/sound/hit_hull_2.ogg', 'modular_skyrat/modules/spacepods/sound/hit_hull_3.ogg')), 70)
 	// if a bump is that fast then it's not a bump. It's a collision.
 	if(bump_velocity > 10 && !ismob(A))
 		var/strength = bump_velocity / 10
@@ -274,7 +277,7 @@
 	var/ox = (offset_x * 32)
 	var/oy = (offset_y * 32)
 	var/list/origins = list(list(ox + fx*16 - sx*16, oy + fy*16 - sy*16), list(ox + fx*16 + sx*16, oy + fy*16 + sy*16))
-	for(var/list/origin as anything in origins)
+	for(var/list/origin in origins)
 		var/this_x = origin[1]
 		var/this_y = origin[2]
 		var/turf/T = get_turf(src)
