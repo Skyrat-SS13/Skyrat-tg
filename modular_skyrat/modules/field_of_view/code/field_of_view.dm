@@ -184,7 +184,7 @@
 		if((rel_x > 3 || rel_x < -3) || (rel_y > 3 || rel_y < -3))
 			return FALSE
 
-	if(. && observed_atom.plane != GAME_PLANE_FOV_HIDDEN) //skyrat bandaid
+	if(!. && observed_atom.plane != GAME_PLANE_FOV_HIDDEN) //skyrat bandaid
 		return TRUE
 
 /proc/play_fov_effect(atom/center, range, icon_state, dir = SOUTH, ignore_self = FALSE, angle = 0)
