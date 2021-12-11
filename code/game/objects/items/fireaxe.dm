@@ -70,11 +70,27 @@
 	base_icon_state = "bone_axe"
 	name = "bone axe"
 	desc = "A large, vicious axe crafted out of several sharpened bone plates and crudely tied together. Made of monsters, by killing monsters, for killing monsters."
+///SKYRAT EDIT ADDITION BEGIN - Slight antimob axe buff
+///Bonus force dealt against certain factions. Blatantly stolen from the arrow code, because shitcode
+	var/faction_bonus_force = 9
+///Any mob with a faction that exists in this list will take bonus damage/effects
+	var/static/list/nemesis_factions = list("mining", "boss")
 
 /obj/item/fireaxe/boneaxe/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/two_handed, force_unwielded=5, force_wielded=23, icon_wielded="[base_icon_state]1")
 
+/obj/item/fireaxe/boneaxe/attack(mob/living/target, mob/living/carbon/human/user)
+	var/is_nemesis_faction = FALSE
+	for(var/found_faction in target.faction)
+		if(found_faction in nemesis_factions)
+			is_nemesis_faction = TRUE
+			force += faction_bonus_force
+			break
+	. = ..()
+	if(is_nemesis_faction)
+		force -= faction_bonus_force
+///SKYRAT EDIT ADDITION END - Slight antimob axe buff
 
 /*
  * Metal Hydrogen Axe
