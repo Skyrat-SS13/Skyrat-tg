@@ -73,6 +73,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	/// List of action types for the pilot
 	var/list/pilot_actions = list(/datum/action/spacepod/exit)
 
+	/// List of occupants with actions attached.
 	var/list/mob/occupant_actions = list()
 
 	// Physics stuff, we calculate our own velocity and acceleration, in tiles per second.
