@@ -215,18 +215,22 @@ SUBSYSTEM_DEF(vote)
 					choices.Add(valid_map)
 			//SKYRAT EDIT ADDITON END
 			if("custom")
-				question = stripped_input(usr,"What is the vote for?")
+				question = tgui_input_text(usr, "What is the vote for?", "Custom Vote")
 				if(!question)
 					return FALSE
 				for(var/i in 1 to 10)
-					var/option = capitalize(stripped_input(usr,"Please enter an option or hit cancel to finish"))
+					var/option = tgui_input_text(usr, "Please enter an option or hit cancel to finish", "Options", max_length = MAX_NAME_LEN)
 					if(!option || mode || !usr.client)
 						break
+<<<<<<< HEAD
 					choices.Add(option)
 			//SKYRAT EDIT ADDITION BEGIN - AUTOTRANSFER
 			if("transfer")
 				choices.Add("Initiate Crew Transfer","Continue Playing")
 			//SKYRAT EDIT ADDITION END - AUTOTRANSFER
+=======
+					choices.Add(capitalize(option))
+>>>>>>> 1052bc19ed2 (TGUI input box conversions 1 (#63313))
 			else
 				return FALSE
 		mode = vote_type
