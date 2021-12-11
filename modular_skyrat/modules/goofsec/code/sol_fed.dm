@@ -382,6 +382,7 @@ GLOBAL_LIST_INIT(solfed_responder_info, list(
 					cop.mind.add_antag_datum(ert_antag)
 					cop.mind.set_assigned_role(SSjob.GetJobType(ert_antag.ert_job_path))
 					SSjob.SendToLateJoin(cop)
+					cop.grant_language(/datum/language/common, TRUE, TRUE, LANGUAGE_MIND)
 
 					var/obj/item/gangster_cellphone/phone = new() // biggest gang in the city
 					phone.gang_id = cell_phone_number
