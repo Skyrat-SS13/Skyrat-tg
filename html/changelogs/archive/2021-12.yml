@@ -183,3 +183,143 @@
       tab instead of the local tab
   Tokorizo:
   - imageadd: New vox sprites ranging from security, drake armor, and cowboy hats!
+2021-12-07:
+  Cobalt, Microfusion gun update:
+  - bugfix: The RGB/Heatsink are now in the tech tree.
+  - bugfix: Removing an attachment should now update the bullet before firing.
+  - bugfix: The undercharger now actually functions as intended, removing recoil when
+      on, and adding it when off.
+  - balance: Phase emitters increase by 500 C per level instead of 1000 C.
+  GoldenAlpharex:
+  - imageadd: NanoTrasen's Bench Tailoring department has worked hard on fixing an
+      error in their factory line that resulted in every bench cover being darker
+      than it was supposed to be, bringing them back to what they were supposed to
+      look like!
+  SkyratBot:
+  - bugfix: Screwdrivers can now be inserted into the destructive analyzer through
+      left-click
+  - bugfix: chaplains can once again convert themselves into an android
+  - bugfix: Ais no longer get the wrong antagonist added to them from "everyone is
+      traitor" secret
+  - spellcheck: Mime finger gun description now states that it mutes your target instead
+      of stunning.
+  YakumoChen:
+  - bugfix: removed safeties on the PKA and plasma cutter because they aren't helpful
+  tastyfish:
+  - rscadd: New skill tracking app for your PDA's called ExperTrak Skill Tracker.
+2021-12-08:
+  Pope:
+  - bugfix: fixed an issue in orion.dm and orion_event.dm to let silicon play orion
+      trail
+  SkyratBot:
+  - rscadd: Added tray sprite to mirror_belt.dmi
+  - bugfix: Bardrones no longer recieve tools.
+  - bugfix: Transit tube dispensers will no longer eat up immovable rods.
+  - bugfix: Fixed away missions not loading when the config was enabled.
+  - bugfix: Department orders no longer bugs out and asks you to take the deliveries
+      to central primary hallway
+  - rscadd: There's been a Moffuchi's Family Pizzeria on the surface of the icemoon
+      but we only just noticed it
+  - bugfix: The maroon objective will no longer fail due to your target being borged.
+  - refactor: 'Refactored and standardized multiz movement code. This should fix some
+      issues about it. qol: You can now drag movables, ride vehicles and fireman carry
+      mobs upstairs and downstairs.'
+  - imageadd: Resprites all of the abductors surgical tools
+  Snakebittenn:
+  - bugfix: The heatsink and RGB attachments are now actually printable.
+  tf-4:
+  - rscdel: Blueshift now only has one autolathe shift-start, located in cargo.
+  - rscdel: Shift-start multi-cell chargers are now only single-cell chargers on Blueshift.
+  - rscdel: The psychologist no longer has a spare skillchip on Blueshift.
+2021-12-09:
+  AtoriBirb:
+  - code_imp: Added mutant_variants = NONE to robes/cloak/mask for heretic
+  - code_imp: Adds two if statements to swap between mutant_variant = none and default.
+      I would do an else but I dunno what other variables might hit it on accident.
+      If it works, it works.
+  Seris02:
+  - rscadd: adds the nitrogen breathing quirk
+  SkyratBot:
+  - rscadd: TGUI input boxes are on the way! You can find new preferences in the menu.
+      They will be on by default.
+  - rscadd: IV drips now cause a moderate pierce wound when ripped out
+  - bugfix: You will once again see events that required a playercount to run.
+  - bugfix: You can no longer become a Family Leader as a restricted role, such as
+      a Head of Security.
+  - admin: Admins can now promote people to Family Leader with a button from the traitor
+      panel.
+  tf-4:
+  - bugfix: A charging microfusion gun will no longer runtime on examine
+  - bugfix: Removed multiple lattices from the same spot on Blueshift
+2021-12-10:
+  ArdentSpark:
+  - bugfix: Restores missing claw melee attack icons for species with the Claw unarmed
+      attack sound effects. Akula, Aquatic, Anthromorphic Insect, Anthromorph, Tajaran,
+      Unathi, Vox, Vulpkanin, Xenomorph Hybrid and Teshari. This is visual only and
+      does not give Sharp.
+  SkyratBot:
+  - bugfix: Fixed the strip menu not being warded against telekinesis shenanigeans
+      (No item was stripped from longer distances, but  warnings were still sent).
+  - bugfix: Plasma material objects that didn't spawn plasma gas when ignited due
+      to weird code reasons will now do just that.
+  - bugfix: Fixed plasma material objects exploding when used with condenser.
+  - bugfix: Fixed uranium manual doors and false walls not radiating.
+  - bugfix: You can no longer duplicate rods with rough false walls.
+  - code_imp: Due to code structural changes the mole amount from welding plasma related
+      objects may get buffed or nerfed. Mostly buffed.
+  - bugfix: Hints in bureaucracy forms
+  - rscadd: You can now become patron of your favorite painting by buying sponsorship
+      from Nanotrasen Trust Foundation.
+  - rscadd: 'Painter''s palettes are now available at library vendor. qol: Can use
+      strokes in paintings now'
+  - bugfix: Burnt-out flashes once again update their in-hands correctly
+  - bugfix: Flashing no longer goes through when the attempt has burnt out the flash
+  - bugfix: Fixes clothing protection tags being displayed incorrectly.
+  - bugfix: you can no longer buckle onto chairs that are under dense atoms (like
+      machines)
+  - bugfix: You can no longer use the disease browsing console to summon satan
+  - bugfix: The disease browsing console will now properly show you the mobs the disease
+      effects
+  - bugfix: AI shells will no longer be instantly converted into a construct shell
+      by the Twisted Construction spell.
+  jjpark-kb:
+  - bugfix: 'blueshift: medicals protolathe to techfab'
+  softcerv:
+  - bugfix: the body teleporter medicell no longer teleports people that are still
+      alive
+2021-12-11:
+  LemonInTheDark:
+  - code_imp: I've changed how job equipment and organs are loaded, if you end up
+      with someone else's head/id card/eyes, please let me know yeah?
+  - code_imp: The preferences menu is now much more efficient. Hopefully you'll see
+      less small jitters at highpop.
+  Melbert:
+  - bugfix: Fixes a runtime with starlight condensation
+  SkyratBot:
+  - bugfix: Closing the confirmation alert from headcrabs will no longer continue
+      to headcrab you.
+  - rscadd: 'The release of the new cookbook, "Mothic Cuisine: of Fleet and Flotilla"
+      has brought Mothic food to the masses! Try out some new treats, like cheesecake
+      balls, cheese soup, and five-cheese pizza at the kitchen today! There might
+      even be some foods that don''t have cheese, too!'
+  - rscadd: "To coincide with the new popularity of Mothic cuisine, Nanotrasen now\
+      \ stocks seeds for T\xF6chta\xFCse Berries, a common ingredient in moth cooking,\
+      \ in the Megaseed vendors. Additionally, herbs and bell peppers have also made\
+      \ their way to the station's stock. Botanists, you know what to do."
+  - bugfix: F2 works for quick screenshotting again.
+  - bugfix: Deconstructing an active AI shell will no longer ghost the AI inhabiting
+      it.
+  - bugfix: Turning off tgui inputs in game preferences now disables tgui input lists.
+  - refactor: 'Converted several list inputs to tgui, including: Many AI functions,
+      wayfinders, most cult inputs, observer functions.'
+  - bugfix: Pruno fermentation uses up the mix upon turning into pruno.
+  - bugfix: fixed bots getting stuck on railings and crashing anyone with a diagnostic
+      hud who dares come near
+  - bugfix: A lack of candidates for certain antags will no longer runtime
+  - balance: Nerfs level of toxin/venom spat out by spiders.
+  - code_imp: Fixed some really insane move counts that were sourced from Login()
+      betraying me. I've killed it now so there should be slightly less stutter sometimes
+      depending on the weather and position of the moon
+  tf-4:
+  - rscdel: You can no longer pick the "nanomachine programmer" title for scientist.
+      As there are no nanomachines.
