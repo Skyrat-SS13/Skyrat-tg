@@ -6,6 +6,7 @@
 	lose_text = "<span class='notice'>You think you can defend yourself again.</span>"
 	medical_record_text = "Patient is nerve stapled and is unable to harm others."
 	forced_items = list(/obj/item/clothing/glasses/nerve_staple = list(ITEM_SLOT_EYES))
+	/// The nerve staple attached to the quirk
 	var/obj/item/clothing/glasses/nerve_staple/staple
 
 /datum/quirk/equipping/nerve_staple/on_equip_item(obj/item/equipped, successful)

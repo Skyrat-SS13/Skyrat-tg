@@ -230,6 +230,7 @@
 	var/chosen_alias
 	var/is_pref_char
 	var/last_ckey //For validation of the user
+	/// whether the spawner handles the loadout and quirks of the user by itself in one of its own procs, if set to false, the spawner will do it automatically
 	var/handles_loadout_and_quirks = FALSE
 	//SKYRAT EDIT ADDITION END
 
