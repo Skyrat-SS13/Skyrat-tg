@@ -70,3 +70,19 @@
 	if(!spacepod_target || !(owner in spacepod_target.occupants))
 		return
 	spacepod_target.exit_pod(owner)
+
+/datum/action/spacepod/controls
+	name = "Spacepod controls"
+
+/datum/action/spacepod/controls/Trigger()
+	if(!owner)
+		return
+	if(!spacepod_target || !(owner in spacepod_target.occupants))
+		return
+	if(!spacepod_target.pilot)
+		to_chat(usr, span_warning("You are not in a pod."))
+	else if(owner.incapacitated())
+		to_chat(usr, span_warning("You are incapacitated."))
+	else
+		spacepod_target.ui_interact(owner)
+
