@@ -446,3 +446,9 @@
 
 /obj/item/clothing/under/rank/prisoner/skirt
 	mutant_variants = NONE
+
+/obj/item/clothing/suit/hooded/techpriest
+	mutant_variants = NONE
+
+/obj/item/clothing/head/hooded/techpriest
+	mutant_variants = NONE
