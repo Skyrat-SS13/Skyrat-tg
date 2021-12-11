@@ -81,7 +81,7 @@
 	lungs_holding.organ_flags &= ~ORGAN_FROZEN
 	carbon_holder.update_internals_hud_icon(1)
 
-/datum/quirk/equipping/lungs/on_equip_items(obj/item/equipped, success)
+/datum/quirk/equipping/lungs/on_equip_item(obj/item/equipped, success)
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	if (!istype(equipped, /obj/item/clothing/accessory/breathing))
 		return
