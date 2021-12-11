@@ -1107,6 +1107,8 @@
 		pixel_x_diff = -8
 		turn_dir = -1
 
+	play_fov_effect(attacked_atom, 5, "attack")
+
 	var/matrix/initial_transform = matrix(transform)
 	var/matrix/rotated_transform = transform.Turn(15 * turn_dir)
 	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, transform=rotated_transform, time = 1, easing=BACK_EASING|EASE_IN, flags = ANIMATION_PARALLEL)

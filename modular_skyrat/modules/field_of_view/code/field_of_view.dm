@@ -132,7 +132,9 @@
 		sticky_facing_until = world.time + 2 SECONDS
 
 /// Is `observed_atom` in a mob's field of view? This takes blindness, nearsightness and FOV into consideration
-/mob/living/proc/in_fov(atom/observed_atom)
+/mob/living/proc/in_fov(atom/observed_atom, ignore_self = FALSE)
+	if(ignore_self && observed_atom == src)
+		return TRUE
 	if(is_blind())
 		return FALSE
 	if(!has_field_of_view)
@@ -182,20 +184,30 @@
 		if((rel_x > 3 || rel_x < -3) || (rel_y > 3 || rel_y < -3))
 			return FALSE
 
-/proc/play_fov_effect(atom/center, range, icon_state, dir = SOUTH)
-	if(center.plane != GAME_PLANE_FOV_HIDDEN) //Skyrat bandaid to make non hidden people dont play those effects
-		return
+	if(. && observed_atom.plane != GAME_PLANE_FOV_HIDDEN) //skyrat bandaid
+		return TRUE
+
+/proc/play_fov_effect(atom/center, range, icon_state, dir = SOUTH, ignore_self = FALSE, angle = 0)
 	var/turf/anchor_point = get_turf(center)
+	var/image/fov_image
 	for(var/mob/living/living_mob in get_hearers_in_view(range, center))
 		var/client/mob_client = living_mob.client
 		if(!mob_client)
 			continue
-		if(living_mob.in_fov(anchor_point))
+		if(HAS_TRAIT(living_mob, TRAIT_DEAF)) //Deaf people can't hear sounds so no sound indicators
 			continue
-		var/image/fov_image = image(icon = 'modular_skyrat/modules/field_of_view/icons/fov_effects.dmi', icon_state = icon_state, loc = anchor_point)
-		fov_image.plane = FULLSCREEN_PLANE
-		fov_image.layer = FOV_EFFECTS_LAYER
-		fov_image.dir = dir
+		if(living_mob.in_fov(center, ignore_self))
+			continue
+		if(!fov_image)
+			fov_image = image(icon = 'modular_skyrat/modules/field_of_view/icons/fov_effects.dmi', icon_state = icon_state, loc = anchor_point)
+			fov_image.plane = FULLSCREEN_PLANE
+			fov_image.layer = FOV_EFFECTS_LAYER
+			fov_image.dir = dir
+			if(angle)
+				var/matrix/matrix = new
+				matrix.Turn(angle)
+				fov_image.transform = matrix
+				fov_image.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		mob_client.images += fov_image
 		addtimer(CALLBACK(GLOBAL_PROC, .proc/remove_image_from_client, fov_image, mob_client), 30)
 
