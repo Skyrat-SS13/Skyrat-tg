@@ -146,8 +146,9 @@
 		extinguish()
 		return
 	//SKYRAT EDIT ADDITION
-	var/turf/my_turf = get_turf(src)
-	my_turf.PolluteListTurf(list(/datum/pollutant/smoke = 20, /datum/pollutant/carbon_air_pollution = 5), POLLUTION_ACTIVE_EMITTER_CAP)
+	var/turf/open/my_turf = get_turf(src)
+	if(istype(my_turf) && !my_turf.planetary_atmos) //Pollute, but only when we're not on planetary atmos
+		my_turf.PolluteListTurf(list(/datum/pollutant/smoke = 15, /datum/pollutant/carbon_air_pollution = 5), POLLUTION_ACTIVE_EMITTER_CAP)
 	//SKYRAT EDIT END
 	bonfire_burn(delta_time)
 
@@ -163,7 +164,7 @@
 	if(..())
 		buckled_mob.pixel_y += 13
 
-/obj/structure/bonfire/unbuckle_mob(mob/living/buckled_mob, force=FALSE)
+/obj/structure/bonfire/unbuckle_mob(mob/living/buckled_mob, force = FALSE, can_fall = TRUE)
 	if(..())
 		buckled_mob.pixel_y -= 13
 

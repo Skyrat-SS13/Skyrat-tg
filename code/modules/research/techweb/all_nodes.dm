@@ -235,7 +235,9 @@
 		"comp_length",
 		"comp_light",
 		"comp_list_literal",
+		"comp_list_assoc_literal",
 		"comp_logic",
+		"comp_matscanner",
 		"comp_mmi",
 		"comp_module",
 		"comp_multiplexer",
@@ -247,6 +249,7 @@
 		"comp_printer",
 		"comp_radio",
 		"comp_random",
+		"comp_reagents",
 		"comp_router",
 		"comp_select_query",
 		"comp_self",
@@ -302,7 +305,7 @@
 		"soda_dispenser",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-	required_experiments = list(/datum/experiment/scanning/points/slime/calibration)
+	required_experiments = list(/datum/experiment/dissection/human)
 
 
 // SKYRAT EDIT BEGIN - MATERIAL MEAT WAS REMOVED
@@ -332,11 +335,12 @@
 		"toxin2medicell",
 		"oxy2medicell",
 		"tempmedicell",
+		"bodymedicell",
 		"clotmedicell",
 		//SKYRAT EDIT END  -
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
-	required_experiments = list(/datum/experiment/scanning/points/slime/easy)
+	required_experiments = list(/datum/experiment/dissection/nonhuman)
 	// ORIGINAL: discount_experiments = list(/datum/experiment/scanning/random/material/meat = 4000) //Big discount to reinforce doing it.
 	discount_experiments = list(/datum/experiment/scanning/random/material/silver = 4000) //Big discount to reinforce doing it.
 	// SKYRAT EDIT END - MATERIAL MEAT WAS REMOVED
@@ -353,7 +357,11 @@
 		"limbdesign_plasmaman",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 6500)
-	discount_experiments = list(/datum/experiment/scanning/random/cytology/easy = 1000, /datum/experiment/scanning/points/slime/expert = 5000)
+	discount_experiments = list(
+		/datum/experiment/scanning/random/cytology/easy = 1000,
+		/datum/experiment/scanning/points/slime/hard = 5000,
+		/datum/experiment/dissection/xenomorph = 5000,
+	)
 
 /datum/techweb_node/bio_process
 	id = "bio_process"
@@ -858,6 +866,7 @@
 		"borg_upgrade_lavaproof",
 		"borg_upgrade_rped",
 		"advanced_materials", // SKYRAT ADDITION - ADVANCED MATERIALS UPGRADE
+		"inducer_module", // SKYRAT ADDITION - INDUCER MODULE UPGRADE
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
@@ -929,6 +938,7 @@
 		"holopad",
 		//SKYRAT EDIT - ADDITION MEDIGUNS
 		"gownmedicell",
+		"bedmedicell",
 		//SKYRAT EDIT END
 		"vendatray",
 	)
@@ -1307,6 +1317,9 @@
 	design_ids = list(
 		"biogenerator",
 		"flora_gun",
+		//SKYRAT EDIT - ADDITION MEDIGUNS
+		"salvemedicell",
+		//SKYRAT EDIT END
 		"hydro_tray",
 		"portaseeder",
 		"seed_extractor",
@@ -1324,10 +1337,12 @@
 		"gene_shears",
 		"handdrill",
 		"jawsoflife",
+		"ranged_analyzer",
 		"laserscalpel",
 		"mechanicalpinches",
 		"searingtool",
 	)
+	//SKYRAT EDIT ADDITION - ("ranged_analyzer"),
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
 	discount_experiments = list(/datum/experiment/scanning/random/material/hard/one = 5000)
 
@@ -1454,6 +1469,19 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	required_experiments = list(/datum/experiment/explosion/maxcap)
+
+// SKYRAT EDIT START: SECBORG TECHWEB
+/datum/techweb_node/secborg_node
+	id = "secborg_node"
+	display_name = "Cyborg Module: Security"
+	description = "Known to cause silicon law violations in all twelve sectors of space!"
+	prereq_ids = list("adv_weaponry")
+	design_ids = list(
+		"security_cyborg_module",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
+	required_experiments = list(/datum/experiment/explosion/maxcap)
+// SKYRAT EDIT END: SECBORG TECHWEB
 
 /datum/techweb_node/ballistic_weapons
 	id = "ballistic_weapons"

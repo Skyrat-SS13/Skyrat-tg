@@ -359,6 +359,10 @@
 	name = "Beachwave"
 	icon_state = "hair_beachwave"
 
+/datum/sprite_accessory/hair/skyrat/hyenamane
+	name = "Hyena mane"
+	icon_state = "hair_hyenamane"
+
 // Facial hair
 
 /datum/sprite_accessory/facial_hair/skyrat

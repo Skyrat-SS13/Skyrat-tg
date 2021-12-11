@@ -2,6 +2,7 @@
 	name = BODY_ZONE_PRECISE_EYES
 	icon_state = "eyeballs"
 	desc = "I see you!"
+	visual = TRUE
 	zone = BODY_ZONE_PRECISE_EYES
 	slot = ORGAN_SLOT_EYES
 	gender = PLURAL
@@ -33,15 +34,17 @@
 	var/no_glasses
 	/// indication that the eyes are undergoing some negative effect
 	var/damaged = FALSE
+	var/is_emissive = FALSE //SKYRAT EDIT ADDITION
 
 /obj/item/organ/eyes/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = FALSE, initialising)
 	. = ..()
 	if(ishuman(eye_owner))
 		var/mob/living/carbon/human/human_owner = eye_owner
+		if (human_owner.emissive_eyes)
+			is_emissive = TRUE
 		old_eye_color = human_owner.eye_color
 		if(eye_color)
 			human_owner.eye_color = eye_color
-			human_owner.regenerate_icons()
 		else
 			eye_color = human_owner.eye_color
 		if(HAS_TRAIT(human_owner, TRAIT_NIGHT_VISION) && !lighting_alpha)
@@ -55,9 +58,10 @@
 	if(ishuman(owner))
 		var/mob/living/carbon/human/affected_human = owner
 		old_eye_color = affected_human.eye_color
+		if (affected_human.emissive_eyes)
+			is_emissive = TRUE
 		if(eye_color)
 			affected_human.eye_color = eye_color
-			affected_human.regenerate_icons()
 		else
 			eye_color = affected_human.eye_color
 		if(HAS_TRAIT(affected_human, TRAIT_NIGHT_VISION) && !lighting_alpha)
@@ -74,14 +78,19 @@
 	if(ishuman(eye_owner) && eye_color)
 		var/mob/living/carbon/human/human_owner = eye_owner
 		human_owner.eye_color = old_eye_color
-		human_owner.regenerate_icons()
+		human_owner.update_body()
 	eye_owner.cure_blind(EYE_DAMAGE)
 	eye_owner.cure_nearsighted(EYE_DAMAGE)
 	eye_owner.set_blindness(0)
 	eye_owner.set_blurriness(0)
 	eye_owner.clear_fullscreen("eye_damage", 0)
 	eye_owner.update_sight()
+	is_emissive = FALSE
 
+//Gotta reset the eye color, because that persists
+/obj/item/organ/eyes/enter_wardrobe()
+	. = ..()
+	eye_color = initial(eye_color)
 
 /obj/item/organ/eyes/on_life(delta_time, times_fired)
 	. = ..()

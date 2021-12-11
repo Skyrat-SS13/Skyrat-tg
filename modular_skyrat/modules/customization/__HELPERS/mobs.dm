@@ -61,5 +61,5 @@
 			if(set_name in marking_list)
 				if(!body_markings[zone])
 					body_markings[zone] = list()
-				body_markings[zone][set_name] = BM.get_default_color(features, pref_species)
+				body_markings[zone][set_name] = list(BM.get_default_color(features, pref_species), FALSE)
 	return body_markings

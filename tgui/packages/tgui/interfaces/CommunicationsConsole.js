@@ -506,6 +506,11 @@ const PageMain = (props, context) => {
             content="Call Sol Federation 911: Medical Response"
             onClick={() => act("callTheParameds")}
           />}
+          {!!emagged && <Button
+            icon="bullhorn"
+            content="Place an Order with Dogginos Pizza"
+            onClick={() => act("callThePizza")}
+          />}
           {
             // SKYRAT EDIT END
           }

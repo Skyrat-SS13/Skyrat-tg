@@ -11,6 +11,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 #define EMERGENCY_RESPONSE_POLICE "WOOP WOOP THAT'S THE SOUND OF THE POLICE"
 #define EMERGENCY_RESPONSE_FIRE "DISCO INFERNO"
 #define EMERGENCY_RESPONSE_EMT "AAAAAUGH, I'M DYING, I NEEEEEEEEEED A MEDIC BAG"
+#define EMERGENCY_RESPONSE_EMAG "AYO THE PIZZA HERE"
 //SKYRAT EDIT END
 
 // The communications computer
@@ -422,7 +423,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			if(tgui_input_list(usr, "You SHOULD call Marshals for:\n\
 			Security ignoring Command, Security violating civil rights, Security engaging in Mutiny, General Violation of Sol Federation Citizen Rights by Command/Security, etc.\n\
 			You SHOULD NOT call Marshals for:\n\
-			Corporate affairs, antagonist hunting, settling arguments, etc.\n\
+			Corporate affairs, manhunts, settling arguments, etc.\n\
 			Are you sure you want to call Marshals?", "Call Marshals", list("Yes", "No")) != "Yes")
 				return
 			message_admins("[ADMIN_LOOKUPFLW(usr)] has read and acknowleged the recommendations for what to call and not call Marshals for.")
@@ -539,6 +540,18 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 			send_in_the_fuzz(EMERGENCY_RESPONSE_EMT)
 			to_chat(usr, span_notice("Authorization confirmed. 911 call dispatched to the Sol Federation EMTs."))
+			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
+		if("callThePizza")
+			if(GLOB.cops_arrived)
+				to_chat(usr, span_warning("Either 911 or Dogginos has already been called this shift!"))
+				return
+			GLOB.cops_arrived = TRUE
+			log_game("[key_name(usr)] has dialed for a pizza order from Dogginos using an emagged communications console.")
+			message_admins("[ADMIN_LOOKUPFLW(usr)] has dialed for a pizza order from Dogginos using an emagged communications console.")
+			deadchat_broadcast(" has dialed for a pizza order from Dogginos using an emagged communications console.", span_name("[usr.real_name]"), usr, message_type=DEADCHAT_ANNOUNCEMENT)
+			GLOB.pizza_order = pick(GLOB.pizza_names)
+			send_in_the_fuzz(EMERGENCY_RESPONSE_EMAG)
+			to_chat(usr, span_notice("Thank you for choosing Dogginos, [GLOB.pizza_order]!"))
 			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 		// SKYRAT EDIT ADDITION END
 /obj/machinery/computer/communications/proc/emergency_access_cooldown(mob/user)
@@ -717,10 +730,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	)
 
 /obj/machinery/computer/communications/Topic(href, href_list)
-	. = ..()
-	if (.)
-		return
-
 	if (href_list["reject_cross_comms_message"])
 		if (!usr.client?.holder)
 			log_game("[key_name(usr)] tried to reject a cross-comms message without being an admin.")
@@ -738,6 +747,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		message_admins("[key_name(usr)] has cancelled the outgoing cross-comms message.")
 
 		return TRUE
+
+	return ..()
 
 /// Returns whether or not the communications console can communicate with the station
 /obj/machinery/computer/communications/proc/has_communication()
@@ -862,13 +873,18 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	var/announcement_message = "sussus amogus"
 	var/announcer = "Sol Federation Marshal Department"
 	var/poll_question = "fuck you leatherman"
+	var/cell_phone_number = "911"
+	var/list_to_use = "911_responders"
 	switch(ordered_team)
 		if(EMERGENCY_RESPONSE_POLICE)
 			team_size = 8
 			cops_to_send = /datum/antagonist/ert/request_911/police
 			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation. We've recieved a request for immediate marshal support, and we are \
 			sending our best marshals to support your station.\n\n\
-			Please note that faulty 911 calls are punishable by a 5 year super-jail sentence and an immediate $20,000 fine."
+			If the first responders request that they need SWAT support to do their job, or to report a faulty 911 call, we will send them in at additional cost to your station to the \
+			tune of $20,000.\n\n\
+			The transcript of the call is as follows:\n\
+			[GLOB.call_911_msg]"
 			announcer = "Sol Federation Marshal Department"
 			poll_question = "The station has called for the Marshals. Will you respond?"
 		if(EMERGENCY_RESPONSE_FIRE)
@@ -876,7 +892,10 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			cops_to_send = /datum/antagonist/ert/request_911/fire
 			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation. We've recieved a request for immediate firefighting support, and we are \
 			sending our best firefighters to support your station.\n\n\
-			Please note that faulty 911 calls are punishable by a 5 year super-jail sentence and an immediate $20,000 fine."
+			If the first responders request that they need SWAT support to do their job, or to report a faulty 911 call, we will send them in at additional cost to your station to the \
+			tune of $20,000.\n\n\
+			The transcript of the call is as follows:\n\
+			[GLOB.call_911_msg]"
 			announcer = "Sol Federation Fire Department"
 			poll_question = "The station has called for the fire department. Will you respond?"
 		if(EMERGENCY_RESPONSE_EMT)
@@ -884,9 +903,30 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			cops_to_send = /datum/antagonist/ert/request_911/emt
 			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation. We've recieved a request for immediate medical support, and we are \
 			sending our best emergency medical technicians to support your station.\n\n\
-			Please note that faulty 911 calls are punishable by a 5 year super-jail sentence and an immediate $20,000 fine."
+			If the first responders request that they need SWAT support to do their job, or to report a faulty 911 call, we will send them in at additional cost to your station to the \
+			tune of $20,000.\n\n\
+			The transcript of the call is as follows:\n\
+			[GLOB.call_911_msg]"
 			announcer = "Sol Federation EMTs"
 			poll_question = "The station has called for medical support. Will you respond?"
+		if(EMERGENCY_RESPONSE_EMAG)
+			team_size = 8
+			cops_to_send = /datum/antagonist/ert/pizza/false_call
+			announcement_message = "Thank you for ordering from Dogginos, [GLOB.pizza_order]! We're sending you that extra-large party package pizza delivery \
+			right away!\n\n\
+			Thank you for choosing our premium Fifteen Minutes or Less delivery option! Our pizza will be at your doorstep at [station_name()] as soon as possible thanks \
+			to our lightning-fast warp drives installed on all Dogginos delivery shuttles!\n\n\
+			Your bill will be:\n\
+			$35,000 (tip not included, 15% recommended)\n\
+			Breakdown:\n\
+			$67.29 for the Extra-Large Party Package Pizza Delivery\n\
+			$9,932.71 for the Fifteen Minutes or Less Pizza Delivery (compounded w/ distance)\n\
+			$25,000.00 for the Delivery Charge(compounded w/ distance)\n\
+			Distance from your chosen Dogginos: 70,000 Lightyears"
+			announcer = "Dogginos"
+			poll_question = "The station has ordered $35,000 in pizza. Will you deliver?"
+			cell_phone_number = "Dogginos"
+			list_to_use = "dogginos"
 	priority_announce(announcement_message, announcer, 'sound/effects/families_police.ogg', has_important_message=TRUE)
 	var/list/candidates = poll_ghost_candidates(poll_question, "deathsquad")
 
@@ -896,7 +936,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 		var/list/spawnpoints = GLOB.emergencyresponseteamspawn
 		var/index = 0
-		GLOB.amt_911_responders = numagents
+		GLOB.solfed_responder_info[list_to_use]["amount"] = numagents
 		while(numagents && candidates.len)
 			var/spawnloc = spawnpoints[index+1]
 			//loop through spawnpoints one at a time
@@ -919,8 +959,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			SSjob.SendToLateJoin(cop)
 
 			var/obj/item/gangster_cellphone/phone = new() // biggest gang in the city
-			phone.gang_id = "911"
-			phone.name = "911 branded cell phone"
+			phone.gang_id = cell_phone_number
+			phone.name = "[cell_phone_number] branded cell phone"
 			var/phone_equipped = phone.equip_to_best_slot(cop)
 			if(!phone_equipped)
 				to_chat(cop, "Your [phone.name] has been placed at your feet.")

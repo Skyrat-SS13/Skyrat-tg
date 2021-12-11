@@ -400,3 +400,26 @@ export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
     </Stack>
   );
 };
+export const FeatureTriBoolInput = (props: FeatureValueProps<boolean[]>) => {
+  const buttonFromValue = (index) => {
+    return (
+      <Stack.Item align="center" fill>
+        <Button.Checkbox
+          checked={!!props.value[index]}
+          onClick={() => {
+            const currentValue = [...props.value];
+            currentValue[index] = !currentValue[index];
+            props.handleSetValue(currentValue);
+          }}
+        />
+      </Stack.Item>
+    );
+  };
+  return (
+    <Stack align="center" fill>
+      {buttonFromValue(0)}
+      {buttonFromValue(1)}
+      {buttonFromValue(2)}
+    </Stack>
+  );
+};

@@ -16,7 +16,7 @@
 		var/datum/sprite_accessory/antennae = GLOB.sprite_accessories["moth_antennae"][antennae_name] //SKYRAT EDIT
 
 		var/icon/icon_with_antennae = new(moth_head)
-		icon_with_antennae.Blend(icon('icons/mob/moth_antennae.dmi', "m_moth_antennae_[antennae.icon_state]_FRONT"), ICON_OVERLAY)
+		icon_with_antennae.Blend(icon(antennae.icon, "m_moth_antennae_[antennae.icon_state]_FRONT"), ICON_OVERLAY)
 		icon_with_antennae.Scale(64, 64)
 		icon_with_antennae.Crop(15, 64, 15 + 31, 64 - 31)
 

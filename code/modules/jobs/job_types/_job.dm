@@ -2,6 +2,10 @@
 	/// The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
 	var/title = "NOPE"
 
+	/// The description of the job, used for preferences menu.
+	/// Keep it short and useful. Avoid in-jokes, these are for new players.
+	var/description
+
 	/// Innate skill levels unlocked at roundstart. Based on config.jobs_have_minimal_access config setting, for example with a skeleton crew. Format is list(/datum/skill/foo = SKILL_EXP_NOVICE) with exp as an integer or as per code/_DEFINES/skills.dm
 	var/list/skills
 	/// Innate skill levels unlocked at roundstart. Based on config.jobs_have_minimal_access config setting, for example with a full crew. Format is list(/datum/skill/foo = SKILL_EXP_NOVICE) with exp as an integer or as per code/_DEFINES/skills.dm
@@ -79,7 +83,14 @@
 
 	/// Bitfield of departments this job belongs to. These get setup when adding the job into the department, on job datum creation.
 	var/departments_bitflags = NONE
+
+	/// If specified, this department will be used for the preferences menu.
+	var/datum/job_department/department_for_prefs = null
+
 	/// Lazy list with the departments this job belongs to.
+	/// Required to be set for playable jobs.
+	/// The first department will be used in the preferences menu,
+	/// unless department_for_prefs is set.
 	var/list/departments_list = null
 
 	/// Should this job be allowed to be picked for the bureaucratic error event?
@@ -169,9 +180,9 @@
 			experiencer.mind.adjust_experience(i, roundstart_experience[i], TRUE)
 
 
-/datum/job/proc/announce_job(mob/living/joining_mob)
+/datum/job/proc/announce_job(mob/living/joining_mob, job_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: /datum/job/proc/announce_job(mob/living/joining_mob)
 	if(head_announce)
-		announce_head(joining_mob, head_announce)
+		announce_head(joining_mob, head_announce, job_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: announce_head(joining_mob, head_announce)
 
 
 //Used for a special check of whether to allow a client to latejoin as this job.
@@ -197,10 +208,11 @@
 	dna.species.pre_equip_species_outfit(equipping, src, visual_only)
 	equip_outfit_and_loadout(equipping.outfit, used_pref, visual_only, equipping) //SKYRAT EDIT CHANGE
 
-/datum/job/proc/announce_head(mob/living/carbon/human/H, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
+/// tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
+/datum/job/proc/announce_head(mob/living/carbon/human/H, channels, job_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: /datum/job/proc/announce_head(mob/living/carbon/human/H, channels)
 	if(H && GLOB.announcement_systems.len)
 		//timer because these should come after the captain announcement
-		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
+		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, job_title, channels), 1)) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
 
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/C)
@@ -245,6 +257,8 @@
 	back = /obj/item/storage/backpack
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	box = /obj/item/storage/box/survival
+
+	preload = TRUE // These are used by the prefs ui, and also just kinda could use the extra help at roundstart
 
 	var/backpack = /obj/item/storage/backpack
 	var/satchel = /obj/item/storage/backpack/satchel
@@ -320,6 +334,16 @@
 	types += satchel
 	types += duffelbag
 	return types
+
+/datum/outfit/job/get_types_to_preload()
+	var/list/preload = ..()
+	preload += backpack
+	preload += satchel
+	preload += duffelbag
+	preload += /obj/item/storage/backpack/satchel/leather
+	var/skirtpath = "[uniform]/skirt"
+	preload += text2path(skirtpath)
+	return preload
 
 /// An overridable getter for more dynamic goodies.
 /datum/job/proc/get_mail_goodies(mob/recipient)
@@ -409,13 +433,15 @@
 
 	var/require_human = CONFIG_GET(flag/enforce_human_authority) && (job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
 
-	if(fully_randomize)
-		if(require_human)
-			player_client.prefs.randomise_appearance_prefs(~RANDOMIZE_SPECIES)
-		else
-			player_client.prefs.randomise_appearance_prefs()
+	src.job = job.title
 
+	if(fully_randomize)
 		player_client.prefs.apply_prefs_to(src)
+
+		if(require_human)
+			randomize_human_appearance(~RANDOMIZE_SPECIES)
+		else
+			randomize_human_appearance()
 
 		if (require_human)
 			set_species(/datum/species/human)

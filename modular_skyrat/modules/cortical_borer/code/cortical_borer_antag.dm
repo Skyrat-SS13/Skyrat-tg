@@ -56,7 +56,7 @@
 
 /datum/team/cortical_borers/roundend_report()
 	var/list/parts = list()
-	parts += "<span class='header'>The [name] were:</span>"
+	parts += span_header("The [name] were:")
 	parts += printborerlist(members)
 	var/survival = FALSE
 	for(var/mob/living/simple_animal/cortical_borer/check_borer in GLOB.cortical_borers)

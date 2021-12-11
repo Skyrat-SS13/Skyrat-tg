@@ -3,7 +3,7 @@
 	desc = "A bar sign which has not been initialized, somehow. Complain at a coder!"
 	//SKYRAT EDIT CHANGE BEGIN - BARSIGNS
 	//icon = 'icons/obj/barsigns.dmi'
-	icon = 'modular_skyrat/modules/barsigns/icons/obj/barsigns.dmi'
+	icon = 'modular_skyrat/modules/barsigns/icons/barsigns.dmi'
 	//SKYRAT EDIT CHANGE END
 	icon_state = "empty"
 	req_access = list(ACCESS_BAR)
@@ -126,7 +126,7 @@
 
 
 /obj/structure/sign/barsign/proc/pick_sign(mob/user)
-	var/picked_name = input(user, "Available Signage", "Bar Sign", name) as null|anything in sort_list(get_bar_names())
+	var/picked_name = tgui_input_list(user, "Available Signage", "Bar Sign", sort_list(get_bar_names()))
 	if(!picked_name)
 		return
 	chosen_sign = set_sign_by_name(picked_name)

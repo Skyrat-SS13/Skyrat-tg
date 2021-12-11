@@ -8,7 +8,7 @@
 
 /obj/item/clothing/mask/gas/bdsm_mask
 	name = "latex gasmask"
-	desc = "A toned gas mask that completely muffles the wearer. Wearing this makes even breathing difficult."
+	desc = "A toned gas mask that completely muffles the wearer. Wearing this makes breathing a lot difficult."
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_masks.dmi'
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/mask_muzzled.dmi'
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_masks.dmi'
@@ -271,7 +271,7 @@
 // Here goes code for lewd gasmask filter
 /obj/item/reagent_containers/glass/lewd_filter
 	name = "gasmask filter"
-	desc = "A strange looking air filter. It may not be a good idea to put it on..."
+	desc = "A strange looking air filter. It may not be a good idea to breathe this in..."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	icon_state = "filter_pink"
 	unique_reskin = list("pink" = "filter_pink",
@@ -280,7 +280,7 @@
 	custom_materials = list(/datum/material/glass=1500, /datum/material/plastic=2000)
 	volume = 50
 	possible_transfer_amounts = list(1,2,3,4,5)
-	list_reagents = list(/datum/reagent/drug/crocin = 50) //You can make it strating empty, but i'm pretty sure 90% of players will use just aphrodisiacs, so why just don't make their life easier?
+	list_reagents = list(/datum/reagent/drug/aphrodisiac/crocin = 50)
 
 // Standard initialize code for filter
 /obj/item/reagent_containers/glass/lewd_filter/Initialize()

@@ -1,5 +1,5 @@
 /datum/emote/living/human
-	mob_type_allowed_typecache = list(/mob/living/carbon/human)
+	mob_type_allowed_typecache = list(/mob/living/carbon/human, /mob/living/silicon)
 
 /datum/emote/living/human/dwoop
 	key = "dwoop"
@@ -7,6 +7,7 @@
 	message = "chirps happily!"
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/dwoop.ogg'
+	silicon_allowed = TRUE
 	allowed_species = list(/datum/species/robotic/ipc, /datum/species/synth, /datum/species/synth/military, /datum/species/robotic/synthliz, /datum/species/robotic/synthetic_human, /datum/species/robotic/synthetic_mammal)
 	cooldown = 2 SECONDS
 
@@ -15,6 +16,7 @@
 	message = "emits an affirmative blip."
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/synth_yes.ogg'
+	silicon_allowed = TRUE
 	allowed_species = list(/datum/species/robotic/ipc, /datum/species/synth, /datum/species/synth/military, /datum/species/robotic/synthliz, /datum/species/robotic/synthetic_human, /datum/species/robotic/synthetic_mammal)
 	cooldown = 2 SECONDS
 
@@ -23,6 +25,7 @@
 	message = "emits a negative blip."
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/synth_no.ogg'
+	silicon_allowed = TRUE
 	allowed_species = list(/datum/species/robotic/ipc, /datum/species/synth, /datum/species/synth/military, /datum/species/robotic/synthliz, /datum/species/robotic/synthetic_human, /datum/species/robotic/synthetic_mammal)
 	cooldown = 2 SECONDS
 
@@ -30,6 +33,7 @@
 	key = "boop"
 	key_third_person = "boops"
 	message = "boops."
+	silicon_allowed = TRUE
 	allowed_species = list(/datum/species/robotic/ipc, /datum/species/synth, /datum/species/synth/military, /datum/species/robotic/synthliz, /datum/species/robotic/synthetic_human, /datum/species/robotic/synthetic_mammal)
 	cooldown = 2 SECONDS
 
@@ -40,18 +44,30 @@
 	message_param = "buzzes at %t."
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/buzz-sigh.ogg'
+	silicon_allowed = TRUE
 	allowed_species = list(/datum/species/robotic/ipc, /datum/species/synth, /datum/species/synth/military, /datum/species/robotic/synthliz, /datum/species/robotic/synthetic_human, /datum/species/robotic/synthetic_mammal)
 	cooldown = 2 SECONDS
 
-
-/datum/emote/living/human/beep2
-	key = "beep2"
+/datum/emote/living/human/beep
+	key = "beep"
 	key_third_person = "beeps"
 	message = "beeps."
 	message_param = "beeps at %t."
 	emote_type = EMOTE_AUDIBLE
+	sound = 'sound/machines/twobeep.ogg'
+	silicon_allowed = TRUE
+	allowed_species = list(/datum/species/robotic/ipc, /datum/species/synth, /datum/species/synth/military, /datum/species/robotic/synthliz, /datum/species/robotic/synthetic_human, /datum/species/robotic/synthetic_mammal)
+	cooldown = 2 SECONDS
+
+/datum/emote/living/human/beep2
+	key = "beep2"
+	key_third_person = "beeps sharply"
+	message = "beeps sharply."
+	message_param = "beeps sharply at %t."
+	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg'
+	silicon_allowed = TRUE
 	allowed_species = list(/datum/species/robotic/ipc, /datum/species/synth, /datum/species/synth/military, /datum/species/robotic/synthliz, /datum/species/robotic/synthetic_human, /datum/species/robotic/synthetic_mammal)
 	cooldown = 2 SECONDS
 
@@ -60,6 +76,7 @@
 	message = "buzzes twice."
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/buzz-two.ogg'
+	silicon_allowed = TRUE
 	allowed_species = list(/datum/species/robotic/ipc, /datum/species/synth, /datum/species/synth/military, /datum/species/robotic/synthliz, /datum/species/robotic/synthetic_human, /datum/species/robotic/synthetic_mammal)
 	cooldown = 2 SECONDS
 
@@ -69,6 +86,7 @@
 	message = "chimes."
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/chime.ogg'
+	silicon_allowed = TRUE
 	allowed_species = list(/datum/species/robotic/ipc, /datum/species/synth, /datum/species/synth/military, /datum/species/robotic/synthliz, /datum/species/robotic/synthetic_human, /datum/species/robotic/synthetic_mammal)
 	cooldown = 2 SECONDS
 
@@ -79,6 +97,7 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'sound/items/bikehorn.ogg'
+	silicon_allowed = TRUE
 	allowed_species = list(/datum/species/robotic/ipc, /datum/species/synth, /datum/species/synth/military, /datum/species/robotic/synthliz, /datum/species/robotic/synthetic_human, /datum/species/robotic/synthetic_mammal)
 	cooldown = 2 SECONDS
 
@@ -89,6 +108,7 @@
 	message_param = "pings at %t."
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/ping.ogg'
+	silicon_allowed = TRUE
 	allowed_species = list(/datum/species/robotic/ipc, /datum/species/synth, /datum/species/synth/military, /datum/species/robotic/synthliz, /datum/species/robotic/synthetic_human, /datum/species/robotic/synthetic_mammal)
 	cooldown = 2 SECONDS
 
@@ -97,6 +117,7 @@
 	message = "plays a sad trombone..."
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/misc/sadtrombone.ogg'
+	silicon_allowed = TRUE
 	allowed_species = list(/datum/species/robotic/ipc, /datum/species/synth, /datum/species/synth/military, /datum/species/robotic/synthliz, /datum/species/robotic/synthetic_human, /datum/species/robotic/synthetic_mammal)
 	cooldown = 2 SECONDS
 
@@ -105,6 +126,7 @@
 	message = "blares an alarm!"
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/warning-buzzer.ogg'
+	silicon_allowed = TRUE
 	allowed_species = list(/datum/species/robotic/ipc, /datum/species/synth, /datum/species/synth/military, /datum/species/robotic/synthliz, /datum/species/robotic/synthetic_human, /datum/species/robotic/synthetic_mammal)
 	cooldown = 2 SECONDS
 
@@ -113,5 +135,6 @@
 	message = "activates their slow clap processor."
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/slowclap.ogg'
+	silicon_allowed = TRUE
 	allowed_species = list(/datum/species/robotic/ipc, /datum/species/synth, /datum/species/synth/military, /datum/species/robotic/synthliz, /datum/species/robotic/synthetic_human, /datum/species/robotic/synthetic_mammal)
 	cooldown = 2 SECONDS

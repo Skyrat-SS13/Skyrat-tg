@@ -111,7 +111,7 @@
 			if(HUD_LIST_LIST)
 				hud_list[hud] = list()
 			else
-				var/image/I = image('icons/mob/hud.dmi', src, "")
+				var/image/I = image('modular_skyrat/master_files/icons/mob/huds/hud.dmi', src, "")	//SKYRAT EDIT: original filepath 'icons/mob/huds/hud.dmi'
 				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
 				hud_list[hud] = I
 
@@ -190,8 +190,9 @@
  * * blind_message (optional) is what blind people will hear e.g. "You hear something!"
  * * vision_distance (optional) define how many tiles away the message can be seen.
  * * ignored_mob (optional) doesn't show any message to a given mob if TRUE.
+ * * separation (otional) is what goes between the name of the person and the message, defaults to " ". SKYRAT ADDITION
  */
-/atom/proc/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE)
+/atom/proc/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE, separation = " ") // SKYRAT EDIT ADDITION - Better emotes
 	var/turf/T = get_turf(src)
 	if(!T)
 		return
@@ -206,7 +207,7 @@
 
 	var/raw_msg = message
 	if(visible_message_flags & EMOTE_MESSAGE)
-		message = "<span class='emote'><b>[src]</b> [message]</span>"
+		message = "<span class='emote'><b>[src]</b>[separation][message]</span>" // SKYRAT EDIT - Better emotes
 
 	for(var/mob/M in hearers)
 		if(!M.client)
@@ -231,7 +232,7 @@
 
 
 ///Adds the functionality to self_message.
-/mob/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE)
+/mob/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE, separation = " ")  // SKYRAT EDIT ADDITION - Better emotes
 	. = ..()
 	if(self_message)
 		show_message(self_message, MSG_VISUAL, blind_message, MSG_AUDIBLE)
@@ -245,14 +246,15 @@
  * * message is the message output to anyone who can hear.
  * * deaf_message (optional) is what deaf people will see.
  * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
+ * * separation (otional) is what goes between the name of the person and the message, defaults to " ". SKYRAT ADDITION
  */
-/atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE)
+/atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE, separation = " ") // SKYRAT EDIT ADDITION - Better emotes
 	var/list/hearers = get_hearers_in_view(hearing_distance, src)
 	if(self_message)
 		hearers -= src
 	var/raw_msg = message
 	if(audible_message_flags & EMOTE_MESSAGE)
-		message = "<span class='emote'><b>[src]</b> [message]</span>"
+		message = "<span class='emote'><b>[src]</b>[separation][message]</span>" // SKYRAT EDIT - Better emotes
 	for(var/mob/M in hearers)
 		if(audible_message_flags & EMOTE_MESSAGE && runechat_prefs_check(M, audible_message_flags) && M.can_hear())
 			M.create_chat_message(src, raw_message = raw_msg, runechat_flags = audible_message_flags)
@@ -269,7 +271,7 @@
  * * deaf_message (optional) is what deaf people will see.
  * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
  */
-/mob/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE)
+/mob/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE, separation = " ") // SKYRAT EDIT ADDITION - Better emotes
 	. = ..()
 	if(self_message)
 		show_message(self_message, MSG_AUDIBLE, deaf_message, MSG_VISUAL)
@@ -759,38 +761,10 @@
  * * handles the strip panel equip and unequip as well if "item" sent
  */
 /mob/Topic(href, href_list)
-	var/mob/user = usr
-
 	if(href_list["mach_close"])
 		var/t1 = text("window=[href_list["mach_close"]]")
 		unset_machine()
 		src << browse(null, t1)
-
-	if(user != src)
-		if(href_list["item"] && user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
-			var/slot = text2num(href_list["item"])
-			var/hand_index = text2num(href_list["hand_index"])
-			var/obj/item/what
-			if(hand_index)
-				what = get_item_for_held_index(hand_index)
-				slot = list(slot,hand_index)
-			else
-				what = get_item_by_slot(slot)
-			if(what)
-				if(!(what.item_flags & ABSTRACT))
-					user.stripPanelUnequip(what,src,slot)
-			else
-				user.stripPanelEquip(what,src,slot)
-
-// The src mob is trying to strip an item from someone
-// Defined in living.dm
-/mob/proc/stripPanelUnequip(obj/item/what, mob/who)
-	return
-
-// The src mob is trying to place an item on someone
-// Defined in living.dm
-/mob/proc/stripPanelEquip(obj/item/what, mob/who)
-	return
 
 /**
  * Controls if a mouse drop succeeds (return null if it doesnt)
@@ -1306,10 +1280,9 @@
 /mob/proc/set_stat(new_stat)
 	if(new_stat == stat)
 		return
-	SEND_SIGNAL(src, COMSIG_MOB_STATCHANGE, new_stat)
 	. = stat
 	stat = new_stat
-
+	SEND_SIGNAL(src, COMSIG_MOB_STATCHANGE, new_stat, .)
 
 /mob/vv_edit_var(var_name, var_value)
 	switch(var_name)

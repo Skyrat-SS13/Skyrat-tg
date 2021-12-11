@@ -70,7 +70,7 @@
 
 	for(var/mob/M in GLOB.player_list)
 		if(!isnewplayer(M) && M.can_hear())
-			to_chat(M, "<span class='minorannounce'><font color = red>[title]</font color><BR>[message]</span><BR>")
+			to_chat(M, span_minorannounce("<font color = red>[title]</font color><BR>[message]</span><BR>"))
 
 	if(sound)
 		if(SSstation.announcer.event_sounds[sound])

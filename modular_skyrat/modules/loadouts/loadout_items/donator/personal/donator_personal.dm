@@ -289,3 +289,63 @@
 	name = "Grey Winter Hoodie"
 	item_path = /obj/item/clothing/suit/jacket/delta
 	ckeywhitelist = list("deltatri")
+
+/datum/loadout_item/head/hubertcc
+	name = "CC Ensign's cap"
+	item_path = /obj/item/clothing/head/nanotrasen_representative/hubert
+	ckeywhitelist = list("hackertdog")
+	restricted_roles = list("Nanotrasen Representative")
+
+/datum/loadout_item/suit/hubertcc
+	name = "CC Ensign's armoured vest"
+	item_path = /obj/item/clothing/suit/armor/vest/nanotrasen_representative/hubert
+	ckeywhitelist = list("hackertdog")
+	restricted_roles = list("Nanotrasen Representative")
+
+/datum/loadout_item/under/jumpsuit/hubertcc
+	name = "CC Ensign's uniform"
+	item_path = /obj/item/clothing/under/rank/nanotrasen_representative/hubert
+	ckeywhitelist = list("hackertdog")
+	restricted_roles = list("Nanotrasen Representative")
+
+/datum/loadout_item/head/frostyushanka
+	name = "Blue Ushanka"
+	item_path = /obj/item/clothing/head/ushanka/frosty
+	ckeywhitelist = list("cherno00")
+
+/datum/loadout_item/neck/silvercross
+	name = "Silver Cross"
+	item_path = /obj/item/clothing/neck/cross
+	ckeywhitelist = list("m97screwsyourparents")
+
+/datum/loadout_item/suit/pcrc_jacket
+	name = "PCRC Armored Jacket"
+	item_path = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/pcrc
+	ckeywhitelist = list("1ceres")
+	restricted_roles = list("Orderly", "Bouncer", "Customs Agent", "Engineering Guard", "Science Guard")
+
+/datum/loadout_item/under/jumpsuit/pcrc_clothes
+	name = "PCRC Business Clothes"
+	item_path = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/pcrc
+	ckeywhitelist = list("1ceres")
+	restricted_roles = list("Orderly", "Bouncer", "Customs Agent", "Engineering Guard", "Science Guard")
+
+/datum/loadout_item/suit/occult_coat
+	name = "Occult Collector's Coat"
+	item_path = /obj/item/clothing/suit/hooded/occult
+	ckeywhitelist = list("gamerguy14948")
+
+/datum/loadout_item/under/jumpsuit/occult_outfit
+	name = "Occult Collector's Outfit"
+	item_path = /obj/item/clothing/under/occult
+	ckeywhitelist = list("gamerguy14948")
+
+/datum/loadout_item/belts/trinket_belt
+	name = "Trinket Belt"
+	item_path = /obj/item/storage/belt/fannypack/occult
+	ckeywhitelist = list("gamerguy14948")
+
+/datum/loadout_item/pocket_items/voodooplush
+	name = "Voodoo Doll"
+	item_path = /obj/item/toy/plush/donator/voodoo
+	ckeywhitelist = list("gamerguy14948")

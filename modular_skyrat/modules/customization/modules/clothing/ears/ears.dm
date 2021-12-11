@@ -26,7 +26,7 @@
 /obj/item/clothing/ears/headphones/proc/toggle(owner)
 	headphones_on = !headphones_on
 	update_icon()
-	to_chat(owner, "<span class='notice'>You turn the music [headphones_on? "on. Untz Untz Untz!" : "off."]</span>")
+	to_chat(owner, span_notice("You turn the music [headphones_on? "on. Untz Untz Untz!" : "off."]"))
 
 /datum/action/item_action/toggle_headphones
 	name = "Toggle Headphones"

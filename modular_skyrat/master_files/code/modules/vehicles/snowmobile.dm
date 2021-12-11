@@ -9,11 +9,11 @@
     . = ..()
     if (QDELETED(src))
         return
-    var/datum/component/riding/E = LoadComponent(/datum/component/riding)
+    var/datum/component/riding/riding_component = LoadComponent(/datum/component/riding)
     if(snow_typecache[loc.type])
-        E.vehicle_move_delay = 1
+        riding_component.vehicle_move_delay = 1
     else
-        E.vehicle_move_delay = 2
+        riding_component.vehicle_move_delay = 2
 
 /obj/vehicle/ridden/atv/snowmobile/snowcurity
 	name = "security snowmobile"
@@ -21,6 +21,13 @@
 	icon_state = "snowcurity"
 	icon = 'modular_skyrat/master_files/icons/obj/vehicles/vehicles.dmi'
 	key_type = /obj/item/key/security
+
+/datum/component/riding/vehicle/atv/snowmobile/snowcurity
+	keytype = /obj/item/key/security
+
+/obj/vehicle/ridden/atv/snowmobile/snowcurity/proc/make_ridable()
+	AddElement(/datum/element/ridable, /datum/component/riding/vehicle/atv/snowmobile/snowcurity)
+
 
 /obj/vehicle/ridden/atv/snowmobile/syndicate
 	name = "snowmobile"
