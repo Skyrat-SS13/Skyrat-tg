@@ -215,7 +215,7 @@
 		C.pixel_y = last_offset_y*32
 		animate(C, pixel_x = offset_x*32, pixel_y = offset_y*32, time = time*10, flags=ANIMATION_END_NOW)
 	user_thrust_dir = 0
-	update_icon()
+	update_appearance()
 
 /obj/spacepod/Bumped(atom/movable/A)
 	if(A.dir & NORTH)

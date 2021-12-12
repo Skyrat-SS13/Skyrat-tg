@@ -227,12 +227,12 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			if(W.use_tool(src, user, 50, amount=3, volume = 50))
 				if(repairing)
 					update_integrity(min(max_integrity, obj_integrity + 10))
-					update_icon()
+					update_appearance()
 					to_chat(user, span_notice("You mend some [pick("dents","bumps","damage")] with [W]"))
 				else if(!cell && !internal_tank && !equipment.len && !pilot && !passengers.len && construction_state == SPACEPOD_ARMOR_WELDED)
 					user.visible_message("[user] slices off [src]'s armor.", span_notice("You slice off [src]'s armor."))
 					construction_state = SPACEPOD_ARMOR_SECURED
-					update_icon()
+					update_appearance()
 			return TRUE
 	return ..()
 
@@ -290,7 +290,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	max_integrity = armor.pod_integrity
 	update_integrity(max_integrity - integrity_failure + get_integrity())
 	pod_armor = armor
-	update_icon()
+	update_appearance()
 
 /obj/spacepod/proc/remove_armor()
 	if(!pod_armor)
@@ -298,7 +298,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		max_integrity = integrity_failure
 		desc = initial(desc)
 		pod_armor = null
-		update_icon()
+		update_appearance()
 
 /obj/spacepod/proc/on_mouse_moved(mob/user, object, location, control, params)
 	SIGNAL_HANDLER
@@ -326,8 +326,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		weapon.fire_weapons(object)
 
 /obj/spacepod/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armour_penetration = 0)
-	..()
-	update_icon()
+	. = ..()
+	update_appearance()
 
 /obj/spacepod/return_air()
 	return cabin_air

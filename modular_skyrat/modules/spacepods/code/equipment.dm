@@ -34,10 +34,11 @@
 	var/fire_delay = 15
 	var/overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	var/overlay_icon_state = "pod_weapon_laser"
+
 /obj/item/spacepod_equipment/weaponry/on_install(obj/spacepod/attaching_spacepod)
 	. = ..()
 	attaching_spacepod.weapon = src
-	attaching_spacepod.update_icon()
+	attaching_spacepod.update_appearance()
 
 /obj/item/spacepod_equipment/weaponry/on_uninstall()
 	. = ..()
