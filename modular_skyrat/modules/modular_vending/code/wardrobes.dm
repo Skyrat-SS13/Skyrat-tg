@@ -9,7 +9,7 @@
 		/obj/item/clothing/gloves/color/latex/nitrile = 2,
 		/obj/item/clothing/suit/toggle/labcoat/hospitalgown = 5,
 		/obj/item/storage/belt/medbandolier = 2,
-		/obj/item/clothing/under/utility/haz_white = 2,
+		/obj/item/clothing/under/rank/engineering/engineer/haz_white = 2,
 		/obj/item/clothing/under/rank/medical/doctor/red/unarm = 4,
 		/obj/item/clothing/under/rank/medical/doctor/white = 4,
 		/obj/item/clothing/under/utility/med = 4,
@@ -23,7 +23,7 @@
 		/obj/item/clothing/under/misc/overalls = 3,
 		/obj/item/clothing/under/rank/engineering/engineer/formal = 3,
 		/obj/item/clothing/under/rank/engineering/engineer/formal/skirt = 3,
-		/obj/item/clothing/under/utility/haz_green = 3,
+		/obj/item/clothing/under/rank/engineering/engineer/haz_green = 3,
 		/obj/item/clothing/head/hardhat/orange = 2,
 		/obj/item/clothing/head/hardhat/weldhat/orange = 2,
 		/obj/item/clothing/head/hardhat/dblue = 2,
@@ -111,7 +111,6 @@
 
 /obj/machinery/vending/wardrobe/det_wardrobe
 	skyrat_products = list(
-		/obj/item/clothing/under/rank/security/detective/undersuit = 2,
 		/obj/item/clothing/suit/det_bomber = 2,
 		/obj/item/clothing/under/costume/cybersleek = 2,
 		/obj/item/clothing/under/costume/cybersleek/long = 2,
