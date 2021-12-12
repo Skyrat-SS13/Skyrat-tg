@@ -57,6 +57,12 @@
 	contraband = TRUE
 	contains = list(/obj/item/storage/box/gunset/makarov)
 
+/datum/supply_pack/goody/pepperball
+	name = "PepperBall Self Defense Weapon"
+	desc = "A 'state of the art' self defense weapon, firing balls of condensed pepperspray, don't aim for the face."
+	cost = PAYCHECK_MEDIUM * 17
+	contains = list(/obj/item/storage/box/gunset/pepperball)
+
 /datum/supply_pack/goody/gunmaint
 	name = "Gun Maintenance Kits"
 	desc = "Keep your pa's rifle in best condition, with two sets of cleaning supplies. Or your standard issue pistol if you're an itchy trigger, we're not here to judge."

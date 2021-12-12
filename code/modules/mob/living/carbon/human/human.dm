@@ -47,12 +47,18 @@
 	GLOB.human_list -= src
 	return ..()
 
+/* SKYRAT REMOVAL START - MOVED TO MODULAR - modular_skyrat\master_files\code\modules\mob\living\carbon\human.dm
 /mob/living/carbon/human/ZImpactDamage(turf/T, levels)
-	if(!HAS_TRAIT(src, TRAIT_FREERUNNING) || levels > 1) // falling off one level
+	if(stat != CONSCIOUS || levels > 1) // you're not The One
 		return ..()
-	visible_message(span_danger("[src] makes a hard landing on [T] but remains unharmed from the fall."), \
-					span_userdanger("You brace for the fall. You make a hard landing on [T] but remain unharmed."))
-	Knockdown(levels * 40)
+	var/obj/item/organ/external/wings/gliders = getorgan(/obj/item/organ/external/wings)
+	if(HAS_TRAIT(src, TRAIT_FREERUNNING) || gliders?.can_soften_fall()) // the power of parkour or wings allows falling short distances unscathed
+		visible_message(span_danger("[src] makes a hard landing on [T] but remains unharmed from the fall."), \
+						span_userdanger("You brace for the fall. You make a hard landing on [T] but remain unharmed."))
+		Knockdown(levels * 40)
+		return
+	return ..()
+*/ // SKYRAT REMOVAL END
 
 /mob/living/carbon/human/prepare_data_huds()
 	//Update med hud images...
@@ -209,8 +215,8 @@
 					to_chat(usr,  "<span class='notice ml-1'>Detected physiological traits:</span>\n<span class='notice ml-2'>[quirkstring]</span>")
 				else
 					to_chat(usr,  "<span class='notice ml-1'>No physiological traits found.</span>")
-			if(href_list["medrecords"])
 			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
+			if(href_list["medrecords"])
 				to_chat(usr, "<b>Medical Record:</b> [med_record.fields["past_records"]]")
 			if(href_list["genrecords"])
 				to_chat(usr, "<b>General Record:</b> [general_record.fields["past_records"]]")
@@ -260,7 +266,7 @@
 					sec_hud_set_security_status()
 				return
 
-			if(href_list["viewsec"]) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+			if(href_list["view"])
 				if(!H.canUseHUD())
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
@@ -275,7 +281,6 @@
 					to_chat(usr, "Added by [c.author] at [c.time]")
 					to_chat(usr, "----------")
 				to_chat(usr, "<b>Notes:</b> [sec_record.fields["notes"]]") //SKYRAT EDIT CHANGE - EXAMINE RECORDS
-				to_chat(usr, "<b>Security Record:</b> [sec_record.fields["past_records"]]") //SKYRAT EDIT ADDITION - EXAMINE RECORDS
 				return
 
 			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
@@ -285,6 +290,13 @@
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 					return
 				to_chat(usr, "<b>General Record:</b> [general_record.fields["past_records"]]")
+
+			if(href_list["secrecords"])
+				if(!H.canUseHUD())
+					return
+				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
+					return
+				to_chat(usr, "<b>Security Record:</b> [sec_record.fields["past_records"]]")
 			//SKYRAT EDIT END
 
 			if(href_list["add_citation"])
@@ -310,8 +322,8 @@
 							"name" = "Security Citation",
 							"job" = "Citation Server",
 							"message" = message,
-							"targets" = list("[P.owner] ([P.ownjob])"),
-							"automated" = 1
+							"targets" = list(STRINGIFY_PDA_TARGET(P.owner, P.ownjob)),
+							"automated" = TRUE
 						))
 						signal.send_to_receivers()
 						usr.log_message("(PDA: Citation Server) sent \"[message]\" to [signal.format_target()]", LOG_PDA)
@@ -379,9 +391,9 @@
 	//SKYRAT EDIT ADDITION BEGIN - VIEW RECORDS
 	if (is_special_character(usr))
 		var/perpname = get_face_name(get_id_name(""))
-		var/datum/data/record/EXP = find_record("name", perpname, GLOB.data_core.locked)
+		var/datum/data/record/EXP = find_record("name", perpname, GLOB.data_core.general)
 		if(href_list["exprecords"])
-			to_chat(usr, "<b>Exploitable information:</b> [EXP.fields["exp_records"]]")
+			to_chat(usr, "<b>Exploitable information:</b> [EXP.fields["exploitable_records"]]")
 	//SKYRAT EDIT END
 
 	..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that.
@@ -502,7 +514,6 @@
 			if(prob(current_size * 5) && hand.w_class >= ((11-current_size)/2)  && dropItemToGround(hand))
 				step_towards(hand, src)
 				to_chat(src, span_warning("\The [S] pulls \the [hand] from your grip!"))
-	rad_act(current_size * 3)
 
 #define CPR_PANIC_SPEED (0.8 SECONDS)
 
@@ -813,10 +824,6 @@
 	VV_DROPDOWN_OPTION(VV_HK_COPY_OUTFIT, "Copy Outfit")
 	VV_DROPDOWN_OPTION(VV_HK_MOD_MUTATIONS, "Add/Remove Mutation")
 	VV_DROPDOWN_OPTION(VV_HK_MOD_QUIRKS, "Add/Remove Quirks")
-	VV_DROPDOWN_OPTION(VV_HK_MAKE_MONKEY, "Make Monkey")
-	VV_DROPDOWN_OPTION(VV_HK_MAKE_CYBORG, "Make Cyborg")
-	VV_DROPDOWN_OPTION(VV_HK_MAKE_SLIME, "Make Slime")
-	VV_DROPDOWN_OPTION(VV_HK_MAKE_ALIEN, "Make Alien")
 	VV_DROPDOWN_OPTION(VV_HK_SET_SPECIES, "Set Species")
 	VV_DROPDOWN_OPTION(VV_HK_PURRBATION, "Toggle Purrbation")
 
@@ -871,30 +878,6 @@
 					remove_quirk(T)
 				else
 					add_quirk(T)
-	if(href_list[VV_HK_MAKE_MONKEY])
-		if(!check_rights(R_SPAWN))
-			return
-		if(tgui_alert(usr,"Confirm mob type change?",,list("Transform","Cancel")) != "Transform")
-			return
-		usr.client.holder.Topic("vv_override", list("monkeyone"=href_list[VV_HK_TARGET]))
-	if(href_list[VV_HK_MAKE_CYBORG])
-		if(!check_rights(R_SPAWN))
-			return
-		if(tgui_alert(usr,"Confirm mob type change?",,list("Transform","Cancel")) != "Transform")
-			return
-		usr.client.holder.Topic("vv_override", list("makerobot"=href_list[VV_HK_TARGET]))
-	if(href_list[VV_HK_MAKE_ALIEN])
-		if(!check_rights(R_SPAWN))
-			return
-		if(tgui_alert(usr,"Confirm mob type change?",,list("Transform","Cancel")) != "Transform")
-			return
-		usr.client.holder.Topic("vv_override", list("makealien"=href_list[VV_HK_TARGET]))
-	if(href_list[VV_HK_MAKE_SLIME])
-		if(!check_rights(R_SPAWN))
-			return
-		if(tgui_alert(usr,"Confirm mob type change?",,list("Transform","Cancel")) != "Transform")
-			return
-		usr.client.holder.Topic("vv_override", list("makeslime"=href_list[VV_HK_TARGET]))
 	if(href_list[VV_HK_SET_SPECIES])
 		if(!check_rights(R_SPAWN))
 			return
@@ -1015,7 +998,7 @@
 		remove_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown)
 		remove_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown_flying)
 		return
-	var/health_deficiency = max((maxHealth - health), staminaloss*0.75) //SKYRAT EDIT CHANGE: var/health_deficiency = max((maxHealth - health), staminaloss)
+	var/health_deficiency = max((maxHealth - health), staminaloss)
 	if(health_deficiency >= 40)
 		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown, TRUE, multiplicative_slowdown = health_deficiency / 75)
 		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown_flying, TRUE, multiplicative_slowdown = health_deficiency / 25)

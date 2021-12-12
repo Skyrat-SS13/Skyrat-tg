@@ -22,7 +22,7 @@
 				outfit_ref.copy_outfit_from_target(holder)
 				outfit_ref.equip(dummy_holder, visualsOnly=TRUE)
 		/*
-		else if(issilicon(holder)) 
+		else if(issilicon(holder))
 			dummy_holder = image('icons/mob/robots.dmi', icon_state = "robot", dir = SOUTH) // this doesn't work and just shows a black screen, idk a solution though feel free to pitch in
 		*/
 		examine_panel_screen = new
@@ -53,9 +53,11 @@
 		var/e_prefs = preferences.read_preference(/datum/preference/choiced/erp_status)
 		var/e_prefs_nc = preferences.read_preference(/datum/preference/choiced/erp_status_nc)
 		var/e_prefs_v = preferences.read_preference(/datum/preference/choiced/erp_status_v)
+		var/e_prefs_mechanical = preferences.read_preference(/datum/preference/choiced/erp_status_mechanics)
 		ooc_notes += "ERP: [e_prefs]\n"
 		ooc_notes += "Non-Con: [e_prefs_nc]\n"
 		ooc_notes += "Vore: [e_prefs_v]\n"
+		ooc_notes += "ERP Mechanics: [e_prefs_mechanical]\n"
 		ooc_notes += "\n"
 
 	// Now we handle silicon and/or human, order doesn't really matter

@@ -11,8 +11,6 @@
 
 	///If the world.time is above this, it wont work. Charging requires whacking the necropolis nest
 	var/staff_time = 0
-	///The amount of tiles left that can be converted. Useless ruins recharge it by 10 each
-	var/essence_left = 10
 
 /datum/crafting_recipe/ash_staff
 	name = "Staff of the Ashlands"
@@ -20,21 +18,12 @@
 	reqs = list(/obj/item/stack/sheet/mineral/wood = 25)
 	category = CAT_PRIMAL
 
-/obj/item/ash_staff/attackby(obj/item/I, mob/living/user, params)
-	if(istype(I, /obj/item/xenoarch/useless_relic))
-		essence_left += 10
-		to_chat(user, span_notice("[src] absorbs the essence from [I], granting it the ability to spread the ash further."))
-		qdel(I)
-		return
-	return ..()
-
 /obj/item/ash_staff/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	if(istype(target, /obj/structure/lavaland/ash_walker))
+	if(!proximity_flag)
 		return ..()
-	if(istype(target, /obj/item/xenoarch/useless_relic))
-		essence_left += 10
-		to_chat(user, span_notice("[src] absorbs the essence from [target] from afar, granting it the ability to spread the ash further."))
-		qdel(target)
+	if(!user.mind.has_antag_datum(/datum/antagonist/ashwalker))
+		return ..()
+	if(istype(target, /obj/structure/lavaland/ash_walker))
 		return
 	if(isopenturf(target))
 		var/turf/target_turf = target
@@ -46,9 +35,6 @@
 			target_turf.ChangeTurf(/turf/open/lava/smooth/lava_land_surface)
 			to_chat(user, span_notice("[src] sparks, corrupting the area too far!"))
 			return
-		if(essence_left <= 0)
-			to_chat(user, span_warning("[src] has no essence left and is unable to corrupt the world further!"))
-			return
 		if(world.time > staff_time)
 			to_chat(user, span_warning("[src] has had its permission expire from the necropolis!"))
 			return
@@ -56,7 +42,6 @@
 			to_chat(user, span_warning("[src] had their casting cut short!"))
 			return
 		target_turf.ChangeTurf(/turf/open/floor/plating/asteroid/basalt/lava_land_surface)
-		essence_left--
 		return
 	return ..()
 

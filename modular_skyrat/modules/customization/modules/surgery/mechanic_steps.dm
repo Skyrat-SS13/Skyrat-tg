@@ -4,12 +4,12 @@
 	implements = list(
 		TOOL_WIRECUTTER		= 100,
 		TOOL_SCALPEL 		= 75,
-		/obj/item/kitchen/knife	= 50,
+		/obj/item/knife	= 50,
 		/obj/item				= 10) // 10% success with any sharp item.
 	time = 24
 
 /datum/surgery_step/cut_wires/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to cut loose wires in [target]'s [parse_zone(target_zone)]...</span>",
+	display_results(user, target, span_notice("You begin to cut loose wires in [target]'s [parse_zone(target_zone)]..."),
 			"[user] begins to cut loose wires in [target]'s [parse_zone(target_zone)].",
 			"[user] begins to cut loose wires in [target]'s [parse_zone(target_zone)].")
 
@@ -31,7 +31,7 @@
 	return TRUE
 
 /datum/surgery_step/pry_off_plating/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to pry off [target]'s [parse_zone(target_zone)] plating...</span>",
+	display_results(user, target, span_notice("You begin to pry off [target]'s [parse_zone(target_zone)] plating..."),
 			"[user] begins to pry off [target]'s [parse_zone(target_zone)] plating.",
 			"[user] begins to pry off [target]'s [parse_zone(target_zone)] plating.")
 
@@ -48,7 +48,7 @@
 	return TRUE
 
 /datum/surgery_step/weld_plating/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to weld [target]'s [parse_zone(target_zone)] plating...</span>",
+	display_results(user, target, span_notice("You begin to weld [target]'s [parse_zone(target_zone)] plating..."),
 			"[user] begins to weld [target]'s [parse_zone(target_zone)] plating.",
 			"[user] begins to weld [target]'s [parse_zone(target_zone)] plating.")
 
@@ -62,7 +62,7 @@
 /datum/surgery_step/replace_wires/tool_check(mob/user, obj/item/tool)
 	var/obj/item/stack/cable_coil/coil = tool
 	if(coil.get_amount() < cableamount)
-		to_chat(user, "<span class='warning'>Not enough cable!</span>")
+		to_chat(user, span_warning("Not enough cable!"))
 		return FALSE
 	return TRUE
 
@@ -73,7 +73,7 @@
 	return TRUE
 
 /datum/surgery_step/replace_wires/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to replace [target]'s [parse_zone(target_zone)] wiring...</span>",
+	display_results(user, target, span_notice("You begin to replace [target]'s [parse_zone(target_zone)] wiring..."),
 			"[user] begins to replace [target]'s [parse_zone(target_zone)] wiring.",
 			"[user] begins to replace [target]'s [parse_zone(target_zone)] wiring.")
 
@@ -87,7 +87,7 @@
 /datum/surgery_step/add_plating/tool_check(mob/user, obj/item/tool)
 	var/obj/item/stack/sheet/iron/plat = tool
 	if(plat.get_amount() < ironamount)
-		to_chat(user, "<span class='warning'>Not enough iron!</span>")
+		to_chat(user, span_warning("Not enough iron!"))
 		return FALSE
 	return TRUE
 
@@ -98,6 +98,6 @@
 	return TRUE
 
 /datum/surgery_step/add_plating/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to add plating to [target]'s [parse_zone(target_zone)]...</span>",
+	display_results(user, target, span_notice("You begin to add plating to [target]'s [parse_zone(target_zone)]..."),
 			"[user] begins to add plating to [target]'s [parse_zone(target_zone)].",
 			"[user] begins to add plating to [target]'s [parse_zone(target_zone)].")

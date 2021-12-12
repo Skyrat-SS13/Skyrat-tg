@@ -11,3 +11,5 @@
 	var/try_hide_mutant_parts = FALSE
 	///The Examine Panel TGUI.
 	var/datum/examine_panel/tgui = new() //create the datum
+	//Whether or not the human has emissive eyes
+	var/emissive_eyes

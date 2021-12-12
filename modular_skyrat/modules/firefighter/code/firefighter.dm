@@ -6,7 +6,7 @@
 	base_icon_state = "firefighter"
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	lights_power = 7
-	armor = list(MELEE = 40, BULLET = 30, LASER = 60, ENERGY = 30, BOMB = 60, BIO = 0, RAD = 70, FIRE = 100, ACID = 100)
+	armor = list(MELEE = 40, BULLET = 30, LASER = 60, ENERGY = 30, BOMB = 60, BIO = 0, FIRE = 100, ACID = 100)
 	max_integrity = 400
 	max_temperature = 80000
 	enclosed = TRUE
@@ -38,7 +38,7 @@
 	category = list("Exosuit Equipment")
 
 /obj/item/mecha_parts/mecha_equipment/ripleyupgradef
-	name = "Ripley MK-Firefighter Conversion Kit"
+	name = "Ripley MK-Firefighter conversion kit"
 	desc = "A specialised firefighter upgrade kit which can upgrade an MK-I ripley to an MK-F ripley which has incredible heat resistance, mining will want this. This kit cannot be removed, once applied."
 	icon = 'modular_skyrat/modules/firefighter/icons/firefighter_equipment.dmi'
 	icon_state = "ripleyupgradef"
@@ -46,19 +46,19 @@
 
 /obj/item/mecha_parts/mecha_equipment/ripleyupgradef/can_attach(obj/vehicle/sealed/mecha/working/ripley/M)
 	if(M.type != /obj/vehicle/sealed/mecha/working/ripley)
-		to_chat(loc, "<span class='warning'>This conversion kit can only be applied to APLU MK-I models.</span>")
+		to_chat(loc, span_warning("This conversion kit can only be applied to APLU MK-I models."))
 		return FALSE
 	if(LAZYLEN(M.cargo))
-		to_chat(loc, "<span class='warning'>[M]'s cargo hold must be empty before this conversion kit can be applied.</span>")
+		to_chat(loc, span_warning("[M]'s cargo hold must be empty before this conversion kit can be applied."))
 		return FALSE
 	if(!(M.mecha_flags & ADDING_MAINT_ACCESS_POSSIBLE)) //non-removable upgrade, so lets make sure the pilot or owner has their say.
-		to_chat(loc, "<span class='warning'>[M] must have maintenance protocols active in order to allow this conversion kit.</span>")
+		to_chat(loc, span_warning("[M] must have maintenance protocols active in order to allow this conversion kit."))
 		return FALSE
 	if(LAZYLEN(M.occupants)) //We're actualy making a new mech and swapping things over, it might get weird if players are involved
-		to_chat(loc, "<span class='warning'>[M] must be unoccupied before this conversion kit can be applied.</span>")
+		to_chat(loc, span_warning("[M] must be unoccupied before this conversion kit can be applied."))
 		return FALSE
 	if(!M.cell) //Turns out things break if the cell is missing
-		to_chat(loc, "<span class='warning'>The conversion process requires a cell installed.</span>")
+		to_chat(loc, span_warning("The conversion process requires a cell installed."))
 		return FALSE
 	return TRUE
 

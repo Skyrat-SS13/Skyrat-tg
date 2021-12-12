@@ -159,6 +159,13 @@
 
 /obj/item/clothing/head/mob_holder
 	mutant_variants = NONE
+	
+/obj/item/clothing/head/hooded/cult_hoodie/void
+	mutant_variants = NONE
+	
+/obj/item/clothing/head/hooded/cult_hoodie/eldritch
+	mutant_variants = NONE
+	
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //EYES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -178,6 +185,9 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/mask/gas/sechailer/swat/spacepol
+	mutant_variants = NONE
+	
+/obj/item/clothing/mask/void_mask
 	mutant_variants = NONE
 
 //UNDER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -314,6 +324,12 @@
 
 /obj/item/clothing/suit/toggle/armor/vest/centcom_formal
 	mutant_variants = NONE
+	
+/obj/item/clothing/suit/hooded/cultrobes/void
+	mutant_variants = NONE
+	
+/obj/item/clothing/suit/hooded/cultrobes/eldritch
+	mutant_variants = NONE
 
 //FEET>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -445,4 +461,10 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/prisoner/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/hooded/techpriest
+	mutant_variants = NONE
+
+/obj/item/clothing/head/hooded/techpriest
 	mutant_variants = NONE

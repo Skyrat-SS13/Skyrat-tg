@@ -20,7 +20,7 @@
 	Just slap 'em in the SAD and turn it on! Their frown will turn upside down as they're reconstituted as their ideal self \
 	via the magic technology of brain scanning! Within a few short moments, they'll be popped out as their ideal self, \
 	ready to continue on with their day lawsuit-free! WARNING: KEEP AWAY FROM POTENTIAL SOURCES OF ELECTRO-MAGNETIC INTERFERENCE."
-	icon = 'modular_skyrat/modules/donut_steel_restoration_device/cinco_machinery.dmi'
+	icon = 'modular_skyrat/modules/donut_steel_restoration_device/icons/cinco_machinery.dmi'
 	icon_state = "sad_open"
 	circuit = /obj/item/circuitboard/machine/oc_donut_steel_restoration_device
 	state_open = FALSE

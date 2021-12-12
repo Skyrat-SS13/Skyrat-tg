@@ -8,10 +8,10 @@
 
 /obj/item/inflatable/attack_self(mob/user)
 	if(locate(/obj/structure/inflatable) in user.loc)
-		to_chat(user, "<span class='warning'>You cannot place inflatable walls upon eachother!</span>")
+		to_chat(user, span_warning("You cannot place inflatable walls upon eachother!"))
 		return
 	playsound(loc, 'sound/items/zip.ogg', 75, 1)
-	to_chat(user, "<span class='notice'>You inflate [src].</span>")
+	to_chat(user, span_notice("You inflate [src]."))
 	if(do_mob(user, src, 10))
 		var/obj/structure/inflatable/R = new structuretype(user.loc)
 		transfer_fingerprints_to(R)
@@ -94,7 +94,7 @@
 	if(!istype(W))
 		return
 	if(W.sharpness)
-		visible_message("<span class='danger'><b>[user] pierces [src] with [W]!</b></span>")
+		visible_message(span_danger("<b>[user] pierces [src] with [W]!</b>"))
 		deflate(TRUE)
 	if(W.damtype == BRUTE || W.damtype == BURN)
 		..()
@@ -110,10 +110,10 @@
 	playsound(loc, 'sound/machines/hiss.ogg', 75, 1)
 	var/obj/item/inflatable/R
 	if(violent)
-		visible_message("<span class='danger'>[src] rapidly deflates!</span>")
+		visible_message(span_danger("[src] rapidly deflates!"))
 		R = new torntype(loc)
 	else
-		visible_message("<span class='danger'>[src] slowly deflates.</span>")
+		visible_message(span_danger("[src] slowly deflates."))
 		sleep(50)
 		R = new itemtype(loc)
 	transfer_fingerprints_to(R)
@@ -216,19 +216,19 @@
 	var/fixedtype = /obj/item/inflatable
 
 /obj/item/inflatable/torn/attack_self(mob/user)
-	to_chat(user, "<span class='warning'>The inflatable wall is too torn to be inflated, fix it with something!</span>")
+	to_chat(user, span_warning("The inflatable wall is too torn to be inflated, fix it with something!"))
 	add_fingerprint(user)
 
 /obj/item/inflatable/torn/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/stack/sticky_tape))
 		var/obj/item/stack/sticky_tape/T = I
 		if(T.amount < 2)
-			to_chat(user, "<span class='danger'>There is not enough tape!</span>")
+			to_chat(user, span_danger("There is not enough tape!"))
 			return
-		to_chat(user, "<span class='notice'>You begin fixing the [src]!</span>")
+		to_chat(user, span_notice("You begin fixing the [src]!"))
 		playsound(user, 'modular_skyrat/modules/inflatables/sound/ducttape1.ogg', 50, 1)
 		if(do_mob(user, src, 20))
-			to_chat(user, "<span class='notice'>You fix the [src] using the ducttape!</span>")
+			to_chat(user, span_notice("You fix the [src] using the ducttape!"))
 			T.use(2)
 			new fixedtype(user.loc)
 			qdel(src)
@@ -259,7 +259,7 @@
 		new /obj/item/inflatable(src)
 
 /obj/item/inflatable/suicide_act(mob/living/user)
-	visible_message(user, "<span class='danger'>[user] starts shoving the [src] up his ass! It looks like hes going to pull the cord, oh shit!</span>")
+	visible_message(user, span_danger("[user] starts shoving the [src] up his ass! It looks like hes going to pull the cord, oh shit!"))
 	playsound(user.loc, 'sound/machines/hiss.ogg', 75, 1)
 	new structuretype(user.loc)
 	user.gib()

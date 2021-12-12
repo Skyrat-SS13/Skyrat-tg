@@ -69,3 +69,10 @@ export const gender_change_pref: FeatureToggle = {
   description: "Determines if you wish to allow forced gender changing.",
   component: CheckboxInput,
 };
+
+export const autocum_pref: FeatureToggle = {
+  name: "Autocum",
+  category: "ERP",
+  description: "Toggles whether you automatically cum using the arousal system, or if you need to do it manually.",
+  component: CheckboxInput,
+};

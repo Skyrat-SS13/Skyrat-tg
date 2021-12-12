@@ -1,5 +1,5 @@
 /mob/living/carbon/examine_more(mob/user)
-	var/msg = list("<span class='notice'><i>You examine [src] closer, and note the following...</i></span>")
+	var/msg = list(span_notice("<i>You examine [src] closer, and note the following...</i>"))
 	var/t_His = p_their(TRUE)
 	var/t_He = p_they(TRUE)
 	var/t_Has = p_have()

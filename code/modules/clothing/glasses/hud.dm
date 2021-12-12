@@ -64,7 +64,7 @@
 	icon_state = "sunhudmed"
 	darkness_view = 1
 	flash_protect = FLASH_PROTECTION_FLASH
-	tint = 1
+	tint = 0.25
 	glass_colour_type = /datum/client_colour/glass_colour/blue
 
 /obj/item/clothing/glasses/hud/diagnostic
@@ -91,7 +91,7 @@
 	icon_state = "sunhuddiag"
 	inhand_icon_state = "glasses"
 	flash_protect = FLASH_PROTECTION_FLASH
-	tint = 1
+	tint = 0.25
 
 /obj/item/clothing/glasses/hud/security
 	name = "security HUD"
@@ -136,8 +136,25 @@
 	icon_state = "sunhudsec"
 	darkness_view = 1
 	flash_protect = FLASH_PROTECTION_FLASH
-	tint = 1
+	tint = 0.25
 	glass_colour_type = /datum/client_colour/glass_colour/darkred
+	// SKYRAT EDIT ADDITION START
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Basic HUDSunglasses" = list(
+			RESKIN_ICON = 'icons/obj/clothing/glasses.dmi',
+			RESKIN_ICON_STATE = "sunhudsec",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/eyes.dmi',
+			RESKIN_WORN_ICON_STATE = "sunhudsec"
+		),
+		"Peacekeeper" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi',
+			RESKIN_ICON_STATE = "peacekeeperglasses",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi',
+			RESKIN_WORN_ICON_STATE = "peacekeeperglasses"
+		)
+	)
+	/// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/glasses/hud/security/night
 	name = "night vision security HUD"
@@ -151,8 +168,9 @@
 /obj/item/clothing/glasses/hud/security/sunglasses/gars
 	name = "\improper HUD gar glasses"
 	desc = "GAR glasses with a HUD."
-	icon_state = "gars"
-	inhand_icon_state = "garb"
+	icon_state = "gar_sec"
+	inhand_icon_state = "gar_black"
+	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER
 	force = 10
 	throwforce = 10
 	throw_speed = 4
@@ -161,11 +179,10 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = SHARP_EDGED
 
-/obj/item/clothing/glasses/hud/security/sunglasses/gars/supergars
+/obj/item/clothing/glasses/hud/security/sunglasses/gars/giga
 	name = "giga HUD gar glasses"
 	desc = "GIGA GAR glasses with a HUD."
-	icon_state = "supergars"
-	inhand_icon_state = "garb"
+	icon_state = "gigagar_sec"
 	force = 12
 	throwforce = 12
 
@@ -229,10 +246,9 @@
 	name = "police aviators"
 	desc = "For thinking you look cool while brutalizing protestors and minorities."
 	icon_state = "bigsunglasses"
-	hud_type = ANTAG_HUD_GANGSTER
 	darkness_view = 1
 	flash_protect = FLASH_PROTECTION_FLASH
-	tint = 1
+	tint = 0.25
 	glass_colour_type = /datum/client_colour/glass_colour/gray
 
 

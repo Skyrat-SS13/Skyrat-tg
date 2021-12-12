@@ -13,6 +13,12 @@
 
 /obj/item/clothing/mask/bandana/attack_self(mob/user)
 	adjustmask(user)
+	//SKYRAT EDIT START: BANDANA HATS FOR MUTANTS
+	if(slot_flags & ITEM_SLOT_HEAD)
+		mutant_variants = NONE
+	if(slot_flags & ITEM_SLOT_MASK)
+		mutant_variants = initial(mutant_variants)
+	//SKYRAT EDIT END
 
 /obj/item/clothing/mask/bandana/AltClick(mob/user)
 	. = ..()
@@ -72,5 +78,5 @@
 
 /obj/item/clothing/mask/bandana/durathread
 	name = "durathread bandana"
-	desc =  "A bandana made from durathread, you wish it would provide some protection to its wearer, but it's far too thin..."
+	desc = "A bandana made from durathread, you wish it would provide some protection to its wearer, but it's far too thin..."
 	icon_state = "banddurathread"

@@ -16,14 +16,14 @@
 #define PA_CONSTRUCTION_COMPLETE   3
 
 /obj/structure/particle_accelerator
-	name = "Particle Accelerator"
+	name = "particle accelerator"
 	desc = "Part of a Particle Accelerator."
 	icon = 'modular_skyrat/modules/singularity_engine/icons/particle_accelerator.dmi'
 	icon_state = "none"
 	anchored = FALSE
 	density = TRUE
 	max_integrity = 500
-	armor = list("melee" = 30, "bullet" = 20, "laser" = 20, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 80)
+	armor = list("melee" = 30, "bullet" = 20, "laser" = 20, "energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 90, "acid" = 80)
 
 	var/obj/machinery/particle_accelerator/control_box/master = null
 	var/construction_state = PA_CONSTRUCTION_UNSECURED
@@ -71,40 +71,40 @@
 			if(W.tool_behaviour == TOOL_WRENCH && !isinspace())
 				W.play_tool_sound(src, 75)
 				set_anchored(TRUE)
-				user.visible_message("<span class='notice'>[user.name] secures the [name] to the floor.</span>", \
-					"<span class='notice'>You secure the external bolts.</span>")
+				user.visible_message(span_notice("[user.name] secures the [name] to the floor."), \
+					span_notice("You secure the external bolts."))
 				user.changeNext_move(CLICK_CD_MELEE)
 				return //set_anchored handles the rest of the stuff we need to do.
 		if(PA_CONSTRUCTION_UNWIRED)
 			if(W.tool_behaviour == TOOL_WRENCH)
 				W.play_tool_sound(src, 75)
 				set_anchored(FALSE)
-				user.visible_message("<span class='notice'>[user.name] detaches the [name] from the floor.</span>", \
-					"<span class='notice'>You remove the external bolts.</span>")
+				user.visible_message(span_notice("[user.name] detaches the [name] from the floor."), \
+					span_notice("You remove the external bolts."))
 				user.changeNext_move(CLICK_CD_MELEE)
 				return //set_anchored handles the rest of the stuff we need to do.
 			else if(istype(W, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/CC = W
 				if(CC.use(1))
-					user.visible_message("<span class='notice'>[user.name] adds wires to the [name].</span>", \
-						"<span class='notice'>You add some wires.</span>")
+					user.visible_message(span_notice("[user.name] adds wires to the [name]."), \
+						span_notice("You add some wires."))
 					construction_state = PA_CONSTRUCTION_PANEL_OPEN
 					did_something = TRUE
 		if(PA_CONSTRUCTION_PANEL_OPEN)
 			if(W.tool_behaviour == TOOL_WIRECUTTER)//TODO:Shock user if its on?
-				user.visible_message("<span class='notice'>[user.name] removes some wires from the [name].</span>", \
-					"<span class='notice'>You remove some wires.</span>")
+				user.visible_message(span_notice("[user.name] removes some wires from the [name]."), \
+					span_notice("You remove some wires."))
 				construction_state = PA_CONSTRUCTION_UNWIRED
 				did_something = TRUE
 			else if(W.tool_behaviour == TOOL_SCREWDRIVER)
-				user.visible_message("<span class='notice'>[user.name] closes the [name]'s access panel.</span>", \
-					"<span class='notice'>You close the access panel.</span>")
+				user.visible_message(span_notice("[user.name] closes the [name]'s access panel."), \
+					span_notice("You close the access panel."))
 				construction_state = PA_CONSTRUCTION_COMPLETE
 				did_something = TRUE
 		if(PA_CONSTRUCTION_COMPLETE)
 			if(W.tool_behaviour == TOOL_SCREWDRIVER)
-				user.visible_message("<span class='notice'>[user.name] opens the [name]'s access panel.</span>", \
-					"<span class='notice'>You open the access panel.</span>")
+				user.visible_message(span_notice("[user.name] opens the [name]'s access panel."), \
+					span_notice("You open the access panel."))
 				construction_state = PA_CONSTRUCTION_PANEL_OPEN
 				did_something = TRUE
 
@@ -158,21 +158,21 @@
 
 
 /obj/structure/particle_accelerator/end_cap
-	name = "Alpha Particle Generation Array"
-	desc = "This is where Alpha particles are generated from \[REDACTED\]."
+	name = "alpha particle generation array"
+	desc = "This is where alpha particles are generated from \[REDACTED\]."
 	icon_state = "end_cap"
 	reference = "end_cap"
 
 /obj/structure/particle_accelerator/power_box
-	name = "Particle Focusing EM Lens"
-	desc = "This uses electromagnetic waves to focus the Alpha particles."
+	name = "particle focusing EM lens"
+	desc = "This uses electromagnetic waves to focus the alpha particles."
 	icon = 'modular_skyrat/modules/singularity_engine/icons/particle_accelerator.dmi'
 	icon_state = "power_box"
 	reference = "power_box"
 
 /obj/structure/particle_accelerator/fuel_chamber
-	name = "EM Acceleration Chamber"
-	desc = "This is where the Alpha particles are accelerated to <b><i>radical speeds</i></b>."
+	name = "EM acceleration chamber"
+	desc = "This is where the alpha particles are accelerated to <b><i>radical speeds</i></b>."
 	icon = 'modular_skyrat/modules/singularity_engine/icons/particle_accelerator.dmi'
 	icon_state = "fuel_chamber"
 	reference = "fuel_chamber"

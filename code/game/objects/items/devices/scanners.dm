@@ -188,6 +188,8 @@ GENE SCANNER
 
 	render_list += "[span_info("Analyzing results for [M]:")]\n<span class='info ml-1'>Overall status: [mob_status]</span>\n"
 
+	SEND_SIGNAL(M, COMSIG_LIVING_HEALTHSCAN, render_list, advanced, user, mode)
+
 	// Husk detection
 	if(advanced && HAS_TRAIT_FROM(M, TRAIT_HUSK, BURN))
 		render_list += "<span class='alert ml-1'>Subject has been husked by severe burns.</span>\n"
@@ -256,10 +258,8 @@ GENE SCANNER
 	if(advanced)
 		render_list += "<span class='info ml-1'>Brain Activity Level: [(200 - M.getOrganLoss(ORGAN_SLOT_BRAIN))/2]%.</span>\n"
 
-	if (M.radiation)
-		render_list += "<span class='alert ml-1'>Subject is irradiated.</span>\n"
-		if(advanced)
-			render_list += "<span class='info ml-1'>Radiation Level: [M.radiation]%.</span>\n"
+	if (HAS_TRAIT(M, TRAIT_IRRADIATED))
+		render_list += "<span class='alert ml-1'>Subject is irradiated. Supply toxin healing.</span>\n"
 
 	if(advanced && M.hallucinating())
 		render_list += "<span class='info ml-1'>Subject is hallucinating.</span>\n"
@@ -409,7 +409,7 @@ GENE SCANNER
 				var/mob/living/carbon/human/H = C
 				if(H.is_bleeding())
 					render_list += "<span class='alert ml-1'><b>Subject is bleeding!</b></span>\n"
-			var/blood_percent =  round((C.blood_volume / BLOOD_VOLUME_NORMAL)*100)
+			var/blood_percent = round((C.blood_volume / BLOOD_VOLUME_NORMAL)*100)
 			var/blood_type = C.dna.blood_type
 			if(blood_id != /datum/reagent/blood) // special blood substance
 				var/datum/reagent/R = GLOB.chemical_reagents_list[blood_id]
@@ -428,8 +428,8 @@ GENE SCANNER
 		if(cyberimp_detect)
 			render_list += "<span class='notice ml-1'>Detected cybernetic modifications:</span>\n"
 			render_list += "<span class='notice ml-2'>[cyberimp_detect]</span>\n"
-
-	to_chat(user, examine_block(jointext(render_list, "")), trailing_newline = FALSE) // we handled the last <br> so we don't need handholding //SKYRAT EDIT CHANGE
+	// we handled the last <br> so we don't need handholding
+	to_chat(user, examine_block(jointext(render_list, "")), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO) //SKYRAT EDIT CHANGE
 
 /proc/chemscan(mob/living/user, mob/living/M)
 	if(user.incapacitated())
@@ -476,8 +476,8 @@ GENE SCANNER
 
 		if(M.has_status_effect(/datum/status_effect/eigenstasium))
 			render_list += "<span class='notice ml-1'>Subject is temporally unstable. Stabilising agent is recommended to reduce disturbances.</span>\n"
-
-		to_chat(user, examine_block(jointext(render_list, "")), trailing_newline = FALSE) // we handled the last <br> so we don't need handholding //SKYRAT EDIT CHANGE
+		// we handled the last <br> so we don't need handholding
+		to_chat(user, examine_block(jointext(render_list, "")), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO) //SKYRAT EDIT CHANGE
 
 /obj/item/healthanalyzer/verb/toggle_mode()
 	set name = "Switch Verbosity"
@@ -522,7 +522,7 @@ GENE SCANNER
 		else
 			to_chat(user, "<span class='notice ml-1'>No wounds detected in subject.</span>")
 	else
-		to_chat(user, examine_block(jointext(render_list, ""))) //SKYRAT EDIT CHANGE
+		to_chat(user, examine_block(jointext(render_list, "")), type = MESSAGE_TYPE_INFO) //SKYRAT EDIT CHANGE
 
 /obj/item/healthanalyzer/wound
 	name = "first aid analyzer"
@@ -609,10 +609,12 @@ GENE SCANNER
 		return
 	//SKYRAT EDIT END
 
-	var/turf/location = user.loc
+	var/turf/location = get_turf(user)	//SKYRAT CHANGE - ORIGINAL var/turf/location = user.loc - pairs with below change, proc/scan_turf() in ranged_analyzer.dm
 	if(!istype(location))
 		return
 
+	//SKYRAT EDIT START - Functionality moved to proc/scan_turf() in ranged_analyzer.dm
+/*
 	var/render_list = list()
 	var/datum/gas_mixture/environment = location.return_air()
 	var/pressure = environment.return_pressure()
@@ -642,7 +644,11 @@ GENE SCANNER
 			var/gas_concentration = env_gases[id][MOLES]/total_moles
 			render_list += "[span_alert("[env_gases[id][GAS_META][META_GAS_NAME]]: [round(gas_concentration*100, 0.01)] % ([round(env_gases[id][MOLES], 0.01)] mol)")]\n"
 		render_list += "[span_info("Temperature: [round(environment.temperature-T0C, 0.01)] &deg;C ([round(environment.temperature, 0.01)] K)")]\n"
-	to_chat(user, examine_block(jointext(render_list, "")), trailing_newline = FALSE) // we handled the last <br> so we don't need handholding //SKYRAT EDIT CHANGE
+	// we handled the last <br> so we don't need handholding
+	to_chat(user, jointext(render_list, ""), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO)
+*/
+	scan_turf(user, location)
+	//SKYRAT EDIT END
 
 /obj/item/analyzer/AltClick(mob/user) //Barometer output for measuring when the next storm happens
 	..()
@@ -752,8 +758,8 @@ GENE SCANNER
 		if(cached_scan_results && cached_scan_results["fusion"]) //notify the user if a fusion reaction was detected
 			render_list += "[span_boldnotice("Large amounts of free neutrons detected in the air indicate that a fusion reaction took place.")]\
 						\n[span_notice("Instability of the last fusion reaction: [round(cached_scan_results["fusion"], 0.01)].")]"
-
-	to_chat(user, examine_block(jointext(render_list, "\n"))) // we let the join apply newlines so we do need handholding //SKYRAT EDIT CHANGE
+	// we let the join apply newlines so we do need handholding
+	to_chat(user, examine_block(jointext(render_list, "\n")), type = MESSAGE_TYPE_INFO) //SKYRAT EDIT CHANGE
 	return TRUE
 
 //slime scanner
@@ -905,7 +911,7 @@ GENE SCANNER
 	for(var/A in buffer)
 		options += get_display_name(A)
 
-	var/answer = input(user, "Analyze Potential", "Sequence Analyzer")  as null|anything in sort_list(options)
+	var/answer = tgui_input_list(user, "Analyze Potential", "Sequence Analyzer", sort_list(options))
 	if(answer && ready && user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		var/sequence
 		for(var/A in buffer) //this physically hurts but i dont know what anything else short of an assoc list

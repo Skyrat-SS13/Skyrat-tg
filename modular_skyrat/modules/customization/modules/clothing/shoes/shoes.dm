@@ -41,16 +41,16 @@
 	icon_state = "heels"
 
 /obj/item/clothing/shoes/discoshoes
+	name = "green snakeskin shoes"
+	desc = "They may have lost some of their lustre over the years, but these green crocodile leather shoes fit you perfectly."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
-	name = "Green Snakeskin Shoes"
-	desc = "They may have lost some of their lustre over the years, but these green crocodile leather shoes fit you perfectly."
 	icon_state = "lizardskin_shoes"
 
 /obj/item/clothing/shoes/kimshoes
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
-	name = "Aerostatic Boots"
+	name = "aerostatic boots"
 	desc = "A brown pair of boots, prim and proper, ready to set off and get a body out of a tree."
 	icon_state = "aerostatic_boots"
 
@@ -91,10 +91,10 @@
 	AddElement(/datum/element/polychromic, list("#FFFFFF"))
 
 /obj/item/clothing/shoes/sports
+	name = "sport shoes"
+	desc = "Shoes for the sporty individual. The giants of Charlton play host to the titans of Ipswich - making them both seem normal sized."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
-	name = "Sport shoes"
-	desc = "Shoes for the sporty individual. The giants of Charlton play host to the titans of Ipswich - making them both seem normal sized."
 	icon_state = "sportshoe"
 
 /obj/item/clothing/shoes/jackboots/thigh

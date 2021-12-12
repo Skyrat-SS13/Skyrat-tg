@@ -33,15 +33,12 @@
 
 	for (var/quirk_name in quirks)
 		var/datum/quirk/quirk = quirks[quirk_name]
-		//SKYRAT EDIT ADDITION
-		if(initial(quirk.veteran_only) && !is_veteran_player(preferences?.parent.ckey))
-			continue
-		//SKYRAT EDIT END
 		quirk_info[sanitize_css_class_name(quirk_name)] = list(
 			"description" = initial(quirk.desc),
 			"icon" = initial(quirk.icon),
 			"name" = quirk_name,
 			"value" = initial(quirk.value),
+			"veteran_only" = initial(quirk.veteran_only), // SKYRAT EDIT - Veteran quirks
 		)
 
 	return list(
@@ -59,7 +56,7 @@
 	//SKYRAT EDIT ADDITION
 	var/list/quirks = SSquirks.get_quirks()
 	var/datum/quirk/quirk = quirks[quirk_name]
-	if(initial(quirk.veteran_only) && !is_veteran_player(preferences?.parent.ckey))
+	if(initial(quirk.veteran_only) && !is_veteran_player(preferences?.parent))
 		return FALSE
 	//SKYRAT EDIT END
 
@@ -97,6 +94,13 @@
 	var/list/selected_quirks = list()
 
 	for (var/quirk in preferences.all_quirks)
+		//SKYRAT EDIT ADDITION
+		var/list/quirks = SSquirks.get_quirks()
+		var/datum/quirk/quirk_datum = quirks[quirk]
+		if(initial(quirk_datum.veteran_only) && !is_veteran_player(preferences?.parent))
+			preferences.all_quirks -= quirk
+			continue
+		//SKYRAT EDIT END
 		selected_quirks += sanitize_css_class_name(quirk)
 
 	return selected_quirks

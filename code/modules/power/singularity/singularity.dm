@@ -154,7 +154,6 @@
 
 /obj/singularity/process(delta_time)
 	if(current_size >= STAGE_TWO)
-		radiation_pulse(src, min(5000, (energy*4.5)+1000), RAD_DISTANCE_COEFFICIENT*0.5)
 		if(prob(event_chance))//Chance for it to run a special event TODO:Come up with one or two more that fit
 			event()
 	dissipate(delta_time)
@@ -403,10 +402,10 @@
 
 /obj/singularity/proc/mezzer()
 	for(var/mob/living/carbon/stunned_mob in oviewers(8, src))
-		if(isbrain(stunned_mob)) //Ignore brains
+		if(stunned_mob.stat == DEAD || stunned_mob.is_blind())
 			continue
 
-		if(stunned_mob.stat != CONSCIOUS || !ishuman(stunned_mob))
+		if(!ishuman(stunned_mob))
 			apply_stun(stunned_mob)
 			continue
 

@@ -91,7 +91,7 @@
 	tool_behaviors = list(TOOL_WELDER)
 
 //Marksman's throwing knife and a pouch for it
-/obj/item/kitchen/knife/combat/marksman
+/obj/item/knife/combat/marksman
 	name = "throwing knife"
 	desc = "Very well weighted for throwing, feels awkward to use for anything else."
 	icon = 'modular_skyrat/modules/exp_corps/icons/throwing.dmi'
@@ -110,26 +110,26 @@
 	STR.max_combined_w_class = 60
 	STR.max_items = 10
 	STR.display_numerical_stacking = TRUE
-	STR.can_hold = typecacheof(list(/obj/item/kitchen/knife/combat))
+	STR.can_hold = typecacheof(list(/obj/item/knife/combat))
 
 /datum/component/storage/concrete/marksman/open_storage(mob/user)
 	if(!isliving(user) || !user.CanReach(parent) || user.incapacitated())
 		return FALSE
 	if(locked)
-		to_chat(user, "<span class='warning'>[parent] seems to be locked!</span>")
+		to_chat(user, span_warning("[parent] seems to be locked!"))
 		return
 
-	var/obj/item/kitchen/knife/combat/knife_to_draw = locate() in real_location()
+	var/obj/item/knife/combat/knife_to_draw = locate() in real_location()
 	if(!knife_to_draw)
 		return ..()
 	remove_from_storage(knife_to_draw, get_turf(user))
 	playsound(parent, 'modular_skyrat/modules/sec_haul/sound/holsterout.ogg', 50, TRUE, -5)
 	INVOKE_ASYNC(user, /mob/.proc/put_in_hands, knife_to_draw)
-	user.visible_message("<span class='warning'>[user] draws [knife_to_draw] from [parent]!</span>", "<span class='notice'>You draw [knife_to_draw] from [parent].</span>")
+	user.visible_message(span_warning("[user] draws [knife_to_draw] from [parent]!"), span_notice("You draw [knife_to_draw] from [parent]."))
 
 /obj/item/storage/bag/ammo/marksman/PopulateContents() //can kill most basic enemies with 5 knives, though marksmen shouldn't be soloing enemies anyways
-	new /obj/item/kitchen/knife/combat/marksman(src)
-	new /obj/item/kitchen/knife/combat/marksman(src)
-	new /obj/item/kitchen/knife/combat/marksman(src)
-	new /obj/item/kitchen/knife/combat/marksman(src)
-	new /obj/item/kitchen/knife/combat/marksman(src)
+	new /obj/item/knife/combat/marksman(src)
+	new /obj/item/knife/combat/marksman(src)
+	new /obj/item/knife/combat/marksman(src)
+	new /obj/item/knife/combat/marksman(src)
+	new /obj/item/knife/combat/marksman(src)

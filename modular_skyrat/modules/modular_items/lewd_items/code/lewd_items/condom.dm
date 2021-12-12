@@ -70,15 +70,18 @@
 	switch(condom_state)
 		if("used")
 			if(prob(10)) //chance of condom to break on first time.
+				name = "broken condom"
 				condom_state = "broken"
 				update_icon_state()
 				update_icon()
 			else
+				name = "used condom"
 				condom_state = "dirty"
 				update_icon_state()
 				update_icon()
 
 		if("dirty")
+			name = "broken condom"
 			condom_state = "broken"
 			update_icon_state()
 			update_icon()

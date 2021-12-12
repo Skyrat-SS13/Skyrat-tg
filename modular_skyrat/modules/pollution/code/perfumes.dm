@@ -35,6 +35,13 @@
 		. += span_notice("Alt-click [src] to [ cap ? "take the cap off" : "put the cap on"].")
 
 /obj/item/perfume/AltClick(mob/user)
+	toggle_cap(user)
+
+/obj/item/perfume/attack_self(mob/user, modifiers)
+	toggle_cap(user)
+
+/// Proc to handle removing the cap of the perfume bottle.
+/obj/item/perfume/proc/toggle_cap(mob/user)
 	if(has_cap && user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
 		cap = !cap
 		to_chat(user, span_notice("The cap on [src] is now [cap ? "on" : "off"]."))

@@ -27,28 +27,28 @@
 	icon_state = "labcoat_gen"
 
 /obj/item/clothing/suit/dutchjacketsr
+	name = "western jacket"
+	desc = "Botanists screaming of mangos have been rumored to wear this."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "Western Jacket"
-	desc = "Botanists screaming of mangos have been rumored to wear this."
 	icon_state = "dutchjacket"
 
 /obj/item/clothing/suit/hawaiian_blue
+	name = "blue hawaiian shirt"
+	desc = "Strangely en vouge with aviator wearing shibas."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "blue hawaiian shirt"
 	icon_state = "hawaiian_blue"
-	desc = "Strangely en vouge with aviator wearing shibas."
 	body_parts_covered = CHEST|GROIN
 	mutant_variants = NONE
 
 
 /obj/item/clothing/suit/hawaiian_orange
+	name = "orange hawaiian shirt"
+	desc = "Strangely en vouge with aviator wearing shibas."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "orange hawaiian shirt"
 	icon_state = "hawaiian_orange"
-	desc = "Strangely en vouge with aviator wearing shibas."
 	body_parts_covered = CHEST|GROIN
 	mutant_variants = NONE
 
@@ -133,7 +133,7 @@
 /obj/item/clothing/suit/discoblazer
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "Disco Ass Blazer"
+	name = "disco ass blazer"
 	desc = "Looks like someone skinned this blazer off some long extinct disco-animal. It has an enigmatic white rectangle on the back and the right sleeve."
 	icon_state = "jamrock_blazer"
 	mutant_variants = NONE
@@ -141,7 +141,7 @@
 /obj/item/clothing/suit/kimjacket
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "Aerostatic Bomber Jacket"
+	name = "aerostatic bomber jacket"
 	desc = "A jacket once worn by the Air Force during the Antecentennial Revolution, there are quite a few pockets on the inside, mostly for storing notebooks and compasses."
 	icon_state = "aerostatic_bomber_jacket"
 	mutant_variants = NONE
@@ -178,7 +178,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 
 /obj/item/clothing/suit/brownfurrich/public
 	name = "fur coat"
@@ -215,7 +215,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 
 /obj/item/clothing/suit/modern_winter
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -248,7 +248,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	armor = list(MELEE = 10, BULLET = 10, LASER = 20,ENERGY = 20, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+	armor = list(MELEE = 10, BULLET = 10, LASER = 20,ENERGY = 20, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 
 /obj/item/clothing/suit/autumn
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -260,7 +260,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 
 /obj/item/clothing/suit/texas
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -275,17 +275,17 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "ukrainian coat"
-	desc = "Cossacks, oh cossacks, let's go, cossachenki."
+	desc = "Hop on your horse, dawn your really fluffy hat, and strap this coat to your back."
 	icon_state = "kuban_cossak"
 	mutant_variants = NONE
 
-/obj/item/clothing/suit/cossack/sec
+/obj/item/clothing/suit/armor/cossack/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "security ukrainian coat"
+	desc = "Hop on your horse, dawn your really fluffy hat, and strap this coat to your back."
 	icon_state = "don_cossak"
 	mutant_variants = NONE
-	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
 
 /obj/item/clothing/suit/corgisuit/en
 	name = "\improper super-hero E-N suit"
@@ -314,19 +314,19 @@
 			step_towards(R,src)
 
 /obj/item/clothing/suit/trenchbrown
+	name = "brown trenchcoat"
+	desc = "A brown noir-inspired coat. Looks best if you're not wearing it over a baggy t-shirt."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "Brown trenchcoat"
-	desc = "A brown noir-inspired coat. Looks best if you're not wearing it over a baggy t-shirt."
 	icon_state = "brtrenchcoat"
 	mutant_variants = STYLE_VOX
 	body_parts_covered = CHEST|ARMS
 
 /obj/item/clothing/suit/trenchblack
+	name = "black trenchcoat"
+	desc = "A matte-black coat. Best suited for space-italians, or maybe a monochrome-cop."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "Black trenchcoat"
-	desc = "A matte-black coat. Best suited for space-italians, or maybe a monochrome-cop."
 	icon_state = "bltrenchcoat"
 	mutant_variants = STYLE_VOX
 	body_parts_covered = CHEST|ARMS

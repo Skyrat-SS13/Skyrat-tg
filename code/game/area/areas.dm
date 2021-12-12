@@ -92,7 +92,7 @@
 	///Used to decide what the minimum time between ambience is
 	var/min_ambience_cooldown = 30 SECONDS
 	///Used to decide what the maximum time between ambience is
-	var/max_ambience_cooldown = 60 SECONDS //SKYRAT EDIT CHANGE - ORIGINAL: 90
+	var/max_ambience_cooldown = 90 SECONDS
 
 	var/list/air_vent_info = list()
 	var/list/air_scrub_info = list()
