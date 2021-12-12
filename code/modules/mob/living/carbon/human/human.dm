@@ -301,15 +301,9 @@
 
 			if(href_list["add_citation"])
 				var/maxFine = CONFIG_GET(number/maxfine)
-<<<<<<< HEAD
-				var/t1 = stripped_input("Please input citation crime:", "Security HUD", "", null)
-				var/fine = FLOOR(input("Please input citation fine, up to [maxFine]:", "Security HUD", 50) as num|null, 1)
-				if(!sec_record || !t1 || !fine || !allowed_access) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
-=======
 				var/t1 = tgui_input_text(usr, "Citation crime", "Security HUD")
 				var/fine = FLOOR(tgui_input_number(usr, "Citation fine", "Security HUD", 50, max_value = maxFine), 1)
-				if(!R || !t1 || !fine || !allowed_access)
->>>>>>> 1052bc19ed2 (TGUI input box conversions 1 (#63313))
+				if(!sec_record || !t1 || !fine || !allowed_access) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					return
 				if(!H.canUseHUD())
 					return
@@ -339,13 +333,8 @@
 				return
 
 			if(href_list["add_crime"])
-<<<<<<< HEAD
-				var/t1 = stripped_input("Please input crime name:", "Security HUD", "", null)
-				if(!sec_record || !t1 || !allowed_access) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
-=======
 				var/t1 = tgui_input_text(usr, "Crime name", "Security HUD")
-				if(!R || !t1 || !allowed_access)
->>>>>>> 1052bc19ed2 (TGUI input box conversions 1 (#63313))
+				if(!sec_record || !t1 || !allowed_access) //SKYRAT EDIT CHANGE - EXAMINE RECORD
 					return
 				if(!H.canUseHUD())
 					return
@@ -358,13 +347,8 @@
 				return
 
 			if(href_list["add_details"])
-<<<<<<< HEAD
-				var/t1 = stripped_input(usr, "Please input crime details:", "Secure. records", "", null)
-				if(!sec_record || !t1 || !allowed_access) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
-=======
 				var/t1 = tgui_input_text(usr, "Crime details", "Security Records", multiline = TRUE)
-				if(!R || !t1 || !allowed_access)
->>>>>>> 1052bc19ed2 (TGUI input box conversions 1 (#63313))
+				if(!sec_record || !t1 || !allowed_access) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					return
 				if(!H.canUseHUD())
 					return
@@ -390,13 +374,8 @@
 				return
 
 			if(href_list["add_comment"])
-<<<<<<< HEAD
-				var/t1 = stripped_multiline_input("Add Comment:", "Secure. records", null, null)
-				if (!sec_record || !t1 || !allowed_access) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
-=======
 				var/t1 = tgui_input_text(usr, "Add a comment", "Security Records", multiline = TRUE)
-				if (!R || !t1 || !allowed_access)
->>>>>>> 1052bc19ed2 (TGUI input box conversions 1 (#63313))
+				if (!sec_record || !t1 || !allowed_access) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					return
 				if(!H.canUseHUD())
 					return

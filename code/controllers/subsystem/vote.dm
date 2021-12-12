@@ -222,15 +222,11 @@ SUBSYSTEM_DEF(vote)
 					var/option = tgui_input_text(usr, "Please enter an option or hit cancel to finish", "Options", max_length = MAX_NAME_LEN)
 					if(!option || mode || !usr.client)
 						break
-<<<<<<< HEAD
-					choices.Add(option)
+					choices.Add(capitalize(option))
 			//SKYRAT EDIT ADDITION BEGIN - AUTOTRANSFER
 			if("transfer")
-				choices.Add("Initiate Crew Transfer","Continue Playing")
+				choices.Add("Initiate Crew Transfer", "Continue Playing")
 			//SKYRAT EDIT ADDITION END - AUTOTRANSFER
-=======
-					choices.Add(capitalize(option))
->>>>>>> 1052bc19ed2 (TGUI input box conversions 1 (#63313))
 			else
 				return FALSE
 		mode = vote_type
