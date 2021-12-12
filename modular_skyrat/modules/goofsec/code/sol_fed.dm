@@ -351,8 +351,7 @@ GLOBAL_LIST_INIT(solfed_responder_info, list(
 				var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)
 				station_balance?._adjust_money(-20000) // paying for the gas to drive all the fuckin' way out to the frontier
 
-			priority_announce(announcement_message, \
-			announcement_source, 'sound/effects/families_police.ogg', has_important_message=TRUE)
+			priority_announce(announcement_message, announcement_source, sound/effects/families_police.ogg', has_important_message = TRUE)
 			var/list/candidates = poll_ghost_candidates(ghost_poll_msg, "deathsquad")
 
 			if(candidates.len)
