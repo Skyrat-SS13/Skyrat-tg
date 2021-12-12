@@ -502,17 +502,31 @@
 	return GLOB.always_state
 
 /datum/strip_menu/ui_status(mob/user, datum/ui_state/state)
-	return min(
-		ui_status_only_living(user, owner),
-		ui_status_user_has_free_hands(user, owner),
-		ui_status_user_is_adjacent(user, owner, allow_tk = FALSE),
-		HAS_TRAIT(user, TRAIT_CAN_STRIP) ? UI_INTERACTIVE : UI_UPDATE,
+	world.log << "begin test"
+	var/ui_status_only_living = ui_status_only_living(user, owner)
+	world.log << "ui_status_only_living: [ui_status_only_living]"
+	var/ui_status_user_has_free_hands = ui_status_user_has_free_hands(user, owner)
+	world.log << "ui_status_user_has_free_hands: [ui_status_user_has_free_hands]"
+	var/ui_status_user_is_adjacent = ui_status_user_is_adjacent(user, owner, allow_tk = FALSE)
+	world.log << "ui_status_user_is_adjacent: [ui_status_user_is_adjacent]"
+	var/has_trait_can_strip = HAS_TRAIT(user, TRAIT_CAN_STRIP) ? UI_INTERACTIVE : UI_UPDATE
+	world.log << "has_trait_can_strip: [has_trait_can_strip]"
+	var/ui_status_is_conscious_and_lying_down = ui_status_user_is_conscious_and_lying_down(user)
+	world.log << "ui_status_only_living: [ui_status_is_conscious_and_lying_down]"
+	var/ui_status_user_is_abled = ui_status_user_is_abled(user, owner)
+	world.log << "ui_status_only_living: [ui_status_user_is_abled]"
+	var/return_value = min(
+		ui_status_only_living,
+		ui_status_user_has_free_hands,
+		ui_status_user_is_adjacent,
+		has_trait_can_strip,
 		max(
-			ui_status_user_is_conscious_and_lying_down(user),
-			ui_status_user_is_abled(user, owner),
+			ui_status_is_conscious_and_lying_down,
+			ui_status_user_is_abled,
 		),
 	)
-
+	world.log << "return [return_value]"
+	return return_value
 /// Creates an assoc list of keys to /datum/strippable_item
 /proc/create_strippable_list(types)
 	var/list/strippable_items = list()
