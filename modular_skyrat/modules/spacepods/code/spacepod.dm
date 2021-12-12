@@ -648,12 +648,12 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 /obj/spacepod/proc/clear_pilot()
 	if(pilot)
-		remove_pilot_actions(M)
-		REMOVE_TRAIT(M, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT)
+		remove_pilot_actions(pilot)
+		REMOVE_TRAIT(pilot, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT)
 		if(pilot.client)
 			pilot.client.view_size.resetToDefault()
-		UnregisterSignal(M, COMSIG_MOB_CLIENT_MOUSE_MOVE)
-		UnregisterSignal(M, COMSIG_MOB_CLIENT_MOUSE_DOWN)
+		UnregisterSignal(pilot, COMSIG_MOB_CLIENT_MOUSE_MOVE)
+		UnregisterSignal(pilot, COMSIG_MOB_CLIENT_MOUSE_DOWN)
 		pilot = null
 
 /obj/spacepod/proc/remove_rider(mob/living/M)
