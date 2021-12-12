@@ -496,10 +496,10 @@ GLOBAL_LIST_INIT(solfed_responder_info, list(
 
 /datum/outfit/centcom/ert/pizza/false_call
 	backpack_contents = list(
-		/obj/item/storage/box/survival,\
-		/obj/item/knife,\
-		/obj/item/storage/box/ingredients/italian,\
-		/obj/item/solfed_reporter/pizza_managers,\
+		/obj/item/storage/box/survival,
+		/obj/item/knife,
+		/obj/item/storage/box/ingredients/italian,
+		/obj/item/solfed_reporter/pizza_managers,
 	)
 	r_hand = /obj/item/pizzabox/meat
 	l_hand = /obj/item/pizzabox/vegetable
