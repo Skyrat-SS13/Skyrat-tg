@@ -392,165 +392,28 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			minor_announce("Due to staff shortages, your station has been approved for delivery of access codes to secure the Captain's Spare ID. Delivery via drop pod at [get_area(pod_location)]. ETA 120 seconds.")
 		// SKYRAT EDIT ADDITION START
 		if ("callThePolice")
-			if (!authenticated_as_silicon_or_captain(usr))
+			if(!pre_911_check(usr))
 				return
-
-			if (GLOB.cops_arrived)
-				to_chat(usr, span_warning("911 has already been called this shift!"))
-				playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
-				return
-
-			// Check if they have
-			if (!issilicon(usr))
-				var/obj/item/held_item = usr.get_active_held_item()
-				var/obj/item/card/id/id_card = held_item?.GetID()
-				if (!istype(id_card))
-					to_chat(usr, span_warning("You need to swipe your ID!"))
-					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
-					return
-				if (!(ACCESS_CAPTAIN in id_card.access))
-					to_chat(usr, span_warning("You are not authorized to do this!"))
-					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
-					return
-			else
-				to_chat(usr, "The console refuses to let you dial 911 as an AI or Cyborg!")
-				return
-			message_admins("[ADMIN_LOOKUPFLW(usr)] is considering calling the Sol Federation Marshals.")
-			if(tgui_input_list(usr, "Are you sure you want to call 911? Faulty 911 calls results in a $20,000 fine and a 5 year superjail \
-			sentence.", "Call 911", list("Yes", "No")) != "Yes")
-				return
-			message_admins("[ADMIN_LOOKUPFLW(usr)] has acknowledged the faulty 911 call consequences.")
-			if(tgui_input_list(usr, "You SHOULD call Marshals for:\n\
-			Security ignoring Command, Security violating civil rights, Security engaging in Mutiny, General Violation of Sol Federation Citizen Rights by Command/Security, etc.\n\
-			You SHOULD NOT call Marshals for:\n\
-			Corporate affairs, manhunts, settling arguments, etc.\n\
-			Are you sure you want to call Marshals?", "Call Marshals", list("Yes", "No")) != "Yes")
-				return
-			message_admins("[ADMIN_LOOKUPFLW(usr)] has read and acknowleged the recommendations for what to call and not call Marshals for.")
-			var/reason_to_call_911 = stripped_input(usr, "What do you wish to call the SolFed Marshals for?", "Call 911", null, MAX_MESSAGE_LEN)
-			if(!reason_to_call_911)
-				to_chat(usr, "You decide not to call 911.")
-				return
-			GLOB.cops_arrived = TRUE
-			GLOB.call_911_msg = reason_to_call_911
-			GLOB.caller_of_911 = usr.name
-			log_game("[key_name(usr)] has called the Sol Federation Marshals for the following reason:\n[GLOB.call_911_msg]")
-			message_admins("[ADMIN_LOOKUPFLW(usr)] has called the Sol Federation Marshals for the following reason:\n[GLOB.call_911_msg]")
-			deadchat_broadcast(" has called the Sol Federation Marshals for the following reason:\n[GLOB.call_911_msg]", span_name("[usr.real_name]"), usr, message_type=DEADCHAT_ANNOUNCEMENT)
-
-			send_in_the_fuzz(EMERGENCY_RESPONSE_POLICE)
-			to_chat(usr, span_notice("Authorization confirmed. 911 call dispatched to the Sol Federation Marshals."))
-			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
+			calling_911(usr, "Marshals", EMERGENCY_RESPONSE_POLICE)
 		if ("callTheFireDep")
-			if (!authenticated_as_silicon_or_captain(usr))
+			if(!pre_911_check(usr))
 				return
-
-			if (GLOB.cops_arrived)
-				to_chat(usr, span_warning("911 has already been called this shift!"))
-				playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
-				return
-
-			// Check if they have
-			if (!issilicon(usr))
-				var/obj/item/held_item = usr.get_active_held_item()
-				var/obj/item/card/id/id_card = held_item?.GetID()
-				if (!istype(id_card))
-					to_chat(usr, span_warning("You need to swipe your ID!"))
-					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
-					return
-				if (!(ACCESS_CAPTAIN in id_card.access))
-					to_chat(usr, span_warning("You are not authorized to do this!"))
-					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
-					return
-			else
-				to_chat(usr, "The console refuses to let you dial 911 as an AI or Cyborg!")
-				return
-			message_admins("[ADMIN_LOOKUPFLW(usr)] is considering calling the Sol Federation Fire Department.")
-			if(tgui_input_list(usr, "Are you sure you want to call 911? Faulty 911 calls results in a $20,000 fine and a 5 year superjail \
-			sentence.", "Call 911", list("Yes", "No")) != "Yes")
-				return
-			message_admins("[ADMIN_LOOKUPFLW(usr)] has acknowledged the faulty 911 call consequences.")
-			if(tgui_input_list(usr, "You SHOULD call Firefighters for:\n\
-			Large fires raging through the station with Engineering unable to handle it, etc.\n\
-			You SHOULD NOT call Firefighters for:\n\
-			An assistant playing with matches in a department while Engineering is handling it, etc.\n\
-			Are you sure you want to call Firefighters?", "Call Firefighters", list("Yes", "No")) != "Yes")
-				return
-			message_admins("[ADMIN_LOOKUPFLW(usr)] has read and acknowleged the recommendations for what to call and not call Firefighters for.")
-			var/reason_to_call_911 = stripped_input(usr, "What do you wish to call the 911 Fire Department for?", "Call 911", null, MAX_MESSAGE_LEN)
-			if(!reason_to_call_911)
-				to_chat(usr, "You decide not to call 911.")
-				return
-			GLOB.cops_arrived = TRUE
-			GLOB.call_911_msg = reason_to_call_911
-			GLOB.caller_of_911 = usr.name
-			log_game("[key_name(usr)] has called the Sol Federation Fire Department for the following reason:\n[GLOB.call_911_msg]")
-			message_admins("[ADMIN_LOOKUPFLW(usr)] has called the Sol Federation Fire Department for the following reason:\n[GLOB.call_911_msg]")
-			deadchat_broadcast(" has called the Sol Federation Fire Department for the following reason:\n[GLOB.call_911_msg]", span_name("[usr.real_name]"), usr, message_type=DEADCHAT_ANNOUNCEMENT)
-
-			send_in_the_fuzz(EMERGENCY_RESPONSE_FIRE)
-			to_chat(usr, span_notice("Authorization confirmed. 911 call dispatched to the Sol Federation Fire Department."))
-			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
+			calling_911(usr, "Firefighters", EMERGENCY_RESPONSE_FIRE)
 		if ("callTheParameds")
-			if (!authenticated_as_silicon_or_captain(usr))
+			if(!pre_911_check(usr))
 				return
-
-			if (GLOB.cops_arrived)
-				to_chat(usr, span_warning("911 has already been called this shift!"))
-				playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
-				return
-
-			// Check if they have
-			if (!issilicon(usr))
-				var/obj/item/held_item = usr.get_active_held_item()
-				var/obj/item/card/id/id_card = held_item?.GetID()
-				if (!istype(id_card))
-					to_chat(usr, span_warning("You need to swipe your ID!"))
-					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
-					return
-				if (!(ACCESS_CAPTAIN in id_card.access))
-					to_chat(usr, span_warning("You are not authorized to do this!"))
-					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
-					return
-			else
-				to_chat(usr, "The console refuses to let you dial 911 as an AI or Cyborg!")
-				return
-			message_admins("[ADMIN_LOOKUPFLW(usr)] is considering calling the Sol Federation EMTs.")
-			if(tgui_input_list(usr, "Are you sure you want to call 911? Faulty 911 calls results in a $20,000 fine and a 5 year superjail \
-			sentence.", "Call 911", list("Yes", "No")) != "Yes")
-				return
-			message_admins("[ADMIN_LOOKUPFLW(usr)] has acknowledged the faulty 911 call consequences.")
-			if(tgui_input_list(usr, "You SHOULD call EMTs for:\n\
-			Large or excessive amounts of dead bodies, emergency medical situations that the station can't handle, etc.\n\
-			You SHOULD NOT call EMTs for:\n\
-			The Captain stubbing their toe, one or two dead bodies, minor viral outbreaks, etc.\n\
-			Are you sure you want to call EMTs?", "Call EMTs", list("Yes", "No")) != "Yes")
-				return
-			message_admins("[ADMIN_LOOKUPFLW(usr)] has read and acknowleged the recommendations for what to call and not call EMTs for.")
-			var/reason_to_call_911 = stripped_input(usr, "What do you wish to call 911 EMTs for?", "Call 911", null, MAX_MESSAGE_LEN)
-			if(!reason_to_call_911)
-				to_chat(usr, "You decide not to call 911.")
-				return
-			GLOB.cops_arrived = TRUE
-			GLOB.call_911_msg = reason_to_call_911
-			GLOB.caller_of_911 = usr.name
-			log_game("[key_name(usr)] has called the Sol Federation EMTs for the following reason:\n[GLOB.call_911_msg]")
-			message_admins("[ADMIN_LOOKUPFLW(usr)] has called the Sol Federation EMTs for the following reason:\n[GLOB.call_911_msg]")
-			deadchat_broadcast(" has called the Sol Federation EMTs for the following reason:\n[GLOB.call_911_msg]", span_name("[usr.real_name]"), usr, message_type=DEADCHAT_ANNOUNCEMENT)
-
-			send_in_the_fuzz(EMERGENCY_RESPONSE_EMT)
-			to_chat(usr, span_notice("Authorization confirmed. 911 call dispatched to the Sol Federation EMTs."))
-			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
+			calling_911(usr, "EMTs", EMERGENCY_RESPONSE_EMT)
 		if("callThePizza")
-			if(GLOB.cops_arrived)
-				to_chat(usr, span_warning("Either 911 or Dogginos has already been called this shift!"))
+			if(obj_flags & EMAGGED)
+				return
+			if(!pre_911_check(usr))
 				return
 			GLOB.cops_arrived = TRUE
 			log_game("[key_name(usr)] has dialed for a pizza order from Dogginos using an emagged communications console.")
 			message_admins("[ADMIN_LOOKUPFLW(usr)] has dialed for a pizza order from Dogginos using an emagged communications console.")
 			deadchat_broadcast(" has dialed for a pizza order from Dogginos using an emagged communications console.", span_name("[usr.real_name]"), usr, message_type=DEADCHAT_ANNOUNCEMENT)
 			GLOB.pizza_order = pick(GLOB.pizza_names)
-			send_in_the_fuzz(EMERGENCY_RESPONSE_EMAG)
+			call_911(EMERGENCY_RESPONSE_EMAG)
 			to_chat(usr, span_notice("Thank you for choosing Dogginos, [GLOB.pizza_order]!"))
 			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 		// SKYRAT EDIT ADDITION END
@@ -864,115 +727,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	GLOB.shuttle_caller_list -= src
 	SSshuttle.autoEvac()
 	return ..()
-
-/// SKYRAT EDIT BEGIN
-/// Internal. Polls ghosts and sends in a team of space cops according to the alert level, accompanied by an announcement.
-/obj/machinery/computer/communications/proc/send_in_the_fuzz(ordered_team)
-	var/team_size
-	var/cops_to_send
-	var/announcement_message = "sussus amogus"
-	var/announcer = "Sol Federation Marshal Department"
-	var/poll_question = "fuck you leatherman"
-	var/cell_phone_number = "911"
-	var/list_to_use = "911_responders"
-	switch(ordered_team)
-		if(EMERGENCY_RESPONSE_POLICE)
-			team_size = 8
-			cops_to_send = /datum/antagonist/ert/request_911/police
-			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation. We've recieved a request for immediate marshal support, and we are \
-			sending our best marshals to support your station.\n\n\
-			If the first responders request that they need SWAT support to do their job, or to report a faulty 911 call, we will send them in at additional cost to your station to the \
-			tune of $20,000.\n\n\
-			The transcript of the call is as follows:\n\
-			[GLOB.call_911_msg]"
-			announcer = "Sol Federation Marshal Department"
-			poll_question = "The station has called for the Marshals. Will you respond?"
-		if(EMERGENCY_RESPONSE_FIRE)
-			team_size = 8
-			cops_to_send = /datum/antagonist/ert/request_911/fire
-			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation. We've recieved a request for immediate firefighting support, and we are \
-			sending our best firefighters to support your station.\n\n\
-			If the first responders request that they need SWAT support to do their job, or to report a faulty 911 call, we will send them in at additional cost to your station to the \
-			tune of $20,000.\n\n\
-			The transcript of the call is as follows:\n\
-			[GLOB.call_911_msg]"
-			announcer = "Sol Federation Fire Department"
-			poll_question = "The station has called for the fire department. Will you respond?"
-		if(EMERGENCY_RESPONSE_EMT)
-			team_size = 8
-			cops_to_send = /datum/antagonist/ert/request_911/emt
-			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation. We've recieved a request for immediate medical support, and we are \
-			sending our best emergency medical technicians to support your station.\n\n\
-			If the first responders request that they need SWAT support to do their job, or to report a faulty 911 call, we will send them in at additional cost to your station to the \
-			tune of $20,000.\n\n\
-			The transcript of the call is as follows:\n\
-			[GLOB.call_911_msg]"
-			announcer = "Sol Federation EMTs"
-			poll_question = "The station has called for medical support. Will you respond?"
-		if(EMERGENCY_RESPONSE_EMAG)
-			team_size = 8
-			cops_to_send = /datum/antagonist/ert/pizza/false_call
-			announcement_message = "Thank you for ordering from Dogginos, [GLOB.pizza_order]! We're sending you that extra-large party package pizza delivery \
-			right away!\n\n\
-			Thank you for choosing our premium Fifteen Minutes or Less delivery option! Our pizza will be at your doorstep at [station_name()] as soon as possible thanks \
-			to our lightning-fast warp drives installed on all Dogginos delivery shuttles!\n\n\
-			Your bill will be:\n\
-			$35,000 (tip not included, 15% recommended)\n\
-			Breakdown:\n\
-			$67.29 for the Extra-Large Party Package Pizza Delivery\n\
-			$9,932.71 for the Fifteen Minutes or Less Pizza Delivery (compounded w/ distance)\n\
-			$25,000.00 for the Delivery Charge(compounded w/ distance)\n\
-			Distance from your chosen Dogginos: 70,000 Lightyears"
-			announcer = "Dogginos"
-			poll_question = "The station has ordered $35,000 in pizza. Will you deliver?"
-			cell_phone_number = "Dogginos"
-			list_to_use = "dogginos"
-	priority_announce(announcement_message, announcer, 'sound/effects/families_police.ogg', has_important_message=TRUE)
-	var/list/candidates = poll_ghost_candidates(poll_question, "deathsquad")
-
-	if(candidates.len)
-		//Pick the (un)lucky players
-		var/agents_number = min(team_size,candidates.len)
-
-		var/list/spawnpoints = GLOB.emergencyresponseteamspawn
-		var/index = 0
-		GLOB.solfed_responder_info[list_to_use]["amount"] = numagents
-		while(numagents && candidates.len)
-			var/spawnloc = spawnpoints[index+1]
-			//loop through spawnpoints one at a time
-			index = (index + 1) % spawnpoints.len
-			var/mob/dead/observer/chosen_candidate = pick(candidates)
-			candidates -= chosen_candidate
-			if(!chosen_candidate.key)
-				continue
-
-			//Spawn the body
-			var/mob/living/carbon/human/cop = new(spawnloc)
-			chosen_candidate.client.prefs.safe_transfer_prefs_to(cop, is_antag = TRUE)
-			cop.key = chosen_candidate.key
-
-			//Give antag datum
-			var/datum/antagonist/ert/request_911/ert_antag = new cops_to_send
-
-			cop.mind.add_antag_datum(ert_antag)
-			cop.mind.set_assigned_role(SSjob.GetJobType(ert_antag.ert_job_path))
-			SSjob.SendToLateJoin(cop)
-			cop.grant_language(/datum/language/common, TRUE, TRUE, LANGUAGE_MIND)
-
-			var/obj/item/gangster_cellphone/phone = new() // biggest gang in the city
-			phone.gang_id = cell_phone_number
-			phone.name = "[cell_phone_number] branded cell phone"
-			var/phone_equipped = phone.equip_to_best_slot(cop)
-			if(!phone_equipped)
-				to_chat(cop, "Your [phone.name] has been placed at your feet.")
-				phone.forceMove(get_turf(cop))
-
-			//Logging and cleanup
-			log_game("[key_name(cop)] has been selected as an [ert_antag.name]")
-			numagents--
-	GLOB.cops_arrived = TRUE
-	return TRUE
-/// SKYRAT EDIT END
 
 /// Override the cooldown for special actions
 /// Used in places such as CentCom messaging back so that the crew can answer right away
