@@ -932,7 +932,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 	if(candidates.len)
 		//Pick the (un)lucky players
-		var/numagents = min(team_size,candidates.len)
+		var/agents_number = min(team_size,candidates.len)
 
 		var/list/spawnpoints = GLOB.emergencyresponseteamspawn
 		var/index = 0
