@@ -468,9 +468,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		// there here's your frame pieces back, happy?
 	qdel(src)
 
-/obj/spacepod/process_integrity(old_value, new_value)
-	. = ..()
-	if(obj_integrity <= max_integrity / 4)
+/obj/spacepod/proc/process_integrity(old_value, new_value)
+	if(new_value <= max_integrity / 4)
 		if(!alarm_played)
 			playsound(src, 'modular_skyrat/modules/spacepods/sound/alarm.ogg', 40)
 			alarm_played = TRUE
