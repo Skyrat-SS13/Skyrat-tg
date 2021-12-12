@@ -133,7 +133,6 @@
     "Circuitry Designer",
     "Xenobiologist",
     "Cytologist",
-    "Nanomachine Programmer",
     "Plasma Researcher",
     "Anomalist",
     "Lab Technician",
