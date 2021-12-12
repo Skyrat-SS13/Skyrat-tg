@@ -334,7 +334,7 @@
 
 			if(href_list["add_crime"])
 				var/t1 = tgui_input_text(usr, "Crime name", "Security HUD")
-				if(!sec_record || !t1 || !allowed_access) //SKYRAT EDIT CHANGE - EXAMINE RECORD
+				if(!sec_record || !t1 || !allowed_access) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					return
 				if(!H.canUseHUD())
 					return
