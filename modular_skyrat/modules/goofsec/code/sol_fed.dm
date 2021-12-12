@@ -356,7 +356,7 @@ GLOBAL_LIST_INIT(solfed_responder_info, list(
 
 			if(candidates.len)
 				//Pick the (un)lucky players
-				var/numagents = min(amount_to_summon,candidates.len)
+				var/numagents = min(amount_to_summon, candidates.len)
 				GLOB.solfed_responder_info[summoned_type]["amount"] = numagents
 
 				var/list/spawnpoints = GLOB.emergencyresponseteamspawn
