@@ -680,7 +680,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	missiondesc += "<BR> <B>1.</B> Deliver the pizzas ordered by [GLOB.pizza_order]."
 	missiondesc += "<BR> <B>2.</B> Collect the bill, which totals to $35,000 plus a fifteen percent tip for delivery drivers."
 	missiondesc += "<BR> <B>3.</B> If they refuse to pay, you may summon the Dogginos Regional Managers to help resolve the issue."
-	to_chat(owner,missiondesc)
+	to_chat(owner, missiondesc)
 
 /datum/antagonist/ert/pizza/leader/false_call/greet()
 	var/missiondesc =  ""
@@ -690,7 +690,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	missiondesc += "<BR><B>Your Mission</B>:"
 	missiondesc += "<BR> <B>1.</B> Collect the money owed by [GLOB.pizza_order], which amounts to $35,000 plus a fifteen percent tip for the delivery drivers."
 	missiondesc += "<BR> <B>2.</B> Use any means necessary to collect the owed funds. The thousand degree knife in your backpack will help in this task."
-	to_chat(owner,missiondesc)
+	to_chat(owner, missiondesc)
 
 /obj/item/beamout_tool
 	name = "beam-out tool" // TODO, find a way to make this into drop pods cuz that's cooler visually
