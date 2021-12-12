@@ -96,7 +96,7 @@
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
 	has_sensor = NO_SENSORS
 
-/obj/item/clothing/under/utility/robo_sleek
+/obj/item/clothing/under/rank/rnd/roboticist/robo_sleek
 	name = "sleek roboticst jumpsuit"
 	desc = "A sleek version of the roboticist uniform, complete with sci-fi stripes."
 	icon_state = "robosleek"
@@ -108,7 +108,7 @@
 	permeability_coefficient = 0.5
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 0, ACID = 0) //Same stats as the paramedic uniform
 
-/obj/item/clothing/under/utility/haz_green
+/obj/item/clothing/under/rank/engineering/engineer/haz_green
 	name = "chemical hazard uniform"
 	desc = "A hazard uniform with additional protection from gas and chemical hazards, at the cost of less fire- and radiation-proofing."
 	icon_state = "hazard_green"
@@ -116,7 +116,7 @@
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 20, ACID = 60)
 	resistance_flags = ACID_PROOF
 
-/obj/item/clothing/under/utility/haz_white
+/obj/item/clothing/under/rank/engineering/engineer/haz_white
 	name = "chem-hazard EMT uniform"
 	desc = "An EMT uniform used for first responders in situations involving gas and/or chemical hazards. The label reads, \"Not designed for prolonged exposure\"."
 	icon_state = "hazard_white"

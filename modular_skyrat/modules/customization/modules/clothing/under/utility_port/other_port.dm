@@ -84,6 +84,8 @@
 
 /obj/item/clothing/suit/costume/tailcoat
 	name = "victorian tailcoat"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	desc = "A fancy tailcoat to make your suit seem even more lavish."
 	icon_state = "tailcoat"
 	mutant_variants = NONE
@@ -93,6 +95,8 @@
 	desc = "An elaborate coat to go over an old-Earth Victorian Period dress. Much thinner fabric than you'd expected."
 	icon_state = "vickyblack"
 	mutant_variants = NONE
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 
 /obj/item/clothing/suit/costume/vic_dresscoat/red
 	icon_state = "vickyred"

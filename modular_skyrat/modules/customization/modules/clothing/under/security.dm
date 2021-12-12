@@ -27,14 +27,6 @@
 
 // DETECTIVE
 
-/obj/item/clothing/under/rank/security/detective/undersuit
-	name = "detective's undersuit"
-	desc = "A cool beige undersuit for the discerning PI."
-	icon_state = "det_undersuit"
-	inhand_icon_state = "det_undersuit"
-	mutant_variants = NONE
-	can_adjust = FALSE
-
 /obj/item/clothing/suit/det_bomber
 	name = "detective's bomber jacket"
 	desc = "A classic bomber jacket in a deep red. It has a clip on the breast to attach your badge."

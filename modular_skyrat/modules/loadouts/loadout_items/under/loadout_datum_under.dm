@@ -397,7 +397,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/tactical_british
 	name = "British Tactical Sweater"
-	item_path = /obj/item/clothing/under/uvf
+	item_path = /obj/item/clothing/under/costume/uvf
 
 /datum/loadout_item/under/miscellaneous/tactical_skirt
 	name = "Tactitool Skirtleneck"

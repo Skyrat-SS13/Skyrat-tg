@@ -288,7 +288,7 @@
 	icon_state = "qmsynd"
 	can_adjust = FALSE
 
-/obj/item/clothing/under/uvf
+/obj/item/clothing/under/costume/uvf
 	name = "british combat sweater"
 	desc = "Thankfully doesn't include the sash your father wore."
 	icon_state = "uvf"

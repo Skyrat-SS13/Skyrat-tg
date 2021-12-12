@@ -55,7 +55,7 @@
 /obj/machinery/vending/wardrobe/robo_wardrobe
 	skyrat_products = list(
 		/obj/item/clothing/head/beret/science/fancy/robo = 2,
-		/obj/item/clothing/under/utility/robo_sleek = 2,
+		/obj/item/clothing/under/rank/rnd/roboticist/robo_sleek = 2,
 	)
 
 /obj/machinery/vending/wardrobe/science_wardrobe
