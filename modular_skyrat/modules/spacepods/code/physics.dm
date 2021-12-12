@@ -76,7 +76,7 @@
 	last_thrust_right = 0
 	if(brakes)
 		if(user_thrust_dir)
-			to_chat(pilot, span_warning("Vector thrust breaking online!"))
+			to_chat(pilot, span_warning("Vector thrust locked."))
 		// basically calculates how much we can brake using the thrust
 		var/forward_thrust = -((fx * velocity_x) + (fy * velocity_y)) / time
 		var/right_thrust = -((sx * velocity_x) + (sy * velocity_y)) / time

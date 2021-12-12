@@ -1,5 +1,5 @@
 /obj/spacepod/prebuilt
-	icon = 'modular_skyrat/modules/spacepods/icons/goon/2x2.dmi'
+	icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	icon_state = "pod_civ"
 	var/cell_type = /obj/item/stock_parts/cell/high/plus
 	var/armor_type = /obj/item/pod_parts/armor
@@ -21,7 +21,7 @@
 
 /obj/spacepod/prebuilt/sec
 	name = "security space pod"
-	icon_state = "pod_mil"
+	icon_state = "pod_sec"
 	locked = TRUE
 	armor_type = /obj/item/pod_parts/armor/security
 	equipment_types = list(/obj/item/spacepod_equipment/weaponry/disabler,
@@ -44,7 +44,7 @@
 	armor_type = /obj/item/pod_parts/armor/security/red
 
 /obj/spacepod/random
-	icon = 'modular_skyrat/modules/spacepods/icons/goon/2x2.dmi'
+	icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	icon_state = "pod_civ"
 	construction_state = SPACEPOD_ARMOR_WELDED
 

@@ -9,9 +9,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 /obj/spacepod
 	name = "space pod"
 	desc = "A frame for a spacepod."
-	icon = 'modular_skyrat/modules/spacepods/icons/goon/construction_2x2.dmi'
+	icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi'
 	icon_state = "pod_1"
-	var/icon/overlay_file = 'modular_skyrat/modules/spacepods/icons/2x2.dmi'
+	var/icon/overlay_file = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	density = 1
 	opacity = 0
 	dir = NORTH // always points north because why not
@@ -21,8 +21,16 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	anchored = TRUE
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF // it floats above lava or something, I dunno
 
+	base_pixel_x = -16
+	base_pixel_y = -16
+
 	max_integrity = 50
 	integrity_failure = 0.1
+
+	light_system = MOVABLE_LIGHT
+	light_range = 6
+	light_power = 6
+	light_on = FALSE
 
 	/// Hard ref to our equipment
 	var/list/equipment = list()
@@ -71,7 +79,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	/// List of action types for passengers
 	var/list/passenger_actions = list(/datum/action/spacepod/exit)
 	/// List of action types for the pilot
-	var/list/pilot_actions = list(/datum/action/spacepod/exit)
+	var/list/pilot_actions = list(/datum/action/spacepod/controls, /datum/action/spacepod/exit)
 
 	/// List of occupants with actions attached.
 	var/list/mob/occupant_actions = list()
@@ -102,15 +110,15 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/side_maxthrust = 1
 	/// Do we got them headlights my man? They on? y--- OH SHIT A DEER
 	var/lights = FALSE
-	/// Power of the light
-	var/lights_power = 6
 	/// Color of the light
-	var/static/list/icon_light_color = list("pod_civ" = COLOR_WHITE, \
-			"pod_mil" = "#BBF093", \
-			"pod_synd" = COLOR_RED, \
-			"pod_gold" = COLOR_WHITE, \
-			"pod_black" = "#3B8FE5", \
-			"pod_industrial" = "#CCCC00"
+	var/static/list/icon_light_color = list(
+		"pod_civ" = COLOR_WHITE,
+		"pod_mil" = "#BBF093",
+		"pod_sec" = "#f093af",
+		"pod_synd" = COLOR_RED,
+		"pod_gold" = COLOR_WHITE,
+		"pod_black" = "#3B8FE5",
+		"pod_industrial" = "#CCCC00"
 		)
 	/// Bounce factor, how much we bounce off walls
 	var/bump_impulse = 0.6
@@ -120,8 +128,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/lateral_bounce_factor = 0.95
 	/// Our icon direction number.
 	var/icon_dir_num = 1
-	base_pixel_x = -16
-	base_pixel_y = -16
+	/// So we don't spam alarm!s
+	var/alarm_played = FALSE
+
 
 /obj/spacepod/Initialize()
 	. = ..()
@@ -130,10 +139,12 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	cabin_air = new
 	cabin_air.temperature = T20C
 	cabin_air.volume = 200
+	RegisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED, .proc/process_integrity)
 
 /obj/spacepod/Destroy()
 	GLOB.spacepods_list -= src
-	QDEL_NULL(pilot)
+	if(pilot)
+		clear_pilot()
 	QDEL_LIST(passengers)
 	QDEL_LIST(occupants)
 	QDEL_LIST(equipment)
@@ -143,6 +154,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	QDEL_NULL(pod_armor)
 	QDEL_NULL(lock)
 	QDEL_NULL(weapon)
+	UnregisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED)
 	return ..()
 
 /obj/spacepod/attackby(obj/item/W, mob/living/user)
@@ -456,14 +468,46 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		// there here's your frame pieces back, happy?
 	qdel(src)
 
+
+/obj/spacepod/proc/process_integrity(datum/source, old_value, new_value)
+	if(new_value <= max_integrity / 4)
+		if(!alarm_played)
+			playsound(src, 'modular_skyrat/modules/spacepods/sound/alarm.ogg', 100)
+			alarm_played = TRUE
+	else
+		alarm_played = FALSE
+
+/obj/spacepod/update_overlays()
+	. = ..()
+	if(construction_state != SPACEPOD_ARMOR_WELDED)
+		icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi'
+		icon_state = "pod_[construction_state]"
+		if(pod_armor && construction_state >= SPACEPOD_ARMOR_LOOSE)
+			var/mutable_appearance/masked_armor = mutable_appearance(icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi', icon_state = "armor_mask")
+			var/mutable_appearance/armor = mutable_appearance(pod_armor.pod_icon, pod_armor.pod_icon_state)
+			armor.blend_mode = BLEND_MULTIPLY
+			masked_armor.overlays = list(armor)
+			masked_armor.appearance_flags = KEEP_TOGETHER
+			add_overlay(masked_armor)
+		return
+
+	var/obj_integrity = get_integrity()
+	if(obj_integrity <= max_integrity / 2)
+		. += "pod_damage"
+		if(obj_integrity <= max_integrity / 4)
+			. += "pod_fire"
+
+	if(weapon && weapon.overlay_icon_state)
+		. += weapon.overlay_icon_state
+
 /obj/spacepod/update_icon()
 	. = ..()
 	cut_overlays()
 	if(construction_state != SPACEPOD_ARMOR_WELDED)
-		icon = 'modular_skyrat/modules/spacepods/icons/goon/construction_2x2.dmi'
+		icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi'
 		icon_state = "pod_[construction_state]"
 		if(pod_armor && construction_state >= SPACEPOD_ARMOR_LOOSE)
-			var/mutable_appearance/masked_armor = mutable_appearance(icon = 'modular_skyrat/modules/spacepods/icons/goon/construction_2x2.dmi', icon_state = "armor_mask")
+			var/mutable_appearance/masked_armor = mutable_appearance(icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi', icon_state = "armor_mask")
 			var/mutable_appearance/armor = mutable_appearance(pod_armor.pod_icon, pod_armor.pod_icon_state)
 			armor.blend_mode = BLEND_MULTIPLY
 			masked_armor.overlays = list(armor)
@@ -477,17 +521,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	else
 		icon = initial(icon)
 		icon_state = initial(icon_state)
-	var/obj_integrity = get_integrity()
-
-	if(obj_integrity <= max_integrity / 2)
-		add_overlay(image(icon = initial(icon), icon_state="pod_damage"))
-		if(obj_integrity <= max_integrity / 4)
-			add_overlay(image(icon = initial(icon), icon_state="pod_fire"))
-
-	if(weapon && weapon.overlay_icon_state)
-		add_overlay(image(icon=weapon.overlay_icon,icon_state=weapon.overlay_icon_state))
-
-	light_color = icon_light_color[icon_state] || COLOR_WHITE
 
 	// Thrust!
 	var/list/left_thrusts = list()
@@ -498,6 +531,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		left_thrusts[cdir] = 0
 		right_thrusts[cdir] = 0
 	var/back_thrust = 0
+	var/front_thrust = 0
 	if(last_thrust_right != 0)
 		var/tdir = last_thrust_right > 0 ? WEST : EAST
 		left_thrusts[tdir] = abs(last_thrust_right) / side_maxthrust
@@ -505,8 +539,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(last_thrust_forward > 0)
 		back_thrust = last_thrust_forward / forward_maxthrust
 	if(last_thrust_forward < 0)
-		left_thrusts[NORTH] = -last_thrust_forward / backward_maxthrust
-		right_thrusts[NORTH] = -last_thrust_forward / backward_maxthrust
+		front_thrust = -last_thrust_forward / backward_maxthrust
 	if(last_rotate != 0)
 		var/frac = abs(last_rotate) / max_angular_acceleration
 		for(var/cdir in GLOB.cardinals)
@@ -525,6 +558,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		var/image/I = image(icon = overlay_file, icon_state = "thrust")
 		I.transform = matrix(1, 0, 0, 0, 1, -32)
 		add_overlay(I)
+	if(front_thrust)
+		add_overlay(image(icon = overlay_file, icon_state = "front_thrust"))
 
 /obj/spacepod/MouseDrop_T(atom/movable/A, mob/living/user)
 	if(user == pilot || (user in passengers) || construction_state != SPACEPOD_ARMOR_WELDED)
@@ -622,6 +657,16 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	playsound(src, 'sound/machines/windowdoor.ogg', 50, 1)
 	return TRUE
 
+/obj/spacepod/proc/clear_pilot()
+	if(pilot)
+		remove_pilot_actions(pilot)
+		REMOVE_TRAIT(pilot, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT)
+		if(pilot.client)
+			pilot.client.view_size.resetToDefault()
+		UnregisterSignal(pilot, COMSIG_MOB_CLIENT_MOUSE_MOVE)
+		UnregisterSignal(pilot, COMSIG_MOB_CLIENT_MOUSE_DOWN)
+		pilot = null
+
 /obj/spacepod/proc/remove_rider(mob/living/M)
 	if(!M)
 		return
@@ -629,14 +674,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		to_chat(M, span_warning("[src]'s doors are locked!"))
 		return
 	if(M == pilot)
-		pilot = null
-		remove_pilot_actions(M)
-		REMOVE_TRAIT(M, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT)
-		if(M.client)
-			M.client.view_size.resetToDefault()
-		UnregisterSignal(M, COMSIG_MOB_CLIENT_MOUSE_MOVE)
-		UnregisterSignal(M, COMSIG_MOB_CLIENT_MOUSE_DOWN)
-		desired_angle = null // since there's no pilot there's no one aiming it.
+		clear_pilot()
 	else if(M in passengers)
 		remove_passenger_actions(M)
 		passengers -= M
@@ -817,11 +855,12 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		to_chat(user, span_notice("You climb out of [src]."))
 
 /obj/spacepod/proc/toggle_lights(mob/user)
+	light_color = icon_light_color[icon_state] || COLOR_WHITE
 	lights = !lights
 	if(lights)
-		set_light(lights_power)
+		set_light_on(TRUE)
 	else
-		set_light(0)
+		set_light_on(FALSE)
 	to_chat(user, "Lights toggled [lights ? "on" : "off"].")
 	for(var/mob/mob in passengers)
 		to_chat(mob, "Lights toggled [lights ? "on" : "off"].")

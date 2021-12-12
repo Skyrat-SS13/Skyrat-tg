@@ -32,9 +32,8 @@
 	var/shots_per = 1
 	var/fire_sound
 	var/fire_delay = 15
-	var/overlay_icon
-	var/overlay_icon_state
-
+	var/overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
+	var/overlay_icon_state = "pod_weapon_laser"
 /obj/item/spacepod_equipment/weaponry/on_install(obj/spacepod/attaching_spacepod)
 	. = ..()
 	attaching_spacepod.weapon = src
@@ -175,7 +174,7 @@
 	projectile_type = /obj/projectile/beam/disabler
 	shot_cost = 400
 	fire_sound = 'sound/weapons/taser2.ogg'
-	overlay_icon = 'modular_skyrat/modules/spacepods/icons/2x2.dmi'
+	overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	overlay_icon_state = "pod_weapon_disabler"
 
 /obj/item/spacepod_equipment/weaponry/burst_disabler
@@ -187,7 +186,7 @@
 	shots_per = 3
 	fire_sound = 'sound/weapons/taser2.ogg'
 	fire_delay = 30
-	overlay_icon = 'modular_skyrat/modules/spacepods/icons/2x2.dmi'
+	overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	overlay_icon_state = "pod_weapon_disabler"
 
 /obj/item/spacepod_equipment/weaponry/laser
@@ -197,14 +196,14 @@
 	projectile_type = /obj/projectile/beam/laser
 	shot_cost = 600
 	fire_sound = 'sound/weapons/Laser.ogg'
-	overlay_icon = 'modular_skyrat/modules/spacepods/icons/2x2.dmi'
+	overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	overlay_icon_state = "pod_weapon_laser"
 
 // MINING LASERS
 /obj/item/spacepod_equipment/weaponry/basic_pod_ka
 	name = "weak kinetic accelerator"
 	desc = "A weak kinetic accelerator for space pods, fires bursts of energy that cut through rock."
-	icon = 'modular_skyrat/modules/spacepods/icons/goon/parts.dmi'
+	icon = 'modular_skyrat/modules/spacepods/icons/parts.dmi'
 	icon_state = "pod_taser"
 	projectile_type = /obj/projectile/kinetic/pod
 	shot_cost = 300
@@ -214,7 +213,7 @@
 /obj/item/spacepod_equipment/weaponry/pod_ka
 	name = "kinetic accelerator system"
 	desc = "A kinetic accelerator system for space pods, fires bursts of energy that cut through rock."
-	icon = 'modular_skyrat/modules/spacepods/icons/goon/parts.dmi'
+	icon = 'modular_skyrat/modules/spacepods/icons/parts.dmi'
 	icon_state = "pod_m_laser"
 	projectile_type = /obj/projectile/kinetic/pod/regular
 	shot_cost = 250
@@ -231,13 +230,13 @@
 /obj/item/spacepod_equipment/weaponry/plasma_cutter
 	name = "plasma cutter system"
 	desc = "A plasma cutter system for space pods. It is capable of expelling concentrated plasma bursts to mine or cut off xeno limbs!"
-	icon = 'modular_skyrat/modules/spacepods/icons/goon/parts.dmi'
+	icon = 'modular_skyrat/modules/spacepods/icons/parts.dmi'
 	icon_state = "pod_p_cutter"
 	projectile_type = /obj/projectile/plasma
 	shot_cost = 250
 	fire_delay = 10
 	fire_sound = 'sound/weapons/plasma_cutter.ogg'
-	overlay_icon = 'modular_skyrat/modules/spacepods/icons/2x2.dmi'
+	overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	overlay_icon_state = "pod_weapon_plasma"
 
 /obj/item/spacepod_equipment/weaponry/plasma_cutter/adv
@@ -257,7 +256,7 @@
 /obj/item/spacepod_equipment/tracker
 	name = "spacepod tracking system"
 	desc = "A tracking device for spacepods."
-	icon = 'modular_skyrat/modules/spacepods/icons/goon/parts.dmi'
+	icon = 'modular_skyrat/modules/spacepods/icons/parts.dmi'
 	icon_state = "pod_locator"
 
 /*
