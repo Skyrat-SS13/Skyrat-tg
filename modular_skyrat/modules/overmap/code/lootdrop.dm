@@ -259,7 +259,7 @@
 	loot = list(
 		/obj/item/melee/baton/security/loaded = 1,
 		/obj/item/switchblade = 1,
-		/obj/item/kitchen/knife/combat/survival = 1
+		/obj/item/knife/combat/survival = 1
 	)
 
 /obj/effect/spawner/random/tactical_gear

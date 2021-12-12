@@ -117,7 +117,7 @@
 					step_towards(M,T)
 			for(var/obj/O in range(0,T))
 				if(!O.anchored)
-					if(T.intact && HAS_TRAIT(O, TRAIT_T_RAY_VISIBLE))
+					if(T.overfloor_placed && HAS_TRAIT(O, TRAIT_T_RAY_VISIBLE))
 						continue
 					var/mob/living/target = locate() in view(4,T)
 					if(target && !target.stat)

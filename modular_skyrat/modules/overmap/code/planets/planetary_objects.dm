@@ -24,7 +24,8 @@
 	initial_gas_mix = PLANETARY_ATMOS
 	planetary_atmos = TRUE
 	tiled_dirt = FALSE
-	intact = FALSE
+	overfloor_placed = FALSE
+	underfloor_accessibility = UNDERFLOOR_INTERACTABLE
 	baseturfs = /turf/open/floor/planetary/rock
 	//can_have_catwalk = TRUE TEMPORARY REMOVAL
 	var/can_build_on = TRUE
