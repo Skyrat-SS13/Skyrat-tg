@@ -468,37 +468,15 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		// there here's your frame pieces back, happy?
 	qdel(src)
 
-
-/obj/spacepod/proc/process_integrity(datum/source, old_value, new_value)
-	if(new_value <= max_integrity / 4)
+/obj/spacepod/process_integrity(old_value, new_value)
+	. = ..()
+	if(obj_integrity <= max_integrity / 4)
 		if(!alarm_played)
-			playsound(src, 'modular_skyrat/modules/spacepods/sound/alarm.ogg', 100)
+			playsound(src, 'modular_skyrat/modules/spacepods/sound/alarm.ogg', 40)
 			alarm_played = TRUE
 	else
 		alarm_played = FALSE
 
-/obj/spacepod/update_overlays()
-	. = ..()
-	if(construction_state != SPACEPOD_ARMOR_WELDED)
-		icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi'
-		icon_state = "pod_[construction_state]"
-		if(pod_armor && construction_state >= SPACEPOD_ARMOR_LOOSE)
-			var/mutable_appearance/masked_armor = mutable_appearance(icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi', icon_state = "armor_mask")
-			var/mutable_appearance/armor = mutable_appearance(pod_armor.pod_icon, pod_armor.pod_icon_state)
-			armor.blend_mode = BLEND_MULTIPLY
-			masked_armor.overlays = list(armor)
-			masked_armor.appearance_flags = KEEP_TOGETHER
-			add_overlay(masked_armor)
-		return
-
-	var/obj_integrity = get_integrity()
-	if(obj_integrity <= max_integrity / 2)
-		. += "pod_damage"
-		if(obj_integrity <= max_integrity / 4)
-			. += "pod_fire"
-
-	if(weapon && weapon.overlay_icon_state)
-		. += weapon.overlay_icon_state
 
 /obj/spacepod/update_icon()
 	. = ..()
@@ -514,6 +492,18 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			masked_armor.appearance_flags = KEEP_TOGETHER
 			add_overlay(masked_armor)
 		return
+
+	var/obj_integrity = get_integrity()
+
+	if(obj_integrity <= max_integrity / 2)
+		add_overlay(image(icon = initial(icon), icon_state="pod_damage"))
+		if(obj_integrity <= max_integrity / 4)
+			add_overlay(image(icon = initial(icon), icon_state="pod_fire"))
+
+	if(weapon && weapon.overlay_icon_state)
+		add_overlay(image(icon=weapon.overlay_icon,icon_state=weapon.overlay_icon_state))
+
+	light_color = icon_light_color[icon_state] || COLOR_WHITE
 
 	if(pod_armor)
 		icon = pod_armor.pod_icon
@@ -659,12 +649,12 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 /obj/spacepod/proc/clear_pilot()
 	if(pilot)
-		remove_pilot_actions(pilot)
-		REMOVE_TRAIT(pilot, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT)
+		remove_pilot_actions(M)
+		REMOVE_TRAIT(M, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT)
 		if(pilot.client)
 			pilot.client.view_size.resetToDefault()
-		UnregisterSignal(pilot, COMSIG_MOB_CLIENT_MOUSE_MOVE)
-		UnregisterSignal(pilot, COMSIG_MOB_CLIENT_MOUSE_DOWN)
+		UnregisterSignal(M, COMSIG_MOB_CLIENT_MOUSE_MOVE)
+		UnregisterSignal(M, COMSIG_MOB_CLIENT_MOUSE_DOWN)
 		pilot = null
 
 /obj/spacepod/proc/remove_rider(mob/living/M)
