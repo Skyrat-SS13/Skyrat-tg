@@ -559,4 +559,4 @@ GLOBAL_LIST_INIT(solfed_responder_info, list(
 			sparks.start()
 			qdel(user)
 	else
-		user.balloon_alert(user, "beamout cancelled")
+		user.balloon_alert(user, "beam-out cancelled")
