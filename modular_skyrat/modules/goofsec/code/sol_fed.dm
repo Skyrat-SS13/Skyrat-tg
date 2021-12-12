@@ -585,8 +585,9 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		your station. Please comply with all requests by said S.W.A.T. members."
 
 /obj/item/solfed_reporter/swat_caller/questions(mob/user)
-	if(tgui_input_list(user, "Does the situation require additional S.W.A.T. backup, involve the station impeding you from doing your job, \
-		or involve the station making a fraudulent 911 call and needing an arrest made?", "S.W.A.T. Backup Caller", list("Yes", "No")) != "Yes")
+	var/question = "Does the situation require additional S.W.A.T. backup, involve the station impeding you from doing your job, \
+		or involve the station making a fraudulent 911 call and needing an arrest made on the caller?"
+	if(tgui_input_list(user, question, "S.W.A.T. Backup Caller", list("Yes", "No")) != "Yes")
 		to_chat(user, "You decide not to request S.W.A.T. backup.")
 		return FALSE
 	message_admins("[ADMIN_LOOKUPFLW(user)] has voted to summon S.W.A.T backup.")
