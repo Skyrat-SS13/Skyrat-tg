@@ -339,12 +339,40 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		to_chat(user, span_notice("Dead people can not be put into cryo."))
 		return
 
+	// if(target.getorgan(/obj/item/organ/brain))
+	// 	var/mob/living/mob_occupant = target
+	// 	if(ai_controller?.ai_status == AI_STATUS_ON)
+	// 		for (mob_occupant)
+	// 			//if(round(((world.time - target.lastclienttime) / (1 MINUTES)),1) >= 1)
+	// 			if(target.lastclienttime + 15 MINUTES >= world.time)
+	// 			// Add you cant cryo for
+	// 			// add log showing who cryo'd who
+
+
 	if(target.key && user != target)
-		if(iscyborg(target))
+		// if(target.getorgan(/obj/item/organ/brain))
+		var/mob/living/mob_occupant = target
+		if (target.getorgan(/obj/item/organ/brain) )
+			if(ai_controller?.ai_status == AI_STATUS_ON)
+				for (mob_occupant)
+					//if(round(((world.time - target.lastclienttime) / (1 MINUTES)),1) >= 1)
+					if(target.lastclienttime + 15 MINUTES <= world.time)
+						to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] has not been asleep for 15 minutes."))
+						continue
+
+				//log_admin("[key_name(user)] has attempted to put [target] into a stasis pod.")
+				//message_admins("[key_name(user)] has attempted to put [target] into a stasis pod. [ADMIN_JMP(src)]")
+				// Add you cant cryo for
+				// add log showing who cryo'd who
+				// Add timer for how long until can be cryoed, need to make sure to null out any extra requests. Move to despawn_occupant so that you can put the person inside even before 15 mins.
+
+
+		else if(iscyborg(target))
 			to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] online."))
 		else
 			to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] conscious."))
 		return
+
 
 	if(target == user && (tgui_alert(target, "Would you like to enter cryosleep?", "Enter Cryopod?", list("Yes", "No")) != "Yes"))
 		return
