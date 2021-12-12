@@ -298,8 +298,8 @@
 	use_static = FALSE
 	var/list/placement_images = list()
 
-/mob/camera/ai_eye/remote/shuttle_freeform/setLoc(T, TRUE)
-	..()
+/mob/camera/ai_eye/remote/shuttle_freeform/setLoc(turf/destination, force_update)
+	. = ..()
 	var/datum/shuttle_freeform_docker/docker = origin
 	if(docker)
 		docker.checkLandingSpot()
