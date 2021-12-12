@@ -340,14 +340,13 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		return
 
 	if(target.key && user != target)
-		var/mob/living/mob_occupant = target //Get mob living
+		//var/mob/living/mob_occupant = targeted_mob //Get mob living
 		if (target.getorgan(/obj/item/organ/brain) ) //Target the Brain
 			if(ai_controller?.ai_status == AI_STATUS_ON) // Is the character empty / AI Controlled
-				for (mob_occupant) // Get Target Client
-					//if(round(((world.time - target.lastclienttime) / (1 MINUTES)),1) >= 1)
-					if(target.lastclienttime + 15 MINUTES <= world.time)
-						to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] has not been asleep for 15 minutes."))
-						continue
+			if(target.lastclienttime + 1 MINUTES >= world.time)
+				to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] has not been asleep for 30 minutes."))
+			else
+				to_chat(user, span_danger("You put [target] into [src]. [target.p_theyre(capitalized = TRUE)] in the cryopod."))
 
 				//log_admin("[key_name(user)] has attempted to put [target] into a stasis pod.")
 				//message_admins("[key_name(user)] has attempted to put [target] into a stasis pod. [ADMIN_JMP(src)]")
