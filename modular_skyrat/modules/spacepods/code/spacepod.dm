@@ -318,7 +318,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 /obj/spacepod/proc/try_fire_weapon(atom/object, atom/location, control, params)
 	SIGNAL_HANDLER
-	if(weapon)
+	if(weapon && !weapon_safety && !istype(object, /atom/movable/screen)) // Need to make sure the clicked object isn't a hud element
 		INVOKE_ASYNC(src, .proc/async_fire_weapons_at, object)
 
 /obj/spacepod/proc/async_fire_weapons_at(object)

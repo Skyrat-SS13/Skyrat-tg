@@ -56,7 +56,7 @@
 // ACTION TYPES
 
 /datum/action/spacepod
-	check_flags = AB_CHECK_HANDS_BLOCKED | AB_CHECK_IMMOBILE | AB_CHECK_CONSCIOUS
+	check_flags = AB_CHECK_CONSCIOUS
 	icon_icon = 'icons/mob/actions/actions_mecha.dmi'
 	button_icon_state = "mech_eject"
 	var/obj/spacepod/spacepod_target
