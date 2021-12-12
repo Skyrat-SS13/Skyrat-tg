@@ -339,22 +339,11 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		to_chat(user, span_notice("Dead people can not be put into cryo."))
 		return
 
-	// if(target.getorgan(/obj/item/organ/brain))
-	// 	var/mob/living/mob_occupant = target
-	// 	if(ai_controller?.ai_status == AI_STATUS_ON)
-	// 		for (mob_occupant)
-	// 			//if(round(((world.time - target.lastclienttime) / (1 MINUTES)),1) >= 1)
-	// 			if(target.lastclienttime + 15 MINUTES >= world.time)
-	// 			// Add you cant cryo for
-	// 			// add log showing who cryo'd who
-
-
 	if(target.key && user != target)
-		// if(target.getorgan(/obj/item/organ/brain))
-		var/mob/living/mob_occupant = target
-		if (target.getorgan(/obj/item/organ/brain) )
-			if(ai_controller?.ai_status == AI_STATUS_ON)
-				for (mob_occupant)
+		var/mob/living/mob_occupant = target //Get mob living
+		if (target.getorgan(/obj/item/organ/brain) ) //Target the Brain
+			if(ai_controller?.ai_status == AI_STATUS_ON) // Is the character empty / AI Controlled
+				for (mob_occupant) // Get Target Client
 					//if(round(((world.time - target.lastclienttime) / (1 MINUTES)),1) >= 1)
 					if(target.lastclienttime + 15 MINUTES <= world.time)
 						to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] has not been asleep for 15 minutes."))
