@@ -495,10 +495,10 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 /obj/item/solfed_reporter/proc/pre_checks(mob/user)
 	if(GLOB.solfed_responder_info[type_of_callers][SOLFED_AMT] == 0)
-		to_chat(user, "There are no responders. You likely spawned this in as an admin. Please don't do this.")
+		to_chat(user, span_warning("There are no responders. You likely spawned this in as an admin. Please don't do this."))
 		return FALSE
 	if(!user.mind.has_antag_datum(type_to_check))
-		to_chat(user, "You don't know how to use this!")
+		to_chat(user, span_warning("You don't know how to use this!"))
 		return FALSE
 	return TRUE
 
@@ -614,28 +614,21 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		To all those who are engaging in treason, lay down your weapons and surrender. Refusal to comply may be met with lethal force."
 
 /obj/item/solfed_reporter/treason_reporter/questions(mob/user)
-	if(tgui_input_list(user, "Do you know what Treason is?", "Treason Reporter", list("Yes", "No")) != "Yes")
-		if(tgui_input_list(user, "Treason is the crime of attacking a state authority to which one owes allegiance. The station is located within Sol Federation space. Did the station engage in this today?", "Treason", list("Yes", "No")) != "Yes")
+	var/list/list_of_questions = list(
+		"Treason is the crime of attacking a state authority to which one owes allegiance. The station is located within Sol Federation space, \
+			and owes allegiance to the Sol Federation despite being owned by Nanotrasen. Did the station engage in this today?",
+		"Did station crewmembers assault you or the SWAT team at the direction of Security and/or Command?",
+		"Did station crewmembers actively prevent you and the SWAT team from accomplishing your objectives at the direction of Security and/or Command?",
+		"Were you and your fellow SWAT members unable to handle the issue on your own?",
+		"Are you absolutely sure you wish to declare the station as engaging in Treason? Misuse of this can and will result in \
+			administrative action against your account."
+	)
+	for(var/question in list_of_questions)
+		if(tgui_input_list(user, question, "Treason Reporter", list("Yes", "No")) != "Yes")
 			to_chat(user, "You decide not to declare the station as treasonous.")
 			return FALSE
-	message_admins("[ADMIN_LOOKUPFLW(user)] has acknowledged that they know what treason means.")
-	if(tgui_input_list(user, "Did station crewmembers assault you or the SWAT team at the direction of Security and/or Command?", "Treason Reporter", list("Yes", "No")) != "Yes")
-		to_chat(user, "You decide not to declare the station as treasonous.")
-		return FALSE
-	message_admins("[ADMIN_LOOKUPFLW(user)] has claimed that the crewmembers assaulted them or the SWAT team at the direction of Security and/or Command.")
-	if(tgui_input_list(user, "Did station crewmembers actively prevent you and the SWAT team from accomplishing your objectives at the direction of Security and/or Command?", "Treason Reporter", list("Yes", "No")) != "Yes")
-		to_chat(user, "You decide not to declare the station as treasonous.")
-		return FALSE
-	message_admins("[ADMIN_LOOKUPFLW(user)] has claimed that the crewmembers prevented them or the SWAT team from accomplishing their objectives at the direction of Security and/or Command.")
-	if(tgui_input_list(user, "Were you and your fellow SWAT members unable to handle the issue on your own?", "Treason Reporter", list("Yes", "No")) != "Yes")
-		to_chat(user, "You decide not to declare the station as treasonous.")
-		return FALSE
-	message_admins("[ADMIN_LOOKUPFLW(user)] has claimed that the SWAT team was unable to handle the issue on their own.")
-	if(tgui_input_list(user, "Are you absolutely sure you wish to declare the station as engaging in Treason? Misuse of this can and will result in \
-	administrative action against your account.", "Treason Reporter", list("Yes", "No")) != "Yes")
-		to_chat(user, "You decide not to declare the station as treasonous.")
-		return FALSE
-	message_admins("[ADMIN_LOOKUPFLW(user)] has acknowledged the consequences of a false claim of Treason administratively, and has voted that the station is engaging in Treason.")
+	message_admins("[ADMIN_LOOKUPFLW(user)] has acknowledged the consequences of a false claim of Treason administratively, \
+		and has voted that the station is engaging in Treason.")
 	return TRUE
 
 /obj/item/solfed_reporter/pizza_managers
@@ -707,7 +700,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 /obj/item/beamout_tool/attack_self(mob/user, modifiers)
 	. = ..()
 	if(!user.mind.has_antag_datum(/datum/antagonist/ert/request_911))
-		to_chat(user, "You don't understand how to use this device.")
+		to_chat(user, span_warning("You don't understand how to use this device."))
 		return
 	message_admins("[ADMIN_LOOKUPFLW(user)] has begun to beam-out using their beam-out tool.")
 	to_chat(user, "You have begun the beam-out process. Please wait for the beam to reach the station.")
