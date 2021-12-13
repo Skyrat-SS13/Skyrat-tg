@@ -15,6 +15,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 	. = ..()
 	if(icon_state == "mirror_broke" && !broken)
 		atom_break(null, mapload)
+
 /* SKYRAT EDIT REMOVAL
 /obj/structure/mirror/attack_hand(mob/user, list/modifiers)
 	. = ..()
@@ -37,10 +38,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 	else
 		hairdresser.facial_hairstyle = "Shaved"
 
-<<<<<<< HEAD
-		H.update_hair()
-*/
-=======
 	//handle normal hair
 	var/new_style = input(user, "Select a hairstyle", "Grooming")  as null|anything in GLOB.hairstyles_list
 	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
@@ -51,8 +48,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 		hairdresser.hairstyle = new_style
 
 	hairdresser.update_hair()
+*/
 
->>>>>>> bbdbe790498 (Magic mirror: Fixes changing races & code improvement (#63201))
 /obj/structure/mirror/examine_status(mob/user)
 	if(broken)
 		return list()// no message spam
@@ -248,16 +245,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 				if(amazed_human.gender == "male")
 					var/new_face_color = input(amazed_human, "Choose your facial hair color", "Hair Color", amazed_human.facial_hair_color) as color|null
 					if(new_face_color)
-<<<<<<< HEAD
-						H.facial_hair_color = sanitize_hexcolor(new_face_color)
-						H.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
-				H.update_hair()
-				H.update_mutant_bodyparts(force_update = TRUE) /// SKYRAT EDIT - Mirrors are no longer scared of colored ears
-=======
 						amazed_human.facial_hair_color = sanitize_hexcolor(new_face_color)
 						amazed_human.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
 				amazed_human.update_hair()
->>>>>>> bbdbe790498 (Magic mirror: Fixes changing races & code improvement (#63201))
+				amazed_human.update_mutant_bodyparts(force_update = TRUE) /// SKYRAT EDIT - Mirrors are no longer scared of colored ears
 
 		if(BODY_ZONE_PRECISE_EYES)
 			var/new_eye_color = input(amazed_human, "Choose your eye color", "Eye Color", amazed_human.eye_color) as color|null
