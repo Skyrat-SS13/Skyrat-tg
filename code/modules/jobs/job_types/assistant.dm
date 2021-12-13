@@ -78,7 +78,11 @@ Assistant
 	// This outfit is used by the assets SS, which is ran before the atoms SS
 	if (SSatoms.initialized == INITIALIZATION_INSSATOMS)
 		H.w_uniform?.update_greyscale()
+<<<<<<< HEAD
 */
+=======
+		H.update_inv_w_uniform()
+>>>>>>> 4ab5ee85625 (Fix jumpsuits being grey on prefs menu (#63366))
 
 /proc/get_configured_colored_assistant_type()
 	return CONFIG_GET(flag/grey_assistants) ? /datum/colored_assistant/grey : /datum/colored_assistant/random
