@@ -97,7 +97,7 @@ GENE SCANNER
 	var/scanmode = SCANMODE_HEALTH
 	var/advanced = FALSE
 	custom_price = PAYCHECK_HARD
-	
+
 /obj/item/healthanalyzer/examine(mob/user)
 	. = ..()
 	. += span_notice("Alt-click [src] to toggle the limb damage readout.")
@@ -184,9 +184,9 @@ GENE SCANNER
 		oxy_loss = max(rand(1, 40), oxy_loss, (300 - (tox_loss + fire_loss + brute_loss))) // Random oxygen loss
 
 	render_list += "[span_info("Analyzing results for [target]:")]\n<span class='info ml-1'>Overall status: [mob_status]</span>\n"
-	
+
 	SEND_SIGNAL(target, COMSIG_LIVING_HEALTHSCAN, render_list, advanced, user, mode)
-	
+
 	if(ishuman(target))
 		var/mob/living/carbon/human/humantarget = target
 		if(humantarget.undergoing_cardiac_arrest() && humantarget.stat != DEAD)
@@ -214,24 +214,6 @@ GENE SCANNER
 			render_list += "<span class='alert ml-1'>Subject appears to have [target.getCloneLoss() > 30 ? "severe" : "minor"] cellular damage.</span>\n"
 	if (!target.getorganslot(ORGAN_SLOT_BRAIN)) // kept exclusively for soul purposes
 		render_list += "<span class='alert ml-1'>Subject lacks a brain.</span>\n"
-<<<<<<< HEAD
-	if(ishuman(M))
-		var/mob/living/carbon/human/the_dude = M
-		var/datum/species/the_dudes_species = the_dude.dna.species
-//SKYRAT EDIT BEGIN - Neural Laces
-		if (the_dude.getorganslot(ORGAN_SLOT_STACK))
-			render_list += "<span class='alert ml-1'>Subject possesses a cortical stack.</span>\n"
-//SKYRAT EDIT END - Neural Laces
-		if (!(NOBLOOD in the_dudes_species.species_traits) && !the_dude.getorganslot(ORGAN_SLOT_HEART))
-			render_list += "<span class='alert ml-1'>Subject lacks a heart.</span>\n"
-		if (!(TRAIT_NOBREATH in the_dudes_species.species_traits) && !the_dude.getorganslot(ORGAN_SLOT_LUNGS))
-			render_list += "<span class='alert ml-1'>Subject lacks lungs.</span>\n"
-		if (!(TRAIT_NOMETABOLISM in the_dudes_species.species_traits) && !the_dude.getorganslot(ORGAN_SLOT_LIVER))
-			render_list += "<span class='alert ml-1'>Subject lacks a liver.</span>\n"
-		if (!(NOSTOMACH in the_dudes_species.species_traits) && !the_dude.getorganslot(ORGAN_SLOT_STOMACH))
-			render_list += "<span class='alert ml-1'>Subject lacks a stomach.</span>\n"
-=======
->>>>>>> f397f723772 (Health scanner readability improvements + code cleanup  (#63340))
 
 	if(iscarbon(target))
 		var/mob/living/carbon/carbontarget = target
@@ -261,7 +243,7 @@ GENE SCANNER
 
 	if(advanced && target.hallucinating())
 		render_list += "<span class='info ml-1'>Subject is hallucinating.</span>\n"
-		
+
 	//Eyes and ears
 	if(advanced && iscarbon(target))
 		var/mob/living/carbon/carbontarget = target
@@ -351,14 +333,14 @@ GENE SCANNER
 				missing_organs += "ears"
 			if(!humantarget.getorganslot(ORGAN_SLOT_EYES))
 				missing_organs += "eyes"
-				
+
 			if(length(missing_organs))
 				render = TRUE
 				for(var/organ in missing_organs)
 					toReport += "<tr><td><font color='#cc3333'>[organ]:</font></td>\
 						[advanced ? "<td><font color='#ff3333'>["-"]</font></td>" : ""]\
 						<td><font color='#cc3333'>["Missing"]</font></td></tr>"
-			
+
 			if(render)
 				render_list += toReport + "</table>" // tables do not need extra linebreak
 
@@ -455,7 +437,7 @@ GENE SCANNER
 
 	if(istype(target) && target.reagents)
 		var/render_list = list()
-		
+
 		// Blood reagents
 		if(target.reagents.reagent_list.len)
 			render_list += "<span class='notice ml-1'>Subject contains the following reagents in their blood:</span>\n"
@@ -466,7 +448,7 @@ GENE SCANNER
 				render_list += "<span class='notice ml-2'>[round(reagent.volume, 0.001)] units of [reagent.name][reagent.overdosed ? "</span> - [span_boldannounce("OVERDOSING")]" : ".</span>"]\n"
 		else
 			render_list += "<span class='notice ml-1'>Subject contains no reagents in their blood.</span>\n"
-			
+
 		// Stomach reagents
 		var/obj/item/organ/stomach/belly = target.getorganslot(ORGAN_SLOT_STOMACH)
 		if(belly)
@@ -484,7 +466,7 @@ GENE SCANNER
 							render_list += "<span class='notice ml-2'>[round(bit_vol, 0.001)] units of [bit.name][bit.overdosed ? "</span> - [span_boldannounce("OVERDOSING")]" : ".</span>"]\n"
 			else
 				render_list += "<span class='notice ml-1'>Subject contains no reagents in their stomach.</span>\n"
-				
+
 		// Addictions
 		if(LAZYLEN(target.mind?.active_addictions))
 			render_list += "<span class='boldannounce ml-1'>Subject is addicted to the following types of drug:</span>\n"
@@ -494,7 +476,7 @@ GENE SCANNER
 		// Special eigenstasium addiction
 		if(target.has_status_effect(/datum/status_effect/eigenstasium))
 			render_list += "<span class='notice ml-1'>Subject is temporally unstable. Stabilising agent is recommended to reduce disturbances.</span>\n"
-		
+
 		// Allergies
 		for(var/datum/quirk/quirky as anything in target.quirks)
 			if(istype(quirky, /datum/quirk/item_quirk/allergic))
@@ -502,13 +484,13 @@ GENE SCANNER
 				var/allergies = allergies_quirk.allergy_string
 				render_list += "<span class='alert ml-1'>Subject is extremely allergic to the following chemicals:</span>\n"
 				render_list += "<span class='alert ml-2'>[allergies]</span>\n"
-		
+
 		// we handled the last <br> so we don't need handholding
 		to_chat(user, examine_block(jointext(render_list, "")), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO) //SKYRAT EDIT CHANGE
 
 /obj/item/healthanalyzer/AltClick(mob/user)
 	..()
-	
+
 	if(!user.canUseTopic(src, BE_CLOSE))
 		return
 
