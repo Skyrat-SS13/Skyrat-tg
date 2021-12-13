@@ -161,6 +161,8 @@
 			return "[jobtitle] is restricted from your languages."
 		if(JOB_UNAVAILABLE_SPECIES)
 			return "[jobtitle] is restricted from your species."
+		if(JOB_UNAVAILABLE_FLAVOUR)
+			return "[jobtitle] requires you to have flavour text for your character."
 		//SKYRAT EDIT END
 		if(JOB_UNAVAILABLE_ANTAG_INCOMPAT)
 			return "[jobtitle] is not compatible with some antagonist role assigned to you."
@@ -259,11 +261,14 @@
 		humanc = character //Let's retypecast the var to be human,
 
 	if(humanc) //These procs all expect humans
-		GLOB.data_core.manifest_inject(humanc)
+		// BEGIN SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES
+		var/chosen_rank = humanc.client?.prefs.alt_job_titles[rank] || rank
+		GLOB.data_core.manifest_inject(humanc, humanc.client)
 		if(SSshuttle.arrivals)
-			SSshuttle.arrivals.QueueAnnounce(humanc, rank)
+			SSshuttle.arrivals.QueueAnnounce(humanc, chosen_rank)
 		else
-			announce_arrival(humanc, rank)
+			announce_arrival(humanc, chosen_rank)
+		// END SKYRAT EDIT CHANGE - customization
 		AddEmploymentContract(humanc)
 
 		humanc.increment_scar_slot()

@@ -1,6 +1,6 @@
 //Trek Jacket(s?)
 /obj/item/clothing/suit/storage/fluff/fedcoat
-	name = "Federation Uniform Jacket"
+	name = "Federation uniform jacket"
 	desc = "A uniform jacket from the United Federation. Set phasers to awesome."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
@@ -64,7 +64,7 @@
 
 //fedcoat but modern
 /obj/item/clothing/suit/storage/fluff/mfedcoat
-	name = "Modern Federation Uniform Jacket"
+	name = "modern Federation uniform jacket"
 	desc = "A modern uniform jacket from the United Federation."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
@@ -92,16 +92,16 @@
 
 
 /obj/item/clothing/suit/storage/fluff/mfedcoat/medsci
-	name = "Modern Medsci Federation Jacket"
+	name = "modern medsci Federation jacket"
 	icon_state = "fedmodernblue"
 	inhand_icon_state = "fedmodernblue"
 
 /obj/item/clothing/suit/storage/fluff/mfedcoat/eng
-	name = "Modern Eng Federation Jacket"
+	name = "modern eng Federation jacket"
 	icon_state = "fedmoderneng"
 	inhand_icon_state = "fedmoderneng"
 
 /obj/item/clothing/suit/storage/fluff/mfedcoat/sec
-	name = "Modern sec Federation Jacket"
+	name = "modern sec Federation jacket"
 	icon_state = "fedmodernsec"
 	inhand_icon_state = "fedmodernsec"

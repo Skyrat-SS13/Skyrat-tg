@@ -6,9 +6,7 @@
 /area/shuttle/arrival)
 "b" = (
 /obj/machinery/computer/shuttle/arrivals,
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
 /turf/open/floor/iron/shuttle/arrivals,
 /area/shuttle/arrival)
 "c" = (
@@ -107,9 +105,7 @@
 	},
 /area/shuttle/arrival)
 "v" = (
-/obj/machinery/light{
-	dir = 8
-	},
+/obj/machinery/light/directional/west,
 /turf/open/floor/iron/shuttle/arrivals{
 	icon_state = "sign_2"
 	},
@@ -129,10 +125,6 @@
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/arrivals{
 	icon_state = "8,4"
 	},
-/area/shuttle/arrival)
-"A" = (
-/obj/structure/closet/shuttle/wagon,
-/turf/open/floor/iron/shuttle/arrivals,
 /area/shuttle/arrival)
 "B" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/arrivals{
@@ -181,13 +173,12 @@
 /area/shuttle/arrival)
 "M" = (
 /obj/structure/closet/crate/bin,
-/obj/item/flashlight/seclite,
 /turf/open/floor/iron/shuttle/arrivals{
 	icon_state = "sign_1"
 	},
 /area/shuttle/arrival)
 "N" = (
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/open/floor/iron/shuttle/arrivals{
 	icon_state = "sign_3"
 	},
@@ -226,15 +217,17 @@
 /obj/machinery/door/airlock/external,
 /turf/open/floor/iron/shuttle/arrivals,
 /area/shuttle/arrival)
+"V" = (
+/obj/structure/closet/shuttle/emergency/white,
+/turf/open/floor/iron/shuttle/arrivals,
+/area/shuttle/arrival)
 "W" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/arrivals{
 	icon_state = "12,3"
 	},
 /area/shuttle/arrival)
 "X" = (
-/obj/machinery/light{
-	dir = 4
-	},
+/obj/machinery/light/directional/east,
 /turf/open/floor/iron/shuttle/arrivals{
 	icon_state = "sign_2"
 	},
@@ -266,7 +259,7 @@ G
 "}
 (3,1,1) = {"
 T
-A
+V
 x
 X
 U
@@ -322,7 +315,7 @@ f
 "}
 (11,1,1) = {"
 j
-A
+V
 x
 v
 U

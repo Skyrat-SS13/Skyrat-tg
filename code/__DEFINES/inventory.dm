@@ -151,7 +151,9 @@
 #define HEADCOVERSMOUTH (1<<4)
 #define PEPPERPROOF (1<<5) //protects against pepperspray
 
-#define TINT_DARKENED 2 //Threshold of tint level to apply weld mask overlay
+#define TINT_MINIMAL 0.25
+#define TINT_LIGHTER 1.5
+#define TINT_DARKENED 2.5 //Threshold of tint level to apply weld mask overlay
 #define TINT_BLIND 3 //Threshold of tint level to obscure vision fully
 
 // defines for AFK theft
@@ -189,6 +191,7 @@ GLOBAL_LIST_INIT(security_hardsuit_allowed, typecacheof(list(
 	/obj/item/reagent_containers/spray/pepper,
 	/obj/item/restraints/handcuffs,
 	/obj/item/tank/internals,
+	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 	)))
 
 GLOBAL_LIST_INIT(detective_vest_allowed, typecacheof(list(
@@ -208,6 +211,7 @@ GLOBAL_LIST_INIT(detective_vest_allowed, typecacheof(list(
 	/obj/item/tank/internals/plasmaman,
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
+	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 	)))
 
 GLOBAL_LIST_INIT(security_vest_allowed, typecacheof(list(
@@ -224,6 +228,7 @@ GLOBAL_LIST_INIT(security_vest_allowed, typecacheof(list(
 	/obj/item/tank/internals/plasmaman,
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
+	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 	)))
 
 GLOBAL_LIST_INIT(security_wintercoat_allowed, typecacheof(list(
@@ -236,6 +241,7 @@ GLOBAL_LIST_INIT(security_wintercoat_allowed, typecacheof(list(
 	/obj/item/restraints/handcuffs,
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
+	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 	)))
 
 /// String for items placed into the left pocket.

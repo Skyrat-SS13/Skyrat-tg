@@ -329,3 +329,23 @@
 	item_path = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/pcrc
 	ckeywhitelist = list("1ceres")
 	restricted_roles = list("Orderly", "Bouncer", "Customs Agent", "Engineering Guard", "Science Guard")
+
+/datum/loadout_item/suit/occult_coat
+	name = "Occult Collector's Coat"
+	item_path = /obj/item/clothing/suit/hooded/occult
+	ckeywhitelist = list("gamerguy14948")
+
+/datum/loadout_item/under/jumpsuit/occult_outfit
+	name = "Occult Collector's Outfit"
+	item_path = /obj/item/clothing/under/occult
+	ckeywhitelist = list("gamerguy14948")
+
+/datum/loadout_item/belts/trinket_belt
+	name = "Trinket Belt"
+	item_path = /obj/item/storage/belt/fannypack/occult
+	ckeywhitelist = list("gamerguy14948")
+
+/datum/loadout_item/pocket_items/voodooplush
+	name = "Voodoo Doll"
+	item_path = /obj/item/toy/plush/donator/voodoo
+	ckeywhitelist = list("gamerguy14948")

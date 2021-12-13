@@ -305,24 +305,6 @@
 	armor = list(MELEE = 40, BULLET = 30, LASER = 30,ENERGY = 40, BOMB = 50, BIO = 90, FIRE = 100, ACID = 100, WOUND = 15)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
-// Machine that removes nanites
-/obj/machinery/scanner_gate/anti_nanite
-	name = "Advanced Scanner Gate"
-	desc = "This gate seems to be highly modified with odd markings."
-	resistance_flags = INDESTRUCTIBLE
-	use_power = NO_POWER_USE
-	flags_1 = NODECONSTRUCT_1
-
-/obj/machinery/scanner_gate/anti_nanite/emag_act(mob/user)
-	to_chat(user, span_notice("This gate has advanced security measures!"))
-	return
-
-/obj/machinery/scanner_gate/anti_nanite/attackby(obj/item/W, mob/user, params)
-	return
-
-/obj/machinery/scanner_gate/anti_nanite/examine(mob/user)
-	return list("This gate seems to be highly modified with odd markings.")
-
 //Boss
 /mob/living/simple_animal/hostile/megafauna/hierophant/astrum
 	name = "Abductor Captain"
