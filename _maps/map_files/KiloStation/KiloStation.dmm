@@ -36991,7 +36991,7 @@
 /obj/item/crowbar/red,
 /obj/machinery/camera{
 	c_tag = "Bar Storage";
-	dir = 5;
+	dir = 10;
 	name = "bar camera"
 	},
 /turf/open/floor/iron/dark,
@@ -54802,7 +54802,10 @@
 	pixel_x = 8
 	},
 /obj/machinery/button/door/directional/north{
-	pixel_x = -8
+	id = "kitchen";
+	name = "Serving Hatch Toggle";
+	pixel_x = -8;
+	req_access_txt = "28"
 	},
 /turf/open/floor/iron/dark,
 /area/service/kitchen)
