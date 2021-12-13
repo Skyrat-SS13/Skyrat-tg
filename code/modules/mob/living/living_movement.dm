@@ -39,6 +39,9 @@
 	if(pulling)
 		if(isliving(pulling))
 			var/mob/living/L = pulling
+			if(!slowed_by_drag || L.body_position == STANDING_UP || L.buckled || grab_state >= GRAB_AGGRESSIVE)
+				remove_movespeed_modifier(/datum/movespeed_modifier/bulky_drag)
+				return
 			//SKYRAT EDIT ADDITION - Oversized - Overweight
 			if((HAS_TRAIT(L, TRAIT_OVERSIZED) || HAS_TRAIT(L, TRAIT_OVERWEIGHT)) && !HAS_TRAIT(src, TRAIT_OVERSIZED) && !iscyborg(src))
 				var/slowdown_amount = PULL_PRONE_SLOWDOWN
@@ -49,9 +52,6 @@
 				add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/bulky_drag, multiplicative_slowdown = slowdown_amount)
 				return
 			//SKYRAT EDIT END
-			if(!slowed_by_drag || L.body_position == STANDING_UP || L.buckled || grab_state >= GRAB_AGGRESSIVE)
-				remove_movespeed_modifier(/datum/movespeed_modifier/bulky_drag)
-				return
 			add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/bulky_drag, multiplicative_slowdown = PULL_PRONE_SLOWDOWN)
 			return
 		if(isobj(pulling))
