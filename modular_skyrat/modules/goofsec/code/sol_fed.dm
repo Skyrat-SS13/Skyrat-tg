@@ -147,7 +147,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		var/index = 0
 		GLOB.solfed_responder_info[list_to_use][SOLFED_AMT] = agents_number
 		while(agents_number && candidates.len)
-			var/spawnloc = spawnpoints[index+1]
+			var/spawn_loc = spawnpoints[index + 1]
 			//loop through spawnpoints one at a time
 			index = (index + 1) % spawnpoints.len
 			var/mob/dead/observer/chosen_candidate = pick(candidates)
