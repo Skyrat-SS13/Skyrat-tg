@@ -18,7 +18,7 @@
 	var/exp_ckey = ckey(input["expected_ckey"])
 	var/message = input["message"]
 
-	send_ooc_message("[server_name] - [exp_ckey]", message)
+	send_ooc_message("CROSS OOC: [server_name] - [exp_ckey]", message)
 
 /proc/send_ooc_message(sender_name, message)
 	if(!GLOB.ooc_allowed)
@@ -28,4 +28,4 @@
 			if(GLOB.OOC_COLOR)
 				to_chat(C, span_oocplain("<font color='[GLOB.OOC_COLOR]'><b><span class='prefix'>OOC:</span> <EM>[sender_name]:</EM> <span class='message linkify'>[message]</span></b></font>"))
 			else
-				to_chat(C, span_ooc("OOC:</span> <EM>[sender_name]:</EM> <span class='message linkify'>[message]</span>"))
+				to_chat(C, span_ooc("<b><span class='prefix'>OOC:</span> <EM>[sender_name]:</EM> <span class='message linkify'>[message]</span></b>"))
