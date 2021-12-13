@@ -156,7 +156,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 				continue
 
 			//Spawn the body
-			var/mob/living/carbon/human/cop = new(spawnloc)
+			var/mob/living/carbon/human/cop = new(spawn_loc)
 			chosen_candidate.client.prefs.safe_transfer_prefs_to(cop, is_antag = TRUE)
 			cop.key = chosen_candidate.key
 
@@ -209,8 +209,9 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 /obj/machinery/computer/communications/proc/calling_911(mob/user, called_group_pretty = "EMTs", called_group = EMERGENCY_RESPONSE_EMT)
 	message_admins("[ADMIN_LOOKUPFLW(user)] is considering calling the Sol Federation [called_group_pretty].")
-	if(tgui_input_list(user, "Are you sure you want to call 911? Faulty 911 calls results in a $20,000 fine and a 5 year superjail \
-	sentence.", "Call 911", list("Yes", "No")) != "Yes")
+	var/call_911_msg_are_you_sure = "Are you sure you want to call 911? Faulty 911 calls results in a $20,000 fine and a 5 year superjail \
+		sentence."
+	if(tgui_input_list(user, call_911_msg_are_you_sure, "Call 911", list("Yes", "No")) != "Yes")
 		return
 	message_admins("[ADMIN_LOOKUPFLW(user)] has acknowledged the faulty 911 call consequences.")
 	if(tgui_input_list(user, GLOB.call911_do_and_do_not[called_group], "Call [called_group_pretty]", list("Yes", "No")) != "Yes")
@@ -544,7 +545,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 						continue
 
 					//Spawn the body
-					var/mob/living/carbon/human/cop = new(spawnloc)
+					var/mob/living/carbon/human/cop = new(spawn_loc)
 					chosen_candidate.client.prefs.safe_transfer_prefs_to(cop, is_antag = TRUE)
 					cop.key = chosen_candidate.key
 
