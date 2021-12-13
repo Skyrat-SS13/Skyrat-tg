@@ -589,9 +589,15 @@
 			get_up_speed = GET_UP_MEDIUM
 		if(STAMINA_THRESHOLD_SLOW_GET_UP+1 to INFINITY)
 			get_up_speed = GET_UP_SLOW
+	//SKYRAT ADDITION - Overweight
+	if(HAS_TRAIT(src, TRAIT_OVERWEIGHT)) // Being fat makes it harder to stand up
+		get_up_speed *= GET_UP_OVERWEIGHT
+		if(HAS_TRAIT(src, TRAIT_FAT))
+			get_up_speed *= GET_UP_OVERWEIGHT_AND_FAT
+	//SKYRAT ADDITION END
 	if(!instant)
-		if(get_up_speed == GET_UP_SLOW) //Slow getups are easily noticable
-			visible_message("<span class='notice'>[src] weakily attempts to stand up.</span>", "<span class='notice'>You weakily attempt to stand up.</span>")
+		if(get_up_speed >= GET_UP_SLOW) //Slow getups are easily noticable //SKYRAT EDIT - Overweight - ORIGINAL: if(get_up_speed == GET_UP_SLOW)
+			visible_message("<span class='notice'>[src] struggles to stand up.</span>", "<span class='notice'>You struggle to stand up.</span>") //SKYRAT EDIT - Overweight - ORIGINAL: visible_message("<span class='notice'>[src] weakily attempts to stand up.</span>", "<span class='notice'>You weakily attempt to stand up.</span>")
 			if(!do_mob(src, src, get_up_speed SECONDS, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, /mob/living/proc/rest_checks_callback), interaction_key = DOAFTER_SOURCE_GETTING_UP))
 				if(!body_position == STANDING_UP)
 					visible_message("<span class='warning'>[src] fails to stand up.</span>", "<span class='warning'>You fail to stand up.</span>")

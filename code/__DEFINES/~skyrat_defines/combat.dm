@@ -51,6 +51,10 @@
 #define GET_UP_MEDIUM 1.5
 #define GET_UP_SLOW 3
 
+//Standing times multipliers
+#define GET_UP_OVERWEIGHT 1.25
+#define GET_UP_OVERWEIGHT_AND_FAT 1.5
+
 //Stamina threshold for attacking slower with items
 #define STAMINA_THRESHOLD_TIRED_CLICK_CD 120
 #define CLICK_CD_MELEE_TIRED 11 //#define CLICK_CD_MELEE 8, so 38% slower

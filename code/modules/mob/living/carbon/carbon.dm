@@ -191,6 +191,13 @@
 		if(HAS_TRAIT(thrown_thing, TRAIT_OVERSIZED))
 			power_throw--
 		//SKYRAT EDIT END
+		//SKYRAT EDIT ADDITION - Overweight
+		if(HAS_TRAIT(thrown_thing, TRAIT_OVERWEIGHT)) //fat people are harder to throw
+			if(!HAS_TRAIT(src, TRAIT_OVERSIZED))
+				power_throw--
+				if(HAS_TRAIT(thrown_thing, TRAIT_FAT)) //really fat people are really harder to throw
+					power_throw--
+		//SKYRAT EDIT END
 		if(neckgrab_throw)
 			power_throw++
 		do_attack_animation(target, no_effect = 1) //SKYRAT EDIT ADDITION - AESTHETICS

@@ -170,6 +170,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_BLOODSHOT_EYES" = TRAIT_BLOODSHOT_EYES,
 		"TRAIT_SHIFTY_EYES" = TRAIT_SHIFTY_EYES,
 		"TRAIT_OVERSIZED" = TRAIT_OVERSIZED, //SKYRAT EDIT ADDITION - Leaving this here so that it hopefully doesn't cause conflicts again in the future(?)
+		"TRAIT_OVERWEIGHT" = TRAIT_OVERWEIGHT, //SKYRAT EDIT ADDITION - Overweight
 		"TRAIT_CANNOT_BE_UNBUCKLED" = TRAIT_CANNOT_BE_UNBUCKLED,
 	),
 	/obj/item/bodypart = list(

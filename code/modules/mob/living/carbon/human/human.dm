@@ -947,13 +947,22 @@
 	else if(HAS_TRAIT(src, TRAIT_QUICK_CARRY))
 		carrydelay = 4 SECONDS
 		skills_space = " quickly"
-	//SKYRAT EDIT ADDITION
-	else if(HAS_TRAIT(target, TRAIT_OVERSIZED) && !HAS_TRAIT(src, TRAIT_OVERSIZED))
-		visible_message(span_warning("[src] tries to carry [target], but they are too heavy!"))
+	//SKYRAT EDIT ADDITION - Oversized - Overweight
+	if(HAS_TRAIT(target, TRAIT_OVERWEIGHT)) //Big and heavy, but not quite super duper heavy
+		carrydelay *= 1.5
+		skills_space = " to strain [p_them()]self,[skills_space]" //ugh
+	var/carry_error_message
+	if(!HAS_TRAIT(src, TRAIT_OVERSIZED))
+		if(HAS_TRAIT(target, TRAIT_OVERSIZED))
+			carry_error_message = "too heavy"
+		else if(HAS_TRAIT(target, TRAIT_OVERWEIGHT) && HAS_TRAIT(target, TRAIT_FAT)) //DOUBLE FAT
+			carry_error_message = "too fat"
+	if(carry_error_message)
+		visible_message(span_warning("[src] tries to carry [target], but they are [carry_error_message]!"))
 		return
 	//SKYRAT EDIT END
 	visible_message(span_notice("[src] starts[skills_space] lifting [target] onto [p_their()] back..."),
-		span_notice("You[skills_space] start to lift [target] onto your back..."))
+		span_notice("You start[skills_space] lifting [target] onto your back...")) //SKYRAT EDIT Overweight - ORIGINAL: span_notice("You[skills_space] start to lift [target] onto your back..."))
 	if(!do_after(src, carrydelay, target))
 		visible_message(span_warning("[src] fails to fireman carry [target]!"))
 		return

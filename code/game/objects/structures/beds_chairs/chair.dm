@@ -107,7 +107,7 @@
 	weapon.play_tool_sound(src)
 	deconstruct(disassembled = TRUE)
 	return TRUE
-	
+
 /obj/structure/chair/attack_tk(mob/user)
 	if(!anchored || has_buckled_mobs() || !isturf(user.loc))
 		return ..()
@@ -136,6 +136,10 @@
 		visible_message(span_warning("[src] buckles under the weight of [M] causing it to break!"))
 		playsound(src, 'modular_skyrat/modules/oversized/sound/chair_break.ogg', 70, TRUE)
 		deconstruct()
+	//SKYRAT EDIT END
+	//SKYRAT EDIT ADDITION - Overweight
+	if(HAS_TRAIT(M, TRAIT_OVERWEIGHT))
+		overweight_chair_damage(M, TRUE)
 	//SKYRAT EDIT END
 /obj/structure/chair/post_unbuckle_mob()
 	. = ..()

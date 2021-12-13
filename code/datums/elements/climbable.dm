@@ -63,6 +63,19 @@
 	var/adjusted_climb_stun = climb_stun
 	if(HAS_TRAIT(user, TRAIT_HANDS_BLOCKED)) //climbing takes twice as long without help from the hands.
 		adjusted_climb_time *= 2
+	//SKYRAT EDIT ADDITION - Overweight
+	if(HAS_TRAIT(user, TRAIT_OVERWEIGHT)) //Something something, your gut bumps into the table
+		if(HAS_TRAIT(user, TRAIT_FAT))
+			user.visible_message(
+			message = span_warning("...but [p_they(user)] can't quite find the leverage to do so!"),
+			self_message = span_warning("...but your tremendous bulk pushes you right back off!"),
+			blind_message = span_notice("You hear a soft bump."))
+			return
+		else
+			to_chat(user, span_warning("...your generous padding certainly not making it any easier!"))
+			adjusted_climb_time *= 1.5
+			adjusted_climb_stun *= 1.5
+	//SKYRAT EDIT END
 	if(isalien(user))
 		adjusted_climb_time *= 0.25 //aliens are terrifyingly fast
 	if(HAS_TRAIT(user, TRAIT_FREERUNNING)) //do you have any idea how fast I am???

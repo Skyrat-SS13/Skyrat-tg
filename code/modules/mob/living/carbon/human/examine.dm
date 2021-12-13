@@ -245,7 +245,7 @@
 
 	if(nutrition < NUTRITION_LEVEL_STARVING - 50)
 		msg += "[t_He] [t_is] severely malnourished.\n"
-	else if(nutrition >= NUTRITION_LEVEL_FAT)
+	else if(nutrition >= NUTRITION_LEVEL_FAT || HAS_TRAIT(src, TRAIT_OVERWEIGHT)) //SKYRAT EDIT CHANGE - Overweight - ORIGINAL: else if(nutrition >= NUTRITION_LEVEL_FAT))
 		if(user.nutrition < NUTRITION_LEVEL_STARVING - 50)
 			msg += "[t_He] [t_is] plump and delicious looking - Like a fat little piggy. A tasty piggy.\n"
 		else
