@@ -950,9 +950,14 @@
 	desc = "A navy-blue armored jacket with blue shoulder designations."
 
 // Donation reward for Raxraus
-/obj/item/clothing/under/rank/security/blueshieldturtleneck/rax
-	name = "peacekeeper turtleneck"
-	desc = "A cozier alternative to the normal Peacekeeper's uniform, the wool is still expensive."
+/obj/item/clothing/under/rank/security/rax
+	name = "banded uniform"
+	desc = "Personalized and tailored to fit, this uniform is designed to protect without compromising its stylishness."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
+	icon_state = "hos_black"
+	mutant_variants = STYLE_DIGITIGRADE
 
 // Donation reward for Raxraus
 /obj/item/clothing/under/rax_turtleneck_gray
@@ -1221,3 +1226,17 @@
 	desc = "A not so small voodoo doll made out of cut and sewn potato bags. It almost looks cute."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	icon_state = "voodoo"
+
+/obj/item/clothing/mask/breath/vox/octus
+	name = "sinister visor"
+	desc = "Skrektastic."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
+	icon_state = "death"
+
+/obj/item/clothing/glasses/rosecolored
+	name = "rose-colored glasses"
+	desc = "Goggle-shaped glasses that seem to have a HUD-like feed in some odd line-based script. It doesn’t look like they were made by NT."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
+	icon_state = "rose"
