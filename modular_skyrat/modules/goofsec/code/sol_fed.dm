@@ -477,7 +477,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	/// Should the station be issued a fine when the vote completes?
 	var/fine_station = TRUE
 	/// What poll message should we show to the ghosts when they are asked to join the squad?
-	var/ghost_poll_msg = "The Sol-Fed 911 services have requested a S.W.A.T. backup. Do you wish to become a S.W.A.T. member?"
+	var/ghost_poll_msg = "example crap"
 	/// How many ghosts should we pick from the applicants to become members of the squad?
 	var/amount_to_summon = 4
 	/// What antagonist type should we give to the ghosts?
@@ -489,9 +489,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	/// What jobban should we be checking for the ghost polling?
 	var/jobban_to_check = ROLE_DEATHSQUAD
 	/// What announcement message should be displayed if the vote succeeds?
-	var/announcement_message = "Hello, crewmembers. Our emergency services have requested S.W.A.T. backup, either for assistance doing their job due to crew \
-		impediment, or due to a fraudulent 911 call. We have billed the station $20,000 for this, to cover the expenses of flying a second emergency response \
-		to your station. Please comply with all requests by said S.W.A.T. members."
+	var/announcement_message = "Example announcement message"
 
 /obj/item/solfed_reporter/proc/pre_checks(mob/user)
 	if(GLOB.solfed_responder_info[type_of_callers][SOLFED_AMT] == 0)
@@ -604,13 +602,11 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	amount_to_summon = 12
 	type_to_summon = /datum/antagonist/ert/request_911/treason_destroyer
 	summoned_type = "national_guard"
-	announcement_message = "Crewmembers of the station.\n\
-		You have refused to comply with first responders and SWAT officers, and have assaulted them, and they are unable to \
-		carry out the wills of the Sol Federation, despite residing within Sol Federation borders.\n\
+	announcement_message = "Crewmembers of the station. You have refused to comply with first responders and SWAT officers, and have assaulted them, \
+		and they are unable to carry out the wills of the Sol Federation, despite residing within Sol Federation borders.\n\
 		As such, we are charging those responsible with Treason. The penalty of which is death, or no less than twenty-five years in Superjail.\n\
 		Treason is a serious crime. Our military forces are en route to your station. They will be assuming direct control of the station, and \
 		will be evacuating civilians from the scene.\n\
-		Comply, or be shot.\n\
 		Non-offending citizens, prepare for evacuation. Comply with all orders given to you by Sol Federation military personnel.\n\
 		To all those who are engaging in treason, lay down your weapons and surrender. Refusal to comply may be met with lethal force."
 
