@@ -88,6 +88,7 @@
 		return
 	if((sitter.movement_type & FLOATING)) //Floating also makes a person less heavy
 		return
+	/// Only show this stuff to people who also have the quirk
 	if(HAS_TRAIT(sitter, TRAIT_FAT)) //Double fat? start crushing that chair
 		var/make_noise = prob(OVERWEIGHT_AND_FAT_CHAIR_COMPLAIN_CHANCE)
 		var/sit_damage = max_integrity * OVERWEIGHT_AND_FAT_CHAIR_DAMAGE_MULTIPLIER * (sitter.nutrition / NUTRITION_LEVEL_FAT)
@@ -95,22 +96,19 @@
 			overweight_chair_destruction(sitter)
 			return
 		else if(just_sat_down)
-			sitter.audible_message(span_notice("[src] creaks ominously under [sitter]'s tremendous weight..."),
-			deaf_message = span_notice("[src] bends as it tries to support [sitter]'s tremendous weight..."),
-			hearing_distance = 2,
-			self_message = span_warning("[src] lets out an ominous creak as it struggles to support your tremendous weight!"))
+			sitter.visible_message(span_notice("[src] bends visibly, starting to buckle under [sitter]'s tremendous weight..."),
+			blind_message = span_notice("[src] creaks ominously under [sitter]'s tremendous weight..."),
+			self_message = span_warning("[src] lets out an ominous creak as it struggles to support your tremendous weight!"),
+			ignored_mobs = get_overweight_in_range(sitter, DEFAULT_MESSAGE_RANGE))
 		else if(make_noise)
-			sitter.visible_message(span_notice("[src] bends trying to support [sitter]..."),
+			sitter.visible_message(span_notice("[src] bends as it struggles in vain to support [sitter]..."),
 			blind_message = span_notice("You hear a loud creak."),
-			vision_distance = 2,
-			self_message = span_warning("You feel something in \the [src] snap as it tries in vain to support your mass..."))
-		if(take_damage(sit_damage, damage_type = BRUTE, damage_flag = MELEE, sound_effect = make_noise)) //If it still didnt do any damage, don't try again
+			self_message = span_warning("You feel something in \the [src] snap as it tries in vain to support your mass..."),
+			ignored_mobs = get_overweight_in_range(sitter, DEFAULT_MESSAGE_RANGE))
+		if(take_damage(sit_damage, damage_type = BRUTE, damage_flag = MELEE, sound_effect = FALSE)) //If it still didnt do any damage, don't try again
 			addtimer(CALLBACK(src, .proc/overweight_chair_damage, sitter, FALSE), 5 SECONDS)
 	else
-		sitter.audible_message(span_notice("[src] creaks as [sitter] sits down."),
-		deaf_message = span_notice("[src] bends just a bit."),
-		hearing_distance = 2,
-		self_message = span_notice("You subject \the [src] to your weight. It creaks, but holds firm."))
+		to_chat(sitter, span_notice("You subject \the [src] to your weight. It creaks, but holds firm."))
 
 /**
  * This chair just got destroyed by someone's butt. Throw them on the ground
@@ -131,11 +129,21 @@
 		return
 	unbuckle_mob(seated)
 	seated.AdjustKnockdown(5 SECONDS)
-	seated.visible_message(span_warning("[src] crumbles under [seated]'s weight, spilling [p_them(seated)] to the ground!"),
+	seated.visible_message(span_warning("[src] falls apart!"),
 	blind_message = span_warning("You hear a loud crash, followed by a soft whump."),
-	self_message = span_warning("You feel something in \the [src] snap as the last of its strength gives out! It crumbles under your weight, and throws you down onto its flattened remains!"))
+	self_message = span_warning("You feel something in \the [src] snap as the last of its strength gives out! It crumbles under your weight, throwing you down onto its flattened remains!"))
 	playsound(src, 'modular_skyrat/modules/oversized/sound/chair_break.ogg', 70, TRUE)
 	deconstruct(FALSE)
+
+/obj/structure/chair/proc/get_overweight_in_range(mob/living/carbon/human/origin, range = 2)
+	if(!origin)
+		return
+	for(var/mob/living/prefcheck in view(range, origin))
+		if(prefcheck == origin)
+			continue
+		if(!HAS_TRAIT(prefcheck, TRAIT_OVERWEIGHT))
+			LAZYADD(., prefcheck)
+	return
 
 #undef OVERWEIGHT_SPEED_SLOWDOWN
 #undef OVERWEIGHT_STAMINA_LOSS

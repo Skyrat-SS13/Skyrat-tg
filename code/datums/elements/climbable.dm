@@ -1,3 +1,8 @@
+//SKYRAT EDIT ADDITION - Overweight
+#define OVERWEIGHT_CLIMB_TIME_MULTIPLIER 1.5
+#define OVERWEIGHT_CLIMB_STUN_MULTIPLIER 1.5
+//SKYRAT EDIT END
+
 /datum/element/climbable
 	element_flags = ELEMENT_BESPOKE|ELEMENT_DETACH
 	id_arg_index = 2
@@ -73,8 +78,8 @@
 			return
 		else
 			to_chat(user, span_warning("...your generous padding certainly not making it any easier!"))
-			adjusted_climb_time *= 1.5
-			adjusted_climb_stun *= 1.5
+			adjusted_climb_time *= OVERWEIGHT_CLIMB_TIME_MULTIPLIER
+			adjusted_climb_stun *= OVERWEIGHT_CLIMB_STUN_MULTIPLIER
 	//SKYRAT EDIT END
 	if(isalien(user))
 		adjusted_climb_time *= 0.25 //aliens are terrifyingly fast
@@ -139,3 +144,8 @@
 		return
 	if(bumpee.force_moving?.allow_climbing)
 		do_climb(source, bumpee)
+
+//SKYRAT EDIT ADDITION - Overweight
+#undef OVERWEIGHT_CLIMB_TIME_MULTIPLIER
+#undef OVERWEIGHT_CLIMB_STUN_MULTIPLIER
+//SKYRAT EDIT END
