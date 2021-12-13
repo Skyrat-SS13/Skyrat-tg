@@ -41,8 +41,8 @@
 			continue
 		if(!R.connected_ai)
 			R.notify_ai(AI_NOTIFICATION_CYBORG_DISCONNECTED)
-			R.set_connected_ai(new_ai)
-			log_combat(ai_spawn, R, "synced cyborg [R.connected_ai] to [ADMIN_LOOKUP(new_ai)] (AI spawn syncage)")
+			R.set_connected_ai(ai_spawn)
+			log_combat(ai_spawn, R, "synced cyborg [R.connected_ai] to [ADMIN_LOOKUP(ai_spawn)] (AI spawn syncage)")
 			if(R.shell)
 				R.undeploy()
 				R.notify_ai(AI_NOTIFICATION_AI_SHELL)
