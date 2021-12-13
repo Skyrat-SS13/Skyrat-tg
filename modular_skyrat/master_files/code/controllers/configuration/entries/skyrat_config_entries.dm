@@ -6,8 +6,11 @@
 
 /datum/config_entry/flag/russian_text_formation
 
-// Overflow server pop cap
-/datum/config_entry/number/player_cap
+// Overflow server HARD pop cap
+/datum/config_entry/number/player_hard_cap
+
+// Overflow server SOFT pop cap - Notifiaction to join the overflow
+/datum/config_entry/number/player_soft_cap
 
 // Overflow server IP
 /datum/config_entry/string/overflow_server_ip

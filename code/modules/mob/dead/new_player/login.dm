@@ -14,25 +14,19 @@
 	if(!. || !client)
 		return FALSE
 
-	//SKYRAT EDIT ADDITION
-	var/player_cap = CONFIG_GET(number/player_cap)
-	if(player_cap && TGS_CLIENT_COUNT >= player_cap && !is_admin(client))
-		var/overflow_server_ip = CONFIG_GET(string/overflow_server_ip)
-		if(!overflow_server_ip)
-			message_admins("WARNING: Overflow server IP not set!")
-		else
-			to_chat_immediate(src, span_boldwarning("The round is full, please wait while you are transferred to the overflow server..."))
-			message_admins("[src] attempted to join, but the server was full and they've been sent to the overflow server.")
-			client << link(overflow_server_ip)
-			return
-	//SKYRAT EDIT END
-
 	var/motd = global.config.motd
 	if(motd)
 		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
 
 	if(GLOB.admin_notice)
 		to_chat(src, span_notice("<b>Admin Notice:</b>\n \t [GLOB.admin_notice]"))
+
+	//SKYRAT EDIT ADDITION
+	var/soft_player_cap = CONFIG_GET(number/player_soft_cap)
+	if(soft_player_cap >= TGS_CLIENT_COUNT)
+		var/datum/callback/connect_callback = CALLBACK(src, .proc/connect_to_second_server)
+		tgui_alert_async(src, "The server is currently experiencing high demand, please consider joining our secondary server.", "High Demand", list("Stay here", "Connect me!"), connect_callback)
+	//SKYRAT EDIT END
 
 	var/spc = CONFIG_GET(number/soft_popcap)
 	if(spc && living_player_count() >= spc)

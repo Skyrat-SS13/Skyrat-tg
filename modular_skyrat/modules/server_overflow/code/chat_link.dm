@@ -1,17 +1,12 @@
 
 
 /proc/send_ooc_to_other_server(ckey, message)
-	if(!CONFIG_GET(flag/secondary_server_enabled))
+	if(!CONFIG_GET(flag/enable_cross_server_ooc))
 		return
 	var/list/ooc_information = list()
-	ooc_information["server_name"] = CONFIG_GET(string/our_server_name)
+	ooc_information["server_name"] = CONFIG_GET(string/cross_comms_name)
 	ooc_information["expected_ckey"] = ckey(ckey)
-	ooc_information["message"] = message
-	var/second_server = CONFIG_GET(string/server_two_ip)
-	if(!second_server)
-		message_admins("SERVER CONTROL CRITICAL ERROR: No second server IP set in config!")
-		return
-	send2otherserver(station_name(), null, "incoming_ooc_message", second_server, ooc_information)
+	send2otherserver(html_decode(station_name()), message, "incoming_ooc_message", "all", additional_data = ooc_information)
 
 /datum/world_topic/incoming_ooc_message
 	keyword = "incoming_ooc_message"
