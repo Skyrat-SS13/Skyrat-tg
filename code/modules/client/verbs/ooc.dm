@@ -78,7 +78,8 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
 		keyname = "[sheet.icon_tag("emoji-heart")][keyname]"
 
-	send_ooc_to_other_server(keyname, msg) //SKYRAT EDIT ADDITION
+	if(CONFIG_GET(flag/enable_cross_server_ooc)) //SKYRAT EDIT ADDITION
+		send_ooc_to_other_server(keyname, msg) //SKYRAT EDIT ADDITION
 
 	//The linkify span classes and linkify=TRUE below make ooc text get clickable chat href links if you pass in something resembling a url
 	for(var/client/receiver as anything in GLOB.clients)
