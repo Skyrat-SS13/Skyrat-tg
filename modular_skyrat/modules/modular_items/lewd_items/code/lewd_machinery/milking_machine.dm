@@ -1018,10 +1018,10 @@
 			return FALSE
 
 		var/amount = text2num(params["amount"])
-		current_vessel.reagents.trans_to(beaker, amount)
-		current_vessel.reagents.reagent_list[1].name
+		current_vessel.reagents?.trans_to(beaker, amount)
+		current_vessel.reagents?.reagent_list[1].name
 		update_all_visuals()
-		to_chat(usr,span_notice("You transfer [amount] of [current_vessel.reagents.reagent_list[1].name] to [beaker.name]"))
+		to_chat(usr,span_notice("You transfer [amount] of [current_vessel.reagents?.reagent_list[1].name] to [beaker.name]"))
 		return TRUE
 
 // Milking machine construction kit
