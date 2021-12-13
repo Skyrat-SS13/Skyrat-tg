@@ -706,7 +706,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	to_chat(user, "You have begun the beam-out process. Please wait for the beam to reach the station.")
 	user.balloon_alert(user, "begun beam-out")
 	if(do_after(user, 30 SECONDS))
-		to_chat(user,"You have completed the beam-out process and are returning to the Sol Federation.")
+		to_chat(user, "You have completed the beam-out process and are returning to the Sol Federation.")
 		message_admins("[ADMIN_LOOKUPFLW(user)] has beamed themselves out.")
 		if(isliving(user))
 			var/mob/living/living_user = user
