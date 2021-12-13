@@ -471,10 +471,9 @@ GLOBAL_VAR(station_nuke_source)
 	safety = TRUE
 	update_appearance()
 	sound_to_playing_players('sound/machines/alarm.ogg')
-	sound_to_playing_players('modular_skyrat/modules/alerts/sound/ai/default/DeltaBOOM.ogg') //SKYRAT EDIT ADDITION
 	if(SSticker?.mode)
 		SSticker.roundend_check_paused = TRUE
-	addtimer(CALLBACK(src, .proc/actually_explode), 10 SECONDS)
+	addtimer(CALLBACK(src, .proc/actually_explode), 100)
 
 /obj/machinery/nuclearbomb/proc/actually_explode()
 	if(!core)
@@ -504,25 +503,16 @@ GLOBAL_VAR(station_nuke_source)
 	if(off_station < NUKE_MISS_STATION)
 		SSshuttle.registerHostileEnvironment(src)
 		SSshuttle.lockdown = TRUE
-<<<<<<< HEAD
-
-	KillEveryoneOnZLevel(z) //SKYRAT EDIT ADDITION
-
-=======
->>>>>>> 14d1f2d361b (Adds documentation for and makes station_was_nuked flag only set if the station was actually nuked (#63107))
 	//Cinematic
 	GLOB.station_nuke_source = off_station
 	really_actually_explode(off_station)
 	SSticker.roundend_check_paused = FALSE
 
 /obj/machinery/nuclearbomb/proc/really_actually_explode(off_station)
-	// var/turf/bomb_location = get_turf(src) // SKYRAT EDIT REMOVAL - Shut up linters
+	var/turf/bomb_location = get_turf(src)
 	Cinematic(get_cinematic_type(off_station),world,CALLBACK(SSticker,/datum/controller/subsystem/ticker/proc/station_explosion_detonation,src))
-	/* SKYRAT EDIT REMOVAL
 	if(off_station != NUKE_NEAR_MISS) // Don't kill people in the station if the nuke missed, even if we are technically on the same z-level
 		INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, bomb_location.z)
-	*/
-	explosion(src, 40, 50, 70, 80, TRUE, TRUE) //SKYRAT EDIT ADDITION
 
 /obj/machinery/nuclearbomb/proc/get_cinematic_type(off_station)
 	if(off_station < NUKE_NEAR_MISS)
@@ -610,7 +600,6 @@ GLOBAL_VAR(station_nuke_source)
 	disarm()
 	stationwide_foam()
 
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR NUCLEARBOMB.DM
 /proc/KillEveryoneOnZLevel(z)
 	if(!z)
 		return
@@ -619,7 +608,6 @@ GLOBAL_VAR(station_nuke_source)
 		to_chat(victim, span_userdanger("You are shredded to atoms!"))
 		if(victim.stat != DEAD && victim.z == z)
 			victim.gib()
-*/
 
 /*
 This is here to make the tiles around the station mininuke change when it's armed.
