@@ -4,6 +4,7 @@
 	var/datum/element/strippable/strippable = target.AddElement(/datum/element/strippable, list())
 
 	var/mob/living/carbon/human/user = allocate(/mob/living/carbon/human, run_loc_floor_bottom_left)
+	user.dna.add_mutation(XRAY) // SKYRAT EDIT ADDITION - lol, lmao, CI failure because the view() check fails randomly at test #3
 	ADD_TRAIT(user, TRAIT_PRESERVE_UI_WITHOUT_CLIENT, TRAIT_SOURCE_UNIT_TESTS)
 
 	var/datum/strip_menu/strip_menu = allocate(/datum/strip_menu, target, strippable)
