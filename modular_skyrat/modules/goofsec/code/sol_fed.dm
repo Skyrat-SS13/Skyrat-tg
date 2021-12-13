@@ -141,7 +141,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 	if(candidates.len)
 		//Pick the (un)lucky players
-		var/agents_number = min(team_size,candidates.len)
+		var/agents_number = min(team_size, candidates.len)
 
 		var/list/spawnpoints = GLOB.emergencyresponseteamspawn
 		var/index = 0
