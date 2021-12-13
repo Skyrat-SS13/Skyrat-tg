@@ -26,13 +26,33 @@
 
 /datum/job/ai/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
+	/* SKYRAT EDIT REWORK: All cyborgs now sync to the AI when it joins unless they're emagged.
 	//we may have been created after our borg
 	if(SSticker.current_state == GAME_STATE_SETTING_UP)
 		for(var/mob/living/silicon/robot/R in GLOB.silicon_mobs)
 			if(!R.connected_ai)
 				R.TryConnectToAI()
+	*/
 	var/mob/living/silicon/ai/ai_spawn = spawned
 	ai_spawn.log_current_laws()
+	// SKYRAT EDIT ADDITION BEGIN
+	for(var/mob/living/silicon/robot/R in GLOB.silicon_mobs)
+		if(R.emagged)
+			continue
+		if(!R.connected_ai)
+			R.notify_ai(AI_NOTIFICATION_CYBORG_DISCONNECTED)
+			R.set_connected_ai(new_ai)
+			log_combat(ai_spawn, R, "synced cyborg [R.connected_ai] to [ADMIN_LOOKUP(new_ai)] (AI spawn syncage)")
+			if(R.shell)
+				R.undeploy()
+				R.notify_ai(AI_NOTIFICATION_AI_SHELL)
+			else
+				R.notify_ai(TRUE)
+			R.visible_message(span_notice("[R] gently chimes."), span_notice("LawSync protocol engaged."))
+			log_combat(ai_spawn, R, "forcibly synced cyborg laws via spawning in")
+			R.lawsync()
+			R.show_laws()
+	// SKYRAT EDIT ADDITION END
 
 
 /datum/job/ai/get_roundstart_spawn_point()
