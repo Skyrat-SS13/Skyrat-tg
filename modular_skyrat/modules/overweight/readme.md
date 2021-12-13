@@ -71,7 +71,8 @@ code\__DEFINES\~skyrat_defines\traits.dm | `#define TRAIT_OVERWEIGHT`
 code\__DEFINES\~skyrat_defines\mobs.dm | `#define PULL_OVERWEIGHT_SLOWDOWN`
 code\__DEFINES\~skyrat_defines\combat.dm | `#define GET_UP_OVERWEIGHT`
 code\__DEFINES\~skyrat_defines\combat.dm | `#define GET_UP_OVERWEIGHT_AND_FAT`
-
+code\datums\elements\climbable.dm | `#define OVERWEIGHT_CLIMB_TIME_MULTIPLIER`
+code\datums\elements\climbable.dm | `#define OVERWEIGHT_CLIMB_STUN_MULTIPLIER`
 
 ### Master file additions
 
