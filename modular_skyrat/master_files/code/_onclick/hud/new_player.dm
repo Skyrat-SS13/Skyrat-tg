@@ -18,7 +18,7 @@
 			to_chat_immediate(new_player, "So long, spaceman.")
 			new_player.client << link(server_ip)
 		return
-	var/server_name = tgui_input_list(new_player, "Please select the server you wish to swap to:", "Swap servers!", GLOB.swappable_ips)
+	var/server_name = tgui_input_list(new_player, "Please select the server you wish to swap to:", "Swap servers!", servers)
 	if(!server_name)
 		return
 	var/server_ip = servers[server_name]
