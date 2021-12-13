@@ -634,7 +634,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 /obj/item/solfed_reporter/pizza_managers
 	name = "Dogginos Uncompliant Customer Reporter"
 	desc = "Use this in-hand to vote to call for Dogginos Regional Managers if the station refuses to pay for their pizza. \
-	If your entire delivery squad votes for it, Dogginos Regional Managers will be dispatched."
+		If your entire delivery squad votes for it, Dogginos Regional Managers will be dispatched."
 	type_to_check = /datum/antagonist/ert/pizza/false_call
 	type_of_callers = "dogginos"
 	announcement_message = "Hey there, custo-mores! Our delivery drivers have reported that you guys are having some issues with payment for your order that \
