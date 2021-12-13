@@ -101,23 +101,32 @@
  * return UI_state The state of the UI.
  */
 /mob/living/proc/shared_living_ui_distance(atom/movable/src_object, viewcheck = TRUE, allow_tk = TRUE)
+	world.log << "beginning shared_living_ui_distance"
+	var/dist = get_dist(src_object, src)
+	world.log << "dist: [dist]"
 	// If the object is obscured, close it.
 	if(viewcheck && !(src_object in view(src)))
+		world.log << "failed the view check"
 		return UI_CLOSE
-	var/dist = get_dist(src_object, src)
 	// Open and interact if 1-0 tiles away.
 	if(dist <= 1)
+		world.log << "ui interactive"
 		return UI_INTERACTIVE
 	// View only if 2-3 tiles away.
 	else if(dist <= 2)
+		world.log << "ui update"
 		return UI_UPDATE
 	// Disable if 5 tiles away.
 	else if(dist <= 5)
+		world.log << "ui disabled"
 		return UI_DISABLED
 	// Otherwise, we got nothing.
+	world.log << "ui closed"
 	return UI_CLOSE
 
 /mob/living/carbon/human/shared_living_ui_distance(atom/movable/src_object, viewcheck = TRUE, allow_tk = TRUE)
+	world.log << "beginning human variant of shared_living_ui_distance"
 	if(allow_tk && dna.check_mutation(TK) && tkMaxRangeCheck(src, src_object))
+		world.log << "human variant ui interactive"
 		return UI_INTERACTIVE
 	return ..()
