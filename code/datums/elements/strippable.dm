@@ -512,9 +512,9 @@
 	var/has_trait_can_strip = HAS_TRAIT(user, TRAIT_CAN_STRIP) ? UI_INTERACTIVE : UI_UPDATE
 	world.log << "has_trait_can_strip: [has_trait_can_strip]"
 	var/ui_status_is_conscious_and_lying_down = ui_status_user_is_conscious_and_lying_down(user)
-	world.log << "ui_status_only_living: [ui_status_is_conscious_and_lying_down]"
+	world.log << "ui_status_is_conscious_and_lying_down: [ui_status_is_conscious_and_lying_down]"
 	var/ui_status_user_is_abled = ui_status_user_is_abled(user, owner)
-	world.log << "ui_status_only_living: [ui_status_user_is_abled]"
+	world.log << "ui_status_user_is_abled: [ui_status_user_is_abled]"
 	var/return_value = min(
 		ui_status_only_living,
 		ui_status_user_has_free_hands,
