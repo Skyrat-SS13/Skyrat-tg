@@ -535,7 +535,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 				var/list/spawnpoints = GLOB.emergencyresponseteamspawn
 				var/index = 0
 				while(agents_number && candidates.len)
-					var/spawnloc = spawnpoints[index+1]
+					var/spawn_loc = spawnpoints[index + 1]
 					//loop through spawnpoints one at a time
 					index = (index + 1) % spawnpoints.len
 					var/mob/dead/observer/chosen_candidate = pick(candidates)
