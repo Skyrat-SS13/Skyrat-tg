@@ -27,4 +27,4 @@
 			if(GLOB.OOC_COLOR)
 				to_chat(C, span_oocplain("<font color='[GLOB.OOC_COLOR]'><b><span class='prefix'>OOC:</span> <EM>[sender_name]:</EM> <span class='message linkify'>[message]</span></b></font>"))
 			else
-				to_chat(C, span_ooc(span_prefix("OOC:</span> <EM>[sender_name]:</EM> <span class='message linkify'>[message]</span>"))
+				to_chat(C, span_ooc("OOC:</span> <EM>[sender_name]:</EM> <span class='message linkify'>[message]</span>"))
