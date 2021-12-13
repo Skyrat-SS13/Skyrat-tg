@@ -970,45 +970,6 @@
 	var/goal = 0
 	/// Number of gulag points earned.
 	var/points = 0
-<<<<<<< HEAD
-	// SKYRAT EDIT: Start - Genpop IDs
-	access = list(ACCESS_ENTER_GENPOP)
-	var/sentence = 0	//When world.time is greater than this number, the card will have its ACCESS_ENTER_GENPOP access replaced with ACCESS_LEAVE_GENPOP the next time it's checked, unless this value is 0/null
-	var/crime= "\[REDACTED\]"
-
-/obj/item/card/id/advanced/prisoner/GetAccess()
-	if((sentence && world.time >= sentence) || (goal && points >= goal))
-		access = list(ACCESS_LEAVE_GENPOP)
-	return ..()
-
-/obj/item/card/id/advanced/prisoner/examine(mob/user)
-	. = ..()
-	if(sentence && world.time < sentence)
-		to_chat(user, "<span class='notice'>You're currently serving a sentence for [crime]. <b>[DisplayTimeText(sentence - world.time)]</b> left.</span>")
-	else if(goal)
-		to_chat(user, "<span class='notice'>You have accumulated [points] out of the [goal] points you need for freedom.</span>")
-	else if(!sentence)
-		to_chat(user, "<span class='warning'>You are currently serving a permanent sentence for [crime].</span>")
-	else
-		to_chat(user, "<span class='notice'>Your sentence is up! You're free!</span>")
-
-/obj/item/card/id/advanced/prisoner/process()
-	if(!sentence)
-		STOP_PROCESSING(SSobj, src)
-		return
-	if(world.time >= sentence)
-		if(prob(90))
-			playsound(loc, 'sound/machines/ping.ogg', 50, 1)
-			if(isliving(loc))
-				to_chat(loc, "<span class='boldnotice'>[src]</span><span class='notice'> buzzes: You have served your sentence! You may now exit prison through the turnstiles and collect your belongings.</span>")
-		else
-			playsound(loc, 'modular_skyrat/modules/mapping/sounds/quest_succeeded.ogg', 50, 1)
-			if(isliving(loc))
-				to_chat(loc, "<span class='boldnotice'>[src]</span><span class='notice'><b>Quest Completed!</b> <i>Serve your prison sentence</i>. You may now leave the prison through the turnstiles and return this ID to the locker to retrieve your belongings.</span>")
-		STOP_PROCESSING(SSobj, src)
-	return
-	// SKYRAT EDIT: End - Genpop IDs
-=======
 	/// If the card has a timer set on it for temporary stay.
 	var/timed = FALSE
 	/// Time to assign to the card when they pass through the security gate.
@@ -1032,7 +993,7 @@
 			return
 		to_chat(user, "You set the sentence time to [time_to_assign] seconds.")
 		timed = TRUE
-		
+
 /obj/item/card/id/advanced/prisoner/proc/start_timer()
 	say("Sentence started, welcome to the corporate rehabilitation center!")
 	START_PROCESSING(SSobj, src)
@@ -1052,7 +1013,6 @@
 	if(time_left <= 0)
 		say("Sentence time has been served. Thank you for your cooperation in our corporate rehabilitation program!")
 		STOP_PROCESSING(SSobj, src)
->>>>>>> 6f2382d7228 (Tramstation Perma Genpop (#62966))
 
 /obj/item/card/id/advanced/prisoner/attack_self(mob/user)
 	to_chat(usr, span_notice("You have accumulated [points] out of the [goal] points you need for freedom."))
