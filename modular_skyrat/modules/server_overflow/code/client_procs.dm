@@ -20,6 +20,7 @@
 		message_admins("[src] attempted to join, but the server was full and were sent to the secondary server.")
 		src << link(overflow_server_ip)
 		return FALSE
+	return TRUE
 
 /mob/dead/new_player/proc/connect_to_second_server(choice)
 	if(!client)
