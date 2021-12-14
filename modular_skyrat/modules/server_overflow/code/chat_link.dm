@@ -4,7 +4,7 @@
 	if(!CONFIG_GET(flag/enable_cross_server_ooc))
 		return FALSE
 	var/list/ooc_information = list()
-	ooc_information["server_name"] = CONFIG_GET(string/cross_comms_name) ? CONFIG_GET(string/cross_comms_name) : station_name()
+	ooc_information["server_name"] = CONFIG_GET(string/cross_server_name) ? CONFIG_GET(string/cross_server_name) : station_name()
 	ooc_information["expected_name"] = exp_name
 	send2otherserver(html_decode(ooc_information["server_name"]), message, "incoming_ooc_message", "all", additional_data = ooc_information)
 	return TRUE
@@ -35,7 +35,7 @@
 	if(!CONFIG_GET(flag/enable_cross_server_asay))
 		return
 	var/list/asay_information = list()
-	asay_information["server_name"] = CONFIG_GET(string/cross_comms_name) ? CONFIG_GET(string/cross_comms_name) : station_name()
+	asay_information["server_name"] = CONFIG_GET(string/cross_server_name) ? CONFIG_GET(string/cross_server_name) : station_name()
 	asay_information["expected_name"] = exp_name
 	send2otherserver(html_decode(asay_information["server_name"]), message, "incoming_asay_message", "all", additional_data = asay_information)
 	return TRUE
@@ -77,7 +77,7 @@
 	if(!CONFIG_GET(flag/enable_cross_server_asay))
 		return
 	var/list/asay_information = list()
-	asay_information["server_name"] = CONFIG_GET(string/cross_comms_name) ? CONFIG_GET(string/cross_comms_name) : station_name()
+	asay_information["server_name"] = CONFIG_GET(string/cross_server_name) ? CONFIG_GET(string/cross_server_name) : station_name()
 	asay_information["expected_name"] = exp_name
 	send2otherserver(html_decode(asay_information["server_name"]), message, "incoming_help_request", "all", additional_data = asay_information)
 	return TRUE
