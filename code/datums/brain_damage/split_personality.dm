@@ -87,10 +87,10 @@
 
 	//Body to backseat
 
-	var/h2b_id = owner.computer_id
+/* 	var/h2b_id = owner.computer_id
 	var/h2b_ip= owner.lastKnownIP
 	owner.computer_id = null
-	owner.lastKnownIP = null
+	owner.lastKnownIP = null */ //SKYRAT EDIT - SPLIT PERSONALITY CRASHING FIX
 
 	new_backseat.ckey = owner.ckey
 
@@ -99,30 +99,30 @@
 	if(owner.mind)
 		new_backseat.mind = owner.mind
 
-	if(!new_backseat.computer_id)
+/* 	if(!new_backseat.computer_id)
 		new_backseat.computer_id = h2b_id
 
 	if(!new_backseat.lastKnownIP)
-		new_backseat.lastKnownIP = h2b_ip
+		new_backseat.lastKnownIP = h2b_ip */ //SKYRAT EDIT - SPLIT PERSONALITY CRASHING FIX
 
 	if(reset_to_owner && new_backseat.mind)
 		new_backseat.ghostize(FALSE)
 
 	//Backseat to body
 
-	var/s2h_id = current_backseat.computer_id
+/* 	var/s2h_id = current_backseat.computer_id
 	var/s2h_ip= current_backseat.lastKnownIP
 	current_backseat.computer_id = null
-	current_backseat.lastKnownIP = null
+	current_backseat.lastKnownIP = null */ //SKYRAT EDIT - SPLIT PERSONALITY CRASHING FIX
 
 	owner.ckey = current_backseat.ckey
 	owner.mind = current_backseat.mind
 
-	if(!owner.computer_id)
+/* 	if(!owner.computer_id)
 		owner.computer_id = s2h_id
 
 	if(!owner.lastKnownIP)
-		owner.lastKnownIP = s2h_ip
+		owner.lastKnownIP = s2h_ip */ //SKYRAT EDIT - SPLIT PERSONALITY CRASHING FIX
 
 	current_controller = !current_controller
 
