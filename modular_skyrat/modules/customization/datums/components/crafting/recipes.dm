@@ -31,3 +31,14 @@
 	)
 	result = /obj/item/food/sausage/battered
 	subcategory = CAT_MISCFOOD
+
+/datum/crafting_recipe/food/shortbread
+	time = 5
+	name = "Shortbread"
+	reqs = list(
+		/datum/reagent/consumable/sugar = 5,
+		/obj/item/food/pastrybase = 1,
+		/obj/item/food/butter = 1
+	)
+	result = /obj/item/food/cookie/shortbread
+	subcategory = CAT_PASTRY
