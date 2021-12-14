@@ -96,7 +96,7 @@
 	send_help_request(exp_name, server_name, message)
 
 /proc/send_help_request(sender_name, server_name, message)
-	var/msg = span_command_headset("[span_adminsay("[span_crossasay("CROSSLINK HELP REQUEST FROM:")] [server_name]: <EM>[sender_name]</EM>: <span class='message linkify'>[message]")]</span>")
+	var/msg = span_command_headset("[span_adminsay("[span_crossasay("CROSSLINK HELP REQUEST")]([server_name]): <EM>[sender_name]</EM>: <span class='message linkify'>[message]")]</span>")
 
 	to_chat(GLOB.admins,
 		type = MESSAGE_TYPE_ADMINCHAT,
