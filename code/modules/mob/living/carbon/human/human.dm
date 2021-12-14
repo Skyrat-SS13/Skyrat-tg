@@ -942,9 +942,9 @@
 	var/carrydelay = 5 SECONDS //if you have latex you are faster at grabbing
 	var/skills_space = "" //cobby told me to do this
 	//SKYRAT EDIT ADDITION - Overweight
-	///If someone can quickly pick someone up, they can pick up the overly large
-	//SKYRAT EDIT END
+	/// Can the picking up mob carry overly large people?
 	var/easily_carry_the_huge = FALSE
+	//SKYRAT EDIT END
 	if(HAS_TRAIT(src, TRAIT_QUICKER_CARRY))
 		carrydelay = 3 SECONDS
 		skills_space = " very quickly"
