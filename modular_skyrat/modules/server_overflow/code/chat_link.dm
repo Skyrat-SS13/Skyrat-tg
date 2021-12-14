@@ -66,6 +66,8 @@
 	set desc = "Sends a loud message to all other servers that we are crosslinked to!"
 
 	var/help_request_message = tgui_input_text(src, "Input help message!", "Help message", "Send help!", 150, FALSE)
+	if(!help_request_message)
+		return
 	send2adminchat(ckey, "CROSSLINK HELP REQUEST([CONFIG_GET(string/cross_server_name) ? CONFIG_GET(string/cross_server_name) : station_name()]): [help_request_message]")
 	send_help_request_to_other_server(ckey, help_request_message)
 
