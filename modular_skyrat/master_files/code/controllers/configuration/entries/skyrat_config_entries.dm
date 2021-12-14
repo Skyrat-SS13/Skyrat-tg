@@ -18,6 +18,9 @@
 // Do we broadcast our OOC to all dem servers in cross servers?
 /datum/config_entry/flag/enable_cross_server_ooc
 
+// Do we broadcast our asay to all dem servers in cross servers?
+/datum/config_entry/flag/enable_cross_server_asay
+
 //DISCORD GAME ALERT CONFIGS
 //Role id to ping
 /datum/config_entry/string/game_alert_role_id
