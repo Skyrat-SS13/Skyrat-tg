@@ -78,13 +78,9 @@
 		return
 	if(sitter.buckled != src)
 		return
-	if(!uses_integrity)
+	if(resistance_flags & INDESTRUCTIBLE || !uses_integrity) //Seat can support their weight
 		return
-	if(resistance_flags & INDESTRUCTIBLE) //Seat can support their weight
-		return
-	if(!has_gravity(get_turf(sitter))) //If the sitter is weightless, then they aren't all that heavy
-		return
-	if((sitter.movement_type & FLOATING)) //Floating also makes a person less heavy
+	if(!has_gravity(get_turf(sitter)) || sitter.movement_type & FLOATING) //If the sitter is weightless, then they aren't all that heavy
 		return
 	/// Only show this stuff to people who also have the quirk
 	if(HAS_TRAIT(sitter, TRAIT_FAT)) //Double fat? start crushing that chair
