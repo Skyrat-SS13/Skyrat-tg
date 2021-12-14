@@ -324,6 +324,9 @@
 			if(SHUTTLE_CALL)
 				if(!SSshuttle.canRecall())
 					dat += "<div class='notice red'>The station is currently undergoing evacuation procedures.</div><br>"
+	// SKYRAT EDIT ADDITION BEGIN
+	dat += "<div class='notice'>If you don't see any jobs, make sure you have at least 150 characters of Flavor Text written!</div>"
+	// SKYRAT EDIT ADDITION END
 	for(var/datum/job/prioritized_job in SSjob.prioritized_jobs)
 		if(prioritized_job.current_positions >= prioritized_job.total_positions)
 			SSjob.prioritized_jobs -= prioritized_job
