@@ -2,12 +2,13 @@
 
 /proc/send_ooc_to_other_server(exp_name, message)
 	if(!CONFIG_GET(flag/enable_cross_server_ooc))
-		return
+		return FALSE
 	var/list/ooc_information = list()
 	ooc_information["server_name"] = CONFIG_GET(string/cross_comms_name)
 	ooc_information["expected_name"] = exp_name
 	var/name_to_send = CONFIG_GET(string/cross_comms_name) ? CONFIG_GET(string/cross_comms_name) : station_name()
 	send2otherserver(html_decode(name_to_send), message, "incoming_ooc_message", "all", additional_data = ooc_information)
+	return TRUE
 
 /datum/world_topic/incoming_ooc_message
 	keyword = "incoming_ooc_message"
