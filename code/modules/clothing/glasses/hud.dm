@@ -64,7 +64,7 @@
 	icon_state = "sunhudmed"
 	darkness_view = 1
 	flash_protect = FLASH_PROTECTION_FLASH
-	tint = 0.25
+	tint = 1
 	glass_colour_type = /datum/client_colour/glass_colour/blue
 
 /obj/item/clothing/glasses/hud/diagnostic
@@ -91,7 +91,7 @@
 	icon_state = "sunhuddiag"
 	inhand_icon_state = "glasses"
 	flash_protect = FLASH_PROTECTION_FLASH
-	tint = 0.25
+	tint = 1
 
 /obj/item/clothing/glasses/hud/security
 	name = "security HUD"
@@ -136,7 +136,7 @@
 	icon_state = "sunhudsec"
 	darkness_view = 1
 	flash_protect = FLASH_PROTECTION_FLASH
-	tint = 0.25
+	tint = 1
 	glass_colour_type = /datum/client_colour/glass_colour/darkred
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
@@ -248,7 +248,7 @@
 	icon_state = "bigsunglasses"
 	darkness_view = 1
 	flash_protect = FLASH_PROTECTION_FLASH
-	tint = 0.25
+	tint = 1
 	glass_colour_type = /datum/client_colour/glass_colour/gray
 
 
