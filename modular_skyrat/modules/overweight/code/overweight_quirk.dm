@@ -74,8 +74,6 @@
  * * just_sat_down - Did they just sit down, and thus get a different message?
 */
 /obj/structure/chair/proc/overweight_chair_damage(mob/living/carbon/human/sitter, just_sat_down = TRUE)
-	if(!ishuman(sitter))
-		return
 	if(!HAS_TRAIT(sitter, TRAIT_OVERWEIGHT))
 		return
 	if(sitter.buckled != src)
