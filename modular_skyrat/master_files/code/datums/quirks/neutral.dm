@@ -1,6 +1,8 @@
 /datum/quirk/equipping
 	abstract_parent_type = /datum/quirk/equipping
+	/// the items that will be equipped, formatted in the way of [item_path = list of slots it can be equipped to], will not equip over nodrop items
 	var/list/items = list()
+	/// the items that will be forcefully equipped, formatted in the way of [item_path = list of slots it can be equipped to], will equip over nodrop items
 	var/list/forced_items = list()
 
 /datum/quirk/equipping/add_unique()
@@ -14,6 +16,11 @@
 			continue
 		var/item = new item_path(carbon_holder.loc)
 		var/success = FALSE
+		//Checking for nodrop and seeing if there's an empty slot
+		for (var/slot as anything in all_items[item_path])
+			success = force_equip_item(carbon_holder, item, slot, check_item = FALSE)
+			if (success)
+				break
 		//Checking for nodrop
 		for (var/slot as anything in all_items[item_path])
 			success = force_equip_item(carbon_holder, item, slot)
@@ -27,18 +34,18 @@
 				if (success)
 					break
 		equipped_items[item] = success
-	for (var/obj/item/equipped as anything in equipped_items)
-		on_equip_item(equipped, equipped_items[equipped])
+	for (var/item as anything in equipped_items)
+		on_equip_item(item, equipped_items[item])
 
-/datum/quirk/equipping/proc/force_equip_item(mob/living/carbon/target, obj/item/item, slot, check_nodrop = TRUE)
+/datum/quirk/equipping/proc/force_equip_item(mob/living/carbon/target, obj/item/item, slot, check_nodrop = TRUE, check_item = TRUE)
 	var/obj/item/item_in_slot = target.get_item_by_slot(slot)
-	if (item_in_slot)
+	if (check_item && item_in_slot)
 		if (check_nodrop && HAS_TRAIT(item_in_slot, TRAIT_NODROP))
 			return FALSE
 		target.dropItemToGround(item_in_slot, force = TRUE)
 	return target.equip_to_slot_if_possible(item, slot, disable_warning = TRUE) //this should never not work tbh
 
-/datum/quirk/equipping/proc/on_equip_item(obj/item/equipped, successful)
+/datum/quirk/equipping/proc/on_equip_item(obj/item/equipped, success)
 	return
 
 /datum/quirk/equipping/lungs
@@ -74,7 +81,7 @@
 	lungs_holding.organ_flags &= ~ORGAN_FROZEN
 	carbon_holder.update_internals_hud_icon(1)
 
-/datum/quirk/equipping/lungs/on_equip_item(obj/item/equipped, successful)
+/datum/quirk/equipping/lungs/on_equip_item(obj/item/equipped, success)
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	if (!istype(equipped, /obj/item/clothing/accessory/breathing))
 		return
@@ -122,10 +129,10 @@
 	lungs_typepath = /obj/item/organ/lungs/nitrogen
 	breath_type = "nitrogen"
 
-/datum/quirk/equipping/lungs/nitrogen/on_equip_item(obj/item/equipped, successful)
+/datum/quirk/equipping/lungs/nitrogen/on_equip_item(obj/item/equipped, success)
 	. = ..()
 	var/mob/living/carbon/carbon_holder = quirk_holder
-	if (!successful || !istype(carbon_holder) || !istype(equipped, /obj/item/tank/internals))
+	if (!success || !istype(carbon_holder) || !istype(equipped, /obj/item/tank/internals))
 		return
 	carbon_holder.internal = equipped
 	carbon_holder.update_internals_hud_icon(1)

@@ -6,7 +6,7 @@
 #define JOB_UNAVAILABLE_SLOTFULL 5
 /// Job unavailable due to incompatibility with an antag role.
 #define JOB_UNAVAILABLE_ANTAG_INCOMPAT 6
-
+#define JOB_UNAVAILABLE_FLAVOUR 7 // SKYRAT EDIT ADDITION
 #define DEFAULT_RELIGION "Christianity"
 #define DEFAULT_DEITY "Space Jesus"
 #define DEFAULT_BIBLE "Default Bible Name"
@@ -78,7 +78,11 @@
 #define DEPARTMENT_MEDICAL "Medical"
 #define DEPARTMENT_BITFLAG_SILICON (1<<7)
 #define DEPARTMENT_SILICON "Silicon"
-#define DEPARTMENT_BITFLAG_CENTRAL_COMMAND (1<<8) //SKYRAT EDIT CHANGE
+#define DEPARTMENT_BITFLAG_ASSISTANT (1<<8)
+#define DEPARTMENT_ASSISTANT "Assistant"
+#define DEPARTMENT_BITFLAG_CAPTAIN (1<<9)
+#define DEPARTMENT_CAPTAIN "Captain"
+#define DEPARTMENT_BITFLAG_CENTRAL_COMMAND (1<<10) //SKYRAT EDIT CHANGE
 #define DEPARTMENT_CENTRAL_COMMAND "Central Command" //SKYRAT EDIT CHANGE
 
 /* Job datum job_flags */

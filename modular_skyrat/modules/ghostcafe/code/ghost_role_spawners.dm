@@ -37,7 +37,6 @@
 		var/datum/action/toggle_dead_chat_mob/D = new(new_spawn)
 		D.Grant(new_spawn)
 
-
 /obj/effect/mob_spawn/human/ghostcafe
 	name = "Cafe Sleeper"
 	uses = -1
@@ -65,7 +64,7 @@
 		to_chat(new_spawn,span_warning("<b>Ghosting is free!</b>"))
 		//to_chat(new_spawn,span_narsiesmall("Be warned: People who opt out of EORG will come here. Do not make the area uninhabitable and do NOT commit EORG. This is a safe-zone. If you attack people in EORG, you will be banned for griefing."))
 		var/datum/action/toggle_dead_chat_mob/D = new(new_spawn)
-		new_spawn.put_in_hands(new /obj/item/storage/box/syndie_kit/chameleon/ghostcafe)
+		new_spawn.put_in_hands(new /obj/item/storage/box/syndie_kit/chameleon/ghostcafe, LEFT_HANDS, forced = TRUE)
 		new_spawn.equip_outfit_and_loadout(/datum/outfit/ghostcafe, new_spawn.client.prefs, FALSE, null)
 		SSquirks.AssignQuirks(new_spawn, new_spawn.client, TRUE, TRUE, null, FALSE, new_spawn)
 		D.Grant(new_spawn)
