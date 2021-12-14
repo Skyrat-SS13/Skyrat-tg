@@ -1227,6 +1227,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	icon_state = "voodoo"
 
+// Donation reward for Octus
 /obj/item/clothing/mask/breath/vox/octus
 	name = "sinister visor"
 	desc = "Skrektastic."
