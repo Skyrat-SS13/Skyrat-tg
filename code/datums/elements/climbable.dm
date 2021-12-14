@@ -72,7 +72,7 @@
 	if(HAS_TRAIT(user, TRAIT_OVERWEIGHT)) //Something something, your gut bumps into the table
 		if(HAS_TRAIT(user, TRAIT_FAT))
 			user.visible_message(
-			message = span_warning("...but [p_they(user)] can't quite find the leverage to do so!"),
+			message = span_warning("...but [user.p_they()] can't quite find the leverage to do so!"),
 			self_message = span_warning("...but your tremendous bulk pushes you right back off!"),
 			blind_message = span_notice("You hear a soft bump."))
 			return
