@@ -29,7 +29,7 @@
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	RegisterSignal(human_holder, COMSIG_MOVABLE_MOVED, .proc/move_fatigue) //emphasis on fat
 	var/speedmod = human_holder.dna.species.speedmod + OVERWEIGHT_SPEED_SLOWDOWN
-	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
+	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown = speedmod)
 
 /datum/quirk/overweight/remove()
 	var/mob/living/carbon/human/human_holder = quirk_holder
