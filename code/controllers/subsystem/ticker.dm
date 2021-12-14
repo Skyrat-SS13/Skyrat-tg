@@ -573,7 +573,7 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/send_news_report()
 	var/news_message
 	var/news_source = "Nanotrasen News Network"
-	var/decoded_station_name = html_decode(station_name()) //decode station_name to avoid minor_announce double encode
+	var/decoded_station_name = html_decode("[CONFIG_GET(string/cross_comms_name)]([station_name()])") //decode station_name to avoid minor_announce double encode //SKYRAT EDIT CHANGE
 	switch(news_report)
 		if(NUKE_SYNDICATE_BASE)
 			news_message = "In a daring raid, the heroic crew of [decoded_station_name] detonated a nuclear device in the heart of a terrorist base."
@@ -633,7 +633,7 @@ SUBSYSTEM_DEF(ticker)
 	//SKYRAT EDIT - END
 
 	if(news_message && length(CONFIG_GET(keyed_list/cross_server))) //SKYRAT EDIT - CONFIG CHECK MOVED FROM ROUNDEND.DM
-		news_message += " (Round on [CONFIG_GET(string/cross_server_name)] restarting!)" //SKYRAT EDIT ADDITION
+		news_message += " (Shift on [CONFIG_GET(string/cross_server_name)] ending!)" //SKYRAT EDIT ADDITION
 		send2otherserver(news_source, news_message,"News_Report")
 	//SKYRAT EDIT - START
 	if(news_message)

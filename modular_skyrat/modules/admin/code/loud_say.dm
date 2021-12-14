@@ -12,7 +12,7 @@
 	msg = emoji_parse(msg)
 	mob.log_talk(msg, LOG_ASAY)
 
-	send_asay_to_other_server(ckey, msg)
+	send_asay_to_other_server(ckey, span_command_headset(msg))
 
 	msg = keywords_lookup(msg)
 	var/custom_asay_color = (CONFIG_GET(flag/allow_admin_asaycolor) && prefs?.read_preference(/datum/preference/color/asay_color)) ? "<font color=[prefs?.read_preference(/datum/preference/color/asay_color)]>" : "<font color='#FF4500'>"
