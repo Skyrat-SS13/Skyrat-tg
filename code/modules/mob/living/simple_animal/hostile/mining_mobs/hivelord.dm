@@ -158,11 +158,11 @@
 			stored_mob.forceMove(get_turf(src))
 			stored_mob = null
 		else if(fromtendril)
-			new /obj/effect/mob_spawn/human/corpse/charredskeleton(T)
+			new /obj/effect/mob_spawn/corpse/human/charredskeleton(T)
 		else if(dwarf_mob)
-			new /obj/effect/mob_spawn/human/corpse/damaged/legioninfested/dwarf(T)
+			new /obj/effect/mob_spawn/corpse/human/legioninfested/dwarf(T)
 		else
-			new /obj/effect/mob_spawn/human/corpse/damaged/legioninfested(T)
+			new /obj/effect/mob_spawn/corpse/human/legioninfested(T)
 	..(gibbed)
 
 /mob/living/simple_animal/hostile/asteroid/hivelord/legion/tendril
@@ -267,7 +267,7 @@
 	layer = MOB_LAYER
 	del_on_death = TRUE
 	sentience_type = SENTIENCE_BOSS
-	loot = list(/obj/item/organ/regenerative_core/legion = 3, /obj/effect/mob_spawn/human/corpse/damaged/legioninfested = 5)
+	loot = list(/obj/item/organ/regenerative_core/legion = 3, /obj/effect/mob_spawn/corpse/human/legioninfested = 5)
 	move_to_delay = 14
 	vision_range = 5
 	aggro_vision_range = 9
@@ -284,6 +284,7 @@
 	.=..()
 	AddComponent(/datum/component/spawner, list(/mob/living/simple_animal/hostile/asteroid/hivelord/legion), 200, faction, "peels itself off from", 3)
 
+<<<<<<< HEAD
 //Tendril-spawned Legion remains, the charred skeletons of those whose bodies sank into laval or fell into chasms.
 /obj/effect/mob_spawn/human/corpse/charredskeleton
 	name = "charred skeletal remains"
@@ -403,6 +404,8 @@
 			backpack_contents = list(/obj/item/reagent_containers/glass/beaker/unholywater = 1, /obj/item/cult_shift = 1, /obj/item/flashlight/flare/culttorch = 1, /obj/item/stack/sheet/runed_metal = 15)
 	. = ..()
 
+=======
+>>>>>>> 82615e74629 (Super Mega Mob Spawn Refactor (#63279))
 // Snow Legion
 /mob/living/simple_animal/hostile/asteroid/hivelord/legion/snow
 	name = "snow legion"
