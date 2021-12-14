@@ -41,3 +41,12 @@
  */
 /datum/round_event_control/radiation_storm
 	max_occurrences = 0
+
+/**
+ * Spider infestation
+ *
+ * Min players:
+ * Upped to ensure lowpop steamroll does not happen
+ */
+/datum/round_event_control/spider_infestation
+	min_players = 70
