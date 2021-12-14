@@ -1,0 +1,34 @@
+{
+	"version": 1,
+	"map_name": "Water No Tram Station",
+	"map_path": "map_files/WaterNoTram",
+	"map_file": "water_notramstation.dmm",
+	"space_ruin_levels": 0,
+	"space_empty_levels": 0,
+	"shuttles": {
+		"cargo": "cargo_box",
+		"ferry": "ferry_fancy",
+		"whiteship": "whiteship_tram",
+		"emergency": "emergency_tram"
+	},
+	"traits": [
+		{
+			"Up": 1,
+			"Baseturf": "/turf/open/floor/plating/asteroid",
+			"Linkage": "Cross"
+		},
+		{
+			"Down": -1,
+			"Baseturf": "/turf/open/floor/plating/asteroid",
+			"Linkage": "Cross"
+		}
+	],
+	"job_changes": {
+		"cook": {
+			"additional_cqc_areas": ["/area/service/kitchen/diner"]
+		},
+		"captain": {
+			"special_charter": "asteroid"
+		}
+	}
+}
