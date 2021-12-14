@@ -21,7 +21,7 @@
 
 /obj/item/clothing/suit/corset/AltClick(mob/user)
 	laced_tight = !laced_tight
-	to_chat(user, span_notice("You lace the corset up [laced_tight ? "tight. I don't envy whoever has to wear this..." : "loosely."]"))
+	to_chat(user, span_notice("You [laced_tight ? "tighten" : "loosen"] the corset, making it far [laced_tight ? "harder" : "easier"] to breathe."))
 	playsound(user, laced_tight ? 'sound/items/handling/cloth_pickup.ogg' : 'sound/items/handling/cloth_drop.ogg', 40, TRUE)
 	if(laced_tight)
 		slowdown = tight_slowdown
