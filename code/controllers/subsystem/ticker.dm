@@ -633,6 +633,7 @@ SUBSYSTEM_DEF(ticker)
 	//SKYRAT EDIT - END
 
 	if(news_message && length(CONFIG_GET(keyed_list/cross_server))) //SKYRAT EDIT - CONFIG CHECK MOVED FROM ROUNDEND.DM
+		news_message += " (Round on [CONFIG_GET(string/cross_server_name)] restarting!)" //SKYRAT EDIT ADDITION
 		send2otherserver(news_source, news_message,"News_Report")
 	//SKYRAT EDIT - START
 	if(news_message)

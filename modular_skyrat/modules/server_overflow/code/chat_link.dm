@@ -27,7 +27,7 @@
 		return
 	for(var/client/C in GLOB.clients)
 		if(C.prefs.chat_toggles & CHAT_OOC)
-			to_chat(C, span_crossooc("[span_prefix("CROSSLINK-OOC([server_name]):")] <EM>[sender_name]:</EM> <span class='message linkify'>[message]</span></b>"))
+			to_chat(C, span_crossooc("[span_prefix("CROSSLINK-OOC([server_name]):")] <EM>[sender_name]:</EM> <span class='message linkify'>[message]</span></b>"), type = MESSAGE_TYPE_OOC)
 
 
 // Sends an asay message to all deh other servers!
@@ -66,7 +66,7 @@
 	set desc = "Sends a loud message to all other servers that we are crosslinked to!"
 
 	var/help_request_message = tgui_input_text(src, "Input help message!", "Help message", "Send help!", 150, FALSE)
-
+	send2adminchat(ckey, "CROSSLINK HELP REQUEST([CONFIG_GET(string/cross_server_name) ? CONFIG_GET(string/cross_server_name) : station_name()]): [help_request_message]")
 	send_help_request_to_other_server(ckey, help_request_message)
 
 	message_admins("[ADMIN_LOOKUPFLW(usr)] sent out a cross-server help request with the message: [help_request_message].")
