@@ -86,11 +86,12 @@
 	to_chat(current_backseat, span_userdanger("You manage to take control of your body!"))
 
 	//Body to backseat
+	//SKYRAT EDIT BEGIN - SPLIT PERSONALITY CRASHING FIX
 
 /* 	var/h2b_id = owner.computer_id
 	var/h2b_ip= owner.lastKnownIP
 	owner.computer_id = null
-	owner.lastKnownIP = null */ //SKYRAT EDIT - SPLIT PERSONALITY CRASHING FIX
+	owner.lastKnownIP = null */
 
 	new_backseat.ckey = owner.ckey
 
@@ -103,7 +104,7 @@
 		new_backseat.computer_id = h2b_id
 
 	if(!new_backseat.lastKnownIP)
-		new_backseat.lastKnownIP = h2b_ip */ //SKYRAT EDIT - SPLIT PERSONALITY CRASHING FIX
+		new_backseat.lastKnownIP = h2b_ip */
 
 	if(reset_to_owner && new_backseat.mind)
 		new_backseat.ghostize(FALSE)
@@ -113,7 +114,7 @@
 /* 	var/s2h_id = current_backseat.computer_id
 	var/s2h_ip= current_backseat.lastKnownIP
 	current_backseat.computer_id = null
-	current_backseat.lastKnownIP = null */ //SKYRAT EDIT - SPLIT PERSONALITY CRASHING FIX
+	current_backseat.lastKnownIP = null */
 
 	owner.ckey = current_backseat.ckey
 	owner.mind = current_backseat.mind
@@ -122,10 +123,10 @@
 		owner.computer_id = s2h_id
 
 	if(!owner.lastKnownIP)
-		owner.lastKnownIP = s2h_ip */ //SKYRAT EDIT - SPLIT PERSONALITY CRASHING FIX
+		owner.lastKnownIP = s2h_ip */
 
 	current_controller = !current_controller
-
+//SKYRAT EDIT END - SPLIT PERSONALITY CRASHING FIX
 
 /mob/living/split_personality
 	name = "split personality"
