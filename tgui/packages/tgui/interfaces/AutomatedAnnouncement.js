@@ -15,6 +15,7 @@ export const AutomatedAnnouncement = (props, context) => {
     arrival,
     newheadToggle,
     newhead,
+    atcToggle,
   } = data;
   return (
     <Window
@@ -76,7 +77,19 @@ export const AutomatedAnnouncement = (props, context) => {
             </LabeledList.Item>
           </LabeledList>
         </Section>
+        <Section
+        title="Air Traffic Relay"
+        buttons={(
+          <Button
+          icon={atcToggle ? 'power-off' : 'times'}
+          selected={atcToggle}
+          content={atcToggle ? 'On' : 'Off'}
+          onClick={() => act('atcToggle')} />
+        )}>
+        {("Toggles Air Traffic announcements from local space. This will not toggle arrivals/ert/emergency shuttle messages.")}
+        </Section>
       </Window.Content>
     </Window>
   );
 };
+//SKYRAT EDIT ADDITION - Lines 18, 80 - 89. Also, clearly, this line too.

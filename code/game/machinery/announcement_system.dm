@@ -26,9 +26,11 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	var/greenlight = "Light_Green"
 	var/pinklight = "Light_Pink"
 	var/errorlight = "Error_Red"
+	var/datum/lore/atc_controller/ATC	//Skyrat Edit Addition: Busyspace - ctrl-F this file to find all of them, they're kinda just tossed in where needed! Also check AutomatedAnnouncement.js
 
 /obj/machinery/announcement_system/Initialize(mapload)
 	. = ..()
+	ATC = atc	//Skyrat Edit Addition: Busyspace
 	GLOB.announcement_systems += src
 	radio = new /obj/item/radio/headset/silicon/ai(src)
 	update_appearance()
@@ -119,6 +121,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	data["arrivalToggle"] = arrivalToggle
 	data["newhead"] = newhead
 	data["newheadToggle"] = newheadToggle
+	data["atcToggle"] = ATC.atcBlocked	//Skyrat Edit Addition: Busyspace
 	return data
 
 /obj/machinery/announcement_system/ui_act(action, param)
@@ -152,6 +155,8 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		if("ArrivalToggle")
 			arrivalToggle = !arrivalToggle
 			update_appearance()
+		if("atcToggle")	//Skyrat Edit Addition: Busyspace
+			ATC.atcBlocked = !ATC.atcBlocked	//Skyrat Edit Addition: Busyspace
 	add_fingerprint(usr)
 
 /obj/machinery/announcement_system/attack_robot(mob/living/silicon/user)
