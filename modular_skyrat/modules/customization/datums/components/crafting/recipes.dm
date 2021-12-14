@@ -33,8 +33,8 @@
 	subcategory = CAT_MISCFOOD
 
 /datum/crafting_recipe/food/shortbread
-	time = 5
 	name = "Shortbread"
+	time = 5
 	reqs = list(
 		/datum/reagent/consumable/sugar = 5,
 		/obj/item/food/pastrybase = 1,
