@@ -35,7 +35,7 @@
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	UnregisterSignal(human_holder, COMSIG_MOVABLE_MOVED)
 	var/speedmod = human_holder.dna.species.speedmod
-	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
+	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown = speedmod)
 
 /// Applies stamina damage every step the mob takes, cus they're heavy
 /datum/quirk/overweight/proc/move_fatigue(mob/living/carbon/human/hefty)
