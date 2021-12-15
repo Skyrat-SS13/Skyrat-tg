@@ -959,7 +959,7 @@
 	if(!easily_carry_the_huge)
 		if(HAS_TRAIT(target, TRAIT_OVERWEIGHT)) //Big and heavy, but not quite super duper heavy
 			carrydelay *= 1.5
-			skills_space = " to strain [p_them()]self,[skills_space]" //ugh
+			skills_space = " to strain [src.p_them()]self,[skills_space]" //ugh
 		var/carry_error_message
 		if(HAS_TRAIT(target, TRAIT_OVERSIZED))
 			carry_error_message = "too heavy"

@@ -93,16 +93,15 @@
 			sitter.visible_message(span_notice("[src] bends visibly, starting to buckle under [sitter]'s tremendous weight..."),
 			blind_message = span_notice("[src] creaks ominously under [sitter]'s tremendous weight..."),
 			self_message = span_warning("[src] lets out an ominous creak as it struggles to support your tremendous weight!"),
-			ignored_mobs = get_overweight_in_range(sitter, DEFAULT_MESSAGE_RANGE))
+			ignored_mobs = get_non_overweight_in_range(sitter, DEFAULT_MESSAGE_RANGE))
 		else if(make_noise)
 			sitter.visible_message(span_notice("[src] bends as it struggles in vain to support [sitter]..."),
 			blind_message = span_notice("You hear a loud creak."),
 			self_message = span_warning("You feel something in \the [src] snap as it tries in vain to support your mass..."),
-			ignored_mobs = get_overweight_in_range(sitter, DEFAULT_MESSAGE_RANGE))
+			ignored_mobs = get_non_overweight_in_range(sitter, DEFAULT_MESSAGE_RANGE))
 		if(take_damage(sit_damage, damage_type = BRUTE, damage_flag = MELEE, sound_effect = FALSE)) //If it still didnt do any damage, don't try again
 			addtimer(CALLBACK(src, .proc/overweight_chair_damage, sitter, FALSE), 5 SECONDS)
-	else
-		to_chat(sitter, span_notice("You subject \the [src] to your weight. It creaks, but holds firm."))
+	to_chat(sitter, span_notice("You subject \the [src] to your weight. It creaks, but holds firm."))
 
 /**
  * This chair just got destroyed by someone's butt. Throw them on the ground
@@ -129,7 +128,14 @@
 	playsound(src, 'modular_skyrat/modules/oversized/sound/chair_break.ogg', 70, TRUE)
 	deconstruct(FALSE)
 
-/obj/structure/chair/proc/get_overweight_in_range(mob/living/carbon/human/origin, range = 2)
+/**
+ * Returns a list of humans who do not have the overweight quirk, so they are excluded from seeing certain messages.
+ *
+ * Arguments:
+ * * origin - The human the view check is centered on.
+ * * range - Range in tiles the view check will check.
+*/
+/obj/structure/chair/proc/get_non_overweight_in_range(mob/living/carbon/human/origin, range = 2)
 	if(!origin)
 		return
 	for(var/mob/living/prefcheck in view(range, origin))
