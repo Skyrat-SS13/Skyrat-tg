@@ -46,8 +46,8 @@
 /datum/crafting_recipe/food/tuna
 	name = "Can of Tuna"
 	time = 40
-	reqs = list(obj/item/stack/sheet/iron = 1,
-		obj/item/food/fishmeat = 2
+	reqs = list(/obj/item/stack/sheet/iron = 1,
+		/obj/item/food/fishmeat = 2
 	)
 	result = /obj/item/food/canned/beans
 	subcategory = CAT_MISCFOOD
