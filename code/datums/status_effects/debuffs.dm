@@ -240,6 +240,9 @@
 		return
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(id))
 	ADD_TRAIT(owner, TRAIT_HANDS_BLOCKED, TRAIT_STATUS_EFFECT(id))
+	if(HAS_TRAIT(owner, TRAIT_NUMBED)) //SKYRAT EDIT START - STASIS PRESERVES NUMBING
+		ADD_TRAIT(owner, TRAIT_NUMBED, "stasis")
+		owner.throw_alert("numbed", /atom/movable/screen/alert/numbed) //SKYRAT EDIT END
 	owner.add_filter("stasis_status_ripple", 2, list("type" = "ripple", "flags" = WAVE_BOUNDED, "radius" = 0, "size" = 2))
 	var/filter = owner.get_filter("stasis_status_ripple")
 	animate(filter, radius = 32, time = 15, size = 0, loop = -1)
@@ -247,10 +250,15 @@
 
 /datum/status_effect/grouped/stasis/tick()
 	update_time_of_death()
+	if(owner.stat >= UNCONSCIOUS) //SKYRAT EDIT START - STASIS KEEPS SLEEP GOING
+		owner.Sleeping(15 SECONDS) //SKYRAT EDIT END
 
 /datum/status_effect/grouped/stasis/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(id))
 	REMOVE_TRAIT(owner, TRAIT_HANDS_BLOCKED, TRAIT_STATUS_EFFECT(id))
+	if(HAS_TRAIT(owner, TRAIT_NUMBED)) //SKYRAT EDIT START - STASIS END REMOVES NUMBING
+		REMOVE_TRAIT(owner, TRAIT_NUMBED, "stasis")
+		owner.clear_alert("numbed") //SKYRAT EDIT END
 	owner.remove_filter("stasis_status_ripple")
 	update_time_of_death()
 	return ..()
