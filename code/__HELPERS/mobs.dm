@@ -87,20 +87,20 @@
 /proc/random_hairstyle(gender)
 	switch(gender)
 		if(MALE)
-			return pick(GLOB.hairstyles_male_list)
+			return pick(GLOB.hairstyles_male_list - subtypesof(/datum/sprite_accessory/hair/vox))	//SKYRAT EDIT: "- subtypesof(/datum/sprite_accessory/hair/vox)"
 		if(FEMALE)
-			return pick(GLOB.hairstyles_female_list)
+			return pick(GLOB.hairstyles_female_list - subtypesof(/datum/sprite_accessory/hair/vox))	//SKYRAT EDIT: "- subtypesof(/datum/sprite_accessory/hair/vox)"
 		else
-			return pick(GLOB.hairstyles_list)
+			return pick(GLOB.hairstyles_list - subtypesof(/datum/sprite_accessory/hair/vox))	//SKYRAT EDIT: "- subtypesof(/datum/sprite_accessory/hair/vox)"
 
 /proc/random_facial_hairstyle(gender)
 	switch(gender)
 		if(MALE)
-			return pick(GLOB.facial_hairstyles_male_list)
+			return pick(GLOB.facial_hairstyles_male_list - subtypesof(/datum/sprite_accessory/facial_hair/vox))	//SKYRAT EDIT: "- subtypesof(/datum/sprite_accessory/facial_hair/vox)"
 		if(FEMALE)
-			return pick(GLOB.facial_hairstyles_female_list)
+			return pick(GLOB.facial_hairstyles_female_list - subtypesof(/datum/sprite_accessory/facial_hair/vox))	//SKYRAT EDIT: "- subtypesof(/datum/sprite_accessory/facial_hair/vox)"
 		else
-			return pick(GLOB.facial_hairstyles_list)
+			return pick(GLOB.facial_hairstyles_list - subtypesof(/datum/sprite_accessory/facial_hair/vox))	//SKYRAT EDIT: "- subtypesof(/datum/sprite_accessory/facial_hair/vox)"
 
 /proc/random_unique_name(gender, attempts_to_find_unique_name=10)
 	for(var/i in 1 to attempts_to_find_unique_name)
