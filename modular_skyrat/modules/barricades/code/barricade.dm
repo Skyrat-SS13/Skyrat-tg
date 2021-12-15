@@ -34,7 +34,11 @@
 	)
 	AddElement(/datum/element/connect_loc, connections)
 	AddElement(/datum/element/climbable)
-	RegisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED, .proc/update_icon())
+	RegisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED, .proc/run_integrity)
+
+/obj/structure/deployable_barricade/proc/run_integrity()
+	SIGNAL_HANDLER
+	update_appearance()
 
 /obj/structure/deployable_barricade/Destroy()
 	UnregisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED)
@@ -283,7 +287,6 @@
 
 /obj/structure/deployable_barricade/wooden/attackby(obj/item/I, mob/user, params)
 	. = ..()
-
 	if(istype(I, /obj/item/stack/sheet/mineral/wood))
 		var/obj/item/stack/sheet/mineral/wood/D = I
 		if(get_integrity() >= max_integrity)
