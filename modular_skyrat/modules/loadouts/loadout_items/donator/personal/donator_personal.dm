@@ -75,9 +75,9 @@
 	ckeywhitelist = list("raxraus")
 	restricted_roles = list("Blueshield", "Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
 
-/datum/loadout_item/suit/rax_peacekeeper_turtleneck
-	name = "Peacekeeper turtleneck"
-	item_path = /obj/item/clothing/under/rank/security/blueshieldturtleneck/rax
+/datum/loadout_item/under/rax_banded_uniform
+	name = "Banded Uniform"
+	item_path = /obj/item/clothing/under/rank/security/rax
 	ckeywhitelist = list("raxraus")
 	restricted_roles = list("Blueshield", "Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
 
@@ -147,7 +147,7 @@
 /datum/loadout_item/mask/nightlight_mask
 	name = "FAR-13 SRU"
 	item_path = /obj/item/clothing/mask/gas/nightlight
-	ckeywhitelist = list("farsightednightlight")
+	ckeywhitelist = list("farsightednightlight", "raxraus")
 
 /datum/loadout_item/mask/kindle_mask
 	name = "Kindle's mask"
@@ -349,3 +349,13 @@
 	name = "Voodoo Doll"
 	item_path = /obj/item/toy/plush/donator/voodoo
 	ckeywhitelist = list("gamerguy14948")
+
+/datum/loadout_item/mask/octusvox
+	name = "Sinister Visor"
+	item_path = /obj/item/clothing/mask/breath/vox/octus
+	ckeywhitelist = list("octus")
+
+/datum/loadout_item/glasses/roseglasses
+	name = "Rose-Colored Glasses"
+	item_path = /obj/item/clothing/glasses/rosecolored
+	ckeywhitelist = list("1ceres", "thebamboozler", "irrigoimport", "zeskorion", "wizardlywoz", "aether217", "duckymomo", "samarai1000", "funkyfetusstrikesback")
