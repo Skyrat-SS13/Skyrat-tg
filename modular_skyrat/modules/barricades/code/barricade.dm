@@ -323,7 +323,7 @@
 	desc = "A durable and easily mounted barricade made from metal plates, often used for rapid fortification. Repairing it requires a welder."
 	icon_state = "metal_0"
 	max_integrity = 200
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 0, "fire" = 80, "acid" = 40)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 100, FIRE = 80, ACID = 40)
 	stack_type = /obj/item/stack/sheet/iron
 	stack_amount = 4
 	destroyed_stack_amount = 2
@@ -601,7 +601,7 @@
 	desc = "A strong plasteel barricade, it can be lowered if necessary. Use a welder to repair it."
 	icon_state = "plasteel_closed_0"
 	max_integrity = 500
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 0, "fire" = 80, "acid" = 40)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 100, FIRE = 80, ACID = 40)
 	stack_type = /obj/item/stack/sheet/plasteel
 	stack_amount = 5
 	destroyed_stack_amount = 2
@@ -846,7 +846,7 @@
 	icon_state = "metal"
 	delay = 3 SECONDS
 
-/obj/item/quikdeploy/cade/can_place(mob/user)
+/obj/item/quikdeploy/barricade/can_place(mob/user)
 	. = ..()
 	if(!.)
 		return FALSE
