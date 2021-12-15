@@ -11,8 +11,13 @@
 	antag_flag = ROLE_TRAITOR
 	antag_datum = /datum/antagonist/traitor
 	minimum_required_age = 0
+<<<<<<< HEAD
 	protected_roles = list("Prisoner","Security Officer", "Warden", "Detective", "Head of Security", "Captain")
 	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative", "Nanotrasen Representative", "Blueshield", "Civil Disputes Officer", "Security Sergeant", "Orderly", "Bouncer", "Customs Agent", "Engineering Guard", "Science Guard") //SKYRAT EDIT - Sec_haul
+=======
+	protected_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_SECURITY, JOB_WARDEN, JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_PRISONER)
+	restricted_roles = list(JOB_AI, JOB_CYBORG)
+>>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
 	required_candidates = 1
 	weight = 5
 	cost = 8 // Avoid raising traitor threat above this, as it is the default low cost ruleset.
@@ -53,7 +58,7 @@
 	antag_flag = ROLE_MALF
 	antag_datum = /datum/antagonist/malf_ai
 	minimum_required_age = 14
-	exclusive_roles = list("AI")
+	exclusive_roles = list(JOB_AI)
 	required_candidates = 1
 	weight = 3
 	cost = 18
@@ -97,8 +102,13 @@
 	name = "Blood Brothers"
 	antag_flag = ROLE_BROTHER
 	antag_datum = /datum/antagonist/brother
+<<<<<<< HEAD
 	protected_roles = list("Prisoner","Security Officer", "Warden", "Detective", "Head of Security", "Captain")
 	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative", "Nanotrasen Representative", "Blueshield", "Civil Disputes Officer", "Security Sergeant", "Orderly", "Bouncer", "Customs Agent", "Engineering Guard", "Science Guard") //SKYRAT EDIT - Sec_haul
+=======
+	protected_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_SECURITY, JOB_WARDEN, JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_PRISONER)
+	restricted_roles = list(JOB_AI, JOB_CYBORG)
+>>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
 	required_candidates = 2
 	weight = 4
 	cost = 15
@@ -146,8 +156,13 @@
 	name = "Changelings"
 	antag_flag = ROLE_CHANGELING
 	antag_datum = /datum/antagonist/changeling
+<<<<<<< HEAD
 	protected_roles = list("Prisoner","Security Officer", "Warden", "Detective", "Head of Security", "Captain")
 	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative", "Nanotrasen Representative", "Blueshield", "Civil Disputes Officer", "Security Sergeant", "Orderly", "Bouncer", "Customs Agent", "Engineering Guard", "Science Guard") //SKYRAT EDIT - Sec_haul
+=======
+	protected_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_SECURITY, JOB_WARDEN, JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_PRISONER)
+	restricted_roles = list(JOB_AI, JOB_CYBORG)
+>>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
 	required_candidates = 1
 	weight = 3
 	cost = 16
@@ -185,8 +200,13 @@
 	name = "Heretics"
 	antag_flag = ROLE_HERETIC
 	antag_datum = /datum/antagonist/heretic
+<<<<<<< HEAD
 	protected_roles = list("Prisoner","Security Officer", "Warden", "Detective", "Head of Security", "Captain")
 	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative", "Nanotrasen Representative", "Blueshield", "Civil Disputes Officer", "Security Sergeant", "Orderly", "Bouncer", "Customs Agent", "Engineering Guard", "Science Guard") //SKYRAT EDIT - Sec_haul
+=======
+	protected_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_SECURITY, JOB_WARDEN, JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_PRISONER)
+	restricted_roles = list(JOB_AI, JOB_CYBORG)
+>>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
 	required_candidates = 1
 	weight = 3
 	cost = 15
@@ -233,7 +253,7 @@
 	antag_datum = /datum/antagonist/wizard
 	flags = HIGH_IMPACT_RULESET
 	minimum_required_age = 14
-	restricted_roles = list("Head of Security", "Captain") // Just to be sure that a wizard getting picked won't ever imply a Captain or HoS not getting drafted
+	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_SECURITY) // Just to be sure that a wizard getting picked won't ever imply a Captain or HoS not getting drafted
 	required_candidates = 1
 	weight = 2
 	cost = 20
@@ -276,7 +296,11 @@
 	antag_flag = ROLE_CULTIST
 	antag_datum = /datum/antagonist/cult
 	minimum_required_age = 14
+<<<<<<< HEAD
 	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative", "Nanotrasen Representative", "Blueshield", "Civil Disputes Officer", "Security Sergeant", "Orderly", "Bouncer", "Customs Agent", "Engineering Guard", "Science Guard") //SKYRAT EDIT - Sec_haul
+=======
+	restricted_roles = list(JOB_AI, JOB_CYBORG, JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_CHAPLAIN, JOB_HEAD_OF_SECURITY, JOB_WARDEN, JOB_SECURITY_OFFICER, JOB_DETECTIVE)
+>>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
 	required_candidates = 2
 	weight = 3
 	cost = 20
@@ -334,7 +358,7 @@
 	antag_datum = /datum/antagonist/nukeop
 	var/datum/antagonist/antag_leader_datum = /datum/antagonist/nukeop/leader
 	minimum_required_age = 14
-	restricted_roles = list("Head of Security", "Captain") // Just to be sure that a nukie getting picked won't ever imply a Captain or HoS not getting drafted
+	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_SECURITY) // Just to be sure that a nukie getting picked won't ever imply a Captain or HoS not getting drafted
 	required_candidates = 5
 	weight = 3
 	cost = 20
@@ -419,7 +443,11 @@
 	antag_flag_override = ROLE_REV
 	antag_datum = /datum/antagonist/rev/head
 	minimum_required_age = 14
+<<<<<<< HEAD
 	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative", "Nanotrasen Representative", "Blueshield", "Civil Disputes Officer", "Security Sergeant", "Orderly", "Bouncer", "Customs Agent", "Engineering Guard", "Science Guard") //SKYRAT EDIT - Sec_haul
+=======
+	restricted_roles = list(JOB_AI, JOB_CYBORG, JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY, JOB_WARDEN, JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_RESEARCH_DIRECTOR, JOB_CHIEF_ENGINEER, JOB_CHIEF_MEDICAL_OFFICER)
+>>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
 	required_candidates = 3
 	weight = 3
 	delay = 7 MINUTES
@@ -502,8 +530,13 @@
 	persistent = TRUE
 	antag_datum = /datum/antagonist/gang
 	antag_flag = ROLE_FAMILIES
+<<<<<<< HEAD
 	protected_roles = list("Prisoner", "Head of Personnel")
 	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative", "Nanotrasen Representative", "Blueshield", "Civil Disputes Officer", "Security Sergeant", "Orderly", "Bouncer", "Customs Agent", "Engineering Guard", "Science Guard") //SKYRAT EDIT - Sec_haul
+=======
+	protected_roles = list(JOB_HEAD_OF_PERSONNEL, JOB_PRISONER)
+	restricted_roles = list(JOB_AI, JOB_CYBORG, JOB_CAPTAIN, JOB_RESEARCH_DIRECTOR, JOB_HEAD_OF_SECURITY, JOB_WARDEN, JOB_SECURITY_OFFICER, JOB_DETECTIVE)
+>>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
 	required_candidates = 3
 	weight = 1
 	cost = 19
@@ -598,7 +631,7 @@
 	name = "Monkey"
 	antag_flag = ROLE_MONKEY
 	antag_datum = /datum/antagonist/monkey/leader
-	restricted_roles = list("Cyborg", "AI", "Prisoner")
+	restricted_roles = list(JOB_AI, JOB_CYBORG, JOB_PRISONER)
 	required_candidates = 1
 	weight = 3
 	cost = 0

@@ -1,9 +1,13 @@
 /datum/job/quartermaster
-	title = "Quartermaster"
+	title = JOB_QUARTERMASTER
 	description = "Coordinate cargo technicians and shaft miners, assist with \
 		economical purchasing."
+<<<<<<< HEAD
 	//department_head = list("Head of Personnel") //ORIGINAL
 	department_head = list("Captain") //SKYRAT EDIT CHANGE
+=======
+	department_head = list(JOB_HEAD_OF_PERSONNEL)
+>>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
