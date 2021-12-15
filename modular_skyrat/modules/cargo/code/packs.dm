@@ -95,7 +95,7 @@
 	cost = CARGO_CRATE_VALUE * 30
 	access = ACCESS_MEDICAL
 	contains = list(/obj/item/storage/briefcase/medicalgunset/standard)
-	crate_name = "CWM-479 Medigun Crate"
+	crate_name = "CWM-479 medigun crate"
 
 /datum/supply_pack/medical/medicells
 	name = "Medicell Replacement Crate"
@@ -105,7 +105,7 @@
 	contains = list(/obj/item/weaponcell/medical/brute,
 					/obj/item/weaponcell/medical/burn,
 					/obj/item/weaponcell/medical/toxin)
-	crate_name = "Medicell Replacemnt Crate"
+	crate_name = "medicell replacement crate"
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Security ////////////////////////////////////////
@@ -140,7 +140,7 @@
 	contraband = TRUE
 	contains = list(/obj/item/storage/box/gunset/pepperball,
 					/obj/item/storage/box/gunset/pepperball)
-	crate_name = "Pepperball Pistol Crate"
+	crate_name = "pepperball pistol crate"
 	dangerous = TRUE
 
 /datum/supply_pack/security/wildcat
@@ -212,7 +212,7 @@
 	crate_name = "material pouches crate"
 
 /datum/supply_pack/engineering/doublecap_tanks
-	name = "Double extended emergency tank Crate"
+	name = "Double Extended Emergency Tank Crate"
 	desc = "Contains four double extended-capacity emergency tanks."
 	access_view = ACCESS_ENGINE_EQUIP
 	contains = list(/obj/item/tank/internals/emergency_oxygen/double,
@@ -268,7 +268,7 @@
 	desc = "Nanotrasen offers you, for an exorbatant fee, the ability to lease one of their ERTs favorite gadgets, the Medical Beam Gun"
 	cost = 1000000 //Special case, we don't want to make this in terms of crates because having bikes be a million credits is the whole meme.
 	contains = list(/obj/item/gun/medbeam)
-	crate_name = "Medical Beamgun Crate"
+	crate_name = "medical beamgun crate"
 
 /datum/supply_pack/misc/painting
 	name = "Advanced Art Supplies"
@@ -342,7 +342,7 @@
 	contains = list(/obj/vehicle/ridden/atv/snowmobile = 1,
 			/obj/item/key/atv = 1,
 			/obj/item/clothing/mask/gas/explorer = 1)
-	crate_name = "Snowmobile kit"
+	crate_name = "snowmobile kit"
 	crate_type = /obj/structure/closet/crate/large
 
 //////////////////////////////////////////////////////////////////////////////
@@ -359,7 +359,7 @@
                     /obj/item/food/fries,
                     /obj/item/storage/fancy/nugget_box,
                     /obj/item/storage/fancy/nugget_box)
-	crate_name = "burger n nuggs combo meal"
+	crate_name = "burger-n-nuggs combo meal"
 	crate_type = /obj/structure/closet/crate/wooden
 
 /datum/supply_pack/organic/fiestatortilla
@@ -533,78 +533,3 @@
 	. = ..()
 	for(var/i in 1 to 19)
 		new /obj/item/grown/log(.)
-
-
-//////////////////////////////////////////////////////////////////////////////
-///////////////////////////// Vending Restocks ///////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-
-
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////// Temporarily Disabled ////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-
-/*
-/datum/supply_pack/vending/wardrobes/dormtime //Disabled because the dorm vendor/kinkmate is only half finished and I don't have time to fix it atm.
-	name = "Dorms-Time Restock"
-	desc = "This crate contains a refill for the Droms-Time Vendor."
-	cost = CARGO_CRATE_VALUE * 1.5
-	contains = list(/obj/item/vending_refill/kink)
-	crate_name = "dorms-time restock"
-
-/datum/supply_pack/service/wrapping_paper
-	name = "Cargo Packaging Crate"
-	desc = "Want to mail your loved ones gift-wrapped chocolates, stuffed animals, or the Clown's severed head? You can do all that, with this crate full of festive (and normal) wrapping paper. Also contains a hand labeler and a destination tagger for easy shipping!"
-	cost = 1000
-	contains = list(/obj/item/stack/wrapping_paper,
-					/obj/item/stack/wrapping_paper,
-					/obj/item/stack/wrapping_paper,
-					/obj/item/stack/packageWrap,
-					/obj/item/stack/packageWrap,
-					/obj/item/stack/packageWrap,
-					/obj/item/destTagger,
-					/obj/item/hand_labeler)
-	crate_type = /obj/structure/closet/crate/wooden
-	crate_name = "wrapping paper crate"
-
-/datum/supply_pack/service/cargo_supples
-	name = "Cargo Supplies Crate"
-	desc = "Sold everything that wasn't bolted down? You can get right back to work with this crate containing stamps, an export scanner, destination tagger, hand labeler and some package wrapping. Now with extra toner cartidges!"
-	cost = 1000
-	contains = list(/obj/item/stamp,
-					/obj/item/stamp/denied,
-					/obj/item/export_scanner,
-					/obj/item/destTagger,
-					/obj/item/hand_labeler,
-					/obj/item/toner,
-					/obj/item/toner,
-					/obj/item/stack/packageWrap,
-					/obj/item/stack/packageWrap)
-	crate_name = "cargo supplies crate"
-
-/datum/supply_pack/service/janitor/advanced
-	name = "Advanced Sanitation Crate"
-	desc = "Contains all the essentials for an advanced spacefaring cleanup crew. This kit includes a trashbag, an advanced mop, a bottle of space cleaner, a floor buffer, and a holosign projector. Requires Janitorial Access to Open"
-	cost = 5700
-	access = ACCESS_JANITOR
-	contains = list(/obj/item/storage/bag/trash/bluespace,
-					/obj/item/reagent_containers/spray/cleaner,
-					/obj/item/mop/advanced,
-					/obj/item/lightreplacer,
-					/obj/item/janiupgrade,
-					/obj/item/holosign_creator)
-	crate_name = "advanced santation crate"
-	crate_type = /obj/structure/closet/crate/secure
-
-/datum/supply_pack/misc/shower
-	name = "Shower Supplies"
-	desc = "Everyone needs a bit of R&R. Make sure you get can get yours by ordering this crate filled four towels, a rubber ducky, and soap!"
-	cost = 1000
-	contains = list(/obj/item/reagent_containers/rag/towel,
-					/obj/item/reagent_containers/rag/towel,
-					/obj/item/reagent_containers/rag/towel,
-					/obj/item/reagent_containers/rag/towel,
-					/obj/item/bikehorn/rubberducky,
-					/obj/item/soap/nanotrasen)
-	crate_name = "shower crate"
-*/

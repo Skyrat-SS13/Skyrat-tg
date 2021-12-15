@@ -5,7 +5,7 @@
 // Magazines
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat
-	name = "CFA Wildcat Magazine (.32)"
+	name = "CFA Wildcat magazine (.32)"
 	desc = "Magazines taking .32 ammunition; it fits in the CFA Wildcat. Alt+click to reskin it."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
 	icon_state = "smg32"

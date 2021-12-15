@@ -464,8 +464,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
-/obj/machinery/power/port_gen/pacman/super,
-/obj/item/stack/sheet/mineral/uranium/five,
+/obj/machinery/power/port_gen/pacman,
 /turf/open/floor/iron/dark/side{
 	dir = 4
 	},
@@ -735,8 +734,9 @@
 /turf/open/floor/iron,
 /area/cargo/office)
 "aic" = (
-/obj/machinery/autolathe,
 /obj/effect/turf_decal/bot,
+/obj/structure/table/reinforced,
+/obj/machinery/dish_drive/bullet,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "aid" = (
@@ -6479,16 +6479,8 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/stock_parts/matter_bin/bluespace,
-/obj/item/stock_parts/matter_bin/bluespace,
-/obj/item/stock_parts/scanning_module/triphasic,
-/obj/item/stock_parts/scanning_module/triphasic,
-/obj/item/stock_parts/manipulator/femto,
-/obj/item/stock_parts/manipulator/femto,
-/obj/item/stock_parts/capacitor/quadratic,
-/obj/item/stock_parts/capacitor/quadratic,
-/obj/item/stock_parts/micro_laser/quadultra,
-/obj/item/stock_parts/micro_laser/quadultra,
+/obj/effect/spawner/random/entertainment/money,
+/obj/effect/spawner/random/entertainment/money,
 /turf/open/floor/iron/dark,
 /area/engineering/storage/tech)
 "bOs" = (
@@ -7338,7 +7330,7 @@
 /obj/effect/turf_decal/delivery,
 /obj/structure/rack/gunrack,
 /obj/machinery/airalarm/directional/south,
-/obj/effect/spawner/armory_spawn/rifles,
+/obj/effect/spawner/armory_spawn/microfusion,
 /turf/open/floor/iron,
 /area/ai_monitored/security/armory)
 "cev" = (
@@ -12810,12 +12802,10 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/engineering{
-	desc = "A rectangular steel crate caked in dust, probably from an era long gone, you wonder how it got here and if it's contents are still relevant.";
-	name = "Dusty Old Engine Crate"
+	name = "Turbine Board Crate"
 	},
-/obj/item/circuitboard/machine/circulator,
-/obj/item/circuitboard/machine/circulator,
-/obj/item/circuitboard/machine/generator,
+/obj/item/circuitboard/computer/turbine_computer,
+/obj/item/circuitboard/machine/power_turbine,
 /turf/open/floor/iron/dark/side{
 	dir = 4
 	},
@@ -19028,11 +19018,6 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/main)
-"gQD" = (
-/obj/structure/lattice,
-/obj/structure/lattice/catwalk,
-/turf/open/openspace/airless/planetary,
-/area/space/nearstation)
 "gRd" = (
 /obj/structure/bookcase/random/reference,
 /turf/open/floor/wood,
@@ -20607,7 +20592,7 @@
 /obj/effect/turf_decal/delivery,
 /obj/structure/rack/gunrack,
 /obj/machinery/firealarm/directional/south,
-/obj/effect/spawner/armory_spawn/rifles,
+/obj/effect/spawner/armory_spawn/microfusion,
 /turf/open/floor/iron/dark/corner{
 	dir = 8
 	},
@@ -22163,15 +22148,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/brig)
-"ijS" = (
-/obj/effect/turf_decal/bot,
-/obj/structure/closet/crate/engineering{
-	name = "Turbine Board Crate"
-	},
-/obj/item/circuitboard/machine/power_turbine,
-/obj/item/circuitboard/computer/turbine_computer,
-/turf/open/floor/iron,
-/area/engineering/main)
 "ijV" = (
 /obj/structure/railing{
 	dir = 8
@@ -23072,6 +23048,7 @@
 	name = "engineering camera"
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/cell_charger,
 /turf/open/floor/iron/dark,
 /area/commons/storage/primary)
 "iyH" = (
@@ -25070,27 +25047,27 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes,
-/obj/item/clothing/suit/armor/vest/alt{
+/obj/item/clothing/suit/armor/vest/security{
 	pixel_x = -5;
 	pixel_y = 6
 	},
-/obj/item/clothing/suit/armor/vest/alt{
+/obj/item/clothing/suit/armor/vest/security{
 	pixel_x = 1;
 	pixel_y = 6
 	},
-/obj/item/clothing/suit/armor/vest/alt{
+/obj/item/clothing/suit/armor/vest/security{
 	pixel_x = 7;
 	pixel_y = 6
 	},
-/obj/item/clothing/suit/armor/vest/alt{
+/obj/item/clothing/suit/armor/vest/security{
 	pixel_x = -5;
 	pixel_y = -1
 	},
-/obj/item/clothing/suit/armor/vest/alt{
+/obj/item/clothing/suit/armor/vest/security{
 	pixel_x = 1;
 	pixel_y = -1
 	},
-/obj/item/clothing/suit/armor/vest/alt{
+/obj/item/clothing/suit/armor/vest/security{
 	pixel_x = 7;
 	pixel_y = -1
 	},
@@ -31542,9 +31519,8 @@
 /turf/open/floor/carpet,
 /area/service/cafeteria)
 "lWN" = (
-/obj/machinery/autolathe,
-/obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/stripes,
+/obj/effect/spawner/random/entertainment/arcade,
 /turf/open/floor/iron/dark,
 /area/hallway/secondary/service)
 "lWP" = (
@@ -31803,8 +31779,7 @@
 	dir = 8
 	},
 /obj/machinery/light/directional/east,
-/obj/machinery/power/port_gen/pacman/super,
-/obj/item/stack/sheet/mineral/uranium/five,
+/obj/machinery/power/port_gen/pacman,
 /turf/open/floor/iron/dark/side{
 	dir = 4
 	},
@@ -36104,7 +36079,7 @@
 /turf/open/floor/iron/white/corner,
 /area/hallway/secondary/exit/departure_lounge)
 "nKS" = (
-/obj/structure/closet/secure_closet/genpop,
+/obj/structure/closet/secure_closet/brig/genpop,
 /obj/effect/turf_decal/bot,
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark,
@@ -36211,9 +36186,9 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/machinery/cell_charger_multi,
 /obj/item/stock_parts/cell/high,
 /obj/item/stock_parts/cell/high,
+/obj/machinery/cell_charger,
 /turf/open/floor/iron/dark,
 /area/engineering/storage_shared)
 "nOG" = (
@@ -36952,20 +36927,15 @@
 "oeW" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/bot,
-/obj/machinery/cell_charger_multi{
-	pixel_x = -16
-	},
 /obj/item/radio{
-	pixel_x = 6;
+	pixel_x = -5;
 	pixel_y = 7
 	},
 /obj/item/radio{
 	pixel_x = 10;
 	pixel_y = 3
 	},
-/obj/item/radio{
-	pixel_x = 6
-	},
+/obj/item/radio,
 /turf/open/floor/iron/dark,
 /area/commons/storage/primary)
 "oeX" = (
@@ -38358,7 +38328,7 @@
 	height = 5;
 	id = "laborcamp_home";
 	name = "fore bay 1";
-	roundstart_template = /datum/map_template/shuttle/labour/box;
+	roundstart_template = /datum/map_template/shuttle/labour/skyrat;
 	width = 9
 	},
 /turf/open/floor/plating,
@@ -39228,7 +39198,7 @@
 /turf/open/floor/wood,
 /area/hallway/primary/port)
 "oWA" = (
-/obj/structure/closet/secure_closet/genpop,
+/obj/structure/closet/secure_closet/brig/genpop,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/security/prison/upper)
@@ -41769,6 +41739,11 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
+/obj/machinery/button/crematorium{
+	id = "crematoriumChapel";
+	pixel_y = 26;
+	req_access_txt = "27"
+	},
 /turf/open/floor/iron,
 /area/service/chapel)
 "pYG" = (
@@ -43539,7 +43514,7 @@
 /area/hallway/secondary/construction/engineering)
 "qHQ" = (
 /obj/structure/window/reinforced,
-/obj/structure/closet/secure_closet/genpop,
+/obj/structure/closet/secure_closet/brig/genpop,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/security/prison/upper)
@@ -46011,7 +45986,6 @@
 /area/hallway/primary/port)
 "rLf" = (
 /obj/effect/turf_decal/bot,
-/obj/machinery/the_singularitygen/tesla,
 /turf/open/floor/iron,
 /area/engineering/main)
 "rLl" = (
@@ -46882,10 +46856,6 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
-/obj/structure/closet/crate/radiation{
-	name = "Supermatter Shard Crate"
-	},
-/obj/machinery/power/supermatter_crystal/shard,
 /turf/open/floor/iron/dark/side{
 	dir = 8
 	},
@@ -48417,7 +48387,8 @@
 /area/maintenance/port/aft)
 "sKE" = (
 /obj/effect/turf_decal/bot,
-/obj/machinery/vending/engivend,
+/obj/structure/rack,
+/obj/effect/spawner/random/engineering/material_cheap,
 /turf/open/floor/iron/dark,
 /area/engineering/storage_shared)
 "sKF" = (
@@ -50014,9 +49985,9 @@
 /area/hallway/primary/port)
 "ttz" = (
 /obj/effect/turf_decal/bot,
-/obj/machinery/autolathe,
 /obj/machinery/newscaster/directional/south,
 /obj/structure/extinguisher_cabinet/directional/east,
+/obj/machinery/vending/tool,
 /turf/open/floor/iron/dark,
 /area/engineering/storage_shared)
 "ttL" = (
@@ -53423,8 +53394,8 @@
 /area/maintenance/department/engine)
 "uJn" = (
 /obj/effect/turf_decal/bot,
-/obj/machinery/vending/tool,
 /obj/machinery/light/directional/south,
+/obj/machinery/vending/engivend,
 /turf/open/floor/iron/dark,
 /area/engineering/storage_shared)
 "uJM" = (
@@ -58960,18 +58931,16 @@
 "wNZ" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/yellow,
-/obj/structure/closet/crate/engineering,
-/obj/machinery/particle_accelerator/control_box,
-/obj/structure/particle_accelerator/end_cap,
-/obj/structure/particle_accelerator/fuel_chamber,
-/obj/structure/particle_accelerator/power_box,
-/obj/structure/particle_accelerator/particle_emitter/center,
-/obj/structure/particle_accelerator/particle_emitter/left,
-/obj/structure/particle_accelerator/particle_emitter/right,
-/obj/item/paper/fluff{
-	info = "If you are stupid enough to build a singularity please don't get it higher then level 2, our last engineering team got eaten by the damn thing when it reached level 3, or y'know just stick with a tesla instead like the area is designed for.";
-	name = "Note to Engineering part 2"
+/obj/structure/closet/crate,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/gps/engineering,
+/obj/item/gps/engineering,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 20
 	},
+/obj/item/crowbar/red,
 /turf/open/floor/iron/dark/side{
 	dir = 9
 	},
@@ -61353,12 +61322,12 @@
 "xFS" = (
 /obj/effect/turf_decal/stripes,
 /obj/structure/table/reinforced,
-/obj/machinery/cell_charger_multi,
 /obj/item/stock_parts/cell/high,
 /obj/item/stock_parts/cell/high,
 /obj/item/stock_parts/cell/high,
 /obj/item/stock_parts/cell/high,
 /obj/machinery/newscaster/directional/north,
+/obj/machinery/cell_charger,
 /turf/open/floor/iron/dark,
 /area/engineering/storage/tech)
 "xFU" = (
@@ -95496,7 +95465,7 @@ rjM
 uMO
 huy
 joZ
-ijS
+rLf
 qvA
 qvA
 qvA
@@ -100757,8 +100726,8 @@ kFm
 bSp
 bSp
 bSp
-gQD
-gQD
+tEH
+tEH
 alg
 alg
 nTy

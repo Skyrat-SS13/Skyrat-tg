@@ -263,7 +263,7 @@ SUBSYSTEM_DEF(job)
 			JobDebug("GRJ skipping Central Command role, Player: [player], Job: [job]")
 			continue
 		//SKYRAT EDIT END
-		
+
 		// This check handles its own output to JobDebug.
 		if(check_job_eligibility(player, job, "GRJ", add_job_to_log = TRUE) != JOB_AVAILABLE)
 			continue
@@ -519,7 +519,8 @@ SUBSYSTEM_DEF(job)
 	// SKYRAT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
 	// The alt job title, if user picked one, or the default
 	var/chosen_title = player_client?.prefs.alt_job_titles[job.title] || job.title
-	// SKYRAT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES
+	var/default_title = job.title
+	// SKYRAT EDIT ADDITION END - job.title
 
 	equipping.job = job.title
 
@@ -550,7 +551,11 @@ SUBSYSTEM_DEF(job)
 			to_chat(player_client, "<span class='infoplain'><b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b></span>")
 		if(CONFIG_GET(number/minimal_access_threshold))
 			to_chat(player_client, span_notice("<B>As this station was initially staffed with a [CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] have been added to your ID card.</B>"))
-
+		//SKYRAT EDIT START - ALTERNATIVE_JOB_TITLES
+		if(chosen_title != default_title)
+			to_chat(player_client, span_infoplain(span_warning("Remember that alternate titles are purely for flavor and roleplay.")))
+			to_chat(player_client, span_infoplain("<span class='doyourjobidiot'>Do not use your \"[chosen_title]\" alt title as an excuse to forego your duties as a [job.title].</span>"))
+		//SKYRAT EDIT END
 		var/related_policy = get_policy(job.title)
 		if(related_policy)
 			to_chat(player_client, related_policy)
@@ -946,6 +951,12 @@ SUBSYSTEM_DEF(job)
 	if(possible_job.has_banned_species(player.client.prefs))
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_SPECIES)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_SPECIES
+
+	if(length_char(player.client.prefs.read_preference(/datum/preference/text/flavor_text)) <= 150)
+		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_FLAVOUR)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_FLAVOUR
+
+
 	//SKYRAT EDIT END
 
 	// Run this check after is_banned_from since it can query the DB which may sleep.

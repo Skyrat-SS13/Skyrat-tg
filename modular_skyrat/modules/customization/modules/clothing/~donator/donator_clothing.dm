@@ -407,11 +407,12 @@
 	inhand_icon_state = "sechailer"
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS //same flags as actual sec hailer gas mask
 	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
-	flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES | PEPPERPROOF
+	flags_cover = MASKCOVERSMOUTH
 	visor_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
 	visor_flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
-	visor_flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES | PEPPERPROOF
+	visor_flags_cover = MASKCOVERSMOUTH
 	w_class = WEIGHT_CLASS_SMALL
+	tint = 0
 
 /obj/item/clothing/mask/gas/nightlight/ui_action_click(mob/user, action)
 	adjustmask(user)
@@ -481,7 +482,7 @@
 
 //Donation reward for Random516
 /obj/item/clothing/gloves/fingerless/blutigen_wraps
-	name = "Blutigen Wraps"
+	name = "Blutigen wraps"
 	desc = "The one who wears these had everything and yet lost it all..."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
 	icon_state = "blutigen_wraps"
@@ -489,7 +490,7 @@
 
 //Donation reward for Random516
 /obj/item/clothing/suit/blutigen_kimono
-	name = "Blutigen Kimono"
+	name = "Blutigen kimono"
 	desc = "For the eyes bestowed upon this shall seek adventure..."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	icon_state = "blutigen_kimono"
@@ -499,7 +500,7 @@
 
 //Donation reward for Random516
 /obj/item/clothing/under/custom/blutigen_undergarment
-	name = "Dragon Undergarments"
+	name = "Dragon undergarments"
 	desc = "The Dragon wears the sexy?"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	icon_state = "blutigen_undergarment"
@@ -605,7 +606,7 @@
 /****************LEGACY REWARDS***************/
 //Donation reward for inferno707
 /obj/item/clothing/neck/cloak/inferno
-	name = "Kiara's Cloak"
+	name = "Kiara's cloak"
 	desc = "The design on this seems a little too familiar."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	icon_state = "infcloak"
@@ -615,7 +616,7 @@
 
 //Donation reward for inferno707
 /obj/item/clothing/neck/human_petcollar/inferno
-	name = "Kiara's Collar"
+	name = "Kiara's collar"
 	desc = "A soft black collar that seems to stretch to fit whoever wears it."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	icon_state = "infcollar"
@@ -632,7 +633,7 @@
 
 //Donation reward for inferno707
 /obj/item/toy/darksabre
-	name = "Kiara's Sabre"
+	name = "Kiara's sabre"
 	desc = "This blade looks as dangerous as its owner."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
@@ -645,7 +646,7 @@
 
 //Donation reward for inferno707
 /obj/item/storage/belt/sabre/darksabre
-	name = "Ornate Sheathe"
+	name = "ornate sheathe"
 	desc = "An ornate and rather sinister looking sabre sheathe."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
@@ -664,7 +665,7 @@
 
 //Donation reward for inferno707
 /obj/item/clothing/suit/armor/vest/darkcarapace
-	name = "Dark Armor"
+	name = "dark armor"
 	desc = "A dark, non-functional piece of armor sporting a red and black finish."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
@@ -729,7 +730,7 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/head/hooded/cloakhood/zuliecloak
-	name = "NT Special Issue"
+	name = "NT special issue"
 	desc = "This hat is unquestionably the best one, bluespaced to and from CentComm. It smells of Fish and Tea with a hint of antagonism"
 	icon_state = "zuliecap"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
@@ -747,7 +748,7 @@
 
 //Donation reward for Kathrin Bailey / Floof Ball
 /obj/item/clothing/under/custom/lannese
-	name = "Lannese Dress"
+	name = "Lannese dress"
 	desc = "An alien cultural garment for women, coming from a distant planet named Cantalan."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	icon_state = "lannese"
@@ -766,7 +767,7 @@
 
 //Donation reward for Hacker T.Dog
 /obj/item/clothing/suit/scraparmour
-	name = "Scrap Armour"
+	name = "scrap armour"
 	desc = "A shoddily crafted piece of armour. It provides no benefit apart from being clunky."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	icon_state = "scraparmor"
@@ -838,7 +839,7 @@
 
 // Donation reward for CandleJax
 /obj/item/clothing/head/helmet/space/plasmaman/candlejax
-	name = "Emission's Helmet"
+	name = "emission's helmet"
 	desc = "A special containment helmet designed for heavy usage. Multiple dings and notches are on this one."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
@@ -848,7 +849,7 @@
 
 // Donation reward for CandleJax
 /obj/item/clothing/under/plasmaman/security/candlejax
-	name = "Emission's Containment Suit"
+	name = "emission's containment suit"
 	desc = "A special containment envirosuit designed for abnormally heated plasmafires. This one seems highly customized."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
@@ -861,14 +862,14 @@
 	actions_types = list(/datum/action/item_action/demonic_whisper)
 
 /obj/item/clothing/glasses/zentai
-	name = "Demonic Sunglasses"
+	name = "demonic sunglasses"
 	desc = "A devilishly fashionable set of shades. An eerie red glint is present."
 	spans = list("velvet")
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
 	icon_state = "zentai"
 	inhand_icon_state = "zentai"
-	tint = 1
+	tint = 0
 	glass_colour_type = /datum/client_colour/glass_colour/red
 
 /datum/action/item_action/demonic_whisper
@@ -884,7 +885,7 @@
 
 // Donation reward for CandleJax
 /obj/item/clothing/head/helmet/sec/peacekeeper/jax
-	name = "HepUnit Standard Helmet"
+	name = "HepUnit standard helmet"
 	desc = "An adjustable riot-grade helmet which protects the user from most forms of blunt force trauma. It comes included with floodlights for deployment in darker environments, as well as a powered visor that can be energized with a current to conceal the users face."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
@@ -965,7 +966,7 @@
 
 // Donation reward for Raxraus
 /obj/item/clothing/suit/jacket/rax
-	name = "Navy Aerostatic Jacket"
+	name = "navy aerostatic jacket"
 	desc = "An expensive jacket with a golden badge on the chest and \"NT\" emblazoned on the back. It weighs surprisingly little, despite how heavy it looks."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
@@ -1115,7 +1116,7 @@
 
 //Donation reward for MyGuy49
 /obj/item/clothing/suit/cloak/ashencloak
-	name = "Ashen Wastewalker Cloak"
+	name = "ashen wastewalker cloak"
 	desc = "A cloak of advanced make. Clearly beyond what ashwalkers are capable of, it was probably pulled from a downed vessel or something. It seems to have been reinforced with goliath hide and watcher sinew, and the hood has been torn off."
 	icon_state = "ashencloak"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
@@ -1125,7 +1126,7 @@
 
 //Donation reward for Hacker T.Dog
 /obj/item/clothing/head/nanotrasen_representative/hubert
-	name = "CC Ensign's cap"
+	name = "CC ensign's cap"
 	desc = "A tailor made peaked cap, denoting the rank of Ensign."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
@@ -1133,7 +1134,7 @@
 
 //Donation reward for Hacker T.Dog
 /obj/item/clothing/suit/armor/vest/nanotrasen_representative/hubert
-	name = "CC Ensign's armoured vest"
+	name = "CC ensign's armoured vest"
 	desc = "A tailor made Ensign's armoured vest, providing the same protection - but in a more stylish fashion."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
@@ -1141,7 +1142,7 @@
 
 //Donation reward for Hacker T.Dog
 /obj/item/clothing/under/rank/nanotrasen_representative/hubert
-	name = "CC Ensign's uniform"
+	name = "CC ensign's uniform"
 	desc = "A tailor-made Ensign's uniform, various medals and chains hang down from it."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
@@ -1166,7 +1167,7 @@
 	icon_state = "cross"
 
 /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/pcrc
-	name = "PCRC Business Clothes"
+	name = "PCRC business clothes"
 	desc = "A formal set of simple business clothes with the logo of the Proxima Centauri Risk Control firm embroidered onto it."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
@@ -1174,9 +1175,49 @@
 	worn_icon_state = "pcrc_clothes"
 
 /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/pcrc
-	name = "PCRC Armored Jacket"
+	name = "PCRC armored jacket"
 	desc = "A heavy-looking armored jacket with the logo of the Proxima Centauri Risk Control firm embedded into the back. A little tag inside reads the ID \"EX-EC-814-92\"."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "pcrc_jacket"
 	worn_icon_state = "pcrc_jacket"
+
+/obj/item/storage/belt/fannypack/occult
+	name = "trinket belt"
+	desc = "A belt covered in various trinkets collected through time. Doesn't look like there's much space for anything else nowadays."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/belts.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/belt.dmi'
+	icon_state = "occultfannypack"
+	worn_icon_state = "occultfannypack"
+
+/obj/item/clothing/under/occult
+	name = "occult collector's outfit"
+	desc = "A set of clothes fit for someone dapper that isn't afraid of getting dirty."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "occultoutfit"
+	mutant_variants = NONE
+
+/obj/item/clothing/head/hooded/occult
+	name = "hood"
+	desc = "Certainly makes you look more ominous."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "occulthood"
+	mutant_variants = NONE
+	dynamic_hair_suffix = "+generic"
+
+/obj/item/clothing/suit/hooded/occult
+	name = "occult collector's coat"
+	desc = "A big, heavy coat lined with leather and ivory cloth, adorned with a hood. It looks dusty."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "occultcoat"
+	hoodtype = /obj/item/clothing/head/hooded/occult
+	mutant_variants = NONE
+
+/obj/item/toy/plush/donator/voodoo
+	name = "voodoo doll"
+	desc = "A not so small voodoo doll made out of cut and sewn potato bags. It almost looks cute."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	icon_state = "voodoo"

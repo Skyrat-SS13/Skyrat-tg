@@ -1,5 +1,5 @@
 /obj/structure/chair/milking_machine
-	name = "Milking machine"
+	name = "milking machine"
 	desc = "A stationary device for milking... things."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/milking_machine.dmi'
 	icon_state = "milking_pink_off"
@@ -1018,10 +1018,10 @@
 			return FALSE
 
 		var/amount = text2num(params["amount"])
-		current_vessel.reagents.trans_to(beaker, amount)
-		current_vessel.reagents.reagent_list[1].name
+		current_vessel.reagents?.trans_to(beaker, amount)
+		current_vessel.reagents?.reagent_list[1].name
 		update_all_visuals()
-		to_chat(usr,span_notice("You transfer [amount] of [current_vessel.reagents.reagent_list[1].name] to [beaker.name]"))
+		to_chat(usr,span_notice("You transfer [amount] of [current_vessel.reagents?.reagent_list[1].name] to [beaker.name]"))
 		return TRUE
 
 // Milking machine construction kit
@@ -1045,6 +1045,8 @@
 // Processor of the process of assembling a kit into a machine
 /obj/item/milking_machine/constructionkit/attackby(obj/item/I, mob/living/carbon/user, params)
 	var/M = /obj/structure/chair/milking_machine
+	if((item_flags & IN_INVENTORY) || (item_flags & IN_STORAGE))
+		return
 	if(I.tool_behaviour == TOOL_WRENCH)
 		if(user.get_held_items_for_side(LEFT_HANDS) == src || user.get_held_items_for_side(RIGHT_HANDS) == src)
 			return

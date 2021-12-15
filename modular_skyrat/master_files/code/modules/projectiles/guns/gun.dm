@@ -11,7 +11,7 @@
 	worn_icon_state = "gun"
 	flags_1 =  CONDUCT_1
 	slot_flags = ITEM_SLOT_BELT
-	custom_materials = list(/datum/material/iron=2000)
+	custom_materials = list(/datum/material/iron = 2000)
 	w_class = WEIGHT_CLASS_NORMAL
 	throwforce = 5
 	throw_speed = 3
@@ -61,8 +61,11 @@
 	var/obj/item/flashlight/seclite/gun_light
 	var/datum/action/item_action/toggle_gunlight/alight
 	var/gunlight_state = "flight"
+	var/gunlight_icon = 'icons/obj/guns/flashlights.dmi'
 
 	var/can_bayonet = FALSE //if a bayonet can be added or removed if it already has one.
+	var/bayonet_state = "bayonet"
+	var/bayonet_icon = 'icons/obj/guns/bayonets.dmi'
 	var/obj/item/knife/bayonet
 	var/knife_x_offset = 0
 	var/knife_y_offset = 0
@@ -158,17 +161,17 @@
 		QDEL_NULL(firemode_action)
 	. = ..()
 
-/obj/item/gun/handle_atom_del(atom/A)
-	if(A == pin)
+/obj/item/gun/handle_atom_del(atom/gun_atom)
+	if(gun_atom == pin)
 		pin = null
-	if(A == chambered)
+	if(gun_atom == chambered)
 		chambered = null
 		update_appearance()
-	if(A == bayonet)
+	if(gun_atom == bayonet)
 		clear_bayonet()
-	if(A == gun_light)
+	if(gun_atom == gun_light)
 		clear_gunlight()
-	if(A == suppressed)
+	if(gun_atom == suppressed)
 		clear_suppressor()
 	. = ..()
 
@@ -292,15 +295,15 @@
 /obj/item/gun/emp_act(severity)
 	. = ..()
 	if(!(. & EMP_PROTECT_CONTENTS))
-		for(var/obj/O in contents)
-			O.emp_act(severity)
+		for(var/obj/iterated_object in contents)
+			iterated_object.emp_act(severity)
 
 /obj/item/gun/attack_secondary(mob/living/victim, mob/living/user, params)
 	if(user.GetComponent(/datum/component/gunpoint))
 		to_chat(user, span_warning("You are already holding someone up!"))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(user == victim)
-		to_chat(user,span_warning("You can't hold yourself up!"))
+		to_chat(user, span_warning("You can't hold yourself up!"))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	user.AddComponent(/datum/component/gunpoint, victim, src)
@@ -323,15 +326,15 @@
 		if(target == user && user.zone_selected != BODY_ZONE_PRECISE_MOUTH) //so we can't shoot ourselves (unless mouth selected)
 			return
 		if(iscarbon(target))
-			var/mob/living/carbon/C = target
-			for(var/i in C.all_wounds)
-				var/datum/wound/W = i
-				if(W.try_treating(src, user))
+			var/mob/living/carbon/carbon_target = target
+			for(var/i in carbon_target.all_wounds)
+				var/datum/wound/target_wound = i
+				if(target_wound.try_treating(src, user))
 					return // another coward cured!
 
 	if(istype(user))//Check if the user can use the gun, if the user isn't alive(turrets) assume it can.
-		var/mob/living/L = user
-		if(!can_trigger_gun(L))
+		var/mob/living/living_user = user
+		if(!can_trigger_gun(living_user))
 			return
 	if(flag)
 		if(user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
@@ -353,14 +356,14 @@
 	var/bonus_spread = 0
 	var/loop_counter = 0
 	if(ishuman(user) && user.combat_mode)
-		var/mob/living/carbon/human/H = user
-		for(var/obj/item/gun/G in H.held_items)
-			if(G == src || G.weapon_weight >= WEAPON_MEDIUM)
+		var/mob/living/carbon/human/human_user = user
+		for(var/obj/item/gun/held_gun in human_user.held_items)
+			if(held_gun == src || held_gun.weapon_weight >= WEAPON_MEDIUM)
 				continue
-			else if(G.can_trigger_gun(user))
+			else if(held_gun.can_trigger_gun(user))
 				bonus_spread += dual_wield_spread
 				loop_counter++
-				addtimer(CALLBACK(G, /obj/item/gun.proc/process_fire, target, user, TRUE, params, null, bonus_spread), loop_counter)
+				addtimer(CALLBACK(held_gun, /obj/item/gun.proc/process_fire, target, user, TRUE, params, null, bonus_spread), loop_counter)
 
 	return process_fire(target, user, TRUE, params, null, bonus_spread)
 
@@ -416,7 +419,7 @@
 /obj/item/gun/proc/recharge_newshot()
 	return
 
-/obj/item/gun/proc/process_burst(mob/living/user, atom/target, message = TRUE, params=null, zone_override = "", sprd = 0, randomized_gun_spread = 0, randomized_bonus_spread = 0, rand_spr = 0, iteration = 0)
+/obj/item/gun/proc/process_burst(mob/living/user, atom/target, message = TRUE, params = null, zone_override = "", sprd = 0, randomized_gun_spread = 0, randomized_bonus_spread = 0, rand_spr = 0, iteration = 0)
 	if(!user || !firing_burst)
 		firing_burst = FALSE
 		return FALSE
@@ -433,8 +436,8 @@
 			sprd = round((rand(0, 1) - 0.5) * DUALWIELD_PENALTY_EXTRA_MULTIPLIER * (randomized_gun_spread + randomized_bonus_spread))
 		else //Smart spread
 			sprd = round((((rand_spr/burst_size) * iteration) - (0.5 + (rand_spr * 0.25))) * (randomized_gun_spread + randomized_bonus_spread))
-		before_firing(target,user)
-		if(!chambered.fire_casing(target, user, params, ,suppressed, zone_override, sprd, src))
+		before_firing(target, user)
+		if(!chambered.fire_casing(target, user, params, , suppressed, zone_override, sprd, src))
 			shoot_with_empty_chamber(user)
 			firing_burst = FALSE
 			return FALSE
@@ -475,7 +478,7 @@
 		base_bonus_spread += 10
 
 	if(spread)
-		randomized_gun_spread =	rand(0,spread)
+		randomized_gun_spread =	rand(0, spread)
 	var/randomized_bonus_spread = rand(base_bonus_spread, bonus_spread)
 
 	if(burst_size > 1)
@@ -489,7 +492,7 @@
 					to_chat(user, span_warning("[src] is lethally chambered! You don't want to risk harming anyone..."))
 					return
 			sprd = round((rand(0, 1) - 0.5) * DUALWIELD_PENALTY_EXTRA_MULTIPLIER * (randomized_gun_spread + randomized_bonus_spread))
-			before_firing(target,user)
+			before_firing(target, user)
 			if(!chambered.fire_casing(target, user, params, , suppressed, zone_override, sprd, src))
 				shoot_with_empty_chamber(user)
 				return
@@ -517,52 +520,52 @@
 /obj/item/gun/proc/reset_semicd()
 	semicd = FALSE
 
-/obj/item/gun/attack(mob/M, mob/living/user)
+/obj/item/gun/attack(mob/target, mob/living/user)
 	if(user.combat_mode) //Flogging
 		if(bayonet)
-			M.attackby(bayonet, user)
+			target.attackby(bayonet, user)
 			return
 		else
 			return ..()
 	return
 
-/obj/item/gun/attack_atom(obj/O, mob/living/user, params)
+/obj/item/gun/attack_atom(obj/target, mob/living/user, params)
 	if(user.combat_mode)
 		if(bayonet)
-			O.attackby(bayonet, user)
+			target.attackby(bayonet, user)
 			return
 	return ..()
 
-/obj/item/gun/attackby(obj/item/I, mob/living/user, params)
+/obj/item/gun/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(user.combat_mode)
 		return ..()
-	else if(istype(I, /obj/item/flashlight/seclite))
+	else if(istype(attacking_item, /obj/item/flashlight/seclite))
 		if(!can_flashlight)
 			return ..()
-		var/obj/item/flashlight/seclite/S = I
+		var/obj/item/flashlight/seclite/attaching_seclite = attacking_item
 		if(!gun_light)
-			if(!user.transferItemToLoc(I, src))
+			if(!user.transferItemToLoc(attacking_item, src))
 				return
-			to_chat(user, span_notice("You click [S] into place on [src]."))
-			set_gun_light(S)
+			to_chat(user, span_notice("You click [attaching_seclite] into place on [src]."))
+			set_gun_light(attaching_seclite)
 			update_gunlight()
 			alight = new(src)
 			if(loc == user)
 				alight.Grant(user)
-	else if(istype(I, /obj/item/knife))
-		var/obj/item/knife/K = I
-		if(!can_bayonet || !K.bayonet || bayonet) //ensure the gun has an attachment point available, and that the knife is compatible with it.
+	else if(istype(attacking_item, /obj/item/knife))
+		var/obj/item/knife/attaching_knife = attacking_item
+		if(!can_bayonet || !attaching_knife.bayonet || bayonet) //ensure the gun has an attachment point available, and that the knife is compatible with it.
 			return ..()
-		if(!user.transferItemToLoc(I, src))
+		if(!user.transferItemToLoc(attacking_item, src))
 			return
-		to_chat(user, span_notice("You attach [K] to [src]'s bayonet lug."))
-		bayonet = K
+		to_chat(user, span_notice("You attach [attaching_knife] to [src]'s bayonet lug."))
+		bayonet = attaching_knife
 		update_appearance()
 
 	else
 		return ..()
 
-/obj/item/gun/screwdriver_act(mob/living/user, obj/item/I)
+/obj/item/gun/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(.)
 		return
@@ -573,56 +576,56 @@
 		var/obj/item/item_to_remove = input(user, "Select an attachment to remove", "Attachment Removal") as null|obj in sort_names(possible_items)
 		if(!item_to_remove || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 			return
-		return remove_gun_attachment(user, I, item_to_remove)
+		return remove_gun_attachment(user, tool, item_to_remove)
 
 	else if(gun_light && can_flashlight) //if it has a gun_light and can_flashlight is false, the flashlight is permanently attached.
-		return remove_gun_attachment(user, I, gun_light, "unscrewed")
+		return remove_gun_attachment(user, tool, gun_light, "unscrewed")
 
 	else if(bayonet && can_bayonet) //if it has a bayonet, and the bayonet can be removed
-		return remove_gun_attachment(user, I, bayonet, "unfix")
+		return remove_gun_attachment(user, tool, bayonet, "unfix")
 
 	else if(pin && user.is_holding(src))
-		user.visible_message(span_warning("[user] attempts to remove [pin] from [src] with [I]."),
+		user.visible_message(span_warning("[user] attempts to remove [pin] from [src] with [tool]."),
 		span_notice("You attempt to remove [pin] from [src]. (It will take [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)"), null, 3)
-		if(I.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, volume = 50))
+		if(tool.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, volume = 50))
 			if(!pin) //check to see if the pin is still there, or we can spam messages by clicking multiple times during the tool delay
 				return
 			user.visible_message(span_notice("[pin] is pried out of [src] by [user], destroying the pin in the process."),
-								span_warning("You pry [pin] out with [I], destroying the pin in the process."), null, 3)
+								span_warning("You pry [pin] out with [tool], destroying the pin in the process."), null, 3)
 			QDEL_NULL(pin)
 			return TRUE
 
-/obj/item/gun/welder_act(mob/living/user, obj/item/I)
+/obj/item/gun/welder_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(.)
 		return
 	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
 	if(pin && user.is_holding(src))
-		user.visible_message(span_warning("[user] attempts to remove [pin] from [src] with [I]."),
+		user.visible_message(span_warning("[user] attempts to remove [pin] from [src] with [tool]."),
 		span_notice("You attempt to remove [pin] from [src]. (It will take [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)"), null, 3)
-		if(I.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, 5, volume = 50))
+		if(tool.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, 5, volume = 50))
 			if(!pin) //check to see if the pin is still there, or we can spam messages by clicking multiple times during the tool delay
 				return
 			user.visible_message(span_notice("[pin] is spliced out of [src] by [user], melting part of the pin in the process."),
-								span_warning("You splice [pin] out of [src] with [I], melting part of the pin in the process."), null, 3)
+								span_warning("You splice [pin] out of [src] with [tool], melting part of the pin in the process."), null, 3)
 			QDEL_NULL(pin)
 			return TRUE
 
-/obj/item/gun/wirecutter_act(mob/living/user, obj/item/I)
+/obj/item/gun/wirecutter_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(.)
 		return
 	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
 	if(pin && user.is_holding(src))
-		user.visible_message(span_warning("[user] attempts to remove [pin] from [src] with [I]."),
+		user.visible_message(span_warning("[user] attempts to remove [pin] from [src] with [tool]."),
 		span_notice("You attempt to remove [pin] from [src]. (It will take [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)"), null, 3)
-		if(I.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, volume = 50))
+		if(tool.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, volume = 50))
 			if(!pin) //check to see if the pin is still there, or we can spam messages by clicking multiple times during the tool delay
 				return
 			user.visible_message(span_notice("[pin] is ripped out of [src] by [user], mangling the pin in the process."),
-								span_warning("You rip [pin] out of [src] with [I], mangling the pin in the process."), null, 3)
+								span_warning("You rip [pin] out of [src] with [tool], mangling the pin in the process."), null, 3)
 			QDEL_NULL(pin)
 			return TRUE
 
@@ -728,20 +731,19 @@
 	if(gun_light)
 		var/mutable_appearance/flashlight_overlay
 		var/state = "[gunlight_state][gun_light.on? "_on":""]" //Generic state.
-		if(gun_light.icon_state in icon_states('icons/obj/guns/flashlights.dmi')) //Snowflake state?
+		if(gun_light.icon_state in icon_states(gunlight_icon)) //Snowflake state?
 			state = gun_light.icon_state
-		flashlight_overlay = mutable_appearance('icons/obj/guns/flashlights.dmi', state)
+		flashlight_overlay = mutable_appearance(gunlight_icon, state)
 		flashlight_overlay.pixel_x = flight_x_offset
 		flashlight_overlay.pixel_y = flight_y_offset
 		. += flashlight_overlay
 
 	if(bayonet)
 		var/mutable_appearance/knife_overlay
-		var/state = "bayonet" //Generic state.
-		if(bayonet.icon_state in icon_states('icons/obj/guns/bayonets.dmi')) //Snowflake state?
+		var/state = bayonet_state
+		if(bayonet.icon_state in icon_states(bayonet_icon)) //Snowflake state?
 			state = bayonet.icon_state
-		var/icon/bayonet_icons = 'icons/obj/guns/bayonets.dmi'
-		knife_overlay = mutable_appearance(bayonet_icons, state)
+		knife_overlay = mutable_appearance(bayonet_icon, state)
 		knife_overlay.pixel_x = knife_x_offset
 		knife_overlay.pixel_y = knife_y_offset
 		. += knife_overlay
@@ -792,7 +794,7 @@
 	pin = new /obj/item/firing_pin
 
 //Happens before the actual projectile creation
-/obj/item/gun/proc/before_firing(atom/target,mob/user)
+/obj/item/gun/proc/before_firing(atom/target, mob/user)
 	return
 
 /////////////
@@ -819,8 +821,8 @@
 	if(!. && gun)
 		gun.zoom(owner, owner.dir, FALSE)
 
-/datum/action/toggle_scope_zoom/Remove(mob/living/L)
-	gun.zoom(L, L.dir, FALSE)
+/datum/action/toggle_scope_zoom/Remove(mob/living/user)
+	gun.zoom(user, user.dir, FALSE)
 	..()
 
 /obj/item/gun/proc/rotate(atom/thing, old_dir, new_dir)
@@ -828,7 +830,7 @@
 
 	if(ismob(thing))
 		var/mob/lad = thing
-		lad.client.view_size.zoomOut(zoom_out_amt, zoom_amt, new_dir)
+		lad.client?.view_size.zoomOut(zoom_out_amt, zoom_amt, new_dir)
 
 /obj/item/gun/proc/zoom(mob/living/user, direc, forced_zoom)
 	if(!user || !user.client)
@@ -841,10 +843,10 @@
 
 	if(zoomed)
 		RegisterSignal(user, COMSIG_ATOM_DIR_CHANGE, .proc/rotate)
-		user.client.view_size.zoomOut(zoom_out_amt, zoom_amt, direc)
+		user.client?.view_size.zoomOut(zoom_out_amt, zoom_amt, direc)
 	else
 		UnregisterSignal(user, COMSIG_ATOM_DIR_CHANGE)
-		user.client.view_size.zoomIn()
+		user.client?.view_size.zoomIn()
 	return zoomed
 
 //Proc, so that gun accessories/scopes/etc. can easily add zooming.

@@ -22,7 +22,7 @@
 
 	if(turfs.len) //Pick a turf to spawn at if we can
 		var/turf/spawning_turf = pick(turfs)
-		new /datum/spacevine_controller(spawning_turf, list(pick(subtypesof(/datum/spacevine_mutation))), rand(10,100), rand(1,6), src) //spawn a controller at turf with randomized stats and a single random mutation
+		new /datum/spacevine_controller(spawning_turf, list(pick(subtypesof(/datum/spacevine_mutation))), rand(10, 100), rand(1, 6), src) //spawn a controller at turf with randomized stats and a single random mutation
 		new /mob/living/simple_animal/hostile/venus_human_trap(spawning_turf)
 		new /mob/living/simple_animal/hostile/venus_human_trap(spawning_turf)
 
@@ -55,13 +55,13 @@
 /datum/spacevine_mutation/proc/on_death(obj/structure/spacevine/vine_object)
 	return
 
-/datum/spacevine_mutation/proc/on_hit(obj/structure/spacevine/vine_object, mob/hitter, obj/item/I, expected_damage)
+/datum/spacevine_mutation/proc/on_hit(obj/structure/spacevine/vine_object, mob/hitter, obj/item/item_used, expected_damage)
 	. = expected_damage
 
 /datum/spacevine_mutation/proc/on_cross(obj/structure/spacevine/vine_object, mob/crosser)
 	return
 
-/datum/spacevine_mutation/proc/on_chem(obj/structure/spacevine/vine_object, datum/reagent/R)
+/datum/spacevine_mutation/proc/on_chem(obj/structure/spacevine/vine_object, datum/reagent/reagent_applied)
 	return
 
 /datum/spacevine_mutation/proc/on_eat(obj/structure/spacevine/vine_object, mob/living/eater)
@@ -76,7 +76,7 @@
 /datum/spacevine_mutation/proc/on_explosion(severity, target, obj/structure/spacevine/vine_object)
 	return
 
-/datum/spacevine_mutation/aggressive_spread/proc/aggrospread_act(obj/structure/spacevine/S, mob/living/M)
+/datum/spacevine_mutation/aggressive_spread/proc/aggrospread_act(obj/structure/spacevine/spreading_vine, mob/living/buckled_mob)
 	return
 
 // Creates light
@@ -124,7 +124,7 @@
 		. = 1
 		QDEL_IN(vine_object, 5)
 
-/datum/spacevine_mutation/explosive/on_death(obj/structure/spacevine/vine_object, mob/hitter, obj/item/I)
+/datum/spacevine_mutation/explosive/on_death(obj/structure/spacevine/vine_object, mob/hitter, obj/item/hitting_item)
 	explosion(vine_object, light_impact_range = severity, adminlog = FALSE)
 
 
@@ -188,20 +188,20 @@
 	var/armor = hit_carbon.run_armor_check(limb, MELEE, null, null) //armor = the armor value of that randomly chosen bodypart. Nulls to not print a message, because it would still print on pierce.
 	var/datum/spacevine_mutation/thorns/has_thorns = locate() in attacking_vine.mutations //Searches for the thorns mutation in the "mutations"-list inside obj/structure/spacevine, and defines T if it finds it.
 	if(has_thorns && (prob(40))) //If we found the thorns mutation there is now a chance to get stung instead of lashed or smashed.
-		hit_carbon.apply_damage(50, BRUTE, def_zone = limb, wound_bonus = rand(-20,10), sharpness = SHARP_POINTY) //This one gets a bit lower damage because it ignores armor.
+		hit_carbon.apply_damage(50, BRUTE, def_zone = limb, wound_bonus = rand(-20, 10), sharpness = SHARP_POINTY) //This one gets a bit lower damage because it ignores armor.
 		hit_carbon.Stun(1 SECONDS) //Stopped in place for a moment.
 		playsound(hit_mob, 'sound/weapons/pierce.ogg', 50, TRUE, -1)
 		hit_mob.visible_message(span_danger("[hit_mob] is nailed by a sharp thorn!"), span_userdanger("You are nailed by a sharp thorn!"))
 		log_combat(attacking_vine, hit_mob, "aggressively pierced") //"Aggressively" for easy ctrl+F'ing in the attack logs.
 	else
 		if(prob(80))
-			hit_carbon.apply_damage(60, BRUTE, def_zone = limb, blocked = armor, wound_bonus = rand(-20,10), sharpness = SHARP_EDGED)
+			hit_carbon.apply_damage(60, BRUTE, def_zone = limb, blocked = armor, wound_bonus = rand(-20, 10), sharpness = SHARP_EDGED)
 			hit_carbon.Knockdown(2 SECONDS)
 			playsound(hit_mob, 'sound/weapons/whip.ogg', 50, TRUE, -1)
 			hit_mob.visible_message(span_danger("[hit_mob] is lacerated by an outburst of vines!"), span_userdanger("You are lacerated by an outburst of vines!"))
 			log_combat(attacking_vine, hit_mob, "aggressively lacerated")
 		else
-			hit_carbon.apply_damage(60, BRUTE, def_zone = limb, blocked = armor, wound_bonus = rand(-20,10), sharpness = NONE)
+			hit_carbon.apply_damage(60, BRUTE, def_zone = limb, blocked = armor, wound_bonus = rand(-20, 10), sharpness = NONE)
 			hit_carbon.Knockdown(3 SECONDS)
 			var/atom/throw_target = get_edge_target_turf(hit_carbon, get_dir(attacking_vine, get_step_away(hit_carbon, attacking_vine)))
 			hit_carbon.throw_at(throw_target, 3, 6)
@@ -306,7 +306,7 @@
 		living_crosser.adjustBruteLoss(5)
 		to_chat(living_crosser, span_alert("You cut yourself on the thorny vines."))
 
-/datum/spacevine_mutation/thorns/on_hit(obj/structure/spacevine/vine_object, mob/living/hitter, obj/item/I, expected_damage)
+/datum/spacevine_mutation/thorns/on_hit(obj/structure/spacevine/vine_object, mob/living/hitter, obj/item/hitting_item, expected_damage)
 	if(prob(severity) && istype(hitter) && !isvineimmune(hitter))
 		var/mob/living/attacking_mob = hitter
 		attacking_mob.adjustBruteLoss(5)
@@ -340,7 +340,7 @@
 	severity = 10
 
 /datum/spacevine_mutation/flowering/on_grow(obj/structure/spacevine/vine_object)
-	if(vine_object.energy == 2 && prob(severity) && !locate(/obj/structure/alien/resin/flower_bud) in range(5,vine_object))
+	if(vine_object.energy == 2 && prob(severity) && !locate(/obj/structure/alien/resin/flower_bud) in range(5, vine_object))
 		new/obj/structure/alien/resin/flower_bud(get_turf(vine_object))
 
 /datum/spacevine_mutation/flowering/on_cross(obj/structure/spacevine/vine_object, mob/living/crosser)
@@ -371,7 +371,7 @@
 	severity = 2
 	quality = NEGATIVE
 
-/datum/spacevine_mutation/meleereflecting/on_hit(obj/structure/spacevine/vine_object, mob/hitter, obj/item/I, expected_damage)
+/datum/spacevine_mutation/meleereflecting/on_hit(obj/structure/spacevine/vine_object, mob/hitter, obj/item/hitting_item, expected_damage)
 	if(isliving(hitter))
 		var/mob/living/attacking_mob = hitter
 		if(isvineimmune(attacking_mob))
@@ -420,7 +420,7 @@
 	severity = 3
 	quality = NEGATIVE
 
-/datum/spacevine_mutation/electrify/on_hit(obj/structure/spacevine/vine_object, mob/hitter, obj/item/I, expected_damage)
+/datum/spacevine_mutation/electrify/on_hit(obj/structure/spacevine/vine_object, mob/hitter, obj/item/hitting_item, expected_damage)
 	if(isliving(hitter))
 		var/mob/living/living_hitter = hitter
 		if(isvineimmune(living_hitter))
@@ -612,7 +612,7 @@
 	mutations = list()
 	set_opacity(0)
 	if(has_buckled_mobs())
-		unbuckle_all_mobs(force=1)
+		unbuckle_all_mobs(force = 1)
 	return ..()
 
 
@@ -681,7 +681,7 @@
 /obj/structure/spacevine/attack_paw(mob/living/user, list/modifiers)
 	for(var/datum/spacevine_mutation/vine_mutation in mutations)
 		vine_mutation.on_hit(src, user)
-	user_unbuckle_mob(user,user)
+	user_unbuckle_mob(user, user)
 
 /obj/structure/spacevine/attack_alien(mob/living/user, list/modifiers)
 	eat(user)
@@ -828,7 +828,7 @@
 /// Finds a target tile to spread to. If checks pass it will spread to it and also proc on_spread on target.
 /obj/structure/spacevine/proc/spread()
 	var/direction = pick(GLOB.cardinals)
-	var/turf/stepturf = get_step(src,direction)
+	var/turf/stepturf = get_step(src, direction)
 	var/datum/spacevine_mutation/domesticated/domesticated = locate() in mutations
 	if(!domesticated)
 		for(var/obj/machinery/door/target_door in stepturf.contents)
@@ -856,7 +856,7 @@
 			return
 		for(var/datum/spacevine_mutation/vine_mutation in mutations)
 			vine_mutation.on_spread(src, target_turf) //Only do the on_spread proc if it actually spreads.
-			target_turf = get_step(src,target_dir) //in case turf changes, to make sure no runtimes happen
+			target_turf = get_step(src, target_dir) //in case turf changes, to make sure no runtimes happen
 		master.spawn_spacevine_piece(target_turf, src)
 
 /obj/structure/spacevine/ex_act(severity, target)
