@@ -105,7 +105,8 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/set_ooc,
 	/client/proc/reset_ooc,
 	/client/proc/forceEvent,
-	/datum/admins/proc/atc_force, // SKYRAT EDIT ADDITION
+	/datum/admins/proc/atc_force_random, // SKYRAT EDIT ADDITION
+	/datum/admins/proc/atc_force_custom, // SKYRAT EDIT ADDITION
 	/client/proc/admin_change_sec_level,
 	/client/proc/toggle_nuke,
 	/client/proc/run_weather,

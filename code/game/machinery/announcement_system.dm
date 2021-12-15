@@ -121,7 +121,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	data["arrivalToggle"] = arrivalToggle
 	data["newhead"] = newhead
 	data["newheadToggle"] = newheadToggle
-	data["atcToggle"] = ATC.atcBlocked	//Skyrat Edit Addition: Busyspace
+	data["atcToggle"] = ATC.atcOnline	//Skyrat Edit Addition: Busyspace
 	return data
 
 /obj/machinery/announcement_system/ui_act(action, param)
@@ -156,7 +156,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 			arrivalToggle = !arrivalToggle
 			update_appearance()
 		if("atcToggle")	//Skyrat Edit Addition: Busyspace
-			ATC.atcBlocked = !ATC.atcBlocked	//Skyrat Edit Addition: Busyspace
+			ATC.reroute_traffic(usr)	//Skyrat Edit Addition: Busyspace
 	add_fingerprint(usr)
 
 /obj/machinery/announcement_system/attack_robot(mob/living/silicon/user)

@@ -1,56 +1,60 @@
-//Cactus, Speedbird, Dynasty, oh my
+//Cactus, Speedbird, Dynasty, oh my	//I still dont know what this means. Are they credits?
 
 var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 
 /datum/lore/atc_controller
-	var/delay_max = 1 MINUTES			//How long between ATC traffic, max.  Default is 25 mins.
-	var/delay_min = 2 MINUTES			//How long between ATC traffic, min.  Default is 40 mins.
-	var/backoff_delay = 5 MINUTES		//How long to back off if we can't talk and want to.  Default is 5 mins.
-	var/next_message					//When the next message should happen in world.time
-	var/force_chatter_type				//Force a specific type of messages
+	///How long between ATC traffic, maximum.  Default is 40 mins.
+	var/delay_max = 1 MINUTES
+	///How long between ATC traffic, minimum.  Default is 25 mins.
+	var/delay_min = 2 MINUTES
+	///How long to back off if we can't talk and want to.  Default is 5 mins. (How long between checks if the system is offline).
+	var/backoff_delay = 5 MINUTES
+	///When the next message should happen in world.time
+	var/next_message
 
-	var/atcBlocked = 0					//If ATC messages are blocked
+	///Force a specific type of message
+	var/force_chatter_type
 
-/datum/lore/atc_controller/Initialize()
-	RegisterSignal(SSticker, COMSIG_TICKER_ROUND_STARTING, .proc/New())
-	//Wait until roundstart to begin, because for some reason it didnt want to.
+	///Used to freeze the reroute_traffic() proc so people can't spam the toggle messages
+	var/spam_check = FALSE
+	///If ATC messages are coming thru; wont affect ERT/Arrivals/Evac, toggled in reroute_traffic()
+	var/atcOnline = TRUE
 
 /datum/lore/atc_controller/New(msg)
-	spawn(30 SECONDS) //Lots of lag at the start of a shift, wait for everything to finish setting up before spawning
-		msg("New shift beginning, resuming traffic control.")
+	//RegisterSignal(SSticker, COMSIG_TICKER_ROUND_STARTING, /datum/station_trait/proc/on_round_start)
+	msg("New shift beginning, resuming traffic control.")
 	next_message = world.time + rand(delay_min,delay_max)
 	process()
 
 /datum/lore/atc_controller/process()
 	if(world.time >= next_message)
-		if(atcBlocked)
+		if(!atcOnline)
 			next_message = world.time + backoff_delay
 		else
 			next_message = world.time + rand(delay_min,delay_max)
 			random_convo()
-
 	spawn(1 MINUTES)
 		process()
 
 /datum/lore/atc_controller/proc/msg(var/message,var/sender)
 	ASSERT(message)
-	atc_announce("[message]", title = "Airspace Announcements", sound = 'sound/misc/compiler-stage2.ogg')
+	if(!sender)
+		sender = "Airspace Announcements"
+	atc_announce("[message]", title = "[sender]", sound = 'sound/misc/compiler-stage2.ogg')
 
-/datum/lore/atc_controller/proc/reroute_traffic(var/yes = 1)	//This is an admin variable to manually toggle it rather than using the AAS
-	if(yes)
-		if(!atcBlocked)
-			msg("Rerouting traffic away from Layenia.")
-		atcBlocked = 1
-	else
-		if(atcBlocked)
-			msg("Resuming normal traffic routing around Layenia.")
-		atcBlocked = 0
+/datum/lore/atc_controller/proc/reroute_traffic(var/spammer)
+	if(spam_check == TRUE)
+		to_chat(spammer, "Slow down, you can't spam the system like that!")
+		return
+	atcOnline = !atcOnline
+	spam_check = TRUE
+	addtimer(CALLBACK(src, .proc/submit_again), 10 SECONDS)
+	msg("[atcOnline ? "Resuming normal traffic routing around" : "Rerouting traffic away from"] Layenia.")
 
-/datum/lore/atc_controller/proc/shift_ending(var/evac = 0)
-	msg("Automated Shuttle departing Layenia for Kinaris Sector Command on routine transfer route.","Automated Shuttle")
-	sleep(5 SECONDS)
-	msg("Automated Shuttle, cleared to complete routine transfer from Layenia to Kinaris Sector Command.")
+/datum/lore/atc_controller/proc/submit_again()
+	spam_check = FALSE
 
+///Generates our random messages as time goes on; uses lore from organizations.dm
 /datum/lore/atc_controller/proc/random_convo()
 	var/one = pick(loremaster.organizations) //These will pick an index, not an instance
 	var/two = pick(loremaster.organizations)
@@ -66,10 +70,10 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 	var/destname = pick(dest.destination_names)			//Pick a random holding from the destination
 
 	var/combined_name = "[owner] [prefix] [shipname]"
-	var/alt_atc_names = list("Layenia TraCon","Layenia Control","Layenia STC","Layenia Airspace")
-	var/wrong_atc_names = list("Hyperion Gridlock","Dzar StarCon")
-	var/mission_noun = list("flight","mission","route")
-	var/request_verb = list("requesting","calling for","asking for")
+	var/alt_atc_names = list("Layenia TraCon", "Layenia Control", "Layenia STC", "Layenia Airspace")
+	var/wrong_atc_names = list("Hyperion Gridlock", "Dzar StarCon", "Layenia TraCon", "Kinaris SC", "Tavros Station")
+	var/mission_noun = list("flight", "mission", "route", "pass")
+	var/request_verb = list("requesting", "calling for", "asking for")
 
 	//First response is 'yes', second is 'no'
 	var/requests = list("Kinaris Sector Command transit clearance" = list("permission for transit granted", "permission for transit denied, contact regional on 953.5"),
@@ -92,9 +96,9 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 	if(force_chatter_type)
 		chatter_type = force_chatter_type
 	else
-		chatter_type = pick(2;"emerg",5;"wrong_freq","normal") //Be nice to have wrong_lang...
+		chatter_type = pick(2;"emerg", 5;"wrong_freq", "normal")	//TODO: 5;"wrong_lang",
 
-	var/yes = prob(90) //Chance for them to say yes vs no
+	var/yes = prob(85) //Chance for them to say yes vs no
 
 	var/request = pick(requests)
 	var/callname = pick(alt_atc_names)
@@ -111,7 +115,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 			full_response = "[combined_name], this is Layenia TraCon, wrong frequency. Switch to [rand(700,999)].[rand(1,9)]."
 			full_closure = "Layenia TraCon, understood, apologies."
 		if("wrong_lang")
-			//Can't implement this until autosay has language support
+			//TO-DO
 		if("emerg")
 			var/problem = pick("hull breaches on multiple decks","unknown life forms on board","a drive about to go critical","asteroids impacting the hull","a total loss of engine power","people trying to board the ship")
 			full_request = "This is [combined_name] declaring an emergency! We have [problem]!"
