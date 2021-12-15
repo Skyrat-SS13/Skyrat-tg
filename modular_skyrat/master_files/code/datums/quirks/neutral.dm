@@ -1,7 +1,9 @@
 /datum/quirk/equipping
 	abstract_parent_type = /datum/quirk/equipping
-	var/list/items
-	var/list/forced_items
+	/// the items that will be equipped, formatted in the way of [item_path = list of slots it can be equipped to], will not equip over nodrop items
+	var/list/items = list()
+	/// the items that will be forcefully equipped, formatted in the way of [item_path = list of slots it can be equipped to], will equip over nodrop items
+	var/list/forced_items = list()
 
 /datum/quirk/equipping/add_unique()
 	var/mob/living/carbon/carbon_holder = quirk_holder
@@ -14,6 +16,11 @@
 			continue
 		var/item = new item_path(carbon_holder.loc)
 		var/success = FALSE
+		//Checking for nodrop and seeing if there's an empty slot
+		for (var/slot as anything in all_items[item_path])
+			success = force_equip_item(carbon_holder, item, slot, check_item = FALSE)
+			if (success)
+				break
 		//Checking for nodrop
 		for (var/slot as anything in all_items[item_path])
 			success = force_equip_item(carbon_holder, item, slot)
@@ -27,24 +34,25 @@
 				if (success)
 					break
 		equipped_items[item] = success
-	on_equip_items(equipped_items)
+	for (var/item as anything in equipped_items)
+		on_equip_item(item, equipped_items[item])
 
-/datum/quirk/equipping/proc/force_equip_item(mob/living/carbon/target, obj/item/item, slot, check_nodrop = TRUE)
+/datum/quirk/equipping/proc/force_equip_item(mob/living/carbon/target, obj/item/item, slot, check_nodrop = TRUE, check_item = TRUE)
 	var/obj/item/item_in_slot = target.get_item_by_slot(slot)
-	if (item_in_slot)
+	if (check_item && item_in_slot)
 		if (check_nodrop && HAS_TRAIT(item_in_slot, TRAIT_NODROP))
 			return FALSE
 		target.dropItemToGround(item_in_slot, force = TRUE)
 	return target.equip_to_slot_if_possible(item, slot, disable_warning = TRUE) //this should never not work tbh
 
-/datum/quirk/equipping/proc/on_equip_items(list/items_equipped)
+/datum/quirk/equipping/proc/on_equip_item(obj/item/equipped, success)
 	return
 
 /datum/quirk/equipping/lungs
 	abstract_parent_type = /datum/quirk/equipping/lungs
 	var/obj/item/organ/lungs/lungs_holding
 	var/obj/item/organ/lungs/lungs_added
-	var/lungs_typepath
+	var/lungs_typepath = /obj/item/organ/lungs
 	items = list(/obj/item/clothing/accessory/breathing = list(ITEM_SLOT_BACKPACK))
 	var/breath_type = "oxygen"
 
@@ -73,12 +81,14 @@
 	lungs_holding.organ_flags &= ~ORGAN_FROZEN
 	carbon_holder.update_internals_hud_icon(1)
 
-/datum/quirk/equipping/lungs/on_equip_items(list/items_equipped)
+/datum/quirk/equipping/lungs/on_equip_item(obj/item/equipped, success)
 	var/mob/living/carbon/human/human_holder = quirk_holder
-	for (var/obj/item/clothing/accessory/breathing/acc in items_equipped)
-		acc.breath_type = breath_type
-		if (acc.can_attach_accessory(human_holder?.w_uniform))
-			acc.attach(human_holder.w_uniform, human_holder)
+	if (!istype(equipped, /obj/item/clothing/accessory/breathing))
+		return
+	var/obj/item/clothing/accessory/breathing/acc = equipped
+	acc.breath_type = breath_type
+	if (acc.can_attach_accessory(human_holder?.w_uniform))
+		acc.attach(human_holder.w_uniform, human_holder)
 
 /obj/item/clothing/accessory/breathing
 	name = "Breathing dogtag"
@@ -119,12 +129,10 @@
 	lungs_typepath = /obj/item/organ/lungs/nitrogen
 	breath_type = "nitrogen"
 
-/datum/quirk/equipping/lungs/nitrogen/on_equip_items(list/items_equipped)
+/datum/quirk/equipping/lungs/nitrogen/on_equip_item(obj/item/equipped, success)
 	. = ..()
 	var/mob/living/carbon/carbon_holder = quirk_holder
-	if (!istype(carbon_holder))
+	if (!success || !istype(carbon_holder) || !istype(equipped, /obj/item/tank/internals))
 		return
-	for (var/obj/item/tank/internals/tank in items_equipped)
-		if (items_equipped[tank])
-			carbon_holder.internal = tank
-			carbon_holder.update_internals_hud_icon(1)
+	carbon_holder.internal = equipped
+	carbon_holder.update_internals_hud_icon(1)
