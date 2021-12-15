@@ -34,6 +34,11 @@
 	)
 	AddElement(/datum/element/connect_loc, connections)
 	AddElement(/datum/element/climbable)
+	RegisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED, .proc/update_icon())
+
+/obj/structure/deployable_barricade/Destroy()
+	UnregisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED)
+	return ..()
 
 /obj/structure/deployable_barricade/examine(mob/user)
 	. = ..()
@@ -80,10 +85,6 @@
 	if((border_dir & dir) && !closed)
 		return . || mover.throwing || mover.movement_type & (FLYING | FLOATING)
 	return TRUE
-
-/obj/structure/deployable_barricade/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
-	. = ..()
-	update_icon()
 
 /obj/structure/deployable_barricade/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/stack/cable_coil) && can_wire)
