@@ -369,7 +369,7 @@
 			fold_up()
 			return TRUE
 
-/obj/structure/deployable_barricade/metal/fold_up()
+/obj/structure/deployable_barricade/metal/proc/fold_up()
 	new portable_type(get_turf(src))
 	qdel(src)
 
