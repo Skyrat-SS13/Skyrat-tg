@@ -91,13 +91,10 @@
 	med_hud_set_status()
 	stop_pulling()
 
-<<<<<<< HEAD
 	cut_overlay(GLOB.combat_indicator_overlay) //SKYRAT EDIT ADDITION - COMBAT_INDICATOR
 	set_combat_indicator(FALSE) //SKYRAT EDIT ADDITION - COMBAT_INDICATOR
 	set_ssd_indicator(FALSE) //SKYRAT EDIT ADDITION - SSD_INDICATOR
 	set_typing_indicator(FALSE) //SKYRAT EDIT ADDITION - TYPING_INDICATOR
-=======
->>>>>>> 680ca7d3b9e (Field of View and Blindness improvements [bounty + upstream push] (#63312))
 
 	SEND_SIGNAL(src, COMSIG_LIVING_DEATH, gibbed)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_DEATH, src, gibbed)
