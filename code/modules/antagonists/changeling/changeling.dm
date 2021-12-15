@@ -35,8 +35,6 @@
 	var/total_chem_storage = 100 //SKYRAT EDIT CHANGE - ORIGINAL: 75
 	var/purchasedpowers = list()
 
-	var/true_form_death //SKYRAT EDIT ADDITION: The time that the horror form died.
-
 	var/mimicing = ""
 	var/canrespec = FALSE//set to TRUE in absorb.dm
 	var/changeling_speak = 0
@@ -66,6 +64,8 @@
 
 	var/list/stolen_memories = list()
 
+	var/true_form_death //SKYRAT EDIT ADDITION: The time that the horror form died.
+
 /datum/antagonist/changeling/New()
 	. = ..()
 	hive_name = hive_name()
@@ -81,20 +81,14 @@
 	. = ..()
 
 /datum/antagonist/changeling/proc/create_actions()
-	if(!cellular_emporium) // SKYRAT EDIT START- PREVENTS DUPLICATION ON AMBITION SUBMIT
-		cellular_emporium = new(src)
-	if(!emporium_action)
-		emporium_action = new(cellular_emporium) // SKYRAT EDIT END
+	cellular_emporium = new(src)
+	emporium_action = new(cellular_emporium)
 	emporium_action.Grant(owner.current)
 
 /datum/antagonist/changeling/on_gain()
-	//SKYRAT EDIT REMOVAL BEGIN - AMBITIONS
-	/*
 	create_actions()
 	reset_powers()
 	create_initial_profile()
-	*/
-	//SKYRAT EDIT REMOVAL END
 	if(give_objectives)
 		forge_objectives()
 	owner.current.grant_all_languages(FALSE, FALSE, TRUE) //Grants omnitongue. We are able to transform our body after all.
@@ -109,11 +103,7 @@
 		if(B && (B.decoy_override != initial(B.decoy_override)))
 			B.organ_flags |= ORGAN_VITAL
 			B.decoy_override = FALSE
-	//SKYRAT EDIT REMOVAL BEGIN - AMBITIONS
-	/*
 	remove_changeling_powers()
-	*/
-	//SKYRAT EDIT REMOVAL END
 	. = ..()
 
 /datum/antagonist/changeling/proc/reset_properties()
@@ -409,10 +399,6 @@
 	//No escape alone because changelings aren't suited for it and it'd probably just lead to rampant robusting
 	//If it seems like they'd be able to do it in play, add a 10% chance to have to escape alone
 
-
-	objectives += new /datum/objective/ambitions() //SKYRAT EDIT ADDITION - AMBITIONS
-	//SKYRAT EDIT REMOVAL BEGIN - AMBITIONS
-	/*
 	var/escape_objective_possible = TRUE
 
 	switch(competitive_objectives ? rand(1,3) : 1)
@@ -473,8 +459,6 @@
 			identity_theft.find_target()
 			objectives += identity_theft
 		escape_objective_possible = FALSE
-	*/
-	//SKYRAT EDIT REMOVAL END
 
 /datum/antagonist/changeling/get_admin_commands()
 	. = ..()
