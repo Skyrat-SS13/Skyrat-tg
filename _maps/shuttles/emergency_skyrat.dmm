@@ -3,7 +3,7 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
@@ -27,9 +27,7 @@
 	},
 /area/shuttle/escape)
 "aY" = (
-/obj/machinery/light{
-	dir = 8
-	},
+/obj/machinery/light/directional/west,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorplace"
 	},
@@ -50,9 +48,7 @@
 	},
 /area/shuttle/escape)
 "bR" = (
-/obj/machinery/light{
-	dir = 4
-	},
+/obj/machinery/light/directional/east,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floormed"
 	},
@@ -358,6 +354,13 @@
 	icon_state = "13,4"
 	},
 /area/shuttle/escape)
+"nF" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/shuttle/evac,
+/area/shuttle/escape)
 "nH" = (
 /obj/structure/extinguisher_cabinet/directional/north,
 /obj/structure/table/reinforced,
@@ -373,9 +376,7 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/obj/machinery/light{
-	dir = 4
-	},
+/obj/machinery/light/directional/east,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
@@ -388,13 +389,12 @@
 	},
 /area/shuttle/escape)
 "ov" = (
-/obj/structure/closet/shuttle/evacvent,
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/evac{
 	icon_state = "8,1"
 	},
 /area/shuttle/escape)
 "oT" = (
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/open/floor/iron/shuttle/evac,
 /area/shuttle/escape)
 "oV" = (
@@ -460,9 +460,6 @@
 	},
 /area/shuttle/escape)
 "rh" = (
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/machinery/flasher{
 	id = "shuttle_flasher";
 	pixel_x = -24;
@@ -491,6 +488,9 @@
 	},
 /area/shuttle/escape)
 "sh" = (
+/obj/structure/closet/shuttle/engivent{
+	pixel_y = 32
+	},
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/evac{
 	icon_state = "8,0"
 	},
@@ -546,12 +546,12 @@
 /area/shuttle/escape)
 "tV" = (
 /obj/machinery/computer/emergency_shuttle/advanced,
-/turf/open/floor/iron/shuttle/evac,
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floorplace2"
+	},
 /area/shuttle/escape)
 "ua" = (
-/obj/machinery/light{
-	dir = 8
-	},
+/obj/machinery/light/directional/east,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "flooreng1"
 	},
@@ -571,6 +571,13 @@
 	icon_state = "13,20"
 	},
 /area/shuttle/escape)
+"vn" = (
+/obj/structure/chair/comfy/shuttle,
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floorplace"
+	},
+/area/shuttle/escape)
 "vu" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/evac{
 	icon_state = "7,24"
@@ -586,12 +593,10 @@
 /area/shuttle/escape)
 "vF" = (
 /obj/structure/chair/comfy/shuttle,
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/machinery/door/window{
 	dir = 8
 	},
+/obj/machinery/light/directional/east,
 /turf/open/floor/carpet/executive,
 /area/shuttle/escape)
 "vS" = (
@@ -605,20 +610,16 @@
 	},
 /area/shuttle/escape)
 "wl" = (
-/obj/machinery/light{
-	dir = 4
-	},
+/obj/machinery/light/directional/west,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "flooreng1"
 	},
 /area/shuttle/escape)
 "wr" = (
-/obj/structure/table,
-/obj/item/storage/toolbox/emergency,
-/obj/item/wrench,
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/closet/shuttle/medical/white,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorplace2"
 	},
@@ -686,9 +687,7 @@
 	},
 /area/shuttle/escape)
 "zC" = (
-/obj/machinery/light{
-	dir = 4
-	},
+/obj/machinery/light/directional/east,
 /turf/open/floor/iron/shuttle/evac,
 /area/shuttle/escape)
 "Ao" = (
@@ -718,9 +717,7 @@
 /obj/machinery/sleeper{
 	dir = 8
 	},
-/obj/machinery/light{
-	dir = 4
-	},
+/obj/machinery/light/directional/east,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floormed"
 	},
@@ -817,7 +814,9 @@
 /area/shuttle/escape)
 "EH" = (
 /obj/machinery/computer/crew/shuttle,
-/turf/open/floor/iron/shuttle/evac,
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floorplace2"
+	},
 /area/shuttle/escape)
 "EU" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/evac{
@@ -882,9 +881,7 @@
 /obj/machinery/vending/wallmed{
 	pixel_x = -32
 	},
-/obj/machinery/light{
-	dir = 8
-	},
+/obj/machinery/light/directional/west,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floormed"
 	},
@@ -962,9 +959,7 @@
 /obj/machinery/sleeper{
 	dir = 4
 	},
-/obj/machinery/light{
-	dir = 8
-	},
+/obj/machinery/light/directional/west,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floormed"
 	},
@@ -1053,7 +1048,7 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floormed"
 	},
@@ -1096,6 +1091,13 @@
 	icon_state = "floorsec2"
 	},
 /area/shuttle/escape/brig)
+"Pa" = (
+/obj/structure/chair/comfy/shuttle,
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floorplace"
+	},
+/area/shuttle/escape)
 "Pd" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/evac{
 	icon_state = "5,2"
@@ -1129,8 +1131,7 @@
 /turf/open/floor/iron/shuttle/evac,
 /area/shuttle/escape)
 "QD" = (
-/obj/structure/closet/shuttle/wagon,
-/obj/effect/spawner/random/maintenance,
+/obj/structure/closet/shuttle/emergency/white,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorplace2"
 	},
@@ -1186,10 +1187,9 @@
 /area/shuttle/escape)
 "SR" = (
 /obj/machinery/computer/communications,
-/obj/machinery/light{
-	dir = 8
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floorplace2"
 	},
-/turf/open/floor/iron/shuttle/evac,
 /area/shuttle/escape)
 "ST" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/evac{
@@ -1253,24 +1253,21 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
 	},
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/machinery/button/flasher{
 	id = "shuttle_flasher";
 	pixel_x = -25;
 	pixel_y = -6
 	},
+/obj/machinery/light/directional/west,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
 /area/shuttle/escape/brig)
 "Ws" = (
 /obj/machinery/computer/atmos_alert,
-/obj/machinery/light{
-	dir = 4
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floorplace2"
 	},
-/turf/open/floor/iron/shuttle/evac,
 /area/shuttle/escape)
 "Wt" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/evac{
@@ -1333,6 +1330,13 @@
 	icon_state = "15,16"
 	},
 /area/shuttle/escape)
+"YN" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/shuttle/evac,
+/area/shuttle/escape)
 "YW" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/evac{
 	icon_state = "15,13"
@@ -1358,7 +1362,9 @@
 /area/shuttle/escape)
 "ZA" = (
 /obj/machinery/computer/security/shuttle,
-/turf/open/floor/iron/shuttle/evac,
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floorplace2"
+	},
 /area/shuttle/escape)
 "ZF" = (
 /turf/template_noop,
@@ -1520,11 +1526,11 @@ lq
 en
 sJ
 SR
-Pu
+nF
 qp
 JR
 eL
-XT
+Pa
 Rc
 Rc
 Li
@@ -1532,7 +1538,7 @@ XT
 Sv
 eL
 AG
-XT
+Pa
 eL
 eL
 Ow
@@ -1636,11 +1642,11 @@ my
 dY
 KI
 Ws
-Pu
+YN
 Qz
 mI
 Ue
-Ev
+vn
 Rc
 Rc
 eL
@@ -1648,7 +1654,7 @@ Ev
 dZ
 eL
 kH
-Ev
+vn
 eL
 eL
 mI

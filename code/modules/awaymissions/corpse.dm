@@ -80,7 +80,7 @@
 		return
 	log_game("[key_name(user)] became [mob_name]")
 	//create(ckey = user.ckey) //ORIGINAL
-	create(user.ckey, null, user) //SKYRAT EDIT CHANGE
+	create(user, null, user.ckey) //SKYRAT EDIT CHANGE
 
 /obj/effect/mob_spawn/Initialize(mapload)
 	. = ..()
@@ -126,7 +126,7 @@
 	return
 
 ///obj/effect/mob_spawn/proc/create(mob/user, newname) //ORIGINAL
-/obj/effect/mob_spawn/proc/create(ckey, newname, mob/user) //SKYRAT EDIT CHANGE
+/obj/effect/mob_spawn/proc/create(mob/user, newname, ckey) //SKYRAT EDIT CHANGE
 	//SKYRAT EDIT CHANGE BEGIN
 	//var/mob/living/M = new mob_type(get_turf(src)) //ORIGINAL
 	var/mob/living/M = create_mob(user, newname)
@@ -230,6 +230,8 @@
 	var/chosen_alias
 	var/is_pref_char
 	var/last_ckey //For validation of the user
+	/// whether the spawner handles the loadout and quirks of the user by itself in one of its own procs, if set to false, the spawner will do it automatically
+	var/handles_loadout_and_quirks = FALSE
 	//SKYRAT EDIT ADDITION END
 
 //SKYRAT EDIT ADDITION BEGIN
@@ -281,9 +283,10 @@
 		//Pre-job equips so Voxes dont die
 		H.dna.species.pre_equip_species_outfit(null, H)
 		H.regenerate_icons()
-		SSquirks.AssignQuirks(H, user.client, TRUE, TRUE, null, FALSE, H)
-		for(var/datum/loadout_item/item as anything in loadout_list_to_datums(H?.client?.prefs?.loadout_list))
-			item.post_equip_item(H.client?.prefs, H)
+		if (!handles_loadout_and_quirks)
+			SSquirks.AssignQuirks(H, user.client, TRUE, TRUE, null, FALSE, H)
+			for(var/datum/loadout_item/item as anything in loadout_list_to_datums(H?.client?.prefs?.loadout_list))
+				item.post_equip_item(H.client?.prefs, H)
 	else
 		if(!random || newname)
 			if(newname)

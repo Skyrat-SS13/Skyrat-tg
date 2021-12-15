@@ -1,5 +1,6 @@
 /datum/job/security_medic
 	title = "Security Medic"
+	description = "Patch up officers and prisoners, realize you don't have the tools to Tend Wounds, barge into Medbay and tell them how to do their jobs"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Head of Security")
 	faction = FACTION_STATION
@@ -29,7 +30,7 @@
 		/datum/job_department/medical,
 	)
 
-	family_heirlooms = list(/obj/item/clothing/neck/stethoscope, /obj/item/roller, /obj/item/book/manual/wiki/security_space_law)
+	family_heirlooms = list(/obj/item/clothing/neck/stethoscope, /obj/item/book/manual/wiki/security_space_law)
 
 	//This is the paramedic goodie list. Secmedics are paramedics more or less so they can use these instead of raiding medbay.
 	mail_goodies = list(

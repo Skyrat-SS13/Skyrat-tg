@@ -4456,18 +4456,6 @@
 /obj/structure/chair/stool/directional/east,
 /turf/open/floor/iron/dark,
 /area/service/theater)
-"baw" = (
-/obj/machinery/button/door/directional/north{
-	id = "teleportershutters";
-	name = "Teleporter Shutters";
-	req_access_txt = "19"
-	},
-/obj/machinery/bluespace_beacon,
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/command/teleporter)
 "baF" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/landmark/start/hangover,
@@ -5767,6 +5755,18 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/chapel/office)
+"boa" = (
+/obj/machinery/button/door/directional/north{
+	id = "teleporterhubshutters";
+	name = "Teleporter Shutters";
+	req_access_txt = "19"
+	},
+/obj/machinery/bluespace_beacon,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/command/teleporter)
 "boe" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -9579,42 +9579,6 @@
 	dir = 4
 	},
 /turf/open/floor/iron,
-/area/ai_monitored/security/armory)
-"bRw" = (
-/obj/structure/rack,
-/obj/item/clothing/suit/armor/vest{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/suit/armor/vest,
-/obj/item/clothing/suit/armor/vest{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/clothing/head/helmet{
-	layer = 3.00001;
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/head/helmet{
-	layer = 3.00001
-	},
-/obj/item/clothing/head/helmet{
-	layer = 3.00001;
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "bRx" = (
 /obj/structure/lattice,
@@ -50569,6 +50533,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/security/brig)
+"jdg" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/sign/poster/random{
+	pixel_y = -32
+	},
+/obj/machinery/rnd/production/techfab/department/service,
+/turf/open/floor/iron/checker,
+/area/hallway/secondary/service)
 "jdv" = (
 /obj/machinery/iv_drip,
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -78196,14 +78168,6 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron/grimy,
 /area/service/library)
-"qtL" = (
-/obj/effect/turf_decal/bot,
-/obj/structure/sign/poster/random{
-	pixel_y = -32
-	},
-/obj/machinery/rnd/production/techfab/department/service,
-/turf/open/floor/iron/checker,
-/area/hallway/secondary/service)
 "qtP" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -80612,6 +80576,38 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/execution/education)
+"reH" = (
+/obj/structure/rack,
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/suit/armor/vest,
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/clothing/head/helmet/sec{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/head/helmet/sec,
+/obj/item/clothing/head/helmet/sec{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/turf/open/floor/iron/dark,
+/area/ai_monitored/security/armory)
 "reO" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -144179,7 +144175,7 @@ vGx
 oGd
 wRz
 vuI
-qtL
+jdg
 aDI
 iRE
 bAa
@@ -149369,7 +149365,7 @@ emw
 rWM
 cjP
 qrM
-baw
+boa
 jjI
 jjI
 tGC
@@ -160922,7 +160918,7 @@ aad
 bLs
 bNt
 bPA
-bRw
+reH
 bTk
 bVr
 bXR

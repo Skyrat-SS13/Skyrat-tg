@@ -407,11 +407,12 @@
 	inhand_icon_state = "sechailer"
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS //same flags as actual sec hailer gas mask
 	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
-	flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES | PEPPERPROOF
+	flags_cover = MASKCOVERSMOUTH
 	visor_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
 	visor_flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
-	visor_flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES | PEPPERPROOF
+	visor_flags_cover = MASKCOVERSMOUTH
 	w_class = WEIGHT_CLASS_SMALL
+	tint = 0
 
 /obj/item/clothing/mask/gas/nightlight/ui_action_click(mob/user, action)
 	adjustmask(user)
@@ -868,7 +869,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
 	icon_state = "zentai"
 	inhand_icon_state = "zentai"
-	tint = 1
+	tint = 0
 	glass_colour_type = /datum/client_colour/glass_colour/red
 
 /datum/action/item_action/demonic_whisper
@@ -949,9 +950,14 @@
 	desc = "A navy-blue armored jacket with blue shoulder designations."
 
 // Donation reward for Raxraus
-/obj/item/clothing/under/rank/security/blueshieldturtleneck/rax
-	name = "peacekeeper turtleneck"
-	desc = "A cozier alternative to the normal Peacekeeper's uniform, the wool is still expensive."
+/obj/item/clothing/under/rank/security/rax
+	name = "banded uniform"
+	desc = "Personalized and tailored to fit, this uniform is designed to protect without compromising its stylishness."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
+	icon_state = "hos_black"
+	mutant_variants = STYLE_DIGITIGRADE
 
 // Donation reward for Raxraus
 /obj/item/clothing/under/rax_turtleneck_gray
@@ -1180,3 +1186,58 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "pcrc_jacket"
 	worn_icon_state = "pcrc_jacket"
+
+/obj/item/storage/belt/fannypack/occult
+	name = "trinket belt"
+	desc = "A belt covered in various trinkets collected through time. Doesn't look like there's much space for anything else nowadays."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/belts.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/belt.dmi'
+	icon_state = "occultfannypack"
+	worn_icon_state = "occultfannypack"
+
+/obj/item/clothing/under/occult
+	name = "occult collector's outfit"
+	desc = "A set of clothes fit for someone dapper that isn't afraid of getting dirty."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "occultoutfit"
+	mutant_variants = NONE
+
+/obj/item/clothing/head/hooded/occult
+	name = "hood"
+	desc = "Certainly makes you look more ominous."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "occulthood"
+	mutant_variants = NONE
+	dynamic_hair_suffix = "+generic"
+
+/obj/item/clothing/suit/hooded/occult
+	name = "occult collector's coat"
+	desc = "A big, heavy coat lined with leather and ivory cloth, adorned with a hood. It looks dusty."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "occultcoat"
+	hoodtype = /obj/item/clothing/head/hooded/occult
+	mutant_variants = NONE
+
+/obj/item/toy/plush/donator/voodoo
+	name = "voodoo doll"
+	desc = "A not so small voodoo doll made out of cut and sewn potato bags. It almost looks cute."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	icon_state = "voodoo"
+
+// Donation reward for Octus
+/obj/item/clothing/mask/breath/vox/octus
+	name = "sinister visor"
+	desc = "Skrektastic."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
+	icon_state = "death"
+
+/obj/item/clothing/glasses/rosecolored
+	name = "rose-colored glasses"
+	desc = "Goggle-shaped glasses that seem to have a HUD-like feed in some odd line-based script. It doesn’t look like they were made by NT."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
+	icon_state = "rose"
