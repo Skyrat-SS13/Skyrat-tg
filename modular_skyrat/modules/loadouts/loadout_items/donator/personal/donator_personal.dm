@@ -75,7 +75,7 @@
 	ckeywhitelist = list("raxraus")
 	restricted_roles = list("Blueshield", "Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
 
-/datum/loadout_item/under/rax_banded_uniform
+/datum/loadout_item/under/jumpsuit/rax_banded_uniform
 	name = "Banded Uniform"
 	item_path = /obj/item/clothing/under/rank/security/rax
 	ckeywhitelist = list("raxraus")
