@@ -672,9 +672,9 @@
 			deconstruct(TRUE)
 			return TRUE
 		if(BARRICADE_METAL_FIRM)
+			linked = !linked
 			user.visible_message(span_notice("[user] has [linked ? "linked" : "unlinked" ] [src]."),
 			span_notice("You [linked ? "link" : "unlink" ] [src]."))
-			linked = !linked
 			for(var/direction in GLOB.cardinals)
 				for(var/obj/structure/deployable_barricade/metal/plasteel/cade in get_step(src, direction))
 					cade.update_icon()
