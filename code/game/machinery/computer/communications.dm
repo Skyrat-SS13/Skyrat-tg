@@ -674,7 +674,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		message_admins("[key_name(usr)] has cancelled the outgoing cross-comms message.")
 
 		return TRUE
-	
+
 	return ..()
 
 /// Returns whether or not the communications console can communicate with the station
