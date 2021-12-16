@@ -1,26 +1,65 @@
-import { useBackend } from '../backend';
-import { Section, Stack, TextArea, Button, Divider, Tabs, Tooltip, RoundGauge, NumberInput } from '../components';
+import { useBackend, useSharedState } from '../backend';
+import { Section, Stack, TextArea, Button, Tabs, Input, Slider, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
 export const OpposingForcePanel = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     objectives = [],
+    submitted,
+    status,
+    ss_status,
+    can_request_update,
+    can_edit,
     backstory,
   } = data;
   return (
     <Window
       title="Opposing Force Panel"
       width={550}
-      height={650}>
+      height={765}
+      theme="syndicate">
       <Window.Content>
         <Stack vertical grow>
+          <Stack.Item>
+            <Section title="Control">
+              <Stack>
+                <Stack.Item>
+                  <Button
+                    icon="check"
+                    color="good"
+                    disabled={submitted}
+                    content="Submit Objectives"
+                    onClick={() => act('submit')} />
+                </Stack.Item>
+                <Stack.Item>
+                  <Button
+                    icon="question"
+                    color="orange"
+                    disabled={!submitted}
+                    content="Ask For Update"
+                    onClick={() => act('submit')} />
+                </Stack.Item>
+                <Stack.Item>
+                  <Button
+                    icon="wrench"
+                    color="blue"
+                    disabled={can_edit}
+                    content="Request Amendment"
+                    onClick={() => act('submit')} />
+                </Stack.Item>
+              </Stack>
+              <NoticeBox color="orange" mt={2}>
+                {status}
+              </NoticeBox>
+            </Section>
+          </Stack.Item>
           <Stack.Item>
             <Section title="Backstory">
               <TextArea
                 height="100px"
                 value={backstory}
-                placeholder={backstory}
+                placeholder="Provide a description of why you want to do bad things. Include specifics such as what lead upto the events that made you want to do bad things, think of it as though you were your character, react appropriately."
                 onInput={(e, value) => act('set_backstory', {
                   backstory: value,
                 })} />
@@ -63,19 +102,18 @@ export const OpposingForceObjectives = (props, context) => {
 
   return (
     <Stack vertical grow>
-      <Divider />
       { objectives.length > 0 && (
         <Stack.Item>
           <Tabs fill>
             {objectives.map(objective => (
               <Tabs.Tab
-                width="20%"
+                width="25%"
                 key={objective.id}
                 selected={objective.id === selectedObjectiveID}
                 onClick={() => setSelectedObjective(objective.id)}>
                 <Stack align="center">
                   <Stack.Item width="80%">
-                    Objective: {objective.id}
+                    {objective.title}
                   </Stack.Item>
                   <Stack.Item width="20%">
                     <Button
@@ -98,80 +136,82 @@ export const OpposingForceObjectives = (props, context) => {
         <Stack.Item>
           <Stack vertical>
             <Stack.Item>
-              <Stack width="100%">
-                <Stack.Item mr={3}>
-                  <Stack vertical width="225px">
-                    <Stack.Item >
-                      Objective Description
-                    </Stack.Item>
-                    <Stack.Item>
-                      <TextArea
-                        fluid
-                        height="85px"
-                        value={selectedObjective.description}
-                        onInput={(e, value) => act('set_objective_description', {
-                          objective_ref: objective.ref,
-                          new_desciprtion: value,
-                        })} />
-                    </Stack.Item>
-                  </Stack>
-                </Stack.Item>
-                <Stack.Item mr={3}>
-                  <Stack vertical align="center">
-                    <Stack.Item mb={2}>
-                      Intensity
-                    </Stack.Item>
-                    <Stack.Item mb={2}>
-                      <Tooltip
-                        content="Set your objective's intensity level. Check the \
-                          tutorial details/examples about each level." >
-                        <RoundGauge
-                          size={2}
-                          value={selectedObjective.intensity}
-                          minValue={1}
-                          maxValue={5}
-                          alertAfter={3.9}
-                          format={value => null}
-                          position="relative"
-                          ranges={{
-                            "green": [1, 1.8],
-                            "good": [1.8, 2.6],
-                            "yellow": [2.6, 3.4],
-                            "orange": [3.4, 4.2],
-                            "red": [4.2, 5] }} />
-                      </Tooltip>
-                    </Stack.Item>
-                    <Stack.Item>
-                      <NumberInput
-                        value={selectedObjective.intensity}
-                        step={1}
-                        minValue={1}
-                        maxValue={5}
-                        stepPixelSize={15}
-                        onDrag={(e, value) => act('set_objective_intensity', {
-                          objective_ref: selectedObjective.ref,
-                          new_intensity: value,
-                        })} />
-                    </Stack.Item>
-                  </Stack>
-                </Stack.Item>
-                <Stack.Item>
-                  <Stack vertical width="175px">
-                    <Stack.Item>
-                      Justification
-                    </Stack.Item>
-                    <Stack.Item>
-                      <TextArea
-                        height="85px"
-                        value={selectedObjective.justification}
-                        onInput={(e, value) => act('set_objective_justification', {
-                          objective_ref: selectedObjective.ref,
-                          new_justification: value,
-                        })} />
-                    </Stack.Item>
-                  </Stack>
-                </Stack.Item>
-              </Stack>
+              <Stack.Item>
+                <Stack vertical>
+                  <Stack.Item >
+                    Title
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Input
+                      width="100%"
+                      placeholder="blank objective"
+                      value={selectedObjective.title}
+                      onChange={(e, value) => act('set_objective_title', {
+                        objective_ref: selectedObjective.ref,
+                        title: value,
+                      })} />
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
+              <Stack.Item>
+                <Stack vertical mt={2}>
+                  <Stack.Item >
+                    Intensity: {selectedObjective.text_intensity}
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Slider
+                      step={1}
+                      stepPixelSize={1}
+                      value={selectedObjective.intensity}
+                      minValue={1}
+                      maxValue={5}
+                      onDrag={(e, value) => act('set_objective_intensity', {
+                        objective_ref: selectedObjective.ref,
+                        new_intensity_level: value,
+                      })} />
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
+              <Stack.Item>
+                <Stack vertical mt={2}>
+                  <Stack.Item >
+                    Description
+                  </Stack.Item>
+                  <Stack.Item>
+                    <TextArea
+                      fluid
+                      height="85px"
+                      value={selectedObjective.description}
+                      placeholder="Input objective description here, be descriptive about what you want to do."
+                      onInput={(e, value) => act('set_objective_description', {
+                        objective_ref: selectedObjective.ref,
+                        new_desciprtion: value,
+                      })} />
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
+              <Stack.Item>
+                <Stack vertical mt={2}>
+                  <Stack.Item>
+                    Justification
+                  </Stack.Item>
+                  <Stack.Item>
+                    <TextArea
+                      height="85px"
+                      placeholder="Input objective justification here, ensure you have a good reason for this objective!"
+                      value={selectedObjective.justification}
+                      onInput={(e, value) => act('set_objective_justification', {
+                        objective_ref: selectedObjective.ref,
+                        new_justification: value,
+                      })} />
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
+              <Stack.Item mt={2}>
+                <NoticeBox color={selectedObjective.status ? "good" : "bad"}>
+                  {selectedObjective.status ? "Objective has been approved!" : "Objective has not been approved yet. Do not attempt to complete it."}
+                </NoticeBox>
+              </Stack.Item>
             </Stack.Item>
           </Stack>
         </Stack.Item>
