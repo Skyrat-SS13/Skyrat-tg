@@ -63,31 +63,39 @@ export const OpposingForcePanel = (props, context) => {
               </NoticeBox>
             </Section>
           </Stack.Item>
-          <Stack.Item>
-            <Section title="Backstory">
-              <TextArea
-                disabled={!can_edit}
-                height="100px"
-                value={backstory}
-                placeholder="Provide a description of why you want to do bad things. Include specifics such as what lead upto the events that made you want to do bad things, think of it as though you were your character, react appropriately."
-                onInput={(e, value) => act('set_backstory', {
-                  backstory: value,
-                })} />
-            </Section>
-          </Stack.Item>
-          <Stack.Item>
-            <Section title="Objectives"
-              buttons={(
-                <Button
-                  icon="plus"
-                  content="Add Objective"
-                  onClick={() => act('add_objective')} />
-              )}>
-              { !!objectives.length && (
-                <OpposingForceObjectives />
-              )}
-            </Section>
-          </Stack.Item>
+          {can_edit ? (
+            <>
+              <Stack.Item>
+                <Section title="Backstory">
+                  <TextArea
+                    disabled={!can_edit}
+                    height="100px"
+                    value={backstory}
+                    placeholder="Provide a description of why you want to do bad things. Include specifics such as what lead upto the events that made you want to do bad things, think of it as though you were your character, react appropriately."
+                    onInput={(_e, value) => act('set_backstory', {
+                      backstory: value,
+                    })} />
+                </Section>
+              </Stack.Item>
+              <Stack.Item>
+                <Section title="Objectives"
+                  buttons={(
+                    <Button
+                      icon="plus"
+                      content="Add Objective"
+                      onClick={() => act('add_objective')} />
+                  )}>
+                  { !!objectives.length && (
+                    <OpposingForceObjectives />
+                  )}
+                </Section>
+              </Stack.Item>
+            </>
+          ) : (
+            <NoticeBox color="bad">
+              You cannot edit your application.
+            </NoticeBox>
+          )}
         </Stack>
       </Window.Content>
     </Window>
@@ -125,7 +133,7 @@ export const OpposingForceObjectives = (props, context) => {
                 onClick={() => setSelectedObjective(objective.id)}>
                 <Stack align="center">
                   <Stack.Item width="80%">
-                    {objective.title}
+                    {objective.title ? objective.title : 'Blank Objective'}
                   </Stack.Item>
                   <Stack.Item width="20%">
                     <Button
@@ -178,8 +186,8 @@ export const OpposingForceObjectives = (props, context) => {
                       step={0.1}
                       stepPixelSize={0.1}
                       value={selectedObjective.intensity}
-                      minValue={1}
-                      maxValue={5}
+                      minValue={100}
+                      maxValue={500}
                       onDrag={(e, value) => act('set_objective_intensity', {
                         objective_ref: selectedObjective.ref,
                         new_intensity_level: toFixed(value),
