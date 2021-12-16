@@ -72,6 +72,26 @@
 	if(istype(mymob) && mymob.client?.prefs?.read_preference(/datum/preference/toggle/ambient_occlusion))
 		add_filter("AO", 1, drop_shadow_filter(x = 0, y = -2, size = 4, color = "#04080FAA"))
 
+<<<<<<< HEAD
+=======
+/atom/movable/screen/plane_master/game_world_fov_hidden
+	name = "game world fov hidden plane master"
+	plane = GAME_PLANE_FOV_HIDDEN
+	render_relay_plane = GAME_PLANE
+	appearance_flags = PLANE_MASTER //should use client color
+	blend_mode = BLEND_OVERLAY
+
+/atom/movable/screen/plane_master/game_world/fov_hidden/Initialize()
+	. = ..()
+	add_filter("vision_cone", 1, alpha_mask_filter(render_source = FIELD_OF_VISION_BLOCKER_RENDER_TARGET, flags = MASK_INVERSE))
+>>>>>>> 19329cd74a3 (Fixes objects with bad planes and FoV bugs (#63412))
+
+/atom/movable/screen/plane_master/game_world_above
+	name = "above game world plane master"
+	plane = ABOVE_GAME_PLANE
+	render_relay_plane = GAME_PLANE
+	appearance_flags = PLANE_MASTER //should use client color
+	blend_mode = BLEND_OVERLAY
 
 /atom/movable/screen/plane_master/massive_obj
 	name = "massive object plane master"

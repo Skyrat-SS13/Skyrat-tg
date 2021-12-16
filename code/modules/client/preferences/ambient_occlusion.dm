@@ -5,6 +5,10 @@
 	savefile_identifier = PREFERENCE_PLAYER
 
 /datum/preference/toggle/ambient_occlusion/apply_to_client(client/client, value)
+<<<<<<< HEAD
+=======
+	/// Backdrop for the game world plane.
+>>>>>>> 19329cd74a3 (Fixes objects with bad planes and FoV bugs (#63412))
 	var/atom/movable/screen/plane_master/game_world/plane_master = locate() in client?.screen
 	if (!plane_master)
 		return
