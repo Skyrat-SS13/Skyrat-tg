@@ -134,7 +134,7 @@
 /// When toggling combat mode, we update the alpha of the shadow mask
 /datum/component/fov_handler/proc/update_visual_shadow_alpha()
 	SIGNAL_HANDLER
-	var/mob/parent_mob = parent
+	var/mob/living/parent_mob = parent
 	var/pref_to_read = parent_mob.combat_mode ? /datum/preference/numeric/fov_darkness : /datum/preference/numeric/out_of_combat_fov_darkness
 	var/target_alpha = parent_mob.client.prefs.read_preference(pref_to_read)
 	visual_shadow.alpha = target_alpha
