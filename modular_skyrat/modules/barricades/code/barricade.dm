@@ -334,7 +334,7 @@
 	barricade_type = "metal"
 	can_wire = TRUE
 	/// The type of quickdeploy we drop when folded up.
-	var/portable_type = /obj/item/quickdeploy/barricade/plasteel
+	var/portable_type = /obj/item/quickdeploy/barricade
 	/// Build state of the barricade
 	var/build_state = BARRICADE_METAL_FIRM
 	/// The type of upgrade and corresponding overlay we have attached
