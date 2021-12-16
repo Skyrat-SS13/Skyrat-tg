@@ -131,7 +131,7 @@
 			submit_to_subsystem(usr)
 
 /datum/opposing_force/proc/broadcast_queue_change()
-	to_chat(holder, span_nicegreen("Your OPFOR application is now number [get_queue_position(src)] in the queue."))
+	to_chat(holder, span_nicegreen("Your OPFOR application is now number [SSopposing_force.get_queue_position(src)] in the queue."))
 
 /datum/opposing_force/proc/close_application(mob/user)
 	var/choice = tgui_alert(user, "Are you sure you want close your application? All changes will be lost.", "Confirm", list("Yes", "No"))

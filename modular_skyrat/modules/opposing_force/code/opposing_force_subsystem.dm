@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(opposing_force)
 
 /datum/controller/subsystem/opposing_force/proc/broadcast_queue_change(datum/opposing_force/updating_opposing_force)
 	for(var/datum/opposing_force/opposing_force in submitted_applications)
-		if(opposing_force = updating_opposing_force)
+		if(opposing_force == updating_opposing_force)
 			continue
 		opposing_force.broadcast_queue_change()
 
