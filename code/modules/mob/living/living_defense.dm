@@ -93,7 +93,7 @@
 			set_combat_indicator(TRUE)
 		else
 			set_combat_indicator(FALSE)
-	face_mouse = combat_mode
+	face_mouse = (client?.prefs?.read_preference(/datum/preference/toggle/face_cursor_combat_mode) && combat_mode) ? TRUE : FALSE
 	//SKYRAT EDIT ADDITION END
 
 	if(silent || !(client?.prefs.toggles & SOUND_COMBATMODE))
