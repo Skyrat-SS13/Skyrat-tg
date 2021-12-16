@@ -106,7 +106,17 @@
 	world.log << "dist: [dist]"
 	// If the object is obscured, close it.
 	if(viewcheck && !(src_object in view(src)))
-		world.log << "failed the view check"
+		world.log << "\n\[FUCK\] Failed the view check. Content of the turfs in question:"
+		world.log << "\n(126, 126, 14):"
+		for (var/thing in locate(126, 126, 14))
+			world.log << "[thing]"
+		world.log << "\n(127, 126, 14):"
+		for (var/thing in locate(127, 126, 14))
+			world.log << "[thing]"
+		world.log << "\n(128, 126, 14):"
+		for (var/thing in locate(128, 126, 14))
+			world.log << "[thing]"
+		world.log << "\n"
 		return UI_CLOSE
 	// Open and interact if 1-0 tiles away.
 	if(dist <= 1)
