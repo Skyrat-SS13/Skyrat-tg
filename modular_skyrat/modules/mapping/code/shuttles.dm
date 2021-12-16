@@ -77,7 +77,7 @@
 	name = "Slaver Ship"
 	who_can_purchase = null
 
-/obj/effect/mob_spawn/human/guild/slaver
+/obj/effect/mob_spawn/ghost_role/human/guild/slaver
 	name = "Privateer Slaver"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
@@ -90,7 +90,7 @@
 	death = FALSE
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/guild/slaver/captain
+/obj/effect/mob_spawn/ghost_role/human/guild/slaver/captain
 	name = "Privateer Slaver Captain"
 	short_desc = "You lead a small team focused on capturing hostages."
 	flavour_text = "You're the captain of a privateer crew that sometimes takes contracts from the illusive Guild, which offers bounties and contracts to independent crews, like yours! Lead your crew to infiltrate the station and capture hostages and hold them till the station's emergency shuttle leaves. The higher ranking the hostages, the more you'll get paid out. You're free to (and encouraged to) beat and humiliate, but not kill. Your anonymous employer wants your victims as their personel slaves. They mentioned something about propaganda? Ah, who knows with the Guild... All sorts of types posts these bounties."

@@ -8,7 +8,7 @@
 		/obj/item/stack/spacecash/c100
 	)
 
-/obj/effect/mob_spawn/human/wildwest_syndicate
+/obj/effect/mob_spawn/ghost_role/human/wildwest_syndicate
 	name = "lost syndicate cryopod"
 	desc = "They've been here long, far too long..."
 	icon = 'icons/obj/machines/sleeper.dmi'

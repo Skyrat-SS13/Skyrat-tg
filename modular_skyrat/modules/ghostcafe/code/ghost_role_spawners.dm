@@ -38,7 +38,7 @@
 		D.Grant(new_spawn)
 
 
-/obj/effect/mob_spawn/human/ghostcafe
+/obj/effect/mob_spawn/ghost_role/human/ghostcafe
 	name = "Cafe Sleeper"
 	uses = -1
 	icon = 'icons/obj/machines/sleeper.dmi'
@@ -52,7 +52,7 @@
 	short_desc = "You are a Cafe Visitor!"
 	flavour_text = "You are off-duty and have decided to visit your favourite cafe. Enjoy yourself."
 
-/obj/effect/mob_spawn/human/ghostcafe/special(mob/living/carbon/human/new_spawn)
+/obj/effect/mob_spawn/ghost_role/human/ghostcafe/special(mob/living/carbon/human/new_spawn)
 	if(new_spawn.client)
 		new_spawn.client.prefs.safe_transfer_prefs_to(new_spawn)
 		var/area/A = get_area(src)

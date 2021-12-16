@@ -1,5 +1,5 @@
 //SPAWNERS//
-/obj/effect/mob_spawn/human/blackmarket
+/obj/effect/mob_spawn/ghost_role/human/blackmarket
 	name = "cryogenics pod"
 	desc = "A humming cryo pod. The machine is attempting to wake up its occupant."
 	mob_name = "a black market dealer"
@@ -21,7 +21,7 @@
 	can_use_alias = TRUE
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/ds2/prisoner
+/obj/effect/mob_spawn/ghost_role/human/ds2/prisoner
 	name = "Syndicate Prisoner"
 	short_desc = "You are the syndicate prisoner aboard an unknown station."
 	flavour_text = "You don't know where you are, but you know you are a prisoner. The plastitanium clues you into your captors.. as for why you're here? That's up to you."
@@ -35,7 +35,7 @@
 	can_use_alias = TRUE
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/ds2/syndicate
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate
 	name = "Syndicate Operative"
 	roundstart = FALSE
 	death = FALSE
@@ -49,28 +49,28 @@
 	important_info = "You are not an antagonist."
 	outfit = /datum/outfit/ds2/syndicate
 
-/obj/effect/mob_spawn/human/ds2/syndicate/special(mob/living/new_spawn)
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/special(mob/living/new_spawn)
 	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
 
-/obj/effect/mob_spawn/human/ds2/syndicate/service
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/service
 	outfit = /datum/outfit/ds2/syndicate/service
 
-/obj/effect/mob_spawn/human/ds2/syndicate/enginetech
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/enginetech
 	outfit = /datum/outfit/ds2/syndicate/enginetech
 
-/obj/effect/mob_spawn/human/ds2/syndicate/researcher
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/researcher
 	outfit = /datum/outfit/ds2/syndicate/researcher
 
-/obj/effect/mob_spawn/human/ds2/syndicate/stationmed
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/stationmed
 	outfit = /datum/outfit/ds2/syndicate/stationmed
 
-/obj/effect/mob_spawn/human/ds2/syndicate/masteratarms
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/masteratarms
 	outfit = /datum/outfit/ds2/syndicate/masteratarms
 
-/obj/effect/mob_spawn/human/ds2/syndicate/brigoff
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/brigoff
 	outfit = /datum/outfit/ds2/syndicate/brigoff
 
-/obj/effect/mob_spawn/human/ds2/syndicate/admiral
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/admiral
 	outfit = /datum/outfit/ds2/syndicate/admiral
 
 //OUTFITS//
@@ -165,7 +165,7 @@
 
 //Lost Space Truckers: Six people stranded in deep space aboard a cargo freighter. They must survive their marooning and cooperate.
 
-/obj/effect/mob_spawn/human/lostcargo
+/obj/effect/mob_spawn/ghost_role/human/lostcargo
     name = "freighter cryo crew pod"
     desc = "A humming cryo pod. There's a freight hauler inside."
     mob_name = "Freighter Crew"
@@ -185,7 +185,7 @@
     can_use_alias = TRUE
     any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/lostminer
+/obj/effect/mob_spawn/ghost_role/human/lostminer
     name = "freighter cryo excavator pod"
     desc = "A humming cryo pod. There's an excavation worker inside."
     mob_name = "Freighter Excavator"
@@ -212,7 +212,7 @@
     can_use_alias = TRUE
     any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/lostcargoqm
+/obj/effect/mob_spawn/ghost_role/human/lostcargoqm
     name = "freighter cryo boss pod"
     desc = "A humming cryo pod. You see someone who looks In Charge inside."
     mob_name = "Freighter Chief"

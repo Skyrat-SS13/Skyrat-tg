@@ -512,7 +512,7 @@
 		/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid
 	)
 
-/obj/effect/mob_spawn/human/black_mesa
+/obj/effect/mob_spawn/ghost_role/human/black_mesa
 	name = "Research Facility Science Team"
 	roundstart = FALSE
 	death = FALSE
@@ -543,7 +543,7 @@
 	trim_state = "trim_scientist"
 	access = list(ACCESS_RND)
 
-/obj/effect/mob_spawn/human/black_mesa/guard
+/obj/effect/mob_spawn/ghost_role/human/black_mesa/guard
 	name = "Research Facility Security Guard"
 	outfit = /datum/outfit/security_guard
 	short_desc = "You are a security guard in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
@@ -573,7 +573,7 @@
 	trim_state = "trim_securityofficer"
 	access = list(ACCESS_SEC_DOORS, ACCESS_SECURITY, ACCESS_AWAY_SEC)
 
-/obj/effect/mob_spawn/human/black_mesa/hecu
+/obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu
 	name = "HECU"
 	outfit = /datum/outfit/hecu
 	short_desc = "You are an elite tactical squad deployed into the research facility to contain the infestation. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."

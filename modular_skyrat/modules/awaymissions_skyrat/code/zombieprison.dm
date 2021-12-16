@@ -543,7 +543,7 @@
 
 
 //GHOSTROLES
-/obj/effect/mob_spawn/human/scalamovguard
+/obj/effect/mob_spawn/ghost_role/human/scalamovguard
 	name = "guard cryo pod"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
 	icon = 'modular_skyrat/modules/stasisrework/icons/stasissleeper.dmi'
@@ -569,7 +569,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 	mask = /obj/item/clothing/mask/gas/sechailer/swat/spacepol
 
-/obj/effect/mob_spawn/human/scalamovdoc
+/obj/effect/mob_spawn/ghost_role/human/scalamovdoc
 	name = "Scalamov Doctor"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
 	icon = 'modular_skyrat/modules/stasisrework/icons/stasissleeper.dmi'
@@ -595,7 +595,7 @@
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
 	mask = /obj/item/clothing/mask/surgical
 
-/obj/effect/mob_spawn/human/scalamovinmateally
+/obj/effect/mob_spawn/ghost_role/human/scalamovinmateally
 	name = "Scalamov Prisoner"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
 	icon = 'modular_skyrat/modules/stasisrework/icons/stasissleeper.dmi'
@@ -618,7 +618,7 @@
 	uniform = /obj/item/clothing/under/scalamovprisoner
 	shoes = /obj/item/clothing/shoes/sneakers/black
 
-/obj/effect/mob_spawn/human/scalamovinmatehostile
+/obj/effect/mob_spawn/ghost_role/human/scalamovinmatehostile
 	name = "Scalamov Hostile Inmate"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
 	icon = 'modular_skyrat/modules/stasisrework/icons/stasissleeper.dmi'

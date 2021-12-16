@@ -50,7 +50,7 @@
 	trim_state = "trim_syndicate"
 	access = list(ACCESS_SYNDICATE, ACCESS_MAINT_TUNNELS)
 
-/obj/effect/mob_spawn/human/pirate/enclave
+/obj/effect/mob_spawn/ghost_role/human/pirate/enclave
 	name = "imperial enclave sleeper"
 	desc = "Cozy. You get the feeling you aren't supposed to be here, though..."
 	random = TRUE
@@ -69,15 +69,15 @@
 	policy_index = ROLE_FUGITIVE_HUNTER
 
 
-/obj/effect/mob_spawn/human/pirate/enclave/generate_pirate_name(spawn_gender)
+/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/generate_pirate_name(spawn_gender)
 	var/first_name = pick(GLOB.commando_names)
 	return "[rank] [first_name]"
 
-/obj/effect/mob_spawn/human/pirate/enclave/captain
+/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/captain
 	rank = "Imperial Enclave Officer"
 	outfit = /datum/outfit/pirate/enclave_officer
 
-/obj/effect/mob_spawn/human/pirate/enclave/gunner
+/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/gunner
 	rank = "Imperial Enclave Trooper"
 
 /datum/map_template/shuttle/pirate/imperial_enclave
