@@ -1,5 +1,7 @@
 /datum/job/quartermaster
 	title = "Quartermaster"
+	description = "Coordinate cargo technicians and shaft miners, assist with \
+		economical purchasing."
 	//department_head = list("Head of Personnel") //ORIGINAL
 	department_head = list("Captain") //SKYRAT EDIT CHANGE
 	faction = FACTION_STATION
