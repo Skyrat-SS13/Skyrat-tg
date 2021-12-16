@@ -28,7 +28,7 @@
 	/// For logging stuffs
 	var/list/modification_log = list()
 	/// Can we edit things?
-	var/can_edit = FALSE
+	var/can_edit = TRUE
 	/// The reason we were denied.
 	var/denied_reason
 	/// Any changes required
@@ -71,10 +71,9 @@
 
 	data["ss_status"] = SSopposing_force.check_availability()
 
-	data["can_submit"] = SSopposing_force.accepting_objectives && status != OPFOR_STATUS_APPROVED
+	data["can_submit"] = SSopposing_force.accepting_objectives && (status == OPFOR_STATUS_NOT_SUBMITTED || status == OPFOR_STATUS_CHANGES_REQUESTED)
 
-	data["can_request_update"] = status == OPFOR_STATUS_AWAITING_APPROVAL ? TRUE : FALSE
-	data["can_request_update_cooldown"] = COOLDOWN_FINISHED(src, request_update_cooldown)
+	data["can_request_update"] = status == OPFOR_STATUS_AWAITING_APPROVAL && COOLDOWN_FINISHED(src, request_update_cooldown) ? TRUE : FALSE
 
 	data["can_edit"] = can_edit
 
@@ -150,7 +149,9 @@
 	to_chat(holder, examine_block(span_redtext("Your OPFOR application has been denied by [denier ? denier : "the OPFOR subsystem"]!")))
 
 /datum/opposing_force/proc/user_request_changes(mob/user)
-	if(!can_edit)
+	if(status == OPFOR_STATUS_CHANGES_REQUESTED)
+		return
+	if(can_edit)
 		return
 	var/choice = tgui_alert(user, "Are you sure you want to request changes? This will unapprove all objectives.", "Confirm", list("Yes", "No"))
 	if(choice != "Yes")
@@ -162,7 +163,7 @@
 	can_edit = TRUE
 
 	add_log(user.ckey, "Requested changes")
-	message_admins("OPFOR CHANGES REQUESTED", "[ADMIN_FLW(user)] has requested changes to their opposing force. Please review the opposing force and approve or deny the changes when submitted.")
+	message_admins("[span_pink("OPFOR:")] CHANGES REQUESTED: [ADMIN_LOOKUPFLW(user)] has requested changes to their opposing force. Please review the opposing force and approve or deny the changes when submitted.")
 
 /datum/opposing_force/proc/get_status_string()
 	return "[status == OPFOR_STATUS_AWAITING_APPROVAL ? "[status], you are number [SSopposing_force.get_queue_position(src)] in the queue" : status]"
@@ -174,7 +175,7 @@
 	if(status != OPFOR_STATUS_AWAITING_APPROVAL)
 		return
 
-	message_admins(span_command_headset("OPFOR UPDATE REQUEST: [ADMIN_FLW(user)] has requested an update on their OPFOR application!"))
+	message_admins(span_command_headset("[span_pink("OPFOR:")] UPDATE REQUEST: [ADMIN_LOOKUPFLW(user)] has requested an update on their OPFOR application!"))
 	add_log(user.ckey, "Requested an update")
 
 	for(var/client/staff as anything in GLOB.admins)
@@ -185,18 +186,20 @@
 	COOLDOWN_START(src, request_update_cooldown, OPFOR_REQUEST_UPDATE_COOLDOWN)
 
 /datum/opposing_force/proc/submit_to_subsystem(mob/user)
+	if(status != OPFOR_STATUS_NOT_SUBMITTED && status != OPFOR_STATUS_CHANGES_REQUESTED)
+		return FALSE
 	// Subsystem checks, no point in bloating the system if it's not accepting more.
 	var/availability = SSopposing_force.check_availability()
 	if(availability != OPFOR_SUBSYSTEM_READY)
 		to_chat(usr, examine_block(span_warning("Error, the OPFOR subsystem rejected your request. Reason: <b>[availability]</b>")))
 		return FALSE
 
-	if(status != OPFOR_STATUS_NOT_SUBMITTED)
-		return FALSE
-
 	var/queue_position = SSopposing_force.add_to_queue(src)
 
+	status = OPFOR_STATUS_AWAITING_APPROVAL
+	can_edit = FALSE
 	add_log(user.ckey, "Submitted to the OPFOR subsystem")
+	message_admins("[span_pink("OPFOR:")] SUBMISSION: [ADMIN_LOOKUPFLW(user)] has submitted their opposing force to the OPFOR subsystem. They are number [queue_position] in the queue.")
 	to_chat(usr, examine_block(span_greentext(("You have been added to the queue for the OPFOR subsystem. You are number <b>[queue_position]</b> in line."))))
 
 /datum/opposing_force/proc/set_objective_intensity(mob/user, datum/opposing_force_objective/opposing_force_objective, new_intensity)

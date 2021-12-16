@@ -17,6 +17,7 @@ SUBSYSTEM_DEF(opposing_force)
 
 /datum/controller/subsystem/opposing_force/stat_entry(msg)
 	msg = "UNSUB: [LAZYLEN(unsubmitted_applications)] | SUB: [LAZYLEN(submitted_applications)] | APPR: [LAZYLEN(approved_applications)]"
+	return ..()
 
 /datum/controller/subsystem/opposing_force/proc/check_availability()
 	if(get_current_applications() >= max_objectives)
@@ -40,8 +41,6 @@ SUBSYSTEM_DEF(opposing_force)
 
 	submitted_applications += opposing_force
 	unsubmitted_applications -= opposing_force
-
-	opposing_force.status = OPFOR_STATUS_AWAITING_APPROVAL
 
 	return LAZYLEN(submitted_applications)
 

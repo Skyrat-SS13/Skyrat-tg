@@ -1,3 +1,4 @@
+import { toFixed } from 'common/math';
 import { useBackend, useSharedState } from '../backend';
 import { Section, Stack, TextArea, Button, Tabs, Input, Slider, NoticeBox } from '../components';
 import { Window } from '../layouts';
@@ -6,10 +7,11 @@ export const OpposingForcePanel = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     objectives = [],
-    submitted,
+    can_submit,
     status,
     ss_status,
     can_request_update,
+    can_request_update_cooldown,
     can_edit,
     backstory,
   } = data;
@@ -28,7 +30,7 @@ export const OpposingForcePanel = (props, context) => {
                   <Button
                     icon="check"
                     color="good"
-                    disabled={submitted}
+                    disabled={!can_submit}
                     content="Submit Objectives"
                     onClick={() => act('submit')} />
                 </Stack.Item>
@@ -36,17 +38,17 @@ export const OpposingForcePanel = (props, context) => {
                   <Button
                     icon="question"
                     color="orange"
-                    disabled={!submitted}
+                    disabled={!can_request_update}
                     content="Ask For Update"
-                    onClick={() => act('submit')} />
+                    onClick={() => act('request_update')} />
                 </Stack.Item>
                 <Stack.Item>
                   <Button
                     icon="wrench"
                     color="blue"
                     disabled={can_edit}
-                    content="Request Amendment"
-                    onClick={() => act('submit')} />
+                    content="Request Changes"
+                    onClick={() => act('request_changes')} />
                 </Stack.Item>
               </Stack>
               <NoticeBox color="orange" mt={2}>
@@ -57,6 +59,7 @@ export const OpposingForcePanel = (props, context) => {
           <Stack.Item>
             <Section title="Backstory">
               <TextArea
+                disabled={!can_edit}
                 height="100px"
                 value={backstory}
                 placeholder="Provide a description of why you want to do bad things. Include specifics such as what lead upto the events that made you want to do bad things, think of it as though you were your character, react appropriately."
@@ -89,6 +92,7 @@ export const OpposingForceObjectives = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     objectives = [],
+    can_edit,
   } = data;
 
   const [
@@ -108,6 +112,7 @@ export const OpposingForceObjectives = (props, context) => {
             {objectives.map(objective => (
               <Tabs.Tab
                 width="25%"
+                disabled={!can_edit}
                 key={objective.id}
                 selected={objective.id === selectedObjectiveID}
                 onClick={() => setSelectedObjective(objective.id)}>
@@ -117,6 +122,7 @@ export const OpposingForceObjectives = (props, context) => {
                   </Stack.Item>
                   <Stack.Item width="20%">
                     <Button
+                      disabled={!can_edit}
                       height="90%"
                       icon="minus"
                       color="bad"
@@ -143,6 +149,7 @@ export const OpposingForceObjectives = (props, context) => {
                   </Stack.Item>
                   <Stack.Item>
                     <Input
+                      disabled={!can_edit}
                       width="100%"
                       placeholder="blank objective"
                       value={selectedObjective.title}
@@ -160,14 +167,15 @@ export const OpposingForceObjectives = (props, context) => {
                   </Stack.Item>
                   <Stack.Item>
                     <Slider
+                      disabled={!can_edit}
                       step={1}
-                      stepPixelSize={1}
+                      stepPixelSize={0.001}
                       value={selectedObjective.intensity}
                       minValue={1}
                       maxValue={5}
                       onDrag={(e, value) => act('set_objective_intensity', {
                         objective_ref: selectedObjective.ref,
-                        new_intensity_level: value,
+                        new_intensity_level: toFixed(value),
                       })} />
                   </Stack.Item>
                 </Stack>
@@ -180,6 +188,7 @@ export const OpposingForceObjectives = (props, context) => {
                   <Stack.Item>
                     <TextArea
                       fluid
+                      disabled={!can_edit}
                       height="85px"
                       value={selectedObjective.description}
                       placeholder="Input objective description here, be descriptive about what you want to do."
@@ -197,6 +206,7 @@ export const OpposingForceObjectives = (props, context) => {
                   </Stack.Item>
                   <Stack.Item>
                     <TextArea
+                      disabled={!can_edit}
                       height="85px"
                       placeholder="Input objective justification here, ensure you have a good reason for this objective!"
                       value={selectedObjective.justification}
