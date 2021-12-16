@@ -33,15 +33,12 @@
 
 	for (var/quirk_name in quirks)
 		var/datum/quirk/quirk = quirks[quirk_name]
-		//SKYRAT EDIT ADDITION
-		if(initial(quirk.veteran_only) && !is_veteran_player(preferences?.parent))
-			continue
-		//SKYRAT EDIT END
 		quirk_info[sanitize_css_class_name(quirk_name)] = list(
 			"description" = initial(quirk.desc),
 			"icon" = initial(quirk.icon),
 			"name" = quirk_name,
 			"value" = initial(quirk.value),
+			"veteran_only" = initial(quirk.veteran_only), // SKYRAT EDIT - Veteran quirks
 		)
 
 	return list(

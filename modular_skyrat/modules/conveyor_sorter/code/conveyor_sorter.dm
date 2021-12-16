@@ -59,8 +59,8 @@
 	plane = GAME_PLANE
 	///the list of items that will be sorted to the sorted direction
 	var/list/sorting_list = list()
-	///the direction that the items in the sorting list will be moved to
-	var/sorted_direction = NORTH
+	//the direction that the items in the sorting list will be moved to
+	dir = NORTH
 	///the parent conveyor sorter lister item, used for deletion
 	var/obj/item/conveyor_sorter/parent_item
 
@@ -86,13 +86,13 @@
 		return ..()
 	switch(user_choice)
 		if("North")
-			sorted_direction = NORTH
+			setDir(NORTH)
 		if("East")
-			sorted_direction = EAST
+			setDir(EAST)
 		if("South")
-			sorted_direction = SOUTH
+			setDir(SOUTH)
 		if("West")
-			sorted_direction = WEST
+			setDir(WEST)
 	visible_message("[src] pings, updating its sorting direction!")
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 
@@ -119,7 +119,7 @@
 /obj/effect/decal/cleanable/conveyor_sorter/on_entered(datum/source, atom/movable/AM)
 	. = ..()
 	if(is_type_in_list(AM, sorting_list) && !AM.anchored)
-		AM.Move(get_step(src, sorted_direction))
+		AM.Move(get_step(src, dir))
 
 /datum/design/conveyor_sorter
 	name = "Conveyor Sorter"

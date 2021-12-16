@@ -3,7 +3,7 @@
 */
 
 /obj/item/storage/belt/mailbelt
-	name = "Messenger Belt Bag"
+	name = "messenger belt bag"
 	desc = "A small bag with a belt, worn around the waist. It's just big enough to hold a small stack of letters. This one is postal blue, perfect for standing out!"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	icon_state = "mailbelt"
@@ -24,7 +24,7 @@
 	))
 
 /obj/item/storage/belt/mailbelt/white
-	name = "White Belt Bag"
+	name = "white belt bag"
 	desc = "A small bag with a belt, worn around the waist. It's just big enough to hold a small stack of letters. This one is a pearly white."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	icon_state = "mailbelt_white"
@@ -34,7 +34,7 @@
 	equip_sound = 'sound/items/equip/toolbelt_equip.ogg'
 
 /obj/item/storage/belt/mailbelt/leather
-	name = "Leather Belt Bag"
+	name = "leather belt bag"
 	desc = "A small bag with a belt, worn around the waist. It's just big enough to hold a small stack of letters. This one is made out of a synthetic leather blend."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	icon_state = "mailbelt_leather"

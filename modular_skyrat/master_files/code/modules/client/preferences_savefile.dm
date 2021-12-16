@@ -24,11 +24,13 @@
 	READ_FILE(S["mismatched_customization"], mismatched_customization)
 	READ_FILE(S["allow_advanced_colors"], allow_advanced_colors)
 
-	READ_FILE(S["general_record"], general_record)
+//SKYRAT EDIT REMOVAL BEGIN -- RECORDS REJUVINATION
+/*	READ_FILE(S["general_record"], general_record)
 	READ_FILE(S["security_record"], security_record)
 	READ_FILE(S["medical_record"], medical_record)
 	READ_FILE(S["background_info"], background_info)
-	READ_FILE(S["exploitable_info"], exploitable_info)
+	READ_FILE(S["exploitable_info"], exploitable_info) */
+//SKYRAT EDIT REMOVAL END
 
 	READ_FILE(S["alt_job_titles"], alt_job_titles)
 
@@ -68,11 +70,13 @@
 	WRITE_FILE(S["mismatched_customization"], mismatched_customization)
 	WRITE_FILE(S["allow_advanced_colors"], allow_advanced_colors)
 
-	WRITE_FILE(S["general_record"] , general_record)
+//SKYRAT EDIT REMOVAL BEGIN -- RECORDS REJUVINATION
+/*	WRITE_FILE(S["general_record"] , general_record)
 	WRITE_FILE(S["security_record"] , security_record)
 	WRITE_FILE(S["medical_record"] , medical_record)
 	WRITE_FILE(S["background_info"] , background_info)
-	WRITE_FILE(S["exploitable_info"] , exploitable_info)
+	WRITE_FILE(S["exploitable_info"] , exploitable_info) */
+//SKYRAT EDIT REMOVAL END
 	WRITE_FILE(S["alt_job_titles"], alt_job_titles)
 	WRITE_FILE(S["languages"] , languages)
 	WRITE_FILE(S["tgui_prefs_migration"] , tgui_prefs_migration)
@@ -107,5 +111,6 @@
 	if (islist(markings))
 		for (var/marking in markings)
 			for (var/title in markings[marking])
-				markings[marking][title] = sanitize_hexcolor(markings[marking][title])
+				if (!islist(markings[marking][title]))
+					markings[marking][title] = list(sanitize_hexcolor(markings[marking][title]), FALSE)
 	return markings

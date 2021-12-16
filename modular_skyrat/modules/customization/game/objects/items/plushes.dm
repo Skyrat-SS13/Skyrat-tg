@@ -43,7 +43,7 @@
 	special_desc = "There's a pocket under the coat hiding a tiny picture of the medcat plushie and a tinier ribbon diamond ring. D'awww."
 
 /obj/item/toy/plush/sechound
-	name = "Sechound plushie"
+	name = "sec-hound plushie"
 	desc = "An adorable stuffed toy of a SecHound, the trusty Nanotrasen sponsored security borg!"
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_securityk9"
@@ -53,7 +53,7 @@
 	squeak_override = list('sound/machines/beep.ogg' = 1)
 
 /obj/item/toy/plush/medihound
-	name = "Medihound plushie"
+	name = "medi-hound plushie"
 	desc = "An adorable stuffed toy of a medihound."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_medihound"
@@ -63,7 +63,7 @@
 	squeak_override = list('sound/machines/beep.ogg' = 1)
 
 /obj/item/toy/plush/scrubpuppy
-	name = "Scrubpuppy plushie"
+	name = "scrub-puppy plushie"
 	desc = "An adorable stuffed toy of a Scrubpuppy, the hard-working pup who keeps the station clean!"
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_scrubpuppy"
@@ -73,7 +73,7 @@
 	squeak_override = list('sound/machines/beep.ogg' = 1)
 
 /obj/item/toy/plush/meddrake
-	name = "MediDrake Plushie"
+	name = "medi-drake plushie"
 	desc = "An adorable stuffed toy of a Medidrake."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_meddrake"
@@ -83,7 +83,7 @@
 	squeak_override = list('sound/machines/beep.ogg' = 1)
 
 /obj/item/toy/plush/secdrake
-	name = "SecDrake Plushie"
+	name = "sec-drake plushie"
 	desc = "An adorable stuffed toy of a Secdrake."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_secdrake"
@@ -94,7 +94,7 @@
 
 
 /obj/item/toy/plush/fox
-	name = "Fox plushie"
+	name = "fox plushie"
 	desc = "An adorable stuffed toy of a Fox."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_fox"
@@ -104,7 +104,7 @@
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
 
 /obj/item/toy/plush/duffmoth
-	name = "Suspicious moth plushie"
+	name = "suspicious moth plushie"
 	desc = "A plushie depicting a certain moth. He probably got turned into a marketable plushie."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_duffy"
@@ -115,7 +115,7 @@
 	gender = MALE
 
 /obj/item/toy/plush/leaplush
-	name = "Suspicious deer plushie"
+	name = "suspicious deer plushie"
 	desc = "A cute and all too familiar deer."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_lea"
@@ -126,8 +126,8 @@
 	gender = FEMALE
 
 /obj/item/toy/plush/sarmieplush
-	name = "Cosplayer plushie"
-	desc = "A stuffed toy who look like a familiar cosplayer, <b>He looks sad.</b>"
+	name = "cosplayer plushie"
+	desc = "A stuffed toy who look like a familiar cosplayer, <b>he looks sad.</b>"
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_sarmie"
 	inhand_icon_state = "plushie_sarmie"
@@ -137,7 +137,7 @@
 	gender = MALE
 
 /obj/item/toy/plush/sharknet
-	name = "Gluttonous Shark plushie"
+	name = "gluttonous shark plushie"
 	desc = "A heavy plushie of a rather large and hungry shark"
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_sharknet"
@@ -159,7 +159,7 @@
 //End of storage component//
 
 /obj/item/toy/plush/pintaplush
-	name = "Smaller Deer plushie"
+	name = "smaller deer plushie"
 	desc = "A pint-sized cervine with a vacant look."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_pinta"
@@ -170,7 +170,7 @@
 	young = 1 //No.
 
 /obj/item/toy/plush/arcplush
-	name = "Familiar lizard plushie"
+	name = "familiar lizard plushie"
 	desc = "A small plushie that resembles a lizard-- Or, not a lizard, it's mouth seems to go horizontally too.. Are those limbs in it's maw?"
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_arc"
@@ -181,7 +181,7 @@
 	young = 1 //No.
 
 /obj/item/toy/plush/oleplush
-	name = "Irritable goat plushie"
+	name = "irritable goat plushie"
 	desc = "A plush recreation of a purple ovine. Made with 100% real, all natural wool from the creator herself."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_ole"
@@ -193,7 +193,7 @@
 	gender = FEMALE
 
 /obj/item/toy/plush/szaplush
-	name = "Suspicious spider"
+	name = "suspicious spider"
 	desc = "A plushie of a shy looking drider, colored in floortile gray."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_sza"
@@ -204,7 +204,7 @@
 	young = 1 //No.
 
 /obj/item/toy/plush/riffplush
-  name = "Valid plushie"
+  name = "valid plushie"
   desc = "A stuffed toy in the likeness of a peculiar demonic one. Likely turned into a plushie to sell such. They look quite alright about it."
   icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
   icon_state = "plushie_riffy"
@@ -263,7 +263,7 @@
 	inhand_icon_state = "whitecat"
 
 /obj/item/toy/plush/seaduplush
-	name = "Sneed plushie"
+	name = "sneed plushie"
 	desc = "A plushie of a particular, bundled up IPC. Underneath the cloak, you can see a plush recreation of the captain's sabre."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_seadu"
@@ -273,7 +273,7 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/synth_yes.ogg' = 1,'modular_skyrat/modules/emotes/sound/emotes/synth_no.ogg' = 1)
 
 /obj/item/toy/plush/lizzyplush
-	name = "Odd yoga lizzy plushie"
+	name = "odd yoga lizzy plushie"
 	desc = "Brought to you by Nanotrasen Wellness Program is the Yoga Odd Lizzy! He smells vaguely of blueberries, and likely resembles a horrible lover."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_lizzy"

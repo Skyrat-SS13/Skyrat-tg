@@ -25,12 +25,12 @@
 			return
 		var/mob/living/carbon/C = usr
 		var/self = (C == bodypart.owner)
-		C.visible_message("<span class='notice'>[C] begins removing [name] from [self ? "[bodypart.owner.p_their(TRUE)]" : "[bodypart.owner]'s" ] [bodypart.name]...</span>", "<span class='notice'>You begin to remove [name] from [self ? "your" : "[bodypart.owner]'s"] [bodypart.name]...</span>")
+		C.visible_message(span_notice("[C] begins removing [name] from [self ? "[bodypart.owner.p_their(TRUE)]" : "[bodypart.owner]'s" ] [bodypart.name]..."), span_notice("You begin to remove [name] from [self ? "your" : "[bodypart.owner]'s"] [bodypart.name]..."))
 		if(!do_after(C, (self ? SELF_AID_REMOVE_DELAY : OTHER_AID_REMOVE_DELAY), target=bodypart.owner))
 			return
 		if(QDELETED(src))
 			return
-		C.visible_message("<span class='notice'>[C] removes [name] from [self ? "[bodypart.owner.p_their(TRUE)]" : "[bodypart.owner]'s" ] [bodypart.name].</span>", "<span class='notice'>You remove [name] from [self ? "your" : "[bodypart.owner]'s" ] [bodypart.name].</span>")
+		C.visible_message(span_notice("[C] removes [name] from [self ? "[bodypart.owner.p_their(TRUE)]" : "[bodypart.owner]'s" ] [bodypart.name]."), span_notice("You remove [name] from [self ? "your" : "[bodypart.owner]'s" ] [bodypart.name]."))
 		var/obj/item/gotten = rip_off()
 		if(gotten && !C.put_in_hands(gotten))
 			gotten.forceMove(get_turf(C))
@@ -57,7 +57,7 @@
 	integrity--
 	if(integrity <= 0)
 		if(bodypart.owner)
-			to_chat(bodypart.owner, "<span class='warning'>The [name] on your [bodypart.name] tears and falls off!</span>")
+			to_chat(bodypart.owner, span_warning("The [name] on your [bodypart.name] tears and falls off!"))
 		qdel(src)
 
 /**
@@ -218,11 +218,11 @@
 		if(type == GAUZE_STAIN_BLOOD && !blood_stained)
 			blood_stained = TRUE
 			if(bodypart.owner)
-				to_chat(bodypart.owner, "<span class='warning'>The [name] on your [bodypart.name] [pick(list("pools", "trickles", "seeps"))] with blood.</span>")
+				to_chat(bodypart.owner, span_warning("The [name] on your [bodypart.name] [pick(list("pools", "trickles", "seeps"))] with blood."))
 		else if(type == GAUZE_STAIN_PUS && !pus_stained)
 			pus_stained = TRUE
 			if(bodypart.owner)
-				to_chat(bodypart.owner, "<span class='warning'>The [name] on your [bodypart.name] [pick(list("pools", "trickles", "seeps"))] with pus.</span>")
+				to_chat(bodypart.owner, span_warning("The [name] on your [bodypart.name] [pick(list("pools", "trickles", "seeps"))] with pus."))
 
 /datum/bodypart_aid/gauze/improvised
 	name = "improvised gauze"

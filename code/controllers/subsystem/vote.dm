@@ -86,7 +86,7 @@ SUBSYSTEM_DEF(vote)
 			text += "<b>[question]</b>"
 		else
 			text += "<b>[capitalize(mode)] Vote</b>"
-		for(var/i=1,i<=choices.len,i++)
+		for(var/i in 1 to choices.len)
 			var/votes = choices[choices[i]]
 			if(!votes)
 				votes = 0
@@ -215,17 +215,17 @@ SUBSYSTEM_DEF(vote)
 					choices.Add(valid_map)
 			//SKYRAT EDIT ADDITON END
 			if("custom")
-				question = stripped_input(usr,"What is the vote for?")
+				question = tgui_input_text(usr, "What is the vote for?", "Custom Vote")
 				if(!question)
 					return FALSE
-				for(var/i=1,i<=10,i++)
-					var/option = capitalize(stripped_input(usr,"Please enter an option or hit cancel to finish"))
+				for(var/i in 1 to 10)
+					var/option = tgui_input_text(usr, "Please enter an option or hit cancel to finish", "Options", max_length = MAX_NAME_LEN)
 					if(!option || mode || !usr.client)
 						break
-					choices.Add(option)
+					choices.Add(capitalize(option))
 			//SKYRAT EDIT ADDITION BEGIN - AUTOTRANSFER
 			if("transfer")
-				choices.Add("Initiate Crew Transfer","Continue Playing")
+				choices.Add("Initiate Crew Transfer", "Continue Playing")
 			//SKYRAT EDIT ADDITION END - AUTOTRANSFER
 			else
 				return FALSE

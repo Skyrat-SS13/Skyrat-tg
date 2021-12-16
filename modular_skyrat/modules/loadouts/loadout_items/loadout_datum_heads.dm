@@ -77,7 +77,6 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/greyscale_beret
 	name = "Greyscale Beret"
-	can_be_greyscale = TRUE
 	item_path = /obj/item/clothing/head/beret
 
 /datum/loadout_item/head/black_beret
@@ -235,35 +234,6 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/griffin
 	name = "Griffon Head"
 	item_path = /obj/item/clothing/head/griffin
-
-/datum/loadout_item/head/poppy
-	name = "Poppy"
-	item_path = /obj/item/food/grown/poppy
-
-/datum/loadout_item/head/lily
-	name = "Lily"
-	item_path = /obj/item/food/grown/poppy/lily
-
-/datum/loadout_item/head/geranium
-	name = "Geranium"
-	item_path = /obj/item/food/grown/poppy/geranium
-
-/datum/loadout_item/head/rose
-	name = "Rose"
-	item_path = /obj/item/food/grown/rose
-
-/datum/loadout_item/head/sunflower
-	name = "Sunflower"
-	item_path = /obj/item/grown/sunflower
-
-/datum/loadout_item/head/harebell
-	name = "Harebell"
-	item_path = /obj/item/food/grown/harebell
-
-/datum/loadout_item/head/rainbow_bunch
-	name = "Rainbow Bunch"
-	item_path = /obj/item/food/grown/rainbow_flower
-	additional_tooltip_contents = list(TOOLTIP_RANDOM_COLOR)
 
 //MISC
 /datum/loadout_item/head/baseball
@@ -499,12 +469,12 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	restricted_roles = list("Head of Security")
 
 /datum/loadout_item/head/navyblueofficerberet
-	name = "Security officer's Navyblue beret"
+	name = "Security Officer's Navyblue beret"
 	item_path = /obj/item/clothing/head/beret/sec/navyofficer
 	restricted_roles = list("Security Officer","Security Medic","Security Sergeant",)
 
 /datum/loadout_item/head/solofficercap
-	name = "Security officer's Sol Cap"
+	name = "Security Officer's Sol Cap"
 	item_path = /obj/item/clothing/head/sec/peacekeeper/sol
 	restricted_roles = list("Security Officer","Security Medic","Security Sergeant",)
 
@@ -660,6 +630,15 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/donator/carbon_rose
 	name = "Carbon Rose Flower"
 	item_path = /obj/item/grown/carbon_rose
+
+/datum/loadout_item/head/donator/sunflower
+	name = "Sunflower"
+	item_path = /obj/item/grown/sunflower
+
+/datum/loadout_item/head/donator/rainbow_bunch
+	name = "Rainbow Bunch"
+	item_path = /obj/item/food/grown/rainbow_flower
+	additional_tooltip_contents = list(TOOLTIP_RANDOM_COLOR)
 
 /datum/loadout_item/head/donator/enclave
 	name = "Enclave Cap"

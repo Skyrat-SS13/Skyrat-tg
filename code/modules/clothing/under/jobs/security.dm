@@ -12,7 +12,7 @@
 /obj/item/clothing/under/rank/security
 	icon = 'icons/obj/clothing/under/security.dmi'
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 30, ACID = 30, WOUND = 10)
+	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 30, ACID = 30, WOUND = 10)
 	strip_delay = 50
 	alt_covers_chest = TRUE
 	sensor_mode = SENSOR_COORDS
@@ -128,7 +128,7 @@
 	desc = "A security jumpsuit decorated for those few with the dedication to achieve the position of Head of Security."
 	icon_state = "rhos"
 	inhand_icon_state = "r_suit"
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 50, WOUND = 10)
+	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 50, WOUND = 10)
 	strip_delay = 60
 
 /obj/item/clothing/under/rank/security/head_of_security/skirt
@@ -205,7 +205,7 @@
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit_prison_inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit_prison_inhand_right
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit_prison_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit_prison_worn_digi
+	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit_prison_worn/digi // SKYRAT EDIT ADD
 	has_sensor = LOCKED_SENSORS
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
@@ -219,7 +219,7 @@
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit_prison_inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit_prison_inhand_right
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit_prison_worn
-	greyscale_config_worn_digi = null
+	greyscale_config_worn_digi = null // SKYRAT EDIT ADD
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
@@ -236,9 +236,11 @@
 	desc = "Flare cut trousers and a dirty shirt that might have been classy before someone took a piss in the armpits. It's the dress of a superstar."
 	icon_state = "jamrock_suit"
 	inhand_icon_state = "jamrock_suit"
+	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/security/detective/kim
 	name = "aerostatic suit"
 	desc = "A crisp and well-pressed suit; professional, comfortable and curiously authoritative."
 	icon_state = "aerostatic_suit"
 	inhand_icon_state = "aerostatic_suit"
+	can_adjust = FALSE

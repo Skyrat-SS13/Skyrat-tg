@@ -8,7 +8,6 @@
 #define CUM_FEMALE 2
 // #define ITEM_SLOT_PENIS (1<<20)
 
-#define TRAIT_NYMPHOMANIA	"nymphomania"
 #define TRAIT_MASOCHISM		"masochism"
 #define TRAIT_SADISM		"sadism"
 #define TRAIT_BIMBO 		"bimbo"
@@ -88,7 +87,7 @@
 	..()
 
 /datum/reagent/drug/dopamine/overdose_start(mob/living/carbon/human/M)
-	if(!HAS_TRAIT(M, TRAIT_NYMPHOMANIA) || !HAS_TRAIT(M, TRAIT_BIMBO))
+	if(!HAS_TRAIT(M, TRAIT_BIMBO))
 		to_chat(M, span_userdanger("You don't want to cum anymore!"))
 		SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overgasm, name)
 	return
@@ -234,9 +233,6 @@
 	else
 		arousal -= abs(arous)
 
-	if(HAS_TRAIT(src, TRAIT_NYMPHOMANIA))
-		arousal = min(max(arousal,20),100)
-	else
 		arousal = min(max(arousal,0),100)
 
 /datum/status_effect/aroused
@@ -259,9 +255,6 @@
 
 		if(HAS_TRAIT(H, TRAIT_MASOCHISM))
 			temp_pain -= 0.5
-		if(HAS_TRAIT(H, TRAIT_NYMPHOMANIA))
-			temp_pleasure += 0.25
-			temp_arousal += 0.05
 		if(HAS_TRAIT(H, TRAIT_NEVERBONER))
 			temp_pleasure -= 50
 			temp_arousal -= 50
@@ -345,53 +338,140 @@
 
 /datum/mood_event/orgasm
 	description = span_purple("Woah... This pleasant tiredness... I love it.\n")
-	mood_change = 8 //yes, +8. Well fed buff gives same amount. This is Fair (tm).
 	timeout = 5 MINUTES
 
 /datum/mood_event/climaxself
 	description = span_purple("I just came in my own underwear. Messy.\n")
-	mood_change = -2
 	timeout = 4 MINUTES
 
 /datum/mood_event/overgasm
 	description = span_warning("Uhh... I don't want to be horny anymore.\n") //Me too, buddy. Me too.
-	mood_change = -6
 	timeout = 10 MINUTES
 
 /mob/living/carbon/human/proc/climax(manual = TRUE)
 	if (CONFIG_GET(flag/disable_erp_preferences))
 		return
-	var/obj/item/organ/genital/penis = getorganslot(ORGAN_SLOT_PENIS)
-	var/obj/item/organ/genital/vagina = getorganslot(ORGAN_SLOT_VAGINA)
-	if(manual == TRUE && !has_status_effect(/datum/status_effect/climax_cooldown) && client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+
+	if(!client?.prefs?.read_preference(/datum/preference/toggle/erp/autocum) && manual != TRUE)
+		return
+
+	var/obj/item/organ/genital/penis/penis = getorganslot(ORGAN_SLOT_PENIS)
+	var/obj/item/organ/genital/testicles/testicles = getorganslot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/genital/vagina/vagina = getorganslot(ORGAN_SLOT_VAGINA)
+
+	if(!has_status_effect(/datum/status_effect/climax_cooldown) && client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		if(!HAS_TRAIT(src, TRAIT_NEVERBONER) && !has_status_effect(/datum/status_effect/climax_cooldown))
 			switch(gender)
 				if(MALE)
 					playsound(get_turf(src), pick('modular_skyrat/modules/modular_items/lewd_items/sounds/final_m1.ogg',
 												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_m2.ogg',
-												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_m3.ogg'), 50, TRUE)
+												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_m3.ogg'), 50, TRUE, ignore_walls = FALSE)
 				if(FEMALE)
 					playsound(get_turf(src), pick('modular_skyrat/modules/modular_items/lewd_items/sounds/final_f1.ogg',
 												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_f2.ogg',
-												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_f3.ogg'), 50, TRUE)
-				else
-					playsound(get_turf(src), pick('modular_skyrat/modules/modular_items/lewd_items/sounds/final_m1.ogg',
-												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_m2.ogg',
-												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_m3.ogg'), 50, TRUE)
+												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_f3.ogg'), 50, TRUE, ignore_walls = FALSE)
+			if(penis)
+				if(!testicles) //If we have no god damn balls, we can't cum anywhere... GET BALLS!
+					if(penis?.is_exposed())
+						visible_message(span_userlove("[src] orgasms, but nothing comes out of [p_their()] dick!"), \
+							span_userlove("You orgasm, it feels great, but nothing comes out of your dick!"))
+						apply_status_effect(/datum/status_effect/climax)
+						apply_status_effect(/datum/status_effect/climax_cooldown)
+						SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
+						return TRUE
+					else
+						visible_message(span_userlove("[src] cums into their clothes!"), \
+							span_userlove("You shoot your load, but you weren't naked, so you mess up your clothes!"))
+						apply_status_effect(/datum/status_effect/climax)
+						apply_status_effect(/datum/status_effect/climax_cooldown)
+						SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
+						return TRUE
 
-			if(vagina && penis)
-				if(is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW || penis.visibility_preference == GENITAL_ALWAYS_SHOW)
-					apply_status_effect(/datum/status_effect/climax)
-					apply_status_effect(/datum/status_effect/climax_cooldown)
-					visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
-				else
-					apply_status_effect(/datum/status_effect/climax)
-					apply_status_effect(/datum/status_effect/climax_cooldown)
-					visible_message(span_purple("[src] cums in their underwear!"), \
-								span_purple("You cum in your underwear! Eww."))
-					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
+				var/list/interactable_inrange_humans = list()
 
-			else if(vagina)
+				for(var/mob/living/carbon/human/iterating_human in view(1, src))
+					if(iterating_human == src)
+						continue
+					//if(iterating_human.client?.prefs?.read_preference(/datum/preference/toggle/erp))
+					interactable_inrange_humans[iterating_human.name] = iterating_human
+
+				var/list/buttons = list("On the floor")
+
+				if(interactable_inrange_humans.len)
+					buttons += "Inside/on someone"
+
+				var/climax_choice = tgui_alert(src, "You are cumming, choose where to shoot your load.", "Load preference!", buttons)
+
+				visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
+
+				var/create_cum_decal = FALSE
+
+				if(!climax_choice || climax_choice == "On the floor")
+					if(wear_condom())
+						var/obj/item/clothing/sextoy/condom/condom = get_item_by_slot(ITEM_SLOT_PENIS)
+						if(condom.condom_state == "broken")
+							create_cum_decal = TRUE
+							visible_message(span_userlove("[src] shoots [p_their()] load into [condom], sending cum onto the floor!"), \
+								span_userlove("You shoot string after string of cum, but it sprays out of [condom], hitting the floor!"))
+						else
+							condom.condom_use()
+							visible_message(span_userlove("[src] shoots [p_their()] load into [condom], filling it up!"), \
+								span_userlove("You shoot your thick load into [condom] and it catches it all!"))
+					else
+						create_cum_decal = TRUE
+						visible_message(span_userlove("[src] shoots their sticky load onto the floor!"), \
+							span_userlove("You shoot string after string of hot cum, hitting the floor!"))
+				else
+					var/target_choice = tgui_input_list(src, "Choose a person to cum in or on~", "Choose target!", interactable_inrange_humans)
+					if(!target_choice)
+						create_cum_decal = TRUE
+						visible_message(span_userlove("[src] shoots their sticky load onto the floor!"), \
+							span_userlove("You shoot string after string of hot cum, hitting the floor!"))
+					else
+						var/mob/living/carbon/human/target_human = interactable_inrange_humans[target_choice]
+						var/obj/item/organ/genital/vagina/target_vagina = getorganslot(ORGAN_SLOT_VAGINA)
+						var/obj/item/organ/genital/anus/target_anus = getorganslot(ORGAN_SLOT_ANUS)
+						var/obj/item/organ/genital/penis/target_penis = getorganslot(ORGAN_SLOT_PENIS)
+
+						var/list/target_buttons = list()
+
+						if(!target_human.wear_mask)
+							target_buttons += "mouth"
+
+						if(target_vagina && target_vagina?.is_exposed())
+							target_buttons += "vagina"
+
+						if(target_anus && target_anus?.is_exposed())
+							target_buttons += "asshole"
+
+						if(target_penis && target_penis?.is_exposed() && target_penis.sheath)
+							target_buttons += "sheath"
+
+						target_buttons += "On them"
+
+						var/climax_into_choice = tgui_input_list(src, "Where on or in [target_human] do you wish to cum?", "Final frontier!", target_buttons)
+
+						if(!climax_into_choice)
+							create_cum_decal = TRUE
+							visible_message(span_userlove("[src] shoots their sticky load onto the floor!"), \
+								span_userlove("You shoot string after string of hot cum, hitting the floor!"))
+						else if(climax_into_choice == "On them")
+							create_cum_decal = TRUE
+							visible_message(span_userlove("[src] shoots their sticky load onto the [target_human]!"), \
+								span_userlove("You shoot string after string of hot cum onto [target_human]!"))
+						else
+							visible_message(span_userlove("[src] hilts [p_their()] cock into [target_human]'s [climax_into_choice], shooting cum into it!"), \
+								span_userlove("You hilt your cock into [target_human]'s [climax_into_choice], shooting cum into it!"))
+							to_chat(target_human, span_userlove("Your [climax_into_choice] fills with warm cum as [src] shoots [p_their()] load into it."))
+				emote("moan")
+				testicles.reagents.remove_all(testicles.reagents.total_volume * 0.6)
+				apply_status_effect(/datum/status_effect/climax)
+				apply_status_effect(/datum/status_effect/climax_cooldown)
+				if(create_cum_decal)
+					var/turf/our_turf = get_turf(src)
+					new /obj/effect/decal/cleanable/cum(our_turf)
+				return TRUE
+			if(vagina)
 				if(is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
@@ -402,62 +482,11 @@
 					visible_message(span_purple("[src] cums in their underwear!"), \
 								span_purple("You cum in your underwear! Eww."))
 					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
-
-			else if(penis)
-				if(is_bottomless() || penis.visibility_preference == GENITAL_ALWAYS_SHOW)
-					apply_status_effect(/datum/status_effect/climax)
-					apply_status_effect(/datum/status_effect/climax_cooldown)
-					visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
-				else
-					apply_status_effect(/datum/status_effect/climax)
-					apply_status_effect(/datum/status_effect/climax_cooldown)
-					visible_message(span_purple("[src] cums in their underwear!"), \
-								span_purple("You cum in your underwear! Eww."))
-					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
-
-			else
-				apply_status_effect(/datum/status_effect/climax)
-				apply_status_effect(/datum/status_effect/climax_cooldown)
-				visible_message(span_purple("[src] twitches in orgasm!"), \
-								span_purple("You cum in your underwear! Eww."))
-
+				return TRUE
 		else
 			visible_message(span_purple("[src] twitches, trying to cum, but with no result."), \
-							span_purple("You can't have an orgasm!"))
-		return TRUE
-
-	else if(manual == FALSE && client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
-		if(!HAS_TRAIT(src, TRAIT_NEVERBONER) && !has_status_effect(/datum/status_effect/climax_cooldown))
-			switch(gender)
-				if(MALE)
-					playsound(get_turf(src), pick('modular_skyrat/modules/modular_items/lewd_items/sounds/final_m1.ogg',
-												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_m2.ogg',
-												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_m3.ogg'), 50, TRUE)
-				if(FEMALE)
-					playsound(get_turf(src), pick('modular_skyrat/modules/modular_items/lewd_items/sounds/final_f1.ogg',
-												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_f2.ogg',
-												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_f3.ogg'), 50, TRUE)
-				else
-					playsound(get_turf(src), pick('modular_skyrat/modules/modular_items/lewd_items/sounds/final_m1.ogg',
-												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_m2.ogg',
-												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_m3.ogg'), 50, TRUE)
-			if(is_bottomless())
-				apply_status_effect(/datum/status_effect/climax)
-				apply_status_effect(/datum/status_effect/climax_cooldown)
-				visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
-			else
-				apply_status_effect(/datum/status_effect/climax)
-				apply_status_effect(/datum/status_effect/climax_cooldown)
-				visible_message(span_purple("[src] cums in their underwear!"), \
-								span_purple("You cum in your underwear! Eww."))
-				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
-		else
-			visible_message(span_purple("[src] twitches, trying to cum, but with no result."), \
-							span_purple("You can't have an orgasm!"))
-		return TRUE
-
-	else
-		return FALSE
+				span_purple("You can't have an orgasm!"))
+			return TRUE
 
 /datum/status_effect/climax_cooldown
 	id = "climax_cooldown"
@@ -516,39 +545,6 @@
 		H.adjustArousal(temp_arousal)
 		H.adjustPleasure(temp_pleasure)
 
-/datum/status_effect/climax/on_apply(obj/target)
-	var/mob/living/carbon/human/H = owner
-	var/obj/item/organ/genital/vagina/vagina = owner.getorganslot(ORGAN_SLOT_VAGINA)
-	var/obj/item/organ/genital/testicles/balls = owner.getorganslot(ORGAN_SLOT_TESTICLES)
-	var/obj/item/organ/genital/testicles/penis = owner.getorganslot(ORGAN_SLOT_PENIS)
-
-	if((H.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy)) && (H.stat != DEAD))
-		if(penis && balls && H.wear_condom())
-			if(prob(40))
-				H.emote("moan")
-			balls.reagents.remove_all(balls.reagents.total_volume * 0.6)
-			var/obj/item/clothing/sextoy/condom/C = H.get_item_by_slot(ITEM_SLOT_PENIS)
-			C.condom_use()
-			if(C.condom_state == "broken")
-				var/turf/T = get_turf(H)
-				new /obj/effect/decal/cleanable/cum(T)
-
-		if(balls && H.is_bottomless() && !H.wear_condom())
-			var/turf/T = get_turf(H)
-			new /obj/effect/decal/cleanable/cum(T)
-			if(prob(40))
-				H.emote("moan")
-			balls.reagents.remove_all(balls.reagents.total_volume * 0.6)
-
-		if(vagina && H.is_bottomless()) //Sry, futanari players, but condom's don't work like that for vagina, so yep.
-			var/turf/T = get_turf(H)
-			new /obj/effect/decal/cleanable/femcum(T)
-			if(prob(40))
-				H.emote("moan")
-			vagina.reagents.remove_all()
-
-	return ..()
-
 ////////////////////////
 ///SPANKING PROCEDURE///
 ////////////////////////
@@ -571,7 +567,6 @@
 //Mood boost for masochist
 /datum/mood_event/perv_spanked
 	description = span_purple("Ah, yes! More! Punish me!\n")
-	mood_change = 3
 	timeout = 5 MINUTES
 
 /////////////////////
@@ -596,7 +591,6 @@
 
 /datum/mood_event/subspace
 	description = span_purple("Everything is so woozy... Pain feels so... Awesome.\n")
-	mood_change = 4
 
 ///////////////////////
 ///AROUSAL INDICATOR///
@@ -611,7 +605,7 @@
 
 //screen alert
 
-/atom/movable/screen/alert/aroused_X
+/atom/movable/screen/alert/aroused_x
 	name = "Aroused"
 	desc = "It's a little hot in here"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
@@ -621,44 +615,44 @@
 	var/pain_level = "small"
 	var/pleasure_level = "small"
 
-/atom/movable/screen/alert/aroused_X/Initialize()
+/atom/movable/screen/alert/aroused_x/Initialize()
 	.=..()
 	pain_overlay = update_pain()
 	pleasure_overlay = update_pleasure()
 
-/atom/movable/screen/alert/aroused_X/proc/update_pain()
+/atom/movable/screen/alert/aroused_x/proc/update_pain()
 	if(pain_level)
 		return mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi', "pain_[pain_level]")
 
-/atom/movable/screen/alert/aroused_X/proc/update_pleasure()
+/atom/movable/screen/alert/aroused_x/proc/update_pleasure()
 	if(pleasure_level)
 		return mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi', "pleasure_[pleasure_level]")
 
-/datum/species/proc/throw_arousalalert(level, atom/movable/screen/alert/aroused_X/arousal_alert, mob/living/carbon/human/targeted_human)
-	targeted_human.throw_alert("aroused", /atom/movable/screen/alert/aroused_X)
+/datum/species/proc/throw_arousalalert(level, atom/movable/screen/alert/aroused_x/arousal_alert, mob/living/carbon/human/targeted_human)
+	targeted_human.throw_alert("aroused", /atom/movable/screen/alert/aroused_x)
 	arousal_alert?.icon_state = level
 	arousal_alert?.update_icon()
 
-/datum/species/proc/overlay_pain(level, atom/movable/screen/alert/aroused_X/arousal_alert)
+/datum/species/proc/overlay_pain(level, atom/movable/screen/alert/aroused_x/arousal_alert)
 	arousal_alert?.cut_overlay(arousal_alert.pain_overlay)
 	arousal_alert?.pain_level = level
 	arousal_alert?.pain_overlay = arousal_alert.update_pain()
 	arousal_alert?.add_overlay(arousal_alert.pain_overlay)
 	arousal_alert?.update_overlays()
 
-/datum/species/proc/overlay_pleasure(level, atom/movable/screen/alert/aroused_X/arousal_alert)
+/datum/species/proc/overlay_pleasure(level, atom/movable/screen/alert/aroused_x/arousal_alert)
 	arousal_alert?.cut_overlay(arousal_alert.pleasure_overlay)
 	arousal_alert?.pleasure_level = level
 	arousal_alert?.pleasure_overlay = arousal_alert.update_pleasure()
 	arousal_alert?.add_overlay(arousal_alert.pleasure_overlay)
 	arousal_alert?.update_overlays()
 
-/datum/species/proc/handle_arousal(mob/living/carbon/human/target_human, atom/movable/screen/alert/aroused_X)
-	var/atom/movable/screen/alert/aroused_X/arousal_alert = target_human.alerts["aroused"]
+/datum/species/proc/handle_arousal(mob/living/carbon/human/target_human, atom/movable/screen/alert/aroused_x)
+	var/atom/movable/screen/alert/aroused_x/arousal_alert = target_human.alerts["aroused"]
 	if(target_human.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		switch(target_human.arousal)
 			if(-100 to 1)
-				target_human.clear_alert("aroused", /atom/movable/screen/alert/aroused_X)
+				target_human.clear_alert("aroused", /atom/movable/screen/alert/aroused_x)
 			if(1 to 25)
 				throw_arousalalert("arousal_small", arousal_alert, target_human)
 			if(25 to 50)
@@ -920,7 +914,7 @@
 		user.visible_message(span_warning("[user] starts masturbating into [target]!"), span_danger("You start masturbating into [target]!"))
 		if(do_after(user,60))
 			user.visible_message(span_warning("[user] cums into [target]!"), span_danger("You cum into [target]!"))
-			playsound(target, "desecration", 50, TRUE)
+			playsound(target, "desecration", 50, TRUE, ignore_walls = FALSE)
 			R.trans_to(target, cum_volume)
 			if(prob(40))
 				user.emote("moan")
@@ -930,7 +924,7 @@
 		if(do_after(user,60))
 			var/turf/T = get_turf(target)
 			user.visible_message(span_warning("[user] cums on [target]!"), span_danger("You cum on [target]!"))
-			playsound(target, "desecration", 50, TRUE)
+			playsound(target, "desecration", 50, TRUE, ignore_walls = FALSE)
 			new/obj/effect/decal/cleanable/cum(T)
 			if(prob(40))
 				user.emote("moan")

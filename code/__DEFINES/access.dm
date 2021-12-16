@@ -146,8 +146,6 @@
 #define ACCESS_MECH_SECURITY 302
 #define ACCESS_MECH_SCIENCE 303
 #define ACCESS_MECH_ENGINE 304
-	// Security Records Access for CDO
-#define ACCESS_SECURITY_RECORDS 305
 
 /// A list of access levels that, when added to an ID card, will warn admins.
 #define ACCESS_ALERT_ADMINS list(ACCESS_CHANGE_IDS)
@@ -279,24 +277,25 @@
 	ACCESS_FORENSICS_LOCKERS, \
 	ACCESS_BRIG, \
 	ACCESS_SECURITY, \
-)
+	ACCESS_ATMOSPHERICS, \
+	ACCESS_ORDNANCE_STORAGE, \
+	ACCESS_ORDNANCE, \
+	ACCESS_BARBER, \
+) // SKYRAT EDIT ADD ACCESS_BARBER
 
 /// Command staff/secure accesses, think bridge/armoury, AI upload, notably access to modify ID cards themselves. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_COMMAND)
 #define COMMAND_ACCESS list( \
-	ACCESS_ORDNANCE_STORAGE, \
 	ACCESS_MINISAT, \
 	ACCESS_TCOMSAT, \
 	ACCESS_KEYCARD_AUTH, \
 	ACCESS_RC_ANNOUNCE, \
 	ACCESS_VAULT, \
-	ACCESS_ATMOSPHERICS, \
 	ACCESS_TECH_STORAGE, \
 	ACCESS_HEADS, \
 	ACCESS_TELEPORTER, \
 	ACCESS_ARMORY, \
 	ACCESS_AI_UPLOAD, \
 	ACCESS_CHANGE_IDS, \
-	ACCESS_ORDNANCE, \
 	ACCESS_EVA, \
 	ACCESS_GATEWAY, \
 	ACCESS_ALL_PERSONAL_LOCKERS, \

@@ -71,8 +71,8 @@
 			EN.blackboard[BB_DOG_HARASS_TARGET] = WEAKREF(target)
 			EN.current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/harass)
 
-/mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_attackby(datum/source, obj/item/I, mob/living/target)
-	if(I.force && I.damtype != STAMINA && health > 0)
+/mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_attackby(datum/source, obj/item/used_item, mob/living/target)
+	if(used_item.force && used_item.damtype != STAMINA && health > 0)
 		shootAt(target)
 		var/datum/ai_controller/dog/EN = ai_controller
 		if(health <= 30 && !(WEAKREF(target) in EN.blackboard[BB_DOG_FRIENDS]))
@@ -82,9 +82,9 @@
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_hitby(datum/source, atom/movable/AM)
 	if(istype(AM, /obj/item))
-		var/obj/item/I = AM
-		var/mob/thrown_by = I.thrownby?.resolve()
-		if(I.throwforce >= 5 && ishuman(thrown_by) && health > 0)
+		var/obj/item/used_item = AM
+		var/mob/thrown_by = used_item.thrownby?.resolve()
+		if(used_item.throwforce >= 5 && ishuman(thrown_by) && health > 0)
 			var/mob/living/carbon/human/target = thrown_by
 			var/datum/ai_controller/dog/EN = ai_controller
 			if(!(WEAKREF(target) in EN.blackboard[BB_DOG_FRIENDS]))
@@ -111,32 +111,32 @@
 	return BULLET_ACT_HIT
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/shootAt(atom/movable/target)
-	var/turf/T = get_turf(src)
-	var/turf/U = get_turf(target)
-	if(!T || !U)
+	var/turf/source_turf = get_turf(src)
+	var/turf/target_turf = get_turf(target)
+	if(!source_turf || !target_turf)
 		return
 	var/obj/projectile/beam/laser = new /obj/projectile/beam(loc)
 	laser.icon = 'icons/effects/genetics.dmi'
 	laser.icon_state = "eyelasers"
 	playsound(loc, 'sound/weapons/taser.ogg', 75, 1)
-	laser.preparePixelProjectile(target, T)
+	laser.preparePixelProjectile(target, source_turf)
 	laser.firer = src
 	laser.fired_from = src
 	laser.fire()
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/shootToyAt(atom/movable/target)
-	var/turf/T = get_turf(src)
-	var/turf/U = get_turf(target)
-	if(!T || !U)
+	var/turf/source_turf = get_turf(src)
+	var/turf/target_turf = get_turf(target)
+	if(!source_turf || !target_turf)
 		return
-	var/obj/projectile/bullet/reusable/foam_dart/FD = new /obj/projectile/bullet/reusable/foam_dart(loc)
-	FD.icon = 'icons/obj/guns/toy.dmi'
-	FD.icon_state = "foamdart_proj"
+	var/obj/projectile/bullet/reusable/foam_dart/fired_dart = new /obj/projectile/bullet/reusable/foam_dart(loc)
+	fired_dart.icon = 'icons/obj/guns/toy.dmi'
+	fired_dart.icon_state = "foamdart_proj"
 	playsound(loc, 'sound/items/syringeproj.ogg', 75, 1)
-	FD.preparePixelProjectile(target, T)
-	FD.firer = src
-	FD.fired_from = src
-	FD.fire()
+	fired_dart.preparePixelProjectile(target, source_turf)
+	fired_dart.firer = src
+	fired_dart.fired_from = src
+	fired_dart.fire()
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/Life(seconds, times_fired)
 	..()
@@ -162,10 +162,20 @@
 /mob/living/simple_animal/pet/dog/corgi/borgi/emag_act(user as mob)
 	if(!emagged)
 		emagged = 1
-		visible_message(span_warning("[user] swipes a card through [src].</span>"),span_notice("You overload [src]s internal reactor.</span>"))
+		visible_message(span_warning("[user] swipes a card through [src]."), span_notice("You overload [src]s internal reactor."))
 		addtimer(CALLBACK(src, .proc/explode), 60 SECONDS)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/explode()
-	visible_message(span_warning("[src] makes an odd whining noise.</span>"))
+	visible_message(span_warning("[src] makes an odd whining noise."))
 	explosion(get_turf(src), 0, 1, 6, 9, 2, TRUE)
 	death()
+
+/mob/living/simple_animal/pet/dog/dobermann
+	name = "\proper Dobermann"
+	gender = MALE
+	desc = "A larger breed of dog."
+	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
+	icon_state = "dobber"
+	icon_dead = "dobbydead"
+	icon_living = "dobber"
+

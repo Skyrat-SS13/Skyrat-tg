@@ -6,13 +6,12 @@
 $department_map: (
   'Assistant': colors.$grey,
   'Captain': colors.fg(colors.$blue),
+  'Cargo': colors.$brown,
   'Command': colors.$yellow,
   'Security': colors.$red,
   'Engineering': #f1a839,
   'Medical': colors.$teal,
-  'Misc': colors.$white,
   'Science': colors.fg(colors.$purple),
-  'Supply': colors.$brown,
   'Service': colors.$green,
   'Silicon': colors.$pink,
 );
@@ -186,8 +185,8 @@ $department_map: (
             border-top: 3px solid rgba(200, 200, 0, 1);
           }
 
-          // SKYRAT EDIT START
-          &:last-child {
+          // SKYRAT EDIT START -- Taking the second last because last is {children}
+          &:nth-last-child(2) {
             border-bottom: 3px solid rgba(200, 200, 0, 1);
           }
           // SKYRAT EDIT END

@@ -14,7 +14,6 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 
 /datum/loadout_item/toys/lizard_greyscale
 	name = "Greyscale Lizard Plush"
-	can_be_greyscale = TRUE
 	item_path = /obj/item/toy/plush/lizard_plushie
 
 /datum/loadout_item/toys/lizard_random

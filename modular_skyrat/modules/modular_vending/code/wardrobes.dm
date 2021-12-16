@@ -2,6 +2,12 @@
 	skyrat_products = list(
 		/obj/item/clothing/under/utility/sec/old = 3,
 		/obj/item/clothing/suit/toggle/jacket/sec/old = 3,
+		/obj/item/clothing/neck/security_cape = 10,
+		/obj/item/clothing/head/beret/sec/peacekeeper = 10,
+		/obj/item/clothing/head/security_garrison = 10,
+		/obj/item/clothing/head/security_cap = 10,
+		/obj/item/clothing/gloves/security = 10,
+		/obj/item/clothing/shoes/jackboots/security = 10,
 	)
 
 /obj/machinery/vending/wardrobe/medi_wardrobe
@@ -23,10 +29,12 @@
 		/obj/item/clothing/under/misc/overalls = 3,
 		/obj/item/clothing/under/rank/engineering/engineer/formal = 3,
 		/obj/item/clothing/under/rank/engineering/engineer/formal/skirt = 3,
-		/obj/item/clothing/under/rank/engineering/engineer/hazard = 3,
 		/obj/item/clothing/under/utility/haz_green = 3,
-		/obj/item/clothing/head/hardhat/weldhat/dblue = 3,
-		/obj/item/clothing/head/hardhat/orange = 3,
+		/obj/item/clothing/head/hardhat/orange = 2,
+		/obj/item/clothing/head/hardhat/weldhat/orange = 2,
+		/obj/item/clothing/head/hardhat/dblue = 2,
+		/obj/item/clothing/head/hardhat/weldhat/dblue = 2,
+		/obj/item/clothing/head/hardhat/red = 2
 	)
 
 /obj/machinery/vending/wardrobe/atmos_wardrobe

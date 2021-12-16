@@ -87,7 +87,7 @@
 		if(chambered.loaded_projectile)
 			if(prob(jamming_chance))
 				jammed = TRUE
-			jamming_chance  += jamming_increment
+			jamming_chance += jamming_increment
 			jamming_chance = clamp (jamming_chance, 0, 100)
 	return ..()
 
@@ -144,7 +144,8 @@
 	can_misfire = TRUE
 	misfire_probability = 0
 	misfire_percentage_increment = 5 //Slowly increases every shot
-	can_bayonet = FALSE
+	can_bayonet = TRUE
+	knife_y_offset = 11
 	can_be_sawn_off = FALSE
 	projectile_damage_multiplier = 0.75
 

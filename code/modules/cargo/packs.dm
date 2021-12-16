@@ -261,6 +261,16 @@
 	crate_name = "weed control crate"
 	crate_type = /obj/structure/closet/crate/secure/hydroponics
 
+/datum/supply_pack/emergency/mothic_rations
+	name = "Surplus Mothic Rations Triple-Pak"
+	desc = "Crew starving? Chef slacking off? Keep everyone fed on the barest minimum of what can be considered food with surplus ration packs, directly from the Mothic Fleet! Pack includes 3 packs of 3 bars each."
+	cost = CARGO_CRATE_VALUE * 3
+	contains = list(/obj/item/storage/box/mothic_rations,
+					/obj/item/storage/box/mothic_rations,
+					/obj/item/storage/box/mothic_rations,)
+	crate_name = "surplus rations box"
+	crate_type = /obj/structure/closet/crate/cardboard/mothic
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Security ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -296,7 +306,7 @@
 					/obj/item/clothing/suit/armor/vest)
 	crate_name = "armor crate" */
 
-/* - SKYRAT EDIT REMOVAL - SEC_HAUL
+
 /datum/supply_pack/security/disabler
 	name = "Disabler Crate"
 	desc = "Three stamina-draining disabler weapons. Requires Security access to open."
@@ -306,7 +316,7 @@
 					/obj/item/gun/energy/disabler,
 					/obj/item/gun/energy/disabler)
 	crate_name = "disabler crate"
-*/
+
 
 /datum/supply_pack/security/forensics
 	name = "Forensics Crate"
@@ -330,7 +340,7 @@
 					/obj/item/clothing/head/helmet/sec)
 	crate_name = "helmet crate"
 
-/* - SKYRAT EDIT REMOVAL - SEC_HAUL
+
 /datum/supply_pack/security/laser
 	name = "Lasers Crate"
 	desc = "Contains three lethal, high-energy laser guns. Requires Security access to open."
@@ -340,7 +350,7 @@
 					/obj/item/gun/energy/laser,
 					/obj/item/gun/energy/laser)
 	crate_name = "laser crate"
-*/
+
 
 /datum/supply_pack/security/securitybarriers
 	name = "Security Barrier Grenades"
@@ -420,8 +430,6 @@
 					/obj/item/clothing/mask/gas/sechailer)
 	crate_name = "security clothing crate"
 
-//SKYRAT EDIT REMOVAL BEGIN - No stunbaton
-/*
 /datum/supply_pack/security/baton
 	name = "Stun Batons Crate"
 	desc = "Arm the Civil Protection Forces with three stun batons. Batteries included. Requires Security access to open."
@@ -431,8 +439,6 @@
 					/obj/item/melee/baton/security/loaded,
 					/obj/item/melee/baton/security/loaded)
 	crate_name = "stun baton crate"
-*/
-//SKYRAT EDIT REMOVAL END - No stunbaton
 
 /datum/supply_pack/security/wall_flash
 	name = "Wall-Mounted Flash Crate"
@@ -490,15 +496,6 @@
 	contains = list(/obj/item/storage/box/chemimp)
 	crate_name = "chemical implant crate"
 
-/datum/supply_pack/security/armory/combatknives
-	name = "Combat Knives Crate"
-	desc = "Contains three sharpened combat knives. Each knife guaranteed to fit snugly inside any Nanotrasen-standard boot. Requires Armory access to open."
-	cost = CARGO_CRATE_VALUE * 3
-	contains = list(/obj/item/kitchen/knife/combat,
-					/obj/item/kitchen/knife/combat,
-					/obj/item/kitchen/knife/combat)
-	crate_name = "combat knife crate"
-
 /datum/supply_pack/security/armory/ballistic
 	name = "Combat Shotguns Crate"
 	desc = "For when the enemy absolutely needs to be replaced with lead. Contains three Aussec-designed Combat Shotguns, and three Shotgun Bandoliers. Requires Armory access to open."
@@ -520,7 +517,7 @@
 					/obj/item/gun/energy/e_gun/dragnet)
 	crate_name = "\improper DRAGnet crate"
 
-/* - SKYRAT EDIT REMOVAL - SEC_HUAL
+
 /datum/supply_pack/security/armory/energy
 	name = "Energy Guns Crate"
 	desc = "Contains two Energy Guns, capable of firing both nonlethal and lethal blasts of light. Requires Armory access to open."
@@ -529,7 +526,7 @@
 					/obj/item/gun/energy/e_gun)
 	crate_name = "energy gun crate"
 	crate_type = /obj/structure/closet/crate/secure/plasma
-*/
+
 
 /datum/supply_pack/security/armory/exileimp
 	name = "Exile Implants Crate"
@@ -950,7 +947,7 @@
 	name = "Solar Panel Crate"
 	desc = "Go green with this DIY advanced solar array. Contains twenty one solar assemblies, a solar-control circuit board, and tracker. If you have any questions, please check out the enclosed instruction book."
 	cost = CARGO_CRATE_VALUE * 8
-	contains  = list(/obj/item/solar_assembly,
+	contains = list(/obj/item/solar_assembly,
 					/obj/item/solar_assembly,
 					/obj/item/solar_assembly,
 					/obj/item/solar_assembly,
@@ -1658,6 +1655,15 @@
 	crate_name = "shaft miner starter kit"
 	crate_type = /obj/structure/closet/crate/secure
 
+/datum/supply_pack/service/survivalknives
+	name = "Survival Knives Crate"
+	desc = "Contains three sharpened survival knives. Each knife guaranteed to fit snugly inside any Nanotrasen-standard boot."
+	cost = CARGO_CRATE_VALUE * 3
+	contains = list(/obj/item/knife/combat/survival,
+					/obj/item/knife/combat/survival,
+					/obj/item/knife/combat/survival)
+	crate_name = "survival knife crate"
+
 /datum/supply_pack/service/wedding
 	name = "Wedding Crate"
 	desc = "Everything you need to host a wedding! Now you just need an officiant."
@@ -1707,6 +1713,20 @@
 	crate_name = "donk pocket crate"
 
 /datum/supply_pack/service/randomized/donkpockets/fill(obj/structure/closet/crate/C)
+	for(var/i in 1 to 3)
+		var/item = pick(contains)
+		new item(C)
+
+/datum/supply_pack/service/randomized/ready_donk
+	name = "Ready-Donk Variety Crate"
+	desc = "Featuring a line up of Donk Co.'s most popular pastry!"
+	cost = CARGO_CRATE_VALUE * 3
+	contains = list(/obj/item/food/ready_donk,
+	/obj/item/food/ready_donk/mac_n_cheese,
+	/obj/item/food/ready_donk/donkhiladas)
+	crate_name = "\improper Ready-Donk crate"
+
+/datum/supply_pack/service/randomized/ready_donk/fill(obj/structure/closet/crate/C)
 	for(var/i in 1 to 3)
 		var/item = pick(contains)
 		new item(C)
@@ -2395,7 +2415,8 @@
 		if(prob(50))
 			the_toy = pick_weight(GLOB.arcade_prize_pool)
 		else
-			the_toy = pick(subtypesof(/obj/item/toy/plush))
+			//the_toy = pick(subtypesof(/obj/item/toy/plush)) // SKYRAT EDIT -- Original
+			the_toy = pick(subtypesof(/obj/item/toy/plush) - typesof(/obj/item/toy/plush/donator)) // SKYRAT EDIT -- No more donator plushies in toy crates
 		new the_toy(C)
 
 /datum/supply_pack/costumes_toys/wizard
@@ -2547,6 +2568,13 @@
 	cost = CARGO_CRATE_VALUE * 5
 	contains = list(/obj/item/exodrone)
 	crate_name = "exodrone crate"
+
+/datum/supply_pack/misc/exploration_fuel
+	name = "Drone Fuel Pellet"
+	desc = "A fresh tank of exploration drone fuel."
+	cost = CARGO_CRATE_VALUE * 3
+	contains = list(/obj/item/fuel_pellet)
+	crate_name = "exodrone fuel crate"
 
 /datum/supply_pack/misc/paper
 	name = "Bureaucracy Crate"

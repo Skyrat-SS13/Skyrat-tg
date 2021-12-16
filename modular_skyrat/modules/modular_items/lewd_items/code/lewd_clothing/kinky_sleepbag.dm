@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag
 	name = "latex sleeping bag"
-	desc = "A tight sleeping bag made of a shiny material. It's dangerous to put it on yourself."
+	desc = "A tight sleeping bag made of a shiny material. It would be dangerous to put it on yourself."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_suits.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/sleepbag_normal.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/sleepbag_digi.dmi'
@@ -140,7 +140,7 @@
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/proc/fold(mob/user, src)
 	bag_fold = !bag_fold
-	playsound(user, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE)
+	playsound(user, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE, ignore_walls = FALSE)
 	if(bag_fold == TRUE)
 		w_class = WEIGHT_CLASS_SMALL
 		slot_flags = NONE
@@ -190,7 +190,7 @@
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/process(delta_time)
 	if(time_to_sound_left <= 0)
 		if(tt <= 0)
-			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 100, TRUE)
+			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 100, TRUE, ignore_walls = FALSE)
 			tt = rand(15,35) //to do random funny sounds when character inside that thing.
 		else
 			tt -= delta_time

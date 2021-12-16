@@ -10,8 +10,16 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	var/combat_indicator = FALSE
 	var/nextcombatpopup = 0
 
+/mob/living/update_overlays()
+	. = ..()
+	if(combat_indicator)
+		. += GLOB.combat_indicator_overlay
+
 /mob/living/proc/combat_indicator_unconscious_signal()
 	SIGNAL_HANDLER
+	if(stat < UNCONSCIOUS) // sanity check because something is calling this signal improperly
+		stack_trace("Improper COMSIG_LIVING_STATUS_UNCONSCIOUS sent; mob is not unconscious")
+		return
 	set_combat_indicator(FALSE)
 
 /mob/living/proc/set_combat_indicator(state)
@@ -47,17 +55,16 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 					visible_message(span_boldwarning("[src] hisses in a terrifying stance, claws raised and ready for combat!"))
 				else
 					visible_message(span_boldwarning("[src] gets ready for combat!"))
-		add_overlay(GLOB.combat_indicator_overlay)
 		combat_indicator = TRUE
-		src.apply_status_effect(STATUS_EFFECT_SURRENDER, src)
-		src.log_message("<font color='red'>has turned ON the combat indicator!</font>", LOG_ATTACK)
+		apply_status_effect(STATUS_EFFECT_SURRENDER, src)
+		log_message("<font color='red'>has turned ON the combat indicator!</font>", LOG_ATTACK)
 		RegisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS, .proc/combat_indicator_unconscious_signal)
 	else
-		cut_overlay(GLOB.combat_indicator_overlay)
 		combat_indicator = FALSE
-		src.remove_status_effect(STATUS_EFFECT_SURRENDER, src)
-		src.log_message("<font color='blue'>has turned OFF the combat indicator!</font>", LOG_ATTACK)
+		remove_status_effect(STATUS_EFFECT_SURRENDER, src)
+		log_message("<font color='blue'>has turned OFF the combat indicator!</font>", LOG_ATTACK)
 		UnregisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS)
+	update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
 
 /mob/living/proc/user_toggle_combat_indicator()
 	if(stat != CONSCIOUS)

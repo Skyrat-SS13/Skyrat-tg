@@ -37,7 +37,7 @@
 			//we're below minimum, turn off
 			shocker_on = FALSE
 			update_appearance()
-			playsound(src, activate_sound, 75, TRUE, -1)
+			playsound(src, activate_sound, 75, TRUE, -1, ignore_walls = FALSE)
 
 /obj/item/kinky_shocker/examine(mob/user)
 	. = ..()
@@ -82,7 +82,7 @@
 	if(cell && cell.charge >= cell_hit_cost)
 		shocker_on = !shocker_on
 		to_chat(user, span_notice("You turn the shocker [shocker_on? "on. Buzz!" : "off."]"))
-		playsound(user, shocker_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
+		playsound(user, shocker_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
 	else
 		shocker_on = FALSE
 		if(!cell)

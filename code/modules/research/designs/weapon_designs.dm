@@ -352,3 +352,21 @@
 	build_path = /obj/item/melee/baton/security/boomerang
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+// SKYRAT EDIT BEGIN: CYBORG SHIT
+/datum/design/cyborg_module
+	name = "Cyborg Design"
+	desc = "what"
+	id = "cyborg_module"
+	research_icon = 'icons/mob/robots.dmi'
+	research_icon_state = "robot"
+	var/unlocked_module_name
+	var/unlocked_module_path
+
+/datum/design/cyborg_module/security
+	name = "Security Cyborg Design"
+	desc = "A security focued cyborg module. "
+	id = "security_cyborg_module"
+	research_icon_state = "sec"
+	unlocked_module_name = "Security"
+	unlocked_module_path = /obj/item/robot_model/security
+// SKYRAT EDIT END

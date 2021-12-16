@@ -105,6 +105,12 @@
 	icon = 'modular_skyrat/master_files/icons/mob/body_markings/secondary_markings.dmi'
 	default_color = DEFAULT_SECONDARY
 
+/datum/body_marking/secondary/teshari
+	name = "Teshari"
+	icon_state = "teshari"
+	recommended_species = list(SPECIES_TESHARI)
+	affected_bodyparts = CHEST | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT
+
 /datum/body_marking/secondary/tajaran
 	name = "Tajaran"
 	icon_state = "tajaran"

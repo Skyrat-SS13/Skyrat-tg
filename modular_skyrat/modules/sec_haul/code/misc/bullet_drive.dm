@@ -22,12 +22,12 @@
 /obj/machinery/dish_drive/bullet/do_the_dishes(manual)
 	if(!LAZYLEN(dish_drive_contents))
 		if(manual)
-			visible_message("<span class='notice'>[src] is empty!</span>")
+			visible_message(span_notice("[src] is empty!"))
 		return
 	var/obj/machinery/disposal/bin/bin = locate() in view(binrange, src) //SKYRAT EDIT CHANGE
 	if(!bin)
 		if(manual)
-			visible_message("<span class='warning'>[src] buzzes. There are no disposal bins in range!</span>")
+			visible_message(span_warning("[src] buzzes. There are no disposal bins in range!"))
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 50, TRUE)
 		return
 	var/disposed = 0
@@ -38,12 +38,12 @@
 			use_power(active_power_usage)
 			disposed++
 	if(disposed)
-		visible_message("<span class='notice'>[src] [pick("whooshes", "bwooms", "fwooms", "pshooms")] and demoleculizes [disposed] stored item\s into the nearby void.</span>")
+		visible_message(span_notice("[src] [pick("whooshes", "bwooms", "fwooms", "pshooms")] and demoleculizes [disposed] stored item\s into the nearby void."))
 		playsound(src, 'sound/items/pshoom.ogg', 50, TRUE)
 		playsound(bin, 'sound/items/pshoom.ogg', 50, TRUE)
 		flick("synthesizer_beam", src)
 	else
-		visible_message("<span class='notice'>There are no disposable items in [src]!</span>")
+		visible_message(span_notice("There are no disposable items in [src]!"))
 	time_since_dishes = world.time + 600
 
 /obj/machinery/dish_drive/bullet/process()
@@ -53,12 +53,12 @@
 		return
 	for(var/obj/item/I in view(succrange, src))
 		if(istype(I, /obj/machinery/dish_drive/bullet))
-			visible_message("<span class='userdanger'>[src] has detected another bullet drive nearby, and is sad!</span>")
+			visible_message(span_userdanger("[src] has detected another bullet drive nearby, and is sad!"))
 			break
 		if(is_type_in_list(I, collectable_items) && I.loc != src && (!I.reagents || !I.reagents.total_volume))
 			if(I.Adjacent(src))
 				LAZYADD(dish_drive_contents, I)
-				visible_message("<span class='notice'>[src] beams up [I]!</span>")
+				visible_message(span_notice("[src] beams up [I]!"))
 				I.moveToNullspace()
 				playsound(src, 'sound/items/pshoom.ogg', 50, TRUE)
 				flick("synthesizer_beam", src)
