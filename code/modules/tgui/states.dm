@@ -109,6 +109,10 @@
 		world.log << "\n\[FUCK\] Failed the view check. Results of the view(src):"
 		for(var/atom/thing as anything in view(src))
 			world.log << "[thing] ([thing.x], [thing.y], [thing.z])"
+		world.log << "\nTraits currently afflicting our dummy:"
+		for(var/thing in src.status_traits)
+			var/trait = GLOB.trait_name_map[thing] || thing
+			world.log << "[trait]"
 		world.log << "\nContent of the turfs that we care about:"
 		world.log << "\n(126, 126, 14):"
 		for (var/thing in locate(126, 126, 14))

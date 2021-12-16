@@ -20,6 +20,9 @@
 	TEST_ASSERT_EQUAL(strip_menu.ui_status(user, ui_state), UI_UPDATE, "Being too far away while lying down was not update-only.")
 
 	user.set_body_position(STANDING_UP)
+	world.log << "What our dummy can see once they're up."
+	for(var/atom/thing as anything in view(src))
+		world.log << "[thing] ([thing.x], [thing.y], [thing.z])"
 	TEST_ASSERT_EQUAL(strip_menu.ui_status(user, ui_state), UI_UPDATE, "Being too far away while standing up was not update-only.")
 
 	var/handcuffs = allocate(/obj/item/restraints/handcuffs, user)
