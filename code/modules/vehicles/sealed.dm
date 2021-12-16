@@ -89,6 +89,18 @@
 		M.visible_message(span_notice("[M] drops out of \the [src]!"))
 	return TRUE
 
+//SKYRAT EDIT ADDITION BEGIN - VEHICLE CI
+/obj/vehicle/sealed/add_occupant(mob/M, control_flags)
+	RegisterSignal(M, COMSIG_MOB_CI_TOGGLED, .proc/mob_toggled_ci)
+	. = ..()
+	handle_ci_migration(M)
+
+/obj/vehicle/sealed/remove_occupant(mob/M)
+	UnregisterSignal(M, COMSIG_MOB_CI_TOGGLED)
+	. = ..()
+	disable_ci(M)
+//SKYRAT EDIT ADDITION END
+
 /obj/vehicle/sealed/proc/exit_location(M)
 	return drop_location()
 

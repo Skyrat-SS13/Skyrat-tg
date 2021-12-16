@@ -1099,20 +1099,14 @@
 
 
 /obj/vehicle/sealed/mecha/add_occupant(mob/M, control_flags)
-	//SKYRAT EDIT ADDITION -- MECH CI
-	RegisterSignal(M, COMSIG_MOB_CI_TOGGLED, .proc/mob_toggled_ci)
 	RegisterSignal(M, COMSIG_LIVING_DEATH, .proc/mob_exit)
 	RegisterSignal(M, COMSIG_MOB_CLICKON, .proc/on_mouseclick)
 	RegisterSignal(M, COMSIG_MOB_MIDDLECLICKON, .proc/on_middlemouseclick) //For AIs
 	RegisterSignal(M, COMSIG_MOB_SAY, .proc/display_speech_bubble)
 	. = ..()
 	update_appearance()
-	//SKYRAT EDIT ADDITION -- MECH CI
-	handle_ci_migration(M)
 
 /obj/vehicle/sealed/mecha/remove_occupant(mob/M)
-	//SKYRAT EDIT ADDITION -- MECH CI
-	UnregisterSignal(M, COMSIG_MOB_CI_TOGGLED)
 	UnregisterSignal(M, COMSIG_LIVING_DEATH)
 	UnregisterSignal(M, COMSIG_MOB_CLICKON)
 	UnregisterSignal(M, COMSIG_MOB_MIDDLECLICKON)
@@ -1125,8 +1119,6 @@
 		zoom_mode = FALSE
 	. = ..()
 	update_appearance()
-	//SKYRAT EDIT ADDITION -- MECH CI
-	disable_ci(M)
 
 /////////////////////////
 ////// Access stuff /////

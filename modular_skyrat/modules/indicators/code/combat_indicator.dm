@@ -14,9 +14,9 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	var/combat_indicator_vehicle = FALSE
 	var/vehicle_nextcombatpopup = 0
 
-/obj/vehicle/sealed/mecha/proc/mob_toggled_ci(mob/living/source, state)
+/obj/vehicle/sealed/proc/mob_toggled_ci(mob/living/source)
 	SIGNAL_HANDLER
-	if ((istype(src, /obj/vehicle/sealed/mecha/combat/savannah_ivanov)) && (!(source in return_drivers())) && (src.driver_amount() > 0))
+	if ((src.max_occupants > src.max_drivers) && (!(source in return_drivers())) && (src.driver_amount() > 0))
 		return
 	combat_indicator_vehicle = source.combat_indicator
 	if (combat_indicator_vehicle)
@@ -24,12 +24,13 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 			vehicle_nextcombatpopup = world.time + COMBAT_NOTICE_COOLDOWN
 			playsound(src, 'sound/machines/chime.ogg', 10, TRUE)
 			flick_emote_popup_on_obj("combat", 20)
-			visible_message(span_boldwarning("[src]'s sensors deploy their shielding as the mech prepares for combat!"))
+			visible_message(span_boldwarning("[src] prepares for combat!"))
 		add_overlay(GLOB.combat_indicator_overlay)
 		combat_indicator_vehicle = TRUE
 	else
 		cut_overlay(GLOB.combat_indicator_overlay)
 		combat_indicator_vehicle = FALSE
+
 /mob/living/update_overlays()
 	. = ..()
 	if(combat_indicator)
@@ -54,7 +55,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 
 	combat_indicator = state
 
-	SEND_SIGNAL(src, COMSIG_MOB_CI_TOGGLED, state)
+	SEND_SIGNAL(src, COMSIG_MOB_CI_TOGGLED)
 
 	if(combat_indicator)
 		if(world.time > nextcombatpopup)
@@ -96,20 +97,22 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 /obj/vehicle/sealed/proc/handle_ci_migration(mob/living/user)
 	if(!typesof(user.loc, /obj/vehicle/sealed))
 		return
-	if ((istype(src, /obj/vehicle/sealed/mecha/combat/savannah_ivanov)) && (((user in return_occupants())) && (src.driver_amount() > 0)))
+	if ((src.max_occupants > src.max_drivers) && ((!(user in return_drivers())) && (src.driver_amount() > 0)))
 		return
 	if (user.combat_indicator && !combat_indicator_vehicle)
 		combat_indicator_vehicle = TRUE
 		add_overlay(GLOB.combat_indicator_overlay)
 
-/obj/vehicle/sealed/proc/disable_ci(mob/living/user)
-	if ((istype(src, /obj/vehicle/sealed/mecha/combat/savannah_ivanov)) && (((user in return_occupants()) && (src.driver_amount() > 0)) || ((user in return_drivers()) && (src.occupant_amount() > 0))))
+/obj/vehicle/sealed/proc/disable_ci(mob/living/user) //as of writing this, 12/16/2021: something is calling procs that use this twice. dont know why or where
+	if ((src.max_occupants > src.max_drivers) && ((!(user in return_drivers()) && (src.driver_amount() > 0)) || ((user in return_drivers()) && (src.occupant_amount() > 0))))
 		return
 	if (combat_indicator_vehicle)
 		var/has_occupant_with_ci = FALSE
-		if (istype(src, /obj/vehicle/sealed/mecha/combat/savannah_ivanov))
-			for (var/mob/living/non_driver in return_occupants())
-				if (non_driver.combat_indicator)
+		if (src.occupant_amount() > src.driver_amount())
+			for (var/mob/living/vehicle_occupant in return_occupants())
+				if (vehicle_occupant in return_drivers()) //this for loop does not account for multiple clowns in clown cars. i will not account for that. fuck that.
+					continue
+				if (vehicle_occupant.combat_indicator)
 					has_occupant_with_ci = TRUE
 					break
 		if (!has_occupant_with_ci)
