@@ -79,6 +79,8 @@
 	if(istype(mover, /obj/projectile))
 		if(!anchored)
 			return TRUE
+		if(closed)
+			return TRUE
 		var/obj/projectile/proj = mover
 		if(proj.firer && Adjacent(proj.firer))
 			return TRUE
