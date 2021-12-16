@@ -46,11 +46,12 @@
 	src.mind_reference = mind_reference
 
 /datum/opposing_force/Destroy(force)
-	mind_reference.memory_panel = null
+	mind_reference.opposing_force = null
 	mind_reference = null
 	holder = null
 	SSopposing_force.remove_opfor(src)
 	QDEL_LIST(objectives)
+	QDEL_LIST(modification_log)
 	return ..()
 
 /datum/opposing_force/ui_interact(mob/user, datum/tgui/ui)

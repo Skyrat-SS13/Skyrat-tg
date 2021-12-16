@@ -18,7 +18,7 @@ export const OpposingForcePanel = (props, context) => {
   return (
     <Window
       title="Opposing Force Panel"
-      width={550}
+      width={570}
       height={765}
       theme="syndicate">
       <Window.Content>
@@ -49,6 +49,13 @@ export const OpposingForcePanel = (props, context) => {
                     disabled={can_edit}
                     content="Request Changes"
                     onClick={() => act('request_changes')} />
+                </Stack.Item>
+                <Stack.Item>
+                  <Button
+                    icon="trash"
+                    color="bad"
+                    content="Delete Application"
+                    onClick={() => act('close_application')} />
                 </Stack.Item>
               </Stack>
               <NoticeBox color="orange" mt={2}>
