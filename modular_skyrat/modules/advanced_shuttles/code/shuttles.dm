@@ -1,16 +1,3 @@
-/datum/map_template/shuttle/ferry
-	name = "NAV Monarch"
-	port_id = "ferry"
-	suffix = "skyrat"
-	who_can_purchase = null
-
-/datum/map_template/shuttle/cargo
-	name = "NLV Consign"
-	port_id = "cargo"
-	suffix = "skyrat"
-	name = "NLV Consign (Cargo)"
-	who_can_purchase = null
-
 /obj/docking_port/mobile/arrivals_skyrat
 	name = "NTV Relay"
 	id = "arrivals_shuttle"
@@ -22,11 +9,9 @@
 
 	callTime = 30 SECONDS
 	ignitionTime = 6 SECONDS
-
 	rechargeTime = 20 SECONDS
 
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 0)
-
 	can_be_called_in_transit = FALSE
 
 /obj/machinery/computer/shuttle/arrivals
@@ -40,7 +25,6 @@
 	icon_screen = ""
 	light_color = COLOR_ORANGE_BROWN
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
-
 	connectable = FALSE //connecting_computer change: since icon_state is not a typical console, it cannot be connectable.
 
 /obj/machinery/computer/shuttle/arrivals/recall
@@ -48,8 +32,25 @@
 	desc = "Use this if your friends left you behind."
 	possible_destinations = "arrivals_stationary;arrivals_shuttle"
 
+///////////////////////////////////////////// Map Templates //////////////////////////////////////////////////////////
+/datum/map_template/shuttle/ferry
+	name = "NAV Monarch (Ferry)"
+	prefix = "_maps/skyrat/shuttles/"
+	port_id = "ferry"
+	suffix = "skyrat"
+	who_can_purchase = null
+
+/datum/map_template/shuttle/cargo/skyrat
+	name = "NLV Consign (Cargo)"
+	prefix = "_maps/skyrat/shuttles/"
+	port_id = "cargo"
+	suffix = "skyrat"
+
+/datum/map_template/shuttle/cargo/skyrat/delta
+	suffix = "delta_skyrat"	//I hate this. Delta station is one tile different docking-wise, which fucks it ALL up unless we either a) change the map (this would be nonmodular and also press the engine against disposals) or b) this (actually easy, just dumb)
+
 /datum/map_template/shuttle/arrivals_skyrat
-	name = "arrivals shuttle"
+	name = "NTV Relay (Arrivals)"
 	prefix = "_maps/skyrat/shuttles/"
 	port_id = "arrivals"
 	suffix = "skyrat"
@@ -66,3 +67,21 @@
 	name = "Standard Emergency Shuttle"
 	description = "Nanotrasen's standard issue emergency shuttle."
 
+/datum/map_template/shuttle/labour/skyrat
+	name = "NMC Drudge (Labour)"
+	prefix = "_maps/skyrat/shuttles/"
+	suffix = "skyrat"
+
+/datum/map_template/shuttle/mining_common/skyrat
+	name = "NMC Chimera (Mining)"
+	prefix = "_maps/skyrat/shuttles/"
+	suffix = "skyrat"
+
+/datum/map_template/shuttle/mining/skyrat
+	name = "NMC Phoenix (Mining)"
+	prefix = "_maps/skyrat/shuttles/"
+	suffix = "skyrat"
+
+/datum/map_template/shuttle/mining/skyrat/large
+	name = "NMC Manticore (Mining)"
+	suffix = "large_skyrat"

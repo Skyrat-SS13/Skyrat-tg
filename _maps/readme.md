@@ -17,6 +17,7 @@ The list of items that are modular requiring adding/modifying to /tg/ maps:
 - Security Medical Room
 - Arrival Tram and Console (inside Arrival area)
 - Central Command Ferry Hangar (inside Arrival area)
+- Update roundstart_template variable on mining/public/labour stationary docks: mining/x > mining/skyrat, mining_common/x > mining_common/skyrat, labour/x > labour/skyrat , mining/large > mining/large/skyrat
 
 ## Rules
 

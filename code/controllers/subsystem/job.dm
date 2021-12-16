@@ -553,8 +553,8 @@ SUBSYSTEM_DEF(job)
 			to_chat(player_client, span_notice("<B>As this station was initially staffed with a [CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] have been added to your ID card.</B>"))
 		//SKYRAT EDIT START - ALTERNATIVE_JOB_TITLES
 		if(chosen_title != default_title)
-			to_chat(player_client, "<span class='warning'>Remember that alternate titles are, for the most part, for flavor and roleplay. \
-					<b>Do not use your alt title as an excuse to forego your duties as a [job.title].</b></span>")
+			to_chat(player_client, span_infoplain(span_warning("Remember that alternate titles are purely for flavor and roleplay.")))
+			to_chat(player_client, span_infoplain("<span class='doyourjobidiot'>Do not use your \"[chosen_title]\" alt title as an excuse to forego your duties as a [job.title].</span>"))
 		//SKYRAT EDIT END
 		var/related_policy = get_policy(job.title)
 		if(related_policy)
@@ -951,6 +951,12 @@ SUBSYSTEM_DEF(job)
 	if(possible_job.has_banned_species(player.client.prefs))
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_SPECIES)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_SPECIES
+
+	if(length_char(player.client.prefs.read_preference(/datum/preference/text/flavor_text)) <= FLAVOR_TEXT_CHAR_REQUIREMENT)
+		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_FLAVOUR)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_FLAVOUR
+
+
 	//SKYRAT EDIT END
 
 	// Run this check after is_banned_from since it can query the DB which may sleep.
