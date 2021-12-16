@@ -7,6 +7,8 @@
 	var/justification = "Input objective justification here, ensure you have a good reason for this objective!"
 	/// Was this specific objective approved by the admins?
 	var/approved = FALSE
+	/// How intense is this goal?
+	var/intensity = 0
 
 /datum/opposing_force
 	/// A list of objectives.
@@ -14,7 +16,7 @@
 	/// A list of items they want spawned.
 	var/list/requested_items = list()
 	/// Justification for wanting to do bad things.
-	var/set_backstory = ""
+	var/set_backstory = "Provide a description of why you want to do bad things. Include specifics such as what lead upto the events that made you want to do bad things, think of it as though you were your character, react appropriately."
 	/// Has this been approved?
 	var/approved = FALSE
 	/// Hard ref to our mind.
@@ -53,17 +55,20 @@
 
 	data["backstory"] = set_backstory
 
-	data["has_objectives"] = FALSE
 	data["objectives"] = list()
+	var/objective_num
 	for(var/datum/opposing_force_objective/opfor in objectives)
-		data["objectives"] += list(list(
-			"title" = opfor.title,
-			"objective" = opfor.description,
-			"justification" = opfor.justification,
-			"approved" = opfor.approved,
-			"ref" = REF(opfor)
-		))
-		data["has_objectives"] = TRUE
+		var/list/objective_data = list(
+			id = objective_num,
+			ref = REF(opfor),
+			title = opfor.title,
+			description = opfor.description,
+			intensity = opfor.intensity,
+			justification = opfor.justification,
+			approved = opfor.approved
+			)
+		objective_num++
+		data["objectives"] += list(objective_data)
 
 	return data
 
@@ -72,31 +77,25 @@
 	if(.)
 		return
 
+	var/datum/opposing_force_objective/edited_objective
+	if(params["objective_ref"])
+		edited_objective = locate(params["objective_ref"]) in objectives
+		if(!edited_objective)
+			CRASH("Opposing_force passed a reference parameter to a goal that it could not locate!")
+
 	switch(action)
 		if("set_backstory")
 			set_backstory(usr, params["backstory"])
 		if("add_objective")
 			add_objective(usr)
 		if("remove_objective")
-			var/datum/opposing_force_objective/objective_to_remove = locate(params["objective"]) in objectives
-			if(!objective_to_remove)
-				return
-			remove_objective(usr, objective_to_remove)
+			remove_objective(usr, edited_objective)
 		if("set_objective_title")
-			var/datum/opposing_force_objective/objective_to_update = locate(params["objective"]) in objectives
-			if(!objective_to_update)
-				return
-			set_objective_title(usr, objective_to_update, params["title"])
+			set_objective_title(usr, edited_objective, params["title"])
 		if("set_objective_description")
-			var/datum/opposing_force_objective/objective_to_update = locate(params["objective"]) in objectives
-			if(!objective_to_update)
-				return
-			set_objective_description(usr, objective_to_update, params["desciprtion"])
+			set_objective_description(usr, edited_objective, params["new_desciprtion"])
 		if("set_objective_justification")
-			var/datum/opposing_force_objective/objective_to_update = locate(params["objective"]) in objectives
-			if(!objective_to_update)
-				return
-			set_objective_justification(usr, objective_to_update, params["justification"])
+			set_objective_justification(usr, edited_objective, params["new_justification"])
 
 /datum/opposing_force/proc/set_objective_description(mob/user, datum/opposing_force_objective/opposing_force_objective, new_description)
 	if(!opposing_force_objective)
