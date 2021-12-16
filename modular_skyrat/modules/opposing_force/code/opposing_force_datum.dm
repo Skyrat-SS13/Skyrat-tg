@@ -130,6 +130,9 @@
 		if("submit")
 			submit_to_subsystem(usr)
 
+/datum/opposing_force/proc/broadcast_queue_change()
+	to_chat(holder, span_nicegreen("Your OPFOR application is now number [get_queue_position(src)] in the queue."))
+
 /datum/opposing_force/proc/close_application(mob/user)
 	var/choice = tgui_alert(user, "Are you sure you want close your application? All changes will be lost.", "Confirm", list("Yes", "No"))
 	if(choice != "Yes")
@@ -155,6 +158,8 @@
 		return
 	var/choice = tgui_alert(user, "Are you sure you want to request changes? This will unapprove all objectives.", "Confirm", list("Yes", "No"))
 	if(choice != "Yes")
+		return
+	if(status == OPFOR_STATUS_CHANGES_REQUESTED)
 		return
 	for(var/datum/opposing_force_objective/opfor in objectives)
 		opfor.approved = FALSE
@@ -203,6 +208,8 @@
 	to_chat(usr, examine_block(span_greentext(("You have been added to the queue for the OPFOR subsystem. You are number <b>[queue_position]</b> in line."))))
 
 /datum/opposing_force/proc/set_objective_intensity(mob/user, datum/opposing_force_objective/opposing_force_objective, new_intensity)
+	if(!can_edit)
+		return
 	if(!opposing_force_objective)
 		CRASH("[user] tried to update a non existent opfor objective!")
 	var/sanitized_intensity = sanitize_integer(new_intensity)
@@ -222,6 +229,8 @@
 	return TRUE
 
 /datum/opposing_force/proc/set_objective_description(mob/user, datum/opposing_force_objective/opposing_force_objective, new_description)
+	if(!can_edit)
+		return
 	if(!opposing_force_objective)
 		CRASH("[user] tried to update a non existent opfor objective!")
 	var/sanitized_description = sanitize_text(new_description)
@@ -230,6 +239,8 @@
 	return TRUE
 
 /datum/opposing_force/proc/set_objective_justification(mob/user, datum/opposing_force_objective/opposing_force_objective, new_justification)
+	if(!can_edit)
+		return
 	if(!opposing_force_objective)
 		CRASH("[user] tried to update a non existent opfor objective!")
 	var/sanitize_justification = sanitize_text(new_justification)
@@ -238,6 +249,8 @@
 	return TRUE
 
 /datum/opposing_force/proc/remove_objective(mob/user, datum/opposing_force_objective/opposing_force_objective)
+	if(!can_edit)
+		return
 	if(!opposing_force_objective)
 		CRASH("[user] tried to remove a non existent opfor objective!")
 	objectives -= opposing_force_objective
@@ -246,6 +259,8 @@
 	return TRUE
 
 /datum/opposing_force/proc/add_objective(mob/user)
+	if(!can_edit)
+		return
 	if(LAZYLEN(objectives) >= OPFOR_MAX_OBJECTIVES)
 		to_chat(user, span_warning("You have too many objectives, please remove one!"))
 	objectives += new /datum/opposing_force_objective
@@ -253,6 +268,8 @@
 	return TRUE
 
 /datum/opposing_force/proc/set_objective_title(mob/user, datum/opposing_force_objective/opposing_force_objective, new_title)
+	if(!can_edit)
+		return
 	var/sanitized_title = sanitize_text(new_title)
 	if(!opposing_force_objective)
 		CRASH("[user] tried to update a non existent opfor objective!")
@@ -261,6 +278,8 @@
 	return TRUE
 
 /datum/opposing_force/proc/set_backstory(mob/user, incoming_backstory)
+	if(!can_edit)
+		return
 	var/sanitized_backstory = sanitize_text(incoming_backstory)
 	add_log(user.ckey, "Updated BACKSTORY from: [set_backstory] to: [sanitized_backstory]")
 	set_backstory = sanitized_backstory

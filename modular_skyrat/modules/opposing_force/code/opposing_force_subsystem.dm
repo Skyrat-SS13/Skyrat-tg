@@ -44,6 +44,12 @@ SUBSYSTEM_DEF(opposing_force)
 
 	return LAZYLEN(submitted_applications)
 
+/datum/controller/subsystem/opposing_force/proc/broadcast_queue_change(datum/opposing_force/updating_opposing_force)
+	for(var/datum/opposing_force/opposing_force in submitted_applications)
+		if(opposing_force = updating_opposing_force)
+			continue
+		opposing_force.broadcast_queue_change()
+
 /datum/controller/subsystem/opposing_force/proc/approve(datum/opposing_force/opposing_force, mob/approver)
 	if(!(opposing_force in submitted_applications))
 		return FALSE
@@ -52,6 +58,8 @@ SUBSYSTEM_DEF(opposing_force)
 	submitted_applications -= opposing_force
 
 	opposing_force.approve(approver)
+
+	broadcast_queue_change(opposing_force)
 
 	return TRUE
 
@@ -68,6 +76,8 @@ SUBSYSTEM_DEF(opposing_force)
 	opposing_force.deny(denier, reason)
 	opposing_force.status = OPFOR_STATUS_REJECTED
 
+	broadcast_queue_change(opposing_force)
+
 	return TRUE
 
 /datum/controller/subsystem/opposing_force/proc/request_changes(datum/opposing_force/opposing_force, changes)
@@ -79,6 +89,8 @@ SUBSYSTEM_DEF(opposing_force)
 
 	if(!LAZYFIND(unsubmitted_applications, opposing_force))
 		unsubmitted_applications += opposing_force
+
+	broadcast_queue_change(opposing_force)
 
 /datum/controller/subsystem/opposing_force/proc/get_current_applications()
 	return LAZYLEN(submitted_applications) + LAZYLEN(approved_applications)
@@ -93,4 +105,6 @@ SUBSYSTEM_DEF(opposing_force)
 		submitted_applications -= opposing_force
 	if(LAZYFIND(approved_applications, opposing_force))
 		approved_applications -= opposing_force
+
+	broadcast_queue_change()
 

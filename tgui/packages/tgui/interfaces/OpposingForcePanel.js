@@ -168,8 +168,8 @@ export const OpposingForceObjectives = (props, context) => {
                   <Stack.Item>
                     <Slider
                       disabled={!can_edit}
-                      step={1}
-                      stepPixelSize={0.001}
+                      step={0.1}
+                      stepPixelSize={0.1}
                       value={selectedObjective.intensity}
                       minValue={1}
                       maxValue={5}
