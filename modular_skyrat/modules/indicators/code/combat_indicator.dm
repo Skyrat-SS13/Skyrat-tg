@@ -10,11 +10,6 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	var/combat_indicator = FALSE
 	var/nextcombatpopup = 0
 
-/mob/living/update_overlays()
-	. = ..()
-	if(combat_indicator)
-		. += GLOB.combat_indicator_overlay
-
 /obj/vehicle/sealed
 	var/combat_indicator_vehicle = FALSE
 	var/vehicle_nextcombatpopup = 0
