@@ -93,6 +93,7 @@
 			set_combat_indicator(TRUE)
 		else
 			set_combat_indicator(FALSE)
+	face_mouse = combat_mode
 	//SKYRAT EDIT ADDITION END
 
 	if(silent || !(client?.prefs.toggles & SOUND_COMBATMODE))
