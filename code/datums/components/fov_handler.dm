@@ -24,7 +24,8 @@
 
 	blocker_mask = new
 	visual_shadow = new
-	visual_shadow.alpha = parent_client?.prefs.read_preference(/datum/preference/numeric/fov_darkness)
+	//visual_shadow.alpha = parent_client?.prefs.read_preference(/datum/preference/numeric/fov_darkness) //SKYRAT EDIT REMOVAL
+	update_visual_shadow_alpha() //SKYRAT EDIT ADDITION
 	set_fov_angle(fov_type)
 	on_dir_change(mob_parent, mob_parent.dir, mob_parent.dir)
 	update_fov_size()
@@ -122,7 +123,19 @@
 	RegisterSignal(parent, COMSIG_MOB_CLIENT_CHANGE_VIEW, .proc/update_fov_size)
 	RegisterSignal(parent, COMSIG_MOB_RESET_PERSPECTIVE, .proc/update_mask)
 	RegisterSignal(parent, COMSIG_MOB_LOGOUT, .proc/mob_logout)
+	RegisterSignal(parent, COMSIG_LIVING_COMBAT_MODE_TOGGLE, .proc/update_visual_shadow_alpha) //SKYRAT EDIT ADDITION
 
 /datum/component/fov_handler/UnregisterFromParent()
 	. = ..()
 	UnregisterSignal(parent, list(COMSIG_MOB_RESET_PERSPECTIVE, COMSIG_ATOM_DIR_CHANGE, COMSIG_LIVING_DEATH, COMSIG_LIVING_REVIVE, COMSIG_MOB_LOGOUT))
+	UnregisterSignal(parent, COMSIG_LIVING_COMBAT_MODE_TOGGLE) //SKYRAT EDIT ADDITION
+
+//SKYRAT EDIT ADDITION BEGIN
+/// When toggling combat mode, we update the alpha of the shadow mask
+/datum/component/fov_handler/proc/update_visual_shadow_alpha()
+	SIGNAL_HANDLER
+	var/mob/parent_mob = parent
+	var/pref_to_read = parent_mob.combat_mode ? /datum/preference/numeric/fov_darkness : /datum/preference/numeric/out_of_combat_fov_darkness
+	var/target_alpha = parent_mob.client.prefs.read_preference(pref_to_read)
+	visual_shadow.alpha = target_alpha
+//SKYRAT EDIT ADDITION END
