@@ -106,7 +106,10 @@
 	world.log << "dist: [dist]"
 	// If the object is obscured, close it.
 	if(viewcheck && !(src_object in view(src)))
-		world.log << "\n\[FUCK\] Failed the view check. Content of the turfs in question:"
+		world.log << "\n\[FUCK\] Failed the view check. Results of the view(src):"
+		for(var/atom/thing as anything in view(src))
+			world.log << "[thing] ([thing.x], [thing.y], [thing.z])"
+		world.log << "\nContent of the turfs that we care about:"
 		world.log << "\n(126, 126, 14):"
 		for (var/thing in locate(126, 126, 14))
 			world.log << "[thing]"
