@@ -69,7 +69,9 @@
 	},
 /area/shuttle/transport)
 "hw" = (
-/turf/open/floor/iron/shuttle/ferry,
+/turf/open/floor/iron/shuttle/ferry{
+	dir = 8
+	},
 /area/shuttle/transport)
 "hY" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/ferry{
@@ -103,7 +105,9 @@
 /area/shuttle/transport)
 "jE" = (
 /obj/machinery/computer/security/shuttle,
-/turf/open/floor/iron/shuttle/ferry,
+/turf/open/floor/iron/shuttle/ferry{
+	dir = 8
+	},
 /area/shuttle/transport)
 "jG" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/ferry{
@@ -191,18 +195,8 @@
 /area/shuttle/transport)
 "rT" = (
 /obj/machinery/computer/crew/shuttle,
-/turf/open/floor/iron/shuttle/ferry,
-/area/shuttle/transport)
-"rZ" = (
-/obj/structure/fans/tiny/forcefield{
-	dir = 8
-	},
-/obj/machinery/door/airlock/highsecurity{
-	external = 1
-	},
 /turf/open/floor/iron/shuttle/ferry{
-	dir = 8;
-	icon_state = "floor"
+	dir = 8
 	},
 /area/shuttle/transport)
 "sk" = (
@@ -251,7 +245,9 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
 	},
-/turf/open/floor/iron/shuttle/ferry,
+/turf/open/floor/iron/shuttle/ferry{
+	dir = 8
+	},
 /area/shuttle/transport)
 "uI" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/ferry{
@@ -302,7 +298,9 @@
 /obj/machinery/light/no_nightlight{
 	dir = 8
 	},
-/turf/open/floor/iron/shuttle/ferry,
+/turf/open/floor/iron/shuttle/ferry{
+	dir = 8
+	},
 /area/shuttle/transport)
 "zN" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/ferry{
@@ -311,20 +309,34 @@
 	},
 /area/shuttle/transport)
 "AB" = (
-/obj/structure/closet/shuttle/erokez{
+/obj/structure/closet/shuttle{
 	dir = 4
 	},
 /obj/item/clothing/suit/space/hardsuit/ert/sec,
-/turf/open/floor/iron/shuttle/ferry,
+/turf/open/floor/iron/shuttle/ferry{
+	dir = 8
+	},
 /area/shuttle/transport)
 "AW" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/turf/open/floor/iron/shuttle/ferry,
+/turf/open/floor/iron/shuttle/ferry{
+	dir = 8
+	},
+/area/shuttle/transport)
+"By" = (
+/obj/structure/fans/tiny/forcefield{
+	dir = 8
+	},
+/obj/machinery/door/airlock/grunge,
+/turf/open/floor/iron/shuttle/ferry{
+	dir = 8;
+	icon_state = "floor"
+	},
 /area/shuttle/transport)
 "Co" = (
-/obj/structure/closet/shuttle/erokez{
+/obj/structure/closet/shuttle{
 	dir = 8
 	},
 /obj/item/clothing/head/helmet/alt,
@@ -334,7 +346,9 @@
 /obj/machinery/light/no_nightlight{
 	dir = 4
 	},
-/turf/open/floor/iron/shuttle/ferry,
+/turf/open/floor/iron/shuttle/ferry{
+	dir = 8
+	},
 /area/shuttle/transport)
 "Cz" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/ferry{
@@ -358,7 +372,9 @@
 /obj/machinery/computer/security/shuttle{
 	dir = 8
 	},
-/turf/open/floor/iron/shuttle/ferry,
+/turf/open/floor/iron/shuttle/ferry{
+	dir = 8
+	},
 /area/shuttle/transport)
 "CM" = (
 /turf/open/floor/iron/shuttle/ferry{
@@ -402,7 +418,9 @@
 /obj/machinery/light/no_nightlight{
 	dir = 8
 	},
-/turf/open/floor/iron/shuttle/ferry,
+/turf/open/floor/iron/shuttle/ferry{
+	dir = 8
+	},
 /area/shuttle/transport)
 "Ew" = (
 /obj/structure/chair/comfy/shuttle{
@@ -411,7 +429,9 @@
 /obj/machinery/light/no_nightlight{
 	dir = 8
 	},
-/turf/open/floor/iron/shuttle/ferry,
+/turf/open/floor/iron/shuttle/ferry{
+	dir = 8
+	},
 /area/shuttle/transport)
 "Fk" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/ferry{
@@ -528,7 +548,9 @@
 /obj/machinery/light/no_nightlight{
 	dir = 4
 	},
-/turf/open/floor/iron/shuttle/ferry,
+/turf/open/floor/iron/shuttle/ferry{
+	dir = 8
+	},
 /area/shuttle/transport)
 "ON" = (
 /turf/template_noop,
@@ -540,20 +562,19 @@
 	},
 /area/shuttle/transport)
 "Pz" = (
-/obj/structure/closet/shuttle/erokez{
+/obj/structure/closet/shuttle{
 	dir = 8
 	},
 /obj/item/gun/energy/e_gun/nuclear,
 /obj/item/gun/energy/e_gun/stun,
 /obj/item/gun/energy/e_gun/old,
-/turf/open/floor/iron/shuttle/ferry,
+/turf/open/floor/iron/shuttle/ferry{
+	dir = 8
+	},
 /area/shuttle/transport)
 "Qg" = (
 /obj/structure/fans/tiny/forcefield{
 	dir = 8
-	},
-/obj/machinery/door/airlock/highsecurity{
-	external = 1
 	},
 /obj/docking_port/mobile{
 	dheight = 3;
@@ -565,6 +586,7 @@
 	port_direction = 4;
 	width = 20
 	},
+/obj/machinery/door/airlock/grunge,
 /turf/open/floor/iron/shuttle/ferry{
 	dir = 8;
 	icon_state = "floor"
@@ -595,13 +617,17 @@
 /obj/machinery/light/no_nightlight{
 	dir = 4
 	},
-/turf/open/floor/iron/shuttle/ferry,
+/turf/open/floor/iron/shuttle/ferry{
+	dir = 8
+	},
 /area/shuttle/transport)
 "RL" = (
 /obj/machinery/computer/crew/shuttle{
 	dir = 8
 	},
-/turf/open/floor/iron/shuttle/ferry,
+/turf/open/floor/iron/shuttle/ferry{
+	dir = 8
+	},
 /area/shuttle/transport)
 "Ss" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/ferry{
@@ -622,11 +648,13 @@
 	},
 /area/shuttle/transport)
 "Tk" = (
-/obj/structure/closet/shuttle/wagon{
+/obj/structure/closet/shuttle/emergency{
 	dir = 1
 	},
 /obj/machinery/light/no_nightlight,
-/turf/open/floor/iron/shuttle/ferry,
+/turf/open/floor/iron/shuttle/ferry{
+	dir = 8
+	},
 /area/shuttle/transport)
 "Tm" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/ferry{
@@ -641,10 +669,12 @@
 	},
 /area/shuttle/transport)
 "Ud" = (
-/obj/structure/closet/shuttle/medical_wall/erokez{
+/obj/structure/closet/shuttle/medical{
 	dir = 4
 	},
-/turf/open/floor/iron/shuttle/ferry,
+/turf/open/floor/iron/shuttle/ferry{
+	dir = 8
+	},
 /area/shuttle/transport)
 "UD" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/ferry{
@@ -763,8 +793,8 @@ AW
 Ew
 Vc
 YJ
-rZ
-rZ
+By
+By
 jP
 Cz
 ON
@@ -851,7 +881,7 @@ Pz
 Co
 Ss
 jG
-rZ
+By
 Qg
 Dt
 tu
