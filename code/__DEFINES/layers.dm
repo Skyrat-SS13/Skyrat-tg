@@ -23,6 +23,7 @@
 #define FLOOR_PLANE -7
 #define GAME_PLANE -4
 #define GAME_PLANE_FOV_HIDDEN -3
+#define ABOVE_GAME_PLANE -2
 
 #define MOUSE_TRANSPARENT_PLANE -3 //SKYRAT EDIT ADDITION - Pollution port
 
