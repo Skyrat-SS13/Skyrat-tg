@@ -1272,11 +1272,11 @@
 		user.visible_message(span_notice("[user] shows you: [icon2html(src, viewers(user))] [src.name]."), span_notice("You show \the [src.name]."))
 	add_fingerprint(user)
 
-/obj/item/card/fuzzy_license/attackby(obj/item/P, mob/living/user, params)
+/obj/item/card/fuzzy_license/attackby(obj/item/used, mob/living/user, params)
 	if(user.ckey != "fuzlet")
 		return
 
-	if(istype(P, /obj/item/pen) || istype(P, /obj/item/toy/crayon))
+	if(istype(used, /obj/item/pen) || istype(used, /obj/item/toy/crayon))
 		var/choice = input(user, "Select the license type", "License Type Selection") as null|anything in possible_types
 		if(!isnull(choice))
 			name = "license to [choice]"
