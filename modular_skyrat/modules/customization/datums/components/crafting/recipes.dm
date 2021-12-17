@@ -50,4 +50,4 @@
 		/obj/item/food/fishmeat = 2
 	)
 	result = /obj/item/food/canned/beans
-	subcategory = CAT_MISCFOOD
+	subcategory = CAT_SEAFOOD
