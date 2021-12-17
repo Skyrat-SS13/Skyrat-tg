@@ -30,7 +30,7 @@
 		/datum/job_department/medical,
 	)
 
-	family_heirlooms = list(/obj/item/clothing/neck/stethoscope, /obj/item/roller, /obj/item/book/manual/wiki/security_space_law)
+	family_heirlooms = list(/obj/item/clothing/neck/stethoscope, /obj/item/book/manual/wiki/security_space_law)
 
 	//This is the paramedic goodie list. Secmedics are paramedics more or less so they can use these instead of raiding medbay.
 	mail_goodies = list(

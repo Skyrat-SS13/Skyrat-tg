@@ -48,7 +48,7 @@
 /obj/structure/closet/secure_closet/hos
 	name = "\proper head of security's locker"
 	req_access = list(ACCESS_HOS)
-	icon_state = "hos" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
+	icon_state = "hos"
 
 /obj/structure/closet/secure_closet/hos/PopulateContents()
 	..()
@@ -71,18 +71,18 @@
 /obj/structure/closet/secure_closet/warden
 	name = "\proper warden's locker"
 	req_access = list(ACCESS_ARMORY)
-	icon_state = "warden" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
+	icon_state = "warden"
 
 /obj/structure/closet/secure_closet/warden/PopulateContents()
 	..()
 	new /obj/item/radio/headset/headset_sec(src)
-	new /obj/item/clothing/suit/armor/vest/warden(src)
-	new /obj/item/clothing/head/warden(src)
-	new /obj/item/clothing/head/warden/drill(src)
+	//new /obj/item/clothing/suit/armor/vest/warden(src) SKYRAT EDIT REMOVAL
+	//new /obj/item/clothing/head/warden(src) SKYRAT EDIT REMOVAL
+	//new /obj/item/clothing/head/warden/drill(src) SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/head/beret/sec/navywarden(src)
 	new /obj/item/clothing/suit/armor/vest/warden/alt(src)
-	new /obj/item/clothing/under/rank/security/warden/formal(src)
-	new /obj/item/clothing/under/rank/security/warden/skirt(src)
+	//new /obj/item/clothing/under/rank/security/warden/formal(src) SKYRAT EDIT REMOVAL
+	//new /obj/item/clothing/under/rank/security/warden/skirt(src) SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
 	new /obj/item/holosign_creator/security(src)
 	new /obj/item/clothing/mask/gas/sechailer(src)
@@ -90,19 +90,21 @@
 	new /obj/item/storage/box/flashbangs(src)
 	new /obj/item/storage/belt/security/full(src)
 	new /obj/item/flashlight/seclite(src)
-	new /obj/item/clothing/gloves/krav_maga/sec/peacekeeper(src) //SKYRAT EDIT CHANGE - SEC_HAUL
+	new /obj/item/clothing/gloves/krav_maga/sec(src)
 	new /obj/item/door_remote/head_of_security(src)
-	new /obj/item/circuitboard/machine/gun_vendor(src) // SKYRAT EDIT CHANGE
+
 
 /obj/structure/closet/secure_closet/security
 	name = "security officer's locker"
 	req_access = list(ACCESS_SECURITY)
-	icon_state = "sec" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
+	icon_state = "sec"
 
 /obj/structure/closet/secure_closet/security/PopulateContents()
 	..()
-	new /obj/item/clothing/suit/armor/vest(src)
-	new /obj/item/clothing/head/helmet/sec(src)
+	//new /obj/item/clothing/suit/armor/vest(src) SKYRAT EDIT REMOVAL
+	new /obj/item/clothing/head/security_cap(src) //SKYRAT EDIT CHANGE
+	new /obj/item/clothing/head/beret/sec(src) //SKYRAT EDIT ADDITION
+	new /obj/item/clothing/head/helmet/sec(src) //SKYRAT EDIT ADDITION
 	new /obj/item/radio/headset/headset_sec(src)
 	new /obj/item/radio/headset/headset_sec/alt(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
@@ -223,6 +225,31 @@
 	req_access = list(ACCESS_BRIG)
 	anchored = TRUE
 	var/id = null
+
+/obj/structure/closet/secure_closet/brig/genpop
+	name = "genpop storage locker"
+	desc = "Used for storing the belongings of genpop's tourists visiting the locals."
+	/// reference to the ID linked to the locker, done by swiping a prisoner ID on it
+	var/datum/weakref/assigned_id = null
+
+/obj/structure/closet/secure_closet/brig/genpop/attackby(obj/item/card/id/advanced/prisoner/C, mob/user)
+	..()
+	if(!assigned_id && istype(C, /obj/item/card/id/advanced/prisoner))
+		assigned_id = WEAKREF(C)
+		name = "genpop storage locker - [C.registered_name]"
+		say("Prisoner ID linked to locker.")
+		return
+	if(C == assigned_id)
+		locked = FALSE
+		assigned_id = initial(assigned_id)
+		name = initial(name)
+		say("Linked prisoner ID detected. Unlocking locker and resetting ID.")
+		update_appearance()
+
+/obj/structure/closet/secure_closet/brig/genpop/examine(mob/user)
+	. = ..()
+	if(assigned_id)
+		. += span_notice("The digital display on the locker shows it is currently owned by [assigned_id].")
 
 /obj/structure/closet/secure_closet/evidence
 	anchored = TRUE

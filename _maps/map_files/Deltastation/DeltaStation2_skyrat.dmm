@@ -239,7 +239,7 @@
 	height = 5;
 	id = "commonmining_home";
 	name = "SS13: Common Mining Dock";
-	roundstart_template = /datum/map_template/shuttle/mining_common/meta;
+	roundstart_template = /datum/map_template/shuttle/mining_common/skyrat;
 	width = 7
 	},
 /turf/open/space/basic,
@@ -8939,7 +8939,7 @@
 	height = 5;
 	id = "laborcamp_home";
 	name = "fore bay 1";
-	roundstart_template = /datum/map_template/shuttle/labour/delta;
+	roundstart_template = /datum/map_template/shuttle/labour/skyrat;
 	width = 9
 	},
 /turf/open/space/basic,
@@ -11055,9 +11055,6 @@
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "bNs" = (
-/obj/item/storage/box/firingpins,
-/obj/item/storage/box/firingpins,
-/obj/item/key/security,
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -11068,6 +11065,13 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
+	},
+/obj/item/storage/barricade{
+	pixel_y = -5
+	},
+/obj/item/storage/barricade,
+/obj/item/storage/barricade{
+	pixel_y = 5
 	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
@@ -12635,6 +12639,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/item/key/security,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "bVr" = (
@@ -13999,6 +14004,8 @@
 /obj/item/melee/hammer,
 /obj/item/melee/hammer,
 /obj/item/melee/hammer,
+/obj/item/storage/box/firingpins,
+/obj/item/storage/box/firingpins,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "cbL" = (
@@ -51015,7 +51022,7 @@
 	height = 5;
 	id = "mining_home";
 	name = "mining shuttle bay";
-	roundstart_template = /datum/map_template/shuttle/mining/delta;
+	roundstart_template = /datum/map_template/shuttle/mining/skyrat;
 	width = 7
 	},
 /turf/open/space/basic,

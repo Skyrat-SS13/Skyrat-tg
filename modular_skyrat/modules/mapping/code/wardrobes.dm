@@ -15,7 +15,8 @@
 					/obj/item/clothing/under/syndicate/camo = 3,
 					/obj/item/clothing/under/syndicate/combat = 3,
 					/obj/item/clothing/shoes/combat = 3,
-					/obj/item/clothing/mask/gas/syndicate = 3)
+					/obj/item/clothing/mask/gas/syndicate = 3,
+					/obj/item/clothing/suit/hooded/wintercoat/syndicate = 5)
 	contraband = list(/obj/item/knife/combat = 1,
 					/obj/item/clothing/under/syndicate/coldres = 2,
 					/obj/item/clothing/shoes/combat/coldres = 2)
