@@ -3,14 +3,9 @@
 	description = "Alter access on ID cards, manage civil and supply departments, \
 		protect Ian, run the station when the captain dies."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
-<<<<<<< HEAD
-	department_head = list("Captain")
+	department_head = list(JOB_CAPTAIN)
 	//head_announce = list(RADIO_CHANNEL_SUPPLY, RADIO_CHANNEL_SERVICE) //ORIGINAL
 	head_announce = list(RADIO_CHANNEL_SERVICE) //SKYRAT EDIT CHANGE
-=======
-	department_head = list(JOB_CAPTAIN)
-	head_announce = list(RADIO_CHANNEL_SUPPLY, RADIO_CHANNEL_SERVICE)
->>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1

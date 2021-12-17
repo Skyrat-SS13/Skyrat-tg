@@ -97,22 +97,8 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 	var/list/jobs = list(
 		// Note that jobs divisible by 10 are considered heads of staff, and bolded
 		// 00: Captain
-<<<<<<< HEAD
-		"Captain" = 00,
-		"Blueshield" = 01, //SKRYAT EDIT ADDITION
-		// 10-19: Security
-		"Head of Security" = 10,
-		"Warden" = 11,
-		"Security Officer" = 12,
-		"Security Officer (Medical)" = 13,
-		"Security Officer (Engineering)" = 14,
-		"Security Officer (Science)" = 15,
-		"Security Officer (Cargo)" = 16,
-		"Detective" = 17,
-		"Security Medic" = 18, //SKYRAT EDIT ADDITION - SEC_HAUL
-		"Security Sergeant" = 19, //SKYRAT EDIT ADDITION - SEC_HAUL
-=======
 		JOB_CAPTAIN = 00,
+		JOB_BLUESHIELD = 01, // SKYRAT EDIT ADDITION
 		// 10-19: Security
 		JOB_HEAD_OF_SECURITY = 10,
 		JOB_WARDEN = 11,
@@ -122,7 +108,8 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_SECURITY_OFFICER_SCIENCE = 15,
 		JOB_SECURITY_OFFICER_SUPPLY = 16,
 		JOB_DETECTIVE = 17,
->>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
+		JOB_SECURITY_MEDIC = 18, // SKYRAT EDIT ADDITION
+		JOB_SECURITY_SERGEANT = 19, // SKYRAT EDIT ADDITION
 		// 20-29: Medbay
 		JOB_CHIEF_MEDICAL_OFFICER = 20,
 		JOB_CHEMIST = 21,
@@ -130,18 +117,11 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_MEDICAL_DOCTOR = 23,
 		JOB_PARAMEDIC = 24,
 		// 30-39: Science
-<<<<<<< HEAD
-		"Research Director" = 30,
-		"Scientist" = 31,
-		"Roboticist" = 32,
-		"Geneticist" = 33,
-		"Vanguard Operative" = 34, //SKYRAT EDIT ADDITION
-=======
 		JOB_RESEARCH_DIRECTOR = 30,
 		JOB_SCIENTIST = 31,
 		JOB_ROBOTICIST = 32,
 		JOB_GENETICIST = 33,
->>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
+		JOB_VANGUARD_OPERATIVE = 34, // SKYRAT EDIT ADDITION
 		// 40-49: Engineering
 		JOB_CHIEF_ENGINEER = 40,
 		JOB_STATION_ENGINEER = 41,

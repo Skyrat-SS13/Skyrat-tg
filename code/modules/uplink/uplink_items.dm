@@ -1787,12 +1787,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			disallows explosive ranges above a certain distance, allowing for the device to use the theoretical yield of a transfer valve bomb, instead of the factual yield. It's simple design makes it easy to conceal."
 	item = /obj/item/gun/blastcannon
 	cost = 14 //High cost because of the potential for extreme damage in the hands of a skilled scientist.
-<<<<<<< HEAD
-	restricted_roles = list("Research Director", "Scientist")
-*/ // SKYRAT EDIT - REMOVAL END
-=======
 	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST)
->>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
+*/ // SKYRAT EDIT - REMOVAL END
 
 /datum/uplink_item/role_restricted/gorillacubes
 	name = "Box of Gorilla Cubes"
@@ -1802,8 +1798,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 6
 	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_GENETICIST)
 
-<<<<<<< HEAD
-=======
+/* SKYRAT EDIT CHANGE - MOVED TO UNRESTRICTED
 /datum/uplink_item/role_restricted/brainwash_disk
 	name = "Brainwashing Surgery Program"
 	desc = "A disk containing the procedure to perform a brainwashing surgery, allowing you to implant an objective onto a target. \
@@ -1814,8 +1809,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 		JOB_ROBOTICIST,
 	)
 	cost = 5
+*/
 
->>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
 /datum/uplink_item/role_restricted/clown_bomb
 	name = "Clown Bomb"
 	desc = "The Clown bomb is a hilarious device capable of massive pranks. It has an adjustable timer, \
@@ -1857,13 +1852,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			Premium features can be unlocked with a cryptographic sequencer!"
 	item = /obj/vehicle/sealed/car/clowncar
 	cost = 20
-<<<<<<< HEAD
-	restricted_roles = list("Clown")
+	restricted_roles = list(JOB_CLOWN)
 */
 //SKYRAT EDIT REMOVAL END
-=======
-	restricted_roles = list(JOB_CLOWN)
->>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
 
 /datum/uplink_item/role_restricted/concealed_weapon_bay
 	name = "Concealed Weapon Bay"
@@ -1951,11 +1942,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			Side-affects may include hypertrichosis, violent outbursts, and an unending affinity for bananas."
 	item = /obj/item/reagent_containers/hypospray/medipen/magillitis
 	cost = 15
-<<<<<<< HEAD
-	//restricted_roles = list("Geneticist", "Research Director") //SKYRAT EDIT: Removal
-=======
-	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_GENETICIST)
->>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
+	//restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_GENETICIST) //SKYRAT EDIT: Removal
 
 /datum/uplink_item/role_restricted/modified_syringe_gun
 	name = "Modified  Compact Syringe Gun"
@@ -1969,14 +1956,12 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A heavily modified syringe gun which is capable of synthesizing its own chemical darts using input reagents. Can hold 100u of reagents."
 	item = /obj/item/gun/chem
 	cost = 12
-<<<<<<< HEAD
-	//restricted_roles = list("Chemist", "Chief Medical Officer", "Botanist") //SKYRAT EDIT: Removal
-=======
+	/* SKYRAT EDIT REMOVAL
 	restricted_roles = list(
 		JOB_CHIEF_MEDICAL_OFFICER, JOB_CHEMIST,
 		JOB_BOTANIST,
 	)
->>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
+	*/
 
 /datum/uplink_item/role_restricted/reverse_bear_trap
 	name = "Reverse Bear Trap"
@@ -1985,11 +1970,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	head after three seconds uninterrupted."
 	cost = 5
 	item = /obj/item/reverse_bear_trap
-<<<<<<< HEAD
-	//restricted_roles = list("Clown") //SKYRAT EDIT: Removal
-=======
-	restricted_roles = list(JOB_CLOWN)
->>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
+	//restricted_roles = list(JOB_CLOWN) //SKYRAT EDIT: Removal
 
 /datum/uplink_item/role_restricted/reverse_revolver
 	name = "Reverse Revolver"
@@ -2020,11 +2001,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "An implant that grants you a recharging laser gun inside your arm. Weak to EMPs. Comes with a syndicate autosurgeon for immediate self-application."
 	cost = 10
 	item = /obj/item/autosurgeon/organ/syndicate/laser_arm
-<<<<<<< HEAD
-	//restricted_roles = list("Roboticist", "Research Director") //SKYRAT EDIT: Removal
-=======
-	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_ROBOTICIST)
->>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
+	//restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_ROBOTICIST) //SKYRAT EDIT: Removal
 
 /datum/uplink_item/role_restricted/bureaucratic_error_remote
 	name = "Organic Resources Disturbance Inducer"

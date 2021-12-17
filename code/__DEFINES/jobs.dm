@@ -34,22 +34,31 @@
 #define JOB_SECURITY_OFFICER_ENGINEERING "Security Officer (Engineering)"
 #define JOB_SECURITY_OFFICER_SCIENCE "Security Officer (Science)"
 #define JOB_SECURITY_OFFICER_SUPPLY "Security Officer (Cargo)"
+#define JOB_CORRECTIONS_OFFICER "Corrections Officer" // SKYRAT EDIT ADDITION
+#define JOB_SECURITY_MEDIC "Security Medic" // SKYRAT EDIT ADDITION
+#define JOB_SECURITY_SERGEANT "Security Sergeant" // SKYRAT EDIT ADDITION
+#define JOB_CIVIL_DISPUTES_OFFICER "Civil Disputes Officer" // SKYRAT EDIT ADDITION
 //Engineering
 #define JOB_STATION_ENGINEER "Station Engineer"
 #define JOB_ATMOSPHERIC_TECHNICIAN "Atmospheric Technician"
+#define JOB_ENGINEERING_GUARD "Engineering Guard" // SKYRAT EDIT ADDITION
 //Medical
 #define JOB_MEDICAL_DOCTOR "Medical Doctor"
 #define JOB_PARAMEDIC "Paramedic"
 #define JOB_CHEMIST "Chemist"
 #define JOB_VIROLOGIST "Virologist"
+#define JOB_ORDERLY "Orderly" // SKYRAT EDIT ADDITION
 //Science
 #define JOB_SCIENTIST "Scientist"
 #define JOB_ROBOTICIST "Roboticist"
 #define JOB_GENETICIST "Geneticist"
+#define JOB_VANGUARD_OPERATIVE "Vanguard Operative" // SKYRAT EDIT ADDITION
+#define JOB_SCIENCE_GUARD "Science Guard"
 //Supply
 #define JOB_QUARTERMASTER "Quartermaster"
 #define JOB_CARGO_TECHNICIAN "Cargo Technician"
 #define JOB_SHAFT_MINER "Shaft Miner"
+#define JOB_CUSTOMS_AGENT "Customs Agent" // SKYRAT EDIT ADDITION
 //Service
 #define JOB_BARTENDER "Bartender"
 #define JOB_BOTANIST "Botanist"
@@ -61,6 +70,8 @@
 #define JOB_LAWYER "Lawyer"
 #define JOB_CHAPLAIN "Chaplain"
 #define JOB_PSYCHOLOGIST "Psychologist"
+#define JOB_BARBER "Barber" // SKYRAT EDIT ADDITION
+#define JOB_BOUNCER "Bouncer" // SKYRAT EDIT ADDITION
 //ERTs
 #define JOB_ERT_COMMANDER "Emergency Response Team Commander"
 #define JOB_ERT_OFFICER "Security Response Officer"
@@ -83,6 +94,14 @@
 #define JOB_CENTCOM_RESEARCH_OFFICER "Research Officer"
 #define JOB_CENTCOM_SPECIAL_OFFICER "Special Ops Officer"
 #define JOB_CENTCOM_PRIVATE_SECURITY "Private Security Force"
+#define JOB_BLUESHIELD "Blueshield" // SKYRAT EDIT ADDITION
+#define JOB_NT_REP "Nanotrasen Representative" // SKYRAT EDIT ADDITION
+// SKYRAT EDIT ADDITION START
+// Off-Station
+#define JOB_SPACE_POLICE "Space Police"
+#define JOB_SOLGOV "SolGov"
+#define JOB_SOLGOV_LIASON "SolGov Liason"
+// SKYRAT EDIT ADDITION END
 
 
 #define JOB_DISPLAY_ORDER_ASSISTANT 1

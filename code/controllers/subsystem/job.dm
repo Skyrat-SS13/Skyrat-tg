@@ -807,12 +807,6 @@ SUBSYSTEM_DEF(job)
 
 /// Builds various lists of jobs based on station, centcom and additional jobs with icons associated with them.
 /datum/controller/subsystem/job/proc/setup_job_lists()
-<<<<<<< HEAD
-	station_jobs = list("Assistant", "Captain", "Head of Personnel", "Bartender", "Cook", "Botanist", "Quartermaster", "Cargo Technician", \
-		"Shaft Miner", "Clown", "Mime", "Janitor", "Curator", "Lawyer", "Chaplain", "Chief Engineer", "Station Engineer", \
-		"Atmospheric Technician", "Chief Medical Officer", "Medical Doctor", "Paramedic", "Chemist", "Geneticist", "Virologist", "Psychologist", \
-		"Research Director", "Scientist", "Roboticist", "Head of Security", "Warden", "Detective", "Security Officer", "Corrections Officer", "Prisoner")
-=======
 	station_jobs = list(
 		JOB_ASSISTANT, JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BARTENDER, JOB_BOTANIST,
 		JOB_COOK, JOB_JANITOR, JOB_CLOWN, JOB_MIME, JOB_CURATOR, JOB_LAWYER, JOB_CHAPLAIN,
@@ -820,9 +814,8 @@ SUBSYSTEM_DEF(job)
 		JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CHIEF_MEDICAL_OFFICER,
 		JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_VIROLOGIST, JOB_RESEARCH_DIRECTOR,
 		JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_HEAD_OF_SECURITY, JOB_WARDEN,
-		JOB_DETECTIVE, JOB_SECURITY_OFFICER, JOB_PRISONER,
+		JOB_DETECTIVE, JOB_SECURITY_OFFICER, JOB_CORRECTIONS_OFFICER, JOB_PRISONER,
 	)
->>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
 
 	head_of_staff_jobs = list(
 		JOB_CAPTAIN,
@@ -833,21 +826,15 @@ SUBSYSTEM_DEF(job)
 		JOB_CHIEF_MEDICAL_OFFICER,
 	)
 
-<<<<<<< HEAD
-	additional_jobs_with_icons = list("Emergency Response Team Commander", "Security Response Officer", "Engineering Response Officer", "Medical Response Officer", \
-		"Entertainment Response Officer", "Religious Response Officer", "Janitorial Response Officer", "Death Commando", "Security Officer (Engineering)", \
-		"Security Officer (Cargo)", "Security Officer (Medical)", "Security Officer (Science)", "Blueshield", "Nanotrasen Representative", "Shuttle Pilot", \
-		"Security Medic", "Security Sergeant", "Civil Disputes Officer", "Vanguard Operative", "Space Police", "SolGov", "SolGov Liasion", "Barber", "Orderly", "Science Guard", "Bouncer", "Customs Agent", "Engineering Guard")
-	//SKYRAT EDIT ADDITIONS: Blueshield, NT Rep, Shuttle Pilot, Sec Medic, Sec Sarge, CDO, Vanguard Op, Space Police, SolGov, SolGov Liasion, Barber, Orderly, Science Guard, Bouncer, Customs Agent, Engineering Guard
-
-	centcom_jobs = list("Central Command", "VIP Guest", "Custodian", "Thunderdome Overseer", "CentCom Official", "Medical Officer", "Research Officer", \
-		"Special Ops Officer", "Admiral", "CentCom Commander", "CentCom Bartender", "Private Security Force", "Fleetmaster", "Bridge Officer", "Operations Inspector", \
-		"Deck Crewman")
-=======
 	additional_jobs_with_icons = list(
 		JOB_ERT_COMMANDER, JOB_ERT_OFFICER, JOB_ERT_ENGINEER, JOB_ERT_MEDICAL_DOCTOR,
 		JOB_ERT_CLOWN, JOB_ERT_CHAPLAIN, JOB_ERT_JANITOR, JOB_ERT_DEATHSQUAD,
 		JOB_SECURITY_OFFICER_MEDICAL, JOB_SECURITY_OFFICER_ENGINEERING, JOB_SECURITY_OFFICER_SCIENCE, JOB_SECURITY_OFFICER_SUPPLY,
+		JOB_SECURITY_MEDIC, JOB_SECURITY_SERGEANT, JOB_CIVIL_DISPUTES_OFFICER,
+		JOB_BOUNCER, JOB_ORDERLY, JOB_SCIENCE_GUARD, JOB_ENGINEERING_GUARD, JOB_CUSTOMS_AGENT,
+		JOB_BLUESHIELD, JOB_NT_REP, JOB_VANGUARD_OPERATIVE,
+		JOB_SPACE_POLICE, JOB_SOLGOV, JOB_SOLGOV_LIASON,
+		JOB_BARBER,
 	)
 
 	centcom_jobs = list(
@@ -855,8 +842,6 @@ SUBSYSTEM_DEF(job)
 		JOB_CENTCOM_BARTENDER, JOB_CENTCOM_CUSTODIAN, JOB_CENTCOM_THUNDERDOME_OVERSEER, JOB_CENTCOM_MEDICAL_DOCTOR,
 		JOB_CENTCOM_RESEARCH_OFFICER, JOB_CENTCOM_SPECIAL_OFFICER, JOB_CENTCOM_PRIVATE_SECURITY,
 	)
-
->>>>>>> 2834383245d (Makes all default job titles, defines. (#63357))
 
 	job_priorities_to_strings = list(
 		"[JP_LOW]" = "Low Priority",
