@@ -256,7 +256,7 @@
 
 /obj/effect/temp_visual/telekinesis
 	name = "telekinetic force"
-	icon_state = "empdisable"
+	icon_state = "tele_effect3"
 	duration = 5
 
 /obj/effect/temp_visual/emp
