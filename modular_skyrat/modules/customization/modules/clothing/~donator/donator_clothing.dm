@@ -1255,7 +1255,7 @@
 		"cuddle",
 		"kiss",
 		"feed Dan Kelly",
-		"Hoard Shinzo Shore",
+		"hoard Shinzo Shore",
 		"spoil friends",
 		"hold hands",
 		"have this license",
