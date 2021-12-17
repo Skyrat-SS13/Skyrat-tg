@@ -25,15 +25,19 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 			playsound(src, 'sound/machines/chime.ogg', 10, TRUE)
 			flick_emote_popup_on_obj("combat", 20)
 			visible_message(span_boldwarning("[src] prepares for combat!"))
-		add_overlay(GLOB.combat_indicator_overlay)
 		combat_indicator_vehicle = TRUE
 	else
-		cut_overlay(GLOB.combat_indicator_overlay)
 		combat_indicator_vehicle = FALSE
+	update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
 
 /mob/living/update_overlays()
 	. = ..()
 	if(combat_indicator)
+		. += GLOB.combat_indicator_overlay
+
+/obj/vehicle/sealed/update_overlays()
+	. = ..()
+	if(combat_indicator_vehicle)
 		. += GLOB.combat_indicator_overlay
 
 /mob/living/proc/combat_indicator_unconscious_signal()
@@ -101,7 +105,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 		return
 	if (user.combat_indicator && !combat_indicator_vehicle)
 		combat_indicator_vehicle = TRUE
-		add_overlay(GLOB.combat_indicator_overlay)
+		update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
 
 /obj/vehicle/sealed/proc/disable_ci(mob/living/user) //as of writing this, 12/16/2021: something is calling procs that use this twice. dont know why or where
 	if ((src.max_occupants > src.max_drivers) && ((!(user in return_drivers()) && (src.driver_amount() > 0)) || ((user in return_drivers()) && (src.occupant_amount() > 0))))
@@ -117,7 +121,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 					break
 		if (!has_occupant_with_ci)
 			combat_indicator_vehicle = FALSE
-			cut_overlay(GLOB.combat_indicator_overlay)
+			update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
 
 #undef COMBAT_NOTICE_COOLDOWN
 
