@@ -1233,6 +1233,7 @@
 	desc = "Skrektastic."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
+	worn_icon_vox = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask_vox.dmi'
 	icon_state = "death"
 
 /obj/item/clothing/glasses/rosecolored
@@ -1241,3 +1242,41 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
 	icon_state = "rose"
+// Donation reward for Fuzlet
+/obj/item/card/fuzzy_license
+	name = "license to hug"
+	desc = "A very official looking license. Not actually endorsed by NanoTrasen."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	icon_state = "license"
+
+	var/possible_types = list(
+		"hug",
+		"snuggle",
+		"cuddle",
+		"kiss",
+		"feed Dan Kelly",
+		"hoard Shinzo Shore",
+		"spoil friends",
+		"hold hands",
+		"have this license",
+		"squeak",
+		"cute",
+		"pat",
+		"administer plushies",
+		"distribute cookies",
+		"sex",
+		"weh")
+
+/obj/item/card/fuzzy_license/attack_self(mob/user)
+	if(Adjacent(user))
+		user.visible_message(span_notice("[user] shows you: [icon2html(src, viewers(user))] [src.name]."), span_notice("You show \the [src.name]."))
+	add_fingerprint(user)
+
+/obj/item/card/fuzzy_license/attackby(obj/item/used, mob/living/user, params)
+	if(user.ckey != "fuzlet")
+		return
+
+	if(istype(used, /obj/item/pen) || istype(used, /obj/item/toy/crayon))
+		var/choice = input(user, "Select the license type", "License Type Selection") as null|anything in possible_types
+		if(!isnull(choice))
+			name = "license to [choice]"
