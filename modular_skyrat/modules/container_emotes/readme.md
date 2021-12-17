@@ -29,5 +29,5 @@ Allows mobs within certain containers (e.g. mechs) to emote USING those containe
 <!-- Likewise, be it a non-modular file or a modular one that's not contained within the folder belonging to this specific module, it should be mentioned here -->
 
 ### Credits:
-
+- Niko#7526
 <!-- Here go the credits to you, dear coder, and in case of collaborative work or ports, credits to the original source of the code -->
