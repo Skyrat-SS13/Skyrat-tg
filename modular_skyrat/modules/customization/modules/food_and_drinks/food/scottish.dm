@@ -40,5 +40,5 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "shortbread"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/sugar = 6)
-	tastes = list("sugar-y dough" = 1)
+	tastes = list("sugary dough" = 1)
 	foodtypes = GRAIN | JUNKFOOD | SUGAR
