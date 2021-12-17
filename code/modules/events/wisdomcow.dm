@@ -1,8 +1,7 @@
 /datum/round_event_control/wisdomcow
 	name = "Wisdom cow"
 	typepath = /datum/round_event/wisdomcow
-	//max_occurrences = 1 //ORIGINAL
-	max_occurrences = 0 //SKYRAT EDIT CHANGE - EVENTS
+	max_occurrences = 1
 	weight = 20
 
 /datum/round_event/wisdomcow/announce(fake)

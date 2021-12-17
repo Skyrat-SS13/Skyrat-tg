@@ -1286,7 +1286,7 @@ attack_basic_mob
 
 	var/list/items = list()
 	for(var/reskin_option in unique_reskin)
-		var/image/item_image = image(icon = unique_reskin[reskin_option][RESKIN_ICON], icon_state = unique_reskin[reskin_option][RESKIN_ICON_STATE])
+		var/image/item_image = image(icon = unique_reskin[reskin_option][RESKIN_ICON] ? unique_reskin[reskin_option][RESKIN_ICON] : icon, icon_state = unique_reskin[reskin_option][RESKIN_ICON_STATE])
 		items += list("[reskin_option]" = item_image)
 	sort_list(items)
 
@@ -1296,9 +1296,12 @@ attack_basic_mob
 	if(!unique_reskin[pick])
 		return
 	current_skin = pick
-	icon = unique_reskin[pick][RESKIN_ICON]
-	icon_state = unique_reskin[pick][RESKIN_ICON_STATE]
-	worn_icon = unique_reskin[pick][RESKIN_WORN_ICON]
+	if(unique_reskin[pick][RESKIN_ICON])
+		icon = unique_reskin[pick][RESKIN_ICON]
+	if(unique_reskin[pick][RESKIN_ICON_STATE])
+		icon_state = unique_reskin[pick][RESKIN_ICON_STATE]
+	if(unique_reskin[pick][RESKIN_WORN_ICON])
+		worn_icon = unique_reskin[pick][RESKIN_WORN_ICON]
 	if(unique_reskin[pick][RESKIN_WORN_ICON_STATE])
 		worn_icon_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
 	if(unique_reskin[pick][RESKIN_MUTANT_VARIANTS])
