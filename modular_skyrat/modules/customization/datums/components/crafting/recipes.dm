@@ -49,5 +49,5 @@
 	reqs = list(/obj/item/stack/sheet/iron = 1,
 		/obj/item/food/fishmeat = 2
 	)
-	result = /obj/item/food/canned/beans
+	result = /obj/item/food/canned/tuna
 	subcategory = CAT_SEAFOOD
