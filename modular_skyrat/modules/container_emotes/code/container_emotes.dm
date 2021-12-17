@@ -5,15 +5,15 @@
 	if (isturf(src.loc))
 		to_chat(src, span_danger("You are not within anything!"))
 		return
-	if (loc != null && (!src.IsUnconscious()))
-		usr.emote("container_emote")
+	if (loc && (!src.IsUnconscious()))
+		usr.emote("exme")
 
 /datum/emote/container_emote
-	key = "container_emote"
-	key_third_person = "container_emote"
+	key = "exme"
+	key_third_person = "exme"
 	message = null
 
-/datum/emote/container_emote/run_emote(mob/user, params, type_override = null, intentional = TRUE)
+/datum/emote/container_emote/run_emote(mob/living/user, params, type_override = null, intentional = TRUE)
 	var/container_message
 	var/container_emote = params
 	if(QDELETED(user))
@@ -29,19 +29,18 @@
 		return FALSE
 	else if(!params)
 		container_emote = stripped_multiline_input(user, "Choose an emote to display.", "Container Emote" , null, MAX_MESSAGE_LEN)
-		if(container_emote)
-			var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
-			switch(type)
-				if("Visible")
-					emote_type = EMOTE_VISIBLE
-				if("Hearable")
-					emote_type = EMOTE_AUDIBLE
-				else
-					alert("Unable to use this emote, must be either hearable or visible.")
-					return
-			container_message = container_emote
-		else
+		if(!container_emote)
 			return FALSE
+		var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
+		switch(type)
+			if("Visible")
+				emote_type = EMOTE_VISIBLE
+			if("Hearable")
+				emote_type = EMOTE_AUDIBLE
+			else
+				alert("Unable to use this emote, must be either hearable or visible.")
+				return
+		container_message = container_emote
 	else
 		container_message = params
 		if(type_override)
@@ -58,7 +57,7 @@
 
 	container_message = ("[user.say_emphasis(container_message)]")
 
-	if (isturf(user.loc)) //one last sanity check
+	if (isturf(user.loc) || (!user.loc) || user.IsUnconscious()) //one last sanity check
 		return FALSE
 
 	if(emote_type == EMOTE_AUDIBLE)
