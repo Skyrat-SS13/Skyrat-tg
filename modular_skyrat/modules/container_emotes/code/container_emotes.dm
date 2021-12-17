@@ -62,9 +62,9 @@
 		return FALSE
 
 	if(emote_type == EMOTE_AUDIBLE)
-		user.loc.audible_message(message = container_message, self_message = container_message, audible_message_flags = EMOTE_MESSAGE, separator = space)
+		user.loc.audible_message(message = container_message, self_message = container_message, audible_message_flags = EMOTE_MESSAGE, separation = space)
 	else if (emote_type == EMOTE_VISIBLE)
-		user.loc.visible_message(message = container_message, self_message = container_message, visible_message_flags = EMOTE_MESSAGE, separator = space)
+		user.loc.visible_message(message = container_message, self_message = container_message, visible_message_flags = EMOTE_MESSAGE, separation = space)
 
 
 
