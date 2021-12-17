@@ -41,7 +41,6 @@ SUBSYSTEM_DEF(economy)
 	var/bounty_modifier = 1
 	///The modifier multiplied to the value of cargo pack prices.
 	var/pack_price_modifier = 1
-	var/fire_counter_for_paycheck = 0 //SKYRAT EDIT ADDITION
 
 	/// Total value of exported materials.
 	var/export_total = 0
@@ -70,7 +69,6 @@ SUBSYSTEM_DEF(economy)
 	dep_cards = SSeconomy.dep_cards
 
 /datum/controller/subsystem/economy/fire(resumed = 0)
-	fire_counter_for_paycheck++ //SKYRAT EDIT ADDITION
 	var/temporary_total = 0
 	var/delta_time = wait / (5 MINUTES)
 	departmental_payouts()
@@ -78,17 +76,9 @@ SUBSYSTEM_DEF(economy)
 	station_target_buffer += STATION_TARGET_BUFFER
 	for(var/account in bank_accounts_by_id)
 		var/datum/bank_account/bank_account = bank_accounts_by_id[account]
-		//SKYRAT EDIT ADDITION BEGIN
-		if(fire_counter_for_paycheck >= PAYCHECK_CYCLE_WAIT)
-			bank_account.payday(PAYCHECK_CYCLE_AMOUNT)
-		//SKYRAT EDIT ADDITION END
 		if(bank_account?.account_job && !ispath(bank_account.account_job))
 			temporary_total += (bank_account.account_job.paycheck * STARTING_PAYCHECKS)
 		station_total += bank_account.account_balance
-	//SKYRAT EDIT ADDITION BEGIN
-	if(fire_counter_for_paycheck >= PAYCHECK_CYCLE_WAIT) //30 minutes per each paycheck
-		fire_counter_for_paycheck = 0
-	//SKYRAT EDIT ADDITION END
 	station_target = max(round(temporary_total / max(bank_accounts_by_id.len * 2, 1)) + station_target_buffer, 1)
 	if(!HAS_TRAIT(SSeconomy, TRAIT_MARKET_CRASHING))
 		price_update()
