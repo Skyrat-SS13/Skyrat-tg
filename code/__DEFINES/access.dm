@@ -146,8 +146,6 @@
 #define ACCESS_MECH_SECURITY 302
 #define ACCESS_MECH_SCIENCE 303
 #define ACCESS_MECH_ENGINE 304
-	// Security Records Access for CDO
-#define ACCESS_SECURITY_RECORDS 305
 
 /// A list of access levels that, when added to an ID card, will warn admins.
 #define ACCESS_ALERT_ADMINS list(ACCESS_CHANGE_IDS)

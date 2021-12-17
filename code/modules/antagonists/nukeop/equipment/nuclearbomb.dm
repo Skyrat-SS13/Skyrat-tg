@@ -1,3 +1,4 @@
+/// TRUE only if the station was actually hit by the nuke, otherwise FALSE
 GLOBAL_VAR_INIT(station_was_nuked, FALSE)
 GLOBAL_VAR(station_nuke_source)
 
@@ -473,7 +474,7 @@ GLOBAL_VAR(station_nuke_source)
 	sound_to_playing_players('modular_skyrat/modules/alerts/sound/ai/default/DeltaBOOM.ogg') //SKYRAT EDIT ADDITION
 	if(SSticker?.mode)
 		SSticker.roundend_check_paused = TRUE
-	addtimer(CALLBACK(src, .proc/actually_explode), 10 SECONDS)
+	addtimer(CALLBACK(src, .proc/actually_explode), 100)
 
 /obj/machinery/nuclearbomb/proc/actually_explode()
 	if(!core)
@@ -490,8 +491,11 @@ GLOBAL_VAR(station_nuke_source)
 	if(bomb_location && is_station_level(bomb_location.z))
 		if(istype(A, /area/space))
 			off_station = NUKE_NEAR_MISS
-		if((bomb_location.x < (128-NUKERANGE)) || (bomb_location.x > (128+NUKERANGE)) || (bomb_location.y < (128-NUKERANGE)) || (bomb_location.y > (128+NUKERANGE)))
+		else if((bomb_location.x < (128-NUKERANGE)) || (bomb_location.x > (128+NUKERANGE)) || (bomb_location.y < (128-NUKERANGE)) || (bomb_location.y > (128+NUKERANGE)))
 			off_station = NUKE_NEAR_MISS
+		else // station actually nuked
+			off_station = STATION_DESTROYED_NUKE
+			GLOB.station_was_nuked = TRUE
 	else if(bomb_location.onSyndieBase())
 		off_station = NUKE_SYNDICATE_BASE
 	else
@@ -500,23 +504,16 @@ GLOBAL_VAR(station_nuke_source)
 	if(off_station < NUKE_MISS_STATION)
 		SSshuttle.registerHostileEnvironment(src)
 		SSshuttle.lockdown = TRUE
-
-	KillEveryoneOnZLevel(z) //SKYRAT EDIT ADDITION
-
 	//Cinematic
-	GLOB.station_was_nuked = TRUE
 	GLOB.station_nuke_source = off_station
 	really_actually_explode(off_station)
 	SSticker.roundend_check_paused = FALSE
 
 /obj/machinery/nuclearbomb/proc/really_actually_explode(off_station)
-	// var/turf/bomb_location = get_turf(src) // SKYRAT EDIT REMOVAL - Shut up linters
+	var/turf/bomb_location = get_turf(src)
 	Cinematic(get_cinematic_type(off_station),world,CALLBACK(SSticker,/datum/controller/subsystem/ticker/proc/station_explosion_detonation,src))
-	/* SKYRAT EDIT REMOVAL
 	if(off_station != NUKE_NEAR_MISS) // Don't kill people in the station if the nuke missed, even if we are technically on the same z-level
 		INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, bomb_location.z)
-	*/
-	explosion(src, 40, 50, 70, 80, TRUE, TRUE) //SKYRAT EDIT ADDITION
 
 /obj/machinery/nuclearbomb/proc/get_cinematic_type(off_station)
 	if(off_station < NUKE_NEAR_MISS)
@@ -604,7 +601,6 @@ GLOBAL_VAR(station_nuke_source)
 	disarm()
 	stationwide_foam()
 
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR NUCLEARBOMB.DM
 /proc/KillEveryoneOnZLevel(z)
 	if(!z)
 		return
@@ -613,7 +609,6 @@ GLOBAL_VAR(station_nuke_source)
 		to_chat(victim, span_userdanger("You are shredded to atoms!"))
 		if(victim.stat != DEAD && victim.z == z)
 			victim.gib()
-*/
 
 /*
 This is here to make the tiles around the station mininuke change when it's armed.
