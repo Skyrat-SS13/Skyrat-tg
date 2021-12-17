@@ -1242,10 +1242,11 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
 	icon_state = "rose"
+
 // Donation reward for Fuzlet
 /obj/item/card/fuzzy_license
 	name = "license to hug"
-	desc = "A very official looking license. Not actually endorsed by NanoTrasen."
+	desc = "A very official looking license. Not actually endorsed by Nanotrasen."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	icon_state = "license"
 
