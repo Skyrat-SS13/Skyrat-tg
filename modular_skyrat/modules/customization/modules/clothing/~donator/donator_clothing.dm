@@ -1245,7 +1245,7 @@
 
 /obj/item/card/fuzzy_license
 	name = "license to hug"
-	desc = "A very official looking license. Not actually endorsed by Nanotrassen."
+	desc = "A very official looking license. Not actually endorsed by NanoTrasen."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	icon_state = "license"
 
