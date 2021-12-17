@@ -17,7 +17,6 @@
 				mannequin.job = preview_job.title
 		if(PREVIEW_PREF_LOADOUT)
 			mannequin.underwear_visibility = NONE
-			var/default_outfit = new /datum/outfit()
 		if(PREVIEW_PREF_NAKED)
 			mannequin.underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS
 			for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS))
