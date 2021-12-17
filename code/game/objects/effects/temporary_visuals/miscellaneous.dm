@@ -256,7 +256,7 @@
 
 /obj/effect/temp_visual/telekinesis
 	name = "telekinetic force"
-	icon_state = "tele_effect3"
+	icon_state = "tele_effect3" //Skyrat Version, was empdisable
 	duration = 5
 
 /obj/effect/temp_visual/emp
