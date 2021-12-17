@@ -39,8 +39,6 @@
 	medical_record = sanitize_text(medical_record)
 	background_info = sanitize_text(background_info)
 	exploitable_info = sanitize_text(exploitable_info)
-	loadout_list = sanitize_loadout_list(update_loadout_list(loadout_list))
-
 	READ_FILE(S["languages"] , languages)
 	languages = SANITIZE_LIST(languages)
 

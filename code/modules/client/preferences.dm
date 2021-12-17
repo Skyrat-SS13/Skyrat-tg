@@ -291,13 +291,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			character_preview_view.update_body()
 			return TRUE
 
-		if ("open_loadout")
-			if(parent.open_loadout_ui)
-				parent.open_loadout_ui.ui_interact(usr)
-			else
-				var/datum/loadout_manager/tgui = new(usr)
-				tgui.ui_interact(usr)
-			return TRUE
 		if ("set_tricolor_preference")
 			var/requested_preference_key = params["preference"]
 			var/index_key = params["value"]

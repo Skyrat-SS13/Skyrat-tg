@@ -285,8 +285,6 @@
 		H.regenerate_icons()
 		if (!handles_loadout_and_quirks)
 			SSquirks.AssignQuirks(H, user.client, TRUE, TRUE, null, FALSE, H)
-			for(var/datum/loadout_item/item as anything in loadout_list_to_datums(H?.client?.prefs?.loadout_list))
-				item.post_equip_item(H.client?.prefs, H)
 	else
 		if(!random || newname)
 			if(newname)

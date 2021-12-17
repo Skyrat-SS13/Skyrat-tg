@@ -991,7 +991,7 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 	if(job)
 		body.dna.species.pre_equip_species_outfit(job, body, TRUE)
 	if(outfit)
-		body.equip_outfit_and_loadout(outfit, prefs, TRUE) //SKYRAT EDIT CHANGE
+		body.equipOutfit(outfit, TRUE)
 
 	var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
 	COMPILE_OVERLAYS(body)

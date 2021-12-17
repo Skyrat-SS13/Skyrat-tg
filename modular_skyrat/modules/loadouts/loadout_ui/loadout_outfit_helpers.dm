@@ -1,3 +1,4 @@
+/*
 /// -- Outfit and mob helpers to equip our loadout items. --
 
 /// An empty outfit we fill in with our loadout items to dress our dummy.
@@ -135,3 +136,4 @@
 
 /obj/item/storage/briefcase/empty/PopulateContents()
 	return
+*/

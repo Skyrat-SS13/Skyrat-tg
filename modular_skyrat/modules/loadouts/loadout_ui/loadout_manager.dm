@@ -1,3 +1,4 @@
+/*
 /// -- The loadout manager and UI --
 /// Tracking when a client has an open loadout manager, to prevent funky stuff.
 /client
@@ -337,3 +338,4 @@
 	return formatted_list
 
 
+*/
