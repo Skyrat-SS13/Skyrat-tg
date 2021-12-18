@@ -356,11 +356,19 @@
 	var/datum/team/cult/cult = team
 	var/list/target_candidates = list()
 	for(var/mob/living/carbon/human/player in GLOB.player_list)
+		// SKYRAT EDIT ADDITION START - Players in the interlink can't be obsession targets
+		if(SSticker.IsRoundInProgress() && istype(get_area(player), /area/centcom/interlink))
+			continue
+		// SKYRAT EDIT END
 		if(player.mind && !player.mind.has_antag_datum(/datum/antagonist/cult) && !is_convertable_to_cult(player) && player.stat != DEAD)
 			target_candidates += player.mind
 	if(target_candidates.len == 0)
 		message_admins("Cult Sacrifice: Could not find unconvertible target, checking for convertible target.")
 		for(var/mob/living/carbon/human/player in GLOB.player_list)
+			// SKYRAT EDIT ADDITION START - Players in the interlink can't be obsession targets
+			if(SSticker.IsRoundInProgress() && istype(get_area(player), /area/centcom/interlink))
+				continue
+			// SKYRAT EDIT END
 			if(player.mind && !player.mind.has_antag_datum(/datum/antagonist/cult) && player.stat != DEAD)
 				target_candidates += player.mind
 	list_clear_nulls(target_candidates)
