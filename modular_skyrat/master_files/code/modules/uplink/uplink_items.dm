@@ -29,7 +29,7 @@
 	name = "Unica Six Revolver"
 	desc = "A retro high-powered autorevolver typically used by officers of the New Russia military. Uses .357 ammo."
 	item = /obj/item/gun/ballistic/revolver/mateba
-	cost = 11
+	cost = 13
 	surplus = 50
 
 /datum/uplink_item/dangerous/holocarp

@@ -130,6 +130,10 @@
 			continue
 		if(!(player.mind.assigned_role.job_flags & JOB_CREW_MEMBER))
 			continue
+		// SKYRAT EDIT ADDITION START - Players in the interlink can't be obsession targets
+		if(SSticker.IsRoundInProgress() && istype(get_area(player), /area/centcom/interlink))
+			continue
+		// SKYRAT EDIT END
 		viable_minds += player.mind
 	for(var/datum/mind/possible_target as anything in viable_minds)
 		if(possible_target != owner && ishuman(possible_target.current))
