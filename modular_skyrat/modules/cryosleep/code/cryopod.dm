@@ -345,9 +345,15 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 			if(ai_controller?.ai_status == AI_STATUS_ON) // Is the character empty / AI Controlled
 			if(target.lastclienttime + 1 MINUTES >= world.time)
 				to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] has not been asleep for 30 minutes."))
+				return
 			else
 				to_chat(user, span_danger("You put [target] into [src]. [target.p_theyre(capitalized = TRUE)] in the cryopod."))
+				log_admin("[key_name(target)] entered a stasis pod.")
+				message_admins("[key_name_admin(target)] entered a stasis pod. [ADMIN_JMP(src)]")
+				add_fingerprint(target)
 
+				close_machine(target)
+				name = "[name] ([target.name])"
 				//log_admin("[key_name(user)] has attempted to put [target] into a stasis pod.")
 				//message_admins("[key_name(user)] has attempted to put [target] into a stasis pod. [ADMIN_JMP(src)]")
 				// Add you cant cryo for
