@@ -171,7 +171,7 @@
 	if(prob(50))
 		neck = /obj/item/bedsheet/rd/royal_cape
 	if(prob(10))
-		l_pocket = pick(list(/obj/item/crowbar/power, /obj/item/screwdriver/power, /obj/item/weldingtool/experimental))
+		l_pocket = pick(list(/obj/item/crowbar/power, /obj/item/screwdriver/power, /obj/item/weldingtool/electric))
 
 //this is so pointlessly gendered but whatever bro i'm here to refactor not judge
 /datum/outfit/consumed_dame

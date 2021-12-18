@@ -43,27 +43,9 @@
 	COMPILE_OVERLAYS(dummy)
 	icon = getFlatIcon(dummy)
 	qdel(dummy)
-
-<<<<<<< HEAD
-	corpse = new(src)
-	corpse.outfit = outfit
-	corpse.mob_species = /datum/species/zombie
-	corpse.mob_name = name
 */
-=======
->>>>>>> 82615e74629 (Super Mega Mob Spawn Refactor (#63279))
+
 /mob/living/simple_animal/hostile/zombie/AttackingTarget()
 	. = ..()
 	if(. && ishuman(target) && prob(infection_chance))
 		try_to_zombie_infect(target)
-<<<<<<< HEAD
-
-/mob/living/simple_animal/hostile/zombie/drop_loot()
-	. = ..()
-	if(!no_corpse) //SKYRAT EDIT CHANGE
-		corpse.forceMove(drop_location())
-		corpse.create()
-	else //SKYRAT EDIT CHANGE
-		new /obj/effect/gibspawner/human(loc) //SKYRAT EDIT CHANGE
-=======
->>>>>>> 82615e74629 (Super Mega Mob Spawn Refactor (#63279))
