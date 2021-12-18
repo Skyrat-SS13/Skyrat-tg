@@ -467,3 +467,25 @@
 	desc = "A heavy jacket hood made from 'synthetic' animal furs, with custom colors."
 	greyscale_config = /datum/greyscale_config/winter_hoods
 	greyscale_config_worn = /datum/greyscale_config/winter_hoods/worn
+
+// Syndicate
+/obj/item/clothing/suit/hooded/wintercoat/syndicate
+	name = "syndicate winter coat"
+	desc = "A sinister black coat with red accents and a fancy mantle, it feels like it can take a hit. The zipper tab looks like a triple headed snake in the shape of an S, spooky."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "coatsyndie"
+	inhand_icon_state = "coatwinter"
+	armor = list(MELEE = 25, BULLET = 15, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 0, ACID = 45)
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/syndicate
+
+/obj/item/clothing/suit/hooded/wintercoat/syndicate/Initialize(mapload)
+	. = ..()
+	allowed += GLOB.security_wintercoat_allowed
+
+/obj/item/clothing/head/hooded/winterhood/syndicate
+	desc = "A sinister black hood with armor padding."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "winterhood_syndie"
+	armor = list(MELEE = 25, BULLET = 15, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 0, ACID = 45)
