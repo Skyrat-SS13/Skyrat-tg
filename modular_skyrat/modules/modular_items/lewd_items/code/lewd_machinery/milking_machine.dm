@@ -1034,7 +1034,6 @@
 
 // Processor of the process of assembling a kit into a machine
 /obj/item/milking_machine/constructionkit/attackby(obj/item/I, mob/living/carbon/user, params)
-	var/M = /obj/structure/chair/milking_machine
 	if((item_flags & IN_INVENTORY) || (item_flags & IN_STORAGE))
 		return
 	if(I.tool_behaviour == TOOL_WRENCH)
@@ -1043,14 +1042,14 @@
 		if(get_turf(user) == get_turf(src))
 			return
 		else if(I.use_tool(src, user, 8 SECONDS, volume=50))
-			var/obj/structure/chair/milking_machine/N = new M(src.loc)
+			var/obj/structure/chair/milking_machine/new_milker = new(get_turf(user))
 			if(istype(src, /obj/item/milking_machine/constructionkit))
 				if(current_color == "pink")
-					N.machine_color = N.machine_color_list[1]
-					N.icon_state = "milking_pink_off"
+					new_milker.machine_color = new_milker.machine_color_list[1]
+					new_milker.icon_state = "milking_pink_off"
 				if(current_color == "teal")
-					N.machine_color = N.machine_color_list[2]
-					N.icon_state = "milking_teal_off"
+					new_milker.machine_color = new_milker.machine_color_list[2]
+					new_milker.icon_state = "milking_teal_off"
 			qdel(src)
 			to_chat(user, span_notice("You assemble the milking machine."))
 			return

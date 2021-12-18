@@ -1312,14 +1312,13 @@
 /area/ai_monitored/security/armory)
 "akF" = (
 /obj/structure/rack,
-/obj/item/storage/box/flashes{
-	pixel_x = 3
+/obj/item/storage/barricade{
+	pixel_y = -5
 	},
-/obj/item/storage/box/teargas{
-	pixel_x = 1;
-	pixel_y = -2
+/obj/item/storage/barricade,
+/obj/item/storage/barricade{
+	pixel_y = 5
 	},
-/obj/item/gun/grenadelauncher,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "akM" = (
@@ -3148,7 +3147,7 @@
 	height = 5;
 	id = "mining_home";
 	name = "mining shuttle bay";
-	roundstart_template = /datum/map_template/shuttle/mining/box;
+	roundstart_template = /datum/map_template/shuttle/mining/skyrat;
 	width = 7
 	},
 /turf/open/space/basic,
@@ -3895,7 +3894,7 @@
 	height = 5;
 	id = "laborcamp_home";
 	name = "fore bay 1";
-	roundstart_template = /datum/map_template/shuttle/labour/box;
+	roundstart_template = /datum/map_template/shuttle/labour/skyrat;
 	width = 9
 	},
 /turf/open/space/basic,
@@ -7226,7 +7225,7 @@
 	height = 5;
 	id = "commonmining_home";
 	name = "SS13: Common Mining Dock";
-	roundstart_template = /datum/map_template/shuttle/mining_common/meta;
+	roundstart_template = /datum/map_template/shuttle/mining_common/skyrat;
 	width = 7
 	},
 /turf/open/floor/plating,
@@ -18683,9 +18682,16 @@
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
 "eoL" = (
-/obj/structure/rack/gunrack,
 /obj/effect/turf_decal/delivery/red,
-/obj/item/gun/ballistic/automatic/croon,
+/obj/structure/rack,
+/obj/item/storage/box/teargas{
+	pixel_x = 1;
+	pixel_y = -2
+	},
+/obj/item/storage/box/flashes{
+	pixel_x = 3
+	},
+/obj/item/gun/grenadelauncher,
 /turf/open/floor/iron/smooth,
 /area/ai_monitored/security/armory)
 "eoW" = (

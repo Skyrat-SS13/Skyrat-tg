@@ -107,7 +107,7 @@
 			if(STYLE_MUZZLE)
 				desired_icon = wear_mask.worn_icon_muzzled || 'modular_skyrat/master_files/icons/mob/clothing/mask_muzzled.dmi'
 			if(STYLE_VOX)
-				desired_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask_vox.dmi'
+				desired_icon = wear_mask.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/mask_vox.dmi'
 
 		if(!(ITEM_SLOT_MASK in check_obscured_slots()))
 			overlays_standing[FACEMASK_LAYER] = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = 'icons/mob/clothing/mask.dmi', override_icon = desired_icon, mutant_styles = used_style)

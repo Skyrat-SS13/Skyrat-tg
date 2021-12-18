@@ -67,6 +67,7 @@
 	SEND_SIGNAL(src, COMSIG_FIREALARM_TRIGGER_DOORS)
 
 /obj/machinery/firealarm/proc/trigger_effects()
+	SIGNAL_HANDLER
 	SEND_SIGNAL(src, COMSIG_FIREALARM_TRIGGERED_ON)
 
 /obj/machinery/firealarm/proc/untrigger_effects()

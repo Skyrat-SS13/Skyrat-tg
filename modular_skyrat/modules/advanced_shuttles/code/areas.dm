@@ -37,3 +37,21 @@
 /area/shuttle/transport/no_light
 	static_lighting = FALSE
 
+//Unique Areas -----
+/area/centcom/interlink
+	name = "The Interlink"
+
+/area/shuttle/supply/cockpit
+	name = "NLV Consign Cockpit"
+
+/area/shuttle/mining/advanced
+	name = "NMC Phoenix"
+
+/area/shuttle/mining/advanced/public
+	name = "NMC Chimera"
+
+/area/shuttle/mining/large/advanced
+	name = "NMC Manticore"
+
+/area/shuttle/labor/advanced
+	name = "NMC Drudge"

@@ -98,7 +98,7 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/stethoscope
 	name = "Stethoscope"
 	item_path = /obj/item/clothing/neck/stethoscope
-	restricted_roles = list("Medical Doctor", "Chief Medical Officer","Security Medic")
+	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER,JOB_SECURITY_MEDIC)
 
 /datum/loadout_item/neck/choker
 	name = "Choker"
@@ -160,7 +160,7 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/discoproper
 	name = "Horrible Necktie"
 	item_path = /obj/item/clothing/neck/tie/disco
-	restricted_roles = list("Detective")
+	restricted_roles = list(JOB_DETECTIVE)
 
 /datum/loadout_item/neck/mantle
 	name = "Mantle"
@@ -169,37 +169,37 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/mantle_hop
 	name = "Head of Personnel's Mantle"
 	item_path = /obj/item/clothing/neck/mantle/hopmantle
-	restricted_roles = list("Head of Personnel")
+	restricted_roles = list(JOB_HEAD_OF_PERSONNEL)
 
 /datum/loadout_item/neck/mantle_cmo
 	name = "Chief Medical Officer's Mantle"
 	item_path = /obj/item/clothing/neck/mantle/cmomantle
-	restricted_roles = list("Chief Medical Officer")
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER)
 
 /datum/loadout_item/neck/mantle_rd
 	name = "Research Director's Mantle"
 	item_path = /obj/item/clothing/neck/mantle/rdmantle
-	restricted_roles = list("Research Director")
+	restricted_roles = list(JOB_RESEARCH_DIRECTOR)
 
 /datum/loadout_item/neck/mantle_ce
 	name = "Chief Engineer's Mantle"
 	item_path = /obj/item/clothing/neck/mantle/cemantle
-	restricted_roles = list("Chief Engineer")
+	restricted_roles = list(JOB_CHIEF_ENGINEER)
 
 /datum/loadout_item/neck/mantle_hos
 	name = "Head of Security's Mantle"
 	item_path = /obj/item/clothing/neck/mantle/hosmantle
-	restricted_roles = list("Head of Security")
+	restricted_roles = list(JOB_HEAD_OF_SECURITY)
 
 /datum/loadout_item/neck/mantle_bs
 	name = "Blueshield's Mantle"
 	item_path = /obj/item/clothing/neck/mantle/bsmantle
-	restricted_roles = list("Blueshield")
+	restricted_roles = list(JOB_BLUESHIELD)
 
 /datum/loadout_item/neck/mantle_cap
 	name = "Captain's Mantle"
 	item_path = /obj/item/clothing/neck/mantle/capmantle
-	restricted_roles = list("Captain")
+	restricted_roles = list(JOB_CAPTAIN)
 
 /datum/loadout_item/neck/kinkycollar
 	name = "Kinky collar"

@@ -9,3 +9,4 @@
 #define TECH_RESTRICTED_QUIRKS "Chunky Fingers" = TRUE
 
 #define FACTION_TRADERSHIP "Tradership"
+#define FLAVOR_TEXT_CHAR_REQUIREMENT 150
