@@ -39,7 +39,7 @@
 	attack_verb_continuous = list("snuggles", "meowhuggies", "wigglepurrs")
 	attack_verb_simple = list("snuggle", "meowhuggie", "wigglepurr")
 	special_desc_requirement = EXAMINE_CHECK_JOB
-	special_desc_jobs = list("Assistant", "Head of Security")
+	special_desc_jobs = list(JOB_ASSISTANT, JOB_HEAD_OF_SECURITY)
 	special_desc = "There's a pocket under the coat hiding a tiny picture of the medcat plushie and a tinier ribbon diamond ring. D'awww."
 
 /obj/item/toy/plush/sechound
