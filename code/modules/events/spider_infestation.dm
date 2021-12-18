@@ -2,8 +2,8 @@
 	name = "Spider Infestation"
 	typepath = /datum/round_event/spider_infestation
 	weight = 10
-	max_occurrences = 0 //SKYRAT EDIT CHANGE
-	min_players = 60 //SKYRAT EDIT - ORIGINAL: 20
+	max_occurrences = 1
+	min_players = 20
 	dynamic_should_hijack = TRUE
 
 /datum/round_event/spider_infestation

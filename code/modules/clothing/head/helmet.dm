@@ -71,29 +71,6 @@
 
 /obj/item/clothing/head/helmet/sec
 	can_flashlight = TRUE
-	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Basic Helmet" = list(
-			RESKIN_ICON = 'icons/obj/clothing/hats.dmi',
-			RESKIN_ICON_STATE = "helmet",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/head.dmi',
-			RESKIN_WORN_ICON_STATE = "helmet"
-		),
-		"Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi',
-			RESKIN_ICON_STATE = "peacekeeper_helmet",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeper"
-		),
-		"Blue Shift" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi',
-			RESKIN_ICON_STATE = "mallcop_helm",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi',
-			RESKIN_WORN_ICON_STATE = "mallcop_helm"
-		)
-	)
-	/// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/head/helmet/sec/attackby(obj/item/I, mob/user, params)
 	if(issignaler(I))
