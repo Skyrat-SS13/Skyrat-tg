@@ -748,4 +748,8 @@
 	. = ..()
 	my_visual.color = planet_color
 
+/datum/overmap_object/shuttle/ship/blueshift
+	name = "NSV Blueshift"
+	fixed_parallax_dir = NORTH
+
 #undef SHUTTLE_MASS_DIVISOR
