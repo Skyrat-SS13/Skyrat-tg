@@ -280,13 +280,13 @@
 	var/obj/item/organ/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
 	enlargement_amount += enlarger_increase_step
 	if(enlargement_amount >= enlargement_threshold)
-		// goffy did this edit
 		mob_breasts.genital_size += breast_size_increase_step
 		mob_breasts.update_sprite_suffix()
 		exposed_mob.update_body()
 		enlargement_amount = 0
 		var/list/wordsforbigger = list("huge", "massive", "squishy", "gigantic", "rather large", "jiggly", "hefty")
 		var/list/boobtextlist = list("boobs", "tits", "breasts")
+		var/list/coveredboobslist = list("bust", "chest", "bosom")
 		var/list/biggerboobtextlist = list("jigglies", "melons", "jugs", "boobies", "milkers", "boobs", "tits", "breasts")
 		var/list/actiontextlist = list("expand outward to ", "grow out to ", "begin to enlarge, growing to ", "suddenly expand to ", "swell out to ")
 		var/list/publicactiontextlist = list("expand outward.", "seem to grow a bit larger.", "appear a bit bigger than they were before.", "bounce and jiggle as they suddenly expand.")
@@ -298,8 +298,7 @@
 		if(mob_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_topless())
 			switch(translation)
 				if("Flatchested")
-					exposed_mob.visible_message(span_notice("[exposed_mob]'s' bust seems flat."))
-					to_chat(exposed_mob, span_purple("Your [pick(boobtextlist)] are no longer there."))
+					return
 				if("beyond measurement")
 					exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(wordsforbigger)] [pick(biggerboobtextlist)] [pick(publicbiggeractiontextlist)]"))
 					to_chat(exposed_mob, span_purple("Your [pick(wordsforbigger)] [pick(biggerboobtextlist)] [pick(actiontextlist)]about [mob_breasts.genital_size] inches in diameter."))
@@ -314,8 +313,7 @@
 		else
 			switch(translation)
 				if("Flatchested")
-					exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s bust is flat."))
-					to_chat(exposed_mob, span_purple("Your [pick(boobtextlist)] are no longer there."))
+					return
 				if("beyond measurement")
 					exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(biggerboobtextlist)] [pick(publicbiggeractiontextlist)]"))
 					to_chat(exposed_mob, span_purple("Your [pick(wordsforbigger)] [pick(biggerboobtextlist)] [pick(actiontextlist)]about [mob_breasts.genital_size] inches in diameter."))
@@ -324,10 +322,9 @@
 						exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(biggerboobtextlist)] [pick(publicbiggeractiontextlist)]"))
 						to_chat(exposed_mob, span_purple("Your [pick(wordsforbigger)] [pick(biggerboobtextlist)] [pick(actiontextlist)]about [translation]-cups."))
 					else
-						exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s bust [pick(areyourboobsgrowingorsomething)]"))
+						exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s [pick(coveredboobslist)] [pick(areyourboobsgrowingorsomething)]"))
 						to_chat(exposed_mob, span_purple("Your [pick(boobtextlist)] [pick(actiontextlist)]about [translation]-cups."))
 			return
-		// end
 
 	if(ISINRANGE_EX(mob_breasts?.genital_size, (max_breast_size - 2), (max_breast_size)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
 		var/target_bodypart = exposed_mob.get_bodypart(BODY_ZONE_CHEST)
