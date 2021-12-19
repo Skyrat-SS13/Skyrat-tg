@@ -21,7 +21,7 @@
 	can_use_alias = TRUE
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/ghost_role/human/alive/space_bar_patron
+/obj/effect/mob_spawn/ghost_role/human/space_bar_patron
 	any_station_species = TRUE
 
 /obj/effect/mob_spawn/ghost_role/human/nanotrasensoldier/alive

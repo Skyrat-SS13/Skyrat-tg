@@ -167,6 +167,7 @@
 //GHOSTROLES
 /obj/effect/mob_spawn/ghost_role/human/lobotomite
 	name = "lobotomite containment tube"
+	prompt_name = "a lobotomite"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
 	mob_name = "Lobotomite"
 	density = TRUE

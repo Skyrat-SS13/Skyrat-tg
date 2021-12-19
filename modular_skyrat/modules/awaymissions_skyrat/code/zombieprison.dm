@@ -545,6 +545,7 @@
 //GHOSTROLES
 /obj/effect/mob_spawn/ghost_role/human/scalamovguard
 	name = "guard cryo pod"
+	prompt_name = "a Scalamov guard"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
 	icon = 'modular_skyrat/modules/stasisrework/icons/stasissleeper.dmi'
 	icon_state = "sleeper"
@@ -569,6 +570,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/scalamovdoc
 	name = "Scalamov Doctor"
+	prompt_name = "a Scalamov doctor"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
 	icon = 'modular_skyrat/modules/stasisrework/icons/stasissleeper.dmi'
 	icon_state = "sleeper"
@@ -593,6 +595,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/scalamovinmateally
 	name = "Scalamov Prisoner"
+	prompt_name = "a Scalamov inmate (friendly)"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
 	icon = 'modular_skyrat/modules/stasisrework/icons/stasissleeper.dmi'
 	icon_state = "sleeper"
@@ -614,6 +617,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/scalamovinmatehostile
 	name = "Scalamov Hostile Inmate"
+	prompt_name = "a Scalamov inmate (hostile)"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
 	icon = 'modular_skyrat/modules/stasisrework/icons/stasissleeper.dmi'
 	icon_state = "sleeper"

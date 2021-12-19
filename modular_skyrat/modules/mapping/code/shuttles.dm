@@ -77,13 +77,17 @@
 	name = "Slaver Ship"
 	who_can_purchase = null
 
+/obj/effect/mob_spawn/ghost_role/human/guild
+	name = "Privateer Slaver"
+	prompt_name = "a privateer slaver"
+	you_are_text = "You're here to capture valuable hostages to sell into slavery."
+	flavour_text = "You're part of a privateer crew that sometimes takes contracts from the illusive Guild, which offers bounties and contracts to independent crews. Raiding colonies of the many less technologically advanced species in the area is much easier than this. You've been told that your mission is to capture as many valuable hostages from the station as possible. Your anonymous employer insists on the importance of humiliating SolFed by snatching those under their protection from right under their noses."
+	important_text = ""
+
 /obj/effect/mob_spawn/ghost_role/human/guild/slaver
 	name = "Privateer Slaver"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
-	you_are_text = "You're here to capture valuable hostages to sell into slavery."
-	flavour_text = "You're part of a privateer crew that sometimes takes contracts from the illusive Guild, which offers bounties and contracts to independent crews. Raiding colonies of the many less technologically advanced species in the area is much easier than this. You've been told that your mission is to capture as many valuable hostages from the station as possible. Your anonymous employer insists on the importance of humiliating SolFed by snatching those under their protection from right under their noses."
-	important_text = ""
 	outfit = /datum/outfit/guild/slaver
 	can_use_alias = TRUE
 	any_station_species = TRUE

@@ -1,4 +1,8 @@
 /obj/effect/mob_spawn/ghost_role/robot
+	name = "Ghost Role Robot"
+	prompt_name = "a robot"
+	you_are_text = "You are a robot. This probably shouldn't be happening."
+	flavour_text = "You are a robot. This probably shouldn't be happening."
 	mob_type = /mob/living/silicon/robot
 
 /obj/effect/mob_spawn/ghost_role/robot/Initialize()
@@ -9,6 +13,7 @@
 
 /obj/effect/mob_spawn/ghost_role/robot/ghostcafe
 	name = "Cafe Robotic Storage"
+	prompt_name = "a ghost cafe robot"
 	uses = -1
 	icon = 'modular_skyrat/modules/ghostcafe/icons/robot_storage.dmi'
 	icon_state = "robostorage"
@@ -38,6 +43,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/ghostcafe
 	name = "Cafe Sleeper"
+	prompt_name = "a ghost cafe human"
 	uses = -1
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"

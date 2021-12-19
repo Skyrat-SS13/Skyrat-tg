@@ -1,6 +1,7 @@
 //SPAWNERS//
 /obj/effect/mob_spawn/ghost_role/human/blackmarket
 	name = "cryogenics pod"
+	prompt_name = "a blackmarket dealer"
 	desc = "A humming cryo pod. The machine is attempting to wake up its occupant."
 	mob_name = "a black market dealer"
 	icon = 'icons/obj/machines/sleeper.dmi'
@@ -25,6 +26,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/prisoner
 	name = "Syndicate Prisoner"
+	prompt_name = "a Syndicate prisoner"
 	you_are_text = "You are the syndicate prisoner aboard an unknown station."
 	flavour_text = "You don't know where you are, but you know you are a prisoner. The plastitanium clues you into your captors.. as for why you're here? That's up to you."
 	important_text = "You are still subject to standard prisoner policy, and must Adminhelp before antagonizing Interdyne."
@@ -34,8 +36,15 @@
 	can_use_alias = TRUE
 	any_station_species = TRUE
 
+/obj/effect/mob_spawn/ghost_role/human/ds2
+	name = "DS2 personnel"
+	prompt_name = "DS2 personnel"
+	you_are_text = "You are a syndicate operative, employed in a top secret research facility developing biological weapons."
+	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue operating as best you can, and try to keep a low profile."
+
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate
 	name = "Syndicate Operative"
+	prompt_name = "a Syndicate operative"
 	random = TRUE
 	can_use_alias = TRUE
 	any_station_species = TRUE
@@ -164,17 +173,19 @@
 //Lost Space Truckers: Six people stranded in deep space aboard a cargo freighter. They must survive their marooning and cooperate.
 
 /obj/effect/mob_spawn/ghost_role/human/lostcargo
-    name = "freighter cryo crew pod"
-    desc = "A humming cryo pod. There's a freight hauler inside."
-    mob_name = "Freighter Crew"
-    icon = 'icons/obj/machines/sleeper.dmi'
-    icon_state = "sleeper"
-    random = TRUE
-    mob_species = /datum/species/human
-    you_are_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
-    important_text = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew for the ship's Chief. Your job was merely being a deckhand doing freight work and helping with kitchen prep."
-    can_use_alias = TRUE
-    any_station_species = TRUE
+	name = "freighter cryo crew pod"
+	prompt_name = "a lost cargo tech"
+	desc = "A humming cryo pod. There's a freight hauler inside."
+	mob_name = "Freighter Crew"
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper"
+	random = TRUE
+	mob_species = /datum/species/human
+	you_are_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
+	flavour_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
+	important_text = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew for the ship's Chief. Your job was merely being a deckhand doing freight work and helping with kitchen prep."
+	can_use_alias = TRUE
+	any_station_species = TRUE
 
 /datum/outfit/freighter_crew
 	name = "Freighter Crew"
@@ -185,17 +196,19 @@
 	id = /obj/item/card/id/away/freightcrew
 
 /obj/effect/mob_spawn/ghost_role/human/lostminer
-    name = "freighter cryo excavator pod"
-    desc = "A humming cryo pod. There's an excavation worker inside."
-    mob_name = "Freighter Excavator"
-    icon = 'icons/obj/machines/sleeper.dmi'
-    icon_state = "sleeper"
-    random = TRUE
-    mob_species = /datum/species/human
-    you_are_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
-    important_text = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew working under the ship Chief. Your role was to be an excavation and salvage worker for the ship."
-    can_use_alias = TRUE
-    any_station_species = TRUE
+	name = "freighter cryo excavator pod"
+	prompt_name = "a lost miner"
+	desc = "A humming cryo pod. There's an excavation worker inside."
+	mob_name = "Freighter Excavator"
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper"
+	random = TRUE
+	mob_species = /datum/species/human
+	you_are_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
+	flavour_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
+	important_text = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew working under the ship Chief. Your role was to be an excavation and salvage worker for the ship."
+	can_use_alias = TRUE
+	any_station_species = TRUE
 
 /datum/outfit/freighter_excavator
 	name = "Freighter Excavator"
@@ -213,17 +226,19 @@
 	id = /obj/item/card/id/away/freightmine
 
 /obj/effect/mob_spawn/ghost_role/human/lostcargoqm
-    name = "freighter cryo boss pod"
-    desc = "A humming cryo pod. You see someone who looks In Charge inside."
-    mob_name = "Freighter Chief"
-    icon = 'icons/obj/machines/sleeper.dmi'
-    icon_state = "sleeper"
-    random = TRUE
-    mob_species = /datum/species/human
-    you_are_text = "You and your crew were running a normal freight haul until a pirate attack knocked out the engines. All you can do now is try and survive and keep your crew alive."
-    important_text = "Do not abandon your crew, lead them and work with them to survive. You are not directly working with NT, you are an independent freighter crew. You are the captain of the ship, which you purchased a while ago, and are in charge of the crew."
-    can_use_alias = TRUE
-    any_station_species = TRUE
+	name = "freighter cryo boss pod"
+	prompt_name = "a lost Quartermaster"
+	desc = "A humming cryo pod. You see someone who looks In Charge inside."
+	mob_name = "Freighter Chief"
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper"
+	random = TRUE
+	mob_species = /datum/species/human
+	you_are_text = "You and your crew were running a normal freight haul until a pirate attack knocked out the engines. All you can do now is try and survive and keep your crew alive."
+	flavour_text = "You and your crew were running a normal freight haul until a pirate attack knocked out the engines. All you can do now is try and survive and keep your crew alive."
+	important_text = "Do not abandon your crew, lead them and work with them to survive. You are not directly working with NT, you are an independent freighter crew. You are the captain of the ship, which you purchased a while ago, and are in charge of the crew."
+	can_use_alias = TRUE
+	any_station_species = TRUE
 
 /datum/outfit/freighter_boss
 	name = "Freighter Boss"

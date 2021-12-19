@@ -10,6 +10,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/wildwest_syndicate
 	name = "lost syndicate cryopod"
+	prompt_name = "a syndicate scientist"
 	desc = "They've been here long, far too long..."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
