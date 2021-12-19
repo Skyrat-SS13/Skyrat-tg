@@ -748,6 +748,6 @@
 /datum/overmap_object/shuttle/ship/blueshift
 	name = "NSV Blueshift"
 	fixed_parallax_dir = NORTH
-	speed_divisor_from_mass = 100
+	speed_divisor_from_mass = 300
 
 #undef SHUTTLE_MASS_DIVISOR
