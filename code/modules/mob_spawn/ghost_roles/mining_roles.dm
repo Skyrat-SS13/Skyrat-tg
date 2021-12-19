@@ -233,7 +233,11 @@
 
 /obj/effect/mob_spawn/ghost_role/human/ash_walker/special(mob/living/carbon/human/spawned_human)
 	. = ..()
-	spawned_human.fully_replace_character_name(null,random_unique_lizard_name(gender))
+	//spawned_human.fully_replace_character_name(null,random_unique_lizard_name(gender)) // ORIGINAL
+	// SKYRAT EDIT CHANGE START
+	if(!is_pref_char)
+		spawned_human.fully_replace_character_name(null,random_unique_lizard_name(gender))
+	// SKYRAT EDIT CHANGE END
 	to_chat(spawned_human, "<b>Drag the corpses of men and beasts to your nest. It will absorb them to create more of your kind. Invade the strange structure of the outsiders if you must. Do not cause unnecessary destruction, as littering the wastes with ugly wreckage is certain to not gain you favor. Glory to the Necropolis!</b>")
 
 	spawned_human.mind.add_antag_datum(/datum/antagonist/ashwalker, team)
