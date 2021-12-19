@@ -47,7 +47,7 @@
 		var/datum/overmap_object/shuttle/entering_shuttle = entering
 		if(alert_sound)
 			if(entering_shuttle.control_consoles.len)
-				for(var/atom/iterating_atom as anything in shuttle_consoles.control_consoles)
+				for(var/atom/iterating_atom as anything in entering_shuttle.control_consoles)
 					playsound(iterating_atom, alert_sound, OVERMAP_SHUTTLE_ALERT_VOLUME)
 		AddAffected(entering_shuttle)
 	. = ..()
