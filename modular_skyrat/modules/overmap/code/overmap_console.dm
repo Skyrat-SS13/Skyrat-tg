@@ -32,15 +32,18 @@
 	popup.open()
 
 /obj/machinery/computer/overmap_console/Topic(href, href_list)
+	var/mob/user = usr
+	if(!isliving(user) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+		return
 	var/datum/space_level/SL = SSmapping.z_list[z]
 	if(!SL.related_overmap_object || !SL.is_overmap_controllable)
 		return
 	var/datum/overmap_object/shuttle/ov_obj = SL.related_overmap_object
 	switch(href_list["task"])
 		if("overmap_view")
-			ov_obj.GrantOvermapView(usr)
+			ov_obj.GrantOvermapView(usr, get_turf(src))
 			return
 		if("overmap_ship_controls")
-			ov_obj.DisplayUI(usr)
+			ov_obj.DisplayUI(usr, get_turf(src))
 			return
 	ui_interact(usr)
