@@ -5,6 +5,7 @@
 	icon_state = "nerve_staple"
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
 	worn_icon_state = "nerve_staple"
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 	clothing_traits = list(TRAIT_PACIFISM)
 
 /obj/item/clothing/glasses/nerve_staple/Initialize(mapload)
