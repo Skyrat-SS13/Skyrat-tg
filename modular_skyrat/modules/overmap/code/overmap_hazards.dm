@@ -46,9 +46,8 @@
 	if(istype(entering,/datum/overmap_object/shuttle))
 		var/datum/overmap_object/shuttle/entering_shuttle = entering
 		if(alert_sound)
-			var/list/shuttle_consoles = entering_shuttle.GetAllControlConsoles()
-			if(shuttle_consoles.len)
-				for(var/atom/iterating_atom as anything in shuttle_consoles)
+			if(entering_shuttle.control_consoles.len)
+				for(var/atom/iterating_atom as anything in shuttle_consoles.control_consoles)
 					playsound(iterating_atom, alert_sound, OVERMAP_SHUTTLE_ALERT_VOLUME)
 		AddAffected(entering_shuttle)
 	. = ..()

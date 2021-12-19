@@ -65,7 +65,7 @@
 	var/current_parallax_dir = 0
 
 /datum/overmap_object/shuttle/GetAllAliveClientMobs()
-	. = ..()
+	. = list()
 	if(my_shuttle)
 		//About the most efficient way I could think of doing it
 		var/datum/space_level/transit_level = SSmapping.transit
@@ -74,10 +74,12 @@
 			var/turf/mob_turf = get_turf(iterated_mob)
 			if(my_shuttle.shuttle_areas[mob_turf.loc])
 				. += iterated_mob
+	else
+		. = ..()
 
 /datum/overmap_object/shuttle/GetAllClientMobs()
-	. = ..()
 	if(my_shuttle)
+		. = list()
 		//About the most efficient way I could think of doing it
 		var/datum/space_level/transit_level = SSmapping.transit
 		for(var/i in SSmobs.dead_players_by_zlevel[transit_level.z_value])
@@ -85,6 +87,8 @@
 			var/turf/mob_turf = get_turf(iterated_mob)
 			if(my_shuttle.shuttle_areas[mob_turf.loc])
 				. += iterated_mob
+	else
+		. = ..()
 
 /datum/overmap_object/shuttle/proc/GetSensorTargets()
 	var/list/targets = list()
@@ -110,7 +114,9 @@
 		for(var/area/iterating_area as anything in my_shuttle.shuttle_areas)
 			for(var/turf/closed/wall in iterating_area)
 				shuttle_mass += 1
-	return shuttle_mass / SHUTTLE_MASS_DIVISOR
+		return shuttle_mass / SHUTTLE_MASS_DIVISOR
+	return speed_divisor_from_mass
+
 
 /datum/overmap_object/shuttle/proc/DrawThrustFromAllEngines()
 	var/draw_thrust = 0
@@ -120,15 +126,6 @@
 			continue
 		draw_thrust += ext.DrawThrust(impulse_power)
 	return draw_thrust / speed_divisor_from_mass
-
-/datum/overmap_object/shuttle/proc/GetAllControlConsoles()
-	var/list/control_consoles = list()
-	if(my_shuttle)
-		for(var/area/iterating_area as anything in my_shuttle.shuttle_areas)
-			for(var/obj/machinery/computer/shuttle/iterating_console in iterating_area)
-				if(iterating_console.is_operational)
-					control_consoles += iterating_console
-	return control_consoles
 
 /datum/overmap_object/shuttle/proc/DisplayUI(mob/user, turf/usage_turf)
 	if(usage_turf)
@@ -751,5 +748,6 @@
 /datum/overmap_object/shuttle/ship/blueshift
 	name = "NSV Blueshift"
 	fixed_parallax_dir = NORTH
+	speed_divisor_from_mass = 100
 
 #undef SHUTTLE_MASS_DIVISOR

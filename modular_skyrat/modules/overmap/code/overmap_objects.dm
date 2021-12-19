@@ -28,6 +28,8 @@
 	var/datum/weather_controller/weather_controller
 	/// Linked day and night controller, expect this to apply to all related_levels
 	var/datum/day_night_controller/day_night_controller
+	/// List of linked control consoles!
+	var/list/control_consoles = list()
 
 	var/allow_freeform_docking = TRUE
 
@@ -112,6 +114,8 @@
 /datum/overmap_object/Destroy()
 	if(weather_controller)
 		weather_controller.UnlinkOvermapObject()
+	for(var/obj/machinery/computer/overmap_console/console in control_consoles)
+		console.related_overmap_object = null
 	//As we are destroyed we exit other objects
 	for(var/other_obj in current_system.GetObjectsOnCoords(x, y))
 		var/datum/overmap_object/other_overmap_obj = other_obj

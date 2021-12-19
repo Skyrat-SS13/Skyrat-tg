@@ -5,6 +5,20 @@
 	icon_keyboard = "tech_key"
 	light_color = LIGHT_COLOR_CYAN
 	req_access = list( )
+	var/datum/overmap_object/related_overmap_object
+
+/obj/machinery/computer/overmap_console/Initialize(mapload, obj/item/circuitboard/C)
+	. = ..()
+	var/datum/space_level/SL = SSmapping.z_list[z]
+	if(SL.related_overmap_object || SL.is_overmap_controllable)
+		SL.related_overmap_object.control_consoles += src
+		related_overmap_object = SL.related_overmap_object
+
+/obj/machinery/computer/overmap_console/Destroy()
+	if(related_overmap_object)
+		related_overmap_object.control_consoles -= src
+		related_overmap_object = null
+	return ..()
 
 /obj/machinery/computer/overmap_console/ui_interact(mob/user, datum/tgui/ui)
 	var/datum/space_level/SL = SSmapping.z_list[z]
