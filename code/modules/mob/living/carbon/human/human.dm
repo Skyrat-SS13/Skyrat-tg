@@ -941,43 +941,23 @@
 
 	var/carrydelay = 5 SECONDS //if you have latex you are faster at grabbing
 	var/skills_space = "" //cobby told me to do this
-	//SKYRAT EDIT ADDITION - Overweight
-	/// Can the picking up mob carry overly large people?
-	var/easily_carry_the_huge = FALSE
-	//SKYRAT EDIT END
 	if(HAS_TRAIT(src, TRAIT_QUICKER_CARRY))
 		carrydelay = 3 SECONDS
 		skills_space = " very quickly"
-		easily_carry_the_huge = TRUE //SKYRAT EDIT ADDITION - Overweight
 	else if(HAS_TRAIT(src, TRAIT_QUICK_CARRY))
 		carrydelay = 4 SECONDS
 		skills_space = " quickly"
-		easily_carry_the_huge = TRUE //SKYRAT EDIT ADDITION - Overweight
-	//SKYRAT EDIT ADDITION - Oversized - Overweight
-	if(HAS_TRAIT(src, TRAIT_OVERSIZED))
-		easily_carry_the_huge = TRUE
-	if(!easily_carry_the_huge)
-		if(HAS_TRAIT(target, TRAIT_OVERWEIGHT)) //Big and heavy, but not quite super duper heavy
-			carrydelay *= 1.5
-			skills_space = " to strain [src.p_them()]self,[skills_space]" //ugh
-		var/carry_error_message
-		if(HAS_TRAIT(target, TRAIT_OVERSIZED))
-			carry_error_message = "too heavy"
-		else if(HAS_TRAIT(target, TRAIT_OVERWEIGHT) && HAS_TRAIT(target, TRAIT_FAT)) //DOUBLE FAT
-			carry_error_message = "too fat"
-		if(carry_error_message)
-			if(HAS_TRAIT(src, TRAIT_OVERWEIGHT))
-				visible_message(
-				message = span_warning("[src] fails to fireman carry [target]!"),
-				self_message = span_warning("You try to carry [target], but they are [carry_error_message]!"))
-			else
-				visible_message(
-				message = span_warning("[src] fails to fireman carry [target]!"),
-				self_message = span_warning("You try to carry [target], but you can't seem to lift them up!"))
+	//SKYRAT EDIT ADDITION
+	else if((HAS_TRAIT(target, TRAIT_OVERSIZED) || HAS_TRAIT(target, TRAIT_OVERWEIGHT))
+		if(!HAS_TRAIT(src, TRAIT_OVERSIZED))
+			visible_message(span_warning("[src] tries to carry [target], but they are too heavy!"))
 			return
+		if(HAS_TRAIT(target, TRAIT_FAT))
+			carrydelay *= 1.5
+			skills_space = " slowly"
 	//SKYRAT EDIT END
 	visible_message(span_notice("[src] starts[skills_space] lifting [target] onto [p_their()] back..."),
-		span_notice("You start[skills_space] lifting [target] onto your back...")) //SKYRAT EDIT Overweight - ORIGINAL: span_notice("You[skills_space] start to lift [target] onto your back..."))
+		span_notice("You[skills_space] start to lift [target] onto your back..."))
 	if(!do_after(src, carrydelay, target))
 		visible_message(span_warning("[src] fails to fireman carry [target]!"))
 		return
