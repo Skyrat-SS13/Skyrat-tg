@@ -454,11 +454,7 @@
 			if (isnull(player_mind))
 				continue
 
-<<<<<<< HEAD
-			if (!(mind.assigned_role.departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY|DEPARTMENT_BITFLAG_COMMAND|DEPARTMENT_BITFLAG_CENTRAL_COMMAND)))//SKYRAT EDIT CHANGE
-=======
-			if (!(player_mind.assigned_role.departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY|DEPARTMENT_BITFLAG_COMMAND)))
->>>>>>> 39854846184 (Enemies of the state/revolution cannot be defibbed (#63466))
+			if (!(player_mind.assigned_role.departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY|DEPARTMENT_BITFLAG_COMMAND|DEPARTMENT_BITFLAG_CENTRAL_COMMAND)))//SKYRAT EDIT CHANGE
 				continue
 
 			if (player_mind in ex_revs + ex_headrevs)
