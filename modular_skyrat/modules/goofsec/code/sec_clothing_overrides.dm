@@ -292,7 +292,7 @@
 	else
 		worn_icon_state = "[icon_state]_left"
 
-	user.update_inv_neck()
+	usr.update_inv_neck()
 
 ///////////////////////
 //----- GLOVES ------//
