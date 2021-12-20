@@ -206,19 +206,6 @@
 	dir = 9
 	},
 /area/ruin/syndicate_lava_base/chemistry)
-"du" = (
-/obj/machinery/light/small/directional/north,
-/obj/machinery/button/door{
-	id = "lavalandsyndi_chemistry";
-	name = "Chemistry Blast Door Control";
-	pixel_y = 26;
-	req_access_txt = "150"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/white/side{
-	dir = 1
-	},
-/area/ruin/syndicate_lava_base/chemistry)
 "dv" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -2518,12 +2505,6 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/main)
-"ib" = (
-/obj/effect/mob_spawn/human/lavaland_syndicate{
-	dir = 4
-	},
-/turf/open/floor/iron/grimy,
-/area/ruin/syndicate_lava_base/dormitories)
 "ic" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
@@ -2552,12 +2533,6 @@
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
-/area/ruin/syndicate_lava_base/dormitories)
-"ie" = (
-/obj/effect/mob_spawn/human/lavaland_syndicate/comms{
-	dir = 8
-	},
-/turf/open/floor/iron/grimy,
 /area/ruin/syndicate_lava_base/dormitories)
 "if" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3134,16 +3109,6 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/main)
-"jn" = (
-/obj/effect/mob_spawn/human/lavaland_syndicate{
-	dir = 4
-	},
-/obj/machinery/airalarm/syndicate{
-	dir = 1;
-	pixel_y = 24
-	},
-/turf/open/floor/iron/grimy,
-/area/ruin/syndicate_lava_base/dormitories)
 "jo" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
@@ -3158,16 +3123,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/main)
-"jq" = (
-/obj/effect/mob_spawn/human/lavaland_syndicate{
-	dir = 8
-	},
-/obj/machinery/airalarm/syndicate{
-	dir = 1;
-	pixel_y = 24
-	},
-/turf/open/floor/iron/grimy,
-/area/ruin/syndicate_lava_base/dormitories)
 "js" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /obj/effect/turf_decal/tile/red{
@@ -5653,6 +5608,16 @@
 	},
 /turf/open/floor/plating/lavaland_atmos,
 /area/ruin/syndicate_lava_base/main)
+"xa" = (
+/obj/effect/mob_spawn/human/lavaland_syndicate{
+	dir = 8
+	},
+/obj/machinery/airalarm/syndicate{
+	dir = 1;
+	pixel_y = 24
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/syndicate_lava_base/dormitories)
 "xn" = (
 /turf/open/floor/engine/n2,
 /area/ruin/syndicate_lava_base/engineering)
@@ -5789,6 +5754,12 @@
 /obj/effect/baseturf_helper/lava_land/surface,
 /turf/template_noop,
 /area/template_noop)
+"Jd" = (
+/obj/effect/mob_spawn/human/lavaland_syndicate/comms{
+	dir = 8
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/syndicate_lava_base/dormitories)
 "JB" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible{
 	dir = 8;
@@ -5835,6 +5806,16 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/main)
+"Pf" = (
+/obj/effect/mob_spawn/human/lavaland_syndicate{
+	dir = 4
+	},
+/obj/machinery/airalarm/syndicate{
+	dir = 1;
+	pixel_y = 24
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/syndicate_lava_base/dormitories)
 "Qv" = (
 /obj/structure/closet/firecloset/full{
 	anchored = 1
@@ -5873,6 +5854,12 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/arrivals)
+"SB" = (
+/obj/effect/mob_spawn/human/lavaland_syndicate{
+	dir = 4
+	},
+/turf/open/floor/iron/grimy,
+/area/ruin/syndicate_lava_base/dormitories)
 "Tp" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4{
 	dir = 4
@@ -5915,6 +5902,19 @@
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/engine/plasma,
 /area/ruin/syndicate_lava_base/engineering)
+"ZH" = (
+/obj/machinery/light/small/directional/north,
+/obj/machinery/button/door{
+	id = "lavalandsyndi_chemistry";
+	name = "Chemistry Blast Door Control";
+	pixel_y = 26;
+	req_access_txt = "150"
+	},
+/obj/machinery/chem_mass_spec,
+/turf/open/floor/iron/white/side{
+	dir = 1
+	},
+/area/ruin/syndicate_lava_base/chemistry)
 "ZN" = (
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/engine/co2,
@@ -7100,7 +7100,7 @@ hz
 iy
 iR
 hz
-jn
+Pf
 jA
 jy
 jy
@@ -7145,7 +7145,7 @@ jS
 he
 hz
 hM
-ib
+SB
 hz
 iz
 iS
@@ -7184,7 +7184,7 @@ ab
 ab
 as
 as
-du
+ZH
 dB
 dU
 es
@@ -7400,7 +7400,7 @@ in
 iE
 iX
 hz
-jq
+xa
 jA
 hz
 kg
@@ -7445,7 +7445,7 @@ gK
 he
 hz
 hQ
-ie
+Jd
 hz
 iF
 iY

@@ -215,7 +215,6 @@
 
 
 /obj/item/gun/ballistic/automatic/l6_saw/AltClick(mob/user)
-	. = ..()
 	if(!user.canUseTopic(src))
 		return
 	cover_open = !cover_open
