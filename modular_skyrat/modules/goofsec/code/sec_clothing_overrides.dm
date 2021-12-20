@@ -56,6 +56,10 @@
 			RESKIN_ICON_STATE = "belt_black",
 			RESKIN_WORN_ICON_STATE = "belt_black"
 		),
+		"Blue Variant" = list(
+			RESKIN_ICON_STATE = "belt_blue",
+			RESKIN_WORN_ICON_STATE = "belt_blue"
+		),
 		"White Variant" = list(
 			RESKIN_ICON_STATE = "belt_white",
 			RESKIN_WORN_ICON_STATE = "belt_white"
@@ -103,10 +107,15 @@
 ////////////////////////
 //----- GLASSES ------//
 ////////////////////////
-/obj/item/clothing/glasses/hud/security/sunglasses
+/obj/item/clothing/glasses/hud/security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
+	icon_state = "security_hud"
+	glass_colour_type = /datum/client_colour/glass_colour/lightblue
+
+/obj/item/clothing/glasses/hud/security/sunglasses
 	icon_state = "security_hud_black"
+	glass_colour_type = /datum/client_colour/glass_colour/blue
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
@@ -120,9 +129,11 @@
 	)
 
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
 	icon_state = "security_eyepatch"
+
+/obj/item/clothing/glasses/hud/security/night
+	icon_state = "security_hud_nv"
+
 
 /////////////////////
 //----- HEAD ------//
@@ -139,6 +150,30 @@
 	toggle_cooldown = 0
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
+
+//Need to do some fuckery to make sure the mounted light stays mounted instead of throwing a fit sprite-wise
+/obj/item/clothing/head/helmet/sec/attack_self(mob/user)
+	if(can_toggle && !user.incapacitated())
+		if(world.time > cooldown + toggle_cooldown)
+			cooldown = world.time
+			up = !up
+			flags_1 ^= visor_flags
+			flags_inv ^= visor_flags_inv
+			flags_cover ^= visor_flags_cover
+			icon_state = "[initial(icon_state)][up ? "up" : ""]"
+			//Functionally our only change; checks if the attached light is on or off
+			if(attached_light)
+				if(attached_light.on)
+					icon_state += "-flight-on" //"helmet-flight-on" // "helmet-cam-flight-on"
+				else
+					icon_state += "-flight" //etc.
+			//End of our only change
+			to_chat(user, span_notice("[up ? alt_toggle_message : toggle_message] \the [src]."))
+
+			user.update_inv_head()
+			if(iscarbon(user))
+				var/mob/living/carbon/C = user
+				C.head_update(src, forced = 1)
 
 //Bulletproof Helmet
 /obj/item/clothing/head/helmet/alt
@@ -224,10 +259,30 @@
 	///Decides the shoulder it lays on, false = RIGHT, TRUE = LEFT
 	var/swapped = FALSE
 
+/obj/item/clothing/neck/security_cape/armplate
+	name = "security gauntlet"
+	desc = "A fashionable full-arm gauntlet worn by security officers. The gauntlet itself is made of plastic, and provides no protection, but it looks cool as hell."
+	icon_state = "armplate_black"
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Black Variant" = list(
+			RESKIN_ICON_STATE = "armplate_black",
+			RESKIN_WORN_ICON_STATE = "armplate_black"
+		),
+		"Blue Variant" = list(
+			RESKIN_ICON_STATE = "armplate_blue",
+			RESKIN_WORN_ICON_STATE = "armplate_blue"
+		),
+		"Capeless Variant" = list(
+			RESKIN_ICON_STATE = "armplate",
+			RESKIN_WORN_ICON_STATE = "armplate"
+		),
+	)
+
 /obj/item/clothing/neck/security_cape/AltClick(mob/user)
 	. = ..()
 	swapped = !swapped
-	to_chat(user, span_notice("You swap the cape's position."))
+	to_chat(user, span_notice("You swap which arm [src] will lay over."))
 	update_appearance()
 
 /obj/item/clothing/neck/security_cape/update_appearance(updates)
@@ -236,6 +291,8 @@
 		worn_icon_state = icon_state
 	else
 		worn_icon_state = "[icon_state]_left"
+
+	user.update_inv_neck()
 
 ///////////////////////
 //----- GLOVES ------//
@@ -261,6 +318,16 @@
 			RESKIN_WORN_ICON_STATE = "gloves_white"
 		),
 	)
+
+/obj/item/clothing/gloves/tackler/security	//Can't just overwrite tackler, as there's a ton of subtypes that we'd then need to account for. This is easier. MUCH easier.
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
+	icon_state = "tackle_blue"
+
+/obj/item/clothing/gloves/krav_maga/sec
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
+	icon_state = "fightgloves_blue"
 
 //////////////////////
 //----- SUITS ------//
@@ -354,20 +421,25 @@
 //Not technically an override but oh well; it cant be, security gets their special footstep noise from it
 /obj/item/clothing/shoes/jackboots/security
 	name = "security jackboots"
-	desc = "Nanotrasen-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
+	desc = "Lopland's Peacekeeper-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
 	icon_state = "security_boots"
 	inhand_icon_state = "security_boots"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	clothing_traits = list(TRAIT_SILENT_FOOTSTEPS) // We have other footsteps.
+	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Blue Variant" = list(
 			RESKIN_ICON_STATE = "security_boots",
 			RESKIN_WORN_ICON_STATE = "security_boots"
 		),
-		"White Variant" = list(
+		"White-Trimmed Variant" = list(
 			RESKIN_ICON_STATE = "security_boots_white",
 			RESKIN_WORN_ICON_STATE = "security_boots_white"
+		),
+		"Full White Variant" = list(
+			RESKIN_ICON_STATE = "security_boots_fullwhite",
+			RESKIN_WORN_ICON_STATE = "security_boots_fullwhite"
 		),
 	)
 
