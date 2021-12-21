@@ -44,7 +44,7 @@
 	var/penis_girth_reduction_step = 2
 
 	/// Largest size the chem can make a mob's breasts
-	var/max_breast_size = 16
+	var/max_breast_size = 21
 	/// How much breasts are increased in size each time it's run
 	var/breast_size_increase_step = 1
 	/// Smallest size the chem can make a mob's breasts
@@ -280,7 +280,7 @@
 	var/obj/item/organ/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
 	enlargement_amount += enlarger_increase_step
 	if(enlargement_amount >= enlargement_threshold)
-		if(mob_breasts?.genital_size >= (max_breast_size + 5))
+		if(mob_breasts?.genital_size >= (max_breast_size))
 			return
 		mob_breasts.genital_size += breast_size_increase_step
 		mob_breasts.update_sprite_suffix()
@@ -315,7 +315,7 @@
 					to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [mob_breasts.genital_size] inches in diameter."))
 					return
 				else
-					if (mob_breasts?.genital_size >= (max_breast_size - 2))
+					if (mob_breasts?.genital_size >= (max_breast_size - 7))
 						exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(public_bigger_action_text_list)]"))
 						to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
 						return
@@ -332,7 +332,7 @@
 					to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [mob_breasts.genital_size] inches in diameter."))
 					return
 				else
-					if (mob_breasts?.genital_size >= (max_breast_size - 2))
+					if (mob_breasts?.genital_size >= (max_breast_size - 7))
 						exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(boob_text_list)] [pick(public_bigger_action_text_list)]"))
 						to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
 						return
@@ -341,7 +341,7 @@
 						to_chat(exposed_mob, span_purple("Your [pick(boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
 						return
 
-	if((mob_breasts?.genital_size >= (max_breast_size + 1)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
+	if((mob_breasts?.genital_size >= (max_breast_size - 4)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
 		var/target_bodypart = exposed_mob.get_bodypart(BODY_ZONE_CHEST)
 		if(prob(damage_chance))
 			to_chat(exposed_mob, span_danger("Your breasts begin to strain against your clothes!"))
