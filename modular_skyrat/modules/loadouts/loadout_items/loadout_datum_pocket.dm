@@ -183,7 +183,7 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/pocket_items/cross
 	name = "Ornate Cross"
 	item_path = /obj/item/crucifix
-	restricted_roles = list("Chaplain")
+	restricted_roles = list(JOB_CHAPLAIN)
 
 /datum/loadout_item/pocket_items/fragrance_cologne
 	name = "Cologne Bottle"

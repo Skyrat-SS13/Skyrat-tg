@@ -127,7 +127,7 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	head = /obj/item/clothing/head/sec/navywarden/syndicate
-	ears = /obj/item/radio/headset/headset_sec/alt/interdyne
+	ears = /obj/item/radio/headset/interdyne
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\
@@ -142,7 +142,7 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/bulletproof
 	head = /obj/item/clothing/head/helmet/swat
-	ears = /obj/item/radio/headset/headset_sec/alt/interdyne
+	ears = /obj/item/radio/headset/interdyne
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\

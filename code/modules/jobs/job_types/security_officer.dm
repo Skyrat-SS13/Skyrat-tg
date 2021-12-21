@@ -1,9 +1,9 @@
 /datum/job/security_officer
-	title = "Security Officer"
+	title = JOB_SECURITY_OFFICER
 	description = "Protect company assets, follow the Standard Operating \
 		Procedure, eat donuts."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
-	department_head = list("Head of Security")
+	department_head = list(JOB_HEAD_OF_SECURITY)
 	faction = FACTION_STATION
 	total_positions = 7 //Handled in /datum/controller/occupations/proc/setup_officer_positions() // SKYRAT EDIT: SET TO 7, WAS 5
 	spawn_positions = 7 //Handled in /datum/controller/occupations/proc/setup_officer_positions() // SKYRAT EDIT: SEE ABOVE
@@ -204,7 +204,7 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 
 	id_trim = /datum/id_trim/job/security_officer
 	uniform = /obj/item/clothing/under/rank/security/officer
-	suit = /obj/item/clothing/suit/armor/vest/alt
+	suit = /obj/item/clothing/suit/armor/vest/security //SKYRAT EDIT CHANGE
 	suit_store = /obj/item/gun/energy/disabler
 	backpack_contents = list(
 		/obj/item/melee/baton/security/loaded = 1,
@@ -213,9 +213,9 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 		)
 	belt = /obj/item/pda/security
 	ears = /obj/item/radio/headset/headset_sec/alt
-	gloves = /obj/item/clothing/gloves/color/black
-	head = /obj/item/clothing/head/helmet/sec
-	shoes = /obj/item/clothing/shoes/jackboots
+	gloves = /obj/item/clothing/gloves/security //SKYRAT EDIT CHANGE
+	head = /obj/item/clothing/head/security_garrison //SKYRAT EDIT CHANGE
+	shoes = /obj/item/clothing/shoes/jackboots/security //SKYRAT EDIT CHANGE
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
 
