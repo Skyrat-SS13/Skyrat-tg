@@ -446,3 +446,13 @@
 /obj/item/clothing/shoes/jackboots/security/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/squeak, list('modular_skyrat/master_files/sound/effects/footstep1.ogg'=1,'modular_skyrat/master_files/sound/effects/footstep2.ogg'=1, 'modular_skyrat/master_files/sound/effects/footstep3.ogg'=1), 100)
+
+
+//
+// This code overrides security's jumpskirt preference, as we're not going to be giving them jumpskirts
+//
+/datum/outfit/job/security/pre_equip(mob/living/carbon/human/H)
+	. = ..()
+	if(H.jumpsuit_style == PREF_SKIRT)
+		to_chat(span_alertwarning("Lopland Peacekeeper uniforms don't include a Skirt variant! You've been equipped with a jumpsuit instead."))
+		uniform = /obj/item/clothing/under/rank/security/officer
