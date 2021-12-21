@@ -264,7 +264,7 @@
 	icon_state = "christmascoatr"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/christmashoodr
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/christmas
 
 /obj/item/clothing/head/hooded/winterhood/christmas
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -277,7 +277,7 @@
 	icon_state = "christmascoatg"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/christmashoodg
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/christmas/green
 
 /obj/item/clothing/head/hooded/winterhood/christmas/green
 	icon_state = "christmashoodg"
@@ -287,7 +287,7 @@
 	desc = "A festive red and green Christmas coat! Smells like Candy Cane!"
 	icon_state = "christmascoatrg"
 	item_state = "christmascoatrg"
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/christmashoodrg
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/christmas/gamerpc
 
 /obj/item/clothing/head/hooded/winterhood/christmas/gamerpc
 	icon_state = "christmashoodrg"
