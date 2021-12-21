@@ -8,7 +8,10 @@
 	antag_hud_name = "heretic"
 	hijack_speed = 0.5
 	suicide_cry = "THE MANSUS SMILES UPON ME!!"
+<<<<<<< HEAD
 	preview_outfit = /datum/outfit/heretic
+=======
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 	var/give_equipment = TRUE
 	var/list/researched_knowledge = list()
 	var/total_sacrifices = 0

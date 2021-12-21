@@ -75,12 +75,21 @@
 			animate(src, color = rgb(h_r, h_g, h_b), time = 20, easing = SINE_EASING)
 
 	//burn any mobs buckled based on temperature
+<<<<<<< HEAD
 	if(!has_buckled_mobs())
 		return
 	var/heat_limit = 1000
 	if(pipe_air.temperature > heat_limit + 1)
 		for(var/mob/living/buckled_mob as anything in buckled_mobs)
 			buckled_mob.apply_damage(delta_time * 2 * log(pipe_air.temperature - heat_limit), BURN, BODY_ZONE_CHEST)
+=======
+	if(has_buckled_mobs())
+		var/heat_limit = 1000
+		if(pipe_air.temperature > heat_limit + 1)
+			for(var/m in buckled_mobs)
+				var/mob/living/buckled_mob = m
+				buckled_mob.apply_damage(delta_time * 2 * log(pipe_air.temperature - heat_limit), BURN, BODY_ZONE_CHEST)
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 
 /obj/machinery/atmospherics/pipe/heat_exchanging/update_pipe_icon()
 	return

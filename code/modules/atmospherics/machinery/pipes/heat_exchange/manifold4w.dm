@@ -14,7 +14,11 @@
 	construction_type = /obj/item/pipe/quaternary
 	pipe_state = "he_manifold4w"
 
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/heat_exchanging/manifold4w/set_init_directions()
+=======
+/obj/machinery/atmospherics/pipe/heat_exchanging/manifold4w/SetInitDirections()
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 	initialize_directions = initial(initialize_directions)
 
 /obj/machinery/atmospherics/pipe/heat_exchanging/manifold4w/update_overlays()

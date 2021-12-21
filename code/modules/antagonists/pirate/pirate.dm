@@ -5,7 +5,10 @@
 	show_in_antagpanel = FALSE
 	show_to_ghosts = TRUE
 	suicide_cry = "FOR ME MATEYS!!"
+<<<<<<< HEAD
 	hijack_speed = 2 // That is without doubt the worst pirate I have ever seen.
+=======
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 	var/datum/team/pirate/crew
 
 /datum/antagonist/pirate/greet()

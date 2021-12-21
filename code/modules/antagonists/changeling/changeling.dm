@@ -10,7 +10,10 @@
 	antag_moodlet = /datum/mood_event/focused
 	antag_hud_name = "changeling"
 	hijack_speed = 0.5
+<<<<<<< HEAD
 	ui_name = "AntagInfoChangeling"
+=======
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 	suicide_cry = "FOR THE HIVE!!"
 	var/you_are_greet = TRUE
 	var/give_objectives = TRUE
@@ -692,6 +695,7 @@
 
 	return parts.Join("<br>")
 
+<<<<<<< HEAD
 /datum/antagonist/changeling/get_preview_icon()
 	var/icon/final_icon = render_preview_outfit(/datum/outfit/changeling)
 	var/icon/split_icon = render_preview_outfit(/datum/outfit/job/engineer)
@@ -730,6 +734,8 @@
 	data["memories"] = memories
 	return data
 
+=======
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 // Changelings spawned from non-changeling headslugs (IE, due to being transformed into a headslug as a non-ling). Weaker than a normal changeling.
 /datum/antagonist/changeling/headslug
 	name = "Headslug Changeling"
@@ -749,6 +755,7 @@
 		to_chat(owner, span_boldannounce("You are a fresh changeling birthed from a headslug! You aren't as strong as a normal changeling, as you are newly born."))
 	if(policy)
 		to_chat(owner, policy)
+<<<<<<< HEAD
 
 /datum/outfit/changeling
 	name = "Changeling"
@@ -756,3 +763,6 @@
 	head = /obj/item/clothing/head/helmet/changeling
 	suit = /obj/item/clothing/suit/armor/changeling
 	l_hand = /obj/item/melee/arm_blade
+=======
+	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ling_aler.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a

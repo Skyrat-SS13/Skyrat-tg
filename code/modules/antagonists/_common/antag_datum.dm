@@ -31,8 +31,13 @@ GLOBAL_LIST_EMPTY(antagonists)
 	var/can_elimination_hijack = ELIMINATION_NEUTRAL
 	///If above 0, this is the multiplier for the speed at which we hijack the shuttle. Do not directly read, use hijack_speed().
 	var/hijack_speed = 0
+<<<<<<< HEAD
 	///The antag hud's icon file
 	var/hud_icon = 'icons/mob/huds/antag_hud.dmi'
+=======
+	///What is the configuration of this antagonist's hud icon, such as it's screen position and style, so thatit doesn't break other in-game hud icons.
+	var/antag_hud_type
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 	///Name of the antag hud we provide to this mob.
 	var/antag_hud_name
 	/// If set to true, the antag will not be added to the living antag list.
@@ -48,6 +53,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 	var/show_name_in_check_antagonists = FALSE
 	/// Should this antagonist be shown as antag to ghosts? Shouldn't be used for stealthy antagonists like traitors
 	var/show_to_ghosts = FALSE
+<<<<<<< HEAD
 	/// The typepath for the outfit to show in the preview for the preferences menu.
 	var/preview_outfit
 
@@ -60,6 +66,8 @@ GLOBAL_LIST_EMPTY(antagonists)
 
 	/// The HUD shown to teammates, created by `add_team_hud`
 	var/datum/atom_hud/alternate_appearance/team_hud
+=======
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 
 /datum/antagonist/New()
 	GLOB.antagonists += src
@@ -160,8 +168,11 @@ GLOBAL_LIST_EMPTY(antagonists)
 	if(!soft_antag && owner.current.stat != DEAD)
 		owner.current.add_to_current_living_antags()
 
+<<<<<<< HEAD
 	SEND_SIGNAL(owner, COMSIG_ANTAGONIST_GAINED, src)
 
+=======
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 /**
  * Proc that checks the sent mob aganst the banlistfor this antagonist.
  * Returns FALSE if no mob is sent, or the mob is not found to be banned.
