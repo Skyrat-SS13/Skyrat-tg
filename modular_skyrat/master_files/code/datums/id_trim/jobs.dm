@@ -72,11 +72,6 @@
 	config_job = "nanotrasen_representative"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CHANGE_IDS)
 
-/datum/id_trim/job/captain/shuttle_pilot
-	assignment = "Shuttle Pilot"
-	trim_state = "trim_shuttlepilot"
-	config_job = "shuttle pilot"
-
 /datum/id_trim/job/security_medic
 	assignment = "Security Medic"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'

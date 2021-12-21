@@ -237,6 +237,7 @@
 	listeningTo = null
 
 /obj/item/storage/bag/xenoarch/proc/pickup_rocks(mob/living/user)
+	SIGNAL_HANDLER
 	var/show_message = FALSE
 	var/turf/tile = user.loc
 	if (!isturf(tile))

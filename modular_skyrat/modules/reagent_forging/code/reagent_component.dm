@@ -35,11 +35,13 @@
 	return ..()
 
 /datum/component/reagent_clothing/proc/set_wearer()
+	SIGNAL_HANDLER
 	if(!ishuman(parent_clothing.loc))
 		return
 	cloth_wearer = parent_clothing.loc
 
 /datum/component/reagent_clothing/proc/remove_wearer()
+	SIGNAL_HANDLER
 	cloth_wearer = null
 
 /datum/component/reagent_clothing/process(delta_time)
@@ -79,6 +81,7 @@
 	return ..()
 
 /datum/component/reagent_weapon/proc/inject_attacked(datum/source, mob/living/target, mob/living/user, params)
+	SIGNAL_HANDLER
 	if(!parent_weapon || !length(imbued_reagent))
 		return
 	var/mob/living_target = target
