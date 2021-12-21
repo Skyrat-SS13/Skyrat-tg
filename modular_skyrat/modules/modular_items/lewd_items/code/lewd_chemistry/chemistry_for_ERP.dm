@@ -286,23 +286,23 @@
 		mob_breasts.update_sprite_suffix()
 		exposed_mob.update_body()
 		enlargement_amount = 0
-		// Words for the breasts being huge.
+		/// Words for the breasts being huge.
 		var/list/words_for_bigger = list("huge", "massive", "squishy", "gigantic", "rather large", "jiggly", "hefty")
-		// Synonyms for breasts.
+		/// Synonyms for breasts.
 		var/list/boob_text_list = list("boobs", "tits", "breasts")
-		// Synonyms for the chest.
+		/// Synonyms for the chest.
 		var/list/covered_boobs_list = list("bust", "chest", "bosom")
-		// Synonyms for bigger breasts.
+		/// Synonyms for bigger breasts.
 		var/list/bigger_boob_text_list = list("jigglies", "melons", "jugs", "boobies", "milkers", "boobs", "tits", "breasts")
-		// Wording chosen to expand the breasts, shown only to the mob.
+		/// Wording chosen to expand the breasts, shown only to the mob.
 		var/list/action_text_list = list("expand outward to ", "grow out to ", "begin to enlarge, growing to ", "suddenly expand to ", "swell out to ")
-		// Wording chosen to be seen by other mobs, regardless of whether the mob is clothed/unclothed.
+		/// Wording chosen to be seen by other mobs, regardless of whether the mob is clothed/unclothed.
 		var/list/public_bigger_action_text_list = list("expand and jiggle outward.", "grow a bit larger, bouncing about.", "seem a bit bigger than they were before.", "bounce and jiggle as they suddenly expand.")
-		// Wording chosen to be seen by other mobs, while the mob is unclothed.
+		/// Wording chosen to be seen by other mobs, while the mob is unclothed.
 		var/list/public_action_text_list = list("expand outward.", "seem to grow a bit larger.", "appear a bit bigger than they were before.", "bounce and jiggle as they suddenly expand.")
-		// Wording chosen to be seen by other mobs, while the mob is clothed.
+		/// Wording chosen to be seen by other mobs, while the mob is clothed.
 		var/list/notice_boobs = list("seems to be a bit tighter.", "appears to be a bit bigger.", "seems to swell outward a bit.")
-		// Checks for the cup size.
+		/// Checks for the cup size.
 		var/translation = breasts_size_to_cup(mob_breasts.genital_size)
 
 		if(mob_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_topless())
