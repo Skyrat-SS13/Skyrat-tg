@@ -280,7 +280,7 @@
 	var/obj/item/organ/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
 	enlargement_amount += enlarger_increase_step
 	if(enlargement_amount >= enlargement_threshold)
-		if(mob_breasts?.genital_size >= (max_breast_size))
+		if(mob_breasts?.genital_size >= max_breast_size)
 			return
 		mob_breasts.genital_size += breast_size_increase_step
 		mob_breasts.update_sprite_suffix()
