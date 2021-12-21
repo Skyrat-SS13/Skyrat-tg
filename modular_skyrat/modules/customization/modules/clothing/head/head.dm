@@ -425,3 +425,18 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "blfedora"
 	mutant_variants = NONE
+
+/obj/item/clothing/head/christmas
+	name = "red christmas hat"
+	desc = "A red Christmas Hat! How festive!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "christmashat"
+
+/obj/item/clothing/head/christmas/green
+	name = "green christmas hat"
+	desc = "A green Christmas Hat! How festive!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "christmashatg"
+
