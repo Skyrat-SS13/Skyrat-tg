@@ -14,6 +14,18 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	else
 		outfit.suit = item_path
 
+
+//santa's coming, coming to throw your mother down a staircase and leave you for years then cry about you not loving him
+/datum/loadout_item/suit/winter_coat/christmas
+	name = "Christmas Coat"
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/christmas
+
+/datum/loadout_item/suit/winter_coat/christmas/green
+	name = "Green Christmas Coat"
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/christmas/green
+
+//fuck santa, fuck him with every ounce of hate you have, dedicate your one reason for living to outliving that fat cunt and pissing on his grave
+
 /datum/loadout_item/suit/winter_coat
 	name = "Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat
