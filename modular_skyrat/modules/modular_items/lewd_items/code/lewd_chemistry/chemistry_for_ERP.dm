@@ -286,6 +286,7 @@
 		mob_breasts.update_sprite_suffix()
 		exposed_mob.update_body()
 		enlargement_amount = 0
+
 		/// Words for the breasts being huge.
 		var/list/words_for_bigger = list("huge", "massive", "squishy", "gigantic", "rather large", "jiggly", "hefty")
 		/// Synonyms for breasts.
