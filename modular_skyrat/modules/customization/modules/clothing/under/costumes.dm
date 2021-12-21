@@ -123,14 +123,14 @@
 		switch (choice)
 			if("Black (Original)")
 				if(istype(src, /obj/item/clothing/under/syndicate/tacticool/skirt))
-					style = "tactifool_arcade_skirt"
-				else
-					style = "tactifool_arcade"
-			if ("Navy (New)")
-				if(istype(src, /obj/item/clothing/under/syndicate/tacticool/skirt))
 					style = "tactifool_skirt"
 				else
 					style = "tactifool"
+			if ("Navy (New)")
+				if(istype(src, /obj/item/clothing/under/syndicate/tacticool/skirt))
+					style = "tacticool_skirt"
+				else
+					style = "tacticool"
 		if(QDELETED(src))
 			return
 		icon_state = style
