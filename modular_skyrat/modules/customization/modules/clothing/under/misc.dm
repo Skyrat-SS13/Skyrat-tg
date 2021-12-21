@@ -659,3 +659,31 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "helltakerskirt"
+
+/obj/item/clothing/under/costume/christmas
+	name = "christmas costume"
+	desc = "Can you believe it guys? Christmas. Just a lightyear away!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "christmasmaler"
+
+/obj/item/clothing/under/costume/christmas/green
+	name = "green christmas costume"
+	desc = "Alright buddy, you have two options here. You can be a saint, or you can be a Grinch. Those are your two choices. Choose wisely."
+	icon_state = "christmasmaleg"
+
+/obj/item/clothing/under/croptop/christmas
+	name = "sexy christmas costume"
+	desc = "Can you believe it guys? Christmas. Just a lightyear away!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "christmasfemaler"
+
+/obj/item/clothing/under/croptop/christmas/green
+	name = "sexy green christmas costume"
+	desc = "Alright buddy, you have two options here. You can be a saint, or you can be a Grinch. Those are your two choices. Choose wisely."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "christmasfemaleg"
+
+
