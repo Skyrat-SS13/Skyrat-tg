@@ -54,6 +54,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	has_gravity = STANDARD_GRAVITY
 	name = "Test Room"
 	icon_state = "storage"
+	base_lighting_alpha = 255 // SKYRAT EDIT - Fixing unit tests(?)
 
 //EXTRA
 
