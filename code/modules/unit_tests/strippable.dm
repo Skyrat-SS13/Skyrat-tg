@@ -17,6 +17,7 @@
 	TEST_ASSERT_EQUAL(strip_menu.ui_status(user, ui_state), UI_INTERACTIVE, "Lying down was not interactive.")
 
 	user.forceMove(locate(run_loc_floor_bottom_left.x + 2, run_loc_floor_bottom_left.y, run_loc_floor_bottom_left.z))
+	run_loc_floor_bottom_left.luminosity = 6
 	world.log << "What our dummy can see lying down, two tiles from the pen:"
 	for(var/atom/thing as anything in view(user))
 		world.log << "[thing] ([thing.x], [thing.y], [thing.z])"
