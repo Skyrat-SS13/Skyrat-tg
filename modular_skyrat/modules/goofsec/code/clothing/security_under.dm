@@ -7,8 +7,6 @@
  * Standard security jumpsuit
  */
 /obj/item/clothing/under/rank/security/officer
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "security_black"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
@@ -22,14 +20,10 @@
  * Wardens jumpsuit
  */
 /obj/item/clothing/under/rank/security/warden
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "warden_black"
 
 /**
  * Head of Securities jumpsuit
  */
 /obj/item/clothing/under/rank/security/head_of_security
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "hos_black"
