@@ -286,7 +286,6 @@
 	name = "red and green christmas coat"
 	desc = "A festive red and green Christmas coat! Smells like Candy Cane!"
 	icon_state = "christmascoatrg"
-	item_state = "christmascoatrg"
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/christmas/gamerpc
 
 /obj/item/clothing/head/hooded/winterhood/christmas/gamerpc
