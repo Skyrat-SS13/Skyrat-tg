@@ -280,19 +280,29 @@
 	var/obj/item/organ/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
 	enlargement_amount += enlarger_increase_step
 	if(enlargement_amount >= enlargement_threshold)
+		if(mob_breasts?.genital_size >= (max_breast_size + 5))
+			return
 		mob_breasts.genital_size += breast_size_increase_step
 		mob_breasts.update_sprite_suffix()
 		exposed_mob.update_body()
 		enlargement_amount = 0
-		var/list/wordsforbigger = list("huge", "massive", "squishy", "gigantic", "rather large", "jiggly", "hefty")
-		var/list/boobtextlist = list("boobs", "tits", "breasts")
-		var/list/coveredboobslist = list("bust", "chest", "bosom")
-		var/list/biggerboobtextlist = list("jigglies", "melons", "jugs", "boobies", "milkers", "boobs", "tits", "breasts")
-		var/list/actiontextlist = list("expand outward to ", "grow out to ", "begin to enlarge, growing to ", "suddenly expand to ", "swell out to ")
-		var/list/publicactiontextlist = list("expand outward.", "seem to grow a bit larger.", "appear a bit bigger than they were before.", "bounce and jiggle as they suddenly expand.")
-		var/list/publicbiggeractiontextlist = list("expand and jiggle outward.", "grow a bit larger, bouncing about.", "seem a bit bigger than they were before.", "bounce and jiggle as they suddenly expand.")
-		var/list/areyourboobsgrowingorsomething = list("seems to be a bit tighter.", "appears to be a bit bigger.", "seems to swell outward a bit.")
-
+		// Words for the breasts being huge.
+		var/list/words_for_bigger = list("huge", "massive", "squishy", "gigantic", "rather large", "jiggly", "hefty")
+		// Synonyms for breasts.
+		var/list/boob_text_list = list("boobs", "tits", "breasts")
+		// Synonyms for the chest.
+		var/list/covered_boobs_list = list("bust", "chest", "bosom")
+		// Synonyms for bigger breasts.
+		var/list/bigger_boob_text_list = list("jigglies", "melons", "jugs", "boobies", "milkers", "boobs", "tits", "breasts")
+		// Wording chosen to expand the breasts, shown only to the mob.
+		var/list/action_text_list = list("expand outward to ", "grow out to ", "begin to enlarge, growing to ", "suddenly expand to ", "swell out to ")
+		// Wording chosen to be seen by other mobs, regardless of whether the mob is clothed/unclothed.
+		var/list/public_bigger_action_text_list = list("expand and jiggle outward.", "grow a bit larger, bouncing about.", "seem a bit bigger than they were before.", "bounce and jiggle as they suddenly expand.")
+		// Wording chosen to be seen by other mobs, while the mob is unclothed.
+		var/list/public_action_text_list = list("expand outward.", "seem to grow a bit larger.", "appear a bit bigger than they were before.", "bounce and jiggle as they suddenly expand.")
+		// Wording chosen to be seen by other mobs, while the mob is clothed.
+		var/list/notice_boobs = list("seems to be a bit tighter.", "appears to be a bit bigger.", "seems to swell outward a bit.")
+		// Checks for the cup size.
 		var/translation = breasts_size_to_cup(mob_breasts.genital_size)
 
 		if(mob_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_topless())
@@ -300,33 +310,37 @@
 				if("Flatchested")
 					return
 				if("beyond measurement")
-					exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(wordsforbigger)] [pick(biggerboobtextlist)] [pick(publicbiggeractiontextlist)]"))
-					to_chat(exposed_mob, span_purple("Your [pick(wordsforbigger)] [pick(biggerboobtextlist)] [pick(actiontextlist)]about [mob_breasts.genital_size] inches in diameter."))
+					exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(public_bigger_action_text_list)]"))
+					to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [mob_breasts.genital_size] inches in diameter."))
+					return
 				else
 					if (mob_breasts?.genital_size >= (max_breast_size - 2))
-						exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(wordsforbigger)] [pick(biggerboobtextlist)] [pick(publicbiggeractiontextlist)]"))
-						to_chat(exposed_mob, span_purple("Your [pick(wordsforbigger)] [pick(biggerboobtextlist)] [pick(actiontextlist)]about [translation]-cups."))
+						exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(public_bigger_action_text_list)]"))
+						to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
+						return
 					else
-						exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(boobtextlist)] [pick(publicactiontextlist)]"))
-						to_chat(exposed_mob, span_purple("Your [pick(boobtextlist)] [pick(actiontextlist)]about [translation]-cups."))
-			return
+						exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(boob_text_list)] [pick(public_action_text_list)]"))
+						to_chat(exposed_mob, span_purple("Your [pick(boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
+						return
 		else
 			switch(translation)
 				if("Flatchested")
 					return
 				if("beyond measurement")
-					exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(biggerboobtextlist)] [pick(publicbiggeractiontextlist)]"))
-					to_chat(exposed_mob, span_purple("Your [pick(wordsforbigger)] [pick(biggerboobtextlist)] [pick(actiontextlist)]about [mob_breasts.genital_size] inches in diameter."))
+					exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(boob_text_list)] [pick(public_bigger_action_text_list)]"))
+					to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [mob_breasts.genital_size] inches in diameter."))
+					return
 				else
 					if (mob_breasts?.genital_size >= (max_breast_size - 2))
-						exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(biggerboobtextlist)] [pick(publicbiggeractiontextlist)]"))
-						to_chat(exposed_mob, span_purple("Your [pick(wordsforbigger)] [pick(biggerboobtextlist)] [pick(actiontextlist)]about [translation]-cups."))
+						exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(boob_text_list)] [pick(public_bigger_action_text_list)]"))
+						to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
+						return
 					else
-						exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s [pick(coveredboobslist)] [pick(areyourboobsgrowingorsomething)]"))
-						to_chat(exposed_mob, span_purple("Your [pick(boobtextlist)] [pick(actiontextlist)]about [translation]-cups."))
-			return
+						exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s [pick(covered_boobs_list)] [pick(notice_boobs)]"))
+						to_chat(exposed_mob, span_purple("Your [pick(boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
+						return
 
-	if(ISINRANGE_EX(mob_breasts?.genital_size, (max_breast_size - 2), (max_breast_size)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
+	if((mob_breasts?.genital_size >= (max_breast_size + 1)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
 		var/target_bodypart = exposed_mob.get_bodypart(BODY_ZONE_CHEST)
 		if(prob(damage_chance))
 			to_chat(exposed_mob, span_danger("Your breasts begin to strain against your clothes!"))
