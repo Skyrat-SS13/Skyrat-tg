@@ -23,29 +23,7 @@
 	desc = "A tactical security jumpsuit for officers complete with Nanotrasen belt buckle."
 	icon_state = "rsecurity"
 	inhand_icon_state = "r_suit"
-	// SKYRAT EDIT ADDITION START
-	unique_reskin = list("Basic Security" = "rsecurity",
-						"Grey Security" = "security",
-						"Security Jumpskirt" = "secskirt",
-						"Formal Security Uniform" = "officerblueclothes",
-						"Blue Shift" = "barney_uniform",
-						"Constable" = "constable",
-						"Peacekeeper" = "peacekeeper",
-						"Tactical Peacekeeper" = "peacekeeper_tac",
-						"Blue Peacekeeper" = "bsecurity",
-						"Junior Peacekeeper" = "junior_officer",
-						"Tactical Peacekeeper" = "peacekeeper_tac",
-						"Tactical Peacekeeper" = "peacekeeper_tac",
-						"Tactical Peacekeeper" = "peacekeeper_tac",
-						"Battle Dress Uniform" = "fatigues",
-						"Sol" = "policealt",
-						"Sol Cadet" = "policecadetalt",
-						"Sol Traffic" = "policetrafficalt",
-						"Workpants" = "workpants_red",
-						"Peacekeeper Trousers" = "workpants_blue",
-						"Kilt" = "blackwatch"
-						)
-	/// SKYRAT EDIT ADDITION END
+
 /obj/item/clothing/under/rank/security/officer/grey
 	name = "grey security jumpsuit"
 	desc = "A tactical relic of years past before Nanotrasen decided it was cheaper to dye the suits red instead of washing out the blood."
@@ -87,15 +65,6 @@
 	desc = "A formal security suit for officers complete with Nanotrasen belt buckle."
 	icon_state = "rwarden"
 	inhand_icon_state = "r_suit"
-	// SKYRAT EDIT ADDITION START
-	unique_reskin = list("Basic Warden" = "rwarden",
-						"Grey Warden" = "warden",
-						"Warden Jumpskirt" = "rwarden_skirt",
-						"Formal Warden Uniform" = "wardenblueclothes",
-						"Peacekeeper" = "peacekeeper_warden",
-						"Sol" = "policewardenalt"
-	)
-	/// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/under/rank/security/warden/grey
 	name = "grey security suit"
@@ -161,20 +130,6 @@
 	inhand_icon_state = "r_suit"
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 50, WOUND = 10)
 	strip_delay = 60
-	// SKYRAT EDIT ADDITION START
-	unique_reskin = list("Basic HoS" = "rhos",
-						"Grey HoS" = "hos",
-						"HoS Jumpskirt" = "rhos_skirt",
-						"HoS Turtleneck" = "hosalt",
-						"HoS Turtleskirt" = "hosalt_skirt",
-						"Parade HoS Uniform" = "hos_parade_male",
-						"Parade Woman's HoS Uniform" = "hos_parade_fem",
-						"Formal HoS Uniform" = "hosblueclothes",
-						"Peacekeeper" = "peacekeeper_hos",
-						"Imperial" = "imphos"
-	)
-	/// SKYRAT EDIT ADDITION END
-
 
 /obj/item/clothing/under/rank/security/head_of_security/skirt
 	name = "head of security's jumpskirt"

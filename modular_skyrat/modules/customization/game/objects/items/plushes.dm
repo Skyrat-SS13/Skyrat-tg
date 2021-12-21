@@ -21,7 +21,7 @@
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
 
 /obj/item/toy/plush/fermis
-	name = "med-cat plushie"
+	name = "medcat plushie"
 	desc = "An affectionate stuffed toy that resembles a certain medcat, comes complete with battery operated wagging tail!! You get the impression she's cheering you on to find happiness and be kind to people."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_fermis"
@@ -32,14 +32,14 @@
 	gender = FEMALE
 
 /obj/item/toy/plush/fermis/chen
-	name = "securi-cat plushie"
+	name = "securicat plushie"
 	desc = "The official stuffed companion to the medcat plushie!! It resembles a certain securicat. You get the impression she's encouraging you to be brave and protect those you care for."
 	icon_state = "plushie_chen"
 	inhand_icon_state = "plushie_chen"
 	attack_verb_continuous = list("snuggles", "meowhuggies", "wigglepurrs")
 	attack_verb_simple = list("snuggle", "meowhuggie", "wigglepurr")
 	special_desc_requirement = EXAMINE_CHECK_JOB
-	special_desc_jobs = list("Assistant", "Head of Security")
+	special_desc_jobs = list(JOB_ASSISTANT, JOB_HEAD_OF_SECURITY)
 	special_desc = "There's a pocket under the coat hiding a tiny picture of the medcat plushie and a tinier ribbon diamond ring. D'awww."
 
 /obj/item/toy/plush/sechound

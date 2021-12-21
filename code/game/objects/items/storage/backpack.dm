@@ -146,24 +146,6 @@
 	desc = "It's a very robust backpack."
 	icon_state = "securitypack"
 	inhand_icon_state = "securitypack"
-	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Basic Backpack" = list(
-			RESKIN_ICON = 'icons/obj/storage.dmi',
-			RESKIN_ICON_STATE = "securitypack",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "securitypack"
-		),
-		"Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi',
-			RESKIN_ICON_STATE = "peacepack",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "peacepack"
-		)
-	)
-	/// SKYRAT EDIT ADDITION END
-
 
 /obj/item/storage/backpack/captain
 	name = "captain's backpack"
