@@ -31,7 +31,7 @@
 	alt_titles = list("Botanist", "Hydroponicist", "Gardener", "Botanical Researcher", "Herbalist")
 
 /datum/job/bouncer
-	alt_titles = list("Bouncer", "Service Guard") //was originally Doorman, Door Supervisor here, goof request
+	alt_titles = list("Bouncer", "Service Guard")
 
 /datum/job/brigoff
 	alt_titles = list("Corrections Officer", "Brig Officer", "Prison Guard")
