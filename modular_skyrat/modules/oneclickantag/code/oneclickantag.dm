@@ -88,9 +88,9 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 
 /datum/admins/
 	var/MAKEANTAG_RESTRICTLIST = list()
-	var/MAKEANTAG_PL_DEFAULT_SECURITY = list("Prisoner", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Civil Disputes Officer", "Security Medic", "Security Sergeant", "Blueshield", "Orderly", "Bouncer", "Customs Agent", "Engineering Guard", "Science Guard")
-	var/MAKEANTAG_PL_DEFAULT_HEADS = list("Captain","Head of Personnel","Research Director","Chief Engineer","Chief Medical Officer","Head of Security","Quartermaster")
-	var/MAKEANTAG_PL_DEFAULT_SILICON = list("AI", "Cyborg")
+	var/MAKEANTAG_PL_DEFAULT_SECURITY = list(JOB_PRISONER, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_HEAD_OF_SECURITY, JOB_CAPTAIN, JOB_CORRECTIONS_OFFICER, JOB_CIVIL_DISPUTES_OFFICER, JOB_SECURITY_MEDIC, JOB_SECURITY_SERGEANT, JOB_BLUESHIELD, JOB_ORDERLY, JOB_BOUNCER, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD, JOB_SCIENCE_GUARD)
+	var/MAKEANTAG_PL_DEFAULT_HEADS = list(JOB_CAPTAIN,JOB_HEAD_OF_PERSONNEL,JOB_RESEARCH_DIRECTOR,JOB_CHIEF_ENGINEER,JOB_CHIEF_MEDICAL_OFFICER,JOB_HEAD_OF_SECURITY,JOB_QUARTERMASTER)
+	var/MAKEANTAG_PL_DEFAULT_SILICON = list(JOB_AI, JOB_CYBORG)
 
 /datum/admins/proc/antag_get_protected_roles(antagtype)
 	if(MAKEANTAG_RESTRICTLIST[antagtype])
@@ -110,7 +110,7 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 			p_p += MAKEANTAG_PL_DEFAULT_SECURITY
 			p_p += MAKEANTAG_PL_DEFAULT_HEADS
 			p_p += MAKEANTAG_PL_DEFAULT_SILICON
-			p_p += list("Chaplain", "Head of Personnel")
+			p_p += list(JOB_CHAPLAIN, JOB_HEAD_OF_PERSONNEL)
 		if(ROLE_HERETIC)
 			p_p += MAKEANTAG_PL_DEFAULT_SECURITY
 			p_p += MAKEANTAG_PL_DEFAULT_HEADS
@@ -119,17 +119,17 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 			p_r += MAKEANTAG_PL_DEFAULT_SECURITY
 			p_p += MAKEANTAG_PL_DEFAULT_HEADS
 			p_r += MAKEANTAG_PL_DEFAULT_SILICON
-			p_r += list("Head of Personnel")
+			p_r += list(JOB_HEAD_OF_PERSONNEL)
 		if(ROLE_MONKEY)
 			p_r += MAKEANTAG_PL_DEFAULT_SILICON
 			p_p += MAKEANTAG_PL_DEFAULT_HEADS
-			p_r += list("Prisoner")
+			p_r += list(JOB_PRISONER)
 		if(ROLE_REV)
 			p_r += MAKEANTAG_PL_DEFAULT_SECURITY
 			p_r += MAKEANTAG_PL_DEFAULT_HEADS
 			p_r += MAKEANTAG_PL_DEFAULT_SILICON
 	if(c_a)
-		p_r += list("Assistant")
+		p_r += list(JOB_ASSISTANT)
 	if(c_p)
 		p_r += p_p
 	MAKEANTAG_RESTRICTLIST[antagtype] = p_r

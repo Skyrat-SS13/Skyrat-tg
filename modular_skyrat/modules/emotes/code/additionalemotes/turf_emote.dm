@@ -210,6 +210,7 @@ var/current_turf
 		return TRUE
 
 /datum/emote/living/mark_turf/proc/turf_owner(mob/living/user)
+	SIGNAL_HANDLER
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 
 	var/obj/owned_turf = user.owned_turf

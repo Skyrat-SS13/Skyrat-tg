@@ -80,7 +80,7 @@
 		return
 	log_game("[key_name(user)] became [mob_name]")
 	//create(ckey = user.ckey) //ORIGINAL
-	create(user.ckey, null, user) //SKYRAT EDIT CHANGE
+	create(user, null, user.ckey) //SKYRAT EDIT CHANGE
 
 /obj/effect/mob_spawn/Initialize(mapload)
 	. = ..()
@@ -126,7 +126,7 @@
 	return
 
 ///obj/effect/mob_spawn/proc/create(mob/user, newname) //ORIGINAL
-/obj/effect/mob_spawn/proc/create(ckey, newname, mob/user) //SKYRAT EDIT CHANGE
+/obj/effect/mob_spawn/proc/create(mob/user, newname, ckey) //SKYRAT EDIT CHANGE
 	//SKYRAT EDIT CHANGE BEGIN
 	//var/mob/living/M = new mob_type(get_turf(src)) //ORIGINAL
 	var/mob/living/M = create_mob(user, newname)
