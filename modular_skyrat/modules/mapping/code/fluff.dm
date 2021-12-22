@@ -82,9 +82,10 @@
 		8 = 380
 	)
 
-/obj/item/tape/ruins/tarkon	//A passing message from the late officer .
+/obj/item/tape/ruins/tarkon	//A passing message from the late officer.
+	name = "dusty tape"
 	icon_state = "tape_greyscale"
-	desc = "An old, dusty tape with a small, faded stamp, reading \"An officer's final order.\""
+	desc = "An old, dusty tape with a small, faded stamp, reading \"An officer's final order.\"... Should definitely be flipped if not being read when played."
 
 	used_capacity = 380
 	storedinfo = list(
@@ -94,7 +95,7 @@
 		4 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>sighs, \"<span class=' '>The ones that are still asleep... They had a chance... Those in the understorage are still safe... The RTG's were disconnected topside so they would survive...</span>\"</span></span>",
 		5 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>sniffles, \"<span class=' '>... Overseer Tavus... I... did what I could for them... Asked the crew to board the cargo shuttle... Leave the main shuttle if the sleepers activated...</span>\"</span></span>",
 		6 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>groans, \"<span class=' '>God... Those.. Things. Aliens... They got Tavus... Severed his leg clean off... Told him that.. We'd clean out the port... And he'd wake up in the trauma bay...</span>\"</span></span>",
-		7 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>coughs then calmly states, \"<span class=' '>... If.. Anyone wakes up... If the Ensign... Is alive... They're in charge now... The.. The Tarkon Drill's designs are... In the solars room... Abandon the port or.. Clear it out... But dont let those designs go abandoned..</span>\"</span></span>",
+		7 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>coughs then calmly states, \"<span class=' '>... If.. Anyone wakes up... If the Ensign... Is alive... They're in charge now... The.. The Tarkon Drill's designs are... In the solars room, in a hidden floorsafe... Abandon the port or.. Clear it out... But dont let those designs go abandoned..</span>\"</span></span>",
 		8 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording stopped.</span>\"</span></span>"
 	)
 	timestamp = list(
