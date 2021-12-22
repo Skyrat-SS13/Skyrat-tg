@@ -20,7 +20,11 @@
  *
  * make sure you add an update to the schema_version stable in the db changelog
  */
+<<<<<<< HEAD
 #define DB_MINOR_VERSION 22
+=======
+#define DB_MINOR_VERSION 21
+>>>>>>> f0c78c9667d (Log telemetry connections in DB (#63435))
 
 
 //! ## Timing subsystem
