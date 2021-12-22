@@ -4,6 +4,9 @@
 //NEVER HAVE ANYTHING BELOW THIS PLANE ADJUST IF YOU NEED MORE SPACE
 #define LOWEST_EVER_PLANE -200
 
+#define FIELD_OF_VISION_BLOCKER_PLANE -199
+#define FIELD_OF_VISION_BLOCKER_RENDER_TARGET "*FIELD_OF_VISION_BLOCKER_RENDER_TARGET"
+
 #define CLICKCATCHER_PLANE -99
 
 #define PLANE_SPACE -95
@@ -19,8 +22,10 @@
 
 #define FLOOR_PLANE -7
 #define GAME_PLANE -4
+#define GAME_PLANE_FOV_HIDDEN -3
+#define ABOVE_GAME_PLANE -2
 
-#define MOUSE_TRANSPARENT_PLANE -3 //SKYRAT EDIT ADDITION - Pollution port
+#define MOUSE_TRANSPARENT_PLANE -1 //SKYRAT EDIT ADDITION - Pollution port
 
 #define SPACE_LAYER 1.8
 //#define TURF_LAYER 2 //For easy recordkeeping; this is a byond define
@@ -151,6 +156,7 @@
 #define BLIND_LAYER 4
 #define CRIT_LAYER 5
 #define CURSE_LAYER 6
+#define FOV_EFFECTS_LAYER 10000 //Blindness effects are not layer 4, they lie to you
 
 ///--------------- FULLSCREEN RUNECHAT BUBBLES ------------
 
