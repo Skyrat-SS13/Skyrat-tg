@@ -31,7 +31,7 @@
 	alt_titles = list("Botanist", "Hydroponicist", "Gardener", "Botanical Researcher", "Herbalist")
 
 /datum/job/bouncer
-	alt_titles = list("Bouncer", "Doorman", "Door Supervisor")
+	alt_titles = list("Bouncer", "Service Guard") //was originally Doorman, Door Supervisor here, goof request
 
 /datum/job/brigoff
 	alt_titles = list("Corrections Officer", "Brig Officer", "Prison Guard")
@@ -64,7 +64,7 @@
 	alt_titles = list("Curator", "Librarian", "Journalist", "Archivist")
 
 /datum/job/customs_agent
-	alt_titles = list("Customs Agent", "Customs Officer", "Cargo Watchman", "Cargo Officer")
+	alt_titles = list("Customs Agent", "Customs Guard", "Cargo Guard") //originally had cargo watchman, goof request to remove it
 
 /datum/job/cyborg
 	alt_titles = list("Cyborg", "Robot", "Android")
@@ -75,8 +75,8 @@
 /datum/job/doctor
 	alt_titles = list("Medical Doctor", "Surgeon", "Nurse", "General Practitioner", "Medical Resident", "Physician", "Podiatrist")
 
-/datum/job/engineering_guard
-	alt_titles = list("Engineering Guard", "Construction Guard", "Engineering Watchman")
+/datum/job/engineering_guard //see science guard
+
 
 /datum/job/expeditionary_trooper
 
@@ -103,7 +103,7 @@
 	alt_titles = list("Nanotrasen Representative", "Nanotrasen Diplomat", "Central Command Representative")
 
 /datum/job/orderly
-	alt_titles = list("Orderly", "Medical Attendant", "Ward Officer")
+	alt_titles = list("Orderly", "Medical Guard") //ward assistant is a real term, but confusion etc etc, originally was medical attendant as well, but goof request
 
 /datum/job/paramedic
 	alt_titles = list("Paramedic", "Emergency Medical Technician", "Search and Rescue Technician")
@@ -123,8 +123,8 @@
 /datum/job/roboticist
 	alt_titles = list("Roboticist", "Biomechanical Engineer", "Mechatronic Engineer")
 
-/datum/job/science_guard
-	alt_titles = list("Science Guard", "Science Officer", "Science Watchman")
+/datum/job/science_guard //none for them, goof request :(
+
 
 /datum/job/scientist
 	alt_titles = list(
@@ -157,4 +157,4 @@
 	alt_titles = list("Virologist", "Pathologist")
 
 /datum/job/warden
-	alt_titles = list("Warden", "Brig Sergeant", "Dispatch Officer", "Brig Governor", "Jailer")
+	alt_titles = list("Warden", "Brig Sergeant", "Dispatch Officer", "Brig Governor", "Jailer", "Gaoler")
