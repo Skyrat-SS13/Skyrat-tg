@@ -73,7 +73,7 @@
 	alt_titles = list("Detective", "Forensic Technician", "Private Investigator", "Forensic Scientist")
 
 /datum/job/doctor
-	alt_titles = list("Medical Doctor", "Surgeon", "Nurse", "General Practitioner", "Medical Resident", "Physician") //originally "Podiatrist" was here, but well...no fun allowed
+	alt_titles = list("Medical Doctor", "Surgeon", "Nurse", "General Practitioner", "Medical Resident", "Physician") //in memorium to "Podiatrist" , killed in it's cradle
 
 /datum/job/engineering_guard //see science guard
 
