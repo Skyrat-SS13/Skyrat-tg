@@ -460,3 +460,137 @@
   tf-4:
   - bugfix: The mateba has had an uplink price increase to match the .357, as they're
       mechanically identical
+2021-12-18:
+  Gandalf2k15:
+  - rscadd: Deployable barricades! Check out some sheets and materials!
+  - rscadd: C.U.C.K.S - The Compact Universal Complex Kinetic Self-expanding Barricade.
+      Great for deploying quick fortifications.
+  Melbert:
+  - bugfix: Placing tiny fans in the aux base gives feedback
+  - bugfix: Breaking / deconstructing aux base turrets no longer brick the console
+  OrionTheFox:
+  - bugfix: Nanotrasen has begun properly stocking internals boxes again, including
+      returning the spare N2 for vox, the expanded O2 for engineers, and removing
+      the extra epi-pen
+  SkyratBot:
+  - bugfix: Fixed a bug with taste description generation for fruit wine.
+  - balance: Moved Pun Pun away from the kitchen on Delta. It's now behind the bar
+      counter.
+  - bugfix: Fixes Families runtimes and not making enough gang leaders
+  - spellcheck: Fixed a small typo in Cargo's mail console, saying mail had homing
+      beacons in them.
+  - bugfix: Bot cover lock button is now disabled when you lack sufficient access.
+  - bugfix: The rat spit's OD effect will no longer repeat on players already under
+      the Rat King's rule.
+  - bugfix: Fixed gas flowing into windows from above, I am.... so tired
+  - bugfix: Fixes gas sometimes not moving up from below after a structure change,
+      see above
+  - bugfix: Fixes shoving people into lockers sometimes trapping them in lockerspace.
+      Crummy vacation destination, don't go there.
+  - bugfix: Fixes directional shoving just not working
+  - bugfix: Fixes shoving people carrying other people being weird
+  Tokorizo:
+  - rscadd: Vox sprites
+  - bugfix: Syndicate infiltrator armor now works for Vox, new sprites have been added.
+  Zonespace27:
+  - rscadd: Readded hypnoflash (7 TC) and hypno flashbang (12 TC) to traitor uplinks
+  jupyterkat:
+  - bugfix: fixed lewd furnitures spawning in people's hands
+  tf-4:
+  - spellcheck: Corrected a few miscapitalisations of "Nanotrasen"
+2021-12-19:
+  SkyratBot:
+  - bugfix: Fixes being able to table slam through impassable objects.
+2021-12-20:
+  MMMiracles:
+  - bugfix: "The prison gate in Tramstation's Prison is no longer made of Papier-m\xE2\
+      ch\xE9"
+  Seris02:
+  - rscadd: Adds the nerve staple, a nodrop item that pacifies you, and the corresponding
+      quirk
+  SkyratBot:
+  - bugfix: Long civilian bounty texts (specifically viro) no longer overflow the
+      button. The window is slightly wider as a result.
+  - bugfix: Pandemic machine no longer blue screens while inserting premade viruses.
+  - bugfix: The Pirate's shuttle scrambler will now ONLY work if you tell it to.
+  - bugfix: Power control consoles now alert you if you lack access.
+  - bugfix: When the nuke goes off, the "you are shredded to atoms" message no longer
+      displays to people not on the z-level or on the station.
+  - bugfix: The nuke now kills everyone on a station z-level if blown up on the station.
+  - bugfix: Basic mobs (Cows, cockroaches), count as Animals for the DNA vault.
+  - bugfix: Adds the High-performance liquid chromatography machine to the Syndicate
+      Lavaland Base.
+  - bugfix: Camera consoles now require you to be close by and alive in order to operate.
+  - bugfix: Mr. Pingsky no longer spams AI private because he wants to leave AI satellite
+      but can't (free him). Autopatrol set to off.
+  - bugfix: Nested containers (lockers, crates, etc) can be resisted out of.
+  - bugfix: Ninjas can no longer call reinforcements if the comms console is depowered
+  - bugfix: neurotoxin spit no longer hits the xeno that spat it
+  - admin: Actions done from the R&D console is now logged
+  - bugfix: Enemies of the State and (Command-only) Enemies of the Revolution are
+      now ACTUALLY blacklisted from being defibrilated.
+  - bugfix: TramStation's tram console is no longer shifted over to the right
+2021-12-21:
+  AtoriBirb:
+  - rscadd: More particle effects for use in the tele_effects.dmi, modular icons
+  - balance: Changes how TK is identified.
+  - code_imp: Swaps which particles the TK movement points to.
+  SkyratBot:
+  - bugfix: Cows, roaches and their subtypes can be sentienced and mind transfer potioned
+      again.
+  - refactor: refactored syndicate sentience potion and abductor all access gland
+      to use the new simple_access component.
+  - bugfix: Headrevs only get a revolutionary banner if they actually win.
+  - bugfix: fixed energy axe sprites's clipping issues and incorrect facing directions
+  Zonespace27:
+  - bugfix: You can now close the L6-Saw LMG's dust cover without removing the magazine.
+2021-12-22:
+  GoldenAlpharex:
+  - rscdel: Removed Power Armor, as it will soon be replaced by something else.
+  - bugfix: CI shouldn't randomly fail on a striping-menu-related test anymore.
+  - config: Updated the jobs.txt config on the repo to have parity with the one on
+      the server, to stop all those nasty runtimes on test servers.
+  - config: SSDecay is now turned off by default in the config, to save about 4~ish
+      seconds of loading time on test servers.
+  Ryll/Shaps:
+  - admin: Added Datum Tagging, a new admin tool for quickly marking and referring
+      back to various datums and atoms. You can tag atoms by ctrl+middle clicking
+      them or using the right click context menu, or from their VV dropdown menu (especially
+      for abstract datums that can't be clicked).
+  - admin: The View-Tags menu can quickly be accessed by F9 default, or using the
+      View-Tags button at the bottom of the Admin -> Game status panel section.
+  - admin: Tagged datums can also be referenced for things like proccalls and VV var
+      edits, similarly to Marked objects.
+  SkyratBot:
+  - bugfix: You can no longer shove megafauna that you can't normally push.
+  - bugfix: Adds seeds to vending machines as intended. Corrects pathway for lasagne.
+      Fixes issue with Bell peppers and baking cheese.
+  - bugfix: The Nanotrasen News Network has updated their news tickers for when a
+      station horrifically blows up to be more accommodating towards the person directly
+      responsible for making sure it didn't horrifically blow up.
+2021-12-23:
+  Melbert:
+  - bugfix: Removed a floating teleport beacon in Icebox's chapel
+  - bugfix: Fixed APC visibilty in icebox science outpost / RD office
+  - bugfix: Fixed Air alarm accessibility in icebox atmos office
+  SkyratBot:
+  - rscadd: Gas Masks now limit your field of view
+  - rscadd: Added field of view mechanics. It's darkness can be tweaked by a pref
+  - rscadd: Blind, nearsighted and fov-limited people will now see sounds as visual
+      effects.
+  - bugfix: Flying over lava no longer erroneously ignites you ablaze.
+  - bugfix: Balloon alerts when picking up staffs as a non wizard now properly appears
+      over the player's head.
+  - bugfix: Fixed players appearing above fire and foam.
+  - bugfix: Fixed garbage bags being uncleanable by mops, for silly silly reasons
+  - bugfix: fixed a missing wire in Deltastation's Arrivals Solar array, connecting
+      the control console to the array
+  - bugfix: TGUI list input will now respond to having large/swapped buttons in preferences.
+  - bugfix: BYOND functionality restored in TGUI input lists - keyboard support. Up/Down,
+      type a letter to jump to it (while search is not visible).
+  - bugfix: Allows the supermatter crystal to produce gases while powered, even in
+      absolutely empty turfs, excluding space turfs.
+  - bugfix: You can no longer wrap a locker to bypass the drag slowdown.
+  - bugfix: fixed potential bucket corruption in timer reset_buckets
+  kannthus:
+  - spellcheck: Fixed a typo on the barricade
