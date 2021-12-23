@@ -77,24 +77,6 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	QDEL_NULL(keyslot2)
 	return ..()
 
-<<<<<<< HEAD
-///obj/item/radio/headset/talk_into(mob/living/M, message, channel, list/spans, datum/language/language, list/message_mods) - ORIGINAL
-/obj/item/radio/headset/talk_into(mob/living/M, message, channel, list/spans, datum/language/language, list/message_mods, direct = TRUE) //SKYRAT EDIT CHANGE - GUNPOINT
-	if (!listening)
-		return ITALICS | REDUCE_RANGE
-	return ..()
-
-/obj/item/radio/headset/can_receive(freq, level, AIuser)
-	if(ishuman(src.loc))
-		var/mob/living/carbon/human/H = src.loc
-		if(H.ears == src)
-			return ..(freq, level)
-	else if(AIuser)
-		return ..(freq, level)
-	return FALSE
-
-=======
->>>>>>> d005d76f0bd (Fixes Massive Radio Overtime, Implements a Spatial Grid System for Faster Searching Over Areas (#61422))
 /obj/item/radio/headset/ui_data(mob/user)
 	. = ..()
 	.["headset"] = TRUE
