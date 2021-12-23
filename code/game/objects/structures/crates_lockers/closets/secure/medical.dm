@@ -108,7 +108,7 @@
 /obj/structure/closet/secure_closet/chemical
 	name = "chemical closet"
 	desc = "Store dangerous chemicals in here."
-	req_access = list(ACCESS_CHEMISTRY)
+	req_access = list(ACCESS_PHARMACY)
 	icon_door = "chemical"
 
 /obj/structure/closet/secure_closet/chemical/PopulateContents()
@@ -125,6 +125,7 @@
 
 /obj/structure/closet/secure_closet/chemical/heisenberg //contains one of each beaker, syringe etc.
 	name = "advanced chemical closet"
+	req_access = list(ACCESS_CHEMISTRY)
 
 /obj/structure/closet/secure_closet/chemical/heisenberg/PopulateContents()
 	..()

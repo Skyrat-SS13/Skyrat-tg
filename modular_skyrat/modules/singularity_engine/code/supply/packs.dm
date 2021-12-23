@@ -1,3 +1,4 @@
+/*
 /datum/supply_pack/engine/particle_accelerator
 	name = "Particle Accelerator Crate"
 	desc = "A supermassive black hole or hyper-powered teslaball are the perfect way to spice up any party! This \"My First Apocalypse\" kit contains everything you need to build your own Particle Accelerator! Ages 10 and up."
@@ -24,3 +25,4 @@
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/obj/machinery/the_singularitygen/tesla)
 	crate_name = "tesla generator crate"
+ */ // Disabled due to being non-functional.

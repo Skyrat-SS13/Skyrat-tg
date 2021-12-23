@@ -116,7 +116,7 @@
 	if(!isliving(user) || !user.CanReach(parent) || user.incapacitated())
 		return FALSE
 	if(locked)
-		to_chat(user, "<span class='warning'>[parent] seems to be locked!</span>")
+		to_chat(user, span_warning("[parent] seems to be locked!"))
 		return
 
 	var/obj/item/knife/combat/knife_to_draw = locate() in real_location()
@@ -125,7 +125,7 @@
 	remove_from_storage(knife_to_draw, get_turf(user))
 	playsound(parent, 'modular_skyrat/modules/sec_haul/sound/holsterout.ogg', 50, TRUE, -5)
 	INVOKE_ASYNC(user, /mob/.proc/put_in_hands, knife_to_draw)
-	user.visible_message("<span class='warning'>[user] draws [knife_to_draw] from [parent]!</span>", "<span class='notice'>You draw [knife_to_draw] from [parent].</span>")
+	user.visible_message(span_warning("[user] draws [knife_to_draw] from [parent]!"), span_notice("You draw [knife_to_draw] from [parent]."))
 
 /obj/item/storage/bag/ammo/marksman/PopulateContents() //can kill most basic enemies with 5 knives, though marksmen shouldn't be soloing enemies anyways
 	new /obj/item/knife/combat/marksman(src)

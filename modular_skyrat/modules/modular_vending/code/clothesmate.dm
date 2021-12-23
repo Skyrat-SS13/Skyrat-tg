@@ -85,7 +85,6 @@
 	skyrat_premium = list( //being here means you're artificially rare, congratulations
 		/obj/item/clothing/shoes/jackboots/timbs = 2,
 		/obj/item/clothing/head/soft/yankee = 3,
-		/obj/item/instrument/piano_synth/headphones/spacepods = 1,
 		/obj/item/clothing/suit/brownbattlecoat = 1,
 		/obj/item/clothing/suit/blackfurrich = 1,
 		/obj/item/clothing/suit/frenchtrench = 1,

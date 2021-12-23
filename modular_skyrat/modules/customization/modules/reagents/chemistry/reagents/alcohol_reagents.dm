@@ -15,7 +15,7 @@
 	quality = DRINK_NICE
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi' // This should cover anything synthanol related. Will have to individually tag others unless we make an object path for skyrat drinks.
 	glass_icon_state = "synthanolglass"
-	glass_name = "Glass of Synthanol"
+	glass_name = "glass of synthanol"
 	glass_desc = "The equivalent of alcohol for synthetic crewmembers. They'd find it awful if they had tastebuds too."
 	taste_description = "motor oil"
 
@@ -31,7 +31,7 @@
 	if(C.mob_biotypes & MOB_ROBOTIC)
 		return
 	if(method == INGEST)
-		to_chat(C, pick("<span class = 'danger'>That was awful!</span>", "<span class = 'danger'>That was disgusting!</span>"))
+		to_chat(C, pick(span_danger("That was awful!"), span_danger("That was disgusting!")))
 
 /datum/reagent/consumable/ethanol/synthanol/robottears
 	name = "Robot Tears"
@@ -39,7 +39,7 @@
 	color = "#363636"
 	boozepwr = 25
 	glass_icon_state = "robottearsglass"
-	glass_name = "Glass of Robot Tears"
+	glass_name = "glass of robot tears"
 	glass_desc = "No robots were hurt in the making of this drink."
 	taste_description = "existential angst"
 
@@ -49,7 +49,7 @@
 	color = "#ADB21f"
 	boozepwr = 20
 	glass_icon_state = "trinaryglass"
-	glass_name = "Glass of Trinary"
+	glass_name = "glass of trinary"
 	glass_desc = "Colorful drink made for synthetic crewmembers. It doesn't seem like it would taste well."
 	taste_description = "modem static"
 
@@ -59,7 +59,7 @@
 	color = "#5B3210"
 	boozepwr = 25
 	glass_icon_state = "servoglass"
-	glass_name = "Glass of Servo"
+	glass_name = "glass of servo"
 	glass_desc = "Chocolate - based drink made for IPCs. Not sure if anyone's actually tried out the recipe."
 	taste_description = "motor oil and cocoa"
 
@@ -69,7 +69,7 @@
 	color = "#E7AE04"
 	boozepwr = 15
 	glass_icon_state = "uplinkglass"
-	glass_name = "Glass of Uplink"
+	glass_name = "glass of uplink"
 	glass_desc = "An exquisite mix of the finest liquoirs and synthanol. Meant only for synthetics."
 	taste_description = "a GUI in visual basic"
 
@@ -79,7 +79,7 @@
 	color = "#7204E7"
 	boozepwr = 25
 	glass_icon_state = "synthncokeglass"
-	glass_name = "Glass of Synth 'n Coke"
+	glass_name = "glass of synth 'n coke"
 	glass_desc = "Classic drink altered to fit the tastes of a robot, contains de-rustifying properties. Bad idea to drink if you're made of carbon."
 	taste_description = "fizzy motor oil"
 
@@ -89,7 +89,7 @@
 	color = "#D004E7"
 	boozepwr = 25
 	glass_icon_state = "synthignonglass"
-	glass_name = "Glass of Synthignon"
+	glass_name = "glass of synthignon"
 	glass_desc = "Someone mixed good wine and robot booze. Romantic, but atrocious."
 	taste_description = "fancy motor oil"
 
@@ -104,12 +104,12 @@
 	taste_description = "tiny explosions"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "gunfire"
-	glass_name = "Gunfire"
+	glass_name = "glass of gunfire"
 	glass_desc = "It pops constantly as you look at it, giving off tiny sparks."
 
 /datum/reagent/consumable/ethanol/gunfire/on_mob_life(mob/living/carbon/M)
 	if (prob(3))
-		to_chat(M,"<span class='notice'>You feel the gunfire pop in your mouth.</span>")
+		to_chat(M,span_notice("You feel the gunfire pop in your mouth."))
 	return ..()
 
 /datum/reagent/consumable/ethanol/hellfire
@@ -121,7 +121,7 @@
 	taste_description = "cold flames that lick at the top of your mouth"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "hellfire"
-	glass_name = "Hellfire"
+	glass_name = "glass of hellfire"
 	glass_desc = "An amber colored drink that isn't quite as hot as it looks."
 
 /datum/reagent/consumable/ethanol/hellfire/on_mob_life(mob/living/carbon/M)
@@ -137,7 +137,7 @@
 	taste_description = "overpowering sweetness with a touch of sourness, followed by iron and the sensation of a warm summer breeze"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "sins_delight"
-	glass_name = "Sin's Delight"
+	glass_name = "glass of sin's delight"
 	glass_desc = "You can smell the seven sins rolling off the top of the glass."
 
 /datum/reagent/consumable/ethanol/strawberry_daiquiri
@@ -149,7 +149,7 @@
 	taste_description = "sweet strawberry, lime and the ocean breeze"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "strawberry_daiquiri"
-	glass_name = "Strawberry Daiquiri"
+	glass_name = "glass of strawberry daiquiri"
 	glass_desc = "Pink looking drink with flowers and a big straw to sip it. Looks sweet and refreshing, perfect for warm days."
 
 /datum/reagent/consumable/ethanol/liz_fizz
@@ -160,7 +160,7 @@
 	taste_description = "brain freezing sourness"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "liz_fizz"
-	glass_name = "Liz Fizz"
+	glass_name = "glass of liz fizz"
 	glass_desc = "Looks like a citrus sherbet seperated in layers? Why would anyone want that is beyond you."
 
 /datum/reagent/consumable/ethanol/miami_vice
@@ -172,7 +172,7 @@
 	taste_description = "sweet and refreshing flavor, complemented with strawberries and coconut, and hints of citrus"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "miami_vice"
-	glass_name = "Miami Vice"
+	glass_name = "glass of miami vice"
 	glass_desc = "Strawberries and coconut, like yin and yang."
 
 /datum/reagent/consumable/ethanol/malibu_sunset
@@ -184,7 +184,7 @@
 	taste_description = "coconut, with orange and grenadine accents"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "malibu_sunset"
-	glass_name = "Malibu Sunset"
+	glass_name = "glass of malibu sunset"
 	glass_desc = "Tropical looking drinks, with ice cubes hovering on the surface and grenadine coloring the bottom."
 
 /datum/reagent/consumable/ethanol/hotlime_miami
@@ -196,7 +196,7 @@
 	taste_description = "coconut and aesthetic violence"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "hotlime_miami"
-	glass_name = "Hotlime Miami"
+	glass_name = "glass of hotlime miami"
 	glass_desc = "This looks very aesthetically pleasing."
 
 /datum/reagent/consumable/ethanol/hotlime_miami/on_mob_life(mob/living/carbon/M)
@@ -213,7 +213,7 @@
 	taste_description = "a brass taste with a hint of oil"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "coggrog"
-	glass_name = "Cog Grog"
+	glass_name = "glass of cog grog"
 	glass_desc = "Not even Ratvar's Four Generals could withstand this!  Qevax Jryy!"
 
 /datum/reagent/consumable/ethanol/badtouch
@@ -225,7 +225,7 @@
 	taste_description = "a slap to the face"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "badtouch"
-	glass_name = "Bad Touch"
+	glass_name = "glass of bad touch"
 	glass_desc = "We're nothing but mammals after all."
 
 /datum/reagent/consumable/ethanol/marsblast
@@ -237,7 +237,7 @@
 	taste_description = "hot red sand"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "marsblast"
-	glass_name = "Marsblast"
+	glass_name = "glass of marsblast"
 	glass_desc = "One of these is enough to leave your face as red as the planet."
 
 /datum/reagent/consumable/ethanol/mercuryblast
@@ -249,7 +249,7 @@
 	taste_description = "chills down your spine"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "mercuryblast"
-	glass_name = "Mercuryblast"
+	glass_name = "glass of mercuryblast"
 	glass_desc = "No thermometers were harmed in the creation of this drink"
 
 /datum/reagent/consumable/ethanol/mercuryblast/on_mob_life(mob/living/carbon/M)
@@ -265,7 +265,7 @@
 	taste_description = "a fire in your throat"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "piledriver"
-	glass_name = "Piledriver"
+	glass_name = "glass of piledriver"
 	glass_desc = "Not the only thing to leave your throat sore."
 
 /datum/reagent/consumable/ethanol/zenstar
@@ -277,7 +277,7 @@
 	taste_description = "dissapointment"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "zenstar"
-	glass_name = "Zen Star"
+	glass_name = "glass of zen star"
 	glass_desc = "You'd think something so balanced would actually taste nice... you'd be dead wrong."
 
 // RACE SPECIFIC DRINKS
@@ -290,7 +290,7 @@
 	taste_description = "dead flies"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "coldscales"
-	glass_name = "glass of Coldscales"
+	glass_name = "glass of coldscales"
 	glass_desc = "A soft green drink that looks inviting!"
 
 /datum/reagent/consumable/ethanol/coldscales/on_mob_life(mob/living/carbon/M)
@@ -308,7 +308,7 @@
 	taste_description = "oil spill"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "oil_drum"
-	glass_name = "Drum of oil"
+	glass_name = "drum of oil"
 	glass_desc = "A gray can of booze and oil..."
 
 /datum/reagent/consumable/ethanol/oil_drum/on_mob_life(mob/living/carbon/M)
@@ -326,7 +326,7 @@
 	taste_description = "honey and red wine"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "nord_king"
-	glass_name = "Keg of Nord King"
+	glass_name = "keg of nord king"
 	glass_desc = "A dripping keg of red mead."
 
 /datum/reagent/consumable/ethanol/nord_king/on_mob_life(mob/living/carbon/M)
@@ -344,11 +344,11 @@
 	taste_description = "iron with grapejuice"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "velvet_kiss"
-	glass_name = "glass of Velvet Kiss"
+	glass_name = "glass of velvet kiss"
 	glass_desc = "Red and white drink for the upper classes or undead."
 
 /datum/reagent/consumable/ethanol/velvet_kiss/on_mob_life(mob/living/carbon/M)
-	if(iszombie(M) || isvampire(M) || isdullahan(M)) //Rare races!
+	if(iszombie(M) || isvampire(M) || isdullahan(M) || ishemophage(M)) //Rare races!
 		quality = RACE_DRINK
 	else
 		M.adjust_disgust(25)
@@ -362,7 +362,7 @@
 	taste_description = "grass and lime"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "abduction_fruit"
-	glass_name = "glass of Abduction Fruit"
+	glass_name = "glass of abduction fruit"
 	glass_desc = "Mixed fruits that were never meant to be mixed..."
 
 /datum/reagent/consumable/ethanol/abduction_fruit/on_mob_life(mob/living/carbon/M)
@@ -380,7 +380,7 @@
 	taste_description = "copper and AC power"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "bug_zapper"
-	glass_name = "glass of Bug Zapper"
+	glass_name = "glass of bug zapper"
 	glass_desc = "An odd mix of copper, lemon juice and power meant for non-human consumption."
 
 /datum/reagent/consumable/ethanol/bug_zapper/on_mob_life(mob/living/carbon/M)
@@ -398,7 +398,7 @@
 	taste_description = "dirt and iron"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "mush_crush"
-	glass_name = "glass of Mush Crush"
+	glass_name = "glass of mush crush"
 	glass_desc = "Popular among people that want to grow their own food rather than drink the soil."
 
 /datum/reagent/consumable/ethanol/mush_crush/on_mob_life(mob/living/carbon/M)
@@ -416,7 +416,7 @@
 	taste_description = "Milk and salt"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "hollow_bone"
-	glass_name = "skull of Hollow Bone"
+	glass_name = "skull of hollow bone"
 	glass_desc = "Mixing of milk and bone hurting juice for enjoyment for rather skinny people."
 
 /datum/reagent/consumable/ethanol/hollow_bone/on_mob_life(mob/living/carbon/M)
@@ -434,7 +434,7 @@
 	taste_description = "tropical sea"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "jell_wyrm"
-	glass_name = "glass of Jell Wyrm"
+	glass_name = "glass of jell wyrm"
 	glass_desc = "A bubbly drink that is rather inviting to those that don't know who it's meant for."
 
 /datum/reagent/consumable/ethanol/jell_wyrm/on_mob_life(mob/living/carbon/M)
@@ -453,7 +453,7 @@
 	taste_description = "tropical island"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "laval_spit"
-	glass_name = "glass of Laval Spit"
+	glass_name = "glass of laval spit"
 	glass_desc = "Piping hot drink for those who can stomach the heat of lava."
 
 /datum/reagent/consumable/ethanol/laval_spit/on_mob_life(mob/living/carbon/M)
@@ -471,7 +471,7 @@
 	taste_description = "Warm milk and catnip"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "frisky_kitty"
-	glass_name = "cup of Frisky Kitty"
+	glass_name = "cup of frisky kitty"
 	glass_desc = "Warm milk and some catnip."
 
 /datum/reagent/consumable/ethanol/frisky_kitty/on_mob_life(mob/living/carbon/M)
@@ -489,7 +489,7 @@
 	taste_description = "Sweet and green"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "appletini"
-	glass_name = "glass of Appletini"
+	glass_name = "glass of appletini"
 	glass_desc = "An appley beverage in a martini glass"
 
 /datum/reagent/consumable/ethanol/quadruple_sec/cityofsin //making this a subtype was some REAL JANK, but it saves me a headache, and it looks good!
@@ -500,6 +500,6 @@
 	taste_description = "Your own sins"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "cityofsin"
-	glass_name = "glass of City of Sin"
+	glass_name = "glass of city of sin"
 	glass_desc = "Looking at it makes you recall every mistake you’ve made."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED

@@ -46,8 +46,10 @@
 	if (override_maxcharge)
 		maxcharge = override_maxcharge
 	charge = maxcharge
+	/* SKYRAT EDIT REMOVAL
 	if(ratingdesc)
 		desc += " This one has a rating of [display_energy(maxcharge)], and you should not swallow it."
+	*/ // SKYRAT EDIT END
 	update_appearance()
 
 /obj/item/stock_parts/cell/create_reagents(max_vol, flags)
@@ -67,7 +69,7 @@
 		. += mutable_appearance('icons/obj/power.dmi', "grown_wires")
 	if(charge < 0.01)
 		return
-	. += mutable_appearance('modular_skyrat/modules/aesthetics/cells/cell.dmi', "cell-o[((charge / maxcharge) >= 0.995) ? 2 : 1]") //SKYRAT EDIT CHANGE
+	. += mutable_appearance(charge_overlay_icon, "cell-o[((charge / maxcharge) >= 0.995) ? 2 : 1]") //SKYRAT EDIT CHANGE
 
 /obj/item/stock_parts/cell/proc/percent() // return % charge of cell
 	return 100*charge/maxcharge
@@ -97,8 +99,16 @@
 
 /obj/item/stock_parts/cell/examine(mob/user)
 	. = ..()
+	// SKYRAT EDIT ADDITION
+	if(ratingdesc && !microfusion_readout)
+		. += "This one has a rating of [display_energy(maxcharge)], and you should not swallow it."
+	// SKYRAT EDIT END
 	if(rigged)
 		. += span_danger("This power cell seems to be faulty!")
+	// SKYRAT EDIT ADDITION
+	else if(microfusion_readout)
+		. += "The charge meter reads [charge]/[maxcharge] MF."
+	// SKYRAT EDIT END
 	else
 		. += "The charge meter reads [round(src.percent() )]%."
 

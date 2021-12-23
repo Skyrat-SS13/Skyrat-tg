@@ -3,11 +3,11 @@
 /obj/item/hairbrush
 	name = "hairbrush"
 	desc = "A small, circular brush with an ergonomic grip for efficient brush application."
-	icon = 'modular_skyrat/modules/hairbrush/icons/obj/hairbrush.dmi'
+	icon = 'modular_skyrat/modules/hairbrush/icons/hairbrush.dmi'
 	icon_state = "brush"
 	inhand_icon_state = "inhand"
-	lefthand_file = 'modular_skyrat/modules/hairbrush/icons/mob/inhand_left.dmi'
-	righthand_file = 'modular_skyrat/modules/hairbrush/icons/mob/inhand_right.dmi'
+	lefthand_file = 'modular_skyrat/modules/hairbrush/icons/inhand_left.dmi'
+	righthand_file = 'modular_skyrat/modules/hairbrush/icons/inhand_right.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	var/brush_speed = 3 SECONDS
 

@@ -18,17 +18,17 @@
 /datum/surgery_step/restore_paintjob/tool_check(mob/user, obj/item/tool)
 	var/obj/item/toy/crayon/spraycan/sc = tool
 	if(sc.is_capped)
-		to_chat(user, "<span class='warning'>Take the cap off first!</span>")
+		to_chat(user, span_warning("Take the cap off first!"))
 		return FALSE
 	if(sc.charges < 10)
-		to_chat(user, "<span class='warning'>Not enough paint in the can!</span>")
+		to_chat(user, span_warning("Not enough paint in the can!"))
 		return FALSE
 	return TRUE
 
 /datum/surgery_step/restore_paintjob/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/obj/item/toy/crayon/spraycan/sc = tool
 	sc.use_charges(user, 10, FALSE)
-	sc.audible_message("<span class='notice'>You hear spraying.</span>")
+	sc.audible_message(span_notice("You hear spraying."))
 	playsound(target.loc, 'sound/effects/spray.ogg', 5, 1, 5)
 	if(target?.dna?.species)
 		for(var/obj/item/bodypart/O in target.bodyparts)
@@ -44,6 +44,6 @@
 	return TRUE
 
 /datum/surgery_step/restore_paintjob/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to spray paint on [target]...</span>",
+	display_results(user, target, span_notice("You begin to spray paint on [target]..."),
 			"[user] begins to spray paint on [target]'s [parse_zone(target_zone)].",
 			"[user] begins to spray paint on [target]'s [parse_zone(target_zone)].")

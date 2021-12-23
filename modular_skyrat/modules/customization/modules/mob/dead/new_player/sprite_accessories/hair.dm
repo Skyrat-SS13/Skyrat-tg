@@ -359,6 +359,26 @@
 	name = "Beachwave"
 	icon_state = "hair_beachwave"
 
+/datum/sprite_accessory/hair/skyrat/hyenamane
+	name = "Hyena mane"
+	icon_state = "hair_hyenamane"
+	
+/datum/sprite_accessory/hair/skyrat/halfshavedlong
+	name = "Half-shaved long"
+	icon_state = "halfshave_long"
+	
+/datum/sprite_accessory/hair/skyrat/halfshavedmessy
+	name = "Half-shaved messy"
+	icon_state = "halfshave_messy"
+	
+/datum/sprite_accessory/hair/skyrat/halfshavedmessylong
+	name = "Half-shave long messy"
+	icon_state = "halfshave_messylong"
+	
+/datum/sprite_accessory/hair/skyrat/halfshavedglamorous
+	name = "Half-shave glamorous"
+	icon_state = "halfshave_glamorous"
+
 // Facial hair
 
 /datum/sprite_accessory/facial_hair/skyrat

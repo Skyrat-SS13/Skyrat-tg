@@ -41,43 +41,43 @@
 	to_chat(user, span_notice("You change the hammer's digging depth to [round_dig]cm."))
 
 /obj/item/xenoarch/hammer/cm1
-	name = "Hammer (1cm)"
+	name = "hammer (1cm)"
 	icon_state = "hammer1"
 	dig_amount = 1
 	dig_speed = 1 SECONDS
 
 /obj/item/xenoarch/hammer/cm2
-	name = "Hammer (2cm)"
+	name = "hammer (2cm)"
 	icon_state = "hammer2"
 	dig_amount = 2
 	dig_speed = 2 SECONDS
 
 /obj/item/xenoarch/hammer/cm3
-	name = "Hammer (3cm)"
+	name = "hammer (3cm)"
 	icon_state = "hammer3"
 	dig_amount = 3
 	dig_speed = 3 SECONDS
 
 /obj/item/xenoarch/hammer/cm4
-	name = "Hammer (4cm)"
+	name = "hammer (4cm)"
 	icon_state = "hammer4"
 	dig_amount = 4
 	dig_speed = 4 SECONDS
 
 /obj/item/xenoarch/hammer/cm5
-	name = "Hammer (5cm)"
+	name = "hammer (5cm)"
 	icon_state = "hammer5"
 	dig_amount = 5
 	dig_speed = 5 SECONDS
 
 /obj/item/xenoarch/hammer/cm6
-	name = "Hammer (6cm)"
+	name = "hammer (6cm)"
 	icon_state = "hammer6"
 	dig_amount = 6
 	dig_speed = 6 SECONDS
 
 /obj/item/xenoarch/hammer/cm10
-	name = "Hammer (10cm)"
+	name = "hammer (10cm)"
 	icon_state = "hammer10"
 	dig_amount = 10
 	dig_speed = 10 SECONDS
@@ -237,6 +237,7 @@
 	listeningTo = null
 
 /obj/item/storage/bag/xenoarch/proc/pickup_rocks(mob/living/user)
+	SIGNAL_HANDLER
 	var/show_message = FALSE
 	var/turf/tile = user.loc
 	if (!isturf(tile))
@@ -251,13 +252,13 @@
 				show_message = TRUE
 			else
 				if(!spam_protection)
-					to_chat(user, "<span class='warning'>Your [name] is full and can't hold any more!</span>")
+					to_chat(user, span_warning("Your [name] is full and can't hold any more!"))
 					spam_protection = TRUE
 					continue
 	if(show_message)
 		playsound(user, "rustle", 50, TRUE)
-		user.visible_message("<span class='notice'>[user] scoops up the rocks beneath [user.p_them()].</span>", \
-			"<span class='notice'>You scoop up the rocks beneath you with your [name].</span>")
+		user.visible_message(span_notice("[user] scoops up the rocks beneath [user.p_them()]."), \
+			span_notice("You scoop up the rocks beneath you with your [name]."))
 	spam_protection = FALSE
 
 /obj/item/storage/bag/xenoarch/adv

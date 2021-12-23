@@ -35,7 +35,9 @@
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "dm" = (
 /obj/structure/table,
-/obj/machinery/firealarm/directional/south,
+/obj/machinery/firealarm/directional/south{
+	dir = 1
+	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
 	},
@@ -654,7 +656,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "Ph" = (
-/obj/effect/mob_spawn/human/blackmarket{
+/obj/effect/mob_spawn/ghost_role/human/blackmarket{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -804,7 +806,9 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "YR" = (
-/obj/machinery/firealarm/directional/west,
+/obj/machinery/firealarm/directional/west{
+	dir = 4
+	},
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
 	},
