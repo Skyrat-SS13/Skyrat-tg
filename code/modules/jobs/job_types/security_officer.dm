@@ -1,9 +1,9 @@
 /datum/job/security_officer
-	title = "Security Officer"
+	title = JOB_SECURITY_OFFICER
 	description = "Protect company assets, follow the Standard Operating \
 		Procedure, eat donuts."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
-	department_head = list("Head of Security")
+	department_head = list(JOB_HEAD_OF_SECURITY)
 	faction = FACTION_STATION
 	total_positions = 7 //Handled in /datum/controller/occupations/proc/setup_officer_positions() // SKYRAT EDIT: SET TO 7, WAS 5
 	spawn_positions = 7 //Handled in /datum/controller/occupations/proc/setup_officer_positions() // SKYRAT EDIT: SEE ABOVE
@@ -237,7 +237,7 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 /obj/item/radio/headset/headset_sec/alt/department/Initialize(mapload)
 	. = ..()
 	wires = new/datum/wires/radio(src)
-	secure_radio_connections = new
+	secure_radio_connections = list()
 	recalculateChannels()
 
 /obj/item/radio/headset/headset_sec/alt/department/engi

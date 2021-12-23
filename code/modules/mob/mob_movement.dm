@@ -501,6 +501,7 @@
 			return FALSE
 		//SKYRAT EDIT ADDITION END
 		m_intent = MOVE_INTENT_RUN
+	plane = (m_intent == MOVE_INTENT_WALK) ? GAME_PLANE_FOV_HIDDEN : GAME_PLANE //SKYRAT EDIT ADDITION
 	if(hud_used?.static_inventory)
 		for(var/atom/movable/screen/mov_intent/selector in hud_used.static_inventory)
 			selector.update_appearance()
