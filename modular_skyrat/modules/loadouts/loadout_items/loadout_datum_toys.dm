@@ -28,7 +28,7 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 /datum/loadout_item/toys/narsie
 	name = "Nar'sie Plush"
 	item_path = /obj/item/toy/plush/narplush
-	restricted_roles = list("Chaplain")
+	restricted_roles = list(JOB_CHAPLAIN)
 
 /datum/loadout_item/toys/nukie
 	name = "Nukie Plush"
@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 /datum/loadout_item/toys/ratvar
 	name = "Ratvar Plush"
 	item_path = /obj/item/toy/plush/ratplush
-	restricted_roles = list("Chaplain")
+	restricted_roles = list(JOB_CHAPLAIN)
 
 /datum/loadout_item/toys/rouny
 	name = "Rouny Plush"
