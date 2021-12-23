@@ -536,11 +536,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 			send2adminchat("Server", "[cheesy_message] (No admins online)")
 	QDEL_LIST_ASSOC_VAL(char_render_holders)
-
 	if(movingmob != null)
-		LAZYREMOVE(movingmob.client_mobs_in_contents, mob)
+		movingmob.client_mobs_in_contents -= mob
+		UNSETEMPTY(movingmob.client_mobs_in_contents)
 		movingmob = null
-
 	active_mousedown_item = null
 	SSambience.remove_ambience_client(src)
 	QDEL_NULL(view_size)

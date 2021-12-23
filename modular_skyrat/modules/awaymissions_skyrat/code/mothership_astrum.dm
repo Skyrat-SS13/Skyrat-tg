@@ -165,15 +165,16 @@
 	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/random/astrum/agentloot)
 
 //GHOSTROLES
-/obj/effect/mob_spawn/ghost_role/human/lobotomite
+/obj/effect/mob_spawn/human/lobotomite
 	name = "lobotomite containment tube"
-	prompt_name = "a lobotomite"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
 	mob_name = "Lobotomite"
 	density = TRUE
+	roundstart = FALSE
+	death = FALSE
 	mob_species = /datum/species/human
 	outfit = /datum/outfit/lobotomite
-	you_are_text = "You are a lobotomite, an experiment of those who took you away from... why can't you remember?"
+	short_desc = "You are a lobotomite, an experiment of those who took you away from... why can't you remember?"
 	flavour_text = "You are the Lobotomite. \
 	Do not explore the gateway. \
 	Do not touch anything in the gateway. \

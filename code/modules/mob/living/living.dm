@@ -10,7 +10,6 @@
 	faction += "[REF(src)]"
 	GLOB.mob_living_list += src
 	SSpoints_of_interest.make_point_of_interest(src)
-	update_fov()
 
 /mob/living/ComponentInitialize()
 	. = ..()
@@ -754,6 +753,7 @@
 		adjustToxLoss(-20, TRUE, TRUE) //slime friendly
 		updatehealth()
 		grab_ghost()
+	SEND_SIGNAL(src, COMSIG_LIVING_REVIVE, full_heal, admin_revive)
 	if(full_heal)
 		fully_heal(admin_revive = admin_revive)
 	if(stat == DEAD && can_be_revived()) //in some cases you can't revive (e.g. no brain)
@@ -776,8 +776,6 @@
 	else if(admin_revive)
 		updatehealth()
 		get_up(TRUE)
-	// The signal is called after everything else so components can properly check the updated values
-	SEND_SIGNAL(src, COMSIG_LIVING_REVIVE, full_heal, admin_revive)
 
 
 /mob/living/proc/remove_CC()

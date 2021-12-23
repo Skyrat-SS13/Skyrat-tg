@@ -19,7 +19,7 @@
 
 	/// Active timers with this datum as the target
 	var/list/active_timers
-	/// Status traits attached to this datum. associative list of the form: list(trait name (string) = list(source1, source2, source3,...))
+	/// Status traits attached to this datum
 	var/list/status_traits
 
 	/**
@@ -98,7 +98,8 @@
 
 	var/list/timers = active_timers
 	active_timers = null
-	for(var/datum/timedevent/timer as anything in timers)
+	for(var/thing in timers)
+		var/datum/timedevent/timer = thing
 		if (timer.spent && !(timer.flags & TIMER_DELETE_ME))
 			continue
 		qdel(timer)
@@ -114,8 +115,9 @@
 	if(dc)
 		var/all_components = dc[/datum/component]
 		if(length(all_components))
-			for(var/datum/component/component as anything in all_components)
-				qdel(component, FALSE, TRUE)
+			for(var/I in all_components)
+				var/datum/component/C = I
+				qdel(C, FALSE, TRUE)
 		else
 			var/datum/component/C = all_components
 			qdel(C, FALSE, TRUE)
@@ -134,7 +136,8 @@
 		for(var/sig in lookup)
 			var/list/comps = lookup[sig]
 			if(length(comps))
-				for(var/datum/component/comp as anything in comps)
+				for(var/i in comps)
+					var/datum/component/comp = i
 					comp.UnregisterSignal(src, sig)
 			else
 				var/datum/component/comp = comps

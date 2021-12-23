@@ -148,16 +148,12 @@
 	var/list/bounds
 	src.bounds = bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)
 
-	//used for sending the maxx and maxy expanded global signals at the end of this proc
-	var/has_expanded_world_maxx = FALSE
-	var/has_expanded_world_maxy = FALSE
-
-	for(var/datum/grid_set/gset as anything in gridSets)
+	for(var/I in gridSets)
+		var/datum/grid_set/gset = I
 		var/ycrd = gset.ycrd + y_offset - 1
 		var/zcrd = gset.zcrd + z_offset - 1
 		if(!cropMap && ycrd > world.maxy)
 			world.maxy = ycrd // Expand Y here.  X is expanded in the loop below
-			has_expanded_world_maxy = TRUE
 		var/zexpansion = zcrd > world.maxz
 		if(zexpansion)
 			if(cropMap)
@@ -183,7 +179,6 @@
 							break
 						else
 							world.maxx = xcrd
-							has_expanded_world_maxx = TRUE
 
 					if(xcrd >= 1)
 						var/model_key = copytext(line, tpos, tpos + key_len)
@@ -212,12 +207,10 @@
 		CHECK_TICK
 
 	if(!no_changeturf)
-		for(var/turf/T as anything in block(locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]), locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ])))
+		for(var/t in block(locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]), locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ])))
+			var/turf/T = t
 			//we do this after we load everything in. if we don't; we'll have weird atmos bugs regarding atmos adjacent turfs
 			T.AfterChange(CHANGETURF_IGNORE_AIR)
-
-	if(has_expanded_world_maxx || has_expanded_world_maxy)
-		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_EXPANDED_WORLD_BOUNDS, has_expanded_world_maxx, has_expanded_world_maxy)
 
 	#ifdef TESTING
 	if(turfsSkipped)

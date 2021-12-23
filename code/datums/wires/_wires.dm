@@ -110,7 +110,7 @@
 	randomize()
 
 /datum/wires/proc/repair()
-	cut_wires.Cut()//a negative times a negative equals a positive
+	cut_wires.Cut()
 
 /datum/wires/proc/get_wire(color)
 	return colors[color]

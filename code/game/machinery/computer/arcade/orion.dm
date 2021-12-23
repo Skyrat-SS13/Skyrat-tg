@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 /obj/machinery/computer/arcade/orion_trail/Initialize(mapload)
 	. = ..()
 	radio = new /obj/item/radio(src)
-	radio.set_listening(FALSE)
+	radio.listening = 0
 	setup_events()
 
 /obj/machinery/computer/arcade/orion_trail/proc/setup_events()

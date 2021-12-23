@@ -30,7 +30,6 @@
 	mob_size = MOB_SIZE_LARGE
 	radio = /obj/item/radio/headset/silicon/ai
 	can_buckle_to = FALSE
-	native_fov = null
 	var/battery = 200 //emergency power if the AI's APC is off
 	var/list/network = list("ss13")
 	var/obj/machinery/camera/current
@@ -852,17 +851,17 @@
 		modules_action = new(malf_picker)
 		modules_action.Grant(src)
 
-/mob/living/silicon/ai/reset_perspective(atom/new_eye)
+/mob/living/silicon/ai/reset_perspective(atom/A)
 	if(camera_light_on)
 		light_cameras()
-	if(istype(new_eye, /obj/machinery/camera))
-		current = new_eye
+	if(istype(A, /obj/machinery/camera))
+		current = A
 	if(client)
-		if(ismovable(new_eye))
-			if(new_eye != GLOB.ai_camera_room_landmark)
+		if(ismovable(A))
+			if(A != GLOB.ai_camera_room_landmark)
 				end_multicam()
 			client.perspective = EYE_PERSPECTIVE
-			client.eye = new_eye
+			client.eye = A
 		else
 			end_multicam()
 			if(isturf(loc))

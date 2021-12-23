@@ -9,9 +9,9 @@ type SpawnersMenuContext = {
 type spawner = {
   name: string;
   amount_left: number;
-  you_are_text?: string;
+  short_desc?: string;
   flavor_text?: string;
-  important_text?: string;
+  important_info?: string;
 };
 
 export const SpawnersMenu = (props, context) => {
@@ -52,13 +52,13 @@ export const SpawnersMenu = (props, context) => {
                 }>
                 <LabeledList>
                   <LabeledList.Item label="Origin">
-                    {spawner.you_are_text || 'Unknown'}
+                    {spawner.short_desc || 'Unknown'}
                   </LabeledList.Item>
                   <LabeledList.Item label="Directives">
                     {spawner.flavor_text || 'None'}
                   </LabeledList.Item>
                   <LabeledList.Item color="bad" label="Conditions">
-                    {spawner.important_text || 'None'}
+                    {spawner.important_info || 'None'}
                   </LabeledList.Item>
                 </LabeledList>
               </Section>

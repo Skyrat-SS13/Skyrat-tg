@@ -26,5 +26,3 @@
 		changeling.regain_powers()
 
 	med_hud_set_status()
-
-	update_fov_client()

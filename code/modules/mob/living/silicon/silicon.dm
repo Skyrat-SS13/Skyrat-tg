@@ -318,7 +318,7 @@
 		return
 	if(Autochan == "Default") //Autospeak on whatever frequency to which the radio is set, usually Common.
 		radiomod = ";"
-		Autochan += " ([radio.get_frequency()])"
+		Autochan += " ([radio.frequency])"
 	else if(Autochan == "None") //Prevents use of the radio for automatic annoucements.
 		radiomod = ""
 	else //For department channels, if any, given by the internal radio.
