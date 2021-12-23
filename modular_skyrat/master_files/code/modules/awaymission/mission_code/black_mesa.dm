@@ -512,15 +512,14 @@
 		/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid
 	)
 
-/obj/effect/mob_spawn/human/black_mesa
+/obj/effect/mob_spawn/ghost_role/human/black_mesa
 	name = "Research Facility Science Team"
-	roundstart = FALSE
-	death = FALSE
+	prompt_name = "a research facility scientist"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/science_team
-	short_desc = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
-	permanent = FALSE
+	you_are_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
+	flavour_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	can_use_alias = TRUE
 	any_station_species = FALSE
 
@@ -543,10 +542,11 @@
 	trim_state = "trim_scientist"
 	access = list(ACCESS_RND)
 
-/obj/effect/mob_spawn/human/black_mesa/guard
+/obj/effect/mob_spawn/ghost_role/human/black_mesa/guard
 	name = "Research Facility Security Guard"
+	prompt_name = "a research facility guard"
 	outfit = /datum/outfit/security_guard
-	short_desc = "You are a security guard in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
+	you_are_text = "You are a security guard in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
 
 /obj/item/clothing/under/rank/security/peacekeeper/junior/sol/blackmesa
 	name = "security guard uniform"
@@ -573,10 +573,11 @@
 	trim_state = "trim_securityofficer"
 	access = list(ACCESS_SEC_DOORS, ACCESS_SECURITY, ACCESS_AWAY_SEC)
 
-/obj/effect/mob_spawn/human/black_mesa/hecu
+/obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu
 	name = "HECU"
+	prompt_name = "a tactical squad member"
 	outfit = /datum/outfit/hecu
-	short_desc = "You are an elite tactical squad deployed into the research facility to contain the infestation. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
+	you_are_text = "You are an elite tactical squad deployed into the research facility to contain the infestation. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
 
 /obj/item/clothing/under/rank/security/officer/hecu
 	name = "hecu jumpsuit"
