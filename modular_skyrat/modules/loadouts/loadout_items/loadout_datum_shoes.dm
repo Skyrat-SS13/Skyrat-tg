@@ -175,6 +175,12 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "Dominant heels"
 	item_path = /obj/item/clothing/shoes/dominaheels
 
+// Job Restricted
+/datum/loadout_item/shoes/jester
+	name = "Jester shoes"
+	item_path = /obj/item/clothing/shoes/clown_shoes/jester
+	restricted_roles = list(JOB_CLOWN)
+
 //Families Gear
 /datum/loadout_item/shoes/deckers
 	name = "Deckers Shoes"
