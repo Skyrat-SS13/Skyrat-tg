@@ -291,23 +291,6 @@
 	desc = "A robust satchel for security related needs."
 	icon_state = "satchel-sec"
 	inhand_icon_state = "satchel-sec"
-	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Basic Satchel" = list(
-			RESKIN_ICON = 'icons/obj/storage.dmi',
-			RESKIN_ICON_STATE = "satchel-sec",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "satchel-sec"
-		),
-		"Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi',
-			RESKIN_ICON_STATE = "peacekeepersatchel",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeepersatchel"
-		)
-	)
-	/// SKYRAT EDIT ADDITION END
 
 /obj/item/storage/backpack/satchel/explorer
 	name = "explorer satchel"
@@ -467,23 +450,6 @@
 	desc = "A large duffel bag for holding extra security supplies and ammunition."
 	icon_state = "duffel-sec"
 	inhand_icon_state = "duffel-sec"
-	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Basic Dufflebag" = list(
-			RESKIN_ICON = 'icons/obj/storage.dmi',
-			RESKIN_ICON_STATE = "duffel-sec",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "duffel-sec"
-		),
-		"Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi',
-			RESKIN_ICON_STATE = "peacekeeperduffle",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeperduffle"
-		)
-	)
-	/// SKYRAT EDIT ADDITION END
 
 /obj/item/storage/backpack/duffelbag/sec/surgery
 	name = "surgical duffel bag"
