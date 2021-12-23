@@ -499,6 +499,7 @@
 		cockpath.Insert(exposed_mob, 0, FALSE)
 		var/obj/item/organ/genital/new_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
 		new_penis.genital_size = 4
+		new_penis.girth = 3
 		new_penis.update_sprite_suffix()
 		exposed_mob.update_body()
 		to_chat(exposed_mob, span_purple("Your crotch suddenly feels warm as something sprouts between your legs."))
