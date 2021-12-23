@@ -1,27 +1,31 @@
-/obj/effect/mob_spawn/robot
+/obj/effect/mob_spawn/ghost_role/robot
+	name = "Ghost Role Robot"
+	prompt_name = "a robot"
+	you_are_text = "You are a robot. This probably shouldn't be happening."
+	flavour_text = "You are a robot. This probably shouldn't be happening."
 	mob_type = /mob/living/silicon/robot
 
-/obj/effect/mob_spawn/robot/Initialize()
+/obj/effect/mob_spawn/ghost_role/robot/Initialize()
 	. = ..()
 
-/obj/effect/mob_spawn/robot/equip(mob/living/silicon/robot/R)
+/obj/effect/mob_spawn/ghost_role/robot/equip(mob/living/silicon/robot/R)
 	. = ..()
 
-/obj/effect/mob_spawn/robot/ghostcafe
+/obj/effect/mob_spawn/ghost_role/robot/ghostcafe
 	name = "Cafe Robotic Storage"
+	prompt_name = "a ghost cafe robot"
 	uses = -1
 	icon = 'modular_skyrat/modules/ghostcafe/icons/robot_storage.dmi'
 	icon_state = "robostorage"
 	mob_name = "a cafe robot"
-	roundstart = FALSE
 	anchored = TRUE
 	density = FALSE
-	death = FALSE
-	short_desc = "You are a Cafe Robot!"
+	you_are_text = "You are a Cafe Robot!"
 	flavour_text = "Who could have thought? This awesome local cafe accepts cyborgs too!"
 	mob_type = /mob/living/silicon/robot/model/roleplay
 
-/obj/effect/mob_spawn/robot/ghostcafe/special(mob/living/silicon/robot/new_spawn)
+/obj/effect/mob_spawn/ghost_role/robot/ghostcafe/special(mob/living/silicon/robot/new_spawn)
+	. = ..()
 	if(new_spawn.client)
 		new_spawn.custom_name = null
 		new_spawn.updatename(new_spawn.client)
@@ -37,22 +41,22 @@
 		var/datum/action/toggle_dead_chat_mob/D = new(new_spawn)
 		D.Grant(new_spawn)
 
-/obj/effect/mob_spawn/human/ghostcafe
+/obj/effect/mob_spawn/ghost_role/human/ghostcafe
 	name = "Cafe Sleeper"
+	prompt_name = "a ghost cafe human"
 	uses = -1
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_name = "a cafe visitor"
-	roundstart = FALSE
 	density = FALSE
-	death = FALSE
 	any_station_species = TRUE
 	outfit = /datum/outfit
-	short_desc = "You are a Cafe Visitor!"
+	you_are_text = "You are a Cafe Visitor!"
 	flavour_text = "You are off-duty and have decided to visit your favourite cafe. Enjoy yourself."
 	handles_loadout_and_quirks = TRUE
 
-/obj/effect/mob_spawn/human/ghostcafe/special(mob/living/carbon/human/new_spawn)
+/obj/effect/mob_spawn/ghost_role/human/ghostcafe/special(mob/living/carbon/human/new_spawn)
+	. = ..()
 	if(new_spawn.client)
 		var/area/A = get_area(src)
 		//new_spawn.AddElement(/datum/element/ghost_role_eligibility, free_ghosting = TRUE)
