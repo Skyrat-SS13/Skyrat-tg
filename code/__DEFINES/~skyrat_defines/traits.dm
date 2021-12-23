@@ -3,7 +3,7 @@
 #define TRAIT_NORUNNING "norunning"		// You walk!
 #define TRAIT_EXCITABLE	"wagwag" //Will wag when patted!
 #define TRAIT_OXYIMMUNE	"oxyimmune"		// Immune to oxygen damage, ideally give this to all non-breathing species or bad stuff will happen
-#define TRAIT_IRONASS "ironass"
+#define TRAIT_PERSONALSPACE "personalspace" // Block/counter-attack ass-slaps
 #define TRAIT_MOOD_NOEXAMINE "mood_noexamine" // Can't assess your own mood
 #define TRAIT_DNR "cant_revive" //You just can't be revived without supernatural means
 #define TRAIT_HARD_SOLES "hard_soles" // No step on glass
@@ -22,6 +22,9 @@
 #define TRAIT_FLORAL_ASPECT "floral_aspect"
 #define TRAIT_ASH_ASPECT "ash_aspect"
 #define TRAIT_SPARKLE_ASPECT "sparkle_aspect"
+
+/// Allows the user to instantly reload.
+#define TRAIT_INSTANT_RELOAD "instant_reload"
 
 // Trait sources
 #define GHOSTROLE_TRAIT "ghostrole" // SKYRAT EDIT ADDITION -- Ghost Cafe Traits
