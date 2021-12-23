@@ -3,7 +3,7 @@
 #define BSRPD_CAPAC_NEW 250
 
 /obj/item/pipe_dispenser/bluespace
-	name = "Bluespace RPD"
+	name = "bluespace RPD"
 	desc = "State of the art technology being tested by NT scientists; this is their only working prototype."
 	icon = 'modular_skyrat/modules/bsrpd/icons/bsrpd.dmi'
 	icon_state = "bsrpd"
@@ -19,19 +19,19 @@
 /obj/item/pipe_dispenser/bluespace/attackby(obj/item/item, mob/user, param)
 	if(istype(item, /obj/item/stack/sheet/bluespace_crystal))
 		if(BSRPD_CAPAC_NEW > (BSRPD_CAPAC_MAX - bs_capac) || bs_use == 0)
-			to_chat(user, "<span class='warning'>You cannot recharge [src] anymore!</span>")
+			to_chat(user, span_warning("You cannot recharge [src] anymore!"))
 			return
 		item.use(1)
-		to_chat(user, "<span class='notice'>You recharge the bluespace capacitor inside of [src]</span>")
+		to_chat(user, span_notice("You recharge the bluespace capacitor inside of [src]"))
 		bs_capac += BSRPD_CAPAC_NEW
 		return
 	if(istype(item, /obj/item/assembly/signaler/anomaly/bluespace))
 		if(bs_use)
-			to_chat(user, "<span class='notice'>You slot [item] into [src]; supercharging the bluespace capacitor!</span>")
+			to_chat(user, span_notice("You slot [item] into [src]; supercharging the bluespace capacitor!"))
 			bs_use = 0
 			qdel(item)
 		else
-			to_chat(user, "<span class='warning'>You cannot improve the [src] further.</span>")
+			to_chat(user, span_warning("You cannot improve the [src] further."))
 		return
 	return ..()
 
@@ -48,7 +48,7 @@
 	if(prox) // If we are in proximity to the target, don't use charge and don't call this shitcode.
 		return ..()
 	if(bs_capac < (bs_use * (bs_prog + 1)))
-		to_chat(user, "<span class='warning'>The [src] lacks the charge to do that.</span>")
+		to_chat(user, span_warning("The [src] lacks the charge to do that."))
 		return FALSE
 	bs_prog++ // So people can't just spam click and get more uses
 	user.Beam(target, icon_state = "rped_upgrade", time = 1 SECONDS)

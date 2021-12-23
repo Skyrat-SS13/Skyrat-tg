@@ -6,6 +6,13 @@
 #define STATE_CHANGING_STATUS "changing_status"
 #define STATE_MAIN "main"
 #define STATE_MESSAGES "messages"
+//SKYRAT EDIT ADDITION
+GLOBAL_VAR_INIT(cops_arrived, FALSE)
+#define EMERGENCY_RESPONSE_POLICE "WOOP WOOP THAT'S THE SOUND OF THE POLICE"
+#define EMERGENCY_RESPONSE_FIRE "DISCO INFERNO"
+#define EMERGENCY_RESPONSE_EMT "AAAAAUGH, I'M DYING, I NEEEEEEEEEED A MEDIC BAG"
+#define EMERGENCY_RESPONSE_EMAG "AYO THE PIZZA HERE"
+//SKYRAT EDIT END
 
 // The communications computer
 /obj/machinery/computer/communications
@@ -383,7 +390,33 @@
 			SSjob.safe_code_requested = TRUE
 			SSjob.safe_code_timer_id = addtimer(CALLBACK(SSjob, /datum/controller/subsystem/job.proc/send_spare_id_safe_code, pod_location), 120 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 			minor_announce("Due to staff shortages, your station has been approved for delivery of access codes to secure the Captain's Spare ID. Delivery via drop pod at [get_area(pod_location)]. ETA 120 seconds.")
-
+		// SKYRAT EDIT ADDITION START
+		if ("callThePolice")
+			if(!pre_911_check(usr))
+				return
+			calling_911(usr, "Marshals", EMERGENCY_RESPONSE_POLICE)
+		if ("callTheFireDep")
+			if(!pre_911_check(usr))
+				return
+			calling_911(usr, "Firefighters", EMERGENCY_RESPONSE_FIRE)
+		if ("callTheParameds")
+			if(!pre_911_check(usr))
+				return
+			calling_911(usr, "EMTs", EMERGENCY_RESPONSE_EMT)
+		if("callThePizza")
+			if(obj_flags & EMAGGED)
+				return
+			if(!pre_911_check(usr))
+				return
+			GLOB.cops_arrived = TRUE
+			log_game("[key_name(usr)] has dialed for a pizza order from Dogginos using an emagged communications console.")
+			message_admins("[ADMIN_LOOKUPFLW(usr)] has dialed for a pizza order from Dogginos using an emagged communications console.")
+			deadchat_broadcast(" has dialed for a pizza order from Dogginos using an emagged communications console.", span_name("[usr.real_name]"), usr, message_type=DEADCHAT_ANNOUNCEMENT)
+			GLOB.pizza_order = pick(GLOB.pizza_names)
+			call_911(EMERGENCY_RESPONSE_EMAG)
+			to_chat(usr, span_notice("Thank you for choosing Dogginos, [GLOB.pizza_order]!"))
+			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
+		// SKYRAT EDIT ADDITION END
 /obj/machinery/computer/communications/proc/emergency_access_cooldown(mob/user)
 	if(toggle_uses == toggle_max_uses) //you have used up free uses already, do it one more time and start a cooldown
 		to_chat(user, span_warning("This was your last free use without cooldown, you will not be able to use this again for [DisplayTimeText(EMERGENCY_ACCESS_COOLDOWN)]."))
@@ -560,10 +593,6 @@
 	)
 
 /obj/machinery/computer/communications/Topic(href, href_list)
-	. = ..()
-	if (.)
-		return
-
 	if (href_list["reject_cross_comms_message"])
 		if (!usr.client?.holder)
 			log_game("[key_name(usr)] tried to reject a cross-comms message without being an admin.")
@@ -581,6 +610,8 @@
 		message_admins("[key_name(usr)] has cancelled the outgoing cross-comms message.")
 
 		return TRUE
+
+	return ..()
 
 /// Returns whether or not the communications console can communicate with the station
 /obj/machinery/computer/communications/proc/has_communication()

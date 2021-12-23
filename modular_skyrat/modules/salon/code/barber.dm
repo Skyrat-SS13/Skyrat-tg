@@ -1,6 +1,7 @@
 /datum/job/barber
-	title = "Barber"
-	department_head = list("Head of Personnel")
+	title = JOB_BARBER
+	description = "Run your salon and meet the crews sanitary needs, such as hair cutting, massaging and more!"
+	department_head = list(JOB_HEAD_OF_PERSONNEL)
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
@@ -53,7 +54,6 @@
 	new /obj/item/hairbrush/comb(src)
 	new /obj/item/scissors(src)
 	new /obj/item/fur_dyer(src)
-	new /obj/item/hair_dye(src)
 	new /obj/item/dyespray(src)
 	new /obj/item/storage/box/lipsticks(src)
 	new /obj/item/reagent_containers/spray/quantum_hair_dye(src)

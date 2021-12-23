@@ -1,5 +1,5 @@
 /obj/item/claymore/bone
-	name = "Bone Sword"
+	name = "bone sword"
 	desc = "Jagged pieces of bone are tied to what looks like a goliaths femur."
 	icon = 'modular_skyrat/modules/tribal_extended/icons/items_and_weapons.dmi'
 	lefthand_file = 'modular_skyrat/modules/tribal_extended/icons/swords_lefthand.dmi'
@@ -16,4 +16,4 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb_continuous = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	block_chance = 0
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 100, "acid" = 50)

@@ -3,6 +3,7 @@
 	desc = "Vends things that the Captain and Head of Personnel are probably not going to appreciate you fiddling with instead of your job..."
 	product_ads = "Escape to a fantasy world!;Fuel your gambling addiction!;Ruin your friendships!;Roll for initiative!;Elves and dwarves!;Paranoid computers!;Totally not satanic!;Fun times forever!"
 	icon_state = "games"
+	panel_type = "panel4"
 	//SKYRAT EDIT: Adds Ceramic, Glassblowing, and Fishing Skillchips
 	products = list(
 		/obj/item/storage/crayons = 2,
@@ -33,7 +34,8 @@
 		/obj/item/razor=3,
 		/obj/item/canvas/nineteen_nineteen = 5,
 		/obj/item/canvas/twentythree_nineteen = 5,
-		/obj/item/canvas/twentythree_twentythree = 5
+		/obj/item/canvas/twentythree_twentythree = 5,
+		/obj/item/paint_palette = 3
 	)
 	//SKYRAT EDIT: Adds Ceramic, Glassblowing, and Fishing Skillchips
 	contraband = list(
@@ -43,7 +45,7 @@
 	)
 	premium = list(
 		/obj/item/disk/holodisk = 5,
-		/obj/item/toy/crayon/spraycan  = 3,
+		/obj/item/toy/crayon/spraycan = 3,
 		/obj/item/canvas/twentyfour_twentyfour = 5,
 		/obj/item/rcl = 2,
 		/obj/item/airlock_painter = 1,

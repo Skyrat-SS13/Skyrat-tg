@@ -8,9 +8,9 @@
 	savedslowdown = slowdown
 
 /datum/action/chameleon_slowdown/Trigger()
-	var/obj/item/clothing/T = target
-	var/slow = T.slowdown
-	T.slowdown = savedslowdown
+	var/obj/item/clothing/target_clothing = target
+	var/slow = target_clothing.slowdown
+	target_clothing.slowdown = savedslowdown
 	savedslowdown = slow
 	owner.update_equipment_speed_mods()
 
@@ -25,35 +25,35 @@
 /datum/action/item_action/chameleon/change/update_item(obj/item/picked_item)
 	. = ..()
 	if(istype(target, /obj/item/clothing/))
-		var/obj/item/clothing/T = target
-		var/obj/item/clothing/P = picked_item
-		T.mutant_variants = initial(P.mutant_variants)
-		T.worn_icon_digi = initial(P.worn_icon_digi)
-		T.worn_icon_taur_snake = initial(P.worn_icon_taur_snake)
-		T.worn_icon_taur_paw = initial(P.worn_icon_taur_paw)
-		T.worn_icon_taur_hoof = initial(P.worn_icon_taur_hoof)
-		T.worn_icon_muzzled = initial(P.worn_icon_muzzled)
-		T.flags_inv = initial(P.flags_inv)
-		T.visor_flags_cover = initial(P.visor_flags_cover)
-		T.dynamic_hair_suffix = initial(P.dynamic_hair_suffix)
-		T.dynamic_fhair_suffix = initial(P.dynamic_fhair_suffix)
-		T.slowdown = 0
-		// var/slow = initial(P.slowdown) /// DISABLED UNTIL YOU CAN MAKE THIS WORK WITH THE BROKEN CHAMELEON CLOTHES!!!
+		var/obj/item/clothing/target_clothing = target
+		var/obj/item/clothing/picked_clothing = picked_item
+		target_clothing.mutant_variants = initial(picked_clothing.mutant_variants)
+		target_clothing.worn_icon_digi = initial(picked_clothing.worn_icon_digi)
+		target_clothing.worn_icon_taur_snake = initial(picked_clothing.worn_icon_taur_snake)
+		target_clothing.worn_icon_taur_paw = initial(picked_clothing.worn_icon_taur_paw)
+		target_clothing.worn_icon_taur_hoof = initial(picked_clothing.worn_icon_taur_hoof)
+		target_clothing.worn_icon_muzzled = initial(picked_clothing.worn_icon_muzzled)
+		target_clothing.flags_inv = initial(picked_clothing.flags_inv)
+		target_clothing.visor_flags_cover = initial(picked_clothing.visor_flags_cover)
+		target_clothing.dynamic_hair_suffix = initial(picked_clothing.dynamic_hair_suffix)
+		target_clothing.dynamic_fhair_suffix = initial(picked_clothing.dynamic_fhair_suffix)
+		target_clothing.slowdown = 0
+		// var/slow = initial(picked_clothing.slowdown) /// DISABLED UNTIL YOU CAN MAKE THIS WORK WITH THE BROKEN CHAMELEON CLOTHES!!!
 		// if(slow)
-		// 	slowtoggle = new(T, slow)
+		// 	slowtoggle = new(target_clothing, slow)
 		// 	slowtoggle.Grant(owner)
-		// 	slowtoggle.target = T
+		// 	slowtoggle.target = target_clothing
 		// else if(slowtoggle)
 		// 	qdel(slowtoggle)
 
-/datum/action/item_action/chameleon/change/Grant(mob/M)
+/datum/action/item_action/chameleon/change/Grant(mob/target_mob)
 	. = ..()
-	if(M && (M == owner))
+	if(target_mob && (target_mob == owner))
 		if(slowtoggle)
-			slowtoggle?.Grant(M)
+			slowtoggle?.Grant(target_mob)
 
-/datum/action/item_action/chameleon/change/Remove(mob/M)
+/datum/action/item_action/chameleon/change/Remove(mob/target_mob)
 	. = ..()
-	if(M && (M == owner))
+	if(target_mob && (target_mob == owner))
 		if(slowtoggle)
-			slowtoggle?.Remove(M)
+			slowtoggle?.Remove(target_mob)

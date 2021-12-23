@@ -251,9 +251,6 @@ There are several things that need to be remembered:
 				glasses_overlay.pixel_y += dna.species.offset_features[OFFSET_GLASSES][2]
 			overlays_standing[GLASSES_LAYER] = glasses_overlay
 	apply_overlay(GLASSES_LAYER)
-*/
-//SKYRAT EDIT REMOVAL END
-
 
 /mob/living/carbon/human/update_inv_ears()
 	remove_overlay(EARS_LAYER)
@@ -278,7 +275,8 @@ There are several things that need to be remembered:
 			ears_overlay.pixel_y += dna.species.offset_features[OFFSET_EARS][2]
 		overlays_standing[EARS_LAYER] = ears_overlay
 	apply_overlay(EARS_LAYER)
-
+*/
+//SKYRAT EDIT REMOVAL END
 
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
 /*
@@ -711,6 +709,15 @@ generate/load female uniform sprites matching all previously decided variables
 				eye_overlay.pixel_x += dna.species.offset_features[OFFSET_FACE][1]
 				eye_overlay.pixel_y += dna.species.offset_features[OFFSET_FACE][2]
 			add_overlay(eye_overlay)
+			//SKYRAT EDIT ADDITION
+			if (E && E.is_emissive)
+				var/mutable_appearance/emissive_appearance = emissive_appearance('icons/mob/human_face.dmi', E ? E.eye_icon_state : "eyes_missing", -BODY_LAYER)
+				emissive_appearance.appearance_flags &= ~RESET_TRANSFORM
+				if(OFFSET_FACE in dna.species.offset_features)
+					emissive_appearance.pixel_x += dna.species.offset_features[OFFSET_FACE][1]
+					emissive_appearance.pixel_y += dna.species.offset_features[OFFSET_FACE][2]
+				add_overlay(emissive_appearance)
+			//SKYRAT EDIT END
 
 	dna.species.handle_hair(src)
 

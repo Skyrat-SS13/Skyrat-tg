@@ -133,11 +133,11 @@ var/current_turf
 
 			switch(sprite_type.color_src)
 				if(USE_MATRIXED_COLORS)
-					finished_list += ReadRGB("[get_alpha_padded_color(color_list[1])]")
-					finished_list += ReadRGB("[get_alpha_padded_color(color_list[2])]")
-					finished_list += ReadRGB("[get_alpha_padded_color(color_list[3])]")
+					finished_list += ReadRGB("[color_list[1]]00")
+					finished_list += ReadRGB("[color_list[2]]00")
+					finished_list += ReadRGB("[color_list[3]]00")
 				if(USE_ONE_COLOR)
-					var/padded_string = get_alpha_padded_color(color_list[1])
+					var/padded_string = "[color_list[1]]00"
 					finished_list += ReadRGB(padded_string)
 					finished_list += ReadRGB(padded_string)
 					finished_list += ReadRGB(padded_string)
@@ -210,6 +210,7 @@ var/current_turf
 		return TRUE
 
 /datum/emote/living/mark_turf/proc/turf_owner(mob/living/user)
+	SIGNAL_HANDLER
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 
 	var/obj/owned_turf = user.owned_turf

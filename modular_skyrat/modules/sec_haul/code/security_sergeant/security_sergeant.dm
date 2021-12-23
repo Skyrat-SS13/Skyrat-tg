@@ -1,7 +1,8 @@
 /datum/job/security_sergeant
-	title = "Security Sergeant"
+	title = JOB_SECURITY_SERGEANT
+	description = "Instruct officers on what to do, demand they drop and give you twenty, cry as they refuse your authority over them."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
-	department_head = list("Head of Security")
+	department_head = list(JOB_HEAD_OF_SECURITY)
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
@@ -56,7 +57,7 @@
 
 	suit_store = /obj/item/gun/energy/disabler //SKYRAT EDIT CHANGE - no
 
-	backpack_contents = list(/obj/item/melee/baton/telescopic, /obj/item/armament_token/sidearm)
+	backpack_contents = list(/obj/item/melee/baton/telescopic)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper

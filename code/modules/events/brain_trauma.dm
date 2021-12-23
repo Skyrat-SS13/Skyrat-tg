@@ -2,7 +2,6 @@
 	name = "Spontaneous Brain Trauma"
 	typepath = /datum/round_event/brain_trauma
 	weight = 25
-	max_occurrences = 0 //SKYRAT EDIT CHANGE
 
 /datum/round_event/brain_trauma
 	fakeable = FALSE

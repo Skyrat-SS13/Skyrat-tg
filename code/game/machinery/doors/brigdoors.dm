@@ -49,7 +49,7 @@
 	. = ..()
 
 	Radio = new/obj/item/radio(src)
-	Radio.listening = 0
+	Radio.set_listening(FALSE)
 
 /obj/machinery/door_timer/Initialize(mapload)
 	. = ..()
@@ -134,7 +134,7 @@
 	for(var/datum/weakref/door_ref as anything in doors)
 		var/obj/machinery/door/window/brigdoor/door = door_ref.resolve()
 		if(!door)
-			doors -=  door_ref
+			doors -= door_ref
 			continue
 		if(!door.density)
 			continue

@@ -87,6 +87,10 @@
 	name = "Vox Mange"
 	icon_state = "vox_mange"
 
+/datum/sprite_accessory/hair/vox/ruffhawk
+	name = "Vox Ruffhawk"
+	icon_state = "vox_ruffhawk"
+
 //The facial hairstyles
 /datum/sprite_accessory/facial_hair/vox
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/vox_facial_hair.dmi'
@@ -107,6 +111,10 @@
 /datum/sprite_accessory/facial_hair/vox/vox_neck
 	name = "Vox Neck Quills"
 	icon_state = "facial_vox_neck"
+
+/datum/sprite_accessory/facial_hair/vox/vox_mane
+	name = "Vox Mane"
+	icon_state = "facial_vox_mane"
 
 //The tail
 /datum/sprite_accessory/tails/vox

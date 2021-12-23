@@ -322,7 +322,7 @@
 
 			var/plas = ST_gases[/datum/gas/plasma][MOLES]
 			var/oxy = ST_gases[/datum/gas/oxygen][MOLES]
-			var/n2  = ST_gases[/datum/gas/nitrogen][MOLES]
+			var/n2 = ST_gases[/datum/gas/nitrogen][MOLES]
 			var/co2 = ST_gases[/datum/gas/carbon_dioxide][MOLES]
 
 			ST.air.garbage_collect()
@@ -533,19 +533,6 @@
 		var/turf/target = get_turf(loc)
 		if(target)
 			return new childspawn(target)
-
-/mob/living/simple_animal/stripPanelUnequip(obj/item/what, mob/who, where)
-	if(!canUseTopic(who, BE_CLOSE))
-		return
-	else
-		..()
-
-/mob/living/simple_animal/stripPanelEquip(obj/item/what, mob/who, where)
-	if(!canUseTopic(who, BE_CLOSE))
-		return
-	else
-		..()
-
 
 /mob/living/simple_animal/update_resting()
 	if(resting)

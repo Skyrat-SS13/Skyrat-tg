@@ -1,5 +1,5 @@
 /obj/effect/accelerated_particle
-	name = "Accelerated Particles"
+	name = "accelerated particles"
 	desc = "Small things moving very fast."
 	icon = 'modular_skyrat/modules/singularity_engine/icons/particle_accelerator.dmi'
 	icon_state = "particle"
@@ -62,7 +62,7 @@
 	return
 
 /obj/effect/accelerated_particle/proc/toxmob(mob/living/M)
-	M.rad_act(energy*6)
+	M.adjustToxLoss(energy / 10)
 
 /obj/effect/accelerated_particle/proc/move()
 	if(!step(src,dir))

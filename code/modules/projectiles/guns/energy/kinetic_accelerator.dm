@@ -75,7 +75,7 @@
 		M.modify_projectile(K)
 
 /obj/item/gun/energy/kinetic_accelerator/cyborg
-	icon_state = "kineticgun_b"
+	icon_state = "kineticgun" // SKYRAT EDIT CHANGE
 	holds_charge = TRUE
 	unique_frequency = TRUE
 	max_mod_capacity = 80

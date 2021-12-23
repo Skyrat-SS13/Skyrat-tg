@@ -28,7 +28,7 @@
 
 /obj/item/clothing/neck/kink_collar
 	name = "collar"
-	desc = "A nice, tight collar. It fits perfectly to your skin"
+	desc = "A nice, tight collar. It fits snug to your skin"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "collar_cyan"
@@ -84,7 +84,7 @@
 
 /obj/item/clothing/neck/kink_collar/locked
 	name = "locked collar"
-	desc = "A tight collar. It looks like it has some kind of lock."
+	desc = "A tight collar. It appears to have some kind of lock."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "lock_collar_cyan"

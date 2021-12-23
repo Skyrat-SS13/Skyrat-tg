@@ -17,7 +17,7 @@
 	var/obj/item/our_thing = target
 	var/list/finished_list = list()
 	for(var/read_color in 1 to colors.len)
-		finished_list += ReadRGB(get_alpha_padded_color(colors[read_color]))
+		finished_list += ReadRGB("[colors[read_color]]00")
 	var/remaining_count = 3 - length(colors)
 	if(remaining_count > 0)
 		for(var/remaining_color in 1 to remaining_count)

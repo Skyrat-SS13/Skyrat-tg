@@ -19,7 +19,7 @@
 	volume = 50
 
 /obj/item/reagent_containers/spray/barbers_aid
-	name = "barbers aid"
+	name = "barber's aid"
 	desc = "Causes rapid hair and facial hair growth!"
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "hairaccelerator"
@@ -29,7 +29,7 @@
 	volume = 50
 
 /obj/item/reagent_containers/spray/super_barbers_aid
-	name = "super barbers aid"
+	name = "super barber's aid"
 	desc = "Causes SUPER rapid hair and facial hair growth!"
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "hairaccelerator"

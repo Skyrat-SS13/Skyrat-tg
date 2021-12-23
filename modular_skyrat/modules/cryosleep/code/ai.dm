@@ -9,15 +9,15 @@
 		if("Yes.")
 			src.ghostize(FALSE)
 			var/announce_rank = "Artificial Intelligence,"
-			if(GLOB.announcement_systems.len) 
+			if(GLOB.announcement_systems.len)
 				// Sends an announcement the AI has cryoed.
 				var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
 				announcer.announce("CRYOSTORAGE", src.real_name, announce_rank, list())
 			new /obj/structure/ai_core/latejoin_inactive(loc)
 			if(src.mind)
 				//Handle job slot/tater cleanup.
-				if(src.mind.assigned_role == "AI")
-					SSjob.FreeRole("AI")
+				if(src.mind.assigned_role == JOB_AI)
+					SSjob.FreeRole(JOB_AI)
 			src.mind.special_role = null
 			qdel(src)
 		else

@@ -74,7 +74,6 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 /datum/loadout_item/shoes/greyscale_sneakers
 	name = "Greyscale Sneakers"
 	item_path = /obj/item/clothing/shoes/sneakers
-	can_be_greyscale = TRUE
 
 /datum/loadout_item/shoes/black_sneakers
 	name = "Black Sneakers"
@@ -164,6 +163,12 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 /datum/loadout_item/shoes/dominaheels
 	name = "Dominant heels"
 	item_path = /obj/item/clothing/shoes/dominaheels
+
+// Job Restricted
+/datum/loadout_item/shoes/jester
+	name = "Jester shoes"
+	item_path = /obj/item/clothing/shoes/clown_shoes/jester
+	restricted_roles = list(JOB_CLOWN)
 
 //Families Gear
 /datum/loadout_item/shoes/deckers

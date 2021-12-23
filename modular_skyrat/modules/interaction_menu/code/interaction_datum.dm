@@ -255,3 +255,12 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		interaction.lewd = sanitize_integer(ijson["lewd"], 0, 1, 0)
 
 		GLOB.interaction_instances[iname] = interaction
+
+/client/proc/reload_interactions()
+	set category = "Debug"
+	set name = "Reload Interactions"
+	set desc = "Force reload interactions"
+	if(!check_rights(R_DEBUG))
+		return
+
+	populate_interaction_instances()

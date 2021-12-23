@@ -176,23 +176,29 @@
 		to_chat(src,span_userdanger("ERROR: Model installer reply timeout. Please check internal connections."))
 		return
 
-	// SKYRAT EDIT START - Making the cyborg model list static to reduce how many times it's generated.
-	if(length(GLOB.cyborg_model_list) == 0)
-		GLOB.cyborg_model_list = list("Engineering" = /obj/item/robot_model/engineering, \
-		"Medical" = /obj/item/robot_model/medical, \
-		"Cargo" = /obj/item/robot_model/cargo, /* SKYRAT EDIT - CARGOBORG */\
-		"Miner" = /obj/item/robot_model/miner, \
-		"Janitor" = /obj/item/robot_model/janitor, \
-		"Service" = /obj/item/robot_model/service)
-		if(!CONFIG_GET(flag/disable_peaceborg))
-			GLOB.cyborg_model_list["Peacekeeper"] = /obj/item/robot_model/peacekeeper
-		if(!CONFIG_GET(flag/disable_secborg))
-			GLOB.cyborg_model_list["Security"] = /obj/item/robot_model/security
-		for(var/model in GLOB.cyborg_model_list)
-			// Creating the lists here since we know all the model icons will need them right after.
-			GLOB.cyborg_all_models_icon_list[model] = list()
+	var/list/model_list = list(
+		"Engineering" = /obj/item/robot_model/engineering,
+		"Medical" = /obj/item/robot_model/medical,
+		"Cargo" = /obj/item/robot_model/cargo, /* SKYRAT EDIT - CARGOBORG */
+		"Miner" = /obj/item/robot_model/miner,
+		"Janitor" = /obj/item/robot_model/janitor,
+		"Service" = /obj/item/robot_model/service,
+	)
+	if(!CONFIG_GET(flag/disable_peaceborg))
+		model_list["Peacekeeper"] = /obj/item/robot_model/peacekeeper
+	/* SKYRAT EDIT: DISABLED SECURITY CYBORG FOR TECHWEB SETUP
+	if(!CONFIG_GET(flag/disable_secborg))
+		model_list["Security"] = /obj/item/robot_model/security
+	*/
+	// SKYRAT EDIT ADDITION: Techweb locked cyborg modules
+	for(var/i in SSresearch.science_tech.researched_designs)
+		var/datum/design/cyborg_module/D = SSresearch.techweb_design_by_id(i)
+		if(!istype(D))
+			continue
+		if(D.unlocked_module_name == "Security" && CONFIG_GET(flag/disable_secborg))
+			continue
+		model_list[D.unlocked_module_name] = D.unlocked_module_path
 	// SKYRAT EDIT END
-
 	// Create radial menu for choosing borg model
 	// SKYRAT EDIT START - Making the model icons list static to reduce how many times it's generated.
 	if(length(GLOB.cyborg_base_models_icon_list) == 0)
@@ -374,6 +380,7 @@
 	message_admins(span_notice("[ADMIN_LOOKUPFLW(usr)] detonated [key_name_admin(src, client)] at [ADMIN_VERBOSEJMP(groundzero)]!"))
 	log_game("[key_name(usr)] detonated [key_name(src)]!")
 	log_combat(usr, src, "detonated cyborg")
+	log_silicon("CYBORG: [key_name(src)] has been detonated by [key_name(usr)].")
 	if(connected_ai)
 		to_chat(connected_ai, "<br><br>[span_alert("ALERT - Cyborg detonation detected: [name]")]<br>")
 
@@ -389,6 +396,7 @@
 	lawupdate = FALSE
 	set_lockcharge(FALSE)
 	scrambledcodes = TRUE
+	log_silicon("CYBORG: [key_name(src)] has been unlinked from an AI.")
 	//Disconnect it's camera so it's not so easily tracked.
 	if(!QDELETED(builtInCamera))
 		QDEL_NULL(builtInCamera)
@@ -499,6 +507,8 @@
 
 /mob/living/silicon/robot/proc/deconstruct()
 	SEND_SIGNAL(src, COMSIG_BORG_SAFE_DECONSTRUCT)
+	if(shell)
+		undeploy()
 	var/turf/T = get_turf(src)
 	if (robot_suit)
 		robot_suit.forceMove(T)
@@ -545,15 +555,15 @@
 	if(!connected_ai)
 		return
 	switch(notifytype)
-		if(NEW_BORG) //New Cyborg
+		if(AI_NOTIFICATION_NEW_BORG) //New Cyborg
 			to_chat(connected_ai, "<br><br>[span_notice("NOTICE - New cyborg connection detected: <a href='?src=[REF(connected_ai)];track=[html_encode(name)]'>[name]</a>")]<br>")
-		if(NEW_MODEL) //New Model
+		if(AI_NOTIFICATION_NEW_MODEL) //New Model
 			to_chat(connected_ai, "<br><br>[span_notice("NOTICE - Cyborg model change detected: [name] has loaded the [designation] model.")]<br>")
-		if(RENAME) //New Name
+		if(AI_NOTIFICATION_CYBORG_RENAMED) //New Name
 			to_chat(connected_ai, "<br><br>[span_notice("NOTICE - Cyborg reclassification detected: [oldname] is now designated as [newname].")]<br>")
-		if(AI_SHELL) //New Shell
+		if(AI_NOTIFICATION_AI_SHELL) //New Shell
 			to_chat(connected_ai, "<br><br>[span_notice("NOTICE - New cyborg shell detected: <a href='?src=[REF(connected_ai)];track=[html_encode(name)]'>[name]</a>")]<br>")
-		if(DISCONNECT) //Tampering with the wires
+		if(AI_NOTIFICATION_CYBORG_DISCONNECTED) //Tampering with the wires
 			to_chat(connected_ai, "<br><br>[span_notice("NOTICE - Remote telemetry lost with [name].")]<br>")
 
 /mob/living/silicon/robot/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE, need_hands = FALSE, floor_okay=FALSE)
@@ -668,7 +678,7 @@
 			builtInCamera.toggle_cam(src,0)
 		if(admin_revive)
 			locked = TRUE
-		notify_ai(NEW_BORG)
+		notify_ai(AI_NOTIFICATION_NEW_BORG)
 		. = TRUE
 		toggle_headlamp(FALSE, TRUE) //This will reenable borg headlamps if doomsday is currently going on still.
 
@@ -677,7 +687,7 @@
 	. = ..()
 	if(!.)
 		return
-	notify_ai(RENAME, oldname, newname)
+	notify_ai(AI_NOTIFICATION_CYBORG_RENAMED, oldname, newname)
 	if(!QDELETED(builtInCamera))
 		builtInCamera.c_tag = real_name
 	custom_name = newname
@@ -703,6 +713,7 @@
 	hasAffection = FALSE //Just so they can get the affection modules back if they want them.
 	//SKYRAT EDIT ADDITION END
 	logevent("Chassis model has been reset.")
+	log_silicon("CYBORG: [key_name(src)] has reset their cyborg model.")
 	model.transform_to(/obj/item/robot_model)
 
 	// Remove upgrades.

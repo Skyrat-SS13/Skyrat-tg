@@ -56,11 +56,7 @@
 	var/on_hit_state = P.on_hit(src, armor, piercing_hit)
 	if(!P.nodamage && on_hit_state != BULLET_ACT_BLOCK)
 		apply_damage(P.damage, P.damage_type, def_zone, armor, wound_bonus=P.wound_bonus, bare_wound_bonus=P.bare_wound_bonus, sharpness = P.sharpness)
-		//SKYRAT EDIT ADDITION BEGIN
-		if(P.damage_type == BRUTE || P.damage_type == BURN)
-			apply_damage((P.damage*PROJECTILE_TISSUE_DAMAGE_STAMINA_MULTIPLIER), STAMINA, def_zone, armor)
-		//SKYRAT EDIT ADDITION END
-		apply_effects(P.stun, P.knockdown, P.unconscious, P.irradiate, P.slur, P.stutter, P.eyeblur, P.drowsy, armor, P.stamina, P.jitter, P.paralyze, P.immobilize)
+		apply_effects(P.stun, P.knockdown, P.unconscious, P.slur, P.stutter, P.eyeblur, P.drowsy, armor, P.stamina, P.jitter, P.paralyze, P.immobilize)
 		if(P.dismemberment)
 			check_projectile_dismemberment(P, def_zone)
 	return on_hit_state ? BULLET_ACT_HIT : BULLET_ACT_BLOCK
@@ -81,6 +77,7 @@
 		return
 	. = combat_mode
 	combat_mode = new_mode
+	SEND_SIGNAL(src, COMSIG_LIVING_COMBAT_MODE_TOGGLE, new_mode) //SKYRAT EDIT ADDITION
 	if(hud_used?.action_intent)
 		hud_used.action_intent.update_appearance()
 	//SKYRAT EDIT ADDITION BEGIN
@@ -91,11 +88,12 @@
 				G.toggle_safety(src, "off")
 			else
 				G.toggle_safety(src, "on")
-	if(!ishuman(src))
+	if(!ishuman(src) && !ckey)
 		if(combat_mode)
 			set_combat_indicator(TRUE)
 		else
 			set_combat_indicator(FALSE)
+	face_mouse = (client?.prefs?.read_preference(/datum/preference/toggle/face_cursor_combat_mode) && combat_mode) ? TRUE : FALSE
 	//SKYRAT EDIT ADDITION END
 
 	if(silent || !(client?.prefs.toggles & SOUND_COMBATMODE))
@@ -350,7 +348,7 @@
 	return FALSE
 
 /mob/living/attack_alien(mob/living/carbon/alien/humanoid/user, list/modifiers)
-	SEND_SIGNAL(src, COMSIG_MOB_ATTACK_ALIEN, user)
+	SEND_SIGNAL(src, COMSIG_MOB_ATTACK_ALIEN, user, modifiers)
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		user.do_attack_animation(src, ATTACK_EFFECT_DISARM)
 		return TRUE
@@ -377,8 +375,6 @@
 	if(origin && istype(origin, /datum/spacevine_mutation) && isvineimmune(src))
 		return FALSE
 	return ..()
-
-//Looking for irradiate()? It's been moved to radiation.dm under the rad_act() for mobs.
 
 /mob/living/acid_act(acidpwr, acid_volume)
 	take_bodypart_damage(acidpwr * min(1, acid_volume * 0.1))

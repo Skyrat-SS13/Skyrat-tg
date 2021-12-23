@@ -77,11 +77,6 @@
 	icon_file = 'icons/mob/clothing/under/color.dmi'
 	json_config = 'code/datums/greyscale/json_configs/jumpsuit_worn.json'
 
-/datum/greyscale_config/jumpsuit_worn_digi
-	name = "Worn Jumpsuit - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/color_gags_digi.dmi'
-	json_config = 'code/datums/greyscale/json_configs/jumpsuit_worn.json'
-
 /datum/greyscale_config/jumpsuit_inhand_left
 	name = "Held Jumpsuit, Left"
 	icon_file = 'icons/mob/inhands/clothing_lefthand.dmi'
@@ -102,11 +97,6 @@
 	icon_file = 'icons/mob/clothing/under/color.dmi'
 	json_config = 'code/datums/greyscale/json_configs/jumpsuit_prison_worn.json'
 
-/datum/greyscale_config/jumpsuit_prison_worn_digi
-	name = "Worn Prison Jumpsuit - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/color_gags_digi.dmi'
-	json_config = 'code/datums/greyscale/json_configs/jumpsuit_prison_worn.json'
-
 /datum/greyscale_config/jumpsuit_prison_inhand_left
 	name = "Held Prison Jumpsuit, Left"
 	icon_file = 'icons/mob/inhands/clothing_lefthand.dmi'
@@ -125,7 +115,7 @@
 /datum/greyscale_config/pda/chaplain
 	name = "Chaplain PDA"
 	json_config = 'code/datums/greyscale/json_configs/pda_chaplain.json'
-	
+
 /datum/greyscale_config/pda/captain
 	name = "Captain PDA"
 	json_config = 'code/datums/greyscale/json_configs/pda_captain.json'
@@ -164,11 +154,6 @@
 	icon_file = 'icons/mob/clothing/feet.dmi'
 	json_config = 'code/datums/greyscale/json_configs/sneakers_worn.json'
 
-/datum/greyscale_config/sneakers_worn_digi
-	name = "Worn Sneakers - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/feet_gags_digi.dmi'
-	json_config = 'code/datums/greyscale/json_configs/sneakers_worn.json'
-
 /datum/greyscale_config/sneakers_orange
 	name = "Orange Sneakers"
 	icon_file = 'icons/obj/clothing/shoes.dmi'
@@ -177,11 +162,6 @@
 /datum/greyscale_config/sneakers_orange_worn
 	name = "Worn Orange Sneakers"
 	icon_file = 'icons/mob/clothing/feet.dmi'
-	json_config = 'code/datums/greyscale/json_configs/sneakers_orange_worn.json'
-
-/datum/greyscale_config/sneakers_orange_worn_digi
-	name = "Worn Orange Sneakers - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/feet_gags_digi.dmi'
 	json_config = 'code/datums/greyscale/json_configs/sneakers_orange_worn.json'
 
 /datum/greyscale_config/sneakers_wheelys
@@ -414,6 +394,26 @@
 
 /datum/greyscale_config/janicart_upgrade/installed
 	json_config = 'code/datums/greyscale/json_configs/janicart_upgrade_installed.json'
+
+/datum/greyscale_config/bench_middle
+	name = "Bench Middle"
+	icon_file = 'icons/obj/sofa.dmi'
+	json_config = 'code/datums/greyscale/json_configs/bench_middle.json'
+
+/datum/greyscale_config/bench_left
+	name = "Bench Left"
+	icon_file = 'icons/obj/sofa.dmi'
+	json_config = 'code/datums/greyscale/json_configs/bench_left.json'
+
+/datum/greyscale_config/bench_right
+	name = "Bench Right"
+	icon_file = 'icons/obj/sofa.dmi'
+	json_config = 'code/datums/greyscale/json_configs/bench_right.json'
+
+/datum/greyscale_config/bench_corner
+	name = "Bench Corner"
+	icon_file = 'icons/obj/sofa.dmi'
+	json_config = 'code/datums/greyscale/json_configs/bench_corner.json'
 
 /datum/greyscale_config/ctf_standard
 	name = "CTF Standard Vest"

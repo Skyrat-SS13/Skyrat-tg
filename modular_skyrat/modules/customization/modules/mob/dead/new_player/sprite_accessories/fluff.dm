@@ -12,7 +12,7 @@
 	icon_state = "none"
 
 /datum/sprite_accessory/fluff/moth/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
+	if((H.head && (H.head.flags_inv & HIDEHAIR)) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)))
 		return TRUE
 	return FALSE
 
@@ -107,3 +107,7 @@
 	name = "Snow (Top)"
 	icon_state = "fsnow"
 
+/datum/sprite_accessory/fluff/moth/snowdual
+	name = "Snow (Dual-Color)"
+	icon_state = "snowdual"
+	color_src = USE_MATRIXED_COLORS
