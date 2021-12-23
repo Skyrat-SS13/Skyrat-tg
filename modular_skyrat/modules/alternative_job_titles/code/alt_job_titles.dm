@@ -115,7 +115,7 @@
 	alt_titles = list("Psychologist", "Psychiatrist", "Therapist", "Counsellor")
 
 /datum/job/quartermaster
-	alt_titles = list("Quartermaster", "Deck Chief", "Cargo Foreman", "Head of Cargo", "Chief Transport Officer")
+	alt_titles = list("Quartermaster", "Deck Chief", "Cargo Foreman", "Head of Cargo", "Chief Requisition Officer")
 
 /datum/job/research_director
 	alt_titles = list("Research Director", "Silicon Administrator", "Lead Researcher", "Biorobotics Director", "Research Supervisor", "Chief Science Officer")
