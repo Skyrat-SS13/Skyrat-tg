@@ -2115,6 +2115,14 @@
 			//We inline a MAPTEXT() here, because there's no good way to statically add to a string like this
 			active_hud.screentip_text.maptext = "<span class='maptext' style='text-align: center; font-size: 32px; color: [active_hud.screentip_color]'>[name]</span>"
 
+	///SKYRAT EDIT ADDITION BEGIN
+	// Face directions on combat mode. No procs, no typechecks, just a var for speed
+	var/mob/user_mob = usr
+	if(user_mob.face_mouse)
+		user_mob.face_atom(src)
+	///SKYRAT EDIT ADDITION END
+
+
 /// Gets a merger datum representing the connected blob of objects in the allowed_types argument
 /atom/proc/GetMergeGroup(id, list/allowed_types)
 	RETURN_TYPE(/datum/merger)

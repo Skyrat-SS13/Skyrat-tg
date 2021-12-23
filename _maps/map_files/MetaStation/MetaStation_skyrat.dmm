@@ -1312,14 +1312,13 @@
 /area/ai_monitored/security/armory)
 "akF" = (
 /obj/structure/rack,
-/obj/item/storage/box/flashes{
-	pixel_x = 3
+/obj/item/storage/barricade{
+	pixel_y = -5
 	},
-/obj/item/storage/box/teargas{
-	pixel_x = 1;
-	pixel_y = -2
+/obj/item/storage/barricade,
+/obj/item/storage/barricade{
+	pixel_y = 5
 	},
-/obj/item/gun/grenadelauncher,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "akM" = (
@@ -18683,9 +18682,16 @@
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
 "eoL" = (
-/obj/structure/rack/gunrack,
 /obj/effect/turf_decal/delivery/red,
-/obj/item/gun/ballistic/automatic/croon,
+/obj/structure/rack,
+/obj/item/storage/box/teargas{
+	pixel_x = 1;
+	pixel_y = -2
+	},
+/obj/item/storage/box/flashes{
+	pixel_x = 3
+	},
+/obj/item/gun/grenadelauncher,
 /turf/open/floor/iron/smooth,
 /area/ai_monitored/security/armory)
 "eoW" = (
@@ -20688,7 +20694,6 @@
 /area/commons/dorms)
 "eVz" = (
 /obj/structure/extinguisher_cabinet/directional/south,
-/obj/machinery/deepfryer,
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -20697,6 +20702,7 @@
 /obj/effect/turf_decal/trimline/brown/warning{
 	dir = 9
 	},
+/obj/machinery/oven,
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
 "eVB" = (
@@ -23954,7 +23960,7 @@
 /turf/open/floor/iron,
 /area/security/prison)
 "ggm" = (
-/obj/machinery/oven,
+/obj/machinery/griddle,
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
 "ggE" = (

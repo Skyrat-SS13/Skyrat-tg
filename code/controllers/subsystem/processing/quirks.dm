@@ -26,6 +26,9 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Clown Enjoyer","Mime Fan"),
 		list("Bad Touch", "Friendly"),
 		list("Extrovert", "Introvert"),
+		//SKYRAT EDIT ADDITION BEGIN
+		list("Nerve Stapled", "Pacifist", "Nearsighted")
+		//SKYRAT EDIT ADDITION END
 	)
 
 /datum/controller/subsystem/processing/quirks/Initialize(timeofday)
