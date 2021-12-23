@@ -1,5 +1,3 @@
-//THIS FILE WAS EDITED BY SKYRAT EDIT
-
 /**
  * Delete a mob
  *
@@ -38,8 +36,7 @@
 	for (var/alert in alerts)
 		clear_alert(alert, TRUE)
 	if(observers?.len)
-		for(var/M in observers)
-			var/mob/dead/observe = M
+		for(var/mob/dead/observe as anything in observers)
 			observe.reset_perspective(null)
 	qdel(hud_used)
 	QDEL_LIST(client_colours)
@@ -111,7 +108,7 @@
 			if(HUD_LIST_LIST)
 				hud_list[hud] = list()
 			else
-				var/image/I = image('modular_skyrat/master_files/icons/mob/huds/hud.dmi', src, "")	//SKYRAT EDIT: original filepath 'icons/mob/huds/hud.dmi'
+				var/image/I = image('icons/mob/huds/hud.dmi', src, "")
 				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
 				hud_list[hud] = I
 
@@ -190,9 +187,8 @@
  * * blind_message (optional) is what blind people will hear e.g. "You hear something!"
  * * vision_distance (optional) define how many tiles away the message can be seen.
  * * ignored_mob (optional) doesn't show any message to a given mob if TRUE.
- * * separation (otional) is what goes between the name of the person and the message, defaults to " ". SKYRAT ADDITION
  */
-/atom/proc/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE, separation = " ") // SKYRAT EDIT ADDITION - Better emotes
+/atom/proc/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE, separation = " ") // SKYRAT EDIT ADDITION - SEPERATION
 	var/turf/T = get_turf(src)
 	if(!T)
 		return
@@ -246,7 +242,6 @@
  * * message is the message output to anyone who can hear.
  * * deaf_message (optional) is what deaf people will see.
  * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
- * * separation (otional) is what goes between the name of the person and the message, defaults to " ". SKYRAT ADDITION
  */
 /atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE, separation = " ") // SKYRAT EDIT ADDITION - Better emotes
 	var/list/hearers = get_hearers_in_view(hearing_distance, src)
@@ -254,7 +249,7 @@
 		hearers -= src
 	var/raw_msg = message
 	if(audible_message_flags & EMOTE_MESSAGE)
-		message = "<span class='emote'><b>[src]</b>[separation][message]</span>" // SKYRAT EDIT - Better emotes
+		message = "<span class='emote'><b>[src]</b>[separation][message]</span>" //SKYRAT EDIT CHANGE
 	for(var/mob/M in hearers)
 		if(audible_message_flags & EMOTE_MESSAGE && runechat_prefs_check(M, audible_message_flags) && M.can_hear())
 			M.create_chat_message(src, raw_message = raw_msg, runechat_flags = audible_message_flags)
@@ -381,8 +376,7 @@
  *
  * returns 0 if it cannot, 1 if successful
  */
-///mob/proc/equip_to_appropriate_slot(obj/item/W, qdel_on_fail = FALSE) (original) SKYRAT EDIT CHANGE - CUSTOMIZATION
-/mob/proc/equip_to_appropriate_slot(obj/item/W, qdel_on_fail = FALSE, blacklist, initial)
+/mob/proc/equip_to_appropriate_slot(obj/item/W, qdel_on_fail = FALSE)
 	if(!istype(W))
 		return FALSE
 	var/slot_priority = W.slot_equipment_priority
@@ -398,16 +392,9 @@
 			ITEM_SLOT_LPOCKET, ITEM_SLOT_RPOCKET,\
 			ITEM_SLOT_DEX_STORAGE\
 		)
-	//SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
-	/*
+
 	for(var/slot in slot_priority)
 		if(equip_to_slot_if_possible(W, slot, FALSE, TRUE, TRUE, FALSE, FALSE)) //qdel_on_fail = FALSE; disable_warning = TRUE; redraw_mob = TRUE;
-	*/
-	if (blacklist)
-		slot_priority -= blacklist
-	for(var/slot in slot_priority)
-		if(equip_to_slot_if_possible(W, slot, FALSE, TRUE, TRUE, FALSE, initial)) //qdel_on_fail = FALSE; disable_warning = TRUE; redraw_mob = TRUE;
-	//SKYRAT EDIT CHANGE END
 			return TRUE
 
 	if(qdel_on_fail)
@@ -416,39 +403,43 @@
 /**
  * Reset the attached clients perspective (viewpoint)
  *
- * reset_perspective() set eye to common default : mob on turf, loc otherwise
+ * reset_perspective(null) set eye to common default : mob on turf, loc otherwise
  * reset_perspective(thing) set the eye to the thing (if it's equal to current default reset to mob perspective)
  */
-/mob/proc/reset_perspective(atom/A)
-	if(client)
-		if(A)
-			if(ismovable(A))
-				//Set the the thing unless it's us
-				if(A != src)
-					client.perspective = EYE_PERSPECTIVE
-					client.eye = A
-				else
-					client.eye = client.mob
-					client.perspective = MOB_PERSPECTIVE
-			else if(isturf(A))
-				//Set to the turf unless it's our current turf
-				if(A != loc)
-					client.perspective = EYE_PERSPECTIVE
-					client.eye = A
-				else
-					client.eye = client.mob
-					client.perspective = MOB_PERSPECTIVE
+/mob/proc/reset_perspective(atom/new_eye)
+	SEND_SIGNAL(src, COMSIG_MOB_RESET_PERSPECTIVE)
+	if(!client)
+		return
+
+	if(new_eye)
+		if(ismovable(new_eye))
+			//Set the new eye unless it's us
+			if(new_eye != src)
+				client.perspective = EYE_PERSPECTIVE
+				client.eye = new_eye
 			else
-				//Do nothing
-		else
-			//Reset to common defaults: mob if on turf, otherwise current loc
-			if(isturf(loc))
 				client.eye = client.mob
 				client.perspective = MOB_PERSPECTIVE
-			else
+
+		else if(isturf(new_eye))
+			//Set to the turf unless it's our current turf
+			if(new_eye != loc)
 				client.perspective = EYE_PERSPECTIVE
-				client.eye = loc
-		return 1
+				client.eye = new_eye
+			else
+				client.eye = client.mob
+				client.perspective = MOB_PERSPECTIVE
+		else
+			return TRUE //no setting eye to stupid things like areas or whatever
+	else
+		//Reset to common defaults: mob if on turf, otherwise current loc
+		if(isturf(loc))
+			client.eye = client.mob
+			client.perspective = MOB_PERSPECTIVE
+		else
+			client.perspective = EYE_PERSPECTIVE
+			client.eye = loc
+	return TRUE
 
 /**
  * Examine a mob
@@ -486,14 +477,7 @@
 	else
 		result = examinify.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
 
-	//SKYRAT EDIT ADDITION
-	if(result.len)
-		for(var/i = 1, i <= result.len, i++)
-			if(!findtext(result[i], "<hr>"))
-				result[i] += "\n"
-	//SKYRAT EDIT END
-
-	to_chat(src, "<div class='examine_block'><span class='infoplain'>[result.Join()]</span></div>") //SKYRAT EDIT CHANGE
+	to_chat(src, "<span class='infoplain'>[result.Join("\n")]</span>")
 	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, examinify)
 
 
@@ -704,12 +688,6 @@
 		to_chat(usr, span_boldnotice("You must be dead to use this!"))
 		return
 
-	//SKYRAT EDIT ADDITION
-	if(ckey)
-		if(is_banned_from(ckey, BAN_RESPAWN))
-			to_chat(usr, "<span class='boldnotice'>You are respawn banned, you can't respawn!</span>")
-			return
-	//SKYRAT EDIT END
 	log_game("[key_name(usr)] used the respawn button.")
 
 	to_chat(usr, span_boldnotice("Please roleplay correctly!"))
@@ -1338,13 +1316,11 @@
 	SIGNAL_HANDLER
 	set_active_storage(null)
 
-///Clears the client in contents list of our current "eye". Prevents hard deletes
+///clears the client mob in our client_mobs_in_contents list
 /mob/proc/clear_client_in_contents()
-	if(client?.movingmob) //In the case the client was transferred to another mob and not deleted.
-		client.movingmob.client_mobs_in_contents -= src
-		UNSETEMPTY(client.movingmob.client_mobs_in_contents)
+	if(client?.movingmob)
+		LAZYREMOVE(client.movingmob.client_mobs_in_contents, src)
 		client.movingmob = null
-
 
 ///Shows a tgui window with memories
 /mob/verb/memory()

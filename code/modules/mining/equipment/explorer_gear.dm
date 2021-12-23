@@ -46,6 +46,9 @@
 	armor = list(MELEE = 10, BULLET = 5, LASER = 5, ENERGY = 5, BOMB = 0, BIO = 50, FIRE = 20, ACID = 40, WOUND = 5)
 	resistance_flags = FIRE_PROOF
 
+/obj/item/clothing/mask/gas/explorer/init_fov()
+	return
+
 /obj/item/clothing/mask/gas/explorer/attack_self(mob/user)
 	adjustmask(user)
 

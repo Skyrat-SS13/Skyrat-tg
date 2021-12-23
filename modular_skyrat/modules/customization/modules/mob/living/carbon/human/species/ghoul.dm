@@ -3,9 +3,8 @@
 	id = SPECIES_GHOUL
 	limbs_id = "ghoul"
 	say_mod = "rasps"
-	sexes = FALSE
 	default_color = "#c4af7c"
-	species_traits = list(NOEYESPRITES, DYNCOLORS,HAS_FLESH, HAS_BONE, HAIR, FACEHAIR)
+	species_traits = list(NOEYESPRITES, DYNCOLORS, HAS_FLESH, HAS_BONE, HAIR, FACEHAIR)
 	can_have_genitals = FALSE //WHY WOULD YOU WANT TO FUCK ONE OF THESE THINGS?
 	mutant_bodyparts = list("ghoulcolor" = "Tan Necrotic")
 	default_mutant_bodyparts = list(

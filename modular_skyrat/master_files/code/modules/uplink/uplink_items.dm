@@ -29,7 +29,7 @@
 	name = "Unica Six Revolver"
 	desc = "A retro high-powered autorevolver typically used by officers of the New Russia military. Uses .357 ammo."
 	item = /obj/item/gun/ballistic/revolver/mateba
-	cost = 11
+	cost = 13
 	surplus = 50
 
 /datum/uplink_item/dangerous/holocarp
@@ -129,7 +129,7 @@
 	to tell these are the real deal. Box of 7."
 	item = /obj/item/storage/box/syndieshotglasses
 	cost = 2 //These are taken nearly exactly from Goon, very fun tool.
-	restricted_roles = list("Bartender")
+	restricted_roles = list(JOB_BARTENDER)
 
 //EXPLOSIVES
 /datum/uplink_item/explosives/buzzkill_traitor
@@ -311,7 +311,7 @@
 	desc = "Recovered from an abandoned Nar'sie cult lair, two construct shells and a stash of empty soulstones was found. These were purified to prevent occult contamination and have been put in a belt so they may be used as an accessible source of disposable minions. The construct shells have been packaged into two beacons for rapid and portable deployment."
 	item = /obj/item/storage/box/syndie_kit/cultkitsr
 	cost = 15 //If used correctly, You actually get several servants or just get fucked over because no ghosts want to be a shade.
-	restricted_roles = list("Chaplain")
+	restricted_roles = list(JOB_CHAPLAIN)
 
 //LOADOUTS
 
