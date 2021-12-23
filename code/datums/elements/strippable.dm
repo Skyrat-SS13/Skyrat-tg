@@ -151,7 +151,9 @@
 	if (isnull(item))
 		return FALSE
 
-<<<<<<< HEAD
+	if (HAS_TRAIT(item, TRAIT_NO_STRIP))
+		return FALSE
+
 	//SKYRAT EDIT CHANGE START - THIEVING GLOVES
 	var/is_silent = can_be_silent && HAS_TRAIT(user, TRAIT_STICKY_FINGERS)
 	if (!is_silent)
@@ -161,16 +163,6 @@
 			ignored_mobs = user,
 		)
 	//SKYRAT EDIT CHANGE END
-=======
-	if (HAS_TRAIT(item, TRAIT_NO_STRIP))
-		return FALSE
-
-	source.visible_message(
-		span_warning("[user] tries to remove [source]'s [item.name]."),
-		span_userdanger("[user] tries to remove your [item.name]."),
-		ignored_mobs = user,
-	)
->>>>>>> 1d341459802 (Void cloak (and other items intended to be invisible) can longer be seen and unequipped in the strip menu (#63484))
 
 	to_chat(user, span_danger("You try to remove [source]'s [item]..."))
 	user.log_message("[key_name(source)] is being stripped of [item] by [key_name(user)]", LOG_ATTACK, color="red")
