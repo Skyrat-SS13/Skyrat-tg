@@ -103,7 +103,7 @@
 	alt_titles = list("Nanotrasen Representative", "Nanotrasen Diplomat", "Central Command Representative")
 
 /datum/job/orderly
-	alt_titles = list("Orderly", "Medical Guard") //ward assistant is a real term, but confusion etc etc, originally was medical attendant as well, but goof request
+	alt_titles = list("Orderly", "Medical Guard") //goof requested that alt dept guards titles be kept to [department] guard
 
 /datum/job/paramedic
 	alt_titles = list("Paramedic", "Emergency Medical Technician", "Search and Rescue Technician")
