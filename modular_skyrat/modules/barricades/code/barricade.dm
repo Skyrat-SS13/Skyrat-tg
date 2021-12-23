@@ -355,7 +355,7 @@
 			to_chat(user, span_warning("[src] cannot be folded up with upgrades attached, remove them first!"))
 			return FALSE
 		if(get_integrity() < max_integrity)
-			to_chat(user, span_warning("[src] cannot be folded up whle damaged!"))
+			to_chat(user, span_warning("[src] cannot be folded up while damaged!"))
 			return FALSE
 		user.visible_message(span_notice("[user] starts folding [src] up!"), span_notice("You start folding [src] up!"))
 		if(do_after(user, 5 SECONDS, src))
@@ -368,7 +368,7 @@
 				to_chat(user, span_warning("[src] cannot be folded up with upgrades attached, remove them first!"))
 				return FALSE
 			if(get_integrity() < max_integrity)
-				to_chat(user, span_warning("[src] cannot be folded up whle damaged!"))
+				to_chat(user, span_warning("[src] cannot be folded up while damaged!"))
 				return FALSE
 			user.visible_message(span_notice("[user] folds [src] up!"), span_notice("You neatly fold [src] up!"))
 			playsound(src, 'sound/items/ratchet.ogg', 25, TRUE)
