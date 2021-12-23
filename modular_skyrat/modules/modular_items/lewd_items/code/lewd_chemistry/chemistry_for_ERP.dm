@@ -44,7 +44,7 @@
 	var/penis_girth_reduction_step = 2
 
 	/// Largest size the chem can make a mob's breasts
-	var/max_breast_size = 21
+	var/max_breast_size = 25
 	/// How much breasts are increased in size each time it's run
 	var/breast_size_increase_step = 1
 	/// Smallest size the chem can make a mob's breasts
@@ -270,7 +270,7 @@
 	name = "succubus milk"
 	description = "A volatile collodial mixture derived from milk that encourages mammary production via a potent estrogen mix."
 	color = "#E60584" // rgb: 96, 0, 255
-	taste_description = "a milky ice cream like flavour."
+	taste_description = "a milky ice cream like flavour" /// Edited so it doesn't trail off and act strangely with other taste descriptions.
 	overdose_threshold = 20
 	metabolization_rate = 0.25
 	life_pref_datum = /datum/preference/toggle/erp/breast_enlargement
@@ -279,6 +279,9 @@
 /datum/reagent/drug/aphrodisiac/breast_enlarger/life_effects(mob/living/carbon/human/exposed_mob) //Increases breast size
 	var/obj/item/organ/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
 	enlargement_amount += enlarger_increase_step
+	/// Adds a check for breasts in the first place. I HATE ERRORS.
+	if(!mob_breasts)
+		return
 	if(enlargement_amount >= enlargement_threshold)
 		if(mob_breasts?.genital_size >= max_breast_size)
 			return
@@ -351,17 +354,42 @@
 /datum/reagent/drug/aphrodisiac/breast_enlarger/overdose_effects(mob/living/carbon/human/exposed_mob) //Turns you into a female if character is male. Also supposed to add breasts but enlargement_amount'm too dumb to figure out how to make it work
 	var/obj/item/organ/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
 	var/obj/item/organ/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+	/// Makes above comment actually work.
+	if(!exposed_mob.getorganslot(ORGAN_SLOT_BREASTS))
+		var/obj/item/organ/path = /obj/item/organ/genital/breasts
+		exposed_mob.dna.mutant_bodyparts["breasts"][MUTANT_INDEX_NAME] = "Pair"
+		path = new /obj/item/organ/genital/breasts
+		path.build_from_dna(exposed_mob.dna, "breasts")
+		path.Insert(exposed_mob, 0, FALSE)
+		var/obj/item/organ/genital/new_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
+		new_breasts.genital_size = 2
+		new_breasts.update_sprite_suffix()
+		exposed_mob.update_body()
+		enlargement_amount = 0
+		if(new_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_topless())
+			exposed_mob.visible_message(span_notice("[exposed_mob]'s bust suddenly expands!"))
+			to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it expands outward."))
+			return
+		else
+			exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s chest suddenly bounces a bit."))
+			to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it strains against your clothes."))
+			return
+
 	if(exposed_mob.gender == MALE)
 		exposed_mob.set_gender(FEMALE)
 		exposed_mob.body_type = exposed_mob.gender
 		exposed_mob.update_body()
 		exposed_mob.update_mutations_overlay()
-
+	if(!mob_penis)
+		return
 	if(mob_penis.genital_size > penis_min_length && mob_penis.girth > penis_minimum_girth)
 		mob_penis.genital_size -= penis_size_reduction_step
 		mob_penis.girth -= penis_girth_reduction_step
-
-	mob_testicles.genital_size = 1
+	if (!mob_testicles)
+		return
+	if (mob_testicles.genital_size <= 1)
+		return
+	mob_testicles.genital_size -= 1
 
 /*
 * PENIS ENLARGEMENT
@@ -383,6 +411,9 @@
 /datum/reagent/drug/aphrodisiac/penis_enlarger/life_effects(mob/living/carbon/human/exposed_mob)
 	var/obj/item/organ/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
 	enlargement_amount += enlarger_increase_step
+	/// Add yet another check because I hate errors!!
+	if(!mob_penis)
+		return
 	if(enlargement_amount >= enlargement_threshold)
 		if(mob_penis?.genital_size >= penis_max_length || mob_penis?.girth >= penis_max_girth)
 			return ..()
@@ -392,8 +423,35 @@
 		mob_penis.update_sprite_suffix()
 		exposed_mob.update_body()
 		enlargement_amount = 0
+		/// Words for the cock when huge.
+		var/list/words_for_bigger_cock = list("huge", "massive", "gigantic", "rather lengthy", "colossal", "hefty")
+		/// Synonyms for cock.
+		var/list/cock_text_list = list("cock", "penis", "dick", "member")
+		/// Synonyms for bigger cock.
+		var/list/bigger_cock_text_list = list("rod", "shaft", "cock", "penis", "dick", "member")
+		/// Wording chosen to extend the cock, shown only to the mob.
+		var/list/cock_action_text_list = list("extends to ", "grows out to ", "begins to enlarge, growing to ", "suddenly expands to ", "lengthens out to ")
+		/// Wording chosen to be seen by other mobs, while mob is unclothed.
+		var/list/public_cock_action_text_list = list("expands by an inch or so.", "appears to grow a bit longer.", "seems a bit bigger than it was before.", "suddenly lengthens about an inch or two.")
 
-	if(ISINRANGE_EX(mob_penis?.genital_size, (penis_max_length - 2), penis_max_length) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
+		if(mob_penis.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_bottomless())
+			if (mob_penis?.genital_size >= (penis_max_length - 2))
+				exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(public_cock_action_text_list)]"))
+				to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long."))
+				return
+			else
+				exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(cock_text_list)] [pick(public_cock_action_text_list)]"))
+				to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long."))
+				return
+		else
+			if (mob_penis?.genital_size >= (penis_max_length - 2))
+				to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long."))
+				return
+			else
+				to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long."))
+				return
+
+	if((mob_penis?.genital_size >= (penis_max_length - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
 		var/target_bodypart = exposed_mob.get_bodypart(BODY_ZONE_PRECISE_GROIN)
 		if(prob(damage_chance))
 			to_chat(exposed_mob, span_danger("You feel a tightness in your pants!"))
@@ -402,13 +460,57 @@
 	return ..()
 
 /datum/reagent/drug/aphrodisiac/penis_enlarger/overdose_effects(mob/living/carbon/human/exposed_mob)
-	var/obj/item/organ/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
 	if(exposed_mob.gender == FEMALE)
 		exposed_mob.set_gender(MALE)
 		exposed_mob.body_type = exposed_mob.gender
 		exposed_mob.update_body()
 		exposed_mob.update_mutations_overlay()
-
+	if (!exposed_mob.getorganslot(ORGAN_SLOT_PENIS))
+		///Check if human. If not do messy code. (This only supports lizards and human penises (for now))
+		exposed_mob.dna.features["penis_sheath"] = SHEATH_NONE
+		exposed_mob.dna.mutant_bodyparts["penis"][MUTANT_INDEX_NAME] = "Human"
+		if ((exposed_mob.dna.species.id == SPECIES_HUMAN) || (exposed_mob.dna.species.id != SPECIES_LIZARD) || (exposed_mob.dna.species.id != SPECIES_LIZARD_ASH))
+			exposed_mob.dna.features["penis_sheath"] = SHEATH_NONE
+			exposed_mob.dna.mutant_bodyparts["penis"][MUTANT_INDEX_NAME] = "Human"
+			if (!exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES))
+				exposed_mob.dna.mutant_bodyparts["testicles"][MUTANT_INDEX_NAME] = "Pair"
+				var/obj/item/organ/ballspath = /obj/item/organ/genital/testicles
+				ballspath = new /obj/item/organ/genital/testicles
+				ballspath.build_from_dna(exposed_mob.dna, "testicles")
+				ballspath.Insert(exposed_mob, 0, FALSE)
+				var/obj/item/organ/genital/new_balls = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+				new_balls.genital_size = 1
+				new_balls.update_sprite_suffix()
+		if ((exposed_mob.dna.species.id == SPECIES_LIZARD) || (exposed_mob.dna.species.id == SPECIES_LIZARD_ASH))
+			exposed_mob.dna.features["penis_sheath"] = SHEATH_MODES
+			exposed_mob.dna.mutant_bodyparts["penis"][MUTANT_INDEX_NAME] = "Flared"
+			if (!exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES))
+				exposed_mob.dna.mutant_bodyparts["testicles"][MUTANT_INDEX_NAME] = "Internal"
+				var/obj/item/organ/ballspath = /obj/item/organ/genital/testicles
+				ballspath = new /obj/item/organ/genital/testicles
+				ballspath.build_from_dna(exposed_mob.dna, "testicles")
+				ballspath.Insert(exposed_mob, 0, FALSE)
+				var/obj/item/organ/genital/new_balls = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+				new_balls.genital_size = 1
+				new_balls.update_sprite_suffix()
+		var/obj/item/organ/cockpath = /obj/item/organ/genital/penis
+		cockpath = new /obj/item/organ/genital/penis
+		cockpath.build_from_dna(exposed_mob.dna, "penis")
+		cockpath.Insert(exposed_mob, 0, FALSE)
+		var/obj/item/organ/genital/new_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
+		new_penis.genital_size = 4
+		new_penis.update_sprite_suffix()
+		exposed_mob.update_body()
+		to_chat(exposed_mob, span_purple("Your crotch suddenly feels warm as something sprouts between your legs."))
+	///Makes the balls bigger if they're small.
+	var/obj/item/organ/genital/penis/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+	if (mob_testicles)
+		if (mob_testicles.genital_size > 2)
+			return
+		mob_testicles.genital_size = 2
+	var/obj/item/organ/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
+	if(!mob_breasts)
+		return
 	if(mob_breasts.genital_size > breast_minimum_size)
 		mob_breasts.genital_size -= breast_size_reduction_step
 
