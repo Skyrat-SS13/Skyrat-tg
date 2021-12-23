@@ -72,11 +72,6 @@
 	config_job = "nanotrasen_representative"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CHANGE_IDS)
 
-/datum/id_trim/job/captain/shuttle_pilot
-	assignment = "Shuttle Pilot"
-	trim_state = "trim_shuttlepilot"
-	config_job = "shuttle pilot"
-
 /datum/id_trim/job/security_medic
 	assignment = "Security Medic"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
@@ -119,7 +114,7 @@
 	trim_state = "trim_juniorofficer"
 	extra_access = list()
 	minimal_access = list(ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_MECH_SECURITY, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM,
-				ACCESS_MAINT_TUNNELS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP, ACCESS_SECURITY_RECORDS)
+				ACCESS_MAINT_TUNNELS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
 
 	config_job = "junior_officer"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOS, ACCESS_CHANGE_IDS)

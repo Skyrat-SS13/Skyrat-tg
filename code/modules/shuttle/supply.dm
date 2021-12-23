@@ -225,6 +225,10 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 	for(var/place in shuttle_areas)
 		var/area/shuttle/shuttle_area = place
 		for(var/atom/movable/AM in shuttle_area)
+			//SKYRAT EDIT ADDITION - cant sell stuff in the cockpit, even if its out of order (dont sell out of my emergency locker...)
+			if(istype(place, /area/shuttle/supply/cockpit))
+				continue
+			//SKYRAT EDIT ADDITION END
 			if(iscameramob(AM))
 				continue
 			if(!AM.anchored)

@@ -1,17 +1,17 @@
 /datum/dynamic_ruleset/roundstart/traitor
-	protected_roles = list("Prisoner", "Blueshield", "Corrections Officer", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Head of Security", "Captain", "Nanotrasen Representative", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster", "Vanguard Operative")
+	protected_roles = list(JOB_PRISONER, JOB_BLUESHIELD, JOB_CORRECTIONS_OFFICER, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_SECURITY_SERGEANT, JOB_CIVIL_DISPUTES_OFFICER, JOB_HEAD_OF_SECURITY, JOB_CAPTAIN, JOB_NT_REP, JOB_HEAD_OF_PERSONNEL, JOB_CHIEF_ENGINEER, JOB_CHIEF_MEDICAL_OFFICER, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_VANGUARD_OPERATIVE)
 
 /datum/dynamic_ruleset/roundstart/traitorbro
-	protected_roles = list("Prisoner", "Blueshield", "Corrections Officer", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Head of Security", "Captain", "Nanotrasen Representative", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster", "Vanguard Operative")
+	protected_roles = list(JOB_PRISONER, JOB_BLUESHIELD, JOB_CORRECTIONS_OFFICER, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_SECURITY_SERGEANT, JOB_CIVIL_DISPUTES_OFFICER, JOB_HEAD_OF_SECURITY, JOB_CAPTAIN, JOB_NT_REP, JOB_HEAD_OF_PERSONNEL, JOB_CHIEF_ENGINEER, JOB_CHIEF_MEDICAL_OFFICER, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_VANGUARD_OPERATIVE)
 
 /datum/dynamic_ruleset/roundstart/changeling
-	protected_roles = list("Prisoner", "Blueshield", "Corrections Officer", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Head of Security", "Captain", "Nanotrasen Representative", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster", "Vanguard Operative")
+	protected_roles = list(JOB_PRISONER, JOB_BLUESHIELD, JOB_CORRECTIONS_OFFICER, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_SECURITY_SERGEANT, JOB_CIVIL_DISPUTES_OFFICER, JOB_HEAD_OF_SECURITY, JOB_CAPTAIN, JOB_NT_REP, JOB_HEAD_OF_PERSONNEL, JOB_CHIEF_ENGINEER, JOB_CHIEF_MEDICAL_OFFICER, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_VANGUARD_OPERATIVE)
 
 /datum/dynamic_ruleset/roundstart/heretics
-	protected_roles = list("Prisoner", "Blueshield", "Corrections Officer", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Head of Security", "Captain", "Nanotrasen Representative", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster", "Vanguard Operative")
+	protected_roles = list(JOB_PRISONER, JOB_BLUESHIELD, JOB_CORRECTIONS_OFFICER, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_SECURITY_SERGEANT, JOB_CIVIL_DISPUTES_OFFICER, JOB_HEAD_OF_SECURITY, JOB_CAPTAIN, JOB_NT_REP, JOB_HEAD_OF_PERSONNEL, JOB_CHIEF_ENGINEER, JOB_CHIEF_MEDICAL_OFFICER, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_VANGUARD_OPERATIVE)
 
 /datum/dynamic_ruleset/midround/autotraitor
-	protected_roles = list("Prisoner", "Blueshield", "Corrections Officer", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Head of Security", "Captain", "Nanotrasen Representative", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster", "Vanguard Operative")
+	protected_roles = list(JOB_PRISONER, JOB_BLUESHIELD, JOB_CORRECTIONS_OFFICER, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_SECURITY_SERGEANT, JOB_CIVIL_DISPUTES_OFFICER, JOB_HEAD_OF_SECURITY, JOB_CAPTAIN, JOB_NT_REP, JOB_HEAD_OF_PERSONNEL, JOB_CHIEF_ENGINEER, JOB_CHIEF_MEDICAL_OFFICER, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_VANGUARD_OPERATIVE)
 
 /datum/dynamic_ruleset/latejoin/infiltrator
-	protected_roles = list("Prisoner", "Blueshield", "Corrections Officer", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Head of Security", "Captain", "Nanotrasen Representative", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster", "Vanguard Operative")
+	protected_roles = list(JOB_PRISONER, JOB_BLUESHIELD, JOB_CORRECTIONS_OFFICER, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_SECURITY_SERGEANT, JOB_CIVIL_DISPUTES_OFFICER, JOB_HEAD_OF_SECURITY, JOB_CAPTAIN, JOB_NT_REP, JOB_HEAD_OF_PERSONNEL, JOB_CHIEF_ENGINEER, JOB_CHIEF_MEDICAL_OFFICER, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_VANGUARD_OPERATIVE)

@@ -1,6 +1,7 @@
 /datum/job/nanotrasen_representative
-	title = "Nanotrasen Representative"
-	department_head = list("Central Command")
+	title = JOB_NT_REP
+	description = "Represent Nanotrasen on the station, argue with the HoS about why he can't just field execute people for petty theft, get drunk in your office."
+	department_head = list(JOB_CENTCOM)
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
@@ -11,6 +12,8 @@
 	exp_required_type = EXP_TYPE_CREW
 	exp_required_type_department = EXP_TYPE_COMMAND
 	exp_granted_type = EXP_TYPE_CREW
+
+	department_for_prefs = /datum/job_department/captain
 
 	departments_list = list(
 		/datum/job_department/command,
@@ -91,7 +94,7 @@
 
 /obj/effect/landmark/start/nanotrasen_representative
 	name = "Nanotrasen Representative"
-	icon_state = "Captain"
+	icon_state = JOB_CAPTAIN
 
 /obj/item/clothing/accessory/medal/gold/nanotrasen_representative
 	name = "medal of diplomacy"

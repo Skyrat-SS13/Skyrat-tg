@@ -77,26 +77,27 @@
 	name = "Slaver Ship"
 	who_can_purchase = null
 
-/obj/effect/mob_spawn/human/guild/slaver
+/obj/effect/mob_spawn/ghost_role/human/guild
+	name = "Privateer Slaver"
+	prompt_name = "a privateer slaver"
+	you_are_text = "You're here to capture valuable hostages to sell into slavery."
+	flavour_text = "You're part of a privateer crew that sometimes takes contracts from the illusive Guild, which offers bounties and contracts to independent crews. Raiding colonies of the many less technologically advanced species in the area is much easier than this. You've been told that your mission is to capture as many valuable hostages from the station as possible. Your anonymous employer insists on the importance of humiliating SolFed by snatching those under their protection from right under their noses."
+	important_text = ""
+
+/obj/effect/mob_spawn/ghost_role/human/guild/slaver
 	name = "Privateer Slaver"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
-	short_desc = "You're here to capture valuable hostages to sell into slavery."
-	flavour_text = "You're part of a privateer crew that sometimes takes contracts from the illusive Guild, which offers bounties and contracts to independent crews. Raiding colonies of the many less technologically advanced species in the area is much easier than this. You've been told that your mission is to capture as many valuable hostages from the station as possible. Your anonymous employer insists on the importance of humiliating SolFed by snatching those under their protection from right under their noses."
-	important_info = ""
 	outfit = /datum/outfit/guild/slaver
-	excluded_gamemodes = list()
 	can_use_alias = TRUE
-	death = FALSE
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/guild/slaver/captain
+/obj/effect/mob_spawn/ghost_role/human/guild/slaver/captain
 	name = "Privateer Slaver Captain"
-	short_desc = "You lead a small team focused on capturing hostages."
+	you_are_text = "You lead a small team focused on capturing hostages."
 	flavour_text = "You're the captain of a privateer crew that sometimes takes contracts from the illusive Guild, which offers bounties and contracts to independent crews, like yours! Lead your crew to infiltrate the station and capture hostages and hold them till the station's emergency shuttle leaves. The higher ranking the hostages, the more you'll get paid out. You're free to (and encouraged to) beat and humiliate, but not kill. Your anonymous employer wants your victims as their personel slaves. They mentioned something about propaganda? Ah, who knows with the Guild... All sorts of types posts these bounties."
-	important_info = "You are expected to roleplay heavily and lead effectively in this role."
+	important_text = "You are expected to roleplay heavily and lead effectively in this role."
 	outfit = /datum/outfit/guild/slaver/captain
-	excluded_gamemodes = list()
 
 /obj/item/radio/headset/guild
 	keyslot = new /obj/item/encryptionkey/headset_guild
