@@ -109,6 +109,32 @@
 		8 = 380
 	)
 
+/obj/item/tape/ruins/tarkon/safe	//A tape recorded by the foreman.
+	icon_state = "tape_greyscale"
+	desc = "An old tape with a label, \"Exchange with the Science Leader\"... Should definitely be flipped if not being read when played."
+
+	used_capacity = 380
+	storedinfo = list(
+		1 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording started.</span>\"</span></span>",
+		2 = "<span class='game say'><span class='name'>Foreman ???</span> <span class='message'>sighs, \"<span class=' '>Right... Scientist Arkus?</span>\"</span></span>",
+		3 = "<span class='game say'><span class='name'>Scientist Arkus</span> <span class='message'>says, \"<span class=' '>Ah, Foreman Verok... Come, We already got a spot chosen, a rather safe one to keep it..</span>\"</span></span>",
+		4 = "<span class='game say'><span class='name'>Foreman Verok</span> <span class='message'>grumbles, \"<span class=' '>... Wait, Right next to that egg... Thing?</span>\"</span></span>",
+		5 = "<span class='game say'><span class='name'>Scientist Arkus</span> <span class='message'>sniffles, \"<span class=' '>... Is there a problem? Its been dormant ever since we've been here, If it was going to come alive it would have done so while putting the tiling down. Besides... I got lunch to attend...</span>\"</span></span>",
+		6 = "<span class='game say'><span class='name'>Foreman Verok</span> <span class='message'>groans, \"<span class=' '>Right... Right I'll.. Get to work on it then... Just keep an ear out...</span>\"</span></span>",
+		7 = "<span class='game say'><span class='name'>Foreman Verok</span> <span class='message'>grumbles, \"<span class=' '>Right... Calm down, Verok... Place the floor safe, scoot the tile back in place... And afterwards grab some money from the one by the financing console under the table... I dont think Tavus will notice an extra few credits missing...</span>\"</span></span>",
+		8 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording stopped.</span>\"</span></span>"
+	)
+	timestamp = list(
+		1 = 0,
+		2 = 30,
+		3 = 130,
+		4 = 180,
+		5 = 230,
+		6 = 250,
+		7 = 330,
+		8 = 380
+	)
+
 /* ----------------- Fluff/Paper ----------------- */
 
 /obj/item/paper/fluff/ruins/tarkon
