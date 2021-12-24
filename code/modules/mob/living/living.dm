@@ -49,17 +49,13 @@
 	return ..()
 
 /mob/living/proc/ZImpactDamage(turf/T, levels)
-<<<<<<< HEAD
+	if(SEND_SIGNAL(src, COMSIG_LIVING_Z_IMPACT, levels, T) & NO_Z_IMPACT_DAMAGE)
+		return
 	//SKYRAT EDIT ADDITION
-	SEND_SIGNAL(T, COMSIG_TURF_MOB_FALL, src)
 	if(T.liquids && T.liquids.liquid_state >= LIQUID_STATE_WAIST)
 		Knockdown(20)
 		return
 	//SKYRAT EDIT END
-=======
-	if(SEND_SIGNAL(src, COMSIG_LIVING_Z_IMPACT, levels, T) & NO_Z_IMPACT_DAMAGE)
-		return
->>>>>>> 7b38dd4ff76 (MODsuits (#59109))
 	visible_message(span_danger("[src] crashes into [T] with a sickening noise!"), \
 					span_userdanger("You crash into [T] with a sickening noise!"))
 	adjustBruteLoss((levels * 5) ** 1.5)

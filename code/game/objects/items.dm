@@ -1277,7 +1277,6 @@ attack_basic_mob
 	if(SEND_SIGNAL(src, COMSIG_ITEM_OFFER_TAKEN, offerer, taker) & COMPONENT_OFFER_INTERRUPT)
 		return TRUE
 
-<<<<<<< HEAD
 /// SKYRAT EDIT ADDITION START
 /obj/item/reskin_obj(mob/M)
 	if(!uses_advanced_reskins)
@@ -1312,8 +1311,7 @@ attack_basic_mob
 		wearer.regenerate_icons() // update that mf
 	to_chat(M, "[src] is now skinned as '[pick].'")
 /// SKYRAT EDIT ADDITION END
-=======
+
 /// Special stuff you want to do when an outfit equips this item.
 /obj/item/proc/on_outfit_equip(mob/living/carbon/human/outfit_wearer, visuals_only, item_slot)
 	return
->>>>>>> 7b38dd4ff76 (MODsuits (#59109))

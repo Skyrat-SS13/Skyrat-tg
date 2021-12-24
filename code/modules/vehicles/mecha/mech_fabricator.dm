@@ -60,13 +60,9 @@
 								"Cybernetics",
 								"Implants",
 								"Control Interfaces",
-<<<<<<< HEAD
-								"Power Armor",
-=======
 								"MOD Construction",
 								"MOD Modules",
->>>>>>> 7b38dd4ff76 (MODsuits (#59109))
-								"Misc"
+								"Misc",
 								)
 //SKYRAT EDIT STOP: POWER ARMOR
 /obj/machinery/mecha_part_fabricator/Initialize(mapload)

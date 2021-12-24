@@ -971,7 +971,6 @@
 	build_path = /obj/item/assembly/flash/handheld
 	category = list("Misc")
 
-<<<<<<< HEAD
 /datum/design/maint_drone
 	name = "Maintenance Drone"
 	desc = "\"Repairs the station without bothering you!\" is what the marketing says."
@@ -981,7 +980,7 @@
 	construction_time = 150
 	build_path = /obj/effect/mob_spawn/ghost_role/drone
 	category = list("Control Interfaces")
-=======
+
 //MODsuit stuff
 
 /datum/design/mod_shell
@@ -1314,4 +1313,3 @@
 	id = "mod_plasma"
 	materials = list(/datum/material/plasma = 1000, /datum/material/glass = 1000)
 	build_path = /obj/item/mod/module/plasma_stabilizer
->>>>>>> 7b38dd4ff76 (MODsuits (#59109))

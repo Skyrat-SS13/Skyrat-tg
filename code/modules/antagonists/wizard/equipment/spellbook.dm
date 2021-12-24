@@ -349,20 +349,12 @@
 	var/atom/spawned_path = new item_path(get_turf(user))
 	log_spellbook("[key_name(user)] bought [src] for [cost] points")
 	SSblackbox.record_feedback("tally", "wizard_spell_learned", 1, name)
-<<<<<<< HEAD
-	return TRUE
-//SKYRAT EDIT REMOVAL BEGIN
-/*
-=======
 	return spawned_path
 
->>>>>>> 7b38dd4ff76 (MODsuits (#59109))
 /datum/spellbook_entry/item/staffchange
 	name = "Staff of Change"
 	desc = "An artefact that spits bolts of coruscating energy which cause the target's very form to reshape itself."
 	item_path = /obj/item/gun/magic/staff/change
-*/
-//SKYRAT EDIT REMOVAL END
 
 /datum/spellbook_entry/item/staffanimation
 	name = "Staff of Animation"
