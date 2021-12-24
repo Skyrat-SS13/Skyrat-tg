@@ -92,7 +92,7 @@
 	new /obj/item/knife/combat/survival(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/loadout/metaops/PopulateContents()
-	new /obj/item/clothing/suit/space/hardsuit/syndi(src)
+	new /obj/item/mod/control/pre_equipped/traitor(src)
 	new /obj/item/gun/ballistic/shotgun/bulldog/unrestricted(src)
 	new /obj/item/implanter/explosive(src)
 	new /obj/item/ammo_box/magazine/m12g(src)
@@ -131,6 +131,13 @@
 	new /obj/item/card/id/advanced/chameleon(src)
 	new /obj/item/clothing/shoes/chameleon/noslip(src)
 	new /obj/item/book/granter/spell/summonitem(src)
+
+/obj/item/storage/box/syndie_kit/loadout/hunter/PopulateContents()
+	new /obj/item/gun/ballistic/rifle/boltaction/harpoon(src)
+	new /obj/item/storage/bag/harpoon_quiver(src)
+	new /obj/item/clothing/suit/hooded/carp_costume/spaceproof(src)
+	new /obj/item/clothing/mask/gas/carp(src)
+	new /obj/item/grenade/spawnergrenade/spesscarp(src)
 
 /obj/item/storage/box/syndie_kit/loadout/bee/PopulateContents()
 	new /obj/item/clothing/suit/hooded/bee_costume(src)

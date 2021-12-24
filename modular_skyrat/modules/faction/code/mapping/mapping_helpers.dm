@@ -182,14 +182,13 @@
 			for(var/i in 1 to 2)
 				new /obj/item/ammo_box/magazine/stg(src)
 
-		if(4) //Hardsuits
-			new /obj/item/clothing/suit/space/hardsuit/mining(src)
-			new /obj/item/clothing/suit/space/hardsuit/engine(src)
-			new /obj/item/clothing/suit/space/hardsuit/engine/atmos(src)
-			new /obj/item/clothing/suit/space/hardsuit/rd(src)
-			new /obj/item/clothing/suit/space/hardsuit/syndi/elite(src)
-			new /obj/item/clothing/suit/space/hardsuit/syndi(src)
-			new /obj/item/clothing/suit/space/hardsuit/swat(src)
+		if(4) //MODsuits
+			new /obj/item/mod/control/pre_equipped/mining(src)
+			new /obj/item/mod/control/pre_equipped/engineering(src)
+			new /obj/item/mod/control/pre_equipped/atmospheric(src)
+			new /obj/item/mod/control/pre_equipped/research(src)
+			new /obj/item/mod/control/pre_equipped/traitor(src)
+			new /obj/item/mod/control/pre_equipped/elite(src)
 		if(5) //Implants
 			new /obj/item/storage/box/cyber_implants(src)
 			new /obj/item/organ/cyberimp/arm/combat(src)

@@ -72,13 +72,13 @@
                     /obj/item/storage/box/medipens)
 	crate_name = "medipen crate"
 
-/datum/supply_pack/medical/hardsuit_medical
-	name = "Medical Hardsuit Crate"
-	desc = "Contains a single hardsuit, built to standard medical specifications."
+/datum/supply_pack/medical/modsuit_medical
+	name = "Medical MODsuit Crate"
+	desc = "Contains a single MODsuit, built to standard medical specifications."
 	cost = CARGO_CRATE_VALUE * 13
 	access = ACCESS_MEDICAL
-	contains = list(/obj/item/clothing/suit/space/hardsuit/medical)
-	crate_name = "medical hardsuit crate"
+	contains = list(/obj/item/mod/control/pre_equipped/medical)
+	crate_name = "medical MODsuit crate"
 	crate_type = /obj/structure/closet/crate/secure //No medical varient with security locks.
 
 /datum/supply_pack/medical/compact_defib
@@ -111,13 +111,13 @@
 //////////////////////////// Security ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-/datum/supply_pack/security/hardsuit_security
-	name = "Security Hardsuit Crate"
-	desc = "Contains a single armored up hardsuit, built to standard security specifications."
+/datum/supply_pack/security/MODsuit_security
+	name = "Security MODsuit Crate"
+	desc = "Contains a single armored up MODsuit, built to standard security specifications."
 	cost = CARGO_CRATE_VALUE * 16
 	access_view = ACCESS_SECURITY
-	contains = list(/obj/item/clothing/suit/space/hardsuit/security)
-	crate_name = "security hardsuit crate"
+	contains = list(/obj/item/mod/control/pre_equipped/security)
+	crate_name = "security MODsuit crate"
 
 /datum/supply_pack/security/croonsurplus
 	name = "Croon Weapons Crate"
@@ -190,17 +190,6 @@
 	crate_name = "industrial RCD crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
 
-/* Removed pending rebalance
-/datum/supply_pack/engineering/experimental_rcd
-	name = "Experimental RCD Crate"
-	desc = "Contains a single highly advanced RCD, capable of projecting its improved construction nanites at an increased range."
-	access = ACCESS_CE
-	access_view = ACCESS_ENGINE_EQUIP
-	contains = list(/obj/item/construction/rcd/arcd)
-	cost = CARGO_CRATE_VALUE * 50
-	crate_name = "experimental RCD crate"
-*/
-
 /datum/supply_pack/engineering/material_pouches
 	name = "Material Pouches Crate"
 	desc = "Contains three material pouches."
@@ -234,20 +223,20 @@
 
 /datum/supply_pack/engineering/modsuit_engineering
 	name = "Engineering MODSUIT Crate"
-	desc = "Contains a single hardsuit, built to standard engineering specifications."
+	desc = "Contains a single MODSUIT, built to standard engineering specifications."
 	access = ACCESS_ENGINE_EQUIP
 	contains = list(/obj/item/mod/control/pre_equipped/engineering)
 	cost = CARGO_CRATE_VALUE * 13
-	crate_name = "engineering hardsuit crate"
+	crate_name = "engineering MODSUIT crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
 
 /datum/supply_pack/engineering/modsuit_atmospherics
 	name = "Atmospherics MODSUIT Crate"
-	desc = "Contains a single hardsuit, built to standard atmospherics suit specifications."
+	desc = "Contains a single MODSUIT, built to standard atmospherics specifications."
 	access = ACCESS_ENGINE_EQUIP
 	contains = list(/obj/item/mod/control/pre_equipped/atmospheric)
 	cost = CARGO_CRATE_VALUE * 16
-	crate_name = "atmospherics hardsuit crate"
+	crate_name = "atmospherics MODSUIT crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
 
 /datum/supply_pack/engineering/engi_inducers

@@ -151,7 +151,6 @@
 /obj/structure/closet/crate/secure/exp_corps/field_medic/PopulateContents()
 	new /obj/item/storage/firstaid/expeditionary(src)
 	new /obj/item/storage/box/expeditionary_survival(src)
-	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
 	new /obj/item/radio(src)
 	new /obj/item/clothing/gloves/color/latex/nitrile/expeditionary_corps(src)
 	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
