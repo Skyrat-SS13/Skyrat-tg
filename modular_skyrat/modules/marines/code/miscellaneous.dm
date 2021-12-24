@@ -3,7 +3,7 @@
 
 /obj/item/storage/backpack/ert/marine
 	name = "marine backpack"
-	desc = "A spacious backpack with lots of pockets and a magnetic latching mechanism to attach to whatever gear one might wear. In this case, preferrably a marine hardsuit."
+	desc = "A spacious backpack with lots of pockets and a magnetic latching mechanism to attach to whatever gear one might wear."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
 	icon_state = "marine"

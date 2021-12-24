@@ -72,13 +72,13 @@
                     /obj/item/storage/box/medipens)
 	crate_name = "medipen crate"
 
-/datum/supply_pack/medical/hardsuit_medical
-	name = "Medical Hardsuit Crate"
-	desc = "Contains a single hardsuit, built to standard medical specifications."
+/datum/supply_pack/medical/modsuit_medical
+	name = "Medical MODsuit Crate"
+	desc = "Contains a single MODsuit, built to standard medical specifications."
 	cost = CARGO_CRATE_VALUE * 13
 	access = ACCESS_MEDICAL
-	contains = list(/obj/item/clothing/suit/space/hardsuit/medical)
-	crate_name = "medical hardsuit crate"
+	contains = list(/obj/item/mod/control/pre_equipped/medical)
+	crate_name = "medical MODsuit crate"
 	crate_type = /obj/structure/closet/crate/secure //No medical varient with security locks.
 
 /datum/supply_pack/medical/compact_defib
@@ -111,13 +111,13 @@
 //////////////////////////// Security ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-/datum/supply_pack/security/hardsuit_security
-	name = "Security Hardsuit Crate"
-	desc = "Contains a single armored up hardsuit, built to standard security specifications."
+/datum/supply_pack/security/MODsuit_security
+	name = "Security MODsuit Crate"
+	desc = "Contains a single armored up MODsuit, built to standard security specifications."
 	cost = CARGO_CRATE_VALUE * 16
 	access_view = ACCESS_SECURITY
-	contains = list(/obj/item/clothing/suit/space/hardsuit/security)
-	crate_name = "security hardsuit crate"
+	contains = list(/obj/item/mod/control/pre_equipped/security)
+	crate_name = "security MODsuit crate"
 
 /datum/supply_pack/security/croonsurplus
 	name = "Croon Weapons Crate"

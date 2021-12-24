@@ -21,7 +21,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
 	worn_icon_state = "ert_odst"
 	name = "odst backpack"
-	desc = "A modified backpack that attaches via magnetic harness onto the ODST hardsuit, removing the need for straps."
+	desc = "A modified backpack that attaches via magnetic harness, removing the need for straps."
 	inhand_icon_state = "securitypack"
 	w_class = WEIGHT_CLASS_BULKY
 
@@ -29,7 +29,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 	name = "commando chest rig"
-	desc = "A tactical plate carrier, modularized for use with the ODST hardsuit."
+	desc = "A tactical plate carrier."
 	icon_state = "ert_odst"
 	worn_icon_state = "ert_odst"
 	inhand_icon_state = "utility"

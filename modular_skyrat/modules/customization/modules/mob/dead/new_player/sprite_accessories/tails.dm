@@ -8,11 +8,11 @@
 	special_colorize = TRUE
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
-	/// A generalisation of the tail-type, e.g. lizard or feline, for hardsuit or other sprites
+	/// A generalisation of the tail-type, e.g. lizard or feline, for MODsuit or other sprites
 	var/general_type
 
 /datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/H)
-	// Hardsuit tail spriting
+	// MODsuit tail spriting
 	if(general_type && H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/armor/mod))
 		var/obj/item/clothing/suit/armor/mod/modsuit_chest = H.wear_suit
 		var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
@@ -27,7 +27,7 @@
 
 /datum/sprite_accessory/tails/get_special_icon(mob/living/carbon/human/H, passed_state)
 	var/returned = icon
-	if(passed_state == "[general_type]_hardsuit") //Guarantees we're wearing a hardsuit, skip checks
+	if(passed_state == "[general_type]_hardsuit") //Guarantees we're wearing a MODsuit, skip checks
 		var/obj/item/clothing/suit/armor/mod/modsuit_chest = H.wear_suit
 		var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
 		if(modsuit_control.modsuit_tail_colors)
@@ -35,7 +35,7 @@
 	return returned
 
 /datum/sprite_accessory/tails/get_special_render_colour(mob/living/carbon/human/H, passed_state)
-	if(passed_state == "[general_type]_hardsuit") //Guarantees we're wearing a hardsuit, skip checks
+	if(passed_state == "[general_type]_hardsuit") //Guarantees we're wearing a MODsuit, skip checks
 		var/obj/item/clothing/suit/armor/mod/modsuit_chest = H.wear_suit
 		var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
 		if(modsuit_control.modsuit_tail_colors)
