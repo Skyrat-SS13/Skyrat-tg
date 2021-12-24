@@ -385,9 +385,9 @@
 	if(mob_penis.genital_size > penis_min_length && mob_penis.girth > penis_minimum_girth)
 		mob_penis.genital_size -= penis_size_reduction_step
 		mob_penis.girth -= penis_girth_reduction_step
-	if (!mob_testicles)
+	if(!mob_testicles)
 		return
-	if (mob_testicles.genital_size <= 1)
+	if(mob_testicles.genital_size <= 1)
 		return
 	mob_testicles.genital_size -= 1
 
@@ -473,7 +473,7 @@
 		exposed_mob.body_type = exposed_mob.gender
 		exposed_mob.update_body()
 		exposed_mob.update_mutations_overlay()
-	if (!exposed_mob.getorganslot(ORGAN_SLOT_PENIS))
+	if(!exposed_mob.getorganslot(ORGAN_SLOT_PENIS))
 		///Check if human. If not do messy code. (This only supports lizards and human penises (for now))
 		exposed_mob.dna.features["penis_sheath"] = SHEATH_NONE
 		exposed_mob.dna.mutant_bodyparts["penis"][MUTANT_INDEX_NAME] = "Human"
@@ -487,7 +487,7 @@
 				var/obj/item/organ/genital/new_balls = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 				new_balls.genital_size = 1
 				new_balls.update_sprite_suffix()
-		if ((exposed_mob.dna.species.id == SPECIES_LIZARD) || (exposed_mob.dna.species.id == SPECIES_LIZARD_ASH))
+		if((exposed_mob.dna.species.id == SPECIES_LIZARD) || (exposed_mob.dna.species.id == SPECIES_LIZARD_ASH))
 			exposed_mob.dna.features["penis_sheath"] = SHEATH_SLIT
 			exposed_mob.dna.mutant_bodyparts["penis"][MUTANT_INDEX_NAME] = "Flared"
 			exposed_mob.dna.mutant_bodyparts["penis"][MUTANT_INDEX_COLOR_LIST] = list("#FFB6C1")
@@ -512,7 +512,7 @@
 		to_chat(exposed_mob, span_purple("Your crotch feels warm as something suddenly sprouts between your legs."))
 	///Makes the balls bigger if they're small.
 	var/obj/item/organ/genital/penis/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
-	if (mob_testicles)
+	if(mob_testicles)
 		if (mob_testicles.genital_size > 2)
 			return
 		mob_testicles.genital_size = 2
