@@ -81,7 +81,7 @@
 	rank = "Imperial Enclave Trooper"
 
 /datum/map_template/shuttle/pirate/imperial_enclave
-	prefix = "_maps/shuttles/skyrat"
+	prefix = "_maps/shuttles/skyrat/"
 	suffix = "enclave"
 	name = "pirate ship (Imperial Enclave Enforcer-Class Starship)"
 
