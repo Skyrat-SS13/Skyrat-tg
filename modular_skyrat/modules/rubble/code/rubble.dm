@@ -76,6 +76,9 @@
 	desc = "A large pile of rubble, rendering the terrain unpassable. You probably could weld this down."
 	icon_state = "rubble_big"
 
+/obj/structure/rubble/large/metal
+	icon_state = "rubble_big_metal"
+
 /obj/structure/rubble/medium
 	desc = "A pile of rubble, you could probably climb over it. You probably could weld this down."
 	icon_state = "rubble_medium"
@@ -86,7 +89,7 @@
 	AddElement(/datum/element/climbable)
 
 /turf/proc/create_rubble(adjacent = FALSE)
-	var/rubble_type = prob(50) ? /obj/structure/rubble/medium : /obj/structure/rubble/large
+	var/rubble_type = prob(50) ? /obj/structure/rubble/medium/metal : /obj/structure/rubble/large/metal
 	var/turf/destination = src
 	if(adjacent)
 		immediate_calculate_adjacent_turfs()
@@ -101,3 +104,6 @@
 		else if(length(adjacent_turfs))
 			destination = pick(adjacent_turfs)
 	new rubble_type(destination)
+
+/obj/structure/rubble/medium/metal
+	icon_state = "rubble_medium_metal"
