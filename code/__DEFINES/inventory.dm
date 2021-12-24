@@ -166,6 +166,7 @@
 /// The index of the entry in 'afk_thefts' with the time it happened
 #define AFK_THEFT_TIME 3
 
+<<<<<<< HEAD
 //Allowed equipment lists for security vests and hardsuits.
 
 GLOBAL_LIST_INIT(advanced_hardsuit_allowed, typecacheof(list(
@@ -191,6 +192,9 @@ GLOBAL_LIST_INIT(security_hardsuit_allowed, typecacheof(list(
 	/obj/item/tank/internals,
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 	)))
+=======
+//Allowed equipment lists for security vests.
+>>>>>>> 7b38dd4ff76 (MODsuits (#59109))
 
 GLOBAL_LIST_INIT(detective_vest_allowed, typecacheof(list(
 	/obj/item/ammo_box,

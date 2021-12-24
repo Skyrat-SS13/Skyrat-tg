@@ -60,7 +60,12 @@
 								"Cybernetics",
 								"Implants",
 								"Control Interfaces",
+<<<<<<< HEAD
 								"Power Armor",
+=======
+								"MOD Construction",
+								"MOD Modules",
+>>>>>>> 7b38dd4ff76 (MODsuits (#59109))
 								"Misc"
 								)
 //SKYRAT EDIT STOP: POWER ARMOR
@@ -171,7 +176,7 @@
 
 	var/list/part = list(
 		"name" = D.name,
-		"desc" = initial(built_item.desc),
+		"desc" = D.desc == "Desc" ? initial(built_item.desc) : D.desc,
 		"printTime" = get_construction_time_w_coeff(initial(D.construction_time))/10,
 		"cost" = cost,
 		"id" = D.id,
