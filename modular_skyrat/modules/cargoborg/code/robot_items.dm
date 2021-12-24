@@ -140,7 +140,9 @@
 		spilled_amount++
 
 	if(spilled_amount)
-		visible_message(span_warning("[cyborg_holding_me?.resolve()] spills the content of [src]'s cargo hold all over the floor!"))
+		var/holder = cyborg_holding_me?.resolve()
+		if(holder)
+			visible_message(span_warning("[cyborg_holding_me?.resolve()] spills the content of [src]'s cargo hold all over the floor!"))
 
 
 /obj/item/borg/hydraulic_clamp/attack_self(mob/user, modifiers)
