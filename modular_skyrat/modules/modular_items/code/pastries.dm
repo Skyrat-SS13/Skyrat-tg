@@ -41,5 +41,5 @@
 		/datum/reagent/consumable/nothing = 25,
 		/obj/item/food/pastrybase = 1
 	)
-	result = /obj/item/food/mince_pie
+	result = /obj/item/food/mimce_pie
 	subcategory = CAT_PASTRY
