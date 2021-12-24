@@ -19,7 +19,6 @@
 /datum/controller/subsystem/mapping/proc/add_new_zlevel(name, traits = list(), z_type = /datum/space_level, datum/overmap_object/overmap_obj = null) //SKYRAT EDIT CHANGE
 	UNTIL(!adding_new_zlevel)
 	adding_new_zlevel = TRUE
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_NEW_Z, args)
 	var/new_z = z_list.len + 1
 	if (world.maxz < new_z)
 		world.incrementMaxZ()
@@ -35,6 +34,7 @@
 	//SKYRAT EDIT END
 	z_list += S
 	adding_new_zlevel = FALSE
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_NEW_Z, S)
 	return S
 
 /datum/controller/subsystem/mapping/proc/get_level(z)

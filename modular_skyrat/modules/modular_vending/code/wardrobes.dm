@@ -2,12 +2,6 @@
 	skyrat_products = list(
 		/obj/item/clothing/under/utility/sec/old = 3,
 		/obj/item/clothing/suit/toggle/jacket/sec/old = 3,
-		/obj/item/clothing/neck/security_cape = 10,
-		/obj/item/clothing/head/beret/sec/peacekeeper = 10,
-		/obj/item/clothing/head/security_garrison = 10,
-		/obj/item/clothing/head/security_cap = 10,
-		/obj/item/clothing/gloves/security = 10,
-		/obj/item/clothing/shoes/jackboots/security = 10,
 	)
 
 /obj/machinery/vending/wardrobe/medi_wardrobe
@@ -62,6 +56,10 @@
 	skyrat_products = list(
 		/obj/item/clothing/head/beret/science/fancy/robo = 2,
 		/obj/item/clothing/under/utility/robo_sleek = 2,
+		/obj/item/tank/internals/anesthetic = 2,
+		/obj/item/clothing/mask/breath = 2,
+		/obj/item/reagent_containers/glass/bottle/morphine = 2,
+		/obj/item/reagent_containers/syringe = 2,
 	)
 
 /obj/machinery/vending/wardrobe/science_wardrobe

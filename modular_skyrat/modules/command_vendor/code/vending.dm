@@ -141,5 +141,5 @@
 		/obj/item/clothing/under/rank/nanotrasen_representative/skirt = 1,
 		/obj/item/clothing/head/centhat = 1,
 		/obj/item/clothing/head/centcom_cap = 1,
-		/obj/item/clothing/suit/toggle/armor/vest/centcom_formal/ntrep = 1
+		/obj/item/clothing/suit/armor/centcom_formal/ntrep = 1
 		)
