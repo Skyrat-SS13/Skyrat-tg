@@ -64,6 +64,7 @@
 
 /obj/item/hand_labeler/cyborg
 	name = "integrated hand labeler"
+	labels_left = 9000 // I don't want to bother forcing them to recharge, honestly, that's a lot of code for a very niche functionality
 
 
 /// The clamps
@@ -126,6 +127,8 @@
 /obj/item/borg/hydraulic_clamp/examine(mob/user)
 	. = ..()
 	. += span_notice("It's cargo hold has a capacity of [storage_capacity] and is currently holding <b>[contents.len ? contents.len : 0]</b> items in it!")
+	if(storage_capacity > 1)
+		. += span_notice("Use in hand to select an item you want to prioritize taking out of the storage.")
 
 
 /// A simple proc to empty the contents of the hydraulic clamp, forcing them on the turf it's on. Also forces `selected_item_index` to 0, to avoid any possible issues resulting from it.
@@ -283,6 +286,8 @@
 /obj/item/borg/hydraulic_clamp/mail
 	name = "integrated rapid mail delivery device"
 	desc = "Allows you to carry around a lot of mail, to distribute it around the station like the good little mailbot you are!"
+	icon = 'icons/obj/library.dmi'
+	icon_state = "bookbag"
 	storage_capacity = 100
 	loading_time = 0.25 SECONDS
 	unloading_time = 0.25 SECONDS
@@ -292,8 +297,6 @@
 	item_weight_limit = WEIGHT_CLASS_NORMAL
 	clamp_sound_volume = 25
 	clamp_sound = 'sound/items/pshoom.ogg'
-	icon = 'icons/obj/library.dmi'
-	icon_state = "bookbag"
 
 
 
@@ -359,7 +362,8 @@
 /obj/item/borg/paperplane_crossbow
 	name = "paper plane crossbow"
 	desc = "Be careful, don't aim for the eyes- Who am I kidding, <i>definitely</i> aim for the eyes!"
-	icon_state = "lollipop"
+	icon = 'icons/obj/guns/energy.dmi'
+	icon_state = "crossbow"
 	/// How many planes does the crossbow currently have in its internal magazine?
 	var/planes = 4
 	/// Maximum of planes the crossbow can hold.
@@ -376,7 +380,9 @@
 
 /obj/item/borg/paperplane_crossbow/examine(mob/user)
 	. = ..()
-	. += "There is [planes] left inside of its internal magazine."
+	. += span_notice("There is <b>[planes]</b> left inside of its internal magazine, out of [max_planes].")
+	var/charging_speed = 10 / charge_delay
+	. += span_notice("It recharges at a rate of <b>[charging_speed]</b> plane[charging_speed >= 2 ? "s" : ""] per second.")
 
 
 /obj/item/borg/paperplane_crossbow/equipped()
@@ -389,18 +395,21 @@
 	check_amount()
 
 
-/obj/item/borg/paperplane_crossbow/proc/check_amount() //Doesn't even use processing ticks.
+/// A simple proc to check if we're at the max amount of planes, if not, we keep on charging. Called by [/obj/item/borg/paperplane_crossbow/proc/charge_paper_planes()].
+/obj/item/borg/paperplane_crossbow/proc/check_amount()
 	if(!charging && planes < max_planes)
 		addtimer(CALLBACK(src, .proc/charge_paper_planes), charge_delay)
 		charging = TRUE
 
 
+/// A simple proc to charge paper planes, that then calls [/obj/item/borg/paperplane_crossbow/proc/check_amount()] to see if it should charge another one, over and over.
 /obj/item/borg/paperplane_crossbow/proc/charge_paper_planes()
 	planes++
 	charging = FALSE
 	check_amount()
 
 
+/// A proc for shooting a projectile at the target, it's just that simple, really.
 /obj/item/borg/paperplane_crossbow/proc/shoot(atom/target, mob/living/user, params)
 	if(!COOLDOWN_FINISHED(src, shooting_cooldown))
 		return
@@ -459,7 +468,7 @@
 	. = ..()
 
 
-/// Some overrides that didn't belong anywhere else.
+/// Some override that didn't belong anywhere else.
 
 /obj/structure/big_delivery
 	/// Does this wrapped package contain at least one mob?

@@ -119,6 +119,10 @@
 	var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
 	if(prob(hit_probability))
 		if(H.is_eyes_covered())
+			// SKYRAT EDIT START - Better paper planes
+			if(delete_on_impact)
+				qdel(src)
+			// SKYRAT EDIT END
 			return
 		visible_message(span_danger("\The [src] hits [H] in the eye[eyes ? "" : " socket"]!"))
 		H.adjust_blurriness(6)
