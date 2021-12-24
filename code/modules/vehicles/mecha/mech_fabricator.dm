@@ -141,6 +141,10 @@
 					sub_category += "Medical"
 				if(model_types & BORG_MODEL_ENGINEERING)
 					sub_category += "Engineering"
+				// SKYRAT EDIT START - CARGO BORGS
+				if(model_types & BORG_MODEL_CARGO)
+					sub_category += "Cargo"
+				// SKYRAT EDIT END
 			else
 				sub_category += "All Cyborgs"
 		else if(ispath(built_item, /obj/item/borg_restart_board))

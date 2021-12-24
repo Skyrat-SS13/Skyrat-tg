@@ -176,32 +176,35 @@
 		to_chat(src,span_userdanger("ERROR: Model installer reply timeout. Please check internal connections."))
 		return
 
-	var/list/model_list = list(
-		"Engineering" = /obj/item/robot_model/engineering,
-		"Medical" = /obj/item/robot_model/medical,
-		"Cargo" = /obj/item/robot_model/cargo, /* SKYRAT EDIT - CARGOBORG */
-		"Miner" = /obj/item/robot_model/miner,
-		"Janitor" = /obj/item/robot_model/janitor,
-		"Service" = /obj/item/robot_model/service,
-	)
-	if(!CONFIG_GET(flag/disable_peaceborg))
-		model_list["Peacekeeper"] = /obj/item/robot_model/peacekeeper
-	/* SKYRAT EDIT: DISABLED SECURITY CYBORG FOR TECHWEB SETUP
-	if(!CONFIG_GET(flag/disable_secborg))
-		model_list["Security"] = /obj/item/robot_model/security
-	*/
-	// SKYRAT EDIT ADDITION: Techweb locked cyborg modules
+	// SKYRAT EDIT START - Making the cyborg model list static to reduce how many times it's generated.
+	if(!length(GLOB.cyborg_model_list))
+		GLOB.cyborg_model_list = list(
+			"Engineering" = /obj/item/robot_model/engineering,
+			"Medical" = /obj/item/robot_model/medical,
+			"Cargo" = /obj/item/robot_model/cargo,
+			"Miner" = /obj/item/robot_model/miner,
+			"Janitor" = /obj/item/robot_model/janitor,
+			"Service" = /obj/item/robot_model/service,
+		)
+		if(!CONFIG_GET(flag/disable_peaceborg))
+			GLOB.cyborg_model_list["Peacekeeper"] = /obj/item/robot_model/peacekeeper
+		if(!CONFIG_GET(flag/disable_secborg))
+			GLOB.cyborg_model_list["Security"] = /obj/item/robot_model/security
+		for(var/model in GLOB.cyborg_model_list)
+			// Creating the lists here since we know all the model icons will need them right after.
+			GLOB.cyborg_all_models_icon_list[model] = list()
+
+	// Techweb locked cyborg modules
 	for(var/i in SSresearch.science_tech.researched_designs)
-		var/datum/design/cyborg_module/D = SSresearch.techweb_design_by_id(i)
-		if(!istype(D))
+		var/datum/design/cyborg_module/cyborg_model = SSresearch.techweb_design_by_id(i)
+		if(!istype(cyborg_model))
 			continue
-		if(D.unlocked_module_name == "Security" && CONFIG_GET(flag/disable_secborg))
+		if(cyborg_model.unlocked_module_name == "Security" && CONFIG_GET(flag/disable_secborg))
 			continue
-		model_list[D.unlocked_module_name] = D.unlocked_module_path
-	// SKYRAT EDIT END
+		GLOB.cyborg_model_list[cyborg_model.unlocked_module_name] = cyborg_model.unlocked_module_path
+
 	// Create radial menu for choosing borg model
-	// SKYRAT EDIT START - Making the model icons list static to reduce how many times it's generated.
-	if(length(GLOB.cyborg_base_models_icon_list) == 0)
+	if(!length(GLOB.cyborg_base_models_icon_list))
 		for(var/option in GLOB.cyborg_model_list)
 			var/obj/item/robot_model/model = GLOB.cyborg_model_list[option]
 			var/model_icon = initial(model.cyborg_base_icon)
