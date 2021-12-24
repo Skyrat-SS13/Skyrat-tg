@@ -8,15 +8,14 @@
 		/obj/item/stack/spacecash/c100
 	)
 
-/obj/effect/mob_spawn/human/wildwest_syndicate
+/obj/effect/mob_spawn/ghost_role/human/wildwest_syndicate
 	name = "lost syndicate cryopod"
+	prompt_name = "a syndicate scientist"
 	desc = "They've been here long, far too long..."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	density = TRUE
-	roundstart = FALSE
-	death = FALSE
-	short_desc = "A scientist lost to time within an evil and everchanging labyrinth. Try to wait for the Vanguard to get close before you take this role or else you WILL be bored."
+	you_are_text = "A scientist lost to time within an evil and everchanging labyrinth. Try to wait for the Vanguard to get close before you take this role or else you WILL be bored."
 	flavour_text = "You are a scientist, lost and afraid on a mission you didn't want to go on. \
 	The Commando in charge of you is just outside, he killed everyone else. \
 	You locked yourself in the ship's engine room just in time before he got you. \

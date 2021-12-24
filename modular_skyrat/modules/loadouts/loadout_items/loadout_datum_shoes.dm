@@ -14,6 +14,17 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	else
 		outfit.shoes = item_path
 
+
+//christmas, after that remove them
+/datum/loadout_item/shoes/christmas
+	name = "Red Christmas Boots"
+	item_path = /obj/item/clothing/shoes/winterboots/christmas
+
+/datum/loadout_item/shoes/christmas/green
+	name = "Green Christmas Boots"
+	item_path = /obj/item/clothing/shoes/winterboots/christmas/green
+//every christmas is last christmas
+
 /datum/loadout_item/shoes/jackboots
 	name = "Jackboots"
 	item_path = /obj/item/clothing/shoes/jackboots
@@ -163,6 +174,12 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 /datum/loadout_item/shoes/dominaheels
 	name = "Dominant heels"
 	item_path = /obj/item/clothing/shoes/dominaheels
+
+// Job Restricted
+/datum/loadout_item/shoes/jester
+	name = "Jester shoes"
+	item_path = /obj/item/clothing/shoes/clown_shoes/jester
+	restricted_roles = list(JOB_CLOWN)
 
 //Families Gear
 /datum/loadout_item/shoes/deckers
