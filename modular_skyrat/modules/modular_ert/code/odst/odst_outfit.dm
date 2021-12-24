@@ -2,13 +2,12 @@
 	name = "ODST"
 	id = /obj/item/card/id/advanced/centcom/ert
 	uniform = /obj/item/clothing/under/odst
-	suit = /obj/item/clothing/suit/space/hardsuit/odst
 	glasses = /obj/item/clothing/glasses/hud/security/night
 	ears = /obj/item/radio/headset/headset_cent/alt
 	gloves = /obj/item/clothing/gloves/combat
 	suit_store = /obj/item/gun/energy/pitbull
 	belt = /obj/item/storage/belt/military/odst
-	back = /obj/item/storage/backpack/ert/odst
+	back = /obj/item/mod/control/pre_equipped/responsory/security
 	backpack_contents = list(
 		/obj/item/storage/box/survival/security,\
 		/obj/item/melee/baton/security/loaded ,\
