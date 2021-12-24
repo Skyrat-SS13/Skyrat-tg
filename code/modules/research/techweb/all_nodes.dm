@@ -844,7 +844,6 @@
 		"borg_upgrade_trashofholding",
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"borg_upgrade_shrink",
 		"borg_upgrade_clamp",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
