@@ -18,7 +18,7 @@
 		var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
 		if(mod_theme.modsuit_tail_colors)
-			return "[general_type]_hardsuit"
+			return "[general_type]_modsuit"
 
 	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
 	if(T && T.wagging)
@@ -28,16 +28,16 @@
 
 /datum/sprite_accessory/tails/get_special_icon(mob/living/carbon/human/H, passed_state)
 	var/returned = icon
-	if(passed_state == "[general_type]_hardsuit") //Guarantees we're wearing a MODsuit, skip checks
+	if(passed_state == "[general_type]_modsuit") //Guarantees we're wearing a MODsuit, skip checks
 		var/obj/item/clothing/suit/armor/mod/modsuit_chest = H.wear_suit
 		var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
 		if(mod_theme.modsuit_tail_colors)
-			returned = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails_hardsuit.dmi'
+			returned = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails_modsuit.dmi'
 	return returned
 
 /datum/sprite_accessory/tails/get_special_render_colour(mob/living/carbon/human/H, passed_state)
-	if(passed_state == "[general_type]_hardsuit") //Guarantees we're wearing a MODsuit, skip checks
+	if(passed_state == "[general_type]_modsuit") //Guarantees we're wearing a MODsuit, skip checks
 		var/obj/item/clothing/suit/armor/mod/modsuit_chest = H.wear_suit
 		var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
@@ -239,7 +239,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/kitsune
 	name = "Kitsune"
 	icon_state = "kitsune"
-	general_type = "vulpine" // vulpine until I can be bothered to make kitsune hardsuit tailsprite!
+	general_type = "vulpine" // vulpine until I can be bothered to make kitsune modsuit tailsprite!
 
 /datum/sprite_accessory/tails/mammal/wagging/lab
 	name = "Lab"

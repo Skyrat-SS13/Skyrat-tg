@@ -290,7 +290,7 @@
 	cost = 1
 
 //HELMETS
-/datum/uplink_item/suits/hardsuit/swathelmet_traitor
+/datum/uplink_item/suits/swathelmet_traitor
 	name = "Syndicate Helmet"
 	desc = "An extremely robust, space-worthy helmet in a nefarious red and black stripe pattern."
 	item = /obj/item/clothing/head/helmet/swat
