@@ -110,9 +110,8 @@
 		M.movement_force = movement_force.Copy()
 	M.linkup()
 
-/datum/map_template/shuttle/emergency
+/datum/map_template/shuttle/emergency // SKYRAT EDIT OVERRIDE - OVERRIDEN IN ADVANCED_SHUTTLES - shuttles.dm
 	port_id = "emergency"
-	suffix = "skyrat" //SKYRAT EDIT CHANGE
 	name = "Base Shuttle Template (Emergency)"
 
 /datum/map_template/shuttle/cargo
@@ -178,6 +177,7 @@
 // Shuttles start here:
 
 /datum/map_template/shuttle/emergency/backup
+	prefix = "_maps/shuttles/"
 	suffix = "backup"
 	name = "Backup Shuttle"
 	who_can_purchase = null
