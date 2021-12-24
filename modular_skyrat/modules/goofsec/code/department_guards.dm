@@ -63,10 +63,10 @@
 	worn_icon_state = "mallcop_helm"
 
 /datum/job/orderly
-	title = "Orderly"
+	title = JOB_ORDERLY
 	description = "Defend the medical department, hold down idiots who refuse the vaccine, flex your muscles at people who fuck with medical."
 	job_spawn_title = "Medical Doctor"
-	department_head = list("Chief Medical Officer")
+	department_head = list(JOB_CHIEF_MEDICAL_OFFICER)
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
@@ -132,10 +132,10 @@
 	job = /datum/job/orderly
 
 /datum/job/science_guard
-	title = "Science Guard" // I'm a little busy here, Calhoun.
+	title = JOB_SCIENCE_GUARD // I'm a little busy here, Calhoun.
 	description = "Figure out why the emails aren't working, keep an eye on those eggheads, keep them safe from their mistakes."
 	job_spawn_title = "Scientist"
-	department_head = list("Research Director")
+	department_head = list(JOB_RESEARCH_DIRECTOR)
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
@@ -203,10 +203,10 @@
 	job = /datum/job/science_guard
 
 /datum/job/bouncer
-	title = "Bouncer"
+	title = JOB_BOUNCER
 	description = "Tell people they aren't on the list. Check people's IDs. Tell them to fuck off and get real ID."
 	job_spawn_title = "Bartender"
-	department_head = list("Head of Personnel")
+	department_head = list(JOB_HEAD_OF_PERSONNEL)
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
@@ -273,10 +273,10 @@
 	job = /datum/job/bouncer
 
 /datum/job/customs_agent
-	title = "Customs Agent" // No, you don't get to ship ten kilograms of cocaine to the Spinward Stellar Coalition.
+	title = JOB_CUSTOMS_AGENT // No, you don't get to ship ten kilograms of cocaine to the Spinward Stellar Coalition.
 	description = "Inspect the packages coming to and from the station, protect the cargo department, beat the shit out of people trying to ship Cocaine to the Spinward Stellar Coalition."
 	job_spawn_title = "Cargo Technician"
-	department_head = list("Quartermaster")
+	department_head = list(JOB_QUARTERMASTER)
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
@@ -342,10 +342,10 @@
 	job = /datum/job/customs_agent
 
 /datum/job/engineering_guard
-	title = "Engineering Guard" // Listen here, this engine is a restricted area. Please leave if you aren't wearing a radioactive suit.
+	title = JOB_ENGINEERING_GUARD // Listen here, this engine is a restricted area. Please leave if you aren't wearing a radioactive suit.
 	description = "Spy on the supermatter, keep an eye on atmospherics, fall asleep at your desk."
 	job_spawn_title = "Station Engineer"
-	department_head = list("Chief Engineer")
+	department_head = list(JOB_CHIEF_ENGINEER)
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2

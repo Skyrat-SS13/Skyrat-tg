@@ -3523,11 +3523,12 @@
 	dir = 4
 	},
 /obj/structure/rack,
-/obj/item/storage/box/armament_tokens_primary{
-	pixel_x = -8
+/obj/item/storage/barricade{
+	pixel_y = 5
 	},
-/obj/item/storage/box/armament_tokens_sidearm{
-	pixel_x = 7
+/obj/item/storage/barricade,
+/obj/item/storage/barricade{
+	pixel_y = -5
 	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
@@ -38032,11 +38033,7 @@
 "dEI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/landmark/event_spawn,
-/mob/living/simple_animal/hostile/russian{
-	environment_smash = 0;
-	loot = list(/obj/effect/mob_spawn/human/corpse/russian);
-	name = "Russian Mobster"
-	},
+/mob/living/simple_animal/hostile/russian,
 /turf/open/floor/carpet/green,
 /area/maintenance/port)
 "dEO" = (
@@ -39192,11 +39189,7 @@
 /area/maintenance/port)
 "ejk" = (
 /obj/structure/chair/stool/bar/directional/west,
-/mob/living/simple_animal/hostile/russian{
-	environment_smash = 0;
-	loot = list(/obj/effect/mob_spawn/human/corpse/russian);
-	name = "Russian Mobster"
-	},
+/mob/living/simple_animal/hostile/russian,
 /turf/open/floor/wood,
 /area/maintenance/port)
 "ejz" = (
@@ -39485,11 +39478,7 @@
 "eqD" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/mob/living/simple_animal/hostile/russian{
-	environment_smash = 0;
-	loot = list(/obj/effect/mob_spawn/human/corpse/russian);
-	name = "Russian Mobster"
-	},
+/mob/living/simple_animal/hostile/russian,
 /turf/open/floor/carpet/green,
 /area/maintenance/port)
 "erd" = (
@@ -43836,7 +43825,7 @@
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/bot,
 /obj/structure/reagent_dispensers/wall/peppertank/directional/west,
-/obj/machinery/vending/wardrobe/peacekeeper_wardrobe,
+/obj/machinery/vending/wardrobe/sec_wardrobe/peacekeeper,
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "gnn" = (
@@ -63349,7 +63338,7 @@
 /turf/open/floor/iron/dark,
 /area/service/kitchen)
 "piY" = (
-/obj/effect/mob_spawn/human/corpse/charredskeleton,
+/obj/effect/mob_spawn/corpse/human/charredskeleton,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"

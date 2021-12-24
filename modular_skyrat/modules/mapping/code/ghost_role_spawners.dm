@@ -1,76 +1,83 @@
 //SPAWNERS//
-/obj/effect/mob_spawn/human/blackmarket
+/obj/effect/mob_spawn/ghost_role/human/blackmarket
 	name = "cryogenics pod"
+	prompt_name = "a blackmarket dealer"
 	desc = "A humming cryo pod. The machine is attempting to wake up its occupant."
 	mob_name = "a black market dealer"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	roundstart = FALSE
-	death = FALSE
 	random = TRUE
 	mob_species = /datum/species/human
-	short_desc = "You are a black market dealer, with shop set up in Nanotrasen Space."
+	you_are_text = "You are a black market dealer, with shop set up in Nanotrasen Space."
 	flavour_text = "FTU, Independent.. whatever, whoever you are. It doesn't matter out here. \
 	You've set up shop in a slightly shady, yet functional little asteroid for your dealings. \
 	Explore space, find valuable artifacts and nice loot - and pawn it off to those stooges at NT. \
 	Or perhaps more exotic customers are in local space...?"
-	important_info = "You are not an antagonist."
+	important_text = "You are not an antagonist."
+	outfit = /datum/outfit/black_market
+	can_use_alias = TRUE
+	any_station_species = TRUE
+
+/datum/outfit/black_market
+	name = "Black Market Trader"
 	uniform = /obj/item/clothing/under/rank/cargo/tech
 	shoes = /obj/item/clothing/shoes/laceup
 	id = /obj/item/card/id/away/blackmarket
-	can_use_alias = TRUE
-	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/ds2/prisoner
+/obj/effect/mob_spawn/ghost_role/human/ds2/prisoner
 	name = "Syndicate Prisoner"
-	short_desc = "You are the syndicate prisoner aboard an unknown station."
+	prompt_name = "a Syndicate prisoner"
+	you_are_text = "You are the syndicate prisoner aboard an unknown station."
 	flavour_text = "You don't know where you are, but you know you are a prisoner. The plastitanium clues you into your captors.. as for why you're here? That's up to you."
-	important_info = "You are still subject to standard prisoner policy, and must Adminhelp before antagonizing Interdyne."
+	important_text = "You are still subject to standard prisoner policy, and must Adminhelp before antagonizing Interdyne."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/ds2/prisoner
-	roundstart = FALSE
-	permanent = FALSE
-	death = FALSE
 	can_use_alias = TRUE
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/ds2/syndicate
+/obj/effect/mob_spawn/ghost_role/human/ds2
+	name = "DS2 personnel"
+	prompt_name = "DS2 personnel"
+	you_are_text = "You are a syndicate operative, employed in a top secret research facility developing biological weapons."
+	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue operating as best you can, and try to keep a low profile."
+
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate
 	name = "Syndicate Operative"
-	roundstart = FALSE
-	death = FALSE
+	prompt_name = "a Syndicate operative"
 	random = TRUE
 	can_use_alias = TRUE
 	any_station_species = TRUE
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
-	short_desc = "You are a syndicate operative, employed in a top secret research facility developing biological weapons."
+	you_are_text = "You are a syndicate operative, employed in a top secret research facility developing biological weapons."
 	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue operating as best you can, and try to keep a low profile."
-	important_info = "You are not an antagonist."
+	important_text = "You are not an antagonist."
 	outfit = /datum/outfit/ds2/syndicate
 
-/obj/effect/mob_spawn/human/ds2/syndicate/special(mob/living/new_spawn)
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/special(mob/living/new_spawn)
+	. = ..()
 	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
 
-/obj/effect/mob_spawn/human/ds2/syndicate/service
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/service
 	outfit = /datum/outfit/ds2/syndicate/service
 
-/obj/effect/mob_spawn/human/ds2/syndicate/enginetech
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/enginetech
 	outfit = /datum/outfit/ds2/syndicate/enginetech
 
-/obj/effect/mob_spawn/human/ds2/syndicate/researcher
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/researcher
 	outfit = /datum/outfit/ds2/syndicate/researcher
 
-/obj/effect/mob_spawn/human/ds2/syndicate/stationmed
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/stationmed
 	outfit = /datum/outfit/ds2/syndicate/stationmed
 
-/obj/effect/mob_spawn/human/ds2/syndicate/masteratarms
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/masteratarms
 	outfit = /datum/outfit/ds2/syndicate/masteratarms
 
-/obj/effect/mob_spawn/human/ds2/syndicate/brigoff
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/brigoff
 	outfit = /datum/outfit/ds2/syndicate/brigoff
 
-/obj/effect/mob_spawn/human/ds2/syndicate/admiral
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/admiral
 	outfit = /datum/outfit/ds2/syndicate/admiral
 
 //OUTFITS//
@@ -127,7 +134,7 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	head = /obj/item/clothing/head/sec/navywarden/syndicate
-	ears = /obj/item/radio/headset/headset_sec/alt/interdyne
+	ears = /obj/item/radio/headset/interdyne
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\
@@ -142,7 +149,7 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/bulletproof
 	head = /obj/item/clothing/head/helmet/swat
-	ears = /obj/item/radio/headset/headset_sec/alt/interdyne
+	ears = /obj/item/radio/headset/interdyne
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\
@@ -165,76 +172,85 @@
 
 //Lost Space Truckers: Six people stranded in deep space aboard a cargo freighter. They must survive their marooning and cooperate.
 
-/obj/effect/mob_spawn/human/lostcargo
-    name = "freighter cryo crew pod"
-    desc = "A humming cryo pod. There's a freight hauler inside."
-    mob_name = "Freighter Crew"
-    icon = 'icons/obj/machines/sleeper.dmi'
-    icon_state = "sleeper"
-    roundstart = FALSE
-    death = FALSE
-    random = TRUE
-    mob_species = /datum/species/human
-    short_desc = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
-    important_info = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew for the ship's Chief. Your job was merely being a deckhand doing freight work and helping with kitchen prep."
-    uniform = /obj/item/clothing/under/rank/cargo/casualman
-    shoes = /obj/item/clothing/shoes/workboots
-    back = /obj/item/storage/backpack
-    backpack_contents = list(/obj/item/armament_token/sidearm_blackmarket)
-    id = /obj/item/card/id/away/freightcrew
-    can_use_alias = TRUE
-    any_station_species = TRUE
+/obj/effect/mob_spawn/ghost_role/human/lostcargo
+	name = "freighter cryo crew pod"
+	prompt_name = "a lost cargo tech"
+	desc = "A humming cryo pod. There's a freight hauler inside."
+	mob_name = "Freighter Crew"
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper"
+	random = TRUE
+	mob_species = /datum/species/human
+	you_are_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
+	flavour_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
+	important_text = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew for the ship's Chief. Your job was merely being a deckhand doing freight work and helping with kitchen prep."
+	can_use_alias = TRUE
+	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/lostminer
-    name = "freighter cryo excavator pod"
-    desc = "A humming cryo pod. There's an excavation worker inside."
-    mob_name = "Freighter Excavator"
-    icon = 'icons/obj/machines/sleeper.dmi'
-    icon_state = "sleeper"
-    roundstart = FALSE
-    death = FALSE
-    random = TRUE
-    mob_species = /datum/species/human
-    short_desc = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
-    important_info = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew working under the ship Chief. Your role was to be an excavation and salvage worker for the ship."
-    uniform = /obj/item/clothing/under/utility/cargo/gorka
-    shoes = /obj/item/clothing/shoes/workboots/mining
-    back = /obj/item/storage/backpack
-    backpack_contents = list(/obj/item/flashlight/seclite=1,\
+/datum/outfit/freighter_crew
+	name = "Freighter Crew"
+	uniform = /obj/item/clothing/under/rank/cargo/casualman
+	shoes = /obj/item/clothing/shoes/workboots
+	back = /obj/item/storage/backpack
+	backpack_contents = list(/obj/item/armament_token/sidearm_blackmarket)
+	id = /obj/item/card/id/away/freightcrew
+
+/obj/effect/mob_spawn/ghost_role/human/lostminer
+	name = "freighter cryo excavator pod"
+	prompt_name = "a lost miner"
+	desc = "A humming cryo pod. There's an excavation worker inside."
+	mob_name = "Freighter Excavator"
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper"
+	random = TRUE
+	mob_species = /datum/species/human
+	you_are_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
+	flavour_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
+	important_text = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew working under the ship Chief. Your role was to be an excavation and salvage worker for the ship."
+	can_use_alias = TRUE
+	any_station_species = TRUE
+
+/datum/outfit/freighter_excavator
+	name = "Freighter Excavator"
+	uniform = /obj/item/clothing/under/utility/cargo/gorka
+	shoes = /obj/item/clothing/shoes/workboots/mining
+	back = /obj/item/storage/backpack
+	backpack_contents = list(/obj/item/flashlight/seclite=1,\
 		/obj/item/knife/combat/survival=1,
 		/obj/item/mining_voucher=1,
 		/obj/item/t_scanner/adv_mining_scanner/lesser=1,
 		/obj/item/gun/energy/kinetic_accelerator=1,\
 		/obj/item/stack/marker_beacon/ten=1,\
 		/obj/item/armament_token/sidearm_blackmarket)
-    r_pocket = /obj/item/storage/bag/ore
-    id = /obj/item/card/id/away/freightmine
-    can_use_alias = TRUE
-    any_station_species = TRUE
+	r_pocket = /obj/item/storage/bag/ore
+	id = /obj/item/card/id/away/freightmine
 
-/obj/effect/mob_spawn/human/lostcargoqm
-    name = "freighter cryo boss pod"
-    desc = "A humming cryo pod. You see someone who looks In Charge inside."
-    mob_name = "Freighter Chief"
-    icon = 'icons/obj/machines/sleeper.dmi'
-    icon_state = "sleeper"
-    roundstart = FALSE
-    death = FALSE
-    random = TRUE
-    mob_species = /datum/species/human
-    short_desc = "You and your crew were running a normal freight haul until a pirate attack knocked out the engines. All you can do now is try and survive and keep your crew alive."
-    important_info = "Do not abandon your crew, lead them and work with them to survive. You are not directly working with NT, you are an independent freighter crew. You are the captain of the ship, which you purchased a while ago, and are in charge of the crew."
-    uniform = /obj/item/clothing/under/utility/cargo/turtleneck
-    shoes = /obj/item/clothing/shoes/workboots
-    neck = /obj/item/clothing/neck/cloak/qm
-    back = /obj/item/storage/backpack
-    backpack_contents = list(
+/obj/effect/mob_spawn/ghost_role/human/lostcargoqm
+	name = "freighter cryo boss pod"
+	prompt_name = "a lost Quartermaster"
+	desc = "A humming cryo pod. You see someone who looks In Charge inside."
+	mob_name = "Freighter Chief"
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper"
+	random = TRUE
+	mob_species = /datum/species/human
+	you_are_text = "You and your crew were running a normal freight haul until a pirate attack knocked out the engines. All you can do now is try and survive and keep your crew alive."
+	flavour_text = "You and your crew were running a normal freight haul until a pirate attack knocked out the engines. All you can do now is try and survive and keep your crew alive."
+	important_text = "Do not abandon your crew, lead them and work with them to survive. You are not directly working with NT, you are an independent freighter crew. You are the captain of the ship, which you purchased a while ago, and are in charge of the crew."
+	can_use_alias = TRUE
+	any_station_species = TRUE
+
+/datum/outfit/freighter_boss
+	name = "Freighter Boss"
+	uniform = /obj/item/clothing/under/utility/cargo/turtleneck
+	shoes = /obj/item/clothing/shoes/workboots
+	neck = /obj/item/clothing/neck/cloak/qm
+	back = /obj/item/storage/backpack
+	backpack_contents = list(
     	/obj/item/armament_token/energy=1,
     	/obj/item/megaphone/cargo=1,
     	)
-    id = /obj/item/card/id/away/freightqm
-    can_use_alias = TRUE
-    any_station_species = TRUE
+	id = /obj/item/card/id/away/freightqm
 
 //ITEMS//
 /obj/item/radio/headset/cybersun

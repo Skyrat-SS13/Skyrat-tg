@@ -25,9 +25,6 @@
 /obj/machinery/computer/med_data/laptop
 	connectable = FALSE
 
-/obj/machinery/computer/nanite_cloud_controller
-	connectable = FALSE
-
 /obj/machinery/computer/pandemic
 	connectable = FALSE
 
