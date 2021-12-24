@@ -368,12 +368,6 @@
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/darklord
 	cost = 20
 
-/datum/uplink_item/loadout_skyrat/hunter
-	name = "Whaler bundle"
-	desc = "There’s no whales in space, but there sure are carp. Blend in with your prey and wield an impossibly effective high-power harpoon gun in this tribute to a tale told long ago."
-	item = /obj/item/storage/box/syndie_kit/loadout/hunter
-	cost = 20
-
 /datum/uplink_item/loadout_skyrat/bee
 	name = "Buzzy bundle"
 	desc = "Look bee-utiful in this extra specialized rapid attack kit, featuring unique armaments seen nowhere else and a bumble-y sense of style."
