@@ -94,7 +94,7 @@
 			if(SHEATH_NORMAL)
 				returned_string = "You see a sheath."
 			if(SHEATH_SLIT)
-				returned_string = "You see genital slit."
+				returned_string = "You see a slit." ///Typo fix.
 		if(aroused == AROUSAL_PARTIAL)
 			returned_string += " There's a [pname]penis poking out of it."
 	else
@@ -312,8 +312,8 @@
 	var/current_size = FLOOR(genital_size, 1)
 	if(current_size < 0)
 		current_size = 0
-	else if (current_size > max_size)
-		current_size = max_size
+	else if (current_size <= (max_size + 9)) /// Cosmetic addition & so it doesn't appear in the character setup.
+		current_size = current_size
 	var/passed_string = "[genital_type]_[current_size]"
 	if(uses_skintones)
 		passed_string += "_s"

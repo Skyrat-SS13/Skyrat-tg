@@ -436,10 +436,18 @@
 
 		if(mob_penis.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_bottomless())
 			if (mob_penis?.genital_size >= (penis_max_length - 2))
+				if (exposed_mob.dna.features["penis_sheath"] == SHEATH_SLIT)
+					if(mob_penis.aroused != AROUSAL_FULL)
+						to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long."))
+					return
 				exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(public_cock_action_text_list)]"))
 				to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long."))
 				return
 			else
+				if (exposed_mob.dna.features["penis_sheath"] == SHEATH_SLIT)
+					if(mob_penis.aroused != AROUSAL_FULL)
+						to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long."))
+					return
 				exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(cock_text_list)] [pick(public_cock_action_text_list)]"))
 				to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long."))
 				return
@@ -469,11 +477,9 @@
 		///Check if human. If not do messy code. (This only supports lizards and human penises (for now))
 		exposed_mob.dna.features["penis_sheath"] = SHEATH_NONE
 		exposed_mob.dna.mutant_bodyparts["penis"][MUTANT_INDEX_NAME] = "Human"
-		if ((exposed_mob.dna.species.id == SPECIES_HUMAN) || (exposed_mob.dna.species.id != SPECIES_LIZARD) || (exposed_mob.dna.species.id != SPECIES_LIZARD_ASH))
-			exposed_mob.dna.features["penis_sheath"] = SHEATH_NONE
-			exposed_mob.dna.mutant_bodyparts["penis"][MUTANT_INDEX_NAME] = "Human"
+		exposed_mob.dna.mutant_bodyparts["testicles"][MUTANT_INDEX_NAME] = "Pair"
+		if ((exposed_mob.dna.species.id == SPECIES_HUMAN) && (exposed_mob.dna.species.id != SPECIES_LIZARD) && (exposed_mob.dna.species.id != SPECIES_LIZARD_ASH))
 			if (!exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES))
-				exposed_mob.dna.mutant_bodyparts["testicles"][MUTANT_INDEX_NAME] = "Pair"
 				var/obj/item/organ/ballspath = /obj/item/organ/genital/testicles
 				ballspath = new /obj/item/organ/genital/testicles
 				ballspath.build_from_dna(exposed_mob.dna, "testicles")
@@ -482,10 +488,11 @@
 				new_balls.genital_size = 1
 				new_balls.update_sprite_suffix()
 		if ((exposed_mob.dna.species.id == SPECIES_LIZARD) || (exposed_mob.dna.species.id == SPECIES_LIZARD_ASH))
-			exposed_mob.dna.features["penis_sheath"] = SHEATH_MODES
+			exposed_mob.dna.features["penis_sheath"] = SHEATH_SLIT
 			exposed_mob.dna.mutant_bodyparts["penis"][MUTANT_INDEX_NAME] = "Flared"
+			exposed_mob.dna.mutant_bodyparts["penis"][MUTANT_INDEX_COLOR_LIST] = list("#FFB6C1")
+			exposed_mob.dna.mutant_bodyparts["testicles"][MUTANT_INDEX_NAME] = "Internal"
 			if (!exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES))
-				exposed_mob.dna.mutant_bodyparts["testicles"][MUTANT_INDEX_NAME] = "Internal"
 				var/obj/item/organ/ballspath = /obj/item/organ/genital/testicles
 				ballspath = new /obj/item/organ/genital/testicles
 				ballspath.build_from_dna(exposed_mob.dna, "testicles")
@@ -499,10 +506,10 @@
 		cockpath.Insert(exposed_mob, 0, FALSE)
 		var/obj/item/organ/genital/new_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
 		new_penis.genital_size = 4
-		new_penis.girth = 3
+		exposed_mob.getorganslot(ORGAN_SLOT_PENIS).girth = 3
 		new_penis.update_sprite_suffix()
 		exposed_mob.update_body()
-		to_chat(exposed_mob, span_purple("Your crotch suddenly feels warm as something sprouts between your legs."))
+		to_chat(exposed_mob, span_purple("Your crotch feels warm as something suddenly sprouts between your legs."))
 	///Makes the balls bigger if they're small.
 	var/obj/item/organ/genital/penis/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 	if (mob_testicles)
