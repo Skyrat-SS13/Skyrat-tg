@@ -25,6 +25,6 @@
 
 /datum/misc_template/ncv_titan
 	name = "NCV Titan"
-	map_path = "_maps/map_files/generic/"
+	map_path = "map_files/generic"
 	map_file = "ncv_titan.dmm"
 	overmap_type = /datum/overmap_object/shuttle/ship/ncv_titan
