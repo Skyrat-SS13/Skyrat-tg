@@ -108,9 +108,10 @@
 	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe?[less_input_message]", "Observe", "Yes", "No")
 	//SKYRAT EDIT CHANGE END
 
-	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
+	if(this_is_like_playing_right != "Yes")
+		return FALSE
+	if(QDELETED(src) || !src.client)
 		ready = PLAYER_NOT_READY
-		src << browse(null, "window=playersetup") //closes the player setup window
 		return FALSE
 
 	var/mob/dead/observer/observer = new()
