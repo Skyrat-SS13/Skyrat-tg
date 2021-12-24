@@ -232,20 +232,20 @@
 	cost = CARGO_CRATE_VALUE * 18
 	crate_name = "advanced extinguisher crate"
 
-/datum/supply_pack/engineering/hardsuit_engineering
-	name = "Engineering Hardsuit Crate"
+/datum/supply_pack/engineering/modsuit_engineering
+	name = "Engineering MODSUIT Crate"
 	desc = "Contains a single hardsuit, built to standard engineering specifications."
 	access = ACCESS_ENGINE_EQUIP
-	contains = list(/obj/item/clothing/suit/space/hardsuit/engine)
+	contains = list(/obj/item/mod/control/pre_equipped/engineering)
 	cost = CARGO_CRATE_VALUE * 13
 	crate_name = "engineering hardsuit crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
 
-/datum/supply_pack/engineering/hardsuit_atmospherics
-	name = "Atmospherics Hardsuit Crate"
+/datum/supply_pack/engineering/modsuit_atmospherics
+	name = "Atmospherics MODSUIT Crate"
 	desc = "Contains a single hardsuit, built to standard atmospherics suit specifications."
 	access = ACCESS_ENGINE_EQUIP
-	contains = list(/obj/item/clothing/suit/space/hardsuit/atmos)
+	contains = list(/obj/item/mod/control/pre_equipped/atmospheric)
 	cost = CARGO_CRATE_VALUE * 16
 	crate_name = "atmospherics hardsuit crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering

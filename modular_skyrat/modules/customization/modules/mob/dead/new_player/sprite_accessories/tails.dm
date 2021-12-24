@@ -13,9 +13,10 @@
 
 /datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/H)
 	// Hardsuit tail spriting
-	if(general_type && H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
-		var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
-		if(HS.hardsuit_tail_colors)
+	if(general_type && H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/armor/mod))
+		var/obj/item/clothing/suit/armor/mod/modsuit_chest = H.wear_suit
+		var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
+		if(modsuit_control.modsuit_tail_colors)
 			return "[general_type]_hardsuit"
 
 	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
@@ -27,20 +28,22 @@
 /datum/sprite_accessory/tails/get_special_icon(mob/living/carbon/human/H, passed_state)
 	var/returned = icon
 	if(passed_state == "[general_type]_hardsuit") //Guarantees we're wearing a hardsuit, skip checks
-		var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
-		if(HS.hardsuit_tail_colors)
+		var/obj/item/clothing/suit/armor/mod/modsuit_chest = H.wear_suit
+		var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
+		if(modsuit_control.modsuit_tail_colors)
 			returned = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails_hardsuit.dmi'
 	return returned
 
 /datum/sprite_accessory/tails/get_special_render_colour(mob/living/carbon/human/H, passed_state)
 	if(passed_state == "[general_type]_hardsuit") //Guarantees we're wearing a hardsuit, skip checks
-		var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
-		if(HS.hardsuit_tail_colors)
+		var/obj/item/clothing/suit/armor/mod/modsuit_chest = H.wear_suit
+		var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
+		if(modsuit_control.modsuit_tail_colors)
 			//Currently this way, when I have more time I'll write a hex -> matrix converter to pre-bake them instead
 			var/list/finished_list = list()
-			finished_list += ReadRGB("[HS.hardsuit_tail_colors[1]]00")
-			finished_list += ReadRGB("[HS.hardsuit_tail_colors[2]]00")
-			finished_list += ReadRGB("[HS.hardsuit_tail_colors[3]]00")
+			finished_list += ReadRGB("[modsuit_control.modsuit_tail_colors[1]]00")
+			finished_list += ReadRGB("[modsuit_control.modsuit_tail_colors[2]]00")
+			finished_list += ReadRGB("[modsuit_control.modsuit_tail_colors[3]]00")
 			finished_list += list(0,0,0,255)
 			for(var/index in 1 to finished_list.len)
 				finished_list[index] /= 255
@@ -70,8 +73,9 @@
 			return TRUE
 		if(H.wear_suit.flags_inv & HIDEJUMPSUIT)
 			if(istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
-				var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
-				if(HS.hardsuit_tail_colors)
+				var/obj/item/clothing/suit/armor/mod/modsuit_chest = H.wear_suit
+				var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
+				if(modsuit_control.modsuit_tail_colors)
 					return FALSE
 			return TRUE
 	if(H.owned_turf)  //we do a lil' emoting
