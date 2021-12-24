@@ -43,12 +43,17 @@
 		LAZYNULL(affected_shuttles)
 
 /datum/overmap_object/hazard/Entered(datum/overmap_object/entering, spawned = FALSE)
-	if(istype(entering,/datum/overmap_object/shuttle))
+	if(istype(entering, /datum/overmap_object/shuttle))
 		var/datum/overmap_object/shuttle/entering_shuttle = entering
 		if(alert_sound)
-			if(entering_shuttle.control_consoles.len)
-				for(var/atom/iterating_atom as anything in entering_shuttle.control_consoles)
-					playsound(iterating_atom, alert_sound, OVERMAP_SHUTTLE_ALERT_VOLUME)
+			if(entering_shuttle.z_alert_sounds)
+				for(var/z in entering_shuttle.related_levels)
+					var/datum/space_level/iterated_space_level = level
+					playsound_z_level(iterated_space_level.z_value, alert_sound, OVERMAP_SHUTTLE_ALERT_VOLUME)
+			else
+				if(entering_shuttle.control_consoles.len)
+					for(var/atom/iterating_atom as anything in entering_shuttle.control_consoles)
+						playsound(iterating_atom, alert_sound, OVERMAP_SHUTTLE_ALERT_VOLUME)
 		AddAffected(entering_shuttle)
 	. = ..()
 

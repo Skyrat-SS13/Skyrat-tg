@@ -85,3 +85,8 @@
 	shuttle_idle_state = "gateway"
 	shuttle_forward_state = "gateway"
 	shuttle_backward_state = "gateway"
+
+/obj/effect/abstract/overmap/ships
+	icon_state = "ships"
+	color = COLOR_SOFT_RED
+	layer = OVERMAP_LAYER_PLANET

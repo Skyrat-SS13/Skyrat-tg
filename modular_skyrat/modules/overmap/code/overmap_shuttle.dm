@@ -64,6 +64,9 @@
 
 	var/current_parallax_dir = 0
 
+	/// Do we send sounds to the consoles or the entire z-level?
+	var/z_alert_sounds = FALSE
+
 /datum/overmap_object/shuttle/GetAllAliveClientMobs()
 	. = list()
 	if(my_shuttle)
@@ -749,5 +752,6 @@
 	name = "NSV Blueshift"
 	fixed_parallax_dir = NORTH
 	speed_divisor_from_mass = 300
+	z_alert_sounds = TRUE
 
 #undef SHUTTLE_MASS_DIVISOR
