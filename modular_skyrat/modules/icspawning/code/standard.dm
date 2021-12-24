@@ -44,7 +44,7 @@
 		/obj/item/tank/internals/oxygen,\
 		)
 
-/datum/outfit/debug/bsthardsuit //Debug objs plus hardsuit
+/datum/outfit/debug/bs_modsuit //Debug objs plus hardsuit
 	name = "Bluespace Tech (MODsuit)"
 	uniform = /obj/item/clothing/under/syndicate/combat
 	glasses = /obj/item/clothing/glasses/debug
