@@ -118,3 +118,16 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "timbs"
 
+/obj/item/clothing/shoes/winterboots/christmas
+	name = "red christmas boots"
+	desc = "A pair of fluffy red christmas boots!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+	icon_state = "christmasbootsr"
+
+/obj/item/clothing/shoes/winterboots/christmas/green
+	name = "green christmas boots"
+	desc = "A pair of fluffy green christmas boots!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+	icon_state = "christmasbootsg"
