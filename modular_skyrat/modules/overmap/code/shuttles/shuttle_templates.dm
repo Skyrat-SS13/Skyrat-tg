@@ -25,10 +25,22 @@
 	name = "NXV Crow"
 	who_can_purchase = null
 
+/datum/map_template/shuttle/exploration_deckard
+	port_id = "exploration"
+	suffix = "deckard"
+	name = "NXV Deckard"
+	who_can_purchase = null
+
 /datum/map_template/shuttle/exploration_nexus
 	port_id = "exploration"
 	suffix = "nexus"
 	name = "NXV Nexus"
+	who_can_purchase = null
+
+/datum/map_template/shuttle/exploration_nexus_retrofit
+	port_id = "exploration"
+	suffix = "nexus_2"
+	name = "NXV Nexus Retrofit"
 	who_can_purchase = null
 
 /datum/map_template/shuttle/titan

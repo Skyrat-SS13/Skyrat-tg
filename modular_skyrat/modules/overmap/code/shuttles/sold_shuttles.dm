@@ -48,12 +48,30 @@
 	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
 	shuttle_type = SHUTTLE_EXPLORATION
 
+/datum/sold_shuttle/deckard
+	name = "NXV Deckard"
+	desc = "Your bog standard run of the mill reliable medium sized exploration shuttle."
+	detailed_desc = "It's a medium class exploration vessel which comes equipped with some basic mining supplies, a portable generator and four RS-500 sublight thrusters making it nimble and rahter quick."
+	shuttle_id = "exploration_deckard"
+	cost = 7500
+	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
+	shuttle_type = SHUTTLE_EXPLORATION
+
 /datum/sold_shuttle/nexus
 	name = "NXV Nexus"
 	desc = "A large sized luxury exploration shuttle, well equipped. You must be rich."
-	detailed_desc = "It's rather large and is equipped with three RS 2000 Sublight thrusters, capable of low speeds, however, it is very well equipped for excavation, mining and exploration. Your go-to reliable yet luxurious shuttle. It has a mining drill, medbay, kitchen and lots of supplies. Good luck, explorer."
+	detailed_desc = "It's rather large and is equipped with three RS-2000 Sublight thrusters, capable of low speeds, however, it is very well equipped for excavation, mining and exploration. Your go-to reliable yet luxurious shuttle. It has a mining drill, medbay, shield generator, kitchen and lots of supplies. Good luck, explorer."
 	shuttle_id = "exploration_nexus"
 	cost = 20000
+	allowed_docks = list(DOCKS_HUGE_UPWARDS)
+	shuttle_type = SHUTTLE_EXPLORATION
+
+/datum/sold_shuttle/nexus_retrofit
+	name = "NXV Nexus Retrofit"
+	desc = "A large sized exploration shuttle, well equipped, it is a retrofit of the NXV Nexus."
+	detailed_desc = "Much like the standard Nexus, this bad boy comes well equipped for excavation, mining and exploration. This model has four VOLTAR Mach 5 sublight thrusters, capable of slightly faster speeds than the standard Nexus. It comes with a drill, medbay, shield generator and many supplies."
+	shuttle_id = "exploration_nexus_2"
+	cost = 22000
 	allowed_docks = list(DOCKS_HUGE_UPWARDS)
 	shuttle_type = SHUTTLE_EXPLORATION
 
@@ -123,3 +141,8 @@
 	cost = 10000
 	shuttle_id = "common_platform_large"
 	allowed_docks = list(DOCKS_LARGE_UPWARDS)
+
+////////
+//MISC//
+////////
+
