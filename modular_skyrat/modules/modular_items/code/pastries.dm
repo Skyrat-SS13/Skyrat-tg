@@ -12,14 +12,14 @@
 
 /obj/item/food/mimce_pie
 	name = "mimce pie"
-	desc = "The edible embodiment of christmas cheer."
+	desc = "A pastry with a star-shaped lid, filled with Nothing."
 	w_class = WEIGHT_CLASS_TINY
 	icon = 'modular_skyrat/modules/modular_items/icons/pastries.dmi'
 	icon_state = "mimce_pie"
 	food_flags = FOOD_FINGER_FOOD
 	foodtypes = GRAIN | SUGAR | FRUIT
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/nutriment/vitamin = 2)
-	tastes = list("fruit" = 1, "raisins" = 1, "christmas spirit" = 1)
+	tastes = list("nothing" = 1, "christmas spirit" = 1)
 
 // RECIPE
 
