@@ -225,13 +225,6 @@
 		if(!isnull(details[SKIN_ICON]))
 			cyborg.icon = details[SKIN_ICON]
 			cyborg_icon_override = details[SKIN_ICON] // SKYRAT EDIT ADDITION
-		// SKYRAT EDIT START - Moved it up so we could deduce base_pixel_x based on R_TRAIT_WIDE, while also letting people override it manually if need be.
-		if(!isnull(details[SKIN_TRAITS]))
-			model_traits += details[SKIN_TRAITS]
-			if(R_TRAIT_WIDE in model_traits)
-				cyborg.base_pixel_x = ROBOT_WIDE_OFFSET_X
-		// SKYRAT EDIT END
-		if(!isnull(details[SKIN_PIXEL_X]))
 			cyborg.base_pixel_x = details[SKIN_PIXEL_X]
 		if(!isnull(details[SKIN_PIXEL_Y]))
 			cyborg.base_pixel_y = details[SKIN_PIXEL_Y]
