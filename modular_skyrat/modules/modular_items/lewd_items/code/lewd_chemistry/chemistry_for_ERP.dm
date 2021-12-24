@@ -419,7 +419,8 @@
 			return ..()
 		mob_penis.genital_size += penis_length_increase_step
 		///Improvision to girth to not make it random chance.
-		exposed_mob.getorganslot(ORGAN_SLOT_PENIS).girth = (exposed_mob.getorganslot(ORGAN_SLOT_PENIS).girth + (exposed_mob.getorganslot(ORGAN_SLOT_PENIS).girth/mob_penis.genital_size))
+		var/girth = exposed_mob.getorganslot(ORGAN_SLOT_PENIS).girth
+		girth = round((girth + (girth/mob_penis.genital_size)), -1)
 		mob_penis.update_sprite_suffix()
 		exposed_mob.update_body()
 		enlargement_amount = 0
@@ -438,25 +439,25 @@
 			if (mob_penis?.genital_size >= (penis_max_length - 2))
 				if (exposed_mob.dna.features["penis_sheath"] == SHEATH_SLIT)
 					if(mob_penis.aroused != AROUSAL_FULL)
-						to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [exposed_mob.getorganslot(ORGAN_SLOT_PENIS).girth] inches in circumference."))
+						to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [girth] inches in circumference."))
 					return
 				exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(public_cock_action_text_list)]"))
-				to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [exposed_mob.getorganslot(ORGAN_SLOT_PENIS).girth] inches in circumference."))
+				to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [girth] inches in circumference."))
 				return
 			else
 				if (exposed_mob.dna.features["penis_sheath"] == SHEATH_SLIT)
 					if(mob_penis.aroused != AROUSAL_FULL)
-						to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [exposed_mob.getorganslot(ORGAN_SLOT_PENIS).girth] inches in circumference."))
+						to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [girth] inches in circumference."))
 					return
 				exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(cock_text_list)] [pick(public_cock_action_text_list)]"))
-				to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [exposed_mob.getorganslot(ORGAN_SLOT_PENIS).girth] inches in circumference."))
+				to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [girth] inches in circumference."))
 				return
 		else
 			if (mob_penis?.genital_size >= (penis_max_length - 2))
-				to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [exposed_mob.getorganslot(ORGAN_SLOT_PENIS).girth] inches in circumference."))
+				to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [girth] inches in circumference."))
 				return
 			else
-				to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [exposed_mob.getorganslot(ORGAN_SLOT_PENIS).girth] inches in circumference."))
+				to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [girth] inches in circumference."))
 				return
 
 	if((mob_penis?.genital_size >= (penis_max_length - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
