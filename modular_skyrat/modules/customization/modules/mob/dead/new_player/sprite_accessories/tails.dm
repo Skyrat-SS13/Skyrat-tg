@@ -16,7 +16,8 @@
 	if(general_type && H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/armor/mod))
 		var/obj/item/clothing/suit/armor/mod/modsuit_chest = H.wear_suit
 		var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
-		if(modsuit_control.modsuit_tail_colors)
+		var/datum/mod_theme/mod_theme = modsuit_control.theme
+		if(mod_theme.modsuit_tail_colors)
 			return "[general_type]_hardsuit"
 
 	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
@@ -30,7 +31,8 @@
 	if(passed_state == "[general_type]_hardsuit") //Guarantees we're wearing a MODsuit, skip checks
 		var/obj/item/clothing/suit/armor/mod/modsuit_chest = H.wear_suit
 		var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
-		if(modsuit_control.modsuit_tail_colors)
+		var/datum/mod_theme/mod_theme = modsuit_control.theme
+		if(mod_theme.modsuit_tail_colors)
 			returned = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails_hardsuit.dmi'
 	return returned
 
@@ -38,7 +40,8 @@
 	if(passed_state == "[general_type]_hardsuit") //Guarantees we're wearing a MODsuit, skip checks
 		var/obj/item/clothing/suit/armor/mod/modsuit_chest = H.wear_suit
 		var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
-		if(modsuit_control.modsuit_tail_colors)
+		var/datum/mod_theme/mod_theme = modsuit_control.theme
+		if(mod_theme.modsuit_tail_colors)
 			//Currently this way, when I have more time I'll write a hex -> matrix converter to pre-bake them instead
 			var/list/finished_list = list()
 			finished_list += ReadRGB("[modsuit_control.modsuit_tail_colors[1]]00")
@@ -72,10 +75,11 @@
 		if(H.try_hide_mutant_parts)
 			return TRUE
 		if(H.wear_suit.flags_inv & HIDEJUMPSUIT)
-			if(istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
+			if(istype(H.wear_suit, /obj/item/clothing/suit/armor/mod))
 				var/obj/item/clothing/suit/armor/mod/modsuit_chest = H.wear_suit
 				var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
-				if(modsuit_control.modsuit_tail_colors)
+				var/datum/mod_theme/mod_theme = modsuit_control.theme
+				if(mod_theme.modsuit_tail_colors)
 					return FALSE
 			return TRUE
 	if(H.owned_turf)  //we do a lil' emoting

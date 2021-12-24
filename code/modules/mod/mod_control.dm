@@ -80,9 +80,6 @@
 	/// Person wearing the MODsuit.
 	var/mob/living/carbon/human/wearer
 
-	/// Tail colors for the tail overlay of the modsuit
-	var/list/modsuit_tail_colors // SKYRAT EDIT ADDITION
-
 /obj/item/mod/control/Initialize(mapload, new_theme, new_skin)
 	. = ..()
 	if(new_theme)
