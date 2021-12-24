@@ -103,14 +103,20 @@
 	var/less_input_message
 	if(SSlag_switch.measures[DISABLE_DEAD_KEYLOOP])
 		less_input_message = " - Notice: Observer freelook is currently disabled."
+<<<<<<< HEAD
 	//SKYRAT EDIT CHANGE BEGIN - NOTICE_REMOVE
 	//var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe? You will not be able to play this round![less_input_message]","Player Setup", "Yes", "No") - SKYRAT EDIT - ORIGINAL
 	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe?[less_input_message]","Player Setup", "Yes", "No")
 	//SKYRAT EDIT CHANGE END
 
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
+=======
+	var/this_is_like_playing_right = tgui_alert(usr, "Are you sure you wish to observe? You will not be able to play this round![less_input_message]", "Observe", "Yes", "No")
+	if(this_is_like_playing_right != "Yes")
+		return FALSE
+	if(QDELETED(src) || !src.client)
+>>>>>>> dcab86ba2cb (More standard tgui input conversions (#63464))
 		ready = PLAYER_NOT_READY
-		src << browse(null, "window=playersetup") //closes the player setup window
 		return FALSE
 
 	var/mob/dead/observer/observer = new()
