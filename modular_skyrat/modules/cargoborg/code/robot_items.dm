@@ -119,9 +119,10 @@
 
 
 /obj/item/borg/hydraulic_clamp/Destroy()
-	var/mob/living/silicon/robot/robot_holder = cyborg_holding_me.resolve()
-	UnregisterSignal(robot_holder, COMSIG_LIVING_DEATH)
-	..()
+	var/mob/living/silicon/robot/robot_holder = cyborg_holding_me?.resolve()
+	if(robot_holder)
+		UnregisterSignal(robot_holder, COMSIG_LIVING_DEATH)
+	return ..()
 
 
 /obj/item/borg/hydraulic_clamp/examine(mob/user)
