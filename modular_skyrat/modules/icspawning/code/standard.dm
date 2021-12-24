@@ -45,9 +45,8 @@
 		)
 
 /datum/outfit/debug/bsthardsuit //Debug objs plus hardsuit
-	name = "Bluespace Tech (Hardsuit)"
+	name = "Bluespace Tech (MODsuit)"
 	uniform = /obj/item/clothing/under/syndicate/combat
-	suit = /obj/item/clothing/suit/space/hardsuit/ert/debug
 	glasses = /obj/item/clothing/glasses/debug
 	ears = /obj/item/radio/headset/headset_cent
 	mask = /obj/item/clothing/mask/gas/welding/up
@@ -55,7 +54,7 @@
 	belt = /obj/item/storage/belt/utility/chief/full/debug
 	shoes = /obj/item/clothing/shoes/combat/debug
 	id = /obj/item/card/id/advanced/debug/bst
-	back = /obj/item/storage/backpack/holding
+	back = /obj/item/mod/control/pre_equipped/administrative
 	box = /obj/item/storage/box/debugtools
 	suit_store = /obj/item/tank/internals/oxygen
 	internals_slot = ITEM_SLOT_SUITSTORE
