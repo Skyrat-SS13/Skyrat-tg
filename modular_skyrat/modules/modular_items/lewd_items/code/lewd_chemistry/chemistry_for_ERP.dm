@@ -420,7 +420,7 @@
 		mob_penis.genital_size += penis_length_increase_step
 		///Improvision to girth to not make it random chance.
 		var/girth = exposed_mob.getorganslot(ORGAN_SLOT_PENIS).girth
-		girth = round((girth + (girth/mob_penis.genital_size)), -1)
+		girth = round(girth + (girth/mob_penis.genital_size))
 		mob_penis.update_sprite_suffix()
 		exposed_mob.update_body()
 		enlargement_amount = 0
