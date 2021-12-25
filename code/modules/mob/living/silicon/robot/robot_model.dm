@@ -188,6 +188,13 @@
 	new_model.rebuild_modules()
 	cyborg.radio.recalculateChannels()
 	cyborg.set_modularInterface_theme()
+<<<<<<< HEAD
+=======
+	cyborg.diag_hud_set_health()
+	cyborg.diag_hud_set_status()
+	cyborg.diag_hud_set_borgcell()
+	cyborg.diag_hud_set_aishell()
+>>>>>>> 74f5a84d204 (fixes an issue where tall borgs would not compile (#63620))
 	log_silicon("CYBORG: [key_name(cyborg)] has transformed into the [new_model] model.")
 
 	//SKYRAT EDIT ADDITION BEGIN - ALTBORGS - Old check for 'dogborg' var no longer necessary, refactored into model_features instead.
