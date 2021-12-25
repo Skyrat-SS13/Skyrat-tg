@@ -23,43 +23,6 @@
 	inhand_icon_state = "armoralt"
 	blood_overlay_type = "armor"
 	dog_fashion = /datum/dog_fashion/back
-	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Basic Armor" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "armoralt",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "armoralt"
-		),
-		"Alternative Armor" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "armor",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "armor"
-		),
-		"Blue Shift" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "guard_armor",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "guard_armor"
-		),
-		"Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "peacekeeper_armor",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeper",
-			RESKIN_MUTANT_VARIANTS = NONE
-		),
-		"Black Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "peacekeeper_black",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeper_black",
-			RESKIN_MUTANT_VARIANTS = NONE
-		)
-	)
-	/// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/suit/armor/vest/alt
 	desc = "A Type I armored vest that provides decent protection against most types of damage."

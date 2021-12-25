@@ -70,3 +70,6 @@
 #define COMSIG_START_FISHING "start_fishing"
 //when someone pulls back their fishing rod
 #define COMSIG_FINISH_FISHING "finish_fishing"
+
+/// From mob/living/*/set_combat_mode(): (new_state)
+#define COMSIG_LIVING_COMBAT_MODE_TOGGLE "living_combat_mode_toggle"
