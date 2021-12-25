@@ -374,7 +374,7 @@
 	desc = "A dark hat from the cold wastes of the Frosthill mountains. So it was done, all according to the law. There's a small set of antlers embroidered on the inside."
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
-	flags_inv = HIDEHAIR
+	flags_inv = HIDEHAIR | SHOWSPRITEEARS
 
 /obj/item/clothing/head/cowboyhat/sheriff/alt
 	name = "sheriff hat"
