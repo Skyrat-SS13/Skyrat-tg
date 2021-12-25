@@ -3,7 +3,7 @@
 
 /datum/mod_theme
 	/// Tail colors for the tail overlay of the modsuit
-	var/list/modsuit_tail_colors
+	var/list/modsuit_tail_colors = list("#243A61", "#151515", "#585858")
 
 /datum/mod_theme/engineering
 	modsuit_tail_colors = list("#997744", "#AA6622", "#CC9955")
@@ -27,7 +27,7 @@
 	modsuit_tail_colors = list("#DDDDDD", "#AA7755", "#FFFFFF")
 
 /datum/mod_theme/research
-	modsuit_tail_colors = list("#CCBB77", "#883399", "#999955")
+	modsuit_tail_colors = list("#1E1E32", "#0D0C19", "#7A0BB7")
 
 /datum/mod_theme/security
 	modsuit_tail_colors = list("#222222", "#CC2233", "#333355")
