@@ -3,11 +3,11 @@
 /obj/item/hairbrush
 	name = "hairbrush"
 	desc = "A small, circular brush with an ergonomic grip for efficient brush application."
-	icon = 'modular_skyrat/modules/hairbrush/icons/obj/hairbrush.dmi'
+	icon = 'modular_skyrat/modules/hairbrush/icons/hairbrush.dmi'
 	icon_state = "brush"
 	inhand_icon_state = "inhand"
-	lefthand_file = 'modular_skyrat/modules/hairbrush/icons/mob/inhand_left.dmi'
-	righthand_file = 'modular_skyrat/modules/hairbrush/icons/mob/inhand_right.dmi'
+	lefthand_file = 'modular_skyrat/modules/hairbrush/icons/inhand_left.dmi'
+	righthand_file = 'modular_skyrat/modules/hairbrush/icons/inhand_right.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	var/brush_speed = 3 SECONDS
 
@@ -35,7 +35,7 @@
 			return
 
 		// Do 1 brute to their head if they're bald. Should've been more careful.
-		if(human_target.hairstyle == "Bald")
+		if(human_target.hairstyle == "Bald" || human_target.hairstyle == "Skinhead" && is_species(human_target, /datum/species/human)) //It can be assumed most anthros have hair on them!
 			human_target.visible_message(span_warning("[usr] scrapes the bristles uncomfortably over [human_target]'s scalp."), span_warning("You scrape the bristles uncomfortably over [human_target]'s scalp."))
 			head.receive_damage(1)
 			return

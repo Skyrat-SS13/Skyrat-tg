@@ -74,6 +74,8 @@ If you wanted to add some location to the CentCom z-level, a'la whatever off-sta
 
 If you plan to edit space ruins and so on, currently, it should be discussed with a maintainer and likely should be PRed upstream, to tgstation repository.
 
+Put any skyrat specific maps into the _maps/ folder, and then into the skyrat folder inside the type. E.g. an ice ruin map would go into_maps/RandomRuins/IceRuins/skyrat/whatever.dmm.
+
 ### Assets: images, sounds, icons and binaries
 
 Git doesn't handle conflicts of binary files well at all, therefore changes to core binary files are absolutely forbidden, unless you have a really *really* ***really*** good reason to do otherwise.
@@ -242,7 +244,7 @@ In those cases, we've decided to apply the following convention, with examples:
   SSshuttle.emergency.request()
   SSblackbox.record_feedback("tally", "admin_verb", 1, "Call Shuttle") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
   log_admin("[key_name(usr)] admin-called the emergency shuttle.")
-  message_admins("<span class='adminnotice'>[key_name_admin(usr)] admin-called the emergency shuttle.</span>")
+  message_admins(span_adminnotice("[key_name_admin(usr)] admin-called the emergency shuttle."))
   return
   */
   //SKYRAT EDIT REMOVAL END
@@ -266,6 +268,43 @@ From every rule, there's exceptions, due to many circumstances. Don't think abou
 
 Due to the way byond loads files, it has become necessary to make a different folder for handling our modular defines.
 That folder is **`code/__DEFINES/~skyrat_defines`**, in which you can add them to the existing files, or create those files as necessary.
+
+### Module folder layout
+
+To keep form and ensure most modules are easy to navigate and to keep control of the amount of files and folders being made in the repository, you are required to follow this layout.
+
+Ensure the folder names are exactly as stated.
+
+Top most folder: module_id
+
+**code**: Any .DM files must go in here, DO NOT COPY THE DIRECTORY OF THE ORIGINAL FILE YOU ARE ADDING.
+
+- Good: /modular_skyrat/modules/example_module/code/disease_mob.dm
+- Bad: /modular_skyrat/modules/example_module/code/modules/antagonists/disease/disease_mob.dm
+
+**icons**: Any .DMI files must go in here, DO NOT COPY THE DIRECTORY OF THE ORIGINAL FILE YOU ARE ADDING.
+
+- Good: /modular_skyrat/modules/example_module/icons/mining_righthand.dmi
+- Bad: /modular_skyrat/modules/example_module/icons/mob/inhands/equipment/mining_righthand.dmi
+
+**sound**: Any SOUND files must go in here, DO NOT COPY THE DIRECTORY OF THE ORIGINAL FILE YOU ARE ADDING.
+
+- Good: See above.
+- Bad: See above.
+
+The readme should go into the parent folder, module_id.
+
+**DO NOT MIX AND MATCH FILE TYPES IN FOLDERS!**
+
+### Commenting out code - DON'T DO IT
+
+If you are commenting out redundant code, do not comment it out, instead, delete it.
+
+Even if you think someone is going to redo whatever it is you're commenting out, don't, gitblame exists for a reason.
+
+This also applies to files, do not comment out entire files, just delete them instead. This helps us keep down on filebloat and pointless comments.
+
+**This does not apply to non-modular changes.**
 
 ## Exemplary PR's
 

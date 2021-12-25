@@ -1,5 +1,5 @@
 /obj/machinery/ammo_workbench
-	name = "Ammunitions Workbench"
+	name = "ammunitions workbench"
 	desc = "A machine, somewhat akin to a lathe, made specifically for manufacturing ammunition. It has a slot for magazines."
 	icon = 'modular_skyrat/modules/ammo_workbench/icons/ammo_workbench.dmi'
 	icon_state = "ammobench"
@@ -421,7 +421,7 @@
 		if(!user.transferItemToLoc(O, src))
 			return FALSE
 		if(loaded_magazine)
-			to_chat(user, "<span class='notice'>You swap quickly swap [O] for [loaded_magazine].</span>")
+			to_chat(user, span_notice("You swap quickly swap [O] for [loaded_magazine]."))
 			loaded_magazine.forceMove(drop_location())
 			user.put_in_hands(loaded_magazine)
 			loaded_magazine = null
@@ -432,7 +432,7 @@
 				deltimer(timer_id)
 				timer_id = null
 		loaded_magazine = O
-		to_chat(user, "<span class='notice'>You insert [O] to into [src]'s reciprocal.</span>")
+		to_chat(user, span_notice("You insert [O] to into [src]'s reciprocal."))
 		flick("h_lathe_load", src)
 		update_appearance()
 		playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
@@ -441,7 +441,7 @@
 		if(!user.transferItemToLoc(O, src))
 			return FALSE
 		loaded_datadisk = O
-		to_chat(user, "<span class='notice'>You insert [O] to into [src]'s floppydisk port.</span>")
+		to_chat(user, span_notice("You insert [O] to into [src]'s floppydisk port."))
 		flick("h_lathe_load", src)
 		update_appearance()
 		playsound(loc, 'sound/machines/terminal_insert_disc.ogg', 35, 1)
@@ -450,19 +450,19 @@
 
 /obj/machinery/ammo_workbench/proc/is_insertion_ready(mob/user, obj/item/O)
 	if(panel_open)
-		to_chat(user, "<span class='warning'>You can't load [src] while it's opened!</span>")
+		to_chat(user, span_warning("You can't load [src] while it's opened!"))
 		return FALSE
 	if(disabled)
-		to_chat(user, "<span class='warning'>The insertion belts of [src] won't engage!</span>")
+		to_chat(user, span_warning("The insertion belts of [src] won't engage!"))
 		return FALSE
 	if(machine_stat & BROKEN)
-		to_chat(user, "<span class='warning'>[src] is broken.</span>")
+		to_chat(user, span_warning("[src] is broken."))
 		return FALSE
 	if(machine_stat & NOPOWER)
-		to_chat(user, "<span class='warning'>[src] has no power.</span>")
+		to_chat(user, span_warning("[src] has no power."))
 		return FALSE
 	if(istype(O, /obj/item/disk/ammo_workbench) && loaded_datadisk)
-		to_chat(user, "<span class='warning'>[src] already has a disk inserted.</span>")
+		to_chat(user, span_warning("[src] already has a disk inserted."))
 		return FALSE
 	return TRUE
 
@@ -485,7 +485,7 @@
 // WIRE DATUM
 /datum/wires/ammo_workbench
 	holder_type = /obj/machinery/ammo_workbench
-	proper_name = "Ammunitions Workbench"
+	proper_name = "ammunitions workbench"
 
 /datum/wires/ammo_workbench/New(atom/holder)
 	wires = list(

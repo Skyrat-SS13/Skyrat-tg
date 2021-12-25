@@ -1,12 +1,13 @@
 GLOBAL_LIST_INIT(fishing_weights, list(
 	/obj/item/stack/ore/diamond = 1,
 	/obj/item/stack/ore/bluespace_crystal = 1,
-	/obj/item/stack/ore/gold = 1,
-	/obj/item/stack/ore/uranium = 1,
-	/obj/item/stack/ore/titanium = 1,
-	/obj/item/stack/ore/silver = 1,
-	/obj/item/stack/ore/iron = 1,
-	/obj/item/xenoarch/strange_rock = 10,
+	/obj/item/stack/ore/gold = 2,
+	/obj/item/stack/ore/uranium = 2,
+	/obj/item/stack/ore/titanium = 3,
+	/obj/item/stack/ore/silver = 3,
+	/obj/item/stack/ore/iron = 5,
+	/obj/item/stack/ore/glass = 5,
+	/obj/item/xenoarch/strange_rock = 1,
 ))
 
 /datum/component/fishing
@@ -43,6 +44,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	return ..()
 
 /datum/component/fishing/proc/start_fishing()
+	SIGNAL_HANDLER
 	var/random_fish_time = rand(3 SECONDS, 6 SECONDS)
 	COOLDOWN_START(src, start_fishing_window, random_fish_time)
 	COOLDOWN_START(src, stop_fishing_window, random_fish_time + 2 SECONDS)
@@ -58,8 +60,10 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 //rather than making a visual change, create a sound to reel back in
 /datum/component/fishing/proc/reel_sound()
 	playsound(atom_parent, 'sound/machines/ping.ogg', 35, FALSE)
+	atom_parent.do_alert_animation()
 
 /datum/component/fishing/proc/finish_fishing(atom/fisher = null, master_involved = FALSE)
+	SIGNAL_HANDLER
 	if(reel_sound_timer)
 		deltimer(reel_sound_timer)
 	if(mutate_parent)
@@ -74,13 +78,21 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 			create_reward(fisher_turf)
 
 /datum/component/fishing/proc/create_reward(turf/spawning_turf)
-	if(generate_fish)
-		generate_fish(spawning_turf, random_fish_type())
-	var/atom/spawning_reward = pick_weight(possible_loot)
+	var/atom/spawning_reward
+	switch(rand(1, 100))
+		if(1 to 50)
+			spawning_reward = pick_weight(GLOB.trash_loot)
+			while(islist(spawning_reward))
+				spawning_reward = pick_weight(spawning_reward)
+		if(51 to 75)
+			if(generate_fish)
+				generate_fish(spawning_turf, random_fish_type())
+		if(76 to 95)
+			spawning_reward = pick_weight(possible_loot)
+		if(96 to 100)
+			spawning_reward = /obj/item/skillchip/fishing_master
 	new spawning_reward(spawning_turf)
-	atom_parent.visible_message(span_notice("Something flys out of [atom_parent]!"))
-	if(prob(1))
-		new /obj/item/skillchip/fishing_master(spawning_turf)
+	atom_parent.visible_message(span_notice("Something flies out of [atom_parent]!"))
 
 /turf/open/water/Initialize(mapload)
 	. = ..()
@@ -91,14 +103,14 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	AddComponent(/datum/component/fishing, set_loot = GLOB.fishing_weights, allow_fishes = FALSE)
 
 /obj/item/skillchip/fishing_master
-	name = "Fishing Master skillchip"
+	name = "M4ST3R B41T skillchip"
 	desc = "A master of fishing, capable of wrangling the whole ocean if we must."
 	auto_traits = list(TRAIT_FISHING_MASTER)
 	skill_name = "Fishing Master"
 	skill_description = "Master the ability to fish."
 	skill_icon = "certificate"
-	activate_message = "<span class='notice'>The fish and junk become far more visible beneath the surface.</span>"
-	deactivate_message = "<span class='notice'>The surface begins to cloud up, making it hard to see beneath.</span>"
+	activate_message = span_notice("The fish and junk become far more visible beneath the surface.")
+	deactivate_message = span_notice("The surface begins to cloud up, making it hard to see beneath.")
 
 /obj/item/fishing_rod
 	name = "fishing rod"
@@ -112,6 +124,10 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	var/atom/target_atom
 	///the mob that picked up/equiped the rod and will be listened to
 	var/mob/listening_to
+
+/obj/item/fishing_rod/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/two_handed, require_twohands=TRUE)
 
 /obj/item/fishing_rod/Destroy()
 	if(listening_to)
@@ -144,6 +160,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 		target_atom = null
 
 /obj/item/fishing_rod/proc/check_movement()
+	SIGNAL_HANDLER
 	if(!listening_to)
 		return
 	if(!target_atom)
@@ -170,7 +187,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 		RegisterSignal(target_atom, COMSIG_MOVABLE_MOVED, .proc/check_movement, override = TRUE)
 	SEND_SIGNAL(target_atom, COMSIG_START_FISHING)
 
-/datum/crafting_recipe/fishing_rod
+/datum/crafting_recipe/fishing_rod_primitive
 	name = "Primitive Fishing Rod"
 	result = /obj/item/fishing_rod
 	reqs = list(/obj/item/stack/sheet/animalhide/goliath_hide = 2,

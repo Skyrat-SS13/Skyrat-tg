@@ -12,6 +12,10 @@
 
 /datum/surgery_step/proc/try_op(mob/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
 	var/success = FALSE
+	if(surgery.organ_to_manipulate && !target.getorganslot(surgery.organ_to_manipulate))
+		to_chat(user, span_warning("[target] seems to be missing the organ necessary to complete this surgery!"))
+		return FALSE
+
 	if(accept_hand)
 		if(!tool)
 			success = TRUE
@@ -88,13 +92,23 @@
 
 	var/was_sleeping = (target.stat != DEAD && target.IsSleeping())
 
-	// Skyrat Edit Addition - reward for doing surgery in surgery
+	// Skyrat Edit Addition - reward for doing surgery on calm patients, and for using surgery rooms(ie. surgerying alone)
 	if(was_sleeping || HAS_TRAIT(target, TRAIT_NUMBED) || target.stat == DEAD)
 		modded_time *= SURGERY_SPEEDUP_AREA
 		to_chat(user, span_notice("You are able to work faster due to the patient's calm attitude!"))
+	var/quiet_enviromnent = TRUE
+	for(var/mob/living/carbon/human/loud_people in view(3, target))
+		if(loud_people != user && loud_people != target)
+			quiet_enviromnent = FALSE
+			break
+	if(quiet_enviromnent)
+		modded_time *= SURGERY_SPEEDUP_AREA
+		to_chat(user, span_notice("You are able to work faster due to the quiet environment!"))
 	// Skyrat Edit End
-	if(iscyborg(user))//any immunities to surgery slowdown should go in this check.
-		modded_time = time
+	// Skyrat Edit: Cyborgs are no longer immune to surgery speedups.
+	//if(iscyborg(user))//any immunities to surgery slowdown should go in this check.
+		//modded_time = time
+	// Skyrat Edit End
 
 
 	if(do_after(user, modded_time, target = target, interaction_key = user.has_status_effect(STATUS_EFFECT_HIPPOCRATIC_OATH) ? target : DOAFTER_SOURCE_SURGERY)) //If we have the hippocratic oath, we can perform one surgery on each target, otherwise we can only do one surgery in total.
@@ -190,8 +204,18 @@
  * * pain_message - The message to be displayed
  * * mechanical_surgery - Boolean flag that represents if a surgery step is done on a mechanical limb (therefore does not force scream)
  */
+//SKYRAT EDIT START: Fixes painkillers not actually stopping pain. Adds mood effects to painful surgeries.
 /datum/surgery_step/proc/display_pain(mob/living/target, pain_message, mechanical_surgery = FALSE)
-	if(target.stat < UNCONSCIOUS)
-		to_chat(target, span_userdanger(pain_message))
-		if(prob(30) && !mechanical_surgery)
-			target.emote("scream")
+	if(target.stat >= UNCONSCIOUS) //the unconscious do not worry about pain
+		return
+	if(HAS_TRAIT(target, TRAIT_NUMBED)) //numbing helps but is not perfect - this is the tradeoff for being awake
+		SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "mild_surgery", /datum/mood_event/mild_surgery)
+		return
+	if(mechanical_surgery == TRUE) //robots can't benefit from numbing agents like most but have no reason not to sleep - their debuff falls in-between
+		SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "robot_surgery", /datum/mood_event/robot_surgery)
+		return
+	to_chat(target, span_userdanger(pain_message))
+	SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "severe_surgery", /datum/mood_event/severe_surgery)
+	if(prob(30))
+		target.emote("scream")
+//SKYRAT EDIT END

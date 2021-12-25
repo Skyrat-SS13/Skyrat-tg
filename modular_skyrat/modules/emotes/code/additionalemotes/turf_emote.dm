@@ -65,8 +65,7 @@ var/current_turf
 			var/list/snake_taurs = list("Naga", "Cybernetic Naga")
 			if(human_user.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME] in snake_taurs)
 				user.allowed_turfs -= list("pawprint", "hoofprint", "clawprint")
-				if(!(human_user.wear_suit && istype(human_user.wear_suit, /obj/item/clothing/suit/space/hardsuit)))
-					user.allowed_turfs += "constrict"
+				user.allowed_turfs += "constrict"
 
 		//clothing
 		var/obj/item/shoes = user.get_item_by_slot(ITEM_SLOT_FEET)
@@ -110,9 +109,9 @@ var/current_turf
 		var/list/colorable = list("dust", "slime", "vines", "footprint", "pawprint", "hoofprint", "clawprint")
 		if(current_turf in colorable) //These turfs are simply colored after their owner's primary
 			if(ishumanbasic(user) || ishumanoid(user))
-				user.owned_turf.color = "#" + human_user.dna.features["skin_color"]
+				user.owned_turf.color = human_user.dna.features["skin_color"]
 			else
-				user.owned_turf.color = "#" + human_user.dna.features["mcolor"]
+				user.owned_turf.color = human_user.dna.features["mcolor"]
 
 
 		var/list/body_part = list("tails", "constrict")
@@ -133,13 +132,14 @@ var/current_turf
 
 			switch(sprite_type.color_src)
 				if(USE_MATRIXED_COLORS)
-					finished_list += ReadRGB("[color_list[1]]0")
-					finished_list += ReadRGB("[color_list[2]]0")
-					finished_list += ReadRGB("[color_list[3]]0")
+					finished_list += ReadRGB("[color_list[1]]00")
+					finished_list += ReadRGB("[color_list[2]]00")
+					finished_list += ReadRGB("[color_list[3]]00")
 				if(USE_ONE_COLOR)
-					finished_list += ReadRGB("[color_list[1]]0")
-					finished_list += ReadRGB("[color_list[1]]0")
-					finished_list += ReadRGB("[color_list[1]]0")
+					var/padded_string = "[color_list[1]]00"
+					finished_list += ReadRGB(padded_string)
+					finished_list += ReadRGB(padded_string)
+					finished_list += ReadRGB(padded_string)
 
 			finished_list += list(0,0,0,255)
 			for(var/index in 1 to finished_list.len)
@@ -209,6 +209,7 @@ var/current_turf
 		return TRUE
 
 /datum/emote/living/mark_turf/proc/turf_owner(mob/living/user)
+	SIGNAL_HANDLER
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 
 	var/obj/owned_turf = user.owned_turf

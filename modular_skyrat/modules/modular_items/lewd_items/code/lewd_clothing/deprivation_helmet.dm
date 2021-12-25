@@ -13,7 +13,7 @@
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT|HIDEFACIALHAIR
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 25, RAD = 10, FIRE = 20, ACID = 15)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 25, FIRE = 20, ACID = 15)
 	clothing_flags = SNUG_FIT
 	var/color_changed = FALSE
 	//these three vars needed to turn deprivation stuff on or off
@@ -83,14 +83,14 @@
 	if(C == "speech")
 		if(muzzle == TRUE)
 			muzzle = FALSE
-			playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE)
+			playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
 			to_chat(usr, span_notice("Speech switch off"))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				REMOVE_TRAIT(usr, TRAIT_MUTE, CLOTHING_TRAIT)
 //				to_chat(U, span_purple("Your mouth is free. you breathe out with relief."))
 		else
 			muzzle = TRUE
-			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE)
+			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE, ignore_walls = FALSE)
 			to_chat(usr, span_notice("Speech switch on"))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				ADD_TRAIT(usr, TRAIT_MUTE, CLOTHING_TRAIT)
@@ -98,7 +98,7 @@
 	if(C == "hearing")
 		if(earmuffs == TRUE)
 			earmuffs = FALSE
-			playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE)
+			playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
 			to_chat(usr, span_notice("Hearing switch off"))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				REMOVE_TRAIT(usr, TRAIT_DEAF, CLOTHING_TRAIT)
@@ -106,7 +106,7 @@
 //				to_chat(U, span_purple("Finally you can hear the world around again."))
 		else
 			earmuffs = TRUE
-			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE)
+			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE, ignore_walls = FALSE)
 			to_chat(usr, span_notice("Hearing switch on"))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				ADD_TRAIT(usr, TRAIT_DEAF, CLOTHING_TRAIT)
@@ -117,14 +117,14 @@
 		var/mob/living/carbon/human/user = usr
 		if(prevent_vision == TRUE)
 			prevent_vision = FALSE
-			playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE)
+			playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
 			to_chat(usr, span_notice("Vision switch off"))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				user.cure_blind("deprivation_helmet_[REF(src)]")
 //				to_chat(U, span_purple("Helmet no longer restricts your vision."))
 		else
 			prevent_vision = TRUE
-			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE)
+			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE, ignore_walls = FALSE)
 			to_chat(usr, span_notice("Vision switch on"))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				user.become_blind("deprivation_helmet_[REF(src)]")

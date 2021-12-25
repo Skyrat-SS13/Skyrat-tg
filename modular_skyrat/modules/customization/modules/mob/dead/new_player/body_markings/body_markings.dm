@@ -8,7 +8,7 @@
 	var/icon_state
 	///The preview name of the body marking. NEEDS A UNIQUE NAME
 	var/name
-	///The color the marking defaults to, important for randomisations. either a hex color ie."FFF" or a define like DEFAULT_PRIMARY
+	///The color the marking defaults to, important for randomisations. either a hex color ie."#FFFFFF" or a define like DEFAULT_PRIMARY
 	var/default_color
 	///Which bodyparts does the marking affect in BITFLAGS!! (HEAD, CHEST, ARM_LEFT, ARM_RIGHT, HAND_LEFT, HAND_RIGHT, LEG_RIGHT, LEG_LEFT)
 	var/affected_bodyparts
@@ -21,7 +21,7 @@
 
 /datum/body_marking/New()
 	if(!default_color)
-		default_color = "FFF"
+		default_color = "#FFFFFF"
 
 /datum/body_marking/proc/get_default_color(var/list/features, var/datum/species/pref_species) //Needs features for the color information
 	var/list/colors
@@ -50,14 +50,14 @@
 /datum/body_marking/other/drake_bone
 	name = "Drake Bone"
 	icon_state = "drakebone"
-	default_color = "CCC"
+	default_color = "#CCCCCC"
 	affected_bodyparts = CHEST | HAND_LEFT | HAND_RIGHT
 	gendered = FALSE
 
 /datum/body_marking/other/tonage
 	name = "Body Tonage"
 	icon_state = "tonage"
-	default_color = "555"
+	default_color = "#555555"
 	affected_bodyparts = CHEST
 	gendered = FALSE
 
@@ -70,19 +70,19 @@
 /datum/body_marking/other/pilot
 	name = "Pilot"
 	icon_state = "pilot"
-	default_color = "CCC"
+	default_color = "#CCCCCC"
 	affected_bodyparts = HEAD | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT
 
 /datum/body_marking/other/pilot_jaw
 	name = "Pilot Jaw"
 	icon_state = "pilot_jaw"
-	default_color = "CCC"
+	default_color = "#CCCCCC"
 	affected_bodyparts = HEAD
 
 /datum/body_marking/other/drake_eyes
 	name = "Drake Eyes"
 	icon_state = "drakeeyes"
-	default_color = "F00"
+	default_color = "#FF0000"
 	affected_bodyparts = HEAD
 	always_color_customizable = TRUE
 
@@ -104,6 +104,12 @@
 /datum/body_marking/secondary
 	icon = 'modular_skyrat/master_files/icons/mob/body_markings/secondary_markings.dmi'
 	default_color = DEFAULT_SECONDARY
+
+/datum/body_marking/secondary/teshari
+	name = "Teshari"
+	icon_state = "teshari"
+	recommended_species = list(SPECIES_TESHARI)
+	affected_bodyparts = CHEST | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT
 
 /datum/body_marking/secondary/tajaran
 	name = "Tajaran"
@@ -470,7 +476,7 @@
 /datum/body_marking/tattoo
 	icon = 'modular_skyrat/master_files/icons/mob/body_markings/tattoo_markings.dmi'
 	recommended_species = null
-	default_color = "122" //slightly faded ink.
+	default_color = "#112222" //slightly faded ink.
 	always_color_customizable = TRUE
 	gendered = FALSE
 

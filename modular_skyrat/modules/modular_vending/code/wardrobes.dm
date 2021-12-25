@@ -23,10 +23,12 @@
 		/obj/item/clothing/under/misc/overalls = 3,
 		/obj/item/clothing/under/rank/engineering/engineer/formal = 3,
 		/obj/item/clothing/under/rank/engineering/engineer/formal/skirt = 3,
-		/obj/item/clothing/under/rank/engineering/engineer/hazard = 3,
 		/obj/item/clothing/under/utility/haz_green = 3,
-		/obj/item/clothing/head/hardhat/weldhat/dblue = 3,
-		/obj/item/clothing/head/hardhat/orange = 3,
+		/obj/item/clothing/head/hardhat/orange = 2,
+		/obj/item/clothing/head/hardhat/weldhat/orange = 2,
+		/obj/item/clothing/head/hardhat/dblue = 2,
+		/obj/item/clothing/head/hardhat/weldhat/dblue = 2,
+		/obj/item/clothing/head/hardhat/red = 2
 	)
 
 /obj/machinery/vending/wardrobe/atmos_wardrobe
@@ -54,6 +56,10 @@
 	skyrat_products = list(
 		/obj/item/clothing/head/beret/science/fancy/robo = 2,
 		/obj/item/clothing/under/utility/robo_sleek = 2,
+		/obj/item/tank/internals/anesthetic = 2,
+		/obj/item/clothing/mask/breath = 2,
+		/obj/item/reagent_containers/glass/bottle/morphine = 2,
+		/obj/item/reagent_containers/syringe = 2,
 	)
 
 /obj/machinery/vending/wardrobe/science_wardrobe

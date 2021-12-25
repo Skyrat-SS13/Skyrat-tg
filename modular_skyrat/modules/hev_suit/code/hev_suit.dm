@@ -1,3 +1,5 @@
+/* SKYRAT EDIT TODO - REFACTOR INTO A NEW SUIT
+
 #define HEV_COLOR_GREEN "#00ff00"
 #define HEV_COLOR_RED "#ff0000"
 #define HEV_COLOR_BLUE "#00aeff"
@@ -36,11 +38,12 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "hardsuit0-hev"
 	inhand_icon_state = "sec_helm"
-	hardsuit_type = "hev"
-	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 30, BIO = 40, RAD = 40, FIRE = 40, ACID = 40, WOUND = 10)
+
+	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 30, BIO = 40, FIRE = 40, ACID = 40, WOUND = 10)
 	obj_flags = NO_MAT_REDEMPTION
 	resistance_flags = LAVA_PROOF|FIRE_PROOF|UNACIDABLE|ACID_PROOF|INDESTRUCTIBLE|FREEZE_PROOF
-	clothing_flags = STOPSPRESSUREDAMAGE|THICKMATERIAL|SNUG_FIT|LAVAPROTECT|BLOCK_GAS_SMOKE_EFFECT|SCAN_REAGENTS
+	clothing_flags = STOPSPRESSUREDAMAGE|THICKMATERIAL|SNUG_FIT|LAVAPROTECT|BLOCK_GAS_SMOKE_EFFECT
+	clothing_traits = list(TRAIT_REAGENT_SCANNER)
 	visor_flags_inv = HIDEMASK|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	visor_flags = STOPSPRESSUREDAMAGE
 	slowdown = 0
@@ -52,13 +55,13 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "hardsuit-hev"
 	inhand_icon_state = "eng_hardsuit"
-	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 30, BIO = 40, RAD = 40, FIRE = 40, ACID = 40, WOUND = 10) //This is gordons suit, of course it's strong.
+	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 30, BIO = 40, FIRE = 40, ACID = 40, WOUND = 10) //This is gordons suit, of course it's strong.
 	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/energy/sword, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/hev_suit
 	jetpack = /obj/item/tank/jetpack/suit
 	cell = /obj/item/stock_parts/cell/hyper
 	slowdown = 0 //I am not gimping doctor freeman
-	hardsuit_tail_colors = list("D52", "444", "F62")
+	hardsuit_tail_colors = list("#DD5522", "#444444", "#FF6622")
 	actions_types = list(/datum/action/item_action/hev_toggle, /datum/action/item_action/hev_toggle_notifs, /datum/action/item_action/toggle_helmet, /datum/action/item_action/toggle_spacesuit)
 	resistance_flags = LAVA_PROOF|FIRE_PROOF|UNACIDABLE|ACID_PROOF|INDESTRUCTIBLE|FREEZE_PROOF
 	clothing_flags = STOPSPRESSUREDAMAGE|THICKMATERIAL|SNUG_FIT|LAVAPROTECT
@@ -164,7 +167,7 @@
 	if(!new_setting)
 		new_setting = HEV_NOTIFICATION_TEXT_AND_VOICE
 
-	to_chat(my_suit.current_user, "<span class='notice'>[my_suit] notification mode is now [new_setting].")
+	to_chat(my_suit.current_user, span_notice("[my_suit] notification mode is now [new_setting]."))
 
 	my_suit.send_notifications = new_setting
 
@@ -438,7 +441,7 @@
 		return
 	current_internals_tank = current_user.get_item_by_slot(ITEM_SLOT_SUITSTORE)
 	ADD_TRAIT(current_internals_tank, TRAIT_NODROP, "hev_trait")
-	to_chat(current_user, "<span class='notice'>You hear a click as [current_internals_tank] is secured to your suit.</span>")
+	to_chat(current_user, span_notice("You hear a click as [current_internals_tank] is secured to your suit."))
 	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/03_atmospherics_on.ogg', 50)
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
 	send_message("CALIBRATING VITALSIGN MONITORING SYSTEMS...")
@@ -466,7 +469,6 @@
 		deactivate()
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/medical_systems()
-	RegisterSignal(current_user, COMSIG_ATOM_RAD_ACT, .proc/process_radiation)
 	RegisterSignal(current_user, COMSIG_CARBON_GAIN_WOUND, .proc/process_wound)
 	RegisterSignal(current_user, COMSIG_ATOM_ACID_ACT, .proc/process_acid)
 	START_PROCESSING(SSobj, src)
@@ -622,13 +624,6 @@
 	acid_statement_cooldown = world.time + HEV_COOLDOWN_ACID
 	send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/chemical_detected.ogg')
 
-/obj/item/clothing/suit/space/hardsuit/hev_suit/proc/process_radiation()
-	SIGNAL_HANDLER
-	if(world.time <= rad_statement_cooldown)
-		return
-	rad_statement_cooldown = world.time + HEV_COOLDOWN_RADS
-	send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/radiation_detected.ogg')
-
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/weaponselect()
 	ADD_TRAIT(current_user, list(TRAIT_GUNFLIP,TRAIT_GUN_NATURAL), "hev_trait")
 	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/06_weaponselect_on.ogg', 50)
@@ -650,7 +645,7 @@
 	timer_id = addtimer(CALLBACK(src, .proc/finished), 4 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/finished()
-	to_chat(current_user, "<span class='notice'>You feel [src] seal around your body, locking it in place!</span>")
+	to_chat(current_user, span_notice("You feel [src] seal around your body, locking it in place!"))
 	ADD_TRAIT(src, TRAIT_NODROP, "hev_trait")
 	send_message("ALL SYSTEMS ONLINE, WELCOME [uppertext(current_user.real_name)]", HEV_COLOR_GREEN)
 	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/09_safe_day.ogg', 50)
@@ -696,7 +691,6 @@
 		UnregisterSignal(current_user, list(
 			COMSIG_ATOM_ACID_ACT,
 			COMSIG_CARBON_GAIN_WOUND,
-			COMSIG_ATOM_RAD_ACT,
 			COMSIG_MOB_RUN_ARMOR,
 			COMSIG_MOB_STATCHANGE
 		))
@@ -765,3 +759,4 @@
 #undef HEV_NOTIFICATION_VOICE
 #undef HEV_NOTIFICATION_OFF
 #undef HEV_NOTIFICATIONS
+*/

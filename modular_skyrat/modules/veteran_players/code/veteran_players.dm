@@ -18,6 +18,8 @@ GLOBAL_LIST(veteran_players)
 	rustg_file_write(veteran_list, VETERANPLAYERS)
 
 /proc/is_veteran_player(client/user)
+	if(isnull(user))
+		return FALSE
 	if(GLOB.veteran_players[user.ckey])
 		return TRUE
 	if(check_rights(R_ADMIN, FALSE))

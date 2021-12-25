@@ -1,5 +1,5 @@
 /datum/examine_panel
-	var/mob/living/carbon/human/holder //client of whoever is using this datum
+	var/mob/living/holder //client of whoever is using this datum
 	var/mob/living/carbon/human/dummy/dummy_holder
 	var/atom/movable/screen/examine_panel_dummy/examine_panel_screen
 
@@ -14,12 +14,17 @@
 
 /datum/examine_panel/ui_interact(mob/user, datum/tgui/ui)
 	if(!examine_panel_screen)
-		dummy_holder = generate_dummy_lookalike(REF(holder), holder)
-		var/datum/job/job_ref = SSjob.GetJob(holder.job)
-		if(job_ref && job_ref.outfit)
-			var/datum/outfit/outfit_ref = new()
-			outfit_ref.copy_outfit_from_target(holder)
-			outfit_ref.equip(dummy_holder, visualsOnly=TRUE)
+		if(ishuman(holder))
+			dummy_holder = generate_dummy_lookalike(REF(holder), holder)
+			var/datum/job/job_ref = SSjob.GetJob(holder.job)
+			if(job_ref && job_ref.outfit)
+				var/datum/outfit/outfit_ref = new()
+				outfit_ref.copy_outfit_from_target(holder)
+				outfit_ref.equip(dummy_holder, visualsOnly=TRUE)
+		/*
+		else if(issilicon(holder))
+			dummy_holder = image('icons/mob/robots.dmi', icon_state = "robot", dir = SOUTH) // this doesn't work and just shows a black screen, idk a solution though feel free to pitch in
+		*/
 		examine_panel_screen = new
 		examine_panel_screen.vis_contents += dummy_holder
 		examine_panel_screen.name = "screen"
@@ -37,24 +42,41 @@
 
 	var/datum/preferences/preferences = holder.client?.prefs
 
-	var/obscured = (holder.wear_mask && (holder.wear_mask.flags_inv & HIDEFACE)) || (holder.head && (holder.head.flags_inv & HIDEFACE))
-	var/name = obscured ? "Unknown" : holder.name
-	var/flavor_text = obscured ? "Obscured" :  holder.dna.features["flavor_text"]
-	var/custom_species = obscured ? "Obscured" : holder.dna.features["custom_species"]
-	var/custom_species_lore = obscured ? "Obscured" : holder.dna.features["custom_species_lore"]
-
+	var/flavor_text
+	var/custom_species
+	var/custom_species_lore
+	var/obscured
 	var/ooc_notes = ""
 
+	//  Handle OOC notes first
 	if(preferences && preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
 		var/e_prefs = preferences.read_preference(/datum/preference/choiced/erp_status)
 		var/e_prefs_nc = preferences.read_preference(/datum/preference/choiced/erp_status_nc)
 		var/e_prefs_v = preferences.read_preference(/datum/preference/choiced/erp_status_v)
+		var/e_prefs_mechanical = preferences.read_preference(/datum/preference/choiced/erp_status_mechanics)
 		ooc_notes += "ERP: [e_prefs]\n"
 		ooc_notes += "Non-Con: [e_prefs_nc]\n"
 		ooc_notes += "Vore: [e_prefs_v]\n"
+		ooc_notes += "ERP Mechanics: [e_prefs_mechanical]\n"
 		ooc_notes += "\n"
 
-	ooc_notes += holder.dna.features["ooc_notes"]
+	// Now we handle silicon and/or human, order doesn't really matter
+	// If other variants of mob/living need to be handled at some point, put them here
+	if(issilicon(holder))
+		flavor_text = preferences.read_preference(/datum/preference/text/silicon_flavor_text)
+		custom_species = "Silicon"
+		custom_species_lore = "A cyborg unit."
+		ooc_notes += preferences.read_preference(/datum/preference/text/ooc_notes)
+
+	if(ishuman(holder))
+		var/mob/living/carbon/human/holder_human = holder
+		obscured = (holder_human.wear_mask && (holder_human.wear_mask.flags_inv & HIDEFACE)) || (holder_human.head && (holder_human.head.flags_inv & HIDEFACE))
+		custom_species = obscured ? "Obscured" : holder_human.dna.features["custom_species"]
+		flavor_text = obscured ? "Obscured" :  holder_human.dna.features["flavor_text"]
+		custom_species_lore = obscured ? "Obscured" : holder_human.dna.features["custom_species_lore"]
+		ooc_notes += holder_human.dna.features["ooc_notes"]
+
+	var/name = obscured ? "Unknown" : holder.name
 
 	data["obscured"] = obscured ? TRUE : FALSE
 	data["character_name"] = name

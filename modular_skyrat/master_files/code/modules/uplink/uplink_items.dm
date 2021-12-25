@@ -29,7 +29,7 @@
 	name = "Unica Six Revolver"
 	desc = "A retro high-powered autorevolver typically used by officers of the New Russia military. Uses .357 ammo."
 	item = /obj/item/gun/ballistic/revolver/mateba
-	cost = 11
+	cost = 13
 	surplus = 50
 
 /datum/uplink_item/dangerous/holocarp
@@ -129,7 +129,7 @@
 	to tell these are the real deal. Box of 7."
 	item = /obj/item/storage/box/syndieshotglasses
 	cost = 2 //These are taken nearly exactly from Goon, very fun tool.
-	restricted_roles = list("Bartender")
+	restricted_roles = list(JOB_BARTENDER)
 
 //EXPLOSIVES
 /datum/uplink_item/explosives/buzzkill_traitor
@@ -232,29 +232,48 @@
 	item = /obj/item/ammo_box/magazine/smgm45/incen
 	cost = 2
 
+/datum/uplink_item/ammo/smgempty_traitor
+	name = "Empty .45 SMG Magazine"
+	desc = "An additional, empty 24-round .45 magazine suitable for use with the C-20r submachine gun.\
+			Ammunition not included."
+	item = /obj/item/ammo_box/magazine/smgm45/empty
+	cost = 1
+
 /datum/uplink_item/ammo/shotgun/buck_traitor
 	name = "12g Buckshot Drum"
 	desc = "An additional 8-round buckshot magazine for use with the Bulldog shotgun. Front towards enemy."
 	item = /obj/item/ammo_box/magazine/m12g
+	purchasable_from = ALL
 
 /datum/uplink_item/ammo/shotgun/dragon_traitor
 	name = "12g Dragon's Breath Drum"
 	desc = "An alternative 8-round dragon's breath magazine for use in the Bulldog shotgun. \
 			'I'm a fire starter, twisted fire starter!'"
 	item = /obj/item/ammo_box/magazine/m12g/dragon
+	purchasable_from = ALL
 
 /datum/uplink_item/ammo/shotgun/meteor_traitor
 	name = "12g Meteorslug Shells"
 	desc = "An alternative 8-round meteorslug magazine for use in the Bulldog shotgun. \
 		Great for blasting airlocks off their frames and knocking down enemies."
 	item = /obj/item/ammo_box/magazine/m12g/meteor
+	cost = 3
+	purchasable_from = ALL
 
 /datum/uplink_item/ammo/shotgun/slug_traitor
 	name = "12g Slug Drum"
 	desc = "An additional 8-round slug magazine for use with the Bulldog shotgun. \
 			Now 8 times less likely to shoot your pals."
-	cost = 3
 	item = /obj/item/ammo_box/magazine/m12g/slug
+	cost = 3
+	purchasable_from = ALL
+
+/datum/uplink_item/ammo/shotgun/empty_traitor
+	name = "Empty 12g Drum"
+	desc = "An empty 8-round magazine for use in the Bulldog shotgun. \
+			Ammunition not included."
+	cost = 1
+	item = /obj/item/ammo_box/magazine/m12g/empty
 
 //SUITS
 
@@ -271,7 +290,7 @@
 	cost = 1
 
 //HELMETS
-/datum/uplink_item/suits/hardsuit/swathelmet_traitor
+/datum/uplink_item/suits/swathelmet_traitor
 	name = "Syndicate Helmet"
 	desc = "An extremely robust, space-worthy helmet in a nefarious red and black stripe pattern."
 	item = /obj/item/clothing/head/helmet/swat
@@ -292,14 +311,14 @@
 	desc = "Recovered from an abandoned Nar'sie cult lair, two construct shells and a stash of empty soulstones was found. These were purified to prevent occult contamination and have been put in a belt so they may be used as an accessible source of disposable minions. The construct shells have been packaged into two beacons for rapid and portable deployment."
 	item = /obj/item/storage/box/syndie_kit/cultkitsr
 	cost = 15 //If used correctly, You actually get several servants or just get fucked over because no ghosts want to be a shade.
-	restricted_roles = list("Chaplain")
+	restricted_roles = list(JOB_CHAPLAIN)
 
 //LOADOUTS
 
 /datum/uplink_item/loadout_skyrat
 	category = "Loadout"
 	surplus = 0
-	cant_discount = TRUE //I honestly don't think discount is worth it for those things, sorry.
+	cant_discount = TRUE // I honestly don't think discount is worth it for those things, sorry.
 
 /datum/uplink_item/loadout_skyrat/recon
 	name = "Reconnaisance bundle"
@@ -347,12 +366,6 @@
 	name = "Dark Lord bundle"
 	desc = "Wield unlimited power with this extremely effective combative kit, guaranteed to give the user efficient staying potential in any confrontation."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/darklord
-	cost = 20
-
-/datum/uplink_item/loadout_skyrat/hunter
-	name = "Whaler bundle"
-	desc = "There’s no whales in space, but there sure are carp. Blend in with your prey and wield an impossibly effective high-power harpoon gun in this tribute to a tale told long ago."
-	item = /obj/item/storage/box/syndie_kit/loadout/hunter
 	cost = 20
 
 /datum/uplink_item/loadout_skyrat/bee

@@ -25,13 +25,13 @@
 /obj/item/taperoll/attack_self(mob/user as mob) //This one is pretty much a copy-paste, so dont ask me how the math works I failed that class. I /do/ know this is what handles placing the tape.
 	if(icon_state == "[icon_base]_start")
 		start = get_turf(src)
-		to_chat(usr, "<span class='notice'>You place the first end of \the [src].</span>")
+		to_chat(usr, span_notice("You place the first end of \the [src]."))
 		icon_state = "[icon_base]_stop"
 	else
 		icon_state = "[icon_base]_start"
 		end = get_turf(src)
 		if(start.y != end.y && start.x != end.x || start.z != end.z)
-			to_chat(usr, "<span class='notice'>\The [src] can only be laid horizontally or vertically.</span>")
+			to_chat(usr, span_notice("\The [src] can only be laid horizontally or vertically."))
 			return
 
 		var/turf/cur = start
@@ -60,7 +60,7 @@
 						break
 			cur = get_step_towards(cur,end)
 		if (!can_place)
-			to_chat(usr, "<span class='notice'>You can't run \the [src] through that!</span>")
+			to_chat(usr, span_notice("You can't run \the [src] through that!"))
 			return
 
 		cur = start
@@ -74,26 +74,26 @@
 				P.icon_state = "[P.icon_base]_[dir]"
 			cur = get_step_towards(cur,end)
 	//is_blocked_turf(var/turf/T) 			/*(what does this even do? it was commented out when I found it...)*/
-		to_chat(usr, "<span class='notice'> You finish placing \the [src].</span>"	)
+		to_chat(usr, span_notice(" You finish placing \the [src].")	)
 
 /obj/item/taperoll/afterattack(atom/A, mob/user as mob, proximity)
 	if (proximity && istype(A, /obj/machinery/door/airlock))
 		var/turf/T = get_turf(A)
 		if(locate(/obj/structure/jobtape) in T)	//Check if the door already has tape
-			to_chat(user, "<span class='notice'>This door is already taped!</span>")
+			to_chat(user, span_notice("This door is already taped!"))
 			return
 		var/obj/structure/jobtape/ourtape = new tape_type(T.x,T.y,T.z)
 		ourtape.loc = locate(T.x,T.y,T.z)
 		ourtape.icon_state = "[src.icon_base]_door"
 		ourtape.layer = ABOVE_WINDOW_LAYER
-		to_chat(user, "<span class='notice'>You finish placing \the [src].</span>")
+		to_chat(user, span_notice("You finish placing \the [src]."))
 
 /obj/structure/jobtape/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The tape is weak enough to easily push through on harm intent or by walking, though that'd be impolite...</span>"
+	. += span_notice("The tape is weak enough to easily push through on harm intent or by walking, though that'd be impolite...")
 	if(allowed(user))
-		. += "<span class='notice'>You can unroll the whole line by right-clicking with the tape roll!</span>"
-		. += "<span class='notice'>Clicking it with an empty hand will <b>lift</b> the tape, allowing anyone/anything to pass through.</span>"
+		. += span_notice("You can unroll the whole line by right-clicking with the tape roll!")
+		. += span_notice("Clicking it with an empty hand will <b>lift</b> the tape, allowing anyone/anything to pass through.")
 
 /obj/structure/jobtape/CanAllowThrough(atom/movable/mover, turf/target)	//This is low-key based off the holosigns, but modified to be better fitting for tape - people can't walk thru, but they can smash
 	. = ..()
@@ -105,10 +105,10 @@
 		if(!crumpled)
 			if(target_carbon.combat_mode || target_carbon.m_intent == MOVE_INTENT_WALK)
 				crumple()
-				visible_message("<span class='notice'>[target_carbon] pushes through \the [src] aggressively, ruining the tape!</span>")
+				visible_message(span_notice("[target_carbon] pushes through \the [src] aggressively, ruining the tape!"))
 				return TRUE
 			else	//Good boi player obeys the tape
-			/*to_chat(target_carbon, "<span class='notice'>You don't want to cross \the [src], it's there for a reason...</span>")*/ //-- I WANT to have it post a message, but need a way to avoid chatspamming people walking into it... --//
+			/*to_chat(target_carbon, span_notice("You don't want to cross \the [src], it's there for a reason..."))*/ //-- I WANT to have it post a message, but need a way to avoid chatspamming people walking into it... --//
 				return FALSE
 		else
 			return TRUE
@@ -134,15 +134,15 @@
 	else	//Icon is implied to be vertical if it reaches this point
 		icon_state = "[icon_base]_v"
 	name = initial(name)
-	visible_message("<span class='notice'>[usr] repairs \the [src], restoring its quality.</span>")
+	visible_message(span_notice("[usr] repairs \the [src], restoring its quality."))
 
 /obj/structure/jobtape/proc/lifttape()
 	if(crumpled)
-		to_chat(usr, "<span class='notice'>There's no point lifting damaged [src] - try repairing it first.</span>")	//Find out how to make sure this doesnt post "damaged the tape", instead just "damaged tape"
+		to_chat(usr, span_notice("There's no point lifting damaged [src] - try repairing it first."))	//Find out how to make sure this doesnt post "damaged the tape", instead just "damaged tape"
 		return
 	else
 		lifted = !lifted
-		visible_message("<span class='notice'>[usr] [lifted ? "lifts" : "lowers"] \the [src], [lifted ? "allowing" : "restricting"] passage.</span>")
+		visible_message(span_notice("[usr] [lifted ? "lifts" : "lowers"] \the [src], [lifted ? "allowing" : "restricting"] passage."))
 		if(!lifted)
 			name = initial(name)
 			alpha = 255
@@ -176,12 +176,12 @@
 
 /obj/structure/jobtape/proc/breaktape(obj/item/useditem, mob/living/user, params)	//Handles actually removing the tape
 	if(useditem.tool_behaviour == TOOL_WIRECUTTER || useditem.sharpness == SHARP_EDGED)
-		visible_message("<span class='notice'>[user] breaks \the [src]!</span>")
+		visible_message(span_notice("[user] breaks \the [src]!"))
 		qdel(src)
 		return
 	if(istype(useditem, /obj/item/taperoll))	//Should only trigger on right-click
 		if(!do_after(usr, 3.5 SECONDS, target = usr))
-			to_chat(usr, "<span class='notice'>You have to stand still to re-roll \the [src]!</span>")
+			to_chat(usr, span_notice("You have to stand still to re-roll \the [src]!"))
 			return
 		//Again, IDK what the math and code hear entirely means, it's mostly unchanged from the TGMC code - I /assume/ this is meant to cut entire connected lines of tape
 		var/dir[2]
@@ -202,10 +202,10 @@
 						N = 0
 						qdel(P)
 				cur = get_step(cur,dir[i])
-		visible_message("<span class='notice'>[user] re-rolls \the [src], cleanly removing the full line!</span>")
+		visible_message(span_notice("[user] re-rolls \the [src], cleanly removing the full line!"))
 		qdel(src)
 	else
-		to_chat(user, "<span class='notice'>You can't break \the [src] with that!</span>")
+		to_chat(user, span_notice("You can't break \the [src] with that!"))
 		return
 
 /*----- Actually usable tape types below this line -----*/

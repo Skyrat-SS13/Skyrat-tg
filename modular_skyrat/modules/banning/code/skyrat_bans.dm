@@ -10,7 +10,7 @@ GLOBAL_LIST_EMPTY(hell) //eorg banned players go here
 	. = ..()
 	if(ckey)
 		if(is_banned_from(ckey, BAN_DONOTREVIVE))
-			to_chat(src, "<span class='notice'>As you are revival banned, you cannot reenter your body.")
+			to_chat(src, span_notice("As you are revival banned, you cannot reenter your body."))
 			can_reenter_corpse = FALSE
 
 /proc/process_eorg_bans()

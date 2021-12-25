@@ -6,6 +6,7 @@
 	extra_price = PAYCHECK_HARD
 	payment_department = NO_FREEBIES
 	input_display_header = "Returned Clothing"
+	panel_type = "panel19"
 	light_mask = "wardrobe-light-mask"
 
 /obj/machinery/vending/wardrobe/canLoadItem(obj/item/I,mob/user)
@@ -22,17 +23,18 @@
 					/obj/item/storage/backpack/satchel/sec = 3,
 					/obj/item/storage/backpack/duffelbag/sec = 3,
 					/obj/item/clothing/under/rank/security/officer = 3,
-					/obj/item/clothing/shoes/jackboots = 3,
+					///obj/item/clothing/shoes/jackboots = 3, SKYRAT EDIT REMOVAL
 					/obj/item/clothing/head/beret/sec = 3,
-					/obj/item/clothing/head/soft/sec = 3,
-					/obj/item/clothing/mask/bandana/red = 3,
+					///obj/item/clothing/head/soft/sec = 3, SKYRAT EDIT REMOVAL
+					///obj/item/clothing/mask/bandana/red = 3, SKYRAT EDIT REMOVAL
 					/obj/item/clothing/gloves/color/black = 3,
-					/obj/item/clothing/under/rank/security/officer/skirt = 3,
-					/obj/item/clothing/under/rank/security/officer/grey = 3,
+					///obj/item/clothing/under/rank/security/officer/skirt = 3, SKYRAT EDIT REMOVAL
+					///obj/item/clothing/under/rank/security/officer/grey = 3, SKYRAT EDIT REMOVAL
 					/obj/item/clothing/under/pants/khaki = 3,
 					/obj/item/clothing/under/rank/security/officer/blueshirt = 3)
-	premium = list(/obj/item/clothing/under/rank/security/officer/formal = 3,
-					/obj/item/clothing/suit/security/officer = 3,
+
+	premium = list(///obj/item/clothing/under/rank/security/officer/formal = 3, SKYRAT EDIT REMOVAL
+					///obj/item/clothing/suit/security/officer = 3, SKYRAT EDIT REMOVAL
 					/obj/item/clothing/head/beret/sec/navyofficer = 3)
 	refill_canister = /obj/item/vending_refill/wardrobe/sec_wardrobe
 	payment_department = ACCOUNT_SEC
@@ -356,8 +358,8 @@
 					/obj/item/clothing/under/suit/black = 1,
 					/obj/item/clothing/under/suit/black/skirt = 1,
 					/obj/item/clothing/suit/toggle/lawyer/black = 1,
-					/obj/item/clothing/under/rank/civilian/lawyer/female = 1,
-					/obj/item/clothing/under/rank/civilian/lawyer/female/skirt = 1,
+					/obj/item/clothing/under/rank/civilian/lawyer/beige = 1,
+					/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt = 1,
 					/obj/item/clothing/under/suit/black_really = 1,
 					/obj/item/clothing/under/suit/black_really/skirt = 1,
 					/obj/item/clothing/under/rank/civilian/lawyer/blue = 1,
@@ -493,6 +495,15 @@
 					/obj/item/clothing/head/fedora = 2,
 					/obj/item/clothing/gloves/color/black = 2,
 					/obj/item/clothing/gloves/color/latex = 2,
+					/obj/item/clothing/under/rank/security/detective/disco = 1,
+					/obj/item/clothing/suit/det_suit/disco = 1,
+					/obj/item/clothing/shoes/discoshoes = 1,
+					/obj/item/clothing/neck/tie/disco = 1,
+					/obj/item/clothing/under/rank/security/detective/kim = 1,
+					/obj/item/clothing/suit/det_suit/kim = 1,
+					/obj/item/clothing/shoes/kim = 1,
+					/obj/item/clothing/gloves/kim = 1,
+					/obj/item/clothing/glasses/regular/kim = 1,
 					/obj/item/reagent_containers/food/drinks/flask/det = 2,
 					/obj/item/storage/fancy/cigarettes = 5)
 	premium = list(/obj/item/clothing/head/flatcap = 1)

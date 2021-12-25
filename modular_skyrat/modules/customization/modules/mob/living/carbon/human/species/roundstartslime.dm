@@ -12,7 +12,7 @@
 	id = SPECIES_SLIMESTART
 	limbs_id = SPECIES_SLIMEPERSON
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/slime_parts_greyscale.dmi'
-	default_color = "00FFFF"
+	default_color = "#00FFFF"
 	say_mod = "says"
 	coldmod = 3
 	heatmod = 1
@@ -36,11 +36,11 @@
 	if(slime_restricted && !isjellyperson(H))
 		return
 	if(slime_restricted)
-		H.visible_message("<span class='notice'>[owner] gains a look of \
+		H.visible_message(span_notice("[owner] gains a look of \
 		concentration while standing perfectly still.\
-		 Their body seems to shift and starts getting more goo-like.</span>",
-		"<span class='notice'>You focus intently on altering your body while \
-		standing perfectly still...</span>")
+		 Their body seems to shift and starts getting more goo-like."),
+		span_notice("You focus intently on altering your body while \
+		standing perfectly still..."))
 	change_form()
 
 /datum/action/innate/slime_change/proc/change_form()
@@ -62,7 +62,7 @@
 					color_target = "mcolor2"
 				if("Tertiary")
 					color_target = "mcolor3"
-			var/new_mutantcolor = input(H, "Choose your character's new [lowertext(color_choice)] color:", "Form Alteration","#"+DNA.features[color_target]) as color|null
+			var/new_mutantcolor = input(H, "Choose your character's new [lowertext(color_choice)] color:", "Form Alteration",DNA.features[color_target]) as color|null
 			if(!new_mutantcolor)
 				return
 			var/marking_reset = tgui_alert(H, "Would you like to reset your markings to match your new colors?", "", list("Yes", "No"))
@@ -194,10 +194,10 @@
 					var/obj/item/organ/genital/breasts/melons = H.getorganslot(ORGAN_SLOT_BREASTS)
 					if(melons)
 						melons.lactates = DNA.features["breasts_lactation"]
-					to_chat(H, "<span class='notice'>Your breasts [DNA.features["breasts_lactation"] ? "will now lactate" : "will not lactate anymore"].</span>")
+					to_chat(H, span_notice("Your breasts [DNA.features["breasts_lactation"] ? "will now lactate" : "will not lactate anymore"]."))
 				if("Penis Taur Mode")
 					DNA.features["penis_taur_mode"] = !DNA.features["penis_taur_mode"]
-					to_chat(H, "<span class='notice'>Your penis [DNA.features["penis_taur_mode"] ? "will be at your taur part" : "will not be at your taur part anymore"].</span>")
+					to_chat(H, span_notice("Your penis [DNA.features["penis_taur_mode"] ? "will be at your taur part" : "will not be at your taur part anymore"]."))
 				if("Penis Size")
 					var/new_length = input(H, "Choose your penis length:\n([PENIS_MIN_LENGTH]-[PENIS_MAX_LENGTH] in inches)", "DNA Alteration") as num|null
 					if(new_length)

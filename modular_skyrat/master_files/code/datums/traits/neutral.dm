@@ -4,38 +4,28 @@
 /datum/quirk/excitable
 	name = "Excitable!"
 	desc = "Head patting makes your tail wag! You're very excitable! WAG WAG."
-	gain_text = "<span class='notice'>You crave for some headpats!</span>"
-	lose_text = "<span class='notice'>You no longer care for headpats all that much.</span>"
+	gain_text = span_notice("You crave for some headpats!")
+	lose_text = span_notice("You no longer care for headpats all that much.")
 	medical_record_text = "Patient seems to get excited easily."
 	value = 0
 	mob_trait = TRAIT_EXCITABLE
 	icon = "laugh-beam"
 
-/datum/quirk/ironass
-	name = "Iron Ass"
-	desc = "Your ass is incredibly firm, so firm infact that anyone slapping it will suffer grave injuries."
-	gain_text = "<span class='notice'>Your ass feels solid!</span>"
-	lose_text = "<span class='notice'>Your ass doesn't feel so solid anymore.</span>"
-	medical_record_text = "Patient's ass seems incredibly solid."
+/datum/quirk/personalspace
+	name = "Personal Space"
+	desc = "You'd rather people keep their hands to themselves, and you won't let anyone touch your ass.."
+	gain_text = span_notice("You'd like it if people kept their hands off your ass.")
+	lose_text = span_notice("You're less concerned about people touching your ass.")
+	medical_record_text = "Patient demonstrates negative reactions to their posterior being touched."
 	value = 0
-	mob_trait = TRAIT_IRONASS
+	mob_trait = TRAIT_PERSONALSPACE
 	icon = "hand-paper"
-
-/datum/quirk/dnc
-	name = "Do Not Clone"
-	desc = "For whatever reason, you cannot be cloned in any way. You can still be revived in other ways, <b><i>but medical doctors are not always required to revive you.</i></b>"
-	gain_text = "<span class='notice'>Your feel your soul binding itself to your body.</span>"
-	lose_text = "<span class='notice'>You can feel your spirit detach from your body.</span>"
-	medical_record_text = "Patient's anatomy is incompatible with conventional cloning techniques."
-	value = 0
-	mob_trait = TRAIT_DNC
-	icon = "users-slash"
 
 /datum/quirk/dnr
 	name = "Do Not Revive"
 	desc = "For whatever reason, you cannot be revived in any way."
-	gain_text = "<span class='notice'>Your spirit gets too scarred to accept revival.</span>"
-	lose_text = "<span class='notice'>You can feel your soul healing again.</span>"
+	gain_text = span_notice("Your spirit gets too scarred to accept revival.")
+	lose_text = span_notice("You can feel your soul healing again.")
 	medical_record_text = "Patient is a DNR, and cannot be revived in any way."
 	value = 0
 	mob_trait = TRAIT_DNR
@@ -98,27 +88,27 @@
 	..()
 	icon_state = "joker"
 
-/obj/item/paper/joker/AltClick(mob/living/carbon/user, obj/item/I)
+/obj/item/paper/joker/AltClick(mob/living/carbon/user, obj/item/card)
 	if(flipped)
 		info = initial(info)
 		flipped = FALSE
-		to_chat(user, "<span class='notice'>You unflip the card.</span>")
+		to_chat(user, span_notice("You unflip the card."))
 	else
 		info = info2
 		flipped = TRUE
-		to_chat(user, "<span class='notice'>You flip the card.</span>")
+		to_chat(user, span_notice("You flip the card."))
 
 /datum/quirk/item_quirk/joker/process()
 	if(pcooldown > world.time)
 		return
 	pcooldown = world.time + pcooldown_time
-	var/mob/living/carbon/human/H = quirk_holder
-	if(H && istype(H))
-		if(H.stat == CONSCIOUS)
+	var/mob/living/carbon/human/user = quirk_holder
+	if(user && istype(user))
+		if(user.stat == CONSCIOUS)
 			if(prob(20))
-				H.emote("laugh")
-				addtimer(CALLBACK(H, /mob/proc/emote, "laugh"), 5 SECONDS)
-				addtimer(CALLBACK(H, /mob/proc/emote, "laugh"), 10 SECONDS)
+				user.emote("laugh")
+				addtimer(CALLBACK(user, /mob/proc/emote, "laugh"), 5 SECONDS)
+				addtimer(CALLBACK(user, /mob/proc/emote, "laugh"), 10 SECONDS)
 
 /datum/quirk/feline_aspect
 	name = "Feline Traits"
@@ -129,3 +119,19 @@
 	value = 0
 	mob_trait = TRAIT_FELINE
 	icon = "cat"
+
+/datum/quirk/item_quirk/canine
+	name = "Canidae Traits"
+	desc = "Bark. You seem to act like a canine for whatever reason."
+	icon = "canine"
+	value = 0
+	medical_record_text = "Patient was seen digging through the trash can. Keep an eye on them."
+
+/datum/quirk/item_quirk/canine/add_unique()
+	var/mob/living/carbon/human/human_holder = quirk_holder
+	var/obj/item/organ/tongue/old_tongue = human_holder.getorganslot(ORGAN_SLOT_TONGUE)
+	old_tongue.Remove(human_holder)
+	qdel(old_tongue)
+
+	var/obj/item/organ/tongue/dog/new_tongue = new(get_turf(human_holder))
+	new_tongue.Insert(human_holder)

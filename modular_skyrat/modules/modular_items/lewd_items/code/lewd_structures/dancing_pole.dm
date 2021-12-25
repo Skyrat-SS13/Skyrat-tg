@@ -159,12 +159,11 @@
 /obj/item/polepack/attackby(obj/item/P, mob/user, params) //erecting a pole here.
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
-		if (!(item_flags & IN_INVENTORY))
+		if (!(item_flags & IN_INVENTORY) && !(item_flags & IN_STORAGE))
 			to_chat(user, span_notice("You begin fastening the frame to the floor and ceiling..."))
 			if(P.use_tool(src, user, 8 SECONDS, volume=50))
 				to_chat(user, span_notice("You assemble the stripper pole."))
-				var/obj/structure/pole/C = new
-				C.loc = loc
+				new /obj/structure/pole(get_turf(user))
 				qdel(src)
 			return
 	else
@@ -176,8 +175,7 @@
 		to_chat(user, span_notice("You begin unfastening the frame from the floor and ceiling..."))
 		if(P.use_tool(src, user, 8 SECONDS, volume=50))
 			to_chat(user, span_notice("You disassemble the stripper pole."))
-			var/obj/item/polepack/C = new
-			C.loc = loc
+			new /obj/item/polepack(get_turf(user))
 			qdel(src)
 		return
 	else

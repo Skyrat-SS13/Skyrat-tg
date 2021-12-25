@@ -409,6 +409,7 @@
 	var/perpname = get_face_name(get_id_name(""))
 	if(perpname && (HAS_TRAIT(user, TRAIT_SECURITY_HUD) || HAS_TRAIT(user, TRAIT_MEDICAL_HUD)))
 		var/datum/data/record/R = find_record("name", perpname, GLOB.data_core.general)
+		var/datum/data/record/R_cache = R //SKYRAT EDIT ADDITION - RECORDS
 		if(R)
 			. += "<span class='deptradio'>Rank:</span> [R.fields["rank"]]\n<a href='?src=[REF(src)];hud=1;photo_front=1'>\[Front photo\]</a><a href='?src=[REF(src)];hud=1;photo_side=1'>\[Side photo\]</a>"
 		if(HAS_TRAIT(user, TRAIT_MEDICAL_HUD))
@@ -429,8 +430,8 @@
 				. += "<a href='?src=[REF(src)];hud=m;evaluation=1'>\[Medical evaluation\]</a><br>"
 			. += "<a href='?src=[REF(src)];hud=m;quirk=1'>\[See quirks\]</a>"
 			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-			. += "<a href='?src=[REF(src)];hud=m;medrecords=1'>\[View medical records\]</a>"
-			. += "<a href='?src=[REF(src)];hud=m;genrecords=1'>\[View general records\]</a>"
+			if (R && length(R.fields["past_records"]) >= 2)
+				. += "<a href='?src=[REF(src)];hud=m;medrecords=1'>\[View medical records\]</a>"
 			//SKYRAT EDIT END
 
 		if(HAS_TRAIT(user, TRAIT_SECURITY_HUD))
@@ -443,15 +444,30 @@
 					criminal = R.fields["criminal"]
 
 				. += "<span class='deptradio'>Criminal status:</span> <a href='?src=[REF(src)];hud=s;status=1'>\[[criminal]\]</a>"
-				. += jointext(list("<span class='deptradio'>Security record:</span> <a href='?src=[REF(src)];hud=s;viewsec=1'>\[View security records\]</a>", //SKYRAT EDIT CHANGE - EXAMINE RECORDS (changed viewsec)
+				. += jointext(list("<span class='deptradio'>Misc. security record:</span> <a href='?src=[REF(src)];hud=s;view=1'>\[View security records\]</a>", //SKYRAT EDIT CHANGE - EXAMINE RECORDS - Security record > Misc. security record
 					"<a href='?src=[REF(src)];hud=s;add_citation=1'>\[Add citation\]</a>",
 					"<a href='?src=[REF(src)];hud=s;add_crime=1'>\[Add crime\]</a>",
 					"<a href='?src=[REF(src)];hud=s;view_comment=1'>\[View comment log\]</a>",
 					"<a href='?src=[REF(src)];hud=s;add_comment=1'>\[Add comment\]</a>"), "")
+				// SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
+				if (R && length(R.fields["past_records"]) >= 2)
+					. += "<span class='deptradio'>Security record:</span> <a href='?src=[REF(src)];hud=s;secrecords=1'>\[View security records\]</a>"
 
-				. += jointext(list("<span class='deptradio'>General record:</span> <a href='?src=[REF(src)];hud=s;genrecords=1'>\[View general records\]</a>"), "") //SKYRAT EDIT ADDITION - EXAMINE RECORDS
+		if (R_cache && length(R_cache.fields["past_records"]) >= 2)
+			. += "<a href='?src=[REF(src)];hud=[HAS_TRAIT(user, TRAIT_SECURITY_HUD) ? "s" : "m"];genrecords=1'>\[View general records\]</a>"
+		//SKYRAT EDIT ADDITION END
 	else if(isobserver(user))
 		. += "<span class='info'><b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]</span>"
+
+	//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
+	if (is_special_character(user))
+		var/datum/data/record/is_in_world = find_record("name", perpname, GLOB.data_core.general) //apparantly golden is okay with offstation roles having no records, FYI
+		if (is_in_world && length(is_in_world.fields["exploitable_records"]) >= 2)
+			for(var/datum/antagonist/antag_datum in user.mind.antag_datums)
+				if (antag_datum.view_exploitables)
+					. += "<a href='?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>"
+					break
+	//SKYRAT EDIT END
 	//SKYRAT EDIT ADDITION BEGIN - GUNPOINT
 	if(gunpointing)
 		. += "<span class='warning'><b>[t_He] [t_is] holding [gunpointing.target.name] at gunpoint with [gunpointing.aimed_gun.name]!</b></span>\n"

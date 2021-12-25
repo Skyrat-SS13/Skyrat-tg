@@ -1,7 +1,10 @@
 /datum/job/warden
-	title = "Warden"
+	title = JOB_WARDEN
+	description = "Watch over the Brig and Prison Wing, release prisoners when \
+		their time is up, issue equipment to security, be a security officer when \
+		they all eventually die."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
-	department_head = list("Head of Security")
+	department_head = list(JOB_HEAD_OF_SECURITY)
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
@@ -45,25 +48,27 @@
 	name = "Warden"
 	jobtype = /datum/job/warden
 
+	id_trim = /datum/id_trim/job/warden
+	uniform = /obj/item/clothing/under/rank/security/warden
+	suit = /obj/item/clothing/suit/armor/vest/warden //SKYRAT EDIT CHANGE
+	suit_store = /obj/item/gun/energy/disabler
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded = 1,
+		/obj/item/evidencebag = 1,
+		/obj/item/modular_computer/tablet/preset/advanced/security = 1,
+		)
 	belt = /obj/item/pda/warden
 	ears = /obj/item/radio/headset/headset_sec/alt
-	uniform = /obj/item/clothing/under/rank/security/warden/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/under/rank/security/warden
-	shoes = /obj/item/clothing/shoes/combat/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL
-	suit = /obj/item/clothing/suit/armor/vest/warden/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/suit/armor/vest/warden/alt
-	gloves = /obj/item/clothing/gloves/combat/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: gloves = /obj/item/clothing/gloves/color/black
-	head = /obj/item/clothing/head/beret/sec/navywarden/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/head/warden
-	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/glasses/hud/security/sunglasses
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+	gloves = /obj/item/clothing/gloves/security //SKYRAT EDIT CHANGE
+	head = /obj/item/clothing/head/warden
+	shoes = /obj/item/clothing/shoes/jackboots/security //SKYRAT EDIT CHANGE
+	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
-	l_pocket = /obj/item/megaphone/sec //SKYRAT EDIT CHANGE
 
-	suit_store = /obj/item/gun/energy/disabler
-	backpack_contents = list(/obj/item/melee/baton/security/loaded=1, /obj/item/clothing/head/beret/sec/peacekeeper, /obj/item/armament_token/sidearm) //SKRYAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack_contents = list(/obj/item/melee/baton/security/loaded =1)
+	backpack = /obj/item/storage/backpack/security
+	satchel = /obj/item/storage/backpack/satchel/sec
+	duffelbag = /obj/item/storage/backpack/duffelbag/sec
 
-	backpack = /obj/item/storage/backpack/security/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack = /obj/item/storage/backpack/security
-	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
-	duffelbag = /obj/item/storage/backpack/duffelbag/sec/peacekeeper
 	box = /obj/item/storage/box/survival/security
-
 	implants = list(/obj/item/implant/mindshield)
-
-	id_trim = /datum/id_trim/job/warden

@@ -8,7 +8,7 @@
 
 /datum/species/lizard/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
-	var/main_color = random_short_color()
+	var/main_color = "#[random_color()]"
 	var/second_color
 	var/third_color
 	var/random = rand(1,3)
@@ -20,14 +20,14 @@
 			second_color = main_color
 			third_color = main_color
 		if(3) //Third case, more randomisation
-			second_color = random_short_color()
-			third_color = random_short_color()
+			second_color = "#[random_color()]"
+			third_color = "#[random_color()]"
 	returned["mcolor"] = main_color
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = third_color
 	return returned
 
 /datum/species/lizard/ashwalker
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,DIGITIGRADE,HAS_FLESH,HAS_BONE,NO_UNDERWEAR)
+	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,DIGITIGRADE,HAS_FLESH,HAS_BONE,NO_UNDERWEAR,HAIR,FACEHAIR)
 	always_customizable = TRUE
 	learnable_languages = list(/datum/language/draconic)

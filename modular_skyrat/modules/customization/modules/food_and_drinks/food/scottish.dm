@@ -6,6 +6,9 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 50, /datum/reagent/consumable/nutriment/vitamin = 25)
 	foodtypes = MEAT | GRAIN
 
+/obj/item/food/snacks/store/bread/haggis/MakeProcessable()
+	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/snacks/breadslice/haggis, 5, 30)
+
 /obj/item/food/snacks/breadslice/haggis
 	name = "haggis chunk"
 	desc = "A chunk of delicious haggis."
@@ -31,3 +34,11 @@
 	icon_state = "batteredsausage"
 
 
+/obj/item/food/cookie/shortbread
+	name = "shortbread"
+	desc = "A rectangular piece of cooked flour. Said to control the sun during Hogmanay."
+	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
+	icon_state = "shortbread"
+	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/sugar = 6)
+	tastes = list("sugary dough" = 1)
+	foodtypes = GRAIN | JUNKFOOD | SUGAR

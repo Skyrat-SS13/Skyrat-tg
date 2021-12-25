@@ -21,17 +21,17 @@
 	if(M.buffer)
 		if(istype(M.buffer, /obj/machinery/bsa_powercore))
 			if(!cannon)
-				to_chat(user, "<span class='warning'>There is no cannon linked to this control unit!</span>")
+				to_chat(user, span_warning("There is no cannon linked to this control unit!"))
 				return FALSE
 			if(core)
-				to_chat(user, "<span class='warning'>There is already a core linked to this control unit!</span>")
+				to_chat(user, span_warning("There is already a core linked to this control unit!"))
 				return FALSE
 			core = M.buffer
 			core.control_unit = src
 			M.buffer = null
-			to_chat(user, "<span class='notice'>You link [src] with [core].</span>")
+			to_chat(user, span_notice("You link [src] with [core]."))
 	else
-		to_chat(user, "<span class='warning'>[I]'s data buffer is empty!</span>")
+		to_chat(user, span_warning("[I]'s data buffer is empty!"))
 	return TRUE
 
 /obj/machinery/computer/bsa_control/ui_state(mob/user)

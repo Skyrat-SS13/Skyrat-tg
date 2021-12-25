@@ -21,7 +21,7 @@
 
 /obj/item/card/id/advanced/polychromic/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("666", "CBA", "00F"))
+	AddElement(/datum/element/polychromic, list("#666666", "#CCBBAA", "#0000FF"))
 
 //SOLGOV//
 /obj/item/card/id/advanced/solgov

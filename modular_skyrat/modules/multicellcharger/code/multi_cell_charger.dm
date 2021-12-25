@@ -34,7 +34,7 @@
 /obj/machinery/cell_charger_multi/attack_hand_secondary(mob/user, list/modifiers)
 	if(!can_interact(user) || !charging_batteries.len)
 		return
-	to_chat(user, "<span class='notice'>You press the quick release as all the cells pop out!</span>")
+	to_chat(user, span_notice("You press the quick release as all the cells pop out!"))
 	for(var/i in charging_batteries)
 		removecell()
 	return COMPONENT_CANCEL_ATTACK_CHAIN
@@ -48,32 +48,36 @@
 		for(var/obj/item/stock_parts/cell/charging in charging_batteries)
 			. += "There's [charging] cell in the charger, current charge: [round(charging.percent(), 1)]%."
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Charging power: <b>[charge_rate]W</b>.</span>"
-	. += "<span class='notice'>Right click it to remove all the cells at once!</span>"
+		. += span_notice("The status display reads: Charging power: <b>[charge_rate]W</b>.")
+	. += span_notice("Right click it to remove all the cells at once!")
 
 /obj/machinery/cell_charger_multi/attackby(obj/item/tool, mob/user, params)
 	if(istype(tool, /obj/item/stock_parts/cell) && !panel_open)
 		if(machine_stat & BROKEN)
-			to_chat(user, "<span class='warning'>[src] is broken!</span>")
+			to_chat(user, span_warning("[src] is broken!"))
 			return
 		if(!anchored)
-			to_chat(user, "<span class='warning'>[src] isn't attached to the ground!</span>")
+			to_chat(user, span_warning("[src] isn't attached to the ground!"))
+			return
+		var/obj/item/stock_parts/cell/inserting_cell = tool
+		if(inserting_cell.chargerate <= 0)
+			to_chat(user, span_warning("[inserting_cell] cannot be recharged!"))
 			return
 		if(charging_batteries.len >= 4)
-			to_chat(user, "<span class='warning'>[src] is full, and cannot hold anymore cells!</span>")
+			to_chat(user, span_warning("[src] is full, and cannot hold anymore cells!"))
 			return
 		else
 			var/area/current_area = loc.loc // Gets our locations location, like a dream within a dream
 			if(!isarea(current_area))
 				return
 			if(current_area.power_equip == 0) // There's no APC in this area, don't try to cheat power!
-				to_chat(user, "<span class='warning'>[src] blinks red as you try to insert the cell!</span>")
+				to_chat(user, span_warning("[src] blinks red as you try to insert the cell!"))
 				return
 			if(!user.transferItemToLoc(tool,src))
 				return
 
 			charging_batteries += tool
-			user.visible_message("<span class='notice'>[user] inserts a cell into [src].</span>", "<span class='notice'>You insert a cell into [src].</span>")
+			user.visible_message(span_notice("[user] inserts a cell into [src]."), span_notice("You insert a cell into [src]."))
 			update_appearance()
 	else
 		if(!charging_batteries.len && default_deconstruction_screwdriver(user, icon_state, icon_state, tool))
@@ -103,7 +107,7 @@
 	if(!charging_batteries.len)
 		return
 
-	to_chat(user, "<span class='notice'>You telekinetically remove [removecell(user)] from [src].</span>")
+	to_chat(user, span_notice("You telekinetically remove [removecell(user)] from [src]."))
 
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
@@ -149,7 +153,7 @@
 	user.put_in_hands(charging)
 	charging.add_fingerprint(user)
 
-	user.visible_message("<span class='notice'>[user] removes [charging] from [src].</span>", "<span class='notice'>You remove [charging] from [src].</span>")
+	user.visible_message(span_notice("[user] removes [charging] from [src]."), span_notice("You remove [charging] from [src]."))
 
 /obj/machinery/cell_charger_multi/proc/removecell(mob/user)
 	if(!charging_batteries.len)

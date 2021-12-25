@@ -7,8 +7,6 @@
 	if(!(. = ..()))
 		return
 	if(!user.is_muzzled() && !(user.mind && user.mind.miming))
-		if(ishuman(user))
-			user.adjustOxyLoss(5)
 		var/sound = get_sound(user, TRUE)
 		playsound(user.loc, sound, sound_volume, vary, 4, 1.2)
 
@@ -48,7 +46,7 @@
 		var/mob/living/silicon/robot/R = user
 
 		if(R.cell?.charge < 200)
-			to_chat(R, "<span class='warning'>Scream module deactivated. Please recharge.</span>")
+			to_chat(R, span_warning("Scream module deactivated. Please recharge."))
 			return FALSE
 		R.cell.use(200)
 	return ..()

@@ -166,7 +166,7 @@
 	associated_organ_slot = ORGAN_SLOT_VAGINA
 	key = "vagina"
 	always_color_customizable = TRUE
-	default_color = "fcc"
+	default_color = "#FFCCCC"
 	relevent_layers = list(BODY_FRONT_LAYER)
 	genetic = TRUE
 	var/alt_aroused = TRUE
@@ -247,6 +247,11 @@
 	associated_organ_slot = ORGAN_SLOT_ANUS
 	key = "anus"
 	genetic = TRUE
+
+/datum/sprite_accessory/genital/anus/is_hidden(mob/living/carbon/human/owner, obj/item/bodypart/bodypart)
+	if(owner.underwear != "Nude" && !(owner.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
+		return TRUE
+	. = ..()
 
 /datum/sprite_accessory/genital/anus/none
 	icon_state = "none"

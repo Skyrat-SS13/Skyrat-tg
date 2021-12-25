@@ -1,13 +1,17 @@
 /datum/job/quartermaster
-	title = "Quartermaster"
-	//department_head = list("Head of Personnel") //ORIGINAL
-	department_head = list("Captain") //SKYRAT EDIT CHANGE
+	title = JOB_QUARTERMASTER
+	description = "Coordinate cargo technicians and shaft miners, assist with \
+		economical purchasing."
+	//department_head = list(JOB_HEAD_OF_PERSONNEL) //ORIGINAL
+	department_head = list(JOB_CAPTAIN) //SKYRAT EDIT CHANGE
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	//supervisors = "the head of personnel" //ORIGINAL
 	supervisors = "the captain" //SKYRAT EDIT CHANGE
 	selection_color = "#d7b088"
+	exp_requirements = 180 //SKYRAT EDIT CHANGE
+	exp_required_type = EXP_TYPE_CREW //SKYRAT EDIT CHANGE
 	exp_required_type_department = EXP_TYPE_SUPPLY
 	exp_granted_type = EXP_TYPE_CREW
 
@@ -42,17 +46,17 @@
 	name = "Quartermaster"
 	jobtype = /datum/job/quartermaster
 
-	belt = /obj/item/pda/quartermaster
-	//ears = /obj/item/radio/headset/headset_cargo //ORIGINAL
-	ears = /obj/item/radio/headset/heads/qm //SKYRAT EDIT CHANGE
 	id = /obj/item/card/id/advanced/silver //SKYRAT EDIT CHANGE
+	id_trim = /datum/id_trim/job/quartermaster
 	uniform = /obj/item/clothing/under/rank/cargo/qm
-	shoes = /obj/item/clothing/shoes/sneakers/brown
+	backpack_contents = list(
+		/obj/item/melee/baton/telescopic=1,
+		/obj/item/modular_computer/tablet/preset/cargo/quartermaster = 1
+		) //SKYRAT EDIT CHANGE - ORIGINAL: backpack_contents = list(/obj/item/modular_computer/tablet/preset/cargo/quartermaster = 1)
+	belt = /obj/item/pda/quartermaster
+	ears = /obj/item/radio/headset/heads/qm //SKYRAT EDIT CHANGE - OIGINAL: ears = /obj/item/radio/headset/headset_cargo
 	glasses = /obj/item/clothing/glasses/sunglasses
+	shoes = /obj/item/clothing/shoes/sneakers/brown
 	l_hand = /obj/item/clipboard
-	//backpack_contents = list(/obj/item/modular_computer/tablet/preset/cargo/quartermaster = 1) //ORIGINAL
-	backpack_contents = list(/obj/item/melee/baton/telescopic=1, /obj/item/modular_computer/tablet/preset/cargo/quartermaster = 1) //SKYRAT EDIT CHANGE
 
 	chameleon_extras = /obj/item/stamp/qm
-
-	id_trim = /datum/id_trim/job/quartermaster

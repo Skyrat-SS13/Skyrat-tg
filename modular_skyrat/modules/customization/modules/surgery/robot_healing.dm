@@ -53,9 +53,9 @@
 	if(istype(surgery,/datum/surgery/robot_healing))
 		var/datum/surgery/robot_healing/the_surgery = surgery
 		if(!the_surgery.antispam)
-			display_results(user, target, "<span class='notice'>You attempt to fix some of [target]'s [woundtype].</span>",
-		"<span class='notice'>[user] attempts to fix some of [target]'s [woundtype].</span>",
-		"<span class='notice'>[user] attempts to fix some of [target]'s [woundtype].</span>")
+			display_results(user, target, span_notice("You attempt to fix some of [target]'s [woundtype]."),
+		span_notice("[user] attempts to fix some of [target]'s [woundtype]."),
+		span_notice("[user] attempts to fix some of [target]'s [woundtype]."))
 
 /datum/surgery_step/robot_heal/initiate(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
 	if(..())
@@ -88,7 +88,7 @@
 		umsg += " as best as you can while they have clothing on"
 		tmsg += " as best as they can while [target] has clothing on"
 	target.heal_bodypart_damage(urhealedamt_brute,urhealedamt_burn, 0, BODYPART_ROBOTIC)
-	display_results(user, target, "<span class='notice'>[umsg].</span>",
+	display_results(user, target, span_notice("[umsg]."),
 		"[tmsg].",
 		"[tmsg].")
 	if(istype(surgery, /datum/surgery/robot_healing))
@@ -97,9 +97,9 @@
 	return TRUE
 
 /datum/surgery_step/robot_heal/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='warning'>You screwed up!</span>",
-		"<span class='warning'>[user] screws up!</span>",
-		"<span class='notice'>[user] fixes some of [target]'s damage.</span>", TRUE)
+	display_results(user, target, span_warning("You screwed up!"),
+		span_warning("[user] screws up!"),
+		span_notice("[user] fixes some of [target]'s damage."), TRUE)
 	var/urdamageamt_brute = 0
 	if(healsbrute)
 		urdamageamt_brute = brutehealing * 0.8

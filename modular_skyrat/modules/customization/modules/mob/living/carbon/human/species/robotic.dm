@@ -1,6 +1,6 @@
 /datum/species/robotic
 	say_mod = "beeps"
-	default_color = "00FF00"
+	default_color = "#00FF00"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	inherent_traits = list(
 		TRAIT_CAN_STRIP,
@@ -43,12 +43,12 @@
 		H.adjustFireLoss(1) //Still deal some damage in case a cold environment would be preventing us from the sweet release to robot heaven
 		H.adjust_bodytemperature(13) //We're overheating!!
 		if(prob(10))
-			to_chat(H, "<span class='warning'>Alert: Critical damage taken! Cooling systems failing!</span>")
+			to_chat(H, span_warning("Alert: Critical damage taken! Cooling systems failing!"))
 			do_sparks(3, TRUE, H)
 
 /datum/species/robotic/spec_revival(mob/living/carbon/human/H)
 	playsound(H.loc, 'sound/machines/chime.ogg', 50, 1, -1)
-	H.visible_message("<span class='notice'>[H]'s monitor lights up.</span>", "<span class='notice'>All systems nominal. You're back online!</span>")
+	H.visible_message(span_notice("[H]'s monitor lights up."), span_notice("All systems nominal. You're back online!"))
 
 /datum/species/robotic/on_species_gain(mob/living/carbon/human/C)
 	. = ..()
@@ -61,6 +61,9 @@
 	var/randname = pick(GLOB.posibrain_names)
 	randname = "[randname]-[rand(100, 999)]"
 	return randname
+
+/datum/species/robotic/get_types_to_preload()
+	return ..() - typesof(/obj/item/organ/cyberimp/arm/power_cord) // Don't cache things that lead to hard deletions.
 
 /datum/species/robotic/ipc
 	name = "I.P.C."
@@ -175,7 +178,7 @@
 	id = SPECIES_SYNTHMAMMAL
 	say_mod = "states"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
-	default_color = "4B4B4B"
+	default_color = "#4B4B4B"
 	species_traits = list(
 		ROBOTIC_DNA_ORGANS,
 		MUTCOLORS,EYECOLOR,
@@ -208,33 +211,33 @@
 	var/random = rand(1,7)
 	switch(random)
 		if(1)
-			main_color = "FFF"
-			second_color = "333"
-			third_color = "333"
+			main_color = "#FFFFFF"
+			second_color = "#333333"
+			third_color = "#333333"
 		if(2)
-			main_color = "FFD"
-			second_color = "D61"
-			third_color = "A52"
+			main_color = "#FFFFDD"
+			second_color = "#DD6611"
+			third_color = "#AA5522"
 		if(3)
-			main_color = "D61"
-			second_color = "FFF"
-			third_color = "D61"
+			main_color = "#DD6611"
+			second_color = "#FFFFFF"
+			third_color = "#DD6611"
 		if(4)
-			main_color = "CCC"
-			second_color = "FFF"
-			third_color = "FFF"
+			main_color = "#CCCCCC"
+			second_color = "#FFFFFF"
+			third_color = "#FFFFFF"
 		if(5)
-			main_color = "A52"
-			second_color = "C83"
-			third_color = "FFF"
+			main_color = "#AA5522"
+			second_color = "#CC8833"
+			third_color = "#FFFFFF"
 		if(6)
-			main_color = "FFD"
-			second_color = "FEC"
-			third_color = "FDB"
+			main_color = "#FFFFDD"
+			second_color = "#FFEECC"
+			third_color = "#FFDDBB"
 		if(7) //Oh no you've rolled the sparkle dog
-			main_color = random_short_color()
-			second_color = random_short_color()
-			third_color = random_short_color()
+			main_color = "#[random_color()]"
+			second_color = "#[random_color()]"
+			third_color = "#[random_color()]"
 	returned["mcolor"] = main_color
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = third_color

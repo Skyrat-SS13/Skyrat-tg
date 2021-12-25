@@ -2,7 +2,7 @@
 	name = "Dwarf"
 	id = SPECIES_DWARF
 	limbs_id = SPECIES_HUMAN
-	default_color = "FFFFFF"
+	default_color = "#FFFFFF"
 	say_mod = "bellows"
 	species_traits = list(
 		EYECOLOR,

@@ -1,6 +1,6 @@
 /datum/body_marking/moth
 	icon = 'modular_skyrat/master_files/icons/mob/body_markings/moth_markings.dmi'
-	default_color = "FFF"
+	default_color = "#FFFFFF"
 	recommended_species = list(SPECIES_MOTH)
 	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | LEG_RIGHT | LEG_LEFT
 

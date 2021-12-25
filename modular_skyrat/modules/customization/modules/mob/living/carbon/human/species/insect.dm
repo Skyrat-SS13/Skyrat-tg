@@ -2,7 +2,7 @@
 	name = "Anthromorphic Insect"
 	id = SPECIES_INSECT
 	say_mod = "chitters"
-	default_color = "4B4B4B"
+	default_color = "#4B4B4B"
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -30,6 +30,7 @@
 		"moth_antennae" = "None"
 	)
 	attack_verb = "slash"
+	attack_effect = ATTACK_EFFECT_CLAW
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	liked_food = GROSS | MEAT | TOXIC

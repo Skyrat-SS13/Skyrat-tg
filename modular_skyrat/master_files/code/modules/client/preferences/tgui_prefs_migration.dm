@@ -38,19 +38,19 @@ GLOBAL_LIST_INIT(bodyparts_to_convert, list("body_markings", \
 	var/list/mutant_colors = list()
 	/// Intensive checking to ensure this process does not runtime. If it runtimes, goodbye savefiles.
 	if(features["mcolor"])
-		mutant_colors += expand_three_digit_color(features["mcolor"])
+		mutant_colors += sanitize_hexcolor(features["mcolor"])
 	else
-		mutant_colors += random_color()
+		mutant_colors += "#[random_color()]"
 
 	if(features["mcolor2"])
-		mutant_colors += expand_three_digit_color(features["mcolor2"])
+		mutant_colors += sanitize_hexcolor(features["mcolor2"])
 	else
-		mutant_colors += random_color()
+		mutant_colors += "#[random_color()]"
 
 	if(features["mcolor3"])
-		mutant_colors += expand_three_digit_color(features["mcolor2"])
+		mutant_colors += sanitize_hexcolor(features["mcolor2"])
 	else
-		mutant_colors += random_color()
+		mutant_colors += "#[random_color()]"
 
 	write_preference(GLOB.preference_entries[/datum/preference/tri_color/mutant_colors], mutant_colors)
 
@@ -64,21 +64,21 @@ GLOBAL_LIST_INIT(bodyparts_to_convert, list("body_markings", \
 			/// Intensive checking to ensure this process does not runtime. If it runtimes, goodbye savefiles.
 			switch(colors_length)
 				if(0)
-					colors += random_color()
-					colors += random_color()
-					colors += random_color()
+					colors += "#[random_color()]"
+					colors += "#[random_color()]"
+					colors += "#[random_color()]"
 				if(1)
-					colors[1] = expand_three_digit_color(colors[1])
-					colors += random_color()
-					colors += random_color()
+					colors[1] = sanitize_hexcolor(colors[1])
+					colors += "#[random_color()]"
+					colors += "#[random_color()]"
 				if(2)
-					colors[1] = expand_three_digit_color(colors[1])
-					colors[2] = expand_three_digit_color(colors[2])
-					colors += random_color()
+					colors[1] = sanitize_hexcolor(colors[1])
+					colors[2] = sanitize_hexcolor(colors[2])
+					colors += "#[random_color()]"
 				else
-					colors[1] = expand_three_digit_color(colors[1])
-					colors[2] = expand_three_digit_color(colors[2])
-					colors[3] = expand_three_digit_color(colors[3])
+					colors[1] = sanitize_hexcolor(colors[1])
+					colors[2] = sanitize_hexcolor(colors[2])
+					colors[3] = sanitize_hexcolor(colors[3])
 
 			for(var/datum/preference/preference as anything in get_preferences_in_priority_order())
 				if(!preference.relevant_mutant_bodypart || preference.relevant_mutant_bodypart != body_part)
@@ -98,3 +98,6 @@ GLOBAL_LIST_INIT(bodyparts_to_convert, list("body_markings", \
 	to_chat(parent, examine_block(span_greentext("Preference migration successful! You may safely interact with the preferences menu.")))
 	tgui_prefs_migration = TRUE
 	WRITE_FILE(S["tgui_prefs_migration"], tgui_prefs_migration)
+
+/datum/preferences/proc/migrate_mentor()
+	write_preference(GLOB.preference_entries[/datum/preference/toggle/admin/auto_dementor], FALSE) // Someone thought it was a good idea to make it start at true :)
