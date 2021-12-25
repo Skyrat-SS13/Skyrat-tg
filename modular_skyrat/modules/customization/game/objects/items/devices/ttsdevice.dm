@@ -18,8 +18,7 @@
 	if(!input)
 		audible_message(span_notice("[user] has stopped typing."))
 		playsound(src, 'modular_skyrat/master_files/sound/items/tts/stopped_type.ogg', 50, TRUE)
-	if(input)
-		src.say(input)
+	src.say(input)
 	input = null
 
 /obj/item/ttsdevice/AltClick(mob/living/user)
