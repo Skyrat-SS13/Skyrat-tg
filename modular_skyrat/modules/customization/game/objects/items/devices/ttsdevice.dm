@@ -18,6 +18,7 @@
 	if(!input)
 		visible_message("[user] stops typing on [src].", "You stop typing on [src].", "You hear the clicking noises stop.")
 		playsound(src, 'modular_skyrat/master_files/sound/items/tts/stopped_type.ogg', 50, TRUE)
+		return
 	src.say(input)
 	input = null
 
