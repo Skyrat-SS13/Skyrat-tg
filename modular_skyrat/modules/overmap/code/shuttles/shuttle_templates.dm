@@ -1,49 +1,52 @@
+/datum/map_template/shuttle/overmap
+	prefix = "_maps/shuttles/skyrat/"
+
 //Common shuttles
-/datum/map_template/shuttle/common
+/datum/map_template/shuttle/overmap/common
 	port_id = "common"
 	who_can_purchase = null
 
-/datum/map_template/shuttle/common/vulture
+/datum/map_template/shuttle/overmap/common/vulture
 	suffix = "vulture"
 	name = "MS Vulture"
 
-/datum/map_template/shuttle/common/platform_small
+/datum/map_template/shuttle/overmap/common/platform_small
 	suffix = "platform_small"
 	name = "Platform Shuttle"
 
-/datum/map_template/shuttle/common/platform_medium
+/datum/map_template/shuttle/overmap/common/platform_medium
 	suffix = "platform_medium"
 	name = "Platform Shuttle"
 
-/datum/map_template/shuttle/common/platform_large
+/datum/map_template/shuttle/overmap/common/platform_large
 	suffix = "platform_large"
 	name = "Platform Shuttle"
 
-/datum/map_template/shuttle/exploration_crow
+/datum/map_template/shuttle/overmap/exploration_crow
 	port_id = "exploration"
 	suffix = "crow"
 	name = "NXV Crow"
 	who_can_purchase = null
 
-/datum/map_template/shuttle/exploration_deckard
+/datum/map_template/shuttle/overmap/exploration_deckard
 	port_id = "exploration"
 	suffix = "deckard"
 	name = "NXV Deckard"
 	who_can_purchase = null
 
-/datum/map_template/shuttle/exploration_nexus
+/datum/map_template/shuttle/overmap/exploration_nexus
 	port_id = "exploration"
 	suffix = "nexus"
 	name = "NXV Nexus"
 	who_can_purchase = null
 
-/datum/map_template/shuttle/exploration_nexus_retrofit
+/datum/map_template/shuttle/overmap/exploration_nexus_retrofit
 	port_id = "exploration"
 	suffix = "nexus_2"
 	name = "NXV Nexus Retrofit"
 	who_can_purchase = null
 
-/datum/map_template/shuttle/titan
+/datum/map_template/shuttle/overmap/titan
 	port_id = "ncv"
 	suffix = "titan"
 	name = "NCV Titan"
