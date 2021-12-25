@@ -56,6 +56,7 @@ GLOBAL_LIST_EMPTY(cyborg_all_models_icon_list)
 #define SKIN_LIGHT_KEY "skin_light_key"
 #define SKIN_HAT_OFFSET "skin_hat_offset"
 #define SKIN_TRAITS "skin_traits"
+#define SKIN_STAT_ICONS "stat_icons"
 
 /** Simple Animal BOT defines */
 
