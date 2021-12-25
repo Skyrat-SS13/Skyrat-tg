@@ -17,6 +17,7 @@
 	)
 	radio_channels = list(RADIO_CHANNEL_SUPPLY)
 	emag_modules = list(
+		/obj/item/stamp/chameleon,
 		/obj/item/borg/paperplane_crossbow,
 	)
 	hat_offset = 0

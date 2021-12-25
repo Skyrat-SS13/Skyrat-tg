@@ -192,7 +192,7 @@
 	COOLDOWN_START(src, clamp_cooldown, cooldown_duration)
 
 	// We're trying to unload something from the clamp
-	if(isturf(attacked_atom))
+	if(isturf(attacked_atom) || istype(attacked_atom, /obj/structure/table))
 		if(!contents.len)
 			in_use = FALSE
 			return
