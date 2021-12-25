@@ -20,8 +20,8 @@
 #define AROUSAL_STRONG 3
 /// How much pain is gained through 'light' mode
 #define PAIN_LIGHT 3
-
-#define PAIN_STRONG 10 // How much pain is gained through 'strong' mode
+/// How much pain is gained through 'strong' mode
+#define PAIN_STRONG 10
 
 // Self-(and otherwise) Expression (of mammary organs)
 
@@ -85,24 +85,22 @@
 			handle_mode = HANDLE_MODE_LOWEST
 	switch(handle_mode)
 		if(HANDLE_LIGHT)
-			if(user)
-				user.visible_message(
-				message = span_purple("[user] relaxes [user.p_their()] jaw and softens [user.p_their()] milking hand, appearing to opt for a gentler approach."),
-				self_message = span_purple("You relax your jaw and soften your milking hand, opting for a gentler approach."),
-				blind_message = span_purple("You hear a relaxed rustle."),
-				vision_distance = 1)
+			user?.visible_message(
+			message = span_purple("[user] relaxes [user.p_their()] jaw and softens [user.p_their()] milking hand, appearing to opt for a gentler approach."),
+			self_message = span_purple("You relax your jaw and soften your milking hand, opting for a gentler approach."),
+			blind_message = span_purple("You hear a relaxed rustle."),
+			vision_distance = 1)
 			desc = "[initial(desc)]" + "\n[span_purple("It looks somewhat gentle.")]"
 			pleasure_amount = PLEASURE_LIGHT
 			arousal_amount = AROUSAL_LIGHT
 			pain_amount = PAIN_LIGHT
 			squirt_volume = VOLUME_LIGHT
 		if(HANDLE_STRONG)
-			if(user)
-				user.visible_message(
-				message = span_purple("[user] tightens [user.p_their()] jaw and clenches [user.p_their()] milking hand, appearing to opt for a more aggressive approach."),
-				self_message = span_purple("You tighten your jaw and clench your milking hand, opting for a more aggressive approach."),
-				blind_message = span_purple("You hear a vigorous rustle."),
-				vision_distance = 1)
+			user?.visible_message(
+			message = span_purple("[user] tightens [user.p_their()] jaw and clenches [user.p_their()] milking hand, appearing to opt for a more aggressive approach."),
+			self_message = span_purple("You tighten your jaw and clench your milking hand, opting for a more aggressive approach."),
+			blind_message = span_purple("You hear a vigorous rustle."),
+			vision_distance = 1)
 			desc = "[initial(desc)]" + "\n[span_purple("It looks rather aggressive!")]"
 			pleasure_amount = PLEASURE_STRONG
 			arousal_amount = AROUSAL_STRONG
@@ -115,10 +113,10 @@
 	if(!being_milked.client)
 		to_chat(milker, span_warning("[being_milked] is too busy staring off into space to be milked!"))
 		return FALSE
-	if(!being_milked.client.prefs.read_preference(/datum/preference/toggle/master_erp_preferences))
+	if(!being_milked.client?.prefs?.read_preference(/datum/preference/toggle/master_erp_preferences))
 		to_chat(milker, span_warning("[self_suckle ? "You would prefer to leave those alone!" : "[being_milked] would prefer you leave those alone!"]"))
 		return FALSE
-	if(!being_milked.client.prefs.read_preference(/datum/preference/toggle/erp/sex_toy)) // I guess its a sextoy!
+	if(!being_milked.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy)) // I guess its a sextoy!
 		to_chat(milker, span_warning("[self_suckle ? "You would prefer to put your hands somewhere else!" : "[being_milked] would prefer you to keep your hands to yourself!"]"))
 		return FALSE
 	if(!ishuman(being_milked)) // Trying to milk a robot? A megarachnid? *IAN*?
@@ -134,7 +132,7 @@
 		to_chat(milker, span_warning("[self_suckle ? "You can't get to your breasts!" : "[being_milked]'s breasts aren't accessible!"]"))
 		return FALSE
 	if(!breasts.lactates)
-		to_chat(milker, span_warning("[self_suckle ? "You aren't lactating" : "[being_milked] doesn't seem to be lactating!"]"))
+		to_chat(milker, span_warning("[self_suckle ? "You aren't lactating!" : "[being_milked] doesn't seem to be lactating!"]"))
 		return FALSE
 	if(breasts.internal_fluids.total_volume <= 0)
 		to_chat(milker, span_warning("[self_suckle ? "You're out of milk!" : "[being_milked] is fresh out of milk!"]"))
