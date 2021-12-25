@@ -139,34 +139,6 @@
 		/obj/item/tank/internals/plasmaman
 		)
 
-/obj/item/clothing/suit/space/hardsuit/expeditionary_corps
-	name = "expeditionary corps hardsuit"
-	desc = "An advanced hardsuit designed for exploratory missions."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "hardsuit-hexp_corps"
-	inhand_icon_state = "eng_hardsuit"
-	hardsuit_type = "hexp_corps"
-	armor = list(MELEE = 42, BULLET = 42, LASER = 42, ENERGY = 42, BOMB = 60, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
-	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/energy/sword, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
-	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/expeditionary_corps
-	jetpack = /obj/item/tank/jetpack/suit
-	cell = /obj/item/stock_parts/cell/hyper
-	slowdown = 0.5
-	hardsuit_tail_colors = list("#443344", "#222233", "#998888")
-
-/obj/item/clothing/head/helmet/space/hardsuit/expeditionary_corps
-	name = "expeditionary corps hardsuit helmet"
-	desc = "An advanced hardsuit helmet designed for exploratory missions."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "hardsuit0-hexp_corps"
-	inhand_icon_state = "sec_helm"
-	hardsuit_type = "hexp_corps"
-	armor = list(MELEE = 42, BULLET = 42, LASER = 42, ENERGY = 42, BOMB = 60, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
-	visor_flags_inv = HIDEMASK|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
-	visor_flags = STOPSPRESSUREDAMAGE
-	slowdown = 0.5
 
 /obj/item/clothing/head/helmet/expeditionary_corps
 	name = "expeditionary corps helmet"

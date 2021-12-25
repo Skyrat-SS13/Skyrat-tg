@@ -19,6 +19,20 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 		outfit.head = item_path
 
 
+//remove these after christmas or suffer my wrath
+/datum/loadout_item/head/santa
+	name = "Santa hat"
+	item_path = /obj/item/clothing/head/santa
+
+/datum/loadout_item/head/christmas
+	name = "Red Christmas hat"
+	item_path = /obj/item/clothing/head/christmas
+
+/datum/loadout_item/head/christmas/green
+	name = "Green Christmas hat"
+	item_path = /obj/item/clothing/head/christmas/green
+//see above, whatever
+
 /datum/loadout_item/head/black_beanie
 	name = "Black Beanie"
 	item_path = /obj/item/clothing/head/beanie/black

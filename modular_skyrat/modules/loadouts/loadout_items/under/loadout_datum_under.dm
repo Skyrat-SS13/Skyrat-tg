@@ -187,6 +187,25 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /////////////////////////////////////////////////////////////MISC UNDERSUITS
 /datum/loadout_item/under/miscellaneous
 
+//christmas stuff, remove afterword
+/datum/loadout_item/under/miscellaneous/christmas
+	name = "Christmas Suit"
+	item_path = /obj/item/clothing/under/costume/christmas
+
+/datum/loadout_item/under/miscellaneous/christmas/green
+	name = "Green Christmas Suit"
+	item_path = /obj/item/clothing/under/costume/christmas/green
+
+/datum/loadout_item/under/miscellaneous/christmas/female
+	name = "Revealing Christmas Suit"
+	item_path = /obj/item/clothing/under/croptop/christmas
+
+/datum/loadout_item/under/miscellaneous/christmas/female/green
+	name = "Revealing Green Christmas Suit"
+	item_path = /obj/item/clothing/under/croptop/christmas/green
+
+//christmas ends, because every christmas is last christmas
+
 /datum/loadout_item/under/miscellaneous/camo
 	name = "Camo Pants"
 	item_path = /obj/item/clothing/under/pants/camo

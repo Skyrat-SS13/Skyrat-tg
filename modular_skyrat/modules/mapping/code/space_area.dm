@@ -190,6 +190,18 @@
 /area/ruin/space/has_grav/vaulttango
 	name = "ARBORLINK Vault Tango"
 
+/area/ruin/space/has_grav/waypoint
+	name = "Abandoned Station"
+
+/area/ruin/space/has_grav/powered/toy_store
+	name = "Toy Store"
+
+/area/ruin/space/has_grav/powered/prison_shuttle
+	name = "Prison Shuttle"
+
+/area/ruin/space/has_grav/powered/posterpandamonium
+	name = "Strange Shuttle"
+
 //Port Tarkon
 
 /area/ruin/space/has_grav/port_tarkon

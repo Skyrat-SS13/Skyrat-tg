@@ -112,9 +112,6 @@
 /obj/item/clothing/head/intern
 	mutant_variants = NONE
 
-/obj/item/clothing/head/helmet/space/hardsuit/ert/jani
-	mutant_variants = NONE
-
 /obj/item/clothing/head/helmet/blueshirt
 	mutant_variants = NONE
 
@@ -122,9 +119,6 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/space/beret
-	mutant_variants = NONE
-
-/obj/item/clothing/head/helmet/space/hardsuit/carp
 	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/police
@@ -159,13 +153,13 @@
 
 /obj/item/clothing/head/mob_holder
 	mutant_variants = NONE
-	
+
 /obj/item/clothing/head/hooded/cult_hoodie/void
 	mutant_variants = NONE
-	
+
 /obj/item/clothing/head/hooded/cult_hoodie/eldritch
 	mutant_variants = NONE
-	
+
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //EYES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -186,7 +180,7 @@
 
 /obj/item/clothing/mask/gas/sechailer/swat/spacepol
 	mutant_variants = NONE
-	
+
 /obj/item/clothing/mask/void_mask
 	mutant_variants = NONE
 
@@ -295,9 +289,6 @@
 /obj/item/clothing/suit/hazardvest
 	mutant_variants = NONE
 
-/obj/item/clothing/suit/space/hardsuit/ert/jani
-	mutant_variants = NONE
-
 /obj/item/clothing/suit/security/officer/russian
 	mutant_variants = NONE
 
@@ -324,10 +315,10 @@
 
 /obj/item/clothing/suit/toggle/armor/vest/centcom_formal
 	mutant_variants = NONE
-	
+
 /obj/item/clothing/suit/hooded/cultrobes/void
 	mutant_variants = NONE
-	
+
 /obj/item/clothing/suit/hooded/cultrobes/eldritch
 	mutant_variants = NONE
 
@@ -401,9 +392,6 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/space/chronos
-	mutant_variants = NONE
-
-/obj/item/clothing/head/helmet/space/hardsuit/ert/paranormal
 	mutant_variants = NONE
 
 /obj/item/clothing/suit/yakuza
