@@ -98,8 +98,10 @@
 #define HIDEHEADGEAR (1<<11)
 ///for lizard snouts, because some HIDEFACE clothes don't actually conceal that portion of the head.
 #define HIDESNOUT (1<<12)
+///SKYRAT EDIT ADDITION: CUSTOM EAR TOGGLE FOR ANTHRO/ETC EAR SHOWING - Manually set this on items you want anthro ears to show on!
+#define SHOWSPRITEEARS (1<<13)
 //SKYRAT EDIT ADDITION BEGIN - ERP UPDATE
-#define HIDESEXTOY (1<<13)
+#define HIDESEXTOY (1<<14)
 //SKYRAT EDIT ADDITION END
 
 //bitflags for clothing coverage - also used for limbs
