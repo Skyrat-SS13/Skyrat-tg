@@ -822,12 +822,19 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 	additional_data += type
 
 	var/list/servers = CONFIG_GET(keyed_list/cross_server)
-	for(var/I in servers)
-		if(I == our_id) //No sending to ourselves
-			continue
-		if(target_servers && !(I in target_servers))
-			continue
-		world.send_cross_comms(I, additional_data)
+	// SKYRAT EDTI ADDITION
+	if(target_servers == "all")
+		for(var/server in servers)
+			if(server == our_id)
+				continue
+			world.send_cross_comms(server, additional_data)
+	else //SKYRAT EDIT END
+		for(var/I in servers)
+			if(I == our_id) //No sending to ourselves
+				continue
+			if(target_servers && !(I in target_servers))
+				continue
+			world.send_cross_comms(I, additional_data)
 
 /// Sends a message to a given cross comms server by name (by name for security).
 /world/proc/send_cross_comms(server_name, list/message, auth = TRUE)
