@@ -89,7 +89,12 @@
 /obj/projectile/energy/medical/proc/healTox(mob/living/target, amount_healed)
 	if(!IsLivingHuman(target))
 		return FALSE
-	target.adjustToxLoss(-amount_healed)
+	var/healing_multiplier = 1.5
+	var/non_meds = checkReagents(target)
+	healing_multiplier = healing_multiplier - (non_meds / 4)
+	if(healing_multiplier < 0.25)
+		healing_multiplier = 0.25
+	target.adjustToxLoss(-(amount_healed * healing_multiplier))
 
 //T1 Healing Projectiles//
 //The Basic Brute Heal Projectile//
