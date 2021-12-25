@@ -45,6 +45,13 @@
 		return FALSE
 	else
 		return TRUE
+//Checks for non-medicine reagents in the bloodstream
+/obj/projectile/energy/medical/proc/checkReagents(mob/living/target)
+	var/non_medicine_chems = 0 //Keeps track of how many chemicals in the bloodstream aren't medicine.
+	for(var/reagent in target.reagents.reagent_list)
+		if(!istype(reagent, /datum/reagent/medicine))
+			non_medicine_chems += 1
+	return non_medicine_chems
 //Heals Brute without safety
 /obj/projectile/energy/medical/proc/healBrute(mob/living/target, amount_healed, max_clone, base_disgust)
 	if(!IsLivingHuman(target))
