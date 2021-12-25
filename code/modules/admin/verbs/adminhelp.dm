@@ -824,10 +824,10 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 	var/list/servers = CONFIG_GET(keyed_list/cross_server)
 	// SKYRAT EDTI ADDITION
 	if(target_servers == "all")
-		for(var/I in servers)
-			if(I == our_id)
+		for(var/server in servers)
+			if(server == our_id)
 				continue
-			world.send_cross_comms(I, additional_data)
+			world.send_cross_comms(server, additional_data)
 	else //SKYRAT EDIT END
 		for(var/I in servers)
 			if(I == our_id) //No sending to ourselves
