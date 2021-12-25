@@ -178,13 +178,13 @@
 		/obj/item/storage/firstaid/brute = 1
 	)
 
-/obj/effect/spawner/random/hardsuit
-	name = "hardsuit spawner"
+/obj/effect/spawner/random/modsuit
+	name = "modsuit spawner"
 	loot = list(
-		/obj/item/clothing/suit/space/hardsuit/security = 1,
-		/obj/item/clothing/suit/space/hardsuit/mining = 1,
-		/obj/item/clothing/suit/space/hardsuit/medical = 1,
-		/obj/item/clothing/suit/space/hardsuit/engine = 1
+		/obj/item/mod/control/pre_equipped/security = 1,
+		/obj/item/mod/control/pre_equipped/mining = 1,
+		/obj/item/mod/control/pre_equipped/medical = 1,
+		/obj/item/mod/control/pre_equipped/engineering = 1
 	)
 
 /obj/effect/spawner/random/contraband/overmap
@@ -311,7 +311,7 @@
 		/obj/effect/spawner/random/energy_weapon = 1,
 		/obj/effect/spawner/random/ballistic_weapon = 1,
 		/obj/effect/spawner/random/contraband/overmap = 1,
-		/obj/effect/spawner/random/hardsuit = 1,
+		/obj/effect/spawner/random/modsuit = 1,
 		/obj/effect/spawner/random/medical/medicine/five = 1,
 		/obj/effect/spawner/random/tech_supply/five = 1,
 		/obj/effect/spawner/random/engineering/material_rare = 1,
