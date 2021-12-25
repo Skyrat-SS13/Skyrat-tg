@@ -16,7 +16,7 @@ export const MicrofusionGunControl = (props, context) => {
       <Window.Content>
         {servers.len === 0 ? (
           <NoticeBox>
-            No servers are currently online.
+            No server is currently online.
           </NoticeBox>
         ) : (
           servers.map(server => (
