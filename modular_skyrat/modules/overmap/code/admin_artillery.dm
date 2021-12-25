@@ -54,9 +54,7 @@
 	addtimer(CALLBACK(src, .proc/timer_destroy), 20 SECONDS, TIMER_CLIENT_TIME)
 
 /obj/effect/bsa_target/proc/timer_destroy()
-	qdel(src)
-
-/obj/effect/bsa_target/Destroy(force)
 	if(QDELETED(src))
 		return
-	return ..()
+	qdel(src)
+
