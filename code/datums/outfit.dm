@@ -114,9 +114,6 @@
 	  */
 	var/list/skillchips = null
 
-	/// Should the toggle helmet proc be called on the helmet during equip
-	var/toggle_helmet = TRUE
-
 	///Should we preload some of this job's items?
 	var/preload = FALSE
 
@@ -153,8 +150,6 @@
 	//to be overridden for toggling internals, id binding, access etc
 	return
 
-<<<<<<< HEAD
-=======
 #define EQUIP_OUTFIT_ITEM(item_path, slot_name) if(##item_path) { \
 	H.equip_to_slot_or_del(SSwardrobe.provide_type(##item_path, H), ##slot_name, TRUE); \
 	var/obj/item/outfit_item = H.get_item_by_slot(##slot_name); \
@@ -163,7 +158,6 @@
 	} \
 }
 
->>>>>>> 82ff5e344cb (Untested: Fix outfit equipping not working (#63606))
 /**
  * Equips all defined types and paths to the mob passed in
  *
@@ -177,37 +171,38 @@
 
 	//Start with uniform,suit,backpack for additional slots
 	if(uniform)
-		H.equip_to_slot_or_del(SSwardrobe.provide_type(uniform, H), ITEM_SLOT_ICLOTHING, TRUE)
+		EQUIP_OUTFIT_ITEM(uniform, ITEM_SLOT_ICLOTHING)
 	if(suit)
-		H.equip_to_slot_or_del(SSwardrobe.provide_type(suit, H), ITEM_SLOT_OCLOTHING, TRUE)
-	if(back)
-		H.equip_to_slot_or_del(SSwardrobe.provide_type(back, H), ITEM_SLOT_BACK, TRUE)
+		EQUIP_OUTFIT_ITEM(suit, ITEM_SLOT_OCLOTHING)
 	if(belt)
-		H.equip_to_slot_or_del(SSwardrobe.provide_type(belt, H), ITEM_SLOT_BELT, TRUE)
+		EQUIP_OUTFIT_ITEM(belt, ITEM_SLOT_BELT)
 	if(gloves)
-		H.equip_to_slot_or_del(SSwardrobe.provide_type(gloves, H), ITEM_SLOT_GLOVES, TRUE)
+		EQUIP_OUTFIT_ITEM(gloves, ITEM_SLOT_GLOVES)
 	if(shoes)
-		H.equip_to_slot_or_del(SSwardrobe.provide_type(shoes, H), ITEM_SLOT_FEET, TRUE)
+		EQUIP_OUTFIT_ITEM(shoes, ITEM_SLOT_FEET)
 	if(head)
-		H.equip_to_slot_or_del(SSwardrobe.provide_type(head, H), ITEM_SLOT_HEAD, TRUE)
+		EQUIP_OUTFIT_ITEM(head, ITEM_SLOT_HEAD)
 	if(mask)
-		H.equip_to_slot_or_del(SSwardrobe.provide_type(mask, H), ITEM_SLOT_MASK, TRUE)
+		EQUIP_OUTFIT_ITEM(mask, ITEM_SLOT_MASK)
 	if(neck)
-		H.equip_to_slot_or_del(SSwardrobe.provide_type(neck, H), ITEM_SLOT_NECK, TRUE)
+		EQUIP_OUTFIT_ITEM(neck, ITEM_SLOT_NECK)
 	if(ears)
-		H.equip_to_slot_or_del(SSwardrobe.provide_type(ears, H), ITEM_SLOT_EARS, TRUE)
+		EQUIP_OUTFIT_ITEM(ears, ITEM_SLOT_EARS)
 	if(glasses)
-		H.equip_to_slot_or_del(SSwardrobe.provide_type(glasses, H), ITEM_SLOT_EYES, TRUE)
+		EQUIP_OUTFIT_ITEM(glasses, ITEM_SLOT_EYES)
+	if(back)
+		EQUIP_OUTFIT_ITEM(back, ITEM_SLOT_BACK)
 	if(id)
-		H.equip_to_slot_or_del(SSwardrobe.provide_type(id, H), ITEM_SLOT_ID, TRUE) //We don't provide ids (Fix this?)
+		EQUIP_OUTFIT_ITEM(id, ITEM_SLOT_ID)
 	if(!visualsOnly && id_trim && H.wear_id)
 		var/obj/item/card/id/id_card = H.wear_id
 		id_card.registered_age = H.age
 		if(id_trim)
 			if(!SSid_access.apply_trim_to_card(id_card, id_trim))
 				WARNING("Unable to apply trim [id_trim] to [id_card] in outfit [name].")
+
 	if(suit_store)
-		H.equip_to_slot_or_del(SSwardrobe.provide_type(suit_store, H), ITEM_SLOT_SUITSTORE, TRUE)
+		EQUIP_OUTFIT_ITEM(suit_store, ITEM_SLOT_SUITSTORE)
 
 	if(undershirt)
 		H.undershirt = initial(undershirt.name)
@@ -226,9 +221,9 @@
 
 	if(!visualsOnly) // Items in pockets or backpack don't show up on mob's icon.
 		if(l_pocket)
-			H.equip_to_slot_or_del(SSwardrobe.provide_type(l_pocket, H), ITEM_SLOT_LPOCKET, TRUE)
+			EQUIP_OUTFIT_ITEM(l_pocket, ITEM_SLOT_LPOCKET)
 		if(r_pocket)
-			H.equip_to_slot_or_del(SSwardrobe.provide_type(r_pocket, H), ITEM_SLOT_RPOCKET, TRUE)
+			EQUIP_OUTFIT_ITEM(r_pocket, ITEM_SLOT_RPOCKET)
 
 		if(box)
 			if(!backpack_contents)
@@ -242,11 +237,7 @@
 				if(!isnum(number))//Default to 1
 					number = 1
 				for(var/i in 1 to number)
-					H.equip_to_slot_or_del(SSwardrobe.provide_type(path, H), ITEM_SLOT_BACKPACK, TRUE)
-
-	if(!H.head && toggle_helmet && istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
-		var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
-		HS.ToggleHelmet()
+					EQUIP_OUTFIT_ITEM(path, ITEM_SLOT_BACKPACK)
 
 	post_equip(H, visualsOnly)
 
@@ -277,6 +268,8 @@
 
 	H.update_body()
 	return TRUE
+
+#undef EQUIP_OUTFIT_ITEM
 
 /**
  * Apply a fingerprint from the passed in human to all items in the outfit
@@ -326,40 +319,6 @@
 		I.add_fingerprint(H, ignoregloves = TRUE)
 	return TRUE
 
-//SKYRAT EDIT
-/**
- * Copies the outfit from a human to itself.
- **/
-/datum/outfit/proc/copy_outfit_from_target(mob/living/carbon/human/H)
-	if(!istype(H))
-		return
-	if(H.back)
-		back = H.back.type
-	if(H.wear_id)
-		id = H.wear_id.type
-	if(H.w_uniform)
-		uniform = H.w_uniform.type
-	if(H.wear_suit)
-		suit = H.wear_suit.type
-	if(H.wear_mask)
-		mask = H.wear_mask.type
-	if(H.wear_neck)
-		neck = H.wear_neck.type
-	if(H.head)
-		head = H.head.type
-	if(H.shoes)
-		shoes = H.shoes.type
-	if(H.gloves)
-		gloves = H.gloves.type
-	if(H.ears)
-		ears = H.ears.type
-	if(H.glasses)
-		glasses = H.glasses.type
-	if(H.belt)
-		belt = H.belt.type
-	return TRUE
-// SKYRAT EDIT END
-
 /// Return a list of all the types that are required to disguise as this outfit type
 /datum/outfit/proc/get_chameleon_disguise_info()
 	var/list/types = list(uniform, suit, back, belt, gloves, shoes, head, mask, neck, ears, glasses, id, l_pocket, r_pocket, suit_store, r_hand, l_hand)
@@ -400,8 +359,6 @@
 	for(var/skillpath in skillchips)
 		preload += skillpath
 
-	preload -= typesof(/obj/item/clothing/under/color/random) // SKYRAT EDIT - Don't preload random jumpsuit spawners that delete themselves
-
 	return preload
 
 /// Return a json list of this outfit
@@ -411,7 +368,6 @@
 	.["name"] = name
 	.["uniform"] = uniform
 	.["suit"] = suit
-	.["toggle_helmet"] = toggle_helmet
 	.["back"] = back
 	.["belt"] = belt
 	.["gloves"] = gloves
@@ -439,7 +395,6 @@
 	name = target.name
 	uniform = target.uniform
 	suit = target.suit
-	toggle_helmet = target.toggle_helmet
 	back = target.back
 	belt = target.belt
 	gloves = target.gloves
@@ -478,7 +433,6 @@
 	name = outfit_data["name"]
 	uniform = text2path(outfit_data["uniform"])
 	suit = text2path(outfit_data["suit"])
-	toggle_helmet = outfit_data["toggle_helmet"]
 	back = text2path(outfit_data["back"])
 	belt = text2path(outfit_data["belt"])
 	gloves = text2path(outfit_data["gloves"])
