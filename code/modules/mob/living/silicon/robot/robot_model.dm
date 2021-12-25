@@ -22,7 +22,7 @@
 	///Produces the icon for the borg and, if no special_light_key is set, the lights
 	var/cyborg_base_icon = "robot"
 	///The icon file for our borg icon
-	var/cyborg_icon_file = 'icons/mob/robots.dmi'
+	var/cyborg_icon_file = 'icons/mob/robots.dmi' // SKYRAT EDIT - Cargo borgs (needed for animations)
 	///If we want specific lights, use this instead of copying lights in the dmi
 	var/special_light_key
 	///If we want specific sprites for being stunned/dead
