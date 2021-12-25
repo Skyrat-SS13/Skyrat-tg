@@ -3,7 +3,7 @@
 	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	ears = /obj/item/radio/headset/headset_cent/alt
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile/infiltrator/ntrauma
-	suit_store = /obj/item/gun/energy/e_gun/stun
+	l_hand = /obj/item/gun/energy/e_gun/stun
 	belt = /obj/item/storage/belt/military/ntrauma
 	back = /obj/item/mod/control/pre_equipped/responsory/medic
 	backpack_contents = list(
