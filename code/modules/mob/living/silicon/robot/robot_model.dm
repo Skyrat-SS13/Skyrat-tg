@@ -244,6 +244,10 @@
 			model_traits += details[SKIN_TRAITS]
 		if(!isnull(details[SKIN_STAT_ICONS]))
 			cyborg_stat_icons = details[SKIN_STAT_ICONS]
+		//SKYRAT EDIT ADDITION
+		if(!isnull(details[SKIN_FEATURES]))
+			model_features += details[SKIN_FEATURES]
+		//SKYRAT EDIT END
 	for(var/i in old_model.added_modules)
 		added_modules += i
 		old_model.added_modules -= i
