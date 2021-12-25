@@ -509,7 +509,6 @@
 				/obj/item/clothing/suit/armor/vest/warden/peacekeeper = 25,
 				/obj/item/clothing/gloves/krav_maga/combatglovesplus = 5,
 				/obj/item/knife/rainbowknife = 15,
-				/obj/item/clothing/suit/space/hardsuit/swat = 5,
 				/obj/item/stack/spacecash/c10000 = 30)
 
 //items
