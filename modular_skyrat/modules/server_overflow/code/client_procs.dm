@@ -24,7 +24,7 @@
 /mob/dead/new_player/proc/connect_to_second_server(choice)
 	if(!client)
 		return
-	if(choice != "Connect me!")
+	if(choice != "Send me there")
 		return
 	to_chat(client, span_notice("So long, spaceman."))
 	var/overflow_server_ip = CONFIG_GET(string/overflow_server_ip)
