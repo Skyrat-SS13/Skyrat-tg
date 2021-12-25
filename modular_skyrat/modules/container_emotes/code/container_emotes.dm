@@ -28,17 +28,18 @@
 		to_chat(user, "You are not within anything!")
 		return FALSE
 	else if(!params)
-		container_emote = stripped_multiline_input(user, "Choose an emote to display.", "Container Emote" , null, MAX_MESSAGE_LEN)
+		container_emote = tgui_input_text(user, "What would you like to emote?", "Container Emote" , null, MAX_MESSAGE_LEN, TRUE, TRUE, 0)
 		if(!container_emote)
 			return FALSE
-		var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
+		var/list/choices = list("Visible","Audible")
+		var/type = tgui_input_list(user, "Is this a visible or audible emote?", "Container Emote", choices, 0)
 		switch(type)
 			if("Visible")
 				emote_type = EMOTE_VISIBLE
-			if("Hearable")
+			if("Audible")
 				emote_type = EMOTE_AUDIBLE
 			else
-				alert("Unable to use this emote, must be either hearable or visible.")
+				alert("Unable to use this emote, must be either audible or visible.")
 				return
 		container_message = container_emote
 	else
@@ -64,11 +65,3 @@
 		user.loc.audible_message(message = container_message, self_message = container_message, audible_message_flags = EMOTE_MESSAGE, separation = space)
 	else if (emote_type == EMOTE_VISIBLE)
 		user.loc.visible_message(message = container_message, self_message = container_message, visible_message_flags = EMOTE_MESSAGE, separation = space)
-
-
-
-
-
-
-
-
