@@ -262,7 +262,7 @@
 		)
 	cyborg_base_icon = "synd_engi"
 	model_select_icon = "malf"
-	magpulsing = TRUE
+	model_traits = list(TRAIT_NEGATES_GRAVITY)
 	hat_offset = INFINITY
 	canDispose = TRUE
 	borg_skins = list(
@@ -374,7 +374,7 @@
 	model_select_icon = "ninjaborg"
 	model_select_alternate_icon = 'modular_skyrat/modules/altborgs/icons/screen_cyborg.dmi'
 	model_traits = list(TRAIT_PUSHIMMUNE, TRAIT_NOFLASH)
-	magpulsing = TRUE
+	model_traits = list(TRAIT_NEGATES_GRAVITY)
 	hat_offset = -4
 	canDispose = TRUE
 	borg_skins = list(

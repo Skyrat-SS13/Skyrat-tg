@@ -74,6 +74,8 @@ If you wanted to add some location to the CentCom z-level, a'la whatever off-sta
 
 If you plan to edit space ruins and so on, currently, it should be discussed with a maintainer and likely should be PRed upstream, to tgstation repository.
 
+Put any skyrat specific maps into the _maps/ folder, and then into the skyrat folder inside the type. E.g. an ice ruin map would go into_maps/RandomRuins/IceRuins/skyrat/whatever.dmm.
+
 ### Assets: images, sounds, icons and binaries
 
 Git doesn't handle conflicts of binary files well at all, therefore changes to core binary files are absolutely forbidden, unless you have a really *really* ***really*** good reason to do otherwise.
