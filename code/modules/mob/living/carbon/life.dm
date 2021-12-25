@@ -549,6 +549,8 @@ All effects don't start immediately, but rather get worse over time; the rate is
 			SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "drunk")
 			clear_alert("drunk")
 			sound_environment_override = SOUND_ENVIRONMENT_NONE
+			REMOVE_TRAIT(src, TRAIT_NUMBED, src) //SKYRAT EDIT START - ANESTHETIC EFFECT REMOVAL
+			clear_alert("numbed") //SKYRAT EDIT END
 
 		if(drunkenness >= 11 && slurring < 5)
 			slurring += 0.6 * delta_time
@@ -567,6 +569,8 @@ All effects don't start immediately, but rather get worse over time; the rate is
 			if(DT_PROB(16, delta_time))
 				add_confusion(2)
 			Dizzy(5 * delta_time)
+			ADD_TRAIT(src, TRAIT_NUMBED, src) //SKYRAT EDIT START - ANESTHETIC EFFECT ADDITION
+			throw_alert("numbed", /atom/movable/screen/alert/numbed) //SKYRAT EDIT END
 
 		if(drunkenness >= 51)
 			if(DT_PROB(1.5, delta_time))

@@ -60,8 +60,9 @@
 								"Cybernetics",
 								"Implants",
 								"Control Interfaces",
-								"Power Armor",
-								"Misc"
+								"MOD Construction",
+								"MOD Modules",
+								"Misc",
 								)
 //SKYRAT EDIT STOP: POWER ARMOR
 /obj/machinery/mecha_part_fabricator/Initialize(mapload)
@@ -171,7 +172,7 @@
 
 	var/list/part = list(
 		"name" = D.name,
-		"desc" = initial(built_item.desc),
+		"desc" = D.desc == "Desc" ? initial(built_item.desc) : D.desc,
 		"printTime" = get_construction_time_w_coeff(initial(D.construction_time))/10,
 		"cost" = cost,
 		"id" = D.id,

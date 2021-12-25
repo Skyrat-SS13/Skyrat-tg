@@ -1,12 +1,12 @@
 /obj/item/botpack
-	name = "Robot part pack"
+	name = "robot part pack"
 	desc = "A pack of robot parts."
 	icon = 'modular_skyrat/modules/secbotsrback/icons/secbotpack.dmi'
 	icon_state = "beepskybox"
 	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/botpack/secbot
-	name = "Securitron part pack"
+	name = "securitron part pack"
 	desc = "A pack of robot parts. This one makes a Securitron"
 	icon = 'modular_skyrat/modules/secbotsrback/icons/secbotpack.dmi'
 	icon_state = "beepskybox"

@@ -42,6 +42,19 @@
 		/obj/item/clothing/under/suit/helltaker = 5,
 		/obj/item/clothing/under/suit/helltaker/skirt = 5,
 		/obj/item/clothing/suit/toggle/lawyer/white = 5,
+		/obj/item/clothing/head/jester/alt = 1,
+		/obj/item/clothing/under/rank/civilian/clown/jester/alt = 1,
+		/obj/item/clothing/head/christmas = 5,
+		/obj/item/clothing/head/christmas/green =  5,
+		/obj/item/clothing/under/costume/christmas = 5,
+		/obj/item/clothing/under/costume/christmas/green = 5,
+		/obj/item/clothing/under/croptop/christmas = 5,
+		/obj/item/clothing/under/croptop/christmas/green = 5,
+		/obj/item/clothing/suit/hooded/wintercoat/christmas = 5,
+		/obj/item/clothing/suit/hooded/wintercoat/christmas/green = 5,
+		/obj/item/clothing/suit/hooded/wintercoat/christmas/gamerpc = 5,
+		/obj/item/clothing/shoes/winterboots/christmas = 5,
+		/obj/item/clothing/shoes/winterboots/christmas/green = 5,
 		)
 
 	skyrat_contraband = list(

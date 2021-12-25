@@ -397,9 +397,33 @@
 	else
 		return FALSE
 
+/obj/item/ammo_casing/energy/medical/utility/body_teleporter
+	projectile_type = /obj/projectile/energy/medical/utility/body_teleporter
+	select_name = "teleporter"
+	select_color = "#4400ff"
+	delay = 12 //This is a powerful cell, It'd be good for this to have a bit of a delay
+
+/obj/projectile/energy/medical/utility/body_teleporter
+	name = "bluespace transportation field"
+
+/obj/projectile/energy/medical/utility/body_teleporter/on_hit(mob/living/target)
+	. = ..()
+	if(!ishuman(target) || (target.stat != DEAD && !HAS_TRAIT(target, TRAIT_DEATHCOMA)))
+		return FALSE
+	var/mob/living/carbon/body = target
+	teleport_effect(body.loc)
+	body.forceMove(firer.loc)
+	teleport_effect(body.loc)
+	body.visible_message(span_notice("[body]'s body teleports to [firer]!"))
+
+/obj/projectile/energy/medical/utility/body_teleporter/proc/teleport_effect(var/location)
+	var/datum/effect_system/spark_spread/quantum/sparks = new /datum/effect_system/spark_spread/quantum //uses the teleport effect from quantum pads
+	sparks.set_up(5, 1, get_turf(location))
+	sparks.start()
+
 //Objects Used by medicells.
 /obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
-	name = "Hardlight Hospital Gown"
+	name = "hardlight hospital gown"
 	desc = "A hospital Gown made out of hardlight, you can barely feel it on your body"
 	icon_state = "lgown"
 
@@ -439,7 +463,7 @@
 
 //Hardlight Roller Bed.
 /obj/structure/bed/roller/medigun
-	name = "Hardlight Roller Bed"
+	name = "hardlight roller bed"
 	desc = "A Roller Bed made out of Hardlight"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/misc.dmi'
 	max_integrity = 1

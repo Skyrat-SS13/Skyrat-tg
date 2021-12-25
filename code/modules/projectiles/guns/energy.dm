@@ -33,8 +33,6 @@
 	var/use_cyborg_cell = FALSE
 	///set to true so the gun is given an empty cell
 	var/dead_cell = FALSE
-	///Does this gun support swapping energy cells?
-	var/supports_swapping_cells = FALSE
 
 /obj/item/gun/energy/emp_act(severity)
 	. = ..()
@@ -81,14 +79,14 @@
 	readout += "\nStandard models of this projectile weapon have [span_warning("[ammo_type.len] mode\s")]"
 	readout += "Our heroic interns have shown that one can theoretically stay standing after..."
 	for(var/obj/item/ammo_casing/energy/for_ammo as anything in ammo_type)
-		exam_proj = GLOB.proj_by_path_key[for_ammo?.projectile_type]
-		if(!istype(exam_proj))
+		exam_proj = for_ammo.projectile_type
+		if(!ispath(exam_proj))
 			continue
 
-		if(exam_proj.damage > 0) // Don't divide by 0!!!!!
-			readout += "[span_warning("[HITS_TO_CRIT(exam_proj.damage * for_ammo.pellets)] shot\s")] on [span_warning("[for_ammo.select_name]")] mode before collapsing from [exam_proj.damage_type == STAMINA ? "immense pain" : "their wounds"]."
-			if(exam_proj.stamina > 0) // In case a projectile does damage AND stamina damage (Energy Crossbow)
-				readout += "[span_warning("[HITS_TO_CRIT(exam_proj.stamina * for_ammo.pellets)] shot\s")] on [span_warning("[for_ammo.select_name]")] mode before collapsing from immense pain."
+		if(initial(exam_proj.damage) > 0) // Don't divide by 0!!!!!
+			readout += "[span_warning("[HITS_TO_CRIT(initial(exam_proj.damage) * for_ammo.pellets)] shot\s")] on [span_warning("[for_ammo.select_name]")] mode before collapsing from [initial(exam_proj.damage_type) == STAMINA ? "immense pain" : "their wounds"]."
+			if(initial(exam_proj.stamina) > 0) // In case a projectile does damage AND stamina damage (Energy Crossbow)
+				readout += "[span_warning("[HITS_TO_CRIT(initial(exam_proj.stamina) * for_ammo.pellets)] shot\s")] on [span_warning("[for_ammo.select_name]")] mode before collapsing from immense pain."
 		else
 			readout += "a theoretically infinite number of shots on [span_warning("[for_ammo.select_name]")] mode."
 
@@ -106,6 +104,7 @@
 		ammo_type[i] = shot
 	shot = ammo_type[select]
 	fire_sound = shot.fire_sound
+	fire_sound_volume = shot.fire_sound_volume //SKYRAT EDIT ADDITION
 	fire_delay = shot.delay
 
 /obj/item/gun/energy/Destroy()
@@ -180,6 +179,7 @@
 		select = 1
 	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
 	fire_sound = shot.fire_sound
+	fire_sound_volume = shot.fire_sound_volume //SKYRAT EDIT ADDITION
 	fire_delay = shot.delay
 	if (shot.select_name && user)
 		balloon_alert(user, "set to [shot.select_name]")
@@ -207,29 +207,6 @@
 	if(!skip_worn_icon)
 		worn_icon_state = temp_icon_to_use
 	return ..()
-
-// SKYRAT ADDITION START
-/obj/item/gun/energy/attackby(obj/item/A, mob/user, params)
-	. = ..()
-	if (.)
-		return
-	if(!supports_swapping_cells)
-		return
-	if(istype(A, /obj/item/stock_parts/cell))
-		if(!cell)
-			to_chat(user, span_notice("You insert [A] into [src]."))
-			cell = A
-			A.forceMove(src)
-			cut_overlays()
-			update_overlays()
-			return
-		to_chat(user, span_notice("You swap [cell] for [A] in [src]."))
-		cell.forceMove(get_turf(src))
-		cell = A
-		A.forceMove(src)
-		cut_overlays()
-		update_overlays()
-// SKYRAT ADDITION END
 
 /obj/item/gun/energy/update_overlays()
 	. = ..()

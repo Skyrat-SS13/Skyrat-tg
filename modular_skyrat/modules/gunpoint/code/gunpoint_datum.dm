@@ -193,6 +193,7 @@
 		qdel(src)
 
 /datum/gunpoint/proc/SourceUpdatedResting(datum/datum_source, resting)
+	SIGNAL_HANDLER
 	if(resting)
 		qdel(src)
 

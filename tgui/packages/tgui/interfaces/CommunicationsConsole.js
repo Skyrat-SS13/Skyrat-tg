@@ -439,27 +439,6 @@ const PageMain = (props, context) => {
             content="Make Priority Announcement"
             onClick={() => act("makePriorityAnnouncement")}
           />}
-          {
-            // SKYRAT EDIT BEGIN
-          }
-          {!!canMakeAnnouncement && <Button
-            icon="bullhorn"
-            content="Call Sol Federation 911: Police Response"
-            onClick={() => act("callThePolice")}
-          />}
-          {!!canMakeAnnouncement && <Button
-            icon="bullhorn"
-            content="Call Sol Federation 911: Firefighter Response"
-            onClick={() => act("callTheFireDep")}
-          />}
-          {!!canMakeAnnouncement && <Button
-            icon="bullhorn"
-            content="Call Sol Federation 911: Medical Response"
-            onClick={() => act("callTheParameds")}
-          />}
-          {
-            // SKYRAT EDIT END
-          }
           {!!canToggleEmergencyAccess && <Button.Confirm
             icon="id-card-o"
             content={`${emergencyAccess ? "Disable" : "Enable"} Emergency Maintenance Access`}
@@ -509,6 +488,32 @@ const PageMain = (props, context) => {
             content="Restore Backup Routing Data"
             onClick={() => act("restoreBackupRoutingData")}
           />}
+          {
+            // SKYRAT EDIT BEGIN
+          }
+          {!!canMakeAnnouncement && <Button
+            icon="bullhorn"
+            content="Call Sol Federation 911: Marshals Response"
+            onClick={() => act("callThePolice")}
+          />}
+          {!!canMakeAnnouncement && <Button
+            icon="bullhorn"
+            content="Call Sol Federation 911: Firefighter Response"
+            onClick={() => act("callTheFireDep")}
+          />}
+          {!!canMakeAnnouncement && <Button
+            icon="bullhorn"
+            content="Call Sol Federation 911: Medical Response"
+            onClick={() => act("callTheParameds")}
+          />}
+          {!!emagged && <Button
+            icon="bullhorn"
+            content="Place an Order with Dogginos Pizza"
+            onClick={() => act("callThePizza")}
+          />}
+          {
+            // SKYRAT EDIT END
+          }
         </Flex>
       </Section>
 

@@ -136,6 +136,10 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 			continue
 		if(possible_target in blacklist)
 			continue
+		// SKYRAT EDIT ADDITION START - Players in the interlink can't be obsession targets
+		if(SSticker.IsRoundInProgress() && istype(target_area, /area/centcom/interlink))
+			continue
+		// SKYRAT EDIT END
 		possible_targets += possible_target
 	if(try_target_late_joiners)
 		var/list/all_possible_targets = possible_targets.Copy()
@@ -246,7 +250,13 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 
 
 /datum/objective/maroon/check_completion()
-	return !target || !considered_alive(target) || (!target.current.onCentCom() && !target.current.onSyndieBase())
+	if (!target)
+		return TRUE
+	if (!considered_alive(target))
+		return TRUE
+	if (!target.current.onCentCom() && !target.current.onSyndieBase())
+		return TRUE
+	return FALSE
 
 /datum/objective/maroon/update_explanation_text()
 	if(target?.current)

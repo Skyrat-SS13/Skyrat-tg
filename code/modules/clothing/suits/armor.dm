@@ -23,43 +23,6 @@
 	inhand_icon_state = "armoralt"
 	blood_overlay_type = "armor"
 	dog_fashion = /datum/dog_fashion/back
-	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Basic Armor" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "armoralt",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "armoralt"
-		),
-		"Alternative Armor" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "armor",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "armor"
-		),
-		"Blue Shift" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "guard_armor",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "guard_armor"
-		),
-		"Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "peacekeeper_armor",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeper",
-			RESKIN_MUTANT_VARIANTS = NONE
-		),
-		"Black Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "peacekeeper_black",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeper_black",
-			RESKIN_MUTANT_VARIANTS = NONE
-		)
-	)
-	/// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/suit/armor/vest/alt
 	desc = "A Type I armored vest that provides decent protection against most types of damage."
@@ -333,23 +296,6 @@
 	strip_delay = 80
 
 //All of the armor below is mostly unused
-
-/obj/item/clothing/head/helmet/space/hardsuit/swat/centcom
-	name = "\improper CentCom SWAT helmet"
-	icon = 'icons/obj/clothing/hats.dmi'
-	worn_icon = 'icons/mob/clothing/head.dmi'
-	worn_icon_state = "centcomspace"
-	icon_state = "centcomspace"
-	inhand_icon_state = "centcomspacehelmet"
-	desc = "A tactical MK.II SWAT helmet boasting better protection and a reasonable fashion sense."
-
-/obj/item/clothing/suit/space/hardsuit/swat/centcom
-	name = "\improper CentCom SWAT armor"
-	desc = "A MK.II SWAT suit with streamlined joints and armor made out of superior materials, insulated against intense heat with the complementary gas mask. Usually given to station Captains, this one has been painted CC green with complimentary gold accents."
-	icon_state = "centcom"
-	inhand_icon_state = "centcomspacesuit"
-	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/swat/centcom
-	cell = /obj/item/stock_parts/cell/super
 
 /obj/item/clothing/suit/armor/heavy
 	name = "heavy armor"
