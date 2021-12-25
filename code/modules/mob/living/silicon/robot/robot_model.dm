@@ -194,10 +194,10 @@
 	new_model.rebuild_modules()
 	cyborg.radio.recalculateChannels()
 	cyborg.set_modularInterface_theme()
-	diag_hud_set_health()
-	diag_hud_set_status()
-	diag_hud_set_borgcell()
-	diag_hud_set_aishell()
+	cyborg.diag_hud_set_health()
+	cyborg.diag_hud_set_status()
+	cyborg.diag_hud_set_borgcell()
+	cyborg.diag_hud_set_aishell()
 	log_silicon("CYBORG: [key_name(cyborg)] has transformed into the [new_model] model.")
 
 	//SKYRAT EDIT ADDITION BEGIN - ALTBORGS - Old check for 'dogborg' var no longer necessary, refactored into model_features instead.
@@ -228,12 +228,8 @@
 		if(!isnull(details[SKIN_ICON_STATE]))
 			cyborg_base_icon = details[SKIN_ICON_STATE]
 		if(!isnull(details[SKIN_ICON]))
-<<<<<<< HEAD
-			cyborg.icon = details[SKIN_ICON]
-			cyborg_icon_override = details[SKIN_ICON] // SKYRAT EDIT ADDITION
-=======
 			cyborg_icon_file = details[SKIN_ICON]
->>>>>>> c6d5a35199b (adds a new janiborg sprite! (#63619))
+			cyborg_icon_override = details[SKIN_ICON] // SKYRAT EDIT ADDITION
 		if(!isnull(details[SKIN_PIXEL_X]))
 			cyborg.base_pixel_x = details[SKIN_PIXEL_X]
 		if(!isnull(details[SKIN_PIXEL_Y]))
@@ -244,15 +240,8 @@
 			hat_offset = details[SKIN_HAT_OFFSET]
 		if(!isnull(details[SKIN_TRAITS]))
 			model_traits += details[SKIN_TRAITS]
-<<<<<<< HEAD
-		//SKYRAT EDIT ADDITION
-		if(!isnull(details[SKIN_FEATURES]))
-			model_features += details[SKIN_FEATURES]
-		//SKYRAT EDIT END
-=======
 		if(!isnull(details[SKIN_STAT_ICONS]))
 			cyborg_stat_icons = details[SKIN_STAT_ICONS]
->>>>>>> c6d5a35199b (adds a new janiborg sprite! (#63619))
 	for(var/i in old_model.added_modules)
 		added_modules += i
 		old_model.added_modules -= i
