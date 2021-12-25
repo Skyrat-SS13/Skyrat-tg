@@ -3,6 +3,10 @@
 /obj/effect/spawner/random/trash/mess,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/blackmarket_chevvy)
+"dM" = (
+/obj/structure/shuttle/engine/propulsion/burst,
+/turf/open/floor/plating,
+/area/shuttle/blackmarket_chevvy)
 "eu" = (
 /obj/structure/table,
 /turf/open/floor/iron,
@@ -11,12 +15,6 @@
 /turf/open/floor/mineral/titanium,
 /area/shuttle/blackmarket_chevvy)
 "fp" = (
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/blackmarket_chevvy)
-"iy" = (
-/obj/structure/shuttle/engine/propulsion/burst{
-	dir = 8
-	},
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/blackmarket_chevvy)
 "kT" = (
@@ -52,11 +50,10 @@
 /turf/open/floor/mineral/titanium,
 /area/shuttle/blackmarket_chevvy)
 "zl" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/mineral/titanium,
+/obj/structure/shuttle/engine/heater,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/plating,
 /area/shuttle/blackmarket_chevvy)
 "Dx" = (
 /turf/open/floor/plating,
@@ -83,6 +80,12 @@
 	dir = 8
 	},
 /turf/open/floor/iron,
+/area/shuttle/blackmarket_chevvy)
+"SN" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible,
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/turf/open/floor/mineral/titanium,
 /area/shuttle/blackmarket_chevvy)
 "Ut" = (
 /obj/structure/chair/comfy/shuttle{
@@ -115,6 +118,7 @@
 /area/shuttle/blackmarket_chevvy)
 "Yw" = (
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/blackmarket_chevvy)
 "YP" = (
@@ -129,15 +133,9 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/blackmarket_chevvy)
-"ZW" = (
-/obj/structure/shuttle/engine/propulsion/burst{
-	dir = 4
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/blackmarket_chevvy)
 
 (1,1,1) = {"
-iy
+fp
 fp
 fp
 Pb
@@ -145,7 +143,7 @@ XU
 Pb
 fp
 fp
-iy
+fp
 "}
 (2,1,1) = {"
 fp
@@ -156,7 +154,7 @@ fh
 Ut
 Hj
 zl
-fp
+dM
 "}
 (3,1,1) = {"
 Pb
@@ -176,12 +174,12 @@ Dy
 uW
 Vy
 ZI
-ZI
-ZI
-fp
+SN
+zl
+dM
 "}
 (5,1,1) = {"
-ZW
+fp
 Pb
 Pb
 Pb
@@ -189,5 +187,5 @@ fp
 Pb
 Pb
 Pb
-ZW
+fp
 "}
