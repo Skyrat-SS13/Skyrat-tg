@@ -7,7 +7,7 @@
 	if(isobserver(user) && check_rights(R_SPAWN))
 		var/list/outfits = list()
 		outfits["Bluespace Tech"] = /datum/outfit/debug/bst
-		outfits["Bluespace Tech (MODsuit)"] = /datum/outfit/debug/bst_modsuit
+		outfits["Bluespace Tech (MODsuit)"] = /datum/outfit/admin/bst
 		outfits["Show All"] = "Show All"
 
 		var/dresscode
@@ -23,7 +23,7 @@
 
 		switch(initial_outfits)
 			if("Bluespace Tech")
-				dresscode = /datum/outfit/debug/bst_modsuit
+				dresscode = /datum/outfit/admin/bst
 			if("Show All")
 				dresscode = client.robust_dress_shop_skyrat()
 				if (!dresscode)

@@ -23,44 +23,15 @@
 /datum/outfit/debug/bst //Debug objs
 	name = "Bluespace Tech"
 	uniform = /obj/item/clothing/under/syndicate/combat
-	suit = /obj/item/clothing/suit/armor/vest/debug
-	glasses = /obj/item/clothing/glasses/debug
-	ears = /obj/item/radio/headset/headset_cent
-	mask = null
-	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/storage/belt/utility/chief/full/debug
 	shoes = /obj/item/clothing/shoes/combat/debug
 	id = /obj/item/card/id/advanced/debug/bst
-	back = /obj/item/storage/backpack/holding
 	box = /obj/item/storage/box/debugtools
-	backpack_contents = list(
-		/obj/item/melee/energy/axe=1,\
-		/obj/item/storage/part_replacer/bluespace/tier4=1,\
-		/obj/item/debug/human_spawner=1,\
-		/obj/item/gun/energy/taser/debug=1,\
-		/obj/item/clothing/glasses/debug,\
-		/obj/item/clothing/mask/gas/welding/up,\
-		/obj/item/tank/internals/oxygen,\
-		)
 
-/datum/outfit/debug/bst_modsuit //Debug objs plus modsuit
+/datum/outfit/admin/bst //Debug objs plus modsuit
 	name = "Bluespace Tech (MODsuit)"
 	uniform = /obj/item/clothing/under/syndicate/combat
-	glasses = /obj/item/clothing/glasses/debug
-	ears = /obj/item/radio/headset/headset_cent
-	mask = /obj/item/clothing/mask/gas/welding/up
-	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/storage/belt/utility/chief/full/debug
 	shoes = /obj/item/clothing/shoes/combat/debug
 	id = /obj/item/card/id/advanced/debug/bst
-	back = /obj/item/mod/control/pre_equipped/administrative
 	box = /obj/item/storage/box/debugtools
-	l_pocket = /obj/item/tank/internals/emergency_oxygen/double
-	internals_slot = ITEM_SLOT_SUITSTORE
-	backpack_contents = list(
-		/obj/item/melee/energy/axe=1,\
-		/obj/item/storage/part_replacer/bluespace/tier4=1,\
-		/obj/item/debug/human_spawner=1,\
-		/obj/item/gun/energy/pulse=1,\
-		/obj/item/gun/energy/taser/debug,\
-		)
