@@ -191,8 +191,8 @@
 	in_use = TRUE
 	COOLDOWN_START(src, clamp_cooldown, cooldown_duration)
 
-	// We're trying to unload something from the clamp
-	if(isturf(attacked_atom) || istype(attacked_atom, /obj/structure/table))
+	// We're trying to unload something from the clamp, only possible on the floor, tables and conveyors.
+	if(isturf(attacked_atom) || istype(attacked_atom, /obj/structure/table) || istype(attacked_atom, /obj/machinery/conveyor))
 		if(!contents.len)
 			in_use = FALSE
 			return
