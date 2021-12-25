@@ -44,10 +44,11 @@
 	desc = "A holographic targeting indicator for bluespace artillery. You should run."
 	icon = 'icons/effects/mouse_pointers/supplypod_down_target.dmi'
 	icon_state = "all"
+	pixel_x = -16
+	pixel_y = -16
 	layer = PROJECTILE_HIT_THRESHHOLD_LAYER
 	light_range = 2
 	anchored = TRUE
-	alpha = 0
 
 /obj/effect/bsa_target/Initialize(mapload)
 	. = ..()
@@ -57,4 +58,3 @@
 	if(QDELETED(src))
 		return
 	qdel(src)
-
