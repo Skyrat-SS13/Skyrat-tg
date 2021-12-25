@@ -3,7 +3,6 @@
  * FALSE = Deny connection
  * True = Confirm connection
  */
-
 /client/proc/check_population(connecting_admin = FALSE)
 	if(connecting_admin)
 		return TRUE //We allow admins to pass freeeeeeeely
