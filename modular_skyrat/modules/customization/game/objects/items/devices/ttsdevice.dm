@@ -10,13 +10,13 @@
 	slot_flags = ITEM_SLOT_BELT
 
 /obj/item/ttsdevice/attack_self(mob/user)
-	audible_message(span_notice("[user] has begun typing!"))
+	visible_message("[user] starts typing on [src].", "You begin typing on [src].", "You hear faint, continuous mechanical clicking noises.")
 	playsound(src, 'modular_skyrat/master_files/sound/items/tts/started_type.ogg', 50, TRUE)
 	var/input = stripped_input(user,"What would you like the device to say?", ,"", 500)
 	if(QDELETED(src) || !user.canUseTopic(src, BE_CLOSE))
 		return
 	if(!input)
-		audible_message(span_notice("[user] has stopped typing."))
+		visible_message("[user] stops typing on [src].", "You stop typing on [src].", "You hear the clicking noises stop.")
 		playsound(src, 'modular_skyrat/master_files/sound/items/tts/stopped_type.ogg', 50, TRUE)
 	src.say(input)
 	input = null
