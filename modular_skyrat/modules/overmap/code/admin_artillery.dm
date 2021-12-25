@@ -20,10 +20,15 @@
 	if(!turf_to_fire_at || !isturf(turf_to_fire_at))
 		return
 
+	var/target_holograph = tgui_alert(usr, "Do you want to target a holograph?", "Target holograph?", list("Yes", "No"))
+
 	priority_announce("BLUESPACE TARGETING PARAMETERS SET, PREIGNITION STARTING... FIRING IN T-20 SECONDS!", "BLUESPACE ARTILLERY", ANNOUNCER_BLUESPACEARTY_2)
 	alert_sound_to_playing('modular_skyrat/modules/bsa_overhaul/sound/superlaser_prefire.ogg', override_volume = TRUE)
 
 	message_admins("[ADMIN_LOOKUPFLW(usr)] has fired bluespace artillery! Firing at: [ADMIN_VERBOSEJMP(turf_to_fire_at)]")
+
+	if(target_holograph == "Yes")
+		new /obj/effect/bsa_target(turf_to_fire_at)
 
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/fire_bluespace_artillery, turf_to_fire_at, power), 20 SECONDS, TIMER_CLIENT_TIME)
 
@@ -33,3 +38,25 @@
 	minor_announce("BLUESPACE ARTILLERY FIRE SUCCESSFUL!", "BLUESPACE ARTILLERY", TRUE)
 	explosion(bullseye, ex_power, ex_power*2, ex_power*4)
 	alert_sound_to_playing('modular_skyrat/modules/bsa_overhaul/sound/superlaser_firing.ogg', override_volume = TRUE)
+
+/obj/effect/bsa_target
+	name = "Target Zone Indicator"
+	desc = "A holographic targeting indicator for bluespace artillery. You should run."
+	icon = 'icons/effects/mouse_pointers/supplypod_down_target.dmi'
+	icon_state = "all"
+	layer = PROJECTILE_HIT_THRESHHOLD_LAYER
+	light_range = 2
+	anchored = TRUE
+	alpha = 0
+
+/obj/effect/bsa_target/Initialize(mapload)
+	. = ..()
+	addtimer(CALLBACK(src, .proc/timer_destroy), 20 SECONDS, TIMER_CLIENT_TIME)
+
+/obj/effect/bsa_target/proc/timer_destroy()
+	qdel(src)
+
+/obj/effect/bsa_target/Destroy(force)
+	if(QDELETED(src))
+		return
+	return ..()
