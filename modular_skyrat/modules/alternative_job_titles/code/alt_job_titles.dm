@@ -79,7 +79,7 @@
 
 
 /datum/job/expeditionary_trooper
-
+	alt_titles = list("Expeditionary Trooper", "Vanguard Operative", "Vanguard Pointman", "Expeditionary Field Medic", "Vanguard Marksman", "Expeditionary Combat Technician") //i know vanguard is dead, i'm adding this because i want, in some small way, for my friend, cheshify's hard work and effort to be remembered, even in a tiny way
 
 /datum/job/geneticist
 	alt_titles = list("Geneticist", "Mutation Researcher")
