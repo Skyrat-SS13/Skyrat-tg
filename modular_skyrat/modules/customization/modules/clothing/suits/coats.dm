@@ -257,3 +257,36 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "suitjacket_white"
 	mutant_variants = NONE
+
+/obj/item/clothing/suit/hooded/wintercoat/christmas
+	name = "red christmas coat"
+	desc = "A festive red Christmas coat! Smells like Candy Cane!"
+	icon_state = "christmascoatr"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/christmas
+
+/obj/item/clothing/head/hooded/winterhood/christmas
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "christmashoodr"
+
+/obj/item/clothing/suit/hooded/wintercoat/christmas/green
+	name = "green christmas coat"
+	desc = "A festive green Christmas coat! Smells like Candy Cane!"
+	icon_state = "christmascoatg"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/christmas/green
+
+/obj/item/clothing/head/hooded/winterhood/christmas/green
+	icon_state = "christmashoodg"
+
+/obj/item/clothing/suit/hooded/wintercoat/christmas/gamerpc
+	name = "red and green christmas coat"
+	desc = "A festive red and green Christmas coat! Smells like Candy Cane!"
+	icon_state = "christmascoatrg"
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/christmas/gamerpc
+
+/obj/item/clothing/head/hooded/winterhood/christmas/gamerpc
+	icon_state = "christmashoodrg"

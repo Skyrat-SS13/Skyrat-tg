@@ -1,3 +1,5 @@
+/* SKYRAT EDIT TODO - REFACTOR INTO A NEW SUIT
+
 #define HEV_COLOR_GREEN "#00ff00"
 #define HEV_COLOR_RED "#ff0000"
 #define HEV_COLOR_BLUE "#00aeff"
@@ -36,11 +38,12 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "hardsuit0-hev"
 	inhand_icon_state = "sec_helm"
-	hardsuit_type = "hev"
+
 	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 30, BIO = 40, FIRE = 40, ACID = 40, WOUND = 10)
 	obj_flags = NO_MAT_REDEMPTION
 	resistance_flags = LAVA_PROOF|FIRE_PROOF|UNACIDABLE|ACID_PROOF|INDESTRUCTIBLE|FREEZE_PROOF
-	clothing_flags = STOPSPRESSUREDAMAGE|THICKMATERIAL|SNUG_FIT|LAVAPROTECT|BLOCK_GAS_SMOKE_EFFECT|SCAN_REAGENTS
+	clothing_flags = STOPSPRESSUREDAMAGE|THICKMATERIAL|SNUG_FIT|LAVAPROTECT|BLOCK_GAS_SMOKE_EFFECT
+	clothing_traits = list(TRAIT_REAGENT_SCANNER)
 	visor_flags_inv = HIDEMASK|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	visor_flags = STOPSPRESSUREDAMAGE
 	slowdown = 0
@@ -756,3 +759,4 @@
 #undef HEV_NOTIFICATION_VOICE
 #undef HEV_NOTIFICATION_OFF
 #undef HEV_NOTIFICATIONS
+*/

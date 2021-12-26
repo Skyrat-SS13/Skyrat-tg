@@ -35,14 +35,14 @@
 ///////////////////////////////////////////// Map Templates //////////////////////////////////////////////////////////
 /datum/map_template/shuttle/ferry
 	name = "NAV Monarch (Ferry)"
-	prefix = "_maps/skyrat/shuttles/"
+	prefix = "_maps/shuttles/skyrat/"
 	port_id = "ferry"
 	suffix = "skyrat"
 	who_can_purchase = null
 
 /datum/map_template/shuttle/cargo/skyrat
 	name = "NLV Consign (Cargo)"
-	prefix = "_maps/skyrat/shuttles/"
+	prefix = "_maps/shuttles/skyrat/"
 	port_id = "cargo"
 	suffix = "skyrat"
 
@@ -51,35 +51,36 @@
 
 /datum/map_template/shuttle/arrivals_skyrat
 	name = "NTV Relay (Arrivals)"
-	prefix = "_maps/skyrat/shuttles/"
+	prefix = "_maps/shuttles/skyrat/"
 	port_id = "arrivals"
 	suffix = "skyrat"
 	who_can_purchase = null
 
 /datum/map_template/shuttle/escape_pod/default
 	name = "escape pod (Default)"
-	prefix = "_maps/skyrat/shuttles/"
+	prefix = "_maps/shuttles/skyrat/"
 	port_id = "escape_pod"
 	suffix = "default_skyrat"
 
-/datum/map_template/shuttle/emergency/skyrat
+/datum/map_template/shuttle/emergency
+	prefix = "_maps/shuttles/skyrat/"
 	suffix = "skyrat"
 	name = "Standard Emergency Shuttle"
 	description = "Nanotrasen's standard issue emergency shuttle."
 
 /datum/map_template/shuttle/labour/skyrat
 	name = "NMC Drudge (Labour)"
-	prefix = "_maps/skyrat/shuttles/"
+	prefix = "_maps/shuttles/skyrat/"
 	suffix = "skyrat"
 
 /datum/map_template/shuttle/mining_common/skyrat
 	name = "NMC Chimera (Mining)"
-	prefix = "_maps/skyrat/shuttles/"
+	prefix = "_maps/shuttles/skyrat/"
 	suffix = "skyrat"
 
 /datum/map_template/shuttle/mining/skyrat
 	name = "NMC Phoenix (Mining)"
-	prefix = "_maps/skyrat/shuttles/"
+	prefix = "_maps/shuttles/skyrat/"
 	suffix = "skyrat"
 
 /datum/map_template/shuttle/mining/skyrat/large
