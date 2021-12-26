@@ -51,7 +51,12 @@ SUBSYSTEM_DEF(opposing_force)
 		opposing_force.broadcast_queue_change()
 
 /datum/controller/subsystem/opposing_force/proc/approve(datum/opposing_force/opposing_force, mob/approver)
+	if(!is_admin(approver.client))
+		message_admins("Oppoding_force_subsystem: [ADMIN_LOOKUPFLW(approver)] attempted to approve an OPFOR application but was not an admin!")
+		CRASH("Opposing_force_subsystem: Attempted to deny an opposing force but the approver was not an admin!")
+
 	if(!(opposing_force in submitted_applications))
+		to_chat(approver, "Opposing_force_subsystem: Attempted to approve an opposing force but it was not in the queue!")
 		return FALSE
 
 	approved_applications += opposing_force
@@ -64,6 +69,10 @@ SUBSYSTEM_DEF(opposing_force)
 	return TRUE
 
 /datum/controller/subsystem/opposing_force/proc/deny(datum/opposing_force/opposing_force, reason, mob/denier)
+	if(!is_admin(denier.client))
+		message_admins("Oppoding_force_subsystem: [ADMIN_LOOKUPFLW(denier)] attempted to deny an OPFOR application but was not an admin!")
+		CRASH("Opposing_force_subsystem: Attempted to deny an opposing force but the denier was not an admin!")
+
 	if(LAZYFIND(submitted_applications, opposing_force))
 		submitted_applications -= opposing_force
 
@@ -108,3 +117,24 @@ SUBSYSTEM_DEF(opposing_force)
 
 	broadcast_queue_change()
 
+/datum/controller/subsystem/opposing_force/proc/view_opfor(datum/opposing_force/opposing_force, mob/viewer)
+	if(!is_admin(viewer.client))
+		message_admins("Oppoding_force_subsystem: [ADMIN_LOOKUPFLW(viewer)] attempted to view an OPFOR application but was not an admin!")
+		CRASH("Opposing_force_subsystem: Attempted to view an opposing force but the viewer was not an admin!")
+
+	opposing_force.ui_interact(viewer)
+
+/datum/controller/subsystem/opposing_force/proc/open_control_panel()
+
+/datum/controller/subsystem/opposing_force/proc/get_check_antag_listing()
+	var/list/returned_html = list()
+
+	returned_html += "<b>OPFOR Applications</b><br>"
+
+	returned_html += "Unsubmitted<br>"
+	for(var/datum/opposing_force/opposing_force in unsubmitted_applications)
+		returned_html += "<b>[opposing_force.mind_reference.key]</b><br>"
+		returned_html += "<a href='?priv_msg=[ckey(opposing_force.mind_reference.key)]'>PM</a>"
+		if(opposing_force.mind_reference.current)
+			returned_html += "<a href='?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(opposing_force.mind_reference?.current)]'>FLW</a>"
+		returned

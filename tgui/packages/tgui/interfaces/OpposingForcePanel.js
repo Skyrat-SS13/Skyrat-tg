@@ -1,11 +1,13 @@
 import { toFixed } from 'common/math';
-import { useBackend, useSharedState } from '../backend';
+import { useBackend, useLocalState } from '../backend';
 import { Section, Stack, TextArea, Button, Tabs, Input, Slider, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
 export const OpposingForcePanel = (props, context) => {
   const { act, data } = useBackend(context);
   const {
+    is_admin,
+    creator_ckey,
     objectives = [],
     can_submit,
     status,
@@ -61,6 +63,9 @@ export const OpposingForcePanel = (props, context) => {
               <NoticeBox color="orange" mt={2}>
                 {status}
               </NoticeBox>
+              <NoticeBox color="orange" mt={2}>
+                {is_admin ? "Admin Mode" : "User Mode"}
+              </NoticeBox>
             </Section>
           </Stack.Item>
           {can_edit ? (
@@ -113,7 +118,7 @@ export const OpposingForceObjectives = (props, context) => {
   const [
     selectedObjectiveID,
     setSelectedObjective,
-  ] = useSharedState(context, 'objectives', objectives[0]?.id);
+  ] = useLocalState(context, 'objectives', objectives[0]?.id);
 
   const selectedObjective = objectives.find(objective => {
     return objective.id === selectedObjectiveID;

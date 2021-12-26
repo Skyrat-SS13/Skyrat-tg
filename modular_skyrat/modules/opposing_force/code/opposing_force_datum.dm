@@ -66,6 +66,10 @@
 /datum/opposing_force/ui_data(mob/user)
 	var/list/data = list()
 
+	data["is_admin"] = is_admin(user.client)
+
+	data["creator_ckey"] = holder.ckey
+
 	data["backstory"] = set_backstory
 
 	data["status"] = get_status_string()
@@ -130,6 +134,12 @@
 			close_application(usr)
 		if("submit")
 			submit_to_subsystem(usr)
+
+		//Admin protected procs
+		if("approve")
+			SSopposing_force.approve(src, usr)
+		if("deny")
+			SSopposing_force.deny(src, params["denied_reason"], usr)
 
 /datum/opposing_force/proc/broadcast_queue_change()
 	to_chat(holder, examine_block(span_nicegreen("Your OPFOR application is now number [SSopposing_force.get_queue_position(src)] in the queue.")))
