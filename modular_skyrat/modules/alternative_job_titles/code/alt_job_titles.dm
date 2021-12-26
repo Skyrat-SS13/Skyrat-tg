@@ -109,7 +109,7 @@
 	alt_titles = list("Paramedic", "Emergency Medical Technician", "Search and Rescue Technician")
 
 /datum/job/prisoner
-	alt_titles = list("Prisoner", "Minimum Security Prisoner", "Maximum Security Prisoner", "SuperMax Security Prisoner", "Protective Custody Prisoner")
+	alt_titles = list("Prisoner", "Minimum Security Prisoner", "Maximum Security Prisoner", "SuperMax Security Prisoner", "Protective Custody Prisoner", "Convict", "Felon", "Inmate")
 
 /datum/job/psychologist
 	alt_titles = list("Psychologist", "Psychiatrist", "Therapist", "Counsellor")
@@ -148,7 +148,7 @@
 	alt_titles = list("Security Sergeant", "Security Squad Leader", "Security Task Force Leader", "Security Fireteam Leader", "Security Enforcer") //why are these all so edgy, you're a mall cop
 
 /datum/job/shaft_miner
-	alt_titles = list("Shaft Miner", "Excavator")
+	alt_titles = list("Shaft Miner", "Excavator", "Spelunker", "Drill Technician", "Prospector")
 
 /datum/job/station_engineer
 	alt_titles = list("Station Engineer", "Emergency Damage Control Technician", "Electrician", "Engine Technician", "EVA Technician", "Engineer")
