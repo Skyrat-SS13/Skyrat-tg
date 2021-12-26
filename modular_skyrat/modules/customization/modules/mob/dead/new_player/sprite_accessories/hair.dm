@@ -382,6 +382,10 @@
 	name = "Half-shave glamorous"
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/more_hair.dmi'
 	icon_state = "halfshave_glamorous"
+	
+/datum/sprite_accessory/facial_hair/skyrat/emoshort
+	name = "Emo Short"
+	icon_state = "hair_emoshort"
 
 // Facial hair
 

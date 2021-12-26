@@ -11,7 +11,7 @@
 
 /*----- Black Market Shuttle Datum + related code -----*/
 /datum/map_template/shuttle/ruin/blackmarket_chevvy
-	prefix = "_maps/skyrat/shuttles/"
+	prefix = "_maps/shuttles/skyrat/"
 	suffix = "blackmarket_chevvy"
 	name = "Black Market Chevvy"
 
@@ -40,6 +40,7 @@
 /*----- End of Black Market Shuttle Code -----*/
 
 /datum/map_template/shuttle/prison_transport
+	prefix = "_maps/shuttles/skyrat/"
 	port_id = "prison_transport"
 	suffix = "skyrat"
 	name = "Prison Transporter NSS-74"
@@ -71,7 +72,7 @@
 
 /datum/map_template/shuttle/slaver_ship
 	port_id = "slaver ship"
-	prefix = "_maps/skyrat/shuttles/"
+	prefix = "_maps/shuttles/skyrat/"
 	port_id = "slaver"
 	suffix = "syndie"
 	name = "Slaver Ship"
