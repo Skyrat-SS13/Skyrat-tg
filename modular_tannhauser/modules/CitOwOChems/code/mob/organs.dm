@@ -1,6 +1,7 @@
 /obj/item/organ/tongue/fluffy
 	name = "fluffy tongue"
 	desc = "OwO what's this?"
+	icon = 'modular_tannhauser/modules/CitOwOChems/art/tonguefluffy.dmi'
 	icon_state = "tonguefluffy"
 	taste_sensitivity = 10 // extra sensitive and inquisitive uwu
 	modifies_speech = TRUE
