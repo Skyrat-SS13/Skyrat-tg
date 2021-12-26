@@ -481,10 +481,10 @@
 		exposed_mob.dna.mutant_bodyparts["testicles"][MUTANT_INDEX_NAME] = "Pair"
 		if ((exposed_mob.dna.species.id == SPECIES_HUMAN) && (exposed_mob.dna.species.id != SPECIES_LIZARD) && (exposed_mob.dna.species.id != SPECIES_LIZARD_ASH))
 			if (!exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES))
-				var/obj/item/organ/ballspath = /obj/item/organ/genital/testicles
-				ballspath = new /obj/item/organ/genital/testicles
-				ballspath.build_from_dna(exposed_mob.dna, "testicles")
-				ballspath.Insert(exposed_mob, 0, FALSE)
+				var/obj/item/organ/balls_path = /obj/item/organ/genital/testicles
+				balls_path = new /obj/item/organ/genital/testicles
+				balls_path.build_from_dna(exposed_mob.dna, "testicles")
+				balls_path.Insert(exposed_mob, 0, FALSE)
 				var/obj/item/organ/genital/new_balls = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 				new_balls.genital_size = 1
 				new_balls.update_sprite_suffix()
@@ -494,17 +494,17 @@
 			exposed_mob.dna.mutant_bodyparts["penis"][MUTANT_INDEX_COLOR_LIST] = list("#FFB6C1")
 			exposed_mob.dna.mutant_bodyparts["testicles"][MUTANT_INDEX_NAME] = "Internal"
 			if (!exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES))
-				var/obj/item/organ/ballspath = /obj/item/organ/genital/testicles
-				ballspath = new /obj/item/organ/genital/testicles
-				ballspath.build_from_dna(exposed_mob.dna, "testicles")
-				ballspath.Insert(exposed_mob, 0, FALSE)
+				var/obj/item/organ/balls_path = /obj/item/organ/genital/testicles
+				balls_path = new /obj/item/organ/genital/testicles
+				balls_path.build_from_dna(exposed_mob.dna, "testicles")
+				balls_path.Insert(exposed_mob, 0, FALSE)
 				var/obj/item/organ/genital/new_balls = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 				new_balls.genital_size = 1
 				new_balls.update_sprite_suffix()
-		var/obj/item/organ/cockpath = /obj/item/organ/genital/penis
-		cockpath = new /obj/item/organ/genital/penis
-		cockpath.build_from_dna(exposed_mob.dna, "penis")
-		cockpath.Insert(exposed_mob, 0, FALSE)
+		var/obj/item/organ/cock_path = /obj/item/organ/genital/penis
+		cock_path = new /obj/item/organ/genital/penis
+		cock_path.build_from_dna(exposed_mob.dna, "penis")
+		cock_path.Insert(exposed_mob, 0, FALSE)
 		var/obj/item/organ/genital/new_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
 		new_penis.genital_size = 4
 		exposed_mob.getorganslot(ORGAN_SLOT_PENIS).girth = 3
