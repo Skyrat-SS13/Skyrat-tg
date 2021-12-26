@@ -76,3 +76,6 @@
 
 /// /client/Click(atom/object, atom/location, control, params)
 #define COMSIG_MOB_CLIENT_MOUSE_DOWN "client_mob_mouse_down"
+
+/// From mob/living/*/set_combat_mode(): (new_state)
+#define COMSIG_LIVING_COMBAT_MODE_TOGGLE "living_combat_mode_toggle"

@@ -1,7 +1,7 @@
 /datum/job/expeditionary_trooper
-	title = "Vanguard Operative"
+	title = JOB_VANGUARD_OPERATIVE
 	description = "Explore gateways, watch your friends die, find all the loot."
-	department_head = list("Captain")
+	department_head = list(JOB_CAPTAIN)
 	faction = FACTION_STATION
 	total_positions = 4
 	spawn_positions = 4
@@ -126,7 +126,6 @@
 /obj/structure/closet/crate/secure/exp_corps/PopulateContents()
 	new /obj/item/storage/firstaid/tactical(src)
 	new /obj/item/storage/box/expeditionary_survival(src)
-	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
 	new /obj/item/radio(src)
 	new /obj/item/melee/tomahawk(src)
 	new /obj/item/clothing/gloves/color/black/expeditionary_corps(src)
@@ -139,7 +138,6 @@
 /obj/structure/closet/crate/secure/exp_corps/pointman/PopulateContents()
 	new /obj/item/storage/firstaid/regular(src)
 	new /obj/item/storage/box/expeditionary_survival(src)
-	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
 	new /obj/item/radio(src)
 	new /obj/item/melee/tomahawk(src)
 	new /obj/item/clothing/gloves/color/black/expeditionary_corps(src)
@@ -153,7 +151,6 @@
 /obj/structure/closet/crate/secure/exp_corps/field_medic/PopulateContents()
 	new /obj/item/storage/firstaid/expeditionary(src)
 	new /obj/item/storage/box/expeditionary_survival(src)
-	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
 	new /obj/item/radio(src)
 	new /obj/item/clothing/gloves/color/latex/nitrile/expeditionary_corps(src)
 	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
@@ -166,7 +163,6 @@
 /obj/structure/closet/crate/secure/exp_corps/combat_tech/PopulateContents()
 	new /obj/item/storage/firstaid/emergency(src)
 	new /obj/item/storage/box/expeditionary_survival(src)
-	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
 	new /obj/item/radio(src)
 	new /obj/item/melee/tomahawk(src)
 	new /obj/item/clothing/gloves/color/chief_engineer/expeditionary_corps(src)
@@ -181,7 +177,6 @@
 /obj/structure/closet/crate/secure/exp_corps/marksman/PopulateContents()
 	new /obj/item/storage/firstaid/regular(src)
 	new /obj/item/storage/box/expeditionary_survival(src)
-	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
 	new /obj/item/radio(src)
 	new /obj/item/storage/bag/ammo/marksman(src)
 	new /obj/item/clothing/gloves/color/black/expeditionary_corps(src)

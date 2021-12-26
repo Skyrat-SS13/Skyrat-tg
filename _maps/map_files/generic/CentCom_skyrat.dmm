@@ -280,14 +280,6 @@
 "ez" = (
 /turf/open/floor/circuit/green,
 /area/tdome/arena_source)
-"eP" = (
-/obj/structure/chair/office{
-	dir = 4
-	},
-/obj/effect/mob_spawn/human/intern,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/centcom/control)
 "eQ" = (
 /obj/structure/sign/warning/securearea,
 /turf/closed/indestructible/riveted,
@@ -420,6 +412,14 @@
 	},
 /obj/machinery/status_display/ai/directional/south,
 /obj/machinery/status_display/evac/directional/north,
+/turf/open/floor/iron/dark,
+/area/centcom/control)
+"hW" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/obj/effect/mob_spawn/corpse/human/intern,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/centcom/control)
 "il" = (
@@ -4916,7 +4916,7 @@
 /area/centcom/admin/storage)
 "rC" = (
 /obj/structure/table/reinforced,
-/obj/item/clothing/suit/space/hardsuit/deathsquad{
+/obj/item/mod/control/pre_equipped/corporate{
 	pixel_y = 5
 	},
 /obj/item/clothing/gloves/combat,
@@ -7520,15 +7520,6 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/carpet,
 /area/wizard_station)
-"xB" = (
-/mob/living/simple_animal/bot/medbot{
-	desc = "When engaged in combat, the vanquishing of thine enemy can be the warrior's only concern.";
-	name = "Hattori";
-	radio_key = null;
-	stationary_mode = 1
-	},
-/turf/open/floor/wood,
-/area/centcom/holding)
 "xD" = (
 /obj/item/kirbyplants{
 	icon_state = "plant-21"
@@ -14086,6 +14077,15 @@
 /obj/structure/sign/warning/vacuum,
 /turf/open/floor/plating,
 /area/centcom/ferry)
+"OO" = (
+/mob/living/simple_animal/bot/medbot/stationary{
+	desc = "A little medical robot. You can make out the word \"sincerity\" on its chassis.";
+	name = "Hijikata";
+	radio_key = null;
+	
+	},
+/turf/open/floor/wood,
+/area/centcom/holding)
 "OP" = (
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
@@ -14814,6 +14814,15 @@
 /obj/structure/chair/stool/bar/directional/south,
 /turf/open/floor/wood,
 /area/centcom/holding)
+"UG" = (
+/mob/living/simple_animal/bot/medbot/stationary{
+	desc = "When engaged in combat, the vanquishing of thine enemy can be the warrior's only concern.";
+	name = "Hattori";
+	radio_key = null;
+	
+	},
+/turf/open/floor/wood,
+/area/centcom/holding)
 "UH" = (
 /obj/machinery/light/directional/west,
 /obj/structure/closet/secure_closet/personal,
@@ -15240,15 +15249,6 @@
 	icon_state = "plant-21";
 	pixel_x = -3;
 	pixel_y = 3
-	},
-/turf/open/floor/wood,
-/area/centcom/holding)
-"Zx" = (
-/mob/living/simple_animal/bot/medbot{
-	desc = "A little medical robot. You can make out the word \"sincerity\" on its chassis.";
-	name = "Hijikata";
-	radio_key = null;
-	stationary_mode = 1
 	},
 /turf/open/floor/wood,
 /area/centcom/holding)
@@ -41975,7 +41975,7 @@ Sd
 Sd
 Nd
 Gs
-Zx
+OO
 CT
 MK
 CT
@@ -43011,7 +43011,7 @@ Sd
 Sd
 Sd
 MM
-xB
+UG
 Nd
 aa
 aa
@@ -59928,7 +59928,7 @@ nM
 nM
 io
 bp
-eP
+hW
 Vc
 YA
 tN

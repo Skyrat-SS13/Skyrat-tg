@@ -226,6 +226,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	else if(GLOB.deadmins[ckey])
 		add_verb(src, /client/proc/readmin)
 		connecting_admin = TRUE
+	//SKYRAT EDIT ADDITION //We will check the population here, because we need to know if the client is an admin or not.
+	if(!check_population(connecting_admin))
+		qdel(src)
+		return
+	// SKYRAT EDIT END
 	if(CONFIG_GET(flag/autoadmin))
 		if(!GLOB.admin_datums[ckey])
 			var/datum/admin_rank/autorank
@@ -536,10 +541,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 			send2adminchat("Server", "[cheesy_message] (No admins online)")
 	QDEL_LIST_ASSOC_VAL(char_render_holders)
+
 	if(movingmob != null)
-		movingmob.client_mobs_in_contents -= mob
-		UNSETEMPTY(movingmob.client_mobs_in_contents)
+		LAZYREMOVE(movingmob.client_mobs_in_contents, mob)
 		movingmob = null
+
 	active_mousedown_item = null
 	SSambience.remove_ambience_client(src)
 	QDEL_NULL(view_size)

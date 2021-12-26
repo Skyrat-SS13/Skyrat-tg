@@ -1,47 +1,47 @@
-/obj/effect/mob_spawn/human/syndicatespace
+/obj/effect/mob_spawn/ghost_role/human/syndicatespace
 	can_use_alias = TRUE
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/beach/alive
+/obj/effect/mob_spawn/ghost_role/human/beach/alive
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/exile
+/obj/effect/mob_spawn/ghost_role/human/exile
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/hermit
+/obj/effect/mob_spawn/ghost_role/human/hermit
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/prisoner_transport
+/obj/effect/mob_spawn/ghost_role/human/prisoner_transport
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/hotel_staff
+/obj/effect/mob_spawn/ghost_role/human/hotel_staff
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/syndicate
+/obj/effect/mob_spawn/ghost_role/human/syndicate
 	can_use_alias = TRUE
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/alive/space_bar_patron
+/obj/effect/mob_spawn/ghost_role/human/space_bar_patron
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/nanotrasensoldier/alive
+/obj/effect/mob_spawn/ghost_role/human/nanotrasensoldier/alive
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/commander/alive
+/obj/effect/mob_spawn/ghost_role/human/commander/alive
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/doctor/alive
+/obj/effect/mob_spawn/ghost_role/human/doctor/alive
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/lavaland_syndicate
+/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate
 	can_use_alias = TRUE
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/oldsec
+/obj/effect/mob_spawn/ghost_role/human/oldsec
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/oldeng
+/obj/effect/mob_spawn/ghost_role/human/oldeng
 	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/oldsci
+/obj/effect/mob_spawn/ghost_role/human/oldsci
 	any_station_species = TRUE
