@@ -509,7 +509,6 @@
 				/obj/item/clothing/suit/armor/vest/warden/peacekeeper = 25,
 				/obj/item/clothing/gloves/krav_maga/combatglovesplus = 5,
 				/obj/item/knife/rainbowknife = 15,
-				/obj/item/clothing/suit/space/hardsuit/swat = 5,
 				/obj/item/stack/spacecash/c10000 = 30)
 
 //items
@@ -543,17 +542,16 @@
 
 
 //GHOSTROLES
-/obj/effect/mob_spawn/human/scalamovguard
+/obj/effect/mob_spawn/ghost_role/human/scalamovguard
 	name = "guard cryo pod"
+	prompt_name = "a Scalamov guard"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
 	icon = 'modular_skyrat/modules/stasisrework/icons/stasissleeper.dmi'
 	icon_state = "sleeper"
 	density = FALSE
-	roundstart = FALSE
-	death = FALSE
 	mob_species = /datum/species/human
 	outfit = /datum/outfit/scalamovguard
-	short_desc = "You are a guard for the Scalamov prison. The prison has been overrun with the undead, and you and the remaining guards and a few prisoners have made due in the guard bunkhouse. The armory is cut off from you, and your food stores will only last so long..."
+	you_are_text = "You are a guard for the Scalamov prison. The prison has been overrun with the undead, and you and the remaining guards and a few prisoners have made due in the guard bunkhouse. The armory is cut off from you, and your food stores will only last so long..."
 	flavour_text = "You are a Scalamov prison guard. You've been here for days, maybe weeks. The prisoners in the cafeteria have made themselves known to be hostile. Do not trust them, only trust those that are with you. Escalate properly through RP before engaging in mechanics. \
 	Remember to AHELP before you decide to run through the entire gateway or something. Try to wait at least 30 minutes into the round before you do so as well. \
 	This is not meant to be a protagonist or an antagonist.\
@@ -569,17 +567,16 @@
 	gloves = /obj/item/clothing/gloves/combat
 	mask = /obj/item/clothing/mask/gas/sechailer/swat/spacepol
 
-/obj/effect/mob_spawn/human/scalamovdoc
+/obj/effect/mob_spawn/ghost_role/human/scalamovdoc
 	name = "Scalamov Doctor"
+	prompt_name = "a Scalamov doctor"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
 	icon = 'modular_skyrat/modules/stasisrework/icons/stasissleeper.dmi'
 	icon_state = "sleeper"
 	density = FALSE
-	roundstart = FALSE
-	death = FALSE
 	mob_species = /datum/species/human
 	outfit = /datum/outfit/scalamovdoc
-	short_desc = "You are a medical doctor aboard Scalamov prison. The prison and hospital are overrun, food is going to run out eventually, and the armory is locked down. On top of that, the prisoners that survived took over the cafeteria, and are hostile to you and the guards."
+	you_are_text = "You are a medical doctor aboard Scalamov prison. The prison and hospital are overrun, food is going to run out eventually, and the armory is locked down. On top of that, the prisoners that survived took over the cafeteria, and are hostile to you and the guards."
 	flavour_text = "You are a Scalamov prison doctor. You've been here for days, maybe weeks. The prisoners in the cafeteria have made themselves known to be hostile. Do not trust them, only trust those that are with you. Escalate properly through RP before engaging in mechanics. \
 	Remember to AHELP before you decide to run through the entire gateway or something. Try to wait at least 30 minutes into the round before you do so as well. \
 	This is not meant to be a protagonist or an antagonist.\
@@ -595,17 +592,16 @@
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
 	mask = /obj/item/clothing/mask/surgical
 
-/obj/effect/mob_spawn/human/scalamovinmateally
+/obj/effect/mob_spawn/ghost_role/human/scalamovinmateally
 	name = "Scalamov Prisoner"
+	prompt_name = "a Scalamov inmate (friendly)"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
 	icon = 'modular_skyrat/modules/stasisrework/icons/stasissleeper.dmi'
 	icon_state = "sleeper"
 	density = FALSE
-	roundstart = FALSE
-	death = FALSE
 	mob_species = /datum/species/human
 	outfit = /datum/outfit/scalamovinmateally
-	short_desc = "You are a Scalamov prisoner, allied with the guards in the guard house. After being rescued, you are willing to look over any previous hostilities with them. You're all in this together."
+	you_are_text = "You are a Scalamov prisoner, allied with the guards in the guard house. After being rescued, you are willing to look over any previous hostilities with them. You're all in this together."
 	flavour_text = "You are a Scalamov prisoner. The prisoners in the cafeteria have made themselves known to be hostile. Do not trust them, only trust those that are with you. Escalate properly through RP before engaging in mechanics. \
 	Remember to AHELP before you decide to run through the entire gateway or something. Try to wait at least 30 minutes into the round before you do so as well. \
 	This is not meant to be a protagonist or an antagonist.\
@@ -618,17 +614,16 @@
 	uniform = /obj/item/clothing/under/scalamovprisoner
 	shoes = /obj/item/clothing/shoes/sneakers/black
 
-/obj/effect/mob_spawn/human/scalamovinmatehostile
+/obj/effect/mob_spawn/ghost_role/human/scalamovinmatehostile
 	name = "Scalamov Hostile Inmate"
+	prompt_name = "a Scalamov inmate (hostile)"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
 	icon = 'modular_skyrat/modules/stasisrework/icons/stasissleeper.dmi'
 	icon_state = "sleeper"
 	density = FALSE
-	roundstart = FALSE
-	death = FALSE
 	mob_species = /datum/species/human
 	outfit = /datum/outfit/scalamovinmatehostile
-	short_desc = "You are a Scalamov prisoner. You and some of the other inmates have taken over the cafeteria, and are hostile with the surviving guards. You have plenty of food, but barely any weapons."
+	you_are_text = "You are a Scalamov prisoner. You and some of the other inmates have taken over the cafeteria, and are hostile with the surviving guards. You have plenty of food, but barely any weapons."
 	flavour_text = "You are a Scalamov prisoner. The guards in the guardhouse are your enemies. Do not trust them, only trust those that are with you. Escalate properly through RP before engaging in mechanics. \
 	Remember to use properly roleplay procedures. You may kill the simplemob guards seperating you from the guard's bunkhouse, but do not rush to kill the guards in the guardhouse. \
 	Do not fight or kill the guardhouse players without proper escalation and roleplay. Do not attack the Vanguards unless attacked first. \

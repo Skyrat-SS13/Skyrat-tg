@@ -45,6 +45,13 @@
 		return FALSE
 	else
 		return TRUE
+//Checks for non-medicine reagents in the bloodstream
+/obj/projectile/energy/medical/proc/checkReagents(mob/living/target)
+	var/non_medicine_chems = 0 //Keeps track of how many chemicals in the bloodstream aren't medicine.
+	for(var/reagent in target.reagents.reagent_list)
+		if(!istype(reagent, /datum/reagent/medicine))
+			non_medicine_chems += 1
+	return non_medicine_chems
 //Heals Brute without safety
 /obj/projectile/energy/medical/proc/healBrute(mob/living/target, amount_healed, max_clone, base_disgust)
 	if(!IsLivingHuman(target))
@@ -82,7 +89,12 @@
 /obj/projectile/energy/medical/proc/healTox(mob/living/target, amount_healed)
 	if(!IsLivingHuman(target))
 		return FALSE
-	target.adjustToxLoss(-amount_healed)
+	var/healing_multiplier = 1.5
+	var/non_meds = checkReagents(target)
+	healing_multiplier = healing_multiplier - (non_meds / 4)
+	if(healing_multiplier < 0.25)
+		healing_multiplier = 0.25
+	target.adjustToxLoss(-(amount_healed * healing_multiplier))
 
 //T1 Healing Projectiles//
 //The Basic Brute Heal Projectile//

@@ -568,3 +568,154 @@
   - bugfix: The Nanotrasen News Network has updated their news tickers for when a
       station horrifically blows up to be more accommodating towards the person directly
       responsible for making sure it didn't horrifically blow up.
+2021-12-23:
+  Melbert:
+  - bugfix: Removed a floating teleport beacon in Icebox's chapel
+  - bugfix: Fixed APC visibilty in icebox science outpost / RD office
+  - bugfix: Fixed Air alarm accessibility in icebox atmos office
+  SkyratBot:
+  - rscadd: Gas Masks now limit your field of view
+  - rscadd: Added field of view mechanics. It's darkness can be tweaked by a pref
+  - rscadd: Blind, nearsighted and fov-limited people will now see sounds as visual
+      effects.
+  - bugfix: Flying over lava no longer erroneously ignites you ablaze.
+  - bugfix: Balloon alerts when picking up staffs as a non wizard now properly appears
+      over the player's head.
+  - bugfix: Fixed players appearing above fire and foam.
+  - bugfix: Fixed garbage bags being uncleanable by mops, for silly silly reasons
+  - bugfix: fixed a missing wire in Deltastation's Arrivals Solar array, connecting
+      the control console to the array
+  - bugfix: TGUI list input will now respond to having large/swapped buttons in preferences.
+  - bugfix: BYOND functionality restored in TGUI input lists - keyboard support. Up/Down,
+      type a letter to jump to it (while search is not visible).
+  - bugfix: Allows the supermatter crystal to produce gases while powered, even in
+      absolutely empty turfs, excluding space turfs.
+  - bugfix: You can no longer wrap a locker to bypass the drag slowdown.
+  - bugfix: fixed potential bucket corruption in timer reset_buckets
+  kannthus:
+  - spellcheck: Fixed a typo on the barricade
+2021-12-24:
+  Ebin-Halcyon:
+  - bugfix: Syndicate operatives have been taken off unpaid break and are back to
+      work on Bioweapon research. Along with other workers returning to work.
+  - bugfix: DS-2 and Interdyne's air alarms no longer float off walls.
+  Gandalf2k15:
+  - rscadd: CME has been nerfed
+  GoldenAlpharex:
+  - bugfix: Fixed external organs not showing on certain species (again).
+  Higgin:
+  - balance: Doing surgery on somebody without first making them unconscious now leaves
+      them with a lingering mood penalty. The mood penalty's time and intensity can
+      be reduced with numbing agents like copious amounts of alcohol, Miner's Salve,
+      Lidocaine, and Morphine _if used prior to surgery._
+  - rscadd: Roboticists can now purchase two forms of anesthetic in their job wardrobe
+      vendors (N2O gas/morphine.)
+  - balance: Things which apply stasis now maintain unconsciousness if you go into
+      stasis unconscious and numbing effects if you go into stasis numbed.
+  OrionTheFox:
+  - rscadd: 'Added a whole new load of security drip, including gauntlets, new HuDs/NV
+      HuDs, new tackler gloves/Krav Maga gloves, remodeled visor helmets (which fit
+      muzzles now!), boot reskins, a blue belt, and a white uniform. Security are
+      also unable to spawn with skirts now as well, seeing as they have no peacekeeper
+      sprite. qol: The Peacekeeper Outfitting Station has had a new model shipped
+      out by Lopland themselves, giving Peacekeepers all the uniforms they''ll ever
+      need. This has replaced all old P.O.S''s'
+  - bugfix: Metastation's lockerroom-to-firingrange door has been fixed. Again.
+  - bugfix: 'Security''s helmet lights should stop being weird whenever their visor
+      is toggled qol: Security reskins can now be set to the default skin; no more
+      radial menu spam on your black belts!'
+  - bugfix: Icebox Gas Miners Do Not Exist; as a bonus, Icebox prison isnt breached
+      any more
+  RatFromTheJungle:
+  - bugfix: Fixed an icon-file oopsie with the new sidecuts
+  - rscdel: Deletes modular adv-egun crafting recipe, making it once more crafted
+      with energy guns, and not laser guns.
+  - rscadd: the crusader belt can now hold like, half the swords present on station,
+      namely the ones that already fit on the belt-slot.
+  SkyratBot:
+  - bugfix: Fixed mops wetting the turf when you refill them from the mop bucket I'm
+      oranges and I don't put changelogs on my PRs
+  - bugfix: Non-headrev revs can be properly revived after a revolution is quelled
+      again.
+  - bugfix: Inverse reagents are now properly consumed when being transferred into
+      a living body (eg. through syringes).
+  - bugfix: Fixes FoV mask and hiding in potted plants
+  - bugfix: You can no longer continue a surgery if the organ in question is somehow
+      removed whilst mid operation.
+  - bugfix: You will no longer spasm if you're unconscious/dead.
+  - bugfix: skin tone sorting
+  - refactor: refactor various color procs to use natives instead
+  - spellcheck: Fixed a number of typos in HTML elements that would cause messages
+      to not render properly.
+  - bugfix: Changed the font of some messages to better reflect if they were errors,
+      notices.
+  - bugfix: You can no longer bypass the red alert lock on the escape pod safe.
+  - bugfix: Fixes an exploit with thermite burn times.
+  - bugfix: Fixes width on black market uplinks to show three delivery options. Technology!
+  - bugfix: Void cloak (and other items intended to be invisible) can longer be seen
+      and unequipped in the strip menu.
+  - bugfix: Fixes the ablative trenchcoat giving you a permanent sechud.
+  - bugfix: Fixes Tramstation Vacant Commissary not having shutters
+  - bugfix: Engineers now have access to the SM's External Airlock on Tramstation
+  Spc-Dragonfruits:
+  - rscadd: Added 4 new half-shave hairstyles
+  - imageadd: Added icons for long half shave, messy half shave, long messy half shave
+      and glamorous half shave.
+  armhulen:
+  - refactor: Mob spawns are refactored, no more assortment of "random, instant, and
+      roundstart" vars on every mob spawn type
+  - refactor: if there are some minimal differences in how mob spawners feel, that's
+      why!
+  axietheaxolotl:
+  - bugfix: The NT Rep's jacket now uses a proper name and subtyping
+  dawsonkeyes:
+  - rscadd: The Marked One now resides in his arena on Lavaland
+  - rscadd: A new crusher trophy and weapon are now obtainable on Lavaland
+  kannthus:
+  - bugfix: Rotates the Chapels Morgue on Icebox to make it functional again
+  - rscadd: Alternative Jester outfit and hat to Autodrobe
+  - rscadd: Jester shoes to the Loadout, job restricted for clown
+  sasichkamega:
+  - bugfix: with a flavor length of FLAVOR_TEXT_CHAR_REQUIREMENT characters, you can
+      now join the game
+  tastyfish:
+  - bugfix: The advanced camera console's and AI's camera search function now works
+      again.
+  - bugfix: Advanced shuttle tiles now show the underlying environment on the transparent
+      parts instead of a black void.
+  tf-4:
+  - bugfix: 'Old sidearms are unobtainable once more, as they should be. Armoury discrepancies
+      have been normalised. qol: That one shocked grille has been removed from Blueshift.
+      You know the one.'
+  theOOZ:
+  - bugfix: Ninja-cyborgs can access their module's tools again.
+2021-12-25:
+  AtoriBirb:
+  - imageadd: added new hair sprite to our modular hair.dmi
+  GoldenAlpharex, sprites from WalterJe:
+  - imageadd: Updated the sprites of the conveyor belts and the conveyor switches,
+      ported and adapted from Tau Ceti!
+  - refactor: Brought up to today's standards conveyor codes, alongside properly documenting
+      it. Also changed how conveyor corners are handled to make them both more intuitive
+      for mappers and for people in-game.
+  Iamgoofball:
+  - balance: You can no longer expand non-32x32 cyborg sprites.
+  - rscdel: Removes the Cyborg Shrinker from the techweb.
+  Kapu1178:
+  - tweak: Actual Round Timer is now actually accurate.
+  OrionTheFox:
+  - bugfix: Security's caps and gauntlets fit better now
+  SkyratBot:
+  - bugfix: the observe button's tgui is now functional.
+  - spellcheck: Fixed a small spelling mistake in the sparring rite ritual.
+  - refactor: 'Many more tgui inputs have been converted over: Paystands, paintings,
+      pet names and more.'
+  - bugfix: TGUI inputs now support automatically selecting preexisting input (BYOND
+      default behavior).
+  - bugfix: You can now press ESC to exit TGUI inputs.
+  - bugfix: Fixes a bluescreen when turning on admin mode in NtOS chat software.
+  - bugfix: 'Literally 1984: NtOS chat admins can now properly mute others.'
+  - bugfix: Turning off NtOS admin mode now properly returns you to the channel.
+  - bugfix: NtOS chat screen widened slightly to fix clipping issue on the participants
+      panel.
+  - bugfix: Clipping and sizing issues on drone consoles have been fixed.

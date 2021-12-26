@@ -38,6 +38,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/check_ai_laws, /*shows AI and borg laws*/
 	/client/proc/ghost_pool_protection, /*opens a menu for toggling ghost roles*/
 	/datum/admins/proc/toggledchat, // SKYRAT EDIT ADDITION
+	/client/proc/request_help, // SKYRAT EDIT ADDITION
 	/datum/admins/proc/toggleooc, /*toggles ooc on/off for everyone*/
 	/datum/admins/proc/toggleoocdead, /*toggles ooc on/off for everyone who is dead*/
 	/datum/admins/proc/toggleenter, /*toggles whether people can join the current game*/
@@ -203,6 +204,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/cmd_sdql_spell_menu,
 	/client/proc/adventure_manager,
 	/client/proc/load_circuit,
+	/client/proc/cmd_admin_toggle_fov,
 	)
 GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess, /proc/release))
 GLOBAL_PROTECT(admin_verbs_possess)
@@ -668,7 +670,6 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 
 	if(robeless)
 		new_spell.clothes_req = FALSE
-		new_spell.cult_req = FALSE
 
 	if(spell_recipient.mind)
 		spell_recipient.mind.AddSpell(new_spell)
