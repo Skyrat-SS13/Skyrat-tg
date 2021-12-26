@@ -1137,14 +1137,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		if(ITEM_SLOT_FEET)
 			if(H.num_legs < 2)
 				return FALSE
-			//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
-			/*
-			if(DIGITIGRADE in species_traits)
+			if((DIGITIGRADE in species_traits) && !(I.item_flags & IGNORE_DIGITIGRADE))
 				if(!disable_warning)
 					to_chat(H, span_warning("The footwear around here isn't compatible with your feet!"))
 				return FALSE
-			*/
-			//SKYRAT EDIT REMOVAL END
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(ITEM_SLOT_BELT)
 			var/obj/item/bodypart/O = H.get_bodypart(BODY_ZONE_CHEST)

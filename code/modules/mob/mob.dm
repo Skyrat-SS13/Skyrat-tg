@@ -108,7 +108,7 @@
 			if(HUD_LIST_LIST)
 				hud_list[hud] = list()
 			else
-				var/image/I = image('icons/mob/huds/hud.dmi', src, "")
+				var/image/I = image('modular_skyrat/master_files/icons/mob/huds/hud.dmi', src, "")	//SKYRAT EDIT: original filepath 'icons/mob/huds/hud.dmi'
 				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
 				hud_list[hud] = I
 
@@ -376,7 +376,7 @@
  *
  * returns 0 if it cannot, 1 if successful
  */
-/mob/proc/equip_to_appropriate_slot(obj/item/W, qdel_on_fail = FALSE)
+/mob/proc/equip_to_appropriate_slot(obj/item/W, qdel_on_fail = FALSE, blacklist, initial) //SKYRAT EDIT CHANGE
 	if(!istype(W))
 		return FALSE
 	var/slot_priority = W.slot_equipment_priority
@@ -393,8 +393,16 @@
 			ITEM_SLOT_DEX_STORAGE\
 		)
 
+	//SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
+	/*
 	for(var/slot in slot_priority)
 		if(equip_to_slot_if_possible(W, slot, FALSE, TRUE, TRUE, FALSE, FALSE)) //qdel_on_fail = FALSE; disable_warning = TRUE; redraw_mob = TRUE;
+	*/
+	if (blacklist)
+		slot_priority -= blacklist
+	for(var/slot in slot_priority)
+		if(equip_to_slot_if_possible(W, slot, FALSE, TRUE, TRUE, FALSE, initial)) //qdel_on_fail = FALSE; disable_warning = TRUE; redraw_mob = TRUE;
+	//SKYRAT EDIT CHANGE END
 			return TRUE
 
 	if(qdel_on_fail)
@@ -477,7 +485,14 @@
 	else
 		result = examinify.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
 
-	to_chat(src, "<span class='infoplain'>[result.Join("\n")]</span>")
+	//SKYRAT EDIT ADDITION
+	if(result.len)
+		for(var/i = 1, i <= result.len, i++)
+			if(!findtext(result[i], "<hr>"))
+				result[i] += "\n"
+	//SKYRAT EDIT END
+
+	to_chat(src, "<div class='examine_block'><span class='infoplain'>[result.Join()]</span></div>") //SKYRAT EDIT CHANGE
 	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, examinify)
 
 
@@ -687,6 +702,13 @@
 	if ((stat != DEAD || !( SSticker )))
 		to_chat(usr, span_boldnotice("You must be dead to use this!"))
 		return
+
+	//SKYRAT EDIT ADDITION
+	if(ckey)
+		if(is_banned_from(ckey, BAN_RESPAWN))
+			to_chat(usr, "<span class='boldnotice'>You are respawn banned, you can't respawn!</span>")
+			return
+	//SKYRAT EDIT END
 
 	log_game("[key_name(usr)] used the respawn button.")
 
@@ -928,7 +950,7 @@
 			return pick(protection_sources)
 		else
 			return src
-	if((magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC)) || (holy && HAS_TRAIT(src, TRAIT_HOLY)))
+	if((magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC)) || (!self && magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC_NO_SELFBLOCK)) || (holy && HAS_TRAIT(src, TRAIT_HOLY)))
 		return src
 
 /**
