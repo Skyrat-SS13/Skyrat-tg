@@ -49,24 +49,20 @@
 	icon_state = "sleeper"
 	mob_name = "a cafe visitor"
 	density = FALSE
-	any_station_species = TRUE
 	outfit = /datum/outfit
 	you_are_text = "You are a Cafe Visitor!"
 	flavour_text = "You are off-duty and have decided to visit your favourite cafe. Enjoy yourself."
-	handles_loadout_and_quirks = TRUE
 
 /obj/effect/mob_spawn/ghost_role/human/ghostcafe/special(mob/living/carbon/human/new_spawn)
 	. = ..()
 	if(new_spawn.client)
 		var/area/A = get_area(src)
-		//new_spawn.AddElement(/datum/element/ghost_role_eligibility, free_ghosting = TRUE)
 		new_spawn.AddElement(/datum/element/dusts_on_catatonia)
 		new_spawn.AddElement(/datum/element/dusts_on_leaving_area,list(A.type, /area/hilbertshotel, /area/centcom/holding/cafe, /area/centcom/holding/cafewar, /area/centcom/holding/cafebotany,
 		/area/centcom/holding/cafebuild, /area/centcom/holding/cafevox, /area/centcom/holding/cafedorms, /area/centcom/holding/cafepark, /area/centcom/holding/cafeplumbing))
 		ADD_TRAIT(new_spawn, TRAIT_SIXTHSENSE, GHOSTROLE_TRAIT)
 		ADD_TRAIT(new_spawn, TRAIT_FREE_GHOST, GHOSTROLE_TRAIT)
 		to_chat(new_spawn,span_warning("<b>Ghosting is free!</b>"))
-		//to_chat(new_spawn,span_narsiesmall("Be warned: People who opt out of EORG will come here. Do not make the area uninhabitable and do NOT commit EORG. This is a safe-zone. If you attack people in EORG, you will be banned for griefing."))
 		var/datum/action/toggle_dead_chat_mob/D = new(new_spawn)
 		new_spawn.put_in_hands(new /obj/item/storage/box/syndie_kit/chameleon/ghostcafe, LEFT_HANDS, forced = TRUE)
 		new_spawn.equip_outfit_and_loadout(/datum/outfit/ghostcafe, new_spawn.client.prefs, FALSE, null)

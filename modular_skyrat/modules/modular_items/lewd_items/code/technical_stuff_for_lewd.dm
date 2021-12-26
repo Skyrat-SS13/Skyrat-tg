@@ -1146,17 +1146,6 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 
 // Extends default proc check for hidden skrell hair for supporting our sleepbag and catsuit to
 /datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	// // Default proc code
-	// if(H.wear_suit)
-	// 	if(H.try_hide_mutant_parts)
-	// 		return TRUE
-	// 	if(H.wear_suit.flags_inv & HIDEJUMPSUIT)
-	// 		if(istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
-	// 			var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
-	// 			if(HS.hardsuit_tail_colors)
-	// 				return FALSE
-	// 		return TRUE
-	// return FALSE
 
 	. = ..()
 	if(!.) // If true, tail already hidden

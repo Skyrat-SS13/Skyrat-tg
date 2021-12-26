@@ -187,6 +187,25 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /////////////////////////////////////////////////////////////MISC UNDERSUITS
 /datum/loadout_item/under/miscellaneous
 
+//christmas stuff, remove afterword
+/datum/loadout_item/under/miscellaneous/christmas
+	name = "Christmas Suit"
+	item_path = /obj/item/clothing/under/costume/christmas
+
+/datum/loadout_item/under/miscellaneous/christmas/green
+	name = "Green Christmas Suit"
+	item_path = /obj/item/clothing/under/costume/christmas/green
+
+/datum/loadout_item/under/miscellaneous/christmas/female
+	name = "Revealing Christmas Suit"
+	item_path = /obj/item/clothing/under/croptop/christmas
+
+/datum/loadout_item/under/miscellaneous/christmas/female/green
+	name = "Revealing Green Christmas Suit"
+	item_path = /obj/item/clothing/under/croptop/christmas/green
+
+//christmas ends, because every christmas is last christmas
+
 /datum/loadout_item/under/miscellaneous/camo
 	name = "Camo Pants"
 	item_path = /obj/item/clothing/under/pants/camo
@@ -641,11 +660,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/formal/executive_suit_alt
 	name = "Executive Suit Alt"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/female
+	item_path = /obj/item/clothing/under/suit/black/female
 
 /datum/loadout_item/under/formal/executive_skirt_alt
 	name = "Executive Suitskirt Alt"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/female/skirt
+	item_path = /obj/item/clothing/under/suit/black/female/skirt
 
 /datum/loadout_item/under/formal/green_suit
 	name = "Green Suit"

@@ -298,16 +298,17 @@
 			if(href_list["add_citation"])
 				var/maxFine = CONFIG_GET(number/maxfine)
 				var/t1 = tgui_input_text(usr, "Citation crime", "Security HUD")
-				var/fine = FLOOR(tgui_input_number(usr, "Citation fine", "Security HUD", 50, max_value = maxFine), 1)
-				if(!sec_record || !t1 || !fine || !allowed_access) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+				var/fine = tgui_input_number(usr, "Citation fine", "Security HUD", 50, maxFine, 5)
+				if(isnull(fine))
+					return
+				//if(!R || !t1 || !allowed_access) // ORIGINAL
+				if(!sec_record || !t1 || !allowed_access) // SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					return
 				if(!H.canUseHUD())
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 					return
-				if(fine < 0)
-					to_chat(usr, span_warning("You're pretty sure that's not how money works."))
-					return
+				fine = round(fine)
 				fine = min(fine, maxFine)
 
 				var/datum/data/crime/crime = GLOB.data_core.createCrimeEntry(t1, "", allowed_access, station_time_timestamp(), fine)
@@ -476,7 +477,7 @@
 					threatcount += 2
 
 	//Check for dresscode violations
-	if(istype(head, /obj/item/clothing/head/wizard) || istype(head, /obj/item/clothing/head/helmet/space/hardsuit/wizard))
+	if(istype(head, /obj/item/clothing/head/wizard))
 		threatcount += 2
 
 	/* SKYRAT EDIT - REMOVAL
@@ -1039,7 +1040,7 @@
 	. = ..()
 	INVOKE_ASYNC(src, .proc/set_species, race)
 
-/mob/living/carbon/human/species/set_species(datum/species/mrace, icon_update, pref_load)
+/mob/living/carbon/human/species/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE) // SKYRAT EDIT - Customization
 	. = ..()
 	if(use_random_name)
 		fully_replace_character_name(real_name, dna.species.random_name())

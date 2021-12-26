@@ -1,6 +1,7 @@
 GLOBAL_VAR_INIT(OOC_COLOR, null)//If this is null, use the CSS for OOC. Otherwise, use a custom colour.
 GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
+///talking in OOC uses this
 /client/verb/ooc(msg as text)
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC"
@@ -71,12 +72,17 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	mob.log_talk(raw_msg, LOG_OOC)
 
 	var/keyname = key
+
+	if(CONFIG_GET(flag/enable_cross_server_ooc)) //SKYRAT EDIT ADDITION
+		send_ooc_to_other_server(ckey, msg) //SKYRAT EDIT ADDITION
+
 	if(prefs.unlock_content)
 		if(prefs.toggles & MEMBER_PUBLIC)
 			keyname = "<font color='[prefs.read_preference(/datum/preference/color/ooc_color) || GLOB.normal_ooc_colour]'>[icon2html('icons/member_content.dmi', world, "blag")][keyname]</font>"
 	if(prefs.hearted)
 		var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
 		keyname = "[sheet.icon_tag("emoji-heart")][keyname]"
+
 	//The linkify span classes and linkify=TRUE below make ooc text get clickable chat href links if you pass in something resembling a url
 	for(var/client/receiver as anything in GLOB.clients)
 		if(!receiver.prefs) // Client being created or deleted. Despite all, this can be null.
