@@ -238,6 +238,10 @@
 			hat_offset = details[SKIN_HAT_OFFSET]
 		if(!isnull(details[SKIN_TRAITS]))
 			model_traits += details[SKIN_TRAITS]
+		//TANNHAUSER EDIT ADDITION - temporary until fixed upstream
+		if(!isnull(details[SKIN_FEATURES]))
+			model_features += details[SKIN_FEATURES]
+		//TANNHAUSER EDIT END
 		if(!isnull(details[SKIN_STAT_ICONS]))
 			cyborg_stat_icons = details[SKIN_STAT_ICONS]
 	for(var/i in old_model.added_modules)
