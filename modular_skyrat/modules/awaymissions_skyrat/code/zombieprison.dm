@@ -556,8 +556,6 @@
 	Remember to AHELP before you decide to run through the entire gateway or something. Try to wait at least 30 minutes into the round before you do so as well. \
 	This is not meant to be a protagonist or an antagonist.\
 	The simplemob guards are to be regarded as crazy, as they will attack you and prisoners alike.\ "
-	can_use_alias = TRUE
-	any_station_species = TRUE
 
 /datum/outfit/scalamovguard
 	name = "Scalamov Guard"
@@ -581,8 +579,6 @@
 	Remember to AHELP before you decide to run through the entire gateway or something. Try to wait at least 30 minutes into the round before you do so as well. \
 	This is not meant to be a protagonist or an antagonist.\
 	The simplemob guards are to be regarded as crazy, as they will attack you and prisoners alike.\ "
-	can_use_alias = TRUE
-	any_station_species = TRUE
 
 /datum/outfit/scalamovdoc
 	name = "Scalamov "
@@ -606,8 +602,6 @@
 	Remember to AHELP before you decide to run through the entire gateway or something. Try to wait at least 30 minutes into the round before you do so as well. \
 	This is not meant to be a protagonist or an antagonist.\
 	The simplemob guards are to be regarded as crazy, as they will attack you and prisoners alike.\ "
-	can_use_alias = TRUE
-	any_station_species = TRUE
 
 /datum/outfit/scalamovinmateally
 	name = "Scalamov Prisoner"
