@@ -823,15 +823,6 @@
 "dq" = (
 /turf/open/floor/stone,
 /area/centcom/holding)
-"dr" = (
-/mob/living/simple_animal/bot/medbot{
-	desc = "A little medical robot. You can make out the word \"sincerity\" on its chassis.";
-	name = "Hijikata";
-	radio_key = null;
-	stationary_mode = 1
-	},
-/turf/open/floor/wood/large,
-/area/centcom/holding)
 "dt" = (
 /obj/structure/closet/crate/freezer/blood,
 /turf/open/floor/sepia,
@@ -1131,14 +1122,14 @@
 /obj/item/camera_film,
 /turf/open/floor/wood/large,
 /area/centcom/holding)
-"eP" = (
-/obj/structure/chair/office{
-	dir = 4
+"eM" = (
+/mob/living/simple_animal/bot/medbot/stationary{
+	desc = "When engaged in combat, the vanquishing of thine enemy can be the warrior's only concern.";
+	name = "Hattori";
+	radio_key = null
 	},
-/obj/effect/mob_spawn/human/intern,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/centcom/control)
+/turf/open/floor/sepia,
+/area/centcom/holding)
 "eR" = (
 /obj/structure/flora/rock/pile,
 /turf/open/floor/plating/asteroid/basalt/wasteland{
@@ -1598,15 +1589,6 @@
 	},
 /turf/open/floor/iron,
 /area/tdome/arena)
-"gV" = (
-/mob/living/simple_animal/bot/medbot{
-	desc = "When engaged in combat, the vanquishing of thine enemy can be the warrior's only concern.";
-	name = "Momo";
-	radio_key = null;
-	stationary_mode = 1
-	},
-/turf/open/floor/sepia,
-/area/centcom/holding)
 "gW" = (
 /obj/item/flashlight/lantern,
 /turf/open/floor/plating/ironsand{
@@ -7668,6 +7650,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/briefing)
+"wV" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/obj/effect/mob_spawn/corpse/human/intern,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/centcom/control)
 "wX" = (
 /obj/structure/sink{
 	dir = 4;
@@ -13820,6 +13810,14 @@
 	name = "Guest House Entrance"
 	},
 /area/centcom/holding)
+"MP" = (
+/mob/living/simple_animal/bot/medbot/stationary{
+	desc = "When engaged in combat, the vanquishing of thine enemy can be the warrior's only concern.";
+	name = "Momo";
+	radio_key = null
+	},
+/turf/open/floor/sepia,
+/area/centcom/holding)
 "MU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/wood,
@@ -14927,15 +14925,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/admin)
-"Sa" = (
-/mob/living/simple_animal/bot/medbot{
-	desc = "When engaged in combat, the vanquishing of thine enemy can be the warrior's only concern.";
-	name = "Hattori";
-	radio_key = null;
-	stationary_mode = 1
-	},
-/turf/open/floor/sepia,
-/area/centcom/holding)
 "Sb" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/bottle/sake{
@@ -14952,7 +14941,7 @@
 /area/centcom/supplypod/loading/two)
 "Sh" = (
 /obj/structure/table/reinforced,
-/obj/item/clothing/suit/space/hardsuit/deathsquad{
+/obj/item/mod/control/pre_equipped/corporate{
 	pixel_y = 5
 	},
 /obj/item/clothing/gloves/combat,
@@ -14993,6 +14982,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/briefing)
+"Sm" = (
+/mob/living/simple_animal/bot/medbot/stationary{
+	desc = "A little medical robot. You can make out the word \"sincerity\" on its chassis.";
+	name = "Hijikata";
+	radio_key = null
+	},
+/turf/open/floor/wood/large,
+/area/centcom/holding)
 "Sn" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -39770,7 +39767,7 @@ Zi
 kw
 eT
 VS
-dr
+Sm
 YC
 gP
 Ra
@@ -44151,7 +44148,7 @@ es
 bu
 fO
 Pf
-hb
+eM
 cH
 fO
 Oe
@@ -44398,7 +44395,7 @@ Zt
 Zt
 fO
 Rk
-gV
+MP
 hb
 Up
 AG
@@ -44408,7 +44405,7 @@ AG
 AG
 Up
 hb
-Sa
+hb
 ge
 fO
 UC
@@ -61592,7 +61589,7 @@ nM
 nM
 io
 bp
-eP
+wV
 Vc
 YA
 tN

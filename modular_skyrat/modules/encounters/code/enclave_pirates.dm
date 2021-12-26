@@ -50,7 +50,7 @@
 	trim_state = "trim_syndicate"
 	access = list(ACCESS_SYNDICATE, ACCESS_MAINT_TUNNELS)
 
-/obj/effect/mob_spawn/human/pirate/enclave
+/obj/effect/mob_spawn/ghost_role/human/pirate/enclave
 	name = "imperial enclave sleeper"
 	desc = "Cozy. You get the feeling you aren't supposed to be here, though..."
 	random = TRUE
@@ -59,7 +59,7 @@
 	mob_name = "an imperial enclave trooper"
 	outfit = /datum/outfit/pirate/enclave_trooper
 	rank = "Imperial Enclave Trooper"
-	short_desc = "You are an Imperial Enclave outfit."
+	you_are_text = "You are an Imperial Enclave outfit."
 	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by ransoming crew and stealing credits."
 	spawner_job_path = /datum/job/space_pirate
 	spawn_oldpod = FALSE
@@ -69,18 +69,19 @@
 	policy_index = ROLE_FUGITIVE_HUNTER
 
 
-/obj/effect/mob_spawn/human/pirate/enclave/generate_pirate_name(spawn_gender)
+/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/generate_pirate_name(spawn_gender)
 	var/first_name = pick(GLOB.commando_names)
 	return "[rank] [first_name]"
 
-/obj/effect/mob_spawn/human/pirate/enclave/captain
+/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/captain
 	rank = "Imperial Enclave Officer"
 	outfit = /datum/outfit/pirate/enclave_officer
 
-/obj/effect/mob_spawn/human/pirate/enclave/gunner
+/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/gunner
 	rank = "Imperial Enclave Trooper"
 
 /datum/map_template/shuttle/pirate/imperial_enclave
+	prefix = "_maps/shuttles/skyrat/"
 	suffix = "enclave"
 	name = "pirate ship (Imperial Enclave Enforcer-Class Starship)"
 

@@ -5,6 +5,30 @@ SERVERSQLNAME
 ## Comment this out if you'd like a server that cares only about local bans in the database.
 RESPECT_GLOBAL_BANS
 
+## Automatic population control population limit, will send players(not admins) to the overflow server.
+## Set to 0 to disable
+## MAKE SURE YOU SET AN OVERFLOW IP!
+HARD_PLAYER_CAP 0
+
+## Player prompt to change servers after this cap.
+## Set to 0 to disable
+## MAKE SURE YOU SET AN OVERFLOW IP!
+SOFT_PLAYER_CAP 0
+
+## The IP of the overflow server. See above.
+#OVERFLOW_SERVER_IP byond://example:1337
+
+## Cross server OOC
+## Sends this servers OOC to all other cross servers. Uses cross server name as an identity.
+#ENABLE_CROSS_SERVER_OOC
+
+## Cross server ASAY
+## Sends this servers ASAY to all other cross servers. Uses cross server name as an identity.
+#ENABLE_CROSS_SERVER_ASAY
+
+## The non-IC name we send to OOC and adminsay.
+#CROSS_SERVER_NAME
+
 ## Comment this out if you want to use the SQL based mentor system, the legacy system uses mentors.txt.
 ## You need to set up your database to use the SQL based system.
 ## This flag is automatically enabled if SQL_ENABLED isn't
@@ -67,7 +91,7 @@ PC_MOB_TEXT As a player controlled mob you are expected to play the role to the 
 #RUSSIAN_TEXT_FORMATION
 
 ## Toggles off SSDecay when uncommented, HIGHLY recommended for map test-merges, to avoid giving it a bad first impression.
-#SSDECAY_DISABLED
+SSDECAY_DISABLED
 
 ## Disables any ERP preferences for codebases that don't want it.
 #DISABLE_ERP_PREFERENCES

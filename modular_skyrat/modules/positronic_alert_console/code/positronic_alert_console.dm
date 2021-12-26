@@ -25,7 +25,7 @@
 	. = ..()
 	radio = new(src)
 	radio.keyslot = new radio_key
-	radio.listening = FALSE
+	radio.set_listening(FALSE)
 	radio.recalculateChannels()
 
 /obj/machinery/posialert/Destroy()
