@@ -73,7 +73,7 @@
 			var/datum/sprite_accessory/snouts/S = GLOB.sprite_accessories["snout"][dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME]]
 			if(S.use_muzzled_sprites && head.mutant_variants & STYLE_MUZZLE)
 				used_style = STYLE_MUZZLE
-		else if(dna?.species.id == "teshari")
+		else if(isteshari(src))
 			used_style = STYLE_TESHARI
 		switch(used_style)
 			if(STYLE_MUZZLE)
@@ -81,7 +81,7 @@
 			if(STYLE_VOX)
 				desired_icon = head.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/head_vox.dmi'
 			if(STYLE_TESHARI)
-				var/list/tesh_icon_states = icon_states('modular_skyrat/master_files/icons/mob/clothing/species/teshari/head.dmi')
+				var/static/list/tesh_icon_states = icon_states('modular_skyrat/master_files/icons/mob/clothing/species/teshari/head.dmi')
 				if((head.worn_icon_state || head.icon_state) in tesh_icon_states)
 					desired_icon = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/head.dmi'
 
@@ -109,16 +109,16 @@
 			var/datum/sprite_accessory/snouts/S = GLOB.sprite_accessories["snout"][dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME]]
 			if(S.use_muzzled_sprites && wear_mask.mutant_variants & STYLE_MUZZLE)
 				used_style = STYLE_MUZZLE
-		else if(dna.species.id == "teshari")
+		else if(isteshari(src))
 			used_style = STYLE_TESHARI
 
 		switch(used_style)
 			if(STYLE_MUZZLE)
 				desired_icon = wear_mask.worn_icon_muzzled || 'modular_skyrat/master_files/icons/mob/clothing/mask_muzzled.dmi'
 			if(STYLE_VOX)
-				desired_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask_vox.dmi'
+				desired_icon = wear_mask.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/mask_vox.dmi'
 			if(STYLE_TESHARI)
-				var/list/tesh_icon_states = icon_states('modular_skyrat/master_files/icons/mob/clothing/species/teshari/mask.dmi')
+				var/static/list/tesh_icon_states = icon_states('modular_skyrat/master_files/icons/mob/clothing/species/teshari/mask.dmi')
 				if((wear_mask.worn_icon_state || wear_mask.icon_state) in tesh_icon_states)
 					desired_icon = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/mask.dmi'
 
@@ -138,7 +138,7 @@
 	if(wear_neck)
 		var/icon_file = wear_neck.worn_icon
 		var/applied_styles = NONE
-		if(dna.species.id == "teshari")
+		if(isteshari(src))
 			applied_styles = STYLE_TESHARI
 			icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/neck.dmi'
 
@@ -158,8 +158,8 @@
 	if(back)
 		var/icon_file = back.worn_icon
 		var/applied_styles = NONE
-		if(dna.species.id == "teshari")
-			var/list/tesh_icon_states = icon_states('modular_skyrat/master_files/icons/mob/clothing/species/teshari/back.dmi')
+		if(isteshari(src))
+			var/static/list/tesh_icon_states = icon_states('modular_skyrat/master_files/icons/mob/clothing/species/teshari/back.dmi')
 			if((back.worn_icon_state || back.icon_state) in tesh_icon_states)
 				icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/back.dmi'
 				applied_styles = STYLE_TESHARI

@@ -357,8 +357,8 @@ There are several things that need to be remembered:
 		//SKYRAT EDIT ADDITION BEGIN - TESHARI CLOTHES
 		var/icon_file = belt.worn_icon
 		var/applied_styles = NONE
-		if(dna.species.id == "teshari")
-			var/list/tesh_icon_states = icon_states('modular_skyrat/master_files/icons/mob/clothing/species/teshari/belt.dmi')
+		if(isteshari(src))
+			var/static/list/tesh_icon_states = icon_states('modular_skyrat/master_files/icons/mob/clothing/species/teshari/belt.dmi')
 			if((belt.worn_icon_state || belt.icon_state) in tesh_icon_states)
 				icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/belt.dmi'
 				applied_styles = STYLE_TESHARI
