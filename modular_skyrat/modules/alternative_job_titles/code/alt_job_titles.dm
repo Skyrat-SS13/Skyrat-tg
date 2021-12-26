@@ -127,7 +127,7 @@
 
 
 /datum/job/scientist
-	alt_titles = list("Scientist", "Circuitry Designer","Xenobiologist", "Cytologist", "Plasma Researcher", "Anomalist", "Lab Technician", "Theoretical Physicist")
+	alt_titles = list("Scientist", "Circuitry Designer","Xenobiologist", "Cytologist", "Plasma Researcher", "Anomalist", "Lab Technician", "Theoretical Physicist", "Ordnance Technician")
 
 /datum/job/security_medic
 	alt_titles = list("Security Medic", "Field Medic", "Security Corpsman", "Brig Physician")
@@ -142,7 +142,7 @@
 	alt_titles = list("Shaft Miner", "Excavator", "Spelunker", "Drill Technician", "Prospector")
 
 /datum/job/station_engineer
-	alt_titles = list("Station Engineer", "Emergency Damage Control Technician", "Electrician", "Engine Technician", "EVA Technician", "Engineer")
+	alt_titles = list("Station Engineer", "Emergency Damage Control Technician", "Electrician", "Engine Technician", "EVA Technician", "Engineer", "Mechanic")
 
 /datum/job/virologist
 	alt_titles = list("Virologist", "Pathologist")
