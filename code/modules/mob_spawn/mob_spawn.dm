@@ -130,6 +130,12 @@
 	/// Typepath indicating the kind of job datum this ghost role will have. PLEASE inherit this with a new job datum, it's not hard. jobs come with policy configs.
 	var/spawner_job_path = /datum/job/ghost_role
 
+
+	// SKYRAT EDIT ADDITION
+	/// Do we use a random appearance for this ghost role?
+	var/random_appearance = FALSE
+	// SKYRAT EDIT END
+
 /obj/effect/mob_spawn/ghost_role/Initialize(mapload)
 	. = ..()
 	SSpoints_of_interest.make_point_of_interest(src)
@@ -168,6 +174,12 @@
 
 /obj/effect/mob_spawn/ghost_role/special(mob/living/spawned_mob, mob/mob_possessor)
 	. = ..()
+	// SKYRAT EDIT ADDITION
+	if(!random_appearance && mob_possessor && ishuman(spawned_mob) && mob_possessor.client)
+		var/mob/living/carbon/human/spawned_human = spawned_mob
+		mob_possessor?.client?.prefs?.safe_transfer_prefs_to(spawned_human)
+		spawned_human.dna.update_dna_identity()
+	// SKYRAT EDIT END
 	if(mob_possessor)
 		spawned_mob.ckey = mob_possessor.ckey
 	if(show_flavor)
