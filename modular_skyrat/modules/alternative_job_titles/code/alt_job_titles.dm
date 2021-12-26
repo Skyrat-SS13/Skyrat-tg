@@ -13,7 +13,7 @@
 	alt_titles = list("AI", "Station Intelligence", "Automated Overseer")
 
 /datum/job/assistant
-	alt_titles = list("Assistant", "Civilian", "Tourist", "Businessman", "Trader", "Entertainer", "Freelancer", "Off-Duty Staff")
+	alt_titles = list("Assistant", "Civilian", "Tourist", "Businessman", "Businesswoman", "Trader", "Entertainer", "Freelancer", "Off-Duty Staff")
 
 /datum/job/atmospheric_technician
 	alt_titles = list("Atmospheric Technician", "Life Support Technician", "Emergency Fire Technician")
@@ -43,7 +43,7 @@
 	alt_titles = list("Cargo Technician", "Deck Worker", "Mailman")
 
 /datum/job/chaplain
-	alt_titles = list("Chaplain", "Priest", "Preacher", "Imam", "Rabbi", "Monk")
+	alt_titles = list("Chaplain", "Priest", "Preacher", "Reverend", "Oracle", "Pontifex", "Magister", "High Priest", "Imam", "Rabbi", "Monk") //i would add OT III but honestly, thats way too specific
 
 /datum/job/chemist
 	alt_titles = list("Chemist", "Pharmacist", "Pharmacologist")
