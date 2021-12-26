@@ -177,7 +177,7 @@
 	// SKYRAT EDIT ADDITION
 	if(!random_appearance && mob_possessor && ishuman(spawned_mob) && mob_possessor.client)
 		var/appearance_choice = tgui_alert(mob_possessor, "Use currently loaded character preferences?", "Appearance Type", list("Yes", "No"))
-		if(appearance_choice = "Yes")
+		if(appearance_choice == "Yes")
 			var/mob/living/carbon/human/spawned_human = spawned_mob
 			mob_possessor?.client?.prefs?.safe_transfer_prefs_to(spawned_human)
 			spawned_human.dna.update_dna_identity()
