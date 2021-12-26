@@ -176,9 +176,11 @@
 	. = ..()
 	// SKYRAT EDIT ADDITION
 	if(!random_appearance && mob_possessor && ishuman(spawned_mob) && mob_possessor.client)
-		var/mob/living/carbon/human/spawned_human = spawned_mob
-		mob_possessor?.client?.prefs?.safe_transfer_prefs_to(spawned_human)
-		spawned_human.dna.update_dna_identity()
+		var/appearance_choice = tgui_alert(mob_possessor, "Use currently loaded character preferences?", "Appearance Type", list("Yes", "No"))
+		if(appearance_choice = "Yes")
+			var/mob/living/carbon/human/spawned_human = spawned_mob
+			mob_possessor?.client?.prefs?.safe_transfer_prefs_to(spawned_human)
+			spawned_human.dna.update_dna_identity()
 	// SKYRAT EDIT END
 	if(mob_possessor)
 		spawned_mob.ckey = mob_possessor.ckey
