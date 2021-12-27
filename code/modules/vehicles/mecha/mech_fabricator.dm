@@ -42,17 +42,13 @@
 
 	/// Reference to a remote material inventory, such as an ore silo.
 	var/datum/component/remote_materials/rmat
-<<<<<<< HEAD
-//SKYRAT EDIT START: POWER ARMOR
-=======
-	
+
 	/// A list of part sets used for TGUI static data. Updated on Init() and syncing with the R&D console.
 	var/list/final_sets = list()
-	
+
 	/// A list of individual parts used for TGUI static data. Updated on Init() and syncing with the R&D console.
 	var/list/buildable_parts = list()
 
->>>>>>> 7d23b40526f (Optimizes the `output_part_info()` proc in Mech Fabricators. (#63379))
 	/// A list of categories that valid MECHFAB design datums will broadly categorise themselves under.
 	var/list/part_sets = list(
 								"Cyborg",
@@ -72,9 +68,9 @@
 								"Control Interfaces",
 								"MOD Construction",
 								"MOD Modules",
-								"Misc",
+								"Misc"
 								)
-//SKYRAT EDIT STOP: POWER ARMOR
+
 /obj/machinery/mecha_part_fabricator/Initialize(mapload)
 	stored_research = SSresearch.science_tech
 	rmat = AddComponent(/datum/component/remote_materials, "mechfab", mapload && link_on_init, mat_container_flags=BREAKDOWN_FLAGS_LATHE)
