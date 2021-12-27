@@ -64,12 +64,18 @@
 "bq" = (
 /obj/structure/table,
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/item/virgin_mary,
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "bs" = (
 /obj/effect/turf_decal/bot,
-/obj/structure/closet/crate/large,
-/obj/effect/spawner/random/decoration/statue,
+/obj/item/grenade/gas_crystal/healium_crystal,
+/obj/item/grenade/gas_crystal/healium_crystal,
+/obj/structure/closet/crate/secure/engineering{
+	desc = "The label on the crate is a manifest for two healium crystals, warning not to open the box until delivered. The delivery recipient's name is smudged out from the label being worn down.";
+	name = "Healium Crystal Shipment";
+	req_one_access_txt = "150"
+	},
 /turf/open/floor/iron/brown,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "bM" = (
@@ -497,9 +503,14 @@
 "kw" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/crate/internals,
-/obj/item/tank/internals/oxygen/red,
-/obj/item/tank/internals/oxygen/red,
-/obj/item/tank/internals/oxygen/red,
+/obj/item/tank/internals/plasmaman/full,
+/obj/item/tank/internals/plasmaman/full,
+/obj/item/tank/internals/nitrogen/full,
+/obj/item/tank/internals/nitrogen/full,
+/obj/item/tank/internals/nitrogen/full,
+/obj/item/tank/internals/oxygen/yellow,
+/obj/item/tank/internals/oxygen/yellow,
+/obj/item/tank/internals/oxygen/yellow,
 /turf/open/floor/iron/brown/side,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "kA" = (
@@ -533,6 +544,7 @@
 /obj/effect/spawner/random/bureaucracy/briefcase,
 /obj/effect/spawner/random/bureaucracy/folder,
 /obj/item/clipboard,
+/obj/machinery/accounting,
 /turf/open/floor/iron/brown/side,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "lh" = (
@@ -755,6 +767,8 @@
 /obj/effect/spawner/random/entertainment/toy_figure,
 /obj/effect/spawner/random/entertainment/toy_figure,
 /obj/effect/spawner/random/entertainment/toy_figure,
+/obj/effect/spawner/random/entertainment/toy,
+/obj/effect/spawner/random/entertainment/toy,
 /turf/open/floor/iron/brown,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "pu" = (
@@ -775,7 +789,7 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "pF" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/mob/living/simple_animal/hostile/vox/melee,
+/mob/living/simple_animal/hostile/looter,
 /turf/open/floor/iron/brown,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "pH" = (
@@ -831,6 +845,16 @@
 	dir = 1
 	},
 /turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/deepstorage/lostcargo)
+"qC" = (
+/mob/living/simple_animal/hostile/syndicate/melee/anthro{
+	desc = "An anthromorphic bandit, geared up in tactical gear.";
+	faction = list("hostile");
+	name = "Geared Pirate"
+	},
+/turf/open/floor/iron/dark/green/side{
+	dir = 4
+	},
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "qF" = (
 /obj/structure/closet/crate/goldcrate,
@@ -900,7 +924,6 @@
 /obj/item/clothing/suit/armor/riot,
 /obj/item/shield/riot,
 /obj/item/clothing/head/helmet/riot,
-/obj/effect/spawner/random/exotic/antag_gear,
 /obj/effect/spawner/random/exotic/antag_gear_weak,
 /obj/structure/closet/crate/secure/weapon{
 	name = "Delivery - DS-2";
@@ -918,6 +941,7 @@
 /obj/item/stack/telecrystal{
 	amount = 10
 	},
+/obj/effect/spawner/random/contraband/armory,
 /turf/open/floor/iron/brown,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "rE" = (
@@ -1066,7 +1090,11 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "ug" = (
 /obj/structure/safe,
-/obj/item/mod/control/pre_equipped/traitor,
+/obj/item/stack/sheet/mineral/diamond{
+	amount = 5
+	},
+/obj/item/clothing/accessory/medal/gold,
+/obj/item/slimecross/stabilized/metal,
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "uj" = (
@@ -1084,6 +1112,7 @@
 "ut" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/crate/large{
+	desc = "A wood crate with a manifest form warning not to open the crate, labelling it as property of the Big Man Enterprises.";
 	name = "DO NOT OPEN"
 	},
 /obj/effect/spawner/random/entertainment/drugs,
@@ -1252,11 +1281,11 @@
 /turf/open/floor/iron/checker,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "wA" = (
-/mob/living/simple_animal/hostile/giant_spider/hunter,
+/mob/living/simple_animal/hostile/zombie/cheesezombie,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "wB" = (
-/mob/living/simple_animal/hostile/giant_spider,
+/mob/living/simple_animal/hostile/zombie,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "wG" = (
@@ -1266,13 +1295,14 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "wN" = (
 /obj/effect/turf_decal/bot,
-/obj/structure/closet/crate/secure/gear{
-	name = "Delivery - Central Command Frontier Division";
-	req_access_txt = "3"
-	},
-/obj/effect/spawner/random/exotic/antag_gear_weak,
-/obj/effect/spawner/random/exotic/antag_gear_weak,
-/obj/effect/spawner/random/exotic/antag_gear_weak,
+/obj/structure/closet/crate,
+/obj/effect/spawner/random/engineering/toolbox,
+/obj/effect/spawner/random/engineering/toolbox,
+/obj/effect/spawner/random/engineering/flashlight,
+/obj/effect/spawner/random/engineering/flashlight,
+/obj/effect/spawner/random/engineering/material,
+/obj/effect/spawner/random/engineering/material,
+/obj/effect/spawner/random/engineering/material,
 /turf/open/floor/iron/brown,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "wR" = (
@@ -1315,14 +1345,12 @@
 	name = "Delivery - Interdyne Mining Co";
 	req_access_txt = "150"
 	},
-/obj/effect/spawner/random/exotic/antag_gear,
-/obj/effect/spawner/random/exotic/antag_gear,
 /obj/effect/spawner/random/contraband/armory,
-/obj/item/tank/internals/oxygen/red,
-/obj/item/tank/internals/oxygen/red,
 /obj/item/tank/internals/oxygen/red,
 /obj/item/pickaxe/drill/jackhammer,
 /obj/item/storage/box/minertracker,
+/obj/effect/spawner/random/exotic/technology,
+/obj/item/autosurgeon/organ/syndicate/anti_stun,
 /turf/open/floor/iron/brown/side,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "ye" = (
@@ -1335,8 +1363,9 @@
 /turf/open/floor/iron/dark/green/side,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "yp" = (
-/mob/living/simple_animal/hostile/giant_spider/badnana_spider,
-/turf/open/floor/iron/dark,
+/obj/structure/window/reinforced,
+/obj/structure/closet/crate/solarpanel_small,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "ys" = (
 /obj/machinery/cryopod{
@@ -1369,10 +1398,6 @@
 /obj/effect/spawner/random/food_or_drink/seed_rare,
 /obj/effect/spawner/random/food_or_drink/seed_rare,
 /obj/effect/spawner/random/food_or_drink/seed_rare,
-/obj/effect/spawner/random/food_or_drink/seed,
-/obj/effect/spawner/random/food_or_drink/seed,
-/obj/effect/spawner/random/food_or_drink/seed,
-/obj/effect/spawner/random/food_or_drink/seed,
 /obj/effect/spawner/random/food_or_drink/seed,
 /obj/effect/spawner/random/food_or_drink/seed,
 /obj/effect/spawner/random/food_or_drink/seed,
@@ -1517,7 +1542,7 @@
 /turf/open/floor/iron/checker,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "AK" = (
-/mob/living/simple_animal/hostile/looter/ranged/space/laser,
+/mob/living/simple_animal/hostile/looter/ranged,
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "AM" = (
@@ -1606,6 +1631,7 @@
 /obj/structure/closet/crate/internals,
 /obj/item/tank/internals/anesthetic,
 /obj/item/tank/internals/anesthetic,
+/obj/item/surgical_drapes,
 /turf/open/floor/iron/brown/side,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Dg" = (
@@ -1651,10 +1677,9 @@
 	},
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Eg" = (
-/mob/living/simple_animal/hostile/pirate/melee{
-	faction = list("hostile")
-	},
-/turf/open/floor/engine,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/mob/living/simple_animal/hostile/zombie,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Eh" = (
 /obj/machinery/light,
@@ -1820,13 +1845,16 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Ib" = (
 /obj/effect/turf_decal/bot,
-/obj/structure/closet/crate/medical,
+/obj/structure/closet/crate/medical{
+	name = "NTSS13"
+	},
 /obj/effect/spawner/random/medical/firstaid,
 /obj/effect/spawner/random/medical/firstaid,
 /obj/effect/spawner/random/medical/firstaid_rare,
 /obj/effect/spawner/random/medical/surgery_tool_advanced,
 /obj/effect/spawner/random/medical/surgery_tool_advanced,
-/obj/effect/spawner/random/medical/surgery_tool_alien,
+/obj/effect/spawner/random/medical/injector,
+/obj/effect/spawner/random/medical/injector,
 /turf/open/floor/iron/brown,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "IA" = (
@@ -1859,10 +1887,10 @@
 	name = "Delivery - Enclave";
 	req_access_txt = "2"
 	},
-/obj/item/knife/combat,
 /obj/item/reagent_containers/hypospray/medipen/stimpack,
-/obj/item/clothing/glasses/hud/security/sunglasses/gars/giga,
 /obj/item/clothing/under/enclave/real,
+/obj/item/clothing/glasses/thermal/monocle,
+/obj/item/switchblade,
 /turf/open/floor/iron/brown/side,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "IZ" = (
@@ -1950,11 +1978,7 @@
 	},
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "JM" = (
-/obj/machinery/suit_storage_unit{
-	mask_type = /obj/item/clothing/mask/gas/explorer;
-	storage_type = /obj/item/tank/jetpack/oxygen/harness;
-	suit_type = /obj/item/mod/control/pre_equipped/elite
-	},
+/obj/machinery/suit_storage_unit/security,
 /turf/open/floor/iron/dark/blue,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "JQ" = (
@@ -1968,10 +1992,11 @@
 	},
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "JV" = (
-/mob/living/simple_animal/hostile/pirate/melee{
-	faction = list("hostile")
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/mob/living/simple_animal/hostile/looter/big,
+/turf/open/floor/iron/dark/green/side{
+	dir = 1
 	},
-/turf/open/floor/iron/dark/green/side,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "JZ" = (
 /obj/machinery/light{
@@ -2334,7 +2359,7 @@
 /obj/structure/closet/crate/secure/engineering{
 	req_one_access_txt = "150"
 	},
-/obj/effect/spawner/random/exotic/tool,
+/obj/item/wirecutters/advanced,
 /turf/open/floor/iron/brown/side,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Pu" = (
@@ -2469,7 +2494,7 @@
 	pixel_x = 24;
 	pixel_y = 0
 	},
-/mob/living/simple_animal/hostile/giant_spider/nurse,
+/mob/living/simple_animal/hostile/zombie,
 /turf/open/floor/iron/dark/brown,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "QW" = (
@@ -2556,11 +2581,6 @@
 "Sk" = (
 /mob/living/simple_animal/hostile/looter/crusher,
 /turf/open/floor/iron/brown/side,
-/area/ruin/space/has_grav/deepstorage/lostcargo)
-"Sl" = (
-/obj/effect/turf_decal/bot,
-/obj/structure/closet/crate,
-/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Sv" = (
 /obj/structure/closet/crate/secure/loot,
@@ -2956,7 +2976,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/crate/secure/science{
-	name = "Delivery - NSS Exodus";
+	name = "Delivery - NTSS13";
 	req_access_txt = "3"
 	},
 /obj/effect/spawner/random/exotic/technology,
@@ -2973,6 +2993,10 @@
 "Xm" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/effect/mob_spawn/corpse/human/miner/mod,
+/obj/item/paper{
+	info = "Don't tell the chief, but I decided to take some of the guys and check out that derelict prison we passed by. Bunch of zombies in there, but I don't think any of us got hit. Best we just sweep the whole thing under the rug, lest the boss gets mad.";
+	name = "Scav Journal"
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Xn" = (
@@ -2986,7 +3010,6 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Xr" = (
 /obj/effect/turf_decal/bot,
-/mob/living/simple_animal/hostile/giant_spider,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Xs" = (
@@ -3361,7 +3384,7 @@ Ld
 IV
 Lz
 LC
-nM
+yp
 Ld
 Qk
 SU
@@ -4241,7 +4264,7 @@ YD
 YD
 Ax
 aH
-JV
+Zl
 Bb
 Sc
 YK
@@ -4275,7 +4298,7 @@ oZ
 TF
 TF
 AM
-Zn
+JV
 Zl
 Bb
 bo
@@ -4416,7 +4439,7 @@ vx
 vx
 vx
 PH
-Wh
+qC
 Wh
 Wh
 Ba
@@ -4547,7 +4570,7 @@ Vs
 xb
 Bb
 Fx
-Eg
+Qk
 Bb
 EO
 Vs
@@ -4623,7 +4646,7 @@ ww
 Vs
 XS
 Vs
-Vs
+Eg
 tP
 NZ
 NZ
@@ -4763,9 +4786,9 @@ XJ
 II
 XS
 Nk
-Sl
+Xr
 VN
-wm
+Xr
 XS
 RA
 Eh
@@ -4799,7 +4822,7 @@ Bb
 KF
 XS
 XS
-yp
+XS
 XS
 RA
 Bb
