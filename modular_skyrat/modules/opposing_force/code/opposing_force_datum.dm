@@ -195,7 +195,7 @@
 	message = STRIP_HTML_SIMPLE(message, OPFOR_TEXT_LIMIT_MESSAGE)
 	var/message_string
 	var/real_round_time = world.timeofday - SSticker.real_round_start_time
-	if(check_rights_for(user.client, R_ADMIN) && user != mind_reference.)
+	if(check_rights_for(user.client, R_ADMIN) && user != mind_reference)
 		message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] (ADMIN) [get_admin_ckey(user)]: " + message
 	else
 		message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] (USER) [user.ckey]: " + message
@@ -211,7 +211,7 @@
 	opposing_force_objective.status = OPFOR_OBJECTIVE_STATUS_REJECTED
 	opposing_force_objective.denial_reason = deny_reason
 	add_log(user.ckey, "Denied objective([opposing_force_objective.title]) WITH REASON: [deny_reason]")
-	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has approved objective '[opposing_force_objective.title]'")
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has rejected objective '[opposing_force_objective.title]' with the reason '[deny_reason]'")
 
 /datum/opposing_force/proc/approve_objective(mob/user, datum/opposing_force_objective/opposing_force_objective)
 	opposing_force_objective.status = OPFOR_OBJECTIVE_STATUS_APPROVED
