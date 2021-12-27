@@ -3,11 +3,16 @@
 	desc = "Go ahead, wind it up to charge it."
 	icon = 'modular_skyrat/modules/new_cells/icons/power.dmi'
 	icon_state = "crankcell"
-	COOLDOWN_DECLARE(discharge_cooldown)
+	/// how much each crank will give the cell charge
+	var/crank_amount = 100
+	/// how fast it takes to crank to get the crank_amount
+	var/crank_speed = 1 SECONDS
+	/// how much gets discharged every process
+	var/discharge_amount = 10
 
 /obj/item/stock_parts/cell/crank/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click to start cranking the cell.")
+	. += span_notice("Click to start cranking the cell.")
 
 /obj/item/stock_parts/cell/crank/Initialize(mapload, override_maxcharge)
 	. = ..()
@@ -18,37 +23,30 @@
 	return ..()
 
 /obj/item/stock_parts/cell/crank/process(delta_time)
-	if(!COOLDOWN_FINISHED(src, discharge_cooldown))
-		return
-	COOLDOWN_START(src, discharge_cooldown, 2 SECONDS)
-	use(10)
+	use(discharge_amount)
 
-/obj/item/stock_parts/cell/crank/AltClick(mob/user)
-	if(!ismob(loc))
-		return ..()
+/obj/item/stock_parts/cell/crank/attack_self(mob/user)
 	while(charge < maxcharge)
-		if(!do_after(user, 1 SECONDS, src))
+		if(!do_after(user, crank_speed, src))
 			return
-		give(100)
+		give(crank_amount)
 
-/obj/item/stock_parts/cell/auto_charge
+/obj/item/stock_parts/cell/self_charge
 	name = "charging cell"
 	desc = "A special cell that will recharge itself over time."
 	icon = 'modular_skyrat/modules/new_cells/icons/power.dmi'
 	icon_state = "chargecell"
 	maxcharge = 2500
-	COOLDOWN_DECLARE(recharge_cooldown)
+	/// how much is recharged every process
+	var/recharge_amount = 200
 
-/obj/item/stock_parts/cell/auto_charge/Initialize(mapload, override_maxcharge)
+/obj/item/stock_parts/cell/self_charge/Initialize(mapload, override_maxcharge)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/stock_parts/cell/auto_charge/Destroy()
+/obj/item/stock_parts/cell/self_charge/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/stock_parts/cell/auto_charge/process(delta_time)
-	if(!COOLDOWN_FINISHED(src, recharge_cooldown))
-		return
-	COOLDOWN_START(src, recharge_cooldown, 2 SECONDS)
-	give(200)
+/obj/item/stock_parts/cell/self_charge/process(delta_time)
+	give(recharge_amount)

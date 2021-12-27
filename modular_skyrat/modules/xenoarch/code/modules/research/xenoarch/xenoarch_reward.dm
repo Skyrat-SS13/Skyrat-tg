@@ -42,7 +42,7 @@ GLOBAL_LIST_INIT(tech_reward, list(
 	/obj/item/mmi/posibrain = 1,
 	/obj/item/storage/portable_chem_mixer = 1,
 	/obj/item/stock_parts/cell/crank = 1,
-	/obj/item/stock_parts/cell/auto_charge = 1,
+	/obj/item/stock_parts/cell/self_charge = 1,
 ))
 
 GLOBAL_LIST_INIT(weapon_reward, list(
