@@ -13,7 +13,7 @@
 	alt_titles = list("AI", "Station Intelligence", "Automated Overseer")
 
 /datum/job/assistant
-	alt_titles = list("Assistant", "Civilian", "Tourist", "Businessman", "Businesswoman", "Trader", "Entertainer", "Freelancer", "Off-Duty Staff")
+	alt_titles = list("Assistant", "Civilian", "Tourist", "Businessman", "Businesswoman", "Trader", "Entertainer", "Freelancer", "Artist", "Off-Duty Staff")
 
 /datum/job/atmospheric_technician
 	alt_titles = list("Atmospheric Technician", "Life Support Technician", "Emergency Fire Technician")
