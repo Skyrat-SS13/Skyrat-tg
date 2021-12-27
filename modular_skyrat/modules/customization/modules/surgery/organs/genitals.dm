@@ -298,8 +298,8 @@
 	var/current_size = FLOOR(genital_size, 1)
 	if(current_size < 0)
 		current_size = 0
-	else if (current_size <= (max_size + 9)) /// Cosmetic addition & so it doesn't appear in the character setup.
-		current_size = current_size
+	else if (current_size > max_size)
+		current_size = max_size
 	var/passed_string = "breasts_pair_[current_size]"
 	if(uses_skintones)
 		passed_string += "_s"
@@ -308,12 +308,12 @@
 /obj/item/organ/genital/breasts/get_sprite_size_string()
 	var/max_size = 5
 	if(genital_type == "pair")
-		max_size = 16
+		max_size = 25
 	var/current_size = FLOOR(genital_size, 1)
 	if(current_size < 0)
 		current_size = 0
-	else if (current_size <= (max_size + 9)) /// Cosmetic addition & so it doesn't appear in the character setup.
-		current_size = current_size
+	else if (current_size > max_size)
+		current_size = max_size
 	var/passed_string = "[genital_type]_[current_size]"
 	if(uses_skintones)
 		passed_string += "_s"

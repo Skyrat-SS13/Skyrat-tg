@@ -291,21 +291,21 @@
 		enlargement_amount = 0
 
 		/// Words for the breasts when huge.
-		var/list/words_for_bigger = list("huge", "massive", "squishy", "gigantic", "rather large", "jiggly", "hefty")
+		var/static/list/words_for_bigger = list("huge", "massive", "squishy", "gigantic", "rather large", "jiggly", "hefty")
 		/// Synonyms for breasts.
-		var/list/boob_text_list = list("boobs", "tits", "breasts")
+		var/static/list/boob_text_list = list("boobs", "tits", "breasts")
 		/// Synonyms for the chest.
-		var/list/covered_boobs_list = list("bust", "chest", "bosom")
+		var/static/list/covered_boobs_list = list("bust", "chest", "bosom")
 		/// Synonyms for bigger breasts.
-		var/list/bigger_boob_text_list = list("jigglies", "melons", "jugs", "boobies", "milkers", "boobs", "tits", "breasts")
+		var/static/list/bigger_boob_text_list = list("jigglies", "melons", "jugs", "boobies", "milkers", "boobs", "tits", "breasts")
 		/// Wording chosen to expand the breasts, shown only to the mob.
-		var/list/action_text_list = list("expand outward to ", "grow out to ", "begin to enlarge, growing to ", "suddenly expand to ", "swell out to ")
+		var/static/list/action_text_list = list("expand outward to ", "grow out to ", "begin to enlarge, growing to ", "suddenly expand to ", "swell out to ")
 		/// Wording chosen to be seen by other mobs, regardless of whether mob is clothed/unclothed.
-		var/list/public_bigger_action_text_list = list("expand and jiggle outward.", "grow a bit larger, bouncing about.", "seem a bit bigger than they were before.", "bounce and jiggle as they suddenly expand.")
+		var/static/list/public_bigger_action_text_list = list("expand and jiggle outward.", "grow a bit larger, bouncing about.", "seem a bit bigger than they were before.", "bounce and jiggle as they suddenly expand.")
 		/// Wording chosen to be seen by other mobs, while mob is unclothed.
-		var/list/public_action_text_list = list("expand outward.", "seem to grow a bit larger.", "appear a bit bigger than they were before.", "bounce and jiggle as they suddenly expand.")
+		var/static/list/public_action_text_list = list("expand outward.", "seem to grow a bit larger.", "appear a bit bigger than they were before.", "bounce and jiggle as they suddenly expand.")
 		/// Wording chosen to be seen by other mobs, while mob is clothed.
-		var/list/notice_boobs = list("seems to be a bit tighter.", "appears to be a bit bigger.", "seems to swell outward a bit.")
+		var/static/list/notice_boobs = list("seems to be a bit tighter.", "appears to be a bit bigger.", "seems to swell outward a bit.")
 		/// Checks for cup size.
 		var/translation = breasts_size_to_cup(mob_breasts.genital_size)
 
@@ -354,6 +354,12 @@
 /datum/reagent/drug/aphrodisiac/breast_enlarger/overdose_effects(mob/living/carbon/human/exposed_mob) //Turns you into a female if character is male. Also supposed to add breasts but enlargement_amount'm too dumb to figure out how to make it work
 	var/obj/item/organ/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
 	var/obj/item/organ/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+	if(exposed_mob.gender == MALE)
+		exposed_mob.set_gender(FEMALE)
+		exposed_mob.body_type = exposed_mob.gender
+		exposed_mob.update_body()
+		exposed_mob.update_mutations_overlay()
+		return
 	/// Makes above comment actually work.
 	if(!exposed_mob.getorganslot(ORGAN_SLOT_BREASTS))
 		var/obj/item/organ/path = /obj/item/organ/genital/breasts
@@ -374,20 +380,17 @@
 			exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s chest suddenly bounces a bit."))
 			to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it strains against your clothes."))
 			return
-
-	if(exposed_mob.gender == MALE)
-		exposed_mob.set_gender(FEMALE)
-		exposed_mob.body_type = exposed_mob.gender
-		exposed_mob.update_body()
-		exposed_mob.update_mutations_overlay()
 	if(!mob_penis)
 		return
-	if(mob_penis.genital_size > penis_min_length && mob_penis.girth > penis_minimum_girth)
+	if(mob_penis.genital_size > penis_min_length)
 		mob_penis.genital_size -= penis_size_reduction_step
+		mob_penis.update_sprite_suffix()
+		exposed_mob.update_body()
+	if (mob_penis.girth > penis_minimum_girth)
 		mob_penis.girth -= penis_girth_reduction_step
-	if(!mob_testicles)
-		return
-	if(mob_testicles.genital_size <= 1)
+		mob_penis.update_sprite_suffix()
+		exposed_mob.update_body()
+	if(!mob_testicles || mob_testicles.genital_size <= 1)
 		return
 	mob_testicles.genital_size -= 1
 
@@ -419,47 +422,44 @@
 			return ..()
 		mob_penis.genital_size += penis_length_increase_step
 		///Improvision to girth to not make it random chance.
-		if(!mob_penis{girth})
-			return
-		var/girth = exposed_mob.getorganslot(ORGAN_SLOT_PENIS).girth
-		girth = round(girth + (mob_penis.genital_size/girth))
+		exposed_mob.getorganslot(ORGAN_SLOT_PENIS).girth = round(exposed_mob.getorganslot(ORGAN_SLOT_PENIS).girth + (mob_penis.genital_size/exposed_mob.getorganslot(ORGAN_SLOT_PENIS).girth))
 		mob_penis.update_sprite_suffix()
 		exposed_mob.update_body()
 		enlargement_amount = 0
 		/// Words for the cock when huge.
-		var/list/words_for_bigger_cock = list("huge", "massive", "gigantic", "rather lengthy", "colossal", "hefty")
+		var/static/list/words_for_bigger_cock = list("huge", "massive", "gigantic", "rather lengthy", "colossal", "hefty")
 		/// Synonyms for cock.
-		var/list/cock_text_list = list("cock", "penis", "dick", "member")
+		var/static/list/cock_text_list = list("cock", "penis", "dick", "member")
 		/// Synonyms for bigger cock.
-		var/list/bigger_cock_text_list = list("rod", "shaft", "cock", "penis", "dick", "member")
+		var/static/list/bigger_cock_text_list = list("rod", "shaft", "cock", "penis", "dick", "member")
 		/// Wording chosen to extend the cock, shown only to the mob.
-		var/list/cock_action_text_list = list("extends to ", "grows out to ", "begins to enlarge, growing to ", "suddenly expands to ", "lengthens out to ")
+		var/static/list/cock_action_text_list = list("extends to ", "grows out to ", "begins to enlarge, growing to ", "suddenly expands to ", "lengthens out to ")
 		/// Wording chosen to be seen by other mobs, while mob is unclothed.
-		var/list/public_cock_action_text_list = list("expands by an inch or so.", "appears to grow a bit longer.", "seems a bit bigger than it was before.", "suddenly lengthens about an inch or two.")
+		var/static/list/public_cock_action_text_list = list("expands by an inch or so.", "appears to grow a bit longer.", "seems a bit bigger than it was before.", "suddenly lengthens about an inch or two.")
 
 		if(mob_penis.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_bottomless())
 			if (mob_penis?.genital_size >= (penis_max_length - 2))
 				if (exposed_mob.dna.features["penis_sheath"] == SHEATH_SLIT)
 					if(mob_penis.aroused != AROUSAL_FULL)
-						to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [girth] inches in circumference."))
+						to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
 					return
 				exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(public_cock_action_text_list)]"))
-				to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [girth] inches in circumference."))
+				to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
 				return
 			else
 				if (exposed_mob.dna.features["penis_sheath"] == SHEATH_SLIT)
 					if(mob_penis.aroused != AROUSAL_FULL)
-						to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [girth] inches in circumference."))
+						to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
 					return
 				exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(cock_text_list)] [pick(public_cock_action_text_list)]"))
-				to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [girth] inches in circumference."))
+				to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
 				return
 		else
 			if (mob_penis?.genital_size >= (penis_max_length - 2))
-				to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [girth] inches in circumference."))
+				to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
 				return
 			else
-				to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [girth] inches in circumference."))
+				to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
 				return
 
 	if((mob_penis?.genital_size >= (penis_max_length - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
@@ -476,6 +476,7 @@
 		exposed_mob.body_type = exposed_mob.gender
 		exposed_mob.update_body()
 		exposed_mob.update_mutations_overlay()
+		return
 	if(!exposed_mob.getorganslot(ORGAN_SLOT_PENIS))
 		///Check if human. If not do messy code. (This only supports lizards and human penises (for now))
 		exposed_mob.dna.features["penis_sheath"] = SHEATH_NONE
@@ -524,6 +525,8 @@
 		return
 	if(mob_breasts.genital_size > breast_minimum_size)
 		mob_breasts.genital_size -= breast_size_reduction_step
+		mob_breasts.update_sprite_suffix()
+		exposed_mob.update_body()
 
 /*
 * CHEMICAL REACTIONS
