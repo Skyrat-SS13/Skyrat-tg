@@ -327,15 +327,15 @@ export const AdminTab = (props, context) => {
             <Stack.Item>
               {request_updates_muted ? (
                 <Button
-                  icon="volume-mute"
-                  color="red"
-                  content="Mute Help Requests"
-                  onClick={() => act('mute_request_helps')} />
-              ) : (
-                <Button
                   icon="volume-up"
                   color="green"
                   content="Unmute Help Requests"
+                  onClick={() => act('mute_request_updates')} />
+              ) : (
+                <Button
+                  icon="volume-mute"
+                  color="red"
+                  content="Mute Help Requests"
                   onClick={() => act('mute_request_updates')} />
               )}
             </Stack.Item>
@@ -353,14 +353,22 @@ export const AdminTab = (props, context) => {
             <Section
               title={index + 1 + ". " + objective.title} key={objective.id}
               buttons={(
-                <Button
-                  icon="check"
-                  color="good"
-                  disabled={!can_edit}
-                  content="Approve"
-                  onClick={() => act('approve_objective', {
-                    objective_ref: selectedObjective.ref,
-                  })} />
+                <>
+                  <Button
+                    icon="check"
+                    color="good"
+                    content="Approve Objective"
+                    onClick={() => act('approve_objective', {
+                      objective_ref: objective.ref,
+                    })} />
+                  <Button
+                    icon="times"
+                    color="bad"
+                    content="Deny Objective"
+                    onClick={() => act('deny_objective', {
+                      objective_ref: objective.ref,
+                    })} />
+                </>
               )}>
               <LabeledList key={objective.id}>
                 <LabeledList.Item label="Description">
@@ -371,6 +379,13 @@ export const AdminTab = (props, context) => {
                 </LabeledList.Item>
                 <LabeledList.Item label="Intensity">
                   {objective.text_intensity}
+                </LabeledList.Item>
+                <LabeledList.Item label="Status">
+                  {objective.status === "Not Reviewed" ? (
+                    "Not Reviewed"
+                  ) : (
+                    objective.approved ? "Approved" : objective.denied_text ? "Denied - Reason: " + objective.denied_text : "Denied"
+                  )}
                 </LabeledList.Item>
               </LabeledList>
             </Section>

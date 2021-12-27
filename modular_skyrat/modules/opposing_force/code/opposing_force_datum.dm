@@ -6,13 +6,13 @@
 	/// The reason for the objective.
 	var/justification = ""
 	/// Was this specific objective approved by the admins?
-	var/approved = FALSE
+	var/status = OPFOR_OBJECTIVE_STATUS_NOT_REVIEWED
 	/// Why was this objective denied? If a reason was specified.
 	var/denial_reason = ""
 	/// How intense is this goal?
 	var/intensity = 1
 	/// The text intensity of this goal
-	var/text_intensity = OPFOR_GOAL_INTENSITY_1
+	var/text_intensity = OPFOR_OBJECTIVE_INTENSITY_1
 
 /datum/opposing_force
 	/// A list of objectives.
@@ -37,6 +37,8 @@
 	var/requested_changes
 	/// Have we been request update muted by an admin?
 	var/request_updates_muted = FALSE
+	/// A text list of the admin chat.
+	var/list/admin_chat = list()
 
 	COOLDOWN_DECLARE(static/request_update_cooldown)
 
@@ -119,7 +121,8 @@
 			intensity = opfor.intensity,
 			text_intensity = opfor.text_intensity,
 			justification = opfor.justification,
-			approved = opfor.approved,
+			approved = opfor.status == OPFOR_OBJECTIVE_STATUS_APPROVED ? TRUE : FALSE,
+			status_text = opfor.status,
 			denied_text = opfor.denial_reason,
 			)
 		objective_num++
@@ -191,12 +194,12 @@
 			deny_objective(usr, edited_objective, denial_reason)
 
 /datum/opposing_force/proc/deny_objective(mob/user, datum/opposing_force_objective/opposing_force_objective, deny_reason)
-	opposing_force_objective.approved = FALSE
+	opposing_force_objective.status = OPFOR_OBJECTIVE_STATUS_REJECTED
 	opposing_force_objective.denial_reason = deny_reason
 	add_log(user.ckey, "Denied objective([opposing_force_objective.title]) WITH REASON: [deny_reason]")
 
 /datum/opposing_force/proc/approve_objective(mob/user, datum/opposing_force_objective/opposing_force_objective)
-	opposing_force_objective.approved = TRUE
+	opposing_force_objective.status = OPFOR_OBJECTIVE_STATUS_APPROVED
 	add_log(user.ckey, "Approved objective([opposing_force_objective.title])")
 
 /datum/opposing_force/proc/broadcast_queue_change()
@@ -213,14 +216,19 @@
 	can_edit = FALSE
 
 	add_log(approver.ckey, "Approved application")
-	to_chat(holder, examine_block(span_greentext("Your OPFOR application has been approved by [approver ? approver : "the OPFOR subsystem"]!")))
+	to_chat(holder, examine_block(span_greentext("Your OPFOR application has been approved by [approver ? get_admin_ckey(approver) : "the OPFOR subsystem"]!")))
+
+/datum/opposing_force/proc/get_admin_ckey(mob/user)
+	if(user.client?.holder?.fakekey)
+		return user.client?.holder?.fakekey
+	return user.ckey
 
 /datum/opposing_force/proc/deny(mob/denier, reason)
 	status = OPFOR_STATUS_REJECTED
 	can_edit = FALSE
 
 	add_log(denier.ckey, "Denied application")
-	to_chat(holder, examine_block(span_redtext("Your OPFOR application has been denied by [denier ? denier : "the OPFOR subsystem"]!")))
+	to_chat(holder, examine_block(span_redtext("Your OPFOR application has been denied by [denier ? get_admin_ckey(denier) : "the OPFOR subsystem"]!")))
 
 /datum/opposing_force/proc/user_request_changes(mob/user)
 	if(status == OPFOR_STATUS_CHANGES_REQUESTED)
@@ -233,7 +241,7 @@
 	if(status == OPFOR_STATUS_CHANGES_REQUESTED)
 		return
 	for(var/datum/opposing_force_objective/opfor in objectives)
-		opfor.approved = FALSE
+		opfor.status = OPFOR_OBJECTIVE_STATUS_NOT_REVIEWED
 	status = OPFOR_STATUS_CHANGES_REQUESTED
 	SSopposing_force.request_changes(src)
 	can_edit = TRUE
@@ -286,18 +294,18 @@
 		return
 	if(!opposing_force_objective)
 		CRASH("[user] tried to update a non existent opfor objective!")
-	var/sanitized_intensity = sanitize_integer(new_intensity)
+	var/sanitized_intensity = sanitize_integer(new_intensity, 1, 500)
 	switch(sanitized_intensity)
-		if(1)
-			opposing_force_objective.text_intensity = OPFOR_GOAL_INTENSITY_1
-		if(2)
-			opposing_force_objective.text_intensity = OPFOR_GOAL_INTENSITY_2
-		if(3)
-			opposing_force_objective.text_intensity = OPFOR_GOAL_INTENSITY_3
-		if(4)
-			opposing_force_objective.text_intensity = OPFOR_GOAL_INTENSITY_4
-		if(5)
-			opposing_force_objective.text_intensity = OPFOR_GOAL_INTENSITY_5
+		if(0 to 100)
+			opposing_force_objective.text_intensity = OPFOR_OBJECTIVE_INTENSITY_1
+		if(101 to 200)
+			opposing_force_objective.text_intensity = OPFOR_OBJECTIVE_INTENSITY_2
+		if(201 to 300)
+			opposing_force_objective.text_intensity = OPFOR_OBJECTIVE_INTENSITY_3
+		if(301 to 400)
+			opposing_force_objective.text_intensity = OPFOR_OBJECTIVE_INTENSITY_4
+		if(401 to 501)
+			opposing_force_objective.text_intensity = OPFOR_OBJECTIVE_INTENSITY_5
 	add_log(user.ckey, "Set updated an objective intensity from [opposing_force_objective.intensity] to [sanitized_intensity]")
 	opposing_force_objective.intensity = sanitized_intensity
 	return TRUE
