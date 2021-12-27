@@ -420,7 +420,7 @@
 //Donation reward for TheOOZ
 /obj/item/clothing/mask/kindle
 	name = "mask of Kindle"
-	desc = "The mask which belongs to NanoTrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material feels like it's made entirely out of inexpensive plastic."
+	desc = "The mask which belongs to Nanotrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material feels like it's made entirely out of inexpensive plastic."
 	actions_types = list(/datum/action/item_action/adjust)
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	icon_state = "kindle"
@@ -458,14 +458,14 @@
 /obj/item/clothing/mask/kindle/atom_destruction(damage_flag)
 	. = ..()
 	name = "broken mask of Kindle"
-	desc = "The mask which belongs to NanoTrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material is completely shattered in half."
+	desc = "The mask which belongs to Nanotrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material is completely shattered in half."
 	icon_state = "kindle_broken"
 	inhand_icon_state = "kindle_broken"
 
 /obj/item/clothing/mask/kindle/repair()
 	. = ..()
 	name = "mended mask of Kindle"
-	desc = "The mask which belongs to NanoTrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material seems extra flimsy, like it has recently been repaired in a hurry."
+	desc = "The mask which belongs to Nanotrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material seems extra flimsy, like it has recently been repaired in a hurry."
 	icon_state = "kindle"
 	inhand_icon_state = "kindle"
 
@@ -1233,6 +1233,7 @@
 	desc = "Skrektastic."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
+	worn_icon_vox = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask_vox.dmi'
 	icon_state = "death"
 
 /obj/item/clothing/glasses/rosecolored
@@ -1241,3 +1242,42 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
 	icon_state = "rose"
+
+// Donation reward for Fuzlet
+/obj/item/card/fuzzy_license
+	name = "license to hug"
+	desc = "A very official looking license. Not actually endorsed by Nanotrasen."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	icon_state = "license"
+
+	var/possible_types = list(
+		"hug",
+		"snuggle",
+		"cuddle",
+		"kiss",
+		"feed Dan Kelly",
+		"hoard Shinzo Shore",
+		"spoil friends",
+		"hold hands",
+		"have this license",
+		"squeak",
+		"cute",
+		"pat",
+		"administer plushies",
+		"distribute cookies",
+		"sex",
+		"weh")
+
+/obj/item/card/fuzzy_license/attack_self(mob/user)
+	if(Adjacent(user))
+		user.visible_message(span_notice("[user] shows you: [icon2html(src, viewers(user))] [src.name]."), span_notice("You show \the [src.name]."))
+	add_fingerprint(user)
+
+/obj/item/card/fuzzy_license/attackby(obj/item/used, mob/living/user, params)
+	if(user.ckey != "fuzlet")
+		return
+
+	if(istype(used, /obj/item/pen) || istype(used, /obj/item/toy/crayon))
+		var/choice = input(user, "Select the license type", "License Type Selection") as null|anything in possible_types
+		if(!isnull(choice))
+			name = "license to [choice]"

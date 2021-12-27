@@ -811,6 +811,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	if(prob(1))
 		message += "\nSent from my PDA"
+	// SKYRAT EDIT BEGIN - PDA messages show a visible message, to comply with CI policy on calling for backup.
+	user.visible_message(span_notice("[user] presses some buttons on [user.p_their()] [src]."), span_notice("You press some buttons on your [src]."))
+	user.balloon_alert_to_viewers("sent a PDA message")
+	// SKYRAT EDIT END
 	// Send the signal
 	var/list/string_targets = list()
 	for (var/obj/item/pda/P in targets)

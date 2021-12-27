@@ -257,7 +257,7 @@
 	desc = "A small barricade made from metal posting, designed to stop you from going places you aren't supposed to."
 	icon_state = "railing_0"
 	max_integrity = 150
-	armor = list("melee" = 0, "bullet" = 50, "laser" = 50, "energy" = 50, "bomb" = 15, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 10)
+	armor = list(MELEE = 0, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 15, BIO = 100, FIRE = 100, ACID = 10)
 	stack_type = /obj/item/stack/rods
 	destroyed_stack_amount = 2
 	barricade_type = "railing"
@@ -355,7 +355,7 @@
 			to_chat(user, span_warning("[src] cannot be folded up with upgrades attached, remove them first!"))
 			return FALSE
 		if(get_integrity() < max_integrity)
-			to_chat(user, span_warning("[src] cannot be folded up whle damaged!"))
+			to_chat(user, span_warning("[src] cannot be folded up while damaged!"))
 			return FALSE
 		user.visible_message(span_notice("[user] starts folding [src] up!"), span_notice("You start folding [src] up!"))
 		if(do_after(user, 5 SECONDS, src))
@@ -368,7 +368,7 @@
 				to_chat(user, span_warning("[src] cannot be folded up with upgrades attached, remove them first!"))
 				return FALSE
 			if(get_integrity() < max_integrity)
-				to_chat(user, span_warning("[src] cannot be folded up whle damaged!"))
+				to_chat(user, span_warning("[src] cannot be folded up while damaged!"))
 				return FALSE
 			user.visible_message(span_notice("[user] folds [src] up!"), span_notice("You neatly fold [src] up!"))
 			playsound(src, 'sound/items/ratchet.ogg', 25, TRUE)

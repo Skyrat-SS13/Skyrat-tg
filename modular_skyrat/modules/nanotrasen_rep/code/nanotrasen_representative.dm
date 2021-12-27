@@ -1,7 +1,7 @@
 /datum/job/nanotrasen_representative
-	title = "Nanotrasen Representative"
+	title = JOB_NT_REP
 	description = "Represent Nanotrasen on the station, argue with the HoS about why he can't just field execute people for petty theft, get drunk in your office."
-	department_head = list("Central Command")
+	department_head = list(JOB_CENTCOM)
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1

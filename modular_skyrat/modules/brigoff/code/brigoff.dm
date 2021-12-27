@@ -1,5 +1,5 @@
 /datum/job/brigoff
-	title = "Corrections Officer"
+	title = JOB_CORRECTIONS_OFFICER
 	description = "Guard the Permabrig, stand around looking imposing, get fired for abusing the prisoners"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("The Warden and Head of Security")

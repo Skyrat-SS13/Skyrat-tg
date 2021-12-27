@@ -87,8 +87,6 @@ SUBSYSTEM_DEF(ticker)
 	var/list/music = list()
 	var/use_rare_music = prob(1)
 
-	real_round_start_time = world.realtime //SKYRAT EDIT ADDITION
-
 	for(var/S in provisional_title_music)
 		var/lower = lowertext(S)
 		var/list/L = splittext(lower,"+")
@@ -271,6 +269,7 @@ SUBSYSTEM_DEF(ticker)
 	LAZYCLEARLIST(round_start_events)
 
 	SEND_SIGNAL(src, COMSIG_TICKER_ROUND_STARTING)
+	real_round_start_time = world.timeofday //SKYRAT EDIT ADDITION
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
 	round_start_time = world.time
@@ -378,7 +377,7 @@ SUBSYSTEM_DEF(ticker)
 
 	// Find a suitable player to hold captaincy.
 	for(var/mob/dead/new_player/new_player_mob as anything in GLOB.new_player_list)
-		if(is_banned_from(new_player_mob.ckey, list("Captain")))
+		if(is_banned_from(new_player_mob.ckey, list(JOB_CAPTAIN)))
 			CHECK_TICK
 			continue
 		if(!ishuman(new_player_mob.new_character))
@@ -609,7 +608,7 @@ SUBSYSTEM_DEF(ticker)
 		if(WIZARD_KILLED)
 			news_message = "Tensions have flared with the Space Wizard Federation following the death of one of their members aboard [decoded_station_name]."
 		if(STATION_NUKED)
-			news_message = "[decoded_station_name] activated its self-destruct device for unknown reasons. Attempts to clone the Captain so he can be arrested and executed are underway."
+			news_message = "[decoded_station_name] activated its self-destruct device for unknown reasons. Attempts to clone the Captain for arrest and execution are underway."
 		if(CLOCK_SUMMON)
 			news_message = "The garbled messages about hailing a mouse and strange energy readings from [decoded_station_name] have been discovered to be an ill-advised, if thorough, prank by a clown."
 		if(CLOCK_SILICONS)
