@@ -129,12 +129,20 @@ SUBSYSTEM_DEF(opposing_force)
 /datum/controller/subsystem/opposing_force/proc/get_check_antag_listing()
 	var/list/returned_html = list()
 
-	returned_html += "<b>OPFOR Applications</b><br>"
+	returned_html += "<b>OPFOR Applications</b>"
 
-	returned_html += "Unsubmitted<br>"
+	returned_html += "Submitted - FOLLOW QUEUE!"
+	var/queue_count = 1
+	for(var/datum/opposing_force/opposing_force in submitted_applications)
+		returned_html += "<b>[queue_count].</b> [opposing_force.build_html_panel_entry()]"
+		queue_count++
+
+	returned_html += "Approved"
+	for(var/datum/opposing_force/opposing_force in approved_applications)
+		returned_html += opposing_force.build_html_panel_entry()
+
+	returned_html += "Unsubmitted"
 	for(var/datum/opposing_force/opposing_force in unsubmitted_applications)
-		returned_html += "<b>[opposing_force.mind_reference.key]</b><br>"
-		returned_html += "<a href='?priv_msg=[ckey(opposing_force.mind_reference.key)]'>PM</a>"
-		if(opposing_force.mind_reference.current)
-			returned_html += "<a href='?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(opposing_force.mind_reference?.current)]'>FLW</a>"
-		returned
+		returned_html += opposing_force.build_html_panel_entry()
+
+	return returned_html.Join("<br>")

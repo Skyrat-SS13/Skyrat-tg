@@ -191,7 +191,7 @@
 
 	dat += build_antag_listing()
 
-	dat += build_opfor_listing() //SKYRAT EDIT ADDITION
+	dat += SSopposing_force.get_check_antag_listing() //SKYRAT EDIT ADDITION
 
 	dat += "</body></html>"
 	usr << browse(dat.Join(), "window=roundstatus;size=500x500")

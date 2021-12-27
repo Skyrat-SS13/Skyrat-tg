@@ -7,6 +7,8 @@
 	var/justification = ""
 	/// Was this specific objective approved by the admins?
 	var/approved = FALSE
+	/// Why was this objective denied? If a reason was specified.
+	var/denial_reason = ""
 	/// How intense is this goal?
 	var/intensity = 1
 	/// The text intensity of this goal
@@ -33,6 +35,8 @@
 	var/denied_reason
 	/// Any changes required
 	var/requested_changes
+	/// Have we been request update muted by an admin?
+	var/request_updates_muted = FALSE
 
 	COOLDOWN_DECLARE(static/request_update_cooldown)
 
@@ -54,6 +58,24 @@
 	QDEL_LIST(modification_log)
 	return ..()
 
+/datum/opposing_force/Topic(href, list/href_list)
+	if(href_list["admin_pref"])
+		switch(href_list["admin_pref"])
+			if("show_panel")
+				if(!check_rights(R_ADMIN))
+					message_admins("OPFOR: Detected possible HREF exploit!")
+					CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
+				ui_interact(usr)
+				return TRUE
+
+/datum/opposing_force/proc/build_html_panel_entry()
+	var/list/opfor_entry = list("<b>[mind_reference.key]</b> - ")
+	opfor_entry += "<a href='?priv_msg=[ckey(mind_reference.key)]'>PM</a> "
+	if(mind_reference.current)
+		opfor_entry += "<a href='?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(mind_reference?.current)]'>FLW</a> "
+	opfor_entry += "<a href='?src=[REF(src)];admin_pref=show_panel'>Show OPFOR Panel</a>"
+	return opfor_entry.Join()
+
 /datum/opposing_force/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -66,7 +88,7 @@
 /datum/opposing_force/ui_data(mob/user)
 	var/list/data = list()
 
-	data["is_admin"] = is_admin(user.client)
+	data["admin_mode"] = check_rights_for(user.client, R_ADMIN)
 
 	data["creator_ckey"] = holder.ckey
 
@@ -78,9 +100,13 @@
 
 	data["can_submit"] = SSopposing_force.accepting_objectives && (status == OPFOR_STATUS_NOT_SUBMITTED || status == OPFOR_STATUS_CHANGES_REQUESTED)
 
-	data["can_request_update"] = status == OPFOR_STATUS_AWAITING_APPROVAL && COOLDOWN_FINISHED(src, request_update_cooldown) ? TRUE : FALSE
+	data["can_request_update"] = status == OPFOR_STATUS_AWAITING_APPROVAL && COOLDOWN_FINISHED(src, request_update_cooldown) ? TRUE : FALSE && !request_updates_muted
+
+	data["request_updates_muted"] = request_updates_muted
 
 	data["can_edit"] = can_edit
+
+	data["approved"] = status == OPFOR_STATUS_APPROVED ? TRUE : FALSE
 
 	data["objectives"] = list()
 	var/objective_num = 1
@@ -93,7 +119,8 @@
 			intensity = opfor.intensity,
 			text_intensity = opfor.text_intensity,
 			justification = opfor.justification,
-			approved = opfor.approved
+			approved = opfor.approved,
+			denied_text = opfor.denial_reason,
 			)
 		objective_num++
 		data["objectives"] += list(objective_data)
@@ -137,9 +164,40 @@
 
 		//Admin protected procs
 		if("approve")
+			if(!check_rights(R_ADMIN))
+				message_admins("OPFOR: Detected possible HREF exploit!")
+				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
 			SSopposing_force.approve(src, usr)
 		if("deny")
+			if(!check_rights(R_ADMIN))
+				message_admins("OPFOR: Detected possible HREF exploit!")
+				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
 			SSopposing_force.deny(src, params["denied_reason"], usr)
+		if("mute_request_updates")
+			if(!check_rights(R_ADMIN))
+				message_admins("OPFOR: Detected possible HREF exploit!")
+				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
+			request_updates_muted = !request_updates_muted
+		if("approve_objective")
+			if(!check_rights(R_ADMIN))
+				message_admins("OPFOR: Detected possible HREF exploit!")
+				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
+			approve_objective(usr, edited_objective)
+		if("deny_objective")
+			if(!check_rights(R_ADMIN))
+				message_admins("OPFOR: Detected possible HREF exploit!")
+				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
+			var/denial_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
+			deny_objective(usr, edited_objective, denial_reason)
+
+/datum/opposing_force/proc/deny_objective(mob/user, datum/opposing_force_objective/opposing_force_objective, deny_reason)
+	opposing_force_objective.approved = FALSE
+	opposing_force_objective.denial_reason = deny_reason
+	add_log(user.ckey, "Denied objective([opposing_force_objective.title]) WITH REASON: [deny_reason]")
+
+/datum/opposing_force/proc/approve_objective(mob/user, datum/opposing_force_objective/opposing_force_objective)
+	opposing_force_objective.approved = TRUE
+	add_log(user.ckey, "Approved objective([opposing_force_objective.title])")
 
 /datum/opposing_force/proc/broadcast_queue_change()
 	to_chat(holder, examine_block(span_nicegreen("Your OPFOR application is now number [SSopposing_force.get_queue_position(src)] in the queue.")))
@@ -191,6 +249,9 @@
 		return
 
 	if(status != OPFOR_STATUS_AWAITING_APPROVAL)
+		return
+
+	if(request_updates_muted)
 		return
 
 	message_admins(span_command_headset("[span_pink("OPFOR:")] UPDATE REQUEST: [ADMIN_LOOKUPFLW(user)] has requested an update on their OPFOR application!"))

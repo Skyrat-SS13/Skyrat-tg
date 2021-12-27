@@ -1,12 +1,68 @@
 import { toFixed } from 'common/math';
 import { useBackend, useLocalState } from '../backend';
-import { Section, Stack, TextArea, Button, Tabs, Input, Slider, NoticeBox } from '../components';
+import { Section, Stack, TextArea, Button, Tabs, Input, Slider, NoticeBox, LabeledList } from '../components';
 import { Window } from '../layouts';
 
 export const OpposingForcePanel = (props, context) => {
+  const [tab, setTab] = useLocalState(context, 'tab', 1);
   const { act, data } = useBackend(context);
   const {
-    is_admin,
+    admin_mode,
+  } = data;
+  return (
+    <Window
+      title="Opposing Force Panel"
+      width={585}
+      height={805}
+      theme="syndicate">
+      <Window.Content>
+        <Tabs>
+          <Tabs.Tab
+            selected={tab === 1}
+            onClick={() => setTab(1)}>
+            Summary
+          </Tabs.Tab>
+          <Tabs.Tab
+            selected={tab === 2}
+            onClick={() => setTab(2)}>
+            Equipment
+          </Tabs.Tab>
+          <Tabs.Tab
+            selected={tab === 3}
+            onClick={() => setTab(3)}>
+            Admin Chat
+          </Tabs.Tab>
+          {admin_mode && (
+            <Tabs.Tab
+              selected={tab === 4}
+              onClick={() => setTab(4)}>
+              Admin Control
+            </Tabs.Tab>
+          )}
+        </Tabs>
+        {tab === 1 && (
+          <OpposingForceTab />
+        )}
+        {tab === 2 && (
+          <EquipmentTab />
+        )}
+        {tab === 3 && (
+          <AdminChatTab />
+        )}
+        {admin_mode && (
+          tab === 4 && (
+            <AdminTab />
+          )
+        )}
+      </Window.Content>
+    </Window>
+  );
+};
+
+export const OpposingForceTab = (props, context) => {
+  const { act, data } = useBackend(context);
+  const {
+    admin_mode,
     creator_ckey,
     objectives = [],
     can_submit,
@@ -18,92 +74,73 @@ export const OpposingForcePanel = (props, context) => {
     backstory,
   } = data;
   return (
-    <Window
-      title="Opposing Force Panel"
-      width={570}
-      height={765}
-      theme="syndicate">
-      <Window.Content>
-        <Stack vertical grow>
-          <Stack.Item>
-            <Section title="Control">
-              <Stack>
-                <Stack.Item>
-                  <Button
-                    icon="check"
-                    color="good"
-                    disabled={!can_submit}
-                    content="Submit Objectives"
-                    onClick={() => act('submit')} />
-                </Stack.Item>
-                <Stack.Item>
-                  <Button
-                    icon="question"
-                    color="orange"
-                    disabled={!can_request_update}
-                    content="Ask For Update"
-                    onClick={() => act('request_update')} />
-                </Stack.Item>
-                <Stack.Item>
-                  <Button
-                    icon="wrench"
-                    color="blue"
-                    disabled={can_edit}
-                    content="Request Changes"
-                    onClick={() => act('request_changes')} />
-                </Stack.Item>
-                <Stack.Item>
-                  <Button
-                    icon="trash"
-                    color="bad"
-                    content="Delete Application"
-                    onClick={() => act('close_application')} />
-                </Stack.Item>
-              </Stack>
-              <NoticeBox color="orange" mt={2}>
-                {status}
-              </NoticeBox>
-              <NoticeBox color="orange" mt={2}>
-                {is_admin ? "Admin Mode" : "User Mode"}
-              </NoticeBox>
-            </Section>
-          </Stack.Item>
-          {can_edit ? (
-            <>
-              <Stack.Item>
-                <Section title="Backstory">
-                  <TextArea
-                    disabled={!can_edit}
-                    height="100px"
-                    value={backstory}
-                    placeholder="Provide a description of why you want to do bad things. Include specifics such as what lead upto the events that made you want to do bad things, think of it as though you were your character, react appropriately."
-                    onInput={(_e, value) => act('set_backstory', {
-                      backstory: value,
-                    })} />
-                </Section>
-              </Stack.Item>
-              <Stack.Item>
-                <Section title="Objectives"
-                  buttons={(
-                    <Button
-                      icon="plus"
-                      content="Add Objective"
-                      onClick={() => act('add_objective')} />
-                  )}>
-                  { !!objectives.length && (
-                    <OpposingForceObjectives />
-                  )}
-                </Section>
-              </Stack.Item>
-            </>
-          ) : (
-            <NoticeBox color="bad">
-              You cannot edit your application.
-            </NoticeBox>
+    <Stack vertical grow>
+      <Stack.Item>
+        <Section title="Control">
+          <Stack>
+            <Stack.Item>
+              <Button
+                icon="check"
+                color="good"
+                disabled={!can_submit}
+                content="Submit Objectives"
+                onClick={() => act('submit')} />
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                icon="question"
+                color="orange"
+                disabled={!can_request_update}
+                content="Ask For Update"
+                onClick={() => act('request_update')} />
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                icon="wrench"
+                color="blue"
+                disabled={can_edit}
+                content="Request Changes"
+                onClick={() => act('request_changes')} />
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                icon="trash"
+                color="bad"
+                content="Delete Application"
+                onClick={() => act('close_application')} />
+            </Stack.Item>
+          </Stack>
+          <NoticeBox color="orange" mt={2}>
+            {status}
+          </NoticeBox>
+        </Section>
+      </Stack.Item>
+      <Stack.Item>
+        <Section title="Backstory">
+          <TextArea
+            disabled={!can_edit}
+            height="100px"
+            value={backstory}
+            placeholder="Provide a description of why you want to do bad things. Include specifics such as what lead upto the events that made you want to do bad things, think of it as though you were your character, react appropriately."
+            onInput={(_e, value) => act('set_backstory', {
+              backstory: value,
+            })} />
+        </Section>
+      </Stack.Item>
+      <Stack.Item>
+        <Section title="Objectives"
+          buttons={(
+            <Button
+              icon="plus"
+              content="Add Objective"
+              onClick={() => act('add_objective')} />
+          )}>
+          { !!objectives.length && (
+            <OpposingForceObjectives />
           )}
-        </Stack>
-      </Window.Content>
-    </Window>
+        </Section>
+      </Stack.Item>
+    </Stack>
   );
 };
 
@@ -113,6 +150,7 @@ export const OpposingForceObjectives = (props, context) => {
   const {
     objectives = [],
     can_edit,
+    admin_mode,
   } = data;
 
   const [
@@ -250,6 +288,133 @@ export const OpposingForceObjectives = (props, context) => {
           No objectives selected.
         </Stack.Item>
       )}
+    </Stack>
+  );
+};
+
+export const AdminTab = (props, context) => {
+  const { act, data } = useBackend(context);
+  const {
+    request_updates_muted,
+    approved,
+    denied,
+    creator_ckey,
+    objectives = [],
+    can_edit,
+    backstory,
+  } = data;
+  return (
+    <Stack vertical grow>
+      <Stack.Item>
+        <Section title="Admin Control">
+          <Stack>
+            <Stack.Item>
+              <Button
+                icon="check"
+                color="good"
+                disabled={approved}
+                content="Approve"
+                onClick={() => act('approve')} />
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                icon="times"
+                color="red"
+                disabled={denied}
+                content="Deny"
+                onClick={() => act('deny')} />
+            </Stack.Item>
+            <Stack.Item>
+              {request_updates_muted ? (
+                <Button
+                  icon="volume-mute"
+                  color="red"
+                  content="Mute Help Requests"
+                  onClick={() => act('mute_request_helps')} />
+              ) : (
+                <Button
+                  icon="volume-up"
+                  color="green"
+                  content="Unmute Help Requests"
+                  onClick={() => act('mute_request_updates')} />
+              )}
+            </Stack.Item>
+          </Stack>
+        </Section>
+      </Stack.Item>
+      <Stack.Item>
+        <Section title="Backstory">
+          {backstory}
+        </Section>
+      </Stack.Item>
+      <Stack.Item>
+        <Section title="Objectives">
+          {objectives.map((objective, index) => (
+            <Section
+              title={index + 1 + ". " + objective.title} key={objective.id}
+              buttons={(
+                <Button
+                  icon="check"
+                  color="good"
+                  disabled={!can_edit}
+                  content="Approve"
+                  onClick={() => act('approve_objective', {
+                    objective_ref: selectedObjective.ref,
+                  })} />
+              )}>
+              <LabeledList key={objective.id}>
+                <LabeledList.Item label="Description">
+                  {objective.description}
+                </LabeledList.Item>
+                <LabeledList.Item label="Justification">
+                  {objective.justification}
+                </LabeledList.Item>
+                <LabeledList.Item label="Intensity">
+                  {objective.text_intensity}
+                </LabeledList.Item>
+              </LabeledList>
+            </Section>
+          ))}
+        </Section>
+      </Stack.Item>
+    </Stack>
+  );
+};
+
+export const AdminChatTab = (props, context) => {
+  const { act, data } = useBackend(context);
+  const {
+    equipment = [],
+  } = data;
+  return (
+    <Stack vertical grow>
+      <Stack.Item>
+        <Section title="Admin Control">
+          <NoticeBox color="good">
+            Work in progress! Check back later.
+          </NoticeBox>
+        </Section>
+      </Stack.Item>
+    </Stack>
+  );
+};
+
+
+
+export const EquipmentTab = (props, context) => {
+  const { act, data } = useBackend(context);
+  const {
+    equipment = [],
+  } = data;
+  return (
+    <Stack vertical grow>
+      <Stack.Item>
+        <Section title="Admin Control">
+          <NoticeBox color="good">
+            Work in progress! Check back later.
+          </NoticeBox>
+        </Section>
+      </Stack.Item>
     </Stack>
   );
 };
