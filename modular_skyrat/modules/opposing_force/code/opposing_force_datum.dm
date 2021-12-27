@@ -48,7 +48,7 @@
 	mind_reference = null
 	SSopposing_force.remove_opfor(src)
 	QDEL_LIST(objectives)
-	QDEL_LIST(admiN_chat)
+	QDEL_LIST(admin_chat)
 	QDEL_LIST(modification_log)
 	return ..()
 
