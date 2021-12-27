@@ -1,6 +1,6 @@
-import { toFixed } from 'common/math';
+import { round } from 'common/math';
 import { useBackend, useLocalState } from '../backend';
-import { Section, Stack, TextArea, Button, Tabs, Input, Slider, NoticeBox, LabeledList } from '../components';
+import { Section, Stack, TextArea, Button, Tabs, Input, Slider, NoticeBox, LabeledList, Box } from '../components';
 import { Window } from '../layouts';
 
 export const OpposingForcePanel = (props, context) => {
@@ -13,7 +13,7 @@ export const OpposingForcePanel = (props, context) => {
     <Window
       title="Opposing Force Panel"
       width={585}
-      height={805}
+      height={830}
       theme="syndicate">
       <Window.Content>
         <Tabs>
@@ -229,12 +229,64 @@ export const OpposingForceObjectives = (props, context) => {
                       step={0.1}
                       stepPixelSize={0.1}
                       value={selectedObjective.intensity}
-                      minValue={100}
+                      format={value => round(value)}
+                      minValue={0}
                       maxValue={500}
                       onDrag={(e, value) => act('set_objective_intensity', {
                         objective_ref: selectedObjective.ref,
-                        new_intensity_level: toFixed(value),
+                        new_intensity_level: value,
                       })} />
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Stack>
+                      <Stack.Item>
+                        <Button
+                          ml={7.6}
+                          mr={15}
+                          disabled={!can_edit}
+                          icon="laugh"
+                          color="good"
+                          onClick={() => act('set_objective_intensity', {
+                            objective_ref: selectedObjective.ref,
+                            new_intensity_level: 50,
+                          })} />
+                        <Button
+                          mr={15}
+                          disabled={!can_edit}
+                          icon="smile"
+                          color="teal"
+                          onClick={() => act('set_objective_intensity', {
+                            objective_ref: selectedObjective.ref,
+                            new_intensity_level: 150,
+                          })} />
+                        <Button
+                          mr={15}
+                          disabled={!can_edit}
+                          icon="meh-blank"
+                          color="olive"
+                          onClick={() => act('set_objective_intensity', {
+                            objective_ref: selectedObjective.ref,
+                            new_intensity_level: 250,
+                          })} />
+                        <Button
+                          mr={15}
+                          disabled={!can_edit}
+                          icon="frown"
+                          color="orange"
+                          onClick={() => act('set_objective_intensity', {
+                            objective_ref: selectedObjective.ref,
+                            new_intensity_level: 350,
+                          })} />
+                        <Button
+                          disabled={!can_edit}
+                          icon="grimace"
+                          color="red"
+                          onClick={() => act('set_objective_intensity', {
+                            objective_ref: selectedObjective.ref,
+                            new_intensity_level: 450,
+                          })} />
+                      </Stack.Item>
+                    </Stack>
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
@@ -276,8 +328,12 @@ export const OpposingForceObjectives = (props, context) => {
                 </Stack>
               </Stack.Item>
               <Stack.Item mt={2}>
-                <NoticeBox color={selectedObjective.status ? "good" : "bad"}>
-                  {selectedObjective.status ? "Objective has been approved!" : "Objective has not been approved yet. Do not attempt to complete it."}
+                <NoticeBox color={selectedObjective.status_text ? "good" : "bad"}>
+                  {selectedObjective.status_text === "Not Reviewed" ? (
+                    "Objective Not Reviewed"
+                  ) : (
+                    selectedObjective.approved ? "Objective Approved" : selectedObjective.denied_text ? "Objective Denied - Reason: " + selectedObjective.denied_text : "Objective Denied"
+                  )}
                 </NoticeBox>
               </Stack.Item>
             </Stack.Item>
@@ -357,6 +413,7 @@ export const AdminTab = (props, context) => {
                   <Button
                     icon="check"
                     color="good"
+                    disabled={objective.approved}
                     content="Approve Objective"
                     onClick={() => act('approve_objective', {
                       objective_ref: objective.ref,
@@ -364,6 +421,7 @@ export const AdminTab = (props, context) => {
                   <Button
                     icon="times"
                     color="bad"
+                    disabled={!objective.approved}
                     content="Deny Objective"
                     onClick={() => act('deny_objective', {
                       objective_ref: objective.ref,
@@ -378,13 +436,13 @@ export const AdminTab = (props, context) => {
                   {objective.justification}
                 </LabeledList.Item>
                 <LabeledList.Item label="Intensity">
-                  {objective.text_intensity}
+                  {"(" + objective.intensity + ") " + objective.text_intensity}
                 </LabeledList.Item>
                 <LabeledList.Item label="Status">
-                  {objective.status === "Not Reviewed" ? (
-                    "Not Reviewed"
+                  {objective.status_text === "Not Reviewed" ? (
+                    "Objective Not Reviewed"
                   ) : (
-                    objective.approved ? "Approved" : objective.denied_text ? "Denied - Reason: " + objective.denied_text : "Denied"
+                    objective.approved ? "Objective Approved" : objective.denied_text ? "Objective Denied - Reason: " + objective.denied_text : "Objective Denied"
                   )}
                 </LabeledList.Item>
               </LabeledList>
@@ -399,22 +457,34 @@ export const AdminTab = (props, context) => {
 export const AdminChatTab = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    equipment = [],
+    messages = [],
   } = data;
   return (
-    <Stack vertical grow>
-      <Stack.Item>
-        <Section title="Admin Control">
-          <NoticeBox color="good">
-            Work in progress! Check back later.
-          </NoticeBox>
+    <Stack vertical fill>
+      <Stack.Item grow={10} >
+        <Section scrollable fill>
+          {messages.map(message => (
+            <Box
+              key={message.msg}>
+              {message.msg}
+            </Box>
+          ))}
         </Section>
+      </Stack.Item>
+      <Stack.Item grow>
+        <Input
+          height="22px"
+          fluid
+          selfClear
+          placeholder="Send a message..."
+          mt={1}
+          onEnter={(e, value) => act('send_message', {
+            message: value,
+          })} />
       </Stack.Item>
     </Stack>
   );
 };
-
-
 
 export const EquipmentTab = (props, context) => {
   const { act, data } = useBackend(context);
@@ -424,7 +494,7 @@ export const EquipmentTab = (props, context) => {
   return (
     <Stack vertical grow>
       <Stack.Item>
-        <Section title="Admin Control">
+        <Section title="Equipment">
           <NoticeBox color="good">
             Work in progress! Check back later.
           </NoticeBox>

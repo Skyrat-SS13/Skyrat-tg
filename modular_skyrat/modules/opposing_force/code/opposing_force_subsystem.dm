@@ -134,15 +134,15 @@ SUBSYSTEM_DEF(opposing_force)
 	returned_html += "Submitted - FOLLOW QUEUE!"
 	var/queue_count = 1
 	for(var/datum/opposing_force/opposing_force in submitted_applications)
-		returned_html += "<b>[queue_count].</b> [opposing_force.build_html_panel_entry()]"
+		returned_html += " - <b>[queue_count].</b> [opposing_force.build_html_panel_entry()]"
 		queue_count++
 
 	returned_html += "Approved"
 	for(var/datum/opposing_force/opposing_force in approved_applications)
-		returned_html += opposing_force.build_html_panel_entry()
+		returned_html += " - [opposing_force.build_html_panel_entry()]"
 
 	returned_html += "Unsubmitted"
 	for(var/datum/opposing_force/opposing_force in unsubmitted_applications)
-		returned_html += opposing_force.build_html_panel_entry()
+		returned_html += " - [opposing_force.build_html_panel_entry()]"
 
 	return returned_html.Join("<br>")
