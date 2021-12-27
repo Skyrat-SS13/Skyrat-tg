@@ -486,16 +486,32 @@ export const AdminChatTab = (props, context) => {
 export const EquipmentTab = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    equipment = [],
+    equipment_list = [],
   } = data;
   return (
     <Stack vertical grow>
       <Stack.Item>
-        <Section title="Equipment">
-          <NoticeBox color="good">
-            Work in progress! Check back later.
-          </NoticeBox>
-        </Section>
+        <Section title="Equipment" />
+        {equipment_list.map(equipment_category => (
+          <Section
+            title={equipment_category.category}
+            key={equipment_category.category}>
+            {equipment_category.items.map(item => (
+              <Section
+                title={item.name}
+                key={item.ref}>
+                <LabeledList>
+                  <LabeledList.Item label="Description">
+                    {item.description}
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Item path">
+                    {item.item_path}
+                  </LabeledList.Item>
+                </LabeledList>
+              </Section>
+            ))}
+          </Section>
+        ))}
       </Stack.Item>
     </Stack>
   );

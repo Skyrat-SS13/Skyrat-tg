@@ -2,6 +2,8 @@ SUBSYSTEM_DEF(opposing_force)
 	name = "Opposing Force"
 	flags = SS_NO_FIRE
 
+	/// A precompiled list of all equipment datums, processed on init
+	var/list/equipment_list = list()
 	/// A list of all currently active objectives
 	var/list/unsubmitted_applications = list()
 	/// A list of all currently submitted objectives
@@ -17,6 +19,33 @@ SUBSYSTEM_DEF(opposing_force)
 
 /datum/controller/subsystem/opposing_force/stat_entry(msg)
 	msg = "UNSUB: [LAZYLEN(unsubmitted_applications)] | SUB: [LAZYLEN(submitted_applications)] | APPR: [LAZYLEN(approved_applications)]"
+	return ..()
+
+/datum/controller/subsystem/opposing_force/Initialize(start_timeofday)
+	// We will need the OTHER category regardless of what happens, as this is where any uncategorised items will go
+	equipment_list[OPFOR_EQUIPMENT_CATEGORY_OTHER] = list()
+	for(var/datum/opposing_force_equipment/opfor_equipment as anything in subtypesof(/datum/opposing_force_equipment))
+		// Set up our categories so we can add items to them
+		if(initial(opfor_equipment.category))
+			var/category = initial(opfor_equipment.category)
+			if(!(category in equipment_list))
+				// We instansiate the category list so we can add items to it later
+				equipment_list[category] = list()
+		// These can be considered abstract types, thus do not need to be added.
+		if(isnull(initial(opfor_equipment.item_path)))
+			continue
+		var/datum/opposing_force_equipment/spawned_opfor_equipment = new opfor_equipment()
+		// Datums without a name will assume the items name
+		spawned_opfor_equipment.name ||= initial(spawned_opfor_equipment.item_path.name)
+		// ditto for the description
+		spawned_opfor_equipment.description ||= initial(spawned_opfor_equipment.item_path.desc)
+		// Now that we've set up our datum, we can add it to the correct category
+		if(spawned_opfor_equipment.category)
+			// We have a category, let's add it to the associated list
+			equipment_list[spawned_opfor_equipment.category] += spawned_opfor_equipment
+		else
+			// We don't have home :( add us to the other category.
+			equipment_list[OPFOR_EQUIPMENT_CATEGORY_OTHER] += spawned_opfor_equipment
 	return ..()
 
 /datum/controller/subsystem/opposing_force/proc/check_availability()

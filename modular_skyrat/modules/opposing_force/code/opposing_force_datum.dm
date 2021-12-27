@@ -37,6 +37,8 @@
 	var/request_updates_muted = FALSE
 	/// A text list of the admin chat.
 	var/list/admin_chat = list()
+	/// Have we issued the player their equipment?
+	var/equipment_issued = FALSE
 
 	COOLDOWN_DECLARE(static/request_update_cooldown)
 
@@ -109,7 +111,7 @@
 
 	data["objectives"] = list()
 	var/objective_num = 1
-	for(var/datum/opposing_force_objective/opfor in objectives)
+	for(var/datum/opposing_force_objective/opfor as anything in objectives)
 		var/list/objective_data = list(
 			id = objective_num,
 			ref = REF(opfor),
@@ -124,6 +126,24 @@
 			)
 		objective_num++
 		data["objectives"] += list(objective_data)
+
+	data["equipment_issued"] = equipment_issued
+
+	data["equipment_list"] = list()
+	for(var/equipment_category in SSopposing_force.equipment_list)
+		var/category_items = list()
+		for(var/datum/opposing_force_equipment/opfor_equipment as anything in SSopposing_force.equipment_list[equipment_category])
+			category_items += list(list(
+				ref = REF(opfor_equipment),
+				name = opfor_equipment.name,
+				description = opfor_equipment.description,
+				equipment_category = opfor_equipment.category,
+				item_type = opfor_equipment.item_path,
+			))
+		data["equipment_list"] += list(list(
+			category = equipment_category,
+			items = category_items,
+		))
 
 	return data
 
