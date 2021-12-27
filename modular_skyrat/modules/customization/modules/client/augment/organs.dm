@@ -48,7 +48,7 @@
 	cost = 2
 
 /datum/augment_item/organ/lungs/ethereal
-	name "Aeration reticulum"
+	name = "Aeration reticulum"
 	path = /obj/item/organ/lungs/ethereal
 
 /datum/augment_item/organ/lungs/cybernetic
