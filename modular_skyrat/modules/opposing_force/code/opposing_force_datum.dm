@@ -109,7 +109,7 @@
 	data["approved"] = status == OPFOR_STATUS_APPROVED ? TRUE : FALSE
 
 	var/list/messages = list()
-	for(var/message in channel.messages)
+	for(var/message in admin_chat)
 		messages.Add(list(list(
 			"msg" = message
 		)))
@@ -201,13 +201,13 @@
 			deny_objective(usr, edited_objective, denial_reason)
 
 /datum/opposing_force/proc/send_message(mob/user, message)
-	message = STRIP_HTML_SIMPLE(message)
+	message = STRIP_HTML_SIMPLE(message, OPFOR_TEXT_LIMIT_MESSAGE)
 	var/message_string
 	var/real_round_time = world.timeofday - SSticker.real_round_start_time
 	if(check_rights_for(user.client, R_ADMIN))
 		message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] (ADMIN)[get_admin_ckey(user.client)]: " + message
 	else
-		message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] (USER)[get_ckey(user.client)]: " + message
+		message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] (USER)[user.ckey]: " + message
 	admin_chat += message_string
 	add_log(user.ckey, "Sent message: [message]")
 
@@ -272,15 +272,15 @@
 	if(subsystem_status != OPFOR_SUBSYSTEM_READY)
 		return subsystem_status
 	switch(status)
-		if(status == OPFOR_STATUS_AWAITING_APPROVAL)
+		if(status = OPFOR_STATUS_AWAITING_APPROVAL)
 			return "Awaiting approval, [status], you are number [SSopposing_force.get_queue_position(src)] in the queue"
-		if(status == OPFOR_STATUS_APPROVED)
+		if(status = OPFOR_STATUS_APPROVED)
 			return "Approved, please check your objectives for specific approval"
-		if(status == OPFOR_STATUS_REJECTED)
+		if(status = OPFOR_STATUS_REJECTED)
 			return "Rejected, do not attempt any of your objectives"
-		if(status == OPFOR_STATUS_CHANGES_REQUESTED)
+		if(status = OPFOR_STATUS_CHANGES_REQUESTED)
 			return "Changes requested, please review your application"
-		if(status == OPFOR_STATUS_NOT_SUBMITTED)
+		if(status = OPFOR_STATUS_NOT_SUBMITTED)
 			return OPFOR_STATUS_NOT_SUBMITTED
 		else
 			return "ERROR"
@@ -348,7 +348,7 @@
 		return
 	if(!opposing_force_objective)
 		CRASH("[user] tried to update a non existent opfor objective!")
-	var/sanitized_description = STRIP_HTML_SIMPLE(new_description)
+	var/sanitized_description = STRIP_HTML_SIMPLE(new_description, OPFOR_TEXT_LIMIT_DESCRIPTION)
 	add_log(user.ckey, "Updated objective([opposing_force_objective.title]) DESCRIPTION from: [opposing_force_objective.description] to: [sanitized_description]")
 	opposing_force_objective.description = sanitized_description
 	return TRUE
@@ -358,7 +358,7 @@
 		return
 	if(!opposing_force_objective)
 		CRASH("[user] tried to update a non existent opfor objective!")
-	var/sanitize_justification = STRIP_HTML_SIMPLE(new_justification)
+	var/sanitize_justification = STRIP_HTML_SIMPLE(new_justification, OPFOR_TEXT_LIMIT_JUSTIFICATION)
 	add_log(user.ckey, "Updated objective([opposing_force_objective.title]) JUSTIFICATION from: [opposing_force_objective.justification] to: [sanitize_justification]")
 	opposing_force_objective.justification = sanitize_justification
 	return TRUE
@@ -385,7 +385,7 @@
 /datum/opposing_force/proc/set_objective_title(mob/user, datum/opposing_force_objective/opposing_force_objective, new_title)
 	if(!can_edit)
 		return
-	var/sanitized_title = STRIP_HTML_SIMPLE(new_title)
+	var/sanitized_title = STRIP_HTML_SIMPLE(new_title, OPFOR_TEXT_LIMIT_TITLE)
 	if(!opposing_force_objective)
 		CRASH("[user] tried to update a non existent opfor objective!")
 	add_log(user.ckey, "Updated objective([opposing_force_objective.title]) TITLE from: [opposing_force_objective.title] to: [sanitized_title]")
@@ -395,7 +395,7 @@
 /datum/opposing_force/proc/set_backstory(mob/user, incoming_backstory)
 	if(!can_edit)
 		return
-	var/sanitized_backstory = STRIP_HTML_SIMPLE(incoming_backstory)
+	var/sanitized_backstory = STRIP_HTML_SIMPLE(incoming_backstory, OPFOR_TEXT_LIMIT_BACKSTORY)
 	add_log(user.ckey, "Updated BACKSTORY from: [set_backstory] to: [sanitized_backstory]")
 	set_backstory = sanitized_backstory
 	return TRUE
