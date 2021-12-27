@@ -7,7 +7,7 @@
 
 /obj/item/stock_parts/cell/crank/examine(mob/user)
 	. = ..()
-	. += span_notice("ALT-CLICK to start cranking the cell.")
+	. += span_notice("Alt-click to start cranking the cell.")
 
 /obj/item/stock_parts/cell/crank/Initialize(mapload, override_maxcharge)
 	. = ..()
