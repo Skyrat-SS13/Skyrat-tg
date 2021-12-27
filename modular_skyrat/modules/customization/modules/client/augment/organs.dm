@@ -15,6 +15,10 @@
 	name = "Cybernetic heart"
 	path = /obj/item/organ/heart/cybernetic
 
+/datum/augment_item/organ/heart/ethereal
+	name = "Eletrical Core"
+	path = /obj/item/organ/heart/ethereal
+
 //LUNGS
 /datum/augment_item/organ/lungs
 	slot = AUGMENT_SLOT_LUNGS
@@ -23,23 +27,30 @@
 	name = "Lungs Adapted to Heat"
 	slot = AUGMENT_SLOT_LUNGS
 	path = /obj/item/organ/lungs/hot
-	cost = 1
+	cost = 2
 
 /datum/augment_item/organ/lungs/cold
 	name = "Cold-Adapted Lungs"
 	slot = AUGMENT_SLOT_LUNGS
 	path = /obj/item/organ/lungs/cold
-	cost = 1
+	cost = 2
+
 /datum/augment_item/organ/lungs/toxin
 	name = "Lungs Adapted to Toxins"
 	slot = AUGMENT_SLOT_LUNGS
 	path = /obj/item/organ/lungs/toxin
-	cost = 1
+	cost = 2
+
 /datum/augment_item/organ/lungs/oxy
 	name = "Low-Pressure Adapted Lungs"
 	slot = AUGMENT_SLOT_LUNGS
 	path = /obj/item/organ/lungs/oxy
-	cost = 1
+	cost = 2
+
+/datum/augment_item/organ/lungs/ethereal
+	name "Aeration reticulum"
+	path = /obj/item/organ/lungs/ethereal
+
 /datum/augment_item/organ/lungs/cybernetic
 	name = "Cybernetic lungs"
 	path = /obj/item/organ/lungs/cybernetic
@@ -52,6 +63,12 @@
 	name = "Cybernetic liver"
 	path = /obj/item/organ/liver/cybernetic
 
+/datum/augment_item/organ/liver/toxin
+	name = "toxin adapted liver"
+	path = /obj/item/organ/liver/alien/roundstart
+	cost = 6
+
+
 //STOMACHES
 /datum/augment_item/organ/stomach
 	slot = AUGMENT_SLOT_STOMACH
@@ -59,6 +76,10 @@
 /datum/augment_item/organ/stomach/cybernetic
 	name = "Cybernetic stomach"
 	path = /obj/item/organ/stomach/cybernetic
+
+/datum/augment_item/organ/stomach/battery
+	name = "Biological Battery"
+	path = /obj/item/organ/stomach/ethereal
 
 //EYES
 /datum/augment_item/organ/eyes
@@ -89,3 +110,11 @@
 /datum/augment_item/organ/tongue/forked
 	name = "Forked tongue"
 	path = /obj/item/organ/tongue/lizard
+
+/datum/augment_item/organ/tongue/ethereal
+	name = "Eletrical tongue"
+	path = /obj/item/organ/tongue/ethereal
+
+/datum/augment_item/organ/tongue/fly
+	name = "fly tongue"
+	path = /obj/item/organ/tongue/fly

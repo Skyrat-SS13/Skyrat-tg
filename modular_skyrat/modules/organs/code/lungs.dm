@@ -52,23 +52,30 @@
 	icon_state = "lungs_toxin"
 	safe_plasma_max = 27
 	safe_co2_max = 27
+	suffers_miasma = FALSE
+	low_threshold_passed = "<span class='warning'>Something is clearly wrong at your chest, you can feel your lungs fighting with something and your liver twisting!</span>"
+	high_threshold_passed = "<span class='warning'>You feel some sort of heavy pain around your chest as your breathing becomes pained and rapid, you feel you are going to die...</span>"
+	now_fixed = "<span class='warning'>Your lungs seem to once again be able to work.</span>"
+	low_threshold_cleared = "<span class='info'>You can barely breathe normally, but you feel calmer than before.</span>"
+	high_threshold_cleared = "<span class='info'>The constriction around your chest loosens as your breathing calms down.</span>"
 
-	cold_message = "You can't stand the freezing cold with every breath you take!"
+
+	cold_message = "You can't stand the freezing cold with every breath you take! IT HURTS!"
 	cold_level_1_threshold = 248
 	cold_level_2_threshold = 220
 	cold_level_3_threshold = 170
-	cold_level_1_damage = COLD_GAS_DAMAGE_LEVEL_2 //Keep in mind with gas damage levels, you can set these to be negative, if you want someone to heal, instead.
-	cold_level_2_damage = COLD_GAS_DAMAGE_LEVEL_2
+	cold_level_1_damage = COLD_GAS_DAMAGE_LEVEL_3 //Keep in mind with gas damage levels, you can set these to be negative, if you want someone to heal, instead.
+	cold_level_2_damage = COLD_GAS_DAMAGE_LEVEL_3
 	cold_level_3_damage = COLD_GAS_DAMAGE_LEVEL_3
 	cold_damage_type = BRUTE
 
 
-	hot_message = "You can't stand the searing heat with every breath you take!"
+	hot_message = "You can't stand the searing heat with every breath you take! IT HURTS!"
 	heat_level_1_threshold = 318
 	heat_level_2_threshold = 348
 	heat_level_3_threshold = 1000
-	heat_level_1_damage = HEAT_GAS_DAMAGE_LEVEL_2
-	heat_level_2_damage = HEAT_GAS_DAMAGE_LEVEL_2
+	heat_level_1_damage = HEAT_GAS_DAMAGE_LEVEL_3
+	heat_level_2_damage = HEAT_GAS_DAMAGE_LEVEL_3
 	heat_level_3_damage = HEAT_GAS_DAMAGE_LEVEL_3
 	heat_damage_type = BURN
 
@@ -77,14 +84,14 @@
 	icon = 'modular_skyrat/modules/organs/icons/lungs.dmi'
 	desc = "A set of lungs adapted to lower-pressure environments, though more susceptible to extreme temperatures."
 	icon_state = "lungs_toxin"
-	safe_oxygen_min = 5
+	safe_oxygen_min = 7
 
 	hot_message = "You can't stand the searing heat with every breath you take!"
 	heat_level_1_threshold = 318
 	heat_level_2_threshold = 348
 	heat_level_3_threshold = 1000
-	heat_level_1_damage = HEAT_GAS_DAMAGE_LEVEL_2
-	heat_level_2_damage = HEAT_GAS_DAMAGE_LEVEL_2
+	heat_level_1_damage = HEAT_GAS_DAMAGE_LEVEL_3
+	heat_level_2_damage = HEAT_GAS_DAMAGE_LEVEL_3
 	heat_level_3_damage = HEAT_GAS_DAMAGE_LEVEL_3
 	heat_damage_type = BURN
 
@@ -92,7 +99,7 @@
 	cold_level_1_threshold = 248
 	cold_level_2_threshold = 220
 	cold_level_3_threshold = 170
-	cold_level_1_damage = COLD_GAS_DAMAGE_LEVEL_2 //Keep in mind with gas damage levels, you can set these to be negative, if you want someone to heal, instead.
-	cold_level_2_damage = COLD_GAS_DAMAGE_LEVEL_2
+	cold_level_1_damage = COLD_GAS_DAMAGE_LEVEL_3 //Keep in mind with gas damage levels, you can set these to be negative, if you want someone to heal, instead.
+	cold_level_2_damage = COLD_GAS_DAMAGE_LEVEL_3
 	cold_level_3_damage = COLD_GAS_DAMAGE_LEVEL_3
 	cold_damage_type = BURN
