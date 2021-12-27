@@ -135,7 +135,7 @@
 	var/datum/loadout_item/first_misc_found
 	for(var/datum/loadout_item/item as anything in loadout_list_to_datums(owner.prefs.loadout_list))
 		if(item.category == selected_item.category)
-			if(item.category == LOADOUT_ITEM_MISC || item.category == LOADOUT_ITEM_TOYS && ++num_misc_items < MAX_ALLOWED_MISC_ITEMS)
+			if((item.category == LOADOUT_ITEM_MISC || item.category == LOADOUT_ITEM_TOYS) && ++num_misc_items < MAX_ALLOWED_MISC_ITEMS)
 				if(!first_misc_found)
 					first_misc_found = item
 				continue
