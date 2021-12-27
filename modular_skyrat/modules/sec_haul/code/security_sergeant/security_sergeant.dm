@@ -57,7 +57,7 @@
 
 	suit_store = /obj/item/gun/energy/disabler //SKYRAT EDIT CHANGE - no
 
-	backpack_contents = list(/obj/item/melee/baton/telescopic)
+	backpack_contents = list(/obj/item/melee/baton/security)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
