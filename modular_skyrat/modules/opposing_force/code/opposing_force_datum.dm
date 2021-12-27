@@ -204,8 +204,8 @@
 	message = STRIP_HTML_SIMPLE(message, OPFOR_TEXT_LIMIT_MESSAGE)
 	var/message_string
 	var/real_round_time = world.timeofday - SSticker.real_round_start_time
-	if(check_rights_for(user.client, R_ADMIN))
-		message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] (ADMIN)[get_admin_ckey(user.client)]: " + message
+	if(check_rights_for(user.client, R_ADMIN) && user != holder.mob)
+		message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] (ADMIN)[get_admin_ckey(user)]: " + message
 	else
 		message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] (USER)[user.ckey]: " + message
 	admin_chat += message_string
@@ -238,7 +238,7 @@
 
 /datum/opposing_force/proc/get_admin_ckey(mob/user)
 	if(user.client?.holder?.fakekey)
-		return user.client?.holder?.fakekey
+		return user.client.holder.fakekey
 	return user.ckey
 
 /datum/opposing_force/proc/deny(mob/denier, reason)
@@ -272,15 +272,15 @@
 	if(subsystem_status != OPFOR_SUBSYSTEM_READY)
 		return subsystem_status
 	switch(status)
-		if(status = OPFOR_STATUS_AWAITING_APPROVAL)
+		if(OPFOR_STATUS_AWAITING_APPROVAL)
 			return "Awaiting approval, [status], you are number [SSopposing_force.get_queue_position(src)] in the queue"
-		if(status = OPFOR_STATUS_APPROVED)
+		if(OPFOR_STATUS_APPROVED)
 			return "Approved, please check your objectives for specific approval"
-		if(status = OPFOR_STATUS_REJECTED)
+		if(OPFOR_STATUS_REJECTED)
 			return "Rejected, do not attempt any of your objectives"
-		if(status = OPFOR_STATUS_CHANGES_REQUESTED)
+		if(OPFOR_STATUS_CHANGES_REQUESTED)
 			return "Changes requested, please review your application"
-		if(status = OPFOR_STATUS_NOT_SUBMITTED)
+		if(OPFOR_STATUS_NOT_SUBMITTED)
 			return OPFOR_STATUS_NOT_SUBMITTED
 		else
 			return "ERROR"
