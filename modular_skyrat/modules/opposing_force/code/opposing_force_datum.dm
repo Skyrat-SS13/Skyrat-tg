@@ -25,8 +25,6 @@
 	var/status = OPFOR_STATUS_NOT_SUBMITTED
 	/// Hard ref to our mind.
 	var/datum/mind/mind_reference
-	/// Hard ref to our holder.
-	var/client/holder
 	/// For logging stuffs
 	var/list/modification_log = list()
 	/// Can we edit things?
@@ -42,19 +40,12 @@
 
 	COOLDOWN_DECLARE(static/request_update_cooldown)
 
-/datum/opposing_force/New(user, mind_reference)//user can either be a client or a mob due to byondcode(tm)
-	if (istype(user, /client))
-		var/client/user_client = user
-		holder = user_client //if its a client, assign it to holder
-	else
-		var/mob/user_mob = user
-		holder = user_mob.client //if its a mob, assign the mob's client to holder
+/datum/opposing_force/New(mind_reference)//user can either be a client or a mob due to byondcode(tm)
 	src.mind_reference = mind_reference
 
 /datum/opposing_force/Destroy(force)
 	mind_reference.opposing_force = null
 	mind_reference = null
-	holder = null
 	SSopposing_force.remove_opfor(src)
 	QDEL_LIST(objectives)
 	QDEL_LIST(modification_log)
@@ -92,7 +83,7 @@
 
 	data["admin_mode"] = check_rights_for(user.client, R_ADMIN)
 
-	data["creator_ckey"] = holder.ckey
+	data["creator_ckey"] = mind_reference.key ? mind_reference.key : ""
 
 	data["backstory"] = set_backstory
 
@@ -204,7 +195,7 @@
 	message = STRIP_HTML_SIMPLE(message, OPFOR_TEXT_LIMIT_MESSAGE)
 	var/message_string
 	var/real_round_time = world.timeofday - SSticker.real_round_start_time
-	if(check_rights_for(user.client, R_ADMIN) && user != holder.mob)
+	if(check_rights_for(user.client, R_ADMIN) && user != mind_reference.)
 		message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] (ADMIN) [get_admin_ckey(user)]: " + message
 	else
 		message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] (USER) [user.ckey]: " + message
@@ -229,7 +220,7 @@
 
 /datum/opposing_force/proc/broadcast_queue_change()
 	var/queue_number = SSopposing_force.get_queue_position(src)
-	to_chat(holder, examine_block(span_nicegreen("Your OPFOR application is now number [queue_number] in the queue.")))
+	to_chat(mind_reference.current, examine_block(span_nicegreen("Your OPFOR application is now number [queue_number] in the queue.")))
 	send_system_message("Application is now number [queue_number] in the queue")
 
 /datum/opposing_force/proc/close_application(mob/user)
@@ -250,7 +241,7 @@
 	can_edit = FALSE
 
 	add_log(approver.ckey, "Approved application")
-	to_chat(holder, examine_block(span_greentext("Your OPFOR application has been approved by [approver ? get_admin_ckey(approver) : "the OPFOR subsystem"]!")))
+	to_chat(mind_reference.current, examine_block(span_greentext("Your OPFOR application has been approved by [approver ? get_admin_ckey(approver) : "the OPFOR subsystem"]!")))
 	send_system_message("[approver ? get_admin_ckey(approver) : "The OPFOR subsystem"] has approved the application")
 
 /datum/opposing_force/proc/get_admin_ckey(mob/user)
@@ -263,7 +254,7 @@
 	can_edit = FALSE
 
 	add_log(denier.ckey, "Denied application")
-	to_chat(holder, examine_block(span_redtext("Your OPFOR application has been denied by [denier ? get_admin_ckey(denier) : "the OPFOR subsystem"]!")))
+	to_chat(mind_reference.current, examine_block(span_redtext("Your OPFOR application has been denied by [denier ? get_admin_ckey(denier) : "the OPFOR subsystem"]!")))
 	send_system_message(get_admin_ckey(denier) + " has denied the application with the following reason: [reason]")
 
 /datum/opposing_force/proc/user_request_changes(mob/user)
@@ -444,7 +435,7 @@
 		return
 
 	if(!mind.opposing_force)
-		var/datum/opposing_force/opposing_force = new(usr, mind)
+		var/datum/opposing_force/opposing_force = new(mind)
 		mind.opposing_force = opposing_force
 		SSopposing_force.new_opfor(opposing_force)
 	mind.opposing_force.ui_interact(usr)
