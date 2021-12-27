@@ -11,13 +11,3 @@
 	armor = list(MELEE = 50, BULLET = 40, LASER = 50, ENERGY = 50, BOMB = 25, BIO = 0, FIRE = 100, ACID = 90, WOUND = 10)
 	dog_fashion = null
 	resistance_flags = FIRE_PROOF
-
-//Syndicate hardsuit changes
-
-/obj/item/clothing/head/helmet/space/hardsuit/syndi
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-
-/obj/item/clothing/head/helmet/space/hardsuit/syndi/elite
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
