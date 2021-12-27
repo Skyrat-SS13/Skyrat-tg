@@ -902,10 +902,6 @@
 /obj/item/clothing/head/helmet/riot,
 /obj/effect/spawner/random/exotic/antag_gear,
 /obj/effect/spawner/random/exotic/antag_gear_weak,
-/obj/structure/closet/crate/secure/weapon{
-	name = "Delivery - DS-2";
-	req_access_txt = "150"
-	},
 /obj/item/storage/belt/utility/atmostech,
 /obj/item/storage/belt/utility/full/engi,
 /obj/item/storage/belt/utility/syndicate,
@@ -917,6 +913,10 @@
 	},
 /obj/item/stack/telecrystal{
 	amount = 10
+	},
+/obj/structure/closet/crate/secure/ftu{
+	name = "Delivery - DS-2";
+	req_access_txt = "150"
 	},
 /turf/open/floor/iron/brown,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
@@ -1066,7 +1066,7 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "ug" = (
 /obj/structure/safe,
-/obj/item/mod/control/pre_equipped/traitor,
+/obj/item/clothing/suit/space/pirate,
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "uj" = (
@@ -1266,13 +1266,13 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "wN" = (
 /obj/effect/turf_decal/bot,
-/obj/structure/closet/crate/secure/gear{
+/obj/effect/spawner/random/exotic/antag_gear_weak,
+/obj/effect/spawner/random/exotic/antag_gear_weak,
+/obj/effect/spawner/random/exotic/antag_gear_weak,
+/obj/structure/closet/crate/secure/ftu{
 	name = "Delivery - Central Command Frontier Division";
 	req_access_txt = "3"
 	},
-/obj/effect/spawner/random/exotic/antag_gear_weak,
-/obj/effect/spawner/random/exotic/antag_gear_weak,
-/obj/effect/spawner/random/exotic/antag_gear_weak,
 /turf/open/floor/iron/brown,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "wR" = (
@@ -1311,10 +1311,6 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "xQ" = (
 /obj/effect/turf_decal/bot,
-/obj/structure/closet/crate/secure/weapon{
-	name = "Delivery - Interdyne Mining Co";
-	req_access_txt = "150"
-	},
 /obj/effect/spawner/random/exotic/antag_gear,
 /obj/effect/spawner/random/exotic/antag_gear,
 /obj/effect/spawner/random/contraband/armory,
@@ -1323,6 +1319,9 @@
 /obj/item/tank/internals/oxygen/red,
 /obj/item/pickaxe/drill/jackhammer,
 /obj/item/storage/box/minertracker,
+/obj/structure/closet/crate/secure/ftu{
+	name = "Delivery - Interdyne Pharmaceuticals"
+	},
 /turf/open/floor/iron/brown/side,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "ye" = (
@@ -1855,14 +1854,14 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "IX" = (
 /obj/effect/turf_decal/bot,
-/obj/structure/closet/crate/secure/gear{
-	name = "Delivery - Enclave";
-	req_access_txt = "2"
-	},
 /obj/item/knife/combat,
 /obj/item/reagent_containers/hypospray/medipen/stimpack,
 /obj/item/clothing/glasses/hud/security/sunglasses/gars/giga,
 /obj/item/clothing/under/enclave/real,
+/obj/structure/closet/crate/secure/ftu{
+	name = "Delivery - Enclave";
+	req_access_txt = "2"
+	},
 /turf/open/floor/iron/brown/side,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "IZ" = (
@@ -1950,11 +1949,7 @@
 	},
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "JM" = (
-/obj/machinery/suit_storage_unit{
-	mask_type = /obj/item/clothing/mask/gas/explorer;
-	storage_type = /obj/item/tank/jetpack/oxygen/harness;
-	suit_type = /obj/item/mod/control/pre_equipped/elite
-	},
+/obj/machinery/mod_installer,
 /turf/open/floor/iron/dark/blue,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "JQ" = (
