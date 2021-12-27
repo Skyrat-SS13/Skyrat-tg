@@ -719,3 +719,94 @@
   - bugfix: NtOS chat screen widened slightly to fix clipping issue on the participants
       panel.
   - bugfix: Clipping and sizing issues on drone consoles have been fixed.
+2021-12-26:
+  E3N Artificial Intelligence:
+  - rscadd: Surplus SolFed Marine IPCs have been shipped to Nanotrasen in a trade
+      deal.
+  Fikou, theOOZ:
+  - imageadd: adds a new janiborg sprite!
+  ? 'Fikou; Sprites: PositiveEntropy, Azlan, Infrared_Baron, Thunder12345, Yeeye;
+    Code: Waltermeldron, Goof, Armhulen, ArcaneMusic, DatBoiTim; Descriptions: Nerevar'
+  : - rscadd: Adds Modular Suits. Printable at robotics.
+    - rscdel: Removes Hardsuits.
+    - balance: Almost all Hardsuits have been replaced with MODsuits.
+    - balance: HECKsuit, Berserker Hardsuit, Cult Hardsuit and Carp Hardsuit became
+        hoodies, the first 2 losing their spaceproofness
+    - rscdel: Cybersun, Combat Medic and Owl Hardsuits didn't make the cut.
+    - refactor: Changes how mob gravity checks are made. Uses a gravity negation trait.
+        As part of this, space wind pushing you is handled by gravity negation, not
+        noslips.
+    - balance: Hardsuits no longer defend from tackles, but negating gravity does.
+    - code_imp: 'Adds support for digitigrade compatible shoes. qol: Piercing syringes
+        now pierce when used from hand, not just as projectile.'
+    - code_imp: Removes the unused outside of admin shenanigans cult hardsuit requirement
+        for spells.
+  Higgin:
+  - balance: Medibot healing time increased by a factor of five.
+  Melbert:
+  - bugfix: Updated the binary key's description / examine text to actually describe
+      its abilities.
+  OrionTheFox:
+  - bugfix: The Explorer Gasmask now has a muzzle variant
+  - bugfix: Various masks now show muzzles thru them, as they were meant to. Luchador
+      momento.
+  - bugfix: Helmets will now properly hide masks beneath them, instead of causing
+      sprite clipping.
+  - code_imp: Added the SHOWSPRITEEARS flag, to force ears to show over an item with
+      HIDEHAIR. This will let sprites with earholes actually fit ears thru them, but
+      not show the hair instead
+  SkyratBot:
+  - imageadd: The Spider Clan has issued a recall of all it's katanas, replacing them
+      with new ones that are differently styled. Something about the old ones being
+      literally impossible to find in bright conditions. Or maybe they just didnt
+      like how it looked so they changed its "sprite".
+  - imageadd: Resprites the sec grenade launcher
+  - bugfix: Disarming a heavily incapacitated person with krav maga will no longer
+      make them recoil in pain.
+  - bugfix: The HoP will now get strange reagent in the mail if Ian is dead, as originally
+      intended.
+  - imageadd: The PanD.E.M.I.C 2200 is now visually different than the ChemMaster
+  - bugfix: Fix AIs inside a AI restorer computer now die if the computer is destroyed
+      while they are inside it.
+  - bugfix: Tesla reactive armour now has separate emp and cooldown messages
+  - bugfix: plopped an xmas tree in tramsation's chapel
+  - bugfix: dogs will no longer forget to unbuckle themselves when fetching items
+      thrown nearby
+  - bugfix: Double click and enter on tgui input lists no longer clears selection.
+  - bugfix: 'Functionality restored: typing while not selecting the search bar will
+      refocus. You can also quick search by typing while the search bar is hidden.'
+  - refactor: Support for current value selections has been added to tgui input lists
+      - lists now work for suit sensors, etc.
+  jjpark-kb:
+  - soundadd: added a started/stopped typing sound for tts device
+  softcerv:
+  - balance: the toxin mode on the medigun now heals more or less according to how
+      many non-medicine chemicals are inside of the patient's bloodstream.
+  'tf4, Sprites: Zydras':
+  - rscadd: Mince pies are now available to create!
+2021-12-27:
+  AtoriBirb:
+  - bugfix: small line of code in hair.dm
+  Gandalf2k15:
+  - bugfix: The SAD no longer churns out mutated abominations of yourself and should
+      work correctly.
+  - bugfix: Ghost role spawners can now use your character.
+  SkyratBot:
+  - code_imp: Some code improvements and proper use of department datums by independent
+      nation creation
+  - refactor: Some wonderful cleanup of separatist code, if you notice minor differences
+      it's because of that.
+  - admin: The nations ruleset is back(?) and disabled for admins to run fi they so
+      desire
+  - bugfix: Makes all cyborg storage items drop their contents on module change.
+  - bugfix: Fix all types of grenades to be deleted when shot bullets.
+  - bugfix: Sechailer no longer has FOV.
+  - bugfix: SWAT mask no longer has a tint.
+  - bugfix: the protect objective now checks for mob and brain suicides
+  - bugfix: Restores the cardborg sprite.
+  - bugfix: Cult robes now have sprites for when the hood is down
+  axietheaxolotl:
+  - imageadd: Resprited the Tactical Turtleneck Suit
+  thestubborn:
+  - bugfix: instead of not working, the Executive Suit and Executive Suitskirt Alts
+      work, someone accidentally turned the working button off :(

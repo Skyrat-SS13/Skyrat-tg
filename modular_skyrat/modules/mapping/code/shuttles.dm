@@ -90,8 +90,6 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/guild/slaver
-	can_use_alias = TRUE
-	any_station_species = TRUE
 
 /obj/effect/mob_spawn/ghost_role/human/guild/slaver/captain
 	name = "Privateer Slaver Captain"
