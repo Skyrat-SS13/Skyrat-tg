@@ -563,7 +563,7 @@
 		return
 	var/obj/projectile/exam_proj
 	readout += "Our heroic interns have shown that one can theoretically stay standing after..."
-	exam_proj = GLOB.proj_by_path_key[microfusion_lens?.projectile_type]
+	exam_proj = initial(microfusion_lens?.projectile_type)
 
 	if(!istype(exam_proj))
 		return readout.Join("\n")
