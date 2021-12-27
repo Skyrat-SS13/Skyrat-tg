@@ -65,7 +65,7 @@
 		switch(href_list["admin_pref"])
 			if("show_panel")
 				if(!check_rights(R_ADMIN))
-					message_admins("OPFOR: Detected possible HREF exploit!")
+					send_admins_opfor_message("Detected possible HREF exploit!")
 					CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
 				ui_interact(usr)
 				return TRUE
@@ -175,27 +175,27 @@
 		//Admin protected procs
 		if("approve")
 			if(!check_rights(R_ADMIN))
-				message_admins("OPFOR: Detected possible HREF exploit!")
+				send_admins_opfor_message("Detected possible HREF exploit!")
 				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
 			SSopposing_force.approve(src, usr)
 		if("deny")
 			if(!check_rights(R_ADMIN))
-				message_admins("OPFOR: Detected possible HREF exploit!")
+				send_admins_opfor_message("Detected possible HREF exploit!")
 				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
 			SSopposing_force.deny(src, params["denied_reason"], usr)
 		if("mute_request_updates")
 			if(!check_rights(R_ADMIN))
-				message_admins("OPFOR: Detected possible HREF exploit!")
+				send_admins_opfor_message("Detected possible HREF exploit!")
 				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
 			request_updates_muted = !request_updates_muted
 		if("approve_objective")
 			if(!check_rights(R_ADMIN))
-				message_admins("OPFOR: Detected possible HREF exploit!")
+				send_admins_opfor_message("Detected possible HREF exploit!")
 				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
 			approve_objective(usr, edited_objective)
 		if("deny_objective")
 			if(!check_rights(R_ADMIN))
-				message_admins("OPFOR: Detected possible HREF exploit!")
+				send_admins_opfor_message("Detected possible HREF exploit!")
 				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
 			var/denial_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
 			deny_objective(usr, edited_objective, denial_reason)
@@ -205,29 +205,45 @@
 	var/message_string
 	var/real_round_time = world.timeofday - SSticker.real_round_start_time
 	if(check_rights_for(user.client, R_ADMIN) && user != holder.mob)
-		message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] (ADMIN)[get_admin_ckey(user)]: " + message
+		message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] (ADMIN) [get_admin_ckey(user)]: " + message
 	else
-		message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] (USER)[user.ckey]: " + message
+		message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] (USER) [user.ckey]: " + message
 	admin_chat += message_string
 	add_log(user.ckey, "Sent message: [message]")
+
+/datum/opposing_force/proc/send_system_message(message)
+	var/real_round_time = world.timeofday - SSticker.real_round_start_time
+	var/message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] SYSTEM: " + message
+	admin_chat += message_string
 
 /datum/opposing_force/proc/deny_objective(mob/user, datum/opposing_force_objective/opposing_force_objective, deny_reason)
 	opposing_force_objective.status = OPFOR_OBJECTIVE_STATUS_REJECTED
 	opposing_force_objective.denial_reason = deny_reason
 	add_log(user.ckey, "Denied objective([opposing_force_objective.title]) WITH REASON: [deny_reason]")
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has approved objective '[opposing_force_objective.title]'")
 
 /datum/opposing_force/proc/approve_objective(mob/user, datum/opposing_force_objective/opposing_force_objective)
 	opposing_force_objective.status = OPFOR_OBJECTIVE_STATUS_APPROVED
 	add_log(user.ckey, "Approved objective([opposing_force_objective.title])")
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has approved objective '[opposing_force_objective.title]'")
 
 /datum/opposing_force/proc/broadcast_queue_change()
-	to_chat(holder, examine_block(span_nicegreen("Your OPFOR application is now number [SSopposing_force.get_queue_position(src)] in the queue.")))
+	var/queue_number = SSopposing_force.get_queue_position(src)
+	to_chat(holder, examine_block(span_nicegreen("Your OPFOR application is now number [queue_number] in the queue.")))
+	send_system_message("Application is now number [queue_number] in the queue")
 
 /datum/opposing_force/proc/close_application(mob/user)
-	var/choice = tgui_alert(user, "Are you sure you want close your application? All changes will be lost.", "Confirm", list("Yes", "No"))
+	var/choice = tgui_alert(user, "Are you sure you want withdraw your application?", "Confirm", list("Yes", "No"))
 	if(choice != "Yes")
 		return
-	qdel(src)
+	SSopposing_force.remove_opfor(src)
+	status = OPFOR_STATUS_NOT_SUBMITTED
+	can_edit = TRUE
+	for(var/datum/opposing_force_objective/opfor in objectives)
+		opfor.status = OPFOR_OBJECTIVE_STATUS_NOT_REVIEWED
+
+	add_log(user.ckey, "Withdrew application")
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has closed the application")
 
 /datum/opposing_force/proc/approve(mob/approver)
 	status = OPFOR_STATUS_APPROVED
@@ -235,18 +251,20 @@
 
 	add_log(approver.ckey, "Approved application")
 	to_chat(holder, examine_block(span_greentext("Your OPFOR application has been approved by [approver ? get_admin_ckey(approver) : "the OPFOR subsystem"]!")))
+	send_system_message("[approver ? get_admin_ckey(approver) : "The OPFOR subsystem"] has approved the application")
 
 /datum/opposing_force/proc/get_admin_ckey(mob/user)
 	if(user.client?.holder?.fakekey)
 		return user.client.holder.fakekey
 	return user.ckey
 
-/datum/opposing_force/proc/deny(mob/denier, reason)
+/datum/opposing_force/proc/deny(mob/denier, reason = "N/A")
 	status = OPFOR_STATUS_REJECTED
 	can_edit = FALSE
 
 	add_log(denier.ckey, "Denied application")
 	to_chat(holder, examine_block(span_redtext("Your OPFOR application has been denied by [denier ? get_admin_ckey(denier) : "the OPFOR subsystem"]!")))
+	send_system_message(get_admin_ckey(denier) + " has denied the application with the following reason: [reason]")
 
 /datum/opposing_force/proc/user_request_changes(mob/user)
 	if(status == OPFOR_STATUS_CHANGES_REQUESTED)
@@ -265,7 +283,7 @@
 	can_edit = TRUE
 
 	add_log(user.ckey, "Requested changes")
-	message_admins("[span_pink("OPFOR:")] CHANGES REQUESTED: [ADMIN_LOOKUPFLW(user)] has requested changes to their opposing force. Please review the opposing force and approve or deny the changes when submitted.")
+	send_admins_opfor_message("CHANGES REQUESTED: [ADMIN_LOOKUPFLW(user)] has requested changes to their opposing force. Please review the opposing force and approve or deny the changes when submitted.")
 
 /datum/opposing_force/proc/get_status_string()
 	var/subsystem_status = SSopposing_force.check_availability()
@@ -295,7 +313,7 @@
 	if(request_updates_muted)
 		return
 
-	message_admins(span_command_headset("[span_pink("OPFOR:")] UPDATE REQUEST: [ADMIN_LOOKUPFLW(user)] has requested an update on their OPFOR application!"))
+	send_admins_opfor_message(span_command_headset("UPDATE REQUEST: [ADMIN_LOOKUPFLW(user)] has requested an update on their OPFOR application!"))
 	add_log(user.ckey, "Requested an update")
 
 	for(var/client/staff as anything in GLOB.admins)
@@ -319,7 +337,8 @@
 	status = OPFOR_STATUS_AWAITING_APPROVAL
 	can_edit = FALSE
 	add_log(user.ckey, "Submitted to the OPFOR subsystem")
-	message_admins("[span_pink("OPFOR:")] SUBMISSION: [ADMIN_LOOKUPFLW(user)] has submitted their opposing force to the OPFOR subsystem. They are number [queue_position] in the queue.")
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has submitted the application for review")
+	send_admins_opfor_message("SUBMISSION: [ADMIN_LOOKUPFLW(user)] has submitted their opposing force to the OPFOR subsystem. They are number [queue_position] in the queue.")
 	to_chat(usr, examine_block(span_greentext(("You have been added to the queue for the OPFOR subsystem. You are number <b>[queue_position]</b> in line."))))
 
 /datum/opposing_force/proc/set_objective_intensity(mob/user, datum/opposing_force_objective/opposing_force_objective, new_intensity)
@@ -404,6 +423,13 @@
 	var/msg = "[ckey ? ckey : "SYSTEM"] - [new_log]"
 	modification_log += msg
 	log_admin(msg)
+
+/datum/opposing_force/proc/send_admins_opfor_message(message)
+	message = "[span_pink("OPFOR:")] [span_admin(message)]"
+	to_chat(GLOB.admins,
+		type = MESSAGE_TYPE_ADMINLOG,
+		html = message,
+		confidential = TRUE)
 
 /mob/verb/opposing_force()
 	set name = "Opposing Force"

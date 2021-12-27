@@ -8,10 +8,11 @@ export const OpposingForcePanel = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     admin_mode,
+    creator_ckey,
   } = data;
   return (
     <Window
-      title="Opposing Force Panel"
+      title={"Opposing Force: " + creator_ckey}
       width={585}
       height={830}
       theme="syndicate">
@@ -32,7 +33,7 @@ export const OpposingForcePanel = (props, context) => {
             onClick={() => setTab(3)}>
             Admin Chat
           </Tabs.Tab>
-          {admin_mode && (
+          {!!admin_mode && (
             <Tabs.Tab
               selected={tab === 4}
               onClick={() => setTab(4)}>
@@ -49,7 +50,7 @@ export const OpposingForcePanel = (props, context) => {
         {tab === 3 && (
           <AdminChatTab />
         )}
-        {admin_mode && (
+        {!!admin_mode && (
           tab === 4 && (
             <AdminTab />
           )
@@ -62,14 +63,12 @@ export const OpposingForcePanel = (props, context) => {
 export const OpposingForceTab = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    admin_mode,
     creator_ckey,
     objectives = [],
     can_submit,
     status,
-    ss_status,
     can_request_update,
-    can_request_update_cooldown,
+    request_updates_muted,
     can_edit,
     backstory,
   } = data;
@@ -90,7 +89,7 @@ export const OpposingForceTab = (props, context) => {
               <Button
                 icon="question"
                 color="orange"
-                disabled={!can_request_update}
+                disabled={!can_request_update && !!request_updates_muted}
                 content="Ask For Update"
                 onClick={() => act('request_update')} />
             </Stack.Item>
@@ -106,7 +105,8 @@ export const OpposingForceTab = (props, context) => {
               <Button
                 icon="trash"
                 color="bad"
-                content="Delete Application"
+                disabled={status === "Not submitted"}
+                content="Withdraw Application"
                 onClick={() => act('close_application')} />
             </Stack.Item>
           </Stack>
@@ -144,13 +144,11 @@ export const OpposingForceTab = (props, context) => {
   );
 };
 
-
 export const OpposingForceObjectives = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     objectives = [],
     can_edit,
-    admin_mode,
   } = data;
 
   const [
@@ -170,7 +168,6 @@ export const OpposingForceObjectives = (props, context) => {
             {objectives.map(objective => (
               <Tabs.Tab
                 width="25%"
-                disabled={!can_edit}
                 key={objective.id}
                 selected={objective.id === selectedObjectiveID}
                 onClick={() => setSelectedObjective(objective.id)}>
@@ -413,7 +410,7 @@ export const AdminTab = (props, context) => {
                   <Button
                     icon="check"
                     color="good"
-                    disabled={objective.approved}
+                    disabled={objective.approved && objective.status_text !== "Not Reviewed"}
                     content="Approve Objective"
                     onClick={() => act('approve_objective', {
                       objective_ref: objective.ref,
@@ -421,7 +418,7 @@ export const AdminTab = (props, context) => {
                   <Button
                     icon="times"
                     color="bad"
-                    disabled={!objective.approved}
+                    disabled={!objective.approved && objective.status_text !== "Not Reviewed"}
                     content="Deny Objective"
                     onClick={() => act('deny_objective', {
                       objective_ref: objective.ref,

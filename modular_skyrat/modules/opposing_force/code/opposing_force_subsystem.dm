@@ -56,7 +56,7 @@ SUBSYSTEM_DEF(opposing_force)
 		CRASH("Opposing_force_subsystem: Attempted to deny an opposing force but the approver was not an admin!")
 
 	if(!(opposing_force in submitted_applications))
-		to_chat(approver, "Opposing_force_subsystem: Attempted to approve an opposing force but it was not in the queue!")
+		to_chat(approver, span_warning("Opposing_force_subsystem: Attempted to approve an opposing force but it was not in the queue!"))
 		return FALSE
 
 	approved_applications += opposing_force
@@ -123,8 +123,6 @@ SUBSYSTEM_DEF(opposing_force)
 		CRASH("Opposing_force_subsystem: Attempted to view an opposing force but the viewer was not an admin!")
 
 	opposing_force.ui_interact(viewer)
-
-/datum/controller/subsystem/opposing_force/proc/open_control_panel()
 
 /datum/controller/subsystem/opposing_force/proc/get_check_antag_listing()
 	var/list/returned_html = list()
