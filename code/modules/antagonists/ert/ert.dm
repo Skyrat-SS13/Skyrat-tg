@@ -268,14 +268,9 @@
 	..()
 // SKYRAT EDIT START
 /datum/antagonist/ert/families/greet()
-<<<<<<< HEAD
-	var/missiondesc = "<span class='warningplain'><B><font size=6 color=red>You are the [name].</font></B>"
-	missiondesc += "<BR><B><font size=5 color=red>You are NOT a Nanotrasen Employee. You work for the Sol Federation as a [role].</font></B>"
-=======
 	. = ..()
 	var/missiondesc
-	missiondesc += "<BR><B><font size=5 color=red>You are NOT a Nanotrasen Employee. You work for the local government.</font></B>"
->>>>>>> 4aaf031bb1d (Fixes and standardizes antag greet/farewell messages (#63469))
+	missiondesc += "<BR><B><font size=5 color=red>You are NOT a Nanotrasen Employee. You work for Sol Gov.</font></B>"
 	missiondesc += "<BR><B><font size=5 color=red>You are NOT a deathsquad. You are here to help innocents escape violence, criminal activity, and other dangerous things.</font></B>"
 	missiondesc += "<BR>You are responding to emergency calls from the station for immediate SolFed Police assistance!\n"
 	missiondesc += "<BR><B>Your Mission</B>:"
