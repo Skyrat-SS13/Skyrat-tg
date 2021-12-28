@@ -351,9 +351,8 @@ export const AdminTab = (props, context) => {
     request_updates_muted,
     approved,
     denied,
-    creator_ckey,
     objectives = [],
-    can_edit,
+    selected_equipment = [],
     backstory,
   } = data;
   return (
@@ -443,6 +442,46 @@ export const AdminTab = (props, context) => {
                   ) : (
                     objective.approved ? "Objective Approved" : objective.denied_text ? "Objective Denied - Reason: " + objective.denied_text : "Objective Denied"
                   )}
+                </LabeledList.Item>
+              </LabeledList>
+            </Section>
+          ))}
+        </Collapsible>
+      </Stack.Item>
+      <Stack.Item>
+        <Collapsible title="Equipment">
+          {selected_equipment.map((equipment, index) => (
+            <Section
+              title={equipment.name} key={equipment.ref}
+              buttons={(
+                <>
+                  <Button
+                    icon="check"
+                    color="good"
+                    disabled={equipment.staus === "Approved"}
+                    content="Approve Equipment"
+                    onClick={() => act('approve_equipment', {
+                      selected_equipment_ref: equipment.ref,
+                    })} />
+                  <Button
+                    icon="times"
+                    color="bad"
+                    disabled={equipment.staus !== "Approved" && equipment.staus !== "Not Reviewed"}
+                    content="Deny Equipment"
+                    onClick={() => act('deny_equipment', {
+                      selected_equipment_ref: equipment.ref,
+                    })} />
+                </>
+              )}>
+              <LabeledList key={equipment.ref}>
+                <LabeledList.Item label="Description">
+                  {equipment.description}
+                </LabeledList.Item>
+                <LabeledList.Item label="Reason">
+                  {equipment.reason}
+                </LabeledList.Item>
+                <LabeledList.Item label="Status">
+                  {equipment.status}
                 </LabeledList.Item>
               </LabeledList>
             </Section>

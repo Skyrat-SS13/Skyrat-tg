@@ -3,10 +3,8 @@
 	var/datum/opposing_force_equipment/opposing_force_equipment
 	/// Why does the user need this?
 	var/reason = ""
-	/// Has an admin approved the item?
-	var/approved = FALSE
 	/// What is the status of this item?
-	var/status = "Not Reviewed"
+	var/status = OPFOR_EQUIPMENT_STATUS_NOT_REVIEWED
 	/// If rejected, why?
 	var/rejected_reason = ""
 	/// How many does the user want?
@@ -64,6 +62,8 @@
 	var/equipment_issued = FALSE
 	/// A list of equipment that the user has requested.
 	var/list/selected_equipment = list()
+	/// Are we blocked from submitting a new request?
+	var/blocked = FALSE
 
 	COOLDOWN_DECLARE(static/request_update_cooldown)
 
@@ -177,6 +177,7 @@
 			description = equipment.opposing_force_equipment.description,
 			item = equipment.opposing_force_equipment.item_type,
 			status = equipment.status,
+			approved = equipment.status == OPFOR_EQUIPMENT_STATUS_APPROVED ? TRUE : FALSE,
 			)
 		data["selected_equipment"] += list(equipment_data)
 
@@ -247,6 +248,16 @@
 				send_admins_opfor_message("Detected possible HREF exploit!")
 				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
 			SSopposing_force.approve(src, usr)
+		if("approve_all")
+			if(!check_rights(R_ADMIN))
+				send_admins_opfor_message("Detected possible HREF exploit!")
+				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
+			approve_all(usr)
+		if("issue_gear")
+			if(!check_rights(R_ADMIN))
+				send_admins_opfor_message("Detected possible HREF exploit!")
+				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
+			issue_gear(usr)
 		if("deny")
 			if(!check_rights(R_ADMIN))
 				send_admins_opfor_message("Detected possible HREF exploit!")
@@ -256,7 +267,12 @@
 			if(!check_rights(R_ADMIN))
 				send_admins_opfor_message("Detected possible HREF exploit!")
 				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
-			request_updates_muted = !request_updates_muted
+			mute_request_updates(usr)
+		if("toggle_block")
+			if(!check_rights(R_ADMIN))
+				send_admins_opfor_message("Detected possible HREF exploit!")
+				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
+			toggle_block(usr)
 		if("approve_objective")
 			if(!check_rights(R_ADMIN))
 				send_admins_opfor_message("Detected possible HREF exploit!")
@@ -286,21 +302,45 @@
 			var/denial_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
 			deny_objective(usr, equipment, denial_reason)
 
+/datum/opposing_force/proc/mute_request_updates(mob/user, override = "none")
+	if(override != "none")
+		request_updates_muted = override
+	else
+		request_updates_muted = !request_updates_muted
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] [request_updates_muted ? "muted" : "unmuted"] the help requests function")
+	add_log(user.ckey, "[request_updates_muted ? "Muted" : "Unmuted"] user from opposing force help requests.")
+
+/datum/opposing_force/proc/toggle_block(mob/user, override = "none")
+	if(override != "none")
+		blocked = override
+	else
+		blocked = !blocked
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] blocked you from submitting new requests")
+	add_log(user.ckey, "Blocked user from opposing force requests.")
+
+/datum/opposing_force/proc/approve_all(mob/user)
+	for(var/datum/opposing_force_selected_equipment/iterating_equipment as anything in selected_equipment)
+		iterating_equipment.status = OPFOR_EQUIPMENT_STATUS_APPROVED
+	for(var/datum/opposing_force_objective/opfor as anything in objectives)
+		opfor.status = OPFOR_OBJECTIVE_STATUS_APPROVED
+	SSopposing_force.approve(src, user)
+
+/datum/opposing_force/proc/issue_gear(mob/user)
 
 /**
  * Equipment procs
  */
 
-/datum/opposing_force/proc/deny_equipment(mob/user, datum/opposing_force_selected_equipment/incoming_equipment, denial_reason)
-	incoming_equipment.rejected_reason = denial_reason
-	incoming_equipment.status = denial_reason ? "Denied - [denial_reason]" : "Denied"
-	incoming_equipment.approved = FALSE
+/datum/opposing_force/proc/deny_equipment(mob/user, datum/opposing_force_selected_equipment/incoming_equipment, denial_reason = "")
+	incoming_equipment.status = OPFOR_EQUIPMENT_STATUS_DENIED
+	incoming_equipment.denial_reason = denial_reason
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has rejected equipment '[incoming_equipment.opposing_force_equipment.name]'[denial_reason ? " with the reason '[denial_reason]'" : ""]")
 	add_log(user.ckey, "Rejected equipment: [incoming_equipment.opposing_force_equipment.name] with reason: [denial_reason]")
 
 /datum/opposing_force/proc/approve_equipment(mob/user, datum/opposing_force_selected_equipment/incoming_equipment)
-	incoming_equipment.status = "Approved"
+	incoming_equipment.status = OPFOR_EQUIPMENT_STATUS_APPROVED
 	incoming_equipment.approved = TRUE
+	opposing_force_objective.denial_reason = ""
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has approved equipment '[incoming_equipment.opposing_force_equipment.name]'")
 	add_log(user.ckey, "Approved equipment: [incoming_equipment.opposing_force_equipment.name]")
 
@@ -332,7 +372,6 @@
 	add_log(user.ckey, "Selected equipment: [opposing_force_equipment.name]")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has selected equipment '[opposing_force_equipment.name]'")
 
-
 /**
  * Control procs
  */
@@ -358,6 +397,8 @@
 	COOLDOWN_START(src, request_update_cooldown, OPFOR_REQUEST_UPDATE_COOLDOWN)
 
 /datum/opposing_force/proc/submit_to_subsystem(mob/user)
+	if(blocked)
+		return FALSE
 	if(status != OPFOR_STATUS_NOT_SUBMITTED && status != OPFOR_STATUS_CHANGES_REQUESTED)
 		return FALSE
 	// Subsystem checks, no point in bloating the system if it's not accepting more.
@@ -394,10 +435,15 @@
 	add_log(user.ckey, "Requested changes")
 	send_admins_opfor_message("CHANGES REQUESTED: [ADMIN_LOOKUPFLW(user)] has requested changes to their opposing force. Please review the opposing force and approve or deny the changes when submitted.")
 
-/datum/opposing_force/proc/deny(mob/denier, reason = "N/A")
-	status = OPFOR_STATUS_REJECTED
+/datum/opposing_force/proc/deny(mob/denier, reason = "")
+	status = OPFOR_STATUS_DENIED
 	can_edit = FALSE
 	denied_reason = reason
+
+	for(var/datum/opposing_force_selected_equipment/iterating_equipment as anything in selected_equipment)
+		iterating_equipment.status = OPFOR_EQUIPMENT_STATUS_DENIED
+	for(var/datum/opposing_force_objective/opfor in objectives)
+		opfor.status = OPFOR_OBJECTIVE_STATUS_DENIED
 
 	add_log(denier.ckey, "Denied application")
 	to_chat(mind_reference.current, examine_block(span_redtext("Your OPFOR application has been denied by [denier ? get_admin_ckey(denier) : "the OPFOR subsystem"]!")))
@@ -419,7 +465,10 @@
 	SSopposing_force.remove_opfor(src)
 	status = OPFOR_STATUS_NOT_SUBMITTED
 	can_edit = TRUE
-	for(var/datum/opposing_force_objective/opfor in objectives)
+
+	for(var/datum/opposing_force_selected_equipment/iterating_equipment as anything in selected_equipment)
+		iterating_equipment.status = OPFOR_EQUIPMENT_STATUS_NOT_REVIEWED
+	for(var/datum/opposing_force_objective/opfor as anything in objectives)
 		opfor.status = OPFOR_OBJECTIVE_STATUS_NOT_REVIEWED
 
 	add_log(user.ckey, "Withdrew application")
@@ -508,9 +557,8 @@
 	opposing_force_objective.title = sanitized_title
 	return TRUE
 
-
 /datum/opposing_force/proc/deny_objective(mob/user, datum/opposing_force_objective/opposing_force_objective, deny_reason)
-	opposing_force_objective.status = OPFOR_OBJECTIVE_STATUS_REJECTED
+	opposing_force_objective.status = OPFOR_OBJECTIVE_STATUS_DENIED
 	opposing_force_objective.denial_reason = deny_reason
 	add_log(user.ckey, "Denied objective([opposing_force_objective.title]) WITH REASON: [deny_reason]")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has rejected objective '[opposing_force_objective.title]' with the reason '[deny_reason]'")
@@ -545,7 +593,7 @@
 			return "Awaiting approval, [status], you are number [SSopposing_force.get_queue_position(src)] in the queue"
 		if(OPFOR_STATUS_APPROVED)
 			return "Approved, please check your objectives for specific approval"
-		if(OPFOR_STATUS_REJECTED)
+		if(OPFOR_STATUS_DENIED)
 			return "Rejected, do not attempt any of your objectives"
 		if(OPFOR_STATUS_CHANGES_REQUESTED)
 			return "Changes requested, please review your application"

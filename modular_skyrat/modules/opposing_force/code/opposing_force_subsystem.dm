@@ -114,7 +114,7 @@ SUBSYSTEM_DEF(opposing_force)
 		unsubmitted_applications += opposing_force
 
 	opposing_force.deny(denier, reason)
-	opposing_force.status = OPFOR_STATUS_REJECTED
+	opposing_force.status = OPFOR_STATUS_DENIED
 
 	broadcast_queue_change(opposing_force)
 
