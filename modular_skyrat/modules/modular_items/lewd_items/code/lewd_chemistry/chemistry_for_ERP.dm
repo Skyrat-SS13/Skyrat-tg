@@ -573,14 +573,14 @@
 		cock_path = new /obj/item/organ/genital/penis
 		cock_path.build_from_dna(exposed_mob.dna, "penis")
 		cock_path.Insert(exposed_mob, 0, FALSE)
-		var/obj/item/organ/genital/new_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
+		var/obj/item/organ/genital/penis/new_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
 		new_penis.genital_size = 4
-		exposed_mob.getorganslot(ORGAN_SLOT_PENIS).girth = 3
+		new_penis.girth = 3
 		new_penis.update_sprite_suffix()
 		exposed_mob.update_body()
 		to_chat(exposed_mob, span_purple("Your crotch feels warm as something suddenly sprouts between your legs."))
 	///Makes the balls bigger if they're small.
-	var/obj/item/organ/genital/penis/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 	if(mob_testicles)
 		if (mob_testicles.genital_size > 2)
 			return
