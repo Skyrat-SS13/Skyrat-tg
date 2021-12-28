@@ -359,17 +359,18 @@
 	add_log(user.ckey, "Removed equipment: [incoming_equipment.opposing_force_equipment.name]")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has removed equipment '[incoming_equipment.opposing_force_equipment.name]'")
 	selected_equipment -= incoming_equipment
-	qdel(selected_equipment)
+	qdel(incoming_equipment)
 
-/datum/opposing_force/proc/select_equipment(mob/user, datum/opposing_force_equipment/opposing_force_equipment, reason)
+/datum/opposing_force/proc/select_equipment(mob/user, datum/opposing_force_equipment/incoming_equipment, reason)
 	if(!can_edit)
 		return
 	if(LAZYLEN(selected_equipment) >= OPFOR_EQUIPMENT_LIMIT)
+		to_chat(user, span_warning("You have too many items, please remove one!"))
 		return
-	var/datum/opposing_force_selected_equipment/new_selected = new(opposing_force_equipment)
+	var/datum/opposing_force_selected_equipment/new_selected = new(incoming_equipment)
 	selected_equipment += new_selected
-	add_log(user.ckey, "Selected equipment: [opposing_force_equipment.name]")
-	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has selected equipment '[opposing_force_equipment.name]'")
+	add_log(user.ckey, "Selected equipment: [incoming_equipment.name]")
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has selected equipment '[incoming_equipment.name]'")
 
 /**
  * Control procs
@@ -461,7 +462,9 @@
 	var/choice = tgui_alert(user, "Are you sure you want withdraw your application?", "Confirm", list("Yes", "No"))
 	if(choice != "Yes")
 		return
-	SSopposing_force.remove_opfor(src)
+	if(status == OPFOR_STATUS_NOT_SUBMITTED)
+		return
+	SSopposing_force.unsubmit_opfor(src)
 	status = OPFOR_STATUS_NOT_SUBMITTED
 	can_edit = TRUE
 
