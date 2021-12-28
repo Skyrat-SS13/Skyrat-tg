@@ -2123,9 +2123,8 @@
 
 	///SKYRAT EDIT ADDITION BEGIN
 	// Face directions on combat mode. No procs, no typechecks, just a var for speed
-	var/mob/user_mob = usr
-	if(user_mob.face_mouse)
-		user_mob.face_atom(src)
+	if(user?.face_mouse)
+		user.face_atom(src)
 	///SKYRAT EDIT ADDITION END
 
 
