@@ -705,7 +705,7 @@
 
 /obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/helltaker/beeze
 	name = "designer demonic suit"
-	desc = "A fancy tail-coated suit, with a fluffy bow emblazoned on the chest, complete with a NT pin."
+	desc = "A fancy tail-coated suit with a fluffy bow emblazoned on the chest, complete with an NT pin."
 	icon_state = "beeze"
 	obj_flags = null
 	unique_reskin = null
