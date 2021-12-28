@@ -274,6 +274,7 @@
 			Ammunition not included."
 	cost = 1
 	item = /obj/item/ammo_box/magazine/m12g/empty
+	purchasable_from = ALL
 
 //SUITS
 
