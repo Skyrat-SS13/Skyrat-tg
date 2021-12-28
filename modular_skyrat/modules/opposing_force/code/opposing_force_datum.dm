@@ -5,8 +5,8 @@
 	var/reason = ""
 	/// What is the status of this item?
 	var/status = OPFOR_EQUIPMENT_STATUS_NOT_REVIEWED
-	/// If rejected, why?
-	var/rejected_reason = ""
+	/// If denied, why?
+	var/denied_reason = ""
 	/// How many does the user want?
 	var/count = 1
 
@@ -29,7 +29,7 @@
 	/// Was this specific objective approved by the admins?
 	var/status = OPFOR_OBJECTIVE_STATUS_NOT_REVIEWED
 	/// Why was this objective denied? If a reason was specified.
-	var/denial_reason = ""
+	var/denied_reason = ""
 	/// How intense is this goal?
 	var/intensity = 1
 	/// The text intensity of this goal
@@ -147,7 +147,7 @@
 			justification = opfor.justification,
 			approved = opfor.status == OPFOR_OBJECTIVE_STATUS_APPROVED ? TRUE : FALSE,
 			status_text = opfor.status,
-			denied_text = opfor.denial_reason,
+			denied_text = opfor.denied_reason,
 			)
 		objective_num++
 		data["objectives"] += list(objective_data)
@@ -282,8 +282,8 @@
 			if(!check_rights(R_ADMIN))
 				send_admins_opfor_message("Detected possible HREF exploit!")
 				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
-			var/denial_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
-			deny_objective(usr, edited_objective, denial_reason)
+			var/denied_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
+			deny_objective(usr, edited_objective, denied_reason)
 		if("approve_equipment")
 			var/datum/opposing_force_selected_equipment/equipment = locate(params["selected_equipment_ref"]) in selected_equipment
 			if(!equipment)
@@ -299,8 +299,8 @@
 			if(!check_rights(R_ADMIN))
 				send_admins_opfor_message("Detected possible HREF exploit!")
 				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
-			var/denial_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
-			deny_objective(usr, equipment, denial_reason)
+			var/denied_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
+			deny_objective(usr, equipment, denied_reason)
 
 /datum/opposing_force/proc/mute_request_updates(mob/user, override = "none")
 	if(override != "none")
@@ -331,16 +331,15 @@
  * Equipment procs
  */
 
-/datum/opposing_force/proc/deny_equipment(mob/user, datum/opposing_force_selected_equipment/incoming_equipment, denial_reason = "")
+/datum/opposing_force/proc/deny_equipment(mob/user, datum/opposing_force_selected_equipment/incoming_equipment, denied_reason = "")
 	incoming_equipment.status = OPFOR_EQUIPMENT_STATUS_DENIED
-	incoming_equipment.denial_reason = denial_reason
-	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has rejected equipment '[incoming_equipment.opposing_force_equipment.name]'[denial_reason ? " with the reason '[denial_reason]'" : ""]")
-	add_log(user.ckey, "Rejected equipment: [incoming_equipment.opposing_force_equipment.name] with reason: [denial_reason]")
+	incoming_equipment.denied_reason = denied_reason
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has denied equipment '[incoming_equipment.opposing_force_equipment.name]'[denied_reason ? " with the reason '[denied_reason]'" : ""]")
+	add_log(user.ckey, "Denied equipment: [incoming_equipment.opposing_force_equipment.name] with reason: [denied_reason]")
 
 /datum/opposing_force/proc/approve_equipment(mob/user, datum/opposing_force_selected_equipment/incoming_equipment)
 	incoming_equipment.status = OPFOR_EQUIPMENT_STATUS_APPROVED
-	incoming_equipment.approved = TRUE
-	opposing_force_objective.denial_reason = ""
+	incoming_equipment.denied_reason = ""
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has approved equipment '[incoming_equipment.opposing_force_equipment.name]'")
 	add_log(user.ckey, "Approved equipment: [incoming_equipment.opposing_force_equipment.name]")
 
@@ -559,9 +558,9 @@
 
 /datum/opposing_force/proc/deny_objective(mob/user, datum/opposing_force_objective/opposing_force_objective, deny_reason)
 	opposing_force_objective.status = OPFOR_OBJECTIVE_STATUS_DENIED
-	opposing_force_objective.denial_reason = deny_reason
+	opposing_force_objective.denied_reason = deny_reason
 	add_log(user.ckey, "Denied objective([opposing_force_objective.title]) WITH REASON: [deny_reason]")
-	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has rejected objective '[opposing_force_objective.title]' with the reason '[deny_reason]'")
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has denied objective '[opposing_force_objective.title]' with the reason '[deny_reason]'")
 
 /datum/opposing_force/proc/approve_objective(mob/user, datum/opposing_force_objective/opposing_force_objective)
 	opposing_force_objective.status = OPFOR_OBJECTIVE_STATUS_APPROVED
@@ -594,7 +593,7 @@
 		if(OPFOR_STATUS_APPROVED)
 			return "Approved, please check your objectives for specific approval"
 		if(OPFOR_STATUS_DENIED)
-			return "Rejected, do not attempt any of your objectives"
+			return "Denied, do not attempt any of your objectives"
 		if(OPFOR_STATUS_CHANGES_REQUESTED)
 			return "Changes requested, please review your application"
 		if(OPFOR_STATUS_NOT_SUBMITTED)
