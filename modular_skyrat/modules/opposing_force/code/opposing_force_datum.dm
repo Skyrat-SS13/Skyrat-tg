@@ -192,7 +192,7 @@
 	if(params["objective_ref"])
 		edited_objective = locate(params["objective_ref"]) in objectives
 		if(!edited_objective)
-			CRASH("Opposing_force passed a reference parameter to an objective that it could not locate!")
+			return
 
 	switch(action)
 		// General control
@@ -229,76 +229,66 @@
 				if(equipment)
 					break
 			if(!equipment)
-				CRASH("Opposing_force passed a reference parameter to an equipment that it could not locate!")
+				return
 			select_equipment(usr, equipment)
 		if("remove_equipment")
 			var/datum/opposing_force_selected_equipment/equipment = locate(params["selected_equipment_ref"]) in selected_equipment
 			if(!equipment)
-				CRASH("Opposing_force passed a reference parameter to an equipment that it could not locate!")
+				return
 			remove_equipment(usr, equipment)
 		if("set_equipment_reason")
 			var/datum/opposing_force_selected_equipment/equipment = locate(params["selected_equipment_ref"]) in selected_equipment
 			if(!equipment)
-				CRASH("Opposing_force passed a reference parameter to an equipment that it could not locate!")
+				return
 			set_equipment_reason(usr, equipment, params["new_equipment_reason"])
 
 		//Admin protected procs
 		if("approve")
 			if(!check_rights(R_ADMIN))
-				send_admins_opfor_message("Detected possible HREF exploit!")
-				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
+				return
 			SSopposing_force.approve(src, usr)
 		if("approve_all")
 			if(!check_rights(R_ADMIN))
-				send_admins_opfor_message("Detected possible HREF exploit!")
-				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
+				return
 			approve_all(usr)
 		if("issue_gear")
 			if(!check_rights(R_ADMIN))
-				send_admins_opfor_message("Detected possible HREF exploit!")
-				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
+				return
 			issue_gear(usr)
 		if("deny")
 			if(!check_rights(R_ADMIN))
-				send_admins_opfor_message("Detected possible HREF exploit!")
-				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
+				return
 			SSopposing_force.deny(src, params["denied_reason"], usr)
 		if("mute_request_updates")
 			if(!check_rights(R_ADMIN))
-				send_admins_opfor_message("Detected possible HREF exploit!")
-				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
+				return
 			mute_request_updates(usr)
 		if("toggle_block")
 			if(!check_rights(R_ADMIN))
-				send_admins_opfor_message("Detected possible HREF exploit!")
-				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
+				return
 			toggle_block(usr)
 		if("approve_objective")
 			if(!check_rights(R_ADMIN))
-				send_admins_opfor_message("Detected possible HREF exploit!")
-				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
+				return
 			approve_objective(usr, edited_objective)
 		if("deny_objective")
 			if(!check_rights(R_ADMIN))
-				send_admins_opfor_message("Detected possible HREF exploit!")
-				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
+				return
 			var/denied_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
 			deny_objective(usr, edited_objective, denied_reason)
 		if("approve_equipment")
 			var/datum/opposing_force_selected_equipment/equipment = locate(params["selected_equipment_ref"]) in selected_equipment
 			if(!equipment)
-				CRASH("Opposing_force passed a reference parameter to an equipment that it could not locate!")
+				return
 			if(!check_rights(R_ADMIN))
-				send_admins_opfor_message("Detected possible HREF exploit!")
-				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
+				return
 			approve_equipment(usr, equipment)
 		if("deny_equipment")
 			var/datum/opposing_force_selected_equipment/equipment = locate(params["selected_equipment_ref"]) in selected_equipment
 			if(!equipment)
-				CRASH("Opposing_force passed a reference parameter to an equipment that it could not locate!")
+				return
 			if(!check_rights(R_ADMIN))
-				send_admins_opfor_message("Detected possible HREF exploit!")
-				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
+				return
 			var/denied_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
 			deny_objective(usr, equipment, denied_reason)
 
@@ -347,7 +337,7 @@
 	if(!can_edit)
 		return
 	if(!incoming_equipment)
-		CRASH("[user] tried to update a non existent opfor equipment datum!")
+		CRASH("set_equipment_reason tried to update a non existent opfor equipment datum!")
 	var/sanitized_reason = STRIP_HTML_SIMPLE(new_reason, OPFOR_TEXT_LIMIT_DESCRIPTION)
 	add_log(user.ckey, "Updated equipment([incoming_equipment.opposing_force_equipment.name]) REASON from: [incoming_equipment.reason] to: [sanitized_reason]")
 	incoming_equipment.reason = sanitized_reason
@@ -493,7 +483,7 @@
 	if(!can_edit)
 		return
 	if(!opposing_force_objective)
-		CRASH("[user] tried to update a non existent opfor objective!")
+		CRASH("set_objective_intensity tried to update a non existent opfor objective!")
 	var/sanitized_intensity = sanitize_integer(new_intensity, 1, 500)
 	switch(sanitized_intensity)
 		if(0 to 100)
@@ -514,7 +504,7 @@
 	if(!can_edit)
 		return
 	if(!opposing_force_objective)
-		CRASH("[user] tried to update a non existent opfor objective!")
+		CRASH("set_objective_description tried to update a non existent opfor objective!")
 	var/sanitized_description = STRIP_HTML_SIMPLE(new_description, OPFOR_TEXT_LIMIT_DESCRIPTION)
 	add_log(user.ckey, "Updated objective([opposing_force_objective.title]) DESCRIPTION from: [opposing_force_objective.description] to: [sanitized_description]")
 	opposing_force_objective.description = sanitized_description
@@ -524,7 +514,7 @@
 	if(!can_edit)
 		return
 	if(!opposing_force_objective)
-		CRASH("[user] tried to update a non existent opfor objective!")
+		CRASH("set_objective_description tried to update a non existent opfor objective!")
 	var/sanitize_justification = STRIP_HTML_SIMPLE(new_justification, OPFOR_TEXT_LIMIT_JUSTIFICATION)
 	add_log(user.ckey, "Updated objective([opposing_force_objective.title]) JUSTIFICATION from: [opposing_force_objective.justification] to: [sanitize_justification]")
 	opposing_force_objective.justification = sanitize_justification
@@ -534,7 +524,7 @@
 	if(!can_edit)
 		return
 	if(!opposing_force_objective)
-		CRASH("[user] tried to remove a non existent opfor objective!")
+		CRASH("set_objective_description tried to remove a non existent opfor objective!")
 	objectives -= opposing_force_objective
 	add_log(user.ckey, "Removed an objective: [opposing_force_objective.title]")
 	qdel(opposing_force_objective)
@@ -545,6 +535,7 @@
 		return
 	if(LAZYLEN(objectives) >= OPFOR_MAX_OBJECTIVES)
 		to_chat(user, span_warning("You have too many objectives, please remove one!"))
+		return
 	objectives += new /datum/opposing_force_objective
 	add_log(user.ckey, "Added a new blank objective")
 	return TRUE
@@ -554,7 +545,7 @@
 		return
 	var/sanitized_title = STRIP_HTML_SIMPLE(new_title, OPFOR_TEXT_LIMIT_TITLE)
 	if(!opposing_force_objective)
-		CRASH("[user] tried to update a non existent opfor objective!")
+		CRASH("set_objective_description tried to update a non existent opfor objective!")
 	add_log(user.ckey, "Updated objective([opposing_force_objective.title]) TITLE from: [opposing_force_objective.title] to: [sanitized_title]")
 	opposing_force_objective.title = sanitized_title
 	return TRUE
