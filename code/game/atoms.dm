@@ -2123,7 +2123,7 @@
 
 	///SKYRAT EDIT ADDITION BEGIN
 	// Face directions on combat mode. No procs, no typechecks, just a var for speed
-	if(user.face_mouse)
+	if(user?.face_mouse)
 		user.face_atom(src)
 	///SKYRAT EDIT ADDITION END
 
