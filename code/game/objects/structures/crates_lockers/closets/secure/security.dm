@@ -116,33 +116,75 @@
 	..()
 	new /obj/item/storage/belt/security/full(src)
 
+// SKYRAT EDIT CHANGE -- GOOFSEC DEP GUARDS
 /obj/structure/closet/secure_closet/security/cargo
+	name = "\proper customs agent's locker"
+	req_access = list(ACCESS_SEC_DOORS, ACCESS_CARGO)
+	icon_state = "qm"
+	icon = 'icons/obj/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/cargo/PopulateContents()
-	..()
-	new /obj/item/clothing/accessory/armband/cargo(src)
-	new /obj/item/encryptionkey/headset_cargo(src)
+	new /obj/item/radio/headset/headset_cargo(src)
+	new /obj/item/clothing/shoes/sneakers/black(src)
+	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent(src)
+	new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
+	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent(src)
+	new /obj/item/restraints/handcuffs/cable/orange(src)
+	new /obj/item/assembly/flash/handheld(src)
+	new /obj/item/melee/baton/security/loaded/departmental/cargo(src)
+	new /obj/item/clothing/glasses/hud/security(src)
 
 /obj/structure/closet/secure_closet/security/engine
+	name = "\proper engineering guard's locker"
+	req_access = list(ACCESS_SEC_DOORS, ACCESS_ENGINE_EQUIP)
+	icon_state = "eng_secure"
+	icon = 'icons/obj/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/engine/PopulateContents()
-	..()
-	new /obj/item/clothing/accessory/armband/engine(src)
-	new /obj/item/encryptionkey/headset_eng(src)
+	new /obj/item/radio/headset/headset_eng(src)
+	new /obj/item/clothing/shoes/workboots(src)
+	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard(src)
+	new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
+	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard(src)
+	new /obj/item/restraints/handcuffs/cable/yellow(src)
+	new /obj/item/assembly/flash/handheld(src)
+	new /obj/item/melee/baton/security/loaded/departmental/engineering(src)
+	new /obj/item/clothing/glasses/hud/security(src)
 
 /obj/structure/closet/secure_closet/security/science
+	name = "\proper science guard's locker"
+	req_access = list(ACCESS_SEC_DOORS, ACCESS_RESEARCH)
+	icon_state = "science"
+	icon = 'icons/obj/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/science/PopulateContents()
-	..()
-	new /obj/item/clothing/accessory/armband/science(src)
-	new /obj/item/encryptionkey/headset_sci(src)
+	new /obj/item/radio/headset/headset_sci(src)
+	new /obj/item/clothing/shoes/sneakers/black(src)
+	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat(src)
+	new /obj/item/clothing/head/helmet/blueshirt/skyrat(src)
+	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat(src)
+	new /obj/item/restraints/handcuffs/cable/pink(src)
+	new /obj/item/assembly/flash/handheld(src)
+	new /obj/item/melee/baton/security/loaded/departmental/science(src)
+	new /obj/item/clothing/glasses/hud/security(src)
 
 /obj/structure/closet/secure_closet/security/med
+	name = "\proper orderly's locker"
+	req_access = list(ACCESS_SEC_DOORS, ACCESS_MEDICAL)
+	icon_state = "med_secure"
+	icon = 'icons/obj/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/med/PopulateContents()
-	..()
-	new /obj/item/clothing/accessory/armband/medblue(src)
-	new /obj/item/encryptionkey/headset_med(src)
+	new /obj/item/radio/headset/headset_med(src)
+	new /obj/item/clothing/shoes/sneakers/white(src)
+	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/orderly(src)
+	new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
+	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly(src)
+	new /obj/item/restraints/handcuffs/cable/blue(src)
+	new /obj/item/assembly/flash/handheld(src)
+	new /obj/item/melee/baton/security/loaded/departmental/medical(src)
+	new /obj/item/clothing/glasses/hud/security(src)
+// SKYRAT EDIT CHANGE END -- GOOFSEC DEP GUARDS
 
 /obj/structure/closet/secure_closet/detective
 	name = "\improper detective's cabinet"

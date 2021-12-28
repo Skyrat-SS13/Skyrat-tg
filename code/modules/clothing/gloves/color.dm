@@ -104,7 +104,23 @@
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = NONE
 	cut_type = /obj/item/clothing/gloves/fingerless
-
+	// SKYRAT EDIT ADDITION START
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Basic Gloves" = list(
+			RESKIN_ICON = 'icons/obj/clothing/gloves.dmi',
+			RESKIN_ICON_STATE = "black",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/hands.dmi',
+			RESKIN_WORN_ICON_STATE = "black"
+		),
+		"Peacekeeper Gloves" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi',
+			RESKIN_ICON_STATE = "peacekeeper_gloves",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi',
+			RESKIN_WORN_ICON_STATE = "peacekeeper"
+		)
+	)
+	// SKYRAT EDIT ADDITION END
 /obj/item/clothing/gloves/fingerless
 	name = "fingerless gloves"
 	desc = "Plain black gloves without fingertips for the hard working."
