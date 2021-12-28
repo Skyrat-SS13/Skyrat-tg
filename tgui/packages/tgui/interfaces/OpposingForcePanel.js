@@ -1,6 +1,6 @@
 import { round } from 'common/math';
 import { useBackend, useLocalState } from '../backend';
-import { Section, Stack, TextArea, Button, Tabs, Input, Slider, NoticeBox, LabeledList, Box } from '../components';
+import { Section, Stack, TextArea, Button, Tabs, Input, Slider, NoticeBox, LabeledList, Box, Collapsible } from '../components';
 import { Window } from '../layouts';
 
 export const OpposingForcePanel = (props, context) => {
@@ -396,12 +396,14 @@ export const AdminTab = (props, context) => {
         </Section>
       </Stack.Item>
       <Stack.Item>
-        <Section title="Backstory">
-          {backstory}
-        </Section>
+        <Collapsible title="Backstory">
+          <Section>
+            {backstory}
+          </Section>
+        </Collapsible>
       </Stack.Item>
       <Stack.Item>
-        <Section title="Objectives">
+        <Collapsible title="Objectives">
           {objectives.map((objective, index) => (
             <Section
               title={index + 1 + ". " + objective.title} key={objective.id}
@@ -445,7 +447,7 @@ export const AdminTab = (props, context) => {
               </LabeledList>
             </Section>
           ))}
-        </Section>
+        </Collapsible>
       </Stack.Item>
     </Stack>
   );
@@ -491,27 +493,42 @@ export const EquipmentTab = (props, context) => {
   return (
     <Stack vertical grow>
       <Stack.Item>
-        <Section title="Equipment" />
-        {equipment_list.map(equipment_category => (
-          <Section
-            title={equipment_category.category}
-            key={equipment_category.category}>
-            {equipment_category.items.map(item => (
-              <Section
-                title={item.name}
-                key={item.ref}>
-                <LabeledList>
-                  <LabeledList.Item label="Description">
-                    {item.description}
-                  </LabeledList.Item>
-                  <LabeledList.Item label="Item path">
-                    {item.item_path}
-                  </LabeledList.Item>
-                </LabeledList>
-              </Section>
+        <Section title="Selected Equipment" />
+
+        <Section title="Available Equipment" scrollable>
+          <Stack vertical fill>
+            {equipment_list.map(equipment_category => (
+              <Stack.Item key={equipment_category.category}>
+                <Collapsible
+                  title={equipment_category.category}
+                  key={equipment_category.category}>
+                  <Section>
+                    {equipment_category.items.map(item => (
+                      <Section
+                        title={item.name}
+                        key={item.ref}
+                        buttons={(
+                          <Button
+                            icon="check"
+                            color="good"
+                            content="Select"
+                            onClick={() => act('select_equipment', {
+                              equipment_ref: item.ref,
+                            })} />
+                        )}>
+                        <LabeledList>
+                          <LabeledList.Item label="Description">
+                            {item.description}
+                          </LabeledList.Item>
+                        </LabeledList>
+                      </Section>
+                    ))}
+                  </Section>
+                </Collapsible>
+              </Stack.Item>
             ))}
-          </Section>
-        ))}
+          </Stack>
+        </Section>
       </Stack.Item>
     </Stack>
   );

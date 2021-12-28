@@ -1,3 +1,24 @@
+/datum/opposing_force_selected_equipment
+	/// Reference to the selected equipment datum.
+	var/datum/opposing_force_equipment/opposing_force_equipment
+	/// Why does the user need this?
+	var/reason = ""
+	/// Has an admin approved the item?
+	var/approved = FALSE
+	/// If rejected, why?
+	var/rejected_reason = ""
+	/// How many does the user want?
+	var/count = 1
+
+/datum/opposing_force_selected_equipment/New(datum/opposing_force_equipment/opfor_equipment)
+	if(opfor_equipment)
+		opposing_force_equipment = opfor_equipment
+
+
+/datum/opposing_force_selected_equipment/Destroy(force, ...)
+	opposing_force_equipment = null
+	return ..()
+
 /datum/opposing_force_objective
 	/// The name of the objective
 	var/title = ""
@@ -39,6 +60,8 @@
 	var/list/admin_chat = list()
 	/// Have we issued the player their equipment?
 	var/equipment_issued = FALSE
+	/// A list of equipment that the user has requested.
+	var/list/selected_equipment = list()
 
 	COOLDOWN_DECLARE(static/request_update_cooldown)
 
@@ -138,12 +161,23 @@
 				name = opfor_equipment.name,
 				description = opfor_equipment.description,
 				equipment_category = opfor_equipment.category,
-				item_type = opfor_equipment.item_path,
 			))
 		data["equipment_list"] += list(list(
 			category = equipment_category,
 			items = category_items,
 		))
+
+	data["selected_equipment"] = list()
+	for(var/datum/opposing_force_selected_equipment/equipment as anything in selected_equipment)
+		var/list/equipment_data = list(
+			ref = REF(equipment),
+			name = equipment.opposing_force_equipment.name,
+			description = equipment.opposing_force_equipment.description,
+			item = equipment.opposing_force_equipment.item_type,
+			approved = equipment.approved,
+			denied_text = equipment.rejected_reason,
+			)
+		data["selected_equipment"] += list(equipment_data)
 
 	return data
 
@@ -156,11 +190,23 @@
 	if(params["objective_ref"])
 		edited_objective = locate(params["objective_ref"]) in objectives
 		if(!edited_objective)
-			CRASH("Opposing_force passed a reference parameter to a goal that it could not locate!")
+			CRASH("Opposing_force passed a reference parameter to an objective that it could not locate!")
 
 	switch(action)
+		// General control
 		if("set_backstory")
 			set_backstory(usr, params["backstory"])
+		if("request_update")
+			request_update(usr)
+		if("request_changes")
+			user_request_changes(usr)
+		if("close_application")
+			close_application(usr)
+		if("submit")
+			submit_to_subsystem(usr)
+		if("send_message")
+			send_message(usr, params["message"])
+		// Objective control
 		if("add_objective")
 			add_objective(usr)
 		if("remove_objective")
@@ -173,16 +219,22 @@
 			set_objective_justification(usr, edited_objective, params["new_justification"])
 		if("set_objective_intensity")
 			set_objective_intensity(usr, edited_objective, params["new_intensity_level"])
-		if("request_update")
-			request_update(usr)
-		if("request_changes")
-			user_request_changes(usr)
-		if("close_application")
-			close_application(usr)
-		if("submit")
-			submit_to_subsystem(usr)
-		if("send_message")
-			send_message(usr, params["message"])
+		// Equipment control
+		if("select_equipment")
+			var/datum/opposing_force_equipment/equipment = locate(params["equipment_ref"]) in SSopposing_force.equipment_list
+			if(!equipment)
+				CRASH("Opposing_force passed a reference parameter to an equipment that it could not locate!")
+			select_equipment(usr, equipment)
+		if("remove_equipment")
+			var/datum/opposing_force_selected_equipment/equipment = locate(params["selected_equipment_ref"]) in selected_equipment
+			if(!equipment)
+				CRASH("Opposing_force passed a reference parameter to an equipment that it could not locate!")
+			remove_equipment(usr, equipment)
+		if("set_equipment_reason")
+			var/datum/opposing_force_selected_equipment/equipment = locate(params["selected_equipment_ref"]) in selected_equipment
+			if(!equipment)
+				CRASH("Opposing_force passed a reference parameter to an equipment that it could not locate!")
+			set_equipment_reason(usr, equipment, params["new_equipment_reason"])
 
 		//Admin protected procs
 		if("approve")
@@ -211,6 +263,34 @@
 				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
 			var/denial_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
 			deny_objective(usr, edited_objective, denial_reason)
+
+/datum/opposing_force/proc/set_equipment_reason(mob/user, datum/opposing_force_selected_equipment/selected_equipment, new_reason)
+	if(!can_edit)
+		return
+	if(!selected_equipment)
+		CRASH("[user] tried to update a non existent opfor equipment datum!")
+	var/sanitized_reason = STRIP_HTML_SIMPLE(new_reason, OPFOR_TEXT_LIMIT_DESCRIPTION)
+	add_log(user.ckey, "Updated equipment([selected_equipment.opposing_force_equipment.name]) REASON from: [selected_equipment.reason] to: [sanitized_reason]")
+	selected_equipment.reason = sanitized_reason
+	return TRUE
+
+/datum/opposing_force/proc/remove_equipment(mob/user, datum/opposing_force_selected_equipment/selected_equipment)
+	if(!can_edit)
+		return
+	add_log(user.ckey, "Removed equipment: [selected_equipment.opposing_force_equipment.name]")
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has removed equipment '[selected_equipment.opposing_force_equipment.name]'")
+	selected_equipment -= selected_equipment
+	qdel(selected_equipment)
+
+/datum/opposing_force/proc/select_equipment(mob/user, datum/opposing_force_equipment/opposing_force_equipment, reason)
+	if(!can_edit)
+		return
+	if(LAZYLEN(selected_equipment) >= OPFOR_EQUIPMENT_LIMIT)
+		return
+	var/datum/opposing_force_selected_equipment/new_selected = new(opposing_force_equipment)
+	selected_equipment += new_selected
+	add_log(user.ckey, "Selected equipment: [opposing_force_equipment.name]")
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has selected equipment '[opposing_force_equipment.name]'")
 
 /datum/opposing_force/proc/send_message(mob/user, message)
 	message = STRIP_HTML_SIMPLE(message, OPFOR_TEXT_LIMIT_MESSAGE)
@@ -273,6 +353,7 @@
 /datum/opposing_force/proc/deny(mob/denier, reason = "N/A")
 	status = OPFOR_STATUS_REJECTED
 	can_edit = FALSE
+	denied_reason = reason
 
 	add_log(denier.ckey, "Denied application")
 	to_chat(mind_reference.current, examine_block(span_redtext("Your OPFOR application has been denied by [denier ? get_admin_ckey(denier) : "the OPFOR subsystem"]!")))

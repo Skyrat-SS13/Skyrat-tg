@@ -22,8 +22,6 @@ SUBSYSTEM_DEF(opposing_force)
 	return ..()
 
 /datum/controller/subsystem/opposing_force/Initialize(start_timeofday)
-	// We will need the OTHER category regardless of what happens, as this is where any uncategorised items will go
-	equipment_list[OPFOR_EQUIPMENT_CATEGORY_OTHER] = list()
 	for(var/datum/opposing_force_equipment/opfor_equipment as anything in subtypesof(/datum/opposing_force_equipment))
 		// Set up our categories so we can add items to them
 		if(initial(opfor_equipment.category))
@@ -32,18 +30,22 @@ SUBSYSTEM_DEF(opposing_force)
 				// We instansiate the category list so we can add items to it later
 				equipment_list[category] = list()
 		// These can be considered abstract types, thus do not need to be added.
-		if(isnull(initial(opfor_equipment.item_path)))
+		if(isnull(initial(opfor_equipment.item_type)))
 			continue
 		var/datum/opposing_force_equipment/spawned_opfor_equipment = new opfor_equipment()
 		// Datums without a name will assume the items name
-		spawned_opfor_equipment.name ||= initial(spawned_opfor_equipment.item_path.name)
+		spawned_opfor_equipment.name ||= initial(spawned_opfor_equipment.item_type.name)
 		// ditto for the description
-		spawned_opfor_equipment.description ||= initial(spawned_opfor_equipment.item_path.desc)
+		spawned_opfor_equipment.description ||= initial(spawned_opfor_equipment.item_type.desc)
 		// Now that we've set up our datum, we can add it to the correct category
 		if(spawned_opfor_equipment.category)
 			// We have a category, let's add it to the associated list
 			equipment_list[spawned_opfor_equipment.category] += spawned_opfor_equipment
 		else
+			// Because of how the UI system works, categories cannot exist with nothing in them, so we
+			// only set the OTHER category if something can go inside it!
+			if(!(OPFOR_EQUIPMENT_CATEGORY_OTHER in equipment_list))
+				equipment_list[OPFOR_EQUIPMENT_CATEGORY_OTHER] = list()
 			// We don't have home :( add us to the other category.
 			equipment_list[OPFOR_EQUIPMENT_CATEGORY_OTHER] += spawned_opfor_equipment
 	return ..()
