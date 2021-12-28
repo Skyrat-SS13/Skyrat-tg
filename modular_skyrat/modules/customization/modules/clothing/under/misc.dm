@@ -687,3 +687,25 @@
 	icon_state = "christmasfemaleg"
 
 
+/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/helltaker
+	name = "demonic suit"
+	desc = "Stylish enough to impress the devil."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "lucifer"
+	obj_flags = UNIQUE_RENAME
+	unique_reskin = list("Lucifer" = "lucifer",
+						"Justice" = "justice",
+						"Malina" = "malina",
+						"Pandemonica" = "pande",
+						"Modeus" = "modeus",
+						"Zdara" = "zdara",
+						"Cereberus" = "cereberus",
+						)
+
+/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/helltaker/beeze
+	name = "designer demonic suit"
+	desc = "A fancy tail-coated suit, with a fluffy bow emblazoned on the chest, complete with a NT pin."
+	icon_state = "beeze"
+	obj_flags = null
+	unique_reskin = null

@@ -907,3 +907,12 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/basil
 	name = "Basil Uniform"
 	item_path = /obj/item/clothing/under/costume/basil_boys
+
+/datum/loadout_item/under/formal/helltaker
+	name = "Demonic Suit"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/helltaker
+
+/datum/loadout_item/under/formal/helltakerbeeze
+	name = "Designer Demonic Suit"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/helltaker/beeze
+	restricted_roles = list(JOB_LAWYER)

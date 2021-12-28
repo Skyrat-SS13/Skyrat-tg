@@ -135,3 +135,9 @@
 		/obj/item/clothing/suit/det_suit/cowboyvest = 2,
 		/obj/item/taperoll/police = 1,
 	)
+
+/obj/machinery/vending/wardrobe/law_wardrobe
+	skyrat_products = list(
+		/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/helltaker = 3,
+		/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/helltaker/beeze = 2,
+	)
