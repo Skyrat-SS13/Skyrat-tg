@@ -360,7 +360,6 @@
 	if(!can_edit)
 		return
 	add_log(user.ckey, "Removed equipment: [incoming_equipment.opposing_force_equipment.name]")
-	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has removed equipment '[incoming_equipment.opposing_force_equipment.name]'")
 	selected_equipment -= incoming_equipment
 	qdel(incoming_equipment)
 
@@ -373,7 +372,6 @@
 	var/datum/opposing_force_selected_equipment/new_selected = new(incoming_equipment)
 	selected_equipment += new_selected
 	add_log(user.ckey, "Selected equipment: [incoming_equipment.name]")
-	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has selected equipment '[incoming_equipment.name]'")
 
 /**
  * Control procs
