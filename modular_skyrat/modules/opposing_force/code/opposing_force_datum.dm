@@ -5,6 +5,8 @@
 	var/reason = ""
 	/// Has an admin approved the item?
 	var/approved = FALSE
+	/// What is the status of this item?
+	var/status = "Not Reviewed"
 	/// If rejected, why?
 	var/rejected_reason = ""
 	/// How many does the user want?
@@ -174,8 +176,7 @@
 			name = equipment.opposing_force_equipment.name,
 			description = equipment.opposing_force_equipment.description,
 			item = equipment.opposing_force_equipment.item_type,
-			approved = equipment.approved,
-			denied_text = equipment.rejected_reason,
+			status = equipment.status,
 			)
 		data["selected_equipment"] += list(equipment_data)
 
@@ -221,7 +222,11 @@
 			set_objective_intensity(usr, edited_objective, params["new_intensity_level"])
 		// Equipment control
 		if("select_equipment")
-			var/datum/opposing_force_equipment/equipment = locate(params["equipment_ref"]) in SSopposing_force.equipment_list
+			var/datum/opposing_force_equipment/equipment
+			for(var/category in SSopposing_force.equipment_list)
+				equipment = locate(params["equipment_ref"]) in SSopposing_force.equipment_list[category]
+				if(equipment)
+					break
 			if(!equipment)
 				CRASH("Opposing_force passed a reference parameter to an equipment that it could not locate!")
 			select_equipment(usr, equipment)
@@ -263,23 +268,58 @@
 				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
 			var/denial_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
 			deny_objective(usr, edited_objective, denial_reason)
+		if("approve_equipment")
+			var/datum/opposing_force_selected_equipment/equipment = locate(params["selected_equipment_ref"]) in selected_equipment
+			if(!equipment)
+				CRASH("Opposing_force passed a reference parameter to an equipment that it could not locate!")
+			if(!check_rights(R_ADMIN))
+				send_admins_opfor_message("Detected possible HREF exploit!")
+				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
+			approve_equipment(usr, equipment)
+		if("deny_equipment")
+			var/datum/opposing_force_selected_equipment/equipment = locate(params["selected_equipment_ref"]) in selected_equipment
+			if(!equipment)
+				CRASH("Opposing_force passed a reference parameter to an equipment that it could not locate!")
+			if(!check_rights(R_ADMIN))
+				send_admins_opfor_message("Detected possible HREF exploit!")
+				CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
+			var/denial_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
+			deny_objective(usr, equipment, denial_reason)
 
-/datum/opposing_force/proc/set_equipment_reason(mob/user, datum/opposing_force_selected_equipment/selected_equipment, new_reason)
+
+/**
+ * Equipment procs
+ */
+
+/datum/opposing_force/proc/deny_equipment(mob/user, datum/opposing_force_selected_equipment/incoming_equipment, denial_reason)
+	incoming_equipment.rejected_reason = denial_reason
+	incoming_equipment.status = denial_reason ? "Denied - [denial_reason]" : "Denied"
+	incoming_equipment.approved = FALSE
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has rejected equipment '[incoming_equipment.opposing_force_equipment.name]'[denial_reason ? " with the reason '[denial_reason]'" : ""]")
+	add_log(user.ckey, "Rejected equipment: [incoming_equipment.opposing_force_equipment.name] with reason: [denial_reason]")
+
+/datum/opposing_force/proc/approve_equipment(mob/user, datum/opposing_force_selected_equipment/incoming_equipment)
+	incoming_equipment.status = "Approved"
+	incoming_equipment.approved = TRUE
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has approved equipment '[incoming_equipment.opposing_force_equipment.name]'")
+	add_log(user.ckey, "Approved equipment: [incoming_equipment.opposing_force_equipment.name]")
+
+/datum/opposing_force/proc/set_equipment_reason(mob/user, datum/opposing_force_selected_equipment/incoming_equipment, new_reason)
 	if(!can_edit)
 		return
-	if(!selected_equipment)
+	if(!incoming_equipment)
 		CRASH("[user] tried to update a non existent opfor equipment datum!")
 	var/sanitized_reason = STRIP_HTML_SIMPLE(new_reason, OPFOR_TEXT_LIMIT_DESCRIPTION)
-	add_log(user.ckey, "Updated equipment([selected_equipment.opposing_force_equipment.name]) REASON from: [selected_equipment.reason] to: [sanitized_reason]")
-	selected_equipment.reason = sanitized_reason
+	add_log(user.ckey, "Updated equipment([incoming_equipment.opposing_force_equipment.name]) REASON from: [incoming_equipment.reason] to: [sanitized_reason]")
+	incoming_equipment.reason = sanitized_reason
 	return TRUE
 
-/datum/opposing_force/proc/remove_equipment(mob/user, datum/opposing_force_selected_equipment/selected_equipment)
+/datum/opposing_force/proc/remove_equipment(mob/user, datum/opposing_force_selected_equipment/incoming_equipment)
 	if(!can_edit)
 		return
-	add_log(user.ckey, "Removed equipment: [selected_equipment.opposing_force_equipment.name]")
-	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has removed equipment '[selected_equipment.opposing_force_equipment.name]'")
-	selected_equipment -= selected_equipment
+	add_log(user.ckey, "Removed equipment: [incoming_equipment.opposing_force_equipment.name]")
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has removed equipment '[incoming_equipment.opposing_force_equipment.name]'")
+	selected_equipment -= incoming_equipment
 	qdel(selected_equipment)
 
 /datum/opposing_force/proc/select_equipment(mob/user, datum/opposing_force_equipment/opposing_force_equipment, reason)
@@ -292,109 +332,10 @@
 	add_log(user.ckey, "Selected equipment: [opposing_force_equipment.name]")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has selected equipment '[opposing_force_equipment.name]'")
 
-/datum/opposing_force/proc/send_message(mob/user, message)
-	message = STRIP_HTML_SIMPLE(message, OPFOR_TEXT_LIMIT_MESSAGE)
-	var/message_string
-	var/real_round_time = world.timeofday - SSticker.real_round_start_time
-	if(check_rights_for(user.client, R_ADMIN) && user != mind_reference)
-		message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] (ADMIN) [get_admin_ckey(user)]: " + message
-	else
-		message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] (USER) [user.ckey]: " + message
-	admin_chat += message_string
-	add_log(user.ckey, "Sent message: [message]")
 
-/datum/opposing_force/proc/send_system_message(message)
-	var/real_round_time = world.timeofday - SSticker.real_round_start_time
-	var/message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] SYSTEM: " + message
-	admin_chat += message_string
-
-/datum/opposing_force/proc/deny_objective(mob/user, datum/opposing_force_objective/opposing_force_objective, deny_reason)
-	opposing_force_objective.status = OPFOR_OBJECTIVE_STATUS_REJECTED
-	opposing_force_objective.denial_reason = deny_reason
-	add_log(user.ckey, "Denied objective([opposing_force_objective.title]) WITH REASON: [deny_reason]")
-	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has rejected objective '[opposing_force_objective.title]' with the reason '[deny_reason]'")
-
-/datum/opposing_force/proc/approve_objective(mob/user, datum/opposing_force_objective/opposing_force_objective)
-	opposing_force_objective.status = OPFOR_OBJECTIVE_STATUS_APPROVED
-	add_log(user.ckey, "Approved objective([opposing_force_objective.title])")
-	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has approved objective '[opposing_force_objective.title]'")
-
-/datum/opposing_force/proc/broadcast_queue_change()
-	var/queue_number = SSopposing_force.get_queue_position(src)
-	to_chat(mind_reference.current, examine_block(span_nicegreen("Your OPFOR application is now number [queue_number] in the queue.")))
-	send_system_message("Application is now number [queue_number] in the queue")
-
-/datum/opposing_force/proc/close_application(mob/user)
-	var/choice = tgui_alert(user, "Are you sure you want withdraw your application?", "Confirm", list("Yes", "No"))
-	if(choice != "Yes")
-		return
-	SSopposing_force.remove_opfor(src)
-	status = OPFOR_STATUS_NOT_SUBMITTED
-	can_edit = TRUE
-	for(var/datum/opposing_force_objective/opfor in objectives)
-		opfor.status = OPFOR_OBJECTIVE_STATUS_NOT_REVIEWED
-
-	add_log(user.ckey, "Withdrew application")
-	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has closed the application")
-
-/datum/opposing_force/proc/approve(mob/approver)
-	status = OPFOR_STATUS_APPROVED
-	can_edit = FALSE
-
-	add_log(approver.ckey, "Approved application")
-	to_chat(mind_reference.current, examine_block(span_greentext("Your OPFOR application has been approved by [approver ? get_admin_ckey(approver) : "the OPFOR subsystem"]!")))
-	send_system_message("[approver ? get_admin_ckey(approver) : "The OPFOR subsystem"] has approved the application")
-
-/datum/opposing_force/proc/get_admin_ckey(mob/user)
-	if(user.client?.holder?.fakekey)
-		return user.client.holder.fakekey
-	return user.ckey
-
-/datum/opposing_force/proc/deny(mob/denier, reason = "N/A")
-	status = OPFOR_STATUS_REJECTED
-	can_edit = FALSE
-	denied_reason = reason
-
-	add_log(denier.ckey, "Denied application")
-	to_chat(mind_reference.current, examine_block(span_redtext("Your OPFOR application has been denied by [denier ? get_admin_ckey(denier) : "the OPFOR subsystem"]!")))
-	send_system_message(get_admin_ckey(denier) + " has denied the application with the following reason: [reason]")
-
-/datum/opposing_force/proc/user_request_changes(mob/user)
-	if(status == OPFOR_STATUS_CHANGES_REQUESTED)
-		return
-	if(can_edit)
-		return
-	var/choice = tgui_alert(user, "Are you sure you want to request changes? This will unapprove all objectives.", "Confirm", list("Yes", "No"))
-	if(choice != "Yes")
-		return
-	if(status == OPFOR_STATUS_CHANGES_REQUESTED)
-		return
-	for(var/datum/opposing_force_objective/opfor in objectives)
-		opfor.status = OPFOR_OBJECTIVE_STATUS_NOT_REVIEWED
-	status = OPFOR_STATUS_CHANGES_REQUESTED
-	SSopposing_force.request_changes(src)
-	can_edit = TRUE
-
-	add_log(user.ckey, "Requested changes")
-	send_admins_opfor_message("CHANGES REQUESTED: [ADMIN_LOOKUPFLW(user)] has requested changes to their opposing force. Please review the opposing force and approve or deny the changes when submitted.")
-
-/datum/opposing_force/proc/get_status_string()
-	var/subsystem_status = SSopposing_force.check_availability()
-	if(subsystem_status != OPFOR_SUBSYSTEM_READY)
-		return subsystem_status
-	switch(status)
-		if(OPFOR_STATUS_AWAITING_APPROVAL)
-			return "Awaiting approval, [status], you are number [SSopposing_force.get_queue_position(src)] in the queue"
-		if(OPFOR_STATUS_APPROVED)
-			return "Approved, please check your objectives for specific approval"
-		if(OPFOR_STATUS_REJECTED)
-			return "Rejected, do not attempt any of your objectives"
-		if(OPFOR_STATUS_CHANGES_REQUESTED)
-			return "Changes requested, please review your application"
-		if(OPFOR_STATUS_NOT_SUBMITTED)
-			return OPFOR_STATUS_NOT_SUBMITTED
-		else
-			return "ERROR"
+/**
+ * Control procs
+ */
 
 /datum/opposing_force/proc/request_update(mob/user)
 	if(!COOLDOWN_FINISHED(src, request_update_cooldown))
@@ -433,6 +374,69 @@
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has submitted the application for review")
 	send_admins_opfor_message("SUBMISSION: [ADMIN_LOOKUPFLW(user)] has submitted their opposing force to the OPFOR subsystem. They are number [queue_position] in the queue.")
 	to_chat(usr, examine_block(span_greentext(("You have been added to the queue for the OPFOR subsystem. You are number <b>[queue_position]</b> in line."))))
+
+/datum/opposing_force/proc/user_request_changes(mob/user)
+	if(status == OPFOR_STATUS_CHANGES_REQUESTED)
+		return
+	if(can_edit)
+		return
+	var/choice = tgui_alert(user, "Are you sure you want to request changes? This will unapprove all objectives.", "Confirm", list("Yes", "No"))
+	if(choice != "Yes")
+		return
+	if(status == OPFOR_STATUS_CHANGES_REQUESTED)
+		return
+	for(var/datum/opposing_force_objective/opfor in objectives)
+		opfor.status = OPFOR_OBJECTIVE_STATUS_NOT_REVIEWED
+	status = OPFOR_STATUS_CHANGES_REQUESTED
+	SSopposing_force.request_changes(src)
+	can_edit = TRUE
+
+	add_log(user.ckey, "Requested changes")
+	send_admins_opfor_message("CHANGES REQUESTED: [ADMIN_LOOKUPFLW(user)] has requested changes to their opposing force. Please review the opposing force and approve or deny the changes when submitted.")
+
+/datum/opposing_force/proc/deny(mob/denier, reason = "N/A")
+	status = OPFOR_STATUS_REJECTED
+	can_edit = FALSE
+	denied_reason = reason
+
+	add_log(denier.ckey, "Denied application")
+	to_chat(mind_reference.current, examine_block(span_redtext("Your OPFOR application has been denied by [denier ? get_admin_ckey(denier) : "the OPFOR subsystem"]!")))
+	send_system_message(get_admin_ckey(denier) + " has denied the application with the following reason: [reason]")
+
+
+/datum/opposing_force/proc/approve(mob/approver)
+	status = OPFOR_STATUS_APPROVED
+	can_edit = FALSE
+
+	add_log(approver.ckey, "Approved application")
+	to_chat(mind_reference.current, examine_block(span_greentext("Your OPFOR application has been approved by [approver ? get_admin_ckey(approver) : "the OPFOR subsystem"]!")))
+	send_system_message("[approver ? get_admin_ckey(approver) : "The OPFOR subsystem"] has approved the application")
+
+/datum/opposing_force/proc/close_application(mob/user)
+	var/choice = tgui_alert(user, "Are you sure you want withdraw your application?", "Confirm", list("Yes", "No"))
+	if(choice != "Yes")
+		return
+	SSopposing_force.remove_opfor(src)
+	status = OPFOR_STATUS_NOT_SUBMITTED
+	can_edit = TRUE
+	for(var/datum/opposing_force_objective/opfor in objectives)
+		opfor.status = OPFOR_OBJECTIVE_STATUS_NOT_REVIEWED
+
+	add_log(user.ckey, "Withdrew application")
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has closed the application")
+
+/datum/opposing_force/proc/set_backstory(mob/user, incoming_backstory)
+	if(!can_edit)
+		return
+	var/sanitized_backstory = STRIP_HTML_SIMPLE(incoming_backstory, OPFOR_TEXT_LIMIT_BACKSTORY)
+	add_log(user.ckey, "Updated BACKSTORY from: [set_backstory] to: [sanitized_backstory]")
+	set_backstory = sanitized_backstory
+	return TRUE
+
+
+/**
+ * Objective procs
+ */
 
 /datum/opposing_force/proc/set_objective_intensity(mob/user, datum/opposing_force_objective/opposing_force_objective, new_intensity)
 	if(!can_edit)
@@ -504,13 +508,21 @@
 	opposing_force_objective.title = sanitized_title
 	return TRUE
 
-/datum/opposing_force/proc/set_backstory(mob/user, incoming_backstory)
-	if(!can_edit)
-		return
-	var/sanitized_backstory = STRIP_HTML_SIMPLE(incoming_backstory, OPFOR_TEXT_LIMIT_BACKSTORY)
-	add_log(user.ckey, "Updated BACKSTORY from: [set_backstory] to: [sanitized_backstory]")
-	set_backstory = sanitized_backstory
-	return TRUE
+
+/datum/opposing_force/proc/deny_objective(mob/user, datum/opposing_force_objective/opposing_force_objective, deny_reason)
+	opposing_force_objective.status = OPFOR_OBJECTIVE_STATUS_REJECTED
+	opposing_force_objective.denial_reason = deny_reason
+	add_log(user.ckey, "Denied objective([opposing_force_objective.title]) WITH REASON: [deny_reason]")
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has rejected objective '[opposing_force_objective.title]' with the reason '[deny_reason]'")
+
+/datum/opposing_force/proc/approve_objective(mob/user, datum/opposing_force_objective/opposing_force_objective)
+	opposing_force_objective.status = OPFOR_OBJECTIVE_STATUS_APPROVED
+	add_log(user.ckey, "Approved objective([opposing_force_objective.title])")
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has approved objective '[opposing_force_objective.title]'")
+
+/**
+ * System procs
+ */
 
 /datum/opposing_force/proc/add_log(ckey, new_log)
 	var/msg = "[ckey ? ckey : "SYSTEM"] - [new_log]"
@@ -524,21 +536,46 @@
 		html = message,
 		confidential = TRUE)
 
-/mob/verb/opposing_force()
-	set name = "Opposing Force"
-	set category = "OOC"
-	set desc = "View your opposing force panel, or request one."
-	// Mind checks
-	if(!mind)
-		var/fail_message = "You have no mind!"
-		if(isobserver(src))
-			fail_message += " You have to be in the current round at some point to have one."
-		to_chat(src, span_warning(fail_message))
-		return
+/datum/opposing_force/proc/get_status_string()
+	var/subsystem_status = SSopposing_force.check_availability()
+	if(subsystem_status != OPFOR_SUBSYSTEM_READY)
+		return subsystem_status
+	switch(status)
+		if(OPFOR_STATUS_AWAITING_APPROVAL)
+			return "Awaiting approval, [status], you are number [SSopposing_force.get_queue_position(src)] in the queue"
+		if(OPFOR_STATUS_APPROVED)
+			return "Approved, please check your objectives for specific approval"
+		if(OPFOR_STATUS_REJECTED)
+			return "Rejected, do not attempt any of your objectives"
+		if(OPFOR_STATUS_CHANGES_REQUESTED)
+			return "Changes requested, please review your application"
+		if(OPFOR_STATUS_NOT_SUBMITTED)
+			return OPFOR_STATUS_NOT_SUBMITTED
+		else
+			return "ERROR"
 
-	if(!mind.opposing_force)
-		var/datum/opposing_force/opposing_force = new(mind)
-		mind.opposing_force = opposing_force
-		SSopposing_force.new_opfor(opposing_force)
-	mind.opposing_force.ui_interact(usr)
+/datum/opposing_force/proc/get_admin_ckey(mob/user)
+	if(user.client?.holder?.fakekey)
+		return user.client.holder.fakekey
+	return user.ckey
 
+/datum/opposing_force/proc/broadcast_queue_change()
+	var/queue_number = SSopposing_force.get_queue_position(src)
+	to_chat(mind_reference.current, examine_block(span_nicegreen("Your OPFOR application is now number [queue_number] in the queue.")))
+	send_system_message("Application is now number [queue_number] in the queue")
+
+/datum/opposing_force/proc/send_message(mob/user, message)
+	message = STRIP_HTML_SIMPLE(message, OPFOR_TEXT_LIMIT_MESSAGE)
+	var/message_string
+	var/real_round_time = world.timeofday - SSticker.real_round_start_time
+	if(check_rights_for(user.client, R_ADMIN) && user != mind_reference)
+		message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] (ADMIN) [get_admin_ckey(user)]: " + message
+	else
+		message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] (USER) [user.ckey]: " + message
+	admin_chat += message_string
+	add_log(user.ckey, "Sent message: [message]")
+
+/datum/opposing_force/proc/send_system_message(message)
+	var/real_round_time = world.timeofday - SSticker.real_round_start_time
+	var/message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] SYSTEM: " + message
+	admin_chat += message_string

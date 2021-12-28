@@ -489,13 +489,47 @@ export const EquipmentTab = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     equipment_list = [],
+    selected_equipment = [],
+    can_edit,
   } = data;
   return (
     <Stack vertical grow>
       <Stack.Item>
-        <Section title="Selected Equipment" />
-
-        <Section title="Available Equipment" scrollable>
+        <Section
+          title="Selected Equipment">
+          <Collapsible>
+            <Stack vertical>
+              {selected_equipment.map(equipment => (
+                <Section
+                  title={equipment.name + " - " + equipment.status}
+                  key={equipment.ref}
+                  buttons={(
+                    <Button
+                      icon="times"
+                      color="bad"
+                      content="Remove"
+                      onClick={() => act('remove_equipment', {
+                        selected_equipment_ref: equipment.ref,
+                      })} />
+                  )}>
+                  <LabeledList>
+                    <LabeledList.Item label="Reason">
+                      <Input
+                        disabled={!can_edit}
+                        width="100%"
+                        placeholder="Reason for item"
+                        onChange={(e, value) => act('set_equipment_reason', {
+                          selected_equipment_ref: equipment.ref,
+                          new_equipment_reason: value,
+                        })} />
+                    </LabeledList.Item>
+                  </LabeledList>
+                </Section>
+              ))}
+            </Stack>
+          </Collapsible>
+        </Section>
+        <Section title="Available Equipment">
           <Stack vertical fill>
             {equipment_list.map(equipment_category => (
               <Stack.Item key={equipment_category.category}>
@@ -512,6 +546,7 @@ export const EquipmentTab = (props, context) => {
                             icon="check"
                             color="good"
                             content="Select"
+                            disabled={!can_edit}
                             onClick={() => act('select_equipment', {
                               equipment_ref: item.ref,
                             })} />
