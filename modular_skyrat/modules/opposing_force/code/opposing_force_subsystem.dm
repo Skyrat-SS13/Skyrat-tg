@@ -114,7 +114,6 @@ SUBSYSTEM_DEF(opposing_force)
 		unsubmitted_applications += opposing_force
 
 	opposing_force.deny(denier, reason)
-	opposing_force.status = OPFOR_STATUS_DENIED
 
 	broadcast_queue_change(opposing_force)
 
@@ -149,12 +148,13 @@ SUBSYSTEM_DEF(opposing_force)
 	broadcast_queue_change()
 
 /datum/controller/subsystem/opposing_force/proc/unsubmit_opfor(datum/opposing_force/opposing_force)
-	if(LAZYFIND(unsubmitted_applications, opposing_force))
-		unsubmitted_applications -= opposing_force
+	if(LAZYFIND(approved_applications, opposing_force))
+		approved_applications -= opposing_force
 	if(LAZYFIND(submitted_applications, opposing_force))
 		submitted_applications -= opposing_force
-	if(!LAZYFIND(approved_applications, opposing_force))
-		approved_applications += opposing_force
+	if(!LAZYFIND(unsubmitted_applications, opposing_force))
+		unsubmitted_applications += opposing_force
+
 
 	broadcast_queue_change()
 

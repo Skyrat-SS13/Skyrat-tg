@@ -14,7 +14,6 @@
 	if(opfor_equipment)
 		opposing_force_equipment = opfor_equipment
 
-
 /datum/opposing_force_selected_equipment/Destroy(force, ...)
 	opposing_force_equipment = null
 	return ..()
@@ -51,7 +50,7 @@
 	/// Can we edit things?
 	var/can_edit = TRUE
 	/// The reason we were denied.
-	var/denied_reason
+	var/denied_reason = ""
 	/// Any changes required
 	var/requested_changes
 	/// Have we been request update muted by an admin?
@@ -119,13 +118,17 @@
 
 	data["can_submit"] = SSopposing_force.accepting_objectives && (status == OPFOR_STATUS_NOT_SUBMITTED || status == OPFOR_STATUS_CHANGES_REQUESTED)
 
-	data["can_request_update"] = status == OPFOR_STATUS_AWAITING_APPROVAL && COOLDOWN_FINISHED(src, request_update_cooldown) ? TRUE : FALSE && !request_updates_muted
+	data["can_request_update"] = (status == OPFOR_STATUS_AWAITING_APPROVAL && COOLDOWN_FINISHED(src, request_update_cooldown))
 
 	data["request_updates_muted"] = request_updates_muted
+
+	data["blocked"] = blocked
 
 	data["can_edit"] = can_edit
 
 	data["approved"] = status == OPFOR_STATUS_APPROVED ? TRUE : FALSE
+
+	data["denied"] = status == OPFOR_STATUS_DENIED ? TRUE : FALSE
 
 	var/list/messages = list()
 	for(var/message in admin_chat)
@@ -138,16 +141,16 @@
 	var/objective_num = 1
 	for(var/datum/opposing_force_objective/opfor as anything in objectives)
 		var/list/objective_data = list(
-			id = objective_num,
-			ref = REF(opfor),
-			title = opfor.title,
-			description = opfor.description,
-			intensity = opfor.intensity,
-			text_intensity = opfor.text_intensity,
-			justification = opfor.justification,
-			approved = opfor.status == OPFOR_OBJECTIVE_STATUS_APPROVED ? TRUE : FALSE,
-			status_text = opfor.status,
-			denied_text = opfor.denied_reason,
+			"id" = objective_num,
+			"ref" = REF(opfor),
+			"title" = opfor.title,
+			"description" = opfor.description,
+			"intensity" = opfor.intensity,
+			"text_intensity" = opfor.text_intensity,
+			"justification" = opfor.justification,
+			"approved" = opfor.status == OPFOR_OBJECTIVE_STATUS_APPROVED ? TRUE : FALSE,
+			"status_text" = opfor.status,
+			"denied_text" = opfor.denied_reason,
 			)
 		objective_num++
 		data["objectives"] += list(objective_data)
@@ -159,25 +162,27 @@
 		var/category_items = list()
 		for(var/datum/opposing_force_equipment/opfor_equipment as anything in SSopposing_force.equipment_list[equipment_category])
 			category_items += list(list(
-				ref = REF(opfor_equipment),
-				name = opfor_equipment.name,
-				description = opfor_equipment.description,
-				equipment_category = opfor_equipment.category,
+				"ref" = REF(opfor_equipment),
+				"name" = opfor_equipment.name,
+				"description" = opfor_equipment.description,
+				"equipment_category" = opfor_equipment.category,
 			))
 		data["equipment_list"] += list(list(
-			category = equipment_category,
-			items = category_items,
+			"category" = equipment_category,
+			"items" = category_items,
 		))
 
 	data["selected_equipment"] = list()
 	for(var/datum/opposing_force_selected_equipment/equipment as anything in selected_equipment)
 		var/list/equipment_data = list(
-			ref = REF(equipment),
-			name = equipment.opposing_force_equipment.name,
-			description = equipment.opposing_force_equipment.description,
-			item = equipment.opposing_force_equipment.item_type,
-			status = equipment.status,
-			approved = equipment.status == OPFOR_EQUIPMENT_STATUS_APPROVED ? TRUE : FALSE,
+			"ref" = REF(equipment),
+			"name" = equipment.opposing_force_equipment.name,
+			"description" = equipment.opposing_force_equipment.description,
+			"item" = equipment.opposing_force_equipment.item_type,
+			"status" = equipment.status,
+			"approved" = equipment.status == OPFOR_EQUIPMENT_STATUS_APPROVED ? TRUE : FALSE,
+			"reason" = equipment.reason,
+			"denied_reason" = equipment.denied_reason,
 			)
 		data["selected_equipment"] += list(equipment_data)
 
@@ -258,7 +263,11 @@
 		if("deny")
 			if(!check_rights(R_ADMIN))
 				return
-			SSopposing_force.deny(src, params["denied_reason"], usr)
+			var/denied_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this application:")
+			// Checking to see if the user is spamming the button, async and all.
+			if(status == OPFOR_STATUS_DENIED)
+				return
+			SSopposing_force.deny(src, denied_reason, usr)
 		if("mute_request_updates")
 			if(!check_rights(R_ADMIN))
 				return
@@ -290,7 +299,7 @@
 			if(!check_rights(R_ADMIN))
 				return
 			var/denied_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
-			deny_objective(usr, equipment, denied_reason)
+			deny_equipment(usr, equipment, denied_reason)
 
 /datum/opposing_force/proc/mute_request_updates(mob/user, override = "none")
 	if(override != "none")
@@ -309,11 +318,11 @@
 	add_log(user.ckey, "Blocked user from opposing force requests.")
 
 /datum/opposing_force/proc/approve_all(mob/user)
-	for(var/datum/opposing_force_selected_equipment/iterating_equipment as anything in selected_equipment)
-		iterating_equipment.status = OPFOR_EQUIPMENT_STATUS_APPROVED
-	for(var/datum/opposing_force_objective/opfor as anything in objectives)
-		opfor.status = OPFOR_OBJECTIVE_STATUS_APPROVED
-	SSopposing_force.approve(src, user)
+	if(SSopposing_force.approve(src, user))
+		for(var/datum/opposing_force_selected_equipment/iterating_equipment as anything in selected_equipment)
+			iterating_equipment.status = OPFOR_EQUIPMENT_STATUS_APPROVED
+		for(var/datum/opposing_force_objective/opfor as anything in objectives)
+			opfor.status = OPFOR_OBJECTIVE_STATUS_APPROVED
 
 /datum/opposing_force/proc/issue_gear(mob/user)
 
@@ -322,12 +331,16 @@
  */
 
 /datum/opposing_force/proc/deny_equipment(mob/user, datum/opposing_force_selected_equipment/incoming_equipment, denied_reason = "")
+	if(incoming_equipment.status == OPFOR_EQUIPMENT_STATUS_DENIED)
+		return
 	incoming_equipment.status = OPFOR_EQUIPMENT_STATUS_DENIED
 	incoming_equipment.denied_reason = denied_reason
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has denied equipment '[incoming_equipment.opposing_force_equipment.name]'[denied_reason ? " with the reason '[denied_reason]'" : ""]")
 	add_log(user.ckey, "Denied equipment: [incoming_equipment.opposing_force_equipment.name] with reason: [denied_reason]")
 
 /datum/opposing_force/proc/approve_equipment(mob/user, datum/opposing_force_selected_equipment/incoming_equipment)
+	if(incoming_equipment.status == OPFOR_EQUIPMENT_STATUS_APPROVED)
+		return
 	incoming_equipment.status = OPFOR_EQUIPMENT_STATUS_APPROVED
 	incoming_equipment.denied_reason = ""
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has approved equipment '[incoming_equipment.opposing_force_equipment.name]'")
@@ -367,13 +380,10 @@
  */
 
 /datum/opposing_force/proc/request_update(mob/user)
-	if(!COOLDOWN_FINISHED(src, request_update_cooldown))
-		return
-
-	if(status != OPFOR_STATUS_AWAITING_APPROVAL)
-		return
-
 	if(request_updates_muted)
+		to_chat(user, span_warning("You are currently blocked from requesting updates!"))
+		return
+	if(status != OPFOR_STATUS_AWAITING_APPROVAL || !COOLDOWN_FINISHED(src, request_update_cooldown))
 		return
 
 	send_admins_opfor_message(span_command_headset("UPDATE REQUEST: [ADMIN_LOOKUPFLW(user)] has requested an update on their OPFOR application!"))
@@ -388,7 +398,8 @@
 
 /datum/opposing_force/proc/submit_to_subsystem(mob/user)
 	if(blocked)
-		return FALSE
+		to_chat(user, span_warning("You are currently blocked from submitting new requests!"))
+		return
 	if(status != OPFOR_STATUS_NOT_SUBMITTED && status != OPFOR_STATUS_CHANGES_REQUESTED)
 		return FALSE
 	// Subsystem checks, no point in bloating the system if it's not accepting more.
@@ -409,12 +420,10 @@
 /datum/opposing_force/proc/user_request_changes(mob/user)
 	if(status == OPFOR_STATUS_CHANGES_REQUESTED)
 		return
-	if(can_edit)
-		return
 	var/choice = tgui_alert(user, "Are you sure you want to request changes? This will unapprove all objectives.", "Confirm", list("Yes", "No"))
 	if(choice != "Yes")
 		return
-	if(status == OPFOR_STATUS_CHANGES_REQUESTED)
+	if(status == OPFOR_STATUS_CHANGES_REQUESTED) // The alert is not async, so this could change, thus being spammed.
 		return
 	for(var/datum/opposing_force_objective/opfor in objectives)
 		opfor.status = OPFOR_OBJECTIVE_STATUS_NOT_REVIEWED
@@ -423,9 +432,12 @@
 	can_edit = TRUE
 
 	add_log(user.ckey, "Requested changes")
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has requested to change the application")
 	send_admins_opfor_message("CHANGES REQUESTED: [ADMIN_LOOKUPFLW(user)] has requested changes to their opposing force. Please review the opposing force and approve or deny the changes when submitted.")
 
 /datum/opposing_force/proc/deny(mob/denier, reason = "")
+	if(status == OPFOR_STATUS_DENIED)
+		return
 	status = OPFOR_STATUS_DENIED
 	can_edit = FALSE
 	denied_reason = reason
@@ -441,6 +453,8 @@
 
 
 /datum/opposing_force/proc/approve(mob/approver)
+	if(status == OPFOR_STATUS_APPROVED)
+		return
 	status = OPFOR_STATUS_APPROVED
 	can_edit = FALSE
 
@@ -449,10 +463,12 @@
 	send_system_message("[approver ? get_admin_ckey(approver) : "The OPFOR subsystem"] has approved the application")
 
 /datum/opposing_force/proc/close_application(mob/user)
+	if(status == OPFOR_STATUS_NOT_SUBMITTED)
+		return
 	var/choice = tgui_alert(user, "Are you sure you want withdraw your application?", "Confirm", list("Yes", "No"))
 	if(choice != "Yes")
 		return
-	if(status == OPFOR_STATUS_NOT_SUBMITTED)
+	if(status == OPFOR_STATUS_NOT_SUBMITTED) // The alert is not async, so this could change, thus being spammed.
 		return
 	SSopposing_force.unsubmit_opfor(src)
 	status = OPFOR_STATUS_NOT_SUBMITTED
