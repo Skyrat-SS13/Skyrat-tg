@@ -64,4 +64,6 @@
 
 /obj/effect/landmark/start/barber
 	name = "Barber"
-	icon_state = "Bartender"
+	icon_state = "Barber"
+	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
+

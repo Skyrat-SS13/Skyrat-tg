@@ -1238,13 +1238,6 @@
 /obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/iron,
 /area/cargo/miningdock)
-"aig" = (
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/red/filled/line,
-/turf/open/floor/iron,
-/area/security/courtroom)
 "aih" = (
 /obj/machinery/door/firedoor,
 /obj/effect/spawner/structure/window,
@@ -9031,6 +9024,15 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/engineering/atmospherics_engine)
+"bvv" = (
+/obj/item/kirbyplants/random,
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/obj/structure/cable,
+/obj/machinery/light/directional/west,
+/turf/open/floor/wood,
+/area/service/lawoffice)
 "bvw" = (
 /obj/machinery/suit_storage_unit/captain,
 /turf/open/floor/wood,
@@ -9987,14 +9989,6 @@
 /obj/machinery/vending/engivend,
 /turf/open/floor/iron,
 /area/engineering/main)
-"bOZ" = (
-/obj/item/kirbyplants/random,
-/obj/structure/disposalpipe/segment{
-	dir = 5
-	},
-/obj/structure/cable,
-/turf/open/floor/wood,
-/area/service/lawoffice)
 "bPl" = (
 /obj/effect/turf_decal/trimline/purple/filled/line,
 /obj/structure/table,
@@ -15293,6 +15287,15 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/commons/lounge)
+"dQL" = (
+/obj/machinery/newscaster/security_unit/directional/north,
+/obj/effect/turf_decal/trimline/green/filled/line,
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 1
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron,
+/area/security/courtroom)
 "dQU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -24351,14 +24354,6 @@
 /obj/machinery/status_display/ai/directional/north,
 /turf/open/floor/iron/white,
 /area/science/research)
-"hdb" = (
-/obj/machinery/newscaster/security_unit/directional/north,
-/obj/effect/turf_decal/trimline/green/filled/line,
-/obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/security/courtroom)
 "hdc" = (
 /obj/effect/turf_decal/trimline/white/filled/line{
 	dir = 4
@@ -35946,6 +35941,11 @@
 /obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron,
 /area/security/processing)
+"lxt" = (
+/obj/machinery/firealarm/directional/south,
+/obj/machinery/light/directional/south,
+/turf/open/floor/wood,
+/area/service/lawoffice)
 "lxE" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -39593,6 +39593,14 @@
 	},
 /turf/open/floor/iron,
 /area/commons/lounge)
+"mVC" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/red/filled/line,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron,
+/area/security/courtroom)
 "mVN" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
@@ -51448,6 +51456,20 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
+"rvu" = (
+/obj/structure/chair{
+	dir = 4;
+	name = "Judge"
+	},
+/obj/machinery/airalarm/directional/west,
+/obj/machinery/camera{
+	c_tag = "Civilian - Courtroom";
+	dir = 10
+	},
+/obj/structure/cable,
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron,
+/area/security/courtroom)
 "rvz" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -61470,19 +61492,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/cargo/miningdock)
-"vcQ" = (
-/obj/structure/chair{
-	dir = 4;
-	name = "Judge"
-	},
-/obj/machinery/airalarm/directional/west,
-/obj/machinery/camera{
-	c_tag = "Civilian - Courtroom";
-	dir = 10
-	},
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/security/courtroom)
 "vcR" = (
 /obj/machinery/button/door/directional/west{
 	id = "restroom_6";
@@ -61539,10 +61548,6 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/secondary/command)
-"veo" = (
-/obj/machinery/firealarm/directional/south,
-/turf/open/floor/wood,
-/area/service/lawoffice)
 "vep" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line,
 /obj/machinery/light/directional/south,
@@ -162884,7 +162889,7 @@ ihH
 qLw
 izg
 szH
-vcQ
+rvu
 cCA
 nIu
 pXC
@@ -163651,7 +163656,7 @@ dhe
 dhe
 dhe
 aFF
-hdb
+dQL
 aVN
 akq
 ath
@@ -163659,10 +163664,10 @@ mAq
 ath
 aYq
 flq
-aig
+mVC
 aFF
 dmC
-bOZ
+bvv
 ohj
 aiZ
 aZQ
@@ -164692,7 +164697,7 @@ aFF
 wyW
 jLh
 uFG
-veo
+lxt
 pnI
 lDz
 pPX
