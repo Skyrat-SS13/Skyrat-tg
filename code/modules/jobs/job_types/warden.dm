@@ -37,8 +37,7 @@
 		/obj/item/storage/box/handcuffs = 10,
 		/obj/item/storage/box/teargas = 10,
 		/obj/item/storage/box/flashbangs = 10,
-		/obj/item/storage/box/rubbershot = 10,
-		/obj/item/storage/box/lethalshot = 5
+		/obj/item/storage/box/rubbershot = 10
 	)
 	rpg_title = "Jailor"
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
@@ -53,7 +52,6 @@
 	suit = /obj/item/clothing/suit/armor/vest/warden //SKYRAT EDIT CHANGE
 	suit_store = /obj/item/gun/energy/disabler
 	backpack_contents = list(
-		/obj/item/melee/baton/security/loaded = 1,
 		/obj/item/evidencebag = 1,
 		/obj/item/modular_computer/tablet/preset/advanced/security = 1,
 		)

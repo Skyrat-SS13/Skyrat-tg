@@ -61,7 +61,8 @@
 
 /obj/effect/landmark/start/expeditionary_corps
 	name = "Vanguard Operative"
-	icon_state = "Security Officer"
+	icon_state = "Vanguard Operative"
+	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
 
 /obj/item/pda/expeditionary_corps
 	greyscale_colors = "#891417#000099"
