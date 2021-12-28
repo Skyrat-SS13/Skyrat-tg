@@ -924,6 +924,7 @@
 	construction_time = 120
 	category = list("Cyborg Upgrade Modules")
 
+/*
 /datum/design/borg_upgrade_pinpointer
 	name = "Cyborg Upgrade (Crew pinpointer)"
 	id = "borg_upgrade_pinpointer"
@@ -932,6 +933,7 @@
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 500)
 	construction_time = 120
 	category = list("Cyborg Upgrade Modules")
+*/
 
 /datum/design/borg_upgrade_broomer
 	name = "Cyborg Upgrade (Experimental Push Broom)"
