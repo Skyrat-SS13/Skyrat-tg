@@ -258,12 +258,30 @@
 /obj/item/clothing/mask/gas/mime/ui_action_click(mob/user)
 	if(!istype(user) || user.incapacitated())
 		return
+	// SKYRAT ADDITION - More mask variations
+	var/list/options = list()
 
+	var/mob/living/carbon/human/human_user = user
+	var/list/avian_snouts = list("Beak", "Big Beak", "Corvid Beak")
+	if(human_user.dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME] in avian_snouts)
+		options["Blanc"] = "mime_b"
+		options["Triste"] = "sadmime_b"
+		options["Effrayé"] = "scaredmime_b"
+		options["Excité"] ="sexymime_b"
+
+	else
+		options["Blanc"] = "mime"
+		options["Triste"] = "sadmime"
+		options["Effrayé"] = "scaredmime"
+		options["Excité"] = "sexymime"
+	// SKYRAT ADDITION END
+	/*
 	var/list/options = list()
 	options["Blanc"] = "mime"
 	options["Triste"] = "sadmime"
 	options["Effrayé"] = "scaredmime"
-	options["Excité"] ="sexymime"
+	options["Excité"] = "sexymime"
+	*/
 
 	var/choice = show_radial_menu(user,src, mimemask_designs, custom_check = FALSE, radius = 36, require_near = TRUE)
 	if(!choice)
