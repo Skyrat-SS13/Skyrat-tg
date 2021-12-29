@@ -7,6 +7,10 @@
 	desc = "An ancient access card with the words \"Cutter's Pod\" printed on in big bold letters. It'll be a miracle if this still works."
 	trim = /datum/id_trim/away/old/eng
 
+/obj/item/card/id/away/tarkon
+	name = "Tarkon Visitor's Pass"
+	desc = "A dust-collected visitors pass, A small tagline reading \"Port Tarkon, The first step to Civilian Partnership in Space Homesteading\"."
+	trim = /datum/id_trim/away/old
 
 
 /* ----------------- Lore ----------------- */
@@ -141,6 +145,13 @@
 	name = "paper - 'Port Integrity Printout'"
 	info = "<B>*Warning, Integrity Compromised*</B><BR><BR>Automated Integrity Printout, If printout is inconsistent with results, Please recalibrate sensors.<br><ol><li><b>Aft Hallway:</b> Integrity Nominal.</li><li><b>Fore Hallway:</b> Integrity Compromised. Cause unknown.</li><li><b>Port Hallway:</b> Integrity Compromised, Breached into space.</li><li><b>Starboard Hallway:</b> Integrity Nominal.</li></ol><br> <b>Please inform any awake maintenance crew and standby for assistance.</b>"
 
+/obj/item/paper/fluff/ruins/tarkon/atmosincident
+	name = "paper - 'What in gods name did you do'"
+	info = "<b>WHAT IN THE FUCK DID YOU GUYS DO?</b><BR><BR>I go away on a material run with the miners, and the moment i re-entered the port, There's a loud bang and an air warning. <BR><BR><b>YOU WILL ALL GET YOUR ASSES TO THE STAFF HALL BEFORE ANY OF THIS GETS CLEANED UP.</b>"
+
+/obj/item/paper/crumpled/fluff/tarkon
+	name = "Crumpled note"
+	info = "Look, i dont know where the fuck that suit was found, but i have a hard time believing it was made by him entirely. I already know his less than ethical obtainment methods, But that piece of tech? Its a blasted shame he's just using it for hauling crates..."
 
 /* ----------------- Fluff/Decor ----------------- */
 /obj/structure/decorative/fluff/ai_node //Budding AI's way of interfacing with stuff it couldn't normally do so with. Needed to be placed by a willing human, before borgs were created. Used in any ruins regarding pre-bluespace, self-aware AIs
