@@ -365,7 +365,7 @@ export const OpposingForceObjectives = (props, context) => {
                 </Stack>
               </Stack.Item>
               <Stack.Item mt={2}>
-                <NoticeBox color={selectedObjective.status_text ? "good" : "bad"}>
+                <NoticeBox color={selectedObjective.approved ? "good" : "bad"}>
                   {selectedObjective.status_text === "Not Reviewed" ? (
                     "Objective Not Reviewed"
                   ) : (
