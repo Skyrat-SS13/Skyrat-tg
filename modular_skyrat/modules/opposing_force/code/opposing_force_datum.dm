@@ -63,6 +63,8 @@
 	var/list/selected_equipment = list()
 	/// Are we blocked from submitting a new request?
 	var/blocked = FALSE
+	/// What admin has this request been assigned to?
+	var/handling_admin = ""
 
 	COOLDOWN_DECLARE(static/request_update_cooldown)
 
@@ -129,6 +131,8 @@
 	data["approved"] = status == OPFOR_STATUS_APPROVED ? TRUE : FALSE
 
 	data["denied"] = status == OPFOR_STATUS_DENIED ? TRUE : FALSE
+
+	data["handling_admin"] = handling_admin
 
 	var/list/messages = list()
 	for(var/message in admin_chat)
@@ -205,8 +209,8 @@
 			set_backstory(usr, params["backstory"])
 		if("request_update")
 			request_update(usr)
-		if("request_changes")
-			user_request_changes(usr)
+		if("modify_request")
+			modify_request(usr)
 		if("close_application")
 			close_application(usr)
 		if("submit")
@@ -256,6 +260,8 @@
 			if(!check_rights(R_ADMIN))
 				return
 			approve_all(usr)
+		if("handle")
+			handle(usr)
 		if("issue_gear")
 			if(!check_rights(R_ADMIN))
 				return
@@ -300,6 +306,16 @@
 				return
 			var/denied_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
 			deny_equipment(usr, equipment, denied_reason)
+
+/datum/opposing_force/proc/handle(mob/user)
+	if(handling_admin)
+		var/choice = tgui_alert(user, "Another admin is currently handling this application, do you want to override them?", "Admin Handling", list("Yes", "No"))
+		if(choice == "No")
+			return
+	handling_admin = get_admin_ckey(user)
+	to_chat(mind_reference.current, examine_block(span_nicegreen("Your OPFOR application is now being handled by [handling_admin].")))
+	send_system_message("[handling_admin] has assigned themselves to this application")
+	add_log(user.ckey, "Assigned self to application")
 
 /datum/opposing_force/proc/mute_request_updates(mob/user, override = "none")
 	if(override != "none")
@@ -388,8 +404,8 @@
 	add_log(user.ckey, "Requested an update")
 
 	for(var/client/staff as anything in GLOB.admins)
-		if(staff.prefs.toggles & SOUND_ADMINHELP)
-			SEND_SOUND(staff, sound('sound/effects/hygienebot_happy.ogg'))
+		if(staff?.prefs?.toggles & SOUND_ADMINHELP)
+			SEND_SOUND(staff, sound('modular_skyrat/modules/opposing_force/sound/update_requested.ogg'))
 		window_flash(staff, ignorepref = TRUE)
 
 	COOLDOWN_START(src, request_update_cooldown, OPFOR_REQUEST_UPDATE_COOLDOWN)
@@ -403,19 +419,24 @@
 	// Subsystem checks, no point in bloating the system if it's not accepting more.
 	var/availability = SSopposing_force.check_availability()
 	if(availability != OPFOR_SUBSYSTEM_READY)
-		to_chat(usr, examine_block(span_warning("Error, the OPFOR subsystem rejected your request. Reason: <b>[availability]</b>")))
+		to_chat(usr, span_warning("Error, the OPFOR subsystem rejected your request. Reason: <b>[availability]</b>"))
 		return FALSE
 
 	var/queue_position = SSopposing_force.add_to_queue(src)
+
+	for(var/client/staff as anything in GLOB.admins)
+		if(staff?.prefs?.toggles & SOUND_ADMINHELP)
+			SEND_SOUND(staff, sound('modular_skyrat/modules/opposing_force/sound/application_recieved.ogg'))
+		window_flash(staff, ignorepref = TRUE)
 
 	status = OPFOR_STATUS_AWAITING_APPROVAL
 	can_edit = FALSE
 	add_log(user.ckey, "Submitted to the OPFOR subsystem")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has submitted the application for review")
-	send_admins_opfor_message("SUBMISSION: [ADMIN_LOOKUPFLW(user)] has submitted their opposing force to the OPFOR subsystem. They are number [queue_position] in the queue.")
-	to_chat(usr, examine_block(span_greentext(("You have been added to the queue for the OPFOR subsystem. You are number <b>[queue_position]</b> in line."))))
+	send_admins_opfor_message(span_command_headset("SUBMISSION: [ADMIN_LOOKUPFLW(user)] has submitted their opposing force to the OPFOR subsystem. They are number [queue_position] in the queue."))
+	to_chat(usr, examine_block(span_nicegreen(("You have been added to the queue for the OPFOR subsystem. You are number <b>[queue_position]</b> in line."))))
 
-/datum/opposing_force/proc/user_request_changes(mob/user)
+/datum/opposing_force/proc/modify_request(mob/user)
 	if(status == OPFOR_STATUS_CHANGES_REQUESTED)
 		return
 	var/choice = tgui_alert(user, "Are you sure you want to request changes? This will unapprove all objectives.", "Confirm", list("Yes", "No"))
@@ -426,12 +447,12 @@
 	for(var/datum/opposing_force_objective/opfor in objectives)
 		opfor.status = OPFOR_OBJECTIVE_STATUS_NOT_REVIEWED
 	status = OPFOR_STATUS_CHANGES_REQUESTED
-	SSopposing_force.request_changes(src)
+	SSopposing_force.modify_request(src)
 	can_edit = TRUE
 
-	add_log(user.ckey, "Requested changes")
-	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has requested to change the application")
-	send_admins_opfor_message("CHANGES REQUESTED: [ADMIN_LOOKUPFLW(user)] has requested changes to their opposing force. Please review the opposing force and approve or deny the changes when submitted.")
+	add_log(user.ckey, "Requested modifications")
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has requested modifications to the application")
+	send_admins_opfor_message("CHANGES REQUESTED: [ADMIN_LOOKUPFLW(user)] has submitted a modify request, their application has been reset.")
 
 /datum/opposing_force/proc/deny(mob/denier, reason = "")
 	if(status == OPFOR_STATUS_DENIED)
@@ -620,6 +641,8 @@
 	send_system_message("Application is now number [queue_number] in the queue")
 
 /datum/opposing_force/proc/send_message(mob/user, message)
+	if(!message)
+		return
 	message = STRIP_HTML_SIMPLE(message, OPFOR_TEXT_LIMIT_MESSAGE)
 	var/message_string
 	var/real_round_time = world.timeofday - SSticker.real_round_start_time
@@ -628,9 +651,63 @@
 	else
 		message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] (USER) [user.ckey]: " + message
 	admin_chat += message_string
+
+	// We support basic commands, see run_command for compatible commands, the operator is /
+	if(findtext(message, "/", 1, 2))
+		// We remove the command indentifier before we try running the command.
+		var/command = replacetext(message, "/", "", 1, 2)
+		run_command(user, command)
+
 	add_log(user.ckey, "Sent message: [message]")
+
 
 /datum/opposing_force/proc/send_system_message(message)
 	var/real_round_time = world.timeofday - SSticker.real_round_start_time
 	var/message_string = "[time2text(real_round_time, "hh:mm:ss", 0)] SYSTEM: " + message
 	admin_chat += message_string
+
+/datum/opposing_force/proc/run_command(mob/user, message)
+	var/list/params = splittext(message, " ")
+
+	var/command = params[1]
+
+	switch(command)
+		if("hello_world")
+			send_system_message("Hello World!")
+		if("item")
+			check_item(params[2])
+		if("help")
+			print_help()
+		else
+			send_system_message("Unknown command: [command]")
+
+/datum/opposing_force/proc/print_help()
+	send_system_message("Available commands:")
+	send_system_message("/hello_world - Hello World!")
+	send_system_message("/item 'item_name' - Check an items quick stats")
+	send_system_message("/help - Print this help")
+
+/**
+ * System commands
+ */
+/datum/opposing_force/proc/check_item(type)
+	var/obj/item/processed_item = text2path(type)
+	if(!processed_item)
+		send_system_message("Unknown type: [type]")
+		return
+	if(!ispath(processed_item, /obj/item))
+		send_system_message("Error: [processed_item] is not an item")
+		return
+
+	send_system_message("Here are the item specifications for [type]:")
+	send_system_message("Name: [initial(processed_item.name)]")
+	send_system_message("Description: [initial(processed_item.desc)]")
+	send_system_message("Weight class: [initial(processed_item.w_class)]")
+	send_system_message("Tool behaviour: [initial(processed_item.tool_behaviour)]")
+	send_system_message("Weak against armor: [initial(processed_item.weak_against_armour) ? "Yes" : "No"]")
+	send_system_message("Damage type: [initial(processed_item.damtype)]")
+	send_system_message("Wound bonus: [initial(processed_item.wound_bonus)]")
+	send_system_message("Bare wound bonus: [initial(processed_item.bare_wound_bonus)]")
+	send_system_message("Force: [initial(processed_item.force)]")
+
+/obj/item/knife

@@ -71,16 +71,18 @@ export const OpposingForceTab = (props, context) => {
     request_updates_muted,
     can_edit,
     backstory,
+    handling_admin,
   } = data;
   return (
     <Stack vertical grow>
       <Stack.Item>
-        <Section title="Control">
+        <Section title={handling_admin ? "Control - Handling Admin:" + handling_admin : "Control"}>
           <Stack>
             <Stack.Item>
               <Button
                 icon="check"
                 color="good"
+                tooltip="Submit your application for review."
                 disabled={!can_submit}
                 content="Submit Objectives"
                 onClick={() => act('submit')} />
@@ -89,7 +91,7 @@ export const OpposingForceTab = (props, context) => {
               <Button
                 icon="question"
                 color="orange"
-                tooltip="Make sure you have checked all of their objectives and equipment!"
+                tooltip="Request an update from the admins."
                 disabled={!can_request_update || request_updates_muted}
                 content="Ask For Update"
                 onClick={() => act('request_update')} />
@@ -98,14 +100,16 @@ export const OpposingForceTab = (props, context) => {
               <Button
                 icon="wrench"
                 color="blue"
+                tooltip="Modify your application, this will reset all authorisations."
                 disabled={can_edit}
-                content="Request Changes"
-                onClick={() => act('request_changes')} />
+                content="Modify Request"
+                onClick={() => act('modify_request')} />
             </Stack.Item>
             <Stack.Item>
               <Button
                 icon="trash"
                 color="bad"
+                tooltip="Remove your application from the queue."
                 disabled={status === "Not submitted"}
                 content="Withdraw Application"
                 onClick={() => act('close_application')} />
@@ -346,6 +350,128 @@ export const OpposingForceObjectives = (props, context) => {
   );
 };
 
+export const EquipmentTab = (props, context) => {
+  const { act, data } = useBackend(context);
+  const {
+    equipment_list = [],
+    selected_equipment = [],
+    can_edit,
+  } = data;
+  return (
+    <Stack vertical grow>
+      <Stack.Item>
+        <Section
+          title="Selected Equipment">
+          <Collapsible title="Selected Equipment">
+            {selected_equipment.length === 0 ? (
+              <Box color="bad">
+                No equipment selected.
+              </Box>
+            ) : (
+              selected_equipment.map(equipment => (
+                <Section
+                  title={equipment.name + " - " + equipment.status}
+                  key={equipment.ref}
+                  buttons={(
+                    <Button
+                      icon="times"
+                      color="bad"
+                      content="Remove"
+                      onClick={() => act('remove_equipment', {
+                        selected_equipment_ref: equipment.ref,
+                      })} />
+                  )}>
+                  <LabeledList>
+                    <LabeledList.Item label="Reason">
+                      <Input
+                        disabled={!can_edit}
+                        width="100%"
+                        placeholder="Reason for item"
+                        value={equipment.reason}
+                        onChange={(e, value) => act('set_equipment_reason', {
+                          selected_equipment_ref: equipment.ref,
+                          new_equipment_reason: value,
+                        })} />
+                    </LabeledList.Item>
+                  </LabeledList>
+                </Section>
+              )
+              ))}
+          </Collapsible>
+        </Section>
+        <Section title="Available Equipment">
+          <Stack vertical fill>
+            {equipment_list.map(equipment_category => (
+              <Stack.Item key={equipment_category.category}>
+                <Collapsible
+                  title={equipment_category.category}
+                  key={equipment_category.category}>
+                  <Section>
+                    {equipment_category.items.map(item => (
+                      <Section
+                        title={item.name}
+                        key={item.ref}
+                        buttons={(
+                          <Button
+                            icon="check"
+                            color="good"
+                            content="Select"
+                            disabled={!can_edit}
+                            onClick={() => act('select_equipment', {
+                              equipment_ref: item.ref,
+                            })} />
+                        )}>
+                        <LabeledList>
+                          <LabeledList.Item label="Description">
+                            {item.description}
+                          </LabeledList.Item>
+                        </LabeledList>
+                      </Section>
+                    ))}
+                  </Section>
+                </Collapsible>
+              </Stack.Item>
+            ))}
+          </Stack>
+        </Section>
+      </Stack.Item>
+    </Stack>
+  );
+};
+
+
+export const AdminChatTab = (props, context) => {
+  const { act, data } = useBackend(context);
+  const {
+    messages = [],
+  } = data;
+  return (
+    <Stack vertical fill>
+      <Stack.Item grow={10} >
+        <Section scrollable fill>
+          {messages.map(message => (
+            <Box
+              key={message.msg}>
+              {message.msg}
+            </Box>
+          ))}
+        </Section>
+      </Stack.Item>
+      <Stack.Item grow>
+        <Input
+          height="22px"
+          fluid
+          selfClear
+          placeholder="Send a message or command using '/'"
+          mt={1}
+          onEnter={(e, value) => act('send_message', {
+            message: value,
+          })} />
+      </Stack.Item>
+    </Stack>
+  );
+};
+
 export const AdminTab = (props, context) => {
   const { act, data } = useBackend(context);
   const {
@@ -367,6 +493,7 @@ export const AdminTab = (props, context) => {
               <Button
                 icon="check"
                 color="good"
+                tooltip="Approve the application, and any approved objectives."
                 disabled={approved}
                 content="Approve"
                 onClick={() => act('approve')} />
@@ -375,6 +502,7 @@ export const AdminTab = (props, context) => {
               <Button
                 icon="check-double"
                 color="orange"
+                tooltip="Approve all objectives and equipment as well as the application. Make sure you have reviewed the application and objectives first!"
                 disabled={approved}
                 content="Approve All"
                 onClick={() => act('approve_all')} />
@@ -384,6 +512,7 @@ export const AdminTab = (props, context) => {
                 icon="universal-access"
                 color="purple"
                 disabled={equipped}
+                tooltip="Issue the player with all approved equipment."
                 content="Issue Gear"
                 onClick={() => act('issue_gear')} />
             </Stack.Item>
@@ -400,15 +529,25 @@ export const AdminTab = (props, context) => {
                 <Button
                   icon="check-circle"
                   color="green"
+                  tooltip="Unblock the user from submitting applications."
                   content="Unblock User"
                   onClick={() => act('toggle_block')} />
               ) : (
                 <Button
                   icon="ban"
                   color="red"
+                  tooltip="Block the user from submitting applications."
                   content="Block User"
                   onClick={() => act('toggle_block')} />
               )}
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                icon="suitcase"
+                color="blue"
+                tooltip="Assign yourself as the handling admin."
+                content="Handle"
+                onClick={() => act('handle')} />
             </Stack.Item>
           </Stack>
           <Stack>
@@ -552,122 +691,3 @@ export const AdminTab = (props, context) => {
   );
 };
 
-export const AdminChatTab = (props, context) => {
-  const { act, data } = useBackend(context);
-  const {
-    messages = [],
-  } = data;
-  return (
-    <Stack vertical fill>
-      <Stack.Item grow={10} >
-        <Section scrollable fill>
-          {messages.map(message => (
-            <Box
-              key={message.msg}>
-              {message.msg}
-            </Box>
-          ))}
-        </Section>
-      </Stack.Item>
-      <Stack.Item grow>
-        <Input
-          height="22px"
-          fluid
-          selfClear
-          placeholder="Send a message..."
-          mt={1}
-          onEnter={(e, value) => act('send_message', {
-            message: value,
-          })} />
-      </Stack.Item>
-    </Stack>
-  );
-};
-
-export const EquipmentTab = (props, context) => {
-  const { act, data } = useBackend(context);
-  const {
-    equipment_list = [],
-    selected_equipment = [],
-    can_edit,
-  } = data;
-  return (
-    <Stack vertical grow>
-      <Stack.Item>
-        <Section
-          title="Selected Equipment">
-          <Collapsible title="Selected Equipment">
-            {selected_equipment.length === 0 ? (
-              <Box color="bad">
-                No equipment selected.
-              </Box>
-            ) : (
-              selected_equipment.map(equipment => (
-                <Section
-                  title={equipment.name + " - " + equipment.status}
-                  key={equipment.ref}
-                  buttons={(
-                    <Button
-                      icon="times"
-                      color="bad"
-                      content="Remove"
-                      onClick={() => act('remove_equipment', {
-                        selected_equipment_ref: equipment.ref,
-                      })} />
-                  )}>
-                  <LabeledList>
-                    <LabeledList.Item label="Reason">
-                      <Input
-                        disabled={!can_edit}
-                        width="100%"
-                        placeholder="Reason for item"
-                        onChange={(e, value) => act('set_equipment_reason', {
-                          selected_equipment_ref: equipment.ref,
-                          new_equipment_reason: value,
-                        })} />
-                    </LabeledList.Item>
-                  </LabeledList>
-                </Section>
-              )
-              ))}
-          </Collapsible>
-        </Section>
-        <Section title="Available Equipment">
-          <Stack vertical fill>
-            {equipment_list.map(equipment_category => (
-              <Stack.Item key={equipment_category.category}>
-                <Collapsible
-                  title={equipment_category.category}
-                  key={equipment_category.category}>
-                  <Section>
-                    {equipment_category.items.map(item => (
-                      <Section
-                        title={item.name}
-                        key={item.ref}
-                        buttons={(
-                          <Button
-                            icon="check"
-                            color="good"
-                            content="Select"
-                            disabled={!can_edit}
-                            onClick={() => act('select_equipment', {
-                              equipment_ref: item.ref,
-                            })} />
-                        )}>
-                        <LabeledList>
-                          <LabeledList.Item label="Description">
-                            {item.description}
-                          </LabeledList.Item>
-                        </LabeledList>
-                      </Section>
-                    ))}
-                  </Section>
-                </Collapsible>
-              </Stack.Item>
-            ))}
-          </Stack>
-        </Section>
-      </Stack.Item>
-    </Stack>
-  );
-};

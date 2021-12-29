@@ -86,12 +86,16 @@ SUBSYSTEM_DEF(opposing_force)
 		message_admins("Oppoding_force_subsystem: [ADMIN_LOOKUPFLW(approver)] attempted to approve an OPFOR application but was not an admin!")
 		CRASH("Opposing_force_subsystem: Attempted to deny an opposing force but the approver was not an admin!")
 
-	if(!(opposing_force in submitted_applications))
-		to_chat(approver, span_warning("Opposing_force_subsystem: Attempted to approve an opposing force but it was not in the queue!"))
-		return FALSE
+	if(!LAZYFIND(unsubmitted_applications, opposing_force))
+		unsubmitted_applications -= opposing_force
+
+	if(LAZYFIND(submitted_applications, opposing_force))
+		submitted_applications -= opposing_force
+
+	if(LAZYFIND(approved_applications, opposing_force))
+		return
 
 	approved_applications += opposing_force
-	submitted_applications -= opposing_force
 
 	opposing_force.approve(approver)
 
@@ -119,7 +123,7 @@ SUBSYSTEM_DEF(opposing_force)
 
 	return TRUE
 
-/datum/controller/subsystem/opposing_force/proc/request_changes(datum/opposing_force/opposing_force, changes)
+/datum/controller/subsystem/opposing_force/proc/modify_request(datum/opposing_force/opposing_force, changes)
 	if(LAZYFIND(submitted_applications, opposing_force))
 		submitted_applications -= opposing_force
 
