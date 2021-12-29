@@ -406,7 +406,7 @@ export const EquipmentTab = (props, context) => {
                           })} />
                       </>
                     )}
-                    label={equipment.name + " - " + equipment.status} />
+                    label={equipment.name + " - " + equipment.status + equipment.denied_reason ? ": " + equipment.denied_reason : ""} />
                 </LabeledList>
                 <Input
                   mt={1}
@@ -681,7 +681,7 @@ export const AdminTab = (props, context) => {
                       <Button
                         icon="check"
                         color="good"
-                        disabled={equipment.approved && equipment.staus !== "Not Reviewed"}
+                        disabled={equipment.approved && equipment.status !== "Not Reviewed"}
                         content="Approve Equipment"
                         onClick={() => act('approve_equipment', {
                           selected_equipment_ref: equipment.ref,
@@ -689,7 +689,7 @@ export const AdminTab = (props, context) => {
                       <Button
                         icon="times"
                         color="bad"
-                        disabled={!equipment.approved && equipment.staus !== "Not Reviewed"}
+                        disabled={!equipment.approved && equipment.status !== "Not Reviewed"}
                         content="Deny Equipment"
                         onClick={() => act('deny_equipment', {
                           selected_equipment_ref: equipment.ref,
@@ -704,7 +704,7 @@ export const AdminTab = (props, context) => {
                       {equipment.reason}
                     </LabeledList.Item>
                     <LabeledList.Item label="Status">
-                      {equipment.status}
+                      {equipment.status + equipment.denied_reason ? ": " + equipment.denied_reason : ""}
                     </LabeledList.Item>
                     <LabeledList.Item label="Amount">
                       {equipment.count}
