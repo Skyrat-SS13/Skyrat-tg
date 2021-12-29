@@ -347,8 +347,6 @@
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] blocked you from submitting new requests")
 	add_log(user.ckey, "Blocked user from opposing force requests.")
 
-
-
 /**
  * Equipment procs
  */
@@ -397,9 +395,7 @@
 	add_log(user.ckey, "Selected equipment: [incoming_equipment.name]")
 
 /datum/opposing_force/proc/issue_gear(mob/user)
-	if(!selected_equipment.len)
-		return
-	if(!isliving(user))
+	if(!selected_equipment.len || !isliving(user) || status == OPFOR_STATUS_APPROVED || equipment_issued)
 		return
 	var/obj/item/storage/box/spawned_box = new(get_turf(user))
 	for(var/datum/opposing_force_selected_equipment/iterating_equipment as anything in selected_equipment)
@@ -410,6 +406,10 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/human = user
 		human.put_in_hands(spawned_box)
+
+	add_log(user.ckey, "Issued gear")
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has issued all approved equipment")
+	equipment_issued = TRUE
 
 /**
  * Control procs
@@ -707,15 +707,21 @@
 		if("item")
 			check_item(params[2])
 		if("help")
-			print_help()
+			print_help(user)
+		if("unlock_equipment")
+			unlock_equipment(user) // Admin only proc
 		else
 			send_system_message("Unknown command: [command]")
 
-/datum/opposing_force/proc/print_help()
+/datum/opposing_force/proc/print_help(mob/user)
 	send_system_message("Available commands:")
 	send_system_message("/hello_world - Hello World!")
 	send_system_message("/item 'item_name' - Check an items quick stats")
 	send_system_message("/help - Print this help")
+	// Admin commands.
+	if(check_rights_for(user.client, R_ADMIN))
+		send_system_message("Admin commands:")
+		send_system_message("/unlock_equipment - Unlock all equipment, useful if you need to give the user more stuff.")
 
 /**
  * System commands
@@ -740,4 +746,12 @@
 	send_system_message("Bare wound bonus: [initial(processed_item.bare_wound_bonus)]")
 	send_system_message("Force: [initial(processed_item.force)]")
 
-/obj/item/knife
+/datum/opposing_force/proc/unlock_equipment(mob/user)
+	if(!check_rights_for(user.client, R_ADMIN))
+		send_system_message("ERROR: You do not have permission to do that.")
+		return
+	if(!equipment_issued)
+		send_system_message("ERROR: Equipment not yet issued.")
+		return
+	equipment_issued = TRUE
+	send_system_message("Equipment unlocked.")

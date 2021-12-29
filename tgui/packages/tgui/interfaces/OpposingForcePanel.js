@@ -537,7 +537,7 @@ export const AdminTab = (props, context) => {
               <Button
                 icon="universal-access"
                 color="purple"
-                disabled={equipment_issued}
+                disabled={!approved || equipment_issued}
                 tooltip="Issue the player with all approved equipment."
                 content="Issue Gear"
                 onClick={() => act('issue_gear')} />
