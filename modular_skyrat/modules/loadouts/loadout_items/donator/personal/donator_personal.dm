@@ -1,9 +1,9 @@
-/datum/loadout_item/pocket_items/miafoxplush
+/datum/loadout_item/toys/miafoxplush
 	name = "Mia’s fox plushie"
 	item_path = /obj/item/toy/plush/fox/mia
 	ckeywhitelist = list("fuzlet")
 
-/datum/loadout_item/pocket_items/teasefoxplush
+/datum/loadout_item/toys/teasefoxplush
 	name = "Teasable fox plushie"
 	item_path = /obj/item/toy/plush/fox/kailyn
 	ckeywhitelist = list("ratraus")
@@ -215,7 +215,7 @@
 	item_path = /obj/item/clothing/mask/hheart
 	ckeywhitelist = list("inferno707")
 
-/datum/loadout_item/pocket_items/darksabre
+/datum/loadout_item/toys/darksabre
 	name = "Dark Sabre"
 	item_path = /obj/item/toy/darksabre
 	ckeywhitelist = list("inferno707")
@@ -345,7 +345,7 @@
 	item_path = /obj/item/storage/belt/fannypack/occult
 	ckeywhitelist = list("gamerguy14948")
 
-/datum/loadout_item/pocket_items/voodooplush
+/datum/loadout_item/toys/voodooplush
 	name = "Voodoo Doll"
 	item_path = /obj/item/toy/plush/donator/voodoo
 	ckeywhitelist = list("gamerguy14948")

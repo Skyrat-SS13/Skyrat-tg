@@ -404,7 +404,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				return
 			calling_911(usr, "EMTs", EMERGENCY_RESPONSE_EMT)
 		if("callThePizza")
-			if(obj_flags & EMAGGED)
+			if(!(obj_flags & EMAGGED))
 				return
 			if(!pre_911_check(usr))
 				return
