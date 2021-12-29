@@ -30,6 +30,7 @@
 		if(!do_after(user, crank_speed, src))
 			return
 		give(crank_amount)
+		playsound(src, 'modular_skyrat/modules/new_cells/sound/crank.ogg', 25, FALSE)
 
 /obj/item/stock_parts/cell/self_charge
 	name = "charging cell"
