@@ -755,3 +755,28 @@
 		return
 	equipment_issued = TRUE
 	send_system_message("Equipment unlocked.")
+
+/datum/opposing_force/proc/roundend_report()
+	var/list/report = list()
+	report += span_greentext(mind_reference.current.name)
+	report += "<b>Had an approved OPFOR appliation with the following objectives:</b>"
+	for(var/datum/opposing_force_objective/opfor_objective in objectives)
+		if(!opfor_objective.status != OPFOR_STATUS_APPROVED)
+			continue
+		report += span_green(opfor_objective.title)
+		report += opfor_objective.description
+		report += opfor_objective.justification
+		report += "<br>"
+
+	report += "<b>And had the following approved equipment:</b>"
+
+	if(selected_equipment.len)
+		for(var/datum/opposing_force_selected_equipment/opfor_equipment in selected_equipment)
+			if(opfor_equipment.status != OPFOR_STATUS_APPROVED)
+				continue
+			report += span_green(opfor_equipment.opposing_force_equipment.name)
+			report += opfor_equipment.opposing_force_equipment.description
+			report += opfor_equipment.reason
+			report += "<br>"
+
+	return report.Join("\n")

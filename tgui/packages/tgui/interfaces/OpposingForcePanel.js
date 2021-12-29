@@ -406,7 +406,14 @@ export const EquipmentTab = (props, context) => {
                           })} />
                       </>
                     )}
-                    label={equipment.name + " - " + equipment.status + equipment.denied_reason ? ": " + equipment.denied_reason : ""} />
+                    label={equipment.name} />
+                  <LabeledList.Item label="Status">
+                    {equipment.denied_reason ? (
+                      equipment.status + " - Reason: " + equipment.denied_reason
+                    ) : (
+                      equipment.status
+                    )}
+                  </LabeledList.Item>
                 </LabeledList>
                 <Input
                   mt={1}
@@ -704,7 +711,11 @@ export const AdminTab = (props, context) => {
                       {equipment.reason}
                     </LabeledList.Item>
                     <LabeledList.Item label="Status">
-                      {equipment.status + equipment.denied_reason ? ": " + equipment.denied_reason : ""}
+                      {equipment.denied_reason ? (
+                        equipment.status + " - Reason: " + equipment.denied_reason
+                      ) : (
+                        equipment.status
+                      )}
                     </LabeledList.Item>
                     <LabeledList.Item label="Amount">
                       {equipment.count}
