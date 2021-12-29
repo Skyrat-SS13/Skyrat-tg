@@ -492,7 +492,6 @@
 				/obj/item/ammo_box/c9mm = 2,
 				/obj/item/ammo_box/c45 = 3,
 				/obj/item/ammo_box/magazine/wt550m9 = 1,
-				/obj/item/storage/box/lethalshot = 2,
 				/obj/item/knife/combat = 2,
 				/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 15,
 				/obj/item/clothing/head/helmet/riot = 5,
