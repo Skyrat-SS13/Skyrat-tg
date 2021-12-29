@@ -273,9 +273,14 @@
 		// SKYRAT ADDITION - More mask variations
 		var/mob/living/carbon/human/human_user = user
 		var/list/avian_snouts = list("Beak", "Big Beak", "Corvid Beak")
-		if(human_user.dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME] in avian_snouts)
-			icon_state = "[options[choice]]_b"
+		if(human_user.dna.species.mutant_bodyparts["snout"])
+			icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
+			worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask_muzzled.dmi'
+			if(human_user.dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME] in avian_snouts)
+				icon_state = "[options[choice]]_b"
 		else
+			icon = 'icons/obj/clothing/masks.dmi'
+			worn_icon = 'icons/mob/clothing/mask.dmi'
 			icon_state = options[choice]
 		/* SKYRAT ADDITION END
 		icon_state = options[choice]
