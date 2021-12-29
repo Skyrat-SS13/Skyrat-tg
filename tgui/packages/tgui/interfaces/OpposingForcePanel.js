@@ -20,48 +20,67 @@ export const OpposingForcePanel = (props, context) => {
         <Stack vertical grow mb={1}>
           <Stack.Item>
             <Tabs fill>
-              <Tabs.Tab
-                width="100%"
-                selected={tab === 1}
-                onClick={() => setTab(1)}>
-                Summary
-              </Tabs.Tab>
-              <Tabs.Tab
-                width="100%"
-                selected={tab === 2}
-                onClick={() => setTab(2)}>
-                Equipment
-              </Tabs.Tab>
-              <Tabs.Tab
-                width="100%"
-                selected={tab === 3}
-                onClick={() => setTab(3)}>
-                Admin Chat
-              </Tabs.Tab>
-              {!!admin_mode && (
-                <Tabs.Tab
-                  width="100%"
-                  selected={tab === 4}
-                  onClick={() => setTab(4)}>
-                  Admin Control
-                </Tabs.Tab>
+              {admin_mode ? (
+                <>
+                  <Tabs.Tab
+                    width="100%"
+                    selected={tab === 1}
+                    onClick={() => setTab(1)}>
+                    Admin Chat
+                  </Tabs.Tab>
+                  <Tabs.Tab
+                    width="100%"
+                    selected={tab === 2}
+                    onClick={() => setTab(2)}>
+                    Admin Control
+                  </Tabs.Tab>
+                </>
+              ) : (
+                <>
+                  <Tabs.Tab
+                    width="100%"
+                    selected={tab === 1}
+                    onClick={() => setTab(1)}>
+                    Summary
+                  </Tabs.Tab>
+                  <Tabs.Tab
+                    width="100%"
+                    selected={tab === 2}
+                    onClick={() => setTab(2)}>
+                    Equipment
+                  </Tabs.Tab>
+                  <Tabs.Tab
+                    width="100%"
+                    selected={tab === 3}
+                    onClick={() => setTab(3)}>
+                    Admin Chat
+                  </Tabs.Tab>
+                </>
               )}
             </Tabs>
           </Stack.Item>
         </Stack>
-        {tab === 1 && (
-          <OpposingForceTab />
-        )}
-        {tab === 2 && (
-          <EquipmentTab />
-        )}
-        {tab === 3 && (
-          <AdminChatTab />
-        )}
-        {!!admin_mode && (
-          tab === 4 && (
-            <AdminTab />
-          )
+        {admin_mode ? (
+          <>
+            {tab === 1 && (
+              <AdminChatTab />
+            )}
+            {tab === 2 && (
+              <AdminTab />
+            )}
+          </>
+        ) : (
+          <>
+            {tab === 1 && (
+              <OpposingForceTab />
+            )}
+            {tab === 2 && (
+              <EquipmentTab />
+            )}
+            {tab === 3 && (
+              <AdminChatTab />
+            )}
+          </>
         )}
       </Window.Content>
     </Window>
@@ -95,7 +114,7 @@ export const OpposingForceTab = (props, context) => {
                 color="good"
                 tooltip={"Submit your application for review." + (blocked ? " (Blocked)" : "")}
                 disabled={!can_submit || blocked}
-                content="Submit Objectives"
+                content="Submit Application"
                 onClick={() => act('submit')} />
             </Stack.Item>
             <Stack.Item>

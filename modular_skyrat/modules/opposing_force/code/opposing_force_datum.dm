@@ -65,11 +65,18 @@
 	var/blocked = FALSE
 	/// What admin has this request been assigned to?
 	var/handling_admin = ""
+	/// What changes have the handling admin requested, if any?
+	var/admin_requested_changes = ""
+	/// The ckey of the person that made this application
+	var/ckey
 
 	COOLDOWN_DECLARE(static/request_update_cooldown)
+	COOLDOWN_DECLARE(static/ping_cooldown)
 
-/datum/opposing_force/New(mind_reference)//user can either be a client or a mob due to byondcode(tm)
+/datum/opposing_force/New(datum/mind/mind_reference)
 	src.mind_reference = mind_reference
+	ckey = ckey(mind_reference.key)
+	send_system_message("[ckey] created the application")
 
 /datum/opposing_force/Destroy(force)
 	mind_reference.opposing_force = null
@@ -110,9 +117,10 @@
 /datum/opposing_force/ui_data(mob/user)
 	var/list/data = list()
 
-	data["admin_mode"] = check_rights_for(user.client, R_ADMIN)
+	var/client/owner_client = GLOB.directory[ckey]
+	data["admin_mode"] = check_rights_for(user.client, R_ADMIN) && user.client != owner_client
 
-	data["creator_ckey"] = mind_reference.key ? mind_reference.key : ""
+	data["owner_antag"] = (mind_reference.current in GLOB.current_living_antags)
 
 	data["backstory"] = set_backstory
 
@@ -491,6 +499,7 @@
 	add_log(denier.ckey, "Denied application")
 	to_chat(mind_reference.current, examine_block(span_redtext("Your OPFOR application has been denied by [denier ? get_admin_ckey(denier) : "the OPFOR subsystem"]!")))
 	send_system_message(get_admin_ckey(denier) + " has denied the application with the following reason: [reason]")
+	send_admins_opfor_message("[span_red("DENIED")]: [ADMIN_LOOKUPFLW(denier)] has denied [ckey]'s application([reason ? reason : "No reason specified"])")
 
 
 /datum/opposing_force/proc/approve(mob/approver)
@@ -503,6 +512,7 @@
 	add_log(approver.ckey, "Approved application")
 	to_chat(mind_reference.current, examine_block(span_greentext("Your OPFOR application has been approved by [approver ? get_admin_ckey(approver) : "the OPFOR subsystem"]!")))
 	send_system_message("[approver ? get_admin_ckey(approver) : "The OPFOR subsystem"] has approved the application")
+	send_admins_opfor_message("[span_green("APPROVED")]: [ADMIN_LOOKUPFLW(approver)] has approved [ckey]'s application")
 
 /datum/opposing_force/proc/close_application(mob/user)
 	if(status == OPFOR_STATUS_NOT_SUBMITTED)
@@ -648,7 +658,7 @@
 		return subsystem_status
 	switch(status)
 		if(OPFOR_STATUS_AWAITING_APPROVAL)
-			return "Awaiting approval, [status], you are number [SSopposing_force.get_queue_position(src)] in the queue"
+			return "Awaiting approval, you are number [SSopposing_force.get_queue_position(src)] in the queue"
 		if(OPFOR_STATUS_APPROVED)
 			return "Approved, please check your objectives for specific approval"
 		if(OPFOR_STATUS_DENIED)
@@ -708,6 +718,10 @@
 			check_item(params[2])
 		if("help")
 			print_help(user)
+		if("ping_admin")
+			ping_admin(user)
+		if("ping_user")
+			ping_admin(user)
 		if("unlock_equipment")
 			unlock_equipment(user) // Admin only proc
 		else
@@ -717,11 +731,13 @@
 	send_system_message("Available commands:")
 	send_system_message("/hello_world - Hello World!")
 	send_system_message("/item 'item_name' - Check an items quick stats")
+	send_system_message("/ping_admin - Ping the handling admin, if there is one.")
 	send_system_message("/help - Print this help")
 	// Admin commands.
 	if(check_rights_for(user.client, R_ADMIN))
 		send_system_message("Admin commands:")
 		send_system_message("/unlock_equipment - Unlock all equipment, useful if you need to give the user more stuff.")
+		send_system_message("/ping_user - Pings the user.")
 
 /**
  * System commands
@@ -755,6 +771,29 @@
 		return
 	equipment_issued = TRUE
 	send_system_message("Equipment unlocked.")
+
+/datum/opposing_force/proc/ping_admin(mob/user)
+	if(!handling_admin)
+		send_system_message("ERROR: No admin is handling the application.")
+		return
+	if(!COOLDOWN_FINISHED(src, ping_cooldown))
+		send_system_message("ERROR: Ping is on cooldown.")
+		return
+	if(user.ckey != handling_admin && GLOB.directory[handling_admin])
+		to_chat(GLOB.directory[handling_admin], span_pink("OPFOR: [user] has pinged their OPFOR admin chat! (<a href='?src=[REF(src)];admin_pref=show_panel'>Show Panel</a>)"))
+		SEND_SOUND(GLOB.directory[handling_admin], sound('sound/misc/bloop.ogg'))
+		send_system_message("Handling admin pinged.")
+		COOLDOWN_START(src, ping_cooldown, OPFOR_PING_COOLDOWN)
+	else
+		send_system_message("ERROR: Ping failed.")
+
+/datum/opposing_force/proc/ping_user(mob/user)
+	if(!check_rights_for(user.client, R_ADMIN))
+		send_system_message("ERROR: You do not have permission to do that.")
+		return
+	send_system_message("User pinged.")
+	to_chat(mind_reference.current, span_pink("OPFOR: [get_admin_ckey(user.ckey)] has pinged your OPFOR chat, check it!"))
+	SEND_SOUND(mind_reference.current, sound('sound/misc/bloop.ogg'))
 
 /datum/opposing_force/proc/roundend_report()
 	var/list/report = list()
