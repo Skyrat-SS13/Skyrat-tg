@@ -94,11 +94,6 @@
 /// Generates a complete set of traitor objectives up to the traitor objective limit, including non-generic objectives such as martyr and hijack.
 /datum/antagonist/traitor/proc/forge_traitor_objectives()
 	objectives.Cut()
-
-	//SKYRAT EDIT ADDITION - AMBITIONS
-	var/datum/objective/ambitions/objective = new
-	objectives += objective
-	/* SKYRAT EDIT REMOVAL
 	var/objective_count = 0
 
 	if((GLOB.joined_player_list.len >= HIJACK_MIN_PLAYERS) && prob(HIJACK_PROB))
@@ -111,7 +106,7 @@
 	// This does not give them 1 fewer objectives than intended.
 	for(var/i in objective_count to objective_limit - 1)
 		objectives += forge_single_generic_objective()
-	*/ //SKYRAT EDIT END
+
 
 /**
  * ## forge_ending_objective
@@ -119,8 +114,6 @@
  * Forges the endgame objective and adds it to this datum's objective list.
  */
 /datum/antagonist/traitor/proc/forge_ending_objective()
-	return
-	/* SKYRAT EDIT  - AMBITIONS
 	if(is_hijacker)
 		ending_objective = new /datum/objective/hijack
 		ending_objective.owner = owner
@@ -133,6 +126,7 @@
 			martyr_compatibility = FALSE
 			break
 
+	if(martyr_compatibility && prob(MARTYR_PROB))
 		ending_objective = new /datum/objective/martyr
 		ending_objective.owner = owner
 		objectives += ending_objective
@@ -141,7 +135,6 @@
 	ending_objective = new /datum/objective/escape
 	ending_objective.owner = owner
 	objectives += ending_objective
-	*/
 
 /// Forges a single escape objective and adds it to this datum's objective list.
 /datum/antagonist/traitor/proc/forge_escape_objective()
