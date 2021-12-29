@@ -120,6 +120,8 @@
 	var/client/owner_client = GLOB.directory[ckey]
 	data["admin_mode"] = check_rights_for(user.client, R_ADMIN) && user.client != owner_client
 
+	data["creator_ckey"] = ckey
+
 	data["owner_antag"] = (mind_reference.current in GLOB.current_living_antags)
 
 	data["backstory"] = set_backstory

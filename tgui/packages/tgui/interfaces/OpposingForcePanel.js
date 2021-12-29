@@ -9,13 +9,14 @@ export const OpposingForcePanel = (props, context) => {
   const {
     admin_mode,
     creator_ckey,
+    owner_antag,
   } = data;
   return (
     <Window
       title={"Opposing Force: " + creator_ckey}
       width={585}
       height={830}
-      theme="admin">
+      theme={owner_antag ? "syndicate" : "admin"}>
       <Window.Content>
         <Stack vertical grow mb={1}>
           <Stack.Item>
