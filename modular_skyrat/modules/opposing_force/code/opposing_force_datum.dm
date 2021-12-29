@@ -134,6 +134,8 @@
 
 	data["handling_admin"] = handling_admin
 
+	data["equipment_issued"] = equipment_issued
+
 	var/list/messages = list()
 	for(var/message in admin_chat)
 		messages.Add(list(list(
@@ -314,6 +316,7 @@
 			return
 	handling_admin = get_admin_ckey(user)
 	to_chat(mind_reference.current, examine_block(span_nicegreen("Your OPFOR application is now being handled by [handling_admin].")))
+	send_admins_opfor_message("HANDLE: [[ADMIN_LOOKUPFLW(user)]] is handling [mind_reference.ckey]'s OPFOR application.")
 	send_system_message("[handling_admin] has assigned themselves to this application")
 	add_log(user.ckey, "Assigned self to application")
 
@@ -606,7 +609,7 @@
 	log_admin(msg)
 
 /datum/opposing_force/proc/send_admins_opfor_message(message)
-	message = "[span_pink("OPFOR:")] [span_admin(message)]"
+	message = "[span_pink("OPFOR:")] [span_admin(message)] (<a href='?src=[REF(src)];admin_pref=show_panel'>Show Panel</a>)"
 	to_chat(GLOB.admins,
 		type = MESSAGE_TYPE_ADMINLOG,
 		html = message,

@@ -15,32 +15,40 @@ export const OpposingForcePanel = (props, context) => {
       title={"Opposing Force: " + creator_ckey}
       width={585}
       height={830}
-      theme="syndicate">
+      theme="admin">
       <Window.Content>
-        <Tabs>
-          <Tabs.Tab
-            selected={tab === 1}
-            onClick={() => setTab(1)}>
-            Summary
-          </Tabs.Tab>
-          <Tabs.Tab
-            selected={tab === 2}
-            onClick={() => setTab(2)}>
-            Equipment
-          </Tabs.Tab>
-          <Tabs.Tab
-            selected={tab === 3}
-            onClick={() => setTab(3)}>
-            Admin Chat
-          </Tabs.Tab>
-          {!!admin_mode && (
-            <Tabs.Tab
-              selected={tab === 4}
-              onClick={() => setTab(4)}>
-              Admin Control
-            </Tabs.Tab>
-          )}
-        </Tabs>
+        <Stack vertical grow mb={1}>
+          <Stack.Item>
+            <Tabs fill>
+              <Tabs.Tab
+                width="100%"
+                selected={tab === 1}
+                onClick={() => setTab(1)}>
+                Summary
+              </Tabs.Tab>
+              <Tabs.Tab
+                width="100%"
+                selected={tab === 2}
+                onClick={() => setTab(2)}>
+                Equipment
+              </Tabs.Tab>
+              <Tabs.Tab
+                width="100%"
+                selected={tab === 3}
+                onClick={() => setTab(3)}>
+                Admin Chat
+              </Tabs.Tab>
+              {!!admin_mode && (
+                <Tabs.Tab
+                  width="100%"
+                  selected={tab === 4}
+                  onClick={() => setTab(4)}>
+                  Admin Control
+                </Tabs.Tab>
+              )}
+            </Tabs>
+          </Stack.Item>
+        </Stack>
         {tab === 1 && (
           <OpposingForceTab />
         )}
@@ -72,18 +80,21 @@ export const OpposingForceTab = (props, context) => {
     can_edit,
     backstory,
     handling_admin,
+    blocked,
+    approved,
+    denied,
   } = data;
   return (
     <Stack vertical grow>
       <Stack.Item>
-        <Section title={handling_admin ? "Control - Handling Admin:" + handling_admin : "Control"}>
+        <Section title={handling_admin ? "Control - Handling Admin: " + handling_admin : "Control"}>
           <Stack>
             <Stack.Item>
               <Button
                 icon="check"
                 color="good"
-                tooltip="Submit your application for review."
-                disabled={!can_submit}
+                tooltip={"Submit your application for review." + (blocked ? " (Blocked)" : "")}
+                disabled={!can_submit || blocked}
                 content="Submit Objectives"
                 onClick={() => act('submit')} />
             </Stack.Item>
@@ -91,7 +102,7 @@ export const OpposingForceTab = (props, context) => {
               <Button
                 icon="question"
                 color="orange"
-                tooltip="Request an update from the admins."
+                tooltip={"Request an update from the admins." + (request_updates_muted ? " (Muted)" : "")}
                 disabled={!can_request_update || request_updates_muted}
                 content="Ask For Update"
                 onClick={() => act('request_update')} />
@@ -115,7 +126,9 @@ export const OpposingForceTab = (props, context) => {
                 onClick={() => act('close_application')} />
             </Stack.Item>
           </Stack>
-          <NoticeBox color="orange" mt={2}>
+          <NoticeBox
+            color={approved ? "good" : denied ? "bad" : "orange"}
+            mt={2}>
             {status}
           </NoticeBox>
         </Section>
@@ -172,6 +185,8 @@ export const OpposingForceObjectives = (props, context) => {
           <Tabs fill>
             {objectives.map(objective => (
               <Tabs.Tab
+                color={objective.status_text === "Not Reviewed" ? "yellow" : objective.approved ? "good" : "bad"}
+                textColor={objective.status_text === "Not Reviewed" ? "yellow" : objective.approved ? "good" : "bad"}
                 width="25%"
                 key={objective.id}
                 selected={objective.id === selectedObjectiveID}
@@ -362,42 +377,40 @@ export const EquipmentTab = (props, context) => {
       <Stack.Item>
         <Section
           title="Selected Equipment">
-          <Collapsible title="Selected Equipment">
-            {selected_equipment.length === 0 ? (
-              <Box color="bad">
-                No equipment selected.
-              </Box>
-            ) : (
-              selected_equipment.map(equipment => (
-                <Section
-                  title={equipment.name + " - " + equipment.status}
-                  key={equipment.ref}
-                  buttons={(
-                    <Button
-                      icon="times"
-                      color="bad"
-                      content="Remove"
-                      onClick={() => act('remove_equipment', {
-                        selected_equipment_ref: equipment.ref,
-                      })} />
-                  )}>
-                  <LabeledList>
-                    <LabeledList.Item label="Reason">
-                      <Input
-                        disabled={!can_edit}
-                        width="100%"
-                        placeholder="Reason for item"
-                        value={equipment.reason}
-                        onChange={(e, value) => act('set_equipment_reason', {
+          {selected_equipment.length === 0 ? (
+            <Box color="bad">
+              No equipment selected.
+            </Box>
+          ) : (
+            selected_equipment.map(equipment => (
+              <>
+                <LabeledList key={equipment.ref}>
+                  <LabeledList.Item
+                    buttons={(
+                      <Button
+                        icon="times"
+                        color="bad"
+                        content="Remove"
+                        onClick={() => act('remove_equipment', {
                           selected_equipment_ref: equipment.ref,
-                          new_equipment_reason: value,
                         })} />
-                    </LabeledList.Item>
-                  </LabeledList>
-                </Section>
-              )
-              ))}
-          </Collapsible>
+                    )}
+                    label={equipment.name + " - " + equipment.status} />
+                </LabeledList>
+                <Input
+                  mt={1}
+                  mb={1}
+                  disabled={!can_edit}
+                  width="100%"
+                  placeholder="Reason for item"
+                  value={equipment.reason}
+                  onChange={(e, value) => act('set_equipment_reason', {
+                    selected_equipment_ref: equipment.ref,
+                    new_equipment_reason: value,
+                  })} />
+              </>
+            )
+            ))}
         </Section>
         <Section title="Available Equipment">
           <Stack vertical fill>
@@ -448,7 +461,9 @@ export const AdminChatTab = (props, context) => {
   return (
     <Stack vertical fill>
       <Stack.Item grow={10} >
-        <Section scrollable fill>
+        <Section
+          scrollable
+          fill>
           {messages.map(message => (
             <Box
               key={message.msg}>
@@ -482,7 +497,7 @@ export const AdminTab = (props, context) => {
     selected_equipment = [],
     backstory,
     blocked,
-    equipped,
+    equipment_issued,
   } = data;
   return (
     <Stack vertical grow>
@@ -511,7 +526,7 @@ export const AdminTab = (props, context) => {
               <Button
                 icon="universal-access"
                 color="purple"
-                disabled={equipped}
+                disabled={equipment_issued}
                 tooltip="Issue the player with all approved equipment."
                 content="Issue Gear"
                 onClick={() => act('issue_gear')} />
@@ -577,7 +592,7 @@ export const AdminTab = (props, context) => {
                 No backstory set.
               </Box>
             ) : (
-              <Box>
+              <Box preserveWhitespace>
                 {backstory}
               </Box>
             )}
