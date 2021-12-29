@@ -275,6 +275,8 @@
 	glasses = /obj/item/clothing/glasses/hud/health
 	id = /obj/item/card/id/away/tarkon/med
 	neck = /obj/item/clothing/neck/stethoscope
+	l_pocket = /obj/item/healthanalyzer
+	r_pocket = /obj/item/stack/medical/suture
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/engi
 	prompt_name = "an abandoned maintenance engineer"
@@ -294,6 +296,7 @@
 	uniform = /obj/item/clothing/under/utility/sec
 	glasses = /obj/item/clothing/glasses/hud/security
 	id = /obj/item/card/id/away/tarkon/sec
+	l_pocket = /obj/item/melee/baton/telescopic
 
 //ITEMS//
 /obj/item/radio/headset/cybersun
