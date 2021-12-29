@@ -244,7 +244,7 @@
 	icon_state = "sleeper"
 	you_are_text = "You are an abandoned member of Port Tarkon, an attempt to create steady living vaults within large asteroids."
 	flavour_text = "Something went wrong. Morality of experiments went awry, expansions were made before scans were fully done and now you have to deal with the aftermath of your past crews exodus."
-	important_text = "You should not rush to escape without knowing about any other survivors."
+	important_text = "Do not abandon the port for the main station, but using the ship to buy more items or get help is good, if not ideal. Do not trade special equipment to the station."
 	outfit = /datum/outfit/tarkon
 
 /datum/outfit/tarkon
@@ -253,8 +253,8 @@
 	gloves = /obj/item/clothing/gloves/fingerless
 	glasses = /obj/item/clothing/glasses/sunglasses
 	id = /obj/item/card/id/away/tarkon/cargo
-	belt = /obj/item/storage/belt/mining
 	l_pocket = /obj/item/card/mining_point_card
+	r_pocket = /obj/item/mining_voucher
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/sci
 	prompt_name = "an abandoned scientist"
@@ -265,6 +265,7 @@
 	glasses = /obj/item/clothing/glasses/hud/diagnostic
 	id = /obj/item/card/id/away/tarkon/sci
 	l_pocket = /obj/item/inducer/syndicate
+	r_pocket = /obj/item/stock_parts/cell/high/plus
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/med
 	prompt_name = "an abandoned medical resident"
@@ -287,6 +288,8 @@
 	glasses = /obj/item/clothing/glasses/meson/engine/tray
 	id = /obj/item/card/id/away/tarkon/engi
 	gloves = /obj/item/clothing/gloves/combat
+	l_pocket = /obj/item/tank/internals/emergency_oxygen/engi
+	r_pocket = /obj/item/stack/cable_coil
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/sec
 	prompt_name = "an abandoned security deputy"
@@ -297,6 +300,7 @@
 	glasses = /obj/item/clothing/glasses/hud/security
 	id = /obj/item/card/id/away/tarkon/sec
 	l_pocket = /obj/item/melee/baton/telescopic
+	r_pocket = /obj/item/grenade/barrier
 
 //ITEMS//
 /obj/item/radio/headset/cybersun

@@ -173,7 +173,7 @@
 	desc = "Used to control the Tarkon Driver."
 	circuit = /obj/item/circuitboard/computer/tarkon_driver
 	shuttleId = "tarkon_driver"
-	possible_destinations = "tarkon_driver_custom;port_tarkon"
+	possible_destinations = "tarkon_driver_custom;port_tarkon;whiteship_home"
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/tarkon_driver
 	name = "Tarkon Driver Navigation Computer"
@@ -181,7 +181,7 @@
 	shuttleId = "tarkon_driver"
 	lock_override = NONE
 	shuttlePortId = "tarkon_driver_custom"
-	jumpto_ports = list("port_tarkon" = 1)
+	jumpto_ports = list("port_tarkon" = 1, "whiteship_home" = 1)
 	view_range = 0
 
 /obj/item/circuitboard/computer/tarkon_driver
