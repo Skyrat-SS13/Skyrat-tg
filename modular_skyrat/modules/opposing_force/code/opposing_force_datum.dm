@@ -316,7 +316,7 @@
 			return
 	handling_admin = get_admin_ckey(user)
 	to_chat(mind_reference.current, examine_block(span_nicegreen("Your OPFOR application is now being handled by [handling_admin].")))
-	send_admins_opfor_message("HANDLE: [[ADMIN_LOOKUPFLW(user)]] is handling [mind_reference.ckey]'s OPFOR application.")
+	send_admins_opfor_message("HANDLE: [ADMIN_LOOKUPFLW(user)] is handling [mind_reference.ckey]'s OPFOR application.")
 	send_system_message("[handling_admin] has assigned themselves to this application")
 	add_log(user.ckey, "Assigned self to application")
 
@@ -468,7 +468,7 @@
 		iterating_equipment.status = OPFOR_EQUIPMENT_STATUS_DENIED
 	for(var/datum/opposing_force_objective/opfor in objectives)
 		opfor.status = OPFOR_OBJECTIVE_STATUS_DENIED
-
+	SEND_SOUND(mind_reference.current, sound('modular_skyrat/modules/opposing_force/sound/denied.ogg'))
 	add_log(denier.ckey, "Denied application")
 	to_chat(mind_reference.current, examine_block(span_redtext("Your OPFOR application has been denied by [denier ? get_admin_ckey(denier) : "the OPFOR subsystem"]!")))
 	send_system_message(get_admin_ckey(denier) + " has denied the application with the following reason: [reason]")
@@ -480,6 +480,7 @@
 	status = OPFOR_STATUS_APPROVED
 	can_edit = FALSE
 
+	SEND_SOUND(mind_reference.current, sound('modular_skyrat/modules/opposing_force/sound/approved.ogg'))
 	add_log(approver.ckey, "Approved application")
 	to_chat(mind_reference.current, examine_block(span_greentext("Your OPFOR application has been approved by [approver ? get_admin_ckey(approver) : "the OPFOR subsystem"]!")))
 	send_system_message("[approver ? get_admin_ckey(approver) : "The OPFOR subsystem"] has approved the application")
