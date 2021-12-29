@@ -189,6 +189,7 @@
 			"approved" = equipment.status == OPFOR_EQUIPMENT_STATUS_APPROVED ? TRUE : FALSE,
 			"reason" = equipment.reason,
 			"denied_reason" = equipment.denied_reason,
+			"count" = equipment.count,
 			)
 		data["selected_equipment"] += list(equipment_data)
 
@@ -252,6 +253,11 @@
 			if(!equipment)
 				return
 			set_equipment_reason(usr, equipment, params["new_equipment_reason"])
+		if("set_equipment_count")
+			var/datum/opposing_force_selected_equipment/equipment = locate(params["selected_equipment_ref"]) in selected_equipment
+			if(!equipment)
+				return
+			set_equipment_count(usr, equipment, params["new_equipment_count"])
 
 		//Admin protected procs
 		if("approve")
@@ -309,6 +315,11 @@
 			var/denied_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
 			deny_equipment(usr, equipment, denied_reason)
 
+/datum/opposing_force/proc/set_equipment_count(mob/user, datum/opposing_force_selected_equipment/equipment, new_count)
+	var/sanitized_newcount = sanitize_integer(new_count, 1, OPFOR_EQUIPMENT_COUNT_LIMIT)
+	equipment.count = new_count
+	add_log(user.ckey, "Set equipment '[equipment.opposing_force_equipment.name] count to [sanitized_newcount]")
+
 /datum/opposing_force/proc/handle(mob/user)
 	if(handling_admin)
 		var/choice = tgui_alert(user, "Another admin is currently handling this application, do you want to override them?", "Admin Handling", list("Yes", "No"))
@@ -336,14 +347,7 @@
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] blocked you from submitting new requests")
 	add_log(user.ckey, "Blocked user from opposing force requests.")
 
-/datum/opposing_force/proc/approve_all(mob/user)
-	if(SSopposing_force.approve(src, user))
-		for(var/datum/opposing_force_selected_equipment/iterating_equipment as anything in selected_equipment)
-			iterating_equipment.status = OPFOR_EQUIPMENT_STATUS_APPROVED
-		for(var/datum/opposing_force_objective/opfor as anything in objectives)
-			opfor.status = OPFOR_OBJECTIVE_STATUS_APPROVED
 
-/datum/opposing_force/proc/issue_gear(mob/user)
 
 /**
  * Equipment procs
@@ -391,6 +395,21 @@
 	var/datum/opposing_force_selected_equipment/new_selected = new(incoming_equipment)
 	selected_equipment += new_selected
 	add_log(user.ckey, "Selected equipment: [incoming_equipment.name]")
+
+/datum/opposing_force/proc/issue_gear(mob/user)
+	if(!selected_equipment.len)
+		return
+	if(!isliving(user))
+		return
+	var/obj/item/storage/box/spawned_box = new(get_turf(user))
+	for(var/datum/opposing_force_selected_equipment/iterating_equipment as anything in selected_equipment)
+		if(iterating_equipment.status != OPFOR_EQUIPMENT_STATUS_APPROVED)
+			continue
+		for(var/i in 1 to iterating_equipment.count)
+			new iterating_equipment.opposing_force_equipment.item_type(spawned_box)
+	if(ishuman(user))
+		var/mob/living/carbon/human/human = user
+		human.put_in_hands(spawned_box)
 
 /**
  * Control procs
@@ -512,6 +531,13 @@
 	add_log(user.ckey, "Updated BACKSTORY from: [set_backstory] to: [sanitized_backstory]")
 	set_backstory = sanitized_backstory
 	return TRUE
+
+/datum/opposing_force/proc/approve_all(mob/user)
+	if(SSopposing_force.approve(src, user))
+		for(var/datum/opposing_force_selected_equipment/iterating_equipment as anything in selected_equipment)
+			iterating_equipment.status = OPFOR_EQUIPMENT_STATUS_APPROVED
+		for(var/datum/opposing_force_objective/opfor as anything in objectives)
+			opfor.status = OPFOR_OBJECTIVE_STATUS_APPROVED
 
 
 /**

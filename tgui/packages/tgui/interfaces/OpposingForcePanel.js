@@ -1,6 +1,6 @@
 import { round } from 'common/math';
 import { useBackend, useLocalState } from '../backend';
-import { Section, Stack, TextArea, Button, Tabs, Input, Slider, NoticeBox, LabeledList, Box, Collapsible } from '../components';
+import { Section, Stack, TextArea, Button, Tabs, Input, Slider, NoticeBox, LabeledList, Box, Collapsible, NumberInput } from '../components';
 import { Window } from '../layouts';
 
 export const OpposingForcePanel = (props, context) => {
@@ -387,13 +387,24 @@ export const EquipmentTab = (props, context) => {
                 <LabeledList key={equipment.ref}>
                   <LabeledList.Item
                     buttons={(
-                      <Button
-                        icon="times"
-                        color="bad"
-                        content="Remove"
-                        onClick={() => act('remove_equipment', {
-                          selected_equipment_ref: equipment.ref,
-                        })} />
+                      <>
+                        <NumberInput
+                          animated
+                          value={equipment.count}
+                          minValue={1}
+                          maxValue={5}
+                          onChange={(e, value) => act('set_equipment_count', {
+                            selected_equipment_ref: equipment.ref,
+                            new_equipment_count: value,
+                          })} />
+                        <Button
+                          icon="times"
+                          color="bad"
+                          content="Remove"
+                          onClick={() => act('remove_equipment', {
+                            selected_equipment_ref: equipment.ref,
+                          })} />
+                      </>
                     )}
                     label={equipment.name + " - " + equipment.status} />
                 </LabeledList>
@@ -694,6 +705,9 @@ export const AdminTab = (props, context) => {
                     </LabeledList.Item>
                     <LabeledList.Item label="Status">
                       {equipment.status}
+                    </LabeledList.Item>
+                    <LabeledList.Item label="Amount">
+                      {equipment.count}
                     </LabeledList.Item>
                   </LabeledList>
                 </Section>
