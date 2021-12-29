@@ -395,7 +395,7 @@
 	add_log(user.ckey, "Selected equipment: [incoming_equipment.name]")
 
 /datum/opposing_force/proc/issue_gear(mob/user)
-	if(!selected_equipment.len || !isliving(user) || status == OPFOR_STATUS_APPROVED || equipment_issued)
+	if(!selected_equipment.len || !isliving(user) || status != OPFOR_STATUS_APPROVED || equipment_issued)
 		return
 	var/obj/item/storage/box/spawned_box = new(get_turf(user))
 	for(var/datum/opposing_force_selected_equipment/iterating_equipment as anything in selected_equipment)
