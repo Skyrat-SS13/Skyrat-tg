@@ -2101,11 +2101,19 @@
 
 	return TRUE
 
-//Update the screentip to reflect what we're hoverin over
 /atom/MouseEntered(location, control, params)
-	. = ..()
+	SSmouse_entered.hovers[usr.client] = src
+
+/// Fired whenever this atom is the most recent to be hovered over in the tick.
+/// Preferred over MouseEntered if you do not need information such as the position of the mouse.
+/// Especially because this is deferred over a tick, do not trust that `client` is not null.
+/atom/proc/on_mouse_enter(client/client)
+	SHOULD_NOT_SLEEP(TRUE)
+
+	var/mob/user = client?.mob
+
 	// Screentips
-	var/datum/hud/active_hud = usr.hud_used
+	var/datum/hud/active_hud = user?.hud_used
 	if(active_hud)
 		if(!active_hud.screentips_enabled || (flags_1 & NO_SCREENTIPS_1))
 			active_hud.screentip_text.maptext = ""
@@ -2115,9 +2123,8 @@
 
 	///SKYRAT EDIT ADDITION BEGIN
 	// Face directions on combat mode. No procs, no typechecks, just a var for speed
-	var/mob/user_mob = usr
-	if(user_mob.face_mouse)
-		user_mob.face_atom(src)
+	if(user?.face_mouse)
+		user.face_atom(src)
 	///SKYRAT EDIT ADDITION END
 
 

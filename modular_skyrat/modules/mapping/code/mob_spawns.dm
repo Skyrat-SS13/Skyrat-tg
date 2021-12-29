@@ -6,7 +6,6 @@
 	mob_name = "a black market dealer"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	random = TRUE
 	mob_species = /datum/species/human
 	you_are_text = "You are a black market dealer, with shop set up in Nanotrasen Space."
 	flavour_text = "FTU, Independent.. whatever, whoever you are. It doesn't matter out here. \
@@ -15,8 +14,6 @@
 	Or perhaps more exotic customers are in local space...?"
 	important_text = "You are not an antagonist."
 	outfit = /datum/outfit/black_market
-	can_use_alias = TRUE
-	any_station_species = TRUE
 
 /datum/outfit/black_market
 	name = "Black Market Trader"
@@ -33,8 +30,6 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/ds2/prisoner
-	can_use_alias = TRUE
-	any_station_species = TRUE
 
 /obj/effect/mob_spawn/ghost_role/human/ds2
 	name = "DS2 personnel"
@@ -45,9 +40,6 @@
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate
 	name = "Syndicate Operative"
 	prompt_name = "a Syndicate operative"
-	random = TRUE
-	can_use_alias = TRUE
-	any_station_species = TRUE
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	you_are_text = "You are a syndicate operative, employed in a top secret research facility developing biological weapons."
@@ -179,13 +171,10 @@
 	mob_name = "Freighter Crew"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	random = TRUE
 	mob_species = /datum/species/human
 	you_are_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
 	flavour_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
 	important_text = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew for the ship's Chief. Your job was merely being a deckhand doing freight work and helping with kitchen prep."
-	can_use_alias = TRUE
-	any_station_species = TRUE
 
 /datum/outfit/freighter_crew
 	name = "Freighter Crew"
@@ -202,13 +191,10 @@
 	mob_name = "Freighter Excavator"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	random = TRUE
 	mob_species = /datum/species/human
 	you_are_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
 	flavour_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
 	important_text = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew working under the ship Chief. Your role was to be an excavation and salvage worker for the ship."
-	can_use_alias = TRUE
-	any_station_species = TRUE
 
 /datum/outfit/freighter_excavator
 	name = "Freighter Excavator"
@@ -232,13 +218,10 @@
 	mob_name = "Freighter Chief"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	random = TRUE
 	mob_species = /datum/species/human
 	you_are_text = "You and your crew were running a normal freight haul until a pirate attack knocked out the engines. All you can do now is try and survive and keep your crew alive."
 	flavour_text = "You and your crew were running a normal freight haul until a pirate attack knocked out the engines. All you can do now is try and survive and keep your crew alive."
 	important_text = "Do not abandon your crew, lead them and work with them to survive. You are not directly working with NT, you are an independent freighter crew. You are the captain of the ship, which you purchased a while ago, and are in charge of the crew."
-	can_use_alias = TRUE
-	any_station_species = TRUE
 
 /datum/outfit/freighter_boss
 	name = "Freighter Boss"

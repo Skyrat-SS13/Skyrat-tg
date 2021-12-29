@@ -41,7 +41,23 @@
 	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
 	can_be_tied = FALSE
-
+	// SKYRAT EDIT ADDITION START
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Basic Jackboots" = list(
+			RESKIN_ICON = 'icons/obj/clothing/shoes.dmi',
+			RESKIN_ICON_STATE = "jackboots",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/feet.dmi',
+			RESKIN_WORN_ICON_STATE = "jackboots"
+		),
+		"Peacekeeper Jackboots" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi',
+			RESKIN_ICON_STATE = "peacekeeper_boots",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi',
+			RESKIN_WORN_ICON_STATE = "peacekeeper"
+		)
+	)
+	// SKYRAT EDIT ADDITION END
 /obj/item/clothing/shoes/jackboots/fast
 	slowdown = -1
 
