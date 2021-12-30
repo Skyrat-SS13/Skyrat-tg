@@ -127,7 +127,7 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 	if(!istype(target))
 		return generate_or_wait_for_human_dummy(slotkey)
 
-	var/mob/living/carbon/human/dummy/copycat = generate_dummy_lookalike(REF(slotkey), slotkey)  // SKYRAT EDIT - FIXES CORRUPT PHOTO RECORDS
+	var/mob/living/carbon/human/dummy/copycat = generate_or_wait_for_human_dummy(slotkey)
 
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
