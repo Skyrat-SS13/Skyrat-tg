@@ -693,7 +693,7 @@
 
 /obj/item/gun/ballistic/shotgun/m23
 	name = "\improper Model 23-37"
-	desc = "A common outdated police shotgun sporting an six-round tube."
+	desc = "A common outdated police shotgun sporting a six-round tube."
 	icon_state = "riotshotgun"
 	inhand_icon_state = "shotgun"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/m23
