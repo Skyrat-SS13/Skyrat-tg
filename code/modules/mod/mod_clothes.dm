@@ -19,7 +19,6 @@
 	visor_flags = THICKMATERIAL|STOPSPRESSUREDAMAGE
 	visor_flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT
 	visor_flags_cover = HEADCOVERSMOUTH|HEADCOVERSEYES|PEPPERPROOF
-	mutant_variants = NONE // SKYRAT EDIT - Fixing modsuits temporarily
 	var/alternate_layer = NECK_LAYER
 	var/obj/item/mod/control/mod
 
@@ -46,7 +45,6 @@
 	clothing_flags = THICKMATERIAL
 	visor_flags = STOPSPRESSUREDAMAGE
 	visor_flags_inv = HIDEJUMPSUIT
-	mutant_variants = NONE // SKYRAT EDIT - Fixing modsuits temporarily
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals)
 	resistance_flags = NONE
 	var/obj/item/mod/control/mod
@@ -72,7 +70,6 @@
 	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
 	clothing_flags = THICKMATERIAL
 	resistance_flags = NONE
-	mutant_variants = NONE // SKYRAT EDIT - Fixing modsuits temporarily
 	var/obj/item/mod/control/mod
 	var/obj/item/clothing/overslot
 
@@ -107,7 +104,6 @@
 	clothing_flags = THICKMATERIAL
 	resistance_flags = NONE
 	item_flags = IGNORE_DIGITIGRADE
-	mutant_variants = NONE // SKYRAT EDIT - Fixing modsuits temporarily
 	var/obj/item/mod/control/mod
 	var/obj/item/clothing/overslot
 
