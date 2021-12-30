@@ -141,6 +141,8 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Blue Letterman"
 	item_path = /obj/item/clothing/suit/jacket/letterman_nanotrasen
 
+//HALLOWEEN
+
 /datum/loadout_item/suit/owl
 	name = "Owl Cloak"
 	item_path = /obj/item/clothing/suit/toggle/owlwings
