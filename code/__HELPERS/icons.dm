@@ -982,8 +982,8 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 	if(icon_id && humanoid_icon_cache[icon_id])
 		return humanoid_icon_cache[icon_id]
 // SKYRAT EDIT BEGIN - Icon Rendering Corruption Fix
-	var/mob/living/togenerate = get_mob_by_key(dummy_key)
-	var/mob/living/carbon/human/dummy/body = generate_dummy_lookalike(togenerate, togenerate)
+	var/mob/living/mob_to_copy = get_mob_by_key(dummy_key)
+	var/mob/living/carbon/human/dummy/body = generate_dummy_lookalike(mob_to_copy, mob_to_copy)
 // SKYRAT EDIT END- Icon Rendering Corruption Fix
 	if(prefs)
 		prefs.apply_prefs_to(body, TRUE)
