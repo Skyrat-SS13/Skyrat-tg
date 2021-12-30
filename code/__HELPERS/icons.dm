@@ -981,9 +981,10 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 	var/static/list/humanoid_icon_cache = list()
 	if(icon_id && humanoid_icon_cache[icon_id])
 		return humanoid_icon_cache[icon_id]
-
-	var/mob/living/carbon/human/dummy/body = generate_dummy_lookalike(REF(dummy_key), dummy_key)  // SKYRAT EDIT - FIXES CORRUPT PHOTO RECORDS
-
+// SKYRAT EDIT BEGIN - Icon Rendering Corruption Fix
+	var/mob/living/togenerate = get_mob_by_key(dummy_key)
+	var/mob/living/carbon/human/dummy/body = generate_dummy_lookalike(togenerate, togenerate)
+// SKYRAT EDIT END- Icon Rendering Corruption Fix
 	if(prefs)
 		prefs.apply_prefs_to(body, TRUE)
 
