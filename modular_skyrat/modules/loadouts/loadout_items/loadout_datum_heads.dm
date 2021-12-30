@@ -145,6 +145,10 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Flat Cap"
 	item_path = /obj/item/clothing/head/flatcap
 
+/datum/loadout_item/head/pflatcap
+	name = "Poly Flat cap"
+	item_path = /obj/item/clothing/head/polyflatc
+
 /datum/loadout_item/head/beige_fedora
 	name = "Beige Fedora"
 	item_path = /obj/item/clothing/head/fedora/beige
@@ -209,6 +213,8 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Bowler Hat"
 	item_path = /obj/item/clothing/head/bowler
 
+//HALLOWEEN
+
 /datum/loadout_item/head/bear_pelt
 	name = "Bear Pelt"
 	item_path = /obj/item/clothing/head/bearpelt
@@ -258,19 +264,9 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Beanie"
 	item_path = /obj/item/clothing/head/beanie
 
-
 /datum/loadout_item/head/beret
 	name = "Black beret"
 	item_path = /obj/item/clothing/head/beret/black
-
-/datum/loadout_item/head/flatcap
-	name = "Flat cap"
-	item_path = /obj/item/clothing/head/flatcap
-
-/datum/loadout_item/head/pflatcap
-	name = "Poly Flat cap"
-	item_path = /obj/item/clothing/head/polyflatc
-
 
 /datum/loadout_item/head/pirate
 	name = "Pirate hat"
@@ -575,7 +571,6 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Black Fedora"
 	item_path = /obj/item/clothing/head/fedora/fedblack
 
-//head
 /datum/loadout_item/head/dominacap
 	name = "Dominant cap"
 	item_path = /obj/item/clothing/head/domina_cap
