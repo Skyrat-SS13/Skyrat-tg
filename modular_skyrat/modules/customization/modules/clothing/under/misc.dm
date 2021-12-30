@@ -687,7 +687,7 @@
 	icon_state = "christmasfemaleg"
 
 
-/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/helltaker
+/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/demon
 	name = "demonic suit"
 	desc = "Stylish enough to impress the devil."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
@@ -703,7 +703,7 @@
 						"Cereberus" = "cereberus",
 						)
 
-/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/helltaker/beeze
+/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/demon/beeze
 	name = "designer demonic suit"
 	desc = "A fancy tail-coated suit with a fluffy bow emblazoned on the chest, complete with an NT pin."
 	icon_state = "beeze"
