@@ -343,7 +343,6 @@
 
 
 /datum/id_trim/away/tarkon
-	access = list(ACCESS_AWAY_GENERIC)
 	assignment = "P-T Cargo Personell"
 
 /datum/id_trim/away/tarkon/sec
