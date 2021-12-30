@@ -910,9 +910,9 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/formal/helltaker
 	name = "Demonic Suit"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/helltaker
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/demon
 
 /datum/loadout_item/under/formal/helltakerbeeze
 	name = "Designer Demonic Suit"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/helltaker/beeze
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/demon/beeze
 	restricted_roles = list(JOB_LAWYER)
