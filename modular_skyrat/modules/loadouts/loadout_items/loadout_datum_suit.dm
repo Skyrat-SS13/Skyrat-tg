@@ -471,7 +471,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	restricted_roles = list(JOB_QUARTERMASTER, JOB_SHAFT_MINER) // Reserve it to Miners and their boss, the Quartermaster
 
 /datum/loadout_item/suit/navybluejacketofficer
-	name = "Security Officer's Navyblue Jacket"
+	name = "Security Officer's Navy Blue Jacket"
 	item_path = /obj/item/clothing/suit/armor/navyblue
 	restricted_roles = list(JOB_SECURITY_OFFICER,JOB_SECURITY_MEDIC,JOB_SECURITY_SERGEANT,JOB_HEAD_OF_SECURITY, JOB_WARDEN) // I aint making a medic one, maybe i'll add some rank thing from cm or civ for it
 
