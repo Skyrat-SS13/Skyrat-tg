@@ -708,7 +708,7 @@
 
 /obj/item/gun/ballistic/shotgun/automatic/as2
 	name = "\improper M2 Auto-Shotgun"
-	desc = "A revolving automatic shotgun with a six round internal tube."
+	desc = "An automatic shotgun with a four round internal tube."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	icon_state = "as2"
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
@@ -731,7 +731,7 @@
 	name = "shotgun internal magazine"
 	caliber = CALIBER_SHOTGUN
 	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
-	max_ammo = 6
+	max_ammo = 4
 
 /obj/item/gun/ballistic/shotgun/sas14
 	name = "\improper SAS-14"
