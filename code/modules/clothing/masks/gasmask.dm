@@ -15,6 +15,8 @@
 	var/list/gas_filters
 	///Type of filter that spawns on roundstart
 	var/starting_filter_type = /obj/item/gas_filter
+	///Does the mask have an FOV?
+	var/has_fov = TRUE
 
 /obj/item/clothing/mask/gas/Initialize(mapload)
 	. = ..()
@@ -78,7 +80,8 @@
 
 /// Initializes the FoV component for the gas mask
 /obj/item/clothing/mask/gas/proc/init_fov()
-	AddComponent(/datum/component/clothing_fov_visor, FOV_90_DEGREES)
+	if (has_fov)
+		AddComponent(/datum/component/clothing_fov_visor, FOV_90_DEGREES)
 
 /**
  * Getter for overall filter durability, takes into consideration all filters filter_status
@@ -176,10 +179,8 @@
 	actions_types = list(/datum/action/item_action/adjust)
 	dog_fashion = /datum/dog_fashion/head/clown
 	species_exception = list(/datum/species/golem/bananium)
+	has_fov = FALSE
 	var/list/clownmask_designs = list()
-
-/obj/item/clothing/mask/gas/clown_hat/init_fov()
-	return
 
 /obj/item/clothing/mask/gas/clown_hat/plasmaman
 	starting_filter_type = /obj/item/gas_filter/plasmaman
@@ -226,9 +227,7 @@
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FLAMMABLE
 	species_exception = list(/datum/species/golem/bananium)
-
-/obj/item/clothing/mask/gas/sexyclown/init_fov()
-	return
+	has_fov = FALSE
 
 /obj/item/clothing/mask/gas/mime
 	name = "mime mask"
@@ -241,10 +240,8 @@
 	resistance_flags = FLAMMABLE
 	actions_types = list(/datum/action/item_action/adjust)
 	species_exception = list(/datum/species/golem)
+	has_fov = FALSE
 	var/list/mimemask_designs = list()
-
-/obj/item/clothing/mask/gas/mime/init_fov()
-	return
 
 /obj/item/clothing/mask/gas/mime/plasmaman
 	starting_filter_type = /obj/item/gas_filter/plasmaman
@@ -273,7 +270,21 @@
 		return FALSE
 
 	if(src && choice && !user.incapacitated() && in_range(user,src))
+		// SKYRAT ADDITION - More mask variations
+		var/mob/living/carbon/human/human_user = user
+		if(human_user.dna.species.mutant_bodyparts["snout"])
+			icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
+			worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask_muzzled.dmi'
+			var/list/avian_snouts = list("Beak", "Big Beak", "Corvid Beak")
+			if(human_user.dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME] in avian_snouts)
+				icon_state = "[options[choice]]_b"
+		else
+			icon = 'icons/obj/clothing/masks.dmi'
+			worn_icon = 'icons/mob/clothing/mask.dmi'
+			icon_state = options[choice]
+		/* SKYRAT ADDITION END
 		icon_state = options[choice]
+		*/
 		user.update_inv_wear_mask()
 		update_action_buttons()
 		to_chat(user, span_notice("Your Mime Mask has now morphed into [choice]!"))
@@ -297,9 +308,7 @@
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FLAMMABLE
 	species_exception = list(/datum/species/golem)
-
-/obj/item/clothing/mask/gas/sexymime/init_fov()
-	return
+	has_fov = FALSE
 
 /obj/item/clothing/mask/gas/cyborg
 	name = "cyborg visor"
