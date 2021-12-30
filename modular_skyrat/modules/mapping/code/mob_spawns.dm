@@ -341,28 +341,48 @@
     desc = "An ID card marked with the rank of Freight Deck Chief."
     trim = /datum/id_trim/job/quartermaster
 
+
+/datum/id_trim/away/tarkon
+	access = list(ACCESS_AWAY_GENERIC)
+	assignment = "P-T Cargo Personell"
+
+/datum/id_trim/away/tarkon/sec
+	assignment = "P-T Port Guard"
+
+/datum/id_trim/away/tarkon/med
+	assignment = "P-T Trauma Medic"
+
+/datum/id_trim/away/tarkon/eng
+	assignment = "P-T Maintenance Crew"
+
+/datum/id_trim/away/tarkon/sci
+	assignment = "P-T Field Researcher"
+
 /obj/item/card/id/away/tarkon/sci  //original tarkon ID is defined in fluff
-	name = "P-T Research Intern's Access Card"
+	name = "P-T Field Researcher's Access Card"
 	desc = "An access card designated for \"The Science Team\". You are forgotten basically immediately when it comes to the lab."
-	trim = /datum/id_trim/away/old/sci
+	trim = /datum/id_trim/away/tarkon/sci
 
 /obj/item/card/id/away/tarkon/med
-	name = "P-T Residential Surgeon's Access Card"
+	name = "P-T Trauma Medic's Access Card"
 	desc = "An access card designated for \"Medical Staff\". You provide the medic bags."
+	trim = /datum/id_trim/away/tarkon/med
 
 /obj/item/card/id/away/tarkon/sec
 	name = "P-T Resident Deputy's Access Card"
 	desc = "An access card designated for \"Security Members\". Everyone wants your guns, partner. Yee-haw."
-	trim = /datum/id_trim/away/old/sec
+	trim = /datum/id_trim/away/tarkon/sec
 
 /obj/item/card/id/away/tarkon/cargo
 	name = "P-T Cargo Hauler's Access Card"
 	desc = "An access card designated for \"Cargonia's Finest\". You're also a part time space miner, when cargonia is quiet."
+	trim = /datum/id_trim/away/tarkon
+
 
 /obj/item/card/id/away/tarkon/engi
 	name = "P-T Maintenance Engineer's Access Card"
 	desc = "An access card designated for \"Engineering Staff\". You're going to be the one everyone points at to fix stuff, lets be honest."
-	trim = /datum/id_trim/away/old/eng
+	trim = /datum/id_trim/away/tarkon/eng
 
 //AREAS//
 /area/ruin/space/has_grav/deepstorage/lostcargo
