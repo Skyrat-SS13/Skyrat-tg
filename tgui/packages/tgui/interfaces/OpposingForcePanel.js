@@ -625,6 +625,14 @@ export const AdminTab = (props, context) => {
                   onClick={() => act('mute_request_updates')} />
               )}
             </Stack.Item>
+            <Stack.Item>
+              <Button
+                icon="compress-arrows-alt"
+                color=""
+                tooltip="Follow User Mob"
+                content="Follow"
+                onClick={() => act('flw_user')} />
+            </Stack.Item>
           </Stack>
         </Section>
       </Stack.Item>

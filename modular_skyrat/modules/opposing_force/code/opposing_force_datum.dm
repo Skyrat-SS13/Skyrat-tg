@@ -508,7 +508,6 @@
 	send_admins_opfor_message("[span_red("DENIED")]: [ADMIN_LOOKUPFLW(denier)] has denied [ckey]'s application([reason ? reason : "No reason specified"])")
 	ticket_counter_add_handled(denier.key, 1)
 
-
 /datum/opposing_force/proc/approve(mob/approver)
 	if(status == OPFOR_STATUS_APPROVED)
 		return
@@ -805,16 +804,15 @@
 	SEND_SOUND(mind_reference.current, sound('sound/misc/bloop.ogg'))
 
 /datum/opposing_force/proc/roundend_report()
-	var/list/report = list("\n")
+	var/list/report = list("<br>")
 	report += span_greentext(mind_reference.current.name)
 	report += "<b>Had an approved OPFOR appliation with the following objectives:</b>"
 	if(objectives.len)
 		for(var/datum/opposing_force_objective/opfor_objective in objectives)
-			if(!opfor_objective.status != OPFOR_OBJECTIVE_STATUS_APPROVED)
+			if(opfor_objective.status != OPFOR_OBJECTIVE_STATUS_APPROVED)
 				continue
-			report += span_green(opfor_objective.title)
-			report += opfor_objective.description
-			report += opfor_objective.justification
+			report += "</b>Title:<b> [opfor_objective.title]"
+			report += "</b>Description:<b> [opfor_objective.description]"
 			report += "<br>"
 
 	report += "<b>And had the following approved equipment:</b>"
@@ -823,8 +821,7 @@
 		for(var/datum/opposing_force_selected_equipment/opfor_equipment in selected_equipment)
 			if(opfor_equipment.status != OPFOR_EQUIPMENT_STATUS_APPROVED)
 				continue
-			report += span_green(opfor_equipment.opposing_force_equipment.name)
-			report += opfor_equipment.reason
+			report += "</b>[opfor_objective.title]<b>"
 			report += "<br>"
 
-	return report.Join("\n")
+	return examine_block(report.Join("<br>"))
