@@ -821,7 +821,7 @@
 		for(var/datum/opposing_force_selected_equipment/opfor_equipment in selected_equipment)
 			if(opfor_equipment.status != OPFOR_EQUIPMENT_STATUS_APPROVED)
 				continue
-			report += "</b>[opfor_objective.title]<b>"
+			report += "</b>[opfor_objective.opposing_force_equipment.name]<b>"
 			report += "<br>"
 
 	return examine_block(report.Join("<br>"))
