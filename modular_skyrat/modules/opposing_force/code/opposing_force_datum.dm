@@ -583,7 +583,6 @@
 	if(!opposing_force_objective)
 		CRASH("set_objective_description tried to update a non existent opfor objective!")
 	var/sanitized_description = STRIP_HTML_SIMPLE(new_description, OPFOR_TEXT_LIMIT_DESCRIPTION)
-	add_log(user.ckey, "Updated objective([opposing_force_objective.title]) DESCRIPTION from: [opposing_force_objective.description] to: [sanitized_description]")
 	opposing_force_objective.description = sanitized_description
 	return TRUE
 
@@ -593,7 +592,6 @@
 	if(!opposing_force_objective)
 		CRASH("set_objective_description tried to update a non existent opfor objective!")
 	var/sanitize_justification = STRIP_HTML_SIMPLE(new_justification, OPFOR_TEXT_LIMIT_JUSTIFICATION)
-	add_log(user.ckey, "Updated objective([opposing_force_objective.title]) JUSTIFICATION from: [opposing_force_objective.justification] to: [sanitize_justification]")
 	opposing_force_objective.justification = sanitize_justification
 	return TRUE
 
@@ -723,7 +721,7 @@
 		if("ping_admin")
 			ping_admin(user)
 		if("ping_user")
-			ping_admin(user)
+			ping_user(user)
 		if("unlock_equipment")
 			unlock_equipment(user) // Admin only proc
 		else

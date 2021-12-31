@@ -15,7 +15,7 @@ export const OpposingForcePanel = (props, context) => {
     <Window
       title={"Opposing Force: " + creator_ckey}
       width={585}
-      height={830}
+      height={840}
       theme={owner_antag ? "syndicate" : "admin"}>
       <Window.Content>
         <Stack vertical grow mb={1}>
@@ -329,8 +329,12 @@ export const OpposingForceObjectives = (props, context) => {
               </Stack.Item>
               <Stack.Item>
                 <Stack vertical mt={2}>
-                  <Stack.Item >
+                  <Stack.Item>
                     Description
+                    <Button
+                      icon="info"
+                      tooltip="Input objective description here, be descriptive about what you want to do, such as 'Destroy the Death Star' or 'Destroy the Death Star and the Death Star Base'."
+                      color="light-gray" />
                   </Stack.Item>
                   <Stack.Item>
                     <TextArea
@@ -338,7 +342,6 @@ export const OpposingForceObjectives = (props, context) => {
                       disabled={!can_edit}
                       height="85px"
                       value={selectedObjective.description}
-                      placeholder="Input objective description here, be descriptive about what you want to do."
                       onInput={(e, value) => act('set_objective_description', {
                         objective_ref: selectedObjective.ref,
                         new_desciprtion: value,
@@ -350,12 +353,15 @@ export const OpposingForceObjectives = (props, context) => {
                 <Stack vertical mt={2}>
                   <Stack.Item>
                     Justification
+                    <Button
+                      icon="info"
+                      tooltip="Input justification for the objective here, make sure you have a good reason for the objective."
+                      color="light-gray" />
                   </Stack.Item>
                   <Stack.Item>
                     <TextArea
                       disabled={!can_edit}
                       height="85px"
-                      placeholder="Input objective justification here, ensure you have a good reason for this objective!"
                       value={selectedObjective.justification}
                       onInput={(e, value) => act('set_objective_justification', {
                         objective_ref: selectedObjective.ref,
