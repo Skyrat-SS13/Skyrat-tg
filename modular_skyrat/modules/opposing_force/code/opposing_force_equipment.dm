@@ -17,7 +17,6 @@
 	var/obj/item_type
 	/// Category of the item. See opposing_force_defines.dm for a list of categories.
 	var/category = ""
- //delete me later
 
 /**
  * GUNS
@@ -31,3 +30,33 @@
 
 /datum/opposing_force_equipment/gun/m16
 	item_type = /obj/item/gun/ballistic/automatic/assault_rifle/m16
+
+/**
+ * AMMO
+ */
+/datum/opposing_force_equipment/ammo/
+	category = OPFOR_EQUIPMENT_CATEGORY_AMMUNITION
+
+/**
+ * MELEE
+ */
+/datum/opposing_force_equipment/melee/
+	category = OPFOR_EQUIPMENT_CATEGORY_MELEE_WEAPONS
+	
+/**
+ * ARMOR AND CLOTHES
+ */
+/datum/opposing_force_equipment/clothing/
+	category = OPFOR_EQUIPMENT_CATEGORY_CLOTHING
+
+/**
+ * UTILITY
+ */
+/datum/opposing_force_equipment/gear/
+	category = OPFOR_EQUIPMENT_CATEGORY_UTILITY
+	
+/**
+ * OTHER
+ */
+/datum/opposing_force_equipment/other/
+	category = OPFOR_EQUIPMENT_CATEGORY_OTHER
