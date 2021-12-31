@@ -181,7 +181,6 @@
 	if(attached_light)
 		//This compresses it down nicely. End result is Initial(is the visor toggled)-(is the flashlight on)
 		icon_state = "[initial(icon_state)][up ? "up" : ""][attached_light.on ? "-flight-on" : "-flight"]"
-	return
 
 //Bulletproof Helmet
 /obj/item/clothing/head/helmet/alt
