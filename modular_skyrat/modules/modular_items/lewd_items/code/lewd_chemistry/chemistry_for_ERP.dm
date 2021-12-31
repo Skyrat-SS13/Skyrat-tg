@@ -74,6 +74,13 @@
 * APHRODISIACS
 */
 
+///To notify, but not harm the player in terms of mood. Used for camphor, pentacamphor, succubus milk, and incubus draft.
+/datum/mood_event/minor_overdose
+	timeout = 5 MINUTES
+
+/datum/mood_event/minor_overdose/add_effects(drug_name)
+	description = "<span class='warning'>I think I took a bit too much [drug_name]...</span>\n"
+
 //Crocin. Basic aphrodisiac with no consequences
 /datum/reagent/drug/aphrodisiac/crocin
 	name = "crocin"
@@ -261,7 +268,7 @@
 				mob_penis.girth += penis_girth_increase_step
 				mob_penis.update_sprite_suffix()
 				exposed_mob.update_body()
-				///No returns in order to continue code.
+			///No returns in order to continue code.
 			if(mob_penis?.genital_size > original_penis_length)
 				mob_penis.genital_size -= penis_size_reduction_step
 				mob_penis.update_sprite_suffix()
@@ -327,7 +334,8 @@
 * BREAST ENLARGEMENT
 * Normal function increases the player's breast size.
 * If the player's breasts are near or at the maximum size and they're wearing clothing, they press against the player's clothes and causes brute and oxygen damage.
-* Overdosing makes you female if male, sets the player's testicles to the minimum size, and shrinks the player's penis to a minimum size.
+* If gender change preference is enabled: Overdosing makes you female if male, makes the player grow breasts, sets the player's testicles to the minimum size, and shrinks the player's penis to a minimum size.
+* If the gender change preference is not enabled: Overdosing will just make you grow breasts if you don't have any.
 * Credit to Citadel for the original code before modification
 */
 
@@ -339,7 +347,7 @@
 	overdose_threshold = 20
 	metabolization_rate = 0.25
 	life_pref_datum = /datum/preference/toggle/erp/breast_enlargement
-	overdose_pref_datum = /datum/preference/toggle/erp/gender_change
+	overdose_pref_datum = /datum/preference/toggle/erp/breast_enlargement ///Changed from gender_change in order to have that as a separate feature within overdose.
 
 /datum/reagent/drug/aphrodisiac/breast_enlarger/life_effects(mob/living/carbon/human/exposed_mob) //Increases breast size
 	var/obj/item/organ/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
@@ -419,12 +427,6 @@
 /datum/reagent/drug/aphrodisiac/breast_enlarger/overdose_effects(mob/living/carbon/human/exposed_mob) //Turns you into a female if character is male. Also supposed to add breasts but enlargement_amount'm too dumb to figure out how to make it work
 	var/obj/item/organ/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
 	var/obj/item/organ/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
-	if(exposed_mob.gender == MALE)
-		exposed_mob.set_gender(FEMALE)
-		exposed_mob.body_type = exposed_mob.gender
-		exposed_mob.update_body()
-		exposed_mob.update_mutations_overlay()
-		return
 	/// Makes above comment actually work.
 	if(!exposed_mob.getorganslot(ORGAN_SLOT_BREASTS))
 		var/obj/item/organ/path = /obj/item/organ/genital/breasts
@@ -445,36 +447,45 @@
 			exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s chest suddenly bounces a bit."))
 			to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it strains against your clothes."))
 			return
-	if(!mob_penis)
+	///Separates gender change stuff from breast growth.
+	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
+		if(exposed_mob.gender == MALE)
+			exposed_mob.set_gender(FEMALE)
+			exposed_mob.body_type = exposed_mob.gender
+			exposed_mob.update_body()
+			exposed_mob.update_mutations_overlay()
+		if(!mob_penis)
+			return
+		if(mob_penis.genital_size > penis_min_length)
+			mob_penis.genital_size -= penis_size_reduction_step
+			mob_penis.update_sprite_suffix()
+			exposed_mob.update_body()
+		if(mob_penis.girth > penis_minimum_girth)
+			mob_penis.girth -= penis_girth_reduction_step
+			mob_penis.update_sprite_suffix()
+			exposed_mob.update_body()
+		if(!mob_testicles || mob_testicles.genital_size <= 1)
+			return
+		mob_testicles.genital_size -= 1
 		return
-	if(mob_penis.genital_size > penis_min_length)
-		mob_penis.genital_size -= penis_size_reduction_step
-		mob_penis.update_sprite_suffix()
-		exposed_mob.update_body()
-	if (mob_penis.girth > penis_minimum_girth)
-		mob_penis.girth -= penis_girth_reduction_step
-		mob_penis.update_sprite_suffix()
-		exposed_mob.update_body()
-	if(!mob_testicles || mob_testicles.genital_size <= 1)
-		return
-	mob_testicles.genital_size -= 1
 
 /*
 * PENIS ENLARGEMENT
 * Normal function increases the player's penis size.
 * If the player's penis is near or at the maximum size and they're wearing clothing, it presses against the player's clothes and causes brute damage.
-* Overdosing makes you male if female and shrinks the player's breasts to a minimum size.
+* If gender change preference is enabled: Overdosing makes you male if female, makes the player grow a cock, and shrinks the player's breasts to a minimum size.
+* If the gender change preference is not enabled: Overdosing will just make you grow a cock if you don't have one.
 */
 
 /datum/reagent/drug/aphrodisiac/penis_enlarger
-	name = "Incubus draft"
+	name = "incubus draft"
 	description = "A volatile collodial mixture derived from various masculine solutions that encourages a larger gentleman's package via a potent testosterone mix."
 	color = "#888888"
 	taste_description = "chinese dragon powder"
-	overdose_threshold = 17 //ODing makes you male and removes female genitals
-	metabolization_rate = 0.5
+	overdose_threshold = 20 ///ODing makes you male and shrinks female genitals if gender change prefs are enabled. Otherwise, grows a cock.
+	metabolization_rate = 0.25
 	life_pref_datum = /datum/preference/toggle/erp/penis_enlargement
-	overdose_pref_datum = /datum/preference/toggle/erp/gender_change
+	overdose_pref_datum = /datum/preference/toggle/erp/penis_enlargement ///Changed from gender_change in order to have that as a separate feature within overdose.
 
 /datum/reagent/drug/aphrodisiac/penis_enlarger/life_effects(mob/living/carbon/human/exposed_mob)
 	var/obj/item/organ/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
@@ -503,8 +514,8 @@
 		var/static/list/public_cock_action_text_list = list("expands by an inch or so.", "appears to grow a bit longer.", "seems a bit bigger than it was before.", "suddenly lengthens about an inch or two.")
 
 		if(mob_penis.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_bottomless())
-			if (mob_penis?.genital_size >= (penis_max_length - 2))
-				if (exposed_mob.dna.features["penis_sheath"] == SHEATH_SLIT)
+			if(mob_penis?.genital_size >= (penis_max_length - 2))
+				if(exposed_mob.dna.features["penis_sheath"] == SHEATH_SLIT)
 					if(mob_penis.aroused != AROUSAL_FULL)
 						to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
 					return
@@ -512,7 +523,7 @@
 				to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
 				return
 			else
-				if (exposed_mob.dna.features["penis_sheath"] == SHEATH_SLIT)
+				if(exposed_mob.dna.features["penis_sheath"] == SHEATH_SLIT)
 					if(mob_penis.aroused != AROUSAL_FULL)
 						to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
 					return
@@ -520,7 +531,7 @@
 				to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
 				return
 		else
-			if (mob_penis?.genital_size >= (penis_max_length - 2))
+			if(mob_penis?.genital_size >= (penis_max_length - 2))
 				to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
 				return
 			else
@@ -536,18 +547,12 @@
 	return ..()
 
 /datum/reagent/drug/aphrodisiac/penis_enlarger/overdose_effects(mob/living/carbon/human/exposed_mob)
-	if(exposed_mob.gender == FEMALE)
-		exposed_mob.set_gender(MALE)
-		exposed_mob.body_type = exposed_mob.gender
-		exposed_mob.update_body()
-		exposed_mob.update_mutations_overlay()
-		return
 	if(!exposed_mob.getorganslot(ORGAN_SLOT_PENIS))
 		///Check if human. If not do messy code. (This only supports lizards and human penises (for now))
 		exposed_mob.dna.features["penis_sheath"] = SHEATH_NONE
 		exposed_mob.dna.mutant_bodyparts["penis"][MUTANT_INDEX_NAME] = "Human"
 		exposed_mob.dna.mutant_bodyparts["testicles"][MUTANT_INDEX_NAME] = "Pair"
-		if ((exposed_mob.dna.species.id == SPECIES_HUMAN) && (exposed_mob.dna.species.id != SPECIES_LIZARD) && (exposed_mob.dna.species.id != SPECIES_LIZARD_ASH))
+		if((exposed_mob.dna.species.id == SPECIES_HUMAN) && (exposed_mob.dna.species.id != SPECIES_LIZARD) && (exposed_mob.dna.species.id != SPECIES_LIZARD_ASH))
 			if (!exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES))
 				var/obj/item/organ/balls_path = /obj/item/organ/genital/testicles
 				balls_path = new /obj/item/organ/genital/testicles
@@ -582,16 +587,24 @@
 	///Makes the balls bigger if they're small.
 	var/obj/item/organ/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 	if(mob_testicles)
-		if (mob_testicles.genital_size > 2)
+		if(mob_testicles.genital_size > 2)
 			return
 		mob_testicles.genital_size = 2
+	///Separates gender change stuff from cock growth.
 	var/obj/item/organ/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
-	if(!mob_breasts)
-		return
-	if(mob_breasts.genital_size > breast_minimum_size)
-		mob_breasts.genital_size -= breast_size_reduction_step
-		mob_breasts.update_sprite_suffix()
-		exposed_mob.update_body()
+	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
+		if(exposed_mob.gender == FEMALE)
+			exposed_mob.set_gender(MALE)
+			exposed_mob.body_type = exposed_mob.gender
+			exposed_mob.update_body()
+			exposed_mob.update_mutations_overlay()
+		if(!mob_breasts)
+			return
+		if(mob_breasts.genital_size > breast_minimum_size)
+			mob_breasts.genital_size -= breast_size_reduction_step
+			mob_breasts.update_sprite_suffix()
+			exposed_mob.update_body()
+			return
 
 /*
 * CHEMICAL REACTIONS
