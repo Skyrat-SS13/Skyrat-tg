@@ -90,12 +90,10 @@
 /datum/opposing_force/Topic(href, list/href_list)
 	if(href_list["admin_pref"])
 		switch(href_list["admin_pref"])
-			if("show_panel")
-				if(!check_rights(R_ADMIN))
-					send_admins_opfor_message("Detected possible HREF exploit!")
-					CRASH("Opposing_force TOPIC: Detected possible HREF exploit!")
-				ui_interact(usr)
-				return TRUE
+			if(!check_rights(R_ADMIN))
+				CRASH("Opposing_force TOPIC: Detected possible HREF exploit! ([usr])")
+			ui_interact(usr)
+			return TRUE
 
 /datum/opposing_force/proc/build_html_panel_entry()
 	var/list/opfor_entry = list("<b>[mind_reference.key]</b> - ")
@@ -118,7 +116,7 @@
 	var/list/data = list()
 
 	var/client/owner_client = GLOB.directory[ckey]
-	data["admin_mode"] = check_rights_for(user.client, R_ADMIN) && user.client != owner_client
+	data["admin_mode"] = check_rights_for(user.client, R_DEFAULT) && user.client != owner_client
 
 	data["creator_ckey"] = ckey
 
@@ -779,6 +777,9 @@
 	if(!COOLDOWN_FINISHED(src, ping_cooldown))
 		send_system_message("ERROR: Ping is on cooldown.")
 		return
+	if(request_updates_muted)
+		send_system_message("ERROR: You are muted.")
+		return
 	if(user.ckey != handling_admin && GLOB.directory[handling_admin])
 		to_chat(GLOB.directory[handling_admin], span_pink("OPFOR: [user] has pinged their OPFOR admin chat! (<a href='?src=[REF(src)];admin_pref=show_panel'>Show Panel</a>)"))
 		SEND_SOUND(GLOB.directory[handling_admin], sound('sound/misc/bloop.ogg'))
@@ -792,7 +793,7 @@
 		send_system_message("ERROR: You do not have permission to do that.")
 		return
 	send_system_message("User pinged.")
-	to_chat(mind_reference.current, span_pink("OPFOR: [get_admin_ckey(user.ckey)] has pinged your OPFOR chat, check it!"))
+	to_chat(mind_reference.current, span_pink("OPFOR: [get_admin_ckey(user)] has pinged your OPFOR chat, check it!"))
 	SEND_SOUND(mind_reference.current, sound('sound/misc/bloop.ogg'))
 
 /datum/opposing_force/proc/roundend_report()

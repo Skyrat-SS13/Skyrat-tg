@@ -112,6 +112,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	L[++L.len] = list("Closed Tickets:", "[cstatclick.update("[closed_tickets.len]")]", null, REF(cstatclick))
 	L[++L.len] = list("Resolved Tickets:", "[rstatclick.update("[resolved_tickets.len]")]", null, REF(rstatclick))
 
+	if(LAZYLEN(SSopposing_force.submitted_applications))
+		for(var/datum/opposing_force/opposing_force as anything in SSopposing_force.submitted_applications)
+			L[++L.len] = list("[opposing_force.handling_admin ? "H-[opposing_force.handling_admin]. " : ""]OPFOR: [opposing_force.ckey]", REF(opposing_force))"
+
 	return L
 
 //Reassociate still open ticket if one exists
