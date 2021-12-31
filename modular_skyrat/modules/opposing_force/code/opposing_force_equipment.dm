@@ -30,6 +30,23 @@
 
 /datum/opposing_force_equipment/gun/m16
 	item_type = /obj/item/gun/ballistic/automatic/assault_rifle/m16
+	
+/datum/opposing_force_equipment/gun/m23
+	item_type = /obj/item/gun/ballistic/shotgun/m23
+	description = "An eight round pump action shotgun found in an old station. Comes loaded with beanbag shells but can take any 12 Gauge load."
+	
+/datum/opposing_force_equipment/gun/as2
+	item_type = /obj/item/gun/ballistic/shotgun/automatic/as2
+	description = "A compact version of the combat shotgun. Comes with a 4 round tube and can be silenced as well as holstered to your belt or vest. Comes loaded with slugs but can take any 12 Gauge load."
+	
+/datum/opposing_force_equipment/gun/sas14
+	item_type = /obj/item/gun/ballistic/shotgun/sas14
+	description = "A semi automatic, mag fed shotgun chambered in 14 Gauge. Standard mags can take 5 rounds. Despite the lower damage of 14 Gauge it can take the highly praised Taser Shots."
+
+
+/datum/opposing_force_equipment/gun/ninjastar
+	item_type = /obj/item/throwing_star
+	description = "Be the maintenance ninja you always wanted to be. Does not come with multi-throwing cybernetics"
 
 /**
  * AMMO
@@ -43,6 +60,13 @@
 /datum/opposing_force_equipment/melee/
 	category = OPFOR_EQUIPMENT_CATEGORY_MELEE_WEAPONS
 	
+/datum/opposing_force_equipment/melee/switchblade
+	item_type = /obj/item/switchblade 
+
+/datum/opposing_force_equipment/melee/metalbat
+	item_type = /obj/item/melee/baseball_bat/ablative
+	description = "A highly reflective baseball bat. When you must crack skulls and run away from security in the same night."
+
 /**
  * ARMOR AND CLOTHES
  */
@@ -54,6 +78,11 @@
  */
 /datum/opposing_force_equipment/gear/
 	category = OPFOR_EQUIPMENT_CATEGORY_UTILITY
+
+
+/datum/opposing_force_equipment/gear/extendedrag
+	item_type = /obj/item/reagent_containers/glass/rag/extended  //I have to actually add this in.
+	description = "A damp rag made with extra absorbant materials. The perfectly innocent tool to kidnap your local assistant. Apply liquids and use harm intent to smother anyone not covering their mouth."
 	
 /**
  * OTHER
