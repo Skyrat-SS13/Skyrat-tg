@@ -37,11 +37,13 @@
 	
 /datum/opposing_force_equipment/gun/as2
 	item_type = /obj/item/gun/ballistic/shotgun/automatic/as2
-	description = "A compact version of the combat shotgun. Comes with a 4 round tube and can be silenced as well as holstered to your belt or vest. Comes loaded with slugs but can take any 12 Gauge load."
+	description = "A compact version of the combat shotgun. Comes with a 4 round tube and can be silenced as well as holstered to your belt or vest. \
+		Comes loaded with slugs but can take any 12 Gauge load."
 	
 /datum/opposing_force_equipment/gun/sas14
 	item_type = /obj/item/gun/ballistic/shotgun/sas14
-	description = "A semi automatic, mag fed shotgun chambered in 14 Gauge. Standard mags can take 5 rounds. Despite the lower damage of 14 Gauge it can take the highly praised Taser Shots."
+	description = "A semi automatic, mag fed shotgun chambered in 14 Gauge. Standard mags can take 5 rounds. \
+		Despite the lower damage of 14 Gauge it can take the highly praised Taser Shots."
 
 
 /datum/opposing_force_equipment/gun/ninjastar
@@ -66,7 +68,32 @@
 /datum/opposing_force_equipment/melee/metalbat
 	item_type = /obj/item/melee/baseball_bat/ablative
 	description = "A highly reflective baseball bat. When you must crack skulls and run away from security in the same night."
+	
+/datum/opposing_force_equipment/melee/esword
+	item_type = /obj/item/melee/energy/sword
+	description = "The energy sword is an edged weapon with a blade of pure energy. The sword is small enough to be \
+			pocketed when inactive. Activating it produces a loud, distinctive noise."
+			
+			
+/datum/opposing_force_equipment/melee/epirate
+	item_type = /obj/item/melee/energy/sword/pirate
+	description = "Cutlass variant of the Energy Sword. Pirate costume sold seperate. Warranty void if bought."
+	
+/datum/opposing_force_equipment/melee/cutlass
+	item_type = /obj/item/claymore/cutlass
 
+/datum/opposing_force_equipment/melee/claymore
+	item_type = /obj/item/claymore
+	description = "An extremely sharp and robust sword perfect to cleave thru any opposition. Also highly illegal."
+	
+/datum/opposing_force_equipment/melee/katana
+	item_type = /obj/item/katana
+	description = "An extremely sharp and robust sword folded over 9000 times until perfection. Highly lethal and illegal."
+
+/datum/opposing_force_equipment/melee/ekatana
+	item_type = /obj/item/energy_katana
+	description = "An Energy Katana seized from a dead Spider Clan Ninja. As well as being highly robust, it allows the \
+					user to teleport short distances using right-click."
 /**
  * ARMOR AND CLOTHES
  */
@@ -78,11 +105,32 @@
  */
 /datum/opposing_force_equipment/gear/
 	category = OPFOR_EQUIPMENT_CATEGORY_UTILITY
-
+	
+/datum/opposing_force_equipment/gear/stoolbox
+	item_type = /obj/item/storage/toolbox/syndicate
+	description = "A fully kitted toolbox scavenged from the maints by our highly paid monkies. Comes with insulated combat gloves and the toolbox \
+					itself is weighted a tad more then typical toolboxes to bash any head in."
+	
+/datum/opposing_force_equipment/gear/henade
+	item_type = /obj/item/grenade/syndieminibomb/concussion
+	
+/datum/opposing_force_equipment/gear/fragnade
+	item_type = /obj/item/grenade/frag
+	
+/datum/opposing_force_equipment/gear/radnade
+	item_type = /obj/item/grenade/gluon
+	
+/datum/opposing_force_equipment/gear/c4
+	item_type = /obj/item/grenade/c4
+	
+/datum/opposing_force_equipment/gear/x4
+	item_type = /obj/item/grenade/c4/x4
+	description = "Similar to C4, but with a stronger blast that is directional instead of circular."
 
 /datum/opposing_force_equipment/gear/extendedrag
-	item_type = /obj/item/reagent_containers/glass/rag/extended  //I have to actually add this in.
-	description = "A damp rag made with extra absorbant materials. The perfectly innocent tool to kidnap your local assistant. Apply liquids and use harm intent to smother anyone not covering their mouth."
+	item_type = /obj/item/reagent_containers/glass/rag/sus  //I have to actually add this in.
+	description = "A damp rag made with extra absorbant materials. The perfectly innocent tool to kidnap your local assistant. \
+			Apply up to 30u liquids and use harm intent to smother anyone not covering their mouth."
 	
 /**
  * OTHER
