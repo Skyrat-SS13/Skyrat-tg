@@ -1,5 +1,5 @@
 /obj/item/gun/ballistic/automatic/battle_rifle/fg42
-	name = "\improper Fallschirmjägergewehr 42"
+	name = "\improper FG 42"
 	desc = "A German paratrooper rifle designed to be used at the very least, five-hundred and fifty years ago. It's most likely reproduction, and you should be concerned more than excited to have this in your hands."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/fg42/fg42.dmi'
 	icon_state = "fg42"
@@ -29,7 +29,7 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/gun/ballistic/automatic/battle_rifle/fg42/modern
-	name = "\improper Fallschirmjägergewehr 42 MK. VII"
+	name = "\improper FG 42 MK. VII"
 	desc = "An absolute disgrace to any sane person's eyes, this is a cheap reproduction of an extremely old German paratrooper rifle filled to the brim with aftermarket parts, some of them shouldn't even be in there. Louis Stange is rolling in their grave."
 	icon_state = "fg42_modern"
 	inhand_icon_state = "fg42"
