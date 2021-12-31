@@ -17,7 +17,7 @@
 	var/obj/item_type
 	/// Category of the item. See opposing_force_defines.dm for a list of categories.
 	var/category = ""
-
+ //delete me later
 
 /**
  * GUNS
