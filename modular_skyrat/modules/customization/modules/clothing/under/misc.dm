@@ -686,7 +686,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "christmasfemaleg"
 
-
 /obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/demon
 	name = "demonic suit"
 	desc = "Stylish enough to impress the devil."
@@ -709,3 +708,10 @@
 	icon_state = "beeze"
 	obj_flags = null
 	unique_reskin = null
+
+/obj/item/clothing/under/suit/black/female/trousers //i swear this already existed, but whatever
+	name = "feminine suit"
+	desc = "Perfect for a secretary that does no work. This time with pants!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "black_suit_fem"
