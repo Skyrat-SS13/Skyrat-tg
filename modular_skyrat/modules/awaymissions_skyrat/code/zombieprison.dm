@@ -492,7 +492,6 @@
 				/obj/item/ammo_box/c9mm = 2,
 				/obj/item/ammo_box/c45 = 3,
 				/obj/item/ammo_box/magazine/wt550m9 = 1,
-				/obj/item/storage/box/lethalshot = 2,
 				/obj/item/knife/combat = 2,
 				/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 15,
 				/obj/item/clothing/head/helmet/riot = 5,
@@ -556,8 +555,6 @@
 	Remember to AHELP before you decide to run through the entire gateway or something. Try to wait at least 30 minutes into the round before you do so as well. \
 	This is not meant to be a protagonist or an antagonist.\
 	The simplemob guards are to be regarded as crazy, as they will attack you and prisoners alike.\ "
-	can_use_alias = TRUE
-	any_station_species = TRUE
 
 /datum/outfit/scalamovguard
 	name = "Scalamov Guard"
@@ -581,8 +578,6 @@
 	Remember to AHELP before you decide to run through the entire gateway or something. Try to wait at least 30 minutes into the round before you do so as well. \
 	This is not meant to be a protagonist or an antagonist.\
 	The simplemob guards are to be regarded as crazy, as they will attack you and prisoners alike.\ "
-	can_use_alias = TRUE
-	any_station_species = TRUE
 
 /datum/outfit/scalamovdoc
 	name = "Scalamov "
@@ -606,8 +601,6 @@
 	Remember to AHELP before you decide to run through the entire gateway or something. Try to wait at least 30 minutes into the round before you do so as well. \
 	This is not meant to be a protagonist or an antagonist.\
 	The simplemob guards are to be regarded as crazy, as they will attack you and prisoners alike.\ "
-	can_use_alias = TRUE
-	any_station_species = TRUE
 
 /datum/outfit/scalamovinmateally
 	name = "Scalamov Prisoner"
