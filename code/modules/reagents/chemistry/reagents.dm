@@ -229,7 +229,7 @@ Primarily used in reagents/reaction_agents
 
 /// Called when an overdose starts
 /datum/reagent/proc/overdose_start(mob/living/M)
-	///SKYRAT EDIT ADDITION: Because ERP chemicals shouldn't bear the same weight as normal / debatably more harmful chemicals.
+	///SKYRAT EDIT ADDITION: Because these chemicals shouldn't bear the same weight as normal / debatably more harmful chemicals.
 	if(name == "dopamine")///This one also shouldn't have any negative mood effect.
 		return
 	if(name == "succubus milk" || name == "incubus draft" || name == "Camphor" || name == "Pentacamphor")
