@@ -160,7 +160,7 @@ export const OpposingForceTab = (props, context) => {
             height="100px"
             value={backstory}
             placeholder="Provide a description of why you want to do bad things. Include specifics such as what lead upto the events that made you want to do bad things, think of it as though you were your character, react appropriately."
-            onInput={(_e, value) => act('set_backstory', {
+            onChange={(_e, value) => act('set_backstory', {
               backstory: value,
             })} />
         </Section>
@@ -342,7 +342,7 @@ export const OpposingForceObjectives = (props, context) => {
                       disabled={!can_edit}
                       height="85px"
                       value={selectedObjective.description}
-                      onInput={(e, value) => act('set_objective_description', {
+                      onChange={(e, value) => act('set_objective_description', {
                         objective_ref: selectedObjective.ref,
                         new_desciprtion: value,
                       })} />
@@ -363,7 +363,7 @@ export const OpposingForceObjectives = (props, context) => {
                       disabled={!can_edit}
                       height="85px"
                       value={selectedObjective.justification}
-                      onInput={(e, value) => act('set_objective_justification', {
+                      onChange={(e, value) => act('set_objective_justification', {
                         objective_ref: selectedObjective.ref,
                         new_justification: value,
                       })} />
@@ -628,7 +628,7 @@ export const AdminTab = (props, context) => {
             <Stack.Item>
               <Button
                 icon="compress-arrows-alt"
-                color=""
+                color="teal"
                 tooltip="Follow User Mob"
                 content="Follow"
                 onClick={() => act('flw_user')} />

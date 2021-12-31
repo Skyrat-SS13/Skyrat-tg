@@ -589,6 +589,7 @@
 		CRASH("set_objective_description tried to update a non existent opfor objective!")
 	var/sanitized_description = STRIP_HTML_SIMPLE(new_description, OPFOR_TEXT_LIMIT_DESCRIPTION)
 	opposing_force_objective.description = sanitized_description
+	add_log(user.ckey, "Updated objective([opposing_force_objective.title]) DESCRIPTION from: [opposing_force_objective.description] to: [sanitized_description]")
 	return TRUE
 
 /datum/opposing_force/proc/set_objective_justification(mob/user, datum/opposing_force_objective/opposing_force_objective, new_justification)
@@ -598,6 +599,7 @@
 		CRASH("set_objective_description tried to update a non existent opfor objective!")
 	var/sanitize_justification = STRIP_HTML_SIMPLE(new_justification, OPFOR_TEXT_LIMIT_JUSTIFICATION)
 	opposing_force_objective.justification = sanitize_justification
+	add_log(user.ckey, "Updated objective([opposing_force_objective.title]) JUSTIFICATION from: [opposing_force_objective.justification] to: [sanitize_justification]")
 	return TRUE
 
 /datum/opposing_force/proc/remove_objective(mob/user, datum/opposing_force_objective/opposing_force_objective)
@@ -806,22 +808,21 @@
 /datum/opposing_force/proc/roundend_report()
 	var/list/report = list("<br>")
 	report += span_greentext(mind_reference.current.name)
-	report += "<b>Had an approved OPFOR appliation with the following objectives:</b>"
 	if(objectives.len)
+		report += "<b>Had an approved OPFOR appliation with the following objectives:</b><br>"
 		for(var/datum/opposing_force_objective/opfor_objective in objectives)
 			if(opfor_objective.status != OPFOR_OBJECTIVE_STATUS_APPROVED)
 				continue
-			report += "</b>Title:<b> [opfor_objective.title]"
+			report += "</b>Title:<b> [opfor_objective.title]<br>"
 			report += "</b>Description:<b> [opfor_objective.description]"
 			report += "<br>"
 
-	report += "<b>And had the following approved equipment:</b>"
-
 	if(selected_equipment.len)
+		report += "<b>And had the following approved equipment:</b><br>"
 		for(var/datum/opposing_force_selected_equipment/opfor_equipment in selected_equipment)
 			if(opfor_equipment.status != OPFOR_EQUIPMENT_STATUS_APPROVED)
 				continue
 			report += "</b>[opfor_equipment.opposing_force_equipment.name]<b>"
 			report += "<br>"
 
-	return examine_block(report.Join("<br>"))
+	return report.Join("\n")
