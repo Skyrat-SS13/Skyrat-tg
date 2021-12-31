@@ -89,11 +89,10 @@
 
 /datum/opposing_force/Topic(href, list/href_list)
 	if(href_list["admin_pref"])
-		switch(href_list["admin_pref"])
-			if(!check_rights(R_ADMIN))
-				CRASH("Opposing_force TOPIC: Detected possible HREF exploit! ([usr])")
-			ui_interact(usr)
-			return TRUE
+		if(!check_rights(R_ADMIN))
+			CRASH("Opposing_force TOPIC: Detected possible HREF exploit! ([usr])")
+		ui_interact(usr)
+		return TRUE
 
 /datum/opposing_force/proc/build_html_panel_entry()
 	var/list/opfor_entry = list("<b>[mind_reference.key]</b> - ")
@@ -322,6 +321,13 @@
 				return
 			var/denied_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
 			deny_equipment(usr, equipment, denied_reason)
+		if("flw_user")
+			if(!check_rights(R_ADMIN))
+				return
+			flw_user(usr)
+
+/datum/opposing_force/proc/flw_user(mob/user)
+	user.client?.admin_follow(mind_reference.current)
 
 /datum/opposing_force/proc/set_equipment_count(mob/user, datum/opposing_force_selected_equipment/equipment, new_count)
 	var/sanitized_newcount = sanitize_integer(new_count, 1, OPFOR_EQUIPMENT_COUNT_LIMIT)
@@ -500,6 +506,7 @@
 	to_chat(mind_reference.current, examine_block(span_redtext("Your OPFOR application has been denied by [denier ? get_admin_ckey(denier) : "the OPFOR subsystem"]!")))
 	send_system_message(get_admin_ckey(denier) + " has denied the application with the following reason: [reason]")
 	send_admins_opfor_message("[span_red("DENIED")]: [ADMIN_LOOKUPFLW(denier)] has denied [ckey]'s application([reason ? reason : "No reason specified"])")
+	ticket_counter_add_handled(denier.key, 1)
 
 
 /datum/opposing_force/proc/approve(mob/approver)
@@ -513,6 +520,7 @@
 	to_chat(mind_reference.current, examine_block(span_greentext("Your OPFOR application has been approved by [approver ? get_admin_ckey(approver) : "the OPFOR subsystem"]!")))
 	send_system_message("[approver ? get_admin_ckey(approver) : "The OPFOR subsystem"] has approved the application")
 	send_admins_opfor_message("[span_green("APPROVED")]: [ADMIN_LOOKUPFLW(approver)] has approved [ckey]'s application")
+	ticket_counter_add_handled(approver.key, 1)
 
 /datum/opposing_force/proc/close_application(mob/user)
 	if(status == OPFOR_STATUS_NOT_SUBMITTED)
@@ -644,7 +652,7 @@
 	log_admin(msg)
 
 /datum/opposing_force/proc/send_admins_opfor_message(message)
-	message = "[span_pink("OPFOR:")] [span_admin(message)] (<a href='?src=[REF(src)];admin_pref=show_panel'>Show Panel</a>)"
+	message = "[span_pink("OPFOR:")] [span_admin("[message](<a href='?src=[REF(src)];admin_pref=show_panel'>Show Panel</a>)")]"
 	to_chat(GLOB.admins,
 		type = MESSAGE_TYPE_ADMINLOG,
 		html = message,
@@ -797,25 +805,25 @@
 	SEND_SOUND(mind_reference.current, sound('sound/misc/bloop.ogg'))
 
 /datum/opposing_force/proc/roundend_report()
-	var/list/report = list()
+	var/list/report = list("\n")
 	report += span_greentext(mind_reference.current.name)
 	report += "<b>Had an approved OPFOR appliation with the following objectives:</b>"
-	for(var/datum/opposing_force_objective/opfor_objective in objectives)
-		if(!opfor_objective.status != OPFOR_STATUS_APPROVED)
-			continue
-		report += span_green(opfor_objective.title)
-		report += opfor_objective.description
-		report += opfor_objective.justification
-		report += "<br>"
+	if(objectives.len)
+		for(var/datum/opposing_force_objective/opfor_objective in objectives)
+			if(!opfor_objective.status != OPFOR_OBJECTIVE_STATUS_APPROVED)
+				continue
+			report += span_green(opfor_objective.title)
+			report += opfor_objective.description
+			report += opfor_objective.justification
+			report += "<br>"
 
 	report += "<b>And had the following approved equipment:</b>"
 
 	if(selected_equipment.len)
 		for(var/datum/opposing_force_selected_equipment/opfor_equipment in selected_equipment)
-			if(opfor_equipment.status != OPFOR_STATUS_APPROVED)
+			if(opfor_equipment.status != OPFOR_EQUIPMENT_STATUS_APPROVED)
 				continue
 			report += span_green(opfor_equipment.opposing_force_equipment.name)
-			report += opfor_equipment.opposing_force_equipment.description
 			report += opfor_equipment.reason
 			report += "<br>"
 

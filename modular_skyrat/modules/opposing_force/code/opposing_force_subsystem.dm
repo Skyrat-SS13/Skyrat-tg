@@ -170,7 +170,7 @@ SUBSYSTEM_DEF(opposing_force)
 	opposing_force.ui_interact(viewer)
 
 /datum/controller/subsystem/opposing_force/proc/get_check_antag_listing()
-	var/list/returned_html = list()
+	var/list/returned_html = list("<br>")
 
 	returned_html += "<b>OPFOR Applications</b>"
 
