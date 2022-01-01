@@ -27,9 +27,11 @@
 
 /datum/opposing_force_equipment/gun/m1911
 	item_type = /obj/item/gun/ballistic/automatic/pistol/m1911
+	description "A semi-automatic .45 caliber pistol. Gold standard for sidearms."
 
 /datum/opposing_force_equipment/gun/m16
 	item_type = /obj/item/gun/ballistic/automatic/assault_rifle/m16
+	description = "A variable fire mode 5.56x45mm assault rifle. Surprisingly compact. Highly illegal outside of the hands of SolGov's military."
 	
 /datum/opposing_force_equipment/gun/m23
 	item_type = /obj/item/gun/ballistic/shotgun/m23
