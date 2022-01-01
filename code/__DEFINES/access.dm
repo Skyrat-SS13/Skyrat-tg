@@ -84,6 +84,8 @@
 #define ACCESS_ORDNANCE_STORAGE 71
 /// Room and launching.
 #define ACCESS_AUX_BASE 72
+/// Service access, for service hallway and service consoles
+#define ACCESS_SERVICE 73
 
 // SKYRAT EDIT: Start - Modular Access (See Blueshield module for theirs)
 #define ACCESS_ENTER_GENPOP 80
@@ -280,8 +282,13 @@
 	ACCESS_ATMOSPHERICS, \
 	ACCESS_ORDNANCE_STORAGE, \
 	ACCESS_ORDNANCE, \
+<<<<<<< HEAD
 	ACCESS_BARBER, \
 ) // SKYRAT EDIT ADD ACCESS_BARBER
+=======
+	ACCESS_SERVICE, \
+)
+>>>>>>> 83187623a61 (adds a common SERVICE access, for service hall and service cargo console. (#63678))
 
 /// Command staff/secure accesses, think bridge/armoury, AI upload, notably access to modify ID cards themselves. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_COMMAND)
 #define COMMAND_ACCESS list( \
