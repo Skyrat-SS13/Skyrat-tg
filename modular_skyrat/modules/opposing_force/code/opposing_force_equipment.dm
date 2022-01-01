@@ -49,6 +49,12 @@
 /datum/opposing_force_equipment/gun/ninjastar
 	item_type = /obj/item/throwing_star
 	description = "Be the maintenance ninja you always wanted to be. Does not come with multi-throwing cybernetics"
+	
+
+/datum/opposing_force_equipment/gun/origami
+	item_type = /obj/item/storage/box/syndie_kit/origami_bundle
+	description = "This box contains a guide on how to craft masterful works of origami, allowing you to transform normal pieces of paper into \
+			perfectly aerodynamic (and potentially lethal) paper airplanes."
 
 /**
  * AMMO
@@ -73,8 +79,7 @@
 	item_type = /obj/item/melee/energy/sword
 	description = "The energy sword is an edged weapon with a blade of pure energy. The sword is small enough to be \
 			pocketed when inactive. Activating it produces a loud, distinctive noise."
-			
-			
+				
 /datum/opposing_force_equipment/melee/epirate
 	item_type = /obj/item/melee/energy/sword/pirate
 	description = "Cutlass variant of the Energy Sword. Pirate costume sold seperate. Warranty void if bought."
@@ -94,6 +99,23 @@
 	item_type = /obj/item/energy_katana
 	description = "An Energy Katana seized from a dead Spider Clan Ninja. As well as being highly robust, it allows the \
 					user to teleport short distances using right-click."
+					
+/datum/opposing_force_equipment/melee/vibro
+	item_type =/obj/item/vibro_weapon
+	description = "A high frequency vibrating sword. Able to cut through any and all materials but lacks the robustness of other swords. Can be wielded to deflect gunfire"
+
+//martialarts
+
+/datum/opposing_force_equipment/melee/cqc
+	item_type = /obj/item/book/granter/martial/cqc
+	description = "A manual that teaches a single user tactical Close-Quarters Combat before self-destructing."
+
+/datum/opposing_force_equipment/melee/carp
+	item_type = /obj/item/book/granter/martial/carp
+	description = "This scroll contains the secrets of an ancient martial arts technique. You will master unarmed combat \
+			and gain the ability to swat bullets from the air, but you will also refuse to use dishonorable ranged weaponry."
+
+
 /**
  * ARMOR AND CLOTHES
  */
@@ -110,6 +132,15 @@
 	item_type = /obj/item/storage/toolbox/syndicate
 	description = "A fully kitted toolbox scavenged from the maints by our highly paid monkies. Comes with insulated combat gloves and the toolbox \
 					itself is weighted a tad more then typical toolboxes to bash any head in."
+					
+/datum/opposing_force_equipment/gear/engichip
+	item_type = /obj/item/skillchip/job/engineer
+	description = "A skillchip, when installed, that lets the user read off what each wire does in doors. Highly valuable and sought after."
+
+/datum/opposing_force_equipment/gear/stoolbox
+	item_type = /obj/item/clothing/glasses/thermal/xray
+					
+//BOMBS!EXPLOSIVES!!WOOOO!!one!
 	
 /datum/opposing_force_equipment/gear/henade
 	item_type = /obj/item/grenade/syndieminibomb/concussion
@@ -137,3 +168,5 @@
  */
 /datum/opposing_force_equipment/other/
 	category = OPFOR_EQUIPMENT_CATEGORY_OTHER
+	
+	//WHAT DO WE PUT HERE? MAYBE ADD EXPLOSIVES AS ITS CATEGORY?
