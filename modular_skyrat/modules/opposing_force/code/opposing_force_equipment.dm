@@ -317,7 +317,7 @@
 	description = "Similar to C4, but with a stronger blast that is directional instead of circular."
 
 /datum/opposing_force_equipment/gear/extendedrag
-	item_type = /obj/item/reagent_containers/glass/rag/shamwow  
+	item_type = /obj/item/reagent_containers/glass/rag/sus  
 	description = "A damp rag made with extra absorbant materials. The perfectly innocent tool to kidnap your local assistant. \
 			Apply up to 30u liquids and use combat mode to smother anyone not covering their mouth."
 	
