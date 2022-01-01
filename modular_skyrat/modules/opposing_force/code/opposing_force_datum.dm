@@ -411,14 +411,15 @@
 /datum/opposing_force/proc/issue_gear(mob/user)
 	if(!selected_equipment.len || !isliving(mind_reference.current) || status != OPFOR_STATUS_APPROVED || equipment_issued)
 		return
-	var/obj/item/storage/box/spawned_box = new(get_turf(user))
+	var/mob/living/target = mind_reference.current
+	var/obj/item/storage/box/spawned_box = new(get_turf(target))
 	for(var/datum/opposing_force_selected_equipment/iterating_equipment as anything in selected_equipment)
 		if(iterating_equipment.status != OPFOR_EQUIPMENT_STATUS_APPROVED)
 			continue
 		for(var/i in 1 to iterating_equipment.count)
 			new iterating_equipment.opposing_force_equipment.item_type(spawned_box)
-	if(ishuman(user))
-		var/mob/living/carbon/human/human = user
+	if(ishuman(target))
+		var/mob/living/carbon/human/human = target
 		human.put_in_hands(spawned_box)
 
 	add_log(user.ckey, "Issued gear")

@@ -1,5 +1,5 @@
 /client/proc/request_more_opfor()
-	set category = "Admin.fun"
+	set category = "Admin.Fun"
 	set name = "Request OPFOR"
 	set desc = "Request players sign up for opfor if they have antag on."
 
