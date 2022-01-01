@@ -179,6 +179,11 @@
 /datum/opposing_force_equipment/clothing/helmet
 	item_type = /obj/item/clothing/head/helmet/swat
 	description = "A red-striped SWAT helmet. More robust than the standard-issue Nanotrasen security issue helmet, and spaceproof to boot."
+	
+/datum/opposing_force_equipment/clothing/extraheavy
+	item_type = /obj/item/clothing/head/helmet/nri_heavy
+	description = "A specialized ultra-heavy composite ballistic helmet stolen from space russians. Purpose-built for heavy duty combat, \
+				or murder with a frying pan."
 
 /**
  * UTILITY
