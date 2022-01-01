@@ -340,7 +340,7 @@
 /datum/opposing_force_equipment/other/tc5
 	item_type = item = /obj/item/stack/telecrystal/five
 	name = "5 Raw Telecrystals"
-	description = "A bunch of telecrystals in its rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	description = "A bunch of telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
 
 /datum/opposing_force_equipment/other/tc20
 	item_type = item = /obj/item/stack/telecrystal/twenty
