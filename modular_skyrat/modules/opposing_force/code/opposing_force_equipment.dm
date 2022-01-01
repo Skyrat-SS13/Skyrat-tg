@@ -47,7 +47,7 @@
 	description = "A semi automatic, mag fed shotgun chambered in 14 Gauge. Standard mags can take 5 rounds. \
 		Despite the lower damage of 14 Gauge it can take the highly praised Taser Shots."
 		
-/datum/opposing_force_equipment/gun/357
+/datum/opposing_force_equipment/gun/g357
 	item_type = /obj/item/gun/ballistic/revolver
 	description = "A .357 magnum revolver. Seven shots, more than enough to kill anything that moves."
 	
