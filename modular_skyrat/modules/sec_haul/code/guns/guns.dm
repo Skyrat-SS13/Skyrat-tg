@@ -693,7 +693,7 @@
 
 /obj/item/gun/ballistic/shotgun/m23
 	name = "\improper Model 23-37"
-	desc = "A common outdated police shotgun sporting an eight-round tube."
+	desc = "A common outdated police shotgun sporting a six-round tube."
 	icon_state = "riotshotgun"
 	inhand_icon_state = "shotgun"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/m23
@@ -702,13 +702,13 @@
 
 /obj/item/ammo_box/magazine/internal/shot/m23
 	name = "m23 shotgun internal magazine"
-	caliber = CALIBER_14GAUGE
-	ammo_type = /obj/item/ammo_casing/s14gauge
+	caliber = CALIBER_SHOTGUN
+	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
 	max_ammo = 6
 
 /obj/item/gun/ballistic/shotgun/automatic/as2
 	name = "\improper M2 Auto-Shotgun"
-	desc = "A revolving automatic shotgun with a six round internal tube."
+	desc = "An automatic shotgun with a four round internal tube."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	icon_state = "as2"
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
@@ -729,13 +729,13 @@
 
 /obj/item/ammo_box/magazine/internal/shot/as2
 	name = "shotgun internal magazine"
-	caliber = CALIBER_14GAUGE
-	ammo_type = /obj/item/ammo_casing/s14gauge
+	caliber = CALIBER_SHOTGUN
+	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
 	max_ammo = 4
 
 /obj/item/gun/ballistic/shotgun/sas14
 	name = "\improper SAS-14"
-	desc = "A revolving automatic shotgun with a six round box magazine."
+	desc = "A pump action shotgun with a five round box magazine."
 	icon =  'modular_skyrat/modules/sec_haul/icons/guns/sas14.dmi'
 	icon_state = "sas14"
 	inhand_icon_state = "shotgun"
