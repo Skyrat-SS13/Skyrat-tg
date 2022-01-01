@@ -40,12 +40,12 @@
 /datum/opposing_force_equipment/gun/as2
 	item_type = /obj/item/gun/ballistic/shotgun/automatic/as2
 	description = "A compact version of the combat shotgun. Comes with a four-round tube and can be silenced as well as holstered to your belt or vest. \
-		Comes loaded with slugs but can take any 12 Gauge load."
+		Comes loaded with slugs but can take any 12 gauge load."
 	
 /datum/opposing_force_equipment/gun/sas14
 	item_type = /obj/item/gun/ballistic/shotgun/sas14
-	description = "A semi automatic, mag fed shotgun chambered in 14 Gauge. Standard mags can take 5 rounds. \
-		Despite the lower damage of 14 Gauge it can take the highly praised Taser Shots."
+	description = "A semi-automatic, magazine-fed shotgun chambered in 14 gauge. Standard mags can take five rounds. \
+		Despite the lower damage of 14 gauge, it can load the highly praised taser shots."
 		
 /datum/opposing_force_equipment/gun/g357
 	item_type = /obj/item/gun/ballistic/revolver
@@ -61,7 +61,7 @@
 	
 /datum/opposing_force_equipment/gun/origami
 	item_type = /obj/item/storage/box/syndie_kit/origami_bundle
-	description = "This box contains a guide on how to craft masterful works of origami, allowing you to transform normal pieces of paper into \
+	description = "A box containing a guide on how to craft masterful works of origami, allowing you to transform normal pieces of paper into \
 			perfectly aerodynamic (and potentially lethal) paper airplanes."
 			
 
@@ -74,11 +74,11 @@
 
 /datum/opposing_force_equipment/ammo/m16
 	item_type = /obj/item/ammo_box/magazine/m16
-	description = "A twenty round magazine for the M16 assault rifle. Uses 5.56x45mm ammunition."
+	description = "A twenty-round magazine for the M16 assault rifle. Uses 5.56x45mm ammunition."
 
 /datum/opposing_force_equipment/ammo/m45
 	item_type = /obj/item/ammo_box/magazine/m45
-	description = "An eight round magazine for the M1911 pistol. Uses .45 caliber ammunition."
+	description = "An eight-round magazine for the M1911 pistol. Uses .45 caliber ammunition."
 
 /datum/opposing_force_equipment/ammo/m9mm
 	item_type = /obj/item/ammo_box/magazine/uzim9mm
@@ -86,16 +86,16 @@
 
 /datum/opposing_force_equipment/ammo/a357
 	item_type = /obj/item/ammo_box/a357
-	description = "A seven round .357 magnum speedloader for a revolver."
+	description = "A seven-round .357 magnum speedloader for a revolver."
 
 /datum/opposing_force_equipment/ammo/a357match
 	item_type = /obj/item/ammo_box/a357/match
-	description = "A seven round .357 magnum speedloader for a revolver, loaded with match-grade ammunition that bounces off of walls several times."
+	description = "A seven-round .357 magnum speedloader for a revolver, loaded with match-grade ammunition that bounces off walls several times."
 
 /**
  * MELEE
  */
-/datum/opposing_force_equipment/melee/
+/datum/opposing_force_equipment/melee
 	category = OPFOR_EQUIPMENT_CATEGORY_MELEE_WEAPONS
 	
 /datum/opposing_force_equipment/melee/switchblade
@@ -103,7 +103,7 @@
 
 /datum/opposing_force_equipment/melee/metalbat
 	item_type = /obj/item/melee/baseball_bat/ablative
-	description = "A highly reflective baseball bat. When you must crack skulls and run away from security in the same night."
+	description = "A highly reflective baseball bat for when you need to crack skulls and run away from security in the same night."
 	
 /datum/opposing_force_equipment/melee/esword
 	item_type = /obj/item/melee/energy/sword
@@ -112,27 +112,27 @@
 				
 /datum/opposing_force_equipment/melee/epirate
 	item_type = /obj/item/melee/energy/sword/pirate
-	description = "Cutlass variant of the Energy Sword. Pirate costume sold seperate. Warranty void if bought."
+	description = "A variant of the energy sword styled as a cutlass. Pirate costume sold separately. Warranty void if bought."
 	
 /datum/opposing_force_equipment/melee/cutlass
 	item_type = /obj/item/claymore/cutlass
 
 /datum/opposing_force_equipment/melee/claymore
 	item_type = /obj/item/claymore
-	description = "An extremely sharp and robust sword perfect to cleave thru any opposition. Also highly illegal."
+	description = "An extremely sharp and robust sword perfect to cleave through any opposition. Also highly illegal."
 	
 /datum/opposing_force_equipment/melee/katana
 	item_type = /obj/item/katana
-	description = "An extremely sharp and robust sword folded over 9000 times until perfection. Highly lethal and illegal."
+	description = "An extremely sharp and robust sword folded over nine thousand times until perfection. Highly lethal and illegal."
 
 /datum/opposing_force_equipment/melee/ekatana
 	item_type = /obj/item/energy_katana
-	description = "An Energy Katana seized from a dead Spider Clan Ninja. As well as being highly robust, it allows the \
+	description = "An energy katana seized from a dead Spider Clan ninja. As well as being highly robust, it allows the \
 					user to teleport short distances using right-click."
 					
 /datum/opposing_force_equipment/melee/vibro
 	item_type = /obj/item/vibro_weapon
-	description = "A high frequency vibrating sword. Able to cut through any and all materials but lacks the robustness of other swords. Can be wielded to deflect gunfire"
+	description = "A high-frequency vibrating sword. Able to cut through any and all materials, but lacks the robustness of other swords. Can be wielded to deflect gunfire."
 	
 /datum/opposing_force_equipment/melee/eswordarm
 	item_type = /obj/item/autosurgeon/organ/syndicate/esword_arm
@@ -159,7 +159,7 @@
 	
 /datum/opposing_force_equipment/clothing/vest
 	item_type = /obj/item/clothing/suit/armor/vest
-	description = "A basic Type-1 armored vest for all manners of protection."
+	description = "A basic type-1 armored vest, rated for all manner of protections."
 	
 /datum/opposing_force_equipment/clothing/ballistic
 	item_type = /obj/item/clothing/suit/armor/bulletproof
@@ -177,7 +177,7 @@
 	name = "Infiltrator Gear"
 	item_type = /obj/item/storage/toolbox/infiltrator
 	description = "A box of equipment specially made for an infiltration expert, including sound-insulated boots, nanochip apprehension gloves, \
-				and a voice-masking balaclava.Too bad it's made in such a red color..."
+				and a voice-masking balaclava. Too bad it's made in such a red color..."
 	
 /datum/opposing_force_equipment/clothing/helmet
 	item_type = /obj/item/clothing/head/helmet/swat
@@ -204,7 +204,7 @@
 /datum/opposing_force_equipment/clothing/nriberet
 	item_type = /obj/item/clothing/head/beret/sec/nri
 	name = "NRI Commander Beret"
-	description = "An armored beret worn by high ranking NRI officers"
+	description = "An armored beret worn by high-ranking NRI officers"
 	
 /datum/opposing_force_equipment/clothing/reduthelm
 	item_type = /obj/item/clothing/head/helmet/nri_heavy
@@ -227,7 +227,7 @@
 
 /datum/opposing_force_equipment/clothing/holster
 	item_type = /obj/item/storage/belt/holster/chameleon
-	description = "A chameleon holster that fits into your belt designed to hold one sidearm and a spare load of ammo for it. Also allows you to spin \
+	description = "A chameleon holster that fits into your belt. Designed to hold one sidearm and a spare load of ammunition, it also allows you to spin \
 				your revolver, if you have one."
 				
 /datum/opposing_force_equipment/clothing/holsternk
@@ -246,12 +246,12 @@
 	
 /datum/opposing_force_equipment/gear/stoolbox
 	item_type = /obj/item/storage/toolbox/syndicate
-	description = "A fully kitted toolbox scavenged from the maints by our highly paid monkies. Comes with insulated combat gloves and the toolbox \
-					itself is weighted a tad more then typical toolboxes to bash any head in."
+	description = "A fully-kitted toolbox scavenged from maintenance by our highly-paid monkeys. The toolbox \
+					itself is weighted especially to bash any head in and comes with a free pair of insulated combat gloves."
 					
 /datum/opposing_force_equipment/gear/engichip
 	item_type = /obj/item/skillchip/job/engineer
-	description = "A skillchip, when installed, that lets the user read off what each wire does in doors. Highly valuable and sought after."
+	description = "A skillchip that, when installed, allows the user to recognise airlock and APC wire layouts and understand their functionality at a glance. Highly valuable and sought after."
 
 /datum/opposing_force_equipment/gear/thermalgoggles
 	item_type = /obj/item/clothing/glasses/thermal
@@ -263,11 +263,11 @@
 	
 /datum/opposing_force_equipment/gear/thermalgogglessyndi
 	item_type = /obj/item/clothing/glasses/thermal/syndi
-	description = "A pair of thermal goggles. Syndicate variant, which comes with the chameleon disguse module." 
+	description = "A Syndicate take on the classic thermal goggles, complete with chameleon disguise functionality." 
 	
 /datum/opposing_force_equipment/gear/cloakerbelt
 	item_type = /obj/item/shadowcloak
-	description = "A belt that allows it's wearer to temporarily turn invisible. Only recharges in dark areas, use wisely."
+	description = "A belt that allows its wearer to temporarily turn invisible. Only recharges in dark areas. Use wisely."
 	
 /datum/opposing_force_equipment/gear/projector
 	item_type = /obj/item/chameleon
