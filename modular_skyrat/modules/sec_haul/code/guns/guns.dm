@@ -708,7 +708,7 @@
 
 /obj/item/gun/ballistic/shotgun/automatic/as2
 	name = "\improper M2 Auto-Shotgun"
-	desc = "A semi-automatic shotgun with a four round internal tube."
+	desc = "A semi-automatic shotgun with a four-round internal tube."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	icon_state = "as2"
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
