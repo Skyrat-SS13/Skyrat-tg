@@ -174,6 +174,7 @@
 	description = "A superheavy armor suit purpose-built to ensure all injuries are pushovers. WARNING: Not spaceproof."
 	
 /datum/opposing_force_equipment/clothing/infiltrator
+	name = "Infiltrator Gear"
 	item_type = /obj/item/storage/toolbox/infiltrator
 	description = "A box of equipment specially made for an infiltration expert, including sound-insulated boots, nanochip apprehension gloves, \
 				and a voice-masking balaclava.Too bad it's made in such a red color..."
@@ -182,21 +183,33 @@
 	item_type = /obj/item/clothing/head/helmet/swat
 	description = "A red-striped SWAT helmet. More robust than the standard-issue Nanotrasen security issue helmet, and spaceproof to boot."
 	
+/datum/opposing_force_equipment/clothing/syndierig
+	item_type = /obj/item/storage/belt/military
+	
+/datum/opposing_force_equipment/clothing/assaultbelt
+	item_type = /obj/item/storage/belt/military/assault
+	
+/datum/opposing_force_equipment/clothing/bandolier
+	item_type = /obj/item/storage/belt/bandolier
+	
+/datum/opposing_force_equipment/clothing/bandolier
+	item_type = /obj/item/storage/belt/grenade
+	description = "A belt for holding grenades. Does not come with grenades unfortunately."
+	
 //NRI larping equipment here	
-
-
-/datum/opposing_force_equipment/clothing/reduthelm
-	item_type = /obj/item/clothing/head/helmet/nri_heavy
-	description = "A specialized ultra-heavy composite ballistic helmet stolen from space russians. Purpose-built for heavy duty combat, \
-				or murder with a frying pan."
-				
+			
 /datum/opposing_force_equipment/clothing/nrihelm
 	item_type = /obj/item/clothing/head/helmet/rus_helmet/nri
 	
 /datum/opposing_force_equipment/clothing/nriberet
 	item_type = /obj/item/clothing/head/beret/sec/nri
 	name = "NRI Commander Beret"
-	description = "An armored beret worn by high ranking NRI officers."
+	description = "An armored beret worn by high ranking NRI officers
+	
+/datum/opposing_force_equipment/clothing/reduthelm
+	item_type = /obj/item/clothing/head/helmet/nri_heavy
+	description = "A specialized ultra-heavy composite ballistic helmet stolen from space russians. Purpose-built for heavy duty combat, \
+				or murder with a frying pan."
 
 /datum/opposing_force_equipment/clothing/nrivest
 	item_type = /obj/item/clothing/suit/armor/vest/russian/nri
@@ -217,6 +230,11 @@
 	description = "A chameleon holster that fits into your belt designed to hold one sidearm and a spare load of ammo for it. Also allows you to spin \
 				your revolver, if you have one."
 				
+/datum/opposing_force_equipment/clothing/holsternk
+	item_type = /obj/item/storage/belt/holster/nukie
+	description = "A holster retrieved from a nuclear operative. Able to hold any two types of weaponry or ammo as long as it is not extremely large. \
+					Expect security to be not so friendly if they see you wearing one of these..."
+				
 /datum/opposing_force_equipment/clothing/gunman
 	item_type = /obj/item/storage/box/syndie_kit/gunman_outfit //we need a proper loadout tab
 
@@ -235,9 +253,17 @@
 	item_type = /obj/item/skillchip/job/engineer
 	description = "A skillchip, when installed, that lets the user read off what each wire does in doors. Highly valuable and sought after."
 
+/datum/opposing_force_equipment/gear/thermalgoggles
+	item_type = /obj/item/clothing/glasses/thermal
+	description = "A pair of thermal goggles. Cannot be chameleon disguised." 
+
 /datum/opposing_force_equipment/gear/xraygoggles
 	item_type = /obj/item/clothing/glasses/thermal/xray
 	description = "A pair of low-light x-ray goggles manufactured by the Syndicate. Cannot be chameleon disguised. Makes wearer more vulnerable to bright lights."
+	
+/datum/opposing_force_equipment/gear/thermalgogglessyndi
+	item_type = /obj/item/clothing/glasses/thermal/syndi
+	description = "A pair of thermal goggles. Syndicate variant, which comes with the chameleon disguse module." 
 	
 /datum/opposing_force_equipment/gear/cloakerbelt
 	item_type = /obj/item/shadowcloak
