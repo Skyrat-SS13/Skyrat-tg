@@ -199,7 +199,7 @@
 //NRI larping equipment here	
 			
 /datum/opposing_force_equipment/clothing/nrihelm
-	item_type = /obj/item/clothing/head/helmet/rus_helmet/nri
+	item_type = /obj/item/clothing/head/helmet/rus_helmet/nri"
 	
 /datum/opposing_force_equipment/clothing/nriberet
 	item_type = /obj/item/clothing/head/beret/sec/nri
