@@ -735,7 +735,7 @@
 
 /obj/item/gun/ballistic/shotgun/sas14
 	name = "\improper SAS-14"
-	desc = "A semi-automatic shotgun with a five round box magazine."
+	desc = "A semi-automatic shotgun with a five-round box magazine."
 	icon =  'modular_skyrat/modules/sec_haul/icons/guns/sas14.dmi'
 	icon_state = "sas14"
 	inhand_icon_state = "shotgun"
