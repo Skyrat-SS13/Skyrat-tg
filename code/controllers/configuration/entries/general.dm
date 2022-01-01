@@ -562,3 +562,12 @@
 /datum/config_entry/string/adminhelp_webhook_pfp
 
 /datum/config_entry/string/adminhelp_webhook_name
+<<<<<<< HEAD
+=======
+
+/datum/config_entry/flag/cache_assets
+	default = TRUE
+
+/datum/config_entry/flag/station_name_in_hub_entry
+	default = FALSE
+>>>>>>> fc882d9ee04 (Add config entry to hide the station name in the hub entry (#63735))
