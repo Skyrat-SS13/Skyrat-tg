@@ -216,6 +216,9 @@
 	item_type = /obj/item/storage/belt/holster/chameleon
 	description = "A chameleon holster that fits into your belt designed to hold one sidearm and a spare load of ammo for it. Also allows you to spin \
 				your revolver, if you have one."
+				
+/datum/opposing_force_equipment/clothing/gunman
+	item_type = /obj/item/storage/box/syndie_kit/gunman_outfit //we need a proper loadout tab
 
 /**
  * UTILITY
@@ -288,7 +291,7 @@
 	description = "Similar to C4, but with a stronger blast that is directional instead of circular."
 
 /datum/opposing_force_equipment/gear/extendedrag
-	item_type = /obj/item/reagent_containers/glass/rag/sus  //I have to actually add this in.
+	item_type = /obj/item/reagent_containers/glass/rag/shamwow  
 	description = "A damp rag made with extra absorbant materials. The perfectly innocent tool to kidnap your local assistant. \
 			Apply up to 30u liquids and use harm intent to smother anyone not covering their mouth."
 	
