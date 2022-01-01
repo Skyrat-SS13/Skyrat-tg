@@ -345,5 +345,5 @@
 /datum/opposing_force_equipment/other/tc20
 	item_type = item = /obj/item/stack/telecrystal/twenty
 	name = "20 Raw Telecrystals"
-	description = "A bundle of telecrystals in its rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	description = "A bundle of telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
 	//WHAT DO WE PUT HERE? MAYBE ADD EXPLOSIVES AS ITS CATEGORY?
