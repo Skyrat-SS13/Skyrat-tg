@@ -27,9 +27,11 @@
 
 /datum/opposing_force_equipment/gun/m1911
 	item_type = /obj/item/gun/ballistic/automatic/pistol/m1911
+	description "A semi-automatic .45 caliber pistol. Gold standard for sidearms."
 
 /datum/opposing_force_equipment/gun/m16
 	item_type = /obj/item/gun/ballistic/automatic/assault_rifle/m16
+	description = "A variable fire mode 5.56x45mm assault rifle. Surprisingly compact. Highly illegal outside of the hands of SolGov's military."
 	
 /datum/opposing_force_equipment/gun/m23
 	item_type = /obj/item/gun/ballistic/shotgun/m23
@@ -44,23 +46,54 @@
 	item_type = /obj/item/gun/ballistic/shotgun/sas14
 	description = "A semi automatic, mag fed shotgun chambered in 14 Gauge. Standard mags can take 5 rounds. \
 		Despite the lower damage of 14 Gauge it can take the highly praised Taser Shots."
-
+		
+/datum/opposing_force_equipment/gun/g357
+	item_type = /obj/item/gun/ballistic/revolver
+	description = "A .357 magnum revolver. Seven shots, more than enough to kill anything that moves."
+	
+/datum/opposing_force_equipment/gun/uzi
+	item_type = /obj/item/gun/ballistic/automatic/mini_uzi
+	description = "The uzi nine millimeter, a timeless submachinegun for a warrior out of time."
 
 /datum/opposing_force_equipment/gun/ninjastar
 	item_type = /obj/item/throwing_star
 	description = "Be the maintenance ninja you always wanted to be. Does not come with multi-throwing cybernetics"
 	
-
 /datum/opposing_force_equipment/gun/origami
 	item_type = /obj/item/storage/box/syndie_kit/origami_bundle
 	description = "This box contains a guide on how to craft masterful works of origami, allowing you to transform normal pieces of paper into \
 			perfectly aerodynamic (and potentially lethal) paper airplanes."
+			
+/datum/opposing_force_equipment/gun/holster
+	item_type = /obj/item/storage/belt/holster/chameleon
+	description = "A chameleon holster that fits into your belt designed to hold one sidearm and a spare load of ammo for it. Also allows you to spin \
+				your revolver, if you have one."
 
 /**
  * AMMO
  */
 /datum/opposing_force_equipment/ammo/
 	category = OPFOR_EQUIPMENT_CATEGORY_AMMUNITION
+
+/datum/opposing_force_equipment/ammo/m16
+	item_type = /obj/item/ammo_box/magazine/m16
+	description = "A twenty round magazine for the M16 assault rifle. Uses 5.56x45mm ammunition."
+
+/datum/opposing_force_equipment/ammo/m45
+	item_type = /obj/item/ammo_box/magazine/m45
+	description = "An eight round magazine for the M1911 pistol. Uses .45 caliber ammunition."
+
+/datum/opposing_force_equipment/ammo/m9mm
+	item_type = /obj/item/ammo_box/magazine/uzim9mm
+	description = "A thirty-two round magazine for the mini uzi. Uses 9x19mm ammunition."
+
+/datum/opposing_force_equipment/ammo/a357
+	item_type = /obj/item/ammo_box/a357
+	description = "A seven round .357 magnum speedloader for a revolver."
+
+/datum/opposing_force_equipment/ammo/a357match
+	item_type = /obj/item/ammo_box/a357/match
+	description = "A seven round .357 magnum speedloader for a revolver, loaded with match-grade ammunition that bounces off of walls several times."
 
 /**
  * MELEE
@@ -121,6 +154,36 @@
  */
 /datum/opposing_force_equipment/clothing/
 	category = OPFOR_EQUIPMENT_CATEGORY_CLOTHING
+	
+/datum/opposing_force_equipment/clothing/vest
+	item_type = /obj/item/clothing/suit/armor/vest
+	description = "A basic Type-1 armored vest for all manners of protection."
+	
+/datum/opposing_force_equipment/clothing/ballistic
+	item_type = /obj/item/clothing/suit/armor/bulletproof
+	description = "A bulletproof vest, for the aspiring warfighter."
+	
+/datum/opposing_force_equipment/clothing/laser
+	item_type = /obj/item/clothing/suit/armor/laserproof
+	description = "A laserproof vest, for the aspiring bane of security."
+	
+/datum/opposing_force_equipment/clothing/heavy
+	item_type = /obj/item/clothing/suit/armor/heavy
+	description = "A superheavy armor suit purpose-built to ensure all injuries are pushovers. WARNING: Not spaceproof."
+	
+/datum/opposing_force_equipment/clothing/infiltrator
+	item_type = /obj/item/storage/toolbox/infiltrator
+	description = "A box of equipment specially made for an infiltration expert, including sound-insulated boots, nanochip apprehension gloves, \
+				and a voice-masking balaclava."
+	
+/datum/opposing_force_equipment/clothing/helmet
+	item_type = /obj/item/clothing/head/helmet/swat
+	description = "A red-striped SWAT helmet. More robust than the standard-issue Nanotrasen security issue helmet, and spaceproof to boot."
+	
+/datum/opposing_force_equipment/clothing/extraheavy
+	item_type = /obj/item/clothing/head/helmet/nri_heavy
+	description = "A specialized ultra-heavy composite ballistic helmet stolen from space russians. Purpose-built for heavy duty combat, \
+				or murder with a frying pan."
 
 /**
  * UTILITY
@@ -137,22 +200,56 @@
 	item_type = /obj/item/skillchip/job/engineer
 	description = "A skillchip, when installed, that lets the user read off what each wire does in doors. Highly valuable and sought after."
 
-/datum/opposing_force_equipment/gear/stoolbox
+/datum/opposing_force_equipment/gear/xraygoggles
 	item_type = /obj/item/clothing/glasses/thermal/xray
+	description = "A pair of low-light x-ray goggles manufactured by the Syndicate. Cannot be chameleon disguised. Makes wearer more vulnerable to bright lights."
+	
+/datum/opposing_force_equipment/gear/cloakerbelt
+	item_type = /obj/item/shadowcloak
+	description = "A belt that allows it's wearer to temporarily turn invisible. Only recharges in dark areas, use wisely."
+	
+/datum/opposing_force_equipment/gear/projector
+	item_type = /obj/item/chameleon
+	description = "A projector that allows it's user to turn into any scanned object. Pairs well with a cluttered room and ambush weapon."
+	
+/datum/opposing_force_equipment/gear/box
+	item_type = /obj/item/implanter/stealth
+	description = "An implanter that grants you the ability to wield the ultimate in invisible box technology. Best used in conjunction with \
+					a tape recorder playing Snake Eater."
+	
+/datum/opposing_force_equipment/gear/sechud
+	item_type = /obj/item/clothing/glasses/hud/security/chameleon
+	description = "A stolen Security HUD refitted with chameleon technology. Provides flash protection."
+	
+/datum/opposing_force_equipment/gear/aidetector
+	item_type = /obj/item/multitool/ai_detect
+	description = "A multitool that lets you see the AI's vision cone with an overlaid HUD and know if you're being watched."
+
+/datum/opposing_force_equipment/gear/noslip
+	item_type = /obj/item/clothing/shoes/chameleon/noslip
+	description = "No-slip chameleon shoes, for when you plan on running through hell and back."
+	
+/datum/opposing_force_equipment/gear/cloakmod
+	item_type = /obj/item/mod/module/stealth/ninja
+	description = "An upgraded MODsuit cloaking module stolen from the Spider Clan's finest. Consumes less power than the standard, but is obviously illegal."
 					
 //BOMBS!EXPLOSIVES!!WOOOO!!one!
 	
 /datum/opposing_force_equipment/gear/henade
 	item_type = /obj/item/grenade/syndieminibomb/concussion
+	description = "A grenade intended to concuss and incapacitate enemies. Still rather explosive."
 	
 /datum/opposing_force_equipment/gear/fragnade
 	item_type = /obj/item/grenade/frag
+	description = "A fragmentation grenade that looses pieces of shrapnel after detonating for maximum injury."
 	
 /datum/opposing_force_equipment/gear/radnade
 	item_type = /obj/item/grenade/gluon
+	description = "A prototype grenade that freezes the target area and unleashes a wave of deadly radiation."
 	
 /datum/opposing_force_equipment/gear/c4
 	item_type = /obj/item/grenade/c4
+	description = "A brick of plastic explosives, for breaking open walls, doors, and optionally people."
 	
 /datum/opposing_force_equipment/gear/x4
 	item_type = /obj/item/grenade/c4/x4
