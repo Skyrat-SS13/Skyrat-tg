@@ -9,10 +9,13 @@
 /datum/mod_theme/prototype/hauler
 	name = "Prototype: Hauler"
 	desc = "Bulky and quite heavy, This prototype modular suit has seemed to be modified quite a bit with additional supports to distribute its weight."
-	inbuilt_modules = null
+	inbuilt_modules = list()
 	slowdown_active = 1
 
 /obj/item/mod/control/pre_equipped/prototype/hauler
 	theme = /datum/mod_theme/prototype/hauler
 	cell = /obj/item/stock_parts/cell/high/plus
 	initial_modules = list(/obj/item/mod/module/storage/large_capacity, /obj/item/mod/module/welding, /obj/item/mod/module/clamp, /obj/item/mod/module/flashlight, /obj/item/mod/module/tether)
+
+/obj/machinery/suit_storage_unit/industrial/hauler
+	mod_type = /obj/item/mod/control/pre_equipped/prototype/hauler
