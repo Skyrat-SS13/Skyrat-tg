@@ -264,7 +264,8 @@
 	uniform = /obj/item/clothing/under/utility/sci
 	glasses = /obj/item/clothing/glasses/hud/diagnostic
 	id = /obj/item/card/id/away/tarkon/sci
-	l_pocket = /obj/item/inducer/syndicate
+	l_hand = /obj/item/inducer
+	l_pocket = null
 	r_pocket = /obj/item/stock_parts/cell/high/plus
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/med
