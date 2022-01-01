@@ -409,7 +409,7 @@
 	add_log(user.ckey, "Selected equipment: [incoming_equipment.name]")
 
 /datum/opposing_force/proc/issue_gear(mob/user)
-	if(!selected_equipment.len || !isliving(user) || status != OPFOR_STATUS_APPROVED || equipment_issued)
+	if(!selected_equipment.len || !isliving(mind_reference.current) || status != OPFOR_STATUS_APPROVED || equipment_issued)
 		return
 	var/obj/item/storage/box/spawned_box = new(get_turf(user))
 	for(var/datum/opposing_force_selected_equipment/iterating_equipment as anything in selected_equipment)
@@ -555,6 +555,8 @@
 			iterating_equipment.status = OPFOR_EQUIPMENT_STATUS_APPROVED
 		for(var/datum/opposing_force_objective/opfor as anything in objectives)
 			opfor.status = OPFOR_OBJECTIVE_STATUS_APPROVED
+	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has approved the application and ALL objectives and equipment")
+	add_log(user.ckey, "Approved application and all objectives and equipment")
 
 
 /**
@@ -647,13 +649,13 @@
  * System procs
  */
 
-/datum/opposing_force/proc/add_log(ckey, new_log)
-	var/msg = "[ckey ? ckey : "SYSTEM"] - [new_log]"
+/datum/opposing_force/proc/add_log(logger_ckey, new_log)
+	var/msg = "[logger_ckey ? logger_ckey : "SYSTEM"] - [ckey] - [new_log]"
 	modification_log += msg
 	log_admin(msg)
 
 /datum/opposing_force/proc/send_admins_opfor_message(message)
-	message = "[span_pink("OPFOR:")] [span_admin("[message](<a href='?src=[REF(src)];admin_pref=show_panel'>Show Panel</a>)")]"
+	message = "[span_pink("OPFOR:")] [span_admin("[message] (<a href='?src=[REF(src)];admin_pref=show_panel'>Show Panel</a>)")]"
 	to_chat(GLOB.admins,
 		type = MESSAGE_TYPE_ADMINLOG,
 		html = message,
