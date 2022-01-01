@@ -39,7 +39,7 @@
 	
 /datum/opposing_force_equipment/gun/as2
 	item_type = /obj/item/gun/ballistic/shotgun/automatic/as2
-	description = "A compact version of the combat shotgun. Comes with a 4 round tube and can be silenced as well as holstered to your belt or vest. \
+	description = "A compact version of the combat shotgun. Comes with a four-round tube and can be silenced as well as holstered to your belt or vest. \
 		Comes loaded with slugs but can take any 12 Gauge load."
 	
 /datum/opposing_force_equipment/gun/sas14
