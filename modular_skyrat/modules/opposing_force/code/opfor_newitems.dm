@@ -23,7 +23,7 @@
 	
 /obj/item/clothing/suit/armor/vest/leather/gunman
 	name = "leather overcoat"
-	desc = "Armored leather overcoat meant as the go to wear for any aspiring gunman."
+	desc = "An armored leather overcoat, intended as the go-to wear for any aspiring gunman."
  	body_parts_covered = CHEST|GROIN|ARMS //does not protect the legs since we have damn combat shoes
 	armor = list(MELEE = 45, BULLET = 40, LASER = 40, ENERGY = 50, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50, WOUND = 10) //makes it in line with the rest of the armor
 	
