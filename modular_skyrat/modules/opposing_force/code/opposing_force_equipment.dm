@@ -271,7 +271,7 @@
 	
 /datum/opposing_force_equipment/gear/projector
 	item_type = /obj/item/chameleon
-	description = "A projector that allows it's user to turn into any scanned object. Pairs well with a cluttered room and ambush weapon."
+	description = "A projector that allows its user to turn into any scanned object. Pairs well with a cluttered room and ambush weapon."
 	
 /datum/opposing_force_equipment/gear/box
 	item_type = /obj/item/implanter/stealth
