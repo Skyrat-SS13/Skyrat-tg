@@ -4,7 +4,7 @@
 	name = "old radio"
 	desc = "A dusty and old looking radio."
 
-/obj/item/uplink/old/Initialize(mapload, owner, tc_amount = 0)
+/obj/item/uplink/opfor/Initialize(mapload, owner, tc_amount = 0)
 	. = ..()
 	var/datum/component/uplink/hidden_uplink = GetComponent(/datum/component/uplink)
 	hidden_uplink.name = "old radio"
