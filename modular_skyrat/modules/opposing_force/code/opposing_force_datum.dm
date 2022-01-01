@@ -123,6 +123,8 @@
 
 	data["backstory"] = set_backstory
 
+	data["raw_status"] = status
+
 	data["status"] = get_status_string()
 
 	data["can_submit"] = SSopposing_force.accepting_objectives && (status == OPFOR_STATUS_NOT_SUBMITTED || status == OPFOR_STATUS_CHANGES_REQUESTED)
@@ -142,6 +144,10 @@
 	data["handling_admin"] = handling_admin
 
 	data["equipment_issued"] = equipment_issued
+
+	data["owner_mob"] = mind_reference.current ? mind_reference.current.name : "No mob!"
+
+	data["owner_role"] = mind_reference.assigned_role ? mind_reference.assigned_role.title : "No role!"
 
 	var/list/messages = list()
 	for(var/message in admin_chat)
@@ -270,6 +276,14 @@
 		if("approve")
 			if(!check_rights(R_ADMIN))
 				return
+			for(var/datum/opposing_force_objective/objective as anything in objectives)
+				if(objective.status == OPFOR_OBJECTIVE_STATUS_NOT_REVIEWED)
+					to_chat(usr, examine_block(span_command_headset(span_pink("OPFOR: ERROR, some objectives have not been reviewed. Please approve/deny all objectives."))))
+					return
+			for(var/datum/opposing_force_selected_equipment/equipment as anything in selected_equipment)
+				if(equipment.status == OPFOR_EQUIPMENT_STATUS_NOT_REVIEWED)
+					to_chat(usr, examine_block(span_command_headset(span_pink("OPFOR: ERROR, some equipment requests have not been reviewed. Please approve/deny all equipment requests."))))
+					return
 			SSopposing_force.approve(src, usr)
 		if("approve_all")
 			if(!check_rights(R_ADMIN))

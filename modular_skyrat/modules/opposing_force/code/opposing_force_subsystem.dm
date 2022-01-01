@@ -64,7 +64,12 @@ SUBSYSTEM_DEF(opposing_force)
 /datum/controller/subsystem/opposing_force/proc/get_queue_position(datum/opposing_force/opposing_force)
 	if(!(opposing_force in submitted_applications))
 		return "ERROR"
-	return LAZYFIND(submitted_applications, opposing_force)
+	var/position = 1
+	for(var/opfor as anything in submitted_applications)
+		if(opposing_force == opfor)
+			break
+		position++
+	return position
 
 /datum/controller/subsystem/opposing_force/proc/add_to_queue(datum/opposing_force/opposing_force)
 	if(!LAZYFIND(unsubmitted_applications, opposing_force))
