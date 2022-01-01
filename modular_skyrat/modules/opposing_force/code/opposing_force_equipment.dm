@@ -330,7 +330,7 @@
 /datum/opposing_force_equipment/other/uplink
 	item_type = /obj/item/uplink/opfor
 	name = "Syndicate Uplink"
-	description = "An old school syndicate uplink without a password and an empty TC account. Perfect for the aspiring operatives."
+	description = "An old-school syndicate uplink without a password and an empty TC account. Perfect for the aspiring operatives."
 		
 /datum/opposing_force_equipment/other/tc1
 	item_type = item = /obj/item/stack/telecrystal
