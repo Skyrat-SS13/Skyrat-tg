@@ -35,7 +35,7 @@
 	
 /datum/opposing_force_equipment/gun/m23
 	item_type = /obj/item/gun/ballistic/shotgun/m23
-	description = "An eight round pump action shotgun found in an old station. Comes loaded with beanbag shells but can take any 12 Gauge load."
+	description = "An eight-round pump-action shotgun found in an old station. Comes loaded with beanbag shells but can take any 12 gauge load."
 	
 /datum/opposing_force_equipment/gun/as2
 	item_type = /obj/item/gun/ballistic/shotgun/automatic/as2
