@@ -477,4 +477,4 @@
 
 // I did this out of sanity, I didn't want to make the clamp code more complex than necessary, and honestly I'm considering taking this upstream, it just feels awkward to PR just that.
 /obj/item/bounty_cube
-	w_class = SMALL
+	w_class = WEIGHT_CLASS_SMALL
