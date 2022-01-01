@@ -6,6 +6,7 @@
 
 /obj/item/clothing/suit/armor/mod
 	mutant_variants = STYLE_DIGITIGRADE
+	flags_inv = HIDESPINE
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/mod.dmi'
 
 
