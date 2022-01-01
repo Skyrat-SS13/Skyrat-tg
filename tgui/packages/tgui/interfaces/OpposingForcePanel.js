@@ -542,10 +542,26 @@ export const AdminTab = (props, context) => {
     backstory,
     blocked,
     equipment_issued,
+    owner_mob,
+    owner_role,
+    raw_status,
   } = data;
   return (
     <Stack vertical grow>
       <Stack.Item>
+        <Section title="User Information">
+          <LabeledList>
+            <LabeledList.Item label="Name">
+              {owner_mob}
+            </LabeledList.Item>
+            <LabeledList.Item label="Role">
+              {owner_role}
+            </LabeledList.Item>
+            <LabeledList.Item label="Application Status">
+              {raw_status}
+            </LabeledList.Item>
+          </LabeledList>
+        </Section>
         <Section title="Admin Control">
           <Stack mb={1}>
             <Stack.Item>

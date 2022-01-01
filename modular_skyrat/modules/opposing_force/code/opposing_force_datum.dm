@@ -665,7 +665,7 @@
  */
 
 /datum/opposing_force/proc/add_log(logger_ckey, new_log)
-	var/msg = "[logger_ckey ? logger_ckey : "SYSTEM"] - [ckey] - [new_log]"
+	var/msg = "OPFOR([ckey]): [logger_ckey ? logger_ckey : "SYSTEM"] - [new_log]"
 	modification_log += msg
 	log_admin(msg)
 
