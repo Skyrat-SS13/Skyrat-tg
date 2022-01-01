@@ -319,7 +319,7 @@
 /datum/opposing_force_equipment/gear/extendedrag
 	item_type = /obj/item/reagent_containers/glass/rag/shamwow  
 	description = "A damp rag made with extra absorbant materials. The perfectly innocent tool to kidnap your local assistant. \
-			Apply up to 30u liquids and use harm intent to smother anyone not covering their mouth."
+			Apply up to 30u liquids and use combat mode to smother anyone not covering their mouth."
 	
 /**
  * OTHER
