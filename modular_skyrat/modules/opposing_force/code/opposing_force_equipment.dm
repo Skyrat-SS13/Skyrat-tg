@@ -64,10 +64,7 @@
 	description = "This box contains a guide on how to craft masterful works of origami, allowing you to transform normal pieces of paper into \
 			perfectly aerodynamic (and potentially lethal) paper airplanes."
 			
-/datum/opposing_force_equipment/gun/holster
-	item_type = /obj/item/storage/belt/holster/chameleon
-	description = "A chameleon holster that fits into your belt designed to hold one sidearm and a spare load of ammo for it. Also allows you to spin \
-				your revolver, if you have one."
+
 
 /**
  * AMMO
@@ -134,8 +131,13 @@
 					user to teleport short distances using right-click."
 					
 /datum/opposing_force_equipment/melee/vibro
-	item_type =/obj/item/vibro_weapon
+	item_type = /obj/item/vibro_weapon
 	description = "A high frequency vibrating sword. Able to cut through any and all materials but lacks the robustness of other swords. Can be wielded to deflect gunfire"
+	
+/datum/opposing_force_equipment/melee/eswordarm
+	item_type = /obj/item/autosurgeon/organ/syndicate/esword_arm
+	name = "Energy Sword Arm Implant"
+	description = "It's an energy sword, in your arm. Pretty decent for getting past stop-searches and assassinating people. Comes loaded in a Syndicate brand autosurgeon to boot!"
 
 //martialarts
 
@@ -174,16 +176,46 @@
 /datum/opposing_force_equipment/clothing/infiltrator
 	item_type = /obj/item/storage/toolbox/infiltrator
 	description = "A box of equipment specially made for an infiltration expert, including sound-insulated boots, nanochip apprehension gloves, \
-				and a voice-masking balaclava."
+				and a voice-masking balaclava.Too bad it's made in such a red color..."
 	
 /datum/opposing_force_equipment/clothing/helmet
 	item_type = /obj/item/clothing/head/helmet/swat
 	description = "A red-striped SWAT helmet. More robust than the standard-issue Nanotrasen security issue helmet, and spaceproof to boot."
 	
-/datum/opposing_force_equipment/clothing/extraheavy
+//NRI larping equipment here	
+
+
+/datum/opposing_force_equipment/clothing/reduthelm
 	item_type = /obj/item/clothing/head/helmet/nri_heavy
 	description = "A specialized ultra-heavy composite ballistic helmet stolen from space russians. Purpose-built for heavy duty combat, \
 				or murder with a frying pan."
+				
+/datum/opposing_force_equipment/clothing/nrihelm
+	item_type = /obj/item/clothing/head/helmet/rus_helmet/nri
+	
+/datum/opposing_force_equipment/clothing/nriberet
+	item_type = /obj/item/clothing/head/beret/sec/nri
+	name = "NRI Commander Beret"
+	description = "An armored beret worn by high ranking NRI officers."
+
+/datum/opposing_force_equipment/clothing/nrivest
+	item_type = /obj/item/clothing/suit/armor/vest/russian/nri
+	
+/datum/opposing_force_equipment/clothing/redut
+	item_type = /obj/item/clothing/suit/armor/heavy/nri
+	
+/datum/opposing_force_equipment/clothing/nrijumpsuit
+	item_type = /obj/item/clothing/under/costume/nri
+	
+/datum/opposing_force_equipment/clothing/nribelt
+	item_type = /obj/item/storage/belt/military/nri
+
+//end of NRI larp equipment
+
+/datum/opposing_force_equipment/clothing/holster
+	item_type = /obj/item/storage/belt/holster/chameleon
+	description = "A chameleon holster that fits into your belt designed to hold one sidearm and a spare load of ammo for it. Also allows you to spin \
+				your revolver, if you have one."
 
 /**
  * UTILITY
@@ -266,4 +298,23 @@
 /datum/opposing_force_equipment/other/
 	category = OPFOR_EQUIPMENT_CATEGORY_OTHER
 	
+/datum/opposing_force_equipment/other/uplink
+	item_type = /obj/item/uplink/opfor
+	name = "Syndicate Uplink"
+	description = "An old school syndicate uplink without a password and an empty TC account. Perfect for the aspiring operatives."
+		
+/datum/opposing_force_equipment/other/tc1
+	item_type = item = /obj/item/stack/telecrystal
+	name = "1 Raw Telecrystal"
+	description = "A telecrystal in its rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	
+/datum/opposing_force_equipment/other/tc5
+	item_type = item = /obj/item/stack/telecrystal/five
+	name = "5 Raw Telecrystals"
+	description = "A bunch of telecrystals in its rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+
+/datum/opposing_force_equipment/other/tc20
+	item_type = item = /obj/item/stack/telecrystal/twenty
+	name = "20 Raw Telecrystals"
+	description = "A bundle of telecrystals in its rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
 	//WHAT DO WE PUT HERE? MAYBE ADD EXPLOSIVES AS ITS CATEGORY?
