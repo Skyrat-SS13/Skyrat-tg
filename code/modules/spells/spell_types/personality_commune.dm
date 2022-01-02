@@ -1,3 +1,4 @@
+/* SKYRAT EDIT - DISABLING SPLIT PERSONALITY
 /obj/effect/proc_holder/spell/targeted/personality_commune
 	name = "Personality Commune"
 	desc = "Sends thoughts to your alternate consciousness."
@@ -34,3 +35,4 @@
 		if(!isobserver(ded))
 			continue
 		to_chat(ded, "[FOLLOW_LINK(ded, user)] [span_boldnotice("[user] [name]:")] [span_notice("\"[msg]\" to")] [span_name("[trauma]")]")
+*/ //SKYRAT EDIT - DISABLING SPLIT PERSONALITY
