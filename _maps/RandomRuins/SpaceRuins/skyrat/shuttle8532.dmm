@@ -21,11 +21,6 @@
 /obj/effect/turf_decal/loading_area,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/shuttle8532cargohall)
-"am" = (
-/obj/effect/mob_spawn/corpse/human,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/iron/airless,
-/area/ruin/space/has_grav/shuttle8532engineering)
 "au" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/blood/tracks{
@@ -236,6 +231,13 @@
 "ew" = (
 /turf/closed/wall/r_wall,
 /area/template_noop)
+"eC" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/effect/mob_spawn/corpse/human,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/turf_decal/vg_decals/numbers/five,
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/shuttle8532bridge)
 "eL" = (
 /obj/item/shard,
 /turf/open/floor/plating/airless,
@@ -499,6 +501,11 @@
 /obj/effect/turf_decal/vg_decals/numbers/two,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/shuttle8532crewquarters)
+"jr" = (
+/obj/structure/lattice,
+/obj/structure/grille,
+/turf/template_noop,
+/area/template_noop)
 "jH" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/airless,
@@ -710,12 +717,6 @@
 /obj/item/storage/belt/utility,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/shuttle8532engineering)
-"oN" = (
-/obj/structure/lattice,
-/obj/structure/grille,
-/obj/structure/lattice,
-/turf/template_noop,
-/area/template_noop)
 "oR" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/cable,
@@ -731,6 +732,11 @@
 /obj/structure/cable,
 /turf/open/floor/plating/airless,
 /area/template_noop)
+"pm" = (
+/obj/effect/mob_spawn/corpse/human,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/shuttle8532engineering)
 "pq" = (
 /obj/structure/rack,
 /obj/item/storage/toolbox/mechanical,
@@ -770,22 +776,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
 /turf/template_noop,
 /area/template_noop)
-"pJ" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/cable,
-/obj/effect/mob_spawn/corpse/human{
-	mob_name = "Miranda Groves"
-	},
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 4
-	},
-/obj/machinery/light/dim{
-	dir = 8;
-	icon_state = "tube"
-	},
-/turf/open/floor/plating/airless,
-/area/ruin/space/has_grav/shuttle8532crewquarters)
 "qb" = (
 /turf/template_noop,
 /area/template_noop)
@@ -1114,16 +1104,6 @@
 	icon_state = "floorscorched1"
 	},
 /area/ruin/space/has_grav/shuttle8532cargohall)
-"wT" = (
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 8
-	},
-/obj/structure/table/reinforced,
-/obj/item/disk/tech_disk/spaceloot,
-/obj/item/stack/spacecash/c1000,
-/obj/item/raw_anomaly_core/random,
-/turf/open/floor/iron/airless,
-/area/ruin/space/has_grav/shuttle8532researchbay)
 "wU" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
@@ -1149,13 +1129,11 @@
 /obj/structure/marker_beacon/burgundy,
 /turf/template_noop,
 /area/ruin/space/has_grav/shuttle8532crewquarters)
-"xA" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+"xB" = (
 /obj/effect/mob_spawn/corpse/human,
-/obj/effect/decal/cleanable/blood,
-/obj/effect/turf_decal/vg_decals/numbers/five,
+/obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/iron/airless,
-/area/ruin/space/has_grav/shuttle8532bridge)
+/area/ruin/space/has_grav/shuttle8532crewquarters)
 "xF" = (
 /obj/item/stack/rods/ten,
 /turf/template_noop,
@@ -1226,6 +1204,16 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/shuttle8532crewquarters)
+"yM" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 8
+	},
+/obj/structure/table/reinforced,
+/obj/item/disk/tech_disk/spaceloot,
+/obj/item/stack/spacecash/c1000,
+/obj/item/raw_anomaly_core/random,
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/shuttle8532researchbay)
 "yW" = (
 /obj/effect/turf_decal/vg_decals/numbers/eight,
 /turf/open/floor/iron/airless,
@@ -1866,6 +1854,22 @@
 /obj/effect/decal/cleanable/glass,
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/shuttle8532cargohall)
+"La" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
+/obj/effect/mob_spawn/corpse/human{
+	mob_name = "Miranda Groves"
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/machinery/light/dim{
+	dir = 8;
+	icon_state = "tube"
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/shuttle8532crewquarters)
 "Lf" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/plating/airless,
@@ -1883,6 +1887,16 @@
 /obj/effect/spawner/random/maintenance,
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/shuttle8532crewquarters)
+"Ly" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 9
+	},
+/obj/structure/table/optable,
+/obj/effect/decal/cleanable/cobweb,
+/obj/effect/mob_spawn/corpse/human/syndicatecommando,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/shuttle8532researchbay)
 "Lz" = (
 /obj/structure/chair/greyscale{
 	dir = 4
@@ -2020,18 +2034,6 @@
 /obj/structure/lattice,
 /turf/template_noop,
 /area/template_noop)
-"OU" = (
-/obj/effect/turf_decal/trimline/neutral/filled/line{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/mob_spawn/corpse/human{
-	mob_name = "Mark Reeves"
-	},
-/obj/effect/decal/cleanable/blood,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
-/turf/open/floor/iron/airless,
-/area/ruin/space/has_grav/shuttle8532crewquarters)
 "OZ" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
@@ -2059,17 +2061,17 @@
 	icon_state = "damaged2"
 	},
 /area/ruin/space/has_grav/shuttle8532researchbay)
+"PI" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table/reinforced,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/shuttle8532researchbay)
 "PW" = (
 /obj/item/shard{
 	icon_state = "small"
 	},
 /turf/template_noop,
 /area/template_noop)
-"Qb" = (
-/obj/effect/mob_spawn/corpse/human,
-/obj/effect/decal/cleanable/blood/tracks,
-/turf/open/floor/iron/airless,
-/area/ruin/space/has_grav/shuttle8532crewquarters)
 "Qd" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 8
@@ -2233,16 +2235,6 @@
 	icon_state = "damaged5"
 	},
 /area/ruin/space/has_grav/shuttle8532cargohall)
-"Th" = (
-/obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 9
-	},
-/obj/structure/table/optable,
-/obj/effect/decal/cleanable/cobweb,
-/obj/effect/mob_spawn/corpse/human/syndicatecommando,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/iron/airless,
-/area/ruin/space/has_grav/shuttle8532researchbay)
 "Tl" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
@@ -2508,11 +2500,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/shuttle8532researchbay)
-"XL" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/table/reinforced,
-/turf/open/floor/plating/airless,
-/area/ruin/space/has_grav/shuttle8532researchbay)
 "XQ" = (
 /obj/machinery/turretid{
 	lethal = 1;
@@ -2573,6 +2560,18 @@
 /obj/item/stack/cable_coil/cut,
 /turf/template_noop,
 /area/template_noop)
+"YT" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/mob_spawn/corpse/human{
+	mob_name = "Mark Reeves"
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/shuttle8532crewquarters)
 "Zi" = (
 /obj/structure/railing{
 	dir = 5
@@ -2963,7 +2962,7 @@ EE
 pu
 Lt
 NJ
-pJ
+La
 jQ
 qb
 WS
@@ -3113,7 +3112,7 @@ Bp
 jM
 Wt
 lc
-wT
+yM
 ne
 iG
 Uv
@@ -3172,7 +3171,7 @@ qb
 qb
 qb
 SJ
-Th
+Ly
 xL
 VH
 ui
@@ -3480,7 +3479,7 @@ qb
 HP
 eV
 Vi
-xA
+eC
 ER
 pu
 UN
@@ -3491,7 +3490,7 @@ Zj
 Ds
 dc
 GX
-OU
+YT
 Qd
 XV
 mS
@@ -3746,7 +3745,7 @@ pu
 Ue
 TM
 yv
-Qb
+xB
 uZ
 BR
 bo
@@ -3887,7 +3886,7 @@ ou
 xp
 qb
 SJ
-XL
+PI
 eb
 Av
 tG
@@ -3977,7 +3976,7 @@ qb
 qb
 qb
 qb
-Hb
+OQ
 Lf
 oe
 wP
@@ -4114,7 +4113,7 @@ fV
 HD
 Ig
 Sg
-am
+pm
 Qi
 Rb
 Uq
@@ -4345,7 +4344,7 @@ qb
 qb
 qb
 qb
-Hb
+OQ
 OQ
 qb
 qb
@@ -5063,7 +5062,7 @@ qb
 qb
 qb
 hD
-oN
+jr
 qb
 qb
 qb

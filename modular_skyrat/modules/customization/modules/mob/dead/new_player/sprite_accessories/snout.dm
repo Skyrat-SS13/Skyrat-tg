@@ -36,6 +36,10 @@
 	name = "Beak"
 	icon_state = "bird"
 
+/datum/sprite_accessory/snouts/mammal/birdsmall
+	name = "Beak (small)"
+	icon_state = "birdsmall"
+
 /datum/sprite_accessory/snouts/mammal/bigbeak
 	name = "Big Beak"
 	icon_state = "bigbeak"

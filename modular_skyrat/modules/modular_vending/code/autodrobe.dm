@@ -55,6 +55,13 @@
 		/obj/item/clothing/suit/hooded/wintercoat/christmas/gamerpc = 5,
 		/obj/item/clothing/shoes/winterboots/christmas = 5,
 		/obj/item/clothing/shoes/winterboots/christmas/green = 5,
+		/obj/item/clothing/suit/trenchbrown = 5,
+		/obj/item/clothing/suit/trenchblack = 5,
+		/obj/item/clothing/head/fedora/beige = 5,
+		/obj/item/clothing/head/fedora/fedblack = 5,
+		/obj/item/clothing/head/fedora/fedbrown = 5,
+		/obj/item/clothing/under/misc/royalkilt = 5,
+		/obj/item/clothing/under/pants/tactical = 5,
 		)
 
 	skyrat_contraband = list(

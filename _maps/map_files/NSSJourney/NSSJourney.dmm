@@ -1603,12 +1603,6 @@
 /obj/effect/turf_decal/tile/yellow,
 /turf/open/floor/iron,
 /area/construction/mining/aux_base)
-"akc" = (
-/obj/docking_port/stationary/huge{
-	dir = 2
-	},
-/turf/open/space/basic,
-/area/space)
 "aki" = (
 /obj/structure/sign/directions/evac{
 	dir = 4;
@@ -36990,6 +36984,20 @@
 /obj/machinery/power/apc/auto_name/directional/east,
 /turf/open/floor/plating,
 /area/ai_monitored/turret_protected/aisat/maint)
+"dSv" = (
+/obj/machinery/hydroponics/soil{
+	desc = "A patch of fertile soil that you can plant stuff in.";
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "dirt";
+	layer = 2.0001;
+	plane = -7;
+	self_sustaining = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/planetary/dirt,
+/area/security/prison)
 "dSx" = (
 /obj/effect/turf_decal/plaque{
 	icon_state = "L4"
@@ -40262,6 +40270,10 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron,
 /area/hallway/secondary/exit)
+"hgD" = (
+/obj/machinery/suit_storage_unit/security,
+/turf/open/floor/iron/dark,
+/area/security/office)
 "hgK" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -40563,17 +40575,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/checkpoint/engineering)
-"hul" = (
-/obj/machinery/hydroponics/soil{
-	desc = "A patch of fertile soil that you can plant stuff in.";
-	icon = 'icons/turf/floors.dmi';
-	icon_state = "dirt";
-	layer = 2.0001;
-	plane = -7;
-	self_sustaining = 1
-	},
-/turf/open/floor/planetary/dirt,
-/area/security/prison)
 "huA" = (
 /obj/item/kirbyplants/random,
 /turf/open/floor/iron/white/side{
@@ -41663,13 +41664,6 @@
 	},
 /turf/open/floor/iron/kitchen,
 /area/security/prison)
-"iud" = (
-/obj/effect/landmark/start/security_sergeant,
-/obj/effect/turf_decal/trimline/darkblue/filled/corner{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/security/office)
 "iuR" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -41713,20 +41707,6 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/ai_monitored/security/armory)
-"iwq" = (
-/obj/machinery/hydroponics/soil{
-	desc = "A patch of fertile soil that you can plant stuff in.";
-	icon = 'icons/turf/floors.dmi';
-	icon_state = "dirt";
-	layer = 2.0001;
-	plane = -7;
-	self_sustaining = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/open/floor/planetary/dirt,
-/area/security/prison)
 "iwV" = (
 /obj/machinery/light_switch{
 	pixel_y = 28
@@ -43868,10 +43848,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/secondary/exit)
-"ktd" = (
-/obj/effect/landmark/start/security_sergeant,
-/turf/open/floor/iron/dark,
-/area/security/office)
 "ktt" = (
 /obj/item/reagent_containers/glass/bottle/nutrient/empty{
 	pixel_x = 10;
@@ -46428,6 +46404,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/science/storage)
+"mPo" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/machinery/computer/shuttle_purchase{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/hallway/secondary/entry)
 "mPs" = (
 /obj/structure/table,
 /obj/machinery/light_switch{
@@ -46718,6 +46703,49 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/medbay)
+"nbJ" = (
+/obj/structure/closet/crate/hydroponics,
+/obj/item/seeds/aloe,
+/obj/item/seeds/apple,
+/obj/item/seeds/cabbage,
+/obj/item/seeds/whitebeet,
+/obj/item/seeds/redbeet,
+/obj/item/seeds/sugarcane,
+/obj/item/seeds/sunflower,
+/obj/item/seeds/tea,
+/obj/item/seeds/tea/astra,
+/obj/item/seeds/tobacco,
+/obj/item/seeds/tomato/blood,
+/obj/item/seeds/cocoapod/vanillapod,
+/obj/item/seeds/cocoapod,
+/obj/item/seeds/coffee/robusta,
+/obj/item/seeds/coffee,
+/obj/item/seeds/corn,
+/obj/item/seeds/cotton,
+/obj/item/seeds/potato/sweet,
+/obj/item/food/grown/poppy,
+/obj/item/food/grown/poppy/geranium,
+/obj/item/food/grown/poppy/lily,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/garlic,
+/obj/item/food/grown/onion,
+/obj/item/food/grown/peas,
+/obj/item/grown/log,
+/obj/item/food/grown/mushroom/chanterelle,
+/obj/machinery/hydroponics/soil{
+	desc = "A patch of fertile soil that you can plant stuff in.";
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "dirt";
+	layer = 2.0001;
+	plane = -7;
+	self_sustaining = 1
+	},
+/obj/item/food/grown/wheat,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/planetary/dirt,
+/area/security/prison)
 "nce" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -49104,6 +49132,17 @@
 /obj/effect/turf_decal/trimline/blue/filled/warning,
 /turf/open/floor/iron/white,
 /area/medical/medbay)
+"pof" = (
+/obj/machinery/hydroponics/soil{
+	desc = "A patch of fertile soil that you can plant stuff in.";
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "dirt";
+	layer = 2.0001;
+	plane = -7;
+	self_sustaining = 1
+	},
+/turf/open/floor/planetary/dirt,
+/area/security/prison)
 "poE" = (
 /obj/effect/turf_decal/trimline/darkblue/filled/warning{
 	dir = 1
@@ -50678,6 +50717,12 @@
 	},
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain/private/nt_rep)
+"qSg" = (
+/obj/docking_port/stationary/huge{
+	dir = 2
+	},
+/turf/open/space/basic,
+/area/space)
 "qSS" = (
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/white,
@@ -54592,15 +54637,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/primary/central)
-"uAE" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
-/obj/machinery/computer/shuttle_purchase{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/hallway/secondary/entry)
 "uBY" = (
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/structure/cable,
@@ -55624,10 +55660,6 @@
 /obj/structure/chair/stool/directional/west,
 /turf/open/floor/wood,
 /area/security/prison)
-"vDf" = (
-/obj/machinery/suit_storage_unit/security,
-/turf/open/floor/iron/dark,
-/area/security/office)
 "vDl" = (
 /obj/machinery/portable_atmospherics/canister/plasma,
 /obj/effect/turf_decal/bot,
@@ -57088,49 +57120,6 @@
 /obj/structure/rack,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
-"wOQ" = (
-/obj/structure/closet/crate/hydroponics,
-/obj/item/seeds/aloe,
-/obj/item/seeds/apple,
-/obj/item/seeds/cabbage,
-/obj/item/seeds/whitebeet,
-/obj/item/seeds/redbeet,
-/obj/item/seeds/sugarcane,
-/obj/item/seeds/sunflower,
-/obj/item/seeds/tea,
-/obj/item/seeds/tea/astra,
-/obj/item/seeds/tobacco,
-/obj/item/seeds/tomato/blood,
-/obj/item/seeds/cocoapod/vanillapod,
-/obj/item/seeds/cocoapod,
-/obj/item/seeds/coffee/robusta,
-/obj/item/seeds/coffee,
-/obj/item/seeds/corn,
-/obj/item/seeds/cotton,
-/obj/item/seeds/potato/sweet,
-/obj/item/food/grown/poppy,
-/obj/item/food/grown/poppy/geranium,
-/obj/item/food/grown/poppy/lily,
-/obj/item/food/grown/harebell,
-/obj/item/food/grown/garlic,
-/obj/item/food/grown/onion,
-/obj/item/food/grown/peas,
-/obj/item/grown/log,
-/obj/item/food/grown/mushroom/chanterelle,
-/obj/machinery/hydroponics/soil{
-	desc = "A patch of fertile soil that you can plant stuff in.";
-	icon = 'icons/turf/floors.dmi';
-	icon_state = "dirt";
-	layer = 2.0001;
-	plane = -7;
-	self_sustaining = 1
-	},
-/obj/item/food/grown/wheat,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/open/floor/planetary/dirt,
-/area/security/prison)
 "wOS" = (
 /obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
 	dir = 4
@@ -68000,7 +67989,7 @@ jei
 arB
 nQD
 ayn
-uAE
+mPo
 aAC
 xzh
 xzh
@@ -68517,7 +68506,7 @@ ayk
 beK
 auP
 cyt
-akc
+qSg
 xzh
 xzh
 xzh
@@ -83342,12 +83331,12 @@ acd
 fJv
 sKX
 dci
-wOQ
-iwq
-iwq
-iwq
-iwq
-iwq
+nbJ
+dSv
+dSv
+dSv
+dSv
+dSv
 acd
 dCE
 ulw
@@ -83856,12 +83845,12 @@ acd
 saJ
 sKX
 frT
-hul
-hul
+pof
+pof
 dyj
-hul
-hul
-hul
+pof
+pof
+pof
 acd
 fGw
 fGw
@@ -84369,13 +84358,13 @@ aai
 hhR
 mam
 pqP
-hul
+pof
 ulw
-hul
+pof
 dyj
-hul
+pof
 ulw
-hul
+pof
 acd
 fGw
 npG
@@ -84626,13 +84615,13 @@ aai
 aai
 fyu
 aai
-hul
+pof
 ulw
-hul
+pof
 dyj
-hul
+pof
 ulw
-hul
+pof
 acd
 mez
 hXd
@@ -84883,13 +84872,13 @@ aai
 hhR
 mam
 aai
-hul
+pof
 ulw
-hul
+pof
 dyj
-hul
+pof
 ulw
-hul
+pof
 acd
 tIC
 vJW
@@ -88755,7 +88744,7 @@ xzh
 xzh
 xzh
 abq
-vDf
+hgD
 glM
 ovx
 trX
@@ -89012,7 +89001,7 @@ xzh
 xzh
 xzh
 abq
-vDf
+hgD
 iVu
 kwy
 utD
@@ -89269,7 +89258,7 @@ xzh
 xzh
 xzh
 abq
-vDf
+hgD
 xjQ
 ygM
 nDg
@@ -91080,7 +91069,7 @@ ado
 nZo
 mMA
 vlV
-iud
+cMX
 poL
 poL
 pWp
@@ -91337,7 +91326,7 @@ adn
 nIb
 bpJ
 wPx
-ktd
+iVu
 yaQ
 eZH
 loM
@@ -92108,7 +92097,7 @@ acn
 adh
 adm
 joM
-ktd
+iVu
 hET
 pBI
 xPq

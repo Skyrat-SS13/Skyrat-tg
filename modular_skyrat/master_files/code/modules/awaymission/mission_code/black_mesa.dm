@@ -520,8 +520,6 @@
 	outfit = /datum/outfit/science_team
 	you_are_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	flavour_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
-	can_use_alias = TRUE
-	any_station_species = FALSE
 
 /datum/outfit/science_team
 	name = "Scientist"
