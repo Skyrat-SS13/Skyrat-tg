@@ -331,6 +331,7 @@
 					/obj/item/clothing/head/fedora/det_hat)
 	crate_name = "forensics crate"
 
+/* SKYRAT EDIT: Moved to Bloat.dm	name = "Helmets Crate"
 /datum/supply_pack/security/helmets
 	name = "Helmets Crate"
 	desc = "Contains three standard-issue brain buckets. Requires Security access to open."
@@ -338,7 +339,7 @@
 	contains = list(/obj/item/clothing/head/helmet/sec,
 					/obj/item/clothing/head/helmet/sec,
 					/obj/item/clothing/head/helmet/sec)
-	crate_name = "helmet crate"
+	crate_name = "helmet crate"  */
 
 
 /datum/supply_pack/security/laser
