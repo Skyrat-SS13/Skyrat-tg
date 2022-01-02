@@ -1,5 +1,5 @@
 /obj/item/gun/ballistic/automatic/battle_rifle/fg42
-	name = "\improper FG 42"
+	name = "\improper FG-42"
 	desc = "A German paratrooper rifle designed to be used at the very least, five-hundred and fifty years ago. It's most likely reproduction, and you should be concerned more than excited to have this in your hands."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/fg42/fg42.dmi'
 	icon_state = "fg42"
