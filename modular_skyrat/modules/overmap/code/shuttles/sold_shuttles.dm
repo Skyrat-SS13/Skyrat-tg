@@ -30,7 +30,7 @@
 /datum/sold_shuttle/common_vulture
 	name = "MS Vulture"
 	desc = "A medium sized mining shuttle, equipped with living quarters."
-	detailed_desc = "It's medium sized and is equipped with three propulsion engines, canisters of co2 and oxygen, a portable generator, two mining lasers, a transporter and some emergency supplies. It has quarters and a restroom"
+	detailed_desc = "It's medium sized and is equipped with three Tachyon G-36 Sublight Ion Engines, canisters of co2 and oxygen, a portable generator, two mining lasers, a transporter and some emergency supplies. It has quarters and a restroom"
 	shuttle_id = "common_vulture"
 	cost = 7500
 	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
@@ -40,9 +40,9 @@
 //Exploration shuttles//
 ////////////////////////
 /datum/sold_shuttle/crow
-	name = "NXV Crow - sister"
-	desc = "A medium sized exploration shuttle, sister to the NXV Crow, named the same oddly."
-	detailed_desc = "It's medium sized and is equipped with four propulsion engines, canisters of co2 and oxygen, a portable generator, excavation gear and some emergency supplies."
+	name = "NXV Crow"
+	desc = "A medium sized exploration shuttle."
+	detailed_desc = "It is medium sized and is equipped with four propulsion engines, canisters of co2 and oxygen, a portable generator, excavation gear and some emergency supplies. Comes with 4 VOLTAR Mach 1 sublight thrusters."
 	shuttle_id = "exploration_crow"
 	cost = 10000
 	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
@@ -51,7 +51,7 @@
 /datum/sold_shuttle/deckard
 	name = "NXV Deckard"
 	desc = "Your bog standard run of the mill reliable medium sized exploration shuttle."
-	detailed_desc = "It's a medium class exploration vessel which comes equipped with some basic mining supplies, a portable generator and four RS-500 sublight thrusters making it nimble and rahter quick."
+	detailed_desc = "It is a medium class exploration vessel which comes equipped with some basic mining supplies, a portable generator and four Falcon RS-500 sublight thrusters making it nimble and rahter quick."
 	shuttle_id = "exploration_deckard"
 	cost = 7500
 	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
@@ -59,8 +59,8 @@
 
 /datum/sold_shuttle/nexus
 	name = "NXV Nexus"
-	desc = "A large sized luxury exploration shuttle, well equipped. You must be rich."
-	detailed_desc = "It's rather large and is equipped with three RS-2000 Sublight thrusters, capable of low speeds, however, it is very well equipped for excavation, mining and exploration. Your go-to reliable yet luxurious shuttle. It has a mining drill, medbay, shield generator, kitchen and lots of supplies. Good luck, explorer."
+	desc = "A large sized luxury exploration shuttle, well equipped."
+	detailed_desc = "It is rather large and is equipped with three Falcon RS-2000 Sublight thrusters, capable of low speeds, however, it is very well equipped for excavation, mining and exploration. Your go-to reliable yet luxurious shuttle. It has a mining drill, medbay, shield generator, kitchen and lots of supplies. Good luck, explorer."
 	shuttle_id = "exploration_nexus"
 	cost = 20000
 	allowed_docks = list(DOCKS_HUGE_UPWARDS)
