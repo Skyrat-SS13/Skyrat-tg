@@ -389,6 +389,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/tacticool_turtleneck
 	name = "Tactitool Turtleneck"
 	item_path = /obj/item/clothing/under/syndicate/tacticool/sensors
+
+/datum/loadout_item/under/miscellaneous/tactical_pants
+	name = "Tactical Pants"
+	item_path = /obj/item/clothing/under/pants/tactical
+
 //HALLOWEEN
 /datum/loadout_item/under/miscellaneous/pj_blood
 	name = "Blood-red Pajamas"
