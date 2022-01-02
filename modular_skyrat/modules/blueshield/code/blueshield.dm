@@ -82,4 +82,4 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/rubber(src)
