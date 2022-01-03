@@ -95,7 +95,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	for(var/bodypart in bodyparts_to_add)
 		var/datum/sprite_accessory/S = bodypart
 		var/key = S.key
-
+		if(key == "breasts")
+			continue
 		var/icon_to_use
 		var/x_shift
 		var/render_state = bodyparts_to_add[S]
@@ -271,6 +272,165 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 			H.overlays_standing[layer] += standing
 			standing = list()
+	for(var/bodypart in bodyparts_to_add)///there has to be a better way of doing this
+		var/datum/sprite_accessory/S = bodypart
+		var/key = S.key
+		if(key == "breasts")
+			var/icon_to_use
+			var/x_shift
+			var/render_state = bodyparts_to_add[S]
+			var/override_color = forced_colour
+			if(!override_color && S.special_colorize)
+				override_color = S.get_special_render_colour(H, render_state)
+			var/color_layer_list = S.color_layer_names
+			if(S.special_icon_case)
+				icon_to_use = S.get_special_icon(H, render_state)
+			else
+				icon_to_use = S.icon
+			if(S.special_render_case)
+				color_layer_list = list("1" = "primary", "2" = "secondary", "3" = "tertiary")
+			if(S.special_x_dimension)
+				x_shift = S.get_special_x_dimension(H, render_state)
+			else
+				x_shift = S.dimension_x
+			if(S.gender_specific)
+				render_state = "[g]_[key]_[render_state]"
+			else
+				render_state = "m_[key]_[render_state]"
+			for(var/layer in S.relevent_layers)
+				var/layertext = mutant_bodyparts_layertext(layer)
+				var/list/mutable_appearance/accessories
+				var/mutable_appearance/accessory_overlay = mutable_appearance(icon_to_use, layer = -layer)
+				accessory_overlay.icon_state = "[render_state]_[layertext]"
+				if (S.color_src == USE_MATRIXED_COLORS && color_layer_list)
+					accessory_overlay.icon_state = "[render_state]_[layertext]_primary"
+					accessories = list()
+				if(S.center)
+					accessory_overlay = center_image(accessory_overlay, x_shift, S.dimension_y)
+				if(!override_color)
+					if(HAS_TRAIT(H, TRAIT_HUSK))
+						if(S.color_src == USE_MATRIXED_COLORS)
+							accessory_overlay.color = HUSK_COLOR_LIST
+						else
+							accessory_overlay.color = "#AAA"
+					else
+						switch(S.color_src)
+							if(USE_ONE_COLOR)
+								accessory_overlay.color = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST][1]
+							if(USE_MATRIXED_COLORS)
+								var/list/color_list = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
+								for (var/n in color_layer_list)
+									var/num = text2num(n)
+									var/mutable_appearance/matrixed_acce = mutable_appearance(icon_to_use, layer = -layer)
+									matrixed_acce.icon_state = "[render_state]_[layertext]_[color_layer_list[n]]"
+									matrixed_acce.color = color_list[num]
+									matrixed_acce.alpha = specific_alpha
+									if (S.center)
+										matrixed_acce = center_image(matrixed_acce, x_shift, S.dimension_y)
+									accessories += matrixed_acce
+									if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][num])
+										var/mutable_appearance/emissive_overlay = emissive_appearance_copy(matrixed_acce)
+										accessories += emissive_overlay
+							if(MUTCOLORS)
+								if(fixed_mut_color)
+									accessory_overlay.color = fixed_mut_color
+								else
+									accessory_overlay.color = H.dna.features["mcolor"]
+							if(HAIR)
+								if(hair_color == "mutcolor")
+									accessory_overlay.color = H.dna.features["mcolor"]
+								else if(hair_color == "fixedmutcolor")
+									accessory_overlay.color = fixed_mut_color
+								else
+									accessory_overlay.color = H.hair_color
+							if(FACEHAIR)
+								accessory_overlay.color = H.facial_hair_color
+							if(EYECOLOR)
+								accessory_overlay.color = H.eye_color
+				else
+					accessory_overlay.color = override_color
+				if (accessories)
+					for (var/acces in accessories)
+						standing += acces
+				else
+					standing += accessory_overlay
+					if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][1])
+						var/mutable_appearance/emissive_overlay = emissive_appearance_copy(accessory_overlay)
+						standing += emissive_overlay
+
+				if(S.hasinner)
+					var/mutable_appearance/inner_accessory_overlay = mutable_appearance(S.icon, layer = -layer)
+					if(S.gender_specific)
+						inner_accessory_overlay.icon_state = "[g]_[key]inner_[S.icon_state]_[layertext]"
+					else
+						inner_accessory_overlay.icon_state = "m_[key]inner_[S.icon_state]_[layertext]"
+
+					if(S.center)
+						inner_accessory_overlay = center_image(inner_accessory_overlay, S.dimension_x, S.dimension_y)
+
+					standing += inner_accessory_overlay
+				if(S.extra)
+					var/mutable_appearance/extra_accessory_overlay = mutable_appearance(S.icon, layer = -layer)
+					if(S.gender_specific)
+						extra_accessory_overlay.icon_state = "[g]_[key]_extra_[S.icon_state]_[layertext]"
+					else
+						extra_accessory_overlay.icon_state = "m_[key]_extra_[S.icon_state]_[layertext]"
+					if(S.center)
+						extra_accessory_overlay = center_image(extra_accessory_overlay, S.dimension_x, S.dimension_y)
+					switch(S.extra_color_src)
+						if(MUTCOLORS)
+							if(fixed_mut_color)
+								extra_accessory_overlay.color = fixed_mut_color
+							else
+								extra_accessory_overlay.color = H.dna.features["mcolor"]
+						if(MUTCOLORS2)
+							extra_accessory_overlay.color = H.dna.features["mcolor2"]
+						if(MUTCOLORS3)
+							extra_accessory_overlay.color = H.dna.features["mcolor3"]
+						if(HAIR)
+							if(hair_color == "mutcolor")
+								extra_accessory_overlay.color = H.dna.features["mcolor3"]
+							else
+								extra_accessory_overlay.color = H.hair_color
+						if(FACEHAIR)
+							extra_accessory_overlay.color = H.facial_hair_color
+						if(EYECOLOR)
+							extra_accessory_overlay.color = H.eye_color
+
+					standing += extra_accessory_overlay
+				if(S.extra2)
+					var/mutable_appearance/extra2_accessory_overlay = mutable_appearance(S.icon, layer = -layer)
+					if(S.gender_specific)
+						extra2_accessory_overlay.icon_state = "[g]_[key]_extra2_[S.icon_state]_[layertext]"
+					else
+						extra2_accessory_overlay.icon_state = "m_[key]_extra2_[S.icon_state]_[layertext]"
+					if(S.center)
+						extra2_accessory_overlay = center_image(extra2_accessory_overlay, S.dimension_x, S.dimension_y)
+
+					switch(S.extra2_color_src)
+						if(MUTCOLORS)
+							if(fixed_mut_color)
+								extra2_accessory_overlay.color = fixed_mut_color
+							else
+								extra2_accessory_overlay.color = H.dna.features["mcolor"]
+						if(MUTCOLORS2)
+							extra2_accessory_overlay.color = H.dna.features["mcolor2"]
+						if(MUTCOLORS3)
+							extra2_accessory_overlay.color = H.dna.features["mcolor3"]
+						if(HAIR)
+							if(hair_color == "mutcolor3")
+								extra2_accessory_overlay.color = H.dna.features["mcolor"]
+							else
+								extra2_accessory_overlay.color = H.hair_color
+
+					standing += extra2_accessory_overlay
+				if (specific_alpha != 255 && !override_color)
+					for (var/ov in standing)
+						var/image/overlay = ov
+						if (!istype(overlay.color,/list))
+							overlay.alpha = specific_alpha
+				H.overlays_standing[layer] += standing
+				standing = list()
 
 	H.apply_overlay(BODY_BEHIND_LAYER)
 	H.apply_overlay(BODY_ADJ_LAYER)

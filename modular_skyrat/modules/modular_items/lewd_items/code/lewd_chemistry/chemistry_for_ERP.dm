@@ -494,11 +494,12 @@
 	if(!mob_penis)
 		return
 	if(enlargement_amount >= enlargement_threshold)
-		if(mob_penis?.genital_size >= penis_max_length || mob_penis?.girth >= penis_max_girth)
+		if(mob_penis?.genital_size >= penis_max_length)
 			return ..()
 		mob_penis.genital_size += penis_length_increase_step
 		///Improvision to girth to not make it random chance.
-		mob_penis.girth = round(mob_penis.girth + (mob_penis.genital_size/mob_penis.girth))
+		if(mob_penis?.girth < penis_max_girth) ///Because any higher is ridiculous. However, should still allow for regular penis growth.
+			mob_penis.girth = round(mob_penis.girth + (mob_penis.genital_size/mob_penis.girth))
 		mob_penis.update_sprite_suffix()
 		exposed_mob.update_body()
 		enlargement_amount = 0
