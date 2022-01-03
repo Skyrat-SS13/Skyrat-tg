@@ -235,8 +235,6 @@
 	description = "A holster retrieved from a nuclear operative. Able to hold any two types of weaponry or ammo as long as it is not extremely large. \
 					Expect security to be not so friendly if they see you wearing one of these..."
 
-/datum/opposing_force_equipment/clothing/gunman
-	item_type = /obj/item/storage/box/syndie_kit/gunman_outfit //we need a proper loadout tab
 
 /**
  * UTILITY
@@ -317,7 +315,7 @@
 	description = "Similar to C4, but with a stronger blast that is directional instead of circular."
 
 /datum/opposing_force_equipment/gear/extendedrag
-	item_type = /obj/item/reagent_containers/glass/rag/large
+	item_type = /obj/item/reagent_containers/glass/rag
 	description = "A damp rag made with extra absorbant materials. The perfectly innocent tool to kidnap your local assistant. \
 			Apply up to 30u liquids and use combat mode to smother anyone not covering their mouth."
 
@@ -333,17 +331,17 @@
 	description = "An old-school syndicate uplink without a password and an empty TC account. Perfect for the aspiring operatives."
 
 /datum/opposing_force_equipment/other/tc1
-	item_type = item = /obj/item/stack/telecrystal
+	item_type = /obj/item/stack/telecrystal
 	name = "1 Raw Telecrystal"
 	description = "A telecrystal in its rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
 
 /datum/opposing_force_equipment/other/tc5
-	item_type = item = /obj/item/stack/telecrystal/five
+	item_type = /obj/item/stack/telecrystal/five
 	name = "5 Raw Telecrystals"
 	description = "A bunch of telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
 
 /datum/opposing_force_equipment/other/tc20
-	item_type = item = /obj/item/stack/telecrystal/twenty
+	item_type = /obj/item/stack/telecrystal/twenty
 	name = "20 Raw Telecrystals"
 	description = "A bundle of telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
 	//WHAT DO WE PUT HERE? MAYBE ADD EXPLOSIVES AS ITS CATEGORY?
