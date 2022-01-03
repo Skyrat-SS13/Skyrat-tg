@@ -24,15 +24,65 @@
 
 /datum/opposing_force_equipment/gun
 	category = OPFOR_EQUIPMENT_CATEGORY_RANGED_WEAPONS
-
+//Classic Guns
 /datum/opposing_force_equipment/gun/m1911
 	item_type = /obj/item/gun/ballistic/automatic/pistol/m1911
 	description = "A semi-automatic .45 caliber pistol. Gold standard for sidearms."
 
 /datum/opposing_force_equipment/gun/m16
 	item_type = /obj/item/gun/ballistic/automatic/assault_rifle/m16
-	description = "A variable fire mode 5.56x45mm assault rifle. Surprisingly compact. Highly illegal outside of the hands of SolGov's military."
 
+/datum/opposing_force_equipment/gun/m16m
+	item_type = /obj/item/gun/ballistic/automatic/assault_rifle/m16/modern
+
+/datum/opposing_force_equipment/gun/m16patriot
+	item_type = /obj/item/gun/ballistic/automatic/assault_rifle/m16/modern/v2
+
+/datum/opposing_force_equipment/gun/akm
+	item_type = /obj/item/gun/ballistic/automatic/assault_rifle/akm
+
+/datum/opposing_force_equipment/gun/akmm
+	item_type = /obj/item/gun/ballistic/automatic/assault_rifle/akm/modern
+
+/datum/opposing_force_equipment/gun/mp40
+	item_type = /obj/item/gun/ballistic/automatic/submachine_gun/mp40
+
+/datum/opposing_force_equipment/gun/mp40m/modern
+	item_type = /obj/item/gun/ballistic/automatic/submachine_gun/mp40
+
+/datum/opposing_force_equipment/gun/pps
+	item_type = /obj/item/gun/ballistic/automatic/submachine_gun/pps
+	description = "A very cheap, barely reliable reproduction of a personal defense weapon based on the original Soviet model. Not nearly as infamous as the Mosin. \ Compact enough to fit in your backpack!"
+
+/datum/opposing_force_equipment/gun/ppsh
+	item_type = /obj/item/gun/ballistic/automatic/submachine_gun/ppsh
+
+/datum/opposing_force_equipment/gun/ppshm
+	item_type = /obj/item/gun/ballistic/automatic/submachine_gun/ppsh/modern
+
+/datum/opposing_force_equipment/gun/stg
+	item_type = /obj/item/gun/ballistic/automatic/assault_rifle/stg
+
+/datum/opposing_force_equipment/gun/stgm
+	item_type = /obj/item/gun/ballistic/automatic/assault_rifle/stg/modern
+
+/datum/opposing_force_equipment/gun/fg42
+	item_type = /obj/item/gun/ballistic/automatic/battle_rifle/fg42
+
+/datum/opposing_force_equipment/gun/fg42m
+	item_type = /obj/item/gun/ballistic/automatic/battle_rifle/fg42/modern
+
+/datum/opposing_force_equipment/gun/uzi
+	item_type = /obj/item/gun/ballistic/automatic/mini_uzi
+	description = "The uzi nine millimeter, a timeless submachinegun for a warrior out of time."
+
+/datum/opposing_force_equipment/gun/mg34
+	item_type = /obj/item/gun/ballistic/automatic/mg34
+
+/datum/opposing_force_equipment/gun/cfa
+	item_type = /obj/item/gun/ballistic/automatic/cfa_rifle
+
+//oldarmory shotguns, now rebalanced for opfor store
 /datum/opposing_force_equipment/gun/m23
 	item_type = /obj/item/gun/ballistic/shotgun/m23
 	description = "An eight-round pump-action shotgun found in an old station. Comes loaded with beanbag shells but can take any 12 gauge load."
@@ -47,17 +97,41 @@
 	description = "A semi-automatic, magazine-fed shotgun chambered in 14 gauge. Standard mags can take five rounds. \
 		Despite the lower damage of 14 gauge, it can load the highly praised taser shots."
 
+//here comes syndiecake
+
 /datum/opposing_force_equipment/gun/g357
 	item_type = /obj/item/gun/ballistic/revolver
 	description = "A .357 magnum revolver. Seven shots, more than enough to kill anything that moves."
 
-/datum/opposing_force_equipment/gun/uzi
-	item_type = /obj/item/gun/ballistic/automatic/mini_uzi
-	description = "The uzi nine millimeter, a timeless submachinegun for a warrior out of time."
+/datum/opposing_force_equipment/gun/mateba
+	item_type = /obj/item/gun/ballistic/revolver/mateba
 
+/datum/opposing_force_equipment/gun/nagant
+	item_type = /obj/item/gun/ballistic/revolver/nagant
+//lasguns
+
+//CFA Family
+
+/datum/opposing_force_equipment/gun/snub
+	item_type = /obj/item/gun/ballistic/automatic/pistol/cfa_snub
+
+/datum/opposing_force_equipment/gun/ruby
+	item_type = /obj/item/gun/ballistic/automatic/pistol/cfa_ruby
+
+/datum/opposing_force_equipment/gun/wildcat
+	item_type = /obj/item/gun/ballistic/automatic/cfa_wildcat
+
+//oddities
 /datum/opposing_force_equipment/gun/ninjastar
 	item_type = /obj/item/throwing_star
 	description = "Be the maintenance ninja you always wanted to be. Does not come with multi-throwing cybernetics"
+
+
+/datum/opposing_force_equipment/gun/throwing_weapons
+	item_type = /obj/item/storage/box/syndie_kit/throwing_weapons
+	description = "A box of shurikens and reinforced bolas from ancient Earth martial arts. They are highly effective \
+			throwing weapons. The bolas can knock a target down and the shurikens will embed into limbs."
+	name = "Box of Throwing Weapons"
 
 /datum/opposing_force_equipment/gun/origami
 	item_type = /obj/item/storage/box/syndie_kit/origami_bundle
@@ -72,17 +146,47 @@
 /datum/opposing_force_equipment/ammo/
 	category = OPFOR_EQUIPMENT_CATEGORY_AMMUNITION
 
-/datum/opposing_force_equipment/ammo/m16
-	item_type = /obj/item/ammo_box/magazine/m16
-	description = "A twenty-round magazine for the M16 assault rifle. Uses 5.56x45mm ammunition."
-
 /datum/opposing_force_equipment/ammo/m45
 	item_type = /obj/item/ammo_box/magazine/m45
 	description = "An eight-round magazine for the M1911 pistol. Uses .45 caliber ammunition."
 
+/datum/opposing_force_equipment/ammo/m16
+	item_type = /obj/item/ammo_box/magazine/m16
+	description = "A twenty-round magazine for the M16 assault rifle. Uses 5.56x45mm ammunition."
+
+/datum/opposing_force_equipment/ammo/akm
+	item_type = /obj/item/ammo_box/magazine/akm
+
+/datum/opposing_force_equipment/ammo/akmbanan
+	item_type = /obj/item/ammo_box/magazine/akm/banana
+
+/datum/opposing_force_equipment/ammo/mp40
+	item_type = /obj/item/ammo_box/magazine/mp40
+	description = "A thirty-two round magazine for the MP-40. Uses 9x19mm ammunition."
+
+/datum/opposing_force_equipment/ammo/pps
+	item_type = /obj/item/ammo_box/magazine/pps
+
+/datum/opposing_force_equipment/ammo/ppsh
+	item_type = /obj/item/ammo_box/magazine/ppsh
+
+/datum/opposing_force_equipment/ammo/stg
+	item_type = /obj/item/ammo_box/magazine/stg
+
+/datum/opposing_force_equipment/ammo/fg42
+	item_type = /obj/item/ammo_box/magazine/fg42
+	description = "A twenty round magazine for the FG-42. Uses 7.92×57mm ammunition."
+
 /datum/opposing_force_equipment/ammo/m9mm
 	item_type = /obj/item/ammo_box/magazine/uzim9mm
 	description = "A thirty-two round magazine for the mini uzi. Uses 9x19mm ammunition."
+
+/datum/opposing_force_equipment/ammo/mg34
+	item_type = /obj/item/ammo_box/magazine/mg34
+
+/datum/opposing_force_equipment/ammo/cm762
+	item_type = /obj/item/ammo_box/magazine/cm762
+	description = "7.62 bullets in a ten round magazine for Cantanheim 7.62 rifle."
 
 /datum/opposing_force_equipment/ammo/a357
 	item_type = /obj/item/ammo_box/a357
@@ -92,6 +196,44 @@
 	item_type = /obj/item/ammo_box/a357/match
 	description = "A seven-round .357 magnum speedloader for a revolver, loaded with match-grade ammunition that bounces off walls several times."
 
+/datum/opposing_force_equipment/ammo/cfa_snub
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_snub
+
+/datum/opposing_force_equipment/ammo/cfa_snubap
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_snub/ap
+
+/datum/opposing_force_equipment/ammo/cfa_snubrubber
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_snub/rubber
+
+/datum/opposing_force_equipment/ammo/cfa_snubincendiary
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_snub/incendiary
+
+/datum/opposing_force_equipment/ammo/cfa_ruby
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby
+
+/datum/opposing_force_equipment/ammo/cfa_rubyap
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/ap
+
+/datum/opposing_force_equipment/ammo/cfa_rubyrubber
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/rubber
+
+/datum/opposing_force_equipment/ammo/cfa_rubyhp
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/hp
+
+/datum/opposing_force_equipment/ammo/cfa_rubyincendiary
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/incendiary
+
+/datum/opposing_force_equipment/ammo/wildcat
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat
+
+/datum/opposing_force_equipment/ammo/wildcatap
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/ap
+
+/datum/opposing_force_equipment/ammo/wildcatrubber
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/rubber
+
+/datum/opposing_force_equipment/ammo/wildcatincendiary
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/incendiary
 /**
  * MELEE
  */
@@ -113,6 +255,11 @@
 /datum/opposing_force_equipment/melee/epirate
 	item_type = /obj/item/melee/energy/sword/pirate
 	description = "A variant of the energy sword styled as a cutlass. Pirate costume sold separately. Warranty void if bought."
+
+/datum/opposing_force_equipment/melee/edagger
+	item_type = /obj/item/pen/edagger
+	name = "Energy Dagger"
+	description = "A dagger made of energy that looks and functions as a pen when off."
 
 /datum/opposing_force_equipment/melee/cutlass
 	item_type = /obj/item/claymore/cutlass
@@ -139,6 +286,14 @@
 	name = "Energy Sword Arm Implant"
 	description = "It's an energy sword, in your arm. Pretty decent for getting past stop-searches and assassinating people. Comes loaded in a Syndicate brand autosurgeon to boot!"
 
+/datum/opposing_force_equipment/melee/powerfist
+	item_type = /obj/item/melee/powerfist
+	name = "Power Fist"
+	description = "The power-fist is a metal gauntlet with a built-in piston-ram powered by an external gas supply.\
+			Upon hitting a target, the piston-ram will extend forward to make contact for some serious damage. \
+			Using a wrench on the piston valve will allow you to tweak the amount of gas used per punch to \
+			deal extra damage and hit targets further. Use a screwdriver to take out any attached tanks."
+
 //martialarts
 
 /datum/opposing_force_equipment/melee/cqc
@@ -150,6 +305,8 @@
 	description = "This scroll contains the secrets of an ancient martial arts technique. You will master unarmed combat \
 			and gain the ability to swat bullets from the air, but you will also refuse to use dishonorable ranged weaponry."
 
+/datum/opposing_force_equipment/melee/kravmaga
+	item_type = /obj/item/clothing/gloves/krav_maga/combatglovesplus //yes its a glove but it exists to give krav maga martial arts so its here
 
 /**
  * ARMOR AND CLOTHES
@@ -157,9 +314,14 @@
 /datum/opposing_force_equipment/clothing/
 	category = OPFOR_EQUIPMENT_CATEGORY_CLOTHING
 
+/datum/opposing_force_equipment/clothing/syndiebag
+	item_type = /obj/item/storage/backpack/duffelbag/syndie
+	name = "Syndicate Brand Duffelbag"
+	description = "Thanks to being made from a lighter yet sturdier material, this duffelbag holds just the same as any other duffelbag without the speed penalty of its counterparts."
+
 /datum/opposing_force_equipment/clothing/vest
 	item_type = /obj/item/clothing/suit/armor/vest
-	description = "A basic type-1 armored vest, rated for all manner of protections."
+	description = "A basic armored vest, rated for all manner of protections."
 
 /datum/opposing_force_equipment/clothing/ballistic
 	item_type = /obj/item/clothing/suit/armor/bulletproof
@@ -192,7 +354,7 @@
 /datum/opposing_force_equipment/clothing/bandolier
 	item_type = /obj/item/storage/belt/bandolier
 
-/datum/opposing_force_equipment/clothing/bandolier
+/datum/opposing_force_equipment/clothing/grenades
 	item_type = /obj/item/storage/belt/grenade
 	description = "A belt for holding grenades. Does not come with grenades unfortunately."
 
@@ -235,9 +397,19 @@
 	description = "A holster retrieved from a nuclear operative. Able to hold any two types of weaponry or ammo as long as it is not extremely large. \
 					Expect security to be not so friendly if they see you wearing one of these..."
 
-/datum/opposing_force_equipment/clothing/gunman
-	item_type = /obj/item/storage/box/syndie_kit/gunman_outfit //we need a proper loadout tab
+//modsuits in 2022
 
+/datum/opposing_force_equipment/clothing/basicmod
+	item_type = /obj/item/mod/control/pre_equipped/advanced
+
+/datum/opposing_force_equipment/clothing/syndiemod
+	item_type = /obj/item/mod/control/pre_equipped/traitor
+
+/datum/opposing_force_equipment/clothing/nukiemod
+	item_type = /obj/item/mod/control/pre_equipped/nuclear
+
+/datum/opposing_force_equipment/clothing/elitemod
+	item_type = /obj/item/mod/control/pre_equipped/elite
 /**
  * UTILITY
  */
@@ -252,6 +424,13 @@
 /datum/opposing_force_equipment/gear/engichip
 	item_type = /obj/item/skillchip/job/engineer
 	description = "A skillchip that, when installed, allows the user to recognise airlock and APC wire layouts and understand their functionality at a glance. Highly valuable and sought after."
+
+/datum/opposing_force_equipment/gear/roboticist
+	item_type = /obj/item/skillchip/job/roboticist
+	description = "A skillchip that, when installed, allows the user to recognise cyborg wire layouts and understand their functionality at a glance."
+
+/datum/opposing_force_equipment/gear/tacticool
+	item_type = /obj/item/skillchip/chameleon/reload
 
 /datum/opposing_force_equipment/gear/thermalgoggles
 	item_type = /obj/item/clothing/glasses/thermal
@@ -294,32 +473,65 @@
 	item_type = /obj/item/mod/module/stealth/ninja
 	description = "An upgraded MODsuit cloaking module stolen from the Spider Clan's finest. Consumes less power than the standard, but is obviously illegal."
 
-//BOMBS!EXPLOSIVES!!WOOOO!!one!
-
-/datum/opposing_force_equipment/gear/henade
-	item_type = /obj/item/grenade/syndieminibomb/concussion
-	description = "A grenade intended to concuss and incapacitate enemies. Still rather explosive."
-
-/datum/opposing_force_equipment/gear/fragnade
-	item_type = /obj/item/grenade/frag
-	description = "A fragmentation grenade that looses pieces of shrapnel after detonating for maximum injury."
-
-/datum/opposing_force_equipment/gear/radnade
-	item_type = /obj/item/grenade/gluon
-	description = "A prototype grenade that freezes the target area and unleashes a wave of deadly radiation."
-
-/datum/opposing_force_equipment/gear/c4
-	item_type = /obj/item/grenade/c4
-	description = "A brick of plastic explosives, for breaking open walls, doors, and optionally people."
-
-/datum/opposing_force_equipment/gear/x4
-	item_type = /obj/item/grenade/c4/x4
-	description = "Similar to C4, but with a stronger blast that is directional instead of circular."
+/datum/opposing_force_equipment/gear/suppressor
+	item_type = /obj/item/suppressor
 
 /datum/opposing_force_equipment/gear/extendedrag
 	item_type = /obj/item/reagent_containers/glass/rag/large
 	description = "A damp rag made with extra absorbant materials. The perfectly innocent tool to kidnap your local assistant. \
 			Apply up to 30u liquids and use combat mode to smother anyone not covering their mouth."
+//implants
+
+/datum/opposing_force_equipment/gear/nodrop
+	item_type = /obj/item/autosurgeon/organ/syndicate/nodrop
+	name = "Anti Drop Implant"
+	description = "An implant that prevents you from dropping items in your hand involuntarily. Comes loaded in a syndicate autosurgeon"
+
+/datum/opposing_force_equipment/gear/hackerman
+	item_type = /obj/item/autosurgeon/organ/syndicate/hackerman
+	name = "Hacking Arm Implant"
+	description = "An advanced arm implant that comes with cutting edge hacking tools. Perfect for the cybernetically enhanced wirerunners."
+
+
+/**
+ * EXPLOSIVES
+ */
+/datum/opposing_force_equipment/bomb/
+	category = OPFOR_EQUIPMENT_CATEGORY_EXPLOSIVES
+
+/datum/opposing_force_equipment/bomb/henade
+	item_type = /obj/item/grenade/syndieminibomb/concussion
+	description = "A grenade intended to concuss and incapacitate enemies. Still rather explosive."
+
+/datum/opposing_force_equipment/bomb/fragnade
+	item_type = /obj/item/grenade/frag
+	description = "A fragmentation grenade that looses pieces of shrapnel after detonating for maximum injury."
+
+/datum/opposing_force_equipment/bomb/radnade
+	item_type = /obj/item/grenade/gluon
+	description = "A prototype grenade that freezes the target area and unleashes a wave of deadly radiation."
+
+/datum/opposing_force_equipment/bomb/c4
+	item_type = /obj/item/grenade/c4
+	description = "A brick of plastic explosives, for breaking open walls, doors, and optionally people."
+
+/datum/opposing_force_equipment/bomb/x4
+	item_type = /obj/item/grenade/c4/x4
+	description = "Similar to C4, but with a stronger blast that is directional instead of circular."
+
+/**
+ * LOADOUTS
+ */
+/datum/opposing_force_equipment/loadout/
+	category = OPFOR_EQUIPMENT_CATEGORY_LOADOUT
+
+/datum/opposing_force_equipment/loadout/gunman
+	item_type = /obj/item/storage/box/syndie_kit/gunman_outfit
+
+/datum/opposing_force_equipment/loadout/grenadier
+	item_type = /obj/item/storage/belt/grenade/full
+	name = "Grenadier Kit"
+	description = "A belt full of grenades and bombs. May gods have mercy upon us if they approve this."
 
 /**
  * OTHER
@@ -346,4 +558,15 @@
 	item_type = /obj/item/stack/telecrystal/twenty
 	name = "20 Raw Telecrystals"
 	description = "A bundle of telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
-	//WHAT DO WE PUT HERE? MAYBE ADD EXPLOSIVES AS ITS CATEGORY?
+
+/datum/opposing_force_equipment/other/cashcase
+	item_type = /obj/item/storage/secure/briefcase/syndie
+	name = "Syndicate Briefcase Full of Cash"
+	description = "A secure briefcase containing 5000 space credits. Useful for bribing personnel, or purchasing goods \
+			and services at lucrative prices. The briefcase also feels a little heavier to hold; it has been \
+			manufactured to pack a little bit more of a punch if your client needs some convincing."
+
+	/datum/opposing_force_equipment/other/c10k
+	name = "10000 Space Cash Bill"
+	item_type = /obj/item/stack/spacecash/c10000
+	description = "Cold hard cash. When you REALLY need to bribe or buy your way in. Or to payroll your gangmembers."
