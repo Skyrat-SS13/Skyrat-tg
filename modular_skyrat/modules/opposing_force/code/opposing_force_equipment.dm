@@ -235,6 +235,8 @@
 	description = "A holster retrieved from a nuclear operative. Able to hold any two types of weaponry or ammo as long as it is not extremely large. \
 					Expect security to be not so friendly if they see you wearing one of these..."
 
+/datum/opposing_force_equipment/clothing/gunman
+	item_type = /obj/item/storage/box/syndie_kit/gunman_outfit //we need a proper loadout tab
 
 /**
  * UTILITY
@@ -315,7 +317,7 @@
 	description = "Similar to C4, but with a stronger blast that is directional instead of circular."
 
 /datum/opposing_force_equipment/gear/extendedrag
-	item_type = /obj/item/reagent_containers/glass/rag
+	item_type = /obj/item/reagent_containers/glass/rag/large
 	description = "A damp rag made with extra absorbant materials. The perfectly innocent tool to kidnap your local assistant. \
 			Apply up to 30u liquids and use combat mode to smother anyone not covering their mouth."
 
