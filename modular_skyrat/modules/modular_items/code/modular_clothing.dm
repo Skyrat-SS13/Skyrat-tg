@@ -82,3 +82,58 @@
 	/obj/item/clothing/suit/space: armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 100, FIRE = 80, ACID = 70)
 	/obj/item/clothing/suit/armor: armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50, WOUND = 10)
 	*/
+
+
+//Having to re-define and re-code these is annoying, but worth it I swear
+#define MODE_NONE ""
+#define MODE_MESON "meson"
+#define MODE_TRAY "t-ray"
+#define MODE_OBJECT "object"
+/obj/item/clothing/glasses/meson/engine/breaker	//Special goggles that can toggle between Meson, T-Ray, and Object modes
+	name = "cross-spectrum scanner"
+	desc = "A specially made pair of goggles that utilize Meson Radioscopy, Terahertz scanning technology, and experimental 'gestalt analysis' to provide the wearer the choice of seeing a ship's Structure, Systems, or Objects. Warranty void if worn without protective softsuit. A worn-out tag on the side says " + span_engradio("\"Safety Second\"") + "."
+	modes = list(MODE_NONE = MODE_MESON, MODE_MESON = MODE_TRAY, MODE_TRAY = MODE_OBJECT, MODE_OBJECT = MODE_NONE)
+	range = 3
+
+/obj/item/clothing/glasses/meson/engine/breaker/toggle_mode(mob/user, voluntary)
+	mode = modes[mode]
+	to_chat(user, "<span class='[voluntary ? "notice":"warning"]'>[voluntary ? "You turn the goggles":"The goggles turn"] [mode ? "to [mode] mode":"off"][voluntary ? ".":"!"]</span>")
+	if(connection_images.len)
+		connection_images.Cut()
+	switch(mode)
+		if(MODE_MESON)
+			vision_flags = SEE_TURFS
+			darkness_view = 1
+			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+			change_glass_color(user, /datum/client_colour/glass_colour/yellow)
+
+		if(MODE_TRAY) //undoes the last mode, meson
+			vision_flags = NONE
+			darkness_view = 2
+			lighting_alpha = null
+			change_glass_color(user, /datum/client_colour/glass_colour/lightblue)
+
+		if(MODE_OBJECT)
+			change_glass_color(user, /datum/client_colour/glass_colour/lightgreen)
+
+		if(MODE_NONE)
+			change_glass_color(user, initial(glass_colour_type))
+
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.glasses == src)
+			H.update_sight()
+
+	update_appearance()
+	update_action_buttons()
+
+/obj/item/clothing/glasses/meson/engine/breaker/update_icon_state()
+	. = ..()
+	if(mode == MODE_OBJECT)
+		icon_state = inhand_icon_state = "trayson-radiation"
+	return
+
+#undef MODE_NONE
+#undef MODE_MESON
+#undef MODE_TRAY
+#undef MODE_OBJECT
