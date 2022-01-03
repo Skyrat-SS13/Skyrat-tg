@@ -161,7 +161,7 @@
 		part.cold_protection = initial(part.cold_protection)
 	else
 		part.flags_cover &= ~part.visor_flags_cover
-		part.flags_inv &= ~part.visor_flags_inv
+		part.flags_inv &= ~part.visor_flags_inv + HIDESPINE // SKYRAT EDIT - Hiding the tail spines from MODsuits
 		part.clothing_flags &= ~part.visor_flags
 		part.heat_protection = NONE
 		part.cold_protection = NONE
@@ -183,6 +183,7 @@
 			helmet.alternate_worn_layer = helmet.alternate_layer
 		wearer.update_inv_head()
 		wearer.update_inv_wear_mask()
+		wearer.update_inv_glasses()
 		wearer.update_hair()
 
 /// Finishes the suit's activation, starts processing

@@ -1,8 +1,9 @@
 /datum/asset/spritesheet/languages
 	name = "languages"
 	early = TRUE
+	cross_round_cachable = TRUE
 
-/datum/asset/spritesheet/languages/register()
+/datum/asset/spritesheet/languages/create_spritesheets()
 	var/list/to_insert = list()
 
 	if(!GLOB.all_languages.len)
@@ -24,8 +25,6 @@
 
 	for (var/spritesheet_key in to_insert)
 		Insert(spritesheet_key, to_insert[spritesheet_key])
-
-	return ..()
 
 /// Middleware to handle languages
 /datum/preference_middleware/languages
