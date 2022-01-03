@@ -117,6 +117,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/show_tip,
 	/client/proc/smite,
 	/client/proc/admin_away,
+	/client/proc/add_mob_ability,
 	/datum/admins/proc/station_traits_panel,
 	/client/proc/spawn_pollution, // SKYRAT EDIT ADDITION
 	))
