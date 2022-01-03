@@ -693,14 +693,15 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "lucifer"
 	obj_flags = UNIQUE_RENAME
-	unique_reskin = list("Lucifer" = "lucifer",
-						"Justice" = "justice",
-						"Malina" = "malina",
-						"Pandemonica" = "pande",
-						"Modeus" = "modeus",
-						"Zdara" = "zdara",
-						"Cereberus" = "cereberus",
-						)
+	unique_reskin = list(
+		"Lucifer" = "lucifer",
+		"Justice" = "justice",
+		"Malina" = "malina",
+		"Pandemonica" = "pande",
+		"Modeus" = "modeus",
+		"Zdara" = "zdara",
+		"Cereberus" = "cereberus",
+	)
 
 /obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/demon/beeze
 	name = "designer demonic suit"
