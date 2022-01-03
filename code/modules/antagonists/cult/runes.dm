@@ -351,7 +351,6 @@ structure_check() searches for nearby cultist structures required for the invoca
 	//SKYRAT EDIT BEGIN -- SOULSTONE_CHANGES
 	if(sacrificial)
 		playsound(sacrificial, 'sound/magic/disintegrate.ogg', 100, TRUE)
-<<<<<<< HEAD
 
 		if(iscarbon(sacrificial))
 			var/mob/living/carbon/victim = sacrificial
@@ -360,11 +359,8 @@ structure_check() searches for nearby cultist structures required for the invoca
 			victim.adjustFireLoss(300)
 			ADD_TRAIT(victim, TRAIT_SACRIFICED, "sacrificed")
 		else
-			sacrificial.gib()
+			sacrificial.gib(TRUE)
 	//SKYRAT EDIT END
-=======
-		sacrificial.gib(TRUE)
->>>>>>> 418683644a5 (Fixes mindshielded sacrifices not transfering their soul into the soulstone (#63707))
 	return TRUE
 
 
