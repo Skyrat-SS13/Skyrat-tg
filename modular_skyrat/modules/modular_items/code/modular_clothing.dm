@@ -98,7 +98,7 @@
 /obj/item/clothing/glasses/meson/engine/breaker/toggle_mode(mob/user, voluntary)
 	mode = modes[mode]
 	to_chat(user, "<span class='[voluntary ? "notice":"warning"]'>[voluntary ? "You turn the goggles":"The goggles turn"] [mode ? "to [mode] mode":"off"][voluntary ? ".":"!"]</span>")
-	if(connection_images.len)
+	if(length(connection_images))
 		connection_images.Cut()
 	switch(mode)
 		if(MODE_MESON)
@@ -113,8 +113,11 @@
 			lighting_alpha = null
 			change_glass_color(user, /datum/client_colour/glass_colour/lightblue)
 
-		if(MODE_OBJECT)
+		if(MODE_OBJECT)	//undoes the last mode, and sets our vision flags to show objects
 			change_glass_color(user, /datum/client_colour/glass_colour/lightgreen)
+			vision_flags = SEE_OBJS
+			darkness_view = 1
+			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 
 		if(MODE_NONE)
 			change_glass_color(user, initial(glass_colour_type))
