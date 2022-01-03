@@ -59,6 +59,7 @@
 					/obj/item/clothing/neck/human_petcollar/locked/cowcollar = 8,
 					/obj/item/clothing/neck/human_petcollar/locked/bellcollar = 8,
 					/obj/item/clothing/neck/human_petcollar/locked/cross = 8,
+					/obj/item/clothing/neck/human_petcollar/locked/spikecollar = 8,
 
 					//torso clothing
 					/obj/item/clothing/under/misc/latex_catsuit = 8,

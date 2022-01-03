@@ -51,7 +51,7 @@
 		ADD_TRAIT(piece, TRAIT_NODROP, MOD_TRAIT)
 		if(!user)
 			return TRUE
-		wearer.visible_message(span_notice("[wearer]'s [piece] deploy[piece.p_s()] with a mechanical hiss."),
+		wearer.visible_message(span_notice("[wearer]'s [piece.name] deploy[piece.p_s()] with a mechanical hiss."),
 			span_notice("[piece] deploy[piece.p_s()] with a mechanical hiss."),
 			span_hear("You hear a mechanical hiss."))
 		playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
@@ -59,7 +59,7 @@
 	else if(piece.loc != src)
 		if(!user)
 			return FALSE
-		balloon_alert(user, "[piece] already deployed!")
+		balloon_alert(user, "[piece.name] already deployed!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 	else
 		if(!user)
@@ -79,7 +79,7 @@
 		boots.show_overslot()
 	if(!user)
 		return
-	wearer.visible_message(span_notice("[wearer]'s [piece] retract[piece.p_s()] back into [src] with a mechanical hiss."),
+	wearer.visible_message(span_notice("[wearer]'s [piece.name] retract[piece.p_s()] back into [src] with a mechanical hiss."),
 		span_notice("[piece] retract[piece.p_s()] back into [src] with a mechanical hiss."),
 		span_hear("You hear a mechanical hiss."))
 	playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
@@ -161,7 +161,7 @@
 		part.cold_protection = initial(part.cold_protection)
 	else
 		part.flags_cover &= ~part.visor_flags_cover
-		part.flags_inv &= ~part.visor_flags_inv
+		part.flags_inv &= ~part.visor_flags_inv + HIDESPINE // SKYRAT EDIT - Hiding the tail spines from MODsuits
 		part.clothing_flags &= ~part.visor_flags
 		part.heat_protection = NONE
 		part.cold_protection = NONE
@@ -183,6 +183,7 @@
 			helmet.alternate_worn_layer = helmet.alternate_layer
 		wearer.update_inv_head()
 		wearer.update_inv_wear_mask()
+		wearer.update_inv_glasses()
 		wearer.update_hair()
 
 /// Finishes the suit's activation, starts processing
