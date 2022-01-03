@@ -118,71 +118,14 @@
 			T.hotspot_expose(chem_temp*2, 5)
 	if(!reactable.len) //Nothing to react with. Probably means we're in nullspace.
 		return
-<<<<<<< HEAD
-
-	var/datum/reagents/splash_holder = new/datum/reagents(total_reagents*threatscale)
-	splash_holder.my_atom = epicenter // For some reason this is setting my_atom to null, and causing runtime errors.
-	var/total_temp = 0
-
-	for(var/datum/reagents/R in reactants)
-		R.trans_to(splash_holder, R.total_volume, threatscale, 1, 1)
-		total_temp += R.chem_temp
-	splash_holder.chem_temp = (total_temp/reactants.len) + extra_heat // Average temperature of reagents + extra heat.
-	splash_holder.handle_reactions() // React them now.
-
-	if(splash_holder.total_volume && affected_range >= 0) //The possible reactions didnt use up all reagents, so we spread it around.
-		var/datum/effect_system/steam_spread/steam = new /datum/effect_system/steam_spread()
-		steam.set_up(10, 0, epicenter)
-		steam.attach(epicenter)
-		steam.start()
-
-		var/list/viewable = view(affected_range, epicenter)
-
-		var/list/accessible = list(epicenter)
-		for(var/i in 1 to affected_range)
-			var/list/turflist = list()
-			for(var/turf/T in (orange(i, epicenter) - orange(i-1, epicenter)))
-				turflist |= T
-			for(var/turf/T in turflist)
-				if(!(get_dir(T,epicenter) in GLOB.cardinals) && (abs(T.x - epicenter.x) == abs(T.y - epicenter.y) ))
-					turflist.Remove(T)
-					turflist.Add(T) // we move the purely diagonal turfs to the end of the list.
-			for(var/turf/T in turflist)
-				if(accessible[T])
-					continue
-				for(var/thing in T.get_atmos_adjacent_turfs(alldir = TRUE))
-					var/turf/NT = thing
-					if(!(NT in accessible))
-						continue
-					if(!(get_dir(T,NT) in GLOB.cardinals))
-						continue
-					accessible[T] = 1
-					break
-		var/list/reactable = accessible
-		for(var/turf/T in accessible)
-			for(var/atom/A in T.get_all_contents())
-				if(!(A in viewable))
-					continue
-				reactable |= A
-			if(extra_heat >= 300)
-				T.hotspot_expose(extra_heat*2, 5)
-		if(!reactable.len) //Nothing to react with. Probably means we're in nullspace.
-			return
-		for(var/thing in reactable)
-			var/atom/A = thing
-			var/distance = max(1,get_dist(A, epicenter))
-			var/fraction = 0.5/(2 ** distance) //50/25/12/6... for a 200u splash, 25/12/6/3... for a 100u, 12/6/3/1 for a 50u
-			splash_holder.expose(A, TOUCH, fraction)
-
-	epicenter.add_liquid_from_reagents(splash_holder) //SKYRAT EDIT ADDITION
-	qdel(splash_holder)
-	return 1
-
-
-=======
 	for(var/thing in reactable)
 		var/atom/A = thing
 		var/distance = max(1, get_dist(A, epicenter))
 		var/fraction = 0.5 / (2 ** distance) //50/25/12/6... for a 200u splash, 25/12/6/3... for a 100u, 12/6/3/1 for a 50u
 		source.expose(A, TOUCH, fraction)
->>>>>>> 6b7df7b174f (Fixes gunpowder and teslium grenades being completely nonfunctional. (#63393))
+
+	// SKYRAT ADDITION START - Liquids
+	if(isturf(epicenter))
+		var/turf/center_of_mess = epicenter
+		center_of_mess.add_liquid_from_reagents(source)
+	// SKYRAT ADDITION END
