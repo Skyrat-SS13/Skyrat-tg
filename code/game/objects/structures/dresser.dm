@@ -36,43 +36,7 @@
 		to_chat(user, span_warning("You are not capable of wearing underwear."))
 		return
 
-<<<<<<< HEAD
-		var/choice = input(user, "Underwear, Undershirt, or Socks?", "Changing") as null|anything in list("Underwear","Underwear Color","Undershirt","Undershirt Color","Socks","Socks Color") //SKYRAT EDIT ADDITION - Colorable Undershirt/Socks
-
-		if(!Adjacent(user))
-			return
-		switch(choice)
-			if("Underwear")
-				var/new_undies = input(user, "Select your underwear", "Changing")  as null|anything in GLOB.underwear_list
-				if(new_undies)
-					H.underwear = new_undies
-
-			if("Underwear Color")
-				var/new_underwear_color = input(H, "Choose your underwear color", "Underwear Color",H.underwear_color) as color|null
-				if(new_underwear_color)
-					H.underwear_color = sanitize_hexcolor(new_underwear_color)
-			if("Undershirt")
-				var/new_undershirt = input(user, "Select your undershirt", "Changing") as null|anything in GLOB.undershirt_list
-				if(new_undershirt)
-					H.undershirt = new_undershirt
-			//SKYRAT EDIT ADDITION BEGIN - Colorable Undershirt/Socks
-			if("Undershirt Color")
-				var/new_undershirt_color = input(H, "Choose your undershirt color", "Undershirt Color",H.undershirt_color) as color|null
-				if(new_undershirt_color)
-					H.undershirt_color = sanitize_hexcolor(new_undershirt_color)
-			if("Socks")
-				var/new_socks = input(user, "Select your socks", "Changing") as null|anything in GLOB.socks_list
-				if(new_socks)
-					H.socks= new_socks
-			if("Socks Color")
-				var/new_socks_color = input(H, "Choose your socks color", "Socks Color",H.socks_color) as color|null
-				if(new_socks_color)
-					H.socks_color = sanitize_hexcolor(new_socks_color)
-			//SKYRAT EDIT ADDITION END - Colorable Undershirt/Socks
-		add_fingerprint(H)
-		H.update_body()
-=======
-	var/choice = tgui_input_list(user, "Underwear, Undershirt, or Socks?", "Changing", list("Underwear","Underwear Color","Undershirt","Socks"))
+	var/choice = tgui_input_list(user, "Underwear, Undershirt, or Socks?", "Changing", list("Underwear", "Underwear Color", "Undershirt", "Socks", "Undershirt Color", "Socks Color")) //SKYRAT EDIT ADDITION - Colorable Undershirt/Socks
 	if(isnull(choice))
 		return
 
@@ -94,8 +58,17 @@
 		if("Socks")
 			var/new_socks = tgui_input_list(user, "Select your socks", "Changing", GLOB.socks_list)
 			if(new_socks)
-				dressing_human.socks= new_socks
+				dressing_human.socks = new_socks
+		//SKYRAT EDIT ADDITION BEGIN - Colorable Undershirt/Socks
+		if("Undershirt Color")
+			var/new_undershirt_color = input(dressing_human, "Choose your undershirt color", "Undershirt Color", dressing_human.undershirt_color) as color|null
+			if(new_undershirt_color)
+				dressing_human.undershirt_color = sanitize_hexcolor(new_undershirt_color)
+		if("Socks Color")
+			var/new_socks_color = input(dressing_human, "Choose your socks color", "Socks Color", dressing_human.socks_color) as color|null
+			if(new_socks_color)
+				dressing_human.socks_color = sanitize_hexcolor(new_socks_color)
+		//SKYRAT EDIT ADDITION END - Colorable Undershirt/Socks
 
 	add_fingerprint(dressing_human)
 	dressing_human.update_body()
->>>>>>> 9c6fdb567da (TGUI list conversions + bug fixes (#63354))

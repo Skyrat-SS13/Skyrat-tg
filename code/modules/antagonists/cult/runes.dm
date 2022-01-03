@@ -300,7 +300,6 @@ structure_check() searches for nearby cultist structures required for the invoca
 		return FALSE
 
 	var/big_sac = FALSE
-<<<<<<< HEAD
 	//SKYRAT ADDITION BEGIN -- SOULSTONE_cHANGES
 	if(HAS_TRAIT(sacrificial, TRAIT_SACRIFICED))
 		for(var/M in invokers)
@@ -308,10 +307,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 		log_game("Offer rune failed - tried sacrificing already sacrificed target.")
 		return FALSE
 	//SKYRAT ADDITION END
-	if((((ishuman(sacrificial) || iscyborg(sacrificial)) && sacrificial.stat != DEAD) || C.cult_team.is_sacrifice_target(sacrificial.mind)) && invokers.len < 3)
-=======
 	if((((ishuman(sacrificial) || iscyborg(sacrificial)) && sacrificial.stat != DEAD) || C.cult_team.is_sacrifice_target(sacrificial.mind)) && length(invokers) < 3)
->>>>>>> 9c6fdb567da (TGUI list conversions + bug fixes (#63354))
 		for(var/M in invokers)
 			to_chat(M, span_cultitalic("[sacrificial] is too greatly linked to the world! You need three acolytes!"))
 		log_game("Offer rune failed - not enough acolytes and target is living or sac target")
