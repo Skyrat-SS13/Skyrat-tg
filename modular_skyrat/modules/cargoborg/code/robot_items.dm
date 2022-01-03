@@ -359,6 +359,7 @@
 /obj/item/paperplane/syndicate/hardlight/Initialize()
 	. = ..()
 	color = color_hex2color_matrix(pick(paper_colors))
+	alpha = initial(alpha) // It's hardlight, it's gotta be see-through.
 
 
 /obj/item/borg/paperplane_crossbow
