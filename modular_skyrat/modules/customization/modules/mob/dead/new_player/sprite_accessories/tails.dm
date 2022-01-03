@@ -81,6 +81,9 @@
 				var/datum/mod_theme/mod_theme = modsuit_control.theme
 				if(mod_theme.modsuit_tail_colors)
 					return FALSE
+			//Hardsuit?
+			if(istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
+				return FALSE
 			return TRUE
 	if(H.owned_turf)  //we do a lil' emoting
 		var/list/used_in_turf = list("tail")
