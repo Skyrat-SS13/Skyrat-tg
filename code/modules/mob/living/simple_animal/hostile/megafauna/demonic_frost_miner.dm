@@ -69,34 +69,11 @@ Difficulty: Extremely Hard
 	AddElement(/datum/element/lifesteal, 50)
 	ADD_TRAIT(src, TRAIT_NO_FLOATING_ANIM, INNATE_TRAIT)
 
-<<<<<<< HEAD
-/datum/action/innate/megafauna_attack/frost_orbs
-	name = "Fire Frost Orbs"
-	icon_icon = 'icons/mob/actions/actions_items.dmi'
-	button_icon_state = "sniper_zoom"
-	chosen_message = "<span class='colossus'>You are now sending out frost orbs to track in on a target.</span>"
-	chosen_attack_num = 1
-
-/datum/action/innate/megafauna_attack/snowball_machine_gun
-	name = "Fire Snowball Machine Gun"
-	icon_icon = 'icons/obj/guns/energy.dmi'
-	button_icon_state = "kineticgun"
-	chosen_message = "<span class='colossus'>You are now firing a snowball machine gun at a target.</span>"
-	chosen_attack_num = 2
-
-/datum/action/innate/megafauna_attack/ice_shotgun
-	name = "Fire Ice Shotgun"
-	icon_icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' //skyrat edit
-	button_icon_state = "shotgun"
-	chosen_message = "<span class='colossus'>You are now firing shotgun ice blasts.</span>"
-	chosen_attack_num = 3
-=======
 /mob/living/simple_animal/hostile/megafauna/demonic_frost_miner/Destroy()
 	QDEL_NULL(frost_orbs)
 	QDEL_NULL(snowball_machine_gun)
 	QDEL_NULL(ice_shotgun)
 	return ..()
->>>>>>> 155bd7d9ab2 (Mob Abilities (#63520))
 
 /mob/living/simple_animal/hostile/megafauna/demonic_frost_miner/OpenFire()
 	if(client)
