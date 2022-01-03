@@ -33,6 +33,8 @@
 	var/cooldown_time = 0
 	/// The mouse button needed to use this module
 	var/used_signal
+	/// List of mobs we are pinned to, linked with their action buttons
+	var/list/pinned_to = list()
 	/// Timer for the cooldown
 	COOLDOWN_DECLARE(cooldown_timer)
 
@@ -239,8 +241,12 @@
 		used_overlay = overlay_state_inactive
 	else
 		return
+	/* SKYRAT EDIT START - Making MODsuits mutant-compatible - ORIGINAL:
 	var/mutable_appearance/module_icon = mutable_appearance('icons/mob/mod.dmi', used_overlay, layer = standing.layer + 0.1)
 	. += module_icon
+	*/
+	return handle_module_icon(standing, used_overlay)
+	// SKYRAT EDIT END
 
 /// Updates the signal used by active modules to be activated
 /obj/item/mod/module/proc/update_signal(value)
@@ -250,3 +256,14 @@
 		if(ALT_CLICK)
 			mod.selected_module.used_signal = COMSIG_MOB_ALTCLICKON
 	RegisterSignal(mod.wearer, mod.selected_module.used_signal, /obj/item/mod/module.proc/on_special_click)
+
+/// Pins the module to the user's action buttons
+/obj/item/mod/module/proc/pin(mob/user)
+	var/datum/action/item_action/mod/pinned_module/action = pinned_to[user]
+	if(action)
+		qdel(action)
+		pinned_to[user] = null
+	else
+		action = new(mod, src, user)
+		action.Grant(user)
+		pinned_to[user] = action
