@@ -353,6 +353,7 @@
 	delete_on_impact = TRUE
 	/// Which color is the paper plane?
 	var/list/paper_colors = list(COLOR_CYAN, COLOR_BLUE_LIGHT, COLOR_BLUE)
+	alpha = 150 // It's hardlight, it's gotta be see-through.
 
 
 /obj/item/paperplane/syndicate/hardlight/Initialize()
