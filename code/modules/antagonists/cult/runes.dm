@@ -359,7 +359,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 			victim.adjustFireLoss(300)
 			ADD_TRAIT(victim, TRAIT_SACRIFICED, "sacrificed")
 		else
-			sacrificial.gib()
+			sacrificial.gib(TRUE)
 	//SKYRAT EDIT END
 	return TRUE
 
