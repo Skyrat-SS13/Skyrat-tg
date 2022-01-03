@@ -2,9 +2,9 @@
 //This one is specifically for ruin-specific items, such as ID, lore, or super-specific decorations
 
 /* ----------------- ID Cards ----------------- */
-/obj/item/card/id/away/old/salvagepod	//Used for salvagepost ruin access	-- NOT WORKING YET REE
+/obj/item/card/id/away/old/salvagepod	//Used for salvagepost ruin access
 	name = "Cutter's Pod Access Card"
-	desc = "An ancient access card with the words \"Cutter's Pod\" printed on in big bold letters. It'll be a miracle if this still works."
+	desc = "An ancient access card with the words " + span_engradio("\"Cutter's Pod\"") + " printed on in big bold letters. It'll be a miracle if this still works."
 	trim = /datum/id_trim/away/old/eng
 
 /* ----------------- Lore ----------------- */
@@ -54,9 +54,34 @@
 		7 = 330,
 		8 = 380
 	)
-/obj/item/tape/ruins/ghostship	//An early 'AI' that gained self-awareness, praising the Machine God. Yes, this whole map is a Hardspace Shipbreaker reference.
+
+/obj/item/tape/ruins/ghostship
+	icon_state = "tape_yellow"
+	desc = "The tape is hastily labelled with \"WARNING\"... might be worth listening to this one."
+
+	used_capacity = 330
+	storedinfo = list(
+		1 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording started.</span>\"</span></span>",
+		2 = "<span class='game say'><span class='name'>Carter R. Manfred</span> <span class='message'>grunts, \"<span class=' '>C'mon, c'mon, start- ah, there.</span>\"</span></span>",
+		3 = "<span class='game say'><span class='name'>Carter R. Manfred</span> <span class='message'>says, hurriedly, \"<span class=' '>Alright, look, this ship, it ain't right.</span>\"</span></span>",
+		4 = "<span class='game say'><span class='name'>Carter R. Manfred</span> <span class='message'>hesitates, before continiuing, \"<span class=' '>Somethin... just isn't okay, the Nav system, consoles in general, all on the fritz, usually have some weird blinking node attached? Screech bloody murder if you nick 'em with the cutters...</span>\"</span></span>",
+		5 = "<span class='game say'><span class='name'>Carter R. Manfred</span> <span class='message'>whispers, \"<span class=' '>Look, just, whatever you do, stay out. Blow it up from a safe range, 'cause whatever's on it? Well, ah... Johnny never came out of the maintinence crawlspace, and damn you if you think I'm foolish enough to follow.</span>\"</span></span>",
+		6 = "<span class='game say'><span class='name'>Carter R. Manfred</span> <span class='message'>stops, before adding the closing statement, \"<span class=' '>This shit ain't even worth it, pirates or.. someone, took the reactor. Waste of time to salvage... cant believe Johnny's gone for... this.</span>\"</span></span>",
+		7 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording stopped.</span>\"</span></span>"
+	)
+	timestamp = list(
+		1 = 0,
+		2 = 10,
+		3 = 70,
+		4 = 150,
+		5 = 230,
+		6 = 280,
+		7 = 330
+	)
+
+/obj/item/tape/ruins/ghostship/machinegod	//An early 'AI' that gained self-awareness, praising the Machine God. Yes, this whole map is a Hardspace Shipbreaker reference.
 	icon_state = "tape_blue"
-	desc = "The tape, aside from some grime, has a... binary label? \"01001101 01100001 01100011 01101000 01101001 01101110 01100101 01000111 01101111 01100100 01000011 01101111 01101101 01100101 01110011\""
+	desc = "The tape, aside from some grime, has a... binary label? " + span_robot("\"01001101 01100001 01100011 01101000 01101001 01101110 01100101 01000111 01101111 01100100 01000011 01101111 01101101 01100101 01110011\"")
 
 	used_capacity = 380
 	storedinfo = list(
