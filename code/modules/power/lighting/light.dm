@@ -127,14 +127,17 @@
 	if(!on || status != LIGHT_OK)
 		return
 
-	// var/area/A = get_area(src) SKYRAT EDIT REMOVAL
-	if(emergency_mode || firealarm) //SKYRAT EDIT CHANGE
-		. += mutable_appearance(overlay_icon, "[base_state]_emergency", layer, plane)
+	/* SKYRAT EDIT START - ORIGINAL:
+	var/area/local_area = get_area(src)
+	if(emergency_mode || (local_area?.fire))
+	*/
+	if(emergency_mode || firealarm) // SKYRAT EDIT END
+		. += mutable_appearance(overlay_icon, "[base_state]_emergency")
 		return
 	if(nightshift_enabled)
-		. += mutable_appearance(overlay_icon, "[base_state]_nightshift", layer, plane)
+		. += mutable_appearance(overlay_icon, "[base_state]_nightshift")
 		return
-	. += mutable_appearance(overlay_icon, base_state, layer, plane)
+	. += mutable_appearance(overlay_icon, base_state)
 
 //SKYRAT EDIT ADDITION BEGIN - AESTHETICS
 #define LIGHT_ON_DELAY_UPPER 3 SECONDS
