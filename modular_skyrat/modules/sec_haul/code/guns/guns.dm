@@ -764,18 +764,18 @@
 	caliber = CALIBER_14GAUGE
 	ammo_type = /obj/item/ammo_casing/s14gauge
 	max_ammo = 5
-	
+
 //New SAS14 mags beyond here
 
 /obj/item/ammo_box/magazine/sas14/empty
 	start_empty = TRUE
-	
+
 /obj/item/ammo_box/magazine/sas14/beanbag
 	ammo_type = /obj/item/ammo_casing/s14gauge/beanbag
 
 /obj/item/ammo_box/magazine/sas14/buckshot
 	ammo_type = /obj/item/ammo_casing/s14gauge/buckshot
-	
+
 /obj/item/ammo_box/magazine/sas14/rubbershot
 	ammo_type = /obj/item/ammo_casing/s14gauge/rubbershot
 
