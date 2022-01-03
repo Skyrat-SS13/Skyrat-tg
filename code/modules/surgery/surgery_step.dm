@@ -12,10 +12,6 @@
 
 /datum/surgery_step/proc/try_op(mob/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
 	var/success = FALSE
-	if(surgery.organ_to_manipulate && !target.getorganslot(surgery.organ_to_manipulate))
-		to_chat(user, span_warning("[target] seems to be missing the organ necessary to complete this surgery!"))
-		return FALSE
-
 	if(accept_hand)
 		if(!tool)
 			success = TRUE
@@ -200,6 +196,10 @@
  * Sends a pain message to the target, including a chance of screaming.
  *
  * Arguments:
+ * * target - Who the message will be sent to
+ * * pain_message - The message to be displayed
+ * * mechanical_surgery - Boolean flag that represents if a surgery step is done on a mechanical limb (therefore does not force scream)
+ */
 //SKYRAT EDIT START: Fixes painkillers not actually stopping pain.
 /datum/surgery_step/proc/display_pain(mob/living/target, pain_message, mechanical_surgery = FALSE)
 	if(HAS_TRAIT(target, TRAIT_NUMBED) || target.stat >= UNCONSCIOUS)
