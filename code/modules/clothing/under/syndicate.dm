@@ -6,6 +6,7 @@
 	has_sensor = NO_SENSORS
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40)
 	alt_covers_chest = TRUE
+	unique_reskin = list("Old" = "syndicateold")
 //	icon = 'icons/obj/clothing/under/syndicate.dmi' //SKYRAT EDIT - ICON OVERRIDDEN BY modular_skyrat\modules\aesthetics\clothing
 //	worn_icon = 'icons/mob/clothing/under/syndicate.dmi' //SKYRAT EDIT - ICON OVERRIDDEN BY modular_skyrat\modules\aesthetics\clothing
 
@@ -19,6 +20,7 @@
 	alt_covers_chest = TRUE
 	fitted = FEMALE_UNIFORM_TOP
 	dying_key = DYE_REGISTRY_JUMPSKIRT
+	unique_reskin = list("Old" = "syndicateold_skirt")
 
 /obj/item/clothing/under/syndicate/bloodred
 	name = "blood-red sneaksuit"
@@ -42,6 +44,7 @@
 	icon_state = "tactifool"
 	inhand_icon_state = "bl_suit"
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40)
+	unique_reskin = list("Old" = "tactifoolold")
 
 /obj/item/clothing/under/syndicate/tacticool/skirt
 	name = "tacticool skirtleneck"
@@ -51,6 +54,7 @@
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40)
 	fitted = FEMALE_UNIFORM_TOP
 	dying_key = DYE_REGISTRY_JUMPSKIRT
+	unique_reskin = list("Old" = "tactifoolold_skirt")
 
 /obj/item/clothing/under/syndicate/sniper
 	name = "tactical turtleneck suit"
