@@ -43,7 +43,7 @@
 	body_parts_covered = GROIN|LEGS
 	fitted = FEMALE_UNIFORM_TOP
 
-//NYI - Shipbreaker Softsuits
+//Shipbreaker Softsuits - Mostly fluff for ruins, may be implemented as a ghostrole in Overmap
 /obj/item/clothing/head/helmet/space/breaker
 	name = "cutter's space helmet"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
