@@ -117,4 +117,8 @@
 	inhand_icon_state = "welding-g"
 	vision_correction = TRUE
 
-
+// Like sunglasses, but without any protection
+/obj/item/clothing/glasses/fake_sunglasses
+	name = "low-UV sunglasses"
+	icon_state = "sun"
+	inhand_icon_state = "sunglasses"
