@@ -120,5 +120,6 @@
 // Like sunglasses, but without any protection
 /obj/item/clothing/glasses/fake_sunglasses
 	name = "low-UV sunglasses"
+	desc = "A cheaper brand of sunglasses rated for much lower UV levels. Offers the user no protection to bright lights."
 	icon_state = "sun"
 	inhand_icon_state = "sunglasses"
