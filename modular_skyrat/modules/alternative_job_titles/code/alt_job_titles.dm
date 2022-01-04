@@ -142,7 +142,7 @@
 	alt_titles = list("Shaft Miner", "Excavator", "Spelunker", "Drill Technician", "Prospector")
 
 /datum/job/station_engineer
-	alt_titles = list("Station Engineer", "Emergency Damage Control Technician", "Electrician", "Engine Technician", "EVA Technician", "Engineer", "Mechanic")
+	alt_titles = list("Station Engineer", "Emergency Damage Control Technician", "Electrician", "Engine Technician", "EVA Technician", "Mechanic")
 
 /datum/job/virologist
 	alt_titles = list("Virologist", "Pathologist")
