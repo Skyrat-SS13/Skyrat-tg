@@ -3676,7 +3676,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Service Maintenance";
-	req_one_access_txt = "22;25;26;28;35;37;38;46;70"
+	req_one_access_txt = "73"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -3794,7 +3794,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/public/glass{
 	name = "Service Hall";
-	req_one_access_txt = "22;25;26;28;35;37;38;46;70"
+	req_one_access_txt = "73"
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/stripes/line{
@@ -53708,9 +53708,6 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/transit_tube/station{
-	dir = 8
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -53723,6 +53720,9 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/transit_tube/station/dispenser{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/aisat/exterior)
 "jAh" = (
@@ -68977,7 +68977,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public{
 	name = "Service Hall";
-	req_one_access_txt = "22;25;26;28;35;37;38;46;70"
+	req_one_access_txt = "73"
 	},
 /turf/open/floor/iron/checker,
 /area/hallway/secondary/service)
@@ -71457,7 +71457,7 @@
 	},
 /obj/machinery/door/airlock/public/glass{
 	name = "Service Hall";
-	req_one_access_txt = "22;25;26;28;35;37;38;46;70"
+	req_one_access_txt = "73"
 	},
 /turf/open/floor/iron/checker,
 /area/hallway/secondary/service)
@@ -71805,10 +71805,6 @@
 /area/engineering/main)
 "ovG" = (
 /obj/machinery/status_display/ai/directional/south,
-/obj/structure/transit_tube/station/reverse/flipped,
-/obj/structure/transit_tube_pod{
-	dir = 8
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -71821,6 +71817,10 @@
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
+	},
+/obj/structure/c_transit_tube/station/dispenser/reverse/flipped{
+	anchored = 1;
+	name = "station tube pod dispenser"
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/transit_tube)
