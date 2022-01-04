@@ -148,4 +148,4 @@
 	alt_titles = list("Virologist", "Pathologist")
 
 /datum/job/warden
-	alt_titles = list("Warden", "Brig Sergeant", "Dispatch Officer", "Brig Governor", "Jailer", "Gaoler")
+	alt_titles = list("Warden", "Brig Sergeant", "Dispatch Officer", "Brig Governor", "Jailer", "Brig Gaoler")
