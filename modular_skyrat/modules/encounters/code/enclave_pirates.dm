@@ -53,7 +53,6 @@
 /obj/effect/mob_spawn/ghost_role/human/pirate/enclave
 	name = "imperial enclave sleeper"
 	desc = "Cozy. You get the feeling you aren't supposed to be here, though..."
-	random = TRUE
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	mob_name = "an imperial enclave trooper"

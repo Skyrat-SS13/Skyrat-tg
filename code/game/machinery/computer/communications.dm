@@ -404,7 +404,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				return
 			calling_911(usr, "EMTs", EMERGENCY_RESPONSE_EMT)
 		if("callThePizza")
-			if(obj_flags & EMAGGED)
+			if(!(obj_flags & EMAGGED))
 				return
 			if(!pre_911_check(usr))
 				return
@@ -697,7 +697,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	if(!SScommunications.can_announce(user, is_ai))
 		to_chat(user, span_alert("Intercomms recharging. Please stand by."))
 		return
-	var/input = stripped_input(user, "Please choose a message to announce to the station crew.", "What?")
+	var/input = tgui_input_text(user, "Message to announce to the station crew", "Announcement")
 	if(!input || !user.canUseTopic(src, !issilicon(usr)))
 		return
 	if(!(user.can_speak())) //No more cheating, mime/random mute guy!

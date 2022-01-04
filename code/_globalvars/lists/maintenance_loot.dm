@@ -105,6 +105,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 	list(//construction and crafting
 		/obj/item/stack/cable_coil = 1,
 		/obj/item/stock_parts/cell = 1,
+		/obj/item/stock_parts/cell/crank = 1, // SKYRAT EDIT: NEW_CELLS
 		/obj/item/stack/rods/twentyfive = 1,
 		/obj/item/stack/sheet/iron/twenty = 1,
 		/obj/item/stack/sheet/mineral/plasma = 1,

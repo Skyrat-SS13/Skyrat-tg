@@ -1,0 +1,150 @@
+2022-01-01:
+  ErdinyoBarboza:
+  - bugfix: Model 23-37 and M2 Auto are now 12 gauge again. Also fixes the descriptions
+      of the Armory Shotguns
+  GoldenAlpharex:
+  - bugfix: The blackmarket uplink shouldn't run into issues loading the different
+      categories of items it can order when it was created during mapload.
+  - bugfix: Fixed a few instances of catwalks being on the same tile as lattices on
+      the salvage post ruin, which means less runtimes trying to load that space ruin.
+      Yay!
+  Iamgoofball:
+  - balance: Re-enables the goodie packs for Stingbangs, the Detective's alternative
+      ammunition, and the Survival Knife.
+  Melbert:
+  - bugfix: Hulk is removed more consistently when the user actually enters soft crit.
+  SkyratBot:
+  - bugfix: You will no longer hear medibot voicelines whilst in crit.
+  - bugfix: Possessing a mob no longer lowercases your ckey in admin messages.
+  - bugfix: fixed basil boys uniform being offset by one pixel
+  - bugfix: Pipe dispensers no longer produce broken invisible pipes.
+  thestubborn:
+  - bugfix: some loadout exclusive stuff is now in vendors, shout at me about the
+      stuff I missed please
+  - spellcheck: capitalised those annoying all lowercase stuff in the loadout, says
+      the man who speaks in all lowercase
+2022-01-02:
+  Iamgoofball:
+  - balance: All Shotguns in the armory are now Riot Shotguns that load normal shotgun
+      shells.
+  - balance: The armory shotgun ammunition storage now contains normal shotgun shells.
+  MMMiracles:
+  - rscadd: Tramstation has gotten an extension, both in size and layout.
+  - rscadd: Tramstation's medical has been completely overhauled to a new layout,  hopefully
+      a better one!
+  - rscadd: New bits of maintenance and maintenance path have been added on both the
+      top and bottom levels of the map.
+  - rscadd: Cargo now resides over a small bank vault that stores both the station's
+      materials and wealth.
+  SkyratBot:
+  - spellcheck: The exosuit fabricator should now spit out (more) grammatically correct
+      messages.
+  - bugfix: Silicons and other mobs that shouldn't be able to lie down now won't lie
+      down no matter what happens.
+  - bugfix: fixes pirates not getting their antag status, alongside a non-pirate name
+  - bugfix: Fixed a clipping issue with the brainwash objective text. Brainwashed
+      victims can now properly lead longer objectives about the clown being a zombie,
+      etc.
+  - bugfix: MODsuits no longer runtime when EMPed with no module selected
+  - bugfix: Bodies will no longer (sometimes) be fully deleted when escaping a disposal
+      pipe trap.
+  - bugfix: Fixes blastcannons not actually having any light range regardless of the
+      bomb they used.
+  - bugfix: Fixes blastcannons being blocked by cigarette butts.
+  - code_imp: Unspaghettis some variable definitions.
+  - code_imp: Brings phasic carbine rounds into compliance with the rest of the projectiles.
+  - bugfix: Fixes field of view handler perceiving the wrong eye
+  - bugfix: Things on fire moving over a bonfire will now ignite its flame
+  theOOZ:
+  - imageadd: Adds a new bird beak, it's small
+2022-01-03:
+  Gandalf2k15:
+  - rscadd: Tactical pants.
+  SkyratBot:
+  - bugfix: Russian Revolver can't longer be able to be examined to determine if it
+      has a bullet in it's chamber or not.
+  tastyfish:
+  - bugfix: Fixes Interdyne radios (pending an upstream fix as well).
+2022-01-04:
+  Deek-Za:
+  - imageadd: Added sprites for cargo cap when flipped
+  ErdinyoBarboza:
+  - balance: AKM, M16, FG42, PPSh and StG are now bulky instead of normal sized items.
+      Goodbye backpack M16!
+  - bugfix: Made the MP40's description in line with contributor guidelines
+  - spellcheck: "FG-42 is named as is instead of Fallschirmj\xE4gergewehr 42"
+  Fikou, modified sprites from Onule, descriptions by Nerevar and Halcyon:
+  - balance: MODsuits no longer slow you down when undeployed in backpack form
+  - balance: tray modules cost less complexity, organ thrower is incompatible with
+      microwave beam
+  - balance: 'nukie suits no longer start with the thermal module qol: the recall
+      module automatically tries to deploy the suit, without sealing it'
+  GoldenAlpharex:
+  - bugfix: Fixed issues with line endings on two of our modular maps that were preventing
+      me from not having them included in literally every PR.
+  - bugfix: Admin deadsay will now properly be sent to admins that are on the lobby
+      screen, with their deadchat toggle turned on.
+  - code_imp: Admin deadsay shouldn't be as prone to cause small runtimes anymore.
+  GoldenAlpharex, Halcyon for the sprites:
+  - code_imp: 'Adds a new flag to hide spines for clothes, mostly for when you want
+      to still show the jumpsuit and yet still cover the tail with something else.
+      sprites: Adds sprites to each MODsuit model to make them compatible with digitigrade
+      legs and with snouts!'
+  - bugfix: MODsuits don't look all bugged for characters with digitigrade and/or
+      muzzled sprites.
+  Iamgoofball:
+  - balance: Only half of the Sol-Fed response needs to vote for an upgrade in severity.
+  OrionTheFox:
+  - bugfix: After lots of stress and confusion, Lopland and Armadyne are proud to
+      announce that they've finally sorted out how to make helmets with both a visor
+      and a flashlight function properly. Security will be given these new models
+      that are much less... janky. Lopland has also taken the opportunity to update
+      the helmets in general, including properly fitting them for muzzled crew, lengthening
+      the forehead plating as to not make the wearer appear bald any more, and rounding
+      out the very edges of the bulletproof helmet.
+  SkyratBot:
+  - refactor: The majority of user facing input lists have been converted to TGUI.
+  - refactor: Tgui text inputs now scale with entered input.
+  - bugfix: Many inputs now properly accept cancelling out of the menu.
+  - bugfix: Fixes an edge case where users could not press enter on number inputs.
+  - bugfix: Custom vendor bluescreen.
+  - bugfix: You can now press ENTER on text inputs without an entry to cancel.
+  - bugfix: ghosts can no longer mess with modsuits
+  - bugfix: Fix glass floors appearing as lower z-level when on the same z-level.
+  - bugfix: Fix catwalks appearing as current z-level when they were on a lower z-level.
+  - bugfix: Fix transparent turfs to display lower z-level properly.
+  - bugfix: Fix lighting overlays appearing as current z-level when they were on lower
+      z-level. (for transparent turfs)
+  - bugfix: Fix mapping icons for catwalks to display correct icon state
+  - refactor: Refactor turf transparency to be more robust.
+  - refactor: Refactor catwalks to be elegant code.
+  - bugfix: Massively decreased initialization times in best case scenarios.
+  - admin: Simplemobs attacking objects is now properly logged, when the mob is playercontrolled.
+  - bugfix: Sacrificing a mindshielded person no longer causes their soul to be left
+      in their brain instead of getting transfered to the soulstone
+  - admin: RD server controllers now log remotely shutting off/turning on RD servers.
+  - bugfix: Cardboard boxes and Body bags no longer claim to be welded together when
+      examined.
+  - bugfix: Chemical grenades no longer evaporate into thin air upon detonation. As
+      a result, gunpowder and teslium now work with them. Also, you can recycle cleaner
+      grenades if you want to bother.
+  - bugfix: You can no longer delete your cult eyes or halo by transforming into a
+      monkey, and then into a human.
+  - bugfix: You can no longer delete your cult eyes or halo by transforming as a changeling.
+  - bugfix: Simplemobs now receive glowing eyes and a cult halo.
+  - refactor: Turns cult eyes and cult halos into elements, and improves the code
+      a touch.
+  - bugfix: Spidercharge ACTUALLY can't be used anywhere now.
+  - server: MS13 is the best
+  - bugfix: All of service can now access the Service cargo console.
+  - bugfix: Stuffing bread full of weed and such will no longer consign some of the
+      reagents to the void.
+  - imageadd: Adds the trash bag of holding icon to the janicart
+  - rscdel: The station name has been removed from the hub entry.
+  Whoneedspacee:
+  - refactor: Refactors megafauna abilities to be mob actions which are grantable
+      to any living mob.
+  - admin: Added a verb under admin events which lets you grant mob actions to a marked
+      living mob.
+  tastyfish:
+  - bugfix: Centcom and CTF headsets now work properly again.

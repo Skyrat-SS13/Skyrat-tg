@@ -287,7 +287,7 @@ GLOBAL_VAR_INIT(say_disabled, FALSE)
 		message_admins("[key] used 'Disable all communication verbs', killing all communication methods.")
 	else
 		message_admins("[key] used 'Disable all communication verbs', restoring all communication methods.")
-
+/* SKYRAT EDIT: lol, lmao, fuck icon bugs from byond
 //This generates the icon states for job starting location landmarks.
 /client/proc/create_mapping_job_icons()
 	set name = "Generate job landmarks icons"
@@ -315,7 +315,41 @@ GLOBAL_VAR_INIT(say_disabled, FALSE)
 	for(var/x_number in 1 to 4)
 		final.Insert(icon('icons/hud/screen_gen.dmi', "x[x_number == 1 ? "" : x_number]"), "x[x_number == 1 ? "" : x_number]")
 	fcopy(final, "icons/mob/landmarks.dmi")
-
+*/
+// SKYRAT EDIT BEGIN: THIS SHIT WAS BROKEN due to an issue with byond and how icons cache
+//This generates the icon states for job starting location landmarks.
+/client/proc/create_mapping_job_icons()
+	set name = "Generate job landmarks icons"
+	set category = "Mapping"
+	var/list/job_key_to_icon = list()
+	for(var/job in subtypesof(/datum/job))
+		var/mob/living/carbon/human/dummy/D = new(locate(1,1,1)) //spawn on 1,1,1 so we don't have runtimes when items are deleted
+		D.setDir(SOUTH)
+		var/datum/job/JB = new job
+		to_chat(world, "Generating icon for job [JB.title]")
+		switch(JB.title)
+			if("AI")
+				job_key_to_icon["AI"] = icon('icons/mob/ai.dmi', "ai", SOUTH, 1)
+			if("Cyborg")
+				job_key_to_icon["Cyborg"] = icon('icons/mob/robots.dmi', "robot", SOUTH, 1)
+			else
+				randomize_human(D)
+				if(JB.outfit)
+					D.equipOutfit(JB.outfit, TRUE)
+				COMPILE_OVERLAYS(D)
+				var/icon/I = icon(getFlatIcon(D), frame = 1)
+				job_key_to_icon[JB.title] = I
+		qdel(D)
+	to_chat(world, "Done generating icons.")
+	var/icon/final = icon()
+	for(var/job_key in job_key_to_icon)
+		final.Insert(job_key_to_icon[job_key], job_key)
+	//Also add the x
+	for(var/x_number in 1 to 4)
+		final.Insert(icon('icons/hud/screen_gen.dmi', "x[x_number == 1 ? "" : x_number]"), "x[x_number == 1 ? "" : x_number]")
+	fcopy(final, "icons/mob/landmarks.dmi")
+	to_chat(world, "Done generating landmarks.dmi.")
+// SKYRAT EDIT END
 /client/proc/debug_z_levels()
 	set name = "Debug Z-Levels"
 	set category = "Mapping"

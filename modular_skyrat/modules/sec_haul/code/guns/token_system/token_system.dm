@@ -233,29 +233,3 @@
 	new /obj/item/armament_token/energy(src)
 	new /obj/item/armament_token/energy(src)
 	new /obj/item/armament_token/energy(src)
-
-//Sergeants!
-/obj/item/armament_token/sarge
-	name = "security sergeant holochip"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
-	icon_state = "token_sarge"
-	desc = "A holochip used in any armament vendor, this is for promoting officers to Sergeants. Do not bend."
-
-/obj/item/armament_token/sarge/get_available_gunsets()
-	return list(
-	/obj/item/storage/box/gunset/sarge = image(
-		icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi',
-		icon_state = "peacekeeper_sergeant_cap"
-		)
-	)
-
-/obj/item/storage/box/armament_tokens_sarge
-	name = "security sarge tokens"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
-	icon_state = "armadyne_sarge"
-	desc = "A box full of sergeant promotion tokens!"
-	illustration = null
-
-/obj/item/storage/box/armament_tokens_sarge/PopulateContents()
-	. = ..()
-	new /obj/item/armament_token/sarge(src)
