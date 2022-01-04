@@ -29,3 +29,23 @@
 	else
 		to_chat(user,span_notice("That doesnt seem to fit into the [src]'s socket. It seems to be perfectly size for a refined anomaly core.."))
 		return
+
+//TECHWEB
+
+/datum/techweb_node/bohmod
+	id = "bohmod"
+	display_name = "Bluespace MODsuit Storage"
+	description = ""
+	prereq_ids = list("bluespace_storage", "mod_advanced")
+	design_ids = list(
+		"bohmod",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
+
+/datum/design/module/bohmod
+	name = "MOD Module: Inert Wormhole Storage"
+	desc = "An inert Wormhole Storage module."
+	id = "bohmod"
+	materials = list(/datum/material/gold = 3000, /datum/material/diamond = 1500, /datum/material/uranium = 250, /datum/material/bluespace = 2000)
+	build_path = /obj/item/mod/module/storage/bluespace/boh/inert
+	build_type = MECHFAB
