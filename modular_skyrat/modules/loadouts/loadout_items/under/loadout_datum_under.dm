@@ -913,11 +913,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Basil Uniform"
 	item_path = /obj/item/clothing/under/costume/basil_boys
 
-/datum/loadout_item/under/formal/demon
+/datum/loadout_item/under/formal/inferno
 	name = "Inferno Suit"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/demon
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/inferno
 
-/datum/loadout_item/under/formal/designer_demon
+/datum/loadout_item/under/formal/designer_inferno
 	name = "Designer Inferno Suit"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/demon/beeze
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/inferno/beeze
 	restricted_roles = list(JOB_LAWYER)
