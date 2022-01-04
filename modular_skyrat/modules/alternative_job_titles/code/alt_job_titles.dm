@@ -64,7 +64,7 @@
 	alt_titles = list("Curator", "Librarian", "Journalist", "Archivist")
 
 /datum/job/customs_agent
-	alt_titles = list("Customs Agent", "Customs Guard", "Cargo Guard") //originally had cargo watchman, goof request to remove it
+	alt_titles = list("Customs Agent", "Customs Guard", "Cargo Guard")
 
 /datum/job/cyborg
 	alt_titles = list("Cyborg", "Robot", "Android")
