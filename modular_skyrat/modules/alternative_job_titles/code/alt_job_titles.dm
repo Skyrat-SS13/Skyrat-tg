@@ -103,7 +103,7 @@
 	alt_titles = list("Nanotrasen Representative", "Nanotrasen Diplomat", "Central Command Representative")
 
 /datum/job/orderly
-	alt_titles = list("Orderly", "Medical Guard") //goof requested that alt dept guards titles be kept to [department] guard
+	alt_titles = list("Orderly", "Medical Guard") // departmental guards alt-titles should be kept to [department] guard to avoid confusion
 
 /datum/job/paramedic
 	alt_titles = list("Paramedic", "Emergency Medical Technician", "Search and Rescue Technician")
