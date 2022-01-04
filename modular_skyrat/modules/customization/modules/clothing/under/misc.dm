@@ -694,13 +694,13 @@
 	icon_state = "lucifer"
 	obj_flags = UNIQUE_RENAME
 	unique_reskin = list(
-		"Lucifer" = "lucifer",
-		"Justice" = "justice",
-		"Malina" = "malina",
-		"Pandemonica" = "pande",
-		"Modeus" = "modeus",
-		"Zdara" = "zdara",
-		"Cereberus" = "cereberus",
+		"Pride" = "lucifer",
+		"Wrath" = "justice",
+		"Gluttony" = "malina",
+		"Sloth" = "pande",
+		"Lust" = "modeus",
+		"Envy" = "zdara",
+		"Vanity" = "cereberus",
 	)
 
 /obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/demon/beeze
