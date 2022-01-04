@@ -244,7 +244,7 @@
 	icon_state = "sleeper"
 	you_are_text = "You are an abandoned member of Port Tarkon, an attempt to create steady living vaults within large asteroids."
 	flavour_text = "Something went wrong. Morality of experiments went awry, expansions were made before scans were fully done and now you have to deal with the aftermath of your past crews exodus."
-	important_text = "Do not abandon the port for the main station, but using the ship to buy more items or get help is good, if not ideal. Do not trade special equipment to the station."
+	important_text = "Do not abandon the port for the main station, but using the ship to buy more items or get help is good, if not ideal. Do not trade special equipment to the station. Unwelcomed and uninvited guests are not obligated to your kindness."
 	outfit = /datum/outfit/tarkon
 
 /datum/outfit/tarkon
