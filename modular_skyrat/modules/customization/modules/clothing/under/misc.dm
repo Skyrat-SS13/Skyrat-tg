@@ -686,7 +686,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "christmasfemaleg"
 
-/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/demon
+/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/inferno
 	name = "inferno suit"
 	desc = "Stylish enough to impress the devil."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
@@ -703,7 +703,7 @@
 		"Vanity" = "cereberus",
 	)
 
-/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/demon/beeze
+/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/inferno/beeze
 	name = "designer inferno suit"
 	desc = "A fancy tail-coated suit with a fluffy bow emblazoned on the chest, complete with an NT pin."
 	icon_state = "beeze"
