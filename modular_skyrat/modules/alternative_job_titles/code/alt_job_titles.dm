@@ -75,7 +75,7 @@
 /datum/job/doctor
 	alt_titles = list("Medical Doctor", "Surgeon", "Nurse", "General Practitioner", "Medical Resident", "Physician") //in memorium to "Podiatrist" , killed in it's cradle
 
-/datum/job/engineering_guard //see science guard
+/datum/job/engineering_guard //see orderly
 
 
 /datum/job/expeditionary_trooper
