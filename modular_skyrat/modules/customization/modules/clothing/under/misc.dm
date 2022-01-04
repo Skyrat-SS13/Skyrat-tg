@@ -713,7 +713,7 @@
 		"Sloth" = "pande",
 	)
 
-/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/inferno/beeze
+/obj/item/clothing/under/rank/civilian/lawyer/inferno/beeze
 	name = "designer inferno suit"
 	desc = "A fancy tail-coated suit with a fluffy bow emblazoned on the chest, complete with an NT pin."
 	icon_state = "beeze"
