@@ -142,6 +142,6 @@
 
 /obj/machinery/vending/wardrobe/law_wardrobe
 	skyrat_products = list(
-		/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/demon = 3,
-		/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/demon/beeze = 2,
+		/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/inferno = 3,
+		/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/inferno/beeze = 2,
 	)
