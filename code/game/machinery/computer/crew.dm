@@ -98,7 +98,6 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		// Note that jobs divisible by 10 are considered heads of staff, and bolded
 		// 00: Captain
 		JOB_CAPTAIN = 00,
-		JOB_BLUESHIELD = 01, // SKYRAT EDIT ADDITION
 		// 10-19: Security
 		JOB_HEAD_OF_SECURITY = 10,
 		JOB_WARDEN = 11,
@@ -149,6 +148,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_MIME = 67,
 		JOB_JANITOR = 68,
 		JOB_LAWYER = 69,
+		JOB_BARBER = 71, // SKYRAT EDIT ADDITION
 		JOB_BOUNCER = 72, // SKYRAT EDIT ADDITION
 		// 200-229: Centcom
 		JOB_CENTCOM_ADMIRAL = 200,
@@ -167,6 +167,8 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_ERT_CHAPLAIN = 225,
 		JOB_ERT_JANITOR = 226,
 		JOB_ERT_DEATHSQUAD = 227,
+		JOB_NT_REP = 230, // SKYRAT EDIT ADDITION
+		JOB_BLUESHIELD = 231, // SKYRAT EDIT ADDITION
 
 		// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before assistants
 		JOB_ASSISTANT = 999,
