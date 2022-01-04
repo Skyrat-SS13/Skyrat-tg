@@ -70,7 +70,6 @@
 					/obj/item/storage/backpack/security/peacekeeper = 5,
 					/obj/item/storage/backpack/satchel/sec/peacekeeper = 5,
 					/obj/item/clothing/head/beret/sec/peacekeeper = 5,
-					/obj/item/clothing/shoes/jackboots/security/peacekeeper = 5,
 					/obj/item/clothing/under/rank/security/peacekeeper = 5,
 					)
 	premium = list(/obj/item/clothing/suit/security/officer = 3,
