@@ -463,7 +463,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 /obj/item/solfed_reporter
 	name = "SolFed Reporter"
-	desc = "Use this in-hand to vote to call SolFed Backup. If your entire team votes for it, SWAT will be dispatched."
+	desc = "Use this in-hand to vote to call SolFed Backup. If half your team votes for it, SWAT will be dispatched."
 	icon = 'modular_skyrat/modules/goofsec/icons/reporter.dmi'
 	icon_state = "reporter_off"
 	/// Was the reporter turned on?
@@ -517,7 +517,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		var/amount_of_responders = GLOB.solfed_responder_info[type_of_callers][SOLFED_AMT]
 		to_chat(user, span_warning("You have activated the device. \
 		Current Votes: [current_votes]/[amount_of_responders] votes."))
-		if(current_votes >= amount_of_responders)
+		if(current_votes >= amount_of_responders * 0.5)
 			GLOB.solfed_responder_info[type_of_callers][SOLFED_DECLARED] = TRUE
 			if(fine_station)
 				var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)
@@ -569,7 +569,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 /obj/item/solfed_reporter/swat_caller
 	name = "S.W.A.T. Backup Caller"
-	desc = "Use this in-hand to vote to call SolFed S.W.A.T. backup. If your entire team votes for it, SWAT will be dispatched."
+	desc = "Use this in-hand to vote to call SolFed S.W.A.T. backup. If half your team votes for it, SWAT will be dispatched."
 	type_to_check = /datum/antagonist/ert/request_911
 	type_of_callers = "911_responders"
 	announcement_source = "Sol Federation S.W.A.T."
@@ -593,7 +593,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 /obj/item/solfed_reporter/treason_reporter
 	name = "Treason Reporter"
-	desc = "Use this in-hand to vote that the station is engaging in Treason. If your entire team votes for it, the Military will handle the situation."
+	desc = "Use this in-hand to vote that the station is engaging in Treason. If half your team votes for it, the Military will handle the situation."
 	type_to_check = /datum/antagonist/ert/request_911/condom_destroyer
 	type_of_callers = "swat"
 	announcement_source = "Sol Federation National Guard"
@@ -631,7 +631,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 /obj/item/solfed_reporter/pizza_managers
 	name = "Dogginos Uncompliant Customer Reporter"
 	desc = "Use this in-hand to vote to call for Dogginos Regional Managers if the station refuses to pay for their pizza. \
-		If your entire delivery squad votes for it, Dogginos Regional Managers will be dispatched."
+		If half your delivery squad votes for it, Dogginos Regional Managers will be dispatched."
 	type_to_check = /datum/antagonist/ert/pizza/false_call
 	type_of_callers = "dogginos"
 	announcement_message = "Hey there, custo-mores! Our delivery drivers have reported that you guys are having some issues with payment for your order that \
