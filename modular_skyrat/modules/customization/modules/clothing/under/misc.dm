@@ -686,21 +686,31 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "christmasfemaleg"
 
-/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/inferno
+/obj/item/clothing/under/rank/civilian/lawyer/inferno
 	name = "inferno suit"
 	desc = "Stylish enough to impress the devil."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "lucifer"
+	fitted = FEMALE_UNIFORM_TOP
 	obj_flags = UNIQUE_RENAME
 	unique_reskin = list(
 		"Pride" = "lucifer",
 		"Wrath" = "justice",
 		"Gluttony" = "malina",
-		"Sloth" = "pande",
-		"Lust" = "modeus",
 		"Envy" = "zdara",
 		"Vanity" = "cereberus",
+	)
+
+/obj/item/clothing/under/rank/civilian/lawyer/inferno/skirt
+	name = "inferno suitskirt"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "modeus"
+	obj_flags = UNIQUE_RENAME
+	unique_reskin = list(
+		"Lust" = "modeus",
+		"Sloth" = "pande",
 	)
 
 /obj/item/clothing/under/rank/civilian/lawyer/beige/skirt/inferno/beeze
