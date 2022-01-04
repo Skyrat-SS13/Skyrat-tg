@@ -25,6 +25,7 @@
 		new result_path(get_turf(src))
 		qdel(src)
 		qdel(anomaly)
+		playsound(src, 'sound/items/rped.ogg', 40, TRUE) //Sound feedback is cool.
 	else
 		to_chat(user,span_notice("That doesnt seem to fit into the [src]'s socket. It seems to be perfectly size for a refined anomaly core.."))
 		return
