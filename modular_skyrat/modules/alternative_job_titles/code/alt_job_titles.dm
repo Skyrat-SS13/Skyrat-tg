@@ -123,7 +123,7 @@
 /datum/job/roboticist
 	alt_titles = list("Roboticist", "Biomechanical Engineer", "Mechatronic Engineer")
 
-/datum/job/science_guard //none for them, goof request :(
+/datum/job/science_guard // See ordlerly
 
 
 /datum/job/scientist
