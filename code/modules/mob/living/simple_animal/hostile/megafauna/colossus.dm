@@ -44,6 +44,10 @@
 	ranged = TRUE
 	pixel_x = -32
 	base_pixel_x = -32
+	//SKYRAT ADD
+	maptext_height = 96
+	maptext_width = 96
+	//
 	del_on_death = TRUE
 	gps_name = "Angelic Signal"
 	achievement_type = /datum/award/achievement/boss/colossus_kill

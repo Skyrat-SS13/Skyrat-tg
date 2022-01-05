@@ -55,6 +55,10 @@ Difficulty: Hard
 	ranged = TRUE
 	pixel_x = -32
 	base_pixel_x = -32
+	//SKYRAT ADD
+	maptext_height = 96
+	maptext_width = 96
+	//
 	del_on_death = TRUE
 	crusher_loot = list(/obj/structure/closet/crate/necropolis/bubblegum/crusher)
 	loot = list(/obj/structure/closet/crate/necropolis/bubblegum)
