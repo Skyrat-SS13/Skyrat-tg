@@ -5,7 +5,7 @@
 	if (isturf(src.loc))
 		to_chat(src, span_danger("You are not within anything!"))
 		return
-	if (loc && (!src.IsUnconscious()))
+	if (loc && (!src.IsUnconscious())) // If user's location is a turf, if it is not null, and if the user is not unconcious, continue.
 		usr.emote("exme")
 
 /datum/emote/container_emote
@@ -14,7 +14,9 @@
 	message = null
 
 /datum/emote/container_emote/run_emote(mob/living/user, params, type_override = null, intentional = TRUE)
+	/// The message that will be sent from the container emote.
 	var/container_message
+	/// What was inputted by the user.
 	var/container_emote = params
 	if(QDELETED(user))
 		return FALSE
@@ -25,9 +27,9 @@
 		to_chat(user, "You cannot send IC messages (muted).")
 		return FALSE
 	else if (isturf(user.loc))
-		to_chat(user, "You are not within anything!")
+		to_chat(user, "You are not within anything!") // If user is banned from chat, emotes, or the user is not within anything (ex. a locker) return.
 		return FALSE
-	else if(!params)
+	else if(!params) // User didn't put anything after *exme when using the say hotkey, or just used the emote raw? Open a window.
 		container_emote = tgui_input_text(user, "What would you like to emote?", "Container Emote" , null, MAX_MESSAGE_LEN, TRUE, TRUE, 0)
 		if(!container_emote)
 			return FALSE
@@ -39,11 +41,11 @@
 			if("Audible")
 				emote_type = EMOTE_AUDIBLE
 			else
-				alert("Unable to use this emote, must be either audible or visible.")
+				user.balloon_alert(user, "Unable to use this emote, must be either audible or visible.")
 				return
-		container_message = container_emote
+		container_message = container_emote //Ill be honest I dont know why this is a thing but I'm too afraid to remove it.
 	else
-		container_message = params
+		container_message = params // Same as above.
 		if(type_override)
 			emote_type = type_override
 		else
@@ -61,6 +63,7 @@
 	if (isturf(user.loc) || (!user.loc) || user.IsUnconscious()) //one last sanity check
 		return FALSE
 
+	// These steps are crucial for runetext to work.
 	if(emote_type == EMOTE_AUDIBLE)
 		user.loc.audible_message(message = container_message, self_message = container_message, audible_message_flags = EMOTE_MESSAGE, separation = space)
 	else if (emote_type == EMOTE_VISIBLE)
