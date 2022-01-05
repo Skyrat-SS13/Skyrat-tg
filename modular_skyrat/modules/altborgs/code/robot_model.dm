@@ -13,12 +13,10 @@
 	if (model_features && (R_TRAIT_WIDE in model_features))
 		hat_offset = INFINITY
 		cyborg.set_base_pixel_x(-16)
-		cyborg.maptext_width = 64 //Runechat offset
 		add_verb(cyborg, /mob/living/silicon/robot/proc/robot_lay_down)
 		add_verb(cyborg, /mob/living/silicon/robot/proc/rest_style)
 	else
 		cyborg.set_base_pixel_x(0)
-		cyborg.maptext_width = 32
 		remove_verb(cyborg, /mob/living/silicon/robot/proc/robot_lay_down)
 		remove_verb(cyborg, /mob/living/silicon/robot/proc/rest_style)
 
