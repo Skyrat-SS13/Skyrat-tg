@@ -10,6 +10,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/skillchip/glassblowing_master = 10,
 		/obj/item/skillchip/ceramic_master = 10,
 		/obj/item/skillchip/fishing_master = 10,
+		/obj/item/skillchip/brainwashing = 10,
 		/obj/item/skillchip/useless_adapter = 25,
 		/obj/item/skillchip/wine_taster = 50
 	) = 50,
@@ -158,7 +159,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/ammo_casing/c45 = 10,
 		/obj/item/ammo_casing/c9mm = 10,
 		/obj/item/ammo_casing/caseless/foam_dart = 100,
-		/obj/item/ammo_casing/caseless/foam_dart/riot = 100 ,
+		/obj/item/ammo_casing/caseless/foam_dart/riot = 100
 	) = 50,
 	list( // Good memes.
 		/obj/item/aicard/aitater = 10,
@@ -166,6 +167,8 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/banhammer = 25,
 		/obj/item/bikehorn/airhorn = 25,
 		/obj/item/book/granter/spell/smoke/lesser = 5,
+		/obj/item/book/granter/crafting_recipe/pipegun_prime = 5,
+		/obj/item/book/granter/crafting_recipe/trash_cannon = 5,
 		/obj/item/bountytrap = 25,
 		/obj/item/camera/spooky = 5,
 		/obj/item/capturedevice = 5,
@@ -192,6 +195,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/grenade/chem_grenade/ez_clean = 25,
 		/obj/item/grenade/firecracker = 25,
 		/obj/item/grenade/stingbang = 25,
+		/obj/item/tattoo_kit = 5,
 		/obj/item/instrument/musicalmoth = 5,
 		/obj/item/instrument/piano_synth/headphones/spacepods = 5,
 		/obj/item/instrument/violin/golden = 5,
@@ -214,7 +218,8 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/storage/toolbox/mechanical/old = 25,
 		/obj/item/tailclub = 25,
 		/obj/item/taster = 25,
-		/obj/item/disk/holodisk/woospider = 25
+		/obj/item/disk/holodisk/woospider = 25,
+		/obj/item/assembly/flash/memorizer = 5
 	) = 50,
 	list( //Meme-level injectors
 		/obj/item/dnainjector/chavmut = 1,
@@ -319,5 +324,9 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/eldritch_potion/crucible_soul = 1,
 		/obj/item/eldritch_potion/duskndawn = 1,
 		/obj/item/eldritch_potion/wounded = 1
-	) = 1
+	) = 1,
+	list( //Modsuits
+		/obj/item/mod/construction/broken_core = 1,
+		/obj/effect/spawner/random/mod/maint = 3
+	) = 25
 ))
