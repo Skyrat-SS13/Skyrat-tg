@@ -23,9 +23,9 @@
 		var/result_path = /obj/item/mod/module/storage/boh
 		to_chat(user, span_notice("You insert [anomaly] into the [src]'s socket, and the module gently hums to life."))
 		new result_path(get_turf(src))
+		playsound(src, 'sound/items/rped.ogg', 40, TRUE) //Sound feedback is cool.
 		qdel(src)
 		qdel(anomaly)
-		playsound(src, 'sound/items/rped.ogg', 40, TRUE) //Sound feedback is cool.
 	else
 		to_chat(user,span_notice("That doesnt seem to fit into the [src]'s socket. It seems to be perfectly size for a refined anomaly core.."))
 		return
