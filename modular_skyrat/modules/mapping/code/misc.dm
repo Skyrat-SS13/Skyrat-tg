@@ -8,8 +8,10 @@
 
 /datum/mod_theme/prototype/hauler
 	name = "Prototype: Hauler"
-	desc = "Bulky and quite heavy, This prototype modular suit has seemed to be modified quite a bit with additional supports to distribute its weight."
+	desc = "Bulky and quite heavy, This prototype modular suit has seemed to be modified quite a bit with additional supports to distribute its weight. The servos there within have been modified to handle the additional stress, but the loose wiring required an internal lining of rubberized insulation"
 	inbuilt_modules = list()
+	cell_drain = DEFAULT_CELL_DRAIN * 3
+	siemens_coefficient = 0
 	slowdown_active = 1
 
 /obj/item/mod/control/pre_equipped/prototype/hauler
