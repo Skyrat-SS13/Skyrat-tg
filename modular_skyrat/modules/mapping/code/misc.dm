@@ -23,5 +23,5 @@
 	mod_type = /obj/item/mod/control/pre_equipped/prototype/hauler
 
 /obj/item/areaeditor/blueprints/tarkon
-	desc = "Blueprints of the Tarkon drill and several base designs for it. Red, stamped text reads \"Confidential\" on the backside of it.";
+	desc = "Blueprints of the Tarkon drill and several base designs for it. Red, stamped text reads \"Confidential\" on the backside of it."
 	name = "Tarkon Design Prints"
