@@ -21,7 +21,8 @@
 	new /obj/item/radio/headset/chameleon(src)
 	new /obj/item/stamp/chameleon(src)
 	new /obj/item/pda/chameleon(src)
-	new /obj/item/hhmirror/syndie
+	new /obj/item/hhmirror/syndie(src)
+	new /obj/item/dyespray(src)
 
 
 /obj/item/hhmirror/attack_self(mob/user)
