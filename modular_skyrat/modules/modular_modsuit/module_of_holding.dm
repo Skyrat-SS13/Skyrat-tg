@@ -20,14 +20,13 @@
 	if(!istype(weapon, /obj/item/assembly/signaler/anomaly/bluespace))
 		to_chat(user,span_notice("That doesn't seem to fit into [src]'s socket. It seems to be the perfect size for a refined bluespace anomaly core.."))
 		return
-	else
-		var/obj/item/assembly/signaler/anomaly/anomaly = weapon
-		var/result_path = /obj/item/mod/module/storage/boh
-		to_chat(user, span_notice("You insert [anomaly] into the [src]'s socket, and the module gently hums to life."))
-		new result_path(get_turf(src))
-		playsound(src, 'sound/items/rped.ogg', 40, TRUE) //Sound feedback is cool.
-		qdel(src)
-		qdel(anomaly)
+	var/obj/item/assembly/signaler/anomaly/anomaly = weapon
+	var/result_path = /obj/item/mod/module/storage/boh
+	to_chat(user, span_notice("You insert [anomaly] into the [src]'s socket, and the module gently hums to life."))
+	new result_path(get_turf(src))
+	playsound(src, 'sound/items/rped.ogg', 40, TRUE) //Sound feedback is cool.
+	qdel(src)
+	qdel(anomaly)
 
 //TECHWEB
 
