@@ -7,7 +7,7 @@
 	max_combined_w_class = 0
 	max_items = 0 //So that nothing can be stored in it, since its inactive, just like a normal BOH.
 
-/obj/item/mod/module/storage/boh/active //Active state of the BOH mod. Has a refined core socketed into it, making it active.
+/obj/item/mod/module/storage/boh //Active state of the BOH mod. Has a refined core socketed into it, making it active.
 	name = "MOD wormhole storage module"
 	desc = "An active MOD Wormhole Storage Module. It utilizes a refined bluespace anomaly core to create a stable bluespace wormhole inside of its lattice container, allowing mass storage of objects varying widely in size."
 	icon_state = "module"
@@ -20,7 +20,7 @@
 	. = ..()
 	if(istype(weapon, /obj/item/assembly/signaler/anomaly/bluespace))
 		var/obj/item/assembly/signaler/anomaly/anomaly = weapon
-		var/result_path = /obj/item/mod/module/storage/boh/active
+		var/result_path = /obj/item/mod/module/storage/boh
 		to_chat(user, span_notice("You insert [anomaly] into the [src]'s socket, and the module gently hums to life."))
 		new result_path(get_turf(src))
 		qdel(src)
