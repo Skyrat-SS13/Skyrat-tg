@@ -1,7 +1,6 @@
 /obj/item/mod/module/storage/boh/inert //Inert state of the BOH mod. Requires a refined bluespace core.
 	name = "Inert MOD wormhole storage module"
 	desc = "An inert MOD Wormhole Storage Module. Without its anomaly core, it is simply just a strangely ornate metal lattice with a circular socket in the bottom of it. With its core however, it becomes a way to store large quantities of items within a compacted bluespace wormhole, akin to a Bag of Holding."
-	icon_state = "module"
 	complexity = 0
 	max_w_class = WEIGHT_CLASS_TINY
 	max_combined_w_class = 0
@@ -27,7 +26,7 @@
 		qdel(src)
 		qdel(anomaly)
 	else
-		to_chat(user,span_notice("That doesnt seem to fit into the [src]'s socket. It seems to be perfectly size for a refined anomaly core.."))
+		to_chat(user,span_notice("That doesn't seem to fit into [src]'s socket. It seems to be the perfect size for a refined bluespace anomaly core.."))
 		return
 
 //TECHWEB
