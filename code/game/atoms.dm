@@ -1991,6 +1991,9 @@
  * Override this if you want custom behaviour in whatever gets hit by the rust
  */
 /atom/proc/rust_heretic_act()
+	if(HAS_TRAIT(src, TRAIT_RUSTY))
+		return
+
 	AddElement(/datum/element/rust)
 
 /**

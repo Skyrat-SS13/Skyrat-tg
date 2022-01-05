@@ -899,7 +899,7 @@
 		"borg_upgrade_defibrillator",
 		"borg_upgrade_expandedsynthesiser",
 		"borg_upgrade_piercinghypospray",
-		"borg_upgrade_pinpointer",
+		//"borg_upgrade_pinpointer", // SKYRAT EDIT REMOVAL
 		"borg_upgrade_surgicalprocessor",
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
