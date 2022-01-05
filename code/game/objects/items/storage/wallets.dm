@@ -41,7 +41,6 @@
 		/obj/item/screwdriver,
 		// SKYRAT EDIT BEGIN
 		/obj/item/condom_pack,
-		/obj/item/clothing/sextoy/condom,
 		// SKYRAT EDIT END
 		/obj/item/stamp),
 		list(/obj/item/screwdriver/power))
