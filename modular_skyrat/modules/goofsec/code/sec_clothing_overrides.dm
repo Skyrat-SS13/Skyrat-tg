@@ -304,17 +304,12 @@
 ///////////////////////
 //----- GLOVES ------//
 ///////////////////////
-/obj/item/clothing/gloves/security
+/obj/item/clothing/gloves/color/black/security
 	name = "security gloves"
 	desc = "A pair of security gloves."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	icon_state = "gloves_black"
-	cold_protection = HANDS
-	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
-	heat_protection = HANDS
-	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
-	resistance_flags = NONE
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
