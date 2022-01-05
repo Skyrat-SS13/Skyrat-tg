@@ -913,7 +913,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Basil Uniform"
 	item_path = /obj/item/clothing/under/costume/basil_boys
 
-//ht
 /datum/loadout_item/under/formal/inferno
 	name = "Inferno Suit"
 	item_path = /obj/item/clothing/under/rank/civilian/lawyer/inferno
