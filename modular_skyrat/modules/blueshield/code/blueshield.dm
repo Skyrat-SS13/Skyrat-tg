@@ -78,8 +78,14 @@
 	select_name = "maim"
 
 /obj/item/gun/energy/laser/hellgun/blueshield
-	name = "\improper Mk.V Hellfire Lasergun"
-	desc = "An energy-based laser carbine that fires concentrated beams of light which pass through glass and thin metal. This model has been purpose built by updating the old hellfire pattern for the NanoTrasen Executive Retention Protocol. It has <b><span style='color:blue'>NanoTrasen</span></b> etched into the grip. "
-	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
-	icon_state = "paladin"
+	name = "\improper Allstar SC-3 PDW 'Hellfire'"
+	desc = "A prototype energy carbine, despite NT's ban on hellfire weaponry due to negative press. \
+            Allstar continued to work on it, compacting it into a small form-factor for personal defense. \
+            As part of the Asset Retention Program created by Nanotrasen, Allstar's prototype began to be put into use. \
+            It has the <b><span style='color:red'>Allstar Energy Weapons</span></b> logo painted next to the charge display."
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
+	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
+	icon_state = "hellfirepdw"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire/bs)
