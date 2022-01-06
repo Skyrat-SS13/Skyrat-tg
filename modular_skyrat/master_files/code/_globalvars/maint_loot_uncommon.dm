@@ -325,4 +325,3 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/effect/spawner/random/mod/maint = 3
 	) = 25
 ))
-))
