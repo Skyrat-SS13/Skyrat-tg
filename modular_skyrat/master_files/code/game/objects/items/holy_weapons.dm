@@ -159,7 +159,7 @@
 		span_info("You kneel[target == user ? null : " next to [target]"] and begin a prayer to [deity_name]."))
 
 	praying = TRUE
-	if(do_after(user, 50, target = target))
+	if(do_after(user, 5 SECONDS, target = target))
 		target.reagents?.add_reagent(/datum/reagent/water/holywater, 5)
 		to_chat(target, span_notice("[user]'s prayer to [deity_name] has eased your pain!"))
 		target.adjustToxLoss(-5, TRUE, TRUE)
