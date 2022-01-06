@@ -49,7 +49,7 @@
 			if(STYLE_VOX)
 				icon_file = w_uniform.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/species/vox/uniform.dmi'
 			if(STYLE_TESHARI)
-				icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/uniform.dmi'
+				icon_file = TESHARI_UNIFORM_ICON
 
 		if(applied_style & STYLE_TAUR_ALL)
 			x_override = 64
@@ -70,9 +70,9 @@
 
 		if(U.accessory_overlay)
 			if(STYLE_TESHARI)
-				var/static/list/teshari_accessory_states = icon_states('modular_skyrat/master_files/icons/mob/clothing/species/teshari/accessories.dmi')
+				var/static/list/teshari_accessory_states = icon_states(TESHARI_ACCESSORIES_ICON)
 				if(U.accessory_overlay.icon_state in teshari_accessory_states)
-					U.accessory_overlay.icon = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/accessories.dmi'
+					U.accessory_overlay.icon = TESHARI_ACCESSORIES_ICON
 
 		if(OFFSET_UNIFORM in dna.species.offset_features)
 			uniform_overlay.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
@@ -127,7 +127,7 @@
 			if(STYLE_VOX)
 				icon_file = wear_suit.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/species/vox/suit.dmi'
 			if(STYLE_TESHARI)
-				icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
+				icon_file = TESHARI_SUIT_ICON
 
 		if(applied_style & STYLE_TAUR_ALL)
 			x_override = 64
@@ -174,7 +174,7 @@
 			icon_file = shoes.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/feet_digi.dmi'
 		else if(isteshari(src))
 			applied_styles = STYLE_TESHARI
-			icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/feet.dmi'
+			icon_file = TESHARI_FEET_ICON
 
 		overlays_standing[SHOES_LAYER] = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', override_icon = icon_file, mutant_styles = applied_styles, species = dna.species.species_clothing_path)
 		var/mutable_appearance/shoes_overlay = overlays_standing[SHOES_LAYER]
@@ -217,7 +217,7 @@
 			icon_file = gloves.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/species/vox/hands.dmi'
 		else if(isteshari(src))
 			applied_styles = STYLE_TESHARI
-			icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/hands.dmi'
+			icon_file = TESHARI_HANDS_ICON
 
 		overlays_standing[GLOVES_LAYER] = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = 'icons/mob/clothing/hands.dmi', override_icon = icon_file, mutant_styles = applied_styles, species = dna.species.species_clothing_path)
 		gloves_overlay = overlays_standing[GLOVES_LAYER]
@@ -251,7 +251,7 @@
 				icon_file = glasses.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/species/vox/eyes.dmi'
 			else if(isteshari(src))
 				applied_style |= STYLE_TESHARI
-				icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/eyes.dmi'
+				icon_file = TESHARI_EYES_ICON
 			overlays_standing[GLASSES_LAYER] = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = 'icons/mob/clothing/eyes.dmi', override_icon = icon_file, mutant_styles = applied_style, species = dna.species.species_clothing_path)
 
 		var/mutable_appearance/glasses_overlay = overlays_standing[GLASSES_LAYER]
@@ -382,6 +382,10 @@
 
 //generates a species specific icon for a state_to_use icon in file_to_use if one doesnt exist
 //said species specific icon will be generated using default_file_to_use
+//layer specifies the sprite layer the sprite will be on
+//species is for the specific species the icon will be generated for
+//
+//also fuck vsc, DREAM MAKER FOR LIFE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 /obj/item/clothing/wear_species_version(file_to_use, state_to_use, layer, species, default_file_to_use)
 	LAZYINITLIST(GLOB.species_clothing_icons[species])
 	var/icon/species_clothing_icon = GLOB.species_clothing_icons[species]["[file_to_use]-[state_to_use]"] // Check if the icon we want already exists

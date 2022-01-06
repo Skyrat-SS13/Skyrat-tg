@@ -339,7 +339,7 @@ There are several things that need to be remembered:
 			head_overlay.pixel_x += dna.species.offset_features[OFFSET_HEAD][1]
 			head_overlay.pixel_y += dna.species.offset_features[OFFSET_HEAD][2]
 			//SKYRAT EDIT ADDITION BEGIN - TESHARI CLOTHES
-			if(head_overlay.icon == 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/head.dmi')
+			if(head_overlay.icon == TESHARI_HEAD_ICON)
 				head_overlay.pixel_x = 0
 				head_overlay.pixel_y = 0
 			//SKYRAT EDIT ADDITION END - TESHARI CLOTHES
@@ -358,9 +358,9 @@ There are several things that need to be remembered:
 		var/icon_file = belt.worn_icon
 		var/applied_styles = NONE
 		if(isteshari(src))
-			var/static/list/tesh_icon_states = icon_states('modular_skyrat/master_files/icons/mob/clothing/species/teshari/belt.dmi')
+			var/static/list/tesh_icon_states = icon_states(TESHARI_BELT_ICON)
 			if((belt.worn_icon_state || belt.icon_state) in tesh_icon_states)
-				icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/belt.dmi'
+				icon_file = TESHARI_BELT_ICON
 				applied_styles = STYLE_TESHARI
 		//SKYRAT EDIT ADDITION END - TESHARI CLOTHES
 		belt.screen_loc = ui_belt
@@ -374,7 +374,7 @@ There are several things that need to be remembered:
 			belt_overlay.pixel_x += dna.species.offset_features[OFFSET_BELT][1]
 			belt_overlay.pixel_y += dna.species.offset_features[OFFSET_BELT][2]
 			//SKYRAT EDIT ADDITION BEGIN - TESHARI CLOTHES
-			if(belt_overlay.icon == 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/belt.dmi')
+			if(belt_overlay.icon == TESHARI_BELT_ICON)
 				belt_overlay.pixel_x = 0
 				belt_overlay.pixel_y = 0
 			//SKYRAT EDIT ADDITION END - TESHARI CLOTHES
@@ -445,7 +445,7 @@ There are several things that need to be remembered:
 			mask_overlay.pixel_x += dna.species.offset_features[OFFSET_FACEMASK][1]
 			mask_overlay.pixel_y += dna.species.offset_features[OFFSET_FACEMASK][2]
 			//SKYRAT EDIT ADDITION BEGIN - TESHARI CLOTHES
-			if(mask_overlay.icon == 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/mask.dmi')
+			if(mask_overlay.icon == TESHARI_MASK_ICON)
 				mask_overlay.pixel_x = 0
 				mask_overlay.pixel_y = 0
 			//SKYRAT EDIT ADDITION END - TESHARI CLOTHES
@@ -462,7 +462,7 @@ There are several things that need to be remembered:
 			back_overlay.pixel_x += dna.species.offset_features[OFFSET_BACK][1]
 			back_overlay.pixel_y += dna.species.offset_features[OFFSET_BACK][2]
 			//SKYRAT EDIT ADDITION BEGIN - TESHARI CLOTHES
-			if(back_overlay.icon == 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/back.dmi')
+			if(back_overlay.icon == TESHARI_BACK_ICON)
 				back_overlay.pixel_x = 0
 				back_overlay.pixel_y = 0
 			//SKYRAT EDIT ADDITION END - TESHARI CLOTHES
