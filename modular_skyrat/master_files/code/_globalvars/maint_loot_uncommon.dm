@@ -319,7 +319,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/eldritch_potion/crucible_soul = 1,
 		/obj/item/eldritch_potion/duskndawn = 1,
 		/obj/item/eldritch_potion/wounded = 1
-	) = 1
+	) = 1,
 	list( //Modsuits
 		/obj/item/mod/construction/broken_core = 1,
 		/obj/effect/spawner/random/mod/maint = 3
