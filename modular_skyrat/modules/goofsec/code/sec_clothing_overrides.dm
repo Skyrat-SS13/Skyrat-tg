@@ -360,6 +360,10 @@
 			RESKIN_ICON_STATE = "vest_white",
 			RESKIN_WORN_ICON_STATE = "vest_white"
 		),
+		"Peacekeeper Variant" = list(
+			RESKIN_ICON_STATE = "peacekeeper_armor",
+			RESKIN_WORN_ICON_STATE = "peacekeeper"
+		)
 	)
 
 //Standard Bulletproof Vest
