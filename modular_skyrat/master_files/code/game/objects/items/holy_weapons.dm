@@ -146,7 +146,7 @@
 		deity_name = GLOB.deity
 
 /obj/item/nullrod/rosary/attack(mob/living/target, mob/living/user, params)
-	if(!user.mind || user.mind.assigned_role != JOB_CHAPLAIN)
+	if(!user.mind || !user.mind.holy_role)
 		to_chat(user, span_notice("You are not close enough with [deity_name] to use [src]."))
 		return
 	if(user.combat_mode)
