@@ -140,8 +140,6 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/ammo_casing/shotgun/buckshot = 50,
 		/obj/item/ammo_casing/shotgun/improvised = 200,
 		/obj/item/ammo_casing/a357 = 25,
-		/obj/item/ammo_casing/a556 = 50,
-		/obj/item/ammo_casing/a556/rubber = 25,
 		/obj/item/ammo_casing/a762 = 25,
 		/obj/item/ammo_casing/c10mm = 25,
 		/obj/item/ammo_casing/c32 = 50,
@@ -191,7 +189,6 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/greentext/quiet = 5,
 		/obj/item/grenade/antigravity = 5,
 		/obj/item/grenade/chem_grenade/colorful = 50,
-		/obj/item/grenade/chem_grenade/ez_clean = 25,
 		/obj/item/grenade/firecracker = 25,
 		/obj/item/grenade/stingbang = 25,
 		/obj/item/tattoo_kit = 5,
@@ -206,7 +203,6 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/rsf = 5,
 		/obj/item/rupee = 5,
 		/obj/item/sord = 5,
-		/obj/item/stack/telecrystal/five = 5,
 		/obj/item/stack/telecrystal = 5,
 		/obj/item/storage/belt/utility/syndicate = 5,
 		/obj/item/storage/box/firecrackers = 10,
@@ -280,6 +276,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 	) = 100,
 	list( //Improvised weapons and tools that are weapons.
 		/obj/item/gun/ballistic/revolver/rifle/improvised = 100,
+		/obj/item/gun/ballistic/rifle/boltaction/pipegun = 100,
 		/obj/item/scythe = 25,
 		/obj/item/throwing_star = 5,
 		/obj/item/throwing_star/stamina = 5
