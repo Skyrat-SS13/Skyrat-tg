@@ -34,7 +34,8 @@ const jobToColor = jobId => {
   if (jobId >= 50 && jobId < 60) {
     return COLORS.department.cargo;
   }
-  if (jobId >= 200 && jobId < 230) {
+  // SKYRAT EDIT - ORIGINAL: if (jobId >= 200 && jobId < 230) {
+  if (jobId >= 200 && jobId < 240) {
     return COLORS.department.centcom;
   }
   return COLORS.department.other;
