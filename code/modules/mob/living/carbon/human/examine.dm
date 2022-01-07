@@ -484,9 +484,17 @@
 				if(!(G.is_hidden(src)))
 					. += "<span class='notice'>[t_He] has exposed genitals... <a href='?src=[REF(src)];lookup_info=genitals'>Look closer...</a></span>"
 					break
-	var/line = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
-	if(line)
-		. += line
+	var/flavor_text_link
+	var/preview_text = client.prefs.read_preference(/datum/preference/text/flavor_preview)
+	if (!preview_text && preview_text != "") //sanity check, not sure if preview_text being "" counts as null but want to make sure it doesnt trip up
+		flavor_text_link = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
+		. += flavor_text_link
+	else if ((length_char(preview_text) > FLAVOR_PREVIEW_LENGTH) || (preview_text == FLAVOR_PREVIEW_DEFAULT_VALUE))
+		flavor_text_link = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
+	else
+		flavor_text_link = span_notice("[preview_text]...<a href='?src=[REF(src)];lookup_info=open_examine_panel'> Look closer?</a>")
+	if (flavor_text_link)
+		. += flavor_text_link
 	if(client)
 		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
 		if(erp_status_pref && erp_status_pref != "disabled")
@@ -494,9 +502,9 @@
 	//Temporary flavor text addition:
 	if(temporary_flavor_text)
 		if(length_char(temporary_flavor_text) <= 40)
-			. += "<span class='notice'>[temporary_flavor_text]</span>"
+			. += span_notice("<b> They look different than usual:</b> [temporary_flavor_text]")
 		else
-			. += "<span class='notice'>[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a></span>"
+			. += span_notice("<b> They look different than usual:</b> [copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a>")
 	//. += "*---------*</span>" SKYRAT EDIT REMOVAL
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
