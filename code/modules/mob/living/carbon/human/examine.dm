@@ -488,12 +488,13 @@
 	var/preview_text = client.prefs.read_preference(/datum/preference/text/flavor_preview)
 	if (!preview_text && preview_text != "") //sanity check, not sure if preview_text being "" counts as null but want to make sure it doesnt trip up
 		flavor_text_link = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
-		. += flavor_text_link
-	else if ((length_char(preview_text) > FLAVOR_PREVIEW_LENGTH) || (preview_text == FLAVOR_PREVIEW_DEFAULT_VALUE))
+		. += flavor_text_link //no need for an if statement if we KNOW we just defined it as something
+	else if ((length_char(preview_text) > FLAVOR_PREVIEW_LENGTH || length_char(preview_text) < 2) || (preview_text == FLAVOR_PREVIEW_DEFAULT_VALUE))
+		//if the user has gone over the limit, only has 1 char (to prevent most accidental single spaces), or hasnt modified the default value, show the default
 		flavor_text_link = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
 	else
 		flavor_text_link = span_notice("[preview_text]...<a href='?src=[REF(src)];lookup_info=open_examine_panel'> Look closer?</a>")
-	if (flavor_text_link)
+	if (flavor_text_link) //i believe this is a sanity check
 		. += flavor_text_link
 	if(client)
 		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)

@@ -48,12 +48,13 @@
 	var/silicon_preview_text = client.prefs.read_preference(/datum/preference/text/silicon_flavor_preview)
 	if (!silicon_preview_text && silicon_preview_text != "") //sanity check, not sure if silicon_preview_text being "" counts as null but want to make sure it doesnt trip up
 		flavor_text_link = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
-		. += flavor_text_link
-	else if ((length_char(silicon_preview_text) > FLAVOR_PREVIEW_LENGTH) || (silicon_preview_text == FLAVOR_PREVIEW_DEFAULT_VALUE))
+		. += flavor_text_link //no need for an if statement if we KNOW we just defined it as something
+	else if ((length_char(silicon_preview_text) > FLAVOR_PREVIEW_LENGTH || length_char(silicon_preview_text) < 2) || (silicon_preview_text == FLAVOR_PREVIEW_DEFAULT_VALUE))
+		//if the user has gone over the limit, only has 1 char (to prevent most accidental single spaces), or hasnt modified the default value, show the default
 		flavor_text_link = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
 	else
 		flavor_text_link = span_notice("[silicon_preview_text]...<a href='?src=[REF(src)];lookup_info=open_examine_panel'> Look closer?</a>")
-	if (flavor_text_link)
+	if (flavor_text_link) //i believe this is a sanity check
 		. += flavor_text_link
 	if(client)
 		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
