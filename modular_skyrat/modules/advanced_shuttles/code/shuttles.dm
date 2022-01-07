@@ -20,9 +20,9 @@
 	shuttleId = "arrivals_shuttle"
 	possible_destinations = "arrivals_stationary;arrivals_shuttle"
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/computer.dmi'
-	icon_state = "wagon"
-	icon_keyboard = ""
-	icon_screen = ""
+	icon_state = "computer_frame"
+	icon_keyboard = "arrivals_key"
+	icon_screen = "arrivals"
 	light_color = COLOR_ORANGE_BROWN
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	connectable = FALSE //connecting_computer change: since icon_state is not a typical console, it cannot be connectable.
