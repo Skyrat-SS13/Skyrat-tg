@@ -162,6 +162,9 @@
 	
 /obj/item/clothing/head/helmet/space/hardsuit/berserker
 	mutant_variants = NONE
+	
+/obj/item/clothing/head/hooded/cloakhood/godslayer
+	mutant_variants = NONE
 
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -461,4 +464,7 @@
 	mutant_variants = NONE
 	
 /obj/item/clothing/suit/space/hardsuit/berserker
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/hooded/cloak/godslayer
 	mutant_variants = NONE
