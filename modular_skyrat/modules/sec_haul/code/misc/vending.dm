@@ -65,7 +65,7 @@
 					/obj/item/clothing/shoes/jackboots/security = 10,
 					/obj/item/clothing/head/security_garrison = 10,
 					/obj/item/clothing/head/security_cap = 10,
-					/obj/item/clothing/gloves/security = 10,
+					/obj/item/clothing/gloves/color/black/security = 10,
 					/obj/item/storage/belt/security/webbing/peacekeeper = 2,
 					/obj/item/storage/backpack/security/peacekeeper = 5,
 					/obj/item/storage/backpack/satchel/sec/peacekeeper = 5,

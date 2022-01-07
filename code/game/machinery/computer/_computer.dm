@@ -28,6 +28,7 @@
 		return FALSE
 	return TRUE
 
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR (modular_skyrat/modules/connecting_computer/code/_computer.dm)
 /obj/machinery/computer/update_overlays()
 	. = ..()
 	if(icon_keyboard)
@@ -44,6 +45,7 @@
 
 	. += mutable_appearance(icon, overlay_state)
 	. += emissive_appearance(icon, overlay_state)
+*/
 
 /obj/machinery/computer/power_change()
 	. = ..()
