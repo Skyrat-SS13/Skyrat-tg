@@ -63,6 +63,7 @@
 		return FALSE
 	return TRUE
 
+<<<<<<< HEAD
 /datum/saymode/monkey
 	key = "k"
 	mode = MODE_MONKEY
@@ -85,6 +86,8 @@
 				to_chat(M, msg)
 		return FALSE
 
+=======
+>>>>>>> 62046d49816 (Removes monkey mode, neuters Jungle Fever into Jungle Flu (#63763))
 /datum/saymode/mafia
 	key = "j"
 	mode = MODE_MAFIA
