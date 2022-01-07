@@ -265,7 +265,6 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
-/obj/machinery/status_display/evac/directional/south,
 /turf/open/floor/iron,
 /area/centcom/evac)
 "aS" = (
@@ -650,16 +649,6 @@
 /obj/item/cultivator,
 /turf/open/floor/wood/tile,
 /area/centcom/holding)
-"ca" = (
-/obj/item/reagent_containers/food/drinks/bottle/whiskey{
-	pixel_y = 5
-	},
-/obj/item/clothing/mask/cigarette/cigar/havana{
-	pixel_x = 2
-	},
-/obj/structure/table/wood,
-/turf/open/floor/iron/dark,
-/area/centcom/evac)
 "cb" = (
 /obj/structure/closet/secure_closet/freezer/meat/open,
 /obj/item/food/meat/slab/chicken,
@@ -1274,12 +1263,6 @@
 "ea" = (
 /turf/open/floor/iron,
 /area/centcom/supplypod/loading/three)
-"eb" = (
-/obj/machinery/light/directional/north,
-/obj/structure/table/wood,
-/obj/structure/reagent_dispensers/beerkeg,
-/turf/open/floor/iron/dark,
-/area/centcom/evac)
 "ec" = (
 /obj/machinery/defibrillator_mount/directional/south,
 /obj/machinery/stasis,
@@ -1534,16 +1517,6 @@
 /obj/item/gun/ballistic/automatic/wt550,
 /obj/item/clothing/head/helmet/swat/nanotrasen,
 /obj/item/crowbar/red,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
 /obj/machinery/button/door/indestructible{
 	id = "XCCcustoms1";
 	layer = 3;
@@ -2174,15 +2147,6 @@
 "hl" = (
 /turf/open/floor/plating/asteroid/snow/airless,
 /area/syndicate_mothership)
-"ho" = (
-/obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
-	pixel_x = -3;
-	pixel_y = 5
-	},
-/obj/structure/table/wood,
-/turf/open/floor/iron/dark,
-/area/centcom/evac)
 "hp" = (
 /obj/structure/rack,
 /obj/item/storage/box/donkpockets,
@@ -2393,13 +2357,9 @@
 /turf/open/floor/iron/dark,
 /area/centcom/briefing)
 "hO" = (
-/obj/structure/table/wood,
-/obj/item/storage/box/donkpockets,
-/obj/item/storage/fancy/cigarettes/cigars/cohiba{
-	pixel_y = 3
-	},
-/turf/open/floor/iron/dark,
-/area/centcom/evac)
+/obj/effect/landmark/hell,
+/turf/open/indestructible/necropolis/air,
+/area/centcom/prison)
 "hP" = (
 /obj/structure/table/wood/fancy/royalblue,
 /obj/item/toy/toy_xeno,
@@ -3451,6 +3411,19 @@
 "lI" = (
 /turf/open/space/transit,
 /area/space)
+"lM" = (
+/obj/machinery/door/airlock/centcom{
+	name = "CentCom Security";
+	req_access_txt = "101"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/centcom/evac)
 "lN" = (
 /obj/structure/chair/office{
 	dir = 1
@@ -5646,12 +5619,6 @@
 	},
 /turf/open/floor/iron,
 /area/syndicate_mothership/control)
-"ri" = (
-/obj/structure/table/wood,
-/obj/item/lighter,
-/obj/item/crowbar/power,
-/turf/open/floor/iron/dark,
-/area/centcom/evac)
 "rj" = (
 /obj/structure/mirror/directional/east,
 /obj/structure/sink{
@@ -5987,6 +5954,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/control)
+"rV" = (
+/obj/structure/table/wood,
+/obj/item/storage/box/drinkingglasses,
+/obj/item/reagent_containers/food/drinks/shaker,
+/turf/open/floor/iron/dark,
+/area/centcom/evac)
 "rW" = (
 /obj/machinery/light/directional/west,
 /turf/open/floor/engine/cult,
@@ -6585,6 +6558,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/status_display/evac/directional/south,
 /turf/open/floor/iron,
 /area/centcom/evac)
 "tm" = (
@@ -7277,6 +7251,13 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/admin)
+"uR" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/ausbushes/brflowers,
+/obj/effect/spawner/structure/window/reinforced/indestructable,
+/turf/open/floor/grass,
+/area/centcom/evac)
 "uT" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/fans/tiny,
@@ -7385,6 +7366,12 @@
 	},
 /turf/open/floor/carpet,
 /area/wizard_station)
+"vo" = (
+/obj/structure/table/wood,
+/obj/item/lighter,
+/obj/item/crowbar/power,
+/turf/open/floor/iron/dark,
+/area/centcom/evac)
 "vp" = (
 /obj/machinery/vending/cigarette,
 /obj/effect/turf_decal/tile/neutral{
@@ -8538,18 +8525,9 @@
 /turf/open/floor/plating/sandy_dirt,
 /area/centcom/holding)
 "yN" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/box/handcuffs,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
+/obj/machinery/light/directional/north,
+/obj/structure/table/wood,
+/obj/structure/reagent_dispensers/beerkeg,
 /turf/open/floor/iron/dark,
 /area/centcom/evac)
 "yO" = (
@@ -9507,16 +9485,6 @@
 /area/centcom/evac)
 "Bw" = (
 /obj/machinery/light/directional/south,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
 /turf/open/floor/iron/dark,
 /area/centcom/evac)
 "Bx" = (
@@ -13327,17 +13295,11 @@
 /turf/open/floor/iron,
 /area/centcom/briefing/storage)
 "Mz" = (
-/obj/structure/table/reinforced,
 /obj/item/crowbar/red,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
+/obj/structure/table/wood,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/fancy/cigarettes/cigars/cohiba{
+	pixel_y = 3
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/evac)
@@ -14248,6 +14210,15 @@
 /obj/machinery/status_display/evac/directional/east,
 /turf/open/floor/iron,
 /area/centcom/briefing/storage)
+"PE" = (
+/obj/machinery/microwave{
+	desc = "Cooks and boils stuff, somehow.";
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/obj/structure/table/wood,
+/turf/open/floor/iron/dark,
+/area/centcom/evac)
 "PF" = (
 /obj/machinery/light/directional/east,
 /obj/effect/turf_decal/tile/neutral{
@@ -15067,16 +15038,6 @@
 /obj/item/gun/ballistic/automatic/wt550,
 /obj/item/clothing/head/helmet/swat/nanotrasen,
 /obj/item/crowbar/red,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
 /turf/open/floor/iron/dark,
 /area/centcom/evac)
 "Su" = (
@@ -15302,13 +15263,15 @@
 /turf/open/floor/carpet/black,
 /area/centcom/holding)
 "Ti" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/ausbushes/genericbush,
-/obj/machinery/light/directional/south,
-/turf/open/floor/grass,
+/obj/item/storage/box/handcuffs,
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/drinks/bottle/whiskey{
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/cigarette/cigar/havana{
+	pixel_x = 2
+	},
+/turf/open/floor/iron/dark,
 /area/centcom/evac)
 "Tj" = (
 /obj/structure/table/reinforced,
@@ -17379,11 +17342,8 @@
 /turf/open/floor/carpet/black,
 /area/centcom/holding)
 "Zq" = (
-/obj/structure/table/wood,
-/obj/item/storage/box/drinkingglasses,
-/obj/item/reagent_containers/food/drinks/shaker,
-/turf/open/floor/iron/dark,
-/area/centcom/evac)
+/turf/open/indestructible/necropolis/air,
+/area/centcom/prison)
 "Zs" = (
 /obj/structure/chair/office{
 	dir = 8
@@ -69740,7 +69700,7 @@ qx
 qx
 qx
 qx
-CM
+lM
 qx
 qx
 qx
@@ -69994,10 +69954,10 @@ tV
 DY
 MX
 qx
-Bd
-qx
+yN
+rV
 Ss
-AW
+NO
 qx
 Su
 al
@@ -70250,11 +70210,11 @@ vi
 vi
 Xc
 ZN
-qx
-Bd
-qx
+Bu
 Mz
-AW
+NO
+NO
+NO
 qx
 XT
 Rf
@@ -70509,8 +70469,8 @@ Xc
 ZA
 Bu
 Ti
-qx
-yN
+NO
+NO
 Bw
 qx
 uM
@@ -70765,10 +70725,10 @@ vi
 Xc
 aQ
 qx
-AM
-qx
+PE
+vo
 eZ
-AW
+NO
 qx
 MN
 MN
@@ -71537,8 +71497,8 @@ Xc
 ZN
 cB
 FS
-ge
-FS
+uR
+uR
 FS
 cB
 Bk
@@ -71794,8 +71754,8 @@ Xc
 ZN
 Bu
 FS
-ge
-FS
+uR
+uR
 FS
 ge
 Bk
@@ -72051,8 +72011,8 @@ Xc
 ZN
 cB
 FS
-ge
-FS
+uR
+uR
 FS
 cB
 Bk
@@ -72564,10 +72524,10 @@ vi
 Xc
 tj
 qx
-Bu
-qx
-qx
-hq
+ge
+ge
+ge
+ge
 qx
 Oq
 Oq
@@ -72820,12 +72780,12 @@ Nh
 vi
 Xc
 aQ
-qx
-Bd
-qx
+ge
+hO
 Zq
-NO
-qx
+Zq
+hO
+ge
 Dy
 Dy
 Rf
@@ -73077,12 +73037,12 @@ MI
 vi
 Xc
 No
-Bu
-Ti
-qx
-eb
-NO
-qx
+ge
+Zq
+Zq
+Zq
+Zq
+ge
 Rf
 Rf
 Rf
@@ -73334,12 +73294,12 @@ vi
 vi
 Xc
 ZN
-qx
-AM
-qx
-ho
-NO
-qx
+ge
+Zq
+hO
+hO
+Zq
+ge
 cm
 cm
 Rf
@@ -73591,12 +73551,12 @@ Eq
 Eq
 Eq
 aT
-qx
-Bd
-qx
-ri
-NO
-qx
+ge
+Zq
+Zq
+Zq
+Zq
+ge
 zc
 zc
 ei
@@ -73848,12 +73808,12 @@ Ez
 Ez
 Ez
 XQ
-qx
-qx
-qx
-ca
+ge
 hO
-qx
+Zq
+Zq
+hO
+ge
 ge
 ge
 qx
@@ -74106,10 +74066,10 @@ Dr
 Dr
 Dr
 qx
-qx
-qx
-Bu
-Bu
+ge
+ge
+ge
+ge
 qx
 aa
 aa
