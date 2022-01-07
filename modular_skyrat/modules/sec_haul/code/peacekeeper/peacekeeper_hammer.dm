@@ -9,11 +9,7 @@
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/baton/peacekeeper_baton_righthand.dmi'
 	slot_flags = ITEM_SLOT_BELT
 	force = 15
-	throwforce = 20
-	throw_range = 1
-	wound_bonus = 30
-	bare_wound_bonus = 40
-	block_chance = 25
+	throwforce = 10
 	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb_continuous = list("whacks","breaches","bulldozes","flings","thwachs")
 	attack_verb_simple = list("breach","hammer","whack","slap","thwach","fling")
@@ -30,11 +26,6 @@
 	/// the amount that the force is multiplied by , that is then applied as damage to the door.
 	var/breaching_multipler = 2.5
 
-/obj/item/melee/hammer/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	if(attack_type == PROJECTILE_ATTACK)
-		final_block_chance = 5 // Less likely to parry a fucking bullet
-	return ..()
-
 /obj/item/melee/hammer/afterattack(atom/target, mob/user, proximity)
 	. = ..()
 	if(!proximity)
@@ -49,11 +40,6 @@
 		breacher = user
 		SEND_SIGNAL(target, COMSIG_BREACHING, user)
 		breaching_target = target
-	if(iscarbon(target))
-		user.changeNext_move(2 SECONDS)
-		var/mob/living/carbon/H = target
-		H.apply_damage_type(40, STAMINA)
-		H.throw_at(get_step_away(H, user), 1, 1, user, TRUE, gentle = TRUE)
 
 /// Removes any form of tracking from the user and the item , make sure to call it on he proper item
 /obj/item/melee/hammer/proc/remove_track(mob/living/carbon/human/user)
