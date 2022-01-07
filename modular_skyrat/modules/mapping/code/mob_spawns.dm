@@ -81,6 +81,15 @@
 	ears = /obj/item/radio/headset/cybersun/captain
 	id_trim = /datum/id_trim/syndicom/skyrat/captain
 
+/datum/outfit/ds2/post_equip(mob/living/carbon/human/syndicate, visualsOnly = FALSE)
+	var/obj/item/card/id/C = syndicate.wear_id
+	if(istype(C))
+		C.registered_name = syndicate.real_name
+		C.update_label()
+		C.update_icon()
+
+	return ..()
+
 /datum/outfit/ds2/prisoner
 	name = "Syndicate Prisoner"
 	uniform = /obj/item/clothing/under/rank/prisoner
@@ -161,6 +170,7 @@
 
 /datum/outfit/ds2/syndicate/post_equip(mob/living/carbon/human/H)
 	H.faction |= ROLE_SYNDICATE
+	return ..()
 
 //Lost Space Truckers: Six people stranded in deep space aboard a cargo freighter. They must survive their marooning and cooperate.
 
