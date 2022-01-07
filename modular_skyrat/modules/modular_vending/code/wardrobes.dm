@@ -6,6 +6,7 @@
 
 /obj/machinery/vending/wardrobe/medi_wardrobe
 	skyrat_products = list(
+		/obj/item/radio/headset/headset_med = 3,
 		/obj/item/clothing/gloves/color/latex/nitrile = 2,
 		/obj/item/clothing/suit/toggle/labcoat/hospitalgown = 5,
 		/obj/item/storage/belt/medbandolier = 2,
@@ -17,6 +18,7 @@
 
 /obj/machinery/vending/wardrobe/engi_wardrobe
 	skyrat_products = list(
+		/obj/item/radio/headset/headset_eng = 3,
 		/obj/item/clothing/under/rank/engineering/engineer/trouser = 3,
 		/obj/item/clothing/under/utility/eng = 3,
 		/obj/item/clothing/suit/toggle/jacket/engi = 3,
@@ -78,13 +80,13 @@
 
 /obj/machinery/vending/wardrobe/bar_wardrobe
 	skyrat_products = list(
-	/obj/item/storage/bag/money = 2,
-	/obj/item/storage/fancy/candle_box/vanilla = 1,
-	/obj/item/storage/fancy/candle_box/pear = 1,
-	/obj/item/storage/fancy/candle_box/amber = 1,
-	/obj/item/storage/fancy/candle_box/jasmine = 1,
-	/obj/item/storage/fancy/candle_box/mint = 1,
-	/obj/item/clothing/suit/hooded/wintercoat/bartender = 2,
+		/obj/item/storage/bag/money = 2,
+		/obj/item/storage/fancy/candle_box/vanilla = 1,
+		/obj/item/storage/fancy/candle_box/pear = 1,
+		/obj/item/storage/fancy/candle_box/amber = 1,
+		/obj/item/storage/fancy/candle_box/jasmine = 1,
+		/obj/item/storage/fancy/candle_box/mint = 1,
+		/obj/item/clothing/suit/hooded/wintercoat/bartender = 2,
 	)
 
 /obj/machinery/vending/wardrobe/chap_wardrobe
@@ -99,6 +101,11 @@
 		/obj/item/clothing/neck/chaplain = 1,
 		/obj/item/clothing/neck/chaplain/black = 1,
 		/obj/item/implanter/mortis = 1,
+	)
+
+/obj/machinery/vending/cart
+	skyrat_products = list(
+		/obj/item/radio/headset/headset_srv = 3,
 	)
 
 /obj/machinery/vending/wardrobe/chem_wardrobe
