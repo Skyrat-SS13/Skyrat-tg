@@ -17,7 +17,6 @@ GLOBAL_LIST_INIT(oddity_loot, list(//oddity: strange or crazy items
 	/obj/item/clothing/mask/animal/frog/cursed = 50,
 	/obj/item/clothing/mask/animal/horsehead/cursed = 50,
 	/obj/item/clothing/mask/animal/pig/cursed = 50,
-	/obj/item/clothing/mask/void_mask = 5,
 	/obj/item/clothing/shoes/bhop = 5,
 	/obj/item/clothing/suit/hooded/bloated_human = 100,
 	/obj/item/clothing/suit/poncho/ponchoshame = 50,
