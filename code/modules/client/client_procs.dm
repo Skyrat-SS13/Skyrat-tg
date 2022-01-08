@@ -1050,11 +1050,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				if("South")
 					movement_keys[key] = SOUTH
 				if("Say")
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=\".winset \\\"command=\\\".start_typing say\\\";command=.init_say;saywindow.is-visible=true;saywindow.input.focus=true;saywindow.input.text=\\\"\\\"\\\"\"")
+					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=\".winset \\\"command=\\\".start_typing say\\\";command=.init_say;saywindow.is-visible=true;saywindow.input.focus=true\\\"\"") //SKYRAT EDIT ADDITION - Client-side input box. See input_box.dm and typing_indicator.dm for more information.
 				if("OOC")
 					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=ooc")
 				if("Me")
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=\".winset \\\"command=\\\".start_typing me\\\";command=.init_me;mewindow.is-visible=true;mewindow.input.focus=true;mewindow.input.text=\\\"\\\"\\\"\"")
+					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=\".winset \\\"command=\\\".start_typing me\\\";command=.init_me;mewindow.is-visible=true;mewindow.input.focus=true;\\\"\"") //SKYRAT EDIT ADDITION - Client-side input box. See input_box.dm and typing_indicator.dm for more information.
 				//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 				if("LOOC")
 					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=looc")
