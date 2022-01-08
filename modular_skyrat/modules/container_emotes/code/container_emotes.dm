@@ -21,14 +21,14 @@
 	if(QDELETED(user))
 		return FALSE
 	if(is_banned_from(user, "emote"))
-		to_chat(user, "You cannot send emotes (banned).") //Using to_chat here because these are more important messages that should linger.
+		tgui_alert(user, "You cannot send emotes (banned).")
 		return FALSE
 	else if(user.client?.prefs?.muted & MUTE_IC)
-		to_chat(user, "You cannot send IC messages (muted).")
+		tgui_alert(user, "You cannot send IC messages (muted).")
 		return FALSE
 	else if (isturf(user.loc))
-		user.balloon_alert(user, "You are not within anything!") // If user is banned from chat, emotes, or the user is not within anything (ex. a locker) return.
-		return FALSE
+		to_chat(user, "You are not within anything!") // If user is banned from chat, emotes, or the user is not within anything (ex. a locker) return.
+		return FALSE //im keeping this to_chat because this seems like a really common use case and i dont want to annoy players
 	else if(!params) // User didn't put anything after *exme when using the say hotkey, or just used the emote raw? Open a window.
 		container_emote = tgui_input_text(user, "What would you like to emote?", "Container Emote" , null, MAX_MESSAGE_LEN, TRUE, TRUE, 0)
 		if(!container_emote)
