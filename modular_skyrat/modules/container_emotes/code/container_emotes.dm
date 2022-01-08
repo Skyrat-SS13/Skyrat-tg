@@ -41,7 +41,7 @@
 			if("Audible")
 				emote_type = EMOTE_AUDIBLE
 			else
-				user.balloon_alert(user, "Unable to use this emote, must be either audible or visible.")
+				tgui_alert(user, "Unable to use this emote, must be either audible or visible.")
 				return
 		container_message = container_emote //Ill be honest I dont know why this is a thing but I'm too afraid to remove it.
 	else
