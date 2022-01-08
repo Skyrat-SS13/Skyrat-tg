@@ -140,7 +140,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 		update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
 
 /**
- * Called whenever a mob exits a vehicle/sealed, after everything elss.
+ * Called whenever a mob exits a vehicle/sealed, after everything else.
  *
  * Disables the vehicle's CI if it was enabled, and if it was the only occupant (or there was noone else in the mech with CI enabled).
  *
