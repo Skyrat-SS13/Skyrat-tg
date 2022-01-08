@@ -37,16 +37,16 @@
 	desc = "A crate of red uniforms we had stored before outsourcing our security equipment. A darker color than we remem- oh wait that's just blood."
 	cost = CARGO_CRATE_VALUE * 3
 	access_view = ACCESS_SECURITY
-	contains = list(/obj/item/clothing/under/rank/security/officer,
-					/obj/item/clothing/under/rank/security/officer,
-					/obj/item/clothing/under/rank/security/officer,
-					/obj/item/clothing/under/rank/security/officer/skirt,
-					/obj/item/clothing/under/rank/security/officer/skirt,
-					/obj/item/clothing/under/rank/security/officer/skirt,
-					/obj/item/clothing/under/rank/security/warden,
-					/obj/item/clothing/under/rank/security/warden/skirt,
-					/obj/item/clothing/under/rank/security/head_of_security,
-					/obj/item/clothing/under/rank/security/head_of_security/skirt,
-					/obj/item/clothing/suit/hooded/wintercoat/security,
-					/obj/item/clothing/suit/hooded/wintercoat/security)
+	contains = list(/obj/item/clothing/under/rank/security/officer/red,
+					/obj/item/clothing/under/rank/security/officer/red,
+					/obj/item/clothing/under/rank/security/officer/red,
+					/obj/item/clothing/under/rank/security/officer/skirt/red,
+					/obj/item/clothing/under/rank/security/officer/skirt/red,
+					/obj/item/clothing/under/rank/security/officer/skirt/red,
+					/obj/item/clothing/under/rank/security/warden/red,
+					/obj/item/clothing/under/rank/security/warden/skirt/red,
+					/obj/item/clothing/under/rank/security/head_of_security/red,
+					/obj/item/clothing/under/rank/security/head_of_security/skirt/red,
+					/obj/item/clothing/suit/hooded/wintercoat/security/red,
+					/obj/item/clothing/suit/hooded/wintercoat/security/red)
 	crate_name = "red security uniform crate"
