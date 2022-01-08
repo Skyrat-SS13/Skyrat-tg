@@ -7,12 +7,12 @@
 	mouse_opacity = 0
 
 /**
- * Flick_emote_popup_on_(???) -- A proc type that, when called, causes a image/sprite to appear above whatever entity it is called on.
+ * A proc type that, when called, causes a image/sprite to appear above whatever entity it is called on.
  *
- * There are two types: On_mob and on_obj, they can only be called on their respective typepaths.
+ * There are two types: on_mob and on_obj, they can only be called on their respective typepaths.
  *
  * Arguments:
- * * state -- The ID of whatever .dmi file you're attempting to use for the sprite, in "" format. Ex. "combat", not combat.dmi.
+ * * state -- The icon_state of whatever .dmi file you're attempting to use for the sprite, in "" format. Ex. "combat", not combat.dmi.
  * * time -- The amount of time the sprite remains before remove_emote_popup_on_(???) is called. Is used in the addtimer.
  */
 /mob/living/proc/flick_emote_popup_on_mob(state, time)
@@ -23,12 +23,12 @@
 	addtimer(CALLBACK(src, .proc/remove_emote_popup_on_mob, emote_overlay), time)
 
 /**
- * Flick_emote_popup_on_(???) -- A proc type that, when called, causes a image/sprite to appear above whatever entity it is called on.
+ * A proc type that, when called, causes a image/sprite to appear above whatever entity it is called on.
  *
- * There are two types: On_mob and on_obj, they can only be called on their respective typepaths.
+ * There are two types: on_mob and on_obj, they can only be called on their respective typepaths.
  *
  * Arguments:
- * * state -- The ID of whatever .dmi file you're attempting to use for the sprite, in "" format. Ex. "combat", not combat.dmi.
+ * * state -- The icon_state of whatever .dmi file you're attempting to use for the sprite, in "" format. Ex. "combat", not combat.dmi.
  * * time -- The amount of time the sprite remains before remove_emote_popup_on_(???) is called. Is used in the addtimer.
  */
 
@@ -40,7 +40,7 @@
 	addtimer(CALLBACK(src, .proc/remove_emote_popup_on_obj, emote_overlay), time)
 
 /**
- * remove_emote_popup_on_(???) -- A proc that is automatically called whenever flick_emote_popup_on_(???)'s addtimer expires.
+ * A proc that is automatically called whenever flick_emote_popup_on_(???)'s addtimer expires.
  *
  * There are two types: On_mob and on_obj, they can only be called on their respective typepaths.
  *
@@ -54,7 +54,7 @@
 	return
 
 /**
- * remove_emote_popup_on_(???) -- A proc that is automatically called whenever flick_emote_popup_on_(???)'s addtimer expires.
+ * A proc that is automatically called whenever flick_emote_popup_on_(???)'s addtimer expires.
  *
  * There are two types: On_mob and on_obj, they can only be called on their respective typepaths.
  *

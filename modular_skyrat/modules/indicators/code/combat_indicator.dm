@@ -13,7 +13,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	var/nextcombatpopup = 0
 
 /**
- * mob_toggled_ci -- Called whenever a mob inside a vehicle/sealed/ toggles CI status.
+ * Called whenever a mob inside a vehicle/sealed/ toggles CI status.
  *
  * Tied to the COMSIG_MOB_CI_TOGGLED signal, said signal is assigned when a mob enters a vehicle and unassigned when the mob exits, and is sent whenever set_combat_indicator is called.
  *
