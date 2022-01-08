@@ -380,12 +380,16 @@
 /obj/item/proc/wear_species_version(file_to_use, state_to_use, layer, species, default_file_to_use)
 	return
 
-//generates a species specific icon for a state_to_use icon in file_to_use if one doesnt exist
-//said species specific icon will be generated using default_file_to_use
-//layer specifies the sprite layer the sprite will be on
-//species is for the specific species the icon will be generated for
-//
-//also fuck vsc, DREAM MAKER FOR LIFE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+/**
+ * Generates a species-specific clothing icon.
+ * 
+ * Arguments:
+ * * file_to_use - Icon file to use for clothing sprite
+ * * state_to_use - Icon state to use within file_to_use
+ * * layer - specifies the sprite layer the sprite will be on
+ * * species - the specific species the icon will be generated for
+ * * default_file_to_use - default fallback icon to use
+ */
 /obj/item/clothing/wear_species_version(file_to_use, state_to_use, layer, species, default_file_to_use)
 	LAZYINITLIST(GLOB.species_clothing_icons[species])
 	var/icon/species_clothing_icon = GLOB.species_clothing_icons[species]["[file_to_use]-[state_to_use]"] // Check if the icon we want already exists
