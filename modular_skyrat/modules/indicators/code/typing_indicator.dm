@@ -69,7 +69,7 @@ Both the say/me wrappers and cancel_typing remove the typing indicator.
 	if(message)
 		me_verb(message)
 
-///Human Typing Indicators///
+///Living Typing Indicator Procs
 /mob/living/create_typing_indicator()
 	if(!typing_indicator && stat == CONSCIOUS) //Prevents sticky overlays and typing while in any state besides conscious
 		add_overlay(GLOB.typing_indicator)
