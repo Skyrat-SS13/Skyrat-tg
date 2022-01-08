@@ -38,3 +38,4 @@ N/A
 Azarak - Porting and OG code for Combat Indicator, Typing Indicator, SSD Indicator
 FlamingLily - Consolidation, surrender alert
 Niko - making CI work with mechs and stuff
+GoldenAlphrex - Being invaluably helpful in telling me (niko) how to do things

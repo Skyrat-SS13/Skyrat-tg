@@ -7,10 +7,20 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	return combat_indicator
 
 /mob/living
+	/// Is combat indicator enabled for this mob? Boolean.
 	var/combat_indicator = FALSE
+	/// When is the next time this mob will be able to use flick_emote and put the fluff text in chat?
 	var/nextcombatpopup = 0
 
-/// This proc is tied to the COMSIG_MOB_CI_TOGGLED signal and is assigned to the vehicle whenever a mob enters a vehicle/sealed object. If that mob toggles CI, this signal is fired.
+/**
+ * mob_toggled_ci -- Called whenever a mob inside a vehicle/sealed/ toggles CI status.
+ *
+ * Tied to the COMSIG_MOB_CI_TOGGLED signal, said signal is assigned when a mob enters a vehicle and unassigned when the mob exits, and is sent whenever set_combat_indicator is called.
+ *
+ * Arguments:
+ * * source -- The mob in question that toggled CI status.
+ */
+
 /obj/vehicle/sealed/proc/mob_toggled_ci(mob/living/source)
 	SIGNAL_HANDLER
 	if ((src.max_occupants > src.max_drivers) && (!(source in return_drivers())) && (src.driver_amount() > 0)) // Only returms true if the mob in question has the driver control flags and/or there are drivers.
@@ -39,12 +49,20 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 
 /mob/living/proc/combat_indicator_unconscious_signal()
 	SIGNAL_HANDLER
-	if(stat < UNCONSCIOUS) // sanity check because something is calling this signal improperly
+	if(stat < UNCONSCIOUS) // sanity check because something is calling this signal improperly -- it may be due to adjustconciousness()
 		stack_trace("Improper COMSIG_LIVING_STATUS_UNCONSCIOUS sent; mob is not unconscious")
 		return
 	set_combat_indicator(FALSE)
 
-/// Handles the logic behind setting the combat indicator status.
+/**
+ * Called whenever a mob's CI status changes for any reason.
+ *
+ * Checks if the mob is dead, if config disallows CI, or if the current CI status is the same as state, and if it is, it will change CI status to state.
+ *
+ * Arguments:
+ * * state -- Boolean. Inherited from the procs that call this, basically it's what that proc wants CI to change to - true or false, on or off.
+ */
+
 /mob/living/proc/set_combat_indicator(state)
 	if(!CONFIG_GET(flag/combat_indicator))
 		return
@@ -91,12 +109,26 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 		UnregisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS) //combat_indicator_unconcious_signal will no longer be fired if this mob is unconcious.
 	update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
 
+/**
+ * Called whenever the user hits their combat indicator keybind, defaulted to C.
+ *
+ * If the user is conscious, it will set CI to be whatever the opposite of what it is currently.
+ */
+
 /mob/living/proc/user_toggle_combat_indicator()
 	if(stat != CONSCIOUS)
 		return
 	set_combat_indicator(!combat_indicator) // Set CI status to whatever is the opposite of the current status.
 
-/// This proc is called whenever a mob enters a vehicle/sealed object.
+/**
+ * Called whenever a mob enters a vehicle/sealed, after everything elss.
+ *
+ * Sets the vehicle's CI status to that of the mob if the mob is a driver and there are no other drivers, or if the mob is a passenger and there are no drivers.
+ *
+ * Arguments:
+ * * user -- mob/living, the mob that is entering the vehicle.
+ */
+
 /obj/vehicle/sealed/proc/handle_ci_migration(mob/living/user)
 	if(!typesof(user.loc, /obj/vehicle/sealed)) //Sanity check: If the mob's location (not the tile they are on) is NOT a type of vehicle/sealed, kill the proc.
 		return
@@ -107,7 +139,15 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 		combat_indicator_vehicle = TRUE
 		update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
 
-/// This proc is called whenever a mob exits a vehicle/sealed obj.
+/**
+ * Called whenever a mob exits a vehicle/sealed, after everything elss.
+ *
+ * Disables the vehicle's CI if it was enabled, and if it was the only occupant (or there was noone else in the mech with CI enabled).
+ *
+ * Arguments:
+ * * user -- mob/living, the mob that is exiting the vehicle.
+ */
+
 /obj/vehicle/sealed/proc/disable_ci(mob/living/user)
 	// If the vehicle can have more occupants than drivers, and either 1. The mob is not a driver and the vehicle has drivers, or 2. The user IS a driver but there is an occupant (drivers count as occupants), return.
 	if ((src.max_occupants > src.max_drivers) && ((!(user in return_drivers()) && (src.driver_amount() > 0)) || ((user in return_drivers()) && (src.occupant_amount() > 0))))
