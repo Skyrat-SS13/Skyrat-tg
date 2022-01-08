@@ -40,9 +40,7 @@
 	addtimer(CALLBACK(src, .proc/remove_emote_popup_on_obj, emote_overlay), time)
 
 /**
- * A proc that is automatically called whenever flick_emote_popup_on_(???)'s addtimer expires.
- *
- * There are two types: On_mob and on_obj, they can only be called on their respective typepaths.
+ * A proc that is automatically called whenever flick_emote_popup_on_mob's addtimer expires, and removes the popup.
  *
  * Arguments:
  * * emote_overlay -- Inherits state from the preceding proc.
@@ -54,9 +52,7 @@
 	return
 
 /**
- * A proc that is automatically called whenever flick_emote_popup_on_(???)'s addtimer expires.
- *
- * There are two types: On_mob and on_obj, they can only be called on their respective typepaths.
+ * A proc that is automatically called whenever flick_emote_popup_on_obj's addtimer expires, and removes the popup.
  *
  * Arguments:
  * * emote_overlay -- Inherits state from the preceding proc.
