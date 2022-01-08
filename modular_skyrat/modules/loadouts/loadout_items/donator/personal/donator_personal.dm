@@ -367,7 +367,7 @@
 /datum/loadout_item/glasses/roseeyepatch
 	name = "Rose-Colored Eyepatch"
 	item_path = /obj/item/clothing/glasses/eyepatch/rosecolored
-	ckeywhitelist = list("kayNite")
+	ckeywhitelist = list("kaynite")
 
 /datum/loadout_item/suit/tenrai_coat
 	name = "Tenrai Coat"
