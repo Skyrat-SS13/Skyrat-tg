@@ -486,7 +486,7 @@
 					break
 
 	var/flavor_text_link
-	var/preview_text = copytext((dna.features["flavor_text"]), 1, FLAVOR_PREVIEW_LIMIT)
+	var/preview_text = copytext((dna.features["flavor_text"]), 1, FLAVOR_PREVIEW_LIMIT) //defined in flavor_defines.dm
 
 	if (!obscured)
 		flavor_text_link = span_notice("[preview_text]...<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Look closer?</a>")

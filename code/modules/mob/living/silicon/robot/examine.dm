@@ -45,11 +45,11 @@
 			. += "<span class='deadsay'>It looks like its system is corrupted and requires a reset.</span>"
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	var/flavor_text_link
-	var/silicon_preview_text = copytext((client.prefs.read_preference(/datum/preference/text/silicon_flavor_text)), 1, FLAVOR_PREVIEW_LIMIT)
+	var/silicon_preview_text = copytext((client.prefs.read_preference(/datum/preference/text/silicon_flavor_text)), 1, FLAVOR_PREVIEW_LIMIT) //defined in flavor_defines.dm
 
 	flavor_text_link = span_notice("[silicon_preview_text]...<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Look closer?</a>")
 
-	if (flavor_text_link) //i believe this is a sanity check
+	if (flavor_text_link)
 		. += flavor_text_link
 
 	if(client)
