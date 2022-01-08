@@ -117,6 +117,23 @@
 	else
 		INVOKE_ASYNC(src, .proc/close)
 
+// SKYRAT EDIT START: Round End Pod Doors
+/obj/machinery/door/poddoor/roundend
+	name = "shift-ending blast door"
+
+/obj/machinery/door/poddoor/roundend/Initialize(mapload)
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/machinery/door/poddoor/roundend/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/machinery/door/poddoor/roundend/process()
+	if(SSticker.current_state == GAME_STATE_FINISHED)
+		INVOKE_ASYNC(src, .proc/open)
+// SKYRAT EDIT STOP: Round End Pod Doors
+
 /obj/machinery/door/poddoor/incinerator_ordmix
 	name = "combustion chamber vent"
 	id = INCINERATOR_ORDMIX_VENT
