@@ -6,17 +6,6 @@
 /datum/preference/text/flavor_text/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.dna.features["flavor_text"] = value
 
-/datum/preference/text/flavor_preview
-	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
-	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "flavor_preview"
-
-/datum/preference/text/flavor_preview/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	target.dna.features["flavor_preview"] = value
-
-/datum/preference/text/flavor_preview/create_default_value()
-	return FLAVOR_PREVIEW_DEFAULT_VALUE
-
 /datum/preference/text/silicon_flavor_text
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -25,18 +14,6 @@
 
 /datum/preference/text/silicon_flavor_text/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE // To prevent the not-implemented runtime
-
-/datum/preference/text/silicon_flavor_preview
-	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
-	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "silicon_flavor_preview"
-	// same as above
-
-/datum/preference/text/silicon_flavor_preview/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	return FALSE // again, above
-
-/datum/preference/text/silicon_flavor_preview/create_default_value()
-	return FLAVOR_PREVIEW_DEFAULT_VALUE
 
 /datum/preference/text/ooc_notes
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL

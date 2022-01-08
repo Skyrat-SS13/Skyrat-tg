@@ -20,21 +20,9 @@ export const flavor_text: Feature<string> = {
   component: FeatureTextInput,
 };
 
-export const flavor_preview: Feature<string> = {
-  name: "Flavor Text Preview",
-  description: "Describe your character, but short!",
-  component: FeatureTextInput,
-};
-
 export const silicon_flavor_text: Feature<string> = {
   name: "Flavor Text (Silicon)",
   description: "Describe your cyborg/AI shell!",
-  component: FeatureTextInput,
-};
-
-export const silicon_flavor_preview: Feature<string> = {
-  name: "Flavor Text Preview (Silicon)",
-  description: "Describe your cyborg/AI shell, but short!",
   component: FeatureTextInput,
 };
 

@@ -45,26 +45,22 @@
 			. += "<span class='deadsay'>It looks like its system is corrupted and requires a reset.</span>"
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	var/flavor_text_link
-	var/silicon_preview_text = client.prefs.read_preference(/datum/preference/text/silicon_flavor_preview)
-	if (!silicon_preview_text && silicon_preview_text != "") //sanity check, not sure if silicon_preview_text being "" counts as null but want to make sure it doesnt trip up
-		flavor_text_link = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
-		. += flavor_text_link //no need for an if statement if we KNOW we just defined it as something
-	else if ((length_char(silicon_preview_text) > FLAVOR_PREVIEW_LENGTH || length_char(silicon_preview_text) < 2) || (silicon_preview_text == FLAVOR_PREVIEW_DEFAULT_VALUE))
-		//if the user has gone over the limit, only has 1 char (to prevent most accidental single spaces), or hasnt modified the default value, show the default
-		flavor_text_link = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
-	else
-		flavor_text_link = span_notice("[silicon_preview_text]... <a href='?src=[REF(src)];lookup_info=open_examine_panel'>Look closer?</a>")
+	var/silicon_preview_text = copytext((client.prefs.read_preference(/datum/preference/text/silicon_flavor_text)), 1, FLAVOR_PREVIEW_LIMIT)
+
+	flavor_text_link = span_notice("[silicon_preview_text]...<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Look closer?</a>")
+
 	if (flavor_text_link) //i believe this is a sanity check
 		. += flavor_text_link
+
 	if(client)
 		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
 		if(erp_status_pref && erp_status_pref != "disabled")
 			. += span_notice("ERP STATUS: [erp_status_pref]")
 	if(temporary_flavor_text)
 		if(length_char(temporary_flavor_text) <= 40)
-			. += span_notice("<b> They look different than usual:</b> [temporary_flavor_text]")
+			. += span_notice("<b>They look different than usual:</b> [temporary_flavor_text]")
 		else
-			. += span_notice("<b> They look different than usual:</b> [copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a>")
+			. += span_notice("<b>They look different than usual:</b> [copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a>")
 	//SKYRAT EDIT ADDITION END
 	//. += "*---------*</span>"
 
