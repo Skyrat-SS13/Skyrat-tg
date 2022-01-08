@@ -52,3 +52,4 @@
 	desc = "A red, armour-padded winter hood. Definitely not bulletproof, especially not the part where your face goes."
 	icon = 'icons/obj/clothing/head/winterhood.dmi'
 	icon_state = "hood_security"
+	
