@@ -13,7 +13,7 @@
  *
  * Arguments:
  * * state -- The icon_state of whatever .dmi file you're attempting to use for the sprite, in "" format. Ex. "combat", not combat.dmi.
- * * time -- The amount of time the sprite remains before remove_emote_popup_on_(???) is called. Is used in the addtimer.
+ * * time -- The amount of time the sprite remains before remove_emote_popup_on_mob is called. Is used in the addtimer.
  */
 /mob/living/proc/flick_emote_popup_on_mob(state, time)
 	var/obj/effect/overlay/emote_popup/emote_overlay = new
@@ -29,7 +29,7 @@
  *
  * Arguments:
  * * state -- The icon_state of whatever .dmi file you're attempting to use for the sprite, in "" format. Ex. "combat", not combat.dmi.
- * * time -- The amount of time the sprite remains before remove_emote_popup_on_(???) is called. Is used in the addtimer.
+ * * time -- The amount of time the sprite remains before remove_emote_popup_on_obj is called. Is used in the addtimer.
  */
 
 /obj/proc/flick_emote_popup_on_obj(state, time)
