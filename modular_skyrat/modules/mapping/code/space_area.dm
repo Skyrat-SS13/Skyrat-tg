@@ -267,6 +267,10 @@
 	name = "P-T Warehouse"
 	icon_state = "cargo"
 
+/area/ruin/space/has_grav/port_tarkon/toolstorage
+	name = "P-T Tool Storage"
+	icon_state = "tool_storage"
+
 /area/ruin/space/has_grav/port_tarkon/observ
 	name = "P-T Observatory"
 	icon_state = "crew_quarters"
