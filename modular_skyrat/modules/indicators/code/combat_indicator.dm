@@ -121,7 +121,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	set_combat_indicator(!combat_indicator) // Set CI status to whatever is the opposite of the current status.
 
 /**
- * Called whenever a mob enters a vehicle/sealed, after everything elss.
+ * Called whenever a mob enters a vehicle/sealed, after everything else.
  *
  * Sets the vehicle's CI status to that of the mob if the mob is a driver and there are no other drivers, or if the mob is a passenger and there are no drivers.
  *
