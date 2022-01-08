@@ -22,14 +22,14 @@
 	uniform = /obj/item/clothing/under/utility/sci/syndicate
 	ears = /obj/item/radio/headset/interdyne
 
-/datum/outfit/lavaland_syndicate/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	H.faction |= ROLE_SYNDICATE
+/datum/outfit/lavaland_syndicate/post_equip(mob/living/carbon/human/syndicate, visualsOnly = FALSE)
+	syndicate.faction |= ROLE_SYNDICATE
 
-	var/obj/item/card/id/C = H.wear_id
-	if(istype(C))
-		C.registered_name = H.real_name
-		C.update_label()
-		C.update_icon()
+	var/obj/item/card/id/id_card = syndicate.wear_id
+	if(istype(id_card))
+		id_card.registered_name = syndicate.real_name
+		id_card.update_label()
+		id_card.update_icon()
 
 	return ..()
 
