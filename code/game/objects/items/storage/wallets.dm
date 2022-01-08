@@ -40,7 +40,7 @@
 		/obj/item/reagent_containers/pill,
 		/obj/item/screwdriver,
 		// SKYRAT EDIT BEGIN
-		/obj/item/condom_pack,
+		//obj/item/condom_pack,
 		// SKYRAT EDIT END
 		/obj/item/stamp),
 		list(/obj/item/screwdriver/power))
