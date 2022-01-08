@@ -136,7 +136,8 @@
 		"Anomalist",
 		"Lab Technician",
 		"Theoretical Physicist",
-		"Ordnance Technician"
+		"Ordnance Technician",
+		"Xenoarchaeologist",
 	)
 
 /datum/job/security_medic
