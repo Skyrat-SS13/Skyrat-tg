@@ -50,9 +50,9 @@
 	name = "Helmets Crate"
 	desc = "Contains three surplus brain buckets. Requires Security access to open."
 	cost = CARGO_CRATE_VALUE * 2
-	contains = list(/obj/item/clothing/head/helmet/,
-					/obj/item/clothing/head/helmet/,
-					/obj/item/clothing/head/helmet/)
+	contains = list(/obj/item/clothing/head/helmet,
+					/obj/item/clothing/head/helmet,
+					/obj/item/clothing/head/helmet)
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Science /////////////////////////////////////////
