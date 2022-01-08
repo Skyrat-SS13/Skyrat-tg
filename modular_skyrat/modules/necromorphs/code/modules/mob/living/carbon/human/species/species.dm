@@ -16,8 +16,6 @@
 //--------------------------------
 /datum/species/proc/get_species_audio(var/audio_type)
 	var/list/L = species_audio[audio_type]
-	if (L)
-	//	return pickweight(L)
 	return null
 
 /datum/species/proc/play_species_audio(var/atom/source, audio_type, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
@@ -31,14 +29,14 @@
 /mob/proc/play_species_audio()
 	return
 
-/mob/living/carbon/human/play_species_audio(var/atom/source, audio_type, var/volume = VOLUME_MID, var/vary = TRUE, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
+// /mob/living/carbon/human/play_species_audio(var/atom/source, audio_type, var/volume = VOLUME_MID, var/vary = TRUE, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
 
-	if (species.species_audio_volume[audio_type])
-		volume = species.species_audio_volume[audio_type]
-	return species.play_species_audio(arglist(args.Copy()))
+// 	if (species.species_audio_volume[audio_type])
+// 		volume = species.species_audio_volume[audio_type]
+// 	return species.play_species_audio(arglist(args.Copy()))
 
-/mob/proc/get_species_audio()
-	return
+// /mob/proc/get_species_audio()
+// 	return
 
-/mob/living/carbon/human/get_species_audio(var/audio_type)
-	return species.get_species_audio(arglist(args.Copy()))
+// /mob/living/carbon/human/get_species_audio(var/audio_type)
+// 	return species.get_species_audio(arglist(args.Copy()))

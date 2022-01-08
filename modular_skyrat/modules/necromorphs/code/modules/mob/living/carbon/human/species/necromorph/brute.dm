@@ -9,6 +9,7 @@
 	id = SPECIES_NECROMORPH_BRUTE
 //	icon = 'modular_skyrat/modules/necromorphs/icons/mob/necromorph/brute.dmi'
 //	icon_state = 'brute-d'
+	useIconState = TRUE
 	can_have_genitals = FALSE
 	say_mod = "hisses"
 //	limbs_id = "slasher"

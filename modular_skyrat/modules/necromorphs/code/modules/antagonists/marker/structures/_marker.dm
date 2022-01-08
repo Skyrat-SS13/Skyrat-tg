@@ -1,9 +1,9 @@
 //I will need to recode parts of this but I am way too tired atm //I don't know who left this comment but they never did come back
 /obj/structure/marker
-	name = "growth"
+	name = "Fleshy growth"
 	icon = 'icons/mob/blob.dmi'//	icon_state = 'marker_normal_dormant'
 	light_range = 2
-	desc = "A thick wall of writhing tendrils."
+	desc = "A thick wall flesh writhing tendrils and veins running through it."
 	density = TRUE
 	opacity = FALSE
 	anchored = TRUE
@@ -279,6 +279,58 @@
 	else
 		brute_resist = MARKER_BRUTE_RESIST * 0.5
 	return ..()
+
+/*
+ Growth: Want to add the ability to climb walls, similar to that of our biohazard blob code
+*/
+
+
+// /obj/structure/marker/normal/proc/CalcDir()
+// 	var/direction = 16
+// 	var/turf/location = loc
+// 	for(var/wallDir in GLOB.cardinals)
+// 		var/turf/newTurf = get_step(location,wallDir)
+// 		if(newTurf && newTurf.density)
+// 			direction |= wallDir
+
+// 	for(var/obj/structure/biohazard_blob/resin/tomato in location)
+// 		if(tomato == src)
+// 			continue
+// 		if(tomato.floor) //special
+// 			direction &= ~16
+// 		else
+// 			direction &= ~tomato.dir
+
+// 	var/list/dirList = list()
+
+// 	for(var/i=1,i<=16,i <<= 1)
+// 		if(direction & i)
+// 			dirList += i
+
+// 	if(dirList.len)
+// 		var/newDir = pick(dirList)
+// 		if(newDir == 16)
+// 			setDir(pick(GLOB.cardinals))
+// 		else
+// 			floor = FALSE
+// 			setDir(newDir)
+// 			switch(dir) //offset to make it be on the wall rather than on the floor
+// 				if(NORTH)
+// 					pixel_y = 32
+// 				if(SOUTH)
+// 					pixel_y = -32
+// 				if(EAST)
+// 					pixel_x = 32
+// 				if(WEST)
+// 					pixel_x = -32
+// 			icon_state = "blob_wall"
+// 			plane = GAME_PLANE
+// 			layer = ABOVE_NORMAL_TURF_LAYER
+
+// 	if(prob(7))
+// 		set_light(2, 1, LIGHT_COLOR_LAVA)
+// 		update_overlays()
+
 
 /obj/structure/marker/special // Generic type for nodes/factories/cores/resource
 	// Core and node vars: claiming, pulsing and expanding

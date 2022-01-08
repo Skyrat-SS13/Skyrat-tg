@@ -1,4 +1,4 @@
-GLOBAL_LIST_INIT(valid_markers, subtypesof(/datum/marker))
+GLOBAL_LIST_INIT(valid_markers, subtypesof(/datum/marker) - list(/datum/marker/reagent, /datum/marker/multiplex))
 
 /datum/marker
 	var/name
@@ -32,30 +32,30 @@ GLOBAL_LIST_INIT(valid_markers, subtypesof(/datum/marker))
 
 	// Various vars that strains can buff the marker with
 	/// HP regen bonus added by strain
-	var/core_regen_bonus = 2
+	var/core_regen_bonus = 0
 	/// resource point bonus added by strain
-	var/point_rate_bonus = 2
+	var/point_rate_bonus = 0
 
 	/// Adds to claim, pulse, and expand range
-	var/core_range_bonus = 5
+	var/core_range_bonus = 0
 	/// The core can sustain this many extra spores with this strain
-	var/core_spore_bonus = 5
+	var/core_spore_bonus = 0
 	/// Extra range up to which the core reinforces markers
-	var/core_strong_reinforcement_range_bonus = 4
+	var/core_strong_reinforcement_range_bonus = 0
 	/// Extra range up to which the core reinforces markers into reflectors
-	var/core_reflector_reinforcement_range_bonus = 4
+	var/core_reflector_reinforcement_range_bonus = 0
 
 	/// Adds to claim, pulse, and expand range
-	var/node_range_bonus = 5
+	var/node_range_bonus = 0
 	/// Nodes can sustain this any extra spores with this strain
-	var/node_spore_bonus = 5
+	var/node_spore_bonus = 0
 	/// Extra range up to which the node reinforces markers
-	var/node_strong_reinforcement_range_bonus = 5
+	var/node_strong_reinforcement_range_bonus = 0
 	/// Extra range up to which the node reinforces markers into reflectors
-	var/node_reflector_reinforcement_range_bonus = 5
+	var/node_reflector_reinforcement_range_bonus = 0
 
 	/// Extra spores produced by factories with this strain
-	var/factory_spore_bonus = 5
+	var/factory_spore_bonus = 0
 
 	/// Multiplies the max and current health of every marker with this value upon selecting this strain.
 	var/max_structure_health_multiplier = 1
@@ -85,6 +85,17 @@ GLOBAL_LIST_INIT(valid_markers, subtypesof(/datum/marker))
 		overmind.marker_core.strong_reinforce_range += core_strong_reinforcement_range_bonus
 		overmind.marker_core.reflector_reinforce_range += core_reflector_reinforcement_range_bonus
 
+	for(var/obj/structure/marker/special/node/N as anything in overmind.node_markers)
+		N.max_spores += node_spore_bonus
+		N.claim_range += node_range_bonus
+		N.pulse_range += node_range_bonus
+		N.expand_range += node_range_bonus
+		N.strong_reinforce_range += node_strong_reinforcement_range_bonus
+		N.reflector_reinforce_range += node_reflector_reinforcement_range_bonus
+
+	for(var/obj/structure/marker/special/factory/F as anything in overmind.factory_markers)
+		F.max_spores += factory_spore_bonus
+
 	for(var/obj/structure/marker/B as anything in overmind.all_markers)
 		B.modify_max_integrity(B.max_integrity * max_structure_health_multiplier)
 		B.update_appearance()
@@ -104,6 +115,17 @@ GLOBAL_LIST_INIT(valid_markers, subtypesof(/datum/marker))
 		overmind.marker_core.expand_range -= core_range_bonus
 		overmind.marker_core.strong_reinforce_range -= core_strong_reinforcement_range_bonus
 		overmind.marker_core.reflector_reinforce_range -= core_reflector_reinforcement_range_bonus
+
+	for(var/obj/structure/marker/special/node/N as anything in overmind.node_markers)
+		N.max_spores -= node_spore_bonus
+		N.claim_range -= node_range_bonus
+		N.pulse_range -= node_range_bonus
+		N.expand_range -= node_range_bonus
+		N.strong_reinforce_range -= node_strong_reinforcement_range_bonus
+		N.reflector_reinforce_range -= node_reflector_reinforcement_range_bonus
+
+	for(var/obj/structure/marker/special/factory/F as anything in overmind.factory_markers)
+		F.max_spores -= factory_spore_bonus
 
 	for(var/obj/structure/marker/B as anything in overmind.all_markers)
 		B.modify_max_integrity(B.max_integrity / max_structure_health_multiplier)
@@ -138,8 +160,10 @@ GLOBAL_LIST_INIT(valid_markers, subtypesof(/datum/marker))
 
 /datum/marker/proc/death_reaction(obj/structure/marker/B, damage_flag, coefficient = 1) //when a marker dies, do this
 	return
+
 /datum/marker/proc/expand_reaction(obj/structure/marker/B, obj/structure/marker/newB, turf/T, mob/camera/marker/O, coefficient = 1) //when the marker expands, do this
 	return
+
 /datum/marker/proc/tesla_reaction(obj/structure/marker/B, power, coefficient = 1) //when the marker is hit by a tesla bolt, do this
 	return TRUE //return 0 to ignore damage
 
@@ -151,4 +175,3 @@ GLOBAL_LIST_INIT(valid_markers, subtypesof(/datum/marker))
 
 /datum/marker/proc/examine(mob/user)
 	return list("<b>Progress to Critical Mass:</b> [span_notice("[overmind.markers_legit.len]/[overmind.markerwincount].")]")
-

@@ -104,10 +104,10 @@
 
 
 	//Slashers hold their arms up in an overhead pose, so they override height too
-	mutant_bodyparts = list(
-	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/blade, "height" = new /vector2(1.6,2)),
-	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/blade/right, "height" = new /vector2(1.6,2))
-	)
+	// mutant_bodyparts = list(
+	// BP_L_ARM =  list("path" = /obj/item/organ/external/arm/blade, "height" = new /vector2(1.6,2)),
+	// BP_R_ARM =  list("path" = /obj/item/organ/external/arm/blade/right, "height" = new /vector2(1.6,2))
+	// )
 
 
 	species_audio = list(

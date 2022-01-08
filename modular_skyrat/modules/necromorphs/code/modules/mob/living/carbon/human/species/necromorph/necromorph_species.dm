@@ -8,7 +8,8 @@
 	can_have_genitals = FALSE
 	default_color = "#FFF"
 	var/info_text = "You are a <span class='danger'>Vampire</span>. You will slowly but constantly lose blood if outside of a coffin. If inside a coffin, you will slowly heal. You may gain more blood by grabbing a live victim and using your drain ability."
-	//var/biomass = 100
+	var/useIconState = FALSE
+	var/biomass = 100
 	limbs_id = "slasher"
 	limbs_icon = 'modular_skyrat/modules/necromorphs/icons/mob/necromorph/slasher.dmi'
 	eyes_icon = 'modular_skyrat/modules/necromorphs/icons/mob/necromorph/slasher_enhanced_eyes.dmi'

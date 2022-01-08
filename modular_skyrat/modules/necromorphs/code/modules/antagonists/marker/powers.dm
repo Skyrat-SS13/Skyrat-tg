@@ -75,7 +75,7 @@
 		if(chosen_node)
 			forceMove(chosen_node.loc)
 
-/mob/camera/marker/proc/createSpecial(price, minSeparation, needsNode, turf/T)
+/mob/camera/marker/proc/createSpecial(price, minSeparation, marker, needsNode, turf/T)
 	if(!T)
 		T = get_turf(src)
 	var/obj/structure/marker/B = (locate(/obj/structure/marker) in T)
@@ -95,12 +95,12 @@
 			return //handholdotron 2000
 	if(minSeparation)
 		for(var/obj/structure/marker/L in orange(minSeparation, T))
-			if(L.type == marker_core)
+			if(L.type == marker)
 				to_chat(src, span_warning("There is a similar marker nearby, move more than [minSeparation] tiles away from it!"))
 				return
 	if(!can_buy(price))
 		return
-	var/obj/structure/marker/N = B.change_to(src)
+	var/obj/structure/marker/N = B.change_to(marker, src)
 	return N
 
 

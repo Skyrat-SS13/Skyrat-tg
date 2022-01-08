@@ -23,7 +23,7 @@
 	priority_announce("Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_OUTBREAK5)
 
 /datum/round_event/ghost_role/marker/spawn_role()
-	if(!GLOB.markerstart.len)
+	if(!GLOB.blobstart.len)
 		return MAP_ERROR
 	var/list/candidates = get_candidates(ROLE_NECROMORPH, ROLE_NECROMORPH)
 	if(!candidates.len)

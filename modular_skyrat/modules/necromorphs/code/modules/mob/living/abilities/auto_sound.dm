@@ -54,7 +54,7 @@
 /datum/extension/auto_sound/proc/start()
 	started_at	=	world.time
 
-	var/delay = (interval * (1+ (rand_between(-variation, variation))))
+	var/delay = (interval * (1+ (rand(-variation, variation))))
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/auto_sound/proc/try_play_sound), delay, TIMER_STOPPABLE)
 
 
@@ -82,7 +82,7 @@
 	//The safety check may have stopped us
 	if (!stopped_at)
 
-		var/delay = (interval * (1+ (rand_between(-variation, variation))))
+		var/delay = (interval * (1+ (rand(-variation, variation))))
 		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/auto_sound/proc/try_play_sound), delay, TIMER_STOPPABLE)
 
 /datum/extension/auto_sound/proc/stop()

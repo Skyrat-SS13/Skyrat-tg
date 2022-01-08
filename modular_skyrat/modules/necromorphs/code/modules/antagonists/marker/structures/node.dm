@@ -28,7 +28,7 @@
 
 /obj/structure/marker/special/node/update_overlays()
 	. = ..()
-	var/mutable_appearance/marker_overlay = mutable_appearance('icons/mob/blob.dmi', "blob")
+	var/mutable_appearance/marker_overlay = mutable_appearance('icons/mob/blob.dmi', "blob_node_overlay")
 	. += marker_overlay
 	. += mutable_appearance('icons/mob/blob.dmi', "blob_node_overlay")
 

@@ -11,7 +11,6 @@
 /mob/living/carbon/human/species/necromorph
 	race = /datum/species/necromorph
 	name = "Necromorph"
-
 /mob/living/carbon/human/species/necromorph/New(var/new_loc, var/new_species = SPECIES_NECROMORPH)
 	..(new_loc, new_species)
 
@@ -22,12 +21,45 @@
 	create_bodyparts() //initialize bodyparts
 
 	create_internal_organs()
-
+	use_single_sprite()
 	ADD_TRAIT(src, TRAIT_CAN_STRIP, INNATE_TRAIT)
 	ADD_TRAIT(src, TRAIT_NEVER_WOUNDED, INNATE_TRAIT)
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
 	. = ..()
+
+/mob/living/carbon/human/species/necromorph/regenerate_icons()
+	if(!..())
+	// update_icons() //Handled in update_transform(), leaving this here as a reminder
+		update_transform()
+
+// /mob/living/carbon/human/species/necromorph/update_icons()
+// 	cut_overlays()
+// 	for(var/I in overlays_standing)
+// 		add_overlay(I)
+
+// /mob/living/carbon/human/species/necromorph/update_fire(fire_icon = "Generic_mob_burning")
+// 	remove_overlay(FIRE_LAYER)
+// 	if(on_fire || HAS_TRAIT(src, TRAIT_PERMANENTLY_ONFIRE))
+// 		var/mutable_appearance/new_fire_overlay = mutable_appearance('icons/mob/OnFire.dmi', fire_icon, -FIRE_LAYER)
+// 		new_fire_overlay.appearance_flags = RESET_COLOR
+// 		overlays_standing[FIRE_LAYER] = new_fire_overlay
+
+// 	apply_overlay(FIRE_LAYER)
+
+/mob/living/carbon/human/species/necromorph/proc/use_single_sprite()
+	var/mutable_appearance/simple_necromorph = null
+	if(dna?.species.id == SPECIES_NECROMORPH)
+		if(dna?.species.id == SPECIES_NECROMORPH_BRUTE)
+			var/necro_icon = "modular_skyrat/modules/necromorphs/icons/mob/necromorph/brute.dmi"
+			var/necro_icon_state = "brute-d"
+			remove_overlay(BODYPARTS_LAYER)
+			simple_necromorph = mutable_appearance(necro_icon, necro_icon_state, -BODYPARTS_LAYER)
+		overlays_standing[BODYPARTS_LAYER] = simple_necromorph
+		apply_overlay(BODYPARTS_LAYER)
+
+
+
 
 
 /*
@@ -56,10 +88,11 @@
 	race = /datum/species/necromorph/brute
 	name = "Brute" //SPECIES_NECROMORPH_BRUTE
 	icon = 'modular_skyrat/modules/necromorphs/icons/mob/necromorph/brute.dmi'
+	icon_state = "brute-d"
 	//status_flags = CANUNCONSCIOUS|CANPUSH|NOPAIN
 	maxHealth = 400
 	health = 450
-	icon_state = "brute-d"
+
 	//icon_living = "brute-d"
 	//icon_lying = "brute-d-dead"//Temporary icon so its not invisible lying down
 	//icon_dead = "brute-d-dead"
