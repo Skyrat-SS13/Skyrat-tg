@@ -351,6 +351,7 @@
 
 /datum/id_trim/away/tarkon/med
 	assignment = "P-T Trauma Medic"
+	access = list(ACCESS_AWAY_GENERAL, 5)
 
 /datum/id_trim/away/tarkon/eng
 	assignment = "P-T Maintenance Crew"
