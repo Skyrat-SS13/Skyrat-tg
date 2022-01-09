@@ -94,7 +94,7 @@
 	used_capacity = 380
 	storedinfo = list(
 		1 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording started.</span>\"</span></span>",
-		2 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>sighs, \"<span class=' '>Officer's Log, Year Twenty-six twenty-... oh to hell with it...</span>\"</span></span>",
+		2 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>sighs, \"<span class=' '>Officer's Log, Year Twenty-five-... oh to hell with it...</span>\"</span></span>",
 		3 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>says, \"<span class=' '>I.. Did the best that i could for them... The crew... The ones that were awake, that is...</span>\"</span></span>",
 		4 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>sighs, \"<span class=' '>The ones that are still asleep... They had a chance... Those in the understorage are still safe... The RTG's were disconnected topside so they would survive...</span>\"</span></span>",
 		5 = "<span class='game say'><span class='name'>Officer ???</span> <span class='message'>sniffles, \"<span class=' '>... Overseer Tavus... I... did what I could for them... Asked the crew to board the cargo shuttle... Leave the main shuttle if the sleepers activated...</span>\"</span></span>",
@@ -123,7 +123,7 @@
 		2 = "<span class='game say'><span class='name'>Foreman ???</span> <span class='message'>sighs, \"<span class=' '>Right... Scientist Arkus?</span>\"</span></span>",
 		3 = "<span class='game say'><span class='name'>Scientist Arkus</span> <span class='message'>says, \"<span class=' '>Ah, Foreman Verok... Come, We already got a spot chosen, a rather safe one to keep it..</span>\"</span></span>",
 		4 = "<span class='game say'><span class='name'>Foreman Verok</span> <span class='message'>grumbles, \"<span class=' '>... Wait, Right next to that egg... Thing?</span>\"</span></span>",
-		5 = "<span class='game say'><span class='name'>Scientist Arkus</span> <span class='message'>sniffles, \"<span class=' '>... Is there a problem? Its been dormant ever since we've been here, If it was going to come alive it would have done so while putting the tiling down. Besides... I got lunch to attend...</span>\"</span></span>",
+		5 = "<span class='game say'><span class='name'>Scientist Arkus</span> <span class='message'>pauses then says sharply, \"<span class=' '>... Is there a problem? Its been dormant ever since we've been here, If it was going to come alive it would have done so while putting the tiling down. Besides... I got lunch to attend...</span>\"</span></span>",
 		6 = "<span class='game say'><span class='name'>Foreman Verok</span> <span class='message'>groans, \"<span class=' '>Right... Right I'll.. Get to work on it then... Just keep an ear out...</span>\"</span></span>",
 		7 = "<span class='game say'><span class='name'>Foreman Verok</span> <span class='message'>grumbles, \"<span class=' '>Right... Calm down, Verok... Place the floor safe, scoot the tile back in place... And afterwards grab some money from the one by the financing console under the table... I dont think Tavus will notice an extra few credits missing...</span>\"</span></span>",
 		8 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording stopped.</span>\"</span></span>"
@@ -134,7 +134,33 @@
 		3 = 130,
 		4 = 180,
 		5 = 230,
-		6 = 250,
+		6 = 280,
+		7 = 330,
+		8 = 380
+	)
+
+/obj/item/tape/ruins/tarkon/celebration	//A tape recorded by the ensign during the mid-construction celebration.
+	icon_state = "tape_greyscale"
+	desc = "An old tape with a label, \"Celebrations were a mistake\", writen shakily in red pen.. Should definitely be flipped if not being read when played."
+
+	used_capacity = 380
+	storedinfo = list(
+		1 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording started.</span>\"</span></span>",
+		2 = "<span class='game say'><span class=' '>Drinks can be heard clinking together, busy chatter of a party drowning out most noises</span></span>",
+		3 = "<span class='game say'><span class='name'>Ensign ???</span> <span class='message'>says, \"<span class=' '>Hey, HEY! Everyone! Shut up for a toast!</span>\"</span></span>",
+		4 = "<span class='game say'><span class='message'>The boistrous cheering can be heard slowly calming down to an eerie silence.</span></span>",
+		5 = "<span class='game say'><span class='name'>Ensign ???</span> <span class='message'>clears their throat then starts to announce, \"<span class=' '>As you've all known.. Its been years since this project started... Bright minds and talented engineers hand in hand working on this project...</span>\"</span></span>",
+		6 = "<span class='game say'><span class='name'>Ensign ???</span> <span class='message'>says pointedly, \"<span class=' '>And after five long years, Tarkon Industries has had its first success. The driver finding a suitable asteroid, And making its mark known by carving out the current docking bay for our transport.</span>\"</span></span>",
+		7 = "<span class='game say'><span class='name'>Ensign ???</span> <span class='message'>announces, \"<span class=' '>Yesterday, We've worked, Toiled in the rock and sand of what is our new home... But today! We celebrate, For Tarkons first success, And for a bright future in the next century! The Twenty-Six Hundreds are looking bright for us!</span>\"</span></span>",
+		8 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording stopped.</span>\"</span></span>"
+	)
+	timestamp = list(
+		1 = 0,
+		2 = 30,
+		3 = 130,
+		4 = 180,
+		5 = 230,
+		6 = 280,
 		7 = 330,
 		8 = 380
 	)
@@ -152,6 +178,10 @@
 /obj/item/paper/fluff/ruins/tarkon/coupplans
 	name = "paper - 'Palm of our hands...'"
 	info = "It seems the plan went acordingly, Arkus. Specialist Karleigh took the prototype plates as a reassurance we'll get her a suit, and just like a fish, the bug was excellent bait. <BR> <BR> They were talking about a safe somewhere in security, now we just need to get those... \"Special\" shells to her and watch her shotgun turn into a pipebomb. Rest of security will be in a panic, all we'll need to do is convince the foreman to play along, and i'm sure this welder will do nicely."
+
+/obj/item/paper/fluff/ruins/tarkon/designdoc
+	name = "paper - 'Port Tarkon Design Instructions'"
+	info = "<B>Hello, great engineers and builders!</B><BR><BR>Just so we're all clear, Everyone within Tarkon's Premises that is labeled as an Engineer is to read and understand these design notes. <BR><BR> - A red delivery marking is to denote the location of a new door for a room. <BR> - A blue delivery marking is to denote the location of a Firelock (We dont want an incident with the turbine to go port-wide...) <BR> - A white delivery marking is to denote a new sectioning wall/window. <BR> A yellow delivery marking is to denote a temporary firelock line to allow expansion. <BR><BR> I hope that our most talented hands will not fail us."
 
 /obj/item/paper/crumpled/fluff/tarkon
 	name = "Crumpled note"
