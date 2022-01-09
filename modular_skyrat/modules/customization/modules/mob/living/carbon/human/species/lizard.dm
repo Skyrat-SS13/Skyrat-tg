@@ -1,7 +1,6 @@
 /datum/species/lizard
 	mutant_bodyparts = list()
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR,FACEHAIR)
-	inherent_traits = list(TRAIT_CAN_USE_FLIGHT_POTION)
 	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "spines" = ACC_RANDOM, "frills" = ACC_RANDOM, "horns" = ACC_RANDOM, "body_markings" = ACC_RANDOM, "legs" = "Digitigrade Legs", "taur" = "None", "wings" = "None")
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/lizard_parts_greyscale.dmi'
 	learnable_languages = list(/datum/language/common, /datum/language/draconic)
