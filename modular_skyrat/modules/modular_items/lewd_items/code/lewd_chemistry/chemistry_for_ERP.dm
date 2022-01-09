@@ -364,21 +364,21 @@
 		enlargement_amount = 0
 
 		/// Words for the breasts when huge.
-		var/static/list/words_for_bigger = list("huge", "massive", "squishy", "gigantic", "rather large", "jiggly", "hefty")
+		var/static/list/words_for_bigger = list("huge", "massive", "squishy", "gigantic", "rather large", "jiggly", "hefty",)
 		/// Synonyms for breasts.
-		var/static/list/boob_text_list = list("boobs", "tits", "breasts")
+		var/static/list/boob_text_list = list("boobs", "tits", "breasts",)
 		/// Synonyms for the chest.
-		var/static/list/covered_boobs_list = list("bust", "chest", "bosom")
+		var/static/list/covered_boobs_list = list("bust", "chest", "bosom",)
 		/// Synonyms for bigger breasts.
-		var/static/list/bigger_boob_text_list = list("jigglies", "melons", "jugs", "boobies", "milkers", "boobs", "tits", "breasts")
+		var/static/list/bigger_boob_text_list = list("jigglies", "melons", "jugs", "boobies", "milkers", "boobs", "tits", "breasts",)
 		/// Wording chosen to expand the breasts, shown only to the mob.
-		var/static/list/action_text_list = list("expand outward to ", "grow out to ", "begin to enlarge, growing to ", "suddenly expand to ", "swell out to ")
+		var/static/list/action_text_list = list("expand outward to ", "grow out to ", "begin to enlarge, growing to ", "suddenly expand to ", "swell out to ",)
 		/// Wording chosen to be seen by other mobs, regardless of whether mob is clothed/unclothed.
-		var/static/list/public_bigger_action_text_list = list("expand and jiggle outward.", "grow a bit larger, bouncing about.", "seem a bit bigger than they were before.", "bounce and jiggle as they suddenly expand.")
+		var/static/list/public_bigger_action_text_list = list("expand and jiggle outward.", "grow a bit larger, bouncing about.", "seem a bit bigger than they were before.", "bounce and jiggle as they suddenly expand.",)
 		/// Wording chosen to be seen by other mobs, while mob is unclothed.
-		var/static/list/public_action_text_list = list("expand outward.", "seem to grow a bit larger.", "appear a bit bigger than they were before.", "bounce and jiggle as they suddenly expand.")
+		var/static/list/public_action_text_list = list("expand outward.", "seem to grow a bit larger.", "appear a bit bigger than they were before.", "bounce and jiggle as they suddenly expand.",)
 		/// Wording chosen to be seen by other mobs, while mob is clothed.
-		var/static/list/notice_boobs = list("seems to be a bit tighter.", "appears to be a bit bigger.", "seems to swell outward a bit.")
+		var/static/list/notice_boobs = list("seems to be a bit tighter.", "appears to be a bit bigger.", "seems to swell outward a bit.",)
 		/// Checks for cup size.
 		var/translation = breasts_size_to_cup(mob_breasts.genital_size)
 
@@ -504,15 +504,15 @@
 		exposed_mob.update_body()
 		enlargement_amount = 0
 		/// Words for the cock when huge.
-		var/static/list/words_for_bigger_cock = list("huge", "massive", "gigantic", "rather lengthy", "colossal", "hefty")
+		var/static/list/words_for_bigger_cock = list("huge", "massive", "gigantic", "rather lengthy", "colossal", "hefty",)
 		/// Synonyms for cock.
-		var/static/list/cock_text_list = list("cock", "penis", "dick", "member")
+		var/static/list/cock_text_list = list("cock", "penis", "dick", "member", "richard", "johnston", "johnson",)
 		/// Synonyms for bigger cock.
-		var/static/list/bigger_cock_text_list = list("rod", "shaft", "cock", "penis", "dick", "member")
+		var/static/list/bigger_cock_text_list = list("rod", "shaft", "cock", "penis", "dick", "member", "richard", "johnston", "johnson",)
 		/// Wording chosen to extend the cock, shown only to the mob.
-		var/static/list/cock_action_text_list = list("extends to ", "grows out to ", "begins to enlarge, growing to ", "suddenly expands to ", "lengthens out to ")
+		var/static/list/cock_action_text_list = list("extends to ", "grows out to ", "begins to enlarge, growing to ", "suddenly expands to ", "lengthens out to ",)
 		/// Wording chosen to be seen by other mobs, while mob is unclothed.
-		var/static/list/public_cock_action_text_list = list("expands by an inch or so.", "appears to grow a bit longer.", "seems a bit bigger than it was before.", "suddenly lengthens about an inch or two.")
+		var/static/list/public_cock_action_text_list = list("expands by an inch or so.", "appears to grow a bit longer.", "seems a bit bigger than it was before.", "suddenly lengthens about an inch or two.",)
 
 		if(mob_penis.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_bottomless())
 			if(mob_penis?.genital_size >= (penis_max_length - 2))
