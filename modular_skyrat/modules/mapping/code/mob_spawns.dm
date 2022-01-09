@@ -266,6 +266,15 @@
 	l_pocket = /obj/item/card/mining_point_card
 	r_pocket = /obj/item/mining_voucher
 
+/datum/outfit/tarkon/post_equip(mob/living/carbon/human/tarkon, visualsOnly = FALSE)
+	var/obj/item/card/id/id_card = tarkon.wear_id
+	if(istype(id_card))
+		id_card.registered_name = tarkon.real_name
+		id_card.update_label()
+		id_card.update_icon()
+
+	return ..()
+
 /obj/effect/mob_spawn/ghost_role/human/tarkon/sci
 	prompt_name = "an abandoned scientist"
 	outfit = /datum/outfit/tarkon/sci
