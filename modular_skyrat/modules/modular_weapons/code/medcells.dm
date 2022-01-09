@@ -393,7 +393,8 @@
 		return FALSE
 	if(HAS_TRAIT(target, TRAIT_FLOORED) || target.resting) //Is the person already on the floor to begin with? Mostly a measure to prevent spamming.
 		var /obj/structure/bed/roller/medigun/created_bed = new /obj/structure/bed/roller/medigun(target.loc)
-		created_bed.buckle_mob(target)
+		if(!target.stat == CONSCIOUS)
+			created_bed.buckle_mob(target)
 		return TRUE
 	else
 		return FALSE
