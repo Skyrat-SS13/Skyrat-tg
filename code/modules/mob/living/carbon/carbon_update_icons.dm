@@ -138,6 +138,8 @@
 */
 //SKYRAT EDIT REMOVAL END
 
+//SKYRAT EDIT REMOVAL BEGIN - TESHARI CLOTHES (moved to modular)
+/*
 /mob/living/carbon/update_inv_back()
 	remove_overlay(BACK_LAYER)
 
@@ -150,6 +152,8 @@
 		update_hud_back(back)
 
 	apply_overlay(BACK_LAYER)
+*/
+//SKYRAT EDIT REMOVAL END
 
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
 /*
