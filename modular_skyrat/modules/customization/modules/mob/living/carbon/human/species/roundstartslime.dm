@@ -1,5 +1,6 @@
 /datum/species/jelly
 	species_traits = list(MUTCOLORS,EYECOLOR,NOBLOOD,HAIR,FACEHAIR)
+	inherent_traits = list(TRAIT_CAN_USE_FLIGHT_POTION)
 	default_mutant_bodyparts = list("tail" = "None", "snout" = "None", "ears" = "None", "taur" = "None", "wings" = "None", "legs" = "Normal Legs", "horns" = "None",  "spines" = "None", "frills" = "None")
 	mutant_bodyparts = list()
 	hair_color = "mutcolor"
