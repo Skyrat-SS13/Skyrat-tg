@@ -39,7 +39,7 @@
 		return
 
 	if(is_mentor(whom))
-		to_chat(GLOB.mentors, span_mentor(span_purple("[src] has started replying to [whom]'s mhelp.")))
+		to_chat(GLOB.mentors, span_purple(span_mentor("[src] has started replying to [whom]'s mhelp.")))
 
 	//get message text, limit it's length.and clean/escape html
 	if(!msg)
@@ -61,7 +61,6 @@
 		if (!target.is_mentor() && !is_mentor())
 			return
 
-	msg = sanitize(copytext_char(msg, 1, MAX_MESSAGE_LEN))
 	if(!msg)
 		if (is_mentor(whom))
 			to_chat(GLOB.mentors, span_mentor(span_purple("[src] has stopped their reply to [whom]'s mhelp.")))
