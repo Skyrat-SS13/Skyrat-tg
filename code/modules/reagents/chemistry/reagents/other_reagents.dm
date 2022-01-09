@@ -42,6 +42,7 @@
 
 
 /datum/reagent/blood/on_new(list/data)
+	. = ..()
 	if(istype(data))
 		SetViruses(src, data)
 
@@ -2443,14 +2444,11 @@
 	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 
-/datum/reagent/bz_metabolites/on_mob_life(mob/living/L, delta_time, times_fired)
-	if(L.mind)
-		var/datum/antagonist/changeling/changeling = L.mind.has_antag_datum(/datum/antagonist/changeling)
+/datum/reagent/bz_metabolites/on_mob_life(mob/living/carbon/target, delta_time, times_fired)
+	if(target.mind)
+		var/datum/antagonist/changeling/changeling = target.mind.has_antag_datum(/datum/antagonist/changeling)
 		if(changeling)
-			//SKYRAT EDIT CHANGE BEGIN - BZ-BUFF-VS-LING
-			//changeling.chem_charges = max(changeling.chem_charges - (2 * REM * delta_time), 0) - SKYRAT EDIT - ORIGINAL
-			changeling.chem_charges = max(changeling.chem_charges - (4 * REM * delta_time), 0)
-			//SKYRAT EDIT CHANGE END - BZ-BUFF-VS-LING
+			changeling.adjust_chemicals(-4 * REM * delta_time) //SKYRAT EDIT - BZ-BUFF-VS-LING - ORIGINAL: changeling.adjust_chemicals(-2 * REM * delta_time)
 	return ..()
 
 /datum/reagent/pax/peaceborg
@@ -2829,4 +2827,3 @@
 	. = ..()
 	kronkus_enjoyer.adjustOrganLoss(ORGAN_SLOT_HEART, 0.1)
 	kronkus_enjoyer.adjustStaminaLoss(-2, FALSE)
-

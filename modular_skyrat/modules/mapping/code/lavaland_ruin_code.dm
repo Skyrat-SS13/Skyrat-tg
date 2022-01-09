@@ -22,6 +22,17 @@
 	uniform = /obj/item/clothing/under/utility/sci/syndicate
 	ears = /obj/item/radio/headset/interdyne
 
+/datum/outfit/lavaland_syndicate/post_equip(mob/living/carbon/human/syndicate, visualsOnly = FALSE)
+	syndicate.faction |= ROLE_SYNDICATE
+
+	var/obj/item/card/id/id_card = syndicate.wear_id
+	if(istype(id_card))
+		id_card.registered_name = syndicate.real_name
+		id_card.update_label()
+		id_card.update_icon()
+
+	return ..()
+
 /datum/outfit/lavaland_syndicate/ice
 	uniform = /obj/item/clothing/under/syndicate
 	suit = /obj/item/clothing/suit/hooded/wintercoat/syndicate

@@ -72,8 +72,6 @@
 				opt = input("How Many", ROLE_CULTIST, 2) as num|null
 			if(ROLE_HERETIC)
 				opt = input("How Many", ROLE_HERETIC, 2) as num|null
-			if(ROLE_MONKEY)
-				opt = input("How Many", ROLE_MONKEY, 1) as num|null
 			if(ROLE_REV)
 				opt = input("How Many", ROLE_REV, 1) as num|null
 			if(ROLE_OPERATIVE)
@@ -796,6 +794,8 @@
 
 	else if(href_list["adminplayerobservecoodjump"])
 		if(!isobserver(usr) && !check_rights(R_ADMIN))
+			return
+		if(isnewplayer(usr))
 			return
 
 		var/x = text2num(href_list["X"])
