@@ -149,6 +149,10 @@
 	name = "paper - 'What in gods name did you do'"
 	info = "<b>WHAT IN THE FUCK DID YOU GUYS DO?</b><BR><BR>I go away on a material run with the miners, and the moment i re-entered the port, There's a loud bang and an air warning. <BR><BR><b>YOU WILL ALL GET YOUR ASSES TO THE STAFF HALL BEFORE ANY OF THIS GETS CLEANED UP.</b>"
 
+/obj/item/paper/fluff/ruins/tarkon/coupplans
+	name = "paper - 'Palm of our hands...'"
+	info = "It seems the plan went acordingly, Arkus. Specialist Karleigh took the prototype plates as a reassurance we'll get her a suit, and just like a fish, the bug was excellent bait. <BR> <BR> They were talking about a safe somewhere in security, now we just need to get those... \"Special\" shells to her and watch her shotgun turn into a pipebomb. Rest of security will be in a panic, all we'll need to do is convince the foreman to play along, and i'm sure this welder will do nicely."
+
 /obj/item/paper/crumpled/fluff/tarkon
 	name = "Crumpled note"
 	info = "Look, i dont know where the fuck that suit was found, but i have a hard time believing it was made by him entirely. I already know his less than ethical obtainment methods, But that piece of tech? Its a blasted shame he's just using it for hauling crates..."

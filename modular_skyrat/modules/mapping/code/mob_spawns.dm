@@ -348,6 +348,7 @@
 
 /datum/id_trim/away/tarkon/sec
 	assignment = "P-T Port Guard"
+	access = list(ACCESS_AWAY_GENERAL, 210)
 
 /datum/id_trim/away/tarkon/med
 	assignment = "P-T Trauma Medic"

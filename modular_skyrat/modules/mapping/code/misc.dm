@@ -25,3 +25,11 @@
 /obj/item/areaeditor/blueprints/tarkon
 	desc = "Blueprints of the Tarkon drill and several base designs for it. Red, stamped text reads \"Confidential\" on the backside of it."
 	name = "Tarkon Design Prints"
+
+/obj/item/mod/module/armor_booster/retractplates
+	name = "MOD retractive plates module"
+	desc = "A complex set of actuators, micro-seals and a simple guide on how to install it, This... \"Modification\" allows the plating around the joints to retract, giving minor protection and a bit better mobility."
+	removable = TRUE
+	complexity = 1
+	added_slowdown = -0.25
+	armor_values = list(MELEE = 20, BULLET = 25, LASER = 15, ENERGY = 20)
