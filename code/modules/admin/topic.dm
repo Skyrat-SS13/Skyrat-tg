@@ -72,8 +72,6 @@
 				opt = input("How Many", ROLE_CULTIST, 2) as num|null
 			if(ROLE_HERETIC)
 				opt = input("How Many", ROLE_HERETIC, 2) as num|null
-			if(ROLE_MONKEY)
-				opt = input("How Many", ROLE_MONKEY, 1) as num|null
 			if(ROLE_REV)
 				opt = input("How Many", ROLE_REV, 1) as num|null
 			if(ROLE_OPERATIVE)
