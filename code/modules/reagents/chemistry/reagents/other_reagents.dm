@@ -2447,14 +2447,7 @@
 	if(target.mind)
 		var/datum/antagonist/changeling/changeling = target.mind.has_antag_datum(/datum/antagonist/changeling)
 		if(changeling)
-<<<<<<< HEAD
-			//SKYRAT EDIT CHANGE BEGIN - BZ-BUFF-VS-LING
-			//changeling.chem_charges = max(changeling.chem_charges - (2 * REM * delta_time), 0) - SKYRAT EDIT - ORIGINAL
-			changeling.chem_charges = max(changeling.chem_charges - (4 * REM * delta_time), 0)
-			//SKYRAT EDIT CHANGE END - BZ-BUFF-VS-LING
-=======
-			changeling.adjust_chemicals(-2 * REM * delta_time)
->>>>>>> 556153c0a53 (Changeling refactor / doc / code improvements (kicks changeling out of `Life()`) (#63669))
+			changeling.adjust_chemicals(-4 * REM * delta_time) //SKYRAT EDIT - BZ-BUFF-VS-LING - ORIGINAL: changeling.adjust_chemicals(-2 * REM * delta_time)
 	return ..()
 
 /datum/reagent/pax/peaceborg

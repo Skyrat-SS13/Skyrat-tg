@@ -26,53 +26,34 @@
 	// separate the changeling (antag)
 	// and the changeling (mechanics).
 
-<<<<<<< HEAD
-	var/list/stored_profiles = list() //list of datum/changelingprofile
-	var/datum/changelingprofile/first_prof = null
-	var/dna_max = 8 //How many extra DNA strands the changeling can store for transformation. // SKYRAT EDIT CHANGE : ORIGINAL: 6
-	var/absorbedcount = 0
-	var/trueabsorbs = 0//dna gained using absorb, not dna sting
-	var/chem_charges = 75 //SKYRAT EDIT CHANGE - ORIGINAL: 20
-	var/chem_storage = 100 //SKYRAT EDIT CHANGE - ORIGINAL: 75
-	var/chem_recharge_rate = 1.5 //SKYRAT EDIT CHANGE - ORIGINAL: 1
-	var/chem_recharge_slowdown = 0
-	var/sting_range = 2
-	var/geneticdamage = 0
-	var/islinking = FALSE
-	var/geneticpoints = 15 //SKYRAT EDIT CHANGE - ORIGINAL: 10
-	var/total_geneticspoints = 15 //SKYRAT EDIT CHANGE - ORIGINAL: 10
-	var/total_chem_storage = 100 //SKYRAT EDIT CHANGE - ORIGINAL: 75
-	var/purchasedpowers = list()
-=======
 	/// list of datum/changeling_profile
 	var/list/stored_profiles = list()
 	/// The original profile of this changeling.
 	var/datum/changeling_profile/first_profile = null
 	/// How many DNA strands the changeling can store for transformation.
-	var/dna_max = 6
+	var/dna_max = 8 // SKYRAT EDIT - ORIGINAL: 6
 	/// The amount of DNA gained. Includes DNA sting.
 	var/absorbed_count = 0
 	/// The amount of DMA gained using absorb, not DNA sting. Start with one (your original DNA)
 	var/true_absorbs = 0
 	/// The number of chemicals the changeling currently has.
-	var/chem_charges = 20
+	var/chem_charges = 75 // SKYRAT EDIT - ORIGINAL: 20
 	/// The max chemical storage the changeling currently has.
-	var/total_chem_storage = 75
+	var/total_chem_storage = 100 // SKYRAT EDIT - ORIGINAL: 75
 	/// The chemical recharge rate per life tick.
-	var/chem_recharge_rate = 0.5
+	var/chem_recharge_rate = 1.5 // SKYRAT EDIT - ORIGINAL: 0.5
 	/// Any additional modifiers triggered by changelings that modify the chem_recharge_rate.
 	var/chem_recharge_slowdown = 0
 	/// The range this ling can sting things.
 	var/sting_range = 2
 	/// The number of genetics points (to buy powers) this ling currently has.
-	var/genetic_points = 10
+	var/genetic_points = 15 // SKYRAT EDIT - ORIGINAL: 10
 	/// The max number of genetics points (to buy powers) this ling can have..
-	var/total_genetic_points = 10
+	var/total_genetic_points = 15 // SKYRAT EDIT - ORIGINAL: 10
 	/// List of all powers we start with.
 	var/list/innate_powers = list()
 	/// Associated list of all powers we have evolved / bought from the emporium. [path] = [instance of path]
 	var/list/purchased_powers = list()
->>>>>>> 556153c0a53 (Changeling refactor / doc / code improvements (kicks changeling out of `Life()`) (#63669))
 
 	/// The voice we're mimicing via the changeling voice ability.
 	var/mimicing = ""
