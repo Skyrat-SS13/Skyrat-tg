@@ -7,7 +7,7 @@
 
 /datum/emote/living/sweatdrop/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	if(iscarbon(user) || issilicon(user))
+	if(isliving(user))
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "sweatdrop", ABOVE_MOB_LAYER)
 		overlay.pixel_x = 10
 		overlay.pixel_y = 10
@@ -20,7 +20,7 @@
 
 /datum/emote/living/exclaim/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	if(iscarbon(user) || issilicon(user))
+	if(isliving(user))
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "exclamation", ABOVE_MOB_LAYER)
 		overlay.pixel_x = 10
 		overlay.pixel_y = 28
@@ -34,7 +34,7 @@
 
 /datum/emote/living/realize/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	if(iscarbon(user) || issilicon(user))
+	if(isliving(user))
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "realize", ABOVE_MOB_LAYER)
 		overlay.pixel_y = 15
 		flick_overlay_static(overlay, user, 50)
@@ -46,7 +46,7 @@
 
 /datum/emote/living/annoyed/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	if(iscarbon(user) || issilicon(user))
+	if(isliving(user))
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "annoyed", ABOVE_MOB_LAYER)
 		overlay.pixel_x = 10
 		overlay.pixel_y = 10
