@@ -40,7 +40,7 @@
 
 
 /obj/item/storage/box/hero/mushperson
-	name = "Mushy The Mushperson - 2305."
+	name = "Mushy The Mushperson - 2305"
 	desc = "Can you remember?"
 
 /obj/item/storage/box/hero/mushperson/PopulateContents()
