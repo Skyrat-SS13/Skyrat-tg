@@ -16,7 +16,7 @@
 		TRAIT_DWARF,TRAIT_SNOB,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
-		TRAIT_CAN_USE_FLIGHT_POTION
+		TRAIT_CAN_USE_FLIGHT_POTION,
 	)
 	use_skintones = 1
 	skinned_type = /obj/item/stack/sheet/animalhide/human
