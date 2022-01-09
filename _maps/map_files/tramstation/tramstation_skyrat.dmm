@@ -5988,11 +5988,6 @@
 /turf/open/floor/plating/asteroid,
 /area/mine/explored)
 "aJd" = (
-/obj/structure/bed/pod{
-	desc = "An old medical bed, just waiting for replacement with something up to date.";
-	dir = 4;
-	name = "medical bed"
-	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
@@ -6002,6 +5997,9 @@
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
+	},
+/obj/machinery/stasissleeper{
+	dir = 4
 	},
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
@@ -9746,6 +9744,12 @@
 	},
 /turf/open/floor/iron/white,
 /area/science/research)
+"bLA" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/medical/treatment_center)
 "bLE" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/trimline/neutral/filled/line{
@@ -22369,21 +22373,6 @@
 /obj/structure/cable,
 /turf/open/floor/catwalk_floor,
 /area/maintenance/department/security)
-"gjP" = (
-/obj/machinery/iv_drip,
-/obj/effect/turf_decal/tile/blue,
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/machinery/light/directional/north,
-/turf/open/floor/iron/white,
-/area/medical/treatment_center)
 "gjT" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment{
@@ -36034,9 +36023,11 @@
 /turf/open/floor/iron,
 /area/maintenance/tram/left)
 "ljU" = (
-/obj/machinery/defibrillator_mount/directional/north,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
+	},
+/obj/structure/sign/poster/official/cleanliness{
+	pixel_y = 32
 	},
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
@@ -48675,10 +48666,12 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/machinery/firealarm/directional/north,
-/obj/machinery/stasissleeper{
-	dir = 4
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	dir = 4;
+	name = "medical bed"
 	},
+/obj/machinery/defibrillator_mount/directional/north,
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
 "pTP" = (
@@ -52846,10 +52839,11 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/machinery/firealarm/directional/north,
-/obj/machinery/stasissleeper{
-	dir = 8
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
 	},
+/obj/machinery/defibrillator_mount/directional/north,
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
 "ryV" = (
@@ -55787,10 +55781,6 @@
 /turf/open/floor/iron/dark,
 /area/science/robotics/lab)
 "sDC" = (
-/obj/structure/bed/pod{
-	desc = "An old medical bed, just waiting for replacement with something up to date.";
-	name = "medical bed"
-	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
@@ -55799,6 +55789,9 @@
 	},
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/machinery/stasissleeper{
 	dir = 8
 	},
 /turf/open/floor/iron/white,
@@ -67298,9 +67291,7 @@
 	dir = 8
 	},
 /obj/machinery/light/directional/north,
-/obj/structure/sign/poster/official/cleanliness{
-	pixel_y = 32
-	},
+/obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
 "wJz" = (
@@ -170114,7 +170105,7 @@ sLq
 uht
 uht
 uht
-ljU
+bLA
 elV
 gKY
 xiu
@@ -170626,7 +170617,7 @@ kwQ
 qch
 omp
 uht
-gjP
+wJq
 gKY
 gKY
 elV
