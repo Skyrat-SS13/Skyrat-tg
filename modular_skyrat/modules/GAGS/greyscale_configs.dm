@@ -42,6 +42,17 @@
 	name = "Beret With Fancy Badge Worn - Vox"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/beret_vox.dmi'
 
+//MUSHROOM CAP
+
+/datum/greyscale_config/mushcap
+	name = "Mushroom Cap"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/mushcap.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/mushcap.json'
+
+/datum/greyscale_config/mushcap/worn
+	name = "Mushroom Cap Worn"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/mushcap_worn.json'
+
 /*
 *	NECK
 */
