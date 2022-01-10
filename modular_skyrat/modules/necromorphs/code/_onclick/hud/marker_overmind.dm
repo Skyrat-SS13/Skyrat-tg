@@ -117,29 +117,6 @@
 	if(ismarkerovermind(usr))
 		var/mob/camera/marker/B = usr
 		B.createSpecial(MARKER_STRUCTURE_FACTORY_COST, /obj/structure/marker/special/factory, MARKER_FACTORY_MIN_DISTANCE, TRUE)
-
-// /atom/movable/screen/marker/readapt_strain
-// 	icon_state = "ui_chemswap"
-// 	// Description gets given its proper values on Initialize()
-// 	name = "Readapt Strain"
-// 	desc = "Allows you to choose a new strain from ERROR random choices for ERROR resources."
-
-// /atom/movable/screen/marker/readapt_strain/MouseEntered(location,control,params)
-// 	if(hud?.mymob && ismarkerovermind(hud.mymob))
-// 		var/mob/camera/marker/B = hud.mymob
-// 		if(B.free_strain_rerolls)
-// 			name = "[initial(name)] (FREE)"
-// 			desc = "Randomly rerolls your strain for free."
-// 		else
-// 			name = "[initial(name)] ([MARKER_POWER_REROLL_COST])"
-// 			desc = "Allows you to choose a new strain from [MARKER_POWER_REROLL_CHOICES] random choices for [MARKER_POWER_REROLL_COST] resources."
-// 	return ..()
-
-// /atom/movable/screen/marker/readapt_strain/Click()
-// 	if(ismarkerovermind(usr))
-// 		var/mob/camera/marker/B = usr
-// 		B.strain_reroll()
-
 /atom/movable/screen/marker/relocate_core
 	icon_state = "ui_swap"
 	// Name and description get given their proper values on Initialize()

@@ -9,7 +9,7 @@
 	it actively including being placed in disposals.
 
 	**
-	All of this code needs to be refactor and overhauled, it is very piecemeal. And does not require the same
+	All of this code needs to be refactored and overhauled, it is very piecemeal. And does not require the same
 	amount of variation support that the blob inherently had. Ideally I want to split the "Corruption" into its own
 	file for updating and tracking.
 

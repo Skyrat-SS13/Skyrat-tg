@@ -1,4 +1,16 @@
 
+
+/*
+
+	This is only temporary, as the marker should spawn carbons that are player controlled, not
+	simple mobs. All mobs are spawned based on a currency system known as BIOMASS which will need
+	to be implemented and a value applied to all /datum/species/necromorph/(variants)
+
+	Currently the species are not loading properly, they are missing their head and torsos and appear
+	to be still wearing underwear even with the "NO_UNDERWEAR" trait applied at the parent and individual
+	level.
+
+*/
 ////////////////
 // BASE TYPE //
 ////////////////
