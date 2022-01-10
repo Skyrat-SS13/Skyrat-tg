@@ -4,8 +4,12 @@
 	icon = 'modular_skyrat/master_files/icons/obj/hhmirror.dmi'
 	icon_state = "hhmirror"
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
-	special_desc = "A mirror manufactured by the Syndicate containing barber-nanites that can alter your hair on the spot."
-	w_class = WEIGHT_CLASS_SMALL
+	special_desc = "A mirror manufactured by the Syndicate containing barber-nanites that can alter your hair on the spot. Target your head and use it on yourself to activate the nanites."
+	w_class = WEIGHT_CLASS_TINY
+	// How long does it take to change someone's hairstyle?
+	var/haircut_duration = 2 SECONDS
+	// How long does it take to change someone's facial hair style?
+	var/facial_haircut_duration = 2 SECONDS
 
 /obj/item/storage/box/syndie_kit/chameleon/PopulateContents()
 	new /obj/item/clothing/under/chameleon(src)
@@ -25,35 +29,58 @@
 	new /obj/item/dyespray(src)
 
 
-/obj/item/hhmirror/attack_self(mob/user)
-	. = ..()
-	if(.)
+/obj/item/hhmirror/syndie/attack(mob/living/attacked_mob, mob/living/user, params)
+	if(!ishuman(attacked_mob))
 		return
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-			//see code/modules/mob/dead/new_player/preferences.dm at approx line 545 for comments!
-			//this is largely copypasted from there.
 
-			//handle facial hair (if necessary)
-		if(H.gender != FEMALE)
-			var/new_style = input(user, "Select a facial hair style", "Grooming")  as null|anything in GLOB.facial_hairstyles_list
-			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-				return	//no tele-grooming
-			if(new_style)
-				H.facial_hairstyle = new_style
-		else //look who cant remove if else's
-			//H.facial_hairstyle = "Shaved"
-			var/new_style = input(user, "Select a facial hair style", "Grooming")  as null|anything in GLOB.facial_hairstyles_list
-			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-				return	//no tele-grooming
-			if(new_style)
-				H.facial_hairstyle = new_style
+	var/mob/living/carbon/human/target_human = attacked_mob
 
-			//handle normal hair
-		var/new_style = input(user, "Select a hair style", "Grooming")  as null|anything in GLOB.hairstyles_list
-		if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-			return	//no tele-grooming
-		if(new_style)
-			H.hairstyle = new_style
+	var/location = user.zone_selected
+	if(!(location in list(BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_HEAD)) && !user.combat_mode)
+		to_chat(user, span_warning("You stop, look down at what you're currently holding and ponder to yourself, \"This is probably to be used on their hair or their facial hair.\""))
+		return
 
-		H.update_hair()
+	if(user.zone_selected != BODY_ZONE_HEAD)
+		return ..()
+
+	var/selected_part = tgui_alert(user, "Please select which part of [target_human] you would like to sculpt!", "It's sculpting time!", list("Hair", "Facial Hair", "Cancel"))
+
+	if(!selected_part || selected_part == "Cancel")
+		return
+
+	if(selected_part == "Hair")
+
+		var/hair_id = tgui_input_list(user, "Please select what hairstyle you'd like to sculpt!", "Select masterpiece", GLOB.hairstyles_list)
+		if(!hair_id)
+			return
+
+		if(hair_id == "Bald")
+			to_chat(target_human, span_danger("[user] seems to be cutting all your hair off!"))
+
+		to_chat(user, span_notice("You begin to masterfully sculpt [target_human]'s hair!"))
+
+		playsound(target_human, 'modular_skyrat/modules/salon/sound/haircut.ogg', 10)
+
+		if(do_after(user, haircut_duration, target_human))
+			target_human.hairstyle = hair_id
+			target_human.update_hair()
+			user.visible_message(span_notice("[user] successfully cuts [target_human]'s hair!"), span_notice("You successfully cut [target_human]'s hair!"))
+			new /obj/effect/decal/cleanable/hair(get_turf(src))
+	else
+		var/facial_hair_id = tgui_input_list(user, "Please select what facial hairstyle you'd like to sculpt!", "Select masterpiece", GLOB.facial_hairstyles_list)
+		if(!facial_hair_id)
+			return
+
+		if(facial_hair_id == "Shaved")
+			to_chat(target_human, span_danger("[user] seems to be cutting all your facial hair off!"))
+
+		to_chat(user, "You begin to masterfully sculpt [target_human]'s facial hair!")
+
+		playsound(target_human, 'modular_skyrat/modules/salon/sound/haircut.ogg', 10)
+
+		if(do_after(user, facial_haircut_duration, target_human))
+			target_human.facial_hairstyle = facial_hair_id
+			target_human.update_hair()
+			user.visible_message(span_notice("[user] successfully cuts [target_human]'s facial hair!"), span_notice("You successfully cut [target_human]'s facial hair!"))
+			new /obj/effect/decal/cleanable/hair(get_turf(src))
+
