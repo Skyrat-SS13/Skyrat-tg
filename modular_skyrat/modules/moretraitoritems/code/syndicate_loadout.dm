@@ -115,7 +115,7 @@
 	new /obj/item/reagent_containers/glass/rag(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/loadout/ninja/PopulateContents()
-	new /obj/item/vibro_weapon/ninjasr(src)
+	new /obj/item/energy_katana(src)
 	new /obj/item/reagent_containers/hypospray/medipen/stimulants(src)
 	for(var/i in 1 to 3)
 		new /obj/item/throwing_star(src)
