@@ -61,3 +61,25 @@
 	speak_emote = list("hisses")
 
 
+/mob/living/simple_animal/hostile/necromorph/slasher/Initialize(mapload, obj/structure/marker/special/linked_node)
+	. = ..()
+	AddElement(/datum/element/simple_flying)
+	if(istype(linked_node))
+		factory = linked_node
+		factory.slasher += src
+		if(linked_node.overmind && istype(linked_node.overmind) && !istype(src, /mob/living/simple_animal/hostile/necromorph/slasher))
+			notify_ghosts("A controllable spore has been created in \the [get_area(src)].", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Sentient Spore Created")
+
+
+/mob/living/simple_animal/hostile/necromorph/slasher/Destroy()
+	if(factory)
+		factory.slasher -= src
+		factory = null
+
+	return ..()
+
+/mob/living/simple_animal/hostile/necromorph/slasher/death(gibbed)
+	if(factory)
+		factory.slasher_delay = world.time + factory.slasher_cooldown //put the factory on cooldown
+
+	..()

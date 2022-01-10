@@ -1,3 +1,11 @@
+/*
+
+	CONTAINS THE GROWTH THAT EMINATES FROM THE MARKER
+	TODO: FIX GROWTH COLOR AND ICONS
+	TODO: Growth doesnt take all at once, it has three stages.
+
+*/
+
 //I will need to recode parts of this but I am way too tired atm //I don't know who left this comment but they never did come back
 /obj/structure/marker
 	name = "Fleshy growth"
@@ -30,6 +38,7 @@
 	var/atmosblock = FALSE
 	var/mob/camera/marker/overmind
 
+	//var/datum/corruption/corruption
 
 /obj/structure/marker/Initialize(mapload, owner_overmind)
 	. = ..()
@@ -84,7 +93,10 @@
 	return !atmosblock
 /obj/structure/marker/update_icon() //Updates color based on overmind color if we have an overmind.
 	. = ..()
-
+	if(overmind)
+		add_atom_colour(overmind.corruption.color, FIXED_COLOUR_PRIORITY)
+	else
+		remove_atom_colour(FIXED_COLOUR_PRIORITY)
 
 /obj/structure/marker/proc/Be_Pulsed()
 	if(COOLDOWN_FINISHED(src, pulse_timestamp))
@@ -242,13 +254,29 @@
 /obj/structure/marker/proc/scannerreport()
 	return "A generic marker. Looks like someone forgot to override this proc, adminhelp this."
 
+
+/*
+
+This is the growth that eminates from the marker. Needs to be separated out and re-defined.
+I dont like it being directly under the marker like this. Needs to be more separation between
+the marker, and the growth factor. As the marker is far more complex on its own, and acts almost
+independently until the event is triggered.
+
+*/
 /obj/structure/marker/normal
-	name = "normal growth"
+	name = "Fleshy growth"
+	//icon = "modular_skyrat/modules/necromorphs/icons/effects/corruption.dmi"
 	icon_state = "blob"
 	light_range = 0
+	var/initial_integrity = MARKER_REGULAR_HP_INIT
 	max_integrity = MARKER_REGULAR_MAX_HP
 	health_regen = MARKER_REGULAR_HP_REGEN
 	brute_resist = MARKER_BRUTE_RESIST * 0.5
+	color = COLOR_MARKER_RED
+
+/obj/structure/marker/normal/Initialize(mapload, owner_overmind)
+	. = ..()
+	update_integrity(initial_integrity)
 
 /obj/structure/marker/normal/scannerreport()
 	if(atom_integrity <= 15)
@@ -354,7 +382,7 @@
 	var/max_slashers = 0
 	var/list/slashers = list()
 	COOLDOWN_DECLARE(slasher_delay)
-	var/slasher_cooldown = BLOBMOB_SPORE_SPAWN_COOLDOWN
+	var/slasher_cooldown = MARKERMOB_SLASHER_SPAWN_COOLDOWN
 
 	// Area reinforcement vars: used by cores and nodes, for s to modify
 	/// Range this marker free upgrades to strong markers at: for the core, and for s
@@ -405,20 +433,20 @@
 	COOLDOWN_START(src, slasher_delay, slasher_cooldown)
 	var/mob/living/simple_animal/hostile/necromorph/slasher/BS = new (loc, src)
 	if(overmind) //if we don't have an overmind, we don't need to do anything but make a slasher
-		//BS.overmind = overmind
+		BS.overmind = overmind
 		BS.update_icons()
 		overmind.marker_mobs.Add(BS)
 
-/obj/structure/marker/special/proc/produce_spores()
-	if(brute)
-		return
-	if(slashers.len >= max_slashers)
-		return
-	if(!COOLDOWN_FINISHED(src, slasher_delay))
-		return
-	COOLDOWN_START(src, slasher_delay, slasher_cooldown)
-	var/mob/living/simple_animal/hostile/necromorph/slasher/BS = new (loc, src)
-	if(overmind) //if we don't have an overmind, we don't need to do anything but make a slasher
-		//BS.overmind = overmind
-		BS.update_icons()
-		overmind.marker_mobs.Add(BS)
+// /obj/structure/marker/special/proc/produce_spores()
+// 	if(brute)
+// 		return
+// 	if(slashers.len >= max_slashers)
+// 		return
+// 	if(!COOLDOWN_FINISHED(src, slasher_delay))
+// 		return
+// 	COOLDOWN_START(src, slasher_delay, slasher_cooldown)
+// 	var/mob/living/simple_animal/hostile/necromorph/slasher/BS = new (loc, src)
+// 	if(overmind) //if we don't have an overmind, we don't need to do anything but make a slasher
+// 		BS.overmind = overmind
+// 		BS.update_icons()
+// 		overmind.marker_mobs.Add(BS)

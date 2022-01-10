@@ -3,6 +3,7 @@
 	icon = 'icons/mob/blob.dmi'
 	icon_state = "blob_factory"
 	desc = "A thick spire of tendrils."
+	color = COLOR_MARKER_RED
 	max_integrity = MARKER_FACTORY_MAX_HP
 	health_regen = MARKER_FACTORY_HP_REGEN
 	point_return = MARKER_REFUND_FACTORY_COST
@@ -33,4 +34,4 @@
 
 /obj/structure/marker/special/factory/Be_Pulsed()
 	. = ..()
-	produce_spores()
+	produce_slashers()

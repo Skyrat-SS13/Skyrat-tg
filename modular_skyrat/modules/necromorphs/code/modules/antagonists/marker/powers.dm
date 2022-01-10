@@ -75,7 +75,7 @@
 		if(chosen_node)
 			forceMove(chosen_node.loc)
 
-/mob/camera/marker/proc/createSpecial(price, minSeparation, marker, needsNode, turf/T)
+/mob/camera/marker/proc/createSpecial(price, marker, minSeparation, needsNode, turf/T)
 	if(!T)
 		T = get_turf(src)
 	var/obj/structure/marker/B = (locate(/obj/structure/marker) in T)

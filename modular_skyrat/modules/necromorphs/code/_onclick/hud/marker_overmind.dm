@@ -51,7 +51,7 @@
 	if(ismarkerovermind(usr))
 		var/mob/camera/marker/B = usr
 		if(!B.placed)
-			B.place_marker_core(0)
+			B.place_marker_core(MARKER_NORMAL_PLACEMENT)
 		B.transport_core()
 
 // /atom/movable/screen/marker/markerbernaut
@@ -102,21 +102,21 @@
 		var/mob/camera/marker/B = usr
 		B.createSpecial(MARKER_STRUCTURE_NODE_COST, /obj/structure/marker/special/node, MARKER_NODE_MIN_DISTANCE, FALSE)
 
-// /atom/movable/screen/marker/factory_marker
-// 	icon_state = "ui_factory"
-// 	// Name and description get given their proper values on Initialize()
-// 	name = "Produce Factory Marker (ERROR)"
-// 	desc = "Produces a factory marker for ERROR resources.<br>Factory markers will produce spores every few seconds."
+/atom/movable/screen/marker/factory_marker
+	icon_state = "ui_factory"
+	// Name and description get given their proper values on Initialize()
+	name = "Produce Factory Marker (ERROR)"
+	desc = "Produces a factory marker for ERROR resources.<br>Factory markers will produce spores every few seconds."
 
-// /atom/movable/screen/marker/factory_marker/Initialize()
-// 	. = ..()
-// 	name = "Produce Factory Marker ([MARKER_STRUCTURE_FACTORY_COST])"
-// 	desc = "Produces a factory marker for [MARKER_STRUCTURE_FACTORY_COST] resources.<br>Factory markers will produce spores every few seconds."
+/atom/movable/screen/marker/factory_marker/Initialize()
+	. = ..()
+	name = "Produce Factory Marker ([MARKER_STRUCTURE_FACTORY_COST])"
+	desc = "Produces a factory marker for [MARKER_STRUCTURE_FACTORY_COST] resources.<br>Factory markers will produce spores every few seconds."
 
-// /atom/movable/screen/marker/factory_marker/Click()
-// 	if(ismarkerovermind(usr))
-// 		var/mob/camera/marker/B = usr
-// 		B.createSpecial(MARKER_STRUCTURE_FACTORY_COST, /obj/structure/marker/special/factory, MARKER_FACTORY_MIN_DISTANCE, TRUE)
+/atom/movable/screen/marker/factory_marker/Click()
+	if(ismarkerovermind(usr))
+		var/mob/camera/marker/B = usr
+		B.createSpecial(MARKER_STRUCTURE_FACTORY_COST, /obj/structure/marker/special/factory, MARKER_FACTORY_MIN_DISTANCE, TRUE)
 
 // /atom/movable/screen/marker/readapt_strain
 // 	icon_state = "ui_chemswap"
@@ -203,10 +203,10 @@
 	using.hud = src
 	static_inventory += using
 
-	// using = new /atom/movable/screen/marker/factory_marker()
-	// using.screen_loc = ui_hand_position(1)
-	// using.hud = src
-	// static_inventory += using
+	using = new /atom/movable/screen/marker/factory_marker()
+	using.screen_loc = ui_hand_position(1)
+	using.hud = src
+	static_inventory += using
 
 	// using = new /atom/movable/screen/marker/readapt_strain()
 	// using.screen_loc = ui_storage1

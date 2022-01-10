@@ -1,16 +1,32 @@
-//Few global vars to track the marker_overmind
+/*
+	TODO: CREATE BIOMASS, REMOVE MARKER_POINTS
+		- BIOMASS NEEDS ITS OWN DATUM, NOT IN MARKER MASTER and CORE
+	TODO: ADD NECROSHOP
+	TODO: ADD PROPER STRUCTURES
+	TODO: ADD SIGNAL
+	TODO: ADD MASTER ABILITIES
+	TODO: RENAME MARKER MASTER to MASTER
+	TODO: TRACK ALL NECROMORPHS
+		- TRACK ALL SPAWNED & DEAD NECROMORPHS
+
+*/
+
+
+
+//Few global vars to track the marker_master
 GLOBAL_LIST_EMPTY(markers) //complete list of all markers made.
 GLOBAL_LIST_EMPTY(marker_cores)
-GLOBAL_LIST_EMPTY(marker_overminds)
+GLOBAL_LIST_EMPTY(marker_masters)
 GLOBAL_LIST_EMPTY(marker_nodes)
 
 
 /mob/camera/marker
-	name = "Marker Overmind"
-	real_name = "Marker Overmind"
-	desc = "The overmind. It controls the marker."
-	icon = 'icons/mob/cameramob.dmi'
-	icon_state = "marker"
+	name = "Marker MASTER"
+	real_name = "Marker MASTER"
+	desc = "The master. It controls the marker."
+	icon = 'modular_skyrat/modules/necromorphs/icons/mob/necromorph/mastersignal.dmi'
+	icon_state = "mastersignal"
+	pixel_x = -23
 	mouse_opacity = MOUSE_OPACITY_ICON
 	move_on_shuttle = 1
 	see_in_dark = 8
@@ -20,14 +36,15 @@ GLOBAL_LIST_EMPTY(marker_nodes)
 	pass_flags = PASSBLOB
 	faction = list(ROLE_NECROMORPH)
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-	hud_type = /datum/hud/marker_overmind
-	var/obj/structure/marker/special/core/marker_core = null // The marker overmind's core
+	hud_type = /datum/hud/marker_master
+
+	var/datum/corruption/corruption
+
+	var/obj/structure/marker/special/core/marker_core = null // The marker master's core
 	var/marker_points = 0
-	var/max_marker_points = OVERMIND_MAX_POINTS_DEFAULT
+	var/max_marker_points = MASTER_MAX_POINTS_DEFAULT
 	var/last_attack = 0
 	var/list/marker_mobs = list()
-//	var/datum/blobstrain/reagent/blobstrain = null
-//	var/datum/marker/reagent/marker = null
 
 	/// A list of all marker structures
 	var/list/all_markers = list()
@@ -37,24 +54,27 @@ GLOBAL_LIST_EMPTY(marker_nodes)
 	var/last_reroll_time = 0 //time since we last rerolled, used to give free rerolls
 	var/nodes_required = TRUE //if the marker needs nodes to place resource and factory markers
 	var/placed = FALSE
-	var/manualplace_min_time = OVERMIND_STARTING_MIN_PLACE_TIME // Some time to get your bearings
-	var/autoplace_max_time = OVERMIND_STARTING_AUTO_PLACE_TIME // Automatically place the core in a random spot
+	var/manualplace_min_time = MASTER_STARTING_MIN_PLACE_TIME // Some time to get your bearings
+	var/autoplace_max_time = MASTER_STARTING_AUTO_PLACE_TIME // Automatically place the core in a random spot
 	var/list/markers_legit = list()
 	var/max_count = 0 //The biggest it got before death
-	var/markerwincount = OVERMIND_WIN_CONDITION_AMOUNT
+	var/markerwincount = MASTER_WIN_CONDITION_AMOUNT
 	var/victory_in_progress = FALSE
 	var/rerolling = FALSE
-	var/announcement_size = OVERMIND_ANNOUNCEMENT_MIN_SIZE // Announce the biohazard when this size is reached
+	var/announcement_size = MASTER_ANNOUNCEMENT_MIN_SIZE // Announce the biohazard when this size is reached
 	var/announcement_time
 	var/has_announced = FALSE
 
+/mob/camera/marker/verb/shop_verb()
+	set name = "Spawning Menu"
+	set category = SPECIES_NECROMORPH
 
-/mob/camera/marker/Initialize(mapload, starting_points = OVERMIND_STARTING_POINTS)
+/mob/camera/marker/Initialize(mapload, starting_points = MASTER_STARTING_POINTS)
 	validate_location()
 	marker_points = starting_points
 	manualplace_min_time += world.time
 	autoplace_max_time += world.time
-	GLOB.overminds += src
+	GLOB.masters += src
 	var/new_name = "[initial(name)] ([rand(1, 999)])"
 	name = new_name
 	real_name = new_name
@@ -109,19 +129,21 @@ GLOBAL_LIST_EMPTY(marker_nodes)
 		max_count = markers_legit.len
 
 	if(announcement_time && (world.time >= announcement_time || markers_legit.len >= announcement_size) && !has_announced)
-		priority_announce("Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_OUTBREAK5)
+	alert_sound_to_playing(sound('modular_skyrat/modules/alerts/sound/alert1.ogg'), override_volume = TRUE)
+	priority_announce("Automated air filtration screeing systems have flagged an unknown pathogen in the ventilation systems, quarantine is in effect.", "Level-1 Viral Biohazard Alert", ANNOUNCER_MUTANTS)
+
 		has_announced = TRUE
 
 
 /mob/camera/marker/Destroy()
 	for(var/obj/structure/marker/marker_structure as anything in all_markers)
-		marker_structure.overmind = null
+		marker_structure.master = null
 	all_markers = null
 	resource_markers = null
 	factory_markers = null
 	node_markers = null
 	marker_mobs = null
-	GLOB.overminds -= src
+	GLOB.masters -= src
 
 	SSshuttle.clearHostileEnvironment(src)
 	STOP_PROCESSING(SSobj, src)
@@ -132,7 +154,7 @@ GLOBAL_LIST_EMPTY(marker_nodes)
 	. = ..()
 	if(!. || !client)
 		return FALSE
-	to_chat(src, span_notice("You are the overmind!"))
+	to_chat(src, span_notice("You are the master!"))
 	update_health_hud()
 	add_points(0)
 
@@ -180,7 +202,7 @@ GLOBAL_LIST_EMPTY(marker_nodes)
 	var/rendered = span_big("<font color=\"#EE4000\"><b>\[Marker Telepathy\] [name]()</b> [message_a]</font>")
 
 	for(var/mob/M in GLOB.mob_list)
-		if(ismarkerovermind(M) || istype(M, /mob/living/simple_animal/hostile/blob))
+		if(ismarkermaster(M) || istype(M, /mob/living/simple_animal/hostile/necromorph))
 			to_chat(M, rendered)
 		if(isobserver(M))
 			var/link = FOLLOW_LINK(M, src)
@@ -202,7 +224,7 @@ GLOBAL_LIST_EMPTY(marker_nodes)
 
 /mob/camera/marker/Move(NewLoc, Dir = 0)
 	if(placed)
-		var/obj/structure/marker/B = locate() in range(OVERMIND_MAX_CAMERA_STRAY, NewLoc)
+		var/obj/structure/marker/B = locate() in range(MASTER_MAX_CAMERA_STRAY, NewLoc)
 		if(B)
 			forceMove(NewLoc)
 		else

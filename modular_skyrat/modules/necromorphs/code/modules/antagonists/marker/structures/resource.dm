@@ -2,9 +2,10 @@
 	name = "resource marker"
 	icon = 'icons/mob/blob.dmi'
 	icon_state = "blob_resource"
+	color = COLOR_MARKER_RED
 	desc = "A thin spire of slightly swaying tendrils."
-	max_integrity = 60
-	point_return = 15
+	max_integrity = MARKER_RESOURCE_MAX_HP
+	point_return = MARKER_REFUND_RESOURCE_COST
 	resistance_flags = LAVA_PROOF
 	var/resource_delay = 0
 

@@ -1,3 +1,4 @@
+/atom/movable
 	//Mass is measured in kilograms. It should never be zero
 	var/mass = 1
 

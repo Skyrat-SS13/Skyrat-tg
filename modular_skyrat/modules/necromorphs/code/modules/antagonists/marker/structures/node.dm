@@ -1,7 +1,7 @@
 /obj/structure/marker/special/node
 	name = "marker node"
 	icon = 'icons/mob/blob.dmi'
-	icon_state = "blob_node_overlay"
+	icon_state = "blank_blob"
 	desc = "A large, pulsating yellow mass."
 	max_integrity = MARKER_NODE_MAX_HP
 	health_regen = MARKER_NODE_HP_REGEN
@@ -28,7 +28,9 @@
 
 /obj/structure/marker/special/node/update_overlays()
 	. = ..()
-	var/mutable_appearance/marker_overlay = mutable_appearance('icons/mob/blob.dmi', "blob_node_overlay")
+	var/mutable_appearance/marker_overlay = mutable_appearance('icons/mob/blob.dmi', "blob")
+	if(overmind)
+		marker_overlay.color = COLOR_MARKER_RED
 	. += marker_overlay
 	. += mutable_appearance('icons/mob/blob.dmi', "blob_node_overlay")
 
@@ -47,4 +49,4 @@
 	if(overmind)
 		pulse_area(overmind, claim_range, pulse_range, expand_range)
 		//reinforce_area(delta_time)
-		produce_spores()
+		produce_slashers()
