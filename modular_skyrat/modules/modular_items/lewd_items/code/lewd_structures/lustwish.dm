@@ -193,3 +193,109 @@
 	machine_name = "LustWish"
 	icon_state = "lustwish_refill"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
+
+
+/obj/machinery/vending/dorms/perma
+	desc = "A vending machine with various toys. Not for the faint of heart. This one seems to have a reduced inventory."
+	name = "NanoTrasen Approved LustWish"
+	product_ads = "Now NanoTrasen approved!;OBEY!;Good convicts get preferential treatment!;Remember, always adhere to Nanotrasen corporate policy!;Don't forget to use protection!;Clean up your mess!"
+	vend_reply = "Hail NanoTrasen!;Continue being a model convict!"
+	payment_department = ACCOUNT_SEC
+	products = list(//Sex toys
+					/obj/item/clothing/sextoy/eggvib = 8,
+					/obj/item/clothing/sextoy/buttplug = 6,
+					/obj/item/clothing/sextoy/nipple_clamps = 4,
+					/obj/item/clothing/sextoy/double_dildo = 3,
+					/obj/item/clothing/sextoy/vibroring = 6,
+					/obj/item/condom_pack = 20,
+					/obj/item/clothing/sextoy/dildo = 8,
+					/obj/item/clothing/sextoy/custom_dildo = 8,
+					/obj/item/tickle_feather = 8,
+					/obj/item/clothing/sextoy/fleshlight = 8,
+					/obj/item/kinky_shocker = 4,
+					/obj/item/clothing/mask/leatherwhip = 4,
+					/obj/item/clothing/sextoy/magic_wand = 4,
+					/obj/item/bdsm_candle = 4,
+					/obj/item/spanking_pad = 4,
+					/obj/item/clothing/sextoy/vibrator = 4,
+					/obj/item/serviette_pack = 10,
+					/obj/item/key/collar = 48,
+					/obj/item/pillow = 32, //cmon, why there is always 0 pillows, where do you guys stuff it.
+
+					//clothing facial/head
+					/obj/item/clothing/mask/ballgag = 8,
+					/obj/item/clothing/mask/ballgag/choking = 8,
+					/obj/item/clothing/mask/muzzle/ring = 4,
+					/obj/item/clothing/head/domina_cap = 5,
+					/obj/item/clothing/head/helmet/space/deprivation_helmet = 5,
+					/obj/item/clothing/head/maid = 5,
+					/obj/item/clothing/glasses/blindfold/kinky = 5,
+					/obj/item/clothing/ears/kinky_headphones = 5,
+					/obj/item/clothing/mask/gas/bdsm_mask = 5,
+					/obj/item/reagent_containers/glass/lewd_filter = 5,
+					/obj/item/clothing/glasses/hypno = 4,
+					/obj/item/clothing/head/kitty = 4,
+					/obj/item/clothing/head/rabbitears = 4,
+
+
+					//neck
+					/obj/item/clothing/neck/kink_collar = 8,
+					/obj/item/clothing/neck/human_petcollar = 8,
+					/obj/item/clothing/neck/human_petcollar/choker = 8,
+					/obj/item/clothing/neck/human_petcollar/locked/cowcollar = 8,
+					/obj/item/clothing/neck/human_petcollar/locked/bellcollar = 8,
+					/obj/item/clothing/neck/human_petcollar/locked/cross = 8,
+					/obj/item/clothing/neck/human_petcollar/locked/spikecollar = 8,
+
+					//torso clothing
+					/obj/item/clothing/under/misc/latex_catsuit = 8,
+					/obj/item/clothing/under/costume/maid = 5,
+					/obj/item/clothing/under/rank/civilian/janitor/maid = 5,
+					/obj/item/clothing/under/costume/lewdmaid = 5,
+					/obj/item/clothing/under/stripper_outfit = 5,
+					/obj/item/clothing/under/misc/stripper/bunnysuit = 5,
+					/obj/item/clothing/under/misc/stripper/bunnysuit/white = 5,
+					/obj/item/clothing/under/misc/gear_harness = 4,
+
+					//hands
+					/obj/item/clothing/gloves/ball_mittens = 8,
+					/obj/item/clothing/gloves/latex_gloves = 8,
+					/obj/item/clothing/gloves/evening = 5,
+
+					//legs
+					/obj/item/clothing/shoes/latex_socks = 8,
+					/obj/item/clothing/shoes/latexheels = 4,
+					/obj/item/clothing/shoes/dominaheels = 4,
+					/obj/item/clothing/shoes/jackboots/thigh = 3,
+					/obj/item/clothing/shoes/jackboots/knee = 3,
+
+					//belt
+					/obj/item/clothing/strapon = 6,
+					/obj/item/storage/belt/erpbelt = 5,
+
+					//chems
+					/obj/item/reagent_containers/pill/crocin = 20,
+					/obj/item/reagent_containers/pill/camphor = 10,
+					/obj/item/reagent_containers/glass/bottle/crocin = 6,
+					/obj/item/reagent_containers/glass/bottle/camphor = 3,
+					/obj/item/reagent_containers/glass/bottle/breast_enlarger = 6, //Those are legal 'cause you can just turn off prefs in round in "CLOWN SMOKE MACHINE+PENIS ENLARGEMENT CHEMICAL CASE". Yes, i have special code-phrase for this. I've seen some shit.
+					/obj/item/reagent_containers/glass/bottle/penis_enlarger = 6,
+
+					//special
+					/obj/item/clothing/glasses/nice_goggles = 1, //easter egg, don't touch plz)
+
+	premium = list(
+		/obj/item/clothing/under/dress/corset = 4,
+		/obj/item/clothing/under/pants/chaps = 4,
+		/obj/item/clothing/neck/human_petcollar/locked/holocollar = 3)
+
+	contraband = list(
+					/obj/item/electropack/shockcollar = 4,
+					/obj/item/clothing/neck/kink_collar/locked = 4,
+					/obj/item/clothing/neck/mind_collar = 2,
+					/obj/item/clothing/under/costume/jabroni = 4,
+					/obj/item/clothing/neck/human_petcollar/locked = 4,
+					/obj/item/reagent_containers/pill/hexacrocin = 10,
+					/obj/item/reagent_containers/pill/pentacamphor = 5,
+					/obj/item/reagent_containers/glass/bottle/hexacrocin = 4,
+					/obj/item/reagent_containers/glass/bottle/pentacamphor = 2)
