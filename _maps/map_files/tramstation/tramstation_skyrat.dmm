@@ -6735,8 +6735,17 @@
 /turf/open/floor/iron,
 /area/commons/lounge)
 "aQW" = (
-/obj/structure/sign/warning/pods,
-/turf/closed/wall,
+/obj/effect/turf_decal/tile{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "aQZ" = (
 /obj/effect/spawner/structure/window/reinforced/tinted,
@@ -7095,11 +7104,7 @@
 /area/service/chapel)
 "aTT" = (
 /obj/structure/closet/emcloset,
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/obj/effect/landmark/start/hangover/closet,
-/turf/open/floor/iron,
+/turf/open/floor/plating,
 /area/hallway/secondary/entry)
 "aTU" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
@@ -7529,8 +7534,8 @@
 /turf/open/floor/iron,
 /area/cargo/miningdock)
 "aYm" = (
-/obj/structure/closet/emcloset,
-/turf/open/floor/plating,
+/obj/structure/sign/warning/pods,
+/turf/closed/wall,
 /area/hallway/secondary/entry)
 "aYn" = (
 /obj/effect/decal/cleanable/dirt,
@@ -11324,16 +11329,15 @@
 /turf/open/floor/iron,
 /area/cargo/storage)
 "ctn" = (
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 1;
-	height = 4;
-	name = "escape pod loader";
-	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
-	width = 3
+/obj/machinery/door/airlock/external{
+	name = "Escape Pod Two";
+	space_dir = 8
 	},
-/turf/open/space/openspace,
-/area/space)
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "ctB" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /obj/effect/decal/cleanable/dirt,
@@ -19369,7 +19373,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/airalarm/directional/north,
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "fjj" = (
@@ -22506,8 +22509,11 @@
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
 "gmo" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
+/obj/machinery/door/airlock/external{
+	name = "Escape Pod Two"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
@@ -22948,9 +22954,8 @@
 /turf/open/floor/iron/dark,
 /area/ai_monitored/command/nuke_storage)
 "gtB" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/machinery/navbeacon/wayfinding/dockescpod1,
-/turf/open/floor/iron,
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/plating,
 /area/hallway/secondary/entry)
 "gtJ" = (
 /obj/effect/turf_decal/siding/thinplating/end,
@@ -24022,14 +24027,11 @@
 /turf/open/floor/iron,
 /area/commons/storage/primary)
 "gPp" = (
-/obj/effect/turf_decal/tile{
-	dir = 1
+/obj/structure/closet/emcloset,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
 	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/extinguisher_cabinet/directional/north,
+/obj/effect/landmark/start/hangover/closet,
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "gPt" = (
@@ -32141,7 +32143,11 @@
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
 "jNr" = (
-/obj/machinery/light/small/directional/south,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/external{
+	name = "Arrival Airlock";
+	space_dir = 1
+	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
 "jND" = (
@@ -34404,6 +34410,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "kGu" = (
@@ -49799,10 +49806,8 @@
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
 "qqs" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/obj/machinery/door/airlock/external{
-	name = "Arrival Airlock";
-	space_dir = 1
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
@@ -54563,13 +54568,9 @@
 /turf/open/floor/iron,
 /area/security/office)
 "sia" = (
-/obj/machinery/door/airlock/external{
-	name = "Escape Pod Two"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/turf/open/floor/plating,
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/navbeacon/wayfinding/dockescpod1,
+/turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "sil" = (
 /obj/structure/flora/ausbushes/sunnybush,
@@ -58617,16 +58618,6 @@
 /obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron/white,
 /area/medical/surgery/room_b)
-"tBr" = (
-/obj/machinery/door/airlock/external{
-	name = "Escape Pod Two";
-	space_dir = 8
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/hallway/secondary/entry)
 "tBs" = (
 /obj/machinery/telecomms/server/presets/science,
 /turf/open/floor/iron/dark/telecomms,
@@ -62849,10 +62840,8 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 4
-	},
-/obj/machinery/light/directional/west,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/airalarm/directional/north,
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "vbR" = (
@@ -145935,11 +145924,11 @@ puC
 puC
 puC
 gwM
-puC
-puC
+aGH
+aGH
 ctn
-puC
-puC
+aGH
+aGH
 puC
 puC
 puC
@@ -146193,10 +146182,10 @@ puC
 puC
 gwM
 aGH
-aGH
-tBr
-aGH
-aGH
+aTT
+aVR
+gtB
+aMg
 puC
 puC
 puC
@@ -146451,9 +146440,9 @@ puC
 gwM
 aGH
 aYm
-aVR
-jNr
-aMg
+gmo
+aGH
+aGH
 puC
 puC
 puC
@@ -146709,16 +146698,16 @@ gwM
 aGH
 aQW
 sia
-aGH
-aGH
+awZ
+aDq
+awZ
 puC
 puC
 puC
 puC
 puC
-puC
-puC
-puC
+awZ
+awZ
 awZ
 awZ
 awZ
@@ -146965,19 +146954,19 @@ puC
 puC
 aGH
 vbr
-gtB
-awZ
-aDq
-awZ
+aBa
+xbA
+aVR
+ogP
 puC
 puC
 puC
 puC
 puC
-puC
-puC
+jNr
 qqs
-gmo
+aVR
+aVR
 iJj
 eHG
 okd
@@ -147222,17 +147211,17 @@ puC
 puC
 aGH
 fjg
-aBa
-xbA
-aVR
-ogP
+okd
+awZ
+awZ
+awZ
 puC
 puC
 puC
 puC
 puC
-puC
-puC
+awZ
+awZ
 awZ
 awZ
 awZ
@@ -147479,9 +147468,9 @@ puC
 puC
 aGH
 kGs
-okd
-awZ
-awZ
+vdY
+azs
+gPp
 awZ
 puC
 puC
@@ -147735,10 +147724,10 @@ dhe
 dhe
 dhe
 aGH
-gPp
-vdY
-azs
-aTT
+bRr
+aBa
+aBa
+okd
 awZ
 puC
 puC
@@ -148773,8 +148762,8 @@ puC
 puC
 puC
 puC
-puC
-puC
+awZ
+awZ
 awZ
 awZ
 awZ
@@ -149030,10 +149019,10 @@ puC
 puC
 puC
 puC
-puC
-puC
+jNr
 qqs
-gmo
+aVR
+aVR
 iJj
 vsH
 mBB
@@ -149287,8 +149276,8 @@ puC
 puC
 puC
 puC
-puC
-puC
+awZ
+awZ
 awZ
 awZ
 awZ
