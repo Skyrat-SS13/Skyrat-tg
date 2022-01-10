@@ -6183,7 +6183,6 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
 	},
-/obj/machinery/gun_vendor,
 /turf/open/floor/iron,
 /area/security/office)
 "aLd" = (
@@ -8129,7 +8128,6 @@
 /turf/open/floor/iron,
 /area/maintenance/tram/left)
 "bgn" = (
-/obj/machinery/firealarm/directional/south,
 /obj/machinery/light_switch/directional/east,
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 6
@@ -10664,6 +10662,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
+"cdv" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/ammo_workbench,
+/turf/open/floor/iron/showroomfloor,
+/area/security/office)
 "cdx" = (
 /obj/structure/industrial_lift/tram{
 	icon_state = "plating"
@@ -14478,9 +14481,6 @@
 /area/security/prison/safe)
 "dBI" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/obj/structure/sign/poster/official/safety_report{
-	pixel_y = 32
-	},
 /turf/open/floor/iron/showroomfloor,
 /area/security/office)
 "dBJ" = (
@@ -15222,6 +15222,17 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/commons/lounge)
+"dQM" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/light/directional/north,
+/obj/machinery/camera{
+	c_tag = "Security - Equipment Room";
+	dir = 9;
+	network = list("ss13","Security")
+	},
+/obj/effect/landmark/secequipment,
+/turf/open/floor/iron/showroomfloor,
+/area/security/office)
 "dQU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -22697,6 +22708,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/sign/departments/custodian{
+	pixel_y = 32
 	},
 /turf/open/floor/catwalk_floor,
 /area/maintenance/central)
@@ -32614,6 +32628,11 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/miningdock)
+"jWm" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/secure_closet/security/sec,
+/turf/open/floor/iron/showroomfloor,
+/area/security/office)
 "jWp" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 1
@@ -33973,6 +33992,12 @@
 /obj/structure/ore_box,
 /turf/open/floor/plating/asteroid,
 /area/maintenance/port/central)
+"kwH" = (
+/obj/structure/sign/poster/official/space_cops{
+	pixel_y = 32
+	},
+/turf/open/floor/iron/showroomfloor,
+/area/security/office)
 "kwQ" = (
 /turf/closed/wall,
 /area/security/checkpoint/medical)
@@ -41883,11 +41908,13 @@
 /turf/open/openspace,
 /area/science/xenobiology)
 "nAm" = (
-/obj/structure/sign/poster/official/space_cops{
-	pixel_y = 32
+/obj/effect/decal/cleanable/dirt,
+/obj/item/toy/plush/snakeplushie{
+	desc = "TUNNEL SNAKES RULE!";
+	name = "tunnel snake"
 	},
-/turf/open/floor/iron/showroomfloor,
-/area/security/office)
+/turf/open/floor/plating,
+/area/maintenance/starboard/central)
 "nAu" = (
 /obj/structure/sign/poster/official/here_for_your_safety{
 	pixel_y = -32
@@ -48127,17 +48154,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/security/prison)
-"pKU" = (
-/obj/machinery/light/directional/north,
-/obj/effect/turf_decal/bot,
-/obj/machinery/camera{
-	c_tag = "Security - Equipment Room";
-	dir = 9;
-	network = list("ss13","Security")
-	},
-/obj/structure/closet/secure_closet/security/sec,
-/turf/open/floor/iron/showroomfloor,
-/area/security/office)
 "pLh" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/landmark/event_spawn,
@@ -50455,7 +50471,7 @@
 /area/command/gateway)
 "qGl" = (
 /obj/effect/turf_decal/bot,
-/obj/structure/closet/secure_closet/security/sec,
+/obj/effect/landmark/secequipment,
 /turf/open/floor/iron/showroomfloor,
 /area/security/office)
 "qGm" = (
@@ -51283,6 +51299,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/storage/tech)
+"qWn" = (
+/obj/structure/sign/poster/official/safety_report{
+	pixel_y = 32
+	},
+/turf/open/floor/iron/showroomfloor,
+/area/security/office)
 "qWt" = (
 /obj/machinery/power/shieldwallgen/xenobiologyaccess,
 /obj/structure/cable,
@@ -60471,6 +60493,10 @@
 /obj/machinery/newscaster/directional/west,
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"uiz" = (
+/obj/machinery/gun_vendor,
+/turf/open/floor/iron/showroomfloor,
+/area/security/office)
 "uiJ" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/trimline/brown/filled/line{
@@ -67967,6 +67993,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
+/obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron,
 /area/service/janitor)
 "wXK" = (
@@ -109664,7 +109691,7 @@ oXC
 oXC
 eLU
 eLU
-aet
+nAm
 aet
 kNJ
 hHb
@@ -160261,7 +160288,7 @@ puC
 puC
 puC
 puC
-puC
+wwE
 wwE
 ogH
 cso
@@ -160517,14 +160544,14 @@ puC
 puC
 puC
 puC
-puC
 jpF
 wwE
+uiz
 hxo
 qZT
 cGk
 wOX
-qGl
+cdv
 xmN
 bfz
 kAQ
@@ -160774,10 +160801,10 @@ puC
 puC
 puC
 puC
-puC
 jpF
 wwE
-nAm
+kwH
+oZd
 oZd
 oZd
 bAb
@@ -161031,13 +161058,13 @@ puC
 puC
 puC
 puC
-puC
 jpF
 wwE
-pKU
+dQM
 qGl
 qGl
-lUQ
+qGl
+oZd
 lni
 xmN
 mLM
@@ -161289,8 +161316,8 @@ puC
 puC
 puC
 puC
-puC
 wwE
+qWn
 dBI
 lni
 lni
@@ -161546,8 +161573,8 @@ puC
 puC
 puC
 puC
-puC
 wwE
+jWm
 hgL
 lUQ
 lUQ
@@ -161803,7 +161830,7 @@ puC
 puC
 puC
 puC
-puC
+wwE
 wwE
 wwE
 wwE
