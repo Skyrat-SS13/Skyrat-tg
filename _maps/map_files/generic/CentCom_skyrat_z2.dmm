@@ -995,7 +995,11 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "amu" = (
-/obj/structure/table/abductor,
+/obj/structure/dresser{
+	icon = 'icons/obj/abductor.dmi';
+	icon_state = "dispenser";
+	name = "organ storage"
+	},
 /turf/open/floor/plating/abductor,
 /area/centcom/holding/cafepark)
 "amv" = (
@@ -3291,6 +3295,10 @@
 	pixel_y = 3
 	},
 /obj/structure/flora/ausbushes/fernybush,
+/obj/structure/window/reinforced{
+	dir = 4;
+	layer = 2.9
+	},
 /turf/open/floor/grass/fairy,
 /area/centcom/holding/cafepark)
 "aFO" = (
@@ -3470,6 +3478,8 @@
 /obj/effect/turf_decal/bot,
 /obj/structure/showcase/fakeid{
 	dir = 8;
+	icon = 'icons/obj/abductor.dmi';
+	icon_state = "console";
 	name = "console"
 	},
 /turf/open/indestructible/hoteltile{
@@ -3509,16 +3519,15 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "aHJ" = (
-/obj/structure/table,
-/obj/item/flashlight{
-	desc = "A hand-held not-so-emergency light that's very very bright!";
-	light_power = 10;
-	name = "Super Light"
+/obj/item/bedsheet/dorms_double,
+/obj/structure/bed/double,
+/turf/open/indestructible/hotelwood{
+	desc = "It's really cozy! Great for soft paws!";
+	icon = 'modular_skyrat/modules/ghostcafe/icons/carpet_royalblack.dmi';
+	icon_state = "carpet";
+	name = "soft carpet"
 	},
-/turf/open/indestructible/hoteltile{
-	icon_state = "darkfull"
-	},
-/area/centcom/holding/cafepark)
+/area/centcom/holding/cafedorms)
 "aHK" = (
 /obj/structure/chair/comfy/brown{
 	dir = 1
@@ -3697,10 +3706,9 @@
 /turf/open/floor/mineral/titanium,
 /area/centcom/interlink)
 "aJy" = (
-/obj/machinery/shower{
-	dir = 1
+/obj/machinery/door/window/westleft{
+	dir = 4
 	},
-/obj/structure/curtain,
 /turf/open/floor/plating/abductor2,
 /area/centcom/holding/cafepark)
 "aJA" = (
@@ -5443,8 +5451,14 @@
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafepark)
 "aWY" = (
-/obj/machinery/light,
-/turf/open/floor/plating/abductor,
+/obj/structure/curtain,
+/obj/machinery/shower{
+	dir = 1
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
+/turf/open/floor/plating/abductor2,
 /area/centcom/holding/cafepark)
 "aWZ" = (
 /obj/structure/flora/ausbushes/ppflowers,
@@ -5840,7 +5854,6 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/table,
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
 	},
@@ -6242,7 +6255,7 @@
 /turf/open/floor/carpet,
 /area/centcom/interlink)
 "dUh" = (
-/obj/structure/bed/abductor,
+/obj/machinery/light,
 /turf/open/floor/plating/abductor,
 /area/centcom/holding/cafepark)
 "dUZ" = (
@@ -6323,6 +6336,10 @@
 	},
 /turf/open/floor/plating/asteroid,
 /area/space)
+"eqr" = (
+/obj/structure/table/abductor,
+/turf/open/floor/plating/abductor,
+/area/centcom/holding/cafepark)
 "esx" = (
 /obj/effect/decal/cleanable/xenoblood,
 /obj/structure/alien/weeds,
@@ -7478,15 +7495,9 @@
 /turf/open/floor/plating/asteroid,
 /area/centcom/interlink)
 "neb" = (
-/obj/item/bedsheet/dorms_double,
-/obj/structure/bed/double,
-/turf/open/indestructible/hotelwood{
-	desc = "It's really cozy! Great for soft paws!";
-	icon = 'modular_skyrat/modules/ghostcafe/icons/carpet_royalblack.dmi';
-	icon_state = "carpet";
-	name = "soft carpet"
-	},
-/area/centcom/holding/cafedorms)
+/obj/structure/bed/abductor,
+/turf/open/floor/plating/abductor,
+/area/centcom/holding/cafepark)
 "ngD" = (
 /obj/machinery/washing_machine,
 /obj/effect/turf_decal/tile/blue{
@@ -52473,11 +52484,11 @@ avb
 aFP
 ajj
 ajj
-aDC
-aDC
-aDC
-aDC
-aDC
+umm
+umm
+umm
+umm
+umm
 ajj
 ajj
 ajj
@@ -52730,11 +52741,11 @@ aGg
 ajj
 ajj
 ajj
-aDC
+umm
 aZs
 aXF
 aPZ
-aDC
+umm
 ajj
 ajj
 ajj
@@ -52987,16 +52998,16 @@ aFP
 ajj
 aEQ
 aNK
-aDC
+umm
 aTV
 arh
 aAr
-aDC
-aDC
-aDC
-aDC
-aDC
-aDC
+umm
+umm
+umm
+umm
+umm
+umm
 ajj
 aCa
 aFP
@@ -53248,12 +53259,12 @@ alA
 aYt
 aVS
 aAr
-aDC
+umm
 aYc
 aYc
 aYc
 aYc
-aDC
+umm
 ajj
 ajj
 alF
@@ -53510,7 +53521,7 @@ aQQ
 aQQ
 aQQ
 aUd
-aDC
+umm
 ajj
 ajj
 aIV
@@ -53758,16 +53769,16 @@ aaY
 ajj
 smA
 afB
-aDC
+umm
 aTI
 aCY
 aRx
-aDC
+umm
 jdx
 aQQ
 qHc
 mLK
-aDC
+umm
 ajj
 ajj
 aBr
@@ -54015,16 +54026,16 @@ aFP
 ajj
 ajj
 ajj
-aDC
-aDC
-aDC
-aDC
-aDC
-aDC
+umm
+umm
+umm
+umm
+umm
+umm
 akS
-aDC
-aDC
-aDC
+umm
+umm
+umm
 ajj
 ajj
 ayd
@@ -54276,13 +54287,13 @@ ajj
 ajj
 ajj
 ajj
-aDC
+umm
 aqV
 aYt
 aHY
 aZz
-aDC
-aDC
+umm
+umm
 ajj
 ajj
 ahU
@@ -54533,13 +54544,13 @@ aIm
 aqP
 azC
 ayI
-aDC
+umm
 azj
 awW
 aOW
 aMV
 aZA
-aDC
+umm
 ajj
 ajj
 aFP
@@ -54796,7 +54807,7 @@ atJ
 axo
 aLe
 alH
-aDC
+umm
 ajj
 ajj
 aAc
@@ -55047,13 +55058,13 @@ aFP
 aRP
 azC
 ayI
-aDC
+umm
 aFN
-aYt
+akS
+umm
 aHj
-aHj
-aDC
-aDC
+umm
+umm
 ajj
 ajj
 agy
@@ -55304,14 +55315,14 @@ ajj
 ajj
 ajj
 ajj
-aDC
-aDC
-akS
-aDC
+umm
+aYt
+aYt
 umm
 umm
-aDC
-ajj
+umm
+umm
+umm
 ajj
 ahQ
 aNk
@@ -55556,19 +55567,19 @@ aFP
 aLH
 ajj
 ajj
-aDC
-aDC
-aDC
-aDC
-aDC
-aDC
-aHJ
+umm
+umm
+umm
+umm
+umm
+umm
+aYt
 aYt
 umm
 aSU
 aJy
+aWY
 umm
-ajj
 ajj
 akp
 aFP
@@ -55813,19 +55824,19 @@ aFP
 aFP
 ajj
 ajj
-aDC
+umm
 aYk
 agk
 aPx
 aPx
-aDC
+umm
 aZW
 aYt
 umm
 pUJ
-aWY
+pUJ
+dUh
 umm
-ajj
 ajj
 aFP
 aFP
@@ -56070,7 +56081,7 @@ aFP
 aFP
 ajj
 ajj
-aDC
+umm
 ayt
 aCU
 aPx
@@ -56080,9 +56091,9 @@ aYt
 aYt
 aoE
 pUJ
-dUh
+pUJ
+neb
 umm
-ajj
 ajj
 aaY
 aOz
@@ -56327,19 +56338,19 @@ aFP
 aBr
 ajj
 ajj
-aDC
+umm
 aCF
 aMQ
 aPx
 awY
-aDC
+umm
 aYt
 aYt
 umm
 ahk
 amu
+eqr
 umm
-ajj
 ajj
 akp
 aFP
@@ -56584,20 +56595,20 @@ aLH
 ayd
 aFP
 ajj
-aDC
-aDC
-aDC
-aDC
-aDC
-aDC
-aDC
-aDC
-aDC
 umm
 umm
-aDC
+umm
+umm
+umm
+umm
+umm
+umm
+umm
+umm
+umm
+umm
+umm
 ajj
-aBp
 agy
 aFP
 ajj
@@ -60949,7 +60960,7 @@ aVC
 aOY
 aSC
 aSC
-neb
+aHJ
 sMF
 aFP
 aCM
