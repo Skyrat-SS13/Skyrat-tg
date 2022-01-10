@@ -282,7 +282,7 @@
 					/obj/item/reagent_containers/glass/bottle/penis_enlarger = 6,
 
 					//special
-					/obj/item/clothing/glasses/nice_goggles = 1, //easter egg, don't touch plz)
+					/obj/item/clothing/glasses/nice_goggles = 1) //easter egg, don't touch plz)
 
 	premium = list(
 		/obj/item/clothing/under/dress/corset = 4,
