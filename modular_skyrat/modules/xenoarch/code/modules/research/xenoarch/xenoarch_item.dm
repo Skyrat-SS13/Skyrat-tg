@@ -18,7 +18,7 @@
 
 //broken items
 /obj/item/xenoarch/broken_item
-	name = "parent dev item"
+	name = "broken item"
 	desc = "An item that has been damaged, destroyed for quite some time. It is possible to recover it."
 
 /obj/item/xenoarch/broken_item/tech
@@ -58,6 +58,7 @@
 							CELL_LINE_TABLE_COCKROACH,
 							CELL_LINE_TABLE_CORGI,
 							CELL_LINE_TABLE_COW,
+							CELL_LINE_TABLE_MOONICORN,
 							CELL_LINE_TABLE_GELATINOUS,
 							CELL_LINE_TABLE_GRAPE,
 							CELL_LINE_TABLE_MEGACARP,
@@ -67,7 +68,13 @@
 							CELL_LINE_TABLE_SLIME,
 							CELL_LINE_TABLE_SNAKE,
 							CELL_LINE_TABLE_VATBEAST,
-							CELL_LINE_TABLE_NETHER,)
+							CELL_LINE_TABLE_NETHER,
+							CELL_LINE_TABLE_GLUTTON,
+							CELL_LINE_TABLE_FROG,
+							CELL_LINE_TABLE_WALKING_MUSHROOM,
+							CELL_LINE_TABLE_QUEEN_BEE,
+							CELL_LINE_TABLE_LEAPER,
+							CELL_LINE_TABLE_MEGA_ARACHNID)
 	AddElement(/datum/element/swabable, pick_celltype, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
 
 /obj/item/xenoarch/broken_item/clothing
@@ -96,17 +103,6 @@
 	name = "Xenoarch Scanner (Machine Board)"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/xenoarch/scanner
-	req_components = list(
-		/obj/item/stock_parts/micro_laser = 1,
-		/obj/item/stock_parts/matter_bin = 1,
-		/obj/item/stack/cable_coil = 2,
-		/obj/item/stack/sheet/glass = 2)
-	needs_anchored = TRUE
-
-/obj/item/circuitboard/machine/xenoarch_digger
-	name = "Xenoarch Digger (Machine Board)"
-	greyscale_colors = CIRCUIT_COLOR_SCIENCE
-	build_path = /obj/machinery/xenoarch/digger
 	req_components = list(
 		/obj/item/stock_parts/micro_laser = 1,
 		/obj/item/stock_parts/matter_bin = 1,
