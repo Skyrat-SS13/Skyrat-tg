@@ -1,6 +1,18 @@
 // SKYRAT EDIT CHANGE -- MARKER buff to balance it more around our pop.
 // Can't be moved to modular_skyrat since it's defines, and not having it here makes /everything/ throw errors.
-// Overmind defines
+// MASTER defines
+
+// MASTER defines
+
+#define MASTER_MAX_POINTS_DEFAULT 100 // Max point storage
+#define MASTER_STARTING_POINTS 60 // Points granted upon start
+#define MASTER_STARTING_REROLLS 1 // Free strain rerolls at the start
+#define MASTER_STARTING_MIN_PLACE_TIME 1 MINUTES // Minimum time before the core can be placed
+#define MASTER_STARTING_AUTO_PLACE_TIME 6 MINUTES // After this time, randomly place the core somewhere viable
+#define MASTER_WIN_CONDITION_AMOUNT 400 // Blob structures required to win
+#define MASTER_ANNOUNCEMENT_MIN_SIZE 75 // Once the blob has this many structures, announce their presence
+#define MASTER_ANNOUNCEMENT_MAX_TIME 10 MINUTES // If the blob hasn't reached the minimum size before this time, announce their presence
+#define MASTER_MAX_CAMERA_STRAY "3x3" // How far the master camera is allowed to stray from blob tiles. 3x3 is 1 tile away, 5x5 2 tiles etc
 
 
 
@@ -47,7 +59,7 @@
 #define MARKER_RESOURCE_MIN_DISTANCE                  3           // Minimum distance between resource markers
 #define MARKER_RESOURCE_GATHER_DELAY                  4 SECONDS   // Gather points when pulsed outside this interval
 #define MARKER_RESOURCE_GATHER_ADDED_DELAY            0.4 SECONDS// Every additional resource marker adds this amount to the gather delay
-#define MARKER_RESOURCE_GATHER_AMOUNT                 1           // The amount of points added to the overmind
+#define MARKER_RESOURCE_GATHER_AMOUNT                 1           // The amount of points added to the master
 
 #define MARKER_REGULAR_MAX_HP                         30
 #define MARKER_REGULAR_HP_REGEN                       1           // Health regenerated when pulsed by a node/core
@@ -71,7 +83,7 @@
 #define MARKER_REFUND_REFLECTOR_COST                  4
 #define MARKER_REFUND_FACTORY_COST                    25
 #define MARKER_REFUND_NODE_COST                       25
-
+#define MARKER_REFUND_RESOURCE_COST 				  15
 // MARKER power properties
 
 #define MARKER_POWER_RELOCATE_COST                    25          // Resource cost to move your core to a different node
@@ -89,12 +101,21 @@
 #define MARKERMOB_SLASHER_DMG_UPPER                     16
 #define MARKERMOB_BRUTE_RESOURCE_COST           40          // Purchase price for making a brute
 #define MARKERMOB_BRUTE_HEALTH                  150         // Base brute health
-#define MARKERMOB_BRUTE_DMG_SOLO_LOWER          20          // Damage without active overmind (core dead or xenobio mob)
+#define MARKERMOB_BRUTE_DMG_SOLO_LOWER          20          // Damage without active master (core dead or xenobio mob)
 #define MARKERMOB_BRUTE_DMG_SOLO_UPPER          20
-#define MARKERMOB_BRUTE_DMG_LOWER               4           // Damage dealt with active overmind (most damage comes from strain chems)
+#define MARKERMOB_BRUTE_DMG_LOWER               4           // Damage dealt with active master (most damage comes from strain chems)
 #define MARKERMOB_BRUTE_DMG_UPPER               4
 #define MARKERMOB_BRUTE_REAGENTATK_VOL          20          // Amounts of strain reagents applied on attack -- basically the main damage stat
 #define MARKERMOB_BRUTE_DMG_OBJ                 60          // Damage dealth to objects/machines
 #define MARKERMOB_BRUTE_HEALING_CORE            0.05        // Percentage multiplier HP restored on Life() when within 2 tiles of the marker core
 #define MARKERMOB_BRUTE_HEALING_NODE            0.025       // Same, but for a nearby node
 #define MARKERMOB_BRUTE_HEALTH_DECAY            0.0125      // Percentage multiplier HP lost when not near marker tiles or without factory
+
+/// Forces the blob to place the core where they currently are, ignoring any checks.
+#define MARKER_FORCE_PLACEMENT -1
+/// Normal blob placement, does the regular checks to make sure the blob isn't placing itself in an invalid location
+#define MARKER_NORMAL_PLACEMENT 0
+/// Selects a random location for the blob to be placed.
+#define MARKER_RANDOM_PLACEMENT 1
+
+#define MARKER_REGULAR_HP_INIT 21 // The starting HP of a normal blob tile
