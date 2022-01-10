@@ -6053,12 +6053,13 @@
 /turf/open/floor/iron,
 /area/service/salon)
 "blf" = (
-/obj/effect/turf_decal/trimline/darkblue/filled/line{
-	dir = 8
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
+/obj/effect/turf_decal/trimline/darkblue/filled/line{
+	dir = 9
+	},
+/obj/machinery/computer/shuttle/labor,
 /turf/open/floor/iron/dark,
 /area/security/processing)
 "bli" = (
@@ -6129,6 +6130,10 @@
 "blq" = (
 /turf/open/openspace/icemoon,
 /area/icemoon/surface/outdoors)
+"blt" = (
+/obj/effect/turf_decal/siding/thinplating/dark,
+/turf/open/floor/iron,
+/area/security/office)
 "blv" = (
 /obj/machinery/holopad,
 /obj/structure/cable,
@@ -10697,14 +10702,6 @@
 "bVJ" = (
 /turf/closed/wall/r_wall,
 /area/tcommsat/computer)
-"bVL" = (
-/obj/machinery/door/window/brigdoor/security/cell/northright{
-	req_access_txt = "63"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron,
-/area/security/processing)
 "bVN" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -14944,16 +14941,6 @@
 /obj/item/clothing/glasses/meson/engine/tray,
 /turf/open/floor/iron/showroomfloor,
 /area/engineering/atmos)
-"dte" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/machinery/door/airlock/external{
-	name = "Labor Camp Shuttle Airlock";
-	req_access_txt = "2"
-	},
-/turf/open/floor/plating,
-/area/security/processing)
 "dtn" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
@@ -21580,12 +21567,14 @@
 /turf/open/floor/iron/dark,
 /area/maintenance/starboard/aft)
 "gSU" = (
-/obj/effect/turf_decal/siding/thinplating/dark,
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/security/office)
 "gSZ" = (
@@ -27467,6 +27456,9 @@
 /obj/effect/turf_decal/trimline/darkblue/filled/line{
 	dir = 4
 	},
+/obj/structure/table,
+/obj/item/storage/box/prisoner,
+/obj/item/storage/box/handcuffs,
 /turf/open/floor/iron,
 /area/security/processing)
 "jZW" = (
@@ -28594,14 +28586,6 @@
 /obj/item/assembly/prox_sensor,
 /turf/open/floor/iron,
 /area/ai_monitored/command/storage/eva)
-"kEI" = (
-/obj/structure/table,
-/obj/item/storage/box/prisoner,
-/obj/effect/turf_decal/trimline/darkblue/filled/line{
-	dir = 5
-	},
-/turf/open/floor/iron/dark,
-/area/security/processing)
 "kFF" = (
 /obj/structure/sign/poster/official/random{
 	pixel_y = 32
@@ -29135,6 +29119,11 @@
 /area/hallway/secondary/service)
 "kUL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/turf_decal/trimline/darkblue/filled/line{
+	dir = 1
+	},
+/obj/machinery/computer/prisoner/gulag_teleporter_computer,
+/obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark,
 /area/security/processing)
 "kUX" = (
@@ -35210,6 +35199,12 @@
 "olj" = (
 /turf/closed/wall/r_wall,
 /area/command/heads_quarters/captain)
+"oln" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 10
+	},
+/turf/open/floor/iron,
+/area/security/office)
 "olo" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 6
@@ -37820,15 +37815,6 @@
 /obj/effect/mapping_helpers/airlock/unres,
 /turf/open/floor/iron,
 /area/medical/medbay/lobby)
-"pEU" = (
-/obj/machinery/computer/prisoner/gulag_teleporter_computer{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/darkblue/filled/line{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/security/processing)
 "pFj" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
@@ -42517,9 +42503,6 @@
 /obj/effect/turf_decal/trimline/darkblue/filled/line{
 	dir = 8
 	},
-/obj/machinery/door/window/brigdoor/security/cell/northleft{
-	req_access_txt = "63"
-	},
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron,
 /area/security/processing)
@@ -42647,9 +42630,6 @@
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
-"shJ" = (
-/turf/open/floor/iron/dark,
-/area/security/processing)
 "sis" = (
 /obj/structure/table,
 /obj/item/flashlight/lamp{
@@ -45013,13 +44993,6 @@
 	},
 /turf/open/floor/plating,
 /area/security/brig)
-"tsU" = (
-/obj/machinery/computer/shuttle/labor,
-/obj/effect/turf_decal/trimline/darkblue/filled/line{
-	dir = 9
-	},
-/turf/open/floor/iron/dark,
-/area/security/processing)
 "tto" = (
 /obj/machinery/gateway/centerstation,
 /turf/open/floor/iron/dark,
@@ -47090,6 +47063,14 @@
 /obj/effect/spawner/random/trash/mess,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
+"uwZ" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/security/office)
 "uxb" = (
 /obj/structure/chair/office{
 	dir = 8
@@ -48093,6 +48074,13 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark,
 /area/command/heads_quarters/ce)
+"uYo" = (
+/obj/machinery/gulag_teleporter,
+/obj/effect/turf_decal/trimline/darkblue/filled/line{
+	dir = 5
+	},
+/turf/open/floor/iron/dark,
+/area/security/processing)
 "uYt" = (
 /obj/machinery/computer/atmos_control/tank/oxygen_tank{
 	dir = 1
@@ -48294,17 +48282,6 @@
 	dir = 1
 	},
 /area/hallway/secondary/service)
-"vex" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/obj/machinery/door/airlock/external{
-	name = "Labor Camp Shuttle Airlock";
-	req_access_txt = "2";
-	shuttledocked = 1
-	},
-/turf/open/floor/plating,
-/area/security/processing)
 "vfg" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -50697,17 +50674,6 @@
 	},
 /turf/open/floor/iron,
 /area/tcommsat/computer)
-"wry" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/thinplating/dark/corner{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron,
-/area/security/office)
 "wrB" = (
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/icemoon/surface/outdoors)
@@ -50971,15 +50937,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/maintenance/port/fore)
-"wBs" = (
-/obj/structure/table,
-/obj/effect/turf_decal/trimline/darkblue/filled/line{
-	dir = 1
-	},
-/obj/machinery/light/directional/north,
-/obj/item/storage/box/handcuffs,
-/turf/open/floor/iron/dark,
-/area/security/processing)
 "wBv" = (
 /obj/structure/closet/emcloset,
 /obj/effect/turf_decal/tile/blue,
@@ -52068,10 +52025,8 @@
 /area/hallway/secondary/entry)
 "xbi" = (
 /obj/effect/landmark/start/security_officer,
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 10
-	},
 /obj/structure/chair/stool/directional/east,
+/obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/iron,
 /area/security/office)
 "xbk" = (
@@ -52212,13 +52167,6 @@
 "xfq" = (
 /turf/open/floor/plating,
 /area/cargo/storage)
-"xfC" = (
-/obj/machinery/gulag_teleporter,
-/obj/effect/turf_decal/trimline/darkblue/filled/line{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/security/processing)
 "xgf" = (
 /obj/effect/turf_decal/trimline/green/filled/corner{
 	dir = 4
@@ -53686,12 +53634,6 @@
 /obj/effect/landmark/start/medical_doctor,
 /turf/open/floor/iron/white,
 /area/medical/medbay)
-"xTr" = (
-/obj/effect/turf_decal/trimline/darkblue/filled/line{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/security/processing)
 "xTz" = (
 /obj/machinery/door/airlock{
 	id_tag = "Dorm2";
@@ -77558,7 +77500,7 @@ xHA
 boP
 boP
 fJk
-vex
+ggl
 fJk
 boP
 fJk
@@ -78068,11 +78010,11 @@ abJ
 liB
 liB
 pPB
-rvj
-fhM
+xHA
+boP
 rvj
 tnS
-dte
+ggl
 fJk
 bJB
 fJk
@@ -78325,9 +78267,9 @@ bQM
 sSQ
 liB
 ajs
+xHA
+xHA
 rvj
-tsU
-xTr
 blf
 fMH
 sfU
@@ -78582,12 +78524,12 @@ xHA
 nID
 liB
 qMa
-fJk
-wBs
-shJ
+xHA
+pDV
+rvj
 kUL
 aOR
-bVL
+cQe
 cQe
 cQe
 ivS
@@ -78839,11 +78781,11 @@ puI
 sDK
 liB
 wlp
-fJk
-kEI
-pEU
+xHA
+yhW
+rvj
+uYo
 nbo
-xfC
 iri
 jZD
 etx
@@ -79096,11 +79038,11 @@ xHA
 bSD
 xHA
 xHA
-rvj
+xHA
+edV
 rvj
 rvj
 lSH
-fhM
 fhM
 fhM
 fhM
@@ -79351,10 +79293,10 @@ coA
 xHA
 jjO
 gSU
+oln
 ajA
 xHA
-yhW
-yhW
+edV
 hMr
 edV
 fvg
@@ -79607,9 +79549,9 @@ dFc
 jcp
 puI
 vkM
-gSU
+uwZ
+blt
 wTo
-xHA
 xHA
 xHA
 atz
@@ -79864,7 +79806,7 @@ dFc
 jcp
 puI
 dLs
-wry
+uwZ
 xbi
 vie
 gHz
