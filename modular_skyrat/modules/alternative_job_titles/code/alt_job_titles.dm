@@ -91,7 +91,7 @@
 	alt_titles = list("Head of Security", "Security Commander", "Chief Constable", "Chief of Security", "Sheriff")
 
 /datum/job/janitor
-	alt_titles = list("Janitor", "Custodian", "Custodial Technicial", "Sanitation Technician", "Maid")
+	alt_titles = list("Janitor", "Custodian", "Custodial Technician", "Sanitation Technician", "Maintenance Technician", "Concierge", "Maid")
 
 /datum/job/lawyer
 	alt_titles = list("Lawyer", "Internal Affairs Agent", "Human Resources Agent", "Defence Attorney", "Public Defender", "Barrister", "Prosecutor")
