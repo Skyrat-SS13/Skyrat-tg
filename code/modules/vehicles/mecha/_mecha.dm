@@ -543,7 +543,7 @@
 	if(src == target)
 		return
 	var/dir_to_target = get_dir(src,target)
-	if(dir_to_target && !(dir_to_target & dir))//wrong direction
+	if(!(mecha_flags & OMNIDIRECTIONAL_ATTACKS) && dir_to_target && !(dir_to_target & dir))//wrong direction
 		return
 	if(internal_damage & MECHA_INT_CONTROL_LOST)
 		target = pick(view(3,target))
@@ -1057,6 +1057,10 @@
 	else if(isAI(M))
 		var/mob/living/silicon/ai/AI = M
 		if(forced)//This should only happen if there are multiple AIs in a round, and at least one is Malf.
+			//SKYRAT EDIT ADDITION BEGIN -- MECH CI
+			disable_ci(AI)
+			UnregisterSignal(AI, COMSIG_MOB_CI_TOGGLED) // Manual override because this doesn't finish the proc normally.
+			//SKYRAT EDIT ADDITION END
 			AI.gib()  //If one Malf decides to steal a mech from another AI (even other Malfs!), they are destroyed, as they have nowhere to go when replaced.
 			AI = null
 			mecha_flags &= ~SILICON_PILOT
