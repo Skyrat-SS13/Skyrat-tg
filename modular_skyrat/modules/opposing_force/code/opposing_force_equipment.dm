@@ -277,10 +277,6 @@
 	description = "An energy katana seized from a dead Spider Clan ninja. As well as being highly robust, it allows the \
 					user to teleport short distances using right-click."
 
-/datum/opposing_force_equipment/melee/vibro
-	item_type = /obj/item/vibro_weapon
-	description = "A high-frequency vibrating sword. Able to cut through any and all materials, but lacks the robustness of other swords. Can be wielded to deflect gunfire."
-
 /datum/opposing_force_equipment/melee/eswordarm
 	item_type = /obj/item/autosurgeon/organ/syndicate/esword_arm
 	name = "Energy Sword Arm Implant"
