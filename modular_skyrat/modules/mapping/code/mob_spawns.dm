@@ -364,15 +364,15 @@
 
 /datum/id_trim/away/tarkon
 	assignment = "P-T Cargo Personell"
-	access = list(ACCESS_AWAY_GENERAL, 66)
+	access = list(66, ACCESS_AWAY_GENERAL)
 
 /datum/id_trim/away/tarkon/sec
 	assignment = "P-T Port Guard"
-	access = list(ACCESS_AWAY_GENERAL, 210, 66)
+	access = list(66, ACCESS_AWAY_GENERAL, 210)
 
 /datum/id_trim/away/tarkon/med
 	assignment = "P-T Trauma Medic"
-	access = list(ACCESS_AWAY_GENERAL, 5, 66)
+	access = list(5, 66, ACCESS_AWAY_GENERAL)
 
 /datum/id_trim/away/tarkon/eng
 	assignment = "P-T Maintenance Crew"
