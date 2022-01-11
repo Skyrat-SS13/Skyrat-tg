@@ -444,10 +444,18 @@
 "dk" = (
 /obj/structure/closet/crate,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/vending_refill/cigarette,
-/obj/item/vending_refill/coffee,
-/obj/item/vending_refill/boozeomat,
-/obj/item/vending_refill/cola,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/holosign_creator/janibarrier,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/storage)
 "dl" = (
@@ -924,16 +932,8 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/power1)
 "go" = (
-/obj/structure/closet/crate/hydroponics,
-/obj/item/cultivator,
-/obj/item/cultivator,
-/obj/item/shovel/spade,
-/obj/item/shovel/spade,
-/obj/item/reagent_containers/spray/weedspray,
-/obj/item/reagent_containers/spray/weedspray,
-/obj/item/reagent_containers/spray/pestspray,
-/obj/item/reagent_containers/spray/pestspray,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/vending/hydronutrients,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/garden)
 "gt" = (
@@ -1321,31 +1321,8 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "iJ" = (
-/obj/structure/closet/crate/hydroponics,
-/obj/item/seeds/ambrosia,
-/obj/item/seeds/ambrosia,
-/obj/item/seeds/apple,
-/obj/item/seeds/apple,
-/obj/item/seeds/berry,
-/obj/item/seeds/berry,
-/obj/item/seeds/banana,
-/obj/item/seeds/carrot,
-/obj/item/seeds/carrot,
-/obj/item/seeds/chili,
-/obj/item/seeds/corn,
-/obj/item/seeds/cotton,
-/obj/item/seeds/grape,
-/obj/item/seeds/grape,
-/obj/item/seeds/grass,
-/obj/item/seeds/grass,
-/obj/item/seeds/onion,
-/obj/item/seeds/orange,
-/obj/item/seeds/orange,
-/obj/item/seeds/potato,
-/obj/item/seeds/potato,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/vending/hydroseeds,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/garden)
 "iM" = (
@@ -1614,6 +1591,7 @@
 /obj/effect/turf_decal/tile/blue/half{
 	dir = 1
 	},
+/obj/machinery/vending/cigarette,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/comms)
 "kt" = (
@@ -2941,8 +2919,11 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/starboardhall)
 "tk" = (
+/obj/structure/table/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/vending/boozeomat,
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/port_tarkon/starboardhall)
+/area/ruin/space/has_grav/port_tarkon/centerhall)
 "tn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -3715,6 +3696,11 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/centerhall)
+"yv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/vending/coffee,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/port_tarkon/afthall)
 "yx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/frame/machine,
@@ -4362,6 +4348,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
+/obj/item/mod/module/visor/rave,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/cargo)
 "Dv" = (
@@ -5341,6 +5328,11 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/mining)
+"Jx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/vending/cola,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/port_tarkon/afthall)
 "Jz" = (
 /obj/structure/alien/weeds,
 /obj/effect/decal/cleanable/dirt,
@@ -6480,10 +6472,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/garden)
 "Rp" = (
-/obj/structure/closet/crate,
-/obj/item/lustwish_discount,
-/obj/item/vending_refill/lustwish,
-/obj/item/mod/module/visor/rave,
+/obj/machinery/vending/dorms,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/cargo)
 "Rq" = (
@@ -6827,9 +6816,22 @@
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "Ts" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate/secure/hydroponics,
-/obj/item/vending_refill/hydronutrients,
-/obj/item/vending_refill/hydroseeds,
+/obj/structure/closet/crate,
+/obj/item/bedsheet/dorms,
+/obj/item/bedsheet/dorms,
+/obj/item/bedsheet/dorms,
+/obj/item/bedsheet/dorms,
+/obj/item/bedsheet/dorms,
+/obj/item/bedsheet/dorms,
+/obj/item/bedsheet/dorms,
+/obj/item/bedsheet/dorms,
+/obj/item/bedsheet/dorms,
+/obj/item/bedsheet/dorms,
+/obj/item/bedsheet/dorms_double,
+/obj/item/bedsheet/dorms_double,
+/obj/item/bedsheet/dorms_double,
+/obj/item/bedsheet/dorms_double,
+/obj/item/bedsheet/dorms_double,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/storage)
 "Tz" = (
@@ -7266,6 +7268,11 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/secoff)
+"Wp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/vending/snack/teal,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/port_tarkon/afthall)
 "Wq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -10263,7 +10270,7 @@ Pz
 LN
 jr
 LN
-LN
+Wp
 ZM
 ZM
 hy
@@ -10337,7 +10344,7 @@ LN
 jr
 Eq
 LN
-LN
+yv
 ZM
 ZM
 hy
@@ -10411,7 +10418,7 @@ Or
 GT
 GT
 LN
-LN
+Jx
 ZM
 ed
 ed
@@ -10836,7 +10843,7 @@ xU
 xU
 xU
 ZC
-KA
+tk
 IU
 WM
 sl
@@ -11562,7 +11569,7 @@ Cv
 cU
 MF
 Bg
-tk
+Bg
 Bg
 Ps
 Bg
