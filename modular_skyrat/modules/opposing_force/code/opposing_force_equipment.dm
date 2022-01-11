@@ -562,7 +562,7 @@
 			and services at lucrative prices. The briefcase also feels a little heavier to hold; it has been \
 			manufactured to pack a little bit more of a punch if your client needs some convincing."
 
-	/datum/opposing_force_equipment/other/c10k
+/datum/opposing_force_equipment/other/c10k
 	name = "10000 Space Cash Bill"
 	item_type = /obj/item/stack/spacecash/c10000
 	description = "Cold hard cash. When you REALLY need to bribe or buy your way in. Or to payroll your gangmembers."
