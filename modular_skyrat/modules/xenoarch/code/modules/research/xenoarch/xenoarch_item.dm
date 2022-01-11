@@ -85,6 +85,7 @@
 	cost = 1000
 	unit_name = "broken object"
 	export_types = list(/obj/item/xenoarch/broken_item)
+	include_subtype = TRUE
 
 //circuit boards
 /obj/item/circuitboard/machine/xenoarch_researcher
