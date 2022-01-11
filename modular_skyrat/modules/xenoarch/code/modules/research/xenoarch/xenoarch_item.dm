@@ -43,7 +43,7 @@
 
 /obj/item/xenoarch/broken_item/animal
 	name = "preserved animal carcass"
-	desc = "An animal that is long past its prime. It is possible to recover it."
+	desc = "An animal that is long past its prime. It is possible to recover it. Can be swabbed to recover its original animal's remnant DNA."
 	icon_state = "recover_animal"
 
 /obj/item/xenoarch/broken_item/animal/Initialize()
