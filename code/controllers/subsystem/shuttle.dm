@@ -105,7 +105,7 @@ SUBSYSTEM_DEF(shuttle)
 
 		supply_packs[pack.id] = pack
 
-	initial_load()
+	setup_shuttles(stationary_docking_ports)
 	has_purchase_shuttle_access = init_has_purchase_shuttle_access()
 
 	if(!arrivals)
@@ -118,10 +118,16 @@ SUBSYSTEM_DEF(shuttle)
 		WARNING("No /obj/docking_port/mobile/supply placed on the map!")
 	return ..()
 
+<<<<<<< HEAD
 /datum/controller/subsystem/shuttle/proc/initial_load()
 	for(var/s in stationary)
 		var/obj/docking_port/stationary/S = s
 		S.load_roundstart()
+=======
+/datum/controller/subsystem/shuttle/proc/setup_shuttles(list/stationary)
+	for(var/obj/docking_port/stationary/port as anything in stationary)
+		port.load_roundstart()
+>>>>>>> 8fd85e9666d ([MDB IGNORE] BIDDLE TRAITORS - Adds progression traitors. Refactors uplink code in its entirety (#63588))
 		CHECK_TICK
 
 /datum/controller/subsystem/shuttle/fire()
