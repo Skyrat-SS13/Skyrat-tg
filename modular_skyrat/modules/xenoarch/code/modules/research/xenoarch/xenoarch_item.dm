@@ -8,10 +8,9 @@
 	icon_state = "useless[rand(1,8)]"
 
 /datum/export/xenoarch/useless_relic
-	cost = 400
+	cost = CARGO_CRATE_VALUE*2
 	unit_name = "xenoarch item"
-	export_types = list(/obj/item/xenoarch/useless_relic,
-						/obj/item/xenoarch/broken_item)
+	export_types = list(/obj/item/xenoarch/useless_relic)
 
 /datum/export/xenoarch/useless_relic/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE) //I really dont want them to feel gimped
 	. = ..()
@@ -44,7 +43,7 @@
 
 /obj/item/xenoarch/broken_item/animal
 	name = "preserved animal carcass"
-	desc = "An animal that is long past its prime. It is possible to recover it."
+	desc = "An animal that is long past its prime. It is possible to recover it. Can be swabbed to recover its original animal's remnant DNA."
 	icon_state = "recover_animal"
 
 /obj/item/xenoarch/broken_item/animal/Initialize()
@@ -83,9 +82,10 @@
 	icon_state = "recover_clothing"
 
 /datum/export/xenoarch/broken_item
-	cost = 1000
+	cost = CARGO_CRATE_VALUE*5
 	unit_name = "broken object"
 	export_types = list(/obj/item/xenoarch/broken_item)
+	include_subtypes = TRUE
 
 //circuit boards
 /obj/item/circuitboard/machine/xenoarch_researcher
