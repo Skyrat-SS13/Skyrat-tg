@@ -88,6 +88,14 @@
 	mutant_variants = NONE
 	heat_protection = CHEST|ARMS
 
+/obj/item/clothing/under/rank/security/detective/runner
+	name = "runner sweater"
+	desc = "<i>\"You look lonely.\"</i>"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "runner"
+	mutant_variants = NONE
+	can_adjust = FALSE
 
 /// SEC GENERAL
 
