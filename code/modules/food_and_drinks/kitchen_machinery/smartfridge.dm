@@ -484,6 +484,7 @@
 					/obj/item/reagent_containers/glass/beaker,
 					/obj/item/reagent_containers/spray,
 					/obj/item/reagent_containers/medigel,
+					/obj/item/reagent_containers/glass/vial, //SKYRAT EDIT HYPOSPRAYS
 					/obj/item/reagent_containers/chem_pack
 	))
 
