@@ -11,8 +11,13 @@
 
 /obj/docking_port/mobile/proc/admin_fly_shuttle(mob/user)
 	var/list/options = list()
+<<<<<<< HEAD
 	options += "-----COMPATABLE DOCKS:" //SKYRAT EDIT ADDITION
 	for(var/port in SSshuttle.stationary)
+=======
+
+	for(var/port in SSshuttle.stationary_docking_ports)
+>>>>>>> c6d616ff111 (Documents and improves the variable names of the shuttle subsystem (#63946))
 		if (istype(port, /obj/docking_port/stationary/transit))
 			continue  // please don't do this
 		var/obj/docking_port/stationary/S = port
@@ -70,7 +75,7 @@
 
 	var/list/options = list()
 
-	for(var/port in SSshuttle.stationary)
+	for(var/port in SSshuttle.stationary_docking_ports)
 		if (istype(port, /obj/docking_port/stationary/transit))
 			continue  // please don't do this
 		var/obj/docking_port/stationary/S = port
