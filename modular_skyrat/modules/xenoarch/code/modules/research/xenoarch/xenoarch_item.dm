@@ -8,7 +8,7 @@
 	icon_state = "useless[rand(1,8)]"
 
 /datum/export/xenoarch/useless_relic
-	cost = 400
+	cost = CARGO_CRATE_VALUE*2
 	unit_name = "xenoarch item"
 	export_types = list(/obj/item/xenoarch/useless_relic)
 
@@ -82,7 +82,7 @@
 	icon_state = "recover_clothing"
 
 /datum/export/xenoarch/broken_item
-	cost = 1000
+	cost = CARGO_CRATE_VALUE*5
 	unit_name = "broken object"
 	export_types = list(/obj/item/xenoarch/broken_item)
 	include_subtype = TRUE
