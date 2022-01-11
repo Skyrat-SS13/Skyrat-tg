@@ -321,3 +321,115 @@
       waste disposal room.
   thestubborn:
   - bugfix: icebox's lawyer office has always had a drobe, stop gaslighting
+2022-01-10:
+  Melbert:
+  - bugfix: You can no longer override the ling DNA you're currently disguised as.
+      This was apparently always intended but broken for ages.
+  - code_imp: Modernized much of ling code.
+  - refactor: Also refactored part of ling code. The ling chemical hud element should
+      be a bit snappier now.
+  - bugfix: 'Tram medical: Adds some missing white medkits.'
+  - bugfix: 'Tram medical: Cryo freezer actually works.'
+  - bugfix: 'Tram medical: Adds some missing wall mounts and firelocks.'
+  - bugfix: 'Tram medical: You can reach the corner table in the chem lab'
+  - bugfix: 'Tram medical: Changes windoor directions in the pharmacy, fixes access
+      on shutters'
+  - bugfix: 'Tram medical: Privacy shutters for the CMO''s office'
+  SkyratBot:
+  - bugfix: Wardens and Heads of Security Rejoice! You are now able to send tiders
+      to the gulag to labor for the better of the station after they steal your third
+      baton (on TramStation)!
+  - bugfix: stools on the main station are now facing the correct directions
+  - bugfix: The status screen in the ERT Bay in CentComm has been moved to the other
+      side of the wall because we accidentally kept sending them down and the crew
+      would keep selling them.
+  - bugfix: Sholean Grapes can use their gel cocoon ability again.
+  - bugfix: The holopad is now back in Security's meeting room on MetaStation! Silicon
+      lovers and cold-callers rejoice!
+  - bugfix: TK will no longer try to interact with your HUD (again).
+  - balance: Clarke can now attack in all directions
+  - balance: Clarke can now search for ruins
+  - balance: Clarke no longer gets a diagnostic HUD
+  - rscdel: Removed monkey mode from the code, when admins ran it it was broken anyways
+  - rscdel: Jungle fever no longer spreads via monkey bites after conversion, and
+      it is now jungle flu.
+  - rscadd: 3 new space ruins, 2 chunks of a blown up space station and a NEW asteroid!
+  Stalkeros:
+  - rscadd: Added xenoarchaeology room to every mining map that lacked one.
+  linnpap:
+  - rscadd: Added a ton of clothing sprites for teshari (made by Halcyon)
+  nikothedude:
+  - rscadd: Added a new verb that allows you to emote using the container your mob
+      is in, using their name. The verb's name is *exme and either be used using the
+      say window, command bar, or the IC tab as "Emote using Vehicle/Container".
+  - bugfix: Mechs can now use CI! Rejoice!
+  - rscadd: New proc to allow emote_flick to be called on objects.
+  softcerv:
+  - bugfix: hypovials can fit inside fridges again
+  tastyfish:
+  - bugfix: Interdyne and DS-2 ID cards are now registered to their owner again.
+2022-01-11:
+  ATHATH:
+  - bugfix: The pig, cow, and horse masks were not available for purchase in the AutoDrobe
+      like the other animal masks are. This oversight has been corrected.
+  - bugfix: The toggleable voice modification boxes of animal masks that don't cover
+      your mouth now actually work.
+  Ebin-Halcyon:
+  - imageadd: Missing Teshari sprites and files that are named wrong
+  GoldenAlpharex:
+  - rscdel: 'Striking News: The Syndicate has temporarily put on hold their contract
+      with the Spider clan, resulting in shortage in Cyborg Ninja kits in the uplinks.
+      No further information was given, but rumor has it that there was many changes
+      to one of its main items and that the Syndicate will take a moment to adapt
+      it to their needs.'
+  - bugfix: Fixed the instances where speech wasn't handled properly, such as hulks
+      not yelling and tongue modifications.
+  Melbert:
+  - refactor: Refactored cult buildings to exorcise some copy+paste. Some cosmetic
+      cult buildings won't drop metal now (but still work for cultists!).
+  - balance: Buffed hydroponics dirt tray's capacity to 15u.
+  Ryll/Shaps:
+  - admin: Log messages for being deconverted from a revolution are now also registered
+      in the mob's individual logs instead of just to the game.log
+  SkyratBot:
+  - bugfix: Fixed an issue where cancelling out of tgui input text didn't count as
+      null/no entry. You can now properly cancel out of succumb, etc.
+  - bugfix: Pressing enter on tgui input text will no longer briefly create a new
+      line.
+  - balance: The Detective can now print .38 Rubber at the Security Protolathe.
+  - refactor: Decks of cards are actual lists of cards now + other improvements.
+  - bugfix: You can now put X4/C4 onto playing cards, and put them into decks without
+      deleting your explosive.
+  - bugfix: people with only morgue access can now get to the morgue in tramstation
+  - bugfix: Clicking an open locker on combat mode will no longer deposit your item.
+  - bugfix: The HoP can no longer open CE job slots again.
+  - bugfix: Stray pixel on the drop pod sign removed.
+  - bugfix: You can now stamp papers while blind.
+  - rscadd: Ectoscopic sniffers are now louder, and explain their purpose on examine.
+  - bugfix: Removes non-functioning reagent tanks from Metastation's plumbing room.
+  - code_imp: Nanotrasen has implemented improved checking in their protocols, only
+      delaying the inevitability that the AI can one day get to be a blood cultist.
+  - bugfix: Fixes holodecks not properly deleting simplemobs.
+  - rscadd: Various items provide special texts when suiciding with them.
+  - rscadd: Unique text is shown when suiciding with food, a clown box, bubblegum,
+      bubblegum bubblegum, bees, tinfoil hats, suitcases, Magnus's Grasp, and even
+      when inside a stealth implant box.
+  - rscadd: Crayons now color you when suiciding with them.
+  - rscadd: Blown kisses will now power the supermatter engine.
+  Stalkeros:
+  - rscadd: Adds xenoarch room to Icemoon's mining outpost.
+  fikou & urumasi (with stackoverflows send by shaps):
+  - rscadd: the wizard now has a new flashy weapon.
+  jjpark-kb:
+  - rscadd: added xenoarch bag and belt to cloth and leather recipes respectively
+  - rscadd: 'added some cytology swab cells to animal fossil (xenoarch) qol: brushes
+      will dig 1 depth on unsuccessful brushing (xenoarch)'
+  - balance: doubled the points received from a researcher (xenoarch)
+  - balance: xenoarch adv. tools require a point scanning experiment now
+  - rscdel: removed the digger (xenoarch)
+  oranges:
+  - balance: The engineering borg stun arm malfunction module has been rebalanced
+      to use more power
+  tastyfish:
+  - bugfix: The connect_range component now works correctly, meaning stacking machines
+      in Recycling now pick up stacks again.
