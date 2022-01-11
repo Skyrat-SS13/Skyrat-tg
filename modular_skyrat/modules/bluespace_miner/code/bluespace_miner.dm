@@ -132,9 +132,9 @@
 	name = "Bluespace Miner"
 	desc = "Nanotrasen has revolutionized the procuring of materials with bluespace-- featuring the Bluespace Miner!"
 	cost = CARGO_CRATE_VALUE * 2500 // 500,000, one of the most expensive buys (besides the bicycle, rip)
-	contains = list(/obj/vehicle/ridden/bicycle)
-	crate_name = "Bicycle Crate"
-	crate_type = /obj/structure/closet/crate/large
+	contains = list(/obj/item/circuitboard/machine/bluespace_miner)
+	crate_name = "Bluespace Miner Circuitboard Crate"
+	crate_type = /obj/structure/closet/crate
 
 /* if we were going to go research based
 /datum/design/board/bluespace_miner
