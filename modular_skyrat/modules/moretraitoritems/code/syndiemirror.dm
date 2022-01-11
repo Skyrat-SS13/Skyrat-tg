@@ -55,32 +55,27 @@
 			return
 
 		if(hair_id == "Bald")
-			to_chat(target_human, span_danger("[user] seems to be cutting all your hair off!"))
+			to_chat(target_human, span_danger("Nanites seems to be disintegrating all your hair off!"))
 
-		to_chat(user, span_notice("You begin to masterfully sculpt [target_human]'s hair!"))
+		to_chat(user, span_notice("Nanites begin to reform [target_human]'s hair!"))
 
-		playsound(target_human, 'modular_skyrat/modules/salon/sound/haircut.ogg', 10)
 
 		if(do_after(user, haircut_duration, target_human))
 			target_human.hairstyle = hair_id
 			target_human.update_hair()
-			user.visible_message(span_notice("[user] successfully cuts [target_human]'s hair!"), span_notice("You successfully cut [target_human]'s hair!"))
-			new /obj/effect/decal/cleanable/hair(get_turf(src))
+			user.visible_message(span_notice("[target_human]'s hair changes!"), span_notice("The nanites successfully alter [target_human]'s hair!"))
 	else
 		var/facial_hair_id = tgui_input_list(user, "Please select what facial hairstyle you'd like to sculpt!", "Select masterpiece", GLOB.facial_hairstyles_list)
 		if(!facial_hair_id)
 			return
 
 		if(facial_hair_id == "Shaved")
-			to_chat(target_human, span_danger("[user] seems to be cutting all your facial hair off!"))
+			to_chat(target_human, span_danger("Nanites seems to be disintegrating all your facial hair off!"))
 
-		to_chat(user, "You begin to masterfully sculpt [target_human]'s facial hair!")
-
-		playsound(target_human, 'modular_skyrat/modules/salon/sound/haircut.ogg', 10)
+		to_chat(user, "Nanites begin to reform [target_human]'s facial hair!")
 
 		if(do_after(user, facial_haircut_duration, target_human))
 			target_human.facial_hairstyle = facial_hair_id
 			target_human.update_hair()
-			user.visible_message(span_notice("[user] successfully cuts [target_human]'s facial hair!"), span_notice("You successfully cut [target_human]'s facial hair!"))
-			new /obj/effect/decal/cleanable/hair(get_turf(src))
+			user.visible_message(span_notice("[target_human]'s facial hair changes!"), span_notice("The nanites successfully alter [target_human]'s facial hair!"))
 
