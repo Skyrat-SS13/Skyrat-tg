@@ -21,6 +21,7 @@
 //	limbs_icon = 'modular_skyrat/modules/necromorphs/icons/mob/necromorph/slasher/fleshy.dmi'
 //	mutant_bodyparts = list()
 
+
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,

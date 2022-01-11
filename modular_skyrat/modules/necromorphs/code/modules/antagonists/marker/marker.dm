@@ -4,7 +4,7 @@
 	And a trigger requirement for the structure by default.
 
 	The marker can also be spawned through a marker shard, which will innately spread
-	corruption if sitting still for too long. Not to the level of a active master,
+	corruption if sitting still for too long. Not to the level of a active marker,
 	but minor corruption levels. The shard will also resist all attempts at destroying
 	it actively including being placed in disposals.
 
@@ -38,16 +38,20 @@
 /datum/antagonist/marker/roundend_report()
 	var/basic_report = ..()
 	//Display max markerpoints for blebs that lost
-	if(ismaster(owner.current)) //embarrasing if not
-		var/mob/camera/marker/master = owner.current
-		if(!master.victory_in_progress) //if it won this doesn't really matter
-			var/point_report = "<br><b>[owner.name]</b> took over [master.max_count] tiles at the height of its growth."
+	if(ismarkerovermind(owner.current)) //embarrasing if not
+		var/mob/camera/marker/marker = owner.current
+		if(!marker.victory_in_progress) //if it won this doesn't really matter
+			var/point_report = "<br><b>[owner.name]</b> took over [marker.max_count] tiles at the height of its growth."
 			return basic_report+point_report
 	return basic_report
 
 /datum/antagonist/marker/greet()
-	if(!ismaster(owner.current))
+	. = ..()
+	owner.announce_objectives()
+	if(!ismarkerovermind(owner.current))
 		to_chat(owner,span_userdanger("You feel bloated."))
+
+	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/blobalert.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 
 /datum/antagonist/marker/on_gain()
 	create_objectives()
@@ -77,7 +81,7 @@ TODO: NEEDS TO BE UPDATED WITH PROPER ICONS
 
 
 /datum/antagonist/marker/apply_innate_effects(mob/living/mob_override)
-	if(!ismaster(owner.current))
+	if(!ismarkerovermind(owner.current))
 		if(!pop_action)
 			pop_action = new
 		pop_action.Grant(owner.current)
@@ -91,7 +95,7 @@ TODO: NEEDS TO BE UPDATED WITH PROPER ICONS
 	TODO: ENSURE QDEL
 	TODO: FIX AUTOMATIC PLACEMENT TRIGGERING
 	Infection ability to start marker.
-	Non-masters get this on blob antag assignment
+	Non-markers get this on blob antag assignment
 */
 /datum/action/innate/markerpop
 	name = "Pop"

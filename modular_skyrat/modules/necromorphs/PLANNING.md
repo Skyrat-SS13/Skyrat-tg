@@ -17,3 +17,5 @@
 ## Armor and Weapons ##
 
 Space Station 13 in UE4
+
+* ADD Alarm sounds, sirens, and warning lights that flash.

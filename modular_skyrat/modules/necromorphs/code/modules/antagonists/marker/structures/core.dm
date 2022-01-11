@@ -35,20 +35,20 @@
 	bound_x = -32
 	bound_y = 0
 
-	///The amount of damage we have currently
+	///Was the marker spawned through use of a Marker Shard.
 	var/isShardSpawned = FALSE
-	///The amount of damage we have currently
+	///Use the small variation of the Marker versus the Large one
 	var/useSmallIcon = TRUE
-	///The amount of damage we have currently
+	///Should the marker run its animation loop
 	var/isAnimated = FALSE
-	///The amount of damage we have currently
+	///Is the marker currently active, producing necromorphs and inhabited by a /datum/mind
 	var/isActive = TRUE
 	///The amount of damage we have currently
 	var/damage = 0
 	///The damage we had before this cycle. Used to limit the damage we can take each cycle, and for safe_alert
 	var/damage_archived = 0
 
-	///Used along with a global var to track if we can give out the sm sliver stealing objective
+	///Is the marker the primary power source for the station (If so, reduce the chance of the marker activating)
 	var/is_main_engine = FALSE
 
 	///Boolean used for logging if we've been powered
