@@ -49,6 +49,7 @@
 /mob/living/simple_animal/hostile/true_changeling/Initialize()
 	. = ..()
 	to_chat(src, playstyle_string)
+	devour = new /datum/action/innate/devour
 	devour.Grant(src)
 
 /mob/living/simple_animal/hostile/true_changeling/Life()
