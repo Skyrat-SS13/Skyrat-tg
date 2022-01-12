@@ -537,8 +537,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 				if (SSshuttle.emergencyCallAmount)
 					data["shuttleCalledPreviously"] = TRUE
-					if (SSshuttle.emergencyLastCallLoc)
-						data["shuttleLastCalled"] = format_text(SSshuttle.emergencyLastCallLoc.name)
+					if (SSshuttle.emergency_last_call_loc)
+						data["shuttleLastCalled"] = format_text(SSshuttle.emergency_last_call_loc.name)
 			if (STATE_MESSAGES)
 				data["messages"] = list()
 
