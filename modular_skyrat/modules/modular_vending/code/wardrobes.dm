@@ -132,6 +132,8 @@
 		/obj/item/clothing/under/costume/cybersleek/long = 2,
 		/obj/item/clothing/head/fedora/det_hat/cybergoggles = 2,
 		/obj/item/clothing/suit/toggle/deckard = 2,
+		/obj/item/clothing/suit/armor/vest/det_suit/runner = 2,
+		/obj/item/clothing/under/rank/security/detective/runner = 2,
 		/obj/item/clothing/suit/toggle/labcoat/highvis = 2,
 		/obj/item/clothing/under/rank/security/detective/cowboy = 2,
 		/obj/item/clothing/suit/det_suit/cowboyvest = 2,
