@@ -162,11 +162,13 @@ GLOBAL_VAR_INIT(sec_level_cooldown, FALSE)
 		GLOB.gamma_timer_id = addtimer(CALLBACK(GLOBAL_PROC, .proc/gamma_loop), GAMMA_LOOP_LENGTH, TIMER_UNIQUE | TIMER_STOPPABLE | TIMER_CLIENT_TIME)
 
 ///This is quite franlky the most important proc relating to global sounds, it uses area definition to play sounds depending on your location, and respects the players announcement volume. Generally if you're sending an announcement you want to use priority_announce.
-/proc/alert_sound_to_playing(soundin, vary = FALSE, frequency = 0, falloff = FALSE, channel = 0, pressure_affected = FALSE, sound/S, override_volume = FALSE)
+/proc/alert_sound_to_playing(soundin, vary = FALSE, frequency = 0, falloff = FALSE, channel = 0, pressure_affected = FALSE, sound/S, override_volume = FALSE, list/players)
 	if(!S)
 		S = sound(get_sfx(soundin))
 	var/static/list/quiet_areas = typecacheof(typesof(/area/maintenance) + typesof(/area/space) + typesof(/area/commons/dorms))
-	for(var/m in GLOB.player_list)
+	if(!players)
+		players = GLOB.player_list
+	for(var/m in players)
 		if(ismob(m) && !isnewplayer(m))
 			var/mob/M = m
 			if(M.client.prefs.toggles & SOUND_ANNOUNCEMENTS && M.can_hear())

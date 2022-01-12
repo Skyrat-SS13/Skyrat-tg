@@ -53,7 +53,7 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	id = /obj/item/card/id/advanced/centcom
 	shoes = /obj/item/clothing/shoes/jackboots
-	ears = /obj/item/radio/headset/heads/blueshield/alt
+	ears = /obj/item/radio/headset/headset_bs/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	backpack_contents = list(/obj/item/melee/baton/security/loaded = 1)
 	implants = list(/obj/item/implant/mindshield)
