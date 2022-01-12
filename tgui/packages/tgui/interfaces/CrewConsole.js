@@ -34,7 +34,8 @@ const jobToColor = jobId => {
   if (jobId >= 50 && jobId < 60) {
     return COLORS.department.cargo;
   }
-  if (jobId >= 200 && jobId < 230) {
+  // SKYRAT EDIT - ORIGINAL: if (jobId >= 200 && jobId < 230) {
+  if (jobId >= 200 && jobId < 240) {
     return COLORS.department.centcom;
   }
   return COLORS.department.other;
@@ -130,12 +131,16 @@ const CrewTableEntry = (props, context) => {
         {name}{assignment !== undefined ? ` (${assignment})` : ""}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
-        <ColorBox
-          color={healthToColor(
-            oxydam,
-            toxdam,
-            burndam,
-            brutedam)} />
+        {life_status ? (
+          <ColorBox
+            color={healthToColor(
+              oxydam,
+              toxdam,
+              burndam,
+              brutedam)} />
+        ) : (
+          <ColorBox color={'#ed2814'} />
+        )}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
         {oxydam !== undefined ? (

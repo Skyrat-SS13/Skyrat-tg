@@ -147,6 +147,14 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 /datum/loadout_item/glasses/osi
 	name = "OSI Glasses"
 	item_path = /obj/item/clothing/glasses/osi
+
 /datum/loadout_item/glasses/phantom
 	name = "Phantom Glasses"
 	item_path = /obj/item/clothing/glasses/phantom
+
+/datum/loadout_item/glasses/donator
+	donator_only = TRUE
+
+/datum/loadout_item/glasses/donator/fake_sunglasses
+	name = "Fake Sunglasses"
+	item_path = /obj/item/clothing/glasses/fake_sunglasses

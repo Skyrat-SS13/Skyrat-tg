@@ -8,17 +8,16 @@
 	icon_state = "useless[rand(1,8)]"
 
 /datum/export/xenoarch/useless_relic
-	cost = 400
+	cost = CARGO_CRATE_VALUE*2
 	unit_name = "xenoarch item"
-	export_types = list(/obj/item/xenoarch/useless_relic,
-						/obj/item/xenoarch/broken_item)
+	export_types = list(/obj/item/xenoarch/useless_relic)
 
 /datum/export/xenoarch/useless_relic/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE) //I really dont want them to feel gimped
 	. = ..()
 
 //broken items
 /obj/item/xenoarch/broken_item
-	name = "parent dev item"
+	name = "broken item"
 	desc = "An item that has been damaged, destroyed for quite some time. It is possible to recover it."
 
 /obj/item/xenoarch/broken_item/tech
@@ -44,7 +43,7 @@
 
 /obj/item/xenoarch/broken_item/animal
 	name = "preserved animal carcass"
-	desc = "An animal that is long past its prime. It is possible to recover it."
+	desc = "An animal that is long past its prime. It is possible to recover it. Can be swabbed to recover its original animal's remnant DNA."
 	icon_state = "recover_animal"
 
 /obj/item/xenoarch/broken_item/animal/Initialize()
@@ -58,6 +57,7 @@
 							CELL_LINE_TABLE_COCKROACH,
 							CELL_LINE_TABLE_CORGI,
 							CELL_LINE_TABLE_COW,
+							CELL_LINE_TABLE_MOONICORN,
 							CELL_LINE_TABLE_GELATINOUS,
 							CELL_LINE_TABLE_GRAPE,
 							CELL_LINE_TABLE_MEGACARP,
@@ -67,7 +67,13 @@
 							CELL_LINE_TABLE_SLIME,
 							CELL_LINE_TABLE_SNAKE,
 							CELL_LINE_TABLE_VATBEAST,
-							CELL_LINE_TABLE_NETHER,)
+							CELL_LINE_TABLE_NETHER,
+							CELL_LINE_TABLE_GLUTTON,
+							CELL_LINE_TABLE_FROG,
+							CELL_LINE_TABLE_WALKING_MUSHROOM,
+							CELL_LINE_TABLE_QUEEN_BEE,
+							CELL_LINE_TABLE_LEAPER,
+							CELL_LINE_TABLE_MEGA_ARACHNID)
 	AddElement(/datum/element/swabable, pick_celltype, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
 
 /obj/item/xenoarch/broken_item/clothing
@@ -76,9 +82,10 @@
 	icon_state = "recover_clothing"
 
 /datum/export/xenoarch/broken_item
-	cost = 1000
+	cost = CARGO_CRATE_VALUE*5
 	unit_name = "broken object"
 	export_types = list(/obj/item/xenoarch/broken_item)
+	include_subtypes = TRUE
 
 //circuit boards
 /obj/item/circuitboard/machine/xenoarch_researcher
@@ -96,17 +103,6 @@
 	name = "Xenoarch Scanner (Machine Board)"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/xenoarch/scanner
-	req_components = list(
-		/obj/item/stock_parts/micro_laser = 1,
-		/obj/item/stock_parts/matter_bin = 1,
-		/obj/item/stack/cable_coil = 2,
-		/obj/item/stack/sheet/glass = 2)
-	needs_anchored = TRUE
-
-/obj/item/circuitboard/machine/xenoarch_digger
-	name = "Xenoarch Digger (Machine Board)"
-	greyscale_colors = CIRCUIT_COLOR_SCIENCE
-	build_path = /obj/machinery/xenoarch/digger
 	req_components = list(
 		/obj/item/stock_parts/micro_laser = 1,
 		/obj/item/stock_parts/matter_bin = 1,

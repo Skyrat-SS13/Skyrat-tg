@@ -924,6 +924,7 @@
 	construction_time = 120
 	category = list("Cyborg Upgrade Modules")
 
+/*
 /datum/design/borg_upgrade_pinpointer
 	name = "Cyborg Upgrade (Crew pinpointer)"
 	id = "borg_upgrade_pinpointer"
@@ -932,6 +933,7 @@
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 500)
 	construction_time = 120
 	category = list("Cyborg Upgrade Modules")
+*/
 
 /datum/design/borg_upgrade_broomer
 	name = "Cyborg Upgrade (Experimental Push Broom)"
@@ -1338,3 +1340,17 @@
 	id = "mod_plasma"
 	materials = list(/datum/material/plasma = 1000, /datum/material/glass = 1000)
 	build_path = /obj/item/mod/module/plasma_stabilizer
+
+/datum/design/module/mod_antigrav
+	name = "MOD Module: Anti-Gravity"
+	id = "mod_antigrav"
+	materials = list(/datum/material/iron = 2500, /datum/material/glass = 2000, /datum/material/uranium = 1000)
+	build_path = /obj/item/mod/module/anomaly_locked/antigrav
+	department_type = MODULE_SCIENCE
+
+/datum/design/module/mod_teleporter
+	name = "MOD Module: Teleporter"
+	id = "mod_teleporter"
+	materials = list(/datum/material/iron = 2500, /datum/material/glass = 2000, /datum/material/bluespace = 1000)
+	build_path = /obj/item/mod/module/anomaly_locked/teleporter
+	department_type = MODULE_SCIENCE
