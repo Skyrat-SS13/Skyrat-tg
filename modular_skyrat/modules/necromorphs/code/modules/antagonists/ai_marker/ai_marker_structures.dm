@@ -105,7 +105,7 @@
 	var/blooming = FALSE
 	//Are we a floor resin? If not then we're a wall resin
 	var/floor = TRUE
-
+	var/use_edge = FALSE
 	var/max_alpha = 215
 	var/min_alpha = 20
 	var/vine_scale = 1.1
@@ -116,12 +116,15 @@
 	update_icon()
 
 /obj/structure/corruption/resin/update_icon()
+	. = ..()
 	icon_state = "corruption-[rand(1,3)]"
 
 	var/matrix/M = matrix()
 	M = M.Scale(vine_scale)	//We scale up the sprite so it slightly overlaps neighboring corruption tiles
 	var/rotation = pick(list(0,90,180,270))	//Randomly rotate it
 	transform = turn(M, rotation)
+
+
 /*
 /obj/structure/blob/normal/update_icon_state()
 	icon_state = "blob[(atom_integrity <= 15) ? "_damaged" : null]"
@@ -146,6 +149,26 @@
 		var/obj/effect/overlay/vis/overlay2 = managed_vis_overlays[2]
 		overlay1.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
 		overlay2.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
+	if(use_edge)
+		SSvis_overlays.add_vis_overlay(src, icon, "corruption-edge", layer, plane, dir, alpha)
+		switch(dir) //offset to make it be on the wall rather than on the floor
+			if(NORTH)
+				pixel_y = 32
+			if(SOUTH)
+				pixel_y = -32
+			if(EAST)
+				pixel_x = 32
+			if(WEST)
+				pixel_x = -32
+		var/obj/effect/overlay/vis/overlay3 = managed_vis_overlays[3]
+		var/matrix/M = matrix()
+		M = M.Scale(vine_scale)
+		overlay3.icon_state = "corruption-edge"
+		overlay3.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR | RESET_TRANSFORM
+		overlay3.transform = M
+		overlay3.pixel_x = pixel_x
+		overlay3.pixel_y = pixel_y
+
 	// if(floor)
 	// 	overlays.Cut()
 	// 	for(var/turf/ in GLOB.cardinals)
@@ -186,6 +209,7 @@
 	if(dirList.len)
 		var/newDir = pick(dirList)
 		if(newDir == 16)
+			use_edge = TRUE
 			setDir(pick(GLOB.cardinals))
 		else
 			floor = FALSE
@@ -378,8 +402,7 @@
 	var/spawn_cooldown = 1200 //In deciseconds.
 	var/randpixel = 0
 	var/random_rotation = TRUE
-	var/default_scale = 1
-	var/default_rotation = 0
+
 
 /obj/structure/corruption/structure/spawner/Destroy()
 	if(our_controller)

@@ -4,11 +4,12 @@
 
 #define release_vector(A)	if (!istype(A, /vector2)){\
 		if ( !isnull(A)){\
-			crash_with("Invalid vector released to pool: [to_string(A)]")}}\
+			CRASH("Invalid vector released to pool: [A]")}}\
 	else if (length(GLOB.vector_pool) < VECTOR_POOL_MAX){\
 GLOB.vector_pool += A;}\
 A = null;
 
+#define Clamp(value, low, high) 	(value <= low ? low : (value >= high ? high : value))
 
 #define release_vector_list(A)	for (var/vector2/v in A) {release_vector(v)}\
 A = null;

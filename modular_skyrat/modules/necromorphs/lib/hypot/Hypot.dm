@@ -10,4 +10,4 @@
 		t = y
 		t /= x
 	return x * sqrt(1 + t * t)
-return 0
+

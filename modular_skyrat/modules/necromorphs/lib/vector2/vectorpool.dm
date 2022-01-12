@@ -29,6 +29,7 @@
 GLOBAL_LIST_EMPTY(vector_pool)
 GLOBAL_VAR_INIT(vector_pool_filling, FALSE)
 
+#define macropop(L, A)	A = L[length(L)];L.len--;
 
 //GLOBAL_VAR_INIT(vectors_created, 0)
 //GLOBAL_VAR_INIT(vectors_recycled, 0)

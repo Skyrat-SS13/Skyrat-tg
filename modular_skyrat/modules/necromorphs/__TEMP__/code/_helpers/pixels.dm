@@ -303,7 +303,7 @@
 	bumps if it fails to enter a tile
 
 */
-/atom/movable/proc/pixel_move(var/vector2/position_delta, var/time_delta)
+/atom/movable/proc/pixelMove(var/vector2/position_delta, var/time_delta)
 	//Now before we do animating, lets check if this movement is going to put us into a different tile
 	var/vector2/newpix = get_new_vector((pixel_x + position_delta.x), (pixel_y + position_delta.y))
 	var/blocked = FALSE
@@ -399,7 +399,7 @@
 
 
 //Mobs that get their pixel offset messed up will be able to walk it off
-/mob/living/pixel_move(var/vector2/position_delta, var/time_delta)
+/mob/living/pixelMove(var/vector2/position_delta, var/time_delta)
 	.=..()
 	set_extension(src, /datum/extension/conditionalmove/pixel_align)
 

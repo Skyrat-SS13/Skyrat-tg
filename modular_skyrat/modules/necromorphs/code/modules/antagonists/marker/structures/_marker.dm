@@ -18,6 +18,7 @@
 	layer = BELOW_MOB_LAYER
 	pass_flags_self = PASSBLOB
 	can_atmos_pass = ATMOS_PASS_PROC
+	var/floor = TRUE
 	/// How many points the marker gets back when it removes a marker of that type. If less than 0, marker cannot be removed.
 	var/point_return = 0
 	max_integrity = 30
@@ -112,11 +113,30 @@
 /obj/structure/marker/proc/ConsumeTile()
 	for(var/atom/A in loc)
 		if(isliving(A) && overmind && !ismarkermonster(A)) // Make sure to inject strain-reagents with automatic attacks when needed.
+			//overmind.marker.attack_living(A)
 			continue // Don't smack them twice though
 			A.marker_act(src)
 	if(iswallturf(loc))
 		loc.marker_act(src) //don't ask how a wall got on top of the core, just eat it
 
+/obj/structure/marker/proc/marker_attack_animation(atom/A = null, controller) //visually attacks an atom
+	var/obj/effect/temp_visual/blob/O = new /obj/effect/temp_visual/blob(src.loc)
+	O.setDir(dir)
+	if(controller)
+		var/mob/camera/marker/BO = controller
+		O.color = BO.color
+		O.alpha = 200
+	else if(overmind)
+		O.color = overmind.color
+	if(A)
+		O.do_attack_animation(A) //visually attack the whatever
+	return O //just in case you want to do something to the animation.
+
+/*
+
+Growth Expand Proc: OLD
+
+*/
 
 /obj/structure/marker/proc/expand(turf/T = null, controller = null, expand_reaction = 1)
 	if(!T)
@@ -138,6 +158,7 @@
 		playsound(src.loc, 'sound/effects/splat.ogg', 50, TRUE) //Let's give some feedback that we DID try to spawn in space, since players are used to it
 
 	ConsumeTile() //hit the tile we're in, making sure there are no border objects blocking us
+
 	if(!T.CanPass(src, T)) //is the target turf impassable
 		make_marker = FALSE
 		T.marker_act(src) //hit the turf if it is
@@ -156,10 +177,122 @@
 			B.update_appearance()
 			return B
 		else
+			marker_attack_animation(T, controller)
 			T.marker_act(src) //if we can't move in hit the turf again
 			qdel(B) //we should never get to this point, since we checked before moving in. destroy the blob so we don't have two blobs on one tile
 			return
+	else
+		marker_attack_animation(T, controller) //if we can't, animate that we attacked
+
 	return
+
+/*
+
+	Growth Expand Proc: NEW
+
+*/
+/*
+/obj/structure/marker/proc/expand(turf/T = null, controller = null, expand_reaction = 1)
+	var/direction = 16
+	var/turf/location = loc
+	for(var/wallDir in GLOB.cardinals)
+		var/turf/newTurf = get_step(location,wallDir)
+		if(newTurf && newTurf.density)
+			direction |= wallDir
+
+	for(var/obj/structure/marker/tomato in location)
+		if(tomato == src)
+			continue
+		if(tomato.floor) //special
+			direction &= ~16
+		else
+			direction &= ~tomato.dir
+
+	var/list/dirList = list()
+
+	for(var/i=1,i<=16,i <<= 1)
+		if(direction & i)
+			dirList += i
+
+	if(!T)
+		var/list/dirs = list(1,2,4,8)
+		for(var/i = 1 to 4)
+			var/dirn = pick(dirs)
+			dirs.Remove(dirn)
+			T = get_step(src, dirn)
+			if(!(locate(/obj/structure/marker) in T))
+				break
+			else
+				T = null
+	if(!T)
+		return
+	var/make_marker = TRUE //can we make a marker?
+
+	if(isspaceturf(T) && !(locate(/obj/structure/lattice) in T) && prob(80))
+		make_marker = FALSE
+		playsound(src.loc, 'sound/effects/splat.ogg', 50, TRUE) //Let's give some feedback that we DID try to spawn in space, since players are used to it
+
+	ConsumeTile() //hit the tile we're in, making sure there are no border objects blocking us
+
+	if(dirList.len)
+		var/newDir = pick(dirList)
+		if(newDir == 16)
+			setDir(pick(GLOB.cardinals))
+			make_marker_floor = TRUE
+			icon_state = "blob_wall"
+
+	if(!T.CanPass(src, T)) //is the target turf impassable
+		make_marker = FALSE
+		T.marker_act(src) //hit the turf if it is
+	for(var/atom/A in T)
+		if(!A.CanPass(src, T)) //is anything in the turf impassable
+			make_marker = FALSE
+			continue // Don't smack them twice though
+		A.marker_act(src) //also hit everything in the turf
+
+	if(make_marker)
+	var/obj/structure/marker/B = new /obj/structure/marker/normal(src.loc(pick(GLOB.cardinals)), (controller || overmind))
+		setDir(newDir)
+			switch(dir) //offset to make it be on the wall rather than on the floor
+				if(NORTH)
+					pixel_y = 32
+				if(SOUTH)
+					pixel_y = -32
+				if(EAST)
+					pixel_x = 32
+				if(WEST)
+					pixel_x = -32
+		B.density = TRUE
+		if(T.Enter(B,src)) //NOW we can attempt to move into the tile
+			B.density = initial(B.density)
+			B.forceMove(T)
+			B.icon_state = "blow_wall"
+			B.update_appearance()
+			plane = GAME_PLANE
+			layer = ABOVE_NORMAL_TURF_LAYER
+			return B
+
+	if(make_marker) //well, can we?
+		var/obj/structure/marker/B = new /obj/structure/marker/normal(src.loc, (controller || overmind))
+		B.density = TRUE
+		if(T.Enter(B,src)) //NOW we can attempt to move into the tile
+			B.density = initial(B.density)
+			B.forceMove(T)
+			B.update_appearance()
+			return B
+		else
+			marker_attack_animation(T, controller)
+			T.marker_act(src) //if we can't move in hit the turf again
+			qdel(B) //we should never get to this point, since we checked before moving in. destroy the blob so we don't have two blobs on one tile
+			return
+	else
+		marker_attack_animation(T, controller) //if we can't, animate that we attacked
+
+	return
+*/
+/*
+
+*/
 
 /obj/structure/marker/hulk_damage()
 	return 15
@@ -264,24 +397,39 @@ independently until the event is triggered.
 
 */
 /obj/structure/marker/normal
-	name = "Fleshy growth"
-	//icon = "modular_skyrat/modules/necromorphs/icons/effects/corruption.dmi"
-	icon_state = "blob"
+	name = "Growth"
+	desc = "It looks like mold, but it seems alive."
+	icon = 'modular_skyrat/modules/necromorphs/icons/effects/corruption.dmi'
+	icon_state = "corruption-1"
 	light_range = 0
 	var/initial_integrity = MARKER_REGULAR_HP_INIT
 	max_integrity = MARKER_REGULAR_MAX_HP
 	health_regen = MARKER_REGULAR_HP_REGEN
 	brute_resist = MARKER_BRUTE_RESIST * 0.5
 	color = COLOR_MARKER_RED
+	var/max_alpha = 215
+	var/min_alpha = 20
+	var/vine_scale = 1.1
 
 /obj/structure/marker/normal/Initialize(mapload, owner_overmind)
 	. = ..()
+	desc += " It looks like it's rotting."
+	update_icon()
 	update_integrity(initial_integrity)
 
 /obj/structure/marker/normal/scannerreport()
 	if(atom_integrity <= 15)
 		return "Currently weak to brute damage."
 	return "N/A"
+
+/obj/structure/marker/normal/update_icon()
+	. = ..()
+	icon_state = "corruption-[rand(1,3)]"
+
+	var/matrix/M = matrix()
+	M = M.Scale(vine_scale)	//We scale up the sprite so it slightly overlaps neighboring corruption tiles
+	var/rotation = pick(list(0,90,180,270))	//Randomly rotate it
+	transform = turn(M, rotation)
 
 /obj/structure/marker/normal/update_name()
 	. = ..()
