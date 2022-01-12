@@ -269,17 +269,12 @@
 	if(!chosen)
 		return
 
-<<<<<<< HEAD
-			playsound(TO, 'sound/effects/phasein.ogg', 100, TRUE)
-			priority_announce("Massive bluespace translocation detected.", "Anomaly Alert", ANNOUNCER_MASSIVEBSPACEANOMALIES) //SKYRAT EDIT CHANGE
-=======
 	// Calculate previous position for transition
 	var/turf/FROM = T // the turf of origin we're travelling FROM
 	var/turf/TO = get_turf(chosen) // the turf of origin we're travelling TO
->>>>>>> f8aad14ae87 (Harddel Fix Pack #42 + Better Live Reftracking Support (#63877))
 
 	playsound(TO, 'sound/effects/phasein.ogg', 100, TRUE)
-	priority_announce("Massive bluespace translocation detected.", "Anomaly Alert")
+	priority_announce("Massive bluespace translocation detected.", "Anomaly Alert", ANNOUNCER_MASSIVEBSPACEANOMALIES) //SKYRAT EDIT CHANGE
 
 	var/list/flashers = list()
 	for(var/mob/living/carbon/C in viewers(TO, null))
