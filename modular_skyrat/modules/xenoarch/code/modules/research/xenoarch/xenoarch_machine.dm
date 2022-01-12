@@ -67,7 +67,7 @@
 
 /obj/machinery/xenoarch/researcher/examine(mob/user)
 	. = ..()
-	. += span_notice("[current_research]/100 research points. Research more xenoarchaeological items.")
+	. += span_notice("[current_research]/150 research points. Research more xenoarchaeological items.")
 
 /obj/machinery/xenoarch/researcher/attackby(obj/item/weapon, mob/user, params)
 	if(istype(weapon, /obj/item/storage/bag/xenoarch))
@@ -108,16 +108,16 @@
 		qdel(remove_item)
 		return
 	if(istype(remove_item, /obj/item/xenoarch/strange_rock))
-		current_research += 2
+		current_research += 1
 	if(istype(remove_item, /obj/item/xenoarch/useless_relic))
-		current_research += 10
+		current_research += 5
 	if(istype(remove_item, /obj/item/xenoarch/broken_item))
-		current_research += 20
-	if(current_research >= 100)
-		current_research -= 100
+		current_research += 10
+	if(current_research >= 150)
+		current_research -= 150
 		var/list/choices = subtypesof(/obj/machinery/anomalous_crystal)
 		var/random_crystal = pick(choices)
-		new random_crystal(src)
+		new random_crystal(get_turf(src))
 	qdel(remove_item)
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 	world_compare = world.time + process_speed
