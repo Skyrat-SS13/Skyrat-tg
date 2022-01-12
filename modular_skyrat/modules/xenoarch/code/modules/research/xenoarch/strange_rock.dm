@@ -96,6 +96,7 @@
 		new hidden_item(get_turf(src))
 		qdel(src)
 		return BRUSH_UNCOVER
+	try_dig(1)
 	return BRUSH_NONE
 
 /obj/item/xenoarch/strange_rock/attackby(obj/item/I, mob/living/user, params)
