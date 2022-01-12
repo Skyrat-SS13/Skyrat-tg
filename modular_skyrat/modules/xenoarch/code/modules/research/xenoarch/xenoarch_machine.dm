@@ -59,10 +59,10 @@
 
 /obj/machinery/xenoarch/researcher
 	name = "xenoarch researcher"
-	desc = "A machine that is used to deconstruct strange rocks, useless relics, and broken objects for technology."
+	desc = "A machine that is used to condense strange rocks, useless relics, and broken objects into bigger artifacts."
 	icon_state = "researcher"
 	circuit = /obj/item/circuitboard/machine/xenoarch_researcher
-	///A variable that goes from 0 to 100. Depending on what is processed, increases the value. Once 100, spawns a tech disk.
+	///A variable that goes from 0 to 100. Depending on what is processed, increases the value. Once 100, spawns an anomalous crystal.
 	var/current_research = 0
 
 /obj/machinery/xenoarch/researcher/examine(mob/user)
@@ -115,7 +115,9 @@
 		current_research += 20
 	if(current_research >= 100)
 		current_research -= 100
-		new /obj/item/disk/tech_disk/major(get_turf(src))
+		var/list/choices = subtypesof(/obj/machinery/anomalous_crystal)
+		var/random_crystal = pick(choices)
+		new random_crystal(src)
 	qdel(remove_item)
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 	world_compare = world.time + process_speed
