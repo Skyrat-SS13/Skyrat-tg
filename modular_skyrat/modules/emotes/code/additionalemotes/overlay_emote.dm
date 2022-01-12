@@ -27,6 +27,19 @@
 		flick_overlay_static(overlay, user, 50)
 		playsound(get_turf(user), 'sound/machines/chime.ogg', 25, TRUE)
 
+/datum/emote/living/question
+	key = "question"
+	key_third_person = "questions"
+
+/datum/emote/living/question/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(isliving(user))
+		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "question", ABOVE_MOB_LAYER)
+		overlay.pixel_x = 10
+		overlay.pixel_y = 28
+		flick_overlay_static(overlay, user, 50)
+		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/question.ogg', 25, TRUE)
+
 
 /datum/emote/living/realize
 	key = "realize"
