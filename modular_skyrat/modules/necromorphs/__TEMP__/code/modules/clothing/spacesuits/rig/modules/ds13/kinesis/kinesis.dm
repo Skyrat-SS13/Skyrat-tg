@@ -739,7 +739,7 @@
 	position_delta.SelfMultiply(time_delta * WORLD_ICON_SIZE)
 
 	//We now have the actual pixels we're going to add to our position
-	subject.pixelMove(position_delta, time_delta*10)//We convert the time delta to deciseconds
+	subject.pixel_move(position_delta, time_delta*10)//We convert the time delta to deciseconds
 
 	release_vector(position_delta)
 
