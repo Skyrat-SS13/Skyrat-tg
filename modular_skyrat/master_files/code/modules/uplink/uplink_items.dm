@@ -39,7 +39,6 @@
 	item = /obj/item/guardiancreator/carp/choose
 	cost = 10
 	surplus = 0
-	player_minimum = 25
 	restricted = TRUE
 
 /datum/uplink_item/dangerous/smgc20r_traitor

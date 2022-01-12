@@ -82,20 +82,6 @@ GLOBAL_LIST_INIT(heretic_start_knowledge,list(/datum/eldritch_knowledge/spell/ba
 #define CONSTRUCT_WRAITH "Wraith"
 #define CONSTRUCT_ARTIFICER "Artificer"
 
-<<<<<<< HEAD
-
-/// How many telecrystals a normal traitor starts with
-//#define TELECRYSTALS_DEFAULT 20 //ORIGINAL
-#define TELECRYSTALS_DEFAULT 35 //SKYRAT EDIT CHANGE - ORIGINAL: 20
-/// How many telecrystals mapper/admin only "precharged" uplink implant
-#define TELECRYSTALS_PRELOADED_IMPLANT 10
-/// The normal cost of an uplink implant; used for calcuating how many
-/// TC to charge someone if they get a free implant through choice or
-/// because they have nothing else that supports an implant.
-#define UPLINK_IMPLANT_TELECRYSTAL_COST 4
-
-=======
->>>>>>> 8fd85e9666d ([MDB IGNORE] BIDDLE TRAITORS - Adds progression traitors. Refactors uplink code in its entirety (#63588))
 /// The Classic Wizard wizard loadout.
 #define WIZARD_LOADOUT_CLASSIC "loadout_classic"
 /// Mjolnir's Power wizard loadout.

@@ -20,24 +20,14 @@ SUBSYSTEM_DEF(communications)
 	if(!can_announce(user, is_silicon))
 		return FALSE
 	if(is_silicon)
-<<<<<<< HEAD
-		minor_announce(html_decode(input),"[user.name] Announces:")
-		silicon_message_cooldown = world.time + COMMUNICATION_COOLDOWN_AI
-	else
-		priority_announce(html_decode(user.treat_message(input)), null, ANNOUNCER_CAPTAIN, "Captain", has_important_message = TRUE) //SKYRAT EDIT CHANGE
-		nonsilicon_message_cooldown = world.time + COMMUNICATION_COOLDOWN
-	user.log_talk(input, LOG_SAY, tag="priority announcement")
-	message_admins("[ADMIN_LOOKUPFLW(user)] has made a priority announcement.")
-
-=======
 		minor_announce(html_decode(input),"[user.name] Announces:", players = players)
 		COOLDOWN_START(src, silicon_message_cooldown, COMMUNICATION_COOLDOWN_AI)
 	else
-		priority_announce(html_decode(user.treat_message(input)), null, 'sound/misc/announce.ogg', "[syndicate? "Syndicate " : ""]Captain", has_important_message = TRUE, players = players)
+		priority_announce(html_decode(user.treat_message(input)), null, ANNOUNCER_CAPTAIN, "[syndicate? "Syndicate " : ""]Captain", has_important_message = TRUE, players = players)//SKYRAT EDIT CHANGE
 		COOLDOWN_START(src, nonsilicon_message_cooldown, COMMUNICATION_COOLDOWN)
 	user.log_talk(input, LOG_SAY, tag="priority announcement")
 	message_admins("[ADMIN_LOOKUPFLW(user)] has made a priority announcement.")
-
+/* SKYRAT EDIT REMOVAL
 /**
  * Check if a mob can call an emergency meeting
  *
@@ -69,8 +59,7 @@ SUBSYSTEM_DEF(communications)
 	call_emergency_meeting(user, get_area(user))
 	COOLDOWN_START(src, emergency_meeting_cooldown, COMMUNICATION_COOLDOWN_MEETING)
 	message_admins("[ADMIN_LOOKUPFLW(user)] has called an emergency meeting.")
-
->>>>>>> 8fd85e9666d ([MDB IGNORE] BIDDLE TRAITORS - Adds progression traitors. Refactors uplink code in its entirety (#63588))
+*/
 /datum/controller/subsystem/communications/proc/send_message(datum/comm_message/sending,print = TRUE,unique = FALSE)
 	for(var/obj/machinery/computer/communications/C in GLOB.machines)
 		if(!(C.machine_stat & (BROKEN|NOPOWER)) && is_station_level(C.z))

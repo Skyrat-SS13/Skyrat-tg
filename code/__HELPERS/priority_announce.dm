@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 /* - SKYRAT EDIT REMOVAL - MOVED TO MODULAR PRIORITY_ANNOUNCE.DM
-/proc/priority_announce(text, title = "", sound, type , sender_override, has_important_message)
-=======
 /proc/priority_announce(text, title = "", sound, type , sender_override, has_important_message, players)
->>>>>>> 8fd85e9666d ([MDB IGNORE] BIDDLE TRAITORS - Adds progression traitors. Refactors uplink code in its entirety (#63588))
 	if(!text)
 		return
 
@@ -117,9 +113,5 @@
 				if(alert)
 					SEND_SOUND(target, sound('sound/misc/notice1.ogg'))
 				else
-<<<<<<< HEAD
 					SEND_SOUND(M, sound('sound/misc/notice2.ogg'))
 */
-=======
-					SEND_SOUND(target, sound('sound/misc/notice2.ogg'))
->>>>>>> 8fd85e9666d ([MDB IGNORE] BIDDLE TRAITORS - Adds progression traitors. Refactors uplink code in its entirety (#63588))
