@@ -53,7 +53,7 @@
 		. += span_warning("[src] is in a suboptimal environment: TOO HOT TEMPERATURE!")
 	if(environment.return_pressure() <= ONE_ATMOSPHERE)
 		. += span_warning("[src] is in a suboptimal environment: TOO LITTLE PRESSURE!")
-	if(environment.return_pressure() >= (ONE_ATMOSPHERE * 1.5))
+	if(environment.return_pressure() >= (ONE_ATMOSPHERE * 2))
 		. += span_warning("[src] is in a suboptimal environment: TOO MUCH PRESSURE!")
 	for(var/obj/machinery/bluespace_miner/bs_miner in range(1, src))
 		if(bs_miner != src)
@@ -84,7 +84,8 @@
 		return FALSE
 	// overpressurizing will cause nuclear particles...
 	if(environment.return_pressure() >= (ONE_ATMOSPHERE * 1.5))
-		fire_nuclear_particle()
+		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, FALSE)
+		return FALSE
 	//add amount_produced degrees to the temperature
 	var/datum/gas_mixture/merger = new
 	merger.assert_gas(/datum/gas/carbon_dioxide)
