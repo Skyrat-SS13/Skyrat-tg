@@ -36,7 +36,7 @@
 
 	//What things count as a surface for our practical purposes?
 	//This should only contain types of dense atoms which generally occupy their whole tile. Walls, windows, grilles, etc
-	var/list/valid_types = list(/turf/simulated/wall,
+	var/list/valid_types = list(/turf/closed/wall,
 	/obj/structure/grille,
 	/obj/structure/window,
 	/obj/machinery/door,
@@ -57,8 +57,8 @@
 
 
 
-	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 1.15, STATMOD_EVASION = 10, STATMOD_VIEW_RANGE = 1)
-	auto_register_statmods = FALSE
+//	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 1.15, STATMOD_EVASION = 10, STATMOD_VIEW_RANGE = 1)
+//	auto_register_statmods = FALSE
 
 /datum/extension/wallrun/New(var/atom/movable/_user)
 	.=..()
@@ -77,12 +77,11 @@
 
 /datum/extension/wallrun/proc/start()
 	started_at	=	world.time
-	GLOB.bump_event.register(A, src, /datum/extension/wallrun/proc/on_bumped)
+	RegisterSignal(src, COMSIG_MOVABLE_BUMP, .proc/on_bumped)
 
 
 /datum/extension/wallrun/proc/stop()
-	GLOB.bump_event.unregister(A, src, /datum/extension/wallrun/proc/on_bumped)
-	remove_extension(holder, base_type)
+	UnregisterSignal(src, COMSIG_MOVABLE_BUMP, .proc/on_bumped)
 
 
 
@@ -99,7 +98,7 @@
 		cache_data()
 		mount_to_atom(target)
 		mount_animation()
-		A.visible_message(SPAN_NOTICE("[A] climbs onto the [target]"))
+		A.visible_message("[A] climbs onto the [target]")
 		return TRUE
 
 
@@ -111,14 +110,11 @@
 	offset = get_new_vector(A.x - target.x, A.y - target.y)
 
 	if (istype(mountpoint, /atom/movable))
-		GLOB.moved_event.register(mountpoint, src, /datum/extension/wallrun/proc/on_mountpoint_move)
-	GLOB.destroyed_event.register(mountpoint, src, /datum/extension/wallrun/proc/unmount_to_floor)
-	GLOB.density_set_event.register(mountpoint, src, /datum/extension/wallrun/proc/on_density_set)
-	GLOB.pre_move_event.register(A, src, /datum/extension/wallrun/proc/on_premove)
-	GLOB.moved_event.register(A, src, /datum/extension/wallrun/proc/on_move)
-	GLOB.dir_set_event.register(A, src, /datum/extension/wallrun/proc/dir_set)
-	GLOB.death_event.register(A, src, /datum/extension/wallrun/proc/unmount_to_floor)
-
+		RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/on_mountpoint_move)
+		RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, .proc/on_premove)
+		GLOB.dir_set_event.register(A, src, /datum/extension/wallrun/proc/dir_set)
+		RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/on_move)
+		RegisterSignal(src, COMSIG_LIVING_DEATH, .proc/unmount_to_floor)
 
 	A.pass_flags |= passflag_delta
 	register_statmods()
@@ -204,7 +200,7 @@
 		GLOB.density_set_event.unregister(mountpoint, src, /datum/extension/wallrun/proc/on_density_set)
 		GLOB.pre_move_event.unregister(A, src, /datum/extension/wallrun/proc/on_premove)
 		GLOB.moved_event.unregister(A, src, /datum/extension/wallrun/proc/on_move)
-		GLOB.death_event.unregister(A, src, /datum/extension/wallrun/proc/unmount_to_floor)
+		RegisterSignal(src, COMSIG_MOB_DEATH, .proc/unmount_to_floor)
 
 
 
@@ -216,7 +212,9 @@
 //Called to end mounting and return to standing on the floor
 /datum/extension/wallrun/proc/unmount_to_floor()
 	if (user && !user.stat)
-		user.visible_message(SPAN_NOTICE("[A] climbs down from \the [mountpoint]"))
+		user.visible_message("[A] climbs down from \the [mountpoint]")
+	UnregisterSignal(src, COMSIG_MOB_DEATH, .proc/unmount_to_floor)
+
 	unmount_animation()
 	unmount()
 	unregister_statmods()
@@ -237,6 +235,7 @@
 
 	A.animate_to_default(0)
 	unregister_statmods()
+	UnregisterSignal(src, COMSIG_MOB_DEATH, .proc/unmount_to_floor)
 
 
 /datum/extension/wallrun/proc/cache_data()

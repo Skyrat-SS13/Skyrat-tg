@@ -28,17 +28,12 @@
 	.=..()
 
 
-/datum/extension/resource/proc/setup_meter(var/target)
-	if (!target)
-		target = holder
-	meter = add_resource_meter(target, meter_type, src, TRUE)
-	to_chat(world, "created meter [meter]")
+/datum/extension/resource/proc/setup_meter(var/target) //USED TO APPLY RESOURCE BAR TO HUD
+	return
 
 
 /datum/extension/resource/proc/remove_meter()
-	if (meter)
-		meter = null
-		remove_resource_meter(holder, resource_tag)
+	return
 
 /datum/extension/resource/Process()
 

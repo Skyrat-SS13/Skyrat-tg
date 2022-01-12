@@ -19,8 +19,8 @@
 	var/status
 	var/mob/living/user
 	var/mob/living/carbon/human/H
-	var/cooldown = 1 SECOND
-	var/duration = 1 SECOND
+	var/cooldown = 1 SECONDS
+	var/duration = 1 SECONDS
 	var/tick_interval = 0	//Set this to a positive number to enable ticking
 
 	var/reach	//If set to a positive number, the ability can only target things which are up to this many tiles away
@@ -146,10 +146,10 @@
 		return FALSE
 	if (ongoing_timer)
 		if (stopped_at)
-			to_chat(potential_user, SPAN_NOTICE("[name] is cooling down. You can use it again in [get_cooldown_time() /10] seconds"))
+			to_chat(potential_user, "[name] is cooling down. You can use it again in [get_cooldown_time() /10] seconds")
 			return FALSE
 		else if (started_at)
-			to_chat(src, SPAN_NOTICE("You're already [ability_verb]"))
+			to_chat(src, "You're already [ability_verb]")
 			return FALSE
 
 	if (!can_afford_resource_cost(potential_user, error_messages))

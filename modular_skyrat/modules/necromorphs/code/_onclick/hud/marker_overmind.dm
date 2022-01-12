@@ -16,10 +16,10 @@
 	name = "Marker Help"
 	desc = "Help on playing marker!"
 
-// /atom/movable/screen/marker/marker_help/Click()
-// 	if(ismarkerovermind(usr))
-// 		var/mob/camera/marker/B = usr
-// //		B.marker_help()
+/atom/movable/screen/marker/marker_help/Click()
+	if(ismarkerovermind(usr))
+		var/mob/camera/marker/B = usr
+		//B.marker_help()
 
 /atom/movable/screen/marker/jump_to_node
 	icon_state = "ui_tonode"
