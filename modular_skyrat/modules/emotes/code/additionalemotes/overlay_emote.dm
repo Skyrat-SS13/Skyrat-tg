@@ -3,7 +3,7 @@
 
 /datum/emote/proc/get_toggle(mob/living/user)
 	if(user.client)
-		if(!user.client.prefs.read_preference(/datum/preference/toggle/see_emote_overlay))
+		if(!user.client.prefs.read_preference(/datum/preference/toggle/do_emote_overlay))
 			return FALSE
 	return TRUE
 
