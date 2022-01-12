@@ -32,15 +32,12 @@
 	attack_verb_continuous = "rips into"
 	attack_verb_simple = "rip into"
 	attack_sound = 'sound/effects/blobattack.ogg'
-	next_move_modifier = 0.5 //Faster attacks
 	butcher_results = list(/obj/item/food/meat/slab/human = 15) //It's a pretty big dude. Actually killing one is a feat.
 	gold_core_spawnable = FALSE //Should stay exclusive to changelings tbh, otherwise makes it much less significant to sight one
-	var/datum/action/innate/turn_to_human
 	var/datum/action/innate/devour
 	var/transformed_time = 0
 	var/playstyle_string = span_infoplain("<b><font size=3 color='red'>We have entered our true form!</font> We are unbelievably powerful, and regenerate life at a steady rate. However, most of \
-	our abilities are useless in this form, and we must utilise the abilities that we have gained as a result of our transformation. Currently, we are incapable of returning to a human. \
-	After several minutes, we will once again be able to revert into a human. Taking too much damage will cause us to reach equilibrium and our cells will combust into a shower of gore, watch out!</b>")
+	our abilities are useless in this form, and we must utilise the abilities that we have gained as a result of our transformation. Taking too much damage will cause us to reach equilibrium and our cells will combust into a shower of gore, watch out!</b>")
 	var/mob/living/carbon/human/stored_changeling = null //The changeling that transformed
 	var/devouring = FALSE //If the true changeling is currently devouring a human
 
@@ -52,11 +49,7 @@
 /mob/living/simple_animal/hostile/true_changeling/Initialize()
 	. = ..()
 	to_chat(src, playstyle_string)
-	turn_to_human = new /datum/action/innate/turn_to_human
-	devour = new /datum/action/innate/devour
-	turn_to_human.Grant(src)
 	devour.Grant(src)
-	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
 /mob/living/simple_animal/hostile/true_changeling/Life()
 	. = ..()
@@ -104,7 +97,6 @@
 		visible_message(span_warning("[src] lets out a furious scream as it reaches equilibrium, as it starts exploding into a shower of gore!"), \
 						span_userdanger("We lack the power to maintain our mass, we have reached critic-..."))
 		anchored = TRUE
-		turn_to_human.Remove()
 		AddComponent(/datum/component/pellet_cloud, projectile_type=/obj/projectile/bullet/pellet/bone_fragment, magnitude=8)
 		addtimer(CALLBACK(src, .proc/real_death), rand(3 SECONDS, 6 SECONDS))
 	else
@@ -166,35 +158,6 @@
 	new /obj/effect/gibspawner/generic/animal(loc)
 	. = ..()
 
-/datum/action/innate/turn_to_human
-	name = "Re-Form Human Shell"
-	desc = "We turn back into a human. This takes considerable effort and will stun us for some time afterwards."
-	icon_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
-	button_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
-	background_icon_state = "bg_changeling"
-	button_icon_state = "change_to_human"
-
-/datum/action/innate/turn_to_human/Trigger()
-	var/mob/living/simple_animal/hostile/true_changeling/C = owner
-	if(!C.stored_changeling)
-		to_chat(C,span_warning("We do not have a form other than this!"))
-		return FALSE
-	if(C.stored_changeling.stat == DEAD)
-		to_chat(C,span_warning("Our human form is dead!"))
-		return FALSE
-	if(world.time - C.transformed_time < TRUE_CHANGELING_REFORM_THRESHOLD)
-		var/timeleft = (C.transformed_time + TRUE_CHANGELING_REFORM_THRESHOLD) - world.time
-		to_chat(C,span_warning("We are still unable to change back at will! We need to wait [round(timeleft/600)+1] minutes."))
-		return FALSE
-	C.visible_message(span_warning("[C] suddenly crunches and twists into a smaller form!"), \
-						span_danger("We return to our lesser form."))
-	C.stored_changeling.loc = get_turf(C)
-	C.mind.transfer_to(C.stored_changeling)
-	C.stored_changeling.Stun(2 SECONDS)
-	C.stored_changeling.status_flags &= ~GODMODE
-	qdel(C)
-	return TRUE
-
 /datum/action/innate/devour
 	name = "Devour"
 	desc = "We tear into the innards of a human. After some time, they will be significantly damaged and our health partially restored."
@@ -205,7 +168,7 @@
 /datum/action/innate/devour/Trigger()
 	var/mob/living/simple_animal/hostile/true_changeling/T = owner
 	if(T.devouring)
-		T << span_warning("We are already feasting on a human!")
+		T << span_warning("We are already feasting on a human!") // HOW OLD IS THIS CODE
 		return FALSE
 	var/list/potential_targets = list()
 	for(var/mob/living/carbon/human/H in range(1, usr))
