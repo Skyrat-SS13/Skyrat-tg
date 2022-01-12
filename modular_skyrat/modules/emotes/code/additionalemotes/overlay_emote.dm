@@ -1,13 +1,20 @@
 /datum/emote
 	var/overlay_emote = 'modular_skyrat/master_files/icons/effects/overlay_effects.dmi'
 
+/datum/emote/proc/get_toggle(mob/living/user)
+	if(user.client)
+		if(!user.client.prefs.read_preference(/datum/preference/toggle/see_emote_overlay))
+			return FALSE
+	return TRUE
+
+
 /datum/emote/living/sweatdrop
 	key = "sweatdrop"
 	key_third_person = "sweatdrops"
 
 /datum/emote/living/sweatdrop/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	if(isliving(user))
+	if(isliving(user) && get_toggle(user))
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "sweatdrop", ABOVE_MOB_LAYER)
 		overlay.pixel_x = 10
 		overlay.pixel_y = 10
@@ -20,7 +27,7 @@
 
 /datum/emote/living/exclaim/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	if(isliving(user))
+	if(isliving(user) && get_toggle(user))
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "exclamation", ABOVE_MOB_LAYER)
 		overlay.pixel_x = 10
 		overlay.pixel_y = 28
@@ -33,7 +40,7 @@
 
 /datum/emote/living/question/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	if(isliving(user))
+	if(isliving(user) && get_toggle(user))
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "question", ABOVE_MOB_LAYER)
 		overlay.pixel_x = 10
 		overlay.pixel_y = 28
@@ -47,7 +54,7 @@
 
 /datum/emote/living/realize/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	if(isliving(user))
+	if(isliving(user) && get_toggle(user))
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "realize", ABOVE_MOB_LAYER)
 		overlay.pixel_y = 15
 		flick_overlay_static(overlay, user, 50)
@@ -59,7 +66,7 @@
 
 /datum/emote/living/annoyed/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	if(isliving(user))
+	if(isliving(user) && get_toggle(user))
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "annoyed", ABOVE_MOB_LAYER)
 		overlay.pixel_x = 10
 		overlay.pixel_y = 10
@@ -75,7 +82,7 @@
 /datum/emote/living/glasses/run_emote(mob/living/carbon/human/user, params, type_override, intentional)
 	. = ..()
 	var/obj/O = user.get_item_by_slot(ITEM_SLOT_EYES)
-	if(istype(O, /obj/item/clothing/glasses))
+	if((istype(O, /obj/item/clothing/glasses)) && get_toggle(user))
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "glasses", ABOVE_MOB_LAYER)
 		flick_overlay_static(overlay, user, 10)
 	else
@@ -89,7 +96,7 @@
 
 /datum/emote/living/blush/run_emote(mob/living/carbon/human/user, params, type_override, intentional)
 	. = ..()
-	if(iscarbon(user))
+	if(iscarbon(user) && get_toggle(user))
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "blush", ABOVE_MOB_LAYER)
 		flick_overlay_static(overlay, user, 50)
 		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/blush.ogg', 25, TRUE)
@@ -100,7 +107,7 @@
 
 /datum/emote/living/snore/run_emote(mob/living/carbon/human/user, params, type_override, intentional)
 	. = ..()
-	if(isliving(user))
+	if(isliving(user) && get_toggle(user))
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "snore", ABOVE_MOB_LAYER)
 		overlay.pixel_y = 6
 		flick_overlay_static(overlay, user, 100)
@@ -111,6 +118,6 @@
 
 /datum/emote/living/sigh/run_emote(mob/living/carbon/human/user, params, type_override, intentional)
 	. = ..()
-	if(isliving(user))
+	if(isliving(user) && get_toggle(user))
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "sigh", ABOVE_MOB_LAYER)
 		flick_overlay_static(overlay, user, 50)
