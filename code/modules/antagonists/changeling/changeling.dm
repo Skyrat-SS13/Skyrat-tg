@@ -31,25 +31,25 @@
 	/// The original profile of this changeling.
 	var/datum/changeling_profile/first_profile = null
 	/// How many DNA strands the changeling can store for transformation.
-	var/dna_max = 8 // SKYRAT EDIT - ORIGINAL: 6
+	var/dna_max = 6
 	/// The amount of DNA gained. Includes DNA sting.
 	var/absorbed_count = 0
 	/// The amount of DMA gained using absorb, not DNA sting. Start with one (your original DNA)
 	var/true_absorbs = 0
 	/// The number of chemicals the changeling currently has.
-	var/chem_charges = 75 // SKYRAT EDIT - ORIGINAL: 20
+	var/chem_charges = 20
 	/// The max chemical storage the changeling currently has.
-	var/total_chem_storage = 100 // SKYRAT EDIT - ORIGINAL: 75
+	var/total_chem_storage = 75
 	/// The chemical recharge rate per life tick.
-	var/chem_recharge_rate = 1.5 // SKYRAT EDIT - ORIGINAL: 0.5
+	var/chem_recharge_rate = 0.5
 	/// Any additional modifiers triggered by changelings that modify the chem_recharge_rate.
 	var/chem_recharge_slowdown = 0
 	/// The range this ling can sting things.
 	var/sting_range = 2
 	/// The number of genetics points (to buy powers) this ling currently has.
-	var/genetic_points = 15 // SKYRAT EDIT - ORIGINAL: 10
+	var/genetic_points = 10
 	/// The max number of genetics points (to buy powers) this ling can have..
-	var/total_genetic_points = 15 // SKYRAT EDIT - ORIGINAL: 10
+	var/total_genetic_points = 10
 	/// List of all powers we start with.
 	var/list/innate_powers = list()
 	/// Associated list of all powers we have evolved / bought from the emporium. [path] = [instance of path]
