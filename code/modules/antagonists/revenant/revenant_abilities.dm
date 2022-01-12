@@ -12,8 +12,7 @@
 		return
 
 	if(ishuman(A))
-		//Humans are tagged, so this is fine
-		if(REF(A) in drained_mobs)
+		if(A in drained_mobs)
 			to_chat(src, span_revenwarning("[A]'s soul is dead and empty.") )
 		else if(in_range(src, A))
 			Harvest(A)
@@ -98,7 +97,7 @@
 					to_chat(src, span_revennotice("[target]'s soul has been considerably weakened and will yield no more essence for the time being."))
 					target.visible_message(span_warning("[target] slumps onto the ground."), \
 										   span_revenwarning("Violets lights, dancing in your vision, getting clo--"))
-					drained_mobs += REF(target)
+					drained_mobs.Add(target)
 					target.death(0)
 				else
 					to_chat(src, span_revenwarning("[target ? "[target] has":"[target.p_theyve(TRUE)]"] been drawn out of your grasp. The link has been broken."))

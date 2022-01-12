@@ -148,7 +148,6 @@
 	QDEL_NULL(inv1)
 	QDEL_NULL(inv2)
 	QDEL_NULL(inv3)
-	QDEL_NULL(hands)
 	QDEL_NULL(spark_system)
 	QDEL_NULL(alert_control)
 	cell = null

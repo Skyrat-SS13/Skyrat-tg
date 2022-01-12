@@ -18,6 +18,7 @@
 	var/download_completion = FALSE //GQ of downloaded data.
 	var/download_netspeed = 0
 	var/downloaderror = ""
+	var/obj/item/modular_computer/my_computer = null
 	var/emagged = FALSE
 	var/list/main_repo
 	var/list/antag_repo
@@ -129,7 +130,9 @@
 	return FALSE
 
 /datum/computer_file/program/ntnetdownload/ui_data(mob/user)
-	if(!istype(computer))
+	my_computer = computer
+
+	if(!istype(my_computer))
 		return
 	var/obj/item/computer_hardware/card_slot/card_slot = computer.all_components[MC_CARD]
 	var/list/access = card_slot?.GetAccess()
@@ -147,7 +150,7 @@
 		data["downloadspeed"] = download_netspeed
 		data["downloadcompletion"] = round(download_completion, 0.1)
 
-	var/obj/item/computer_hardware/hard_drive/hard_drive = computer.all_components[MC_HDD]
+	var/obj/item/computer_hardware/hard_drive/hard_drive = my_computer.all_components[MC_HDD]
 	data["disk_size"] = hard_drive.max_capacity
 	data["disk_used"] = hard_drive.used_capacity
 	data["emagged"] = emagged

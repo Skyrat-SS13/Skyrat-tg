@@ -83,8 +83,7 @@
 	include_user = TRUE
 	range = -1
 	clothes_req = FALSE
-	///List of weakrefs to items summoned
-	var/list/datum/weakref/item_refs = list()
+	var/obj/item/item
 	var/item_type = /obj/item/banhammer
 	school = SCHOOL_CONJURATION
 	charge_max = 150
@@ -92,18 +91,18 @@
 	var/delete_old = TRUE //TRUE to delete the last summoned object if it's still there, FALSE for infinite item stream weeeee
 
 /obj/effect/proc_holder/spell/targeted/conjure_item/cast(list/targets, mob/user = usr)
-	if (delete_old && length(item_refs))
-		QDEL_LIST(item_refs)
-		return
-	for(var/mob/living/carbon/C in targets)
-		if(C.dropItemToGround(C.get_active_held_item()))
-			C.put_in_hands(make_item(), TRUE)
+	if (delete_old && item && !QDELETED(item))
+		QDEL_NULL(item)
+	else
+		for(var/mob/living/carbon/C in targets)
+			if(C.dropItemToGround(C.get_active_held_item()))
+				C.put_in_hands(make_item(), TRUE)
 
 /obj/effect/proc_holder/spell/targeted/conjure_item/Destroy()
-	QDEL_LIST(item_refs)
+	if(item)
+		qdel(item)
 	return ..()
 
 /obj/effect/proc_holder/spell/targeted/conjure_item/proc/make_item()
-	var/obj/item/item = new item_type
-	item_refs += WEAKREF(item)
+	item = new item_type
 	return item

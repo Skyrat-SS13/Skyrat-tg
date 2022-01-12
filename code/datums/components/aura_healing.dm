@@ -85,11 +85,8 @@
 
 /datum/component/aura_healing/Destroy(force, silent)
 	STOP_PROCESSING(SSaura_healing, src)
-	var/alert_category = "aura_healing_[REF(src)]"
 
-	for(var/mob/living/alert_holder in current_alerts)
-		alert_holder.clear_alert(alert_category)
-	current_alerts.Cut()
+	QDEL_LIST_ASSOC_VAL(current_alerts)
 
 	return ..()
 
@@ -111,7 +108,7 @@
 		if (!(candidate in current_alerts))
 			var/atom/movable/screen/alert/aura_healing/alert = candidate.throw_alert(alert_category, /atom/movable/screen/alert/aura_healing, new_master = parent)
 			alert.desc = "You are being healed by [parent]."
-			current_alerts += candidate
+			current_alerts[candidate] = alert
 
 		if (should_show_effect && candidate.health < candidate.maxHealth)
 			new /obj/effect/temp_visual/heal(get_turf(candidate), healing_color)

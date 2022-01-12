@@ -33,8 +33,7 @@
 
 /datum/action/proc/link_to(Target)
 	target = Target
-	RegisterSignal(target, COMSIG_ATOM_UPDATED_ICON, .proc/OnUpdatedIcon)
-	RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/clear_ref, override = TRUE)
+	RegisterSignal(Target, COMSIG_ATOM_UPDATED_ICON, .proc/OnUpdatedIcon)
 
 /datum/action/Destroy()
 	if(owner)
@@ -50,7 +49,7 @@
 				return
 			Remove(owner)
 		owner = M
-		RegisterSignal(owner, COMSIG_PARENT_QDELETING, .proc/clear_ref, override = TRUE)
+		RegisterSignal(owner, COMSIG_PARENT_QDELETING, .proc/owner_deleted)
 
 		//button id generation
 		var/counter = 0
@@ -76,12 +75,9 @@
 	else
 		Remove(owner)
 
-/datum/action/proc/clear_ref(datum/ref)
+/datum/action/proc/owner_deleted(datum/source)
 	SIGNAL_HANDLER
-	if(ref == owner)
-		Remove(owner)
-	if(ref == target)
-		qdel(src)
+	Remove(owner)
 
 /datum/action/proc/Remove(mob/M)
 	for(var/datum/weakref/reference as anything in sharers)
@@ -97,13 +93,10 @@
 		M.update_action_buttons()
 	if(owner)
 		UnregisterSignal(owner, COMSIG_PARENT_QDELETING)
-		if(target == owner)
-			RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/clear_ref)
 		owner = null
-	if(button)
-		button.moved = FALSE //so the button appears in its normal position when given to another owner.
-		button.locked = FALSE
-		button.id = null
+	button.moved = FALSE //so the button appears in its normal position when given to another owner.
+	button.locked = FALSE
+	button.id = null
 
 /datum/action/proc/Trigger()
 	if(!IsAvailable())

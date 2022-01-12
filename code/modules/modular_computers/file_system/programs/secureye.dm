@@ -15,8 +15,7 @@
 	program_icon = "eye"
 
 	var/list/network = list("ss13")
-	/// Weakref to the active camera
-	var/datum/weakref/camera_ref
+	var/obj/machinery/camera/active_camera
 	/// The turf where the camera was last updated.
 	var/turf/last_camera_turf
 	var/list/concurrent_users = list()
@@ -93,7 +92,6 @@
 	var/list/data = get_header_data()
 	data["network"] = network
 	data["activeCamera"] = null
-	var/obj/machinery/camera/active_camera = camera_ref?.resolve()
 	if(active_camera)
 		data["activeCamera"] = list(
 			name = active_camera.c_tag,
@@ -123,7 +121,7 @@
 		var/c_tag = params["name"]
 		var/list/cameras = get_available_cameras()
 		var/obj/machinery/camera/selected_camera = cameras[c_tag]
-		camera_ref = WEAKREF(selected_camera)
+		active_camera = selected_camera
 		playsound(src, get_sfx("terminal_type"), 25, FALSE)
 
 		if(!selected_camera)
@@ -143,11 +141,10 @@
 	user.client.clear_map(map_name)
 	// Turn off the console
 	if(length(concurrent_users) == 0 && is_living)
-		camera_ref = null
+		active_camera = null
 		playsound(src, 'sound/machines/terminal_off.ogg', 25, FALSE)
 
 /datum/computer_file/program/secureye/proc/update_active_camera_screen()
-	var/obj/machinery/camera/active_camera = camera_ref?.resolve()
 	// Show static if can't use the camera
 	if(!active_camera?.can_use())
 		show_camera_static()

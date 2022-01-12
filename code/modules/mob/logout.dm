@@ -4,11 +4,17 @@
 	SStgui.on_logout(src)
 	unset_machine()
 	remove_from_player_list()
+	clear_client_in_contents()
 	..()
 
 	if(loc)
 		loc.on_log(FALSE)
 
-	become_uncliented()
+	if(client)
+		for(var/foo in client.player_details.post_logout_callbacks)
+			var/datum/callback/CB = foo
+			CB.Invoke()
+
+		clear_important_client_contents(client)
 
 	return TRUE

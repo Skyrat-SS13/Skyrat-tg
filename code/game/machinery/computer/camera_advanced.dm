@@ -9,17 +9,12 @@
 	var/mob/camera/ai_eye/remote/eyeobj
 	var/mob/living/current_user = null
 	var/list/networks = list("ss13")
-	/// Typepath of the action button we use as "off"
-	/// It's a typepath so subtypes can give it fun new names
-	var/datum/action/innate/camera_off/off_action
-	/// Typepath for jumping
-	var/datum/action/innate/camera_jump/jump_action
-	/// Typepath of the move up action
-	var/datum/action/innate/camera_multiz_up/move_up_action
-	/// Typepath of the move down action
-	var/datum/action/innate/camera_multiz_down/move_down_action
-
-	/// List of all actions to give to a user when they're well, granted actions
+	var/datum/action/innate/camera_off/off_action = new
+	var/datum/action/innate/camera_jump/jump_action = new
+	///Camera action button to move up a Z level
+	var/datum/action/innate/camera_multiz_up/move_up_action = new
+	///Camera action button to move down a Z level
+	var/datum/action/innate/camera_multiz_down/move_down_action = new
 	var/list/actions = list()
 	///Should we supress any view changes?
 	var/should_supress_view_changes = TRUE
@@ -39,17 +34,6 @@
 		if(lock_override & CAMERA_LOCK_CENTCOM)
 			z_lock |= SSmapping.levels_by_trait(ZTRAIT_CENTCOM)
 
-	if(off_action)
-		actions += new off_action(src)
-	if(jump_action)
-		actions += new jump_action(src)
-	//Camera action button to move up a Z level
-	if(move_up_action)
-		actions += new move_up_action(src)
-	//Camera action button to move down a Z level	
-	if(move_down_action)
-		actions += new move_down_action(src)
-
 /obj/machinery/computer/camera_advanced/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
 	for(var/i in networks)
 		networks -= i
@@ -67,8 +51,25 @@
 	eyeobj.origin = src
 
 /obj/machinery/computer/camera_advanced/proc/GrantActions(mob/living/user)
-	for(var/datum/action/to_grant as anything in actions)
-		to_grant.Grant(user)
+	if(off_action)
+		off_action.target = user
+		off_action.Grant(user)
+		actions += off_action
+
+	if(jump_action)
+		jump_action.target = user
+		jump_action.Grant(user)
+		actions += jump_action
+
+	if(move_up_action)
+		move_up_action.target = user
+		move_up_action.Grant(user)
+		actions += move_up_action
+
+	if(move_down_action)
+		move_down_action.target = user
+		move_down_action.Grant(user)
+		actions += move_down_action
 
 /obj/machinery/proc/remove_eye_control(mob/living/user)
 	CRASH("[type] does not implement ai eye handling")
@@ -79,6 +80,7 @@
 	for(var/V in actions)
 		var/datum/action/A = V
 		A.Remove(user)
+	actions.Cut()
 	for(var/V in eyeobj.visibleCameraChunks)
 		var/datum/camerachunk/C = V
 		C.remove(eyeobj)
@@ -250,11 +252,12 @@
 	button_icon_state = "camera_off"
 
 /datum/action/innate/camera_off/Activate()
-	if(!owner || !isliving(owner))
+	if(!target || !isliving(target))
 		return
-	var/mob/camera/ai_eye/remote/remote_eye = owner.remote_control
+	var/mob/living/C = target
+	var/mob/camera/ai_eye/remote/remote_eye = C.remote_control
 	var/obj/machinery/computer/camera_advanced/console = remote_eye.origin
-	console.remove_eye_control(owner)
+	console.remove_eye_control(target)
 
 /datum/action/innate/camera_jump
 	name = "Jump To Camera"
@@ -262,9 +265,10 @@
 	button_icon_state = "camera_jump"
 
 /datum/action/innate/camera_jump/Activate()
-	if(!owner || !isliving(owner))
+	if(!target || !isliving(target))
 		return
-	var/mob/camera/ai_eye/remote/remote_eye = owner.remote_control
+	var/mob/living/C = target
+	var/mob/camera/ai_eye/remote/remote_eye = C.remote_control
 	var/obj/machinery/computer/camera_advanced/origin = remote_eye.origin
 
 	var/list/L = list()
@@ -296,8 +300,8 @@
 	if(final)
 		playsound(origin, 'sound/machines/terminal_prompt_confirm.ogg', 25, FALSE)
 		remote_eye.setLoc(get_turf(final))
-		owner.overlay_fullscreen("flash", /atom/movable/screen/fullscreen/flash/static)
-		owner.clear_fullscreen("flash", 3) //Shorter flash than normal since it's an ~~advanced~~ console!
+		C.overlay_fullscreen("flash", /atom/movable/screen/fullscreen/flash/static)
+		C.clear_fullscreen("flash", 3) //Shorter flash than normal since it's an ~~advanced~~ console!
 	else
 		playsound(origin, 'sound/machines/terminal_prompt_deny.ogg', 25, FALSE)
 
@@ -307,13 +311,14 @@
 	button_icon_state = "move_up"
 
 /datum/action/innate/camera_multiz_up/Activate()
-	if(!owner || !isliving(owner))
+	if(!target || !isliving(target))
 		return
-	var/mob/camera/ai_eye/remote/remote_eye = owner.remote_control
+	var/mob/living/user_mob = target
+	var/mob/camera/ai_eye/remote/remote_eye = user_mob.remote_control
 	if(remote_eye.zMove(UP))
-		to_chat(owner, span_notice("You move upwards."))
+		to_chat(user_mob, span_notice("You move upwards."))
 	else
-		to_chat(owner, span_notice("You couldn't move upwards!"))
+		to_chat(user_mob, span_notice("You couldn't move upwards!"))
 
 /datum/action/innate/camera_multiz_down
 	name = "Move down a floor"
@@ -321,10 +326,11 @@
 	button_icon_state = "move_down"
 
 /datum/action/innate/camera_multiz_down/Activate()
-	if(!owner || !isliving(owner))
+	if(!target || !isliving(target))
 		return
-	var/mob/camera/ai_eye/remote/remote_eye = owner.remote_control
+	var/mob/living/user_mob = target
+	var/mob/camera/ai_eye/remote/remote_eye = user_mob.remote_control
 	if(remote_eye.zMove(DOWN))
-		to_chat(owner, span_notice("You move downwards."))
+		to_chat(user_mob, span_notice("You move downwards."))
 	else
-		to_chat(owner, span_notice("You couldn't move downwards!"))
+		to_chat(user_mob, span_notice("You couldn't move downwards!"))
