@@ -108,64 +108,18 @@
 		qdel(remove_item)
 		return
 	if(istype(remove_item, /obj/item/xenoarch/strange_rock))
-		current_research += 1
+		current_research += 2
 	if(istype(remove_item, /obj/item/xenoarch/useless_relic))
-		current_research += 5
-	if(istype(remove_item, /obj/item/xenoarch/broken_item))
 		current_research += 10
+	if(istype(remove_item, /obj/item/xenoarch/broken_item))
+		current_research += 20
 	if(current_research >= 100)
-		current_research = 0
-		new /obj/item/disk/tech_disk/spaceloot(get_turf(src))
+		current_research -= 100
+		new /obj/item/disk/tech_disk/major(get_turf(src))
 	qdel(remove_item)
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 	world_compare = world.time + process_speed
 	addtimer(CALLBACK(src, .proc/do_machine_process), process_speed)
-
-/obj/machinery/xenoarch/digger
-	name = "xenoarch digger"
-	desc = "A machine that is used to slowly uncover items within strange rocks."
-	icon_state = "digger"
-	circuit = /obj/item/circuitboard/machine/xenoarch_digger
-
-/obj/machinery/xenoarch/digger/attackby(obj/item/weapon, mob/user, params)
-	if(istype(weapon, /obj/item/storage/bag/xenoarch))
-		var/obj/item/storage/bag/xenoarch/xenoarch_bag = weapon
-		for(var/check_item in xenoarch_bag.contents)
-			if(!istype(check_item, /obj/item/xenoarch/strange_rock))
-				continue
-			var/obj/item/xenoarch/strange_rock/strange_rock = check_item
-			if(!do_after(user, 1 SECONDS, target = src))
-				world_compare = world.time + (process_speed * 4)
-				addtimer(CALLBACK(src, .proc/do_machine_process), (process_speed * 4))
-				return
-			strange_rock.forceMove(holding_storage)
-			to_chat(user, span_notice("The strange rock has been inserted into [src]."))
-		world_compare = world.time + (process_speed * 4)
-		addtimer(CALLBACK(src, .proc/do_machine_process), (process_speed * 4))
-		return
-	if(istype(weapon, /obj/item/xenoarch/strange_rock))
-		insert_xeno_item(weapon, user)
-		return
-	return ..()
-
-/obj/machinery/xenoarch/digger/do_machine_process()
-	if(!holding_storage.contents.len)
-		return
-	if(world_compare > world.time)
-		return
-	var/turf/src_turf = get_turf(src)
-	var/obj/item/content_obj = holding_storage.contents[1]
-	if(!content_obj)
-		return
-	if(!istype(content_obj, /obj/item/xenoarch/strange_rock))
-		qdel(content_obj)
-		return
-	var/obj/item/xenoarch/strange_rock/strange_rock = content_obj
-	new strange_rock.hidden_item(src_turf)
-	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
-	qdel(strange_rock)
-	world_compare = world.time + (process_speed * 4)
-	addtimer(CALLBACK(src, .proc/do_machine_process), (process_speed * 4))
 
 /obj/machinery/xenoarch/scanner
 	name = "xenoarch scanner"

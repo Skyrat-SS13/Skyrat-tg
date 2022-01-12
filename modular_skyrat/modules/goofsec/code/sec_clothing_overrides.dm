@@ -304,7 +304,7 @@
 ///////////////////////
 //----- GLOVES ------//
 ///////////////////////
-/obj/item/clothing/gloves/security
+/obj/item/clothing/gloves/color/black/security
 	name = "security gloves"
 	desc = "A pair of security gloves."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
