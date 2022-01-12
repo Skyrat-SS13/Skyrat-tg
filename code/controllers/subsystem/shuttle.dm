@@ -381,22 +381,18 @@ SUBSYSTEM_DEF(shuttle)
 			if(emergency.timeLeft(1) < emergency_call_time)
 				return
 		if(SEC_LEVEL_BLUE)
-<<<<<<< HEAD
-			//if(emergency.timeLeft(1) < emergencyCallTime * 0.5) ORIGINAL
-			if(emergency.timeLeft(1) < emergencyCallTime * 0.6) //SKYRAT EDIT CHANGE - ALERTS
-=======
-			if(emergency.timeLeft(1) < emergency_call_time * 0.5)
->>>>>>> c6d616ff111 (Documents and improves the variable names of the shuttle subsystem (#63946))
+			//if(emergency.timeLeft(1) < emergency_call_time * 0.5) ORIGINAL
+			if(emergency.timeLeft(1) < emergency_call_time * 0.6) //SKYRAT EDIT CHANGE - ALERTS
 				return
 		//SKYRAT EDIT ADDITION BEGIN - ALERTS
 		if(SEC_LEVEL_ORANGE)
-			if(emergency.timeLeft(1) < emergencyCallTime * 0.4)
+			if(emergency.timeLeft(1) < emergency_call_time * 0.4)
 				return
 		if(SEC_LEVEL_VIOLET)
-			if(emergency.timeLeft(1) < emergencyCallTime * 0.4)
+			if(emergency.timeLeft(1) < emergency_call_time * 0.4)
 				return
 		if(SEC_LEVEL_AMBER)
-			if(emergency.timeLeft(1) < emergencyCallTime * 0.4)
+			if(emergency.timeLeft(1) < emergency_call_time * 0.4)
 				return
 		//SKYRAT EDIT ADDITION END
 		else

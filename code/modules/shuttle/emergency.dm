@@ -344,15 +344,11 @@
 	else
 		SSshuttle.emergency_last_call_loc = null
 
-<<<<<<< HEAD
 	//priority_announce("The emergency shuttle has been called. [redAlert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [timeLeft(600)] minutes.[reason][SSshuttle.emergencyLastCallLoc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ][SSshuttle.adminEmergencyNoRecall ? "\n\nWarning: Shuttle recall subroutines disabled; Recall not possible." : ""]", null, 'sound/ai/shuttlecalled.ogg', "Priority") //ORIGINAL
 	//SKYRAT EDIT CHANGE BEGIN - AUTOTRANSFER
 	if(!silent)
-		priority_announce("The emergency shuttle has been called. [redAlert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [timeLeft(600)] minutes.[reason][SSshuttle.emergencyLastCallLoc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ][SSshuttle.adminEmergencyNoRecall ? "\n\nWarning: Shuttle recall subroutines disabled; Recall not possible." : ""]", null, ANNOUNCER_SHUTTLECALLED, "Priority")
+		priority_announce("The emergency shuttle has been called. [redAlert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [timeLeft(600)] minutes.[reason][SSshuttle.emergency_last_call_loc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ][SSshuttle.admin_emergency_no_recall ? "\n\nWarning: Shuttle recall subroutines disabled; Recall not possible." : ""]", null, ANNOUNCER_SHUTTLECALLED, "Priority")
 	//SKYRAT EDIT CHANGE END - AUTOTRANSFER
-=======
-	priority_announce("The emergency shuttle has been called. [redAlert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [timeLeft(600)] minutes.[reason][SSshuttle.emergency_last_call_loc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ][SSshuttle.admin_emergency_no_recall ? "\n\nWarning: Shuttle recall subroutines disabled; Recall not possible." : ""]", null, ANNOUNCER_SHUTTLECALLED, "Priority")
->>>>>>> c6d616ff111 (Documents and improves the variable names of the shuttle subsystem (#63946))
 
 /obj/docking_port/mobile/emergency/cancel(area/signalOrigin)
 	if(mode != SHUTTLE_CALL)
@@ -507,13 +503,8 @@
 				enterTransit()
 				mode = SHUTTLE_ESCAPE
 				launch_status = ENDGAME_LAUNCHED
-<<<<<<< HEAD
-				setTimer(SSshuttle.emergencyEscapeTime * engine_coeff)
-				priority_announce("The Emergency Shuttle has left the station. Estimate [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, ANNOUNCER_SHUTTLELEFT, "Priority") //SKYRAT EDIT CHANGE - ANNOUNCER_SHUTTLELEFT
-=======
 				setTimer(SSshuttle.emergency_escape_time * engine_coeff)
-				priority_announce("The Emergency Shuttle has left the station. Estimate [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, null, "Priority")
->>>>>>> c6d616ff111 (Documents and improves the variable names of the shuttle subsystem (#63946))
+				priority_announce("The Emergency Shuttle has left the station. Estimate [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, ANNOUNCER_SHUTTLELEFT, "Priority") //SKYRAT EDIT CHANGE - ANNOUNCER_SHUTTLELEFT
 				INVOKE_ASYNC(SSticker, /datum/controller/subsystem/ticker.proc/poll_hearts)
 				bolt_all_doors() //SKYRAT EDIT ADDITION
 				SSmapping.mapvote() //If no map vote has been run yet, start one.
