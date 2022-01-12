@@ -7,7 +7,7 @@
 
 /datum/emote/living/sweatdrop/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	if(iscarbon(user) || issilicon(user))
+	if(isliving(user))
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "sweatdrop", ABOVE_MOB_LAYER)
 		overlay.pixel_x = 10
 		overlay.pixel_y = 10
@@ -20,12 +20,25 @@
 
 /datum/emote/living/exclaim/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	if(iscarbon(user) || issilicon(user))
+	if(isliving(user))
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "exclamation", ABOVE_MOB_LAYER)
 		overlay.pixel_x = 10
 		overlay.pixel_y = 28
 		flick_overlay_static(overlay, user, 50)
 		playsound(get_turf(user), 'sound/machines/chime.ogg', 25, TRUE)
+
+/datum/emote/living/question
+	key = "question"
+	key_third_person = "questions"
+
+/datum/emote/living/question/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(isliving(user))
+		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "question", ABOVE_MOB_LAYER)
+		overlay.pixel_x = 10
+		overlay.pixel_y = 28
+		flick_overlay_static(overlay, user, 50)
+		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/question.ogg', 25, TRUE)
 
 
 /datum/emote/living/realize
@@ -34,7 +47,7 @@
 
 /datum/emote/living/realize/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	if(iscarbon(user) || issilicon(user))
+	if(isliving(user))
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "realize", ABOVE_MOB_LAYER)
 		overlay.pixel_y = 15
 		flick_overlay_static(overlay, user, 50)
@@ -46,23 +59,13 @@
 
 /datum/emote/living/annoyed/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	if(iscarbon(user) || issilicon(user))
+	if(isliving(user))
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "annoyed", ABOVE_MOB_LAYER)
 		overlay.pixel_x = 10
 		overlay.pixel_y = 10
 		flick_overlay_static(overlay, user, 50)
 		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/annoyed.ogg', 25, TRUE)
 
-/datum/emote/living/blush
-	key = "blush"
-	key_third_person = "blushes"
-
-/datum/emote/living/blush/run_emote(mob/living/carbon/human/user, params, type_override, intentional)
-	. = ..()
-	if(iscarbon(user))
-		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "blush", ABOVE_MOB_LAYER)
-		flick_overlay_static(overlay, user, 50)
-		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/blush.ogg', 25, TRUE)
 
 /datum/emote/living/glasses
 	key = "glasses"
@@ -77,3 +80,37 @@
 		flick_overlay_static(overlay, user, 10)
 	else
 		return FALSE
+
+////
+//	These emotes hook into existing ones
+/datum/emote/living/blush
+	key = "blush"
+	key_third_person = "blushes"
+
+/datum/emote/living/blush/run_emote(mob/living/carbon/human/user, params, type_override, intentional)
+	. = ..()
+	if(iscarbon(user))
+		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "blush", ABOVE_MOB_LAYER)
+		flick_overlay_static(overlay, user, 50)
+		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/blush.ogg', 25, TRUE)
+
+/datum/emote/living/snore
+	key = "snore"
+	key_third_person = "snores"
+
+/datum/emote/living/snore/run_emote(mob/living/carbon/human/user, params, type_override, intentional)
+	. = ..()
+	if(isliving(user))
+		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "snore", ABOVE_MOB_LAYER)
+		overlay.pixel_y = 6
+		flick_overlay_static(overlay, user, 100)
+
+/datum/emote/living/sigh
+	key = "sigh"
+	key_third_person = "sighs"
+
+/datum/emote/living/sigh/run_emote(mob/living/carbon/human/user, params, type_override, intentional)
+	. = ..()
+	if(isliving(user))
+		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "sigh", ABOVE_MOB_LAYER)
+		flick_overlay_static(overlay, user, 50)

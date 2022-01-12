@@ -338,6 +338,11 @@ There are several things that need to be remembered:
 		if(OFFSET_HEAD in dna.species.offset_features)
 			head_overlay.pixel_x += dna.species.offset_features[OFFSET_HEAD][1]
 			head_overlay.pixel_y += dna.species.offset_features[OFFSET_HEAD][2]
+			//SKYRAT EDIT ADDITION BEGIN - TESHARI CLOTHES
+			if(head_overlay.icon == TESHARI_HEAD_ICON)
+				head_overlay.pixel_x = 0
+				head_overlay.pixel_y = 0
+			//SKYRAT EDIT ADDITION END - TESHARI CLOTHES
 			overlays_standing[HEAD_LAYER] = head_overlay
 	apply_overlay(HEAD_LAYER)
 
@@ -349,15 +354,30 @@ There are several things that need to be remembered:
 		inv.update_appearance()
 
 	if(belt)
+		//SKYRAT EDIT ADDITION BEGIN - TESHARI CLOTHES
+		var/icon_file = belt.worn_icon
+		var/applied_styles = NONE
+		if(isteshari(src))
+			var/static/list/tesh_icon_states = icon_states(TESHARI_BELT_ICON)
+			if((belt.worn_icon_state || belt.icon_state) in tesh_icon_states)
+				icon_file = TESHARI_BELT_ICON
+				applied_styles = STYLE_TESHARI
+		//SKYRAT EDIT ADDITION END - TESHARI CLOTHES
 		belt.screen_loc = ui_belt
 		if(client && hud_used?.hud_shown)
 			client.screen += belt
 		update_observer_view(belt)
-		overlays_standing[BELT_LAYER] = belt.build_worn_icon(default_layer = BELT_LAYER, default_icon_file = 'icons/mob/clothing/belt.dmi')
+		//SKYRAT EDIT - TESHARI CLOTHES - added override_icon and mutant_styles arguments to below function
+		overlays_standing[BELT_LAYER] = belt.build_worn_icon(default_layer = BELT_LAYER, default_icon_file = 'icons/mob/clothing/belt.dmi', override_icon = icon_file, mutant_styles = applied_styles)
 		var/mutable_appearance/belt_overlay = overlays_standing[BELT_LAYER]
 		if(OFFSET_BELT in dna.species.offset_features)
 			belt_overlay.pixel_x += dna.species.offset_features[OFFSET_BELT][1]
 			belt_overlay.pixel_y += dna.species.offset_features[OFFSET_BELT][2]
+			//SKYRAT EDIT ADDITION BEGIN - TESHARI CLOTHES
+			if(belt_overlay.icon == TESHARI_BELT_ICON)
+				belt_overlay.pixel_x = 0
+				belt_overlay.pixel_y = 0
+			//SKYRAT EDIT ADDITION END - TESHARI CLOTHES
 		overlays_standing[BELT_LAYER] = belt_overlay
 
 	apply_overlay(BELT_LAYER)
@@ -424,6 +444,11 @@ There are several things that need to be remembered:
 		if(OFFSET_FACEMASK in dna.species.offset_features)
 			mask_overlay.pixel_x += dna.species.offset_features[OFFSET_FACEMASK][1]
 			mask_overlay.pixel_y += dna.species.offset_features[OFFSET_FACEMASK][2]
+			//SKYRAT EDIT ADDITION BEGIN - TESHARI CLOTHES
+			if(mask_overlay.icon == TESHARI_MASK_ICON)
+				mask_overlay.pixel_x = 0
+				mask_overlay.pixel_y = 0
+			//SKYRAT EDIT ADDITION END - TESHARI CLOTHES
 			overlays_standing[FACEMASK_LAYER] = mask_overlay
 		apply_overlay(FACEMASK_LAYER)
 	update_mutant_bodyparts() //e.g. upgate needed because mask now hides lizard snout
@@ -436,6 +461,11 @@ There are several things that need to be remembered:
 		if(OFFSET_BACK in dna.species.offset_features)
 			back_overlay.pixel_x += dna.species.offset_features[OFFSET_BACK][1]
 			back_overlay.pixel_y += dna.species.offset_features[OFFSET_BACK][2]
+			//SKYRAT EDIT ADDITION BEGIN - TESHARI CLOTHES
+			if(back_overlay.icon == TESHARI_BACK_ICON)
+				back_overlay.pixel_x = 0
+				back_overlay.pixel_y = 0
+			//SKYRAT EDIT ADDITION END - TESHARI CLOTHES
 			overlays_standing[BACK_LAYER] = back_overlay
 		apply_overlay(BACK_LAYER)
 

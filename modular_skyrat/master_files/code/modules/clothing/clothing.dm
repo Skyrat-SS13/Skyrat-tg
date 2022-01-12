@@ -12,14 +12,18 @@
     return ..()
 
 // Generates a coloured species-specific variant of the clothing item
-/obj/item/clothing/proc/generate_species_clothing(file_to_use, state_to_use, species) 
-	var/icon/human_clothing_icon = icon(file_to_use, state_to_use)
+/obj/item/clothing/proc/generate_species_clothing(file_to_use, state_to_use, species, default_file_to_use)
+	var/list/clothing_states = icon_states(file_to_use)
 
-	if(!species_clothing_colors || !species_clothing_icon_state)
-		// This clothing piece has no species specific clothing, use the normal icon
+	var/icon/human_clothing_icon = icon(file_to_use, state_to_use) //overriden clothing icon
+	var/icon/default_clothing_icon = icon(default_file_to_use, state_to_use) //non overriden clothing icon, important for getting the color matrix to not die
+
+	if(state_to_use in clothing_states)
+		//checks if the overriden icon has the correct sprite, and uses it...
 		GLOB.species_clothing_icons[species]["[file_to_use]-[state_to_use]"] = human_clothing_icon
 		return
 
+	//...or else it will generate one
 	var/icon/species_icon = icon(species, species_clothing_icon_state)
 	var/list/final_list = list()
 	for(var/i in 1 to 3)
@@ -28,7 +32,7 @@
 			continue
 		var/color = species_clothing_colors[i]
 		if(islist(color)) // The entry is a list of x, y coordinates; find the color at this point
-			final_list += human_clothing_icon.GetPixel(color[1], color[2]) || "#00000000"
+			final_list += default_clothing_icon.GetPixel(color[1], color[2]) || "#00000000"
 		else if(istext(color))
 			final_list += color
 

@@ -109,6 +109,10 @@
 /datum/uplink_item/discounts
 	category = /datum/uplink_category/discounts
 
+//Discounts (dynamically filled above)
+/datum/uplink_item/discounts
+	category = /datum/uplink_category/discounts
+
 // Special equipment (Dynamically fills in uplink component)
 /datum/uplink_item/special_equipment
 	category = "Objective-Specific Equipment"
