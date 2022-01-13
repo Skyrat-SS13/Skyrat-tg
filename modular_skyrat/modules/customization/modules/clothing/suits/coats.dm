@@ -290,3 +290,14 @@
 
 /obj/item/clothing/head/hooded/winterhood/christmas/gamerpc
 	icon_state = "christmashoodrg"
+
+/obj/item/clothing/suit/armor/vest/det_suit/runner
+	name = "joyful coat"
+	desc = "<i>\"You look like a good Joe.\"</i>"
+	icon_state = "bladerunner_neue"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	cold_protection = CHEST|GROIN|ARMS|LEGS
+	heat_protection = CHEST|ARMS|GROIN|LEGS
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	blood_overlay_type = "coat"
