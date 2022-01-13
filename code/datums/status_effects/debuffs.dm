@@ -240,7 +240,7 @@
 		return
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(id))
 	ADD_TRAIT(owner, TRAIT_HANDS_BLOCKED, TRAIT_STATUS_EFFECT(id))
-	if(HAS_TRAIT(owner, TRAIT_NUMBED)) //SKYRAT EDIT START - STASIS PRESERVES NUMBING
+	if(!HAS_TRAIT(owner, TRAIT_NUMBED)) //SKYRAT EDIT START - STASIS PRESERVES NUMBING
 		ADD_TRAIT(owner, TRAIT_NUMBED, "stasis")
 		owner.throw_alert("numbed", /atom/movable/screen/alert/numbed) //SKYRAT EDIT END
 	owner.add_filter("stasis_status_ripple", 2, list("type" = "ripple", "flags" = WAVE_BOUNDED, "radius" = 0, "size" = 2))

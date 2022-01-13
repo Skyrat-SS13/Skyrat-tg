@@ -379,6 +379,7 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	new/datum/stack_recipe("chemistry bag", /obj/item/storage/bag/chemistry, 4), \
 	new/datum/stack_recipe("bio bag", /obj/item/storage/bag/bio, 4), \
 	new/datum/stack_recipe("construction bag", /obj/item/storage/bag/construction, 4), \
+	new/datum/stack_recipe("xenoarch bag", /obj/item/storage/bag/xenoarch, 4), /*SKYRAT EDIT ADDITION*/ \
 	null, \
 	new/datum/stack_recipe("improvised gauze", /obj/item/stack/medical/gauze/improvised, 1, 2, 6), \
 	new/datum/stack_recipe("rag", /obj/item/reagent_containers/glass/rag, 1), \
