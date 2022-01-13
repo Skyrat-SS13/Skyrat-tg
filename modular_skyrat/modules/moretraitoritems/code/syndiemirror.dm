@@ -20,7 +20,7 @@
 
 	var/location = user.zone_selected
 	if(!(location in list(BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_HEAD)) && !user.combat_mode)
-		to_chat(user, span_warning("You stop, look down at what you're currently holding and ponder to yourself, \"This is probably to be used on their hair or their facial hair.\""))
+		to_chat(user, span_warning("You stop, look down at what you're currently holding and ponder to yourself, \"This is probably to be used on your hair or facial hair.\""))
 		return
 
 	if(user.zone_selected != BODY_ZONE_HEAD)
