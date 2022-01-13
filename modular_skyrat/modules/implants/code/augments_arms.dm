@@ -46,6 +46,11 @@
 	desc = "A rather simple arm implant containing tools used in gardening and botanical research."
 	items_to_create = list(/obj/item/cultivator, /obj/item/shovel/spade, /obj/item/hatchet, /obj/item/gun/energy/floragun, /obj/item/plant_analyzer, /obj/item/geneshears, /obj/item/secateurs, /obj/item/storage/bag/plants, /obj/item/storage/bag/plants/portaseeder)
 
+/obj/item/organ/cyberimp/arm/botany/emag_act()
+	for(var/datum/weakref/created_item in items_list)
+	to_chat(usr, span_notice("You unlock [src]'s deluxe landscaping equipment!"))
+	items_list += WEAKREF(new /obj/item/chainsaw(src)) //time to landscape the station
+
 /obj/item/multitool/abductor/implant
 	name = "multitool"
 	desc = "An optimized, highly advanced stripped-down multitool able to interface with electronics far better than its standard counterpart."
