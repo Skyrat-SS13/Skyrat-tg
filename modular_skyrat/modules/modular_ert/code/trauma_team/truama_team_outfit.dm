@@ -1,6 +1,8 @@
 /datum/outfit/centcom/ert/medic/traumateam //Medical ERT Trauma Team, Admin spawn only obviously
 	name = "Trauma Team"
 	uniform = /obj/item/clothing/under/rank/medical/paramedic
+	suit = /obj/item/clothing/suit/space/ntrauma
+	head = /obj/item/clothing/head/helmet/space/ntrauma
 	glasses = /obj/item/clothing/glasses/hud/health/night
 	ears = /obj/item/radio/headset/headset_cent/alt
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile/ntrauma
@@ -51,7 +53,20 @@
 	desc = "A pair of gloves used by Trauma Team specialists, with a unique (and expensive) acid-repellent coating to prevent damage handling chemical hazards. Wont protect the rest of your body, though."
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
+/obj/item/clothing/suit/space/ntrauma
+	name = "trauma team softsuit"
+	desc = "A lightweight, minimally armored, entirely sterile softsuit, used by Trauma Teams to operate in potentially hazardous environments of all sorts. It's coated in acid-repellent chemicals."
+	icon =
+	icon_state =
+	permeability_coefficient = 0.01
+	slowdown = 0.3
+	armor = list(MELEE = 10, BULLET = 10, LASER = 10,ENERGY = 10, BOMB = 10, BIO = 100, FIRE = 80, ACID = 80)
+	resistance_flags = ACID_PROOF
+	cell = /obj/item/stock_parts/cell/super
 
-/obj/item/clothing/gloves/color/latex/nitrile/infiltrator/ntrauma
-	name = "specialist gloves"
-	desc = "A pair of gloves used by Trauma Team specialists"
+/obj/item/clothing/head/helmet/space/ntrauma
+	name = "trauma team helmet"
+	desc = "A faceless white helmet fit to seal with a softsuit, used by Trauma Teams to operate in potentially hazardous environments. It's coated in acid-repellent chemicals."
+	icon =
+	icon_state =
+	resistance_flags = ACID_PROOF
