@@ -19,7 +19,7 @@
 			post_untipped_callback = CALLBACK(src, .proc/after_righted))
 
 /mob/living/silicon/robot/proc/pre_tip_over(mob/user)
-	playsound(get_turf(src), 'sound/machines/buzz-sigh.ogg', 50, TRUE)
+	playsound(src, 'sound/machines/buzz-sigh.ogg', 50, TRUE)
 	return
 
 /mob/living/silicon/robot/proc/after_tip_over(mob/user)
@@ -36,7 +36,7 @@
 /mob/living/silicon/robot/proc/after_righted(mob/user)
 	if(!user) //Did we self-right?
 		SpinAnimation(3, 1)
-		playsound(src, 'sound/vehicles/skateboard_ollie.ogg', 50, TRUE) //Roomba does a sick ollie
+		playsound(get_turf(src), 'sound/vehicles/skateboard_ollie.ogg', 50, TRUE) //Roomba does a sick ollie
 	LAZYNULL(vis_contents)
 	return
 
