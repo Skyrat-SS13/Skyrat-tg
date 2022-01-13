@@ -59,15 +59,15 @@
 
 /obj/machinery/xenoarch/researcher
 	name = "xenoarch researcher"
-	desc = "A machine that is used to deconstruct strange rocks, useless relics, and broken objects for technology."
+	desc = "A machine that is used to condense strange rocks, useless relics, and broken objects into bigger artifacts."
 	icon_state = "researcher"
 	circuit = /obj/item/circuitboard/machine/xenoarch_researcher
-	///A variable that goes from 0 to 100. Depending on what is processed, increases the value. Once 100, spawns a tech disk.
+	///A variable that goes from 0 to 100. Depending on what is processed, increases the value. Once 100, spawns an anomalous crystal.
 	var/current_research = 0
 
 /obj/machinery/xenoarch/researcher/examine(mob/user)
 	. = ..()
-	. += span_notice("[current_research]/100 research points. Research more xenoarchaeological items.")
+	. += span_notice("[current_research]/150 research points. Research more xenoarchaeological items.")
 
 /obj/machinery/xenoarch/researcher/attackby(obj/item/weapon, mob/user, params)
 	if(istype(weapon, /obj/item/storage/bag/xenoarch))
@@ -108,14 +108,16 @@
 		qdel(remove_item)
 		return
 	if(istype(remove_item, /obj/item/xenoarch/strange_rock))
-		current_research += 2
+		current_research += 1
 	if(istype(remove_item, /obj/item/xenoarch/useless_relic))
-		current_research += 10
+		current_research += 5
 	if(istype(remove_item, /obj/item/xenoarch/broken_item))
-		current_research += 20
-	if(current_research >= 100)
-		current_research -= 100
-		new /obj/item/disk/tech_disk/major(get_turf(src))
+		current_research += 10
+	if(current_research >= 150)
+		current_research -= 150
+		var/list/choices = subtypesof(/obj/machinery/anomalous_crystal)
+		var/random_crystal = pick(choices)
+		new random_crystal(get_turf(src))
 	qdel(remove_item)
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 	world_compare = world.time + process_speed
