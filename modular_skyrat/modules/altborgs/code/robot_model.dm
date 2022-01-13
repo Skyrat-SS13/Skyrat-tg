@@ -25,14 +25,19 @@
 /mob/living/silicon/robot/proc/after_tip_over(mob/user)
 	if(hat)
 		hat.forceMove(drop_location())
-	flick_overlay_static(image('modular_skyrat/modules/altborgs/icons/robot_effect.dmi', "zoomba_flip", ABOVE_MOB_LAYER), src, 10 SECONDS)
+	var/atom/movable/overlay = new /atom/movable
+	overlay.icon = 'modular_skyrat/modules/altborgs/icons/robot_effect.dmi'
+	overlay.layer = ABOVE_MOB_LAYER
+
+	flick("zoomba_flip", overlay) //Start from the start
+	vis_contents += overlay
 	return
 
 /mob/living/silicon/robot/proc/after_righted(mob/user)
 	if(!user) //Did we self-right?
 		SpinAnimation(3, 1)
 		playsound(src, 'sound/vehicles/skateboard_ollie.ogg', 50, TRUE) //Roomba does a sick ollie
-	cut_overlays()
+	LAZYNULL(vis_contents)
 	return
 
 
