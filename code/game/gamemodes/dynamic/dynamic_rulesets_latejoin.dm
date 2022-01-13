@@ -101,6 +101,7 @@
 	antag_flag_override = ROLE_REV
 	restricted_roles = list(
 		JOB_AI,
+<<<<<<< HEAD
 		JOB_CYBORG,
 		JOB_CAPTAIN,
 		JOB_HEAD_OF_PERSONNEL,
@@ -127,6 +128,19 @@
 		JOB_VANGUARD_OPERATIVE,
 		JOB_PRISONER,
 		// SKYRAT EDIT END
+=======
+		JOB_CAPTAIN,
+		JOB_CHIEF_ENGINEER,
+		JOB_CHIEF_MEDICAL_OFFICER,
+		JOB_CYBORG,
+		JOB_DETECTIVE,
+		JOB_HEAD_OF_PERSONNEL,
+		JOB_HEAD_OF_SECURITY,
+		JOB_PRISONER,
+		JOB_RESEARCH_DIRECTOR,
+		JOB_SECURITY_OFFICER,
+		JOB_WARDEN,
+>>>>>>> e9a1c93cc08 (Re-adds prisoners to the restricted_roles for cultists and revheads (#63960))
 	)
 	enemy_roles = list(
 		JOB_AI,
