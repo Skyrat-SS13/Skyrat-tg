@@ -1,5 +1,6 @@
 /datum/outfit/centcom/ert/medic/traumateam //Medical ERT Trauma Team, Admin spawn only obviously
 	name = "Trauma Team"
+	id = /obj/item/card/id/advanced/centcom/ert/medical/ntrauma
 	uniform = /obj/item/clothing/under/rank/medical/paramedic
 	suit = /obj/item/clothing/suit/space/ntrauma
 	head = /obj/item/clothing/head/helmet/space/ntrauma
@@ -21,6 +22,12 @@
 ////////////////////
 /// UNIQUE ITEMS ///
 ////////////////////
+
+/obj/item/card/id/advanced/centcom/ert/medical/ntrauma
+	registered_name = "Trauma Team Specialist"
+	icon_state = "battlecruisercaller"	//Read desc
+	desc = "A semi-standard black Identification card rigged with what appears to be a small transmitter wired to a small disk - presumably filled with access tokens. Not NT standard, sure, but effectively the same card as their ERTs."
+
 /obj/item/storage/belt/military/ntrauma
 	name = "trauma chest rig"
 	desc = "A set of tactical webbing worn by DeForest's premium Trauma Response Teams."
@@ -70,6 +77,7 @@
 	armor = list(MELEE = 10, BULLET = 10, LASER = 10,ENERGY = 10, BOMB = 10, BIO = 100, FIRE = 80, ACID = 80)
 	resistance_flags = ACID_PROOF
 	cell = /obj/item/stock_parts/cell/super
+	mutant_variants = NONE	//Traumateam NEEDS to look nondescript. Its the whole gimmick, tactical healing.
 
 /obj/item/clothing/head/helmet/space/ntrauma
 	name = "trauma team helmet"
@@ -78,3 +86,4 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "ert_ntrauma"
 	resistance_flags = ACID_PROOF
+	mutant_variants = NONE	//Also good GOD I didnt want to re-sprite this helmet
