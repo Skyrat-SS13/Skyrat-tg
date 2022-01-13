@@ -47,7 +47,7 @@
 	items_to_create = list(/obj/item/cultivator, /obj/item/shovel/spade, /obj/item/hatchet, /obj/item/gun/energy/floragun, /obj/item/plant_analyzer, /obj/item/geneshears, /obj/item/secateurs, /obj/item/storage/bag/plants, /obj/item/storage/bag/plants/portaseeder)
 
 /obj/item/implant_mounted_chainsaw
-	name = "Integrated Chainsaw"
+	name = "integrated chainsaw"
 	desc = "A chainsaw that conceals inside your arm."
 	icon_state = "chainsaw_on"
 	inhand_icon_state = "mounted_chainsaw"
