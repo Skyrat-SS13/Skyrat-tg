@@ -8,8 +8,9 @@
 	ears = /obj/item/radio/headset/headset_cent/alt
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile/ntrauma
 	l_hand = /obj/item/gun/energy/e_gun/stun
+	shoes = /obj/item/clothing/shoes/combat
 	belt = /obj/item/storage/belt/military/ntrauma
-	back = /obj/item/mod/control/pre_equipped/responsory/medic
+	back = /obj/item/storage/backpack/medic
 	backpack_contents = list(
 		/obj/item/storage/box/survival/security,\
 		/obj/item/melee/baton/security/loaded ,\
@@ -30,7 +31,7 @@
 
 /obj/item/storage/belt/military/ntrauma
 	name = "trauma chest rig"
-	desc = "A set of tactical webbing worn by DeForest's premium Trauma Response Teams."
+	desc = "A set of tactical webbing worn by Trauma Response Teams."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 	icon_state = "ert_ntrauma"
@@ -60,7 +61,7 @@
 
 /obj/item/clothing/gloves/color/latex/nitrile/ntrauma
 	name = "trauma specialist gloves"
-	desc = "A pair of gloves used by Trauma Team specialists, with a unique (and expensive) acid-repellent coating to prevent damage handling chemical hazards. Wont protect the rest of your body, though."
+	desc = "A pair of nitrile-alternative gloves used by Trauma Team specialists, with a unique (and expensive) acid-repellent coating to prevent damage handling chemical hazards. Wont protect the rest of your body, though."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	icon_state = "ert_ntrauma"
