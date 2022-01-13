@@ -113,7 +113,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/storage/firstaid/o2 = 25,
 		/obj/item/storage/firstaid/regular = 25,
 		/obj/item/storage/firstaid/toxin = 25,
-		/obj/item/lead_pipe = 25
+		/obj/item/lead_pipe = 25,
 	) = 100,
 	list( //Tools you'd get in tool storage and elsewhere
 		/obj/item/screwdriver = 100,
