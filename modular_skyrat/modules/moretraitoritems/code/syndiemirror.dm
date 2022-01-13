@@ -7,9 +7,9 @@
 	special_desc = "A mirror manufactured by the Syndicate containing barber-nanites that can alter your hair on the spot. Target your head and use it on yourself to activate the nanites."
 	w_class = WEIGHT_CLASS_TINY
 	// How long does it take to change someone's hairstyle?
-	var/haircut_duration = 2 SECONDS
+	var/haircut_duration = 1 SECONDS
 	// How long does it take to change someone's facial hair style?
-	var/facial_haircut_duration = 2 SECONDS
+	var/facial_haircut_duration = 1 SECONDS
 
 
 /obj/item/hhmirror/syndie/attack(mob/living/attacked_mob, mob/living/user, params)
