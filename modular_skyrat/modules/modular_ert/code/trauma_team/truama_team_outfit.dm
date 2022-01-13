@@ -11,11 +11,17 @@
 	shoes = /obj/item/clothing/shoes/combat
 	belt = /obj/item/storage/belt/military/ntrauma
 	back = /obj/item/storage/backpack/medic
+	mask = /obj/item/clothing/mask/breath/medical
+	l_pocket = /obj/item/tank/internals/emergency_oxygen/engi
 	backpack_contents = list(
 		/obj/item/storage/box/survival/security,\
 		/obj/item/melee/baton/security/loaded ,\
 		/obj/item/reagent_containers/hypospray/combat/nanites,\
-		/obj/item/gun/medbeam,\
+		/obj/item/gun/energy/cell_loaded/medigun/upgraded,\
+		/obj/item/weaponcell/medical/brute,\
+		/obj/item/weaponcell/medical/burn,\
+		/obj/item/weaponcell/medical/toxin/better,\
+		/obj/item/weaponcell/medical/utility/temperature,\
 		/obj/item/storage/firstaid/tactical/ntrauma,\
 		/obj/item/roller,\
 		)
