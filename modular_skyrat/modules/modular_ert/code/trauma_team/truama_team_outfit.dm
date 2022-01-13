@@ -24,6 +24,9 @@
 /obj/item/storage/belt/military/ntrauma
 	name = "trauma chest rig"
 	desc = "A set of tactical webbing worn by DeForest's premium Trauma Response Teams."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
+	icon_state = "ert_ntrauma"
 
 /obj/item/storage/belt/military/ntrauma/PopulateContents()
 	new /obj/item/surgical_drapes(src)
@@ -51,13 +54,17 @@
 /obj/item/clothing/gloves/color/latex/nitrile/ntrauma
 	name = "trauma specialist gloves"
 	desc = "A pair of gloves used by Trauma Team specialists, with a unique (and expensive) acid-repellent coating to prevent damage handling chemical hazards. Wont protect the rest of your body, though."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
+	icon_state = "ert_ntrauma"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/suit/space/ntrauma
 	name = "trauma team softsuit"
 	desc = "A lightweight, minimally armored, entirely sterile softsuit, used by Trauma Teams to operate in potentially hazardous environments of all sorts. It's coated in acid-repellent chemicals."
-	icon =
-	icon_state =
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "ert_ntrauma"
 	permeability_coefficient = 0.01
 	slowdown = 0.3
 	armor = list(MELEE = 10, BULLET = 10, LASER = 10,ENERGY = 10, BOMB = 10, BIO = 100, FIRE = 80, ACID = 80)
@@ -67,6 +74,7 @@
 /obj/item/clothing/head/helmet/space/ntrauma
 	name = "trauma team helmet"
 	desc = "A faceless white helmet fit to seal with a softsuit, used by Trauma Teams to operate in potentially hazardous environments. It's coated in acid-repellent chemicals."
-	icon =
-	icon_state =
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "ert_ntrauma"
 	resistance_flags = ACID_PROOF
