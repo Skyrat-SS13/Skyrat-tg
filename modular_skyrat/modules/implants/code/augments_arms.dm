@@ -44,7 +44,7 @@
 /obj/item/organ/cyberimp/arm/botany
 	name = "botany arm implant"
 	desc = "A rather simple arm implant containing tools used in gardening and botanical research."
-	items_to_create = list(/obj/item/cultivator, /obj/item/shovel/spade, /obj/item/hatchet, /obj/item/gun/energy/floragun, /obj/item/plant_analyzer, /obj/item/reagent_containers/glass/beaker/plastic, /obj/item/storage/bag/plants, /obj/item/storage/bag/plants/portaseeder)
+	items_to_create = list(/obj/item/cultivator, /obj/item/shovel/spade, /obj/item/hatchet, /obj/item/gun/energy/floragun, /obj/item/plant_analyzer, /obj/item/geneshears, /obj/item/secateurs, /obj/item/storage/bag/plants, /obj/item/storage/bag/plants/portaseeder)
 
 /obj/item/multitool/abductor/implant
 	name = "multitool"
