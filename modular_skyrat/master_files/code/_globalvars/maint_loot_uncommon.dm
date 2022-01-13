@@ -322,6 +322,6 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 	) = 1,
 	list( //Modsuits
 		/obj/item/mod/construction/broken_core = 1,
-		/obj/effect/spawner/random/mod/maint = 3
+		/obj/effect/spawner/random/mod/maint = 3,
 	) = 25
 ))
