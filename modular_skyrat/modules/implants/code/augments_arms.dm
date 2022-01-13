@@ -50,6 +50,7 @@
 	for(var/datum/weakref/created_item in items_list)
 	to_chat(usr, span_notice("You unlock [src]'s deluxe landscaping equipment!"))
 	items_list += WEAKREF(new /obj/item/chainsaw(src)) //time to landscape the station
+	return TRUE
 
 /obj/item/multitool/abductor/implant
 	name = "multitool"
