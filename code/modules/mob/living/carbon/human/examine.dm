@@ -492,7 +492,7 @@
 	if (!obscured)
 		flavor_text_link = span_notice("[preview_text]... <a href='?src=[REF(src)];lookup_info=open_examine_panel'>Look closer?</a>")
 	else
-		flavor_text_link = span_notice("<a href='?src=[REF(src)];lookup_info=1'>Examine closely...</a>")
+		flavor_text_link = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
 	if (flavor_text_link)
 		. += flavor_text_link
 
