@@ -52,7 +52,7 @@
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/clothing/head/helmet,
 					/obj/item/clothing/head/helmet,
-					/obj/item/clothing/head/helmet)
+					/obj/item/clothing/head/helmet,)
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Science /////////////////////////////////////////
