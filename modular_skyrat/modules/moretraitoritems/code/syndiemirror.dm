@@ -11,23 +11,6 @@
 	// How long does it take to change someone's facial hair style?
 	var/facial_haircut_duration = 2 SECONDS
 
-/obj/item/storage/box/syndie_kit/chameleon/PopulateContents()
-	new /obj/item/clothing/under/chameleon(src)
-	new /obj/item/clothing/suit/chameleon(src)
-	new /obj/item/clothing/gloves/chameleon(src)
-	new /obj/item/clothing/shoes/chameleon(src)
-	new /obj/item/clothing/glasses/chameleon(src)
-	new /obj/item/clothing/head/chameleon(src)
-	new /obj/item/clothing/mask/chameleon(src)
-	new /obj/item/clothing/neck/chameleon(src)
-	new /obj/item/storage/backpack/chameleon(src)
-	new /obj/item/storage/belt/chameleon(src)
-	new /obj/item/radio/headset/chameleon(src)
-	new /obj/item/stamp/chameleon(src)
-	new /obj/item/pda/chameleon(src)
-	new /obj/item/hhmirror/syndie(src)
-	new /obj/item/dyespray(src)
-
 
 /obj/item/hhmirror/syndie/attack(mob/living/attacked_mob, mob/living/user, params)
 	if(!ishuman(attacked_mob))
@@ -78,4 +61,9 @@
 			target_human.facial_hairstyle = facial_hair_id
 			target_human.update_hair()
 			user.visible_message(span_notice("[target_human]'s facial hair changes!"), span_notice("The nanites successfully alter [target_human]'s facial hair!"))
+
+/obj/item/storage/box/syndie_kit/chameleon/PopulateContents()
+	. = ..()
+	new /obj/item/hhmirror/syndie(src)
+	new /obj/item/dyespray(src)
 
