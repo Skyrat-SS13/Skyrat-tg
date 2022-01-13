@@ -356,6 +356,6 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/food/meat/slab/human/mutant/skeleton = 1,
 		/obj/item/food/meat/slab/human/mutant/slime = 1,
 		/obj/item/food/meat/slab/human/mutant/zombie = 1,
-		/obj/item/seeds/kronkus = 1
+		/obj/item/seeds/kronkus = 1,
 	) = 25
 ))
