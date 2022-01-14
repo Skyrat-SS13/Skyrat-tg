@@ -95,6 +95,12 @@
 /datum/mutation/human/dwarfism/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
 		return
+	// SKYRAT EDIT BEGIN
+	if(owner.dna.features["body_size"] < 1)
+		to_chat(owner, "You feel your body shrinking even further, but your organs aren't! Uh oh!")
+		owner.gib(FALSE, FALSE, TRUE) // Don't try to become unclickable!
+		return
+	// SKYRAT EDIT END
 	ADD_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
 	var/matrix/new_transform = matrix()
 	new_transform.Scale(1, 0.8)
@@ -366,6 +372,12 @@
 /datum/mutation/human/gigantism/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
 		return
+	// SKYRAT EDIT BEGIN
+	if(owner.dna.features["body_size"] > 1)
+		to_chat(owner, "You feel your body expanding even further, but it feels like your bones are expanding too much! Uh oh!")
+		owner.gib(FALSE, FALSE, TRUE) // "lmao 200% big lemme just grab gigantism too"
+		return
+	// SKYRAT EDIT END
 	ADD_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 	owner.resize = 1.25
 	owner.update_transform()
