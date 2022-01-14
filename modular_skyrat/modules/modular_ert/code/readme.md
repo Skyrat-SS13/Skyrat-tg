@@ -9,11 +9,14 @@ MODULE ID: modular_ert
 
 ### Description:
 
-- Adds a specialized medical team ERT that allows for a better medical response.
-- Adds a specialized orbital shok droop trooper ERT that allows for a quick security response via pod.
+- Use this module for any Skyrat-unique ERTs, including their outfits, unique equipment, and ERT datums!
+- DO NOT PUT GENERAL-USE ITEMS IN HERE. ITEMS IN HERE SHOULD #ONLY# SHOW UP ON THEIR RELATED ERT.
+
+- (Using TG Outfits and Datums) Adds a simple Engi-Maintinence ERT of non-spaceproof, generic repair dudes.
 - Adds a Fumigator ERT specialized in pest control.
+- Adds a specialized orbital shok droop trooper ERT that allows for a quick security response via pod.
 - Adds a Pizza Delivery "ERT" for... pizza delivery.
-- (Using TG assets and Outfits) Adds a simple Engi-Maintinence ERT of non-spaceproof, generic repair dudes.
+- Adds a specialized medical team ERT that allows for a better medical response.
 
 ### TG Proc Changes:
 
