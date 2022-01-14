@@ -475,7 +475,7 @@
 		for(var/datum/gunpoint/GP in gunpointed)
 			. += "<span class='warning'><b>[GP.source.name] [GP.source.p_are()] holding [t_him] at gunpoint with [GP.aimed_gun.name]!</b></span>\n"
 	//SKYRAT EDIT ADDITION END
-
+/*
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	for(var/genital in list("penis", "testicles", "vagina", "breasts", "anus"))
 		if(dna.species.mutant_bodyparts[genital])
@@ -484,7 +484,7 @@
 				if(!(G.is_hidden(src)))
 					. += "<span class='notice'>[t_He] has exposed genitals... <a href='?src=[REF(src)];lookup_info=genitals'>Look closer...</a></span>"
 					break
-
+*/
 	var/flavor_text_link
 	/// The first 1-FLAVOR_PREVIEW_LIMIT characters in the mob's "flavor_text" DNA feature. FLAVOR_PREVIEW_LIMIT is defined in flavor_defines.dm.
 	var/preview_text = copytext((dna.features["flavor_text"]), 1, FLAVOR_PREVIEW_LIMIT)
