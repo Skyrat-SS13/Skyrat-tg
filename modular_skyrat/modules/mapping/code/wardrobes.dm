@@ -16,13 +16,16 @@
 					/obj/item/clothing/under/syndicate/combat = 3,
 					/obj/item/clothing/shoes/combat = 3,
 					/obj/item/clothing/mask/gas/syndicate = 3,
-					/obj/item/clothing/suit/hooded/wintercoat/syndicate = 5)
+					/obj/item/clothing/suit/hooded/wintercoat/syndicate = 5,
+					/obj/item/clothing/suit/armor/vest/drive = 3,
+					/obj/item/clothing/under/syndicate/drive = 3,)
 	contraband = list(/obj/item/knife/combat = 1,
 					/obj/item/clothing/under/syndicate/coldres = 2,
 					/obj/item/clothing/shoes/combat/coldres = 2)
 	premium = list(/obj/item/knife/combat/survival = 1,
 					/obj/item/storage/fancy/cigarettes/cigpack_syndicate = 5,
-					/obj/item/clothing/gloves/combat = 3)
+					/obj/item/clothing/gloves/combat = 3,
+					/obj/item/clothing/gloves/combat/driving = 3,)
 	refill_canister = /obj/item/vending_refill/wardrobe/syndie_wardrobe
 	light_color = COLOR_MOSTLY_PURE_RED
 
