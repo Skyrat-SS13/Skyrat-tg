@@ -26,11 +26,9 @@
 	inhand_icon_state = "crowbar"
 	force = 25 // It's 15 TC
 	throwforce = 20
-	throw_range = 1
 	wound_bonus = 30 // haha, your bones
 	bare_wound_bonus = 40
 	block_chance = 25
-	throwforce = 10
 
 /obj/item/clothing/gloves/combat/driving
 	name = "driving gloves"
