@@ -98,7 +98,7 @@
 	// SKYRAT EDIT BEGIN
 	if(owner.dna.features["body_size"] < 1)
 		to_chat(owner, "You feel your body shrinking even further, but your organs aren't! Uh oh!")
-		owner.gib(FALSE, FALSE, TRUE) // Don't try to become unclickable!
+		owner.adjustBruteLoss(25)
 		return
 	// SKYRAT EDIT END
 	ADD_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
@@ -374,8 +374,8 @@
 		return
 	// SKYRAT EDIT BEGIN
 	if(owner.dna.features["body_size"] > 1)
-		to_chat(owner, "You feel your body expanding even further, but it feels like your bones are expanding too much! Uh oh!")
-		owner.gib(FALSE, FALSE, TRUE) // "lmao 200% big lemme just grab gigantism too"
+		to_chat(owner, "You feel your body expanding even further, but it feels like your bones are expanding too much!")
+		owner.adjustBruteLoss(25) // take some DAMAGE
 		return
 	// SKYRAT EDIT END
 	ADD_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
