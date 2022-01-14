@@ -559,8 +559,7 @@
 			return FALSE
 		// SKYRAT EDIT BEGIN
 		if(R_TRAIT_WIDE in R.model.model_features)
-			to_chat(usr, span_warning("This unit's chassis cannot be enlarged any further."))
-			return FALSE
+			R.set_base_pixel_y(4)
 		// SKYRAT EDIT END
 
 		R.notransform = TRUE
