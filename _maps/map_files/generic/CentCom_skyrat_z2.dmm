@@ -778,10 +778,6 @@
 /turf/open/floor/mineral/titanium,
 /area/centcom/interlink)
 "alb" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -12
-	},
 /obj/structure/mirror{
 	pixel_y = 32
 	},
@@ -3711,6 +3707,10 @@
 /obj/machinery/door/window/westleft{
 	dir = 4
 	},
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = -12
+	},
 /turf/open/floor/plating/abductor2,
 /area/centcom/holding/cafepark)
 "aJA" = (
@@ -4977,10 +4977,6 @@
 	},
 /area/centcom/holding/cafepark)
 "aSU" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -12
-	},
 /obj/structure/mirror{
 	pixel_y = 32
 	},
@@ -7860,9 +7856,19 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "pGK" = (
-/obj/effect/landmark/latejoin,
-/turf/open/floor/carpet/green,
-/area/centcom/interlink)
+/obj/machinery/shower{
+	dir = 8
+	},
+/obj/structure/sink{
+	pixel_x = -12;
+	pixel_y = 10
+	},
+/turf/open/indestructible/hoteltile{
+	icon = 'modular_skyrat/modules/ghostcafe/icons/floors.dmi';
+	icon_state = "titanium_blue_old";
+	name = "bathroom floor"
+	},
+/area/centcom/holding/cafedorms)
 "pOe" = (
 /obj/structure/transit_tube/curved{
 	dir = 4
@@ -8434,6 +8440,10 @@
 	dir = 8
 	},
 /turf/open/floor/carpet/orange,
+/area/centcom/interlink)
+"tcR" = (
+/obj/effect/landmark/latejoin,
+/turf/open/floor/carpet/green,
 /area/centcom/interlink)
 "thU" = (
 /obj/machinery/door/poddoor/ert,
@@ -16239,7 +16249,7 @@ odG
 aHC
 cmu
 oVj
-pGK
+tcR
 oVj
 aHC
 aaa
@@ -47601,7 +47611,7 @@ avl
 aBT
 aUu
 axA
-alb
+aNd
 axA
 aPf
 aPf
@@ -60698,7 +60708,7 @@ agy
 aIV
 ahQ
 axA
-alb
+aNd
 axA
 aSH
 afs
@@ -66072,7 +66082,7 @@ aPf
 aPf
 aPf
 axA
-aVC
+pGK
 axA
 aIN
 aWp
