@@ -24,7 +24,7 @@
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
 	inhand_icon_state = "crowbar"
-	force = 15 // Same stats as pre-nerf breaching hammer
+	force = 25 // It's 15 TC
 	throwforce = 20
 	throw_range = 1
 	wound_bonus = 30 // haha, your bones
