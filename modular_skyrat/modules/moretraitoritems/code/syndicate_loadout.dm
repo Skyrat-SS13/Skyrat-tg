@@ -238,3 +238,11 @@
 	new /obj/item/grenade/spawnergrenade/manhacks(src)
 	for(var/i in 1 to 6)
 		new /obj/item/pen/edagger(src)
+
+/obj/item/storage/box/syndie_kit/loadout/driver/PopulateContents()
+	new /obj/item/clothing/suit/armor/vest/drive(src)
+	new /obj/item/clothing/under/syndicate/drive(src)
+	new /obj/item/crowbar/drive_hammer(src)
+	new /obj/item/clothing/gloves/combat/driving(src)
+	new /obj/item/clothing/mask/gas/syndicate(src)
+	new /obj/item/clothing/shoes/combat(src)

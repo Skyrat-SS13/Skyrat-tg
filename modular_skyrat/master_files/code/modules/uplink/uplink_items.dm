@@ -403,3 +403,10 @@
 	desc = "Themed after an infamous syndicate operative with a particular fighting style, this kit is both a fashionable throwback and a uniquely useful combative loadout."
 	item = /obj/item/storage/box/syndie_kit/loadout/lasermanbundle
 	cost = 20
+
+/datum/uplink_item/bundles_tc/driver
+	name = "Driver bundle"
+	desc = "Themed after a infamous stunt-driver, who defected to the Syndicate. This man was known for his preferred use of a hammer, this kit replicates his style and a unique hammer. Designed for breaking bones."
+	item = /obj/item/storage/box/syndie_kit/loadout/driver
+	cost = 15
+	progression_minimum = 40 MINUTES
