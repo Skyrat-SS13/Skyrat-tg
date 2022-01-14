@@ -6,6 +6,41 @@
 	/// Traits unique to this model, i.e. having a unique dead sprite, being wide or being small enough to reject shrinker modules. Leverages defines in code\__DEFINES\~skyrat_defines\robot_defines.dm
 	var/list/model_features = list()
 
+/mob/living/silicon/robot/proc/update_roomba()
+//	It seems 'current_skin', the value we are looking for, doesn't update properly - so we have to improvise
+	var/list/listofroombas = list("zoomba_engi", "zoomba_med", "zoomba_green", "zoomba_miner", "zoomba_jani", "zoomba_sec") //Wow, there is a Securistan roomba
+	if(model.cyborg_base_icon in listofroombas)
+		AddComponent(/datum/component/tippable, \
+			tip_time = 1 SECONDS, \
+			untip_time = 1 SECONDS, \
+			self_right_time = 10 SECONDS, \
+			pre_tipped_callback = CALLBACK(src, .proc/pre_tip_over), \
+			post_tipped_callback = CALLBACK(src, .proc/after_tip_over), \
+			post_untipped_callback = CALLBACK(src, .proc/after_righted))
+
+/mob/living/silicon/robot/proc/pre_tip_over(mob/user)
+	playsound(src, 'sound/machines/buzz-sigh.ogg', 50, TRUE)
+	return
+
+/mob/living/silicon/robot/proc/after_tip_over(mob/user)
+	if(hat)
+		hat.forceMove(drop_location())
+	var/atom/movable/overlay = new /atom/movable
+	overlay.icon = 'modular_skyrat/modules/altborgs/icons/robot_effect.dmi'
+	overlay.layer = ABOVE_MOB_LAYER
+
+	flick("zoomba_flip", overlay) //Start from the start
+	vis_contents += overlay
+	return
+
+/mob/living/silicon/robot/proc/after_righted(mob/user)
+	if(!user) //Did we self-right?
+		SpinAnimation(3, 1)
+		playsound(get_turf(src), 'sound/vehicles/skateboard_ollie.ogg', 50, TRUE) //Roomba does a sick ollie
+	LAZYNULL(vis_contents)
+	return
+
+
 /obj/item/robot_model/proc/update_dogborg()
 	var/mob/living/silicon/robot/cyborg = robot || loc
 	if (!istype(robot))
@@ -52,7 +87,7 @@
 		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootyservice", SKIN_ICON = CYBORG_ICON_SERVICE),
 		"Protectron" = list(SKIN_ICON_STATE = "protectron_service", SKIN_ICON = CYBORG_ICON_SERVICE),
 		"Miss M" = list(SKIN_ICON_STATE = "missm_service", SKIN_ICON = CYBORG_ICON_SERVICE),
-		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_green", SKIN_ICON = CYBORG_ICON_SERVICE, SKIN_FEATURES = list(model_features = R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
+		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_green", SKIN_ICON = CYBORG_ICON_SERVICE, SKIN_FEATURES = list(model_features = R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL), SKIN_HAT_OFFSET = -13),
 		"Mech" = list(SKIN_ICON_STATE = "lloyd", SKIN_ICON = CYBORG_ICON_SERVICE),
 		"Handy" = list(SKIN_ICON_STATE = "handy-service", SKIN_ICON = CYBORG_ICON_SERVICE),
 		"Darkhound" = list(SKIN_ICON_STATE = "k50", SKIN_ICON = CYBORG_ICON_SERVICE_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
@@ -81,7 +116,7 @@
 		"Miss M" = list(SKIN_ICON_STATE = "missm_miner", SKIN_ICON = CYBORG_ICON_MINING),
 		"Mech" = list(SKIN_ICON_STATE = "ishimura", SKIN_ICON = CYBORG_ICON_MINING),
 		"Drone" = list(SKIN_ICON_STATE = "miningdrone", SKIN_ICON = CYBORG_ICON_MINING, SKIN_FEATURES = list(R_TRAIT_SMALL)),
-		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_miner", SKIN_ICON = CYBORG_ICON_MINING, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
+		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_miner", SKIN_ICON = CYBORG_ICON_MINING, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL), SKIN_HAT_OFFSET = -13),
 		"Blade" = list(SKIN_ICON_STATE = "blade", SKIN_ICON = CYBORG_ICON_MINING_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
 		"Vale" = list(SKIN_ICON_STATE = "valemine", SKIN_ICON = CYBORG_ICON_MINING_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
 		"Drake" = list(SKIN_ICON_STATE = "drakemine", SKIN_ICON = CYBORG_ICON_MINING_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
@@ -106,7 +141,7 @@
 /obj/item/robot_model/engineering
 	borg_skins = list(
 		"Default" = list(SKIN_ICON_STATE = "engineer", SKIN_FEATURES = list(R_TRAIT_SMALL)),
-		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_engi", SKIN_ICON = CYBORG_ICON_ENG, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
+		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_engi", SKIN_ICON = CYBORG_ICON_ENG, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL), SKIN_HAT_OFFSET = -13),
 		"Default - Treads" = list(SKIN_ICON_STATE = "engi-tread", SKIN_LIGHT_KEY = "engineer", SKIN_ICON = CYBORG_ICON_ENG),
 		"Loader" = list(SKIN_ICON_STATE = "loaderborg", SKIN_ICON = CYBORG_ICON_ENG, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK)),
 		"Handy" = list(SKIN_ICON_STATE = "handyeng", SKIN_ICON = CYBORG_ICON_ENG),
@@ -135,7 +170,7 @@
 /obj/item/robot_model/janitor
 	borg_skins = list(
 		"Default" = list(SKIN_ICON_STATE = "janitor"),
-		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_jani", SKIN_ICON = CYBORG_ICON_JANI, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
+		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_jani", SKIN_ICON = CYBORG_ICON_JANI, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL), SKIN_HAT_OFFSET = -13),
 		"Marina" = list(SKIN_ICON_STATE = "marinajan", SKIN_ICON = CYBORG_ICON_JANI),
 		"Sleek" = list(SKIN_ICON_STATE = "sleekjan", SKIN_ICON = CYBORG_ICON_JANI),
 		"Can" = list(SKIN_ICON_STATE = "canjan", SKIN_ICON = CYBORG_ICON_JANI),
@@ -161,7 +196,7 @@
 	borg_skins = list(
 		"Machinified Doctor" = list(SKIN_ICON_STATE = "medical", SKIN_TRAITS = list(R_TRAIT_SMALL)),
 		"Qualified Doctor" = list(SKIN_ICON_STATE = "qualified_doctor"),
-		"Zoomba" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "zoomba_med"),
+		"Zoomba" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "zoomba_med", SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL), SKIN_HAT_OFFSET = -13),
 		"Droid" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "medical", SKIN_HAT_OFFSET = 4),
 		"Sleek" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "sleekmed"),
 		"Marina" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "marinamed"),
@@ -202,7 +237,7 @@
 /obj/item/robot_model/security
 	borg_skins = list(
 		"Default" = list(SKIN_ICON_STATE = "sec"),
-		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_sec", SKIN_ICON = CYBORG_ICON_SEC, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
+		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_sec", SKIN_ICON = CYBORG_ICON_SEC, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL), SKIN_HAT_OFFSET = -13),
 		"Default - Treads" = list(SKIN_ICON_STATE = "sec-tread", SKIN_LIGHT_KEY = "sec", SKIN_ICON = CYBORG_ICON_SEC),
 		"Sleek" = list(SKIN_ICON_STATE = "sleeksec", SKIN_ICON = CYBORG_ICON_SEC),
 		"Marina" = list(SKIN_ICON_STATE = "marinasec", SKIN_ICON = CYBORG_ICON_SEC),
