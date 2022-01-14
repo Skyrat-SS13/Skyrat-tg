@@ -265,6 +265,7 @@
 	id = /obj/item/card/id/away/tarkon/cargo
 	l_pocket = /obj/item/card/mining_point_card
 	r_pocket = /obj/item/mining_voucher
+	ears = /obj/item/radio/headset/tarkon
 
 /datum/outfit/tarkon/post_equip(mob/living/carbon/human/tarkon, visualsOnly = FALSE)
 	var/obj/item/card/id/id_card = tarkon.wear_id
@@ -329,6 +330,15 @@
 /obj/item/radio/headset/cybersun/captain
 	name = "cybersun captain headset"
 	desc = "The headset of the boss."
+	command = TRUE
+
+/obj/item/radio/headset/tarkon
+	name = "tarkon headset"
+	keyslot = new /obj/item/encryptionkey/headset_tarkon
+
+/obj/item/radio/headset/tarkon/ensign //spoiler for upcoming update
+	name = "tarkon ensign headset"
+	desc = "A headset personally handed to trusted crew of Tarkon. It fills you with will to do... Something."
 	command = TRUE
 
 //OBJECTS//
