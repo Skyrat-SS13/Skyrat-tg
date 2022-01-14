@@ -26,6 +26,16 @@
 		/obj/item/roller,\
 		)
 
+/datum/outfit/centcom/ert/medic/traumateam/leader //Very few differences, mostly just unique leader items - namely, a medbeam rather than a Veymed
+	backpack_contents = list(
+		/obj/item/storage/box/survival/security,\
+		/obj/item/melee/baton/security/loaded ,\
+		/obj/item/reagent_containers/hypospray/combat/nanites,\
+		/obj/item/gun/medbeam,\
+		/obj/item/storage/firstaid/tactical/ntrauma,\
+		/obj/item/roller,\
+		)
+
 ////////////////////
 /// UNIQUE ITEMS ///
 ////////////////////
