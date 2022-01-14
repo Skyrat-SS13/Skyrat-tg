@@ -246,3 +246,4 @@
 	new /obj/item/clothing/gloves/combat/driving(src)
 	new /obj/item/clothing/mask/gas/syndicate(src)
 	new /obj/item/clothing/shoes/combat(src)
+	new /obj/item/clothing/glasses/sunglasses(src)
