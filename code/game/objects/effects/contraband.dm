@@ -663,13 +663,8 @@
 
 /obj/structure/sign/poster/official/enlist
 	name = "Enlist" // but I thought deathsquad was never acknowledged
-<<<<<<< HEAD
 	desc = "Enlist in Nanotrasen's Elite squadron today!" //SKYRAT EDIT: original: 	desc = "Enlist in the Nanotrasen Deathsquadron reserves today!"
-	icon_state = "poster29_legit"
-=======
-	desc = "Enlist in the Nanotrasen Deathsquadron reserves today!"
 	icon_state = "enlist"
->>>>>>> faeb82211b1 (Poster Pack (#63865))
 
 /obj/structure/sign/poster/official/nanomichi_ad
 	name = "Nanomichi Ad"
