@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL
 /datum/traitor_objective_category/hack_comm_console
 	name = "Hack Communication Console"
 	objectives = list(
@@ -54,3 +55,4 @@
 			priority_announce("Attention crew, it appears that someone on your station has made unexpected communication with a syndicate ship in nearby space.", "[command_name()] High-Priority Update")
 			var/datum/round_event_control/pirates/pirate_event = new/datum/round_event_control/pirates
 			pirate_event.runEvent()
+*/

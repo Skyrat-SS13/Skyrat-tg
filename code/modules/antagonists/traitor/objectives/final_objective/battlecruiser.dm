@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL
 /// The minimum number of ghosts and observers needed before handing out battlecruiser objectives.
 #define MIN_GHOSTS_FOR_BATTLECRUISER 8
 
@@ -45,3 +46,4 @@
 			))
 
 #undef MIN_GHOSTS_FOR_BATTLECRUISER
+*/
