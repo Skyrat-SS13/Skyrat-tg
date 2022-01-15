@@ -396,25 +396,11 @@
 	antag_datum = /datum/antagonist/cult
 	minimum_required_age = 14
 <<<<<<< HEAD
-	restricted_roles = list(JOB_AI, JOB_CYBORG,
+	restricted_roles = list(JOB_AI, JOB_CYBORG, JOB_PRISONER
 						JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_HEAD_OF_SECURITY, JOB_CORRECTIONS_OFFICER, JOB_CIVIL_DISPUTES_OFFICER, JOB_SECURITY_SERGEANT,
 						JOB_CAPTAIN, JOB_VANGUARD_OPERATIVE, JOB_NT_REP, JOB_BLUESHIELD,
 						JOB_ORDERLY, JOB_BOUNCER, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD, JOB_SCIENCE_GUARD
-						) // SKYRAT EDIT ADD - ALL AFTER JOB_CYBORG
-=======
-	restricted_roles = list(
-		JOB_AI,
-		JOB_CAPTAIN,
-		JOB_CHAPLAIN,
-		JOB_CYBORG,
-		JOB_DETECTIVE,
-		JOB_HEAD_OF_PERSONNEL,
-		JOB_HEAD_OF_SECURITY,
-		JOB_PRISONER,
-		JOB_SECURITY_OFFICER,
-		JOB_WARDEN,
-	)
->>>>>>> e9a1c93cc08 (Re-adds prisoners to the restricted_roles for cultists and revheads (#63960))
+						) // SKYRAT EDIT ADD - ALL AFTER JOB_PRISONER
 	required_candidates = 2
 	weight = 3
 	cost = 20
