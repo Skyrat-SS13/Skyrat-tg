@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-#define FIREALARM_COOLDOWN 80 //SKYRAT EDIT CHANGE - ORIGINAL: 67 - AESTHETIC // Chosen fairly arbitrarily, it is the length of the audio in FireAlarm.ogg. The actual track length is 7 seconds 8ms but but the audio stops at 6s 700ms
-=======
-#define FIREALARM_COOLDOWN 96 // This define is based on the current FireAlarm.ogg, and is placed to match the running time at 9 seconds 600 milliseconds (9.6 seconds)
->>>>>>> a7285f82bbc (New Fire Alarm Sound (#63896))
+#define FIREALARM_COOLDOWN 80 //SKYRAT EDIT CHANGE - ORIGINAL: 96 - AESTHETIC // This define is based on the current FireAlarm.ogg, and is placed to match the running time at 9 seconds 600 milliseconds (9.6 seconds)
 
 /obj/item/electronics/firealarm
 	name = "fire alarm electronics"
@@ -170,12 +166,8 @@
 	COOLDOWN_START(src, last_alarm, FIREALARM_COOLDOWN)
 	var/area/area = get_area(src)
 	area.firealert(src)
-<<<<<<< HEAD
-	//playsound(loc, 'goon/sound/machinery/FireAlarm.ogg', 75) ORIGINAL
+	//playsound(loc, 'sound/machines/FireAlarm.ogg', 96) ORIGINAL
 	playsound(loc, alarm_sound, 75) //SKYRAT EDIT CHANGE - AESTHETICS
-=======
-	playsound(loc, 'sound/machines/FireAlarm.ogg', 96)
->>>>>>> a7285f82bbc (New Fire Alarm Sound (#63896))
 	if(user)
 		log_game("[user] triggered a fire alarm at [COORD(src)]")
 
