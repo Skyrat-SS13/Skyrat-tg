@@ -30,7 +30,7 @@
 	backpack_contents = list(
 		/obj/item/storage/box/survival/security,\
 		/obj/item/melee/baton/security/loaded ,\
-		/obj/item/reagent_containers/hypospray/combat/nanites,\
+		/obj/item/reagent_containers/hypospray/combat,\
 		/obj/item/gun/medbeam,\
 		/obj/item/storage/firstaid/tactical/ntrauma,\
 		/obj/item/roller,\
