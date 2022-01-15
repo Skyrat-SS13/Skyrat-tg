@@ -17,11 +17,7 @@
 		/obj/item/storage/box/survival/security,\
 		/obj/item/melee/baton/security/loaded,\
 		/obj/item/gun/energy/cell_loaded/medigun/upgraded,\
-		/obj/item/weaponcell/medical/brute,\
-		/obj/item/weaponcell/medical/burn,\
-		/obj/item/weaponcell/medical/toxin/better,\
-		/obj/item/weaponcell/medical/utility/temperature,\
-		/obj/item/weaponcell/medical/utility/bed,\
+		/obj/item/storage/box/medicells,\
 		/obj/item/storage/firstaid/tactical/ntrauma,\
 		)
 	//Chosen cells are based off the worst things to deal with: TraumaTeam is built for worst-case scenarios, so they get a temperature cell and a better toxin cell
@@ -39,6 +35,20 @@
 ////////////////////
 /// UNIQUE ITEMS ///
 ////////////////////
+
+//A box of VeyGun cells, because storage is hell and these take up a LOT more than they're worth.
+/obj/item/storage/box/plastic/medicells
+	name = "box of medicells"
+	desc = "A box with a few basic Medicells, designed for VeyMedical CWM cell-powered Mediguns."
+	illustration = "medgel"
+
+/obj/item/storage/box/medicells/PopulateContents()
+	. = ..()
+	new /obj/item/weaponcell/medical/brute(src)
+	new /obj/item/weaponcell/medical/burn(src)
+	new /obj/item/weaponcell/medical/toxin/better(src)
+	new /obj/item/weaponcell/medical/utility/temperature(src)
+	new /obj/item/weaponcell/medical/utility/bed(src)
 
 /obj/item/card/id/advanced/centcom/ert/medical/ntrauma
 	registered_name = "Trauma Team Specialist"
