@@ -503,7 +503,7 @@
 			if((methods & INGEST) && show_message)
 				to_chat(exposed_carbon, span_notice("<i>You feel nothing but a terrible aftertaste.</i>"))
 			return
-		if(exposed_carbon.dna.species.has_innate_wings)
+		if(exposed_mob.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS)) //Skyrat Edit
 			to_chat(exposed_carbon, span_userdanger("A terrible pain travels down your back as your wings change shape!"))
 		else
 			to_chat(exposed_carbon, span_userdanger("A terrible pain travels down your back as wings burst out!"))
