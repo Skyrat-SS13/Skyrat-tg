@@ -12,6 +12,10 @@ export const ChemPress = (props, context) => {
     product,
     min_volume,
     max_volume,
+    //SKYRAT EDIT BEGIN
+    patch_style,
+    patch_styles = []
+    //SKYRAT EDIT END
   } = data;
   return (
     <Window
@@ -91,6 +95,24 @@ export const ChemPress = (props, context) => {
                 ))}
               </LabeledList.Item>
             )}
+            {/*SKYRAT EDIT BEGIN*/}
+            {product === "patch" && (
+              <LabeledList.Item label="Style">
+                {patch_styles.map(patch => (
+                  <Button
+                    key={patch.style}
+                    selected={patch.style === patch_style}
+                    textAlign="center"
+                    color="transparent"
+                    onClick={() => act('change_patch_style', {
+                      patch_style: patch.style,
+                    })}>
+                    <Box mb={0} mt={1} className={patch.class_name} />
+                  </Button>
+                ))}
+              </LabeledList.Item>
+            )}
+            {/*SKYRAT EDIT END*/}
           </LabeledList>
         </Section>
       </Window.Content>

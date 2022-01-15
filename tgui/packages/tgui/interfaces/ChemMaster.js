@@ -247,6 +247,10 @@ const PackagingControls = (props, context) => {
     autoCondiStyle,
     pillStyles = [],
     condiStyles = [],
+    //SKYRAT EDIT BEGIN
+    patch_style,
+    patch_styles = []
+    //SKYRAT EDIT END
   } = data;
   const autoCondiStyleChosen = autoCondiStyle === chosenCondiStyle;
   return (
@@ -279,6 +283,22 @@ const PackagingControls = (props, context) => {
             volume: 'auto',
           })} />
       )}
+      {/*SKYRAT EDIT BEGIN*/}
+      {!condi && (
+        <LabeledList.Item label="Patch type">
+          {patch_styles.map(patch => (
+            <Button
+              key={patch.style}
+              selected={patch.style === patch_style}
+              textAlign="center"
+              color="transparent"
+              onClick={() => act('change_patch_style', { patch_style: patch.style })}>
+              <Box mb={0} mt={1} className={patch.class_name} />
+            </Button>
+          ))}
+        </LabeledList.Item>
+      )}
+      {/*SKYRAT EDIT END*/}
       {!condi && (
         <PackagingControlsItem
           label="Patches"
