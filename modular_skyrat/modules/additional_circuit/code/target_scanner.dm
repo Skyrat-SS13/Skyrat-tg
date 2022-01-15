@@ -1,5 +1,5 @@
 /**
- * # Radar Scanner Component
+ * # Target Scanner Component
  *
  * Allows for creating a list of atoms within a range of 1.
  */

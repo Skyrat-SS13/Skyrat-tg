@@ -21,7 +21,7 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 
-//Radar Scanner Component
+//Target Scanner Component
 /datum/design/component/radar_scanner
 	name = "Target Scanner Component"
 	id = "comp_tscanner"
