@@ -21,8 +21,8 @@
 		/obj/item/weaponcell/medical/burn,\
 		/obj/item/weaponcell/medical/toxin/better,\
 		/obj/item/weaponcell/medical/utility/temperature,\
+		/obj/item/weaponcell/medical/utility/bed,\
 		/obj/item/storage/firstaid/tactical/ntrauma,\
-		/obj/item/roller,\
 		)
 	//Chosen cells are based off the worst things to deal with: TraumaTeam is built for worst-case scenarios, so they get a temperature cell and a better toxin cell
 
