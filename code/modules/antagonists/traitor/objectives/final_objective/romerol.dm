@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL
 /datum/traitor_objective/final/romerol
 	name = "Spread the experimental bioterror agent Romerol by calling a droppod down at %AREA%"
 	description = "Go to %AREA%, and recieve the bioterror agent. Spread it to the crew, \
@@ -45,4 +44,3 @@
 				"style" = STYLE_SYNDICATE,
 				"spawn" = /obj/item/storage/box/syndie_kit/romerol,
 			))
-*/
