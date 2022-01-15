@@ -176,6 +176,13 @@
 					/obj/item/gun/ballistic/automatic/pistol/toy) //they just hate you.
 	crate_name = "dusty crate"
 
+/datum/supply_pack/security/armory/sidearm
+	name = "Armadyne Sidearm Tokens Crate"
+	desc = "Contains one set of Armadyne branded Sidearm Tokens, to be redeemed at an appropriate vending machine."
+	cost = CARGO_CRATE_VALUE * 7
+	contains = list(/obj/item/storage/box/armament_tokens_sidearm)
+	crate_name = "sidearm token crate"
+
 //////////////////////////////////////////////////////////////////////////////
 ///////////////////////////// Engineering ////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
