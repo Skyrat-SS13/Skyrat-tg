@@ -1,8 +1,8 @@
 /datum/traitor_objective_category/final_objective
 	name = "Final Objective"
 	objectives = list(
-		/datum/traitor_objective/final/romerol = 1,
-		/datum/traitor_objective/final/battlecruiser = 1,
+//		/datum/traitor_objective/final/romerol = 1, // SKYRAT EDIT
+//		/datum/traitor_objective/final/battlecruiser = 1, // SKYRAT EDIT
 	)
 	weight = 100
 
