@@ -14,7 +14,7 @@ export const ChemPress = (props, context) => {
     max_volume,
     // SKYRAT EDIT BEGIN
     patch_style,
-    patch_styles = []
+    patch_styles = [],
     // SKYRAT EDIT END
   } = data;
   return (

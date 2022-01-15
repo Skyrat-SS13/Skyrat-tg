@@ -249,7 +249,7 @@ const PackagingControls = (props, context) => {
     condiStyles = [],
     // SKYRAT EDIT BEGIN
     patch_style,
-    patch_styles = []
+    patch_styles = [],
     // SKYRAT EDIT END
   } = data;
   const autoCondiStyleChosen = autoCondiStyle === chosenCondiStyle;
