@@ -23,9 +23,9 @@
 
 //Radar Scanner Component
 /datum/design/component/radar_scanner
-	name = "Radar Scanner Component"
-	id = "comp_rscanner"
-	build_path = /obj/item/circuit_component/radar_scanner
+	name = "Target Scanner Component"
+	id = "comp_tscanner"
+	build_path = /obj/item/circuit_component/target_scanner
 
 //Cell Charge Component
 /datum/design/component/cell_charge
@@ -39,7 +39,7 @@
 	description = "Grants access to advanced sensor components component for shells."
 	prereq_ids = list("adv_shells")
 	design_ids = list(
-		"comp_rscanner",
+		"comp_tscanner",
 		"comp_ccharge",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 500)

@@ -3,7 +3,7 @@
  *
  * Allows for creating a list of atoms within a range of 1.
  */
-/obj/item/circuit_component/radar_scanner
+/obj/item/circuit_component/target_scanner
 	display_name = "Target Scanner"
 	desc = "A component that will create a list of the things within a location depending on an offset to the shell."
 	category = "Action"
@@ -21,12 +21,12 @@
 
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 
-/obj/item/circuit_component/radar_scanner/populate_ports()
+/obj/item/circuit_component/target_scanner/populate_ports()
 	x_pos = add_input_port("X offset", PORT_TYPE_NUMBER)
 	y_pos = add_input_port("Y offset", PORT_TYPE_NUMBER)
 	atom_table = add_output_port("Output", PORT_TYPE_LIST(PORT_TYPE_ATOM))
 
-/obj/item/circuit_component/radar_scanner/input_received(datum/port/input/port)
+/obj/item/circuit_component/target_scanner/input_received(datum/port/input/port)
 	//cooldown is important
 	if(!COOLDOWN_FINISHED(src, scan_delay))
 		return
