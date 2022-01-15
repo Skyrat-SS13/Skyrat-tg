@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL
 /datum/traitor_objective_category/final_objective
 	name = "Final Objective"
 	objectives = list(
@@ -34,4 +33,3 @@
 /datum/traitor_objective/final/uplink_ui_data(mob/user)
 	. = ..()
 	.["final_objective"] = TRUE
-*/
