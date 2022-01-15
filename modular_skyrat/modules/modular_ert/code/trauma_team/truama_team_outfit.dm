@@ -15,8 +15,7 @@
 	l_pocket = /obj/item/tank/internals/emergency_oxygen/engi
 	backpack_contents = list(
 		/obj/item/storage/box/survival/security,\
-		/obj/item/melee/baton/security/loaded ,\
-		/obj/item/reagent_containers/hypospray/combat/nanites,\
+		/obj/item/melee/baton/security/loaded,\
 		/obj/item/gun/energy/cell_loaded/medigun/upgraded,\
 		/obj/item/weaponcell/medical/brute,\
 		/obj/item/weaponcell/medical/burn,\
@@ -25,6 +24,7 @@
 		/obj/item/storage/firstaid/tactical/ntrauma,\
 		/obj/item/roller,\
 		)
+	//Chosen cells are based off the worst things to deal with: TraumaTeam is built for worst-case scenarios, so they get a temperature cell and a better toxin cell
 
 /datum/outfit/centcom/ert/medic/traumateam/leader //Very few differences, mostly just unique leader items - namely, a medbeam rather than a Veymed
 	backpack_contents = list(
@@ -57,8 +57,8 @@
 	new /obj/item/scalpel/advanced(src)
 	new	/obj/item/cautery/advanced(src)
 	new /obj/item/retractor/advanced(src)
-	new /obj/item/blood_filter(src)
 	new /obj/item/healthanalyzer/advanced(src)
+	new	/obj/item/reagent_containers/hypospray/combat(src)
 
 /obj/item/storage/firstaid/tactical/ntrauma
 	name = "trauma medical kit"
