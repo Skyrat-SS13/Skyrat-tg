@@ -273,6 +273,9 @@
 		id_card.registered_name = tarkon.real_name
 		id_card.update_label()
 		id_card.update_icon()
+	var/obj/item/radio/R = tarkon.ears
+	R.set_frequency(1243)
+	R.recalculateChannels()
 
 	return ..()
 
@@ -334,6 +337,8 @@
 
 /obj/item/radio/headset/tarkon
 	name = "tarkon headset"
+	freerange = TRUE
+	freqlock = TRUE
 	keyslot = new /obj/item/encryptionkey/headset_tarkon
 
 /obj/item/radio/headset/tarkon/ensign //spoiler for upcoming update
