@@ -97,6 +97,7 @@ GENE SCANNER
 	var/scanmode = SCANMODE_HEALTH
 	var/advanced = FALSE
 	custom_price = PAYCHECK_HARD
+	power_use_amount = POWER_CELL_USE_LOW //SKYRAT EDIT ADDITION CHANGE
 
 /obj/item/healthanalyzer/examine(mob/user)
 	. = ..()
@@ -502,7 +503,6 @@ GENE SCANNER
 	icon_state = "health_adv"
 	desc = "A hand-held body scanner able to distinguish vital signs of the subject with high accuracy."
 	advanced = TRUE
-	power_use_amount = POWER_CELL_USE_HIGH //SKYRAT EDIT ADDITION CHANGE
 
 /// Displays wounds with extended information on their status vs medscanners
 /proc/woundscan(mob/user, mob/living/carbon/patient, obj/item/healthanalyzer/wound/scanner)
