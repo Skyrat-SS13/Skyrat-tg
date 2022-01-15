@@ -12,10 +12,10 @@ export const ChemPress = (props, context) => {
     product,
     min_volume,
     max_volume,
-    //SKYRAT EDIT BEGIN
+    // SKYRAT EDIT BEGIN
     patch_style,
     patch_styles = []
-    //SKYRAT EDIT END
+    // SKYRAT EDIT END
   } = data;
   return (
     <Window
@@ -95,7 +95,7 @@ export const ChemPress = (props, context) => {
                 ))}
               </LabeledList.Item>
             )}
-            {/*SKYRAT EDIT BEGIN*/}
+            {/* SKYRAT EDIT BEGIN */}
             {product === "patch" && (
               <LabeledList.Item label="Style">
                 {patch_styles.map(patch => (
@@ -112,7 +112,7 @@ export const ChemPress = (props, context) => {
                 ))}
               </LabeledList.Item>
             )}
-            {/*SKYRAT EDIT END*/}
+            {/* SKYRAT EDIT END */}
           </LabeledList>
         </Section>
       </Window.Content>

@@ -247,10 +247,10 @@ const PackagingControls = (props, context) => {
     autoCondiStyle,
     pillStyles = [],
     condiStyles = [],
-    //SKYRAT EDIT BEGIN
+    // SKYRAT EDIT BEGIN
     patch_style,
     patch_styles = []
-    //SKYRAT EDIT END
+    // SKYRAT EDIT END
   } = data;
   const autoCondiStyleChosen = autoCondiStyle === chosenCondiStyle;
   return (
@@ -283,7 +283,7 @@ const PackagingControls = (props, context) => {
             volume: 'auto',
           })} />
       )}
-      {/*SKYRAT EDIT BEGIN*/}
+      {/* SKYRAT EDIT BEGIN */}
       {!condi && (
         <LabeledList.Item label="Patch type">
           {patch_styles.map(patch => (
@@ -298,7 +298,7 @@ const PackagingControls = (props, context) => {
           ))}
         </LabeledList.Item>
       )}
-      {/*SKYRAT EDIT END*/}
+      {/* SKYRAT EDIT END */}
       {!condi && (
         <PackagingControlsItem
           label="Patches"
