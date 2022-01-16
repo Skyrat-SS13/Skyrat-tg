@@ -5,7 +5,7 @@
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "chemical"
 
-/datum/action/cooldown/inject_chemical/Trigger()
+/datum/action/cooldown/inject_chemical/Trigger(trigger_flags)
 	if(!IsAvailable())
 		to_chat(owner, span_warning("This action is still on cooldown!"))
 		return
@@ -46,7 +46,7 @@
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "level"
 
-/datum/action/cooldown/choose_focus/Trigger()
+/datum/action/cooldown/choose_focus/Trigger(trigger_flags)
 	if(!IsAvailable())
 		to_chat(owner, span_warning("This action is still on cooldown!"))
 		return
@@ -103,7 +103,7 @@
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "level"
 
-/datum/action/cooldown/learn_bloodchemical/Trigger()
+/datum/action/cooldown/learn_bloodchemical/Trigger(trigger_flags)
 	if(!IsAvailable())
 		to_chat(owner, span_warning("This action is still on cooldown!"))
 		return
@@ -144,7 +144,7 @@
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "level"
 
-/datum/action/cooldown/upgrade_chemical/Trigger()
+/datum/action/cooldown/upgrade_chemical/Trigger(trigger_flags)
 	if(!IsAvailable())
 		to_chat(owner, span_warning("This action is still on cooldown!"))
 		return
@@ -183,7 +183,7 @@
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "level"
 
-/datum/action/cooldown/upgrade_stat/Trigger()
+/datum/action/cooldown/upgrade_stat/Trigger(trigger_flags)
 	if(!IsAvailable())
 		to_chat(owner, span_warning("This action is still on cooldown!"))
 		return
@@ -215,7 +215,7 @@
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "hide"
 
-/datum/action/cooldown/toggle_hiding/Trigger()
+/datum/action/cooldown/toggle_hiding/Trigger(trigger_flags)
 	if(!IsAvailable())
 		to_chat(owner, span_warning("This action is still on cooldown!"))
 		return
@@ -238,7 +238,7 @@
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "fear"
 
-/datum/action/cooldown/fear_human/Trigger()
+/datum/action/cooldown/fear_human/Trigger(trigger_flags)
 	if(!IsAvailable())
 		to_chat(owner, span_warning("This action is still on cooldown!"))
 		return
@@ -296,7 +296,7 @@
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "blood"
 
-/datum/action/cooldown/check_blood/Trigger()
+/datum/action/cooldown/check_blood/Trigger(trigger_flags)
 	if(!IsAvailable())
 		to_chat(owner, span_warning("This action is still on cooldown!"))
 		return
@@ -331,7 +331,7 @@
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "host"
 
-/datum/action/cooldown/choosing_host/Trigger()
+/datum/action/cooldown/choosing_host/Trigger(trigger_flags)
 	if(!IsAvailable())
 		to_chat(owner, span_warning("This action is still on cooldown!"))
 		return
@@ -421,7 +421,7 @@
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "speak"
 
-/datum/action/cooldown/force_speak/Trigger()
+/datum/action/cooldown/force_speak/Trigger(trigger_flags)
 	if(!IsAvailable())
 		to_chat(owner, span_warning("This action is still on cooldown!"))
 		return
@@ -456,7 +456,7 @@
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "reproduce"
 
-/datum/action/cooldown/produce_offspring/Trigger()
+/datum/action/cooldown/produce_offspring/Trigger(trigger_flags)
 	if(!IsAvailable())
 		to_chat(owner, span_warning("This action is still on cooldown!"))
 		return
@@ -506,7 +506,7 @@
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "revive"
 
-/datum/action/cooldown/revive_host/Trigger()
+/datum/action/cooldown/revive_host/Trigger(trigger_flags)
 	if(!IsAvailable())
 		to_chat(owner, span_warning("This action is still on cooldown!"))
 		return
