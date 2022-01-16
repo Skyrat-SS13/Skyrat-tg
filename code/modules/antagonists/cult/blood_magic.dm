@@ -804,13 +804,8 @@
 	if(IS_CULTIST(user))
 		//skyrat edit
 		var/static/list/spells = list(
-<<<<<<< HEAD
-			"Bloody Halberd (150)" = image(icon = 'icons/obj/items_and_weapons.dmi', icon_state = "occultpoleaxe0"),
-			"Blood Bolt Barrage (300)" = image(icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi', icon_state = "arcane_barrage"),
-=======
 			"Bloody Halberd (150)" = image(icon = 'icons/obj/cult/items_and_weapons.dmi', icon_state = "occultpoleaxe0"),
-			"Blood Bolt Barrage (300)" = image(icon = 'icons/obj/guns/ballistic.dmi', icon_state = "arcane_barrage"),
->>>>>>> 11534049036 (Separates cult object and cult effect sprites into their own folders (#64017))
+			"Blood Bolt Barrage (300)" = image(icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi', icon_state = "arcane_barrage"),
 			"Blood Beam (500)" = image(icon = 'icons/obj/items_and_weapons.dmi', icon_state = "disintegrate")
 			)
 		//skyrat edit
