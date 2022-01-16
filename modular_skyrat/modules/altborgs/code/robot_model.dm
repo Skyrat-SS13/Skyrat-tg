@@ -25,6 +25,8 @@
 /mob/living/silicon/robot/proc/after_tip_over(mob/user)
 	if(hat)
 		hat.forceMove(drop_location())
+	unbuckle_all_mobs()
+
 	var/atom/movable/overlay = new /atom/movable
 	overlay.icon = 'modular_skyrat/modules/altborgs/icons/robot_effect.dmi'
 	overlay.layer = ABOVE_MOB_LAYER

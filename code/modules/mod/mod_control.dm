@@ -352,6 +352,12 @@
 			return FALSE
 		install(attacking_item, user)
 		return TRUE
+	// SKYRAT EDIT ADD START
+	else if (istype(attacking_item, /obj/item/stock_parts/cell/microfusion))
+		balloon_alert(user, "that cell won't fit!")
+		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
+		return FALSE
+	// SKYRAT EDIT ADD END
 	else if(istype(attacking_item, /obj/item/stock_parts/cell))
 		if(!open)
 			balloon_alert(user, "open the cover first!")
