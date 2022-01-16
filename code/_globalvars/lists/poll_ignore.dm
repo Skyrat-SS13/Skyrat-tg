@@ -45,12 +45,8 @@ GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_SPLITPERSONALITY = "Split Personality",
 	POLL_IGNORE_CONTRACTOR_SUPPORT = "Contractor Support Unit",
 	POLL_IGNORE_ACADEMY_WIZARD = "Academy Wizard Defender",
-<<<<<<< HEAD
 	POLL_IGNORE_CORTICAL_BORER = "Cortical Borer",
-	POLL_IGNORE_PAI = "Personal AI"
-=======
 	POLL_IGNORE_PAI = JOB_PERSONAL_AI,
->>>>>>> 7bead074449 (General pAI code improvements (#63688))
 ))
 //Skyrat Edit Stop: Cortical Borer
 GLOBAL_LIST_INIT(poll_ignore, init_poll_ignore())
