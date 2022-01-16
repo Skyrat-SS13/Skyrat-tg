@@ -78,8 +78,6 @@
 				opt = input("How Many", ROLE_OPERATIVE, 3) as num|null
 			if(ROLE_FAMILIES)
 				opt = input("How Many", ROLE_FAMILIES, 2) as num|null
-			if(ROLE_INTERNAL_AFFAIRS)
-				opt = input("How Many", ROLE_INTERNAL_AFFAIRS, 1) as num|null
 			if(ROLE_BROTHER)
 				opt = input("How Many", ROLE_BROTHER, 2) as num|null
 		if(src.make_antag(href_list["makeAntag"], opt))

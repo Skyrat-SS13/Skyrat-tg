@@ -40,7 +40,7 @@
 	construction_time = 200
 	build_path = /obj/item/organ/cyberimp/arm/botany
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SERVICE
 
 /datum/design/cyberimp_nv
 	name = "Night Vision Eyes"
