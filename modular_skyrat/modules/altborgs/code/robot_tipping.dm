@@ -1,4 +1,13 @@
 //	Modular solution for alternative skins and tipping
+/mob/living/silicon/robot/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/tippable/skyrat, \
+		tip_time = 3 SECONDS, \
+		untip_time = 2 SECONDS, \
+		self_right_time = 60 SECONDS, \
+		post_tipped_callback = CALLBACK(src, .proc/after_tip_over), \
+		post_untipped_callback = CALLBACK(src, .proc/after_righted))
+
 /datum/component/tippable/skyrat/Initialize(
 	tip_time = 3 SECONDS,
 	untip_time = 1 SECONDS,
@@ -53,7 +62,8 @@
 	if(model.cyborg_base_icon in listofroombas)
 		roomba_after_tip_over()
 
-/mob/living/silicon/robot/proc/after_righted(mob/user)
+/mob/living/silicon/robot/after_righted(mob/user)
+	. = ..()
 	if(!user) //Did we self-right?
 		var/list/listofroombas = list("zoomba_engi", "zoomba_med", "zoomba_green", "zoomba_miner", "zoomba_jani", "zoomba_sec")
 		if(model.cyborg_base_icon in listofroombas)
