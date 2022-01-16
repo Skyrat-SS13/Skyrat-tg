@@ -273,9 +273,9 @@
 		id_card.registered_name = tarkon.real_name
 		id_card.update_label()
 		id_card.update_icon()
-	var/obj/item/radio/R = tarkon.ears
-	R.set_frequency(1243)
-	R.recalculateChannels()
+	var/obj/item/radio/target_radio = tarkon.ears
+	target_radio .set_frequency(1243)
+	target_radio .recalculateChannels()
 
 	return ..()
 
