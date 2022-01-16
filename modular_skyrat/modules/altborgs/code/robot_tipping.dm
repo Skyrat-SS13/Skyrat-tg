@@ -23,36 +23,22 @@
 	is_tipped = new_status
 
 	var/mob/living/silicon/robot/robot = tipped_mob
-	var/list/alternativetipping = list("")	//None yet, we will add onto this later!
 
 	if(is_tipped)
 		ADD_TRAIT(tipped_mob, TRAIT_IMMOBILIZED, TIPPED_OVER)
-		if(robot.model.cyborg_base_icon in alternativetipping)
-			do_alt_tip(tipped_mob)
+		if(R_TRAIT_UNIQUETIP in robot.model.model_features)
+			robot.icon_state = "[robot.model.cyborg_base_icon]-tipped"
 			return
 
 		tipped_mob.transform = turn(tipped_mob.transform, 180)
 
 	else
 		REMOVE_TRAIT(tipped_mob, TRAIT_IMMOBILIZED, TIPPED_OVER)
-		if(robot.model.cyborg_base_icon in alternativetipping)
-			undo_alt_tip(tipped_mob)
+		if(R_TRAIT_UNIQUETIP in robot.model.model_features)
+			robot.icon_state = "[robot.model.cyborg_base_icon]"
 			return
 
 		tipped_mob.transform = turn(tipped_mob.transform, -180)
-
-
-////
-//	Alternative tipping appearance
-/datum/component/tippable/skyrat/proc/do_alt_tip(mob/living/tipped_mob)
-	var/mob/living/silicon/robot/robot = tipped_mob
-	if(R_TRAIT_UNIQUETIP in robot.model.model_features)
-		robot.icon_state = "[robot.model.cyborg_base_icon]-tipped"
-
-/datum/component/tippable/skyrat/proc/undo_alt_tip(mob/living/tipped_mob)
-	var/mob/living/silicon/robot/robot = tipped_mob
-	robot.icon_state = "[robot.model.cyborg_base_icon]"
-
 
 ////
 //	Alternative tipped procs
