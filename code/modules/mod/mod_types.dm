@@ -316,11 +316,7 @@
 		/obj/item/mod/module/quick_carry/advanced,
 		/obj/item/mod/module/magboot/advanced,
 		/obj/item/mod/module/jetpack,
-<<<<<<< HEAD
-		)
-=======
 	)
->>>>>>> fd9a7f8a581 (MOD update: Modular Cores (#64042))
 
 /obj/item/mod/control/pre_equipped/timeline
 	theme = /datum/mod_theme/timeline
