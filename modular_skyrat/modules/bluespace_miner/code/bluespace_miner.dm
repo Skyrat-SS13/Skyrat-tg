@@ -8,7 +8,7 @@
 	circuit = /obj/item/circuitboard/machine/bluespace_miner
 	idle_power_usage = 200
 
-	///the temperature of the co2 produced per successful process (its really 100)
+	///the temperature of the co2 produced per successful process (its really 100) KELVIN
 	var/gas_temp = 100
 	///the amount of seconds process_speed goes on cooldown for
 	var/processing_speed = 6 SECONDS
@@ -50,15 +50,16 @@
 	var/turf/src_turf = get_turf(src)
 	var/datum/gas_mixture/environment = src_turf.return_air()
 	if(environment.temperature >= T20C)
-		. += span_warning("[src] is in a suboptimal environment: TOO HOT TEMPERATURE!")
+		. += span_warning("[src] is in a suboptimal environment: " + span_boldwarning("TEMPERATURE TOO HIGH!"))
 	if(environment.return_pressure() <= ONE_ATMOSPHERE)
-		. += span_warning("[src] is in a suboptimal environment: TOO LITTLE PRESSURE!")
-	if(environment.return_pressure() >= (ONE_ATMOSPHERE * 2))
-		. += span_warning("[src] is in a suboptimal environment: TOO MUCH PRESSURE!")
+		. += span_warning("[src] is in a suboptimal environment: " + span_boldwarning("PRESSURE TOO LOW!"))
+	else if(environment.return_pressure() >= (ONE_ATMOSPHERE * 2))
+		. += span_warning("[src] is in a suboptimal environment: " + span_boldwarning("PRESSURE TOO HIGH!"))
 	for(var/obj/machinery/bluespace_miner/bs_miner in range(1, src))
 		if(bs_miner != src)
 			. += span_warning("[src] is in a suboptimal environment: TOO CLOSE TO ANOTHER BLUESPACE MINER")
 
+//we need to make sure we can actually print the ores out
 /obj/machinery/bluespace_miner/proc/check_factors()
 	if(!COOLDOWN_FINISHED(src, process_speed))
 		return FALSE
@@ -94,6 +95,7 @@
 	src_turf.assume_air(merger)
 	return TRUE
 
+//if check_factors is good, then we spawn materials
 /obj/machinery/bluespace_miner/proc/spawn_mats()
 	var/obj/chosen_sheet = pick_weight(ore_chance)
 	new chosen_sheet(get_turf(src))
