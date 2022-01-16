@@ -1420,8 +1420,8 @@
 		"tele_shield",
 		"ammoworkbench_disk_lethal", //SKYRAT EDIT ADDITION
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
-	required_experiments = list(/datum/experiment/explosion/calibration)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 15000) //SKYRAT EDIT
+	discount_experiments = list(/datum/experiment/explosion/calibration = 10000) //SKYRAT EDIT
 
 /datum/techweb_node/adv_weaponry
 	id = "adv_weaponry"
@@ -1432,8 +1432,8 @@
 		"pin_loyalty",
 		"ammo_workbench", //SKYRAT EDIT ADDITION
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
-	required_experiments = list(/datum/experiment/explosion/medium)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 15000) //SKYRAT EDIT
+	discount_experiments = list(/datum/experiment/explosion/medium = 10000) //SKYRAT EDIT
 
 /datum/techweb_node/electric_weapons
 	id = "electronic_weapons"
@@ -1491,8 +1491,8 @@
 		"large_Grenade",
 		"pyro_Grenade",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-	required_experiments = list(/datum/experiment/explosion/maxcap)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 20000) //SKYRAT EDIT
+	discount_experiments = list(/datum/experiment/explosion/maxcap = 17500) //SKYRAT EDIT
 
 // SKYRAT EDIT START: SECBORG TECHWEB
 /datum/techweb_node/secborg_node
