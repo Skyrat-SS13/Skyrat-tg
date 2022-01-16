@@ -97,6 +97,7 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	var/action_buttons_hidden = FALSE
 
 	var/atom/movable/screen/healths
+	var/atom/movable/screen/stamina
 	var/atom/movable/screen/healthdoll
 	var/atom/movable/screen/internals
 	var/atom/movable/screen/wanted/wanted_lvl
@@ -159,6 +160,7 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	QDEL_LIST(infodisplay)
 
 	healths = null
+	stamina = null
 	healthdoll = null
 	wanted_lvl = null
 	internals = null
