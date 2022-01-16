@@ -492,6 +492,9 @@
 /area/service/chapel/office)
 "adW" = (
 /obj/effect/spawner/structure/window,
+/obj/structure/curtain/cloth/fancy/mechanical{
+	id = "Psychologistcurtains"
+	},
 /turf/open/floor/plating,
 /area/medical/psychology)
 "adX" = (
@@ -1529,6 +1532,11 @@
 /obj/item/food/grown/citrus/orange,
 /obj/item/food/grown/grapes,
 /obj/item/food/grown/cocoapod,
+/obj/item/crowbar,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/plant_analyzer,
+/obj/item/hatchet,
+/obj/item/cultivator,
 /turf/open/floor/iron,
 /area/service/hydroponics/garden)
 "ako" = (
@@ -2251,6 +2259,7 @@
 	pixel_y = -8;
 	req_access_txt = "3"
 	},
+/obj/item/storage/box/holobadge/hos,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "aoD" = (
@@ -3151,6 +3160,15 @@
 	pixel_y = 1
 	},
 /obj/structure/table/glass,
+/obj/item/seeds/tower,
+/obj/item/seeds/watermelon,
+/obj/item/seeds/wheat,
+/obj/item/seeds/sugarcane,
+/obj/item/seeds/orange,
+/obj/item/seeds/grape,
+/obj/item/seeds/cocoapod,
+/obj/item/seeds/banana,
+/obj/item/seeds/apple,
 /turf/open/floor/iron,
 /area/service/hydroponics/garden)
 "atM" = (
@@ -6098,6 +6116,14 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/commons/dorms)
+"aKs" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "surgery";
+	name = "Surgery Shutter"
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/space/basic,
+/area/medical/surgery/room_b)
 "aKt" = (
 /obj/structure/table/wood,
 /obj/item/holosign_creator/robot_seat/bar,
@@ -6186,6 +6212,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/security/office)
 "aLl" = (
@@ -7140,12 +7167,7 @@
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 5
 	},
-/obj/structure/table/glass,
-/obj/item/cultivator,
-/obj/item/hatchet,
-/obj/item/crowbar,
-/obj/item/plant_analyzer,
-/obj/item/reagent_containers/glass/bucket,
+/obj/machinery/vending/hydroseeds,
 /turf/open/floor/iron,
 /area/service/hydroponics/garden)
 "aTV" = (
@@ -7578,7 +7600,6 @@
 /obj/machinery/computer/operating{
 	dir = 8
 	},
-/obj/machinery/airalarm/directional/east,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
 	},
@@ -7907,6 +7928,7 @@
 	dir = 4
 	},
 /obj/structure/cable,
+/obj/machinery/firealarm/directional/south,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "bbA" = (
@@ -10252,6 +10274,11 @@
 	},
 /turf/open/floor/iron,
 /area/security/brig)
+"bUE" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/command/heads_quarters/hos)
 "bUF" = (
 /obj/machinery/vending/hydronutrients,
 /obj/effect/turf_decal/trimline/green/filled/line,
@@ -14408,10 +14435,11 @@
 /turf/open/floor/iron,
 /area/security/processing)
 "dyY" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/command/heads_quarters/hos)
+/obj/machinery/light_switch/directional/south{
+	pixel_y = -40
+	},
+/turf/closed/mineral/random/stationside/asteroid/porus,
+/area/mine/explored)
 "dzy" = (
 /turf/closed/wall/r_wall,
 /area/cargo/miningdock)
@@ -20553,6 +20581,9 @@
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
+/obj/item/reagent_containers/food/drinks/bottle/vodka/badminka,
+/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
+/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "fAR" = (
@@ -21319,7 +21350,6 @@
 /turf/open/floor/iron,
 /area/engineering/break_room)
 "fNN" = (
-/obj/machinery/light_switch/directional/south,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -24981,17 +25011,8 @@
 /area/hallway/primary/central)
 "hfk" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line,
-/obj/item/seeds/apple,
-/obj/item/seeds/banana,
-/obj/item/seeds/cocoapod,
-/obj/item/seeds/grape,
-/obj/item/seeds/orange,
-/obj/item/seeds/sugarcane,
-/obj/item/seeds/wheat,
-/obj/item/seeds/watermelon,
-/obj/structure/table/glass,
-/obj/item/seeds/tower,
 /obj/machinery/light/directional/south,
+/obj/machinery/vending/hydronutrients,
 /turf/open/floor/iron,
 /area/service/hydroponics/garden)
 "hfo" = (
@@ -30428,6 +30449,7 @@
 /area/security/prison)
 "jbT" = (
 /obj/structure/table,
+/obj/item/storage/box/holobadge,
 /turf/open/floor/iron,
 /area/security/office)
 "jcb" = (
@@ -32656,7 +32678,6 @@
 /obj/structure/chair{
 	dir = 1
 	},
-/obj/machinery/firealarm/directional/south,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/carpet,
@@ -39203,7 +39224,6 @@
 "mpB" = (
 /obj/structure/table/glass,
 /obj/item/storage/backpack/duffelbag/med/surgery,
-/obj/machinery/airalarm/directional/west,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
 	},
@@ -47969,6 +47989,11 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
+/obj/machinery/button/door/directional/south{
+	id = "surgery";
+	name = "Surgery Shutter Control"
+	},
+/obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron/white,
 /area/medical/surgery/room_b)
 "pzD" = (
@@ -48738,6 +48763,11 @@
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/button/curtain{
+	id = "Psychologistcurtains";
+	pixel_x = -22;
+	pixel_y = -21
+	},
 /turf/open/floor/iron/dark,
 /area/medical/psychology)
 "pLY" = (
@@ -51346,6 +51376,11 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
+/obj/machinery/button/door/directional/south{
+	id = "surgery";
+	name = "Surgery Shutter Control"
+	},
+/obj/machinery/airalarm/directional/west,
 /turf/open/floor/iron/white,
 /area/medical/surgery)
 "qLw" = (
@@ -53186,6 +53221,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/security/prison/workout)
+"ruV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/circuitboard/machine/hydroponics,
+/turf/open/floor/iron/smooth,
+/area/maintenance/department/crew_quarters/dorms)
 "rvc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/event_spawn,
@@ -55277,6 +55317,11 @@
 /obj/effect/landmark/start/medical_doctor,
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
+"skg" = (
+/obj/structure/cable,
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/command/heads_quarters/hos)
 "skr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/rack,
@@ -70785,9 +70830,6 @@
 /obj/item/storage/secure/safe/hos{
 	pixel_x = 35
 	},
-/obj/item/reagent_containers/food/drinks/bottle/vodka/badminka,
-/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
-/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
 /obj/structure/sign/poster/official/space_cops{
 	pixel_y = 32
 	},
@@ -153626,7 +153668,7 @@ kaD
 yee
 mTZ
 qWJ
-sVv
+ruV
 yee
 dhe
 dhe
@@ -159732,7 +159774,7 @@ pTN
 aoz
 mNh
 bbw
-dyY
+cso
 xPy
 flI
 wiy
@@ -159989,7 +160031,7 @@ vZz
 inb
 avg
 jSG
-cso
+bUE
 aLd
 uEV
 mir
@@ -160497,13 +160539,13 @@ puC
 puC
 puC
 puC
-dhe
+dyY
 ogH
 enu
 mrn
 mrn
 fNN
-cso
+skg
 eWg
 kAQ
 pHc
@@ -160760,7 +160802,7 @@ xGU
 ves
 fAM
 sIf
-dyY
+cso
 yga
 kAQ
 pCU
@@ -168807,9 +168849,9 @@ cvc
 xhO
 ibl
 ibl
-ibl
-ibl
-ibl
+aKs
+aKs
+aKs
 ibl
 ibl
 xIm
