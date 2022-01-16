@@ -6,11 +6,11 @@
 	ADD_TRAIT(src, TRAIT_CAN_STRIP, INNATE_TRAIT)
 //	SKYRAT MODULARIZATION EDIT
 	AddComponent(/datum/component/tippable/skyrat, \
-        tip_time = 3 SECONDS, \
-        untip_time = 2 SECONDS, \
-        self_right_time = 60 SECONDS, \
-        post_tipped_callback = CALLBACK(src, .proc/after_tip_over), \
-        post_untipped_callback = CALLBACK(src, .proc/after_righted))
+		tip_time = 3 SECONDS, \
+		untip_time = 2 SECONDS, \
+		self_right_time = 60 SECONDS, \
+		post_tipped_callback = CALLBACK(src, .proc/after_tip_over), \
+		post_untipped_callback = CALLBACK(src, .proc/after_righted))
 //	SKYRAT MODULARIZATION END
 /*	AddComponent(/datum/component/tippable, \
 		tip_time = 3 SECONDS, \
