@@ -2,9 +2,9 @@
 /obj/item/mod
 	name = "Base MOD"
 	desc = "You should not see this, yell at a coder!"
-	icon = 'icons/obj/mod.dmi'
+	icon = 'icons/obj/clothing/modsuit/mod_clothing.dmi'
 	icon_state = "standard-control"
-	worn_icon = 'icons/mob/mod.dmi'
+	worn_icon = 'icons/mob/clothing/mod.dmi'
 
 /obj/item/mod/control
 	name = "MOD control unit"
@@ -352,6 +352,12 @@
 			return FALSE
 		install(attacking_item, user)
 		return TRUE
+	// SKYRAT EDIT ADD START
+	else if (istype(attacking_item, /obj/item/stock_parts/cell/microfusion))
+		balloon_alert(user, "that cell won't fit!")
+		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
+		return FALSE
+	// SKYRAT EDIT ADD END
 	else if(istype(attacking_item, /obj/item/stock_parts/cell))
 		if(!open)
 			balloon_alert(user, "open the cover first!")
@@ -495,7 +501,10 @@
 		items += list(module.name = module_image)
 	if(!length(items))
 		return
-	var/pick = show_radial_menu(user, src, items, custom_check = FALSE, require_near = TRUE, tooltips = TRUE)
+	var/radial_anchor = src
+	if(istype(user.loc, /obj/effect/dummy/phased_mob))
+		radial_anchor = get_turf(user.loc) //they're phased out via some module, anchor the radial on the turf so it may still display
+	var/pick = show_radial_menu(user, radial_anchor, items, custom_check = FALSE, require_near = TRUE, tooltips = TRUE)
 	if(!pick)
 		return
 	var/module_reference = display_names[pick]

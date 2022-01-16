@@ -27,7 +27,7 @@
 			if(snout.use_muzzled_sprites)
 				suit_mutant_variants |= STYLE_MUZZLE
 
-	var/icon_to_use = 'icons/mob/mod.dmi'
+	var/icon_to_use = 'icons/mob/clothing/mod.dmi'
 	var/icon_state_to_use = module_icon_state
 	var/add_overlay = TRUE
 	if(suit_mutant_variants && (mutant_variants & STYLE_DIGITIGRADE))
