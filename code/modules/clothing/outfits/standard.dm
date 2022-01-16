@@ -409,13 +409,8 @@
 	name = "Timeline Eradication Agent"
 
 	uniform = /obj/item/clothing/under/color/white
-	suit = /obj/item/clothing/suit/space/chronos
 	suit_store = /obj/item/tank/internals/oxygen
-	back = /obj/item/chrono_eraser
-	head = /obj/item/clothing/head/helmet/space/chronos
 	mask = /obj/item/clothing/mask/breath
-<<<<<<< HEAD
-=======
 	back = /obj/item/mod/control/pre_equipped/chrono
 
 /datum/outfit/chrono_agent/post_equip(mob/living/carbon/human/agent, visualsOnly)
@@ -423,7 +418,6 @@
 	var/obj/item/mod/control/mod = agent.back
 	var/obj/item/mod/module/eradication_lock/lock = locate(/obj/item/mod/module/eradication_lock) in mod.modules
 	lock.true_owner_ckey = agent.ckey
->>>>>>> fd9a7f8a581 (MOD update: Modular Cores (#64042))
 
 /datum/outfit/debug //Debug objs plus MODsuit
 	name = "Debug outfit"
