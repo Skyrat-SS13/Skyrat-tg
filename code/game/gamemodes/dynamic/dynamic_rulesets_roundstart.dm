@@ -395,11 +395,11 @@
 	antag_flag = ROLE_CULTIST
 	antag_datum = /datum/antagonist/cult
 	minimum_required_age = 14
-	restricted_roles = list(JOB_AI, JOB_CYBORG,
+	restricted_roles = list(JOB_AI, JOB_CYBORG, JOB_PRISONER,
 						JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_HEAD_OF_SECURITY, JOB_CORRECTIONS_OFFICER, JOB_CIVIL_DISPUTES_OFFICER, JOB_SECURITY_SERGEANT,
 						JOB_CAPTAIN, JOB_VANGUARD_OPERATIVE, JOB_NT_REP, JOB_BLUESHIELD,
 						JOB_ORDERLY, JOB_BOUNCER, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD, JOB_SCIENCE_GUARD
-						) // SKYRAT EDIT ADD - ALL AFTER JOB_CYBORG
+						) // SKYRAT EDIT ADD - ALL AFTER JOB_PRISONER
 	required_candidates = 2
 	weight = 3
 	cost = 20
@@ -542,7 +542,7 @@
 	name = "Revolution"
 	persistent = TRUE
 	antag_flag = ROLE_REV_HEAD
-	antag_flag_override = ROLE_REV
+	antag_flag_override = ROLE_REV_HEAD
 	antag_datum = /datum/antagonist/rev/head
 	minimum_required_age = 14
 	restricted_roles = list(
@@ -554,6 +554,7 @@
 		JOB_DETECTIVE,
 		JOB_HEAD_OF_PERSONNEL,
 		JOB_HEAD_OF_SECURITY,
+		JOB_PRISONER,
 		JOB_RESEARCH_DIRECTOR,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,

@@ -117,7 +117,6 @@
 					/obj/item/clothing/neck/mind_collar = 2,
 					/obj/item/clothing/under/costume/jabroni = 4,
 					/obj/item/clothing/neck/human_petcollar/locked = 4,
-					/obj/item/assembly/signaler = 4,
 					/obj/item/clothing/suit/straight_jacket/kinky_sleepbag = 2, //my favorite thing, spent 1 month on it. Don't remove please.
 					/obj/item/reagent_containers/pill/hexacrocin = 10,
 					/obj/item/reagent_containers/pill/pentacamphor = 5,
