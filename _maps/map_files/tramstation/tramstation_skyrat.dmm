@@ -6116,14 +6116,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/commons/dorms)
-"aKs" = (
-/obj/machinery/door/poddoor/preopen{
-	id = "surgery";
-	name = "Surgery Shutter"
-	},
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/space/basic,
-/area/medical/surgery/room_b)
 "aKt" = (
 /obj/structure/table/wood,
 /obj/item/holosign_creator/robot_seat/bar,
@@ -7348,7 +7340,7 @@
 /area/ai_monitored/turret_protected/aisat/maint)
 "aVe" = (
 /obj/structure/closet{
-	name = "Evidence Closet 1"
+	name = "Evidence Closet 2"
 	},
 /turf/open/floor/iron/dark,
 /area/security/office)
@@ -10274,11 +10266,6 @@
 	},
 /turf/open/floor/iron,
 /area/security/brig)
-"bUE" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/command/heads_quarters/hos)
 "bUF" = (
 /obj/machinery/vending/hydronutrients,
 /obj/effect/turf_decal/trimline/green/filled/line,
@@ -12317,6 +12304,11 @@
 /obj/structure/floodlight_frame,
 /turf/open/floor/plating/asteroid,
 /area/medical/chemistry)
+"cLI" = (
+/obj/structure/cable,
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/command/heads_quarters/hos)
 "cMl" = (
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 5
@@ -13777,6 +13769,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/hydroponics)
+"dlH" = (
+/obj/structure/closet{
+	name = "Evidence Closet 4"
+	},
+/turf/open/floor/iron/dark,
+/area/security/office)
 "dlK" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -15153,6 +15151,11 @@
 	dir = 1
 	},
 /area/service/chapel)
+"dMc" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/command/heads_quarters/hos)
 "dMm" = (
 /obj/effect/turf_decal/trimline/yellow/warning,
 /obj/effect/turf_decal/trimline/neutral/filled/corner{
@@ -36199,6 +36202,7 @@
 	},
 /obj/structure/table/wood/poker,
 /obj/effect/spawner/random/entertainment/deck,
+/obj/item/gun/ballistic/revolver/russian,
 /turf/open/floor/iron,
 /area/service/bar)
 "lfx" = (
@@ -49304,6 +49308,11 @@
 	},
 /turf/open/floor/glass/reinforced,
 /area/ai_monitored/turret_protected/aisat/hallway)
+"pVL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/circuitboard/machine/hydroponics,
+/turf/open/floor/iron/smooth,
+/area/maintenance/department/crew_quarters/dorms)
 "pVU" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 8
@@ -49539,6 +49548,14 @@
 /obj/effect/spawner/random/engineering/tracking_beacon,
 /turf/open/floor/iron,
 /area/command/gateway)
+"pZK" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "surgery";
+	name = "Surgery Shutter"
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/medical/surgery/room_b)
 "pZL" = (
 /obj/docking_port/stationary/random{
 	dir = 4;
@@ -53221,11 +53238,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/security/prison/workout)
-"ruV" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/circuitboard/machine/hydroponics,
-/turf/open/floor/iron/smooth,
-/area/maintenance/department/crew_quarters/dorms)
 "rvc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/event_spawn,
@@ -55317,11 +55329,6 @@
 /obj/effect/landmark/start/medical_doctor,
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
-"skg" = (
-/obj/structure/cable,
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/command/heads_quarters/hos)
 "skr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/rack,
@@ -55706,7 +55713,7 @@
 /area/maintenance/radshelter/civil)
 "srf" = (
 /obj/structure/closet{
-	name = "Evidence Closet 1"
+	name = "Evidence Closet 5"
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -58998,7 +59005,7 @@
 	},
 /obj/machinery/camera{
 	c_tag = "Security - Detective's Office";
-	dir = 9;
+	dir = 1;
 	network = list("ss13","Security")
 	},
 /obj/structure/cable,
@@ -59660,10 +59667,8 @@
 /turf/open/floor/iron,
 /area/commons/storage/primary)
 "tIi" = (
-/obj/structure/closet{
-	name = "Evidence Closet 1"
-	},
 /obj/machinery/firealarm/directional/west,
+/obj/structure/closet/secure_closet/evidence,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "tIj" = (
@@ -60757,6 +60762,12 @@
 /obj/effect/spawner/random/engineering/tracking_beacon,
 /turf/open/floor/iron,
 /area/ai_monitored/command/storage/eva)
+"tZS" = (
+/obj/structure/closet{
+	name = "Evidence Closet 3"
+	},
+/turf/open/floor/iron/dark,
+/area/security/office)
 "tZZ" = (
 /obj/structure/table,
 /obj/item/clothing/mask/gas/monkeymask,
@@ -70133,6 +70144,12 @@
 	},
 /turf/open/floor/iron,
 /area/maintenance/tram/mid)
+"xvv" = (
+/obj/structure/closet{
+	name = "Evidence Closet 6"
+	},
+/turf/open/floor/iron/dark,
+/area/security/office)
 "xvx" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -153668,7 +153685,7 @@ kaD
 yee
 mTZ
 qWJ
-ruV
+pVL
 yee
 dhe
 dhe
@@ -160031,7 +160048,7 @@ vZz
 inb
 avg
 jSG
-bUE
+dMc
 aLd
 uEV
 mir
@@ -160545,7 +160562,7 @@ enu
 mrn
 mrn
 fNN
-skg
+cLI
 eWg
 kAQ
 pHc
@@ -162350,7 +162367,7 @@ mGs
 wwE
 nPG
 tIi
-aVe
+xvv
 srf
 wXK
 ust
@@ -162864,8 +162881,8 @@ mGs
 wwE
 kME
 aVe
-aVe
-aVe
+tZS
+dlH
 wXK
 hKr
 ust
@@ -168849,9 +168866,9 @@ cvc
 xhO
 ibl
 ibl
-aKs
-aKs
-aKs
+pZK
+pZK
+pZK
 ibl
 ibl
 xIm
