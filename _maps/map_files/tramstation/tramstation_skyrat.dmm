@@ -8154,6 +8154,7 @@
 /area/security/brig)
 "bfX" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/filingcabinet/employment,
 /turf/open/floor/wood/parquet,
 /area/command/heads_quarters/captain/private/nt_rep)
 "bgh" = (
@@ -11512,10 +11513,10 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
-/obj/structure/chair/comfy/black{
+/obj/machinery/newscaster/directional/south,
+/obj/structure/chair{
 	dir = 8
 	},
-/obj/machinery/newscaster/directional/south,
 /turf/open/floor/carpet/executive,
 /area/command/heads_quarters/captain/private/nt_rep)
 "cvW" = (
@@ -12304,11 +12305,6 @@
 /obj/structure/floodlight_frame,
 /turf/open/floor/plating/asteroid,
 /area/medical/chemistry)
-"cLI" = (
-/obj/structure/cable,
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/command/heads_quarters/hos)
 "cMl" = (
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 5
@@ -13769,12 +13765,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/hydroponics)
-"dlH" = (
-/obj/structure/closet{
-	name = "Evidence Closet 4"
-	},
-/turf/open/floor/iron/dark,
-/area/security/office)
 "dlK" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -15151,11 +15141,6 @@
 	dir = 1
 	},
 /area/service/chapel)
-"dMc" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/command/heads_quarters/hos)
 "dMm" = (
 /obj/effect/turf_decal/trimline/yellow/warning,
 /obj/effect/turf_decal/trimline/neutral/filled/corner{
@@ -15670,6 +15655,15 @@
 /obj/structure/fluff/tram_rail/floor,
 /turf/open/floor/glass/reinforced,
 /area/hallway/primary/tram/center)
+"dWi" = (
+/obj/structure/cable,
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/preopen{
+	id = "hosoffice";
+	name = "HoS Blast door"
+	},
+/turf/open/floor/plating,
+/area/command/heads_quarters/hos)
 "dWo" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -25012,6 +25006,15 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/hallway/primary/central)
+"heS" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/obj/machinery/door/poddoor/preopen{
+	id = "hosoffice";
+	name = "HoS Blast door"
+	},
+/turf/open/floor/plating,
+/area/command/heads_quarters/hos)
 "hfk" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line,
 /obj/machinery/light/directional/south,
@@ -25863,11 +25866,11 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
 	},
-/obj/structure/chair/comfy/black{
-	dir = 8
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/chair{
+	dir = 8
 	},
 /turf/open/floor/carpet/executive,
 /area/command/heads_quarters/captain/private/nt_rep)
@@ -29581,6 +29584,14 @@
 /obj/item/radio/intercom/directional/south,
 /turf/open/floor/iron,
 /area/hallway/secondary/exit/departure_lounge)
+"iLO" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "surgery";
+	name = "Surgery Shutter"
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/medical/surgery/room_b)
 "iLU" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 4
@@ -41562,6 +41573,12 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/secondary/exit)
+"nkk" = (
+/obj/structure/closet{
+	name = "Evidence Closet 3"
+	},
+/turf/open/floor/iron/dark,
+/area/security/office)
 "nkI" = (
 /obj/effect/turf_decal/trimline/yellow/filled/corner{
 	dir = 8
@@ -43363,6 +43380,12 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/miningdock)
+"nRK" = (
+/obj/structure/closet{
+	name = "Evidence Closet 6"
+	},
+/turf/open/floor/iron/dark,
+/area/security/office)
 "nSb" = (
 /obj/machinery/door/airlock/atmos/glass{
 	name = "Distribution Loop";
@@ -44184,6 +44207,11 @@
 /mob/living/basic/cockroach,
 /turf/open/floor/plating,
 /area/maintenance/tram/mid)
+"oib" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/circuitboard/machine/hydroponics,
+/turf/open/floor/iron/smooth,
+/area/maintenance/department/crew_quarters/dorms)
 "oid" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/trash/garbage,
@@ -47440,8 +47468,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/chair/office,
-/obj/effect/landmark/start/nanotrasen_representative,
 /turf/open/floor/carpet/executive,
 /area/command/heads_quarters/captain/private/nt_rep)
 "pov" = (
@@ -49308,11 +49334,6 @@
 	},
 /turf/open/floor/glass/reinforced,
 /area/ai_monitored/turret_protected/aisat/hallway)
-"pVL" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/circuitboard/machine/hydroponics,
-/turf/open/floor/iron/smooth,
-/area/maintenance/department/crew_quarters/dorms)
 "pVU" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 8
@@ -49548,14 +49569,6 @@
 /obj/effect/spawner/random/engineering/tracking_beacon,
 /turf/open/floor/iron,
 /area/command/gateway)
-"pZK" = (
-/obj/machinery/door/poddoor/preopen{
-	id = "surgery";
-	name = "Surgery Shutter"
-	},
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/medical/surgery/room_b)
 "pZL" = (
 /obj/docking_port/stationary/random{
 	dir = 4;
@@ -60762,12 +60775,6 @@
 /obj/effect/spawner/random/engineering/tracking_beacon,
 /turf/open/floor/iron,
 /area/ai_monitored/command/storage/eva)
-"tZS" = (
-/obj/structure/closet{
-	name = "Evidence Closet 3"
-	},
-/turf/open/floor/iron/dark,
-/area/security/office)
 "tZZ" = (
 /obj/structure/table,
 /obj/item/clothing/mask/gas/monkeymask,
@@ -60787,7 +60794,13 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
 	},
-/obj/structure/filingcabinet/employment,
+/obj/structure/chair/comfy/brown{
+	color = "#c45c57";
+	desc = "Remarkably soft, with plush cozy cushions, premium memory-foam and covered in stain-resistant fabric. Made by Kat-Kea???!";
+	dir = 4;
+	name = "Premium Cozy Chair"
+	},
+/obj/effect/landmark/start/nanotrasen_representative,
 /turf/open/floor/carpet/executive,
 /area/command/heads_quarters/captain/private/nt_rep)
 "uaC" = (
@@ -61041,6 +61054,12 @@
 /obj/structure/table/wood,
 /turf/open/floor/wood,
 /area/service/library)
+"ufS" = (
+/obj/structure/closet{
+	name = "Evidence Closet 4"
+	},
+/turf/open/floor/iron/dark,
+/area/security/office)
 "ufT" = (
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 9
@@ -70144,12 +70163,6 @@
 	},
 /turf/open/floor/iron,
 /area/maintenance/tram/mid)
-"xvv" = (
-/obj/structure/closet{
-	name = "Evidence Closet 6"
-	},
-/turf/open/floor/iron/dark,
-/area/security/office)
 "xvx" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -153685,7 +153698,7 @@ kaD
 yee
 mTZ
 qWJ
-pVL
+oib
 yee
 dhe
 dhe
@@ -160048,7 +160061,7 @@ vZz
 inb
 avg
 jSG
-dMc
+heS
 aLd
 uEV
 mir
@@ -160562,7 +160575,7 @@ enu
 mrn
 mrn
 fNN
-cLI
+dWi
 eWg
 kAQ
 pHc
@@ -162367,7 +162380,7 @@ mGs
 wwE
 nPG
 tIi
-xvv
+nRK
 srf
 wXK
 ust
@@ -162881,8 +162894,8 @@ mGs
 wwE
 kME
 aVe
-tZS
-dlH
+nkk
+ufS
 wXK
 hKr
 ust
@@ -168866,9 +168879,9 @@ cvc
 xhO
 ibl
 ibl
-pZK
-pZK
-pZK
+iLO
+iLO
+iLO
 ibl
 ibl
 xIm
