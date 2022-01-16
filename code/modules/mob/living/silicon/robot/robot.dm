@@ -4,6 +4,20 @@
 	spark_system.attach(src)
 
 	ADD_TRAIT(src, TRAIT_CAN_STRIP, INNATE_TRAIT)
+//	SKYRAT MODULARIZATION EDIT
+	AddComponent(/datum/component/tippable/skyrat, \
+        tip_time = 3 SECONDS, \
+        untip_time = 2 SECONDS, \
+        self_right_time = 60 SECONDS, \
+        post_tipped_callback = CALLBACK(src, .proc/after_tip_over), \
+        post_untipped_callback = CALLBACK(src, .proc/after_righted))
+//	SKYRAT MODULARIZATION END
+/*	AddComponent(/datum/component/tippable, \
+		tip_time = 3 SECONDS, \
+		untip_time = 2 SECONDS, \
+		self_right_time = 60 SECONDS, \
+		post_tipped_callback = CALLBACK(src, .proc/after_tip_over))
+*/
 
 	wires = new /datum/wires/robot(src)
 	AddElement(/datum/element/empprotection, EMP_PROTECT_WIRES)
@@ -304,6 +318,11 @@
 	if (low_power_mode)
 		return FALSE
 	return ..()
+
+/mob/living/silicon/robot/proc/after_tip_over(mob/user)
+	if(hat)
+		hat.forceMove(drop_location())
+	unbuckle_all_mobs()
 
 /mob/living/silicon/robot/proc/allowed(mob/M)
 	//check if it doesn't require any access at all
