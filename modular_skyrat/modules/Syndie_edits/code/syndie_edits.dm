@@ -15,21 +15,21 @@
 //DS2 items
 
 /obj/item/clothing/head/helmet/swat/ds
-	name = "interdyne SWAT helmet"
-	desc = "A robust and spaceworthy helmet with a small cross on it with an 'IP' written across the earpad."
+	name = "SWAT helmet"
+	desc = "A robust and spaceworthy helmet with a small cross on it along with 'IP' written across the earpad."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "swat_ds"
 
 /obj/item/clothing/mask/gas/syndicate/ds
-	name = "interdyne balaclava"
+	name = "balaclava"
 	desc = "A fancy balaclava, while it doesn't muffle your voice, it's fireproof and has a miniature rebreather for internals. Comfy to boot!"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "balaclava_ds"
 	flags_inv = HIDEHAIR | HIDEFACIALHAIR
 
-/obj/item/clothing/shoes/combat
+/obj/item/clothing/shoes/combat //Overwrites original look of combat boots to use modular sprites
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "combat"
