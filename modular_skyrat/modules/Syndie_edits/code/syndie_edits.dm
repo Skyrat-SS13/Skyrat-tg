@@ -29,7 +29,7 @@
 	icon_state = "balaclava_ds"
 	flags_inv = HIDEHAIR | HIDEFACIALHAIR
 
-/obj/item/clothing/shoes/combat //Overwrites original look of combat boots to use modular sprites
+/obj/item/clothing/shoes/combat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "combat"
