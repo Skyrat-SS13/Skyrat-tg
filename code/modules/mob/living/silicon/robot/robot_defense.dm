@@ -292,7 +292,6 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 	else if(!opened)
 		..()
 
-
 /mob/living/silicon/robot/attack_hulk(mob/living/carbon/human/user)
 	. = ..()
 	if(!.)
