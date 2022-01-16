@@ -121,7 +121,7 @@
 	icon_icon = 'icons/mob/actions/actions_changeling.dmi'
 	button_icon_state = "armblade"
 
-/datum/action/cooldown/borer_armblade/Trigger()
+/datum/action/cooldown/borer_armblade/Trigger(trigger_flags)
 	if(!IsAvailable())
 		to_chat(owner, span_warning("This action is still on cooldown!"))
 		return
