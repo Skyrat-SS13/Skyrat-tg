@@ -33,8 +33,8 @@
 	attack_effect = ATTACK_EFFECT_CLAW
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
-	liked_food = GROSS | MEAT | TOXIC
-	disliked_food = JUNKFOOD | FRIED | CLOTH
+	liked_food = GROSS | RAW | TOXIC
+	disliked_food = JUNKFOOD | GRAIN | DAIRY
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/insect_parts_greyscale.dmi'
