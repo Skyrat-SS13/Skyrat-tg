@@ -18,7 +18,7 @@
 /*
 	Overwriting of base procs
 */
-/datum/wound/muscle/wound_injury(datum/wound/old_wound = null)
+/datum/wound/muscle/wound_injury(datum/wound/old_wound = null, attack_direction)
 	// hook into gaining/losing gauze so crit muscle wounds can re-enable/disable depending if they're slung or not
 	RegisterSignal(limb, list(COMSIG_BODYPART_SPLINTED, COMSIG_BODYPART_SPLINT_DESTROYED), .proc/update_inefficiencies)
 

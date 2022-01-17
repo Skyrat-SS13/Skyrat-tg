@@ -163,7 +163,7 @@
     desc = "Makes breathing through this mask far harder. Use with caution."
 
 // Trigger thing for manual breath
-/datum/action/item_action/toggle_breathcontrol/Trigger()
+/datum/action/item_action/toggle_breathcontrol/Trigger(trigger_flags)
 	var/obj/item/clothing/mask/gas/bdsm_mask/H = target
 	if(istype(H))
 		H.check()
@@ -173,7 +173,7 @@
     desc = "You must inhale oxygen!"
 
 // Open the valve when press the button
-/datum/action/item_action/mask_inhale/Trigger()
+/datum/action/item_action/mask_inhale/Trigger(trigger_flags)
 	if(istype(target, /obj/item/clothing/mask/gas/bdsm_mask))
 		var/obj/item/clothing/mask/gas/bdsm_mask/M = target
 		if(M.breath_status == FALSE)
