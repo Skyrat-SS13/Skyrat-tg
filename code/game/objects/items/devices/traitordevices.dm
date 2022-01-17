@@ -261,6 +261,7 @@ effective or pretty fucking useless.
 	special_desc = "This is a black market radio jammer. Used to disrupt nearby radio communication."
 	var/active = FALSE
 	var/range = 20 //SKYRAT EDIT CHANGE - ORIGINAL:12
+	var/cell_override = /obj/item/stock_parts/cell/bluespace //SKYRAT ADDITION
 
 	//SKYRAT EDIT ADDITION BEGIN
 /obj/item/jammer/ComponentInitialize()
