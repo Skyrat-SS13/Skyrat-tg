@@ -26,13 +26,42 @@ SUBSYSTEM_DEF(dbcore)
 
 	return ..()
 
+<<<<<<< HEAD
 /datum/controller/subsystem/dbcore/fire()
 	for(var/I in active_queries)
 		var/datum/db_query/Q = I
 		if(world.time - Q.last_activity_time > (5 MINUTES))
+=======
+/datum/controller/subsystem/dbcore/stat_entry(msg)
+	msg = "P:[length(all_queries)]|Active:[length(queries_active)]|Standby:[length(queries_standby)]"
+	return ..()
+
+/// Resets the tracking numbers on the subsystem. Used by SStime_track.
+/datum/controller/subsystem/dbcore/proc/reset_tracking()
+	all_queries_num = 0
+	queries_active_num = 0
+	queries_standby_num = 0
+
+/datum/controller/subsystem/dbcore/fire(resumed = FALSE)
+	if(!IsConnected())
+		return
+
+	if(!resumed)
+		queries_new = null
+		if(!length(queries_active) && !length(queries_standby) && !length(all_queries))
+			processing_queries = null
+			queries_current = null
+			return
+		queries_current = queries_active.Copy()
+		processing_queries = all_queries.Copy()
+
+	while(length(processing_queries))
+		var/datum/db_query/query = popleft(processing_queries)
+		if(world.time - query.last_activity_time > (5 MINUTES))
+>>>>>>> 6478dc5fce4 (Fixes an oversight in database code and cleans up telemetry (#64177))
 			message_admins("Found undeleted query, please check the server logs and notify coders.")
-			log_sql("Undeleted query: \"[Q.sql]\" LA: [Q.last_activity] LAT: [Q.last_activity_time]")
-			qdel(Q)
+			log_sql("Undeleted query: \"[query.sql]\" LA: [query.last_activity] LAT: [query.last_activity_time]")
+			qdel(query)
 		if(MC_TICK_CHECK)
 			return
 
