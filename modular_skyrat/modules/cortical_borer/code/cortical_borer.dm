@@ -1,3 +1,6 @@
+GLOBAL_VAR_INIT(borer_spawner_ten, 0)
+GLOBAL_LIST_EMPTY(willing_hosts)
+
 //we need a way of buffing leg speed... here
 /datum/movespeed_modifier/borer_speed
 	multiplicative_slowdown = -0.40
@@ -105,6 +108,7 @@
 /obj/item/organ/borer_body/Insert(mob/living/carbon/carbon_target, special, drop_if_replaced)
 	. = ..()
 	borer_focus_add(carbon_target)
+	carbon_target.hal_screwyhud = SCREWYHUD_HEALTHY
 
 //on removal, force the borer out
 /obj/item/organ/borer_body/Remove(mob/living/carbon/carbon_target, special)
@@ -113,6 +117,7 @@
 	borer_focus_remove(carbon_target)
 	if(cb_inside)
 		cb_inside.leave_host()
+	carbon_target.hal_screwyhud = SCREWYHUD_NONE
 	qdel(src)
 
 /datum/action/cooldown/borer_armblade
@@ -221,17 +226,20 @@
 	///the list of actions that the borer has
 	var/list/known_abilities = list(/datum/action/cooldown/toggle_hiding,
 									/datum/action/cooldown/choosing_host,
-									/datum/action/cooldown/produce_offspring,
 									/datum/action/cooldown/inject_chemical,
 									/datum/action/cooldown/upgrade_chemical,
 									/datum/action/cooldown/choose_focus,
-									/datum/action/cooldown/learn_bloodchemical,
 									/datum/action/cooldown/upgrade_stat,
+									/datum/action/cooldown/learn_ability,
 									/datum/action/cooldown/force_speak,
 									/datum/action/cooldown/fear_human,
 									/datum/action/cooldown/check_blood,
-									/datum/action/cooldown/revive_host,
 	)
+	///the list of actions that the borer could learn
+	var/possible_abilities = list(	/datum/action/cooldown/produce_offspring,
+									/datum/action/cooldown/learn_bloodchemical,
+									/datum/action/cooldown/revive_host,
+									/datum/action/cooldown/willing_host,)
 	///the host
 	var/mob/living/carbon/human/human_host
 	//what the host gains or loses with the borer
@@ -252,6 +260,8 @@
 	var/children_produced = 0
 	///we dont want to spam the chat
 	var/deathgasp_once = FALSE
+	//the limit to the chemical and stat evolution
+	var/limited_borer = 10
 
 /mob/living/simple_animal/cortical_borer/Initialize(mapload)
 	. = ..()
@@ -302,38 +312,67 @@
 	. += "Chemical Storage: [chemical_storage]/[max_chemical_storage]"
 	. += "Chemical Evolution Points: [chemical_evolution]"
 	. += "Stat Evolution Points: [stat_evolution]"
+	. += ""
 	if(host_sugar())
 		. += "Sugar detected! Unable to generate resources!"
+		. += ""
+	. += "OBJECTIVES:"
+	. += "1) Five(5) borers producing ten(10) eggs: [GLOB.borer_spawner_ten]/5"
+	. += "2) Twenty(20) willing hosts: [length(GLOB.willing_hosts)]/20"
 
 /mob/living/simple_animal/cortical_borer/Life(delta_time, times_fired)
 	. = ..()
 	//can only do stuff when we are inside a human
 	if(!inside_human())
 		return
+
+	//there needs to be a negative to having a borer
+	if(prob(5) && human_host.getToxLoss() <= 20)
+		human_host.adjustToxLoss(5, TRUE, TRUE)
+
+	if(human_host.hal_screwyhud != SCREWYHUD_HEALTHY)
+		human_host.hal_screwyhud = SCREWYHUD_HEALTHY
+
 	//cant do anything if the host has sugar
 	if(host_sugar())
 		return
 
+	//this is regenerating chemical_storage
 	if(chemical_storage < max_chemical_storage)
 		chemical_storage = min(chemical_storage + chemical_regen, max_chemical_storage)
 		if(chemical_storage > max_chemical_storage)
 			chemical_storage = max_chemical_storage
 
+	//this is regenerating health
 	if(health < maxHealth)
 		health = min(health * health_regen, maxHealth)
 		if(health > maxHealth)
 			health = maxHealth
 
+	//this is so they can evolve
 	if(timed_maturity < world.time)
 		timed_maturity = world.time + 1 SECONDS
 		maturity_age++
 
-		if(maturity_age == 20)
-			chemical_evolution++
-			to_chat(src, span_notice("You gain a chemical evolution point. Spend it to learn a new chemical!"))
-		if(maturity_age == 40)
-			stat_evolution++
-			to_chat(src, span_notice("You gain a stat evolution point. Spend it to become stronger!"))
+		//no objectives means 20:40; one objective means 15:30; two objectives mean 10:20
+		var/maturity_threshold = 20
+		if(GLOB.borer_spawner_ten >= 5)
+			maturity_threshold -= 5
+		if(length(GLOB.willing_hosts) >= 20)
+			maturity_threshold -= 5
+
+		if(maturity_age == maturity_threshold)
+			if(chemical_evolution < limited_borer) //you can only have a default of 10 at a time
+				chemical_evolution++
+				to_chat(src, span_notice("You gain a chemical evolution point. Spend it to learn a new chemical!"))
+			else
+				to_chat(src, span_warning("You were unable to gain a chemical evolution point due to having the max!"))
+		if(maturity_age >= (maturity_threshold * 2))
+			if(stat_evolution < limited_borer)
+				stat_evolution++
+				to_chat(src, span_notice("You gain a stat evolution point. Spend it to become stronger!"))
+			else
+				to_chat(src, span_warning("You were unable to gain a stat evolution point due to having the max!"))
 			maturity_age = 0
 
 //if it doesnt have a ckey, let ghosts have it
@@ -393,16 +432,20 @@
 		message = scramble_message_replace_chars(message, 10)
 	message = sanitize(message)
 	var/list/split_message = splittext(message, "")
+
+	//this is so they can talk in hivemind
 	if(split_message[1] == ";")
 		message = copytext(message, 2)
 		for(var/borer in GLOB.cortical_borers)
-			to_chat(borer, span_purple("Cortical Hivemind: [src] sings, \"[message]\""))
+			to_chat(borer, span_purple("<b>Cortical Hivemind: [src] sings, \"[message]\"</b>"))
 		for(var/mob/dead_mob in GLOB.dead_mob_list)
 			var/link = FOLLOW_LINK(dead_mob, src)
-			to_chat(dead_mob, span_purple("[link] Cortical Hivemind: [src] sings, \"[message]\""))
+			to_chat(dead_mob, span_purple("[link] <b>Cortical Hivemind: [src] sings, \"[message]\"</b>"))
 		var/logging_textone = "[key_name(src)] spoke into the hivemind: [message]"
 		log_say(logging_textone)
 		return
+
+	//this is when they speak normally
 	to_chat(human_host, span_purple("Cortical Link: [src] sings, \"[message]\""))
 	var/logging_texttwo = "[key_name(src)] spoke to [key_name(human_host)]: [message]"
 	log_say(logging_texttwo)
@@ -411,6 +454,7 @@
 		var/link = FOLLOW_LINK(dead_mob, src)
 		to_chat(dead_mob, span_purple("[link] Cortical Hivemind: [src] sings to [human_host], \"[message]\""))
 
+//borers should not be able to pull anything
 /mob/living/simple_animal/cortical_borer/start_pulling(atom/movable/AM, state, force, supress_message)
 	to_chat(src, span_warning("You cannot pull things!"))
 	return
