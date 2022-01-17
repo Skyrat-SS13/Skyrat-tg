@@ -6,43 +6,6 @@
 	/// Traits unique to this model, i.e. having a unique dead sprite, being wide or being small enough to reject shrinker modules. Leverages defines in code\__DEFINES\~skyrat_defines\robot_defines.dm
 	var/list/model_features = list()
 
-/mob/living/silicon/robot/proc/update_roomba()
-//	It seems 'current_skin', the value we are looking for, doesn't update properly - so we have to improvise
-	var/list/listofroombas = list("zoomba_engi", "zoomba_med", "zoomba_green", "zoomba_miner", "zoomba_jani", "zoomba_sec") //Wow, there is a Securistan roomba
-	if(model.cyborg_base_icon in listofroombas)
-		AddComponent(/datum/component/tippable, \
-			tip_time = 1 SECONDS, \
-			untip_time = 1 SECONDS, \
-			self_right_time = 10 SECONDS, \
-			pre_tipped_callback = CALLBACK(src, .proc/pre_tip_over), \
-			post_tipped_callback = CALLBACK(src, .proc/after_tip_over), \
-			post_untipped_callback = CALLBACK(src, .proc/after_righted))
-
-/mob/living/silicon/robot/proc/pre_tip_over(mob/user)
-	playsound(src, 'sound/machines/buzz-sigh.ogg', 50, TRUE)
-	return
-
-/mob/living/silicon/robot/proc/after_tip_over(mob/user)
-	if(hat)
-		hat.forceMove(drop_location())
-	unbuckle_all_mobs()
-
-	var/atom/movable/overlay = new /atom/movable
-	overlay.icon = 'modular_skyrat/modules/altborgs/icons/robot_effect.dmi'
-	overlay.layer = ABOVE_MOB_LAYER
-
-	flick("zoomba_flip", overlay) //Start from the start
-	vis_contents += overlay
-	return
-
-/mob/living/silicon/robot/proc/after_righted(mob/user)
-	if(!user) //Did we self-right?
-		SpinAnimation(3, 1)
-		playsound(get_turf(src), 'sound/vehicles/skateboard_ollie.ogg', 50, TRUE) //Roomba does a sick ollie
-	LAZYNULL(vis_contents)
-	return
-
-
 /obj/item/robot_model/proc/update_dogborg()
 	var/mob/living/silicon/robot/cyborg = robot || loc
 	if (!istype(robot))
