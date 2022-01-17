@@ -325,8 +325,8 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	id_trim = /datum/id_trim/solgov
 
 /datum/antagonist/ert/request_911/atmos
-	name = "Breach Control"
-	role = "Breach Control"
+	name = "Breach Control Technician"
+	role = "Breach Control Technician"
 	department = "Breach Control"
 	outfit = /datum/outfit/request_911/atmos
 
