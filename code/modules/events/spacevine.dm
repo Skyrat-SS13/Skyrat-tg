@@ -436,16 +436,10 @@
 /datum/spacevine_controller/New(turf/location, list/muts, potency, production, datum/round_event/event = null)
 	vines = list()
 	growth_queue = list()
-<<<<<<< HEAD
-	var/obj/structure/spacevine/SV = spawn_spacevine_piece(location, null, muts)
-	if (event)
-		event.announce_to_ghosts(SV)
-=======
 	queue_end = list()
 	var/obj/structure/spacevine/vine = spawn_spacevine_piece(location, null, muts)
 	if(event)
 		event.announce_to_ghosts(vine)
->>>>>>> f8aad14ae87 (Harddel Fix Pack #42 + Better Live Reftracking Support (#63877))
 	START_PROCESSING(SSobj, src)
 	vine_mutations_list = list()
 	init_subtypes(/datum/spacevine_mutation/, vine_mutations_list)
@@ -476,22 +470,12 @@
 	return ..()
 
 /datum/spacevine_controller/proc/spawn_spacevine_piece(turf/location, obj/structure/spacevine/parent, list/muts)
-<<<<<<< HEAD
-	var/obj/structure/spacevine/SV = new(location)
-	growth_queue += SV
-	vines += SV
-	SV.master = src
-	if(muts && muts.len)
-		for(var/datum/spacevine_mutation/M in muts)
-			M.add_mutation_to_vinepiece(SV)
-=======
 	var/obj/structure/spacevine/vine = new(location)
 	growth_queue += vine
 	vines += vine
 	vine.master = src
 	for(var/datum/spacevine_mutation/mutation in muts)
 		mutation.add_mutation_to_vinepiece(vine)
->>>>>>> f8aad14ae87 (Harddel Fix Pack #42 + Better Live Reftracking Support (#63877))
 	if(parent)
 		SV.mutations |= parent.mutations
 		var/parentcolor = parent.atom_colours[FIXED_COLOUR_PRIORITY]
@@ -505,18 +489,6 @@
 	location.Entered(SV, null)
 	return SV
 
-<<<<<<< HEAD
-/datum/spacevine_controller/proc/VineDestroyed(obj/structure/spacevine/S)
-	S.master = null
-	vines -= S
-	growth_queue -= S
-	if(!vines.len)
-		var/obj/item/seeds/kudzu/KZ = new(S.loc)
-		KZ.mutations |= S.mutations
-		KZ.set_potency(mutativeness * 10)
-		KZ.set_production(11 - (spread_cap / initial(spread_cap)) * 5) //Reverts spread_cap formula so resulting seed gets original production stat or equivalent back.
-		qdel(src)
-=======
 /datum/spacevine_controller/proc/VineDestroyed(obj/structure/spacevine/vine)
 	vine.master = null
 	vines -= vine
@@ -529,7 +501,6 @@
 	seed.set_potency(mutativeness * 10)
 	seed.set_production(11 - (spread_cap / initial(spread_cap)) * 5) //Reverts spread_cap formula so resulting seed gets original production stat or equivalent back.
 	qdel(src)
->>>>>>> f8aad14ae87 (Harddel Fix Pack #42 + Better Live Reftracking Support (#63877))
 
 /datum/spacevine_controller/process(delta_time)
 	var/vine_count = length(vines)
@@ -537,28 +508,6 @@
 		qdel(src) //space vines exterminated. Remove the controller
 		return
 
-<<<<<<< HEAD
-	var/length = round(clamp(delta_time * 0.5 * vines.len / spread_multiplier, 1, spread_cap))
-	var/i = 0
-	var/list/obj/structure/spacevine/queue_end = list()
-
-	for(var/obj/structure/spacevine/SV in growth_queue)
-		if(QDELETED(SV))
-			continue
-		i++
-		queue_end += SV
-		growth_queue -= SV
-		for(var/datum/spacevine_mutation/SM in SV.mutations)
-			SM.process_mutation(SV)
-		if(SV.energy < 2) //If tile isn't fully grown
-			if(DT_PROB(10, delta_time))
-				SV.grow()
-		else //If tile is fully grown
-			SV.entangle_mob()
-
-		SV.spread()
-		if(i >= length)
-=======
 	var/spread_max = round(clamp(delta_time * 0.5 * vine_count / spread_multiplier, 1, spread_cap))
 	var/amount_processed = 0
 	for(var/obj/structure/spacevine/vine as anything in growth_queue)
@@ -576,7 +525,6 @@
 
 		amount_processed++
 		if(amount_processed >= spread_max)
->>>>>>> f8aad14ae87 (Harddel Fix Pack #42 + Better Live Reftracking Support (#63877))
 			break
 
 	//We can only do so much work per process, but we still want to process everything at some point
