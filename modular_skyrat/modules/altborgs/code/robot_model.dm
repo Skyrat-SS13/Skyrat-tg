@@ -254,6 +254,7 @@
 		/obj/item/scalpel/advanced,
 		/obj/item/gun/medbeam,
 		/obj/item/reagent_containers/borghypo/syndicate,
+		/obj/item/borg/lollipop,
 		/obj/item/holosign_creator/cyborg,
 		/obj/item/stamp/chameleon,
 		/obj/item/borg_shapeshifter,
