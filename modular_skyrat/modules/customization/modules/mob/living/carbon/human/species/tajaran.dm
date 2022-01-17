@@ -28,7 +28,7 @@
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	liked_food = GRAIN | RAW | MEAT
-	disliked_food = GROSS | CLOTH
+	disliked_food = NUTS | CLOTH
 	toxic_food = TOXIC
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
