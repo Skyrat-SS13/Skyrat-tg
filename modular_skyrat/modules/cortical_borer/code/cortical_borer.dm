@@ -3,7 +3,11 @@ GLOBAL_LIST_EMPTY(willing_hosts)
 
 //we need a way of buffing leg speed... here
 /datum/movespeed_modifier/borer_speed
-	multiplicative_slowdown = -0.40
+	multiplicative_slowdown = -0.4
+
+/datum/actionspeed_modifier/borer_speed
+	multiplicative_slowdown = -0.3
+	id = ACTIONSPEED_ID_BORER
 
 //so that we know if a mob has a borer (only humans should have one, but in case)
 /mob/proc/has_borer()
@@ -41,13 +45,13 @@ GLOBAL_LIST_EMPTY(willing_hosts)
 		return
 	if(cb_inside.body_focus & FOCUS_HEAD)
 		to_chat(carbon_target, span_notice("Your eyes begin to feel strange..."))
-		var/obj/item/organ/eyes/my_eyes = carbon_target.getorgan(/obj/item/organ/eyes)
-		if(my_eyes)
-			my_eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-			my_eyes.see_in_dark = 11
-			my_eyes.flash_protect = FLASH_PROTECTION_WELDER
+		if(!HAS_TRAIT(carbon_target, TRAIT_NOFLASH))
+			ADD_TRAIT(carbon_target, TRAIT_NOFLASH, cb_inside)
+		if(!HAS_TRAIT(carbon_target, TRAIT_TRUE_NIGHT_VISION))
+			ADD_TRAIT(carbon_target, TRAIT_TRUE_NIGHT_VISION, cb_inside)
 		if(!HAS_TRAIT(carbon_target, TRAIT_KNOW_ENGI_WIRES))
 			ADD_TRAIT(carbon_target, TRAIT_KNOW_ENGI_WIRES, cb_inside)
+		carbon_target.update_sight()
 	if(cb_inside.body_focus & FOCUS_CHEST)
 		to_chat(carbon_target, span_notice("Your chest begins to slow down..."))
 		if(!HAS_TRAIT(carbon_target, TRAIT_NOBREATH))
@@ -58,8 +62,11 @@ GLOBAL_LIST_EMPTY(willing_hosts)
 			ADD_TRAIT(carbon_target, TRAIT_STABLEHEART, cb_inside)
 	if(cb_inside.body_focus & FOCUS_ARMS)
 		to_chat(carbon_target, span_notice("Your arm starts to feel funny..."))
-		var/datum/action/cooldown/borer_armblade/give_owner = new /datum/action/cooldown/borer_armblade
-		give_owner.Grant(cb_inside.human_host)
+		cb_inside.human_host.add_actionspeed_modifier(/datum/actionspeed_modifier/borer_speed)
+		if(!HAS_TRAIT(carbon_target, TRAIT_QUICKER_CARRY))
+			ADD_TRAIT(carbon_target, TRAIT_QUICKER_CARRY, cb_inside)
+		if(!HAS_TRAIT(carbon_target, TRAIT_QUICK_BUILD))
+			ADD_TRAIT(carbon_target, TRAIT_QUICK_BUILD, cb_inside)
 		if(!HAS_TRAIT(carbon_target, TRAIT_SHOCKIMMUNE))
 			ADD_TRAIT(carbon_target, TRAIT_SHOCKIMMUNE, cb_inside)
 	if(cb_inside.body_focus & FOCUS_LEGS)
@@ -69,19 +76,20 @@ GLOBAL_LIST_EMPTY(willing_hosts)
 			ADD_TRAIT(carbon_target, TRAIT_LIGHT_STEP, cb_inside)
 		if(!HAS_TRAIT(carbon_target, TRAIT_FREERUNNING))
 			ADD_TRAIT(carbon_target, TRAIT_FREERUNNING, cb_inside)
+		if(!HAS_TRAIT(carbon_target, TRAIT_SILENT_FOOTSTEPS))
+			ADD_TRAIT(carbon_target, TRAIT_SILENT_FOOTSTEPS, cb_inside)
 
 /proc/borer_focus_remove(mob/living/carbon/carbon_target)
 	var/mob/living/simple_animal/cortical_borer/cb_inside = carbon_target.has_borer()
 	if(cb_inside.body_focus & FOCUS_HEAD)
 		to_chat(carbon_target, span_notice("Your eyes begin to return to normal..."))
-		var/obj/item/organ/eyes/my_eyes = carbon_target.getorgan(/obj/item/organ/eyes)
-		if(my_eyes)
-			my_eyes.lighting_alpha = initial(my_eyes.lighting_alpha)
-			my_eyes.see_in_dark = initial(my_eyes.see_in_dark)
-			my_eyes.flash_protect = initial(my_eyes.flash_protect)
-		carbon_target.update_sight()
+		if(HAS_TRAIT_FROM(carbon_target, TRAIT_NOFLASH, cb_inside))
+			REMOVE_TRAIT(carbon_target, TRAIT_NOFLASH, cb_inside)
+		if(HAS_TRAIT_FROM(carbon_target, TRAIT_TRUE_NIGHT_VISION, cb_inside))
+			REMOVE_TRAIT(carbon_target, TRAIT_TRUE_NIGHT_VISION, cb_inside)
 		if(HAS_TRAIT_FROM(carbon_target, TRAIT_KNOW_ENGI_WIRES, cb_inside))
 			REMOVE_TRAIT(carbon_target, TRAIT_KNOW_ENGI_WIRES, cb_inside)
+		carbon_target.update_sight()
 	if(cb_inside.body_focus & FOCUS_CHEST)
 		to_chat(carbon_target, span_notice("Your chest begins to heave again..."))
 		if(HAS_TRAIT_FROM(carbon_target, TRAIT_NOBREATH, cb_inside))
@@ -92,9 +100,11 @@ GLOBAL_LIST_EMPTY(willing_hosts)
 			REMOVE_TRAIT(carbon_target, TRAIT_STABLEHEART, cb_inside)
 	if(cb_inside.body_focus & FOCUS_ARMS)
 		to_chat(carbon_target, span_notice("Your arm starts to feel normal again..."))
-		for(var/datum/action/listed_actions in cb_inside.human_host.actions)
-			if(istype(listed_actions, /datum/action/cooldown/borer_armblade))
-				listed_actions.Remove(cb_inside.human_host)
+		cb_inside.human_host.remove_actionspeed_modifier(ACTIONSPEED_ID_BORER)
+		if(HAS_TRAIT_FROM(carbon_target, TRAIT_QUICK_BUILD, cb_inside))
+			REMOVE_TRAIT(carbon_target, TRAIT_QUICK_BUILD, cb_inside)
+		if(HAS_TRAIT_FROM(carbon_target, TRAIT_QUICKER_CARRY, cb_inside))
+			REMOVE_TRAIT(carbon_target, TRAIT_QUICKER_CARRY, cb_inside)
 		if(HAS_TRAIT_FROM(carbon_target, TRAIT_SHOCKIMMUNE, cb_inside))
 			REMOVE_TRAIT(carbon_target, TRAIT_SHOCKIMMUNE, cb_inside)
 	if(cb_inside.body_focus & FOCUS_LEGS)
@@ -104,6 +114,8 @@ GLOBAL_LIST_EMPTY(willing_hosts)
 			REMOVE_TRAIT(carbon_target, TRAIT_LIGHT_STEP, cb_inside)
 		if(HAS_TRAIT_FROM(carbon_target, TRAIT_FREERUNNING, cb_inside))
 			REMOVE_TRAIT(carbon_target, TRAIT_FREERUNNING, cb_inside)
+		if(HAS_TRAIT_FROM(carbon_target, TRAIT_SILENT_FOOTSTEPS, cb_inside))
+			REMOVE_TRAIT(carbon_target, TRAIT_SILENT_FOOTSTEPS, cb_inside)
 
 /obj/item/organ/borer_body/Insert(mob/living/carbon/carbon_target, special, drop_if_replaced)
 	. = ..()
@@ -119,40 +131,6 @@ GLOBAL_LIST_EMPTY(willing_hosts)
 		cb_inside.leave_host()
 	carbon_target.hal_screwyhud = SCREWYHUD_NONE
 	qdel(src)
-
-/datum/action/cooldown/borer_armblade
-	name = "Borer Armblade (20 chemicals)"
-	cooldown_time = 5 SECONDS
-	icon_icon = 'icons/mob/actions/actions_changeling.dmi'
-	button_icon_state = "armblade"
-
-/datum/action/cooldown/borer_armblade/Trigger(trigger_flags)
-	if(!IsAvailable())
-		to_chat(owner, span_warning("This action is still on cooldown!"))
-		return
-	if(!owner.has_borer())
-		to_chat(owner, span_warning("You need a borer to use this ability!"))
-		Remove(owner)
-		return
-	var/mob/living/simple_animal/cortical_borer/cb_owner = owner.has_borer()
-	if(cb_owner.host_sugar())
-		to_chat(owner, span_warning("You have sugar, making unable to use this!"))
-		return
-	if(cb_owner.chemical_storage < 20)
-		to_chat(owner, span_warning("The borer does not have enough chemicals stored!"))
-		return
-	cb_owner.chemical_storage -= 20
-	for(var/obj/item/hosts_items in cb_owner.human_host.held_items) //if you have the armblade, remove it
-		if(!istype(hosts_items, /obj/item/melee/arm_blade))
-			continue
-		cb_owner.human_host.temporarilyRemoveItemFromInventory(hosts_items, TRUE)
-		playsound(cb_owner.human_host, 'sound/effects/blobattack.ogg', 30, TRUE)
-		cb_owner.human_host.visible_message(span_warning("With a sickening crunch, [cb_owner.human_host] reforms [cb_owner.human_host.p_their()] armblade into an arm!"), span_notice("We assimilate the armblade back into our body."), span_italics("You hear organic matter ripping and tearing!"))
-		cb_owner.human_host.update_inv_hands()
-		return
-	var/obj/item/spawn_armblade = new /obj/item/melee/arm_blade(cb_owner.human_host) //if you dont have the armblade, add it
-	cb_owner.human_host.put_in_hands(spawn_armblade)
-	playsound(cb_owner.human_host, 'sound/effects/blobattack.ogg', 30, TRUE)
 
 /mob/living/simple_animal/cortical_borer
 	name = "cortical borer"

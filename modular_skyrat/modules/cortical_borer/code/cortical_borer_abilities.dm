@@ -621,30 +621,46 @@
 		to_chat(owner, span_warning("You must be a cortical borer to use this action!"))
 		return
 	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
+
+	//having a host means we need to leave them then
 	if(cortical_owner.human_host)
 		to_chat(cortical_owner, span_notice("You forcefully detach from the host."))
 		to_chat(cortical_owner.human_host, span_notice("Something carefully tickles your inner ear..."))
 		var/obj/item/organ/borer_body/borer_organ = locate() in cortical_owner.human_host.internal_organs
-		if(borer_organ)
-			borer_organ.Remove(cortical_owner.human_host)
-		cortical_owner.human_host = null
+		//log the interaction
 		var/turf/human_turfone = get_turf(cortical_owner.human_host)
 		var/logging_text = "[key_name(cortical_owner)] left [key_name(cortical_owner.human_host)] at [loc_name(human_turfone)]"
 		cortical_owner.log_message(logging_text, LOG_GAME)
 		cortical_owner.human_host.log_message(logging_text, LOG_GAME)
+		if(borer_organ)
+			borer_organ.Remove(cortical_owner.human_host)
+		cortical_owner.human_host = null
 		StartCooldown()
 		return
+
+	//we dont have a host so lets inhabit one
 	var/list/usable_hosts = list()
 	for(var/mob/living/carbon/human/listed_human in range(1, cortical_owner))
-		if(!ishuman(listed_human)) //no nonhuman hosts
+		// no non-human hosts
+		if(!ishuman(listed_human))
 			continue
+		// cannot have multiple borers (for now)
 		if(listed_human.has_borer())
 			continue
+		// hosts need to be organic
 		if(!(listed_human.dna.species.inherent_biotypes & MOB_ORGANIC))
 			continue
+		// hosts need to be organic
 		if(!(listed_human.mob_biotypes & MOB_ORGANIC))
 			continue
+		//hosts cannot be changelings
+		if(listed_human.mind)
+			var/datum/antagonist/changeling/changeling = listed_human.mind.has_antag_datum(/datum/antagonist/changeling)
+			if(changeling)
+				continue
 		usable_hosts += listed_human
+
+	//if the list of possible hosts is one, just go straight in, no choosing
 	if(length(usable_hosts) == 1)
 		var/mob/living/carbon/human/singular_host = pick(usable_hosts)
 		if(singular_host.has_borer())
@@ -668,6 +684,8 @@
 		cortical_owner.human_host.log_message(logging_text, LOG_GAME)
 		StartCooldown()
 		return
+
+	//if the list of possible host is more than one, allow choosing a host
 	var/choose_host = tgui_input_list(cortical_owner, "Choose your host!", "Host Choice", usable_hosts)
 	if(!choose_host)
 		to_chat(cortical_owner, span_warning("You failed to choose a host."))
