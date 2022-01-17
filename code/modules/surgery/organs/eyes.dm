@@ -378,6 +378,8 @@
 		if(IS_OPAQUE_TURF(scanning))
 			stop = TRUE
 		var/obj/effect/abstract/eye_lighting/lighting = LAZYACCESS(eye_lighting, i)
+		if(!lighting) //SKYRAT EDIT: Weird runtime
+			return
 		if(stop)
 			lighting.forceMove(src)
 		else
