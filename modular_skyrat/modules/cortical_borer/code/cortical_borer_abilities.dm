@@ -773,8 +773,8 @@
 	var/obj/effect/mob_spawn/ghost_role/borer_egg/spawned_egg = new /obj/effect/mob_spawn/ghost_role/borer_egg(borer_turf)
 	spawned_egg.generation = (cortical_owner.generation + 1)
 	cortical_owner.children_produced++
-	if(cortical_owner.children_produced >= 10)
-		GLOB.borer_spawner_ten += 1
+	if(cortical_owner.children_produced >= GLOB.objective_egg_egg_number)
+		GLOB.successful_borer += 1
 	if(prob(25))
 		cortical_owner.human_host.gain_trauma_type(BRAIN_TRAUMA_MILD, TRAUMA_RESILIENCE_BASIC)
 		to_chat(cortical_owner.human_host, span_warning("Your brain begins to hurt..."))

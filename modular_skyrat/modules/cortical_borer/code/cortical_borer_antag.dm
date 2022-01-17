@@ -67,11 +67,11 @@
 		parts += span_greentext("Borers were able to survive the shift!")
 	else
 		parts += span_redtext("Borers were unable to survive the shift!")
-	if(GLOB.borer_spawner_ten >= 5)
+	if(GLOB.successful_borer >= GLOB.objective_egg_borer_number)
 		parts += span_greentext("Borers were able to produce enough eggs!")
 	else
 		parts += span_redtext("Borers were unable to produce enough eggs!")
-	if(length(GLOB.willing_hosts) >= 20)
+	if(length(GLOB.willing_hosts) >= GLOB.objective_willing_hosts)
 		parts += span_greentext("Borers were able to gather enough willing hosts!")
 	else
 		parts += span_redtext("Borers were unable to gather enough willing hosts!")
