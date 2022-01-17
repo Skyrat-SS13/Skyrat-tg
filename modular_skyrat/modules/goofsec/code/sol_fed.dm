@@ -113,7 +113,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 				[GLOB.call_911_msg]"
 			announcer = "Sol Federation 811 Dispatch - Breach Control"
 			poll_question = "The station has called for a Breach Control team. Will you respond?"
-			cell_phone_number = "811"	//Flavor - Call before you dig (Or in this case, blow a hole in your station)
+			cell_phone_number = "911"	//This needs to stay so they can communicate with SWAT
 		if(EMERGENCY_RESPONSE_EMT)
 			team_size = 8
 			cops_to_send = /datum/antagonist/ert/request_911/emt
