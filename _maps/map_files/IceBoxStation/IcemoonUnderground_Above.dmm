@@ -1052,6 +1052,19 @@
 	},
 /turf/open/floor/iron/dark,
 /area/medical/virology)
+"dx" = (
+/obj/structure/table,
+/obj/item/paper_bin,
+/obj/item/pen/red{
+	pixel_x = -6
+	},
+/obj/item/hand_labeler{
+	pixel_x = 3;
+	pixel_y = 7
+	},
+/obj/effect/turf_decal/tile/green/full,
+/turf/open/floor/iron/dark/smooth_large,
+/area/medical/virology)
 "dy" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 1
@@ -1092,6 +1105,14 @@
 /obj/effect/spawner/random/engineering/tracking_beacon,
 /turf/open/floor/iron/dark,
 /area/service/hydroponics)
+"dJ" = (
+/obj/machinery/duct,
+/obj/machinery/holopad,
+/obj/effect/turf_decal/box/white{
+	color = "#52B4E9"
+	},
+/turf/open/floor/iron/white,
+/area/medical/virology)
 "dK" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 8
@@ -1151,6 +1172,13 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/engine,
 /area/science/xenobiology)
+"dU" = (
+/obj/structure/sign/warning{
+	pixel_y = 32
+	},
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/plating,
+/area/service/chapel)
 "dV" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
@@ -1340,6 +1368,17 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/hydroponics)
+"ex" = (
+/obj/structure/table/optable{
+	desc = "A cold, hard place for your final rest.";
+	name = "Morgue Slab"
+	},
+/obj/machinery/light/small/directional/east,
+/obj/effect/decal/cleanable/blood/bubblegum,
+/obj/machinery/newscaster/directional/east,
+/obj/effect/turf_decal/tile/neutral/full,
+/turf/open/floor/iron/dark,
+/area/medical/morgue)
 "eA" = (
 /obj/structure/flora/grass/both,
 /turf/open/floor/plating/asteroid/snow/icemoon,
@@ -1390,11 +1429,6 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/grass,
 /area/service/hydroponics)
-"eP" = (
-/obj/machinery/smartfridge/organ,
-/obj/effect/turf_decal/tile/neutral/full,
-/turf/open/floor/iron/dark,
-/area/medical/morgue)
 "eQ" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -1494,6 +1528,18 @@
 /obj/structure/tank_holder/oxygen/yellow,
 /turf/open/floor/iron,
 /area/cargo/drone_bay)
+"ff" = (
+/obj/machinery/door/airlock/external{
+	glass = 1;
+	name = "engineering external airlock";
+	opacity = 0;
+	req_access_txt = "10;24"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/engineering/lobby)
 "fg" = (
 /obj/structure/rack,
 /obj/item/poster/random_official,
@@ -1531,19 +1577,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cargo/drone_bay)
-"fk" = (
-/obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 9
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/obj/structure/sign/warning/securearea{
-	pixel_x = -32
-	},
-/obj/structure/closet/emcloset,
-/turf/open/floor/iron/white,
-/area/medical/virology)
 "fl" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -1622,18 +1655,18 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/hydroponics)
-"fy" = (
-/obj/structure/table,
-/obj/machinery/light/directional/north,
-/obj/machinery/microwave,
-/obj/effect/turf_decal/tile/green/full,
-/turf/open/floor/iron/dark/smooth_large,
-/area/medical/virology)
 "fz" = (
 /obj/effect/spawner/random/entertainment/gambling,
 /obj/structure/table/wood,
 /turf/open/floor/wood/parquet,
 /area/service/bar/atrium)
+"fB" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/obj/item/storage/secure/safe/directional/south,
+/obj/effect/turf_decal/tile/green/full,
+/turf/open/floor/iron/dark/smooth_large,
+/area/medical/virology)
 "fC" = (
 /obj/structure/table/wood,
 /obj/effect/spawner/random/entertainment/gambling,
@@ -1641,6 +1674,16 @@
 /obj/machinery/status_display/evac/directional/west,
 /turf/open/floor/iron/grimy,
 /area/service/bar/atrium)
+"fD" = (
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/obj/machinery/holopad,
+/obj/effect/turf_decal/box/white{
+	color = "#52B4E9"
+	},
+/turf/open/floor/iron/white,
+/area/medical/virology)
 "fE" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
@@ -1755,6 +1798,29 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/maintenance/department/chapel)
+"gc" = (
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/virology{
+	autoclose = 0;
+	frequency = 1449;
+	id_tag = "virology_airlock_exterior";
+	name = "Virology Exterior Airlock";
+	req_access_txt = "39"
+	},
+/obj/machinery/door_buttons/access_button{
+	idDoor = "virology_airlock_exterior";
+	idSelf = "virology_airlock_control";
+	name = "Virology Access Button";
+	pixel_y = -24;
+	req_access_txt = "39"
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green/full,
+/turf/open/floor/iron/white/smooth_large,
+/area/medical/virology)
 "ge" = (
 /obj/machinery/camera/directional/south{
 	c_tag = "Chapel South"
@@ -1920,19 +1986,6 @@
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/underground/explored)
-"gE" = (
-/obj/machinery/vending/wardrobe/viro_wardrobe,
-/obj/effect/turf_decal/tile/green/full,
-/turf/open/floor/iron/dark/smooth_large,
-/area/medical/virology)
-"gF" = (
-/obj/machinery/duct,
-/obj/machinery/holopad,
-/obj/effect/turf_decal/box/white{
-	color = "#52B4E9"
-	},
-/turf/open/floor/iron/white,
-/area/medical/virology)
 "gH" = (
 /obj/structure/sink{
 	dir = 4;
@@ -2062,17 +2115,6 @@
 /obj/structure/table/wood,
 /turf/open/floor/iron,
 /area/service/bar)
-"hg" = (
-/obj/machinery/door/airlock/external{
-	glass = 1;
-	name = "maintenance external airlock";
-	opacity = 0
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/maintenance/aft)
 "hh" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -2125,6 +2167,19 @@
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/iron,
 /area/hallway/secondary/service)
+"hr" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = 13
+	},
+/turf/open/floor/iron/white,
+/area/medical/virology)
 "hs" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -2507,6 +2562,17 @@
 	dir = 1
 	},
 /area/service/hydroponics)
+"iE" = (
+/obj/machinery/door/airlock/external{
+	glass = 1;
+	name = "Chapel Maintenance External Airlock";
+	opacity = 0
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/department/chapel)
 "iF" = (
 /obj/effect/turf_decal/trimline/green/filled/corner{
 	dir = 8
@@ -2624,13 +2690,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/mine/storage)
-"iY" = (
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral/full,
-/turf/open/floor/iron/dark,
-/area/medical/morgue)
 "jb" = (
 /obj/machinery/light/directional/west,
 /obj/machinery/camera/directional/west{
@@ -2639,18 +2698,6 @@
 	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
-"jd" = (
-/obj/structure/table/glass,
-/obj/item/book/manual/wiki/infections{
-	pixel_y = 7
-	},
-/obj/item/reagent_containers/syringe/antiviral,
-/obj/item/reagent_containers/dropper,
-/obj/item/reagent_containers/spray/cleaner,
-/obj/effect/turf_decal/trimline/green/filled/line,
-/obj/structure/reagent_dispensers/wall/virusfood/directional/south,
-/turf/open/floor/iron/white,
-/area/medical/virology)
 "je" = (
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -3047,6 +3094,20 @@
 /obj/item/gps/mining,
 /turf/open/floor/iron/smooth,
 /area/mine/eva)
+"kC" = (
+/obj/structure/table,
+/obj/item/radio/intercom/directional/east,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/obj/effect/turf_decal/tile/green/full,
+/turf/open/floor/iron/dark/smooth_large,
+/area/medical/virology)
+"kE" = (
+/obj/machinery/light/small/directional/south,
+/obj/structure/sign/warning{
+	pixel_y = 32
+	},
+/turf/open/floor/plating,
+/area/maintenance/department/medical)
 "kF" = (
 /obj/machinery/computer/slot_machine{
 	pixel_y = 2
@@ -3148,6 +3209,15 @@
 	dir = 1
 	},
 /area/mine/eva)
+"kW" = (
+/obj/structure/table,
+/obj/item/folder/white{
+	pixel_y = 4
+	},
+/obj/machinery/newscaster/directional/north,
+/obj/effect/turf_decal/tile/green/full,
+/turf/open/floor/iron/dark/smooth_large,
+/area/medical/virology)
 "kX" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -3382,18 +3452,6 @@
 	},
 /turf/open/floor/wood,
 /area/hallway/secondary/service)
-"lN" = (
-/obj/machinery/duct,
-/obj/structure/disposalpipe/segment{
-	dir = 10
-	},
-/obj/machinery/holopad,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply,
-/obj/effect/turf_decal/box/white{
-	color = "#52B4E9"
-	},
-/turf/open/floor/iron/white,
-/area/medical/virology)
 "lP" = (
 /obj/effect/turf_decal/siding/thinplating/corner{
 	dir = 1
@@ -3445,6 +3503,13 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
+"lV" = (
+/obj/structure/sign/warning{
+	pixel_y = 32
+	},
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/plating,
+/area/maintenance/department/chapel)
 "lW" = (
 /obj/item/flashlight/lantern,
 /obj/machinery/light/directional/south,
@@ -3953,29 +4018,6 @@
 "nM" = (
 /turf/closed/wall,
 /area/mine/mechbay)
-"nN" = (
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/airlock/virology{
-	autoclose = 0;
-	frequency = 1449;
-	id_tag = "virology_airlock_exterior";
-	name = "Virology Exterior Airlock";
-	req_access_txt = "39"
-	},
-/obj/machinery/door_buttons/access_button{
-	idDoor = "virology_airlock_exterior";
-	idSelf = "virology_airlock_control";
-	name = "Virology Access Button";
-	pixel_y = -24;
-	req_access_txt = "39"
-	},
-/obj/machinery/door/firedoor,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/green/full,
-/turf/open/floor/iron/white/smooth_large,
-/area/medical/virology)
 "nO" = (
 /turf/closed/wall,
 /area/maintenance/department/medical)
@@ -4140,23 +4182,6 @@
 	icon_state = "panelscorched"
 	},
 /area/maintenance/department/medical)
-"oo" = (
-/obj/machinery/disposal/bin{
-	desc = "A pneumatic waste disposal unit. This one leads to the frozen exterior of the moon.";
-	name = "deathsposal unit"
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 4
-	},
-/obj/structure/sign/warning/deathsposal{
-	pixel_y = 32
-	},
-/obj/structure/sign/warning/fire{
-	pixel_x = -32
-	},
-/obj/effect/turf_decal/tile/green/full,
-/turf/open/floor/iron/white/smooth_large,
-/area/medical/virology)
 "op" = (
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
@@ -4199,13 +4224,6 @@
 /obj/item/radio/intercom/directional/west,
 /turf/open/floor/iron,
 /area/cargo/storage)
-"ot" = (
-/obj/structure/sign/warning{
-	pixel_y = 32
-	},
-/obj/machinery/light/small/directional/south,
-/turf/open/floor/plating/snowed/icemoon,
-/area/maintenance/department/chapel)
 "ou" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
@@ -4570,15 +4588,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/chapel)
-"py" = (
-/obj/machinery/door/airlock/external{
-	name = "External Access"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/maintenance/aft)
+"pw" = (
+/obj/structure/table,
+/obj/machinery/light/directional/north,
+/obj/machinery/microwave,
+/obj/effect/turf_decal/tile/green/full,
+/turf/open/floor/iron/dark/smooth_large,
+/area/medical/virology)
 "pz" = (
 /turf/open/openspace/icemoon/keep_below,
 /area/lavaland/surface/outdoors/explored)
@@ -4680,17 +4696,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/mine/laborcamp)
-"pT" = (
-/obj/machinery/door/airlock/external{
-	glass = 1;
-	name = "maintenance external airlock";
-	opacity = 0
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/maintenance/department/medical)
 "pU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -4753,6 +4758,13 @@
 /obj/item/clothing/suit/hooded/wintercoat/science,
 /turf/open/floor/plating/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
+"qd" = (
+/obj/effect/turf_decal/trimline/green/filled/line,
+/obj/machinery/light/directional/south,
+/obj/structure/closet/l3closet/virology,
+/obj/machinery/newscaster/directional/south,
+/turf/open/floor/iron/white,
+/area/medical/virology)
 "qe" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -4788,6 +4800,11 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/science/xenobiology)
+"qk" = (
+/obj/machinery/vending/wardrobe/viro_wardrobe,
+/obj/effect/turf_decal/tile/green/full,
+/turf/open/floor/iron/dark/smooth_large,
+/area/medical/virology)
 "qm" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -4826,13 +4843,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply,
 /turf/open/floor/iron/dark,
 /area/medical/virology)
-"qv" = (
-/obj/structure/sign/warning{
-	pixel_y = 32
-	},
-/obj/machinery/light/small/directional/south,
-/turf/open/floor/plating/snowed/icemoon,
-/area/engineering/lobby)
 "qB" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -4875,6 +4885,18 @@
 /obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/iron/dark,
 /area/service/chapel)
+"qF" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/structure/closet/l3closet/virology,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/white,
+/area/medical/virology)
 "qG" = (
 /obj/structure/sign/poster/contraband/random,
 /turf/closed/wall,
@@ -4908,17 +4930,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth_large,
 /area/cargo/warehouse)
-"qO" = (
-/obj/structure/table/optable{
-	desc = "A cold, hard place for your final rest.";
-	name = "Morgue Slab"
-	},
-/obj/machinery/light/small/directional/east,
-/obj/effect/decal/cleanable/blood/bubblegum,
-/obj/machinery/newscaster/directional/east,
-/obj/effect/turf_decal/tile/neutral/full,
-/turf/open/floor/iron/dark,
-/area/medical/morgue)
 "qR" = (
 /obj/structure/table/glass,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -4975,6 +4986,18 @@
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/iron/dark,
 /area/service/hydroponics)
+"qW" = (
+/obj/structure/table/glass,
+/obj/item/book/manual/wiki/infections{
+	pixel_y = 7
+	},
+/obj/item/reagent_containers/syringe/antiviral,
+/obj/item/reagent_containers/dropper,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/effect/turf_decal/trimline/green/filled/line,
+/obj/structure/reagent_dispensers/wall/virusfood/directional/south,
+/turf/open/floor/iron/white,
+/area/medical/virology)
 "qX" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -5368,14 +5391,14 @@
 /turf/open/floor/iron/dark,
 /area/service/chapel)
 "sd" = (
-/obj/structure/table,
-/obj/item/folder/white{
-	pixel_y = 4
+/obj/machinery/door/airlock/external{
+	name = "External Access"
 	},
-/obj/machinery/newscaster/directional/north,
-/obj/effect/turf_decal/tile/green/full,
-/turf/open/floor/iron/dark/smooth_large,
-/area/medical/virology)
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/aft)
 "se" = (
 /obj/structure/rack,
 /turf/open/floor/plating,
@@ -5508,17 +5531,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood/parquet,
 /area/service/bar/atrium)
-"sz" = (
-/obj/machinery/door/airlock/external{
-	glass = 1;
-	name = "Chapel Maintenance External Airlock";
-	opacity = 0
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/maintenance/department/chapel)
 "sA" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/clothing/gloves,
@@ -5828,18 +5840,6 @@
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
 /area/maintenance/department/medical)
-"tE" = (
-/obj/machinery/door/airlock/external{
-	glass = 1;
-	name = "Drone Bay External Airlock";
-	opacity = 0;
-	req_access_txt = "31"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/cargo/drone_bay)
 "tF" = (
 /obj/effect/turf_decal/tile/dark{
 	dir = 1
@@ -6177,18 +6177,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/mine/eva)
-"uK" = (
-/obj/machinery/door/airlock/virology/glass{
-	name = "Isolation A";
-	req_access_txt = "39"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply,
-/obj/effect/turf_decal/tile/green/full,
-/turf/open/floor/iron/dark/smooth_large,
-/area/medical/virology)
 "uL" = (
 /obj/effect/turf_decal/trimline,
 /obj/machinery/shower{
@@ -6261,19 +6249,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/medical/morgue)
-"vb" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/table/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 2
-	},
-/obj/item/clothing/gloves/color/latex,
-/obj/item/clothing/mask/surgical,
-/obj/item/storage/backpack/duffelbag/med/surgery,
-/obj/effect/turf_decal/tile/neutral/full,
-/turf/open/floor/iron/dark,
-/area/medical/morgue)
 "vc" = (
 /turf/closed/wall,
 /area/medical/morgue)
@@ -6340,6 +6315,30 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/cargo/drone_bay)
+"vq" = (
+/obj/machinery/door/airlock/virology/glass{
+	name = "Isolation B";
+	req_access_txt = "39"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply,
+/obj/effect/turf_decal/tile/green/full,
+/turf/open/floor/iron/dark/smooth_large,
+/area/medical/virology)
+"vr" = (
+/obj/machinery/duct,
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/machinery/holopad,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply,
+/obj/effect/turf_decal/box/white{
+	color = "#52B4E9"
+	},
+/turf/open/floor/iron/white,
+/area/medical/virology)
 "vs" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -6530,18 +6529,6 @@
 /obj/effect/spawner/random/trash/grille_or_waste,
 /turf/open/floor/plating,
 /area/maintenance/department/medical)
-"wa" = (
-/obj/machinery/door/airlock/virology/glass{
-	name = "Isolation B";
-	req_access_txt = "39"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply,
-/obj/effect/turf_decal/tile/green/full,
-/turf/open/floor/iron/dark/smooth_large,
-/area/medical/virology)
 "wc" = (
 /obj/structure/table,
 /obj/item/paper{
@@ -6775,13 +6762,6 @@
 "wS" = (
 /turf/open/openspace/icemoon/keep_below,
 /area/icemoon/underground/unexplored)
-"wT" = (
-/obj/machinery/light/small/directional/south,
-/obj/structure/sign/warning{
-	pixel_y = 32
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/maintenance/department/medical)
 "wY" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -6850,6 +6830,11 @@
 "xk" = (
 /turf/open/floor/iron/smooth_large,
 /area/cargo/warehouse)
+"xl" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/mob_spawn/corpse/human/skeleton,
+/turf/open/floor/plating,
+/area/maintenance/department/medical/morgue)
 "xm" = (
 /obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 8
@@ -6888,15 +6873,16 @@
 /turf/open/floor/iron,
 /area/science/xenobiology)
 "xs" = (
-/obj/structure/disposalpipe/segment{
-	dir = 6
+/obj/machinery/door/airlock/external{
+	glass = 1;
+	name = "Chemistry Lab External Airlock";
+	opacity = 0
 	},
-/obj/machinery/holopad,
-/obj/effect/turf_decal/box/white{
-	color = "#52B4E9"
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "chem-airlock"
 	},
-/turf/open/floor/iron/white,
-/area/medical/virology)
+/turf/open/floor/plating,
+/area/medical/chemistry)
 "xt" = (
 /obj/structure/table,
 /obj/item/scalpel{
@@ -6965,15 +6951,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/chemistry)
-"xD" = (
-/obj/machinery/holopad,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/box/white{
-	color = "#52B4E9"
-	},
-/turf/open/floor/iron/dark,
-/area/medical/morgue)
 "xE" = (
 /obj/machinery/food_cart,
 /obj/machinery/light/directional/south,
@@ -6982,17 +6959,6 @@
 	},
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
-"xF" = (
-/obj/machinery/door/airlock/external{
-	glass = 1;
-	name = "Chemistry Lab External Airlock";
-	opacity = 0
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "chem-airlock"
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/medical/chemistry)
 "xG" = (
 /obj/structure/railing/corner,
 /obj/structure/sign/warning/biohazard{
@@ -7061,6 +7027,17 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/bar)
+"xS" = (
+/obj/machinery/door/airlock/external{
+	glass = 1;
+	name = "maintenance external airlock";
+	opacity = 0
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/aft)
 "xU" = (
 /obj/machinery/hydroponics/constructable,
 /obj/effect/turf_decal/tile/green{
@@ -7144,6 +7121,32 @@
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/plating,
 /area/maintenance/department/medical)
+"yk" = (
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/virology{
+	autoclose = 0;
+	frequency = 1449;
+	id_tag = "virology_airlock_interior";
+	name = "Virology Interior Airlock";
+	req_access_txt = "39"
+	},
+/obj/structure/cable,
+/obj/machinery/door_buttons/access_button{
+	idDoor = "virology_airlock_interior";
+	idSelf = "virology_airlock_control";
+	name = "Virology Access Button";
+	pixel_x = -24;
+	pixel_y = 5;
+	req_access_txt = "39"
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/duct,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply,
+/obj/effect/turf_decal/tile/green/full,
+/turf/open/floor/iron/white/smooth_large,
+/area/medical/virology)
 "yo" = (
 /obj/structure/grille/broken,
 /obj/effect/decal/cleanable/dirt,
@@ -7427,13 +7430,6 @@
 	},
 /turf/open/floor/iron/freezer,
 /area/mine/laborcamp)
-"zk" = (
-/obj/machinery/light/small/directional/south,
-/obj/structure/sign/warning{
-	pixel_y = 32
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/maintenance/aft)
 "zm" = (
 /obj/machinery/door/airlock{
 	id_tag = "miningdorm_A";
@@ -7652,16 +7648,6 @@
 /obj/structure/closet/secure_closet/labor_camp_security,
 /turf/open/floor/iron,
 /area/mine/laborcamp/security)
-"zZ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/computer/operating,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 2
-	},
-/obj/effect/turf_decal/tile/neutral/full,
-/turf/open/floor/iron/dark,
-/area/medical/morgue)
 "Aa" = (
 /obj/structure/cable,
 /obj/machinery/power/smes{
@@ -7763,6 +7749,22 @@
 "As" = (
 /turf/closed/mineral/random/snow,
 /area/icemoon/underground/unexplored/rivers)
+"At" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 5
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/machinery/firealarm/directional/east,
+/obj/structure/closet/l3closet/virology,
+/obj/machinery/camera{
+	c_tag = "Virology Airlock";
+	dir = 9;
+	network = list("ss13","medbay")
+	},
+/turf/open/floor/iron/white,
+/area/medical/virology)
 "Av" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -8021,6 +8023,19 @@
 /obj/machinery/computer/pandemic,
 /turf/open/floor/iron/white,
 /area/medical/virology)
+"Bn" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 9
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/structure/sign/warning/securearea{
+	pixel_x = -32
+	},
+/obj/structure/closet/emcloset,
+/turf/open/floor/iron/white,
+/area/medical/virology)
 "Bo" = (
 /obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 8
@@ -8098,6 +8113,16 @@
 	},
 /turf/open/floor/wood/parquet,
 /area/service/bar/atrium)
+"BB" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/machinery/holopad,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply,
+/obj/effect/turf_decal/box/white{
+	color = "#52B4E9"
+	},
+/turf/open/floor/iron/white,
+/area/medical/virology)
 "BD" = (
 /obj/item/screwdriver,
 /turf/open/floor/plating/snowed/icemoon,
@@ -8404,18 +8429,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/chapel,
 /area/service/chapel)
-"Cz" = (
-/obj/machinery/door/airlock/external{
-	glass = 1;
-	name = "engineering external airlock";
-	opacity = 0;
-	req_access_txt = "10;24"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/engineering/lobby)
 "CA" = (
 /obj/machinery/door/airlock{
 	name = "Labor Camp Library"
@@ -8425,6 +8438,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
+"CB" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/full,
+/turf/open/floor/iron/dark,
+/area/medical/morgue)
 "CC" = (
 /obj/machinery/status_display/evac/directional/north,
 /obj/effect/decal/cleanable/dirt,
@@ -8914,6 +8934,22 @@
 "El" = (
 /turf/open/floor/iron/freezer,
 /area/mine/laborcamp)
+"Eo" = (
+/obj/machinery/light/small/directional/south,
+/obj/structure/sign/warning{
+	pixel_y = 32
+	},
+/turf/open/floor/plating,
+/area/maintenance/aft)
+"Ep" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/machinery/door/airlock/external{
+	name = "External Access"
+	},
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "Eq" = (
 /obj/effect/turf_decal/trimline/green/filled/warning{
 	dir = 4
@@ -9067,9 +9103,6 @@
 "ET" = (
 /turf/closed/wall,
 /area/cargo/storage)
-"EV" = (
-/turf/open/floor/plating/snowed/icemoon,
-/area/maintenance/fore)
 "EW" = (
 /obj/machinery/door/airlock/external{
 	name = "External Access"
@@ -9155,17 +9188,6 @@
 /obj/structure/extinguisher_cabinet/directional/west,
 /turf/open/floor/iron/dark/side,
 /area/service/chapel)
-"Fm" = (
-/obj/machinery/door/airlock/external{
-	glass = 1;
-	name = "maintenance external airlock";
-	opacity = 0
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/maintenance/department/medical)
 "Fn" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -9278,11 +9300,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
-"FK" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/mob_spawn/corpse/human/skeleton,
-/turf/open/floor/plating,
-/area/maintenance/department/medical/morgue)
 "FL" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
@@ -9379,13 +9396,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/department/medical)
-"Gd" = (
-/obj/effect/turf_decal/trimline/green/filled/line,
-/obj/machinery/light/directional/south,
-/obj/structure/closet/l3closet/virology,
-/obj/machinery/newscaster/directional/south,
-/turf/open/floor/iron/white,
-/area/medical/virology)
 "Ge" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -9399,13 +9409,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/bar)
-"Gf" = (
-/obj/structure/table,
-/obj/item/radio/intercom/directional/east,
-/obj/effect/spawner/random/food_or_drink/donkpockets,
-/obj/effect/turf_decal/tile/green/full,
-/turf/open/floor/iron/dark/smooth_large,
-/area/medical/virology)
 "Gg" = (
 /obj/effect/turf_decal/tile/dark{
 	dir = 8
@@ -9489,24 +9492,6 @@
 /obj/structure/cable,
 /turf/open/floor/engine,
 /area/science/xenobiology)
-"Gt" = (
-/obj/machinery/door/airlock/external{
-	glass = 1;
-	name = "Chapel External Airlock";
-	opacity = 0
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/service/chapel)
-"Gu" = (
-/obj/structure/sign/warning{
-	pixel_y = 32
-	},
-/obj/machinery/light/small/directional/south,
-/turf/open/floor/plating/snowed/icemoon,
-/area/service/chapel)
 "Gv" = (
 /obj/structure/table,
 /obj/item/paper_bin{
@@ -9951,6 +9936,23 @@
 	dir = 1
 	},
 /area/mine/mechbay)
+"HS" = (
+/obj/machinery/disposal/bin{
+	desc = "A pneumatic waste disposal unit. This one leads to the frozen exterior of the moon.";
+	name = "deathsposal unit"
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/structure/sign/warning/deathsposal{
+	pixel_y = 32
+	},
+/obj/structure/sign/warning/fire{
+	pixel_x = -32
+	},
+/obj/effect/turf_decal/tile/green/full,
+/turf/open/floor/iron/white/smooth_large,
+/area/medical/virology)
 "HU" = (
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
@@ -10182,19 +10184,6 @@
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/mine/storage)
-"IG" = (
-/obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = 13
-	},
-/turf/open/floor/iron/white,
-/area/medical/virology)
 "IH" = (
 /turf/open/floor/plating/snowed/icemoon,
 /area/maintenance/aft)
@@ -10377,19 +10366,6 @@
 /obj/machinery/space_heater,
 /turf/open/floor/plating,
 /area/maintenance/department/medical)
-"Jp" = (
-/obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 6
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
-/obj/machinery/airalarm/directional/east,
-/obj/machinery/shower{
-	dir = 8
-	},
-/turf/open/floor/iron/white,
-/area/medical/virology)
 "Jq" = (
 /obj/structure/marker_beacon/burgundy{
 	name = "landing marker"
@@ -10528,19 +10504,6 @@
 	dir = 1
 	},
 /area/service/hydroponics)
-"JJ" = (
-/obj/structure/table,
-/obj/item/paper_bin,
-/obj/item/pen/red{
-	pixel_x = -6
-	},
-/obj/item/hand_labeler{
-	pixel_x = 3;
-	pixel_y = 7
-	},
-/obj/effect/turf_decal/tile/green/full,
-/turf/open/floor/iron/dark/smooth_large,
-/area/medical/virology)
 "JL" = (
 /obj/machinery/door/airlock/maintenance{
 	req_access_txt = "12"
@@ -10677,15 +10640,6 @@
 	icon_state = "platingdmg2"
 	},
 /area/maintenance/department/medical)
-"Kg" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/machinery/door/airlock/external{
-	name = "External Access"
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/maintenance/fore)
 "Kh" = (
 /obj/machinery/light/directional/west,
 /obj/machinery/camera/directional/west{
@@ -11065,6 +11019,12 @@
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/plating,
 /area/maintenance/department/chapel)
+"Lq" = (
+/obj/machinery/iv_drip,
+/obj/machinery/requests_console/directional/south,
+/obj/effect/turf_decal/tile/neutral/full,
+/turf/open/floor/iron/dark,
+/area/medical/morgue)
 "Lr" = (
 /obj/structure/chair/pew{
 	dir = 1
@@ -11166,6 +11126,18 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
+"LL" = (
+/obj/machinery/duct,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/airlock/virology{
+	name = "Break Room";
+	req_access_txt = "39"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply,
+/obj/effect/turf_decal/tile/green/full,
+/turf/open/floor/iron/dark/smooth_large,
+/area/medical/virology)
 "LM" = (
 /obj/structure/sign/warning/electricshock,
 /turf/closed/wall/r_wall,
@@ -11239,10 +11211,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/mine/storage)
-"LX" = (
-/obj/effect/turf_decal/caution,
-/turf/open/floor/plating/snowed/icemoon,
-/area/cargo/drone_bay)
 "LZ" = (
 /obj/structure/stairs/west,
 /obj/structure/railing,
@@ -11437,13 +11405,6 @@
 	},
 /turf/open/floor/iron,
 /area/mine/laborcamp/security)
-"MI" = (
-/obj/machinery/holopad,
-/obj/effect/turf_decal/box/white{
-	color = "#52B4E9"
-	},
-/turf/open/floor/iron/white/smooth_large,
-/area/medical/chemistry)
 "MJ" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
@@ -11652,6 +11613,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/hydroponics)
+"No" = (
+/obj/machinery/holopad,
+/obj/effect/turf_decal/box/white{
+	color = "#52B4E9"
+	},
+/turf/open/floor/iron/white/smooth_large,
+/area/medical/chemistry)
 "Nr" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
@@ -11662,32 +11630,6 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/carpet,
 /area/service/chapel)
-"Nu" = (
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/airlock/virology{
-	autoclose = 0;
-	frequency = 1449;
-	id_tag = "virology_airlock_interior";
-	name = "Virology Interior Airlock";
-	req_access_txt = "39"
-	},
-/obj/structure/cable,
-/obj/machinery/door_buttons/access_button{
-	idDoor = "virology_airlock_interior";
-	idSelf = "virology_airlock_control";
-	name = "Virology Access Button";
-	pixel_x = -24;
-	pixel_y = 5;
-	req_access_txt = "39"
-	},
-/obj/machinery/door/firedoor,
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/duct,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply,
-/obj/effect/turf_decal/tile/green/full,
-/turf/open/floor/iron/white/smooth_large,
-/area/medical/virology)
 "Nv" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -11779,12 +11721,6 @@
 	dir = 1
 	},
 /area/mine/eva)
-"NM" = (
-/obj/machinery/iv_drip,
-/obj/machinery/requests_console/directional/south,
-/obj/effect/turf_decal/tile/neutral/full,
-/turf/open/floor/iron/dark,
-/area/medical/morgue)
 "NN" = (
 /obj/effect/turf_decal/siding/brown/corner{
 	dir = 4
@@ -12077,6 +12013,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/mine/laborcamp/security)
+"OH" = (
+/obj/structure/sign/warning{
+	pixel_y = 32
+	},
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/plating,
+/area/engineering/lobby)
 "OM" = (
 /obj/structure/stairs/south{
 	dir = 1
@@ -12659,6 +12602,11 @@
 /obj/machinery/plumbing/sender,
 /turf/open/floor/plating,
 /area/medical/chemistry)
+"QG" = (
+/obj/machinery/smartfridge/organ,
+/obj/effect/turf_decal/tile/neutral/full,
+/turf/open/floor/iron/dark,
+/area/medical/morgue)
 "QH" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -12939,23 +12887,6 @@
 /obj/structure/table/wood,
 /turf/open/floor/stone,
 /area/service/bar)
-"RI" = (
-/obj/structure/table,
-/obj/item/toy/figure/virologist{
-	pixel_x = -8;
-	pixel_y = 7
-	},
-/obj/item/radio/headset/headset_med{
-	pixel_x = -3;
-	pixel_y = -2
-	},
-/obj/item/book/manual/wiki/infections{
-	pixel_x = 10;
-	pixel_y = 2
-	},
-/obj/effect/turf_decal/tile/green/full,
-/turf/open/floor/iron/dark/smooth_large,
-/area/medical/virology)
 "RJ" = (
 /obj/machinery/power/port_gen/pacman{
 	anchored = 1
@@ -13034,18 +12965,6 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/service/chapel/office)
-"RX" = (
-/obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on,
-/obj/structure/closet/l3closet/virology,
-/obj/machinery/light/directional/north,
-/turf/open/floor/iron/white,
-/area/medical/virology)
 "Sb" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -13098,6 +13017,18 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/chapel)
+"Si" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/holopad,
+/obj/effect/turf_decal/box/white{
+	color = "#52B4E9"
+	},
+/turf/open/floor/iron/dark,
+/area/medical/morgue)
 "Sj" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
@@ -13133,6 +13064,10 @@
 	},
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/maintenance/department/chapel)
+"So" = (
+/obj/effect/turf_decal/caution,
+/turf/open/floor/plating,
+/area/cargo/drone_bay)
 "Sp" = (
 /obj/structure/sign/warning/biohazard,
 /turf/closed/wall/r_wall,
@@ -13204,18 +13139,6 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/mine/production)
-"SC" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/holopad,
-/obj/effect/turf_decal/box/white{
-	color = "#52B4E9"
-	},
-/turf/open/floor/iron/dark,
-/area/medical/morgue)
 "SE" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -13402,10 +13325,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/bar)
-"Ti" = (
-/obj/machinery/light/small/directional/north,
-/turf/open/floor/plating/snowed/icemoon,
-/area/medical/chemistry)
 "Tj" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 4
@@ -13523,6 +13442,19 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/hydroponics)
+"Tz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/item/clothing/gloves/color/latex,
+/obj/item/clothing/mask/surgical,
+/obj/item/storage/backpack/duffelbag/med/surgery,
+/obj/effect/turf_decal/tile/neutral/full,
+/turf/open/floor/iron/dark,
+/area/medical/morgue)
 "TA" = (
 /obj/machinery/light_switch/directional/south{
 	pixel_x = -9
@@ -13868,16 +13800,6 @@
 	},
 /turf/open/floor/plating/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
-"UE" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/machinery/holopad,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply,
-/obj/effect/turf_decal/box/white{
-	color = "#52B4E9"
-	},
-/turf/open/floor/iron/white,
-/area/medical/virology)
 "UH" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/red{
@@ -14032,6 +13954,19 @@
 	},
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/icemoon/underground/explored)
+"Vc" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 6
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/machinery/airalarm/directional/east,
+/obj/machinery/shower{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/medical/virology)
 "Vd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/radio/intercom/directional/north,
@@ -14135,6 +14070,15 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply,
 /turf/open/floor/plating,
 /area/medical/virology)
+"Vu" = (
+/obj/machinery/holopad,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/box/white{
+	color = "#52B4E9"
+	},
+/turf/open/floor/iron/dark,
+/area/medical/morgue)
 "Vy" = (
 /obj/effect/turf_decal/trimline/green/filled/corner,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -14283,18 +14227,6 @@
 /obj/structure/flora/tree/pine,
 /turf/open/floor/plating/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
-"VX" = (
-/obj/machinery/duct,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/airlock/virology{
-	name = "Break Room";
-	req_access_txt = "39"
-	},
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply,
-/obj/effect/turf_decal/tile/green/full,
-/turf/open/floor/iron/dark/smooth_large,
-/area/medical/virology)
 "VY" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "Xenobiology Exit";
@@ -14473,12 +14405,16 @@
 /turf/open/floor/iron/white,
 /area/mine/living_quarters)
 "WF" = (
-/obj/structure/bed,
-/obj/item/bedsheet/medical,
-/obj/item/storage/secure/safe/directional/south,
-/obj/effect/turf_decal/tile/green/full,
-/turf/open/floor/iron/dark/smooth_large,
-/area/medical/virology)
+/obj/machinery/door/airlock/external{
+	glass = 1;
+	name = "Chapel External Airlock";
+	opacity = 0
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/service/chapel)
 "WG" = (
 /obj/structure/cable,
 /obj/machinery/door/poddoor/preopen{
@@ -14541,6 +14477,16 @@
 /obj/structure/sign/warning/electricshock,
 /turf/open/floor/plating,
 /area/science/xenobiology)
+"WS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/computer/operating,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/effect/turf_decal/tile/neutral/full,
+/turf/open/floor/iron/dark,
+/area/medical/morgue)
 "WV" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -14608,6 +14554,23 @@
 /obj/structure/bookcase,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
+"Xm" = (
+/obj/structure/table,
+/obj/item/toy/figure/virologist{
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/obj/item/radio/headset/headset_med{
+	pixel_x = -3;
+	pixel_y = -2
+	},
+/obj/item/book/manual/wiki/infections{
+	pixel_x = 10;
+	pixel_y = 2
+	},
+/obj/effect/turf_decal/tile/green/full,
+/turf/open/floor/iron/dark/smooth_large,
+/area/medical/virology)
 "Xn" = (
 /obj/machinery/light/small/directional/north,
 /obj/machinery/space_heater,
@@ -14666,6 +14629,10 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
+"Xx" = (
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/plating,
+/area/medical/chemistry)
 "Xy" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/light/small/directional/south,
@@ -14914,6 +14881,18 @@
 "Yi" = (
 /turf/closed/wall/ice,
 /area/cargo/warehouse)
+"Yj" = (
+/obj/machinery/door/airlock/external{
+	glass = 1;
+	name = "Drone Bay External Airlock";
+	opacity = 0;
+	req_access_txt = "31"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/cargo/drone_bay)
 "Yk" = (
 /obj/structure/cable,
 /obj/machinery/door/poddoor/preopen{
@@ -15231,6 +15210,18 @@
 /obj/structure/window/reinforced/spawner/north,
 /turf/open/floor/plating,
 /area/cargo/drone_bay)
+"Zn" = (
+/obj/machinery/door/airlock/virology/glass{
+	name = "Isolation A";
+	req_access_txt = "39"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply,
+/obj/effect/turf_decal/tile/green/full,
+/turf/open/floor/iron/dark/smooth_large,
+/area/medical/virology)
 "Zo" = (
 /obj/machinery/door/window/northleft{
 	dir = 4;
@@ -15348,22 +15339,6 @@
 	},
 /turf/open/floor/iron/smooth_half,
 /area/medical/chemistry)
-"ZF" = (
-/obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 5
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
-/obj/machinery/firealarm/directional/east,
-/obj/structure/closet/l3closet/virology,
-/obj/machinery/camera{
-	c_tag = "Virology Airlock";
-	dir = 9;
-	network = list("ss13","medbay")
-	},
-/turf/open/floor/iron/white,
-/area/medical/virology)
 "ZG" = (
 /turf/open/floor/plating/dirt{
 	initial_gas_mix = "ICEMOON_ATMOS"
@@ -33119,7 +33094,7 @@ oJ
 We
 lp
 rP
-tE
+Yj
 jn
 Rj
 Ka
@@ -33376,7 +33351,7 @@ kN
 Nf
 kN
 rP
-LX
+So
 rP
 mO
 mO
@@ -38212,7 +38187,7 @@ ak
 Fp
 Fp
 RF
-EV
+mU
 pr
 pr
 Og
@@ -38469,7 +38444,7 @@ ak
 Fp
 Fp
 pr
-Kg
+Ep
 pr
 kJ
 QD
@@ -45975,7 +45950,7 @@ ak
 ak
 Fp
 nO
-Fm
+vv
 nO
 PG
 ak
@@ -46232,7 +46207,7 @@ ak
 ak
 Fp
 nO
-wT
+kE
 nO
 Fp
 Fp
@@ -48048,7 +48023,7 @@ Fp
 PG
 Fp
 Fo
-qv
+OH
 Fo
 Fp
 ak
@@ -48305,7 +48280,7 @@ Fp
 Fp
 VW
 Fo
-Cz
+ff
 Fo
 Fp
 ak
@@ -50845,7 +50820,7 @@ PG
 Fp
 Fp
 OV
-xF
+xs
 OV
 cd
 fa
@@ -51102,7 +51077,7 @@ Fp
 PG
 Fp
 OV
-Ti
+Xx
 EE
 vy
 Rk
@@ -51367,7 +51342,7 @@ vB
 vB
 vB
 Sj
-MI
+No
 WY
 lK
 OV
@@ -51617,7 +51592,7 @@ vc
 HB
 as
 fm
-FK
+xl
 QR
 vB
 dq
@@ -52128,7 +52103,7 @@ vc
 wH
 ZO
 BX
-SC
+Si
 oZ
 Al
 Dp
@@ -53154,7 +53129,7 @@ ak
 vc
 Or
 sv
-xD
+Vu
 Fw
 Uu
 fU
@@ -53422,9 +53397,9 @@ yv
 XN
 tv
 vD
-uK
+Zn
 IB
-wa
+vq
 vD
 tv
 Et
@@ -54193,11 +54168,11 @@ oy
 vS
 fr
 Ub
-UE
+BB
 Xj
 Xj
 Xj
-Gd
+qd
 tv
 Et
 Fp
@@ -54213,7 +54188,7 @@ mO
 Mc
 Mc
 nO
-wT
+kE
 nO
 Fp
 Fp
@@ -54440,9 +54415,9 @@ vc
 vw
 IT
 as
-vb
-iY
-NM
+Tz
+CB
+Lq
 EH
 Js
 Qm
@@ -54470,7 +54445,7 @@ mO
 mO
 Rj
 nO
-pT
+kl
 nO
 mO
 Fp
@@ -54697,9 +54672,9 @@ vc
 oW
 un
 cI
-zZ
-qO
-eP
+WS
+ex
+QG
 EH
 od
 Pe
@@ -54709,7 +54684,7 @@ EI
 fE
 Xj
 tW
-jd
+qW
 yv
 yv
 tv
@@ -54968,8 +54943,8 @@ Bm
 yL
 rK
 yv
-gE
-WF
+qk
+fB
 tv
 ak
 ak
@@ -55217,7 +55192,7 @@ mx
 Wd
 Po
 tv
-oo
+HS
 fG
 AC
 LD
@@ -55256,7 +55231,7 @@ Fp
 Fp
 Fp
 hM
-py
+sd
 hM
 hM
 hM
@@ -55470,7 +55445,7 @@ Et
 Et
 yv
 dy
-xs
+fD
 UN
 RA
 aI
@@ -55479,8 +55454,8 @@ yR
 rk
 LD
 hh
-RI
-JJ
+Xm
+dx
 cm
 iJ
 Cr
@@ -55513,7 +55488,7 @@ hM
 hM
 hM
 hM
-IH
+Fa
 hM
 VJ
 Fa
@@ -55732,11 +55707,11 @@ PS
 cs
 tv
 qD
-gF
+dJ
 Xj
 xI
 yv
-sd
+kW
 jl
 Jv
 Cb
@@ -55754,7 +55729,7 @@ mO
 mO
 mO
 hM
-hg
+xS
 hM
 Rj
 mO
@@ -55984,7 +55959,7 @@ ak
 Et
 tv
 yv
-nN
+gc
 yv
 tv
 tv
@@ -56011,7 +55986,7 @@ ak
 ak
 ak
 hM
-zk
+Eo
 hM
 Rj
 Fp
@@ -56240,7 +56215,7 @@ ak
 ak
 Et
 Sp
-fk
+Bn
 dn
 Vg
 yv
@@ -56249,7 +56224,7 @@ dW
 Ws
 Pj
 Px
-VX
+LL
 hQ
 lh
 YV
@@ -56497,18 +56472,18 @@ ak
 ak
 Et
 tv
-RX
-lN
+qF
+vr
 ae
-Nu
+yk
 nK
 cO
 Pl
 Ii
 us
 yv
-fy
-Gf
+pw
+kC
 CR
 CR
 CR
@@ -56754,9 +56729,9 @@ ak
 ak
 ak
 tv
-ZF
-IG
-Jp
+At
+hr
+Vc
 yv
 ya
 oE
@@ -58785,7 +58760,7 @@ Fp
 Fp
 Fp
 UK
-sz
+iE
 UK
 Fp
 Fp
@@ -59042,7 +59017,7 @@ UK
 Fp
 Fp
 UK
-ot
+lV
 UK
 Fp
 fc
@@ -60342,7 +60317,7 @@ RT
 Fp
 Et
 IC
-Gt
+WF
 IC
 Et
 ak
@@ -60599,7 +60574,7 @@ IC
 Et
 Et
 IC
-Gu
+dU
 IC
 Et
 Et
