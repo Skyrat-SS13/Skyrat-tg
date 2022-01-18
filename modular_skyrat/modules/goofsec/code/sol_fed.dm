@@ -332,7 +332,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 /datum/outfit/request_911/atmos
 	name = "811 Response: Breach Control"
-	back = /obj/item/mod/control/pre_equipped/atmospheric
+	back = /obj/item/mod/control/pre_equipped/atmospheric/breach_control
 	uniform = /obj/item/clothing/under/rank/engineering/engineer/hazard
 	shoes = /obj/item/clothing/shoes/workboots
 	ears = /obj/item/radio/headset/headset_eng
