@@ -418,7 +418,7 @@
 	icon = 'modular_skyrat/modules/goofsec/icons/departmental_batons.dmi'
 	var/list/valid_areas = list()
 	var/emagged = FALSE
-	var/non_departmental_uses_left = 4
+	var/non_departmental_uses_left = 3
 
 /obj/item/melee/baton/security/loaded/departmental/baton_attack(mob/living/target, mob/living/user, modifiers)
 	if(active && !emagged && cooldown_check <= world.time)
@@ -446,9 +446,9 @@
 		var/area/current_area = get_area(user)
 		if(!is_type_in_list(current_area, valid_areas))
 			return
-		if(non_departmental_uses_left < 4)
+		if(non_departmental_uses_left < 3)
 			say("Non-departmental uses refreshed!")
-			non_departmental_uses_left = 4
+			non_departmental_uses_left = 3
 
 /obj/item/melee/baton/security/loaded/departmental/emag_act(mob/user)
 	if(!emagged)

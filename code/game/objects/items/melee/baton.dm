@@ -25,7 +25,7 @@
 	/// The length of the knockdown applied to the user on clumsy_check()
 	var/clumsy_knockdown_time = 18 SECONDS
 	/// How much stamina damage we deal on a successful hit against a living, non-cyborg mob.
-	var/stamina_damage = 35 // SKYRAT EDIT - Less Stamina Damage (Original: 55)
+	var/stamina_damage = 55
 	/// Can we stun cyborgs?
 	var/affect_cyborg = FALSE
 	/// The path of the default sound to play when we stun something.
@@ -345,7 +345,7 @@
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 50, BIO = 0, FIRE = 80, ACID = 80)
 
 	throwforce = 7
-	stamina_damage = 35 // SKYRAT EDIT - 4 baton crit now (Original: 45)
+	stamina_damage = 45 // 3 baton crit.
 	knockdown_time = 5 SECONDS
 	clumsy_knockdown_time = 15 SECONDS
 	cooldown = 2.5 SECONDS
@@ -513,7 +513,7 @@
  */
 /obj/item/melee/baton/security/additional_effects_non_cyborg(mob/living/target, mob/living/user)
 	target.Jitter(20)
-//	target.set_confusion(max(10, target.get_confusion())) SKYRAT EDIT - Less CC on an already strong melee weapon.
+	target.set_confusion(max(10, target.get_confusion()))
 	target.stuttering = max(8, target.stuttering)
 
 	SEND_SIGNAL(target, COMSIG_LIVING_MINOR_SHOCK)
