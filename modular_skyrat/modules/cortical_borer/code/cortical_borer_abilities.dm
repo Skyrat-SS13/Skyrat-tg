@@ -627,6 +627,9 @@
 
 	//having a host means we need to leave them then
 	if(cortical_owner.human_host)
+		if(cortical_owner.host_sugar())
+			to_chat(owner, span_warning("Sugar inhibits your abilities to function!"))
+			return
 		to_chat(cortical_owner, span_notice("You forcefully detach from the host."))
 		to_chat(cortical_owner.human_host, span_notice("Something carefully tickles your inner ear..."))
 		var/obj/item/organ/borer_body/borer_organ = locate() in cortical_owner.human_host.internal_organs

@@ -32,6 +32,9 @@
 	show_to_ghosts = TRUE
 	var/datum/team/cortical_borers/borers
 
+/datum/antagonist/cortical_borer/get_preview_icon()
+	return finish_preview_icon(icon('modular_skyrat/modules/cortical_borer/icons/animal.dmi', "brainslug"))
+
 /datum/antagonist/cortical_borer/get_team()
 	return borers
 
