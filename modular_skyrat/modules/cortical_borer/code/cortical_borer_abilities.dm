@@ -135,6 +135,9 @@
 		cortical_owner.chemical_evolution += 5
 		return
 	cortical_owner.known_chemicals += reagent_choice.type
+	cortical_owner.blood_chems_learned++
+	if(cortical_owner.blood_chems_learned == 5)
+		GLOB.successful_blood_chem += 1
 	to_chat(owner, span_notice("You have learned [initial(reagent_choice.name)]"))
 	StartCooldown()
 
@@ -773,8 +776,8 @@
 	var/obj/effect/mob_spawn/ghost_role/borer_egg/spawned_egg = new /obj/effect/mob_spawn/ghost_role/borer_egg(borer_turf)
 	spawned_egg.generation = (cortical_owner.generation + 1)
 	cortical_owner.children_produced++
-	if(cortical_owner.children_produced >= GLOB.objective_egg_egg_number)
-		GLOB.successful_borer += 1
+	if(cortical_owner.children_produced == GLOB.objective_egg_egg_number)
+		GLOB.successful_egg_number += 1
 	if(prob(25))
 		cortical_owner.human_host.gain_trauma_type(BRAIN_TRAUMA_MILD, TRAUMA_RESILIENCE_BASIC)
 		to_chat(cortical_owner.human_host, span_warning("Your brain begins to hurt..."))
@@ -918,12 +921,13 @@
 		to_chat(owner, span_warning("Sugar inhibits your abilities to function!"))
 		return
 	if(cortical_owner.chemical_storage < 300)
-		to_chat(cortical_owner, span_warning("You require at least 200 chemical units before you can revive your host!"))
+		to_chat(cortical_owner, span_warning("You require at least 300 chemical units before you can ask your host!"))
 		return
 	cortical_owner.chemical_storage -= 300
-	if(locate(cortical_owner.human_host) in GLOB.willing_hosts)
-		to_chat(cortical_owner, span_warning("This host is already willing, try another host!"))
-		return
+	for(var/ckey_check in GLOB.willing_hosts)
+		if(ckey_check == cortical_owner.human_host.ckey)
+			to_chat(cortical_owner, span_warning("This host is already willing, try another host!"))
+			return
 	to_chat(cortical_owner, span_notice("The host is being asked..."))
 	var/host_choice = tgui_input_list(cortical_owner.human_host,"Do you accept to be a willing host?", "Willing Host Request", list("Yes", "No"))
 	if(host_choice != "Yes")
@@ -932,5 +936,5 @@
 		return
 	to_chat(cortical_owner, span_notice("The host was willing!"))
 	to_chat(cortical_owner.human_host, span_notice("You have accepted being a willing host!"))
-	GLOB.willing_hosts += cortical_owner.human_host
+	GLOB.willing_hosts += cortical_owner.human_host.ckey
 	StartCooldown()

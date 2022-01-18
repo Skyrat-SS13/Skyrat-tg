@@ -1,9 +1,12 @@
 GLOBAL_VAR_INIT(objective_egg_borer_number, 5)
 GLOBAL_VAR_INIT(objective_egg_egg_number, 10)
-GLOBAL_VAR_INIT(objective_willing_hosts, 20)
+GLOBAL_VAR_INIT(objective_willing_hosts, 10)
+GLOBAL_VAR_INIT(objective_blood_chem, 5)
+GLOBAL_VAR_INIT(objective_blood_borer, 5)
 
-GLOBAL_VAR_INIT(successful_borer, 0)
+GLOBAL_VAR_INIT(successful_egg_number, 0)
 GLOBAL_LIST_EMPTY(willing_hosts)
+GLOBAL_VAR_INIT(successful_blood_chem, 0)
 
 //we need a way of buffing leg speed... here
 /datum/movespeed_modifier/borer_speed
@@ -240,6 +243,8 @@ GLOBAL_LIST_EMPTY(willing_hosts)
 	var/body_focus = null
 	///how many children the borer has produced
 	var/children_produced = 0
+	///how many blood chems have been learned through the blood
+	var/blood_chems_learned = 0
 	///we dont want to spam the chat
 	var/deathgasp_once = FALSE
 	//the limit to the chemical and stat evolution
@@ -299,8 +304,9 @@ GLOBAL_LIST_EMPTY(willing_hosts)
 		. += "Sugar detected! Unable to generate resources!"
 		. += ""
 	. += "OBJECTIVES:"
-	. += "1) [GLOB.objective_egg_borer_number] borers producing [GLOB.objective_egg_egg_number] eggs: [GLOB.successful_borer]/[GLOB.objective_egg_borer_number]"
+	. += "1) [GLOB.objective_egg_borer_number] borers producing [GLOB.objective_egg_egg_number] eggs: [GLOB.successful_egg_number]/[GLOB.objective_egg_borer_number]"
 	. += "2) [GLOB.objective_willing_hosts] willing hosts: [length(GLOB.willing_hosts)]/[GLOB.objective_willing_hosts]"
+	. += "3) [GLOB.objective_blood_borer] borers learning [GLOB.objective_blood_chem] from the blood: [GLOB.successful_blood_chem]/[GLOB.objective_blood_borer]"
 
 /mob/living/simple_animal/cortical_borer/Life(delta_time, times_fired)
 	. = ..()
@@ -336,11 +342,13 @@ GLOBAL_LIST_EMPTY(willing_hosts)
 		timed_maturity = world.time + 1 SECONDS
 		maturity_age++
 
-		//no objectives means 20:40; one objective means 15:30; two objectives mean 10:20
+		//20:40, 15:30, 10:20, 5:10
 		var/maturity_threshold = 20
-		if(GLOB.successful_borer >= GLOB.objective_egg_borer_number)
+		if(GLOB.successful_egg_number >= GLOB.objective_egg_borer_number)
 			maturity_threshold -= 5
 		if(length(GLOB.willing_hosts) >= GLOB.objective_willing_hosts)
+			maturity_threshold -= 5
+		if(GLOB.successful_blood_chem >= GLOB.objective_blood_borer)
 			maturity_threshold -= 5
 
 		if(maturity_age == maturity_threshold)
