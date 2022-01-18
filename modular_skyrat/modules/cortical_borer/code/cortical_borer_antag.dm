@@ -24,7 +24,7 @@
 
 /datum/antagonist/cortical_borer
 	name = "Cortical Borer"
-	job_rank = ROLE_ALIEN
+	job_rank = ROLE_BORER
 	show_in_antagpanel = TRUE
 	roundend_category = "cortical borers"
 	antagpanel_category = "Cortical borers"
@@ -132,7 +132,7 @@
 /datum/dynamic_ruleset/midround/from_ghosts/cortical_borer
 	name = "Cortical Borer Infestation"
 	antag_datum = /datum/round_event/ghost_role/cortical_borer
-	antag_flag = ROLE_ALIEN
+	antag_flag = ROLE_BORER
 	enemy_roles = list(
 		JOB_CAPTAIN,
 		JOB_DETECTIVE,
@@ -148,8 +148,6 @@
 	var/list/vents = list()
 
 /datum/dynamic_ruleset/midround/from_ghosts/cortical_borer/execute()
-	// 50% chance of being incremented by one
-	required_candidates += prob(50)
 	for(var/obj/machinery/atmospherics/components/unary/vent_pump/temp_vent in GLOB.machines)
 		if(QDELETED(temp_vent))
 			continue
