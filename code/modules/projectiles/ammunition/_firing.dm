@@ -16,6 +16,7 @@
 		AddComponent(/datum/component/pellet_cloud, projectile_type, pellets)
 		SEND_SIGNAL(src, COMSIG_PELLET_CLOUD_INIT, target, user, fired_from, randomspread, spread, zone_override, params, distro)
 
+<<<<<<< HEAD
 	if(click_cooldown_override)
 		user.changeNext_move(click_cooldown_override)
 	else
@@ -23,6 +24,14 @@
 			user.changeNext_move(CLICK_CD_RANGE_TIRED)
 		else
 			user.changeNext_move(CLICK_CD_RANGE) //SKYRAT EDIT END
+=======
+	var/next_delay = click_cooldown_override || CLICK_CD_RANGE
+	if(HAS_TRAIT(user, TRAIT_DOUBLE_TAP))
+		next_delay = round(next_delay * 0.5)
+
+	user.changeNext_move(next_delay)
+
+>>>>>>> 73eaf4273ec (Drinking root beer increases your fire-rate; Adds root beer (#63956))
 	user.newtonian_move(get_dir(target, user))
 	update_appearance()
 	return TRUE
