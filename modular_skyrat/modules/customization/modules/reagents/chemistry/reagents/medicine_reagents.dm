@@ -32,7 +32,7 @@
 	for(var/A in M.reagents.reagent_list)
 		var/datum/reagent/R = A
 		if(R != src)
-			M.reagents.remove_reagent(R.type, 2 * REM * delta_time)
+			M.reagents.remove_reagent(R.type, 1 * REM * delta_time)
 	..()
 
 /datum/reagent/medicine/liquid_solder
