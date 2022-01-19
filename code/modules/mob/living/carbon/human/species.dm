@@ -1062,6 +1062,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			return "ADJ"
 		if(BODY_FRONT_LAYER)
 			return "FRONT"
+		//SKYRAT EDIT ADDITION BEGIN
+		if(BODY_FRONT_UNDER_CLOTHES)
+			return "FRONT"
+		//SKYRAT EDIT ADDITION END
 
 ///Proc that will randomise the hair, or primary appearance element (i.e. for moths wings) of a species' associated mob
 /datum/species/proc/randomize_main_appearance_element(mob/living/carbon/human/human_mob)

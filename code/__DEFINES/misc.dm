@@ -13,13 +13,16 @@
 #define REVERSE_DIR(dir) ( ((dir & 85) << 1) | ((dir & 170) >> 1) )
 
 //Human Overlays Indexes/////////
-#define MUTATIONS_LAYER 36 //mutations. Tk headglows, cold resistance glow, etc
-#define BODY_BEHIND_LAYER 35 //certain mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODYPARTS_LAYER 34 //Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
-#define BODY_ADJ_LAYER 33 //certain mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_LAYER 32 //underwear, undershirts, socks, eyes, lips(makeup)
-#define FRONT_MUTATIONS_LAYER 31 //mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define DAMAGE_LAYER 30 //damage indicators (cuts and burns)
+#define MUTATIONS_LAYER 37 //mutations. Tk headglows, cold resistance glow, etc
+#define BODY_BEHIND_LAYER 36 //certain mutantrace features (tail when looking south) that must appear behind the body parts
+#define BODYPARTS_LAYER 35 //Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
+#define BODY_ADJ_LAYER 34 //certain mutantrace features (snout, body markings) that must appear above the body parts
+#define BODY_LAYER 33 //underwear, undershirts, socks, eyes, lips(makeup)
+#define FRONT_MUTATIONS_LAYER 32 //mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
+#define DAMAGE_LAYER 31 //damage indicators (cuts and burns)
+//SKYRAT EDIT ADDITION BEGIN. This layer should be used for taurs' uniform that should overlay their taur body like catsuits or shibari stuff. Not necessary fetish stuff, just new layer for this - ERP UPDATE
+#define BODY_FRONT_UNDER_CLOTHES 30
+//SKYRAT EDIT ADDITION END
 #define UNIFORM_LAYER 29
 //SKYRAT EDIT ADDITION BEGIN - ERP UPDATE
 #define ANUS_LAYER 28

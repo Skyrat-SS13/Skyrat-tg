@@ -14,12 +14,13 @@
 	var/buildstacktype = /obj/item/stack/sheet/iron
 	var/buildstackamount = 1
 	var/item_chair = /obj/item/chair // if null it can't be picked up
+	var/buckle_message = TRUE //SKYRAT EDIT ADDITION -- chair buckle messages
 
 
 /obj/structure/chair/examine(mob/user)
 	. = ..()
 	. += span_notice("It's held together by a couple of <b>bolts</b>.")
-	if(!has_buckled_mobs() && can_buckle)
+	if(!has_buckled_mobs() && can_buckle && buckle_message)  //SKYRAT EDIT ADDITION -- chair buckle messages
 		. += span_notice("While standing on [src], drag and drop your sprite onto [src] to buckle to it.")
 
 /obj/structure/chair/Initialize(mapload)
@@ -107,7 +108,7 @@
 	weapon.play_tool_sound(src)
 	deconstruct(disassembled = TRUE)
 	return TRUE
-	
+
 /obj/structure/chair/attack_tk(mob/user)
 	if(!anchored || has_buckled_mobs() || !isturf(user.loc))
 		return ..()
