@@ -1,5 +1,5 @@
 /datum/surgery/robot_brain_surgery
-	name = "Reset posibrain logic"
+	name = "Reset Posibrain Logic (Brain Surgery)"
 	steps = list(
 	/datum/surgery_step/mechanic_open,
 	/datum/surgery_step/mechanic_unwrench,
