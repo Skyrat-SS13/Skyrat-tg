@@ -60,8 +60,6 @@
 /obj/item/clothing/gloves/rapid/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/wearertargeting/punchcooldown)
-<<<<<<< HEAD
-=======
 
 /obj/item/clothing/gloves/radio
 	name = "translation gloves"
@@ -76,4 +74,3 @@
 	clothing_traits = list(TRAIT_DOUBLE_TAP)
 	icon_state = "black"
 	inhand_icon_state = "blackgloves"
->>>>>>> 73eaf4273ec (Drinking root beer increases your fire-rate; Adds root beer (#63956))
