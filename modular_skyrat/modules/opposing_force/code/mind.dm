@@ -21,6 +21,10 @@
 		to_chat(src, span_warning("You are antagonist banned!"))
 		return
 
+	if(is_banned_from(ckey, BAN_OPFOR))
+		to_chat(src, span_warning("You are OPFOR banned!"))
+		return
+
 	if(!mind.opposing_force)
 		var/datum/opposing_force/opposing_force = new(mind)
 		mind.opposing_force = opposing_force

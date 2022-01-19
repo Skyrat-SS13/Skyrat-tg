@@ -368,6 +368,7 @@
 				BAN_GHOST_TAKEOVER,
 				BAN_EORG,
 				BAN_ANTAGONIST,
+				BAN_OPFOR,
 			),//SKYRAT EDIT ADDITION - EXTRA_BANS
 		)
 		for(var/department in long_job_lists)
