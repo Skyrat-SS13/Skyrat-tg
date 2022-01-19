@@ -23,7 +23,7 @@
 	reagent_state = LIQUID
 	color = "#F1C40F"
 	taste_description = "ethanol"
-	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	metabolization_rate = 2 * REAGENTS_METABOLISM
 	process_flags = REAGENT_SYNTHETIC
 
 /datum/reagent/medicine/system_cleaner/on_mob_life(mob/living/carbon/M)
@@ -32,7 +32,7 @@
 	for(var/A in M.reagents.reagent_list)
 		var/datum/reagent/R = A
 		if(R != src)
-			M.reagents.remove_reagent(R.type,1)
+			M.reagents.remove_reagent(R.type, 2 * REM * delta_time)
 	..()
 
 /datum/reagent/medicine/liquid_solder
@@ -50,20 +50,28 @@
 
 /datum/reagent/medicine/nanite_slurry
 	name = "Nanite Slurry"
-	description = "If used in touch-based applications, immediately repairs and refurbishes synthetic lifeforms, also does that while circulating in their system."
+	description = "A localized swarm of nanomachines specialized in repairing mechanical parts."
 	reagent_state = LIQUID
 	color = "#cccccc"
-	process_flags = REAGENT_SYNTHETIC
+	overdose_threshold = 20
+	metabolization_rate = 1.25 * REAGENTS_METABOLISM
+	process_flags = REAGENT_SYNTHETIC | REAGENT_ORGANIC
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
-/datum/reagent/medicine/nanite_slurry/expose_mob(mob/living/M, method=TOUCH, reac_volume, show_message = 1)
-	if(iscarbon(M))
-		if(!(method in list(INGEST, VAPOR, INJECT)))
-			M.heal_bodypart_damage(reac_volume, reac_volume, required_status = BODYPART_ROBOTIC)
-			if(show_message)
-				to_chat(M, span_notice("You feel much better..."))
-	..()
 
 /datum/reagent/medicine/nanite_slurry/on_mob_life(mob/living/carbon/M)
-	M.heal_bodypart_damage(0.5*REM, 0.5*REM, required_status = BODYPART_ROBOTIC)
+	M.heal_bodypart_damage(1*REM, 1*REM, required_status = BODYPART_ROBOTIC)
+	..()
+	. = 1
+
+/datum/reagent/medicine/nanite_slurry/overdose_process(mob/living/carbon/M, delta_time, times_fired)
+	if(!(M.mob_biotypes & MOB_ROBOTIC))
+		M.reagents.remove_reagent(type, 3.6) //gets removed from organics very fast
+		if(prob(25))
+			M.vomit(vomit_type = VOMIT_NANITE)
+		return ..()
+	else if(M.mob_biotypes & MOB_ROBOTIC)
+		M.adjust_bodytemperature(50 * REM * delta_time)
+		return ..()
 	..()
 	. = 1
