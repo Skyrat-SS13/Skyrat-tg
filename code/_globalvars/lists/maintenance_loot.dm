@@ -86,18 +86,12 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		) = 1,
 
 	list(//equipment
-<<<<<<< HEAD
-		/obj/item/clothing/mask/gas/alt = 1, //SKYRAT EDIT CHANGE - ORIGINAL: /obj/item/clothing/mask/gas = 1,
-		/obj/item/radio/headset = 1,
-		/obj/item/storage/backpack = 1,
-=======
 		/obj/effect/spawner/random/clothing/gloves = 1,
 		/obj/item/clothing/glasses/meson = 1,
 		/obj/item/clothing/glasses/science = 1,
 		/obj/item/clothing/gloves/color/black = 1,
 		/obj/item/clothing/gloves/color/fyellow = 1,
-		/obj/item/clothing/mask/gas = 1,
->>>>>>> da5278e4ad5 (Spans out and Alphabetizes the Lists in _globalvars/lists (#64018))
+		/obj/item/clothing/mask/gas/alt = 1, //SKYRAT EDIT CHANGE - ORIGINAL: /obj/item/clothing/mask/gas = 1,
 		/obj/item/clothing/shoes/sneakers/black = 1,
 		/obj/item/clothing/suit/hazardvest = 1,
 		/obj/item/clothing/suit/toggle/labcoat = 1,
@@ -111,15 +105,11 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 	list(//construction and crafting
 		/obj/item/sign = 1,
 		/obj/item/stack/cable_coil = 1,
-<<<<<<< HEAD
-		/obj/item/stock_parts/cell = 1,
-		/obj/item/stock_parts/cell/crank = 1, // SKYRAT EDIT: NEW_CELLS
-=======
->>>>>>> da5278e4ad5 (Spans out and Alphabetizes the Lists in _globalvars/lists (#64018))
 		/obj/item/stack/rods/twentyfive = 1,
 		/obj/item/stack/sheet/iron/twenty = 1,
 		/obj/item/stack/sheet/mineral/plasma = 1,
 		/obj/item/stock_parts/cell = 1,
+		/obj/item/stock_parts/cell/crank = 1, // SKYRAT EDIT ADD - NEW_CELLS
 
 		//assemblies
 		/obj/item/assembly/health = 1,
