@@ -1,4 +1,4 @@
-/datum/surgery/robot_chassis_restoration
+/datum/surgery/positronic_restoration
 	name = "Posibrain Reboot (Revival)"
 	steps = list(
 	/datum/surgery_step/mechanic_unwrench,
@@ -92,6 +92,6 @@
 		return TRUE
 	else
 		target.visible_message(span_notice("...[target] reactivates, their chassis coming online!"))
-		to_chat(target, "<span class='userdanger'>[CONFIG_GET(string/blackoutpolicy)]</span>") //SKYRAT EDIT ADDITION
+		to_chat(target, span_danger("[CONFIG_GET(string/blackoutpolicy)]"))
 		return FALSE
 
