@@ -94,6 +94,7 @@
 		ui_interact(usr)
 		return TRUE
 
+/// Builds the HTML panel entry for the round end report
 /datum/opposing_force/proc/build_html_panel_entry()
 	var/list/opfor_entry = list("<b>[mind_reference.key]</b> - ")
 	opfor_entry += "<a href='?priv_msg=[ckey(mind_reference.key)]'>PM</a> "
@@ -456,8 +457,8 @@
 
 	for(var/client/staff as anything in GLOB.admins)
 		if(staff?.prefs?.toggles & SOUND_ADMINHELP)
-			SEND_SOUND(staff, sound('modular_skyrat/modules/opposing_force/sound/update_requested.ogg'))
-		window_flash(staff, ignorepref = TRUE)
+			SEND_SOUND(staff, sound('sound/effects/adminhelp.ogg'))
+		window_flash(staff)
 
 	COOLDOWN_START(src, request_update_cooldown, OPFOR_REQUEST_UPDATE_COOLDOWN)
 
@@ -477,7 +478,7 @@
 
 	for(var/client/staff as anything in GLOB.admins)
 		if(staff?.prefs?.toggles & SOUND_ADMINHELP)
-			SEND_SOUND(staff, sound('modular_skyrat/modules/opposing_force/sound/application_recieved.ogg'))
+			SEND_SOUND(staff, sound('sound/effects/adminhelp.ogg'))
 		window_flash(staff, ignorepref = TRUE)
 
 	status = OPFOR_STATUS_AWAITING_APPROVAL
@@ -501,7 +502,7 @@
 	SSopposing_force.modify_request(src)
 	can_edit = TRUE
 
-	add_log(user.ckey, "Requested modifications")
+	add_log(user.ckey, "Modify request submitted")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has requested modifications to the application")
 	send_admins_opfor_message("CHANGES REQUESTED: [ADMIN_LOOKUPFLW(user)] has submitted a modify request, their application has been reset.")
 
@@ -595,7 +596,7 @@
 			opposing_force_objective.text_intensity = OPFOR_OBJECTIVE_INTENSITY_4
 		if(401 to 501)
 			opposing_force_objective.text_intensity = OPFOR_OBJECTIVE_INTENSITY_5
-	add_log(user.ckey, "Set updated an objective intensity from [opposing_force_objective.intensity] to [sanitized_intensity]")
+	add_log(user.ckey, "Set updated an objective intensity from [opposing_force_objective.intensity] to [sanitized_intensity].")
 	opposing_force_objective.intensity = sanitized_intensity
 	return TRUE
 
@@ -625,7 +626,7 @@
 	if(!opposing_force_objective)
 		CRASH("set_objective_description tried to remove a non existent opfor objective!")
 	objectives -= opposing_force_objective
-	add_log(user.ckey, "Removed an objective: [opposing_force_objective.title]")
+	add_log(user.ckey, "Removed the following objective from their OPFOR application: [opposing_force_objective.title]")
 	qdel(opposing_force_objective)
 	return TRUE
 
@@ -736,8 +737,6 @@
 	var/command = params[1]
 
 	switch(command)
-		if("hello_world")
-			send_system_message("Hello World!")
 		if("item")
 			check_item(params[2])
 		if("help")
@@ -753,7 +752,6 @@
 
 /datum/opposing_force/proc/print_help(mob/user)
 	send_system_message("Available commands:")
-	send_system_message("/hello_world - Hello World!")
 	send_system_message("/item 'item_name' - Check an items quick stats")
 	send_system_message("/ping_admin - Ping the handling admin, if there is one.")
 	send_system_message("/help - Print this help")
@@ -824,14 +822,14 @@
 
 /datum/opposing_force/proc/roundend_report()
 	var/list/report = list("<br>")
-	report += span_greentext(mind_reference.current.name)
+	report += span_greentext(mind_reference.current.real_name)
 	if(objectives.len)
 		report += "<b>Had an approved OPFOR appliation with the following objectives:</b><br>"
 		for(var/datum/opposing_force_objective/opfor_objective in objectives)
 			if(opfor_objective.status != OPFOR_OBJECTIVE_STATUS_APPROVED)
 				continue
 			report += "</b>Title:<b> [opfor_objective.title]<br>"
-			report += "</b>Description:<b> [opfor_objective.description]"
+			report += "</b>Description:<b> [opfor_objective.description]<br>"
 			report += "<br>"
 
 	if(selected_equipment.len)
@@ -839,7 +837,7 @@
 		for(var/datum/opposing_force_selected_equipment/opfor_equipment in selected_equipment)
 			if(opfor_equipment.status != OPFOR_EQUIPMENT_STATUS_APPROVED)
 				continue
-			report += "</b>[opfor_equipment.opposing_force_equipment.name]<b>"
+			report += "</b>[opfor_equipment.opposing_force_equipment.name]<b><br>"
 			report += "<br>"
 
 	return report.Join("\n")

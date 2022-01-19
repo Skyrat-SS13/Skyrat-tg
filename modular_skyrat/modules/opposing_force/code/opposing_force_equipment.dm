@@ -24,7 +24,6 @@
 
 /datum/opposing_force_equipment/gun
 	category = OPFOR_EQUIPMENT_CATEGORY_RANGED_WEAPONS
-//Classic Guns
 /datum/opposing_force_equipment/gun/m1911
 	item_type = /obj/item/gun/ballistic/automatic/pistol/m1911
 	description = "A semi-automatic .45 caliber pistol. Gold standard for sidearms."
@@ -52,7 +51,8 @@
 
 /datum/opposing_force_equipment/gun/pps
 	item_type = /obj/item/gun/ballistic/automatic/submachine_gun/pps
-	description = "A very cheap, barely reliable reproduction of a personal defense weapon based on the original Soviet model. Not nearly as infamous as the Mosin. \ Compact enough to fit in your backpack!"
+	description = "A very cheap, barely reliable reproduction of a personal defense weapon based on the original Soviet model. Not nearly as infamous as the Mosin. \
+		Compact enough to fit in your backpack!"
 
 /datum/opposing_force_equipment/gun/ppsh
 	item_type = /obj/item/gun/ballistic/automatic/submachine_gun/ppsh
@@ -82,7 +82,6 @@
 /datum/opposing_force_equipment/gun/cfa
 	item_type = /obj/item/gun/ballistic/automatic/cfa_rifle
 
-//oldarmory shotguns, now rebalanced for opfor store
 /datum/opposing_force_equipment/gun/m23
 	item_type = /obj/item/gun/ballistic/shotgun/m23
 	description = "An eight-round pump-action shotgun found in an old station. Comes loaded with beanbag shells but can take any 12 gauge load."
@@ -97,8 +96,6 @@
 	description = "A semi-automatic, magazine-fed shotgun chambered in 14 gauge. Standard mags can take five rounds. \
 		Despite the lower damage of 14 gauge, it can load the highly praised taser shots."
 
-//here comes syndiecake
-
 /datum/opposing_force_equipment/gun/g357
 	item_type = /obj/item/gun/ballistic/revolver
 	description = "A .357 magnum revolver. Seven shots, more than enough to kill anything that moves."
@@ -108,9 +105,6 @@
 
 /datum/opposing_force_equipment/gun/nagant
 	item_type = /obj/item/gun/ballistic/revolver/nagant
-//lasguns
-
-//CFA Family
 
 /datum/opposing_force_equipment/gun/snub
 	item_type = /obj/item/gun/ballistic/automatic/pistol/cfa_snub
@@ -126,24 +120,23 @@
 	item_type = /obj/item/throwing_star
 	description = "Be the maintenance ninja you always wanted to be. Does not come with multi-throwing cybernetics"
 
-
 /datum/opposing_force_equipment/gun/throwing_weapons
 	item_type = /obj/item/storage/box/syndie_kit/throwing_weapons
 	description = "A box of shurikens and reinforced bolas from ancient Earth martial arts. They are highly effective \
-			throwing weapons. The bolas can knock a target down and the shurikens will embed into limbs."
+		throwing weapons. The bolas can knock a target down and the shurikens will embed into limbs."
 	name = "Box of Throwing Weapons"
 
 /datum/opposing_force_equipment/gun/origami
 	item_type = /obj/item/storage/box/syndie_kit/origami_bundle
 	description = "A box containing a guide on how to craft masterful works of origami, allowing you to transform normal pieces of paper into \
-			perfectly aerodynamic (and potentially lethal) paper airplanes."
+		perfectly aerodynamic (and potentially lethal) paper airplanes."
 
 
 
 /**
  * AMMO
  */
-/datum/opposing_force_equipment/ammo/
+/datum/opposing_force_equipment/ammo
 	category = OPFOR_EQUIPMENT_CATEGORY_AMMUNITION
 
 /datum/opposing_force_equipment/ammo/m45
@@ -235,7 +228,7 @@
 /datum/opposing_force_equipment/ammo/wildcatincendiary
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/incendiary
 /**
- * MELEE
+ * MELEE WEAPONS
  */
 /datum/opposing_force_equipment/melee
 	category = OPFOR_EQUIPMENT_CATEGORY_MELEE_WEAPONS
@@ -250,7 +243,7 @@
 /datum/opposing_force_equipment/melee/esword
 	item_type = /obj/item/melee/energy/sword
 	description = "The energy sword is an edged weapon with a blade of pure energy. The sword is small enough to be \
-			pocketed when inactive. Activating it produces a loud, distinctive noise."
+		pocketed when inactive. Activating it produces a loud, distinctive noise."
 
 /datum/opposing_force_equipment/melee/epirate
 	item_type = /obj/item/melee/energy/sword/pirate
@@ -275,7 +268,7 @@
 /datum/opposing_force_equipment/melee/ekatana
 	item_type = /obj/item/energy_katana
 	description = "An energy katana seized from a dead Spider Clan ninja. As well as being highly robust, it allows the \
-					user to teleport short distances using right-click."
+		user to teleport short distances using right-click."
 
 /datum/opposing_force_equipment/melee/eswordarm
 	item_type = /obj/item/autosurgeon/organ/syndicate/esword_arm
@@ -286,9 +279,9 @@
 	item_type = /obj/item/melee/powerfist
 	name = "Power Fist"
 	description = "The power-fist is a metal gauntlet with a built-in piston-ram powered by an external gas supply.\
-			Upon hitting a target, the piston-ram will extend forward to make contact for some serious damage. \
-			Using a wrench on the piston valve will allow you to tweak the amount of gas used per punch to \
-			deal extra damage and hit targets further. Use a screwdriver to take out any attached tanks."
+		Upon hitting a target, the piston-ram will extend forward to make contact for some serious damage. \
+		Using a wrench on the piston valve will allow you to tweak the amount of gas used per punch to \
+		deal extra damage and hit targets further. Use a screwdriver to take out any attached tanks."
 
 //martialarts
 
@@ -307,7 +300,7 @@
 /**
  * ARMOR AND CLOTHES
  */
-/datum/opposing_force_equipment/clothing/
+/datum/opposing_force_equipment/clothing
 	category = OPFOR_EQUIPMENT_CATEGORY_CLOTHING
 
 /datum/opposing_force_equipment/clothing/syndiebag
@@ -386,12 +379,12 @@
 /datum/opposing_force_equipment/clothing/holster
 	item_type = /obj/item/storage/belt/holster/chameleon
 	description = "A chameleon holster that fits into your belt. Designed to hold one sidearm and a spare load of ammunition, it also allows you to spin \
-				your revolver, if you have one."
+		your revolver, if you have one."
 
 /datum/opposing_force_equipment/clothing/holsternk
 	item_type = /obj/item/storage/belt/holster/nukie
 	description = "A holster retrieved from a nuclear operative. Able to hold any two types of weaponry or ammo as long as it is not extremely large. \
-					Expect security to be not so friendly if they see you wearing one of these..."
+		Expect security to be not so friendly if they see you wearing one of these..."
 
 //modsuits in 2022
 
@@ -406,8 +399,9 @@
 
 /datum/opposing_force_equipment/clothing/elitemod
 	item_type = /obj/item/mod/control/pre_equipped/elite
+
 /**
- * UTILITY
+ * UTILITY ITEMS
  */
 /datum/opposing_force_equipment/gear/
 	category = OPFOR_EQUIPMENT_CATEGORY_UTILITY
@@ -415,7 +409,7 @@
 /datum/opposing_force_equipment/gear/stoolbox
 	item_type = /obj/item/storage/toolbox/syndicate
 	description = "A fully-kitted toolbox scavenged from maintenance by our highly-paid monkeys. The toolbox \
-					itself is weighted especially to bash any head in and comes with a free pair of insulated combat gloves."
+		itself is weighted especially to bash any head in and comes with a free pair of insulated combat gloves."
 
 /datum/opposing_force_equipment/gear/engichip
 	item_type = /obj/item/skillchip/job/engineer
@@ -476,7 +470,6 @@
 	item_type = /obj/item/reagent_containers/glass/rag/large
 	description = "A damp rag made with extra absorbant materials. The perfectly innocent tool to kidnap your local assistant. \
 			Apply up to 30u liquids and use combat mode to smother anyone not covering their mouth."
-//implants
 
 /datum/opposing_force_equipment/gear/nodrop
 	item_type = /obj/item/autosurgeon/organ/syndicate/nodrop
@@ -488,11 +481,10 @@
 	name = "Hacking Arm Implant"
 	description = "An advanced arm implant that comes with cutting edge hacking tools. Perfect for the cybernetically enhanced wirerunners."
 
-
 /**
  * EXPLOSIVES
  */
-/datum/opposing_force_equipment/bomb/
+/datum/opposing_force_equipment/bomb
 	category = OPFOR_EQUIPMENT_CATEGORY_EXPLOSIVES
 
 /datum/opposing_force_equipment/bomb/henade
@@ -518,7 +510,7 @@
 /**
  * LOADOUTS
  */
-/datum/opposing_force_equipment/loadout/
+/datum/opposing_force_equipment/loadout
 	category = OPFOR_EQUIPMENT_CATEGORY_LOADOUT
 
 /datum/opposing_force_equipment/loadout/gunman
@@ -532,7 +524,7 @@
 /**
  * OTHER
  */
-/datum/opposing_force_equipment/other/
+/datum/opposing_force_equipment/other
 	category = OPFOR_EQUIPMENT_CATEGORY_OTHER
 
 /datum/opposing_force_equipment/other/uplink

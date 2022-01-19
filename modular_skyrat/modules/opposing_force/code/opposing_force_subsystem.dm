@@ -89,7 +89,7 @@ SUBSYSTEM_DEF(opposing_force)
 /datum/controller/subsystem/opposing_force/proc/approve(datum/opposing_force/opposing_force, mob/approver)
 	if(!is_admin(approver.client))
 		message_admins("Oppoding_force_subsystem: [ADMIN_LOOKUPFLW(approver)] attempted to approve an OPFOR application but was not an admin!")
-		CRASH("Opposing_force_subsystem: Attempted to deny an opposing force but the approver was not an admin!")
+		CRASH("Opposing_force_subsystem: Attempted to approve an opposing force but the approver ([approver?.ckey]) was not an admin!")
 
 	if(!LAZYFIND(unsubmitted_applications, opposing_force))
 		unsubmitted_applications -= opposing_force
@@ -111,7 +111,7 @@ SUBSYSTEM_DEF(opposing_force)
 /datum/controller/subsystem/opposing_force/proc/deny(datum/opposing_force/opposing_force, reason, mob/denier)
 	if(!is_admin(denier.client))
 		message_admins("Oppoding_force_subsystem: [ADMIN_LOOKUPFLW(denier)] attempted to deny an OPFOR application but was not an admin!")
-		CRASH("Opposing_force_subsystem: Attempted to deny an opposing force but the denier was not an admin!")
+		CRASH("Opposing_force_subsystem: Attempted to deny an opposing force but the denier ([denier?.ckey]) was not an admin!")
 
 	if(LAZYFIND(submitted_applications, opposing_force))
 		submitted_applications -= opposing_force
@@ -193,4 +193,4 @@ SUBSYSTEM_DEF(opposing_force)
 	for(var/datum/opposing_force/opposing_force in unsubmitted_applications)
 		returned_html += " - [opposing_force.build_html_panel_entry()]"
 
-	return returned_html.Join("<br>")
+	return returned_html.Join("\n")
