@@ -31,9 +31,9 @@
 	time = 120
 
 /datum/surgery_step/pry_off_plating/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, span_notice("You begin to pry off [target]'s compromised facial plating..."),
-			"[user] begins to pry off [target]'s compromised facial plating.",
-			"[user] begins to pry off [target]'s compromised facial plating.")
+	display_results(user, target, span_notice("You begin to pry open compromised panels on [target]'s braincase..."),
+			"[user] begins to pry open compromised panels on [target]'s braincase.",
+			"[user] begins to pry open compromised panels on [target]'s braincase.")
 
 /datum/surgery_step/cut_wires/fullbody
 	time = 120
@@ -47,9 +47,9 @@
 	time = 120
 
 /datum/surgery_step/weld_plating/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, span_notice("You begin to weld on [target]'s new facial plating..."),
-			"[user] begins to weld on adding [target]'s new facial plating.",
-			"[user] begins to weld on adding [target]'s new facial plating.")
+	display_results(user, target, span_notice("You begin to slice compromised panels from [target]'s braincase..."),
+			"[user] begins to slice compromised panels from [target]'s braincase.",
+			"[user] begins to slice compromised panels from [target]'s braincase.")
 
 /datum/surgery_step/replace_wires/fullbody
 	time = 72
@@ -65,9 +65,9 @@
 	ironamount = 15
 
 /datum/surgery_step/add_plating/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, span_notice("You begin to add plating back to [target]'s face..."),
-			"[user] begins to add plating back to [target]'s face.",
-			"[user] begins to add plating back to [target]'s face.")
+	display_results(user, target, span_notice("You begin to add new panels to [target]'s braincase..."),
+			"[user] begins to add new panels to [target]'s braincase.",
+			"[user] begins to add new panels to [target]'s braincase.")
 
 /datum/surgery_step/finalize_positronic_restoration
 	name = "finalize positronic restoration (multitool)"

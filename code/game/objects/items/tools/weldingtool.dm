@@ -42,7 +42,7 @@
 	var/burned_fuel_for = 0 //when fuel was last removed
 	var/acti_sound = 'sound/items/welderactivate.ogg'
 	var/deac_sound = 'sound/items/welderdeactivate.ogg'
-	var/self_delay = 3 SECONDS
+	var/self_delay = 5 SECONDS
 	var/other_delay = 1 SECONDS
 
 /obj/item/weldingtool/Initialize(mapload)

@@ -435,7 +435,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	var/cable_color = "yellow"
 	var/obj/structure/cable/target_type = /obj/structure/cable
 	var/target_layer = CABLE_LAYER_2
-	var/self_delay = 3 SECONDS //SKYRAT EDIT
+	var/self_delay = 5 SECONDS //SKYRAT EDIT
 	var/other_delay = 1 SECONDS // SKYRAT EDIT
 
 /obj/item/stack/cable_coil/Initialize(mapload, new_amount, merge = TRUE, list/mat_override=null, mat_amt=1)
@@ -554,7 +554,6 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 		if(!do_after(user, (user == H ? self_delay : other_delay)))
 			return
 		if(item_heal_robotic(H, user, 0, 15))
-			user.visible_message(span_green("[user] fixes some of the wires in to [H]'s [affecting.name]."), span_green("You fix some of the wires in [H == user ? "your" : "[H]'s"] [affecting.name]."))
 			use(1)
 		return
 	else
