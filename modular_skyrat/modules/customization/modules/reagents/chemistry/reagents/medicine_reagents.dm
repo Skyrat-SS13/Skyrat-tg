@@ -50,7 +50,7 @@
 
 /datum/reagent/medicine/nanite_slurry
 	name = "Nanite Slurry"
-	description = "A localized swarm of nanomachines specialized in repairing mechanical parts."
+	description = "A localized swarm of nanomachines specialized in repairing mechanical parts. Due to the nanites needing to interface with the host's systems to repair them, a surplus of them will cause them to overheat, or for the swarm to eject out of the mouth for safety."
 	reagent_state = LIQUID
 	color = "#cccccc"
 	overdose_threshold = 20
