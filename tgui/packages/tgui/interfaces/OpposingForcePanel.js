@@ -27,13 +27,13 @@ export const OpposingForcePanel = (props, context) => {
                     width="100%"
                     selected={tab === 1}
                     onClick={() => setTab(1)}>
-                    Admin Chat
+                    Admin Control
                   </Tabs.Tab>
                   <Tabs.Tab
                     width="100%"
                     selected={tab === 2}
                     onClick={() => setTab(2)}>
-                    Admin Control
+                    Admin Chat
                   </Tabs.Tab>
                 </>
               ) : (
@@ -64,10 +64,10 @@ export const OpposingForcePanel = (props, context) => {
         {admin_mode ? (
           <>
             {tab === 1 && (
-              <AdminChatTab />
+              <AdminTab />
             )}
             {tab === 2 && (
-              <AdminTab />
+              <AdminChatTab />
             )}
           </>
         ) : (
@@ -654,127 +654,121 @@ export const AdminTab = (props, context) => {
       </Stack.Item>
       <Stack.Item>
         <Section title="Backstory">
-          <Collapsible title="Backstory">
-            {backstory.length === 0 ? (
-              <Box color="bad">
-                No backstory set.
-              </Box>
-            ) : (
-              <Box preserveWhitespace>
-                {backstory}
-              </Box>
-            )}
-          </Collapsible>
+          {backstory.length === 0 ? (
+            <Box color="bad">
+              No backstory set.
+            </Box>
+          ) : (
+            <Box preserveWhitespace>
+              {backstory}
+            </Box>
+          )}
         </Section>
       </Stack.Item>
       <Stack.Item>
         <Section title="Objectives">
-          <Collapsible title="Objectives">
-            {objectives.length === 0 ? (
-              <Box color="bad">
-                No objectives selected.
-              </Box>
-            ) : (
-              objectives.map((objective, index) => (
-                <Section
-                  title={index + 1 + ". " + objective.title} key={objective.id}
-                  buttons={(
-                    <>
-                      <Button
-                        icon="check"
-                        color="good"
-                        disabled={objective.approved && objective.status_text !== "Not Reviewed"}
-                        content="Approve Objective"
-                        onClick={() => act('approve_objective', {
-                          objective_ref: objective.ref,
-                        })} />
-                      <Button
-                        icon="times"
-                        color="bad"
-                        disabled={!objective.approved && objective.status_text !== "Not Reviewed"}
-                        content="Deny Objective"
-                        onClick={() => act('deny_objective', {
-                          objective_ref: objective.ref,
-                        })} />
-                    </>
-                  )}>
-                  <LabeledList key={objective.id}>
-                    <LabeledList.Item label="Description">
-                      {objective.description}
-                    </LabeledList.Item>
-                    <LabeledList.Item label="Justification">
-                      {objective.justification}
-                    </LabeledList.Item>
-                    <LabeledList.Item label="Intensity">
-                      {"(" + objective.intensity + ") " + objective.text_intensity}
-                    </LabeledList.Item>
-                    <LabeledList.Item label="Status">
-                      {objective.status_text === "Not Reviewed" ? (
-                        "Objective Not Reviewed"
-                      ) : (
-                        objective.approved ? "Objective Approved" : objective.denied_text ? "Objective Denied - Reason: " + objective.denied_text : "Objective Denied"
-                      )}
-                    </LabeledList.Item>
-                  </LabeledList>
-                </Section>
-              ))
-            )}
-          </Collapsible>
+          {objectives.length === 0 ? (
+            <Box color="bad">
+              No objectives selected.
+            </Box>
+          ) : (
+            objectives.map((objective, index) => (
+              <Section
+                title={index + 1 + ". " + objective.title} key={objective.id}
+                buttons={(
+                  <>
+                    <Button
+                      icon="check"
+                      color="good"
+                      disabled={objective.approved && objective.status_text !== "Not Reviewed"}
+                      content="Approve Objective"
+                      onClick={() => act('approve_objective', {
+                        objective_ref: objective.ref,
+                      })} />
+                    <Button
+                      icon="times"
+                      color="bad"
+                      disabled={!objective.approved && objective.status_text !== "Not Reviewed"}
+                      content="Deny Objective"
+                      onClick={() => act('deny_objective', {
+                        objective_ref: objective.ref,
+                      })} />
+                  </>
+                )}>
+                <LabeledList key={objective.id}>
+                  <LabeledList.Item label="Description">
+                    {objective.description}
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Justification">
+                    {objective.justification}
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Intensity">
+                    {"(" + objective.intensity + ") " + objective.text_intensity}
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Status">
+                    {objective.status_text === "Not Reviewed" ? (
+                      "Objective Not Reviewed"
+                    ) : (
+                      objective.approved ? "Objective Approved" : objective.denied_text ? "Objective Denied - Reason: " + objective.denied_text : "Objective Denied"
+                    )}
+                  </LabeledList.Item>
+                </LabeledList>
+              </Section>
+            ))
+          )}
         </Section>
       </Stack.Item>
       <Stack.Item>
         <Section title="Equipment">
-          <Collapsible title="Equipment">
-            {selected_equipment.length === 0 ? (
-              <Box color="bad">
-                No equipment selected.
-              </Box>
-            ) : (
-              selected_equipment.map((equipment, index) => (
-                <Section
-                  title={equipment.name} key={equipment.ref}
-                  buttons={(
-                    <>
-                      <Button
-                        icon="check"
-                        color="good"
-                        disabled={equipment.approved && equipment.status !== "Not Reviewed"}
-                        content="Approve Equipment"
-                        onClick={() => act('approve_equipment', {
-                          selected_equipment_ref: equipment.ref,
-                        })} />
-                      <Button
-                        icon="times"
-                        color="bad"
-                        disabled={!equipment.approved && equipment.status !== "Not Reviewed"}
-                        content="Deny Equipment"
-                        onClick={() => act('deny_equipment', {
-                          selected_equipment_ref: equipment.ref,
-                        })} />
-                    </>
-                  )}>
-                  <LabeledList key={equipment.ref}>
-                    <LabeledList.Item label="Description">
-                      {equipment.description}
-                    </LabeledList.Item>
-                    <LabeledList.Item label="Reason">
-                      {equipment.reason}
-                    </LabeledList.Item>
-                    <LabeledList.Item label="Status">
-                      {equipment.denied_reason ? (
-                        equipment.status + " - Reason: " + equipment.denied_reason
-                      ) : (
-                        equipment.status
-                      )}
-                    </LabeledList.Item>
-                    <LabeledList.Item label="Amount">
-                      {equipment.count}
-                    </LabeledList.Item>
-                  </LabeledList>
-                </Section>
-              ))
-            )}
-          </Collapsible>
+          {selected_equipment.length === 0 ? (
+            <Box color="bad">
+              No equipment selected.
+            </Box>
+          ) : (
+            selected_equipment.map((equipment, index) => (
+              <Section
+                title={equipment.name} key={equipment.ref}
+                buttons={(
+                  <>
+                    <Button
+                      icon="check"
+                      color="good"
+                      disabled={equipment.approved && equipment.status !== "Not Reviewed"}
+                      content="Approve Equipment"
+                      onClick={() => act('approve_equipment', {
+                        selected_equipment_ref: equipment.ref,
+                      })} />
+                    <Button
+                      icon="times"
+                      color="bad"
+                      disabled={!equipment.approved && equipment.status !== "Not Reviewed"}
+                      content="Deny Equipment"
+                      onClick={() => act('deny_equipment', {
+                        selected_equipment_ref: equipment.ref,
+                      })} />
+                  </>
+                )}>
+                <LabeledList key={equipment.ref}>
+                  <LabeledList.Item label="Description">
+                    {equipment.description}
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Reason">
+                    {equipment.reason}
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Status">
+                    {equipment.denied_reason ? (
+                      equipment.status + " - Reason: " + equipment.denied_reason
+                    ) : (
+                      equipment.status
+                    )}
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Amount">
+                    {equipment.count}
+                  </LabeledList.Item>
+                </LabeledList>
+              </Section>
+            ))
+          )}
         </Section>
       </Stack.Item>
     </Stack>
