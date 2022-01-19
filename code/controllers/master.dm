@@ -225,6 +225,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	current_ticklimit = TICK_LIMIT_RUNNING
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 
+	if(CONFIG_GET(flag/lobby_camera))
+		new /obj/new_player_cam()
+
 	var/msg = "Initializations complete within [time] second[time == 1 ? "" : "s"]!"
 	to_chat(world, span_boldannounce("[msg]"))
 	log_world(msg)

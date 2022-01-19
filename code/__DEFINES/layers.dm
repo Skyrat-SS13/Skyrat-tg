@@ -183,9 +183,12 @@
 
 #define ADMIN_POPUP_LAYER 1
 
-
-///Plane of the "splash" icon used that shows on the lobby screen. Nothing should ever be above this.
-#define SPLASHSCREEN_PLANE 9999
+//SKYRAT EDIT: Lobby Cam
+///Plane of the "splash" icon used that shows on the lobby screen. Nothing should ever be above this. (Except the logo)
+#define SPLASHSCREEN_PLANE 9997 //Previous value: 9999
+#define BLACK_FADE 9998
+#define SKYRAT_LOGO 9999
+//SKYRAT EDIT: Lobby Cam
 
 #define LOBBY_BACKGROUND_LAYER 3
 #define LOBBY_BUTTON_LAYER 4
