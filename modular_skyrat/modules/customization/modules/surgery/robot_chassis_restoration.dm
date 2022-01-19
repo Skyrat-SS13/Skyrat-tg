@@ -31,9 +31,9 @@
 	time = 120
 
 /datum/surgery_step/pry_off_plating/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, span_notice("You begin to pry off [target]'s facial plating..."),
-			"[user] begins to pry off [target]'s facial plating.",
-			"[user] begins to pry off [target]'s facial plating.")
+	display_results(user, target, span_notice("You begin to pry off [target]'s compromised facial plating..."),
+			"[user] begins to pry off [target]'s compromised facial plating.",
+			"[user] begins to pry off [target]'s compromised facial plating.")
 
 /datum/surgery_step/cut_wires/fullbody
 	time = 120
@@ -47,9 +47,9 @@
 	time = 120
 
 /datum/surgery_step/weld_plating/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, span_notice("You begin to slice free [target]'s compromised facial plating..."),
-			"[user] begins to slice free [target]'s compromised facial plating.",
-			"[user] begins to slice free [target]'s compromised facial plating.")
+	display_results(user, target, span_notice("You begin to weld on [target]'s new facial plating..."),
+			"[user] begins to weld on adding [target]'s new facial plating.",
+			"[user] begins to weld on adding [target]'s new facial plating.")
 
 /datum/surgery_step/replace_wires/fullbody
 	time = 72

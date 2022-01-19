@@ -42,6 +42,8 @@
 	var/burned_fuel_for = 0 //when fuel was last removed
 	var/acti_sound = 'sound/items/welderactivate.ogg'
 	var/deac_sound = 'sound/items/welderdeactivate.ogg'
+	var/self_delay = 3 SECONDS
+	var/other_delay = 1 SECONDS
 
 /obj/item/weldingtool/Initialize(mapload)
 	. = ..()
@@ -126,8 +128,8 @@
 			if(user == attacked_humanoid)
 				user.visible_message(span_notice("[user] starts to fix some of the dents on [attacked_humanoid]'s [affecting.name]."),
 					span_notice("You start fixing some of the dents on [attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [affecting.name]."))
-				if(!do_mob(user, attacked_humanoid, 50))
-					return
+			if(!do_after(user, (user == attacked_humanoid ? self_delay : other_delay)))
+				return
 			item_heal_robotic(attacked_humanoid, user, 15, 0)
 	else
 		return ..()
