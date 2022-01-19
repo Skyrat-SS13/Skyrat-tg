@@ -20,7 +20,7 @@
 #define BODY_LAYER 33 //underwear, undershirts, socks, eyes, lips(makeup)
 #define FRONT_MUTATIONS_LAYER 32 //mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
 #define DAMAGE_LAYER 31 //damage indicators (cuts and burns)
-//SKYRAT EDIT ADDITION BEGIN. This layer should be used for taurs' uniform that should overlay their taur body like catsuits or shibari stuff. Not necessary fetish stuff, just new layer for this - ERP UPDATE
+//SKYRAT EDIT ADDITION BEGIN. This layer is used for things that shouldn't be over clothes, but should be over mutations - ERP UPDATE
 #define BODY_FRONT_UNDER_CLOTHES 30
 //SKYRAT EDIT ADDITION END
 #define UNIFORM_LAYER 29
