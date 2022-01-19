@@ -144,8 +144,8 @@
 	)
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
-	weight = 5
-	cost = 10
+	weight = 3
+	cost = 15
 	requirements = list(101,101,101,70,50,40,20,15,10,10)
 	repeatable = TRUE
 	var/list/vents = list()
