@@ -26,7 +26,7 @@
 	metabolization_rate = 2 * REAGENTS_METABOLISM
 	process_flags = REAGENT_SYNTHETIC
 
-/datum/reagent/medicine/system_cleaner/on_mob_life(mob/living/carbon/M)
+/datum/reagent/medicine/system_cleaner/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	M.adjustToxLoss(-2*REM, 0)
 	. = 1
 	for(var/A in M.reagents.reagent_list)
@@ -60,7 +60,7 @@
 
 
 /datum/reagent/medicine/nanite_slurry/on_mob_life(mob/living/carbon/M)
-	M.heal_bodypart_damage(1*REM, 1*REM, required_status = BODYPART_ROBOTIC)
+	M.heal_bodypart_damage(0.8*REM, 0.8*REM, required_status = BODYPART_ROBOTIC)
 	..()
 	. = 1
 
