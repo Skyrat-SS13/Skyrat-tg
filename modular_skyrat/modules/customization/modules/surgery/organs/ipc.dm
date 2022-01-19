@@ -19,11 +19,11 @@
 /obj/item/organ/brain/ipc_positron/emp_act(severity)
 	switch(severity)
 		if(1)
-			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 75, 150)
-			to_chat(owner, span_warning("Alert: Posibrain heavily damaged."))
+			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 36, 75)
+			to_chat(owner, span_warning("Alert: Rampant system corruption in central processing unit."))
 		if(2)
-			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 25, 150)
-			to_chat(owner, span_warning("Alert: Posibrain damaged."))
+			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 12, 75)
+			to_chat(owner, span_warning("Alert: System corruption in central processing unit."))
 
 /obj/item/organ/stomach/robot_ipc
 	name = "IPC micro cell"
@@ -69,12 +69,12 @@
 			owner.Dizzy(30)
 			owner.Knockdown(80)
 			deaf = 30
-			to_chat(owner, span_warning("Your robotic ears are ringing, uselessly."))
+			to_chat(owner, span_warning("Your system reports a complete lack of input from your auditory sensors."))
 		if(2)
 			owner.Jitter(15)
 			owner.Dizzy(15)
 			owner.Knockdown(40)
-			to_chat(owner, span_warning("Your robotic ears buzz."))
+			to_chat(owner, span_warning("Your system reports anomalous feedback from your auditory sensors."))
 
 /obj/item/organ/tongue/robot_ipc
 	name = "robotic voicebox"
@@ -92,7 +92,7 @@
 	speech_args[SPEECH_SPANS] |= SPAN_ROBOT
 
 /obj/item/organ/eyes/robot_ipc
-	name = "robotic eyes"
+	name = "optical sensors"
 	icon_state = "cybernetic_eyeballs"
 	desc = "A very basic set of optical sensors with no extra vision modes or functions."
 	status = ORGAN_ROBOTIC
@@ -102,7 +102,7 @@
 	. = ..()
 	if(!owner || . & EMP_PROTECT_SELF)
 		return
-	to_chat(owner, span_warning("Static obfuscates your vision!"))
+	to_chat(owner, span_warning("Electromagnetic interference clouds your optics with static."))
 	owner.flash_act(visual = 1)
 	if(severity == EMP_HEAVY)
 		owner.adjustOrganLoss(ORGAN_SLOT_EYES, 20)

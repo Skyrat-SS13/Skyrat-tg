@@ -12,11 +12,11 @@
 				informed = TRUE
 			switch(severity)
 				if(1)
-					L.receive_damage(0,6)
-					stun_time += 40
-				if(2)
-					L.receive_damage(0,3)
+					L.receive_damage(0,5)
 					stun_time += 20
+				if(2)
+					L.receive_damage(0,2)
+					stun_time += 10
 			if(L.body_zone == BODY_ZONE_L_LEG || L.body_zone == BODY_ZONE_R_LEG)
 				affects_leg = TRUE
 
@@ -29,6 +29,6 @@
 	if(affects_leg)
 		switch(severity)
 			if(1)
-				Knockdown(100)
-			if(2)
 				Knockdown(50)
+			if(2)
+				Knockdown(25)
