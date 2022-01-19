@@ -17,7 +17,7 @@ GLOBAL_LIST_INIT(ticket_counter, list())
 		//assumption, that there's no keys with empty values
 		L[++L.len] = list("[ckey]", "[GLOB.ticket_counter[ckey]]", null, null)
 
-	L[++L.len] = list("OPFOR:", "UNSUB: [LAZYLEN(unsubmitted_applications)] | SUB: [LAZYLEN(submitted_applications)] | APPR: [LAZYLEN(approved_applications)]", null, null)
+	L[++L.len] = list("OPFOR:", "UNSUB: [LAZYLEN(SSopposing_force.unsubmitted_applications)] | SUB: [LAZYLEN(SSopposing_force.submitted_applications)] | APPR: [LAZYLEN(SSopposing_force.approved_applications)]", null, null)
 
 	return L
 
