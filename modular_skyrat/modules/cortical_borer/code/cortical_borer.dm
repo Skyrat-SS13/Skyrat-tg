@@ -249,6 +249,10 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 	var/deathgasp_once = FALSE
 	//the limit to the chemical and stat evolution
 	var/limited_borer = 10
+	///borers can only enter biologicals if true
+	var/organic_restricted = TRUE
+	///borers are unable to enter changelings if true
+	var/changeling_restricted = TRUE
 
 /mob/living/simple_animal/cortical_borer/Initialize(mapload)
 	. = ..()
