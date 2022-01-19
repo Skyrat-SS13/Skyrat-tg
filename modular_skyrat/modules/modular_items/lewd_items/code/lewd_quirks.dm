@@ -408,7 +408,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	mob_trait = TRAIT_RIGGER
 	gain_text = span_danger("Suddenly you understand rope weaving much better than before.")
 	lose_text = span_notice("Rope knots looks complicated again.")
-	icon = "link"
+	icon = "chain-broken"
 
 /datum/quirk/rigger/post_add()
 	. = ..()
