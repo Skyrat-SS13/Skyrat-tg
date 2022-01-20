@@ -61,6 +61,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 	icon_state = "ert_ntrauma"
+	worn_icon_state = "ert_ntrauma"
 
 /obj/item/storage/belt/military/ntrauma/PopulateContents()
 	new /obj/item/surgical_drapes(src)
@@ -91,6 +92,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	icon_state = "ert_ntrauma"
+	alternate_worn_layer = ABOVE_BODY_FRONT_LAYER	//So the LONG gloves can be shown off
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/suit/space/ntrauma
