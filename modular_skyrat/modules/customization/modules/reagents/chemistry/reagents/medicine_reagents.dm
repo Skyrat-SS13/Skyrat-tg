@@ -57,16 +57,18 @@
 	metabolization_rate = 1.25 * REAGENTS_METABOLISM
 	process_flags = REAGENT_SYNTHETIC | REAGENT_ORGANIC
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	/// How much brute and burn individually is healed per tick
 	var/healing = 1
-	var/burning = 50
+	/// How much body temperature is adjusted by per tick
+	var/temperature_change = 50
 
 
-/datum/reagent/medicine/nanite_slurry/on_mob_life(mob/living/carbon/M)
+/datum/reagent/medicine/nanite_slurry/on_mob_life(mob/living/carbon/affected_mob)
 	M.heal_bodypart_damage(healing*REM, healing*REM, required_status = BODYPART_ROBOTIC)
 	..()
 	. = 1
 
-/datum/reagent/medicine/nanite_slurry/overdose_process(mob/living/carbon/M, delta_time, times_fired)
+/datum/reagent/medicine/nanite_slurry/overdose_process(mob/living/carbon/affected_mob, delta_time, times_fired)
 	if(!(M.mob_biotypes & MOB_ROBOTIC))
 		M.reagents.remove_reagent(type, 3.6) //gets removed from organics very fast
 		if(prob(25))
