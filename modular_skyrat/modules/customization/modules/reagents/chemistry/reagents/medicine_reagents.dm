@@ -64,18 +64,18 @@
 
 
 /datum/reagent/medicine/nanite_slurry/on_mob_life(mob/living/carbon/affected_mob)
-	M.heal_bodypart_damage(healing*REM, healing*REM, required_status = BODYPART_ROBOTIC)
+	affected_mob.heal_bodypart_damage(healing*REM, healing*REM, required_status = BODYPART_ROBOTIC)
 	..()
 	. = 1
 
 /datum/reagent/medicine/nanite_slurry/overdose_process(mob/living/carbon/affected_mob, delta_time, times_fired)
-	if(!(M.mob_biotypes & MOB_ROBOTIC))
-		M.reagents.remove_reagent(type, 3.6) //gets removed from organics very fast
+	if(!(affected_mob.mob_biotypes & MOB_ROBOTIC))
+		affected_mob.reagents.remove_reagent(type, 3.6) //gets removed from organics very fast
 		if(prob(25))
-			M.vomit(vomit_type = VOMIT_NANITE)
+			affected_mob.vomit(vomit_type = VOMIT_NANITE)
 		return ..()
-	else if(M.mob_biotypes & MOB_ROBOTIC)
-		M.adjust_bodytemperature(burning * REM * delta_time)
+	else if(affected_mob.mob_biotypes & MOB_ROBOTIC)
+		affected_mob.adjust_bodytemperature(temperature_change * REM * delta_time)
 		return ..()
 	..()
 	. = 1
