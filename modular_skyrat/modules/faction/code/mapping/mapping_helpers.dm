@@ -18,7 +18,7 @@
 	see_hidden = FALSE
 	icon_screen = "syndishuttle"
 	icon_keyboard = "syndie_key"
-	jumpto_ports = list("tradership" = 1, "tradership_away" = 1, "tradership_custom" = 1,"whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1, "caravantrade1_ambush" = 1, "whiteship_lavaland" = 1)
+	jump_to_ports = list("tradership" = 1, "tradership_away" = 1, "tradership_custom" = 1,"whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1, "caravantrade1_ambush" = 1, "whiteship_lavaland" = 1)
 	whitelist_turfs = list(/turf/open/space, /turf/open/floor/plating, /turf/open/lava, /turf/closed/mineral)
 	lock_override = NONE
 

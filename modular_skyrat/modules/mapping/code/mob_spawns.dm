@@ -148,8 +148,9 @@
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/brigofficer
 	belt = /obj/item/storage/belt/security/full
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
-	suit = /obj/item/clothing/suit/armor/bulletproof
-	head = /obj/item/clothing/head/helmet/swat
+	suit = /obj/item/clothing/suit/armor/bulletproof/old
+	head = /obj/item/clothing/head/helmet/swat/ds
+	mask = /obj/item/clothing/mask/gas/syndicate/ds
 	ears = /obj/item/radio/headset/interdyne
 
 	backpack_contents = list(
@@ -179,6 +180,7 @@
 	prompt_name = "a lost cargo tech"
 	desc = "A humming cryo pod. There's a freight hauler inside."
 	mob_name = "Freighter Crew"
+	outfit = /datum/outfit/freighter_crew
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_species = /datum/species/human
@@ -199,6 +201,7 @@
 	prompt_name = "a lost miner"
 	desc = "A humming cryo pod. There's an excavation worker inside."
 	mob_name = "Freighter Excavator"
+	outfit = /datum/outfit/freighter_excavator
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_species = /datum/species/human
@@ -226,6 +229,7 @@
 	prompt_name = "a lost Quartermaster"
 	desc = "A humming cryo pod. You see someone who looks In Charge inside."
 	mob_name = "Freighter Chief"
+	outfit = /datum/outfit/freighter_boss
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_species = /datum/species/human
@@ -245,6 +249,87 @@
     	)
 	id = /obj/item/card/id/away/freightqm
 
+//Port Tarkon, 5 people trapped in a revamped charlie-station like ghost role. Survive the aliens and threats, Fix the port and/or finish construction
+
+/obj/effect/mob_spawn/ghost_role/human/tarkon
+	name = "P-T Abandoned Crew"
+	prompt_name = "an abandoned cargo member"
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper"
+	you_are_text = "You are an abandoned member of Port Tarkon, an attempt to create steady living vaults within large asteroids. You have no real idea who Interdyne is, And your last recollection of NT is the producer of some... Less than ethically obtained goods on the port."
+	flavour_text = "Something went wrong. Morality of experiments went awry, expansions were made before scans were fully done and now you have to deal with the aftermath of your past crews exodus. Bring P-T to the success it was ment to be, or die trying. (OOC note: This ghost role was not designed with Plasmamen or Vox in mind. While there are some accommodations so that they can survive, it should be noted that they were not the focal point whilst designing Port Tarkon. The closet in the middle of the room above contains the 'accommodations' for those species.)"
+	important_text = "DO NOT abandon the port, PERIOD, but using the ship to buy more items or get help is good, if not ideal. Do not trade special equipment to the station. Unwelcomed and uninvited guests are not obligated to your kindness."
+	outfit = /datum/outfit/tarkon
+
+/datum/outfit/tarkon
+	uniform = /obj/item/clothing/under/utility/cargo
+	shoes = /obj/item/clothing/shoes/winterboots
+	gloves = /obj/item/clothing/gloves/fingerless
+	glasses = /obj/item/clothing/glasses/sunglasses
+	id = /obj/item/card/id/away/tarkon/cargo
+	l_pocket = /obj/item/card/mining_point_card
+	r_pocket = /obj/item/mining_voucher
+	ears = /obj/item/radio/headset/tarkon
+
+/datum/outfit/tarkon/post_equip(mob/living/carbon/human/tarkon, visualsOnly = FALSE)
+	var/obj/item/card/id/id_card = tarkon.wear_id
+	if(istype(id_card))
+		id_card.registered_name = tarkon.real_name
+		id_card.update_label()
+		id_card.update_icon()
+	var/obj/item/radio/target_radio = tarkon.ears
+	target_radio.set_frequency(1243)
+	target_radio.recalculateChannels()
+
+	return ..()
+
+/obj/effect/mob_spawn/ghost_role/human/tarkon/sci
+	prompt_name = "an abandoned scientist"
+	outfit = /datum/outfit/tarkon/sci
+
+/datum/outfit/tarkon/sci
+	uniform = /obj/item/clothing/under/utility/sci
+	glasses = /obj/item/clothing/glasses/hud/diagnostic
+	id = /obj/item/card/id/away/tarkon/sci
+	l_hand = /obj/item/inducer
+	l_pocket = null
+	r_pocket = /obj/item/stock_parts/cell/high/plus
+
+/obj/effect/mob_spawn/ghost_role/human/tarkon/med
+	prompt_name = "an abandoned medical resident"
+	outfit = /datum/outfit/tarkon/med
+
+/datum/outfit/tarkon/med
+	uniform = /obj/item/clothing/under/utility/med
+	glasses = /obj/item/clothing/glasses/hud/health
+	id = /obj/item/card/id/away/tarkon/med
+	neck = /obj/item/clothing/neck/stethoscope
+	l_pocket = /obj/item/healthanalyzer
+	r_pocket = /obj/item/stack/medical/suture
+
+/obj/effect/mob_spawn/ghost_role/human/tarkon/engi
+	prompt_name = "an abandoned maintenance engineer"
+	outfit = /datum/outfit/tarkon/engi
+
+/datum/outfit/tarkon/engi
+	uniform = /obj/item/clothing/under/utility/eng
+	glasses = /obj/item/clothing/glasses/meson/engine/tray
+	id = /obj/item/card/id/away/tarkon/engi
+	gloves = /obj/item/clothing/gloves/combat
+	l_pocket = /obj/item/tank/internals/emergency_oxygen/engi
+	r_pocket = /obj/item/stack/cable_coil
+
+/obj/effect/mob_spawn/ghost_role/human/tarkon/sec
+	prompt_name = "an abandoned security deputy"
+	outfit = /datum/outfit/tarkon/sec
+
+/datum/outfit/tarkon/sec
+	uniform = /obj/item/clothing/under/utility/sec
+	glasses = /obj/item/clothing/glasses/hud/security
+	id = /obj/item/card/id/away/tarkon/sec
+	l_pocket = /obj/item/melee/baton/telescopic
+	r_pocket = /obj/item/grenade/barrier
+
 //ITEMS//
 /obj/item/radio/headset/cybersun
 	keyslot = new /obj/item/encryptionkey/headset_cybersun
@@ -252,6 +337,17 @@
 /obj/item/radio/headset/cybersun/captain
 	name = "cybersun captain headset"
 	desc = "The headset of the boss."
+	command = TRUE
+
+/obj/item/radio/headset/tarkon
+	name = "tarkon headset"
+	freerange = TRUE
+	freqlock = TRUE
+	keyslot = new /obj/item/encryptionkey/headset_tarkon
+
+/obj/item/radio/headset/tarkon/ensign //spoiler for upcoming update
+	name = "tarkon ensign headset"
+	desc = "A headset personally handed to trusted crew of Tarkon. It fills you with will to do... Something."
 	command = TRUE
 
 //OBJECTS//
@@ -283,6 +379,51 @@
     name = "Freighter Deck Chief ID"
     desc = "An ID card marked with the rank of Freight Deck Chief."
     trim = /datum/id_trim/job/quartermaster
+
+
+/datum/id_trim/away/tarkon
+	assignment = "P-T Cargo Personell"
+	access = list(66, ACCESS_AWAY_GENERAL)
+
+/datum/id_trim/away/tarkon/sec
+	assignment = "P-T Port Guard"
+	access = list(66, ACCESS_AWAY_GENERAL, 210)
+
+/datum/id_trim/away/tarkon/med
+	assignment = "P-T Trauma Medic"
+	access = list(5, 66, ACCESS_AWAY_GENERAL)
+
+/datum/id_trim/away/tarkon/eng
+	assignment = "P-T Maintenance Crew"
+
+/datum/id_trim/away/tarkon/sci
+	assignment = "P-T Field Researcher"
+
+/obj/item/card/id/away/tarkon/sci  //original tarkon ID is defined in fluff
+	name = "P-T Field Researcher's Access Card"
+	desc = "An access card designated for \"The Science Team\". You are forgotten basically immediately when it comes to the lab."
+	trim = /datum/id_trim/away/tarkon/sci
+
+/obj/item/card/id/away/tarkon/med
+	name = "P-T Trauma Medic's Access Card"
+	desc = "An access card designated for \"Medical Staff\". You provide the medic bags."
+	trim = /datum/id_trim/away/tarkon/med
+
+/obj/item/card/id/away/tarkon/sec
+	name = "P-T Resident Deputy's Access Card"
+	desc = "An access card designated for \"Security Members\". Everyone wants your guns, partner. Yee-haw."
+	trim = /datum/id_trim/away/tarkon/sec
+
+/obj/item/card/id/away/tarkon/cargo
+	name = "P-T Cargo Hauler's Access Card"
+	desc = "An access card designated for \"Cargonia's Finest\". You're also a part time space miner, when cargonia is quiet."
+	trim = /datum/id_trim/away/tarkon
+
+
+/obj/item/card/id/away/tarkon/engi
+	name = "P-T Maintenance Engineer's Access Card"
+	desc = "An access card designated for \"Engineering Staff\". You're going to be the one everyone points at to fix stuff, lets be honest."
+	trim = /datum/id_trim/away/tarkon/eng
 
 //AREAS//
 /area/ruin/space/has_grav/deepstorage/lostcargo
