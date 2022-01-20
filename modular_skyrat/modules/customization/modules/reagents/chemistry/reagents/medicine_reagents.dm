@@ -57,10 +57,12 @@
 	metabolization_rate = 1.25 * REAGENTS_METABOLISM
 	process_flags = REAGENT_SYNTHETIC | REAGENT_ORGANIC
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	var/healing = 1
+	var/burning = 50
 
 
 /datum/reagent/medicine/nanite_slurry/on_mob_life(mob/living/carbon/M)
-	M.heal_bodypart_damage(1*REM, 1*REM, required_status = BODYPART_ROBOTIC)
+	M.heal_bodypart_damage(healing*REM, healing*REM, required_status = BODYPART_ROBOTIC)
 	..()
 	. = 1
 
@@ -71,7 +73,7 @@
 			M.vomit(vomit_type = VOMIT_NANITE)
 		return ..()
 	else if(M.mob_biotypes & MOB_ROBOTIC)
-		M.adjust_bodytemperature(50 * REM * delta_time)
+		M.adjust_bodytemperature(burning * REM * delta_time)
 		return ..()
 	..()
 	. = 1
