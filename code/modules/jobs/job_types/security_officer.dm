@@ -231,9 +231,6 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 		//The helmet is necessary because /obj/item/clothing/head/helmet/sec is overwritten in the chameleon list by the standard helmet, which has the same name and icon state
 	implants = list(/obj/item/implant/mindshield)
 
-<<<<<<< HEAD
-
-=======
 /datum/outfit/job/security/mod
 	name = "Security Officer (MODsuit)"
 
@@ -242,7 +239,6 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 	suit = null
 	head = null
 	mask = /obj/item/clothing/mask/gas/sechailer
->>>>>>> 505e4414959 (Kinesis Module (#64151))
 
 /obj/item/radio/headset/headset_sec/alt/department/Initialize(mapload)
 	. = ..()
