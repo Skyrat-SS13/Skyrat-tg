@@ -148,8 +148,9 @@
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/brigofficer
 	belt = /obj/item/storage/belt/security/full
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
-	suit = /obj/item/clothing/suit/armor/bulletproof
-	head = /obj/item/clothing/head/helmet/swat
+	suit = /obj/item/clothing/suit/armor/bulletproof/old
+	head = /obj/item/clothing/head/helmet/swat/ds
+	mask = /obj/item/clothing/mask/gas/syndicate/ds
 	ears = /obj/item/radio/headset/interdyne
 
 	backpack_contents = list(
