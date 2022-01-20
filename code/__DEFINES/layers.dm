@@ -185,8 +185,8 @@
 
 //SKYRAT EDIT: Lobby Cam
 ///Plane of the "splash" icon used that shows on the lobby screen. Nothing should ever be above this. (Except the logo)
-#define SPLASHSCREEN_PLANE 9997 //Previous value: 9999
-#define BLACK_FADE 9998
+#define BLACK_FADE 9997
+#define SPLASHSCREEN_PLANE 9998 //Previous value: 9999
 #define SKYRAT_LOGO 9999
 //SKYRAT EDIT: Lobby Cam
 
