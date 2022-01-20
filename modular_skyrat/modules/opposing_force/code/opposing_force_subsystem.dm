@@ -193,4 +193,4 @@ SUBSYSTEM_DEF(opposing_force)
 	for(var/datum/opposing_force/opposing_force in unsubmitted_applications)
 		returned_html += " - [opposing_force.build_html_panel_entry()]"
 
-	return returned_html.Join("\n")
+	return returned_html.Join("<br>")
