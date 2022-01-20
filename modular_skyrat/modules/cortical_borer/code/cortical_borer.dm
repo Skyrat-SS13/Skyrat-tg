@@ -1,6 +1,20 @@
+GLOBAL_VAR_INIT(objective_egg_borer_number, 5)
+GLOBAL_VAR_INIT(objective_egg_egg_number, 10)
+GLOBAL_VAR_INIT(objective_willing_hosts, 10)
+GLOBAL_VAR_INIT(objective_blood_chem, 5)
+GLOBAL_VAR_INIT(objective_blood_borer, 5)
+
+GLOBAL_VAR_INIT(successful_egg_number, 0)
+GLOBAL_LIST_EMPTY(willing_hosts)
+GLOBAL_VAR_INIT(successful_blood_chem, 0)
+
 //we need a way of buffing leg speed... here
 /datum/movespeed_modifier/borer_speed
-	multiplicative_slowdown = -0.40
+	multiplicative_slowdown = -0.4
+
+/datum/actionspeed_modifier/borer_speed
+	multiplicative_slowdown = -0.3
+	id = ACTIONSPEED_ID_BORER
 
 //so that we know if a mob has a borer (only humans should have one, but in case)
 /mob/proc/has_borer()
@@ -38,13 +52,13 @@
 		return
 	if(cb_inside.body_focus & FOCUS_HEAD)
 		to_chat(carbon_target, span_notice("Your eyes begin to feel strange..."))
-		var/obj/item/organ/eyes/my_eyes = carbon_target.getorgan(/obj/item/organ/eyes)
-		if(my_eyes)
-			my_eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-			my_eyes.see_in_dark = 11
-			my_eyes.flash_protect = FLASH_PROTECTION_WELDER
+		if(!HAS_TRAIT(carbon_target, TRAIT_NOFLASH))
+			ADD_TRAIT(carbon_target, TRAIT_NOFLASH, cb_inside)
+		if(!HAS_TRAIT(carbon_target, TRAIT_TRUE_NIGHT_VISION))
+			ADD_TRAIT(carbon_target, TRAIT_TRUE_NIGHT_VISION, cb_inside)
 		if(!HAS_TRAIT(carbon_target, TRAIT_KNOW_ENGI_WIRES))
 			ADD_TRAIT(carbon_target, TRAIT_KNOW_ENGI_WIRES, cb_inside)
+		carbon_target.update_sight()
 	if(cb_inside.body_focus & FOCUS_CHEST)
 		to_chat(carbon_target, span_notice("Your chest begins to slow down..."))
 		if(!HAS_TRAIT(carbon_target, TRAIT_NOBREATH))
@@ -55,8 +69,11 @@
 			ADD_TRAIT(carbon_target, TRAIT_STABLEHEART, cb_inside)
 	if(cb_inside.body_focus & FOCUS_ARMS)
 		to_chat(carbon_target, span_notice("Your arm starts to feel funny..."))
-		var/datum/action/cooldown/borer_armblade/give_owner = new /datum/action/cooldown/borer_armblade
-		give_owner.Grant(cb_inside.human_host)
+		cb_inside.human_host.add_actionspeed_modifier(/datum/actionspeed_modifier/borer_speed)
+		if(!HAS_TRAIT(carbon_target, TRAIT_QUICKER_CARRY))
+			ADD_TRAIT(carbon_target, TRAIT_QUICKER_CARRY, cb_inside)
+		if(!HAS_TRAIT(carbon_target, TRAIT_QUICK_BUILD))
+			ADD_TRAIT(carbon_target, TRAIT_QUICK_BUILD, cb_inside)
 		if(!HAS_TRAIT(carbon_target, TRAIT_SHOCKIMMUNE))
 			ADD_TRAIT(carbon_target, TRAIT_SHOCKIMMUNE, cb_inside)
 	if(cb_inside.body_focus & FOCUS_LEGS)
@@ -66,19 +83,20 @@
 			ADD_TRAIT(carbon_target, TRAIT_LIGHT_STEP, cb_inside)
 		if(!HAS_TRAIT(carbon_target, TRAIT_FREERUNNING))
 			ADD_TRAIT(carbon_target, TRAIT_FREERUNNING, cb_inside)
+		if(!HAS_TRAIT(carbon_target, TRAIT_SILENT_FOOTSTEPS))
+			ADD_TRAIT(carbon_target, TRAIT_SILENT_FOOTSTEPS, cb_inside)
 
 /proc/borer_focus_remove(mob/living/carbon/carbon_target)
 	var/mob/living/simple_animal/cortical_borer/cb_inside = carbon_target.has_borer()
 	if(cb_inside.body_focus & FOCUS_HEAD)
 		to_chat(carbon_target, span_notice("Your eyes begin to return to normal..."))
-		var/obj/item/organ/eyes/my_eyes = carbon_target.getorgan(/obj/item/organ/eyes)
-		if(my_eyes)
-			my_eyes.lighting_alpha = initial(my_eyes.lighting_alpha)
-			my_eyes.see_in_dark = initial(my_eyes.see_in_dark)
-			my_eyes.flash_protect = initial(my_eyes.flash_protect)
-		carbon_target.update_sight()
+		if(HAS_TRAIT_FROM(carbon_target, TRAIT_NOFLASH, cb_inside))
+			REMOVE_TRAIT(carbon_target, TRAIT_NOFLASH, cb_inside)
+		if(HAS_TRAIT_FROM(carbon_target, TRAIT_TRUE_NIGHT_VISION, cb_inside))
+			REMOVE_TRAIT(carbon_target, TRAIT_TRUE_NIGHT_VISION, cb_inside)
 		if(HAS_TRAIT_FROM(carbon_target, TRAIT_KNOW_ENGI_WIRES, cb_inside))
 			REMOVE_TRAIT(carbon_target, TRAIT_KNOW_ENGI_WIRES, cb_inside)
+		carbon_target.update_sight()
 	if(cb_inside.body_focus & FOCUS_CHEST)
 		to_chat(carbon_target, span_notice("Your chest begins to heave again..."))
 		if(HAS_TRAIT_FROM(carbon_target, TRAIT_NOBREATH, cb_inside))
@@ -89,9 +107,11 @@
 			REMOVE_TRAIT(carbon_target, TRAIT_STABLEHEART, cb_inside)
 	if(cb_inside.body_focus & FOCUS_ARMS)
 		to_chat(carbon_target, span_notice("Your arm starts to feel normal again..."))
-		for(var/datum/action/listed_actions in cb_inside.human_host.actions)
-			if(istype(listed_actions, /datum/action/cooldown/borer_armblade))
-				listed_actions.Remove(cb_inside.human_host)
+		cb_inside.human_host.remove_actionspeed_modifier(ACTIONSPEED_ID_BORER)
+		if(HAS_TRAIT_FROM(carbon_target, TRAIT_QUICK_BUILD, cb_inside))
+			REMOVE_TRAIT(carbon_target, TRAIT_QUICK_BUILD, cb_inside)
+		if(HAS_TRAIT_FROM(carbon_target, TRAIT_QUICKER_CARRY, cb_inside))
+			REMOVE_TRAIT(carbon_target, TRAIT_QUICKER_CARRY, cb_inside)
 		if(HAS_TRAIT_FROM(carbon_target, TRAIT_SHOCKIMMUNE, cb_inside))
 			REMOVE_TRAIT(carbon_target, TRAIT_SHOCKIMMUNE, cb_inside)
 	if(cb_inside.body_focus & FOCUS_LEGS)
@@ -101,10 +121,13 @@
 			REMOVE_TRAIT(carbon_target, TRAIT_LIGHT_STEP, cb_inside)
 		if(HAS_TRAIT_FROM(carbon_target, TRAIT_FREERUNNING, cb_inside))
 			REMOVE_TRAIT(carbon_target, TRAIT_FREERUNNING, cb_inside)
+		if(HAS_TRAIT_FROM(carbon_target, TRAIT_SILENT_FOOTSTEPS, cb_inside))
+			REMOVE_TRAIT(carbon_target, TRAIT_SILENT_FOOTSTEPS, cb_inside)
 
 /obj/item/organ/borer_body/Insert(mob/living/carbon/carbon_target, special, drop_if_replaced)
 	. = ..()
 	borer_focus_add(carbon_target)
+	carbon_target.hal_screwyhud = SCREWYHUD_HEALTHY
 
 //on removal, force the borer out
 /obj/item/organ/borer_body/Remove(mob/living/carbon/carbon_target, special)
@@ -113,41 +136,8 @@
 	borer_focus_remove(carbon_target)
 	if(cb_inside)
 		cb_inside.leave_host()
+	carbon_target.hal_screwyhud = SCREWYHUD_NONE
 	qdel(src)
-
-/datum/action/cooldown/borer_armblade
-	name = "Borer Armblade (20 chemicals)"
-	cooldown_time = 5 SECONDS
-	icon_icon = 'icons/mob/actions/actions_changeling.dmi'
-	button_icon_state = "armblade"
-
-/datum/action/cooldown/borer_armblade/Trigger()
-	if(!IsAvailable())
-		to_chat(owner, span_warning("This action is still on cooldown!"))
-		return
-	if(!owner.has_borer())
-		to_chat(owner, span_warning("You need a borer to use this ability!"))
-		Remove(owner)
-		return
-	var/mob/living/simple_animal/cortical_borer/cb_owner = owner.has_borer()
-	if(cb_owner.host_sugar())
-		to_chat(owner, span_warning("You have sugar, making unable to use this!"))
-		return
-	if(cb_owner.chemical_storage < 20)
-		to_chat(owner, span_warning("The borer does not have enough chemicals stored!"))
-		return
-	cb_owner.chemical_storage -= 20
-	for(var/obj/item/hosts_items in cb_owner.human_host.held_items) //if you have the armblade, remove it
-		if(!istype(hosts_items, /obj/item/melee/arm_blade))
-			continue
-		cb_owner.human_host.temporarilyRemoveItemFromInventory(hosts_items, TRUE)
-		playsound(cb_owner.human_host, 'sound/effects/blobattack.ogg', 30, TRUE)
-		cb_owner.human_host.visible_message(span_warning("With a sickening crunch, [cb_owner.human_host] reforms [cb_owner.human_host.p_their()] armblade into an arm!"), span_notice("We assimilate the armblade back into our body."), span_italics("You hear organic matter ripping and tearing!"))
-		cb_owner.human_host.update_inv_hands()
-		return
-	var/obj/item/spawn_armblade = new /obj/item/melee/arm_blade(cb_owner.human_host) //if you dont have the armblade, add it
-	cb_owner.human_host.put_in_hands(spawn_armblade)
-	playsound(cb_owner.human_host, 'sound/effects/blobattack.ogg', 30, TRUE)
 
 /mob/living/simple_animal/cortical_borer
 	name = "cortical borer"
@@ -221,17 +211,20 @@
 	///the list of actions that the borer has
 	var/list/known_abilities = list(/datum/action/cooldown/toggle_hiding,
 									/datum/action/cooldown/choosing_host,
-									/datum/action/cooldown/produce_offspring,
 									/datum/action/cooldown/inject_chemical,
 									/datum/action/cooldown/upgrade_chemical,
 									/datum/action/cooldown/choose_focus,
-									/datum/action/cooldown/learn_bloodchemical,
 									/datum/action/cooldown/upgrade_stat,
+									/datum/action/cooldown/learn_ability,
 									/datum/action/cooldown/force_speak,
 									/datum/action/cooldown/fear_human,
 									/datum/action/cooldown/check_blood,
-									/datum/action/cooldown/revive_host,
 	)
+	///the list of actions that the borer could learn
+	var/possible_abilities = list(	/datum/action/cooldown/produce_offspring,
+									/datum/action/cooldown/learn_bloodchemical,
+									/datum/action/cooldown/revive_host,
+									/datum/action/cooldown/willing_host,)
 	///the host
 	var/mob/living/carbon/human/human_host
 	//what the host gains or loses with the borer
@@ -250,8 +243,16 @@
 	var/body_focus = null
 	///how many children the borer has produced
 	var/children_produced = 0
+	///how many blood chems have been learned through the blood
+	var/blood_chems_learned = 0
 	///we dont want to spam the chat
 	var/deathgasp_once = FALSE
+	//the limit to the chemical and stat evolution
+	var/limited_borer = 10
+	///borers can only enter biologicals if true
+	var/organic_restricted = TRUE
+	///borers are unable to enter changelings if true
+	var/changeling_restricted = TRUE
 
 /mob/living/simple_animal/cortical_borer/Initialize(mapload)
 	. = ..()
@@ -302,38 +303,70 @@
 	. += "Chemical Storage: [chemical_storage]/[max_chemical_storage]"
 	. += "Chemical Evolution Points: [chemical_evolution]"
 	. += "Stat Evolution Points: [stat_evolution]"
+	. += ""
 	if(host_sugar())
 		. += "Sugar detected! Unable to generate resources!"
+		. += ""
+	. += "OBJECTIVES:"
+	. += "1) [GLOB.objective_egg_borer_number] borers producing [GLOB.objective_egg_egg_number] eggs: [GLOB.successful_egg_number]/[GLOB.objective_egg_borer_number]"
+	. += "2) [GLOB.objective_willing_hosts] willing hosts: [length(GLOB.willing_hosts)]/[GLOB.objective_willing_hosts]"
+	. += "3) [GLOB.objective_blood_borer] borers learning [GLOB.objective_blood_chem] from the blood: [GLOB.successful_blood_chem]/[GLOB.objective_blood_borer]"
 
 /mob/living/simple_animal/cortical_borer/Life(delta_time, times_fired)
 	. = ..()
 	//can only do stuff when we are inside a human
 	if(!inside_human())
 		return
+
+	//there needs to be a negative to having a borer
+	if(prob(5) && human_host.getToxLoss() <= 20)
+		human_host.adjustToxLoss(5, TRUE, TRUE)
+
+	if(human_host.hal_screwyhud != SCREWYHUD_HEALTHY)
+		human_host.hal_screwyhud = SCREWYHUD_HEALTHY
+
 	//cant do anything if the host has sugar
 	if(host_sugar())
 		return
 
+	//this is regenerating chemical_storage
 	if(chemical_storage < max_chemical_storage)
 		chemical_storage = min(chemical_storage + chemical_regen, max_chemical_storage)
 		if(chemical_storage > max_chemical_storage)
 			chemical_storage = max_chemical_storage
 
+	//this is regenerating health
 	if(health < maxHealth)
 		health = min(health * health_regen, maxHealth)
 		if(health > maxHealth)
 			health = maxHealth
 
+	//this is so they can evolve
 	if(timed_maturity < world.time)
 		timed_maturity = world.time + 1 SECONDS
 		maturity_age++
 
-		if(maturity_age == 20)
-			chemical_evolution++
-			to_chat(src, span_notice("You gain a chemical evolution point. Spend it to learn a new chemical!"))
-		if(maturity_age == 40)
-			stat_evolution++
-			to_chat(src, span_notice("You gain a stat evolution point. Spend it to become stronger!"))
+		//20:40, 15:30, 10:20, 5:10
+		var/maturity_threshold = 20
+		if(GLOB.successful_egg_number >= GLOB.objective_egg_borer_number)
+			maturity_threshold -= 5
+		if(length(GLOB.willing_hosts) >= GLOB.objective_willing_hosts)
+			maturity_threshold -= 5
+		if(GLOB.successful_blood_chem >= GLOB.objective_blood_borer)
+			maturity_threshold -= 5
+
+		if(maturity_age == maturity_threshold)
+			if(chemical_evolution < limited_borer) //you can only have a default of 10 at a time
+				chemical_evolution++
+				to_chat(src, span_notice("You gain a chemical evolution point. Spend it to learn a new chemical!"))
+			else
+				to_chat(src, span_warning("You were unable to gain a chemical evolution point due to having the max!"))
+		if(maturity_age >= (maturity_threshold * 2))
+			if(stat_evolution < limited_borer)
+				stat_evolution++
+				to_chat(src, span_notice("You gain a stat evolution point. Spend it to become stronger!"))
+			else
+				to_chat(src, span_warning("You were unable to gain a stat evolution point due to having the max!"))
 			maturity_age = 0
 
 //if it doesnt have a ckey, let ghosts have it
@@ -393,16 +426,20 @@
 		message = scramble_message_replace_chars(message, 10)
 	message = sanitize(message)
 	var/list/split_message = splittext(message, "")
+
+	//this is so they can talk in hivemind
 	if(split_message[1] == ";")
 		message = copytext(message, 2)
 		for(var/borer in GLOB.cortical_borers)
-			to_chat(borer, span_purple("Cortical Hivemind: [src] sings, \"[message]\""))
+			to_chat(borer, span_purple("<b>Cortical Hivemind: [src] sings, \"[message]\"</b>"))
 		for(var/mob/dead_mob in GLOB.dead_mob_list)
 			var/link = FOLLOW_LINK(dead_mob, src)
-			to_chat(dead_mob, span_purple("[link] Cortical Hivemind: [src] sings, \"[message]\""))
+			to_chat(dead_mob, span_purple("[link] <b>Cortical Hivemind: [src] sings, \"[message]\"</b>"))
 		var/logging_textone = "[key_name(src)] spoke into the hivemind: [message]"
 		log_say(logging_textone)
 		return
+
+	//this is when they speak normally
 	to_chat(human_host, span_purple("Cortical Link: [src] sings, \"[message]\""))
 	var/logging_texttwo = "[key_name(src)] spoke to [key_name(human_host)]: [message]"
 	log_say(logging_texttwo)
@@ -411,6 +448,7 @@
 		var/link = FOLLOW_LINK(dead_mob, src)
 		to_chat(dead_mob, span_purple("[link] Cortical Hivemind: [src] sings to [human_host], \"[message]\""))
 
+//borers should not be able to pull anything
 /mob/living/simple_animal/cortical_borer/start_pulling(atom/movable/AM, state, force, supress_message)
 	to_chat(src, span_warning("You cannot pull things!"))
 	return

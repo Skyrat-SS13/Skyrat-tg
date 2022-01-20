@@ -40,7 +40,7 @@
 			return
 		victim.self_grasp_bleeding_limb(limb)
 
-/datum/wound/slash/wound_injury(datum/wound/slash/old_wound = null)
+/datum/wound/slash/wound_injury(datum/wound/slash/old_wound = null, attack_direction)
 	blood_flow = initial_flow
 	if(old_wound)
 		blood_flow = max(old_wound.blood_flow, initial_flow)

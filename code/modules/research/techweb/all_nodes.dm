@@ -137,6 +137,7 @@
 		"mod_longfall",
 		"mod_thermal_regulator",
 		"mod_plasma",
+		"mod_sign_radio",
 	)
 
 /datum/techweb_node/mech_tools
@@ -1585,6 +1586,7 @@
 		"mod_jetpack",
 		"mod_rad_protection",
 		"mod_emp_shield",
+		"mod_storage_expanded",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3500)
 
@@ -1627,6 +1629,7 @@
 		"mod_armor_cosmohonk",
 		"mod_bikehorn",
 		"mod_microwave_beam",
+		"mod_waddle",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
