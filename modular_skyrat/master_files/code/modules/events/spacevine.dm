@@ -595,14 +595,15 @@
 
 /obj/structure/spacevine/examine(mob/user)
 	. = ..()
-	var/text = "This one is a"
-	if(mutations.len)
-		for(var/datum/spacevine_mutation/vine_mutation in mutations)
-			text += " [vine_mutation.name]"
-	else
-		text += " normal"
-	text += " vine."
-	. += text
+	if(!length(mutations))
+		. += "This vine has no mutations."
+		return
+	var/text = "This vine has the following mutations:\n"
+	for(var/datum/spacevine_mutation/mutation as anything in mutations)
+		if(mutation.name == "transparent") /// Transparent has no hue
+			text += "<font color='#346751'>Transparent</font> "
+		else
+			text += "<font color='[mutation.plant_color]'>[mutation.name]</font> "
 
 /obj/structure/spacevine/Destroy()
 	for(var/datum/spacevine_mutation/vine_mutation in mutations)

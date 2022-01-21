@@ -15,6 +15,7 @@
 #define ROLE_HERETIC "Heretic"
 #define ROLE_MALF "Malf AI"
 #define ROLE_OPERATIVE "Operative"
+#define ROLE_THIEF "Thief"
 #define ROLE_TRAITOR "Traitor"
 #define ROLE_WIZARD "Wizard"
 
@@ -31,12 +32,15 @@
 #define ROLE_NINJA "Space Ninja"
 #define ROLE_OBSESSED "Obsessed"
 #define ROLE_OPERATIVE_MIDROUND "Operative (Midround)"
+#define ROLE_OPPORTUNIST "Opportunist"
 #define ROLE_REV_HEAD "Head Revolutionary"
 #define ROLE_SENTIENT_DISEASE "Sentient Disease"
 #define ROLE_SLEEPER_AGENT "Syndicate Sleeper Agent"
 #define ROLE_SPACE_DRAGON "Space Dragon"
 #define ROLE_SPIDER "Spider"
 #define ROLE_WIZARD_MIDROUND "Wizard (Midround)"
+//SKYRAT EDIT: Cortical Borers
+#define ROLE_BORER "Borer"
 
 // Latejoin roles
 #define ROLE_HERETIC_SMUGGLER "Heretic Smuggler"
@@ -113,6 +117,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_MALF = 0,
 	ROLE_OPERATIVE = 14,
 	ROLE_REV_HEAD = 14,
+	ROLE_THIEF = 0,
 	ROLE_TRAITOR = 0,
 	ROLE_WIZARD = 14,
 
@@ -129,12 +134,15 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_NINJA = 0,
 	ROLE_OBSESSED = 0,
 	ROLE_OPERATIVE_MIDROUND = 14,
+	ROLE_OPPORTUNIST = 0,
 	ROLE_REVENANT = 0,
 	ROLE_SENTIENT_DISEASE = 0,
 	ROLE_SLEEPER_AGENT = 0,
 	ROLE_SPACE_DRAGON = 0,
 	ROLE_SPIDER = 0,
 	ROLE_WIZARD_MIDROUND = 14,
+	//SKYRAT EDIT: Cortical Borers
+	ROLE_BORER = 0,
 
 	// Latejoin
 	ROLE_HERETIC_SMUGGLER = 0,

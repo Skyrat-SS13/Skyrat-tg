@@ -925,3 +925,12 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Designer Inferno Suit"
 	item_path = /obj/item/clothing/under/rank/civilian/lawyer/inferno/beeze
 	restricted_roles = list(JOB_LAWYER)
+
+/// DONATOR
+/datum/loadout_item/under/donator
+	donator_only = TRUE
+
+/datum/loadout_item/under/donator/captain_black
+	name  = "Captains Black Uniform"
+	item_path = /obj/item/clothing/under/rank/captain/black
+	restricted_roles = list(JOB_CAPTAIN)
