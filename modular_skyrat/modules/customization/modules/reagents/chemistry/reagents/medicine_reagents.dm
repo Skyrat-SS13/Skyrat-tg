@@ -66,7 +66,6 @@
 /datum/reagent/medicine/nanite_slurry/on_mob_life(mob/living/carbon/affected_mob)
 	affected_mob.heal_bodypart_damage(healing*REM, healing*REM, required_status = BODYPART_ROBOTIC)
 	..()
-	. = 1
 
 /datum/reagent/medicine/nanite_slurry/overdose_process(mob/living/carbon/affected_mob, delta_time, times_fired)
 	if(affected_mob.mob_biotypes & MOB_ROBOTIC)
