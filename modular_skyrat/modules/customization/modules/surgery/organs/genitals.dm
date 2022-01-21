@@ -94,7 +94,7 @@
 			if(SHEATH_NORMAL)
 				returned_string = "You see a sheath."
 			if(SHEATH_SLIT)
-				returned_string = "You see genital slit."
+				returned_string = "You see a slit." ///Typo fix.
 		if(aroused == AROUSAL_PARTIAL)
 			returned_string += " There's a [pname]penis poking out of it."
 	else

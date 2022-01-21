@@ -726,3 +726,10 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "black_suit_fem"
+
+/obj/item/clothing/under/rank/captain/black
+	name = "captains black suit"
+	desc = "A very sleek naval captains uniform for those who think they're commanding a battleship."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "captainblacksuit"

@@ -9,7 +9,7 @@
 //SKYRAT EDIT ADDITION
 GLOBAL_VAR_INIT(cops_arrived, FALSE)
 #define EMERGENCY_RESPONSE_POLICE "WOOP WOOP THAT'S THE SOUND OF THE POLICE"
-#define EMERGENCY_RESPONSE_FIRE "DISCO INFERNO"
+#define EMERGENCY_RESPONSE_ATMOS "DISCO INFERNO"
 #define EMERGENCY_RESPONSE_EMT "AAAAAUGH, I'M DYING, I NEEEEEEEEEED A MEDIC BAG"
 #define EMERGENCY_RESPONSE_EMAG "AYO THE PIZZA HERE"
 //SKYRAT EDIT END
@@ -139,8 +139,9 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			return
 		battlecruiser_called = TRUE
 		caller_card.use_charge(user)
-		addtimer(CALLBACK(GLOBAL_PROC, /proc/summon_battlecruiser), rand(20 SECONDS, 1 MINUTES))
+		addtimer(CALLBACK(GLOBAL_PROC, /proc/summon_battlecruiser), rand(3 MINUTES, 5 MINUTES)) //skyrat edit: original values (20 SECONDS, 1 MINUTES)
 		playsound(src, 'sound/machines/terminal_alert.ogg', 50, FALSE)
+		priority_announce("Attention crew: deep-space sensors detect a Syndicate battlecruiser-class signature subspace rift forming near your station. Estimated time until arrival: three to five minutes.", "[command_name()] High-Priority Update") //skyrat add: announcement on battlecruiser call
 		return
 
 	if(obj_flags & EMAGGED)
@@ -445,10 +446,10 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			if(!pre_911_check(usr))
 				return
 			calling_911(usr, "Marshals", EMERGENCY_RESPONSE_POLICE)
-		if ("callTheFireDep")
+		if ("callBreachControl")
 			if(!pre_911_check(usr))
 				return
-			calling_911(usr, "Firefighters", EMERGENCY_RESPONSE_FIRE)
+			calling_911(usr, "Breach Control", EMERGENCY_RESPONSE_ATMOS)
 		if ("callTheParameds")
 			if(!pre_911_check(usr))
 				return
