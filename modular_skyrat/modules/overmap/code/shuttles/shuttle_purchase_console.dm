@@ -27,6 +27,8 @@
 	. = ..()
 	TryFindDock()
 
+/turf/open/floor/planetary/dirt
+
 /obj/machinery/computer/shuttle_purchase/proc/GetCatalogue()
 	selected_shuttle = null
 	catalogue = SSshuttle.get_sold_shuttles_cache(dock.port_destinations, shuttle_types)
@@ -37,7 +39,7 @@
 	if(dock)
 		return
 	var/list/candidates = list()
-	for(var/i in SSshuttle.stationary)
+	for(var/i in SSshuttle.stationary_docking_ports)
 		var/obj/docking_port/stationary/iterated_dock = i
 		if(desired_dock_ids[iterated_dock.port_destinations])
 			candidates += iterated_dock

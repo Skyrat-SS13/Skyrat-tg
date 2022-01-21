@@ -298,7 +298,7 @@
 				var/list/obj/docking_port/stationary/docks = list()
 				var/list/obj/docking_port/stationary/gateway/gateways = list()
 				var/list/options = params2list(my_shuttle.possible_destinations)
-				for(var/i in SSshuttle.stationary)
+				for(var/i in SSshuttle.stationary_docking_ports)
 					var/obj/docking_port/stationary/iterated_dock = i
 					if(!z_levels["[iterated_dock.z]"])
 						continue

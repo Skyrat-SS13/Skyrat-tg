@@ -104,7 +104,7 @@
 	button_icon_state = "exit"
 	background_icon_state = "bg_spell"
 
-/datum/action/innate/quit_control/Trigger()
+/datum/action/innate/quit_control/Trigger(trigger_flags)
 	var/datum/overmap_shuttle_controller/OSC = target
 	OSC.RemoveCurrentControl()
 
@@ -114,7 +114,7 @@
 	button_icon_state = "stop"
 	background_icon_state = "bg_spell"
 
-/datum/action/innate/stop_shuttle/Trigger()
+/datum/action/innate/stop_shuttle/Trigger(trigger_flags)
 	var/datum/overmap_shuttle_controller/OSC = target
 	OSC.overmap_obj.StopMove()
 
@@ -124,6 +124,6 @@
 	button_icon_state = "control"
 	background_icon_state = "bg_spell"
 
-/datum/action/innate/open_shuttle_control/Trigger()
+/datum/action/innate/open_shuttle_control/Trigger(trigger_flags)
 	var/datum/overmap_shuttle_controller/OSC = target
 	OSC.overmap_obj.DisplayUI(OSC.mob_controller, OSC.control_turf)
