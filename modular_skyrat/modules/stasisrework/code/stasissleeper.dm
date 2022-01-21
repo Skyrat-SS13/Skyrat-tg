@@ -1,7 +1,7 @@
 #define SCANNER_VERBOSE 1
 /obj/machinery/stasissleeper
-	name = "lifeform stasis unit"
-	desc = "A somewhat comfortable looking bed with a cover over it. It will keep someone in stasis."
+	name = "lifeform stasis pod"
+	desc = "A somewhat comfortable looking bed with a cover over it. It will keep someone in stasis and has built-in scanning functionality."
 	icon = 'modular_skyrat/modules/stasisrework/icons/stasissleeper.dmi'
 	icon_state = "sleeper"
 	base_icon_state = "sleeper"

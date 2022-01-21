@@ -9,9 +9,9 @@
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/board/stasissleeper
-	name = "Machine Design (Lifeform Stasis Unit)"
-	desc = "The circuit board for a Stasis Unit"
+	name = "Machine Design (Lifeform Stasis Pod)"
+	desc = "The circuit board for a Stasis Pod"
 	id = "stasissleeper"
 	build_path = /obj/item/circuitboard/machine/stasissleeper
-	category = list("Machine Designs")
+	category = list("Medical Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL

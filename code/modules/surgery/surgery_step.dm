@@ -60,8 +60,8 @@
 
 	return FALSE
 
-#define SURGERY_SLOWDOWN_CAP_MULTIPLIER 2 //increase to make surgery slower but fail less, and decrease to make surgery faster but fail more
-#define SURGERY_SPEEDUP_AREA 0.5 // Skyrat Edit Addition - reward for doing surgery in surgery
+#define SURGERY_SLOWDOWN_CAP_MULTIPLIER 2 //Increase to make surgery slower but fail less, and decrease to make surgery faster but fail more
+#define SURGERY_SPEEDUP_AREA 0.5 //Skyrat Edit Addition - reward for doing surgery in surgery
 
 /datum/surgery_step/proc/initiate(mob/living/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
 	// Only followers of Asclepius have the ability to use Healing Touch and perform miracle feats of surgery.
@@ -93,7 +93,10 @@
 	var/was_sleeping = (target.stat != DEAD && target.IsSleeping())
 
 	// Skyrat Edit Addition - reward for doing surgery on calm patients, and for using surgery rooms(ie. surgerying alone)
-	if(was_sleeping || HAS_TRAIT(target, TRAIT_NUMBED) || target.stat == DEAD)
+	if(!(was_sleeping || HAS_TRAIT(target, TRAIT_NUMBED) || target.stat >= UNCONSCIOUS))
+		modded_time /= SURGERY_SPEEDUP_AREA
+		to_chat(user, span_warning("You struggle to work on an aware and feeling patient!"))
+	if(was_sleeping || target.stat >= UNCONSCIOUS)
 		modded_time *= SURGERY_SPEEDUP_AREA
 		to_chat(user, span_notice("You are able to work faster due to the patient's calm attitude!"))
 	var/quiet_enviromnent = TRUE
@@ -209,7 +212,7 @@
 /datum/surgery_step/proc/display_pain(mob/living/target, pain_message, mechanical_surgery = FALSE)
 	if(target.stat >= UNCONSCIOUS) //the unconscious do not worry about pain
 		return
-	if(HAS_TRAIT(target, TRAIT_NUMBED)) //numbing helps but is not perfect - this is the tradeoff for being awake
+	if(HAS_TRAIT(target, TRAIT_NUMBED) || target.stat == SOFT_CRIT) //numbing helps but is not perfect - this is the tradeoff for being awake
 		SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "mild_surgery", /datum/mood_event/mild_surgery)
 		return
 	if(mechanical_surgery == TRUE) //robots can't benefit from numbing agents like most but have no reason not to sleep - their debuff falls in-between

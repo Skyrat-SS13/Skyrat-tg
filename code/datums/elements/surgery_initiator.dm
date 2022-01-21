@@ -96,6 +96,8 @@
 				ADD_TRAIT(livingtarget, TRAIT_ALLOWED_HONORBOUND_ATTACK, ELEMENT_TRAIT(type))
 				user.visible_message(span_notice("[user] drapes [source] over [livingtarget]'s [parse_zone(selected_zone)] to prepare for surgery."), \
 					span_notice("You drape [source] over [livingtarget]'s [parse_zone(selected_zone)] to prepare for \an [procedure.name]."))
+				if(!(HAS_TRAIT(livingtarget, TRAIT_NUMBED) || livingtarget.stat >= UNCONSCIOUS))
+					to_chat(user, span_warning("You feel [livingtarget] react to your touch and realize they might feel this."))
 
 				log_combat(user, livingtarget, "operated on", null, "(OPERATION TYPE: [procedure.name]) (TARGET AREA: [selected_zone])")
 			else
