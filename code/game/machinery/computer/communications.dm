@@ -9,7 +9,7 @@
 //SKYRAT EDIT ADDITION
 GLOBAL_VAR_INIT(cops_arrived, FALSE)
 #define EMERGENCY_RESPONSE_POLICE "WOOP WOOP THAT'S THE SOUND OF THE POLICE"
-#define EMERGENCY_RESPONSE_FIRE "DISCO INFERNO"
+#define EMERGENCY_RESPONSE_ATMOS "DISCO INFERNO"
 #define EMERGENCY_RESPONSE_EMT "AAAAAUGH, I'M DYING, I NEEEEEEEEEED A MEDIC BAG"
 #define EMERGENCY_RESPONSE_EMAG "AYO THE PIZZA HERE"
 //SKYRAT EDIT END
@@ -24,9 +24,15 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	circuit = /obj/item/circuitboard/computer/communications
 	light_color = LIGHT_COLOR_BLUE
 
+	/// If the battlecruiser has been called
+	var/static/battlecruiser_called = FALSE
+
 	/// Cooldown for important actions, such as messaging CentCom or other sectors
 	COOLDOWN_DECLARE(static/important_action_cooldown)
 	COOLDOWN_DECLARE(static/emergency_access_cooldown)
+
+	/// Whether syndicate mode is enabled or not.
+	var/syndicate = FALSE
 
 	/// The current state of the UI
 	var/state = STATE_MAIN
@@ -59,6 +65,33 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	var/toggle_max_uses = 3
 	///when was emergency access last toggled
 	var/last_toggled
+
+/obj/machinery/computer/communications/syndicate
+	icon_screen = "commsyndie"
+	circuit = /obj/item/circuitboard/computer/communications/syndicate
+	req_access = list(ACCESS_SYNDICATE_LEADER)
+	light_color = LIGHT_COLOR_BLOOD_MAGIC
+
+	syndicate = TRUE
+
+/obj/machinery/computer/communications/syndicate/emag_act(mob/user, obj/item/card/emag/emag_card)
+	return
+
+/obj/machinery/computer/communications/syndicate/can_buy_shuttles(mob/user)
+	return FALSE
+
+/obj/machinery/computer/communications/syndicate/can_send_messages_to_other_sectors(mob/user)
+	return FALSE
+
+/obj/machinery/computer/communications/syndicate/authenticated_as_silicon_or_captain(mob/user)
+	return FALSE
+
+/obj/machinery/computer/communications/syndicate/get_communication_players()
+	var/list/targets = list()
+	for(var/mob/target in GLOB.player_list)
+		if(target.stat == DEAD || target.z == z || target.mind?.has_antag_datum(/datum/antagonist/battlecruiser))
+			targets += target
+	return targets
 
 /obj/machinery/computer/communications/Initialize(mapload)
 	. = ..()
@@ -95,8 +128,23 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	else
 		return ..()
 
-/obj/machinery/computer/communications/emag_act(mob/user)
-	if (obj_flags & EMAGGED)
+/obj/machinery/computer/communications/emag_act(mob/user, obj/item/card/emag/emag_card)
+	if(istype(emag_card, /obj/item/card/emag/battlecruiser))
+		if(!user.mind?.has_antag_datum(/datum/antagonist/traitor))
+			to_chat(user, span_danger("You get the feeling this is a bad idea."))
+			return
+		var/obj/item/card/emag/battlecruiser/caller_card = emag_card
+		if(battlecruiser_called)
+			to_chat(user, span_danger("The card reports a long-range message already sent to the Syndicate fleet...?"))
+			return
+		battlecruiser_called = TRUE
+		caller_card.use_charge(user)
+		addtimer(CALLBACK(GLOBAL_PROC, /proc/summon_battlecruiser), rand(3 MINUTES, 5 MINUTES)) //skyrat edit: original values (20 SECONDS, 1 MINUTES)
+		playsound(src, 'sound/machines/terminal_alert.ogg', 50, FALSE)
+		priority_announce("Attention crew: deep-space sensors detect a Syndicate battlecruiser-class signature subspace rift forming near your station. Estimated time until arrival: three to five minutes.", "[command_name()] High-Priority Update") //skyrat add: announcement on battlecruiser call
+		return
+
+	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
 	if (authenticated)
@@ -138,7 +186,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			message.answered = answer_index
 			message.answer_callback.InvokeAsync()
 		if ("callShuttle")
-			if (!authenticated(usr))
+			if (!authenticated(usr) || syndicate)
 				return
 			var/reason = trim(params["reason"], MAX_MESSAGE_LEN)
 			if (length(reason) < CALL_SHUTTLE_REASON_LENGTH)
@@ -188,7 +236,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				return
 			LAZYREMOVE(messages, LAZYACCESS(messages, message_index))
 		if ("makePriorityAnnouncement")
-			if (!authenticated_as_silicon_or_captain(usr))
+			if (!authenticated_as_silicon_or_captain(usr) && !syndicate)
 				return
 			make_announcement(usr)
 		if ("messageAssociates")
@@ -204,11 +252,14 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			if (emagged)
 				message_syndicate(message, usr)
 				to_chat(usr, span_danger("SYSERR @l(19833)of(transmit.dm): !@$ MESSAGE TRANSMITTED TO SYNDICATE COMMAND."))
+			else if(syndicate)
+				message_syndicate(message, usr)
+				to_chat(usr, span_danger("Message transmitted to Syndicate Command."))
 			else
 				message_centcom(message, usr)
 				to_chat(usr, span_notice("Message transmitted to Central Command."))
 
-			var/associates = emagged ? "the Syndicate": "CentCom"
+			var/associates = (emagged || syndicate) ? "the Syndicate": "CentCom"
 			usr.log_talk(message, LOG_SAY, tag = "message to [associates]")
 			deadchat_broadcast(" has messaged [associates], \"[message]\" at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
 			COOLDOWN_START(src, important_action_cooldown, IMPORTANT_ACTION_COOLDOWN)
@@ -247,7 +298,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			state = STATE_MAIN
 		if ("recallShuttle")
 			// AIs cannot recall the shuttle
-			if (!authenticated(usr) || issilicon(usr))
+			if (!authenticated(usr) || issilicon(usr) || syndicate)
 				return
 			SSshuttle.cancelEvac(usr)
 		if ("requestNukeCodes")
@@ -395,10 +446,10 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			if(!pre_911_check(usr))
 				return
 			calling_911(usr, "Marshals", EMERGENCY_RESPONSE_POLICE)
-		if ("callTheFireDep")
+		if ("callBreachControl")
 			if(!pre_911_check(usr))
 				return
-			calling_911(usr, "Firefighters", EMERGENCY_RESPONSE_FIRE)
+			calling_911(usr, "Breach Control", EMERGENCY_RESPONSE_ATMOS)
 		if ("callTheParameds")
 			if(!pre_911_check(usr))
 				return
@@ -457,6 +508,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	var/list/data = list(
 		"authenticated" = FALSE,
 		"emagged" = FALSE,
+		"syndicate" = syndicate,
 	)
 
 	var/ui_state = issilicon(user) ? cyborg_state : state
@@ -481,7 +533,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		data["canLogOut"] = !issilicon(user)
 		data["page"] = ui_state
 
-		if (obj_flags & EMAGGED)
+		if ((obj_flags & EMAGGED) || syndicate)
 			data["emagged"] = TRUE
 
 		switch (ui_state)
@@ -502,6 +554,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				data["authorizeName"] = authorize_name
 				data["canLogOut"] = !issilicon(user)
 				data["shuttleCanEvacOrFailReason"] = SSshuttle.canEvac(user)
+				if(syndicate)
+					data["shuttleCanEvacOrFailReason"] = "You cannot summon the shuttle from this console!"
 
 				if (authenticated_as_non_silicon_captain(user))
 					data["canMessageAssociates"] = TRUE
@@ -527,18 +581,20 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 					data["alertLevelTick"] = alert_level_tick
 					data["canMakeAnnouncement"] = TRUE
 					data["canSetAlertLevel"] = issilicon(user) ? "NO_SWIPE_NEEDED" : "SWIPE_NEEDED"
+				else if(syndicate)
+					data["canMakeAnnouncement"] = TRUE
 
 				if (authenticated_as_ai_or_captain(user))
 					data["canMessageAssociates"] = TRUE //Skyrat Edit | Allows AI to report to CC in the event of there being no command alive/to begin with
 
 				if (SSshuttle.emergency.mode != SHUTTLE_IDLE && SSshuttle.emergency.mode != SHUTTLE_RECALL)
 					data["shuttleCalled"] = TRUE
-					data["shuttleRecallable"] = SSshuttle.canRecall()
+					data["shuttleRecallable"] = SSshuttle.canRecall() || syndicate
 
 				if (SSshuttle.emergencyCallAmount)
 					data["shuttleCalledPreviously"] = TRUE
-					if (SSshuttle.emergencyLastCallLoc)
-						data["shuttleLastCalled"] = format_text(SSshuttle.emergencyLastCallLoc.name)
+					if (SSshuttle.emergency_last_call_loc)
+						data["shuttleLastCalled"] = format_text(SSshuttle.emergency_last_call_loc.name)
 			if (STATE_MESSAGES)
 				data["messages"] = list()
 
@@ -619,6 +675,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 /obj/machinery/computer/communications/proc/has_communication()
 	var/turf/current_turf = get_turf(src)
 	var/z_level = current_turf.z
+	if(syndicate)
+		return TRUE
 	return is_station_level(z_level) || is_centcom_level(z_level)
 
 /obj/machinery/computer/communications/proc/set_state(mob/user, new_state)
@@ -697,7 +755,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	if(!SScommunications.can_announce(user, is_ai))
 		to_chat(user, span_alert("Intercomms recharging. Please stand by."))
 		return
-	var/input = stripped_input(user, "Please choose a message to announce to the station crew.", "What?")
+	var/input = tgui_input_text(user, "Message to announce to the station crew", "Announcement")
 	if(!input || !user.canUseTopic(src, !issilicon(usr)))
 		return
 	if(!(user.can_speak())) //No more cheating, mime/random mute guy!
@@ -705,8 +763,12 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		to_chat(user, span_warning("You find yourself unable to speak."))
 	else
 		input = user.treat_message(input) //Adds slurs and so on. Someone should make this use languages too.
-	SScommunications.make_announcement(user, is_ai, input)
+	var/list/players = get_communication_players()
+	SScommunications.make_announcement(user, is_ai, input, syndicate || (obj_flags & EMAGGED), players)
 	deadchat_broadcast(" made a priority announcement from [span_name("[get_area_name(usr, TRUE)]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
+
+/obj/machinery/computer/communications/proc/get_communication_players()
+	return GLOB.player_list
 
 /obj/machinery/computer/communications/proc/post_status(command, data1, data2)
 

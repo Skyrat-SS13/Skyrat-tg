@@ -269,7 +269,7 @@
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_bouncer"
 	extra_access = list(ACCESS_SEC_DOORS, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
-	minimal_access = list(ACCESS_SEC_DOORS, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
+	minimal_access = list(ACCESS_SEC_DOORS, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE, ACCESS_SERVICE)
 	config_job = "bouncer"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
 	job = /datum/job/bouncer
@@ -418,7 +418,7 @@
 	icon = 'modular_skyrat/modules/goofsec/icons/departmental_batons.dmi'
 	var/list/valid_areas = list()
 	var/emagged = FALSE
-	var/non_departmental_uses_left = 3
+	var/non_departmental_uses_left = 4
 
 /obj/item/melee/baton/security/loaded/departmental/baton_attack(mob/living/target, mob/living/user, modifiers)
 	if(active && !emagged && cooldown_check <= world.time)
@@ -446,9 +446,9 @@
 		var/area/current_area = get_area(user)
 		if(!is_type_in_list(current_area, valid_areas))
 			return
-		if(non_departmental_uses_left < 3)
+		if(non_departmental_uses_left < 4)
 			say("Non-departmental uses refreshed!")
-			non_departmental_uses_left = 3
+			non_departmental_uses_left = 4
 
 /obj/item/melee/baton/security/loaded/departmental/emag_act(mob/user)
 	if(!emagged)

@@ -11,12 +11,37 @@
 	antag_flag = ROLE_TRAITOR
 	antag_datum = /datum/antagonist/traitor
 	minimum_required_age = 0
-	protected_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_SECURITY, JOB_WARDEN, JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_PRISONER)
-	restricted_roles = list(JOB_AI, JOB_CYBORG,
-						JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_HEAD_OF_SECURITY, JOB_CORRECTIONS_OFFICER, JOB_CIVIL_DISPUTES_OFFICER, JOB_SECURITY_SERGEANT,
-						JOB_CAPTAIN, JOB_VANGUARD_OPERATIVE, JOB_NT_REP, JOB_BLUESHIELD,
-						JOB_ORDERLY, JOB_BOUNCER, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD, JOB_SCIENCE_GUARD
-						) // SKYRAT EDIT ADDITION - ALL AFTER JOB_CYBORG
+	protected_roles = list(
+		JOB_CAPTAIN,
+		JOB_DETECTIVE,
+		JOB_HEAD_OF_SECURITY,
+		JOB_PRISONER,
+		JOB_SECURITY_OFFICER,
+		JOB_WARDEN,
+	)
+	restricted_roles = list(
+		JOB_AI,
+		JOB_CYBORG,
+		// SKYRAT EDIT START - More restricted roles
+		JOB_NT_REP,
+		JOB_HEAD_OF_PERSONNEL,
+		JOB_CHIEF_ENGINEER,
+		JOB_CHIEF_MEDICAL_OFFICER,
+		JOB_RESEARCH_DIRECTOR,
+		JOB_QUARTERMASTER,
+		JOB_BLUESHIELD,
+		JOB_SECURITY_SERGEANT,
+		JOB_SECURITY_MEDIC,
+		JOB_CORRECTIONS_OFFICER,
+		JOB_CIVIL_DISPUTES_OFFICER,
+		JOB_ORDERLY,
+		JOB_BOUNCER,
+		JOB_CUSTOMS_AGENT,
+		JOB_ENGINEERING_GUARD,
+		JOB_SCIENCE_GUARD,
+		JOB_VANGUARD_OPERATIVE,
+		// SKYRAT EDIT END
+	)
 	required_candidates = 1
 	weight = 5
 	cost = 8 // Avoid raising traitor threat above this, as it is the default low cost ruleset.
@@ -61,7 +86,7 @@
 	required_candidates = 1
 	weight = 3
 	cost = 18
-	requirements = list(101,101,80,70,60,60,50,50,40,40)
+	requirements = list(101,101,101,80,60,50,30,20,10,10)
 	antag_cap = 1
 	flags = HIGH_IMPACT_RULESET
 
@@ -101,12 +126,38 @@
 	name = "Blood Brothers"
 	antag_flag = ROLE_BROTHER
 	antag_datum = /datum/antagonist/brother
-	protected_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_SECURITY, JOB_WARDEN, JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_PRISONER)
-	restricted_roles = list(JOB_AI, JOB_CYBORG,
-						JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_HEAD_OF_SECURITY, JOB_CORRECTIONS_OFFICER, JOB_CIVIL_DISPUTES_OFFICER, JOB_SECURITY_SERGEANT,
-						JOB_CAPTAIN, JOB_VANGUARD_OPERATIVE, JOB_NT_REP, JOB_BLUESHIELD,
-						JOB_ORDERLY, JOB_BOUNCER, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD, JOB_SCIENCE_GUARD
-						) // SKYRAT EDIT ADD - ALL AFTER JOB_CYBORG
+	protected_roles = list(
+		JOB_CAPTAIN,
+		JOB_DETECTIVE,
+		JOB_HEAD_OF_SECURITY,
+		JOB_PRISONER,
+		JOB_SECURITY_OFFICER,
+		JOB_WARDEN,
+	)
+	restricted_roles = list(
+		JOB_AI,
+		JOB_CYBORG,
+		// SKYRAT EDIT START - More restricted roles
+		JOB_NT_REP,
+		JOB_HEAD_OF_PERSONNEL,
+		JOB_CHIEF_ENGINEER,
+		JOB_CHIEF_MEDICAL_OFFICER,
+		JOB_RESEARCH_DIRECTOR,
+		JOB_QUARTERMASTER,
+		JOB_BLUESHIELD,
+		JOB_SECURITY_SERGEANT,
+		JOB_SECURITY_MEDIC,
+		JOB_CORRECTIONS_OFFICER,
+		JOB_CIVIL_DISPUTES_OFFICER,
+		JOB_ORDERLY,
+		JOB_BOUNCER,
+		JOB_CUSTOMS_AGENT,
+		JOB_ENGINEERING_GUARD,
+		JOB_SCIENCE_GUARD,
+		JOB_VANGUARD_OPERATIVE,
+		JOB_PRISONER,
+		// SKYRAT EDIT END
+	)
 	required_candidates = 2
 	weight = 4
 	cost = 15
@@ -154,12 +205,37 @@
 	name = "Changelings"
 	antag_flag = ROLE_CHANGELING
 	antag_datum = /datum/antagonist/changeling
-	protected_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_SECURITY, JOB_WARDEN, JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_PRISONER)
-	restricted_roles = list(JOB_AI, JOB_CYBORG,
-						JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_HEAD_OF_SECURITY, JOB_CORRECTIONS_OFFICER, JOB_CIVIL_DISPUTES_OFFICER, JOB_SECURITY_SERGEANT,
-						JOB_CAPTAIN, JOB_VANGUARD_OPERATIVE, JOB_NT_REP, JOB_BLUESHIELD,
-						JOB_ORDERLY, JOB_BOUNCER, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD, JOB_SCIENCE_GUARD
-						) // SKYRAT EDIT ADD - ALL AFTER JOB_CYBORG
+	protected_roles = list(
+		JOB_CAPTAIN,
+		JOB_DETECTIVE,
+		JOB_HEAD_OF_SECURITY,
+		JOB_PRISONER,
+		JOB_SECURITY_OFFICER,
+		JOB_WARDEN,
+	)
+	restricted_roles = list(
+		JOB_AI,
+		JOB_CYBORG,
+		// SKYRAT EDIT START - More restricted roles
+		JOB_NT_REP,
+		JOB_HEAD_OF_PERSONNEL,
+		JOB_CHIEF_ENGINEER,
+		JOB_CHIEF_MEDICAL_OFFICER,
+		JOB_RESEARCH_DIRECTOR,
+		JOB_QUARTERMASTER,
+		JOB_BLUESHIELD,
+		JOB_SECURITY_SERGEANT,
+		JOB_SECURITY_MEDIC,
+		JOB_CORRECTIONS_OFFICER,
+		JOB_CIVIL_DISPUTES_OFFICER,
+		JOB_ORDERLY,
+		JOB_BOUNCER,
+		JOB_CUSTOMS_AGENT,
+		JOB_ENGINEERING_GUARD,
+		JOB_SCIENCE_GUARD,
+		JOB_VANGUARD_OPERATIVE,
+		// SKYRAT EDIT END
+	)
 	required_candidates = 1
 	weight = 3
 	cost = 16
@@ -197,12 +273,36 @@
 	name = "Heretics"
 	antag_flag = ROLE_HERETIC
 	antag_datum = /datum/antagonist/heretic
-	protected_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_SECURITY, JOB_WARDEN, JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_PRISONER)
-	restricted_roles = list(JOB_AI, JOB_CYBORG,
-						JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_HEAD_OF_SECURITY, JOB_CORRECTIONS_OFFICER, JOB_CIVIL_DISPUTES_OFFICER, JOB_SECURITY_SERGEANT,
-						JOB_CAPTAIN, JOB_VANGUARD_OPERATIVE, JOB_NT_REP, JOB_BLUESHIELD,
-						JOB_ORDERLY, JOB_BOUNCER, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD, JOB_SCIENCE_GUARD
-						) // SKYRAT EDIT ADD - ALL AFTER JOB_CYBORG
+	protected_roles = list(
+		JOB_CAPTAIN,
+		JOB_DETECTIVE,
+		JOB_HEAD_OF_SECURITY,
+		JOB_PRISONER,
+		JOB_SECURITY_OFFICER,
+		JOB_WARDEN,
+	)
+	restricted_roles = list(
+		JOB_AI,
+		JOB_CYBORG,
+		// SKYRAT EDIT START - More restricted roles
+		JOB_NT_REP,
+		JOB_CHIEF_ENGINEER,
+		JOB_CHIEF_MEDICAL_OFFICER,
+		JOB_RESEARCH_DIRECTOR,
+		JOB_QUARTERMASTER,
+		JOB_BLUESHIELD,
+		JOB_SECURITY_SERGEANT,
+		JOB_SECURITY_MEDIC,
+		JOB_CORRECTIONS_OFFICER,
+		JOB_CIVIL_DISPUTES_OFFICER,
+		JOB_ORDERLY,
+		JOB_BOUNCER,
+		JOB_CUSTOMS_AGENT,
+		JOB_ENGINEERING_GUARD,
+		JOB_SCIENCE_GUARD,
+		JOB_VANGUARD_OPERATIVE,
+		// SKYRAT EDIT END
+	)
 	required_candidates = 1
 	weight = 3
 	cost = 15
@@ -249,7 +349,10 @@
 	antag_datum = /datum/antagonist/wizard
 	flags = HIGH_IMPACT_RULESET
 	minimum_required_age = 14
-	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_SECURITY) // Just to be sure that a wizard getting picked won't ever imply a Captain or HoS not getting drafted
+	restricted_roles = list(
+		JOB_CAPTAIN,
+		JOB_HEAD_OF_SECURITY,
+	) // Just to be sure that a wizard getting picked won't ever imply a Captain or HoS not getting drafted
 	required_candidates = 1
 	weight = 2
 	cost = 20
@@ -292,11 +395,11 @@
 	antag_flag = ROLE_CULTIST
 	antag_datum = /datum/antagonist/cult
 	minimum_required_age = 14
-	restricted_roles = list(JOB_AI, JOB_CYBORG,
+	restricted_roles = list(JOB_AI, JOB_CYBORG, JOB_PRISONER,
 						JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_HEAD_OF_SECURITY, JOB_CORRECTIONS_OFFICER, JOB_CIVIL_DISPUTES_OFFICER, JOB_SECURITY_SERGEANT,
 						JOB_CAPTAIN, JOB_VANGUARD_OPERATIVE, JOB_NT_REP, JOB_BLUESHIELD,
 						JOB_ORDERLY, JOB_BOUNCER, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD, JOB_SCIENCE_GUARD
-						) // SKYRAT EDIT ADD - ALL AFTER JOB_CYBORG
+						) // SKYRAT EDIT ADD - ALL AFTER JOB_PRISONER
 	required_candidates = 2
 	weight = 3
 	cost = 20
@@ -354,7 +457,10 @@
 	antag_datum = /datum/antagonist/nukeop
 	var/datum/antagonist/antag_leader_datum = /datum/antagonist/nukeop/leader
 	minimum_required_age = 14
-	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_SECURITY) // Just to be sure that a nukie getting picked won't ever imply a Captain or HoS not getting drafted
+	restricted_roles = list(
+		JOB_CAPTAIN,
+		JOB_HEAD_OF_SECURITY,
+	) // Just to be sure that a nukie getting picked won't ever imply a Captain or HoS not getting drafted
 	required_candidates = 5
 	weight = 3
 	cost = 20
@@ -428,7 +534,7 @@
 
 //////////////////////////////////////////////
 //                                          //
-//               REVS                 //
+//               REVS                       //
 //                                          //
 //////////////////////////////////////////////
 
@@ -436,14 +542,39 @@
 	name = "Revolution"
 	persistent = TRUE
 	antag_flag = ROLE_REV_HEAD
-	antag_flag_override = ROLE_REV
+	antag_flag_override = ROLE_REV_HEAD
 	antag_datum = /datum/antagonist/rev/head
 	minimum_required_age = 14
-	restricted_roles = list(JOB_AI, JOB_CYBORG,
-						JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_HEAD_OF_SECURITY, JOB_CORRECTIONS_OFFICER, JOB_CIVIL_DISPUTES_OFFICER, JOB_SECURITY_SERGEANT,
-						JOB_CAPTAIN, JOB_VANGUARD_OPERATIVE, JOB_NT_REP, JOB_BLUESHIELD,
-						JOB_ORDERLY, JOB_BOUNCER, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD, JOB_SCIENCE_GUARD
-						) // SKYRAT EDIT ADD - ALL AFTER JOB_CYBORG
+	restricted_roles = list(
+		JOB_AI,
+		JOB_CAPTAIN,
+		JOB_CHIEF_ENGINEER,
+		JOB_CHIEF_MEDICAL_OFFICER,
+		JOB_CYBORG,
+		JOB_DETECTIVE,
+		JOB_HEAD_OF_PERSONNEL,
+		JOB_HEAD_OF_SECURITY,
+		JOB_PRISONER,
+		JOB_RESEARCH_DIRECTOR,
+		JOB_SECURITY_OFFICER,
+		JOB_WARDEN,
+		// SKYRAT EDIT START - More restricted roles
+		JOB_NT_REP,
+		JOB_QUARTERMASTER,
+		JOB_BLUESHIELD,
+		JOB_SECURITY_SERGEANT,
+		JOB_SECURITY_MEDIC,
+		JOB_CORRECTIONS_OFFICER,
+		JOB_CIVIL_DISPUTES_OFFICER,
+		JOB_ORDERLY,
+		JOB_BOUNCER,
+		JOB_CUSTOMS_AGENT,
+		JOB_ENGINEERING_GUARD,
+		JOB_SCIENCE_GUARD,
+		JOB_VANGUARD_OPERATIVE,
+		JOB_PRISONER,
+		// SKYRAT EDIT END
+	)
 	required_candidates = 3
 	weight = 3
 	delay = 7 MINUTES
@@ -526,12 +657,39 @@
 	persistent = TRUE
 	antag_datum = /datum/antagonist/gang
 	antag_flag = ROLE_FAMILIES
-	protected_roles = list(JOB_HEAD_OF_PERSONNEL, JOB_PRISONER)
-	restricted_roles = list(JOB_AI, JOB_CYBORG,
-						JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_HEAD_OF_SECURITY, JOB_CORRECTIONS_OFFICER, JOB_CIVIL_DISPUTES_OFFICER, JOB_SECURITY_SERGEANT,
-						JOB_CAPTAIN, JOB_VANGUARD_OPERATIVE, JOB_NT_REP, JOB_BLUESHIELD,
-						JOB_ORDERLY, JOB_BOUNCER, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD, JOB_SCIENCE_GUARD
-						) // SKYRAT EDIT ADD - ALL AFTER JOB_CYBORG
+	protected_roles = list(
+		JOB_HEAD_OF_PERSONNEL,
+		JOB_PRISONER,
+	)
+	restricted_roles = list(
+		JOB_AI,
+		JOB_CAPTAIN,
+		JOB_CYBORG,
+		JOB_DETECTIVE,
+		JOB_HEAD_OF_SECURITY,
+		JOB_RESEARCH_DIRECTOR,
+		JOB_SECURITY_OFFICER,
+		JOB_WARDEN,
+		// SKYRAT EDIT START - More restricted roles
+		JOB_NT_REP,
+		JOB_CHIEF_ENGINEER,
+		JOB_CHIEF_MEDICAL_OFFICER,
+		JOB_RESEARCH_DIRECTOR,
+		JOB_QUARTERMASTER,
+		JOB_BLUESHIELD,
+		JOB_SECURITY_SERGEANT,
+		JOB_SECURITY_MEDIC,
+		JOB_CORRECTIONS_OFFICER,
+		JOB_CIVIL_DISPUTES_OFFICER,
+		JOB_ORDERLY,
+		JOB_BOUNCER,
+		JOB_CUSTOMS_AGENT,
+		JOB_ENGINEERING_GUARD,
+		JOB_SCIENCE_GUARD,
+		JOB_VANGUARD_OPERATIVE,
+		JOB_PRISONER,
+		// SKYRAT EDIT END
+	)
 	required_candidates = 3
 	weight = 1
 	cost = 19
@@ -615,71 +773,6 @@
 			clowns.set_assigned_role(SSjob.GetJobType(/datum/job/clown_operative))
 			clowns.special_role = ROLE_CLOWN_OPERATIVE
 
-
-//////////////////////////////////////////////
-//                                          //
-//               MONKEY                     //
-//                                          //
-//////////////////////////////////////////////
-
-/datum/dynamic_ruleset/roundstart/monkey
-	name = "Monkey"
-	antag_flag = ROLE_MONKEY
-	antag_datum = /datum/antagonist/monkey/leader
-	restricted_roles = list(JOB_AI, JOB_CYBORG, JOB_PRISONER)
-	required_candidates = 1
-	weight = 3
-	cost = 0
-	requirements = list(101,101,101,101,101,101,101,101,101,101)
-	flags = LONE_RULESET
-	var/players_per_carrier = 30
-	var/monkeys_to_win = 1
-	var/escaped_monkeys = 0
-	var/datum/team/monkey/monkey_team
-
-/datum/dynamic_ruleset/roundstart/monkey/pre_execute()
-	. = ..()
-	var/carriers_to_make = max(round(mode.roundstart_pop_ready / players_per_carrier, 1), 1)
-
-	for(var/j in 1 to carriers_to_make)
-		if (candidates.len <= 0)
-			break
-		var/mob/carrier = pick_n_take(candidates)
-		assigned += carrier.mind
-		carrier.mind.special_role = "Monkey Leader"
-		carrier.mind.restricted_roles = restricted_roles
-		log_game("[key_name(carrier)] has been selected as a Jungle Fever carrier")
-	return TRUE
-
-/datum/dynamic_ruleset/roundstart/monkey/execute()
-	for(var/datum/mind/carrier in assigned)
-		var/datum/antagonist/monkey/M = carrier.add_antag_datum(/datum/antagonist/monkey/leader)
-		if(M)
-			monkey_team = M.monkey_team
-	return TRUE
-
-/datum/dynamic_ruleset/roundstart/monkey/proc/check_monkey_victory()
-	if(SSshuttle.emergency.mode != SHUTTLE_ENDGAME)
-		return FALSE
-	var/datum/disease/D = new /datum/disease/transformation/jungle_fever()
-	for(var/mob/living/carbon/human/M in GLOB.alive_mob_list)
-		if(!ismonkey(M))
-			continue
-		if (M.HasDisease(D))
-			if(M.onCentCom() || M.onSyndieBase())
-				escaped_monkeys++
-	if(escaped_monkeys >= monkeys_to_win)
-		return TRUE
-	else
-		return FALSE
-
-// This does not get called. Look into making it work.
-/datum/dynamic_ruleset/roundstart/monkey/round_result()
-	if(check_monkey_victory())
-		SSticker.mode_result = "win - monkey win"
-	else
-		SSticker.mode_result = "loss - staff stopped the monkeys"
-
 //////////////////////////////////////////////
 //                                          //
 //               METEOR                     //
@@ -714,6 +807,50 @@
 	var/ramp_up_final = clamp(round(meteorminutes/rampupdelta), 1, 10)
 
 	spawn_meteors(ramp_up_final, wavetype)
+
+/// Ruleset for thieves
+/datum/dynamic_ruleset/roundstart/thieves
+	name = "Thieves"
+	antag_flag = ROLE_THIEF
+	antag_datum = /datum/antagonist/thief
+	protected_roles = list(
+		JOB_CAPTAIN,
+		JOB_DETECTIVE,
+		JOB_HEAD_OF_SECURITY,
+		JOB_PRISONER,
+		JOB_SECURITY_OFFICER,
+		JOB_WARDEN,
+	)
+	restricted_roles = list(
+		JOB_AI,
+		JOB_CYBORG,
+	)
+	required_candidates = 1
+	weight = 3
+	cost = 6 //very cheap cost for the round
+	scaling_cost = 9
+	requirements = list(8,8,8,8,8,8,8,8,8,8)
+	antag_cap = list("denominator" = 24)
+
+/datum/dynamic_ruleset/roundstart/thieves/pre_execute(population)
+	. = ..()
+	var/num_thieves = get_antag_cap(population) * (scaled_times + 1)
+	for (var/i = 1 to num_thieves)
+		if(candidates.len <= 0)
+			break
+		var/mob/chosen_mind = pick_n_take(candidates)
+		assigned += chosen_mind.mind
+		chosen_mind.mind.restricted_roles = restricted_roles
+		chosen_mind.mind.special_role = ROLE_THIEF
+		GLOB.pre_setup_antags += chosen_mind.mind
+	return TRUE
+
+/datum/dynamic_ruleset/roundstart/thieves/execute()
+	for(var/datum/mind/chosen_mind as anything in assigned)
+		var/datum/antagonist/thief/new_antag = new antag_datum
+		chosen_mind.add_antag_datum(new_antag)
+		GLOB.pre_setup_antags -= chosen_mind
+	return TRUE
 
 /// Ruleset for Nations
 /datum/dynamic_ruleset/roundstart/nations

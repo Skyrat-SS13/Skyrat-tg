@@ -226,7 +226,7 @@
 	if(!port_destinations)
 		port_destinations = id
 
-	SSshuttle.stationary += src
+	SSshuttle.stationary_docking_ports += src
 
 /obj/docking_port/stationary/Initialize(mapload)
 	. = ..()
@@ -245,7 +245,7 @@
 
 /obj/docking_port/stationary/unregister()
 	. = ..()
-	SSshuttle.stationary -= src
+	SSshuttle.stationary_docking_ports -= src
 
 /obj/docking_port/stationary/Destroy(force)
 	if(force)
@@ -288,7 +288,7 @@
 
 /obj/docking_port/stationary/transit/Initialize(mapload)
 	. = ..()
-	SSshuttle.transit += src
+	SSshuttle.transit_docking_ports += src
 
 /obj/docking_port/stationary/transit/Destroy(force=FALSE)
 	if(force)
@@ -298,7 +298,7 @@
 		if(transit_instance)
 			QDEL_NULL(transit_instance)
 		//SKYRAT EDIT END
-		SSshuttle.transit -= src
+		SSshuttle.transit_docking_ports -= src
 		if(owner)
 			if(owner.assigned_transit == src)
 				owner.assigned_transit = null
@@ -396,14 +396,14 @@
 		else
 			SSshuttle.assoc_mobile[id] = 1
 
-	SSshuttle.mobile += src
+	SSshuttle.mobile_docking_ports += src
 
 	//Link machinery to new shuttle
 	linkup()
 
 /obj/docking_port/mobile/unregister()
 	. = ..()
-	SSshuttle.mobile -= src
+	SSshuttle.mobile_docking_ports -= src
 
 /obj/docking_port/mobile/Destroy(force)
 	if(force)

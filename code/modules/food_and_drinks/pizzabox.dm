@@ -82,11 +82,11 @@
 	if(open)
 		if(pizza)
 			var/mutable_appearance/pizza_overlay = mutable_appearance(pizza.icon, pizza.icon_state)
-			pizza_overlay.pixel_y = -3
+			pizza_overlay.pixel_y = -2
 			. += pizza_overlay
 		if(bomb)
 			var/mutable_appearance/bomb_overlay = mutable_appearance(bomb.icon, bomb.icon_state)
-			bomb_overlay.pixel_y = 5
+			bomb_overlay.pixel_y = 8
 			. += bomb_overlay
 		return
 
@@ -150,12 +150,12 @@
 				update_appearance()
 				return
 			else
-				bomb_timer = input(user, "Set the [bomb] timer from [bomb_timer_min] to [bomb_timer_max].", bomb, bomb_timer) as num|null
+				bomb_timer = tgui_input_number(user, "Set the timer for [bomb].", "Pizza Bomb", bomb_timer, bomb_timer_max, bomb_timer_min)
 
 				if (isnull(bomb_timer))
 					return
 
-				bomb_timer = clamp(CEILING(bomb_timer, 1), bomb_timer_min, bomb_timer_max)
+				bomb_timer = round(bomb_timer)
 				bomb_defused = FALSE
 
 				log_bomber(user, "has trapped a", src, "with [bomb] set to [bomb_timer] seconds")
