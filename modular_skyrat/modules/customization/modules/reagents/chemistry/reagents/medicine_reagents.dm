@@ -50,7 +50,7 @@
 
 /datum/reagent/medicine/nanite_slurry
 	name = "Nanite Slurry"
-	description = "A localized swarm of nanomachines specialized in repairing mechanical parts. Due to the nanites needing to interface with the host's systems to repair them, a surplus of them will cause them to overheat, or for the swarm to eject out of the mouth for safety."
+	description = "A localized swarm of nanomachines specialized in repairing mechanical parts. Due to the nanites needing to interface with the host's systems to repair them, a surplus of them will cause them to overheat, or for the swarm to forcefully eject out of the mouth of organics for safety."
 	reagent_state = LIQUID
 	color = "#cccccc"
 	overdose_threshold = 20
@@ -69,13 +69,11 @@
 	. = 1
 
 /datum/reagent/medicine/nanite_slurry/overdose_process(mob/living/carbon/affected_mob, delta_time, times_fired)
-	if(!(affected_mob.mob_biotypes & MOB_ROBOTIC))
-		affected_mob.reagents.remove_reagent(type, 3.6) //gets removed from organics very fast
-		if(prob(25))
-			affected_mob.vomit(vomit_type = VOMIT_NANITE)
-		return ..()
-	else if(affected_mob.mob_biotypes & MOB_ROBOTIC)
+	if(affected_mob.mob_biotypes & MOB_ROBOTIC)
 		affected_mob.adjust_bodytemperature(temperature_change * REM * delta_time)
 		return ..()
+	affected_mob.reagents.remove_reagent(type, 3.6) //gets removed from organics very fast
+	if(prob(25))
+		affected_mob.vomit(vomit_type = VOMIT_NANITE)
 	..()
 	. = 1
