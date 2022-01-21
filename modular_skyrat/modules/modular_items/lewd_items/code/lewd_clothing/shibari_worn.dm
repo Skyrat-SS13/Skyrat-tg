@@ -119,6 +119,7 @@
 
 //processing stuff
 /obj/item/clothing/under/shibari/torso/process(delta_time)
+	. = ..()
 	if(ishuman(loc))
 		var/mob/living/carbon/human/hooman = loc
 		if(tightness == SHIBARI_TIGHTNESS_HIGH && hooman.pain < 30)
@@ -151,6 +152,7 @@
 
 //processing stuff
 /obj/item/clothing/under/shibari/groin/process(delta_time)
+	. = ..()
 	if(ishuman(loc))
 		var/mob/living/carbon/human/hooman = loc
 		if(tightness == SHIBARI_TIGHTNESS_LOW && hooman.pleasure < 20)
@@ -178,6 +180,7 @@
 
 //processing stuff
 /obj/item/clothing/under/shibari/full/process(delta_time)
+	. = ..()
 	if(ishuman(loc))
 		var/mob/living/carbon/human/hooman = loc
 		if(tightness == SHIBARI_TIGHTNESS_LOW && hooman.pleasure< 20)
@@ -250,7 +253,7 @@
 
 //stuff to apply mood event for perverts
 /obj/item/clothing/gloves/shibari_hands/equipped(mob/user, slot)
-	.=..()
+	. = ..()
 	if(ishuman(user))
 		var/mob/living/carbon/human/hooman = user
 		if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
