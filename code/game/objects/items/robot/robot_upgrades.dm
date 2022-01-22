@@ -558,7 +558,7 @@
 			to_chat(usr, span_warning("This unit already has an expand module installed!"))
 			return FALSE
 		// SKYRAT EDIT BEGIN
-		if(R_TRAIT_WIDE in R.model.model_features)
+		if(R.can_rest()) //	This proc returns TRUE if the robot has TALL or WIDE traits
 			to_chat(usr, span_warning("This unit's chassis cannot be enlarged any further."))
 			return FALSE
 		// SKYRAT EDIT END
