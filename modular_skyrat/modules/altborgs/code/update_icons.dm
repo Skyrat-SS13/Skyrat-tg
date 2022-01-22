@@ -1,9 +1,9 @@
 /mob/living/silicon/robot/update_icons()
 	icon = (model.cyborg_icon_override ? model.cyborg_icon_override : initial(icon))
 	. = ..()
-	update_dogborg_icons()
+	update_altborg_icons()
 
-/mob/living/silicon/robot/proc/update_dogborg_icons()
+/mob/living/silicon/robot/proc/update_altborg_icons()
 	var/extra_overlay
 	for(var/i in held_items)
 		var/obj/item/O = i
@@ -24,7 +24,7 @@
 	//	add_overlay("[model.sleeper_overlay]_r[sleeper_nv ? "_nv" : ""]")
 
 	if(robot_resting)
-		if(stat != DEAD && is_dogborg())
+		if(stat != DEAD && can_rest())
 			switch(robot_resting)
 				if(ROBOT_REST_NORMAL)
 					icon_state = "[model.cyborg_base_icon]-rest"

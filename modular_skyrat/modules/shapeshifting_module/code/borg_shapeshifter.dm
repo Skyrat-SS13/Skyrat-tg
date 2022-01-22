@@ -209,6 +209,7 @@
 	active = TRUE
 	user.update_icons()
 	user.model.update_dogborg()
+	user.model.update_tallborg()
 
 	if(listeningTo == user)
 		return
@@ -233,6 +234,7 @@
 	active = FALSE
 	user.update_icons()
 	user.model.update_dogborg()
+	user.model.update_tallborg()
 
 /obj/item/borg_shapeshifter/proc/disrupt(mob/living/silicon/robot/user)
 	SIGNAL_HANDLER

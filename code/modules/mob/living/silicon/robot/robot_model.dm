@@ -190,6 +190,7 @@
 
 	//SKYRAT EDIT ADDITION BEGIN - ALTBORGS - Old check for 'dogborg' var no longer necessary, refactored into model_features instead.
 	new_model.update_dogborg()
+	new_model.update_tallborg()
 	//SKYRAT EDIT ADDITION END
 
 	INVOKE_ASYNC(new_model, .proc/do_transform_animation)

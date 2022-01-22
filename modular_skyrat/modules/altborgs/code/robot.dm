@@ -22,7 +22,7 @@
 	set name = "Switch Rest Style"
 	set category = "AI Commands"
 	set desc = "Select your resting pose."
-	if(!is_dogborg())
+	if(!can_rest())
 		to_chat(src, span_warning("You can't do that!"))
 		return
 	var/choice = tgui_alert(src, "Select resting pose", "", list("Resting", "Sitting", "Belly up"))
@@ -41,7 +41,7 @@
 /mob/living/silicon/robot/proc/robot_lay_down()
 	set name = "Lay down"
 	set category = "AI Commands"
-	if(!is_dogborg())
+	if(!can_rest())
 		to_chat(src, span_warning("You can't do that!"))
 		return
 	if(stat != CONSCIOUS) //Make sure we don't enable movement when not concious
@@ -59,7 +59,7 @@
 
 /mob/living/silicon/robot/update_resting()
 	. = ..()
-	if(is_dogborg())
+	if(can_rest())
 		robot_resting = FALSE
 		update_icons()
 
@@ -69,11 +69,11 @@
 		hands.icon = (model.model_select_alternate_icon ? model.model_select_alternate_icon : initial(hands.icon))
 
 /**
- * Safe check of the cyborg's model_features list to see if they're 'wide'/dogborg/drakeborg/etc.
+ * Safe check of the cyborg's model_features list.
  *
  * model_features is defined in modular_skyrat\modules\altborgs\code\modules\mob\living\silicon\robot\robot_model.dm.
  */
-/mob/living/silicon/robot/proc/is_dogborg()
-	if(model && model.model_features && (R_TRAIT_WIDE in model.model_features))
+/mob/living/silicon/robot/proc/can_rest()
+	if(model && model.model_features && ((R_TRAIT_WIDE in model.model_features) || (R_TRAIT_TALL in model.model_features)))
 		return TRUE
 	return FALSE
