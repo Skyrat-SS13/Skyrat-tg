@@ -347,7 +347,7 @@
 	overdose_threshold = 20
 	metabolization_rate = 0.25
 	life_pref_datum = /datum/preference/toggle/erp/breast_enlargement
-	overdose_pref_datum = /datum/preference/toggle/erp/breast_enlargement ///Changed from gender_change in order to have that as a separate feature within overdose.
+	overdose_pref_datum = /datum/preference/toggle/erp ///Changed from breast_enlargement in order to have gender swapping as a separate feature within overdose.
 
 /datum/reagent/drug/aphrodisiac/breast_enlarger/life_effects(mob/living/carbon/human/exposed_mob) //Increases breast size
 	var/obj/item/organ/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
@@ -427,26 +427,27 @@
 /datum/reagent/drug/aphrodisiac/breast_enlarger/overdose_effects(mob/living/carbon/human/exposed_mob) //Turns you into a female if character is male. Also supposed to add breasts but enlargement_amount'm too dumb to figure out how to make it work
 	var/obj/item/organ/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
 	var/obj/item/organ/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
-	/// Makes above comment actually work.
-	if(!exposed_mob.getorganslot(ORGAN_SLOT_BREASTS))
-		var/obj/item/organ/path = /obj/item/organ/genital/breasts
-		exposed_mob.dna.mutant_bodyparts["breasts"][MUTANT_INDEX_NAME] = "Pair"
-		path = new /obj/item/organ/genital/breasts
-		path.build_from_dna(exposed_mob.dna, "breasts")
-		path.Insert(exposed_mob, 0, FALSE)
-		var/obj/item/organ/genital/new_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
-		new_breasts.genital_size = 2
-		new_breasts.update_sprite_suffix()
-		exposed_mob.update_body()
-		enlargement_amount = 0
-		if(new_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_topless())
-			exposed_mob.visible_message(span_notice("[exposed_mob]'s bust suddenly expands!"))
-			to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it expands outward."))
-			return
-		else
-			exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s chest suddenly bounces a bit."))
-			to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it strains against your clothes."))
-			return
+	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
+		/// Makes above comment actually work.
+		if(!exposed_mob.getorganslot(ORGAN_SLOT_BREASTS))
+			var/obj/item/organ/path = /obj/item/organ/genital/breasts
+			exposed_mob.dna.mutant_bodyparts["breasts"][MUTANT_INDEX_NAME] = "Pair"
+			path = new /obj/item/organ/genital/breasts
+			path.build_from_dna(exposed_mob.dna, "breasts")
+			path.Insert(exposed_mob, 0, FALSE)
+			var/obj/item/organ/genital/new_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
+			new_breasts.genital_size = 2
+			new_breasts.update_sprite_suffix()
+			exposed_mob.update_body()
+			enlargement_amount = 0
+			if(new_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_topless())
+				exposed_mob.visible_message(span_notice("[exposed_mob]'s bust suddenly expands!"))
+				to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it expands outward."))
+				return
+			else
+				exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s chest suddenly bounces a bit."))
+				to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it strains against your clothes."))
+				return
 	///Separates gender change stuff from breast growth.
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
 		if(exposed_mob.gender == MALE)
@@ -485,7 +486,7 @@
 	overdose_threshold = 20 ///ODing makes you male and shrinks female genitals if gender change prefs are enabled. Otherwise, grows a cock.
 	metabolization_rate = 0.25
 	life_pref_datum = /datum/preference/toggle/erp/penis_enlargement
-	overdose_pref_datum = /datum/preference/toggle/erp/penis_enlargement ///Changed from gender_change in order to have that as a separate feature within overdose.
+	overdose_pref_datum = /datum/preference/toggle/erp ///Changed from penis_enlargement in order to have gender swapping as a separate feature within overdose.
 
 /datum/reagent/drug/aphrodisiac/penis_enlarger/life_effects(mob/living/carbon/human/exposed_mob)
 	var/obj/item/organ/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
@@ -548,49 +549,50 @@
 	return ..()
 
 /datum/reagent/drug/aphrodisiac/penis_enlarger/overdose_effects(mob/living/carbon/human/exposed_mob)
-	if(!exposed_mob.getorganslot(ORGAN_SLOT_PENIS))
-		///Check if human. If not do messy code. (This only supports lizards and human penises (for now))
-		exposed_mob.dna.features["penis_sheath"] = SHEATH_NONE
-		exposed_mob.dna.mutant_bodyparts["penis"][MUTANT_INDEX_NAME] = "Human"
-		exposed_mob.dna.mutant_bodyparts["testicles"][MUTANT_INDEX_NAME] = "Pair"
-		if((exposed_mob.dna.species.id == SPECIES_HUMAN) && (exposed_mob.dna.species.id != SPECIES_LIZARD) && (exposed_mob.dna.species.id != SPECIES_LIZARD_ASH))
-			if (!exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES))
-				var/obj/item/organ/balls_path = /obj/item/organ/genital/testicles
-				balls_path = new /obj/item/organ/genital/testicles
-				balls_path.build_from_dna(exposed_mob.dna, "testicles")
-				balls_path.Insert(exposed_mob, 0, FALSE)
-				var/obj/item/organ/genital/new_balls = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
-				new_balls.genital_size = 1
-				new_balls.update_sprite_suffix()
-		if((exposed_mob.dna.species.id == SPECIES_LIZARD) || (exposed_mob.dna.species.id == SPECIES_LIZARD_ASH))
-			exposed_mob.dna.features["penis_sheath"] = SHEATH_SLIT
-			exposed_mob.dna.mutant_bodyparts["penis"][MUTANT_INDEX_NAME] = "Flared"
-			exposed_mob.dna.mutant_bodyparts["penis"][MUTANT_INDEX_COLOR_LIST] = list("#FFB6C1")
-			exposed_mob.dna.mutant_bodyparts["testicles"][MUTANT_INDEX_NAME] = "Internal"
-			if (!exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES))
-				var/obj/item/organ/balls_path = /obj/item/organ/genital/testicles
-				balls_path = new /obj/item/organ/genital/testicles
-				balls_path.build_from_dna(exposed_mob.dna, "testicles")
-				balls_path.Insert(exposed_mob, 0, FALSE)
-				var/obj/item/organ/genital/new_balls = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
-				new_balls.genital_size = 1
-				new_balls.update_sprite_suffix()
-		var/obj/item/organ/cock_path = /obj/item/organ/genital/penis
-		cock_path = new /obj/item/organ/genital/penis
-		cock_path.build_from_dna(exposed_mob.dna, "penis")
-		cock_path.Insert(exposed_mob, 0, FALSE)
-		var/obj/item/organ/genital/penis/new_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
-		new_penis.genital_size = 4
-		new_penis.girth = 3
-		new_penis.update_sprite_suffix()
-		exposed_mob.update_body()
-		to_chat(exposed_mob, span_purple("Your crotch feels warm as something suddenly sprouts between your legs."))
-	///Makes the balls bigger if they're small.
-	var/obj/item/organ/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
-	if(mob_testicles)
-		if(mob_testicles.genital_size > 2)
-			return
-		mob_testicles.genital_size = 2
+	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/penis_enlargement))
+		if(!exposed_mob.getorganslot(ORGAN_SLOT_PENIS))
+			///Check if human. If not do messy code. (This only supports lizards and human penises (for now))
+			exposed_mob.dna.features["penis_sheath"] = SHEATH_NONE
+			exposed_mob.dna.mutant_bodyparts["penis"][MUTANT_INDEX_NAME] = "Human"
+			exposed_mob.dna.mutant_bodyparts["testicles"][MUTANT_INDEX_NAME] = "Pair"
+			if((exposed_mob.dna.species.id == SPECIES_HUMAN) && (exposed_mob.dna.species.id != SPECIES_LIZARD) && (exposed_mob.dna.species.id != SPECIES_LIZARD_ASH))
+				if (!exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES))
+					var/obj/item/organ/balls_path = /obj/item/organ/genital/testicles
+					balls_path = new /obj/item/organ/genital/testicles
+					balls_path.build_from_dna(exposed_mob.dna, "testicles")
+					balls_path.Insert(exposed_mob, 0, FALSE)
+					var/obj/item/organ/genital/new_balls = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+					new_balls.genital_size = 1
+					new_balls.update_sprite_suffix()
+			if((exposed_mob.dna.species.id == SPECIES_LIZARD) || (exposed_mob.dna.species.id == SPECIES_LIZARD_ASH))
+				exposed_mob.dna.features["penis_sheath"] = SHEATH_SLIT
+				exposed_mob.dna.mutant_bodyparts["penis"][MUTANT_INDEX_NAME] = "Flared"
+				exposed_mob.dna.mutant_bodyparts["penis"][MUTANT_INDEX_COLOR_LIST] = list("#FFB6C1")
+				exposed_mob.dna.mutant_bodyparts["testicles"][MUTANT_INDEX_NAME] = "Internal"
+				if (!exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES))
+					var/obj/item/organ/balls_path = /obj/item/organ/genital/testicles
+					balls_path = new /obj/item/organ/genital/testicles
+					balls_path.build_from_dna(exposed_mob.dna, "testicles")
+					balls_path.Insert(exposed_mob, 0, FALSE)
+					var/obj/item/organ/genital/new_balls = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+					new_balls.genital_size = 1
+					new_balls.update_sprite_suffix()
+			var/obj/item/organ/cock_path = /obj/item/organ/genital/penis
+			cock_path = new /obj/item/organ/genital/penis
+			cock_path.build_from_dna(exposed_mob.dna, "penis")
+			cock_path.Insert(exposed_mob, 0, FALSE)
+			var/obj/item/organ/genital/penis/new_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
+			new_penis.genital_size = 4
+			new_penis.girth = 3
+			new_penis.update_sprite_suffix()
+			exposed_mob.update_body()
+			to_chat(exposed_mob, span_purple("Your crotch feels warm as something suddenly sprouts between your legs."))
+		///Makes the balls bigger if they're small.
+		var/obj/item/organ/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+		if(mob_testicles)
+			if(mob_testicles.genital_size > 2)
+				return
+			mob_testicles.genital_size = 2
 	///Separates gender change stuff from cock growth.
 	var/obj/item/organ/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
