@@ -9,6 +9,11 @@
 	generic = "Screen"
 	relevent_layers = list(BODY_ADJ_LAYER)
 
+/datum/sprite_accessory/screen/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
+	if((H.wear_mask && (H.wear_mask.flags_inv & HIDEEYES)) || !HD)
+		return TRUE
+	return FALSE
+
 /datum/sprite_accessory/screen/none
 	name = "None"
 	icon_state = "none"
