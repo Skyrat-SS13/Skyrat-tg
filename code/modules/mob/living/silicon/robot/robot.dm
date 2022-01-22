@@ -9,7 +9,10 @@
 		untip_time = 2 SECONDS, \
 		self_right_time = 60 SECONDS, \
 		post_tipped_callback = CALLBACK(src, .proc/after_tip_over), \
-		post_untipped_callback = CALLBACK(src, .proc/after_righted))
+		post_untipped_callback = CALLBACK(src, .proc/after_righted), \
+		roleplay_friendly = TRUE, \
+		roleplay_emotes = list(/datum/emote/living/human/buzz, /datum/emote/living/human/buzz2, /datum/emote/living/human/beep, /datum/emote/living/human/beep2), \
+		roleplay_callback = CALLBACK(src, .proc/untip_roleplay)) // SKYRAT EDIT CHANGE
 
 	wires = new /datum/wires/robot(src)
 	AddElement(/datum/element/empprotection, EMP_PROTECT_WIRES)
@@ -1040,3 +1043,6 @@
 	var/datum/job/cyborg/cyborg_job_ref = SSjob.GetJobType(/datum/job/cyborg)
 
 	.[cyborg_job_ref.title] = minutes
+
+/mob/living/silicon/robot/proc/untip_roleplay()
+	to_chat(src, span_notice("Your frustration has empowered you! You can now right yourself faster!"))

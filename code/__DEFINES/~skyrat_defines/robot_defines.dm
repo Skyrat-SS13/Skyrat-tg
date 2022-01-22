@@ -9,8 +9,6 @@
 //Defines for model features, set in the model_features list of a robot model datum. Are they a dogborg? Is the model small? etc.
 /// Cyborgs with unique sprites for when they get totally broken down.
 #define R_TRAIT_UNIQUEWRECK	"unique_wreck"
-/// Or when tipped over.
-#define R_TRAIT_UNIQUETIP	"unique_tip"
 /// Represents wide/quadruped/dogborg type models.
 #define R_TRAIT_WIDE		"wide_borg"
 /// Any model small enough to reject the shrinker upgrade.
