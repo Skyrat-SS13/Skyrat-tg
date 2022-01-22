@@ -952,7 +952,7 @@
 	slowdown_inactive = 0
 	slowdown_active = 0
 	skins = list(
-		"chrono" = list(
+		"timeline" = list(
 			HELMET_LAYER = NECK_LAYER,
 			HELMET_FLAGS = list(
 				UNSEALED_CLOTHING = SNUG_FIT,
