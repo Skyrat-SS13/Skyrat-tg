@@ -976,3 +976,57 @@
   - imageadd: modsuit jetpack now has unique assets
   coldud13:
   - imageadd: fixed modsuit cores needing CS:S
+2022-01-23:
+  Melbert:
+  - bugfix: Fixes some decals and piping in Delta's Ordnance Lab
+  Orion_the_Fox, Pirill:
+  - rscadd: Added several new Bamboo items, turfs, and more!
+  - imageadd: Updated existing Bamboo items to a less repulsive green.
+  PositiveEntropy:
+  - imageadd: resprite the toolboxes
+  - imagedel: removes the old Goon toolbox sprites
+  Semoro:
+  - bugfix: timers not removing from second queue on init
+  - bugfix: Avoid timer scheduling too far events into short queue
+  SkyratBot:
+  - rscadd: new plasma cutter EMP effect, it sets you on fire
+  - rscadd: Traitor Roboticists can now purchase the Springlock MODsuit Module from
+      the uplink.
+  - rscadd: This version of the Springlock MODsuit Module activates way, way faster.
+  - bugfix: Portable Scrubbers and Large Scrubbers should no longer display as large,
+      embittered ERROR icons for those who enjoy mapping.
+  - refactor: Refactored AI law announcing.
+  - balance: Tritiumfire will need more tritium burned in order to release radiation.
+      The higher the volume of the gasmixture, the more tritium is needed.
+  - balance: Tritiumfire radiation pulse will always have a range of at least 6, but
+      will need more tritium in order to increase range.
+  - balance: Tritiumfire will be less likely to irradiate you if there is less tritium
+      getting burned.
+  - rscadd: Reflectors have been slotted with USB ports.
+  - bugfix: Fixed aggressive mobs moving twice as slow as they should. This was the
+      result of a rather big refactor that moved us away from a BYOND thing. I don't
+      know how the BYOND thing fucking works internally, so the numbers might be a
+      bit off. If something seems (way) too fast/slow, lemme know yeah?
+  - soundadd: The next time you work out at the gym, please appreciate the new crispness
+      of the sound when that machine starts to squeak as a result of your effort.
+      So refreshing.
+  - bugfix: Setting volume pump to 0L/S will no longer runtime.
+  - bugfix: ghosts will now bob up and down
+  - balance: Borgs can halve their selfuntip time with the power of roleplay.
+  itseasytosee:
+  - bugfix: fixed stacked cannonball sprites looking wack
+  jjpark-kb:
+  - rscdel: removed some starting chemicals from the borer
+  - rscadd: 'Port Tarkon: changed atmospherics'
+  - rscadd: 'Port Tarkon: added a bluespace miner circuitboard to a safe'
+  - rscadd: 'Port Tarkon: Split the starting 25 uranium into small piles around the
+      map'
+  - balance: changed bluespace miner price from 200,000 to 75,000
+  - bugfix: fixed bluespace miner missing "pressure too high" examine text
+  tastyfish:
+  - bugfix: Objects transitioning through z-levels in disposals no longer lose their
+      delivery destination tag.
+  - bugfix: Tramstation port-aft disposals loop containing part of service, and engineering
+      now work again.
+  tf-4:
+  - bugfix: fire alarms now ACTUALLY prepend their area name
