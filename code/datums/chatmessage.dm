@@ -125,12 +125,13 @@
 		target.chat_color_darkened = colorize_string(target.name, 0.85, 0.85)
 		target.chat_color_name = target.name
 
-	// Skyrat add - Character preference for chatmessages
+	// SKYRAT ADDITION - Character preference for chatmessages
 	var/chat_color_player = owned_by.prefs.read_preference(/datum/preference/color/chat_color_player)
-	if(chat_color_player >= "#222222")	// Connected with `datum/preference/color/chat_color_player/is_valid`
-		target.chat_color = sanitize_hexcolor(chat_color_player)
-		target.chat_color_darkened = sanitize_hexcolor(chat_color_player)
-	//
+	if(chat_color_player != COLOR_BLACK) //	Black means its disabled
+		var/hex_value = sanitize_hexcolor(chat_color_player)
+		target.chat_color = hex_value
+		target.chat_color_darkened = (hex_value + "a8") // Add an alpha-channel
+	// SKYRAT ADDITION END
 
 	// Get rid of any URL schemes that might cause BYOND to automatically wrap something in an anchor tag
 	var/static/regex/url_scheme = new(@"[A-Za-z][A-Za-z0-9+-\.]*:\/\/", "g")
