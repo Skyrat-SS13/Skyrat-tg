@@ -125,6 +125,13 @@
 		target.chat_color_darkened = colorize_string(target.name, 0.85, 0.85)
 		target.chat_color_name = target.name
 
+	// Skyrat add
+	var/chat_color_player = owned_by.prefs.read_preference(/datum/preference/color/chat_color_player)
+	if(chat_color_player != "#000000")
+		target.chat_color = sanitize_hexcolor(chat_color_player)
+		target.chat_color_darkened = sanitize_hexcolor(chat_color_player)
+	//
+
 	// Get rid of any URL schemes that might cause BYOND to automatically wrap something in an anchor tag
 	var/static/regex/url_scheme = new(@"[A-Za-z][A-Za-z0-9+-\.]*:\/\/", "g")
 	text = replacetext(text, url_scheme, "")

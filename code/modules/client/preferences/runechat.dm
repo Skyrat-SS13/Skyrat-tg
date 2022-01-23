@@ -1,3 +1,8 @@
+/datum/preference/color/chat_color_player	// Skyrat Addition
+	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
+	savefile_key = "chat_color_player"
+	savefile_identifier = PREFERENCE_PLAYER
+//
 /datum/preference/toggle/enable_runechat
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
 	savefile_key = "chat_on_map"
