@@ -12,12 +12,12 @@
 		return
 
 	if(message == "")
-		set_typing_indicator(TRUE)
+		set_typing_indicator(TRUE, "say")
 		message = tgui_input_text(usr, title="Say", encode = FALSE)
 		if(!message)
-			set_typing_indicator(FALSE)
+			set_typing_indicator(FALSE, "say")
 			return
-	set_typing_indicator(FALSE)
+	set_typing_indicator(FALSE, "say")
 
 // SKYRAT EDIT END - tgui say
 	//queue this message because verbs are scheduled to process after SendMaps in the tick and speech is pretty expensive when it happens.
@@ -37,12 +37,12 @@
 		return
 
 	if(message == "")
-		set_typing_indicator(TRUE)
+		set_typing_indicator(TRUE, "whisper")
 		message = tgui_input_text(usr, title="Whisper", encode = FALSE)
 		if(!message)
-			set_typing_indicator(FALSE)
+			set_typing_indicator(FALSE, "whisper")
 			return
-	set_typing_indicator(FALSE)
+	set_typing_indicator(FALSE, "whisper")
 
 
 	if(message)
@@ -64,12 +64,12 @@
 		return
 
 	if(message == "")
-		set_typing_indicator(TRUE)
+		set_typing_indicator(TRUE, "me")
 		message = tgui_input_text(usr, title="Me", multiline = TRUE, encode = FALSE)
 		if(!message)
-			set_typing_indicator(FALSE)
+			set_typing_indicator(FALSE, "me")
 			return
-	set_typing_indicator(FALSE)
+	set_typing_indicator(FALSE, "me")
 
 	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
 

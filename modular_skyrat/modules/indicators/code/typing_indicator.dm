@@ -1,12 +1,27 @@
 GLOBAL_VAR_INIT(typing_indicator_overlay, mutable_appearance('modular_skyrat/modules/indicators/icons/typing_indicator.dmi', "default0", FLY_LAYER))
 
 /mob
-	var/typing_indicator = FALSE
+	/// A list of all typing indicator sources. When this list is empty, there's no typing indicator displayed.
+	var/list/typing_indicator
 
-/mob/proc/set_typing_indicator(var/state)
-	typing_indicator = state
-	if(typing_indicator)
-		add_overlay(GLOB.typing_indicator_overlay)
+
+/// Sets the typing indicator. Do not call TRUE without a source. If source is left empty, all sources will be cleared. If source is not empty, only the specified source will be set.
+/mob/proc/set_typing_indicator(var/state, var/source)
+	var/has_indicator = LAZYLEN(typing_indicator)
+	if(source)
+		if(state)
+			LAZYADD(typing_indicator, source)
+		else
+			LAZYREMOVE(typing_indicator, source)
+	else
+		if(!state)
+			LAZYNULL(typing_indicator)
+		else
+			stack_trace("set_typing_indicator: source is null, yet state is TRUE")
+
+	if(LAZYLEN(typing_indicator))
+		if(!has_indicator)
+			add_overlay(GLOB.typing_indicator_overlay)
 	else
 		cut_overlay(GLOB.typing_indicator_overlay)
 
