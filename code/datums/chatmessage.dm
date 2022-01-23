@@ -125,9 +125,9 @@
 		target.chat_color_darkened = colorize_string(target.name, 0.85, 0.85)
 		target.chat_color_name = target.name
 
-	// Skyrat add
+	// Skyrat add - Character preference for chatmessages
 	var/chat_color_player = owned_by.prefs.read_preference(/datum/preference/color/chat_color_player)
-	if(chat_color_player >= "#222222")
+	if(chat_color_player >= "#222222")	// Connected with `datum/preference/color/chat_color_player/is_valid`
 		target.chat_color = sanitize_hexcolor(chat_color_player)
 		target.chat_color_darkened = sanitize_hexcolor(chat_color_player)
 	//

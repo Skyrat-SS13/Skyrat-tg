@@ -1,11 +1,4 @@
-import { CheckboxInput, FeatureNumberInput, FeatureNumeric, FeatureToggle, FeatureColorInput, Feature } from "../base"; // Skyrat add "FeatureColorInput, Feature"
-
-export const chat_color_player: Feature<string> = { // Skyrat add
-  name: "Runechat color",
-  category: "RUNECHAT",
-  description: "The color of your runechat speechbubbles. '#000000' returns name generated colors.",
-  component: FeatureColorInput,
-}; //
+import { CheckboxInput, FeatureNumberInput, FeatureNumeric, FeatureToggle } from "../base";
 
 export const chat_on_map: FeatureToggle = {
   name: "Enable Runechat",
