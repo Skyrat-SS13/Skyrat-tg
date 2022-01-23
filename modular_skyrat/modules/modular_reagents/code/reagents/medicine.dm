@@ -77,6 +77,7 @@
 	.=..()
 	owner.remove_status_effect(STATUS_EFFECT_STASIS_MOBILE, STASIS_CHEMICAL_EFFECT)
 	owner.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/ataraxydone)
+	owner.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/ataraxyprone)
 	REMOVE_TRAIT(owner, TRAIT_PACIFISM, "ataraxydone")
 
 /datum/reagent/medicine/ataraxydone/overdose_process(mob/living/owner, delta_time, times_fired)
