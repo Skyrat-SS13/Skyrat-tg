@@ -10,13 +10,14 @@
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
-	if(message == "")
-		message = tgui_input_text(usr, title="Say", encode = FALSE)
 
-	//SKYRAT EDIT ADDITION BEGIN - TYPING_INDICATOR
-	if(typing_indicator)
-		set_typing_indicator(FALSE)
-	//SKYRAT EDIT ADDITION END
+	if(message == "")
+		set_typing_indicator(TRUE)
+		message = tgui_input_text(usr, title="Say", encode = FALSE)
+		if(!message)
+			set_typing_indicator(FALSE)
+			return
+	set_typing_indicator(FALSE)
 
 // SKYRAT EDIT END - tgui say
 	//queue this message because verbs are scheduled to process after SendMaps in the tick and speech is pretty expensive when it happens.
@@ -36,7 +37,13 @@
 		return
 
 	if(message == "")
+		set_typing_indicator(TRUE)
 		message = tgui_input_text(usr, title="Whisper", encode = FALSE)
+		if(!message)
+			set_typing_indicator(FALSE)
+			return
+	set_typing_indicator(FALSE)
+
 
 	if(message)
 		SSspeech_controller.queue_say_for_mob(src, message, SPEECH_CONTROLLER_QUEUE_WHISPER_VERB)
@@ -57,12 +64,12 @@
 		return
 
 	if(message == "")
+		set_typing_indicator(TRUE)
 		message = tgui_input_text(usr, title="Me", multiline = TRUE, encode = FALSE)
-
-	//SKYRAT EDIT ADDITION BEGIN - TYPING_INDICATOR
-	if(typing_indicator)
-		set_typing_indicator(FALSE)
-	//SKYRAT EDIT ADDITION END
+		if(!message)
+			set_typing_indicator(FALSE)
+			return
+	set_typing_indicator(FALSE)
 
 	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
 

@@ -10,16 +10,6 @@ GLOBAL_VAR_INIT(typing_indicator_overlay, mutable_appearance('modular_skyrat/mod
 	else
 		cut_overlay(GLOB.typing_indicator_overlay)
 
-/mob/living/key_down(_key, client/user)
-	if(!typing_indicator && stat == CONSCIOUS)
-		var/list/binds = user.prefs?.key_bindings_by_key[_key]
-		if(binds)
-			if("Say" in binds)
-				set_typing_indicator(TRUE)
-			if("Me" in binds)
-				set_typing_indicator(TRUE)
-	return ..()
-
 /proc/animate_speechbubble(image/I, list/show_to, duration)
 	var/matrix/M = matrix()
 	M.Scale(0,0)
