@@ -14,3 +14,12 @@
 		/obj/item/organ/corticalstack/syndicate = 40,
 	)
 
+/obj/machinery/vending/drugs
+	skyrat_products = list(
+		/obj/item/reagent_containers/syringe/ataraxydone = 3,
+	)
+
+/obj/machinery/vending/wallmed
+	skyrat_products = list(
+		/obj/item/reagent_containers/syringe/ataraxydone = 1,
+	)

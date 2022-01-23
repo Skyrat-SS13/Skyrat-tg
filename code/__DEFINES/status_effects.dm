@@ -95,6 +95,8 @@
 
 #define STATUS_EFFECT_STASIS /datum/status_effect/grouped/stasis //Halts biological functions like bleeding, chemical processing, blood regeneration, walking, etc
 
+#define STATUS_EFFECT_STASIS_MOBILE /datum/status_effect/grouped/stasis_mobile //SKYRAT ADD: Walking stasis.
+
 #define STATUS_EFFECT_FAKE_VIRUS /datum/status_effect/fake_virus //gives you fluff messages for cough, sneeze, headache, etc but without an actual virus
 
 #define STATUS_EFFECT_LIMP /datum/status_effect/limp //For when you have a busted leg (or two!) and want additional slowdown when walking on that leg
@@ -167,4 +169,4 @@
 
 // Stasis helpers
 
-#define IS_IN_STASIS(mob) (mob.has_status_effect(STATUS_EFFECT_STASIS))
+#define IS_IN_STASIS(mob) (mob.has_status_effect(STATUS_EFFECT_STASIS) || mob.has_status_effect(STATUS_EFFECT_STASIS_MOBILE)) //SKYRAT EDIT old: #define IS_IN_STASIS(mob) (mob.has_status_effect(STATUS_EFFECT_STASIS))

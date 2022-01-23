@@ -19,3 +19,20 @@
 	if(off_cooldown(holder, equilibrium, 10, "lidocaine"))
 		explode_attack_chem(holder, equilibrium, /datum/reagent/inverse/lidocaine, 5)
 		explode_invert_smoke(holder, equilibrium)
+
+/datum/chemical_reaction/medicine/ataraxydone
+	results = list(/datum/reagent/medicine/ataraxydone = 3)
+	required_reagents = list(/datum/reagent/cryostylane = 1, /datum/reagent/pax = 1, /datum/reagent/nitrous_oxide = 1)
+	reaction_tags = REACTION_TAG_MODERATE | REACTION_TAG_CLONE | REACTION_TAG_ORGAN | REACTION_TAG_DRUG | REACTION_TAG_CHEMICAL
+	required_temp = 100
+	optimal_temp = 500
+	overheat_temp = NO_OVERHEAT
+	optimal_ph_min = 6.5
+	optimal_ph_max = 7.5
+	determin_ph_range = 1.5
+	temp_exponent_factor = 2
+	ph_exponent_factor = 2.5
+	thermic_constant = 360
+	H_ion_release = 0
+	rate_up_lim = 10
+	purity_min = 0.1
