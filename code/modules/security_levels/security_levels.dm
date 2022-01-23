@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //SEC_LEVEL_GREEN = code green
 //SEC_LEVEL_BLUE = code blue
 //SEC_LEVEL_RED = code red
@@ -7,6 +8,8 @@
 
 //SKYRAT EDIT REMOVAL BEGIN - ALERTS (moved to modular)
 /*
+=======
+>>>>>>> 14deaa41ed9 (Remove code/__DEFINES/misc.dm (#63879))
 /proc/set_security_level(level)
 	switch(level)
 		if("green")
