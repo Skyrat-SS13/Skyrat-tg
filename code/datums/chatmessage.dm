@@ -126,11 +126,14 @@
 		target.chat_color_name = target.name
 
 	// SKYRAT ADDITION - Character preference for chatmessages
-	var/chat_color_player = owned_by.prefs.read_preference(/datum/preference/color/chat_color_player)
-	if(chat_color_player != COLOR_BLACK) //	Black means its disabled
-		var/hex_value = sanitize_hexcolor(chat_color_player)
-		target.chat_color = hex_value
-		target.chat_color_darkened = (hex_value + "a8") // Add an alpha-channel
+	if(isliving(target))
+		var/mob/living/speaker = target
+		if(speaker.client?.prefs)
+			var/chat_color_player = speaker.client.prefs.read_preference(/datum/preference/color/chat_color_player)
+			if(chat_color_player != COLOR_BLACK) //	Black means its disabled
+				var/hex_value = sanitize_hexcolor(chat_color_player)
+				target.chat_color = hex_value
+				target.chat_color_darkened = (hex_value + "a8") // Add an alpha-channel to darken
 	// SKYRAT ADDITION END
 
 	// Get rid of any URL schemes that might cause BYOND to automatically wrap something in an anchor tag
