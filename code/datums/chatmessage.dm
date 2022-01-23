@@ -127,7 +127,7 @@
 
 	// Skyrat add
 	var/chat_color_player = owned_by.prefs.read_preference(/datum/preference/color/chat_color_player)
-	if(chat_color_player > "#222222")
+	if(chat_color_player >= "#222222")
 		target.chat_color = sanitize_hexcolor(chat_color_player)
 		target.chat_color_darkened = sanitize_hexcolor(chat_color_player)
 	//
