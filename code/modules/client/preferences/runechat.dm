@@ -31,8 +31,9 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 
 /datum/preference/color/chat_color_player/is_valid(value)
-	if(value < "#222222")	// These colors are too bright or too dark
-		if(value == "#000000")	// Allow it to be disabled, returning name generated colors
+	var/hex_value = sanitize_hexcolor(value)
+	if(hex_value < "#222222")	// These colors are too bright or too dark
+		if(hex_value == "#000000")	// Allow it to be disabled, returning name generated colors
 			return TRUE
 		return FALSE
 	return TRUE
