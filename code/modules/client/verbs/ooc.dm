@@ -2,14 +2,19 @@ GLOBAL_VAR_INIT(OOC_COLOR, null)//If this is null, use the CSS for OOC. Otherwis
 GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 ///talking in OOC uses this
-/client/verb/ooc(msg as text)
+// SKYRAT EDIT BEGIN - tgui ooc
+/client/verb/ooc(msg = "" as text)
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC"
+	set instant = TRUE
 
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 
+	if(msg == "")
+		msg = tgui_input_text(usr, title="OOC", encode = FALSE)
+// SKYRAT EDIT END - tgui ooc
 	if(!mob)
 		return
 

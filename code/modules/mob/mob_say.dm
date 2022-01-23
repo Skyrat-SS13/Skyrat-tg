@@ -1,27 +1,32 @@
 //Speech verbs.
 
 ///what clients use to speak. when you type a message into the chat bar in say mode, this is the first thing that goes off serverside.
-/mob/verb/say_verb(message as text)
+// SKYRAT EDIT BEGIN - tgui say
+/mob/verb/say_verb(message = "" as text)
 	set name = "Say"
 	set category = "IC"
 	set instant = TRUE
+
+	if(GLOB.say_disabled) //This is here to try to identify lag problems
+		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		return
+	if(message == "")
+		message = tgui_input_text(usr, title="Say", encode = FALSE)
 
 	//SKYRAT EDIT ADDITION BEGIN - TYPING_INDICATOR
 	if(typing_indicator)
 		set_typing_indicator(FALSE)
 	//SKYRAT EDIT ADDITION END
 
-	if(GLOB.say_disabled) //This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
-		return
-
+// SKYRAT EDIT END - tgui say
 	//queue this message because verbs are scheduled to process after SendMaps in the tick and speech is pretty expensive when it happens.
 	//by queuing this for next tick the mc can compensate for its cost instead of having speech delay the start of the next tick
 	if(message)
 		SSspeech_controller.queue_say_for_mob(src, message, SPEECH_CONTROLLER_QUEUE_SAY_VERB)
 
 ///Whisper verb
-/mob/verb/whisper_verb(message as text)
+// SKYRAT EDIT BEGIN - tgui whisper
+/mob/verb/whisper_verb(message = "" as text)
 	set name = "Whisper"
 	set category = "IC"
 	set instant = TRUE
@@ -29,6 +34,9 @@
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
+
+	if(message == "")
+		message = tgui_input_text(usr, title="Whisper", encode = FALSE)
 
 	if(message)
 		SSspeech_controller.queue_say_for_mob(src, message, SPEECH_CONTROLLER_QUEUE_WHISPER_VERB)
@@ -38,25 +46,28 @@
 	say(message, language = language)
 
 ///The me emote verb
-//SKYRAT EDIT CHANGE BEGIN
-// /mob/verb/me_verb(message as text) - SKYRAT EDIT - ORIGINAL
-/mob/verb/me_verb(message as message)
-//SKYRAT EDIT CHANGE END
+//SKYRAT EDIT CHANGE BEGIN - tgui me
+/mob/verb/me_verb(message = "" as text)
 	set name = "Me"
 	set category = "IC"
-	//SKYRAT EDIT ADDITION BEGIN - TYPING_INDICATOR
-	if(typing_indicator)
-		set_typing_indicator(FALSE)
-	//SKYRAT EDIT ADDITION END
+	set instant = TRUE
 
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 
+	if(message == "")
+		message = tgui_input_text(usr, title="Me", multiline = TRUE, encode = FALSE)
+
+	//SKYRAT EDIT ADDITION BEGIN - TYPING_INDICATOR
+	if(typing_indicator)
+		set_typing_indicator(FALSE)
+	//SKYRAT EDIT ADDITION END
+
 	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
 
 	SSspeech_controller.queue_say_for_mob(src, message, SPEECH_CONTROLLER_QUEUE_EMOTE_VERB)
-
+//SKYRAT EDIT CHANGE END - tgui me
 ///Speak as a dead person (ghost etc)
 /mob/proc/say_dead(message)
 	var/name = real_name

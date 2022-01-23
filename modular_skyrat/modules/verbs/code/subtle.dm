@@ -22,7 +22,7 @@
 		to_chat(user, "You cannot send IC messages (muted).")
 		return FALSE
 	else if(!params)
-		subtle_emote = stripped_multiline_input(user, "Choose an emote to display.", "Subtle", null, MAX_MESSAGE_LEN)
+		subtle_emote = tgui_input_text(user, title="Subtle Emote", multiline = TRUE, encode = FALSE)
 		if(subtle_emote && !check_invalid(user, subtle_emote))
 			var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
 			switch(type)
@@ -91,7 +91,7 @@
 		to_chat(user, "You cannot send IC messages (muted).")
 		return FALSE
 	else if(!params)
-		subtler_emote = stripped_multiline_input(user, "Choose an emote to display.", "Subtler" , null, MAX_MESSAGE_LEN)
+		subtler_emote = tgui_input_text(user, title="Subtler Emote", multiline = TRUE, encode = FALSE)
 		if(subtler_emote && !check_invalid(user, subtler_emote))
 			var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
 			switch(type)
