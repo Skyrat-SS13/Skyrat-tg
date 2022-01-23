@@ -304,7 +304,7 @@
 ///////////////////////
 //----- GLOVES ------//
 ///////////////////////
-/obj/item/clothing/gloves/security
+/obj/item/clothing/gloves/color/black/security
 	name = "security gloves"
 	desc = "A pair of security gloves."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
@@ -360,6 +360,10 @@
 			RESKIN_ICON_STATE = "vest_white",
 			RESKIN_WORN_ICON_STATE = "vest_white"
 		),
+		"Peacekeeper Variant" = list(
+			RESKIN_ICON_STATE = "peacekeeper_armor",
+			RESKIN_WORN_ICON_STATE = "peacekeeper"
+		)
 	)
 
 //Standard Bulletproof Vest
