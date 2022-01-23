@@ -477,6 +477,17 @@
 	var/turf/vine_object_turf = get_turf(vine_object)
 	vine_object_turf.atmos_spawn_air("miasma=100;TEMP=[T20C]")
 
+// Generates plasma on growth
+/datum/spacevine_mutation/plasma_generating
+	name = "Plasma producing"
+	hue = "#470566"
+	severity = 5
+	quality = NEGATIVE
+
+/datum/spacevine_mutation/plasma_generating/on_grow(obj/structure/spacevine/vine_object)
+	var/turf/vine_object_turf = get_turf(vine_object)
+	vine_object_turf.atmos_spawn_air("plasma=100;TEMP=[T20C]")
+
 // Heals crossing or eating mobs
 /datum/spacevine_mutation/flesh_mending
 	name = "Flesh mending"
@@ -533,6 +544,32 @@
 			continue
 		space_turf.ChangeTurf(/turf/open/floor/plating/kudzu)
 		space_turf.color = hue
+
+//Hitting/crossing has a chance to infect you with a disease
+/datum/spacevine_mutation/disease_carrying
+	name = "Disease carrying"
+	hue = "#dcf597"
+	severity = 5
+	quality = NEGATIVE
+
+/datum/spacevine_mutation/disease_carrying/on_hit(obj/structure/spacevine/vine_object, mob/hitter, obj/item/item_used, expected_damage)
+	if(isliving(hitter))
+		var/mob/living/living_hitter = hitter
+		if(isvineimmune(living_hitter))
+			return
+		if(prob(20))
+			var/datum/disease/new_disease = new /datum/disease/advance/random(5, 5)
+			living_hitter.ForceContractDisease(new_disease, FALSE, TRUE)
+	. = expected_damage
+
+/datum/spacevine_mutation/disease_carrying/on_cross(obj/structure/spacevine/vine_object, mob/crosser)
+	if(isliving(crosser))
+		var/mob/living/living_crosser = crosser
+		if(isvineimmune(living_crosser))
+			return
+		if(prob(20))
+			var/datum/disease/new_disease = new /datum/disease/advance/random(5, 5)
+			living_crosser.ForceContractDisease(new_disease, FALSE, TRUE)
 
 /turf/open/floor/plating/kudzu
 	name = "vine flooring"
@@ -659,7 +696,6 @@
 				playsound(src, 'sound/weapons/tap.ogg', 50, TRUE)
 		if(BURN)
 			playsound(src.loc, 'sound/items/welder.ogg', 100, TRUE)
-
 
 /// Applies effects when a mob enters the same turf as a vine
 /obj/structure/spacevine/proc/on_entered(datum/source, atom/movable/moving_atom)
