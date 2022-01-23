@@ -457,18 +457,19 @@
 			exposed_mob.update_mutations_overlay()
 		if(!mob_penis)
 			return
-		if(mob_penis.genital_size > penis_min_length)
-			mob_penis.genital_size -= penis_size_reduction_step
-			mob_penis.update_sprite_suffix()
-			exposed_mob.update_body()
-		if(mob_penis.girth > penis_minimum_girth)
-			mob_penis.girth -= penis_girth_reduction_step
-			mob_penis.update_sprite_suffix()
-			exposed_mob.update_body()
-		if(!mob_testicles || mob_testicles.genital_size <= 1)
+		if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/penis_enlargement)) ///To do cock shrinkage, check if prefs allow for this.
+			if(mob_penis.genital_size > penis_min_length)
+				mob_penis.genital_size -= penis_size_reduction_step
+				mob_penis.update_sprite_suffix()
+				exposed_mob.update_body()
+			if(mob_penis.girth > penis_minimum_girth)
+				mob_penis.girth -= penis_girth_reduction_step
+				mob_penis.update_sprite_suffix()
+				exposed_mob.update_body()
+			if(!mob_testicles || mob_testicles.genital_size <= 1)
+				return
+			mob_testicles.genital_size -= 1
 			return
-		mob_testicles.genital_size -= 1
-		return
 
 /*
 * PENIS ENLARGEMENT
@@ -603,11 +604,12 @@
 			exposed_mob.update_mutations_overlay()
 		if(!mob_breasts)
 			return
-		if(mob_breasts.genital_size > breast_minimum_size)
-			mob_breasts.genital_size -= breast_size_reduction_step
-			mob_breasts.update_sprite_suffix()
-			exposed_mob.update_body()
-			return
+		if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement)) ///To do breast shrinkage, check if prefs allow for this.
+			if(mob_breasts.genital_size > breast_minimum_size)
+				mob_breasts.genital_size -= breast_size_reduction_step
+				mob_breasts.update_sprite_suffix()
+				exposed_mob.update_body()
+				return
 
 /*
 * CHEMICAL REACTIONS
