@@ -362,6 +362,7 @@
 	mood_change = -1
 	timeout = 30 SECONDS
 
+<<<<<<< HEAD
 //SKYRAT EDIT START: Mainly surgery for now.
 /datum/mood_event/mild_surgery
 	description = "<span class='warning'>Even if I couldn't feel most of it, it feels wrong being awake while somebody works on your body. Ugh!</span>\n"
@@ -378,3 +379,13 @@
 	mood_change = -4
 	timeout = 10 MINUTES
 //SKYRAT EDIT END
+=======
+/datum/mood_event/gamer_withdrawal
+	description = span_warning("I wish I was gaming right now...\n")
+	mood_change = -5
+
+/datum/mood_event/gamer_lost
+	description = span_boldwarning("If I'm not good at video games, can I truly call myself a gamer?\n")
+	mood_change = -10
+	timeout = 10 MINUTES
+>>>>>>> 7a214d187a7 (Gamer quirk (#64277))
