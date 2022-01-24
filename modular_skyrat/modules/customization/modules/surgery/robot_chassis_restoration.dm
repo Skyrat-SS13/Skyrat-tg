@@ -72,7 +72,8 @@
 /datum/surgery_step/finalize_positronic_restoration
 	name = "finalize positronic restoration (multitool)"
 	implements = list(
-		TOOL_MULTITOOL = 100)
+		TOOL_MULTITOOL = 100,
+	)
 	repeatable = FALSE
 	time = 120
 

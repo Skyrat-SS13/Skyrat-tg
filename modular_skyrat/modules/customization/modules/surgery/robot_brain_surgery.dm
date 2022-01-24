@@ -18,9 +18,10 @@
 	implements = list(
 		TOOL_MULTITOOL = 100,
 		TOOL_HEMOSTAT = 35,
-		TOOL_SCREWDRIVER = 15)
+		TOOL_SCREWDRIVER = 15,
+	)
 	repeatable = TRUE
-	time = 120 //long and complicated
+	time = 12 SECONDS //long and complicated
 
 /datum/surgery/robot_brain_surgery/can_start(mob/user, mob/living/carbon/target, obj/item/tool)
 	var/obj/item/organ/brain/B = target.getorganslot(ORGAN_SLOT_BRAIN)
@@ -41,7 +42,7 @@
 		target.mind.remove_antag_datum(/datum/antagonist/brainwashed)
 	target.setOrganLoss(ORGAN_SLOT_BRAIN, target.getOrganLoss(ORGAN_SLOT_BRAIN) - 60)	//we set damage in this case in order to clear the "failing" flag
 	target.cure_all_traumas(TRAUMA_RESILIENCE_LOBOTOMY) //Lobotomy tier fix cause you can't clone this!
-	if(target.getOrganLoss(ORGAN_SLOT_BRAIN) > 0)
+	if(target.getOrganLoss(ORGAN_SLOT_BRAIN) > NONE)
 		to_chat(user, "[target]'s posibrain still has some lasting system damage that can be cleared.")
 	return ..()
 

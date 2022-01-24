@@ -16,7 +16,7 @@
 					stun_time += 20
 				if(2)
 					L.receive_damage(0,2)
-					stun_time += 10
+					stun_time += 1 SECONDS
 			if(L.body_zone == BODY_ZONE_L_LEG || L.body_zone == BODY_ZONE_R_LEG)
 				affects_leg = TRUE
 
