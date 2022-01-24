@@ -21,7 +21,7 @@
 /obj/machinery/door/airlock/external,
 /obj/docking_port/mobile{
 	dir = 2;
-	dwidth = 17;
+	dwidth = 21;
 	height = 17;
 	id = "nexus";
 	launch_status = 0;
@@ -51,6 +51,7 @@
 "bB" = (
 /obj/structure/table/optable,
 /obj/effect/turf_decal/bot_white,
+/obj/machinery/defibrillator_mount/directional/east,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/nexus)
 "bF" = (
@@ -300,8 +301,21 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/delivery/white,
-/obj/machinery/door/airlock/service/glass,
+/obj/machinery/door/airlock/service/glass{
+	name = "Crew Hall Access"
+	},
 /turf/open/floor/iron/dark/textured_large,
+/area/shuttle/nexus)
+"ln" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/siding/blue/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 1
+	},
+/turf/open/floor/iron/showroomfloor,
 /area/shuttle/nexus)
 "lB" = (
 /obj/machinery/computer/monitor{
@@ -399,9 +413,9 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/nexus)
 "mO" = (
-/obj/structure/tank_dispenser/oxygen,
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/light/cold/directional/east,
+/obj/structure/tank_dispenser,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/nexus)
 "mP" = (
@@ -437,8 +451,28 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/effect/turf_decal/delivery/white,
-/obj/machinery/door/airlock/corporate/glass,
+/obj/machinery/door/airlock/corporate/glass{
+	name = "Bridge Access"
+	},
 /turf/open/floor/iron/dark/textured_large,
+/area/shuttle/nexus)
+"nO" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/fans/tiny/forcefield{
+	dir = 8
+	},
+/obj/machinery/door/poddoor{
+	id = "nexus_shuttle_cargo"
+	},
+/obj/machinery/button/door/directional/north{
+	id = "nexus_shuttle_cargo"
+	},
+/turf/open/floor/engine,
 /area/shuttle/nexus)
 "nT" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
@@ -566,7 +600,7 @@
 /area/shuttle/nexus)
 "tM" = (
 /obj/machinery/trade_pad,
-/obj/effect/turf_decal/bot_white,
+/obj/effect/turf_decal/delivery/white,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/nexus)
 "tU" = (
@@ -596,6 +630,9 @@
 /area/shuttle/nexus)
 "vC" = (
 /obj/structure/chair/comfy/shuttle,
+/obj/effect/turf_decal/siding/blue{
+	dir = 10
+	},
 /turf/open/floor/iron/showroomfloor,
 /area/shuttle/nexus)
 "vL" = (
@@ -772,6 +809,15 @@
 /obj/effect/turf_decal/bot_white,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/nexus)
+"Dg" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/delivery/white,
+/obj/machinery/door/airlock/mining{
+	name = "Auxilary Storage Access"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/shuttle/nexus)
 "Dt" = (
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /obj/structure/window/reinforced/spawner/west,
@@ -827,6 +873,9 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
+/obj/effect/turf_decal/siding/blue/end{
+	dir = 4
+	},
 /turf/open/floor/iron/showroomfloor,
 /area/shuttle/nexus)
 "EC" = (
@@ -858,6 +907,9 @@
 "FS" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/siding/blue/end{
+	dir = 8
+	},
 /turf/open/floor/iron/showroomfloor,
 /area/shuttle/nexus)
 "FT" = (
@@ -1053,6 +1105,7 @@
 	dir = 4
 	},
 /obj/structure/cable,
+/obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron/shuttle/evac,
 /area/shuttle/nexus)
 "LW" = (
@@ -1172,7 +1225,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/delivery/white,
-/obj/machinery/door/airlock/mining,
+/obj/machinery/door/airlock/mining{
+	name = "Cargo Hold Access"
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/nexus)
 "OG" = (
@@ -1231,11 +1286,12 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/bot_white,
-/obj/structure/tank_dispenser/oxygen,
+/obj/structure/tank_dispenser,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/nexus)
 "Pe" = (
 /obj/structure/table/reinforced/plastitaniumglass,
+/obj/item/defibrillator/loaded,
 /obj/item/storage/backpack/duffelbag/med/surgery,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/nexus)
@@ -1270,6 +1326,9 @@
 "Qh" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 6
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/shuttle/nexus)
@@ -1330,7 +1389,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/effect/turf_decal/delivery/white,
-/obj/machinery/door/airlock/medical/glass,
+/obj/machinery/door/airlock/medical/glass{
+	name = "Medical Bay Access"
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/nexus)
 "Sa" = (
@@ -1497,14 +1558,6 @@
 /obj/effect/turf_decal/bot_white,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/nexus)
-"VL" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/effect/turf_decal/delivery/white,
-/obj/machinery/door/airlock/mining/glass,
-/turf/open/floor/iron/dark/textured_large,
-/area/shuttle/nexus)
 "VZ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -1533,6 +1586,7 @@
 /obj/structure/table/reinforced/plastitaniumglass,
 /obj/machinery/cell_charger,
 /obj/item/stock_parts/cell/high,
+/obj/machinery/airalarm/directional/south,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/nexus)
 "Wx" = (
@@ -1542,6 +1596,15 @@
 /obj/effect/turf_decal/bot_white,
 /obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/nexus)
+"WD" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/siding/blue/corner,
+/obj/effect/turf_decal/siding/blue{
+	dir = 1
+	},
+/turf/open/floor/iron/showroomfloor,
 /area/shuttle/nexus)
 "WE" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -1642,7 +1705,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/effect/turf_decal/delivery/white,
-/obj/machinery/door/airlock/mining,
+/obj/machinery/door/airlock/mining/glass{
+	name = "Utility Bay Access"
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/nexus)
 "ZP" = (
@@ -1713,7 +1778,7 @@ MI
 MI
 ZF
 ZF
-zX
+nO
 zX
 zX
 ZF
@@ -1942,7 +2007,7 @@ Gq
 wm
 Xj
 Xj
-VL
+ZM
 xd
 Xj
 Xj
@@ -2024,7 +2089,7 @@ Qv
 wm
 AJ
 Re
-Om
+Dg
 bd
 ZF
 "}
@@ -2174,7 +2239,7 @@ ZW
 ZF
 ZF
 UK
-FS
+ln
 vC
 Xp
 ZF
@@ -2193,7 +2258,7 @@ DJ
 DJ
 ZF
 in
-FS
+WD
 Qh
 EK
 ZF
