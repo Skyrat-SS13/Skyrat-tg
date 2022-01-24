@@ -18,6 +18,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	"[FREQ_CYBERSUN]" = "syndradio", //SKYRAT EDIT ADDITION - MAPPING
 	"[FREQ_INTERDYNE]" = "syndradio", //SKYRAT EDIT ADDITION - MAPPING
 	"[FREQ_GUILD]" = "syndradio", //SKYRAT EDIT ADDITION - MAPPING
+	"[FREQ_TARKON]" = "engradio", //SKYRAT EDIT ADDITION - MAPPING
 	"[FREQ_CTF_RED]" = "redteamradio",
 	"[FREQ_CTF_BLUE]" = "blueteamradio",
 	"[FREQ_CTF_GREEN]" = "greenteamradio",
@@ -225,7 +226,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/virtualspeaker)
 		var/mob/living/silicon/robot/B = M
 		job = "[B.designation] Cyborg"
 	else if(istype(M, /mob/living/silicon/pai))  // Personal AI (pAI)
-		job = "Personal AI"
+		job = JOB_PERSONAL_AI
 	else if(isobj(M))  // Cold, emotionless machines
 		job = "Machine"
 	else  // Unidentifiable mob

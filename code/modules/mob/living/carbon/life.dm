@@ -434,7 +434,7 @@
 				dna.temporary_mutations.Remove(mut)
 				continue
 	for(var/datum/mutation/human/HM in dna.mutations)
-		if(HM?.timed)
+		if(HM?.timeout)
 			dna.remove_mutation(HM.type)
 
 /*

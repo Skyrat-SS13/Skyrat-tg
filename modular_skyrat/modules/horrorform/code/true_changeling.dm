@@ -166,7 +166,7 @@
 	background_icon_state = "bg_changeling"
 	button_icon_state = "devour"
 
-/datum/action/innate/devour/Trigger()
+/datum/action/innate/devour/Trigger(trigger_flags)
 	var/mob/living/simple_animal/hostile/true_changeling/T = owner
 	if(T.devouring)
 		T << span_warning("We are already feasting on a human!") // HOW OLD IS THIS CODE
