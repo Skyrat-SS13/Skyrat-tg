@@ -8,6 +8,10 @@
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "posibrain-ipc"
 
+	#define SYNTH_EMP_BRAIN_DAMAGE_HEAVY 36
+	#define SYNTH_EMP_BRAIN_DAMAGE_LIGHT 12
+	#define SYNTH_EMP_BRAIN_DAMAGE_MAXIMUM 75
+
 /obj/item/organ/brain/ipc_positron/Insert(mob/living/carbon/user, special = 0, drop_if_replaced = TRUE)
 	..()
 	if(user.stat == DEAD && ishuman(user))
@@ -19,10 +23,10 @@
 /obj/item/organ/brain/ipc_positron/emp_act(severity)
 	switch(severity)
 		if(1)
-			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 36, 75)
+			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, SYNTH_EMP_BRAIN_DAMAGE_HEAVY, SYNTH_EMP_BRAIN_DAMAGE_MAXIMUM)
 			to_chat(owner, span_warning("Alert: Rampant system corruption in central processing unit."))
 		if(2)
-			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 12, 75)
+			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, SYNTH_EMP_BRAIN_DAMAGE_LIGHT, SYNTH_EMP_BRAIN_DAMAGE_MAXIMUM)
 			to_chat(owner, span_warning("Alert: System corruption in central processing unit."))
 
 /obj/item/organ/stomach/robot_ipc
@@ -229,3 +233,6 @@
 #undef IPC_CHARGE_MIN
 #undef IPC_CHARGE_PER_NUTRITION
 #undef IPC_CHARGE_DELAY_PER_100
+#undef SYNTH_EMP_BRAIN_DAMAGE_HEAVY
+#undef SYNTH_EMP_BRAIN_DAMAGE_LIGHT
+#undef SYNTH_EMP_BRAIN_DAMAGE_MAXIMUM

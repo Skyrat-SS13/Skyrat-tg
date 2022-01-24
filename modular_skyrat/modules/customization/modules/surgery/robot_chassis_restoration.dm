@@ -32,24 +32,21 @@
 
 /datum/surgery_step/pry_off_plating/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(user, target, span_notice("You begin to pry open compromised panels on [target]'s braincase..."),
-			"[user] begins to pry open compromised panels on [target]'s braincase.",
-			"[user] begins to pry open compromised panels on [target]'s braincase.")
+			span_notice("[user] begins to pry open compromised panels on [target]'s braincase."))
 
 /datum/surgery_step/cut_wires/fullbody
 	time = 120
 
 /datum/surgery_step/cut_wires/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(user, target, span_notice("You begin to trim [target]'s nonfunctional wires..."),
-			"[user] begins to cut [target]'s loose wires.",
-			"[user] begins to cut [target]'s loose wires.")
+			span_notice("[user] begins to cut [target]'s loose wires."))
 
 /datum/surgery_step/weld_plating/fullbody
 	time = 120
 
 /datum/surgery_step/weld_plating/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(user, target, span_notice("You begin to slice compromised panels from [target]'s braincase..."),
-			"[user] begins to slice compromised panels from [target]'s braincase.",
-			"[user] begins to slice compromised panels from [target]'s braincase.")
+			span_notice("[user] begins to slice compromised panels from [target]'s braincase."))
 
 /datum/surgery_step/replace_wires/fullbody
 	time = 72
@@ -57,8 +54,7 @@
 
 /datum/surgery_step/replace_wires/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(user, target, span_notice("You begin to replace [target]'s wiring..."),
-			"[user] begins to replace [target]'s wiring.",
-			"[user] begins to replace [target]'s wiring.")
+			span_notice("[user] begins to replace [target]'s wiring."))
 
 /datum/surgery_step/add_plating/fullbody
 	time = 120
@@ -66,8 +62,7 @@
 
 /datum/surgery_step/add_plating/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(user, target, span_notice("You begin to add new panels to [target]'s braincase..."),
-			"[user] begins to add new panels to [target]'s braincase.",
-			"[user] begins to add new panels to [target]'s braincase.")
+			span_notice("[user] begins to add new panels to [target]'s braincase."))
 
 /datum/surgery_step/finalize_positronic_restoration
 	name = "finalize positronic restoration (multitool)"
@@ -79,8 +74,7 @@
 
 /datum/surgery_step/finalize_positronic_restoration/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(user, target, span_notice("You begin to force a reboot in [target]'s posibrain..."),
-			"[user] begins to force a reboot in [target]'s posibrain.",
-			"[user] begins to force a reboot in [target]'s posibrain.")
+			span_notice("[user] begins to force a reboot in [target]'s posibrain."))
 	target.notify_ghost_cloning("Someone is trying to reboot your posibrain.", source = target)
 
 /datum/surgery_step/finalize_positronic_restoration/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -89,9 +83,9 @@
 	target.updatehealth()
 	target.setOrganLoss(ORGAN_SLOT_BRAIN, target.getOrganLoss(ORGAN_SLOT_BRAIN) - 200)
 	if(target.revive(full_heal = FALSE, admin_revive = FALSE))
-		target.emote("chime")
 		return TRUE
 	else
+		target.emote("chime")
 		target.visible_message(span_notice("...[target] reactivates, their chassis coming online!"))
 		to_chat(target, span_danger("[CONFIG_GET(string/blackoutpolicy)]"))
 		return FALSE
