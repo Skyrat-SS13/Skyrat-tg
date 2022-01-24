@@ -382,7 +382,7 @@
 
 /**
  * Generates a species-specific clothing icon.
- * 
+ *
  * Arguments:
  * * file_to_use - Icon file to use for clothing sprite
  * * state_to_use - Icon state to use within file_to_use
@@ -392,7 +392,7 @@
  */
 /obj/item/clothing/wear_species_version(file_to_use, state_to_use, layer, species, default_file_to_use)
 	LAZYINITLIST(GLOB.species_clothing_icons[species])
-	var/icon/species_clothing_icon = GLOB.species_clothing_icons[species]["[file_to_use]-[state_to_use]"] // Check if the icon we want already exists
+	var/icon/species_clothing_icon = GLOB.species_clothing_icons[species][get_species_clothing_key(file_to_use, state_to_use)] // Check if the icon we want already exists
 	if(!species_clothing_icon) 	// Create standing/laying icons if they don't exist
 		generate_species_clothing(file_to_use, state_to_use, species, default_file_to_use)
-	return mutable_appearance(GLOB.species_clothing_icons[species]["[file_to_use]-[state_to_use]"], layer = -layer)
+	return mutable_appearance(GLOB.species_clothing_icons[species][get_species_clothing_key(file_to_use, state_to_use)], layer = -layer)
