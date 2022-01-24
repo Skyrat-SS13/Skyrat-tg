@@ -76,7 +76,7 @@
 					U.accessory_overlay.icon = TESHARI_ACCESSORIES_ICON
 					special_accessory_style = TRUE
 			// Apply an offset only if we didn't apply a special accessory style.
-			if(!special_accessory_style && OFFSET_ACCESSORY in dna.species.offset_features)
+			if(!special_accessory_style && (OFFSET_ACCESSORY in dna.species.offset_features))
 				U.accessory_overlay.pixel_x = dna.species.offset_features[OFFSET_ACCESSORY][1]
 				U.accessory_overlay.pixel_y = dna.species.offset_features[OFFSET_ACCESSORY][2]
 
