@@ -126,8 +126,8 @@
 		target.chat_color_name = target.name
 
 	// SKYRAT ADDITION - Character preference for chatmessages
-	if(isliving(target))
-		var/mob/living/speaker = target
+	if(ismob(target))
+		var/mob/speaker = target
 		if(speaker.client?.prefs)
 			var/chat_color_player = speaker.client.prefs.read_preference(/datum/preference/color/chat_color_player)
 			if(chat_color_player != COLOR_BLACK) //	Black means its disabled
