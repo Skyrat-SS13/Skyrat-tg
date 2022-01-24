@@ -156,12 +156,8 @@
 	glass_name = "glass of water"
 	glass_desc = "The father of all refreshments."
 	shot_glass_icon_state = "shotglassclear"
-<<<<<<< HEAD
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-	evaporates = TRUE //SKYRAT EDIT ADDITION
-=======
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_CLEANS
->>>>>>> 8f32cbe38d9 (Reworks janitor cyborg cleaning, focus on the slipping (#64131))
+	evaporates = TRUE //SKYRAT EDIT ADDITION
 
 /*
  * Water reaction to turf
