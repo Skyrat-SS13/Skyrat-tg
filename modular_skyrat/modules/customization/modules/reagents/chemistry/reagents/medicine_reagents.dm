@@ -17,6 +17,9 @@
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 //REAGENTS FOR SYNTHS
+#define NANITE_SLURRY_ORGANIC_PURGE_RATE 4
+#define NANITE_SLURRY_ORGANIC_VOMIT_CHANCE 25
+
 /datum/reagent/medicine/system_cleaner
 	name = "System Cleaner"
 	description = "Neutralizes harmful chemical compounds inside synthetic systems."
@@ -72,8 +75,11 @@
 	if(affected_mob.mob_biotypes & MOB_ROBOTIC)
 		affected_mob.adjust_bodytemperature(temperature_change * REM * delta_time)
 		return ..()
-	affected_mob.reagents.remove_reagent(type, 3.6) //gets removed from organics very fast
-	if(prob(25))
+	affected_mob.reagents.remove_reagent(type, NANITE_SLURRY_ORGANIC_PURGE_RATE) //gets removed from organics very fast
+	if(prob(NANITE_SLURRY_ORGANIC_VOMIT_CHANCE))
 		affected_mob.vomit(vomit_type = VOMIT_NANITE)
 	..()
 	. = 1
+
+#undef NANITE_SLURRY_ORGANIC_PURGE_RATE
+#undef NANITE_SLURRY_ORGANIC_VOMIT_CHANCE
