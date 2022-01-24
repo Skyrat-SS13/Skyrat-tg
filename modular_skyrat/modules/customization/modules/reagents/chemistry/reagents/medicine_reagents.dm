@@ -29,13 +29,13 @@
 	metabolization_rate = 2 * REAGENTS_METABOLISM
 	process_flags = REAGENT_SYNTHETIC
 
-/datum/reagent/medicine/system_cleaner/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
-	M.adjustToxLoss(-2*REM, 0)
+/datum/reagent/medicine/system_cleaner/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
+	affected_mob.adjustToxLoss(-2 * REM, 0)
 	. = 1
-	for(var/A in M.reagents.reagent_list)
-		var/datum/reagent/R = A
-		if(R != src)
-			M.reagents.remove_reagent(R.type, 1 * REM * delta_time)
+	for(var/thing in affected_mob.reagents.reagent_list)
+		var/datum/reagent/reagent = thing
+		if(reagent != src)
+			affected_mob.reagents.remove_reagent(reagent.type, 1 * REM * delta_time)
 	..()
 
 /datum/reagent/medicine/liquid_solder
@@ -67,9 +67,8 @@
 
 
 /datum/reagent/medicine/nanite_slurry/on_mob_life(mob/living/carbon/affected_mob)
-	affected_mob.heal_bodypart_damage(healing*REM, healing*REM, required_status = BODYPART_ROBOTIC)
+	affected_mob.heal_bodypart_damage(healing * REM, healing * REM, required_status = BODYPART_ROBOTIC)
 	..()
-	. = 1
 
 /datum/reagent/medicine/nanite_slurry/overdose_process(mob/living/carbon/affected_mob, delta_time, times_fired)
 	if(affected_mob.mob_biotypes & MOB_ROBOTIC)
