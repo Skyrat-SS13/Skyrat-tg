@@ -29,10 +29,10 @@
 		winset(src, "[id].cancel", "command=\".winset \\\"command=\\\"[cancel_verb]\\\";[id].is-visible=false\\\";[id].input.text=\\\"\\\"\"")
 		winset(src, "[id]_macro_return", "parent=persist_[id]_macro;name=Return;command=\".winset \\\"command=\\\"[cancel_verb]\\\";[id].is-visible=false\\\";[id].input.text=\\\"\\\"\"")
 		winset(src, "[id]_macro_escape", "parent=persist_[id]_macro;name=Escape;command=\".winset \\\"command=\\\"[cancel_verb]\\\";[id].is-visible=false\\\";[id].input.text=\\\"\\\"\"")
-		winset(src, id, "on-close=\"[cancel_verb]\"") //Invokes the cancel verb if you close the window
+		winset(src, id, "on-close=\".winset \\\"command=\\\"[cancel_verb]\\\";[id].input.text=\\\"\\\"\\\"\"") //Invokes the cancel verb if you close the window
 	else
 		//Hides the window and does nothing else.
-		winset(src, "[id].cancel", "command=\".winset \\\"[id].is-visible=false\\\"\"")
+		winset(src, "[id].cancel", "command=\".winset \\\"[id].is-visible=false\\\";[id].input.text=\\\"\\\"\"")
 		winset(src, "[id]_macro_return", "parent=persist_[id]_macro;name=Return;command=\".winset \\\"[id].is-visible=false\\\"\"")
 		winset(src, "[id]_macro_escape", "parent=persist_[id]_macro;name=Escape;command=\".winset \\\"[id].is-visible=false\\\";[id].input.text=\\\"\\\"\"")
 
