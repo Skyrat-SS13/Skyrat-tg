@@ -73,7 +73,8 @@
 				var/static/list/teshari_accessory_states = icon_states(TESHARI_ACCESSORIES_ICON)
 				if(U.accessory_overlay.icon_state in teshari_accessory_states)
 					U.accessory_overlay.icon = TESHARI_ACCESSORIES_ICON
-			if(OFFSET_ACCESSORY in dna.species.offset_features)
+			// Else so we dont apply the offsets to Teshari special styles
+			else if(OFFSET_ACCESSORY in dna.species.offset_features)
 				U.accessory_overlay.pixel_x = dna.species.offset_features[OFFSET_ACCESSORY][1]
 				U.accessory_overlay.pixel_y = dna.species.offset_features[OFFSET_ACCESSORY][2]
 
