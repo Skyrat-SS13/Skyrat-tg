@@ -69,12 +69,14 @@
 			uniform_overlay = U.build_worn_icon(default_layer = UNIFORM_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_state = target_overlay, override_icon = icon_file, override_x_center = x_override, mutant_styles = applied_style, species = dna.species.species_clothing_path)
 
 		if(U.accessory_overlay)
+			var/special_accessory_style = FALSE
 			if(applied_style == STYLE_TESHARI)
 				var/static/list/teshari_accessory_states = icon_states(TESHARI_ACCESSORIES_ICON)
 				if(U.accessory_overlay.icon_state in teshari_accessory_states)
 					U.accessory_overlay.icon = TESHARI_ACCESSORIES_ICON
-			// Else so we dont apply the offsets to Teshari special styles
-			else if(OFFSET_ACCESSORY in dna.species.offset_features)
+					special_accessory_style = TRUE
+			// Apply an offset only if we didn't apply a special accessory style.
+			if(!special_accessory_style && OFFSET_ACCESSORY in dna.species.offset_features)
 				U.accessory_overlay.pixel_x = dna.species.offset_features[OFFSET_ACCESSORY][1]
 				U.accessory_overlay.pixel_y = dna.species.offset_features[OFFSET_ACCESSORY][2]
 
