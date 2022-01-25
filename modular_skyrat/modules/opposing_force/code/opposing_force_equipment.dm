@@ -406,6 +406,11 @@
 /datum/opposing_force_equipment/gear/
 	category = OPFOR_EQUIPMENT_CATEGORY_UTILITY
 
+/datum/opposing_force_equipment/gear/emag
+	name = "Cryptographic Sequencer"
+	item_type = /obj/item/card/emag
+	description = "An electromagnetic ID card used to break machinery and disable safeties. Notoriously used by Syndicate agents, now commonly traded hardware at blackmarkets."
+
 /datum/opposing_force_equipment/gear/stoolbox
 	item_type = /obj/item/storage/toolbox/syndicate
 	description = "A fully-kitted toolbox scavenged from maintenance by our highly-paid monkeys. The toolbox \
