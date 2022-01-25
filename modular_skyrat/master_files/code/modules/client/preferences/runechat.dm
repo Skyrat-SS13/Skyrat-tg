@@ -4,8 +4,8 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	default_value = FALSE
 
-/datum/preference/toggle/enable_chat_color_player/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	return TRUE
+/datum/preference/toggle/enable_chat_color_player/apply_to_human()
+	return
 
 /datum/preference/color/chat_color_player
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
@@ -25,5 +25,5 @@
 		return FALSE
 	return TRUE
 
-/datum/preference/color/chat_color_player/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	return FALSE
+/datum/preference/color/chat_color_player/apply_to_human()
+	return
