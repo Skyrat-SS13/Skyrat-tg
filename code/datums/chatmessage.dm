@@ -145,6 +145,9 @@
 							var/hex_value = sanitize_hexcolor(chat_color_copy)
 							target.chat_color = hex_value
 							target.chat_color_darkened = (hex_value + "c0")
+						else // If they have the pref disabled, run the default generator again
+							target.chat_color = colorize_string(target.name)
+							target.chat_color_darkened = colorize_string(target.name, 0.85, 0.85)
 
 			if(speaker.name == "Unknown")
 				target.chat_color = "#FFFFFF"
