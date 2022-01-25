@@ -943,20 +943,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	user.visible_message(span_suicide("[user] is puffin hard on dat vape, [user.p_they()] trying to join the vape life on a whole notha plane!"))//it doesn't give you cancer, it is cancer
 	return (TOXLOSS|OXYLOSS)
 
-<<<<<<< HEAD
-/obj/item/clothing/mask/vape/attackby(obj/item/O, mob/user, params)
-	if(O.tool_behaviour == TOOL_SCREWDRIVER)
-		if(!screw)
-			screw = TRUE
-			to_chat(user, span_notice("You open the cap on [src]."))
-			//reagents.flags |= OPENCONTAINER - SKYRAT REMOVAL - VAPE CARTS
-			if(obj_flags & EMAGGED)
-				add_overlay("vapeopen_high")
-			else if(super)
-				add_overlay("vapeopen_med")
-			else
-				add_overlay("vapeopen_low")
-=======
 /obj/item/clothing/mask/vape/screwdriver_act(mob/living/user, obj/item/tool)
 	if(!screw)
 		screw = TRUE
@@ -966,7 +952,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			add_overlay("vapeopen_high")
 		else if(super)
 			add_overlay("vapeopen_med")
->>>>>>> 4fd16bcbdb4 (Make more use of <tool>_act (#64375))
 		else
 			add_overlay("vapeopen_low")
 	else
