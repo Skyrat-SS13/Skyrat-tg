@@ -5,7 +5,7 @@ const Human: Species = {
     kind extend from old Earth to the edges of known space.",
   features: {
     // SKYRAT EDIT BEGIN - HUMANS AREN'T SPECIAL
-    /*good: [{
+    /* good: [{
       icon: "robot",
       name: "Asimov Superiority",
       description: "The AI and their cyborgs are, by default, subservient only \
