@@ -47,6 +47,11 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	item_path = /obj/item/toy/plush/ratplush
 	restricted_roles = list(JOB_CHAPLAIN)
 
+/datum/loadout_item/toys/donator/alien
+	name = "Alien Toy"
+	item_path = /obj/item/clothing/mask/facehugger/toy
+	donator_only = TRUE
+
 /datum/loadout_item/toys/rouny
 	name = "Rouny Plush"
 	item_path = /obj/item/toy/plush/rouny
