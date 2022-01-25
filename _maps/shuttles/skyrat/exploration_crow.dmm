@@ -248,6 +248,9 @@
 /obj/machinery/airalarm/directional/north,
 /obj/structure/extinguisher_cabinet/directional/south,
 /obj/machinery/light/cold/directional/north,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
 /turf/open/floor/iron/shuttle/evac,
 /area/shuttle/crow)
 "td" = (
@@ -279,11 +282,10 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/crow)
 "wQ" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
-	},
-/obj/machinery/firealarm/directional/south,
-/turf/open/floor/iron/shuttle/evac,
+/obj/effect/turf_decal/bot,
+/obj/machinery/holopad/secure,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/crow)
 "xw" = (
 /obj/effect/turf_decal/delivery/white,
@@ -370,6 +372,11 @@
 	},
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /obj/effect/turf_decal/bot_white,
+/obj/structure/sign/plaques/kiddie{
+	desc = "A sign commemorating this particular shuttle's construction specifications and patent. In large text at the bottom it reads, "AlLei manufacturing, patent circa 2562".";
+	name = "\improper Shuttle Design & Production Model Plaque";
+	pixel_y = -32
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/crow)
 "Bg" = (
@@ -594,7 +601,11 @@
 /area/shuttle/crow)
 "NJ" = (
 /obj/machinery/firealarm/directional/east,
-/turf/open/floor/catwalk_floor/iron_dark,
+/obj/structure/sign/plaques/kiddie{
+	desc = "A sign commemorating this particular shuttle's construction specifications and patent. In large text at the bottom it reads, "AlLei manufacturing, patent circa 2562".";
+	name = "\improper Shuttle Design & Production Model Plaque"
+	},
+/turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/crow)
 "NP" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
