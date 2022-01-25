@@ -50,7 +50,6 @@
 	detailed_desc = "Made to usually operate from larger motherships, this single seat mining shuttle is still capable of limited independent operation."
 	cost = 3000
 	allowed_docks = list(DOCKS_SMALL_UPWARDS)
-	shuttle_type = SHUTTLE_MINING
 
 ////////////////////////
 //Exploration shuttles//

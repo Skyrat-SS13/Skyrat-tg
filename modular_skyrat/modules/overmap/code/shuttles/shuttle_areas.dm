@@ -37,6 +37,12 @@
 /area/shuttle/vulture/dorm
 	name = "MS Vulture Quarters"
 
+/area/shuttle/baserunner
+	name = "MS Baserunner"
+
+/area/shuttle/workman
+	name = "MS Workman"
+
 /area/shuttle/barrow
 	name = "The Barrows"
 	requires_power = FALSE
