@@ -36,6 +36,22 @@
 	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
 	shuttle_type = SHUTTLE_MINING
 
+/datum/sold_shuttle/common_baserunner
+	name = "MS Baserunner"
+	desc = "A small cargo and personnel shuttle, lacks a full airlock."
+	detailed_desc = "Originally designed to fit in the main hangar of the rare vixen carrier class, also serves purpose as an inexpensive and reliable ship for light work."
+	shuttle_id = "common_baserunner"
+	cost = 5000
+	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
+
+/datum/sold_shuttle/common_workman
+	name = "MS Workman"
+	desc = "An extremely small resource collection ship, seats a single person."
+	detailed_desc = "Made to usually operate from larger motherships, this single seat mining shuttle is still capable of limited independent operation."
+	cost = 3000
+	allowed_docks = list(DOCKS_SMALL_UPWARDS)
+	shuttle_type = SHUTTLE_MINING
+
 ////////////////////////
 //Exploration shuttles//
 ////////////////////////

@@ -76,6 +76,8 @@
 
 /area/shuttle/vixen
 	name = "NLV Vixen"
+	requires_power = TRUE
+	area_limited_icon_smoothing = /area/shuttle/vixen
 
 /area/shuttle/vixen/fore
 	name = "NLV Vixen Fore"
