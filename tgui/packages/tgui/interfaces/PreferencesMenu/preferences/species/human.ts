@@ -4,7 +4,8 @@ const Human: Species = {
   description: "Humans are the dominant species in the known galaxy, their \
     kind extend from old Earth to the edges of known space.",
   features: {
-    good: [{
+    // SKYRAT EDIT BEGIN - HUMANS AREN'T SPECIAL
+    /*good: [{
       icon: "robot",
       name: "Asimov Superiority",
       description: "The AI and their cyborgs are, by default, subservient only \
@@ -15,7 +16,9 @@ const Human: Species = {
       name: "Chain of Command",
       description: "Nanotrasen only recognizes humans for command roles, such \
         as Captain.",
-    }],
+    }],*/
+    good: [],
+    // SKYRAT EDIT END
     neutral: [],
     bad: [],
   },
