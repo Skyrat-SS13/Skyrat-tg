@@ -1,3 +1,8 @@
+//*
+//DEBUFFS - status effects that in some way hinder or remove the player's function.
+//*
+
+//MOBILE STASIS - same as regular stasis with the immobilization/hands-blocking traits taken off. Non-modular change has it set to also be checked by IS_IN_STASIS(mob).
 /datum/status_effect/grouped/stasis_mobile
 	id = "stasis"
 	duration = -1
@@ -25,7 +30,7 @@
 	. = ..()
 	if(!.)
 		return
-	ADD_TRAIT(owner, TRAIT_NUMBED, TRAIT_STATUS_EFFECT(id))
+	ADD_TRAIT(owner, TRAIT_NUMBED, TRAIT_STATUS_EFFECT(id)) //Skyrat-specific numbing trait for surgery
 	owner.throw_alert("stasis numbed", /atom/movable/screen/alert/numbed)
 	owner.add_filter("stasis_status_ripple", 2, list("type" = "ripple", "flags" = WAVE_BOUNDED, "radius" = 0, "size" = 2))
 	var/filter = owner.get_filter("stasis_status_ripple")

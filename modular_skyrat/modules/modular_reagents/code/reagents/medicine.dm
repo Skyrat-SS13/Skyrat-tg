@@ -31,7 +31,7 @@
 	description = "A stasis-inducing chemical used for exotic surgeries or emergency medicine."
 	taste_description = "liquid"
 	reagent_state = LIQUID
-	color = "e0d394" // 224, 211, 148
+	color = "#e0d394" // 224, 211, 148
 	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	overdose_threshold = 20
 	ph = 7
@@ -59,9 +59,9 @@
 	if(owner.stat < SOFT_CRIT)
 		switch(current_cycle)
 			if(1)
-				to_chat(owner, span_notice("You feel a comfortable stillness begin to set in your body and mind."))
+				to_chat(owner, span_notice("You feel a comfortable stillness begin to set in throughout your body."))
 			if(12)
-				to_chat(owner, span_notice("It'd be awfully easy to lay down for a bit..."))
+				to_chat(owner, span_notice("It'd be easy to lay down for a bit..."))
 			if(32)
 				to_chat(owner, span_notice("It's getting hard to move..."))
 			if(52)
