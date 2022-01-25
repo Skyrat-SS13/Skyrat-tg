@@ -129,8 +129,9 @@
 	if(ismob(target))
 		var/mob/speaker = target
 		if(speaker.client?.prefs)
-			var/chat_color_player = speaker.client.prefs.read_preference(/datum/preference/color/chat_color_player)
-			if(chat_color_player != COLOR_BLACK) //	Black means its disabled
+			var/enable_chat_color_player = speaker.client.prefs.read_preference(/datum/preference/toggle/enable_chat_color_player)
+			if(enable_chat_color_player)
+				var/chat_color_player = speaker.client.prefs.read_preference(/datum/preference/color/chat_color_player)
 				var/hex_value = sanitize_hexcolor(chat_color_player)
 				target.chat_color = hex_value
 				target.chat_color_darkened = (hex_value + "a8") // Add an alpha-channel to darken
