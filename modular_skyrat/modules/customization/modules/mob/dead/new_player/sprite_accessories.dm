@@ -389,7 +389,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/underwear/digibriefs
 	name = "Digi Briefs"
 	icon_state = "briefs_d"
-	use_static = TRUE
 
 /datum/sprite_accessory/underwear/male_briefs
 	has_digitigrade = TRUE
