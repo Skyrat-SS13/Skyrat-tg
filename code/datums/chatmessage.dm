@@ -139,8 +139,8 @@
 
 			// If they are acting as someone else, find out who
 			if((speaker.name != speaker.real_name) && (speaker.name != "Unknown"))
-				for(var/mob/living/carbon/human/copy in GLOB.player_list)
-					if((speaker.name == copy.real_name) && (copy.client.prefs))
+				for(var/mob/living/carbon/human/copy as anything in GLOB.human_list)
+					if((speaker.name == copy.real_name) && (copy.client?.prefs))
 						// Regardless of pref, give them the color of the person they are acting as
 						var/enable_chat_color_copy = copy.client.prefs.read_preference(/datum/preference/toggle/enable_chat_color_player)
 						if(enable_chat_color_copy)
