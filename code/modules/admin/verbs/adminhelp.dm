@@ -112,13 +112,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	L[++L.len] = list("Closed Tickets:", "[cstatclick.update("[closed_tickets.len]")]", null, REF(cstatclick))
 	L[++L.len] = list("Resolved Tickets:", "[rstatclick.update("[resolved_tickets.len]")]", null, REF(rstatclick))
 
-	//SKYRAT EDIT ADDITION BEGIN - AMBITIONS
-	for(var/key in GLOB.ambitions_to_review)
-		var/datum/ambitions/AMBI = key
-		var/reviewer = GLOB.ambitions_to_review[key]
-		L[++L.len] = list("[reviewer ? "H-[reviewer]. " : ""]AMB: [AMBI.owner_name]:", "[AMBI.narrative]", REF(AMBI))
-	L[++L.len] = list("Ambitions intensity:", "STL:[GLOB.intensity_counts["[AMBITION_INTENSITY_STEALTH]"]] MLD:[GLOB.intensity_counts["[AMBITION_INTENSITY_MILD]"]] MED:[GLOB.intensity_counts["[AMBITION_INTENSITY_MEDIUM]"]] SEV:[GLOB.intensity_counts["[AMBITION_INTENSITY_SEVERE]"]] EXT:[GLOB.intensity_counts["[AMBITION_INTENSITY_EXTREME]"]] (HAVOC: [GLOB.total_intensity])", null)
-	//SKYRAT EDIT ADDITION END
+	//SKYRAT EDIT ADDITION
+	if(LAZYLEN(SSopposing_force.submitted_applications))
+		for(var/datum/opposing_force/opposing_force as anything in SSopposing_force.submitted_applications)
+			L[++L.len] = list("[opposing_force.handling_admin ? "H-[opposing_force.handling_admin]. " : ""]OPFOR: [opposing_force.ckey]", null, REF(opposing_force))
+	//SKYRAT EDIT END
 	return L
 
 //Reassociate still open ticket if one exists
@@ -822,12 +820,19 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 	additional_data += type
 
 	var/list/servers = CONFIG_GET(keyed_list/cross_server)
-	for(var/I in servers)
-		if(I == our_id) //No sending to ourselves
-			continue
-		if(target_servers && !(I in target_servers))
-			continue
-		world.send_cross_comms(I, additional_data)
+	// SKYRAT EDTI ADDITION
+	if(target_servers == "all")
+		for(var/server in servers)
+			if(server == our_id)
+				continue
+			world.send_cross_comms(server, additional_data)
+	else //SKYRAT EDIT END
+		for(var/I in servers)
+			if(I == our_id) //No sending to ourselves
+				continue
+			if(target_servers && !(I in target_servers))
+				continue
+			world.send_cross_comms(I, additional_data)
 
 /// Sends a message to a given cross comms server by name (by name for security).
 /world/proc/send_cross_comms(server_name, list/message, auth = TRUE)

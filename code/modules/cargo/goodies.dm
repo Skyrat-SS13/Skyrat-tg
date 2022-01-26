@@ -3,8 +3,7 @@
 	access = NONE
 	group = "Goodies"
 	goody = TRUE
-//SKYRAT EDIT REMOVAL BEGIN
-/*
+
 /datum/supply_pack/goody/dumdum38
 	name = ".38 DumDum Speedloader"
 	desc = "Contains one speedloader of .38 DumDum ammunition, good for embedding in soft targets."
@@ -25,20 +24,23 @@
 	cost = PAYCHECK_MEDIUM * 1.5
 	access_view = ACCESS_BRIG
 	contains = list(/obj/item/ammo_box/c38/match/bouncy)
-
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/supply_pack/goody/stingbang
 	name = "Stingbang Single-Pack"
 	desc = "Contains one \"stingbang\" grenade, perfect for playing meanhearted pranks."
 	cost = PAYCHECK_HARD * 2.5
 	access_view = ACCESS_BRIG
 	contains = list(/obj/item/grenade/stingbang)
-
+*/
+//SKYRAT EDIT REMOVAL END
 /datum/supply_pack/goody/Survivalknives_single
 	name = "Survival Knife Single-Pack"
 	desc = "Contains one sharpened survival knive. Guaranteed to fit snugly inside any Nanotrasen-standard boot."
 	cost = PAYCHECK_HARD * 1.75
 	contains = list(/obj/item/knife/combat/survival)
-
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/supply_pack/goody/ballistic_single
 	name = "Combat Shotgun Single-Pack"
 	desc = "For when the enemy absolutely needs to be replaced with lead. Contains one Aussec-designed Combat Shotgun, and one Shotgun Bandolier."

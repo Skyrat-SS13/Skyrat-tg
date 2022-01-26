@@ -54,14 +54,13 @@
 	suit = /obj/item/clothing/suit/armor/hos/trenchcoat
 	suit_store = /obj/item/gun/energy/e_gun
 	backpack_contents = list(
-		/obj/item/melee/baton/security/loaded = 1,
 		/obj/item/evidencebag = 1,
 		/obj/item/modular_computer/tablet/preset/advanced/command = 1,
 		)
 	belt = /obj/item/pda/heads/hos
 	ears = /obj/item/radio/headset/heads/hos/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-	gloves = /obj/item/clothing/gloves/security //SKYRAT EDIT CHANGE
+	gloves = /obj/item/clothing/gloves/color/black/security //SKYRAT EDIT CHANGE
 	head = /obj/item/clothing/head/hos/beret
 	shoes = /obj/item/clothing/shoes/jackboots/security //SKYRAT EDIT CHANGE
 	l_pocket = /obj/item/restraints/handcuffs
@@ -78,9 +77,12 @@
 		)
 	implants = list(/obj/item/implant/mindshield)
 
-/datum/outfit/job/hos/hardsuit
-	name = "Head of Security (Hardsuit)"
+/datum/outfit/job/hos/mod
+	name = "Head of Security (MODsuit)"
 
-	suit = /obj/item/clothing/suit/space/hardsuit/security/hos
 	suit_store = /obj/item/tank/internals/oxygen
+	back = /obj/item/mod/control/pre_equipped/safeguard
+	suit = null
+	head = null
 	mask = /obj/item/clothing/mask/gas/sechailer
+	internals_slot = ITEM_SLOT_SUITSTORE

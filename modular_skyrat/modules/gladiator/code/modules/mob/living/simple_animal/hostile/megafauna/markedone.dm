@@ -184,8 +184,7 @@
 	if(ishuman(target))
 		var/mob/living/carbon/human/human_target = target
 		var/datum/species/targetspecies = human_target.dna.species
-		// The gladiator is extremely racist against anyone but humans (he is based)
-		// He especially hates ash l words
+		// The gladiator hates non-humans, he especially hates ash walkers.
 		if(targetspecies.id == SPECIES_HUMAN)
 			var/static/list/human_messages = list(
 									"When you are ready, you may end the madness. Give me an honorable death.", \
@@ -256,7 +255,7 @@
 	visible_message(span_userdanger("[src] lifts his ancient blade, and prepares to spin!"))
 	spinning = TRUE
 	animate(src, color = "#ff6666", 10)
-	SLEEP_CHECK_DEATH(5)
+	SLEEP_CHECK_DEATH(5, src)
 	var/list/spinningturfs = list()
 	var/current_angle = 360
 	while(current_angle > 0)
@@ -292,7 +291,7 @@
 	face_atom(target)
 	visible_message(span_userdanger("[src] lifts his arm, and prepares to charge!"))
 	animate(src, color = "#ff6666", 3)
-	SLEEP_CHECK_DEATH(4)
+	SLEEP_CHECK_DEATH(4, src)
 	face_atom(target)
 	minimum_distance = 0
 	charging = TRUE
@@ -311,7 +310,7 @@
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/teleport(atom/target)
 	var/turf/targeted = get_step(target, target.dir)
 	new /obj/effect/temp_visual/small_smoke/halfsecond(get_turf(src))
-	SLEEP_CHECK_DEATH(4)
+	SLEEP_CHECK_DEATH(4, src)
 	if(istype(targeted) && !ischasm(targeted) && !istype(targeted, /turf/open/openspace))
 		new /obj/effect/temp_visual/small_smoke/halfsecond(targeted)
 		forceMove(targeted)

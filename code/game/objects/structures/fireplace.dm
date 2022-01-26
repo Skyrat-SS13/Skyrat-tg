@@ -101,7 +101,7 @@
 			set_light(3)
 		if(60000 to 79999) //SKYRAT EDIT original: if(1500 to 2000)
 			set_light(4)
-		if(800000 to MAXIMUM_BURN_TIMER) //SKYRAT EDIT original: if(2000 to MAXIMUM_BURN_TIMER)
+		if(80000 to MAXIMUM_BURN_TIMER) //SKYRAT EDIT original: if(2000 to MAXIMUM_BURN_TIMER)
 			set_light(6)
 
 /obj/structure/fireplace/process(delta_time)

@@ -7,6 +7,7 @@
 	righthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/m16/m16_righthand.dmi'
 	inhand_icon_state = "m16"
 	slot_flags = ITEM_SLOT_BELT
+	w_class = WEIGHT_CLASS_BULKY
 	mag_type = /obj/item/ammo_box/magazine/m16
 	can_suppress = FALSE
 	burst_size = 3

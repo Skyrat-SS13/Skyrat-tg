@@ -247,6 +247,7 @@
 				else
 					uniform.adjusted = DIGITIGRADE_STYLE
 				leg_owner.update_inv_w_uniform()
-		/*if(leg_owner.shoes && !swap_back)
-			leg_owner.dropItemToGround(leg_owner.shoes)*/
-		//SKYRAT EDIT REMOVAL
+		/* SKYRAT EDIT REMOVAL - Digitigrade legs
+		if(leg_owner.shoes && !(leg_owner.shoes.item_flags & IGNORE_DIGITIGRADE) && !swap_back)
+			leg_owner.dropItemToGround(leg_owner.shoes)
+		*/ // SKYRAT EDIT END

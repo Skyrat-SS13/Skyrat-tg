@@ -174,7 +174,7 @@
 	background_icon_state = "bg_changeling"
 	button_icon_state = "change_to_human"
 
-/datum/action/innate/turn_to_human/Trigger()
+/datum/action/innate/turn_to_human/Trigger(trigger_flags)
 	var/mob/living/simple_animal/hostile/true_changeling/C = owner
 	if(!C.stored_changeling)
 		to_chat(C,span_warning("We do not have a form other than this!"))
@@ -202,7 +202,7 @@
 	background_icon_state = "bg_changeling"
 	button_icon_state = "devour"
 
-/datum/action/innate/devour/Trigger()
+/datum/action/innate/devour/Trigger(trigger_flags)
 	var/mob/living/simple_animal/hostile/true_changeling/T = owner
 	if(T.devouring)
 		T << span_warning("We are already feasting on a human!")

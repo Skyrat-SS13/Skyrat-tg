@@ -57,17 +57,15 @@
 	ears = /obj/item/radio/headset/headset_medsec
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/security_medic
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
-	shoes = /obj/item/clothing/shoes/combat/peacekeeper
+	shoes = /obj/item/clothing/shoes/jackboots
 	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/security_medic
 	l_hand = /obj/item/storage/firstaid/brute
 	head = /obj/item/clothing/head/beret/sec/peacekeeper/security_medic
-
-	backpack_contents = list(/obj/item/melee/baton/telescopic, /obj/item/storage/box/gunset/security_medic)
-
-	backpack = /obj/item/storage/backpack/security/peacekeeper
-	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
-	duffelbag = /obj/item/storage/backpack/duffelbag/sec/peacekeeper
+	backpack_contents = list(/obj/item/gun/energy/disabler = 1)
+	backpack = /obj/item/storage/backpack/security
+	satchel = /obj/item/storage/backpack/satchel/sec
+	duffelbag = /obj/item/storage/backpack/duffelbag/sec
 
 	box = /obj/item/storage/box/survival/security
 
@@ -77,7 +75,8 @@
 
 /obj/effect/landmark/start/security_medic
 	name = "Security Medic"
-	icon_state = "Security Officer"
+	icon_state = "Security Medic"
+	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
 
 /obj/item/encryptionkey/headset_medsec
 	name = "medical-security encryption key"
@@ -106,5 +105,5 @@
 	new /obj/item/storage/firstaid/emergency(src)
 	new /obj/item/clothing/suit/straight_jacket(src)
 	new /obj/item/storage/belt/medical(src)
-	new /obj/item/storage/belt/security/peacekeeper/full(src)
+	new /obj/item/storage/belt/security/full(src)
 	new /obj/item/clothing/under/rank/medical/doctor/red(src)

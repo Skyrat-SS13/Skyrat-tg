@@ -84,7 +84,7 @@
 	icon_state = "bshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_rubbershot
 	pellets = 6
-	variance = 25
+	variance = 20
 	custom_materials = list(/datum/material/iron=4000)
 	harmful = FALSE //SKYRAT EDIT ADDITION
 

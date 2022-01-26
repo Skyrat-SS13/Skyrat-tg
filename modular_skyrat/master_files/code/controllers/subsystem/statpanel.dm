@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(statpanels)
 	if (!resumed)
 		var/datum/map_config/cached = SSmapping.next_map_config
 		var/round_time = world.time - SSticker.round_start_time
-		var/real_round_time = world.realtime - SSticker.real_round_start_time
+		var/real_round_time = world.timeofday - SSticker.real_round_start_time
 		var/list/global_data = list(
 			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)",
 			"Map: [SSmapping.config?.map_name || "Loading..."]",
@@ -26,7 +26,7 @@ SUBSYSTEM_DEF(statpanels)
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
 			"Station Time: [station_time_timestamp()]",
 			"Round Timer: [round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[worldtime2text()]" : worldtime2text()]",
-			"Actual Round Timer: [time2text(real_round_time, "hh:mm:ss")]"
+			"Actual Round Timer: [time2text(real_round_time, "hh:mm:ss", 0)]"
 		)
 
 		if(SSshuttle.emergency)

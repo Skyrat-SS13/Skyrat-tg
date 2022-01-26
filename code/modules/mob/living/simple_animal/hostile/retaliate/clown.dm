@@ -27,7 +27,7 @@
 	obj_damage = 0
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	del_on_death = 1
-	loot = list(/obj/effect/mob_spawn/human/clown/corpse)
+	loot = list(/obj/effect/mob_spawn/corpse/human/clown)
 
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 270
@@ -298,7 +298,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/clown/mutant/slow
 	speed = 20
-	move_to_delay = 60
+	move_to_delay = 30
 
 /mob/living/simple_animal/hostile/retaliate/clown/mutant/glutton
 	name = "banana glutton"

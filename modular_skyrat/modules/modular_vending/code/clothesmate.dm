@@ -76,10 +76,16 @@
 		/obj/item/clothing/under/rank/civilian/lawyer/tan/skirtybaby = 5,
 		/obj/item/clothing/under/rank/civilian/lawyer/blue/skirtybaby = 5,
 		/obj/item/clothing/under/rank/civilian/lawyer/green/skirtybaby = 5,
+		/obj/item/clothing/under/rank/civilian/lawyer/inferno = 3,
+		/obj/item/clothing/under/rank/civilian/lawyer/inferno/skirt = 3,
 		/obj/item/clothing/under/suit/helltaker = 5,
 		/obj/item/clothing/under/suit/helltaker/skirt = 5,
 		/obj/item/clothing/glasses/betterunshit = 5,
 		/obj/item/clothing/glasses/thin = 5,
+		/obj/item/clothing/head/fedora/beige = 5,
+		/obj/item/clothing/head/fedora/white = 5,
+		/obj/item/clothing/head/fedora/fedblack = 5,
+		/obj/item/clothing/head/fedora/fedbrown = 5,
 	)
 
 	skyrat_premium = list( //being here means you're artificially rare, congratulations
@@ -88,4 +94,5 @@
 		/obj/item/clothing/suit/brownbattlecoat = 1,
 		/obj/item/clothing/suit/blackfurrich = 1,
 		/obj/item/clothing/suit/frenchtrench = 1,
+		/obj/item/clothing/under/misc/royalkilt = 5,
 	)

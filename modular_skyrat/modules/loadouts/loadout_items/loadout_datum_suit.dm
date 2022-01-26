@@ -14,6 +14,17 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	else
 		outfit.suit = item_path
 
+//santa's coming, coming to throw your mother down a staircase and leave you for years then cry about you not loving him
+/datum/loadout_item/suit/winter_coat/christmas
+	name = "Christmas Coat"
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/christmas
+
+/datum/loadout_item/suit/winter_coat/christmas/green
+	name = "Green Christmas Coat"
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/christmas/green
+
+//fuck santa, fuck him with every ounce of hate you have, dedicate your one reason for living to outliving that fat cunt and pissing on his grave
+
 /datum/loadout_item/suit/winter_coat
 	name = "Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat
@@ -129,6 +140,8 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/blue_letterman
 	name = "Blue Letterman"
 	item_path = /obj/item/clothing/suit/jacket/letterman_nanotrasen
+
+//HALLOWEEN
 
 /datum/loadout_item/suit/owl
 	name = "Owl Cloak"
@@ -261,6 +274,8 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Green Hawaiian Shirt"
 	item_path = /obj/item/clothing/suit/hawaiian_green
 
+//COATS
+
 /datum/loadout_item/suit/frenchtrench
 	name = "Blue Trenchcoat"
 	item_path = /obj/item/clothing/suit/frenchtrench
@@ -268,8 +283,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/cossak
 	name = "Ukrainian Coat"
 	item_path = /obj/item/clothing/suit/cossack
-
-//COATS
 
 /datum/loadout_item/suit/aformal
 	name = "Assistant's formal winter coat"
@@ -458,12 +471,12 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	restricted_roles = list(JOB_QUARTERMASTER, JOB_SHAFT_MINER) // Reserve it to Miners and their boss, the Quartermaster
 
 /datum/loadout_item/suit/navybluejacketofficer
-	name = "security officer's navyblue jacket"
+	name = "Security Officer's Navy Blue Jacket"
 	item_path = /obj/item/clothing/suit/armor/navyblue
 	restricted_roles = list(JOB_SECURITY_OFFICER,JOB_SECURITY_MEDIC,JOB_SECURITY_SERGEANT,JOB_HEAD_OF_SECURITY, JOB_WARDEN) // I aint making a medic one, maybe i'll add some rank thing from cm or civ for it
 
 /datum/loadout_item/suit/navybluejacketwarden
-	name = "warden navyblue jacket"
+	name = "Warden's Navy Blue Jacket"
 	item_path = /obj/item/clothing/suit/armor/vest/warden/navyblue
 	restricted_roles = list(JOB_WARDEN)
 
@@ -481,6 +494,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "High Vis Armored Vest"
 	item_path = /obj/item/clothing/suit/toggle/brit/sec
 	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_SECURITY_SERGEANT, JOB_CIVIL_DISPUTES_OFFICER, JOB_CORRECTIONS_OFFICER)
+
 /datum/loadout_item/suit/british_jacket
 	name = "Peacekeeper Officer Coat"
 	item_path = /obj/item/clothing/suit/british_officer
@@ -535,7 +549,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/bltrench
 	name = "Black Trenchcoat"
 	item_path = /obj/item/clothing/suit/trenchblack
-
 
 /datum/loadout_item/suit/brtrench
 	name = "Brown Trenchcoat"

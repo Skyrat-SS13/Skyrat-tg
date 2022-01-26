@@ -1283,7 +1283,8 @@
 /turf/open/floor/plating,
 /area/maintenance/fore/upper)
 "akv" = (
-/obj/machinery/computer/secure_data,
+/obj/structure/table/wood,
+/obj/machinery/computer/med_data/laptop,
 /turf/open/floor/carpet/executive,
 /area/blueshield)
 "akz" = (
@@ -8432,11 +8433,11 @@
 /turf/open/floor/plating,
 /area/maintenance/fore/upper)
 "ccU" = (
-/obj/effect/landmark/start/depsec/medical,
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/blue,
+/obj/effect/landmark/start/orderly,
 /turf/open/floor/iron,
 /area/security/checkpoint/medical)
 "ccX" = (
@@ -17325,10 +17326,6 @@
 	},
 /turf/open/floor/wood,
 /area/commons/dorms)
-"fvK" = (
-/obj/machinery/photocopier,
-/turf/open/floor/carpet/executive,
-/area/blueshield)
 "fvM" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -21168,9 +21165,9 @@
 /turf/open/floor/iron/dark,
 /area/command/heads_quarters/captain)
 "gUD" = (
-/obj/machinery/vending/wardrobe/sec_wardrobe,
 /obj/effect/turf_decal/bot,
 /obj/structure/reagent_dispensers/wall/peppertank/directional/north,
+/obj/structure/closet/secure_closet/security/med,
 /turf/open/floor/iron/dark,
 /area/security/checkpoint/medical)
 "gUJ" = (
@@ -23444,6 +23441,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 10
 	},
+/obj/item/restraints/handcuffs/cable/cyan,
 /turf/open/floor/iron,
 /area/security/checkpoint/medical)
 "hTq" = (
@@ -26089,7 +26087,6 @@
 "iPl" = (
 /obj/structure/table/reinforced,
 /obj/item/folder/red,
-/obj/item/restraints/handcuffs,
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
 /obj/machinery/camera/directional/south{
@@ -26102,6 +26099,12 @@
 	},
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
+	},
+/obj/item/paper_bin{
+	pixel_y = 3
+	},
+/obj/item/pen{
+	pixel_y = 3
 	},
 /turf/open/floor/iron/dark/side,
 /area/security/checkpoint/science/research)
@@ -35086,25 +35089,12 @@
 /turf/open/floor/iron,
 /area/science/xenobiology)
 "mds" = (
-/obj/structure/closet/secure_closet{
-	req_access_txt = "63"
-	},
-/obj/item/clothing/under/rank/security/officer/blueshirt,
-/obj/item/clothing/shoes/jackboots/black,
-/obj/item/clothing/suit/armor/vest/blueshirt,
-/obj/item/clothing/head/helmet/blueshirt,
-/obj/item/storage/belt/security,
-/obj/item/melee/baton/security,
-/obj/item/reagent_containers/spray/pepper,
-/obj/item/assembly/flash,
-/obj/item/restraints/handcuffs,
-/obj/item/clothing/under/rank/medical/doctor/formal,
-/obj/item/clothing/under/rank/medical/doctor/formal/skirt,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/blue,
+/obj/structure/closet/secure_closet/security/med,
 /turf/open/floor/iron,
 /area/security/checkpoint/medical)
 "mdu" = (
@@ -37966,6 +37956,7 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
+/obj/item/restraints/handcuffs/cable/pink,
 /turf/open/floor/iron/dark/side,
 /area/security/checkpoint/science/research)
 "nho" = (
@@ -38681,13 +38672,7 @@
 /turf/open/floor/plating,
 /area/maintenance/department/medical)
 "nvr" = (
-/obj/structure/table/reinforced,
-/obj/item/paper_bin{
-	pixel_y = 3
-	},
-/obj/item/pen{
-	pixel_y = 3
-	},
+/obj/structure/closet/secure_closet/security/science,
 /turf/open/floor/iron,
 /area/security/checkpoint/science/research)
 "nvG" = (
@@ -42044,10 +42029,10 @@
 "oOH" = (
 /obj/structure/chair/office,
 /obj/structure/cable,
-/obj/effect/landmark/start/depsec/science,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
+/obj/effect/landmark/start/science_guard,
 /turf/open/floor/iron,
 /area/security/checkpoint/science/research)
 "oOR" = (
@@ -44577,7 +44562,6 @@
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
-/obj/item/restraints/handcuffs,
 /obj/machinery/light_switch/directional/north,
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark,
@@ -48396,13 +48380,13 @@
 /obj/structure/chair/office{
 	dir = 8
 	},
-/obj/effect/landmark/start/depsec/medical,
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
+/obj/effect/landmark/start/orderly,
 /turf/open/floor/iron,
 /area/security/checkpoint/medical)
 "riT" = (
@@ -51877,21 +51861,8 @@
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
 "swn" = (
-/obj/structure/closet/secure_closet{
-	req_access_txt = "63"
-	},
-/obj/item/clothing/under/rank/security/officer/blueshirt,
-/obj/item/clothing/shoes/jackboots/black,
-/obj/item/clothing/suit/armor/vest/blueshirt,
-/obj/item/clothing/head/helmet/blueshirt,
-/obj/item/storage/belt/security,
-/obj/item/melee/baton/security,
-/obj/item/reagent_containers/spray/pepper,
-/obj/item/assembly/flash,
-/obj/item/restraints/handcuffs,
-/obj/item/clothing/under/rank/rnd/scientist,
-/obj/item/clothing/under/rank/rnd/scientist/skirt,
 /obj/effect/turf_decal/bot,
+/obj/structure/closet/secure_closet/security/science,
 /turf/open/floor/iron,
 /area/security/checkpoint/science/research)
 "swo" = (
@@ -56767,9 +56738,8 @@
 /turf/open/floor/wood,
 /area/commons/dorms)
 "upt" = (
-/obj/structure/table/wood,
-/obj/machinery/computer/med_data/laptop,
 /obj/machinery/bounty_board/directional/north,
+/obj/machinery/photocopier,
 /turf/open/floor/carpet/executive,
 /area/blueshield)
 "upu" = (
@@ -61793,6 +61763,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/blue,
+/obj/effect/landmark/start/orderly,
 /turf/open/floor/iron,
 /area/security/checkpoint/medical)
 "wcy" = (
@@ -63968,7 +63939,7 @@
 /obj/item/storage/backpack/duffel/blueshield,
 /obj/item/storage/backpack/satchel/blueshield,
 /obj/item/clothing/gloves/tackler/combat/insulated/blueshield,
-/obj/item/radio/headset/heads/blueshield/alt,
+/obj/item/radio/headset/headset_bs/alt,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
@@ -66210,7 +66181,7 @@
 /obj/structure/chair/office{
 	dir = 1
 	},
-/obj/effect/landmark/start/depsec/science,
+/obj/effect/landmark/start/science_guard,
 /turf/open/floor/iron,
 /area/security/checkpoint/science/research)
 "xFS" = (
@@ -66478,6 +66449,7 @@
 	dir = 6
 	},
 /obj/machinery/holopad,
+/obj/effect/landmark/start/science_guard,
 /turf/open/floor/iron,
 /area/security/checkpoint/science/research)
 "xJi" = (
@@ -66800,6 +66772,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
+/obj/effect/landmark/start/orderly,
 /turf/open/floor/iron,
 /area/security/checkpoint/medical)
 "xOt" = (
@@ -95930,7 +95903,7 @@ lUO
 rVY
 vKM
 avA
-fvK
+fum
 qdo
 jjC
 ami
