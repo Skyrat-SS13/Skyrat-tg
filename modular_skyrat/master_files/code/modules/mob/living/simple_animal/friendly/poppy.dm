@@ -47,7 +47,7 @@
 /mob/living/simple_animal/pet/poppy/death()
 	set_light_on(FALSE)
 
-	var/list/sm_chamber = get_area_turfs(/area/engineering/supermatter/room)
+	var/list/sm_chamber = get_area_turfs(/area/engineering/supermatter)
 	if(src.loc in sm_chamber)
 		priority_announce("why did you dust the possum...", "what", ANNOUNCER_INTERCEPT, "Priority")
 
