@@ -44,6 +44,7 @@
 	icon_state = "borgi"
 	icon_living = "borgi"
 	icon_dead = "borgi_dead"
+	unique_pet = TRUE
 	maxHealth = 150
 	health = 150
 	var/emagged = 0
@@ -174,6 +175,7 @@
 	UnregisterSignal(src, COMSIG_ATOM_HITBY)
 	UnregisterSignal(src, COMSIG_ATOM_EMAG_ACT)
 
+	set_light_on(FALSE)
 	do_sparks(3, 1, src)
 	var/datum/ai_controller/dog/EN = ai_controller
 	LAZYCLEARLIST(EN.current_behaviors)
@@ -181,16 +183,19 @@
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_emag_act(mob/user)
 	if(!emagged)
 		emagged = 1
-		light_on = TRUE
-		visible_message(span_warning("[user] swipes a card through [src]."), span_notice("You overload [src]s internal reactor."))
+
+		emote("exclaim")
+		set_light_on(TRUE)
+
+		visible_message(span_boldwarning("[user] swipes a card through [src]!"), span_notice("You overload [src]s internal reactor..."))
 		addtimer(CALLBACK(src, .proc/explode), 50 SECONDS)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/explode()
-	visible_message(span_warning("[src] makes an odd whining noise."))
-	jitteriness = 10 SECONDS
+	visible_message(span_bolddanger("[src] makes an odd whining noise!"))
+	do_jitter_animation(10)
 	sleep(10 SECONDS) // Here's your ten second warning
-	explosion(get_turf(src), 0, 1, 6, 9, 2, TRUE) // Should this be changed?
-	death()
+	explosion(get_turf(src), 1, 3, 6, 6, 8) // Should this be changed?
+	gib() // Yuck, robo-blood
 
 /mob/living/simple_animal/pet/dog/dobermann
 	name = "\proper Dobermann"
