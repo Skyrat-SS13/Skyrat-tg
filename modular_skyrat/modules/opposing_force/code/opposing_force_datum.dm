@@ -841,3 +841,33 @@
 			report += "<br>"
 
 	return report.Join("\n")
+
+/datum/action/opfor
+	name = "Open Opposing Force Panel"
+	button_icon_state = "round_end"
+
+/datum/action/opfor/Trigger(trigger_flags)
+	. = ..()
+	if(!.)
+		return
+
+	if(!owner.mind.opposing_force)
+		var/datum/opposing_force/opposing_force = new(owner.mind)
+		owner.mind.opposing_force = opposing_force
+		SSopposing_force.new_opfor(opposing_force)
+	owner.mind.opposing_force.ui_interact(usr)
+
+/datum/action/opfor/IsAvailable()
+	if(!target)
+		stack_trace("[type] was used without a target antag datum!")
+		return FALSE
+	. = ..()
+	if(!.)
+		return
+	if(!owner.mind)
+		return FALSE
+	if(is_banned_from(owner.ckey, BAN_ANTAGONIST))
+		return FALSE
+	if(is_banned_from(owner.ckey, BAN_OPFOR))
+		return FALSE
+	return TRUE

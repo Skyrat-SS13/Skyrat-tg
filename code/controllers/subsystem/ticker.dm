@@ -324,6 +324,11 @@ SUBSYSTEM_DEF(ticker)
 			to_chat(iter_human, span_notice("You will gain [round(iter_human.hardcore_survival_score) * 2] hardcore random points if you greentext this round!"))
 		else
 			to_chat(iter_human, span_notice("You will gain [round(iter_human.hardcore_survival_score)] hardcore random points if you survive this round!"))
+		var/datum/action/opfor/info_button
+		//FINISH LATER SR EDIT
+		info_button = new(iter_human)
+		info_button.Grant(iter_human)
+		info_button_ref = WEAKREF(info_button)
 
 //These callbacks will fire after roundstart key transfer
 /datum/controller/subsystem/ticker/proc/OnRoundstart(datum/callback/cb)
