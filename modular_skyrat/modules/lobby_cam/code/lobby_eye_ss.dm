@@ -52,11 +52,11 @@ SUBSYSTEM_DEF(lobby_eye)
 	for(var/mob/checking_mob in GLOB.new_player_list)
 		if(!checking_mob.client)
 			continue
-		if(fading_screen && (fading_screen in checking_mob.client.screen))
-			checking_mob.client.screen -= fading_screen
-		if(checking_mob.client.eye != linked_camera)
+		if(fading_screen && (fading_screen in checking_mob.client?.screen))
+			checking_mob.client?.screen -= fading_screen
+		if(checking_mob.client?.eye != linked_camera)
 			continue
-		checking_mob.client.eye = checking_mob.client.mob
+		checking_mob.client?.eye = checking_mob.client?.mob
 
 /datum/controller/subsystem/lobby_eye/fire(resumed)
 	//the config
