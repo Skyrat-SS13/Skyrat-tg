@@ -8,6 +8,7 @@
 		/obj/item/clipboard/cyborg,
 		/obj/item/stack/package_wrap/cyborg,
 		/obj/item/stack/wrapping_paper/xmas/cyborg,
+		/obj/item/assembly/flash/cyborg,
 		/obj/item/borg/hydraulic_clamp,
 		/obj/item/borg/hydraulic_clamp/mail,
 		/obj/item/hand_labeler/cyborg,
