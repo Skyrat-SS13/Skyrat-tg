@@ -1,3 +1,7 @@
+#define EMP_BRUTE_DAMAGE 0
+#define EMP_BURN_DAMAGE_LIGHT 2
+#define EMP_BURN_DAMAGE_HEAVY 5
+
 /mob/living/carbon/human/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_CONTENTS)
@@ -12,10 +16,10 @@
 				informed = TRUE
 			switch(severity)
 				if(1)
-					L.receive_damage(0,5)
-					stun_time += 20
+					L.receive_damage(EMP_BRUTE_DAMAGE,EMP_BURN_DAMAGE_HEAVY)
+					stun_time += 2 SECONDS
 				if(2)
-					L.receive_damage(0,2)
+					L.receive_damage(EMP_BRUTE_DAMAGE,EMP_BURN_DAMAGE_LIGHT)
 					stun_time += 1 SECONDS
 			if(L.body_zone == BODY_ZONE_L_LEG || L.body_zone == BODY_ZONE_R_LEG)
 				affects_leg = TRUE
@@ -32,3 +36,7 @@
 				Knockdown(50)
 			if(2)
 				Knockdown(25)
+
+#undef EMP_BRUTE_DAMAGE
+#undef EMP_BURN_DAMAGE_LIGHT
+#undef EMP_BURN_DAMAGE_HEAVY

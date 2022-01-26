@@ -28,28 +28,28 @@
 	return TRUE
 
 /datum/surgery_step/pry_off_plating/fullbody
-	time = 120
+	time = 12 SECONDS
 
 /datum/surgery_step/pry_off_plating/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(user, target, span_notice("You begin to pry open compromised panels on [target]'s braincase..."),
 			span_notice("[user] begins to pry open compromised panels on [target]'s braincase."))
 
 /datum/surgery_step/cut_wires/fullbody
-	time = 120
+	time = 12 SECONDS
 
 /datum/surgery_step/cut_wires/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(user, target, span_notice("You begin to trim [target]'s nonfunctional wires..."),
 			span_notice("[user] begins to cut [target]'s loose wires."))
 
 /datum/surgery_step/weld_plating/fullbody
-	time = 120
+	time = 12 SECONDS
 
 /datum/surgery_step/weld_plating/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(user, target, span_notice("You begin to slice compromised panels from [target]'s braincase..."),
 			span_notice("[user] begins to slice compromised panels from [target]'s braincase."))
 
 /datum/surgery_step/replace_wires/fullbody
-	time = 72
+	time = 7 SECONDS
 	cableamount = 15
 
 /datum/surgery_step/replace_wires/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -57,7 +57,7 @@
 			span_notice("[user] begins to replace [target]'s wiring."))
 
 /datum/surgery_step/add_plating/fullbody
-	time = 120
+	time = 12 SECONDS
 	ironamount = 15
 
 /datum/surgery_step/add_plating/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -70,7 +70,7 @@
 		TOOL_MULTITOOL = 100,
 	)
 	repeatable = FALSE
-	time = 120
+	time = 12 SECONDS
 
 /datum/surgery_step/finalize_positronic_restoration/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(user, target, span_notice("You begin to force a reboot in [target]'s posibrain..."),
