@@ -22,13 +22,8 @@
 	permeability_coefficient = 0.5
 
 //Captain
-<<<<<<< HEAD
-/obj/item/clothing/suit/captunic
-	name = "captain's formal tunic"
-=======
 /obj/item/clothing/suit/capjacket
 	name = "captain's parade jacket"
->>>>>>> 25bd0e545bb (Some Command Resprites (#64377))
 	desc = "Worn by a Captain to show their class."
 	icon_state = "capjacket"
 	inhand_icon_state = "bio_suit"
