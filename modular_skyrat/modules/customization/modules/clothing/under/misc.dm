@@ -733,3 +733,40 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "captainblacksuit"
+
+
+/obj/item/clothing/under/suit/simplejoe
+	name = "simple joe"
+	desc = "Either you're new to this whole 'fashion' business, or just very confident."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "joesuit"
+	blood_overlay_type = "under"
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+
+/obj/item/clothing/under/misc/workingjoe
+	name = "working joe"
+	desc = "You're here to work, not to look fancy."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "joesuit"
+	blood_overlay_type = "under"
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+
+/obj/item/clothing/under/suit/redbureaucrat
+	name = "bureaucrat in red"
+	desc = "Climbing the ranks, no matter the consequences"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "redbureaucrat"
+	blood_overlay_type = "under"
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+
+/obj/item/clothing/under/suit/bluebureaucrat
+	name = "bureaucrat in blue"
+	desc = "You'd do anything for the sake of your career."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "bluebureaucrat"
+	blood_overlay_type = "under"
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS

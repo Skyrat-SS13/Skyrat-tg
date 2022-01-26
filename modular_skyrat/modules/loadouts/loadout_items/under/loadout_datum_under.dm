@@ -872,6 +872,22 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Jean Shorts"
 	item_path = /obj/item/clothing/under/pants/jeanshort
 
+/datum/loadout_item/under/formal/simplejoe
+	name = "Simple Joe"
+	item_path = /obj/item/clothing/under/suit/simplejoe
+
+/datum/loadout_item/under/formal/workingjoe
+	name = "Working Joe"
+	item_path = /obj/item/clothing/under/misc/workingjoe
+
+/datum/loadout_item/under/formal/redbureaucrat
+	name = "Bureaucrat in Red"
+	item_path = /obj/item/clothing/under/suit/redbureaucrat
+
+/datum/loadout_item/under/formal/bluebureaucrat
+	name = "Bureaucrat in Blue"
+	item_path = /obj/item/clothing/under/suit/bluebureaucrat
+
 //FAMILIES GEAR
 /datum/loadout_item/under/formal/osi
 	name = "OSI Uniform"

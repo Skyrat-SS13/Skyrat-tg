@@ -599,6 +599,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Basil Coat"
 	item_path = /obj/item/clothing/suit/basil_boys
 
+/datum/loadout_item/suit/soldiercoat
+	name = "Elysian Coat"
+	item_path = /obj/item/clothing/suit/elysiancoat
+
 //Donator sutis here
 /datum/loadout_item/suit/donator
 	donator_only = TRUE
