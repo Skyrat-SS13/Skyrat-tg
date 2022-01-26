@@ -44,9 +44,11 @@
 	icon_state = "borgi"
 	icon_living = "borgi"
 	icon_dead = "borgi_dead"
-	maxHealth = 60
-	health = 60
+	maxHealth = 150
+	health = 150
 	var/emagged = 0
+	turns_per_move = 10
+	stop_automated_movement = 0
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	loot = list(/obj/effect/decal/cleanable/oil/slippery)
@@ -54,13 +56,24 @@
 	deathmessage = "beeps, its mechanical parts hissing before the chassis collapses in a loud thud."
 	animal_species = /mob/living/simple_animal/pet/dog/corgi/borgi
 	nofur = TRUE
+	light_system = MOVABLE_LIGHT_DIRECTIONAL
+	light_color = COLOR_RED
+	light_range = 2
+	light_power = 0.8
+	light_on = FALSE
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/Initialize()
 	. = ..()
+	var/datum/component/overlay_lighting/lighting_object = src.GetComponent(/datum/component/overlay_lighting)
+	var/image/cone = lighting_object.cone
+	cone.transform = cone.transform.Translate(0, -8)
+
 	//Defense protocol
 	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, .proc/on_attack_hand)
 	RegisterSignal(src, COMSIG_PARENT_ATTACKBY, .proc/on_attackby)
 	RegisterSignal(src, COMSIG_ATOM_HITBY, .proc/on_hitby)
+	//For traitor objectives
+	RegisterSignal(src, COMSIG_ATOM_EMAG_ACT, .proc/on_emag_act)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_attack_hand(datum/source, mob/living/target)
 	if(target.combat_mode && health > 0)
@@ -145,7 +158,7 @@
 		do_sparks(3, 1, src)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/handle_automated_action()
-	if(emagged && prob(25))
+	if(emagged && prob(50))
 		var/mob/living/carbon/target = locate() in view(10, src)
 		if(target)
 			shootAt(target)
@@ -155,19 +168,28 @@
 	. = ..(gibbed)
 	if(!.)
 		return FALSE
+
+	UnregisterSignal(src, COMSIG_ATOM_ATTACK_HAND)
+	UnregisterSignal(src, COMSIG_PARENT_ATTACKBY)
+	UnregisterSignal(src, COMSIG_ATOM_HITBY)
+	UnregisterSignal(src, COMSIG_ATOM_EMAG_ACT)
+
 	do_sparks(3, 1, src)
 	var/datum/ai_controller/dog/EN = ai_controller
 	LAZYCLEARLIST(EN.current_behaviors)
 
-/mob/living/simple_animal/pet/dog/corgi/borgi/emag_act(user as mob)
+/mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_emag_act(mob/user)
 	if(!emagged)
 		emagged = 1
+		light_on = TRUE
 		visible_message(span_warning("[user] swipes a card through [src]."), span_notice("You overload [src]s internal reactor."))
-		addtimer(CALLBACK(src, .proc/explode), 60 SECONDS)
+		addtimer(CALLBACK(src, .proc/explode), 50 SECONDS)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/explode()
 	visible_message(span_warning("[src] makes an odd whining noise."))
-	explosion(get_turf(src), 0, 1, 6, 9, 2, TRUE)
+	jitteriness = 10 SECONDS
+	sleep(10 SECONDS) // Here's your ten second warning
+	explosion(get_turf(src), 0, 1, 6, 9, 2, TRUE) // Should this be changed?
 	death()
 
 /mob/living/simple_animal/pet/dog/dobermann
