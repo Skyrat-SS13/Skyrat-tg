@@ -25,6 +25,7 @@
 
 #define CYBORG_ICON_CARGO 'modular_skyrat/modules/cargoborg/icons/robots_cargo.dmi'
 #define CYBORG_ICON_CARGO_WIDE 'modular_skyrat/modules/cargoborg/icons/widerobots_cargo.dmi'
+#define CYBORG_ICON_CARGO_TALL 'modular_skyrat/modules/altborgs/icons/tallborg/tallrobot_cargo.dmi'
 
 #define CYBORG_ICON_SEC 'modular_skyrat/modules/altborgs/icons/robots_sec.dmi'
 #define CYBORG_ICON_SEC_WIDE 'modular_skyrat/modules/altborgs/icons/widerobot_sec.dmi'
