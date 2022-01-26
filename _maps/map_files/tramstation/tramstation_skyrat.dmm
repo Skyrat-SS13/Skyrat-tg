@@ -2870,12 +2870,16 @@
 /turf/open/floor/iron,
 /area/security/checkpoint/medical)
 "asb" = (
-/obj/structure/table/wood,
-/obj/item/hand_labeler{
-	pixel_x = 5
+/obj/structure/closet/secure_closet/detective,
+/obj/item/tape,
+/obj/item/tape,
+/obj/item/tape,
+/obj/item/taperecorder,
+/obj/item/folder/yellow{
+	name = "Detective's Findings"
 	},
-/obj/item/storage/box/evidence,
-/obj/item/radio/intercom/directional/south,
+/obj/item/clothing/glasses/sunglasses,
+/obj/item/camera/detective,
 /turf/open/floor/iron/grimy,
 /area/security/detectives_office)
 "asd" = (
@@ -5281,6 +5285,10 @@
 	},
 /obj/item/taperecorder,
 /obj/machinery/light_switch/directional/west,
+/obj/item/hand_labeler{
+	pixel_x = 5
+	},
+/obj/item/storage/box/evidence,
 /turf/open/floor/iron/grimy,
 /area/security/detectives_office)
 "aFc" = (
@@ -14284,9 +14292,7 @@
 /area/security/brig)
 "dwd" = (
 /obj/machinery/vending/wardrobe/det_wardrobe,
-/obj/structure/sign/poster/official/dick_gum{
-	pixel_y = -32
-	},
+/obj/item/radio/intercom/directional/south,
 /turf/open/floor/iron/grimy,
 /area/security/detectives_office)
 "dwk" = (
@@ -16266,6 +16272,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/east,
+/obj/item/stamp/denied{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/item/stamp{
+	pixel_x = 8;
+	pixel_y = 2
+	},
 /turf/open/floor/iron/showroomfloor,
 /area/security/warden)
 "efK" = (
@@ -17084,6 +17098,9 @@
 	pixel_x = 4
 	},
 /obj/item/grenade/barrier,
+/obj/item/grenade/barrier{
+	pixel_x = 8
+	},
 /obj/item/grenade/barrier{
 	pixel_x = -4
 	},
@@ -18797,15 +18814,8 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/table,
-/obj/item/storage/box/rubbershot{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/rubbershot,
-/obj/item/storage/box/rubbershot{
-	pixel_x = 3;
-	pixel_y = -3
+/obj/machinery/dish_drive/bullet{
+	succrange = 2
 	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
@@ -28484,7 +28494,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/reagent_dispensers/wall/peppertank/directional/west,
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
@@ -31012,18 +31021,20 @@
 /area/maintenance/starboard/central)
 "jmW" = (
 /obj/effect/turf_decal/tile/neutral{
-	dir = 4
+	dir = 1
 	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
-	dir = 8
+	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral{
-	dir = 1
+	dir = 8
 	},
-/obj/machinery/dish_drive/bullet{
-	succrange = 2
-	},
+/obj/structure/closet/ammunitionlocker/useful,
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "jmY" = (
@@ -31551,11 +31562,6 @@
 /obj/structure/cable,
 /turf/open/floor/catwalk_floor,
 /area/maintenance/starboard/secondary)
-"jwy" = (
-/obj/structure/closet/secure_closet/detective,
-/obj/item/camera/detective,
-/turf/open/floor/iron/grimy,
-/area/security/detectives_office)
 "jwA" = (
 /obj/structure/table,
 /obj/item/paper_bin{
@@ -36008,6 +36014,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
+/obj/item/gun/energy/laser,
 /turf/open/floor/iron/showroomfloor,
 /area/security/warden)
 "lbB" = (
@@ -37628,6 +37635,9 @@
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
 	dir = 1
+	},
+/obj/structure/sign/poster/official/dick_gum{
+	pixel_y = -32
 	},
 /turf/open/floor/iron/grimy,
 /area/security/detectives_office)
@@ -54407,6 +54417,25 @@
 	dir = 1
 	},
 /obj/machinery/status_display/ai/directional/north,
+/obj/structure/rack,
+/obj/item/clothing/head/helmet/sec{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/head/helmet/sec,
+/obj/item/clothing/head/helmet/sec{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/clothing/suit/armor/vest/security{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/suit/armor/vest/security,
+/obj/item/clothing/suit/armor/vest/security{
+	pixel_x = 3;
+	pixel_y = -3
+	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "rSJ" = (
@@ -63040,6 +63069,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
+/obj/item/clothing/accessory/badge/holo/warden,
 /turf/open/floor/iron/showroomfloor,
 /area/security/warden)
 "uQv" = (
@@ -64333,6 +64363,7 @@
 /obj/structure/closet/secure_closet/contraband/armory,
 /obj/effect/spawner/random/contraband/armory,
 /obj/effect/spawner/random/maintenance/three,
+/obj/item/gun/ballistic/rifle/boltaction,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "vrn" = (
@@ -68434,6 +68465,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
+/obj/item/clothing/accessory/badge,
+/obj/item/clothing/accessory/badge/holo/detective,
 /turf/open/floor/carpet,
 /area/security/detectives_office)
 "wRg" = (
@@ -161409,7 +161442,7 @@ wLS
 tuy
 ayS
 erz
-jwy
+asb
 anG
 nYR
 anG
