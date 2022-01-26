@@ -477,17 +477,6 @@
 	var/turf/vine_object_turf = get_turf(vine_object)
 	vine_object_turf.atmos_spawn_air("miasma=100;TEMP=[T20C]")
 
-// Generates plasma on growth
-/datum/spacevine_mutation/plasma_generating
-	name = "Plasma producing"
-	hue = "#470566"
-	severity = 5
-	quality = NEGATIVE
-
-/datum/spacevine_mutation/plasma_generating/on_grow(obj/structure/spacevine/vine_object)
-	var/turf/vine_object_turf = get_turf(vine_object)
-	vine_object_turf.atmos_spawn_air("plasma=100;TEMP=[T20C]")
-
 // Heals crossing or eating mobs
 /datum/spacevine_mutation/flesh_mending
 	name = "Flesh mending"
@@ -567,7 +556,7 @@
 		var/mob/living/living_crosser = crosser
 		if(isvineimmune(living_crosser))
 			return
-		if(prob(20))
+		if(prob(10))
 			var/datum/disease/new_disease = new /datum/disease/advance/random(5, 5)
 			living_crosser.ForceContractDisease(new_disease, FALSE, TRUE)
 
