@@ -45,6 +45,7 @@
 	icon_living = "borgi"
 	icon_dead = "borgi_dead"
 	unique_pet = TRUE
+	can_be_held = FALSE
 	maxHealth = 150
 	health = 150
 	var/emagged = 0
