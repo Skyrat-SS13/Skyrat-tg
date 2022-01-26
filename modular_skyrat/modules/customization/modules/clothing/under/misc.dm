@@ -734,7 +734,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "captainblacksuit"
 
-
 /obj/item/clothing/under/suit/simplejoe
 	name = "simple joe"
 	desc = "Either you're new to this whole 'fashion' business, or just very confident."
@@ -766,3 +765,4 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "bluebureaucrat"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+

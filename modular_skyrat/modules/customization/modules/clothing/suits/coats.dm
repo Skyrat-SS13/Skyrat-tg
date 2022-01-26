@@ -302,7 +302,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	blood_overlay_type = "coat"
 
-/obj/item/clothing/suit/toggle/duster/elysiancoat
+/obj/item/clothing/suit/toggle/elysiancoat
 	name = "elysian coat"
 	desc = "Soldiers of the human supremacist Elysium Republic usually have this coat. What a bunch of losers."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -314,3 +314,4 @@
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	heat_protection = CHEST|GROIN|LEGS|ARMS
+
