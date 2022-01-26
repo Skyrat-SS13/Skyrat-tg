@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(lobby_eye)
 	for(var/mob/checking_mob as anything in GLOB.new_player_list)
 		if(!checking_mob.client)
 			continue
-		if(!checking_mob.client.prefs.read_preference(/datum/preference/toggle/lobby_cam))
+		if(!checking_mob.client?.prefs.read_preference(/datum/preference/toggle/lobby_cam))
 			continue
 		if(SSticker.current_state < GAME_STATE_PREGAME)
 			continue
