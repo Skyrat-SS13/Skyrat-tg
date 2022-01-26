@@ -27,3 +27,6 @@
 
 /obj/item/inducer
 	icon = 'modular_skyrat/modules/aesthetics/tools/tools.dmi'
+
+/datum/greyscale_config/wirecutters
+	icon_file = 'icons/obj/tools.dmi'

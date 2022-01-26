@@ -140,3 +140,9 @@
 /datum/greyscale_config/sneakers_orange_worn/vox
 	name = "Worn Orange Sneakers - Vox"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/sneakers_vox.dmi'
+
+/datum/greyscale_config/wirecutters
+	icon_file = 'modular_skyrat/modules/aesthetics/tools/tools.dmi'
+
+/datum/greyscale_config/screwdriver
+	icon_file = 'modular_skyrat/modules/aesthetics/tools/tools.dmi'
