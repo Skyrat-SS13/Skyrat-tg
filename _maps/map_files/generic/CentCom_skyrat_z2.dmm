@@ -2771,10 +2771,11 @@
 	},
 /area/centcom/holding/cafe)
 "aBv" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/ausbushes/ywflowers,
-/turf/open/floor/plating/grass/planet,
-/area/centcom/holding/cafepark)
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/centcom/holding/cafe)
 "aBH" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -3858,11 +3859,22 @@
 	},
 /area/centcom/holding/cafepark)
 "aKQ" = (
-/obj/structure/flora/grass/green{
-	icon_state = "snowbush5"
+/obj/structure/fence{
+	dir = 1;
+	pixel_x = -15
 	},
-/turf/open/floor/plating/grass/planet,
-/area/centcom/holding/cafepark)
+/obj/structure/toilet,
+/obj/structure/curtain{
+	alpha = 250;
+	color = "#292929";
+	name = "Curtain";
+	pixel_x = 2
+	},
+/obj/effect/turf_decal/tile/red/anticorner{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/centcom/holding/cafe)
 "aKU" = (
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 8
@@ -6211,12 +6223,14 @@
 /turf/open/floor/plating/asteroid,
 /area/centcom/interlink)
 "djn" = (
-/obj/machinery/door/airlock/security/old/glass{
-	id_tag = "ghostcafesec";
-	name = "Detainment"
+/obj/effect/turf_decal/tile/red/half{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/open/floor/iron,
-/area/centcom/holding/cafepark)
+/area/centcom/holding/cafe)
 "dvI" = (
 /obj/machinery/modular_computer/console/preset/command{
 	dir = 4
@@ -6337,10 +6351,15 @@
 /area/centcom/interlink)
 "egn" = (
 /obj/structure/fence{
-	dir = 4
+	pixel_x = 14
+	},
+/obj/structure/bed/maint,
+/obj/item/toy/figure/prisoner,
+/obj/effect/turf_decal/tile/red/half{
+	dir = 1
 	},
 /turf/open/floor/iron,
-/area/centcom/holding/cafepark)
+/area/centcom/holding/cafe)
 "ehN" = (
 /obj/effect/spawner/random/entertainment/arcade,
 /turf/open/floor/iron/dark,
@@ -6542,11 +6561,14 @@
 /turf/open/floor/iron/white,
 /area/centcom/holding/cafe)
 "fFr" = (
-/obj/structure/chair/office{
+/obj/effect/turf_decal/tile/red/half{
 	dir = 1
 	},
+/obj/structure/showcase/fakesec{
+	name = "\improper Cafe security records"
+	},
 /turf/open/floor/iron,
-/area/centcom/holding/cafepark)
+/area/centcom/holding/cafe)
 "fGe" = (
 /obj/structure/transit_tube/curved{
 	dir = 1
@@ -6656,9 +6678,15 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "gJl" = (
-/obj/effect/turf_decal/tile/red/half,
+/obj/effect/turf_decal/tile/red/anticorner{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/vending/wardrobe/sec_wardrobe/peacekeeper,
 /turf/open/floor/iron,
-/area/centcom/holding/cafepark)
+/area/centcom/holding/cafe)
 "gKj" = (
 /obj/machinery/light{
 	dir = 4
@@ -6708,14 +6736,14 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "gPu" = (
-/obj/effect/turf_decal/tile/red/half{
-	dir = 1
+/obj/structure/fence{
+	dir = 4
 	},
-/obj/machinery/light{
-	dir = 1
+/obj/effect/turf_decal/tile/red/half{
+	dir = 8
 	},
 /turf/open/floor/iron,
-/area/centcom/holding/cafepark)
+/area/centcom/holding/cafe)
 "gVy" = (
 /obj/structure/table/glass,
 /obj/item/paper/pamphlet/centcom/visitor_info{
@@ -6792,8 +6820,9 @@
 /turf/open/floor/plating,
 /area/space)
 "hgf" = (
+/obj/structure/fence/door,
 /turf/open/floor/iron,
-/area/centcom/holding/cafepark)
+/area/centcom/holding/cafe)
 "hgr" = (
 /obj/structure/toilet{
 	pixel_y = 13
@@ -6801,14 +6830,11 @@
 /turf/open/indestructible/hoteltile,
 /area/centcom/interlink)
 "hpP" = (
-/obj/effect/turf_decal/tile/red/half{
+/obj/structure/chair/office{
 	dir = 1
 	},
-/obj/structure/showcase/fakesec{
-	name = "\improper Cafe security records"
-	},
 /turf/open/floor/iron,
-/area/centcom/holding/cafepark)
+/area/centcom/holding/cafe)
 "hpS" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -7456,13 +7482,11 @@
 /turf/open/floor/iron/white,
 /area/centcom/interlink)
 "lwt" = (
-/obj/effect/turf_decal/tile/red/anticorner,
-/obj/structure/table/reinforced,
-/obj/item/restraints/handcuffs/fake,
-/obj/item/restraints/handcuffs/fake,
-/obj/item/restraints/handcuffs/fake,
+/obj/effect/turf_decal/tile/red/half{
+	dir = 4
+	},
 /turf/open/floor/iron,
-/area/centcom/holding/cafepark)
+/area/centcom/holding/cafe)
 "lwv" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -7733,9 +7757,16 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "nlM" = (
-/obj/structure/fence/door,
-/turf/open/floor/iron,
-/area/centcom/holding/cafepark)
+/obj/structure/fans/tiny/invisible,
+/obj/effect/turf_decal/caution/stand_clear,
+/obj/machinery/door/airlock/security/old{
+	id_tag = "ghostcafesec";
+	name = "Detainment"
+	},
+/turf/open/indestructible/hoteltile{
+	icon_state = "darkfull"
+	},
+/area/centcom/holding/cafe)
 "nmp" = (
 /obj/effect/turf_decal/stripes/asteroid/corner{
 	dir = 1
@@ -8054,15 +8085,15 @@
 /turf/open/floor/plating/grass/planet,
 /area/centcom/holding/cafepark)
 "pwV" = (
+/obj/structure/table/reinforced,
+/obj/item/restraints/handcuffs/fake,
+/obj/item/restraints/handcuffs/fake,
+/obj/item/restraints/handcuffs/fake,
 /obj/effect/turf_decal/tile/red/anticorner{
-	dir = 1
-	},
-/obj/machinery/vending/wardrobe/sec_wardrobe/peacekeeper,
-/obj/machinery/light{
 	dir = 8
 	},
 /turf/open/floor/iron,
-/area/centcom/holding/cafepark)
+/area/centcom/holding/cafe)
 "pwX" = (
 /obj/structure/table/wood,
 /obj/item/phone{
@@ -8164,16 +8195,9 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "pPH" = (
-/obj/effect/turf_decal/tile/red/anticorner{
-	dir = 4
-	},
-/obj/structure/fence{
-	pixel_x = 14
-	},
-/obj/structure/bed/maint,
-/obj/item/toy/figure/prisoner,
+/obj/effect/turf_decal/tile/red/half,
 /turf/open/floor/iron,
-/area/centcom/holding/cafepark)
+/area/centcom/holding/cafe)
 "pRy" = (
 /obj/effect/turf_decal/arrows/white{
 	dir = 1
@@ -8465,22 +8489,44 @@
 /turf/open/floor/plating/asteroid,
 /area/space)
 "rcq" = (
-/obj/effect/turf_decal/tile/red/half{
-	dir = 1
-	},
-/obj/structure/fence{
-	dir = 1;
-	pixel_x = -15
-	},
-/obj/structure/toilet,
-/obj/structure/curtain{
-	alpha = 250;
-	color = "#292929";
-	name = "Curtain";
-	pixel_x = 2
+/obj/structure/table/reinforced,
+/obj/item/clothing/under/rank/prisoner/supermax,
+/obj/item/clothing/under/rank/prisoner/supermax,
+/obj/item/clothing/under/rank/prisoner/supermax,
+/obj/item/clothing/under/rank/prisoner/skirt/supermax,
+/obj/item/clothing/under/rank/prisoner/skirt/supermax,
+/obj/item/clothing/under/rank/prisoner/skirt/supermax,
+/obj/item/clothing/under/rank/prisoner/skirt/protcust,
+/obj/item/clothing/under/rank/prisoner/skirt/protcust,
+/obj/item/clothing/under/rank/prisoner/skirt/protcust,
+/obj/item/clothing/under/rank/prisoner/skirt/lowsec,
+/obj/item/clothing/under/rank/prisoner/skirt/lowsec,
+/obj/item/clothing/under/rank/prisoner/skirt/lowsec,
+/obj/item/clothing/under/rank/prisoner/skirt/highsec,
+/obj/item/clothing/under/rank/prisoner/skirt/highsec,
+/obj/item/clothing/under/rank/prisoner/skirt/highsec,
+/obj/item/clothing/under/rank/prisoner/skirt,
+/obj/item/clothing/under/rank/prisoner/skirt,
+/obj/item/clothing/under/rank/prisoner/skirt,
+/obj/item/clothing/under/rank/prisoner/protcust,
+/obj/item/clothing/under/rank/prisoner/protcust,
+/obj/item/clothing/under/rank/prisoner/protcust,
+/obj/item/clothing/under/rank/prisoner/lowsec,
+/obj/item/clothing/under/rank/prisoner/lowsec,
+/obj/item/clothing/under/rank/prisoner/lowsec,
+/obj/item/clothing/under/rank/prisoner/highsec,
+/obj/item/clothing/under/rank/prisoner/highsec,
+/obj/item/clothing/under/rank/prisoner/highsec,
+/obj/item/clothing/under/rank/prisoner/classic,
+/obj/item/clothing/under/rank/prisoner,
+/obj/item/clothing/under/rank/prisoner,
+/obj/item/clothing/under/rank/prisoner,
+/obj/effect/turf_decal/tile/red/anticorner,
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/open/floor/iron,
-/area/centcom/holding/cafepark)
+/area/centcom/holding/cafe)
 "rek" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/structure/spacevine,
@@ -9288,53 +9334,15 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "vUv" = (
-/obj/effect/turf_decal/tile/red/anticorner{
-	dir = 8
-	},
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/machinery/button/door{
 	id = "ghostcafecabin3";
 	name = "Dorm Bolt Control";
 	normaldoorcontrol = 1;
-	pixel_x = -25;
+	pixel_x = -8;
 	specialfunctions = 4
 	},
-/obj/structure/table/reinforced,
-/obj/item/clothing/under/rank/prisoner/supermax,
-/obj/item/clothing/under/rank/prisoner/supermax,
-/obj/item/clothing/under/rank/prisoner/supermax,
-/obj/item/clothing/under/rank/prisoner/skirt/supermax,
-/obj/item/clothing/under/rank/prisoner/skirt/supermax,
-/obj/item/clothing/under/rank/prisoner/skirt/supermax,
-/obj/item/clothing/under/rank/prisoner/skirt/protcust,
-/obj/item/clothing/under/rank/prisoner/skirt/protcust,
-/obj/item/clothing/under/rank/prisoner/skirt/protcust,
-/obj/item/clothing/under/rank/prisoner/skirt/lowsec,
-/obj/item/clothing/under/rank/prisoner/skirt/lowsec,
-/obj/item/clothing/under/rank/prisoner/skirt/lowsec,
-/obj/item/clothing/under/rank/prisoner/skirt/highsec,
-/obj/item/clothing/under/rank/prisoner/skirt/highsec,
-/obj/item/clothing/under/rank/prisoner/skirt/highsec,
-/obj/item/clothing/under/rank/prisoner/skirt,
-/obj/item/clothing/under/rank/prisoner/skirt,
-/obj/item/clothing/under/rank/prisoner/skirt,
-/obj/item/clothing/under/rank/prisoner/protcust,
-/obj/item/clothing/under/rank/prisoner/protcust,
-/obj/item/clothing/under/rank/prisoner/protcust,
-/obj/item/clothing/under/rank/prisoner/lowsec,
-/obj/item/clothing/under/rank/prisoner/lowsec,
-/obj/item/clothing/under/rank/prisoner/lowsec,
-/obj/item/clothing/under/rank/prisoner/highsec,
-/obj/item/clothing/under/rank/prisoner/highsec,
-/obj/item/clothing/under/rank/prisoner/highsec,
-/obj/item/clothing/under/rank/prisoner/classic,
-/obj/item/clothing/under/rank/prisoner,
-/obj/item/clothing/under/rank/prisoner,
-/obj/item/clothing/under/rank/prisoner,
-/turf/open/floor/iron,
-/area/centcom/holding/cafepark)
+/turf/closed/indestructible/wood,
+/area/centcom/holding/cafe)
 "vXH" = (
 /obj/structure/bed,
 /obj/effect/turf_decal/tile/neutral{
@@ -9544,15 +9552,6 @@
 /obj/structure/sign/departments/medbay/alt,
 /turf/closed/indestructible/wood,
 /area/centcom/holding/cafe)
-"xAO" = (
-/obj/structure/fence{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red/half{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/centcom/holding/cafepark)
 "xCy" = (
 /obj/item/clothing/mask/facehugger/toy,
 /obj/structure/alien/weeds,
@@ -50884,11 +50883,11 @@ aFP
 aFP
 aFP
 aFP
-aeT
-aFP
-aFP
-aKQ
-aFP
+aqf
+aqf
+aqf
+aqf
+aqf
 aFP
 aFP
 aFP
@@ -51113,10 +51112,10 @@ ayI
 aPf
 aPf
 aFP
-aFy
-aFy
-djn
-aFy
+aFP
+aFP
+aFP
+aFP
 aqf
 aqf
 aqf
@@ -51141,11 +51140,11 @@ akW
 akW
 aVI
 aFP
-aFP
-aMJ
-aFP
-aFP
-aFP
+aqf
+aKQ
+gPu
+pwV
+aqf
 aFP
 aFP
 aFP
@@ -51370,10 +51369,10 @@ ayI
 aPf
 aFP
 aIV
-aFy
-pwV
-hgf
-vUv
+aFP
+aFP
+aFP
+aFP
 aqf
 qMl
 roz
@@ -51398,11 +51397,11 @@ aFr
 auM
 aKc
 aFP
-aFP
-aFP
-aFP
-aFP
-aCM
+aqf
+djn
+hgf
+pPH
+aqf
 aFP
 aFP
 aGg
@@ -51627,10 +51626,10 @@ ayI
 aPf
 aFP
 aFP
-aFy
-hpP
-fFr
-gJl
+aFP
+aFP
+aFP
+aFP
 aqf
 pxe
 sGf
@@ -51655,11 +51654,11 @@ alC
 aUM
 aKc
 aFP
-aTB
-aFP
+aqf
+egn
 aBv
-aFP
-aFP
+pPH
+aqf
 aFP
 aFP
 aFP
@@ -51884,10 +51883,10 @@ ayI
 aPf
 aFB
 aFP
-aFy
-rcq
-egn
-gJl
+aFP
+aFP
+aFP
+aFP
 aqf
 lhF
 cMM
@@ -51912,11 +51911,11 @@ alC
 aUM
 aKc
 aFV
-bAr
-arT
-aLH
-agy
-aFP
+aqf
+fFr
+hpP
+pPH
+aqf
 aVA
 aFP
 aFP
@@ -52141,10 +52140,10 @@ aqP
 aPf
 aFP
 aFP
-aFy
-gPu
-nlM
-gJl
+aFP
+aFP
+aFP
+aFP
 aqf
 aqf
 aqf
@@ -52169,11 +52168,11 @@ alC
 aUM
 aKc
 aFP
-aBr
-aFP
-aFP
-asF
-aFP
+aqf
+gJl
+lwt
+rcq
+aqf
 aFP
 aAY
 aFP
@@ -52398,10 +52397,10 @@ aqP
 aPf
 aIV
 aFP
-aFy
-pPH
-xAO
-lwt
+aFP
+aFP
+aFP
+aFP
 aqf
 aga
 aPG
@@ -52426,11 +52425,11 @@ alC
 aUM
 aKc
 aFP
-asX
-aFP
-aFP
-aFP
-aFP
+aqf
+aqf
+nlM
+vUv
+aqf
 aKu
 aFP
 aFP
