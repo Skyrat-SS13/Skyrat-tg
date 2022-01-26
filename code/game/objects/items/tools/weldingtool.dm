@@ -126,9 +126,10 @@
 			if(user == attacked_humanoid)
 				user.visible_message(span_notice("[user] starts to fix some of the dents on [attacked_humanoid]'s [affecting.name]."),
 					span_notice("You start fixing some of the dents on [attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [affecting.name]."))
-				/* ORIGINAL
-				//if(!do_mob(user, attacked_humanoid, 50))
-					return*/
+				/* SKYRAT EDIT START - ORIGINAL:
+				if(!do_mob(user, attacked_humanoid, 50))
+					return
+				*/
 			// SKYRAT EDIT CHANGE START
 			if(!do_after(user, (user == attacked_humanoid ? self_delay : other_delay)))
 				return
