@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(lobby_eye)
 
 //gets everyone on the camera
 /datum/controller/subsystem/lobby_eye/proc/lock_eyes()
-	for(var/mob/checking_mob in GLOB.new_player_list)
+	for(var/mob/checking_mob as anything in GLOB.new_player_list)
 		if(!checking_mob.client)
 			continue
 		if(!checking_mob.client.prefs.read_preference(/datum/preference/toggle/lobby_cam))
