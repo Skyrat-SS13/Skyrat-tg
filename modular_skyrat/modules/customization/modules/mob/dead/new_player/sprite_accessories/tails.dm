@@ -415,6 +415,6 @@
 	icon_state = "snakestripealt"
 
 /datum/sprite_accessory/tails/mammal/wagging/tiger2
-	name = "Tiger Tails"
+	name = "Servelyn Tails"
 	icon_state = "tiger2"
 	general_type = "feline"
