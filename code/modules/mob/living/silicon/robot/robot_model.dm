@@ -158,6 +158,11 @@
 			var/obj/item/gun/energy/gun = module
 			if(!gun.chambered)
 				gun.recharge_newshot() //try to reload a new shot.
+		/// SKYRAT EDIT START - Cargo borgs
+		else if(istype(module, /obj/item/hand_labeler/cyborg))
+			var/obj/item/hand_labeler/cyborg/labeler = module
+			labeler.labels_left = 30
+		/// SKYRAT EDIT END
 
 	cyborg.toner = cyborg.tonermax
 
@@ -217,7 +222,6 @@
 		if(!isnull(details[SKIN_ICON]))
 			cyborg.icon = details[SKIN_ICON]
 			cyborg_icon_override = details[SKIN_ICON] // SKYRAT EDIT ADDITION
-		if(!isnull(details[SKIN_PIXEL_X]))
 			cyborg.base_pixel_x = details[SKIN_PIXEL_X]
 		if(!isnull(details[SKIN_PIXEL_Y]))
 			cyborg.base_pixel_y = details[SKIN_PIXEL_Y]
