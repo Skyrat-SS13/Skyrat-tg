@@ -868,7 +868,13 @@
 		for(var/datum/spacevine_mutation/vine_mutation in mutations)
 			vine_mutation.on_spread(src, target_turf) //Only do the on_spread proc if it actually spreads.
 			target_turf = get_step(src, target_dir) //in case turf changes, to make sure no runtimes happen
-		master.spawn_spacevine_piece(target_turf, src)
+		var/obj/structure/spacevine/spawning_vine = master.spawn_spacevine_piece(target_turf, src) //Let's do a cool little animate
+		if(NSCOMPONENT(target_dir))
+			spawning_vine.pixel_y = target_dir == NORTH ? -32 : 32
+			animate(spawning_vine, pixel_y = 0, time = 1 SECONDS)
+		else
+			spawning_vine.pixel_x = target_dir == EAST ? -32 : 32
+			animate(spawning_vine, pixel_x = 0, time = 1 SECONDS)
 
 /obj/structure/spacevine/ex_act(severity, target)
 	var/i
