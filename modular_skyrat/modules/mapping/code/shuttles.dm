@@ -29,7 +29,7 @@
 	shuttleId = "blackmarket_chevvy"
 	lock_override = NONE
 	shuttlePortId = "blackmarket_chevvy_custom"
-	jumpto_ports = list("blackmarket_chevvy_home" = 1, "whiteship_home" = 1)
+	jump_to_ports = list("blackmarket_chevvy_home" = 1, "whiteship_home" = 1)
 	view_range = 0
 	x_offset = 2
 	y_offset = 0
@@ -52,7 +52,7 @@
 	shuttleId = "slaver_syndie"
 	lock_override = NONE
 	shuttlePortId = "slaver"
-	jumpto_ports = list("whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1, "syndicate_ne" = 1, "syndicate_nw" = 1, "syndicate_n" = 1, "syndicate_se" = 1, "syndicate_sw" = 1, "syndicate_s" = 1)
+	jump_to_ports = list("whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1, "syndicate_ne" = 1, "syndicate_nw" = 1, "syndicate_n" = 1, "syndicate_se" = 1, "syndicate_sw" = 1, "syndicate_s" = 1)
 	view_range = 10
 	x_offset = 0
 	y_offset = 0
@@ -181,7 +181,7 @@
 	shuttleId = "tarkon_driver"
 	lock_override = NONE
 	shuttlePortId = "tarkon_driver_custom"
-	jumpto_ports = list("port_tarkon" = 1, "whiteship_home" = 1)
+	jump_to_ports = list("port_tarkon" = 1, "whiteship_home" = 1)
 	view_range = 0
 
 /obj/item/circuitboard/computer/tarkon_driver

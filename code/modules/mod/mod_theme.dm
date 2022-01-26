@@ -522,7 +522,6 @@
 	complexity_max = DEFAULT_MAX_COMPLEXITY + 5
 	slowdown_inactive = 0.75
 	slowdown_active = 0.25
-	inbuilt_modules = list(/obj/item/mod/module/hat_stabilizer)
 	skins = list(
 		"magnate" = list(
 			HELMET_LAYER = NECK_LAYER,
@@ -764,7 +763,7 @@
 	slowdown_inactive = 2
 	slowdown_active = 1.5
 	ui_theme = "hackerman"
-	inbuilt_modules = list(/obj/item/mod/module/kinesis)
+	inbuilt_modules = list(/obj/item/mod/module/anomaly_locked/kinesis/prebuilt/prototype)
 	skins = list(
 		"prototype" = list(
 			HELMET_LAYER = null,
@@ -912,7 +911,6 @@
 	siemens_coefficient = 0
 	slowdown_inactive = 0.5
 	slowdown_active = 0
-	inbuilt_modules = list(/obj/item/mod/module/hat_stabilizer)
 	skins = list(
 		"corporate" = list(
 			HELMET_LAYER = null,
@@ -946,7 +944,7 @@
 		completely alien, but the purpose is quite simple. The suit protects the user from the many incredibly lethal \
 		and sometimes hilariously painful side effects of jumping timelines, while providing inbuilt equipment for \
 		making timeline adjustments to correct a bad course."
-	default_skin = "chrono"
+	default_skin = "timeline"
 	armor = list(MELEE = 60, BULLET = 60, LASER = 60, ENERGY = 60, BOMB = 30, BIO = 100, FIRE = 100, ACID = 100)
 	resistance_flags = FIRE_PROOF|ACID_PROOF
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
@@ -954,7 +952,7 @@
 	slowdown_inactive = 0
 	slowdown_active = 0
 	skins = list(
-		"chrono" = list(
+		"timeline" = list(
 			HELMET_LAYER = NECK_LAYER,
 			HELMET_FLAGS = list(
 				UNSEALED_CLOTHING = SNUG_FIT,

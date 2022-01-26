@@ -373,3 +373,8 @@
 	name = "Tenrai Coat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/tenrai
 	ckeywhitelist = list("cimika")
+
+/datum/loadout_item/mask/larpswat
+	name = "Foam Force SWAT Mask"
+	item_path = /obj/item/clothing/mask/gas/larpswat
+	ckeywhitelist = list("erdinyobarboza")
