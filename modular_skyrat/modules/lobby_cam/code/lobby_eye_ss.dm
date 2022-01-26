@@ -40,10 +40,10 @@ SUBSYSTEM_DEF(lobby_eye)
 			continue
 		if(SSticker.current_state < GAME_STATE_PREGAME)
 			continue
-		if(!(fading_screen in checking_mob.client.screen))
-			checking_mob.client.screen += fading_screen
-		if(checking_mob.client.eye != linked_camera)
-			checking_mob.client.eye = linked_camera
+		if(!(fading_screen in checking_mob.client?.screen))
+			checking_mob.client?.screen += fading_screen
+		if(checking_mob.client?.eye != linked_camera)
+			checking_mob.client?.eye = linked_camera
 		if(checking_mob.lighting_alpha != LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE)
 			checking_mob.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 
