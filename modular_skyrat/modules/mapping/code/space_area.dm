@@ -275,6 +275,10 @@
 	name = "P-T Observatory"
 	icon_state = "crew_quarters"
 
+/area/ruin/space/has_grav/port_tarkon/dorms
+	name = "P-T Dorms"
+	icon_state = "crew_quarters"
+
 /area/solars/tarkon
 	name = "\improper P-T Solar Array"
 	icon_state = "solarsS"

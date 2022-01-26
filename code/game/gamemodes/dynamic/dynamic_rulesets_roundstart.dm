@@ -395,11 +395,11 @@
 	antag_flag = ROLE_CULTIST
 	antag_datum = /datum/antagonist/cult
 	minimum_required_age = 14
-	restricted_roles = list(JOB_AI, JOB_CYBORG,
+	restricted_roles = list(JOB_AI, JOB_CYBORG, JOB_PRISONER,
 						JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_HEAD_OF_SECURITY, JOB_CORRECTIONS_OFFICER, JOB_CIVIL_DISPUTES_OFFICER, JOB_SECURITY_SERGEANT,
 						JOB_CAPTAIN, JOB_VANGUARD_OPERATIVE, JOB_NT_REP, JOB_BLUESHIELD,
 						JOB_ORDERLY, JOB_BOUNCER, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD, JOB_SCIENCE_GUARD
-						) // SKYRAT EDIT ADD - ALL AFTER JOB_CYBORG
+						) // SKYRAT EDIT ADD - ALL AFTER JOB_PRISONER
 	required_candidates = 2
 	weight = 3
 	cost = 20
@@ -542,7 +542,7 @@
 	name = "Revolution"
 	persistent = TRUE
 	antag_flag = ROLE_REV_HEAD
-	antag_flag_override = ROLE_REV
+	antag_flag_override = ROLE_REV_HEAD
 	antag_datum = /datum/antagonist/rev/head
 	minimum_required_age = 14
 	restricted_roles = list(
@@ -554,6 +554,7 @@
 		JOB_DETECTIVE,
 		JOB_HEAD_OF_PERSONNEL,
 		JOB_HEAD_OF_SECURITY,
+		JOB_PRISONER,
 		JOB_RESEARCH_DIRECTOR,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
@@ -806,6 +807,65 @@
 	var/ramp_up_final = clamp(round(meteorminutes/rampupdelta), 1, 10)
 
 	spawn_meteors(ramp_up_final, wavetype)
+
+/// Ruleset for thieves
+/datum/dynamic_ruleset/roundstart/thieves
+	name = "Thieves"
+	antag_flag = ROLE_THIEF
+	antag_datum = /datum/antagonist/thief
+	protected_roles = list(
+		JOB_CAPTAIN,
+		JOB_DETECTIVE,
+		JOB_HEAD_OF_SECURITY,
+		JOB_PRISONER,
+		JOB_SECURITY_OFFICER,
+		JOB_WARDEN,
+		// SKYRAT EDIT START - RESTRICTING ROLES
+		JOB_NT_REP,
+		JOB_QUARTERMASTER,
+		JOB_BLUESHIELD,
+		JOB_SECURITY_SERGEANT,
+		JOB_SECURITY_MEDIC,
+		JOB_CORRECTIONS_OFFICER,
+		JOB_CIVIL_DISPUTES_OFFICER,
+		JOB_ORDERLY,
+		JOB_BOUNCER,
+		JOB_CUSTOMS_AGENT,
+		JOB_ENGINEERING_GUARD,
+		JOB_SCIENCE_GUARD,
+		JOB_VANGUARD_OPERATIVE,
+		// SKYRAT EDIT END
+	)
+	restricted_roles = list(
+		JOB_AI,
+		JOB_CYBORG,
+	)
+	required_candidates = 1
+	weight = 3
+	cost = 6 //very cheap cost for the round
+	scaling_cost = 9
+	requirements = list(8,8,8,8,8,8,8,8,8,8)
+	antag_cap = list("denominator" = 24)
+
+/datum/dynamic_ruleset/roundstart/thieves/pre_execute(population)
+	. = ..()
+	var/num_thieves = get_antag_cap(population) * (scaled_times + 1)
+	for (var/i = 1 to num_thieves)
+		if(candidates.len <= 0)
+			break
+		var/mob/chosen_mind = pick_n_take(candidates)
+		assigned += chosen_mind.mind
+		chosen_mind.mind.restricted_roles = restricted_roles
+		chosen_mind.mind.special_role = ROLE_THIEF
+		GLOB.pre_setup_antags += chosen_mind.mind
+	return TRUE
+
+/datum/dynamic_ruleset/roundstart/thieves/execute()
+	for(var/datum/mind/chosen_mind as anything in assigned)
+		var/datum/antagonist/thief/new_antag = new antag_datum
+		chosen_mind.add_antag_datum(new_antag)
+		GLOB.pre_setup_antags -= chosen_mind
+	return TRUE
 
 /// Ruleset for Nations
 /datum/dynamic_ruleset/roundstart/nations
