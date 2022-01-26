@@ -1,4 +1,4 @@
-/datum/traitor_objective/kill_pet/medium_risk
+/datum/traitor_objective/kill_pet
 	possible_heads = list(
 		JOB_HEAD_OF_PERSONNEL = list(
 			/mob/living/simple_animal/pet/dog/corgi/ian,
@@ -7,7 +7,7 @@
 		JOB_CAPTAIN = /mob/living/simple_animal/pet/fox/renault,
 		JOB_CHIEF_MEDICAL_OFFICER = /mob/living/simple_animal/pet/cat/runtime,
 		JOB_CHIEF_ENGINEER = /mob/living/simple_animal/parrot/poly,
-		// Non-heads like the warden
+		// Non-heads like the warden, these are automatically medium-risk
 		JOB_ROBOTICIST = /mob/living/simple_animal/pet/dog/corgi/borgi,
 		JOB_STATION_ENGINEER = /mob/living/simple_animal/pet/poppy,
 	)
@@ -29,5 +29,3 @@
 		qdel(GetComponent(/datum/component/traitor_objective_register))
 		AddComponent(/datum/component/traitor_objective_register, target_pet, \
 			succeed_signals = list(COMSIG_ATOM_EMAG_ACT))
-
-

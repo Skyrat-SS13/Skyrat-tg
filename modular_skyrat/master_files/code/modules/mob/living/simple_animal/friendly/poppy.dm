@@ -15,6 +15,7 @@
 	speak_chance = 2
 	turns_per_move = 3
 	can_be_held = TRUE
+	var/safety_inspection = TRUE // The inspection fails if she gets dusted
 	animal_species = /mob/living/simple_animal/pet/poppy
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
@@ -47,9 +48,11 @@
 /mob/living/simple_animal/pet/poppy/death()
 	set_light_on(FALSE)
 
-	var/list/sm_chamber = get_area_turfs(/area/engineering/supermatter)
-	if(src.loc in sm_chamber)
-		priority_announce("why did you dust the possum...", "what", ANNOUNCER_INTERCEPT, "Priority")
+	if(safety_inspection)
+		var/list/sm_chamber = get_area_turfs(/area/engineering/supermatter)
+		if(src.loc in sm_chamber)
+			safety_inspection = FALSE
+			priority_announce("why did you dust the possum...", "what", ANNOUNCER_INTERCEPT, "Priority")
 
 	..()
 
