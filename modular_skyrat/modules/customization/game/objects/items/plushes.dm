@@ -303,4 +303,4 @@
 	inhand_icon_state = "plushie_xixi"
 	attack_verb_continuous = list("caws","skrees","pecks")
 	attack_verb_simple = list("caw","skree","peck")
-	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/peeponce.ogg' = 1,'modular_skyrat/modules/emotes/sound/voice/caw.ogg' = 1,'modular_skyrat/modules/emotes/sound/emotes/bawk.ogg' = 1,'modular_skyrat/modules/emotes/sound/emotes/voxscream.ogg' = 1)
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/peep_once.ogg' = 1,'modular_skyrat/modules/emotes/sound/voice/caw.ogg' = 1,'modular_skyrat/modules/emotes/sound/voice/bawk.ogg' = 1,'modular_skyrat/modules/emotes/sound/emotes/voxscream.ogg' = 1)
