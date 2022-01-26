@@ -26,7 +26,7 @@ SUBSYSTEM_DEF(lobby_eye)
 
 //fades out the skyrat logo in the bottom left
 /datum/controller/subsystem/lobby_eye/proc/fade_logo()
-	for(var/mob/checking_mob in GLOB.new_player_list)
+	for(var/mob/checking_mob as anything in GLOB.new_player_list)
 		var/atom/movable/screen/skyrat_logo/logo_screen = locate() in checking_mob.client.screen
 		if(logo_screen?.alpha == 255)
 			animate(logo_screen, alpha = 0, time = 5 SECONDS)
