@@ -298,8 +298,12 @@
 	implants = list(/obj/item/implant/weapons_auth)
 	id_trim = /datum/id_trim/chameleon/operative
 
+// SKYRAT EDIT REMOVAL BEGIN -- mapping
+/*
 /datum/outfit/lavaland_syndicate/post_equip(mob/living/carbon/human/syndicate, visualsOnly = FALSE)
 	syndicate.faction |= ROLE_SYNDICATE
+*/
+// SKYRAT EDIT REMOVAL END
 
 /datum/outfit/lavaland_syndicate/comms
 	name = "Lavaland Syndicate Comms Agent"

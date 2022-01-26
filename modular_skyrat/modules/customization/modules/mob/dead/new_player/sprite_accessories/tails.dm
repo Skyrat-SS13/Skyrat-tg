@@ -13,8 +13,8 @@
 
 /datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/H)
 	// MODsuit tail spriting
-	if(general_type && H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/armor/mod))
-		var/obj/item/clothing/suit/armor/mod/modsuit_chest = H.wear_suit
+	if(general_type && H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/mod))
+		var/obj/item/clothing/suit/mod/modsuit_chest = H.wear_suit
 		var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
 		if(mod_theme.modsuit_tail_colors)
@@ -29,7 +29,7 @@
 /datum/sprite_accessory/tails/get_special_icon(mob/living/carbon/human/H, passed_state)
 	var/returned = icon
 	if(passed_state == "[general_type]_modsuit") //Guarantees we're wearing a MODsuit, skip checks
-		var/obj/item/clothing/suit/armor/mod/modsuit_chest = H.wear_suit
+		var/obj/item/clothing/suit/mod/modsuit_chest = H.wear_suit
 		var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
 		if(mod_theme.modsuit_tail_colors)
@@ -38,7 +38,7 @@
 
 /datum/sprite_accessory/tails/get_special_render_colour(mob/living/carbon/human/H, passed_state)
 	if(passed_state == "[general_type]_modsuit") //Guarantees we're wearing a MODsuit, skip checks
-		var/obj/item/clothing/suit/armor/mod/modsuit_chest = H.wear_suit
+		var/obj/item/clothing/suit/mod/modsuit_chest = H.wear_suit
 		var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
 		if(mod_theme.modsuit_tail_colors)
@@ -75,8 +75,8 @@
 		if(H.try_hide_mutant_parts)
 			return TRUE
 		if(H.wear_suit.flags_inv & HIDEJUMPSUIT)
-			if(istype(H.wear_suit, /obj/item/clothing/suit/armor/mod))
-				var/obj/item/clothing/suit/armor/mod/modsuit_chest = H.wear_suit
+			if(istype(H.wear_suit, /obj/item/clothing/suit/mod))
+				var/obj/item/clothing/suit/mod/modsuit_chest = H.wear_suit
 				var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
 				var/datum/mod_theme/mod_theme = modsuit_control.theme
 				if(mod_theme.modsuit_tail_colors)

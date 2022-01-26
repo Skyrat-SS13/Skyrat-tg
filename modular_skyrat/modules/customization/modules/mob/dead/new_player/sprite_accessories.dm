@@ -128,7 +128,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 
 /datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
-	if(!T || (H.wear_suit && (H.try_hide_mutant_parts || H.wear_suit.flags_inv & HIDEJUMPSUIT)))
+	if(!T || (H.wear_suit && (H.try_hide_mutant_parts || H.wear_suit.flags_inv & HIDEJUMPSUIT || H.wear_suit.flags_inv & HIDESPINE)))
 		return TRUE
 	return FALSE
 
@@ -385,6 +385,10 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "LIZARED Underwear"
 	icon_state = "lizared"
 	use_static = TRUE
+	
+/datum/sprite_accessory/underwear/digibriefs
+	name = "Digi Briefs"
+	icon_state = "briefs_d"
 
 /datum/sprite_accessory/underwear/male_briefs
 	has_digitigrade = TRUE

@@ -60,7 +60,7 @@
 	belt = /obj/item/pda/heads/hos
 	ears = /obj/item/radio/headset/heads/hos/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-	gloves = /obj/item/clothing/gloves/security //SKYRAT EDIT CHANGE
+	gloves = /obj/item/clothing/gloves/color/black/security //SKYRAT EDIT CHANGE
 	head = /obj/item/clothing/head/hos/beret
 	shoes = /obj/item/clothing/shoes/jackboots/security //SKYRAT EDIT CHANGE
 	l_pocket = /obj/item/restraints/handcuffs
@@ -85,3 +85,4 @@
 	suit = null
 	head = null
 	mask = /obj/item/clothing/mask/gas/sechailer
+	internals_slot = ITEM_SLOT_SUITSTORE

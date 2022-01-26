@@ -686,4 +686,50 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "christmasfemaleg"
 
+/obj/item/clothing/under/rank/civilian/lawyer/inferno
+	name = "inferno suit"
+	desc = "Stylish enough to impress the devil."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "lucifer"
+	fitted = FEMALE_UNIFORM_TOP
+	obj_flags = UNIQUE_RENAME
+	unique_reskin = list(
+		"Pride" = "lucifer",
+		"Wrath" = "justice",
+		"Gluttony" = "malina",
+		"Envy" = "zdara",
+		"Vanity" = "cereberus",
+	)
 
+/obj/item/clothing/under/rank/civilian/lawyer/inferno/skirt
+	name = "inferno suitskirt"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "modeus"
+	obj_flags = UNIQUE_RENAME
+	unique_reskin = list(
+		"Lust" = "modeus",
+		"Sloth" = "pande",
+	)
+
+/obj/item/clothing/under/rank/civilian/lawyer/inferno/beeze
+	name = "designer inferno suit"
+	desc = "A fancy tail-coated suit with a fluffy bow emblazoned on the chest, complete with an NT pin."
+	icon_state = "beeze"
+	obj_flags = null
+	unique_reskin = null
+
+/obj/item/clothing/under/suit/black/female/trousers //i swear this already existed, but whatever
+	name = "feminine suit"
+	desc = "Perfect for a secretary that does no work. This time with pants!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "black_suit_fem"
+
+/obj/item/clothing/under/rank/captain/black
+	name = "captains black suit"
+	desc = "A very sleek naval captains uniform for those who think they're commanding a battleship."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "captainblacksuit"

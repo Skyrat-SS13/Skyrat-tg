@@ -63,30 +63,32 @@
 #define MOVE_DELAY 2
 #define WEARER_DELAY 1
 #define LONE_DELAY 5
-#define CELL_PER_STEP DEFAULT_CELL_DRAIN * 2.5
+#define CHARGE_PER_STEP DEFAULT_CHARGE_DRAIN * 2.5
 #define AI_FALL_TIME 1 SECONDS
 
 /obj/item/mod/control/relaymove(mob/user, direction)
-	if((!active && wearer) || !cell || cell.charge < CELL_PER_STEP  || user != ai || !COOLDOWN_FINISHED(src, cooldown_mod_move) || (wearer?.pulledby?.grab_state > GRAB_PASSIVE))
+	if((!active && wearer) || get_charge() < CHARGE_PER_STEP  || user != ai || !COOLDOWN_FINISHED(src, cooldown_mod_move) || (wearer?.pulledby?.grab_state > GRAB_PASSIVE))
 		return FALSE
 	var/timemodifier = MOVE_DELAY * (ISDIAGONALDIR(direction) ? SQRT_2 : 1) * (wearer ? WEARER_DELAY : LONE_DELAY)
-	COOLDOWN_START(src, cooldown_mod_move, movedelay * timemodifier + slowdown)
-	playsound(src, 'sound/mecha/mechmove01.ogg', 25, TRUE)
-	cell.charge = max(0, cell.charge - CELL_PER_STEP)
-	if(wearer)
-		ADD_TRAIT(wearer, TRAIT_FORCED_STANDING, MOD_TRAIT)
-		addtimer(CALLBACK(src, .proc/ai_fall), AI_FALL_TIME, TIMER_UNIQUE | TIMER_OVERRIDE)
-	if(ismovable(wearer?.loc))
-		return wearer.loc.relaymove(wearer, direction)
 	if(wearer && !wearer.Process_Spacemove(direction))
 		return FALSE
+	else if(!wearer && (!has_gravity() || !isturf(loc)))
+		return FALSE
+	COOLDOWN_START(src, cooldown_mod_move, movedelay * timemodifier + slowdown_active)
+	subtract_charge(CHARGE_PER_STEP)
+	playsound(src, 'sound/mecha/mechmove01.ogg', 25, TRUE)
+	if(ismovable(wearer?.loc))
+		return wearer.loc.relaymove(wearer, direction)
+	else if(wearer)
+		ADD_TRAIT(wearer, TRAIT_FORCED_STANDING, MOD_TRAIT)
+		addtimer(CALLBACK(src, .proc/ai_fall), AI_FALL_TIME, TIMER_UNIQUE | TIMER_OVERRIDE)
 	var/atom/movable/mover = wearer || src
 	return step(mover, direction)
 
 #undef MOVE_DELAY
 #undef WEARER_DELAY
 #undef LONE_DELAY
-#undef CELL_PER_STEP
+#undef CHARGE_PER_STEP
 
 /obj/item/mod/control/proc/ai_fall()
 	if(!wearer)

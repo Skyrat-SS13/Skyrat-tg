@@ -148,10 +148,11 @@
 	actions_types = list(/datum/action/item_action/toggle)
 	can_toggle = TRUE
 	toggle_cooldown = 0
+	mutant_variants = STYLE_MUZZLE
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 
-//Need to do some fuckery to make sure the mounted light stays mounted instead of throwing a fit sprite-wise
+//Need to do some fuckery to make sure the mounted light preserves the current visor instead of throwing a fit sprite-wise
 /obj/item/clothing/head/helmet/sec/attack_self(mob/user)
 	if(can_toggle && !user.incapacitated())
 		if(world.time > cooldown + toggle_cooldown)
@@ -164,7 +165,7 @@
 			//Functionally our only change; checks if the attached light is on or off
 			if(attached_light)
 				if(attached_light.on)
-					icon_state += "-flight-on" //"helmet-flight-on" // "helmet-cam-flight-on"
+					icon_state += "-flight-on" //"security_helmet-flight-on" // "security_helmetup-flight-on"
 				else
 					icon_state += "-flight" //etc.
 			//End of our only change
@@ -174,6 +175,12 @@
 			if(iscarbon(user))
 				var/mob/living/carbon/C = user
 				C.head_update(src, forced = 1)
+
+/obj/item/clothing/head/helmet/sec/update_icon_state()
+	. = ..()
+	if(attached_light)
+		//This compresses it down nicely. End result is Initial(is the visor toggled)-(is the flashlight on)
+		icon_state = "[initial(icon_state)][up ? "up" : ""][attached_light.on ? "-flight-on" : "-flight"]"
 
 //Bulletproof Helmet
 /obj/item/clothing/head/helmet/alt
@@ -297,7 +304,7 @@
 ///////////////////////
 //----- GLOVES ------//
 ///////////////////////
-/obj/item/clothing/gloves/security
+/obj/item/clothing/gloves/color/black/security
 	name = "security gloves"
 	desc = "A pair of security gloves."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
@@ -353,6 +360,10 @@
 			RESKIN_ICON_STATE = "vest_white",
 			RESKIN_WORN_ICON_STATE = "vest_white"
 		),
+		"Peacekeeper Variant" = list(
+			RESKIN_ICON_STATE = "peacekeeper_armor",
+			RESKIN_WORN_ICON_STATE = "peacekeeper"
+		)
 	)
 
 //Standard Bulletproof Vest
@@ -454,5 +465,5 @@
 /datum/outfit/job/security/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	if(H.jumpsuit_style == PREF_SKIRT)
-		to_chat(span_alertwarning("Lopland Peacekeeper uniforms don't include a Skirt variant! You've been equipped with a jumpsuit instead."))
+		to_chat(H, span_alertwarning("Lopland Peacekeeper uniforms don't include a Skirt variant! You've been equipped with a jumpsuit instead."))
 		uniform = /obj/item/clothing/under/rank/security/officer

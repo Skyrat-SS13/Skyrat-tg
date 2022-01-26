@@ -390,6 +390,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Tactitool Turtleneck"
 	item_path = /obj/item/clothing/under/syndicate/tacticool/sensors
 
+/datum/loadout_item/under/miscellaneous/tactical_pants
+	name = "Tactical Pants"
+	item_path = /obj/item/clothing/under/pants/tactical
+
+//HALLOWEEN
 /datum/loadout_item/under/miscellaneous/pj_blood
 	name = "Blood-red Pajamas"
 	item_path = /obj/item/clothing/under/syndicate/bloodred/sleepytime/sensors
@@ -409,7 +414,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/villain
 	name = "Villain Suit"
 	item_path = /obj/item/clothing/under/costume/villain
-
+//November 1st
 /datum/loadout_item/under/miscellaneous/tactical_irish
 	name = "Irish Tactical Sweater"
 	item_path = /obj/item/clothing/under/misc/tactical1
@@ -423,31 +428,31 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/syndicate/tacticool/skirt/sensors
 
 /datum/loadout_item/under/miscellaneous/cream_sweater
-	name = "cream sweater"
+	name = "Cream Sweater"
 	item_path = /obj/item/clothing/under/sweater
 
 /datum/loadout_item/under/miscellaneous/black_sweater
-	name = "black sweater"
+	name = "Black Sweater"
 	item_path = /obj/item/clothing/under/sweater/black
 
 /datum/loadout_item/under/miscellaneous/purple_sweater
-	name = "purple sweater"
+	name = "Purple Sweater"
 	item_path = /obj/item/clothing/under/sweater/purple
 
 /datum/loadout_item/under/miscellaneous/green_sweater
-	name = "green sweater"
+	name = "Green Sweater"
 	item_path = /obj/item/clothing/under/sweater/green
 
 /datum/loadout_item/under/miscellaneous/red_sweater
-	name = "red sweater"
+	name = "Red Sweater"
 	item_path = /obj/item/clothing/under/sweater/red
 
 /datum/loadout_item/under/miscellaneous/blue_sweater
-	name = "blue sweater"
+	name = "Blue Sweater"
 	item_path = /obj/item/clothing/under/sweater/blue
 
 /datum/loadout_item/under/miscellaneous/keyhole
-	name = "keyhole sweater"
+	name = "Keyhole Sweater"
 	item_path = /obj/item/clothing/under/sweater/keyhole
 
 /datum/loadout_item/under/miscellaneous/blacknwhite
@@ -535,24 +540,24 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	restricted_roles = list(JOB_CARGO_TECHNICIAN)
 
 /datum/loadout_item/under/miscellaneous/cargo_casual
-	name = "black cargo uniform"
+	name = "Black Cargo Uniform"
 	item_path = /obj/item/clothing/under/misc/evilcargo
 	restricted_roles = list(JOB_CARGO_TECHNICIAN)
 
 /datum/loadout_item/under/miscellaneous/eve
-	name = "collection of leaves"
+	name = "Collection of Leaves"
 	item_path = /obj/item/clothing/under/misc/gear_harness/eve
 
 /datum/loadout_item/under/miscellaneous/adam
-	name = "leaf"
+	name = "Leaf"
 	item_path = /obj/item/clothing/under/costume/loincloth/sensor/adam
 
 /datum/loadout_item/under/miscellaneous/loincloth_leather
-	name = "leather loincloth"
+	name = "Leather Loincloth"
 	item_path = /obj/item/clothing/under/costume/loincloth/sensor
 
 /datum/loadout_item/under/miscellaneous/loincloth_cloth
-	name = "cloth loincloth"
+	name = "Cloth Loincloth"
 	item_path = /obj/item/clothing/under/costume/loincloth/cloth/sensor
 
 ////////////////////////////////////////////////////////////////FORMAL UNDERSUITS
@@ -660,7 +665,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/formal/executive_suit_alt
 	name = "Executive Suit Alt"
-	item_path = /obj/item/clothing/under/suit/black/female
+	item_path = /obj/item/clothing/under/suit/black/female/trousers
 
 /datum/loadout_item/under/formal/executive_skirt_alt
 	name = "Executive Suitskirt Alt"
@@ -907,3 +912,25 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/basil
 	name = "Basil Uniform"
 	item_path = /obj/item/clothing/under/costume/basil_boys
+
+/datum/loadout_item/under/formal/inferno
+	name = "Inferno Suit"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/inferno
+
+/datum/loadout_item/under/formal/inferno_skirt
+	name = "Inferno Skirt"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/inferno/skirt
+
+/datum/loadout_item/under/formal/designer_inferno
+	name = "Designer Inferno Suit"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/inferno/beeze
+	restricted_roles = list(JOB_LAWYER)
+
+/// DONATOR
+/datum/loadout_item/under/donator
+	donator_only = TRUE
+
+/datum/loadout_item/under/donator/captain_black
+	name  = "Captains Black Uniform"
+	item_path = /obj/item/clothing/under/rank/captain/black
+	restricted_roles = list(JOB_CAPTAIN)
