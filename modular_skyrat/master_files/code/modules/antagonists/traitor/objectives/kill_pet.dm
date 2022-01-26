@@ -18,7 +18,7 @@
 	if(istype(target_pet, /mob/living/simple_animal/pet/poppy))
 		name = "Dust the engineering department's esteemed safety inspector and beloved pet, Poppy"
 		description = "A couple of troublemakers in the engineering department have spilled the milk, make them and their colleagues pay for the consequences by throwing Poppy, the safty inspector into the Super Matter engine. "
-		qdel(GetComponent(/datum/component/traitor_objective_register))
+		qdel(GetComponent(/datum/component/traitor_objective_register, target_pet))
 		AddComponent(/datum/component/traitor_objective_register, target_pet, \
 			succeed_signals = list(COMSIG_PARENT_QDELETING)) // Until dusting gets its own component, this has to make do
 
@@ -26,6 +26,6 @@
 	if(istype(target_pet, /mob/living/simple_animal/pet/dog/corgi/borgi))
 		name = "Emag the roboticist's most-prized borgi, E-N"
 		description = "We received an untracable contract from someone addressed 'ianfan2489@solgov.nt', they want the robotic clone of Ian dead- and it has to be dramatic. Shortcircuit E-N's safety with a Cryptographic Sequencer and run like hell. "
-		qdel(GetComponent(/datum/component/traitor_objective_register))
+		qdel(GetComponent(/datum/component/traitor_objective_register, target_pet))
 		AddComponent(/datum/component/traitor_objective_register, target_pet, \
 			succeed_signals = list(COMSIG_ATOM_EMAG_ACT))
