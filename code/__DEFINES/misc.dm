@@ -499,6 +499,7 @@ GLOBAL_LIST_INIT(pda_styles, sort_list(list(MONO, VT, ORBITRON, SHARE)))
 
 #define VOMIT_TOXIC 1
 #define VOMIT_PURPLE 2
+#define VOMIT_NANITE 3 //SKYRAT EDIT ADD - Used for Nanite Slurry vomit.
 
 //chem grenades defines
 #define GRENADE_EMPTY 1
