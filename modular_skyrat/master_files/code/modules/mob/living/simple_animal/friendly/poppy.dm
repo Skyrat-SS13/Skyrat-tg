@@ -86,7 +86,7 @@
 			icon_state = "poppypossum_aaa"
 
 			do_jitter_animation(30)
-			manual_emote("[src.p_their()] fur begins to stand up, trembling at the sight of [sm_crystal]...")
+			manual_emote("'s fur stands up, trembling at the sight of [sm_crystal]...")
 			emote("sweatdrop")
 
 			cooldowns.Add(addtimer(CALLBACK(src, .proc/calm_down), 60 SECONDS, TIMER_STOPPABLE))
