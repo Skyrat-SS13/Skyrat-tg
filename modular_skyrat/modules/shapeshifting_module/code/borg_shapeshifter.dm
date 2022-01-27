@@ -86,17 +86,18 @@
 			to_chat(user, span_notice("\the [src] is recharging."))
 			return
 		var/static/list/model_icons = sort_list(list(
-		"Standard" = image(icon = 'icons/mob/robots.dmi', icon_state = "robot"),
-		"Medical" = image(icon = 'icons/mob/robots.dmi', icon_state = "medical"),
-		"Engineer" = image(icon = 'icons/mob/robots.dmi', icon_state = "engineer"),
-		"Security" = image(icon = 'icons/mob/robots.dmi', icon_state = "sec"),
-		"Service" = image(icon = 'icons/mob/robots.dmi', icon_state = "service_f"),
-		"Janitor" = image(icon = 'icons/mob/robots.dmi', icon_state = "janitor"),
-		"Miner" = image(icon = 'icons/mob/robots.dmi', icon_state = "miner"),
-		"Peacekeeper" = image(icon = 'icons/mob/robots.dmi', icon_state = "peace"),
-		"Clown" = image(icon = 'icons/mob/robots.dmi', icon_state = "clown"),
-		"Syndicate" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec"),
-		"Spider Clan" = image(icon = CYBORG_ICON_NINJA, icon_state = "ninja_engi")
+			"Standard" = image(icon = 'icons/mob/robots.dmi', icon_state = "robot"),
+			"Medical" = image(icon = 'icons/mob/robots.dmi', icon_state = "medical"),
+			"Cargo" = image(icon = CYBORG_ICON_CARGO, icon_state = "cargoborg"),
+			"Engineer" = image(icon = 'icons/mob/robots.dmi', icon_state = "engineer"),
+			"Security" = image(icon = 'icons/mob/robots.dmi', icon_state = "sec"),
+			"Service" = image(icon = 'icons/mob/robots.dmi', icon_state = "service_f"),
+			"Janitor" = image(icon = 'icons/mob/robots.dmi', icon_state = "janitor"),
+			"Miner" = image(icon = 'icons/mob/robots.dmi', icon_state = "miner"),
+			"Peacekeeper" = image(icon = 'icons/mob/robots.dmi', icon_state = "peace"),
+			"Clown" = image(icon = 'icons/mob/robots.dmi', icon_state = "clown"),
+			"Syndicate" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec"),
+			"Spider Clan" = image(icon = CYBORG_ICON_NINJA, icon_state = "ninja_engi")
 		))
 		var/model_selection = show_radial_menu(user, user, model_icons, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 42, require_near = TRUE)
 		if(!model_selection)
@@ -108,6 +109,8 @@
 				model = new /obj/item/robot_model/standard
 			if("Medical")
 				model = new /obj/item/robot_model/medical
+			if("Cargo")
+				model = new /obj/item/robot_model/cargo
 			if("Engineer")
 				model = new /obj/item/robot_model/engineering
 			if("Security")
