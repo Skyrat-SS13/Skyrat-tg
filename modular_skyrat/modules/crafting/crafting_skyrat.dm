@@ -30,10 +30,3 @@
 /datum/crafting_recipe/beam_rifle/New()
 	..()
 	blacklist += subtypesof(/obj/item/gun/energy/laser)
-
-/datum/crafting_recipe/pirate_eyepatch
-	name = "Pirate Eyepatch"
-	result = /obj/item/clothing/glasses/eyepatch
-	time = 5
-	reqs = list(/obj/item/stack/sheet/cloth = 1)
-	category = CAT_CLOTHING
