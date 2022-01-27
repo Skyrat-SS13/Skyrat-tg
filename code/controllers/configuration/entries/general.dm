@@ -112,7 +112,6 @@
 /// log attack messages
 /datum/config_entry/flag/log_attack
 
-<<<<<<< HEAD
 /datum/config_entry/flag/log_subtler // log subtler emotes //SKYRAT EDIT ADDITION
 
 /datum/config_entry/flag/log_ambition // log ambition changes //SKYRAT EDIT ADDITION
@@ -120,10 +119,9 @@
 /datum/config_entry/flag/lobby_camera // enable lobby camera //SKYRAT EDIT ADDITION
 
 /datum/config_entry/flag/log_econ // log economy actions
-=======
+
 /// log emotes
 /datum/config_entry/flag/log_emote
->>>>>>> 8c6f29b8944 (Logs tool usage (#64430))
 
 /// log economy actions
 /datum/config_entry/flag/log_econ
