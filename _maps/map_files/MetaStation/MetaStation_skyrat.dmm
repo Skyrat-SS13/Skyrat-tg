@@ -691,12 +691,12 @@
 /area/security/brig)
 "agb" = (
 /obj/structure/rack,
-/obj/item/shield/riot{
+/obj/item/gun/energy/disabler{
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/shield/riot,
-/obj/item/shield/riot{
+/obj/item/gun/energy/disabler,
+/obj/item/gun/energy/disabler{
 	pixel_x = 3;
 	pixel_y = -3
 	},
@@ -714,14 +714,20 @@
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "agd" = (
+/obj/item/grenade/barrier{
+	pixel_x = -3;
+	pixel_y = 1
+	},
+/obj/item/grenade/barrier,
+/obj/item/grenade/barrier{
+	pixel_x = 3;
+	pixel_y = -1
+	},
+/obj/item/grenade/barrier{
+	pixel_x = 6;
+	pixel_y = -2
+	},
 /obj/structure/rack,
-/obj/item/gun/ballistic/shotgun/riot,
-/obj/item/gun/ballistic/shotgun/riot{
-	pixel_y = 6
-	},
-/obj/item/gun/ballistic/shotgun/riot{
-	pixel_y = 3
-	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "agf" = (
@@ -1289,18 +1295,33 @@
 /area/security/brig)
 "akC" = (
 /obj/structure/rack,
-/obj/effect/turf_decal/tile/blue,
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
+/obj/item/clothing/head/helmet/sec{
+	pixel_x = -3;
+	pixel_y = 3
 	},
-/obj/item/storage/box/lethalshot,
-/obj/item/storage/box/lethalshot,
-/obj/item/storage/box/lethalshot,
+/obj/item/clothing/head/helmet/sec,
+/obj/item/clothing/head/helmet/sec{
+	pixel_x = 3;
+	pixel_y = -3
+	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
+	},
+/obj/item/clothing/suit/armor/vest/security{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/clothing/suit/armor/vest/security,
+/obj/item/clothing/suit/armor/vest/security{
+	pixel_x = -3;
+	pixel_y = 3
 	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
@@ -3113,6 +3134,8 @@
 	pixel_y = 5
 	},
 /obj/item/restraints/handcuffs,
+/obj/item/clothing/accessory/badge,
+/obj/item/clothing/accessory/badge/holo/detective,
 /turf/open/floor/carpet,
 /area/security/detectives_office)
 "azW" = (
@@ -3278,7 +3301,6 @@
 /obj/structure/table/wood,
 /obj/item/folder/red,
 /obj/item/hand_labeler,
-/obj/item/camera/detective,
 /turf/open/floor/carpet,
 /area/security/detectives_office)
 "aBo" = (
@@ -3806,6 +3828,7 @@
 /area/security/brig)
 "aGu" = (
 /obj/structure/filingcabinet,
+/obj/effect/landmark/blobstart,
 /turf/open/floor/iron/grimy,
 /area/security/detectives_office)
 "aGA" = (
@@ -7137,36 +7160,41 @@
 "bps" = (
 /obj/structure/rack,
 /obj/item/clothing/suit/armor/riot{
-	pixel_x = 3;
-	pixel_y = 2
-	},
-/obj/item/clothing/suit/armor/riot{
-	pixel_y = 2
-	},
-/obj/item/clothing/suit/armor/riot{
 	pixel_x = -3;
-	pixel_y = 2
+	pixel_y = 3
 	},
-/obj/item/clothing/suit/armor/bulletproof{
+/obj/item/clothing/suit/armor/riot,
+/obj/item/clothing/suit/armor/riot{
 	pixel_x = 3;
-	pixel_y = -2
+	pixel_y = -3
 	},
-/obj/item/clothing/suit/armor/bulletproof{
-	pixel_y = -2
-	},
-/obj/item/clothing/suit/armor/bulletproof{
+/obj/item/clothing/head/helmet/riot{
 	pixel_x = -3;
-	pixel_y = -2
+	pixel_y = 3
 	},
-/obj/effect/turf_decal/tile/blue,
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
+/obj/item/clothing/head/helmet/riot,
+/obj/item/clothing/head/helmet/riot{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/shield/riot{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/shield/riot,
+/obj/item/shield/riot{
+	pixel_x = 3;
+	pixel_y = -3
 	},
 /obj/machinery/requests_console/directional/north{
 	department = "Security";
 	departmentType = 3;
 	name = "Security Requests Console"
 	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "bpt" = (
@@ -34859,6 +34887,10 @@
 /obj/structure/closet/ammunitionlocker/useful,
 /obj/machinery/light/directional/north,
 /obj/effect/turf_decal/delivery/red,
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
 /turf/open/floor/iron/smooth,
 /area/ai_monitored/security/armory)
 "kuc" = (
@@ -35826,6 +35858,15 @@
 /area/engineering/supermatter/room)
 "kKH" = (
 /obj/structure/closet/secure_closet/detective,
+/obj/item/tape,
+/obj/item/tape,
+/obj/item/tape,
+/obj/item/taperecorder,
+/obj/item/folder/yellow{
+	name = "Detective's Findings"
+	},
+/obj/item/clothing/glasses/sunglasses,
+/obj/item/camera/detective,
 /turf/open/floor/iron/grimy,
 /area/security/detectives_office)
 "kKJ" = (
@@ -39591,11 +39632,11 @@
 /area/command/heads_quarters/captain/private)
 "mcV" = (
 /obj/structure/table/wood,
-/obj/item/stamp/hos,
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
 /obj/item/storage/box/holobadge/hos,
+/obj/item/stamp/hos,
 /turf/open/floor/wood,
 /area/command/heads_quarters/hos)
 "mds" = (
@@ -50168,9 +50209,17 @@
 /turf/open/floor/iron,
 /area/security/prison)
 "pOs" = (
-/obj/machinery/light/small/directional/south,
-/obj/effect/landmark/blobstart,
 /obj/structure/closet/secure_closet/detective,
+/obj/item/tape,
+/obj/item/tape,
+/obj/item/tape,
+/obj/item/taperecorder,
+/obj/item/folder/yellow{
+	name = "Detective's Findings"
+	},
+/obj/item/clothing/glasses/sunglasses,
+/obj/item/camera/detective,
+/obj/machinery/light/small/directional/south,
 /turf/open/floor/iron/grimy,
 /area/security/detectives_office)
 "pOz" = (
@@ -58980,9 +59029,6 @@
 /obj/structure/table/wood,
 /obj/item/flashlight/seclite,
 /obj/item/storage/box/evidence,
-/obj/item/taperecorder{
-	pixel_x = 3
-	},
 /turf/open/floor/iron/grimy,
 /area/security/detectives_office)
 "sWW" = (
@@ -59176,29 +59222,29 @@
 /area/medical/medbay/central)
 "taJ" = (
 /obj/structure/rack,
+/obj/item/clothing/suit/armor/bulletproof{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/suit/armor/bulletproof,
+/obj/item/clothing/suit/armor/bulletproof{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/clothing/head/helmet/alt{
+	layer = 3.00001;
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/head/helmet/alt{
+	layer = 3.00001
+	},
+/obj/item/clothing/head/helmet/alt{
+	layer = 3.00001;
+	pixel_x = 3;
+	pixel_y = -3
+	},
 /obj/machinery/light/directional/west,
-/obj/item/clothing/head/helmet/riot{
-	pixel_x = 3;
-	pixel_y = 2
-	},
-/obj/item/clothing/head/helmet/riot{
-	pixel_y = 2
-	},
-/obj/item/clothing/head/helmet/riot{
-	pixel_x = -3;
-	pixel_y = 2
-	},
-/obj/item/clothing/head/helmet/alt{
-	pixel_x = 3;
-	pixel_y = -2
-	},
-/obj/item/clothing/head/helmet/alt{
-	pixel_y = -2
-	},
-/obj/item/clothing/head/helmet/alt{
-	pixel_x = -3;
-	pixel_y = -2
-	},
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
