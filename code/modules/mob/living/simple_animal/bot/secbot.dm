@@ -302,12 +302,12 @@
 	if(harm)
 		weapon.attack(current_target, src)
 	if(ishuman(current_target))
-		current_target.StaminaKnockdown(60,TRUE) // SKYRAT EDIT - ORIGINAL: current_target.Paralyze(100)
 		current_target.stuttering = 5
+		current_target.StaminaKnockdown(60,TRUE) // SKYRAT EDIT CHANGE
 		var/mob/living/carbon/human/human_target = current_target
 		threat = human_target.assess_threat(judgement_criteria, weaponcheck = CALLBACK(src, .proc/check_for_weapons))
 	else
-		current_target.StaminaKnockdown(60,TRUE) // SKYRAT EDIT - ORIGINAL: current_target.Paralyze(100)
+		current_target.StaminaKnockdown(60,TRUE) // SKYRAT EDIT CHANGE
 		current_target.stuttering = 5
 		threat = current_target.assess_threat(judgement_criteria, weaponcheck = CALLBACK(src, .proc/check_for_weapons))
 
@@ -350,16 +350,7 @@
 				else
 					stun_attack(target)
 
-<<<<<<< HEAD
-				//mode = BOT_PREP_ARREST SKYRAT EDIT CHANGE BELOW
-				//set_anchored(TRUE)
-				target_lastloc = target.loc
-				if(target.incapacitated()) //SKYRAT EDIT ADDITION
-					mode = BOT_PREP_ARREST
-					set_anchored(TRUE)
-=======
 				set_anchored(TRUE)
->>>>>>> b12c61f3406 (Bot code improvement - Honkbots (#63693))
 				return
 
 			// not next to perp
@@ -372,7 +363,7 @@
 
 		if(BOT_PREP_ARREST) // preparing to arrest target
 			// see if he got away. If he's no no longer adjacent or inside a closet or about to get up, we hunt again.
-			if(!Adjacent(target) || !isturf(target.loc) || (target.AmountParalyzed() < 40 && target.staminaloss < STAMINA_THRESHOLD_SOFTCRIT)) //SKYRAT EDIT CHANGE: if(!Adjacent(target) || !isturf(target.loc) ||  target.AmountParalyzed() < 40)
+			if(!Adjacent(target) || !isturf(target.loc) || (target.AmountParalyzed() < 40 && target.staminaloss < STAMINA_THRESHOLD_SOFTCRIT)) //SKYRAT EDIT CHANGE
 				back_to_hunt()
 				return
 
@@ -473,35 +464,6 @@
 /mob/living/simple_animal/bot/secbot/explode()
 	visible_message(span_boldannounce("[src] blows apart!"))
 	var/atom/Tsec = drop_location()
-<<<<<<< HEAD
-	if(bot_type == ADVANCED_SEC_BOT)
-		var/obj/item/bot_assembly/ed209/ed_assembly = new(Tsec)
-		ed_assembly.build_step = ASSEMBLY_FIRST_STEP
-		ed_assembly.add_overlay("hs_hole")
-		ed_assembly.created_name = name
-		new /obj/item/assembly/prox_sensor(Tsec)
-		/* SKYRAT EDIT REMOVAL START - no more disabler farms
-		var/obj/item/gun/energy/disabler/disabler_gun = new(Tsec)
-		disabler_gun.cell.charge = 0
-		disabler_gun.update_appearance()
-		*/ // SKYRAT EDIT END
-		if(prob(50))
-			new /obj/item/bodypart/l_leg/robot(Tsec)
-			if(prob(25))
-				new /obj/item/bodypart/r_leg/robot(Tsec)
-		if(prob(25))//50% chance for a helmet OR vest
-			if(prob(50))
-				new /obj/item/clothing/head/helmet(Tsec)
-			else
-				new /obj/item/clothing/suit/armor/vest(Tsec)
-	else
-		var/obj/item/bot_assembly/secbot/secbot_assembly = new(Tsec)
-		secbot_assembly.build_step = ASSEMBLY_FIRST_STEP
-		secbot_assembly.add_overlay("hs_hole")
-		secbot_assembly.created_name = name
-		new /obj/item/assembly/prox_sensor(Tsec)
-		// drop_part(baton_type, Tsec) // SKYRAT EDIT REMOVAL - no more baton farms
-=======
 	switch(bot_type)
 		if(ADVANCED_SEC_BOT)
 			var/obj/item/bot_assembly/ed209/ed_assembly = new(Tsec)
@@ -534,7 +496,6 @@
 			secbot_assembly.created_name = name
 			new /obj/item/assembly/prox_sensor(Tsec)
 			drop_part(baton_type, Tsec)
->>>>>>> b12c61f3406 (Bot code improvement - Honkbots (#63693))
 
 	do_sparks(3, TRUE, src)
 
