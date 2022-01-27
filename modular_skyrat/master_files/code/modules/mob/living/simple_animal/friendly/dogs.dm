@@ -176,7 +176,6 @@
 	UnregisterSignal(src, COMSIG_ATOM_HITBY)
 	UnregisterSignal(src, COMSIG_ATOM_EMAG_ACT)
 
-	set_light_on(FALSE)
 	do_sparks(3, 1, src)
 	var/datum/ai_controller/dog/EN = ai_controller
 	LAZYCLEARLIST(EN.current_behaviors)
