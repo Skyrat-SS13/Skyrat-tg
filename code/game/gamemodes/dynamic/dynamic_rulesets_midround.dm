@@ -1038,11 +1038,25 @@
 	protected_roles = list(
 		JOB_CAPTAIN,
 		JOB_DETECTIVE,
-		JOB_HEAD_OF_PERSONNEL,
 		JOB_HEAD_OF_SECURITY,
 		JOB_PRISONER,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
+		// SKYRAT EDIT START - RESTRICTING ROLES
+		JOB_NT_REP,
+		JOB_QUARTERMASTER,
+		JOB_BLUESHIELD,
+		JOB_SECURITY_SERGEANT,
+		JOB_SECURITY_MEDIC,
+		JOB_CORRECTIONS_OFFICER,
+		JOB_CIVIL_DISPUTES_OFFICER,
+		JOB_ORDERLY,
+		JOB_BOUNCER,
+		JOB_CUSTOMS_AGENT,
+		JOB_ENGINEERING_GUARD,
+		JOB_SCIENCE_GUARD,
+		JOB_VANGUARD_OPERATIVE,
+		// SKYRAT EDIT END
 	)
 	restricted_roles = list(
 		JOB_AI,
@@ -1060,10 +1074,16 @@
 	candidates = living_players
 	for(var/mob/living/carbon/human/candidate in candidates)
 		if( \
-			candidate.mind.has_antag_datum(antag_datum) \
+			//no bigger antagonists getting smaller role
+			candidate.mind && (candidate.mind.special_role || candidate.mind.antag_datums?.len > 0) \
+			//no dead people
 			|| candidate.stat == DEAD \
+			//no people who don't want it
 			|| !(ROLE_OPPORTUNIST in candidate.client?.prefs?.be_special) \
-			|| !candidate.mind.assigned_role \
+			//no non-station crew
+			|| candidate.mind.assigned_role.faction != FACTION_STATION \
+			//stops thief being added to admins messing around on centcom
+			|| is_centcom_level(candidate.z) \
 		)
 			candidates -= candidate
 

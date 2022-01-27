@@ -755,11 +755,12 @@
 	design_ids = list(
 		"assembly_shell",
 		"bot_shell",
+		"comp_mod_action",
 		"controller_shell",
 		"dispenser_shell",
 		"door_shell",
 		"gun_shell",
-		"mod_circuit",
+		"module_shell",
 		"money_bot_shell",
 		"scanner_gate_shell",
 		"scanner_shell",
@@ -871,6 +872,10 @@
 		"borg_upgrade_selfrepair",
 		"borg_upgrade_thrusters",
 		"borg_upgrade_trashofholding",
+
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"borg_upgrade_clamp",
+		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
@@ -1494,19 +1499,6 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	required_experiments = list(/datum/experiment/explosion/maxcap)
-
-// SKYRAT EDIT START: SECBORG TECHWEB
-/datum/techweb_node/secborg_node
-	id = "secborg_node"
-	display_name = "Cyborg Module: Security"
-	description = "Known to cause silicon law violations in all twelve sectors of space!"
-	prereq_ids = list("adv_weaponry")
-	design_ids = list(
-		"security_cyborg_module",
-	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
-	required_experiments = list(/datum/experiment/explosion/maxcap)
-// SKYRAT EDIT END: SECBORG TECHWEB
 
 /datum/techweb_node/ballistic_weapons
 	id = "ballistic_weapons"

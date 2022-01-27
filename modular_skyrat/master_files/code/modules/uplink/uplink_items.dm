@@ -18,6 +18,7 @@
 			with suppressors. The gun fires in three round bursts."
 	item = /obj/item/gun/ballistic/automatic/pistol/aps
 	cost = 10
+	progression_minimum = 30 MINUTES
 
 /datum/uplink_item/dangerous/foamsmg_traitor
 	name = "Toy Submachine Gun"
@@ -31,6 +32,7 @@
 	item = /obj/item/gun/ballistic/revolver/mateba
 	cost = 13
 	surplus = 50
+	progression_minimum = 30 MINUTES
 
 /datum/uplink_item/dangerous/holocarp
 	name = "Holocarp"
@@ -40,6 +42,7 @@
 	cost = 10
 	surplus = 0
 	restricted = TRUE
+	progression_minimum = 30 MINUTES
 
 /datum/uplink_item/dangerous/smgc20r_traitor
 	name = "C-20r Submachine Gun"
@@ -47,6 +50,7 @@
 			24-round magazine and is compatible with suppressors."
 	item = /obj/item/gun/ballistic/automatic/c20r/unrestricted
 	cost = 14
+	progression_minimum = 35 MINUTES
 
 /datum/uplink_item/dangerous/shotgun_traitor
 	name = "Bulldog Shotgun"
@@ -54,6 +58,7 @@
 			quarter anti-personnel engagements."
 	item = /obj/item/gun/ballistic/shotgun/bulldog/unrestricted
 	cost = 13
+	progression_minimum = 35 MINUTES
 
 /datum/uplink_item/dangerous/shield_traitor
 	name = "Energy Shield"
@@ -61,18 +66,21 @@
 			against other attacks. Pair with an Energy Sword for a killer combination."
 	item = /obj/item/shield/energy
 	cost = 5
+	progression_minimum = 20 MINUTES
 
 /datum/uplink_item/dangerous/katana_traitor
 	name = "Katana"
 	desc = "An incredibly sharp sword used by Samurais. Woefully underpowered in D20."
 	item = /obj/item/katana
 	cost = 7
+	progression_minimum = 20 MINUTES
 
 /datum/uplink_item/dangerous/oddjob
 	name = "Deadly Bowler Hat"
 	desc = "An incredibly sharp edged bowler hat used by an infamously short operative."
 	item = /obj/item/clothing/head/sus_bowler
 	cost = 20
+	progression_minimum = 25 MINUTES
 
 //STEALTHY WEAPONS
 /datum/uplink_item/stealthy_weapons/cqc_traitor
@@ -81,6 +89,7 @@
 	item = /obj/item/book/granter/martial/cqc
 	cost = 23
 	surplus = 17
+	progression_minimum = 30 MINUTES
 
 // Removed from the uplink for the time being.
 /*datum/uplink_item/stealthy_weapons/cqcplus
@@ -97,6 +106,7 @@
 	item = /obj/item/melee/baton/telescopic
 	cost = 2
 	surplus = 0
+	progression_minimum = 10 MINUTES
 
 //STEALTHY TOOOLS
 /datum/uplink_item/stealthy_tools/infiltratormask
@@ -112,6 +122,7 @@
 	standard Nanotrasen access codes in one conveinent package. Now in glossy olive by default!"
 	item = /obj/item/card/id/advanced/chameleon/black
 	cost = 5 //Since this gives the possibility for All Access, this is a BIGBOY tool. Compared to oldbases' skeleton key, though, you still have to steal it somehow.
+	progression_minimum = 20 MINUTES
 
 /datum/uplink_item/stealthy_tools/advanced_cham_headset
 	name = "Advanced Chameleon Headset" //Consider this a standin for the oldbase headset upgrader.
@@ -120,6 +131,7 @@
 	for high-ranking Cybersun officers, a few spares have been reserved for field agents."
 	item = /obj/item/radio/headset/chameleon/advanced
 	cost = 4 //Also a BIGBOY tool. Though inconvienent to wield, this allows the wearer to spy and interact with any one frequency they desire, even without the proper encryption key, along with flashbang protection and loudmode. Cannot breach syndiecomms by itself.
+	progression_minimum = 20 MINUTES
 
 /datum/uplink_item/stealthy_tools/syndieshotglasses
 	name = "Extra Large Syndicate Shotglasses"
@@ -137,6 +149,7 @@
 			with random toxins. Courtesy of the BLF and Tiger Cooperative."
 	item = /obj/item/storage/box/syndie_kit/bee_grenades
 	cost = 10
+	progression_minimum = 25 MINUTES
 
 /datum/uplink_item/explosives/viscerators_traitor
 	name = "Viscerator Delivery Grenade"
@@ -145,6 +158,7 @@
 	item = /obj/item/grenade/spawnergrenade/manhacks
 	cost = 7
 	surplus = 35
+	progression_minimum = 25 MINUTES
 
 /datum/uplink_item/explosives/nukeop_traitor
 	name = "Nuclear Delivery Grenade"
@@ -152,12 +166,14 @@
 	item = /obj/item/grenade/spawnergrenade/therealnuke
 	cost = 7
 	surplus = 35
+	progression_minimum = 20 MINUTES
 
 /datum/uplink_item/explosives/bonebang
 	name = "Bonebang"
 	desc = "A horrifying grenade filled with what looks to be bone and gore, which upon detonation will fill the room you're in with bone fragments."
 	item = /obj/item/grenade/stingbang/bonebang
 	cost = 5
+	progression_minimum = 15 MINUTES
 
 //DEVICE TOOLS
 /datum/uplink_item/device_tools/syndie_jaws_of_life_traitor
@@ -174,6 +190,7 @@
 			and other supplies helpful for a field medic."
 	item = /obj/item/storage/firstaid/tactical
 	cost = 4
+	progression_minimum = 15 MINUTES
 
 /datum/uplink_item/device_tools/guerillagloves_traitor
 	name = "Guerilla Gloves"
@@ -203,6 +220,7 @@
 	item = /obj/item/reagent_containers/vapecart/syndicate
 	cost = 5
 	surplus = 90
+	progression_minimum = 20 MINUTES
 
 //AMMO
 /datum/uplink_item/ammo/pistolaps_traitor
@@ -282,12 +300,14 @@
 	desc = "A slim Type I armored vest that provides decent protection against most types of damage."
 	item = /obj/item/clothing/suit/armor/vest
 	cost = 1
+	progression_minimum = 10 MINUTES
 
 /datum/uplink_item/suits/standard_armor_traitor
 	name = "Bulletproof Armor Vest"
 	desc = "A Type III heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
 	item = /obj/item/clothing/suit/armor/bulletproof
 	cost = 1
+	progression_minimum = 15 MINUTES
 
 //HELMETS
 /datum/uplink_item/suits/swathelmet_traitor
@@ -295,7 +315,7 @@
 	desc = "An extremely robust, space-worthy helmet in a nefarious red and black stripe pattern."
 	item = /obj/item/clothing/head/helmet/swat
 	cost = 2
-
+	progression_minimum = 10 MINUTES
 
 //IMPLANTS
 /datum/uplink_item/implants/antistun_traitor
@@ -304,6 +324,7 @@
 	item = /obj/item/autosurgeon/organ/syndicate/anti_stun
 	cost = 6
 	surplus = 0
+	progression_minimum = 15 MINUTES
 
 //JOBS ONLY
 /datum/uplink_item/role_restricted/cultkitsr //Ported from beestation
@@ -312,6 +333,7 @@
 	item = /obj/item/storage/box/syndie_kit/cultkitsr
 	cost = 15 //If used correctly, You actually get several servants or just get fucked over because no ghosts want to be a shade.
 	restricted_roles = list(JOB_CHAPLAIN)
+	progression_minimum = 20 MINUTES
 
 //LOADOUTS
 /datum/uplink_item/bundles_tc/recon
@@ -319,87 +341,102 @@
 	desc = "Get in and get out as quickly as you came with this unique kit of gear specialized in infiltration and observation."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/recon
 	cost = 20
+	progression_minimum = 25 MINUTES
 
 /datum/uplink_item/bundles_tc/spy
 	name = "Spy bundle"
 	desc = "Blend into the environment or any of crowd with this state-of-the-art stealth kit, perfect for infiltration experts."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/spy
 	cost = 20
+	progression_minimum = 25 MINUTES
 
 /datum/uplink_item/bundles_tc/stealthop
 	name = "Burglar Bundle"
 	desc = "Not a thing aboard the station is safe from your grubby hands with this specialized set of gear, perfect for the enterprising thief."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/stealthop
 	cost = 20
+	progression_minimum = 25 MINUTES
 
 /datum/uplink_item/bundles_tc/hacker
 	name = "Hacker bundle"
 	desc = "Subvert everything in sight using some of the most advanced tools available to operatives. If it’s powered, it’s already under your thumb."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/hacker
 	cost = 15
+	progression_minimum = 25 MINUTES
 
 /datum/uplink_item/bundles_tc/metaops
 	name = "Bulldog Operative bundle"
 	desc = "Fight the power with this frontline combatant kit, featuring armor and armaments commonly utilized by assault operative teams."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/metaops
 	cost = 23
+	progression_minimum = 35 MINUTES //+10 minutes because of the bulldog
 
 /datum/uplink_item/bundles_tc/bond
 	name = "Classic Spy bundle"
 	desc = "Play the hero or the villain in a cheesy spy movie with this throwback kit to far less modern syndicate operatives."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/bond
 	cost = 20
+	progression_minimum = 25 MINUTES
 
 /datum/uplink_item/bundles_tc/darklord
 	name = "Dark Lord bundle"
 	desc = "Wield unlimited power with this extremely effective combative kit, guaranteed to give the user efficient staying potential in any confrontation."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/darklord
 	cost = 20
+	progression_minimum = 30 MINUTES //+5 minutes for the desword
 
 /datum/uplink_item/bundles_tc/bee
 	name = "Buzzy bundle"
 	desc = "Look bee-utiful in this extra specialized rapid attack kit, featuring unique armaments seen nowhere else and a bumble-y sense of style."
 	item = /obj/item/storage/box/syndie_kit/loadout/bee
 	cost = 20
+	progression_minimum = 25 MINUTES
 
 /datum/uplink_item/bundles_tc/cryomancer
 	name = "Mister Freeze bundle"
 	desc = "Make everybody chill out at the sight of your power with this absolutely snowy weapons kit. Also happens to be great for ice-related puns."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/cryomancer
 	cost = 20
+	progression_minimum = 25 MINUTES
 
 /datum/uplink_item/bundles_tc/doctordeath
 	name = "Doctor Death bundle"
 	desc = "Be your very own mad scientist with this toxic bundle! Warning, license void if poisons used on self. Read bottom of bag for more information."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/doctordeath
 	cost = 25
+	progression_minimum = 25 MINUTES
 
 /datum/uplink_item/bundles_tc/donkcoshill
 	name = "Donk Co. Shill bundle"
 	desc = "Love Donk Pockets? Want to shill Donk Co. Toys? This bundle is for you! Contains some DonkSoft guns, a vending machine, restocking units, and a box of Donk Pockets."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/donkshillkit
 	cost = 10
+	progression_minimum = 15 MINUTES //-10 because it's a weak bundle
 
 /datum/uplink_item/bundles_tc/downtownspecial
 	name = "Downtown Special bundle"
 	desc = "Ayyy fuggedaboudit! This bundle contains everything to be your own one man mafioso. Including an icon of the Virgin Mary for your own authentic mafia nickname. Gang members not included."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/downtownspecial
 	cost = 25
+	progression_minimum = 30 MINUTES //+5 for the thompson
 
 /datum/uplink_item/bundles_tc/ocelotfoxtrot
 	name = "Snake Eater bundle"
 	desc = "A kit themed around one certain gun spinning cat. Includes his famous colt special, and personalised ammo."
 	item = /obj/item/storage/box/syndie_kit/loadout/ocelotfoxtrot
 	cost = 15
+	progression_minimum = 30 MINUTES //+5 minutes for the .357 peacemaker
 
 /datum/uplink_item/bundles_tc/nt_impostor
 	name = "Corporate Deceit bundle"
 	desc = "Don the identities of the most powerful men and women in Nanotrasen, and pull strings from the shadows as you please with this specialized kit."
 	item = /obj/item/storage/box/syndie_kit/loadout/nt_impostor
 	cost = 20
+	progression_minimum = 30 MINUTES //+5 minutes for the .357
 
 /datum/uplink_item/bundles_tc/lasermanbundle
 	name = "Laserman bundle"
 	desc = "Themed after an infamous syndicate operative with a particular fighting style, this kit is both a fashionable throwback and a uniquely useful combative loadout."
 	item = /obj/item/storage/box/syndie_kit/loadout/lasermanbundle
 	cost = 20
+	progression_minimum = 25 MINUTES
