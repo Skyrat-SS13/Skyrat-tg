@@ -5,6 +5,7 @@
 	icon_state = "poppypossum"
 	icon_living = "poppypossum"
 	icon_dead = "poppypossum_dead"
+	gender = FEMALE
 	unique_pet = TRUE
 	maxHealth = 30
 	health = 30
@@ -15,6 +16,7 @@
 	speak_chance = 2
 	turns_per_move = 3
 	var/safety_inspection = TRUE // The inspection fails if she gets dusted
+	var/near_engine = FALSE // She is actually really scared of the engine
 	animal_species = /mob/living/simple_animal/pet/poppy
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
@@ -63,7 +65,7 @@
 	. = ..()
 	if(stat == DEAD)
 		return
-	if (resting)
+	if(resting)
 		icon_state = "[icon_living]_rest"
 		set_light_on(FALSE)
 	else
@@ -72,12 +74,36 @@
 	regenerate_icons()
 
 /mob/living/simple_animal/pet/poppy/Life(delta_time = SSMOBS_DT, times_fired)
-	if(buckled || client || !DT_PROB(0.5, delta_time))
-		return ..()
+	if(buckled || client)
+		return
+
+	if(pulledby)
+		set_resting(FALSE)
+
+	if(!near_engine)
+		for(var/obj/machinery/power/supermatter_crystal/sm_crystal in view(8, src))
+			near_engine = TRUE
+			icon_state = "poppypossum_aaa"
+
+			do_jitter_animation(30)
+			manual_emote("[src.p_their()] fur begins to stand up, trembling at the sight of [sm_crystal]...")
+			emote("sweatdrop")
+
+			cooldowns.Add(addtimer(CALLBACK(src, .proc/calm_down), 60 SECONDS, TIMER_STOPPABLE))
+			break
+
+	if(!DT_PROB(0.5, delta_time))
+		return
 	if(resting)
 		manual_emote(pick("lets out a hiss before resting.", "catches a break.", "gives a simmering hiss before lounging.", "exams her surroundings before relaxing."))
 		set_resting(TRUE)
-		return ..()
-	manual_emote(pick("stretches her claws, rising...", "diligently gets up, ready to inspect!", "stops her resting."))
-	set_resting(FALSE)
+		return
+	else
+		manual_emote(pick("stretches her claws, rising...", "diligently gets up, ready to inspect!", "stops her resting."))
+		set_resting(FALSE)
+
 	return ..()
+
+/mob/living/simple_animal/pet/poppy/proc/calm_down()
+	near_engine = FALSE
+	icon_state = initial(icon_state)

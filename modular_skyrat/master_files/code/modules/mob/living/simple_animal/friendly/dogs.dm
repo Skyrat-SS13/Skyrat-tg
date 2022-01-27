@@ -192,7 +192,7 @@
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/explode()
 	visible_message(span_bolddanger("[src] makes an odd whining noise!"))
-	do_jitter_animation(10)
+	do_jitter_animation(30)
 	sleep(10 SECONDS) // Here's your ten second warning
 	explosion(get_turf(src), 1, 3, 6, 6, 8) // Should this be changed?
 	gib() // Yuck, robo-blood
