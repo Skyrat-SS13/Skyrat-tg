@@ -388,9 +388,7 @@
 /obj/machinery/door/firedoor/closed{
 	opacity = 1
 	},
-/obj/machinery/door/airlock/public/glass{
-	name = "Port Primary Hallway"
-	},
+/obj/machinery/door/airlock/public,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/porthall)
 "cY" = (
@@ -429,16 +427,10 @@
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "dg" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/firedoor/closed{
-	opacity = 1
-	},
-/obj/effect/spawner/structure/window/reinforced/no_firelock,
+/obj/effect/spawner/structure/window/reinforced/tinted,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/porthall)
 "dh" = (
-/obj/machinery/door/airlock/public/glass{
-	name = "Fore Primary Hallway"
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/wooden/crude,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -447,6 +439,7 @@
 	opacity = 1
 	},
 /obj/structure/cable,
+/obj/machinery/door/airlock/public,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/forehall)
 "di" = (
@@ -1204,9 +1197,6 @@
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/port_tarkon/porthall)
 "hA" = (
-/obj/machinery/door/airlock/public/glass{
-	name = "Port Primary Hallway"
-	},
 /obj/structure/barricade/wooden/crude,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -1214,6 +1204,7 @@
 	opacity = 1
 	},
 /obj/structure/cable,
+/obj/machinery/door/airlock/public,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/porthall)
 "hB" = (
@@ -3714,10 +3705,7 @@
 /area/ruin/space/has_grav/port_tarkon/mining)
 "xa" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/structure/window/reinforced/no_firelock,
-/obj/machinery/door/firedoor/closed{
-	opacity = 1
-	},
+/obj/effect/spawner/structure/window/reinforced/tinted,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/forehall)
 "xc" = (
@@ -4178,10 +4166,7 @@
 /turf/open/floor/engine/o2,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "AL" = (
-/obj/effect/spawner/structure/window/reinforced/no_firelock,
-/obj/machinery/door/firedoor/closed{
-	opacity = 1
-	},
+/obj/effect/spawner/structure/window/reinforced/tinted,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/forehall)
 "AM" = (
@@ -4275,15 +4260,13 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/forehall)
 "BI" = (
-/obj/machinery/door/airlock/public/glass{
-	name = "Fore Primary Hallway"
-	},
 /obj/effect/decal/cleanable/blood/tracks,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/wooden/crude,
 /obj/machinery/door/firedoor/closed{
 	opacity = 1
 	},
+/obj/machinery/door/airlock/public,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/forehall)
 "BJ" = (
@@ -4421,7 +4404,9 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/forehall)
 "Cs" = (
-/obj/machinery/door/airlock/mining/glass,
+/obj/machinery/door/airlock/mining/glass{
+	id_tag = "ptmining"
+	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/turf_decal/sand,
 /obj/structure/alien/weeds,
@@ -4522,10 +4507,10 @@
 /obj/machinery/door/firedoor/closed{
 	opacity = 1
 	},
-/obj/machinery/door/airlock/mining/glass,
 /obj/structure/alien/weeds,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/airlock/mining,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/mining)
 "CP" = (
@@ -4800,10 +4785,8 @@
 /obj/machinery/door/firedoor/closed{
 	opacity = 1
 	},
-/obj/machinery/door/airlock/public/glass{
-	name = "Port Primary Hallway"
-	},
 /obj/structure/cable,
+/obj/machinery/door/airlock/public,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/porthall)
 "Eu" = (
@@ -5404,10 +5387,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/comms)
 "Ig" = (
-/obj/effect/spawner/structure/window/reinforced/no_firelock,
-/obj/machinery/door/firedoor/closed{
-	opacity = 1
-	},
+/obj/effect/spawner/structure/window/reinforced/tinted,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/porthall)
 "Ih" = (
@@ -5678,10 +5658,15 @@
 /area/ruin/space/has_grav/port_tarkon/dorms)
 "Jw" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/ore_box,
 /obj/structure/alien/weeds,
 /obj/effect/turf_decal/tile/brown/anticorner{
 	dir = 8
+	},
+/obj/machinery/button/door/directional/south{
+	id = "ptmining";
+	name = "mining airlock bolt";
+	normaldoorcontrol = 1;
+	specialfunctions = 4
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/mining)
@@ -5885,8 +5870,8 @@
 /obj/machinery/door/firedoor/closed{
 	opacity = 1
 	},
-/obj/machinery/door/airlock/mining/glass,
 /obj/structure/alien/weeds,
+/obj/machinery/door/airlock/mining,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/mining)
 "KD" = (
@@ -6288,9 +6273,7 @@
 /obj/machinery/door/firedoor/closed{
 	opacity = 1
 	},
-/obj/machinery/door/airlock/public/glass{
-	name = "Fore Primary Hallway"
-	},
+/obj/machinery/door/airlock/public,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/forehall)
 "Nk" = (
@@ -6739,13 +6722,11 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/centerhall)
 "Qs" = (
-/obj/machinery/door/airlock/public/glass{
-	name = "Port Primary Hallway"
-	},
 /obj/structure/barricade/wooden/crude,
 /obj/machinery/door/firedoor/closed{
 	opacity = 1
 	},
+/obj/machinery/door/airlock/public,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/porthall)
 "Qx" = (
@@ -7857,9 +7838,7 @@
 /obj/machinery/door/firedoor/closed{
 	opacity = 1
 	},
-/obj/machinery/door/airlock/public/glass{
-	name = "Fore Primary Hallway"
-	},
+/obj/machinery/door/airlock/public,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/forehall)
 "XN" = (
