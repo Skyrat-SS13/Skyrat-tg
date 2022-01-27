@@ -161,9 +161,10 @@
 	var/datum/gas_mixture/environment = my_turf.return_air()
 	var/result
 
-	if(environment?.temperature >= BODYTEMP_HEAT_DAMAGE_LIMIT || environment?.volume > WARNING_HIGH_PRESSURE) //SKYRAT EDIT CHANGE - BETTER LOCKS
+	var/pressure = environment?.return_pressure() //SKYRAT EDIT ADDITION - Micro optimisation
+	if(environment?.temperature >= BODYTEMP_HEAT_DAMAGE_LIMIT || pressure > WARNING_HIGH_PRESSURE) //SKYRAT EDIT CHANGE - BETTER LOCKS
 		result = FIRELOCK_ALARM_TYPE_HOT
-	if(environment?.temperature <= BODYTEMP_COLD_DAMAGE_LIMIT || environment?.volume < WARNING_LOW_PRESSURE) //SKYRAT EDIT CHANGE - BETTER LOCKS
+	if(environment?.temperature <= BODYTEMP_COLD_DAMAGE_LIMIT || pressure < WARNING_LOW_PRESSURE) //SKYRAT EDIT CHANGE - BETTER LOCKS
 		result = FIRELOCK_ALARM_TYPE_COLD
 	if(!result)
 		return
