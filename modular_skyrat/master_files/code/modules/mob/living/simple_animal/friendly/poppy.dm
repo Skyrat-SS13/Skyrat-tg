@@ -1,5 +1,5 @@
 /mob/living/simple_animal/pet/poppy
-	name = "Poppy, the Safety Inspector"
+	name = "Poppy the Safety Inspector"
 	desc = "Safety first!"
 	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
 	icon_state = "poppypossum"
