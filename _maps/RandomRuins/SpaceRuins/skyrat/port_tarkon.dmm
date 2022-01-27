@@ -88,7 +88,9 @@
 /obj/structure/table/rolling,
 /obj/item/storage/backpack/duffelbag/med/surgery,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/gloves/color/latex,
+/obj/item/clothing/gloves/color/latex{
+	pixel_y = 10
+	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/trauma)
 "aU" = (
@@ -297,6 +299,7 @@
 /obj/structure/table,
 /obj/item/paper/crumpled,
 /obj/effect/turf_decal/tile/blue/half,
+/obj/item/folder,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/comms)
 "cs" = (
@@ -1510,7 +1513,7 @@
 "jD" = (
 /obj/machinery/light/warm/directional/north,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/fluff/empty_sleeper/bloodied,
+/obj/effect/mob_spawn/ghost_role/human/tarkon/ensign,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon)
 "jF" = (
@@ -3435,11 +3438,11 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/power1)
 "vl" = (
-/obj/structure/closet/secure_closet/medical2,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/blue/half{
 	dir = 4
 	},
+/obj/structure/closet/crate/freezer/blood,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/trauma)
 "vm" = (
@@ -3609,6 +3612,7 @@
 /obj/effect/turf_decal/tile/blue/half{
 	dir = 8
 	},
+/obj/item/clothing/suit/toggle/labcoat/medical,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/trauma)
 "wg" = (
@@ -5026,9 +5030,12 @@
 "FR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
-/obj/item/folder/blue,
-/obj/item/pen,
 /obj/effect/turf_decal/tile/blue/half,
+/obj/item/encryptionkey/headset_tarkon,
+/obj/item/encryptionkey/headset_tarkon,
+/obj/item/encryptionkey/headset_tarkon,
+/obj/item/encryptionkey/headset_tarkon,
+/obj/item/encryptionkey/headset_tarkon,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/comms)
 "FS" = (
@@ -5907,13 +5914,13 @@
 /area/ruin/space/has_grav/port_tarkon/toolstorage)
 "KJ" = (
 /obj/structure/table,
-/obj/item/clothing/suit/toggle/labcoat/medical,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/firealarm/directional/west,
 /obj/machinery/light/dim/directional/west,
 /obj/effect/turf_decal/tile/blue/half{
 	dir = 8
 	},
+/obj/item/defibrillator,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/trauma)
 "KL" = (
@@ -6314,7 +6321,9 @@
 /obj/structure/table/rolling,
 /obj/item/storage/backpack/duffelbag/med/surgery,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/gloves/color/latex,
+/obj/item/clothing/gloves/color/latex{
+	pixel_y = 10
+	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/trauma)
 "Nr" = (
@@ -6665,7 +6674,7 @@
 /obj/machinery/computer{
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	dir = 8;
-	name = "Broken Computer"
+	name = "Financing Console"
 	},
 /obj/effect/turf_decal/tile/brown/anticorner{
 	dir = 4
@@ -7161,6 +7170,7 @@
 /obj/effect/turf_decal/tile/blue/half{
 	dir = 4
 	},
+/obj/item/folder/red,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/comms)
 "SW" = (

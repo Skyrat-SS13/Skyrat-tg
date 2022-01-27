@@ -225,11 +225,6 @@
 		qdel(src)
 		return
 
-/obj/structure/fluff/empty_sleeper/bloodied
-	name = "Occupied Sleeper"
-	desc = "A closed, occupied sleeper, bloodied handprints are seen on the inside, along with an odd, redish blur. It seems sealed shut."
-	icon_state = "sleeper-o"
-
 
 /* ----- Metal Poles (These shouldn't be in this file but there's not a better place tbh) -----*/
 //Just a re-done Tram Rail, but with all 4 directions instead of being stuck east/west - more varied placement, and a more vague name. Good for mapping support beams/antennae/etc
