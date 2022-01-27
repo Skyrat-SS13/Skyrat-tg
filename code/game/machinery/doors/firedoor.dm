@@ -6,7 +6,7 @@
 /obj/machinery/door/firedoor
 	name = "firelock"
 	desc = "Apply crowbar."
-	icon = 'icons/obj/doors/Doorfireglass.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/obj/doors/Doorfireglass.dmi'
 	icon_state = "door_open"
 	opacity = FALSE
 	density = FALSE
@@ -100,43 +100,25 @@
 	else if(!welded)
 		. += span_notice("It is closed, but could be <b>pried</b> open.")
 		. += span_notice("Hold the firelock temporarily open by prying it with <i>left-click</i> and standing next to it.")
-		//. += span_notice("Prying by <i>right-clicking</i> the firelock will open it permanently.") SKYRAT EDIT REMOVAL
+		. += span_notice("Prying by <i>right-clicking</i> the firelock will open it permanently.")
 		. += span_notice("Deconstruction would require it to be <b>welded</b> shut.")
 	else if(boltslocked)
 		. += span_notice("It is <i>welded</i> shut. The floor bolts have been locked by <b>screws</b>.")
 	else
 		. += span_notice("The bolt locks have been <i>unscrewed</i>, but the bolts themselves are still <b>wrenched</b> to the floor.")
 
-<<<<<<< HEAD
-/* //SKYRAT EDIT REMOVAL BEGIN
-=======
 /**
  * Calculates what areas we should worry about.
  *
  * This proc builds a list of areas we are in and areas we border
  * and writes it to affecting_areas.
  */
->>>>>>> 4383df09ae5 (Moves atmos checking from Fire Alarms to Fire Locks, Fire Locks now close on their own rather than area-based, a bunch of related stuff. (#62055))
 /obj/machinery/door/firedoor/proc/CalculateAffectingAreas()
 	var/list/new_affecting_areas = get_adjacent_open_areas(src) | get_area(src)
 	if(compare_list(new_affecting_areas, affecting_areas))
 		return //No changes needed
 
 	remove_from_areas()
-<<<<<<< HEAD
-	affecting_areas = get_adjacent_open_areas(src) | get_area(src)
-	for(var/I in affecting_areas)
-		var/area/A = I
-		LAZYADD(A.firedoors, src)
-*/ //SKYRAT EDIT END
-
-/obj/machinery/door/firedoor/closed
-	icon_state = "door_closed"
-	density = TRUE
-
-/* //SKYRAT EDIT REMOVAL BEGIN
-//see also turf/AfterChange for adjacency shennanigans
-=======
 	affecting_areas = new_affecting_areas
 	for(var/area/place in affecting_areas)
 		LAZYADD(place.firedoors, src)
@@ -152,7 +134,6 @@
  * Undoes everything done in the CalculateAffectingAreas() proc, to clean up prior to deletion.
  * Calls reset() first, in case any alarms need to be cleared first.
  */
->>>>>>> 4383df09ae5 (Moves atmos checking from Fire Alarms to Fire Locks, Fire Locks now close on their own rather than area-based, a bunch of related stuff. (#62055))
 /obj/machinery/door/firedoor/proc/remove_from_areas()
 	if(!affecting_areas)
 		return
@@ -164,13 +145,6 @@
 		for(var/obj/machinery/firealarm/fire_panel in place.firealarms)
 			fire_panel.set_status()
 
-<<<<<<< HEAD
-/obj/machinery/door/firedoor/Destroy()
-	remove_from_areas()
-	affecting_areas.Cut()
-	return ..()
-*/ //SKYRAT EDIT REMOVAL END
-=======
 /obj/machinery/door/firedoor/proc/check_atmos(datum/source)
 	if(!COOLDOWN_FINISHED(src, detect_cooldown))
 		return
@@ -187,9 +161,9 @@
 	var/datum/gas_mixture/environment = my_turf.return_air()
 	var/result
 
-	if(environment?.temperature >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST)
+	if(environment?.temperature >= BODYTEMP_HEAT_DAMAGE_LIMIT || environment?.volume > WARNING_HIGH_PRESSURE) //SKYRAT EDIT CHANGE - BETTER LOCKS
 		result = FIRELOCK_ALARM_TYPE_HOT
-	if(environment?.temperature <= BODYTEMP_COLD_DAMAGE_LIMIT)
+	if(environment?.temperature <= BODYTEMP_COLD_DAMAGE_LIMIT || environment?.volume < WARNING_LOW_PRESSURE) //SKYRAT EDIT CHANGE - BETTER LOCKS
 		result = FIRELOCK_ALARM_TYPE_COLD
 	if(!result)
 		return
@@ -272,7 +246,6 @@
 		digital_crowbar.use_charge(user)
 	obj_flags |= EMAGGED
 	INVOKE_ASYNC(src, .proc/open)
->>>>>>> 4383df09ae5 (Moves atmos checking from Fire Alarms to Fire Locks, Fire Locks now close on their own rather than area-based, a bunch of related stuff. (#62055))
 
 /obj/machinery/door/firedoor/Bumped(atom/movable/AM)
 	if(panel_open || operating)
@@ -428,11 +401,9 @@
 		if("closing")
 			flick("door_closing", src)
 
-/*SKYRAT EDIT REMOVAL
 /obj/machinery/door/firedoor/update_icon_state()
 	. = ..()
 	icon_state = "[base_icon_state]_[density ? "closed" : "open"]"
-*/
 
 /obj/machinery/door/firedoor/update_overlays()
 	. = ..()
@@ -564,7 +535,7 @@
 
 /obj/machinery/door/firedoor/heavy
 	name = "heavy firelock"
-	icon = 'icons/obj/doors/Doorfire.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/obj/doors/Doorfire.dmi'  //SKYRAT EDIT - ICON OVERRIDEN IN AESTHETICS MODULE
 	glass = FALSE
 	explosion_block = 2
 	assemblytype = /obj/structure/firelock_frame/heavy
@@ -579,7 +550,7 @@
 /obj/structure/firelock_frame
 	name = "firelock frame"
 	desc = "A partially completed firelock."
-	icon = 'icons/obj/doors/Doorfire.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/obj/doors/Doorfire.dmi' //SKYRAT EDIT - ICON OVERRIDEN IN AESTHETICS MODULE
 	icon_state = "frame1"
 	base_icon_state = "frame"
 	anchored = FALSE

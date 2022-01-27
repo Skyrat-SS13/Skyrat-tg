@@ -72,11 +72,6 @@
 	flags_1 = CAN_BE_DIRTY_1
 
 	var/list/cameras
-<<<<<<< HEAD
-	//var/list/firealarms SKYRAT EDIT REMOVAL
-	var/firedoors_last_closed_on = 0
-=======
->>>>>>> 4383df09ae5 (Moves atmos checking from Fire Alarms to Fire Locks, Fire Locks now close on their own rather than area-based, a bunch of related stuff. (#62055))
 
 	///Typepath to limit the areas (subtypes included) that atoms in this area can smooth with. Used for shuttles.
 	var/area/area_limited_icon_smoothing
@@ -248,7 +243,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	STOP_PROCESSING(SSobj, src)
 	QDEL_NULL(alarm_manager)
 	return ..()
-/* SKYRAT EDIT REMOVAL
+
 /**
  * Close and lock a door passed into this proc
  *
@@ -301,13 +296,9 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	for(var/obj/machinery/light/L in src)
 		L.update()
-<<<<<<< HEAD
-*/
-=======
 	for(var/obj/machinery/firealarm/firepanel in firealarms)
 		firepanel.set_status()
 
->>>>>>> 4383df09ae5 (Moves atmos checking from Fire Alarms to Fire Locks, Fire Locks now close on their own rather than area-based, a bunch of related stuff. (#62055))
 /**
  * Update the icon state of the area
  *

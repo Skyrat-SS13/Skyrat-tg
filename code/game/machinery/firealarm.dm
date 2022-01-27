@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-#define FIREALARM_COOLDOWN 80 //SKYRAT EDIT CHANGE - ORIGINAL: 96 - AESTHETIC // This define is based on the current FireAlarm.ogg, and is placed to match the running time at 9 seconds 600 milliseconds (9.6 seconds)
-
-=======
->>>>>>> 4383df09ae5 (Moves atmos checking from Fire Alarms to Fire Locks, Fire Locks now close on their own rather than area-based, a bunch of related stuff. (#62055))
 /obj/item/electronics/firealarm
 	name = "fire alarm electronics"
 	desc = "A fire alarm circuit. Can handle heat levels up to 40 degrees celsius."
@@ -10,7 +5,7 @@
 /obj/item/wallframe/firealarm
 	name = "fire alarm frame"
 	desc = "Used for building fire alarms."
-	icon = 'icons/obj/monitors.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/obj/monitors.dmi'
 	icon_state = "fire_bitem"
 	result_path = /obj/machinery/firealarm
 	pixel_shift = 26
@@ -18,7 +13,7 @@
 /obj/machinery/firealarm
 	name = "fire alarm"
 	desc = "<i>\"Pull this in case of emergency\"</i>. Thus, keep pulling it forever."
-	icon = 'icons/obj/monitors.dmi'  //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/obj/monitors.dmi'
 	icon_state = "fire0"
 	max_integrity = 250
 	integrity_failure = 0.4
@@ -42,7 +37,6 @@
 	///looping sound datum for our fire alarm siren.
 	var/datum/looping_sound/firealarm/soundloop
 
-/* SKYRAT EDIT REMOVAL
 /obj/machinery/firealarm/Initialize(mapload, dir, building)
 	. = ..()
 	if(building)
@@ -58,14 +52,12 @@
 	RegisterSignal(SSsecurity_level, COMSIG_SECURITY_LEVEL_CHANGED, .proc/check_security_level)
 	soundloop = new(src, FALSE)
 
-
 /obj/machinery/firealarm/Destroy()
 	if(my_area)
 		LAZYREMOVE(my_area.firealarms, src)
 		my_area = null
 	QDEL_NULL(soundloop)
 	return ..()
-*/
 
 /**
  * Sets the sound state, and then calls update_icon()
@@ -144,32 +136,7 @@
 		user.visible_message(span_warning("Sparks fly out of [src]!"),
 							span_notice("You override [src], disabling the speaker."))
 	playsound(src, "sparks", 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-<<<<<<< HEAD
-
-/* SKYRAT EDIT REMOVAL
-/obj/machinery/firealarm/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
-	return (exposed_temperature > T0C + 200 || exposed_temperature < BODYTEMP_COLD_DAMAGE_LIMIT) && !(obj_flags & EMAGGED) && !machine_stat
-
-/obj/machinery/firealarm/atmos_expose(datum/gas_mixture/air, exposed_temperature)
-	if(!detecting)
-		return
-	if(!triggered)
-		triggered = TRUE
-		myarea.triggered_firealarms += 1
-		update_appearance()
-	alarm()
-
-/obj/machinery/firealarm/atmos_end()
-	if(!detecting)
-		return
-	if(triggered)
-		triggered = FALSE
-		myarea.triggered_firealarms -= 1
-		update_appearance()
-*/
-=======
 	set_status()
->>>>>>> 4383df09ae5 (Moves atmos checking from Fire Alarms to Fire Locks, Fire Locks now close on their own rather than area-based, a bunch of related stuff. (#62055))
 
 /**
  * Signal handler for checking if we should update fire alarm appearance accordingly to a newly set security level
@@ -184,26 +151,15 @@
 	if(is_station_level(z))
 		update_appearance()
 
-<<<<<<< HEAD
-/*SKYRAT EDIT REMOVAL
-=======
 /**
  * Sounds the fire alarm and closes all firelocks in the area. Also tells the area to color the lights red.
  *
  * Arguments:
  * * mob/user is the user that pulled the alarm.
  */
->>>>>>> 4383df09ae5 (Moves atmos checking from Fire Alarms to Fire Locks, Fire Locks now close on their own rather than area-based, a bunch of related stuff. (#62055))
 /obj/machinery/firealarm/proc/alarm(mob/user)
 	if(!is_operational)
 		return
-<<<<<<< HEAD
-	COOLDOWN_START(src, last_alarm, FIREALARM_COOLDOWN)
-	var/area/area = get_area(src)
-	area.firealert(src)
-	//playsound(loc, 'sound/machines/FireAlarm.ogg', 96) ORIGINAL
-	playsound(loc, alarm_sound, 75) //SKYRAT EDIT CHANGE - AESTHETICS
-=======
 
 	if(my_area.fire)
 		return //area alarm already active
@@ -211,7 +167,6 @@
 	my_area.set_fire_alarm_effect()
 	for(var/obj/machinery/door/firedoor/firelock in my_area.firedoors)
 		firelock.activate(FIRELOCK_ALARM_TYPE_GENERIC)
->>>>>>> 4383df09ae5 (Moves atmos checking from Fire Alarms to Fire Locks, Fire Locks now close on their own rather than area-based, a bunch of related stuff. (#62055))
 	if(user)
 		log_game("[user] triggered a fire alarm at [COORD(src)]")
 	soundloop.start() //Manually pulled fire alarms will make the sound, rather than the doors.
@@ -238,14 +193,6 @@
 		return
 	. = ..()
 	add_fingerprint(user)
-<<<<<<< HEAD
-	var/area/area = get_area(src)
-	if(area.fire)
-		reset(user)
-	else
-		alarm(user)
-*/
-=======
 	alarm(user)
 
 /obj/machinery/firealarm/attack_hand_secondary(mob/user, list/modifiers)
@@ -254,7 +201,6 @@
 	add_fingerprint(user)
 	reset(user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
->>>>>>> 4383df09ae5 (Moves atmos checking from Fire Alarms to Fire Locks, Fire Locks now close on their own rather than area-based, a bunch of related stuff. (#62055))
 
 /obj/machinery/firealarm/attack_ai(mob/user)
 	return attack_hand(user)
@@ -265,13 +211,9 @@
 /obj/machinery/firealarm/attack_robot(mob/user)
 	return attack_hand(user)
 
-<<<<<<< HEAD
-/*SKYRAT EDIT REMOVAL
-=======
 /obj/machinery/firealarm/attack_robot_secondary(mob/user)
 	return attack_hand_secondary(user)
 
->>>>>>> 4383df09ae5 (Moves atmos checking from Fire Alarms to Fire Locks, Fire Locks now close on their own rather than area-based, a bunch of related stuff. (#62055))
 /obj/machinery/firealarm/attackby(obj/item/tool, mob/living/user, params)
 	add_fingerprint(user)
 
@@ -367,7 +309,6 @@
 					qdel(src)
 					return
 	return ..()
-*/
 
 /obj/machinery/firealarm/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	if((buildstage == 0) && (the_rcd.upgrade & RCD_UPGRADE_SIMPLE_CIRCUITS))
@@ -396,18 +337,10 @@
 		deconstruct()
 	return ..()
 
-/* SKYRAT EDIT REMOVAL
 /obj/machinery/firealarm/atom_break(damage_flag)
 	if(buildstage == 0) //can't break the electronics if there isn't any inside.
 		return
-<<<<<<< HEAD
-	. = ..()
-	if(.)
-		LAZYREMOVE(myarea.firealarms, src)
-*/
-=======
 	return ..()
->>>>>>> 4383df09ae5 (Moves atmos checking from Fire Alarms to Fire Locks, Fire Locks now close on their own rather than area-based, a bunch of related stuff. (#62055))
 
 /obj/machinery/firealarm/deconstruct(disassembled = TRUE)
 	if(!(flags_1 & NODECONSTRUCT_1))
