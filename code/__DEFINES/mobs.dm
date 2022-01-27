@@ -514,23 +514,30 @@
 
 // Mob Overlays Indexes
 /// Total number of layers for mob overlays
-#define TOTAL_LAYERS 31 //KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
+#define TOTAL_LAYERS 36 //KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
 /// Mutations layer - Tk headglows, cold resistance glow, etc
-#define MUTATIONS_LAYER 31 
+#define MUTATIONS_LAYER 36
 /// Mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODY_BEHIND_LAYER 30
+#define BODY_BEHIND_LAYER 35
 /// Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
-#define BODYPARTS_LAYER 29
+#define BODYPARTS_LAYER 34
 /// Mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_ADJ_LAYER 28
+#define BODY_ADJ_LAYER 33
 /// Underwear, undershirts, socks, eyes, lips(makeup)
-#define BODY_LAYER 27
+#define BODY_LAYER 32
 /// Mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define FRONT_MUTATIONS_LAYER 26
+#define FRONT_MUTATIONS_LAYER 31
 /// Damage indicators (cuts and burns)
-#define DAMAGE_LAYER 25
+#define DAMAGE_LAYER 30
 /// Jumpsuit clothing layer
-#define UNIFORM_LAYER 24
+#define UNIFORM_LAYER 29
+//SKYRAT EDIT ADDITION BEGIN - BUMPED UP ^
+#define ANUS_LAYER 28
+#define VAGINA_LAYER 27
+#define PENIS_LAYER 26
+#define NIPPLES_LAYER 25
+#define BANDAGE_LAYER 24
+//SKYRAT EDIT ADDITION END
 /// ID card layer (might be deprecated)
 #define ID_LAYER 23
 /// ID card layer
@@ -604,8 +611,8 @@
 
 //used by canUseTopic()
 /// If silicons need to be next to the atom to use this
-#define BE_CLOSE TRUE 
-/// If other mobs (monkeys, aliens, etc) can use this 
+#define BE_CLOSE TRUE
+/// If other mobs (monkeys, aliens, etc) can use this
 #define NO_DEXTERITY TRUE // I had to change 20+ files because some non-dnd-playing fuckchumbis can't spell "dexterity"
 // If telekinesis you can use it from a distance
 #define NO_TK TRUE
