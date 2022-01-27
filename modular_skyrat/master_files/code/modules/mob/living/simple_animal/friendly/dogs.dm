@@ -187,6 +187,7 @@
 		emote("exclaim")
 		set_light_on(TRUE)
 
+		add_fingerprint(user, TRUE)
 		visible_message(span_boldwarning("[user] swipes a card through [src]!"), span_notice("You overload [src]s internal reactor..."))
 		addtimer(CALLBACK(src, .proc/explode), 50 SECONDS)
 
