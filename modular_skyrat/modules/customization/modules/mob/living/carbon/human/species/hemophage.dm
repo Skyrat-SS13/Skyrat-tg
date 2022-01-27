@@ -17,6 +17,7 @@
 		TRAIT_NOHUNGER,
 		TRAIT_NOBREATH,
 		TRAIT_VIRUSIMMUNE,
+		TRAIT_CAN_USE_FLIGHT_POTION,
 	)
 	inherent_biotypes = MOB_UNDEAD | MOB_HUMANOID
 	mutant_bodyparts = list("wings" = "None")
