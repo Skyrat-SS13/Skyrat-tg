@@ -637,12 +637,12 @@
 
 /datum/supply_pack/security/armory/swat
 	name = "SWAT Crate"
-	desc = "Contains two fullbody sets of tough, fireproof, pressurized suits designed in a joint effort by IS-ERI and Nanotrasen. Each set contains a suit, helmet, mask, combat belt, and combat gloves. Requires Armory access to open."
-	cost = CARGO_CRATE_VALUE * 12
+	desc = "Contains two fullbody sets of tough, fireproof suits designed in a joint effort by IS-ERI and Nanotrasen. Each set contains a suit, helmet, mask, combat belt, and combat gloves. Requires Armory access to open."
+	cost = CARGO_CRATE_VALUE * 7
 	contains = list(/obj/item/clothing/head/helmet/swat/nanotrasen,
 					/obj/item/clothing/head/helmet/swat/nanotrasen,
-					/obj/item/clothing/suit/space/swat,
-					/obj/item/clothing/suit/space/swat,
+					/obj/item/clothing/suit/armor/swat,
+					/obj/item/clothing/suit/armor/swat,
 					/obj/item/clothing/mask/gas/sechailer/swat,
 					/obj/item/clothing/mask/gas/sechailer/swat,
 					/obj/item/storage/belt/military/assault,
@@ -1317,6 +1317,14 @@
 	crate_type = /obj/structure/closet/crate/secure/plasma
 	dangerous = TRUE
 
+/datum/supply_pack/medical/cmoturtlenecks
+	name = "Chief Medical Officer Turtlenecks"
+	desc = "Contains the CMO's turtleneck and turtleneck skirt. Requires CMO access to open."
+	cost = CARGO_CRATE_VALUE * 2
+	access = ACCESS_CMO
+	contains = list(/obj/item/clothing/under/rank/medical/chief_medical_officer/turtleneck,
+					/obj/item/clothing/under/rank/medical/chief_medical_officer/turtleneck/skirt)
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Science /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -1481,9 +1489,9 @@
 	cost = CARGO_CRATE_VALUE * 3
 	access = ACCESS_ROBOTICS
 	access_view = ACCESS_ROBOTICS
-	contains = list(/obj/item/mod/construction/core,
-		/obj/item/mod/construction/core,
-		/obj/item/mod/construction/core)
+	contains = list(/obj/item/mod/core/standard,
+		/obj/item/mod/core/standard,
+		/obj/item/mod/core/standard)
 	crate_name = "MOD core crate"
 	crate_type = /obj/structure/closet/crate/secure/science
 

@@ -15,3 +15,9 @@
 	icon_state = "syn_cypherkey"
 	channels = list(RADIO_CHANNEL_GUILD = 1)
 	independent = TRUE
+
+/obj/item/encryptionkey/headset_tarkon
+	name = "tarkon industry radio encryption key"
+	icon_state = "cargo_cypherkey"
+	channels = list(RADIO_CHANNEL_TARKON = 1)
+	independent = TRUE

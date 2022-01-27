@@ -642,7 +642,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/donator/sunflower
 	name = "Sunflower"
-	item_path = /obj/item/grown/sunflower
+	item_path = /obj/item/food/grown/sunflower
 
 /datum/loadout_item/head/donator/rainbow_bunch
 	name = "Rainbow Bunch"

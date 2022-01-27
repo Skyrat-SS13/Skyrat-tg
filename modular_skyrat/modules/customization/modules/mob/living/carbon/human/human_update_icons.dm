@@ -69,17 +69,21 @@
 			uniform_overlay = U.build_worn_icon(default_layer = UNIFORM_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_state = target_overlay, override_icon = icon_file, override_x_center = x_override, mutant_styles = applied_style, species = dna.species.species_clothing_path)
 
 		if(U.accessory_overlay)
-			if(STYLE_TESHARI)
+			var/special_accessory_style = FALSE
+			if(applied_style == STYLE_TESHARI)
 				var/static/list/teshari_accessory_states = icon_states(TESHARI_ACCESSORIES_ICON)
 				if(U.accessory_overlay.icon_state in teshari_accessory_states)
 					U.accessory_overlay.icon = TESHARI_ACCESSORIES_ICON
+					special_accessory_style = TRUE
+			// Apply an offset only if we didn't apply a special accessory style.
+			if(!special_accessory_style && (OFFSET_ACCESSORY in dna.species.offset_features))
+				U.accessory_overlay.pixel_x = dna.species.offset_features[OFFSET_ACCESSORY][1]
+				U.accessory_overlay.pixel_y = dna.species.offset_features[OFFSET_ACCESSORY][2]
 
 		if(OFFSET_UNIFORM in dna.species.offset_features)
 			uniform_overlay.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
 			uniform_overlay.pixel_y += dna.species.offset_features[OFFSET_UNIFORM][2]
-			if(!STYLE_TESHARI)
-				U.accessory_overlay?.pixel_x = dna.species.offset_features[OFFSET_ACCESSORY][1]
-				U.accessory_overlay?.pixel_y = dna.species.offset_features[OFFSET_ACCESSORY][2]
+
 		overlays_standing[UNIFORM_LAYER] = uniform_overlay
 
 	apply_overlay(UNIFORM_LAYER)
@@ -382,7 +386,7 @@
 
 /**
  * Generates a species-specific clothing icon.
- * 
+ *
  * Arguments:
  * * file_to_use - Icon file to use for clothing sprite
  * * state_to_use - Icon state to use within file_to_use
@@ -392,7 +396,7 @@
  */
 /obj/item/clothing/wear_species_version(file_to_use, state_to_use, layer, species, default_file_to_use)
 	LAZYINITLIST(GLOB.species_clothing_icons[species])
-	var/icon/species_clothing_icon = GLOB.species_clothing_icons[species]["[file_to_use]-[state_to_use]"] // Check if the icon we want already exists
+	var/icon/species_clothing_icon = GLOB.species_clothing_icons[species][get_species_clothing_key(file_to_use, state_to_use)] // Check if the icon we want already exists
 	if(!species_clothing_icon) 	// Create standing/laying icons if they don't exist
 		generate_species_clothing(file_to_use, state_to_use, species, default_file_to_use)
-	return mutable_appearance(GLOB.species_clothing_icons[species]["[file_to_use]-[state_to_use]"], layer = -layer)
+	return mutable_appearance(GLOB.species_clothing_icons[species][get_species_clothing_key(file_to_use, state_to_use)], layer = -layer)

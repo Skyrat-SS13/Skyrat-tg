@@ -200,7 +200,7 @@
 	name = "Memento Mori"
 	desc = "Bind your life to the pendant."
 
-/datum/action/item_action/hands_free/memento_mori/Trigger()
+/datum/action/item_action/hands_free/memento_mori/Trigger(trigger_flags)
 	var/obj/item/clothing/neck/necklace/memento_mori/MM = target
 	if(!MM.active_owner)
 		if(ishuman(owner))
@@ -503,7 +503,7 @@
 			if((methods & INGEST) && show_message)
 				to_chat(exposed_carbon, span_notice("<i>You feel nothing but a terrible aftertaste.</i>"))
 			return
-		if(exposed_carbon.dna.species.has_innate_wings)
+		if(exposed_mob.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS)) //Skyrat Edit
 			to_chat(exposed_carbon, span_userdanger("A terrible pain travels down your back as your wings change shape!"))
 		else
 			to_chat(exposed_carbon, span_userdanger("A terrible pain travels down your back as wings burst out!"))
@@ -633,7 +633,6 @@
 	. += span_notice("Berserk mode is [berserk_charge]% charged.")
 
 /obj/item/clothing/head/hooded/berserker/process(delta_time)
-	. = ..()
 	if(berserk_active)
 		berserk_charge = clamp(berserk_charge - CHARGE_DRAINED_PER_SECOND * delta_time, 0, MAX_BERSERK_CHARGE)
 	if(!berserk_charge)

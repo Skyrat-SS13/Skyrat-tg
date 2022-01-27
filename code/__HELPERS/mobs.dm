@@ -1,3 +1,11 @@
+//check_target_facings() return defines
+/// Two mobs are facing the same direction
+#define FACING_SAME_DIR 1
+/// Two mobs are facing each others 
+#define FACING_EACHOTHER 2
+/// Two mobs one is facing a person, but the other is perpendicular 
+#define FACING_INIT_FACING_TARGET_TARGET_FACING_PERPENDICULAR 3 //Do I win the most informative but also most stupid define award?
+
 /proc/random_blood_type()
 	return pick(4;"O-", 36;"O+", 3;"A-", 28;"A+", 1;"B-", 20;"B+", 1;"AB-", 5;"AB+")
 
@@ -199,7 +207,7 @@ GLOBAL_LIST_EMPTY(species_list)
 	var/user_loc = user.loc
 
 	var/drifting = FALSE
-	if(!user.Process_Spacemove(0) && user.inertia_dir)
+	if(SSmove_manager.processing_on(user, SSspacedrift))
 		drifting = TRUE
 
 	var/target_loc = target.loc
@@ -232,7 +240,7 @@ GLOBAL_LIST_EMPTY(species_list)
 		if(!QDELETED(progbar))
 			progbar.update(world.time - starttime)
 
-		if(drifting && !user.inertia_dir)
+		if(drifting && !SSmove_manager.processing_on(user, SSspacedrift))
 			drifting = FALSE
 			user_loc = user.loc
 
@@ -294,7 +302,7 @@ GLOBAL_LIST_EMPTY(species_list)
 	var/atom/user_loc = user.loc
 
 	var/drifting = FALSE
-	if(!user.Process_Spacemove(0) && user.inertia_dir)
+	if(SSmove_manager.processing_on(user, SSspacedrift))
 		drifting = TRUE
 
 	var/holding = user.get_active_held_item()
@@ -315,7 +323,7 @@ GLOBAL_LIST_EMPTY(species_list)
 		if(!QDELETED(progbar))
 			progbar.update(world.time - starttime)
 
-		if(drifting && !user.inertia_dir)
+		if(drifting && !SSmove_manager.processing_on(user, SSspacedrift))
 			drifting = FALSE
 			user_loc = user.loc
 
@@ -360,7 +368,7 @@ GLOBAL_LIST_EMPTY(species_list)
 		time *= user.cached_multiplicative_actions_slowdown
 
 	var/drifting = FALSE
-	if(!user.Process_Spacemove(0) && user.inertia_dir)
+	if(SSmove_manager.processing_on(user, SSspacedrift))
 		drifting = TRUE
 
 	var/list/originalloc = list()
@@ -393,7 +401,7 @@ GLOBAL_LIST_EMPTY(species_list)
 			. = FALSE
 			break
 
-		if(drifting && !user.inertia_dir)
+		if(drifting && !SSmove_manager.processing_on(user, SSspacedrift))
 			drifting = FALSE
 			user_loc = user.loc
 
@@ -879,3 +887,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	else
 		. = invoked_callback.Invoke()
 	usr = temp
+
+#undef FACING_SAME_DIR
+#undef FACING_EACHOTHER
+#undef FACING_INIT_FACING_TARGET_TARGET_FACING_PERPENDICULAR
