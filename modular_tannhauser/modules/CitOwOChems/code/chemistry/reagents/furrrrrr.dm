@@ -12,6 +12,7 @@
 	taste_description = "dewicious degenyewacy"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	inverse_chem_val 		= 0
+	purity = 0.9
 	var/obj/item/organ/tongue/nT
 	chemical_flags = REAGENT_DONOTSPLIT | REAGENT_CAN_BE_SYNTHESIZED
 	ph = 5
@@ -79,7 +80,7 @@
 	..()
 
 /datum/reagent/OwO/furranium/on_mob_delete(mob/living/carbon/M)
-	if(cached_purity < 0.95)//Only permanent if you're a good chemist.
+	if(creation_purity < 0.95)//Only permanent if you're a good chemist.
 		nT = M.getorganslot(ORGAN_SLOT_TONGUE)
 		nT.Remove()
 		qdel(nT)
