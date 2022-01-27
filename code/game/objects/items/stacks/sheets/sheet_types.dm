@@ -407,7 +407,7 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	null, \
 	new/datum/stack_recipe("blindfold", /obj/item/clothing/glasses/blindfold, 2), \
 	new/datum/stack_recipe("eyepatch wrap", /obj/item/clothing/glasses/eyepatch/wrap, 2), /*SKYRAT EDIT ADDITION*/ \
-	new/datum/stack_recipe("eyepatch", /obj/item/clothing/glasses/eyepatch, 2), \
+	new/datum/stack_recipe("eyepatch", /obj/item/clothing/glasses/eyepatch, 2), \ /*SKYRAT EDIT ADDITION*/
 	null, \
 	new/datum/stack_recipe("19x19 canvas", /obj/item/canvas/nineteen_nineteen, 3), \
 	new/datum/stack_recipe("23x19 canvas", /obj/item/canvas/twentythree_nineteen, 4), \
