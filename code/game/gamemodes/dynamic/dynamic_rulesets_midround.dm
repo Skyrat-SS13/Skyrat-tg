@@ -67,6 +67,16 @@
 			if (M.mind.assigned_role.title in restricted_roles) // Does their job allow it?
 				trimmed_list.Remove(M)
 				continue
+			// SKYRAT EDIT ADDITION - PROTECTED JOBS
+			if(M.mind.assigned_role.antagonist_restricted)
+				if(M.mind.assigned_role.restricted_antagonists)
+					if(antag_flag in M.mind.assigned_role.restricted_antagonists)
+						trimmed_list.Remove(M)
+						continue
+				else //Assume it's all antagonist roles.
+					trimmed_list.Remove(M)
+					continue
+			// SKYRAT EDIT END
 			if ((exclusive_roles.len > 0) && !(M.mind.assigned_role.title in exclusive_roles)) // Is the rule exclusive to their job?
 				trimmed_list.Remove(M)
 				continue
@@ -200,24 +210,6 @@
 		JOB_PRISONER,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
-		// SKYRAT EDIT START - More protected roles
-		JOB_NT_REP,
-		JOB_CHIEF_ENGINEER,
-		JOB_CHIEF_MEDICAL_OFFICER,
-		JOB_RESEARCH_DIRECTOR,
-		JOB_QUARTERMASTER,
-		JOB_BLUESHIELD,
-		JOB_SECURITY_SERGEANT,
-		JOB_SECURITY_MEDIC,
-		JOB_CORRECTIONS_OFFICER,
-		JOB_CIVIL_DISPUTES_OFFICER,
-		JOB_ORDERLY,
-		JOB_BOUNCER,
-		JOB_CUSTOMS_AGENT,
-		JOB_ENGINEERING_GUARD,
-		JOB_SCIENCE_GUARD,
-		JOB_VANGUARD_OPERATIVE,
-		// SKYRAT EDIT END
 	)
 	restricted_roles = list(
 		JOB_AI,
@@ -301,23 +293,6 @@
 		JOB_RESEARCH_DIRECTOR,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
-		// SKYRAT EDIT START - More protected roles
-		JOB_NT_REP,
-		JOB_CHIEF_ENGINEER,
-		JOB_CHIEF_MEDICAL_OFFICER,
-		JOB_QUARTERMASTER,
-		JOB_BLUESHIELD,
-		JOB_SECURITY_SERGEANT,
-		JOB_SECURITY_MEDIC,
-		JOB_CORRECTIONS_OFFICER,
-		JOB_CIVIL_DISPUTES_OFFICER,
-		JOB_ORDERLY,
-		JOB_BOUNCER,
-		JOB_CUSTOMS_AGENT,
-		JOB_ENGINEERING_GUARD,
-		JOB_SCIENCE_GUARD,
-		JOB_VANGUARD_OPERATIVE,
-		// SKYRAT EDIT END
 	)
 	required_candidates = 3
 	weight = 2
@@ -389,11 +364,6 @@
 		JOB_SCIENTIST,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
-		// SKYRAT EDIT START - More enemy roles
-		JOB_DETECTIVE,
-		JOB_CAPTAIN,
-		JOB_BLUESHIELD,
-		// SKYRAT EDIT END
 	)
 	exclusive_roles = list(JOB_AI)
 	required_enemies = list(4,4,4,4,4,4,2,2,2,0)
@@ -562,24 +532,6 @@
 		JOB_PRISONER,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
-		// SKYRAT EDIT START - More protected roles
-		JOB_NT_REP,
-		JOB_CHIEF_ENGINEER,
-		JOB_CHIEF_MEDICAL_OFFICER,
-		JOB_RESEARCH_DIRECTOR,
-		JOB_QUARTERMASTER,
-		JOB_BLUESHIELD,
-		JOB_SECURITY_SERGEANT,
-		JOB_SECURITY_MEDIC,
-		JOB_CORRECTIONS_OFFICER,
-		JOB_CIVIL_DISPUTES_OFFICER,
-		JOB_ORDERLY,
-		JOB_BOUNCER,
-		JOB_CUSTOMS_AGENT,
-		JOB_ENGINEERING_GUARD,
-		JOB_SCIENCE_GUARD,
-		JOB_VANGUARD_OPERATIVE,
-		// SKYRAT EDIT END
 	)
 	restricted_roles = list(
 		JOB_AI,
@@ -1042,21 +994,6 @@
 		JOB_PRISONER,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
-		// SKYRAT EDIT START - RESTRICTING ROLES
-		JOB_NT_REP,
-		JOB_QUARTERMASTER,
-		JOB_BLUESHIELD,
-		JOB_SECURITY_SERGEANT,
-		JOB_SECURITY_MEDIC,
-		JOB_CORRECTIONS_OFFICER,
-		JOB_CIVIL_DISPUTES_OFFICER,
-		JOB_ORDERLY,
-		JOB_BOUNCER,
-		JOB_CUSTOMS_AGENT,
-		JOB_ENGINEERING_GUARD,
-		JOB_SCIENCE_GUARD,
-		JOB_VANGUARD_OPERATIVE,
-		// SKYRAT EDIT END
 	)
 	restricted_roles = list(
 		JOB_AI,
