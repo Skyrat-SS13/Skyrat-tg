@@ -42,5 +42,6 @@
 	desc = "Named after the infamous collector of souls - the believer bundle, a collection of items to ensure you get that payment on time..."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/believer
 	cost = 35
+	progression_minimum = 30 MINUTES //+5 minutes for the cqc
 
 

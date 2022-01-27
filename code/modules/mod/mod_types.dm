@@ -283,8 +283,8 @@
 		/obj/item/mod/module/holster,
 	)
 
-/obj/item/mod/control/pre_equipped/chrono
-	theme = /datum/mod_theme/chrono
+/obj/item/mod/control/pre_equipped/timeline
+	theme = /datum/mod_theme/timeline
 	applied_core = /obj/item/mod/core/infinite
 	initial_modules = list(
 		/obj/item/mod/module/eradication_lock,
