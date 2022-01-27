@@ -28,7 +28,7 @@
 		else if(P.client?.prefs && !P.client.prefs.read_preference(/datum/preference/toggle/be_antag))
 			candidates.Remove(P)
 			continue
-		else if(is_banned_from(P.client.ckey, BAN_ANTAGONIST))
+		else if(is_banned_from(P.client?.ckey, BAN_ANTAGONIST))
 			candidates.Remove(P)
 			continue
 		// SKYRAT EDIT END
