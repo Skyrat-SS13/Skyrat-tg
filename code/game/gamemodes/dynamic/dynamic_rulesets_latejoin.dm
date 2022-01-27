@@ -25,7 +25,7 @@
 			else //Assume it's all antagonist roles.
 				candidates.Remove(P)
 				continue
-		else if(!P.client.prefs?.read_preference(/datum/preference/toggle/be_antag))
+		else if(P.client?.prefs && !P.client.prefs.read_preference(/datum/preference/toggle/be_antag))
 			candidates.Remove(P)
 			continue
 		else if(is_banned_from(P.client.ckey, BAN_ANTAGONIST))
