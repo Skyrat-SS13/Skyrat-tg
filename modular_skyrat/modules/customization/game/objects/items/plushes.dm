@@ -297,7 +297,7 @@
 
 /obj/item/toy/plush/xixi
 	name = "familiar looking harpy plushie"
-	desc = "A plushie depicting a bright-red and oddly familiar looking harpy! The tag on the back lists distrubutor information, and a tagline telling you how it'll add a little 'skree' to your daily grind."
+	desc = "A plushie depicting a bright-red and oddly familiar looking harpy! The tag on the back lists distributor information and a tagline telling you how it'll add a little 'skree' to your daily grind."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_xixi"
 	inhand_icon_state = "plushie_xixi"
