@@ -125,6 +125,23 @@
 	name = "Witch Wing"
 	icon_state = "witchwing"
 
+/datum/sprite_accessory/wings/moth/rosy
+	name = "Rosy"
+	icon_state = "rosy"
+
+/datum/sprite_accessory/wings/moth/featherful // Is actually 'feathery' on upstream
+	name = "Featherful"
+	icon_state = "featherful"
+
+/datum/sprite_accessory/wings/moth/brown
+	name = "Brown"
+	icon_state = "brown"
+
+/datum/sprite_accessory/wings/moth/plasmafire
+	name = "Plasmafire"
+	icon_state = "plasmafire"
+
+
 /datum/sprite_accessory/wings/mammal
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/wings.dmi'
 	default_color = DEFAULT_PRIMARY

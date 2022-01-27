@@ -421,12 +421,12 @@
 	uniform = /obj/item/clothing/under/color/white
 	suit_store = /obj/item/tank/internals/oxygen
 	mask = /obj/item/clothing/mask/breath
-	back = /obj/item/mod/control/pre_equipped/chrono
+	back = /obj/item/mod/control/pre_equipped/timeline
 
 /datum/outfit/chrono_agent/post_equip(mob/living/carbon/human/agent, visualsOnly)
 	. = ..()
-	var/obj/item/mod/control/mod = agent.back
-	var/obj/item/mod/module/eradication_lock/lock = locate(/obj/item/mod/module/eradication_lock) in mod.modules
+	var/obj/item/mod/control/pre_equipped/timeline = agent.back
+	var/obj/item/mod/module/eradication_lock/lock = locate(/obj/item/mod/module/eradication_lock) in timeline.modules
 	lock.true_owner_ckey = agent.ckey
 
 /datum/outfit/debug //Debug objs plus MODsuit
