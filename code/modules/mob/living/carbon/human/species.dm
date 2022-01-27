@@ -2206,6 +2206,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	else
 		wings_icon = wings_icons[1]
 	var/obj/item/organ/external/wings/functional/wings = new(null, wings_icon, H.body_type)
+	// SKYRAT EDIT START - Fixes the loss of wings to just run the insert twice
+	if(H.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS))
+		wings.Insert(H)
+	// SKYRAT EDIT END
 	wings.Insert(H)
 	handle_mutant_bodyparts(H)
 /**

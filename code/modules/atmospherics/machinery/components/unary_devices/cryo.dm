@@ -70,7 +70,7 @@
 	density = TRUE
 	max_integrity = 350
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 100, BOMB = 0, BIO = 100, FIRE = 30, ACID = 30)
-	layer = MOB_LAYER
+	layer = MOB_LAYER - 0.2 //SKYRAT EDIT - Fixing the opacity of cryo cells - ORIGINAL: layer = MOB_LAYER
 	state_open = FALSE
 	circuit = /obj/item/circuitboard/machine/cryo_tube
 	pipe_flags = PIPING_ONE_PER_TURF | PIPING_DEFAULT_LAYER_ONLY
