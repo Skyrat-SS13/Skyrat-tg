@@ -195,7 +195,11 @@
 	message.plane = RUNECHAT_PLANE
 	message.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA | KEEP_APART
 	message.alpha = 0
-	message.pixel_y = (owner.maptext_height = owner.maptext_height) //SKYRAT EDIT `owner.maptext_height`
+	//SKYRAT EDIT `message.pixel_y = owner.maptext_height`
+	var/y_offset = owner.maptext_height
+	owner.maptext_height = y_offset
+	message.pixel_y = owner.maptext_height
+	//SKYRAT EDIT END
 	message.pixel_x = (owner.maptext_width * 0.5) - 16
 	message.maptext_width = CHAT_MESSAGE_WIDTH
 	message.maptext_height = mheight
