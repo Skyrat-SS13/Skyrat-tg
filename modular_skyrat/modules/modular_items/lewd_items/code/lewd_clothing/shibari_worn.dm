@@ -202,6 +202,7 @@
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_gloves.dmi'
 	body_parts_covered = NONE
 	strip_delay = 100
+	breakouttime = 5 SECONDS
 	item_flags = DROPDEL
 
 	greyscale_config = /datum/greyscale_config/shibari_clothes/hands
@@ -229,23 +230,6 @@
 	for(var/obj/item in contents)
 		item.forceMove(get_turf(src))
 	. = ..()
-
-/obj/item/clothing/gloves/shibari_hands/equipped(mob/user, slot)
-	. = ..()
-	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, .proc/handle_take_off, user)
-
-
-/obj/item/clothing/gloves/shibari_hands/proc/handle_take_off(datum/source, mob/user)
-	SIGNAL_HANDLER
-	INVOKE_ASYNC(src, .proc/handle_take_off_async, user)
-	return COMPONENT_CANCEL_ATTACK_CHAIN
-
-/obj/item/clothing/gloves/shibari_hands/proc/handle_take_off_async(mob/user)
-	if(ishuman(user))
-		var/mob/living/carbon/human/hooman = user
-		if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
-			dropped(user)
-
 
 /obj/item/clothing/gloves/shibari_hands/ComponentInitialize()
 	. = ..()
