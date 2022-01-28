@@ -515,10 +515,10 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral,
-/obj/structure/filingcabinet/security,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
+/obj/machinery/vending/wardrobe/det_wardrobe,
 /turf/open/floor/iron/dark,
 /area/security/detectives_office)
 "abY" = (
@@ -3188,6 +3188,25 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/bot,
+/obj/structure/rack,
+/obj/item/clothing/head/helmet/sec{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/head/helmet/sec,
+/obj/item/clothing/head/helmet/sec{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/clothing/suit/armor/vest/security{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/suit/armor/vest/security,
+/obj/item/clothing/suit/armor/vest/security{
+	pixel_x = 3;
+	pixel_y = -3
+	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "akE" = (
@@ -3533,7 +3552,6 @@
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "aly" = (
-/obj/structure/rack,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -3548,7 +3566,8 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/storage/box/armament_tokens_energy,
+/obj/structure/rack/gunrack,
+/obj/effect/spawner/armory_spawn/microfusion,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "alz" = (
@@ -3704,7 +3723,8 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/smartgun,
+/obj/structure/rack/gunrack,
+/obj/effect/spawner/armory_spawn/shotguns,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "alT" = (
@@ -5304,6 +5324,9 @@
 /obj/structure/table,
 /obj/item/paper_bin,
 /obj/item/pen,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/south{
+	pixel_x = 30
+	},
 /turf/open/floor/iron/dark,
 /area/security/detectives_office)
 "art" = (
@@ -8056,7 +8079,11 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/secure_closet/smartgun,
+/obj/structure/closet/ammunitionlocker/useful,
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "aCD" = (
@@ -8598,33 +8625,12 @@
 /turf/open/floor/iron/dark,
 /area/security/warden)
 "aEX" = (
-/obj/item/storage/box/rubbershot{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/rubbershot{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/rubbershot,
-/obj/item/storage/box/rubbershot,
-/obj/item/storage/box/rubbershot{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/storage/box/rubbershot{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/structure/closet/secure_closet{
-	name = "shotgun rubber rounds";
-	req_access_txt = "1"
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/secure_closet/smartgun,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "aEZ" = (
@@ -21893,7 +21899,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/item/key/security,
+/obj/item/grenade/barrier{
+	pixel_x = 8
+	},
 /obj/item/key/security,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
@@ -30837,6 +30845,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/item/clothing/accessory/badge/holo/warden,
 /turf/open/floor/iron/dark,
 /area/security/warden)
 "coW" = (
@@ -33875,6 +33884,7 @@
 /obj/effect/spawner/random/contraband/armory,
 /obj/effect/spawner/random/maintenance/three,
 /obj/machinery/power/apc/auto_name/directional/south,
+/obj/item/gun/ballistic/rifle/boltaction,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "czZ" = (
@@ -34003,13 +34013,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/maintenance/fore)
-"cBm" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/grille,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
-/area/maintenance/port/aft)
 "cBn" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/computer/security/telescreen/prison{
@@ -36194,7 +36197,6 @@
 /obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/item/hand_labeler,
-/obj/item/taperecorder,
 /turf/open/floor/carpet/green,
 /area/security/detectives_office)
 "cNz" = (
@@ -36204,8 +36206,8 @@
 "cNA" = (
 /obj/structure/table/wood,
 /obj/item/clipboard,
-/obj/item/folder/red,
-/obj/item/clothing/glasses/sunglasses,
+/obj/item/clothing/accessory/badge,
+/obj/item/clothing/accessory/badge/holo/detective,
 /turf/open/floor/carpet/green,
 /area/security/detectives_office)
 "cNC" = (
@@ -48287,13 +48289,21 @@
 /turf/open/floor/iron/dark,
 /area/commons/storage/primary)
 "izm" = (
+/obj/structure/closet/secure_closet/detective,
+/obj/item/tape,
+/obj/item/tape,
+/obj/item/tape,
+/obj/item/taperecorder,
+/obj/item/folder/yellow{
+	name = "Detective's Findings"
+	},
+/obj/item/clothing/glasses/sunglasses,
+/obj/item/camera/detective,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral,
-/obj/effect/decal/cleanable/cobweb,
 /obj/machinery/airalarm/directional/west,
-/obj/machinery/vending/wardrobe/det_wardrobe,
 /turf/open/floor/iron/dark,
 /area/security/detectives_office)
 "izy" = (
@@ -52636,13 +52646,6 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/airlock/security{
-	aiControlDisabled = 1;
-	id_tag = "justicedoor";
-	name = "Justice Chamber";
-	req_access_txt = "3"
-	},
-/obj/effect/mapping_helpers/airlock/locked,
 /obj/structure/cable,
 /obj/machinery/button/door/directional/west{
 	id = "justicedoor";
@@ -52650,6 +52653,12 @@
 	normaldoorcontrol = 1;
 	req_access_txt = "3";
 	specialfunctions = 4
+	},
+/obj/machinery/door/airlock/security{
+	aiControlDisabled = 1;
+	id_tag = "prisonereducation";
+	name = "Prisoner Education Chamber";
+	req_access_txt = "3"
 	},
 /turf/open/floor/iron/dark,
 /area/security/execution/education)
@@ -55897,11 +55906,9 @@
 /turf/open/floor/iron/showroomfloor,
 /area/command/heads_quarters/cmo)
 "lQa" = (
-/obj/structure/closet/secure_closet/detective,
-/obj/structure/reagent_dispensers/wall/peppertank/directional/north,
 /obj/structure/cable,
-/obj/item/book/manual/wiki/detective,
-/obj/machinery/power/apc/auto_name/directional/west,
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/filingcabinet/security,
 /turf/open/floor/wood,
 /area/security/detectives_office)
 "lQg" = (
@@ -69772,11 +69779,12 @@
 	pixel_x = -3;
 	pixel_y = -3
 	},
-/obj/structure/table,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
 /obj/structure/extinguisher_cabinet/directional/east,
+/obj/item/gun/grenadelauncher,
+/obj/structure/rack,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "scV" = (
@@ -79434,6 +79442,24 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cargo/storage)
+"wsE" = (
+/obj/structure/closet/secure_closet/detective,
+/obj/item/tape,
+/obj/item/tape,
+/obj/item/tape,
+/obj/item/taperecorder,
+/obj/item/folder/yellow{
+	name = "Detective's Findings"
+	},
+/obj/item/clothing/glasses/sunglasses,
+/obj/item/camera/detective,
+/obj/effect/decal/cleanable/cobweb,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron/dark,
+/area/security/detectives_office)
 "wtb" = (
 /obj/structure/extinguisher_cabinet/directional/east,
 /obj/effect/turf_decal/caution/stand_clear,
@@ -81147,6 +81173,7 @@
 /obj/effect/turf_decal/tile/neutral,
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/west,
+/obj/item/gun/energy/laser,
 /turf/open/floor/iron/dark,
 /area/security/warden)
 "xjT" = (
@@ -81807,6 +81834,14 @@
 	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/light/directional/west,
+/obj/item/stamp/denied{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/item/stamp{
+	pixel_x = 8;
+	pixel_y = 2
+	},
 /turf/open/floor/iron/dark,
 /area/security/warden)
 "xwf" = (
@@ -108106,8 +108141,8 @@ ajd
 aer
 ajd
 czW
-cBm
-ajd
+aaY
+aaY
 bws
 bBk
 bBk
@@ -108363,8 +108398,8 @@ bGg
 ajd
 bWR
 bMR
-ajd
-ajd
+aaY
+wsE
 izm
 abU
 aci
@@ -108620,7 +108655,7 @@ bRb
 ajd
 aer
 bNF
-ajd
+aaY
 lQa
 cie
 chv
