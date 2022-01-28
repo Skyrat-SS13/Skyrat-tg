@@ -824,12 +824,12 @@
 	var/list/report = list("<br>")
 	report += span_greentext(mind_reference.current.real_name)
 	if(objectives.len)
-		report += "<b>Had an approved OPFOR appliation with the following objectives:</b><br>"
+		report += "<b>Had an approved OPFOR application with the following objectives:</b><br>"
 		for(var/datum/opposing_force_objective/opfor_objective in objectives)
 			if(opfor_objective.status != OPFOR_OBJECTIVE_STATUS_APPROVED)
 				continue
-			report += "</b>Title:<b> [opfor_objective.title]<br>"
-			report += "</b>Description:<b> [opfor_objective.description]<br>"
+			report += "<b>Title:</b> [opfor_objective.title]<br>"
+			report += "<b>Description:</b> [opfor_objective.description]<br>"
 			report += "<br>"
 
 	if(selected_equipment.len)

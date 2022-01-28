@@ -755,11 +755,12 @@
 	design_ids = list(
 		"assembly_shell",
 		"bot_shell",
+		"comp_mod_action",
 		"controller_shell",
 		"dispenser_shell",
 		"door_shell",
 		"gun_shell",
-		"mod_circuit",
+		"module_shell",
 		"money_bot_shell",
 		"scanner_gate_shell",
 		"scanner_shell",
@@ -838,16 +839,6 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
-/datum/techweb_node/dex_robotics
-	id = "dex_robotics"
-	display_name = "Dexterous Robotics Research"
-	description = "The fine art of opposable thumbs."
-	prereq_ids = list("adv_engi", "adv_robotics", "biotech")
-	design_ids = list(
-		"maint_drone",
-	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-
 /datum/techweb_node/neural_programming
 	id = "neural_programming"
 	display_name = "Neural Programming"
@@ -871,6 +862,10 @@
 		"borg_upgrade_selfrepair",
 		"borg_upgrade_thrusters",
 		"borg_upgrade_trashofholding",
+
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"borg_upgrade_clamp",
+		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 

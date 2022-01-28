@@ -591,20 +591,13 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/admin/storage)
-"cD" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-21"
+"cC" = (
+/obj/structure/destructible/cult/item_dispenser/altar{
+	desc = "An altar dedicated to the Wizard Federation."
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/machinery/status_display/evac/directional/west,
-/turf/open/floor/iron/dark,
-/area/centcom/briefing)
+/obj/item/knife/ritual,
+/turf/open/floor/engine/cult,
+/area/wizard_station)
 "cE" = (
 /obj/effect/turf_decal/tile/yellow/half{
 	dir = 4
@@ -1275,13 +1268,6 @@
 /obj/machinery/duct,
 /turf/open/floor/carpet/black,
 /area/centcom/holding)
-"fr" = (
-/obj/structure/destructible/cult/item_dispenser/altar{
-	desc = "An altar dedicated to the Wizard Federation."
-	},
-/obj/item/knife/ritual,
-/turf/open/floor/engine/cult,
-/area/wizard_station)
 "fs" = (
 /obj/effect/turf_decal/tile/yellow/half,
 /obj/effect/turf_decal/tile/yellow/half{
@@ -5700,10 +5686,6 @@
 /obj/structure/sign/warning/securearea,
 /turf/closed/indestructible/riveted,
 /area/centcom/ferry)
-"rE" = (
-/obj/structure/destructible/cult/item_dispenser/archives/library,
-/turf/open/floor/engine/cult,
-/area/wizard_station)
 "rF" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/grassybush,
@@ -7676,6 +7658,20 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/turf/open/floor/iron/dark,
+/area/centcom/briefing)
+"wW" = (
+/obj/item/kirbyplants{
+	icon_state = "plant-21"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/status_display/evac/directional/west,
 /turf/open/floor/iron/dark,
 /area/centcom/briefing)
 "wX" = (
@@ -13704,6 +13700,22 @@
 "Mm" = (
 /turf/open/floor/grass,
 /area/centcom/holding)
+"Mq" = (
+/obj/structure/destructible/cult/item_dispenser/archives/library,
+/obj/item/book/codex_gigas,
+/obj/machinery/airalarm/directional/east,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/centcom/admin)
 "Mt" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
 	dir = 4
@@ -13943,22 +13955,6 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/wood,
-/area/centcom/admin)
-"Nr" = (
-/obj/structure/destructible/cult/item_dispenser/archives/library,
-/obj/item/book/codex_gigas,
-/obj/machinery/airalarm/directional/east,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
 /area/centcom/admin)
 "NB" = (
 /turf/open/floor/plating/ironsand{
@@ -14546,6 +14542,10 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/centcom/admin)
+"Qh" = (
+/obj/structure/destructible/cult/item_dispenser/forge/engine,
+/turf/open/floor/engine/cult,
+/area/wizard_station)
 "Ql" = (
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/wood/tile,
@@ -14569,6 +14569,10 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/carpet/black,
 /area/centcom/holding)
+"Qq" = (
+/obj/structure/destructible/cult/item_dispenser/archives/library,
+/turf/open/floor/engine/cult,
+/area/wizard_station)
 "Qt" = (
 /obj/item/flashlight/lantern,
 /turf/open/floor/plating/sandy_dirt,
@@ -15397,10 +15401,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/centcom/briefing)
-"TO" = (
-/obj/structure/destructible/cult/item_dispenser/forge/engine,
-/turf/open/floor/engine/cult,
-/area/wizard_station)
 "TQ" = (
 /obj/structure/flora/tree/dead,
 /turf/open/floor/plating/asteroid/basalt/wasteland{
@@ -21757,9 +21757,9 @@ qE
 qE
 qE
 yC
-rE
+Qq
 zN
-rE
+Qq
 Bf
 qE
 Ax
@@ -22528,9 +22528,9 @@ vj
 vj
 qE
 yC
-rE
+Qq
 qZ
-rE
+Qq
 Bf
 qE
 qZ
@@ -23314,7 +23314,7 @@ qE
 qE
 qZ
 qZ
-TO
+Qh
 Gr
 qE
 lI
@@ -23814,7 +23814,7 @@ qZ
 yb
 qZ
 qZ
-fr
+cC
 Ay
 qZ
 BS
@@ -24342,7 +24342,7 @@ qE
 qE
 EY
 qZ
-TO
+Qh
 Gr
 qE
 lI
@@ -53370,7 +53370,7 @@ mD
 wT
 PA
 cb
-cD
+wW
 wi
 Yh
 Th
@@ -56695,7 +56695,7 @@ On
 BV
 VE
 bz
-Nr
+Mq
 YJ
 YU
 xy

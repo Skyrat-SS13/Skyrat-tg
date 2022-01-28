@@ -12,7 +12,6 @@
 /obj/item/construction/plumbing/mining
 	name = "mining plumbing constructor"
 	desc = "A type of plumbing constructor designed to harvest from geysers and collect their fluids."
-	icon = 'modular_skyrat/modules/liquids/icons/obj/tools.dmi'
 	icon_state = "plumberer_mining"
 	has_ammobar = TRUE
 
