@@ -15,8 +15,10 @@
 	emote_see = list("runs in a circle.", "shakes.")
 	speak_chance = 2
 	turns_per_move = 3
-	var/safety_inspection = TRUE // The inspection fails if she gets dusted
-	var/near_engine = FALSE // She is actually really scared of the engine
+	/// Is the inspection currently being passed?
+	var/safety_inspection = TRUE
+	/// Are they near the supermatter?
+	var/near_engine = FALSE
 	animal_species = /mob/living/simple_animal/pet/poppy
 	response_help_continuous = "pets"
 	response_help_simple = "pet"

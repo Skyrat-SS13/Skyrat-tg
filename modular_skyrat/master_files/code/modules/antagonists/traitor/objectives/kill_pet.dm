@@ -54,8 +54,10 @@
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list(JOB_DETECTIVE, JOB_HEAD_OF_SECURITY)
 	special_desc = "Upon inspection you can instantly tell this is a real cryptographic sequencer commonly traded in bulk for cheap at countless blackmarkets. They are known for their unreliability and breaking after just one use from their shoddy construction."
+	///How many uses does it have left?
 	var/charges = 1
-	var/caller //Who summoned this?
+	///Who summoned this?
+	var/caller
 
 /obj/item/card/emag/oneshot/examine(mob/user)
 	. = ..()
