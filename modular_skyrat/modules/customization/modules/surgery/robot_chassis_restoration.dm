@@ -83,12 +83,12 @@
 	target.updatehealth()
 	target.setOrganLoss(ORGAN_SLOT_BRAIN, target.getOrganLoss(ORGAN_SLOT_BRAIN) - 200)
 	if(target.revive(full_heal = FALSE, admin_revive = FALSE))
-		target.emote("buzz")
-		target.visible_message(span_warning("...[target.p_they()] convulses, then goes offline."))
-		return TRUE
-	else
 		target.emote("chime")
 		target.visible_message(span_notice("...[target] reactivates, their chassis coming online!"))
 		to_chat(target, span_danger("[CONFIG_GET(string/blackoutpolicy)]"))
 		return FALSE //This is due to synths having some weirdness with their revive.
+	else
+		target.emote("buzz")
+		target.visible_message(span_warning("...[target.p_they()] convulses, then goes offline."))
+		return TRUE
 
