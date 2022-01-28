@@ -160,7 +160,7 @@
 		do_sparks(3, 1, src)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/handle_automated_action()
-	if(emagged && prob(50))
+	if(emagged && prob(33))
 		var/mob/living/carbon/target = locate() in view(10, src)
 		if(target)
 			shootAt(target)
