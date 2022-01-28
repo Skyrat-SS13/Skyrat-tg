@@ -872,6 +872,10 @@
 		"borg_upgrade_selfrepair",
 		"borg_upgrade_thrusters",
 		"borg_upgrade_trashofholding",
+
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"borg_upgrade_clamp",
+		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 

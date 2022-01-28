@@ -121,32 +121,29 @@
 /area/ai_monitored/security/armory)
 "abm" = (
 /obj/structure/rack,
-/obj/item/clothing/head/helmet/riot{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/obj/item/clothing/head/helmet/riot{
-	pixel_y = 5
-	},
-/obj/item/clothing/head/helmet/riot{
+/obj/item/clothing/head/helmet/sec{
 	pixel_x = -3;
-	pixel_y = 5
+	pixel_y = 3
 	},
-/obj/item/clothing/head/helmet/alt{
+/obj/item/clothing/head/helmet/sec,
+/obj/item/clothing/head/helmet/sec{
 	pixel_x = 3;
-	pixel_y = -5
+	pixel_y = -3
 	},
-/obj/item/clothing/head/helmet/alt{
-	pixel_y = -5
-	},
-/obj/item/clothing/head/helmet/alt{
-	pixel_x = -3;
-	pixel_y = -5
-	},
+/obj/item/radio/intercom/directional/north,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/radio/intercom/directional/north,
+/obj/effect/turf_decal/bot_blue,
+/obj/item/clothing/suit/armor/vest/security{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/clothing/suit/armor/vest/security,
+/obj/item/clothing/suit/armor/vest/security{
+	pixel_x = -3;
+	pixel_y = 3
+	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "abu" = (
@@ -194,18 +191,37 @@
 /area/security/range)
 "abY" = (
 /obj/structure/rack,
-/obj/item/shield/riot{
+/obj/item/clothing/suit/armor/riot{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/suit/armor/riot,
+/obj/item/clothing/suit/armor/riot{
 	pixel_x = 3;
 	pixel_y = -3
 	},
-/obj/item/shield/riot,
+/obj/item/clothing/head/helmet/riot{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/head/helmet/riot,
+/obj/item/clothing/head/helmet/riot{
+	pixel_x = 3;
+	pixel_y = -3
+	},
 /obj/item/shield/riot{
 	pixel_x = -3;
 	pixel_y = 3
 	},
+/obj/item/shield/riot,
+/obj/item/shield/riot{
+	pixel_x = 3;
+	pixel_y = -3
+	},
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/effect/turf_decal/bot_blue,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "aci" = (
@@ -255,6 +271,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/item/gun/ballistic/rifle/boltaction,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "acJ" = (
@@ -449,26 +466,31 @@
 "agp" = (
 /obj/structure/rack,
 /obj/item/clothing/suit/armor/bulletproof{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/obj/item/clothing/suit/armor/bulletproof{
-	pixel_y = 5
-	},
-/obj/item/clothing/suit/armor/bulletproof{
 	pixel_x = -3;
-	pixel_y = 5
+	pixel_y = 3
 	},
-/obj/item/clothing/suit/armor/riot{
-	pixel_x = 3
+/obj/item/clothing/suit/armor/bulletproof,
+/obj/item/clothing/suit/armor/bulletproof{
+	pixel_x = 3;
+	pixel_y = -3
 	},
-/obj/item/clothing/suit/armor/riot,
-/obj/item/clothing/suit/armor/riot{
-	pixel_x = -3
+/obj/item/clothing/head/helmet/alt{
+	layer = 3.00001;
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/head/helmet/alt{
+	layer = 3.00001
+	},
+/obj/item/clothing/head/helmet/alt{
+	layer = 3.00001;
+	pixel_x = 3;
+	pixel_y = -3
 	},
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/effect/turf_decal/bot_blue,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "agr" = (
@@ -478,6 +500,7 @@
 /obj/item/storage/box/lethalshot,
 /obj/effect/turf_decal/delivery/blue,
 /obj/structure/cable,
+/obj/item/storage/box/lethalshot,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "agG" = (
@@ -507,10 +530,22 @@
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "ahX" = (
-/obj/effect/turf_decal/bot_blue,
-/obj/vehicle/ridden/secway,
-/obj/item/key/security,
+/obj/item/grenade/barrier{
+	pixel_x = -3;
+	pixel_y = 1
+	},
+/obj/item/grenade/barrier,
+/obj/item/grenade/barrier{
+	pixel_x = 3;
+	pixel_y = -1
+	},
+/obj/item/grenade/barrier{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/obj/structure/rack,
 /obj/machinery/firealarm/directional/east,
+/obj/effect/turf_decal/delivery/blue,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "ahY" = (
@@ -15647,6 +15682,10 @@
 /area/science/misc_lab)
 "dNl" = (
 /obj/structure/table/wood,
+/obj/item/clothing/accessory/badge/holo/hos,
+/obj/item/stamp/hos{
+	pixel_x = 10
+	},
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "dNm" = (
@@ -16507,6 +16546,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
+/obj/machinery/photocopier,
 /turf/open/floor/iron,
 /area/security/office)
 "elv" = (
@@ -26451,6 +26491,8 @@
 	pixel_x = 11;
 	pixel_y = 11
 	},
+/obj/item/clothing/accessory/badge,
+/obj/item/clothing/accessory/badge/holo/detective,
 /turf/open/floor/carpet,
 /area/security/detectives_office)
 "jyi" = (
@@ -29877,10 +29919,10 @@
 /turf/open/floor/plating,
 /area/maintenance/department/electrical)
 "lus" = (
-/obj/machinery/computer/security{
+/obj/structure/reagent_dispensers/wall/peppertank/directional/east,
+/obj/machinery/computer/secure_data{
 	dir = 8
 	},
-/obj/structure/reagent_dispensers/wall/peppertank/directional/east,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "luE" = (
@@ -31484,8 +31526,7 @@
 "mjP" = (
 /obj/structure/closet/secure_closet/warden,
 /obj/structure/cable,
-/obj/item/clothing/accessory/badge/holo/warden,
-/obj/item/clothing/glasses/hud/security/sunglasses,
+/obj/item/gun/energy/laser,
 /turf/open/floor/iron/dark/blue/side{
 	dir = 9
 	},
@@ -33337,6 +33378,14 @@
 /obj/machinery/camera/directional/south{
 	c_tag = "Security - Warden"
 	},
+/obj/item/stamp/denied{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/item/stamp{
+	pixel_x = 8;
+	pixel_y = 2
+	},
 /turf/open/floor/iron/dark/blue/side,
 /area/security/brig)
 "nja" = (
@@ -33950,16 +33999,6 @@
 	dir = 4
 	},
 /area/science/misc_lab)
-"nyT" = (
-/obj/structure/table/wood,
-/obj/item/reagent_containers/food/drinks/bottle/whiskey{
-	pixel_x = 3
-	},
-/obj/item/lighter,
-/obj/item/camera/detective,
-/obj/item/hand_labeler,
-/turf/open/floor/carpet,
-/area/security/detectives_office)
 "nyY" = (
 /obj/machinery/computer/crew,
 /obj/effect/turf_decal/tile/green,
@@ -36018,8 +36057,8 @@
 /obj/item/folder/yellow{
 	name = "Detective's Findings"
 	},
-/obj/item/clothing/accessory/badge/holo/detective,
 /obj/item/clothing/glasses/sunglasses,
+/obj/item/camera/detective,
 /turf/open/floor/carpet,
 /area/security/detectives_office)
 "oHg" = (
@@ -37547,7 +37586,8 @@
 /turf/open/floor/iron,
 /area/cargo/office)
 "pwJ" = (
-/obj/machinery/photocopier,
+/obj/effect/turf_decal/bot_blue,
+/obj/vehicle/ridden/secway,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "pwQ" = (
@@ -39487,7 +39527,13 @@
 /turf/open/floor/iron,
 /area/security/office)
 "qzL" = (
-/obj/structure/rack,
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/drinks/bottle/whiskey{
+	pixel_x = 3
+	},
+/obj/item/lighter,
+/obj/item/camera/detective,
+/obj/item/hand_labeler,
 /obj/machinery/light_switch/directional/east,
 /turf/open/floor/iron/grimy,
 /area/security/detectives_office)
@@ -42710,6 +42756,7 @@
 	name = "Permabrig Lockdown";
 	pixel_y = 8
 	},
+/obj/item/clothing/accessory/badge/holo/warden,
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "sjb" = (
@@ -49688,8 +49735,6 @@
 "vPG" = (
 /obj/machinery/airalarm/directional/east,
 /obj/structure/closet/secure_closet/hos,
-/obj/item/clothing/accessory/badge/sheriff,
-/obj/item/clothing/accessory/badge/holo/hos,
 /obj/item/radio/intercom/directional/north,
 /obj/item/clothing/glasses/hud/security/sunglasses,
 /turf/open/floor/carpet,
@@ -80138,7 +80183,7 @@ azu
 jTQ
 nZC
 nel
-nyT
+oGY
 oGY
 arP
 axt
