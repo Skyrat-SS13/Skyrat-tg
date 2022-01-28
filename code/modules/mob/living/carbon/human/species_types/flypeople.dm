@@ -2,7 +2,7 @@
 	name = "Flyperson"
 	id = SPECIES_FLY
 	say_mod = "buzzes"
-	species_traits = list(HAS_FLESH, HAS_BONE, TRAIT_ANTENNAE)
+	species_traits = list(HAS_FLESH, HAS_BONE, TRAIT_ANTENNAE, HAIR, FACEHAIR) //SKYRAT EDIT - gives flypeople hair
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
