@@ -79,10 +79,10 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 	var/midround_injection_cooldown = 0
 
 	/// The minimum time the recurring midround ruleset timer is allowed to be.
-	var/midround_delay_min = (15 MINUTES)
+	var/midround_delay_min = (20 MINUTES) //SKYRAT EDIT: Original: (15 MINUTES)
 
 	/// The maximum time the recurring midround ruleset timer is allowed to be.
-	var/midround_delay_max = (35 MINUTES)
+	var/midround_delay_max = (45 MINUTES) //SKYRAT EDIT: Original: (35 MINUTES)
 
 	/// If above this threat, increase the chance of injection
 	var/higher_injection_chance_minimum_threat = 70
