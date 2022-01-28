@@ -876,7 +876,7 @@
 //Gives you a proper icon appearance for the dismembered limb
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
 /*
-/obj/item/bodypart/proc/get_limb_icon(dropped)
+/obj/item/bodypart/proc/get_limb_icon(dropped, draw_external_organs)
 	icon_state = "" //to erase the default sprite, we're building the visual aspects of the bodypart through overlays alone.
 
 	. = list()
@@ -916,6 +916,8 @@
 	if((body_zone != BODY_ZONE_HEAD && body_zone != BODY_ZONE_CHEST))
 		should_draw_gender = FALSE
 
+	var/draw_color
+
 	if(!is_organic_limb())
 		limb.icon = icon
 		limb.icon_state = "[body_zone]" //Inorganic limbs are agender
@@ -934,43 +936,45 @@
 				aux_em_block.dir = image_dir
 				aux.overlays += aux_em_block
 
-		return
-
-	if(should_draw_greyscale)
-		limb.icon = icon_greyscale
-		if(should_draw_gender)
-			limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
-		else if(use_digitigrade)
-			limb.icon_state = "digitigrade_[use_digitigrade]_[body_zone]"
-		else
-			limb.icon_state = "[species_id]_[body_zone]"
 	else
-		limb.icon = 'icons/mob/human_parts.dmi'
-		if(should_draw_gender)
-			limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
+		if(should_draw_greyscale)
+			limb.icon = icon_greyscale
+			if(should_draw_gender)
+				limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
+			else if(use_digitigrade)
+				limb.icon_state = "digitigrade_[use_digitigrade]_[body_zone]"
+			else
+				limb.icon_state = "[species_id]_[body_zone]"
 		else
-			limb.icon_state = "[species_id]_[body_zone]"
-
-	if(aux_zone)
-		aux = image(limb.icon, "[species_id]_[aux_zone]", -aux_layer, image_dir)
-		. += aux
-
-	if(should_draw_greyscale)
-		var/draw_color = mutation_color || species_color || (skin_tone && skintone2hex(skin_tone))
-		if(draw_color)
-			limb.color = draw_color
-			if(aux_zone)
-				aux.color = draw_color
-	if(blocks_emissive)
-		var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, alpha = limb.alpha)
-		limb_em_block.dir = image_dir
-		limb.overlays += limb_em_block
+			limb.icon = 'icons/mob/human_parts.dmi'
+			if(should_draw_gender)
+				limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
+			else
+				limb.icon_state = "[species_id]_[body_zone]"
 
 		if(aux_zone)
-			var/mutable_appearance/aux_em_block = emissive_blocker(aux.icon, aux.icon_state, alpha = aux.alpha)
-			aux_em_block.dir = image_dir
-			aux.overlays += aux_em_block
+			aux = image(limb.icon, "[species_id]_[aux_zone]", -aux_layer, image_dir)
+			. += aux
 
+		if(should_draw_greyscale)
+			draw_color = mutation_color || species_color || (skin_tone && skintone2hex(skin_tone))
+			if(draw_color)
+				limb.color = draw_color
+				if(aux_zone)
+					aux.color = draw_color
+
+		if(blocks_emissive)
+			var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, alpha = limb.alpha)
+			limb_em_block.dir = image_dir
+			limb.overlays += limb_em_block
+
+			if(aux_zone)
+				var/mutable_appearance/aux_em_block = emissive_blocker(aux.icon, aux.icon_state, alpha = aux.alpha)
+				aux_em_block.dir = image_dir
+				aux.overlays += aux_em_block
+
+	if(!draw_external_organs)
+		return
 
 	//Draw external organs like horns and frills
 	for(var/obj/item/organ/external/external_organ in external_organs)
