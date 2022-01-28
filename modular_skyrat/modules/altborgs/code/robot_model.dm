@@ -233,11 +233,10 @@
 		/obj/item/borg/sight/thermal,
 		/obj/item/extinguisher,
 		/obj/item/weldingtool/electric,
-		/obj/item/screwdriver/nuke,
-		/obj/item/wrench/cyborg,
-		/obj/item/crowbar/cyborg,
-		/obj/item/wirecutters/cyborg,
+		/obj/item/screwdriver/cyborg/power,
+		/obj/item/crowbar/cyborg/power, 
 		/obj/item/multitool/cyborg,
+		/obj/item/construction/rcd/borg/syndicate,
 		/obj/item/lightreplacer/cyborg,
 		/obj/item/stack/sheet/iron,
 		/obj/item/stack/sheet/glass,
@@ -262,7 +261,7 @@
 		)
 	cyborg_base_icon = "synd_engi"
 	model_select_icon = "malf"
-	model_traits = list(TRAIT_NEGATES_GRAVITY)
+	model_traits = list(TRAIT_NEGATES_GRAVITY, TRAIT_PUSHIMMUNE)
 	hat_offset = INFINITY
 	canDispose = TRUE
 	borg_skins = list(
@@ -278,6 +277,16 @@
 		"Male Booty Syndicate" = list(SKIN_ICON_STATE = "male_bootysyndie", SKIN_ICON = CYBORG_ICON_SYNDIE),
 		"Mech" = list(SKIN_ICON_STATE = "chesty", SKIN_ICON = CYBORG_ICON_SYNDIE)
 	)
+
+/obj/item/robot_model/syndicatejack/rebuild_modules()
+    ..()
+    var/mob/living/silicon/robot/syndicatejack = loc
+    syndicatejack.scrambledcodes = TRUE // We're rouge now
+
+/obj/item/robot_model/syndicatejack/remove_module(obj/item/I, delete_after)
+    ..()
+    var/mob/living/silicon/robot/syndicatejack = loc
+    syndicatejack.scrambledcodes = FALSE // Friends with the AI again
 
 //NINJA
 /obj/item/robot_model/ninja

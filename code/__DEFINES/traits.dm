@@ -384,6 +384,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait used by fugu glands to avoid double buffing
 #define TRAIT_FUGU_GLANDED "fugu_glanded"
 
+/// When someone with this trait fires a ranged weapon, their fire delays and click cooldowns are halved
+#define TRAIT_DOUBLE_TAP "double_tap"
+
 /// Trait applied to [/datum/mind] to stop someone from using the cursed hot springs to polymorph more than once.
 #define TRAIT_HOT_SPRING_CURSED "hot_spring_cursed"
 
@@ -537,6 +540,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SMOKER "smoker"
 /// Gives you the Shifty Eyes quirk, rarely making people who examine you think you examined them back even when you didn't
 #define TRAIT_SHIFTY_EYES "shifty_eyes"
+
+///Trait for the gamer quirk.
+#define TRAIT_GAMER "gamer"
 
 ///Trait for dryable items
 #define TRAIT_DRYABLE "trait_dryable"

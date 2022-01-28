@@ -338,7 +338,18 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 
 GLOBAL_LIST_INIT(bamboo_recipes, list ( \
 	new/datum/stack_recipe("punji sticks trap", /obj/structure/punji_sticks, 5, time = 30, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("bamboo spear", /obj/item/spear/bamboospear, 25, time = 90), \
 	new/datum/stack_recipe("blow gun", /obj/item/gun/syringe/blowgun, 10, time = 70), \
+	new/datum/stack_recipe("crude syringe", /obj/item/reagent_containers/syringe/crude, 5, time = 10), \
+	null, \
+	new/datum/stack_recipe("bamboo stool", /obj/structure/chair/stool/bamboo, 2, time = 10, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("bamboo mat piece", /obj/item/stack/tile/bamboo, 1, 4, 20), \
+	null, \
+	new/datum/stack_recipe_list("bamboo benches", list(
+		new /datum/stack_recipe("bamboo bench (middle)", /obj/structure/chair/sofa/bamboo, 3, time = 10, one_per_turf = TRUE, on_floor = TRUE),
+		new /datum/stack_recipe("bamboo bench (left)", /obj/structure/chair/sofa/bamboo/left, 3, time = 10, one_per_turf = TRUE, on_floor = TRUE),
+		new /datum/stack_recipe("bamboo bench (right)", /obj/structure/chair/sofa/bamboo/right, 3, time = 10, one_per_turf = TRUE, on_floor = TRUE)
+		)),	\
 	))
 
 /obj/item/stack/sheet/mineral/bamboo
@@ -348,6 +359,7 @@ GLOBAL_LIST_INIT(bamboo_recipes, list ( \
 	icon_state = "sheet-bamboo"
 	inhand_icon_state = "sheet-bamboo"
 	icon = 'icons/obj/stack_objects.dmi'
+	sheettype = "bamboo"
 	mats_per_unit = list(/datum/material/bamboo = MINERAL_MATERIAL_AMOUNT)
 	throwforce = 15
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0)
@@ -355,6 +367,7 @@ GLOBAL_LIST_INIT(bamboo_recipes, list ( \
 	merge_type = /obj/item/stack/sheet/mineral/bamboo
 	grind_results = list(/datum/reagent/cellulose = 10)
 	material_type = /datum/material/bamboo
+	walltype = /turf/closed/wall/mineral/bamboo
 
 /obj/item/stack/sheet/mineral/bamboo/get_main_recipes()
 	. = ..()
@@ -394,6 +407,7 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	null, \
 	new/datum/stack_recipe("blindfold", /obj/item/clothing/glasses/blindfold, 2), \
 	new/datum/stack_recipe("eyepatch wrap", /obj/item/clothing/glasses/eyepatch/wrap, 2), /*SKYRAT EDIT ADDITION*/ \
+	new/datum/stack_recipe("eyepatch", /obj/item/clothing/glasses/eyepatch, 2), /*SKYRAT EDIT ADDITION*/ \
 	null, \
 	new/datum/stack_recipe("19x19 canvas", /obj/item/canvas/nineteen_nineteen, 3), \
 	new/datum/stack_recipe("23x19 canvas", /obj/item/canvas/twentythree_nineteen, 4), \

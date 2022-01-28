@@ -294,3 +294,13 @@
 	attack_verb_continuous = list("sneezes on", "detains", "tazes")
 	attack_verb_simple = list("sneeze on", "detain", "taze")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/female/female_sneeze.ogg' = 1)
+
+/obj/item/toy/plush/xixi
+	name = "familiar looking harpy plushie"
+	desc = "A plushie depicting a bright-red and oddly familiar looking harpy! The tag on the back lists distributor information and a tagline telling you how it'll add a little 'skree' to your daily grind."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_xixi"
+	inhand_icon_state = "plushie_xixi"
+	attack_verb_continuous = list("caws","skrees","pecks")
+	attack_verb_simple = list("caw","skree","peck")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/peep_once.ogg' = 1,'modular_skyrat/modules/emotes/sound/voice/caw.ogg' = 1,'modular_skyrat/modules/emotes/sound/voice/bawk.ogg' = 1,'modular_skyrat/modules/emotes/sound/emotes/voxscream.ogg' = 1)

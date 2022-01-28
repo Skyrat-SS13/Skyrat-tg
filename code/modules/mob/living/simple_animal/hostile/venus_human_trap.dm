@@ -243,4 +243,10 @@
 	for(var/i in vines)
 		qdel(i)
 	return ..()
+
+/mob/living/simple_animal/hostile/venus_human_trap/start_pulling(atom/movable/AM, state, force, supress_message)
+	if(isliving(AM))
+		to_chat(src, span_boldwarning("You cannot drag living things!"))
+		return
+	return ..()
 //SKYRAT EDIT END

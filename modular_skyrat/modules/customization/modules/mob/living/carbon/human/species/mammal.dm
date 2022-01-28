@@ -13,7 +13,8 @@
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP
+		TRAIT_CAN_STRIP,
+		TRAIT_CAN_USE_FLIGHT_POTION,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
@@ -33,8 +34,9 @@
 	attack_effect = ATTACK_EFFECT_CLAW
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
-	liked_food = GROSS | MEAT | FRIED
-	disliked_food = VEGETABLES | CLOTH | FRUIT
+	liked_food = GRAIN | RAW | MEAT
+	disliked_food = NUTS | CLOTH
+	toxic_food = TOXIC
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/mammal_parts_greyscale.dmi'

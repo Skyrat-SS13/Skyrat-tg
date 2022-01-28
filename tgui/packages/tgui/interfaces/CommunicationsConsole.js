@@ -503,8 +503,8 @@ const PageMain = (props, context) => {
           />}
           {!!canMakeAnnouncement && <Button
             icon="bullhorn"
-            content="Call Sol Federation 911: Firefighter Response"
-            onClick={() => act("callTheFireDep")}
+            content="Call Sol Federation 811: Breach Control Response"
+            onClick={() => act("callBreachControl")}
           />}
           {!!canMakeAnnouncement && <Button
             icon="bullhorn"
