@@ -304,3 +304,31 @@
 	attack_verb_continuous = list("caws","skrees","pecks")
 	attack_verb_simple = list("caw","skree","peck")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/peep_once.ogg' = 1,'modular_skyrat/modules/emotes/sound/voice/caw.ogg' = 1,'modular_skyrat/modules/emotes/sound/voice/bawk.ogg' = 1,'modular_skyrat/modules/emotes/sound/emotes/voxscream.ogg' = 1)
+
+/obj/item/toy/plush/zapp
+	name = "zapp plushie"
+	desc = "An authentic piece of primo Pwr Game merchandise! \
+			This cuddly companion is the perfect ornament to decorate your battlestation. \
+			He sits upright unassisted, and can hold your headset, webcam, or keep your Pwr Game safe and secure. \
+			This one is outfitted with a state-of-the-art skill reader; \
+			just squeeze him tight andd Zapp will tell you if you're ready for the next big game!"
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_zapp"
+	inhand_icon_state = "plushie_zapp"
+	attack_verb_continuous = list("boops","nuzzles")
+	attack_verb_simple = list("boop", "nuzzle")
+	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
+	var/list/skill_response = list(
+		"Weak! What are you, a mobile gamer?",
+		"Come on, you can do better than that! Play some Orion Trial and try again.",
+		"Hey, not bad! Try and work on your APM.",
+		"Nice! You should see about competing in some local tournaments, gamer!",
+		"Now that's real skill! I think you deserve some Pwr Game.",
+		"Gamer God in the house! Look upon him and weep, console peasants!",
+		"Whoa! Gamer overload! Stand clear!!",
+	)
+
+/obj/item/toy/plush/zapp/attack_self(mob/user)
+	. = ..()
+	var/skill_level = user.mind.get_skill_level(/datum/skill/gaming)
+	to_chat(user, skill_response[skill_level])
