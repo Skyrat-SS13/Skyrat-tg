@@ -1207,3 +1207,97 @@
   thestubborn:
   - rscadd: The Ghost Cafe's detainment room has shown up for some reason. For official
       use only! Too bad they have terrible locks.
+2022-01-28:
+  CandleJaxx:
+  - rscadd: new tail type unlocked!
+  - rscadd: harpy plushie :o)
+  Ebin-Halcyon:
+  - imageadd: Teshari clothing pack. Color matrix auto generated clothing now look
+      slightly nicer, heads of staff cloaks and more.
+  ErdinyoBarboza:
+  - balance: 'Security Lockers now spawn Vests once more. qol: Detectives now have
+      shades, a camera, a recorder and a custom folder in their wardrobes. qol: Wardens
+      Office''s now spawn with GRANTED and DENIED rubber stamps. Go make paperwork.'
+  - bugfix: All armories now start with more or less the same equipment.
+  - bugfix: All Warden Lockers spawn with the same loadout.
+  - bugfix: Made the KiloStation Execution Chamber non-offensive to Asimov Lawsets
+      and alike.
+  - bugfix: Icebox HoS Office now spawns with  rubber stamp.
+  - bugfix: IceBox & KiloStation & TramStation Detective Office now has 2 Detective
+      Lockers.
+  - bugfix: Spare Vests & Helmets in armory now use proper security sprites.
+  - bugfix: All maps now spawn with Detective & Warden Holobadges in their rooms.
+  Maxymax13:
+  - imageadd: resprites pills
+  SkyratBot:
+  - bugfix: Area definitions for the IceBox and Lavaland Labor Camps have been updated.
+      That means that gulag point-prisoners no longer have a safe haven inside the
+      security portion of IceBox's security wing.
+  - code_imp: Move defines to their local .dm files
+  - code_imp: Remove code/__DEFINES/misc.dm
+  - refactor: Adds some documentation to defines
+  - imageadd: Resprites the mega legion and all legion related mobs
+  - bugfix: restructures some code to make airlocks hackable again
+  - bugfix: Followers of Nar'Sie who hope to summon her can hopefully ascertain the
+      correct area to summon her, as the gambling and gaming dens have now been seperated.
+  - bugfix: You can now remove attachments from weapons without standing across the
+      room
+  - bugfix: DJ Space ruin no longer uses incorrect turfs.
+  - bugfix: The camera in the Ice Box Station Locker Room is no longer inside of a
+      door.
+  - imageadd: New sprites for the Parcel Parceaux, base Mime mask, Mime outfit and
+      skirt, and mime sexy outfit.
+  - imageadd: new sprites for lace-up shoes.
+  - code_imp: Mimes spawn with lace-ups instead of black shoes
+  - balance: Fire Locks now check for atmos issues on their own, rather than leaving
+      it to the Fire Alarm. This should cut down on a single breach turning the main
+      halls into a navigational mess.
+  - balance: Fire Locks will wait five seconds after a reset before triggering again.
+  - tweak: Fire Alarms will still activate all Fire Locks in an area if manually pulled.
+  - tweak: Fire Alarms are still used to reset Fire Locks, but now it's a right-click
+      action.
+  - tweak: Emagging a Fire Alarm will apply the effect to all Fire Locks in its area,
+      behaving roughly the same as before.
+  - tweak: Disabling Fire Detect is also still done at the Fire Alarm and should work
+      closely as it used to.
+  - balance: Right-clicking a closed Fire Lock with a crowbar will open it for exactly
+      two seconds. Holding it open (left click) is unchanged.
+  - balance: 'Firelock emag functions (ignoring atmos detect) is now done by a doorjack
+      on the firelock itself. You can still emag a fire alarm to mute it, though.
+      sprite: Fire Locks now have lights that display the reason they are active.
+      Orange is Hot, Cyan means Cold, and White means a Fire Alarm was pulled.'
+  - balance: CentComm's Mark One SWAT suit's design has been reworked; it now lacks
+      spaceproofing, but it has become significantly faster to move in and retains
+      temperature-proofing. These adjustments have allowed CC to sell them for a lower
+      cost of 1400.
+  - bugfix: Tramstation brig's disposals now has a trunk under it
+  - balance: lowers kilo's bombcap multiplier
+  - bugfix: The warden can no longer consider half of security to be their office
+      on KiloStation.
+  - refactor: Honkbots have been made a subtype of Secbots, which means they trigger
+      phobias of security, and their behavior has additionally been overhauled to
+      work more like Beepsky.
+  - rscadd: 'Introducing: The Lizard''s Gas! A brand new (gas) station for you to
+      go out and refuel your ships and your stomachs. It''s been a while since the
+      power''s been turned on, but everything is just the way it was left all those
+      years ago. Explore!'
+  - rscdel: gasthelizards.dmm has been deleted. you will never see gasthelizards.dmm
+      ever again.
+  - config: since gasthelizards.dmm is removed, the config has been updated as well.
+      make sure it's up-to-date now that we've gotten rid of the dang ol' thing and
+      replaced it with new hotness.
+  - bugfix: Nanotrasen decided to redirect some of the plasma rivers on IceBox station
+      towards the labor camp, helping add another layer of security between the station
+      and those awful, awful prisoners.
+  Wallem:
+  - imageadd: Mailbags have their own sprite instead of borrowing it from book bags.
+  itseasytosee:
+  - bugfix: Robot themed wings will now actually be visible
+  - imageadd: If synths get wings, they will be robot themed.
+  jjpark-kb:
+  - rscadd: added the lobby camera
+  linnpap:
+  - rscadd: Added the ability for flypeople to have hair
+  theOOZ:
+  - code_imp: 'Cyborg skins can have a unique ''tipped'' icon_state remove: Removes
+      the unique effect when Roombas are tipped, sorry- this just doesn''t work anymore'
