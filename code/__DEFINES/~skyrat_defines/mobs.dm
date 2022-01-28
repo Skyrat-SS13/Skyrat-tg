@@ -2,4 +2,5 @@
 
 #define PULL_OVERSIZED_SLOWDOWN 2
 
-#define VOMIT_NANITE 3 //Used for Nanite Slurry vomit. The mob will vomit a nanite puddle.
+/// Used for Nanite Slurry vomit. The mob will vomit a nanite puddle.
+#define VOMIT_NANITE 3
