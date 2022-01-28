@@ -253,3 +253,8 @@
 /obj/structure/fluff/metalpole/anchor
 	name = "metal pole anchor"
 	icon_state = "poleanchor"
+
+/obj/structure/fluff/empty_sleeper/bloodied
+	name = "Occupied Sleeper"
+	desc = "A closed, occupied sleeper, bloodied handprints are seen on the inside, along with an odd, redish blur. It seems sealed shut."
+	icon_state = "sleeper-o"
