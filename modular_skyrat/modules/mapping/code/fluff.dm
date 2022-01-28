@@ -206,6 +206,10 @@
 	name = "Crumpled note"
 	info = "Look, i dont know where the fuck that suit was found, but i have a hard time believing it was made by him entirely. I already know his less than ethical obtainment methods, But that piece of tech? Its a blasted shame he's just using it for hauling crates..."
 
+/obj/item/paper/crumpled/fluff/tarkon/prisoner
+	name = "Blood-scrawled note"
+	info = "<font colour=red>I can hear th em  crawling i n the ro ck<br>The his sing the scra tch ing<br><br><br>th ey c o m e</font>"
+
 /* ----------------- Fluff/Decor ----------------- */
 /obj/structure/decorative/fluff/ai_node //Budding AI's way of interfacing with stuff it couldn't normally do so with. Needed to be placed by a willing human, before borgs were created. Used in any ruins regarding pre-bluespace, self-aware AIs
 	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff.dmi'
