@@ -973,16 +973,6 @@
 	build_path = /obj/item/assembly/flash/handheld
 	category = list("Misc")
 
-/datum/design/maint_drone
-	name = "Maintenance Drone"
-	desc = "\"Repairs the station without bothering you!\" is what the marketing says."
-	id = "maint_drone"
-	build_type = MECHFAB
-	materials = list(/datum/material/iron = 800, /datum/material/glass = 350)
-	construction_time = 150
-	build_path = /obj/effect/mob_spawn/ghost_role/drone
-	category = list("Control Interfaces")
-
 //MODsuit stuff
 
 /datum/design/mod_shell
@@ -1340,13 +1330,6 @@
 	id = "mod_dna_lock"
 	materials = list(/datum/material/diamond = 500, /datum/material/glass = 1000)
 	build_path = /obj/item/mod/module/dna_lock
-
-/datum/design/module/mod_circuit
-	name = "MOD Module: Circuit Adapter"
-	id = "mod_circuit"
-	materials = list(/datum/material/glass = 2000)
-	build_path = /obj/item/mod/module/circuit
-	department_type = MODULE_SCIENCE
 
 /datum/design/module/mod_plasma_stabilizer
 	name = "MOD Module: Plasma Stabilizer"
