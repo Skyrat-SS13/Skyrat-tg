@@ -27,8 +27,9 @@
 	desc = "A fuel rod for the GA37W reactor."
 	icon = 'modular_skyrat/modules/nuclear_reactor/icons/reactor32x32.dmi'
 	icon_state = "empty_fuel_rod"
-
+	/// Our installed fuel datum.
 	var/datum/reactor_fuel_type/installed_fuel
+	/// If set, we start with this fuel type installed.
 	var/starting_fuel_type
 
 /obj/item/reactor_fuel_rod/Initialize(mapload)
@@ -49,7 +50,7 @@
 /obj/item/reactor_fuel_rod/update_overlays()
 	. = ..()
 	if(installed_fuel)
-		. += "[installed_fuel.overlay_icon_state]"
+		. += installed_fuel.overlay_icon_state
 
 /obj/item/reactor_fuel_rod/uranium
 	starting_fuel_type = /datum/reactor_fuel_type/uranium
