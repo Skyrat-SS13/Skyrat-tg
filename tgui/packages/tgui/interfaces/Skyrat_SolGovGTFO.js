@@ -1,6 +1,6 @@
 import { toTitleCase } from 'common/string';
 import { useBackend } from '../backend';
-import { Box, Button, LabeledList, Section, Table } from '../components';
+import { Box, Button, LabeledList, Section, Table, NoticeBox} from '../components';
 import { Window } from '../layouts';
 
 export const Skyrat_SolGovGTFO = (props, context) => {
@@ -17,8 +17,7 @@ export const Skyrat_SolGovGTFO = (props, context) => {
         Authorized SolGov personnel only
       </NoticeBox>
       <Window.Content>
-        <Section
-        title="SolGov Fastpass™ Lift">
+        <Section title="SolGov Fastpass™ Lift">
           <LabeledList>
             <LabeledList.Item label="Status">
               {lift_status}
@@ -53,7 +52,7 @@ export const Skyrat_SolGovGTFO = (props, context) => {
                     </Box>
                 </Table.Cell>
               </Table.Row>
-            })}
+            })};
           </Table>
         </Section>
       </Window.Content>
