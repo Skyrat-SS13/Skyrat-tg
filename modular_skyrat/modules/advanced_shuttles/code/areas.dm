@@ -23,6 +23,33 @@
 /area/centcom/interlink/bluie
 	name = "Blueshield's Auxilliary Office"
 
+/area/centcom/interlink/dorms
+	name = "Interlink Dormitories"
+
+/area/centcom/interlink/dorms/one
+	name = "Interlink Dorm 1"
+
+/area/centcom/interlink/dorms/two
+	name = "Interlink Dorm 2"
+
+/area/centcom/interlink/dorms/three
+	name = "Interlink Dorm 3"
+
+/area/centcom/interlink/dorms/bigone
+	name = "Interlink Lodge 1"
+
+/area/centcom/interlink/dorms/bigtwo
+	name = "Interlink Lodge 2"
+
+/area/centcom/interlink/dorms/bigthree
+	name = "Interlink Lodge 3"
+
+/area/centcom/evac
+	name = "Interlink Evacuation Docks"
+
+/area/shuttle/arrival
+	name = "NTV Relay"
+
 /area/shuttle/supply/cockpit
 	name = "NLV Consign Cockpit"
 
