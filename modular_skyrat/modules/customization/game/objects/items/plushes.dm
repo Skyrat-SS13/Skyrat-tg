@@ -351,10 +351,9 @@
 	var/turf/src_turf = get_turf(src)
 	playsound(src_turf, 'sound/items/drink.ogg', 50, TRUE)
 	var/skill_level = user.mind.get_skill_level(/datum/skill/gaming)
-	if(user.ckey == "cameronlancaster" && skill_level <= 6)
-		say(skill_response[6])
-	else
-		say(skill_response[skill_level])
+	if(user.ckey == "cameronlancaster")
+		skill_level = (max(6, skill_level))
+	say(skill_response[skill_level])
 	if(skill_level == 7)
 		playsound(src_turf, 'sound/effects/can_pop.ogg', 80, TRUE)
 		new /obj/effect/abstract/liquid_turf/pwr_gamr(src_turf)
