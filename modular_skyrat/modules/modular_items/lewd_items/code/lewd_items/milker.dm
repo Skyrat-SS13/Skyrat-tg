@@ -113,10 +113,10 @@
 	if(!being_milked.client)
 		to_chat(milker, span_warning("[being_milked] is too busy staring off into space to be milked!"))
 		return FALSE
-	if(!being_milked.client || !being_milked.client.prefs.read_preference(/datum/preference/toggle/master_erp_preferences)) // clients are weird
+	if(!being_milked.client || !being_milked.client?.prefs.read_preference(/datum/preference/toggle/master_erp_preferences)) // clients are weird
 		to_chat(milker, span_warning("[self_suckle ? "You would prefer to leave those alone!" : "[being_milked] would prefer you leave those alone!"]"))
 		return FALSE
-	if(!being_milked.client || !being_milked.client.prefs.read_preference(/datum/preference/toggle/erp/sex_toy)) // I guess its a sextoy!
+	if(!being_milked.client || !being_milked.client?.prefs.read_preference(/datum/preference/toggle/erp/sex_toy)) // I guess its a sextoy!
 		to_chat(milker, span_warning("[self_suckle ? "You would prefer to put your hands somewhere else!" : "[being_milked] would prefer you to keep your hands to yourself!"]"))
 		return FALSE
 	if(!ishuman(being_milked)) // Trying to milk a robot? A megarachnid? *IAN*?
@@ -134,7 +134,7 @@
 	if(!breasts.lactates)
 		to_chat(milker, span_warning("[self_suckle ? "You aren't lactating!" : "[being_milked] doesn't seem to be lactating!"]"))
 		return FALSE
-	if(breasts.internal_fluids.total_volume <= 0)
+	if(breasts.internal_fluids.total_volume <= NONE)
 		to_chat(milker, span_warning("[self_suckle ? "You're out of milk!" : "[being_milked] is fresh out of milk!"]"))
 		return FALSE
 	if(!in_range(being_milked, milker))
