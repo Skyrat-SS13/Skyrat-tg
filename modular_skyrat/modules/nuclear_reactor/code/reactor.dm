@@ -54,8 +54,8 @@
 /obj/item/reactor_fuel_rod/uranium
 	starting_fuel_type = /datum/reactor_fuel_type/uranium
 
-/obj/item/reactor_fuel_rod/uranium
-	starting_fuel_type = /datum/reactor_fuel_type/uranium
+/obj/item/reactor_fuel_rod/plutonium
+	starting_fuel_type = /datum/reactor_fuel_type/plutonium
 
 /obj/item/reactor_fuel_rod/mox
 	starting_fuel_type = /datum/reactor_fuel_type/mox
@@ -72,17 +72,17 @@
 
 /datum/reactor_fuel_type/uranium
 	fuel_name = "uranium-235"
-	overlay_icon_state = "reactor_fuel_uranium"
+	overlay_icon_state = "overlay_uranium"
 	radioactivity = 20
 
 /datum/reactor_fuel_type/plutonium
 	fuel_name = "plutonium-239"
-	overlay_icon_state = "reactor_fuel_plutonium"
+	overlay_icon_state = "overlay_plutonium"
 	radioactivity = 40
 
 /datum/reactor_fuel_type/mox
 	fuel_name = "mox-54"
-	overlay_icon_state = "reactor_fuel_mox"
+	overlay_icon_state = "overlay_mox"
 	radioactivity = 60
 
 /obj/item/reactor_moderator
