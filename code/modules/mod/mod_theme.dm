@@ -280,7 +280,6 @@
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 10, BIO = 10, FIRE = 25, ACID = 25, WOUND = 5)
 	max_heat_protection_temperature = ARMOR_MAX_TEMP_PROTECT
 	min_cold_protection_temperature = ARMOR_MIN_TEMP_PROTECT
-	clothing_traits = list(TRAIT_TRASHMAN)
 	permeability_coefficient = 0.5
 	siemens_coefficient = 0.25
 	complexity_max = DEFAULT_MAX_COMPLEXITY - 5
