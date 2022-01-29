@@ -29,9 +29,13 @@
  *
  * Min players:
  * Raised to accomodate for lower population not being able to cope with the blob.
+ *
+ * Weight:
+ * Decreased to accomodate for the blob being a bit more difficult.
  */
 /datum/round_event_control/blob
 	min_players = 60
+	weight = 3
 
 /**
  * Radiation storm
