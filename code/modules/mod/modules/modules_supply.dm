@@ -204,6 +204,12 @@
 	var/launch_time = 2 SECONDS
 	/// User overlay
 	var/mutable_appearance/lightning
+	
+/obj/item/mod/module/hydraulic/on_suit_activation()
+	ADD_TRAIT(mod.wearer, TRAIT_TRASHMAN, MOD_TRAIT)
+
+/obj/item/mod/module/hydraulic/on_suit_deactivation()
+	REMOVE_TRAIT(mod.wearer, TRAIT_TRASHMAN, MOD_TRAIT)
 
 /obj/item/mod/module/hydraulic/on_select_use(atom/target)
 	. = ..()
