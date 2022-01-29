@@ -31,7 +31,7 @@
 
 ///////////////////////
 /// SOLGOV FASTPASS ///
-// A combination of a "button" and linked turfs, which delete the occupants.
+// A combination of a console and linked turfs, which delete the occupants.
 // -Strictly for use with 911 as their exit from the round on the Interlink-
 /turf/open/floor/plating/elevatorshaft/solgov_gtfo
 	name = "SolGov Fastpass Lift"
