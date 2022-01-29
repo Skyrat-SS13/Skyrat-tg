@@ -362,7 +362,9 @@
 		qdel(src)
 
 /obj/effect/abstract/liquid_turf/pwr_gamr
+	///the starting temp for the liquid
 	var/starting_temp = T20C
+	///the starting mixture for the liquid
 	var/list/starting_mixture = list(/datum/reagent/consumable/pwr_game = 10)
 
 /obj/effect/abstract/liquid_turf/pwr_gamr/Initialize()
