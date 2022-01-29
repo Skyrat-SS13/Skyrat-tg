@@ -92,7 +92,7 @@
 				var/mob/living/living_within = objects_within
 				if(living_within.stat == DEAD)
 					continue
-				if(HAS_TRAIT(M, TRAIT_TRASHMAN))
+				if(HAS_TRAIT(living_within, TRAIT_TRASHMAN))
 					return
 				living_within.adjustBruteLoss(5)
 	/// SKYRAT EDIT END
