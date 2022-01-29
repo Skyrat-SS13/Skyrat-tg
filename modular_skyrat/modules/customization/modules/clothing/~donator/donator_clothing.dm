@@ -1315,3 +1315,11 @@
 	. = ..()
 	if(!isinhands)
 		. += emissive_appearance(icon_file, "[icon_state]-emissive", alpha = src.alpha)
+
+/obj/item/clothing/mask/gas/larpswat
+	name = "Foam Force SWAT Mask"
+	desc = "What seems to be a SWAT mask at first, is actually a gasmask that has replica parts of a SWAT mask made from cheap plastic. Hey at least it looks good if you enjoy looking like a security larper."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
+	icon_state = "larpswat"
+	mutant_variants = NONE

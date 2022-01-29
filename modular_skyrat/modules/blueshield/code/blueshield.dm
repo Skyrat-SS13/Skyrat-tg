@@ -49,13 +49,12 @@
 	jobtype = /datum/job/blueshield
 	uniform = /obj/item/clothing/under/rank/security/blueshield
 	suit = /obj/item/clothing/suit/armor/vest/blueshield
-	suit_store = /obj/item/gun/energy/laser/hellgun/blueshield
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	id = /obj/item/card/id/advanced/centcom
 	shoes = /obj/item/clothing/shoes/jackboots
 	ears = /obj/item/radio/headset/headset_bs/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-	backpack_contents = list(/obj/item/melee/baton/security/loaded = 1)
+	backpack_contents = list(/obj/item/storage/box/gunset/blueshield, /obj/item/melee/baton/security/loaded = 1)
 	implants = list(/obj/item/implant/mindshield)
 	backpack = /obj/item/storage/backpack/blueshield
 	satchel = /obj/item/storage/backpack/satchel/blueshield
@@ -71,6 +70,14 @@
 
 	head = /obj/item/clothing/head/helmet/space/plasmaman/blueshield
 	uniform = /obj/item/clothing/under/plasmaman/blueshield
+
+/obj/item/storage/box/gunset/blueshield
+	name = "Allstar SC-3 PDW 'Hellfire' Gunset"
+	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/storage/box/gunset/blueshield/PopulateContents()
+	. = ..()
+	new /obj/item/gun/energy/laser/hellgun/blueshield(src)
 
 /obj/item/ammo_casing/energy/laser/hellfire/bs
 	projectile_type = /obj/projectile/beam/laser/hellfire

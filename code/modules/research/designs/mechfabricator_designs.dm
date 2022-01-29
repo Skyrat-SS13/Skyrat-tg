@@ -973,16 +973,6 @@
 	build_path = /obj/item/assembly/flash/handheld
 	category = list("Misc")
 
-/datum/design/maint_drone
-	name = "Maintenance Drone"
-	desc = "\"Repairs the station without bothering you!\" is what the marketing says."
-	id = "maint_drone"
-	build_type = MECHFAB
-	materials = list(/datum/material/iron = 800, /datum/material/glass = 350)
-	construction_time = 150
-	build_path = /obj/effect/mob_spawn/ghost_role/drone
-	category = list("Control Interfaces")
-
 //MODsuit stuff
 
 /datum/design/mod_shell
@@ -1341,29 +1331,35 @@
 	materials = list(/datum/material/diamond = 500, /datum/material/glass = 1000)
 	build_path = /obj/item/mod/module/dna_lock
 
-/datum/design/module/mod_circuit
-	name = "MOD Module: Circuit Adapter"
-	id = "mod_circuit"
-	materials = list(/datum/material/glass = 2000)
-	build_path = /obj/item/mod/module/circuit
-	department_type = MODULE_SCIENCE
-
 /datum/design/module/mod_plasma_stabilizer
 	name = "MOD Module: Plasma Stabilizer"
 	id = "mod_plasma"
 	materials = list(/datum/material/plasma = 1000, /datum/material/glass = 1000)
 	build_path = /obj/item/mod/module/plasma_stabilizer
 
+/datum/design/module/mod_glove_translator
+	name = "MOD Module: Glove Translator"
+	id = "mod_sign_radio"
+	materials = list(/datum/material/iron = 750, /datum/material/glass = 500)
+	build_path = /obj/item/mod/module/signlang_radio
+
 /datum/design/module/mod_antigrav
 	name = "MOD Module: Anti-Gravity"
 	id = "mod_antigrav"
-	materials = list(/datum/material/iron = 2500, /datum/material/glass = 2000, /datum/material/uranium = 1000)
+	materials = list(/datum/material/iron = 2500, /datum/material/glass = 2000, /datum/material/uranium = 2000)
 	build_path = /obj/item/mod/module/anomaly_locked/antigrav
 	department_type = MODULE_SCIENCE
 
 /datum/design/module/mod_teleporter
 	name = "MOD Module: Teleporter"
 	id = "mod_teleporter"
-	materials = list(/datum/material/iron = 2500, /datum/material/glass = 2000, /datum/material/bluespace = 1000)
+	materials = list(/datum/material/iron = 2500, /datum/material/glass = 2000, /datum/material/bluespace = 2000)
 	build_path = /obj/item/mod/module/anomaly_locked/teleporter
 	department_type = MODULE_SCIENCE
+
+/datum/design/module/mod_kinesis
+	name = "MOD Module: Kinesis"
+	id = "mod_kinesis"
+	materials = list(/datum/material/iron = 2500, /datum/material/glass = 2000, /datum/material/uranium = 1000, /datum/material/bluespace = 1000)
+	build_path = /obj/item/mod/module/anomaly_locked/kinesis
+	department_type = MODULE_ENGINEERING

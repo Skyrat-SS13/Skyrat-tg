@@ -13,7 +13,8 @@
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP
+		TRAIT_CAN_STRIP,
+		TRAIT_CAN_USE_FLIGHT_POTION,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
@@ -30,8 +31,9 @@
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	payday_modifier = 0.75
-	liked_food = GROSS | MEAT | FRIED
-	disliked_food = VEGETABLES | CLOTH | FRUIT
+	liked_food = SEAFOOD | MEAT | FRUIT
+	disliked_food = NUTS | CLOTH | DAIRY
+	toxic_food = TOXIC
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/akula_parts_greyscale.dmi'
 	limbs_id = SPECIES_AKULA

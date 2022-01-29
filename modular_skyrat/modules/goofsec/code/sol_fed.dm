@@ -74,11 +74,11 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		You SHOULD NOT call Marshals for:\n\
 		Corporate affairs, manhunts, settling arguments, etc.\n\
 		Are you sure you want to call Marshals?",
-	EMERGENCY_RESPONSE_FIRE = "You SHOULD call Firefighters for:\n\
-		Large fires raging through the station with Engineering unable to handle it, etc.\n\
-		You SHOULD NOT call Firefighters for:\n\
-		An assistant playing with matches in a department while Engineering is handling it, etc.\n\
-		Are you sure you want to call Firefighters?"
+	EMERGENCY_RESPONSE_ATMOS = "You SHOULD call Breach Control for:\n\
+		Stationwide atmospherics loss, unending fires filling the hallways, or department-sized breaches with Engineering and Atmospherics unable to handle it, etc. \n\
+		You SHOULD NOT call Breach Control for:\n\
+		A trashcan on fire in the library, a single breached room, heating issues, etc. - especially with capable Engineers/Atmos Techs.\n\
+		Are you sure you want to call Breach Control?"
 ))
 
 /// Internal. Polls ghosts and sends in a team of space cops according to the alert level, accompanied by an announcement.
@@ -102,17 +102,18 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 				[GLOB.call_911_msg]"
 			announcer = "Sol Federation Marshal Department"
 			poll_question = "The station has called for the Marshals. Will you respond?"
-		if(EMERGENCY_RESPONSE_FIRE)
+		if(EMERGENCY_RESPONSE_ATMOS)
 			team_size = 8
-			cops_to_send = /datum/antagonist/ert/request_911/fire
-			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation. We've recieved a request for immediate firefighting support, and we are \
-				sending our best firefighters to support your station.\n\n\
-				If the first responders request that they need SWAT support to do their job, or to report a faulty 911 call, we will send them in at additional cost to your station to the \
+			cops_to_send = /datum/antagonist/ert/request_911/atmos
+			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation's 811 dispatch. We've recieved a report of stationwide structural damage, atmospherics loss, fire, or otherwise, and we are \
+				sending a Breach Control team to support your station.\n\n\
+				If the Breach Control team requests that they need SWAT protection to do their job, or to report a faulty 811 call, we will send them in at additional cost to your station to the \
 				tune of $20,000.\n\n\
 				The transcript of the call is as follows:\n\
 				[GLOB.call_911_msg]"
-			announcer = "Sol Federation Fire Department"
-			poll_question = "The station has called for the fire department. Will you respond?"
+			announcer = "Sol Federation 811 Dispatch - Breach Control"
+			poll_question = "The station has called for a Breach Control team. Will you respond?"
+			cell_phone_number = "911"	//This needs to stay so they can communicate with SWAT
 		if(EMERGENCY_RESPONSE_EMT)
 			team_size = 8
 			cops_to_send = /datum/antagonist/ert/request_911/emt
@@ -323,29 +324,47 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 	id_trim = /datum/id_trim/solgov
 
-/datum/antagonist/ert/request_911/fire
-	name = "Firefighter"
-	role = "Firefighter"
-	department = "Fire"
-	outfit = /datum/outfit/request_911/fire
+/datum/antagonist/ert/request_911/atmos
+	name = "Breach Control Technician"
+	role = "Breach Control Technician"
+	department = "Breach Control"
+	outfit = /datum/outfit/request_911/atmos
 
-/datum/outfit/request_911/fire
-	name = "911 Response: Firefighter"
-	back = /obj/item/storage/backpack/duffelbag/cops
-	uniform = /obj/item/clothing/under/rank/engineering/atmospheric_technician
-	shoes = /obj/item/clothing/shoes/sneakers/yellow
+/datum/outfit/request_911/atmos
+	name = "811 Response: Breach Control"
+	back = /obj/item/mod/control/pre_equipped/atmospheric/breach_control
+	uniform = /obj/item/clothing/under/rank/engineering/engineer/hazard
+	shoes = /obj/item/clothing/shoes/workboots
 	ears = /obj/item/radio/headset/headset_eng
 	head = /obj/item/clothing/head/hardhat/red
-	suit = /obj/item/clothing/suit/fire/firefighter
-	suit_store = /obj/item/tank/internals/oxygen/red
-	mask = /obj/item/clothing/mask/gas
+	mask = /obj/item/clothing/mask/gas/atmos
+	belt = /obj/item/storage/belt/utility/full
+	suit_store = /obj/item/tank/internals/oxygen/yellow
 	id = /obj/item/card/id/advanced/solgov
 	backpack_contents = list(/obj/item/storage/box/survival = 1,
 		/obj/item/extinguisher = 2,
+		/obj/item/storage/box/smart_metal_foam = 2,
 		/obj/item/solfed_reporter/swat_caller = 1,
 		/obj/item/beamout_tool = 1)
-
 	id_trim = /datum/id_trim/solgov
+
+//////////////////////////////
+/// Breach Control MODsuit ///
+/obj/item/mod/control/pre_equipped/atmospheric/breach_control //Just a different kit as 811 wont be raiding Robotics; otherwise the same look (For now???)
+	theme = /datum/mod_theme/atmospheric
+	ui_theme = "neutral"	//Le yellow Sol
+	applied_cell = /obj/item/stock_parts/cell/super
+	initial_modules = list(
+		/obj/item/mod/module/storage/large_capacity,
+		/obj/item/mod/module/welding,
+		/obj/item/mod/module/rad_protection,
+		/obj/item/mod/module/flashlight,
+		/obj/item/mod/module/t_ray,
+		/obj/item/mod/module/tether,
+		/obj/item/mod/module/visor/meson,
+	)
+//////////////////////////////
+//////////////////////////////
 
 /datum/antagonist/ert/request_911/emt
 	name = "Emergency Medical Technician"
@@ -466,6 +485,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	desc = "Use this in-hand to vote to call SolFed Backup. If half your team votes for it, SWAT will be dispatched."
 	icon = 'modular_skyrat/modules/goofsec/icons/reporter.dmi'
 	icon_state = "reporter_off"
+	w_class = WEIGHT_CLASS_SMALL
 	/// Was the reporter turned on?
 	var/activated = FALSE
 	/// What antagonist should be required to use the reporter?
@@ -693,6 +713,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	desc = "Use this to begin the lengthy beam-out  process to return to Sol Federation space. It will bring anyone you are pulling with you."
 	icon = 'modular_skyrat/modules/goofsec/icons/reporter.dmi'
 	icon_state = "beam_me_up_scotty"
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/beamout_tool/attack_self(mob/user, modifiers)
 	. = ..()
