@@ -12,7 +12,7 @@
  * To accomodate for much longer rounds.
  */
 /datum/controller/subsystem/events
-	frequency_lower = 8 MINUTES
+	frequency_lower = 10 MINUTES
 	frequency_upper = 15 MINUTES
 
 /**
