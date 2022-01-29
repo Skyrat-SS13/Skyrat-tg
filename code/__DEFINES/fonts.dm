@@ -21,4 +21,4 @@
 GLOBAL_LIST_INIT(pda_styles, sort_list(list(MONO, VT, ORBITRON, SHARE)))
 
 /// Emoji icon set
-#define EMOJI_SET 'icons/emoji.dmi'
+#define EMOJI_SET 'modular_skyrat/master_files/icons/emoji.dmi' // SKYRAT EDIT - ORIGINAL: 'icons/ui_icons/emoji/emoji.dmi'
