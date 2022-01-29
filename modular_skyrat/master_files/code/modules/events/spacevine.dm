@@ -534,6 +534,32 @@
 		space_turf.ChangeTurf(/turf/open/floor/plating/kudzu)
 		space_turf.color = hue
 
+//Hitting/crossing has a chance to infect you with a disease
+/datum/spacevine_mutation/disease_carrying
+	name = "Disease carrying"
+	hue = "#dcf597"
+	severity = 5
+	quality = NEGATIVE
+
+/datum/spacevine_mutation/disease_carrying/on_hit(obj/structure/spacevine/vine_object, mob/hitter, obj/item/item_used, expected_damage)
+	if(isliving(hitter))
+		var/mob/living/living_hitter = hitter
+		if(isvineimmune(living_hitter))
+			return
+		if(prob(20))
+			var/datum/disease/new_disease = new /datum/disease/advance/random(5, 5)
+			living_hitter.ForceContractDisease(new_disease, FALSE, TRUE)
+	. = expected_damage
+
+/datum/spacevine_mutation/disease_carrying/on_cross(obj/structure/spacevine/vine_object, mob/crosser)
+	if(isliving(crosser))
+		var/mob/living/living_crosser = crosser
+		if(isvineimmune(living_crosser))
+			return
+		if(prob(10))
+			var/datum/disease/new_disease = new /datum/disease/advance/random(5, 5)
+			living_crosser.ForceContractDisease(new_disease, FALSE, TRUE)
+
 /turf/open/floor/plating/kudzu
 	name = "vine flooring"
 	icon = 'modular_skyrat/modules/aesthetics/floors/icons/floors.dmi'
@@ -659,7 +685,6 @@
 				playsound(src, 'sound/weapons/tap.ogg', 50, TRUE)
 		if(BURN)
 			playsound(src.loc, 'sound/items/welder.ogg', 100, TRUE)
-
 
 /// Applies effects when a mob enters the same turf as a vine
 /obj/structure/spacevine/proc/on_entered(datum/source, atom/movable/moving_atom)
@@ -868,7 +893,13 @@
 		for(var/datum/spacevine_mutation/vine_mutation in mutations)
 			vine_mutation.on_spread(src, target_turf) //Only do the on_spread proc if it actually spreads.
 			target_turf = get_step(src, target_dir) //in case turf changes, to make sure no runtimes happen
-		master.spawn_spacevine_piece(target_turf, src)
+		var/obj/structure/spacevine/spawning_vine = master.spawn_spacevine_piece(target_turf, src) //Let's do a cool little animate
+		if(NSCOMPONENT(target_dir))
+			spawning_vine.pixel_y = target_dir == NORTH ? -32 : 32
+			animate(spawning_vine, pixel_y = 0, time = 1 SECONDS)
+		else
+			spawning_vine.pixel_x = target_dir == EAST ? -32 : 32
+			animate(spawning_vine, pixel_x = 0, time = 1 SECONDS)
 
 /obj/structure/spacevine/ex_act(severity, target)
 	var/i
