@@ -318,6 +318,7 @@
 	attack_verb_continuous = list("boops","nuzzles")
 	attack_verb_simple = list("boop", "nuzzle")
 	squeak_override = list('sound/effects/can_open1.ogg' = 1, 'sound/effects/can_open2.ogg' = 1, 'sound/effects/can_open3.ogg' = 1)
+	///the list that is chosen from depending on gaming skill
 	var/static/list/skill_response = list(
 		"Weak! What are you, a mobile gamer?",
 		"Come on, you can do better than that! Play some Orion Trial and try again.",
@@ -327,6 +328,7 @@
 		"Gamer God in the house! Look upon them and weep, console peasants!",
 		"Whoa! Gamer overload! Stand clear!!",
 	)
+	///the list that is chosen from when it hits a human or is hit by something
 	var/static/list/hit_response = list(
 		"Hey, watch the mohawk!",
 		"Easy, I earn my livin' with this face!",
