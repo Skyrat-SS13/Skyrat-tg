@@ -492,8 +492,8 @@
 			. += power * 0.5
 	if(M.reagents.has_reagent(/datum/reagent/toxin/plasma, needs_metabolizing = TRUE))
 		. += power * 0.75
-	if(M.reagents.has_reagent(/datum/reagent/stable_plasma))
-		. += power * 0.5
+	if(M.reagents.has_reagent(/datum/reagent/stable_plasma)) //SKYRAT ADDITION
+		. += power * 0.5 //SKYRAT ADDITION
 
 /datum/symptom/heal/plasma/Heal(mob/living/carbon/M, datum/disease/advance/A, actual_power)
 	var/heal_amt = 4 * actual_power
