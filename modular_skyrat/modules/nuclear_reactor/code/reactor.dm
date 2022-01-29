@@ -29,11 +29,13 @@
 	icon_state = "empty_fuel_rod"
 
 	var/datum/reactor_fuel_type/installed_fuel
+	var/starting_fuel_type
 
 /obj/item/reactor_fuel_rod/Initialize(mapload)
 	. = ..()
-	if(installed_fuel)
-		install_fuel(installed_fuel)
+	if(starting_fuel_type)
+		var/datum/reactor_fuel_type/new_fuel_type = new starting_fuel_type
+		install_fuel(new_fuel_type)
 
 /obj/item/reactor_fuel_rod/proc/install_fuel(datum/reactor_fuel_type/incoming_reactor_fuel)
 	if(installed_fuel)
@@ -41,6 +43,7 @@
 	installed_fuel = incoming_reactor_fuel
 	name = "[incoming_reactor_fuel.fuel_name] fuel rod"
 	desc = "A fuel rod for the GA37W reactor. It is filled with [incoming_reactor_fuel.fuel_name]."
+	AddElement(/datum/element/radioactive)
 	update_overlays()
 
 /obj/item/reactor_fuel_rod/update_overlays()
@@ -49,13 +52,13 @@
 		. += "[installed_fuel.overlay_icon_state]"
 
 /obj/item/reactor_fuel_rod/uranium
-	installed_fuel = /datum/reactor_fuel_type/uranium
+	starting_fuel_type = /datum/reactor_fuel_type/uranium
 
 /obj/item/reactor_fuel_rod/uranium
-	installed_fuel = /datum/reactor_fuel_type/uranium
+	starting_fuel_type = /datum/reactor_fuel_type/uranium
 
 /obj/item/reactor_fuel_rod/mox
-	installed_fuel = /datum/reactor_fuel_type/mox
+	starting_fuel_type = /datum/reactor_fuel_type/mox
 
 /datum/reactor_fuel_type
 	/// The name of the fuel type.
