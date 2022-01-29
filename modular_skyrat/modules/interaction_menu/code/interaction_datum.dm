@@ -157,7 +157,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	target_pleasure = sanitize_integer(json["target_pleasure"], 0, 100, 0)
 	target_pain = sanitize_integer(json["target_pain"], 0, 100, 0)
 	lewd = sanitize_integer(json["lewd"], 0, 1, 0)
-	sexuality = sanitize_text(ijson["sexuality"])
+	sexuality = sanitize_text(json["sexuality"])
 	return TRUE
 
 /datum/interaction/proc/json_save(path)
