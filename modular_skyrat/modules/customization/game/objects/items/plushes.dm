@@ -317,7 +317,7 @@
 	inhand_icon_state = "plushie_zapp"
 	attack_verb_continuous = list("boops","nuzzles")
 	attack_verb_simple = list("boop", "nuzzle")
-	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
+	squeak_override = list('sound/effects/can_open1.ogg' = 1, 'sound/effects/can_open2.ogg' = 1, 'sound/effects/can_open3.ogg' = 1)
 	var/static/list/skill_response = list(
 		"Weak! What are you, a mobile gamer?",
 		"Come on, you can do better than that! Play some Orion Trial and try again.",
@@ -347,10 +347,12 @@
 /obj/item/toy/plush/zapp/attack_self(mob/user)
 	. = ..()
 	var/turf/src_turf = get_turf(src)
-	playsound(src_turf, get_sfx("can_open"), 80, FALSE)
 	playsound(src_turf, 'sound/items/drink.ogg', 50, TRUE)
 	var/skill_level = user.mind.get_skill_level(/datum/skill/gaming)
-	say(skill_response[skill_level])
+	if(user.ckey == "cameronlancaster" && skill_level <= 6)
+		say(skill_response[6])
+	else
+		say(skill_response[skill_level])
 	if(skill_level == 7)
 		playsound(src_turf, 'sound/effects/can_pop.ogg', 80, TRUE)
 		new /obj/effect/abstract/liquid_turf/pwr_gamr(src_turf)
