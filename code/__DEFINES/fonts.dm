@@ -21,8 +21,4 @@
 GLOBAL_LIST_INIT(pda_styles, sort_list(list(MONO, VT, ORBITRON, SHARE)))
 
 /// Emoji icon set
-<<<<<<< HEAD
-#define EMOJI_SET 'modular_skyrat/master_files/icons/emoji.dmi' // SKYRAT EDIT - ORIGINAL: 'icons/emoji.dmi'
-=======
-#define EMOJI_SET 'icons/ui_icons/emoji/emoji.dmi'
->>>>>>> 510ce05992e (Re-organizes the files in the root of the icons/ folder into it's substituents #6441)
+#define EMOJI_SET 'modular_skyrat/master_files/icons/emoji.dmi' // SKYRAT EDIT - ORIGINAL: 'icons/ui_icons/emoji/emoji.dmi'
