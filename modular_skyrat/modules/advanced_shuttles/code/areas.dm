@@ -17,6 +17,12 @@
 /area/centcom/interlink
 	name = "The Interlink"
 
+/area/centcom/interlink/rep
+	name = "Nanotrasen Representative's Auxilliary Office"
+
+/area/centcom/interlink/bluie
+	name = "Blueshield's Auxilliary Office"
+
 /area/shuttle/supply/cockpit
 	name = "NLV Consign Cockpit"
 

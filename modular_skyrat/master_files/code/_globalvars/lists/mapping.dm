@@ -1,0 +1,1 @@
+GLOBAL_LIST_EMPTY(solgov_911_spawn)

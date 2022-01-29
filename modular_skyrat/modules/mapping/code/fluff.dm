@@ -13,6 +13,29 @@
 	trim = /datum/id_trim/away/old
 
 /* ----------------- Lore ----------------- */
+/obj/item/paper/pamphlet/centcom/visitor_info/interlink	//Thats right, Official Interlink Lore. Deal wit it!
+	name = "Visitor Info Pamphlet"
+	info = "<b> Interlink Visitor Information </b><hr>\
+	Greetings, and welcome aboard the Interlink. Due to the ever-increasing use of Hyperspace Lanes for transport of materials and people \
+	to the far reaches of space, various 'stations' or 'space-stops' are needed for refuelling, re-routing, routine ship checks, and of course \
+	food and rest for the crew; this station IS that rest-stop. As your gateway into the growing frontier, you'll find the Interlink equipped \
+	with a multitude of wings for routing of crew to their stations, plenty of docking space for refuelling and repairing, and of course, the \
+	mostly-for-style Hyperlane Gate!<br>\
+	All crew are reminded to please stay clear of the <span style='color:orange'><b>SolGov Fastpass Lift</b></span>, as it is for First Responders \
+	to traverse the station in times of emergency.<hr><hr>\
+	Welcome, Crew, to the <span style='color:blue'><b>Nanotrasen</b></span> wing of the Interlink. You've already gone through all the security checkpoints \
+	on your way here, so all thats left is one final bag and ID check before you're on your way to work for the Company! Simply follow the \
+	<span style='color:blue'>Blue</span> line to your Relay, which will deliver you to your workstation. The <span style='color:green'>Green</span> line will take \
+	you to Cryo, Dormitories, and other Crew Relaxation Areas, and the <span style='color:gray'>White</span> line will take you to the Administrative Offices.<br>\
+	Here in the <span style='color:blue'><b>Nanotrasen</b></span> wing, you'll find several rooms and amenities designed with nothing but the crew's comfort and \
+	relaxation in mind, including:<ul><li>Spare Uniform vending!</li><li>\"Jim Norton's Quebecois Coffee\"!</li><li>Dormitories, with a public pool!</li>\
+	<li>An Arcade!</li><li>A Bio-hall, alternating its environment every shift!</li></ul><br>\
+	The <span style='color:blue'><b>Nanotrasen</b></span> wing is also home to several of the newest innovations from The Company, including most importantly, their \
+	newly upgraded <b>NTV Relay</b>. This shuttle, YOUR shuttle, has been retro-fitted with a prototype <span style='color:purple'>Quantum Pull Engine</span>, moving it rapidly between the \
+	Interlink and its inverse Quantum point, your assigned Station. While the shuttle will take a moment to recharge between jumps, this allows for transport \
+	to entirely seperate starsystems in a matter of seconds!<br>\
+	It is the Company's hope that you not only enjoy your stay, but also \"Have a Secure Day!\""
+
 //Tape subtype for adding ruin lore -- the variables below are the ones you need to change
 /obj/item/tape/ruins
 	name = "tape"

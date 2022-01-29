@@ -23,3 +23,8 @@
 /obj/structure/plaque/static_plaque/golden/commission/assaultops
 	desc = "Spinward Sector Forward Operating Station 13\n'DS-1'\nCommissioned 13/05/2560\n'It's Donk Or Don't'" //Ironic, since Donk Co. Ended their sponsorship.
 	icon_state = "commission_syndie"
+
+
+// The Interlink: added Apr 5, 2021 (#4572), revamped Jan 28, 2022 (#xxxx)
+/obj/structure/plaque/static_plaque/golden/commission/interlink
+	desc = "Spinward Sector Hyperlane Station \n'Interlink'\nCommissioned by SolGov and Nanotrasen 05/04/2561, Fully Remodelled xx/xx/2562\n'Connecting the Stars'"

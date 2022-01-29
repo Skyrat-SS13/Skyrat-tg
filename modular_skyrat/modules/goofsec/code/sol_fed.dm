@@ -143,7 +143,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		//Pick the (un)lucky players
 		var/agents_number = min(team_size, candidates.len)
 
-		var/list/spawnpoints = GLOB.emergencyresponseteamspawn
+		var/list/spawnpoints = GLOB.solgov_911_spawn
 		var/index = 0
 		GLOB.solfed_responder_info[list_to_use][SOLFED_AMT] = agents_number
 		while(agents_number && candidates.len)
@@ -729,3 +729,13 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			qdel(user)
 	else
 		user.balloon_alert(user, "beam-out cancelled")
+
+/obj/effect/landmark/solgov_911
+	name = "911 Response Team"
+	icon_state = "solgov_911"
+	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
+
+/obj/effect/landmark/solgov_911/Initialize(mapload)
+	..()
+	GLOB.solgov_911_spawn += loc
+	return INITIALIZE_HINT_QDEL
