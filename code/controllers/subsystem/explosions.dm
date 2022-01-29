@@ -365,7 +365,13 @@ SUBSYSTEM_DEF(explosions)
 		shake_the_room(epicenter, orig_max_distance, far_dist, devastation_range, heavy_impact_range)
 
 	if(heavy_impact_range > 1)
-		var/datum/effect_system/explosion/E
+		var/datum/effect_system/E // SKYRAT EDIT CHANGE
+		// SKYRAT EDIT ADDITION
+		if(heavy_impact_range < 4)
+			E = /datum/effect_system/explosion_skyrat/medium
+		else
+			E = /datum/effect_system/explosion_skyrat/large
+		// SKYRAT EDIT END
 		if(smoke)
 			E = new /datum/effect_system/explosion/smoke
 		else
