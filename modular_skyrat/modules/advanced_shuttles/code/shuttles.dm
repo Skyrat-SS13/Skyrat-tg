@@ -7,7 +7,7 @@
 	dir = WEST
 	port_direction = SOUTH
 
-	callTime = 30 SECONDS
+	callTime = 20 SECONDS
 	ignitionTime = 6 SECONDS
 	rechargeTime = 20 SECONDS
 
