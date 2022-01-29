@@ -25,6 +25,6 @@
 	icon_state = "commission_syndie"
 
 
-// The Interlink: added Apr 5, 2021 (#4572), revamped Jan 28, 2022 (#xxxx)
+// The Interlink: added Apr 5, 2021 (#4572), revamped Jan 28, 2022 (#11098)
 /obj/structure/plaque/static_plaque/golden/commission/interlink
-	desc = "Spinward Sector Hyperlane Station \n'Interlink'\nCommissioned by SolGov and Nanotrasen 05/04/2561, Fully Remodelled xx/xx/2562\n'Connecting the Stars'"
+	desc = "Spinward Sector Hyperlane Station \n'Interlink'\nCommissioned by SolGov and Nanotrasen 05/04/2561, Fully Remodelled 01/28/2562\n'Connecting the Stars'"
