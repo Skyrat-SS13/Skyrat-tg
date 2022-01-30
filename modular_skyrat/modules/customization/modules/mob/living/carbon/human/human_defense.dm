@@ -16,7 +16,7 @@
 				informed = TRUE
 			switch(severity)
 				if(1)
-					L.receive_damage(EMP_BRUTE_DAMAGE,EMP_BURN_DAMAGE_HEAVY)
+					L.receive_damage(EMP_BRUTE_DAMAGE, EMP_BURN_DAMAGE_HEAVY)
 					stun_time += 2 SECONDS
 				if(2)
 					L.receive_damage(EMP_BRUTE_DAMAGE,EMP_BURN_DAMAGE_LIGHT)
