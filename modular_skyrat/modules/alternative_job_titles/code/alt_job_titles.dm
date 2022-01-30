@@ -64,7 +64,7 @@
 	alt_titles = list("Curator", "Librarian", "Journalist", "Archivist")
 
 /datum/job/customs_agent
-	alt_titles = list("Customs Agent", "Customs Guard", "Cargo Guard")
+	alt_titles = list("Customs Agent", "Customs Guard", "Supply Guard")
 
 /datum/job/cyborg
 	alt_titles = list("Cyborg", "Robot", "Android")
@@ -115,7 +115,7 @@
 	alt_titles = list("Psychologist", "Psychiatrist", "Therapist", "Counsellor")
 
 /datum/job/quartermaster
-	alt_titles = list("Quartermaster", "Deck Chief", "Cargo Foreman", "Head of Cargo", "Chief Requisition Officer")
+	alt_titles = list("Quartermaster", "Deck Chief", "Supply Foreman", "Head of Supply", "Chief Requisition Officer", "Logistics Officer")
 
 /datum/job/research_director
 	alt_titles = list("Research Director", "Silicon Administrator", "Lead Researcher", "Biorobotics Director", "Research Supervisor", "Chief Science Officer")
