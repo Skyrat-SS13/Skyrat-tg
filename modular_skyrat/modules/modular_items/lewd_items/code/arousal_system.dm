@@ -597,7 +597,6 @@
 
 /datum/mood_event/subspace
 	description = span_purple("Everything is so woozy... Pain feels so... Awesome.\n")
-	mood_change = 4
 
 /datum/status_effect/ropebunny
 	id = "ropebunny"
