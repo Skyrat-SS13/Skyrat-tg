@@ -102,14 +102,13 @@
 /datum/brain_trauma/induced_hypnosis/New(phrase)
 	if(!phrase)
 		qdel(src)
-		return
 	hypnotic_phrase = phrase
 	try
 		target_phrase = new("(\\b[REGEX_QUOTE(hypnotic_phrase)]\\b)","ig")
 	catch(var/exception/e)
 		stack_trace("[e] on [e.file]:[e.line]")
 		qdel(src)
-	..()
+	return ..()
 
 /datum/brain_trauma/induced_hypnosis/on_gain()
 	log_game("[key_name(owner)] was hypnogoggled'.")
