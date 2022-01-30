@@ -91,6 +91,8 @@
 
 	for(var/i in linked_tiles)	//Checks all attached tiles, to get a list of the riders.
 		var/mob/living/carbon/human/checked_rider = i
+		if(checked_rider in list_of_riders)	//Dont add dupes
+			continue
 		list_of_riders += checked_rider
 
 	data["list_of_riders"] = list_of_riders
@@ -122,10 +124,10 @@
 
 	message_admins("[ADMIN_LOOKUPFLW(user)] has begun to use the SolGov Interlink Lift - this will remove all riders from the round.")
 	say("SolGov Clearances accepted. Hello, First Responders. Please, take a seat, the FastPass Lift will depart shortly.")
+	for(var/mob/living/carbon/human/rider in list_of_riders)
+		to_chat(rider, span_warning("You get a small pang of anxiety. No going back after this..."))
 	//wait 30 seconds
 
-	for(var/mob/living/carbon/human/rider in linked_tiles)
-		to_chat(rider, span_warning("You get a small pang of anxiety. No going back after this..."))
 
 
 ///Finds valid tiles to use as the 'lift'
@@ -136,7 +138,7 @@
 		linked_tiles += lift_tile
 	if(!linked_tiles)	//Shits fucked, SOMEHOW
 		log_game("[src] has no linked tiles to delete users from!")
-		message_admins("[ADMIN_LOOKUPFLW(src)] has no linked tiles to delete users from! Fix this before 911 is called by spawning /turf/open/floor/plating/elevatorshaft/solgov_gtfo around it!")
+		message_admins("[ADMIN_LOOKUPFLW(src)] has no linked tiles to delete users from! Fix this before 911 is called by spawning /turf/open/floor/plating/elevatorshaft/solgov_gtfo around it, then proc-calling locate_lift_tiles()!")
 
 /obj/item/beamout_tool/attack_self(mob/user, modifiers)
 	. = ..()
