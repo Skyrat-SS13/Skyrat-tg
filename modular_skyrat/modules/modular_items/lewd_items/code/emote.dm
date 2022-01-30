@@ -9,9 +9,9 @@
 /datum/emote/living/carbon/milker/can_run_emote(mob/living/carbon/user, status_check = TRUE, intentional)
 	if(!iscarbon(user) || user.usable_hands < 1)
 		return FALSE
-	if(!user.client || !user.client.prefs?.read_preference(/datum/preference/toggle/master_erp_preferences))
+	if(!user.client || !user.client.prefs.read_preference(/datum/preference/toggle/master_erp_preferences))
 		return FALSE
-	if(!user.client || !user.client.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy)) // I guess its a sextoy!
+	if(!user.client || !user.client.prefs.read_preference(/datum/preference/toggle/erp/sex_toy)) // I guess its a sextoy!
 		return FALSE
 	return ..()
 
