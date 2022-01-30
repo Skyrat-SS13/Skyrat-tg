@@ -99,7 +99,7 @@
 	StartCooldown()
 
 /datum/action/cooldown/learn_bloodchemical
-	name = "Learn Chemical from Blood (5 stat points)"
+	name = "Learn Chemical from Blood (5 chemical points)"
 	cooldown_time = 1 SECONDS
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "bloodchem"
