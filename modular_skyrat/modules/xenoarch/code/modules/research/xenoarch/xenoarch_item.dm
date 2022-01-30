@@ -18,59 +18,78 @@
 		if(!is_curator_job(user.mind?.assigned_role))
 			balloon_alert(user, "must be a curator!")
 			return
+		balloon_alert(user, "starting analysis!")
 		if(!do_after(user, 5 SECONDS, target = src))
 			balloon_alert(user, "stand still!")
 			return
-		balloon_alert(user, "magnified")
+		loc.balloon_alert(user, "magnified!")
 		spawn_magnified(magnified_number)
 		return
 	return ..()
+
+#define ANCIENT_URN 1
+#define ANCIENT_BOWL 2
+#define ANCIENT_CROWN 3
+#define ANCIENT_COIL 4
+#define ANCIENT_LIGHT 5
+#define ANCIENT_CUP 6
+#define ANCIENT_UTENSILS 7
+#define ANCIENT_R_BOWL 8
 
 /obj/item/xenoarch/useless_relic/proc/spawn_magnified(type_number)
 	var/obj/item/xenoarch/useless_relic/magnified/new_item = new(get_turf(src))
 	new_item.icon_state = "useless[type_number]"
 	switch(type_number)
-		if(1)
+		if(ANCIENT_URN)
 			new_item.name = "ancient urn"
 			new_item.desc = "This useless relic is an ancient urn that dates from around [rand(400,600)] years ago. \
 			It has made of a ceramic substance and is clearly crumbling at the edges. Perhaps it has ashes \
 			of someone from long ago."
-		if(2)
+		if(ANCIENT_BOWL)
 			new_item.name = "ancient bowl"
 			new_item.desc = "This useless relic is an ancient bowl that dates from around [rand(400,600)] years ago. \
 			It is made of a bronze alloy and is dented, with some scratches along the inside. Perhaps it could \
 			have had DNA of someone from long ago."
-		if(3)
+		if(ANCIENT_CROWN)
 			new_item.name = "ancient crown"
 			new_item.desc = "This useless relic is an ancient crown that dates from around [rand(900,1100)] years ago. \
 			It is made from some unknown alloy, with small inlets that would have been used for jewels. Perhaps if we \
 			look around, we could find some of those old jewels."
-		if(4)
+		if(ANCIENT_COIL)
 			new_item.name = "ancient coil"
 			new_item.desc = "This useless relic is an ancient coil that dates from around [rand(400,600)] years ago. \
 			It is made of iron and copper. It has some burn marks around the iron rod. Perhaps later on, we could \
 			use it for some machines."
-		if(5)
+		if(ANCIENT_LIGHT)
 			new_item.name = "ancient light"
 			new_item.desc = "This useless relic is an ancient light that dates from around [rand(400,600)] years ago. \
 			It is made of iron and has glass shards around it. It has dents on the iron and clear damage from misuse. \
 			Perhaps we could research this later on to see how the ancients made lights."
-		if(6)
+		if(ANCIENT_CUP)
 			new_item.name = "ancient cup"
 			new_item.desc = "This useless relic is an ancient cup that dates from around [rand(900,1100)] years ago. \
 			It is made of hardened stone. There are small cracks all along the surface, as long as chisel marks. \
 			Perhaps it will give insight into the ancient's eating and drinking habits."
-		if(7)
+		if(ANCIENT_UTENSILS)
 			new_item.name = "ancient utensils"
 			new_item.desc = "These useless relics are ancient utensils that dates from around [rand(900,1100)] years ago. \
 			It is made of hardened stone. There are small cracks all along the surface, as long as chisel marks. \
 			Perhaps it will give insight into the ancient's eating and drinking habits."
-		if(8)
+		if(ANCIENT_R_BOWL)
 			new_item.name = "ancient rock bowl"
 			new_item.desc = "This useless relic is an ancient rock bowl that dates from around [rand(900,1100)] years ago. \
 			It is made of hardened stone. There are small cracks all along the surface, as long as chisel marks. \
 			Perhaps it will give insight into the ancient's eating and drinking habits."
 	qdel(src)
+
+#undef ANCIENT_URN
+#undef ANCIENT_BOWL
+#undef ANCIENT_CROWN
+#undef ANCIENT_COIL
+#undef ANCIENT_LIGHT
+#undef ANCIENT_CUP
+#undef ANCIENT_UTENSILS
+#undef ANCIENT_R_BOWL
 
 /obj/item/xenoarch/useless_relic/magnified
 	name = "magnified useless relic"
