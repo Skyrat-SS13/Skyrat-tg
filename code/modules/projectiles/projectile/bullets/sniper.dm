@@ -2,7 +2,12 @@
 
 /obj/projectile/bullet/p50    /////OVERRIDEN IN MODULAR > BULLETREBALANCE
 	name =".50 bullet"
+<<<<<<< HEAD
 	speed = 0.2 //SKYRAT EDIT: Original value (0.4)
+=======
+	speed = 0.4
+	range = 400 // Enough to travel from one corner of the Z to the opposite corner and then some.
+>>>>>>> 69ad300ba87 (Octuples non-penetrator sniper range (#63859))
 	damage = 70
 	paralyze = 100
 	dismemberment = 50
@@ -33,6 +38,7 @@
 	name = "penetrator round"
 	icon_state = "gauss"
 	damage = 60
+	range = 50
 	projectile_piercing = PASSMOB|PASSVEHICLE
 	projectile_phasing = ~(PASSMOB|PASSVEHICLE)
 	phasing_ignore_direct_target = TRUE
