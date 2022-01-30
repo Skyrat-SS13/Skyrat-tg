@@ -337,7 +337,6 @@ const ParametersSection = (props, context) => {
           // SKYRAT EDIT START - pAIs in MODsuits
           (pAI && !ispAI) ? <Button
             icon="eject"
-            disabled={!pAI || ispAI}
             content="Eject pAI"
             onClick={() => act('remove_pai')}
           /> : <> </>
