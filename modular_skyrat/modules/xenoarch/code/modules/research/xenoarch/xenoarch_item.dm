@@ -110,9 +110,6 @@
 	export_types = list(/obj/item/xenoarch/useless_relic/magnified)
 	include_subtypes = FALSE
 
-/datum/export/xenoarch/useless_relic/magnified/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE) //I really dont want them to feel gimped
-	. = ..()
-
 //broken items
 /obj/item/xenoarch/broken_item
 	name = "broken item"
