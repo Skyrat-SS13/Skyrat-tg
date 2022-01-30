@@ -1132,3 +1132,231 @@
       unobtainable.
   theOOZ:
   - rscadd: Added the emag to OPFOR's item selection
+2022-01-27:
+  AtoriBirb:
+  - bugfix: added the TRAIT_CAN_USE_FLIGHT_POTION to most of the Skyrat races.
+  Ebin-Halcyon:
+  - imageadd: Chrono suit + Honkerative digi sprites
+  - bugfix: Chrono suits are no longer sent to the 4th dimension and now properly
+      have worn sprites
+  ErdinyoBarboza:
+  - bugfix: Tramstation's gulag processing room has been rearranged so prisoners can
+      disembark on their own instead of being trapped.
+  - bugfix: Removed the firelocks in the TramStation SM chamber
+  - bugfix: Makes the screwdriver and wirecutters sprites use the correct versions
+  GoldenAlpharex, Serijas for the Cyborg sprites:
+  - bugfix: Fixed cyborgs re-generating a bunch of icons every time they'd pick a
+      model, with more optimizations to that to come.
+  - code_imp: Made some minor improvements here and there to paper plane code to make
+      it more functional.
+  LT3:
+  - bugfix: Medical cryo cells are now on the correct layer.
+  Melbert:
+  - admin: Comms console hacks by ninjas and traitors (the ones that spawn antags)
+      are now logged (find them in user logs and in the game log!).
+  PapaporoPaprito's sprites:
+  - rscadd: ports some moth wings & antennae from fulp (credit to PapaporoPaprito
+      for the original icons)
+  PositiveEntropy, Axietheaxolotl:
+  - imageadd: Resprites/Reshades the Head of Security's Trenchcoat!
+  - imageadd: Resprites commander caps into peaked caps! Flex your naval prowess with
+      them!
+  - imagedel: Removes the old captain parade tunic, replacing it with Captain's Parade
+      Jacket!
+  SkyratBot:
+  - refactor: the telecommunications server monitor now uses tgui.
+  - bugfix: Made the trash of Ready Donkmeal nicer
+  - bugfix: Updates food spawners to include Boritos, Semki's and Pistachios
+  - balance: Removes the 20 seconds stunlock rng from tourettes.
+  - bugfix: blood barrage no longer has a seizure when you use it
+  - bugfix: Kilo uses regular newscasters instead of security variants
+  - balance: Antagonists cannot roll for thieves anymore, as you already have a larger
+      amount of impact on the round than thief would give you.
+  - admin: Admins no longer roll for thief while they sit around on centcom testing
+      things.
+  - bugfix: Bluespace gas vendors no longer deletes the gases it doesn't transfer
+      when transferring gases.
+  - bugfix: APOTHEOSIS! now forces you standing during your death animation, restoring
+      the old (not forced) standing when I originally added APOTHEOSIS!
+  - rscadd: Separatists now have an antagonist ui!
+  - spellcheck: Renames the MOD component to the MOD circuit adapter core, as it is
+      no longer the only MODsuit-related circuit component.
+  - bugfix: 'The MOD circuit adapter core can now activate inactive MODsuits. qol:
+      The MOD circuit adapter core''s "Selected Module" port is now a string port
+      instead of an entity port. qol: The MOD circuit adapter core now has a "On Module
+      Selected" output signal.'
+  - bugfix: The BCI action component now properly typechecks if it was inserted into
+      a BCI.
+  - bugfix: Whenever radiation shelters are blueprinted and labelled as a "radiation
+      shelter", you can rest easy now that the blueprint has an actual name. It doesn't
+      matter on a day-to-day basis, but it looks a lot nicer for the people working
+      with the blueprints.
+  - bugfix: Heads of Personnel can now be midround thieves, as intended.
+  Snakebittenn:
+  - rscadd: Nanite Slurry has been renovated to passively heal synths and the robolimbs
+      of organics. Take caution to not have more than 20u in your body, though.
+  Tastyfish:
+  - bugfix: Fixes most (hopefully all) Tramstation disposal issues.
+  coldud13:
+  - spellcheck: opfor roundend report objectives are no longer bold
+  jjpark-kb:
+  - rscadd: added disease carrying and plasma generating kudzu mutations
+  tastyfish:
+  - bugfix: Central Command has finally informed the Plexagon vendor that service
+      hallway access exists, allowing HoP's to grant it to ID cards.
+  thestubborn:
+  - rscadd: The Ghost Cafe's detainment room has shown up for some reason. For official
+      use only! Too bad they have terrible locks.
+2022-01-28:
+  CandleJaxx:
+  - rscadd: new tail type unlocked!
+  - rscadd: harpy plushie :o)
+  Ebin-Halcyon:
+  - imageadd: Teshari clothing pack. Color matrix auto generated clothing now look
+      slightly nicer, heads of staff cloaks and more.
+  ErdinyoBarboza:
+  - balance: 'Security Lockers now spawn Vests once more. qol: Detectives now have
+      shades, a camera, a recorder and a custom folder in their wardrobes. qol: Wardens
+      Office''s now spawn with GRANTED and DENIED rubber stamps. Go make paperwork.'
+  - bugfix: All armories now start with more or less the same equipment.
+  - bugfix: All Warden Lockers spawn with the same loadout.
+  - bugfix: Made the KiloStation Execution Chamber non-offensive to Asimov Lawsets
+      and alike.
+  - bugfix: Icebox HoS Office now spawns with  rubber stamp.
+  - bugfix: IceBox & KiloStation & TramStation Detective Office now has 2 Detective
+      Lockers.
+  - bugfix: Spare Vests & Helmets in armory now use proper security sprites.
+  - bugfix: All maps now spawn with Detective & Warden Holobadges in their rooms.
+  Maxymax13:
+  - imageadd: resprites pills
+  SkyratBot:
+  - bugfix: Area definitions for the IceBox and Lavaland Labor Camps have been updated.
+      That means that gulag point-prisoners no longer have a safe haven inside the
+      security portion of IceBox's security wing.
+  - code_imp: Move defines to their local .dm files
+  - code_imp: Remove code/__DEFINES/misc.dm
+  - refactor: Adds some documentation to defines
+  - imageadd: Resprites the mega legion and all legion related mobs
+  - bugfix: restructures some code to make airlocks hackable again
+  - bugfix: Followers of Nar'Sie who hope to summon her can hopefully ascertain the
+      correct area to summon her, as the gambling and gaming dens have now been seperated.
+  - bugfix: You can now remove attachments from weapons without standing across the
+      room
+  - bugfix: DJ Space ruin no longer uses incorrect turfs.
+  - bugfix: The camera in the Ice Box Station Locker Room is no longer inside of a
+      door.
+  - imageadd: New sprites for the Parcel Parceaux, base Mime mask, Mime outfit and
+      skirt, and mime sexy outfit.
+  - imageadd: new sprites for lace-up shoes.
+  - code_imp: Mimes spawn with lace-ups instead of black shoes
+  - balance: Fire Locks now check for atmos issues on their own, rather than leaving
+      it to the Fire Alarm. This should cut down on a single breach turning the main
+      halls into a navigational mess.
+  - balance: Fire Locks will wait five seconds after a reset before triggering again.
+  - tweak: Fire Alarms will still activate all Fire Locks in an area if manually pulled.
+  - tweak: Fire Alarms are still used to reset Fire Locks, but now it's a right-click
+      action.
+  - tweak: Emagging a Fire Alarm will apply the effect to all Fire Locks in its area,
+      behaving roughly the same as before.
+  - tweak: Disabling Fire Detect is also still done at the Fire Alarm and should work
+      closely as it used to.
+  - balance: Right-clicking a closed Fire Lock with a crowbar will open it for exactly
+      two seconds. Holding it open (left click) is unchanged.
+  - balance: 'Firelock emag functions (ignoring atmos detect) is now done by a doorjack
+      on the firelock itself. You can still emag a fire alarm to mute it, though.
+      sprite: Fire Locks now have lights that display the reason they are active.
+      Orange is Hot, Cyan means Cold, and White means a Fire Alarm was pulled.'
+  - balance: CentComm's Mark One SWAT suit's design has been reworked; it now lacks
+      spaceproofing, but it has become significantly faster to move in and retains
+      temperature-proofing. These adjustments have allowed CC to sell them for a lower
+      cost of 1400.
+  - bugfix: Tramstation brig's disposals now has a trunk under it
+  - balance: lowers kilo's bombcap multiplier
+  - bugfix: The warden can no longer consider half of security to be their office
+      on KiloStation.
+  - refactor: Honkbots have been made a subtype of Secbots, which means they trigger
+      phobias of security, and their behavior has additionally been overhauled to
+      work more like Beepsky.
+  - rscadd: 'Introducing: The Lizard''s Gas! A brand new (gas) station for you to
+      go out and refuel your ships and your stomachs. It''s been a while since the
+      power''s been turned on, but everything is just the way it was left all those
+      years ago. Explore!'
+  - rscdel: gasthelizards.dmm has been deleted. you will never see gasthelizards.dmm
+      ever again.
+  - config: since gasthelizards.dmm is removed, the config has been updated as well.
+      make sure it's up-to-date now that we've gotten rid of the dang ol' thing and
+      replaced it with new hotness.
+  - bugfix: Nanotrasen decided to redirect some of the plasma rivers on IceBox station
+      towards the labor camp, helping add another layer of security between the station
+      and those awful, awful prisoners.
+  Wallem:
+  - imageadd: Mailbags have their own sprite instead of borrowing it from book bags.
+  itseasytosee:
+  - bugfix: Robot themed wings will now actually be visible
+  - imageadd: If synths get wings, they will be robot themed.
+  jjpark-kb:
+  - rscadd: added the lobby camera
+  linnpap:
+  - rscadd: Added the ability for flypeople to have hair
+  theOOZ:
+  - code_imp: 'Cyborg skins can have a unique ''tipped'' icon_state remove: Removes
+      the unique effect when Roombas are tipped, sorry- this just doesn''t work anymore'
+2022-01-29:
+  GoldenAlpharex:
+  - bugfix: Firelocks should no longer be spawned from reinforced window spawners
+      if there was already a firelock mapped there.
+  - bugfix: You can now use Skyrat emojis again.
+  Improvedname:
+  - bugfix: Ash drake shapeshift now converts your health like shapeshifting is supposed
+      to
+  RatFromTheJungle:
+  - balance: made the bluespace miner worth 150 crates, or 30k, which is still alot.
+  SkyratBot:
+  - balance: Statues can now phase around when unseen.
+  - bugfix: Fixes being able to load C-4/X-4 into the grenade launcher, and it duplicating
+      when you try to load it
+  - bugfix: APCs will no longer error and complain about something that doesn't actually
+      matter
+  - bugfix: 'Purified shades that get converted to shades now become regular cult
+      shades. qol: Purified soulstones (and the shades inside) can now directly be
+      converted into cult soulstones (and cult shades) with Twisted Construction.'
+  - spellcheck: '"Shade of" does not get duplicated anymore for soulstones under certain
+      conditions'
+  - bugfix: I accidentally doubled the speed of all simple mobs. It's fixed now. I
+      also know how byond's internal movement stuff works now. I hate this codebase
+  - admin: Tool usage is now (config-locked) logged!
+  tf-4:
+  - bugfix: A few tools are no longer invisible.
+  - bugfix: Microfusion cells are no longer immune to EMPs when not in a gun.
+2022-01-30:
+  Melbert:
+  - bugfix: Balloon alerts sourced on turfs work properly.
+  RatFromTheJungle:
+  - rscadd: Adds a crate for the new cargo loader modsuit, and armor to the suit itself.
+  SkyratBot:
+  - bugfix: Thermite will no longer leave an impassable fire tile if the turf beneath
+      it is deleted/deconstructed.
+  - imageadd: Abandoned Kitchens now have a special sprite indicating that they are
+      now abandoned.
+  - bugfix: Attempting to write to paper no longer comically bluescreens.
+  - bugfix: Spiders will now have a randomized number next to their name.
+  - bugfix: If you've been noticing some weirdness in the light as you spacewalk over
+      to the AI Satellite on MetaStation, fear no longer for they have been fixed.
+  - spellcheck: The last ash drake currently residing on the celestial body underneath
+      Ice Box Station no longer thinks it's on lavaland.
+  - bugfix: For those of you into code, some stuff with the icon pathing has been
+      shuffled around so it's no longer in the roots of the icon/ folder. If you aren't
+      into code, that's fine too.
+  - bugfix: Cuffing people as a PAI/ghost controlled beepsky no longer glitches out
+  - balance: Folded bluespace bodybag with dwarves fit into backpack
+  - bugfix: Ice Box Public Mining downstairs now uses proper external airlocks
+  - bugfix: The adjusted versions of the Head of Security's jumpsuit and skirt are
+      now the same colour as the non-adjusted.
+  Vire, san7890, mrmelbert, Sealed101:
+  - bugfix: Autonamed cameras should no longer show static in camera consoles.
+  Zenitheevee:
+  - bugfix: changes a few floor types to their proper subtypes, Removing a fair amount
+      of active turfs at roundstart caused by air-diffs
+  - bugfix: anesthetic closet is now accessible by the Medic's access.
+  theOOZ:
+  - bugfix: Runechat reads the y offset value of the sayer instead of the hearer
