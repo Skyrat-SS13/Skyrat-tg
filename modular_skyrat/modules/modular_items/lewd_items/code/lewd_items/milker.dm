@@ -113,10 +113,10 @@
 	if(!being_milked.client)
 		to_chat(milker, span_warning("[being_milked] is too busy staring off into space to be milked!"))
 		return FALSE
-	if(!being_milked.client || !being_milked.client?.prefs.read_preference(/datum/preference/toggle/master_erp_preferences)) // clients are weird
+	if(!being_milked.client || !being_milked.client.prefs.read_preference(/datum/preference/toggle/master_erp_preferences)) // clients are weird
 		to_chat(milker, span_warning("[self_suckle ? "You would prefer to leave those alone!" : "[being_milked] would prefer you leave those alone!"]"))
 		return FALSE
-	if(!being_milked.client || !being_milked.client?.prefs.read_preference(/datum/preference/toggle/erp/sex_toy)) // I guess its a sextoy!
+	if(!being_milked.client || !being_milked.client.prefs.read_preference(/datum/preference/toggle/erp/sex_toy)) // I guess its a sextoy!
 		to_chat(milker, span_warning("[self_suckle ? "You would prefer to put your hands somewhere else!" : "[being_milked] would prefer you to keep your hands to yourself!"]"))
 		return FALSE
 	if(!ishuman(being_milked)) // Trying to milk a robot? A megarachnid? *IAN*?
