@@ -5,8 +5,9 @@
 	if(typing_indicator)
 		if(model && model.model_features && (R_TRAIT_TALL in model.model_features))
 			//Tallborg stuff
+			if(!robot_resting)
+				indicator.pixel_y = 16
 			indicator.pixel_x = -6
-			indicator.pixel_y = 16
 
 		add_overlay(indicator)
 	else
