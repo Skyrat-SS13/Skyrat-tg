@@ -338,11 +338,11 @@
 		"Cut it out, or I'm telling chat!",
 	)
 
-/obj/item/toy/plush/zapp/attackby(obj/item/I, mob/living/user, params)
+/obj/item/toy/plush/zapp/attackby(obj/item/attacking_item, mob/living/user, params)
 	. = ..()
 	say(pick(hit_response))
 
-/obj/item/toy/plush/zapp/attack(mob/living/M, mob/living/user, params)
+/obj/item/toy/plush/zapp/attack(mob/living/target, mob/living/user, params)
 	. = ..()
 	say(pick(hit_response))
 
