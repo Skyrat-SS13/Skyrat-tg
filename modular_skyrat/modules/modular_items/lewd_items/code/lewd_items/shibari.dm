@@ -133,7 +133,7 @@
 		them.visible_message(span_warning("[user] starts tying [them]'s groin!"),\
 			span_userdanger("[user] starts tying your groin!"),\
 			span_hear("You hear ropes being tightened."))
-		if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+		if(do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 			var/obj/item/stack/shibari_rope/split_rope = null
 			var/slow = 0
 			if(them?.dna?.mutant_bodyparts["taur"])
@@ -170,7 +170,7 @@
 		them.visible_message(span_warning("[user] starts tying [them]'s chest!"),\
 			span_userdanger("[user] starts tying your chest!"),\
 			span_hear("You hear ropes being tightened."))
-		if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+		if(do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 			var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
 			if(split_rope)
 				shibari_body = new(src)
@@ -195,7 +195,7 @@
 		them.visible_message(span_warning("[user] starts tying [them]'s hands!"),\
 			span_userdanger("[user] starts tying your hands!"),\
 			span_hear("You hear ropes being tightened."))
-		if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+		if(do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 			var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
 			if(split_rope)
 				shibari_hands = new(src)
@@ -222,7 +222,7 @@
 		them.visible_message(span_warning("[user] starts tying [them]'s feet!"),\
 			span_userdanger("[user] starts tying your feet!"),\
 			span_hear("You hear ropes being tightened."))
-		if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+		if(do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 			var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
 			if(split_rope)
 				shibari_legs = new(src)
@@ -245,7 +245,7 @@
 			them.visible_message(span_warning("[user] starts tying [them]'s chest!"),\
 				span_userdanger("[user] starts tying your chest!"),\
 				span_hear("You hear ropes being tightened."))
-			if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+			if(do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 				var/slow = 0
 				if(them?.dna?.mutant_bodyparts["taur"])
 					var/datum/sprite_accessory/taur/S = GLOB.sprite_accessories["taur"][them.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
@@ -277,7 +277,7 @@
 			them.visible_message(span_warning("[user] starts tying [them]'s groin!"),\
 				span_userdanger("[user] starts tying your groin!"),\
 				span_hear("You hear ropes being tightened."))
-			if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+			if(do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 				var/obj/item/stack/shibari_rope/split_rope = null
 				var/slow = 0
 				if(them?.dna?.mutant_bodyparts["taur"])
