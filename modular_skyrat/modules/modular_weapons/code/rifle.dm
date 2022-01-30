@@ -14,7 +14,7 @@
 	multiload = 0
 
 /obj/item/gun/ballistic/rifle/irifle
-	name = "Improvised 7.62 Rifle"
+	name = "improvised 7.62 rifle"
 	desc = "An improvised rifle that fires hard-hitting 7.62 bullets."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile40x32.dmi'
 	icon_state = "irifle"
@@ -32,7 +32,7 @@
 // IMPROVISED SHOTGUN //
 ////////////////////////
 //		We're using the rifle because we want the bolt action so we can pretend it's a break action gun.
-//		On Skyrat/Cit there was a need to tone improvised weapons down due to their increidble ease of access.
+//		On Skyrat/Cit there was a need to tone improvised weapons down due to their incredible ease of access.
 //		This is the same nerf, but drastically more fun. We now need two hands to fire and we have a slightly slower action.
 
 /obj/item/gun/ballistic/rifle/ishotgun
@@ -118,7 +118,7 @@
 ////////////////////////
 
 /obj/item/gun/ballistic/automatic/cfa_rifle
-	name = "Cantanheim 7.62 Rifle"
+	name = "Cantanheim 7.62 rifle"
 	desc = "An old semi-automatic rifle used in a war long ago. Uses 7.62 bullets in a ten round magazine."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile40x32.dmi'
 	icon_state = "cfa_rifle"

@@ -158,6 +158,13 @@ GLOBAL_LIST_INIT(xeno_recipes, list ( \
 	. = ..()
 	AddElement(/datum/element/dryable, /obj/item/stack/sheet/leather)
 	AddElement(/datum/element/atmos_sensitive, mapload)
+	AddComponent(/datum/component/grillable, /obj/item/stack/sheet/leather, rand(1 SECONDS, 3 SECONDS), TRUE)
+
+/obj/item/stack/sheet/wethide/burn()
+	visible_message(span_notice("[src] burns up, leaving a sheet of leather behind!"))
+	new /obj/item/stack/sheet/leather(loc) // only one sheet remains to incentivise not burning your wethide to dry it
+	qdel(src)
+
 
 /*
  * Leather SHeet
@@ -183,8 +190,17 @@ GLOBAL_LIST_INIT(leather_recipes, list ( \
 	new/datum/stack_recipe("saddle", /obj/item/saddle, 5), \
 	//SKYRAT EDIT ADDITION BEGIN
 	new/datum/stack_recipe("gear harness", /obj/item/clothing/under/misc/gear_harness, 6), \
-	new/datum/stack_recipe("loincloth", /obj/item/clothing/under/costume/loincloth, 2)
+	new/datum/stack_recipe("loincloth", /obj/item/clothing/under/costume/loincloth, 2), \
+	new/datum/stack_recipe("xenoarch belt", /obj/item/storage/belt/utility/xenoarch, 4), \
 	//SKYRAT EDIT ADDITION END
+	new/datum/stack_recipe("sheriff vest", /obj/item/clothing/accessory/vest_sheriff, 4), \
+	new/datum/stack_recipe_list("cowboy hats", list( \
+		new/datum/stack_recipe("sheriff hat", /obj/item/clothing/head/cowboy_hat_brown, 2), \
+		new/datum/stack_recipe("desperado hat", /obj/item/clothing/head/cowboy_hat_black, 2), \
+		new/datum/stack_recipe("ten-gallon hat", /obj/item/clothing/head/cowboy_hat_white, 2), \
+		new/datum/stack_recipe("deputy hat", /obj/item/clothing/head/cowboy_hat_red, 2), \
+		new/datum/stack_recipe("drifter hat", /obj/item/clothing/head/cowboy_hat_grey, 2), \
+		)),
 ))
 
 /obj/item/stack/sheet/leather/get_main_recipes()

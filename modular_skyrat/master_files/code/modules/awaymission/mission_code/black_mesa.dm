@@ -109,7 +109,6 @@
 
 	minbodytemp = 0
 	maxbodytemp = 1500
-	charger = TRUE
 	loot = list(/obj/item/stack/sheet/bluespace_crystal)
 	alert_sounds = list(
 		'modular_skyrat/master_files/sound/blackmesa/houndeye/he_alert1.ogg',
@@ -118,14 +117,22 @@
 		'modular_skyrat/master_files/sound/blackmesa/houndeye/he_alert4.ogg',
 		'modular_skyrat/master_files/sound/blackmesa/houndeye/he_alert5.ogg'
 	)
+	/// Charging ability
+	var/datum/action/cooldown/mob_cooldown/charge/basic_charge/charge
 
-/mob/living/simple_animal/hostile/blackmesa/xen/houndeye/enter_charge(atom/target)
-	playsound(src, pick(list(
-		'modular_skyrat/master_files/sound/blackmesa/houndeye/charge3.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/houndeye/charge3.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/houndeye/charge3.ogg'
-	)), 100)
+/mob/living/simple_animal/hostile/blackmesa/xen/houndeye/Initialize(mapload)
+	. = ..()
+	charge = new /datum/action/cooldown/mob_cooldown/charge/basic_charge()
+	charge.Grant(src)
+
+/mob/living/simple_animal/hostile/blackmesa/xen/houndeye/Destroy()
+	QDEL_NULL(charge)
 	return ..()
+
+/mob/living/simple_animal/hostile/blackmesa/xen/houndeye/OpenFire()
+	if(client)
+		return
+	charge.Trigger(target)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab
 	name = "headcrab"
@@ -149,22 +156,28 @@
 	melee_damage_upper = 17
 	attack_sound = 'sound/weapons/bite.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
-	charger = TRUE
-	charge_frequency = 3 SECONDS
 	loot = list(/obj/item/stack/sheet/bone)
 	alert_sounds = list(
 		'modular_skyrat/master_files/sound/blackmesa/headcrab/alert1.ogg'
 	)
 	var/is_zombie = FALSE
 	var/mob/living/carbon/human/oldguy
+	/// Charging ability
+	var/datum/action/cooldown/mob_cooldown/charge/basic_charge/charge
 
-/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/handle_charge_target(atom/target)
-	playsound(src, pick(list(
-		'modular_skyrat/master_files/sound/blackmesa/headcrab/attack1.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/headcrab/attack2.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/headcrab/attack3.ogg'
-	)), 100)
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/Initialize(mapload)
+	. = ..()
+	charge = new /datum/action/cooldown/mob_cooldown/charge/basic_charge()
+	charge.Grant(src)
+
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/Destroy()
+	QDEL_NULL(charge)
 	return ..()
+
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/OpenFire()
+	if(client)
+		return
+	charge.Trigger(target)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/death(gibbed)
 	. = ..()
@@ -184,13 +197,13 @@
 					playsound(src, 'modular_skyrat/master_files/sound/blackmesa/headcrab/headbite.ogg', 100)
 					human_to_dunk.death(FALSE)
 
-/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/proc/zombify(mob/living/carbon/human/H)
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/proc/zombify(mob/living/carbon/human/zombified_human)
 	if(is_zombie)
 		return FALSE
 	is_zombie = TRUE
-	if(H.wear_suit)
-		var/obj/item/clothing/suit/armor/A = H.wear_suit
-		maxHealth += A.armor.melee //That zombie's got armor, I want armor!
+	if(zombified_human.wear_suit)
+		var/obj/item/clothing/suit/armor/zombie_suit = zombified_human.wear_suit
+		maxHealth += zombie_suit.armor.melee //That zombie's got armor, I want armor!
 	maxHealth += 40
 	health = maxHealth
 	name = "zombie"
@@ -202,13 +215,12 @@
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	movement_type = GROUND
 	icon_state = ""
-	H.hairstyle = null
-	H.update_hair()
-	H.forceMove(src)
-	oldguy = H
+	zombified_human.hairstyle = null
+	zombified_human.update_hair()
+	zombified_human.forceMove(src)
+	oldguy = zombified_human
 	update_appearance()
-	visible_message(span_warning("The corpse of [H.name] suddenly rises!"))
-	charger = FALSE
+	visible_message(span_warning("The corpse of [zombified_human.name] suddenly rises!"))
 	return TRUE
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/death(gibbed)
@@ -512,17 +524,14 @@
 		/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid
 	)
 
-/obj/effect/mob_spawn/human/black_mesa
+/obj/effect/mob_spawn/ghost_role/human/black_mesa
 	name = "Research Facility Science Team"
-	roundstart = FALSE
-	death = FALSE
+	prompt_name = "a research facility scientist"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/science_team
-	short_desc = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
-	permanent = FALSE
-	can_use_alias = TRUE
-	any_station_species = FALSE
+	you_are_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
+	flavour_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 
 /datum/outfit/science_team
 	name = "Scientist"
@@ -534,19 +543,20 @@
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/science_team
 
-/datum/outfit/science_team/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/science_team/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
 	. = ..()
-	H.faction |= FACTION_BLACKMESA
+	equipped_human.faction |= FACTION_BLACKMESA
 
 /datum/id_trim/science_team
 	assignment = "Science Team Scientist"
 	trim_state = "trim_scientist"
 	access = list(ACCESS_RND)
 
-/obj/effect/mob_spawn/human/black_mesa/guard
+/obj/effect/mob_spawn/ghost_role/human/black_mesa/guard
 	name = "Research Facility Security Guard"
+	prompt_name = "a research facility guard"
 	outfit = /datum/outfit/security_guard
-	short_desc = "You are a security guard in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
+	you_are_text = "You are a security guard in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
 
 /obj/item/clothing/under/rank/security/peacekeeper/junior/sol/blackmesa
 	name = "security guard uniform"
@@ -564,19 +574,20 @@
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/security_guard
 
-/datum/outfit/security_guard/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/security_guard/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
 	. = ..()
-	H.faction |= FACTION_BLACKMESA
+	equipped_human.faction |= FACTION_BLACKMESA
 
 /datum/id_trim/security_guard
 	assignment = "Security Guard"
 	trim_state = "trim_securityofficer"
 	access = list(ACCESS_SEC_DOORS, ACCESS_SECURITY, ACCESS_AWAY_SEC)
 
-/obj/effect/mob_spawn/human/black_mesa/hecu
+/obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu
 	name = "HECU"
+	prompt_name = "a tactical squad member"
 	outfit = /datum/outfit/hecu
-	short_desc = "You are an elite tactical squad deployed into the research facility to contain the infestation. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
+	you_are_text = "You are an elite tactical squad deployed into the research facility to contain the infestation. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
 
 /obj/item/clothing/under/rank/security/officer/hecu
 	name = "hecu jumpsuit"
@@ -595,18 +606,19 @@
 	suit = /obj/item/clothing/suit/armor/vest
 	shoes = /obj/item/clothing/shoes/combat
 	back = /obj/item/storage/backpack
-	backpack_contents = list(/obj/item/radio, /obj/item/gun/ballistic/automatic/assault_rifle/m16, /obj/item/ammo_box/magazine/m16 = 4, /obj/item/storage/firstaid/expeditionary)
+	backpack_contents = list(/obj/item/radio, /obj/item/ammo_box/magazine/m16 = 4, /obj/item/storage/firstaid/expeditionary)
+	r_hand =  /obj/item/gun/ballistic/automatic/assault_rifle/m16
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu
 
-/datum/outfit/hecu/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/hecu/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
 	. = ..()
-	H.faction |= FACTION_XEN
-	H.hairstyle = "Crewcut"
-	H.hair_color = COLOR_ALMOST_BLACK
-	H.facial_hairstyle = "Shaved"
-	H.facial_hair_color = COLOR_ALMOST_BLACK
-	H.update_hair()
+	equipped_human.faction |= FACTION_XEN
+	equipped_human.hairstyle = "Crewcut"
+	equipped_human.hair_color = COLOR_ALMOST_BLACK
+	equipped_human.facial_hairstyle = "Shaved"
+	equipped_human.facial_hair_color = COLOR_ALMOST_BLACK
+	equipped_human.update_hair()
 
 /datum/id_trim/hecu
 	assignment = "HECU Soldier"

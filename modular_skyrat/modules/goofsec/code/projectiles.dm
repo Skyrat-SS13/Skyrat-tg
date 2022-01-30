@@ -48,7 +48,6 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/vintorez)
 	shaded_charge = TRUE
 	cell_type = /obj/item/stock_parts/cell/super
-	supports_swapping_cells = TRUE
 
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/vintorez
 	name = "hardlight bullet vintorez casing"
@@ -85,7 +84,6 @@
 	fire_delay = 10
 	shaded_charge = TRUE
 	cell_type = /obj/item/stock_parts/cell/super
-	supports_swapping_cells = TRUE
 
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/norwind
 	name = "hardlight bullet norwind casing"
@@ -97,7 +95,7 @@
 	damage = 45
 
 /obj/item/gun/energy/ostwind
-	name = "\improper DTR-6 Rifle"
+	name = "\improper DTR-6 rifle"
 	desc = "A 6.3mm special-purpose rifle designed for specific situations."
 	icon = 'modular_skyrat/modules/goofsec/icons/gun_sprites.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
@@ -114,8 +112,6 @@
 	can_bayonet = TRUE
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/ostwind)
 	cell_type = /obj/item/stock_parts/cell/super
-	supports_swapping_cells = TRUE
-
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/ostwind
 	name = "hardlight bullet norostwindwind casing"
 	projectile_type = /obj/projectile/beam/laser/hardlight_bullet/ostwind
@@ -146,7 +142,6 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/pitbull)
 	shaded_charge = TRUE
 	cell_type = /obj/item/stock_parts/cell/super
-	supports_swapping_cells = TRUE
 
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/pitbull
 	name = "hardlight bullet pitbull casing"
@@ -175,7 +170,6 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/pcr)
 	shaded_charge = TRUE
 	cell_type = /obj/item/stock_parts/cell/super
-	supports_swapping_cells = TRUE
 
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/pcr
 	name = "hardlight bullet pcr casing"
@@ -196,7 +190,6 @@
 	fire_delay = 2 SECONDS
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/peacemaker)
 	shaded_charge = TRUE
-	supports_swapping_cells = FALSE
 
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/peacemaker
 	name = "hardlight bullet peacemaker casing"
@@ -208,14 +201,3 @@
 	damage = 60
 */
 
-//////////////RIFLE SPAWNER
-/obj/effect/spawner/armory_spawn/rifles
-	icon_state = "random_rifle"
-	gun_count = 4
-	guns = list(
-		/obj/item/gun/energy/pcr,
-		/obj/item/gun/energy/pitbull,
-		/obj/item/gun/energy/ostwind,
-		/obj/item/gun/energy/norwind,
-		/obj/item/gun/energy/vintorez,
-	)

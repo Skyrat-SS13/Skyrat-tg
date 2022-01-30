@@ -38,7 +38,7 @@
 //        AMMO        //
 ////////////////////////
 /obj/item/ammo_box/magazine/multi_sprite/cfa_snub
-	name = "CFA Snub Magazine (4.6x30mm)"
+	name = "CFA Snub magazine (4.6x30mm)"
 	desc = "An advanced magazine with smart type displays. Alt+click to reskin it."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
 	icon_state = "m46x30"
@@ -64,7 +64,7 @@
 	start_empty = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby
-	name = "CFA Ruby Magazine (10mm Magnum)"
+	name = "CFA Ruby magazine (10mm Magnum)"
 	desc = "An advanced magazine with smart type displays. Alt+click to reskin it."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
 	icon_state = "m10mm"

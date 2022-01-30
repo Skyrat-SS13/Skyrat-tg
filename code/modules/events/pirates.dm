@@ -136,7 +136,7 @@
 		CRASH("Loading pirate ship failed!")
 
 	for(var/turf/A in ship.get_affected_turfs(T))
-		for(var/obj/effect/mob_spawn/human/pirate/spawner in A)
+		for(var/obj/effect/mob_spawn/ghost_role/human/pirate/spawner in A)
 			if(candidates.len > 0)
 				var/mob/our_candidate = candidates[1]
 				spawner.create(our_candidate)
@@ -186,16 +186,17 @@
 	START_PROCESSING(SSobj,src)
 
 /obj/machinery/shuttle_scrambler/interact(mob/user)
-	if(!active)
-		if(tgui_alert(user, "Turning the scrambler on will make the shuttle trackable by GPS. Are you sure you want to do it?", "Scrambler", list("Yes", "Cancel")) == "Cancel")
-			return
-		if(active || !user.canUseTopic(src, BE_CLOSE))
-			return
-		toggle_on(user)
-		update_appearance()
-		send_notification()
-	else
+	if(active)
 		dump_loot(user)
+		return
+	var/scramble_response = tgui_alert(user, "Turning the scrambler on will make the shuttle trackable by GPS. Are you sure you want to do it?", "Scrambler", list("Yes", "Cancel"))
+	if(scramble_response != "Yes")
+		return
+	if(active || !user.canUseTopic(src, BE_CLOSE))
+		return
+	toggle_on(user)
+	update_appearance()
+	send_notification()
 
 //interrupt_research
 /obj/machinery/shuttle_scrambler/proc/interrupt_research()
@@ -295,10 +296,14 @@
 /obj/machinery/piratepad
 	name = "cargo hold pad"
 	icon = 'icons/obj/telescience.dmi'
-	icon_state = "lpad-idle-o"
-	var/idle_state = "lpad-idle-o"
+	icon_state = "lpad-idle-off"
+	///This is the icon_state that this telepad uses when it's not in use.
+	var/idle_state = "lpad-idle-off"
+	///This is the icon_state that this telepad uses when it's warming up for goods teleportation.
 	var/warmup_state = "lpad-idle"
+	///This is the icon_state to flick when the goods are being sent off by the telepad.
 	var/sending_state = "lpad-beam"
+	///This is the cargo hold ID used by the piratepad_control. Match these two to link them together.
 	var/cargo_hold_id
 
 /obj/machinery/piratepad/multitool_act(mob/living/user, obj/item/multitool/I)
@@ -308,15 +313,33 @@
 		I.buffer = src
 		return TRUE
 
+/obj/machinery/piratepad/screwdriver_act_secondary(mob/living/user, obj/item/screwdriver/screw)
+	. = ..()
+	if(!.)
+		return default_deconstruction_screwdriver(user, "lpad-idle-open", "lpad-idle-off", screw)
+
+/obj/machinery/piratepad/crowbar_act_secondary(mob/living/user, obj/item/tool)
+	. = ..()
+	default_deconstruction_crowbar(tool)
+	return TRUE
+
 /obj/machinery/computer/piratepad_control
 	name = "cargo hold control terminal"
+	///Message to display on the TGUI window.
 	var/status_report = "Ready for delivery."
-	var/obj/machinery/piratepad/pad
+	///Reference to the specific pad that the control computer is linked up to.
+	var/datum/weakref/pad_ref
+	///How long does it take to warmup the pad to teleport?
 	var/warmup_time = 100
+	///Is the teleport pad/computer sending something right now? TRUE/FALSE
 	var/sending = FALSE
+	///For the purposes of space pirates, how many points does the control pad have collected.
 	var/points = 0
+	///Reference to the export report totaling all sent objects and mobs.
 	var/datum/export_report/total_report
+	///Callback holding the sending timer for sending the goods after a delay.
 	var/sending_timer
+	///This is the cargo hold ID used by the piratepad machine. Match these two to link them together.
 	var/cargo_hold_id
 
 /obj/machinery/computer/piratepad_control/Initialize(mapload)
@@ -327,7 +350,7 @@
 	. = ..()
 	if (istype(I) && istype(I.buffer,/obj/machinery/piratepad))
 		to_chat(user, span_notice("You link [src] with [I.buffer] in [I] buffer."))
-		pad = I.buffer
+		pad_ref = WEAKREF(I.buffer)
 		return TRUE
 
 /obj/machinery/computer/piratepad_control/LateInitialize()
@@ -335,10 +358,11 @@
 	if(cargo_hold_id)
 		for(var/obj/machinery/piratepad/P in GLOB.machines)
 			if(P.cargo_hold_id == cargo_hold_id)
-				pad = P
+				pad_ref = WEAKREF(P)
 				return
 	else
-		pad = locate() in range(4,src)
+		var/obj/machinery/piratepad/pad = locate() in range(4, src)
+		pad_ref = WEAKREF(pad)
 
 /obj/machinery/computer/piratepad_control/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -349,7 +373,7 @@
 /obj/machinery/computer/piratepad_control/ui_data(mob/user)
 	var/list/data = list()
 	data["points"] = points
-	data["pad"] = pad ? TRUE : FALSE
+	data["pad"] = pad_ref?.resolve() ? TRUE : FALSE
 	data["sending"] = sending
 	data["status_report"] = status_report
 	return data
@@ -358,7 +382,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!pad)
+	if(!pad_ref?.resolve())
 		return
 
 	switch(action)
@@ -379,6 +403,7 @@
 	status_report = "Predicted value: "
 	var/value = 0
 	var/datum/export_report/ex = new
+	var/obj/machinery/piratepad/pad = pad_ref?.resolve()
 	for(var/atom/movable/AM in get_turf(pad))
 		if(AM == pad)
 			continue
@@ -401,6 +426,7 @@
 		return
 
 	var/datum/export_report/ex = new
+	var/obj/machinery/piratepad/pad = pad_ref?.resolve()
 
 	for(var/atom/movable/AM in get_turf(pad))
 		if(AM == pad)
@@ -442,6 +468,15 @@
 	sending = FALSE
 
 /obj/machinery/computer/piratepad_control/proc/start_sending()
+	var/obj/machinery/piratepad/pad = pad_ref?.resolve()
+	if(!pad)
+		status_report = "No pad detected. Build or link a pad."
+		pad.audible_message(span_notice("[pad] beeps."))
+		return
+	if(pad?.panel_open)
+		status_report = "Please screwdrive pad closed to send. "
+		pad.audible_message(span_notice("[pad] beeps."))
+		return
 	if(sending)
 		return
 	sending = TRUE
@@ -457,6 +492,7 @@
 	status_report = "Ready for delivery."
 	if(custom_report)
 		status_report = custom_report
+	var/obj/machinery/piratepad/pad = pad_ref?.resolve()
 	pad.icon_state = pad.idle_state
 	deltimer(sending_timer)
 

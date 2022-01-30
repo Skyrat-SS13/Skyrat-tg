@@ -45,6 +45,13 @@
 		return FALSE
 	else
 		return TRUE
+//Checks for non-medicine reagents in the bloodstream
+/obj/projectile/energy/medical/proc/checkReagents(mob/living/target)
+	var/non_medicine_chems = 0 //Keeps track of how many chemicals in the bloodstream aren't medicine.
+	for(var/reagent in target.reagents.reagent_list)
+		if(!istype(reagent, /datum/reagent/medicine))
+			non_medicine_chems += 1
+	return non_medicine_chems
 //Heals Brute without safety
 /obj/projectile/energy/medical/proc/healBrute(mob/living/target, amount_healed, max_clone, base_disgust)
 	if(!IsLivingHuman(target))
@@ -82,7 +89,12 @@
 /obj/projectile/energy/medical/proc/healTox(mob/living/target, amount_healed)
 	if(!IsLivingHuman(target))
 		return FALSE
-	target.adjustToxLoss(-amount_healed)
+	var/healing_multiplier = 1.5
+	var/non_meds = checkReagents(target)
+	healing_multiplier = healing_multiplier - (non_meds / 4)
+	if(healing_multiplier < 0.25)
+		healing_multiplier = 0.25
+	target.adjustToxLoss(-(amount_healed * healing_multiplier))
 
 //T1 Healing Projectiles//
 //The Basic Brute Heal Projectile//
@@ -392,14 +404,40 @@
 	for(var/obj/structure/bed/roller/medigun in target.loc) //Prevents multiple beds from being spawned on the same turf
 		return FALSE
 	if(HAS_TRAIT(target, TRAIT_FLOORED) || target.resting) //Is the person already on the floor to begin with? Mostly a measure to prevent spamming.
-		new /obj/structure/bed/roller/medigun(target.loc)
+		var /obj/structure/bed/roller/medigun/created_bed = new /obj/structure/bed/roller/medigun(target.loc)
+		if(!target.stat == CONSCIOUS)
+			created_bed.buckle_mob(target)
 		return TRUE
 	else
 		return FALSE
 
+/obj/item/ammo_casing/energy/medical/utility/body_teleporter
+	projectile_type = /obj/projectile/energy/medical/utility/body_teleporter
+	select_name = "teleporter"
+	select_color = "#4400ff"
+	delay = 12 //This is a powerful cell, It'd be good for this to have a bit of a delay
+
+/obj/projectile/energy/medical/utility/body_teleporter
+	name = "bluespace transportation field"
+
+/obj/projectile/energy/medical/utility/body_teleporter/on_hit(mob/living/target)
+	. = ..()
+	if(!ishuman(target) || (target.stat != DEAD && !HAS_TRAIT(target, TRAIT_DEATHCOMA)))
+		return FALSE
+	var/mob/living/carbon/body = target
+	teleport_effect(body.loc)
+	body.forceMove(firer.loc)
+	teleport_effect(body.loc)
+	body.visible_message(span_notice("[body]'s body teleports to [firer]!"))
+
+/obj/projectile/energy/medical/utility/body_teleporter/proc/teleport_effect(var/location)
+	var/datum/effect_system/spark_spread/quantum/sparks = new /datum/effect_system/spark_spread/quantum //uses the teleport effect from quantum pads
+	sparks.set_up(5, 1, get_turf(location))
+	sparks.start()
+
 //Objects Used by medicells.
 /obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
-	name = "Hardlight Hospital Gown"
+	name = "hardlight hospital gown"
 	desc = "A hospital Gown made out of hardlight, you can barely feel it on your body"
 	icon_state = "lgown"
 
@@ -439,7 +477,7 @@
 
 //Hardlight Roller Bed.
 /obj/structure/bed/roller/medigun
-	name = "Hardlight Roller Bed"
+	name = "hardlight roller bed"
 	desc = "A Roller Bed made out of Hardlight"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/misc.dmi'
 	max_integrity = 1

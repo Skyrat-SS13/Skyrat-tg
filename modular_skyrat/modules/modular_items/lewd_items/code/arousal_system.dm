@@ -8,7 +8,6 @@
 #define CUM_FEMALE 2
 // #define ITEM_SLOT_PENIS (1<<20)
 
-#define TRAIT_NYMPHOMANIA	"nymphomania"
 #define TRAIT_MASOCHISM		"masochism"
 #define TRAIT_SADISM		"sadism"
 #define TRAIT_BIMBO 		"bimbo"
@@ -88,7 +87,7 @@
 	..()
 
 /datum/reagent/drug/dopamine/overdose_start(mob/living/carbon/human/M)
-	if(!HAS_TRAIT(M, TRAIT_NYMPHOMANIA) || !HAS_TRAIT(M, TRAIT_BIMBO))
+	if(!HAS_TRAIT(M, TRAIT_BIMBO))
 		to_chat(M, span_userdanger("You don't want to cum anymore!"))
 		SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overgasm, name)
 	return
@@ -234,9 +233,6 @@
 	else
 		arousal -= abs(arous)
 
-	if(HAS_TRAIT(src, TRAIT_NYMPHOMANIA))
-		arousal = min(max(arousal,20),100)
-	else
 		arousal = min(max(arousal,0),100)
 
 /datum/status_effect/aroused
@@ -259,9 +255,6 @@
 
 		if(HAS_TRAIT(H, TRAIT_MASOCHISM))
 			temp_pain -= 0.5
-		if(HAS_TRAIT(H, TRAIT_NYMPHOMANIA))
-			temp_pleasure += 0.25
-			temp_arousal += 0.05
 		if(HAS_TRAIT(H, TRAIT_NEVERBONER))
 			temp_pleasure -= 50
 			temp_arousal -= 50
@@ -323,7 +316,7 @@
 	pleasure = min(max(pleasure,0),100)
 
 // get damage for pain system
-/datum/species/apply_damage(damage, damagetype, def_zone, blocked, mob/living/carbon/human/H, forced, spread_damage, wound_bonus, bare_wound_bonus, sharpness)
+/datum/species/apply_damage(damage, damagetype, def_zone, blocked, mob/living/carbon/human/H, forced, spread_damage, wound_bonus, bare_wound_bonus, sharpness, attack_direction)
 	. = ..()
 	if(!.)
 		return
@@ -612,7 +605,7 @@
 
 //screen alert
 
-/atom/movable/screen/alert/aroused_X
+/atom/movable/screen/alert/aroused_x
 	name = "Aroused"
 	desc = "It's a little hot in here"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
@@ -622,44 +615,44 @@
 	var/pain_level = "small"
 	var/pleasure_level = "small"
 
-/atom/movable/screen/alert/aroused_X/Initialize()
+/atom/movable/screen/alert/aroused_x/Initialize()
 	.=..()
 	pain_overlay = update_pain()
 	pleasure_overlay = update_pleasure()
 
-/atom/movable/screen/alert/aroused_X/proc/update_pain()
+/atom/movable/screen/alert/aroused_x/proc/update_pain()
 	if(pain_level)
 		return mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi', "pain_[pain_level]")
 
-/atom/movable/screen/alert/aroused_X/proc/update_pleasure()
+/atom/movable/screen/alert/aroused_x/proc/update_pleasure()
 	if(pleasure_level)
 		return mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi', "pleasure_[pleasure_level]")
 
-/datum/species/proc/throw_arousalalert(level, atom/movable/screen/alert/aroused_X/arousal_alert, mob/living/carbon/human/targeted_human)
-	targeted_human.throw_alert("aroused", /atom/movable/screen/alert/aroused_X)
+/datum/species/proc/throw_arousalalert(level, atom/movable/screen/alert/aroused_x/arousal_alert, mob/living/carbon/human/targeted_human)
+	targeted_human.throw_alert("aroused", /atom/movable/screen/alert/aroused_x)
 	arousal_alert?.icon_state = level
 	arousal_alert?.update_icon()
 
-/datum/species/proc/overlay_pain(level, atom/movable/screen/alert/aroused_X/arousal_alert)
+/datum/species/proc/overlay_pain(level, atom/movable/screen/alert/aroused_x/arousal_alert)
 	arousal_alert?.cut_overlay(arousal_alert.pain_overlay)
 	arousal_alert?.pain_level = level
 	arousal_alert?.pain_overlay = arousal_alert.update_pain()
 	arousal_alert?.add_overlay(arousal_alert.pain_overlay)
 	arousal_alert?.update_overlays()
 
-/datum/species/proc/overlay_pleasure(level, atom/movable/screen/alert/aroused_X/arousal_alert)
+/datum/species/proc/overlay_pleasure(level, atom/movable/screen/alert/aroused_x/arousal_alert)
 	arousal_alert?.cut_overlay(arousal_alert.pleasure_overlay)
 	arousal_alert?.pleasure_level = level
 	arousal_alert?.pleasure_overlay = arousal_alert.update_pleasure()
 	arousal_alert?.add_overlay(arousal_alert.pleasure_overlay)
 	arousal_alert?.update_overlays()
 
-/datum/species/proc/handle_arousal(mob/living/carbon/human/target_human, atom/movable/screen/alert/aroused_X)
-	var/atom/movable/screen/alert/aroused_X/arousal_alert = target_human.alerts["aroused"]
+/datum/species/proc/handle_arousal(mob/living/carbon/human/target_human, atom/movable/screen/alert/aroused_x)
+	var/atom/movable/screen/alert/aroused_x/arousal_alert = target_human.alerts["aroused"]
 	if(target_human.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		switch(target_human.arousal)
 			if(-100 to 1)
-				target_human.clear_alert("aroused", /atom/movable/screen/alert/aroused_X)
+				target_human.clear_alert("aroused", /atom/movable/screen/alert/aroused_x)
 			if(1 to 25)
 				throw_arousalalert("arousal_small", arousal_alert, target_human)
 			if(25 to 50)

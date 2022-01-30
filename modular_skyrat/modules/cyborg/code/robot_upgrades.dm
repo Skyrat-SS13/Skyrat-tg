@@ -215,3 +215,32 @@
 		qdel(plasteel_energy)
 	for(var/datum/robot_energy_storage/titanium/titanium_energy in borgo.model.storages)
 		qdel(titanium_energy)
+
+// funny borg inducer upgrade
+/obj/item/borg/upgrade/inducer
+	name = "engineering cyborg inducer upgrade"
+	desc = "An inducer device for the engineering cyborg."
+	icon_state = "cyborg_upgrade3"
+	require_model = TRUE
+	model_type = list(/obj/item/robot_model/engineering, /obj/item/robot_model/saboteur)
+	model_flags = BORG_MODEL_ENGINEERING
+
+/obj/item/borg/upgrade/inducer/action(mob/living/silicon/robot/target_robot, user = usr)
+	. = ..()
+	if(.)
+
+		var/obj/item/inducer/cyborg/inducer = locate() in target_robot
+		if(inducer)
+			to_chat(user, span_warning("This unit is already equipped with an inducer module!"))
+			return FALSE
+
+		inducer = new(target_robot.model)
+		target_robot.model.basic_modules += inducer
+		target_robot.model.add_module(inducer, FALSE, TRUE)
+
+/obj/item/borg/upgrade/inducer/deactivate(mob/living/silicon/robot/target_robot, user = usr)
+	. = ..()
+	if (.)
+		var/obj/item/inducer/cyborg/inducer = locate() in target_robot.model
+		if (inducer)
+			target_robot.model.remove_module(inducer, TRUE)

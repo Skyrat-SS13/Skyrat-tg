@@ -20,12 +20,15 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 	var/static/list/quirk_blacklist = list(
 		list("Blind","Nearsighted"),
 		list("Jolly","Depression","Apathetic","Hypersensitive"),
-		list("Ageusia","Vegetarian","Deviant Tastes"),
-		list("Ananas Affinity","Ananas Aversion"),
+		list("Ageusia","Vegetarian","Deviant Tastes", "Gamer"),
+		list("Ananas Affinity","Ananas Aversion", "Gamer"),
 		list("Alcohol Tolerance","Light Drinker"),
 		list("Clown Enjoyer","Mime Fan"),
 		list("Bad Touch", "Friendly"),
 		list("Extrovert", "Introvert"),
+		//SKYRAT EDIT ADDITION BEGIN
+		list("Nerve Stapled", "Pacifist", "Nearsighted")
+		//SKYRAT EDIT ADDITION END
 	)
 
 /datum/controller/subsystem/processing/quirks/Initialize(timeofday)

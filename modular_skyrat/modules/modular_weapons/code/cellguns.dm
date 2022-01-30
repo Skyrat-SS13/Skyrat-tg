@@ -1,5 +1,5 @@
 /obj/item/gun/energy/cell_loaded //The basic cell loaded gun
-	name = "Cell loaded gun"
+	name = "cell-loaded gun"
 	desc = "A energy gun that functions by loading cells for ammo types"
 	var/list/allowed_cells = list() //What kind of cells can the gun load? This can either be an entire type or only very specific cells.
 	var/maxcells = 3 //How much cells can the gun hold.

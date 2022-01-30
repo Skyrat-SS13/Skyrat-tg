@@ -13,7 +13,7 @@
 	subcategory = CAT_MISCFOOD
 
 /datum/crafting_recipe/food/neep_tatty_haggis
-	name = "Haggis with neeps and tatties"
+	name = "Haggis With Neeps and Tatties"
 	reqs = list(
 		/obj/item/food/snacks/breadslice/haggis = 1,
 		/obj/item/food/grown/potato = 1,
@@ -31,3 +31,23 @@
 	)
 	result = /obj/item/food/sausage/battered
 	subcategory = CAT_MISCFOOD
+
+/datum/crafting_recipe/food/shortbread
+	name = "Shortbread"
+	time = 5
+	reqs = list(
+		/datum/reagent/consumable/sugar = 5,
+		/obj/item/food/pastrybase = 1,
+		/obj/item/food/butter = 1
+	)
+	result = /obj/item/food/cookie/shortbread
+	subcategory = CAT_PASTRY
+
+/datum/crafting_recipe/food/tuna
+	name = "Can of Tuna"
+	time = 40
+	reqs = list(/obj/item/stack/sheet/iron = 1,
+		/obj/item/food/fishmeat = 2
+	)
+	result = /obj/item/food/canned/tuna
+	subcategory = CAT_SEAFOOD

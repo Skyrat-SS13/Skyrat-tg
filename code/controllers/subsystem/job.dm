@@ -50,13 +50,14 @@ SUBSYSTEM_DEF(job)
 	 * See [/datum/controller/subsystem/ticker/proc/equip_characters]
 	 */
 	var/list/chain_of_command = list(
-		"Captain" = 1,
-		"Head of Personnel" = 2,
-		"Research Director" = 3,
-		"Chief Engineer" = 4,
-		"Chief Medical Officer" = 5,
-		"Head of Security" = 6,
-		"Quartermaster" = 7)
+		JOB_CAPTAIN = 1,
+		JOB_HEAD_OF_PERSONNEL = 2,
+		JOB_RESEARCH_DIRECTOR = 3,
+		JOB_CHIEF_ENGINEER = 4,
+		JOB_CHIEF_MEDICAL_OFFICER = 5,
+		JOB_HEAD_OF_SECURITY = 6,
+		JOB_QUARTERMASTER = 7,
+	)
 
 	/// If TRUE, some player has been assigned Captaincy or Acting Captaincy at some point during the shift and has been given the spare ID safe code.
 	var/assigned_captain = FALSE
@@ -263,7 +264,7 @@ SUBSYSTEM_DEF(job)
 			JobDebug("GRJ skipping Central Command role, Player: [player], Job: [job]")
 			continue
 		//SKYRAT EDIT END
-		
+
 		// This check handles its own output to JobDebug.
 		if(check_job_eligibility(player, job, "GRJ", add_job_to_log = TRUE) != JOB_AVAILABLE)
 			continue
@@ -332,7 +333,7 @@ SUBSYSTEM_DEF(job)
 
 /// Attempts to fill out all available AI positions.
 /datum/controller/subsystem/job/proc/fill_ai_positions()
-	var/datum/job/ai_job = GetJob("AI")
+	var/datum/job/ai_job = GetJob(JOB_AI)
 	if(!ai_job)
 		return
 	// In byond for(in to) loops, the iteration is inclusive so we need to stop at ai_job.total_positions - 1
@@ -516,17 +517,23 @@ SUBSYSTEM_DEF(job)
 
 //Gives the player the stuff he should have with his rank
 /datum/controller/subsystem/job/proc/EquipRank(mob/living/equipping, datum/job/job, client/player_client)
+	// SKYRAT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+	// The alt job title, if user picked one, or the default
+	var/chosen_title = player_client?.prefs.alt_job_titles[job.title] || job.title
+	var/default_title = job.title
+	// SKYRAT EDIT ADDITION END - job.title
+
 	equipping.job = job.title
 
 	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
 
 	equipping.mind?.set_assigned_role(job)
 	if(player_client)
-		to_chat(player_client, span_infoplain("You are the [job.title]."))
+		to_chat(player_client, span_infoplain("You are the [chosen_title].")) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: to_chat(player_client, span_infoplain("You are the [job.title]."))
 
 	equipping.on_job_equipping(job, player_client?.prefs) //SKYRAT EDIT CHANGE
 
-	job.announce_job(equipping)
+	job.announce_job(equipping, chosen_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: job.announce_job(equipping)
 
 	if(player_client?.holder)
 		if(CONFIG_GET(flag/auto_deadmin_players) || (player_client.prefs?.toggles & DEADMIN_ALWAYS))
@@ -536,7 +543,7 @@ SUBSYSTEM_DEF(job)
 
 
 	if(player_client)
-		to_chat(player_client, span_infoplain("As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this.")) // SKYRAT EDIT ORIGINAL
+		to_chat(player_client, span_infoplain("As the [chosen_title == job.title ? chosen_title : "[chosen_title] ([job.title])"] you answer directly to [job.supervisors]. Special circumstances may change this.")) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: to_chat(player_client, span_infoplain("As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this."))
 
 	job.radio_help_message(equipping)
 
@@ -545,7 +552,11 @@ SUBSYSTEM_DEF(job)
 			to_chat(player_client, "<span class='infoplain'><b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b></span>")
 		if(CONFIG_GET(number/minimal_access_threshold))
 			to_chat(player_client, span_notice("<B>As this station was initially staffed with a [CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] have been added to your ID card.</B>"))
-
+		//SKYRAT EDIT START - ALTERNATIVE_JOB_TITLES
+		if(chosen_title != default_title)
+			to_chat(player_client, span_infoplain(span_warning("Remember that alternate titles are purely for flavor and roleplay.")))
+			to_chat(player_client, span_infoplain("<span class='doyourjobidiot'>Do not use your \"[chosen_title]\" alt title as an excuse to forego your duties as a [job.title].</span>"))
+		//SKYRAT EDIT END
 		var/related_policy = get_policy(job.title)
 		if(related_policy)
 			to_chat(player_client, related_policy)
@@ -554,6 +565,7 @@ SUBSYSTEM_DEF(job)
 		var/mob/living/carbon/human/wageslave = equipping
 		wageslave.mind.add_memory(MEMORY_ACCOUNT, list(DETAIL_ACCOUNT_ID = wageslave.account_id), story_value = STORY_VALUE_SHIT, memory_flags = MEMORY_FLAG_NOLOCATION)
 
+		setup_alt_job_items(wageslave, job, player_client) // SKYRAT EDIT ADDITION - ALTERNATIVE_JOB_TITLES
 
 	job.after_spawn(equipping, player_client)
 
@@ -578,7 +590,7 @@ SUBSYSTEM_DEF(job)
 		return C.holder.auto_deadmin()
 
 /datum/controller/subsystem/job/proc/setup_officer_positions()
-	var/datum/job/J = SSjob.GetJob("Security Officer")
+	var/datum/job/J = SSjob.GetJob(JOB_SECURITY_OFFICER)
 	if(!J)
 		CRASH("setup_officer_positions(): Security officer job is missing")
 
@@ -795,22 +807,41 @@ SUBSYSTEM_DEF(job)
 
 /// Builds various lists of jobs based on station, centcom and additional jobs with icons associated with them.
 /datum/controller/subsystem/job/proc/setup_job_lists()
-	station_jobs = list("Assistant", "Captain", "Head of Personnel", "Bartender", "Cook", "Botanist", "Quartermaster", "Cargo Technician", \
-		"Shaft Miner", "Clown", "Mime", "Janitor", "Curator", "Lawyer", "Chaplain", "Chief Engineer", "Station Engineer", \
-		"Atmospheric Technician", "Chief Medical Officer", "Medical Doctor", "Paramedic", "Chemist", "Geneticist", "Virologist", "Psychologist", \
-		"Research Director", "Scientist", "Roboticist", "Head of Security", "Warden", "Detective", "Security Officer", "Corrections Officer", "Prisoner")
+	station_jobs = list(
+		JOB_ASSISTANT, JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BARTENDER, JOB_BOTANIST,
+		JOB_COOK, JOB_JANITOR, JOB_CLOWN, JOB_MIME, JOB_CURATOR, JOB_LAWYER, JOB_CHAPLAIN,
+		JOB_PSYCHOLOGIST, JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN,
+		JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CHIEF_MEDICAL_OFFICER,
+		JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_VIROLOGIST, JOB_RESEARCH_DIRECTOR,
+		JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_HEAD_OF_SECURITY, JOB_WARDEN,
+		JOB_DETECTIVE, JOB_SECURITY_OFFICER, JOB_CORRECTIONS_OFFICER, JOB_PRISONER,
+	)
 
-	head_of_staff_jobs = list("Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Head of Security", "Captain")
+	head_of_staff_jobs = list(
+		JOB_CAPTAIN,
+		JOB_HEAD_OF_PERSONNEL,
+		JOB_HEAD_OF_SECURITY,
+		JOB_RESEARCH_DIRECTOR,
+		JOB_CHIEF_ENGINEER,
+		JOB_CHIEF_MEDICAL_OFFICER,
+	)
 
-	additional_jobs_with_icons = list("Emergency Response Team Commander", "Security Response Officer", "Engineering Response Officer", "Medical Response Officer", \
-		"Entertainment Response Officer", "Religious Response Officer", "Janitorial Response Officer", "Death Commando", "Security Officer (Engineering)", \
-		"Security Officer (Cargo)", "Security Officer (Medical)", "Security Officer (Science)", "Blueshield", "Nanotrasen Representative", "Shuttle Pilot", \
-		"Security Medic", "Security Sergeant", "Civil Disputes Officer", "Vanguard Operative", "Space Police", "SolGov", "SolGov Liasion", "Barber", "Orderly", "Science Guard", "Bouncer", "Customs Agent", "Engineering Guard")
-	//SKYRAT EDIT ADDITIONS: Blueshield, NT Rep, Shuttle Pilot, Sec Medic, Sec Sarge, CDO, Vanguard Op, Space Police, SolGov, SolGov Liasion, Barber, Orderly, Science Guard, Bouncer, Customs Agent, Engineering Guard
+	additional_jobs_with_icons = list(
+		JOB_ERT_COMMANDER, JOB_ERT_OFFICER, JOB_ERT_ENGINEER, JOB_ERT_MEDICAL_DOCTOR,
+		JOB_ERT_CLOWN, JOB_ERT_CHAPLAIN, JOB_ERT_JANITOR, JOB_ERT_DEATHSQUAD,
+		JOB_SECURITY_OFFICER_MEDICAL, JOB_SECURITY_OFFICER_ENGINEERING, JOB_SECURITY_OFFICER_SCIENCE, JOB_SECURITY_OFFICER_SUPPLY,
+		JOB_SECURITY_MEDIC, JOB_SECURITY_SERGEANT, JOB_CIVIL_DISPUTES_OFFICER,
+		JOB_BOUNCER, JOB_ORDERLY, JOB_SCIENCE_GUARD, JOB_ENGINEERING_GUARD, JOB_CUSTOMS_AGENT,
+		JOB_BLUESHIELD, JOB_NT_REP, JOB_VANGUARD_OPERATIVE,
+		JOB_SPACE_POLICE, JOB_SOLGOV, JOB_SOLGOV_LIASON,
+		JOB_BARBER,
+	)
 
-	centcom_jobs = list("Central Command", "VIP Guest", "Custodian", "Thunderdome Overseer", "CentCom Official", "Medical Officer", "Research Officer", \
-		"Special Ops Officer", "Admiral", "CentCom Commander", "CentCom Bartender", "Private Security Force", "Fleetmaster", "Bridge Officer", "Operations Inspector", \
-		"Deck Crewman")
+	centcom_jobs = list(
+		JOB_CENTCOM, JOB_CENTCOM_OFFICIAL, JOB_CENTCOM_ADMIRAL, JOB_CENTCOM_COMMANDER, JOB_CENTCOM_VIP,
+		JOB_CENTCOM_BARTENDER, JOB_CENTCOM_CUSTODIAN, JOB_CENTCOM_THUNDERDOME_OVERSEER, JOB_CENTCOM_MEDICAL_DOCTOR,
+		JOB_CENTCOM_RESEARCH_OFFICER, JOB_CENTCOM_SPECIAL_OFFICER, JOB_CENTCOM_PRIVATE_SECURITY,
+	)
 
 	job_priorities_to_strings = list(
 		"[JP_LOW]" = "Low Priority",
@@ -940,6 +971,12 @@ SUBSYSTEM_DEF(job)
 	if(possible_job.has_banned_species(player.client.prefs))
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_SPECIES)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_SPECIES
+
+	if(length_char(player.client.prefs.read_preference(/datum/preference/text/flavor_text)) <= FLAVOR_TEXT_CHAR_REQUIREMENT)
+		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_FLAVOUR)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_FLAVOUR
+
+
 	//SKYRAT EDIT END
 
 	// Run this check after is_banned_from since it can query the DB which may sleep.

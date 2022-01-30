@@ -104,6 +104,12 @@
 	desc = "Dedicate yourself to something better. To loyalty, honour, for it only dies when everyone abandons it."
 	icon_state = "arthur_morgan"
 
+/obj/item/clothing/under/pants/tactical
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	name = "tactical pants"
+	desc = "A pair of tactical pants, designed for military use."
+	icon_state = "tactical_pants"
 
 /obj/item/clothing/under/syndicate/tacticool/sensors
 	name = "tacticool turtleneck"

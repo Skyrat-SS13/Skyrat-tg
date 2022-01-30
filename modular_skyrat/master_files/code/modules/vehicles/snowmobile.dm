@@ -9,11 +9,11 @@
     . = ..()
     if (QDELETED(src))
         return
-    var/datum/component/riding/E = LoadComponent(/datum/component/riding)
+    var/datum/component/riding/riding_component = LoadComponent(/datum/component/riding)
     if(snow_typecache[loc.type])
-        E.vehicle_move_delay = 1
+        riding_component.vehicle_move_delay = 1
     else
-        E.vehicle_move_delay = 2
+        riding_component.vehicle_move_delay = 2
 
 /obj/vehicle/ridden/atv/snowmobile/snowcurity
 	name = "security snowmobile"

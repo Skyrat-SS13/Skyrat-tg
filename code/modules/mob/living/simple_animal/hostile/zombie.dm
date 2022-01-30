@@ -22,9 +22,8 @@
 	minbodytemp = 0
 	status_flags = CANPUSH
 	del_on_death = 1
-	var/zombiejob = "Medical Doctor"
+	var/zombiejob = JOB_MEDICAL_DOCTOR
 	var/infection_chance = 0
-	var/obj/effect/mob_spawn/human/corpse/delayed/corpse
 
 /mob/living/simple_animal/hostile/zombie/Initialize(mapload)
 	. = ..()
@@ -44,21 +43,9 @@
 	COMPILE_OVERLAYS(dummy)
 	icon = getFlatIcon(dummy)
 	qdel(dummy)
-
-	corpse = new(src)
-	corpse.outfit = outfit
-	corpse.mob_species = /datum/species/zombie
-	corpse.mob_name = name
 */
+
 /mob/living/simple_animal/hostile/zombie/AttackingTarget()
 	. = ..()
 	if(. && ishuman(target) && prob(infection_chance))
 		try_to_zombie_infect(target)
-
-/mob/living/simple_animal/hostile/zombie/drop_loot()
-	. = ..()
-	if(!no_corpse) //SKYRAT EDIT CHANGE
-		corpse.forceMove(drop_location())
-		corpse.create()
-	else //SKYRAT EDIT CHANGE
-		new /obj/effect/gibspawner/human(loc) //SKYRAT EDIT CHANGE

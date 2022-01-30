@@ -123,11 +123,8 @@
 		if(obj_flags & EMAGGED)
 			patient.monkeyize()
 		else
-			patient.dna.features = list()
-			patient.dna.body_markings = list()
-			patient.dna.mutant_bodyparts = list()
-			patient?.client?.prefs?.apply_prefs_to(patient, TRUE)
-			patient.updateappearance(icon_update=TRUE, mutcolor_update=TRUE, mutations_overlay_update=TRUE)
+			patient?.client?.prefs?.safe_transfer_prefs_to(patient)
+			patient.dna.update_dna_identity()
 			log_game("[key_name(patient)] used a Self-Actualization Device at [loc_name(src)].")
 			if(patient.dna.real_name != original_name)
 				message_admins("[key_name_admin(patient)] has used the Self-Actualization Device, and changed the name of their character. \

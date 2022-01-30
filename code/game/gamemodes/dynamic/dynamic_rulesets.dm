@@ -206,6 +206,19 @@
 		if(!candidate_client.prefs?.read_preference(/datum/preference/toggle/be_antag))
 			candidates.Remove(candidate_player)
 			continue
+
+		if(is_banned_from(candidate_client.ckey, BAN_ANTAGONIST))
+			candidates.Remove(candidate_player)
+			continue
+
+		if(candidate_player.mind.assigned_role.antagonist_restricted)
+			if(candidate_player.mind.assigned_role.restricted_antagonists)
+				if(antag_flag in candidate_player.mind.assigned_role.restricted_antagonists)
+					candidates.Remove(candidate_player)
+					continue
+			else //Assume it's all antagonist roles.
+				candidates.Remove(candidate_player)
+				continue
 		//SKYRAT EDIT END
 
 		if(candidate_client.get_remaining_days(minimum_required_age) > 0)
@@ -231,7 +244,7 @@
 			for(var/role in exclusive_roles)
 				var/datum/job/job = SSjob.GetJob(role)
 
-				if((role in candidate_client.prefs.job_preferences) && SSjob.check_job_eligibility(candidate_player, job, "Dynamic Roundstart TC", add_job_to_log = TRUE))
+				if((role in candidate_client.prefs.job_preferences) && SSjob.check_job_eligibility(candidate_player, job, "Dynamic Roundstart TC", add_job_to_log = TRUE)==JOB_AVAILABLE)
 					exclusive_candidate = TRUE
 					break
 

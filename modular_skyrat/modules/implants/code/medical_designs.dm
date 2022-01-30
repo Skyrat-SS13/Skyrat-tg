@@ -40,9 +40,9 @@
 	construction_time = 200
 	build_path = /obj/item/organ/cyberimp/arm/botany
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SERVICE
 
-/datum/design/cyberimp_NV
+/datum/design/cyberimp_nv
 	name = "Night Vision Eyes"
 	desc = "These cybernetic eyes will give you Night Vision. Big, mean, and green."
 	id = "ci-nv"

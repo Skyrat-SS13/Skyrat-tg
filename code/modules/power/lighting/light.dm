@@ -127,14 +127,17 @@
 	if(!on || status != LIGHT_OK)
 		return
 
-	// var/area/A = get_area(src) SKYRAT EDIT REMOVAL
-	if(emergency_mode || firealarm) //SKYRAT EDIT CHANGE
-		. += mutable_appearance(overlay_icon, "[base_state]_emergency", layer, plane)
+	/* SKYRAT EDIT START - ORIGINAL:
+	var/area/local_area = get_area(src)
+	if(emergency_mode || (local_area?.fire))
+	*/
+	if(emergency_mode || firealarm) // SKYRAT EDIT END
+		. += mutable_appearance(overlay_icon, "[base_state]_emergency")
 		return
 	if(nightshift_enabled)
-		. += mutable_appearance(overlay_icon, "[base_state]_nightshift", layer, plane)
+		. += mutable_appearance(overlay_icon, "[base_state]_nightshift")
 		return
-	. += mutable_appearance(overlay_icon, base_state, layer, plane)
+	. += mutable_appearance(overlay_icon, base_state)
 
 //SKYRAT EDIT ADDITION BEGIN - AESTHETICS
 #define LIGHT_ON_DELAY_UPPER 3 SECONDS
@@ -454,6 +457,7 @@
 			sleep(rand(5, 15))
 		on = (status == LIGHT_OK)
 		update(FALSE, TRUE) //SKYRAT EDIT CHANGE
+		. = TRUE //did we actually flicker?
 	flickering = FALSE
 
 // ai attack - make lights flicker, because why not
@@ -512,7 +516,7 @@
 
 	if(protection_amount > 0 || HAS_TRAIT(user, TRAIT_RESISTHEAT) || HAS_TRAIT(user, TRAIT_RESISTHEATHANDS))
 		to_chat(user, span_notice("You remove the light [fitting]."))
-	else if(istype(user) && user.dna.check_mutation(TK))
+	else if(istype(user) && user.dna.check_mutation(/datum/mutation/human/telekinesis))
 		to_chat(user, span_notice("You telekinetically remove the light [fitting]."))
 	else
 		var/obj/item/bodypart/affecting = electrician.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")

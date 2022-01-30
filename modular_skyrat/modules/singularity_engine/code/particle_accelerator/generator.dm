@@ -1,6 +1,6 @@
 /////SINGULARITY SPAWNER
 /obj/machinery/the_singularitygen
-	name = "Gravitational Singularity Generator"
+	name = "gravitational singularity generator"
 	desc = "An odd device which produces a Gravitational Singularity when set up."
 	icon = 'modular_skyrat/modules/singularity_engine/icons/sing_gen.dmi'
 	icon_state = "TheSingGen"

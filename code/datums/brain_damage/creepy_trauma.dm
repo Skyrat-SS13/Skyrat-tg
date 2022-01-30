@@ -88,7 +88,7 @@
 /datum/brain_trauma/special/obsessed/proc/on_failed_social_interaction()
 	if(QDELETED(owner) || owner.stat >= UNCONSCIOUS)
 		return
-	switch(rand(1, 100)) 
+	switch(rand(1, 100))
 		if(1 to 40)
 			INVOKE_ASYNC(owner, /mob.proc/emote, pick("blink", "blink_r"))
 			owner.blur_eyes(10)
@@ -117,7 +117,11 @@
 /datum/brain_trauma/special/obsessed/proc/find_obsession()
 	var/list/viable_minds = list() //The first list, which excludes hijinks
 	var/list/possible_targets = list() //The second list, which filters out silicons and simplemobs
-	var/static/list/trait_obsessions = list("Mime" = TRAIT_MIME_FAN, "Clown" = TRAIT_CLOWN_ENJOYER, "Chaplain" = TRAIT_SPIRITUAL) //Jobs and their corresponding quirks
+	var/static/list/trait_obsessions = list(
+		JOB_MIME = TRAIT_MIME_FAN,
+		JOB_CLOWN = TRAIT_CLOWN_ENJOYER,
+		JOB_CHAPLAIN = TRAIT_SPIRITUAL,
+	) // Jobs and their corresponding quirks
 	var/list/special_pool = list() //The special list, for quirk-based
 	var/chosen_victim  //The obsession target
 
@@ -126,6 +130,10 @@
 			continue
 		if(!(player.mind.assigned_role.job_flags & JOB_CREW_MEMBER))
 			continue
+		// SKYRAT EDIT ADDITION START - Players in the interlink can't be obsession targets
+		if(SSticker.IsRoundInProgress() && istype(get_area(player), /area/centcom/interlink))
+			continue
+		// SKYRAT EDIT END
 		viable_minds += player.mind
 	for(var/datum/mind/possible_target as anything in viable_minds)
 		if(possible_target != owner && ishuman(possible_target.current))

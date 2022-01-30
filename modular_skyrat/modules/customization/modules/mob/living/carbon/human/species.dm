@@ -20,6 +20,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/markings_alpha = 255
 	///If a species can always be picked in prefs for the purposes of customizing it for ghost roles or events
 	var/always_customizable = FALSE
+	/// If a species requires the player to be a Veteran to be able to pick it.
+	var/veteran_only = FALSE
 	///Flavor text of the species displayed on character creation screeen
 	var/flavor_text = "No description."
 	///Does this species have a special set of overlay clothing, and if so, what is the name of the folder under .../clothing/species that contains them?
@@ -313,6 +315,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/vampire
 	mutant_bodyparts = list()
 
+/datum/species/hemophage
+	mutant_bodyparts = list()
+
 /datum/species/plasmaman
 	mutant_bodyparts = list()
 	can_have_genitals = FALSE
@@ -332,9 +337,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 /datum/species/proc/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
-	returned["mcolor"] = random_short_color()
-	returned["mcolor2"] = random_short_color()
-	returned["mcolor3"] = random_short_color()
+	returned["mcolor"] = random_color()
+	returned["mcolor2"] = random_color()
+	returned["mcolor3"] = random_color()
 	return returned
 
 /datum/species/proc/get_random_mutant_bodyparts(list/features) //Needs features to base the colour off of
@@ -400,6 +405,16 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				C.dropItemToGround(I)
 			else	//Entries in the list should only ever be items or null, so if it's not an item, we can assume it's an empty hand
 				INVOKE_ASYNC(C, /mob/living/carbon.proc/put_in_hands, new mutanthands())
+
+	if(ishuman(C))
+		var/mob/living/carbon/human/human = C
+		for(var/obj/item/organ/external/organ_path as anything in external_organs)
+			//Load a persons preferences from DNA
+			var/feature_key_name = human.dna.features[initial(organ_path.feature_key)]
+
+			var/obj/item/organ/external/new_organ = SSwardrobe.provide_type(organ_path)
+			new_organ.set_sprite(feature_key_name)
+			new_organ.Insert(human)
 
 	for(var/X in inherent_traits)
 		ADD_TRAIT(C, X, SPECIES_TRAIT)

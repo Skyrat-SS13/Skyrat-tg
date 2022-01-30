@@ -39,11 +39,11 @@
 	attack_verb_continuous = list("snuggles", "meowhuggies", "wigglepurrs")
 	attack_verb_simple = list("snuggle", "meowhuggie", "wigglepurr")
 	special_desc_requirement = EXAMINE_CHECK_JOB
-	special_desc_jobs = list("Assistant", "Head of Security")
+	special_desc_jobs = list(JOB_ASSISTANT, JOB_HEAD_OF_SECURITY)
 	special_desc = "There's a pocket under the coat hiding a tiny picture of the medcat plushie and a tinier ribbon diamond ring. D'awww."
 
 /obj/item/toy/plush/sechound
-	name = "Sechound plushie"
+	name = "sec-hound plushie"
 	desc = "An adorable stuffed toy of a SecHound, the trusty Nanotrasen sponsored security borg!"
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_securityk9"
@@ -53,7 +53,7 @@
 	squeak_override = list('sound/machines/beep.ogg' = 1)
 
 /obj/item/toy/plush/medihound
-	name = "Medihound plushie"
+	name = "medi-hound plushie"
 	desc = "An adorable stuffed toy of a medihound."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_medihound"
@@ -63,7 +63,7 @@
 	squeak_override = list('sound/machines/beep.ogg' = 1)
 
 /obj/item/toy/plush/scrubpuppy
-	name = "Scrubpuppy plushie"
+	name = "scrub-puppy plushie"
 	desc = "An adorable stuffed toy of a Scrubpuppy, the hard-working pup who keeps the station clean!"
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_scrubpuppy"
@@ -73,7 +73,7 @@
 	squeak_override = list('sound/machines/beep.ogg' = 1)
 
 /obj/item/toy/plush/meddrake
-	name = "MediDrake Plushie"
+	name = "medi-drake plushie"
 	desc = "An adorable stuffed toy of a Medidrake."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_meddrake"
@@ -83,7 +83,7 @@
 	squeak_override = list('sound/machines/beep.ogg' = 1)
 
 /obj/item/toy/plush/secdrake
-	name = "SecDrake Plushie"
+	name = "sec-drake plushie"
 	desc = "An adorable stuffed toy of a Secdrake."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_secdrake"
@@ -94,7 +94,7 @@
 
 
 /obj/item/toy/plush/fox
-	name = "Fox plushie"
+	name = "fox plushie"
 	desc = "An adorable stuffed toy of a Fox."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_fox"
@@ -104,7 +104,7 @@
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
 
 /obj/item/toy/plush/duffmoth
-	name = "Suspicious moth plushie"
+	name = "suspicious moth plushie"
 	desc = "A plushie depicting a certain moth. He probably got turned into a marketable plushie."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_duffy"
@@ -115,7 +115,7 @@
 	gender = MALE
 
 /obj/item/toy/plush/leaplush
-	name = "Suspicious deer plushie"
+	name = "suspicious deer plushie"
 	desc = "A cute and all too familiar deer."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_lea"
@@ -126,8 +126,8 @@
 	gender = FEMALE
 
 /obj/item/toy/plush/sarmieplush
-	name = "Cosplayer plushie"
-	desc = "A stuffed toy who look like a familiar cosplayer, <b>He looks sad.</b>"
+	name = "cosplayer plushie"
+	desc = "A stuffed toy who look like a familiar cosplayer, <b>he looks sad.</b>"
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_sarmie"
 	inhand_icon_state = "plushie_sarmie"
@@ -137,7 +137,7 @@
 	gender = MALE
 
 /obj/item/toy/plush/sharknet
-	name = "Gluttonous Shark plushie"
+	name = "gluttonous shark plushie"
 	desc = "A heavy plushie of a rather large and hungry shark"
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_sharknet"
@@ -159,7 +159,7 @@
 //End of storage component//
 
 /obj/item/toy/plush/pintaplush
-	name = "Smaller Deer plushie"
+	name = "smaller deer plushie"
 	desc = "A pint-sized cervine with a vacant look."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_pinta"
@@ -170,7 +170,7 @@
 	young = 1 //No.
 
 /obj/item/toy/plush/arcplush
-	name = "Familiar lizard plushie"
+	name = "familiar lizard plushie"
 	desc = "A small plushie that resembles a lizard-- Or, not a lizard, it's mouth seems to go horizontally too.. Are those limbs in it's maw?"
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_arc"
@@ -181,7 +181,7 @@
 	young = 1 //No.
 
 /obj/item/toy/plush/oleplush
-	name = "Irritable goat plushie"
+	name = "irritable goat plushie"
 	desc = "A plush recreation of a purple ovine. Made with 100% real, all natural wool from the creator herself."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_ole"
@@ -193,7 +193,7 @@
 	gender = FEMALE
 
 /obj/item/toy/plush/szaplush
-	name = "Suspicious spider"
+	name = "suspicious spider"
 	desc = "A plushie of a shy looking drider, colored in floortile gray."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_sza"
@@ -204,7 +204,7 @@
 	young = 1 //No.
 
 /obj/item/toy/plush/riffplush
-  name = "Valid plushie"
+  name = "valid plushie"
   desc = "A stuffed toy in the likeness of a peculiar demonic one. Likely turned into a plushie to sell such. They look quite alright about it."
   icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
   icon_state = "plushie_riffy"
@@ -263,7 +263,7 @@
 	inhand_icon_state = "whitecat"
 
 /obj/item/toy/plush/seaduplush
-	name = "Sneed plushie"
+	name = "sneed plushie"
 	desc = "A plushie of a particular, bundled up IPC. Underneath the cloak, you can see a plush recreation of the captain's sabre."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_seadu"
@@ -273,7 +273,7 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/synth_yes.ogg' = 1,'modular_skyrat/modules/emotes/sound/emotes/synth_no.ogg' = 1)
 
 /obj/item/toy/plush/lizzyplush
-	name = "Odd yoga lizzy plushie"
+	name = "odd yoga lizzy plushie"
 	desc = "Brought to you by Nanotrasen Wellness Program is the Yoga Odd Lizzy! He smells vaguely of blueberries, and likely resembles a horrible lover."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_lizzy"
@@ -294,3 +294,84 @@
 	attack_verb_continuous = list("sneezes on", "detains", "tazes")
 	attack_verb_simple = list("sneeze on", "detain", "taze")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/female/female_sneeze.ogg' = 1)
+
+/obj/item/toy/plush/xixi
+	name = "familiar looking harpy plushie"
+	desc = "A plushie depicting a bright-red and oddly familiar looking harpy! The tag on the back lists distributor information and a tagline telling you how it'll add a little 'skree' to your daily grind."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_xixi"
+	inhand_icon_state = "plushie_xixi"
+	attack_verb_continuous = list("caws","skrees","pecks")
+	attack_verb_simple = list("caw","skree","peck")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/peep_once.ogg' = 1,'modular_skyrat/modules/emotes/sound/voice/caw.ogg' = 1,'modular_skyrat/modules/emotes/sound/voice/bawk.ogg' = 1,'modular_skyrat/modules/emotes/sound/emotes/voxscream.ogg' = 1)
+
+/obj/item/toy/plush/zapp
+	name = "Lil' Zapp"
+	desc = "An authentic piece of primo Pwr Game merchandise! \
+			This cuddly companion is the perfect ornament to decorate your battlestation. \
+			He sits upright unassisted, and can hold your headset, webcam, or keep your Pwr Game safe and secure. \
+			This one is outfitted with a state-of-the-art skill reader; \
+			just squeeze him tight and Zapp will tell you if you're ready for the next big game!"
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_zapp"
+	inhand_icon_state = "plushie_zapp"
+	attack_verb_continuous = list("boops","nuzzles")
+	attack_verb_simple = list("boop", "nuzzle")
+	squeak_override = list('sound/effects/can_open1.ogg' = 1, 'sound/effects/can_open2.ogg' = 1, 'sound/effects/can_open3.ogg' = 1)
+	///the list that is chosen from depending on gaming skill
+	var/static/list/skill_response = list(
+		"Weak! What are you, a mobile gamer?",
+		"Come on, you can do better than that! Play some Orion Trial and try again.",
+		"Hey, not bad! Try and work on your APM.",
+		"Nice! You should see about competing in some local tournaments, gamer!",
+		"Now that's real skill! I think you deserve some Pwr Game.",
+		"Gamer God in the house! Look upon them and weep, console peasants!",
+		"Whoa! Gamer overload! Stand clear!!",
+	)
+	///the list that is chosen from when it hits a human or is hit by something
+	var/static/list/hit_response = list(
+		"Hey, watch the mohawk!",
+		"Easy, I earn my livin' with this face!",
+		"Oof, I think my resale value just went down...",
+		"This jacket isn't armored, you know!",
+		"I'm a collectible! You can't treat me like this!",
+		"Cut it out, or I'm telling chat!",
+	)
+
+/obj/item/toy/plush/zapp/attackby(obj/item/attacking_item, mob/living/user, params)
+	. = ..()
+	say(pick(hit_response))
+
+/obj/item/toy/plush/zapp/attack(mob/living/target, mob/living/user, params)
+	. = ..()
+	say(pick(hit_response))
+
+/obj/item/toy/plush/zapp/attack_self(mob/user)
+	. = ..()
+	var/turf/src_turf = get_turf(src)
+	playsound(src_turf, 'sound/items/drink.ogg', 50, TRUE)
+	var/skill_level = user.mind.get_skill_level(/datum/skill/gaming)
+	if(user.ckey == "cameronlancaster")
+		skill_level = (max(6, skill_level))
+	say(skill_response[skill_level])
+	if(skill_level == 7)
+		playsound(src_turf, 'sound/effects/can_pop.ogg', 80, TRUE)
+		new /obj/effect/abstract/liquid_turf/pwr_gamr(src_turf)
+		playsound(src_turf, 'sound/effects/bubbles.ogg', 50, TRUE)
+		qdel(src)
+
+/obj/effect/abstract/liquid_turf/pwr_gamr
+	///the starting temp for the liquid
+	var/starting_temp = T20C
+	///the starting mixture for the liquid
+	var/list/starting_mixture = list(/datum/reagent/consumable/pwr_game = 10)
+
+/obj/effect/abstract/liquid_turf/pwr_gamr/Initialize()
+	. = ..()
+	reagent_list = starting_mixture
+	total_reagents = 0
+	for(var/key in reagent_list)
+		total_reagents += reagent_list[key]
+	temp = starting_temp
+	calculate_height()
+	set_reagent_color_for_liquid()

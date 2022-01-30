@@ -93,7 +93,7 @@
 /obj/item/storage/box/mime/Moved(oldLoc, dir)
 	if (iscarbon(oldLoc))
 		alpha = 0
-	..()
+	return ..()
 
 //Disk boxes
 
@@ -116,19 +116,16 @@
 	var/medipen_type = /obj/item/reagent_containers/hypospray/medipen
 
 /obj/item/storage/box/survival/PopulateContents()
-	new mask_type(src)
-	if(!isnull(medipen_type))
-		new medipen_type(src)
-
-	//SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
-	if(isplasmaman(loc))
-		new /obj/item/tank/internals/plasmaman/belt(src)
-	else if(isvox(loc))
-		new /obj/item/tank/internals/nitrogen/belt/emergency(src)
+	//SKYRAT EDIT ADDITION START - VOX INTERNALS - Honestly I dont know if this has a function any more with wardrobe_removal(), but TG still uses the plasmaman one so better safe than sorry
+	if(!isplasmaman(loc))
+		if(isvox(loc))
+			new /obj/item/tank/internals/nitrogen/belt/emergency(src)
+		else
+			new mask_type(src)
+			new internal_type(src)
 	else
-		new /obj/item/tank/internals/emergency_oxygen(src)
-	//SKYRAT EDIT END
-	new /obj/item/oxygen_candle(src) //SKYRAT EDIT ADDITION
+		new /obj/item/tank/internals/plasmaman/belt(src)
+	//SKYRAT EDIT ADDITION END - VOX INTERNALS
 
 	if(!isnull(medipen_type))
 		new medipen_type(src)
@@ -137,9 +134,25 @@
 		new /obj/item/flashlight/flare(src)
 		new /obj/item/radio/off(src)
 
+	new /obj/item/oxygen_candle(src) //SKYRAT EDIT ADDITION
+
 /obj/item/storage/box/survival/radio/PopulateContents()
 	..() // we want the survival stuff too.
 	new /obj/item/radio/off(src)
+
+/obj/item/storage/box/survival/proc/wardrobe_removal()
+	if(!isplasmaman(loc) && !isvox(loc)) //We need to specially fill the box with plasmaman gear, since it's intended for one	//SKYRAT EDIT: && !isvox(loc)
+		return
+	var/obj/item/mask = locate(mask_type) in src
+	var/obj/item/internals = locate(internal_type) in src
+	//SKYRAT EDIT ADDITION START - VOX INTERNALS - Vox mimic the above and below behavior, removing the redundant mask/internals; they dont mimic the plasma breathing though
+	if(!isvox(loc))
+		new /obj/item/tank/internals/plasmaman/belt(src)
+	else
+		new /obj/item/tank/internals/nitrogen/belt/emergency(src)
+	//SKYRAT EDIT ADDITION END - VOX INTERNALS
+	qdel(mask) // Get rid of the items that shouldn't be
+	qdel(internals)
 
 // Mining survival box
 /obj/item/storage/box/survival/mining
@@ -843,6 +856,14 @@
 		user.put_in_hands(A)
 	else
 		return ..()
+
+/obj/item/storage/box/clown/suicide_act(mob/user)
+	user.visible_message(span_suicide("[user] opens [src] and gets consumed by [p_them()]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	playsound(user, 'sound/misc/scary_horn.ogg', 70, vary = TRUE)
+	var/obj/item/clothing/head/mob_holder/consumed = new(src, user)
+	user.forceMove(consumed)
+	consumed.desc = "It's [user.real_name]! It looks like [user.p_they()] committed suicide!"
+	return OXYLOSS
 
 //////
 /obj/item/storage/box/hug/medical/PopulateContents()
@@ -1594,7 +1615,7 @@
 	desc = "Despite his nickname, this wildlife expert was mainly known as a passionate environmentalist and conservationist, often coming in contact with dangerous wildlife to teach about the beauty of nature."
 
 /obj/item/storage/box/hero/carphunter/PopulateContents()
-	new /obj/item/clothing/suit/space/hardsuit/carp/old(src)
+	new /obj/item/clothing/suit/hooded/carp_costume/spaceproof/old(src)
 	new /obj/item/clothing/mask/gas/carp(src)
 	new /obj/item/knife/hunting(src)
 	new /obj/item/storage/box/papersack/meat(src)
@@ -1650,3 +1671,19 @@
 	new /obj/item/clothing/suit/hooded/chaplain_hoodie(src)
 	new /obj/item/clothing/suit/hooded/chaplain_hoodie(src)
 	new /obj/item/clothing/suit/hooded/chaplain_hoodie(src)
+
+/obj/item/storage/box/mothic_rations
+	name = "Mothic Rations Pack"
+	desc = "A box containing a few rations and some Activin gum, for keeping a starving moth going."
+	icon_state = "moth_package"
+	illustration = null
+
+/obj/item/storage/box/mothic_rations/PopulateContents()
+	for(var/i in 1 to 3)
+		var/randomFood = pick_weight(list(/obj/item/food/sustenance_bar = 10,
+							  /obj/item/food/sustenance_bar/cheese = 5,
+							  /obj/item/food/sustenance_bar/mint = 5,
+							  /obj/item/food/sustenance_bar/neapolitan = 5,
+							  /obj/item/food/sustenance_bar/wonka = 1))
+		new randomFood(src)
+	new /obj/item/storage/box/gum/wake_up(src)

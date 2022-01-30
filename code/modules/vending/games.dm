@@ -34,7 +34,8 @@
 		/obj/item/razor=3,
 		/obj/item/canvas/nineteen_nineteen = 5,
 		/obj/item/canvas/twentythree_nineteen = 5,
-		/obj/item/canvas/twentythree_twentythree = 5
+		/obj/item/canvas/twentythree_twentythree = 5,
+		/obj/item/paint_palette = 3
 	)
 	//SKYRAT EDIT: Adds Ceramic, Glassblowing, and Fishing Skillchips
 	contraband = list(
@@ -52,7 +53,8 @@
 		/obj/item/clothing/shoes/wheelys/rollerskates= 3,
 		/obj/item/melee/skateboard/hoverboard = 1,
 		/obj/item/storage/box/tail_pin = 1,
-		/obj/item/toy/intento = 3
+		/obj/item/toy/intento = 3,
+		/obj/item/toy/captainsaid = 1,
 	)
 	refill_canister = /obj/item/vending_refill/games
 	default_price = PAYCHECK_ASSISTANT

@@ -49,7 +49,7 @@
 	ammo_x_offset = 2
 
 /obj/item/gun/ballistic/shotgun/riot
-	name = "\improper AS-1 'Peacekeeper' Shotgun"
+	name = "\improper AS-1 'Peacekeeper' shotgun"
 	desc = "An Aussec-made 12 gauge riot control pump shotgun fitted with an extended tube and a fixed tactical stock."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
@@ -290,7 +290,7 @@
 	multiload = TRUE
 
 /obj/item/gun/ballistic/automatic/surplus
-	name = "\improper Type-69 Surplus Rifle"
+	name = "\improper Type-69 surplus rifle"
 	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 

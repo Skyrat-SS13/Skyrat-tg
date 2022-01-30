@@ -54,8 +54,8 @@
 	. = ..()
 
 /obj/structure/reagent_dispensers/proc/boom(damage_type = BRUTE, guaranteed_violent = FALSE) //SKYRAT EDIT CHANGE
-	visible_message("<span class='danger'>\The [src] ruptures!</span>")
-	chem_splash(loc, 5, list(reagents))
+	visible_message(span_danger("\The [src] ruptures!"))
+	chem_splash(loc, null, 5, list(reagents))
 	qdel(src)
 
 /obj/structure/reagent_dispensers/deconstruct(disassembled = TRUE)
@@ -153,17 +153,21 @@
 		. = ..()
 	//SKYRAT EDIT END
 
-/obj/structure/reagent_dispensers/peppertank
+/// Wall mounted dispeners, like pepper spray or virus food. Not a normal tank, and shouldn't be able to be turned into a plumbed stationary one.
+/obj/structure/reagent_dispensers/wall
+	anchored = TRUE
+	density = FALSE
+	can_be_tanked = FALSE
+
+/obj/structure/reagent_dispensers/wall/peppertank
 	name = "pepper spray refiller"
 	desc = "Contains condensed capsaicin for use in law \"enforcement.\""
 	icon_state = "pepper"
-	anchored = TRUE
-	density = FALSE
 	reagent_id = /datum/reagent/consumable/condensedcapsaicin
 
-MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/peppertank, 30)
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/peppertank, 30)
 
-/obj/structure/reagent_dispensers/peppertank/Initialize(mapload)
+/obj/structure/reagent_dispensers/wall/peppertank/Initialize(mapload)
 	. = ..()
 	if(prob(1))
 		desc = "IT'S PEPPER TIME, BITCH!"
@@ -209,16 +213,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/peppertank, 30)
 	if(!QDELETED(src))
 		qdel(src)
 
-
-/obj/structure/reagent_dispensers/virusfood
+/obj/structure/reagent_dispensers/wall/virusfood
 	name = "virus food dispenser"
 	desc = "A dispenser of low-potency virus mutagenic."
 	icon_state = "virus_food"
-	anchored = TRUE
-	density = FALSE
 	reagent_id = /datum/reagent/consumable/virus_food
 
-MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/virusfood, 30)
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/virusfood, 30)
 
 /obj/structure/reagent_dispensers/cooking_oil
 	name = "vat of cooking oil"

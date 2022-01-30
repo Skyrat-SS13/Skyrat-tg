@@ -5,7 +5,7 @@
 // Magazines
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat
-	name = "CFA Wildcat Magazine (.32)"
+	name = "CFA Wildcat magazine (.32)"
 	desc = "Magazines taking .32 ammunition; it fits in the CFA Wildcat. Alt+click to reskin it."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
 	icon_state = "smg32"
@@ -34,7 +34,7 @@
 //  Wildcat  //
 ///////////////
 // 3rnd burst .32 calibre, 15 damage.
-// Fills the role of a low damage, high magazine capacity secondary.
+// Fills the role of a low damage, high magazine capacity magdump gun.
 /obj/item/gun/ballistic/automatic/cfa_wildcat
 	name = "\improper CFA Wildcat"
 	desc = "An old SMG, this one is chambered in .32, a very common and dirt-cheap cartridge. It has <b><span style='color:purple'>Cantalan Federal Arms</span></b> etched above the magazine well."
@@ -51,7 +51,7 @@
 	empty_indicator = FALSE
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
 	weapon_weight = WEAPON_MEDIUM
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/gun/ballistic/automatic/cfa_wildcat/no_mag
 	spawnwithmagazine = FALSE
@@ -76,7 +76,7 @@
 	empty_indicator = FALSE
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
 	weapon_weight = WEAPON_MEDIUM
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/gun/ballistic/automatic/cfa_lynx/no_mag
 	spawnwithmagazine = FALSE

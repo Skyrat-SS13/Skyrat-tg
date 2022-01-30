@@ -1,13 +1,14 @@
 /datum/asset/spritesheet/languages
 	name = "languages"
 	early = TRUE
+	cross_round_cachable = TRUE
 
-/datum/asset/spritesheet/languages/register()
+/datum/asset/spritesheet/languages/create_spritesheets()
 	var/list/to_insert = list()
 
 	if(!GLOB.all_languages.len)
-		for(var/L in subtypesof(/datum/language))
-			var/datum/language/language = L
+		for(var/iterated_language in subtypesof(/datum/language))
+			var/datum/language/language = iterated_language
 			if(!initial(language.key))
 				continue
 
@@ -19,13 +20,11 @@
 
 	for (var/language_name in GLOB.all_languages)
 		var/datum/language/language = GLOB.language_datum_instances[language_name]
-		var/icon/language_icon = icon(language.icon, icon_state=language.icon_state)
+		var/icon/language_icon = icon(language.icon, icon_state = language.icon_state)
 		to_insert[sanitize_css_class_name(language.name)] = language_icon
 
 	for (var/spritesheet_key in to_insert)
 		Insert(spritesheet_key, to_insert[spritesheet_key])
-
-	return ..()
 
 /// Middleware to handle languages
 /datum/preference_middleware/languages

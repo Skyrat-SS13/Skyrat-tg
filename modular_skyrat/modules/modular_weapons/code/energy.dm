@@ -29,7 +29,7 @@
 // Similar to the HoS's laser. Fires a bouncing non-lethal, lethal and knockdown projectile.
 
 /obj/item/gun/energy/e_gun/cfa_phalanx
-	name = "\improper Mk.II Phalanx Plasma Blaster"
+	name = "\improper Mk.II Phalanx plasma blaster"
 	desc = "Fires a disabling and lethal bouncing projectile, as well as a special muscle-seizing projectile that knocks targets down. It has <b><span style='color:purple'>Cantalan Federal Arms</span></b> etched into the grip."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "phalanx1"
@@ -47,7 +47,7 @@
 // Identical to a heavy laser.
 
 /obj/item/gun/energy/laser/cfa_paladin
-	name = "\improper Mk.IV Paladin Plasma Carbine"
+	name = "\improper Mk.IV Paladin plasma carbine"
 	desc = "Essentially a handheld laser cannon. This is solely for killing, and it's dual-laser system reflects that. It has <b><span style='color:purple'>Cantalan Federal Arms</span></b> etched into the grip."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "paladin"
@@ -193,7 +193,7 @@
 // Also allows the benefits of lasers (blobs strains, xenos) over bullets to be used with ballistic gunplay.
 
 /obj/item/ammo_casing/caseless/laser
-	name = "Type I Plasma Projectile"
+	name = "type I plasma projectile"
 	desc = "A chemical mixture that once triggered, creates a deadly projectile, melting it's own casing in the process."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
 	icon_state = "plasma_shell"
@@ -203,7 +203,7 @@
 	projectile_type = /obj/projectile/beam/laser/single
 
 /obj/item/ammo_casing/caseless/laser/double
-	name = "Type II Plasma Projectile"
+	name = "type II plasma projectile"
 	desc = "A chemical mixture that once triggered, creates a deadly projectile, melting it's own casing in the process."
 	icon_state = "plasma_shell2"
 	worn_icon_state = "shell"
@@ -212,7 +212,7 @@
 	projectile_type = /obj/projectile/beam/laser/double
 
 /obj/item/ammo_casing/caseless/laser/bounce
-	name = "Type III Reflective Projectile (Lethal)"
+	name = "type III reflective projectile (Lethal)"
 	desc = "A chemical mixture that once triggered, creates a deadly bouncing projectile, melting it's own casing in the process."
 	icon_state = "bounce_shell"
 	worn_icon_state = "shell"
@@ -221,7 +221,7 @@
 	projectile_type = /obj/projectile/beam/laser/bounce
 
 /obj/item/ammo_casing/caseless/laser/bounce/disabler
-	name = "Type III Reflective Projectile (Disabler)"
+	name = "type III reflective projectile (Disabler)"
 	desc = "A chemical mixture that once triggered, creates bouncing disabler projectile, melting it's own casing in the process."
 	icon_state = "disabler_shell"
 	projectile_type = /obj/projectile/beam/disabler/bounce

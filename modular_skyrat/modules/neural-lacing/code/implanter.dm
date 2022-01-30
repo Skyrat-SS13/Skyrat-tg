@@ -4,7 +4,7 @@
 	starting_organ = /obj/item/organ/corticalstack
 
 /obj/item/organ/corticalstack/syndicate
-	name = "Blood-Red Cortical Stack"
+	name = "blood-red cortical stack"
 	desc = "A strange, crystalline storage device containing 'DHF', digitised conciousness. This one has after-market modifications."
 	invasive = 0
 
@@ -42,5 +42,6 @@
 	desc = "Named after the infamous collector of souls - the believer bundle, a collection of items to ensure you get that payment on time..."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/believer
 	cost = 35
+	progression_minimum = 30 MINUTES //+5 minutes for the cqc
 
 

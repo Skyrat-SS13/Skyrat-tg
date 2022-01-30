@@ -1,5 +1,5 @@
 /obj/item/advanced_choice_beacon
-	name = "Advanced Choice Beacon"
+	name = "advanced choice beacon"
 	desc = "A beacon that will send whatever your heart desires, providing Nanotrasen approves it."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gangtool-red"
@@ -55,7 +55,7 @@
 	return options
 
 /obj/item/advanced_choice_beacon/exp_corps
-	name = "Vanguard Operatives Supply Beacon"
+	name = "vanguard operatives supply beacon"
 	desc = "Used to request your job supplies, use in hand to do so!"
 
 	possible_choices = list(

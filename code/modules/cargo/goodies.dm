@@ -3,8 +3,7 @@
 	access = NONE
 	group = "Goodies"
 	goody = TRUE
-//SKYRAT EDIT REMOVAL BEGIN
-/*
+
 /datum/supply_pack/goody/dumdum38
 	name = ".38 DumDum Speedloader"
 	desc = "Contains one speedloader of .38 DumDum ammunition, good for embedding in soft targets."
@@ -25,20 +24,23 @@
 	cost = PAYCHECK_MEDIUM * 1.5
 	access_view = ACCESS_BRIG
 	contains = list(/obj/item/ammo_box/c38/match/bouncy)
-
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/supply_pack/goody/stingbang
 	name = "Stingbang Single-Pack"
 	desc = "Contains one \"stingbang\" grenade, perfect for playing meanhearted pranks."
 	cost = PAYCHECK_HARD * 2.5
 	access_view = ACCESS_BRIG
 	contains = list(/obj/item/grenade/stingbang)
-
-/datum/supply_pack/goody/combatknives_single
-	name = "Combat Knife Single-Pack"
-	desc = "Contains one sharpened combat knive. Guaranteed to fit snugly inside any Nanotrasen-standard boot."
+*/
+//SKYRAT EDIT REMOVAL END
+/datum/supply_pack/goody/Survivalknives_single
+	name = "Survival Knife Single-Pack"
+	desc = "Contains one sharpened survival knive. Guaranteed to fit snugly inside any Nanotrasen-standard boot."
 	cost = PAYCHECK_HARD * 1.75
-	contains = list(/obj/item/knife/combat)
-
+	contains = list(/obj/item/knife/combat/survival)
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/supply_pack/goody/ballistic_single
 	name = "Combat Shotgun Single-Pack"
 	desc = "For when the enemy absolutely needs to be replaced with lead. Contains one Aussec-designed Combat Shotgun, and one Shotgun Bandolier."
@@ -161,3 +163,15 @@
 	desc = "Contains one standard epinephrine medipen and one standard emergency first-aid kit medipen. For when you want to prepare for the worst."
 	cost = PAYCHECK_MEDIUM * 2
 	contains = list(/obj/item/reagent_containers/hypospray/medipen, /obj/item/reagent_containers/hypospray/medipen/ekit)
+
+/datum/supply_pack/goody/mothic_rations
+	name = "Surplus Mothic Ration Pack"
+	desc = "A single surplus ration pack from the Mothic Fleet. Comes with 3 random sustenance bars, and a package of Activin chewing gum."
+	cost = PAYCHECK_HARD * 2
+	contains = list(/obj/item/storage/box/mothic_rations)
+
+/datum/supply_pack/goody/ready_donk
+	name = "Ready-Donk Single Meal"
+	desc = "A complete meal package for the terminally lazy. Contains one Ready-Donk meal."
+	cost = PAYCHECK_MEDIUM * 2
+	contains = list(/obj/item/food/ready_donk)

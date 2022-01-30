@@ -53,11 +53,11 @@
 		stop_autofiring() //Let's stop shooting to avoid issues.
 		return
 
-	var/obj/item/gun/G = parent
+	var/obj/item/gun/parent_gun = parent
 
 	if(iscarbon(user))
 		var/mob/living/carbon/shooter = user
-		if(shooter.is_holding(parent) && G.fire_select == SELECT_FULLY_AUTOMATIC)
+		if(shooter.is_holding(parent) && parent_gun.fire_select == SELECT_FULLY_AUTOMATIC)
 			autofire_on(shooter.client)
 		else
 			autofire_off()
@@ -127,10 +127,11 @@
 	if(get_dist(source.mob, _target) < 2) //Adjacent clicking.
 		return
 
-	if(isnull(location)) //Clicking on a screen object.
+	if(isnull(location) || istype(_target, /atom/movable/screen)) //Clicking on a screen object.
 		if(_target.plane != CLICKCATCHER_PLANE) //The clickcatcher is a special case. We want the click to trigger then, under it.
 			return //If we click and drag on our worn backpack, for example, we want it to open instead.
-		_target = params_to_turf(modifiers["screen-loc"], get_turf(source.eye), source)
+		_target = parse_caught_click_modifiers(modifiers, get_turf(source.eye), source)
+		params = list2params(modifiers)
 		if(!_target)
 			CRASH("Failed to get the turf under clickcatcher")
 
@@ -211,7 +212,8 @@
 	SIGNAL_HANDLER
 	if(isnull(over_location)) //This happens when the mouse is over an inventory or screen object, or on entering deep darkness, for example.
 		var/list/modifiers = params2list(params)
-		var/new_target = params_to_turf(modifiers["screen-loc"], get_turf(source.eye), source)
+		var/new_target = parse_caught_click_modifiers(modifiers, get_turf(source.eye), source)
+		params = list2params(modifiers)
 		mouse_parameters = params
 		if(!new_target)
 			if(QDELETED(target)) //No new target acquired, and old one was deleted, get us out of here.
@@ -249,7 +251,7 @@
 // Gun procs.
 
 /obj/item/gun/proc/on_autofire_start(mob/living/shooter)
-	if(!can_shoot(shooter) || !can_trigger_gun(shooter) || semicd)
+	if(!can_shoot(shooter) || !can_trigger_gun(shooter) || shooter.incapacitated() || semicd)
 		return FALSE
 	var/obj/item/bodypart/other_hand = shooter.has_hand_for_held_index(shooter.get_inactive_hand_index())
 	if(weapon_weight == WEAPON_HEAVY && (shooter.get_inactive_held_item() || !other_hand))
@@ -264,12 +266,14 @@
 		return COMPONENT_AUTOFIRE_ONMOUSEDOWN_BYPASS
 
 /obj/item/gun/proc/do_autofire(datum/source, atom/target, mob/living/shooter, params)
-    SIGNAL_HANDLER
-    if(!can_shoot())
-        shoot_with_empty_chamber(shooter)
-        return FALSE
-    INVOKE_ASYNC(src, .proc/do_autofire_shot, source, target, shooter, params)
-    return COMPONENT_AUTOFIRE_SHOT_SUCCESS
+	SIGNAL_HANDLER
+	if(shooter.incapacitated())
+		return FALSE
+	if(!can_shoot())
+		shoot_with_empty_chamber(shooter)
+		return FALSE
+	INVOKE_ASYNC(src, .proc/do_autofire_shot, source, target, shooter, params)
+	return COMPONENT_AUTOFIRE_SHOT_SUCCESS
 
 /obj/item/gun/proc/do_autofire_shot(datum/source, atom/target, mob/living/shooter, params)
 	var/obj/item/gun/akimbo_gun = shooter.get_inactive_held_item()

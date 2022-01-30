@@ -1,5 +1,5 @@
 /obj/item/gun/ballistic/tribalbow
-	name = "Wooden Bow"
+	name = "wooden bow"
 	desc = "Some sort of primitive projectile weapon used to fire arrows."
 	icon = 'modular_skyrat/modules/tribal_extended/icons/projectile.dmi'
 	lefthand_file = 'modular_skyrat/modules/tribal_extended/icons/bows_lefthand.dmi'
@@ -56,7 +56,7 @@
 	return chambered
 
 /obj/item/gun/ballistic/tribalbow/ashen
-	name = "Bone Bow"
+	name = "bone bow"
 	desc = "Some sort of primitive projectile weapon made of bone and wrapped sinew, oddly robust."
 	icon = 'modular_skyrat/modules/tribal_extended/icons/projectile.dmi'
 	icon_state = "ashenbow"
@@ -65,7 +65,7 @@
 	force = 12
 
 /obj/item/gun/ballistic/tribalbow/pipe
-	name = "Pipe Bow"
+	name = "pipe bow"
 	desc = "Portable and sleek, but you'd be better off hitting someone with a pool noodle."
 	icon = 'modular_skyrat/modules/tribal_extended/icons/projectile.dmi'
 	icon_state = "pipebow"

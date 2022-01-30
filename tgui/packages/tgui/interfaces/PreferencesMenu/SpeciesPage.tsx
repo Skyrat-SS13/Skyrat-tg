@@ -261,10 +261,16 @@ const SpeciesPageInner = (props: {
           <Stack.Item>
             <Box height="calc(100vh - 170px)" overflowY="auto" pr={3}>
               {species.map(([speciesKey, species]) => {
-                return (
+                // SKYRAT EDIT START - Veteran-only species
+                let speciesPage = (
                   <Button
                     key={speciesKey}
-                    onClick={() => setSpecies(speciesKey)}
+                    onClick={() => {
+                      if (species.veteran_only && !data.is_veteran) {
+                        return;
+                      }
+                      setSpecies(speciesKey);
+                    }}
                     selected={
                       data.character_preferences.misc.species === speciesKey
                     }
@@ -284,6 +290,15 @@ const SpeciesPageInner = (props: {
                     />
                   </Button>
                 );
+                if (species.veteran_only && !data.is_veteran) {
+                  let tooltipContent = species.name + " - You need to be a veteran to select this race, apply today!";
+                  speciesPage = (
+                    <Tooltip content={tooltipContent}>
+                      {speciesPage}
+                    </Tooltip>);
+                }
+                return speciesPage;
+                // SKYRAT EDIT END
               })}
             </Box>
           </Stack.Item>

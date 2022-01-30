@@ -46,8 +46,10 @@
 	if (override_maxcharge)
 		maxcharge = override_maxcharge
 	charge = maxcharge
+	/* SKYRAT EDIT REMOVAL
 	if(ratingdesc)
 		desc += " This one has a rating of [display_energy(maxcharge)], and you should not swallow it."
+	*/ // SKYRAT EDIT END
 	update_appearance()
 
 /obj/item/stock_parts/cell/create_reagents(max_vol, flags)
@@ -67,19 +69,19 @@
 		. += mutable_appearance('icons/obj/power.dmi', "grown_wires")
 	if(charge < 0.01)
 		return
-	. += mutable_appearance('modular_skyrat/modules/aesthetics/cells/cell.dmi', "cell-o[((charge / maxcharge) >= 0.995) ? 2 : 1]") //SKYRAT EDIT CHANGE
+	. += mutable_appearance(charge_overlay_icon, "cell-o[((charge / maxcharge) >= 0.995) ? 2 : 1]") //SKYRAT EDIT CHANGE
 
 /obj/item/stock_parts/cell/proc/percent() // return % charge of cell
 	return 100*charge/maxcharge
 
 // use power from a cell
-/obj/item/stock_parts/cell/use(amount)
+/obj/item/stock_parts/cell/use(amount, force)
 	if(rigged && amount > 0)
 		explode()
 		return FALSE
-	if(charge < amount)
+	if(!force && charge < amount)
 		return FALSE
-	charge = (charge - amount)
+	charge = max(charge - amount, 0)
 	if(!istype(loc, /obj/machinery/power/apc))
 		SSblackbox.record_feedback("tally", "cell_used", 1, type)
 	return TRUE
@@ -97,8 +99,16 @@
 
 /obj/item/stock_parts/cell/examine(mob/user)
 	. = ..()
+	// SKYRAT EDIT ADDITION
+	if(ratingdesc && !microfusion_readout)
+		. += "This one has a rating of [display_energy(maxcharge)], and you should not swallow it."
+	// SKYRAT EDIT END
 	if(rigged)
 		. += span_danger("This power cell seems to be faulty!")
+	// SKYRAT EDIT ADDITION
+	else if(microfusion_readout)
+		. += "The charge meter reads [charge]/[maxcharge] MF."
+	// SKYRAT EDIT END
 	else
 		. += "The charge meter reads [round(src.percent() )]%."
 
@@ -202,6 +212,10 @@
 
 /obj/item/stock_parts/cell/get_part_rating()
 	return rating * maxcharge
+
+/obj/item/stock_parts/cell/attackby_storage_insert(datum/component/storage, atom/storage_holder, mob/user)
+	var/obj/item/mod/control/mod = storage_holder
+	return !(istype(mod) && mod.open)
 
 /* Cell variants*/
 /obj/item/stock_parts/cell/empty/Initialize(mapload)

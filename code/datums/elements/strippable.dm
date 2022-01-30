@@ -151,6 +151,9 @@
 	if (isnull(item))
 		return FALSE
 
+	if (HAS_TRAIT(item, TRAIT_NO_STRIP))
+		return FALSE
+
 	//SKYRAT EDIT CHANGE START - THIEVING GLOVES
 	var/is_silent = can_be_silent && HAS_TRAIT(user, TRAIT_STICKY_FINGERS)
 	if (!is_silent)
@@ -372,7 +375,7 @@
 			continue
 
 		var/obj/item/item = item_data.get_item(owner)
-		if (isnull(item))
+		if (isnull(item) || (HAS_TRAIT(item, TRAIT_NO_STRIP)))
 			items[strippable_key] = result
 			continue
 
@@ -505,7 +508,7 @@
 	return min(
 		ui_status_only_living(user, owner),
 		ui_status_user_has_free_hands(user, owner),
-		ui_status_user_is_adjacent(user, owner),
+		ui_status_user_is_adjacent(user, owner, allow_tk = FALSE),
 		HAS_TRAIT(user, TRAIT_CAN_STRIP) ? UI_INTERACTIVE : UI_UPDATE,
 		max(
 			ui_status_user_is_conscious_and_lying_down(user),

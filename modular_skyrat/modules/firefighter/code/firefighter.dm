@@ -38,7 +38,7 @@
 	category = list("Exosuit Equipment")
 
 /obj/item/mecha_parts/mecha_equipment/ripleyupgradef
-	name = "Ripley MK-Firefighter Conversion Kit"
+	name = "Ripley MK-Firefighter conversion kit"
 	desc = "A specialised firefighter upgrade kit which can upgrade an MK-I ripley to an MK-F ripley which has incredible heat resistance, mining will want this. This kit cannot be removed, once applied."
 	icon = 'modular_skyrat/modules/firefighter/icons/firefighter_equipment.dmi'
 	icon_state = "ripleyupgradef"

@@ -42,6 +42,7 @@
 
 
 /datum/reagent/blood/on_new(list/data)
+	. = ..()
 	if(istype(data))
 		SetViruses(src, data)
 
@@ -96,7 +97,7 @@
 	mytray.adjust_pestlevel(rand(2,3))
 
 /datum/reagent/liquidgibs
-	name = "Liquid gibs"
+	name = "Liquid Gibs"
 	color = "#CC4633"
 	description = "You don't even want to think about what's in here."
 	taste_description = "gross iron"
@@ -106,7 +107,7 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/bone_dust
-	name = "bone dust"
+	name = "Bone Dust"
 	color = "#dbcdcb"
 	description = "Ground up bones, gross!"
 	taste_description = "the most disgusting grain in existence"
@@ -155,7 +156,7 @@
 	glass_name = "glass of water"
 	glass_desc = "The father of all refreshments."
 	shot_glass_icon_state = "shotglassclear"
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_CLEANS
 	evaporates = TRUE //SKYRAT EDIT ADDITION
 
 /*
@@ -241,7 +242,7 @@
 	glass_desc = "A glass of holy water."
 	self_consuming = TRUE //divine intervention won't be limited by the lack of a liver
 	ph = 7.5 //God is alkaline
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_CLEANS
 
 	// Holy water. Mostly the same as water, it also heals the plant a little with the power of the spirits. Also ALSO increases instability.
 /datum/reagent/water/holywater/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray)
@@ -316,7 +317,7 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/hydrogen_peroxide
-	name = "Hydrogen peroxide"
+	name = "Hydrogen Peroxide"
 	description = "An ubiquitous chemical substance that is composed of hydrogen and oxygen and oxygen." //intended intended
 	color = "#AAAAAA77" // rgb: 170, 170, 170, 77 (alpha)
 	taste_description = "burning water"
@@ -562,7 +563,7 @@
 	if(current_cycle >= cycles_to_turn)
 		var/datum/species/species_type = race
 		//H.set_species(species_type) //ORIGINAL
-		H.set_species(species_type, TRUE, null, null, null, null, TRUE) //SKYRAT EDIT CHANGE - CUSTOMIZATION
+		H.set_species(species_type, TRUE, FALSE, null, null, null, null, TRUE) //SKYRAT EDIT CHANGE - CUSTOMIZATION
 		holder.del_reagent(type)
 		to_chat(H, span_warning("You've become \a [lowertext(initial(species_type.name))]!"))
 		return
@@ -627,13 +628,13 @@
 		to_chat(H, span_warning("Your jelly shifts and morphs, turning you into another subspecies!"))
 		var/species_type = pick(subtypesof(/datum/species/jelly))
 		//H.set_species(species_type) //ORIGINAL
-		H.set_species(species_type, TRUE, null, null, null, null, TRUE, TRUE) //SKYRAT EDIT CHANGE - CUSTOMIZATION
+		H.set_species(species_type, TRUE, FALSE, null, null, null, null, TRUE, TRUE) //SKYRAT EDIT CHANGE - CUSTOMIZATION
 		holder.del_reagent(type)
 		return TRUE
 	if(current_cycle >= cycles_to_turn) //overwrite since we want subtypes of jelly
 		var/datum/species/species_type = pick(subtypesof(race))
 		//H.set_species(species_type) //ORIGINAL
-		H.set_species(species_type, TRUE, null, null, null, null, TRUE, TRUE) //SKYRAT EDIT CHANGE - CUSTOMIZATION
+		H.set_species(species_type, TRUE, FALSE, null, null, null, null, TRUE, TRUE) //SKYRAT EDIT CHANGE - CUSTOMIZATION
 		holder.del_reagent(type)
 		to_chat(H, span_warning("You've become \a [initial(species_type.name)]!"))
 		return TRUE
@@ -1121,7 +1122,7 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/fuel
-	name = "Welding fuel"
+	name = "Welding Fuel"
 	description = "Required for welders. Flammable."
 	color = "#660000" // rgb: 102, 0, 0
 	taste_description = "gross metal"
@@ -1148,7 +1149,7 @@
 	return TRUE
 
 /datum/reagent/space_cleaner
-	name = "Space cleaner"
+	name = "Space Cleaner"
 	description = "A compound used to clean things. Now with 50% more sodium hypochlorite!"
 	color = "#A5F0EE" // rgb: 165, 240, 238
 	taste_description = "sourness"
@@ -1156,7 +1157,7 @@
 	penetrates_skin = NONE
 	var/clean_types = CLEAN_WASH
 	ph = 5.5
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_CLEANS
 
 /datum/reagent/space_cleaner/expose_obj(obj/exposed_obj, reac_volume)
 	. = ..()
@@ -1261,7 +1262,7 @@
 		exposed_mob.ForceContractDisease(new /datum/disease/transformation/xeno(), FALSE, TRUE)
 
 /datum/reagent/fungalspores
-	name = "Tubercle bacillus Cosmosis microbes"
+	name = "Tubercle Bacillus Cosmosis Microbes"
 	description = "Active fungal spores."
 	color = "#92D17D" // rgb: 146, 209, 125
 	taste_description = "slime"
@@ -1295,7 +1296,7 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/foaming_agent// Metal foaming agent. This is lithium hydride. Add other recipes (e.g. LiH + H2O -> LiOH + H2) eventually.
-	name = "Foaming agent"
+	name = "Foaming Agent"
 	description = "An agent that yields metallic foam when mixed with light metal and a strong acid."
 	reagent_state = SOLID
 	color = "#664B63" // rgb: 102, 75, 99
@@ -1304,7 +1305,7 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/smart_foaming_agent //Smart foaming agent. Functions similarly to metal foam, but conforms to walls.
-	name = "Smart foaming agent"
+	name = "Smart Foaming Agent"
 	description = "An agent that yields metallic foam which conforms to area boundaries when mixed with light metal and a strong acid."
 	reagent_state = SOLID
 	color = "#664B63" // rgb: 102, 75, 99
@@ -1650,7 +1651,7 @@
 //////////////////////////////////Hydroponics stuff///////////////////////////////
 
 /datum/reagent/plantnutriment
-	name = "Generic nutriment"
+	name = "Generic Nutriment"
 	description = "Some kind of nutriment. You can't really tell what it is. You should probably report it, along with how you obtained it."
 	color = "#000000" // RBG: 0, 0, 0
 	var/tox_prob = 0
@@ -2016,7 +2017,7 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/acetone_oxide
-	name = "Acetone oxide"
+	name = "Acetone Oxide"
 	description = "Enslaved oxygen"
 	reagent_state = LIQUID
 	color = "#C8A5DC"
@@ -2219,7 +2220,7 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/drying_agent
-	name = "Drying agent"
+	name = "Drying Agent"
 	description = "A desiccant. Can be used to dry things."
 	reagent_state = LIQUID
 	color = "#A70FFF"
@@ -2244,51 +2245,51 @@
 // Virology virus food chems.
 
 /datum/reagent/toxin/mutagen/mutagenvirusfood
-	name = "mutagenic agar"
+	name = "Mutagenic Agar"
 	color = "#A3C00F" // rgb: 163,192,15
 	taste_description = "sourness"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/toxin/mutagen/mutagenvirusfood/sugar
-	name = "sucrose agar"
+	name = "Sucrose Agar"
 	color = "#41B0C0" // rgb: 65,176,192
 	taste_description = "sweetness"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/medicine/synaptizine/synaptizinevirusfood
-	name = "virus rations"
+	name = "Virus Rations"
 	color = "#D18AA5" // rgb: 209,138,165
 	taste_description = "bitterness"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/toxin/plasma/plasmavirusfood
-	name = "virus plasma"
+	name = "Virus Plasma"
 	color = "#A270A8" // rgb: 166,157,169
 	taste_description = "bitterness"
 	taste_mult = 1.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/toxin/plasma/plasmavirusfood/weak
-	name = "weakened virus plasma"
+	name = "Weakened Virus Plasma"
 	color = "#A28CA5" // rgb: 206,195,198
 	taste_description = "bitterness"
 	taste_mult = 1.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/uranium/uraniumvirusfood
-	name = "decaying uranium gel"
+	name = "Decaying Uranium Gel"
 	color = "#67ADBA" // rgb: 103,173,186
 	taste_description = "the inside of a reactor"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/uranium/uraniumvirusfood/unstable
-	name = "unstable uranium gel"
+	name = "Unstable Uranium Gel"
 	color = "#2FF2CB" // rgb: 47,242,203
 	taste_description = "the inside of a reactor"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/uranium/uraniumvirusfood/stable
-	name = "stable uranium gel"
+	name = "Stable Uranium Gel"
 	color = "#04506C" // rgb: 4,80,108
 	taste_description = "the inside of a reactor"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -2296,7 +2297,7 @@
 // Bee chemicals
 
 /datum/reagent/royal_bee_jelly
-	name = "royal bee jelly"
+	name = "Royal Bee Jelly"
 	description = "Royal Bee Jelly, if injected into a Queen Space Bee said bee will split into two bees."
 	color = "#00ff80"
 	taste_description = "strange honey"
@@ -2376,7 +2377,7 @@
 	..()
 
 /datum/reagent/plastic_polymers
-	name = "plastic polymers"
+	name = "Plastic Polymers"
 	description = "the petroleum based components of plastic."
 	color = "#f7eded"
 	taste_description = "plastic"
@@ -2384,7 +2385,7 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/glitter
-	name = "generic glitter"
+	name = "Generic Glitter"
 	description = "if you can see this description, contact a coder."
 	color = "#FFFFFF" //pure white
 	taste_description = "plastic"
@@ -2399,20 +2400,20 @@
 	new glitter_type(exposed_turf)
 
 /datum/reagent/glitter/pink
-	name = "pink glitter"
+	name = "Pink Glitter"
 	description = "pink sparkles that get everywhere"
 	color = "#ff8080" //A light pink color
 	glitter_type = /obj/effect/decal/cleanable/glitter/pink
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/glitter/white
-	name = "white glitter"
+	name = "White Glitter"
 	description = "white sparkles that get everywhere"
 	glitter_type = /obj/effect/decal/cleanable/glitter/white
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/glitter/blue
-	name = "blue glitter"
+	name = "Blue Glitter"
 	description = "blue sparkles that get everywhere"
 	color = "#4040FF" //A blueish color
 	glitter_type = /obj/effect/decal/cleanable/glitter/blue
@@ -2436,25 +2437,22 @@
 	..()
 
 /datum/reagent/bz_metabolites
-	name = "BZ metabolites"
+	name = "BZ Metabolites"
 	description = "A harmless metabolite of BZ gas."
 	color = "#FAFF00"
 	taste_description = "acrid cinnamon"
 	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 
-/datum/reagent/bz_metabolites/on_mob_life(mob/living/L, delta_time, times_fired)
-	if(L.mind)
-		var/datum/antagonist/changeling/changeling = L.mind.has_antag_datum(/datum/antagonist/changeling)
+/datum/reagent/bz_metabolites/on_mob_life(mob/living/carbon/target, delta_time, times_fired)
+	if(target.mind)
+		var/datum/antagonist/changeling/changeling = target.mind.has_antag_datum(/datum/antagonist/changeling)
 		if(changeling)
-			//SKYRAT EDIT CHANGE BEGIN - BZ-BUFF-VS-LING
-			//changeling.chem_charges = max(changeling.chem_charges - (2 * REM * delta_time), 0) - SKYRAT EDIT - ORIGINAL
-			changeling.chem_charges = max(changeling.chem_charges - (4 * REM * delta_time), 0)
-			//SKYRAT EDIT CHANGE END - BZ-BUFF-VS-LING
+			changeling.adjust_chemicals(-4 * REM * delta_time) //SKYRAT EDIT - BZ-BUFF-VS-LING - ORIGINAL: changeling.adjust_chemicals(-2 * REM * delta_time)
 	return ..()
 
 /datum/reagent/pax/peaceborg
-	name = "synthpax"
+	name = "Synthpax"
 	description = "A colorless liquid that suppresses violence in its subjects. Cheaper to synthesize than normal Pax, but wears off faster."
 	metabolization_rate = 1.5 * REAGENTS_METABOLISM
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
@@ -2676,13 +2674,13 @@
 			var/datum/wound/W = thing
 			stam_crash += (W.severity + 1) * 3 // spike of 3 stam damage per wound severity (moderate = 6, severe = 9, critical = 12) when the determination wears off if it was a combat rush
 		M.adjustStaminaLoss(stam_crash)
-	M.remove_status_effect(STATUS_EFFECT_DETERMINED)
+	M.remove_status_effect(/datum/status_effect/determined)
 	..()
 
 /datum/reagent/determination/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	if(!significant && volume >= WOUND_DETERMINATION_SEVERE)
 		significant = TRUE
-		M.apply_status_effect(STATUS_EFFECT_DETERMINED) // in addition to the slight healing, limping cooldowns are divided by 4 during the combat high
+		M.apply_status_effect(/datum/status_effect/determined) // in addition to the slight healing, limping cooldowns are divided by 4 during the combat high
 
 	volume = min(volume, WOUND_DETERMINATION_MAX)
 
@@ -2722,7 +2720,7 @@
 	..()
 
 /datum/reagent/universal_indicator
-	name = "Universal indicator"
+	name = "Universal Indicator"
 	description = "A solution that can be used to create pH paper booklets, or sprayed on things to colour them by their pH."
 	taste_description = "a strong chemical taste"
 	color = "#1f8016"
@@ -2777,7 +2775,7 @@
 		return
 	if(methods & (PATCH|TOUCH|VAPOR))
 		amount_left = round(reac_volume,0.1)
-		exposed_mob.apply_status_effect(STATUS_EFFECT_ANTS, amount_left)
+		exposed_mob.apply_status_effect(/datum/status_effect/ants, amount_left)
 
 /datum/reagent/ants/expose_obj(obj/exposed_obj, reac_volume)
 	. = ..()
@@ -2805,7 +2803,7 @@
 
 //This is intended to a be a scarce reagent to gate certain drugs and toxins with. Do not put in a synthesizer. Renewable sources of this reagent should be inefficient.
 /datum/reagent/lead
-	name = "lead"
+	name = "Lead"
 	description = "A dull metalltic element with a low melting point."
 	taste_description = "metal"
 	reagent_state = SOLID
@@ -2818,7 +2816,7 @@
 
 //The main feedstock for kronkaine production, also a shitty stamina healer.
 /datum/reagent/kronkus_extract
-	name = "kronkus extract"
+	name = "Kronkus Extract"
 	description = "A frothy extract made from fermented kronkus vine pulp.\nHighly bitter due to the presence of a variety of kronkamines."
 	taste_description = "bitterness"
 	color = "#228f63"
@@ -2829,4 +2827,3 @@
 	. = ..()
 	kronkus_enjoyer.adjustOrganLoss(ORGAN_SLOT_HEART, 0.1)
 	kronkus_enjoyer.adjustStaminaLoss(-2, FALSE)
-

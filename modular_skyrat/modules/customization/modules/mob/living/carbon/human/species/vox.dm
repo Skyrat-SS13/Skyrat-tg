@@ -19,10 +19,11 @@
 	inherent_traits = list(
 		TRAIT_RESISTCOLD,
 		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP
+		TRAIT_CAN_STRIP,
+		TRAIT_CAN_USE_FLIGHT_POTION,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	mutantlungs = /obj/item/organ/lungs/vox
+	mutantlungs = /obj/item/organ/lungs/nitrogen/vox
 	mutantbrain = /obj/item/organ/brain/vox
 	breathid = "n2"
 	mutant_bodyparts = list()
@@ -33,6 +34,7 @@
 		"spines" = ACC_RANDOM
 	)
 	attack_verb = "slash"
+	attack_effect = ATTACK_EFFECT_CLAW
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	liked_food = MEAT | FRIED

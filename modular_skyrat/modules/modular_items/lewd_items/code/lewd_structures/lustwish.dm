@@ -38,8 +38,7 @@
 
 					//clothing facial/head
 					/obj/item/clothing/mask/ballgag = 8,
-					/obj/item/clothing/mask/ballgag/phallic = 8,
-					/obj/item/clothing/mask/ballgag/phallic/kazoo = 8,
+					/obj/item/clothing/mask/ballgag/choking = 8,
 					/obj/item/clothing/mask/muzzle/ring = 4,
 					/obj/item/clothing/head/domina_cap = 5,
 					/obj/item/clothing/head/helmet/space/deprivation_helmet = 5,
@@ -60,6 +59,7 @@
 					/obj/item/clothing/neck/human_petcollar/locked/cowcollar = 8,
 					/obj/item/clothing/neck/human_petcollar/locked/bellcollar = 8,
 					/obj/item/clothing/neck/human_petcollar/locked/cross = 8,
+					/obj/item/clothing/neck/human_petcollar/locked/spikecollar = 8,
 
 					//torso clothing
 					/obj/item/clothing/under/misc/latex_catsuit = 8,
@@ -117,7 +117,6 @@
 					/obj/item/clothing/neck/mind_collar = 2,
 					/obj/item/clothing/under/costume/jabroni = 4,
 					/obj/item/clothing/neck/human_petcollar/locked = 4,
-					/obj/item/assembly/signaler = 4,
 					/obj/item/clothing/suit/straight_jacket/kinky_sleepbag = 2, //my favorite thing, spent 1 month on it. Don't remove please.
 					/obj/item/reagent_containers/pill/hexacrocin = 10,
 					/obj/item/reagent_containers/pill/pentacamphor = 5,

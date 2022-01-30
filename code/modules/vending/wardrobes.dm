@@ -9,9 +9,6 @@
 	panel_type = "panel19"
 	light_mask = "wardrobe-light-mask"
 
-/obj/machinery/vending/wardrobe/canLoadItem(obj/item/I,mob/user)
-	return (I.type in products)
-
 /obj/machinery/vending/wardrobe/sec_wardrobe
 	name = "\improper SecDrobe"
 	desc = "A vending machine for security and security-related clothing!"
@@ -23,17 +20,18 @@
 					/obj/item/storage/backpack/satchel/sec = 3,
 					/obj/item/storage/backpack/duffelbag/sec = 3,
 					/obj/item/clothing/under/rank/security/officer = 3,
-					/obj/item/clothing/shoes/jackboots = 3,
+					///obj/item/clothing/shoes/jackboots = 3, SKYRAT EDIT REMOVAL
 					/obj/item/clothing/head/beret/sec = 3,
-					/obj/item/clothing/head/soft/sec = 3,
-					/obj/item/clothing/mask/bandana/red = 3,
+					///obj/item/clothing/head/soft/sec = 3, SKYRAT EDIT REMOVAL
+					///obj/item/clothing/mask/bandana/red = 3, SKYRAT EDIT REMOVAL
 					/obj/item/clothing/gloves/color/black = 3,
-					/obj/item/clothing/under/rank/security/officer/skirt = 3,
-					/obj/item/clothing/under/rank/security/officer/grey = 3,
+					///obj/item/clothing/under/rank/security/officer/skirt = 3, SKYRAT EDIT REMOVAL
+					///obj/item/clothing/under/rank/security/officer/grey = 3, SKYRAT EDIT REMOVAL
 					/obj/item/clothing/under/pants/khaki = 3,
 					/obj/item/clothing/under/rank/security/officer/blueshirt = 3)
-	premium = list(/obj/item/clothing/under/rank/security/officer/formal = 3,
-					/obj/item/clothing/suit/security/officer = 3,
+
+	premium = list(///obj/item/clothing/under/rank/security/officer/formal = 3, SKYRAT EDIT REMOVAL
+					///obj/item/clothing/suit/security/officer = 3, SKYRAT EDIT REMOVAL
 					/obj/item/clothing/head/beret/sec/navyofficer = 3)
 	refill_canister = /obj/item/vending_refill/wardrobe/sec_wardrobe
 	payment_department = ACCOUNT_SEC
@@ -69,6 +67,7 @@
 					/obj/item/clothing/shoes/sneakers/white = 4,
 					/obj/item/clothing/head/beret/medical/paramedic = 4,
 					/obj/item/clothing/head/soft/paramedic = 4,
+					/obj/item/clothing/shoes/sneakers/blue = 4,
 					/obj/item/clothing/suit/apron/surgical = 4,
 					/obj/item/clothing/mask/surgical = 4)
 	refill_canister = /obj/item/vending_refill/wardrobe/medi_wardrobe
@@ -357,8 +356,8 @@
 					/obj/item/clothing/under/suit/black = 1,
 					/obj/item/clothing/under/suit/black/skirt = 1,
 					/obj/item/clothing/suit/toggle/lawyer/black = 1,
-					/obj/item/clothing/under/rank/civilian/lawyer/female = 1,
-					/obj/item/clothing/under/rank/civilian/lawyer/female/skirt = 1,
+					/obj/item/clothing/under/rank/civilian/lawyer/beige = 1,
+					/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt = 1,
 					/obj/item/clothing/under/suit/black_really = 1,
 					/obj/item/clothing/under/suit/black_really/skirt = 1,
 					/obj/item/clothing/under/rank/civilian/lawyer/blue = 1,

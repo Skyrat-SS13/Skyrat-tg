@@ -52,10 +52,12 @@
 	return BULLET_ACT_HIT
 
 /mob/living/bullet_act(obj/projectile/P, def_zone, piercing_hit = FALSE)
+	. = ..()
 	var/armor = run_armor_check(def_zone, P.flag, "","",P.armour_penetration, "", FALSE, P.weak_against_armour)
 	var/on_hit_state = P.on_hit(src, armor, piercing_hit)
 	if(!P.nodamage && on_hit_state != BULLET_ACT_BLOCK)
-		apply_damage(P.damage, P.damage_type, def_zone, armor, wound_bonus=P.wound_bonus, bare_wound_bonus=P.bare_wound_bonus, sharpness = P.sharpness)
+		var/attack_direction = get_dir(P.starting, src)
+		apply_damage(P.damage, P.damage_type, def_zone, armor, wound_bonus=P.wound_bonus, bare_wound_bonus=P.bare_wound_bonus, sharpness = P.sharpness, attack_direction = attack_direction)
 		apply_effects(P.stun, P.knockdown, P.unconscious, P.slur, P.stutter, P.eyeblur, P.drowsy, armor, P.stamina, P.jitter, P.paralyze, P.immobilize)
 		if(P.dismemberment)
 			check_projectile_dismemberment(P, def_zone)
@@ -77,6 +79,7 @@
 		return
 	. = combat_mode
 	combat_mode = new_mode
+	SEND_SIGNAL(src, COMSIG_LIVING_COMBAT_MODE_TOGGLE, new_mode) //SKYRAT EDIT ADDITION
 	if(hud_used?.action_intent)
 		hud_used.action_intent.update_appearance()
 	//SKYRAT EDIT ADDITION BEGIN
@@ -87,11 +90,12 @@
 				G.toggle_safety(src, "off")
 			else
 				G.toggle_safety(src, "on")
-	if(!ishuman(src))
+	if(!ishuman(src) && !ckey)
 		if(combat_mode)
 			set_combat_indicator(TRUE)
 		else
 			set_combat_indicator(FALSE)
+	face_mouse = (client?.prefs?.read_preference(/datum/preference/toggle/face_cursor_combat_mode) && combat_mode) ? TRUE : FALSE
 	//SKYRAT EDIT ADDITION END
 
 	if(silent || !(client?.prefs.toggles & SOUND_COMBATMODE))

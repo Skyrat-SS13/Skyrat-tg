@@ -44,6 +44,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	return ..()
 
 /datum/component/fishing/proc/start_fishing()
+	SIGNAL_HANDLER
 	var/random_fish_time = rand(3 SECONDS, 6 SECONDS)
 	COOLDOWN_START(src, start_fishing_window, random_fish_time)
 	COOLDOWN_START(src, stop_fishing_window, random_fish_time + 2 SECONDS)
@@ -62,6 +63,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	atom_parent.do_alert_animation()
 
 /datum/component/fishing/proc/finish_fishing(atom/fisher = null, master_involved = FALSE)
+	SIGNAL_HANDLER
 	if(reel_sound_timer)
 		deltimer(reel_sound_timer)
 	if(mutate_parent)
@@ -90,7 +92,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 		if(96 to 100)
 			spawning_reward = /obj/item/skillchip/fishing_master
 	new spawning_reward(spawning_turf)
-	atom_parent.visible_message(span_notice("Something flys out of [atom_parent]!"))
+	atom_parent.visible_message(span_notice("Something flies out of [atom_parent]!"))
 
 /turf/open/water/Initialize(mapload)
 	. = ..()
@@ -101,7 +103,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	AddComponent(/datum/component/fishing, set_loot = GLOB.fishing_weights, allow_fishes = FALSE)
 
 /obj/item/skillchip/fishing_master
-	name = "Fishing Master skillchip"
+	name = "M4ST3R B41T skillchip"
 	desc = "A master of fishing, capable of wrangling the whole ocean if we must."
 	auto_traits = list(TRAIT_FISHING_MASTER)
 	skill_name = "Fishing Master"
@@ -158,6 +160,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 		target_atom = null
 
 /obj/item/fishing_rod/proc/check_movement()
+	SIGNAL_HANDLER
 	if(!listening_to)
 		return
 	if(!target_atom)

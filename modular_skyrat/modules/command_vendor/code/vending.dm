@@ -25,7 +25,8 @@
 		/obj/item/clothing/under/rank/captain/parade = 1,
 		/obj/item/clothing/under/rank/captain/kilt = 1,
 		/obj/item/clothing/suit/armor/vest/capcarapace/captains_formal = 1,
-		/obj/item/clothing/suit/captunic = 1,
+		/obj/item/clothing/suit/armor/vest/capcarapace/jacket = 1,
+		/obj/item/clothing/suit/capjacket = 1,
 		/obj/item/clothing/neck/mantle/capmantle = 1,
 		/obj/item/storage/backpack/captain = 1,
 		/obj/item/storage/backpack/satchel/cap = 1,
@@ -36,8 +37,9 @@
 		/obj/item/clothing/head/beret/blueshield = 1,
 		/obj/item/clothing/head/beret/blueshield/navy = 1,
 		/obj/item/clothing/under/rank/security/blueshield = 1,
-		/obj/item/clothing/under/rank/security/blueshieldturtleneck = 1,
-		/obj/item/clothing/under/rank/security/blueshieldskirt = 1,
+		/obj/item/clothing/under/rank/security/blueshield/skirt = 1,
+		/obj/item/clothing/under/rank/security/blueshield/turtleneck = 1,
+		/obj/item/clothing/under/rank/security/blueshield/turtleneck/skirt = 1,
 		/obj/item/clothing/suit/armor/vest/blueshield = 1,
 		/obj/item/clothing/suit/armor/vest/blueshieldarmor = 1,
 		/obj/item/clothing/neck/mantle/bsmantle = 1,
@@ -139,5 +141,5 @@
 		/obj/item/clothing/under/rank/nanotrasen_representative/skirt = 1,
 		/obj/item/clothing/head/centhat = 1,
 		/obj/item/clothing/head/centcom_cap = 1,
-		/obj/item/clothing/suit/toggle/armor/vest/centcom_formal/ntrep = 1
+		/obj/item/clothing/suit/armor/centcom_formal/ntrep = 1
 		)

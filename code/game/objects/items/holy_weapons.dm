@@ -151,6 +151,12 @@
 /obj/item/nullrod/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
+	AddComponent(/datum/component/effect_remover, \
+		success_feedback = "You disrupt the magic of %THEEFFECT with %THEWEAPON.", \
+		success_forcesay = "BEGONE FOUL MAGIKS!!", \
+		on_clear_callback = CALLBACK(src, .proc/on_cult_rune_removed), \
+		effects_we_clear = list(/obj/effect/rune, /obj/effect/eldritch))
+
 	AddElement(/datum/element/bane, /mob/living/simple_animal/revenant, 0, 25, FALSE)
 	if(!GLOB.holy_weapon_type && istype(src, /obj/item/nullrod))
 		var/list/rods = list()
@@ -163,6 +169,16 @@
 /obj/item/nullrod/proc/on_holy_weapon_picked(obj/item/nullrod/holy_weapon_type)
 	GLOB.holy_weapon_type = holy_weapon_type
 	SSblackbox.record_feedback("tally", "chaplain_weapon", 1, "[initial(holy_weapon_type.name)]")
+
+/obj/item/nullrod/proc/on_cult_rune_removed(obj/effect/target, mob/living/user)
+	if(!istype(target, /obj/effect/rune))
+		return
+
+	var/obj/effect/rune/target_rune = target
+	if(target_rune.log_when_erased)
+		log_game("[target_rune.cultist_name] rune erased by [key_name(user)] using a null rod.")
+		message_admins("[ADMIN_LOOKUPFLW(user)] erased a [target_rune.cultist_name] rune with a null rod.")
+	SSshuttle.shuttle_purchase_requirements_met[SHUTTLE_UNLOCK_NARNAR] = TRUE
 
 /obj/item/nullrod/suicide_act(mob/user)
 	user.visible_message(span_suicide("[user] is killing [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to get closer to god!"))
@@ -240,6 +256,7 @@
 /obj/item/nullrod/claymore/darkblade
 	name = "dark blade"
 	desc = "Spread the glory of the dark gods!"
+	icon = 'icons/obj/cult/items_and_weapons.dmi'
 	icon_state = "cultblade"
 	inhand_icon_state = "cultblade"
 	worn_icon_state = "cultblade"
@@ -461,7 +478,7 @@
 /obj/item/nullrod/clown
 	name = "clown dagger"
 	desc = "Used for absolutely hilarious sacrifices."
-	icon = 'icons/obj/wizard.dmi'
+	icon = 'icons/obj/cult/items_and_weapons.dmi'
 	icon_state = "clownrender"
 	inhand_icon_state = "render"
 	worn_icon_state = "render"
@@ -684,7 +701,7 @@
 /obj/item/nullrod/spear
 	name = "ancient spear"
 	desc = "An ancient spear made of brass, I mean gold, I mean bronze. It looks highly mechanical."
-	icon = 'icons/obj/clockwork_objects.dmi'
+	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "ratvarian_spear"
 	inhand_icon_state = "ratvarian_spear"
 	lefthand_file = 'icons/mob/inhands/antag/clockwork_lefthand.dmi'

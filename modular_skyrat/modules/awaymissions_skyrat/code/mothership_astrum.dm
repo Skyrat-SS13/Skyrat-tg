@@ -165,16 +165,15 @@
 	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/random/astrum/agentloot)
 
 //GHOSTROLES
-/obj/effect/mob_spawn/human/lobotomite
+/obj/effect/mob_spawn/ghost_role/human/lobotomite
 	name = "lobotomite containment tube"
+	prompt_name = "a lobotomite"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
 	mob_name = "Lobotomite"
 	density = TRUE
-	roundstart = FALSE
-	death = FALSE
 	mob_species = /datum/species/human
 	outfit = /datum/outfit/lobotomite
-	short_desc = "You are a lobotomite, an experiment of those who took you away from... why can't you remember?"
+	you_are_text = "You are a lobotomite, an experiment of those who took you away from... why can't you remember?"
 	flavour_text = "You are the Lobotomite. \
 	Do not explore the gateway. \
 	Do not touch anything in the gateway. \
@@ -304,24 +303,6 @@
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	armor = list(MELEE = 40, BULLET = 30, LASER = 30,ENERGY = 40, BOMB = 50, BIO = 90, FIRE = 100, ACID = 100, WOUND = 15)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-
-// Machine that removes nanites
-/obj/machinery/scanner_gate/anti_nanite
-	name = "Advanced Scanner Gate"
-	desc = "This gate seems to be highly modified with odd markings."
-	resistance_flags = INDESTRUCTIBLE
-	use_power = NO_POWER_USE
-	flags_1 = NODECONSTRUCT_1
-
-/obj/machinery/scanner_gate/anti_nanite/emag_act(mob/user)
-	to_chat(user, span_notice("This gate has advanced security measures!"))
-	return
-
-/obj/machinery/scanner_gate/anti_nanite/attackby(obj/item/W, mob/user, params)
-	return
-
-/obj/machinery/scanner_gate/anti_nanite/examine(mob/user)
-	return list("This gate seems to be highly modified with odd markings.")
 
 //Boss
 /mob/living/simple_animal/hostile/megafauna/hierophant/astrum

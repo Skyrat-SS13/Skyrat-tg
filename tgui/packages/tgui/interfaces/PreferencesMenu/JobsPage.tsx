@@ -1,50 +1,21 @@
-import { binaryInsertWith } from "common/collections";
+import { sortBy } from "common/collections";
 import { classes } from "common/react";
-import { InfernoNode } from "inferno";
+import { InfernoNode, SFC } from "inferno";
 import { useBackend } from "../../backend";
 import { Box, Button, Dropdown, Stack, Tooltip } from "../../components";
-import { createSetPreference, JoblessRole, JobPriority, PreferencesMenuData } from "./data";
-import { Job } from "./jobs/base";
-import * as Departments from "./jobs/departments";
+import { logger } from "../../logging";
+import { createSetPreference, Job, JoblessRole, JobPriority, PreferencesMenuData } from "./data";
+import { ServerPreferencesFetcher } from "./ServerPreferencesFetcher";
 
-const requireJob = require.context("./jobs/jobs", false, /.ts$/);
-const jobsByDepartment = new Map<Departments.Department, {
-  jobs: Job[],
-  head?: Job,
-}>();
-
-const binaryInsertJob = binaryInsertWith((job: Job) => {
-  return job.name;
-});
+const sortJobs = (
+  entries: [string, Job][],
+  head?: string,
+) => sortBy<[string, Job]>(
+  ([key, _]) => key === head ? -1 : 1,
+  ([key, _]) => key,
+)(entries);
 
 const PRIORITY_BUTTON_SIZE = "18px";
-
-for (const jobKey of requireJob.keys()) {
-  const job = requireJob<{
-    default?: Job,
-  }>(jobKey).default;
-
-  if (!job) {
-    continue;
-  }
-
-
-  let departmentInfo = jobsByDepartment.get(job.department);
-  if (departmentInfo === undefined) {
-    departmentInfo = {
-      jobs: [],
-      head: undefined,
-    };
-
-    jobsByDepartment.set(job.department, departmentInfo);
-  }
-
-  if (job.department.head === job.name) {
-    departmentInfo.head = job;
-  } else {
-    departmentInfo.jobs = binaryInsertJob(departmentInfo.jobs, job);
-  }
-}
 
 const PriorityButton = (props: {
   name: string,
@@ -210,24 +181,26 @@ const PriorityButtons = (props: {
 const JobRow = (props: {
   className?: string,
   job: Job,
+  name: string,
 }, context) => {
   const { data } = useBackend<PreferencesMenuData>(context);
-  const { job } = props;
+  const { className, job, name } = props;
 
-  const isOverflow = data.overflow_role === job.name;
-  const priority = data.job_preferences[job.name];
+  const isOverflow = data.overflow_role === name;
+  const priority = data.job_preferences[name];
 
-  const createSetPriority = createCreateSetPriorityFromName(context, job.name);
+  const createSetPriority = createCreateSetPriorityFromName(context, name);
   // SKYRAT EDIT
   const { act } = useBackend<PreferencesMenuData>(context);
   // SKYRAT EDIT END
 
   const experienceNeeded = data.job_required_experience
-    && data.job_required_experience[job.name];
-  const daysLeft = data.job_days_left ? data.job_days_left[job.name] : 0;
+    && data.job_required_experience[name];
+  const daysLeft = data.job_days_left ? data.job_days_left[name] : 0;
+
   // SKYRAT EDIT
-  const alt_title_selected = data.job_alt_titles[job.name]
-    ? data.job_alt_titles[job.name] : job.name;
+  const alt_title_selected = data.job_alt_titles[name]
+    ? data.job_alt_titles[name] : name;
   // SKYRAT EDIT END
 
   let rightSide: InfernoNode;
@@ -251,7 +224,7 @@ const JobRow = (props: {
         </Stack.Item>
       </Stack>
     );
-  } else if (data.job_bans && data.job_bans.indexOf(job.name) !== -1) {
+  } else if (data.job_bans && data.job_bans.indexOf(name) !== -1) {
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
         <Stack.Item grow textAlign="right">
@@ -259,7 +232,7 @@ const JobRow = (props: {
         </Stack.Item>
       </Stack>
     );
-  // SKYRAT EDIT
+  // SKYRAT EDIT START
   } else if (job.veteran && !data.is_veteran) {
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
@@ -269,7 +242,7 @@ const JobRow = (props: {
       </Stack>
     );
   } else if (data.species_restricted_jobs
-            && data.species_restricted_jobs.indexOf(job.name) !== -1) {
+            && data.species_restricted_jobs.indexOf(name) !== -1) {
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
         <Stack.Item grow textAlign="right">
@@ -286,7 +259,7 @@ const JobRow = (props: {
     />);
   }
   return (
-    <Box className={props.className} style={{ // SKYRAT EDIT
+    <Box className={className} style={{ // SKYRAT EDIT
       "margin-top": 0,
     }}>
       <Stack align="center" /* SKYRAT EDIT */>
@@ -297,11 +270,11 @@ const JobRow = (props: {
           <Stack.Item className="job-name" width="50%" style={{
             "padding-left": "0.3em",
           }}> { // SKYRAT EDIT
-              (!job.alt_titles ? job.name : <Dropdown
+              (!job.alt_titles ? name : <Dropdown
                 width="100%"
                 options={job.alt_titles}
                 displayText={alt_title_selected}
-                onSelected={(value) => act("set_job_title", { job: job.name, new_title: value })}
+                onSelected={(value) => act("set_job_title", { job: name, new_title: value })}
               />)
             // SKYRAT EDIT END
             }
@@ -316,36 +289,54 @@ const JobRow = (props: {
   );
 };
 
-const Department = (props: {
-  department: Departments.Department,
-  name: string,
-}) => {
-  const { department, name } = props;
-  const jobs = jobsByDepartment.get(department);
+const Department: SFC<{ department: string}> = (props) => {
+  const { children, department: name } = props;
   const className = `PreferencesMenu__Jobs__departments--${name}`;
-
-  if (!jobs) {
-    return (
-      <Box color="red">
-        <b>ERROR: Department {name} could not be found!</b>
-      </Box>
-    );
-  }
+  logger.log(name + ": " + className);
 
   return (
-    // SKYRAT EDIT START
-    <Box className="jobRow">
-      {jobs.head
-        && <JobRow className={`${className} head`} job={jobs.head} />}
-      {jobs.jobs.map((job) => {
-        if (job === jobs.head) {
+    <ServerPreferencesFetcher
+      render={(data) => {
+        if (!data) {
           return null;
         }
 
-        return <JobRow className={className} key={job.name} job={job} />;
-      })}
-    </Box>
-    // SKYRAT EDIT END
+        const { departments, jobs } = data.jobs;
+        const department = departments[name];
+
+        // This isn't necessarily a bug, it's like this
+        // so that you can remove entire departments without
+        // having to edit the UI.
+        // This is used in events, for instance.
+        if (!department) {
+          return null;
+        }
+
+        const jobsForDepartment = sortJobs(
+          Object.entries(jobs).filter(
+            ([_, job]) => job.department === name
+          ),
+          department.head
+        );
+
+        logger.log(className);
+        return (
+          <Box>
+            {jobsForDepartment.map(([name, job]) => {
+              logger.log(name);
+              return (<JobRow /* SKYRAT EDIT START - Fixing alt titles */
+                className={classes([className, name === department.head && "head"])}
+                key={name}
+                job={job}
+                name={name}
+              />);
+            })/* SKYRAT EDIT END */}
+
+            {children}
+          </Box>
+        );
+      }}
+    />
   );
 };
 
@@ -415,36 +406,35 @@ export const JobsPage = () => {
 
               <PriorityHeaders />
 
-              <Department
-                department={Departments.Engineering}
-                name="Engineering" />
+              <Department department="Engineering">
+                <Gap amount={6} />
+              </Department>
 
-              <Gap amount={6} />
+              <Department department="Science">
+                <Gap amount={6} />
+              </Department>
 
-              <Department
-                department={Departments.Science}
-                name="Science" />
-
-              <Gap amount={6} />
-
-              <Department
-                department={Departments.Silicon}
-                name="Silicon" />
-
-              <Gap amount={12} />
+              <Department department="Silicon">
+                <Gap amount={12} />
+              </Department>
 
               <Department
-                department={Departments.Assistant}
-                name="Assistant" />
+                department="Assistant"
+              />
             </Stack.Item>
 
             <Stack.Item mr={1}>
               <PriorityHeaders />
-              <Department department={Departments.Captain} name="Captain" />
-              <Gap amount={6} />
-              <Department department={Departments.Service} name="Service" />
-              <Gap amount={6} />
-              <Department department={Departments.Cargo} name="Supply" />
+
+              <Department department="Captain">
+                <Gap amount={6} />
+              </Department>
+
+              <Department department="Service">
+                <Gap amount={6} />
+              </Department>
+
+              <Department department="Cargo" />
             </Stack.Item>
 
             <Stack.Item>
@@ -452,15 +442,13 @@ export const JobsPage = () => {
 
               <PriorityHeaders />
 
-              <Department
-                department={Departments.Security}
-                name="Security" />
-
-              <Gap amount={6} />
+              <Department department="Security">
+                <Gap amount={6} />
+              </Department>
 
               <Department
-                department={Departments.Medical}
-                name="Medical" />
+                department="Medical"
+              />
             </Stack.Item>
           </Stack>
         </Stack.Item>

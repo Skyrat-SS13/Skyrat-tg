@@ -11,7 +11,6 @@
 #define POLL_IGNORE_SPIDER "spider"
 #define POLL_IGNORE_ASHWALKER "ashwalker"
 #define POLL_IGNORE_GOLEM "golem"
-#define POLL_IGNORE_SWARMER "swarmer"
 #define POLL_IGNORE_DRONE "drone"
 #define POLL_IGNORE_FUGITIVE "fugitive"
 #define POLL_IGNORE_PYROSLIME "slime"
@@ -20,7 +19,8 @@
 #define POLL_IGNORE_SPLITPERSONALITY "split_personality"
 #define POLL_IGNORE_CONTRACTOR_SUPPORT "contractor_support"
 #define POLL_IGNORE_ACADEMY_WIZARD "academy_wizard"
-#define POLL_IGNORE_CORTICAL_BORER "cortical_borer" //Skyrat Edit Start: Cortical Borer
+#define POLL_IGNORE_CORTICAL_BORER "cortical_borer" // SKYRAT EDIT - Cortical Borer
+#define POLL_IGNORE_PAI "pai"
 
 //Skyrat Edit Start: Cortical Borer
 GLOBAL_LIST_INIT(poll_ignore_desc, list(
@@ -35,7 +35,6 @@ GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_SPIDER = "Spiders",
 	POLL_IGNORE_ASHWALKER = "Ashwalker eggs",
 	POLL_IGNORE_GOLEM = "Golems",
-	POLL_IGNORE_SWARMER = "Swarmer shells",
 	POLL_IGNORE_DRONE = "Drone shells",
 	POLL_IGNORE_FUGITIVE = "Fugitive Hunter",
 	POLL_IGNORE_PYROSLIME = "Slime",
@@ -45,6 +44,7 @@ GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_CONTRACTOR_SUPPORT = "Contractor Support Unit",
 	POLL_IGNORE_ACADEMY_WIZARD = "Academy Wizard Defender",
 	POLL_IGNORE_CORTICAL_BORER = "Cortical Borer",
+	POLL_IGNORE_PAI = JOB_PERSONAL_AI,
 ))
 //Skyrat Edit Stop: Cortical Borer
 GLOBAL_LIST_INIT(poll_ignore, init_poll_ignore())

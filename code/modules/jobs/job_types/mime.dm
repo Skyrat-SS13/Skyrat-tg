@@ -1,6 +1,7 @@
 /datum/job/mime
-	title = "Mime"
-	department_head = list("Head of Personnel")
+	title = JOB_MIME
+	description = "..."
+	department_head = list(JOB_HEAD_OF_PERSONNEL)
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
@@ -58,6 +59,7 @@
 	gloves = /obj/item/clothing/gloves/color/white
 	head = /obj/item/clothing/head/frenchberet
 	mask = /obj/item/clothing/mask/gas/mime
+	shoes = /obj/item/clothing/shoes/laceup
 
 	backpack = /obj/item/storage/backpack/mime
 	satchel = /obj/item/storage/backpack/mime

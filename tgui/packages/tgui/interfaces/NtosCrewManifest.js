@@ -3,6 +3,12 @@ import { useBackend } from '../backend';
 import { Button, Section, Table } from '../components';
 import { NtosWindow } from '../layouts';
 
+// SKYRAT EDIT BEGIN - ALTERNATIVE_JOB_TITLES
+//
+// width={500} - Original: width={400}
+//
+// {entry.rank === entry.trim ? entry.rank : <>{entry.rank} ({entry.trim})</>}
+//  - Original: entry.rank
 export const NtosCrewManifest = (props, context) => {
   const { act, data } = useBackend(context);
   const {
@@ -11,7 +17,7 @@ export const NtosCrewManifest = (props, context) => {
   } = data;
   return (
     <NtosWindow
-      width={400}
+      width={500}
       height={480}>
       <NtosWindow.Content scrollable>
         <Section
@@ -37,7 +43,9 @@ export const NtosCrewManifest = (props, context) => {
                       {entry.name}
                     </Table.Cell>
                     <Table.Cell>
-                      ({entry.rank})
+                      {entry.rank === entry.trim
+                        ? entry.rank
+                        : <>{entry.rank} ({entry.trim})</>}
                     </Table.Cell>
                   </Table.Row>
                 ))}
@@ -49,3 +57,4 @@ export const NtosCrewManifest = (props, context) => {
     </NtosWindow>
   );
 };
+// SKYRAT EDIT END - ALTERNATIVE_JOB_TITLES

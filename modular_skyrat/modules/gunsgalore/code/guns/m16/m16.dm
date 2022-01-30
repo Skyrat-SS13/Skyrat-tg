@@ -1,5 +1,5 @@
 /obj/item/gun/ballistic/automatic/assault_rifle/m16
-	name = "\improper M16A4 Rifle"
+	name = "\improper M16A4 rifle"
 	desc = "The fourth iteration of the M16 series of infantry rifles, firing the extremely old (yet strangely stil in use) 5.56x45mm cartridge. This seems to be a reproduction, as the model was phased out in the early 2030's to accomodate for more modern designs."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/m16/m16.dmi'
 	icon_state = "m16"
@@ -7,6 +7,7 @@
 	righthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/m16/m16_righthand.dmi'
 	inhand_icon_state = "m16"
 	slot_flags = ITEM_SLOT_BELT
+	w_class = WEIGHT_CLASS_BULKY
 	mag_type = /obj/item/ammo_box/magazine/m16
 	can_suppress = FALSE
 	burst_size = 3

@@ -49,7 +49,7 @@
 
 /obj/item/clothing/suit/toggle/jacket/hoodie/branded
 	name = "NT hoodie"
-	desc = "A warm, blue sweatshirt.  It proudly bears the silver NanoTrasen insignia lettering on the back.  The edges are trimmed with silver."
+	desc = "A warm, blue sweatshirt.  It proudly bears the silver Nanotrasen insignia lettering on the back.  The edges are trimmed with silver."
 	icon_state = "hoodie_NT"
 	greyscale_config = /datum/greyscale_config/hoodie_branded
 	greyscale_config_worn = /datum/greyscale_config/hoodie_branded/worn

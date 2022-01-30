@@ -141,6 +141,16 @@
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
+/datum/design/bodymedicell
+	name = "Empty Body Teleporter Medicell"
+	desc = "An empty medicell that can be upgraded by a bluespace slime extract into an usable body teleporter medicell."
+	id = "bodymedicell"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000, /datum/material/diamond = 500, /datum/material/bluespace = 2000)
+	build_path = /obj/item/device/custom_kit/empty_cell/body_teleporter
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
 //Upgrade Kit//
 /datum/design/medigunspeedkit
 	name = "VeyMedical CWM-479 Upgrade kit"

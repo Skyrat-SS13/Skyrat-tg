@@ -1,5 +1,5 @@
 /obj/item/organ/cyberimp/brain/anti_sleep
-	name = "CNS Jumpstarter"
+	name = "CNS jumpstarter"
 	desc = "This implant will automatically attempt to jolt you awake when it detects you have fallen unconscious outside of REM sleeping cycles. Has a short cooldown. Conflicts with the CNS Rebooter, making them incompatible with eachother."
 	implant_color = "#0356fc"
 	slot = ORGAN_SLOT_BRAIN_ANTISTUN //One or the other, not both.

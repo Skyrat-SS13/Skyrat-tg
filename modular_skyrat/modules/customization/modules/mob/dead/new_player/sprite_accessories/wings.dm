@@ -125,6 +125,23 @@
 	name = "Witch Wing"
 	icon_state = "witchwing"
 
+/datum/sprite_accessory/wings/moth/rosy
+	name = "Rosy"
+	icon_state = "rosy"
+
+/datum/sprite_accessory/wings/moth/featherful // Is actually 'feathery' on upstream
+	name = "Featherful"
+	icon_state = "featherful"
+
+/datum/sprite_accessory/wings/moth/brown
+	name = "Brown"
+	icon_state = "brown"
+
+/datum/sprite_accessory/wings/moth/plasmafire
+	name = "Plasmafire"
+	icon_state = "plasmafire"
+
+
 /datum/sprite_accessory/wings/mammal
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/wings.dmi'
 	default_color = DEFAULT_PRIMARY
@@ -232,9 +249,45 @@
 	dimension_y = 34
 	center = TRUE
 
+/datum/sprite_accessory/wings/low_wings_tri
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/wings.dmi'
+	name = "Low wings tri-tone"
+	icon_state = "low_tri"
+	color_src = USE_MATRIXED_COLORS
+	dimension_x = 46
+	dimension_y = 34
+	center = TRUE
+
+/datum/sprite_accessory/wings/low_wings_tri_top
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/wings.dmi'
+	name = "Low wings tri-tone (top)"
+	icon_state = "low_tri_top"
+	color_src = USE_MATRIXED_COLORS
+	dimension_x = 46
+	dimension_y = 34
+	center = TRUE
+
+/datum/sprite_accessory/wings/low_wings_jewel
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/wings.dmi'
+	name = "Low wings jeweled"
+	icon_state = "low_jewel"
+	color_src = USE_MATRIXED_COLORS
+	dimension_x = 46
+	dimension_y = 34
+	center = TRUE
+
+/datum/sprite_accessory/wings/low_wings_jewel_top
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/wings.dmi'
+	name = "Low wings jeweled (top)"
+	icon_state = "low_jewel_top"
+	color_src = USE_MATRIXED_COLORS
+	dimension_x = 46
+	dimension_y = 34
+	center = TRUE
+
 /datum/sprite_accessory/wings/mammal/spider
 	name = "Spider legs"
-	icon_state = "spider"
+	icon_state = "spider_legs"
 	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/wings/mammal/robowing

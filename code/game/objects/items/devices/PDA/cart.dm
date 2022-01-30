@@ -14,7 +14,9 @@
 
 	var/remote_door_id = ""
 
-	var/bot_access_flags = 0 //Bit flags. Selection: SEC_BOT | ADVANCED_SEC_BOT | MULE_BOT | FLOOR_BOT | CLEAN_BOT | MED_BOT | FIRE_BOT | VIBE_BOT
+	var/list/bot_access = list()
+//	Selection: SEC_BOT | ADVANCED_SEC_BOT | MULE_BOT | FLOOR_BOT | CLEAN_BOT | MED_BOT | FIRE_BOT | VIBE_BOT
+
 	var/spam_enabled = 0 //Enables "Send to All" Option
 
 	var/obj/item/pda/host_pda = null
@@ -29,57 +31,69 @@
 	var/list/stored_data = list()
 	var/current_channel
 
-	var/mob/living/simple_animal/bot/active_bot
+	/// Weakref to the currently controlled bot
+	var/datum/weakref/active_bot_ref
 	var/list/botlist = list()
-
-/obj/item/cartridge/Initialize(mapload)
-	. = ..()
-	var/obj/item/pda/pda = loc
-	if(istype(pda))
-		host_pda = pda
 
 /obj/item/cartridge/engineering
 	name = "\improper Power-ON cartridge"
 	icon_state = "cart-e"
 	access = CART_ENGINE | CART_DRONEPHONE
-	bot_access_flags = FLOOR_BOT
+	bot_access = list(
+		FLOOR_BOT,
+	)
 
 /obj/item/cartridge/atmos
 	name = "\improper BreatheDeep cartridge"
 	icon_state = "cart-a"
 	access = CART_ATMOS | CART_DRONEPHONE
-	bot_access_flags = FLOOR_BOT | FIRE_BOT
+	bot_access = list(
+		FLOOR_BOT,
+		FIRE_BOT,
+	)
 
 /obj/item/cartridge/medical
 	name = "\improper Med-U cartridge"
 	icon_state = "cart-m"
 	access = CART_MEDICAL
-	bot_access_flags = MED_BOT
+	bot_access = list(
+		MED_BOT,
+	)
 
 /obj/item/cartridge/chemistry
 	name = "\improper ChemWhiz cartridge"
 	icon_state = "cart-chem"
 	access = CART_REAGENT_SCANNER
-	bot_access_flags = MED_BOT
+	bot_access = list(
+		MED_BOT,
+	)
 
 /obj/item/cartridge/security
 	name = "\improper R.O.B.U.S.T. cartridge"
 	icon_state = "cart-s"
 	access = CART_SECURITY | CART_MANIFEST
-	bot_access_flags = SEC_BOT | ADVANCED_SEC_BOT
+	bot_access = list(
+		SEC_BOT,
+		ADVANCED_SEC_BOT,
+	)
 
 /obj/item/cartridge/detective
 	name = "\improper D.E.T.E.C.T. cartridge"
 	icon_state = "cart-s"
 	access = CART_SECURITY | CART_MEDICAL | CART_MANIFEST
-	bot_access_flags = SEC_BOT | ADVANCED_SEC_BOT
+	bot_access = list(
+		SEC_BOT,
+		ADVANCED_SEC_BOT,
+	)
 
 /obj/item/cartridge/janitor
 	name = "\improper CustodiPRO cartridge"
 	desc = "The ultimate in clean-room design."
 	icon_state = "cart-j"
 	access = CART_JANITOR | CART_DRONEPHONE
-	bot_access_flags = CLEAN_BOT
+	bot_access = list(
+		CLEAN_BOT,
+	)
 
 /obj/item/cartridge/lawyer
 	name = "\improper P.R.O.V.E. cartridge"
@@ -95,8 +109,14 @@
 /obj/item/cartridge/roboticist
 	name = "\improper B.O.O.P. Remote Control cartridge"
 	desc = "Packed with heavy duty quad-bot interlink!"
-	bot_access_flags = FLOOR_BOT | CLEAN_BOT | MED_BOT | FIRE_BOT | VIBE_BOT
 	access = CART_DRONEPHONE
+	bot_access = list(
+		FLOOR_BOT,
+		CLEAN_BOT,
+		MED_BOT,
+		FIRE_BOT,
+		VIBE_BOT,
+	)
 
 /obj/item/cartridge/signal//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "generic signaler cartridge"
@@ -112,14 +132,14 @@
 	. = ..()
 	radio = new(src)
 
-
-
 /obj/item/cartridge/quartermaster
 	name = "space parts & space vendors cartridge"
 	desc = "Perfect for the Quartermaster on the go!"
 	icon_state = "cart-q"
 	access = CART_QUARTERMASTER
-	bot_access_flags = MULE_BOT
+	bot_access = list(
+		MULE_BOT,
+	)
 
 /obj/item/cartridge/head
 	name = "\improper Easy-Record DELUXE cartridge"
@@ -130,32 +150,50 @@
 	name = "\improper HumanResources9001 cartridge"
 	icon_state = "cart-h"
 	access = CART_MANIFEST | CART_STATUS_DISPLAY | CART_JANITOR | CART_SECURITY | CART_NEWSCASTER | CART_QUARTERMASTER | CART_DRONEPHONE
-	bot_access_flags = MULE_BOT | CLEAN_BOT | VIBE_BOT
+	bot_access = list(
+		MULE_BOT,
+		CLEAN_BOT,
+		VIBE_BOT,
+	)
 
 /obj/item/cartridge/hos
 	name = "\improper R.O.B.U.S.T. DELUXE cartridge"
 	icon_state = "cart-hos"
 	access = CART_MANIFEST | CART_STATUS_DISPLAY | CART_SECURITY
-	bot_access_flags = SEC_BOT | ADVANCED_SEC_BOT
+	bot_access = list(
+		SEC_BOT,
+		ADVANCED_SEC_BOT,
+	)
 
 
 /obj/item/cartridge/ce
 	name = "\improper Power-On DELUXE cartridge"
 	icon_state = "cart-ce"
 	access = CART_MANIFEST | CART_STATUS_DISPLAY | CART_ENGINE | CART_ATMOS | CART_DRONEPHONE | CART_DRONEACCESS
-	bot_access_flags = FLOOR_BOT | FIRE_BOT
+	bot_access = list(
+		FLOOR_BOT,
+		FIRE_BOT,
+	)
 
 /obj/item/cartridge/cmo
 	name = "\improper Med-U DELUXE cartridge"
 	icon_state = "cart-cmo"
 	access = CART_MANIFEST | CART_STATUS_DISPLAY | CART_REAGENT_SCANNER | CART_MEDICAL
-	bot_access_flags = MED_BOT
+	bot_access = list(
+		MED_BOT,
+	)
 
 /obj/item/cartridge/rd
 	name = "\improper Signal Ace DELUXE cartridge"
 	icon_state = "cart-rd"
 	access = CART_MANIFEST | CART_STATUS_DISPLAY | CART_REAGENT_SCANNER | CART_ATMOS | CART_DRONEPHONE
-	bot_access_flags = FLOOR_BOT | CLEAN_BOT | MED_BOT | FIRE_BOT | VIBE_BOT
+	bot_access = list(
+		FLOOR_BOT,
+		CLEAN_BOT,
+		MED_BOT,
+		FIRE_BOT,
+		VIBE_BOT,
+	)
 
 /obj/item/cartridge/rd/Initialize(mapload)
 	. = ..()
@@ -166,8 +204,17 @@
 	desc = "Now with 350% more value!" //Give the Captain...EVERYTHING! (Except Mime, Clown, and Syndie)
 	icon_state = "cart-c"
 	access = ~(CART_CLOWN | CART_MIME | CART_REMOTE_DOOR)
-	bot_access_flags = SEC_BOT | ADVANCED_SEC_BOT | MULE_BOT | FLOOR_BOT | CLEAN_BOT | MED_BOT | FIRE_BOT | VIBE_BOT
 	spam_enabled = 1
+	bot_access = list(
+		SEC_BOT,
+		ADVANCED_SEC_BOT,
+		MULE_BOT,
+		FLOOR_BOT,
+		CLEAN_BOT,
+		MED_BOT,
+		FIRE_BOT,
+		VIBE_BOT,
+	)
 
 /obj/item/cartridge/captain/Initialize(mapload)
 	. = ..()
@@ -409,13 +456,13 @@
 					else
 						menu += "station"
 			menu += "<BR>Current approved orders: <BR><ol>"
-			for(var/S in SSshuttle.shoppinglist)
+			for(var/S in SSshuttle.shopping_list)
 				var/datum/supply_order/SO = S
 				menu += "<li>#[SO.id] - [SO.pack.name] approved by [SO.orderer] [SO.reason ? "([SO.reason])":""]</li>"
 			menu += "</ol>"
 
 			menu += "Current requests: <BR><ol>"
-			for(var/S in SSshuttle.requestlist)
+			for(var/S in SSshuttle.request_list)
 				var/datum/supply_order/SO = S
 				menu += "<li>#[SO.id] - [SO.pack.name] requested by [SO.orderer]</li>"
 			menu += "</ol><font size=\"-3\">Upgrade NOW to Space Parts & Space Vendors PLUS for full remote order control and inventory management."
@@ -489,7 +536,7 @@
 						if (bl.z != cl.z)
 							continue
 						var/direction = get_dir(src, B)
-						ldat += "Cleanbot - <b>\[[bl.x],[bl.y] ([uppertext(dir2text(direction))])\]</b> - [B.on ? "Online" : "Offline"]<br>"
+						ldat += "Cleanbot - <b>\[[bl.x],[bl.y] ([uppertext(dir2text(direction))])\]</b> - [B.bot_mode_flags & BOT_MODE_ON ? "Online" : "Offline"]<br>"
 
 				if (!ldat)
 					menu += "None"
@@ -634,15 +681,16 @@
 		var/parse = emoji_parse(":[href_list["emoji"]]:")
 		to_chat(usr, parse)
 
+	var/mob/living/simple_animal/bot/active_bot = active_bot_ref?.resolve()
+
 	//Bot control section! Viciously ripped from radios for being laggy and terrible.
 	if(href_list["op"])
 		switch(href_list["op"])
 
 			if("control")
-				active_bot = locate(href_list["bot"]) in GLOB.bots_list
-
+				active_bot_ref = WEAKREF(locate(href_list["bot"]) in GLOB.bots_list)
 			if("botlist")
-				active_bot = null
+				active_bot_ref = null
 			if("summon") //Args are in the correct order, they are stated here just as an easy reminder.
 				active_bot.bot_control("summon", usr, host_pda.GetAccess())
 			else //Forward all other bot commands to the bot itself!
@@ -659,59 +707,60 @@
 
 
 /obj/item/cartridge/proc/bot_control()
-	if(active_bot)
-		menu += "<B>[active_bot]</B><BR> Status: (<A href='byond://?src=[REF(src)];op=control;bot=[REF(active_bot)]'>[PDAIMG(refresh)]<i>refresh</i></A>)<BR>"
-		menu += "Model: [active_bot.model]<BR>"
-		menu += "Location: [get_area(active_bot)]<BR>"
-		menu += "Mode: [active_bot.get_mode()]"
-		if(active_bot.allow_pai)
-			menu += "<BR>pAI: "
-			if(active_bot.paicard && active_bot.paicard.pai)
-				menu += "[active_bot.paicard.pai.name]"
-				if(active_bot.bot_core.allowed(usr))
-					menu += " (<A href='byond://?src=[REF(src)];op=ejectpai'><i>eject</i></A>)"
-			else
-				menu += "<i>none</i>"
-
-		//MULEs!
-		if(active_bot.bot_type == MULE_BOT)
-			var/mob/living/simple_animal/bot/mulebot/MULE = active_bot
-			var/atom/Load = MULE.load
-			menu += "<BR>Current Load: [ !Load ? "<i>none</i>" : "[Load.name] (<A href='byond://?src=[REF(src)];mule=unload'><i>unload</i></A>)" ]<BR>"
-			menu += "Destination: [MULE.destination ? MULE.destination : "<i>None</i>"] (<A href='byond://?src=[REF(src)];mule=destination'><i>set</i></A>)<BR>"
-			menu += "Set ID: [MULE.suffix] <A href='byond://?src=[REF(src)];mule=setid'><i> Modify</i></A><BR>"
-			menu += "Power: [MULE.cell ? MULE.cell.percent() : 0]%<BR>"
-			menu += "Home: [!MULE.home_destination ? "<i>none</i>" : MULE.home_destination ]<BR>"
-			menu += "Delivery Reporting: <A href='byond://?src=[REF(src)];mule=report'>[MULE.report_delivery ? "(<B>On</B>)": "(<B>Off</B>)"]</A><BR>"
-			menu += "Auto Return Home: <A href='byond://?src=[REF(src)];mule=autoret'>[MULE.auto_return ? "(<B>On</B>)": "(<B>Off</B>)"]</A><BR>"
-			menu += "Auto Pickup Crate: <A href='byond://?src=[REF(src)];mule=autopick'>[MULE.auto_pickup ? "(<B>On</B>)": "(<B>Off</B>)"]</A><BR><BR>" //Hue.
-
-			menu += "\[<A href='byond://?src=[REF(src)];mule=stop'>Stop</A>\] "
-			menu += "\[<A href='byond://?src=[REF(src)];mule=go'>Proceed</A>\] "
-			menu += "\[<A href='byond://?src=[REF(src)];mule=home'>Return Home</A>\]<BR>"
-
-		else
-			menu += "<BR>\[<A href='byond://?src=[REF(src)];op=patroloff'>Stop Patrol</A>\] " //patrolon
-			menu += "\[<A href='byond://?src=[REF(src)];op=patrolon'>Start Patrol</A>\] " //patroloff
-			menu += "\[<A href='byond://?src=[REF(src)];op=summon'>Summon Bot</A>\]<BR>" //summon
-			menu += "Keep an ID inserted to upload access codes upon summoning."
-
-		menu += "<HR><A href='byond://?src=[REF(src)];op=botlist'>[PDAIMG(back)]Return to bot list</A>"
-	else
+	var/mob/living/simple_animal/bot/active_bot = active_bot_ref?.resolve()
+	if(!active_bot)
 		menu += "<BR><A href='byond://?src=[REF(src)];op=botlist'>[PDAIMG(refresh)]Scan for active bots</A><BR><BR>"
 		var/turf/current_turf = get_turf(src)
 		var/zlevel = current_turf.z
 		var/botcount = 0
 		for(var/B in GLOB.bots_list) //Git da botz
 			var/mob/living/simple_animal/bot/Bot = B
-			if(!Bot.on || Bot.z != zlevel || Bot.remote_disabled || !(bot_access_flags & Bot.bot_type)) //Only non-emagged bots on the same Z-level are detected!
+			if(!(Bot.bot_mode_flags & BOT_MODE_ON) || Bot.z != zlevel || !(Bot.bot_mode_flags & BOT_MODE_REMOTE_ENABLED) || !(Bot.bot_type in bot_access)) //Only non-emagged bots on the same Z-level are detected!
 				continue //Also, the PDA must have access to the bot type.
 			menu += "<A href='byond://?src=[REF(src)];op=control;bot=[REF(Bot)]'><b>[Bot.name]</b> ([Bot.get_mode()])<BR>"
 			botcount++
 		if(!botcount) //No bots at all? Lame.
 			menu += "No bots found.<BR>"
-			return
+		return menu
 
+	menu += "<B>[active_bot]</B><BR> Status: (<A href='byond://?src=[REF(src)];op=control;bot=[REF(active_bot)]'>[PDAIMG(refresh)]<i>refresh</i></A>)<BR>"
+	menu += "Model: [active_bot.bot_type]<BR>"
+	menu += "Location: [get_area(active_bot)]<BR>"
+	menu += "Mode: [active_bot.get_mode()]"
+	if(active_bot.bot_mode_flags & BOT_MODE_PAI_CONTROLLABLE)
+		menu += "<BR>pAI: "
+		if(active_bot.paicard && active_bot.paicard.pai)
+			menu += "[active_bot.paicard.pai.name]"
+			if(active_bot.check_access(usr))
+				menu += " (<A href='byond://?src=[REF(src)];op=ejectpai'><i>eject</i></A>)"
+		else
+			menu += "<i>none</i>"
+
+	//MULEs!
+	if(active_bot.bot_type == MULE_BOT)
+		var/mob/living/simple_animal/bot/mulebot/MULE = active_bot
+		var/atom/Load = MULE.load
+		menu += "<BR>Current Load: [ !Load ? "<i>none</i>" : "[Load.name] (<A href='byond://?src=[REF(src)];mule=unload'><i>unload</i></A>)" ]<BR>"
+		menu += "Destination: [MULE.destination ? MULE.destination : "<i>None</i>"] (<A href='byond://?src=[REF(src)];mule=destination'><i>set</i></A>)<BR>"
+		menu += "Set ID: [MULE.suffix] <A href='byond://?src=[REF(src)];mule=setid'><i> Modify</i></A><BR>"
+		menu += "Power: [MULE.cell ? MULE.cell.percent() : 0]%<BR>"
+		menu += "Home: [!MULE.home_destination ? "<i>none</i>" : MULE.home_destination ]<BR>"
+		menu += "Delivery Reporting: <A href='byond://?src=[REF(src)];mule=report'>[MULE.report_delivery ? "(<B>On</B>)": "(<B>Off</B>)"]</A><BR>"
+		menu += "Auto Return Home: <A href='byond://?src=[REF(src)];mule=autoret'>[MULE.auto_return ? "(<B>On</B>)": "(<B>Off</B>)"]</A><BR>"
+		menu += "Auto Pickup Crate: <A href='byond://?src=[REF(src)];mule=autopick'>[MULE.auto_pickup ? "(<B>On</B>)": "(<B>Off</B>)"]</A><BR><BR>" //Hue.
+
+		menu += "\[<A href='byond://?src=[REF(src)];mule=stop'>Stop</A>\] "
+		menu += "\[<A href='byond://?src=[REF(src)];mule=go'>Proceed</A>\] "
+		menu += "\[<A href='byond://?src=[REF(src)];mule=home'>Return Home</A>\]<BR>"
+
+	else
+		menu += "<BR>\[<A href='byond://?src=[REF(src)];op=patroloff'>Stop Patrol</A>\] " //patrolon
+		menu += "\[<A href='byond://?src=[REF(src)];op=patrolon'>Start Patrol</A>\] " //patroloff
+		menu += "\[<A href='byond://?src=[REF(src)];op=summon'>Summon Bot</A>\]<BR>" //summon
+		menu += "Keep an ID inserted to upload access codes upon summoning."
+
+	menu += "<HR><A href='byond://?src=[REF(src)];op=botlist'>[PDAIMG(back)]Return to bot list</A>"
+		
 	return menu
 
 //If the cartridge adds a special line to the top of the messaging app
