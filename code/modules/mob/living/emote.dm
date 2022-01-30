@@ -396,7 +396,11 @@
 	if(. && isliving(user))
 		var/mob/living/L = user
 		L.Paralyze(200)
+<<<<<<< HEAD
 		L.remove_status_effect(STATUS_EFFECT_SURRENDER) */
+=======
+		L.remove_status_effect(/datum/status_effect/grouped/surrender)
+>>>>>>> b84ad2dde83 (Removes useless status effect path defines. (#64490))
 
 /datum/emote/living/sway
 	key = "sway"
