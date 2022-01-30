@@ -48,7 +48,7 @@ export const Skyrat_SolGovGTFO = (props, context) => {
                 <Table.Cell collapsing textAlign="right">
                   <Box color="label" inline>
                     {found_rider.get_assignment()}
-                    </Box>
+                  </Box>
                 </Table.Cell>
               </Table.Row>
             ))}
