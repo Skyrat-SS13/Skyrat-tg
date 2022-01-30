@@ -7,8 +7,7 @@
 			//Tallborg stuff
 			if(!robot_resting)
 				indicator.pixel_y = 16
-			indicator.pixel_x = -6
-
+		indicator.pixel_x = -4
 		add_overlay(indicator)
 	else
 		cut_overlay(indicator)
