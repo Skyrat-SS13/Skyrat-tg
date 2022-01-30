@@ -195,7 +195,7 @@
 	visible_message(span_bolddanger("[src] makes an odd whining noise!"))
 	do_jitter_animation(30)
 	sleep(10 SECONDS) // Here's your ten second warning
-	explosion(get_turf(src), 1, 3, 6, 6, 8) // Should this be changed?
+	explosion(get_turf(src), 1, 2, 4, 6, 4) // Should this be changed?
 	gib() // Yuck, robo-blood
 
 /mob/living/simple_animal/pet/dog/dobermann
