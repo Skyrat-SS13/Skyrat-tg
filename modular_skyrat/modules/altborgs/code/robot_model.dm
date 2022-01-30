@@ -11,11 +11,12 @@
 	if (!istype(robot))
 		return
 	if (model_features && (R_TRAIT_TALL in model_features))
-		hat_offset = 16
 		cyborg.maptext_height = 48 //Runechat blabla
+		cyborg.AddElement(/datum/element/footstep, FOOTSTEP_MOB_SHOE, 2, -6, sound_vary = TRUE)
 		add_verb(cyborg, /mob/living/silicon/robot/proc/robot_lay_down)
 	else
 		cyborg.maptext_height = initial(cyborg.maptext_height)
+		cyborg.RemoveElement(/datum/element/footstep, FOOTSTEP_MOB_SHOE, 2, -6, sound_vary = TRUE)
 		remove_verb(cyborg, /mob/living/silicon/robot/proc/robot_lay_down)
 
 
