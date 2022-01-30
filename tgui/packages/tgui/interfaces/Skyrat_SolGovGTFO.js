@@ -1,6 +1,6 @@
 import { toTitleCase } from 'common/string';
 import { useBackend } from '../backend';
-import { Box, Button, LabeledList, Section, Table, NoticeBox} from '../components';
+import { Box, Button, LabeledList, Section, Table, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
 export const Skyrat_SolGovGTFO = (props, context) => {
@@ -27,8 +27,7 @@ export const Skyrat_SolGovGTFO = (props, context) => {
                 <Button
                   content="Activate Lift"
                   onClick={() => act('activate_lift')} />
-              )}>
-            </LabeledList.Item>
+              )} />
           </LabeledList>
         </Section>
         <Section title="Current riders">
@@ -41,7 +40,7 @@ export const Skyrat_SolGovGTFO = (props, context) => {
                 Occupation
               </Table.Cell>
             </Table.Row>
-            {list_of_riders.map(found_rider => {
+            {list_of_riders.map(found_rider => (
               <Table.Row>
                 <Table.Cell>
                   {toTitleCase(found_rider.get_authentification_name())}
@@ -52,7 +51,7 @@ export const Skyrat_SolGovGTFO = (props, context) => {
                     </Box>
                 </Table.Cell>
               </Table.Row>
-            })};
+            ))}
           </Table>
         </Section>
       </Window.Content>
