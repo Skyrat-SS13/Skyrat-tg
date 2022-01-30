@@ -15,7 +15,10 @@
 	data["selected_module"] = selected_module?.name
 	data["wearer_name"] = wearer ? (wearer.get_authentification_name("Unknown") || "Unknown") : "No Occupant"
 	data["wearer_job"] = wearer ? wearer.get_assignment("Unknown", "Unknown", FALSE) : "No Job"
-	data["AI"] = ai?.name
+	// SKYRAT EDIT START - pAIs in MODsuits
+	data["pAI"] = mod_pai?.name
+	data["ispAI"] = mod_pai ? mod_pai == user : FALSE
+	// SKYRAT EDIT END
 	data["core"] = core?.name
 	data["charge"] = get_charge_percent()
 	data["modules"] = list()
@@ -55,7 +58,8 @@
 	. = ..()
 	if(.)
 		return
-	if(!allowed(usr) && locked)
+	// allowed() doesn't allow for pAIs
+	if((!allowed(usr) || !ispAI(usr)) && locked) // SKYRAT EDIT - pAIs in MODsuits
 		balloon_alert(usr, "insufficient access!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return
@@ -83,4 +87,10 @@
 			if(!module)
 				return
 			module.pin(usr)
+		// SKYRAT EDIT START - pAIs in MODsuits
+		if("remove_pai")
+			if(ishuman(usr)) // Only the MODsuit's wearer should be removing the pAI.
+				var/mob/user = usr
+				remove_pai(user)
+		// SKYRAT EDIT END
 	return TRUE

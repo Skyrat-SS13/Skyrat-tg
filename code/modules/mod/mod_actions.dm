@@ -2,28 +2,32 @@
 	background_icon_state = "bg_tech_blue"
 	icon_icon = 'icons/mob/actions/actions_mod.dmi'
 	check_flags = AB_CHECK_CONSCIOUS
+	/* SKYRAT EDIT REMOVAL - MODsuit pAIs
 	/// Whether this action is intended for the AI. Stuff breaks a lot if this is done differently.
 	var/ai_action = FALSE
+	*/ // SKYRAT EDIT END
 	/// The MODsuit linked to this action
 	var/obj/item/mod/control/mod
 
 /datum/action/item_action/mod/New(Target)
 	..()
 	mod = Target
-	if(ai_action)
-		background_icon_state = ACTION_BUTTON_DEFAULT_BACKGROUND
+	// SKYRAT EDIT START - pAIs in MODsuits
+	if(pai_action)
+		background_icon_state = "bg_tech"
+	// SKYRAT EDIT END
 
 /datum/action/item_action/mod/Grant(mob/user)
-	if(ai_action && user != mod.ai)
+	if(pai_action && user != mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
 		return
-	else if(!ai_action && user == mod.ai)
+	else if(!pai_action && user == mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
 		return
 	return ..()
 
 /datum/action/item_action/mod/Remove(mob/user)
-	if(ai_action && user != mod.ai)
+	if(pai_action && user != mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
 		return
-	else if(!ai_action && user == mod.ai)
+	else if(!pai_action && user == mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
 		return
 	return ..()
 
@@ -49,8 +53,10 @@
 	else
 		mod.choose_deploy(usr)
 
+/* SKYRAT EDIT REMOVAL - MODsuit pAIs
 /datum/action/item_action/mod/deploy/ai
 	ai_action = TRUE
+*/ // SKYRAT EDIT END
 
 /datum/action/item_action/mod/activate
 	name = "Activate MODsuit"
@@ -66,7 +72,7 @@
 	if(!(trigger_flags & TRIGGER_SECONDARY_ACTION) && !ready)
 		ready = TRUE
 		button_icon_state = "activate-ready"
-		if(!ai_action)
+		if(!pai_action) // SKYRAT EDIT - pAIs in MODsuits
 			background_icon_state = "bg_tech"
 		UpdateButtonIcon()
 		addtimer(CALLBACK(src, .proc/reset_ready), 3 SECONDS)
@@ -78,12 +84,14 @@
 /datum/action/item_action/mod/activate/proc/reset_ready()
 	ready = FALSE
 	button_icon_state = initial(button_icon_state)
-	if(!ai_action)
+	if(!pai_action) // SKYRAT EDIT START - pAIs in MODsuits
 		background_icon_state = initial(background_icon_state)
 	UpdateButtonIcon()
 
+/* SKYRAT EDIT REMOVAL - MODsuit pAIs
 /datum/action/item_action/mod/activate/ai
 	ai_action = TRUE
+*/ // SKYRAT EDIT END
 
 /datum/action/item_action/mod/module
 	name = "Toggle Module"
@@ -96,8 +104,10 @@
 		return
 	mod.quick_module(usr)
 
+/* SKYRAT EDIT REMOVAL - MODsuit pAIs
 /datum/action/item_action/mod/module/ai
 	ai_action = TRUE
+*/ // SKYRAT EDIT END
 
 /datum/action/item_action/mod/panel
 	name = "MODsuit Panel"
@@ -110,8 +120,10 @@
 		return
 	mod.ui_interact(usr)
 
+/* SKYRAT EDIT REMOVAL - MODsuit pAIs
 /datum/action/item_action/mod/panel/ai
 	ai_action = TRUE
+*/ // SKYRAT EDIT END
 
 /datum/action/item_action/mod/pinned_module
 	desc = "Activate the module."
@@ -123,8 +135,11 @@
 	var/mob/pinner
 
 /datum/action/item_action/mod/pinned_module/New(Target, obj/item/mod/module/linked_module, mob/user)
-	if(isAI(user))
-		ai_action = TRUE
+	// SKYRAT EDIT START - pAIs in MODsuits
+	mod = Target // We have to do this otherwise it's going to runtime
+	if(user == mod.mod_pai)
+		pai_action = TRUE
+	// SKYRAT EDIT END
 	..()
 	module = linked_module
 	name = "Activate [capitalize(linked_module.name)]"
