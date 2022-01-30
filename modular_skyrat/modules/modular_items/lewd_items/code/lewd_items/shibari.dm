@@ -34,6 +34,8 @@
 
 //This part of code spawns ropes with full stack.
 /obj/item/stack/shibari_rope/full
+	name = "glowy shibari ropes"
+	singular_name = "glowy rope"
 	amount = 5
 
 /obj/item/stack/shibari_rope/glow
