@@ -109,6 +109,8 @@
 ///Finds users on the 'lift' gives ample warning, then deletes them all. Effectively, its how 911 will leave the round.
 /obj/machinery/computer/solgov_gtfo/proc/activate_lift(mob/user, list_of_riders)
 	if(user.client.holder)	//Debug purposes, admins get a slightly modified warning specifying 'hey, admin, dont use this if you arent debugging'
+		if(!isliving(user))
+			to_chat(user, span_admin("Stop trying to debug 'delete all rider' platforms as a ghost. Counter-intuitive as hell."))
 		if(!tgui_alert(user, span_admin("Admin, are you sure? This will remove all riders from the round. You should only use this for debug purposes."), "Activate Lift", list("I'm Sure", "Abort")) == "I'm Sure")
 			return FALSE
 	else
