@@ -249,6 +249,7 @@ GLOBAL_LIST_INIT(book_types, typecacheof(list(
 #define is_bartender_job(job_type) (istype(job_type, /datum/job/bartender))
 #define is_captain_job(job_type) (istype(job_type, /datum/job/captain))
 #define is_chaplain_job(job_type) (istype(job_type, /datum/job/chaplain))
+#define is_curator_job(job_type) (istype(job_type, /datum/job/curator)) //SKYRAT EDIT: Xenoarch and Glassblowing
 #define is_clown_job(job_type) (istype(job_type, /datum/job/clown))
 #define is_detective_job(job_type) (istype(job_type, /datum/job/detective))
 #define is_scientist_job(job_type) (istype(job_type, /datum/job/scientist))
