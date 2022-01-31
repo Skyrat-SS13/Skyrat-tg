@@ -64,7 +64,7 @@
 	if(user == caller)
 		. += span_notice("It looks cheapo, they did say it gives just one shot...")
 	else
-		. += span_notice("It looks flimsy and identical to the \"DonkCo\" toy.")
+		. += span_notice("It looks flimsy and identical to the \"Donk Co.\" toy.")
 
 /obj/item/card/emag/oneshot/can_emag(atom/target, mob/user)
 	if(charges <= 0)

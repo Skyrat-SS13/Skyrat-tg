@@ -189,12 +189,15 @@
 
 		add_fingerprint(user, TRUE)
 		visible_message(span_boldwarning("[user] swipes a card through [src]!"), span_notice("You overload [src]s internal reactor..."))
-		addtimer(CALLBACK(src, .proc/explode), 50 SECONDS)
+		addtimer(CALLBACK(src, .proc/explode_imminent), 50 SECONDS)
 
-/mob/living/simple_animal/pet/dog/corgi/borgi/proc/explode()
+/mob/living/simple_animal/pet/dog/corgi/borgi/proc/explode_imminent()
 	visible_message(span_bolddanger("[src] makes an odd whining noise!"))
 	do_jitter_animation(30)
-	sleep(10 SECONDS) // Here's your ten second warning
+
+	addtimer(CALLBACK(src, .proc/explode), 10 SECONDS)
+
+/mob/living/simple_animal/pet/dog/corgi/borgi/proc/explode()
 	explosion(get_turf(src), 1, 2, 4, 6, 4) // Should this be changed?
 	gib() // Yuck, robo-blood
 

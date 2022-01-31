@@ -17,6 +17,8 @@
 	turns_per_move = 3
 	/// Is the inspection currently being passed?
 	var/safety_inspection = TRUE
+	/// Are they scared already?
+	var/upset = FALSE
 	/// Are they near the supermatter?
 	var/near_engine = FALSE
 	animal_species = /mob/living/simple_animal/pet/poppy
@@ -41,7 +43,11 @@
 /mob/living/simple_animal/pet/poppy/Initialize(mapload, safety_inspection)
 	. = ..()
 	add_verb(src, /mob/living/proc/toggle_resting)
+	become_area_sensitive(INNATE_TRAIT)
+
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
+	RegisterSignal(src, COMSIG_ENTER_AREA, .proc/check_area)
+
 	qdel(GetComponent(/datum/component/butchering))
 
 	var/datum/component/overlay_lighting/lighting_object = src.GetComponent(/datum/component/overlay_lighting)
@@ -49,13 +55,16 @@
 	cone.transform = cone.transform.Translate(0, -12) //adjust the little headlamp
 
 /mob/living/simple_animal/pet/poppy/death()
+	lose_area_sensitivity(INNATE_TRAIT)
 	set_light_on(FALSE)
+
+	UnregisterSignal(src, COMSIG_ENTER_AREA)
 
 	if(safety_inspection)
 		var/list/sm_chamber = get_area_turfs(/area/engineering/supermatter)
 		if(src.loc in sm_chamber)
 			safety_inspection = FALSE
-			priority_announce("This is a generated message due to an automated signal regarding the safety standards of the engineering department onboard [station_name()]. Due to the station-engineers failing to meet the standard set by CentCom, each will be forcibly enrolled in a re-evaluation program at later notice... ", "Concerning the results of a safety inspection", type = "Priority")
+			priority_announce("This is a generated message due to an automated signal regarding the safety standards of the engineering department onboard [station_name()]. Due to the station engineers failing to meet the standard set by Central Command, each of them are now at risk of being forcefully enrolled in a re-evaluation program at later notice...", "Concerning the results of a safety inspection", type = "Priority")
 			// It's just flavor, no tangible punishment
 	..()
 
@@ -76,27 +85,19 @@
 	regenerate_icons()
 
 /mob/living/simple_animal/pet/poppy/Life(delta_time = SSMOBS_DT, times_fired)
-	if(buckled || client)
+	if(buckled || client || stat)
 		return
 
 	if(pulledby)
 		set_resting(FALSE)
 
-	if(!near_engine)
-		for(var/obj/machinery/power/supermatter_crystal/sm_crystal in view(8, src))
-			near_engine = TRUE
-			icon_state = "poppypossum_aaa"
-
-			do_jitter_animation(30)
-			manual_emote("'s fur stands up, trembling at the sight of [sm_crystal]...")
-			emote("sweatdrop")
-
-			cooldowns.Add(addtimer(CALLBACK(src, .proc/calm_down), 60 SECONDS, TIMER_STOPPABLE))
-			break
+	if(near_engine)
+		near_engine = FALSE
+		panic()
 
 	if(!DT_PROB(0.5, delta_time))
 		return
-	if(resting)
+	if(!resting)
 		manual_emote(pick("lets out a hiss before resting.", "catches a break.", "gives a simmering hiss before lounging.", "exams her surroundings before relaxing."))
 		set_resting(TRUE)
 		return
@@ -106,6 +107,22 @@
 
 	return ..()
 
+/mob/living/simple_animal/pet/poppy/proc/check_area()
+	SIGNAL_HANDLER
+	if(safety_inspection && !upset)
+		var/list/sm_room = get_area_turfs(/area/engineering/supermatter/room)
+		if(src.loc in sm_room)
+			near_engine = TRUE
+
+/mob/living/simple_animal/pet/poppy/proc/panic()
+	upset = TRUE
+	icon_state = "poppypossum_aaa"
+
+	emote("sweatdrop")
+	do_jitter_animation(60)
+	manual_emote("'s fur stands up, [src.p_their()] body trembling...")
+	addtimer(CALLBACK(src, .proc/calm_down), 60 SECONDS)
+
 /mob/living/simple_animal/pet/poppy/proc/calm_down()
-	near_engine = FALSE
+	upset = FALSE
 	icon_state = initial(icon_state)
