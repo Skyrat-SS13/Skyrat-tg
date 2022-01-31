@@ -27,6 +27,8 @@
 	if(istype(target_pet, /mob/living/simple_animal/pet/poppy))
 		name = "Dust the engineering department's esteemed safety inspector and beloved pet, Poppy"
 		description = "A couple of troublemakers in the engineering department have spilled the milk, make them and their colleagues pay for the consequences by throwing Poppy the safety inspector into the supermatter engine "
+		telecrystal_reward = list(3, 4)
+
 		// Cleaning up the original success_signals which are `list(COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH)`
 		for(var/datum/component/traitor_objective_register/old_objective as anything in GetComponents(/datum/component/traitor_objective_register))
 			if(old_objective.target == target_pet)
@@ -39,6 +41,7 @@
 	if(istype(target_pet, /mob/living/simple_animal/pet/dog/corgi/borgi))
 		name = "Emag the roboticist's most-prized borgi, E-N"
 		description = "We received an untracable contract from someone addressed 'ianfan2489@solgov.nt', they want the robotic clone of Ian dead- and it has to be dramatic. We will supply you with a cryptographic sequencer from our basic loadout options to shortcircuit E-N's safety, it will give you a single attempt to use it. Oh, and remember to run like hell when you do... "
+		telecrystal_reward = list(3, 4) // Because these are more complicated than 'kill the pet', the reward is bigger
 		telecrystal_penalty = 3 // Same cost as an emag on sale
 
 		for(var/datum/component/traitor_objective_register/old_objective as anything in GetComponents(/datum/component/traitor_objective_register))
