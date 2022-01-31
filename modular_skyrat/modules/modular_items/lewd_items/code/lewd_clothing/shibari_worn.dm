@@ -201,7 +201,7 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_gloves.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_gloves.dmi'
 	body_parts_covered = NONE
-	strip_delay = 100
+	//strip_delay = 100
 	breakouttime = 5 SECONDS
 	item_flags = DROPDEL
 
