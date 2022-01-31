@@ -35,6 +35,8 @@
 	var/calculated_control_rod_efficiency = 0
 	/// The last calculated cooling potential in kelvin, it is the incoming gas temperature.
 	var/calculated_cooling_potential = 0
+	/// The last calculated environment air temperature.
+	var/calculated_ambient_temperature = 0
 	/// The current heat of the reactor vessel in kelvin. We start at room temperature.
 	var/core_temperature = T20C
 	/// The core pressure of the reactor vessel in kilopascals.
@@ -47,10 +49,17 @@
 	var/list/control_rods = list()
 	/// What insertion percent do we want the control rods to be at?
 	var/desired_control_rod_insertion = 0
+
+	/// Are we online or offline?
+	var/reactor_status = REACTOR_OFFLINE
+
+	// References to external objects
 	/// The currently installed moderator.
 	var/obj/item/reactor_moderator/reactor_moderator
 	/// A reference to our connected heat exchanger.
 	var/obj/machinery/atmospherics/components/binary/reactor_heat_exchanger/reactor_heat_exchanger
+	/// A reference to our connected control computer.
+	var/obj/machinery/computer/reactor_control/connected_computer
 
 /obj/machinery/reactor/Initialize(mapload)
 	. = ..()
@@ -125,17 +134,29 @@
 
 /obj/machinery/reactor/proc/process_effects()
 
+// Returns the current ambient air temperature.
+/obj/machinery/reactor/proc/get_ambient_air_temperature()
+	var/turf/our_turf = get_turf(src)
+	var/datum/gas_mixture/enviroment = our_turf.return_air()
+
+	return enviroment.temperature
+
 /obj/machinery/reactor/proc/start_up()
 	START_PROCESSING(SSmachines, src)
 	playsound(src, pick('modular_skyrat/modules/nuclear_reactor/sound/startup2.ogg', 'modular_skyrat/modules/nuclear_reactor/sound/startup.ogg'), 100, TRUE)
 	soundloop.start()
 	visible_message(span_notice("[src] clunks loudly as it begins to whirr to life!"))
 	icon_state = "running"
+	update_appearance()
+	reactor_status = REACTOR_ONLINE
 
 /obj/machinery/reactor/proc/shut_down()
 	STOP_PROCESSING(SSmachines, src)
 	soundloop.stop()
 	core_temperature = T20C
+	icon_state = "offline"
+	update_appearance()
+	reactor_status = REACTOR_OFFLINE
 
 /obj/machinery/reactor/proc/process_pressure() //Pressure is what drives the turbine. If the vent is closed, pressure will quickly build up.
 	var/pressure_modifier = core_pressure
@@ -149,8 +170,7 @@
 
 /obj/machinery/reactor/proc/get_cooling_potential()
 	if(!reactor_heat_exchanger)
-		var/turf/our_turf = get_turf(src)
-		return our_turf.temperature //If we do not have a heat exchanger, we just return the temperature of our turf.
+		return calculated_ambient_temperature //If we do not have a heat exchanger, we just return the temperature of our turf.
 
 	calculated_cooling_potential = reactor_heat_exchanger.calculated_cooling_potential
 
@@ -191,10 +211,9 @@
 	// If you can get the cooling potential to be equal to the power, then the reactor temp is stable.
 	calculated_temperature_modifier += calculated_power
 
-	// Now we add our ambient temperature to the mix.
-	var/turf/our_turf = get_turf(src)
+	calculated_ambient_temperature = enviroment.temperature
 
-	var/calculated_ambient_temperature_delta = our_turf.temperature - core_temperature
+	var/calculated_ambient_temperature_delta = calculated_ambient_temperature - core_temperature
 
 	calculated_temperature_modifier += clamp(calculated_ambient_temperature_delta, -REACTOR_MAX_TEMPERATURE_CONDUCTION, REACTOR_MAX_TEMPERATURE_CONDUCTION)
 
@@ -252,6 +271,54 @@
 			multitool.buffer = null
 			return TRUE
 	return ..()
+
+/obj/machinery/computer/reactor_control
+	name = "GA37W Reactor Control Terminal"
+	desc = "This computer controls the Micron Control Systems GA37W Experimental Boiling Water Reactor."
+	/// Our connection to the reactor.
+	var/obj/machinery/reactor/connected_reactor
+
+/obj/machinery/computer/reactor_control/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ReactorControl")
+		ui.open()
+
+/obj/machinery/computer/reactor_control/ui_data(mob/user)
+	var/list/data = list()
+
+	data["reactor_status"] = connected_reactor.reactor_status
+	data["reactor_temperature"] = connected_reactor.core_temperature
+	data["reactor_pressure"] = connected_reactor.core_pressure
+	data["reactor_integrity"] = connected_reactor.vessel_integrity
+	data["calculated_power"] = connected_reactor.calculated_power
+	data["calculated_control_rod_efficiency"] = connected_reactor.calculated_control_rod_efficiency
+	data["calculated_cooling_potential"] = connected_reactor.calculated_cooling_potential
+	data["ambient_air_temperature"] = connected_reactor.get_ambient_air_temperature()
+
+	return data
+
+/obj/machinery/computer/reactor_control/ui_act(action, list/params)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("sync_reactor")
+			if(!find_reactor())
+				playsound(src, 'sound/machines/buzz-two.ogg', 100)
+				balloon_alert_to_viewers("No reactor found!")
+				return
+		if("turn_on")
+			connected_reactor.start_up()
+			return TRUE
+
+/obj/machinery/computer/reactor_control/proc/find_reactor()
+	for(var/obj/machinery/reactor/found_reactor in range(20, src))
+		connected_reactor = found_reactor
+		found_reactor.connected_computer = src
+		return TRUE
+	return FALSE
 
 /**
  * Reactor heat exchanger
@@ -323,9 +390,9 @@
 	icon_state = "control_rod"
 
 	/// How degraded is this control rod? Only degrades if the temperature exceeds the safe operating temperature.
-	var/degridation = 0
-	/// How much degridation can we take before we become useless?
-	var/max_degridation = 100
+	var/degradation = 0
+	/// How much degradation can we take before we become useless?
+	var/max_degradation = 100
 	/// Our maximum safe heat rating in Kelvin.
 	var/heat_rating = 600
 	/// If we are inside a reactor, how deep are we?
@@ -342,9 +409,9 @@
 	if(efficency <= 0) //Effectively dead.
 		return
 
-	degridation += (0.001 * heat_amount)
+	degradation += (0.001 * heat_amount)
 
-	if(degridation >= max_degridation)
+	if(degradation >= max_degradation)
 		final_degrade()
 
 /obj/item/reactor_control_rod/proc/final_degrade()

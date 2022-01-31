@@ -4,6 +4,9 @@
 /// How many control rods we can have in the reactor at any one time.
 #define REACTOR_MAX_CONTROL_RODS 4
 
+#define REACTOR_OFFLINE "offline"
+#define REACTOR_ONLINE "online"
+
 
 // Reactor temperatures (Reactor pressure vessel)
 
