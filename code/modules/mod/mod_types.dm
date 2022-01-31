@@ -52,6 +52,16 @@
 		/obj/item/mod/module/jetpack,
 	)
 
+/obj/item/mod/control/pre_equipped/loader
+	theme = /datum/mod_theme/loader
+	applied_cell = /obj/item/stock_parts/cell/high/plus
+	initial_modules = list(
+		/obj/item/mod/module/storage/large_capacity,
+		/obj/item/mod/module/flashlight,
+		/obj/item/mod/module/paper_dispenser,
+		/obj/item/mod/module/stamp,
+	)
+
 /obj/item/mod/control/pre_equipped/mining
 	theme = /datum/mod_theme/mining
 	applied_cell = /obj/item/stock_parts/cell/high/plus
@@ -283,8 +293,8 @@
 		/obj/item/mod/module/holster,
 	)
 
-/obj/item/mod/control/pre_equipped/chrono
-	theme = /datum/mod_theme/chrono
+/obj/item/mod/control/pre_equipped/timeline
+	theme = /datum/mod_theme/timeline
 	applied_core = /obj/item/mod/core/infinite
 	initial_modules = list(
 		/obj/item/mod/module/eradication_lock,

@@ -755,11 +755,12 @@
 	design_ids = list(
 		"assembly_shell",
 		"bot_shell",
+		"comp_mod_action",
 		"controller_shell",
 		"dispenser_shell",
 		"door_shell",
 		"gun_shell",
-		"mod_circuit",
+		"module_shell",
 		"money_bot_shell",
 		"scanner_gate_shell",
 		"scanner_shell",
@@ -838,16 +839,6 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
-/datum/techweb_node/dex_robotics
-	id = "dex_robotics"
-	display_name = "Dexterous Robotics Research"
-	description = "The fine art of opposable thumbs."
-	prereq_ids = list("adv_engi", "adv_robotics", "biotech")
-	design_ids = list(
-		"maint_drone",
-	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-
 /datum/techweb_node/neural_programming
 	id = "neural_programming"
 	display_name = "Neural Programming"
@@ -871,6 +862,10 @@
 		"borg_upgrade_selfrepair",
 		"borg_upgrade_thrusters",
 		"borg_upgrade_trashofholding",
+
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"borg_upgrade_clamp",
+		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
@@ -1495,19 +1490,6 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	required_experiments = list(/datum/experiment/explosion/maxcap)
 
-// SKYRAT EDIT START: SECBORG TECHWEB
-/datum/techweb_node/secborg_node
-	id = "secborg_node"
-	display_name = "Cyborg Module: Security"
-	description = "Known to cause silicon law violations in all twelve sectors of space!"
-	prereq_ids = list("adv_weaponry")
-	design_ids = list(
-		"security_cyborg_module",
-	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
-	required_experiments = list(/datum/experiment/explosion/maxcap)
-// SKYRAT EDIT END: SECBORG TECHWEB
-
 /datum/techweb_node/ballistic_weapons
 	id = "ballistic_weapons"
 	display_name = "Ballistic Weaponry"
@@ -2095,6 +2077,14 @@
 
 /datum/techweb_node/syndicate_basic/New() //Crappy way of making syndicate gear decon supported until there's another way.
 	. = ..()
+	if(!SStraitor.initialized)
+		RegisterSignal(SStraitor, COMSIG_SUBSYSTEM_POST_INITIALIZE, .proc/register_uplink_items)
+	else
+		register_uplink_items()
+
+/datum/techweb_node/syndicate_basic/proc/register_uplink_items()
+	SIGNAL_HANDLER
+	UnregisterSignal(SStraitor, COMSIG_SUBSYSTEM_POST_INITIALIZE)
 	boost_item_paths = list()
 	for(var/datum/uplink_item/item_path as anything in SStraitor.uplink_items_by_type)
 		var/datum/uplink_item/item = SStraitor.uplink_items_by_type[item_path]
@@ -2189,6 +2179,18 @@
 	design_ids = list(
 		"tackle_dolphin",
 		"tackle_rocket",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+	hidden = TRUE
+	experimental = TRUE
+
+/datum/techweb_node/mod_experimental
+	id = "mod_experimental"
+	display_name = "Experimental Modular Suits"
+	description = "Applications of experimentality when creating MODsuits has created these..."
+	prereq_ids = list("base")
+	design_ids = list(
+		"mod_disposal",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	hidden = TRUE

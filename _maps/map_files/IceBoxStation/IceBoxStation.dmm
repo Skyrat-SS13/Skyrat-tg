@@ -16488,6 +16488,7 @@
 	dir = 4
 	},
 /obj/item/multitool,
+/obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron,
 /area/tcommsat/computer)
 "eYB" = (
@@ -17776,6 +17777,9 @@
 "fEo" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/camera/directional/east{
+	c_tag = "Locker Room East"
+	},
 /turf/open/floor/iron,
 /area/commons/locker)
 "fEE" = (
@@ -29300,17 +29304,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/cafeteria,
 /area/security/prison)
-"luu" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance{
-	name = "Medbay Maintenance";
-	req_access_txt = "40"
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/plating,
-/area/maintenance/department/medical/central)
 "lux" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/structure/railing{
@@ -33433,9 +33426,6 @@
 /area/security/checkpoint/engineering)
 "nGa" = (
 /obj/machinery/airalarm/directional/east,
-/obj/machinery/camera/directional/east{
-	c_tag = "Locker Room East"
-	},
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron,
 /area/commons/locker)
@@ -35365,6 +35355,17 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
+"oBS" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/maintenance{
+	name = "Medbay Maintenance";
+	req_access_txt = "40"
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/plating,
+/area/maintenance/department/medical/central)
 "oBY" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
@@ -49419,9 +49420,6 @@
 /turf/open/floor/glass/reinforced,
 /area/engineering/atmos)
 "vFL" = (
-/obj/machinery/camera/directional/east{
-	c_tag = "Locker Room South"
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/machinery/door/airlock/maintenance{
@@ -96027,7 +96025,7 @@ kIy
 mYX
 vOh
 vOh
-luu
+oBS
 vOh
 vOh
 rKX

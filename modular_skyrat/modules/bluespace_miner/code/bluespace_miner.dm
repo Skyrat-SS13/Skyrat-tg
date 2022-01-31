@@ -53,7 +53,7 @@
 		. += span_warning("[src] is in a suboptimal environment: " + span_boldwarning("TEMPERATURE TOO HIGH!"))
 	if(environment.return_pressure() <= ONE_ATMOSPHERE)
 		. += span_warning("[src] is in a suboptimal environment: " + span_boldwarning("PRESSURE TOO LOW!"))
-	else if(environment.return_pressure() >= (ONE_ATMOSPHERE * 2))
+	if(environment.return_pressure() >= (ONE_ATMOSPHERE * 2))
 		. += span_warning("[src] is in a suboptimal environment: " + span_boldwarning("PRESSURE TOO HIGH!"))
 	for(var/obj/machinery/bluespace_miner/bs_miner in range(1, src))
 		if(bs_miner != src)
@@ -135,7 +135,7 @@
 /datum/supply_pack/misc/bluespace_miner
 	name = "Bluespace Miner"
 	desc = "Nanotrasen has revolutionized the procuring of materials with bluespace-- featuring the Bluespace Miner!"
-	cost = CARGO_CRATE_VALUE * 1000 // 200,000, one of the most expensive buys
+	cost = CARGO_CRATE_VALUE * 150 // 30,000
 	contains = list(/obj/item/circuitboard/machine/bluespace_miner)
 	crate_name = "Bluespace Miner Circuitboard Crate"
 	crate_type = /obj/structure/closet/crate

@@ -66,7 +66,7 @@
 	kinesis_catcher.RegisterSignal(mod.wearer, COMSIG_MOVABLE_MOVED, /atom/movable/screen/fullscreen/kinesis.proc/on_move)
 	soundloop.start()
 
-/obj/item/mod/module/anomaly_locked/kinesis/on_deactivation()
+/obj/item/mod/module/anomaly_locked/kinesis/on_deactivation(display_message = TRUE)
 	. = ..()
 	if(!.)
 		return
@@ -100,8 +100,8 @@
 			grabbed_item.pickup(mod.wearer)
 			mod.wearer.put_in_hands(grabbed_item)
 		return
-	var/pixel_x_change
-	var/pixel_y_change
+	var/pixel_x_change = 0
+	var/pixel_y_change = 0
 	var/direction = get_dir(grabbed_atom, next_turf)
 	if(direction & NORTH)
 		pixel_y_change = world.icon_size/2

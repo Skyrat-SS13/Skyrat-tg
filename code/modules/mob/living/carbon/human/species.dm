@@ -112,7 +112,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	///To use MUTCOLOR with a fixed color that's independent of the mcolor feature in DNA.
 	var/fixed_mut_color = ""
 	///Special mutation that can be found in the genepool exclusively in this species. Dont leave empty or changing species will be a headache
-	var/inert_mutation = DWARFISM
+	var/inert_mutation = /datum/mutation/human/dwarfism
 	///Used to set the mob's deathsound upon species change
 	var/deathsound
 	///Sounds to override barefeet walking
@@ -2206,6 +2206,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	else
 		wings_icon = wings_icons[1]
 	var/obj/item/organ/external/wings/functional/wings = new(null, wings_icon, H.body_type)
+	// SKYRAT EDIT START - Fixes the loss of wings to just run the insert twice
+	if(H.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS))
+		wings.Insert(H)
+	// SKYRAT EDIT END
 	wings.Insert(H)
 	handle_mutant_bodyparts(H)
 /**

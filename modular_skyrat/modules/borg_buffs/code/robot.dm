@@ -52,7 +52,8 @@
 					/datum/reagent/consumable/ethanol/triple_sec,
 					/datum/reagent/consumable/ethanol/creme_de_coconut,
 					/datum/reagent/consumable/nothing,
-					/datum/reagent/consumable/laughter,)
+					/datum/reagent/consumable/laughter,
+					/datum/reagent/consumable/ethanol/synthanol,)
 
 /obj/item/reagent_containers/borghypo/borgshaker/specific/soda
 	name = "cyborg soda shaker"
