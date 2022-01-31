@@ -807,23 +807,11 @@ SUBSYSTEM_DEF(job)
 
 /// Builds various lists of jobs based on station, centcom and additional jobs with icons associated with them.
 /datum/controller/subsystem/job/proc/setup_job_lists()
-<<<<<<< HEAD
-	station_jobs = list(
-		JOB_ASSISTANT, JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BARTENDER, JOB_BOTANIST,
-		JOB_COOK, JOB_JANITOR, JOB_CLOWN, JOB_MIME, JOB_CURATOR, JOB_LAWYER, JOB_CHAPLAIN,
-		JOB_PSYCHOLOGIST, JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN,
-		JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CHIEF_MEDICAL_OFFICER,
-		JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_VIROLOGIST, JOB_RESEARCH_DIRECTOR,
-		JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_HEAD_OF_SECURITY, JOB_WARDEN,
-		JOB_DETECTIVE, JOB_SECURITY_OFFICER, JOB_CORRECTIONS_OFFICER, JOB_PRISONER,
-	)
-=======
 	for(var/datum/job/job as anything in subtypesof(/datum/job))
 		if(initial(job.job_type_flags) & JOB_STATION_JOB)
 			station_jobs |= initial(job.title)
 		if(initial(job.job_type_flags) & JOB_HEAD_JOB)
 			head_of_staff_jobs |= initial(job.title)
->>>>>>> a4718574714 (de-hardcodes job icons (#64193))
 
 	additional_jobs_with_icons |= list(
 		JOB_ERT_COMMANDER, JOB_ERT_OFFICER, JOB_ERT_ENGINEER, JOB_ERT_MEDICAL_DOCTOR,
