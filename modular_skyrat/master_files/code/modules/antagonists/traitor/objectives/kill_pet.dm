@@ -38,7 +38,7 @@
 	// Emag E-N so it overloads
 	if(istype(target_pet, /mob/living/simple_animal/pet/dog/corgi/borgi))
 		name = "Emag the roboticist's most-prized borgi, E-N"
-		description = "We received an untracable contract from someone addressed 'ianfan2489@solgov.nt', they want the robotic clone of Ian dead- and it has to be dramatic. We will supply you with a cryptographic sequencer from our basic loadout options to Shortcircuit E-N's safety, it will give you a single attempt to use it. Oh, and remember to run like hell when you do... "
+		description = "We received an untracable contract from someone addressed 'ianfan2489@solgov.nt', they want the robotic clone of Ian dead- and it has to be dramatic. We will supply you with a cryptographic sequencer from our basic loadout options to shortcircuit E-N's safety, it will give you a single attempt to use it. Oh, and remember to run like hell when you do... "
 
 		for(var/datum/component/traitor_objective_register/old_objective as anything in GetComponents(/datum/component/traitor_objective_register))
 			if(old_objective.target == target_pet)
