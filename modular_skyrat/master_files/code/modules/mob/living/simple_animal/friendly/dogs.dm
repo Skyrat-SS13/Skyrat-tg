@@ -198,7 +198,7 @@
 	addtimer(CALLBACK(src, .proc/explode), 10 SECONDS)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/explode()
-	explosion(get_turf(src), 1, 2, 4, 6, 4) // Should this be changed?
+	explosion(get_turf(src), 1, 2, 4, 4, 6) // Should this be changed?
 	gib() // Yuck, robo-blood
 
 /mob/living/simple_animal/pet/dog/dobermann
