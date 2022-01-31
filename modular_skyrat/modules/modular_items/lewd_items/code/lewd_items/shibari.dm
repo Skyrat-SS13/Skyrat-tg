@@ -254,7 +254,7 @@
 				var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
 				if(split_rope)
 					var/obj/item/clothing/under/shibari/body_rope = them.w_uniform
-					if((body_rope.glow && (merge_type == /obj/item/stack/shibari_rope/glow)) || (!body_rope.glow && (merge_type == /obj/item/stack/shibari_rope/glow)))
+					if(body_rope.glow && split_rope.glow)
 						shibari_fullbody = new(src)
 						shibari_fullbody.slowdown = slow
 						shibari_fullbody.glow = glow
@@ -262,7 +262,7 @@
 						for(var/obj/thing in body_rope.contents)
 							thing.forceMove(shibari_fullbody)
 						shibari_fullbody.set_greyscale(list(greyscale_colors, body_rope.greyscale_colors))
-						qdel(them.w_uniform, force = TRUE)
+						qdel(them.w_uniform)
 						if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,TRUE,FALSE,TRUE))
 							shibari_fullbody.tightness = tightness
 							shibari_fullbody = null
@@ -271,6 +271,7 @@
 								span_hear("You hear ropes being completely tightened."))
 					else
 						to_chat(user, span_warning("You can't mix these types of ropes!"))
+						split_rope.forceMove(get_turf(them))
 				else
 					to_chat(user, span_warning("You don't have enough ropes!"))
 		if(BODY_ZONE_PRECISE_GROIN)
@@ -291,7 +292,7 @@
 					split_rope = split_stack(null, 1)
 				if(split_rope)
 					var/obj/item/clothing/under/shibari/body_rope = them.w_uniform
-					if((body_rope.glow && (merge_type == /obj/item/stack/shibari_rope/glow)) || (!body_rope.glow && (merge_type == /obj/item/stack/shibari_rope/glow)))
+					if(body_rope.glow && split_rope.glow)
 						shibari_fullbody = new(src)
 						shibari_fullbody.slowdown = slow
 						shibari_fullbody.glow = glow
@@ -299,7 +300,7 @@
 						for(var/obj/thing in body_rope.contents)
 							thing.forceMove(shibari_fullbody)
 						shibari_fullbody.set_greyscale(list(body_rope.greyscale_colors, greyscale_colors))
-						qdel(them.w_uniform, force = TRUE)
+						qdel(them.w_uniform)
 						if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,TRUE,FALSE,TRUE))
 							shibari_fullbody.tightness = tightness
 							shibari_fullbody = null
@@ -308,6 +309,7 @@
 								span_hear("You hear ropes being completely tightened."))
 					else
 						to_chat(user, span_warning("You can't mix these type of ropes!"))
+						split_rope.forceMove(get_turf(them))
 				else
 					to_chat(user, span_warning("You don't have enough ropes!"))
 
