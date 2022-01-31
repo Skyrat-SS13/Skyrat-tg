@@ -181,6 +181,7 @@
 			var/mob/living/carbon/human/spawned_human = spawned_mob
 			mob_possessor?.client?.prefs?.safe_transfer_prefs_to(spawned_human)
 			spawned_human.dna.update_dna_identity()
+			SSquirks.AssignQuirks(spawned_human, mob_possessor.client)
 			spawned_human.equip_outfit_and_loadout(outfit, mob_possessor.client.prefs)
 	// SKYRAT EDIT END
 	if(mob_possessor)
