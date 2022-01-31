@@ -25,6 +25,6 @@
 /obj/item/gun/ballistic/automatic/laser/ctf/marksman
 	has_gun_safety = FALSE
 
-/obj/item/ammo_casing/caseless/laser/ctf/deagle
+/obj/item/gun/ballistic/automatic/pistol/deagle/ctf
 	has_gun_safety = FALSE
 	
