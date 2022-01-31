@@ -592,11 +592,17 @@ GENE SCANNER
 	var/cooldown_time = 250
 	var/accuracy // 0 is the best accuracy.
 
+<<<<<<< HEAD
 //SKYRAT EDIT ADDITION BEGIN
 /obj/item/analyzer/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/cell)
 //SKYRAT EDIT END
+=======
+/obj/item/analyzer/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/atmospheric_scanner, requires_sight = TRUE)
+>>>>>>> 6924849609e (Turns the gas analyzer's environment scanning into a component. (#64264))
 
 /obj/item/analyzer/examine(mob/user)
 	. = ..()
@@ -606,6 +612,7 @@ GENE SCANNER
 	user.visible_message(span_suicide("[user] begins to analyze [user.p_them()]self with [src]! The display shows that [user.p_theyre()] dead!"))
 	return BRUTELOSS
 
+<<<<<<< HEAD
 /obj/item/analyzer/attack_self(mob/user)
 	add_fingerprint(user)
 
@@ -658,6 +665,8 @@ GENE SCANNER
 	scan_turf(user, location)
 	//SKYRAT EDIT END
 
+=======
+>>>>>>> 6924849609e (Turns the gas analyzer's environment scanning into a component. (#64264))
 /obj/item/analyzer/AltClick(mob/user) //Barometer output for measuring when the next storm happens
 	..()
 
