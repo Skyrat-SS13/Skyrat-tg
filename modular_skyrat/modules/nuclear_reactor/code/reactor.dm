@@ -142,6 +142,10 @@
 	return enviroment.temperature
 
 /obj/machinery/reactor/proc/start_up()
+	if(!fuel_rods)
+		return
+	if(reactor_status == REACTOR_ONLINE)
+		return
 	START_PROCESSING(SSmachines, src)
 	playsound(src, pick('modular_skyrat/modules/nuclear_reactor/sound/startup2.ogg', 'modular_skyrat/modules/nuclear_reactor/sound/startup.ogg'), 100, TRUE)
 	soundloop.start()
@@ -170,7 +174,7 @@
 
 /obj/machinery/reactor/proc/get_cooling_potential()
 	if(!reactor_heat_exchanger)
-		return calculated_ambient_temperature //If we do not have a heat exchanger, we just return the temperature of our turf.
+		return get_ambient_air_temperature() //If we do not have a heat exchanger, we just return the temperature of our turf.
 
 	calculated_cooling_potential = reactor_heat_exchanger.calculated_cooling_potential
 
@@ -211,7 +215,7 @@
 	// If you can get the cooling potential to be equal to the power, then the reactor temp is stable.
 	calculated_temperature_modifier += calculated_power
 
-	calculated_ambient_temperature = enviroment.temperature
+	calculated_ambient_temperature = get_ambient_air_temperature()
 
 	var/calculated_ambient_temperature_delta = calculated_ambient_temperature - core_temperature
 
@@ -287,6 +291,7 @@
 /obj/machinery/computer/reactor_control/ui_data(mob/user)
 	var/list/data = list()
 
+	data["reactor_connected"] = connected_reactor ? TRUE : FALSE
 	data["reactor_status"] = connected_reactor.reactor_status
 	data["reactor_temperature"] = connected_reactor.core_temperature
 	data["reactor_pressure"] = connected_reactor.core_pressure

@@ -26,8 +26,7 @@ export const ReactorControl = (props, context) => {
               buttons={(
                 <Button
                   icon="power-on"
-                  content={reactor_status}
-                  selected={reactor_status === 'Online'}
+                  content="Turn ON"
                   onClick={() => act('turn_on')} />
               )}>
               <LabeledList>
@@ -48,6 +47,9 @@ export const ReactorControl = (props, context) => {
                 </LabeledList.Item>
                 <LabeledList.Item label="Calculated Control Rod Efficiency">
                   {calculated_control_rod_efficiency}%
+                </LabeledList.Item>
+                <LabeledList.Item label="Calculated Cooling Potential">
+                  {calculated_cooling_potential}
                 </LabeledList.Item>
                 <LabeledList.Item label="Calculated Cooling Potential">
                   {calculated_cooling_potential}
