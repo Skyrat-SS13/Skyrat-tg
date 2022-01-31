@@ -11729,6 +11729,10 @@
 	cycle_id = "bridge-right"
 	},
 /obj/structure/cable,
+/obj/machinery/door/poddoor/preopen{
+	id = "bridge blast";
+	name = "bridge blast door"
+	},
 /turf/open/floor/iron/dark,
 /area/command/bridge)
 "cAU" = (
@@ -20507,6 +20511,20 @@
 	},
 /turf/open/floor/iron,
 /area/maintenance/tram/mid)
+"fzj" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/machinery/button/door/directional/east{
+	id = "bridge blast";
+	name = "Bridge Access Blast Door Control";
+	req_access_txt = "19"
+	},
+/turf/open/floor/iron/dark,
+/area/command/bridge)
 "fzp" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Tunnel Access";
@@ -37952,6 +37970,10 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
 	cycle_id = "bridge-left"
 	},
+/obj/machinery/door/poddoor/preopen{
+	id = "bridge blast";
+	name = "bridge blast door"
+	},
 /turf/open/floor/iron/dark,
 /area/command/bridge)
 "lOB" = (
@@ -43966,6 +43988,10 @@
 	cycle_id = "bridge-left"
 	},
 /obj/structure/cable,
+/obj/machinery/door/poddoor/preopen{
+	id = "bridge blast";
+	name = "bridge blast door"
+	},
 /turf/open/floor/iron/dark,
 /area/command/bridge)
 "ods" = (
@@ -53878,6 +53904,10 @@
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
 	cycle_id = "bridge-right"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "bridge blast";
+	name = "bridge blast door"
 	},
 /turf/open/floor/iron/dark,
 /area/command/bridge)
@@ -68746,6 +68776,21 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/interrogation)
+"wWo" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable,
+/obj/machinery/button/door/directional/west{
+	id = "bridge blast";
+	name = "Bridge Access Blast Door Control";
+	req_access_txt = "19"
+	},
+/turf/open/floor/iron/dark,
+/area/command/bridge)
 "wWx" = (
 /obj/effect/turf_decal/trimline/neutral/filled/corner{
 	dir = 1
@@ -157614,7 +157659,7 @@ tLv
 tLv
 ggT
 xaV
-ggT
+fzj
 dxB
 vGu
 kex
@@ -159156,7 +159201,7 @@ lFp
 lFp
 qtK
 rbR
-qtK
+wWo
 lFD
 vGu
 aCz

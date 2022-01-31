@@ -2,18 +2,113 @@
 /obj/item/xenoarch/useless_relic
 	name = "useless relic"
 	desc = "A useless relic that can be redeemed for cargo or research points."
+	///Used to spawn the same relic
+	var/magnified_number
 
 /obj/item/xenoarch/useless_relic/Initialize()
 	. = ..()
-	icon_state = "useless[rand(1,8)]"
+	magnified_number = rand(1,8)
+	icon_state = "useless[magnified_number]"
+
+/obj/item/xenoarch/useless_relic/attackby(obj/item/attacking_item, mob/user, params)
+	if(istype(attacking_item, /obj/item/glassblowing/magnifying_glass))
+		if(istype(src, /obj/item/xenoarch/useless_relic/magnified))
+			balloon_alert(user, "already magnified!")
+			return
+		if(!is_curator_job(user.mind?.assigned_role))
+			balloon_alert(user, "must be a curator!")
+			return
+		balloon_alert(user, "starting analysis!")
+		if(!do_after(user, 5 SECONDS, target = src))
+			balloon_alert(user, "stand still!")
+			return
+		loc.balloon_alert(user, "magnified!")
+		spawn_magnified(magnified_number)
+		return
+	return ..()
+
+#define ANCIENT_URN 1
+#define ANCIENT_BOWL 2
+#define ANCIENT_CROWN 3
+#define ANCIENT_COIL 4
+#define ANCIENT_LIGHT 5
+#define ANCIENT_CUP 6
+#define ANCIENT_UTENSILS 7
+#define ANCIENT_R_BOWL 8
+
+/obj/item/xenoarch/useless_relic/proc/spawn_magnified(type_number)
+	var/obj/item/xenoarch/useless_relic/magnified/new_item = new(get_turf(src))
+	new_item.icon_state = "useless[type_number]"
+	switch(type_number)
+		if(ANCIENT_URN)
+			new_item.name = "ancient urn"
+			new_item.desc = "This useless relic is an ancient urn that dates from around [rand(400,600)] years ago. \
+			It has made of a ceramic substance and is clearly crumbling at the edges. Perhaps it has ashes \
+			of someone from long ago."
+		if(ANCIENT_BOWL)
+			new_item.name = "ancient bowl"
+			new_item.desc = "This useless relic is an ancient bowl that dates from around [rand(400,600)] years ago. \
+			It is made of a bronze alloy and is dented, with some scratches along the inside. Perhaps it could \
+			have had DNA of someone from long ago."
+		if(ANCIENT_CROWN)
+			new_item.name = "ancient crown"
+			new_item.desc = "This useless relic is an ancient crown that dates from around [rand(900,1100)] years ago. \
+			It is made from some unknown alloy, with small inlets that would have been used for jewels. Perhaps if we \
+			look around, we could find some of those old jewels."
+		if(ANCIENT_COIL)
+			new_item.name = "ancient coil"
+			new_item.desc = "This useless relic is an ancient coil that dates from around [rand(400,600)] years ago. \
+			It is made of iron and copper. It has some burn marks around the iron rod. Perhaps later on, we could \
+			use it for some machines."
+		if(ANCIENT_LIGHT)
+			new_item.name = "ancient light"
+			new_item.desc = "This useless relic is an ancient light that dates from around [rand(400,600)] years ago. \
+			It is made of iron and has glass shards around it. It has dents on the iron and clear damage from misuse. \
+			Perhaps we could research this later on to see how the ancients made lights."
+		if(ANCIENT_CUP)
+			new_item.name = "ancient cup"
+			new_item.desc = "This useless relic is an ancient cup that dates from around [rand(900,1100)] years ago. \
+			It is made of hardened stone. There are small cracks all along the surface, as long as chisel marks. \
+			Perhaps it will give insight into the ancient's eating and drinking habits."
+		if(ANCIENT_UTENSILS)
+			new_item.name = "ancient utensils"
+			new_item.desc = "These useless relics are ancient utensils that dates from around [rand(900,1100)] years ago. \
+			It is made of hardened stone. There are small cracks all along the surface, as long as chisel marks. \
+			Perhaps it will give insight into the ancient's eating and drinking habits."
+		if(ANCIENT_R_BOWL)
+			new_item.name = "ancient rock bowl"
+			new_item.desc = "This useless relic is an ancient rock bowl that dates from around [rand(900,1100)] years ago. \
+			It is made of hardened stone. There are small cracks all along the surface, as long as chisel marks. \
+			Perhaps it will give insight into the ancient's eating and drinking habits."
+	qdel(src)
+
+#undef ANCIENT_URN
+#undef ANCIENT_BOWL
+#undef ANCIENT_CROWN
+#undef ANCIENT_COIL
+#undef ANCIENT_LIGHT
+#undef ANCIENT_CUP
+#undef ANCIENT_UTENSILS
+#undef ANCIENT_R_BOWL
+
+/obj/item/xenoarch/useless_relic/magnified
+	name = "magnified useless relic"
+	desc = "A useless relic that can be redeemed for cargo or research points. Has been magnified."
 
 /datum/export/xenoarch/useless_relic
-	cost = CARGO_CRATE_VALUE*2
-	unit_name = "xenoarch item"
+	cost = CARGO_CRATE_VALUE * 3 //600
+	unit_name = "useless relic"
 	export_types = list(/obj/item/xenoarch/useless_relic)
+	include_subtypes = FALSE
 
 /datum/export/xenoarch/useless_relic/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE) //I really dont want them to feel gimped
 	. = ..()
+
+/datum/export/xenoarch/useless_relic/magnified
+	cost = CARGO_CRATE_VALUE * 6 //1200
+	unit_name = "magnified useless relic"
+	export_types = list(/obj/item/xenoarch/useless_relic/magnified)
+	include_subtypes = FALSE
 
 //broken items
 /obj/item/xenoarch/broken_item

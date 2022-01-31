@@ -304,3 +304,74 @@
 	attack_verb_continuous = list("caws","skrees","pecks")
 	attack_verb_simple = list("caw","skree","peck")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/peep_once.ogg' = 1,'modular_skyrat/modules/emotes/sound/voice/caw.ogg' = 1,'modular_skyrat/modules/emotes/sound/voice/bawk.ogg' = 1,'modular_skyrat/modules/emotes/sound/emotes/voxscream.ogg' = 1)
+
+/obj/item/toy/plush/zapp
+	name = "Lil' Zapp"
+	desc = "An authentic piece of primo Pwr Game merchandise! \
+			This cuddly companion is the perfect ornament to decorate your battlestation. \
+			He sits upright unassisted, and can hold your headset, webcam, or keep your Pwr Game safe and secure. \
+			This one is outfitted with a state-of-the-art skill reader; \
+			just squeeze him tight and Zapp will tell you if you're ready for the next big game!"
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_zapp"
+	inhand_icon_state = "plushie_zapp"
+	attack_verb_continuous = list("boops","nuzzles")
+	attack_verb_simple = list("boop", "nuzzle")
+	squeak_override = list('sound/effects/can_open1.ogg' = 1, 'sound/effects/can_open2.ogg' = 1, 'sound/effects/can_open3.ogg' = 1)
+	///the list that is chosen from depending on gaming skill
+	var/static/list/skill_response = list(
+		"Weak! What are you, a mobile gamer?",
+		"Come on, you can do better than that! Play some Orion Trial and try again.",
+		"Hey, not bad! Try and work on your APM.",
+		"Nice! You should see about competing in some local tournaments, gamer!",
+		"Now that's real skill! I think you deserve some Pwr Game.",
+		"Gamer God in the house! Look upon them and weep, console peasants!",
+		"Whoa! Gamer overload! Stand clear!!",
+	)
+	///the list that is chosen from when it hits a human or is hit by something
+	var/static/list/hit_response = list(
+		"Hey, watch the mohawk!",
+		"Easy, I earn my livin' with this face!",
+		"Oof, I think my resale value just went down...",
+		"This jacket isn't armored, you know!",
+		"I'm a collectible! You can't treat me like this!",
+		"Cut it out, or I'm telling chat!",
+	)
+
+/obj/item/toy/plush/zapp/attackby(obj/item/attacking_item, mob/living/user, params)
+	. = ..()
+	say(pick(hit_response))
+
+/obj/item/toy/plush/zapp/attack(mob/living/target, mob/living/user, params)
+	. = ..()
+	say(pick(hit_response))
+
+/obj/item/toy/plush/zapp/attack_self(mob/user)
+	. = ..()
+	var/turf/src_turf = get_turf(src)
+	playsound(src_turf, 'sound/items/drink.ogg', 50, TRUE)
+	var/skill_level = user.mind.get_skill_level(/datum/skill/gaming)
+	if(user.ckey == "cameronlancaster")
+		skill_level = (max(6, skill_level))
+	say(skill_response[skill_level])
+	if(skill_level == 7)
+		playsound(src_turf, 'sound/effects/can_pop.ogg', 80, TRUE)
+		new /obj/effect/abstract/liquid_turf/pwr_gamr(src_turf)
+		playsound(src_turf, 'sound/effects/bubbles.ogg', 50, TRUE)
+		qdel(src)
+
+/obj/effect/abstract/liquid_turf/pwr_gamr
+	///the starting temp for the liquid
+	var/starting_temp = T20C
+	///the starting mixture for the liquid
+	var/list/starting_mixture = list(/datum/reagent/consumable/pwr_game = 10)
+
+/obj/effect/abstract/liquid_turf/pwr_gamr/Initialize()
+	. = ..()
+	reagent_list = starting_mixture
+	total_reagents = 0
+	for(var/key in reagent_list)
+		total_reagents += reagent_list[key]
+	temp = starting_temp
+	calculate_height()
+	set_reagent_color_for_liquid()
