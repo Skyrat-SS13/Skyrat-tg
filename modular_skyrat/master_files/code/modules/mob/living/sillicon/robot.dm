@@ -1,21 +1,18 @@
-/mob/set_typing_indicator(var/state)
-	var/mutable_appearance/indicator = GLOB.typing_indicator_overlay
+/mob/living/silicon/robot/set_typing_indicator(state)
+	var/mutable_appearance/indicator = mutable_appearance('modular_skyrat/modules/indicators/icons/typing_indicator.dmi', "borg0", FLY_LAYER)
 	typing_indicator = state
 
 	if(typing_indicator)
 
-		if(istype(src, /mob/living/silicon/robot))
-			var/mob/living/silicon/robot/robot = src
-
-			//Tallborg stuff
-			if(robot.model && robot.model.model_features && (R_TRAIT_TALL in robot.model.model_features))
-				if(!robot.robot_resting)
-					indicator.pixel_y = 16
-			indicator.pixel_x = -4
-
+		//Tallborg stuff
+		if((!robot_resting) && model && model.model_features && (R_TRAIT_TALL in model.model_features))
+			indicator.pixel_y = 16
+		else
+			indicator.pixel_y = 0
 		add_overlay(indicator)
+
 	else
-		cut_overlay(indicator)
+		regenerate_icons()
 
 
 //	Modular solution for alternative tipping visuals
