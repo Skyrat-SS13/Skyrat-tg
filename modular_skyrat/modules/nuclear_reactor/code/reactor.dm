@@ -142,7 +142,7 @@
 	return enviroment.temperature
 
 /obj/machinery/reactor/proc/start_up()
-	if(!fuel_rods)
+	if(!LAZYLEN(fuel_rods))
 		return
 	if(reactor_status == REACTOR_ONLINE)
 		return
@@ -206,6 +206,8 @@
 	return efficency
 
 /obj/machinery/reactor/proc/process_temperature()
+	if(reactor_status != REACTOR_ONLINE)
+		return
 	// The difference between our lowest possible temperature(target) and our core temperature. Positive if heating, negative if cooling.
 	var/calculated_temperature_delta = calculated_cooling_potential - core_temperature
 
@@ -213,7 +215,7 @@
 
 	// We calculate the heat addition from the power of the reactor.
 	// If you can get the cooling potential to be equal to the power, then the reactor temp is stable.
-	calculated_temperature_modifier += calculated_power
+	calculated_temperature_modifier += (calculated_power * 10)
 
 	calculated_ambient_temperature = get_ambient_air_temperature()
 
@@ -235,8 +237,6 @@
 			return FALSE
 		to_chat(user, span_notice("You start to insert [fuel_rod] into [src]..."))
 		if(do_after(user, 5 SECONDS, src))
-			if(!LAZYLEN(fuel_rods) && core_pressure == 0) //We are starting up.
-				start_up()
 			radiation_pulse(src, 5)
 			to_chat(user, span_notice("[fuel_rod] slots into [src] with a clunk."))
 			fuel_rods += fuel_rod
@@ -292,6 +292,7 @@
 	var/list/data = list()
 
 	data["reactor_connected"] = connected_reactor ? TRUE : FALSE
+	data["exchanger_connected"] = connected_reactor.reactor_heat_exchanger ? TRUE : FALSE
 	data["reactor_status"] = connected_reactor.reactor_status
 	data["reactor_temperature"] = connected_reactor.core_temperature
 	data["reactor_pressure"] = connected_reactor.core_pressure
@@ -300,6 +301,7 @@
 	data["calculated_control_rod_efficiency"] = connected_reactor.calculated_control_rod_efficiency
 	data["calculated_cooling_potential"] = connected_reactor.calculated_cooling_potential
 	data["ambient_air_temperature"] = connected_reactor.get_ambient_air_temperature()
+
 
 	return data
 
@@ -339,18 +341,22 @@
 	icon_state = "reactor_heat_exchanger"
 
 	can_unwrench = TRUE
+	pipe_flags = PIPING_ONE_PER_TURF
 
 	/// Our calculated cooling potential in kelvin.
 	var/calculated_cooling_potential = 0
 	/// A reference to our connected reactor, if we have one.
 	var/obj/machinery/reactor/parent_reactor
 
-/obj/machinery/atmospherics/components/binary/reactor_heat_exchanger/attackby(obj/item/W, mob/user, params)
+
+/obj/machinery/atmospherics/components/binary/reactor_heat_exchanger/multitool_act(mob/living/user, obj/item/tool)
 	. = ..()
-	if(istype(W, /obj/item/multitool))
-		var/obj/item/multitool/multitool = W
+	if(istype(tool, /obj/item/multitool))
+		var/obj/item/multitool/multitool = tool
 		to_chat(user, span_notice("[src] is set for linking to a reactor."))
 		multitool.buffer = src
+		return TRUE
+
 
 /obj/machinery/atmospherics/components/binary/reactor_heat_exchanger/proc/get_cooling_potential()
 
