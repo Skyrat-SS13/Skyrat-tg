@@ -168,7 +168,8 @@
 		power += fuel_rod.radioactivity
 	if(reactor_moderator)
 		power *= reactor_moderator.moderator_efficency
-	power /= (calculated_control_rod_efficiency * 0.5)
+	if(calculated_control_rod_efficiency)
+		power /= (calculated_control_rod_efficiency * 0.5)
 	return power
 
 /obj/machinery/reactor/proc/calculate_control_rod_efficiency()
@@ -261,6 +262,8 @@
 	desc = "A heat exchanger component for the GA37W Experimental Nuclear Reactor."
 	icon = 'modular_skyrat/modules/nuclear_reactor/icons/reactor32x32.dmi'
 	icon_state = "reactor_heat_exchanger"
+
+	can_unwrench = TRUE
 
 	/// Our calculated cooling potential in kelvin.
 	var/calculated_cooling_potential = 0
