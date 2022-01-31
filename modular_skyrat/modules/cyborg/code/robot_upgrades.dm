@@ -15,8 +15,8 @@
 		if(borg.hasShrunk)
 			to_chat(usr, span_warning("This unit already has a shrink module installed!"))
 			return FALSE
-		if(R_TRAIT_SMALL in borg.model.model_features)
-			to_chat(usr, span_warning("This unit's chassis cannot be shrunk any further."))
+		if(!(R_TRAIT_WIDE in borg.model.model_features) || (R_TRAIT_TALL in borg.model.model_features))
+			to_chat(usr, span_warning("This unit's chassis is too small to be shrunk."))
 			return FALSE
 
 		borg.hasShrunk = TRUE
