@@ -1264,9 +1264,7 @@
 	design_ids = list(
 		"ci-antidrop",
 		"ci-antistun",
-		"ci-thermals",
 		"ci-thrusters",
-		"ci-xray",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
