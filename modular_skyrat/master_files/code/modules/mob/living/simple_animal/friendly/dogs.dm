@@ -189,6 +189,8 @@
 
 		add_fingerprint(user, TRUE)
 		visible_message(span_boldwarning("[user] swipes a card through [src]!"), span_notice("You overload [src]s internal reactor..."))
+
+		notify_ghosts("[user] has shortcircuited [src] to explode in 60 seconds!", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Borgi Emagged")
 		addtimer(CALLBACK(src, .proc/explode_imminent), 50 SECONDS)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/explode_imminent()
