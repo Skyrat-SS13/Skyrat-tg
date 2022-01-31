@@ -104,7 +104,7 @@ SUBSYSTEM_DEF(decay)
 				if(!iterating_floor.Enter(spawned_web))
 					qdel(spawned_web)
 
-			if(prob(NEST_PERCENT_CHANCE * severity_modifier) && prob(50) && !CONFIG_GET(flag/ssdecay_disable_nests))
+			if(!CONFIG_GET(flag/ssdecay_disable_nests) && prob(NEST_PERCENT_CHANCE * severity_modifier) && prob(50))
 				var/spawner_to_spawn = pick(possible_nests)
 				var/obj/structure/mob_spawner/spawned_spawner = new spawner_to_spawn(iterating_floor)
 				if(!iterating_floor.Enter(spawned_spawner))
