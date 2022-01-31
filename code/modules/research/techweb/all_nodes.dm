@@ -1256,7 +1256,7 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
-/datum/techweb_node/combat_cyber_implants
+/datum/techweb_node/combat_cyber_implants // SKYRAT EDIT - REMOVED: X-rays+Thermals from here
 	id = "combat_cyber_implants"
 	display_name = "Combat Cybernetic Implants"
 	description = "Military grade combat implants to improve performance."
