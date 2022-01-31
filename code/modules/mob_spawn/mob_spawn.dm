@@ -181,6 +181,7 @@
 			var/mob/living/carbon/human/spawned_human = spawned_mob
 			mob_possessor?.client?.prefs?.safe_transfer_prefs_to(spawned_human)
 			spawned_human.dna.update_dna_identity()
+			spawned_human.equip_outfit_and_loadout(outfit, mob_possessor.client.prefs)
 	// SKYRAT EDIT END
 	if(mob_possessor)
 		spawned_mob.ckey = mob_possessor.ckey
