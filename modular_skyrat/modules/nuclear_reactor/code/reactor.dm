@@ -90,8 +90,10 @@
 	// And finally we process effects such as alarms, flames, etc.
 	process_effects()
 
-	if(core_pressure <= 0)
-		shut_down()
+	update_appearance()
+
+	//if(core_pressure <= 0)
+		//shut_down()
 
 /**
  * A reactor can be destroyed in the following ways:
@@ -127,7 +129,8 @@
 	START_PROCESSING(SSmachines, src)
 	playsound(src, pick('modular_skyrat/modules/nuclear_reactor/sound/startup2.ogg', 'modular_skyrat/modules/nuclear_reactor/sound/startup.ogg'), 100, TRUE)
 	soundloop.start()
-	visible_message(src, span_notice("[src] clunks loudly as it begins to whirr to life!"))
+	visible_message(span_notice("[src] clunks loudly as it begins to whirr to life!"))
+	icon_state = "running"
 
 /obj/machinery/reactor/proc/shut_down()
 	STOP_PROCESSING(SSmachines, src)
