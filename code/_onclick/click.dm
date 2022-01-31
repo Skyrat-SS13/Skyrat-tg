@@ -105,11 +105,15 @@
 		CtrlClickOn(A)
 		return
 
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN - TYPING_INDICATOR
 	if(typing_indicator)
 		set_typing_indicator(FALSE)
 	//SKYRAT EDIT ADDITION END
 	if(incapacitated(ignore_restraints = TRUE, ignore_stasis = TRUE))
+=======
+	if(incapacitated(IGNORE_RESTRAINTS|IGNORE_STASIS))
+>>>>>>> be355edab53 (Refactor incapacitated optional arguments (#63771))
 		return
 
 	face_atom(A)
