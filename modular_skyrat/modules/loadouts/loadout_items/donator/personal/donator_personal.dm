@@ -378,3 +378,8 @@
 	name = "Foam Force SWAT Mask"
 	item_path = /obj/item/clothing/mask/gas/larpswat
 	ckeywhitelist = list("erdinyobarboza")
+
+/datum/loadout_item/toys/zappplush
+	name = "Lil' Zapp Plushie"
+	item_path = /obj/item/toy/plush/zapp
+	donator_only = TRUE
