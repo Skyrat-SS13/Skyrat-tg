@@ -34,11 +34,11 @@
 
 //This part of code spawns ropes with full stack.
 /obj/item/stack/shibari_rope/full
-	name = "glowy shibari ropes"
-	singular_name = "glowy rope"
 	amount = 5
 
 /obj/item/stack/shibari_rope/glow
+	name = "glowy shibari ropes"
+	singular_name = "glowy rope"
 	merge_type = /obj/item/stack/shibari_rope/glow
 	icon_state = "shibari_rope_glow"
 	light_system = MOVABLE_LIGHT
