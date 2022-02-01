@@ -56,8 +56,9 @@
 	loot = list(/obj/effect/decal/cleanable/oil/slippery)
 	butcher_results = list(/obj/item/clothing/head/corgi/en = 1, /obj/item/clothing/suit/corgisuit/en = 1)
 	deathmessage = "beeps, its mechanical parts hissing before the chassis collapses in a loud thud."
-	animal_species = /mob/living/simple_animal/pet/dog/corgi/borgi
+	animal_species = /mob/living/simple_animal/pet/dog/corgi
 	nofur = TRUE
+	// These lights enable when E-N is emagged
 	light_system = MOVABLE_LIGHT_DIRECTIONAL
 	light_color = COLOR_RED
 	light_range = 2
