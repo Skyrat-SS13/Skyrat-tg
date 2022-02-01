@@ -125,39 +125,6 @@
 		target.chat_color_darkened = colorize_string(target.name, 0.85, 0.85)
 		target.chat_color_name = target.name
 
-	// SKYRAT ADDITION - Character preference for chatmessages
-	if(ismob(target))
-		var/mob/speaker = target
-		if(speaker.client?.prefs)
-			// Apply the custom color if they want one
-			var/enable_chat_color_player = speaker.client.prefs.read_preference(/datum/preference/toggle/enable_chat_color_player)
-			if(enable_chat_color_player)
-				var/chat_color_player = speaker.client.prefs.read_preference(/datum/preference/color/chat_color_player)
-				var/hex_value = sanitize_hexcolor(chat_color_player)
-				target.chat_color = hex_value
-				target.chat_color_darkened = (hex_value + "c0") // Add an alpha-channel to darken
-
-			// If they are acting as someone else, find out who
-			if((speaker.name != speaker.real_name) && (speaker.name != "Unknown"))
-				for(var/mob/living/carbon/human/copy as anything in GLOB.player_list)
-					if((speaker.name == copy.real_name) && (copy.client?.prefs))
-						// Regardless of pref, give them the color of the person they are acting as
-						var/enable_chat_color_copy = copy.client.prefs.read_preference(/datum/preference/toggle/enable_chat_color_player)
-						if(enable_chat_color_copy)
-							var/chat_color_copy = copy.client.prefs.read_preference(/datum/preference/color/chat_color_player)
-							var/hex_value = sanitize_hexcolor(chat_color_copy)
-							target.chat_color = hex_value
-							target.chat_color_darkened = (hex_value + "c0")
-						else // If they have the pref disabled, run the default generator again
-							target.chat_color = colorize_string(target.name)
-							target.chat_color_darkened = colorize_string(target.name, 0.85, 0.85)
-
-			// Display as a static white if acting as 'unknown'
-			if(speaker.name == "Unknown")
-				target.chat_color = "#FFFFFF"
-				target.chat_color_darkened = "#FFFFFFc0"
-	// SKYRAT ADDITION END
-
 	// Get rid of any URL schemes that might cause BYOND to automatically wrap something in an anchor tag
 	var/static/regex/url_scheme = new(@"[A-Za-z][A-Za-z0-9+-\.]*:\/\/", "g")
 	text = replacetext(text, url_scheme, "")
