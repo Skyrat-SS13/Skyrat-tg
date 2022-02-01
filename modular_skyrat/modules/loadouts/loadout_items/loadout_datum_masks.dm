@@ -131,11 +131,9 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 	name = "Skin Tight Skull Bandana"
 	item_path = /obj/item/clothing/mask/bandana/skull/ft
 
-
 /datum/loadout_item/mask/gas_glass
 	name = "Glass Gas Mask"
 	item_path = /obj/item/clothing/mask/gas/glass
-
 
 /datum/loadout_item/mask/surgical
 	name = "Sterile Mask"
