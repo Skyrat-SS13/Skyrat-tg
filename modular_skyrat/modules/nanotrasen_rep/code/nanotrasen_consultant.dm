@@ -26,7 +26,7 @@
 	paycheck = PAYCHECK_HARD
 	paycheck_department = ACCOUNT_CMD
 
-	display_order = JOB_DISPLAY_ORDER_nanotrasen_consultant
+	display_order = JOB_DISPLAY_ORDER_NANOTRASEN_CONSULTANT
 	bounty_types = CIV_JOB_SEC
 
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law)
@@ -152,5 +152,5 @@
 	new /obj/item/clothing/gloves/combat(src)
 	new /obj/item/storage/photo_album/personal(src)
 	new /obj/item/bedsheet/centcom(src)
-	new /obj/item/clothing/suit/hooded/wintercoat/centcom/ntrep(src)
+	new /obj/item/clothing/suit/hooded/wintercoat/centcom/nt_consultant(src)
 	new /obj/item/gun/energy/e_gun(src)
