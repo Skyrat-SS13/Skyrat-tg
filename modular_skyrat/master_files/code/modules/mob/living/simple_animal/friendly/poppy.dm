@@ -40,7 +40,7 @@
 	light_power = 0.8
 	light_on = TRUE
 
-/mob/living/simple_animal/pet/poppy/Initialize(mapload, safety_inspection)
+/mob/living/simple_animal/pet/poppy/Initialize(mapload)
 	. = ..()
 	add_verb(src, /mob/living/proc/toggle_resting)
 	become_area_sensitive(INNATE_TRAIT)
@@ -52,13 +52,11 @@
 
 	var/datum/component/overlay_lighting/lighting_object = src.GetComponent(/datum/component/overlay_lighting)
 	var/image/cone = lighting_object.cone
-	cone.transform = cone.transform.Translate(0, -12) //adjust the little headlamp
+	cone.transform = cone.transform.Translate(0, -16) //adjust the little headlamp
 
 /mob/living/simple_animal/pet/poppy/death()
 	lose_area_sensitivity(INNATE_TRAIT)
 	set_light_on(FALSE)
-
-	UnregisterSignal(src, COMSIG_ENTER_AREA)
 
 	if(safety_inspection)
 		var/list/sm_chamber = get_area_turfs(/area/engineering/supermatter)
@@ -68,14 +66,13 @@
 			// It's just flavor, no tangible punishment
 	..()
 
-/mob/living/simple_animal/pet/poppy/revive(full_heal = FALSE, admin_revive = FALSE)
-	. = ..()
+/mob/living/simple_animal/pet/poppy/revive(full_heal, admin_revive)
+	become_area_sensitive(INNATE_TRAIT)
 	set_light_on(TRUE)
+	..()
 
 /mob/living/simple_animal/pet/poppy/update_resting()
 	. = ..()
-	if(stat == DEAD)
-		return
 	if(resting)
 		icon_state = "[icon_living]_rest"
 		set_light_on(FALSE)
@@ -85,7 +82,7 @@
 	regenerate_icons()
 
 /mob/living/simple_animal/pet/poppy/Life(delta_time = SSMOBS_DT, times_fired)
-	if(buckled || client || stat)
+	if(client || stat)
 		return
 
 	if(pulledby)
