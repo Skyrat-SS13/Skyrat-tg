@@ -33,4 +33,6 @@
 
 // Stasis helpers
 
+#define STATUS_EFFECT_STASIS_MOBILE /datum/status_effect/grouped/stasis_mobile //SKYRAT ADD: WALKING STASIS
+
 #define IS_IN_STASIS(mob) (mob.has_status_effect(STATUS_EFFECT_STASIS) || mob.has_status_effect(STATUS_EFFECT_STASIS_MOBILE)) //SKYRAT EDIT old: #define IS_IN_STASIS(mob) (mob.has_status_effect(STATUS_EFFECT_STASIS))

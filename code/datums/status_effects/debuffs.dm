@@ -246,7 +246,6 @@
 	var/filter = owner.get_filter("stasis_status_ripple")
 	animate(filter, radius = 32, time = 15, size = 0, loop = -1)
 
-
 /datum/status_effect/grouped/stasis/tick()
 	update_time_of_death()
 	if(owner.stat >= UNCONSCIOUS) //SKYRAT EDIT START - STASIS KEEPS SLEEP GOING
