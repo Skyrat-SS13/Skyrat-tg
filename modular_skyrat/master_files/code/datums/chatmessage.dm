@@ -1,3 +1,8 @@
+/*
+	The color clamp for the preference selector is set here:
+	'modular_skyrat/master_files/code/modules/client/preferences/runechat.dm'
+*/
+
 ////
 //	Modular runechat color selector solution
 /datum/chatmessage/generate_image(text, atom/target, mob/owner, datum/language/language, list/extra_classes, lifespan)
@@ -6,10 +11,7 @@
 		var/mob/actor = target
 
 		if(actor.client?.prefs)
-			if(actor.chat_color_name != actor.name)
-
-				actor.chat_color_name = actor.name // So we don't generate each message
-
+			if(actor.chat_color_name != actor.name) // So we don't generate each message
 
 				// Check for the custom color if the actor has one
 				var/enable_chat_color_player = actor.client.prefs.read_preference(/datum/preference/toggle/enable_chat_color_player)
@@ -18,6 +20,7 @@
 					var/hex_value = sanitize_hexcolor(chat_color_player)
 					target.chat_color = hex_value
 					target.chat_color_darkened = (hex_value + "c0") // Add an alpha-channel to darken
+					target.chat_color_name = actor.name
 
 
 				// If the actor is copying someone else, find out who
@@ -28,6 +31,7 @@
 							// Run the default first in case the copy has no client
 							target.chat_color = colorize_string(copy.real_name)
 							target.chat_color_darkened = colorize_string(copy.real_name, 0.85, 0.85)
+							target.chat_color_name = copy.real_name
 
 							if(copy.client?.prefs)
 							// If the copy has a client to check
@@ -46,5 +50,6 @@
 				if(actor.name == "Unknown" && actor.real_name != "Unknown")
 					target.chat_color = "#FFFFFF"
 					target.chat_color_darkened = "#FFFFFFc0"
+					target.chat_color_name = "Unknown"
 
 	return ..()
