@@ -3859,10 +3859,6 @@
 	},
 /area/centcom/holding/cafepark)
 "aKQ" = (
-/obj/structure/fence{
-	dir = 1;
-	pixel_x = -15
-	},
 /obj/structure/toilet,
 /obj/structure/curtain{
 	alpha = 250;
@@ -6335,16 +6331,6 @@
 /obj/item/bedsheet/random,
 /turf/open/floor/iron/grimy,
 /area/centcom/interlink)
-"dVx" = (
-/obj/machinery/button/door{
-	id = "ghostcafecabin3";
-	name = "Dorm Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_x = -8;
-	specialfunctions = 4
-	},
-/turf/closed/indestructible/wood,
-/area/centcom/holding/cafe)
 "dXR" = (
 /obj/structure/flora/rock,
 /turf/open/floor/plating/asteroid,
@@ -6360,9 +6346,6 @@
 /turf/open/floor/wood,
 /area/centcom/interlink)
 "egn" = (
-/obj/structure/fence{
-	pixel_x = 14
-	},
 /obj/structure/bed/maint,
 /obj/item/toy/figure/prisoner,
 /obj/effect/turf_decal/tile/red/half{
@@ -6577,6 +6560,10 @@
 /obj/structure/showcase/fakesec{
 	name = "\improper Cafe security records"
 	},
+/obj/structure/fence{
+	dir = 1;
+	pixel_x = -18
+	},
 /turf/open/floor/iron,
 /area/centcom/holding/cafe)
 "fGe" = (
@@ -6672,6 +6659,20 @@
 /obj/effect/turf_decal/tile/red/anticorner,
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "ghostcafesec";
+	name = "Detainment Lockdown";
+	normaldoorcontrol = 1;
+	pixel_x = 26;
+	pixel_y = 5;
+	specialfunctions = 4
+	},
+/obj/machinery/button/door{
+	id = "ghostcafesec";
+	name = "Cell Lockdown";
+	pixel_x = 26;
+	pixel_y = -7
 	},
 /turf/open/floor/iron,
 /area/centcom/holding/cafe)
@@ -6847,6 +6848,12 @@
 /obj/item/bedsheet/random,
 /turf/open/floor/wood,
 /area/centcom/interlink)
+"hdV" = (
+/obj/structure/fence{
+	pixel_x = 17
+	},
+/turf/closed/indestructible/wood,
+/area/centcom/holding/cafe)
 "hea" = (
 /obj/structure/table/wood,
 /obj/item/paper_bin,
@@ -9154,6 +9161,12 @@
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/open/floor/plating/asteroid,
 /area/centcom/interlink)
+"uWe" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "ghostcafesec"
+	},
+/turf/closed/indestructible/fakeglass,
+/area/centcom/holding/cafe)
 "uXJ" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -50896,7 +50909,7 @@ aFP
 aFP
 aFP
 aqf
-aqf
+hdV
 aqf
 aqf
 aqf
@@ -51666,7 +51679,7 @@ alC
 aUM
 aKc
 aFP
-aqf
+uWe
 egn
 aBv
 vUv
@@ -52440,7 +52453,7 @@ aFP
 aqf
 aqf
 pPH
-dVx
+aqf
 aqf
 aKu
 aFP
