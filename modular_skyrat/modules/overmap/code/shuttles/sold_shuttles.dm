@@ -30,46 +30,61 @@
 /datum/sold_shuttle/common_vulture
 	name = "MS Vulture"
 	desc = "A medium sized mining shuttle, equipped with living quarters."
-	detailed_desc = "It's medium sized and is equipped with three Tachyon G-36 Sublight Ion Engines, canisters of co2 and oxygen, a portable generator, two mining lasers, a transporter and some emergency supplies. It has quarters and a restroom"
+	detailed_desc = "Mounted with four 'Hightail' shuttle drives, this ship is fit for a variety of missions, with both equipment for mining, long-term journeys, and seating for extra crew."
 	shuttle_id = "common_vulture"
 	cost = 7500
 	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
 	shuttle_type = SHUTTLE_MINING
+
+/datum/sold_shuttle/common_baserunner
+	name = "MS Baserunner"
+	desc = "A small cargo and personnel shuttle, lacks a full airlock."
+	detailed_desc = "Originally designed to fit in the main hangar of the rare vixen carrier class, also serves purpose as an inexpensive and reliable ship for light work."
+	shuttle_id = "common_baserunner"
+	cost = 5000
+	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
+
+/datum/sold_shuttle/common_workman
+	name = "MS Workman"
+	desc = "An extremely small resource collection ship, seats a single person."
+	detailed_desc = "Made to usually operate from larger motherships, this single seat mining shuttle is still capable of limited independent operation."
+	cost = 3000
+	allowed_docks = list(DOCKS_SMALL_UPWARDS)
 
 ////////////////////////
 //Exploration shuttles//
 ////////////////////////
 /datum/sold_shuttle/crow
 	name = "NXV Crow"
-	desc = "A medium sized exploration shuttle."
-	detailed_desc = "It is medium sized and is equipped with four propulsion engines, canisters of co2 and oxygen, a portable generator, excavation gear and some emergency supplies. Comes with 4 VOLTAR Mach 1 sublight thrusters."
+	desc = "A medium sized cargo shuttle, equipped with living quarters."
+	detailed_desc = "Filling the niche role of a speedy cargo hauler, the Crow's six 'Hightail' shuttle drives and the spacious cargo bay lets you move just about anything to anywhere with short delay."
 	shuttle_id = "exploration_crow"
-	cost = 10000
+	cost = 7500
 	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
 	shuttle_type = SHUTTLE_EXPLORATION
 
 /datum/sold_shuttle/deckard
 	name = "NXV Deckard"
-	desc = "Your bog standard run of the mill reliable medium sized exploration shuttle."
-	detailed_desc = "It is a medium class exploration vessel which comes equipped with some basic mining supplies, a portable generator and four Falcon RS-500 sublight thrusters making it nimble and rahter quick."
+	desc = "A reliable and cheap multi-purpose shuttle of medium size."
+	detailed_desc = "While it does nothing in particular amazingly well, the Deckard's four 'Hightail' shuttle drives, combined with the full suite of shuttle equipment provides at least decent performance in all fields."
 	shuttle_id = "exploration_deckard"
-	cost = 7500
+	cost = 6000
 	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
 	shuttle_type = SHUTTLE_EXPLORATION
 
 /datum/sold_shuttle/nexus
 	name = "NXV Nexus"
-	desc = "A large sized luxury exploration shuttle, well equipped."
-	detailed_desc = "It is rather large and is equipped with three Falcon RS-2000 Sublight thrusters, capable of low speeds, however, it is very well equipped for excavation, mining and exploration. Your go-to reliable yet luxurious shuttle. It has a mining drill, medbay, shield generator, kitchen and lots of supplies. Good luck, explorer."
+	desc = "A large, decently well equipped exploration shuttle."
+	detailed_desc = "Featuring six high-capacity 'Harrier' drives, this ship is equipped with everything a modern spacer would need for mostly station-independent space exploration, with medical and even resourcing facilies."
 	shuttle_id = "exploration_nexus"
-	cost = 20000
+	cost = 15500
 	allowed_docks = list(DOCKS_HUGE_UPWARDS)
 	shuttle_type = SHUTTLE_EXPLORATION
 
 /datum/sold_shuttle/nexus_retrofit
 	name = "NXV Nexus Retrofit"
 	desc = "A large sized exploration shuttle, well equipped, it is a retrofit of the NXV Nexus."
-	detailed_desc = "Much like the standard Nexus, this bad boy comes well equipped for excavation, mining and exploration. This model has four VOLTAR Mach 5 sublight thrusters, capable of slightly faster speeds than the standard Nexus. It comes with a drill, medbay, shield generator and many supplies."
+	detailed_desc = "Holding the same six high-capacity 'Harrier' drives as the standard nexus, this model flaunts a much larger size, and as a result, much larger and enhanced facilities, at the cost of the vessel's top speed."
 	shuttle_id = "exploration_nexus_2"
 	cost = 22000
 	allowed_docks = list(DOCKS_HUGE_UPWARDS)

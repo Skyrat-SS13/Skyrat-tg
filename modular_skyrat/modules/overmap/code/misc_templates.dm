@@ -28,3 +28,9 @@
 	map_path = "map_files/generic"
 	map_file = "ncv_titan.dmm"
 	overmap_type = /datum/overmap_object/shuttle/ship/ncv_titan
+
+/datum/misc_template/nlv_vixen
+	name = "NLV Vixen"
+	map_path = "shuttles/skyrat"
+	map_file = "carrier_vixen.dmm"
+	overmap_type = /datum/overmap_object/shuttle/ship/nlv_vixen

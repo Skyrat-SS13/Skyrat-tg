@@ -9,3 +9,8 @@
 /datum/overmap_object/shuttle/ship/ncv_titan
 	name = "NCV Titan"
 	fixed_parallax_dir = EAST
+
+/datum/overmap_object/shuttle/ship/nlv_vixen
+	name = "NLV Vixen"
+	speed_divisor_from_mass = 10
+

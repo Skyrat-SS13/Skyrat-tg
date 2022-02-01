@@ -81,11 +81,11 @@
 /turf/open/floor/iron/shuttle/exploration/flat,
 /area/shuttle/vixen)
 "bw" = (
-/obj/machinery/computer/rdconsole{
-	dir = 1
-	},
 /obj/effect/turf_decal/bot_white,
 /obj/structure/extinguisher_cabinet/directional/east,
+/obj/machinery/computer/cargo/request{
+	dir = 1
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/vixen/fore)
 "by" = (
@@ -855,10 +855,10 @@
 /turf/open/floor/iron/shuttle/exploration/textured_flat,
 /area/shuttle/vixen)
 "mZ" = (
-/obj/machinery/modular_computer/console/preset/engineering{
+/obj/effect/turf_decal/bot_white,
+/obj/machinery/computer/trade_console{
 	dir = 8
 	},
-/obj/effect/turf_decal/bot_white,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/vixen/fore)
 "nc" = (
@@ -2051,6 +2051,7 @@
 	id = "vixen";
 	launch_status = 0;
 	name = "NCV Vixen";
+	overmap_shuttle_type = /datum/overmap_object/shuttle/ship/nlv_vixen;
 	port_direction = 8;
 	preferred_direction = 4;
 	width = 57
@@ -2615,10 +2616,8 @@
 /turf/open/floor/plating,
 /area/shuttle/vixen/fore)
 "PE" = (
-/obj/machinery/computer/cargo/request{
-	dir = 8
-	},
-/obj/effect/turf_decal/bot_white,
+/obj/machinery/trade_pad,
+/obj/effect/turf_decal/delivery/white,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/vixen/fore)
 "PI" = (
@@ -4066,7 +4065,7 @@ bS
 MX
 od
 qg
-tE
+gV
 bw
 od
 wX

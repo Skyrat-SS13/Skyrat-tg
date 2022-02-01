@@ -37,6 +37,12 @@
 /area/shuttle/vulture/dorm
 	name = "MS Vulture Quarters"
 
+/area/shuttle/baserunner
+	name = "MS Baserunner"
+
+/area/shuttle/workman
+	name = "MS Workman"
+
 /area/shuttle/barrow
 	name = "The Barrows"
 	requires_power = FALSE
@@ -76,6 +82,8 @@
 
 /area/shuttle/vixen
 	name = "NLV Vixen"
+	requires_power = TRUE
+	area_limited_icon_smoothing = /area/shuttle/vixen
 
 /area/shuttle/vixen/fore
 	name = "NLV Vixen Fore"

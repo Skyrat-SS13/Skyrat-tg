@@ -10,6 +10,14 @@
 	suffix = "vulture"
 	name = "MS Vulture"
 
+/datum/map_template/shuttle/overmap/common/workman
+	suffix = "workman"
+	name = "MS Workman"
+
+/datum/map_template/shuttle/overmap/common/baserunner
+	suffix = "baserunner"
+	name = "MS Baserunner"
+
 /datum/map_template/shuttle/overmap/common/platform_small
 	suffix = "platform_small"
 	name = "Platform Shuttle"
@@ -52,3 +60,8 @@
 	name = "NCV Titan"
 	who_can_purchase = null
 
+/datum/map_template/shuttle/overmap/carrier
+	port_id = "carrier"
+	suffix = "vixen"
+	name = "NLV Vixen"
+	who_can_purchase = null
