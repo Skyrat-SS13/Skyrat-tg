@@ -1,18 +1,18 @@
-/datum/design/board/oc_donut_steel_restoration_device
+/datum/design/board/self_actualization_device
 	name = "Machine Design (Self-Actualization Device)"
 	desc = "The circuit board for a Self-Actualization Device by Cinco: A Family Company."
-	id = "oc_donut_steel_restoration_device"
-	build_path = /obj/item/circuitboard/machine/oc_donut_steel_restoration_device
+	id = "self_actualization_device"
+	build_path = /obj/item/circuitboard/machine/self_actualization_device
 	category = list("Medical Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
-/obj/item/circuitboard/machine/oc_donut_steel_restoration_device
+/obj/item/circuitboard/machine/self_actualization_device
 	name = "Self-Actualization Device (Machine Board)"
 	greyscale_colors = CIRCUIT_COLOR_MEDICAL
-	build_path = /obj/machinery/oc_donut_steel_restoration_device
+	build_path = /obj/machinery/self_actualization_device
 	req_components = list(/obj/item/stock_parts/micro_laser = 1)
 
-/obj/machinery/oc_donut_steel_restoration_device
+/obj/machinery/self_actualization_device
 	name = "Self-Actualization Device"
 	desc = "With the power of modern neurological scanning and synthflesh cosmetic surgery, the Morningstar corporation \
 	has teamed up with the Cinco Chemical & Toy Division to bring you the Self-Actualization Device! \
@@ -20,9 +20,9 @@
 	Just slap 'em in the SAD and turn it on! Their frown will turn upside down as they're reconstituted as their ideal self \
 	via the magic technology of brain scanning! Within a few short moments, they'll be popped out as their ideal self, \
 	ready to continue on with their day lawsuit-free! WARNING: KEEP AWAY FROM POTENTIAL SOURCES OF ELECTRO-MAGNETIC INTERFERENCE."
-	icon = 'modular_skyrat/modules/donut_steel_restoration_device/icons/cinco_machinery.dmi'
+	icon = 'modular_skyrat/modules/self_actualization_device/icons/self_actualization_device.dmi'
 	icon_state = "sad_open"
-	circuit = /obj/item/circuitboard/machine/oc_donut_steel_restoration_device
+	circuit = /obj/item/circuitboard/machine/self_actualization_device
 	state_open = FALSE
 	density = TRUE
 	var/processing = FALSE
@@ -39,7 +39,7 @@
 	)
 	var/times_processed = 0
 
-/obj/machinery/oc_donut_steel_restoration_device/update_appearance(updates)
+/obj/machinery/self_actualization_device/update_appearance(updates)
 	. = ..()
 	if(occupant)
 		icon_state = processing ? "sad_on" : "sad_off"
@@ -48,11 +48,11 @@
 
 
 
-/obj/machinery/oc_donut_steel_restoration_device/Initialize(mapload)
+/obj/machinery/self_actualization_device/Initialize(mapload)
 	. = ..()
 	update_appearance()
 
-/obj/machinery/oc_donut_steel_restoration_device/close_machine(mob/user)
+/obj/machinery/self_actualization_device/close_machine(mob/user)
 	..()
 	playsound(src, 'sound/machines/click.ogg', 50)
 	if(occupant)
@@ -63,11 +63,11 @@
 		to_chat(occupant, span_notice("You enter [src]."))
 		update_appearance()
 
-/obj/machinery/oc_donut_steel_restoration_device/open_machine(mob/user)
+/obj/machinery/self_actualization_device/open_machine(mob/user)
 	playsound(src, 'sound/machines/click.ogg', 50)
 	..()
 
-/obj/machinery/oc_donut_steel_restoration_device/AltClick(mob/user)
+/obj/machinery/self_actualization_device/AltClick(mob/user)
 	. = ..()
 	if(powered() && occupant && !state_open)
 		to_chat(user, "You power on [src].")
@@ -75,7 +75,7 @@
 		processing = TRUE
 		update_appearance()
 
-/obj/machinery/oc_donut_steel_restoration_device/container_resist_act(mob/living/user)
+/obj/machinery/self_actualization_device/container_resist_act(mob/living/user)
 	if(!state_open)
 		to_chat(user, span_notice("The emergency release is not responding! You start pushing against the hull!"))
 		user.changeNext_move(CLICK_CD_BREAKOUT)
@@ -92,7 +92,7 @@
 		return
 	open_machine()
 
-/obj/machinery/oc_donut_steel_restoration_device/interact(mob/user)
+/obj/machinery/self_actualization_device/interact(mob/user)
 	if(state_open)
 		close_machine()
 		return
@@ -100,7 +100,7 @@
 		open_machine()
 		return
 
-/obj/machinery/oc_donut_steel_restoration_device/process(delta_time)
+/obj/machinery/self_actualization_device/process(delta_time)
 	if(!processing)
 		return
 	if(!powered() || !occupant || !iscarbon(occupant))
@@ -113,7 +113,7 @@
 		playsound(loc, 'sound/machines/chime.ogg', 30, FALSE)
 	use_power(500)
 /// Ejects the occupant as either their preference character, or as a monke based on emag status.
-/obj/machinery/oc_donut_steel_restoration_device/proc/eject_new_you()
+/obj/machinery/self_actualization_device/proc/eject_new_you()
 	if(state_open || !occupant || !powered())
 		return
 	processing = FALSE
@@ -133,7 +133,7 @@
 		open_machine()
 		playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)
 
-/obj/machinery/oc_donut_steel_restoration_device/screwdriver_act(mob/living/user, obj/item/I)
+/obj/machinery/self_actualization_device/screwdriver_act(mob/living/user, obj/item/I)
 	. = TRUE
 	if(..())
 		return
@@ -145,14 +145,14 @@
 		return
 	return FALSE
 
-/obj/machinery/oc_donut_steel_restoration_device/crowbar_act(mob/living/user, obj/item/I)
+/obj/machinery/self_actualization_device/crowbar_act(mob/living/user, obj/item/I)
 	if(occupant)
 		to_chat(user, span_warning("[src] is currently occupied!"))
 		return
 	if(default_deconstruction_crowbar(I))
 		return TRUE
 
-/obj/machinery/oc_donut_steel_restoration_device/emag_act(mob/living/user)
+/obj/machinery/self_actualization_device/emag_act(mob/living/user)
 	if(obj_flags & EMAGGED)
 		return
 	to_chat(user, span_notice("You scramble the brain reading circuits!"))
