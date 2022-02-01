@@ -104,8 +104,9 @@
 	extra_access = list()
 	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT,
 				ACCESS_MAINT_TUNNELS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
-
 	config_job = "brigoff"
+	template_access = list(ACCESS_CAPTAIN, ACCESS_HOS, ACCESS_CHANGE_IDS)
+	job = /datum/job/brigoff
 
 /datum/id_trim/job/barber
 	assignment = "Barber"
