@@ -192,6 +192,24 @@
 	see_in_dark = 8
 	sight_flags = SEE_MOBS | SEE_OBJS | SEE_TURFS
 
+/obj/item/organ/eyes/robotic/xray/emp_act(severity) //SKYRAT EDIT START:X-RAY EYE NERF
+	. = ..()
+	if(. & EMP_PROTECT_SELF)
+		return
+	if(owner && (damage < maxHealth) && prob(150/severity))
+		applyOrganDamage(30/severity)
+		owner.flash_act(intensity = 2/severity, override_blindness_check = 1)
+		owner.adjust_blurriness(30)
+		owner.visible_message(span_warning("[owner]'s eyes flash with a sickly blue light!"))
+		to_chat(owner, span_warning("Your vision swims with frantic, flashing images of the inside of your head!"))
+		owner.add_confusion(min(owner.get_confusion() + 10, 30))
+		owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 30)
+		radiation_pulse(owner, max_range = 0, threshold = RAD_FULL_INSULATION, chance = 100)
+		do_sparks(2, TRUE, owner)
+		owner.emote("scream")
+		if(severity == 1)
+			owner.Knockdown(1 SECONDS)//SKYRAT EDIT END: X-RAY EYE NERF
+
 /obj/item/organ/eyes/robotic/thermals
 	name = "thermal eyes"
 	desc = "These cybernetic eye implants will give you thermal vision. Vertical slit pupil included."
@@ -200,6 +218,27 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 	see_in_dark = 8
+
+/obj/item/organ/eyes/robotic/thermals/emp_act(severity) //SKYRAT EDIT START: THERMAL EYE NERF
+	. = ..()
+	if(. & EMP_PROTECT_SELF)
+		return
+	if(owner && (damage < maxHealth) && prob(150/severity))
+		applyOrganDamage(30/severity)
+		owner.flash_act(intensity = 2/severity, override_blindness_check = 1)
+		owner.adjust_blurriness(30)
+		owner.visible_message(span_warning("[owner]'s eyes hiss smoke and burst into flame!"))
+		to_chat(owner, span_warning("Your eyes burn with a scorching, white heat!"))
+		owner.add_confusion(min(owner.get_confusion() + 10, 30))
+		owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 30)
+		var/obj/item/bodypart/affecting = owner.get_bodypart(BODY_ZONE_HEAD)
+		owner.apply_damage(25, BURN, affecting)
+		owner.adjust_fire_stacks(10/severity)
+		owner.IgniteMob()
+		do_sparks(2, TRUE, owner)
+		owner.emote("scream")
+		if(severity == 1)
+			owner.Knockdown(1 SECONDS)//SKYRAT EDIT END: THERMAL EYE NERF
 
 /obj/item/organ/eyes/robotic/flashlight
 	name = "flashlight eyes"
