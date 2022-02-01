@@ -292,19 +292,19 @@
 
 /datum/loadout_item/head/hubertcc
 	name = "CC Ensign's cap"
-	item_path = /obj/item/clothing/head/nanotrasen_representative/hubert
+	item_path = /obj/item/clothing/head/nanotrasen_consultant/hubert
 	ckeywhitelist = list("hackertdog")
 	restricted_roles = list(JOB_NT_REP)
 
 /datum/loadout_item/suit/hubertcc
 	name = "CC Ensign's armoured vest"
-	item_path = /obj/item/clothing/suit/armor/vest/nanotrasen_representative/hubert
+	item_path = /obj/item/clothing/suit/armor/vest/nanotrasen_consultant/hubert
 	ckeywhitelist = list("hackertdog")
 	restricted_roles = list(JOB_NT_REP)
 
 /datum/loadout_item/under/jumpsuit/hubertcc
 	name = "CC Ensign's uniform"
-	item_path = /obj/item/clothing/under/rank/nanotrasen_representative/hubert
+	item_path = /obj/item/clothing/under/rank/nanotrasen_consultant/hubert
 	ckeywhitelist = list("hackertdog")
 	restricted_roles = list(JOB_NT_REP)
 
