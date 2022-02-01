@@ -26,7 +26,7 @@
 	// Dust Poppy the safety inspector
 	if(istype(target_pet, /mob/living/simple_animal/pet/poppy))
 		name = "Dust the engineering department's esteemed safety inspector and beloved pet, Poppy"
-		description = "A couple of troublemakers in the engineering department have spilled the milk, make them and their colleagues pay for the consequences by throwing Poppy the safety inspector into the supermatter engine "
+		description = "A couple of troublemakers in the engineering department have spilled the milk, make them and their colleagues pay for the consequences by throwing Poppy the Safety Inspector into the supermatter engine "
 		telecrystal_reward = list(3, 4)
 
 		// Cleaning up the original success_signals which are `list(COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH)`
