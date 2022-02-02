@@ -56,6 +56,7 @@
 	loot = list(/obj/effect/decal/cleanable/oil/slippery)
 	butcher_results = list(/obj/item/clothing/head/corgi/en = 1, /obj/item/clothing/suit/corgisuit/en = 1)
 	deathmessage = "beeps, its mechanical parts hissing before the chassis collapses in a loud thud."
+	gold_core_spawnable = NO_SPAWN
 	animal_species = /mob/living/simple_animal/pet/dog/corgi
 	nofur = TRUE
 	// These lights enable when E-N is emagged

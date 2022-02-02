@@ -33,7 +33,7 @@
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
 	mob_size = MOB_SIZE_TINY
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	gold_core_spawnable = FRIENDLY_SPAWN
+	gold_core_spawnable = NO_SPAWN
 	light_system = MOVABLE_LIGHT_DIRECTIONAL
 	light_color = LIGHT_COLOR_YELLOW
 	light_range = 2
