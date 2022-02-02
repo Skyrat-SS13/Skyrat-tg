@@ -6,7 +6,7 @@
 
 	density = TRUE
 	circuit = /obj/item/circuitboard/machine/bluespace_miner
-	idle_power_usage = 200
+	idle_power_usage = 300
 
 	///the temperature of the co2 produced per successful process (its really 100) KELVIN
 	var/gas_temp = 100
@@ -20,6 +20,7 @@
 		/obj/item/stack/sheet/mineral/silver = 8,
 		/obj/item/stack/sheet/mineral/titanium = 8,
 		/obj/item/stack/sheet/mineral/uranium = 3,
+		/obj/item/xenoarch/strange_rock = 3,
 		/obj/item/stack/sheet/mineral/gold = 3,
 		/obj/item/stack/sheet/mineral/diamond = 1,
 	)
@@ -47,6 +48,8 @@
 
 /obj/machinery/bluespace_miner/examine(mob/user)
 	. = ..()
+	if(obj_flags & EMAGGED)
+		. += span_warning("The safeties are turned off!")
 	var/turf/src_turf = get_turf(src)
 	var/datum/gas_mixture/environment = src_turf.return_air()
 	if(environment.temperature >= T20C)
@@ -91,6 +94,9 @@
 	var/datum/gas_mixture/merger = new
 	merger.assert_gas(/datum/gas/carbon_dioxide)
 	merger.gases[/datum/gas/carbon_dioxide][MOLES] = MOLES_CELLSTANDARD
+	if(obj_flags & EMAGGED)
+		merger.assert_gas(/datum/gas/tritium)
+		merger.gases[/datum/gas/tritium][MOLES] = MOLES_CELLSTANDARD
 	merger.temperature = (T20C + gas_temp)
 	src_turf.assume_air(merger)
 	return TRUE
@@ -118,6 +124,14 @@
 		update_appearance()
 		return
 	return FALSE
+
+/obj/machinery/bluespace_miner/emag_act(mob/user, obj/item/card/emag/emag_card)
+	if(obj_flags & EMAGGED)
+		balloon_alert(user, "already emagged!")
+		return
+	ore_chance += list(/obj/item/stack/sheet/mineral/bananium = 1)
+	obj_flags |= EMAGGED
+	balloon_alert_to_viewers("fizzles!")
 
 /obj/item/circuitboard/machine/bluespace_miner
 	name = "Bluespace Miner (Machine Board)"
