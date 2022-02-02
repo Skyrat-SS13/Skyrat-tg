@@ -56,7 +56,7 @@
 		. += span_warning("[src] is in a suboptimal environment: " + span_boldwarning("TEMPERATURE TOO HIGH!"))
 	if(environment.return_pressure() <= ONE_ATMOSPHERE)
 		. += span_warning("[src] is in a suboptimal environment: " + span_boldwarning("PRESSURE TOO LOW!"))
-	if(environment.return_pressure() >= (ONE_ATMOSPHERE * 2))
+	if(environment.return_pressure() >= (ONE_ATMOSPHERE * 1.5))
 		. += span_warning("[src] is in a suboptimal environment: " + span_boldwarning("PRESSURE TOO HIGH!"))
 	for(var/obj/machinery/bluespace_miner/bs_miner in range(1, src))
 		if(bs_miner != src)
