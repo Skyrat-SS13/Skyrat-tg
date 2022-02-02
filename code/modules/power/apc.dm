@@ -1156,7 +1156,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/power/apc/auto_name, APC_PIXEL_OFFSET
 		return
 	if(!is_station_level(z))
 		return
-	malf.ShutOffDoomsdayDevice()
+	//malf.ShutOffDoomsdayDevice() SKYRAT EDIT: no more doomsday
 	occupier = new /mob/living/silicon/ai(src, malf.laws, malf) //DEAR GOD WHY? //IKR????
 	occupier.adjustOxyLoss(malf.getOxyLoss())
 	if(!findtext(occupier.name, "APC Copy"))

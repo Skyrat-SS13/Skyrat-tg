@@ -14,7 +14,7 @@
 		//And another
 		/obj/item/slimecross/recurring,
 		//This should be obvious
-		/obj/machinery/doomsday_device,
+		//obj/machinery/doomsday_device, SKYRAT EDIT: no more doomsday
 		//Yet more templates
 		/obj/machinery/restaurant_portal,
 		//Template type

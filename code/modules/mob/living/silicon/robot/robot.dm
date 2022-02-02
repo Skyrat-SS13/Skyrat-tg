@@ -997,7 +997,7 @@
 	lamp_doom = FALSE
 	if(connected_ai)
 		connected_ai.connected_robots |= src
-		lamp_doom = connected_ai.doomsday_device ? TRUE : FALSE
+		//lamp_doom = connected_ai.doomsday_device ? TRUE : FALSE SKYRAT EDIT: no more doomsday
 	toggle_headlamp(FALSE, TRUE)
 
 /**

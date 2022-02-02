@@ -221,7 +221,7 @@
 	QDEL_NULL(eyeobj) // No AI, no Eye
 	QDEL_NULL(spark_system)
 	QDEL_NULL(malf_picker)
-	QDEL_NULL(doomsday_device)
+	//QDEL_NULL(doomsday_device) SKYRAT EDIT: No doomsday
 	QDEL_NULL(robot_control)
 	QDEL_NULL(aiMulti)
 	QDEL_NULL(alert_control)
@@ -775,7 +775,7 @@
 		if(!mind)
 			to_chat(user, span_warning("No intelligence patterns detected."))
 			return
-		ShutOffDoomsdayDevice()
+		//ShutOffDoomsdayDevice() SKYRAT EDIT: no more doomsday
 		var/obj/structure/ai_core/new_core = new /obj/structure/ai_core/deactivated(loc)//Spawns a deactivated terminal at AI location.
 		new_core.circuit.battery = battery
 		ai_restore_power()//So the AI initially has power.
