@@ -54446,8 +54446,8 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/purple,
-/obj/structure/table/wood/shuttle_bar,
 /obj/item/lipstick/random,
+/obj/structure/table/wood,
 /turf/open/floor/iron,
 /area/service/salon)
 "jup" = (
@@ -83656,8 +83656,8 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/purple,
-/obj/structure/table/wood/shuttle_bar,
 /obj/item/book/fish_catalog,
+/obj/structure/table/wood,
 /turf/open/floor/iron,
 /area/service/salon)
 "qYD" = (
@@ -88665,6 +88665,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/cargo/warehouse)
+"sse" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/airlock{
+	id_tag = "mimedorm";
+	name = "Mime's Cabin"
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/wood,
+/area/hallway/secondary/service)
 "ssv" = (
 /obj/machinery/shower{
 	dir = 8;
@@ -97581,7 +97591,10 @@
 "uGU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/airlock,
+/obj/machinery/door/airlock{
+	id_tag = "clowndorm";
+	name = "Clown's Cabin"
+	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/wood,
 /area/hallway/secondary/service)
@@ -100431,6 +100444,10 @@
 /obj/effect/landmark/start/hangover,
 /obj/machinery/light_switch/directional/north{
 	pixel_x = -8
+	},
+/obj/machinery/button/door/directional/north{
+	id_tag = "mimedorm";
+	name = "Cabin Door Lock"
 	},
 /turf/open/floor/wood,
 /area/hallway/secondary/service)
@@ -106879,6 +106896,10 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/button/door/directional/south{
+	id_tag = "clowndorm";
+	name = "Cabin Door Lock"
+	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken6"
 	},
@@ -148874,7 +148895,7 @@ fMD
 sbg
 ylh
 iKV
-uGU
+sse
 qMY
 snN
 xHb
