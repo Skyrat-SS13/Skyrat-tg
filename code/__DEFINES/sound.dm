@@ -11,6 +11,7 @@
 */
 #define CHANNEL_JUKEBOX 1021
 #define CHANNEL_TRAITOR 1017
+<<<<<<< HEAD
 #define CHANNEL_JUKEBOX_START 1016
 #define CHANNEL_HEARTBEAT 1015 //sound channel for heartbeats
 #define CHANNEL_AMBIENCE 1014
@@ -18,6 +19,10 @@
 #define CHANNEL_BICYCLE 1012
 #define CHANNEL_HEV 1011
 //SKYRAT EDIT CHANGE END
+=======
+#define CHANNEL_MBOX 1016
+
+>>>>>>> 33dd1d811bd (Adds the mystery box (#64061))
 ///Default range of a sound.
 #define SOUND_RANGE 17
 #define MEDIUM_RANGE_SOUND_EXTRARANGE -5
