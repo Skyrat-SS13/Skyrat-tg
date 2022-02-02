@@ -27115,6 +27115,15 @@
 /turf/open/floor/wood,
 /area/service/library)
 "kbh" = (
+/obj/machinery/atmospherics/pipe/multiz/supply/visible/layer4{
+	color = "#0000ff";
+	name = "Supply multi deck pipe adapter"
+	},
+/obj/machinery/atmospherics/pipe/multiz/scrubbers/visible/layer2{
+	color = "#ff0000";
+	name = "Scrubbers multi deck pipe adapter"
+	},
+/obj/effect/turf_decal/stripes/box,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/commons/storage/mining)
@@ -32900,6 +32909,8 @@
 	req_access_txt = "12"
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/commons/storage/mining)
 "nhr" = (
@@ -33232,7 +33243,6 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/machinery/status_display/evac/directional/north,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/white/side{
 	dir = 10
@@ -41133,6 +41143,7 @@
 	c_tag = "Research Division West";
 	network = list("ss13","rd")
 	},
+/obj/machinery/status_display/evac/directional/north,
 /turf/open/floor/iron/white/side{
 	dir = 10
 	},
@@ -47136,6 +47147,12 @@
 /obj/machinery/vending/assist,
 /turf/open/floor/iron,
 /area/science/mixing)
+"uBf" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/plating,
+/area/commons/storage/mining)
 "uBg" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -83146,7 +83163,7 @@ bdg
 bed
 bfv
 kbh
-kbh
+uBf
 nhm
 fIs
 hhJ

@@ -4330,25 +4330,6 @@
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
-"aUT" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/atmos/glass{
-	name = "Turbine Generator Access";
-	req_one_access_txt = "10;24"
-	},
-/turf/open/floor/iron,
-/area/maintenance/disposal/incinerator)
 "aUV" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -5474,6 +5455,26 @@
 /obj/effect/turf_decal/box,
 /turf/open/floor/iron,
 /area/engineering/supermatter/room)
+"bfF" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/atmos/glass{
+	name = "Turbine Generator Access";
+	req_one_access_txt = "10;24"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron,
+/area/maintenance/disposal/incinerator)
 "bfJ" = (
 /obj/structure/training_machine,
 /obj/item/target/syndicate,
@@ -52694,13 +52695,6 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron/grimy,
 /area/service/library)
-"jnH" = (
-/obj/structure/table/reinforced,
-/obj/item/circuitboard/machine/paystand,
-/obj/item/stack/cable_coil/five,
-/obj/machinery/airalarm/directional/north,
-/turf/open/floor/plating,
-/area/maintenance/starboard/fore)
 "jnL" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
@@ -83954,21 +83948,6 @@
 	},
 /turf/open/floor/iron,
 /area/command/heads_quarters/hos)
-"rnp" = (
-/obj/structure/table,
-/obj/item/stack/sheet/iron/five,
-/obj/item/circuitboard/machine/paystand,
-/obj/effect/turf_decal/tile/brown{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/item/radio/intercom/directional/north,
-/turf/open/floor/iron{
-	heat_capacity = 1e+006
-	},
-/area/commons/vacant_room/commissary)
 "rnz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
@@ -93717,6 +93696,20 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/maintenance/port/fore)
+"tPx" = (
+/obj/structure/table,
+/obj/item/stack/sheet/iron/five,
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/item/radio/intercom/directional/north,
+/turf/open/floor/iron{
+	heat_capacity = 1e+006
+	},
+/area/commons/vacant_room/commissary)
 "tPM" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -96436,6 +96429,19 @@
 	},
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain/private)
+"uBs" = (
+/obj/machinery/airalarm/directional/north,
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/obj/structure/table,
+/obj/item/wrench,
+/obj/item/screwdriver,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/commons/vacant_room)
 "uBx" = (
 /obj/machinery/vending/cigarette,
 /obj/effect/turf_decal/delivery,
@@ -99484,20 +99490,6 @@
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/iron,
 /area/cargo/miningoffice)
-"vqH" = (
-/obj/machinery/airalarm/directional/north,
-/obj/effect/turf_decal/tile/brown{
-	dir = 4
-	},
-/obj/structure/table,
-/obj/item/circuitboard/machine/paystand,
-/obj/item/wrench,
-/obj/item/screwdriver,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/commons/vacant_room)
 "vqQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment,
@@ -104448,6 +104440,12 @@
 	icon_state = "chapel"
 	},
 /area/service/chapel)
+"wEW" = (
+/obj/structure/table/reinforced,
+/obj/item/stack/cable_coil/five,
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "wFi" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -134013,7 +134011,7 @@ aFq
 aFq
 aFq
 mTG
-aUT
+bfF
 aFr
 aFr
 aFr
@@ -142765,7 +142763,7 @@ pPY
 oeu
 fRQ
 qZr
-vqH
+uBs
 gEn
 taK
 ggT
@@ -143337,7 +143335,7 @@ tAv
 ime
 gKR
 nJo
-rnp
+tPx
 dFZ
 vFR
 wUH
@@ -152504,7 +152502,7 @@ gmK
 aig
 aig
 aig
-jnH
+wEW
 vSj
 scB
 nzQ
