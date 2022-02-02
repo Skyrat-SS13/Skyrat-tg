@@ -3338,10 +3338,6 @@
 	},
 /area/centcom/holding/cafepark)
 "aKQ" = (
-/obj/structure/fence{
-	dir = 1;
-	pixel_x = -15
-	},
 /obj/structure/toilet,
 /obj/structure/curtain{
 	alpha = 250;
@@ -5833,14 +5829,10 @@
 	},
 /area/centcom/interlink)
 "dVx" = (
-/obj/machinery/button/door{
-	id = "ghostcafecabin3";
-	name = "Dorm Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_x = -8;
-	specialfunctions = 4
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "ghostcafesec"
 	},
-/turf/closed/indestructible/wood,
+/turf/closed/indestructible/fakeglass,
 /area/centcom/holding/cafe)
 "dXR" = (
 /obj/effect/turf_decal/trimline/white/arrow_cw{
@@ -5861,9 +5853,6 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/centcom/interlink)
 "egn" = (
-/obj/structure/fence{
-	pixel_x = 14
-	},
 /obj/structure/bed/maint,
 /obj/item/toy/figure/prisoner,
 /obj/effect/turf_decal/tile/red/half{
@@ -6211,6 +6200,12 @@
 "ftN" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/centcom/interlink)
+"ftW" = (
+/obj/structure/fence{
+	pixel_x = 17
+	},
+/turf/closed/indestructible/wood,
+/area/centcom/holding/cafe)
 "fwn" = (
 /obj/structure/dresser,
 /turf/open/indestructible/hotelwood,
@@ -6275,6 +6270,10 @@
 	},
 /obj/structure/showcase/fakesec{
 	name = "\improper Cafe security records"
+	},
+/obj/structure/fence{
+	dir = 1;
+	pixel_x = -18
 	},
 /turf/open/floor/iron,
 /area/centcom/holding/cafe)
@@ -6465,6 +6464,20 @@
 /obj/effect/turf_decal/tile/red/anticorner,
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "ghostcafesec";
+	name = "Detainment Lockdown";
+	normaldoorcontrol = 1;
+	pixel_x = 26;
+	pixel_y = 5;
+	specialfunctions = 4
+	},
+/obj/machinery/button/door{
+	id = "ghostcafesec";
+	name = "Cell Lockdown";
+	pixel_x = 26;
+	pixel_y = -7
 	},
 /turf/open/floor/iron,
 /area/centcom/holding/cafe)
@@ -52870,7 +52883,7 @@ aFP
 aFP
 aFP
 aqf
-aqf
+ftW
 aqf
 aqf
 aqf
@@ -53640,7 +53653,7 @@ alC
 aUM
 aKc
 aFP
-aqf
+dVx
 egn
 aBv
 vUv
@@ -54414,7 +54427,7 @@ aFP
 aqf
 aqf
 pPH
-dVx
+aqf
 aqf
 aKu
 aFP
