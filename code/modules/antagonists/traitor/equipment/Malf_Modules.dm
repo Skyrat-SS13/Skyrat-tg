@@ -171,7 +171,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 /// Modules that are improving AI abilities and assets
 /datum/ai_module/upgrade
 	category = "Upgrade Modules"
-
+/* SKYRAT EDIT: No nuking the station
 /// Doomsday Device: Starts the self-destruct timer. It can only be stopped by killing the AI completely.
 /datum/ai_module/destructive/nuke_station
 	name = "Doomsday Device"
@@ -376,7 +376,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 		L.dust()
 	to_chat(world, "<B>The AI cleansed the station of life with the doomsday device!</B>")
 	SSticker.force_ending = 1
-
+SKYRAT EDIT: No nuking the station */
 /// Hostile Station Lockdown: Locks, bolts, and electrifies every airlock on the station. After 90 seconds, the doors reset.
 /datum/ai_module/destructive/lockdown
 	name = "Hostile Station Lockdown"
