@@ -47,11 +47,11 @@
 /datum/greyscale_config/mushcap
 	name = "Mushroom Cap"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/mushcap.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/mushcap.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/mush_cap/mushcap.json'
 
 /datum/greyscale_config/mushcap/worn
 	name = "Mushroom Cap Worn"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/mushcap_worn.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/mush_cap/mushcap_worn.json'
 
 /*
 *	NECK
@@ -67,6 +67,39 @@
 	name = "Ranger Poncho Worn"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/ranger_poncho/ranger_poncho_worn.json'
 
+// CLOAKS
+/datum/greyscale_config/cloak
+	name = "Cloak"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/cloak.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/cloak/cloak.json'
+
+/datum/greyscale_config/cloak/worn
+	name = "Cloak Worn"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/cloak/cloak_worn.json'
+
+/datum/greyscale_config/cloak/veil
+	name = "Veil"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/cloak/veil.json'
+
+/datum/greyscale_config/cloak/veil/worn
+	name = "Veil Worn"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/cloak/veil_worn.json'
+
+/datum/greyscale_config/cloak/boat
+	name = "Boatcloak"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/cloak/boat.json'
+
+/datum/greyscale_config/cloak/boat/worn
+	name = "Boatcloak Worn"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/cloak/boat_worn.json'
+
+/datum/greyscale_config/cloak/shroud
+	name = "Shroud"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/cloak/shroud.json'
+
+/datum/greyscale_config/cloak/shroud/worn
+	name = "Shroud Worn"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/cloak/shroud_worn.json'
 
 /*
 *	SUITS
