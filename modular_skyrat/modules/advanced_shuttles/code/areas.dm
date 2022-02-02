@@ -23,6 +23,11 @@
 /area/centcom/interlink/bluie
 	name = "Blueshield's Auxilliary Office"
 
+/area/centcom/interlink/the_toilet	//Wooooooo spooky
+	name = "Interlink Toilet"
+	ambience_index = AMBIENCE_MAINT
+	sound_environment = SOUND_AREA_TUNNEL_ENCLOSED
+
 /area/centcom/interlink/dorms
 	name = "Interlink Dormitories"
 
@@ -44,7 +49,10 @@
 /area/centcom/interlink/dorms/bigthree
 	name = "Interlink Lodge 3"
 
-/area/centcom/evac
+/area/centcom/interlink/dorms/bigfour
+	name = "Interlink Lodge 4"
+
+/area/centcom/evac/interlink	//Renamed version for CC, still on the /evac/ path so endround statuses arent changed
 	name = "Interlink Evacuation Docks"
 
 /area/shuttle/arrival
