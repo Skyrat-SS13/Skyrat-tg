@@ -99,7 +99,7 @@
 	StartCooldown()
 
 /datum/action/cooldown/learn_bloodchemical
-	name = "Learn Chemical from Blood (5 stat points)"
+	name = "Learn Chemical from Blood (5 chemical points)"
 	cooldown_time = 1 SECONDS
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "bloodchem"
@@ -480,7 +480,7 @@
 
 		// Species and body temperature
 		var/datum/species/targetspecies = humantarget.dna.species
-		var/mutant = humantarget.dna.check_mutation(HULK) \
+		var/mutant = humantarget.dna.check_mutation(/datum/mutation/human/hulk) \
 			|| targetspecies.mutantlungs != initial(targetspecies.mutantlungs) \
 			|| targetspecies.mutantbrain != initial(targetspecies.mutantbrain) \
 			|| targetspecies.mutantheart != initial(targetspecies.mutantheart) \

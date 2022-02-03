@@ -139,7 +139,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			return
 		battlecruiser_called = TRUE
 		caller_card.use_charge(user)
-		addtimer(CALLBACK(GLOBAL_PROC, /proc/summon_battlecruiser), rand(3 MINUTES, 5 MINUTES)) //skyrat edit: original values (20 SECONDS, 1 MINUTES)
+		addtimer(CALLBACK(GLOBAL_PROC, /proc/summon_battlecruiser, caller_card.team), rand(3 MINUTES, 5 MINUTES)) //skyrat edit: original values (20 SECONDS, 1 MINUTES)
 		playsound(src, 'sound/machines/terminal_alert.ogg', 50, FALSE)
 		priority_announce("Attention crew: deep-space sensors detect a Syndicate battlecruiser-class signature subspace rift forming near your station. Estimated time until arrival: three to five minutes.", "[command_name()] High-Priority Update") //skyrat add: announcement on battlecruiser call
 		return

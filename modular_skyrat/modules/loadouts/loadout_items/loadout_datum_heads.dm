@@ -19,8 +19,8 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 		outfit.head = item_path
 
 
-//remove these after christmas or suffer my wrath
-/datum/loadout_item/head/santa
+//readd these on christmas or suffer my wrath
+/*/datum/loadout_item/head/santa
 	name = "Santa hat"
 	item_path = /obj/item/clothing/head/santa
 
@@ -30,7 +30,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/christmas/green
 	name = "Green Christmas hat"
-	item_path = /obj/item/clothing/head/christmas/green
+	item_path = /obj/item/clothing/head/christmas/green*/
 //see above, whatever
 
 /datum/loadout_item/head/black_beanie
@@ -276,7 +276,6 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Flower Pin"
 	item_path = /obj/item/clothing/head/flowerpin
 
-
 /datum/loadout_item/head/rice_hat
 	name = "Rice hat"
 	item_path = /obj/item/clothing/head/rice_hat
@@ -317,7 +316,6 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Flak Helmet"
 	item_path = /obj/item/clothing/head/flakhelm
 
-
 /datum/loadout_item/head/bunnyears
 	name = "Bunny Ears"
 	item_path = /obj/item/clothing/head/rabbitears
@@ -338,16 +336,13 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Hijab"
 	item_path = /obj/item/clothing/head/hijab
 
-
 /datum/loadout_item/head/turban
 	name = "Turban"
 	item_path = /obj/item/clothing/head/turb
 
-
 /datum/loadout_item/head/keff
 	name = "Keffiyeh"
 	item_path = /obj/item/clothing/head/keffiyeh
-
 
 /datum/loadout_item/head/maidhead
 	name = "Maid Headband"
@@ -365,11 +360,9 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Cardboard Helmet"
 	item_path = /obj/item/clothing/head/cardborg
 
-
 /datum/loadout_item/head/wig
 	name = "Wig"
 	item_path = /obj/item/clothing/head/wig
-
 
 /datum/loadout_item/head/wignatural
 	name = "Natural Wig"
@@ -437,7 +430,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Federation Officer's Cap (Red)"
 	item_path = /obj/item/clothing/head/caphat/formal/fedcover/sec
 	restricted_roles = list(JOB_CHIEF_ENGINEER,JOB_ATMOSPHERIC_TECHNICIAN,JOB_STATION_ENGINEER,JOB_SECURITY_MEDIC,JOB_SECURITY_SERGEANT,JOB_WARDEN,JOB_DETECTIVE,JOB_SECURITY_OFFICER,JOB_HEAD_OF_SECURITY,JOB_CIVIL_DISPUTES_OFFICER,JOB_CORRECTIONS_OFFICER,JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_QUARTERMASTER)
-
+//Job Locked Hats
 /datum/loadout_item/head/imperial_cap
 	name = "Captain's Naval Cap"
 	item_path = /obj/item/clothing/head/imperial/cap
