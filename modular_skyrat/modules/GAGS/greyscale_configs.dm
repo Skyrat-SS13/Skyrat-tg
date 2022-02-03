@@ -53,6 +53,22 @@
 	name = "Mushroom Cap Worn"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/mush_cap/mushcap_worn.json'
 
+
+/*
+*	MASKS
+*/
+
+// CLOWN
+/datum/greyscale_config/clown_mask
+	name = "Colourable Clown Mask"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/clown_mask.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/clown_mask/clown_mask.json'
+
+/datum/greyscale_config/clown_mask/worn
+	name = "Colourable Clown Mask (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/clown_mask/clown_mask_worn.json'
+
+
 /*
 *	NECK
 */
@@ -100,6 +116,7 @@
 /datum/greyscale_config/cloak/shroud/worn
 	name = "Shroud Worn"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/cloak/shroud_worn.json'
+
 
 /*
 *	SUITS
