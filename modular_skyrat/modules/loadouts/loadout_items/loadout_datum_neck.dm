@@ -140,21 +140,21 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Cross collar"
 	item_path = /obj/item/clothing/neck/human_petcollar/locked/cross
 
-/datum/loadout_item/neck/poly_cloak
-	name = "Polychromic Cloak"
-	item_path = /obj/item/clothing/neck/cloak/polychromic
+/datum/loadout_item/neck/gags_cloak
+	name = "Colourable Cloak"
+	item_path = /obj/item/clothing/neck/cloak/colourable
 
-/datum/loadout_item/neck/poly_veil
-	name = "Polychromic Veil"
-	item_path = /obj/item/clothing/neck/cloak/polychromic/veil
+/datum/loadout_item/neck/gags_veil
+	name = "Colourable Veil"
+	item_path = /obj/item/clothing/neck/cloak/colourable/veil
 
-/datum/loadout_item/neck/poly_shroud
-	name = "Polychromic Shroud"
-	item_path = /obj/item/clothing/neck/cloak/polychromic/shroud
+/datum/loadout_item/neck/gags_shroud
+	name = "Colourable Shroud"
+	item_path = /obj/item/clothing/neck/cloak/colourable/shroud
 
-/datum/loadout_item/neck/poly_boat
-	name = "Polychromic Boatcloak"
-	item_path = /obj/item/clothing/neck/cloak/polychromic/boat
+/datum/loadout_item/neck/gags_boat
+	name = "Colourable Boatcloak"
+	item_path = /obj/item/clothing/neck/cloak/colourable/boat
 
 
 /datum/loadout_item/neck/discoproper
@@ -208,26 +208,6 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 //Donator neck items here
 /datum/loadout_item/neck/donator
 	donator_only = TRUE
-
-/datum/loadout_item/neck/donator/rscloak
-	name = "Black Cape"
-	item_path = /obj/item/clothing/neck/cloak/rscloak
-
-/datum/loadout_item/neck/donator/rscloakcross
-	name = "Black Cross Cape"
-	item_path = /obj/item/clothing/neck/cloak/rscloak_cross
-
-/datum/loadout_item/neck/donator/rscloakchampion
-	name = "Champion Cape"
-	item_path = /obj/item/clothing/neck/cloak/rscloak_champion
-
-/datum/loadout_item/neck/donator/rscloak_poly
-	name = "Polychromic Cape"
-	item_path = /obj/item/clothing/neck/cloak/polychromic/rscloak
-
-/datum/loadout_item/neck/donator/rscloakcross_poly
-	name = "Polychromic Cape - Cross"
-	item_path = /obj/item/clothing/neck/cloak/polychromic/rscloak_cross
 
 /datum/loadout_item/neck/donator/mantle/regal
 	name = "Regal Mantle"
