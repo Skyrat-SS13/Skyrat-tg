@@ -16,7 +16,7 @@
 	)
 
 	// This variable is for the emag E-N objective. The obj details are below the next block
-	var/obj/item/card/emag/oneshot/oneshot_emag
+	var/obj/item/card/emag/one_shot/one_shot_emag
 
 
 ////
@@ -53,7 +53,7 @@
 
 ////
 //	Objective item (for emagging E-N)
-/obj/item/card/emag/oneshot
+/obj/item/card/emag/one_shot
 	name = "cryptographic sequencer"
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list(JOB_DETECTIVE, JOB_HEAD_OF_SECURITY)
@@ -63,21 +63,21 @@
 	///Who summoned this?
 	var/caller
 
-/obj/item/card/emag/oneshot/examine(mob/user)
+/obj/item/card/emag/one_shot/examine(mob/user)
 	. = ..()
 	if(user == caller)
 		. += span_notice("It looks cheapo, they did say it gives just one shot...")
 	else
 		. += span_notice("It looks flimsy and identical to the \"Donk Co.\" toy.")
 
-/obj/item/card/emag/oneshot/can_emag(atom/target, mob/user)
+/obj/item/card/emag/one_shot/can_emag(atom/target, mob/user)
 	if(charges <= 0)
 		to_chat(user, span_warning("[src] is completely unresponsive."))
 		return FALSE
 	use_charge(user)
 	return TRUE
 
-/obj/item/card/emag/oneshot/proc/use_charge(mob/user)
+/obj/item/card/emag/one_shot/proc/use_charge(mob/user)
 	to_chat(user, span_warning("[src] beeps softly as its charge runs out."))
 	charges --
 
@@ -87,7 +87,7 @@
 /datum/traitor_objective/kill_pet/generate_ui_buttons(mob/user)
 	var/list/buttons = list()
 	if(istype(target_pet, /mob/living/simple_animal/pet/dog/corgi/borgi)) // Target has to be E-N
-		if(!oneshot_emag)
+		if(!one_shot_emag)
 			buttons += add_ui_button("", "Pressing this will materialize a single-use cryptographic sequencer in your hand, which you can use to shortcircuit E-N.", "bolt", "summon_emag")
 	return buttons
 
@@ -95,10 +95,10 @@
 	. = ..()
 	switch(action)
 		if("summon_emag")
-			if(oneshot_emag)
+			if(one_shot_emag)
 				return
-			oneshot_emag = new(user.drop_location())
-			oneshot_emag.caller = user
-			user.put_in_hands(oneshot_emag)
-			oneshot_emag.balloon_alert(user, "the card materializes in your hand")
+			one_shot_emag = new(user.drop_location())
+			one_shot_emag.caller = user
+			user.put_in_hands(one_shot_emag)
+			one_shot_emag.balloon_alert(user, "the card materializes in your hand")
 			// No penalty for losing this objective item, it is up to the traitor if this is the emag they use or another
