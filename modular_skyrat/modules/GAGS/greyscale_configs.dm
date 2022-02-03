@@ -120,7 +120,9 @@
 // COLLARS
 
 /datum/greyscale_config/collar
+	name = "Collar"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/collar.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/collar/bell.json'
 
 // Bell
 /datum/greyscale_config/collar/bell
