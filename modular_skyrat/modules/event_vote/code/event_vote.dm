@@ -54,7 +54,7 @@
 
 	// Direct chat link is good.
 	for(var/mob/iterating_user in GLOB.player_list)
-		to_chat(iterating_user, span_infoplain(span_purple("<b>EVENT: Vote started for next event! (<a href='?src=[REF(src)];open_panel=1'>Vote!</a>)</b>")))
+		vote_message("Vote started for next event! (<a href='?src=[REF(src)];open_panel=1'>Vote!</a>)")
 		SEND_SOUND(iterating_user, sound('sound/misc/bloop.ogg')) // a little boop.
 
 	for(var/client/iterating_client in GLOB.clients)
@@ -81,7 +81,7 @@
 		message_admins("EVENT: No votes cast, spawning random event!")
 		if(show_votes && !admin_only)
 			for(var/mob/iterating_user in GLOB.player_list)
-				to_chat(iterating_user, span_infoplain(span_purple("<b>EVENT: No votes cast, spawning random event!</b>")))
+				vote_message("No votes cast, spawning random event!")
 		reset()
 		spawnEvent()
 		return
@@ -119,7 +119,7 @@
 		message_admins("EVENT: Vote error, spawning random event!")
 		if(show_votes && !admin_only)
 			for(var/mob/iterating_user in GLOB.player_list)
-				to_chat(iterating_user, span_infoplain(span_purple("<b>EVENT: Vote error, spawning random event!</b>")))
+				vote_message("Vote error, spawning random event!")
 		reset()
 		spawnEvent()
 		return
@@ -127,9 +127,13 @@
 	message_admins("EVENT: Vote ended! Winning Event: [winner.name]")
 	if(show_votes && !admin_only)
 		for(var/mob/iterating_user in GLOB.player_list)
-			to_chat(iterating_user, span_infoplain(span_purple("<b>EVENT: Vote ended! Winning Event: [winner.name]</b>")))
+			vote_message("Vote ended! Winning Event: [winner.name]")
 	winner.runEvent(TRUE)
 	reset()
+
+/// Sends the user a formatted message
+/datum/controller/subsystem/events/proc/vote_message(mob/user, message)
+	to_chat(user, span_infoplain(span_purple("<b>EVENT: [message]</b>"))
 
 /// Proc to reset the vote system to be ready for a new vote.
 /datum/controller/subsystem/events/proc/reset()
@@ -173,7 +177,9 @@
 
 /// Event can_spawn for the event voting system.
 /datum/round_event_control/proc/can_spawn_vote(players_amt)
-	if(earliest_start >= world.time-SSticker.round_start_time)
+	if(!votable)
+		return FALSE
+	if(earliest_start >= world.time - SSticker.round_start_time)
 		return FALSE
 	if(wizardevent != SSevents.wizardmode)
 		return FALSE
@@ -228,13 +234,13 @@
 		return
 	var/list/data = list()
 
-	data["end_time"] = (vote_end_time - world.time) / 10
+	data["end_time"] = (vote_end_time - world.time) / 1 SECONDS
 
 	data["vote_in_progress"] = vote_in_progress
 
 	data["admin_mode"] = check_rights_for(user.client, R_ADMIN)
 
-	data["next_vote_time"] = (scheduled - world.time) / 10
+	data["next_vote_time"] = (scheduled - world.time) / 1 SECONDS
 
 	data["show_votes"] = show_votes
 
@@ -257,7 +263,6 @@
 	for(var/datum/round_event_control/iterating_event in SSevents.control)
 		if(!iterating_event.can_spawn_vote(get_active_player_count(TRUE, TRUE, TRUE)))
 			continue
-
 		var/self_selected = istype(iterating_event, check_vote(user.ckey)) ? TRUE : FALSE
 
 		data["event_list"] += list(list(
@@ -289,7 +294,7 @@
 			end_vote(usr)
 			return
 		if("cancel_vote")
-			if(!check_rights(R_PERMISSIONS))
+			if(!check_rights(R_ADMIN))
 				return
 			cancel_vote(usr)
 			return
