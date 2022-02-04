@@ -5,3 +5,5 @@
 /datum/round_event_control/cme/armageddon
 	votable = FALSE
 
+/datum/round_event_control/anomaly
+	votable = FALSE

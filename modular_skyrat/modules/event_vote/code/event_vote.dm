@@ -106,10 +106,14 @@
 		to_chat(world, "tied vote")
 		winner = pick(tying_results)
 
+	var/total_votes = 0
 	var/list/log_data = list("EVENT VOTE LOG ([world.time])")
 	for(var/datum/round_event_control/control in event_weighted_list)
 		log_data += "Event vote: [control.name] | VOTES: [event_weighted_list[control]]"
+		total_votes += event_weighted_list[control]
 
+	log_data += "TOTAL VOTES: [total_votes]"
+	log_data += "TOTAL PLAYERS: [get_active_player_count(TRUE, TRUE, TRUE)]"
 	log_data += "TYPE: [admin_only ? "admin_only" : "public"]"
 	log_data += "WINNER: [winner.name]"
 
