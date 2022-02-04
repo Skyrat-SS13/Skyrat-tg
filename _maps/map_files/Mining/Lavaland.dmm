@@ -119,6 +119,9 @@
 "aw" = (
 /turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors/explored)
+"ax" = (
+/turf/open/floor/iron/recharge_floor,
+/area/mine/xenoarch/maintenance/east)
 "ay" = (
 /obj/structure/sink/kitchen{
 	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
@@ -196,6 +199,13 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron,
 /area/mine/xenoarch/science/cytology)
+"aP" = (
+/obj/machinery/mech_bay_recharge_port{
+	dir = 8
+	},
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/iron,
+/area/mine/xenoarch/maintenance/east)
 "aQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/directional/south,
@@ -1357,11 +1367,6 @@
 	},
 /turf/open/floor/iron,
 /area/mine/living_quarters)
-"fo" = (
-/obj/machinery/door/airlock/public/glass,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/turf/open/floor/iron,
-/area/mine/xenoarch/living)
 "fp" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -1661,12 +1666,6 @@
 /obj/structure/stone_tile/cracked,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
-"gI" = (
-/obj/effect/turf_decal/stripes{
-	dir = 9
-	},
-/turf/open/floor/iron,
-/area/mine/xenoarch/maintenance/east)
 "gL" = (
 /obj/structure/window/reinforced,
 /obj/structure/chair/sofa/left{
@@ -1826,6 +1825,15 @@
 	},
 /turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
+"hQ" = (
+/obj/machinery/button/door/directional/north{
+	id = "xadorm2";
+	normaldoorcontrol = 1;
+	specialfunctions = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/carpet,
+/area/mine/xenoarch/living)
 "hT" = (
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/plating,
@@ -2047,7 +2055,10 @@
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
-"jh" = (
+"ji" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/mine/xenoarch/maintenance/east)
 "jj" = (
@@ -3262,15 +3273,17 @@
 	},
 /turf/open/floor/iron,
 /area/mine/xenoarch/science/xenoarch)
-"oD" = (
-/obj/machinery/button/door/directional/north{
-	id = "xadorm2";
-	normaldoorcontrol = 1;
-	specialfunctions = 4
+"ox" = (
+/obj/effect/turf_decal/stripes{
+	dir = 1
 	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/turf/open/floor/carpet,
-/area/mine/xenoarch/living)
+/turf/open/floor/iron,
+/area/mine/xenoarch/maintenance/east)
+"oy" = (
+/obj/structure/table,
+/obj/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/mine/xenoarch/maintenance/east)
 "oI" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
@@ -3504,13 +3517,6 @@
 	},
 /turf/open/floor/iron,
 /area/mine/laborcamp/security)
-"pW" = (
-/obj/machinery/light/small/directional/east,
-/obj/machinery/door/window/northleft{
-	dir = 2
-	},
-/turf/open/floor/plating,
-/area/mine/xenoarch/maintenance/east)
 "qg" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/yellow/half{
@@ -3577,12 +3583,6 @@
 "qS" = (
 /turf/closed/wall/r_wall,
 /area/mine/xenoarch/engineering)
-"rc" = (
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/mine/xenoarch/maintenance/east)
 "ri" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -3816,12 +3816,6 @@
 	},
 /turf/open/floor/carpet,
 /area/mine/xenoarch/living)
-"tq" = (
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/mine/xenoarch/maintenance/east)
 "tu" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -3862,9 +3856,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
-"tU" = (
-/turf/open/floor/iron/recharge_floor,
-/area/mine/xenoarch/maintenance/east)
 "tX" = (
 /obj/structure/table,
 /obj/item/clothing/glasses/meson,
@@ -3889,6 +3880,15 @@
 	},
 /turf/open/floor/iron,
 /area/mine/laborcamp)
+"ub" = (
+/obj/machinery/computer/mech_bay_power_console{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/mine/xenoarch/maintenance/east)
 "ud" = (
 /obj/structure/table,
 /obj/structure/microscope,
@@ -4277,6 +4277,19 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/carpet,
 /area/mine/xenoarch/living)
+"wA" = (
+/obj/machinery/door/airlock/public/glass,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/mine/xenoarch/living)
+"wC" = (
+/obj/effect/turf_decal/stripes{
+	dir = 9
+	},
+/turf/open/floor/iron,
+/area/mine/xenoarch/maintenance/east)
 "wE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/reagent_containers/glass/bucket,
@@ -4314,6 +4327,11 @@
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/carpet,
+/area/mine/xenoarch/living)
+"wP" = (
+/obj/machinery/door/airlock/public/glass,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/turf/open/floor/iron,
 /area/mine/xenoarch/living)
 "wQ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4409,6 +4427,10 @@
 	},
 /turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
+"xP" = (
+/obj/machinery/recharge_station,
+/turf/open/floor/iron,
+/area/mine/xenoarch/maintenance/east)
 "xT" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
@@ -4506,6 +4528,13 @@
 /obj/machinery/atmospherics/miner/nitrogen,
 /turf/open/floor/engine/n2,
 /area/mine/xenoarch/engineering)
+"yH" = (
+/obj/structure/table,
+/obj/machinery/door/window/northleft{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/mine/xenoarch/maintenance/east)
 "yL" = (
 /obj/structure/reagent_dispensers/watertank/high,
 /obj/effect/turf_decal/bot,
@@ -4646,15 +4675,6 @@
 /obj/effect/turf_decal/bot/right,
 /turf/open/floor/engine,
 /area/mine/xenoarch/engineering/hfr)
-"zR" = (
-/obj/machinery/computer/mech_bay_power_console{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/mine/xenoarch/maintenance/east)
 "zS" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -4885,6 +4905,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/engineering)
+"BQ" = (
+/obj/structure/table,
+/obj/effect/spawner/random/maintenance/seven,
+/turf/open/floor/plating,
+/area/mine/xenoarch/maintenance/east)
 "BR" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -5069,10 +5094,6 @@
 	},
 /turf/open/floor/iron,
 /area/mine/production)
-"Du" = (
-/obj/machinery/recharge_station,
-/turf/open/floor/iron,
-/area/mine/xenoarch/maintenance/east)
 "Dv" = (
 /obj/structure/sign/poster/official/obey{
 	pixel_y = 32
@@ -5189,13 +5210,6 @@
 	},
 /turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
-"EG" = (
-/obj/machinery/door/airlock/public/glass,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/mine/xenoarch/living)
 "EH" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -5286,11 +5300,6 @@
 /obj/machinery/door/airlock/maintenance_hatch,
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
-"Fo" = (
-/obj/structure/table,
-/obj/effect/spawner/random/maintenance/seven,
-/turf/open/floor/plating,
-/area/mine/xenoarch/maintenance/east)
 "Fq" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/turf_decal/bot,
@@ -6137,6 +6146,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/plating,
 /area/mine/living_quarters)
+"KR" = (
+/obj/machinery/light/small/directional/east,
+/obj/machinery/door/window/northleft{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/mine/xenoarch/maintenance/east)
 "KS" = (
 /obj/machinery/door/airlock/medical/glass{
 	name = "Infirmary"
@@ -6756,11 +6772,6 @@
 	},
 /turf/open/floor/iron,
 /area/mine/laborcamp)
-"Qq" = (
-/obj/structure/table,
-/obj/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/mine/xenoarch/maintenance/east)
 "Qs" = (
 /turf/closed/wall/r_wall,
 /area/mine/xenoarch/science/cytology)
@@ -6855,13 +6866,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green,
 /turf/open/floor/plating,
 /area/mine/xenoarch/engineering)
-"Rh" = (
-/obj/machinery/mech_bay_recharge_port{
-	dir = 8
-	},
-/obj/machinery/light/small/directional/east,
-/turf/open/floor/iron,
-/area/mine/xenoarch/maintenance/east)
 "Rk" = (
 /obj/effect/spawner/random/structure/crate,
 /turf/open/floor/plating,
@@ -7217,6 +7221,9 @@
 	},
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/living)
+"TZ" = (
+/turf/open/floor/iron,
+/area/mine/xenoarch/maintenance/east)
 "Uf" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -7662,13 +7669,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/living)
-"Xd" = (
-/obj/structure/table,
-/obj/machinery/door/window/northleft{
-	dir = 2
-	},
-/turf/open/floor/plating,
-/area/mine/xenoarch/maintenance/east)
 "Xe" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -63457,7 +63457,7 @@ Gt
 FB
 XS
 lY
-oD
+hQ
 zc
 Dy
 ig
@@ -66019,11 +66019,11 @@ ab
 ab
 ab
 ab
-fo
+wP
 NR
 NF
 Al
-EG
+wA
 NR
 NF
 Al
@@ -67309,9 +67309,9 @@ Rk
 nK
 yl
 EH
-gI
-tq
-tq
+wC
+ji
+ji
 Yr
 lY
 lY
@@ -67566,9 +67566,9 @@ nK
 nK
 Yr
 EH
-rc
-tU
-jh
+ox
+ax
+TZ
 Yr
 Ar
 PA
@@ -67823,9 +67823,9 @@ Rk
 nK
 Yr
 EH
-zR
-Rh
-Du
+ub
+aP
+xP
 Yr
 AB
 NF
@@ -68331,9 +68331,9 @@ ab
 ab
 ab
 Yr
-Fo
+BQ
 nK
-Qq
+oy
 nK
 Yr
 EH
@@ -68588,9 +68588,9 @@ ab
 ab
 ab
 Yr
-Fo
+BQ
 nK
-Xd
+yH
 nK
 Yr
 EH
@@ -68845,9 +68845,9 @@ ab
 ab
 ab
 Yr
-Fo
+BQ
 nK
-Qq
+oy
 nK
 yl
 EH
@@ -69102,9 +69102,9 @@ ab
 ab
 ab
 Yr
-Fo
+BQ
 nK
-pW
+KR
 nK
 Yr
 EH
@@ -71694,7 +71694,7 @@ Yg
 nK
 Yr
 OO
-aj
+OO
 aj
 aj
 aj
@@ -71951,7 +71951,7 @@ Wg
 Wg
 nL
 DX
-aj
+OO
 aj
 aj
 aj
@@ -72208,7 +72208,7 @@ Yr
 Yr
 Yr
 OO
-aj
+OO
 aj
 aj
 aj
@@ -72465,7 +72465,7 @@ ab
 ab
 ab
 ab
-aj
+OO
 aj
 aj
 aj
