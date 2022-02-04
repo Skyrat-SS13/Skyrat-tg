@@ -314,7 +314,7 @@
 
 // Panel for admins
 /client/proc/event_panel()
-	set category = "Admin.Fun"
+	set category = "Admin.Events"
 	set name = "Event Panel"
 
 	SSevents.ui_interact(usr)
