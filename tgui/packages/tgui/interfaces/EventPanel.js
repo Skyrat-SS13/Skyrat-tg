@@ -12,6 +12,7 @@ export const EventPanel = (props, context) => {
     vote_in_progress,
     previous_events,
     admin_mode,
+    show_votes,
   } = data;
   return (
     <Window
@@ -21,8 +22,8 @@ export const EventPanel = (props, context) => {
       theme={"admin"}>
       <Window.Content>
         <Stack vertical fill>
-          {admin_mode && (
-            <>
+          <>
+            {!!admin_mode && (
               <Stack.Item>
                 <Section title={vote_in_progress ? "Event Control (" + end_time + " seconds) " : "Event Control"}>
                   <Button
@@ -52,6 +53,8 @@ export const EventPanel = (props, context) => {
                     onClick={() => act('cancel_vote')} />
                 </Section>
               </Stack.Item>
+            )}
+            {(!!show_votes || !!admin_mode) && (
               <Stack.Item>
                 <Section title="Current Votes">
                   {vote_in_progress ? (
@@ -71,8 +74,8 @@ export const EventPanel = (props, context) => {
                   )}
                 </Section>
               </Stack.Item>
-            </>
-          )}
+            )}
+          </>
           <Stack.Item grow>
             <Section scrollable fill grow title="Available Events">
               {vote_in_progress ? (
@@ -99,25 +102,27 @@ export const EventPanel = (props, context) => {
               )}
             </Section>
           </Stack.Item>
-          <Stack.Item>
-            <Section scrollable grow fill height="150px" title="Previous Events">
-              {previous_events.length > 0 ? (
-                <LabeledList>
-                  {previous_events.map(event => (
-                    <LabeledList.Item
-                      label="Event"
-                      key={event}>
-                      {event}
-                    </LabeledList.Item>
-                  ))}
-                </LabeledList>
-              ) : (
-                <NoticeBox>
-                  No previous events.
-                </NoticeBox>
-              )}
-            </Section>
-          </Stack.Item>
+          {!!admin_mode && (
+            <Stack.Item>
+              <Section scrollable grow fill height="150px" title="Previous Events">
+                {previous_events.length > 0 ? (
+                  <LabeledList>
+                    {previous_events.map(event => (
+                      <LabeledList.Item
+                        label="Event"
+                        key={event}>
+                        {event}
+                      </LabeledList.Item>
+                    ))}
+                  </LabeledList>
+                ) : (
+                  <NoticeBox>
+                    No previous events.
+                  </NoticeBox>
+                )}
+              </Section>
+            </Stack.Item>
+          )}
         </Stack>
       </Window.Content>
     </Window>

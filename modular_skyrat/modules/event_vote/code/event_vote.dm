@@ -10,6 +10,8 @@
 	var/list/votes = list()
 	/// Is the current vote admin only?
 	var/admin_only = TRUE
+	/// If we are not admin only, do we show the votes and vote outcome?
+	var/show_votes = FALSE
 	/// Is there currently a vote in progress?
 	var/vote_in_progress = FALSE
 	/// When the vote will end
@@ -39,18 +41,25 @@
 		if(admin_client?.prefs?.toggles & SOUND_ADMINHELP)
 			SEND_SOUND(admin_client.mob, sound('sound/misc/bloop.ogg')) // Admins need a little boop.
 
-	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME)
+	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME, TIMER_STOPPABLE)
 	vote_in_progress = TRUE
 	vote_end_time = world.time + EVENT_VOTE_TIME
 
-/datum/controller/subsystem/events/proc/start_player_vote()
+/datum/controller/subsystem/events/proc/start_player_vote(mob/user)
 	if(vote_in_progress) // We don't want two votes at once.
 		message_admins("EVENT: Attempted to start a vote while one was already in progress.")
 		return
 
+	var/alert_vote = tgui_alert(user, "Do you want to show the vote outcome?", "Vote outcome", list("Yes", "No"))
+
+	if(alert_vote == "Yes")
+		show_votes = TRUE
+	else
+		show_votes = FALSE
+
 	// Direct chat link is good.
 	for(var/mob/iterating_user in GLOB.player_list)
-		to_chat(iterating_user, span_infoplain(span_purple("<b>EVENT: Vote started for next event! (<a href='byond://winset?command=event_vote'>Vote!</a>)</b>")))
+		to_chat(iterating_user, span_infoplain(span_purple("<b>EVENT: Vote started for next event! (<a href='?src=[REF(src)];open_panel=1'>Vote!</a>)</b>")))
 		SEND_SOUND(iterating_user, sound('sound/misc/bloop.ogg')) // a little boop.
 
 	for(var/client/iterating_client in GLOB.clients)
@@ -76,7 +85,7 @@
 	if(!LAZYLEN(votes))
 		if(admin_only)
 			message_admins("EVENT: No votes cast, spawning random event!")
-		else
+		else if(show_votes)
 			for(var/mob/iterating_user in GLOB.player_list)
 				to_chat(iterating_user, span_infoplain(span_purple("<b>EVENT: No votes cast, spawning random event!</b>")))
 		reset()
@@ -98,7 +107,7 @@
 	if(!winner) //If for whatever reason the algorithm breaks, we still want an event.
 		if(admin_only)
 			message_admins("EVENT: Vote error, spawning random event!")
-		else
+		else if(show_votes)
 			for(var/mob/iterating_user in GLOB.player_list)
 				to_chat(iterating_user, span_infoplain(span_purple("<b>EVENT: Vote error, spawning random event!</b>")))
 		reset()
@@ -107,7 +116,7 @@
 
 	if(admin_only)
 		message_admins("EVENT: Vote ended! Winning Event: [winner.name]")
-	else
+	else if(show_votes)
 		for(var/mob/iterating_user in GLOB.player_list)
 			to_chat(iterating_user, span_infoplain(span_purple("<b>EVENT: Vote ended! Winning Event: [winner.name]</b>")))
 	winner.runEvent(TRUE)
@@ -115,9 +124,11 @@
 
 /// Proc to reset the vote system to be ready for a new vote.
 /datum/controller/subsystem/events/proc/reset()
+	remove_action_buttons()
 	vote_in_progress = FALSE
 	vote_end_time = 0
 	admin_only = TRUE
+	show_votes = FALSE
 	votes = list()
 	if(timer_id)
 		deltimer(timer_id)
@@ -180,13 +191,14 @@
 	generated_actions = list()
 
 /datum/controller/subsystem/events/Topic(href, list/href_list)
+	..()
 	if(admin_only && !check_rights(R_ADMIN))
 		return
 	if(href_list["open_panel"])
 		ui_interact(usr)
 
 /datum/controller/subsystem/events/ui_interact(mob/user, datum/tgui/ui)
-	if(!check_rights_for(user.client, R_ADMIN))
+	if(admin_only && !check_rights_for(user.client, R_ADMIN))
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -197,6 +209,9 @@
 	return GLOB.always_state
 
 /datum/controller/subsystem/events/ui_data(mob/user)
+	if(admin_only && !check_rights_for(user.client, R_ADMIN))
+		ui_
+		return
 	var/list/data = list()
 
 	data["end_time"] = (vote_end_time - world.time) / 10
@@ -204,6 +219,8 @@
 	data["vote_in_progress"] = vote_in_progress
 
 	data["admin_mode"] = check_rights_for(user.client, R_ADMIN)
+
+	data["show_votes"] = show_votes
 
 	data["previous_events"] = list()
 
@@ -288,7 +305,7 @@
 	if(SSevents.admin_only && !check_rights(R_ADMIN))
 		to_chat(usr, span_warning("You do not have permission to vote."))
 		return
-	SSvote.ui_interact(usr)
+	SSevents.ui_interact(usr)
 
 /datum/action/vote_event
 	name = "Event Vote!"
@@ -296,7 +313,7 @@
 
 /datum/action/vote_event/Trigger(trigger_flags)
 	if(owner)
-		owner.vote()
+		owner.event_vote()
 		remove_from_client()
 		Remove(owner)
 

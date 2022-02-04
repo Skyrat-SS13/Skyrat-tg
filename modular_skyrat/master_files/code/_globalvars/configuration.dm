@@ -17,3 +17,5 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 
 /datum/config_entry/flag/file_game_log
 	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/events_use_random

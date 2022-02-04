@@ -48,8 +48,12 @@ SUBSYSTEM_DEF(events)
 //checks if we should select a random event yet, and reschedules if necessary
 /datum/controller/subsystem/events/proc/checkEvent()
 	if(scheduled <= world.time)
-		//spawnEvent()
-		start_vote() //SKYRAT EDIT CHANGE
+		//spawnEvent() //SKYRAT EDIT CHANGE
+		if(CONFIG_GET(flag/events_use_random))
+			start_vote()
+		else
+			spawnEvent()
+		// SKYRAT EDIT END
 		reschedule()
 
 //decides which world.time we should select another random event at.
