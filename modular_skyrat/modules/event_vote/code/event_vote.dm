@@ -133,7 +133,7 @@
 
 /// Sends the user a formatted message
 /datum/controller/subsystem/events/proc/vote_message(mob/user, message)
-	to_chat(user, span_infoplain(span_purple("<b>EVENT: [message]</b>"))
+	to_chat(user, span_infoplain(span_purple("<b>EVENT: [message]</b>")))
 
 /// Proc to reset the vote system to be ready for a new vote.
 /datum/controller/subsystem/events/proc/reset()
