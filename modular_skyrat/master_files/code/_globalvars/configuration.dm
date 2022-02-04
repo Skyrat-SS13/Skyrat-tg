@@ -19,3 +19,5 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 	protection = CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/flag/events_use_random
+
+/datum/config_entry/flag/events_use_public

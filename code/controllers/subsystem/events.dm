@@ -52,7 +52,10 @@ SUBSYSTEM_DEF(events)
 		if(CONFIG_GET(flag/events_use_random))
 			spawnEvent()
 		else
-			start_vote()
+			if(CONFIG_GET(flag/events_use_public))
+				start_player_vote(FALSE)
+			else
+				start_vote()
 		// SKYRAT EDIT END
 		reschedule()
 

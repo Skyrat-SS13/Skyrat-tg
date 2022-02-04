@@ -45,17 +45,12 @@
 	vote_in_progress = TRUE
 	vote_end_time = world.time + EVENT_VOTE_TIME
 
-/datum/controller/subsystem/events/proc/start_player_vote(mob/user)
+/datum/controller/subsystem/events/proc/start_player_vote(public_outcome = FALSE)
 	if(vote_in_progress) // We don't want two votes at once.
 		message_admins("EVENT: Attempted to start a vote while one was already in progress.")
 		return
 
-	var/alert_vote = tgui_alert(user, "Do you want to show the vote outcome?", "Vote outcome", list("Yes", "No"))
-
-	if(alert_vote == "Yes")
-		show_votes = TRUE
-	else
-		show_votes = FALSE
+	show_votes = public_outcome
 
 	// Direct chat link is good.
 	for(var/mob/iterating_user in GLOB.player_list)
@@ -297,7 +292,13 @@
 		if("start_player_vote")
 			if(!check_rights(R_PERMISSIONS))
 				return
-			start_player_vote()
+			var/alert_vote = tgui_alert(usr, "Do you want to show the vote outcome?", "Vote outcome", list("Yes", "No"))
+			if(!alert_vote)
+				return
+			var/public_vote = FALSE
+			if(alert_vote == "Yes")
+				public_vote = TRUE
+			start_player_vote(public_vote)
 			return
 		if("reschedule")
 			if(!check_rights(R_PERMISSIONS))
