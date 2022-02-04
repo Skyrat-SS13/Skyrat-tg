@@ -126,6 +126,8 @@
 		ui_interact(usr)
 
 /datum/controller/subsystem/events/ui_interact(mob/user, datum/tgui/ui)
+	if(!check_rights_for(user.client, R_ADMIN))
+		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "EventPanel")
