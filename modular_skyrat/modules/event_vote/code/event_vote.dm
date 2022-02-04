@@ -110,6 +110,7 @@
 	for(var/datum/round_event_control/control in event_weighted_list)
 		log_data += "Event vote: [control.name] | VOTES: [event_weighted_list[control]]"
 
+	log_data += "TYPE: [admin_only ? "admin_only" : "public"]"
 	log_data += "WINNER: [winner.name]"
 
 	log_event_vote(log_data.Join("\n"))
