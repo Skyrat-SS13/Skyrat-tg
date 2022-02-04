@@ -186,7 +186,9 @@
 /turf/open/floor/engine,
 /area/mine/xenoarch/engineering/hfr)
 "aL" = (
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance_hatch{
+	req_one_access_txt = "32;19"
+	},
 /turf/open/floor/plating,
 /area/mine/xenoarch/engineering)
 "aM" = (
@@ -5246,12 +5248,11 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/airlock/engineering/glass{
-	name = "Xenoarch Engineering";
-	req_one_access_txt = "32;19"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance_hatch{
+	req_one_access_txt = "32;19"
 	},
 /turf/open/floor/plating,
 /area/mine/xenoarch/engineering)

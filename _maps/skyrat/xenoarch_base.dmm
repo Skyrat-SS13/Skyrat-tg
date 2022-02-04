@@ -107,7 +107,9 @@
 /turf/open/floor/grass,
 /area/mine/xenoarch/living)
 "bT" = (
-/obj/machinery/vending/cigarette,
+/obj/machinery/vending/cigarette{
+	onstation_override = 1
+	},
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/living)
 "bV" = (
@@ -748,7 +750,9 @@
 /turf/open/floor/carpet,
 /area/mine/xenoarch/living)
 "lz" = (
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance_hatch{
+	req_one_access_txt = "32;19"
+	},
 /turf/open/floor/plating,
 /area/mine/xenoarch/engineering)
 "lG" = (
@@ -931,7 +935,9 @@
 /area/mine/xenoarch/maintenance/east)
 "oa" = (
 /obj/machinery/light_switch/directional/west,
-/obj/machinery/vending/wardrobe/science_wardrobe,
+/obj/machinery/vending/wardrobe/science_wardrobe{
+	onstation_override = 1
+	},
 /obj/effect/turf_decal/tile/purple/anticorner{
 	dir = 8
 	},
@@ -1130,7 +1136,9 @@
 	c_tag = "Xenoarch Engineering  West";
 	network = list("mine","rd")
 	},
-/obj/machinery/vending/wardrobe/engi_wardrobe,
+/obj/machinery/vending/wardrobe/engi_wardrobe{
+	onstation_override = 1
+	},
 /obj/effect/turf_decal/tile/yellow/anticorner{
 	dir = 8
 	},
@@ -1840,12 +1848,11 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/airlock/engineering/glass{
-	name = "Xenoarch Engineering";
-	req_one_access_txt = "32;19"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/door/airlock/maintenance_hatch{
+	req_one_access_txt = "32;19"
 	},
 /turf/open/floor/plating,
 /area/mine/xenoarch/engineering)
@@ -1882,7 +1889,9 @@
 /area/mine/xenoarch/living)
 "Dq" = (
 /obj/machinery/newscaster/directional/west,
-/obj/machinery/vending/engivend,
+/obj/machinery/vending/engivend{
+	onstation_override = 1
+	},
 /obj/effect/turf_decal/tile/yellow/half{
 	dir = 8
 	},
@@ -2121,7 +2130,9 @@
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
 "Hp" = (
-/obj/effect/spawner/random/vending/colavend,
+/obj/machinery/vending/cola{
+	onstation_override = 1
+	},
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/living)
 "Ht" = (
@@ -2235,7 +2246,9 @@
 /area/mine/xenoarch/maintenance/west)
 "Jw" = (
 /obj/machinery/light_switch/directional/east,
-/obj/machinery/vending/clothing,
+/obj/machinery/vending/clothing{
+	onstation_override = 1
+	},
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/living)
 "Jy" = (
@@ -2444,7 +2457,9 @@
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
 "Mo" = (
-/obj/effect/spawner/random/vending/snackvend,
+/obj/machinery/vending/snack{
+	onstation_override = 1
+	},
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/living)
 "MO" = (
@@ -2815,7 +2830,9 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/engineering/hfr)
 "RJ" = (
-/obj/machinery/vending/dorms,
+/obj/machinery/vending/dorms{
+	onstation_override = 1
+	},
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/living)
 "RP" = (
@@ -2866,7 +2883,9 @@
 /area/mine/xenoarch/engineering)
 "SA" = (
 /obj/machinery/light_switch/directional/west,
-/obj/machinery/vending/tool,
+/obj/machinery/vending/tool{
+	onstation_override = 1
+	},
 /obj/effect/turf_decal/tile/yellow/half{
 	dir = 8
 	},
@@ -2892,7 +2911,9 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/maintenance/east)
 "SW" = (
-/obj/machinery/vending/coffee,
+/obj/machinery/vending/coffee{
+	onstation_override = 1
+	},
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/living)
 "SY" = (
