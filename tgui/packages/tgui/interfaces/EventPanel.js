@@ -13,6 +13,7 @@ export const EventPanel = (props, context) => {
     previous_events,
     admin_mode,
     show_votes,
+    next_vote_time,
   } = data;
   return (
     <Window
@@ -25,7 +26,7 @@ export const EventPanel = (props, context) => {
           {admin_mode ? (
             <>
               <Stack.Item>
-                <Section title={vote_in_progress ? "Event Control (" + end_time + " seconds) " : "Event Control"}>
+                <Section title={"Event Control" + " | Next event: " + next_vote_time + " seconds"}>
                   <Button
                     icon="plus"
                     content="Start Vote"
@@ -51,6 +52,11 @@ export const EventPanel = (props, context) => {
                     tooltip="Cancel the current vote and reset the voting system."
                     disabled={!vote_in_progress}
                     onClick={() => act('cancel_vote')} />
+                  <Button
+                    icon="clock"
+                    content="Rescedule Next Event"
+                    tooltip="Rescedule the next timed event."
+                    onClick={() => act('reschedule')} />
                 </Section>
               </Stack.Item>
               <Stack.Item>
@@ -97,7 +103,7 @@ export const EventPanel = (props, context) => {
             )
           )}
           <Stack.Item grow>
-            <Section scrollable fill grow title="Available Events">
+            <Section scrollable fill grow title={vote_in_progress ? "Available Events (" + end_time + " seconds) " : "Available Events"}>
               {vote_in_progress ? (
                 <LabeledList>
                   {event_list.map(event => (

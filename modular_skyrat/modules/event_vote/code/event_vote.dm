@@ -97,11 +97,19 @@
 		event_weighted_list[iterating_event] = LAZYLEN(votes[iterating_event])
 
 	var/highest_weight = 0
+	var/list/tying_results = list() // If we have a tie, pick a random one from the tie.
 	var/datum/round_event_control/winner
 	for(var/iterating_event in event_weighted_list)
 		if(event_weighted_list[iterating_event] > highest_weight)
 			highest_weight = event_weighted_list[iterating_event]
 			winner = iterating_event
+			tying_results = list() // Clear the tying results if there's a higher winner
+		if(event_weighted_list[iterating_event] == highest_weight)
+			tying_results += iterating_event
+
+	if(LAZYLEN(tying_results) > 1) // If there's a tie, we need to pick a random one.
+		to_chat(world, "tied vote")
+		winner = pick(tying_results)
 
 	if(!winner) //If for whatever reason the algorithm breaks, we still want an event.
 		message_admins("EVENT: Vote error, spawning random event!")
@@ -187,6 +195,12 @@
 			iterating_action.Remove(iterating_action.owner)
 	generated_actions = list()
 
+/datum/controller/subsystem/events/proc/reschedule_custom(time)
+	if(!time)
+		scheduled = world.time + rand(frequency_lower, max(frequency_lower,frequency_upper))
+	else
+		scheduled = world.time + time
+
 /datum/controller/subsystem/events/Topic(href, list/href_list)
 	..()
 	if(admin_only && !check_rights(R_ADMIN, FALSE))
@@ -215,6 +229,8 @@
 	data["vote_in_progress"] = vote_in_progress
 
 	data["admin_mode"] = check_rights_for(user.client, R_ADMIN)
+
+	data["next_vote_time"] = (scheduled - world.time) / 10
 
 	data["show_votes"] = show_votes
 
@@ -264,24 +280,36 @@
 			register_vote(usr, selected_event)
 			return
 		if("end_vote")
-			if(!check_rights(R_SERVER))
+			if(!check_rights(R_PERMISSIONS))
 				return
 			end_vote(usr)
 			return
 		if("cancel_vote")
-			if(!check_rights(R_SERVER))
+			if(!check_rights(R_PERMISSIONS))
 				return
 			cancel_vote(usr)
 			return
 		if("start_vote")
-			if(!check_rights(R_SERVER))
+			if(!check_rights(R_PERMISSIONS))
 				return
 			start_vote()
 			return
 		if("start_player_vote")
-			if(!check_rights(R_SERVER))
+			if(!check_rights(R_PERMISSIONS))
 				return
 			start_player_vote()
+			return
+		if("reschedule")
+			if(!check_rights(R_PERMISSIONS))
+				return
+			var/alert = tgui_alert(usr, "Set custom time?", "Custom time", list("Yes", "No"))
+			if(!alert)
+				return
+			var/time
+			if(alert == "Yes")
+				time = tgui_input_number(usr, "Input custom time in seconds", "Custom time", 60, 6000, 1) * 10
+			reschedule_custom(time)
+			message_admins("[key_name_admin(usr)] has rescheduled the event system.")
 			return
 
 // Panel for admins
