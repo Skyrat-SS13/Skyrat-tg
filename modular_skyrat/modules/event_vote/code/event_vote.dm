@@ -207,7 +207,6 @@
 
 /datum/controller/subsystem/events/ui_data(mob/user)
 	if(admin_only && !check_rights_for(user.client, R_ADMIN))
-		ui_
 		return
 	var/list/data = list()
 
