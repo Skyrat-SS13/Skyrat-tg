@@ -206,3 +206,17 @@ SUBSYSTEM_DEF(opposing_force)
 			to_chat(human, examine_block(span_greentext("OPFOR applications are open, if you're interested, sign up in the OOC tab!")))
 			humans_asked++
 	message_admins("OPFOR subsystem has automatically broadcast a request for applications! (Asked: [humans_asked] players)")
+
+/datum/controller/subsystem/opposing_force/proc/give_button_all()
+	for(var/mob/living/carbon/human/player as anything in GLOB.alive_player_list)
+		if(!player.mind)
+			continue
+		if(give_opfor_datum(player.mind))
+			player.mind.opposing_force.give_action_button()
+
+/datum/controller/subsystem/opposing_force/proc/give_opfor_datum(datum/mind/player_mind)
+	if(!player_mind.opposing_force)
+		var/datum/opposing_force/opposing_force = new(player_mind)
+		player_mind.opposing_force = opposing_force
+		SSopposing_force.new_opfor(opposing_force)
+	return TRUE

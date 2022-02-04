@@ -25,8 +25,5 @@
 		to_chat(src, span_warning("You are OPFOR banned!"))
 		return
 
-	if(!mind.opposing_force)
-		var/datum/opposing_force/opposing_force = new(mind)
-		mind.opposing_force = opposing_force
-		SSopposing_force.new_opfor(opposing_force)
+	SSopposing_force.give_opfor_datum(mind)
 	mind.opposing_force.ui_interact(usr)

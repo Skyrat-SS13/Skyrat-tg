@@ -277,6 +277,10 @@
 
 		if(GLOB.curse_of_madness_triggered)
 			give_madness(humanc, GLOB.curse_of_madness_triggered)
+		// SKYRAT EDIT START - OPFOR SYSTEM
+		if(SSopposing_force.give_opfor_datum(humanc?.mind))
+			humanc.mind.opposing_force.give_action_button()
+		// SKYRAT EDIT END
 
 	GLOB.joined_player_list += character.ckey
 
