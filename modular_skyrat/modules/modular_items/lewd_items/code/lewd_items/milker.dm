@@ -110,6 +110,9 @@
 /// Checks if the breasts are present, exposed, lactating, in range, and containing some kind of fluid. Returns a message if not!
 /obj/item/milker/proc/breast_check(mob/living/carbon/being_milked, mob/living/carbon/human/milker, obj/item/organ/genital/breasts/breasts)
 	var/self_suckle = (being_milked == milker) // Grammarize
+	if(!istype(breasts))
+		to_chat(milker, span_warning("[self_suckle ? "You don't have any breasts!" : "[being_milked] doesn't seem to have any breasts!"]"))
+		return FALSE
 	if(!being_milked.client)
 		to_chat(milker, span_warning("[being_milked] is too busy staring off into space to be milked!"))
 		return FALSE
@@ -124,9 +127,6 @@
 		return FALSE
 	if(being_milked.stat != CONSCIOUS)
 		to_chat(milker, span_warning("[self_suckle ? "You are in no condition to be milked!" : "[being_milked] is in no condition to be milked!"]"))
-		return FALSE
-	if(!istype(breasts))
-		to_chat(milker, span_warning("[self_suckle ? "You don't have any breasts!" : "[being_milked] doesn't seem to have any breasts!"]"))
 		return FALSE
 	if(!breasts.is_exposed())
 		to_chat(milker, span_warning("[self_suckle ? "You can't get to your breasts!" : "[being_milked]'s breasts aren't accessible!"]"))
