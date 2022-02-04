@@ -152,7 +152,7 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 
 /datum/loadout_item/shoes/clothwrap
 	name = "Colourable Cloth Wraps"
-	item_path = /obj/item/clothing/shoes/wraps/poly
+	item_path = /obj/item/clothing/shoes/wraps/colourable
 
 /datum/loadout_item/shoes/high_heels
 	name = "High Heels"
