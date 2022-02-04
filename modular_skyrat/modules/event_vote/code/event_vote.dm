@@ -234,13 +234,13 @@
 		return
 	var/list/data = list()
 
-	data["end_time"] = (vote_end_time - world.time) / 1 SECONDS
+	data["end_time"] = (vote_end_time - world.time) / 10
 
 	data["vote_in_progress"] = vote_in_progress
 
 	data["admin_mode"] = check_rights_for(user.client, R_ADMIN)
 
-	data["next_vote_time"] = (scheduled - world.time) / 1 SECONDS
+	data["next_vote_time"] = (scheduled - world.time) / 10
 
 	data["show_votes"] = show_votes
 
