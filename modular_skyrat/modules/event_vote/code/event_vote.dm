@@ -40,6 +40,8 @@
 
 /// Cancels a vote outright, and does not execute the event.
 /datum/controller/subsystem/events/proc/cancel_vote(mob/user)
+	if(!vote_in_progress)
+		return
 	message_admins("EVENT: [key_name_admin(user)] cancelled the current vote.")
 	deltimer(timer_id)
 	timer_id = null
@@ -53,7 +55,9 @@
 		vote_in_progress = FALSE
 		vote_end_time = 0
 		votes = list()
-		timer_id = null
+		if(timer_id)
+			deltimer(timer_id)
+			timer_id = null
 		message_admins("EVENT: No votes cast, spawning random event!")
 		spawnEvent()
 		return
@@ -75,7 +79,9 @@
 		vote_in_progress = FALSE
 		vote_end_time = 0
 		votes = list()
-		timer_id = null
+		if(timer_id)
+			deltimer(timer_id)
+			timer_id = null
 		spawnEvent()
 		return
 
@@ -86,7 +92,9 @@
 	vote_in_progress = FALSE
 	vote_end_time = 0
 	votes = list()
-	timer_id = null
+	if(timer_id)
+		deltimer(timer_id)
+		timer_id = null
 
 /// Simply registeres someones vote.
 /datum/controller/subsystem/events/proc/register_vote(mob/user, datum/round_event_control/event)
