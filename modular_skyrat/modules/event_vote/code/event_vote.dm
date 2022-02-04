@@ -331,6 +331,7 @@
 		return
 	SSevents.ui_interact(usr)
 
+// Action button for vote, works like the vote system!
 /datum/action/vote_event
 	name = "Event Vote!"
 	button_icon_state = "vote"
