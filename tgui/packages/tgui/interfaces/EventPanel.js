@@ -10,6 +10,7 @@ export const EventPanel = (props, context) => {
     votes = [],
     end_time,
     vote_in_progress,
+    previous_events,
   } = data;
   return (
     <Window
@@ -67,7 +68,6 @@ export const EventPanel = (props, context) => {
                       key={event.name}
                       buttons={(
                         <Button
-                          disabled={vote_registered}
                           color={event.self_vote ? "good" : "blue"}
                           icon="vote-yea"
                           content="Vote"
@@ -80,6 +80,25 @@ export const EventPanel = (props, context) => {
               ) : (
                 <NoticeBox>
                   No vote in progress.
+                </NoticeBox>
+              )}
+            </Section>
+          </Stack.Item>
+          <Stack.Item>
+            <Section scrollable grow fill height="150px" title="Previous Events">
+              {previous_events.length > 0 ? (
+                <LabeledList>
+                  {previous_events.map(event => (
+                    <LabeledList.Item
+                      label="Event"
+                      key={event}>
+                      {event}
+                    </LabeledList.Item>
+                  ))}
+                </LabeledList>
+              ) : (
+                <NoticeBox>
+                  No previous events.
                 </NoticeBox>
               )}
             </Section>

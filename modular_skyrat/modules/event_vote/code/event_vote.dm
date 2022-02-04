@@ -6,8 +6,9 @@
 #define EVENT_VOTE_TIME 1 MINUTES
 
 /datum/controller/subsystem/events
-	/// List of current votes
+	/// List of current events and votes
 	var/list/votes = list()
+
 	/// Is there currently a vote in progress?
 	var/vote_in_progress = FALSE
 	/// When the vote will end
@@ -17,9 +18,13 @@
 
 /// Starts a vote.
 /datum/controller/subsystem/events/proc/start_vote()
+	if(!LAZYLEN(GLOB.admins)) // If there are no admins online, just revert to the normal system.
+		spawnEvent()
+		return
 	if(vote_in_progress) // We don't want two votes at once.
 		message_admins("EVENT: Attempted to start a vote while one was already in progress.")
 		return
+
 	// Direct chat link is good.
 	message_admins("EVENT: Vote started for next event! (<a href='?src=[REF(src)];[HrefToken()];open_panel=1'>Vote!</a>)")
 
@@ -48,24 +53,29 @@
 		vote_in_progress = FALSE
 		vote_end_time = 0
 		votes = list()
+		timer_id = null
 		message_admins("EVENT: No votes cast, spawning random event!")
 		spawnEvent()
 		return
 
 	var/list/event_weighted_list = list() //We convert the list of votes into a weighted list.
 
-	for(var/datum/round_event_control/iterating_event in votes)
+	for(var/iterating_event in votes)
 		event_weighted_list[iterating_event] = LAZYLEN(votes[iterating_event])
 
 	var/highest_weight = 0
 	var/datum/round_event_control/winner
-	for(var/datum/round_event_control/iterating_event in event_weighted_list)
+	for(var/iterating_event in event_weighted_list)
 		if(event_weighted_list[iterating_event] > highest_weight)
 			highest_weight = event_weighted_list[iterating_event]
 			winner = iterating_event
 
 	if(!winner) //If for whatever reason the algorithm breaks, we still want an event.
 		message_admins("EVENT: Vote error, spawning random event!")
+		vote_in_progress = FALSE
+		vote_end_time = 0
+		votes = list()
+		timer_id = null
 		spawnEvent()
 		return
 
@@ -76,23 +86,34 @@
 	vote_in_progress = FALSE
 	vote_end_time = 0
 	votes = list()
+	timer_id = null
 
-/// Simply registeres someone's vote.
+/// Simply registeres someones vote.
 /datum/controller/subsystem/events/proc/register_vote(mob/user, datum/round_event_control/event)
 	if(!(event in votes))
 		votes[event] = list()
+
 	var/true_ckey = ckey(user.ckey)
-	for(var/datum/round_event_control/iterating_event in votes)
+
+	if(true_ckey in votes[event])
+		return
+
+	for(var/iterating_event in votes) // We first check if the user has already voted for something
 		if(true_ckey in votes[iterating_event])
-			votes[iterating_event] -= true_ckey
-	votes[event] += true_ckey
+			votes[iterating_event] -= true_ckey // If they have, we remove that vote
+
+	votes[event] += true_ckey // Then we add the new vote
+
+	for(var/iterating_event in votes) // We have to check if the votes have nothing in them AFTER we have added the clients vote
+		if(LAZYLEN(votes[iterating_event]) <= 0)
+			votes -= iterating_event
 
 /// Checks what someone has voted for, if anything.
 /datum/controller/subsystem/events/proc/check_vote(ckey)
 	var/true_ckey = ckey(ckey)
 	for(var/datum/round_event_control/iterating_event in votes)
 		if(true_ckey in votes[iterating_event])
-			return iterating_event
+			return iterating_event.type
 	return FALSE
 
 /// Event can_spawn for the event voting system.
@@ -143,6 +164,11 @@
 
 	data["vote_in_progress"] = vote_in_progress
 
+	data["previous_events"] = list()
+
+	for(var/datum/round_event_control/iterating_event in previously_run)
+		data["previous_events"] += iterating_event.name
+
 	data["votes"] = list()
 
 	for(var/datum/round_event_control/iterating_event in votes)
@@ -157,13 +183,13 @@
 	for(var/datum/round_event_control/iterating_event in SSevents.control)
 		if(!iterating_event.can_spawn_vote(get_active_player_count(TRUE, TRUE, TRUE)))
 			continue
-		var/self_selected = FALSE
-		if(iterating_event == check_vote(user.ckey))
-			self_selected = TRUE
+
+		var/self_selected = istype(iterating_event, check_vote(user.ckey)) ? TRUE : FALSE
+
 		data["event_list"] += list(list(
 			"name" = iterating_event.name,
 			"ref" = REF(iterating_event),
-			"self_selected" = self_selected
+			"self_vote" = self_selected
 		))
 
 	return data
@@ -178,7 +204,7 @@
 
 	switch(action)
 		if("register_vote")
-			var/datum/round_event_control/selected_event = locate(params["event_ref"]) in SSevents.control
+			var/selected_event = locate(params["event_ref"]) in SSevents.control
 			if(!selected_event)
 				return
 			register_vote(usr, selected_event)
