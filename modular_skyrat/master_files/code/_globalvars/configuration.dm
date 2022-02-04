@@ -20,6 +20,6 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 
 /datum/config_entry/flag/events_use_random
 
-/datum/config_entry/flag/events_use_public
+/datum/config_entry/flag/events_public_voting
 
 /datum/config_entry/flag/log_event_votes

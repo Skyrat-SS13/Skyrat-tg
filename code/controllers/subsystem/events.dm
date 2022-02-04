@@ -52,7 +52,7 @@ SUBSYSTEM_DEF(events)
 		if(CONFIG_GET(flag/events_use_random))
 			spawnEvent()
 		else
-			if(CONFIG_GET(flag/events_use_public))
+			if(CONFIG_GET(flag/events_public_voting))
 				start_player_vote(FALSE)
 			else
 				start_vote()
