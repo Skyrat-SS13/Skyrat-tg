@@ -5,9 +5,14 @@
 /// How long does the vote last?
 #define EVENT_VOTE_TIME 1 MINUTES
 
+/// Public vote amount
+#define EVENT_PUBLIC_VOTE_AMOUNT 5
+
 /datum/controller/subsystem/events
 	/// List of current events and votes
 	var/list/votes = list()
+	/// A list of events that can be chosen from
+	var/list/possible_events = list()
 	/// Is the current vote admin only?
 	var/admin_only = TRUE
 	/// If we are not admin only, do we show the votes and vote outcome?
@@ -29,6 +34,8 @@
 	if(vote_in_progress) // We don't want two votes at once.
 		message_admins("EVENT: Attempted to start a vote while one was already in progress.")
 		return
+
+	possible_events = populate_event_list()
 
 	// Direct chat link is good.
 	message_admins("EVENT: Vote started for next event! (<a href='?src=[REF(src)];[HrefToken()];open_panel=1'>Vote!</a>)")
@@ -52,6 +59,10 @@
 
 	show_votes = public_outcome
 
+	admin_only = FALSE
+
+	possible_events = populate_event_list(TRUE)
+
 	// Direct chat link is good.
 	for(var/mob/iterating_user in GLOB.player_list)
 		vote_message(iterating_user, "Vote started for next event! (<a href='?src=[REF(src)];open_panel=1'>Vote!</a>)")
@@ -65,8 +76,29 @@
 
 	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME)
 	vote_in_progress = TRUE
-	admin_only = FALSE
 	vote_end_time = world.time + EVENT_VOTE_TIME
+
+/// Builds the list of possible events depending on what type of vote it is.
+/datum/controller/subsystem/events/proc/populate_event_list(public_vote = FALSE)
+	var/list/built_event_list = list()
+	if(public_vote) // If it's for the players, we only want 5 possible votes.
+		var/list/event_weighted_list = list()
+		for(var/datum/round_event_control/iterating_event in SSevents.control)
+			if(!iterating_event.can_spawn_vote(get_active_player_count(TRUE, TRUE, TRUE)))
+				continue
+			event_weighted_list[iterating_event] = iterating_event.weight
+		for(var/i in 1 to EVENT_PUBLIC_VOTE_AMOUNT)
+			if(!LAZYLEN(event_weighted_list)) // No more events to choose from break the loop.
+				break
+			var/picked_event = pick_weight(event_weighted_list)
+			event_weighted_list -= picked_event
+			built_event_list += picked_event
+	else //Admins get it all
+		for(var/datum/round_event_control/iterating_event in SSevents.control)
+			if(!iterating_event.can_spawn_vote(get_active_player_count(TRUE, TRUE, TRUE)))
+				continue
+			built_event_list += iterating_event
+	return built_event_list
 
 /// Cancels a vote outright, and does not execute the event.
 /datum/controller/subsystem/events/proc/cancel_vote(mob/user)
@@ -147,6 +179,7 @@
 	admin_only = TRUE
 	show_votes = FALSE
 	votes = list()
+	possible_events = list()
 	if(timer_id)
 		deltimer(timer_id)
 		timer_id = null
@@ -264,9 +297,8 @@
 
 	// Build a list of runnable events.
 	data["event_list"] = list()
-	for(var/datum/round_event_control/iterating_event in SSevents.control)
-		if(!iterating_event.can_spawn_vote(get_active_player_count(TRUE, TRUE, TRUE)))
-			continue
+
+	for(var/datum/round_event_control/iterating_event in possible_events)
 		var/self_selected = istype(iterating_event, check_vote(user.ckey)) ? TRUE : FALSE
 
 		data["event_list"] += list(list(
