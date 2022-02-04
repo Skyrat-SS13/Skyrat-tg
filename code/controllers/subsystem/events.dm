@@ -89,7 +89,6 @@ SUBSYSTEM_DEF(events)
 
 		if(sum_of_weights <= 0) //we've hit our goal
 			if(TriggerEvent(E))
-				previously_run += E //SKYRAT EDIT ADDITION
 				return
 
 /datum/controller/subsystem/events/proc/TriggerEvent(datum/round_event_control/E)
