@@ -22,8 +22,8 @@ export const EventPanel = (props, context) => {
       theme={"admin"}>
       <Window.Content>
         <Stack vertical fill>
-          <>
-            {!!admin_mode && (
+          {admin_mode ? (
+            <>
               <Stack.Item>
                 <Section title={vote_in_progress ? "Event Control (" + end_time + " seconds) " : "Event Control"}>
                   <Button
@@ -53,8 +53,6 @@ export const EventPanel = (props, context) => {
                     onClick={() => act('cancel_vote')} />
                 </Section>
               </Stack.Item>
-            )}
-            {(!!show_votes || !!admin_mode) && (
               <Stack.Item>
                 <Section title="Current Votes">
                   {vote_in_progress ? (
@@ -74,8 +72,30 @@ export const EventPanel = (props, context) => {
                   )}
                 </Section>
               </Stack.Item>
-            )}
-          </>
+            </>
+          ) : (
+            !!show_votes && (
+              <Stack.Item>
+                <Section title="Current Votes">
+                  {vote_in_progress ? (
+                    <LabeledList>
+                      {votes.map(vote => (
+                        <LabeledList.Item
+                          key={vote.id}
+                          label={vote.name}>
+                          {vote.votes}
+                        </LabeledList.Item>
+                      ))}
+                    </LabeledList>
+                  ) : (
+                    <NoticeBox>
+                      No vote in progress.
+                    </NoticeBox>
+                  )}
+                </Section>
+              </Stack.Item>
+            )
+          )}
           <Stack.Item grow>
             <Section scrollable fill grow title="Available Events">
               {vote_in_progress ? (

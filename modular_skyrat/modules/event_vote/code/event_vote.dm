@@ -83,9 +83,8 @@
 /// Ends the vote there and then, and executes the event.
 /datum/controller/subsystem/events/proc/end_vote()
 	if(!LAZYLEN(votes))
-		if(admin_only)
-			message_admins("EVENT: No votes cast, spawning random event!")
-		else if(show_votes)
+		message_admins("EVENT: No votes cast, spawning random event!")
+		if(show_votes && !admin_only)
 			for(var/mob/iterating_user in GLOB.player_list)
 				to_chat(iterating_user, span_infoplain(span_purple("<b>EVENT: No votes cast, spawning random event!</b>")))
 		reset()
@@ -105,18 +104,16 @@
 			winner = iterating_event
 
 	if(!winner) //If for whatever reason the algorithm breaks, we still want an event.
-		if(admin_only)
-			message_admins("EVENT: Vote error, spawning random event!")
-		else if(show_votes)
+		message_admins("EVENT: Vote error, spawning random event!")
+		if(show_votes && !admin_only)
 			for(var/mob/iterating_user in GLOB.player_list)
 				to_chat(iterating_user, span_infoplain(span_purple("<b>EVENT: Vote error, spawning random event!</b>")))
 		reset()
 		spawnEvent()
 		return
 
-	if(admin_only)
-		message_admins("EVENT: Vote ended! Winning Event: [winner.name]")
-	else if(show_votes)
+	message_admins("EVENT: Vote ended! Winning Event: [winner.name]")
+	if(show_votes && !admin_only)
 		for(var/mob/iterating_user in GLOB.player_list)
 			to_chat(iterating_user, span_infoplain(span_purple("<b>EVENT: Vote ended! Winning Event: [winner.name]</b>")))
 	winner.runEvent(TRUE)
@@ -192,7 +189,7 @@
 
 /datum/controller/subsystem/events/Topic(href, list/href_list)
 	..()
-	if(admin_only && !check_rights(R_ADMIN))
+	if(admin_only && !check_rights(R_ADMIN, FALSE))
 		return
 	if(href_list["open_panel"])
 		ui_interact(usr)
@@ -257,7 +254,7 @@
 	if(.)
 		return
 
-	if(admin_only && !check_rights(R_ADMIN))
+	if(admin_only && !check_rights(R_ADMIN, FALSE))
 		return
 
 	switch(action)
@@ -302,7 +299,7 @@
 	if(!SSevents.vote_in_progress)
 		to_chat(usr, span_warning("No vote in progress."))
 		return
-	if(SSevents.admin_only && !check_rights(R_ADMIN))
+	if(SSevents.admin_only && !check_rights(R_ADMIN, FALSE))
 		to_chat(usr, span_warning("You do not have permission to vote."))
 		return
 	SSevents.ui_interact(usr)
