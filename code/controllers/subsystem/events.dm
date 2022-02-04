@@ -50,9 +50,9 @@ SUBSYSTEM_DEF(events)
 	if(scheduled <= world.time)
 		//spawnEvent() //SKYRAT EDIT CHANGE
 		if(CONFIG_GET(flag/events_use_random))
-			start_vote()
-		else
 			spawnEvent()
+		else
+			start_vote()
 		// SKYRAT EDIT END
 		reschedule()
 
