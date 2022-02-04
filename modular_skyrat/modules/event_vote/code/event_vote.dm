@@ -16,6 +16,8 @@
 	var/vote_end_time = 0
 	/// Our current timer ID.
 	var/timer_id
+	/// A reference to our generated actions, for deletion later.
+	var/generated_actions = list()
 
 /// Starts a vote.
 /datum/controller/subsystem/events/proc/start_vote()
@@ -30,6 +32,10 @@
 	message_admins("EVENT: Vote started for next event! (<a href='?src=[REF(src)];[HrefToken()];open_panel=1'>Vote!</a>)")
 
 	for(var/client/admin_client in GLOB.admins)
+		var/datum/action/vote_event/event_action = new
+		admin_client.player_details.player_actions += event_action
+		event_action.Grant(admin_client.mob)
+		generated_actions += event_action
 		if(admin_client?.prefs?.toggles & SOUND_ADMINHELP)
 			SEND_SOUND(admin_client.mob, sound('sound/misc/bloop.ogg')) // Admins need a little boop.
 
@@ -44,8 +50,14 @@
 
 	// Direct chat link is good.
 	for(var/mob/iterating_user in GLOB.player_list)
-		to_chat(iterating_user, span_infoplain(span_purple("<b>EVENT: Vote started for next event! (<a href='?src=[REF(src)];open_panel=1'>Vote!</a>)</b>")))
+		to_chat(iterating_user, span_infoplain(span_purple("<b>EVENT: Vote started for next event! (<a href='byond://winset?command=event_vote'>Vote!</a>)</b>")))
 		SEND_SOUND(iterating_user, sound('sound/misc/bloop.ogg')) // a little boop.
+
+	for(var/client/iterating_client in GLOB.clients)
+		var/datum/action/vote_event/event_action = new
+		iterating_client.player_details.player_actions += event_action
+		event_action.Grant(iterating_client.mob)
+		generated_actions += event_action
 
 	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME)
 	vote_in_progress = TRUE
@@ -160,10 +172,14 @@
 
 	return TRUE
 
+/datum/controller/subsystem/events/proc/remove_action_buttons()
+	for(var/datum/action/vote_event/iterating_action in generated_actions)
+		if(!QDELETED(iterating_action))
+			iterating_action.remove_from_client()
+			iterating_action.Remove(iterating_action.owner)
+	generated_actions = list()
+
 /datum/controller/subsystem/events/Topic(href, list/href_list)
-	. = ..()
-	if (.)
-		return
 	if(admin_only && !check_rights(R_ADMIN))
 		return
 	if(href_list["open_panel"])
@@ -255,8 +271,44 @@
 			start_player_vote()
 			return
 
+// Panel for admins
 /client/proc/event_panel()
 	set category = "Admin.Fun"
 	set name = "Event Panel"
 
 	SSevents.ui_interact(usr)
+
+// Panel for everyone
+/mob/verb/event_vote()
+	set category = "OOC"
+	set name = "Event Vote"
+	if(!SSevents.vote_in_progress)
+		to_chat(usr, span_warning("No vote in progress."))
+		return
+	if(SSevents.admin_only && !check_rights(R_ADMIN))
+		to_chat(usr, span_warning("You do not have permission to vote."))
+		return
+	SSvote.ui_interact(usr)
+
+/datum/action/vote_event
+	name = "Event Vote!"
+	button_icon_state = "vote"
+
+/datum/action/vote_event/Trigger(trigger_flags)
+	if(owner)
+		owner.vote()
+		remove_from_client()
+		Remove(owner)
+
+/datum/action/vote_event/IsAvailable()
+	return TRUE
+
+/datum/action/vote_event/proc/remove_from_client()
+	if(!owner)
+		return
+	if(owner.client)
+		owner.client.player_details.player_actions -= src
+	else if(owner.ckey)
+		var/datum/player_details/player_deets = GLOB.player_details[owner.ckey]
+		if(player_deets)
+			player_deets.player_actions -= src
