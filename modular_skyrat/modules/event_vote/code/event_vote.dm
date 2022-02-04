@@ -54,7 +54,7 @@
 
 	// Direct chat link is good.
 	for(var/mob/iterating_user in GLOB.player_list)
-		vote_message("Vote started for next event! (<a href='?src=[REF(src)];open_panel=1'>Vote!</a>)")
+		vote_message(iterating_user, "Vote started for next event! (<a href='?src=[REF(src)];open_panel=1'>Vote!</a>)")
 		SEND_SOUND(iterating_user, sound('sound/misc/bloop.ogg')) // a little boop.
 
 	for(var/client/iterating_client in GLOB.clients)
@@ -81,7 +81,7 @@
 		message_admins("EVENT: No votes cast, spawning random event!")
 		if(show_votes && !admin_only)
 			for(var/mob/iterating_user in GLOB.player_list)
-				vote_message("No votes cast, spawning random event!")
+				vote_message(iterating_user, "No votes cast, spawning random event!")
 		reset()
 		spawnEvent()
 		return
@@ -123,7 +123,7 @@
 		message_admins("EVENT: Vote error, spawning random event!")
 		if(show_votes && !admin_only)
 			for(var/mob/iterating_user in GLOB.player_list)
-				vote_message("Vote error, spawning random event!")
+				vote_message(iterating_user, "Vote error, spawning random event!")
 		reset()
 		spawnEvent()
 		return
@@ -131,7 +131,7 @@
 	message_admins("EVENT: Vote ended! Winning Event: [winner.name]")
 	if(show_votes && !admin_only)
 		for(var/mob/iterating_user in GLOB.player_list)
-			vote_message("Vote ended! Winning Event: [winner.name]")
+			vote_message(iterating_user, "Vote ended! Winning Event: [winner.name]")
 	winner.runEvent(TRUE)
 	reset()
 
