@@ -27,7 +27,7 @@
 		/obj/item/clothing/under/costume/deckers/alt = 5,
 		/obj/item/clothing/under/costume/bathrobe = 5,
 		/obj/item/clothing/under/misc/poly_shirt = 5,
-		/obj/item/clothing/under/misc/poly_kilt = 5,
+		/obj/item/clothing/under/misc/colourable_kilt = 5,
 		/obj/item/clothing/under/misc/poly_tanktop = 5,
 		/obj/item/clothing/under/misc/poly_tanktop/female = 5,
 		/obj/item/clothing/under/misc/polyjumpsuit = 5,

@@ -150,6 +150,17 @@
 	name = "Branded Hoodie Worn"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/hoodie/hoodie_branded_worn.json'
 
+// CARDIGAN
+
+/datum/greyscale_config/cardigan
+	name = "Cardigan"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/cardigan/cardigan.json'
+
+/datum/greyscale_config/cardigan/worn
+	name = "Cardigan (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/cardigan/cardigan_worn.json'
+
 // JUMPSUITS
 
 /datum/greyscale_config/jumpsuit_worn/digi
@@ -168,6 +179,16 @@
 	name = "Worn Prison Jumpsuit - Vox"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_vox.dmi'
 
+// KILT
+
+/datum/greyscale_config/kilt
+	name = "Kilt"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/kilt.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/kilt/kilt.json'
+
+/datum/greyscale_config/kilt/worn
+	name = "Kilt (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/kilt/kilt_worn.json'
 
 /*
 *	SHOES
