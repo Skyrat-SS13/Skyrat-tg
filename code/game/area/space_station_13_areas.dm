@@ -692,6 +692,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/service/kitchen/abandoned
 	name = "\improper Abandoned Kitchen"
+	icon_state = "abandoned_kitchen"
 
 /area/service/bar
 	name = "\improper Bar"
@@ -1153,12 +1154,17 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Security Office"
 	icon_state = "security"
 
+/area/security/lockers
+	name = "\improper Security Locker Room"
+	icon_state = "securitylockerroom"
+
 /area/security/brig
 	name = "\improper Brig"
 	icon_state = "brig"
 
 /area/security/brig/upper
 	name = "\improper Brig Overlook"
+	icon_state = "upperbrig"
 
 /area/security/courtroom
 	name = "\improper Courtroom"

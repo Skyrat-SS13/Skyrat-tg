@@ -507,6 +507,14 @@
 	crate_name = "garden crate"
 	crate_type = /obj/structure/closet/crate/hydroponics
 
+/datum/supply_pack/service/MODsuit_cargo
+	name = "Cargo Loader MODsuit Crate"
+	desc = "Contains a single quad-armed MODsuit, built to standard cargo specifications."
+	cost = CARGO_CRATE_VALUE * 13
+	access_view = ACCESS_CARGO
+	contains = list(/obj/item/mod/control/pre_equipped/loader)
+	crate_name = "cargo MODsuit crate"
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Materials & Sheets //////////////////////////////
 //////////////////////////////////////////////////////////////////////////////

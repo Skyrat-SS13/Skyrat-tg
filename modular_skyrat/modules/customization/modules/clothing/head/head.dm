@@ -385,6 +385,7 @@
 	icon_state = "sheriff_hat_alt"
 	mutant_variants = NONE
 	desc = "A dark brown hat with a smell of whiskey. There's a small set of antlers embroidered on the inside."
+	flags_inv = SHOWSPRITEEARS
 
 /obj/item/clothing/head/cowboyhat/deputy
 	name = "deputy hat"

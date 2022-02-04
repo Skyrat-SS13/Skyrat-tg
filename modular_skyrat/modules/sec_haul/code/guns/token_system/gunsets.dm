@@ -33,13 +33,13 @@
 
 /obj/item/storage/box/gunset/AltClick(mob/user)
 	. = ..()
-	opened = TRUE
+	opened = !opened
 	update_icon()
 
 
 /obj/item/storage/box/gunset/attack_self(mob/user)
 	. = ..()
-	opened = TRUE
+	opened = !opened
 	update_icon()
 
 ///////////////////
