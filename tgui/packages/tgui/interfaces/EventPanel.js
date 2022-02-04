@@ -59,7 +59,7 @@ export const EventPanel = (props, context) => {
                 </Section>
               </Stack.Item>
               <Stack.Item>
-                <Section title="Current Votes">
+                <Section scrollable grow fill height="150px" title="Current Votes">
                   {vote_in_progress ? (
                     <LabeledList>
                       {votes.map(vote => (
@@ -81,7 +81,7 @@ export const EventPanel = (props, context) => {
           ) : (
             !!show_votes && (
               <Stack.Item>
-                <Section title="Current Votes">
+                <Section scrollable grow fill height="150px" title="Current Votes">
                   {vote_in_progress ? (
                     <LabeledList>
                       {votes.map(vote => (

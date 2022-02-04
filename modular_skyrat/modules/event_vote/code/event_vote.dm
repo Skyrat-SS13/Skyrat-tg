@@ -102,6 +102,13 @@
 		if(event_weighted_list[iterating_event] == highest_weight)
 			tying_results += iterating_event
 
+	var/list/log_data = list("EVENT LOG")
+	for(var/datum/round_event_control/control in event_weighted_list)
+		log_data += "Event: [control.name] | VOTES: [event_weighted_list[control]]"
+
+	log_game()
+
+
 	if(LAZYLEN(tying_results) > 1) // If there's a tie, we need to pick a random one.
 		to_chat(world, "tied vote")
 		winner = pick(tying_results)
@@ -355,3 +362,7 @@
 		var/datum/player_details/player_deets = GLOB.player_details[owner.ckey]
 		if(player_deets)
 			player_deets.player_actions -= src
+
+/proc/log_event_vote(text)
+	if (CONFIG_GET(flag/log_event_votes))
+		WRITE_LOG(GLOB.event_vote_log, "EVENT: [text]")
