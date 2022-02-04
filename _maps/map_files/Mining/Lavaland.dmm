@@ -1751,6 +1751,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/science/cytology)
+"ha" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/maintenance/three,
+/turf/open/floor/plating,
+/area/mine/xenoarch/maintenance/west)
 "hb" = (
 /turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
@@ -3207,9 +3212,8 @@
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/east)
 "nL" = (
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/plating,
+/turf/closed/wall,
 /area/mine/xenoarch/maintenance/east)
 "nO" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -3572,6 +3576,12 @@
 /obj/effect/spawner/random/structure/crate,
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
+"qJ" = (
+/obj/machinery/conveyor_switch/oneway{
+	id = "xa_dispose"
+	},
+/turf/open/floor/plating,
+/area/mine/xenoarch/maintenance/east)
 "qO" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -3824,6 +3834,13 @@
 	},
 /turf/open/floor/carpet,
 /area/mine/xenoarch/living)
+"tp" = (
+/obj/machinery/conveyor/auto{
+	dir = 4;
+	id = "xa_dispose"
+	},
+/turf/open/floor/plating,
+/area/mine/xenoarch/maintenance/east)
 "tu" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -3832,6 +3849,9 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/mine/xenoarch/science/cytology)
+"tz" = (
+/turf/closed/wall/r_wall,
+/area/mine/xenoarch/maintenance/east)
 "tG" = (
 /obj/machinery/bounty_board/directional/west,
 /obj/machinery/light/directional/west,
@@ -4563,6 +4583,10 @@
 	},
 /turf/open/floor/engine/n2o,
 /area/mine/xenoarch/engineering)
+"yS" = (
+/obj/structure/chair/office,
+/turf/open/floor/iron,
+/area/mine/xenoarch/science/xenoarch)
 "yX" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/maintenance/two,
@@ -4818,6 +4842,13 @@
 	},
 /turf/open/floor/iron,
 /area/mine/laborcamp/security)
+"Bc" = (
+/obj/machinery/button/door/directional/south{
+	id = "xadispose"
+	},
+/obj/effect/spawner/random/structure/crate,
+/turf/open/floor/plating,
+/area/mine/xenoarch/maintenance/east)
 "Be" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/brown{
@@ -5033,10 +5064,11 @@
 /turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "CW" = (
-/obj/structure/closet/xenoarch,
 /obj/effect/turf_decal/tile/purple/half{
 	dir = 1
 	},
+/obj/structure/table,
+/obj/machinery/xenoarch/recoverer,
 /turf/open/floor/iron,
 /area/mine/xenoarch/science/xenoarch)
 "CY" = (
@@ -5147,13 +5179,12 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "DX" = (
-/obj/structure/lattice/catwalk,
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
 /obj/structure/disposaloutlet,
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/open/floor/plating,
+/area/mine/xenoarch/maintenance/east)
 "DY" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -5341,6 +5372,14 @@
 	},
 /turf/open/floor/iron,
 /area/mine/eva)
+"Fy" = (
+/obj/machinery/conveyor/inverted{
+	dir = 9;
+	id = "xa_dispose";
+	processing_flags = 1
+	},
+/turf/open/floor/plating,
+/area/mine/xenoarch/maintenance/east)
 "FB" = (
 /obj/effect/spawner/random/structure/grille,
 /turf/open/floor/plating,
@@ -5648,7 +5687,7 @@
 /area/mine/xenoarch/engineering/hfr)
 "Hl" = (
 /obj/structure/chair/office{
-	dir = 4
+	dir = 1
 	},
 /turf/open/floor/iron,
 /area/mine/xenoarch/science/xenoarch)
@@ -5798,12 +5837,11 @@
 /turf/open/floor/engine,
 /area/mine/xenoarch/engineering/hfr)
 "Iu" = (
-/obj/structure/table,
-/obj/machinery/xenoarch/recoverer,
 /obj/item/radio/intercom/directional/east,
 /obj/effect/turf_decal/tile/purple/half{
 	dir = 4
 	},
+/obj/structure/closet/xenoarch,
 /turf/open/floor/iron,
 /area/mine/xenoarch/science/xenoarch)
 "Iv" = (
@@ -6021,8 +6059,9 @@
 /turf/open/floor/iron,
 /area/mine/eva)
 "Kg" = (
-/obj/structure/closet/xenoarch,
 /obj/effect/turf_decal/tile/purple/half,
+/obj/structure/table,
+/obj/machinery/xenoarch/recoverer,
 /turf/open/floor/iron,
 /area/mine/xenoarch/science/xenoarch)
 "Kh" = (
@@ -6349,6 +6388,17 @@
 	},
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
+"MM" = (
+/obj/structure/fans/tiny,
+/obj/machinery/conveyor/auto{
+	dir = 4
+	},
+/obj/machinery/door/poddoor/shutters{
+	id = "xadispose";
+	name = "Xenoarchaeology Disposal"
+	},
+/turf/open/floor/plating,
+/area/mine/xenoarch/maintenance/east)
 "MR" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -7152,6 +7202,11 @@
 	},
 /turf/open/floor/iron,
 /area/mine/laborcamp)
+"Tw" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/maintenance/eight,
+/turf/open/floor/plating,
+/area/mine/xenoarch/maintenance/west)
 "TB" = (
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -7475,11 +7530,10 @@
 /turf/open/floor/engine/o2,
 /area/mine/xenoarch/engineering)
 "VN" = (
-/obj/structure/table,
-/obj/machinery/xenoarch/recoverer,
 /obj/effect/turf_decal/tile/purple/half{
 	dir = 4
 	},
+/obj/structure/closet/xenoarch,
 /turf/open/floor/iron,
 /area/mine/xenoarch/science/xenoarch)
 "VP" = (
@@ -7697,6 +7751,12 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/grass,
 /area/mine/xenoarch/living)
+"Xg" = (
+/obj/machinery/conveyor/auto{
+	id = "xa_dispose"
+	},
+/turf/open/floor/plating,
+/area/mine/xenoarch/maintenance/east)
 "Xi" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
@@ -61673,8 +61733,8 @@ ab
 ab
 ab
 Gt
-RG
-RG
+Tw
+ha
 qF
 fA
 Gt
@@ -62446,7 +62506,7 @@ ab
 Gt
 fA
 RD
-RG
+Tw
 bG
 Gt
 Zx
@@ -71197,7 +71257,7 @@ Yg
 GC
 Hl
 KZ
-Hl
+yS
 ZE
 Yg
 nK
@@ -71460,7 +71520,7 @@ Yg
 nK
 Yr
 Yr
-Yr
+yl
 Yr
 qS
 gb
@@ -71716,10 +71776,10 @@ Yg
 Yg
 nK
 Yr
-OO
-OO
-aj
-aj
+qJ
+nK
+Bc
+tz
 aj
 aj
 aj
@@ -71974,9 +72034,9 @@ Wg
 Wg
 nL
 DX
-OO
-aj
-aj
+Xg
+Fy
+tz
 aj
 aj
 aj
@@ -72230,10 +72290,10 @@ Yr
 Yr
 Yr
 Yr
-OO
-OO
-aj
-aj
+Rk
+nK
+tp
+tz
 aj
 aj
 aj
@@ -72486,11 +72546,11 @@ ab
 ab
 ab
 ab
-ab
-ab
-OO
-aj
-aj
+Yr
+Yr
+Yr
+MM
+tz
 aj
 aj
 aj
