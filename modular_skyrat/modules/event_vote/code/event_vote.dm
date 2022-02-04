@@ -8,7 +8,8 @@
 /datum/controller/subsystem/events
 	/// List of current events and votes
 	var/list/votes = list()
-
+	/// Is the current vote admin only?
+	var/admin_only = TRUE
 	/// Is there currently a vote in progress?
 	var/vote_in_progress = FALSE
 	/// When the vote will end
@@ -35,6 +36,25 @@
 	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME)
 
 	vote_in_progress = TRUE
+
+	vote_end_time = world.time + EVENT_VOTE_TIME
+
+/datum/controller/subsystem/events/proc/start_player_vote()
+	if(vote_in_progress) // We don't want two votes at once.
+		message_admins("EVENT: Attempted to start a vote while one was already in progress.")
+		return
+
+	// Direct chat link is good.
+	for(var/mob/iterating_user in GLOB.player_list)
+		if(is_station_level(iterating_user.z))
+			to_chat(iterating_user, span_infoplain(span_purple("EVENT: Vote started for next event! (<a href='?src=[REF(src)];[HrefToken()];open_panel=1'>Vote!</a>)")))
+			SEND_SOUND(iterating_user, sound('sound/misc/bloop.ogg')) // a little boop.
+
+	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME)
+
+	vote_in_progress = TRUE
+
+	admin_only = FALSE
 
 	vote_end_time = world.time + EVENT_VOTE_TIME
 
@@ -149,7 +169,7 @@
 	. = ..()
 	if (.)
 		return
-	if(!check_rights(R_ADMIN))
+	if(admin_only && !check_rights(R_ADMIN))
 		return
 	if(href_list["open_panel"])
 		ui_interact(usr)
@@ -207,7 +227,7 @@
 	if(.)
 		return
 
-	if(!check_rights(R_ADMIN))
+	if(admin_only && !check_rights(R_ADMIN))
 		return
 
 	switch(action)
@@ -231,6 +251,11 @@
 			if(!check_rights(R_SERVER))
 				return
 			start_vote()
+			return
+		if("start_player_vote")
+			if(!check_rights(R_SERVER))
+				return
+			start_vote(TRUE)
 			return
 
 /client/proc/event_panel()
