@@ -22,4 +22,4 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 
 /datum/config_entry/flag/events_use_public
 
-/datum/config_entry/flag/log_event_vote
+/datum/config_entry/flag/log_event_votes
