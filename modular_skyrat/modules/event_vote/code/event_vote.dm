@@ -102,16 +102,17 @@
 		if(event_weighted_list[iterating_event] == highest_weight)
 			tying_results += iterating_event
 
-	var/list/log_data = list("EVENT LOG")
-	for(var/datum/round_event_control/control in event_weighted_list)
-		log_data += "Event: [control.name] | VOTES: [event_weighted_list[control]]"
-
-	log_game()
-
-
 	if(LAZYLEN(tying_results) > 1) // If there's a tie, we need to pick a random one.
 		to_chat(world, "tied vote")
 		winner = pick(tying_results)
+
+	var/list/log_data = list("EVENT VOTE LOG ([world.time])")
+	for(var/datum/round_event_control/control in event_weighted_list)
+		log_data += "Event vote: [control.name] | VOTES: [event_weighted_list[control]]"
+
+	log_data += "WINNER: [winner.name]"
+
+	log_event_vote(log_data.Join("\n"))
 
 	if(!winner) //If for whatever reason the algorithm breaks, we still want an event.
 		message_admins("EVENT: Vote error, spawning random event!")
