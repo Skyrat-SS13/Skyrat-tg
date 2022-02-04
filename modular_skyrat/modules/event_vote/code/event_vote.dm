@@ -44,7 +44,7 @@
 
 	// Direct chat link is good.
 	for(var/mob/iterating_user in GLOB.player_list)
-		to_chat(iterating_user, span_infoplain(span_purple("EVENT: Vote started for next event! (<a href='?src=[REF(src)];[HrefToken()];open_panel=1'>Vote!</a>)")))
+		to_chat(iterating_user, span_infoplain(span_purple("<b>EVENT: Vote started for next event! (<a href='?src=[REF(src)];open_panel=1'>Vote!</a>)</b>")))
 		SEND_SOUND(iterating_user, sound('sound/misc/bloop.ogg')) // a little boop.
 
 	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME)
@@ -66,7 +66,7 @@
 			message_admins("EVENT: No votes cast, spawning random event!")
 		else
 			for(var/mob/iterating_user in GLOB.player_list)
-				to_chat(iterating_user, span_infoplain(span_purple("EVENT: No votes cast, spawning random event!")))
+				to_chat(iterating_user, span_infoplain(span_purple("<b>EVENT: No votes cast, spawning random event!</b>")))
 		reset()
 		spawnEvent()
 		return
@@ -88,7 +88,7 @@
 			message_admins("EVENT: Vote error, spawning random event!")
 		else
 			for(var/mob/iterating_user in GLOB.player_list)
-				to_chat(iterating_user, span_infoplain(span_purple("EVENT: Vote error, spawning random event!")))
+				to_chat(iterating_user, span_infoplain(span_purple("<b>EVENT: Vote error, spawning random event!</b>")))
 		reset()
 		spawnEvent()
 		return
@@ -97,7 +97,7 @@
 		message_admins("EVENT: Vote ended! Winning Event: [winner.name]")
 	else
 		for(var/mob/iterating_user in GLOB.player_list)
-			to_chat(iterating_user, span_infoplain(span_purple("EVENT: Vote ended! Winning Event: [winner.name]")))
+			to_chat(iterating_user, span_infoplain(span_purple("<b>EVENT: Vote ended! Winning Event: [winner.name]</b>")))
 	winner.runEvent(TRUE)
 	reset()
 
