@@ -1,9 +1,8 @@
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import { Section, Button, NoticeBox, LabeledList, Stack } from '../components';
 import { Window } from '../layouts';
 
 export const EventPanel = (props, context) => {
-  const [tab, setTab] = useLocalState(context, 'tab', 1);
   const { act, data } = useBackend(context);
   const {
     event_list = [],
