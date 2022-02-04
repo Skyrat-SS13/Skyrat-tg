@@ -46,7 +46,7 @@
 		/obj/item/clothing/head/cowboyhat/sheriff/alt = 5,
 		/obj/item/clothing/head/cowboyhat/deputy = 5,
 		/obj/item/clothing/shoes/sports = 5,
-		/obj/item/clothing/shoes/wraps/poly = 5,
+		/obj/item/clothing/shoes/wraps/colourable = 5,
 		/obj/item/clothing/shoes/jungleboots = 5,
 		/obj/item/clothing/shoes/jackboots/thigh = 5,
 		/obj/item/clothing/shoes/jackboots/knee = 5,

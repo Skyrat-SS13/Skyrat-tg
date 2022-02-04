@@ -190,3 +190,14 @@
 /datum/greyscale_config/sneakers_orange_worn/vox
 	name = "Worn Orange Sneakers - Vox"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/sneakers_vox.dmi'
+
+// WRAPS
+
+/datum/greyscale_config/wraps
+	name = "Cloth Wraps"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/wraps/wraps.json'
+
+/datum/greyscale_config/wraps/worn
+	name = "Cloth Wraps (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/wraps/wraps_worn.json'
