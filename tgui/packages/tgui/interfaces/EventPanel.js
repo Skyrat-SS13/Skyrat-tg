@@ -11,6 +11,7 @@ export const EventPanel = (props, context) => {
     end_time,
     vote_in_progress,
     previous_events,
+    admin_mode,
   } = data;
   return (
     <Window
@@ -20,44 +21,58 @@ export const EventPanel = (props, context) => {
       theme={"admin"}>
       <Window.Content>
         <Stack vertical fill>
-          <Stack.Item>
-            <Section title={vote_in_progress ? "Event Control (" + end_time + " seconds) " : "Event Control"}>
-              <Button
-                icon="plus"
-                content="Start Vote"
-                disabled={vote_in_progress}
-                onClick={() => act('start_vote')} />
-              <Button
-                icon="stopwatch"
-                content="End Vote"
-                disabled={!vote_in_progress}
-                onClick={() => act('end_vote')} />
-              <Button
-                icon="ban"
-                content="Cancel Vote"
-                disabled={!vote_in_progress}
-                onClick={() => act('cancel_vote')} />
-            </Section>
-          </Stack.Item>
-          <Stack.Item>
-            <Section title="Current Votes">
-              {vote_in_progress ? (
-                <LabeledList>
-                  {votes.map(vote => (
-                    <LabeledList.Item
-                      key={vote.id}
-                      label={vote.name}>
-                      {vote.votes}
-                    </LabeledList.Item>
-                  ))}
-                </LabeledList>
-              ) : (
-                <NoticeBox>
-                  No vote in progress.
-                </NoticeBox>
-              )}
-            </Section>
-          </Stack.Item>
+          {admin_mode && (
+            <>
+              <Stack.Item>
+                <Section title={vote_in_progress ? "Event Control (" + end_time + " seconds) " : "Event Control"}>
+                  <Button
+                    icon="plus"
+                    content="Start Vote"
+                    tooltip="Start a vote for the next event."
+                    disabled={vote_in_progress}
+                    onClick={() => act('start_vote')} />
+                  <Button
+                    icon="user-plus"
+                    content="Start Public Vote"
+                    tooltip="This will start a vote that will be publically visible."
+                    color="average"
+                    disabled={vote_in_progress}
+                    onClick={() => act('start_player_vote')} />
+                  <Button
+                    icon="stopwatch"
+                    content="End Vote"
+                    tooltip="End the current vote and execute the winning event."
+                    disabled={!vote_in_progress}
+                    onClick={() => act('end_vote')} />
+                  <Button
+                    icon="ban"
+                    content="Cancel Vote"
+                    tooltip="Cancel the current vote and reset the voting system."
+                    disabled={!vote_in_progress}
+                    onClick={() => act('cancel_vote')} />
+                </Section>
+              </Stack.Item>
+              <Stack.Item>
+                <Section title="Current Votes">
+                  {vote_in_progress ? (
+                    <LabeledList>
+                      {votes.map(vote => (
+                        <LabeledList.Item
+                          key={vote.id}
+                          label={vote.name}>
+                          {vote.votes}
+                        </LabeledList.Item>
+                      ))}
+                    </LabeledList>
+                  ) : (
+                    <NoticeBox>
+                      No vote in progress.
+                    </NoticeBox>
+                  )}
+                </Section>
+              </Stack.Item>
+            </>
+          )}
           <Stack.Item grow>
             <Section scrollable fill grow title="Available Events">
               {vote_in_progress ? (

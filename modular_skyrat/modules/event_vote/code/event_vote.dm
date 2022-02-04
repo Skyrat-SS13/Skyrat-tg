@@ -34,9 +34,7 @@
 			SEND_SOUND(admin_client.mob, sound('sound/misc/bloop.ogg')) // Admins need a little boop.
 
 	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME)
-
 	vote_in_progress = TRUE
-
 	vote_end_time = world.time + EVENT_VOTE_TIME
 
 /datum/controller/subsystem/events/proc/start_player_vote()
@@ -45,17 +43,13 @@
 		return
 
 	// Direct chat link is good.
-	for(var/mob/iterating_user in GLOB.player_list)
-		if(is_station_level(iterating_user.z))
-			to_chat(iterating_user, span_infoplain(span_purple("EVENT: Vote started for next event! (<a href='?src=[REF(src)];[HrefToken()];open_panel=1'>Vote!</a>)")))
-			SEND_SOUND(iterating_user, sound('sound/misc/bloop.ogg')) // a little boop.
+	for(var/mob/iterating_user in GLOB.joined_player_list)
+		to_chat(iterating_user, span_infoplain(span_purple("EVENT: Vote started for next event! (<a href='?src=[REF(src)];[HrefToken()];open_panel=1'>Vote!</a>)")))
+		SEND_SOUND(iterating_user, sound('sound/misc/bloop.ogg')) // a little boop.
 
 	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME)
-
 	vote_in_progress = TRUE
-
 	admin_only = FALSE
-
 	vote_end_time = world.time + EVENT_VOTE_TIME
 
 /// Cancels a vote outright, and does not execute the event.
@@ -63,22 +57,17 @@
 	if(!vote_in_progress)
 		return
 	message_admins("EVENT: [key_name_admin(user)] cancelled the current vote.")
-	deltimer(timer_id)
-	timer_id = null
-	vote_in_progress = FALSE
-	vote_end_time = 0
-	votes = list()
+	reset()
 
 /// Ends the vote there and then, and executes the event.
 /datum/controller/subsystem/events/proc/end_vote()
 	if(!LAZYLEN(votes))
-		vote_in_progress = FALSE
-		vote_end_time = 0
-		votes = list()
-		if(timer_id)
-			deltimer(timer_id)
-			timer_id = null
-		message_admins("EVENT: No votes cast, spawning random event!")
+		if(admin_only)
+			message_admins("EVENT: No votes cast, spawning random event!")
+		else
+			for(var/mob/iterating_user in GLOB.joined_player_list)
+				to_chat(iterating_user, span_infoplain(span_purple("EVENT: No votes cast, spawning random event!")))
+		reset()
 		spawnEvent()
 		return
 
@@ -95,22 +84,28 @@
 			winner = iterating_event
 
 	if(!winner) //If for whatever reason the algorithm breaks, we still want an event.
-		message_admins("EVENT: Vote error, spawning random event!")
-		vote_in_progress = FALSE
-		vote_end_time = 0
-		votes = list()
-		if(timer_id)
-			deltimer(timer_id)
-			timer_id = null
+		if(admin_only)
+			message_admins("EVENT: Vote error, spawning random event!")
+		else
+			for(var/mob/iterating_user in GLOB.joined_player_list)
+				to_chat(iterating_user, span_infoplain(span_purple("EVENT: Vote error, spawning random event!")))
+		reset()
 		spawnEvent()
 		return
 
-	message_admins("EVENT: Vote ended! Winning Event: [winner.name]")
-
+	if(admin_only)
+		message_admins("EVENT: Vote ended! Winning Event: [winner.name]")
+	else
+		for(var/mob/iterating_user in GLOB.joined_player_list)
+			to_chat(iterating_user, span_infoplain(span_purple("EVENT: Vote ended! Winning Event: [winner.name]")))
 	winner.runEvent(TRUE)
+	reset()
 
+/// Proc to reset the vote system to be ready for a new vote.
+/datum/controller/subsystem/events/proc/reset()
 	vote_in_progress = FALSE
 	vote_end_time = 0
+	admin_only = TRUE
 	votes = list()
 	if(timer_id)
 		deltimer(timer_id)
@@ -192,6 +187,8 @@
 
 	data["vote_in_progress"] = vote_in_progress
 
+	data["admin_mode"] = check_rights_for(user.client, R_ADMIN)
+
 	data["previous_events"] = list()
 
 	for(var/datum/round_event_control/iterating_event in previously_run)
@@ -255,7 +252,7 @@
 		if("start_player_vote")
 			if(!check_rights(R_SERVER))
 				return
-			start_vote(TRUE)
+			start_player_vote()
 			return
 
 /client/proc/event_panel()
