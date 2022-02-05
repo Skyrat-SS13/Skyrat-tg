@@ -204,5 +204,4 @@ SUBSYSTEM_DEF(opposing_force)
 	if(!player_mind.opposing_force)
 		var/datum/opposing_force/opposing_force = new(player_mind)
 		player_mind.opposing_force = opposing_force
-		SSopposing_force.new_opfor(opposing_force)
 	return TRUE

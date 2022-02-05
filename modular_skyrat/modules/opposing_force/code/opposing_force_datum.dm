@@ -869,6 +869,8 @@
 	if(!.)
 		return
 
+	if(!(owner.mind.opposing_force in SSopposing_force.unsubmitted_applications) && !(owner.mind.opposing_force in SSopposing_force.submitted_applications) && !(owner.mind.opposing_force in SSopposing_force.approved_applications))
+		SSopposing_force.new_opfor(owner.mind.opposing_force)
 	owner.mind.opposing_force.ui_interact(owner)
 
 /datum/action/opfor/IsAvailable()
