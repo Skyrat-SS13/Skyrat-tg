@@ -36,7 +36,7 @@
 //SKYRAT EDIT REMOVAL END
 /datum/supply_pack/goody/Survivalknives_single
 	name = "Survival Knife Single-Pack"
-	desc = "Contains one sharpened survival knive. Guaranteed to fit snugly inside any Nanotrasen-standard boot. Weapons permit not included."
+	desc = "Contains one sharpened survival knive. Guaranteed to fit snugly inside any Nanotrasen-standard boot. Weapons permit not included." //SKYRAT EDIT - CONTRABAND CLARIFICATION
 	cost = PAYCHECK_HARD * 1.75
 	contains = list(/obj/item/knife/combat/survival)
 //SKYRAT EDIT REMOVAL BEGIN
@@ -89,7 +89,7 @@
 
 /datum/supply_pack/goody/gripper_single
 	name = "Gripper Gloves Single-Pack"
-	desc = "A spare pair of gripper gloves. Perfect for when the security vendor is empty (or when you're not actually a security officer). Contraband permit not included."
+	desc = "A spare pair of gripper gloves. Perfect for when the security vendor is empty (or when you're not actually a security officer). Contraband permit not included." //SKYRAT EDIT - CONTRABAND CLARIFICATION
 	cost = PAYCHECK_HARD * 6
 	contains = list(/obj/item/clothing/gloves/tackler)
 
