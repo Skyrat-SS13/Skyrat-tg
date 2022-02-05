@@ -140,9 +140,6 @@
 /datum/round_event_control/grid_check
 	chaos_level = EVENT_CHAOS_LOW
 
-/datum/round_event_control/heart_attack
-	chaos_level = EVENT_CHAOS_LOW
-
 /datum/round_event_control/ion_storm
 	chaos_level = EVENT_CHAOS_LOW
 
@@ -159,9 +156,6 @@
 	chaos_level = EVENT_CHAOS_LOW
 
 /datum/round_event_control/electrical_storm
-	chaos_level = EVENT_CHAOS_LOW
-
-/datum/round_event_control/brain_trauma
 	chaos_level = EVENT_CHAOS_LOW
 
 /datum/round_event_control/bureaucratic_error
