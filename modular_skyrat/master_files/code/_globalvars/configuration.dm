@@ -23,3 +23,5 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 /datum/config_entry/flag/events_public_voting
 
 /datum/config_entry/flag/log_event_votes
+
+/datum/config_entry/flag/low_chaos_event_system

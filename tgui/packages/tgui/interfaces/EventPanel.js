@@ -14,19 +14,26 @@ export const EventPanel = (props, context) => {
     admin_mode,
     show_votes,
     next_vote_time,
+    next_low_chaos_time,
   } = data;
   return (
     <Window
       title={"Event Panel"}
       width={500}
-      height={840}
+      height={900}
       theme={"admin"}>
       <Window.Content>
         <Stack vertical fill>
           {admin_mode ? (
             <>
               <Stack.Item>
-                <Section title={"Event Control" + " | Next event: " + toFixed(next_vote_time) + " seconds"}>
+                <Section title={"Event Control"}>
+                  <NoticeBox color="blue">
+                    {"Next vote in " + toFixed(next_vote_time, 0) + " seconds."}
+                  </NoticeBox>
+                  <NoticeBox color="blue">
+                    {"Low chaos event in " + toFixed(next_low_chaos_time, 0) + " seconds."}
+                  </NoticeBox >
                   <Button
                     icon="plus"
                     content="Start Admin Vote"
@@ -67,9 +74,14 @@ export const EventPanel = (props, context) => {
                     onClick={() => act('cancel_vote')} />
                   <Button
                     icon="clock"
-                    content="Rescedule Next Event"
-                    tooltip="Rescedule the next timed event."
+                    content="Rescedule Next Vote"
+                    tooltip="Rescedule the next timed vote."
                     onClick={() => act('reschedule')} />
+                  <Button
+                    icon="clock"
+                    content="Rescedule Next Low Chaos Event"
+                    tooltip="Rescedule the next timed LOW CHAOS event."
+                    onClick={() => act('reschedule_low_chaos')} />
                 </Section>
               </Stack.Item>
               <Stack.Item>

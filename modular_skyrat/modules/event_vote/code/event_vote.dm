@@ -37,8 +37,11 @@
 	var/low_chaos_timer_upper = LOW_CHAOS_TIMER_UPPER
 
 /// Reschedules our low-chaos event timer
-/datum/controller/subsystem/events/proc/reschedule_low_chaos()
-	scheduled_low_chaos = world.time + rand(low_chaos_timer_lower, low_chaos_timer_upper)
+/datum/controller/subsystem/events/proc/reschedule_low_chaos(time)
+	if(time)
+		scheduled_low_chaos = world.time + time
+	else
+		scheduled_low_chaos = world.time + rand(low_chaos_timer_lower, low_chaos_timer_upper)
 
 /// Triggers a random low chaos event
 /datum/controller/subsystem/events/proc/triger_low_chaos_event()
@@ -370,6 +373,8 @@
 
 	data["next_vote_time"] = (scheduled - world.time) / 10
 
+	data["next_low_chaos_time"] = (scheduled_low_chaos - world.time) / 10
+
 	data["show_votes"] = show_votes
 
 	data["previous_events"] = list()
@@ -416,7 +421,7 @@
 			register_vote(usr, selected_event)
 			return
 		if("end_vote")
-			if(!check_rights(R_PERMISSIONS))
+			if(!check_rights(R_ADMIN))
 				return
 			end_vote(usr)
 			return
@@ -426,17 +431,17 @@
 			cancel_vote(usr)
 			return
 		if("start_vote_admin")
-			if(!check_rights(R_PERMISSIONS))
+			if(!check_rights(R_ADMIN))
 				return
 			start_vote_admin()
 			return
 		if("start_vote_admin_chaos")
-			if(!check_rights(R_PERMISSIONS))
+			if(!check_rights(R_ADMIN))
 				return
 			start_vote_admin_chaos()
 			return
 		if("start_player_vote")
-			if(!check_rights(R_PERMISSIONS))
+			if(!check_rights(R_ADMIN))
 				return
 			var/alert_vote = tgui_alert(usr, "Do you want to show the vote outcome?", "Vote outcome", list("Yes", "No"))
 			if(!alert_vote)
@@ -447,7 +452,7 @@
 			start_player_vote(public_vote)
 			return
 		if("start_player_vote_chaos")
-			if(!check_rights(R_PERMISSIONS))
+			if(!check_rights(R_ADMIN))
 				return
 			var/alert_vote = tgui_alert(usr, "Do you want to show the vote outcome?", "Vote outcome", list("Yes", "No"))
 			if(!alert_vote)
@@ -458,7 +463,7 @@
 			start_player_vote_chaos(public_vote)
 			return
 		if("reschedule")
-			if(!check_rights(R_PERMISSIONS))
+			if(!check_rights(R_ADMIN))
 				return
 			var/alert = tgui_alert(usr, "Set custom time?", "Custom time", list("Yes", "No"))
 			if(!alert)
@@ -469,6 +474,19 @@
 			reschedule_custom(time)
 			message_admins("[key_name_admin(usr)] has rescheduled the event system.")
 			return
+		if("reschedule_low_chaos")
+			var/alert = tgui_alert(usr, "Set custom time?", "Custom time", list("Yes", "No"))
+			if(!alert)
+				return
+			var/time
+			if(alert == "Yes")
+				time = tgui_input_number(usr, "Input custom time in seconds", "Custom time", 60, 6000, 1) * 10
+			if(!check_rights(R_ADMIN))
+				return
+			reschedule_low_chaos(time)
+			message_admins("[key_name_admin(usr)] has rescheduled the LOW CHAOS event system.")
+			return
+
 
 // Panel for admins
 /client/proc/event_panel()
