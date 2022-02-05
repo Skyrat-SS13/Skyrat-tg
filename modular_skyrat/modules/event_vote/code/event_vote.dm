@@ -118,9 +118,9 @@
 		vote_message(iterating_user, "Vote started for next event! (<a href='?src=[REF(src)];open_panel=1'>Vote!</a>)")
 		SEND_SOUND(iterating_user, sound('sound/misc/bloop.ogg')) // a little boop.
 		if(iterating_user.client)
-			var/client/user_client
+			var/client/user_client = iterating_user.client
 			var/datum/action/vote_event/event_action = new
-			user_client.player_details.player_actions += event_action
+			user_client?.player_details?.player_actions += event_action
 			event_action.Grant(iterating_user)
 			generated_actions += event_action
 
@@ -148,9 +148,9 @@
 		vote_message(iterating_user, "Vote started for next event! (<a href='?src=[REF(src)];open_panel=1'>Vote!</a>)")
 		SEND_SOUND(iterating_user, sound('sound/misc/bloop.ogg')) // a little boop.
 		if(iterating_user.client)
-			var/client/user_client
+			var/client/user_client = iterating_user.client
 			var/datum/action/vote_event/event_action = new
-			user_client.player_details.player_actions += event_action
+			user_client?.player_details?.player_actions += event_action
 			event_action.Grant(iterating_user)
 			generated_actions += event_action
 

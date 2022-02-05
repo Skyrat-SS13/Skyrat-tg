@@ -68,7 +68,7 @@
 
 /datum/round_event_control/preset/random
 	name = "I'm Feeling Lucky"
-	selectable_chaos_level = EVENT_CHAOS_RANDOM
+	selectable_chaos_level = null // Disabled
 
 /datum/round_event_control/preset/random/runEvent(random)
 	log_game("Preset Event triggering: [name] ([typepath])")
