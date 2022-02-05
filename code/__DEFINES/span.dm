@@ -37,6 +37,7 @@
 #define span_danger(str) ("<span class='danger'>" + str + "</span>")
 #define span_deadsay(str) ("<span class='deadsay'>" + str + "</span>")
 #define span_deconversion_message(str) ("<span class='deconversion_message'>" + str + "</span>")
+#define span_doyourjobidiot(str) ("<span class='doyourjobidiot'>" + str + "</span>")
 #define span_drone(str) ("<span class='drone'>" + str + "</span>")
 #define span_engradio(str) ("<span class='engradio'>" + str + "</span>")
 #define span_extremelybig(str) ("<span class='extremelybig'>" + str + "</span>")
