@@ -195,6 +195,11 @@ SUBSYSTEM_DEF(opposing_force)
 
 	return returned_html.Join("<br>")
 
+/**
+ * Gives a mind the opfor datum if they don't already have it.
+ *
+ * Returns TRUE if nothing broke.
+**/
 /datum/controller/subsystem/opposing_force/proc/give_opfor_datum(datum/mind/player_mind)
 	if(!player_mind.opposing_force)
 		var/datum/opposing_force/opposing_force = new(player_mind)

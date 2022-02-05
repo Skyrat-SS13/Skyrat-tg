@@ -846,12 +846,14 @@
 
 	return report.Join("\n")
 
+/// Gives the datum holder the OPFOR action button.
 /datum/opposing_force/proc/give_action_button()
 	var/datum/action/opfor/info_button
 	info_button = new(src)
 	info_button.Grant(mind_reference.current)
 	info_button_ref = WEAKREF(info_button)
 
+/// Called when a body transfer on the datum holder's mind occurs, swaps the info button holder.
 /datum/opposing_force/proc/on_body_transfer(mob/living/old_body, mob/living/new_body)
 	var/datum/action/opfor/info_button = info_button_ref?.resolve()
 	if(info_button)
