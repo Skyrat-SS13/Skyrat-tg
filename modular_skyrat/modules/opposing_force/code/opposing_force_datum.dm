@@ -869,7 +869,6 @@
 	if(!.)
 		return
 
-	SSopposing_force.give_opfor_datum(owner.mind)
 	owner.mind.opposing_force.ui_interact(owner)
 
 /datum/action/opfor/IsAvailable()
