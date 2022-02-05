@@ -70,7 +70,7 @@
 	/// The ckey of the person that made this application
 	var/ckey
 	/// A weakref to the action button that you can use to open an OPFOR
-	var/info_button_ref
+	var/datum/weakref/info_button_ref
 
 	COOLDOWN_DECLARE(static/request_update_cooldown)
 	COOLDOWN_DECLARE(static/ping_cooldown)
@@ -853,7 +853,7 @@
 	info_button_ref = WEAKREF(info_button)
 
 /datum/opposing_force/proc/on_body_transfer(mob/living/old_body, mob/living/new_body)
-	var/datum/action/opfor/info_button = info_button_ref.resolve()
+	var/datum/action/opfor/info_button = info_button_ref?.resolve()
 	if(info_button)
 		info_button.Remove(old_body)
 		info_button.Grant(new_body)

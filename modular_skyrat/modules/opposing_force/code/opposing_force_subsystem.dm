@@ -48,7 +48,6 @@ SUBSYSTEM_DEF(opposing_force)
 				equipment_list[OPFOR_EQUIPMENT_CATEGORY_OTHER] = list()
 			// We don't have home :( add us to the other category.
 			equipment_list[OPFOR_EQUIPMENT_CATEGORY_OTHER] += spawned_opfor_equipment
-	addtimer(CALLBACK(src, .proc/opfor_request_check), 10 MINUTES)
 	return ..()
 
 /datum/controller/subsystem/opposing_force/proc/check_availability()
@@ -195,17 +194,6 @@ SUBSYSTEM_DEF(opposing_force)
 		returned_html += " - [opposing_force.build_html_panel_entry()]"
 
 	return returned_html.Join("<br>")
-
-/datum/controller/subsystem/opposing_force/proc/opfor_request_check()
-	if(!accepting_objectives)
-		return
-
-	var/humans_asked = 0
-	for(var/mob/living/carbon/human/human in GLOB.alive_player_list)
-		if(human.client?.prefs?.read_preference(/datum/preference/toggle/be_antag))
-			to_chat(human, examine_block(span_greentext("OPFOR applications are open, if you're interested, sign up in the OOC tab!")))
-			humans_asked++
-	message_admins("OPFOR subsystem has automatically broadcast a request for applications! (Asked: [humans_asked] players)")
 
 /datum/controller/subsystem/opposing_force/proc/give_button_all()
 	for(var/mob/living/carbon/human/player as anything in GLOB.alive_player_list)
