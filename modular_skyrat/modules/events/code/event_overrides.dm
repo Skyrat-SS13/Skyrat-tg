@@ -10,10 +10,11 @@
  *
  * Overriden min and max start times:
  * To accomodate for much longer rounds.
+ * Also now the chaos system.
  */
 /datum/controller/subsystem/events
-	frequency_lower = 10 MINUTES
-	frequency_upper = 15 MINUTES
+	frequency_lower = 15 MINUTES
+	frequency_upper = 20 MINUTES
 
 /**
  * Brain truama

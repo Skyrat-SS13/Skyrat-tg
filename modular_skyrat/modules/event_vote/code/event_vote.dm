@@ -3,7 +3,7 @@
  */
 
 /// How long does the vote last?
-#define EVENT_VOTE_TIME 1 MINUTES
+#define EVENT_VOTE_TIME 2 MINUTES
 
 /// Public vote amount
 #define EVENT_PUBLIC_VOTE_AMOUNT 5
@@ -27,7 +27,7 @@
 	var/generated_actions = list()
 
 /// Starts a vote.
-/datum/controller/subsystem/events/proc/start_vote()
+/datum/controller/subsystem/events/proc/start_vote_admin()
 	if(!LAZYLEN(GLOB.admins)) // If there are no admins online, just revert to the normal system.
 		spawnEvent()
 		return
@@ -47,6 +47,27 @@
 		generated_actions += event_action
 		if(admin_client?.prefs?.toggles & SOUND_ADMINHELP)
 			SEND_SOUND(admin_client.mob, sound('sound/misc/bloop.ogg')) // Admins need a little boop.
+
+	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME, TIMER_STOPPABLE)
+	vote_in_progress = TRUE
+	vote_end_time = world.time + EVENT_VOTE_TIME
+
+/datum/controller/subsystem/events/proc/start_vote_admin_chaos()
+	if(!LAZYLEN(GLOB.admins)) // If there are no admins online, just revert to the normal system.
+		spawnEvent()
+		return
+	if(vote_in_progress) // We don't want two votes at once.
+		message_admins("EVENT: Attempted to start a vote while one was already in progress.")
+		return
+
+	// Direct chat link is good.
+	message_admins("EVENT: Vote started for next event! (<a href='?src=[REF(src)];[HrefToken()];open_panel=1'>Vote!</a>)")
+
+	/// Set our events to the chaos levels.
+	for(var/datum/round_event_control/preset/iterating_preset in SSevents.control)
+		if(!iterating_preset.selectable_chaos_level) // We can assume these are abstract.
+			continue
+		possible_events += iterating_preset
 
 	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME, TIMER_STOPPABLE)
 	vote_in_progress = TRUE
@@ -74,7 +95,37 @@
 		event_action.Grant(iterating_client.mob)
 		generated_actions += event_action
 
-	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME)
+	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME, TIMER_STOPPABLE)
+	vote_in_progress = TRUE
+	vote_end_time = world.time + EVENT_VOTE_TIME
+
+/datum/controller/subsystem/events/proc/start_player_vote_chaos(public_outcome = FALSE)
+	if(vote_in_progress) // We don't want two votes at once.
+		message_admins("EVENT: Attempted to start a vote while one was already in progress.")
+		return
+
+	show_votes = public_outcome
+
+	admin_only = FALSE
+
+	/// Set our events to the chaos levels.
+	for(var/datum/round_event_control/preset/iterating_preset in SSevents.control)
+		if(!iterating_preset.selectable_chaos_level) // We can assume these are abstract.
+			continue
+		possible_events += iterating_preset
+
+	// Direct chat link is good.
+	for(var/mob/iterating_user in GLOB.player_list)
+		vote_message(iterating_user, "Vote started for next event! (<a href='?src=[REF(src)];open_panel=1'>Vote!</a>)")
+		SEND_SOUND(iterating_user, sound('sound/misc/bloop.ogg')) // a little boop.
+
+	for(var/client/iterating_client in GLOB.clients)
+		var/datum/action/vote_event/event_action = new
+		iterating_client.player_details.player_actions += event_action
+		event_action.Grant(iterating_client.mob)
+		generated_actions += event_action
+
+	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME, TIMER_STOPPABLE)
 	vote_in_progress = TRUE
 	vote_end_time = world.time + EVENT_VOTE_TIME
 
@@ -135,7 +186,6 @@
 			tying_results += iterating_event
 
 	if(LAZYLEN(tying_results) > 1) // If there's a tie, we need to pick a random one.
-		to_chat(world, "tied vote")
 		winner = pick(tying_results)
 
 	var/total_votes = 0
@@ -334,10 +384,15 @@
 				return
 			cancel_vote(usr)
 			return
-		if("start_vote")
+		if("start_vote_admin")
 			if(!check_rights(R_PERMISSIONS))
 				return
-			start_vote()
+			start_vote_admin()
+			return
+		if("start_vote_admin_chaos")
+			if(!check_rights(R_PERMISSIONS))
+				return
+			start_vote_admin_chaos()
 			return
 		if("start_player_vote")
 			if(!check_rights(R_PERMISSIONS))
@@ -349,6 +404,17 @@
 			if(alert_vote == "Yes")
 				public_vote = TRUE
 			start_player_vote(public_vote)
+			return
+		if("start_player_vote_chaos")
+			if(!check_rights(R_PERMISSIONS))
+				return
+			var/alert_vote = tgui_alert(usr, "Do you want to show the vote outcome?", "Vote outcome", list("Yes", "No"))
+			if(!alert_vote)
+				return
+			var/public_vote = FALSE
+			if(alert_vote == "Yes")
+				public_vote = TRUE
+			start_player_vote_chaos(public_vote)
 			return
 		if("reschedule")
 			if(!check_rights(R_PERMISSIONS))
@@ -390,8 +456,6 @@
 /datum/action/vote_event/Trigger(trigger_flags)
 	if(owner)
 		owner.event_vote()
-		remove_from_client()
-		Remove(owner)
 
 /datum/action/vote_event/IsAvailable()
 	return TRUE
@@ -409,3 +473,7 @@
 /proc/log_event_vote(text)
 	if (CONFIG_GET(flag/log_event_votes))
 		WRITE_LOG(GLOB.event_vote_log, "EVENT: [text]")
+
+/proc/debug_event_printout()
+	for(var/datum/round_event_control/event in SSevents.control)
+		to_chat(world, "[event.name] | [event.chaos_level]")

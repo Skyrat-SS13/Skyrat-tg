@@ -28,17 +28,30 @@ export const EventPanel = (props, context) => {
                 <Section title={"Event Control" + " | Next event: " + next_vote_time + " seconds"}>
                   <Button
                     icon="plus"
-                    content="Start Vote"
+                    content="Start Admin Vote"
                     tooltip="Start a vote for the next event."
                     disabled={vote_in_progress}
-                    onClick={() => act('start_vote')} />
+                    onClick={() => act('start_vote_admin')} />
+                  <Button
+                    icon="plus"
+                    content="Start Admin Chaos Vote"
+                    tooltip="Start a chaos vote for the next event."
+                    disabled={vote_in_progress}
+                    onClick={() => act('start_vote_admin_chaos')} />
                   <Button
                     icon="user-plus"
-                    content="Start Public Vote"
+                    content="Start Player Vote"
                     tooltip="This will start a vote that will be publically visible."
                     color="average"
                     disabled={vote_in_progress}
                     onClick={() => act('start_player_vote')} />
+                  <Button
+                    icon="user-plus"
+                    content="Start Public Chaos Vote"
+                    tooltip="This will start a vote that will be publically visible."
+                    color="average"
+                    disabled={vote_in_progress}
+                    onClick={() => act('start_player_vote_chaos')} />
                   <Button
                     icon="stopwatch"
                     content="End Vote"
