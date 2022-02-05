@@ -49,10 +49,6 @@
 			)
 			query_round_game_mode.Execute()
 			qdel(query_round_game_mode)
-<<<<<<< HEAD
-	//generate_station_goals() SKYRAT EDIT REMOVAL
-=======
->>>>>>> 5fb970f2b5a (brings back greenshifts (#64646))
 	return TRUE
 
 
