@@ -1247,7 +1247,7 @@
 				)
 	category = CAT_MISC
 
-/datum/crafting_recipe/mod_core
+/datum/crafting_recipe/mod_core_standard
 	name = "MOD core (Standard)"
 	result = /obj/item/mod/core/standard
 	tool_behaviors = list(TOOL_SCREWDRIVER)
@@ -1259,7 +1259,7 @@
 				)
 	category = CAT_MISC
 
-/datum/crafting_recipe/mod_core
+/datum/crafting_recipe/mod_core_ethereal
 	name = "MOD core (Ethereal)"
 	result = /obj/item/mod/core/ethereal
 	tool_behaviors = list(TOOL_SCREWDRIVER)
