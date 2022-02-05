@@ -237,7 +237,7 @@
 /turf/open/floor/grass,
 /area/mine/xenoarch/living)
 "dn" = (
-/obj/machinery/conveyor/auto{
+/obj/machinery/conveyor{
 	id = "xa_dispose"
 	},
 /turf/open/floor/plating,
@@ -415,8 +415,9 @@
 /area/mine/xenoarch/living)
 "fV" = (
 /obj/structure/fans/tiny,
-/obj/machinery/conveyor/auto{
-	dir = 4
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "xa_dispose"
 	},
 /obj/machinery/door/poddoor/shutters{
 	id = "xadispose";
@@ -896,7 +897,7 @@
 /turf/open/floor/carpet,
 /area/mine/xenoarch/living)
 "nl" = (
-/obj/machinery/conveyor/auto{
+/obj/machinery/conveyor{
 	dir = 4;
 	id = "xa_dispose"
 	},
@@ -1763,8 +1764,7 @@
 "AV" = (
 /obj/machinery/conveyor/inverted{
 	dir = 9;
-	id = "xa_dispose";
-	processing_flags = 1
+	id = "xa_dispose"
 	},
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/east)
