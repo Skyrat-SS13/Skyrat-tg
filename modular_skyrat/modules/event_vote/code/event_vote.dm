@@ -38,7 +38,7 @@
 	possible_events = populate_event_list()
 
 	// Direct chat link is good.
-	message_admins("EVENT: Vote started for next event! (<a href='?src=[REF(src)];[HrefToken()];open_panel=1'>Vote!</a>)")
+	message_admins(span_boldannounce("EVENT: Vote started for next event! (<a href='?src=[REF(src)];[HrefToken()];open_panel=1'>Vote!</a>)"))
 
 	for(var/client/admin_client in GLOB.admins)
 		var/datum/action/vote_event/event_action = new
@@ -61,7 +61,7 @@
 		return
 
 	// Direct chat link is good.
-	message_admins("EVENT: Vote started for next event! (<a href='?src=[REF(src)];[HrefToken()];open_panel=1'>Vote!</a>)")
+	message_admins(span_boldannounce("EVENT: Vote started for next event! (<a href='?src=[REF(src)];[HrefToken()];open_panel=1'>Vote!</a>)"))
 
 	for(var/client/admin_client in GLOB.admins)
 		var/datum/action/vote_event/event_action = new
@@ -93,15 +93,15 @@
 	possible_events = populate_event_list(TRUE)
 
 	// Direct chat link is good.
-	for(var/mob/iterating_user in GLOB.player_list)
+	for(var/mob/iterating_user in get_eligible_players())
 		vote_message(iterating_user, "Vote started for next event! (<a href='?src=[REF(src)];open_panel=1'>Vote!</a>)")
 		SEND_SOUND(iterating_user, sound('sound/misc/bloop.ogg')) // a little boop.
-
-	for(var/client/iterating_client in GLOB.clients)
-		var/datum/action/vote_event/event_action = new
-		iterating_client.player_details.player_actions += event_action
-		event_action.Grant(iterating_client.mob)
-		generated_actions += event_action
+		if(iterating_user.client)
+			var/client/user_client
+			var/datum/action/vote_event/event_action = new
+			user_client.player_details.player_actions += event_action
+			event_action.Grant(iterating_user)
+			generated_actions += event_action
 
 	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME, TIMER_STOPPABLE)
 	vote_in_progress = TRUE
@@ -123,15 +123,15 @@
 		possible_events += iterating_preset
 
 	// Direct chat link is good.
-	for(var/mob/iterating_user in GLOB.player_list)
+	for(var/mob/iterating_user in get_eligible_players())
 		vote_message(iterating_user, "Vote started for next event! (<a href='?src=[REF(src)];open_panel=1'>Vote!</a>)")
 		SEND_SOUND(iterating_user, sound('sound/misc/bloop.ogg')) // a little boop.
-
-	for(var/client/iterating_client in GLOB.clients)
-		var/datum/action/vote_event/event_action = new
-		iterating_client.player_details.player_actions += event_action
-		event_action.Grant(iterating_client.mob)
-		generated_actions += event_action
+		if(iterating_user.client)
+			var/client/user_client
+			var/datum/action/vote_event/event_action = new
+			user_client.player_details.player_actions += event_action
+			event_action.Grant(iterating_user)
+			generated_actions += event_action
 
 	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME, TIMER_STOPPABLE)
 	vote_in_progress = TRUE
@@ -166,12 +166,19 @@
 	message_admins("EVENT: [key_name_admin(user)] cancelled the current vote.")
 	reset()
 
+/// Returns any eligible to vote players.
+/datum/controller/subsystem/events/proc/get_eligible_players()
+	var/list/eligible_players = list()
+	for(var/mob/iterating_user in get_eligible_players())
+		eligible_players += iterating_user
+	return eligible_players
+
 /// Ends the vote there and then, and executes the event.
 /datum/controller/subsystem/events/proc/end_vote()
 	if(!LAZYLEN(votes))
 		message_admins("EVENT: No votes cast, spawning random event!")
 		if(show_votes && !admin_only)
-			for(var/mob/iterating_user in GLOB.player_list)
+			for(var/mob/iterating_user in get_eligible_players())
 				vote_message(iterating_user, "No votes cast, spawning random event!")
 		reset()
 		spawnEvent()
@@ -212,7 +219,7 @@
 	if(!winner) //If for whatever reason the algorithm breaks, we still want an event.
 		message_admins("EVENT: Vote error, spawning random event!")
 		if(show_votes && !admin_only)
-			for(var/mob/iterating_user in GLOB.player_list)
+			for(var/mob/iterating_user in get_eligible_players())
 				vote_message(iterating_user, "Vote error, spawning random event!")
 		reset()
 		spawnEvent()
@@ -220,7 +227,7 @@
 
 	message_admins("EVENT: Vote ended! Winning Event: [winner.name]")
 	if(show_votes && !admin_only)
-		for(var/mob/iterating_user in GLOB.player_list)
+		for(var/mob/iterating_user in get_eligible_players())
 			vote_message(iterating_user, "Vote ended! Winning Event: [winner.name]")
 	winner.runEvent(TRUE)
 	reset()
@@ -244,6 +251,9 @@
 
 /// Simply registeres someones vote.
 /datum/controller/subsystem/events/proc/register_vote(mob/user, datum/round_event_control/event)
+	if(!(user in get_eligible_players()))
+		to_chat(user, span_warning("Error, you are not eligible to vote!"))
+		return
 	if(!(event in votes))
 		votes[event] = list()
 
@@ -453,6 +463,9 @@
 		return
 	if(SSevents.admin_only && !check_rights(R_ADMIN, FALSE))
 		to_chat(usr, span_warning("You do not have permission to vote."))
+		return
+	if(!(usr in SSevents.get_eligible_players()))
+		to_chat(usr, span_warning("You cannot vote!"))
 		return
 	SSevents.ui_interact(usr)
 
