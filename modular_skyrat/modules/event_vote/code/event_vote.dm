@@ -63,6 +63,14 @@
 	// Direct chat link is good.
 	message_admins("EVENT: Vote started for next event! (<a href='?src=[REF(src)];[HrefToken()];open_panel=1'>Vote!</a>)")
 
+	for(var/client/admin_client in GLOB.admins)
+		var/datum/action/vote_event/event_action = new
+		admin_client.player_details.player_actions += event_action
+		event_action.Grant(admin_client.mob)
+		generated_actions += event_action
+		if(admin_client?.prefs?.toggles & SOUND_ADMINHELP)
+			SEND_SOUND(admin_client.mob, sound('sound/misc/bloop.ogg')) // Admins need a little boop.
+
 	/// Set our events to the chaos levels.
 	for(var/datum/round_event_control/preset/iterating_preset in SSevents.control)
 		if(!iterating_preset.selectable_chaos_level) // We can assume these are abstract.
