@@ -195,13 +195,6 @@ SUBSYSTEM_DEF(opposing_force)
 
 	return returned_html.Join("<br>")
 
-/datum/controller/subsystem/opposing_force/proc/give_button_all()
-	for(var/mob/living/carbon/human/player as anything in GLOB.alive_player_list)
-		if(!player.mind)
-			continue
-		if(give_opfor_datum(player.mind))
-			player.mind.opposing_force.give_action_button()
-
 /datum/controller/subsystem/opposing_force/proc/give_opfor_datum(datum/mind/player_mind)
 	if(!player_mind.opposing_force)
 		var/datum/opposing_force/opposing_force = new(player_mind)
