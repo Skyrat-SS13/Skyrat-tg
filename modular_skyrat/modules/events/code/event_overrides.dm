@@ -13,8 +13,8 @@
  * Also now the chaos system.
  */
 /datum/controller/subsystem/events
-	frequency_lower = 15 MINUTES
-	frequency_upper = 20 MINUTES
+	frequency_lower = 25 MINUTES
+	frequency_upper = 30 MINUTES
 
 /**
  * Brain truama

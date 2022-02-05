@@ -27,10 +27,12 @@
 /datum/round_event_control/preset/runEvent(random)
 	log_game("Preset Event Triggering: [name] ([typepath])")
 	if(random)
-		deadchat_broadcast(" has just been triggered!", "<b>[name] preset</b>", message_type=DEADCHAT_ANNOUNCEMENT)
+		deadchat_broadcast(" has just been [random ? "randomly " : ""]triggered!", "<b>[name] preset</b>", message_type=DEADCHAT_ANNOUNCEMENT)
 	if(!LAZYLEN(possible_events)) // List hasn't been populated yet, let's do it now.
 		for(var/datum/round_event_control/iterating_event in SSevents.control)
 			if(!iterating_event.votable)
+				continue
+			if(iterating_event.occurrences >= iterating_event.max_occurrences)
 				continue
 			if(iterating_event.chaos_level == selectable_chaos_level)
 				possible_events += iterating_event
@@ -41,19 +43,24 @@
 
 	event_to_run.runEvent()
 
+	occurrences++
+
 
 /datum/round_event_control/preset/low
 	name = "Low Chaos Random Event"
 	earliest_start = 0
+	max_occurrences = 100
 	selectable_chaos_level = EVENT_CHAOS_LOW
 
 /datum/round_event_control/preset/moderate
 	name = "Moderate Chaos Random Event"
+	max_occurrences = 10
 	earliest_start = 10 MINUTES
 	selectable_chaos_level = EVENT_CHAOS_MED
 
 /datum/round_event_control/preset/high
 	name = "High Chaos Random Event"
+	max_occurrences = 1
 	earliest_start = 30 MINUTES
 	selectable_chaos_level = EVENT_CHAOS_HIGH
 	min_players = 70
@@ -76,12 +83,16 @@
 			continue
 		if(iterating_preset.selectable_chaos_level == EVENT_CHAOS_RANDOM) //Infinite loops are bad.
 			continue
+		if(iterating_preset.occurrences >= iterating_preset.max_occurrences)
+			continue
 
 		presets += iterating_preset
 
 	var/datum/round_event_control/preset/picked_preset = pick(presets)
 
 	picked_preset.runEvent()
+
+	occurrences++
 
 
 /**

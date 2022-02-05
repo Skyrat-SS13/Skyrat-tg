@@ -2,6 +2,10 @@
  * A simple voting system to replace the current random events, if no votes are recieved, it will be random.
  */
 
+#define LOW_CHAOS_TIMER_LOWER 10 MINUTES
+
+#define LOW_CHAOS_TIMER_UPPER 15 MINUTES
+
 /// How long does the vote last?
 #define EVENT_VOTE_TIME 2 MINUTES
 
@@ -25,6 +29,23 @@
 	var/timer_id
 	/// A reference to our generated actions, for deletion later.
 	var/generated_actions = list()
+	/// Our next random low event timer
+	var/scheduled_low_chaos = 0
+	/// The min amount of time till the next low chaos event
+	var/low_chaos_timer_lower = LOW_CHAOS_TIMER_LOWER
+	/// Ditto, but max
+	var/low_chaos_timer_upper = LOW_CHAOS_TIMER_UPPER
+
+/// Reschedules our low-chaos event timer
+/datum/controller/subsystem/events/proc/reschedule_low_chaos()
+	scheduled_low_chaos = world.time + rand(low_chaos_timer_lower, low_chaos_timer_upper)
+
+/// Triggers a random low chaos event
+/datum/controller/subsystem/events/proc/triger_low_chaos_event()
+	for(var/datum/round_event_control/preset/preset_event in control)
+		if(preset_event.selectable_chaos_level == EVENT_CHAOS_LOW)
+			preset_event.runEvent(TRUE)
+			return
 
 /// Starts a vote.
 /datum/controller/subsystem/events/proc/start_vote_admin()
@@ -169,7 +190,9 @@
 /// Returns any eligible to vote players.
 /datum/controller/subsystem/events/proc/get_eligible_players()
 	var/list/eligible_players = list()
-	for(var/mob/iterating_user in get_eligible_players())
+	for(var/mob/iterating_user in GLOB.player_list)
+		if((!isliving(iterating_user) || !is_station_level(iterating_user)) && !check_rights_for(iterating_user.client, R_ADMIN))
+			continue
 		eligible_players += iterating_user
 	return eligible_players
 
