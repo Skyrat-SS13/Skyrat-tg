@@ -101,6 +101,10 @@
 	martial_art = default_martial_art
 	init_known_skills()
 	set_assigned_role(SSjob.GetJobType(/datum/job/unassigned)) // Unassigned by default.
+	//SKYRAT EDIT START - OPFOR SYSTEM
+	SSopposing_force.give_opfor_datum(src)
+	opposing_force.give_action_button()
+	//SKYRAT EDIT END
 
 /datum/mind/Destroy()
 	SSticker.minds -= src

@@ -325,7 +325,6 @@ SUBSYSTEM_DEF(ticker)
 		else
 			to_chat(iter_human, span_notice("You will gain [round(iter_human.hardcore_survival_score)] hardcore random points if you survive this round!"))
 
-	addtimer(CALLBACK(SSopposing_force, /datum/controller/subsystem/opposing_force/proc/give_button_all), 60 SECONDS) // SKYRAT EDIT - OPFOR SYSTEM
 
 //These callbacks will fire after roundstart key transfer
 /datum/controller/subsystem/ticker/proc/OnRoundstart(datum/callback/cb)
