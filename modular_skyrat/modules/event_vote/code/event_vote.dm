@@ -194,7 +194,7 @@
 /datum/controller/subsystem/events/proc/get_eligible_players()
 	var/list/eligible_players = list()
 	for(var/mob/iterating_user in GLOB.player_list)
-		if((!isliving(iterating_user) || !is_station_level(iterating_user)) && !check_rights_for(iterating_user.client, R_ADMIN))
+		if((!isliving(iterating_user) || !is_station_level(iterating_user.z)) && !check_rights_for(iterating_user.client, R_ADMIN))
 			continue
 		eligible_players += iterating_user
 	return eligible_players
