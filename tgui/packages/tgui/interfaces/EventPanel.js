@@ -1,5 +1,6 @@
 import { useBackend } from '../backend';
 import { Section, Button, NoticeBox, LabeledList, Stack } from '../components';
+import { toFixed } from 'common/math';
 import { Window } from '../layouts';
 
 export const EventPanel = (props, context) => {
@@ -25,7 +26,7 @@ export const EventPanel = (props, context) => {
           {admin_mode ? (
             <>
               <Stack.Item>
-                <Section title={"Event Control" + " | Next event: " + next_vote_time + " seconds"}>
+                <Section title={"Event Control" + " | Next event: " + toFixed(next_vote_time) + " seconds"}>
                   <Button
                     icon="plus"
                     content="Start Admin Vote"
@@ -115,7 +116,7 @@ export const EventPanel = (props, context) => {
             )
           )}
           <Stack.Item grow>
-            <Section scrollable fill grow title={vote_in_progress ? "Available Events (" + end_time + " seconds) " : "Available Events"}>
+            <Section scrollable fill grow title={vote_in_progress ? "Available Events (" + toFixed(end_time) + " seconds) " : "Available Events"}>
               {vote_in_progress ? (
                 <LabeledList>
                   {event_list.map(event => (

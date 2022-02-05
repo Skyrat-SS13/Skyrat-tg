@@ -28,7 +28,7 @@
 	log_game("Preset Event Triggering: [name] ([typepath])")
 	if(random)
 		deadchat_broadcast(" has just been triggered!", "<b>[name] preset</b>", message_type=DEADCHAT_ANNOUNCEMENT)
-	if(!LAZYLEN(possible_events)) // List hasn't been populated yet, let's do it now.
+	if(LAZYLEN(possible_events)) // List hasn't been populated yet, let's do it now.
 		for(var/datum/round_event_control/iterating_event in SSevents.control)
 			if(!votable)
 				continue
@@ -232,9 +232,6 @@
 	chaos_level = EVENT_CHAOS_HIGH
 
 /datum/round_event_control/pirates
-	chaos_level = EVENT_CHAOS_HIGH
-
-/datum/round_event_control/radiation_storm
 	chaos_level = EVENT_CHAOS_HIGH
 
 /datum/round_event_control/space_dragon
