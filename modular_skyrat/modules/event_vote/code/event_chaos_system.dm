@@ -28,9 +28,9 @@
 	log_game("Preset Event Triggering: [name] ([typepath])")
 	if(random)
 		deadchat_broadcast(" has just been triggered!", "<b>[name] preset</b>", message_type=DEADCHAT_ANNOUNCEMENT)
-	if(LAZYLEN(possible_events)) // List hasn't been populated yet, let's do it now.
+	if(!LAZYLEN(possible_events)) // List hasn't been populated yet, let's do it now.
 		for(var/datum/round_event_control/iterating_event in SSevents.control)
-			if(!votable)
+			if(!iterating_event.votable)
 				continue
 			if(iterating_event.chaos_level == selectable_chaos_level)
 				possible_events += iterating_event
