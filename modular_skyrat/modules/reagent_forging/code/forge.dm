@@ -4,6 +4,9 @@
 #define DEFAULT_HEATED 25 SECONDS
 #define MASTER_HEATED 50 SECONDS
 
+#define MAX_FORGE_TEMP 100
+#define MIN_FORGE_TEMP 51 //the minimum temp to actually use it
+
 /obj/structure/reagent_forge
 	name = "forge"
 	desc = "A structure built out of bricks, with the intended purpose of heating up metal."
@@ -31,22 +34,23 @@
 	///whether the forge is capable of allowing reagent forging of the forged item.
 	//normal forges are false; to turn into true, use 3 (active) legion cores.
 	var/reagent_forging = FALSE
-	//counting how many cores used to turn forge into a reagent forging forge.
+	///counting how many cores used to turn forge into a reagent forging forge.
 	var/current_core = 0
-	//the variable for the process checking to the world time
-	var/world_check = 0
-	//the variable that stops spamming
+	//cooldown between each process for the forge
+	COOLDOWN_DECLARE(forging_cooldown)
+	///the variable that stops spamming
 	var/in_use = FALSE
+	///if it isn't on the station zlevel, it is primitive (different icon)
 	var/primitive = FALSE
 
 /obj/structure/reagent_forge/examine(mob/user)
 	. = ..()
-	. += span_notice("The forge has [goliath_ore_improvement]/3 goliath hides.")
-	. += span_notice("The forge has [current_sinew]/10 watcher sinews.")
-	. += span_notice("The forge has [current_core]/3 regenerative cores.")
-	. += span_notice("The forge is currently [forge_temperature] degrees hot, going towards [target_temperature] degrees.")
+	. += span_notice("[src] has [goliath_ore_improvement]/3 goliath hides.")
+	. += span_notice("[src] has [current_sinew]/10 watcher sinews.")
+	. += span_notice("[src] has [current_core]/3 regenerative cores.")
+	. += span_notice("[src] is currently [forge_temperature] degrees hot, going towards [target_temperature] degrees.")
 	if(reagent_forging)
-		. += span_notice("The forge has a red tinge, it is ready to imbue chemicals into reagent objects.")
+		. += span_notice("[src] has a red tinge, it is ready to imbue chemicals into reagent objects.")
 
 /obj/structure/reagent_forge/Initialize()
 	. = ..()
@@ -59,6 +63,9 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
+/**
+ * Here we check both strong (coal) and weak (wood) fuel
+ */
 /obj/structure/reagent_forge/proc/check_fuel()
 	if(forge_fuel_strong) //use strong fuel first
 		forge_fuel_strong -= 5
@@ -70,6 +77,26 @@
 		return
 	target_temperature = 0 //if no fuel, slowly go back down to zero
 
+/**
+ * Here we make the reagent forge reagent imbuing
+ */
+/obj/structure/reagent_forge/proc/create_reagent_forge()
+	reagent_forging = TRUE
+	balloon_alert_to_viewers("gurgles!")
+	color = "#ff5151"
+	name = "reagent forge"
+	desc = "A structure built out of metal, with the intended purpose of heating up metal. It has the ability to imbue!"
+
+/**
+ * Here we give a fail message as well as set the in_use to false
+ */
+/obj/structure/reagent_forge/proc/fail_message(mob/living/fail_user, message)
+	to_chat(fail_user, span_warning(message))
+	in_use = FALSE
+
+/**
+ * Here we adjust our temp to the target temperature
+ */
 /obj/structure/reagent_forge/proc/check_temp()
 	if(forge_temperature > target_temperature) //above temp needs to lower slowly
 		if(sinew_lower_chance && prob(sinew_lower_chance))//chance to not lower the temp, up to 100 from 10 sinew
@@ -92,6 +119,9 @@
 			icon_state = "forge_empty"
 		light_range = 0
 
+/**
+ * Here we fix any weird in_use bugs
+ */
 /obj/structure/reagent_forge/proc/check_in_use()
 	if(!in_use)
 		return
@@ -99,13 +129,16 @@
 		if(!living_mob)
 			in_use = FALSE
 
+/**
+ * Here we spawn coal depending on a chance of using wood
+ */
 /obj/structure/reagent_forge/proc/spawn_coal()
 	new /obj/item/stack/sheet/mineral/coal(get_turf(src))
 
 /obj/structure/reagent_forge/process()
-	if(world_check >= world.time) //to make it not too intensive, every 5 seconds
+	if(!COOLDOWN_FINISHED(src, forging_cooldown)) //every 5 seconds to not be too intensive, also balanced around 5 seconds
 		return
-	world_check += 5 SECONDS
+	COOLDOWN_START(src, forging_cooldown, 5 SECONDS)
 	check_fuel()
 	check_temp()
 	check_in_use() //plenty of weird bugs, this should hopefully fix the in_use bugs
@@ -116,26 +149,23 @@
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
 		in_use = TRUE
-		if(forge_fuel_weak >= 300) //cannot insert too much
-			to_chat(user, span_warning("You only need one to two pieces of wood at a time! You have [forge_fuel_weak] seconds remaining!"))
-			in_use = FALSE
+		if(forge_fuel_weak >= 5 MINUTES) //cannot insert too much
+			fail_message(user, "You only need one to two pieces of wood at a time! You have [forge_fuel_weak] seconds remaining!")
 			return
-		to_chat(user, span_warning("You start to throw the fuel into the forge..."))
+		to_chat(user, span_warning("You start to throw [I] into [src]..."))
 		if(!do_after(user, 3 SECONDS, target = src)) //need 3 seconds to fuel the forge
-			to_chat(user, span_warning("You abandon fueling the forge."))
-			in_use = FALSE
+			fail_message(user, "You abandon fueling [src].")
 			return
 		var/obj/item/stack/sheet/stack_sheet = I
 		if(!stack_sheet.use(1)) //you need to be able to use the item, so no glue.
-			to_chat(user, span_warning("You abandon fueling the forge."))
-			in_use = FALSE
+			fail_message(user, "You abandon fueling [src].")
 			return
-		forge_fuel_weak += 300 //5 minutes
+		forge_fuel_weak += 5 MINUTES
 		in_use = FALSE
-		to_chat(user, span_notice("You successfully fuel the forge."))
-		if(prob(30))
-			to_chat(user, span_notice("The forge's fuel lights interestingly..."))
-			addtimer(CALLBACK(src, .proc/spawn_coal), 2 MINUTES)
+		to_chat(user, span_notice("You successfully fuel [src]."))
+		if(prob(45))
+			to_chat(user, span_notice("[src]'s fuel lights interestingly..."))
+			addtimer(CALLBACK(src, .proc/spawn_coal), 1 MINUTES)
 		return
 
 	if(istype(I, /obj/item/stack/sheet/mineral/coal)) //used for strong fuel
@@ -143,23 +173,20 @@
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
 		in_use = TRUE
-		if(forge_fuel_strong >= 300) //cannot insert too much
-			to_chat(user, span_warning("You only need one to two pieces of coal at a time! You have [forge_fuel_strong] seconds remaining!"))
-			in_use = FALSE
+		if(forge_fuel_strong >= 5 MINUTES) //cannot insert too much
+			fail_message(user, "You only need one piece of coal at a time! You have [forge_fuel_strong] seconds remaining!")
 			return
-		to_chat(user, span_warning("You start to throw the fuel into the forge..."))
+		to_chat(user, span_warning("You start to throw [I] into [src]..."))
 		if(!do_after(user, 3 SECONDS, target = src)) //need 3 seconds to fuel the forge
-			to_chat(user, span_warning("You abandon fueling the forge."))
-			in_use = FALSE
+			fail_message(user, "You abandon fueling [src].")
 			return
 		var/obj/item/stack/sheet/stack_sheet = I
 		if(!stack_sheet.use(1)) //need to be able to use the item, so no glue
-			to_chat(user, span_warning("You abandon fueling the forge."))
-			in_use = FALSE
+			fail_message(user, "You abandon fueling [src].")
 			return
-		forge_fuel_strong += 300 //5 minutes
+		forge_fuel_strong += 10 MINUTES // have to make coal useful!
 		in_use = FALSE
-		to_chat(user, span_notice("You successfully fuel the forge."))
+		to_chat(user, span_notice("You successfully fuel [src]."))
 		return
 
 	if(istype(I, /obj/item/forging/billow))
@@ -169,21 +196,18 @@
 			return
 		in_use = TRUE
 		if(!forge_fuel_strong && !forge_fuel_weak) //if there isnt any fuel, no billow use
-			to_chat(user, span_warning("You cannot use the billow without some sort of fuel in the forge!"))
-			in_use = FALSE
+			fail_message(user, "You cannot use [forge_item] without some sort of fuel in [src]!")
 			return
-		if(forge_temperature >= 100) //we don't want the "temp" to overflow or something somehow
-			to_chat(user, span_warning("You do not need to use a billow at this moment, the forge is already hot enough!"))
-			in_use = FALSE
+		if(forge_temperature >= MAX_FORGE_TEMP) //we don't want the "temp" to overflow or something somehow
+			fail_message(user, "You do not need to use [forge_item] at this moment, [src] is already hot enough!")
 			return
-		to_chat(user, span_warning("You start to pump the billow into the forge..."))
+		to_chat(user, span_warning("You start to pump [forge_item] into [src]..."))
 		if(!do_after(user, forge_item.work_time, target = src)) //wait 3 seconds to upgrade (6 for primitive)
-			to_chat(user, span_warning("You abandon billowing the forge."))
-			in_use = FALSE
+			fail_message(user, "You abandon billowing [src].")
 			return
 		forge_temperature += 10
 		in_use = FALSE
-		to_chat(user, span_notice("You successfully increase the temperature inside the forge."))
+		to_chat(user, span_notice("You successfully increase the temperature inside [src]."))
 		return
 
 	if(istype(I, /obj/item/stack/sheet/sinew))
@@ -192,24 +216,21 @@
 			return
 		in_use = TRUE
 		if(sinew_lower_chance >= 100) //max is 100
-			to_chat(user, span_warning("You cannot insert any more sinew!"))
-			in_use = FALSE
+			fail_message(user, "You cannot insert any more of [I]!")
 			return
-		to_chat(user, span_warning("You start lining the forge with sinew..."))
+		to_chat(user, span_warning("You start lining [src] with [I]..."))
 		if(!do_after(user, 3 SECONDS, target = src)) //wait 3 seconds to upgrade
-			to_chat(user, span_warning("You abandon lining the forge with sinew."))
-			in_use = FALSE
+			fail_message(user, "You abandon lining [src] with [I].")
 			return
 		var/obj/item/stack/sheet/stack_sheet = I
 		if(!stack_sheet.use(1)) //need to be able to use the item, so no glue
-			to_chat(user, span_warning("You abandon lining the forge with sinew."))
-			in_use = FALSE
+			fail_message(user, "You abandon lining [src] with [I].")
 			return
 		playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
 		sinew_lower_chance += 10
 		current_sinew++
 		in_use = FALSE
-		to_chat(user, span_notice("You successfully line the forge with sinew."))
+		to_chat(user, span_notice("You successfully line [src] with [I]."))
 		return
 
 	if(istype(I, /obj/item/organ/regenerative_core))
@@ -218,30 +239,23 @@
 			return
 		in_use = TRUE
 		if(reagent_forging) //if its already able to reagent forge, why continue wasting?
-			to_chat(user, span_warning("This forge is already upgraded."))
-			in_use = FALSE
+			fail_message(user, "[src] is already upgraded.")
 			return
 		var/obj/item/organ/regenerative_core/used_core = I
 		if(used_core.inert) //no inert cores allowed
-			to_chat(user, span_warning("You cannot use an inert regenerative core."))
-			in_use = FALSE
+			fail_message(user, "You cannot use an inert [used_core].")
 			return
-		to_chat(user, span_warning("You start to sacrifice the regenerative core to the forge..."))
+		to_chat(user, span_warning("You start to sacrifice [used_core] to [src]..."))
 		if(!do_after(user, 3 SECONDS, target = src)) //wait 3 seconds to upgrade
-			to_chat(user, span_warning("You abandon sacrificing the regenerative core to the forge."))
-			in_use = FALSE
+			fail_message(user, "You abandon sacrificing [used_core] to [src].")
 			return
-		to_chat(user, span_notice("You successfully sacrifice the regenerative core to the forge."))
+		to_chat(user, span_notice("You successfully sacrifice [used_core] to [src]."))
 		playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
 		qdel(I)
 		current_core++
 		in_use = FALSE
 		if(current_core >= 3) //use three regenerative cores to get reagent forging capabilities on the forge
-			reagent_forging = TRUE
-			to_chat(user, span_notice("You feel the forge has upgraded."))
-			color = "#ff5151"
-			name = "reagent forge"
-			desc = "A structure built out of metal, with the intended purpose of heating up metal. It has the ability to imbue!"
+			create_reagent_forge()
 		return
 
 	if(istype(I, /obj/item/stack/sheet/animalhide/goliath_hide))
@@ -251,22 +265,18 @@
 			return
 		in_use = TRUE
 		if(goliath_ore_improvement >= 3)
-			to_chat(user, span_warning("You have applied the max amount of [goliath_hide]!"))
-			in_use = FALSE
+			fail_message(user, "You have applied the max amount of [goliath_hide]!")
 			return
-		to_chat(user, span_warning("You start to improve the forge with [goliath_hide]..."))
+		to_chat(user, span_warning("You start to improve [src] with [goliath_hide]..."))
 		if(!do_after(user, 6 SECONDS, target = src)) //wait 6 seconds to upgrade
-			to_chat(user, span_warning("You abandon improving the forge."))
-			in_use = FALSE
+			fail_message(user, "You abandon improving [src].")
 			return
-		var/obj/item/stack/sheet/stack_sheet = I
-		if(!stack_sheet.use(1)) //need to be able to use the item, so no glue
-			to_chat(user, span_warning("You abandon improving the forge."))
-			in_use = FALSE
+		if(!goliath_hide.use(1)) //need to be able to use the item, so no glue
+			fail_message(user, "You cannot use [goliath_hide]!")
 			return
 		goliath_ore_improvement++
 		in_use = FALSE
-		to_chat(user, span_notice("You successfully upgrade the forge with [goliath_hide]."))
+		to_chat(user, span_notice("You successfully upgrade [src] with [goliath_hide]."))
 		return
 
 	if(istype(I, /obj/item/stack/ore))
@@ -275,18 +285,15 @@
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
 		in_use = TRUE
-		if(forge_temperature <= 50)
-			to_chat(user, span_warning("The temperature is not hot enough to start heating [ore_stack]."))
-			in_use = FALSE
+		if(forge_temperature < MIN_FORGE_TEMP)
+			fail_message(user, "The temperature is not hot enough to start heating [ore_stack].")
 			return
 		if(!ore_stack.refined_type)
-			to_chat(user, span_warning("It is impossible to smelt [ore_stack]."))
-			in_use = FALSE
+			fail_message(user, "It is impossible to smelt [ore_stack].")
 			return
 		to_chat(user, span_warning("You start to smelt [ore_stack]..."))
 		if(!do_after(user, 3 SECONDS, target = src)) //wait 3 seconds to upgrade
-			to_chat(user, span_warning("You abandon smelting [ore_stack]."))
-			in_use = FALSE
+			fail_message(user, "You abandon smelting [ore_stack].")
 			return
 		var/src_turf = get_turf(src)
 		var/spawning_item = ore_stack.refined_type
@@ -304,36 +311,31 @@
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
 		in_use = TRUE
-		if(forge_temperature <= 50)
-			to_chat(user, span_warning("The temperature is not hot enough to start heating the metal."))
-			in_use = FALSE
+		if(forge_temperature < MIN_FORGE_TEMP)
+			fail_message(user, "The temperature is not hot enough to start heating the metal.")
 			return
 		var/obj/item/forging/incomplete/search_incomplete = locate(/obj/item/forging/incomplete) in I.contents
 		if(search_incomplete)
-			to_chat(user, span_warning("You start to heat up the metal..."))
-			if(!do_after(user, forge_item.work_time, target = src)) //wait 3 seconds to upgrade (6 for primitive)
-				to_chat(user, span_warning("You abandon heating up the metal, breaking the metal."))
-				in_use = FALSE
+			to_chat(user, span_warning("You start to heat up [search_incomplete]..."))
+			if(!do_after(user, forge_item.work_time, target = src)) //wait 3 seconds to heat (6 for primitive)
+				fail_message(user, "You abandon heating up [search_incomplete].")
 				return
 			search_incomplete.heat_world_compare = world.time + 1 MINUTES
 			in_use = FALSE
-			to_chat(user, span_notice("You successfully heat up the metal."))
+			to_chat(user, span_notice("You successfully heat up [search_incomplete]."))
 			return
 		var/obj/item/stack/rods/search_rods = locate(/obj/item/stack/rods) in I.contents
 		if(search_rods)
 			var/user_choice = input(user, "What would you like to work on?", "Forge Selection") as null|anything in list("Chain", "Sword", "Staff", "Spear", "Axe", "Hammer", "Plate")
 			if(!user_choice)
-				to_chat(user, span_warning("You decide against continuing to forge."))
-				in_use = FALSE
+				fail_message(user, "You decide against continuing to forge.")
 				return
 			if(!search_rods.use(1))
-				to_chat(user, span_warning("You cannot use the rods!"))
-				in_use = FALSE
+				fail_message(user, "You cannot use	[search_rods]!")
 				return
-			to_chat(user, span_warning("You start to heat up the metal..."))
+			to_chat(user, span_warning("You start to heat up [search_rods]..."))
 			if(!do_after(user, forge_item.work_time, target = src)) //wait 3 seconds to upgrade (6 for primitive)
-				to_chat(user, span_warning("You abandon heating up the metal, breaking the metal."))
-				in_use = FALSE
+				fail_message(user, "You abandon heating up [search_rods].")
 				return
 			var/obj/item/forging/incomplete/incomplete_item
 			switch(user_choice)
@@ -353,7 +355,7 @@
 					incomplete_item = new /obj/item/forging/incomplete/plate(get_turf(src))
 			incomplete_item.heat_world_compare = world.time + 1 MINUTES
 			in_use = FALSE
-			to_chat(user, span_notice("You successfully heat up the metal, ready to forge a [user_choice]."))
+			to_chat(user, span_notice("You successfully heat up [search_rods], ready to forge a [user_choice]."))
 			return
 		in_use = FALSE
 		return
@@ -375,21 +377,17 @@
 			return
 		in_use = TRUE
 		if(!reagent_forging)
-			to_chat(user, span_warning("You must enchant the forge to allow reagent imbueing!"))
-			in_use = FALSE
+			fail_message(user, "You must enchant [src] to allow reagent imbueing!")
 			return
 		var/datum/component/reagent_weapon/weapon_component = attacking_item.GetComponent(/datum/component/reagent_weapon)
 		if(!weapon_component)
-			to_chat(user, span_warning("[attacking_item] is unable to be imbued!"))
-			in_use = FALSE
+			fail_message(user, "[attacking_item] is unable to be imbued!")
 			return
 		if(length(weapon_component.imbued_reagent))
-			to_chat(user, span_warning("[attacking_item] has already been imbued!"))
-			in_use = FALSE
+			fail_message(user, "[attacking_item] has already been imbued!")
 			return
 		if(!do_after(user, 10 SECONDS, target = src))
-			to_chat(user, span_warning("You abandon imbueing [attacking_item]!"))
-			in_use = FALSE
+			fail_message(user, "You abandon imbueing [attacking_item]!")
 			return
 		for(var/datum/reagent/weapon_reagent in attacking_item.reagents.reagent_list)
 			if(weapon_reagent.volume < 200)
@@ -410,21 +408,17 @@
 			return
 		in_use = TRUE
 		if(!reagent_forging)
-			to_chat(user, span_warning("You must enchant the forge to allow reagent imbueing!"))
-			in_use = FALSE
+			fail_message(user, "You must enchant [src] to allow reagent imbueing!")
 			return
 		var/datum/component/reagent_clothing/clothing_component = attacking_item.GetComponent(/datum/component/reagent_clothing)
 		if(!clothing_component)
-			to_chat(user, span_warning("[attacking_item] is unable to be imbued!"))
-			in_use = FALSE
+			fail_message(user, "[attacking_item] is unable to be imbued!")
 			return
 		if(length(clothing_component.imbued_reagent))
-			to_chat(user, span_warning("[attacking_item] has already been imbued!"))
-			in_use = FALSE
+			fail_message(user, "[attacking_item] has already been imbued!")
 			return
 		if(!do_after(user, 10 SECONDS, target = src))
-			to_chat(user, span_warning("You abandon imbueing [attacking_item]!"))
-			in_use = FALSE
+			fail_message(user, "You abandon imbueing [attacking_item]!")
 			return
 		for(var/datum/reagent/clothing_reagent in attacking_item.reagents.reagent_list)
 			if(clothing_reagent.volume < 200)
@@ -440,7 +434,7 @@
 
 	if(istype(I, /obj/item/ceramic))
 		var/obj/item/ceramic/ceramic_item = I
-		if(forge_temperature <= 50)
+		if(forge_temperature < MIN_FORGE_TEMP)
 			to_chat(user, span_warning("The temperature is not hot enough to start heating [ceramic_item]."))
 			return
 		if(!ceramic_item.forge_item)
@@ -464,19 +458,16 @@
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
 		in_use = TRUE
-		if(forge_temperature <= 50)
-			to_chat(user, span_warning("The temperature is not hot enough to start heating [blowing_item]."))
-			in_use = FALSE
+		if(forge_temperature < MIN_FORGE_TEMP)
+			fail_message(user, "The temperature is not hot enough to start heating [blowing_item].")
 			return
 		var/obj/item/glassblowing/molten_glass/find_glass = locate() in blowing_item.contents
 		if(!find_glass)
-			to_chat(user, span_warning("[blowing_item] does not have any glass to heat up."))
-			in_use = FALSE
+			fail_message(user, "[blowing_item] does not have any glass to heat up.")
 			return
 		to_chat(user, span_notice("You begin heating up [blowing_item]."))
 		if(!do_after(user, actioning_speed, target = src))
-			to_chat(user, span_warning("[blowing_item] is interrupted in its heating process."))
-			in_use = FALSE
+			fail_message(user, "[blowing_item] is interrupted in its heating process.")
 			return
 		find_glass.world_molten = world.time + actioning_amount
 		to_chat(user, span_notice("You finish heating up [blowing_item]."))
@@ -491,17 +482,14 @@
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
 		in_use = TRUE
-		if(forge_temperature <= 50)
-			to_chat(user, span_warning("The temperature is not hot enough to start heating [glass_item]."))
-			in_use = FALSE
+		if(forge_temperature < MIN_FORGE_TEMP)
+			fail_message(user, "The temperature is not hot enough to start heating [glass_item].")
 			return
 		if(!glass_item.use(1))
-			to_chat(user, span_warning("You need to be able to use [glass_item]!"))
-			in_use = FALSE
+			fail_message(user, "You need to be able to use [glass_item]!")
 			return
 		if(!do_after(user, actioning_speed, target = src))
-			to_chat(user, span_warning("You stop heating up [glass_item]!"))
-			in_use = FALSE
+			fail_message(user, "You stop heating up [glass_item]!")
 			return
 		in_use = FALSE
 		var/obj/item/glassblowing/molten_glass/spawned_glass = new /obj/item/glassblowing/molten_glass(get_turf(src))
@@ -516,17 +504,14 @@
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
 		in_use = TRUE
-		if(forge_temperature <= 50)
-			to_chat(user, span_warning("The temperature is not hot enough to start heating [metal_item]!"))
-			in_use = FALSE
+		if(forge_temperature < MIN_FORGE_TEMP)
+			fail_message(user, "The temperature is not hot enough to start heating [metal_item]!")
 			return
 		if(!metal_item.has_sand)
-			to_chat(user, span_warning("There is no sand within [metal_item]!"))
-			in_use = FALSE
+			fail_message(user, "There is no sand within [metal_item]!")
 			return
 		if(!do_after(user, actioning_speed, target = src))
-			to_chat(user, span_warning("You stop heating up [metal_item]!"))
-			in_use = FALSE
+			fail_message(user, "You stop heating up [metal_item]!")
 			return
 		in_use = FALSE
 		metal_item.has_sand = FALSE
@@ -548,3 +533,6 @@
 
 #undef DEFAULT_HEATED
 #undef MASTER_HEATED
+
+#undef MAX_FORGE_TEMP
+#undef MIN_FORGE_TEMP
