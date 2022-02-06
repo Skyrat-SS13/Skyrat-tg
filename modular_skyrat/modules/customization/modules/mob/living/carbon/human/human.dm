@@ -119,7 +119,7 @@
 	if(!impairment)
 		return
 
-	var/duration = input(src, "Enter how long you will feign [impairment]. (1 - 60 seconds)", "Duration in seconds", 25) as num|null
+	var/duration = input(src, "Enter how long you will feign [impairment].", "Duration in seconds", 25) as num|null
 	if(!isnum(duration))
 		return
 	if(duration > 36000) // Ten hours.
