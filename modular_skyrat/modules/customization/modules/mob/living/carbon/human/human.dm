@@ -122,8 +122,8 @@
 	var/duration = input(src, "Enter how long you will feign [impairment]. (1 - 60 seconds)", "Duration in seconds", 25) as num|null
 	if(!isnum(duration))
 		return
-	if(duration > 60)
-		to_chat(src, "Please choose a duration in seconds between 1 to 60.")
+	if(duration > 3600) //A full hour.
+		to_chat(src, "Please choose a duration of up to 3600 seconds.")
 		return
 	switch(impairment)
 		if("Drunkenness")
