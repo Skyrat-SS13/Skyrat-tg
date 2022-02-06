@@ -39,11 +39,8 @@
 	inhand_icon_state = "trashbag"
 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/custodial_righthand.dmi'
-<<<<<<< HEAD
-=======
 	slot_flags = null
 	///If true, can be inserted into the janitor cart
->>>>>>> d09bfc8a04d (insert items from trash bags to autolathes (#64447))
 	var/insertable = TRUE
 
 /obj/item/storage/bag/trash/ComponentInitialize()
