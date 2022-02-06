@@ -135,3 +135,16 @@
 
 	var/obj/item/organ/tongue/dog/new_tongue = new(get_turf(human_holder))
 	new_tongue.Insert(human_holder)
+
+/datum/quirk/stammer
+	name = "Stammer"
+	desc = "You stammer (stutter) whenever you speak"
+	icon = "comment-slash"
+	value = 0
+	medical_record_text = "Patient has an uncurable stammer, causing pauses and repeating of letters in their speech"
+	processing_quirk = TRUE
+
+/datum/quirk/stammer/process()
+	var/mob/living/carbon/human/user = quirk_holder
+	if (user && istype(user))
+		user.stuttering = 20
