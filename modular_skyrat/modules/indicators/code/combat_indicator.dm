@@ -99,12 +99,12 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 				else
 					visible_message(span_boldwarning("[src] gets ready for combat!"))
 		combat_indicator = TRUE
-		apply_status_effect(STATUS_EFFECT_SURRENDER, src)
+		apply_status_effect(/datum/status_effect/grouped/surrender, src)
 		log_message("<font color='red'>has turned ON the combat indicator!</font>", LOG_ATTACK)
 		RegisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS, .proc/combat_indicator_unconscious_signal) //From now on, whenever this mob falls unconcious, the referenced proc will fire.
 	else
 		combat_indicator = FALSE
-		remove_status_effect(STATUS_EFFECT_SURRENDER, src)
+		remove_status_effect(/datum/status_effect/grouped/surrender, src)
 		log_message("<font color='blue'>has turned OFF the combat indicator!</font>", LOG_ATTACK)
 		UnregisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS) //combat_indicator_unconcious_signal will no longer be fired if this mob is unconcious.
 	update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
@@ -196,5 +196,5 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	if(. && isliving(user))
 		var/mob/living/living_user = user
 		living_user.Paralyze(200)
-		living_user.remove_status_effect(STATUS_EFFECT_SURRENDER, src)
+		living_user.remove_status_effect(/datum/status_effect/grouped/surrender, src)
 		living_user.set_combat_indicator(FALSE)

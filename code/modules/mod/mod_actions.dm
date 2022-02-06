@@ -4,18 +4,19 @@
 	check_flags = AB_CHECK_CONSCIOUS
 	/// Whether this action is intended for the AI. Stuff breaks a lot if this is done differently.
 	var/ai_action = FALSE
-	/// The MODsuit linked to this action
-	var/obj/item/mod/control/mod
 
 /datum/action/item_action/mod/New(Target)
 	..()
-	mod = Target
-	// SKYRAT EDIT START - pAIs in MODsuits
+	if(!istype(Target, /obj/item/mod/control))
+		qdel(src)
+		return
+  // SKYRAT EDIT START - pAIs in MODsuits
 	if(pai_action)
 		background_icon_state = "bg_tech"
-	// SKYRAT EDIT END
+  // SKYRAT EDIT END
 
 /datum/action/item_action/mod/Grant(mob/user)
+	var/obj/item/mod/control/mod = target
 	if(pai_action && user != mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
 		return
 	else if(!pai_action && user == mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
@@ -23,6 +24,7 @@
 	return ..()
 
 /datum/action/item_action/mod/Remove(mob/user)
+	var/obj/item/mod/control/mod = target
 	if(pai_action && user != mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
 		return
 	else if(!pai_action && user == mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
@@ -32,6 +34,7 @@
 /datum/action/item_action/mod/Trigger(trigger_flags)
 	if(!IsAvailable())
 		return FALSE
+	var/obj/item/mod/control/mod = target
 	if(mod.malfunctioning && prob(75))
 		mod.balloon_alert(usr, "button malfunctions!")
 		return FALSE
@@ -46,6 +49,7 @@
 	. = ..()
 	if(!.)
 		return
+	var/obj/item/mod/control/mod = target
 	if(trigger_flags & TRIGGER_SECONDARY_ACTION)
 		mod.quick_deploy(usr)
 	else
@@ -73,6 +77,7 @@
 		UpdateButtonIcon()
 		addtimer(CALLBACK(src, .proc/reset_ready), 3 SECONDS)
 		return
+	var/obj/item/mod/control/mod = target
 	reset_ready()
 	mod.toggle_activate(usr)
 
@@ -96,6 +101,7 @@
 	. = ..()
 	if(!.)
 		return
+	var/obj/item/mod/control/mod = target
 	mod.quick_module(usr)
 
 /datum/action/item_action/mod/module/ai
@@ -110,6 +116,7 @@
 	. = ..()
 	if(!.)
 		return
+	var/obj/item/mod/control/mod = target
 	mod.ui_interact(usr)
 
 /datum/action/item_action/mod/panel/ai
@@ -121,8 +128,8 @@
 	var/override = FALSE
 	/// Module we are linked to.
 	var/obj/item/mod/module/module
-	/// Mob we are pinned to.
-	var/mob/pinner
+	/// A ref to the mob we are pinned to.
+	var/pinner_ref
 
 /datum/action/item_action/mod/pinned_module/New(Target, obj/item/mod/module/linked_module, mob/user)
 	// SKYRAT EDIT START - pAIs in MODsuits
@@ -136,13 +143,21 @@
 	desc = "Quickly activate [linked_module]."
 	icon_icon = linked_module.icon
 	button_icon_state = linked_module.icon_state
-	pinner = user
 	RegisterSignal(linked_module, COMSIG_MODULE_ACTIVATED, .proc/on_module_activate)
 	RegisterSignal(linked_module, COMSIG_MODULE_DEACTIVATED, .proc/on_module_deactivate)
 	RegisterSignal(linked_module, COMSIG_MODULE_USED, .proc/on_module_use)
 
+/datum/action/item_action/mod/pinned_module/Destroy()
+	module.pinned_to -= pinner_ref
+	module = null
+	return ..()
+
 /datum/action/item_action/mod/pinned_module/Grant(mob/user)
-	if(user != pinner)
+	var/user_ref = REF(user)
+	if(!pinner_ref)
+		pinner_ref = user_ref
+		module.pinned_to[pinner_ref] = src
+	else if(pinner_ref != user_ref)
 		return
 	return ..()
 
@@ -150,6 +165,7 @@
 	. = ..()
 	if(!.)
 		return
+	var/obj/item/mod/control/mod = target
 	if(!mod.active)
 		mod.balloon_alert(usr, "suit not on!")
 	module.on_select()
@@ -158,6 +174,7 @@
 	. = ..(current_button, force = TRUE)
 	if(override)
 		return
+	var/obj/item/mod/control/mod = target
 	if(module == mod.selected_module)
 		current_button.add_overlay(image(icon = 'icons/hud/radial.dmi', icon_state = "module_selected", layer = FLOAT_LAYER-0.1))
 	else if(module.active)

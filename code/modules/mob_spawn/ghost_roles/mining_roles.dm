@@ -14,6 +14,7 @@
 	the hostile creatures, and the ash drakes swooping down from the cloudless skies, all you can wish for is the feel of soft grass between your toes and \
 	the fresh air of Earth. These thoughts are dispelled by yet another recollection of how you got here... "
 	spawner_job_path = /datum/job/hermit
+	quirks_enabled = TRUE // SKYRAT EDIT ADDITION - ghost role loadouts
 
 /obj/effect/mob_spawn/ghost_role/human/hermit/Initialize(mapload)
 	. = ..()
@@ -79,6 +80,7 @@
 	flavour_text = "Ch'yea. You came here, like, on spring break, hopin' to pick up some bangin' hot chicks, y'knaw?"
 	spawner_job_path = /datum/job/beach_bum
 	outfit = /datum/outfit/beachbum
+	quirks_enabled = TRUE // SKYRAT EDIT ADDITION - ghost role loadouts
 
 /obj/effect/mob_spawn/ghost_role/human/beach/lifeguard
 	you_are_text = "You're a spunky lifeguard!"
@@ -103,7 +105,7 @@
 	. = ..()
 	if(visualsOnly)
 		return
-	bum.dna.add_mutation(STONER)
+	bum.dna.add_mutation(/datum/mutation/human/stoner)
 
 /datum/outfit/beachbum/lifeguard
 	name = "Beach Lifeguard"
@@ -271,6 +273,8 @@
 	important_text = "The base is rigged with explosives, DO NOT abandon it or let it fall into enemy hands!"
 	outfit = /datum/outfit/lavaland_syndicate
 	spawner_job_path = /datum/job/lavaland_syndicate
+	loadout_enabled = TRUE // SKYRAT EDIT ADDITION - ghost role loadouts
+	quirks_enabled = TRUE // SKYRAT EDIT ADDITION - ghost role loadouts
 
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/special(mob/living/new_spawn)
 	. = ..()

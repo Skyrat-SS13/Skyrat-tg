@@ -571,12 +571,12 @@
 	new_module.on_install()
 	if(wearer)
 		new_module.on_equip()
-		var/datum/action/item_action/mod/pinned_module/action = new_module.pinned_to[wearer]
+		var/datum/action/item_action/mod/pinned_module/action = new_module.pinned_to[REF(wearer)]
 		if(action)
 			action.Grant(wearer)
 	// SKYRAT EDIT START - pAIs in MODsuits
 	if(mod_pai)
-		var/datum/action/item_action/mod/pinned_module/action = new_module.pinned_to[mod_pai]
+		var/datum/action/item_action/mod/pinned_module/action = new_module.pinned_to[ref(mod_pai)]
 		if(action)
 			action.Grant(mod_pai)
 	// SKYRAT EDIT END
@@ -592,18 +592,7 @@
 		old_module.on_suit_deactivation()
 		if(old_module.active)
 			old_module.on_deactivation(display_message = TRUE)
-	if(wearer)
-		old_module.on_unequip()
-		var/datum/action/item_action/mod/pinned_module/action = old_module.pinned_to[wearer]
-		if(action)
-			action.Remove(wearer)
-	// SKYRAT EDIT START - pAIs in MODsuits
-	if(mod_pai)
-		var/datum/action/item_action/mod/pinned_module/action = old_module.pinned_to[mod_pai]
-		if(action)
-			action.Remove(mod_pai)
-	// SKYRAT EDIT
-	old_module.pinned_to.Cut()
+	QDEL_LIST(old_module.pinned_to)
 	old_module.on_uninstall()
 	old_module.mod = null
 

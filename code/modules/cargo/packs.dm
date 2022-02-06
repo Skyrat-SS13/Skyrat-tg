@@ -2670,7 +2670,10 @@
 					/obj/item/storage/book/bible/booze,
 					/obj/item/storage/book/bible/booze,
 					/obj/item/clothing/suit/hooded/chaplain_hoodie,
-					/obj/item/clothing/suit/hooded/chaplain_hoodie)
+					/obj/item/clothing/suit/hooded/chaplain_hoodie,
+					/obj/item/clothing/under/misc/burial,
+					/obj/item/clothing/under/misc/burial,
+				)
 	crate_name = "religious supplies crate"
 
 /datum/supply_pack/misc/toner

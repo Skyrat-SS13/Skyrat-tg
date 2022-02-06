@@ -35,7 +35,7 @@
 	var/cooldown_time = 0
 	/// The mouse button needed to use this module
 	var/used_signal
-	/// List of mobs we are pinned to, linked with their action buttons
+	/// List of REF()s mobs we are pinned to, linked with their action buttons
 	var/list/pinned_to = list()
 	/// If we're allowed to use this module while phased out.
 	var/allowed_in_phaseout = FALSE
@@ -178,7 +178,7 @@
 
 /// Called when an activated module without a device is used
 /obj/item/mod/module/proc/on_select_use(atom/target)
-	if(mod.wearer.incapacitated(ignore_grab = TRUE))
+	if(mod.wearer.incapacitated(IGNORE_GRAB))
 		return FALSE
 	mod.wearer.face_atom(target)
 	if(!on_use())
@@ -289,14 +289,12 @@
 
 /// Pins the module to the user's action buttons
 /obj/item/mod/module/proc/pin(mob/user)
-	var/datum/action/item_action/mod/pinned_module/action = pinned_to[user]
+	var/datum/action/item_action/mod/pinned_module/action = pinned_to[REF(user)]
 	if(action)
 		qdel(action)
-		pinned_to[user] = null
 	else
 		action = new(mod, src, user)
 		action.Grant(user)
-		pinned_to[user] = action
 
 ///Anomaly Locked - Causes the module to not function without an anomaly.
 /obj/item/mod/module/anomaly_locked

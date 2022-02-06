@@ -35,7 +35,6 @@
 		"micro_mani",
 		"oven_tray",
 		"packagewrap",
-		"paystand",
 		"plasmaglass",
 		"plasmareinforcedglass",
 		"plasteel",
@@ -248,6 +247,7 @@
 		"comp_decimal_convert",
 		"comp_delay",
 		"comp_direction",
+		"comp_element_find",
 		"comp_filter_list",
 		"comp_foreach",
 		"comp_get_column",
@@ -262,8 +262,11 @@
 		"comp_index_table",
 		"comp_length",
 		"comp_light",
-		"comp_list_literal",
+		"comp_list_add",
 		"comp_list_assoc_literal",
+		"comp_list_clear",
+		"comp_list_literal",
+		"comp_list_remove",
 		"comp_logic",
 		"comp_matscanner",
 		"comp_mmi",
@@ -1166,7 +1169,7 @@
 		"dna_disk",
 		"dnascanner",
 		"scan_console",
-		"oc_donut_steel_restoration_device", // SKYRAT EDIT ADDITION: Added the Self-Actualization Device
+		"self_actualization_device", // SKYRAT EDIT ADDITION: Added the Self-Actualization Device
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -2077,6 +2080,14 @@
 
 /datum/techweb_node/syndicate_basic/New() //Crappy way of making syndicate gear decon supported until there's another way.
 	. = ..()
+	if(!SStraitor.initialized)
+		RegisterSignal(SStraitor, COMSIG_SUBSYSTEM_POST_INITIALIZE, .proc/register_uplink_items)
+	else
+		register_uplink_items()
+
+/datum/techweb_node/syndicate_basic/proc/register_uplink_items()
+	SIGNAL_HANDLER
+	UnregisterSignal(SStraitor, COMSIG_SUBSYSTEM_POST_INITIALIZE)
 	boost_item_paths = list()
 	for(var/datum/uplink_item/item_path as anything in SStraitor.uplink_items_by_type)
 		var/datum/uplink_item/item = SStraitor.uplink_items_by_type[item_path]
