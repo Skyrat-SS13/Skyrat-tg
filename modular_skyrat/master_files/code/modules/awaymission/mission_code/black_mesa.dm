@@ -600,9 +600,15 @@
 ///It looks fairly fitting for an "elite tacticool squad", so we'll just reuse it with the Expeditionary Corps' gear stats, and without that plasteel mention, until someone sprites/finds a better one. To make it fair.
 /obj/item/clothing/suit/armor/vest/marine/hecu
 	desc = "A set of the finest mass produced, stamped steel armor plates, containing an environmental protection unit for all-condition door kicking."
+	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
+	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
+	icon_state = "hecu_vest"
 	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 40, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
 
 /obj/item/clothing/head/helmet/marine/hecu
+	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
+	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
+	icon_state = "hecu_helm"
 	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
 
 /obj/item/storage/backpack/ert/odst/hecu
@@ -612,14 +618,17 @@
 	name = "HECU Grunt"
 	uniform = /obj/item/clothing/under/rank/security/officer/hecu
 	head = /obj/item/clothing/head/helmet/marine/hecu
-	mask = /obj/item/clothing/mask/gas/hecu2
+	mask = /obj/item/clothing/mask/balaclavaadjust
 	gloves = /obj/item/clothing/gloves/combat
 	suit = /obj/item/clothing/suit/armor/vest/marine/hecu
+	suit_store = /obj/item/gun/ballistic/automatic/assault_rifle/m16
 	belt = /obj/item/storage/belt/security/webbing
+	ears = /obj/item/radio/headset
 	shoes = /obj/item/clothing/shoes/combat
+	l_pocket = /obj/item/flashlight/glowstick
+	r_pocket = /obj/item/grenade/frag
 	back = /obj/item/storage/backpack/ert/odst/hecu
-	backpack_contents = list(/obj/item/radio, /obj/item/ammo_box/magazine/m16 = 4, /obj/item/storage/firstaid/expeditionary, /obj/item/storage/box/mothic_rations, /obj/item/gun/ballistic/automatic/pistol/g17, /obj/item/ammo_box/magazine/multi_sprite/g17 = 2, /obj/item/flashlight/glowstick = 2, /obj/item/knife/combat, /obj/item/grenade/frag, /obj/item/clothing/mask/balaclavaadjust)
-	r_hand =  /obj/item/gun/ballistic/automatic/assault_rifle/m16
+	backpack_contents = list(/obj/item/ammo_box/magazine/m16 = 4, /obj/item/storage/firstaid/expeditionary, /obj/item/storage/box/mothic_rations, /obj/item/gun/ballistic/automatic/pistol/g17, /obj/item/ammo_box/magazine/multi_sprite/g17 = 2, /obj/item/knife/combat)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu
 
