@@ -10,10 +10,10 @@
 	if(!istype(Target, /obj/item/mod/control))
 		qdel(src)
 		return
-  // SKYRAT EDIT START - pAIs in MODsuits
+	// SKYRAT EDIT START - pAIs in MODsuits
 	if(pai_action)
 		background_icon_state = "bg_tech"
-  // SKYRAT EDIT END
+	// SKYRAT EDIT END
 
 /datum/action/item_action/mod/Grant(mob/user)
 	var/obj/item/mod/control/mod = target
