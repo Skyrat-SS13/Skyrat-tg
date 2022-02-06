@@ -127,7 +127,8 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 	var/on_store_message = "has entered long-term storage."
 	var/on_store_name = "Cryogenic Oversight"
-	var/allow_player_override = FALSE
+	/// Whether the cryopod respects the minimum time someone has to be disconnected before they can be put into cryo by another player
+	var/allow_timer_override = FALSE
 	/// Minimum time for someone to be SSD before another player can cryo them.
 	var/ssd_time = 30 MINUTES //Replace with "cryo_min_ssd_time" CONFIG
 
