@@ -1591,8 +1591,6 @@
 		//SKYRAT EDIT ADDITION BEGIN
 		if(LOG_SUBTLER)
 			log_subtler(log_text)
-		if(LOG_AMBITION)
-			log_ambition(log_text)
 		//SKYRAT EDIT ADDITION END
 		if(LOG_RADIO_EMOTE)
 			log_radio_emote(log_text)
