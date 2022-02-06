@@ -99,25 +99,6 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
-/obj/item/gun/ballistic/automatic/pistol/g17/mesa
-	name = "\improper Glock-17"
-	desc = "Glock pistol, made for shooting at your target fast and experience no problems."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
-	icon_state = "glock_mesa"
-	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/g17
-	can_suppress = FALSE
-	fire_sound = 'sound/weapons/gun/pistol/shot_alt.ogg'
-	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
-	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
-	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
-	realistic = TRUE
-	can_flashlight = TRUE
-	dirt_modifier = 0.2
-	emp_damageable = FALSE
-	armadyne = FALSE
-	fire_delay = 0.9
-
 ////////////////PDH 40x32
 /obj/item/gun/ballistic/automatic/pistol/pdh
 	name = "\improper PDH-6H 'Osprey'"
