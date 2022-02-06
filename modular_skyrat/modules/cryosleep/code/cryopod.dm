@@ -348,7 +348,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	if(target.key && user != target)
 		if (target.getorgan(/obj/item/organ/brain) ) //Target the Brain
 			if(target.mind == null ) // Is the character empty / AI Controlled
-				if(target.lastclienttime + ssd_time MINUTES >= world.time)
+				if(target.lastclienttime + ssd_time >= world.time)
 					to_chat(user, span_notice("You can't put [target] into [src]. They have not been asleep for [ssd_time] minutes, they have only been asleep for [round(((world.time - target.lastclienttime) / (1 MINUTES)),1)] minutes."))
 					log_admin("[key_name(user)] has attempted to put [key_name(target)] into a stasis pod.")
 					message_admins("[key_name(user)] has attempted to put [key_name(target)] into a stasis pod. [ADMIN_JMP(src)]")
