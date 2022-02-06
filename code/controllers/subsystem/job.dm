@@ -33,15 +33,6 @@ SUBSYSTEM_DEF(job)
 	/// Lazylist of mob:occupation_string pairs.
 	var/list/dynamic_forced_occupations
 
-	/// A list of all jobs associated with the station. These jobs also have various icons associated with them including sechud and card trims.
-	var/list/station_jobs = list()
-	/// A list of all Head of Staff jobs.
-	var/list/head_of_staff_jobs = list()
-	/// A list of additional jobs that have various icons associated with them including sechud and card trims.
-	var/list/additional_jobs_with_icons = list()
-	/// A list of jobs associed with Centcom and should use the standard NT Centcom icons.
-	var/list/centcom_jobs = list()
-
 	/**
 	 * Keys should be assigned job roles. Values should be >= 1.
 	 * Represents the chain of command on the station. Lower numbers mean higher priority.
@@ -807,6 +798,7 @@ SUBSYSTEM_DEF(job)
 
 /// Builds various lists of jobs based on station, centcom and additional jobs with icons associated with them.
 /datum/controller/subsystem/job/proc/setup_job_lists()
+<<<<<<< HEAD
 	for(var/datum/job/job as anything in subtypesof(/datum/job))
 		if(initial(job.job_type_flags) & JOB_STATION_JOB)
 			station_jobs |= initial(job.title)
@@ -830,6 +822,8 @@ SUBSYSTEM_DEF(job)
 		JOB_CENTCOM_RESEARCH_OFFICER, JOB_CENTCOM_SPECIAL_OFFICER, JOB_CENTCOM_PRIVATE_SECURITY,
 	)
 
+=======
+>>>>>>> 77c9485ecb4 (Cleans Job lists (hardcoded and not) (#64596))
 	job_priorities_to_strings = list(
 		"[JP_LOW]" = "Low Priority",
 		"[JP_MEDIUM]" = "Medium Priority",
