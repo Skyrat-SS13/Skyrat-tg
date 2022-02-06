@@ -342,24 +342,21 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	if(target.key && user != target)
 		//var/mob/living/mob_occupant = targeted_mob //Get mob living
 		if (target.getorgan(/obj/item/organ/brain) ) //Target the Brain
-			if(ai_controller?.ai_status == AI_STATUS_ON) // Is the character empty / AI Controlled
-			if(target.lastclienttime + 1 MINUTES >= world.time)
-				to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] has not been asleep for 30 minutes."))
-				return
-			else
-				to_chat(user, span_danger("You put [target] into [src]. [target.p_theyre(capitalized = TRUE)] in the cryopod."))
-				log_admin("[key_name(target)] entered a stasis pod.")
-				message_admins("[key_name_admin(target)] entered a stasis pod. [ADMIN_JMP(src)]")
-				add_fingerprint(target)
+			if(target.mind.active == FALSE || target.mind == null) // Is the character empty / AI Controlled
+				if(target.lastclienttime + 30 MINUTES <= world.time)
+					to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] has not been asleep for 30 minutes. They have been asleep for [round(((world.time - target.lastclienttime) / (1 MINUTES)),1)] minutes."))
+					log_admin("[key_name(user)] has attempted to put [target] into a stasis pod.")
+					message_admins("[key_name(user)] has attempted to put [target] into a stasis pod. [ADMIN_JMP(src)]")
+					return
+				else
+					to_chat(user, span_danger("You put [target] into [src]. [target.p_theyre(capitalized = TRUE)] in the cryopod."))
+					log_admin("[key_name(user)] has put [target] into a stasis pod.")
+					message_admins("[key_name(user)] has put [target] into a stasis pod. [ADMIN_JMP(src)]")
 
-				close_machine(target)
-				name = "[name] ([target.name])"
-				//log_admin("[key_name(user)] has attempted to put [target] into a stasis pod.")
-				//message_admins("[key_name(user)] has attempted to put [target] into a stasis pod. [ADMIN_JMP(src)]")
-				// Add you cant cryo for
-				// add log showing who cryo'd who
-				// Add timer for how long until can be cryoed, need to make sure to null out any extra requests. Move to despawn_occupant so that you can put the person inside even before 15 mins.
+					add_fingerprint(target)
 
+					close_machine(target)
+					name = "[name] ([target.name])"
 
 		else if(iscyborg(target))
 			to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] online."))
@@ -367,6 +364,8 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 			to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] conscious."))
 		return
 
+//	if(target.key && user != target && (tgui_alert(user, "Would you like to enter cryosleep?", "Enter Cryopod?", list("Yes", "No")) != "Yes"))
+//		return
 
 	if(target == user && (tgui_alert(target, "Would you like to enter cryosleep?", "Enter Cryopod?", list("Yes", "No")) != "Yes"))
 		return
