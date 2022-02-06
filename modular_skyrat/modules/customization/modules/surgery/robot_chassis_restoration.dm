@@ -8,7 +8,8 @@
 	/datum/surgery_step/prepare_electronics,
 	/datum/surgery_step/add_plating/fullbody,
 	/datum/surgery_step/weld_plating/fullbody,
-	/datum/surgery_step/finalize_positronic_restoration)
+	/datum/surgery_step/finalize_positronic_restoration,
+	/datum/surgery_step/mechanic_close)
 
 	target_mobtypes = list(/mob/living/carbon/human)
 	possible_locs = list(BODY_ZONE_CHEST)
@@ -69,7 +70,7 @@
 	implements = list(
 		TOOL_MULTITOOL = 100,
 	)
-	repeatable = FALSE
+	repeatable = TRUE
 	time = 12 SECONDS
 
 /datum/surgery_step/finalize_positronic_restoration/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
