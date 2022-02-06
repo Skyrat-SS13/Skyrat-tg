@@ -68,51 +68,6 @@
 	time = 40
 	category = CAT_CLOTHING
 
-/datum/crafting_recipe/reagent_sword
-	name = "Reagent Sword"
-	result = /obj/item/forging/reagent_weapon/sword
-	reqs = list(/obj/item/forging/complete/sword = 1,
-				/obj/item/stack/sheet/mineral/wood = 2)
-	time = 40
-	category = CAT_WEAPONRY
-	subcategory = CAT_WEAPON
-
-/datum/crafting_recipe/reagent_staff
-	name = "Reagent Staff"
-	result = /obj/item/forging/reagent_weapon/staff
-	reqs = list(/obj/item/forging/complete/staff = 1,
-				/obj/item/stack/sheet/mineral/wood = 2)
-	time = 40
-	category = CAT_WEAPONRY
-	subcategory = CAT_WEAPON
-
-/datum/crafting_recipe/reagent_spear
-	name = "Reagent Spear"
-	result = /obj/item/forging/reagent_weapon/spear
-	reqs = list(/obj/item/forging/complete/spear = 1,
-				/obj/item/stack/sheet/mineral/wood = 2)
-	time = 40
-	category = CAT_WEAPONRY
-	subcategory = CAT_WEAPON
-
-/datum/crafting_recipe/reagent_axe
-	name = "Reagent Axe"
-	result = /obj/item/forging/reagent_weapon/axe
-	reqs = list(/obj/item/forging/complete/axe = 1,
-				/obj/item/stack/sheet/mineral/wood = 2)
-	time = 40
-	category = CAT_WEAPONRY
-	subcategory = CAT_WEAPON
-
-/datum/crafting_recipe/reagent_hammer
-	name = "Reagent Hammer"
-	result = /obj/item/forging/reagent_weapon/hammer
-	reqs = list(/obj/item/forging/complete/hammer = 1,
-				/obj/item/stack/sheet/mineral/wood = 2)
-	time = 40
-	category = CAT_WEAPONRY
-	subcategory = CAT_WEAPON
-
 /datum/crafting_recipe/primitive_billow
 	name = "Primitive Forging Billow"
 	result = /obj/item/forging/billow/primitive

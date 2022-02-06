@@ -22,6 +22,47 @@
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	sharpness = SHARP_EDGED
 
+/obj/item/forging/reagent_weapon/katana
+	name = "reagent katana"
+	desc = "A katana that can be imbued with a reagent."
+	force = 10
+	armour_penetration = 10
+	wound_bonus = 20
+	bare_wound_bonus = 40
+	icon_state = "katana"
+	inhand_icon_state = "katana"
+	lefthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_l.dmi'
+	righthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_r.dmi'
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	throwforce = 10
+	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
+	w_class = WEIGHT_CLASS_NORMAL
+	resistance_flags = FIRE_PROOF
+	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
+	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
+	sharpness = SHARP_EDGED
+
+/obj/item/forging/reagent_weapon/dagger
+	name = "reagent dagger"
+	desc = "A dagger that can be imbued with a reagent."
+	force = 8
+	icon_state = "dagger"
+	inhand_icon_state = "dagger"
+	lefthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_l.dmi'
+	righthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_r.dmi'
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	throwforce = 10
+	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
+	w_class = WEIGHT_CLASS_SMALL
+	resistance_flags = FIRE_PROOF
+	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
+	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
+	sharpness = SHARP_EDGED
+
+/obj/item/forging/reagent_weapon/dagger/attack(mob/living/M, mob/living/user, params)
+	. = ..()
+	user.changeNext_move(CLICK_CD_RANGE)
+
 /obj/item/forging/reagent_weapon/staff
 	name = "reagent staff"
 	desc = "A staff that can be imbued with a reagent."
@@ -66,7 +107,8 @@
 	name = "reagent axe"
 	desc = "An axe that can be imbued with a reagent."
 	force = 15
-	armour_penetration = 10
+	wound_bonus = 5
+	bare_wound_bonus = 10
 	icon_state = "axe"
 	inhand_icon_state = "axe"
 	lefthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_l.dmi'
@@ -83,6 +125,7 @@
 	name = "reagent hammer"
 	desc = "A hammer that can be imbued with a reagent."
 	force = 20
+	armour_penetration = 10
 	icon_state = "crush_hammer"
 	inhand_icon_state = "crush_hammer"
 	lefthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_l.dmi'
