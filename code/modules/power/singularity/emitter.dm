@@ -537,8 +537,6 @@
 		delay = world.time + 10
 	else if (emitter.charge < 10)
 		playsound(src,'sound/machines/buzz-sigh.ogg', 50, TRUE)
-<<<<<<< HEAD
-=======
 
 /obj/machinery/power/emitter/ctf
 	name = "Energy Cannon"
@@ -549,4 +547,3 @@
 	req_access_txt = "100"
 	welded = TRUE
 	use_power = NO_POWER_USE
->>>>>>> 612808cbd22 (Rotation component refactor and improvements (#64441))
