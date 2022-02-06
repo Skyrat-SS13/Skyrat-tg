@@ -31,6 +31,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	var/storage_type = "crewmembers"
 	var/storage_name = "Cryogenic Oversight Control"
 
+
 /obj/machinery/computer/cryopod/Initialize(mapload)
 	. = ..()
 	GLOB.cryopod_computers += src
@@ -126,6 +127,8 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 	var/on_store_message = "has entered long-term storage."
 	var/on_store_name = "Cryogenic Oversight"
+	var/allow_player_override = FALSE
+	var/ssd_time = 15 //Replace with "cryo_min_ssd_time" CONFIG
 
 	/// Time until despawn when a mob enters a cryopod. You cannot other people in pods unless they're catatonic.
 	var/time_till_despawn = 30 SECONDS
@@ -339,19 +342,33 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		to_chat(user, span_notice("Dead people can not be put into cryo."))
 		return
 
+// Allows admins to enable players to override SSD Time check.
+	if(allow_player_override)
+		if(tgui_alert(user, "Would you like to place [target] into [src]?", "Place into Cryopod?", list("Yes", "No")) != "No")
+			to_chat(user, span_danger("You put [target] into [src]. [target.p_theyre(capitalized = TRUE)] in the cryopod."))
+			log_admin("[key_name(user)] has put [key_name(target)] into a overridden stasis pod.")
+			message_admins("[key_name(user)] has put [key_name(target)] into a overridden stasis pod. [ADMIN_JMP(src)]")
+
+			add_fingerprint(target)
+
+			close_machine(target)
+			name = "[name] ([target.name])"
+
+// Allows players to cryo others. Checks if they have been AFK for 30 minutes.
 	if(target.key && user != target)
-		//var/mob/living/mob_occupant = targeted_mob //Get mob living
 		if (target.getorgan(/obj/item/organ/brain) ) //Target the Brain
-			if(target.mind.active == FALSE || target.mind == null) // Is the character empty / AI Controlled
-				if(target.lastclienttime + 30 MINUTES <= world.time)
-					to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] has not been asleep for 30 minutes. They have been asleep for [round(((world.time - target.lastclienttime) / (1 MINUTES)),1)] minutes."))
-					log_admin("[key_name(user)] has attempted to put [target] into a stasis pod.")
-					message_admins("[key_name(user)] has attempted to put [target] into a stasis pod. [ADMIN_JMP(src)]")
+			if(target.mind == null ) // Is the character empty / AI Controlled
+				if(target.lastclienttime + ssd_time MINUTES >= world.time)
+					to_chat(user, span_notice("You can't put [target] into [src]. They have not been asleep for [ssd_time] minutes, they have only been asleep for [round(((world.time - target.lastclienttime) / (1 MINUTES)),1)] minutes."))
+					log_admin("[key_name(user)] has attempted to put [key_name(target)] into a stasis pod.")
+					message_admins("[key_name(user)] has attempted to put [key_name(target)] into a stasis pod. [ADMIN_JMP(src)]")
 					return
-				else
+				else if(tgui_alert(user, "Would you like to place [target] into [src]?", "Place into Cryopod?", list("Yes", "No")) != "No")
+					if(target.mind.assigned_role.req_admin_notify)
+						tgui_alert(user, "They are an important role! [AHELP_FIRST_MESSAGE]")
 					to_chat(user, span_danger("You put [target] into [src]. [target.p_theyre(capitalized = TRUE)] in the cryopod."))
-					log_admin("[key_name(user)] has put [target] into a stasis pod.")
-					message_admins("[key_name(user)] has put [target] into a stasis pod. [ADMIN_JMP(src)]")
+					log_admin("[key_name(user)] has put [key_name(target)] into a stasis pod.")
+					message_admins("[key_name(user)] has put [key_name(target)] into a stasis pod. [ADMIN_JMP(src)]")
 
 					add_fingerprint(target)
 
@@ -363,9 +380,6 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		else
 			to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] conscious."))
 		return
-
-//	if(target.key && user != target && (tgui_alert(user, "Would you like to enter cryosleep?", "Enter Cryopod?", list("Yes", "No")) != "Yes"))
-//		return
 
 	if(target == user && (tgui_alert(target, "Would you like to enter cryosleep?", "Enter Cryopod?", list("Yes", "No")) != "Yes"))
 		return
