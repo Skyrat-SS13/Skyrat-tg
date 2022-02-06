@@ -51,16 +51,10 @@
 
 //#define UNIT_TESTS //If this is uncommented, we do a single run though of the game setup and tear down process with unit tests in between
 
-<<<<<<< HEAD
-=======
-/// If this is uncommented, Autowiki will generate edits and shut down the server.
-/// Prefer the autowiki build target instead.
-// #define AUTOWIKI
 
 /// If this is uncommented, will profile mapload atom initializations
 // #define PROFILE_MAPLOAD_INIT_ATOM
 
->>>>>>> 410091dd274 (Add compile option for profiling mapload atom inits (#64593))
 #ifndef PRELOAD_RSC //set to:
 #define PRELOAD_RSC 2 // 0 to allow using external resources or on-demand behaviour;
 #endif // 1 to use the default behaviour;
