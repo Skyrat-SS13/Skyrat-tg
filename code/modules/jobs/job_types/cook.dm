@@ -1,7 +1,7 @@
 /datum/job/cook
-	title = "Cook"
+	title = JOB_COOK
 	description = "Serve food, cook meat, keep the crew fed."
-	department_head = list("Head of Personnel")
+	department_head = list(JOB_HEAD_OF_PERSONNEL)
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 1
@@ -28,6 +28,7 @@
 
 	family_heirlooms = list(/obj/item/reagent_containers/food/condiment/saltshaker, /obj/item/kitchen/rollingpin, /obj/item/clothing/head/chefhat)
 	rpg_title = "Tavern Chef"
+	job_type_flags = JOB_STATION_JOB
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
 
@@ -38,7 +39,7 @@
 	if(!length(job_changes))
 		return
 
-	var/list/cook_changes = job_changes["cook"]
+	var/list/cook_changes = job_changes[JOB_COOK]
 
 	if(!length(cook_changes))
 		return

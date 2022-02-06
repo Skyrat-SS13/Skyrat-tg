@@ -2,7 +2,7 @@
 	name = "Lone Infiltrator"
 	antag_datum = /datum/antagonist/traitor/infiltrator
 	antag_flag = ROLE_LONE_INFILTRATOR
-	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative", "Nanotrasen Representative", "Blueshield", "Civil Disputes Officer", "Security Sergeant", "Orderly", "Bouncer", "Customs Agent", "Engineering Guard", "Science Guard") //SKYRAT EDIT - Sec_haul
+	restricted_roles = list(JOB_CYBORG, JOB_AI, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_HEAD_OF_SECURITY, JOB_CAPTAIN, JOB_CORRECTIONS_OFFICER, JOB_VANGUARD_OPERATIVE, JOB_NT_REP, JOB_BLUESHIELD, JOB_CIVIL_DISPUTES_OFFICER, JOB_SECURITY_SERGEANT, JOB_ORDERLY, JOB_BOUNCER, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD, JOB_SCIENCE_GUARD) //SKYRAT EDIT - Sec_haul
 	required_candidates = 1
 	weight = 5 //Slightly less common than normal midround traitors.
 	cost = 15 //But also slightly more costly.
@@ -43,12 +43,11 @@
 	uniform = /obj/item/clothing/under/syndicate
 	shoes = /obj/item/clothing/shoes/combat
 	gloves =  /obj/item/clothing/gloves/combat
-	back = /obj/item/storage/backpack/fireproof
 	ears = /obj/item/radio/headset/syndicate/alt
 	id = /obj/item/card/id/advanced/chameleon
 	glasses = /obj/item/clothing/glasses/night
 	mask = /obj/item/clothing/mask/gas/syndicate
-	suit = /obj/item/clothing/suit/space/hardsuit/syndi
+	back = /obj/item/mod/control/pre_equipped/nuclear
 	r_pocket = /obj/item/tank/internals/emergency_oxygen/engi
 	internals_slot = ITEM_SLOT_RPOCKET
 	belt = /obj/item/storage/belt/military

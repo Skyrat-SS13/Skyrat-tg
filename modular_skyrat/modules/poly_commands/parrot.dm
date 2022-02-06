@@ -41,7 +41,7 @@
 	var/mob/living/carbon/human/human_target = speaker
 	if(!istype(human_target))
 		return FALSE
-	if(!(human_target.mind?.assigned_role.title == "Chief Engineer"))
+	if(!(human_target.mind?.assigned_role.title == JOB_CHIEF_ENGINEER))
 		return FALSE
 	if(!(findtext(message, "poly")))
 		return FALSE

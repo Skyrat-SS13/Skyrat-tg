@@ -39,7 +39,7 @@
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)	//Needs just a biiit of oxygen
 	status_flags = CANPUSH
 	del_on_death = 1
-	var/obj/effect/mob_spawn/human/corpse/charredskeleton/corpse
+	var/obj/effect/mob_spawn/ghost_role/human/corpse/charredskeleton/corpse
 
 /mob/living/simple_animal/hostile/lost_husk/drop_loot()	//chance the corpse drops, usually just dusts
 	. = ..()

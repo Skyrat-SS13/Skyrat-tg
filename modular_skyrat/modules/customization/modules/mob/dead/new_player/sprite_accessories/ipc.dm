@@ -230,3 +230,7 @@
 /datum/sprite_accessory/ipc_chassis/zenghupharmaceuticals
 	name = "Zeng-Hu Pharmaceuticals"
 	icon_state = "zhpipc"
+
+/datum/sprite_accessory/ipc_chassis/e3n
+	name = "E3N AI"
+	icon_state = "e3n"

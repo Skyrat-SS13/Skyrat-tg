@@ -20,6 +20,7 @@
 	name = "pet collar"
 	desc = "It's for pets. Though you probably could wear it yourself, you'd doubtless be the subject of ridicule. It seems to be made out of a polychromic material."
 	icon_state = "petcollar_poly"
+	alternate_worn_layer = UNDER_SUIT_LAYER
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/collar
 	var/is_polychromic = TRUE
 	var/poly_colors = list("#00BBBB", "#FFCC00", "#FFFFFF")

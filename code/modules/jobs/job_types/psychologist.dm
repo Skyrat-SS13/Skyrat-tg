@@ -1,8 +1,8 @@
 /datum/job/psychologist
-	title = "Psychologist"
+	title = JOB_PSYCHOLOGIST
 	description = "Advocate sanity, self-esteem, and teamwork in a station \
 		staffed with headcases."
-	department_head = list("Head of Personnel","Chief Medical Officer")
+	department_head = list(JOB_HEAD_OF_PERSONNEL)
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
@@ -31,6 +31,7 @@
 		/obj/item/gun/syringe = 1
 	)
 	rpg_title = "Snake Oil Salesman"
+	job_type_flags = JOB_STATION_JOB
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
 

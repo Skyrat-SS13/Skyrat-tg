@@ -125,10 +125,12 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	var/list/special_pool = list() //The special list, for quirk-based
 	var/chosen_victim  //The obsession target
 
-	for(var/mob/Player in GLOB.player_list)//prevents crewmembers falling in love with nuke ops they never met, and other annoying hijinks
-		if(Player.mind && Player.stat != DEAD && !isnewplayer(Player) && !isbrain(Player) && Player.client && Player != owner && SSjob.GetJob(Player.mind.assigned_role))
-			if(Player.client.prefs?.read_preference(/datum/preference/toggle/erp/noncon))
-				viable_minds += Player.mind
+	for(var/mob/player in GLOB.player_list) //prevents crewmembers falling in love with nuke ops they never met, and other annoying hijinks
+		if(SSticker.IsRoundInProgress() && istype(get_area(player), /area/centcom/interlink))
+			continue
+		if(player.mind && player.stat != DEAD && !isnewplayer(player) && !isbrain(player) && player.client && player != owner && SSjob.GetJob(player.mind.assigned_role))
+			if(player?.client?.prefs?.read_preference(/datum/preference/toggle/erp/noncon))
+				viable_minds += player.mind
 	for(var/datum/mind/possible_target in viable_minds)
 		if(possible_target != owner && ishuman(possible_target.current))
 			possible_targets += possible_target.current

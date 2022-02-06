@@ -1,7 +1,7 @@
 /datum/job/roboticist
-	title = "Roboticist"
+	title = JOB_ROBOTICIST
 	description = "Build and repair the AI and cyborgs, create mechs."
-	department_head = list("Research Director")
+	department_head = list(JOB_RESEARCH_DIRECTOR)
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
@@ -31,6 +31,7 @@
 
 	family_heirlooms = list(/obj/item/toy/plush/pkplush)
 	rpg_title = "Necromancer"
+	job_type_flags = JOB_STATION_JOB
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
 
@@ -58,3 +59,11 @@
 
 	pda_slot = ITEM_SLOT_LPOCKET
 	skillchips = list(/obj/item/skillchip/job/roboticist)
+
+/datum/outfit/job/roboticist/mod
+	name = "Roboticist (MODsuit)"
+	suit_store = /obj/item/tank/internals/oxygen
+	back = /obj/item/mod/control/pre_equipped/standard
+	suit = null
+	mask = /obj/item/clothing/mask/breath
+	internals_slot = ITEM_SLOT_SUITSTORE

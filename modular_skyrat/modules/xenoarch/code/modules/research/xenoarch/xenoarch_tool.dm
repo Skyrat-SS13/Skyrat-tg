@@ -237,6 +237,7 @@
 	listeningTo = null
 
 /obj/item/storage/bag/xenoarch/proc/pickup_rocks(mob/living/user)
+	SIGNAL_HANDLER
 	var/show_message = FALSE
 	var/turf/tile = user.loc
 	if (!isturf(tile))
@@ -290,6 +291,7 @@
 	new /obj/item/storage/belt/utility/xenoarch(src)
 	new /obj/item/t_scanner/adv_mining_scanner(src)
 	new /obj/item/pickaxe(src)
+	new /obj/item/paper/fluff/xenoarch_guide(src)
 
 /obj/structure/closet/xenoarch/ashwalker_version
 	name = "dusty xenoarchaeology equipment locker"

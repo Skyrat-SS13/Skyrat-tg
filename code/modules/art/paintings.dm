@@ -173,18 +173,17 @@
 		to_chat(user,span_notice("You don't even have a id and you want to be an art patron?"))
 		return
 	if(!id_card.registered_account || !id_card.registered_account.account_job)
-		to_chat(user,span_notice("No valid non-departamental account found."))
+		to_chat(user,span_notice("No valid non-departmental account found."))
 		return
 	var/datum/bank_account/account = id_card.registered_account
 	if(account.account_balance < painting_metadata.credit_value)
 		to_chat(user,span_notice("You can't afford this."))
 		return
 	var/sniped_amount = painting_metadata.credit_value
-	var/offer_amount = input(user,"How much do you want to offer ? Minimum : [painting_metadata.credit_value]","Patronage Amount", painting_metadata.credit_value + 1) as num|null
-	if(account.account_balance < offer_amount)
-		to_chat(user,span_notice("You can't afford this."))
+	var/offer_amount = tgui_input_number(user, "How much do you want to offer?", "Patronage Amount", (painting_metadata.credit_value + 1), account.account_balance, painting_metadata.credit_value)
+	if(isnull(offer_amount))
 		return
-	if(!offer_amount || sniped_amount != painting_metadata.credit_value || offer_amount < painting_metadata.credit_value+1 || !user.canUseTopic(src))
+	if(offer_amount <= 0 || sniped_amount != painting_metadata.credit_value || offer_amount < painting_metadata.credit_value+1 || !user.canUseTopic(src))
 		return
 	if(!account.adjust_money(-offer_amount))
 		to_chat(user,span_warning("Transaction failure. Please try again."))
@@ -273,7 +272,7 @@
 /obj/item/canvas/proc/try_rename(mob/user)
 	if(painting_metadata.loaded_from_json) // No renaming old paintings
 		return
-	var/new_name = stripped_input(user,"What do you want to name the painting?")
+	var/new_name = tgui_input_text(user, "What do you want to name the painting?", "Title Your Masterpiece")
 	if(new_name != painting_metadata.title && new_name && user.canUseTopic(src, BE_CLOSE))
 		painting_metadata.title = new_name
 	var/sign_choice = tgui_alert(user, "Do you want to sign it or remain anonymous?", "Sign painting?", list("Yes", "No"))

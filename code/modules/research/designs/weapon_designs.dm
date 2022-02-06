@@ -39,6 +39,16 @@
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
+/datum/design/c38_rubber
+	name = "Speed Loader (.38 Rubber)"
+	desc = "Designed to quickly reload revolvers. Rubber bullets are bouncy and less-than-lethal."
+	id = "c38_rubber"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 20000)
+	build_path = /obj/item/ammo_box/c38/match/bouncy
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
 /datum/design/rubbershot/sec
 	id = "sec_rshot"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -352,21 +362,3 @@
 	build_path = /obj/item/melee/baton/security/boomerang
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-// SKYRAT EDIT BEGIN: CYBORG SHIT
-/datum/design/cyborg_module
-	name = "Cyborg Design"
-	desc = "what"
-	id = "cyborg_module"
-	research_icon = 'icons/mob/robots.dmi'
-	research_icon_state = "robot"
-	var/unlocked_module_name
-	var/unlocked_module_path
-
-/datum/design/cyborg_module/security
-	name = "Security Cyborg Design"
-	desc = "A security focued cyborg module. "
-	id = "security_cyborg_module"
-	research_icon_state = "sec"
-	unlocked_module_name = "Security"
-	unlocked_module_path = /obj/item/robot_model/security
-// SKYRAT EDIT END

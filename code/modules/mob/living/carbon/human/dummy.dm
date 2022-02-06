@@ -18,7 +18,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 /mob/living/carbon/human/dummy/attach_rot(mapload)
 	return
 
-/mob/living/carbon/human/dummy/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
+/mob/living/carbon/human/dummy/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE) // SKYRAT EDIT - Customization
 	harvest_organs()
 	return ..()
 
@@ -51,7 +51,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	///Travel to the bottom of the contents chain, expanding it out
 	for(var/i = 1; i <= length(items_to_check); i++) //Needs to be a c style loop since it can expand
 		var/obj/item/checking = items_to_check[i]
-		if(!checking) //Nulls in the list, depressing
+		if(QDELETED(checking)) //Nulls in the list, depressing
 			continue
 		if(!isitem(checking)) //What the fuck are you on
 			to_nuke += checking

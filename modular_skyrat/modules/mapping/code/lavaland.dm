@@ -1,6 +1,6 @@
 /*----- Template for ruins, prevents needing to re-type the filepath prefix -----*/
-/datum/map_template/ruin/lavaland/skyrat/
-	prefix = "modular_skyrat/modules/mapping/_maps/RandomRuins/LavaRuins/"
+/datum/map_template/ruin/lavaland/skyrat
+	prefix = "_maps/RandomRuins/LavaRuins/skyrat/"
 /*------*/
 
 /datum/map_template/ruin/lavaland/skyrat/syndicate_base

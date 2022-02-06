@@ -23,43 +23,6 @@
 	inhand_icon_state = "armoralt"
 	blood_overlay_type = "armor"
 	dog_fashion = /datum/dog_fashion/back
-	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Basic Armor" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "armoralt",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "armoralt"
-		),
-		"Alternative Armor" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "armor",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "armor"
-		),
-		"Blue Shift" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "guard_armor",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "guard_armor"
-		),
-		"Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "peacekeeper_armor",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeper",
-			RESKIN_MUTANT_VARIANTS = NONE
-		),
-		"Black Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "peacekeeper_black",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeper_black",
-			RESKIN_MUTANT_VARIANTS = NONE
-		)
-	)
-	/// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/suit/armor/vest/alt
 	desc = "A Type I armored vest that provides decent protection against most types of damage."
@@ -250,7 +213,7 @@
 	icon_state = "syndievest"
 
 /obj/item/clothing/suit/armor/vest/capcarapace/captains_formal
-	name = "captain's parade jacket"
+	name = "captain's parade coat"
 	desc = "For when an armoured vest isn't fashionable enough."
 	icon_state = "capformal"
 	inhand_icon_state = "capspacesuit"
@@ -332,24 +295,23 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	strip_delay = 80
 
+/obj/item/clothing/suit/armor/swat
+	name = "MK.I SWAT Suit"
+	desc = "A tactical suit first developed in a joint effort by the defunct IS-ERI and Nanotrasen in 2321 for military operations. It has a minor slowdown, but offers decent protection."
+	icon_state = "heavy"
+	inhand_icon_state = "swat_suit"
+	armor = list(MELEE = 40, BULLET = 30, LASER = 30,ENERGY = 40, BOMB = 50, BIO = 90, FIRE = 100, ACID = 100, WOUND = 15)
+	strip_delay = 120
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	clothing_flags = THICKMATERIAL
+	cold_protection = CHEST | GROIN | LEGS | FEET | ARMS | HANDS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT_OFF
+	heat_protection = CHEST | GROIN | LEGS | FEET | ARMS | HANDS
+	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
+	slowdown = 0.7
+	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+
 //All of the armor below is mostly unused
-
-/obj/item/clothing/head/helmet/space/hardsuit/swat/centcom
-	name = "\improper CentCom SWAT helmet"
-	icon = 'icons/obj/clothing/hats.dmi'
-	worn_icon = 'icons/mob/clothing/head.dmi'
-	worn_icon_state = "centcomspace"
-	icon_state = "centcomspace"
-	inhand_icon_state = "centcomspacehelmet"
-	desc = "A tactical MK.II SWAT helmet boasting better protection and a reasonable fashion sense."
-
-/obj/item/clothing/suit/space/hardsuit/swat/centcom
-	name = "\improper CentCom SWAT armor"
-	desc = "A MK.II SWAT suit with streamlined joints and armor made out of superior materials, insulated against intense heat with the complementary gas mask. Usually given to station Captains, this one has been painted CC green with complimentary gold accents."
-	icon_state = "centcom"
-	inhand_icon_state = "centcomspacesuit"
-	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/swat/centcom
-	cell = /obj/item/stock_parts/cell/super
 
 /obj/item/clothing/suit/armor/heavy
 	name = "heavy armor"

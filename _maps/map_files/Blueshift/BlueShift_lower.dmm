@@ -5025,8 +5025,7 @@
 	},
 /obj/structure/railing,
 /turf/open/floor/iron/stairs{
-	dir = 8;
-	initial_gas_mix = "TEMP=2.7"
+	dir = 8
 	},
 /area/cargo/miningdock)
 "csU" = (
@@ -7018,6 +7017,14 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/storage)
+"dVw" = (
+/obj/machinery/button/door{
+	id = "Sbay1";
+	name = "Shuttle Bay 1";
+	pixel_y = -24
+	},
+/turf/open/floor/iron/dark,
+/area/maintenance/fore)
 "dVR" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
@@ -7045,6 +7052,11 @@
 	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/light/directional/north,
+/obj/machinery/button/door{
+	id = "Sbay1";
+	name = "Shuttle Bay 1";
+	pixel_y = 24
+	},
 /turf/open/floor/iron/dark,
 /area/maintenance/fore)
 "dXR" = (
@@ -10258,6 +10270,10 @@
 	id = "garbage";
 	name = "disposal conveyor"
 	},
+/obj/machinery/mineral/stacking_unit_console{
+	machinedir = 2;
+	pixel_y = 32
+	},
 /turf/open/floor/plating,
 /area/maintenance/disposal)
 "gDg" = (
@@ -11540,6 +11556,10 @@
 	},
 /turf/open/floor/iron/bluespace,
 /area/engineering/atmos)
+"hMV" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "hNk" = (
 /obj/structure/closet/crate,
 /obj/effect/turf_decal/bot,
@@ -14024,7 +14044,6 @@
 	},
 /area/engineering/atmos)
 "jMy" = (
-/obj/structure/window/reinforced,
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "garbage"
@@ -14036,6 +14055,10 @@
 	icon_state = "left";
 	name = "Danger: Conveyor Access";
 	req_access_txt = "12"
+	},
+/obj/machinery/door/window/eastright{
+	dir = 2;
+	name = "Danger: Conveyor Access"
 	},
 /turf/open/floor/plating,
 /area/maintenance/disposal)
@@ -16116,6 +16139,14 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/port)
+"lsh" = (
+/obj/machinery/button/door{
+	id = "Sbay2";
+	name = "Shuttle Bay 2";
+	pixel_y = -24
+	},
+/turf/open/floor/iron/dark,
+/area/maintenance/fore)
 "lsq" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/east,
@@ -16169,14 +16200,6 @@
 	dir = 1
 	},
 /mob/living/simple_animal/bot/mulebot,
-/turf/open/floor/iron/dark,
-/area/cargo/warehouse)
-"luY" = (
-/obj/effect/turf_decal/delivery,
-/mob/living/simple_animal/bot/mulebot,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
 /turf/open/floor/iron/dark,
 /area/cargo/warehouse)
 "lvx" = (
@@ -21653,6 +21676,25 @@
 	dir = 1
 	},
 /area/hallway/secondary/entry)
+"pMC" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/light/directional/north,
+/obj/machinery/button/door{
+	id = "Sbay2";
+	name = "Shuttle Bay 2";
+	pixel_y = 24
+	},
+/turf/open/floor/iron/dark,
+/area/maintenance/fore)
 "pNm" = (
 /obj/structure/table/glass,
 /obj/item/folder/blue,
@@ -24046,7 +24088,7 @@
 	height = 5;
 	id = "mining_home";
 	name = "mining shuttle bay";
-	roundstart_template = /datum/map_template/shuttle/mining/box;
+	roundstart_template = /datum/map_template/shuttle/mining/skyrat;
 	width = 7
 	},
 /turf/open/floor/plating,
@@ -25294,7 +25336,7 @@
 	height = 5;
 	id = "commonmining_home";
 	name = "SS13: Common Mining Dock";
-	roundstart_template = /datum/map_template/shuttle/mining_common/meta;
+	roundstart_template = /datum/map_template/shuttle/mining_common/skyrat;
 	width = 7
 	},
 /turf/open/space/basic,
@@ -27997,7 +28039,6 @@
 /area/engineering/atmospherics_engine)
 "vnd" = (
 /obj/structure/table,
-/obj/item/circuitboard/machine/paystand,
 /obj/item/stack/cable_coil,
 /turf/open/floor/iron,
 /area/maintenance/fore)
@@ -28631,6 +28672,11 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"vHV" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "vIf" = (
 /obj/structure/chair/plastic{
 	dir = 1
@@ -28938,6 +28984,11 @@
 	},
 /turf/open/floor/wood,
 /area/security/prison/workout)
+"vRO" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/reagent_dispensers/watertank/high,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "vRR" = (
 /obj/effect/spawner/random/trash/grille_or_waste,
 /turf/open/floor/plating,
@@ -31908,6 +31959,10 @@
 /obj/machinery/meter,
 /turf/closed/wall/r_wall,
 /area/engineering/atmos)
+"xZs" = (
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "xZB" = (
 /obj/structure/closet/secure_closet/miner,
 /obj/effect/turf_decal/bot,
@@ -55033,12 +55088,12 @@ ylQ
 ylQ
 ylQ
 ayE
-xKm
-xKm
-xKm
-xKm
-xKm
-xKm
+xPb
+aqR
+aqR
+aqR
+aqR
+aqR
 flW
 aqR
 aqR
@@ -55290,12 +55345,12 @@ ylQ
 ylQ
 ylQ
 ayE
-xKm
-xKm
-xKm
-xKm
-xKm
-xKm
+ipg
+aqR
+aqR
+aqR
+aqR
+aqR
 arP
 aqR
 aqR
@@ -55547,12 +55602,12 @@ ylQ
 ylQ
 ylQ
 ayE
-xKm
-xKm
-xKm
-xKm
-xKm
-xKm
+sjb
+aqR
+aqR
+aqR
+aqR
+xZs
 arP
 aqR
 pgW
@@ -55804,12 +55859,12 @@ ylQ
 ylQ
 ylQ
 ayE
-xKm
-xKm
-xKm
-xKm
-xKm
-xKm
+aqR
+aqR
+aqR
+aqR
+aqR
+hMV
 arP
 aqR
 aqR
@@ -56061,12 +56116,12 @@ ylQ
 ylQ
 ylQ
 ayE
-xKm
-xKm
-xKm
-xKm
-xKm
-xKm
+aqR
+aqR
+aqR
+aqR
+aqR
+vZa
 xto
 aqR
 aqR
@@ -56318,11 +56373,11 @@ ylQ
 ylQ
 ylQ
 ayE
+vRO
+vHV
+qqn
 aqR
-aqR
-aqR
-aqR
-aqR
+vML
 arP
 arP
 arP
@@ -58891,7 +58946,7 @@ vMU
 vMU
 vMU
 afB
-xOl
+dVw
 arP
 dXF
 qDr
@@ -59662,9 +59717,9 @@ skK
 skK
 skK
 afG
-xOl
+lsh
 arP
-apT
+pMC
 qDr
 xPg
 xPg
@@ -74620,7 +74675,7 @@ qvy
 xIc
 diF
 fiS
-luY
+luW
 yad
 oJz
 bGh
@@ -77183,7 +77238,7 @@ ylQ
 hyo
 iQj
 vWS
-vWS
+pXx
 gCj
 cuF
 nVb

@@ -1,8 +1,8 @@
 /datum/job/curator
-	title = "Curator"
+	title = JOB_CURATOR
 	description = "Read and write books and hand them to people, stock \
 		bookshelves, report on station news."
-	department_head = list("Head of Personnel")
+	department_head = list(JOB_HEAD_OF_PERSONNEL)
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
@@ -23,6 +23,7 @@
 
 	family_heirlooms = list(/obj/item/pen/fountain, /obj/item/storage/dice)
 
+	job_type_flags = JOB_STATION_JOB
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
 	voice_of_god_silence_power = 3
@@ -37,6 +38,7 @@
 	backpack_contents = list(
 		/obj/item/barcodescanner = 1,
 		/obj/item/choice_beacon/hero = 1,
+		/obj/item/glassblowing/magnifying_glass, //SKYRAT EDIT: Magnifying Glass
 	)
 	belt = /obj/item/pda/curator
 	ears = /obj/item/radio/headset/headset_srv

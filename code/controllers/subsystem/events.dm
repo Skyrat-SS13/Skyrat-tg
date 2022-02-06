@@ -8,13 +8,13 @@ SUBSYSTEM_DEF(events)
 	var/list/currentrun = list()
 
 	var/scheduled = 0 //The next world.time that a naturally occuring random event can be selected.
-	//var/frequency_lower = 1800 //3 minutes lower bound. //ORIGINAL
-	var/frequency_lower = 10 MINUTES //SKYRAT EDIT CHANGE - EVENTS LESS OFTEN
-	//var/frequency_upper = 6000 //10 minutes upper bound. Basically an event will happen every 3 to 10 minutes. //ORIGINAL
-	var/frequency_upper = 15 MINUTES //SKYRAT EDIT CHANGE - EVENTS LESS OFTEN
+	var/frequency_lower = 1800 //3 minutes lower bound.
+	var/frequency_upper = 6000 //10 minutes upper bound. Basically an event will happen every 3 to 10 minutes.
 
 	var/list/holidays //List of all holidays occuring today or null if no holidays
 	var/wizardmode = FALSE
+
+	var/list/previously_run = list() //SKYRAT EDIT ADDITION
 
 /datum/controller/subsystem/events/Initialize(time, zlevel)
 	for(var/type in typesof(/datum/round_event_control))
@@ -56,18 +56,21 @@ SUBSYSTEM_DEF(events)
 	scheduled = world.time + rand(frequency_lower, max(frequency_lower,frequency_upper))
 
 //selects a random event based on whether it can occur and it's 'weight'(probability)
-/datum/controller/subsystem/events/proc/spawnEvent()
+/datum/controller/subsystem/events/proc/spawnEvent(threat_override = FALSE) //SKYRAT EDIT CHANGE
 	set waitfor = FALSE //for the admin prompt
 	if(!CONFIG_GET(flag/allow_random_events))
 		return
 
 	var/players_amt = get_active_player_count(alive_check = 1, afk_check = 1, human_check = 1)
 	// Only alive, non-AFK human players count towards this.
-
 	var/sum_of_weights = 0
 	for(var/datum/round_event_control/E in control)
 		if(!E.canSpawnEvent(players_amt))
 			continue
+		//SKYRAT EDIT ADDITION
+		if(threat_override && !E.alert_observers)
+			continue
+		//SKYRAT EDIT END
 		if(E.weight < 0) //for round-start events etc.
 			var/res = TriggerEvent(E)
 			if(res == EVENT_INTERRUPTED)
@@ -85,6 +88,7 @@ SUBSYSTEM_DEF(events)
 
 		if(sum_of_weights <= 0) //we've hit our goal
 			if(TriggerEvent(E))
+				previously_run += E //SKYRAT EDIT ADDITION
 				return
 
 /datum/controller/subsystem/events/proc/TriggerEvent(datum/round_event_control/E)

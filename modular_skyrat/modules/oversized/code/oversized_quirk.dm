@@ -14,6 +14,7 @@
 /datum/quirk/oversized/add()
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	human_holder.dna.features["body_size"] = 2
+	human_holder.maptext_height = 32 * human_holder.dna.features["body_size"] //Adjust runechat height
 	human_holder.dna.update_body_size()
 	human_holder.mob_size = MOB_SIZE_LARGE
 	human_holder.dna.species.punchdamagelow += OVERSIZED_HARM_DAMAGE_BONUS
@@ -25,6 +26,7 @@
 /datum/quirk/oversized/remove()
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	human_holder.dna.features["body_size"] = human_holder?.client?.prefs ?human_holder?.client?.prefs?.read_preference(/datum/preference/numeric/body_size) : 1
+	human_holder.maptext_height = 32 * human_holder.dna.features["body_size"]
 	human_holder.dna.update_body_size()
 	human_holder.mob_size = MOB_SIZE_HUMAN
 	human_holder.dna.species.punchdamagelow -= OVERSIZED_HARM_DAMAGE_BONUS

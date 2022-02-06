@@ -14,7 +14,6 @@
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 30, ACID = 30, WOUND = 10)
 	strip_delay = 50
-	alt_covers_chest = TRUE
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
@@ -23,113 +22,7 @@
 	desc = "A tactical security jumpsuit for officers complete with Nanotrasen belt buckle."
 	icon_state = "rsecurity"
 	inhand_icon_state = "r_suit"
-	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Basic Security" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "rsecurity",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "rsecurity"
-		),
-		"Grey Security" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "security",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "security"
-		),
-		"Security Jumpskirt" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "secskirt",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "secskirt"
-		),
-		"Formal Security Uniform" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "officerblueclothes",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "officerblueclothes"
-		),
-		"Blue Shift" = list( // Uses the better sprites for the Blue Shift clothing.
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "barney_uniform",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "barney_uniform"
-		),
-		"Constable" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "constable",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "constable"
-		),
-		"Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "peacekeeper",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeper"
-		),
-		"Tactical Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "peacekeeper_tac",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeper_tac"
-		),
-		"Blue Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "bsecurity",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "bsecurity"
-		),
-		"Junior Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "junior_officer",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "junior_officer"
-		),
-		"Battle Dress Uniform" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/modular_items/icons/modular_clothing.dmi',
-			RESKIN_ICON_STATE = "fatigues",
-			RESKIN_WORN_ICON = 'modular_skyrat/modules/modular_items/icons/modular_clothing.dmi',
-			RESKIN_WORN_ICON_STATE = "fatigues"
-		),
-		"Sol" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "policealt",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "policealt"
-		),
-		"Sol Cadet" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "policecadetalt",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "policecadetalt"
-		),
-		"Sol Traffic" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "policetrafficalt",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "policetrafficalt"
-		),
-		"Trousers" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "workpants_red",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "workpants_red"
-		),
-		"Peacekeeper Trousers" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "workpants_blue",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "workpants_blue"
-		),
-		"Kilt" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "blackwatch",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "blackwatch"
-		)
-	)
-	/// SKYRAT EDIT ADDITION END
+
 /obj/item/clothing/under/rank/security/officer/grey
 	name = "grey security jumpsuit"
 	desc = "A tactical relic of years past before Nanotrasen decided it was cheaper to dye the suits red instead of washing out the blood."
@@ -157,6 +50,7 @@
 	desc = "The latest in fashionable security outfits."
 	icon_state = "officerblueclothes"
 	inhand_icon_state = "officerblueclothes"
+	alt_covers_chest = TRUE
 
 /obj/item/clothing/under/rank/security/constable
 	name = "constable outfit"
@@ -166,52 +60,12 @@
 	can_adjust = FALSE
 	custom_price = PAYCHECK_HARD
 
+
 /obj/item/clothing/under/rank/security/warden
 	name = "security suit"
 	desc = "A formal security suit for officers complete with Nanotrasen belt buckle."
 	icon_state = "rwarden"
 	inhand_icon_state = "r_suit"
-	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Basic Warden" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "rwarden",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "rwarden"
-		),
-		"Grey Warden" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "warden",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "warden"
-		),
-		"Warden Jumpskirt" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "rwarden_skirt",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "rwarden_skirt"
-		),
-		"Formal Warden Uniform" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "wardenblueclothes",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "wardenblueclothes"
-		),
-		"Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "peacekeeper_warden",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeper_warden"
-		),
-		"Sol" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "policewardenalt",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "policewardenalt"
-		)
-	)
-	/// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/under/rank/security/warden/grey
 	name = "grey security suit"
@@ -233,6 +87,7 @@
 	name = "warden's formal uniform"
 	icon_state = "wardenblueclothes"
 	inhand_icon_state = "wardenblueclothes"
+	alt_covers_chest = TRUE
 
 /*
  * Detective
@@ -242,6 +97,7 @@
 	desc = "Someone who wears this means business."
 	icon_state = "detective"
 	inhand_icon_state = "det"
+	alt_covers_chest = TRUE
 
 /obj/item/clothing/under/rank/security/detective/skirt
 	name = "detective's suitskirt"
@@ -251,12 +107,14 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
+	alt_covers_chest = TRUE
 
 /obj/item/clothing/under/rank/security/detective/grey
 	name = "noir suit"
 	desc = "A hard-boiled private investigator's grey suit, complete with tie clip."
 	icon_state = "greydet"
 	inhand_icon_state = "greydet"
+	alt_covers_chest = TRUE
 
 /obj/item/clothing/under/rank/security/detective/grey/skirt
 	name = "noir suitskirt"
@@ -266,6 +124,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
+	alt_covers_chest = TRUE
 
 /*
  * Head of Security
@@ -277,72 +136,6 @@
 	inhand_icon_state = "r_suit"
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 50, WOUND = 10)
 	strip_delay = 60
-	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Basic HoS" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "rhos",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "rhos"
-		),
-		"Grey HoS" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "hos",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "hos"
-		),
-		"HoS Jumpskirt" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "rhos_skirt",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "rhos_skirt"
-		),
-		"HoS Turtleneck" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "hosalt",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "hosalt"
-		),
-		"HoS Turtleskirt" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "hosalt_skirt",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "hosalt_skirt"
-		),
-		"Parade HoS Uniform" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "hos_parade_male",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "hos_parade_male"
-		),
-		"Parade Woman's HoS Uniform" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "hos_parade_fem",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "hos_parade_fem"
-		),
-		"Formal HoS Uniform" = list(
-			RESKIN_ICON = 'icons/obj/clothing/under/security.dmi',
-			RESKIN_ICON_STATE = "hosblueclothes",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/under/security.dmi',
-			RESKIN_WORN_ICON_STATE = "hosblueclothes"
-		),
-		"Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "peacekeeper_hos",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeper_hos"
-		),
-		"Imperial" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
-			RESKIN_ICON_STATE = "imphos",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
-			RESKIN_WORN_ICON_STATE = "imphos"
-		)
-	)
-	/// SKYRAT EDIT ADDITION END
-
 
 /obj/item/clothing/under/rank/security/head_of_security/skirt
 	name = "head of security's jumpskirt"
@@ -364,6 +157,7 @@
 	desc = "A stylish alternative to the normal head of security jumpsuit, complete with tactical pants."
 	icon_state = "hosalt"
 	inhand_icon_state = "bl_suit"
+	alt_covers_chest = TRUE
 
 /obj/item/clothing/under/rank/security/head_of_security/alt/skirt
 	name = "head of security's turtleneck skirt"
@@ -373,6 +167,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
+	alt_covers_chest = TRUE
 
 /* //SKYRAT EDIT CHANGE - OVERRIDDEN BY modular_skyrat/modules/customization/modules/clothing/under/security.dm
 /obj/item/clothing/under/rank/security/head_of_security/parade
@@ -396,6 +191,7 @@
 	name = "head of security's formal uniform"
 	icon_state = "hosblueclothes"
 	inhand_icon_state = "hosblueclothes"
+	alt_covers_chest = TRUE
 
 /*
  *Spacepol

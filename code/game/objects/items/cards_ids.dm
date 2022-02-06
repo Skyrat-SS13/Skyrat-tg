@@ -7,6 +7,9 @@
 /// Fallback time if none of the config entries are set for USE_LOW_LIVING_HOUR_INTERN
 #define INTERN_THRESHOLD_FALLBACK_HOURS 15
 
+/// Max time interval between projecting holopays
+#define HOLOPAY_PROJECTION_INTERVAL 7 SECONDS
+
 /* Cards
  * Contains:
  * DATA CARD
@@ -59,8 +62,28 @@
 	var/registered_name = null
 	/// Linked bank account.
 	var/datum/bank_account/registered_account
-	/// Linked paystand.
-	var/obj/machinery/paystand/my_store
+
+	/// Linked holopay.
+	var/datum/weakref/holopay_ref
+	/// Cooldown between projecting holopays
+	COOLDOWN_DECLARE(last_holopay_projection)
+	/// List of logos available for holopay customization - via font awesome 5
+	var/static/list/available_logos = list("angry", "ankh", "bacon", "band-aid", "cannabis", "cat", "cocktail", "coins", "comments-dollar",
+	"cross", "cut", "dog", "donate", "dna", "fist-raised", "flask", "glass-cheers", "glass-martini-alt", "hamburger", "hand-holding-usd",
+	"hat-wizard", "head-side-cough-slash", "heart", "heart-broken",  "laugh-beam", "leaf", "money-check-alt", "music", "piggy-bank",
+	"pizza-slice", "prescription-bottle-alt", "radiation", "robot", "smile", "skull-crossbones", "smoking", "space-shuttle", "tram",
+	"trash", "user-ninja", "utensils", "wrench")
+	/// Replaces the "pay whatever" functionality with a set amount when non-zero.
+	var/holopay_fee = 0
+	/// The holopay icon chosen by the user
+	var/holopay_logo = "donate"
+	/// Maximum forced fee. It's unlikely for a user to encounter this type of money, much less pay it willingly.
+	var/holopay_max_fee = 5000
+	/// Minimum forced fee for holopay stations. Registers as "pay what you want."
+	var/holopay_min_fee = 0
+	/// The holopay name chosen by the user
+	var/holopay_name = "holographic pay stand"
+
 	/// Registered owner's age.
 	var/registered_age = 18 //SKYRAT EDIT - ORIGINAL (13)
 
@@ -94,8 +117,8 @@
 /obj/item/card/id/Destroy()
 	if (registered_account)
 		registered_account.bank_cards -= src
-	if (my_store && my_store.my_card == src)
-		my_store.my_card = null
+	if (holopay_ref)
+		QDEL_NULL(holopay_ref)
 	return ..()
 
 /obj/item/card/id/get_id_examine_strings(mob/user)
@@ -383,6 +406,103 @@
 		user.visible_message(span_notice("[user] shows you: [icon2html(src, viewers(user))] [src.name][minor]."), span_notice("You show \the [src.name][minor]."))
 	add_fingerprint(user)
 
+/obj/item/card/id/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	/// Sanity checks
+	var/obj/structure/holopay/my_store = holopay_ref?.resolve()
+	if(my_store)
+		my_store.dissapate()
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	if(!COOLDOWN_FINISHED(src, last_holopay_projection))
+		balloon_alert(user, "still recharging")
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	if(!registered_account || !registered_account.account_job)
+		balloon_alert(user, "no account")
+		to_chat(user, span_warning("You need a valid bank account to do this."))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	/// Determines where the holopay will be placed based on tile contents
+	var/turf/projection
+	var/turf/step_ahead = get_step(user, user.dir)
+	var/turf/user_loc = user.loc
+	if(can_proj_holopay(step_ahead))
+		projection = step_ahead
+	else if(can_proj_holopay(user_loc))
+		projection = user_loc
+	if(!projection)
+		balloon_alert(user, "no space")
+		to_chat(user, span_warning("You need to be standing on or near an open tile to do this."))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	/// Success: Valid tile for holopay placement
+	var/obj/structure/holopay/new_store = new(projection)
+	if(new_store?.assign_card(projection, src))
+		COOLDOWN_START(src, last_holopay_projection, HOLOPAY_PROJECTION_INTERVAL)
+		playsound(projection, "sound/effects/empulse.ogg", 40, TRUE)
+		holopay_ref = WEAKREF(new_store)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/**
+ * Determines whether a new holopay can be placed on the given turf.
+ * Checks if there are dense contents, too many contents, or another
+ * holopay already exists on the turf.
+ *
+ * Arguments:
+ * * turf/target - The target turf to be checked for dense contents
+ * Returns:
+ * * TRUE if the target is a valid holopay location, FALSE otherwise.
+ */
+/obj/item/card/id/proc/can_proj_holopay(turf/target)
+	if(!isfloorturf(target))
+		return FALSE
+	if(target.density)
+		return FALSE
+	if(length(target.contents) > 5)
+		return FALSE
+	for(var/obj/checked_obj in target.contents)
+		if(checked_obj.density)
+			return FALSE
+		if(istype(checked_obj, /obj/structure/holopay))
+			return FALSE
+	return TRUE
+
+/**
+ * Setter for the shop logo on linked holopays
+ *
+ * Arguments:
+ * * new_logo - The new logo to be set.
+ */
+/obj/item/card/id/proc/set_holopay_logo(new_logo)
+	if(!available_logos.Find(new_logo))
+		CRASH("User input a holopay shop logo that didn't exist.")
+	holopay_logo = new_logo
+
+/**
+ * Setter for changing the force fee on a holopay.
+ *
+ * Arguments:
+ * * new_fee - The new fee to be set.
+ */
+/obj/item/card/id/proc/set_holopay_fee(new_fee)
+	if(!isnum(new_fee))
+		CRASH("User input a non number into the holopay fee field.")
+	if(new_fee < holopay_min_fee || new_fee > holopay_max_fee)
+		CRASH("User input a number outside of the valid range into the holopay fee field.")
+	holopay_fee = new_fee
+
+/**
+ * Setter for changing the holopay name.
+ *
+ * Arguments:
+ * * new_name - The new name to be set.
+ */
+/obj/item/card/id/proc/set_holopay_name(name)
+	if(length(name) < 3 || length(name) > MAX_NAME_LEN)
+		to_chat(usr, span_warning("Must be between 3 - 42 characters."))
+	else
+		holopay_name = html_encode(trim(name, MAX_NAME_LEN))
+
+
 /obj/item/card/id/vv_edit_var(var_name, var_value)
 	. = ..()
 	if(.)
@@ -459,7 +579,7 @@
 		to_chat(user, span_warning("[src] doesn't have a linked account to deposit into!"))
 		return FALSE
 
-	if (!money || !money.len)
+	if (!money || !length(money))
 		return FALSE
 
 	var/total = 0
@@ -489,49 +609,38 @@
 	. = FALSE
 	var/datum/bank_account/old_account = registered_account
 
-	var/new_bank_id = input(user, "Enter your account ID number.", "Account Reclamation", 111111) as num | null
-
-	if (isnull(new_bank_id))
+	var/new_bank_id = tgui_input_number(user, "Enter your account ID number", "Account Reclamation", 111111, 999999, 111111)
+	if(isnull(new_bank_id))
 		return
-
 	if(!alt_click_can_use_id(user))
 		return
-	if(!new_bank_id || new_bank_id < 111111 || new_bank_id > 999999)
-		to_chat(user, span_warning("The account ID number needs to be between 111111 and 999999."))
-		return
-	if (registered_account && registered_account.account_id == new_bank_id)
+	if(registered_account && registered_account.account_id == new_bank_id)
 		to_chat(user, span_warning("The account ID was already assigned to this card."))
 		return
-
-	var/datum/bank_account/B = SSeconomy.bank_accounts_by_id["[new_bank_id]"]
-	if(B)
-		if (old_account)
-			old_account.bank_cards -= src
-
-		B.bank_cards += src
-		registered_account = B
-		to_chat(user, span_notice("The provided account has been linked to this ID card."))
-
-		return TRUE
-
-	to_chat(user, span_warning("The account ID number provided is invalid."))
-	return
+	var/datum/bank_account/account = SSeconomy.bank_accounts_by_id["[new_bank_id]"]
+	if(isnull(account))
+		to_chat(user, span_warning("The account ID number provided is invalid."))
+		return
+	if(old_account)
+		old_account.bank_cards -= src
+	account.bank_cards += src
+	registered_account = account
+	to_chat(user, span_notice("The provided account has been linked to this ID card."))
+	return TRUE
 
 /obj/item/card/id/AltClick(mob/living/user)
 	if(!alt_click_can_use_id(user))
 		return
-
 	if(!registered_account)
 		set_new_account(user)
 		return
-
 	if (registered_account.being_dumped)
 		registered_account.bank_card_talk(span_warning("内部服务器错误"), TRUE)
 		return
-
-	var/amount_to_remove = FLOOR(input(user, "How much do you want to withdraw? Current Balance: [registered_account.account_balance]", "Withdraw Funds", 5) as num|null, 1)
-
-	if(!amount_to_remove || amount_to_remove < 0)
+	var/amount_to_remove = round(tgui_input_number(user, "How much do you want to withdraw?", "Withdraw Funds", 1, registered_account.account_balance, 1))
+	if(isnull(amount_to_remove))
+		return
+	if(amount_to_remove < 1 || amount_to_remove > registered_account.account_balance)
 		return
 	if(!alt_click_can_use_id(user))
 		return
@@ -939,6 +1048,21 @@
 	registered_name = "Syndicate"
 	trim = /datum/id_trim/syndicom/captain
 
+
+/obj/item/card/id/advanced/black/syndicate_command/captain_id/syndie_spare
+	name = "syndicate captain's spare ID"
+	desc = "The spare ID of the Dark Lord himself."
+	registered_name = "Captain"
+	registered_age = null
+
+/obj/item/card/id/advanced/black/syndicate_command/captain_id/syndie_spare/update_label()
+	if(registered_name == "Captain")
+		name = "[initial(name)][(!assignment || assignment == "Captain") ? "" : " ([assignment])"]"
+		update_appearance(UPDATE_ICON)
+		return
+
+	return ..()
+
 /obj/item/card/id/advanced/debug
 	name = "\improper Debug ID"
 	desc = "A debug ID card. Has ALL the all access, you really shouldn't have this."
@@ -970,43 +1094,51 @@
 	var/goal = 0
 	/// Number of gulag points earned.
 	var/points = 0
-	// SKYRAT EDIT: Start - Genpop IDs
-	access = list(ACCESS_ENTER_GENPOP)
-	var/sentence = 0	//When world.time is greater than this number, the card will have its ACCESS_ENTER_GENPOP access replaced with ACCESS_LEAVE_GENPOP the next time it's checked, unless this value is 0/null
-	var/crime= "\[REDACTED\]"
+	/// If the card has a timer set on it for temporary stay.
+	var/timed = FALSE
+	/// Time to assign to the card when they pass through the security gate.
+	var/time_to_assign
+	/// Time left on a card till they can leave.
+	var/time_left = 0
 
-/obj/item/card/id/advanced/prisoner/GetAccess()
-	if((sentence && world.time >= sentence) || (goal && points >= goal))
-		access = list(ACCESS_LEAVE_GENPOP)
-	return ..()
+/obj/item/card/id/advanced/prisoner/attackby(obj/item/card/id/C, mob/user)
+	..()
+	var/list/id_access = C.GetAccess()
+	if(!(ACCESS_BRIG in id_access))
+		return
+	if(timed)
+		timed = FALSE
+		time_to_assign = initial(time_to_assign)
+		registered_name = initial(registered_name)
+		STOP_PROCESSING(SSobj, src)
+		to_chat(user, "Restating prisoner ID to default parameters.")
+		return
+	var/choice = tgui_input_number(user, "Sentence time in seconds", "Sentencing")
+	if(isnull(choice) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+		return
+	time_to_assign = round(choice)
+	to_chat(user, "You set the sentence time to [time_to_assign] seconds.")
+	timed = TRUE
+
+/obj/item/card/id/advanced/prisoner/proc/start_timer()
+	say("Sentence started, welcome to the corporate rehabilitation center!")
+	START_PROCESSING(SSobj, src)
 
 /obj/item/card/id/advanced/prisoner/examine(mob/user)
 	. = ..()
-	if(sentence && world.time < sentence)
-		to_chat(user, "<span class='notice'>You're currently serving a sentence for [crime]. <b>[DisplayTimeText(sentence - world.time)]</b> left.</span>")
-	else if(goal)
-		to_chat(user, "<span class='notice'>You have accumulated [points] out of the [goal] points you need for freedom.</span>")
-	else if(!sentence)
-		to_chat(user, "<span class='warning'>You are currently serving a permanent sentence for [crime].</span>")
-	else
-		to_chat(user, "<span class='notice'>Your sentence is up! You're free!</span>")
-
-/obj/item/card/id/advanced/prisoner/process()
-	if(!sentence)
-		STOP_PROCESSING(SSobj, src)
-		return
-	if(world.time >= sentence)
-		if(prob(90))
-			playsound(loc, 'sound/machines/ping.ogg', 50, 1)
-			if(isliving(loc))
-				to_chat(loc, "<span class='boldnotice'>[src]</span><span class='notice'> buzzes: You have served your sentence! You may now exit prison through the turnstiles and collect your belongings.</span>")
+	if(timed)
+		if(time_left <= 0)
+			. += span_notice("The digital timer on the card has zero seconds remaining. You leave a changed man, but a free man nonetheless.")
 		else
-			playsound(loc, 'modular_skyrat/modules/mapping/sounds/quest_succeeded.ogg', 50, 1)
-			if(isliving(loc))
-				to_chat(loc, "<span class='boldnotice'>[src]</span><span class='notice'><b>Quest Completed!</b> <i>Serve your prison sentence</i>. You may now leave the prison through the turnstiles and return this ID to the locker to retrieve your belongings.</span>")
+			. += span_notice("The digital timer on the card has [time_left] seconds remaining. Don't do the crime if you can't do the time.")
+
+/obj/item/card/id/advanced/prisoner/process(delta_time)
+	if(!timed)
+		return
+	time_left -= delta_time
+	if(time_left <= 0)
+		say("Sentence time has been served. Thank you for your cooperation in our corporate rehabilitation program!")
 		STOP_PROCESSING(SSobj, src)
-	return
-	// SKYRAT EDIT: End - Genpop IDs
 
 /obj/item/card/id/advanced/prisoner/attack_self(mob/user)
 	to_chat(usr, span_notice("You have accumulated [points] out of the [goal] points you need for freedom."))
@@ -1265,7 +1397,7 @@
 			return
 		if(popup_input == "Forge/Reset")
 			if(!forged)
-				var/input_name = stripped_input(user, "What name would you like to put on this card? Leave blank to randomise.", "Agent card name", registered_name ? registered_name : (ishuman(user) ? user.real_name : user.name), MAX_NAME_LEN)
+				var/input_name = tgui_input_text(user, "What name would you like to put on this card? Leave blank to randomise.", "Agent card name", registered_name ? registered_name : (ishuman(user) ? user.real_name : user.name), MAX_NAME_LEN)
 				input_name = sanitize_name(input_name)
 				if(!input_name)
 					// Invalid/blank names give a randomly generated one.
@@ -1292,18 +1424,17 @@
 							var/fake_trim_name = "[trim.assignment] ([trim.trim_state])"
 							trim_list[fake_trim_name] = trim_path
 
-					var/selected_trim_path
-					selected_trim_path = input("Select trim to apply to your card.\nNote: This will not grant any trim accesses.", "Forge Trim", selected_trim_path) as null|anything in sort_list(trim_list, /proc/cmp_typepaths_asc)
+					var/selected_trim_path = tgui_input_list(user, "Select trim to apply to your card.\nNote: This will not grant any trim accesses.", "Forge Trim", sort_list(trim_list, /proc/cmp_typepaths_asc))
 					if(selected_trim_path)
 						SSid_access.apply_trim_to_chameleon_card(src, trim_list[selected_trim_path])
 
-				var/target_occupation = stripped_input(user, "What occupation would you like to put on this card?\nNote: This will not grant any access levels.", "Agent card job assignment", assignment ? assignment : "Assistant", MAX_MESSAGE_LEN)
+				var/target_occupation = tgui_input_text(user, "What occupation would you like to put on this card?\nNote: This will not grant any access levels.", "Agent card job assignment", assignment ? assignment : "Assistant")
 				if(target_occupation)
 					assignment = target_occupation
 
-				var/new_age = input(user, "Choose the ID's age:\n([AGE_MIN]-[AGE_MAX])", "Agent card age") as num|null
+				var/new_age = tgui_input_number(user, "Choose the ID's age", "Agent card age", AGE_MIN, AGE_MAX, AGE_MIN)
 				if(new_age)
-					registered_age = max(round(text2num(new_age)), 0)
+					registered_age = round(new_age)
 
 				if(tgui_alert(user, "Activate wallet ID spoofing, allowing this card to force itself to occupy the visible ID slot in wallets?", "Wallet ID Spoofing", list("Yes", "No")) == "Yes")
 					ADD_TRAIT(src, TRAIT_MAGNETIC_ID_CARD, CHAMELEON_ITEM_TRAIT)

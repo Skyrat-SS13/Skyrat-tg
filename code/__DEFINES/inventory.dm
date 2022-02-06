@@ -98,8 +98,12 @@
 #define HIDEHEADGEAR (1<<11)
 ///for lizard snouts, because some HIDEFACE clothes don't actually conceal that portion of the head.
 #define HIDESNOUT (1<<12)
+///SKYRAT EDIT ADDITION: CUSTOM EAR TOGGLE FOR ANTHRO/ETC EAR SHOWING - Manually set this on items you want anthro ears to show on!
+#define SHOWSPRITEEARS (1<<13)
+/// Does this sprite also hide the spine on tails? Realistically only useful for the clothes that have a special tail overlay, like MODsuits
+#define HIDESPINE (1<<14)
 //SKYRAT EDIT ADDITION BEGIN - ERP UPDATE
-#define HIDESEXTOY (1<<13)
+#define HIDESEXTOY (1<<15)
 //SKYRAT EDIT ADDITION END
 
 //bitflags for clothing coverage - also used for limbs
@@ -151,9 +155,7 @@
 #define HEADCOVERSMOUTH (1<<4)
 #define PEPPERPROOF (1<<5) //protects against pepperspray
 
-#define TINT_MINIMAL 0.25
-#define TINT_LIGHTER 1.5
-#define TINT_DARKENED 2.5 //Threshold of tint level to apply weld mask overlay
+#define TINT_DARKENED 2 //Threshold of tint level to apply weld mask overlay
 #define TINT_BLIND 3 //Threshold of tint level to obscure vision fully
 
 // defines for AFK theft
@@ -168,31 +170,7 @@
 /// The index of the entry in 'afk_thefts' with the time it happened
 #define AFK_THEFT_TIME 3
 
-//Allowed equipment lists for security vests and hardsuits.
-
-GLOBAL_LIST_INIT(advanced_hardsuit_allowed, typecacheof(list(
-	/obj/item/ammo_box,
-	/obj/item/ammo_casing,
-	/obj/item/flashlight,
-	/obj/item/gun,
-	/obj/item/melee/baton,
-	/obj/item/reagent_containers/spray/pepper,
-	/obj/item/restraints/handcuffs,
-	/obj/item/tank/internals,
-	)))
-
-GLOBAL_LIST_INIT(security_hardsuit_allowed, typecacheof(list(
-	/obj/item/ammo_box,
-	/obj/item/ammo_casing,
-	/obj/item/flashlight,
-	/obj/item/gun/ballistic,
-	/obj/item/gun/energy,
-	/obj/item/melee/baton,
-	/obj/item/reagent_containers/spray/pepper,
-	/obj/item/restraints/handcuffs,
-	/obj/item/tank/internals,
-	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
-	)))
+//Allowed equipment lists for security vests.
 
 GLOBAL_LIST_INIT(detective_vest_allowed, typecacheof(list(
 	/obj/item/ammo_box,

@@ -113,6 +113,9 @@
 	else
 		..()
 
+/mob/living/simple_animal/drone/transferItemToLoc(obj/item/item, newloc, force, silent)
+	return !(item.type in drone_item_whitelist_flat) && ..()
+
 /mob/living/simple_animal/drone/getarmor(def_zone, type)
 	var/armorval = 0
 

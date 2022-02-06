@@ -693,7 +693,7 @@
 
 /obj/item/gun/ballistic/shotgun/m23
 	name = "\improper Model 23-37"
-	desc = "A common outdated police shotgun sporting an eight-round tube."
+	desc = "An outdated police shotgun sporting an eight-round tube."
 	icon_state = "riotshotgun"
 	inhand_icon_state = "shotgun"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/m23
@@ -702,13 +702,13 @@
 
 /obj/item/ammo_box/magazine/internal/shot/m23
 	name = "m23 shotgun internal magazine"
-	caliber = CALIBER_14GAUGE
-	ammo_type = /obj/item/ammo_casing/s14gauge
-	max_ammo = 6
+	caliber = CALIBER_SHOTGUN
+	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
+	max_ammo = 8
 
 /obj/item/gun/ballistic/shotgun/automatic/as2
 	name = "\improper M2 Auto-Shotgun"
-	desc = "A revolving automatic shotgun with a six round internal tube."
+	desc = "A semi-automatic shotgun with a four-round internal tube."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	icon_state = "as2"
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
@@ -729,13 +729,13 @@
 
 /obj/item/ammo_box/magazine/internal/shot/as2
 	name = "shotgun internal magazine"
-	caliber = CALIBER_14GAUGE
-	ammo_type = /obj/item/ammo_casing/s14gauge
+	caliber = CALIBER_SHOTGUN
+	ammo_type = /obj/item/ammo_casing/shotgun
 	max_ammo = 4
 
 /obj/item/gun/ballistic/shotgun/sas14
 	name = "\improper SAS-14"
-	desc = "A revolving automatic shotgun with a six round box magazine."
+	desc = "A semi-automatic shotgun with a five-round box magazine."
 	icon =  'modular_skyrat/modules/sec_haul/icons/guns/sas14.dmi'
 	icon_state = "sas14"
 	inhand_icon_state = "shotgun"
@@ -752,7 +752,7 @@
 	weapon_weight = WEAPON_MEDIUM
 	burst_size = 1
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
-	semi_auto = FALSE
+	semi_auto = TRUE
 	internal_magazine = FALSE
 	armadyne = TRUE
 
@@ -765,20 +765,19 @@
 	ammo_type = /obj/item/ammo_casing/s14gauge
 	max_ammo = 5
 
-/obj/item/gun/energy/taser/armadyne
-	name = "\improper ATS Taser"
-	desc = "A low-capacity, energy-based taser used by security teams to subdue targets at range."
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
-	icon_state = "armataser"
-	inhand_icon_state = null //so the human update icon uses the icon_state instead.
-	ammo_type = list(/obj/item/ammo_casing/energy/electrode/crap)
-	ammo_x_offset = 2
+//New SAS14 mags beyond here
 
-/obj/item/ammo_casing/energy/electrode/crap
-	projectile_type = /obj/projectile/energy/electrode/crap
+/obj/item/ammo_box/magazine/sas14/empty
+	start_empty = TRUE
 
-/obj/projectile/energy/electrode/crap
-	stamina = 50
-	stutter = 10
+/obj/item/ammo_box/magazine/sas14/beanbag
+	ammo_type = /obj/item/ammo_casing/s14gauge/beanbag
+
+/obj/item/ammo_box/magazine/sas14/buckshot
+	ammo_type = /obj/item/ammo_casing/s14gauge/buckshot
+
+/obj/item/ammo_box/magazine/sas14/rubbershot
+	ammo_type = /obj/item/ammo_casing/s14gauge/rubbershot
+
+/obj/item/ammo_box/magazine/sas14/stunslug
+	ammo_type = /obj/item/ammo_casing/s14gauge/stunslug

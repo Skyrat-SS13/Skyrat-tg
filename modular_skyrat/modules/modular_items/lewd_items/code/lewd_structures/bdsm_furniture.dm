@@ -275,8 +275,7 @@
 			to_chat(user, span_notice("You begin fastening the frame to the floor."))
 			if(P.use_tool(src, user, 8 SECONDS, volume=50))
 				to_chat(user, span_notice("You assemble the x-stand."))
-				var/obj/structure/chair/x_stand/C = new
-				C.loc = loc
+				new /obj/structure/chair/x_stand(get_turf(user))
 				qdel(src)
 			return
 	else
@@ -288,8 +287,7 @@
 		to_chat(user, span_notice("You begin unfastening the frame of x-stand..."))
 		if(P.use_tool(src, user, 8 SECONDS, volume=50))
 			to_chat(user, span_notice("You disassemble the x-stand."))
-			var/obj/item/x_stand_kit/C = new
-			C.loc = loc
+			new /obj/item/x_stand_kit(get_turf(user))
 			unbuckle_all_mobs()
 			qdel(src)
 		return

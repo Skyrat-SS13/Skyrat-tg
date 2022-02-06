@@ -1,7 +1,7 @@
 /datum/job/nanotrasen_representative
-	title = "Nanotrasen Representative"
+	title = JOB_NT_REP
 	description = "Represent Nanotrasen on the station, argue with the HoS about why he can't just field execute people for petty theft, get drunk in your office."
-	department_head = list("Central Command")
+	department_head = list(JOB_CENTCOM)
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
@@ -38,7 +38,7 @@
 	)
 
 	veteran_only = TRUE
-
+	job_type_flags = JOB_STATION_JOB | JOB_HEAD_JOB
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
 /datum/job/nanotrasen_representative/after_spawn(mob/living/H, mob/M, latejoin)
@@ -94,7 +94,8 @@
 
 /obj/effect/landmark/start/nanotrasen_representative
 	name = "Nanotrasen Representative"
-	icon_state = "Captain"
+	icon_state = "Nanotrasen Representative"
+	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
 
 /obj/item/clothing/accessory/medal/gold/nanotrasen_representative
 	name = "medal of diplomacy"

@@ -86,7 +86,9 @@
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#353535#AAAAAA"
 	icon_state = "beret_badge"
-	dog_fashion = null
+	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 30, ACID = 50, WOUND = 6)
+	strip_delay = 60
+	mutant_variants = NONE
 
 
 /obj/item/clothing/head/cowboyhat/blackwide
@@ -374,7 +376,7 @@
 	desc = "A dark hat from the cold wastes of the Frosthill mountains. So it was done, all according to the law. There's a small set of antlers embroidered on the inside."
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
-	flags_inv = HIDEHAIR
+	flags_inv = HIDEHAIR | SHOWSPRITEEARS
 
 /obj/item/clothing/head/cowboyhat/sheriff/alt
 	name = "sheriff hat"
@@ -383,6 +385,7 @@
 	icon_state = "sheriff_hat_alt"
 	mutant_variants = NONE
 	desc = "A dark brown hat with a smell of whiskey. There's a small set of antlers embroidered on the inside."
+	flags_inv = SHOWSPRITEEARS
 
 /obj/item/clothing/head/cowboyhat/deputy
 	name = "deputy hat"
@@ -425,3 +428,17 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "blfedora"
 	mutant_variants = NONE
+
+/obj/item/clothing/head/christmas
+	name = "red christmas hat"
+	desc = "A red Christmas Hat! How festive!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "christmashat"
+
+/obj/item/clothing/head/christmas/green
+	name = "green christmas hat"
+	desc = "A green Christmas Hat! How festive!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "christmashatg"

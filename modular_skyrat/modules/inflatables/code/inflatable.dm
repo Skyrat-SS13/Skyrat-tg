@@ -47,9 +47,6 @@
 	else
 		deflate(FALSE)
 
-/obj/structure/window/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
-	playsound(src, hitsound, 75, TRUE)
-
 /obj/structure/inflatable/can_atmos_pass(turf/T)
 	return !density
 

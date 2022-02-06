@@ -1,7 +1,7 @@
 /datum/job/bartender
-	title = "Bartender"
+	title = JOB_BARTENDER
 	description = "Serve booze, mix drinks, keep the crew drunk."
-	department_head = list("Head of Personnel")
+	department_head = list(JOB_HEAD_OF_PERSONNEL)
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
@@ -29,6 +29,7 @@
 		/obj/item/stack/sheet/mineral/uranium = 10,
 	)
 
+	job_type_flags = JOB_STATION_JOB
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 	rpg_title = "Tavernkeeper"
 

@@ -61,3 +61,6 @@
 
 /// Caninid trait
 #define TRAIT_CANINE "trait_canine"
+
+/// Cargo Loader trait
+#define TRAIT_TRASHMAN "trait_trashman"

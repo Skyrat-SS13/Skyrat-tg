@@ -97,7 +97,7 @@
 			to_chat(usr, span_admin("Too late!"))
 			return
 		triggering = FALSE
-		SSevents.spawnEvent()
+		SSevents.spawnEvent(TRUE) //SKYRAT EDIT
 		message_admins("[key_name_admin(usr)] requested a new event be spawned instead of [name].")
 		log_admin_private("[key_name(usr)] requested a new event be spawned instead of [name].")
 	//SKYRAT EDIT END

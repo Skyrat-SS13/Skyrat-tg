@@ -76,7 +76,7 @@
 /obj/item/nullrod/cultdagger
 	name = "ritual dagger"
 	desc = "A strange dagger said to be once used by a sinister group.. "
-	icon = 'icons/obj/wizard.dmi'
+	icon = 'icons/obj/cult/items_and_weapons.dmi'
 	icon_state = "render"
 	inhand_icon_state = "cultdagger"
 	worn_icon_state = "render"
@@ -86,7 +86,7 @@
 	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	special_desc_requirement = EXAMINE_CHECK_JOB
-	special_desc_jobs = list("Chaplain")
+	special_desc_jobs = list(JOB_CHAPLAIN)
 	special_desc = "Activate it to receive the language of a forgotten cult."
 	var/narsian = FALSE
 
@@ -100,7 +100,7 @@
 
 /obj/item/nullrod/claymore/darkblade
 	special_desc_requirement = EXAMINE_CHECK_JOB
-	special_desc_jobs = list("Chaplain")
+	special_desc_jobs = list(JOB_CHAPLAIN)
 	special_desc = "Activate it to receive the language of a forgotten cult."
 	var/narsian = FALSE
 
@@ -115,7 +115,7 @@
 /* The other one isn't merged yet so we'll wait.
 /obj/item/nullrod/spear
 	special_desc_requirement = EXAMINE_CHECK_JOB
-	special_desc_jobs = list("Chaplain")
+	special_desc_jobs = list(JOB_CHAPLAIN)
 	special_desc = "Activate it to receive the language of a forgotten cult."
 	var/ratvarian = FALSE
 
@@ -146,7 +146,7 @@
 		deity_name = GLOB.deity
 
 /obj/item/nullrod/rosary/attack(mob/living/target, mob/living/user, params)
-	if(!user.mind || user.mind.assigned_role != "Chaplain")
+	if(!user.mind || !user.mind.holy_role)
 		to_chat(user, span_notice("You are not close enough with [deity_name] to use [src]."))
 		return
 	if(user.combat_mode)
@@ -159,7 +159,7 @@
 		span_info("You kneel[target == user ? null : " next to [target]"] and begin a prayer to [deity_name]."))
 
 	praying = TRUE
-	if(do_after(user, 20, target = target))
+	if(do_after(user, 5 SECONDS, target = target))
 		target.reagents?.add_reagent(/datum/reagent/water/holywater, 5)
 		to_chat(target, span_notice("[user]'s prayer to [deity_name] has eased your pain!"))
 		target.adjustToxLoss(-5, TRUE, TRUE)

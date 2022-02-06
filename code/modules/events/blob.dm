@@ -2,9 +2,9 @@
 	name = "Blob"
 	typepath = /datum/round_event/ghost_role/blob
 	weight = 10
-	max_occurrences = 1 //SKYRAT EDIT CHANGE
+	max_occurrences = 1
 
-	min_players = 60 // SKYRAT EDIT - No lowpop blob
+	min_players = 20
 
 	dynamic_should_hijack = TRUE
 

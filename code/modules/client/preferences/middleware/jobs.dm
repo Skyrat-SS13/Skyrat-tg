@@ -27,12 +27,21 @@
 	preferences.character_preview_view?.update_body()
 
 	return TRUE
+
 // SKYRAT EDIT
 /datum/preference_middleware/jobs/proc/set_job_title(list/params, mob/user)
-	var/default_job_title = params["job"]
+	var/job_title = params["job"]
 	var/new_job_title = params["new_title"]
 
-	preferences.alt_job_titles[default_job_title] = new_job_title
+	var/datum/job/job = SSjob.GetJob(job_title)
+
+	if (isnull(job))
+		return FALSE
+
+	if (!(new_job_title in job.alt_titles))
+		return FALSE
+
+	preferences.alt_job_titles[job_title] = new_job_title
 
 	return TRUE
 // SKYRAT EDIT END

@@ -1,21 +1,21 @@
 /mob/living/simple_animal/hostile/zombie
 	var/no_corpse = FALSE
 	var/list/possible_jobs = list(
-		"Assistant",
-		"Station Engineer",
-		"Cook",
-		"Bartender",
-		"Chemist",
-		"Medical Doctor",
-		"Virologist",
-		"Clown",
-		"Mime",
-		"Scientist",
-		"Cargo Technician",
-		"Security Officer",
-		"Security Medic",
-		"Geneticist",
-		"Botanist",
+		JOB_ASSISTANT,
+		JOB_STATION_ENGINEER,
+		JOB_COOK,
+		JOB_BARTENDER,
+		JOB_CHEMIST,
+		JOB_MEDICAL_DOCTOR,
+		JOB_VIROLOGIST,
+		JOB_CLOWN,
+		JOB_MIME,
+		JOB_SCIENTIST,
+		JOB_CARGO_TECHNICIAN,
+		JOB_SECURITY_OFFICER,
+		JOB_SECURITY_MEDIC,
+		JOB_GENETICIST,
+		JOB_BOTANIST,
 	)
 
 /mob/living/simple_animal/hostile/zombie/nocorpse
