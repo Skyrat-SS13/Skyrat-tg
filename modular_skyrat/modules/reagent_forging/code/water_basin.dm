@@ -32,6 +32,7 @@
 	if(I.tool_behaviour == TOOL_WRENCH)
 		for(var/i in 1 to 5)
 			new /obj/item/stack/sheet/mineral/wood(get_turf(src))
+		I.play_tool_sound(src, 50)
 		qdel(src)
 		return
 

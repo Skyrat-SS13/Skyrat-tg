@@ -56,19 +56,17 @@
 	. += span_warning("Perhaps using your hand on [src] when skilled will do something...")
 	switch(forge_level)
 		if(FORGE_LEVEL_ZERO)
-			. += span_notice("[src] has not yet been touched by a smithy.")
+			. += span_notice("[src] has not yet been touched by a smithy.<br>")
 		if(FORGE_LEVEL_ONE)
-			. += span_notice("[src] has been touched by an apprentice smithy.")
+			. += span_notice("[src] has been touched by an apprentice smithy.<br>")
 		if(FORGE_LEVEL_TWO)
-			. += span_notice("[src] has been touched by an expert smithy.")
+			. += span_notice("[src] has been touched by an expert smithy.<br>")
 		if(FORGE_LEVEL_THREE)
-			. += span_green("[src] has been touched by a legendary smithy!")
-	. += "" //It adds space, okay?
+			. += span_boldwarning("[src] has been touched by a legendary smithy!<br>")
 	. += span_notice("[src] has [goliath_ore_improvement]/3 goliath hides.")
 	. += span_notice("[src] has [current_sinew]/10 watcher sinews.")
 	. += span_notice("[src] has [current_core]/3 regenerative cores.")
-	. += span_notice("[src] is currently [forge_temperature] degrees hot, going towards [target_temperature] degrees.")
-	. += "" //It adds space, okay?
+	. += span_notice("[src] is currently [forge_temperature] degrees hot, going towards [target_temperature] degrees.<br>")
 	if(reagent_forging)
 		. += span_warning("[src] has a red tinge, it is ready to imbue chemicals into reagent objects.")
 
@@ -400,8 +398,10 @@
 			"Dagger",
 			"Staff",
 			"Spear",
+			"Bokken",
 			"Axe",
 			"Hammer",
+			"Pickaxe",
 		)
 		if(search_rods)
 			var/user_choice = tgui_input_list(user, "What would you like to work on?", "Forge Selection", choice_list)
@@ -431,10 +431,14 @@
 					incomplete_item = new /obj/item/forging/incomplete/staff(get_turf(src))
 				if("Spear")
 					incomplete_item = new /obj/item/forging/incomplete/spear(get_turf(src))
+				if("Bokken")
+					incomplete_item = new /obj/item/forging/incomplete/bokken(get_turf(src))
 				if("Axe")
 					incomplete_item = new /obj/item/forging/incomplete/axe(get_turf(src))
 				if("Hammer")
 					incomplete_item = new /obj/item/forging/incomplete/hammer(get_turf(src))
+				if("Pickaxe")
+					incomplete_item = new /obj/item/forging/incomplete/pickaxe(get_turf(src))
 			COOLDOWN_START(incomplete_item, heating_remainder, 1 MINUTES)
 			in_use = FALSE
 			user.mind.adjust_experience(/datum/skill/smithing, 2) //creating an item gives you some experience, not a lot

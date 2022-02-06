@@ -41,9 +41,9 @@
 /obj/item/forging/incomplete
 	name = "parent dev item"
 	desc = "An incomplete forge item, continue to work hard to be rewarded for your efforts."
-	//the compare of when it gets too cold to hammer
+	//the time remaining that you can hammer before too cool
 	COOLDOWN_DECLARE(heating_remainder)
-	//the compare so you cant just keep hitting
+	//the time between each strike
 	COOLDOWN_DECLARE(striking_cooldown)
 	///the amount of times it takes for the item to become ready
 	var/average_hits = 30
@@ -104,6 +104,11 @@
 	icon_state = "hot_spearhead"
 	spawn_item = /obj/item/forging/complete/spear
 
+/obj/item/forging/incomplete/bokken
+	name = "incomplete bokken head"
+	icon_state = "hot_blade"
+	spawn_item = /obj/item/forging/complete/bokken
+
 /obj/item/forging/incomplete/axe
 	name = "incomplete axe head"
 	icon_state = "hot_axehead"
@@ -114,41 +119,25 @@
 	icon_state = "hot_hammerhead"
 	spawn_item = /obj/item/forging/complete/hammer
 
+/obj/item/forging/incomplete/pickaxe
+	name = "incomplete pickaxe head"
+	icon_state = "hot_pickaxehead"
+	spawn_item = /obj/item/forging/complete/pickaxe
+
+/obj/item/forging/incomplete/shovel
+	name = "incomplete shovel head"
+	icon_state = "hot_shovelhead"
+	spawn_item = /obj/item/forging/complete/shovel
+
 //"complete" pre-complete items
 /obj/item/forging/complete
 	///the path of the item that will be created
 	var/spawning_item
-	///the path of the item required for the spawning_item
-	var/required_item = /obj/item/stack/sheet/mineral/wood
-	///the amount of required_item to make the spawning_item
-	var/stack_use = 1
-	///the amount of experience awarded for successfully creating the spawning_item
-	var/experience_amount = 15
-
-/obj/item/forging/complete/attackby(obj/item/attacking_item, mob/user, params)
-	if(!spawning_item)
-		return ..()
-	if(!istype(attacking_item, required_item))
-		return ..()
-	if(istype(attacking_item, /obj/item/stack))
-		var/obj/item/stack/attacking_stack = attacking_item
-		if(!attacking_stack.use(stack_use))
-			to_chat(user, span_warning("Unable to use [attacking_stack] on [src]!"))
-			return
-	else
-		qdel(attacking_item)
-	new spawning_item(get_turf(src))
-	user.mind.adjust_experience(/datum/skill/smithing, experience_amount) //creating things gives experience
-	qdel(src)
-	return
 
 /obj/item/forging/complete/chain
 	name = "chain"
 	desc = "A singular chain, best used in combination with multiple chains."
 	icon_state = "chain"
-	required_item = /obj/item/forging/complete/chain
-	spawning_item = /obj/item/forging/coil
-	experience_amount = 5
 
 /obj/item/forging/complete/plate
 	name = "plate"
@@ -185,6 +174,12 @@
 	icon_state = "spearhead"
 	spawning_item = /obj/item/forging/reagent_weapon/spear
 
+/obj/item/forging/complete/bokken
+	name = "bokken head"
+	desc = "A bokken head, ready to get some wood for completion."
+	icon_state = "blade"
+	spawning_item = /obj/item/forging/reagent_weapon/bokken
+
 /obj/item/forging/complete/axe
 	name = "axe head"
 	desc = "An axe head, ready to get some wood for completion."
@@ -196,6 +191,18 @@
 	desc = "A hammer head, ready to get some wood for completion."
 	icon_state = "hammerhead"
 	spawning_item = /obj/item/forging/reagent_weapon/hammer
+
+/obj/item/forging/complete/pickaxe
+	name = "pickaxe head"
+	desc = "A pickaxe head, ready to get some wood for completion."
+	icon_state = "pickaxehead"
+	spawning_item = /obj/item/pickaxe/reagent_weapon
+
+/obj/item/forging/complete/shovel
+	name = "shovel head"
+	desc = "A shovel head, ready to get some wood for completion."
+	icon_state = "shovelhead"
+	spawning_item = /obj/item/shovel/reagent_weapon
 
 /obj/item/forging/coil
 	name = "coil"
