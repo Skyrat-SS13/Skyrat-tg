@@ -335,7 +335,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		return
 
 // Allows admins to enable players to override SSD Time check.
-	if(allow_player_override)
+	if(allow_timer_override)
 		if(tgui_alert(user, "Would you like to place [target] into [src]?", "Place into Cryopod?", list("Yes", "No")) != "No")
 			to_chat(user, span_danger("You put [target] into [src]. [target.p_theyre(capitalized = TRUE)] in the cryopod."))
 			log_admin("[key_name(user)] has put [key_name(target)] into a overridden stasis pod.")
