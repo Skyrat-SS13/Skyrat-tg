@@ -351,7 +351,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 			if(target.mind == null ) // Is the character empty / AI Controlled
 				if(target.lastclienttime + ssd_time >= world.time)
 					to_chat(user, span_notice("You can't put [target] into [src]. They have not been asleep for [ssd_time] minutes, they have only been asleep for [round(((world.time - target.lastclienttime) / (1 MINUTES)),1)] minutes."))
-					log_admin("[key_name(user)] has attempted to put [key_name(target)] into a stasis pod.")
+					log_admin("[key_name(user)] has attempted to put [key_name(target)] into a stasis pod, but they were only disconnected for [round(((world.time - target.lastclienttime) / (1 MINUTES)), 1)] minutes..")
 					message_admins("[key_name(user)] has attempted to put [key_name(target)] into a stasis pod. [ADMIN_JMP(src)]")
 					return
 				else if(tgui_alert(user, "Would you like to place [target] into [src]?", "Place into Cryopod?", list("Yes", "No")) == "Yes")
