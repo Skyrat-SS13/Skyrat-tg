@@ -113,7 +113,7 @@
 	clothes_req = FALSE
 	human_req = TRUE
 	antimagic_allowed = TRUE
-	charge_max = 3000
+	charge_max = 50 // SKYRAT EDIT | ORIGINAL: charge_max = 3000
 	range = -1
 	include_user = TRUE
 
@@ -138,9 +138,9 @@
 		H.mind.miming=!H.mind.miming
 		if(H.mind.miming)
 			to_chat(H, span_notice("You make a vow of silence."))
-			SEND_SIGNAL(H, COMSIG_CLEAR_MOOD_EVENT, "vow")
+//			SEND_SIGNAL(H, COMSIG_CLEAR_MOOD_EVENT, "vow") // SKYRAT EDIT | Mimes are people, not freaks.
 		else
-			SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "vow", /datum/mood_event/broken_vow)
+//			SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "vow", /datum/mood_event/broken_vow) // SKYRAT EDIT | Mimes are people, not freaks.
 			to_chat(H, span_notice("You break your vow of silence."))
 
 // These spells can only be gotten from the "Guide for Advanced Mimery series" for Mime Traitors.
