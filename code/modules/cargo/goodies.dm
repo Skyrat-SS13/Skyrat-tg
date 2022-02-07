@@ -24,8 +24,19 @@
 	cost = PAYCHECK_MEDIUM * 1.5
 	access_view = ACCESS_BRIG
 	contains = list(/obj/item/ammo_box/c38/match/bouncy)
+<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN
 /*
+=======
+
+/datum/supply_pack/goody/mars_single
+	name = "Colt Detective Special Single-Pack"
+	desc = "The HoS took your gun and your badge? No problem! Just pay the absurd taxation fee and you too can be reunited with the lethal power of a .38!"
+	cost = PAYCHECK_HARD * 40 //they really mean a premium here
+	access_view = ACCESS_FORENSICS_LOCKERS
+	contains = list(/obj/item/gun/ballistic/revolver/detective)
+
+>>>>>>> 906fb0682ba (Ballistic to Energy: Autorifles for Thermal Pistols; Adds .38 Crate to Cargo (#64280))
 /datum/supply_pack/goody/stingbang
 	name = "Stingbang Single-Pack"
 	desc = "Contains one \"stingbang\" grenade, perfect for playing meanhearted pranks."
@@ -62,19 +73,12 @@
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/weaponcrafting/gunkit/hellgun)
 
-/datum/supply_pack/goody/wt550_single
-	name = "WT-550 Auto Rifle Single-Pack"
-	desc = "Contains one high-powered, semiautomatic rifles chambered in 4.6x30mm." // "high-powered" lol yea right
-	cost = PAYCHECK_HARD * 20
+/datum/supply_pack/goody/thermal_single
+	name = "Thermal Pistol Holster Single-Pack"
+	desc = "Contains twinned thermal pistols in a holster, ready for use in the field."
+	cost = PAYCHECK_HARD * 15
 	access_view = ACCESS_ARMORY
-	contains = list(/obj/item/gun/ballistic/automatic/wt550)
-
-/datum/supply_pack/goody/wt550ammo_single
-	name = "WT-550 Auto Rifle Ammo Single-Pack"
-	desc = "Contains a 20-round magazine for the WT-550 Auto Rifle. Each magazine is designed to facilitate rapid tactical reloads."
-	cost = PAYCHECK_HARD * 6
-	access_view = ACCESS_ARMORY
-	contains = list(/obj/item/ammo_box/magazine/wt550m9)
+	contains = list(/obj/item/storage/belt/holster/thermal)
 
 */
 //SKYRAT EDIT REMOVAL END
