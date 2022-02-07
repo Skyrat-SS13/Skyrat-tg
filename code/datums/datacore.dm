@@ -234,17 +234,29 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		var/id = num2hex(record_id_num++,6)
 		if(!C)
 			C = H.client
-		var/image = get_id_photo(H, C, show_directions)
+		var/list/image = get_id_image(H, C, show_directions) // SKYRAT EDIT CHANGE - DEFERRED_ICON - Original: var/image = get_id_photo(H, C, show_directions)
 		var/datum/picture/pf = new
 		var/datum/picture/ps = new
 		pf.picture_name = "[H]"
 		ps.picture_name = "[H]"
 		pf.picture_desc = "This is [H]."
 		ps.picture_desc = "This is [H]."
-		pf.picture_image = icon(image, dir = SOUTH)
-		ps.picture_image = icon(image, dir = WEST)
+		pf.picture_image = icon('icons/blanks/32x32.dmi', "nothing")// SKYRAT EDIT CHANGE - DEFERRED_ICON - Original: pf.picture_image = icon(image, dir = SOUTH)
+		pf.picture_image = icon('icons/blanks/32x32.dmi', "nothing") // SKYRAT EDIT CHANGE - DEFERRED_ICON - Original: pf.picture_image = icon(image, dir = WEST)
 		var/obj/item/photo/photo_front = new(null, pf)
 		var/obj/item/photo/photo_side = new(null, ps)
+		// SKYRAT EDIT START - DEFERRED_ICON
+		spawn()
+			pf.picture_image = getFlatIconAsync(image["[SOUTH]"])
+			// Get rid of the old small-version
+			pf.picture_icon = null
+			photo_front.update_appearance()
+
+			ps.picture_image = getFlatIconAsync(image["[WEST]"])
+			ps.picture_icon = null
+			photo_side.update_icon_state()
+
+		// SKYRAT EDIT END
 
 		//These records should ~really~ be merged or something
 		//General Record

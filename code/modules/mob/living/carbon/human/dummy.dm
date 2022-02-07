@@ -119,6 +119,7 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 		GLOB.human_dummy_list[slotkey] = D
 		GLOB.dummy_mob_list += D
 	else
+		D.in_use = TRUE // SKYRAT EDIT
 		D.regenerate_icons() //they were cut in wipe_state()
 	D.in_use = TRUE
 	return D
