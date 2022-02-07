@@ -127,7 +127,7 @@
 	required_plate = 0
 	required_coil = 0
 
-/obj/structure/reagent_crafting_bench/proc/check_required_materials()
+/obj/structure/reagent_crafting_bench/proc/check_required_materials(mob/living/user)
 	if(current_chain < required_chain)
 		balloon_alert(user, "not enough materials!")
 		return FALSE
@@ -165,7 +165,7 @@
 		if(!goal_item_path)
 			balloon_alert(user, "no choice made!")
 			return
-		if(!check_required_materials())
+		if(!check_required_materials(user))
 			return
 		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER) * 1 SECONDS
 		if(!COOLDOWN_FINISHED(src, hit_cooldown))
@@ -228,7 +228,7 @@
 	//destroying the thing
 	if(attacking_item.tool_behaviour == TOOL_WRENCH)
 		var/turf/src_turf = get_turf(src)
-		for(var/i in 1 to chain_amount)
+		for(var/i in 1 to current_chain)
 			new /obj/item/forging/complete/chain(src_turf)
 		for(var/i in 1 to current_plate)
 			new /obj/item/forging/complete/plate(src_turf)
