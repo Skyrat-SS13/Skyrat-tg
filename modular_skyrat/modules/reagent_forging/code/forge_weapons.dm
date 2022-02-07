@@ -241,7 +241,7 @@
 	icon_state = "pavise"
 	inhand_icon_state = "pavise"
 	block_chance = 75
-	slowdown = 1.4
+	item_flags = SLOWS_WHILE_IN_HAND
 
 /obj/item/pickaxe/reagent_weapon
 	name = "reagent pickaxe"

@@ -50,6 +50,20 @@
 	var/primitive = FALSE
 	///the forge level, which depends on the user upgrading the forge
 	var/forge_level = FORGE_LEVEL_ZERO
+	var/static/list/choice_list = list(
+		"Chain" = /obj/item/forging/incomplete/chain,
+		"Plate" = /obj/item/forging/incomplete/plate,
+		"Sword" = /obj/item/forging/incomplete/sword,
+		"Katana" = /obj/item/forging/incomplete/katana,
+		"Dagger" = /obj/item/forging/incomplete/dagger,
+		"Staff" = /obj/item/forging/incomplete/staff,
+		"Spear" = /obj/item/forging/incomplete/spear,
+		"Bokken" = /obj/item/forging/incomplete/bokken,
+		"Axe" = /obj/item/forging/incomplete/axe,
+		"Hammer" = /obj/item/forging/incomplete/hammer,
+		"Pickaxe" = /obj/item/forging/incomplete/pickaxe,
+		"Shovel" = /obj/item/forging/incomplete/shovel,
+	)
 
 /obj/structure/reagent_forge/examine(mob/user)
 	. = ..()
@@ -103,7 +117,7 @@
 	balloon_alert_to_viewers("gurgles!")
 	color = "#ff5151"
 	name = "reagent forge"
-	desc = "A structure built out of metal, with the intended purpose of heating up metal. It has the ability to imbue!"
+	desc = "[initial(desc)]<br>It has the ability to imbue!"
 
 /**
  * Here we give a fail message as well as set the in_use to false
@@ -159,9 +173,9 @@
 	. = ..()
 	var/user_smithing_skill = user.mind.get_skill_level(/datum/skill/smithing)
 	switch(user_smithing_skill)
-		if(1 to 2)
+		if(SKILL_LEVEL_NONE to SKILL_LEVEL_NOVICE)
 			to_chat(user, span_notice("[src] requires you to be more experienced!"))
-		if(3 to 4)
+		if(SKILL_LEVEL_APPRENTICE to SKILL_LEVEL_JOURNEYMAN)
 			if(forge_level >= FORGE_LEVEL_ONE)
 				to_chat(user, span_warning("Your level of smithing has already influenced [src]!"))
 				return
@@ -169,7 +183,7 @@
 			forge_level = FORGE_LEVEL_ONE
 			goliath_ore_improvement = 3
 			playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
-		if(5 to 6)
+		if(SKILL_LEVEL_EXPERT to SKILL_LEVEL_MASTER)
 			if(forge_level >= FORGE_LEVEL_TWO)
 				to_chat(user, span_warning("Your level of smithing has already influenced [src]!"))
 				return
@@ -178,7 +192,7 @@
 			sinew_lower_chance = 100
 			current_sinew = 10
 			playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
-		if(7)
+		if(SKILL_LEVEL_LEGENDARY)
 			if(forge_level >= FORGE_LEVEL_THREE)
 				to_chat(user, span_warning("Your level of smithing has already influenced [src]!"))
 				return
@@ -390,19 +404,6 @@
 			to_chat(user, span_notice("You successfully heat up [search_incomplete]."))
 			return TRUE
 		var/obj/item/stack/rods/search_rods = locate(/obj/item/stack/rods) in I.contents
-		var/list/choice_list = list(
-			"Chain",
-			"Plate",
-			"Sword",
-			"Katana",
-			"Dagger",
-			"Staff",
-			"Spear",
-			"Bokken",
-			"Axe",
-			"Hammer",
-			"Pickaxe",
-		)
 		if(search_rods)
 			var/user_choice = tgui_input_list(user, "What would you like to work on?", "Forge Selection", choice_list)
 			if(!user_choice)
@@ -415,30 +416,8 @@
 			if(!do_after(user, skill_modifier, target = src)) //wait 3 seconds to upgrade (6 for primitive)
 				fail_message(user, "You abandon heating up [search_rods].")
 				return
-			var/obj/item/forging/incomplete/incomplete_item
-			switch(user_choice)
-				if("Chain")
-					incomplete_item = new /obj/item/forging/incomplete/chain(get_turf(src))
-				if("Plate")
-					incomplete_item = new /obj/item/forging/incomplete/plate(get_turf(src))
-				if("Sword")
-					incomplete_item = new /obj/item/forging/incomplete/sword(get_turf(src))
-				if("Katana")
-					incomplete_item = new /obj/item/forging/incomplete/katana(get_turf(src))
-				if("Dagger")
-					incomplete_item = new /obj/item/forging/incomplete/dagger(get_turf(src))
-				if("Staff")
-					incomplete_item = new /obj/item/forging/incomplete/staff(get_turf(src))
-				if("Spear")
-					incomplete_item = new /obj/item/forging/incomplete/spear(get_turf(src))
-				if("Bokken")
-					incomplete_item = new /obj/item/forging/incomplete/bokken(get_turf(src))
-				if("Axe")
-					incomplete_item = new /obj/item/forging/incomplete/axe(get_turf(src))
-				if("Hammer")
-					incomplete_item = new /obj/item/forging/incomplete/hammer(get_turf(src))
-				if("Pickaxe")
-					incomplete_item = new /obj/item/forging/incomplete/pickaxe(get_turf(src))
+			var/spawn_item = choice_list[user_choice]
+			var/obj/item/forging/incomplete/incomplete_item = new spawn_item(get_turf(src))
 			COOLDOWN_START(incomplete_item, heating_remainder, 1 MINUTES)
 			in_use = FALSE
 			user.mind.adjust_experience(/datum/skill/smithing, 2) //creating an item gives you some experience, not a lot

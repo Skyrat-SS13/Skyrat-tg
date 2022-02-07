@@ -32,36 +32,20 @@
 	//so we can't just keep being hit without cooldown
 	COOLDOWN_DECLARE(hit_cooldown)
 	///the choices allowed in crafting
-	var/list/allowed_choices = list(
-		"Chain Helmet",
-		"Chain Armor",
-		"Chain Gloves",
-		"Chain Boots",
-		"Plated Boots",
-		"Horseshoes",
-		"Ring",
-		"Collar",
-		"Handcuffs",
-		"Borer Cage",
-		"Pavise Shield",
-		"Buckler Shield",
-		"Coil",
-	)
-	///the paths of the allowed choices
-	var/static/list/choice_paths = list(
-		/obj/item/clothing/head/helmet/reagent_clothing,
-		/obj/item/clothing/suit/armor/reagent_clothing,
-		/obj/item/clothing/gloves/reagent_clothing,
-		/obj/item/clothing/shoes/chain_boots,
-		/obj/item/clothing/shoes/plated_boots,
-		/obj/item/clothing/shoes/horseshoe,
-		/obj/item/clothing/gloves/ring/reagent_clothing,
-		/obj/item/clothing/neck/kink_collar/reagent_clothing,
-		/obj/item/restraints/handcuffs/reagent_clothing,
-		/obj/item/cortical_cage,
-		/obj/item/shield/riot/buckler/reagent_weapon/pavise,
-		/obj/item/shield/riot/buckler/reagent_weapon,
-		/obj/item/forging/coil,
+	var/static/list/allowed_choices = list(
+		"Chain Helmet" = /obj/item/clothing/head/helmet/reagent_clothing,
+		"Chain Armor" = /obj/item/clothing/suit/armor/reagent_clothing,
+		"Chain Gloves" = /obj/item/clothing/gloves/reagent_clothing,
+		"Chain Boots" = /obj/item/clothing/shoes/chain_boots,
+		"Plated Boots" = /obj/item/clothing/shoes/plated_boots,
+		"Horseshoes" = /obj/item/clothing/shoes/horseshoe,
+		"Ring" = /obj/item/clothing/gloves/ring/reagent_clothing,
+		"Collar" = /obj/item/clothing/neck/kink_collar/reagent_clothing,
+		"Handcuffs" = /obj/item/restraints/handcuffs/reagent_clothing,
+		"Borer Cage" = /obj/item/cortical_cage,
+		"Pavise Shield" = /obj/item/shield/riot/buckler/reagent_weapon/pavise,
+		"Buckler Shield" = /obj/item/shield/riot/buckler/reagent_weapon,
+		"Coil" = /obj/item/forging/coil,
 	)
 
 /obj/structure/reagent_crafting_bench/examine(mob/user)
@@ -101,59 +85,36 @@
 		balloon_alert(user, "no choice made!")
 		return
 	goal_name = target_choice
+	goal_item_path = allowed_choices[target_choice]
 	switch(target_choice)
 		if("Chain Helmet")
 			required_chain = 5
-			goal_item_path = choice_paths[1]
-			required_hits = 10
 		if("Chain Armor")
 			required_chain = 6
-			goal_item_path = choice_paths[2]
-			required_hits = 12
 		if("Chain Gloves")
 			required_chain = 4
-			goal_item_path = choice_paths[3]
-			required_hits = 8
 		if("Chain Boots")
 			required_chain = 4
-			goal_item_path = choice_paths[4]
-			required_hits = 8
 		if("Plated Boots")
 			required_plate = 4
-			goal_item_path = choice_paths[5]
-			required_hits = 8
 		if("Horseshoes")
 			required_chain = 4
-			goal_item_path = choice_paths[6]
-			required_hits = 8
 		if("Ring")
 			required_chain = 2
-			goal_item_path = choice_paths[7]
-			required_hits = 4
 		if("Collar")
 			required_chain = 3
-			goal_item_path = choice_paths[8]
-			required_hits = 6
 		if("Handcuffs")
 			required_chain = 10
-			goal_item_path = choice_paths[9]
-			required_hits = 20
 		if("Borer Cage")
 			required_plate = 6
-			goal_item_path = choice_paths[10]
-			required_hits = 12
 		if("Pavise Shield")
 			required_plate = 8
-			goal_item_path = choice_paths[11]
-			required_hits = 16
 		if("Buckler Shield")
 			required_plate = 5
-			goal_item_path = choice_paths[12]
-			required_hits = 10
 		if("Coil")
 			required_chain = 2
-			goal_item_path = choice_paths[13]
-			required_hits = 4
+	if(!required_hits)
+		required_hits = (required_chain * 2) + (required_plate * 2) + (required_coil * 2)
 	balloon_alert(user, "choice made!")
 	update_appearance()
 
@@ -248,7 +209,7 @@
 	if(istype(attacking_item, /obj/item/forging/coil))
 		qdel(attacking_item)
 		coil_amount++
-		balloon_alert(user, "chain added!")
+		balloon_alert(user, "coil added!")
 		return
 
 	//inserting a thing
