@@ -7,7 +7,7 @@
 
 /obj/item/clothing/neck/cloak/skill_reward/smithing
 	name = "legendary smithy's cloak"
-	desc = "Worn by the most skilled smithys, this legendary cloak is only attainable by achieving true smithing enlightenment. \
+	desc = "Worn by the most skilled smithies, this legendary cloak is only attainable by knowing every inch of the blacksmith's forge. \
 	This status symbol represents a being who has forged some of the finest weapons and armors."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/cloaks.dmi'
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/neck.dmi'

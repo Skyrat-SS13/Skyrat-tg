@@ -118,51 +118,6 @@
 	. = ..()
 	AddComponent(/datum/component/two_handed, force_unwielded=8, force_wielded=16)
 
-/obj/item/forging/reagent_weapon/bokken
-	name = "reagent bokken"
-	desc = "A bokken that can be imbued with a reagent. It can be dual-wielded to increase block chance!"
-	force = 10
-	icon_state = "bokken"
-	inhand_icon_state = "sword"
-	throwforce = 10
-	block_chance = 30
-	slot_flags = ITEM_SLOT_BACK
-	w_class = WEIGHT_CLASS_NORMAL
-	resistance_flags = FIRE_PROOF
-	attack_verb_continuous = list("bonks", "bashes", "whacks", "pokes", "prods")
-	attack_verb_simple = list("bonk", "bash", "whack", "poke", "prod")
-	var/wielded = FALSE
-
-/obj/item/forging/reagent_weapon/bokken/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text, final_block_chance, damage, attack_type)
-	if(wielded)
-		final_block_chance *= 2
-	if(prob(final_block_chance))
-		if(attack_type == PROJECTILE_ATTACK)
-			owner.visible_message(span_danger("[owner] deflects [attack_text] with [src]!"))
-			playsound(src, pick('sound/weapons/effects/ric1.ogg', 'sound/weapons/effects/ric2.ogg', 'sound/weapons/effects/ric3.ogg', 'sound/weapons/effects/ric4.ogg', 'sound/weapons/effects/ric5.ogg'), 100, TRUE)
-			return TRUE
-		else
-			playsound(src, 'sound/weapons/parry.ogg', 75, TRUE)
-			owner.visible_message(span_danger("[owner] parries [attack_text] with [src]!"))
-			return TRUE
-	return FALSE
-
-/obj/item/forging/reagent_weapon/bokken/Initialize()
-	. = ..()
-	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
-	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)
-	AddComponent(/datum/component/two_handed, force_unwielded=10, force_wielded=5)
-
-/obj/item/forging/reagent_weapon/bokken/proc/on_wield()
-	SIGNAL_HANDLER
-
-	wielded = TRUE
-
-/obj/item/forging/reagent_weapon/bokken/proc/on_unwield()
-	SIGNAL_HANDLER
-
-	wielded = FALSE
-
 /obj/item/forging/reagent_weapon/axe
 	name = "reagent axe"
 	desc = "An axe that can be imbued with a reagent."
@@ -195,7 +150,7 @@
 
 /obj/item/shield/riot/buckler/reagent_weapon
 	name = "reagent plated buckler shield"
-	desc = "A plated buckler shield that can be imbued with a reagent."
+	desc = "A small, round shield best used in tandem with a melee weapon in close-quarters combat; can be imbued with a reagent."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
 	icon_state = "buckler"
 	inhand_icon_state = "buckler"
@@ -213,6 +168,7 @@
 	AddComponent(/datum/component/reagent_weapon)
 
 /obj/item/shield/riot/buckler/reagent_weapon/shatter(mob/living/carbon/human/owner)
+	owner.balloon_alert_to_viewers("shield has shattered!")
 	playsound(owner, 'sound/effects/bang.ogg', 50)
 	new /obj/item/forging/complete/plate(get_turf(src))
 
@@ -232,12 +188,13 @@
 			var/fixing_amount = min(max_integrity - atom_integrity, 5)
 			atom_integrity += fixing_amount
 			user.mind.adjust_experience(/datum/skill/smithing, 5) //useful heating means you get some experience
+			balloon_alert(user, "partially repaired!")
 		return
 	return ..()
 
 /obj/item/shield/riot/buckler/reagent_weapon/pavise
 	name = "reagent plated pavise shield"
-	desc = "A plated pavise shield that can be imbued with a reagent."
+	desc = "An oblong shield used by ancient crossbowman as cover while reloading; can be imbued with a reagent."
 	icon_state = "pavise"
 	inhand_icon_state = "pavise"
 	block_chance = 75

@@ -104,11 +104,6 @@
 	icon_state = "hot_spearhead"
 	spawn_item = /obj/item/forging/complete/spear
 
-/obj/item/forging/incomplete/bokken
-	name = "incomplete bokken head"
-	icon_state = "hot_blade"
-	spawn_item = /obj/item/forging/complete/bokken
-
 /obj/item/forging/incomplete/axe
 	name = "incomplete axe head"
 	icon_state = "hot_axehead"
@@ -133,6 +128,11 @@
 /obj/item/forging/complete
 	///the path of the item that will be created
 	var/spawning_item
+
+/obj/item/forging/complete/examine(mob/user)
+	. = ..()
+	if(spawning_item)
+		. += span_notice("<br>In order to finish this item, a workbench will be necessary!")
 
 /obj/item/forging/complete/chain
 	name = "chain"
@@ -173,12 +173,6 @@
 	desc = "A spear head, ready to get some wood for completion."
 	icon_state = "spearhead"
 	spawning_item = /obj/item/forging/reagent_weapon/spear
-
-/obj/item/forging/complete/bokken
-	name = "bokken head"
-	desc = "A bokken head, ready to get some wood for completion."
-	icon_state = "blade"
-	spawning_item = /obj/item/forging/reagent_weapon/bokken
 
 /obj/item/forging/complete/axe
 	name = "axe head"

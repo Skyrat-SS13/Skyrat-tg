@@ -1,6 +1,6 @@
 /obj/structure/reagent_crafting_bench
-	name = "forging work bench"
-	desc = "A crafting bench used to create forging items."
+	name = "forging workbench"
+	desc = "A crafting bench fitted with tools, securing mechanisms, and a steady surface for blacksmithing."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_structures.dmi'
 	icon_state = "crafting_bench_empty"
 
@@ -12,15 +12,15 @@
 	///the name of the goal item
 	var/goal_name
 	///the amount of chains within the bench
-	var/chain_amount = 0
+	var/current_chain = 0
 	///the amount of chains required
 	var/required_chain = 0
 	///the amount of plates within the bench
-	var/plate_amount = 0
+	var/current_plate = 0
 	///the amount of plates required
 	var/required_plate = 0
 	///the amount of coils within the bench
-	var/coil_amount = 0
+	var/current_coil = 0
 	///the amount of coils required
 	var/required_coil = 0
 	///the amount of hits required to complete the item
@@ -54,11 +54,11 @@
 		. += span_notice("Goal Item: [goal_name]")
 		. += span_notice("When you have the necessary materials, begin hammering!<br>")
 		if(required_chain)
-			. += span_warning("[chain_amount]/[required_chain] chains stored.")
+			. += span_warning("[current_chain]/[required_chain] chains stored.")
 		if(required_plate)
-			. += span_warning("[plate_amount]/[required_plate] plates stored.")
+			. += span_warning("[current_plate]/[required_plate] plates stored.")
 		if(required_coil)
-			. += span_warning("[coil_amount]/[required_coil] coils stored.")
+			. += span_warning("[current_coil]/[required_coil] coils stored.")
 	if(length(contents))
 		. += span_notice("Held Item: [contents[1]]")
 
@@ -128,11 +128,14 @@
 	required_coil = 0
 
 /obj/structure/reagent_crafting_bench/proc/check_required_materials()
-	if(chain_amount < required_chain)
+	if(current_chain < required_chain)
+		balloon_alert(user, "not enough materials!")
 		return FALSE
-	if(plate_amount < required_plate)
+	if(current_plate < required_plate)
+		balloon_alert(user, "not enough materials!")
 		return FALSE
-	if(coil_amount < required_coil)
+	if(current_coil < required_coil)
+		balloon_alert(user, "not enough materials!")
 		return FALSE
 	return TRUE
 
@@ -163,7 +166,6 @@
 			balloon_alert(user, "no choice made!")
 			return
 		if(!check_required_materials())
-			balloon_alert(user, "not enough materials!")
 			return
 		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER) * 1 SECONDS
 		if(!COOLDOWN_FINISHED(src, hit_cooldown))
@@ -178,9 +180,9 @@
 			balloon_alert(user, "item crafted!")
 			update_appearance()
 			user.mind.adjust_experience(/datum/skill/smithing, 15) //creating grants you something
-			chain_amount -= required_chain
-			plate_amount -= required_plate
-			coil_amount -= required_coil
+			current_chain -= required_chain
+			current_plate -= required_plate
+			current_coil -= required_coil
 			clear_required()
 			return
 		current_hits++
@@ -198,17 +200,17 @@
 		return
 	if(istype(attacking_item, /obj/item/forging/complete/plate))
 		qdel(attacking_item)
-		plate_amount++
+		current_plate++
 		balloon_alert(user, "plate added!")
 		return
 	if(istype(attacking_item, /obj/item/forging/complete/chain))
 		qdel(attacking_item)
-		chain_amount++
+		current_chain++
 		balloon_alert(user, "chain added!")
 		return
 	if(istype(attacking_item, /obj/item/forging/coil))
 		qdel(attacking_item)
-		coil_amount++
+		current_coil++
 		balloon_alert(user, "coil added!")
 		return
 
@@ -228,9 +230,9 @@
 		var/turf/src_turf = get_turf(src)
 		for(var/i in 1 to chain_amount)
 			new /obj/item/forging/complete/chain(src_turf)
-		for(var/i in 1 to plate_amount)
+		for(var/i in 1 to current_plate)
 			new /obj/item/forging/complete/plate(src_turf)
-		for(var/i in 1 to coil_amount)
+		for(var/i in 1 to current_coil)
 			new /obj/item/forging/coil(src_turf)
 		var/spawning_wood = current_wood + 5
 		for(var/i in 1 to spawning_wood)
