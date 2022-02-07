@@ -115,7 +115,7 @@
 			acting_expiry(disable)
 			return
 
-	var/impairment = input(src, "Select an impairment to perform:", "Impairments") as null|anything in choices
+	var/impairment = tgui_input_list(src, "Select an impairment to perform:", "Impairments", choices)
 	if(!impairment)
 		return
 
