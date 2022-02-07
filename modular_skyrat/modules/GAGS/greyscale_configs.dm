@@ -53,6 +53,29 @@
 	name = "Mushroom Cap Worn"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/mush_cap/mushcap_worn.json'
 
+// FLATCAP
+
+/datum/greyscale_config/flatcap
+	name = "Flat Cap"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/hats.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/flatcap/flatcap.json'
+
+/datum/greyscale_config/flatcap/worn
+	name = "Flat Cap (Worn)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/hats.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/flatcap/flatcap_worn.json'
+
+// FLOWER PIN
+
+/datum/greyscale_config/flowerpin
+	name = "Flower Pin"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/hats.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/flowerpin/flowerpin.json'
+
+/datum/greyscale_config/flowerpin/worn
+	name = "Flower Pin (Worn)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/hats.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/flowerpin/flowerpin_worn.json'
 
 /*
 *	MASKS
