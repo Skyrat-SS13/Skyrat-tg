@@ -130,8 +130,13 @@
 	var/deg = tgui_input_number(user, "What angle would you like to rotate the pen head to? (1-360)", "Rotate Pen Head", max_value = 360)
 	if(isnull(deg))
 		return
+<<<<<<< HEAD
 	degrees = round(deg)
 	to_chat(user, span_notice("You rotate the top of the pen to [degrees] degrees."))
+=======
+	degrees = deg
+	to_chat(user, span_notice("You rotate the top of the pen to [deg] degrees."))
+>>>>>>> d8b1f319088 (Tgui input hotfix (#64698))
 	SEND_SIGNAL(src, COMSIG_PEN_ROTATED, deg, user)
 
 /obj/item/pen/attack(mob/living/M, mob/user, params)

@@ -153,9 +153,15 @@
 	var/active_held = user.get_active_held_item()  // differs from I when using TK
 	if(istype(I, /obj/item/stack) && precise_insertion)
 		var/atom/current_parent = parent
+<<<<<<< HEAD
 		var/obj/item/stack/S = I
 		requested_amount = round(tgui_input_number(user, "How much do you want to insert?", "Inserting [S.singular_name]s"))
 		if(isnull(requested_amount) || (requested_amount <= 0))
+=======
+		var/obj/item/stack/item_stack = held_item
+		requested_amount = tgui_input_number(user, "How much do you want to insert?", "Inserting [item_stack.singular_name]s", item_stack.amount, item_stack.amount)
+		if(!requested_amount || QDELETED(held_item) || QDELETED(user) || QDELETED(src))
+>>>>>>> d8b1f319088 (Tgui input hotfix (#64698))
 			return
 		if(QDELETED(I) || QDELETED(user) || QDELETED(src) || parent != current_parent || user.physical_can_use_topic(current_parent) < UI_INTERACTIVE || user.get_active_held_item() != active_held)
 			return
