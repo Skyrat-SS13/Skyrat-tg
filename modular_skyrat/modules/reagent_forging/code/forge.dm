@@ -191,8 +191,7 @@
 	if(forge_level == previous_level)
 		to_chat(user, span_notice("[src] was already upgraded by your level of expertise!"))
 		return
-	to_chat(user, span_notice("As you work with [src], you note the purity caused by heating metal with nothing but exposed flame. \
-	Examine to view what has improved!")
+	to_chat(user, span_notice("As you work with [src], you note the purity caused by heating metal with nothing but exposed flame. Examine to view what has improved!"))
 	playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
 
 /obj/structure/reagent_forge/attackby(obj/item/I, mob/living/user, params)
