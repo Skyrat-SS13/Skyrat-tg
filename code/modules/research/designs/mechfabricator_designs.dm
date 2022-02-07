@@ -796,6 +796,7 @@
 	construction_time = 120
 	category = list("Cyborg Upgrade Modules")
 
+/*
 /datum/design/borg_transform_clown
 	name = "Cyborg Upgrade (Clown Model)"
 	id = "borg_transform_clown"
@@ -804,6 +805,7 @@
 	materials = list(/datum/material/iron = 15000, /datum/material/glass = 15000, /datum/material/bananium = 1000)
 	construction_time = 120
 	category = list("Cyborg Upgrade Modules")
+*/
 
 /datum/design/borg_upgrade_selfrepair
 	name = "Cyborg Upgrade (Self-repair)"
