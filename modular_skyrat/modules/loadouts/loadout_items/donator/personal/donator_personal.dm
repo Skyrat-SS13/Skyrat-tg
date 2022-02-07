@@ -202,7 +202,7 @@
 
 /datum/loadout_item/neck/kiaracollar
 	name = "Kiara's collar"
-	item_path = /obj/item/clothing/neck/human_petcollar/inferno
+	item_path = /obj/item/clothing/neck/inferno_collar
 	ckeywhitelist = list("inferno707")
 
 /datum/loadout_item/pocket_items/kiaramedal

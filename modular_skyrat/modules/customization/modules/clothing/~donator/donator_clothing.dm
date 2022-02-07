@@ -23,61 +23,33 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "winterhood_poly"
 
-//SCARVES
-/obj/item/clothing/neck/cloak/polychromic
-	name = "polychromic cloak"
-	desc = "For when you want to show off your horrible colour coordination skills."
-	icon_state = "polycloak"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
-	var/list/poly_colors = list("#FFFFFF", "#FFFFFF", "#888888")
+// NECK
 
-/obj/item/clothing/neck/cloak/polychromic/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, poly_colors)
+/obj/item/clothing/neck/cloak/colourable
+	name = "colourable cloak"
+	icon_state = "gags_cloak"
+	greyscale_config = /datum/greyscale_config/cloak
+	greyscale_config_worn = /datum/greyscale_config/cloak/worn
+	greyscale_colors = "#917A57#4e412e#4e412e"
+	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/neck/cloak/polychromic/veil
-	name = "polychromic veil"
-	icon_state = "polyveil"
+/obj/item/clothing/neck/cloak/colourable/veil
+	name = "colourable veil"
+	icon_state = "gags_veil"
+	greyscale_config = /datum/greyscale_config/cloak/veil
+	greyscale_config_worn = /datum/greyscale_config/cloak/veil/worn
 
-/obj/item/clothing/neck/cloak/polychromic/boat
-	name = "polychromic boatcloak"
-	icon_state = "polyboat"
+/obj/item/clothing/neck/cloak/colourable/boat
+	name = "colourable boatcloak"
+	icon_state = "gags_boat"
+	greyscale_config = /datum/greyscale_config/cloak/boat
+	greyscale_config_worn = /datum/greyscale_config/cloak/boat/worn
 
-/obj/item/clothing/neck/cloak/polychromic/shroud
-	name = "polychromic shroud"
-	icon_state = "polyshroud"
-
-/obj/item/clothing/neck/cloak/rscloak
-	name = "black cape"
-	desc = "A black cape with a purple finish at the end."
-	icon_state = "black"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
-
-/obj/item/clothing/neck/cloak/rscloak_cross
-	name = "black cape"
-	desc = "A black cape with a grey cross pattern on the back."
-	icon_state = "black_cross"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
-
-/obj/item/clothing/neck/cloak/rscloak_champion
-	name = "champion cape"
-	desc = "A regal blue and gold cape!"
-	icon_state = "champion"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
-
-/obj/item/clothing/neck/cloak/polychromic/rscloak
-	name = "polychromic cape"
-	desc = "A cape with a polychromic finish. It can be recoloured to the user's personal preference."
-	icon_state = "polycape"
-
-/obj/item/clothing/neck/cloak/polychromic/rscloak_cross
-	name = "polychromic cape"
-	desc = "A cape with a polychromic finish. It can be recoloured to the user's personal preference. This one has across pattern."
-	icon_state = "polycape_cross"
+/obj/item/clothing/neck/cloak/colourable/shroud
+	name = "colourable shroud"
+	icon_state = "gags_shroud"
+	greyscale_config = /datum/greyscale_config/cloak/shroud
+	greyscale_config_worn = /datum/greyscale_config/cloak/shroud/worn
 
 //UNIFORMS
 /obj/item/clothing/under/dress/skirt/polychromic
@@ -614,13 +586,28 @@
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 
 //Donation reward for inferno707
-/obj/item/clothing/neck/human_petcollar/inferno
+/obj/item/clothing/neck/inferno_collar
 	name = "Kiara's collar"
 	desc = "A soft black collar that seems to stretch to fit whoever wears it."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	icon_state = "infcollar"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
-	tagname = null
+	alternate_worn_layer = UNDER_SUIT_LAYER
+	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/collar
+	/// What's the name on the tag, if any?
+	var/tagname = null
+	/// What treat item spawns inside the collar?
+	var/treat_path = /obj/item/food/cookie
+
+/obj/item/clothing/neck/inferno_collar/Initialize()
+	. = ..()
+	if(treat_path)
+		new treat_path(src)
+
+/obj/item/clothing/neck/inferno_collar/attack_self(mob/user)
+	tagname = stripped_input(user, "Would you like to change the name on the tag?", "Name your new pet", "Kiara", MAX_NAME_LEN)
+	if(tagname)
+		name = "[initial(name)] - [tagname]"
 
 //Donation reward for inferno707
 /obj/item/clothing/accessory/medal/steele
