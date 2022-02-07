@@ -11,6 +11,19 @@
 	if(is_mining_level(z))
 		icon_state = "primitive_water_basin"
 
+/obj/structure/reagent_water_basin/examine(mob/user)
+	. = ..()
+	. += span_notice("[src] can be upgraded through a bluespace crystal or a journeyman smithy!")
+
+/obj/structure/reagent_water_basin/attack_hand(mob/living/user, list/modifiers)
+	. = ..()
+	var/smithing_skill = user.mind.get_skill_level(/datum/skill/smithing)
+	var/check_fishable = GetComponent(/datum/component/fishing)
+	if(smithing_skill < SKILL_LEVEL_JOURNEYMAN && check_fishable)
+		return
+	balloon_alert(user, "the water deepens!")
+	AddComponent(/datum/component/fishing, set_loot = GLOB.fishing_weights, allow_fishes = TRUE)
+
 /obj/structure/reagent_water_basin/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/forging/tongs))
 		var/obj/item/forging/incomplete/search_incomplete = locate(/obj/item/forging/incomplete) in I.contents

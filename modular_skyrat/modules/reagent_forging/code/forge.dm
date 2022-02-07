@@ -80,7 +80,7 @@
 		. += span_notice("[src] has [goliath_ore_improvement]/3 goliath hides.")
 		. += span_notice("[src] has [current_sinew]/10 watcher sinews.")
 		. += span_notice("[src] has [current_core]/3 regenerative cores.")
-	. += span_notice("[src] is currently [forge_temperature] degrees hot, going towards [target_temperature] degrees.<br>")
+	. += span_notice("<br>[src] is currently [forge_temperature] degrees hot, going towards [target_temperature] degrees.<br>")
 	if(reagent_forging)
 		. += span_warning("[src] has a red tinge, it is ready to imbue chemicals into reagent objects.")
 
@@ -173,29 +173,26 @@
 /obj/structure/reagent_forge/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	var/user_smithing_skill = user.mind.get_skill_level(/datum/skill/smithing)
+	var/previous_level = forge_level
 	if(user_smithing_skill <= SKILL_LEVEL_NOVICE)
 		to_chat(user, span_notice("[src] requires you to be more experienced!"))
-	if(user_smithing_skill >= SKILL_LEVEL_JOURNEYMAN)
-		if(forge_level >= FORGE_LEVEL_ONE)
-			to_chat(user, span_warning("Your level of smithing has already influenced [src]!"))
-			return
-		forge_level = FORGE_LEVEL_ONE
+		return
+	if(user_smithing_skill >= SKILL_LEVEL_APPRENTICE)
 		goliath_ore_improvement = 3
-	if(user_smithing_skill >= SKILL_LEVEL_MASTER)
-		if(forge_level >= FORGE_LEVEL_TWO)
-			to_chat(user, span_warning("Your level of smithing has already influenced [src]!"))
-			return
-		forge_level = FORGE_LEVEL_TWO
+		forge_level = FORGE_LEVEL_ONE
+	if(user_smithing_skill >= SKILL_LEVEL_EXPERT)
 		sinew_lower_chance = 100
 		current_sinew = 10
-	if(user_smithing_skill >= SKILL_LEVEL_LEGENDARY)
-		if(forge_level >= FORGE_LEVEL_THREE)
-			to_chat(user, span_warning("Your level of smithing has already influenced [src]!"))
-			return
-		forge_level = FORGE_LEVEL_THREE
+		forge_level = FORGE_LEVEL_TWO
+	if(user_smithing_skill >= SKILL_LEVEL_MASTER)
 		current_core = 3
+		forge_level = FORGE_LEVEL_THREE
 		create_reagent_forge()
-	to_chat(user, span_notice("[src] levels up... examine to view what has changed!"))
+	if(forge_level == previous_level)
+		to_chat(user, span_notice("[src] was already upgraded by your level of expertise!"))
+		return
+	to_chat(user, span_notice("As you work with [src], you note the purity caused by heating metal with nothing but exposed flame. \
+	Examine to view what has improved!")
 	playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
 
 /obj/structure/reagent_forge/attackby(obj/item/I, mob/living/user, params)
