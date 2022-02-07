@@ -147,7 +147,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/pflatcap
 	name = "Poly Flat cap"
-	item_path = /obj/item/clothing/head/polyflatc
+	item_path = /obj/item/clothing/head/colourable_flatcap
 
 /datum/loadout_item/head/beige_fedora
 	name = "Beige Fedora"
@@ -331,18 +331,6 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/whitekepiold
 	name = "White Kepi, Old"
 	item_path = /obj/item/clothing/head/kepi/old
-
-/datum/loadout_item/head/hijab
-	name = "Hijab"
-	item_path = /obj/item/clothing/head/hijab
-
-/datum/loadout_item/head/turban
-	name = "Turban"
-	item_path = /obj/item/clothing/head/turb
-
-/datum/loadout_item/head/keff
-	name = "Keffiyeh"
-	item_path = /obj/item/clothing/head/keffiyeh
 
 /datum/loadout_item/head/maidhead
 	name = "Maid Headband"

@@ -83,3 +83,12 @@
  */
 /datum/round_event_control/sentient_disease
 	max_occurrences = 0
+
+/**
+ * Lone Ops
+ *
+ * Removed:
+ * Does not have policy. Will re-add if/when policy is added
+ */
+/datum/round_event_control/operative
+	max_occurrences = 0
