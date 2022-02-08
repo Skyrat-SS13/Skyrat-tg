@@ -23,7 +23,7 @@ export const EventPanel = (props, context) => {
       theme={"admin"}>
       <Window.Content>
         <Stack vertical fill>
-          {admin_mode && (
+          {!!admin_mode && (
             <Stack.Item>
               <Section title={"Event Control"}>
                 <NoticeBox color="blue">
