@@ -134,6 +134,10 @@
 	// SKYRAT EDIT ADDITION
 	/// Do we use a random appearance for this ghost role?
 	var/random_appearance = FALSE
+	/// Can we use our loadout for this role?
+	var/loadout_enabled = FALSE
+	/// Can we use our quirks for this role?
+	var/quirks_enabled = FALSE
 	// SKYRAT EDIT END
 
 /obj/effect/mob_spawn/ghost_role/Initialize(mapload)
@@ -181,6 +185,10 @@
 			var/mob/living/carbon/human/spawned_human = spawned_mob
 			mob_possessor?.client?.prefs?.safe_transfer_prefs_to(spawned_human)
 			spawned_human.dna.update_dna_identity()
+			if(loadout_enabled)
+				SSquirks.AssignQuirks(spawned_human, mob_possessor.client)
+			if(quirks_enabled)
+				spawned_human.equip_outfit_and_loadout(outfit, mob_possessor.client.prefs)
 	// SKYRAT EDIT END
 	if(mob_possessor)
 		spawned_mob.ckey = mob_possessor.ckey

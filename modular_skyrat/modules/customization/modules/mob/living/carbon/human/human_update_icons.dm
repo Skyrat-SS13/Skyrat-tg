@@ -314,7 +314,7 @@
 		var/default_file = !isinhands ? (worn_icon ? worn_icon : default_icon_file) : default_icon_file
 		standing = wear_species_version(file_to_use, t_state, layer2use, species, default_file)
 	else if(femaleuniform)
-		standing = wear_female_version(t_state,file_to_use,layer2use,femaleuniform) //should layer2use be in sync with the adjusted value below? needs testing - shiz
+		standing = wear_female_version(t_state, file_to_use, layer2use, femaleuniform, greyscale_colors) //should layer2use be in sync with the adjusted value below? needs testing - shiz
 	if(!standing)
 		standing = mutable_appearance(file_to_use, t_state, -layer2use)
 

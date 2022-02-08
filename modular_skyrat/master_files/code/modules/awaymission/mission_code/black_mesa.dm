@@ -338,7 +338,7 @@
 /obj/effect/spawner/random/hecu_smg
 	name = "HECU SMG drops"
 	spawn_all_loot = TRUE
-	loot = list(/obj/item/gun/ballistic/automatic/c20r/unrestricted = 30,
+	loot = list(/obj/item/gun/ballistic/automatic/cfa_wildcat = 30,
 				/obj/item/clothing/mask/gas/hecu2 = 20,
 				/obj/item/clothing/head/helmet = 20,
 				/obj/item/clothing/suit/armor/vest = 15,
@@ -382,7 +382,7 @@
 	loot = list(/obj/item/melee/baton)
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 7.5
-	faction = list(FACTION_XEN)
+	faction = list(FACTION_HECU)
 	check_friendly_fire = 1
 	status_flags = CANPUSH
 	del_on_death = 1
@@ -417,7 +417,7 @@
 	rapid = 3
 	icon_state = "hecu_ranged_smg"
 	icon_living = "hecu_ranged_smg"
-	casingtype = /obj/item/ammo_casing/c45
+	casingtype = /obj/item/ammo_casing/c32
 	projectilesound = 'sound/weapons/gun/smg/shot.ogg'
 	loot = list(/obj/effect/gibspawner/human, /obj/effect/spawner/random/hecu_smg)
 
@@ -477,9 +477,9 @@
 	minimum_distance = 5
 	icon_state = "security_guard_ranged"
 	icon_living = "security_guard_ranged"
-	casingtype = /obj/item/ammo_casing/c10mm
+	casingtype = /obj/item/ammo_casing/b9mm
 	projectilesound = 'sound/weapons/gun/pistol/shot.ogg'
-	loot = list(/obj/item/clothing/suit/armor/vest/blueshirt, /obj/item/gun/ballistic/automatic/pistol/g17)
+	loot = list(/obj/item/clothing/suit/armor/vest/blueshirt, /obj/item/gun/ballistic/automatic/pistol/g17/mesa)
 	rapid_melee = 1
 
 /obj/machinery/porta_turret/black_mesa
@@ -570,7 +570,7 @@
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt
 	shoes = /obj/item/clothing/shoes/jackboots
 	back = /obj/item/storage/backpack
-	backpack_contents = list(/obj/item/radio, /obj/item/gun/ballistic/automatic/pistol/g17, /obj/item/ammo_box/magazine/multi_sprite/g17)
+	backpack_contents = list(/obj/item/radio, /obj/item/gun/ballistic/automatic/pistol/g17/mesa, /obj/item/ammo_box/magazine/multi_sprite/g17)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/security_guard
 
@@ -597,23 +597,44 @@
 	icon_state = "hecu_uniform"
 	inhand_icon_state = "r_suit"
 
+///It looks fairly fitting for an "elite tacticool squad", so we'll just reuse it with the Expeditionary Corps' gear stats, and without that plasteel mention, until someone sprites/finds a better one. To make it fair.
+/obj/item/clothing/suit/armor/vest/marine/hecu
+	desc = "A set of the finest mass produced, stamped steel armor plates, containing an environmental protection unit for all-condition door kicking."
+	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
+	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
+	icon_state = "hecu_vest"
+	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 40, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
+
+/obj/item/clothing/head/helmet/marine/hecu
+	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
+	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
+	icon_state = "hecu_helm"
+	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
+
+/obj/item/storage/backpack/ert/odst/hecu
+	name = "hecu backpack"
+
 /datum/outfit/hecu
 	name = "HECU Grunt"
 	uniform = /obj/item/clothing/under/rank/security/officer/hecu
-	head = /obj/item/clothing/head/helmet
-	mask = /obj/item/clothing/mask/gas/hecu2
+	head = /obj/item/clothing/head/helmet/marine/hecu
+	mask = /obj/item/clothing/mask/balaclavaadjust
 	gloves = /obj/item/clothing/gloves/combat
-	suit = /obj/item/clothing/suit/armor/vest
+	suit = /obj/item/clothing/suit/armor/vest/marine/hecu
+	suit_store = /obj/item/gun/ballistic/automatic/assault_rifle/m16
+	belt = /obj/item/storage/belt/security/webbing
+	ears = /obj/item/radio/headset
 	shoes = /obj/item/clothing/shoes/combat
-	back = /obj/item/storage/backpack
-	backpack_contents = list(/obj/item/radio, /obj/item/ammo_box/magazine/m16 = 4, /obj/item/storage/firstaid/expeditionary)
-	r_hand =  /obj/item/gun/ballistic/automatic/assault_rifle/m16
+	l_pocket = /obj/item/flashlight/glowstick
+	r_pocket = /obj/item/grenade/frag
+	back = /obj/item/storage/backpack/ert/odst/hecu
+	backpack_contents = list(/obj/item/ammo_box/magazine/m16 = 4, /obj/item/storage/firstaid/expeditionary, /obj/item/storage/box/mothic_rations, /obj/item/gun/ballistic/automatic/pistol/g17, /obj/item/ammo_box/magazine/multi_sprite/g17 = 2, /obj/item/knife/combat)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu
 
 /datum/outfit/hecu/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
 	. = ..()
-	equipped_human.faction |= FACTION_XEN
+	equipped_human.faction |= FACTION_HECU
 	equipped_human.hairstyle = "Crewcut"
 	equipped_human.hair_color = COLOR_ALMOST_BLACK
 	equipped_human.facial_hairstyle = "Shaved"
