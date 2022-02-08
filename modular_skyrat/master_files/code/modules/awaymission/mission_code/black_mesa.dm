@@ -632,7 +632,7 @@
 	l_pocket = /obj/item/flashlight/glowstick
 	r_pocket = /obj/item/grenade/frag
 	back = /obj/item/storage/backpack/ert/odst/hecu
-	backpack_contents = list(/obj/item/ammo_box/magazine/m16/extended = 4, /obj/item/storage/firstaid/expeditionary, /obj/item/storage/box/mothic_rations, /obj/item/gun/ballistic/automatic/pistol/g17/mesa, /obj/item/ammo_box/magazine/multi_sprite/g17 = 2, /obj/item/knife/combat)
+	backpack_contents = list(/obj/item/ammo_box/magazine/m16 = 4, /obj/item/storage/firstaid/expeditionary, /obj/item/storage/box/mothic_rations, /obj/item/gun/ballistic/automatic/pistol/g17/mesa, /obj/item/ammo_box/magazine/multi_sprite/g17 = 2, /obj/item/knife/combat)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu
 
