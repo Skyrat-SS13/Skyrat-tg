@@ -100,7 +100,7 @@ export const EventPanel = (props, context) => {
                             event_ref: event.ref,
                           })} />
                       )} >
-                      {show_votes || admin_mode && (
+                      {!!show_votes || !!admin_mode && (
                         event.votes
                       )}
                     </LabeledList.Item>
