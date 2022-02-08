@@ -2,7 +2,7 @@
  * A simple voting system to replace the current random events, if no votes are recieved, it will be random.
  */
 
-#define LOW_CHAOS_TIMER_LOWER 10 MINUTES
+#define LOW_CHAOS_TIMER_LOWER 5 MINUTES
 
 #define LOW_CHAOS_TIMER_UPPER 15 MINUTES
 
