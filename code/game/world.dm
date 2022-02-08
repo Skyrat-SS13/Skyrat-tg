@@ -85,6 +85,10 @@ GLOBAL_VAR(restart_counter)
 	HandleTestRun()
 	#endif
 
+	#ifdef AUTOWIKI
+	setup_autowiki()
+	#endif
+
 /world/proc/InitTgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
 	GLOB.revdata.load_tgs_info()
@@ -378,6 +382,10 @@ GLOBAL_VAR(restart_counter)
 
 /world/proc/on_tickrate_change()
 	SStimer?.reset_buckets()
+
+/world/Profile(command, type, format)
+	if((command & PROFILE_STOP) || !global.config?.loaded || !CONFIG_GET(flag/forbid_all_profiling))
+		. = ..()
 
 #undef OVERRIDE_LOG_DIRECTORY_PARAMETER
 #undef NO_INIT_PARAMETER

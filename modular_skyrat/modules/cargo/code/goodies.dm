@@ -59,9 +59,17 @@
 
 /datum/supply_pack/goody/pepperball
 	name = "PepperBall Self Defense Weapon"
-	desc = "A 'state of the art' self defense weapon, firing balls of condensed pepperspray, don't aim for the face."
+	desc = "A 'state of the art' self defense weapon, firing balls of condensed pepperspray, don't aim for the face. Weapons permit not included."
 	cost = PAYCHECK_MEDIUM * 17
 	contains = list(/obj/item/storage/box/gunset/pepperball)
+
+/datum/supply_pack/goody/pepperball_ammo
+	name = "PepperBall Ammo Resupply"
+	desc = "An ammobox and a few spare magazines for a PepperBall self defense weapon, in case you run out."
+	cost = PAYCHECK_MEDIUM * 6
+	contains = list(/obj/item/ammo_box/advanced/pepperballs,
+					/obj/item/ammo_box/magazine/pepperball,
+					/obj/item/ammo_box/magazine/pepperball)
 
 /datum/supply_pack/goody/gunmaint
 	name = "Gun Maintenance Kits"
