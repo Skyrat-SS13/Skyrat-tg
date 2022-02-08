@@ -798,32 +798,6 @@ SUBSYSTEM_DEF(job)
 
 /// Builds various lists of jobs based on station, centcom and additional jobs with icons associated with them.
 /datum/controller/subsystem/job/proc/setup_job_lists()
-<<<<<<< HEAD
-	for(var/datum/job/job as anything in subtypesof(/datum/job))
-		if(initial(job.job_type_flags) & JOB_STATION_JOB)
-			station_jobs |= initial(job.title)
-		if(initial(job.job_type_flags) & JOB_HEAD_JOB)
-			head_of_staff_jobs |= initial(job.title)
-
-	additional_jobs_with_icons |= list(
-		JOB_ERT_COMMANDER, JOB_ERT_OFFICER, JOB_ERT_ENGINEER, JOB_ERT_MEDICAL_DOCTOR,
-		JOB_ERT_CLOWN, JOB_ERT_CHAPLAIN, JOB_ERT_JANITOR, JOB_ERT_DEATHSQUAD,
-		JOB_SECURITY_OFFICER_MEDICAL, JOB_SECURITY_OFFICER_ENGINEERING, JOB_SECURITY_OFFICER_SCIENCE, JOB_SECURITY_OFFICER_SUPPLY,
-		JOB_SECURITY_MEDIC, JOB_SECURITY_SERGEANT, JOB_CIVIL_DISPUTES_OFFICER,
-		JOB_BOUNCER, JOB_ORDERLY, JOB_SCIENCE_GUARD, JOB_ENGINEERING_GUARD, JOB_CUSTOMS_AGENT,
-		JOB_BLUESHIELD, JOB_NT_REP, JOB_VANGUARD_OPERATIVE,
-		JOB_SPACE_POLICE, JOB_SOLGOV, JOB_SOLGOV_LIASON,
-		JOB_BARBER,
-	)
-
-	centcom_jobs |= list(
-		JOB_CENTCOM, JOB_CENTCOM_OFFICIAL, JOB_CENTCOM_ADMIRAL, JOB_CENTCOM_COMMANDER, JOB_CENTCOM_VIP,
-		JOB_CENTCOM_BARTENDER, JOB_CENTCOM_CUSTODIAN, JOB_CENTCOM_THUNDERDOME_OVERSEER, JOB_CENTCOM_MEDICAL_DOCTOR,
-		JOB_CENTCOM_RESEARCH_OFFICER, JOB_CENTCOM_SPECIAL_OFFICER, JOB_CENTCOM_PRIVATE_SECURITY,
-	)
-
-=======
->>>>>>> 77c9485ecb4 (Cleans Job lists (hardcoded and not) (#64596))
 	job_priorities_to_strings = list(
 		"[JP_LOW]" = "Low Priority",
 		"[JP_MEDIUM]" = "Medium Priority",
