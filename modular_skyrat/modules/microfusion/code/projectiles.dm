@@ -35,6 +35,7 @@
 /obj/projectile/beam/laser/microfusion/superheated
 	name = "superheated microfusion laser"
 	icon_state = "laser_greyscale"
+	damage = 15 //Trading damage for fire stacks
 	color = LIGHT_COLOR_FIRE
 	light_color = LIGHT_COLOR_FIRE
 
@@ -45,3 +46,12 @@
 		var/mob/living/living = target
 		living.fire_stacks += 2
 		living.IgniteMob()
+
+/obj/projectile/beam/laser/microfusion/hellfire
+	name = "hellfire microfusion laser"
+	icon_state = "laser_greyscale"
+	wound_bonus = 0
+	damage = 25 // Basically a hellfire beam
+	speed = 0.6
+	color = LIGHT_COLOR_FLARE
+	light_color = LIGHT_COLOR_FLARE

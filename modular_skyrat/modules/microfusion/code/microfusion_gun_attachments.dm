@@ -103,16 +103,16 @@ The cell is stable and will not emit sparks when firing.
 	microfusion_gun.microfusion_lens.variance -= variance_to_add
 
 /*
-REPEATER ATTACHMENT
+SUPERHEAT ATTACHMENT
 
-The gun can fire volleys of shots.
+Lasers set the target on fire.
 */
 /obj/item/microfusion_gun_attachment/superheat
 	name = "superheating phase emitter upgrade"
 	desc = "A barrel attachment hooked to the phase emitter, this adjusts the beam's wavelength to carry an intense wave of heat; causing targets to ignite."
 	icon_state = "attachment_superheat"
 	attachment_overlay_icon_state = "attachment_superheat"
-	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter)
+	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter, /obj/item/microfusion_gun_attachment/hellfire)
 	heat_addition = 70
 	slot = GUN_SLOT_BARREL
 	var/projectile_override =/obj/projectile/beam/laser/microfusion/superheated
@@ -127,6 +127,35 @@ The gun can fire volleys of shots.
 
 
 /obj/item/microfusion_gun_attachment/superheat/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
+	. = ..()
+	chambered.loaded_projectile = new projectile_override
+
+/*
+HELLFIRE ATTACHMENT
+
+The gun can fire volleys of shots.
+*/
+/obj/item/microfusion_gun_attachment/hellfire
+	name = "hellfire emitter upgrade"
+	desc = "A barrel attachment hooked to the phase emitter, this adjusts the beam's wavelength to carry an extra wave of heat; causing nastier wounds and more damage."
+	icon_state = "attachment_hellfire"
+	attachment_overlay_icon_state = "attachment_hellfire"
+	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter, /obj/item/microfusion_gun_attachment/superheat)
+	heat_addition = 70
+	power_usage = 20
+	slot = GUN_SLOT_BARREL
+	var/projectile_override =/obj/projectile/beam/laser/microfusion/hellfire
+
+/obj/item/microfusion_gun_attachment/hellfire/run_attachment(obj/item/gun/microfusion/microfusion_gun)
+	. = ..()
+	microfusion_gun.fire_sound = 'modular_skyrat/modules/microfusion/sound/melt.ogg'
+
+/obj/item/microfusion_gun_attachment/hellfire/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
+	. = ..()
+	microfusion_gun.fire_sound = microfusion_gun.chambered?.fire_sound
+
+
+/obj/item/microfusion_gun_attachment/hellfire/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
 	. = ..()
 	chambered.loaded_projectile = new projectile_override
 
