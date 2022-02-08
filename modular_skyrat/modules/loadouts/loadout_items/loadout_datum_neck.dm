@@ -95,6 +95,11 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Red Necktie"
 	item_path = /obj/item/clothing/neck/tie/red
 
+/datum/loadout_item/neck/discoproper
+	name = "Horrible Necktie"
+	item_path = /obj/item/clothing/neck/tie/disco
+	restricted_roles = list(JOB_DETECTIVE)
+
 /datum/loadout_item/neck/stethoscope
 	name = "Stethoscope"
 	item_path = /obj/item/clothing/neck/stethoscope
@@ -109,24 +114,28 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	item_path = /obj/item/clothing/neck/human_petcollar
 
 /datum/loadout_item/neck/leathercollar
-	name = "Leather collar"
+	name = "Leather Collar"
 	item_path = /obj/item/clothing/neck/human_petcollar/leather
 
 /datum/loadout_item/neck/cbellcollar
-	name = "Cowbell collar"
-	item_path = /obj/item/clothing/neck/human_petcollar/locked/cowcollar
+	name = "Cowbell Collar"
+	item_path = /obj/item/clothing/neck/human_petcollar/locked/cow
 
 /datum/loadout_item/neck/bellcollar
-	name = "Bell collar"
-	item_path = /obj/item/clothing/neck/human_petcollar/locked/bellcollar
+	name = "Bell Collar"
+	item_path = /obj/item/clothing/neck/human_petcollar/locked/bell
 
 /datum/loadout_item/neck/spikecollar
-	name = "Spike collar"
-	item_path = /obj/item/clothing/neck/human_petcollar/locked/spikecollar
+	name = "Spike Collar"
+	item_path = /obj/item/clothing/neck/human_petcollar/locked/spike
 
 /datum/loadout_item/neck/hcollar
 	name = "Holocollar"
-	item_path = /obj/item/clothing/neck/human_petcollar/locked/holocollar
+	item_path = /obj/item/clothing/neck/human_petcollar/locked/holo
+
+/datum/loadout_item/neck/crosscollar
+	name = "Cross Collar"
+	item_path = /obj/item/clothing/neck/human_petcollar/locked/cross
 
 /datum/loadout_item/neck/ponchocowboy
 	name = "Green cowboy poncho"
@@ -135,10 +144,6 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/ranger_poncho_greyscale
 	name = "Greyscale ranger poncho"
 	item_path = /obj/item/clothing/neck/ranger_poncho
-
-/datum/loadout_item/neck/crosscollar
-	name = "Cross collar"
-	item_path = /obj/item/clothing/neck/human_petcollar/locked/cross
 
 /datum/loadout_item/neck/gags_cloak
 	name = "Colourable Cloak"
@@ -155,12 +160,6 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/gags_boat
 	name = "Colourable Boatcloak"
 	item_path = /obj/item/clothing/neck/cloak/colourable/boat
-
-
-/datum/loadout_item/neck/discoproper
-	name = "Horrible Necktie"
-	item_path = /obj/item/clothing/neck/tie/disco
-	restricted_roles = list(JOB_DETECTIVE)
 
 /datum/loadout_item/neck/mantle
 	name = "Mantle"
