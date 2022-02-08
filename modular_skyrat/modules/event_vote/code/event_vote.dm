@@ -389,6 +389,7 @@
 		data["event_list"] += list(list(
 			"name" = iterating_event.name,
 			"ref" = REF(iterating_event),
+			"votes" = LAZYLEN(votes[iterating_event]),
 			"self_vote" = istype(iterating_event, check_vote(user.ckey)) ? TRUE : FALSE,
 		))
 
