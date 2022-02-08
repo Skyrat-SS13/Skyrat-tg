@@ -591,11 +591,13 @@
 
 /obj/item/clothing/under/rank/security/officer/hecu
 	name = "hecu jumpsuit"
-	desc = "A tactical HECU jumpsuit for officers complete with Nanotrasen belt buckle."
+	desc = "A tactical HECU fatigues for regular troops complete with USMC belt buckle." ///SIR YES SIR HOORAH
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "hecu_uniform"
 	inhand_icon_state = "r_suit"
+	uses_advanced_reskins = FALSE
+	unique_reskin = null
 
 ///It looks fairly fitting for an "elite tacticool squad", so we'll just reuse it with the Expeditionary Corps' gear stats, and without that plasteel mention, until someone sprites/finds a better one. To make it fair.
 /obj/item/clothing/suit/armor/vest/marine/hecu
@@ -603,12 +605,14 @@
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	icon_state = "hecu_vest"
+	clothing_flags = THICKMATERIAL
 	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 40, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
 
 /obj/item/clothing/head/helmet/marine/hecu
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	icon_state = "hecu_helm"
+	clothing_flags = SNUG_FIT | PLASMAMAN_HELMET_EXEMPT
 	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
 
 /obj/item/storage/backpack/ert/odst/hecu
@@ -628,7 +632,7 @@
 	l_pocket = /obj/item/flashlight/glowstick
 	r_pocket = /obj/item/grenade/frag
 	back = /obj/item/storage/backpack/ert/odst/hecu
-	backpack_contents = list(/obj/item/ammo_box/magazine/m16 = 4, /obj/item/storage/firstaid/expeditionary, /obj/item/storage/box/mothic_rations, /obj/item/gun/ballistic/automatic/pistol/g17, /obj/item/ammo_box/magazine/multi_sprite/g17 = 2, /obj/item/knife/combat)
+	backpack_contents = list(/obj/item/ammo_box/magazine/m16/extended = 4, /obj/item/storage/firstaid/expeditionary, /obj/item/storage/box/mothic_rations, /obj/item/gun/ballistic/automatic/pistol/g17/mesa, /obj/item/ammo_box/magazine/multi_sprite/g17 = 2, /obj/item/knife/combat)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu
 
