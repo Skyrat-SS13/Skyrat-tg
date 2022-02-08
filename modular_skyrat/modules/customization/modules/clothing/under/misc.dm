@@ -46,18 +46,15 @@
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
 
-/obj/item/clothing/under/misc/poly_kilt
-	name = "polychromic kilt"
+/obj/item/clothing/under/misc/colourable_kilt
+	name = "colourable kilt"
 	desc = "It's not a skirt!"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "polykilt"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	icon_state = "kilt"
+	greyscale_config = /datum/greyscale_config/kilt
+	greyscale_config_worn = /datum/greyscale_config/kilt/worn
+	greyscale_colors = "#008000#777777"
+	flags_1 = IS_PLAYER_COLORABLE_1
 	mutant_variants = NONE
-
-/obj/item/clothing/under/misc/poly_kilt/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#FFFFFF", "#FF8888", "#FFFFFF"))
 
 /obj/item/clothing/under/misc/royalkilt
 	name = "royal kilt"
