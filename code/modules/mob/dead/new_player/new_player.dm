@@ -103,20 +103,9 @@
 	var/less_input_message
 	if(SSlag_switch.measures[DISABLE_DEAD_KEYLOOP])
 		less_input_message = " - Notice: Observer freelook is currently disabled."
-<<<<<<< HEAD
-	//SKYRAT EDIT CHANGE BEGIN - NOTICE_REMOVE
-	//var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe? You will not be able to play this round![less_input_message]", "Observe", "Yes", "No") - SKYRAT EDIT - ORIGINAL
-	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe?[less_input_message]", "Observe", "Yes", "No")
-	//SKYRAT EDIT CHANGE END
-
-	if(this_is_like_playing_right != "Yes")
-		return FALSE
-	if(QDELETED(src) || !src.client)
-=======
 	// Don't convert this to tgui please, it's way too important
-	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe? You will not be able to play this round![less_input_message]", "Observe", "Yes", "No")
+	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe?", "Observe", "Yes", "No") //SKYRAT EDIT CHANGE
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
->>>>>>> ad68c542dbb (Makes the observe button not require tgui. Please stop making the observe button require tgui. (#64721))
 		ready = PLAYER_NOT_READY
 		return FALSE
 
