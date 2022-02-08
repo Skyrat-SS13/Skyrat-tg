@@ -420,6 +420,11 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 	if (!CONFIG_GET(flag/no_intercept_report))
 		addtimer(CALLBACK(src, .proc/send_intercept), rand(waittime_l, waittime_h))
 
+	//SKYRAT EDIT START - DIVERGENCY/GOALS REPORT
+	else
+		addtimer(CALLBACK(src, .proc/send_trait_report), rand(waittime_l, waittime_h))
+	//SKYRAT EDIT END
+
 	..()
 
 /// Initializes the internal ruleset variables
