@@ -477,9 +477,9 @@
 	minimum_distance = 5
 	icon_state = "security_guard_ranged"
 	icon_living = "security_guard_ranged"
-	casingtype = /obj/item/ammo_casing/c10mm
+	casingtype = /obj/item/ammo_casing/b9mm
 	projectilesound = 'sound/weapons/gun/pistol/shot.ogg'
-	loot = list(/obj/item/clothing/suit/armor/vest/blueshirt, /obj/item/gun/ballistic/automatic/pistol/g17)
+	loot = list(/obj/item/clothing/suit/armor/vest/blueshirt, /obj/item/gun/ballistic/automatic/pistol/g17/mesa)
 	rapid_melee = 1
 
 /obj/machinery/porta_turret/black_mesa
@@ -570,7 +570,7 @@
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt
 	shoes = /obj/item/clothing/shoes/jackboots
 	back = /obj/item/storage/backpack
-	backpack_contents = list(/obj/item/radio, /obj/item/gun/ballistic/automatic/pistol/g17, /obj/item/ammo_box/magazine/multi_sprite/g17)
+	backpack_contents = list(/obj/item/radio, /obj/item/gun/ballistic/automatic/pistol/g17/mesa, /obj/item/ammo_box/magazine/multi_sprite/g17)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/security_guard
 
