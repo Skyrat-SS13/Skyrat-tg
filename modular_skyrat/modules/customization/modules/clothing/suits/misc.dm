@@ -121,14 +121,16 @@
 /obj/item/clothing/suit/toggle/jacket/cardigan
 	name = "cardigan"
 	desc = "It's like, half a jacket."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "cardigan"
+	greyscale_config = /datum/greyscale_config/cardigan
+	greyscale_config_worn = /datum/greyscale_config/cardigan/worn
+	greyscale_colors = "#FFFFFF"
+	flags_1 = IS_PLAYER_COLORABLE_1
 	mutant_variants = NONE
 
 /obj/item/clothing/suit/toggle/jacket/cardigan/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("#FFFFFF"))
+	AddComponent(/datum/component/toggle_clothes, "cardigan_t")
 
 /obj/item/clothing/suit/discoblazer
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
