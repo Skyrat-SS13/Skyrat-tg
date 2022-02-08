@@ -144,6 +144,8 @@
 	for(var/datum/round_event_control/preset/iterating_preset in SSevents.control)
 		if(!iterating_preset.selectable_chaos_level) // We can assume these are abstract.
 			continue
+		if(iterating_preset.occurrences >= iterating_preset.max_occurrences)
+			continue
 		possible_events += iterating_preset
 
 	// Direct chat link is good.

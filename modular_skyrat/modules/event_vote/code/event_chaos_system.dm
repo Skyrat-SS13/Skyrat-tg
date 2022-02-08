@@ -32,8 +32,6 @@
 		for(var/datum/round_event_control/iterating_event in SSevents.control)
 			if(!iterating_event.votable)
 				continue
-			if(iterating_event.occurrences >= iterating_event.max_occurrences)
-				continue
 			if(iterating_event.chaos_level == selectable_chaos_level)
 				possible_events += iterating_event
 
@@ -45,55 +43,24 @@
 
 	occurrences++
 
-
 /datum/round_event_control/preset/low
-	name = "Low Chaos Random Event"
+	name = "Disruptive Random Event"
 	earliest_start = 0
 	max_occurrences = 100
 	selectable_chaos_level = EVENT_CHAOS_LOW
 
 /datum/round_event_control/preset/moderate
-	name = "Moderate Chaos Random Event"
+	name = "Highly Disruptive Random Event"
 	max_occurrences = 10
 	earliest_start = 10 MINUTES
 	selectable_chaos_level = EVENT_CHAOS_MED
 
 /datum/round_event_control/preset/high
-	name = "High Chaos Random Event"
+	name = "Catastrophic Random Event"
 	max_occurrences = 1
 	earliest_start = 30 MINUTES
 	selectable_chaos_level = EVENT_CHAOS_HIGH
 	min_players = 70
-
-
-/datum/round_event_control/preset/random
-	name = "I'm Feeling Lucky"
-	selectable_chaos_level = null // Disabled
-
-/datum/round_event_control/preset/random/runEvent(random)
-	log_game("Preset Event triggering: [name] ([typepath])")
-	if(random)
-		deadchat_broadcast(" has just been triggered!", "<b>A random event preset</b>", message_type=DEADCHAT_ANNOUNCEMENT)
-
-	// A list of presets compiled to select from
-	var/presets = list()
-
-	for(var/datum/round_event_control/preset/iterating_preset in SSevents.control)
-		if(!iterating_preset.selectable_chaos_level) //Abstracts don't go in here.
-			continue
-		if(iterating_preset.selectable_chaos_level == EVENT_CHAOS_RANDOM) //Infinite loops are bad.
-			continue
-		if(iterating_preset.occurrences >= iterating_preset.max_occurrences)
-			continue
-
-		presets += iterating_preset
-
-	var/datum/round_event_control/preset/picked_preset = pick(presets)
-
-	picked_preset.runEvent()
-
-	occurrences++
-
 
 /**
  * EVENT CHAOS DECLARES
@@ -240,9 +207,6 @@
 	chaos_level = EVENT_CHAOS_HIGH
 
 /datum/round_event_control/space_dragon
-	chaos_level = EVENT_CHAOS_HIGH
-
-/datum/round_event_control/spider_infestation
 	chaos_level = EVENT_CHAOS_HIGH
 
 /datum/round_event_control/resonance_cascade
