@@ -212,33 +212,6 @@
 	*/
 	var/atom/closest_atom
 	var/closest_type = 0
-<<<<<<< HEAD
-	var/static/list/things_to_shock = typecacheof(list(/obj/machinery, /mob/living, /obj/structure, /obj/vehicle/ridden))
-	var/static/list/blacklisted_tesla_types = typecacheof(list(/obj/machinery/atmospherics,
-										/obj/machinery/portable_atmospherics,
-										/obj/machinery/power/emitter,
-										/obj/machinery/field/generator,
-										//SKYRAT EDIT ADDITION BEGIN
-										/obj/machinery/particle_accelerator/control_box,
-										/obj/structure/particle_accelerator/fuel_chamber,
-										/obj/structure/particle_accelerator/particle_emitter/center,
-										/obj/structure/particle_accelerator/particle_emitter/left,
-										/obj/structure/particle_accelerator/particle_emitter/right,
-										/obj/structure/particle_accelerator/power_box,
-										/obj/structure/particle_accelerator/end_cap,
-										//SKYRAT EDIT END
-										/mob/living/simple_animal,
-										/obj/machinery/field/containment,
-										/obj/structure/disposalpipe,
-										/obj/structure/disposaloutlet,
-										/obj/machinery/disposal/delivery_chute,
-										/obj/machinery/camera,
-										/obj/structure/sign,
-										/obj/machinery/gateway,
-										/obj/structure/lattice,
-										/obj/structure/grille,
-										/obj/structure/frame/machine))
-=======
 	var/static/list/things_to_shock = zebra_typecacheof(list(
 		// Things that we want to shock.
 		/obj/machinery = TRUE,
@@ -262,8 +235,16 @@
 		/obj/structure/lattice = FALSE,
 		/obj/structure/grille = FALSE,
 		/obj/structure/frame/machine = FALSE,
+		//SKYRAT EDIT ADDITION BEGIN
+		/obj/machinery/particle_accelerator/control_box = FALSE,
+		/obj/structure/particle_accelerator/fuel_chamber = FALSE,
+		/obj/structure/particle_accelerator/particle_emitter/center = FALSE,
+		/obj/structure/particle_accelerator/particle_emitter/left = FALSE,
+		/obj/structure/particle_accelerator/particle_emitter/right = FALSE,
+		/obj/structure/particle_accelerator/power_box = FALSE,
+		/obj/structure/particle_accelerator/end_cap = FALSE,
+		//SKYRAT EDIT END
 	))
->>>>>>> 6be8e0feee5 (Adds an option to generate typecaches as zebras. (#63710))
 
 	//Ok so we are making an assumption here. We assume that view() still calculates from the center out.
 	//This means that if we find an object we can assume it is the closest one of its type. This is somewhat of a speed increase.
