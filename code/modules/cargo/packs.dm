@@ -651,6 +651,8 @@
 					/obj/item/clothing/gloves/tackler/combat,
 					/obj/item/clothing/gloves/tackler/combat)
 	crate_name = "swat crate"
+	
+/datum/supply_pack/security/armory/woodstock // SKYRAT EDIT - ADDITION
 
 /datum/supply_pack/security/armory/thermal
 	name = "Thermal Pistol Crate"
