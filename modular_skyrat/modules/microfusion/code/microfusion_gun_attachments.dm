@@ -5,7 +5,7 @@
 
 /obj/item/microfusion_gun_attachment
 	name = "microfusion gun attachment"
-	desc = "broken"
+	desc = "If you see this yell at a coder"
 	icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun_attachments.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	/// The attachment overlay icon state.
@@ -83,6 +83,7 @@ The cell is stable and will not emit sparks when firing.
 	var/recoil_to_add = 1
 	/// The spread to add.
 	var/spread_to_add = 10
+	var/projectile_override =/obj/projectile/beam/laser/microfusion/scatter
 
 /obj/item/microfusion_gun_attachment/scatter/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
@@ -93,6 +94,7 @@ The cell is stable and will not emit sparks when firing.
 
 /obj/item/microfusion_gun_attachment/scatter/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
 	. = ..()
+	chambered.loaded_projectile = new projectile_override
 	chambered.loaded_projectile?.damage = chambered.loaded_projectile.damage / chambered.pellets
 
 /obj/item/microfusion_gun_attachment/scatter/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
@@ -115,7 +117,7 @@ Lasers set the target on fire.
 	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter, /obj/item/microfusion_gun_attachment/hellfire)
 	heat_addition = 70
 	slot = GUN_SLOT_BARREL
-	var/projectile_override =/obj/projectile/beam/laser/microfusion/superheated
+	var/projectile_override =/obj/projectile/beam/laser/microfusion/scatter
 
 /obj/item/microfusion_gun_attachment/superheat/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()

@@ -55,3 +55,7 @@
 	speed = 0.6
 	color = LIGHT_COLOR_FLARE
 	light_color = LIGHT_COLOR_FLARE
+
+/obj/projectile/beam/laser/microfusion/scatter
+	name = "scatter microfusion laser"
+	damage = 30 // This damage is split into pellet amount
