@@ -7,7 +7,6 @@ export const EventPanel = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     event_list = [],
-    votes = [],
     end_time,
     vote_in_progress,
     previous_events,
@@ -24,117 +23,65 @@ export const EventPanel = (props, context) => {
       theme={"admin"}>
       <Window.Content>
         <Stack vertical fill>
-          {admin_mode ? (
-            <>
-              <Stack.Item>
-                <Section title={"Event Control"}>
-                  <NoticeBox color="blue">
-                    {"Next vote in " + toFixed(next_vote_time, 0) + " seconds."}
-                  </NoticeBox>
-                  <NoticeBox color="blue">
-                    {"Low chaos event in " + toFixed(next_low_chaos_time, 0) + " seconds."}
-                  </NoticeBox >
-                  <Button
-                    icon="plus"
-                    content="Start Admin Vote"
-                    tooltip="Start a vote for the next event."
-                    disabled={vote_in_progress}
-                    onClick={() => act('start_vote_admin')} />
-                  <Button
-                    icon="plus"
-                    content="Start Admin Chaos Vote"
-                    tooltip="Start a chaos vote for the next event."
-                    disabled={vote_in_progress}
-                    onClick={() => act('start_vote_admin_chaos')} />
-                  <Button
-                    icon="user-plus"
-                    content="Start Player Vote"
-                    tooltip="This will start a vote that will be publically visible."
-                    color="average"
-                    disabled={vote_in_progress}
-                    onClick={() => act('start_player_vote')} />
-                  <Button
-                    icon="user-plus"
-                    content="Start Public Chaos Vote"
-                    tooltip="This will start a vote that will be publically visible."
-                    color="average"
-                    disabled={vote_in_progress}
-                    onClick={() => act('start_player_vote_chaos')} />
-                  <Button
-                    icon="stopwatch"
-                    content="End Vote"
-                    tooltip="End the current vote and execute the winning event."
-                    disabled={!vote_in_progress}
-                    onClick={() => act('end_vote')} />
-                  <Button
-                    icon="ban"
-                    content="Cancel Vote"
-                    tooltip="Cancel the current vote and reset the voting system."
-                    disabled={!vote_in_progress}
-                    onClick={() => act('cancel_vote')} />
-                  <Button
-                    icon="clock"
-                    content="Rescedule Next Vote"
-                    tooltip="Rescedule the next timed vote."
-                    onClick={() => act('reschedule')} />
-                  <Button
-                    icon="clock"
-                    content="Rescedule Next Low Chaos Event"
-                    tooltip="Rescedule the next timed LOW CHAOS event."
-                    onClick={() => act('reschedule_low_chaos')} />
-                </Section>
-              </Stack.Item>
-              <Stack.Item>
-                <Section scrollable grow fill height="150px" title="Current Votes">
-                  {vote_in_progress ? (
-                    <LabeledList>
-                      {votes.map(vote => (
-                        <LabeledList.Item
-                          key={vote.id}
-                          label={vote.name}
-                          buttons={(
-                            <Button
-                              color={vote.self_vote ? "good" : "blue"}
-                              icon="vote-yea"
-                              content="Vote"
-                              onClick={() => act('register_vote', {
-                                event_ref: vote.ref,
-                              })} />
-                          )} >
-                          {vote.votes}
-                        </LabeledList.Item>
-                      ))}
-                    </LabeledList>
-                  ) : (
-                    <NoticeBox>
-                      No vote in progress.
-                    </NoticeBox>
-                  )}
-                </Section>
-              </Stack.Item>
-            </>
-          ) : (
-            !!show_votes && (
-              <Stack.Item>
-                <Section scrollable grow fill height="150px" title="Current Votes">
-                  {vote_in_progress ? (
-                    <LabeledList>
-                      {votes.map(vote => (
-                        <LabeledList.Item
-                          key={vote.id}
-                          label={vote.name}>
-                          {vote.votes}
-                        </LabeledList.Item>
-                      ))}
-                    </LabeledList>
-                  ) : (
-                    <NoticeBox>
-                      No vote in progress.
-                    </NoticeBox>
-                  )}
-                </Section>
-              </Stack.Item>
-            )
+          {admin_mode && (
+            <Stack.Item>
+              <Section title={"Event Control"}>
+                <NoticeBox color="blue">
+                  {"Next vote in " + toFixed(next_vote_time, 0) + " seconds."}
+                </NoticeBox>
+                <NoticeBox color="blue">
+                  {"Low chaos event in " + toFixed(next_low_chaos_time, 0) + " seconds."}
+                </NoticeBox >
+                <Button
+                  icon="plus"
+                  content="Start Admin Vote"
+                  tooltip="Start a vote for the next event."
+                  disabled={vote_in_progress}
+                  onClick={() => act('start_vote_admin')} />
+                <Button
+                  icon="plus"
+                  content="Start Admin Chaos Vote"
+                  tooltip="Start a chaos vote for the next event."
+                  disabled={vote_in_progress}
+                  onClick={() => act('start_vote_admin_chaos')} />
+                <Button
+                  icon="user-plus"
+                  content="Start Player Vote"
+                  tooltip="This will start a vote that will be publically visible."
+                  color="average"
+                  disabled={vote_in_progress}
+                  onClick={() => act('start_player_vote')} />
+                <Button
+                  icon="user-plus"
+                  content="Start Public Chaos Vote"
+                  tooltip="This will start a vote that will be publically visible."
+                  color="average"
+                  disabled={vote_in_progress}
+                  onClick={() => act('start_player_vote_chaos')} />
+                <Button
+                  icon="stopwatch"
+                  content="End Vote"
+                  tooltip="End the current vote and execute the winning event."
+                  disabled={!vote_in_progress}
+                  onClick={() => act('end_vote')} />
+                <Button
+                  icon="ban"
+                  content="Cancel Vote"
+                  tooltip="Cancel the current vote and reset the voting system."
+                  disabled={!vote_in_progress}
+                  onClick={() => act('cancel_vote')} />
+                <Button
+                  icon="clock"
+                  content="Rescedule Next Vote"
+                  tooltip="Rescedule the next timed vote."
+                  onClick={() => act('reschedule')} />
+                <Button
+                  icon="clock"
+                  content="Rescedule Next Low Chaos Event"
+                  tooltip="Rescedule the next timed LOW CHAOS event."
+                  onClick={() => act('reschedule_low_chaos')} />
+              </Section>
+            </Stack.Item>
           )}
           <Stack.Item grow>
             <Section scrollable fill grow title={vote_in_progress ? "Available Events (" + toFixed(end_time) + " seconds) " : "Available Events"}>
@@ -152,7 +99,11 @@ export const EventPanel = (props, context) => {
                           onClick={() => act('register_vote', {
                             event_ref: event.ref,
                           })} />
-                      )} />
+                      )} >
+                      {show_votes || admin_mode && (
+                        event.votes
+                      )}
+                    </LabeledList.Item>
                   ))}
                 </LabeledList>
               ) : (

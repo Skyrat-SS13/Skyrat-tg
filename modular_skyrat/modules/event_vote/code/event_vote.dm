@@ -382,16 +382,6 @@
 	for(var/datum/round_event_control/iterating_event in previously_run)
 		data["previous_events"] += iterating_event.name
 
-	data["votes"] = list()
-
-	for(var/datum/round_event_control/iterating_event in votes)
-		data["votes"] += list(list(
-			"name" = iterating_event.name,
-			"votes" = LAZYLEN(votes[iterating_event]),
-			"ref" = REF(iterating_event),
-			"self_vote" = istype(iterating_event, check_vote(user.ckey)) ? TRUE : FALSE,
-		))
-
 	// Build a list of runnable events.
 	data["event_list"] = list()
 
