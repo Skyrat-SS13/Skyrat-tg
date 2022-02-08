@@ -26,4 +26,3 @@ UPDATE LOG:
 11:07 14/08/2021 - Jake Park - Hardset all non-modular maps to upstream; added ovens to kitchen and prison on modular maps.
 01:13 10/01/2022 - ErdinyoBarboza - TramStation has been hardset and updated after the Expansion+fix by upstream
 20:43 27/01/2022 - Jake Park - Hardset all non-modular maps to upstream; made Icebox/Delta more similar to upstream
-10:XX 08/02/2022 - ErdinyoBarboza - Hardset all non-modular maps to upstream
