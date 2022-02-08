@@ -5,7 +5,7 @@
 /obj/item/ammo_casing/energy/laser/microfusion
 	name = "microfusion energy lens"
 	projectile_type = /obj/projectile/beam/laser/microfusion
-	e_cost = 100 // 10 shots with a normal cell.
+	e_cost = 100 // 12 shots with a normal cell.
 	select_name = "laser"
 	fire_sound = 'modular_skyrat/modules/microfusion/sound/laser_1.ogg'
 	fire_sound_volume = 100
@@ -59,3 +59,16 @@
 /obj/projectile/beam/laser/microfusion/scatter
 	name = "scatter microfusion laser"
 	damage = 30 // This damage is split into pellet amount
+
+/obj/projectile/beam/laser/microfusion/scattermax
+	name = "scatter microfusion laser"
+	damage = 45 // This damage is split into pellet amount
+
+/obj/projectile/beam/laser/microfusion/repeater
+	name = "scatter microfusion laser"
+	damage = 15 // No more a x2 damage buff
+
+/obj/projectile/beam/laser/microfusion/penetrator
+	name = "scatter microfusion laser"
+	damage = 15
+	armour_penetration = 50

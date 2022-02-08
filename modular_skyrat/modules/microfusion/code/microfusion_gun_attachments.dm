@@ -67,7 +67,7 @@ reference - The reference of the modification button, this is used to call the p
 /*
 SCATTER ATTACHMENT
 
-The cell is stable and will not emit sparks when firing.
+Turns the gun into a shotgun.
 */
 /obj/item/microfusion_gun_attachment/scatter
 	name = "diffuser microfusion lens upgrade"
@@ -98,6 +98,47 @@ The cell is stable and will not emit sparks when firing.
 	chambered.loaded_projectile?.damage = chambered.loaded_projectile.damage / chambered.pellets
 
 /obj/item/microfusion_gun_attachment/scatter/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
+	. = ..()
+	microfusion_gun.recoil -= recoil_to_add
+	microfusion_gun.spread -= spread_to_add
+	microfusion_gun.microfusion_lens.pellets -= pellets_to_add
+	microfusion_gun.microfusion_lens.variance -= variance_to_add
+
+/*
+CRYSTALLINE SCATTER ATTACHMENT
+
+An overclocked shotgun.
+*/
+/obj/item/microfusion_gun_attachment/scattermax
+	name = "crystalline diffuser microfusion lens upgrade"
+	desc = "An experimental diffusing lens system capable of splitting one beam into 7. However, it requires higher power usage as well as results in higher recoil."
+	icon_state = "attachment_scatter"
+	attachment_overlay_icon_state = "attachment_scatter"
+	slot = GUN_SLOT_BARREL
+	/// How many pellets are we going to add to the existing amount on the gun?
+	var/pellets_to_add = 6
+	/// The variation in pellet scatter.
+	var/variance_to_add = 25
+	/// How much recoil are we adding?
+	var/recoil_to_add = 1
+	/// The spread to add.
+	var/spread_to_add = 10
+	var/projectile_override =/obj/projectile/beam/laser/microfusion/scattermax
+	power_usage = 20
+
+/obj/item/microfusion_gun_attachment/scattermax/run_attachment(obj/item/gun/microfusion/microfusion_gun)
+	. = ..()
+	microfusion_gun.recoil += recoil_to_add
+	microfusion_gun.spread += spread_to_add
+	microfusion_gun.microfusion_lens.pellets += pellets_to_add
+	microfusion_gun.microfusion_lens.variance += variance_to_add
+
+/obj/item/microfusion_gun_attachment/scattermax/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
+	. = ..()
+	chambered.loaded_projectile = new projectile_override
+	chambered.loaded_projectile?.damage = chambered.loaded_projectile.damage / chambered.pellets
+
+/obj/item/microfusion_gun_attachment/scattermax/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	microfusion_gun.recoil -= recoil_to_add
 	microfusion_gun.spread -= spread_to_add
@@ -181,6 +222,7 @@ The gun can fire volleys of shots.
 	var/burst_to_add = 1
 	/// The delay to add to the firing.
 	var/delay_to_add = 2
+	var/projectile_override =/obj/projectile/beam/laser/microfusion/repeater
 
 /obj/item/microfusion_gun_attachment/repeater/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
@@ -195,6 +237,51 @@ The gun can fire volleys of shots.
 	microfusion_gun.burst_size -= burst_to_add
 	microfusion_gun.fire_delay -= delay_to_add
 	microfusion_gun.spread -= spread_to_add
+
+/obj/item/microfusion_gun_attachment/repeater/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
+	. = ..()
+	chambered.loaded_projectile = new projectile_override
+/*
+FOCUSED REPEATER ATTACHMENT
+
+The gun can fire volleys of shots that penetrate armor.
+*/
+/obj/item/microfusion_gun_attachment/penetrator
+	name = "focused repeating phase emitter upgrade"
+	desc = "A focused variant of the repeating phase controller. It allows the lasers to penetrate armor however this results in higher power usage."
+	icon_state = "attachment_repeater"
+	attachment_overlay_icon_state = "attachment_repeater"
+	heat_addition = 40
+	slot = GUN_SLOT_BARREL
+	/// The spread to add to the gun.
+	var/spread_to_add = 15
+	/// The recoil to add to the gun.
+	var/recoil_to_add = 1
+	/// The burst to add to the gun.
+	var/burst_to_add = 1
+	/// The delay to add to the firing.
+	var/delay_to_add = 2
+	var/projectile_override =/obj/projectile/beam/laser/microfusion/penetrator
+	power_usage = 80 // A price to pay to penetrate through armor
+
+/obj/item/microfusion_gun_attachment/penetrator/run_attachment(obj/item/gun/microfusion/microfusion_gun)
+	. = ..()
+	microfusion_gun.recoil += recoil_to_add
+	microfusion_gun.burst_size += burst_to_add
+	microfusion_gun.fire_delay += delay_to_add
+	microfusion_gun.spread += spread_to_add
+
+/obj/item/microfusion_gun_attachment/penetrator/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
+	. = ..()
+	microfusion_gun.recoil -= recoil_to_add
+	microfusion_gun.burst_size -= burst_to_add
+	microfusion_gun.fire_delay -= delay_to_add
+	microfusion_gun.spread -= spread_to_add
+
+/obj/item/microfusion_gun_attachment/penetrator/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
+	. = ..()
+	chambered.loaded_projectile = new projectile_override
+
 
 /*
 X-RAY ATTACHMENT
@@ -293,10 +380,6 @@ Converts shots to STAMNINA damage.
 	var/cooling_rate_increase = 10
 	/// The projectile we override
 	var/projectile_override = /obj/projectile/beam/microfusion_disabler
-	/// How much recoil are we removing?
-	var/recoil_to_remove = 1
-	/// How much spread are we removing?
-	var/spread_to_remove = 10
 
 /obj/item/microfusion_gun_attachment/undercharger/get_modify_data()
 	return list(list("title" = "Turn [toggle ? "OFF" : "ON"]", "icon" = "power-off", "color" = "[toggle ? "red" : "green"]", "reference" = "toggle_on_off"))
@@ -479,3 +562,18 @@ The gun can fire PULSE shots.
 /obj/item/microfusion_gun_attachment/pulse/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
 	. = ..()
 	chambered.loaded_projectile = new /obj/projectile/beam/pulse
+
+/obj/item/microfusion_gun_attachment/suppressor
+	name = "laser suppressor" // sure it makes no sense but its cool
+	desc = "An experimental barrel attachment that dampens the soundwave of the emitter, making the laser shots far more stealthy. Best paired with black camo."
+	icon_state = "attachment_xray"
+	slot = GUN_SLOT_BARREL
+	attachment_overlay_icon_state = "attachment_xray"
+
+/obj/item/microfusion_gun_attachment/suppressor/run_attachment(obj/item/gun/microfusion/microfusion_gun)
+	. = ..()
+	microfusion_gun.suppressed = TRUE
+
+/obj/item/microfusion_gun_attachment/suppressor/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
+	. = ..()
+	microfusion_gun.suppressed = null
