@@ -64,7 +64,7 @@
 		message_admins("EVENT: Attempted to start a vote while one was already in progress.")
 		return
 
-	possible_events = populate_event_list(EVENT_ADMIN_VOTE_AMOUNT)
+	possible_events = populate_event_list()
 
 	// Direct chat link is good.
 	message_admins(span_boldannounce("EVENT: Vote started for next event! (<a href='?src=[REF(src)];[HrefToken()];open_panel=1'>Vote!</a>)"))
@@ -119,7 +119,7 @@
 
 	admin_only = FALSE
 
-	possible_events = populate_event_list()
+	possible_events = populate_event_list(EVENT_PUBLIC_VOTE_AMOUNT)
 
 	// Direct chat link is good.
 	for(var/mob/iterating_user in get_eligible_players())
@@ -169,7 +169,9 @@
 	vote_end_time = world.time + EVENT_VOTE_TIME
 
 /// Builds the list of possible events depending on what type of vote it is.
-/datum/controller/subsystem/events/proc/populate_event_list(amount_of_options = EVENT_PUBLIC_VOTE_AMOUNT)
+/datum/controller/subsystem/events/proc/populate_event_list(amount_of_options)
+	if(!amount_of_options) //Assume we want them all
+		amount_of_options = LAZYLEN(SSevents.control)
 	var/list/built_event_list = list()
 	var/list/event_weighted_list = list()
 	for(var/datum/round_event_control/iterating_event in SSevents.control)
