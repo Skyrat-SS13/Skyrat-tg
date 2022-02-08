@@ -23,9 +23,7 @@
 	interactions = list()
 	for(var/iterating_interaction_id in GLOB.interaction_instances)
 		var/datum/interaction/interaction = GLOB.interaction_instances[iterating_interaction_id]
-		if(interaction.lewd && !self.client?.prefs?.read_preference(/datum/preference/toggle/erp))
-			continue
-		if(interaction.sexuality != "None" && interaction.sexuality != self.client?.prefs?.read_preference(/datum/preference/choiced/erp_sexuality))
+		if(interaction.lewd && !self.client?.prefs?.read_preference(/datum/preference/toggle/erp) || (interaction.sexuality != "" || interaction.sexuality != self.client?.prefs?.read_preference(/datum/preference/choiced/erp_sexuality)))
 			continue
 		interactions.Add(interaction)
 
