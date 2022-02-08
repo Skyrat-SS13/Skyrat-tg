@@ -176,7 +176,7 @@ Lasers set the target on fire.
 /*
 HELLFIRE ATTACHMENT
 
-The gun can fire volleys of shots.
+Makes the gun shoot hellfire lasers.
 */
 /obj/item/microfusion_gun_attachment/hellfire
 	name = "hellfire emitter upgrade"
@@ -184,7 +184,7 @@ The gun can fire volleys of shots.
 	icon_state = "attachment_hellfire"
 	attachment_overlay_icon_state = "attachment_hellfire"
 	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter, /obj/item/microfusion_gun_attachment/superheat)
-	heat_addition = 70
+	heat_addition = 50
 	power_usage = 20
 	slot = GUN_SLOT_BARREL
 	var/projectile_override =/obj/projectile/beam/laser/microfusion/hellfire
@@ -252,6 +252,7 @@ The gun can fire volleys of shots that penetrate armor.
 	icon_state = "attachment_repeater"
 	attachment_overlay_icon_state = "attachment_repeater"
 	heat_addition = 40
+	power_usage = 20
 	slot = GUN_SLOT_BARREL
 	/// The spread to add to the gun.
 	var/spread_to_add = 15
@@ -368,7 +369,7 @@ HEATSINK ATTACHMENT
 UNDERCHARGER ATTACHMENT
 
 Massively decreases the output beam of the phase emitter.
-Converts shots to STAMNINA damage.
+Converts shots to STAMINA damage.
 */
 /obj/item/microfusion_gun_attachment/undercharger
 	name = "phase emitter undercharger"
@@ -392,13 +393,9 @@ Converts shots to STAMNINA damage.
 	if(toggle)
 		toggle = FALSE
 		microfusion_gun.heat_dissipation_bonus += cooling_rate_increase
-		microfusion_gun.recoil += recoil_to_remove
-		microfusion_gun.spread += spread_to_remove
 	else
 		toggle = TRUE
 		microfusion_gun.heat_dissipation_bonus -= cooling_rate_increase
-		microfusion_gun.recoil -= recoil_to_remove
-		microfusion_gun.spread -= spread_to_remove
 
 	if(user)
 		to_chat(user, span_notice("You toggle [src] [toggle ? "ON" : "OFF"]."))
@@ -417,8 +414,6 @@ Converts shots to STAMNINA damage.
 	if(toggle)
 		toggle = FALSE
 		microfusion_gun.heat_dissipation_bonus += cooling_rate_increase
-		microfusion_gun.recoil += recoil_to_remove
-		microfusion_gun.spread += spread_to_remove
 	microfusion_gun.fire_sound = microfusion_gun.chambered?.fire_sound
 
 /*
@@ -562,6 +557,12 @@ The gun can fire PULSE shots.
 /obj/item/microfusion_gun_attachment/pulse/process_fire(obj/item/gun/microfusion/microfusion_gun, obj/item/ammo_casing/chambered)
 	. = ..()
 	chambered.loaded_projectile = new /obj/projectile/beam/pulse
+
+/*
+SUPPRESSOR ATTACHMENT
+
+Makes operators operate operatingly.
+*/
 
 /obj/item/microfusion_gun_attachment/suppressor
 	name = "laser suppressor" // sure it makes no sense but its cool

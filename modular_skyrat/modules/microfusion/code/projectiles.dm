@@ -72,3 +72,4 @@
 	name = "scatter microfusion laser"
 	damage = 15
 	armour_penetration = 50
+
