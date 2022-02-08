@@ -91,7 +91,16 @@ export const EventPanel = (props, context) => {
                       {votes.map(vote => (
                         <LabeledList.Item
                           key={vote.id}
-                          label={vote.name}>
+                          label={vote.name}
+                          buttons={(
+                            <Button
+                              color={vote.self_vote ? "good" : "blue"}
+                              icon="vote-yea"
+                              content="Vote"
+                              onClick={() => act('register_vote', {
+                                event_ref: vote.ref,
+                              })} />
+                          )} >
                           {vote.votes}
                         </LabeledList.Item>
                       ))}

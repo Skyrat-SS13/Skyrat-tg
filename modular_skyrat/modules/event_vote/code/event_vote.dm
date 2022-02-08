@@ -389,18 +389,17 @@
 			"name" = iterating_event.name,
 			"votes" = LAZYLEN(votes[iterating_event]),
 			"ref" = REF(iterating_event),
+			"self_vote" = istype(iterating_event, check_vote(user.ckey)) ? TRUE : FALSE,
 		))
 
 	// Build a list of runnable events.
 	data["event_list"] = list()
 
 	for(var/datum/round_event_control/iterating_event in possible_events)
-		var/self_selected = istype(iterating_event, check_vote(user.ckey)) ? TRUE : FALSE
-
 		data["event_list"] += list(list(
 			"name" = iterating_event.name,
 			"ref" = REF(iterating_event),
-			"self_vote" = self_selected
+			"self_vote" = istype(iterating_event, check_vote(user.ckey)) ? TRUE : FALSE,
 		))
 
 	return data
