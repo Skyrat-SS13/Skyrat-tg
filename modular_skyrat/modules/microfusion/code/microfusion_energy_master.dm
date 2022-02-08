@@ -11,7 +11,7 @@
 	bayonet_icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun40x32.dmi'
 	gunlight_icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/microfusion/icons/guns_righthand.dmi'
 	has_gun_safety = TRUE
 	can_flashlight = FALSE
 	can_bayonet = FALSE

@@ -21,6 +21,12 @@
 	shoes = /obj/item/clothing/shoes/laceup
 	id = /obj/item/card/id/away/blackmarket
 
+/obj/effect/mob_spawn/ghost_role/human/ds2
+	name = "DS2 personnel"
+	prompt_name = "DS2 personnel"
+	you_are_text = "You are a syndicate operative, employed in a top secret research facility developing biological weapons."
+	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue operating as best you can, and try to keep a low profile."
+
 /obj/effect/mob_spawn/ghost_role/human/ds2/prisoner
 	name = "Syndicate Prisoner"
 	prompt_name = "a Syndicate prisoner"
@@ -31,12 +37,6 @@
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/ds2/prisoner
 
-/obj/effect/mob_spawn/ghost_role/human/ds2
-	name = "DS2 personnel"
-	prompt_name = "DS2 personnel"
-	you_are_text = "You are a syndicate operative, employed in a top secret research facility developing biological weapons."
-	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue operating as best you can, and try to keep a low profile."
-
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate
 	name = "Syndicate Operative"
 	prompt_name = "a Syndicate operative"
@@ -46,6 +46,8 @@
 	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue operating as best you can, and try to keep a low profile."
 	important_text = "You are not an antagonist."
 	outfit = /datum/outfit/ds2/syndicate
+	loadout_enabled = TRUE
+	quirks_enabled = TRUE
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/special(mob/living/new_spawn)
 	. = ..()
@@ -260,6 +262,8 @@
 	flavour_text = "Something went wrong. Morality of experiments went awry, expansions were made before scans were fully done and now you have to deal with the aftermath of your past crews exodus. Bring P-T to the success it was ment to be, or die trying. (OOC note: This ghost role was not designed with Plasmamen or Vox in mind. While there are some accommodations so that they can survive, it should be noted that they were not the focal point whilst designing Port Tarkon. The closet in the middle of the room above contains the 'accommodations' for those species.)"
 	important_text = "DO NOT abandon the port, PERIOD, but using the ship to buy more items or get help is good, if not ideal. Do not trade special equipment to the station. Unwelcomed and uninvited guests are not obligated to your kindness."
 	outfit = /datum/outfit/tarkon
+	loadout_enabled = TRUE
+	quirks_enabled = TRUE
 
 /datum/outfit/tarkon
 	uniform = /obj/item/clothing/under/utility/cargo
