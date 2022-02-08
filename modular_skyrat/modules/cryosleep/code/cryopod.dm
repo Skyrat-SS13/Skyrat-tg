@@ -77,12 +77,8 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 	// Check Access for item dropping.
 	var/item_retrieval_allowed = FALSE
-	if(isliving(user))
-		var/mob/living/living_user = user
-		var/obj/item/card/id/id = living_user.get_idcard()
-		if(id)
-			if((ACCESS_HEADS in id.access) || (ACCESS_ARMORY in id.access))
-				item_retrieval_allowed = TRUE
+	if(allowed(user))
+		item_retrieval_allowed = TRUE
 	data["item_retrieval_allowed"] = item_retrieval_allowed
 
 	var/obj/item/card/id/id_card
