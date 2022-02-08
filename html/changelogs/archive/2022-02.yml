@@ -203,3 +203,81 @@
   - rscadd: Adds a medium-risk progression traitor objective about Poppy the Safety
       Inspector.
   - bugfix: Fix Poppy's resting state.
+2022-02-07:
+  Fikou, PositiveEntropy:
+  - imageadd: the elite nukie suit has new sprites
+  - balance: the elite nukie suit starts with a little armor filled to standard by
+      the armor booster, the elite armor booster is removed
+  - balance: welding protection is now a part of the armor booster module, no longer
+      a separate module in syndie suits
+  - balance: adds a jetpack and holster to traitor modsuit
+  Mothblocks:
+  - bugfix: Fixed greyscale colors on female fitting versions of clothes.
+  ORCACommander:
+  - server: cleaned up merge conflict markers in config.txt
+  Ryll/Shaps:
+  - bugfix: Shooting living mobs with projectiles will no longer cause duplicated
+      logs/messages
+  SkyratBot:
+  - balance: broken drinking/alcohol glass and broken plate shard now hurt you if
+      you step on them barefoot.
+  - balance: blast doors and shutters are now above windows and doors, and will hide
+      them. Both layers have been increased to 3.3.
+  - balance: shutters now cost 5 plasteel and 5 coil and 1 airlock electronic and
+      take 10 seconds to build
+  - refactor: Replaced the old surgery interface with one that is much better to use,
+      and lets you choose the body zone within itself.
+  - bugfix: Fixed how the diminishing returns of having too much progression scaled.
+      It now properly scales exponentially.
+  - rscdel: Removed the 'take' option for traitor uplinks in the traitor panel.
+  - bugfix: It should no longer be possible to DC admins by spamming grenades.
+  - bugfix: blob overminds can now move vertically through station z-levels while
+      its core hasn't been placed yet.
+  - bugfix: disease mobs can too move vertically while a host hasn't been selected
+      yet.
+  - bugfix: (unrevealed) revenants can now move up and down more freely, without having
+      to be standing on or below open space. This also applies to other living mobs
+      with generic incorporeal movement (not to be confused with the nightmare or
+      wizard's jaunt) as long as they can fly or there's no gravity.
+  - bugfix: The song editor UI now updates properly on pianos/space minimoogs.
+  - bugfix: xeno egg now updates its icon properly when burst
+  - bugfix: Mapped in firelocks that are closed will STAY closed.
+  Wallem:
+  - bugfix: Radio Gloves will no longer vacuum your earpieces when crafted.
+  Wallem, Partheo & Tex:
+  - imageadd: Ports canister sprites made by Partheo & Tex from Yogstation.
+  tf-4:
+  - bugfix: Victim logs are no longer mistakenly logged as subtler emotes.
+  - bugfix: The bamboo stool and carpskin chairs are no longer invisible.
+2022-02-08:
+  LeonY24:
+  - rscadd: 'Glock-17: Black Mesa Edition'
+  - rscdel: No more Armadyne Glock-17 in the Black Mesa.
+  - bugfix: Ranged security from the Black Mesa finally shoot their foes with 9x19
+      bullets, not 10mm.
+  SkyratBot:
+  - code_imp: changed a code-related default, please report if anything turns invisible
+  - bugfix: 'Literally unplayable bugs fixed: Pens can now be rotated again.'
+  - bugfix: TGUI alerts now display buttons in a column when there's more than 2 options.
+  - bugfix: TGUI alerts can now be disabled via turning TGUI inputs off in prefs.
+  - bugfix: Fixed some bluescreens related to TGUI inputs.
+  - bugfix: Fixes a runtime with material containers.
+  - bugfix: Tgui number input now uses a new component that makes it easier to use.
+      It now autofocuses and autoselects, just like the original.
+  - bugfix: Alert modals have been rewritten. Messages no longer clip, they also now
+      respond to TGUI input preferences (UI tab) and you can press ESC to close.
+  - bugfix: You should now be able to enter a blank text to succumb.
+  Stalkeros:
+  - balance: NPC HECU Grunts' caliber changed from .45 to .32, their gun also changed
+      from c20r to Wildcat respectively.
+  - bugfix: HECUs are now members of their own faction, as the God intended.
+  linnpap:
+  - rscadd: Added triple cat tail
+  tf-4:
+  - rscdel: Cortical stacks have been removed.
+  - code_imp: Collars are now coloured through GAGS rather than being polychromatic.
+  - bugfix: Cancelling renaming a collar will no longer give it a blank name.
+  - code_imp: The flat cap and flower pin now use GAGS
+  - rscdel: The turban, keffiyeh, and hijab have been removed
+  theOOZ:
+  - bugfix: Fixes some traitor objectives not awarding TC properly
