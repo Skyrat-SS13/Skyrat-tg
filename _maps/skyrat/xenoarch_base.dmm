@@ -76,8 +76,7 @@
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/living)
 "aS" = (
-/obj/effect/spawner/structure/window/reinforced/plasma,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/brown,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/mine/xenoarch/engineering)
 "bt" = (
@@ -118,9 +117,9 @@
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/living)
 "bW" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/oxygen_input,
-/turf/open/floor/engine/o2,
-/area/mine/xenoarch/engineering)
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/mine/xenoarch/science/xenoarch)
 "bZ" = (
 /obj/effect/turf_decal/stripes/corner,
 /obj/structure/railing/corner,
@@ -156,11 +155,9 @@
 /turf/open/floor/engine,
 /area/mine/xenoarch/engineering/hfr)
 "co" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
-	dir = 8
-	},
-/turf/open/floor/engine/airless,
-/area/mine/xenoarch/engineering)
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/mine/xenoarch/maintenance/east)
 "cp" = (
 /obj/structure/table,
 /obj/item/clothing/glasses/meson,
@@ -174,12 +171,9 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/living)
 "cu" = (
-/obj/machinery/power/compressor{
-	comp_id = "xa";
-	dir = 1
-	},
-/obj/structure/cable,
-/turf/open/floor/engine/airless,
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/purple,
+/turf/open/floor/plating,
 /area/mine/xenoarch/engineering)
 "cD" = (
 /obj/effect/turf_decal/tile/purple/half{
@@ -262,17 +256,12 @@
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/science/cytology)
 "dM" = (
-/obj/effect/turf_decal/tile/yellow{
-	dir = 8
-	},
-/turf/open/floor/iron,
+/obj/effect/turf_decal/vg_decals/atmos/nitrogen,
+/turf/open/floor/engine/n2,
 /area/mine/xenoarch/engineering)
 "dN" = (
-/obj/machinery/light/directional/north,
-/obj/effect/turf_decal/tile/yellow/half{
-	dir = 1
-	},
-/turf/open/floor/iron,
+/obj/machinery/atmospherics/components/unary/vent_pump/high_volume/siphon/atmos/air_output,
+/turf/open/floor/engine/air,
 /area/mine/xenoarch/engineering)
 "dU" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -298,12 +287,6 @@
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/mine/xenoarch/living)
-"em" = (
-/obj/effect/turf_decal/tile/yellow/half{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/mine/xenoarch/engineering)
 "en" = (
 /obj/effect/turf_decal/tile/purple/half{
 	dir = 1
@@ -337,6 +320,11 @@
 "eK" = (
 /turf/open/floor/iron,
 /area/mine/xenoarch/living)
+"eM" = (
+/obj/machinery/portable_atmospherics/canister/plasma,
+/obj/machinery/atmospherics/miner/plasma,
+/turf/open/floor/engine/plasma,
+/area/mine/xenoarch/engineering)
 "eO" = (
 /obj/effect/turf_decal/box/white{
 	color = "#9FED58"
@@ -356,11 +344,8 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/science/cytology)
 "eS" = (
-/obj/structure/extinguisher_cabinet/directional/east,
-/obj/effect/turf_decal/tile/yellow/half{
-	dir = 4
-	},
-/turf/open/floor/iron,
+/obj/effect/turf_decal/vg_decals/atmos/oxygen,
+/turf/open/floor/engine/o2,
 /area/mine/xenoarch/engineering)
 "eX" = (
 /obj/structure/rack,
@@ -443,12 +428,6 @@
 	},
 /turf/open/floor/carpet,
 /area/mine/xenoarch/living)
-"gf" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/carbon_input{
-	dir = 1
-	},
-/turf/open/floor/engine/co2,
-/area/mine/xenoarch/engineering)
 "gi" = (
 /obj/machinery/light/directional/west,
 /obj/structure/disposalpipe/segment,
@@ -464,13 +443,8 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/science)
 "gs" = (
-/obj/machinery/atmospherics/components/binary/pump/off/general{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/nitrogen_output,
+/turf/open/floor/engine/n2,
 /area/mine/xenoarch/engineering)
 "gx" = (
 /obj/structure/displaycase,
@@ -482,19 +456,22 @@
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/living)
 "gK" = (
-/obj/machinery/light/directional/south,
-/obj/effect/turf_decal/tile/yellow/half,
-/turf/open/floor/iron,
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/nitrogen_input,
+/turf/open/floor/engine/n2,
 /area/mine/xenoarch/engineering)
 "gM" = (
-/obj/effect/spawner/structure/window/reinforced/plasma,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/purple,
-/turf/open/floor/plating,
+/obj/machinery/camera/directional/east{
+	c_tag = "Xenoarch Engineering East";
+	network = list("mine","rd")
+	},
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 4
+	},
+/turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
-"gY" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/dark,
-/obj/effect/spawner/structure/window/reinforced/plasma,
-/turf/open/floor/plating,
+"gW" = (
+/obj/effect/turf_decal/vg_decals/atmos/plasma,
+/turf/open/floor/engine/plasma,
 /area/mine/xenoarch/engineering)
 "ha" = (
 /obj/structure/disposalpipe/segment,
@@ -514,11 +491,19 @@
 /obj/structure/rack,
 /obj/item/stack/rods/fifty,
 /obj/item/stack/rods/fifty,
+/obj/item/stack/sheet/mineral/wood/fifty,
+/obj/item/stack/sheet/mineral/wood/fifty,
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
 "hs" = (
 /turf/open/floor/carpet,
 /area/mine/xenoarch/living)
+"hA" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/plasma_input{
+	dir = 1
+	},
+/turf/open/floor/engine/plasma,
+/area/mine/xenoarch/engineering)
 "hE" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -646,8 +631,8 @@
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/engineering)
 "jK" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/nitrogen_output,
-/turf/open/floor/engine/n2,
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/oxygen_output,
+/turf/open/floor/engine/o2,
 /area/mine/xenoarch/engineering)
 "jL" = (
 /obj/machinery/button/door/directional/south{
@@ -689,6 +674,11 @@
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
+"kq" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/pink,
+/turf/open/floor/plating,
+/area/mine/xenoarch/engineering)
 "kt" = (
 /obj/effect/turf_decal/stripes{
 	dir = 5
@@ -761,10 +751,8 @@
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/living)
 "lt" = (
-/obj/machinery/igniter{
-	id = "xabc"
-	},
-/turf/open/floor/engine/airless,
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/oxygen_input,
+/turf/open/floor/engine/o2,
 /area/mine/xenoarch/engineering)
 "lx" = (
 /obj/structure/window/reinforced{
@@ -776,10 +764,9 @@
 /turf/open/floor/carpet,
 /area/mine/xenoarch/living)
 "lz" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	req_one_access_txt = "32;19"
-	},
-/turf/open/floor/plating,
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/atmospherics/miner/oxygen,
+/turf/open/floor/engine/o2,
 /area/mine/xenoarch/engineering)
 "lG" = (
 /obj/structure/table,
@@ -809,11 +796,6 @@
 /obj/machinery/door/airlock/maintenance_hatch,
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/east)
-"lU" = (
-/obj/effect/spawner/structure/window/reinforced/plasma,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/dark,
-/turf/open/floor/plating,
-/area/mine/xenoarch/engineering)
 "md" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -851,10 +833,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/mine/xenoarch/science/cytology)
-"mF" = (
-/obj/structure/rack,
-/turf/open/floor/plating,
-/area/mine/xenoarch/maintenance/east)
 "mH" = (
 /obj/effect/turf_decal/box/white{
 	color = "#EFB341"
@@ -907,6 +885,11 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/engine,
 /area/mine/xenoarch/engineering/hfr)
+"nv" = (
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/obj/machinery/atmospherics/miner/carbon_dioxide,
+/turf/open/floor/engine/co2,
+/area/mine/xenoarch/engineering)
 "nz" = (
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -941,9 +924,9 @@
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
 "nQ" = (
-/obj/machinery/atmospherics/components/binary/pump/off/general,
-/obj/effect/turf_decal/tile/yellow/half,
-/turf/open/floor/iron,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply,
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/turf/open/floor/plating,
 /area/mine/xenoarch/engineering)
 "nR" = (
 /obj/machinery/door/airlock/engineering/glass{
@@ -1010,10 +993,10 @@
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
 "oK" = (
-/obj/structure/rack,
-/obj/effect/spawner/random/maintenance/two,
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green,
 /turf/open/floor/plating,
-/area/mine/xenoarch/maintenance/east)
+/area/mine/xenoarch/engineering)
 "oS" = (
 /obj/structure/rack,
 /turf/open/floor/plating,
@@ -1052,14 +1035,14 @@
 /turf/open/floor/plating,
 /area/mine/xenoarch/science/xenoarch)
 "po" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/oxygen_output,
-/turf/open/floor/engine/o2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/dark,
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/turf/open/floor/plating,
 /area/mine/xenoarch/engineering)
 "pq" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/nitrous_output{
-	dir = 1
-	},
-/turf/open/floor/engine/n2o,
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan,
+/turf/open/floor/plating,
 /area/mine/xenoarch/engineering)
 "pw" = (
 /obj/effect/turf_decal/tile/brown/half,
@@ -1117,7 +1100,9 @@
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/east)
 "qj" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/visible/layer4,
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 1
+	},
 /turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "qm" = (
@@ -1176,10 +1161,6 @@
 /area/mine/xenoarch/maintenance/west)
 "qU" = (
 /obj/item/radio/intercom/directional/west,
-/obj/machinery/camera/directional/west{
-	c_tag = "Xenoarch Engineering  West";
-	network = list("mine","rd")
-	},
 /obj/machinery/vending/wardrobe/engi_wardrobe{
 	onstation_override = 1
 	},
@@ -1199,15 +1180,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/mine/xenoarch/living)
-"rt" = (
-/obj/machinery/portable_atmospherics/canister/plasma,
-/obj/machinery/atmospherics/miner/plasma,
-/turf/open/floor/engine/plasma,
-/area/mine/xenoarch/engineering)
 "rv" = (
 /obj/structure/table/wood,
 /turf/open/floor/carpet,
 /area/mine/xenoarch/living)
+"rx" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/carbon_output{
+	dir = 1
+	},
+/turf/open/floor/engine/co2,
+/area/mine/xenoarch/engineering)
 "rG" = (
 /obj/effect/turf_decal/arrows/white,
 /obj/effect/turf_decal/stripes/line{
@@ -1270,8 +1252,10 @@
 /turf/open/floor/carpet,
 /area/mine/xenoarch/living)
 "st" = (
-/turf/open/floor/engine/airless,
-/area/mine/xenoarch/engineering)
+/obj/structure/rack,
+/obj/effect/spawner/random/maintenance/two,
+/turf/open/floor/plating,
+/area/mine/xenoarch/maintenance/east)
 "sG" = (
 /obj/effect/turf_decal/bot/right,
 /turf/open/floor/engine,
@@ -1349,8 +1333,11 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/living)
 "tC" = (
-/obj/effect/turf_decal/vg_decals/atmos/nitrous_oxide,
-/turf/open/floor/engine/n2o,
+/obj/machinery/atmospherics/components/binary/pump/off/general,
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 1
+	},
+/turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "tG" = (
 /obj/structure/table,
@@ -1376,14 +1363,16 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "ud" = (
-/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
-/obj/machinery/atmospherics/miner/n2o,
-/turf/open/floor/engine/n2o,
+/obj/machinery/light/directional/north,
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 1
+	},
+/turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "ug" = (
-/obj/machinery/power/turbine,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /obj/structure/cable,
-/turf/open/floor/engine/airless,
+/turf/open/floor/plating,
 /area/mine/xenoarch/engineering)
 "ul" = (
 /obj/effect/turf_decal/stripes/line{
@@ -1450,9 +1439,8 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/engineering/hfr)
 "vy" = (
-/obj/effect/spawner/structure/window/reinforced/plasma,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/yellow,
-/turf/open/floor/plating,
+/obj/machinery/atmospherics/pipe/layer_manifold/supply/visible,
+/turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "vz" = (
 /obj/structure/window/reinforced,
@@ -1482,10 +1470,8 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "vX" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/nitrous_input{
-	dir = 1
-	},
-/turf/open/floor/engine/n2o,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/visible/layer4,
+/turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "wd" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
@@ -1512,9 +1498,12 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/living)
 "wo" = (
-/obj/machinery/portable_atmospherics/canister/nitrogen,
-/obj/machinery/atmospherics/miner/nitrogen,
-/turf/open/floor/engine/n2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/visible/layer4,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 8
+	},
+/turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "ww" = (
 /obj/machinery/door/airlock/maintenance_hatch,
@@ -1528,10 +1517,8 @@
 /area/mine/xenoarch/maintenance/west)
 "wx" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/visible/layer4,
-/obj/effect/turf_decal/stripes{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
+/obj/structure/cable,
+/turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "wO" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -1569,10 +1556,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron,
 /area/mine/xenoarch/science/cytology)
-"xC" = (
-/obj/effect/turf_decal/vg_decals/atmos/plasma,
-/turf/open/floor/engine/plasma,
-/area/mine/xenoarch/engineering)
 "xS" = (
 /obj/machinery/firealarm/directional/west,
 /obj/effect/turf_decal/tile/brown/half{
@@ -1580,11 +1563,11 @@
 	},
 /turf/open/floor/iron,
 /area/mine/xenoarch/living)
-"xX" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/plasma_output{
+"xU" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/nitrous_input{
 	dir = 1
 	},
-/turf/open/floor/engine/plasma,
+/turf/open/floor/engine/n2o,
 /area/mine/xenoarch/engineering)
 "yj" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -1597,8 +1580,9 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/living)
 "yk" = (
-/obj/effect/turf_decal/vg_decals/atmos/carbon_dioxide,
-/turf/open/floor/engine/co2,
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/dark,
+/turf/open/floor/plating,
 /area/mine/xenoarch/engineering)
 "yw" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -1632,13 +1616,10 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/living)
 "yR" = (
-/obj/machinery/atmospherics/components/binary/pump/off/general{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/yellow/anticorner{
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
 	dir = 8
 	},
-/turf/open/floor/iron,
+/turf/open/floor/engine/airless,
 /area/mine/xenoarch/engineering)
 "yS" = (
 /turf/closed/wall/r_wall,
@@ -1692,9 +1673,10 @@
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
 "zQ" = (
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/machinery/atmospherics/miner/oxygen,
-/turf/open/floor/engine/o2,
+/obj/machinery/door/poddoor{
+	id = "xaburn"
+	},
+/turf/open/floor/engine/airless,
 /area/mine/xenoarch/engineering)
 "zT" = (
 /obj/effect/spawner/random/trash/moisture_trap,
@@ -1727,10 +1709,9 @@
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/living)
 "Ao" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/carbon_output{
-	dir = 1
-	},
-/turf/open/floor/engine/co2,
+/obj/machinery/atmospherics/components/binary/pump/off/general,
+/obj/effect/turf_decal/tile/yellow/half,
+/turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "Ar" = (
 /obj/machinery/door/airlock/public/glass,
@@ -1742,9 +1723,9 @@
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/east)
 "Ay" = (
-/obj/effect/spawner/structure/window/reinforced/plasma,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan,
-/turf/open/floor/plating,
+/obj/machinery/portable_atmospherics/canister/nitrogen,
+/obj/machinery/atmospherics/miner/nitrogen,
+/turf/open/floor/engine/n2,
 /area/mine/xenoarch/engineering)
 "AE" = (
 /obj/structure/window/reinforced,
@@ -1754,8 +1735,13 @@
 /turf/open/floor/carpet,
 /area/mine/xenoarch/living)
 "AG" = (
-/obj/effect/turf_decal/vg_decals/atmos/nitrogen,
-/turf/open/floor/engine/n2,
+/obj/machinery/atmospherics/components/binary/pump/off/general{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
 /area/mine/xenoarch/engineering)
 "AP" = (
 /obj/effect/turf_decal/loading_area,
@@ -1824,14 +1810,10 @@
 /turf/open/floor/carpet,
 /area/mine/xenoarch/living)
 "BP" = (
-/obj/machinery/atmospherics/components/binary/pump/off/general{
-	dir = 4
-	},
-/obj/machinery/airalarm/directional/north,
-/obj/effect/turf_decal/stripes{
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/engine/airless,
 /area/mine/xenoarch/engineering)
 "BR" = (
 /turf/open/floor/iron/recharge_floor,
@@ -1946,9 +1928,6 @@
 /area/mine/xenoarch/living)
 "Dq" = (
 /obj/machinery/newscaster/directional/west,
-/obj/machinery/vending/engivend{
-	onstation_override = 1
-	},
 /obj/effect/turf_decal/tile/yellow/half{
 	dir = 8
 	},
@@ -1963,6 +1942,12 @@
 	},
 /turf/open/floor/iron,
 /area/mine/xenoarch/living)
+"DH" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/carbon_input{
+	dir = 1
+	},
+/turf/open/floor/engine/co2,
+/area/mine/xenoarch/engineering)
 "DI" = (
 /obj/machinery/door/window/northleft{
 	dir = 4
@@ -1985,6 +1970,12 @@
 /obj/structure/table,
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
+"Ea" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/plasma_output{
+	dir = 1
+	},
+/turf/open/floor/engine/plasma,
+/area/mine/xenoarch/engineering)
 "Es" = (
 /obj/structure/chair/office{
 	dir = 1
@@ -2001,26 +1992,10 @@
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
 "EI" = (
-/obj/machinery/computer/turbine_computer{
-	dir = 8;
-	id = "xa"
+/obj/machinery/igniter{
+	id = "xabc"
 	},
-/obj/structure/cable,
-/obj/machinery/button/door{
-	id = "xaburn";
-	name = "Burn chamber Vent";
-	pixel_x = 6;
-	pixel_y = -28
-	},
-/obj/machinery/button/ignition{
-	id = "xabc";
-	pixel_x = -6;
-	pixel_y = -28
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/engine/airless,
 /area/mine/xenoarch/engineering)
 "EP" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -2046,6 +2021,10 @@
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/open/floor/grass,
 /area/mine/xenoarch/living)
+"Fn" = (
+/obj/effect/turf_decal/vg_decals/atmos/nitrous_oxide,
+/turf/open/floor/engine/n2o,
+/area/mine/xenoarch/engineering)
 "Fv" = (
 /obj/machinery/door/airlock/maintenance_hatch,
 /turf/open/floor/plating,
@@ -2074,6 +2053,12 @@
 	},
 /turf/open/floor/iron,
 /area/mine/xenoarch/living)
+"FI" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/nitrous_output{
+	dir = 1
+	},
+/turf/open/floor/engine/n2o,
+/area/mine/xenoarch/engineering)
 "FK" = (
 /obj/effect/turf_decal/tile/brown/half{
 	dir = 4
@@ -2086,13 +2071,16 @@
 /turf/open/floor/engine,
 /area/mine/xenoarch/maintenance/west)
 "FX" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/visible/layer4,
-/turf/open/floor/iron/dark,
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 8
+	},
+/obj/machinery/camera/directional/west{
+	c_tag = "Xenoarch Engineering  South";
+	network = list("mine","rd")
+	},
+/turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "FY" = (
-/obj/machinery/door/poddoor{
-	id = "xaburn"
-	},
 /turf/open/floor/engine/airless,
 /area/mine/xenoarch/engineering)
 "Gd" = (
@@ -2103,6 +2091,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/visible/layer4,
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/engineering)
 "Gg" = (
@@ -2116,12 +2105,11 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/science/xenoarch)
 "Gl" = (
-/obj/machinery/camera/directional/east{
-	c_tag = "Xenoarch Engineering East";
-	network = list("mine","rd")
+/obj/machinery/atmospherics/components/binary/pump/off/general{
+	dir = 1
 	},
 /obj/effect/turf_decal/tile/yellow/half{
-	dir = 4
+	dir = 1
 	},
 /turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
@@ -2156,8 +2144,8 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/living)
 "Hd" = (
-/obj/structure/grille,
-/turf/closed/wall/r_wall,
+/obj/effect/turf_decal/vg_decals/atmos/air,
+/turf/open/floor/engine/air,
 /area/mine/xenoarch/engineering)
 "He" = (
 /obj/structure/cable,
@@ -2274,9 +2262,8 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/living)
 "IU" = (
-/obj/effect/spawner/structure/window/reinforced/plasma,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green,
-/turf/open/floor/plating,
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/engine/air,
 /area/mine/xenoarch/engineering)
 "IZ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -2328,6 +2315,7 @@
 /obj/effect/turf_decal/tile/yellow/half{
 	dir = 1
 	},
+/obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/engineering)
 "JP" = (
@@ -2349,12 +2337,33 @@
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
 "Kg" = (
-/obj/machinery/atmospherics/pipe/layer_manifold/supply/visible,
+/obj/effect/turf_decal/tile/yellow/full,
+/obj/machinery/vending/engivend{
+	onstation_override = 1
+	},
 /turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "Ks" = (
-/obj/machinery/portable_atmospherics/canister/air,
-/turf/open/floor/engine/air,
+/obj/machinery/computer/turbine_computer{
+	dir = 8;
+	id = "xa"
+	},
+/obj/structure/cable,
+/obj/machinery/button/door{
+	id = "xaburn";
+	name = "Burn chamber Vent";
+	pixel_x = 6;
+	pixel_y = -28
+	},
+/obj/machinery/button/ignition{
+	id = "xabc";
+	pixel_x = -6;
+	pixel_y = -28
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
 /area/mine/xenoarch/engineering)
 "Kt" = (
 /obj/machinery/door/airlock{
@@ -2366,9 +2375,9 @@
 /turf/open/floor/carpet,
 /area/mine/xenoarch/living)
 "Kw" = (
-/obj/machinery/atmospherics/components/binary/pump/off/general,
-/obj/effect/turf_decal/tile/yellow/half{
-	dir = 1
+/obj/effect/turf_decal/tile/yellow/full,
+/obj/machinery/vending/tool{
+	onstation_override = 1
 	},
 /turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
@@ -2392,15 +2401,6 @@
 /obj/structure/closet/xenoarch,
 /turf/open/floor/iron,
 /area/mine/xenoarch/science/xenoarch)
-"KO" = (
-/obj/machinery/atmospherics/components/binary/pump/off/general{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/yellow/half{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/mine/xenoarch/engineering)
 "KS" = (
 /obj/effect/turf_decal/tile/yellow/half,
 /turf/open/floor/iron,
@@ -2573,8 +2573,8 @@
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/living)
 "NX" = (
-/obj/effect/turf_decal/vg_decals/atmos/oxygen,
-/turf/open/floor/engine/o2,
+/obj/structure/cable,
+/turf/open/floor/engine/airless,
 /area/mine/xenoarch/engineering)
 "NZ" = (
 /obj/structure/table,
@@ -2671,13 +2671,19 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/science/cytology)
 "OM" = (
-/obj/effect/spawner/structure/window/reinforced/plasma,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/pink,
-/turf/open/floor/plating,
+/obj/machinery/power/compressor{
+	comp_id = "xa";
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/engine/airless,
 /area/mine/xenoarch/engineering)
 "OO" = (
-/obj/effect/turf_decal/vg_decals/atmos/air,
-/turf/open/floor/engine/air,
+/obj/structure/extinguisher_cabinet/directional/east,
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 4
+	},
+/turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "OP" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -2794,11 +2800,9 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "Qr" = (
-/obj/machinery/atmospherics/components/binary/pump/off/general{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/yellow/half,
-/turf/open/floor/iron,
+/obj/machinery/power/turbine,
+/obj/structure/cable,
+/turf/open/floor/engine/airless,
 /area/mine/xenoarch/engineering)
 "Qt" = (
 /obj/structure/table,
@@ -2912,6 +2916,11 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/east)
+"Sk" = (
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
+/obj/machinery/atmospherics/miner/n2o,
+/turf/open/floor/engine/n2o,
+/area/mine/xenoarch/engineering)
 "So" = (
 /turf/open/floor/iron,
 /area/mine/xenoarch/science)
@@ -2941,11 +2950,12 @@
 /area/mine/xenoarch/engineering)
 "SA" = (
 /obj/machinery/light_switch/directional/west,
-/obj/machinery/vending/tool{
-	onstation_override = 1
-	},
 /obj/effect/turf_decal/tile/yellow/half{
 	dir = 8
+	},
+/obj/machinery/camera/directional/west{
+	c_tag = "Xenoarch Engineering  West";
+	network = list("mine","rd")
 	},
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/engineering)
@@ -2974,6 +2984,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/living)
+"SX" = (
+/obj/effect/turf_decal/vg_decals/atmos/carbon_dioxide,
+/turf/open/floor/engine/co2,
+/area/mine/xenoarch/engineering)
 "SY" = (
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/east)
@@ -3025,15 +3039,16 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/science/xenoarch)
 "TR" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/plasma_input{
-	dir = 1
-	},
-/turf/open/floor/engine/plasma,
+/obj/machinery/light/directional/south,
+/obj/effect/turf_decal/tile/yellow/half,
+/turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "TT" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply,
-/obj/effect/spawner/structure/window/reinforced/plasma,
-/turf/open/floor/plating,
+/obj/machinery/atmospherics/components/binary/pump/off/general{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow/half,
+/turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "Uc" = (
 /obj/structure/lattice/catwalk,
@@ -3059,9 +3074,8 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/living)
 "Ux" = (
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
-/obj/machinery/atmospherics/miner/carbon_dioxide,
-/turf/open/floor/engine/co2,
+/obj/structure/grille,
+/turf/closed/wall/r_wall,
 /area/mine/xenoarch/engineering)
 "Uy" = (
 /turf/open/floor/iron,
@@ -3224,8 +3238,9 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/living)
 "Xa" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/nitrogen_input,
-/turf/open/floor/engine/n2,
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/yellow,
+/turf/open/floor/plating,
 /area/mine/xenoarch/engineering)
 "Xb" = (
 /obj/structure/cable,
@@ -3359,9 +3374,10 @@
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/engineering)
 "YI" = (
-/obj/effect/spawner/structure/window/reinforced/plasma,
-/obj/structure/cable,
-/turf/open/floor/plating,
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 4
+	},
+/turf/open/floor/iron,
 /area/mine/xenoarch/engineering)
 "YM" = (
 /obj/structure/extinguisher_cabinet/directional/west,
@@ -3371,8 +3387,9 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/living)
 "YR" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/high_volume/siphon/atmos/air_output,
-/turf/open/floor/engine/air,
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/brown,
+/turf/open/floor/plating,
 /area/mine/xenoarch/engineering)
 "YU" = (
 /obj/effect/turf_decal/stripes/line{
@@ -3427,10 +3444,10 @@
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
 "Zz" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/on{
-	dir = 8
+/obj/machinery/door/airlock/maintenance_hatch{
+	req_one_access_txt = "32;19"
 	},
-/turf/open/floor/engine/airless,
+/turf/open/floor/plating,
 /area/mine/xenoarch/engineering)
 "ZD" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
@@ -3447,8 +3464,14 @@
 /turf/open/floor/engine,
 /area/mine/xenoarch/engineering/hfr)
 "ZN" = (
-/obj/structure/cable,
-/turf/open/floor/engine/airless,
+/obj/machinery/atmospherics/components/binary/pump/off/general{
+	dir = 4
+	},
+/obj/machinery/airalarm/directional/north,
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
 /area/mine/xenoarch/engineering)
 "ZV" = (
 /obj/structure/closet/emcloset,
@@ -5156,9 +5179,9 @@ OC
 yS
 Rx
 IO
-FX
-FX
-FX
+IO
+IO
+IO
 VJ
 Yl
 nR
@@ -5205,7 +5228,7 @@ yS
 yS
 JE
 jT
-wx
+jT
 jT
 jT
 Gd
@@ -5248,23 +5271,23 @@ QM
 lm
 QM
 TB
+aS
+Zc
+Zc
 yS
-OO
-YR
-TT
 Kw
 Kg
-qj
-fz
-fz
-Vz
-dM
+Pt
 ua
-yR
-vy
-pq
-tC
+ua
+wo
+ua
+FX
+ua
+ua
+dA
 yS
+Zc
 cY
 Uc
 Zc
@@ -5297,25 +5320,25 @@ eK
 GK
 eK
 yO
+aS
+Zc
 yS
-Ks
-fo
-lU
-KO
-fz
-fz
-fz
-fz
-Vz
-fz
-fz
-nQ
-lU
-vX
-ud
 yS
-Uc
-Uc
+yS
+yS
+qj
+fz
+fz
+wx
+fz
+fz
+fz
+fz
+KS
+yS
+yS
+yS
+yS
 Zc
 Zc
 Zc
@@ -5347,24 +5370,24 @@ Ts
 CO
 aA
 yS
-Hd
-Hd
+Zc
+yS
 Hd
 dN
-fz
-fz
-fz
-fz
+nQ
+tC
+vy
+vX
+wx
+Vz
 Vz
 fz
 fz
-gK
-Hd
-Hd
-Hd
+TT
+Xa
+FI
+Fn
 yS
-Zc
-Zc
 Zc
 Zc
 Zc
@@ -5395,11 +5418,13 @@ eK
 Ya
 eK
 Rk
+aS
+Zc
 yS
-AG
-jK
 IU
-Kw
+fo
+yk
+Gl
 fz
 fz
 fz
@@ -5407,13 +5432,11 @@ fz
 Vz
 fz
 fz
-Qr
-aS
 Ao
 yk
+xU
+Sk
 yS
-Zc
-Zc
 Zc
 Zc
 Zc
@@ -5444,11 +5467,13 @@ Zw
 Dx
 Zw
 Fw
+aS
+Zc
 yS
-wo
-Xa
-gY
-KO
+Ux
+Ux
+Ux
+ud
 fz
 fz
 fz
@@ -5456,13 +5481,11 @@ fz
 Vz
 fz
 fz
-nQ
-lU
-gf
+TR
+Ux
+Ux
 Ux
 yS
-Zc
-Zc
 Zc
 Zc
 Zc
@@ -5494,10 +5517,12 @@ pC
 dU
 Yt
 yS
-Hd
-Hd
-Hd
-dN
+Zc
+yS
+dM
+gs
+oK
+tC
 fz
 fz
 fz
@@ -5505,13 +5530,11 @@ fz
 Vz
 fz
 fz
-gK
-Hd
-Hd
-Hd
+TT
+YR
+rx
+SX
 yS
-Zc
-Zc
 Zc
 Zc
 Zc
@@ -5542,11 +5565,13 @@ Jb
 lq
 DY
 oa
+aS
+Zc
 yS
-NX
-po
 Ay
-Kw
+gK
+po
+Gl
 fz
 fz
 fz
@@ -5554,13 +5579,11 @@ fz
 Vz
 fz
 fz
-Qr
-OM
-xX
-xC
+Ao
+yk
+DH
+nv
 yS
-Zc
-Zc
 Zc
 Zc
 Zc
@@ -5592,10 +5615,12 @@ gc
 So
 OE
 yS
-zQ
-bW
-lU
-KO
+Zc
+yS
+Ux
+Ux
+Ux
+ud
 fz
 fz
 fz
@@ -5603,13 +5628,11 @@ fz
 Vz
 fz
 fz
-nQ
-lU
 TR
-rt
+Ux
+Ux
+Ux
 yS
-Zc
-Zc
 Zc
 Zc
 Zc
@@ -5641,10 +5664,12 @@ uR
 So
 Vc
 XI
+Zc
 yS
-yS
-yS
-dN
+eS
+jK
+pq
+tC
 fz
 fz
 fz
@@ -5652,13 +5677,11 @@ fz
 Vz
 fz
 fz
-gK
+TT
+kq
+Ea
+gW
 yS
-yS
-yS
-yS
-Zc
-Zc
 Zc
 Zc
 Zc
@@ -5690,24 +5713,24 @@ eu
 So
 Iv
 XI
-SY
-SY
-lz
-vW
-em
-Gl
-em
-em
-Sx
-em
-eS
-Qo
+Zc
 yS
-Zc
-Zc
-Zc
-Zc
-Zc
+lz
+lt
+yk
+Gl
+fz
+fz
+fz
+fz
+Vz
+fz
+fz
+Ao
+yk
+hA
+eM
+yS
 Zc
 Zc
 Zc
@@ -5738,25 +5761,25 @@ lG
 gn
 cD
 vG
-XI
-SY
-SY
-yS
-yS
-yS
-yS
-BP
-gs
-EI
-yS
-yS
-yS
-yS
+bW
 Zc
-Zc
-Zc
-Zc
-Zc
+yS
+yS
+yS
+yS
+ud
+fz
+fz
+fz
+fz
+Vz
+fz
+fz
+TR
+yS
+yS
+yS
+yS
 Zc
 Zc
 Zc
@@ -5788,21 +5811,21 @@ qy
 Za
 Za
 XI
-SY
-oK
-SY
-SY
-py
+Zc
+Zc
+Zc
+Zc
 yS
-lU
+vW
+YI
 gM
 YI
+YI
+Sx
+YI
+OO
+Qo
 yS
-Zc
-Zc
-Zc
-Zc
-Zc
 Zc
 Zc
 Zc
@@ -5837,21 +5860,21 @@ Gg
 BX
 nT
 XI
-ak
-Vs
-SY
-SY
-oK
+Ns
+co
+co
+Ns
+yS
 yS
 Zz
-co
+yS
 ZN
+AG
+Ks
 yS
 yS
-Zc
-Zc
-Zc
-Zc
+yS
+yS
 Zc
 Zc
 Zc
@@ -5886,18 +5909,18 @@ TD
 OP
 ll
 XI
+ak
+Vs
+st
 SY
 SY
-mF
 SY
 SY
 yS
-st
-lt
-ZN
+yk
 cu
 ug
-Zc
+yS
 Zc
 Zc
 Zc
@@ -5940,14 +5963,14 @@ SY
 SY
 SY
 py
-yS
-st
-st
+SY
 st
 yS
+yR
+BP
+NX
 yS
-Zc
-Zc
+yS
 Zc
 Zc
 Zc
@@ -5989,14 +6012,14 @@ ak
 ak
 lP
 ak
+Ns
+Ns
 yS
 FY
-FY
-FY
-yS
-Zc
-Zc
-Zc
+EI
+NX
+OM
+Qr
 Zc
 Zc
 Zc
@@ -6040,12 +6063,12 @@ SY
 jL
 Ns
 Zc
-Zc
-Zc
-Zc
-Zc
-Zc
-Zc
+yS
+FY
+FY
+FY
+yS
+yS
 Zc
 Zc
 Zc
@@ -6089,11 +6112,11 @@ dn
 AV
 Ns
 Zc
-Zc
-Zc
-Zc
-Zc
-Zc
+yS
+zQ
+zQ
+zQ
+yS
 Zc
 Zc
 Zc
