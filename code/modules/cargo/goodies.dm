@@ -24,10 +24,6 @@
 	cost = PAYCHECK_MEDIUM * 1.5
 	access_view = ACCESS_BRIG
 	contains = list(/obj/item/ammo_box/c38/match/bouncy)
-<<<<<<< HEAD
-//SKYRAT EDIT REMOVAL BEGIN
-/*
-=======
 
 /datum/supply_pack/goody/mars_single
 	name = "Colt Detective Special Single-Pack"
@@ -36,22 +32,19 @@
 	access_view = ACCESS_FORENSICS_LOCKERS
 	contains = list(/obj/item/gun/ballistic/revolver/detective)
 
->>>>>>> 906fb0682ba (Ballistic to Energy: Autorifles for Thermal Pistols; Adds .38 Crate to Cargo (#64280))
 /datum/supply_pack/goody/stingbang
 	name = "Stingbang Single-Pack"
 	desc = "Contains one \"stingbang\" grenade, perfect for playing meanhearted pranks."
 	cost = PAYCHECK_HARD * 2.5
 	access_view = ACCESS_BRIG
 	contains = list(/obj/item/grenade/stingbang)
-*/
-//SKYRAT EDIT REMOVAL END
+
 /datum/supply_pack/goody/Survivalknives_single
 	name = "Survival Knife Single-Pack"
 	desc = "Contains one sharpened survival knive. Guaranteed to fit snugly inside any Nanotrasen-standard boot."
 	cost = PAYCHECK_HARD * 1.75
 	contains = list(/obj/item/knife/combat/survival)
-//SKYRAT EDIT REMOVAL BEGIN
-/*
+
 /datum/supply_pack/goody/ballistic_single
 	name = "Combat Shotgun Single-Pack"
 	desc = "For when the enemy absolutely needs to be replaced with lead. Contains one Aussec-designed Combat Shotgun, and one Shotgun Bandolier."
@@ -80,10 +73,6 @@
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/storage/belt/holster/thermal)
 
-*/
-//SKYRAT EDIT REMOVAL END
-
-/datum/supply_pack/goody/techbox //SKYRAT EDIT ADDITION
 
 /datum/supply_pack/goody/sologamermitts
 	name = "Insulated Gloves Single-Pack"
