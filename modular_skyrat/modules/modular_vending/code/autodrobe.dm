@@ -31,12 +31,12 @@
 		/obj/item/clothing/suit/duster/colorable = 5,
 		/obj/item/clothing/suit/frenchtrench = 5,
 		/obj/item/clothing/suit/dutchjacketsr = 5,
-		/obj/item/clothing/mask/gas/polyclown = 1, //clown stuff dont get the boost
+		/obj/item/clothing/mask/gas/clown_colourable = 1,
 		/obj/item/clothing/mask/gas/clownbald = 1,
 		/obj/item/clothing/head/cowboyhat/sheriff = 5,
 		/obj/item/clothing/head/cowboyhat/sheriff/alt = 5,
 		/obj/item/clothing/head/cowboyhat/deputy = 5,
-		/obj/item/clothing/shoes/jackboots/timbs = 1, //timbs should be in premium tbf
+		/obj/item/clothing/shoes/jackboots/timbs = 1,
 		/obj/item/clothing/under/costume/loincloth/sensor = 5,
 		/obj/item/clothing/under/costume/loincloth/cloth/sensor = 5,
 		/obj/item/clothing/under/suit/helltaker = 5,
