@@ -215,24 +215,10 @@
 			else
 				thing.singularity_pull(parent, singularity_size)
 
-<<<<<<< HEAD
-			if (isturf(atom_parent.loc) && thing != parent)
-				var/atom/movable/movable_thing = thing
-				if (get_dist(movable_thing, parent) > consume_range)
-					movable_thing.singularity_pull(parent, singularity_size)
-				//SKYRAT EDIT CHANGE
-				else if(istype(movable_thing, /obj/machinery/field/containment))
-					if(singularity_size > STAGE_FOUR)
-						consume(src, movable_thing)
-				// SKYRAT EDIT END
-				else
-					consume(src, movable_thing)
-=======
 		if(TICK_CHECK) //Yes this means the singulo can eat all of its host subsystem's cpu, but like it's the singulo, and it was gonna do that anyway
 			turfs_to_consume.Cut(1, cached_index + 1)
 			cached_index = 0
 			return
->>>>>>> 079f8ac5155 (Adds moveloop bucketing, uses queues for the singulo rather then sleeps (#64418))
 
 	turfs_to_consume.Cut()
 	cached_index = 0
