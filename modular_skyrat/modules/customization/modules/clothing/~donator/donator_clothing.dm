@@ -586,13 +586,28 @@
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 
 //Donation reward for inferno707
-/obj/item/clothing/neck/human_petcollar/inferno
+/obj/item/clothing/neck/inferno_collar
 	name = "Kiara's collar"
 	desc = "A soft black collar that seems to stretch to fit whoever wears it."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	icon_state = "infcollar"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
-	tagname = null
+	alternate_worn_layer = UNDER_SUIT_LAYER
+	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/collar
+	/// What's the name on the tag, if any?
+	var/tagname = null
+	/// What treat item spawns inside the collar?
+	var/treat_path = /obj/item/food/cookie
+
+/obj/item/clothing/neck/inferno_collar/Initialize()
+	. = ..()
+	if(treat_path)
+		new treat_path(src)
+
+/obj/item/clothing/neck/inferno_collar/attack_self(mob/user)
+	tagname = stripped_input(user, "Would you like to change the name on the tag?", "Name your new pet", "Kiara", MAX_NAME_LEN)
+	if(tagname)
+		name = "[initial(name)] - [tagname]"
 
 //Donation reward for inferno707
 /obj/item/clothing/accessory/medal/steele
