@@ -83,7 +83,7 @@ Turns the gun into a shotgun.
 	var/recoil_to_add = 1
 	/// The spread to add.
 	var/spread_to_add = 10
-	var/projectile_override =/obj/projectile/beam/laser/microfusion/scatter
+	var/projectile_override = /obj/projectile/beam/laser/microfusion/scatter
 
 /obj/item/microfusion_gun_attachment/scatter/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
