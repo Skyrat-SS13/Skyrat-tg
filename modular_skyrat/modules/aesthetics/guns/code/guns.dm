@@ -111,6 +111,11 @@
 	worn_icon_state = "gun"
 	worn_icon = null
 
+/obj/item/gun/energy/laser/thermal 
+	icon = 'icons/obj/guns/energy.dmi'
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
+
 /obj/item/gun/energy/lasercannon
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 	fire_sound_volume = 100
