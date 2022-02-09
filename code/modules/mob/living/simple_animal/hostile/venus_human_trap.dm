@@ -16,6 +16,7 @@
 	icon = 'icons/effects/spacevines.dmi'
 	icon_state = "bud0"
 	layer = SPACEVINE_MOB_LAYER
+	plane = GAME_PLANE_UPPER_FOV_HIDDEN
 	opacity = FALSE
 	canSmoothWith = null
 	smoothing_flags = NONE
@@ -107,8 +108,14 @@
 	health_doll_icon = "venus_human_trap"
 	mob_biotypes = MOB_ORGANIC | MOB_PLANT
 	layer = SPACEVINE_MOB_LAYER
+<<<<<<< HEAD
 	health = 60 //SKYRAT EDIT CHANGE
 	maxHealth = 60 //SKYRAT EDIT CHANGE
+=======
+	plane = GAME_PLANE_UPPER_FOV_HIDDEN
+	health = 50
+	maxHealth = 50
+>>>>>>> c5d2b2e51e5 (Fixes layering issues brought by the FoV PR. (#63903))
 	ranged = TRUE
 	harm_intent_damage = 5
 	obj_damage = 60
