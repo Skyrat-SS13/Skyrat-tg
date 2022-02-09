@@ -4,10 +4,10 @@ import { useBackend } from '../backend';
 import { Box, Button, LabeledList, Section, Table, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
-export const Skyrat_SolGovGTFO = (props, context) => {
+export const Skyrat_SolFedGTFO = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    lift_status,
+    lift_starting,
     current_call,
     list_of_riders,
   } = data;
@@ -18,12 +18,12 @@ export const Skyrat_SolGovGTFO = (props, context) => {
       theme="neutral">
       <Window.Content>
         <NoticeBox danger>
-          Authorized SolGov personnel only
+          Authorized SolFed personnel only
         </NoticeBox>
-        <Section title="SolGov Fastpass™ Lift">
+        <Section title="SolFed Fastpass™ Lift">
           <LabeledList>
             <LabeledList.Item label="Status">
-              {lift_status ? launching : "Lift Inactive."}
+              {lift_starting ? "Lift Starting." : "Lift Inactive."}
             </LabeledList.Item>
             <LabeledList.Item label="Current Call">
               {current_call ? current_call : "No active Emergency Service calls."}
@@ -51,16 +51,16 @@ export const Skyrat_SolGovGTFO = (props, context) => {
               </Table.Cell>
             </Table.Row>
             TO-DO: ADD LINE PER RIDER
-              <Table.Row>
-                <Table.Cell>
-                  TEST LINE A
-                </Table.Cell>
-                <Table.Cell collapsing textAlign="right">
-                  <Box color="label" inline>
-                    TEST LINE B
-                  </Box>
-                </Table.Cell>
-              </Table.Row>
+            <Table.Row>
+              <Table.Cell>
+                TEST LINE A
+              </Table.Cell>
+              <Table.Cell collapsing textAlign="right">
+                <Box color="label" inline>
+                  TEST LINE B
+                </Box>
+              </Table.Cell>
+            </Table.Row>
           </Table>
         </Section>
       </Window.Content>

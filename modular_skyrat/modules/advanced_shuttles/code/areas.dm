@@ -23,6 +23,9 @@
 /area/centcom/interlink/bluie
 	name = "Blueshield's Auxilliary Office"
 
+/area/centcom/interlink/solfed // used for 911 round-exit
+	name = "SolFed Lift"
+
 /area/centcom/interlink/the_toilet	//Wooooooo spooky
 	name = "Interlink Toilet"
 	ambience_index = AMBIENCE_MAINT

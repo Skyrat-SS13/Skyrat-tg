@@ -21,7 +21,7 @@
 	food and rest for the crew; this station IS that rest-stop. As your gateway into the growing frontier, you'll find the Interlink equipped \
 	with a multitude of wings for routing of crew to their stations, plenty of docking space for refuelling and repairing, and of course, the \
 	mostly-for-style Hyperlane Gate!<br>\
-	All crew are reminded to please stay clear of the <span style='color:orange'><b>SolGov Fastpass Lift</b></span>, as it is for First Responders \
+	All crew are reminded to please stay clear of the <span style='color:orange'><b>SolFed Fastpass Lift</b></span>, as it is for First Responders \
 	to traverse the station in times of emergency.<hr><hr>\
 	Welcome, Crew, to the <span style='color:blue'><b>Nanotrasen</b></span> wing of the Interlink. You've already gone through all the security checkpoints \
 	on your way here, so all thats left is one final bag and ID check before you're on your way to work for the Company! Simply follow the \

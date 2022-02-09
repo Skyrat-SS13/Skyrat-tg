@@ -1,1 +1,1 @@
-GLOBAL_LIST_EMPTY(solgov_911_spawn)
+GLOBAL_LIST_EMPTY(solfed_911_spawn)
