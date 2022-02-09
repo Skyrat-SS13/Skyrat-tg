@@ -7,8 +7,10 @@ import { Window } from '../layouts';
 export const Skyrat_SolFedGTFO = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    lift_starting,
     current_call,
+    lift_starting,
+    lift_blocked,
+    block_reason,
     list_of_riders,
   } = data;
   return (
@@ -21,9 +23,17 @@ export const Skyrat_SolFedGTFO = (props, context) => {
           Authorized SolFed personnel only
         </NoticeBox>
         <Section title="SolFed Fastpass™ Lift">
+              <Button
+                fluid
+                color="grey"
+                content = {lift_blocked ? "Disable Lockdown" : "Enable Lockdown"}
+                icon = "exclamation-triangle"
+                textAlign = "center"
+                onClick={() => act('block_lift')}
+              />
           <LabeledList>
             <LabeledList.Item label="Status">
-              {lift_starting ? "Lift Starting." : "Lift Inactive."}
+              {lift_blocked ? "Lift is currently locked down by SolFed Remote for the following reason: " + block_reason : lift_starting ? "Lift Starting." : "Lift in Standby."}
             </LabeledList.Item>
             <LabeledList.Item label="Current Call">
               {current_call ? current_call : "No active Emergency Service calls."}
@@ -31,12 +41,11 @@ export const Skyrat_SolFedGTFO = (props, context) => {
           </LabeledList>
           <Button
             fluid
-            content="Activate Lift"
+            color="grey"
+            content= {lift_starting ? "Cancel Lift" : "Activate Lift"}
             icon="arrow-up"
             textAlign="center"
-            onClick={() => act('activate_lift', {
-              user: data.user,
-            })}
+            onClick={() => act('activate_lift')}
           />
         </Section>
         <Section title="Current riders">

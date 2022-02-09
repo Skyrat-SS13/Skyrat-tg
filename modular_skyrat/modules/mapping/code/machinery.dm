@@ -95,13 +95,12 @@
 ///We block interaction for non-911, so people don't go deleting eachother
 /obj/machinery/computer/solfed_gtfo/interact(mob/user)
 	. = ..()
-	if(!user.client.holder)	//Admins skip this datum check
-		if(!user.mind.has_antag_datum(/datum/antagonist/ert/request_911))
-			say("ACCESS DENIED: SolFed First Responder Clearances Required.")
-			return FALSE
-	else	//Admins DO get a warning, though. If they delete any rando people, it is NOT on me
-		to_chat(user, span_admin("Admin, you're given access to this for Debug ONLY. Dont use this console without good reason."))
-		return TRUE
+	if(!user.mind.has_antag_datum(/datum/antagonist/ert/request_911))
+		if(user.client.holder)	//Admins need to debug, though they're warned as much
+			to_chat(user, span_admin("Admin, you're given access to this for Debug ONLY. Dont use this console without good reason."))
+			return TRUE
+		say("ACCESS DENIED: SolFed First Responder Clearances Required.")
+		return FALSE
 
 /obj/machinery/computer/solfed_gtfo/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -116,8 +115,10 @@
 
 	locate_riders()	//This needs to be kept up-to-date
 
-	data["list_of_riders"] = list_of_riders
-	data["lift_blocked"] = lift_blocked
+	data["list_of_riders"] = list_of_riders	//List of all the riders
+	data["lift_starting"] = lift_starting //True/False state of if the lift is in the process of leaving
+	data["lift_blocked"] = lift_blocked //True/False state of if admins blocked the lift from leaving
+	data["block_reason"] = block_reason //String given as to why the lift is blocked from leaving
 	return data
 
 /obj/machinery/computer/solfed_gtfo/ui_act(action, params)
@@ -132,56 +133,72 @@
 			block_lift()
 
 /obj/machinery/computer/solfed_gtfo/proc/block_lift(mob/user)
-	if(user.client.holder)	//Admin only
-		if(!lift_blocked)
-			block_reason = tgui_input_text(usr, "Provide a reason for the lift-block, if any. Leaving it blank will default to \"Current Call Incomplete\".", "Lift-Block-O-Matic", max_length = MAX_BROADCAST_LEN)
-			if(!block_reason)	//They didnt input anything, the jerk
-				block_reason = "Current Call Incomplete"
-			if(!COOLDOWN_FINISHED(src, launch_timer))
-				COOLDOWN_RESET(src, launch_timer)
-				lift_starting = FALSE	//Just to make sure it properly stops
-			lift_blocked = TRUE
-			say("Lift Blocked, transit unavailable.")
-		else
-			block_reason = null
-			lift_blocked = FALSE
-			say("Lift Unblocked, resuming normal operation.")
+	user = usr //I hate this, but the UI wont transfer it otherwise and I need it for the client checks
+	if(!user.client.holder)	//Admin only
+		say("ACCESS DENIED: SolFed Overwatch Clearances Required.")
+	if(!lift_blocked)
+		block_reason = tgui_input_text(user, "Provide a reason for the lift-block. Leave blank to default to \"Current Call Incomplete\".", "Lift-Block-O-Matic", max_length = MAX_BROADCAST_LEN)
+		if(!block_reason)
+			return
+		if(!COOLDOWN_FINISHED(src, launch_timer))
+			COOLDOWN_RESET(src, launch_timer)
+			lift_starting = FALSE	//Just to make sure it properly stops
+		lift_blocked = TRUE
+		say("SolFed Overwatch Clearances accepted: Lift Blocked, transit unavailable.")
+	else
+		block_reason = null
+		lift_blocked = FALSE
+		say("Lift Unblocked, resuming normal operation.")
 
 ///Finds users on the 'lift', gives ample warning as to what will happen, then deletes them all. Effectively, its how 911 will leave the round.
 //If it's already booting up, though, re-calling this will cancel!
 /obj/machinery/computer/solfed_gtfo/proc/activate_lift(mob/user)
-	if(user.client.holder)	//Debug purposes, admins get a slightly modified warning specifying 'hey, admin, dont use this if you arent debugging'
+	user = usr //I hate this, but the UI wont transfer it otherwise and I need it for the client checks
+	if(!user.mind.has_antag_datum(/datum/antagonist/ert/request_911))
+		if(!user.client.holder)	//Non-admins seethe
+			say("ACCESS DENIED: SolFed First Responder Clearances Required.")
+			return FALSE
+		//Debug purposes, admins get a few things in here
 		if(lift_blocked)
 			to_chat(user, span_admin("Lift is Blocked, re-enable it first!"))
 			return FALSE
+		if(lift_starting)
+			var/choice = tgui_alert(usr, "Admin, are you sure you want to cancel the lift?", "Cancel Lift", list("I'm Sure", "Abort"))
+			if(choice == "Abort")
+				return FALSE
+			lift_starting = FALSE
+			COOLDOWN_RESET(src, launch_timer)
+			say("SolFed Overwatch Clearances accepted, FastPass lift cancelled.")
+			return
 		if(!isliving(user))
-			to_chat(user, span_admin("Stop trying to debug 'delete all rider' platforms as a ghost. Counter-intuitive as hell."))
-		if(!tgui_alert(user, span_admin("Admin, are you sure? This will remove all riders from the round. You should only use this for debug purposes."), "Activate Lift", list("I'm Sure", "Abort")) == "I'm Sure")
+			to_chat(user, span_admin("Stop trying to debug 'delete all rider' platforms as a ghost. Counter-intuitive as hell. That, or stop trying to remove people from the round."))
+		var/choice = tgui_alert(user, "Admin, are you sure? This will remove all riders from the round. You should only use this for debug purposes.", "Activate Lift", list("I'm Sure", "Abort"))
+		if(choice == "Abort")
 			return FALSE
 	else
-		if(!user.mind.has_antag_datum(/datum/antagonist/ert/request_911))
-			say("ACCESS DENIED: SolFed First Responder Clearances Required.")
-			return FALSE
 		if(lift_blocked)
 			say("ERROR: Lift has been disabled for the following reason: [block_reason]")
-		if(!tgui_alert(user, "Are you sure? This will remove all riders from the round.", "Activate Lift", list("I'm Sure", "Abort")) == "I'm Sure")
+		if(lift_starting)
+			say("SolFed Clearances accepted, FastPass lift cancelled.")
+			lift_starting = FALSE
+			COOLDOWN_RESET(src, launch_timer)
+			return
+		if(!isliving(user))	//Just in case a dead admin who had a 911 datum tries to do it.
+			to_chat(user, span_warning("Not while you're dead!"))
+		var/choice = tgui_alert(user, "Are you sure? This will remove all riders from the round.", "Activate Lift", list("I'm Sure", "Abort"))
+		if(choice == "Abort")
 			return FALSE
-
-	//Uses a cooldown to allow cancelling the lift
-	if(!COOLDOWN_FINISHED(src, launch_timer))
-		say("SolFed Clearances accepted, FastPass lift cancelled.")
-		lift_starting = FALSE
-		COOLDOWN_RESET(src, launch_timer)
-		return
-
+	//Used by both the 911 and Admin lines from the if/else---
 	message_admins("[ADMIN_LOOKUPFLW(user)] has begun to use the [ADMIN_LOOKUPFLW(src)] - this will remove all riders from the round.")
 	say("SolFed Clearances accepted. Hello, First Responders. Please, take a seat, the FastPass Lift will depart shortly.")
 	locate_riders() //Nice fresh list of people we will remove from reality
 	lift_starting = TRUE	//It Begins
-	for(var/mob/living/rider in list_of_riders)
-		to_chat(rider, span_warning("You get a large pang of anxiety. No going back after this..."))
 	COOLDOWN_START(src, launch_timer, 30 SECONDS)
-	if(COOLDOWN_FINISHED(src, launch_timer) && lift_starting)	//Wow, we made it 30 seconds without something going wrong! Goodbye!!
+	for(var/mob/living/rider in list_of_riders)
+		to_chat(rider, span_warning("You feel a large pang of anxiety. No going back after this..."))
+
+	//If we pass 30 seconds, we've officially activated the lift. Delete everyone on the tile.
+	if(COOLDOWN_FINISHED(src, launch_timer) && lift_starting)
 		priority_announce("Holy Shit it worked this far. Now finish it Orion.")
 
 
