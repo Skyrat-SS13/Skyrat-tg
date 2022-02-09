@@ -40,6 +40,7 @@
 
 /obj/machinery/computer/solfed_gtfo
 	name = "SolFed Fastpass Console"
+	desc = "Seeing where this thing goes to is restricted to First Responders for good reason. (This will delete you when the lift leaves.)"
 	icon_state = "computer"
 	density = TRUE
 	use_power = NO_POWER_USE
@@ -49,8 +50,11 @@
 
 	///Have admins disabled the lift?
 	var/lift_blocked = FALSE
-	///If the lift is disabled, WHY?
+	///If the lift is disabled, why?
 	var/block_reason
+
+	///The time for the lift to boot up. Not technically a cooldown but idc.
+	COOLDOWN_DECLARE(launch_timer)
 
 	///Variable to say if the lift is in the middle of starting or not; used for overrides/cancelling
 	var/lift_starting = FALSE
@@ -68,8 +72,27 @@
 
 /obj/machinery/computer/solfed_gtfo/Initialize(mapload, obj/item/circuitboard/C)
 	. = ..()
-	linked_tiles = locate_lift_tiles()
+	locate_lift_tiles()
 
+///Finds valid tiles to use as the 'lift'
+/obj/machinery/computer/solfed_gtfo/proc/locate_lift_tiles()
+	///This should be an area ONLY containing the lift itself! (/area/centcom/interlink/solfed)
+	var/currentarea = get_area(src.loc)
+	for(var/turf/open/floor/plating/elevatorshaft/solfed_gtfo/lift_tile in currentarea)
+		linked_tiles += lift_tile
+	if(!linked_tiles)	//Shits fucked, SOMEHOW
+		log_game("[src] has no linked tiles to delete users from!")
+		message_admins("[ADMIN_LOOKUPFLW(src)] has no linked tiles to delete users from! Fix this before 911 is called by spawning /turf/open/floor/plating/elevatorshaft/solfed_gtfo around it, then proc-calling locate_lift_tiles()!")
+
+///Finds the riders in aforementioned linked_tiles
+/obj/machinery/computer/solfed_gtfo/proc/locate_riders()
+	for(var/turf/checking_tile in linked_tiles)
+		for(var/mob/living/found_rider in checking_tile.contents)
+			if(found_rider in list_of_riders)	//Dont add dupes
+				continue
+			list_of_riders += found_rider
+
+///We block interaction for non-911, so people don't go deleting eachother
 /obj/machinery/computer/solfed_gtfo/interact(mob/user)
 	. = ..()
 	if(!user.client.holder)	//Admins skip this datum check
@@ -91,11 +114,7 @@
 /obj/machinery/computer/solfed_gtfo/ui_data(mob/user)
 	var/list/data = list()
 
-	for(var/i in linked_tiles)	//Checks all attached tiles, to get a list of the riders.
-		var/mob/living/carbon/human/checked_rider = i
-		if(checked_rider in list_of_riders)	//Dont add dupes
-			continue
-		list_of_riders += checked_rider
+	locate_riders()	//This needs to be kept up-to-date
 
 	data["list_of_riders"] = list_of_riders
 	data["lift_blocked"] = lift_blocked
@@ -116,8 +135,11 @@
 	if(user.client.holder)	//Admin only
 		if(!lift_blocked)
 			block_reason = tgui_input_text(usr, "Provide a reason for the lift-block, if any. Leaving it blank will default to \"Current Call Incomplete\".", "Lift-Block-O-Matic", max_length = MAX_BROADCAST_LEN)
-			if(block_reason.len =< 0)
+			if(!block_reason)	//They didnt input anything, the jerk
 				block_reason = "Current Call Incomplete"
+			if(!COOLDOWN_FINISHED(src, launch_timer))
+				COOLDOWN_RESET(src, launch_timer)
+				lift_starting = FALSE	//Just to make sure it properly stops
 			lift_blocked = TRUE
 			say("Lift Blocked, transit unavailable.")
 		else
@@ -145,23 +167,24 @@
 		if(!tgui_alert(user, "Are you sure? This will remove all riders from the round.", "Activate Lift", list("I'm Sure", "Abort")) == "I'm Sure")
 			return FALSE
 
+	//Uses a cooldown to allow cancelling the lift
+	if(!COOLDOWN_FINISHED(src, launch_timer))
+		say("SolFed Clearances accepted, FastPass lift cancelled.")
+		lift_starting = FALSE
+		COOLDOWN_RESET(src, launch_timer)
+		return
+
 	message_admins("[ADMIN_LOOKUPFLW(user)] has begun to use the [ADMIN_LOOKUPFLW(src)] - this will remove all riders from the round.")
 	say("SolFed Clearances accepted. Hello, First Responders. Please, take a seat, the FastPass Lift will depart shortly.")
+	locate_riders() //Nice fresh list of people we will remove from reality
+	lift_starting = TRUE	//It Begins
 	for(var/mob/living/rider in list_of_riders)
 		to_chat(rider, span_warning("You get a large pang of anxiety. No going back after this..."))
-	//wait 30 seconds
+	COOLDOWN_START(src, launch_timer, 30 SECONDS)
+	if(COOLDOWN_FINISHED(src, launch_timer) && lift_starting)	//Wow, we made it 30 seconds without something going wrong! Goodbye!!
+		priority_announce("Holy Shit it worked this far. Now finish it Orion.")
 
 
-
-///Finds valid tiles to use as the 'lift'
-/obj/machinery/computer/solfed_gtfo/proc/locate_lift_tiles()
-	///This should be an area ONLY containing the lift itself! (/area/centcom/interlink/solfed)
-	var/currentarea = get_area(src.loc)
-	for(var/turf/open/floor/plating/elevatorshaft/solfed_gtfo/lift_tile in currentarea)
-		linked_tiles += lift_tile
-	if(!linked_tiles)	//Shits fucked, SOMEHOW
-		log_game("[src] has no linked tiles to delete users from!")
-		message_admins("[ADMIN_LOOKUPFLW(src)] has no linked tiles to delete users from! Fix this before 911 is called by spawning /turf/open/floor/plating/elevatorshaft/solfed_gtfo around it, then proc-calling locate_lift_tiles()!")
 
 /obj/item/beamout_tool/attack_self(mob/user, modifiers)
 	. = ..()
