@@ -31,12 +31,9 @@
 
 #define ABOVE_GAME_PLANE -2
 
-<<<<<<< HEAD
 #define MOUSE_TRANSPARENT_PLANE -1 //SKYRAT EDIT ADDITION - Pollution port
 
-=======
 // PLANE_SPACE layer(s)
->>>>>>> c5d2b2e51e5 (Fixes layering issues brought by the FoV PR. (#63903))
 #define SPACE_LAYER 1.8
 
 //#define TURF_LAYER 2 //For easy recordkeeping; this is a byond define. Most floors (FLOOR_PLANE) and walls (GAME_PLANE) use this.
