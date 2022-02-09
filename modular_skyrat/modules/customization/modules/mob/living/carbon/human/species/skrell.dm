@@ -25,7 +25,9 @@
 	bodytemp_cold_damage_limit = (T20C - 10)
 	species_language_holder = /datum/language_holder/skrell
 	mutant_bodyparts = list()
-	liked_food = TOXIC | DAIRY | FRUIT
+	toxic_food = DAIRY | MEAT
+	disliked_food = RAW | CLOTH
+	liked_food = TOXIC | FRUIT | VEGETABLES
 	payday_modifier = 0.75
 	default_mutant_bodyparts = list("skrell_hair" = ACC_RANDOM)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT

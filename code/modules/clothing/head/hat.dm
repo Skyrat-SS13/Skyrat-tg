@@ -186,6 +186,7 @@
 	flags_inv = 0
 	armor = list(MELEE = 30, BULLET = 15, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50)
 	strip_delay = (8 SECONDS)
+	mutant_variants = NONE //SKYRAT EDIT lets anthros wear the hat
 
 /obj/item/clothing/head/human_leather
 	name = "human skin hat"

@@ -477,9 +477,9 @@
 	minimum_distance = 5
 	icon_state = "security_guard_ranged"
 	icon_living = "security_guard_ranged"
-	casingtype = /obj/item/ammo_casing/c10mm
+	casingtype = /obj/item/ammo_casing/b9mm
 	projectilesound = 'sound/weapons/gun/pistol/shot.ogg'
-	loot = list(/obj/item/clothing/suit/armor/vest/blueshirt, /obj/item/gun/ballistic/automatic/pistol/g17)
+	loot = list(/obj/item/clothing/suit/armor/vest/blueshirt, /obj/item/gun/ballistic/automatic/pistol/g17/mesa)
 	rapid_melee = 1
 
 /obj/machinery/porta_turret/black_mesa
@@ -570,7 +570,7 @@
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt
 	shoes = /obj/item/clothing/shoes/jackboots
 	back = /obj/item/storage/backpack
-	backpack_contents = list(/obj/item/radio, /obj/item/gun/ballistic/automatic/pistol/g17, /obj/item/ammo_box/magazine/multi_sprite/g17)
+	backpack_contents = list(/obj/item/radio, /obj/item/gun/ballistic/automatic/pistol/g17/mesa, /obj/item/ammo_box/magazine/multi_sprite/g17)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/security_guard
 
@@ -591,11 +591,13 @@
 
 /obj/item/clothing/under/rank/security/officer/hecu
 	name = "hecu jumpsuit"
-	desc = "A tactical HECU jumpsuit for officers complete with Nanotrasen belt buckle."
+	desc = "A tactical HECU fatigues for regular troops complete with USMC belt buckle." ///SIR YES SIR HOORAH
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "hecu_uniform"
 	inhand_icon_state = "r_suit"
+	uses_advanced_reskins = FALSE
+	unique_reskin = null
 
 ///It looks fairly fitting for an "elite tacticool squad", so we'll just reuse it with the Expeditionary Corps' gear stats, and without that plasteel mention, until someone sprites/finds a better one. To make it fair.
 /obj/item/clothing/suit/armor/vest/marine/hecu
@@ -609,6 +611,7 @@
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	icon_state = "hecu_helm"
+	clothing_flags = SNUG_FIT | PLASMAMAN_HELMET_EXEMPT
 	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
 
 /obj/item/storage/backpack/ert/odst/hecu
@@ -625,10 +628,18 @@
 	belt = /obj/item/storage/belt/security/webbing
 	ears = /obj/item/radio/headset
 	shoes = /obj/item/clothing/shoes/combat
-	l_pocket = /obj/item/flashlight/glowstick
-	r_pocket = /obj/item/grenade/frag
+	l_pocket = /obj/item/grenade/smokebomb
+	r_pocket = /obj/item/binoculars
 	back = /obj/item/storage/backpack/ert/odst/hecu
-	backpack_contents = list(/obj/item/ammo_box/magazine/m16 = 4, /obj/item/storage/firstaid/expeditionary, /obj/item/storage/box/mothic_rations, /obj/item/gun/ballistic/automatic/pistol/g17, /obj/item/ammo_box/magazine/multi_sprite/g17 = 2, /obj/item/knife/combat)
+	backpack_contents = list(
+		/obj/item/storage/box/survival/radio,
+		/obj/item/ammo_box/magazine/m16 = 3,
+		/obj/item/storage/firstaid/expeditionary,
+		/obj/item/storage/box/hecu_rations,
+		/obj/item/gun/ballistic/automatic/pistol/g17/mesa,
+		/obj/item/ammo_box/magazine/multi_sprite/g17 = 2,
+		/obj/item/knife/combat
+	)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu
 
@@ -645,3 +656,95 @@
 	assignment = "HECU Soldier"
 	trim_state = "trim_securityofficer"
 	access = list(ACCESS_SEC_DOORS, ACCESS_SECURITY, ACCESS_AWAY_SEC)
+
+/obj/item/food/mre_course
+	name = "undefined MRE course"
+	desc = "Something you shouldn't see. But it's edible."
+	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/courses.dmi'
+	icon_state = "main_course"
+	food_reagents = list(/datum/reagent/consumable/nutriment = 20)
+	tastes = list("crayon powder" = 1)
+	foodtypes = VEGETABLES | GRAIN
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/food/mre_course/main
+	name = "MRE main course"
+	desc = "Main course of the ancient military ration designed for ground troops. This one is NOTHING."
+	tastes = list("strawberry" = 1, "vanilla" = 1, "chocolate" = 1)
+
+/obj/item/food/mre_course/main/beans
+	name = "MRE main course - Pork and Beans"
+	desc = "Main course of the ancient military ration designed for ground troops. This one is pork and beans covered in some tomato sauce."
+	tastes = list("beans" = 1, "pork" = 1, "tomato sauce" = 1)
+
+/obj/item/food/mre_course/main/macaroni
+	name = "MRE main course - Macaroni and Cheese"
+	desc = "Main course of the ancient military ration designed for ground troops. This one is preboiled macaroni covered in some federal reserve cheese."
+	tastes = list("cold macaroni" = 1, "bland cheese" = 1)
+
+/obj/item/food/mre_course/main/rice
+	name = "MRE main course - Rice and Beef"
+	desc = "Main course of the ancient military ration designed for ground troops. This one is rice with beef, covered in gravy."
+	tastes = list("dense rice" = 1, "bits of beef" = 1, "gravy" = 1)
+
+/obj/item/food/mre_course/side
+	name = "MRE side course"
+	desc = "Side course of the ancient military ration designed for ground troops. This one is NOTHING."
+	icon_state = "side_dish"
+
+/obj/item/food/mre_course/side/bread
+	name = "MRE side course - Cornbread"
+	desc = "Side course of the ancient military ration designed for ground troops. This one is cornbread."
+	tastes = list("cornbread" = 1)
+
+/obj/item/food/mre_course/side/pie
+	name = "MRE side course - Meat Pie"
+	desc = "Side course of the ancient military ration designed for ground troops. This one is some meat pie."
+	tastes = list("pie dough" = 1, "ground meat" = 1, "Texas" = 1)
+
+/obj/item/food/mre_course/side/chicken
+	name = "MRE side course - Sweet 'n Sour Chicken"
+	desc = "Side course of the ancient military ration designed for ground troops. This one is some undefined chicken-looking meat covered in cheap reddish sauce."
+	tastes = list("bits of chicken meat" = 1, "sweet and sour sauce" = 1, "salt" = 1)
+
+/obj/item/food/mre_course/dessert
+	name = "MRE dessert"
+	desc = "Dessert of the ancient military ration designed for ground troops. This one is NOTHING."
+	icon_state = "dessert"
+
+/obj/item/food/mre_course/dessert/cookie
+	name = "MRE dessert - Cookie"
+	desc = "Dessert of the ancient military ration designed for ground troops. This one is a big dry cookie."
+	tastes = list("dryness" = 1, "hard cookie" = 1, "chocolate chip" = 1)
+
+/obj/item/food/mre_course/dessert/cake
+	name = "MRE dessert - Apple Pie"
+	desc = "Dessert of the ancient military ration designed for ground troops. This one is an amorphous apple pie."
+	tastes = list("apple" = 1, "moist cake" = 1, "sugar" = 1)
+
+/obj/item/food/mre_course/dessert/chocolate
+	name = "MRE dessert - Dark Chocolate"
+	desc = "Dessert of the ancient military ration designed for ground troops. This one is a dark bar of chocolate."
+	tastes = list("vanilla" = 1, "artificial chocolate" = 1, "chemicals" = 1)
+
+/obj/item/storage/box/hecu_rations
+	name = "Meal, Ready-to-Eat"
+	desc = "A box containing a few rations and some chewing gum, for keeping a starving crayon-eater going."
+	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/mre_hecu.dmi'
+	icon_state = "mre_package"
+	illustration = null
+
+/obj/item/storage/box/hecu_rations/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_items = 5
+
+/obj/item/storage/box/hecu_rations/PopulateContents()
+	var/main_course = pick(/obj/item/food/mre_course/main/beans, /obj/item/food/mre_course/main/macaroni, /obj/item/food/mre_course/main/rice)
+	var/side_dish = pick(/obj/item/food/mre_course/side/bread, /obj/item/food/mre_course/side/pie, /obj/item/food/mre_course/side/chicken)
+	var/dessert = pick(/obj/item/food/mre_course/dessert/cookie, /obj/item/food/mre_course/dessert/cake, /obj/item/food/mre_course/dessert/chocolate)
+	new main_course(src)
+	new side_dish(src)
+	new dessert(src)
+	new /obj/item/storage/box/gum(src)
+	new /obj/item/food/spacers_sidekick(src)
