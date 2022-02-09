@@ -139,7 +139,8 @@
 	if(!lift_blocked)
 		block_reason = tgui_input_text(user, "Provide a reason for the lift-block. Leave blank to default to \"Current Call Incomplete\".", "Lift-Block-O-Matic", max_length = MAX_BROADCAST_LEN)
 		if(!block_reason)
-			return
+			//If we made it here, they hit Confirm even though it was blank; I made Cancel just simply close the input upstream, as it should have :)
+			block_reason = "Current Call Incomplete"
 		if(!COOLDOWN_FINISHED(src, launch_timer))
 			COOLDOWN_RESET(src, launch_timer)
 			lift_starting = FALSE	//Just to make sure it properly stops
