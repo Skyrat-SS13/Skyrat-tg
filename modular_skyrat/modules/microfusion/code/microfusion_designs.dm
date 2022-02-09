@@ -158,17 +158,27 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/microfusion_gun_attachment_nt_camo
-	name = "Black Camo Microfusion Frame"
+	name = "Nanotrasen Camo Microfusion Frame"
 	desc = "A frame modification for the MCR-01, changing the color of the gun to blue."
 	id = "microfusion_gun_attachment_nt_camo"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/gold = 500)
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/plasma. = 500)
 	build_path = /obj/item/microfusion_gun_attachment/nt_camo
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/microfusion_gun_attachment_syndi_camo
 	name = "Blood Red Camo Microfusion Frame"
+	desc = "A frame modification for the MCR-01, changing the color of the gun to a slick blood red."
+	id = "microfusion_gun_attachment_syndi_camo"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/titanium = 500)
+	build_path = /obj/item/microfusion_gun_attachment/syndi_camo
+	category = list("Weapons")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/microfusion_gun_attachment_honk_camo
+	name = "Bananium Camo Microfusion Frame"
 	desc = "A frame modification for the MCR-01, changing the color of the gun to a slick blood red."
 	id = "microfusion_gun_attachment_syndi_camo"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
@@ -302,7 +312,7 @@
 	desc = "Splits the microfusion laser beam entering the lens even more!"
 	id = "microfusion_gun_attachment_suppressor"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/silver = 1000)
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/bananium = 1000)
 	build_path = /obj/item/microfusion_gun_attachment/suppressor
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE

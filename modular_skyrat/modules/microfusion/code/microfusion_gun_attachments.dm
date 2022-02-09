@@ -532,10 +532,10 @@ Allows for a clown camo to be applied to the gun.
 HONK!!
 */
 /obj/item/microfusion_gun_attachment/honk_camo
-	name = "clown camo microfusion frame"
+	name = "bananium microfusion frame"
 	desc = "A frame modification for the MCR-01, plating the gun in bananium."
 	icon_state = "attachment_honk_camo"
-	attachment_overlay_icon_state = "attachment_black"
+	attachment_overlay_icon_state = "attachment_honk_camo"
 
 /*
 SYNDIE CAMO ATTACHMENT
