@@ -97,7 +97,7 @@
 				if(!word)
 					words -= word
 					continue
-				if(!GLOB.vox_sounds_bms[word])
+				if(!GLOB.vox_sounds[word])
 					incorrect_words += word
 		if(VOX_HL)
 			for(var/word in words)
