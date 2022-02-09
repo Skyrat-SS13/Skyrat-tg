@@ -208,7 +208,7 @@
 	var/launch_time = 2 SECONDS
 	/// User overlay
 	var/mutable_appearance/lightning
-	
+
 /obj/item/mod/module/hydraulic/on_suit_activation()
 	ADD_TRAIT(mod.wearer, TRAIT_TRASHMAN, MOD_TRAIT)
 
@@ -355,7 +355,7 @@
 	/// How many tiles we traveled through.
 	var/traveled_tiles = 0
 	/// Armor values per tile.
-	var/list/armor_values = list(MELEE = 5.5, BULLET = 1.5, LASER = 2, ENERGY = 2.5, BOMB = 2.5)
+	var/list/armor_values = list(MELEE = 3, BULLET = 1.5, LASER = 1, ENERGY = 2.5, BOMB = 2.5) //SKYRAT EDIT
 	/// Speed added when you're fully covered in ash.
 	var/speed_added = 0.5
 	/// Turfs that let us accrete ash.
