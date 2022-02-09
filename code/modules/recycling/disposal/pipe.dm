@@ -93,7 +93,7 @@
 				if(living_within.stat == DEAD)
 					continue
 				if(HAS_TRAIT(living_within, TRAIT_TRASHMAN))
-					return
+					continue
 				living_within.adjustBruteLoss(5)
 	/// SKYRAT EDIT END
 	H.forceMove(P)

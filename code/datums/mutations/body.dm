@@ -89,12 +89,18 @@
 	quality = POSITIVE
 	difficulty = 16
 	instability = 5
-	conflicts = list(GIGANTISM)
+	conflicts = list(/datum/mutation/human/gigantism)
 	locked = TRUE    // Default intert species for now, so locked from regular pool.
 
 /datum/mutation/human/dwarfism/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
 		return
+	// SKYRAT EDIT BEGIN
+	if(owner.dna.features["body_size"] < 1)
+		to_chat(owner, "You feel your body shrinking even further, but your organs aren't! Uh oh!")
+		owner.adjustBruteLoss(25)
+		return
+	// SKYRAT EDIT END
 	ADD_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
 	var/matrix/new_transform = matrix()
 	new_transform.Scale(1, 0.8)
@@ -360,11 +366,17 @@
 	desc = "The cells within the subject spread out to cover more area, making the subject appear larger."
 	quality = MINOR_NEGATIVE
 	difficulty = 12
-	conflicts = list(DWARFISM)
+	conflicts = list(/datum/mutation/human/dwarfism)
 
 /datum/mutation/human/gigantism/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
 		return
+	// SKYRAT EDIT BEGIN
+	if(owner.dna.features["body_size"] > 1)
+		to_chat(owner, "You feel your body expanding even further, but it feels like your bones are expanding too much!")
+		owner.adjustBruteLoss(25) // take some DAMAGE
+		return
+	// SKYRAT EDIT END
 	ADD_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 	owner.resize = 1.25
 	owner.update_transform()
@@ -389,12 +401,12 @@
 /datum/mutation/human/spastic/on_acquiring()
 	if(..())
 		return
-	owner.apply_status_effect(STATUS_EFFECT_SPASMS)
+	owner.apply_status_effect(/datum/status_effect/spasms)
 
 /datum/mutation/human/spastic/on_losing()
 	if(..())
 		return
-	owner.remove_status_effect(STATUS_EFFECT_SPASMS)
+	owner.remove_status_effect(/datum/status_effect/spasms)
 
 /datum/mutation/human/extrastun
 	name = "Two Left Feet"

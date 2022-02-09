@@ -198,77 +198,26 @@
 	icon_state = "policetrafficcap"
 	mutant_variants = NONE
 
-/obj/item/clothing/head/turb
-	name = "turban"
-	desc = "A cloth wrap for the head, meant for desert weather."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "turban"
-	mutant_variants = NONE
-	flags_inv = HIDEEARS|HIDEHAIR
-	cold_protection = HEAD
-	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
-
-/obj/item/clothing/head/turb/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#FFFFFF"))
-
-/obj/item/clothing/head/keffiyeh
-	name = "keffiyeh"
-	desc = "My lawyers have advised me not to say anything related to this hat."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "keffiyeh"
-	mutant_variants = NONE
-	flags_inv = HIDEEARS|HIDEHAIR
-	cold_protection = HEAD
-	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
-
-/obj/item/clothing/head/keffiyeh/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#FFFFFF", "#EEEEAA", "#FFFFFF"))
-
-/obj/item/clothing/head/hijab
-	name = "hijab"
-	desc = "A cloth veil traditionally worn for religious reasons."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "hijab"
-	mutant_variants = NONE
-	flags_inv = HIDEEARS|HIDEHAIR
-	cold_protection = HEAD
-	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
-
-/obj/item/clothing/head/hijab/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#FFFFFF"))
-
-/obj/item/clothing/head/polyflatc
-	name = "poly flat cap"
+/obj/item/clothing/head/colourable_flatcap
+	name = "colourable flat cap"
 	desc = "You in the computers son? You work the computers?"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "flat_capw"
+	icon_state = "flatcap"
+	greyscale_config = /datum/greyscale_config/flatcap
+	greyscale_config_worn = /datum/greyscale_config/flatcap/worn
+	greyscale_colors = "#79684c"
+	flags_1 = IS_PLAYER_COLORABLE_1
 	mutant_variants = NONE
-
-/obj/item/clothing/head/polyflatc/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#FFFFFF"))
 
 /obj/item/clothing/head/flowerpin
 	name = "flower pin"
-	desc = "A small polychromic flower pin"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	desc = "A small, colourable flower pin"
 	icon_state = "flowerpin"
+	greyscale_config = /datum/greyscale_config/flowerpin
+	greyscale_config_worn = /datum/greyscale_config/flowerpin/worn
+	greyscale_colors = "#FF0000"
+	flags_1 = IS_PLAYER_COLORABLE_1
 	w_class = WEIGHT_CLASS_SMALL
 	mutant_variants = NONE
-	var/list/poly_colors = list("#FFFFFF", "#FFFFFF", "#FFFFFF")
-
-/obj/item/clothing/head/flowerpin/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, poly_colors)
-
 
 /obj/item/clothing/head/imperial
 	name = "naval officer cap"
@@ -385,6 +334,7 @@
 	icon_state = "sheriff_hat_alt"
 	mutant_variants = NONE
 	desc = "A dark brown hat with a smell of whiskey. There's a small set of antlers embroidered on the inside."
+	flags_inv = SHOWSPRITEEARS
 
 /obj/item/clothing/head/cowboyhat/deputy
 	name = "deputy hat"

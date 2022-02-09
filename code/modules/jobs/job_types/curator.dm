@@ -23,7 +23,7 @@
 
 	family_heirlooms = list(/obj/item/pen/fountain, /obj/item/storage/dice)
 
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 
 	voice_of_god_silence_power = 3
 	rpg_title = "Veteran Adventurer"
@@ -37,6 +37,7 @@
 	backpack_contents = list(
 		/obj/item/barcodescanner = 1,
 		/obj/item/choice_beacon/hero = 1,
+		/obj/item/glassblowing/magnifying_glass, //SKYRAT EDIT: Magnifying Glass
 	)
 	belt = /obj/item/pda/curator
 	ears = /obj/item/radio/headset/headset_srv

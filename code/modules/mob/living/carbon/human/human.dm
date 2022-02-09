@@ -306,7 +306,7 @@
 				var/maxFine = CONFIG_GET(number/maxfine)
 				var/t1 = tgui_input_text(usr, "Citation crime", "Security HUD")
 				var/fine = tgui_input_number(usr, "Citation fine", "Security HUD", 50, maxFine, 5)
-				if(isnull(fine))
+				if(!fine)
 					return
 				//if(!R || !t1 || !allowed_access) // ORIGINAL
 				if(!sec_record || !t1 || !allowed_access) // SKYRAT EDIT CHANGE - EXAMINE RECORDS
@@ -315,8 +315,6 @@
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 					return
-				fine = round(fine)
-				fine = min(fine, maxFine)
 
 				var/datum/data/crime/crime = GLOB.data_core.createCrimeEntry(t1, "", allowed_access, station_time_timestamp(), fine)
 				for (var/obj/item/pda/P in GLOB.PDAs)
@@ -587,7 +585,7 @@
 #undef CPR_PANIC_SPEED
 
 /mob/living/carbon/human/cuff_resist(obj/item/I)
-	if(dna?.check_mutation(HULK))
+	if(dna?.check_mutation(/datum/mutation/human/hulk))
 		say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ), forced = "hulk")
 		if(..(I, cuff_break = FAST_CUFFBREAK))
 			dropItemToGround(I)
@@ -938,7 +936,7 @@
 	return ishuman(target) && target.body_position == LYING_DOWN
 
 /mob/living/carbon/human/proc/fireman_carry(mob/living/carbon/target)
-	if(!can_be_firemanned(target) || incapacitated(FALSE, TRUE))
+	if(!can_be_firemanned(target) || incapacitated(IGNORE_GRAB))
 		to_chat(src, span_warning("You can't fireman carry [target] while [target.p_they()] [target.p_are()] standing!"))
 		return
 
@@ -962,7 +960,7 @@
 		return
 
 	//Second check to make sure they're still valid to be carried
-	if(!can_be_firemanned(target) || incapacitated(FALSE, TRUE) || target.buckled)
+	if(!can_be_firemanned(target) || incapacitated(IGNORE_GRAB) || target.buckled)
 		visible_message(span_warning("[src] fails to fireman carry [target]!"))
 		return
 
@@ -978,7 +976,7 @@
 		visible_message(span_warning("[target] fails to climb onto [src]!"))
 		return
 
-	if(target.incapacitated(FALSE, TRUE) || incapacitated(FALSE, TRUE))
+	if(target.incapacitated(IGNORE_GRAB) || incapacitated(IGNORE_GRAB))
 		target.visible_message(span_warning("[target] can't hang onto [src]!"))
 		return
 

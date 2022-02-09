@@ -202,7 +202,7 @@
 
 /datum/loadout_item/neck/kiaracollar
 	name = "Kiara's collar"
-	item_path = /obj/item/clothing/neck/human_petcollar/inferno
+	item_path = /obj/item/clothing/neck/inferno_collar
 	ckeywhitelist = list("inferno707")
 
 /datum/loadout_item/pocket_items/kiaramedal
@@ -378,3 +378,8 @@
 	name = "Foam Force SWAT Mask"
 	item_path = /obj/item/clothing/mask/gas/larpswat
 	ckeywhitelist = list("erdinyobarboza")
+
+/datum/loadout_item/toys/zappplush
+	name = "Lil' Zapp Plushie"
+	item_path = /obj/item/toy/plush/zapp
+	donator_only = TRUE
