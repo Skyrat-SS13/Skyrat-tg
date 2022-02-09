@@ -16,6 +16,7 @@
 /obj/projectile/beam/laser/microfusion
 	name = "microfusion laser"
 	icon = 'modular_skyrat/modules/microfusion/icons/projectiles.dmi'
+	damage = 20
 
 /obj/projectile/beam/microfusion_disabler
 	name = "microfusion disabler laser"
@@ -73,3 +74,10 @@
 	damage = 15
 	armour_penetration = 50
 
+/obj/projectile/beam/laser/microfusion/lance
+	name = "lance microfusion laser"
+	damage = 40 // Were turning the gun into a heavylaser
+	tracer_type = /obj/effect/projectile/tracer/heavy_laser
+	muzzle_type = /obj/effect/projectile/muzzle/heavy_laser
+	impact_type = /obj/effect/projectile/impact/heavy_laser
+	speed = 0.4

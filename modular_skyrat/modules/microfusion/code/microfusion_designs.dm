@@ -149,11 +149,31 @@
 
 /datum/design/microfusion_gun_attachment_black_camo
 	name = "Black Camo Microfusion Frame"
-	desc = "A frame modification for the MCR-10, changing the color of the gun to black."
+	desc = "A frame modification for the MCR-01, changing the color of the gun to black."
 	id = "microfusion_gun_attachment_black_camo"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/gold = 500)
 	build_path = /obj/item/microfusion_gun_attachment/black_camo
+	category = list("Weapons")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/microfusion_gun_attachment_nt_camo
+	name = "Black Camo Microfusion Frame"
+	desc = "A frame modification for the MCR-01, changing the color of the gun to blue."
+	id = "microfusion_gun_attachment_nt_camo"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/gold = 500)
+	build_path = /obj/item/microfusion_gun_attachment/nt_camo
+	category = list("Weapons")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/microfusion_gun_attachment_syndi_camo
+	name = "Blood Red Camo Microfusion Frame"
+	desc = "A frame modification for the MCR-01, changing the color of the gun to a slick blood red."
+	id = "microfusion_gun_attachment_syndi_camo"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/titanium = 500)
+	build_path = /obj/item/microfusion_gun_attachment/syndi_camo
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
@@ -187,12 +207,22 @@
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
+/datum/design/microfusion_gun_attachment_scattermax
+	name = "Crystalline Diffuser Microfusion Lens Attachment"
+	desc = "Splits the microfusion laser beam entering the lens even more!"
+	id = "microfusion_gun_attachment_scattermax"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/silver = 1000)
+	build_path = /obj/item/microfusion_gun_attachment/scattermax
+	category = list("Weapons")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
+
 /datum/design/microfusion_gun_attachment_superheat
 	name = "Superheating Phase Emitter Upgrade"
 	desc = "Superheats the beam, causing targets to ignite!"
 	id = "microfusion_gun_attachment_superheat"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/plasma = 500)
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/plasma = 1000)
 	build_path = /obj/item/microfusion_gun_attachment/superheat
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
@@ -200,7 +230,7 @@
 /datum/design/microfusion_gun_attachment_hellfire
 	name = "Hellfire Phase Emitter Upgrade"
 	desc = "Overheats the beam, causing nastier wounds and higher damage!"
-	id = "microfusion_gun_attachment_superheat"
+	id = "microfusion_gun_attachment_hellfire"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/plasma = 500)
 	build_path = /obj/item/microfusion_gun_attachment/hellfire
@@ -214,6 +244,26 @@
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/bluespace = 500)
 	build_path = /obj/item/microfusion_gun_attachment/repeater
+	category = list("Weapons")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/microfusion_gun_attachment_penetrator
+	name = "Focused Repeating Phase Emitter Upgrade"
+	desc = "Upgrades the central phase emitter to repeat twice and penetrate armor."
+	id = "microfusion_gun_attachment_penetrator"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/bluespace = 1000)
+	build_path = /obj/item/microfusion_gun_attachment/repeater
+	category = list("Weapons")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/microfusion_gun_attachment_lance
+	name = "Lance Induction Carriage"
+	desc = "Turns the gun into a designated marksman rifle."
+	id = "microfusion_gun_attachment_lance"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/plasma = 500, /datum/material/bluespace = 500)
+	build_path = /obj/item/microfusion_gun_attachment/lance
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
@@ -234,5 +284,25 @@
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/silver = 500, /datum/material/gold = 500)
 	build_path = /obj/item/microfusion_gun_attachment/rgb
+	category = list("Weapons")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/microfusion_gun_attachment_suppressor
+	name = "Crystalline Diffuser Microfusion Lens Attachment"
+	desc = "Splits the microfusion laser beam entering the lens even more!"
+	id = "microfusion_gun_attachment_suppressor"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/silver = 1000)
+	build_path = /obj/item/microfusion_gun_attachment/suppressor
+	category = list("Weapons")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/microfusion_gun_attachment_honk
+	name = "Bananium Phase Emitter Upgrade"
+	desc = "Splits the microfusion laser beam entering the lens even more!"
+	id = "microfusion_gun_attachment_suppressor"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/silver = 1000)
+	build_path = /obj/item/microfusion_gun_attachment/suppressor
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE

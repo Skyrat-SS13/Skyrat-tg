@@ -24,6 +24,7 @@
 		"microfusion_cell_attachment_rechargeable",
 		"enhanced_microfusion_phase_emitter",
 		"microfusion_gun_attachment_black_camo",
+		"microfusion_gun_attachment_nt_camo",
 		"microfusion_gun_attachment_heatsink",
 		"microfusion_gun_attachment_rgb",
 	)
@@ -48,6 +49,7 @@
 		"microfusion_gun_attachment_scatter",
 		"microfusion_gun_attachment_hellfire",
 		"advanced_microfusion_phase_emitter",
+		"advanced_microfusion_phase_lance",
 		"microfusion_gun_attachment_grip",
 		"microfusion_gun_attachment_rail",
 		"microfusion_gun_attachment_scope",
@@ -99,5 +101,24 @@
 	)
 	design_ids = list(
 		"microfusion_gun_attachment_superheat",
+		"microfusion_gun_attachment_scattermax",
+		"microfusion_gun_attachment_superheat",
+		"microfusion_gun_attachment_syndi_camo",
+		"microfusion_gun_attachment_suppressor",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
+
+// clown microfusion. | This exists to not make this non modular
+/datum/techweb_node/clown_microfusion
+	id = "clown_microfusion"
+	display_name = "Honkicron Clownery Systems Technology"
+	description = "Microfusion tech that is proprietary tech of Honkicron Clownery Systems. HONK!!"
+	prereq_ids = list(
+		"basic_microfusion",
+		"clown",
+	)
+	design_ids = list(
+		"microfusion_gun_attachment_honk",
+		"microfusion_gun_attachment_honk_camo",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 500) //Its normally supposed to be in clown tech so
