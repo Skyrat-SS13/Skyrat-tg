@@ -188,7 +188,7 @@
 		to_chat(src,span_userdanger("ERROR: Model installer reply timeout. Please check internal connections."))
 		return
 
-if(lockcharge == TRUE)
+	if(lockcharge == TRUE)
 		to_chat(src,span_userdanger("ERROR: Lockdown is engaged. Please disengage lockdown to pick module."))
 		return
 
