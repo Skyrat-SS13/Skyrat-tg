@@ -149,7 +149,7 @@
 
 ///Finds users on the 'lift', gives ample warning as to what will happen, then deletes them all. Effectively, its how 911 will leave the round.
 //If it's already booting up, though, re-calling this will cancel!
-/obj/machinery/computer/solfed_gtfo/proc/activate_lift(mob/user, list_of_riders)
+/obj/machinery/computer/solfed_gtfo/proc/activate_lift(mob/user)
 	if(user.client.holder)	//Debug purposes, admins get a slightly modified warning specifying 'hey, admin, dont use this if you arent debugging'
 		if(lift_blocked)
 			to_chat(user, span_admin("Lift is Blocked, re-enable it first!"))

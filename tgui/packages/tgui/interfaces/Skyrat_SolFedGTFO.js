@@ -36,7 +36,6 @@ export const Skyrat_SolFedGTFO = (props, context) => {
             textAlign="center"
             onClick={() => act('activate_lift', {
               user: data.user,
-              list_of_riders: get_riders()
             })}
           />
         </Section>
