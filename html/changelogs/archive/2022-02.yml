@@ -78,3 +78,357 @@
   thestubborn:
   - rscadd: pride pin in loadout :)
   - spellcheck: 'its a blue bag now remove: crimble stuff is in the loft yet again'
+2022-02-03:
+  Fikou, Armhulen, smartkar:
+  - rscadd: Brimdemons have invaded Lavaland.
+  - rscdel: Lobstrocities have awakened from their lavaland slumber, this somehow
+      made them unavailable in the gold slime pool.
+  MMMiracles:
+  - rscadd: Tramstation's maintenance has taken broken down into more modular segments
+      that will now load in randomly each round.
+  - rscadd: There is now a medical console and crew console in the main medbay treatment
+      room.
+  Melbert:
+  - bugfix: Fixes a hard delete with rod form. Also cleans up some rod code.
+  - bugfix: Admin sending a looping rod will no longer make all following rods loop
+  Ryll/Shaps:
+  - rscadd: Added in a new admin spawn, the mystery box! Dealing randomized (maybe)
+      death to thunderdomes near you! Maybe!
+  SkyratBot:
+  - bugfix: Upgraded BEPISes now longer give tech for free. For a fully upgraded machine,
+      you now need 200 credits for a 50% chance of a minor reward, and 600 credits
+      for a 50% chance of a major reward.
+  - bugfix: The BEPIS message telling you that you've gotten all the tech disks and
+      therefore are getting a minor reward instead now properly displays.
+  - spellcheck: Not having enough iron to create a foam wall no longer erroneously
+      tells you that you need four iron sheets instead of two.
+  - code_imp: Created a new input component that accepts only integers. More usage
+      to come.
+  - refactor: Pay stands are now holographic. It's 2562! Create one by right-clicking
+      your ID.
+  - rscdel: Circuit boards for pay stands.
+  - refactor: Pay stands now have their own TGUI.
+  - bugfix: Custom vendors now alert you when someone makes a purchase.
+  - bugfix: Custom vendors now place items in your hand when you make a purchase.
+  - bugfix: Stickyban subsystem no longer runtimes on invalid entries
+  - bugfix: Connects robotics trashbin to disposal system on tramstation
+  - bugfix: Nanotrasen moved around some of the wall decorations in IceBoxStation's
+      Science to appease the ghostly overlords (as well as the AI).
+  - bugfix: Calls via holopads now transmit the caller's speech again.
+  - balance: Security Officers (and the whole lot) now have a name assigned to their
+      locker room, rather than have it be another appendage of the large beast known
+      as Brig.
+  - bugfix: lost sprites for connectable t-ray goggles found and restored
+  - bugfix: missing delta turbine air supply pipe has been installed
+  YakumoChen:
+  - imageadd: New Heart Tattoo that goes over your groin.
+  Zenitheevee:
+  - bugfix: MCR properly shows up in the right hand when held in the right hand.
+  tastyfish:
+  - bugfix: Fixed bluespace miner examine errors to show at the same pressure range
+      that the logic does.
+  tf-4:
+  - bugfix: Ghost roles can now use loadouts and quirks as God intended.
+  - code_imp: Cloaks, boatcloaks, veils, and shrouds are now GAGS instead of polychromatic.
+  - rscdel: The runescape cloaks have been removed.
+2022-02-04:
+  Melbert:
+  - bugfix: Fixes being able to vote for maps which are outside their configured population
+      range (Such as Kilostation).
+  ShizCalev:
+  - bugfix: Fixed being able to fry objects that are actively storing other objects.
+  SkyratBot:
+  - bugfix: You can now once again resist out of aggressive grabs.
+  - bugfix: Merge datums will no longer spit blood if two mergable objects are on
+      the first tile examined. The directions are also trustworthy now
+  - balance: You no longer need beakers to build component printers or module duplicators.
+  - bugfix: Chaplains rejoice, you can now stop burying the dead in your own robes!
+      Burial garments have been added to the Religious Supply Crate, as was already
+      promised in the description.
+  - balance: Nerfs the stun on touching a field gen from 30 seconds(!) down to 10.
+      Adds sound and chat message feedback.
+  - rscadd: The Space Ruin "The Lizard's Gas" now has a GPS on it, so you can seek
+      it out a little bit easier now.
+  - bugfix: ethereals can now charge themselves using right click, but they will also
+      lock/unlock the APC above normal charge
+  - imageadd: Updated the icon for the Legion achievement.
+  - imageadd: Added an icon to the "Look Out, Sir!" achievement.
+  - bugfix: Clicking cancel on the carp rift will no longer summon you as a carp
+  - bugfix: Welding up a disposal segment will not longer delete most of the people/things/dogs
+      inside it
+  jjpark-kb:
+  - balance: lowered chance for meteor event
+  - rscdel: removed sentient disease event
+  tf-4:
+  - code_imp: The polychromic clown mask is now GAGS, allowing finer control over
+      its colours.
+  - bugfix: Flickering lights will now properly check if they should turn on or not
+      when fixed.
+2022-02-05:
+  Gandalf2k15:
+  - admin: Added verb to fix chat called "FIX SAY".
+  Ryll/Shaps:
+  - config: Added ALLOW_ADMIN_PROFILING entry to the config, controlling whether admins
+      are given access to the server profiler
+  SkyratBot:
+  - balance: Returning to lobby is now the default assignment if your job spot was
+      taken.
+  jjpark-kb:
+  - rscdel: lone ops will no longer receive weight from nuke disk
+  - rscdel: removed fungal mold from event spawning
+  tf-4:
+  - code_imp: the colour-changing footwraps are now GAGS instead of polychromic.
+2022-02-06:
+  RandomGamer123, Iamgoofball, IssacTheSharkWolf:
+  - bugfix: Shuttles on multi-z stations now have ceilings!
+  SkyratBot:
+  - bugfix: The 145.7 frequency is no longer received by all signalers.
+  - bugfix: you no longer see ghosts and through walls with nooartrium
+  - bugfix: fixes modsuit core recipes
+  - balance: The Dynamic report for Peaceful Waypoint/Core Territory no longer guarantees
+      providing any meta information. Previously, "Core Territory" guaranteed there
+      were roundstart antagonists, and "Peaceful Waypoint" guaranteed the inverse.
+      There is now a 15% chance to show the opposite result, meaning you can use the
+      report as a good guess of what is coming, but cannot rely on it.
+  - refactor: Refactors reverse bear trap code.
+  - bugfix: You can now properly take reverse bear traps off of your head if you manage
+      to break free.
+  - bugfix: Wizards who exit rodform in a wall will no longer self gib. Skill issue?
+  - bugfix: fixes printing unresearched mech stuff and design disks
+  theOOZ:
+  - tweak: Updates "Poppy the Safety Possum" 's name to "Poppy The Safety Inspector".
+  - balance: 'Nerfs E-N''s explosion, buffs its laser output. qol: It is now clearly
+      indicated when E-N gets emagged.'
+  - rscadd: Adds a medium-risk progression traitor objective about E-N.
+  - rscadd: Adds a medium-risk progression traitor objective about Poppy the Safety
+      Inspector.
+  - bugfix: Fix Poppy's resting state.
+2022-02-07:
+  Fikou, PositiveEntropy:
+  - imageadd: the elite nukie suit has new sprites
+  - balance: the elite nukie suit starts with a little armor filled to standard by
+      the armor booster, the elite armor booster is removed
+  - balance: welding protection is now a part of the armor booster module, no longer
+      a separate module in syndie suits
+  - balance: adds a jetpack and holster to traitor modsuit
+  Mothblocks:
+  - bugfix: Fixed greyscale colors on female fitting versions of clothes.
+  ORCACommander:
+  - server: cleaned up merge conflict markers in config.txt
+  Ryll/Shaps:
+  - bugfix: Shooting living mobs with projectiles will no longer cause duplicated
+      logs/messages
+  SkyratBot:
+  - balance: broken drinking/alcohol glass and broken plate shard now hurt you if
+      you step on them barefoot.
+  - balance: blast doors and shutters are now above windows and doors, and will hide
+      them. Both layers have been increased to 3.3.
+  - balance: shutters now cost 5 plasteel and 5 coil and 1 airlock electronic and
+      take 10 seconds to build
+  - refactor: Replaced the old surgery interface with one that is much better to use,
+      and lets you choose the body zone within itself.
+  - bugfix: Fixed how the diminishing returns of having too much progression scaled.
+      It now properly scales exponentially.
+  - rscdel: Removed the 'take' option for traitor uplinks in the traitor panel.
+  - bugfix: It should no longer be possible to DC admins by spamming grenades.
+  - bugfix: blob overminds can now move vertically through station z-levels while
+      its core hasn't been placed yet.
+  - bugfix: disease mobs can too move vertically while a host hasn't been selected
+      yet.
+  - bugfix: (unrevealed) revenants can now move up and down more freely, without having
+      to be standing on or below open space. This also applies to other living mobs
+      with generic incorporeal movement (not to be confused with the nightmare or
+      wizard's jaunt) as long as they can fly or there's no gravity.
+  - bugfix: The song editor UI now updates properly on pianos/space minimoogs.
+  - bugfix: xeno egg now updates its icon properly when burst
+  - bugfix: Mapped in firelocks that are closed will STAY closed.
+  Wallem:
+  - bugfix: Radio Gloves will no longer vacuum your earpieces when crafted.
+  Wallem, Partheo & Tex:
+  - imageadd: Ports canister sprites made by Partheo & Tex from Yogstation.
+  tf-4:
+  - bugfix: Victim logs are no longer mistakenly logged as subtler emotes.
+  - bugfix: The bamboo stool and carpskin chairs are no longer invisible.
+2022-02-08:
+  LeonY24:
+  - rscadd: 'Glock-17: Black Mesa Edition'
+  - rscdel: No more Armadyne Glock-17 in the Black Mesa.
+  - bugfix: Ranged security from the Black Mesa finally shoot their foes with 9x19
+      bullets, not 10mm.
+  SkyratBot:
+  - code_imp: changed a code-related default, please report if anything turns invisible
+  - bugfix: 'Literally unplayable bugs fixed: Pens can now be rotated again.'
+  - bugfix: TGUI alerts now display buttons in a column when there's more than 2 options.
+  - bugfix: TGUI alerts can now be disabled via turning TGUI inputs off in prefs.
+  - bugfix: Fixed some bluescreens related to TGUI inputs.
+  - bugfix: Fixes a runtime with material containers.
+  - bugfix: Tgui number input now uses a new component that makes it easier to use.
+      It now autofocuses and autoselects, just like the original.
+  - bugfix: Alert modals have been rewritten. Messages no longer clip, they also now
+      respond to TGUI input preferences (UI tab) and you can press ESC to close.
+  - bugfix: You should now be able to enter a blank text to succumb.
+  Stalkeros:
+  - balance: NPC HECU Grunts' caliber changed from .45 to .32, their gun also changed
+      from c20r to Wildcat respectively.
+  - bugfix: HECUs are now members of their own faction, as the God intended.
+  linnpap:
+  - rscadd: Added triple cat tail
+  tf-4:
+  - rscdel: Cortical stacks have been removed.
+  - code_imp: Collars are now coloured through GAGS rather than being polychromatic.
+  - bugfix: Cancelling renaming a collar will no longer give it a blank name.
+  - code_imp: The flat cap and flower pin now use GAGS
+  - rscdel: The turban, keffiyeh, and hijab have been removed
+  theOOZ:
+  - bugfix: Fixes some traitor objectives not awarding TC properly
+2022-02-09:
+  Deek-Za:
+  - bugfix: Orderly/Engi Guard uniform sprites now work properly for Digi's.
+  Ebin-Halcyon:
+  - imageadd: Teshari now have properly fitting security clothing.
+  - imageadd: Elite and new Mining MODsuit digi sprites
+  - bugfix: Central command has tailored their new jumpsuits to fit on digitigrade
+      officers and officials. Along with their digitigrade official's suits not flickering
+      into two different variants.
+  ErdinyoBarboza:
+  - bugfix: Fixes the food prefs to enjoy eating (these) nuts and streamlines food
+      prefs. Please make sure to check your species tab to check your liked and disliked
+      foods.
+  Fikou, Imaginos, Azlan, Nerevar:
+  - bugfix: 'fixes modsuit speed potion being fucky qol: makes the gps module open
+      the gps tgui instead of putting a gps in your hand'
+  - balance: Reworks the mining MODsuit, the full suit is bought from the mining vendor.
+  Gandalf2k15:
+  - rscadd: Explosion effects have been improved.
+  - rscadd: Sexuality preference.
+  Goffy:
+  - rscadd: Makes it so that succubus milk and incubus draft chems change gender when
+      genderswapping is enabled upon OD.
+  GuiltyNeko:
+  - bugfix: Delta Station Air mix is now set to the correct ratios
+  - bugfix: Renamed the cycling on some doors to "entrance" from "entrence"
+  Iamgoofball:
+  - balance: The Galactic Gene Therapy Consortium would like to issue a PSA regarding
+      size gene mods and abnormally sized humanoids. It is not advised to use size
+      adjusting gene modifications while abnormally sized, as adverse side effects
+      can occur, up to and including a very painful death.
+  Melbert:
+  - bugfix: Fixes a runtime which causes game start to fail and revert occasionally
+  - bugfix: Obsessed hug objective functions again
+  Nari Harimoto:
+  - bugfix: Icebox medbay has had a slight change in the lobby and pharmacy to fix
+      some ugly spots
+  - bugfix: Icebox dept order consoles now work, both the computer and the wallmounted
+      ones
+  Necromanceranne, quin:
+  - rscadd: Adds the Inferno and Cryo Pistols. A hybrid energy/ballistic weapon, to
+      cargo. It can be purchased in either a goodies pack or a normal crate order.
+  - rscadd: Thermal Pistols do more damage and a special based on temperature of the
+      target hit.
+  - rscadd: Inferno pistols cause an explosion when they hit a severely cold target.
+  - rscadd: Cryo pistols cause a knockdown and extra damage if they hit a severely
+      hot target.
+  - rscadd: There is a special nanite pistol, which is admin spawned. Don't tell anyone
+      about the forbidden ballistic energy gun.
+  - rscadd: You can order a .38 revolver as a goodie pack. It is expensive.
+  - rscdel: Removes WT-550's from cargo and related content from the techweb/protolathes.
+  - balance: Exotic Ammo is now much earlier in the tech web to take the place of
+      Ballistic Weaponry.
+  RatFromTheJungle:
+  - tweak: modularizes the WT550's as upstream removed them.
+  SkyratBot:
+  - bugfix: fixed some hud items layering improperly
+  - bugfix: Fixed an issue where holopay range could be bypassed by handing the card
+      off.
+  - rscadd: 'Atmospheric Technicians can now take it easy, as the room that normally
+      holds all of the canisters of highly flammable gas is now cleanly labelled "Gas
+      Storage" instead of being another appendage of the absolute auditorium known
+      as Atmospherics. spriteadd: The Atmospheric Storage Area Turf now has a new
+      sprite. If you know what that means, I hope you enjoy it. If you don''t, that''s
+      also fine.'
+  - refactor: The environmental atmos scanning ability of the gas analyzer is now
+      a component.
+  - bugfix: Restores the lost sprites for the Centcom gas mask.
+  - code_imp: wrench->closet interactions migrated to wrench_act_secondary
+  - bugfix: Ash mark now deals the correct amount of damage and no longer gets stuck
+      bouncing between the same two targets.
+  - balance: Ash mark is significantly stronger due to this fix.
+  - bugfix: Fixes an exploit allowing players to bypass crafting times on spears and
+      cattleprods.
+  - balance: Wired Rods are now bulky.
+  - rscadd: The area where you get to sit with your alcohol has been renamed to the
+      Bar Lounge across all the stations.
+  - rscadd: Instead of the area between the chapel/holodeck/library/laundry room on
+      TramStation being referred to as the "lounge", it's now called "Crew Facilities".
+      Because it's, y'know, facilities for the crew.
+  - balance: Nanotrasen has updated how they name and define different parts of their
+      loot-laden maintenance tunnels. Take a look around you!
+  - rscdel: Hooch no longer heals assistants.
+  - rscdel: Remove rotation from IV drips.
+  - rscdel: 'Rotating objects will no longer leave fingerprints. qol: Add right-clicking
+      and left-clicking to rotate objects in different directions for alt click. Left
+      is counterclockwise and right is clockwise. qol: Replace to_chat rotation messages
+      with balloon alerts to stop redundant chat spamming. qol: Hotkeys for some pipe
+      interactions had to be changed. Right clicking on an unwrenched pipe now changes
+      the pipe layer.  Right clicking on a unwrenched trinary pipe device now flips
+      it.  Alt clicking handles rotation. qol: Computer frames now have rotation component'
+  - bugfix: Fix rotation on wheelchairs to work properly.
+  - refactor: Refactored the entire rotation component and all objects that use it.  Remove
+      a lot of deprecated code to make things cleaner.
+  - bugfix: ACTUALLY fixes the Illegal Technology node being unobtainable.
+  - bugfix: CTF Limbo's control point timer is now correctly set to 3 minutes rather
+      than 6
+  - imageadd: On the mapping end, there is now a new area turf sprite for the definition
+      of the area where you store all of the parts for telecommunications, or "Telecommunications
+      Storage". How gorgeous.
+  - bugfix: Making medbots through the crafting menu will now account for using different
+      types of medkit and health analyser.
+  - bugfix: Reality has shifted around you, and now all parts of the outdoors of IceBox
+      Station should now be blanketed in snow whenever one of those storms come around.
+      Why was this broken in the first place? Nobody knows!
+  - bugfix: Optimized automated movement. Should feel a mite smoother now
+  - bugfix: Changed how the singulo eats turfs to hopefully be less of a load on the
+      server. Behavior's changed a bit tho, lemme know if anything looks too off
+  - bugfix: Bottlers no longer runtime if they run out of beakers/containers to fill
+  - imageadd: 'The Suit Storage Units now have a Locked indicator on their lights!
+      In exchange, decontamination above safe levels has a slightly different indicator
+      (flashing red/yellow) qol: SSU gives chat warnings as to why it blocks decontamination
+      (no items/safeties on)'
+  - bugfix: SSU panel/super-decontamination icons work properly now
+  - rscadd: The SSU super-decontamination also creates a plume of black smoke at the
+      end, as the flavor description said it did.
+  - balance: Syndieship turrets now target non emagged or non nukie cyborgs
+  - bugfix: Removed a duped pipe from Icebox and a duped power cable from Tram.
+  Stalkeros:
+  - balance: HECU armor set de-spaceproofed.
+  coldud13:
+  - bugfix: fixes a doubled up scrubber pipe on icemoon
+  itseasytosee:
+  - bugfix: fixed some skateboard related bugs, including the action button for ollieing
+      always being red, and being able to ollie while dead
+  jjpark-kb:
+  - rscadd: added a smithing skill
+  - rscadd: added a smithing skill cloak
+  - rscadd: added skill modifiers to forges and anvils for smithing
+  - rscadd: added a katana, dagger, pavise shield, pickaxe, and shovel reagent "weapons"
+  - rscadd: added the ability to make crank cells (coil on a cell)
+  - rscadd: added a forge crafting station; use this to fully finish the items and
+      craft reagent things (5 wood)
+  - rscadd: added borer cages to the forge crafting station, removed their normal
+      crafting recipe
+  - rscadd: added a coil recipe to the forge crafting station
+  - balance: weapons now inject 1u instead of 0.5u
+  - balance: the staff will attack twice as fast (still no damage)
+  - rscdel: removed all reagent weapons/armors from crafting menu, use the forge crafting
+      station
+  tastyfish:
+  - bugfix: Teshari no longer have the underwear, undershirt, or socks buttons in
+      the character editor.
+  - server: Added some more CI linter checks for maps, that are otherwise caught at
+      runtime. This will likely fail downstream maps if they're double stacking objects
+      which aren't allowed to stack, or misplacing APC's.
+  - bugfix: Removed some redundant APC's in the space hotel.
+  tf-4:
+  - code_imp: The kilt and cardigan are now GAGS instead of polychromic.
+  thestubborn:
+  - bugfix: Teshari not having pay-check mods.

@@ -173,25 +173,19 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "ringgag"
 
-
-/obj/item/clothing/mask/gas/polyclown
-	name = "polychromaic clown mask"
+/obj/item/clothing/mask/gas/clown_colourable
+	name = "colourable clown mask"
 	desc = "The face of pure evil, now multicoloured."
+	icon_state = "gags_mask"
 	clothing_flags = MASKINTERNALS
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
-	icon_state = "polyclown"
-	inhand_icon_state = "clown_hat"
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FLAMMABLE
 	species_exception = list(/datum/species/golem/bananium)
-	var/is_polychromic = TRUE
-	var/poly_colors = list("#00BBBB", "#FFCC00", "#FFFFFF")
-
-/obj/item/clothing/mask/gas/polyclown/ComponentInitialize()
-	. = ..()
-	if(is_polychromic)
-		AddElement(/datum/element/polychromic, poly_colors)
+	has_fov = FALSE
+	greyscale_config = /datum/greyscale_config/clown_mask
+	greyscale_config_worn = /datum/greyscale_config/clown_mask/worn
+	greyscale_colors = "#FFFFFF#F20018#0000FF#00CC00"
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/mask/gas/clownbald
 	name = "bald clown mask"
