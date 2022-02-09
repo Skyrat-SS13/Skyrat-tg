@@ -189,7 +189,11 @@ GLOBAL_LIST_INIT(detective_vest_allowed, typecacheof(list(
 	/obj/item/tank/internals/plasmaman,
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
+<<<<<<< HEAD
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
+=======
+	/obj/item/storage/belt/holster/thermal,
+>>>>>>> 152185a2636 (gun (#64776))
 	)))
 
 GLOBAL_LIST_INIT(security_vest_allowed, typecacheof(list(
@@ -206,7 +210,11 @@ GLOBAL_LIST_INIT(security_vest_allowed, typecacheof(list(
 	/obj/item/tank/internals/plasmaman,
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
+<<<<<<< HEAD
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
+=======
+	/obj/item/storage/belt/holster/thermal,
+>>>>>>> 152185a2636 (gun (#64776))
 	)))
 
 GLOBAL_LIST_INIT(security_wintercoat_allowed, typecacheof(list(
@@ -219,7 +227,11 @@ GLOBAL_LIST_INIT(security_wintercoat_allowed, typecacheof(list(
 	/obj/item/restraints/handcuffs,
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
+<<<<<<< HEAD
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
+=======
+	/obj/item/storage/belt/holster/thermal,
+>>>>>>> 152185a2636 (gun (#64776))
 	)))
 
 /// String for items placed into the left pocket.
