@@ -40,9 +40,6 @@
 		current_mob.update_abstract_handcuffed()
 	unbuckle_all_mobs(TRUE)
 
-/obj/structure/chair/shibari_stand/ComponentInitialize()
-	return
-
 //Examine changes for this structure
 /obj/structure/chair/shibari_stand/examine(mob/user)
 	.=..()
