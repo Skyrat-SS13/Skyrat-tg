@@ -210,23 +210,6 @@ if(lockcharge == TRUE)
 		for(var/model in GLOB.cyborg_model_list)
 			// Creating the lists here since we know all the model icons will need them right after.
 			GLOB.cyborg_all_models_icon_list[model] = list()
-=======
-	if(lockcharge == TRUE)
-		to_chat(src,span_userdanger("ERROR: Lockdown is engaged. Please disengage lockdown to pick module."))
-		return
-
-	var/list/model_list = list(
-		"Engineering" = /obj/item/robot_model/engineering,
-		"Medical" = /obj/item/robot_model/medical,
-		"Miner" = /obj/item/robot_model/miner,
-		"Janitor" = /obj/item/robot_model/janitor,
-		"Service" = /obj/item/robot_model/service,
-	)
-	if(!CONFIG_GET(flag/disable_peaceborg))
-		model_list["Peacekeeper"] = /obj/item/robot_model/peacekeeper
-	if(!CONFIG_GET(flag/disable_secborg))
-		model_list["Security"] = /obj/item/robot_model/security
->>>>>>> 5f990f1fa62 (Blocks you from picking module when locked (#64750))
 
 	// Create radial menu for choosing borg model
 	if(!length(GLOB.cyborg_base_models_icon_list))
