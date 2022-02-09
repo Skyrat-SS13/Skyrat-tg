@@ -571,6 +571,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Red victorian dress"
 	item_path = /obj/item/clothing/under/costume/vic_dress/red
 
+/datum/loadout_item/under/formal/vic_dress_green
+	name = "Green victorian dress"
+	item_path = /obj/item/clothing/under/costume/vic_dress/green
+
 /datum/loadout_item/under/formal/amish_suit
 	name = "Amish Suit"
 	item_path = /obj/item/clothing/under/suit/sl
