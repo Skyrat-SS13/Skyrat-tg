@@ -1,6 +1,8 @@
 #ifdef AI_VOX
 
 GLOBAL_LIST_INIT(vox_sounds_bms, list(
+	"_comma" = 'modular_skyrat/modules/alt_vox/sound/vox_bms/_comma.ogg',
+	"_period" = 'modular_skyrat/modules/alt_vox/sound/vox_bms/_period.ogg',
 	"activated" = 'modular_skyrat/modules/alt_vox/sound/vox_bms/activated.ogg',
 	"administration" = 'modular_skyrat/modules/alt_vox/sound/vox_bms/administration.ogg',
 	"administration_center" = 'modular_skyrat/modules/alt_vox/sound/vox_bms/administration_center.ogg',
