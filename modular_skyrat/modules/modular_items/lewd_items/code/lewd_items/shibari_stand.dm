@@ -23,15 +23,8 @@
 	///The rope inside the stand, that's actually tying the person to it
 	var/obj/item/stack/shibari_rope/ropee = null
 
-// Object cannot rotate
-/obj/structure/chair/shibari_stand/can_be_rotated(mob/user)
-	return FALSE
-// User cannot rotate the object
-/obj/structure/chair/shibari_stand/can_user_rotate(mob/user)
-	return FALSE
-// Another plug to disable rotation
-/obj/structure/chair/shibari_stand/attack_tk(mob/user)
-	return FALSE
+/obj/structure/chair/shibari_stand/MakeRotate()
+	return
 
 /obj/structure/chair/shibari_stand/Destroy()
 	cut_overlay(shibari_shadow_overlay)
@@ -56,18 +49,6 @@
 	. += span_notice("Looks like it can be customized with a <b>screwdriver</b>.")
 	if(!has_buckled_mobs() && can_buckle)
 		. += span_notice("While standing on [src], drag and drop character <b>with shibari full-body bondage</b> onto [src] to tie a person to it, <b>while holding ropes in your hands</b>.")
-
-// Object cannot rotate
-/obj/structure/chair/shibari_stand/can_be_rotated(mob/user)
-	return FALSE
-
-// User cannot rotate the object
-/obj/structure/chair/shibari_stand/can_user_rotate(mob/user)
-	return FALSE
-
-// Another plug to disable rotation
-/obj/structure/chair/shibari_stand/attack_tk(mob/user)
-	return FALSE
 
 /obj/structure/chair/shibari_stand/user_unbuckle_mob(mob/living/buckled_mob, mob/living/user)
 	var/mob/living/buckled = buckled_mob
