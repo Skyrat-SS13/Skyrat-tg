@@ -115,6 +115,7 @@
 
 	locate_riders()	//This needs to be kept up-to-date
 
+	data["current_call"] = GLOB.call_911_msg	//The current active 911 call (most recent)
 	data["list_of_riders"] = list_of_riders	//List of all the riders
 	data["lift_starting"] = lift_starting //True/False state of if the lift is in the process of leaving
 	data["lift_blocked"] = lift_blocked //True/False state of if admins blocked the lift from leaving
@@ -164,7 +165,7 @@
 			to_chat(user, span_admin("Lift is Blocked, re-enable it first!"))
 			return FALSE
 		if(lift_starting)
-			var/choice = tgui_alert(usr, "Admin, are you sure you want to cancel the lift?", "Cancel Lift", list("I'm Sure", "Abort"))
+			var/choice = tgui_alert(user, "Admin, are you sure you want to cancel the lift?", "Cancel Lift", list("I'm Sure", "Abort"))
 			if(choice == "Abort")
 				return FALSE
 			lift_starting = FALSE
@@ -174,7 +175,7 @@
 		if(!isliving(user))
 			to_chat(user, span_admin("Stop trying to debug 'delete all rider' platforms as a ghost. Counter-intuitive as hell. That, or stop trying to remove people from the round."))
 		var/choice = tgui_alert(user, "Admin, are you sure? This will remove all riders from the round. You should only use this for debug purposes.", "Activate Lift", list("I'm Sure", "Abort"))
-		if(choice == "Abort")
+		if(!choice == "I'm Sure")	//Either they chose Abort or they closed the window
 			return FALSE
 	else
 		if(lift_blocked)
@@ -184,12 +185,20 @@
 			lift_starting = FALSE
 			COOLDOWN_RESET(src, launch_timer)
 			return
-		if(!isliving(user))	//Just in case a dead admin who had a 911 datum tries to do it.
-			to_chat(user, span_warning("Not while you're dead!"))
 		var/choice = tgui_alert(user, "Are you sure? This will remove all riders from the round.", "Activate Lift", list("I'm Sure", "Abort"))
-		if(choice == "Abort")
+		if(!choice == "I'm Sure")	//Either they chose Abort or they closed the window
 			return FALSE
 	//Used by both the 911 and Admin lines from the if/else---
+	if(!isliving(user))	//Lmao you got killed before pressing it
+		to_chat(user, span_warning("Not while you're dead!"))
+		return FALSE
+	if(!in_range(src, user))
+		to_chat(user, span_warning("You're too far away!"))
+		return FALSE
+	if(lift_starting) //This is here again specifically because they probably spam-opened the notice windows, and I want to scold them
+		to_chat(user, span_warning("Already starting! (Open a FRESH notice window, and maybe dont open so many for the same prompt next time?)"))
+		return FALSE
+
 	message_admins("[ADMIN_LOOKUPFLW(user)] has begun to use the [ADMIN_LOOKUPFLW(src)] - this will remove all riders from the round.")
 	say("SolFed Clearances accepted. Hello, First Responders. Please, take a seat, the FastPass Lift will depart shortly.")
 	locate_riders() //Nice fresh list of people we will remove from reality

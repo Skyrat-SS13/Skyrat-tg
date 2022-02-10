@@ -271,8 +271,8 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	missiondesc += "<BR> <B>2.</B> Protect, ensure, and uphold the rights of Sol Federation citizens on board [station_name()]."
 	missiondesc += "<BR> <B>3.</B> If you believe yourself to be in danger, unable to do the job assigned to you due to a dangerous situation, \
 		or that the 911 call was made in error, you can use the S.W.A.T. Backup Caller in your backpack to vote on calling a S.W.A.T. team to assist in the situation."
-	missiondesc += "<BR> <B>4.</B> When you have finished with your work on the station, use the Beamout Tool in your backpack to beam out yourself \
-		along with anyone you are pulling."
+	missiondesc += "<BR> <B>4.</B> When you have finished with your work on the station, use the FastPass Lift on the Interlink to vacate the area, \
+		along with any criminals you apprehended."
 	to_chat(owner, missiondesc)
 	var/mob/living/greeted_mob = owner.current
 	greeted_mob.playsound_local(greeted_mob, 'sound/effects/families_police.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
@@ -351,8 +351,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 //////////////////////////////
 /// Breach Control MODsuit ///
 /obj/item/mod/control/pre_equipped/atmospheric/breach_control //Just a different kit as 811 wont be raiding Robotics; otherwise the same look (For now???)
-	theme = /datum/mod_theme/atmospheric
-	ui_theme = "neutral"	//Le yellow Sol
+	theme = /datum/mod_theme/atmospheric/breach_control
 	applied_cell = /obj/item/stock_parts/cell/super
 	initial_modules = list(
 		/obj/item/mod/module/storage/large_capacity,
@@ -363,6 +362,10 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		/obj/item/mod/module/tether,
 		/obj/item/mod/module/visor/meson,
 	)
+
+/datum/mod_theme/atmospheric/breach_control	//Implement a unique skin for this eventually
+	ui_theme = "neutral"	//Le yellow Sol
+
 //////////////////////////////
 //////////////////////////////
 
@@ -408,8 +411,8 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	missiondesc += "<BR> <B>3.</B> Use lethal force in the arrest of the suspects if they will not comply, or the station refuses to comply."
 	missiondesc += "<BR> <B>4.</B> If you believe the station is engaging in treason and is firing upon first responders and S.W.A.T. members, use the \
 		Treason Reporter in your backpack to call the military."
-	missiondesc += "<BR> <B>5.</B> When you have finished with your work on the station, use the Beamout Tool in your backpack to beam out yourself \
-		along with anyone you are pulling."
+	missiondesc += "<BR> <B>5.</B> When you have finished with your work on the station, use the FastPass Lift on the Interlink to vacate the area, \
+		along with any criminals you apprehended."
 	to_chat(owner, missiondesc)
 	var/mob/living/greeted_mob = owner.current
 	greeted_mob.playsound_local(greeted_mob, 'sound/effects/families_police.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
@@ -551,7 +554,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 				var/agents_number = min(amount_to_summon, candidates.len)
 				GLOB.solfed_responder_info[summoned_type][SOLFED_AMT] = agents_number
 
-				var/list/spawnpoints = GLOB.emergencyresponseteamspawn
+				var/list/spawnpoints = GLOB.solfed_911_spawn
 				var/index = 0
 				while(agents_number && candidates.len)
 					var/spawn_loc = spawnpoints[index + 1]
