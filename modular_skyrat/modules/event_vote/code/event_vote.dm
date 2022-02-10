@@ -484,7 +484,7 @@
 	var/list/log_data = list("CENSUS DATA LOG [GLOB.round_id]")
 	var/males = 0
 	var/females = 0
-	for(var/mob/living/carbon/human/iterating_human in GLOB.alive_player_list)
+	for(var/mob/living/carbon/human/iterating_human in GLOB.player_list)
 		log_data += "ENTRY: [iterating_human.ckey]"
 		log_data += "Player: [iterating_human.name]"
 		log_data += "Species: [iterating_human.dna.species.name]"
