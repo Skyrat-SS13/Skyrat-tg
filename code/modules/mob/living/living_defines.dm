@@ -4,10 +4,7 @@
 	see_in_dark = 2
 	hud_possible = list(HEALTH_HUD,STATUS_HUD,ANTAG_HUD)
 	pressure_resistance = 10
-<<<<<<< HEAD
-	plane = GAME_PLANE //SKYRAT EDIT CHANGE
-=======
->>>>>>> c5d2b2e51e5 (Fixes layering issues brought by the FoV PR. (#63903))
+	plane = GAME_PLANE //SKYRAT EDIT ADD
 
 	hud_type = /datum/hud/living
 
