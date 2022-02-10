@@ -615,6 +615,8 @@
 	var/tactical_reload = FALSE //We need to do this so that cells don't fall on the ground.
 	var/obj/item/stock_parts/cell/old_cell = cell
 	//reload_timer() // I NEED THE GUN TO TAKE THE RELOAD TIME VAR OF THE CELL AND USE IT FOR THE VARS HERE -ErdinyoBarboza
+	reload_time = inserting_cell.reloading_time_tactical
+	reload_time_slow = inserting_cell.reloading_time
 	if(cell)
 		if(reload_time && !HAS_TRAIT(user, TRAIT_INSTANT_RELOAD)) //This only happens when you're attempting a tactical reload, e.g. there's a mag already inserted.
 			if(display_message)
@@ -642,10 +644,11 @@
 	update_appearance()
 	return TRUE
 
-/// Update reload timers
+/* /// Update reload timers
 /obj/item/gun/microfusion/proc/reload_timer(obj/item/gun/microfusion/microfusion_gun, obj/item/stock_parts/cell/microfusion/inserting_cell)
 	microfusion_gun.reload_time_slow = inserting_cell.reloading_time
 	microfusion_gun.reload_time = inserting_cell.reloading_time_tactical
+	*/
 
 /// Ejecting a cell.
 /obj/item/gun/microfusion/proc/eject_cell(mob/user, display_message = TRUE, put_in_hands = TRUE)
