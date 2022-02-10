@@ -12,6 +12,7 @@ export const Skyrat_SolFedGTFO = (props, context) => {
     lift_blocked,
     block_reason,
     list_of_riders,
+    time_to_go,
   } = data;
   return (
     <Window
@@ -33,7 +34,7 @@ export const Skyrat_SolFedGTFO = (props, context) => {
               />
           <LabeledList>
             <LabeledList.Item label="Status">
-              {lift_blocked ? "Lift is currently locked down by SolFed Remote for the following reason: " + block_reason : lift_starting ? "Lift Starting." : "Lift in Standby."}
+              {lift_blocked ? "Lift is currently locked down by SolFed Remote for the following reason: " + block_reason : lift_starting ? "Lift Starting in: " + {time_to_go} : "Lift in Standby."}
             </LabeledList.Item>
             <LabeledList.Item label="Current Call">
               {current_call ? current_call : "No active Emergency Service calls."}
@@ -59,16 +60,19 @@ export const Skyrat_SolFedGTFO = (props, context) => {
               </Table.Cell>
             </Table.Row>
             TO-DO: ADD LINE PER RIDER
+
+            {list_of_riders.map((listed_rider) => (
             <Table.Row>
               <Table.Cell>
-                TEST LINE A
+                {listed_rider.name}
               </Table.Cell>
               <Table.Cell collapsing textAlign="right">
                 <Box color="label" inline>
-                  TEST LINE B
+                    {listed_rider.rank}
                 </Box>
               </Table.Cell>
             </Table.Row>
+            ))}
           </Table>
         </Section>
       </Window.Content>

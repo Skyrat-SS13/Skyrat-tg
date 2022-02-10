@@ -711,6 +711,9 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	missiondesc += "<BR> <B>2.</B> Use any means necessary to collect the owed funds. The thousand degree knife in your backpack will help in this task."
 	to_chat(owner, missiondesc)
 
+
+///////////////////////////////
+/// (Obsolete) BEAMOUT TOOL ///
 /obj/item/beamout_tool
 	name = "beam-out tool" // TODO, find a way to make this into drop pods cuz that's cooler visually
 	desc = "Use this to begin the lengthy beam-out  process to return to Sol Federation space. It will bring anyone you are pulling with you."
@@ -754,6 +757,8 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	else
 		user.balloon_alert(user, "beam-out cancelled")
 
+///////////////////////////
+/// SOLFED SPAWN POINTS ///
 /obj/effect/landmark/solfed_911
 	name = "911 Response Team"
 	icon_state = "solfed_911"
@@ -763,3 +768,190 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	..()
 	GLOB.solfed_911_spawn += loc
 	return INITIALIZE_HINT_QDEL
+
+///////////////////////
+/// SOLFED FASTPASS ///
+// A combination of a console, linked turfs, and an area (/area/centcom/interlink/solfed), which delete the occupants.
+// -Strictly for use with 911 as their exit from the round on the Interlink-
+/turf/open/floor/plating/elevatorshaft/solfed_gtfo
+	name = "SolFed Fastpass Lift"
+	desc = "Seeing where this thing goes to is restricted to First Responders for good reason. (This will delete you when the lift leaves.)"
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF	//No touchie
+
+/obj/machinery/computer/solfed_gtfo
+	name = "SolFed Fastpass Console"
+	desc = "Seeing where this thing goes to is restricted to First Responders for good reason. (This will delete you when the lift leaves.)"
+	icon_state = "computer"
+	density = TRUE
+	use_power = NO_POWER_USE
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF	//No touchie
+	icon_keyboard = "id_key"
+	icon_screen = "request"
+
+	///Have admins disabled the lift?
+	var/lift_blocked = FALSE
+	///If the lift is disabled, why?
+	var/block_reason
+
+	///The ID for the lift timer. Self-explanatory.
+	var/lifttimer_id
+	///Variable to say if the lift is in the middle of starting or not; used for overrides/cancelling
+	var/lift_starting = FALSE
+	///List of all `/turf/open/floor/plating/elevatorshaft/solfed_gtfo` in the surrounding area; if these ARENT mapped around the console, someone fucked up big.
+	var/list/linked_tiles = list()
+	///List of all riders on the lift; determined by the contents of linked_tiles attached to the console
+	var/list/list_of_riders = list()
+
+/obj/machinery/computer/solfed_gtfo/screwdriver_act(mob/living/user, obj/item/I)
+	to_chat(user, "You shouldn't touch that!")
+	return FALSE
+
+/obj/machinery/computer/solfed_gtfo/emp_act(severity)
+	return FALSE
+
+/obj/machinery/computer/solfed_gtfo/Initialize(mapload, obj/item/circuitboard/C)
+	. = ..()
+	locate_lift_tiles()
+
+///Finds valid tiles to use as the 'lift'
+/obj/machinery/computer/solfed_gtfo/proc/locate_lift_tiles()
+	///This should be an area ONLY containing the lift itself! (/area/centcom/interlink/solfed)
+	var/currentarea = get_area(src.loc)
+	for(var/turf/open/floor/plating/elevatorshaft/solfed_gtfo/lift_tile in currentarea)
+		linked_tiles += lift_tile
+	if(!linked_tiles)	//Shits fucked, SOMEHOW
+		log_game("[src] has no linked tiles to delete users from!")
+		message_admins("[ADMIN_LOOKUPFLW(src)] has no linked tiles to delete users from! Fix this before 911 is called by spawning /turf/open/floor/plating/elevatorshaft/solfed_gtfo around it, then proc-calling locate_lift_tiles()!")
+
+///Finds the riders in aforementioned linked_tiles
+/obj/machinery/computer/solfed_gtfo/proc/locate_riders()
+	list_of_riders = null //I hate this, I need a way to just remove the old ones rather than fully resetting the list
+	for(var/turf/checking_tile in linked_tiles)
+		for(var/mob/living/found_rider in checking_tile.contents)
+			if(found_rider in list_of_riders)	//Dont add dupes
+				continue
+			list_of_riders += found_rider
+
+///We block interaction for non-911, so people don't go deleting eachother
+/obj/machinery/computer/solfed_gtfo/interact(mob/user)
+	. = ..()
+	if(!user.mind.has_antag_datum(/datum/antagonist/ert/request_911))
+		if(user.client.holder)	//Admins need to debug, though they're warned as much
+			to_chat(user, span_admin("Admin, you're given access to this for Debug ONLY. Dont use this console without good reason."))
+			return TRUE
+		say("ACCESS DENIED: SolFed First Responder Clearances Required.")
+		return FALSE
+
+/obj/machinery/computer/solfed_gtfo/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		//Probably a good time to reset linked tiles too, because this is probably the first time its been opened..
+		locate_lift_tiles()
+		ui = new(user, src, "Skyrat_SolFedGTFO", name)
+		ui.open()
+
+/obj/machinery/computer/solfed_gtfo/ui_data(mob/user)
+	var/list/data = list()
+
+	locate_riders()	//This needs to be kept up-to-date
+
+	data["current_call"] = GLOB.call_911_msg	//The current active 911 call (most recent)
+	data["list_of_riders"] = list_of_riders	//List of all the riders
+	data["lift_starting"] = lift_starting //True/False state of if the lift is in the process of leaving
+	data["time_to_go"] = S_TIMER_COOLDOWN_TIMELEFT(src, lifttimer_id)	//Time left before the lift G'sTFO
+	data["lift_blocked"] = lift_blocked //True/False state of if admins blocked the lift from leaving
+	data["block_reason"] = block_reason //String given as to why the lift is blocked from leaving
+	return data
+
+/obj/machinery/computer/solfed_gtfo/ui_act(action, params)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("activate_lift")
+			activate_lift()
+		if("block_lift")
+			block_lift()
+
+/obj/machinery/computer/solfed_gtfo/proc/block_lift(mob/user)
+	user = usr //I hate this, but the UI wont transfer it otherwise and I need it for the client checks
+	if(!user.client.holder)	//Admin only
+		say("ACCESS DENIED: SolFed Overwatch Clearances Required.")
+	if(!lift_blocked)
+		block_reason = tgui_input_text(user, "Provide a reason for the lift-block. Leave blank to default to \"Current Call Incomplete\".", "Lift-Block-O-Matic", max_length = MAX_BROADCAST_LEN)
+		if(!block_reason)
+			block_reason = "Current Call Incomplete"
+		if(lift_starting)	//If this is true, we have a running timer and the lift is starting
+			lift_starting = FALSE	//Just to make sure it properly stops
+			deltimer(lifttimer_id)
+		lift_blocked = TRUE
+		say("SolFed Overwatch Clearances accepted: Lift Blocked, transit unavailable.")
+	else
+		block_reason = null
+		lift_blocked = FALSE
+		say("Lift Unblocked, resuming normal operation.")
+
+///Finds users on the 'lift', gives ample warning as to what will happen, then deletes them all. Effectively, its how 911 will leave the round.
+//If it's already booting up, though, re-calling this will cancel!
+/obj/machinery/computer/solfed_gtfo/proc/activate_lift(mob/user)
+	user = usr //I hate this, but the UI wont transfer it otherwise and I need it for the client checks
+	if(!user.mind.has_antag_datum(/datum/antagonist/ert/request_911))
+		if(!user.client.holder)	//Non-admins seethe
+			say("ACCESS DENIED: SolFed First Responder Clearances Required.")
+			return FALSE
+		//Debug purposes, admins get a few things in here
+		if(lift_blocked)
+			to_chat(user, span_admin("Lift is Blocked, re-enable it first!"))
+			return FALSE
+		if(lift_starting)	//If this is true, we have a running timer and the lift is starting
+			var/choice = tgui_alert(user, "Admin, are you sure you want to cancel the lift?", "Cancel Lift", list("I'm Sure", "Abort"))
+			if(choice == "Abort")
+				return FALSE
+			lift_starting = FALSE
+			deltimer(lifttimer_id)
+			say("SolFed Overwatch Clearances accepted, FastPass lift cancelled.")
+			return
+		if(!isliving(user))
+			to_chat(user, span_admin("Stop trying to debug 'delete all rider' platforms as a ghost. Counter-intuitive as hell. That, or stop trying to remove people from the round."))
+		var/choice = tgui_alert(user, "Admin, are you sure? This will remove all riders from the round. You should only use this for debug purposes.", "Activate Lift", list("I'm Sure", "Abort"))
+		if(choice == "Abort")
+			return FALSE
+	else
+		if(lift_blocked)
+			say("ERROR: Lift has been disabled for the following reason: [block_reason]")
+			return FALSE
+		if(lift_starting)	//If this is true, we have a running timer and the lift is starting
+			say("SolFed Clearances accepted, FastPass lift cancelled.")
+			lift_starting = FALSE
+			deltimer(lifttimer_id)
+			return
+		var/choice = tgui_alert(user, "Are you sure? This will remove all riders from the round.", "Activate Lift", list("I'm Sure", "Abort"))
+		if(choice == "Abort")
+			return FALSE
+	//Used by both the 911 and Admin lines from the if/else---
+	if(!isliving(user))	//Lmao you got killed before pressing it
+		to_chat(user, span_warning("Not while you're dead!"))
+		return FALSE
+	if(!in_range(src, user))
+		to_chat(user, span_warning("You're too far away!"))
+		return FALSE
+	if(lift_starting) //This is here again specifically because they probably spam-opened the notice windows, and I want to scold them
+		to_chat(user, span_warning("Already starting! (Open a FRESH notice window, and maybe dont open so many for the same prompt next time?)"))
+		return FALSE
+
+	message_admins("[ADMIN_LOOKUPFLW(user)] has begun to use the [ADMIN_LOOKUPFLW(src)] - this will remove all riders from the round.")
+	say("SolFed Clearances accepted. Hello, First Responders. Please, take a seat, the FastPass Lift will depart shortly.")
+	locate_riders() //Nice fresh list of people we will remove from reality
+	lift_starting = TRUE
+	lifttimer_id = addtimer(CALLBACK(src, .proc/gtfo), 30 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
+	for(var/mob/living/rider in list_of_riders)
+		to_chat(rider, span_warning("You feel a large pang of anxiety. No going back after this..."))
+
+/obj/machinery/computer/solfed_gtfo/proc/gtfo(var/list/riders_to_gtfo)
+	//If we pass 30 seconds, we've officially activated the lift. Delete everyone on the tile.
+	lift_starting = FALSE
+	deltimer(lifttimer_id)
+	priority_announce("Holy Shit it worked this far. Now finish it Orion.")
+	for(var/mob/living/rider in riders_to_gtfo)
+		to_chat(rider, span_warning("You feel a large pang of anxiety. No going back after this..."))
