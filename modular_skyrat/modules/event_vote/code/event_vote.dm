@@ -480,6 +480,31 @@
 			message_admins("[key_name_admin(usr)] has rescheduled the LOW CHAOS event system.")
 			return
 
+/proc/collate_census_data()
+	var/list/log_data = list("CENSUS DATA LOG [GLOB.round_id]")
+	var/males = 0
+	var/females = 0
+	for(var/mob/living/carbon/human/iterating_human in GLOB.alive_player_list)
+		log_data += "ENTRY: [iterating_human.ckey]"
+		log_data += "Player: [iterating_human.name]"
+		log_data += "Species: [iterating_human.dna.species.name]"
+		log_data += "Custom Species: [iterating_human.dna.features["custom_species"]]"
+		log_data += "Sex: [iterating_human.gender]"
+		log_data += "Age: [iterating_human.age]"
+		log_data += "Body Type: [iterating_human.body_type]"
+		log_data += "Penis: [iterating_human.dna.mutant_bodyparts["penis"]["name"]"
+		log_data += "Vagina: [iterating_human.dna.mutant_bodyparts["vagina"]["name"]"
+		log_data += "Breasts: [iterating_human.dna.mutant_bodyparts["breasts"]["name"]"
+		log_data += "Body size: [iterating_human.dna.features["body_size"]]"
+		log_data += "END ENTRY"
+
+		if(iterating_human.gender == MALE)
+			males++
+		else
+			females++
+
+
+	log_event_vote(log_data.Join("\n"))
 
 // Panel for admins
 /client/proc/event_panel()
