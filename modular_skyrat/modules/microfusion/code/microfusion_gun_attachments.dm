@@ -156,7 +156,7 @@ Lasers set the target on fire.
 	icon_state = "attachment_superheat"
 	attachment_overlay_icon_state = "attachment_superheat"
 	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter, /obj/item/microfusion_gun_attachment/hellfire)
-	heat_addition = 70
+	heat_addition = 90
 	slot = GUN_SLOT_BARREL
 	var/projectile_override =/obj/projectile/beam/laser/microfusion/scatter
 
@@ -221,7 +221,7 @@ The gun can fire volleys of shots.
 	/// The burst to add to the gun.
 	var/burst_to_add = 1
 	/// The delay to add to the firing.
-	var/delay_to_add = 2
+	var/delay_to_add = 5
 	var/projectile_override =/obj/projectile/beam/laser/microfusion/repeater
 
 /obj/item/microfusion_gun_attachment/repeater/run_attachment(obj/item/gun/microfusion/microfusion_gun)
@@ -261,7 +261,7 @@ The gun can fire volleys of shots that penetrate armor.
 	/// The burst to add to the gun.
 	var/burst_to_add = 1
 	/// The delay to add to the firing.
-	var/delay_to_add = 2
+	var/delay_to_add = 5
 	var/projectile_override =/obj/projectile/beam/laser/microfusion/penetrator
 	power_usage = 80 // A price to pay to penetrate through armor
 
@@ -672,7 +672,7 @@ The gun fires fast heavy lasers but takes a long time to fire.
 	attachment_overlay_icon_state = "attachment_lance"
 	heat_addition = 150
 	power_usage = 200
-	var/added_fire_delay = 40
+	var/added_fire_delay = 25
 
 /obj/item/microfusion_gun_attachment/lance/examine(mob/user)
 	. = ..()

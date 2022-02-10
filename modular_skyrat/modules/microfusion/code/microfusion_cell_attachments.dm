@@ -130,3 +130,34 @@ If the cell isn't stabilised by a stabiliser, it may emit a radiation pulse.
 		if(!microfusion_cell.stabilised && DT_PROB(1, delta_time))
 			radiation_pulse(src, 1, RAD_MEDIUM_INSULATION)
 
+
+
+/*
+RELOAD GRIP ATTACHMENT
+
+Makes normal reloads easier
+*/
+/obj/item/microfusion_cell_attachment/reloader
+	name = "reloading handle microfusion cell attachment"
+	desc = "An aftermarket modification that makes the process of loading a MF cell far easier."
+	icon_state = "attachment_reloader"
+	attachment_overlay_icon_state = "microfusion_reloader"
+
+/obj/item/microfusion_cell_attachment/reloader/add_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
+	. = ..()
+	microfusion_cell.reloading_time = 2
+
+/obj/item/microfusion_cell_attachment/reloader/remove_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
+	. = ..()
+	microfusion_cell.reloading_time = microfusion_cell?.reloading_time
+
+/*
+TACTICAL GRIP ATTACHMENT
+
+Makes tactical reloads easier
+*/
+/obj/item/microfusion_cell_attachment/tactical
+	name = "self-charging microfusion cell attachment"
+	desc = "While microfusion cells are normally shipped without their fuel source, this attachment comes with fifteen grams of hydrogen fuel; allowing the cell to sustain a small, yet active reaction to self-charge. These can keep going for weeks to months in ideal conditions, making them more than enough for most campaigns."
+	icon_state = "attachment_selfcharge"
+	attachment_overlay_icon_state = "microfusion_selfcharge"
