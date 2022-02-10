@@ -492,9 +492,9 @@
 		log_data += "Sex: [iterating_human.gender]"
 		log_data += "Age: [iterating_human.age]"
 		log_data += "Body Type: [iterating_human.body_type]"
-		log_data += "Penis: [iterating_human.dna.mutant_bodyparts["penis"]["name"]"
-		log_data += "Vagina: [iterating_human.dna.mutant_bodyparts["vagina"]["name"]"
-		log_data += "Breasts: [iterating_human.dna.mutant_bodyparts["breasts"]["name"]"
+		log_data += "Penis: [iterating_human.dna.mutant_bodyparts["penis"]["name"]]"
+		log_data += "Vagina: [iterating_human.dna.mutant_bodyparts["vagina"]["name"]]"
+		log_data += "Breasts: [iterating_human.dna.mutant_bodyparts["breasts"]["name"]]"
 		log_data += "Body size: [iterating_human.dna.features["body_size"]]"
 		log_data += "END ENTRY"
 
@@ -503,6 +503,7 @@
 		else
 			females++
 
+	log_data += "CENSUS END: MALES: [males] FEMALES [females]"
 
 	log_event_vote(log_data.Join("\n"))
 
