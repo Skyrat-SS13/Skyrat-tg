@@ -191,12 +191,6 @@
 //////////////////////////////////////////////////////////
 // Override block to change the standard chair behavior //
 //////////////////////////////////////////////////////////
-// Object cannot rotate
-/obj/structure/chair/milking_machine/can_be_rotated(mob/user)
-	return FALSE
-// User cannot rotate the object
-/obj/structure/chair/milking_machine/can_user_rotate(mob/user)
-	return FALSE
 // Another plug to disable rotation
 /obj/structure/chair/milking_machine/attack_tk(mob/user)
 	return FALSE

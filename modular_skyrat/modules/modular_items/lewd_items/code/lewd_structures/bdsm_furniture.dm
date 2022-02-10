@@ -115,12 +115,6 @@
 		user_unbuckle_mob(buckled_mob, user)
 
 
-// Object cannot rotate
-/obj/structure/chair/x_stand/can_be_rotated(mob/user)
-	return FALSE
-// User cannot rotate the object
-/obj/structure/chair/x_stand/can_user_rotate(mob/user)
-	return FALSE
 // Another plug to disable rotation
 /obj/structure/chair/x_stand/attack_tk(mob/user)
 	return FALSE
