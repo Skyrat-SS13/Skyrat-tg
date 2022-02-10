@@ -101,7 +101,7 @@
 	desc = "Stabilises the internal fusion reaction of microfusion cells."
 	id = "microfusion_cell_attachment_stabiliser"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/plasma = 1000)
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/plasma = 1000, /datum/material/silver = 1000)
 	build_path = /obj/item/microfusion_cell_attachment/stabiliser
 	category = list("Misc", "Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
@@ -111,7 +111,7 @@
 	desc = "An attachment for microfusion cells that increases MF capacity."
 	id = "microfusion_cell_attachment_overcapacity"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/plasma = 500, /datum/material/gold = 500)
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/plasma = 1000, /datum/material/gold = 2000)
 	build_path = /obj/item/microfusion_cell_attachment/overcapacity
 	category = list("Misc", "Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
@@ -121,7 +121,7 @@
 	desc = "Contains a small amount of infinitely decaying nuclear material, causing the fusion reaction to be self sustaining. WARNING: May cause radiation burns if not stabilised."
 	id = "microfusion_cell_attachment_selfcharging"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/uranium = 1000)
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/uranium = 5000, /datum/material/titanium = 5000, /datum/material/bluespace = 2500)
 	build_path = /obj/item/microfusion_cell_attachment/selfcharging
 	category = list("Misc", "Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
@@ -178,12 +178,12 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/microfusion_gun_attachment_honk_camo
-	name = "Bananium Camo Microfusion Frame"
-	desc = "A frame modification for the MCR-01, changing the color of the gun to a slick blood red."
-	id = "microfusion_gun_attachment_syndi_camo"
+	name = "Bananium Microfusion Frame"
+	desc = "A frame modification for the MCR-01, plating the gun in bananium."
+	id = "microfusion_gun_attachment_honk_camo"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/titanium = 500)
-	build_path = /obj/item/microfusion_gun_attachment/syndi_camo
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/bananium = 500)
+	build_path = /obj/item/microfusion_gun_attachment/honk_camo
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
