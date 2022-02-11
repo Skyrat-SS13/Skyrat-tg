@@ -34,9 +34,9 @@ These are basically advanced cells.
 	/// Do we have the self charging upgrade?
 	var/self_charging = FALSE
 	/// We use this to edit the reload time of the gun
-	var/reloading_time = 4
+	var/reloading_time = 4 SECONDS
 	/// We use this to edit the tactical reload time of the gun
-	var/reloading_time_tactical = 6
+	var/reloading_time_tactical = 6 SECONDS
 
 /obj/item/stock_parts/cell
 	/// Is this cell stabilised? (used in microfusion guns)
