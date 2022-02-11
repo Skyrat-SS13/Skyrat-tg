@@ -162,10 +162,10 @@ Makes tactical reloads easier
 	icon_state = "attachment_tactical"
 	attachment_overlay_icon_state = "microfusion_tactical
 
-/obj/item/microfusion_cell_attachment/reloader/add_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
+/obj/item/microfusion_cell_attachment/tactical/add_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	. = ..()
 	microfusion_cell.reloading_time_tactical = 3 SECONDS
 
-/obj/item/microfusion_cell_attachment/reloader/remove_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
+/obj/item/microfusion_cell_attachment/tactical/remove_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	. = ..()
 	microfusion_cell.reloading_time_tactical = microfusion_cell?.reloading_time_tactical
