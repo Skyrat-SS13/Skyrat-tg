@@ -50,6 +50,20 @@
 //////////////////////////// Weapons or Ammo /////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
+/datum/supply_pack/goody/wt550_single
+	name = "WT-550 Auto Rifle Single-Pack"
+	desc = "Contains one high-powered, semiautomatic rifles chambered in 4.6x30mm." // "high-powered" lol yea right
+	cost = PAYCHECK_HARD * 20
+	access_view = ACCESS_ARMORY
+	contains = list(/obj/item/gun/ballistic/automatic/wt550)
+
+/datum/supply_pack/goody/wt550ammo_single
+	name = "WT-550 Auto Rifle Ammo Single-Pack"
+	desc = "Contains a 20-round magazine for the WT-550 Auto Rifle. Each magazine is designed to facilitate rapid tactical reloads."
+	cost = PAYCHECK_HARD * 6
+	access_view = ACCESS_ARMORY
+	contains = list(/obj/item/ammo_box/magazine/wt550m9)
+
 /datum/supply_pack/goody/makarov
 	name = "Makarov Self Defense Pistol"
 	desc = "A small, slow firing and low capacity pistol, but hey, it's better then a crowbar, right? (Does not include a weapons permit.)"
@@ -59,9 +73,17 @@
 
 /datum/supply_pack/goody/pepperball
 	name = "PepperBall Self Defense Weapon"
-	desc = "A 'state of the art' self defense weapon, firing balls of condensed pepperspray, don't aim for the face."
+	desc = "A 'state of the art' self defense weapon, firing balls of condensed pepperspray, don't aim for the face. Weapons permit not included."
 	cost = PAYCHECK_MEDIUM * 17
 	contains = list(/obj/item/storage/box/gunset/pepperball)
+
+/datum/supply_pack/goody/pepperball_ammo
+	name = "PepperBall Ammo Resupply"
+	desc = "An ammobox and a few spare magazines for a PepperBall self defense weapon, in case you run out."
+	cost = PAYCHECK_MEDIUM * 6
+	contains = list(/obj/item/ammo_box/advanced/pepperballs,
+					/obj/item/ammo_box/magazine/pepperball,
+					/obj/item/ammo_box/magazine/pepperball)
 
 /datum/supply_pack/goody/gunmaint
 	name = "Gun Maintenance Kits"

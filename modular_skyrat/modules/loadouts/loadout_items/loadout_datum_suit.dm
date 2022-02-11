@@ -423,7 +423,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/coat_med
 	name = "Medical winter coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/medical
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR) // Reserve it to Medical Doctors and their boss, the Chief Medical Officer
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_ORDERLY) // Reserve it to Medical Doctors, Orderlies, and their boss, the Chief Medical Officer
 
 /datum/loadout_item/suit/coat_paramedic
 	name = "Paramedic winter coat"
@@ -438,12 +438,12 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/coat_sci
 	name = "Science winter coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/science
-	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_VANGUARD_OPERATIVE) // Reserve it to the Science Departement
+	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_VANGUARD_OPERATIVE, JOB_SCIENCE_GUARD) // Reserve it to the Science Departement
 
 /datum/loadout_item/suit/coat_eng
 	name = "Engineering winter coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/engineering
-	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER) // Reserve it to Station Engineers and their boss, the Chief Engineer
+	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, JOB_ENGINEERING_GUARD) // Reserve it to Station Engineers, Engineering Guards, and their boss, the Chief Engineer
 
 /datum/loadout_item/suit/coat_atmos
 	name = "Atmospherics winter coat"
@@ -463,7 +463,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/coat_cargo
 	name = "Cargo winter coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/cargo
-	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN) // Reserve it to Cargo Techs and their boss, the Quartermaster
+	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_CUSTOMS_AGENT) // Reserve it to Cargo Techs, Customs Agentes, and their boss, the Quartermaster
 
 /datum/loadout_item/suit/coat_miner
 	name = "Mining winter coat"
@@ -473,7 +473,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/navybluejacketofficer
 	name = "Security Officer's Navy Blue Jacket"
 	item_path = /obj/item/clothing/suit/armor/navyblue
-	restricted_roles = list(JOB_SECURITY_OFFICER,JOB_SECURITY_MEDIC,JOB_SECURITY_SERGEANT,JOB_HEAD_OF_SECURITY, JOB_WARDEN) // I aint making a medic one, maybe i'll add some rank thing from cm or civ for it
+	restricted_roles = list(JOB_SECURITY_OFFICER,JOB_SECURITY_MEDIC ,JOB_HEAD_OF_SECURITY, JOB_WARDEN) // I aint making a medic one, maybe i'll add some rank thing from cm or civ for it
 
 /datum/loadout_item/suit/navybluejacketwarden
 	name = "Warden's Navy Blue Jacket"
@@ -483,53 +483,53 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/security_jacket
 	name = "Security Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/sec
-	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_SECURITY_SERGEANT) //Not giving this one to CDOs or COs because it's actually better than the one they spawn with
+	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC) //Not giving this one to COs because it's actually better than the one they spawn with
 
 /datum/loadout_item/suit/cossak/sec
 	name = "Ukrainian Security Jacket"
 	item_path = /obj/item/clothing/suit/armor/cossack/sec
-	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_SECURITY_SERGEANT, JOB_CIVIL_DISPUTES_OFFICER, JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/suit/brit
 	name = "High Vis Armored Vest"
 	item_path = /obj/item/clothing/suit/toggle/brit/sec
-	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_SECURITY_SERGEANT, JOB_CIVIL_DISPUTES_OFFICER, JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/suit/british_jacket
 	name = "Peacekeeper Officer Coat"
 	item_path = /obj/item/clothing/suit/british_officer
-	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_WARDEN,JOB_DETECTIVE,JOB_SECURITY_SERGEANT)
+	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_WARDEN, JOB_DETECTIVE)
 
 /datum/loadout_item/suit/engi_jacket
 	name = "Engineering Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/engi
-	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN)
+	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_ENGINEERING_GUARD)
 
 /datum/loadout_item/suit/sci_jacket
 	name = "Science Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/sci
-	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_VANGUARD_OPERATIVE)
+	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_VANGUARD_OPERATIVE, JOB_SCIENCE_GUARD)
 
 /datum/loadout_item/suit/med_jacket
 	name = "Medbay Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/med
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_VIROLOGIST)
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_VIROLOGIST, JOB_ORDERLY)
 
 /datum/loadout_item/suit/supply_jacket
 	name = "Supply Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/supply
-	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, "Miner")
+	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT)
 
 /datum/loadout_item/suit/supply_gorka_jacket
 	name = "Supply Gorka Jacket"
 	item_path = /obj/item/clothing/suit/gorka/supply
-	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, "Miner")
+	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT)
 
 
 /datum/loadout_item/suit/labcoat_parared
 	name = "Red Paramedic Labcoat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/para_red
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_PARAMEDIC,JOB_SECURITY_MEDIC) // its a medic jacket anyway screw you
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_PARAMEDIC, JOB_SECURITY_MEDIC) // its a medic jacket anyway screw you
 
 /datum/loadout_item/suit/labcoat_highvis
 	name = "High-Vis Labcoat"
