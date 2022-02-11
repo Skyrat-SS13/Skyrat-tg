@@ -26,9 +26,9 @@
 					//neck
 					/obj/item/clothing/neck/kink_collar = 3,
 					/obj/item/clothing/neck/human_petcollar = 8,
-					/obj/item/clothing/neck/human_petcollar/locked/cowcollar = 3,
-					/obj/item/clothing/neck/human_petcollar/locked/bellcollar = 5,
-					/obj/item/clothing/neck/human_petcollar/locked/spikecollar = 3,
+					/obj/item/clothing/neck/human_petcollar/locked/cow = 8,
+					/obj/item/clothing/neck/human_petcollar/locked/bell = 8,
+					/obj/item/clothing/neck/human_petcollar/locked/spike = 8,
 					/obj/item/clothing/neck/human_petcollar/locked/cross = 3,
 					/obj/item/clothing/neck/human_petcollar/choker = 4,
 					//torso clothing
@@ -67,7 +67,7 @@
 	premium = list(
 					/obj/item/clothing/under/dress/corset = 4,
 					/obj/item/clothing/under/pants/chaps = 4,
-					/obj/item/clothing/neck/human_petcollar/locked/holocollar = 3
+					/obj/item/clothing/neck/human_petcollar/locked/holo = 3
 					)
 
 	refill_canister = /obj/item/vending_refill/lustwish
