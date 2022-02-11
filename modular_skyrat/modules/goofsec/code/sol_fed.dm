@@ -826,7 +826,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 ///Finds the riders in aforementioned linked_tiles
 /obj/machinery/computer/solfed_gtfo/proc/locate_riders()
-	list_of_riders = null //I hate this, I need a way to just remove the old ones rather than fully resetting the list
+	list_of_riders = null //I need a way to just remove the old ones rather than fully resetting the list, and this way sucks :(
 	for(var/turf/checking_tile in linked_tiles)
 		for(var/mob/living/found_rider in checking_tile.contents)
 			if(found_rider in list_of_riders)	//Dont add dupes
@@ -854,12 +854,13 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 /obj/machinery/computer/solfed_gtfo/ui_data(mob/user)
 	var/list/data = list()
 
-	locate_riders()	//This needs to be kept up-to-date
-
 	data["current_call"] = GLOB.call_911_msg	//The current active 911 call (most recent)
-	data["list_of_riders"] = list_of_riders	//List of all the riders
+
 	data["lift_starting"] = lift_starting //True/False state of if the lift is in the process of leaving
-	data["time_to_go"] = round((lifttimer - world.time), 100)	//Time left before the lift G'sTFO, mathed into Seconds
+	if(lifttimer < world.time)	//Technically it goes a bit into negative seconds, so we just wanna tidy that up
+		data["time_to_go"] = "Launching.."
+	else
+		data["time_to_go"] = DisplayTimeText(lifttimer - world.time, round_seconds_to = 1)	//Time left before the lift G'sTFO, in Seconds
 	data["lift_blocked"] = lift_blocked //True/False state of if admins blocked the lift from leaving
 	data["block_reason"] = block_reason //String given as to why the lift is blocked from leaving
 	return data
@@ -943,7 +944,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 	message_admins("[ADMIN_LOOKUPFLW(user)] has begun to use the [ADMIN_LOOKUPFLW(src)] - this will remove all riders from the round.")
 	say("SolFed Clearances accepted. Hello, First Responders. Please, take a seat, the FastPass Lift will depart shortly.")
-	locate_riders() //Nice fresh list of people we will remove from reality
+	locate_riders() //Nice fresh list of people we will remove from reality; luckily they have 30 seconds to.. not have that happen
 	lift_starting = TRUE
 	lifttimer = (world.time + 30 SECONDS)
 	for(var/mob/living/rider in list_of_riders)
@@ -960,9 +961,9 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	//If we pass 30 seconds, we've officially activated the lift. Delete everyone on the tile.
 	lift_starting = FALSE
 	lifttimer = null
-	priority_announce("Holy Shit it worked this far. Now finish it Orion.")
 	for(var/mob/living/rider in riders_to_gtfo)
 		to_chat(rider, span_warning("You feel the lift start to whirr, before suddenly accelerating upwards!"))
 		if(!rider.buckled)
 			to_chat(rider, span_warning("You're thrown against the floor!"))
 			rider.Paralyze(20)	//Ow
+		qdel(rider)	//Testing version, will be more thorough eventually
