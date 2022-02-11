@@ -854,13 +854,12 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 /obj/machinery/computer/solfed_gtfo/ui_data(mob/user)
 	var/list/data = list()
 
-	data["current_call"] = GLOB.call_911_msg	//The current active 911 call (most recent)
+	locate_riders()	//This needs to be kept up-to-date
 
+	data["current_call"] = GLOB.call_911_msg	//The current active 911 call (most recent)
+	data["list_of_riders"] = list_of_riders	//List of all the riders
 	data["lift_starting"] = lift_starting //True/False state of if the lift is in the process of leaving
-	if(lifttimer < world.time)	//Technically it goes a bit into negative seconds, so we just wanna tidy that up
-		data["time_to_go"] = "Launching.."
-	else
-		data["time_to_go"] = DisplayTimeText(lifttimer - world.time, round_seconds_to = 1)	//Time left before the lift G'sTFO, in Seconds
+	data["time_to_go"] = round((lifttimer - world.time), 100)	//Time left before the lift G'sTFO, mathed into Seconds
 	data["lift_blocked"] = lift_blocked //True/False state of if admins blocked the lift from leaving
 	data["block_reason"] = block_reason //String given as to why the lift is blocked from leaving
 	return data
@@ -944,7 +943,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 	message_admins("[ADMIN_LOOKUPFLW(user)] has begun to use the [ADMIN_LOOKUPFLW(src)] - this will remove all riders from the round.")
 	say("SolFed Clearances accepted. Hello, First Responders. Please, take a seat, the FastPass Lift will depart shortly.")
-	locate_riders() //Nice fresh list of people we will remove from reality; luckily they have 30 seconds to.. not have that happen
+	locate_riders() //Nice fresh list of people we will remove from reality
 	lift_starting = TRUE
 	lifttimer = (world.time + 30 SECONDS)
 	for(var/mob/living/rider in list_of_riders)
