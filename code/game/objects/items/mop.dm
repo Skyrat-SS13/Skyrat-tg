@@ -14,26 +14,17 @@
 	attack_verb_simple = list("mop", "bash", "bludgeon", "whack")
 	resistance_flags = FLAMMABLE
 	var/mopcount = 0
-<<<<<<< HEAD
-	var/mopcap = 50 //SKYRAT EDIT CHANGE
-	var/mopspeed = 15
-=======
 	///Maximum volume of reagents it can hold.
-	var/max_reagent_volume = 15
+	var/max_reagent_volume = 50 // SKYRAT EDIT - ORIGINAL: 15
 	var/mopspeed = 1.5 SECONDS
->>>>>>> a3a40e2994f (Gives Omega soap 800 uses instead of 301 (#64813))
 	force_string = "robust... against germs"
 	var/insertable = TRUE
 
 /obj/item/mop/Initialize(mapload)
 	. = ..()
-<<<<<<< HEAD
-	create_reagents(mopcap)
+	create_reagents(max_reagent_volume)
 	//SKYRAT EDIT ADDITION
 	AddElement(/datum/element/liquids_interaction, on_interaction_callback = /obj/item/mop/.proc/attack_on_liquids_turf)
-=======
-	create_reagents(max_reagent_volume)
->>>>>>> a3a40e2994f (Gives Omega soap 800 uses instead of 301 (#64813))
 
 /obj/item/mop/proc/attack_on_liquids_turf(obj/item/mop/the_mop, turf/T, mob/user, obj/effect/abstract/liquid_turf/liquids)
 	var/free_space = the_mop.reagents.maximum_volume - the_mop.reagents.total_volume
@@ -108,11 +99,7 @@
 /obj/item/mop/advanced
 	desc = "The most advanced tool in a custodian's arsenal, complete with a condenser for self-wetting! Just think of all the viscera you will clean up with this! Due to the self-wetting technology, it proves very inefficient for cleaning up spills." //SKYRAT EDIT
 	name = "advanced mop"
-<<<<<<< HEAD
-	mopcap = 100 //SKYRAT EDIT CHANGE
-=======
-	max_reagent_volume = 10
->>>>>>> a3a40e2994f (Gives Omega soap 800 uses instead of 301 (#64813))
+	max_reagent_volume = 100 // SKYRAT EDIT - ORIGINAL: 10
 	icon_state = "advmop"
 	inhand_icon_state = "mop"
 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
