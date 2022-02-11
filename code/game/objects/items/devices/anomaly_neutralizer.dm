@@ -11,9 +11,6 @@
 	slot_flags = ITEM_SLOT_BELT
 	item_flags = NOBLUDGEON
 
-<<<<<<< HEAD
-/obj/item/anomaly_neutralizer/afterattack(atom/target, mob/living/user, proximity) //SKYRAT EDIT - MOB/LIVING
-=======
 /obj/item/anomaly_neutralizer/Initialize(mapload)
 	. = ..()
 
@@ -23,8 +20,7 @@
 		on_clear_callback = CALLBACK(src, .proc/on_use), \
 		effects_we_clear = list(/obj/effect/visible_heretic_influence))
 
-/obj/item/anomaly_neutralizer/afterattack(atom/target, mob/user, proximity)
->>>>>>> dd747fcc5a4 (BIDDLE HERETICS: Heretic revamp! (Shadow Realm, UI Overhaul, Refactoring, and Murderhoboing Tweaks)  (#64658))
+/obj/item/anomaly_neutralizer/afterattack(atom/target, mob/living/user, proximity) //SKYRAT EDIT - MOB/LIVING
 	..()
 	if(!proximity || !target)
 		return
@@ -33,7 +29,6 @@
 		to_chat(user, span_notice("The circuitry of [src] fries from the strain of neutralizing [A]!"))
 		A.anomalyNeutralize()
 		qdel(src)
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITON START - CME
 	if(istype(target, /obj/effect/cme))
 		var/obj/effect/cme/C = target
@@ -45,7 +40,6 @@
 		C.anomalyNeutralize()
 		qdel(src)
 	//SKYRAT EDIT END
-=======
 
 /*
  * Callback for the effect remover component to delete after use.
@@ -53,4 +47,3 @@
 /obj/item/anomaly_neutralizer/proc/on_use(obj/effect/target, mob/living/user)
 	do_sparks(3, FALSE, user)
 	qdel(src)
->>>>>>> dd747fcc5a4 (BIDDLE HERETICS: Heretic revamp! (Shadow Realm, UI Overhaul, Refactoring, and Murderhoboing Tweaks)  (#64658))
