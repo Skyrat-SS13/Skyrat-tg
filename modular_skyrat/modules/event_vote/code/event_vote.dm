@@ -486,7 +486,7 @@
 	var/females = 0
 	for(var/mob/living/carbon/human/iterating_human in GLOB.player_list)
 		log_data += "ENTRY: [iterating_human.ckey]"
-		log_data += "Player: [iterating_human.name]"
+		log_data += "Name: [iterating_human.name]"
 		log_data += "Species: [iterating_human.dna.species.name]"
 		log_data += "Custom Species: [iterating_human.dna.features["custom_species"]]"
 		log_data += "Sex: [iterating_human.gender]"
