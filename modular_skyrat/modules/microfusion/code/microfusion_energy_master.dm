@@ -44,9 +44,9 @@
 	/// The microfusion lens used for generating the beams.
 	var/obj/item/ammo_casing/energy/laser/microfusion/microfusion_lens
 	/// The time it takes for someone to (tactically) reload this gun. In deciseconds.
-	var/reload_time = 6 SECONDS
+	var/reload_time = 5 SECONDS
 	/// The time it takes for someone to normally reload this gun. In deciseconds.
-	var/reload_time_slow = 4 SECONDS
+	var/reload_time_slow = 3 SECONDS
 	/// The sound played when you insert a cell.
 	var/sound_cell_insert = 'modular_skyrat/modules/microfusion/sound/mag_insert.ogg'
 	/// Should the insertion sound played vary?
@@ -235,6 +235,7 @@
 	if (.)
 		return
 	if(istype(attacking_item, base_cell_type))
+		reload_timer(user, attacking_item)
 		insert_cell(user, attacking_item)
 	if(istype(attacking_item, /obj/item/microfusion_gun_attachment))
 		add_attachment(attacking_item, user)
@@ -614,9 +615,6 @@
 /obj/item/gun/microfusion/proc/insert_cell(mob/user, obj/item/stock_parts/cell/microfusion/inserting_cell, display_message = TRUE)
 	var/tactical_reload = FALSE //We need to do this so that cells don't fall on the ground.
 	var/obj/item/stock_parts/cell/old_cell = cell
-	//reload_timer() // I NEED THE GUN TO TAKE THE RELOAD TIME VAR OF THE CELL AND USE IT FOR THE VARS HERE -ErdinyoBarboza
-	reload_time = inserting_cell.reloading_time_tactical
-	reload_time_slow = inserting_cell.reloading_time
 	if(cell)
 		if(reload_time && !HAS_TRAIT(user, TRAIT_INSTANT_RELOAD)) //This only happens when you're attempting a tactical reload, e.g. there's a mag already inserted.
 			if(display_message)
@@ -644,11 +642,10 @@
 	update_appearance()
 	return TRUE
 
-/* /// Update reload timers
-/obj/item/gun/microfusion/proc/reload_timer(obj/item/gun/microfusion/microfusion_gun, obj/item/stock_parts/cell/microfusion/inserting_cell)
-	microfusion_gun.reload_time_slow = inserting_cell.reloading_time
-	microfusion_gun.reload_time = inserting_cell.reloading_time_tactical
-	*/
+ /// Update reload timers
+/obj/item/gun/microfusion/proc/reload_timer(mob/user, obj/item/stock_parts/cell/microfusion/inserting_cell)
+	reload_time_slow = inserting_cell.reloading_time
+	reload_time = inserting_cell.reloading_time_tactical
 
 /// Ejecting a cell.
 /obj/item/gun/microfusion/proc/eject_cell(mob/user, display_message = TRUE, put_in_hands = TRUE)
@@ -664,6 +661,7 @@
 	old_cell.update_appearance()
 	cell.parent_gun = null
 	cell = null
+	// RESET THE RELOAD TIMER WHEN CELL IS OUT
 	reload_time = 6
 	reload_time_slow = 4
 	update_appearance()
