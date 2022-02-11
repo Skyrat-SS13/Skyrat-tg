@@ -259,6 +259,7 @@
 	var/sparkle_path = /obj/effect/temp_visual/gravpush
 	var/anti_magic_check = TRUE
 	var/repulse_force = MOVE_FORCE_EXTREMELY_STRONG
+	var/floor_slam_stun = 100 //SKYRAT EDIT
 
 	action_icon_state = "repulse"
 
@@ -286,7 +287,7 @@
 		if(distfromcaster == 0)
 			if(isliving(AM))
 				var/mob/living/M = AM
-				M.Paralyze(100)
+				M.Paralyze(floor_slam_stun) // SKYRAT EDIT
 				M.adjustBruteLoss(5)
 				to_chat(M, span_userdanger("You're slammed into the floor by [user]!"))
 		else
