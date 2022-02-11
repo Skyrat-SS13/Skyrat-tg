@@ -108,6 +108,17 @@
 	surplus = 0
 	progression_minimum = 10 MINUTES
 
+/datum/uplink_item/race_restricted/tribal_claw
+	name = "Old Tribal Scroll"
+	desc = "We found this scroll in a abandoned lizard settlement of the Knoises clan. \
+			It teaches you how to use your claws and tail to gain an advantage in combat, \
+			don't buy this unless you are a lizard or plan to give it to one as only they can understand the ancient draconic words."
+	item = /obj/item/book/granter/martial/tribal_claw
+	cost = 13
+	surplus = 0
+	restricted_species = list(SPECIES_LIZARD, SPECIES_UNATHI, SPECIES_LIZARD_ASH)
+	progression_minimum = 25 MINUTES
+
 //STEALTHY TOOOLS
 /datum/uplink_item/stealthy_tools/infiltratormask
 	name = "Voice-Muffling Balaclava"
