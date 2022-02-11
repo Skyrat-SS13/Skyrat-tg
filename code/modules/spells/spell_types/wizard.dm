@@ -259,7 +259,7 @@
 	var/sparkle_path = /obj/effect/temp_visual/gravpush
 	var/anti_magic_check = TRUE
 	var/repulse_force = MOVE_FORCE_EXTREMELY_STRONG
-	var/floor_slam_stun = 100 //SKYRAT EDIT
+	var/floor_slam_stun = 10 SECONDS //SKYRAT EDIT
 
 	action_icon_state = "repulse"
 
