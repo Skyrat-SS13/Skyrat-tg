@@ -793,8 +793,9 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	///If the lift is disabled, why?
 	var/block_reason
 
-	///The ID for the lift timer. Self-explanatory.
-	var/lifttimer_id
+	///World.time the timer began at; when its 30 seconds from said time, process() will trigger gtfo()
+	//I hate this, but its the only way I found that lets me list the time remaining
+	var/lifttimer
 	///Variable to say if the lift is in the middle of starting or not; used for overrides/cancelling
 	var/lift_starting = FALSE
 	///List of all `/turf/open/floor/plating/elevatorshaft/solfed_gtfo` in the surrounding area; if these ARENT mapped around the console, someone fucked up big.
@@ -858,7 +859,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	data["current_call"] = GLOB.call_911_msg	//The current active 911 call (most recent)
 	data["list_of_riders"] = list_of_riders	//List of all the riders
 	data["lift_starting"] = lift_starting //True/False state of if the lift is in the process of leaving
-	data["time_to_go"] = S_TIMER_COOLDOWN_TIMELEFT(src, lifttimer_id)	//Time left before the lift G'sTFO
+	data["time_to_go"] = round((lifttimer - world.time), 100)	//Time left before the lift G'sTFO, mathed into Seconds
 	data["lift_blocked"] = lift_blocked //True/False state of if admins blocked the lift from leaving
 	data["block_reason"] = block_reason //String given as to why the lift is blocked from leaving
 	return data
@@ -884,7 +885,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			block_reason = "Current Call Incomplete"
 		if(lift_starting)	//If this is true, we have a running timer and the lift is starting
 			lift_starting = FALSE	//Just to make sure it properly stops
-			deltimer(lifttimer_id)
+			lifttimer = null
 		lift_blocked = TRUE
 		say("SolFed Overwatch Clearances accepted: Lift Blocked, transit unavailable.")
 	else
@@ -909,7 +910,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			if(choice == "Abort")
 				return FALSE
 			lift_starting = FALSE
-			deltimer(lifttimer_id)
+			lifttimer = null
 			say("SolFed Overwatch Clearances accepted, FastPass lift cancelled.")
 			return
 		if(!isliving(user))
@@ -924,7 +925,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		if(lift_starting)	//If this is true, we have a running timer and the lift is starting
 			say("SolFed Clearances accepted, FastPass lift cancelled.")
 			lift_starting = FALSE
-			deltimer(lifttimer_id)
+			lifttimer = null
 			return
 		var/choice = tgui_alert(user, "Are you sure? This will remove all riders from the round.", "Activate Lift", list("I'm Sure", "Abort"))
 		if(choice == "Abort")
@@ -944,14 +945,24 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	say("SolFed Clearances accepted. Hello, First Responders. Please, take a seat, the FastPass Lift will depart shortly.")
 	locate_riders() //Nice fresh list of people we will remove from reality
 	lift_starting = TRUE
-	lifttimer_id = addtimer(CALLBACK(src, .proc/gtfo), 30 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
+	lifttimer = (world.time + 30 SECONDS)
 	for(var/mob/living/rider in list_of_riders)
 		to_chat(rider, span_warning("You feel a large pang of anxiety. No going back after this..."))
+
+/obj/machinery/computer/solfed_gtfo/process()
+	if(lifttimer == null)	//Just so we can have a 'this isnt active' state
+		return
+	if(lifttimer <= world.time)
+		lifttimer = null
+		gtfo(list_of_riders)
 
 /obj/machinery/computer/solfed_gtfo/proc/gtfo(var/list/riders_to_gtfo)
 	//If we pass 30 seconds, we've officially activated the lift. Delete everyone on the tile.
 	lift_starting = FALSE
-	deltimer(lifttimer_id)
+	lifttimer = null
 	priority_announce("Holy Shit it worked this far. Now finish it Orion.")
 	for(var/mob/living/rider in riders_to_gtfo)
-		to_chat(rider, span_warning("You feel a large pang of anxiety. No going back after this..."))
+		to_chat(rider, span_warning("You feel the lift start to whirr, before suddenly accelerating upwards!"))
+		if(!rider.buckled)
+			to_chat(rider, span_warning("You're thrown against the floor!"))
+			rider.Paralyze(20)	//Ow

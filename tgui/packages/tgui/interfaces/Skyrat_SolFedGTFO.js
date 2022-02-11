@@ -34,7 +34,7 @@ export const Skyrat_SolFedGTFO = (props, context) => {
               />
           <LabeledList>
             <LabeledList.Item label="Status">
-              {lift_blocked ? "Lift is currently locked down by SolFed Remote for the following reason: " + block_reason : lift_starting ? "Lift Starting in: " + {time_to_go} : "Lift in Standby."}
+              {lift_blocked ? "Lift is currently locked down by SolFed Remote for the following reason: " + block_reason : lift_starting ? "Lift Starting in: " + time_to_go +" Seconds" : "Lift in Standby."}
             </LabeledList.Item>
             <LabeledList.Item label="Current Call">
               {current_call ? current_call : "No active Emergency Service calls."}
@@ -61,6 +61,15 @@ export const Skyrat_SolFedGTFO = (props, context) => {
             </Table.Row>
             TO-DO: ADD LINE PER RIDER
 
+          </Table>
+        </Section>
+      </Window.Content>
+    </Window>
+  );
+};
+
+/*
+
             {list_of_riders.map((listed_rider) => (
             <Table.Row>
               <Table.Cell>
@@ -73,12 +82,4 @@ export const Skyrat_SolFedGTFO = (props, context) => {
               </Table.Cell>
             </Table.Row>
             ))}
-          </Table>
-        </Section>
-      </Window.Content>
-    </Window>
-  );
-};
-
-//{toTitleCase(found_rider.get_authentification_name())} test line A
-//{toTitleCase(found_rider.get_assignment())} test line B
+*/
