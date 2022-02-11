@@ -160,7 +160,7 @@ Makes tactical reloads easier
 	name = "tac-reload handle microfusion cell attachment"
 	desc = "An aftermarket modification that makes the process of tactically loading a MF cell far easier and cooler."
 	icon_state = "attachment_tactical"
-	attachment_overlay_icon_state = "microfusion_tactical
+	attachment_overlay_icon_state = "microfusion_tactical"
 
 /obj/item/microfusion_cell_attachment/tactical/add_attachment(obj/item/stock_parts/cell/microfusion/microfusion_cell)
 	. = ..()

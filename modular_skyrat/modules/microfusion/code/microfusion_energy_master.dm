@@ -629,10 +629,15 @@
 			to_chat(user, span_notice("You tactically reload [src], replacing [cell] inside!"))
 		tactical_reload = TRUE
 		eject_cell(user, FALSE, FALSE)
-	else if(!do_after(user, reload_time_slow, src))
+	else
+		if(display_message)
+			to_chat(user, span_notice("You start to insert [inserting_cell] into [src]!"))
+		if(!do_after(user, reload_time_slow, src))
+			if(display_message)
+				to_chat(user, span_warning("You fail to insert [inserting_cell] into [src]!"))
+			return FALSE
 		if(display_message)
 			to_chat(user, span_notice("You insert [inserting_cell] into [src]!"))
-		return FALSE
 	if(sound_cell_insert)
 		playsound(src, sound_cell_insert, sound_cell_insert_volume, sound_cell_insert_vary)
 	cell = inserting_cell

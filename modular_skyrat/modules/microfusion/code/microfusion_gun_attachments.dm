@@ -671,7 +671,7 @@ The gun fires fast heavy lasers but takes a long time to fire.
 	slot = GUN_SLOT_BARREL
 	attachment_overlay_icon_state = "attachment_lance"
 	heat_addition = 150
-	power_usage = 200
+	power_usage = 100
 	var/added_fire_delay = 25
 
 /obj/item/microfusion_gun_attachment/lance/examine(mob/user)

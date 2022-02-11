@@ -121,8 +121,28 @@
 	desc = "Contains a small amount of infinitely decaying nuclear material, causing the fusion reaction to be self sustaining. WARNING: May cause radiation burns if not stabilised."
 	id = "microfusion_cell_attachment_selfcharging"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/uranium = 5000, /datum/material/titanium = 5000, /datum/material/bluespace = 2500)
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/uranium = 5000, /datum/material/titanium = 5000, /datum/material/bluespace = 2500) // Makes it almost in-line with Advanced Egun pricing
 	build_path = /obj/item/microfusion_cell_attachment/selfcharging
+	category = list("Misc", "Power Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/microfusion_cell_attachment_tactical
+	name = "Tac-Reload Handle Microfusion Cell Attachment"
+	desc = "Stabilises the internal fusion reaction of microfusion cells."
+	id = "microfusion_cell_attachment_tactical"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/plasma = 1000, /datum/material/silver = 1000)
+	build_path = /obj/item/microfusion_cell_attachment/tactical
+	category = list("Misc", "Power Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/microfusion_cell_attachment_reloader
+	name = "Reloading Handle Microfusion Cell Attachment"
+	desc = "An aftermarket modification that makes the process of loading a MF cell far easier."
+	id = "microfusion_cell_attachment_reloader"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/plasma = 1000, /datum/material/silver = 1000)
+	build_path = /obj/item/microfusion_cell_attachment/reloader
 	category = list("Misc", "Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
