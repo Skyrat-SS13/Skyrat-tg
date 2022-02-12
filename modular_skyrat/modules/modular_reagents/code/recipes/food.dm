@@ -18,7 +18,7 @@
 
 /datum/chemical_reaction/food/quality_oil
 	required_catalysts = list(/datum/reagent/consumable/korta_nectar = 1)
-	required_reagents = list(/datum/reagent/consumable/corn_oil = 1)
+	required_reagents = list(/datum/reagent/consumable/cornoil = 1)
 	results = list(/datum/reagent/consumable/quality_oil = 1)
 
 /datum/chemical_reaction/food/quality_oil/two
