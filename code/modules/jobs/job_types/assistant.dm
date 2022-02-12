@@ -16,6 +16,7 @@ Assistant
 	plasmaman_outfit = /datum/outfit/plasmaman
 	paycheck = PAYCHECK_ASSISTANT // Get a job. Job reassignment changes your paycheck now. Get over it.
 
+	liver_traits = list(TRAIT_GREYTIDE_METABOLISM) // SKYRAT EDIT ADDITION - HOOCH HEALS ASSISTANTS
 	paycheck_department = ACCOUNT_CIV
 	display_order = JOB_DISPLAY_ORDER_ASSISTANT
 

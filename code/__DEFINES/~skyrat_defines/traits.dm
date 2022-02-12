@@ -65,3 +65,6 @@
 
 /// Cargo Loader trait
 #define TRAIT_TRASHMAN "trait_trashman"
+
+/// Assistant liver trait, lets hooch heal them
+#define TRAIT_GREYTIDE_METABOLISM "greytide_metabolism"
