@@ -39,6 +39,7 @@
 /datum/sprite_accessory/snouts/mammal/birdsmall
 	name = "Beak (small)"
 	icon_state = "birdsmall"
+	use_muzzled_sprites = FALSE
 
 /datum/sprite_accessory/snouts/mammal/bigbeak
 	name = "Big Beak"
@@ -354,5 +355,11 @@
 /datum/sprite_accessory/snouts/mammal/stubby
 	name = "Stubby"
 	icon_state = "stubby"
+	color_src = USE_MATRIXED_COLORS
+	use_muzzled_sprites = FALSE
+
+/datum/sprite_accessory/snouts/mammal/leporid
+	name = "Leporid"
+	icon_state = "leporid"
 	color_src = USE_MATRIXED_COLORS
 	use_muzzled_sprites = FALSE
