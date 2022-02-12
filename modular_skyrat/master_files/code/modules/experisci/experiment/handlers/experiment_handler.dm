@@ -6,6 +6,6 @@
  */
 /datum/component/experiment_handler/get_available_servers(turf/turf_to_check_for_servers = null)
 	var/list/local_servers = list()
-	for (var/obj/machinery/rnd/server/server in SSresearch.servers)
+	for(var/obj/machinery/rnd/server/server in SSresearch.servers)
 		local_servers += server
 	return local_servers
