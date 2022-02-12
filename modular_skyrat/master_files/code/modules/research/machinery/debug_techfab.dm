@@ -4,9 +4,9 @@
 	build_path = /obj/machinery/rnd/production/techfab/debug
 
 /obj/machinery/rnd/production/techfab/debug
-	name = "\improper CreaTech Omnilathe"
+	name = "\improper CreaTech(TM) Technology Fabricator"
 	desc = "<i>\"Create to your heart's content! (Batteries not included).\"</i>\n\
-		A unique protolathe, coming with all of the research technology and mechanical upgrades built-in, \
+		A unique techfab, coming with all of the research technology and mechanical upgrades built-in, \
 		granting interface and near-unlimited access to fabricating new technology."
 	allowed_buildtypes = ALL
 	department_tag = "CreaTech"
