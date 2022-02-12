@@ -10,9 +10,7 @@
 
 #define TRAIT_MASOCHISM		"masochism"
 #define TRAIT_SADISM		"sadism"
-#define TRAIT_BIMBO 		"bimbo"
 #define TRAIT_NEVERBONER	"neverboner"
-#define TRAIT_SOBSESSED		"sexual obsession"
 #define APHRO_TRAIT			"aphro"				///traits gained by brain traumas, can be removed if the brain trauma is gone
 #define LEWDQUIRK_TRAIT		"lewdquirks"		///traits gained by quirks, cannot be removed unless the quirk itself is gone
 #define LEWDCHEM_TRAIT		"lewdchem"			///traits gained by chemicals, you get the idea
@@ -87,10 +85,8 @@
 	..()
 
 /datum/reagent/drug/dopamine/overdose_start(mob/living/carbon/human/M)
-	if(!HAS_TRAIT(M, TRAIT_BIMBO))
-		to_chat(M, span_userdanger("You don't want to cum anymore!"))
-		SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overgasm, name)
-	return
+	to_chat(M, span_userdanger("You don't want to cum anymore!"))
+	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overgasm, name)
 
 /datum/reagent/drug/dopamine/overdose_process(mob/living/carbon/human/M)
 	M.adjustArousal(0.5)
