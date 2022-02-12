@@ -7,64 +7,13 @@
 
 //Floors that no longer lead into space (innovative!)
 /turf/open/floor/plating/beach/sand/black_mesa
-	planetary_atmos = 1
+	name = "sand"
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	planetary_atmos = TRUE
 
-/turf/open/floor/plating/beach/sand/black_mesa/break_tile()
-	return //unbreakable
-
-/turf/open/floor/plating/beach/sand/black_mesa/burn_tile()
-	return //unburnable
-
-/turf/open/floor/plating/beach/sand/black_mesa/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
-	return
-
-/turf/open/floor/plating/black_mesa
-	baseturfs = /turf/open/floor/plating/beach/sand/black_mesa
-
-/turf/open/floor/plating/elevatorshaft/black_mesa
-	baseturfs = /turf/open/floor/plating/beach/sand/black_mesa
-
-/turf/open/floor/mineral/titanium/black_mesa
-	baseturfs = /turf/open/floor/plating/black_mesa
-
-/turf/open/floor/mineral/titanium/blue/black_mesa
-	baseturfs = /turf/open/floor/plating/black_mesa
-
-/turf/open/floor/iron/black_mesa
-	baseturfs = /turf/open/floor/plating/black_mesa
-
-/turf/open/floor/iron/dark/black_mesa
-	baseturfs = /turf/open/floor/plating/black_mesa
-
-/turf/open/floor/iron/dark/blue/black_mesa
-	baseturfs = /turf/open/floor/plating/black_mesa
-
-/turf/open/floor/iron/dark/yellow/black_mesa
-	baseturfs = /turf/open/floor/plating/black_mesa
-
-/turf/open/floor/iron/freezer/black_mesa
-	baseturfs = /turf/open/floor/plating/black_mesa
-
-/turf/open/floor/iron/textured/black_mesa
-	baseturfs = /turf/open/floor/plating/black_mesa
-
-/turf/open/floor/iron/textured_large/black_mesa
-	baseturfs = /turf/open/floor/plating/black_mesa
-
-/turf/open/floor/iron/dark/side/black_mesa
-	baseturfs = /turf/open/floor/plating/black_mesa
-
-/turf/open/floor/iron/smooth/black_mesa
-	baseturfs = /turf/open/floor/plating/black_mesa
-
-/turf/open/floor/iron/smooth_large/black_mesa
-	baseturfs = /turf/open/floor/plating/black_mesa
-
-/turf/open/floor/iron/stairs/medium/black_mesa
-	baseturfs = /turf/open/floor/plating/black_mesa
-
-/turf/closed/wall/r_wall/black_mesa
-	baseturfs = /turf/open/floor/plating/black_mesa
+/obj/effect/baseturf_helper/beach/sand/black_mesa
+	name = "black mesa sand baseturf editor"
+	baseturf = /turf/open/floor/plating/beach/sand/black_mesa
 
 /mob/living/simple_animal/hostile/blackmesa
 	var/list/alert_sounds
