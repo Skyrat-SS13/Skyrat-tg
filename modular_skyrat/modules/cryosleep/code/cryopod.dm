@@ -76,9 +76,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	data["item_ref_name"] = item_ref_name
 
 	// Check Access for item dropping.
-	var/item_retrieval_allowed = FALSE
-	if(allowed(user))
-		item_retrieval_allowed = TRUE
+	var/item_retrieval_allowed = allowed(user)
 	data["item_retrieval_allowed"] = item_retrieval_allowed
 
 	var/obj/item/card/id/id_card
