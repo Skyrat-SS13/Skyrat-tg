@@ -113,8 +113,8 @@
 // SKYRAT EDIT ADDITION START
 // Off-Station
 #define JOB_SPACE_POLICE "Space Police"
-#define JOB_SOLGOV "SolGov"
-#define JOB_SOLGOV_LIASON "SolGov Liason"
+#define JOB_SOLFED "SolFed"
+#define JOB_SOLFED_LIASON "SolFed Liason"
 // SKYRAT EDIT ADDITION END
 
 
