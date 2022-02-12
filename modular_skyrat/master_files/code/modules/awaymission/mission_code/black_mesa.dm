@@ -5,12 +5,15 @@
 	name = "Black Mesa Outside"
 	static_lighting = FALSE
 
-/obj/structure/fluff/server_rack
-	name = "Server Rack"
-	desc = "A server rack with lots of cables coming out."
-	density = TRUE
-	icon = 'icons/obj/machines/research.dmi'
-	icon_state = "nanite_cloud_controller"
+//Floors that no longer lead into space (innovative!)
+/turf/open/floor/plating/beach/sand/black_mesa
+	name = "sand"
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	planetary_atmos = TRUE
+
+/obj/effect/baseturf_helper/beach/sand/black_mesa
+	name = "black mesa sand baseturf editor"
+	baseturf = /turf/open/floor/plating/beach/sand/black_mesa
 
 /mob/living/simple_animal/hostile/blackmesa
 	var/list/alert_sounds
