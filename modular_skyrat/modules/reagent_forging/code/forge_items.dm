@@ -1,6 +1,8 @@
 /obj/item/forging
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
 	var/work_time = 2 SECONDS
+	///whether the item is in use or not
+	var/in_use = FALSE
 
 /obj/item/forging/tongs
 	name = "forging tongs"
