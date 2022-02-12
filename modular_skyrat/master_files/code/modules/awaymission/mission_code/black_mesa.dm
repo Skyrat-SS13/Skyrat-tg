@@ -5,12 +5,57 @@
 	name = "Black Mesa Outside"
 	static_lighting = FALSE
 
-/obj/structure/fluff/server_rack
-	name = "Server Rack"
-	desc = "A server rack with lots of cables coming out."
-	density = TRUE
-	icon = 'icons/obj/machines/research.dmi'
-	icon_state = "nanite_cloud_controller"
+//Floors that no longer lead into space (innovative!)
+/turf/open/floor/plating/beach/sand/black_mesa
+	planetary_atmos = 1
+
+/turf/open/floor/plating/black_mesa
+	baseturfs = /turf/open/floor/plating/beach/sand/black_mesa
+
+/turf/open/floor/plating/elevatorshaft/black_mesa
+	baseturfs = /turf/open/floor/plating/beach/sand/black_mesa
+
+/turf/open/floor/mineral/titanium/black_mesa
+	baseturfs = /turf/open/floor/plating/black_mesa
+
+/turf/open/floor/mineral/titanium/blue/black_mesa
+	baseturfs = /turf/open/floor/plating/black_mesa
+
+/turf/open/floor/iron/black_mesa
+	baseturfs = /turf/open/floor/plating/black_mesa
+
+/turf/open/floor/iron/dark/black_mesa
+	baseturfs = /turf/open/floor/plating/black_mesa
+
+/turf/open/floor/iron/dark/blue/black_mesa
+	baseturfs = /turf/open/floor/plating/black_mesa
+
+/turf/open/floor/iron/dark/yellow/black_mesa
+	baseturfs = /turf/open/floor/plating/black_mesa
+
+/turf/open/floor/iron/freezer/black_mesa
+	baseturfs = /turf/open/floor/plating/black_mesa
+
+/turf/open/floor/iron/textured/black_mesa
+	baseturfs = /turf/open/floor/plating/black_mesa
+
+/turf/open/floor/iron/textured_large/black_mesa
+	baseturfs = /turf/open/floor/plating/black_mesa
+
+/turf/open/floor/iron/dark/side/black_mesa
+	baseturfs = /turf/open/floor/plating/black_mesa
+
+/turf/open/floor/iron/smooth/black_mesa
+	baseturfs = /turf/open/floor/plating/black_mesa
+
+/turf/open/floor/iron/smooth_large/black_mesa
+	baseturfs = /turf/open/floor/plating/black_mesa
+
+/turf/open/floor/iron/stairs/medium/black_mesa
+	baseturfs = /turf/open/floor/plating/black_mesa
+
+/turf/closed/wall/r_wall/black_mesa
+	baseturfs = /turf/open/floor/plating/black_mesa
 
 /mob/living/simple_animal/hostile/blackmesa
 	var/list/alert_sounds
