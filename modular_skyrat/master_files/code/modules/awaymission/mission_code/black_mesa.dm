@@ -9,6 +9,15 @@
 /turf/open/floor/plating/beach/sand/black_mesa
 	planetary_atmos = 1
 
+/turf/open/floor/plating/beach/sand/black_mesa/break_tile()
+	return //unbreakable
+
+/turf/open/floor/plating/beach/sand/black_mesa/burn_tile()
+	return //unburnable
+
+/turf/open/floor/plating/beach/sand/black_mesa/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
+	return
+
 /turf/open/floor/plating/black_mesa
 	baseturfs = /turf/open/floor/plating/beach/sand/black_mesa
 
