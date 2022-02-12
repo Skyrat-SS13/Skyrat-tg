@@ -34,6 +34,14 @@
 	name = "Uni"
 	icon_state = "uni"
 
+/datum/sprite_accessory/horns/oni
+	name = "Oni"
+	icon_state = "oni"
+
+/datum/sprite_accessory/horns/oni_large
+	name = "Oni (Large)"
+	icon_state = "oni_large"
+
 /datum/sprite_accessory/horns/big
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/horns_big.dmi'
 
