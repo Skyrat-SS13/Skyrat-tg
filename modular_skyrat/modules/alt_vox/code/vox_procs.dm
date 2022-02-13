@@ -4,9 +4,9 @@
 
 /mob/living/silicon/ai
 	/// The currently selected VOX Announcer voice.
-	var/vox_type = VOX_NORMAL
+	var/vox_type = VOX_BMS
 	/// The list of available VOX Announcer voices to choose from.
-	var/list/vox_voices = list(VOX_HL, VOX_NORMAL)
+	var/list/vox_voices = list(VOX_HL, VOX_NORMAL, VOX_BMS)
 	/// The VOX word(s) that were previously inputed.
 	var/vox_word_string
 
@@ -32,10 +32,10 @@
 	switch(vox_type)
 		if(VOX_NORMAL)
 			var/index = 0
-			for(var/word in GLOB.vox_sounds)
+			for(var/word in GLOB.vox_sounds_bms)
 				index++
 				dat += "<A href='?src=[REF(src)];say_word=[word]'>[capitalize(word)]</A>"
-				if(index != GLOB.vox_sounds.len)
+				if(index != GLOB.vox_sounds_bms.len)
 					dat += " / "
 		if(VOX_HL)
 			var/index = 0
@@ -50,6 +50,13 @@
 				index++
 				dat += "<A href='?src=[REF(src)];say_word=[word]'>[capitalize(word)]</A>"
 				if(index != GLOB.vox_sounds_mil.len)
+					dat += " / "
+		if(VOX_BMS)
+			var/index = 0
+			for(var/word in GLOB.vox_sounds_bms)
+				index++
+				dat += "<A href='?src=[REF(src)];say_word=[word]'>[capitalize(word)]</A>"
+				if(index != GLOB.vox_sounds_bms.len)
 					dat += " / "
 
 	var/datum/browser/popup = new(src, "announce_help", "Announcement Help", 500, 400)
@@ -108,6 +115,14 @@
 					continue
 				if(!GLOB.vox_sounds_mil[word])
 					incorrect_words += word
+		if(VOX_BMS)
+			for(var/word in words)
+				word = lowertext(trim(word))
+				if(!word)
+					words -= word
+					continue
+				if(!GLOB.vox_sounds_bms[word])
+					incorrect_words += word
 
 	if(incorrect_words.len)
 		to_chat(src, span_notice("These words are not available on the announcement system: [english_list(incorrect_words)]."))
@@ -137,6 +152,9 @@
 			if(GLOB.vox_sounds_mil[word])
 				sound_file = GLOB.vox_sounds_mil[word]
 				volume = 50 // My poor ears...
+		if(VOX_BMS)
+			if(GLOB.vox_sounds_bms[word])
+				sound_file = GLOB.vox_sounds_bms[word]
 		else
 			if(GLOB.vox_sounds[word])
 				sound_file = GLOB.vox_sounds[word]
