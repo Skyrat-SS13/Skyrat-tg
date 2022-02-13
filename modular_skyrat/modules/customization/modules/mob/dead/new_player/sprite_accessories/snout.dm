@@ -39,7 +39,6 @@
 /datum/sprite_accessory/snouts/mammal/birdsmall
 	name = "Beak (small)"
 	icon_state = "birdsmall"
-	use_muzzled_sprites = FALSE
 
 /datum/sprite_accessory/snouts/mammal/bigbeak
 	name = "Big Beak"
