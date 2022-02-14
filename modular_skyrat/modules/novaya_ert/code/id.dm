@@ -9,6 +9,7 @@
 	assignment = "Novaya Rossiyskaya Imperiya Soldier"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_nri"
+	sechud_icon_state = "hud_nri"
 
 /datum/id_trim/nri/New()
 	. = ..()
@@ -18,6 +19,7 @@
 /datum/id_trim/nri/commander
 	assignment = "Novaya Rossiyskaya Imperiya Platoon Commander"
 	trim_state = "trim_nri_commander"
+	sechud_icon_state = "hud_nri_commander"
 
 /datum/id_trim/nri/heavy
 	assignment = "Novaya Rossiyskaya Imperiya Heavy Soldier"

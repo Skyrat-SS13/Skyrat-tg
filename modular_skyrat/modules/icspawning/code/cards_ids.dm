@@ -12,3 +12,4 @@
 	assignment = "Bluespace Technician"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_bluespacetech"
+	sechud_icon_state = SECHUD_SCRAMBLED

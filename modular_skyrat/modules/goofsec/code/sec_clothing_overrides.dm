@@ -467,3 +467,16 @@
 	if(H.jumpsuit_style == PREF_SKIRT)
 		to_chat(H, span_alertwarning("Lopland Peacekeeper uniforms don't include a Skirt variant! You've been equipped with a jumpsuit instead."))
 		uniform = /obj/item/clothing/under/rank/security/officer
+
+//PDA Greyscale Overrides
+/obj/item/pda/security
+	greyscale_colors = "#2B356D#1E1E1E"
+
+/obj/item/pda/detective
+	greyscale_colors = "#90714F#1E1E1E"
+
+/obj/item/pda/warden
+	greyscale_colors = "#2F416E#1E1E1E#ACACAC"
+
+/obj/item/pda/heads/hos
+	greyscale_colors = "#2B356D#1E1E1E"

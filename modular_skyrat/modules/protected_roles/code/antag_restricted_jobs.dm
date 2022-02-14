@@ -27,16 +27,10 @@
 /datum/job/blueshield
 	antagonist_restricted = TRUE
 
-/datum/job/security_sergeant
-	antagonist_restricted = TRUE
-
 /datum/job/security_medic
 	antagonist_restricted = TRUE
 
 /datum/job/brigoff
-	antagonist_restricted = TRUE
-
-/datum/job/junior_officer
 	antagonist_restricted = TRUE
 
 /datum/job/orderly
