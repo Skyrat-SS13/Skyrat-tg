@@ -860,6 +860,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Red Victorian Shirt with Vest"
 	item_path = /obj/item/clothing/under/costume/vic_vest/red
 
+/datum/loadout_item/under/formal/vic_vest/green
+	name = "Green victorian vest"
+	item_path = /obj/item/clothing/under/costume/vic_vest/green
+
 /datum/loadout_item/under/formal/vic_vest/blue
 	name = "Blue Victorian Vest"
 	item_path = /obj/item/clothing/under/costume/vic_vest/blue
