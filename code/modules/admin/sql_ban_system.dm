@@ -370,6 +370,7 @@
 				BAN_EORG,
 				BAN_ANTAGONIST,
 				BAN_OPFOR,
+				BAN_CLOTHING,
 			),//SKYRAT EDIT ADDITION - EXTRA_BANS
 		)
 		for(var/department in long_job_lists)

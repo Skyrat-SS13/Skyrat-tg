@@ -27,7 +27,7 @@
 /datum/outfit/job/barber
 	name = "Barber"
 	jobtype = /datum/job/barber
-
+	head = /obj/item/clothing/head/flatcap
 	glasses = /obj/item/clothing/glasses/sunglasses
 	belt = /obj/item/pda
 	ears = /obj/item/radio/headset/headset_srv

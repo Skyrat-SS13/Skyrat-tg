@@ -101,6 +101,7 @@
 #define ROLE_MAINTENANCE_DRONE "Maintenance Drone"
 #define ROLE_BATTLECRUISER_CREW "Battlecruiser Crew"
 #define ROLE_BATTLECRUISER_CAPTAIN "Battlecruiser Captain"
+#define ROLE_TAILORCLOTHING "Tailor Clothing"
 
 
 /// This defines the antagonists you can operate with in the settings.
