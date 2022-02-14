@@ -1,3 +1,4 @@
+////
 //	Typing indicator icon change
 /mob/living/silicon/robot/set_typing_indicator(state)
 	var/mutable_appearance/indicator = mutable_appearance('modular_skyrat/modules/indicators/icons/typing_indicator.dmi', "borg0", FLY_LAYER)
@@ -15,6 +16,8 @@
 	else
 		regenerate_icons()
 
+
+////
 //	Smoke particle effect for heavy-duty cyborgs
 /datum/component/robot_smoke
 
@@ -33,9 +36,24 @@
 
 	if(particles)
 		QDEL_NULL(particles)
-	else
+	else if (!stat && !robot_resting)
 		particles = new /particles/smoke/robot()
 
+/mob/living/silicon/robot/death()
+	. = ..()
+	if(GetComponent(/datum/component/robot_smoke))
+		QDEL_NULL(particles)
+
+/mob/living/silicon/robot/robot_lay_down()
+	. = ..()
+
+	if(GetComponent(/datum/component/robot_smoke))
+		if(robot_resting)
+			QDEL_NULL(particles)
+		else
+			return
+
+// The smoke
 /particles/smoke/robot
 	width = 100
 	height = 100
@@ -50,6 +68,8 @@
 	gravity = list(0, 0.95)
 	grow = 0.05
 
+
+////
 //	Modular solution for alternative tipping visuals
 /datum/component/tippable/set_tipped_status(mob/living/tipped_mob, new_status = FALSE)
 	var/mob/living/silicon/robot/robot = tipped_mob
