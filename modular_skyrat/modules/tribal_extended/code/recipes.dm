@@ -64,6 +64,15 @@
 	time = 60
 	category = CAT_PRIMAL
 
+/datum/crafting_recipe/bonesword
+	name = "Bone Sword"
+	result = /obj/item/claymore/bone
+	reqs = list(/obj/item/stack/sheet/bone = 2,
+				/obj/item/stack/sheet/sinew = 2)
+	time = 40
+	always_available = FALSE
+	category = CAT_PRIMAL
+
 /datum/crafting_recipe/quiver
 	name = "Quiver"
 	result = /obj/item/storage/belt/quiver
