@@ -49,7 +49,7 @@
 		/obj/effect/decal/cleanable/blood = 1,
 	)
 	result_atoms = list(/obj/item/melee/sickly_blade/flesh)
-	limit = 30 // Bumped up so they can arm up their ghouls too. //SKYRAT EDIT - ORIGINAL: 3
+	limit = 20 // Bumped up so they can arm up their ghouls too. //SKYRAT EDIT - ORIGINAL: 3
 	cost = 1
 	route = PATH_FLESH
 

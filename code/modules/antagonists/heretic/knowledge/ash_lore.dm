@@ -44,7 +44,7 @@
 		/obj/item/match = 1,
 	)
 	result_atoms = list(/obj/item/melee/sickly_blade/ash)
-	limit = 20 //SKYRAT EDIT - ORIGINAL: 2
+	limit = 5 //SKYRAT EDIT - ORIGINAL: 2
 	cost = 1
 	route = PATH_ASH
 
