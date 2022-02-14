@@ -46,6 +46,7 @@
 	assignment = "Blueshield"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_blueshield"
+	sechud_icon_state = SECHUD_BLUESHIELD
 	extra_access = list(ACCESS_SECURITY, ACCESS_BRIG, ACCESS_COURT, ACCESS_CARGO, ACCESS_GATEWAY) // Someone needs to come back and order these alphabetically, this is a nightmare
 	minimal_access = list(
 		ACCESS_FORENSICS_LOCKERS, ACCESS_SEC_DOORS, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_ENGINE, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH,
@@ -59,6 +60,7 @@
 	assignment = "Nanotrasen Representative"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_nanotrasenrepresentative"
+	sechud_icon_state = SECHUD_NT_REP
 	extra_access = list()
 	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_COURT, ACCESS_WEAPONS,
 				ACCESS_MEDICAL, ACCESS_PSYCHOLOGY, ACCESS_ENGINE, ACCESS_CHANGE_IDS, ACCESS_AI_UPLOAD, ACCESS_EVA, ACCESS_HEADS,
@@ -75,6 +77,7 @@
 	assignment = "Security Medic"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_securitymedic"
+	sechud_icon_state = SECHUD_SECURITY_MEDIC
 	extra_access = list(ACCESS_FORENSICS_LOCKERS)
 	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_MECH_SECURITY, ACCESS_MINERAL_STOREROOM,
 	ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP, ACCESS_MAINT_TUNNELS)
@@ -92,6 +95,7 @@
 	assignment = "Vanguard Operative"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_expeditionarytrooper"
+	sechud_icon_state = SECHUD_VANGUARD_OPERATIVE
 	extra_access = list()
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_EVA, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_TELEPORTER, ACCESS_GATEWAY, ACCESS_TECH_STORAGE,
 		ACCESS_CENT_GENERAL, ACCESS_RESEARCH, ACCESS_RND)
@@ -101,6 +105,7 @@
 	assignment = "Corrections Officer"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_brigoff"
+	sechud_icon_state = SECHUD_CORRECTIONS_OFFICER
 	extra_access = list()
 	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT,
 				ACCESS_MAINT_TUNNELS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
@@ -112,6 +117,7 @@
 	assignment = "Barber"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_barber"
+	sechud_icon_state = SECHUD_BARBER
 	extra_access = list()
 	minimal_access = list(ACCESS_THEATRE, ACCESS_MAINT_TUNNELS, ACCESS_BARBER, ACCESS_SERVICE)
 	config_job = "barber"
