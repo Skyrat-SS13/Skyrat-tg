@@ -30,7 +30,7 @@
 	/// The path our heretic has chosen. Mostly used for flavor.
 	var/heretic_path = PATH_START
 	/// A list of how many knowledge points this heretic CURRENTLY has. Used to research.
-	var/knowledge_points = 1
+	var/knowledge_points = 2 //SKYRAT EDIT - ORIGINAL 1
 	/// The time between gaining influence passively. The heretic gain +1 knowledge points every this duration of time.
 	var/passive_gain_timer = 20 MINUTES
 	/// Assoc list of [typepath] = [knowledge instance]. A list of all knowledge this heretic's reserached.

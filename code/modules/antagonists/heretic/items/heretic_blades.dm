@@ -12,7 +12,7 @@
 	flags_1 = CONDUCT_1
 	sharpness = SHARP_EDGED
 	w_class = WEIGHT_CLASS_NORMAL
-	force = 27 //SKYRAT EDIT - ORIGINAL: 17
+	force = 25 //SKYRAT EDIT - ORIGINAL: 17
 	armour_penetration = 15 // SKYRAT EDIT - ADDITION
 	throwforce = 10
 	hitsound = 'sound/weapons/bladeslice.ogg'
