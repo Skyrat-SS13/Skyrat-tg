@@ -117,6 +117,19 @@
 	rate_up_lim 		= 2
 	purity_min		= 0.6
 
+
+/datum/chemical_reaction/OwO/plushmium/reaction_finish(datum/reagents/holder, datum/equilibrium/reaction, react_vol)
+	..()
+	if(holder.get_reagent(/datum/reagent/OwO/plushmium).purity > 0.9)
+		return
+	if(react_vol < 20) //It creates a normal plush at low volume.. at higher amounts, things get slightly more interesting.
+		new /obj/item/toy/plush/random(get_turf(holder.my_atom))
+	else
+		new /obj/item/toy/plush/plushling(get_turf(holder.my_atom))
+	holder.my_atom.audible_message("<span class='warning'>The reaction suddenly zaps, creating a plushie!</b></span>")
+	clear_products(holder)
+
+
 /datum/chemical_reaction/OwO/plushmium/OwOExplode(datum/reagents, var/atom/my_atom, volume, temp, ph)
 	if(volume < 20) //It creates a normal plush at low volume.. at higher amounts, things get slightly more interesting.
 		new /obj/item/toy/plush/random(get_turf(my_atom))

@@ -58,10 +58,22 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	addtimer(CALLBACK(H, /mob/living/carbon/human.proc/dropItemToGround, src, TRUE), 1)
 
 /obj/item/toy/plush/plushling/New()
-	var/initial_state = pick("plushie_lizard", "plushie_snake", "plushie_slime", "plushie_fox")
-	icon_state = initial_state
+	var/source_plush_type = pick(GLOB.valid_plushie_paths)
+	var/source_plush = new source_plush_type(loc)
+	set_appearance(source_plush)
+	qdel(source_plush)
 	START_PROCESSING(SSobj, src)
 	. = ..()
+
+/obj/item/toy/plush/plushling/proc/set_appearance(obj/item/toy/plush/Source_Plush)
+	name = "peculiar " + Source_Plush.name
+	desc = Source_Plush.desc + " Wait, did it just move?"
+	icon = Source_Plush.icon
+	icon_state = Source_Plush.icon_state
+	inhand_icon_state = Source_Plush.inhand_icon_state
+	attack_verb_continuous = Source_Plush.attack_verb_continuous
+	attack_verb_simple = Source_Plush.attack_verb_simple
+	squeak_override = Source_Plush.squeak_override
 
 /obj/item/toy/plush/plushling/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -108,6 +120,9 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 */
 	new /obj/effect/decal/cleanable/ash(get_turf(victim))
 	qdel(victim)
+
+/obj/item/toy/plush/plushling/plop(obj/item/toy/plush/Daddy)
+	return FALSE
 
 /obj/item/toy/plush/plushling/love(obj/item/toy/plush/Kisser, mob/living/user) //You shouldn't have come here, poor plush.
 	if(!Kisser)
