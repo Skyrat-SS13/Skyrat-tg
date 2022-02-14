@@ -283,7 +283,7 @@
 	id = "microfusion_gun_attachment_penetrator"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/bluespace = 1000)
-	build_path = /obj/item/microfusion_gun_attachment/repeater
+	build_path = /obj/item/microfusion_gun_attachment/penetrator
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
@@ -318,8 +318,8 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/microfusion_gun_attachment_suppressor
-	name = "Crystalline Diffuser Microfusion Lens Attachment"
-	desc = "Splits the microfusion laser beam entering the lens even more!"
+	name = Suppressor Lens Attachment"
+	desc = "An experimental barrel attachment that dampens the soundwave of the emitter, making the laser shots far more stealthy!"
 	id = "microfusion_gun_attachment_suppressor"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/silver = 1000)
@@ -329,10 +329,10 @@
 
 /datum/design/microfusion_gun_attachment_honk
 	name = "Bananium Phase Emitter Upgrade"
-	desc = "Splits the microfusion laser beam entering the lens even more!"
-	id = "microfusion_gun_attachment_suppressor"
+	desc = "Makes your lasers into the greatest clowning tool ever made. HONK!"
+	id = "microfusion_gun_attachment_honk"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/bananium = 1000)
-	build_path = /obj/item/microfusion_gun_attachment/suppressor
+	build_path = /obj/item/microfusion_gun_attachment/honk
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE

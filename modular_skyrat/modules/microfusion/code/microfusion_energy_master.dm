@@ -235,7 +235,6 @@
 	if (.)
 		return
 	if(istype(attacking_item, base_cell_type))
-		//reload_timer(user, attacking_item)
 		insert_cell(user, attacking_item)
 	if(istype(attacking_item, /obj/item/microfusion_gun_attachment))
 		add_attachment(attacking_item, user)

@@ -93,7 +93,7 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 15000)
 
 // Warcrime microfusion
-/datum/techweb_node/quantum_microfusion
+/datum/techweb_node/illegal_microfusion
 	id = "illegal_microfusion"
 	display_name = "Illegal Microfusion Technology"
 	description = "Microfusion tech that has previously been banned by SolFed. I love the smell of plasma in the mornings."
