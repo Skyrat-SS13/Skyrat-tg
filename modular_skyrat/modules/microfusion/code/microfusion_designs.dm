@@ -318,7 +318,7 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/microfusion_gun_attachment_suppressor
-	name = Suppressor Lens Attachment"
+	name = "Suppressor Lens Attachment"
 	desc = "An experimental barrel attachment that dampens the soundwave of the emitter, making the laser shots far more stealthy!"
 	id = "microfusion_gun_attachment_suppressor"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
