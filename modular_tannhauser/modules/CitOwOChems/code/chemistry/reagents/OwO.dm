@@ -6,6 +6,7 @@
 	taste_description	= "affection and love!"
 	inverse_chem_val 		= 0.25		// If the impurity is below 0.5, replace ALL of the chem with inverse_chemupon metabolising
 	var/cached_purity		= 1
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 
 
