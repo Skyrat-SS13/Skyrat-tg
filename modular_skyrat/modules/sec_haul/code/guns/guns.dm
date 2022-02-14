@@ -101,7 +101,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/g17/mesa
 	name = "\improper Glock-17"
-	desc = "Glock pistol, made for shooting at your target fast and experience no problems."
+	desc = "A weapon from bygone times, and this is the exact 21st century version. In fact, even more reliable. Chambered in 9mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock_mesa"
 	w_class = WEIGHT_CLASS_NORMAL

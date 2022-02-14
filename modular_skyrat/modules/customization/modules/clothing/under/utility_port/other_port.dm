@@ -66,6 +66,10 @@
 	name = "red-sleeved victorian vest"
 	icon_state = "victorianvest_red"
 
+/obj/item/clothing/under/costume/vic_vest/green
+	name = "green-sleeved victorian vest"
+	icon_state = "victorianvest_green"
+
 /obj/item/clothing/under/costume/vic_vest/blue
 	name = "blue-sleeved victorian vest"
 	icon_state = "victorianvest_blue"

@@ -2,7 +2,7 @@
 	key = "ears"
 	generic = "Ears"
 	organ_type = /obj/item/organ/ears/mutant
-	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
 
 /datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -29,6 +29,9 @@
 	icon_state = "none"
 	color_src = null
 	factual = FALSE
+
+/datum/sprite_accessory/ears/mutant/big
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/ears_big.dmi'
 
 /datum/sprite_accessory/ears/mutant/vulpkanin
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_VULP, SPECIES_HUMANOID, SPECIES_GHOUL)
@@ -168,6 +171,14 @@
 /datum/sprite_accessory/ears/mutant/rabbit
 	name = "Rabbit"
 	icon_state = "rabbit"
+
+/datum/sprite_accessory/ears/mutant/big/hare_large
+	name = "Rabbit (Large)"
+	icon_state = "bunny_large"
+
+/datum/sprite_accessory/ears/mutant/big/bunny_large
+	name = "Curved Rabbit Ears (Large)"
+	icon_state = "rabbit_large"
 
 /datum/sprite_accessory/ears/mutant/pede
 	name = "Scolipede"

@@ -38,3 +38,6 @@
 
 	id_trim = /datum/id_trim/nri/commander
 
+/datum/outfit/centcom/ert/nri/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	return
+	//Two reasons for this; one, Russians arent NT and dont need implants used mostly for NT-sympathizers. Two, the HuD looks ugly with the blue mindshield outline.
