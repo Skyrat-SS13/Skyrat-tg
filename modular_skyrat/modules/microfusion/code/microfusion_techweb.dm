@@ -104,7 +104,7 @@
 	design_ids = list(
 		"microfusion_gun_attachment_superheat",
 		"microfusion_gun_attachment_scattermax",
-		"microfusion_gun_attachment_superheat",
+		"microfusion_gun_attachment_penetrator",
 		"microfusion_gun_attachment_syndi_camo",
 		"microfusion_gun_attachment_suppressor",
 	)
