@@ -11,7 +11,7 @@
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = TRUE
 
-/obj/effect/baseturf_helper/beach/sand/black_mesa
+/obj/effect/baseturf_helper/black_mesa
 	name = "black mesa sand baseturf editor"
 	baseturf = /turf/open/floor/plating/beach/sand/black_mesa
 

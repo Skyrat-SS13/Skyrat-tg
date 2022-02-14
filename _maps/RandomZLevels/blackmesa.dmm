@@ -108,9 +108,9 @@
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/black_mesa)
 "aN" = (
-/obj/effect/baseturf_helper/beach/sand/black_mesa,
+/obj/effect/baseturf_helper/black_mesa,
 /turf/open/floor/plating/cobblestone,
-/area/awaymission/black_mesa)
+/area/awaymission/black_mesa/outside)
 "aQ" = (
 /obj/machinery/light/cold{
 	dir = 4
@@ -200,9 +200,8 @@
 /turf/open/floor/iron/green,
 /area/awaymission/black_mesa)
 "bO" = (
-/mob/living/simple_animal/hostile/blackmesa/hecu/ranged,
-/obj/effect/baseturf_helper/beach/sand/black_mesa,
-/turf/open/floor/iron/textured_large,
+/obj/effect/baseturf_helper/black_mesa,
+/turf/open/floor/iron/smooth,
 /area/awaymission/black_mesa)
 "bU" = (
 /obj/structure/chair/office,
@@ -460,6 +459,8 @@
 /obj/structure/table,
 /obj/item/clothing/accessory/armband/medblue,
 /obj/item/stack/sheet/mineral/silver,
+/obj/item/stack/rods/ten,
+/obj/item/storage/firstaid/advanced,
 /turf/open/floor/iron/textured,
 /area/awaymission/black_mesa)
 "eL" = (
@@ -1049,8 +1050,8 @@
 /turf/open/floor/circuit/red,
 /area/awaymission/black_mesa)
 "kg" = (
-/obj/effect/baseturf_helper/beach/sand/black_mesa,
-/turf/open/floor/iron/textured,
+/obj/structure/reagent_dispensers/fueltank/large,
+/turf/open/floor/iron/smooth_large,
 /area/awaymission/black_mesa)
 "kh" = (
 /obj/effect/turf_decal/stripes,
@@ -1263,8 +1264,8 @@
 /turf/open/floor/iron/smooth_large,
 /area/awaymission/black_mesa)
 "lG" = (
-/obj/structure/barricade/wooden,
-/turf/open/floor/iron/smooth,
+/obj/structure/reagent_dispensers/watertank/high,
+/turf/open/floor/iron/smooth_large,
 /area/awaymission/black_mesa)
 "lJ" = (
 /obj/structure/server,
@@ -1747,10 +1748,6 @@
 /obj/machinery/porta_turret/black_mesa,
 /turf/open/floor/iron/smooth_large,
 /area/awaymission/black_mesa)
-"pL" = (
-/obj/effect/baseturf_helper/beach/sand/black_mesa,
-/turf/open/floor/plating/beach/sand,
-/area/awaymission/black_mesa/outside)
 "pM" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 1
@@ -1888,13 +1885,6 @@
 	dir = 5
 	},
 /turf/open/floor/iron/dark,
-/area/awaymission/black_mesa)
-"qY" = (
-/obj/machinery/light/cold{
-	dir = 8
-	},
-/obj/effect/baseturf_helper/beach/sand/black_mesa,
-/turf/open/floor/iron/smooth_large,
 /area/awaymission/black_mesa)
 "rb" = (
 /obj/structure/server,
@@ -2842,6 +2832,10 @@
 "zW" = (
 /obj/structure/table,
 /obj/item/stack/marker_beacon/thirty,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
 /turf/open/floor/iron/textured,
 /area/awaymission/black_mesa)
 "Aa" = (
@@ -2957,6 +2951,7 @@
 /obj/effect/turf_decal/stripes{
 	dir = 9
 	},
+/obj/structure/barricade/wooden,
 /turf/open/floor/iron/textured_large,
 /area/awaymission/black_mesa)
 "Bv" = (
@@ -3015,6 +3010,7 @@
 /obj/effect/turf_decal/stripes{
 	dir = 1
 	},
+/obj/structure/barricade/wooden,
 /turf/open/floor/iron/textured_large,
 /area/awaymission/black_mesa)
 "BX" = (
@@ -4952,10 +4948,6 @@
 "Tv" = (
 /turf/open/floor/circuit/red,
 /area/awaymission/black_mesa)
-"Tw" = (
-/obj/structure/reagent_dispensers/watertank/high,
-/turf/open/floor/iron/smooth,
-/area/awaymission/black_mesa)
 "Tx" = (
 /obj/machinery/light/cold{
 	dir = 1
@@ -5162,10 +5154,6 @@
 /obj/machinery/hypnochair,
 /turf/open/floor/iron/dark,
 /area/awaymission/black_mesa)
-"Vn" = (
-/obj/structure/reagent_dispensers/fueltank/large,
-/turf/open/floor/iron/smooth,
-/area/awaymission/black_mesa)
 "Vr" = (
 /obj/machinery/computer,
 /turf/open/floor/iron/dark,
@@ -5354,10 +5342,6 @@
 	},
 /turf/open/floor/iron/textured_large,
 /area/awaymission/black_mesa)
-"WU" = (
-/obj/effect/baseturf_helper/beach/sand/black_mesa,
-/turf/open/floor/engine,
-/area/awaymission/black_mesa/outside)
 "WV" = (
 /obj/item/ammo_box/magazine/multi_sprite/g17,
 /obj/effect/mob_spawn/corpse/human/scientist,
@@ -5411,6 +5395,8 @@
 /obj/item/clothing/accessory/armband/engine,
 /obj/item/clothing/glasses/welding,
 /obj/item/storage/belt/utility/full,
+/obj/item/extinguisher/advanced,
+/obj/item/stack/cable_coil,
 /turf/open/floor/iron/textured,
 /area/awaymission/black_mesa)
 "Xr" = (
@@ -5698,7 +5684,7 @@
 /obj/structure/table,
 /obj/item/folder/red,
 /obj/machinery/light/cold,
-/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/advanced,
 /turf/open/floor/iron/textured_large,
 /area/awaymission/black_mesa)
 "Zu" = (
@@ -15598,7 +15584,7 @@ Ve
 TQ
 hx
 CL
-bO
+ej
 Ve
 Ve
 Ve
@@ -21110,7 +21096,7 @@ Ha
 Ha
 Ha
 Ha
-WU
+Ha
 Ec
 Ha
 Ha
@@ -36937,7 +36923,7 @@ ak
 ak
 ba
 ba
-aN
+ba
 ba
 ba
 ba
@@ -37204,7 +37190,7 @@ vp
 vp
 vp
 vp
-vp
+aN
 vp
 vp
 vp
@@ -42084,7 +42070,7 @@ rz
 Cc
 Cc
 yG
-pL
+yG
 vp
 vp
 vp
@@ -43119,8 +43105,8 @@ yG
 yG
 Yr
 Yr
-kN
-kN
+kg
+lG
 kH
 kN
 kN
@@ -43887,12 +43873,12 @@ rz
 rz
 No
 Yr
-qY
+kH
 kN
+bO
 UL
 UL
 UL
-Vn
 Az
 NG
 Dt
@@ -44148,7 +44134,7 @@ kN
 UL
 UL
 UL
-Tw
+UL
 Xq
 SN
 UY
@@ -55193,7 +55179,7 @@ UL
 UL
 UL
 kN
-ld
+kN
 kN
 ld
 ts
@@ -55450,7 +55436,7 @@ UL
 UL
 UL
 UL
-lG
+UL
 UL
 ld
 OR
@@ -55707,7 +55693,7 @@ kN
 kN
 kN
 kN
-ld
+kN
 kN
 ld
 ts
@@ -65779,7 +65765,7 @@ No
 No
 Yr
 TQ
-kg
+Ve
 Ve
 OP
 Yr
