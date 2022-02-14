@@ -28,24 +28,27 @@
 
 /obj/item/forging/reagent_weapon/sword
 	name = "reagent sword"
-	desc = "A sword that can be imbued with a reagent."
-	force = 20
+	desc = "A sword that can be imbued with a reagent. Useful for blocking."
+	force = 15
+	armour_penetration = 10
 	icon_state = "sword"
 	inhand_icon_state = "sword"
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	throwforce = 10
+	block_chance = 25 //either we make it melee block only or we don't give it too much. It's bulkly so the buckler is superior
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = FIRE_PROOF
 	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	sharpness = SHARP_EDGED
+	max_integrity = 150
 
 /obj/item/forging/reagent_weapon/katana
 	name = "reagent katana"
-	desc = "A katana that can be imbued with a reagent."
-	force = 10
-	armour_penetration = 10
+	desc = "A katana that can be imbued with a reagent. It's very sharp, but not quite million-times-folded sharp."
+	force = 15
+	armour_penetration = 25 //Slices through armour like butter, but can't quite bisect a knight like the real thing.
 	wound_bonus = 20
 	bare_wound_bonus = 40
 	icon_state = "katana"
@@ -53,7 +56,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	throwforce = 10
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = FIRE_PROOF
 	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
@@ -78,9 +81,9 @@
 	. = ..()
 	user.changeNext_move(CLICK_CD_RANGE)
 
-/obj/item/forging/reagent_weapon/staff
+/obj/item/forging/reagent_weapon/staff //doesn't do damage. Useful for healing reagents.
 	name = "reagent staff"
-	desc = "A staff that can be imbued with a reagent."
+	desc = "A staff that can be imbued with a reagent. It has a very soft swing."
 	force = 0
 	icon_state = "staff"
 	inhand_icon_state = "staff"
@@ -98,13 +101,13 @@
 /obj/item/forging/reagent_weapon/spear
 	name = "reagent spear"
 	desc = "A spear that can be imbued with a reagent. It can be dual-wielded to increase its damage!"
-	force = 8
+	force = 10
 	armour_penetration = 10
 	icon_state = "spear"
 	inhand_icon_state = "spear"
-	throwforce = 0
+	throwforce = 15 //not a javelin, throwing specialty is for the axe.
 	slot_flags = ITEM_SLOT_BACK
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = FIRE_PROOF
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb_continuous = list("attacks", "pokes", "jabs", "tears", "lacerates", "gores")
@@ -116,19 +119,20 @@
 
 /obj/item/forging/reagent_weapon/spear/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/two_handed, force_unwielded=8, force_wielded=16)
+	AddComponent(/datum/component/two_handed, force_unwielded=10, force_wielded=17) //better than the bone spear
 
 /obj/item/forging/reagent_weapon/axe
 	name = "reagent axe"
-	desc = "An axe that can be imbued with a reagent."
+	desc = "An axe that can be imbued with a reagent. Looks balanced for throwing."
 	force = 15
-	wound_bonus = 5
-	bare_wound_bonus = 10
+	armour_penetration = 10
 	icon_state = "axe"
 	inhand_icon_state = "axe"
-	throwforce = 0
+	throwforce = 22 //ouch
+	throw_speed = 4
+	embedding = list("impact_pain_mult" = 2, "remove_pain_mult" = 4, "jostle_chance" = 2.5)
 	slot_flags = ITEM_SLOT_BACK
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = FIRE_PROOF
 	attack_verb_continuous = list("slashes", "bashes")
 	attack_verb_simple = list("slash", "bash")
@@ -136,19 +140,19 @@
 
 /obj/item/forging/reagent_weapon/hammer
 	name = "reagent hammer"
-	desc = "A hammer that can be imbued with a reagent."
-	force = 20
+	desc = "A hammer that can be imbued with a reagent. It packs a real wallop."
+	force = 19 //strong but boring.
 	armour_penetration = 10
 	icon_state = "crush_hammer"
 	inhand_icon_state = "crush_hammer"
-	throwforce = 0
+	throwforce = 10
 	slot_flags = ITEM_SLOT_BACK
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = FIRE_PROOF
 	attack_verb_continuous = list("bashes", "whacks")
 	attack_verb_simple = list("bash", "whack")
 
-/obj/item/shield/riot/buckler/reagent_weapon
+/obj/item/shield/riot/buckler/reagent_weapon //Same as a buckler, but metal.
 	name = "reagent plated buckler shield"
 	desc = "A small, round shield best used in tandem with a melee weapon in close-quarters combat; can be imbued with a reagent."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
@@ -158,9 +162,9 @@
 	righthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_r.dmi'
 	custom_materials = list(/datum/material/iron=1000)
 	resistance_flags = FIRE_PROOF
-	block_chance = 50
+	block_chance = 30
 	transparent = FALSE
-	max_integrity = 150
+	max_integrity = 150 //over double that of a wooden one
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/shield/riot/buckler/reagent_weapon/Initialize()
@@ -192,13 +196,20 @@
 		return
 	return ..()
 
-/obj/item/shield/riot/buckler/reagent_weapon/pavise
+/obj/item/shield/riot/buckler/reagent_weapon/pavise //similar to the adamantine shield. Huge, slow, lets you soak damage and packs a wallop.
 	name = "reagent plated pavise shield"
 	desc = "An oblong shield used by ancient crossbowman as cover while reloading; can be imbued with a reagent."
 	icon_state = "pavise"
 	inhand_icon_state = "pavise"
 	block_chance = 75
 	item_flags = SLOWS_WHILE_IN_HAND
+	w_class = WEIGHT_CLASS_HUGE
+	slot_flags = ITEM_SLOT_BACK
+	max_integrity = 300 //tanky
+
+/obj/item/shield/riot/buckler/reagent_weapon/pavise/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/two_handed, require_twohands=TRUE, force_wielded=15)
 
 /obj/item/pickaxe/reagent_weapon
 	name = "reagent pickaxe"
