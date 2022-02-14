@@ -14,10 +14,18 @@
 		cyborg.maptext_height = 48 //Runechat blabla
 		cyborg.AddElement(/datum/element/footstep, FOOTSTEP_MOB_SHOE, 2, -6, sound_vary = TRUE)
 		add_verb(cyborg, /mob/living/silicon/robot/proc/robot_lay_down)
+		switch(cyborg_base_icon)
+			if("mekamine")
+				cyborg.AddComponent(/datum/component/robot_smoke)
+			else
+
 	else
 		cyborg.maptext_height = initial(cyborg.maptext_height)
 		cyborg.RemoveElement(/datum/element/footstep, FOOTSTEP_MOB_SHOE, 2, -6, sound_vary = TRUE)
 		remove_verb(cyborg, /mob/living/silicon/robot/proc/robot_lay_down)
+		if(cyborg.GetComponent(/datum/component/robot_smoke))
+			qdel(cyborg.GetComponent(/datum/component/robot_smoke))
+			QDEL_NULL(cyborg.particles)	// Removing left over particles
 
 
 /obj/item/robot_model/proc/update_dogborg()
@@ -84,6 +92,7 @@
 	borg_skins = list(
 		"Lavaland" = list(SKIN_ICON_STATE = "miner", SKIN_LIGHT_KEY = "miner"),
 		"Asteroid" = list(SKIN_ICON_STATE = "minerOLD", SKIN_LIGHT_KEY = "miner"),
+		"Meka" = list(SKIN_ICON_STATE = "mekamine", SKIN_ICON = CYBORG_ICON_MINING_TALL, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_UNIQUETIP, R_TRAIT_TALL), SKIN_HAT_OFFSET = 14),
 		"Spider Miner" = list(SKIN_ICON_STATE = "spidermin", SKIN_LIGHT_KEY = "miner"),
 		"Droid" = list(SKIN_ICON_STATE = "miner", SKIN_ICON = CYBORG_ICON_MINING, SKIN_HAT_OFFSET = 4),
 		"Sleek" = list(SKIN_ICON_STATE = "sleekmin", SKIN_ICON = CYBORG_ICON_MINING),
