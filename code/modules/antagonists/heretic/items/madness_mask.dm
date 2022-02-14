@@ -68,7 +68,7 @@
 
 		if(human_in_range.getStaminaLoss() >= 85 && DT_PROB(30, delta_time))
 			human_in_range.emote(pick("giggle", "laugh"))
-			human_in_range.adjustStaminaLoss(10)
+			human_in_range.adjustStaminaLoss(15) //SKYRAT EDIT - Original: 10
 
 		if(DT_PROB(25, delta_time))
 			human_in_range.Dizzy(5)

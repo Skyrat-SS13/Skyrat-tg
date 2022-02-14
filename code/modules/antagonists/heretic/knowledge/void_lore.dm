@@ -42,7 +42,7 @@
 	)
 	required_atoms = list(/obj/item/knife = 1)
 	result_atoms = list(/obj/item/melee/sickly_blade/void)
-	limit = 2
+	limit = 20 //SKYRAT EDIT - ORIGINAL: 2
 	cost = 1
 	route = PATH_VOID
 
