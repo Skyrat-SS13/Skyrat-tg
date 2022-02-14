@@ -39,8 +39,10 @@
 	desc = "Micron Control Systems Incorporated supplied MCR-01 Military spec attachments! This crate comes with two utilitarian repeater loadout."
 	cost = CARGO_CRATE_VALUE * 14
 	contains = list(
-		/obj/item/microfusion_gun_attachment/nt_camo,
-		/obj/item/microfusion_gun_attachment/nt_camo,
+		/obj/item/microfusion_cell_attachment/tactical,
+		/obj/item/microfusion_cell_attachment/tactical,
+		/obj/item/microfusion_cell_attachment/tactical,
+		/obj/item/microfusion_cell_attachment/tactical,
 		/obj/item/microfusion_gun_attachment/grip,
 		/obj/item/microfusion_gun_attachment/grip,
 		/obj/item/microfusion_gun_attachment/rail,
@@ -69,7 +71,7 @@
 
 /datum/supply_pack/security/mcr01_attachments
 	name = "HCR-01 Military Attachments Crate Type H"
-	desc = "Honkicron Clownery Systems Inchonkorated supplied HCR-01 Clownery spec attachments! This crate oddly smells of bananas."
+	desc = "Honkicron Clownery Systems Inhonkorated supplied HCR-01 Clownery spec attachments! This crate oddly smells of bananas."
 	cost = CARGO_CRATE_VALUE * 20
 	contraband = TRUE
 	contains = list(
