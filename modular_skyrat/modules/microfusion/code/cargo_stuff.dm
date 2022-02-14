@@ -36,7 +36,7 @@
 
 /datum/supply_pack/security/mcr01_attachments
 	name = "MCR-01 Military Attachments Crate Type A"
-	desc = "Micron Control Systems Incorporated supplied MCR-01 Military spec attachments! This crate comes in a utilitarian repeater loadout."
+	desc = "Micron Control Systems Incorporated supplied MCR-01 Military spec attachments! This crate comes with two utilitarian repeater loadout."
 	cost = CARGO_CRATE_VALUE * 14
 	contains = list(
 		/obj/item/microfusion_gun_attachment/nt_camo,
