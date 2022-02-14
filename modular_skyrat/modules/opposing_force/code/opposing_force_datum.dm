@@ -69,8 +69,6 @@
 	var/admin_requested_changes = ""
 	/// The ckey of the person that made this application
 	var/ckey
-	/// A weakref to the action button that you can use to open an OPFOR
-	var/datum/weakref/info_button_ref
 
 	COOLDOWN_DECLARE(static/request_update_cooldown)
 	COOLDOWN_DECLARE(static/ping_cooldown)
@@ -87,8 +85,6 @@
 	QDEL_LIST(objectives)
 	QDEL_LIST(admin_chat)
 	QDEL_LIST(modification_log)
-	if(info_button_ref)
-		QDEL_NULL(info_button_ref)
 	return ..()
 
 /datum/opposing_force/Topic(href, list/href_list)
@@ -846,20 +842,6 @@
 
 	return report.Join("\n")
 
-/// Gives the datum holder the OPFOR action button.
-/datum/opposing_force/proc/give_action_button()
-	var/datum/action/opfor/info_button
-	info_button = new(src)
-	info_button.Grant(mind_reference.current)
-	info_button_ref = WEAKREF(info_button)
-
-/// Called when a body transfer on the datum holder's mind occurs, swaps the info button holder.
-/datum/opposing_force/proc/on_body_transfer(mob/living/old_body, mob/living/new_body)
-	var/datum/action/opfor/info_button = info_button_ref?.resolve()
-	if(info_button)
-		info_button.Remove(old_body)
-		info_button.Grant(new_body)
-
 /datum/action/opfor
 	name = "Open Opposing Force Panel"
 	button_icon_state = "round_end"
@@ -868,22 +850,12 @@
 	. = ..()
 	if(!.)
 		return
-
-	if(!(owner.mind.opposing_force in SSopposing_force.unsubmitted_applications) && !(owner.mind.opposing_force in SSopposing_force.submitted_applications) && !(owner.mind.opposing_force in SSopposing_force.approved_applications))
-		SSopposing_force.new_opfor(owner.mind.opposing_force)
-	owner.mind.opposing_force.ui_interact(owner)
+	owner.opposing_force()
 
 /datum/action/opfor/IsAvailable()
 	if(!target)
-		stack_trace("[type] was used without a target antag datum!")
 		return FALSE
 	. = ..()
 	if(!.)
 		return
-	if(!owner.mind)
-		return FALSE
-	if(is_banned_from(owner.ckey, BAN_ANTAGONIST))
-		return FALSE
-	if(is_banned_from(owner.ckey, BAN_OPFOR))
-		return FALSE
 	return TRUE

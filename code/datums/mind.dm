@@ -101,10 +101,7 @@
 	martial_art = default_martial_art
 	init_known_skills()
 	set_assigned_role(SSjob.GetJobType(/datum/job/unassigned)) // Unassigned by default.
-	//SKYRAT EDIT START - OPFOR SYSTEM
-	SSopposing_force.give_opfor_datum(src)
-	opposing_force.give_action_button()
-	//SKYRAT EDIT END
+	SSopposing_force.give_opfor_button() //SKYRAT EDIT - OPFOR SYSTEM
 
 /datum/mind/Destroy()
 	SSticker.minds -= src
@@ -175,11 +172,6 @@
 	if(iscarbon(new_character))
 		var/mob/living/carbon/C = new_character
 		C.last_mind = src
-	// SKYRAT EDIT START - OPFOR SYSTEM
-	if(opposing_force)
-		var/datum/opposing_force/opfor = opposing_force
-		opfor.on_body_transfer(old_current, current)
-	// SKYRAT EDIT END
 	transfer_actions(new_character)
 	transfer_martial_arts(new_character)
 	RegisterSignal(new_character, COMSIG_LIVING_DEATH, .proc/set_death_time)

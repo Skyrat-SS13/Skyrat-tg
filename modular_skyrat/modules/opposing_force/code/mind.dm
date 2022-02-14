@@ -24,6 +24,9 @@
 	if(is_banned_from(ckey, BAN_OPFOR))
 		to_chat(src, span_warning("You are OPFOR banned!"))
 		return
-	if(!(mind.opposing_force in SSopposing_force.unsubmitted_applications) && !(mind.opposing_force in SSopposing_force.submitted_applications) && !(mind.opposing_force in SSopposing_force.approved_applications))
-		SSopposing_force.new_opfor(mind.opposing_force)
+
+	if(!mind.opposing_force)
+		var/datum/opposing_force/opposing_force = new(mind)
+		mind.opposing_force = opposing_force
+		SSopposing_force.new_opfor(opposing_force)
 	mind.opposing_force.ui_interact(usr)

@@ -195,13 +195,8 @@ SUBSYSTEM_DEF(opposing_force)
 
 	return returned_html.Join("<br>")
 
-/**
- * Gives a mind the opfor datum if they don't already have it.
- *
- * Returns TRUE if nothing broke.
-**/
-/datum/controller/subsystem/opposing_force/proc/give_opfor_datum(datum/mind/player_mind)
-	if(!player_mind.opposing_force)
-		var/datum/opposing_force/opposing_force = new(player_mind)
-		player_mind.opposing_force = opposing_force
-	return TRUE
+/// Gives a mind the opfor action button, which calls the opfor verb when pressed
+/datum/controller/subsystem/opposing_force/proc/give_opfor_button(datum/mind/player_mind)
+	var/datum/action/opfor/info_button
+	info_button = new(src)
+	info_button.Grant(player_mind)
