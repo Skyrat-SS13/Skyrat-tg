@@ -7,6 +7,7 @@
 
 //Floors that no longer lead into space (innovative!)
 /turf/open/floor/plating/beach/sand/black_mesa
+	baseturfs = /turf/open/floor/plating/beach/sand/black_mesa
 	name = "sand"
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = TRUE
