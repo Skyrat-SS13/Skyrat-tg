@@ -27,8 +27,8 @@
 		"microfusion_gun_attachment_nt_camo",
 		"microfusion_gun_attachment_heatsink",
 		"microfusion_gun_attachment_rgb",
-		"microfusion_gun_attachment_tactical",
-		"microfusion_gun_attachment_reloader",
+		"microfusion_cell_attachment_tactical",
+		"microfusion_cell_attachment_reloader",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3500)
 
