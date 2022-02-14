@@ -14,7 +14,6 @@
 	name = "shower"
 	desc = "The HS-452. Installed in the 2550s by the Nanotrasen Hygiene Division, now with 2560 lead compliance! Passively replenishes itself with water when not in use."
 	icon = 'icons/obj/watercloset.dmi'
-	layer = WALL_OBJ_LAYER // SKYRAT EDIT - SHOWERS BECOME CLICKABLE
 	icon_state = "shower"
 	density = FALSE
 	use_power = NO_POWER_USE
