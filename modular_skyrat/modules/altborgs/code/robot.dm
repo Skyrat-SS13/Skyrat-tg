@@ -79,5 +79,7 @@
  */
 /mob/living/silicon/robot/proc/can_rest()
 	if(model && model.model_features && ((R_TRAIT_WIDE in model.model_features) || (R_TRAIT_TALL in model.model_features)))
+		if(TRAIT_IMMOBILIZED in status_traits)
+			return FALSE
 		return TRUE
 	return FALSE
