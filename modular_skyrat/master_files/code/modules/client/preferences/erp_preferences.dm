@@ -56,9 +56,6 @@
 /datum/preference/toggle/erp/sex_toy
 	savefile_key = "sextoy_pref"
 
-/datum/preference/toggle/erp/bimbofication
-	savefile_key = "bimbofication_pref"
-
 /datum/preference/toggle/erp/aphro
 	savefile_key = "aphro_pref"
 
