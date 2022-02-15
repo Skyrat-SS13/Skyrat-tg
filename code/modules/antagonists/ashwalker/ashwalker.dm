@@ -33,6 +33,11 @@
 	RegisterSignal(owner.current, COMSIG_MOB_EXAMINATE, .proc/on_examinate)
 	owner.teach_crafting_recipe(/datum/crafting_recipe/skeleton_key)
 	owner.teach_crafting_recipe(/datum/crafting_recipe/ashnecklace) //SKYRAT EDIT DRACONIC NECKLACE//
+	owner.teach_crafting_recipe(/datum/crafting_recipe/bonesword)	//SKYRAT EDIT TRIBAL WEAPONS FOR TRIBALS//
+	owner.teach_crafting_recipe(/datum/crafting_recipe/macahuitl)	//SKYRAT EDIT
+	owner.teach_crafting_recipe(/datum/crafting_recipe/boneaxe)		//SKYRAT EDIT
+	owner.teach_crafting_recipe(/datum/crafting_recipe/bonespear)	//SKYRAT EDIT
+	owner.teach_crafting_recipe(/datum/crafting_recipe/bonedagger)	//SKYRAT EDIT
 
 /datum/antagonist/ashwalker/on_removal()
 	. = ..()
