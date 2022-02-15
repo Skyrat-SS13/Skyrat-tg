@@ -1381,6 +1381,7 @@
 		"pepperspray",
 		"seclite",
 		"zipties",
+		"proto_disabler", // SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 
