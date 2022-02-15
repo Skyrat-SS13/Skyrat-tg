@@ -55,18 +55,14 @@
 
 // The smoke
 /particles/smoke/robot
-	width = 100
-	height = 100
-	spawning = 4
-	lifespan = 1.5 SECONDS
-	fadein = 0.2 SECONDS
-	fade = 1 SECONDS
-	velocity = list(0, 0.4, 0)
-	position = list(6, 0, 0)
-	drift = generator("sphere", 0, 2, NORMAL_RAND)
-	friction = 0.2
-	gravity = list(0, 0.95)
-	grow = 0.05
+	spawning = 1
+	lifespan = 1 SECONDS
+	fade = 0.5 SECONDS
+	velocity = list(0, 0.2, 0)
+	position = list(0, 12, 0)
+	drift = generator("sphere", -2, 2, NORMAL_RAND)
+	friction = 0.35
+	scale = 0.5
 
 
 ////
