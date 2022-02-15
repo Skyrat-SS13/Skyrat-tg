@@ -153,6 +153,10 @@
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	slowdown_inactive = 1.5
 	slowdown_active = 1
+<<<<<<< HEAD
+=======
+	allowed_suit_storage = list(/obj/item/flashlight, /obj/item/tank/internals, /obj/item/watertank/atmos)
+>>>>>>> cb894d853a1 (Makes master compile (fuck) (merge skew moment)  (#64930))
 	skins = list(
 		"atmospheric" = list(
 			HELMET_LAYER = NECK_LAYER,
