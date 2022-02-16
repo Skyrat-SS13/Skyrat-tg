@@ -98,6 +98,11 @@ GENE SCANNER
 	var/advanced = FALSE
 	custom_price = PAYCHECK_HARD
 
+/obj/item/healthanalyzer/Initialize(mapload)
+	. = ..()
+
+	register_item_context()
+
 /obj/item/healthanalyzer/examine(mob/user)
 	. = ..()
 	. += span_notice("Alt-click [src] to toggle the limb damage readout.")
@@ -159,6 +164,24 @@ GENE SCANNER
 	//SKYRAT EDIT END
 	chemscan(user, victim)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/item/healthanalyzer/add_item_context(
+	obj/item/source,
+	list/context,
+	atom/target,
+)
+	if (!isliving(target))
+		return NONE
+
+	switch (scanmode)
+		if (SCANMODE_HEALTH)
+			context[SCREENTIP_CONTEXT_LMB] = "Scan health"
+		if (SCANMODE_WOUND)
+			context[SCREENTIP_CONTEXT_LMB] = "Scan wounds"
+
+	context[SCREENTIP_CONTEXT_RMB] = "Scan chemicals"
+
+	return CONTEXTUAL_SCREENTIP_SET
 
 // Used by the PDA medical scanner too
 /proc/healthscan(mob/user, mob/living/target, mode = SCANNER_VERBOSE, advanced = FALSE)

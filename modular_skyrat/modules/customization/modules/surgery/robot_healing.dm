@@ -27,7 +27,7 @@
 	name = "repair body (welder/cable)"
 	implements = list(TOOL_WELDER = 100, /obj/item/stack/cable_coil = 100)
 	repeatable = TRUE
-	time = 15
+	time = 25
 	var/healsbrute = FALSE
 	var/healsburn = FALSE
 	var/brutehealing = 0
@@ -72,9 +72,11 @@
 		tool.use_tool(target, user, 0, volume=50, amount=1)
 	var/urhealedamt_burn = 0
 	if(healsburn)
+		var/obj/item/stack/cable_coil/cable = tool
 		urhealedamt_burn = burnhealing
-		if(tool)
-			tool.use(1)
+		if(!cable.amount)
+			return
+		cable.use(1)
 	if(missinghpbonus)
 		if(target.stat != DEAD)
 			urhealedamt_brute += round((target.getBruteLoss()/ missinghpbonus),0.1)
@@ -127,3 +129,4 @@
 	brutehealing = 10
 	burnhealing = 10
 	missinghpbonus = 15
+	time = 10
