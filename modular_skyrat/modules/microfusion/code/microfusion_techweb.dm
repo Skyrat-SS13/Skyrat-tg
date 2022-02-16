@@ -51,7 +51,7 @@
 		"microfusion_gun_attachment_scatter",
 		"microfusion_gun_attachment_hellfire",
 		"advanced_microfusion_phase_emitter",
-		"advanced_microfusion_phase_lance",
+		"microfusion_gun_attachment_lance",
 		"microfusion_gun_attachment_grip",
 		"microfusion_gun_attachment_rail",
 		"microfusion_gun_attachment_scope",
