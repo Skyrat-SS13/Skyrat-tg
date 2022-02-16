@@ -10,7 +10,7 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
-	slot_flags = ITEM_SLOT_PENIS|ITEM_SLOT_VAGINA|ITEM_SLOT_NIPPLES|ITEM_SLOT_ANUS
+	slot_flags = ITEM_SLOT_PENIS | ITEM_SLOT_VAGINA | ITEM_SLOT_NIPPLES | ITEM_SLOT_ANUS
 	moth_edible = FALSE
 	var/toy_on = FALSE
 	var/current_color = "pink"
@@ -31,18 +31,17 @@
 		"teal" = image(icon = src.icon, icon_state = "eggvib_teal_low"))
 
 /obj/item/clothing/sextoy/eggvib/AltClick(mob/user, obj/item/I)
-	if(color_changed == FALSE)
-		. = ..()
-		if(.)
-			return
-		var/choice = show_radial_menu(user,src, eggvib_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
-		if(!choice)
-			return FALSE
-		current_color = choice
-		update_icon()
-		color_changed = TRUE
-	else
+	if(color_changed)
 		return
+	. = ..()
+	if(.)
+		return
+	var/choice = show_radial_menu(user,src, eggvib_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+	if(!choice)
+		return FALSE
+	current_color = choice
+	update_icon()
+	color_changed = TRUE
 
 //to check if we can change egg's model
 /obj/item/clothing/sextoy/eggvib/proc/check_menu(mob/living/user)
@@ -64,11 +63,11 @@
 	soundloop3 = new(src, FALSE)
 
 /obj/item/clothing/sextoy/eggvib/Destroy()
+	. = ..()
 	QDEL_NULL(soundloop1)
 	QDEL_NULL(soundloop2)
 	QDEL_NULL(soundloop3)
 	STOP_PROCESSING(SSobj, src)
-	return ..()
 
 /obj/item/clothing/sextoy/eggvib/update_icon_state()
 	. = ..()
@@ -114,10 +113,9 @@
 			vibration_mode = "off"
 			playsound(loc, 'sound/weapons/magout.ogg', 20, TRUE, ignore_walls = FALSE)
 
-/obj/item/clothing/sextoy/eggvib/equipped(mob/user, slot, initial)
+/obj/item/clothing/sextoy/eggvib/equipped(mob/living/carbon/human/user, slot, initial)
 	. = ..()
-	var/mob/living/carbon/human/H = user
-	if(src == H.vagina || src == H.penis || src == H.anus || src == H.nipples)
+	if(is_in_genital(user))
 		START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/sextoy/eggvib/dropped(mob/user, silent)
@@ -125,17 +123,18 @@
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/clothing/sextoy/eggvib/process(delta_time)
+	if(!toy_on)
+		return
 	var/mob/living/carbon/human/U = loc
-	if(toy_on == TRUE)
-		if(vibration_mode == "low")
-			U.adjustArousal(0.5 * delta_time)
-			U.adjustPleasure(0.5 * delta_time)
-		if(vibration_mode == "medium")
-			U.adjustArousal(0.6 * delta_time)
-			U.adjustPleasure(0.6 * delta_time)
-		if(vibration_mode == "high")
-			U.adjustArousal(0.7 * delta_time)
-			U.adjustPleasure(0.7 * delta_time)
+	if(vibration_mode == "low")
+		U.adjustArousal(0.5 * delta_time)
+		U.adjustPleasure(0.5 * delta_time)
+	if(vibration_mode == "medium")
+		U.adjustArousal(0.6 * delta_time)
+		U.adjustPleasure(0.6 * delta_time)
+	if(vibration_mode == "high")
+		U.adjustArousal(0.7 * delta_time)
+		U.adjustPleasure(0.7 * delta_time)
 
 //////////////////////////
 ///Signal vibrating egg///
@@ -148,7 +147,7 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
-	slot_flags = ITEM_SLOT_PENIS|ITEM_SLOT_VAGINA|ITEM_SLOT_NIPPLES|ITEM_SLOT_ANUS
+	slot_flags = ITEM_SLOT_PENIS | ITEM_SLOT_VAGINA | ITEM_SLOT_NIPPLES | ITEM_SLOT_ANUS
 	moth_edible = FALSE
 	var/toy_on = FALSE
 	var/current_color = "pink"
@@ -173,32 +172,31 @@
 //signalling stuff
 
 /obj/item/clothing/sextoy/signalvib/Destroy()
+	. = ..()
 	SSradio.remove_object(src, frequency)
 	QDEL_NULL(soundloop1)
 	QDEL_NULL(soundloop2)
 	QDEL_NULL(soundloop3)
 	STOP_PROCESSING(SSobj, src)
-	return ..()
 
 /obj/item/clothing/sextoy/signalvib/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/clothing/head/helmet))
-		var/obj/item/assembly/shock_kit/A = new /obj/item/assembly/shock_kit(user)
-		A.icon = 'icons/obj/assemblies.dmi'
-
-		if(!user.transferItemToLoc(W, A))
-			to_chat(user, span_warning("[W] is stuck to your hand, you cannot attach it to [src]!"))
-			return
-		W.master = A
-		A.helmet_part = W
-
-		user.transferItemToLoc(src, A, TRUE)
-		master = A
-		A.electropack_part = src
-
-		user.put_in_hands(A)
-		A.add_fingerprint(user)
-	else
+	if(!istype(W, /obj/item/clothing/head/helmet))
 		return ..()
+	var/obj/item/assembly/shock_kit/A = new /obj/item/assembly/shock_kit(user)
+	A.icon = 'icons/obj/assemblies.dmi'
+
+	if(!user.transferItemToLoc(W, A))
+		to_chat(user, span_warning("[W] is stuck to your hand, you cannot attach it to [src]!"))
+		return
+	W.master = A
+	A.helmet_part = W
+
+	user.transferItemToLoc(src, A, TRUE)
+	master = A
+	A.electropack_part = src
+
+	user.put_in_hands(A)
+	A.add_fingerprint(user)
 
 /obj/item/clothing/sextoy/signalvib/proc/set_frequency(new_frequency)
 	SSradio.remove_object(src, frequency)
@@ -218,7 +216,7 @@
 	update_icon_state()
 	update_icon()
 
-	if(toy_on == TRUE)
+	if(toy_on)
 		soundloop1.stop()
 		soundloop2.stop()
 		soundloop3.stop()
@@ -228,27 +226,27 @@
 			soundloop2.start()
 		if(vibration_mode == "high")
 			soundloop3.start()
-
-	if(toy_on == FALSE)
+	else
 		soundloop1.stop()
 		soundloop2.stop()
 		soundloop3.stop()
 
 	//adding messages to chat if vibrator enabled while
-	var/mob/living/carbon/human/U = loc
-	if(toy_on == TRUE)
-		if(src == U.penis || U.vagina || U.anus)
-			to_chat(U, span_purple("You feel pleasant vibrations deep below..."))
-		if(src == U.nipples)
-			to_chat(U, span_purple("You feel pleasant stimulation in your nipples."))
-	if(toy_on == FALSE && (src == U.penis || src == U.vagina || src == U.anus || src == U.nipples))
-		to_chat(U, span_purple("The vibrating toy no longer drives you mad."))
+	var/mob/living/carbon/human/vibrated = loc
+	if(toy_on)
+		if(src == vibrated.penis || vibrated.vagina || vibrated.anus)
+			to_chat(vibrated, span_purple("You feel pleasant vibrations deep below..."))
+		if(src == vibrated.nipples)
+			to_chat(vibrated, span_purple("You feel pleasant stimulation in your nipples."))
+	if(!toy_on && is_in_genital(vibrated))
+		to_chat(vibrated, span_purple("The vibrating toy no longer drives you mad."))
 
-	if(master)
-		if(isassembly(master))
-			var/obj/item/assembly/master_as_assembly = master
-			master_as_assembly.pulsed()
-		master.receive_signal()
+	if(!master)
+		return
+	if(isassembly(master))
+		var/obj/item/assembly/master_as_assembly = master
+		master_as_assembly.pulsed()
+	master.receive_signal()
 
 //create radial menu
 /obj/item/clothing/sextoy/signalvib/proc/populate_signalvib_designs()
@@ -257,7 +255,7 @@
 		"teal" = image(icon = src.icon, icon_state = "signalvib_teal_low_on"))
 
 /obj/item/clothing/sextoy/signalvib/AltClick(mob/user, obj/item/I)
-	if(color_changed == FALSE)
+	if(!color_changed)
 		. = ..()
 		if(.)
 			return
@@ -267,28 +265,25 @@
 		current_color = choice
 		update_icon()
 		color_changed = TRUE
-	if(color_changed == TRUE)
-		if(toy_on == TRUE)
-			toggle_mode()
-			soundloop1.stop()
-			soundloop2.stop()
-			soundloop3.stop()
-			if(vibration_mode == "low")
-				to_chat(user, span_notice("You set the vibration mode to low. Bzzz..."))
-				soundloop1.start()
-			if(vibration_mode == "medium")
-				to_chat(user, span_notice("You set the vibration mode to medium. Bzzzz!"))
-				soundloop2.start()
-			if(vibration_mode == "high")
-				to_chat(user, span_notice("You set the vibration mode to high. Careful with that thing!"))
-				soundloop3.start()
-			update_icon()
-			update_icon_state()
-		else
-			to_chat(usr, span_notice("You can't switch modes while the vibrating egg is turned off!"))
-			return
 	else
-		return
+		if(!toy_on)
+			to_chat(user, span_notice("You can't switch modes while the vibrating egg is turned off!"))
+			return
+		toggle_mode()
+		soundloop1.stop()
+		soundloop2.stop()
+		soundloop3.stop()
+		if(vibration_mode == "low")
+			to_chat(user, span_notice("You set the vibration mode to low. Bzzz..."))
+			soundloop1.start()
+		if(vibration_mode == "medium")
+			to_chat(user, span_notice("You set the vibration mode to medium. Bzzzz!"))
+			soundloop2.start()
+		if(vibration_mode == "high")
+			to_chat(user, span_notice("You set the vibration mode to high. Careful with that thing!"))
+			soundloop3.start()
+		update_icon()
+		update_icon_state()
 
 //to check if we can change egg's model
 /obj/item/clothing/sextoy/signalvib/proc/check_menu(mob/living/user)
@@ -316,7 +311,7 @@
 	if(freq_in_name)
 		name = initial(name) + " - freq: [frequency/10] code: [code]"
 	set_frequency(frequency)
-	.=..()
+	. = ..()
 
 /obj/item/clothing/sextoy/signalvib/ui_state(mob/user)
 	return GLOB.hands_state
@@ -401,10 +396,9 @@
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE, ignore_walls = FALSE)
 
 //Processing
-/obj/item/clothing/sextoy/signalvib/equipped(mob/user, slot, initial)
+/obj/item/clothing/sextoy/signalvib/equipped(mob/living/carbon/human/user, slot, initial)
 	. = ..()
-	var/mob/living/carbon/human/U = src.loc
-	if(src == U.penis || src == U.vagina || src == U.nipples || src == U.anus)
+	if(is_in_genital(user))
 		START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/sextoy/signalvib/dropped(mob/user, silent)
@@ -413,13 +407,14 @@
 
 /obj/item/clothing/sextoy/signalvib/process(delta_time)
 	var/mob/living/carbon/human/U = loc
-	if(toy_on == TRUE)
-		if(vibration_mode == "low")
-			U.adjustArousal(0.5 * delta_time)
-			U.adjustPleasure(0.5 * delta_time)
-		if(vibration_mode == "medium")
-			U.adjustArousal(0.6 * delta_time)
-			U.adjustPleasure(0.6 * delta_time)
-		if(vibration_mode == "high")
-			U.adjustArousal(0.7 * delta_time)
-			U.adjustPleasure(0.7 * delta_time)
+	if(!toy_on)
+		return
+	if(vibration_mode == "low")
+		U.adjustArousal(0.5 * delta_time)
+		U.adjustPleasure(0.5 * delta_time)
+	if(vibration_mode == "medium")
+		U.adjustArousal(0.6 * delta_time)
+		U.adjustPleasure(0.6 * delta_time)
+	if(vibration_mode == "high")
+		U.adjustArousal(0.7 * delta_time)
+		U.adjustPleasure(0.7 * delta_time)
