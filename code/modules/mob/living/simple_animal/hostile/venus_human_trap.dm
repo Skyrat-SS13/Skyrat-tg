@@ -190,12 +190,8 @@
 	vines += newVine
 	if(isliving(the_target))
 		var/mob/living/L = the_target
-<<<<<<< HEAD
-		L.Knockdown(2 SECONDS) //Skyrat EDIT - Removes hardstun, bye!
-=======
 		L.apply_damage(85, STAMINA, BODY_ZONE_CHEST)
 		L.Knockdown(1 SECONDS)
->>>>>>> 69d67de582a (Kudzu nerfs, Venus human trap changes (#64675))
 	ranged_cooldown = world.time + ranged_cooldown_time
 
 /mob/living/simple_animal/hostile/venus_human_trap/Login()
@@ -262,7 +258,6 @@
 
 	vines -= vine
 
-<<<<<<< HEAD
 //SKYRAT EDIT ADDITION
 /mob/living/simple_animal/hostile/venus_human_trap/death(gibbed)
 	for(var/i in vines)
@@ -275,6 +270,5 @@
 		return
 	return ..()
 //SKYRAT EDIT END
-=======
+
 #undef FINAL_BUD_GROWTH_ICON
->>>>>>> 69d67de582a (Kudzu nerfs, Venus human trap changes (#64675))
