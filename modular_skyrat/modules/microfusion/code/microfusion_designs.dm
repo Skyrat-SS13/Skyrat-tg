@@ -21,7 +21,7 @@
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/silver = 500, /datum/material/gold = 500)
 	build_path = /obj/item/microfusion_phase_emitter/advanced
 
-/datum/design/bluespace_microfusion_phase_emitter
+/datum/design/microfusion/bluespace_phase_emitter
 	name = "Bluespace Microfusion Phase Emitter"
 	desc = "The core of a microfusion projection weapon, produces the laser."
 	id = "bluespace_microfusion_phase_emitter"
