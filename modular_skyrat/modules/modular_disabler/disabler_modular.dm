@@ -28,7 +28,9 @@
 	shoot_live_shot(mob/living/user, pointblank = 0, atom/pbtarget = null, message = 1)
 		. = ..()
 		var/obj/item/ammo_casing/energy/shot = ammo_type[select]
-		switch(shot.select_name)
+		var/reload_speed = rand(shot.lower_reload_speed, shot.upper_reload_speed)
+		attempt_reload(reload_speed)
+/* 		switch(shot.select_name)
 			if(SHOT_DISABLE)
 				attempt_reload()
 			if(SHOT_SCATTER)
@@ -50,7 +52,7 @@
 			if(SHOT_DROWSY)
 				attempt_reload(rand(15,25))
 			if(SHOT_WARCRIME)
-				attempt_reload(rand(35,60))
+				attempt_reload(rand(35,60)) */
 
 	equipped(mob/user)
 		. = ..()
