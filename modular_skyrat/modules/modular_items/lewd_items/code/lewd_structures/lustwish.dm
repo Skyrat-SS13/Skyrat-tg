@@ -35,6 +35,8 @@
 					/obj/item/restraints/handcuffs/lewd = 8,
 					/obj/item/key/collar = 48,
 					/obj/item/pillow = 32, //cmon, why there is always 0 pillows, where do you guys stuff it.
+					/obj/item/stack/shibari_rope/full = 10,
+					/obj/item/stack/shibari_rope/glow/full = 10,
 
 					//clothing facial/head
 					/obj/item/clothing/mask/ballgag = 8,
@@ -104,7 +106,8 @@
 					/obj/item/storage/box/bdsmbed_kit = 4,
 					/obj/item/storage/box/strippole_kit = 4,
 					/obj/item/storage/box/xstand_kit = 4,
-					/obj/item/storage/box/milking_kit = 4)
+					/obj/item/storage/box/milking_kit = 4,
+					/obj/item/storage/box/shibari_stand = 4)
 
 	premium = list(
 		/obj/item/clothing/under/dress/corset = 4,

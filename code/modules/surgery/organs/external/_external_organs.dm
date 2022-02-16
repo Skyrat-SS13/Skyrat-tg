@@ -120,6 +120,10 @@
 			return "_ADJ"
 		if(BODY_FRONT_LAYER)
 			return "_FRONT"
+		//SKYRAT EDIT ADDITION BEGIN
+		if(BODY_FRONT_UNDER_CLOTHES)
+			return "_FRONT"
+		//SKYRAT EDIT ADDITION END
 
 ///Converts a bitflag to the right layer. I'd love to make this a static index list, but byond made an attempt on my life when i did
 /obj/item/organ/external/proc/bitflag_to_layer(layer)
