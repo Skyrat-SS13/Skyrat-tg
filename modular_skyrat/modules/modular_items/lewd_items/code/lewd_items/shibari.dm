@@ -4,10 +4,10 @@
 #define ROPE_TIGHTNESS_HIGH (1<<2)
 
 /obj/item/stack/shibari_rope
-	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
-	icon_state = "shibari_rope"
 	name = "shibari ropes"
 	desc = "Coil of bondage ropes."
+	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
+	icon_state = "shibari_rope"
 	amount = 1
 	merge_type = /obj/item/stack/shibari_rope
 	singular_name = "rope"
@@ -104,36 +104,194 @@
 
 	if(get_dist(user, src) > 1)
 		return
-	if(ishuman(attacked))
-		if(attacked.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
-			switch(user.zone_selected)
-				if(BODY_ZONE_L_LEG)
-					INVOKE_ASYNC(src, .proc/handle_leg_tying, attacked, user)
-					return COMPONENT_CANCEL_ATTACK_CHAIN
-				if(BODY_ZONE_R_LEG)
-					INVOKE_ASYNC(src, .proc/handle_leg_tying, attacked, user)
-					return COMPONENT_CANCEL_ATTACK_CHAIN
-				if(BODY_ZONE_PRECISE_GROIN)
-					INVOKE_ASYNC(src, .proc/handle_groin_tying, attacked, user)
-					return COMPONENT_CANCEL_ATTACK_CHAIN
-				if(BODY_ZONE_CHEST)
-					INVOKE_ASYNC(src, .proc/handle_chest_tying, attacked, user)
-					return COMPONENT_CANCEL_ATTACK_CHAIN
-				if(BODY_ZONE_L_ARM)
-					INVOKE_ASYNC(src, .proc/handle_arm_tying, attacked, user)
-					return COMPONENT_CANCEL_ATTACK_CHAIN
-				if(BODY_ZONE_R_ARM)
-					INVOKE_ASYNC(src, .proc/handle_arm_tying, attacked, user)
-					return COMPONENT_CANCEL_ATTACK_CHAIN
-		else
-			to_chat(user, span_danger("Looks like [attacked] doesn't want you to do that."))
+	if(!ishuman(attacked))
+		return
+	if(!attacked.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+		to_chat(user, span_danger("Looks like [attacked] doesn't want you to do that."))
+		return
+	switch(user.zone_selected)
+		if(BODY_ZONE_L_LEG)
+			INVOKE_ASYNC(src, .proc/handle_leg_tying, attacked, user)
+			return COMPONENT_CANCEL_ATTACK_CHAIN
+		if(BODY_ZONE_R_LEG)
+			INVOKE_ASYNC(src, .proc/handle_leg_tying, attacked, user)
+			return COMPONENT_CANCEL_ATTACK_CHAIN
+		if(BODY_ZONE_PRECISE_GROIN)
+			INVOKE_ASYNC(src, .proc/handle_groin_tying, attacked, user)
+			return COMPONENT_CANCEL_ATTACK_CHAIN
+		if(BODY_ZONE_CHEST)
+			INVOKE_ASYNC(src, .proc/handle_chest_tying, attacked, user)
+			return COMPONENT_CANCEL_ATTACK_CHAIN
+		if(BODY_ZONE_L_ARM)
+			INVOKE_ASYNC(src, .proc/handle_arm_tying, attacked, user)
+			return COMPONENT_CANCEL_ATTACK_CHAIN
+		if(BODY_ZONE_R_ARM)
+			INVOKE_ASYNC(src, .proc/handle_arm_tying, attacked, user)
+			return COMPONENT_CANCEL_ATTACK_CHAIN
+
 
 /obj/item/stack/shibari_rope/proc/handle_groin_tying(mob/living/carbon/human/them, mob/living/user)
-	if(!(them.w_uniform))
-		them.visible_message(span_warning("[user] starts tying [them]'s groin!"),\
-			span_userdanger("[user] starts tying your groin!"),\
-			span_hear("You hear ropes being tightened."))
-		if(do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+	if(istype(them.w_uniform, /obj/item/clothing/under/shibari/torso))
+		handle_fullbody_tying(them, user)
+		return
+	else if(them.w_uniform)
+		to_chat(user, span_warning("They're already wearing something on this slot!"))
+		return
+	them.visible_message(span_warning("[user] starts tying [them]'s groin!"),\
+		span_userdanger("[user] starts tying your groin!"),\
+		span_hear("You hear ropes being tightened."))
+	if(!do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+		return
+	var/obj/item/stack/shibari_rope/split_rope = null
+	var/slow = 0
+	if(them?.dna?.mutant_bodyparts["taur"])
+		var/datum/sprite_accessory/taur/S = GLOB.sprite_accessories["taur"][them.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
+		if(S.hide_legs)
+			split_rope = split_stack(null, 2)
+			slow = 4
+		else
+			split_rope = split_stack(null, 1)
+	else
+		split_rope = split_stack(null, 1)
+	if(split_rope)
+		shibari_groin = new(src)
+		shibari_groin.slowdown = slow
+		shibari_groin.set_greyscale(greyscale_colors)
+		shibari_groin.glow = glow
+		split_rope.forceMove(shibari_groin)
+		if(them.equip_to_slot_if_possible(shibari_groin,ITEM_SLOT_ICLOTHING,TRUE,FALSE,TRUE))
+			shibari_groin.tightness = tightness
+			shibari_groin = null
+			them.visible_message(span_warning("[user] tied [them]'s groin!"),\
+				span_userdanger("[user] tied your groin!"),\
+				span_hear("You hear ropes being completely tightened."))
+	else
+		to_chat(user, span_warning("You don't have enough ropes!"))
+
+
+
+/obj/item/stack/shibari_rope/proc/handle_chest_tying(mob/living/carbon/human/them, mob/living/user)
+	if(istype(them.w_uniform, /obj/item/clothing/under/shibari/groin))
+		handle_fullbody_tying(them, user)
+		return
+	else if(them.w_uniform)
+		to_chat(user, span_warning("They're already wearing something on this slot!"))
+		return
+	them.visible_message(span_warning("[user] starts tying [them]'s chest!"),\
+		span_userdanger("[user] starts tying your chest!"),\
+		span_hear("You hear ropes being tightened."))
+	if(!do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+		return
+	var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
+	if(split_rope)
+		shibari_body = new(src)
+		shibari_body.set_greyscale(greyscale_colors)
+		shibari_body.glow = glow
+		split_rope.forceMove(shibari_body)
+		if(them.equip_to_slot_if_possible(shibari_body,ITEM_SLOT_ICLOTHING,TRUE,FALSE,TRUE))
+			shibari_body.tightness = tightness
+			shibari_body = null
+			them.visible_message(span_warning("[user] tied [them]'s chest!"),\
+				span_userdanger("[user] tied your chest!"),\
+				span_hear("You hear ropes being completely tightened."))
+	else
+		to_chat(user, span_warning("You don't have enough ropes!"))
+
+/obj/item/stack/shibari_rope/proc/handle_arm_tying(mob/living/carbon/human/them, mob/living/user)
+	if(them.gloves)
+		to_chat(user, span_warning("They're already wearing something on this slot!"))
+		return
+	them.visible_message(span_warning("[user] starts tying [them]'s hands!"),\
+		span_userdanger("[user] starts tying your hands!"),\
+		span_hear("You hear ropes being tightened."))
+	if(!do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+		return
+	var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
+	if(split_rope)
+		shibari_hands = new(src)
+		shibari_hands.set_greyscale(greyscale_colors)
+		shibari_hands.glow = glow
+		split_rope.forceMove(shibari_hands)
+		if(them.equip_to_slot_if_possible(shibari_hands,ITEM_SLOT_GLOVES,TRUE,FALSE,TRUE))
+			shibari_hands = null
+			them.visible_message(span_warning("[user] tied [them]'s hands!"),\
+				span_userdanger("[user] tied your hands!"),\
+				span_hear("You hear ropes being completely tightened."))
+	else
+		to_chat(user, span_warning("You don't have enough ropes!"))
+
+
+/obj/item/stack/shibari_rope/proc/handle_leg_tying(mob/living/carbon/human/them, mob/living/user)
+	if(them.shoes)
+		to_chat(user, span_warning("They're already wearing something on this slot!"))
+		return
+	if(them?.dna?.mutant_bodyparts["taur"])
+		var/datum/sprite_accessory/taur/S = GLOB.sprite_accessories["taur"][them.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
+		if(S.hide_legs)
+			to_chat(user, span_warning("You can't tie their feet, they're a taur!"))
+			return
+	them.visible_message(span_warning("[user] starts tying [them]'s feet!"),\
+		span_userdanger("[user] starts tying your feet!"),\
+		span_hear("You hear ropes being tightened."))
+	if(!do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+		return
+	var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
+	if(split_rope)
+		shibari_legs = new(src)
+		shibari_legs.set_greyscale(greyscale_colors)
+		shibari_legs.glow = glow
+		split_rope.forceMove(shibari_legs)
+		if(them.equip_to_slot_if_possible(shibari_legs,ITEM_SLOT_FEET,TRUE,FALSE,TRUE))
+			shibari_legs = null
+			them.visible_message(span_warning("[user] tied [them]'s feet!"),\
+				span_userdanger("[user] tied your feet!"),\
+				span_hear("You hear ropes being completely tightened."))
+	else
+		to_chat(user, span_warning("You don't have enough ropes!"))
+
+
+/obj/item/stack/shibari_rope/proc/handle_fullbody_tying(mob/living/carbon/human/them, mob/living/user)
+	switch(user.zone_selected)
+		if(BODY_ZONE_CHEST)
+			them.visible_message(span_warning("[user] starts tying [them]'s chest!"),\
+				span_userdanger("[user] starts tying your chest!"),\
+				span_hear("You hear ropes being tightened."))
+			if(!do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+				return
+			var/slow = 0
+			if(them?.dna?.mutant_bodyparts["taur"])
+				var/datum/sprite_accessory/taur/S = GLOB.sprite_accessories["taur"][them.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
+				if(S.hide_legs)
+					slow = 4
+			var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
+			if(split_rope)
+				var/obj/item/clothing/under/shibari/body_rope = them.w_uniform
+				if(body_rope.glow == split_rope.glow)
+					shibari_fullbody = new(src)
+					shibari_fullbody.slowdown = slow
+					shibari_fullbody.glow = glow
+					split_rope.forceMove(shibari_fullbody)
+					for(var/obj/thing in body_rope.contents)
+						thing.forceMove(shibari_fullbody)
+					shibari_fullbody.set_greyscale(list(greyscale_colors, body_rope.greyscale_colors))
+					qdel(them.w_uniform)
+					if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,TRUE,FALSE,TRUE))
+						shibari_fullbody.tightness = tightness
+						shibari_fullbody = null
+						them.visible_message(span_warning("[user] tied [them]'s chest!"),\
+							span_userdanger("[user] tied your chest!"),\
+							span_hear("You hear ropes being completely tightened."))
+				else
+					to_chat(user, span_warning("You can't mix these types of ropes!"))
+					split_rope.forceMove(get_turf(them))
+			else
+				to_chat(user, span_warning("You don't have enough ropes!"))
+		if(BODY_ZONE_PRECISE_GROIN)
+			them.visible_message(span_warning("[user] starts tying [them]'s groin!"),\
+				span_userdanger("[user] starts tying your groin!"),\
+				span_hear("You hear ropes being tightened."))
+			if(!do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+				return
 			var/obj/item/stack/shibari_rope/split_rope = null
 			var/slow = 0
 			if(them?.dna?.mutant_bodyparts["taur"])
@@ -146,172 +304,27 @@
 			else
 				split_rope = split_stack(null, 1)
 			if(split_rope)
-				shibari_groin = new(src)
-				shibari_groin.slowdown = slow
-				shibari_groin.set_greyscale(greyscale_colors)
-				shibari_groin.glow = glow
-				split_rope.forceMove(shibari_groin)
-				if(them.equip_to_slot_if_possible(shibari_groin,ITEM_SLOT_ICLOTHING,TRUE,FALSE,TRUE))
-					shibari_groin.tightness = tightness
-					shibari_groin = null
-					them.visible_message(span_warning("[user] tied [them]'s groin!"),\
-						span_userdanger("[user] tied your groin!"),\
-						span_hear("You hear ropes being completely tightened."))
-			else
-				to_chat(user, span_warning("You don't have enough ropes!"))
-	else if(istype(them.w_uniform, /obj/item/clothing/under/shibari/torso))
-		handle_fullbody_tying(them, user)
-	else
-		to_chat(user, span_warning("They're already wearing something on this slot!"))
-
-
-/obj/item/stack/shibari_rope/proc/handle_chest_tying(mob/living/carbon/human/them, mob/living/user)
-	if(!(them.w_uniform))
-		them.visible_message(span_warning("[user] starts tying [them]'s chest!"),\
-			span_userdanger("[user] starts tying your chest!"),\
-			span_hear("You hear ropes being tightened."))
-		if(do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
-			var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
-			if(split_rope)
-				shibari_body = new(src)
-				shibari_body.set_greyscale(greyscale_colors)
-				shibari_body.glow = glow
-				split_rope.forceMove(shibari_body)
-				if(them.equip_to_slot_if_possible(shibari_body,ITEM_SLOT_ICLOTHING,TRUE,FALSE,TRUE))
-					shibari_body.tightness = tightness
-					shibari_body = null
-					them.visible_message(span_warning("[user] tied [them]'s chest!"),\
-						span_userdanger("[user] tied your chest!"),\
-						span_hear("You hear ropes being completely tightened."))
-			else
-				to_chat(user, span_warning("You don't have enough ropes!"))
-	else if(istype(them.w_uniform, /obj/item/clothing/under/shibari/groin))
-		handle_fullbody_tying(them, user)
-	else
-		to_chat(user, span_warning("They're already wearing something on this slot!"))
-
-/obj/item/stack/shibari_rope/proc/handle_arm_tying(mob/living/carbon/human/them, mob/living/user)
-	if(!(them.gloves))
-		them.visible_message(span_warning("[user] starts tying [them]'s hands!"),\
-			span_userdanger("[user] starts tying your hands!"),\
-			span_hear("You hear ropes being tightened."))
-		if(do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
-			var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
-			if(split_rope)
-				shibari_hands = new(src)
-				shibari_hands.set_greyscale(greyscale_colors)
-				shibari_hands.glow = glow
-				split_rope.forceMove(shibari_hands)
-				if(them.equip_to_slot_if_possible(shibari_hands,ITEM_SLOT_GLOVES,TRUE,FALSE,TRUE))
-					shibari_hands = null
-					them.visible_message(span_warning("[user] tied [them]'s hands!"),\
-						span_userdanger("[user] tied your hands!"),\
-						span_hear("You hear ropes being completely tightened."))
-			else
-				to_chat(user, span_warning("You don't have enough ropes!"))
-	else
-		to_chat(user, span_warning("They're already wearing something on this slot!"))
-
-/obj/item/stack/shibari_rope/proc/handle_leg_tying(mob/living/carbon/human/them, mob/living/user)
-	if(!(them.shoes))
-		if(them?.dna?.mutant_bodyparts["taur"])
-			var/datum/sprite_accessory/taur/S = GLOB.sprite_accessories["taur"][them.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
-			if(S.hide_legs)
-				to_chat(user, span_warning("You can't tie their feet, they're a taur!"))
-				return
-		them.visible_message(span_warning("[user] starts tying [them]'s feet!"),\
-			span_userdanger("[user] starts tying your feet!"),\
-			span_hear("You hear ropes being tightened."))
-		if(do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
-			var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
-			if(split_rope)
-				shibari_legs = new(src)
-				shibari_legs.set_greyscale(greyscale_colors)
-				shibari_legs.glow = glow
-				split_rope.forceMove(shibari_legs)
-				if(them.equip_to_slot_if_possible(shibari_legs,ITEM_SLOT_FEET,TRUE,FALSE,TRUE))
-					shibari_legs = null
-					them.visible_message(span_warning("[user] tied [them]'s feet!"),\
-						span_userdanger("[user] tied your feet!"),\
-						span_hear("You hear ropes being completely tightened."))
-			else
-				to_chat(user, span_warning("You don't have enough ropes!"))
-	else
-		to_chat(user, span_warning("They're already wearing something on this slot!"))
-
-/obj/item/stack/shibari_rope/proc/handle_fullbody_tying(mob/living/carbon/human/them, mob/living/user)
-	switch(user.zone_selected)
-		if(BODY_ZONE_CHEST)
-			them.visible_message(span_warning("[user] starts tying [them]'s chest!"),\
-				span_userdanger("[user] starts tying your chest!"),\
-				span_hear("You hear ropes being tightened."))
-			if(do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
-				var/slow = 0
-				if(them?.dna?.mutant_bodyparts["taur"])
-					var/datum/sprite_accessory/taur/S = GLOB.sprite_accessories["taur"][them.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
-					if(S.hide_legs)
-						slow = 4
-				var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
-				if(split_rope)
-					var/obj/item/clothing/under/shibari/body_rope = them.w_uniform
-					if(body_rope.glow == split_rope.glow)
-						shibari_fullbody = new(src)
-						shibari_fullbody.slowdown = slow
-						shibari_fullbody.glow = glow
-						split_rope.forceMove(shibari_fullbody)
-						for(var/obj/thing in body_rope.contents)
-							thing.forceMove(shibari_fullbody)
-						shibari_fullbody.set_greyscale(list(greyscale_colors, body_rope.greyscale_colors))
-						qdel(them.w_uniform)
-						if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,TRUE,FALSE,TRUE))
-							shibari_fullbody.tightness = tightness
-							shibari_fullbody = null
-							them.visible_message(span_warning("[user] tied [them]'s chest!"),\
-								span_userdanger("[user] tied your chest!"),\
-								span_hear("You hear ropes being completely tightened."))
-					else
-						to_chat(user, span_warning("You can't mix these types of ropes!"))
-						split_rope.forceMove(get_turf(them))
+				var/obj/item/clothing/under/shibari/body_rope = them.w_uniform
+				if(body_rope.glow == split_rope.glow)
+					shibari_fullbody = new(src)
+					shibari_fullbody.slowdown = slow
+					shibari_fullbody.glow = glow
+					split_rope.forceMove(shibari_fullbody)
+					for(var/obj/thing in body_rope.contents)
+						thing.forceMove(shibari_fullbody)
+					shibari_fullbody.set_greyscale(list(body_rope.greyscale_colors, greyscale_colors))
+					qdel(them.w_uniform)
+					if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,TRUE,FALSE,TRUE))
+						shibari_fullbody.tightness = tightness
+						shibari_fullbody = null
+						them.visible_message(span_warning("[user] tied [them]'s groin!"),\
+							span_userdanger("[user] tied your groin!"),\
+							span_hear("You hear ropes being completely tightened."))
 				else
-					to_chat(user, span_warning("You don't have enough ropes!"))
-		if(BODY_ZONE_PRECISE_GROIN)
-			them.visible_message(span_warning("[user] starts tying [them]'s groin!"),\
-				span_userdanger("[user] starts tying your groin!"),\
-				span_hear("You hear ropes being tightened."))
-			if(do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
-				var/obj/item/stack/shibari_rope/split_rope = null
-				var/slow = 0
-				if(them?.dna?.mutant_bodyparts["taur"])
-					var/datum/sprite_accessory/taur/S = GLOB.sprite_accessories["taur"][them.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
-					if(S.hide_legs)
-						split_rope = split_stack(null, 2)
-						slow = 4
-					else
-						split_rope = split_stack(null, 1)
-				else
-					split_rope = split_stack(null, 1)
-				if(split_rope)
-					var/obj/item/clothing/under/shibari/body_rope = them.w_uniform
-					if(body_rope.glow == split_rope.glow)
-						shibari_fullbody = new(src)
-						shibari_fullbody.slowdown = slow
-						shibari_fullbody.glow = glow
-						split_rope.forceMove(shibari_fullbody)
-						for(var/obj/thing in body_rope.contents)
-							thing.forceMove(shibari_fullbody)
-						shibari_fullbody.set_greyscale(list(body_rope.greyscale_colors, greyscale_colors))
-						qdel(them.w_uniform)
-						if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,TRUE,FALSE,TRUE))
-							shibari_fullbody.tightness = tightness
-							shibari_fullbody = null
-							them.visible_message(span_warning("[user] tied [them]'s groin!"),\
-								span_userdanger("[user] tied your groin!"),\
-								span_hear("You hear ropes being completely tightened."))
-					else
-						to_chat(user, span_warning("You can't mix these type of ropes!"))
-						split_rope.forceMove(get_turf(them))
-				else
-					to_chat(user, span_warning("You don't have enough ropes!"))
+					to_chat(user, span_warning("You can't mix these type of ropes!"))
+					split_rope.forceMove(get_turf(them))
+			else
+				to_chat(user, span_warning("You don't have enough ropes!"))
 
 ///This part of code required for tightness adjustment. You can change tightness of future shibari bondage on character by clicking on ropes.
 

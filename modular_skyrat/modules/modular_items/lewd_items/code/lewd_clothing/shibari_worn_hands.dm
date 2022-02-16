@@ -27,13 +27,14 @@
 		. += emissive_appearance(standing.icon, standing.icon_state, alpha = 100)
 
 /obj/item/clothing/gloves/shibari_hands/Destroy()
-	if(ishuman(loc))
-		var/mob/living/carbon/human/hooman = loc
-		if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
-			hooman.remove_status_effect(/datum/status_effect/ropebunny)
 	for(var/obj/item in contents)
 		item.forceMove(get_turf(src))
-	. = ..()
+	if(!ishuman(loc))
+		return ..()
+	var/mob/living/carbon/human/hooman = loc
+	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
+		hooman.remove_status_effect(/datum/status_effect/ropebunny)
+	return ..()
 
 /obj/item/clothing/gloves/shibari_hands/ComponentInitialize()
 	. = ..()
@@ -42,16 +43,18 @@
 //stuff to apply mood event for perverts
 /obj/item/clothing/gloves/shibari_hands/equipped(mob/user, slot)
 	. = ..()
-	if(ishuman(user))
-		var/mob/living/carbon/human/hooman = user
-		if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
-			hooman.apply_status_effect(/datum/status_effect/ropebunny)
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/hooman = user
+	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
+		hooman.apply_status_effect(/datum/status_effect/ropebunny)
 
 //same stuff as above but for dropping item
 /obj/item/clothing/gloves/shibari_hands/dropped(mob/user, slot)
-	if(ishuman(user))
-		var/mob/living/carbon/human/hooman = user
-		if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
-			hooman.remove_status_effect(/datum/status_effect/ropebunny)
-	. = ..()
+	if(!ishuman(user))
+		return ..()
+	var/mob/living/carbon/human/hooman = user
+	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
+		hooman.remove_status_effect(/datum/status_effect/ropebunny)
+	return ..()
 

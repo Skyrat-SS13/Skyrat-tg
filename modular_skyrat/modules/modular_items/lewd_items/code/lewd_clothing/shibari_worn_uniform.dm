@@ -33,11 +33,12 @@
 
 	for(var/obj/item in contents)
 		item.forceMove(get_turf(src))
-	if(ishuman(loc))
-		var/mob/living/carbon/human/hooman = loc
-		if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
-			hooman.remove_status_effect(/datum/status_effect/ropebunny)
-	. = ..()
+	if(!ishuman(loc))
+		return ..()
+	var/mob/living/carbon/human/hooman = loc
+	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
+		hooman.remove_status_effect(/datum/status_effect/ropebunny)
+	return ..()
 
 /obj/item/clothing/under/shibari/equipped(mob/user, slot)
 	. = ..()
@@ -50,10 +51,11 @@
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /obj/item/clothing/under/shibari/proc/handle_take_off_async(mob/user)
-	if(ishuman(user))
-		var/mob/living/carbon/human/hooman = user
-		if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
-			dropped(user)
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/hooman = user
+	if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
+		dropped(user)
 
 /obj/item/clothing/under/shibari/ComponentInitialize()
 	. = ..()
@@ -61,46 +63,54 @@
 
 /obj/item/clothing/under/shibari/AltClick(mob/user)
 	. = ..()
-	if(ishuman(loc))
-		var/mob/living/carbon/human/hooman = loc
-		if(user != hooman)
-			switch(tightness)
-				if(SHIBARI_TIGHTNESS_LOW)
-					tightness = SHIBARI_TIGHTNESS_MED
-				if(SHIBARI_TIGHTNESS_MED)
-					tightness = SHIBARI_TIGHTNESS_HIGH
-				if(SHIBARI_TIGHTNESS_HIGH)
-					tightness = SHIBARI_TIGHTNESS_LOW
+	if(!ishuman(loc))
+		return
+	var/mob/living/carbon/human/hooman = loc
+	if(user == hooman)
+		return
+	switch(tightness)
+		if(SHIBARI_TIGHTNESS_LOW)
+			tightness = SHIBARI_TIGHTNESS_MED
+		if(SHIBARI_TIGHTNESS_MED)
+			tightness = SHIBARI_TIGHTNESS_HIGH
+		if(SHIBARI_TIGHTNESS_HIGH)
+			tightness = SHIBARI_TIGHTNESS_LOW
 
 /obj/item/clothing/under/shibari/process(delta_time)
-	if(ishuman(loc))
-		var/mob/living/carbon/human/hooman = loc
-		if(tightness == SHIBARI_TIGHTNESS_LOW && hooman.arousal < 15)
-			hooman.adjustArousal(0.6 * delta_time)
-		if(tightness == SHIBARI_TIGHTNESS_MED && hooman.arousal < 25)
-			hooman.adjustArousal(0.6 * delta_time)
-		if(tightness == SHIBARI_TIGHTNESS_HIGH && hooman.arousal < 30)
-			hooman.adjustArousal(0.6 * delta_time)
-	else
+	if(!ishuman(loc))
 		return PROCESS_KILL
+	var/mob/living/carbon/human/hooman = loc
+	//If our client decides to disable their pref mid "roleplaying" for some reason
+	if(!hooman?.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+		src.forceMove(get_turf(src))
+		src.dropped(hooman)
+		return PROCESS_KILL
+	if(tightness == SHIBARI_TIGHTNESS_LOW && hooman.arousal < 15)
+		hooman.adjustArousal(0.6 * delta_time)
+	if(tightness == SHIBARI_TIGHTNESS_MED && hooman.arousal < 25)
+		hooman.adjustArousal(0.6 * delta_time)
+	if(tightness == SHIBARI_TIGHTNESS_HIGH && hooman.arousal < 30)
+		hooman.adjustArousal(0.6 * delta_time)
 
 //stuff to apply processing on equip and add mood event for perverts
 /obj/item/clothing/under/shibari/equipped(mob/user, slot)
 	. = ..()
-	if(ishuman(user))
-		var/mob/living/carbon/human/hooman = user
-		if(src == hooman.w_uniform)
-			START_PROCESSING(SSobj, src)
-		if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
-			hooman.apply_status_effect(/datum/status_effect/ropebunny)
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/hooman = user
+	if(src == hooman.w_uniform)
+		START_PROCESSING(SSobj, src)
+	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
+		hooman.apply_status_effect(/datum/status_effect/ropebunny)
 
 //same stuff as above but for dropping item
 /obj/item/clothing/under/shibari/dropped(mob/user, slot)
-	if(ishuman(user))
-		var/mob/living/carbon/human/hooman = user
-		if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
-			hooman.remove_status_effect(/datum/status_effect/ropebunny)
-	. = ..()
+	if(!ishuman(user))
+		return ..()
+	var/mob/living/carbon/human/hooman = user
+	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
+		hooman.remove_status_effect(/datum/status_effect/ropebunny)
+	return..()
 
 /obj/item/clothing/under/shibari/torso
 	name = "shibari ropes"
@@ -118,13 +128,11 @@
 //processing stuff
 /obj/item/clothing/under/shibari/torso/process(delta_time)
 	. = ..()
-	if(ishuman(loc))
-		var/mob/living/carbon/human/hooman = loc
-		if(tightness == SHIBARI_TIGHTNESS_HIGH && hooman.pain < 30)
-			if(hooman.pain < 25)
-				hooman.adjustPain(0.6 * delta_time)
-	else
-		return PROCESS_KILL
+	if(. == PROCESS_KILL)
+		return
+	var/mob/living/carbon/human/hooman = loc
+	if(tightness == SHIBARI_TIGHTNESS_HIGH && hooman.pain < 25)
+		hooman.adjustPain(0.6 * delta_time)
 
 /obj/item/clothing/under/shibari/groin
 	name = "crotch rope shibari"
@@ -151,16 +159,15 @@
 //processing stuff
 /obj/item/clothing/under/shibari/groin/process(delta_time)
 	. = ..()
-	if(ishuman(loc))
-		var/mob/living/carbon/human/hooman = loc
-		if(tightness == SHIBARI_TIGHTNESS_LOW && hooman.pleasure < 20)
-			hooman.adjustPleasure(0.6 * delta_time)
-		if(tightness == SHIBARI_TIGHTNESS_MED && hooman.pleasure < 60)
-			hooman.adjustPleasure(0.6 * delta_time)
-		if(tightness == SHIBARI_TIGHTNESS_HIGH)
-			hooman.adjustPleasure(0.6 * delta_time)
-	else
-		return PROCESS_KILL
+	if(. == PROCESS_KILL)
+		return
+	var/mob/living/carbon/human/hooman = loc
+	if(tightness == SHIBARI_TIGHTNESS_LOW && hooman.pleasure < 20)
+		hooman.adjustPleasure(0.6 * delta_time)
+	if(tightness == SHIBARI_TIGHTNESS_MED && hooman.pleasure < 60)
+		hooman.adjustPleasure(0.6 * delta_time)
+	if(tightness == SHIBARI_TIGHTNESS_HIGH)
+		hooman.adjustPleasure(0.6 * delta_time)
 
 /obj/item/clothing/under/shibari/full
 	name = "shibari fullbody ropes"
@@ -179,18 +186,17 @@
 //processing stuff
 /obj/item/clothing/under/shibari/full/process(delta_time)
 	. = ..()
-	if(ishuman(loc))
-		var/mob/living/carbon/human/hooman = loc
-		if(tightness == SHIBARI_TIGHTNESS_LOW && hooman.pleasure< 20)
-			hooman.adjustPleasure(0.6 * delta_time)
-		if(tightness == SHIBARI_TIGHTNESS_MED && hooman.pleasure < 60)
-			hooman.adjustPleasure(0.6 * delta_time)
-		if(tightness == SHIBARI_TIGHTNESS_HIGH)
-			hooman.adjustPleasure(0.6 * delta_time)
-			if(hooman.pain < 40)
-				hooman.adjustPain(0.6 * delta_time)
-	else
-		return PROCESS_KILL
+	if(. == PROCESS_KILL)
+		return
+	var/mob/living/carbon/human/hooman = loc
+	if(tightness == SHIBARI_TIGHTNESS_LOW && hooman.pleasure< 20)
+		hooman.adjustPleasure(0.6 * delta_time)
+	if(tightness == SHIBARI_TIGHTNESS_MED && hooman.pleasure < 60)
+		hooman.adjustPleasure(0.6 * delta_time)
+	if(tightness == SHIBARI_TIGHTNESS_HIGH)
+		hooman.adjustPleasure(0.6 * delta_time)
+		if(hooman.pain < 40)
+			hooman.adjustPain(0.6 * delta_time)
 
 #undef SHIBARI_TIGHTNESS_LOW
 #undef SHIBARI_TIGHTNESS_MED
