@@ -76,7 +76,7 @@
 				/obj/item/stack/sheet/sinew = 2,
 				/obj/item/stack/sheet/animalhide/goliath_hide = 2)
 	time = 40
-	category = CAT_PRIMAL
+	category = CAT_CLOTHING
 
 /obj/item/clothing/head/ash_headdress/Initialize()
 	. = ..()
@@ -110,7 +110,7 @@
 				/obj/item/stack/sheet/sinew = 2,
 				/obj/item/stack/sheet/animalhide/goliath_hide = 2)
 	time = 40
-	category = CAT_PRIMAL
+	category = CAT_CLOTHING
 
 /obj/item/clothing/under/costume/gladiator/ash_walker/ash_robes/Initialize()
 	. = ..()
@@ -137,7 +137,7 @@
 				/obj/item/stack/sheet/sinew = 2,
 				/obj/item/stack/sheet/animalhide/goliath_hide = 2)
 	time = 40
-	category = CAT_PRIMAL
+	category = CAT_CLOTHING
 
 /obj/item/clothing/suit/ash_plates/Initialize()
 	. = ..()
@@ -154,7 +154,7 @@
 				/obj/item/stack/sheet/sinew = 2,
 				/obj/item/stack/sheet/animalhide/goliath_hide = 2)
 	time = 40
-	category = CAT_PRIMAL
+	category = CAT_CLOTHING
 
 //ASH WEAPON
 /obj/item/melee/macahuitl
@@ -182,8 +182,8 @@
 				/obj/item/stack/sheet/sinew = 2,
 				/obj/item/stack/sheet/animalhide/goliath_hide = 2)
 	time = 40
-	always_available = FALSE
-	category = CAT_PRIMAL
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
 
 /obj/item/cautery/ashwalker
 	name = "primitive cautery"
