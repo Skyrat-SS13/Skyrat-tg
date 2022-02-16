@@ -180,6 +180,8 @@
 /obj/projectile/beam/laser/hardlight_bullet/pcr
 	damage = 27 // Minimum damage increase to at least base /tg/ laser gun damage.
 
+/obj/projectile/beam/laser/hardlight_bullet/disabler
+	damage = 10
 /* TODO: Use for SolFed.
 /obj/item/gun/energy/peacemaker
 	name = "\improper Peacemaker"

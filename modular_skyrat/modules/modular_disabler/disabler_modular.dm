@@ -8,10 +8,39 @@
 #define SHOT_UNTIE "untie"
 #define SHOT_CONCUSSION "concussion"
 #define SHOT_DROWSY "drowsy"
-
+#define SHOT_WARCRIME "warcrimes"
 /obj/item/gun/energy/disabler
 	cell_type = /obj/item/stock_parts/cell/super
+/obj/item/device/custom_kit/disabler
+	var/ammo_to_add
+	var/name_to_append
+/obj/item/device/custom_kit/disabler/afterattack(obj/target, mob/user, proximity_flag)
+	var/obj/item/gun/energy/disabler/upgraded/target_obj = target
+	var/_name_to_append = name_to_append
+	if(!proximity_flag) //Gotta be adjacent to your target
+		return
+	if(isturf(target_obj)) //This shouldn't be needed, but apparently it throws runtimes otherwise.
+		return
+	if(target_obj.amount >= target_obj.maxamount)
+		to_chat(user, span_warning("You can't improve [target_obj] any further!"))
+		return
+	target_obj.addammotype(ammo_to_add, _name_to_append)
+	user.visible_message(span_notice("[user] modifies [target_obj] with [ammo_to_add]!"), span_notice("You modify [target_obj] with [ammo_to_add]."))
+	qdel(src)
 
+
+/obj/item/device/custom_kit/disabler/disgust
+	name = "Vomit-Inducing Disabler Upgrade Kit"
+	ammo_to_add = /obj/item/ammo_casing/energy/disabler/skyrat/proto/disgust
+	name_to_append = SHOT_DISGUST
+/obj/item/device/custom_kit/disabler/warcrime
+	name = "Warcrime Disabler Upgrade Kit"
+	ammo_to_add = /obj/item/ammo_casing/energy/disabler/skyrat/proto/warcrime
+	name_to_append = SHOT_WARCRIME
+
+/obj/item/gun/energy/disabler/upgraded/proc/addammotype(ammo_to_add, name_to_append)
+	ammo_type += new ammo_to_add(src)
+	name += " of [name_to_append]"
 /obj/item/gun/energy/disabler/upgraded
 	var/overheat_time = 16
 	var/holds_charge = FALSE
@@ -23,7 +52,9 @@
 
 	var/max_mod_capacity = 100
 	var/list/modkits = list()
-
+	var/upgrade_name
+	var/amount = 0
+	var/maxamount = 3
 	var/recharge_timerid
 	name = "upgraded disabler"
 	Initialize(mapload)
@@ -54,6 +85,8 @@
 				attempt_reload(rand(15,25))
 			if(SHOT_DROWSY)
 				attempt_reload(rand(15,25))
+			if(SHOT_WARCRIME)
+				attempt_reload(rand(35,60))
 
 	equipped(mob/user)
 		. = ..()
@@ -104,7 +137,7 @@
 	. = ..()
 	var/ammo_to_load = /obj/item/ammo_casing/energy/disabler/skyrat/proto/disgust
 	ammo_type += new ammo_to_load(src)
-	name += " of disgust"
+	name += " of [SHOT_DISGUST]"
 /obj/item/ammo_casing/energy/disabler/skyrat/proto/disgust
 	projectile_type = /obj/projectile/beam/disabler/disgust
 	select_name = "disgust"
@@ -153,6 +186,37 @@
 	pellets = 2
 	variance = 15
 	harmful = FALSE
+
+/obj/item/gun/energy/disabler/upgraded/warcrime
+
+
+/obj/item/gun/energy/disabler/upgraded/warcrime/Initialize(mapload)
+	. = ..()
+	var/ammo_to_load = /obj/item/ammo_casing/energy/disabler/skyrat/proto/warcrime
+	ammo_type += new ammo_to_load(src)
+	name += " of [SHOT_WARCRIME]"
+/obj/item/ammo_casing/energy/disabler/skyrat/proto/warcrime
+	projectile_type = /obj/projectile/beam/disabler/warcrime
+	select_name = SHOT_WARCRIME
+	e_cost = 20000
+/obj/projectile/beam/disabler/warcrime
+	damage = 0
+	icon_state = "toxin"
+	light_color = LIGHT_COLOR_BLOOD_MAGIC
+
+/obj/projectile/beam/disabler/warcrime/on_hit(atom/target, blocked, pierce_hit) // Might be a Traitor(sec) thing.
+	. = ..()
+	var/mob/living/carbon/human/hit = target
+	var/effects = rand(5,15)
+	if(ishuman(hit))
+		hit.disgust += DISGUST_LEVEL_GROSS
+		hit.stuttering += effects
+		hit.slurring += effects
+		hit.derpspeech += effects
+		hit.losebreath += effects
+		hit.dizziness += effects
+		hit.jitteriness += effects
+
 /obj/item/weaponcrafting/gunkit/disabler_upgrade
 	name = "advanced energy gun parts kit"
 	desc = "A suitcase containing the necessary gun parts to tranform a standard energy gun into an advanced energy gun."
