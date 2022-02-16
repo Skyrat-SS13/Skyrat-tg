@@ -54,3 +54,10 @@
 	upper_reload_speed = 45
 	lower_reload_speed = 30
 
+/obj/item/ammo_casing/energy/disabler/skyrat/proto/hallucinate
+	projectile_type = /obj/projectile/beam/disabler/hallucinate
+	select_name = SHOT_HALLUCINATE
+	heavy_metal = TRUE // bouncy?
+	e_cost = 20000
+	upper_reload_speed = 45
+	lower_reload_speed = 30

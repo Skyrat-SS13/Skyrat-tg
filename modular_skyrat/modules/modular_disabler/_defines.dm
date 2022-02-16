@@ -9,3 +9,4 @@
 #define SHOT_CONCUSSION "concussion"
 #define SHOT_DROWSY "drowsy"
 #define SHOT_WARCRIME "warcrimes"
+#define SHOT_HALLUCINATE "hallucination"

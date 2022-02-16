@@ -40,3 +40,21 @@
 	var/mob/living/carbon/hit = target
 	if(iscarbon(hit))
 		hit.adjust_drowsyness(rand(10,20))
+
+/obj/projectile/beam/disabler/hallucinate // Make an officer chase the suspect
+	damage = 0
+	icon_state = "omnilaser"
+	light_color = LIGHT_COLOR_GREEN
+
+/obj/projectile/beam/disabler/hallucinate/on_hit(atom/target, blocked, pierce_hit)
+	. = ..()
+	var/mob/living/carbon/hit = target
+	var/datum/brain_trauma/special/beepsky/beepsky_hallucination
+	if(iscarbon(hit))
+		if(beepsky_hallucination)
+			return
+		beepsky_hallucination = new()
+		hit.gain_trauma(beepsky_hallucination, TRAUMA_RESILIENCE_ABSOLUTE)
+		spawn(30 SECONDS)
+		if(beepsky_hallucination)
+			QDEL_NULL(beepsky_hallucination)

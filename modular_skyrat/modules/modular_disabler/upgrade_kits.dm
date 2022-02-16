@@ -6,3 +6,8 @@
 	name = "Warcrime Disabler Upgrade Kit"
 	ammo_to_add = /obj/item/ammo_casing/energy/disabler/skyrat/proto/warcrime
 	name_to_append = SHOT_WARCRIME
+
+/obj/item/device/custom_kit/disabler/hallucinate
+	name = "Hallucination Disabler Upgrade Kit"
+	ammo_to_add = /obj/item/ammo_casing/energy/disabler/skyrat/proto/hallucinate
+	name_to_append = SHOT_HALLUCINATE
