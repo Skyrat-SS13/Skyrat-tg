@@ -93,7 +93,7 @@
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/uranium = 1000)
 	build_path = /obj/item/microfusion_cell_attachment/selfcharging
 
-// GUN UPGRADES
+// GUN MODS
 /datum/design/microfusion/phase_emitter_undercharger
 	name = "Microfusion Phase Emitter Undercharger"
 	desc = "Inverts the output beam of the phase emitter, popular amongst law enforcement as a non-lethal upgrade."
@@ -116,13 +116,6 @@
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/silver = 500)
 	build_path = /obj/item/microfusion_gun_attachment/scope
 
-/datum/design/microfusion/gun_attachment_black_camo
-	name = "Black Camo Microfusion Frame"
-	desc = "A frame modification for the MCR-10, changing the color of the gun to black."
-	id = "microfusion_gun_attachment_black_camo"
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/gold = 500)
-	build_path = /obj/item/microfusion_gun_attachment/black_camo
-
 /datum/design/microfusion/gun_attachment_rail
 	name = "Microfusion Weapon Rail"
 	desc = "A rail system for any additional attachments, such as a torch."
@@ -137,6 +130,7 @@
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/silver = 500, /datum/material/gold = 500)
 	build_path = /obj/item/microfusion_gun_attachment/heatsink
 
+//EMITTER MODS
 /datum/design/microfusion/gun_attachment_scatter
 	name = "Diffuser Microfusion Lens Attachment"
 	desc = "Splits the microfusion laser beam entering the lens!"
@@ -165,9 +159,17 @@
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 1000, /datum/material/uranium = 500, /datum/material/bluespace = 500)
 	build_path = /obj/item/microfusion_gun_attachment/xray
 
+//COSMETICS
 /datum/design/microfusion/gun_attachment_rgb
 	name = "Phase Emitter Spectrograph"
 	desc = "An attachment hooked up to the phase emitter, allowing the user to adjust the color of the beam outputted. This has seen widespread use by various factions capable of getting their hands on microfusion weapons, whether as a calling card or simply for entertainment."
 	id = "microfusion_gun_attachment_rgb"
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/silver = 500, /datum/material/gold = 500)
 	build_path = /obj/item/microfusion_gun_attachment/rgb
+
+/datum/design/microfusion/gun_attachment_black_camo
+	name = "Black Camo Microfusion Frame"
+	desc = "A frame modification for the MCR-10, changing the color of the gun to black."
+	id = "microfusion_gun_attachment_black_camo"
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/gold = 500)
+	build_path = /obj/item/microfusion_gun_attachment/black_camo
