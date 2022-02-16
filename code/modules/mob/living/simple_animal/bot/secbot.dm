@@ -364,11 +364,7 @@
 
 		if(BOT_PREP_ARREST) // preparing to arrest target
 			// see if he got away. If he's no no longer adjacent or inside a closet or about to get up, we hunt again.
-<<<<<<< HEAD
-			if(!Adjacent(target) || !isturf(target.loc) || (target.AmountParalyzed() < 40 && target.staminaloss < STAMINA_THRESHOLD_SOFTCRIT)) //SKYRAT EDIT CHANGE
-=======
 			if(!Adjacent(target) || !isturf(target.loc) || !HAS_TRAIT(target, TRAIT_FLOORED))
->>>>>>> b08b442bb8f (Honkbots now cuff you (fixes honkbots' infinite loop) (#64838))
 				back_to_hunt()
 				return
 
