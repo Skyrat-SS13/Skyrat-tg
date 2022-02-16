@@ -150,10 +150,7 @@
 		to_chat(exposed_mob, span_purple("[displayed_extreme_thought]"))
 
 /datum/reagent/drug/aphrodisiac/crocin/hexacrocin/overdose_effects(mob/living/carbon/human/exposed_mob)
-	if(HAS_TRAIT(exposed_mob, TRAIT_BIMBO))
-		return ..()
-
-	if(prob(95))
+	if(prob(95) || HAS_TRAIT(exposed_mob, TRAIT_BIMBO))
 		return ..()
 
 	to_chat(exposed_mob, span_purple("Your libido is going haywire! It feels like speaking is much harder..."))
