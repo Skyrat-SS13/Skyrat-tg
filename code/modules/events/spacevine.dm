@@ -690,10 +690,6 @@
 		if(("vines" in victim.faction) || ("plants" in victim.faction))
 			return TRUE
 	return FALSE
-
-<<<<<<< HEAD
-*/
-=======
 #undef LIGHT_MUTATION_BRIGHTNESS
 #undef TOXICITY_MUTATION_PROB
 #undef EXPLOSION_MUTATION_IMPACT_RADIUS
@@ -706,4 +702,4 @@
 #undef SEVERITY_AVERAGE
 #undef SEVERITY_ABOVE_AVERAGE
 #undef SEVERITY_MAJOR
->>>>>>> 69d67de582a (Kudzu nerfs, Venus human trap changes (#64675))
+*/
