@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
-=======
 /// Determines brightness of the light emitted by kudzu with the light mutation
 #define LIGHT_MUTATION_BRIGHTNESS 4
 /// Determines the probability that the toxicity mutation will harm someone who passes through it
@@ -39,7 +37,6 @@
 /// Kudzu spread multiplier is a reciporal function of production speed, such that the better the production speed, ie. the lower the speed value is, the faster it spreads
 #define SPREAD_MULTIPLIER_MAX 50
 
->>>>>>> 69d67de582a (Kudzu nerfs, Venus human trap changes (#64675))
 /datum/round_event_control/spacevine
 	name = "Space Vines"
 	typepath = /datum/round_event/spacevine
