@@ -4,6 +4,7 @@
 
 /obj/item/ammo_casing/energy/disabler/skyrat/ // Now 100% more modular! (Code-wise and ingame-wise!)
 	e_cost = 1000
+	projectile_type = /obj/projectile/beam/disabler/weak
 
 /obj/item/ammo_casing/energy/disabler/skyrat/proto // Base two shot per reload ammo type.
 	e_cost = 10000

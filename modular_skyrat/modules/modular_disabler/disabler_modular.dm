@@ -21,39 +21,20 @@
 	var/maxamount = 3
 	var/emission_amount = 1
 	var/recharge_timerid
+	var/backblast = TRUE
 	name = "upgraded disabler"
 	Initialize(mapload)
 		. = ..()
 		var/ammo_to_load = /obj/item/ammo_casing/energy/laser/scatter/disabler/skyrat
 		ammo_type += new ammo_to_load(src)
+		if(backblast)
+			AddElement(/datum/element/backblast, 2, 2, 1)
+
 	shoot_live_shot(mob/living/user, pointblank = 0, atom/pbtarget = null, message = 1)
 		. = ..()
 		var/obj/item/ammo_casing/energy/shot = ammo_type[select]
 		var/reload_speed = rand(shot.lower_reload_speed, shot.upper_reload_speed)
 		attempt_reload(reload_speed)
-/* 		switch(shot.select_name)
-			if(SHOT_DISABLE)
-				attempt_reload()
-			if(SHOT_SCATTER)
-				attempt_reload(rand(10,20))
-			if(SHOT_HARDLIGHT)
-				attempt_reload(rand(30,40))
-			if(SHOT_BOUNCE)
-				attempt_reload(rand(15,25))
-			if(SHOT_DISGUST)
-				attempt_reload(rand(15,25))
-			if(SHOT_SKILLSHOT)
-				attempt_reload(rand(15,25))
-			if(SHOT_TASER)
-				attempt_reload(rand(15,25))
-			if(SHOT_UNTIE)
-				attempt_reload(rand(15,25))
-			if(SHOT_CONCUSSION)
-				attempt_reload(rand(15,25))
-			if(SHOT_DROWSY)
-				attempt_reload(rand(15,25))
-			if(SHOT_WARCRIME)
-				attempt_reload(rand(35,60)) */
 
 	equipped(mob/user)
 		. = ..()
@@ -90,10 +71,12 @@
 			return
 		var/datum/gas_mixture/emissions = new
 		ADD_GAS(/datum/gas/water_vapor, emissions.gases)
-		emissions.gases[/datum/gas/water_vapor][MOLES] = emission_amount + (recharge_time / 8)
+		emissions.gases[/datum/gas/water_vapor][MOLES] = emission_amount + (recharge_time / 24)
 		emissions.temperature = BODYTEMP_HEAT_WARNING_2
 		T.assume_air(emissions)
 		T.air_update_turf(FALSE, FALSE)
+		if(prob(33))
+			do_sparks(5,TRUE,src)
 	proc/reload()
 		cell.give(cell.maxcharge)
 		if(!suppressed)

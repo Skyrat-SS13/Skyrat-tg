@@ -1,3 +1,7 @@
+/obj/projectile/beam/disabler/weak
+	name = "weakened disabler beam"
+	damage = 30 // TG default
+
 /obj/projectile/beam/disabler/disgust // Disgusting beam...
 	damage = 0
 	icon_state = "omnilaser"
