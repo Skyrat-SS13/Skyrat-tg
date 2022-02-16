@@ -30,6 +30,7 @@
 	select_name  = SHOT_HARDLIGHT
 	upper_reload_speed = 60
 	lower_reload_speed = 20
+
 /obj/item/ammo_casing/energy/laser/scatter/disabler/skyrat // Our split beam! Guaranteed no brutality!
 	e_cost = 20000
 	pellets = 2

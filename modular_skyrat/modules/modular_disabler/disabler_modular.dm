@@ -19,6 +19,7 @@
 	var/upgrade_name
 	var/amount = 0
 	var/maxamount = 3
+	var/emission_amount = 1
 	var/recharge_timerid
 	name = "upgraded disabler"
 	Initialize(mapload)
@@ -67,7 +68,7 @@
 		if(!recharge_time)
 			recharge_time = overheat_time
 		overheat = TRUE
-
+		emissions(recharge_time, emission_amount)
 		var/carried = 0
 		if(!unique_frequency)
 			for(var/obj/item/gun/energy/disabler/upgraded/K in loc.get_all_contents())
@@ -83,7 +84,16 @@
 
 	emp_act(severity)
 		return
-
+	proc/emissions(recharge_time, emission_amount)
+		var/turf/open/T = get_turf(src)
+		if(!istype(T) || T.planetary_atmos || T.return_air().return_pressure() > (WARNING_HIGH_PRESSURE - 10))
+			return
+		var/datum/gas_mixture/emissions = new
+		ADD_GAS(/datum/gas/water_vapor, emissions.gases)
+		emissions.gases[/datum/gas/water_vapor][MOLES] = emission_amount + (recharge_time / 8)
+		emissions.temperature = BODYTEMP_HEAT_WARNING_2
+		T.assume_air(emissions)
+		T.air_update_turf(FALSE, FALSE)
 	proc/reload()
 		cell.give(cell.maxcharge)
 		if(!suppressed)
