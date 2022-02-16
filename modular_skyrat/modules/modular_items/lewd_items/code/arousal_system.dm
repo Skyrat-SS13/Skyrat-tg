@@ -58,11 +58,12 @@
 	reagent_state = LIQUID
 	shot_glass_icon_state = "shotglasswhite"
 
-/datum/reagent/consumable/milk/breast_milk
+/datum/reagent/consumable/breast_milk
 	name = "breast milk"
 	description = "This looks familiar... Wait, it's milk!"
 	taste_description = "warm and creamy"
 	color = "#ffffffff"
+	glass_icon_state = "glass_white"
 	glass_name = "glass of breast milk"
 	glass_desc = "almost like normal milk."
 	reagent_state = LIQUID
@@ -191,7 +192,7 @@
 				var/regen = ((owner.nutrition / (NUTRITION_LEVEL_WELL_FED/100))/100) * (breasts.internal_fluids.maximum_volume/11000) * interval
 				if(!breasts.internal_fluids.holder_full())
 					owner.adjust_nutrition(-regen / 2)
-					breasts.internal_fluids.add_reagent(/datum/reagent/consumable/milk/breast_milk, regen)
+					breasts.internal_fluids.add_reagent(/datum/reagent/consumable/breast_milk, regen)
 
 		if(vagina)
 			if(H.arousal >= AROUS_SYS_LITTLE)
