@@ -6,14 +6,21 @@
 ///BIMBO TRAIT///
 /////////////////
 
+/datum/brain_trauma
+	var/display_scanner = TRUE
+
 /datum/brain_trauma/special/bimbo
 	name = "Permanent hormonal disruption"
 	desc = "The patient has completely lost the ability to form speech and seems extremely aroused."
 	scan_desc = "permanent hormonal disruption"
 	gain_text = span_purple("Your thoughts get cloudy, but it turns you on like hell.")
 	lose_text = span_warning("A pleasant coolness spreads throughout your body, You are thinking clearly again.")
+	//people need to be able to gain it through the chemical OD
 	can_gain = TRUE
+	//people should not be able to randomly get this trauma
 	random_gain = FALSE
+	//we don't want this to be displayed on a scanner
+	display_scanner = FALSE
 	resilience = TRAUMA_RESILIENCE_LOBOTOMY
 	///how satisfied the person is, gained through climaxing
 	//max is 300, min is 0
@@ -78,15 +85,16 @@
 /datum/brain_trauma/special/bimbo/on_life()
 	var/mob/living/carbon/human/human_owner = owner
 
-	//Check if we climaxed, if not, go ahead with the adjustments
-	if(!check_climaxed())
-		//if we are satisfied, slowly lower satisfaction as well as stress
-		if(satisfaction)
-			satisfaction = clamp(satisfaction - 1, 0, 300)
-			stress = clamp(stress - 1, 0, 300)
-		//since we are not satisfied, increase our stress
-		else
-			stress = clamp(stress + 1, 0, 300)
+	//Check if we climaxed, if so, just stop for now
+	if(check_climaxed())
+		return
+	//if we are satisfied, slowly lower satisfaction as well as stress
+	if(satisfaction)
+		satisfaction = clamp(satisfaction - 1, 0, 300)
+		stress = clamp(stress - 1, 0, 300)
+	//since we are not satisfied, increase our stress
+	else
+		stress = clamp(stress + 1, 0, 300)
 
 	human_owner.adjustArousal(10)
 	if(human_owner.pleasure < 80)
@@ -147,16 +155,16 @@
 
 /datum/brain_trauma/special/bimbo/on_gain()
 	SEND_SIGNAL(owner, COMSIG_ADD_MOOD_EVENT, "bimbo", /datum/mood_event/bimbo)
-	if(!HAS_TRAIT_FROM(owner, TRAIT_BIMBO, APHRO_TRAIT))
-		ADD_TRAIT(owner, TRAIT_BIMBO, APHRO_TRAIT)
+	if(!HAS_TRAIT_FROM(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT))
+		ADD_TRAIT(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT)
 	RegisterSignal(owner, COMSIG_MOB_SAY, .proc/handle_speech)
 	if(!HAS_TRAIT_FROM(owner, TRAIT_MASOCHISM, APHRO_TRAIT))
 		ADD_TRAIT(owner, TRAIT_MASOCHISM, APHRO_TRAIT)
 
 /datum/brain_trauma/special/bimbo/on_lose()
 	SEND_SIGNAL(owner, COMSIG_CLEAR_MOOD_EVENT, "bimbo", /datum/mood_event/bimbo)
-	if(HAS_TRAIT_FROM(owner, TRAIT_BIMBO, APHRO_TRAIT))
-		REMOVE_TRAIT(owner,TRAIT_BIMBO, APHRO_TRAIT)
+	if(HAS_TRAIT_FROM(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT))
+		REMOVE_TRAIT(owner,TRAIT_BIMBO, LEWDCHEM_TRAIT)
 	UnregisterSignal(owner, COMSIG_MOB_SAY)
 	if(HAS_TRAIT_FROM(owner, TRAIT_MASOCHISM, APHRO_TRAIT))
 		REMOVE_TRAIT(owner, TRAIT_MASOCHISM, APHRO_TRAIT)

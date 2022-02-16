@@ -316,17 +316,15 @@
 	if(exposed_mob.reagents.has_reagent(/datum/reagent/drug/aphrodisiac/crocin/hexacrocin))
 		exposed_mob.reagents.remove_reagent(/datum/reagent/drug/aphrodisiac/crocin/hexacrocin, reagent_reduction_amount)
 
-/datum/reagent/drug/aphrodisiac/camphor/pentacamphor/overdose_effects(mob/living/carbon/human/exposed_mob)
-	if(!HAS_TRAIT(exposed_mob, TRAIT_BIMBO) && !HAS_TRAIT(exposed_mob, TRAIT_NEVERBONER))
+/datum/reagent/drug/aphrodisiac/camphor/pentacamphor/overdose_start(mob/living/carbon/human/exposed_mob)
+	if(!HAS_TRAIT(exposed_mob, TRAIT_NEVERBONER))
 		to_chat(exposed_mob, span_notice("You feel like you'll never feel aroused again..."))
-		ADD_TRAIT(exposed_mob,TRAIT_NEVERBONER, LEWDCHEM_TRAIT)
-
-	if(HAS_TRAIT(exposed_mob, TRAIT_BIMBO))
-		if(prob(70))
-			return
-		exposed_mob.cure_trauma_type(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_BASIC)
-		to_chat(exposed_mob, span_notice("Your mind is free. Your thoughts are pure and innocent once more."))
-		REMOVE_TRAIT(exposed_mob, TRAIT_BIMBO, LEWDCHEM_TRAIT)
+		ADD_TRAIT(exposed_mob, TRAIT_NEVERBONER, LEWDCHEM_TRAIT)
+	if(!HAS_TRAIT(exposed_mob, TRAIT_BIMBO))
+		return
+	exposed_mob.cure_trauma_type(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_ABSOLUTE)
+	to_chat(exposed_mob, span_notice("Your mind is free. Your thoughts are pure and innocent once more."))
+	REMOVE_TRAIT(exposed_mob, TRAIT_BIMBO, LEWDCHEM_TRAIT)
 
 /*
 * GENITAL ENLARGEMENT CHEMICALS
