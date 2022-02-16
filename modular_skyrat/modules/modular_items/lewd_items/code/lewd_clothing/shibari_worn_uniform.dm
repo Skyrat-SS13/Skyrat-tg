@@ -129,7 +129,7 @@
 /obj/item/clothing/under/shibari/torso/process(delta_time)
 	. = ..()
 	if(. == PROCESS_KILL)
-		return
+		return PROCESS_KILL
 	var/mob/living/carbon/human/hooman = loc
 	if(tightness == SHIBARI_TIGHTNESS_HIGH && hooman.pain < 25)
 		hooman.adjustPain(0.6 * delta_time)
@@ -160,7 +160,7 @@
 /obj/item/clothing/under/shibari/groin/process(delta_time)
 	. = ..()
 	if(. == PROCESS_KILL)
-		return
+		return PROCESS_KILL
 	var/mob/living/carbon/human/hooman = loc
 	if(tightness == SHIBARI_TIGHTNESS_LOW && hooman.pleasure < 20)
 		hooman.adjustPleasure(0.6 * delta_time)
@@ -187,7 +187,7 @@
 /obj/item/clothing/under/shibari/full/process(delta_time)
 	. = ..()
 	if(. == PROCESS_KILL)
-		return
+		return PROCESS_KILL
 	var/mob/living/carbon/human/hooman = loc
 	if(tightness == SHIBARI_TIGHTNESS_LOW && hooman.pleasure< 20)
 		hooman.adjustPleasure(0.6 * delta_time)
