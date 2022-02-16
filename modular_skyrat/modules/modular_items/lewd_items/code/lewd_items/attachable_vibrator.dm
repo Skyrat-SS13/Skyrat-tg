@@ -115,6 +115,8 @@
 
 /obj/item/clothing/sextoy/eggvib/equipped(mob/living/carbon/human/user, slot, initial)
 	. = ..()
+	if(!istype(user))
+		return
 	if(is_in_genital(user))
 		START_PROCESSING(SSobj, src)
 
@@ -398,6 +400,8 @@
 //Processing
 /obj/item/clothing/sextoy/signalvib/equipped(mob/living/carbon/human/user, slot, initial)
 	. = ..()
+	if(!istype(user))
+		return
 	if(is_in_genital(user))
 		START_PROCESSING(SSobj, src)
 

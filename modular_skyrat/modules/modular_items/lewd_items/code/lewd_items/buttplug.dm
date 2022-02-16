@@ -88,7 +88,9 @@
 	worn_icon_state = "[initial(icon_state)]_[current_color]"
 
 /obj/item/clothing/sextoy/buttplug/equipped(mob/living/carbon/human/user, slot)
-	.=..()
+	. = ..()
+	if(!istype(user))
+		return
 	if(src == user.anus || src == user.vagina)
 		START_PROCESSING(SSobj, src)
 

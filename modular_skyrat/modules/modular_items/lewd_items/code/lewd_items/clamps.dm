@@ -40,6 +40,8 @@
 
 /obj/item/clothing/sextoy/nipple_clamps/equipped(mob/living/carbon/human/user, slot, initial)
 	. = ..()
+	if(!istype(user))
+		return
 	var/obj/item/organ/genital/breasts/user_breast = user.getorganslot(ORGAN_SLOT_BREASTS)
 
 	if(src == user.nipples)
