@@ -80,6 +80,7 @@
 	desc = "I wonder why LustWish makes them..."
 	icon_state = "serviettepack"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
+	///A count of how many serviettes are left in the pack
 	var/servleft = 4
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -93,9 +94,9 @@
 	update_icon()
 
 /obj/item/serviette_pack/attack_self(mob/user, obj/item/I)
-	if(servleft > 0)
-		to_chat(user, span_notice("You take a serviette from the [src]."))
-		servleft = servleft--
+	if(!servleft)
+		to_chat(user, span_notice("You take a serviette from [src]."))
+		servleft--
 		var/obj/item/serviette/W = new /obj/item/serviette
 		user.put_in_hands(W)
 		update_icon()

@@ -107,6 +107,8 @@
 
 /obj/item/clothing/sextoy/buttplug/process(delta_time)
 	var/mob/living/carbon/human/target = loc
+	if(!istype(target))
+		return
 	//i tried using switch here, but it need static value, and u.arousal can't be it. So fuck switches. Reject it, embrace the IFs
 	if(current_size == "small" && target.arousal < 30)
 		target.adjustArousal(0.6 * delta_time)

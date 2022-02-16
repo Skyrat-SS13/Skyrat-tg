@@ -73,6 +73,8 @@
 	. = ..()
 	var/mob/living/carbon/human/target = loc
 	var/obj/item/organ/genital/breasts/target_breast = target.getorganslot(ORGAN_SLOT_BREASTS)
+	if(!target || !target_breast)
+		return
 	target.adjustArousal(1 * delta_time)
 	if(target.pain < 27.5) //To prevent maxing pain by just pair of clamps.
 		target.adjustPain(1 * delta_time)

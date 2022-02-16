@@ -63,11 +63,11 @@
 	soundloop3 = new(src, FALSE)
 
 /obj/item/clothing/sextoy/eggvib/Destroy()
-	. = ..()
 	QDEL_NULL(soundloop1)
 	QDEL_NULL(soundloop2)
 	QDEL_NULL(soundloop3)
 	STOP_PROCESSING(SSobj, src)
+	..()
 
 /obj/item/clothing/sextoy/eggvib/update_icon_state()
 	. = ..()
@@ -127,16 +127,16 @@
 /obj/item/clothing/sextoy/eggvib/process(delta_time)
 	if(!toy_on)
 		return
-	var/mob/living/carbon/human/U = loc
+	var/mob/living/carbon/human/target = loc
 	if(vibration_mode == "low")
-		U.adjustArousal(0.5 * delta_time)
-		U.adjustPleasure(0.5 * delta_time)
+		target.adjustArousal(0.5 * delta_time)
+		target.adjustPleasure(0.5 * delta_time)
 	if(vibration_mode == "medium")
-		U.adjustArousal(0.6 * delta_time)
-		U.adjustPleasure(0.6 * delta_time)
+		target.adjustArousal(0.6 * delta_time)
+		target.adjustPleasure(0.6 * delta_time)
 	if(vibration_mode == "high")
-		U.adjustArousal(0.7 * delta_time)
-		U.adjustPleasure(0.7 * delta_time)
+		target.adjustArousal(0.7 * delta_time)
+		target.adjustPleasure(0.7 * delta_time)
 
 //////////////////////////
 ///Signal vibrating egg///
@@ -174,31 +174,31 @@
 //signalling stuff
 
 /obj/item/clothing/sextoy/signalvib/Destroy()
-	. = ..()
 	SSradio.remove_object(src, frequency)
 	QDEL_NULL(soundloop1)
 	QDEL_NULL(soundloop2)
 	QDEL_NULL(soundloop3)
 	STOP_PROCESSING(SSobj, src)
+	..()
 
-/obj/item/clothing/sextoy/signalvib/attackby(obj/item/W, mob/user, params)
+/obj/item/clothing/sextoy/signalvib/attackby(obj/item/attacking_item, mob/user, params)
 	if(!istype(W, /obj/item/clothing/head/helmet))
 		return ..()
-	var/obj/item/assembly/shock_kit/A = new /obj/item/assembly/shock_kit(user)
-	A.icon = 'icons/obj/assemblies.dmi'
+	var/obj/item/assembly/shock_kit/shocker = new /obj/item/assembly/shock_kit(user)
+	shocker.icon = 'icons/obj/assemblies.dmi'
 
-	if(!user.transferItemToLoc(W, A))
-		to_chat(user, span_warning("[W] is stuck to your hand, you cannot attach it to [src]!"))
+	if(!user.transferItemToLoc(attacking_item, shocker))
+		to_chat(user, span_warning("[attacking_item] is stuck to your hand, you cannot attach it to [src]!"))
 		return
-	W.master = A
-	A.helmet_part = W
+	attacking_item.master = shocker
+	shocker.helmet_part = attacking_item
 
-	user.transferItemToLoc(src, A, TRUE)
-	master = A
-	A.electropack_part = src
+	user.transferItemToLoc(src, shocker, TRUE)
+	master = shocker
+	shocker.electropack_part = src
 
-	user.put_in_hands(A)
-	A.add_fingerprint(user)
+	user.put_in_hands(shocker)
+	shocker.add_fingerprint(user)
 
 /obj/item/clothing/sextoy/signalvib/proc/set_frequency(new_frequency)
 	SSradio.remove_object(src, frequency)
@@ -236,9 +236,9 @@
 	//adding messages to chat if vibrator enabled while
 	var/mob/living/carbon/human/vibrated = loc
 	if(toy_on)
-		if(src == vibrated.penis || vibrated.vagina || vibrated.anus)
+		if(src == vibrated.penis || src == vibrated.vagina || src == vibrated.anus)
 			to_chat(vibrated, span_purple("You feel pleasant vibrations deep below..."))
-		if(src == vibrated.nipples)
+		else if(src == vibrated.nipples)
 			to_chat(vibrated, span_purple("You feel pleasant stimulation in your nipples."))
 	if(!toy_on && is_in_genital(vibrated))
 		to_chat(vibrated, span_purple("The vibrating toy no longer drives you mad."))
