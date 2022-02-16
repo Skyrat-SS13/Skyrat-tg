@@ -88,7 +88,7 @@
 
 //stuff to apply processing on equip and add mood event for perverts
 /obj/item/clothing/under/shibari/equipped(mob/user, slot)
-	.=..()
+	. = ..()
 	if(ishuman(user))
 		var/mob/living/carbon/human/hooman = user
 		if(src == hooman.w_uniform)
