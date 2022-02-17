@@ -120,7 +120,7 @@
 
 /datum/chemical_reaction/OwO/plushmium/reaction_finish(datum/reagents/holder, datum/equilibrium/reaction, react_vol)
 	..()
-	if(holder.get_reagent(/datum/reagent/OwO/plushmium).purity > 0.9)
+	if(holder.get_reagent(/datum/reagent/OwO/plushmium).creation_purity > 0.9)
 		return
 	if(react_vol < 20) //It creates a normal plush at low volume.. at higher amounts, things get slightly more interesting.
 		new /obj/item/toy/plush/random(get_turf(holder.my_atom))
