@@ -12,18 +12,27 @@
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	slot_flags = ITEM_SLOT_PENIS | ITEM_SLOT_VAGINA | ITEM_SLOT_NIPPLES | ITEM_SLOT_ANUS
 	moth_edible = FALSE
+	/// Is the toy currently on
 	var/toy_on = FALSE
+	/// The current color of the toy, affects sprite
 	var/current_color = "pink"
+	/// Bool of if the color's been changed or not before
 	var/color_changed = FALSE
+	/// The current mode of the toy, affects sprite
 	var/vibration_mode = "off"
+	/// Assoc list of modes, used to transfer between them
 	var/list/modes = list("low" = "medium", "medium" = "high", "high" = "off", "off" = "low")
+	/// A looping sound called on process()
 	var/datum/looping_sound/vibrator/low/soundloop1
+	/// A looping sound called on process()
 	var/datum/looping_sound/vibrator/medium/soundloop2
+	/// A looping sound called on process()
 	var/datum/looping_sound/vibrator/high/soundloop3
+	/// The sprites used in the radial menu when selecting a toy color
 	var/static/list/vib_designs
 	w_class = WEIGHT_CLASS_TINY
 
-//create radial menu
+/// Creates the designs for the color choice radial menu
 /obj/item/clothing/sextoy/eggvib/proc/populate_vib_designs()
 	vib_designs = list(
 		"pink" = image(icon = src.icon, icon_state = "[initial(icon_state)]_pink_low[(istype(src, /obj/item/clothing/sextoy/eggvib/signalvib)) ? "_on" : ""]"),
@@ -54,7 +63,7 @@
 		update_icon()
 		update_icon_state()
 
-//to check if we can change egg's model
+/// A check to see if you can access the toy's color choice radial menu
 /obj/item/clothing/sextoy/eggvib/proc/check_menu(mob/living/user)
 	if(!istype(user))
 		return FALSE
@@ -85,6 +94,7 @@
 	icon_state = "[initial(icon_state)]_[current_color]_[vibration_mode][(istype(src, /obj/item/clothing/sextoy/eggvib/signalvib)) ? (toy_on ? "_on" : "_off") : ""]"
 	inhand_icon_state = "[initial(icon_state)]_[current_color]"
 
+/// Toggles between vibration modes seuentially
 /obj/item/clothing/sextoy/eggvib/proc/toggle_mode()
 	vibration_mode = modes[vibration_mode]
 	soundloop1.stop()
@@ -144,11 +154,13 @@
 	inhand_icon_state = "signalvib"
 	modes = list("low" = "medium", "medium" = "high", "high" = "low")
 	vibration_mode = "low"
-
+	/// If TRUE, the code and frequency will be random on initialize()
 	var/random = TRUE
+	/// If TRUE, the set code and frequency will be appended to the toy's name
 	var/freq_in_name = TRUE
-
+	/// The default signaller code of the toy
 	var/code = 2
+	/// The default frequency of the toy
 	var/frequency = FREQ_ELECTROPACK
 
 /obj/item/clothing/sextoy/eggvib/signalvib/Initialize()

@@ -10,8 +10,8 @@
 	icon_state = "condom_pack"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	w_class = WEIGHT_CLASS_TINY
+	/// The current color of the condom, can be changed and affects sprite
 	var/current_color = "pink"
-	var/color_changed = FALSE
 
 /obj/item/condom_pack/Initialize()
 	. = ..()
@@ -64,7 +64,7 @@
 	. = ..()
 	icon_state = "[initial(icon_state)]_[current_color]_[condom_state]"
 
-//to update model properly after use
+/// Updates the condom's sprite, called after use
 /obj/item/clothing/sextoy/condom/proc/condom_use()
 	switch(condom_state)
 		if("used")

@@ -7,10 +7,11 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_NIPPLES
-
+	/// What kind are the wearer's breasts?
 	var/breast_type = null
+	/// What size are the wearer's breasts?
 	var/breast_size = null
-
+	/// Mutable overlay containing the icon of the clamps
 	var/mutable_appearance/clamps_overlay
 
 //some stuff for making overlay of this item. Why? Because.

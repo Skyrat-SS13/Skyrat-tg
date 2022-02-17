@@ -9,6 +9,7 @@
 	desc = "To clean all the mess."
 	icon_state = "serviette_clean"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
+	/// How much time it takes to clean something using it
 	var/cleanspeed = 5 SECONDS
 	w_class = WEIGHT_CLASS_TINY
 	item_flags = NOBLUDGEON

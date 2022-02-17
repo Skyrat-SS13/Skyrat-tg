@@ -8,12 +8,18 @@
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	slot_flags = ITEM_SLOT_ANUS|ITEM_SLOT_VAGINA
+	/// Current color of the toy, can be changed, affects sprite
 	var/current_color = "pink"
+	/// Current size of the toy, can be changed, affects sprite and arousal
 	var/current_size = "small"
 	light_color = LIGHT_COLOR_ELECTRIC_GREEN
+	/// A bool of if the color's been changed before
 	var/color_changed = FALSE
+	/// A bool of if the form has been altered before
 	var/form_changed = FALSE
+	/// A static list containing all designs (or colors) of toys
 	var/static/list/buttplug_designs
+	/// A static list containing all forms (or sizes) of toys
 	var/static/list/buttplug_forms
 	w_class = WEIGHT_CLASS_TINY
 
@@ -63,7 +69,7 @@
 			update_icon()
 			form_changed = TRUE
 
-//to check if we can change buttplug model
+/// A check to confirm if you can open the toy's color/design radial menu
 /obj/item/clothing/sextoy/buttplug/proc/check_menu(mob/living/user)
 	if(!istype(user))
 		return FALSE
