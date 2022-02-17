@@ -20,15 +20,14 @@
 	var/datum/looping_sound/vibrator/low/soundloop1
 	var/datum/looping_sound/vibrator/medium/soundloop2
 	var/datum/looping_sound/vibrator/high/soundloop3
-	var/mode = "off"
 	var/static/list/vib_designs
 	w_class = WEIGHT_CLASS_TINY
 
 //create radial menu
 /obj/item/clothing/sextoy/eggvib/proc/populate_vib_designs()
 	vib_designs = list(
-		"pink" = image(icon = src.icon, icon_state = "[icon_state]_pink_low[istype(src, /obj/item/clothing/sextoy/eggvib/signalvib) ? (toy_on ? "_on" : "_off") : ""]"),
-		"teal" = image(icon = src.icon, icon_state = "[icon_state]_teal_low[istype(src, /obj/item/clothing/sextoy/eggvib/signalvib) ? (toy_on ? "_on" : "_off") : ""]"))
+		"pink" = image(icon = src.icon, icon_state = "[initial(icon_state)]_pink_low[(istype(src, /obj/item/clothing/sextoy/eggvib/signalvib)) ? "_on" : ""]"),
+		"teal" = image(icon = src.icon, icon_state = "[initial(icon_state)]_teal_low[(istype(src, /obj/item/clothing/sextoy/eggvib/signalvib)) ? "_on" : ""]"))
 
 /obj/item/clothing/sextoy/eggvib/AltClick(mob/user, obj/item/I)
 	if(!color_changed)
@@ -42,22 +41,16 @@
 		update_icon()
 		color_changed = TRUE
 	else
-		if(!toy_on)
-			to_chat(user, span_notice("You can't switch modes while the vibrating egg is turned off!"))
-			return
 		toggle_mode()
-		soundloop1.stop()
-		soundloop2.stop()
-		soundloop3.stop()
-		if(vibration_mode == "low")
-			to_chat(user, span_notice("You set the vibration mode to low. Bzzz..."))
-			soundloop1.start()
-		if(vibration_mode == "medium")
-			to_chat(user, span_notice("You set the vibration mode to medium. Bzzzz!"))
-			soundloop2.start()
-		if(vibration_mode == "high")
-			to_chat(user, span_notice("You set the vibration mode to high. Careful with that thing!"))
-			soundloop3.start()
+		switch(vibration_mode)
+			if("low")
+				to_chat(user, span_notice("You set the vibration mode to low. Bzzz..."))
+			if("medium")
+				to_chat(user, span_notice("You set the vibration mode to medium. Bzzzz!"))
+			if("high")
+				to_chat(user, span_notice("You set the vibration mode to high. Careful with that thing."))
+			if("off")
+				to_chat(user, span_notice("You turn off the vibrating egg. Fun time's over."))
 		update_icon()
 		update_icon_state()
 
@@ -89,33 +82,29 @@
 
 /obj/item/clothing/sextoy/eggvib/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]_[vibration_mode][istype(src, /obj/item/clothing/sextoy/eggvib/signalvib) ? (toy_on ? "_on" : "_off") : ""]"
+	icon_state = "[initial(icon_state)]_[current_color]_[vibration_mode][(istype(src, /obj/item/clothing/sextoy/eggvib/signalvib)) ? (toy_on ? "_on" : "_off") : ""]"
 	inhand_icon_state = "[initial(icon_state)]_[current_color]"
 
 /obj/item/clothing/sextoy/eggvib/proc/toggle_mode()
-	mode = modes[mode]
+	vibration_mode = modes[vibration_mode]
 	soundloop1.stop()
 	soundloop2.stop()
 	soundloop3.stop()
-	switch(mode)
+	switch(vibration_mode)
 		if("low")
 			toy_on = TRUE
-			vibration_mode = "low"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE, ignore_walls = FALSE)
 			soundloop1.start()
 		if("medium")
 			toy_on = TRUE
-			vibration_mode = "medium"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE, ignore_walls = FALSE)
 			soundloop2.start()
 		if("high")
 			toy_on = TRUE
-			vibration_mode = "high"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE, ignore_walls = FALSE)
 			soundloop3.start()
 		if("off")
 			toy_on = FALSE
-			vibration_mode = "off"
 			playsound(loc, 'sound/weapons/magout.ogg', 20, TRUE, ignore_walls = FALSE)
 
 /obj/item/clothing/sextoy/eggvib/equipped(mob/living/carbon/human/user, slot, initial)
@@ -153,6 +142,8 @@
 	desc = "A vibrating sex toy with remote control capability. Use a signaller to turn it on."
 	icon_state = "signalvib"
 	inhand_icon_state = "signalvib"
+	modes = list("low" = "medium", "medium" = "high", "high" = "low")
+	vibration_mode = "low"
 
 	var/random = TRUE
 	var/freq_in_name = TRUE
@@ -177,6 +168,11 @@
 
 //A moment for the `attackby()` proc that used to lie here, letting you turn a vibrator into an electric chair.
 
+/obj/item/clothing/sextoy/eggvib/signalvib/update_icon_state()
+	. = ..()
+	icon_state = "[initial(icon_state)]_[current_color]_[vibration_mode == "off" ? "low_off" : (toy_on ? "[vibration_mode]_on" : "[vibration_mode]_off")]"
+	inhand_icon_state = "[initial(icon_state)]_[current_color]"
+
 /obj/item/clothing/sextoy/eggvib/signalvib/proc/set_frequency(new_frequency)
 	SSradio.remove_object(src, frequency)
 	frequency = new_frequency
@@ -186,6 +182,35 @@
 	return GLOB.hands_state
 
 //arousal stuff
+
+/obj/item/clothing/sextoy/eggvib/signalvib/AltClick(mob/user, obj/item/I)
+	if(!color_changed)
+		var/choice = show_radial_menu(user,src, vib_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+		if(!choice)
+			return FALSE
+		current_color = choice
+		update_icon()
+		color_changed = TRUE
+	else
+		if(!toy_on)
+			to_chat(usr, span_notice("You can't switch modes while the vibrating egg is turned off!"))
+			return
+		toggle_mode()
+		soundloop1.stop()
+		soundloop2.stop()
+		soundloop3.stop()
+		switch(vibration_mode)
+			if("low")
+				to_chat(user, span_notice("You set the vibration mode to low. Bzzz..."))
+				soundloop1.start()
+			if("medium")
+				to_chat(user, span_notice("You set the vibration mode to medium. Bzzzz!"))
+				soundloop2.start()
+			if("high")
+				to_chat(user, span_notice("You set the vibration mode to high. Careful with that thing!"))
+				soundloop3.start()
+		update_icon()
+		update_icon_state()
 
 /obj/item/clothing/sextoy/eggvib/signalvib/receive_signal(datum/signal/signal)
 	if(!signal || signal.data["code"] != code)
@@ -291,8 +316,8 @@
 				. = TRUE
 
 /obj/item/clothing/sextoy/eggvib/signalvib/toggle_mode()
-	mode = modes[mode]
-	switch(mode)
+	vibration_mode = modes[vibration_mode]
+	switch(vibration_mode)
 		if("low")
 			vibration_mode = "low"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE, ignore_walls = FALSE)
