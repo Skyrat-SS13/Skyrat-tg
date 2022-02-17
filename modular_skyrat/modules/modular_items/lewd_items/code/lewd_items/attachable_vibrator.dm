@@ -74,11 +74,11 @@
 	soundloop3 = new(src, FALSE)
 
 /obj/item/clothing/sextoy/eggvib/Destroy()
+	. = ..()
 	QDEL_NULL(soundloop1)
 	QDEL_NULL(soundloop2)
 	QDEL_NULL(soundloop3)
 	STOP_PROCESSING(SSobj, src)
-	..()
 
 /obj/item/clothing/sextoy/eggvib/update_icon_state()
 	. = ..()
@@ -163,8 +163,8 @@
 	. = ..()
 
 /obj/item/clothing/sextoy/eggvib/signalvib/Destroy()
+	. = ..()
 	SSradio.remove_object(src, frequency)
-	..()
 
 //A moment for the `attackby()` proc that used to lie here, letting you turn a vibrator into an electric chair.
 
