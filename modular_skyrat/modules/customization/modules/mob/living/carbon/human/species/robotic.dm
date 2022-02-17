@@ -19,8 +19,8 @@
 	mutant_bodyparts = list()
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
-	burnmod = 1.5 // Every 0.1% is 10% above the base.
-	brutemod = 1.6
+	burnmod = 1.3 // Every 0.1% is 10% above the base.
+	brutemod = 1.3
 	coldmod = 1.2
 	heatmod = 2
 	siemens_coeff = 1.4 //Not more because some shocks will outright crit you, which is very unfun
@@ -76,7 +76,6 @@
 		NOEYESPRITES,
 		ROBOTIC_LIMBS,
 		NOTRANSSTING,
-		REVIVES_BY_HEALING
 	)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
@@ -151,7 +150,6 @@
 		HAIR,
 		ROBOTIC_LIMBS,
 		NOTRANSSTING,
-		REVIVES_BY_HEALING
 	)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
@@ -185,7 +183,6 @@
 		LIPS,HAIR,
 		ROBOTIC_LIMBS,
 		NOTRANSSTING,
-		REVIVES_BY_HEALING,
 		FACEHAIR
 	)
 	default_mutant_bodyparts = list(
@@ -269,7 +266,6 @@
 		LIPS,
 		HAIR,
 		ROBOTIC_LIMBS,
-		REVIVES_BY_HEALING,
 		FACEHAIR,
 		NOTRANSSTING
 	)
