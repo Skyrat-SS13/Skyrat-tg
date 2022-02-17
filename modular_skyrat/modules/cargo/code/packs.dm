@@ -481,7 +481,7 @@
 /datum/supply_pack/organic/qualityoilbulk
 	name = "Quality Oil Bulk Pack"
 	desc = "Normal cooking oil not cutting it? Chef throw all the quality stuff in the frier because they thought it was funny? Well, We got you covered, Introducing a bulk pack of Ten (10) bottles of our finest oils, blended for the perfect taste in cold recipes, and a resistance for going acrid when cooking."
-	cost = CARGO_CRATE_VALUE * 10
+	cost = CARGO_CRATE_VALUE * 9
 	contains = list(/obj/item/reagent_containers/food/condiment/quality_oil,
 					/obj/item/reagent_containers/food/condiment/quality_oil,
 					/obj/item/reagent_containers/food/condiment/quality_oil,
@@ -571,6 +571,16 @@
 					/obj/item/circuitboard/machine/dish_drive)
 	crate_name = "build a bar crate"
 
+/datum/supply_pack/service/hydrohelper
+	name = "Hydro-Helper Circuit Pack"
+	desc = "Botany being lazy with something? Being refused circuit boards? grow your only little garden with these three boards. (seeds and parts not included)"
+	cost = CARGO_CRATE_VALUE * 5
+	contains = list(/obj/item/circuitboard/machine/hydroponics,
+					/obj/item/circuitboard/machine/hydroponics,
+					/obj/item/circuitboard/machine/hydroponics)
+	crate_name = "garden crate"
+	crate_type = /obj/structure/closet/crate/hydroponics
+
 /datum/supply_pack/service/janitor/janpimp
 	name = "Custodial Cruiser"
 	desc = "Clown steal your ride? Assistant lock it in the dorms? Order a new one and get back to cleaning in style!"
@@ -644,16 +654,6 @@
 					/obj/item/clothing/head/helmet/knight/blue,
 					/obj/item/food/bread/plain)
 	crate_name = "vintage crate"
-
-/datum/supply_pack/service/hydrohelper
-	name = "Hydro-Helper Circuit Pack"
-	desc = "Botany being lazy with something? Being refused circuit boards? grow your only little garden with these three boards. (seeds and parts not included)"
-	cost = CARGO_CRATE_VALUE * 5
-	contains = list(/obj/item/circuitboard/machine/hydroponics,
-					/obj/item/circuitboard/machine/hydroponics,
-					/obj/item/circuitboard/machine/hydroponics)
-	crate_name = "garden crate"
-	crate_type = /obj/structure/closet/crate/hydroponics
 
 /datum/supply_pack/organic/lavalandsamples
 	name = "Planetary Flora Samples"
