@@ -14,12 +14,19 @@
 /obj/item/anomaly_neutralizer/Initialize(mapload)
 	. = ..()
 
-	// Can be used to delete drained heretic influences
+	// Primarily used to delete and neutralize anomalies.
+	AddComponent(/datum/component/effect_remover, \
+		success_feedback = "You neutralize %THEEFFECT with %THEWEAPON, frying its circuitry in the process.", \
+		on_clear_callback = CALLBACK(src, .proc/on_anomaly_neutralized), \
+		effects_we_clear = list(/obj/effect/anomaly))
+
+	// Can also be used to delete drained heretic influences, to stop fools from losing arms.
 	AddComponent(/datum/component/effect_remover, \
 		success_feedback = "You close %THEEFFECT with %THEWEAPON, frying its circuitry in the process.", \
 		on_clear_callback = CALLBACK(src, .proc/on_use), \
 		effects_we_clear = list(/obj/effect/visible_heretic_influence))
 
+<<<<<<< HEAD
 /obj/item/anomaly_neutralizer/afterattack(atom/target, mob/living/user, proximity) //SKYRAT EDIT - MOB/LIVING
 	..()
 	if(!proximity || !target)
@@ -40,9 +47,17 @@
 		C.anomalyNeutralize()
 		qdel(src)
 	//SKYRAT EDIT END
+=======
+/**
+ * Callback for the effect remover component to handle neutralizing anomalies.
+ */
+/obj/item/anomaly_neutralizer/proc/on_anomaly_neutralized(obj/effect/anomaly/target, mob/living/user)
+	target.anomalyNeutralize()
+	on_use(target, user)
+>>>>>>> aa520b582ca (Refactors anomanly neutralizer to use the effect remover component (#64864))
 
-/*
- * Callback for the effect remover component to delete after use.
+/**
+ * Use up the anomaly neutralizer. Cause some sparks and delete it.
  */
 /obj/item/anomaly_neutralizer/proc/on_use(obj/effect/target, mob/living/user)
 	do_sparks(3, FALSE, user)
