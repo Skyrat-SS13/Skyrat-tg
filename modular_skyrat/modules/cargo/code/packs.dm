@@ -459,6 +459,95 @@
 	crate_name = "wildcard food crate"
 	crate_type = /obj/structure/closet/crate/freezer
 
+/datum/supply_pack/organic/fcsurplus
+	name = "Fine Cuisine Assortment Value Pack"
+	desc = "Chef slop boring? Have high-maintenance crewmembers that with wings? Maybe you just want to revel in the sinful delight that are Cheese Curds? The Finest of our trade union has made the pack for you, containing a mix of fine oils, vinegar, and exceptionally rare ingredients."
+	cost = CARGO_CRATE_VALUE * 5
+	contains = list(/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/food/canned/tomatoes,
+					/obj/item/food/canned/tomatoes,
+					/obj/item/food/canned/pine_nuts,
+					/obj/item/food/canned/pine_nuts,
+					/obj/item/food/canned_jellyfish,
+					/obj/item/food/desert_snails,
+					/obj/item/food/larvae,
+					/obj/item/food/moonfish_eggs)
+	crate_name = "fine cuisine assortment pack"
+	crate_type = /obj/structure/closet/crate/freezer
+
+/datum/supply_pack/organic/qualityoilbulk
+	name = "Quality Oil Bulk Pack"
+	desc = "Normal cooking oil not cutting it? Chef throw all the quality stuff in the frier because they thought it was funny? Well, We got you covered, Introducing a bulk pack of Ten (10) bottles of our finest oils, blended for the perfect taste in cold recipes, and a resistance for going acrid when cooking."
+	cost = CARGO_CRATE_VALUE * 10
+	contains = list(/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil)
+	crate_name = "bulk quality oil pack"
+	crate_type = /obj/structure/closet/crate/freezer
+
+/datum/supply_pack/organic/vinegarbulk
+	name = "Vinegar Bulk Pack"
+	desc = "Mothic Cuisine night? The winged fellows in port? Well, We'll have you cooking in no time. Refined from several rich wines and cultivated for just the right bite, This pack Ten (10) Bottles of vinegar for the perfect dressings and sauces."
+	cost = CARGO_CRATE_VALUE * 4
+	contains = list(/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar)
+	crate_name = "bulk vinegar pack"
+	crate_type = /obj/structure/closet/crate/freezer
+
+/datum/supply_pack/organic/bulkcanmoff
+	name = "Bulk Mothic Canned Goods"
+	desc = "Trying your hand at pestos and sauces? Cant just grow the stuff and can it yourself? Well, No matters, No worries, We here have you covered with Five (5) cans of tomatoes and pine nuts to help care for your winged friends."
+	cost = CARGO_CRATE_VALUE * 3
+	contains = list(/obj/item/food/canned/tomatoes,
+					/obj/item/food/canned/tomatoes,
+					/obj/item/food/canned/tomatoes,
+					/obj/item/food/canned/tomatoes,
+					/obj/item/food/canned/tomatoes,
+					/obj/item/food/canned/pine_nuts,
+					/obj/item/food/canned/pine_nuts,
+					/obj/item/food/canned/pine_nuts,
+					/obj/item/food/canned/pine_nuts,
+					/obj/item/food/canned/pine_nuts)
+	crate_name = "bulk moffic pack"
+	crate_type = /obj/structure/closet/crate/freezer
+
+/datum/supply_pack/organic/bulkcanliz
+	name = "Bulk Lizard Goods"
+	desc = "Having some devious tastes? One of your scalie friends wanting something that isn't fried mystery meat? Well you're just one order away from from the perfect pleaser. Containing Three (3) Cans of our finest-sourced canned jellyfish, snails and bee larvae, An addition of Three (3) packs of cruelty free Moonfish eggs might get their hearts."
+	cost = CARGO_CRATE_VALUE * 3.5
+	contains = list(/obj/item/food/canned_jellyfish,
+					/obj/item/food/canned_jellyfish,
+					/obj/item/food/canned_jellyfish,
+					/obj/item/food/desert_snails,
+					/obj/item/food/desert_snails,
+					/obj/item/food/desert_snails,
+					/obj/item/food/moonfish_eggs,
+					/obj/item/food/moonfish_eggs,
+					/obj/item/food/moonfish_eggs,
+					/obj/item/food/larvae,
+					/obj/item/food/larvae,
+					/obj/item/food/larvae)
+	crate_name = "bulk lizard pack"
+	crate_type = /obj/structure/closet/crate/freezer
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Pack Type ///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
