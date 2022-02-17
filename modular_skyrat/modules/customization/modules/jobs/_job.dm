@@ -58,13 +58,7 @@
 /datum/job/warden
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
-/datum/job/security_sergeant
-	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
-
 /datum/job/security_medic
-	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
-
-/datum/job/junior_officer
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
 /datum/job/blueshield

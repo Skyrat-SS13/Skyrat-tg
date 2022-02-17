@@ -274,6 +274,10 @@
 	name = "Rabbit"
 	icon_state = "rabbit"
 
+/datum/sprite_accessory/tails/mammal/wagging/rabbit_alt
+	name = "Rabbit (Alt)"
+	icon_state = "rabbit_alt"
+
 /datum/sprite_accessory/tails/mammal/wagging/ailurus
 	name = "Red Panda"
 	icon_state = "wah"
@@ -418,7 +422,7 @@
 	name = "Cat, Triple"
 	icon_state = "threecat"
 
-/datum/sprite_accessory/tails/mammal/wagging/tiger2
+/datum/sprite_accessory/tails/mammal/tiger2
 	name = "Servelyn Tails"
 	icon_state = "tiger2"
 	general_type = "feline"

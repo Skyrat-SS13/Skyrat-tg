@@ -50,8 +50,14 @@
 	new /obj/item/weaponcell/medical/utility/temperature(src)
 	new /obj/item/weaponcell/medical/utility/bed(src)
 
+/datum/id_trim/centcom/ert/medical/ntrauma
+	assignment = "Trauma Team Specialist"
+	trim_state = "trim_highcleric"	//This is the CMO trim for the RPG Titles; considering its 'angelic' sprite, its fitting for these guardian angels
+	sechud_icon_state = SECHUD_SCRAMBLED
+
 /obj/item/card/id/advanced/centcom/ert/medical/ntrauma
 	registered_name = "Trauma Team Specialist"
+	trim = /datum/id_trim/centcom/ert/medical/ntrauma
 	icon_state = "battlecruisercaller"	//Read desc
 	desc = "A semi-standard black Identification card rigged with what appears to be a small transmitter wired to a small disk - presumably filled with access tokens. Not NT standard, sure, but effectively the same card as their ERTs."
 

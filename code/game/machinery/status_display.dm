@@ -6,8 +6,8 @@
 #define FONT_COLOR "#09f"
 #define FONT_STYLE "Small Fonts"
 #define SCROLL_RATE (0.04 SECONDS) // time per pixel
-#define LINE1_Y -8
-#define LINE2_Y -15
+#define LINE1_Y -7 // SKYRAT EDIT CHANGE - AESTHETICS - originally -8
+#define LINE2_Y -14 // SKYRAT EDIT CHANGE - AESTHETICS - originally -15
 
 #define SD_BLANK 0  // 0 = Blank
 #define SD_EMERGENCY 1  // 1 = Emergency Shuttle timer
