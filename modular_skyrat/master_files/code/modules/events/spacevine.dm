@@ -849,6 +849,8 @@
 	var/spread_max = round(clamp(delta_time * 0.5 * vine_count / spread_multiplier, 1, spread_cap))
 	var/amount_processed = 0
 	for(var/obj/structure/spacevine/current_vine as anything in growth_queue)
+		if(!current_vine)
+			continue
 		growth_queue -= current_vine
 		queue_end += current_vine
 		for(var/datum/spacevine_mutation/mutation in current_vine.mutations)
