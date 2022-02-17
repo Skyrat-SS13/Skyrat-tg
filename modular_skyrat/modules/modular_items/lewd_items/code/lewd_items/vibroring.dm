@@ -67,10 +67,10 @@
 	if(!length(vibroring_designs))
 		populate_vibroring_designs()
 
-	soundloop2 = new(src, FALSE)
+	soundloop = new(src, FALSE)
 
 /obj/item/clothing/sextoy/vibroring/Destroy()
-	QDEL_NULL(soundloop2)
+	QDEL_NULL(soundloop)
 	return ..()
 
 /obj/item/clothing/sextoy/vibroring/update_icon_state()
@@ -91,10 +91,10 @@
 
 /obj/item/clothing/sextoy/vibroring/process(delta_time)
 	var/mob/living/carbon/human/user = loc
-	if(!U || !istype(user))
+	if(!user || !istype(user))
 		return PROCESS_KILL
-	var/obj/item/organ/genital/testicles/balls = U.getorganslot(ORGAN_SLOT_PENIS)
-	if(!toy_on || !P)
+	var/obj/item/organ/genital/testicles/balls = user.getorganslot(ORGAN_SLOT_PENIS)
+	if(!toy_on || !balls)
 		return
 	user.adjustArousal(1 * delta_time)
 	user.adjustPleasure(1 * delta_time)
