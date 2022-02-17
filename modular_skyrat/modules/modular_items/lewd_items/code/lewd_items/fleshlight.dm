@@ -7,14 +7,16 @@
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	w_class = WEIGHT_CLASS_SMALL
+	/// Current color of the toy, can be changed, affects sprite
 	var/current_color = "pink"
+	/// If the color of the toy has been changed before
 	var/color_changed = FALSE
+	/// A list of toy designs for use in the radial color choice menu
 	var/static/list/fleshlight_designs
 	slot_flags = NONE
 	moth_edible = FALSE
 
-//to change color of fleshlight
-//create radial menu
+/// Generates a list of toy colors (or designs) for use in the radial color choice menu
 /obj/item/clothing/sextoy/fleshlight/proc/populate_fleshlight_designs()
     fleshlight_designs = list(
 		"green" = image (icon = src.icon, icon_state = "[initial(icon_state)]_green"),
@@ -23,6 +25,7 @@
 		"red" = image (icon = src.icon, icon_state = "[initial(icon_state)]_red"),
 		"yellow" = image(icon = src.icon, icon_state = "[initial(icon_state)]_yellow"))
 
+/// A check for the radial color choice menu
 /obj/item/clothing/sextoy/fleshlight/proc/check_menu(mob/living/user)
 	if(!istype(user))
 		return FALSE
