@@ -65,3 +65,6 @@
 
 /// Cargo Loader trait
 #define TRAIT_TRASHMAN "trait_trashman"
+
+// Haircutting trait
+#define TRAIT_BARBER "barber"

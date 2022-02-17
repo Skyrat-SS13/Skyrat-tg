@@ -50,12 +50,13 @@
 
 		playsound(target_human, 'modular_skyrat/modules/salon/sound/haircut.ogg', 100)
 
-		if(do_after(user, (HAS_TRAIT(user, TRAIT_BARBER) ? HAIRCUT_SPEED_BARBER : HAIRCUT_SPEED_NONBARBER), target_human))
-			target_human.hairstyle = hair_id
-			target_human.update_hair()
-			user.visible_message(span_notice("[user] successfully cuts [target_human]'s hair!"), span_notice("You successfully cut [target_human]'s hair!"))
-			user.balloon_alert_to_viewers("snippity snip!")
-			new /obj/effect/decal/cleanable/hair(get_turf(src))
+		if(!do_after(user, (HAS_TRAIT(user, TRAIT_BARBER) ? HAIRCUT_SPEED_BARBER : HAIRCUT_SPEED_NONBARBER), target_human))
+			return
+
+		target_human.hairstyle = hair_id
+		target_human.update_hair()
+		user.visible_message(span_notice("[user] successfully cuts [target_human]'s hair!"), span_notice("You successfully cut [target_human]'s hair!"))
+		new /obj/effect/decal/cleanable/hair(get_turf(src))
 	else
 		if(!target_human.facial_hairstyle == "Shaved" && target_human.wear_mask)
 			balloon_alert(user, "They have no facial hair to cut!")
@@ -72,12 +73,13 @@
 
 		playsound(target_human, 'modular_skyrat/modules/salon/sound/haircut.ogg', 100)
 
-		if(do_after(user, (HAS_TRAIT(user, TRAIT_BARBER) ? FACIAL_HAIRCUT_SPEED_BARBER : FACIAL_HAIRCUT_SPEED_NONBARBER), target_human))
-			target_human.facial_hairstyle = facial_hair_id
-			target_human.update_hair()
-			user.visible_message(span_notice("[user] gracefully cuts [target_human]'s facial hair!"), span_notice("You gracefully cut [target_human]'s facial hair!"))
-			user.balloon_alert_to_viewers("snip snippity!")
-			new /obj/effect/decal/cleanable/hair(get_turf(src))
+		if(!do_after(user, (HAS_TRAIT(user, TRAIT_BARBER) ? FACIAL_HAIRCUT_SPEED_BARBER : FACIAL_HAIRCUT_SPEED_NONBARBER), target_human))
+			return
+
+		target_human.facial_hairstyle = facial_hair_id
+		target_human.update_hair()
+		user.visible_message(span_notice("[user] successfully cuts [target_human]'s facial hair!"), span_notice("You successfully cut [target_human]'s facial hair!"))
+		new /obj/effect/decal/cleanable/hair(get_turf(src))
 
 #undef HAIRCUT_SPEED_BARBER
 #undef HAIRCUT_SPEED_NONBARBER
