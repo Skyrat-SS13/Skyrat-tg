@@ -55,6 +55,7 @@ SUBSYSTEM_DEF(clothing_database)
 		loaded_clothing.banned = clothing_json["banned"]
 		clothing_loaded.Add(loaded_clothing)
 	message_admins("Loaded [clothing_loaded.len] clothing entries!")
+	..()
 
 /datum/controller/subsystem/clothing_database/proc/register_clothing(datum/tailor_clothing/clothing_datum, icon/clothing_icon)
 	clothing_datum.id = clothing_loaded.len + 1
