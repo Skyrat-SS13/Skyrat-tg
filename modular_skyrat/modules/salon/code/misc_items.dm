@@ -168,3 +168,13 @@
 	new /obj/item/perfume/strawberry(src)
 	new /obj/item/perfume/cherry(src)
 	new /obj/item/perfume/amber(src)
+
+/obj/item/skillchip/haircut
+	name = "FR3SH-CUT skillchip"
+	desc = "I like your cut, G!"
+	auto_traits = list(TRAIT_BARBER)
+	skill_name = "Haircutting Proficiency"
+	skill_description = "Learn to get yourself out of hair-y situations, by mastering the art of cutting through it!"
+	skill_icon = "hand-scissors"
+	activate_message = span_notice("In your mastery of haircuts, you feel ready to shave the day!")
+	deactivate_message = span_notice("You feel your mastery of haircuts get cut short..")

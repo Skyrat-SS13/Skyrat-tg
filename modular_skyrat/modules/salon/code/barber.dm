@@ -35,6 +35,10 @@
 	shoes = /obj/item/clothing/shoes/laceup
 	id_trim = /datum/id_trim/job/barber
 
+	skillchips = list(
+		/obj/item/skillchip/haircut,
+	)
+
 /obj/structure/closet/secure_closet/barber
 	name = "Barber's locker"
 	icon_state = "barber"
@@ -60,6 +64,7 @@
 	new /obj/item/reagent_containers/spray/cleaner(src)
 	new /obj/item/reagent_containers/glass/rag(src)
 	new /obj/item/storage/firstaid(src)
+	new /obj/item/skillchip/haircut(src)
 
 /obj/effect/landmark/start/barber
 	name = "Barber"
