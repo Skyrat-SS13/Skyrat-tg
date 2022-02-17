@@ -78,6 +78,8 @@
 			var/icon/stupid_fucking_jumpsuit_icon_bug = icon()
 			stupid_fucking_jumpsuit_icon_bug.Insert(onmob_icon, "inventory") // fixes a bug with jumpsuits
 			clothing_made.worn_icon = stupid_fucking_jumpsuit_icon_bug
+			var/obj/item/clothing/under/clothing_under = clothing_made
+			clothing_under.fitted = NO_FEMALE_UNIFORM // fixes a bug where women all wear the exact same clothing with jumpsuits
 		else
 			clothing_made.worn_icon = new /icon(file("data/clothing_icons/[pattern_kit_to_use.clothing_datum.id].dmi"))
 		clothing_made.icon_state = "inventory"
