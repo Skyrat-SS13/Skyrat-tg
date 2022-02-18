@@ -35,6 +35,8 @@
 	var/passive_gain_timer = 20 MINUTES
 	/// Assoc list of [typepath] = [knowledge instance]. A list of all knowledge this heretic's reserached.
 	var/list/researched_knowledge = list()
+	/// The organ slot we place our Living Heart in.
+	var/living_heart_organ_slot = ORGAN_SLOT_HEART
 	/// A list of TOTAL how many sacrifices completed. (Includes high value sacrifices)
 	var/total_sacrifices = 0
 	/// A list of TOTAL how many high value sacrifices completed.
@@ -410,9 +412,9 @@
 /datum/antagonist/heretic/get_admin_commands()
 	. = ..()
 
-	var/obj/item/organ/heart/our_heart = owner.current?.getorganslot(ORGAN_SLOT_HEART)
-	if(our_heart)
-		if(HAS_TRAIT(our_heart, TRAIT_LIVING_HEART))
+	var/obj/item/organ/our_living_heart = owner.current?.getorganslot(living_heart_organ_slot)
+	if(our_living_heart)
+		if(HAS_TRAIT(our_living_heart, TRAIT_LIVING_HEART))
 			.["Add Heart Target (Marked Mob)"] = CALLBACK(src, .proc/add_marked_as_target)
 			.["Remove Heart Target"] = CALLBACK(src, .proc/remove_target)
 		else
@@ -577,7 +579,7 @@
 	var/datum/antagonist/heretic/heretic_datum = owner?.has_antag_datum(/datum/antagonist/heretic)
 	if(!heretic_datum)
 		return FALSE
-	return heretic_datum.total_sacrifices >= target_amount
+	return completed || (heretic_datum.total_sacrifices >= target_amount)
 
 /// Heretic's major sacrifice objective. "Major sacrifices" are heads of staff.
 /datum/objective/major_sacrifice
@@ -589,7 +591,7 @@
 	var/datum/antagonist/heretic/heretic_datum = owner?.has_antag_datum(/datum/antagonist/heretic)
 	if(!heretic_datum)
 		return FALSE
-	return heretic_datum.high_value_sacrifices >= target_amount
+	return completed || (heretic_datum.high_value_sacrifices >= target_amount)
 
 /// Heretic's research objective. "Research" is heretic knowledge nodes (You start with some).
 /datum/objective/heretic_research
@@ -626,7 +628,7 @@
 	var/datum/antagonist/heretic/heretic_datum = owner?.has_antag_datum(/datum/antagonist/heretic)
 	if(!heretic_datum)
 		return FALSE
-	return length(heretic_datum.researched_knowledge) >= target_amount
+	return completed || (length(heretic_datum.researched_knowledge) >= target_amount)
 
 /datum/objective/heretic_summon
 	name = "summon monsters"

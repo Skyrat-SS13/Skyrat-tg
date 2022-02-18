@@ -549,14 +549,20 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	if(affecting && affecting.status == BODYPART_ROBOTIC)
 		if(user == H)
 			user.visible_message(span_notice("[user] starts to fix some of the wires in [H]'s [affecting.name]."), span_notice("You start fixing some of the wires in [H == user ? "your" : "[H]'s"] [affecting.name]."))
+			/* SKYRAT EDIT START - ORIGINAL:
 			if(!do_mob(user, H, 50))
 				return
+			*/
+		// SKYRAT EDIT CHANGE START
+		if(!do_after(user, (user == H ? self_delay : other_delay)))
+			return
+		// SKYRAT EDIT CHANGE END
 		if(item_heal_robotic(H, user, 0, 15))
+			user.visible_message(span_green("[user] fixes some of the wires in to [H]'s [affecting.name]."), span_green("You fix some of the wires in [H == user ? "your" : "[H]'s"] [affecting.name].")) // SKYRAT EDIT ADD
 			use(1)
 		return
 	else
 		return ..()
-
 
 ///////////////////////////////////////////////
 // Cable laying procedures

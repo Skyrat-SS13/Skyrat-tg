@@ -41,6 +41,10 @@
 		return TRUE
 
 	if(istype(I, /obj/item/forging/tongs))
+		var/obj/item/forging/forge_item = I
+		if(forge_item.in_use)
+			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
+			return
 		var/obj/item/forging/incomplete/search_incomplete_item = locate(/obj/item/forging/incomplete) in I.contents
 		if(search_incomplete_src && !search_incomplete_item)
 			search_incomplete_src.forceMove(I)

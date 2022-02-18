@@ -76,13 +76,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	data["item_ref_name"] = item_ref_name
 
 	// Check Access for item dropping.
-	var/item_retrieval_allowed = FALSE
-	if(isliving(user))
-		var/mob/living/living_user = user
-		var/obj/item/card/id/id = living_user.get_idcard()
-		if(id)
-			if((ACCESS_HEADS in id.access) || (ACCESS_ARMORY in id.access))
-				item_retrieval_allowed = TRUE
+	var/item_retrieval_allowed = allowed(user)
 	data["item_retrieval_allowed"] = item_retrieval_allowed
 
 	var/obj/item/card/id/id_card
@@ -349,7 +343,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 // Allows players to cryo others. Checks if they have been AFK for 30 minutes.
 	if(target.key && user != target)
 		if (target.getorgan(/obj/item/organ/brain) ) //Target the Brain
-			if(target.mind == null ) // Is the character empty / AI Controlled
+			if(!target.mind || target.ssd_indicator ) // Is the character empty / AI Controlled
 				if(target.lastclienttime + ssd_time >= world.time)
 					to_chat(user, span_notice("You can't put [target] into [src] for another [ssd_time - round(((world.time - target.lastclienttime) / (1 MINUTES)), 1)] minutes."))
 					log_admin("[key_name(user)] has attempted to put [key_name(target)] into a stasis pod, but they were only disconnected for [round(((world.time - target.lastclienttime) / (1 MINUTES)), 1)] minutes..")
