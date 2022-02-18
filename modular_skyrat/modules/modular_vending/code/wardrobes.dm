@@ -74,7 +74,7 @@
 /obj/machinery/vending/wardrobe/hydro_wardrobe
 	skyrat_contraband = list(
 		/obj/item/clothing/under/suit/white/scarface = 2,
-		/obj/item/clothing/under/costume/loincloth/sensor/adam = 2,
+		/obj/item/clothing/under/misc/gear_harness/adam = 2,
 		/obj/item/clothing/under/misc/gear_harness/eve = 2,
 	)
 
