@@ -84,6 +84,7 @@
 		)
 		var/path_to_use = clothing_map[pattern_kit_to_use.clothing_datum.slot]
 		var/obj/item/clothing/clothing_made = new path_to_use(get_turf(src))
+		clothing_made.item_flags &= ~ABSTRACT
 		clothing_made.name = pattern_kit_to_use.clothing_datum.name
 		clothing_made.desc = pattern_kit_to_use.clothing_datum.desc
 		clothing_made.icon = new /icon(file("data/clothing_icons/[pattern_kit_to_use.clothing_datum.id].dmi"))
