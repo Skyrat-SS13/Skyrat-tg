@@ -40,10 +40,8 @@ SUBSYSTEM_DEF(clothing_database)
 
 /datum/controller/subsystem/clothing_database/Initialize(start_timeofday)
 	var/list/clothes = flist("data/clothing/")
-	for(var/clothing in clothes)
-		if(clothing == null || clothing == "/")
-			continue
-		var/clothing_json = json_load("data/clothing/[clothing]")
+	for(var/i in 1 to clothes.len)
+		var/clothing_json = json_load("data/clothing/[i].json")
 		var/datum/tailor_clothing/loaded_clothing = new
 		loaded_clothing.name = clothing_json["name"]
 		loaded_clothing.desc = clothing_json["desc"]
