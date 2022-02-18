@@ -199,13 +199,8 @@ GLOBAL_LIST_EMPTY(allCasters)
 /obj/machinery/newscaster
 	name = "newscaster"
 	desc = "A standard Nanotrasen-licensed newsfeed handler for use in commercial space stations. All the news you absolutely have no use for, in one place!"
-<<<<<<< HEAD
 	icon = 'icons/obj/terminals.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-	icon_state = "newscaster_normal"
-=======
-	icon = 'icons/obj/terminals.dmi'
 	icon_state = "newscaster_off"
->>>>>>> d9df0b6d0d8 (backlit newscaster, status display, request console. status display refactor to newer overlay system (#64858))
 	base_icon_state = "newscaster"
 	verb_say = "beeps"
 	verb_ask = "beeps"

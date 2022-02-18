@@ -27,13 +27,8 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 /obj/machinery/requests_console
 	name = "requests console"
 	desc = "A console intended to send requests to different departments on the station."
-<<<<<<< HEAD
 	icon = 'icons/obj/terminals.dmi' //OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-	icon_state = "req_comp0"
-=======
-	icon = 'icons/obj/terminals.dmi'
 	icon_state = "req_comp_off"
->>>>>>> d9df0b6d0d8 (backlit newscaster, status display, request console. status display refactor to newer overlay system (#64858))
 	base_icon_state = "req_comp"
 	var/department = "Unknown" //The list of all departments on the station (Determined from this variable on each unit) Set this to the same thing if you want several consoles in one department
 	var/list/messages = list() //List of all messages
