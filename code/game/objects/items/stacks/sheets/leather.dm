@@ -190,7 +190,6 @@ GLOBAL_LIST_INIT(leather_recipes, list ( \
 	new/datum/stack_recipe("saddle", /obj/item/saddle, 5), \
 	//SKYRAT EDIT ADDITION BEGIN
 	new/datum/stack_recipe("gear harness", /obj/item/clothing/under/misc/gear_harness, 6), \
-	new/datum/stack_recipe("loincloth", /obj/item/clothing/under/costume/loincloth, 2), \
 	new/datum/stack_recipe("xenoarch belt", /obj/item/storage/belt/utility/xenoarch, 4), \
 	//SKYRAT EDIT ADDITION END
 	new/datum/stack_recipe("sheriff vest", /obj/item/clothing/accessory/vest_sheriff, 4), \
