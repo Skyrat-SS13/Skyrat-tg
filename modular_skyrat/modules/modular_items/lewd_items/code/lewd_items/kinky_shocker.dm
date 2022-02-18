@@ -73,6 +73,7 @@
 
 /obj/item/kinky_shocker/proc/tryremovecell(mob/user)
 	if(!(cell && can_remove_cell))
+		return
 	cell.update_appearance()
 	cell.forceMove(get_turf(src))
 	cell = null
