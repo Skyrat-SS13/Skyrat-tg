@@ -61,8 +61,6 @@
 /datum/component/reagent_weapon
 	///the item that the component is attached to
 	var/obj/item/parent_weapon
-	///the container that will apply the chemicals
-	var/obj/item/reagent_containers/applying_container
 	///the list of imbued reagents that will given to the human owner
 	var/list/imbued_reagent = list()
 
@@ -71,13 +69,11 @@
 		return COMPONENT_INCOMPATIBLE //they need to be weapons, I already said this
 	parent_weapon = parent
 	parent_weapon.create_reagents(250, INJECTABLE | REFILLABLE)
-	applying_container = new /obj/item/reagent_containers(src)
 	RegisterSignal(parent_weapon, COMSIG_ITEM_ATTACK, .proc/inject_attacked)
 
 /datum/component/reagent_weapon/Destroy(force, silent)
 	UnregisterSignal(parent_weapon, COMSIG_ITEM_ATTACK)
 	parent_weapon = null
-	QDEL_NULL(applying_container)
 	return ..()
 
 /datum/component/reagent_weapon/proc/inject_attacked(datum/source, mob/living/target, mob/living/user, params)
@@ -86,5 +82,4 @@
 		return
 	var/mob/living_target = target
 	for(var/create_reagent in imbued_reagent)
-		applying_container.reagents.add_reagent(create_reagent, 1)
-		applying_container.reagents.trans_to(target = living_target, amount = 1, methods = INJECT)
+		living_target.reagents.add_reagent(create_reagent, 1)
