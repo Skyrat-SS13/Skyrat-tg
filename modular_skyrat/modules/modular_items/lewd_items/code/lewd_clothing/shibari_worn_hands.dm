@@ -1,3 +1,4 @@
+/*
 /obj/item/clothing/gloves/shibari_hands
 	name = "shibari arms bondage"
 	desc = "Bondage ropes that cover arms."
@@ -58,3 +59,4 @@
 		hooman.remove_status_effect(/datum/status_effect/ropebunny)
 	return ..()
 
+*/
