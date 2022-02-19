@@ -1,3 +1,4 @@
+/*
 //Defining rope tightness for code readability. This var works as multiplier for arousal and pleasure per tick when character tied up with those.
 #define ROPE_TIGHTNESS_LOW (1<<0)
 #define ROPE_TIGHTNESS_MED (1<<1)
@@ -346,3 +347,4 @@
 #undef ROPE_TIGHTNESS_LOW
 #undef ROPE_TIGHTNESS_MED
 #undef ROPE_TIGHTNESS_HIGH
+*/
