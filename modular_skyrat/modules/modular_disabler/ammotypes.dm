@@ -4,13 +4,24 @@
 
 /obj/item/ammo_casing/energy/disabler/skyrat/ // Now 100% more modular! (Code-wise and ingame-wise!)
 	e_cost = 1000
-	projectile_type = /obj/projectile/beam/disabler/weak
 
 /obj/item/ammo_casing/energy/disabler/skyrat/proto // Base two shot per reload ammo type.
 	e_cost = 10000
 	upper_reload_speed = 25
 	lower_reload_speed = 15
+	projectile_type = /obj/projectile/beam/disabler/weak
 
+/obj/item/ammo_casing/energy/disabler/skyrat/proto/shove
+	projectile_type = /obj/projectile/beam/disabler/weak/shove
+	select_name = SHOT_SHOVE
+	upper_reload_speed = 25
+	lower_reload_speed = 15
+
+/obj/item/ammo_casing/energy/disabler/skyrat/proto/untie
+	projectile_type = /obj/projectile/beam/disabler/weak/untie
+	select_name = SHOT_UNTIE
+	upper_reload_speed = 25
+	lower_reload_speed = 15
 /obj/item/ammo_casing/energy/disabler/skyrat/proto/bounce
 	e_cost = 10000
 	select_name = SHOT_BOUNCE
@@ -34,6 +45,7 @@
 
 /obj/item/ammo_casing/energy/laser/scatter/disabler/skyrat // Our split beam! Guaranteed no brutality!
 	e_cost = 20000
+	projectile_type = /obj/projectile/beam/disabler/weak/split
 	pellets = 2
 	variance = 15
 	harmful = FALSE

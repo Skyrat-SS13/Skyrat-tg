@@ -11,3 +11,13 @@
 	name = "Hallucination Disabler Upgrade Kit"
 	ammo_to_add = /obj/item/ammo_casing/energy/disabler/skyrat/proto/hallucinate
 	name_to_append = SHOT_HALLUCINATE
+
+/obj/item/device/custom_kit/disabler/untie
+	name = "Shoe Lubricating Disabler Upgrade Kit"
+	ammo_to_add = /obj/item/ammo_casing/energy/disabler/skyrat/proto/untie
+	name_to_append = SHOT_UNTIE
+
+/obj/item/device/custom_kit/disabler/shove
+	name = "Ridable Beam Disabler Upgrade Kit"
+	ammo_to_add = /obj/item/ammo_casing/energy/disabler/skyrat/proto/shove
+	name_to_append = SHOT_SHOVE

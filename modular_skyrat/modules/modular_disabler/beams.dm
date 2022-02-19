@@ -2,6 +2,30 @@
 	name = "weakened disabler beam"
 	damage = 30 // TG default
 
+/obj/projectile/beam/disabler/weak/split
+	damage = 12
+
+/obj/projectile/beam/disabler/weak/untie
+	damage = 15
+	light_color = COLOR_SAMPLE_BROWN
+
+/obj/projectile/beam/disabler/weak/untie/on_hit(atom/target, blocked, pierce_hit)
+	. = ..()
+	var/mob/living/carbon/hit = target
+	var/obj/item/clothing/shoes/shoe = hit.get_item_by_slot(ITEM_SLOT_FEET)
+	if(iscarbon(hit) && prob(75))
+		shoe.adjust_laces(SHOES_UNTIED, src)
+
+
+/obj/projectile/beam/disabler/weak/shove
+	damage = 18
+	projectile_piercing = PASSMOB
+/obj/projectile/beam/disabler/weak/shove/on_hit(atom/target, blocked, pierce_hit)
+	. = ..()
+	var/mob/living/carbon/hit = target
+	if(iscarbon(hit))
+		buckle_mob(hit, TRUE, FALSE)
+
 /obj/projectile/beam/disabler/disgust // Disgusting beam...
 	damage = 0
 	icon_state = "omnilaser"
