@@ -334,6 +334,8 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/feet.dmi'
 	icon_state = "heel-jackboots"
 	mutant_variants = NONE
+	uses_advanced_reskins = FALSE
+	unique_reskin = NONE
 
 //Donation reward for Bloodrite
 /obj/item/clothing/shoes/clown_shoes/britches
