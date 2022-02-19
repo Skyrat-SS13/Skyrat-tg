@@ -98,6 +98,7 @@
 #define HIDEHEADGEAR (1<<11)
 ///for lizard snouts, because some HIDEFACE clothes don't actually conceal that portion of the head.
 #define HIDESNOUT (1<<12)
+<<<<<<< HEAD
 ///SKYRAT EDIT ADDITION: CUSTOM EAR TOGGLE FOR ANTHRO/ETC EAR SHOWING - Manually set this on items you want anthro ears to show on!
 #define SHOWSPRITEEARS (1<<13)
 /// Does this sprite also hide the spine on tails? Realistically only useful for the clothes that have a special tail overlay, like MODsuits
@@ -105,6 +106,10 @@
 //SKYRAT EDIT ADDITION BEGIN - ERP UPDATE
 #define HIDESEXTOY (1<<15)
 //SKYRAT EDIT ADDITION END
+=======
+///hides mutant/moth wings, does not apply to functional wings
+#define HIDEMUTWINGS (1<<13)
+>>>>>>> 681f00b0136 (Adds Moth Fashion (#64716))
 
 //bitflags for clothing coverage - also used for limbs
 #define HEAD (1<<0)
