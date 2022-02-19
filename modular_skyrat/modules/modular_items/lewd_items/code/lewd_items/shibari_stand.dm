@@ -155,8 +155,6 @@
 			current_mob.update_handcuffed()
 		current_mob.set_handcuffed(new /obj/item/restraints/handcuffs/milker/shibari(current_mob))
 		current_mob.handcuffed.parented_struct = src
-		if(HAS_TRAIT(current_mob, TRAIT_ROPEBUNNY))
-			current_mob.handcuffed.breakouttime = 4 MINUTES
 		current_mob.update_abstract_handcuffed()
 
 //Restore the position of the mob after unbuckling.

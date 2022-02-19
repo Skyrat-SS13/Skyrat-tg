@@ -33,12 +33,7 @@
 /obj/item/clothing/shoes/shibari_legs/Destroy()
 	for(var/obj/item in contents)
 		item.forceMove(get_turf(src))
-	if(!ishuman(loc))
-		return ..()
-	var/mob/living/carbon/human/hooman = loc
-	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
-		hooman.remove_status_effect(/datum/status_effect/ropebunny)
-	return..()
+	return ..()
 
 /obj/item/clothing/shoes/shibari_legs/ComponentInitialize()
 	. = ..()
@@ -60,22 +55,4 @@
 	var/mob/living/carbon/human/hooman = user
 	if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
 		dropped(user)
-
-//stuff to apply mood event for perverts
-/obj/item/clothing/shoes/shibari_legs/equipped(mob/user, slot)
-	. = ..()
-	if(!ishuman(user))
-		return
-	var/mob/living/carbon/human/hooman = user
-	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
-		hooman.apply_status_effect(/datum/status_effect/ropebunny)
-
-//same stuff as above but for dropping item
-/obj/item/clothing/shoes/shibari_legs/dropped(mob/user, slot)
-	if(!ishuman(user))
-		return ..()
-	var/mob/living/carbon/human/hooman = user
-	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
-		hooman.remove_status_effect(/datum/status_effect/ropebunny)
-	return ..()
 

@@ -33,11 +33,6 @@
 
 	for(var/obj/item in contents)
 		item.forceMove(get_turf(src))
-	if(!ishuman(loc))
-		return ..()
-	var/mob/living/carbon/human/hooman = loc
-	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
-		hooman.remove_status_effect(/datum/status_effect/ropebunny)
 	return ..()
 
 /obj/item/clothing/under/shibari/equipped(mob/user, slot)
@@ -100,17 +95,6 @@
 	var/mob/living/carbon/human/hooman = user
 	if(src == hooman.w_uniform)
 		START_PROCESSING(SSobj, src)
-	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
-		hooman.apply_status_effect(/datum/status_effect/ropebunny)
-
-//same stuff as above but for dropping item
-/obj/item/clothing/under/shibari/dropped(mob/user, slot)
-	if(!ishuman(user))
-		return ..()
-	var/mob/living/carbon/human/hooman = user
-	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
-		hooman.remove_status_effect(/datum/status_effect/ropebunny)
-	return..()
 
 /obj/item/clothing/under/shibari/torso
 	name = "shibari ropes"

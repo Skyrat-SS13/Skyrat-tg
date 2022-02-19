@@ -101,26 +101,7 @@
 			return TRUE
 	return FALSE
 
-//Shibari update quirks: Rope bunny and rigger. One have additional mood bonus (0) and exist for same reason as ananas affinity, other one can faster tie ropes on character because why not.
-//Rope bunny code
-/datum/quirk/ropebunny
-	name = "Rope bunny"
-	desc = "You love being tied up."
-	value = 0 //ERP Traits don't have price. They are priceless. Ba-dum-tss
-	mob_trait = TRAIT_ROPEBUNNY
-	gain_text = span_danger("You really want to be restrained for some reason.")
-	lose_text = span_notice("Being restrained doesn't arouse you anymore.")
-	icon = "link"
-
-/datum/quirk/ropebunny/post_add()
-	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	ADD_TRAIT(H,TRAIT_ROPEBUNNY, LEWDQUIRK_TRAIT)
-
-/datum/quirk/ropebunny/remove()
-	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	REMOVE_TRAIT(H,TRAIT_ROPEBUNNY, LEWDQUIRK_TRAIT)
+//Shibari update quirks: Rigger. One can faster tie ropes on character because why not.
 
 //Rigger code
 /datum/quirk/rigger
