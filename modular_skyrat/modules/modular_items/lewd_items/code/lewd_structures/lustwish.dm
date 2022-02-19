@@ -40,7 +40,6 @@
 					/obj/item/clothing/under/misc/poly_bottomless = 4,
 					/obj/item/clothing/under/misc/poly_tanktop = 4,
 					/obj/item/clothing/under/misc/poly_tanktop/female = 4,
-					/obj/item/clothing/under/costume/loincloth = 2,
 					/obj/item/clothing/under/misc/stripper = 4,
 					/obj/item/clothing/under/misc/stripper/green = 4,
 					/obj/item/clothing/under/misc/stripper/mankini = 4,
@@ -54,8 +53,6 @@
 					/obj/item/clothing/shoes/jackboots/thigh = 1,
 					/obj/item/clothing/shoes/jackboots/knee = 1,
 					//special
-					/obj/item/stack/shibari_rope/full = 10,
-					/obj/item/stack/shibari_rope/glow/full = 10,
 					/obj/item/clothing/glasses/nice_goggles = 1 //easter egg, don't touch plz)
 					)
 	contraband = list(
