@@ -107,7 +107,10 @@
 				digitigrade_jumpsuit_worn_icon.Insert(onmob_digit_icon, "inventory") // fixes a bug with jumpsuits, again
 				clothing_made.worn_icon_digi = digitigrade_jumpsuit_worn_icon
 			else
-				clothing_made.worn_icon_digi = new /icon(file("data/clothing_icons_digitigrade/[pattern_kit_to_use.clothing_datum.id].dmi"))
+				var/icon/onmob_digit_icon = new(clothing_made.icon, "onmob_digit")
+				var/icon/digitigrade_jumpsuit_worn_icon = icon()
+				digitigrade_jumpsuit_worn_icon.Insert(onmob_digit_icon, "onmob")
+				clothing_made.worn_icon_digi = digitigrade_jumpsuit_worn_icon
 			clothing_made.mutant_variants = STYLE_DIGITIGRADE
 		else
 			clothing_made.mutant_variants = NONE // we want it to show regardless
