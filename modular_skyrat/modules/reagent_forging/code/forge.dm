@@ -38,7 +38,7 @@
 	///the fuel amount (in seconds) that the forge has (stronger than wood)
 	var/forge_fuel_strong = 0
 	///whether the forge is capable of allowing reagent forging of the forged item.
-	//normal forges are false; to turn into true, use 3 (active) legion cores.
+	//normal forges are false; to turn into true, use 6 (active) legion cores.
 	var/reagent_forging = FALSE
 	///counting how many cores used to turn forge into a reagent forging forge.
 	var/current_core = 0
@@ -79,7 +79,7 @@
 	if(forge_level < FORGE_LEVEL_THREE)
 		. += span_notice("[src] has [goliath_ore_improvement]/3 goliath hides.")
 		. += span_notice("[src] has [current_sinew]/10 watcher sinews.")
-		. += span_notice("[src] has [current_core]/3 regenerative cores.")
+		. += span_notice("[src] has [current_core]/6 regenerative cores.")
 	. += span_notice("<br>[src] is currently [forge_temperature] degrees hot, going towards [target_temperature] degrees.<br>")
 	if(reagent_forging)
 		. += span_warning("[src] has a red tinge, it is ready to imbue chemicals into reagent objects.")
@@ -185,7 +185,7 @@
 		current_sinew = 10
 		forge_level = FORGE_LEVEL_TWO
 	if(user_smithing_skill >= SKILL_LEVEL_MASTER)
-		current_core = 3
+		current_core = 6
 		forge_level = FORGE_LEVEL_THREE
 		create_reagent_forge()
 	if(forge_level == previous_level)
@@ -313,7 +313,7 @@
 		qdel(I)
 		current_core++
 		in_use = FALSE
-		if(current_core >= 3) //use three regenerative cores to get reagent forging capabilities on the forge
+		if(current_core >= 6) //use six regenerative cores to get reagent forging capabilities on the forge
 			create_reagent_forge()
 		return
 
@@ -446,7 +446,7 @@
 			fail_message(user, "You fail imbueing [attacking_item]!")
 			return
 		for(var/datum/reagent/weapon_reagent in attacking_item.reagents.reagent_list)
-			if(weapon_reagent.volume < 200)
+			if(weapon_reagent.volume < 100)
 				attacking_item.reagents.remove_all_type(weapon_reagent.type)
 				continue
 			weapon_component.imbued_reagent += weapon_reagent.type
@@ -481,7 +481,7 @@
 			fail_message(user, "You fail imbueing [attacking_item]!")
 			return
 		for(var/datum/reagent/clothing_reagent in attacking_item.reagents.reagent_list)
-			if(clothing_reagent.volume < 200)
+			if(clothing_reagent.volume < 100)
 				attacking_item.reagents.remove_all_type(clothing_reagent.type)
 				continue
 			clothing_component.imbued_reagent += clothing_reagent.type
@@ -588,7 +588,7 @@
 	return ..()
 
 /obj/structure/reagent_forge/ready
-	current_core = 3
+	current_core = 6
 	reagent_forging = TRUE
 	sinew_lower_chance = 100
 	forge_temperature = 1000

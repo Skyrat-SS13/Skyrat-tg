@@ -20,7 +20,7 @@
 	if(set_slot)
 		checking_slot = set_slot
 	parent_clothing = parent
-	parent_clothing.create_reagents(500, INJECTABLE | REFILLABLE)
+	parent_clothing.create_reagents(250, INJECTABLE | REFILLABLE)
 	applying_container = new /obj/item/reagent_containers(src)
 	RegisterSignal(parent_clothing, COMSIG_ITEM_EQUIPPED, .proc/set_wearer)
 	RegisterSignal(parent_clothing, COMSIG_ITEM_PRE_UNEQUIP, .proc/remove_wearer)
@@ -70,7 +70,7 @@
 	if(!istype(parent, /obj/item))
 		return COMPONENT_INCOMPATIBLE //they need to be weapons, I already said this
 	parent_weapon = parent
-	parent_weapon.create_reagents(500, INJECTABLE | REFILLABLE)
+	parent_weapon.create_reagents(250, INJECTABLE | REFILLABLE)
 	applying_container = new /obj/item/reagent_containers(src)
 	RegisterSignal(parent_weapon, COMSIG_ITEM_ATTACK, .proc/inject_attacked)
 
