@@ -7,7 +7,6 @@
 	icon_deny = "necrocrate"
 
 	products = list( //Relatively normal to have, I GUESS
-		/obj/item/clothing/under/costume/loincloth = 15,
 		/obj/item/clothing/under/costume/gladiator/ash_walker/tribal = 15,
 		/obj/item/clothing/under/costume/gladiator/ash_walker/chestwrap = 15,
 		/obj/item/clothing/under/costume/gladiator/ash_walker/robe = 15,

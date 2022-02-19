@@ -6,6 +6,6 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
 
 /datum/techweb_node/combat_cyber_implants
-	design_ids = list("ci-xray", "ci-thermals", "ci-nv", "ci-antidrop", "ci-antistun", "ci-antisleep", "ci-thrusters", "ci-mantis", "ci-flash")
+	design_ids = list("ci-nv", "ci-antidrop", "ci-antistun", "ci-antisleep", "ci-thrusters", "ci-mantis", "ci-flash")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 12000)
 
