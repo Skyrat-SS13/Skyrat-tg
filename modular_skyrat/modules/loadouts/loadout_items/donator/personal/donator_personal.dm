@@ -383,3 +383,13 @@
 	name = "Lil' Zapp Plushie"
 	item_path = /obj/item/toy/plush/zapp
 	donator_only = TRUE
+
+/datum/loadout_item/pocket_items/tacticalbrush
+	name = "Tactical Brush"
+	item_path = /obj/item/hairbrush/tactical
+	ckeywhitelist = list("weredoggo")
+
+/datum/loadout_item/neck/fishpendant
+	name = "Fish Pendant"
+	item_path = /obj/item/clothing/neck/fishpendant
+	ckeywhitelist = list("cimika")
