@@ -234,8 +234,11 @@
 	return FALSE
 
 /obj/effect/mob_spawn/ghost_role/human/ash_walker/special(mob/living/carbon/human/spawned_human)
-	. = ..()
+	// SKYRAT EDIT MOVE
+	// Moved lizard name randomizer before parent call (so character names are preserved)
 	spawned_human.fully_replace_character_name(null,random_unique_lizard_name(gender))
+	. = ..()
+	// SKYRAT EDIT END
 	to_chat(spawned_human, "<b>Drag the corpses of men and beasts to your nest. It will absorb them to create more of your kind. Invade the strange structure of the outsiders if you must. Do not cause unnecessary destruction, as littering the wastes with ugly wreckage is certain to not gain you favor. Glory to the Necropolis!</b>")
 
 	spawned_human.mind.add_antag_datum(/datum/antagonist/ashwalker, team)

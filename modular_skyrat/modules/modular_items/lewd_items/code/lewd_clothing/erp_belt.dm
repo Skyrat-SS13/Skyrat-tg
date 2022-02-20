@@ -18,7 +18,7 @@
 	STR.max_combined_w_class = 21
 	STR.set_holdable(list(
 						//toys
-						/obj/item/clothing/sextoy/signalvib,
+						/obj/item/clothing/sextoy/eggvib/signalvib,
 						/obj/item/clothing/sextoy/buttplug,
 						/obj/item/clothing/sextoy/nipple_clamps,
 						/obj/item/clothing/sextoy/eggvib,

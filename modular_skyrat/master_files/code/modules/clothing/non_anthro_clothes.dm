@@ -159,10 +159,10 @@
 
 /obj/item/clothing/head/hooded/cult_hoodie/eldritch
 	mutant_variants = NONE
-	
+
 /obj/item/clothing/head/helmet/space/hardsuit/berserker
 	mutant_variants = NONE
-	
+
 /obj/item/clothing/head/hooded/cloakhood/godslayer
 	mutant_variants = NONE
 
@@ -193,9 +193,6 @@
 //UNDER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 /obj/item/clothing/under/costume/gladiator/ash_walker
-	mutant_variants = NONE
-
-/obj/item/clothing/under/misc/gear_harness
 	mutant_variants = NONE
 
 /obj/item/clothing/under/costume/maid
@@ -462,7 +459,7 @@
 
 /obj/item/clothing/head/hooded/techpriest
 	mutant_variants = NONE
-	
+
 /obj/item/clothing/suit/space/hardsuit/berserker
 	mutant_variants = NONE
 
