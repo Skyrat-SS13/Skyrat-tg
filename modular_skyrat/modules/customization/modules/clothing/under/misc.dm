@@ -45,6 +45,7 @@
 	icon_state = "gear_harness"
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
+	mutant_variants = NONE
 
 /obj/item/clothing/under/misc/colourable_kilt
 	name = "colourable kilt"
@@ -422,19 +423,16 @@
 	icon_state = "scarface"
 
 /obj/item/clothing/under/misc/gear_harness/eve
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	name = "collection of leaves"
 	desc = "Three leaves, designed to cover the nipples and genetalia of the wearer. A foe so proud will first the weaker seek."
 	icon_state = "eve"
 
-/obj/item/clothing/under/costume/loincloth/sensor/adam
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+/obj/item/clothing/under/misc/gear_harness/adam
 	name = "leaf"
 	desc = "A single leaf, designed to cover the genitalia of the wearer. Seek not temptation."
 	icon_state = "adam"
-	can_adjust = FALSE
+	body_parts_covered = GROIN
+	fitted = FEMALE_UNIFORM_TOP
 
 /obj/item/clothing/under/misc/evilcargo
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
