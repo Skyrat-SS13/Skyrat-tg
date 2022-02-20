@@ -375,3 +375,18 @@
 	temp = starting_temp
 	calculate_height()
 	set_reagent_color_for_liquid()
+
+/obj/item/toy/plush/rubi
+	name = "huggable bee plushie"
+	desc = "It reminds you of a very, very, very huggable bee."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_rubi"
+	gender = FEMALE
+	squeak_override = list('sound/weapons/thudswoosh.ogg' = 1)
+	attack_verb_continuous = list("hugs")
+	attack_verb_simple = list("hug")
+
+/obj/item/toy/plush/rubi/attack_self(mob/user)
+	. = ..()
+	user.changeNext_move(CLICK_CD_MELEE) // To avoid spam
+	user.visible_message(span_notice("[user] hugs \the [src]."), span_notice("You hug \the [src]."))
