@@ -184,14 +184,14 @@
 		to_chat(user, span_notice("[src] requires you to be more experienced!"))
 		return
 	if(user_smithing_skill >= SKILL_LEVEL_APPRENTICE)
-		goliath_ore_improvement = 3
+		goliath_ore_improvement = MAX_UPGRADE_GOLIATH
 		forge_level = FORGE_LEVEL_ONE
 	if(user_smithing_skill >= SKILL_LEVEL_EXPERT)
 		sinew_lower_chance = 100
-		current_sinew = 10
+		current_sinew = MAX_UPGRADE_SINEW
 		forge_level = FORGE_LEVEL_TWO
 	if(user_smithing_skill >= SKILL_LEVEL_MASTER)
-		current_core = 6
+		current_core = MAX_UPGRADE_REGEN
 		forge_level = FORGE_LEVEL_THREE
 		create_reagent_forge()
 	if(forge_level == previous_level)
@@ -594,7 +594,7 @@
 	return ..()
 
 /obj/structure/reagent_forge/ready
-	current_core = 6
+	current_core = MAX_UPGRADE_REGEN
 	reagent_forging = TRUE
 	sinew_lower_chance = 100
 	forge_temperature = 1000
