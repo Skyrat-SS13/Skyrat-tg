@@ -494,16 +494,16 @@
 "agy" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/door/airlock/medical{
-	name = "Surgery B";
-	req_access_txt = "5"
-	},
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/tile/blue/full,
+/obj/machinery/door/airlock/medical{
+	name = "Surgery A";
+	req_access_txt = "45"
+	},
 /turf/open/floor/iron/white/smooth_large,
 /area/medical/medbay/aft)
 "agG" = (
@@ -15622,10 +15622,8 @@
 /turf/open/floor/iron,
 /area/engineering/storage_shared)
 "dYL" = (
-/obj/machinery/camera/directional/north{
-	c_tag = "Secure Tech Storage"
-	},
 /obj/structure/cable,
+/obj/machinery/camera/autoname/directional/east,
 /turf/open/floor/iron,
 /area/engineering/storage/tech)
 "dYZ" = (
@@ -37681,6 +37679,21 @@
 /obj/structure/cable,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
+"pGu" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/blue/full,
+/obj/machinery/door/airlock/medical{
+	name = "Surgery B";
+	req_access_txt = "45"
+	},
+/turf/open/floor/iron/white/smooth_large,
+/area/medical/medbay/aft)
 "pGx" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1
@@ -46120,8 +46133,8 @@
 /area/service/kitchen)
 "ucQ" = (
 /obj/structure/rack,
-/obj/machinery/light/small/directional/west,
 /obj/effect/spawner/random/techstorage/command_all,
+/obj/machinery/light/directional/west,
 /turf/open/floor/iron,
 /area/engineering/storage/tech)
 "ucR" = (
@@ -50428,6 +50441,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/commons/fitness)
+"wmL" = (
+/turf/closed/wall/r_wall,
+/area/engineering/storage/tech)
 "wmO" = (
 /obj/structure/janitorialcart,
 /turf/open/floor/iron,
@@ -79574,7 +79590,7 @@ aJw
 boP
 dzF
 dzF
-dzF
+wmL
 dzF
 dzF
 boP
@@ -94485,7 +94501,7 @@ agy
 pSk
 pSk
 pSk
-agy
+pGu
 pSk
 pSk
 qSz
