@@ -9,6 +9,5 @@
 
 //code for showing that we have something IlLeGaL
 /obj/item/lustwish_discount/attack_self(mob/user, modifiers)
-	.=..()
+	. = ..()
 	to_chat(loc, span_notice("[user] shows a lustwish elite card!"))
-	return
