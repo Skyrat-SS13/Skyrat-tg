@@ -22,6 +22,9 @@
 /obj/item/wrench/combat
 	icon = 'icons/obj/tools.dmi'
 
+/obj/item/screwdriver/power
+	icon = 'modular_skyrat/modules/aesthetics/tools/tools.dmi'
+
 /obj/item/construction/plumbing
 	icon = 'modular_skyrat/modules/aesthetics/tools/tools.dmi'
 
