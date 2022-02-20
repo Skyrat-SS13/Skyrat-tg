@@ -3,7 +3,7 @@
 	leader_role = /datum/antagonist/ert/nri/commander
 	rename_team = "Novaya Rossiyskaya Imperiya Patrol"
 	code = "Red"
-	mission = "Subvert the station."
+	mission = "Cooperate with the station, protect NRI assets."
 	polldesc = "a squad of NRI border patrol"
 
 /datum/antagonist/ert/nri
