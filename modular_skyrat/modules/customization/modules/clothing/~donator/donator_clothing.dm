@@ -1323,4 +1323,5 @@
 	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_right.dmi'
 	icon_state = "tacticalbrush"
-	inhand_icon_state = "tacticalbrush
+	inhand_icon_state = "tacticalbrush"
+
