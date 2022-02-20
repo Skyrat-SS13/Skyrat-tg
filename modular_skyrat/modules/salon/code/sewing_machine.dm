@@ -57,7 +57,7 @@
 			user.balloon_alert(user, "[cloth_to_use.amount] cloth left")
 
 		var/list/clothing_map = list(
-			"Back" = /obj/item/clothing,
+			"Back" = /obj/item/storage/backpack,
 			"Face" = /obj/item/clothing/mask,
 			"Neck" = /obj/item/clothing/neck,
 			"Belt" = /obj/item/clothing,
@@ -83,7 +83,7 @@
 			"Jumpsuit" = ITEM_SLOT_ICLOTHING
 		)
 		var/path_to_use = clothing_map[pattern_kit_to_use.clothing_datum.slot]
-		var/obj/item/clothing/clothing_made = new path_to_use(get_turf(src))
+		var/obj/item/clothing_made = new path_to_use(get_turf(src))
 		clothing_made.item_flags &= ~ABSTRACT
 		clothing_made.name = pattern_kit_to_use.clothing_datum.name
 		clothing_made.desc = pattern_kit_to_use.clothing_datum.desc
