@@ -9,7 +9,8 @@
 	desc = "To clean all the mess."
 	icon_state = "serviette_clean"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
-	var/cleanspeed = 50
+	/// How much time it takes to clean something using it
+	var/cleanspeed = 5 SECONDS
 	w_class = WEIGHT_CLASS_TINY
 	item_flags = NOBLUDGEON
 	gender = PLURAL
@@ -28,10 +29,10 @@
 	var/clean_speedies = 1 * cleanspeed
 	if(user.mind)
 		clean_speedies = cleanspeed * min(user.mind.get_skill_modifier(/datum/skill/cleaning, SKILL_SPEED_MODIFIER)+0.1,1) //less scaling for soapies
-	//I couldn't feasibly  fix the overlay bugs caused by cleaning items we are wearing.
-	//So this is a workaround. This also makes more sense from an IC standpoint. ~Carn
-	if(user.client && ((target in user.client.screen) && !user.is_holding(target)))
+
+	if((target in user?.client.screen) && !user.is_holding(target))
 		to_chat(user, span_warning("You need to take \the [target.name] off before cleaning it!"))
+
 	else if(istype(target, /obj/effect/decal/cleanable))
 		user.visible_message(span_notice("[user] begins to clean \the [target.name] out with [src]."), span_warning("You begin to clean \the [target.name] out with [src]..."))
 		if(do_after(user, clean_speedies, target = target))
@@ -43,7 +44,6 @@
 			var/obj/item/serviette_used/W = new /obj/item/serviette_used
 			remove_item_from_storage(user)
 			user.put_in_hands(W)
-
 
 	else if(istype(target, /obj/structure/window))
 		user.visible_message(span_notice("[user] begins to clean \the [target.name] with [src]..."), span_notice("You begin to clean \the [target.name] with [src]..."))
@@ -72,8 +72,6 @@
 			remove_item_from_storage(user)
 			user.put_in_hands(W)
 
-	return
-
 ///////////////////////////
 //CODE FOR SERVIETTE PACK//
 ///////////////////////////
@@ -83,7 +81,8 @@
 	desc = "I wonder why LustWish makes them..."
 	icon_state = "serviettepack"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
-	var/servleft = "4"
+	///A count of how many serviettes are left in the pack
+	var/servleft = 4
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/serviette_pack/update_icon_state()
@@ -96,40 +95,12 @@
 	update_icon()
 
 /obj/item/serviette_pack/attack_self(mob/user, obj/item/I)
-	switch(servleft)
-		if("4")
-			to_chat(user, span_notice("You take a serviette from the pack."))
-			servleft = "3"
-			var/obj/item/serviette/W = new /obj/item/serviette
-			user.put_in_hands(W)
-			update_icon()
-			update_icon_state()
-
-		if("3")
-			to_chat(user, span_notice("You take a serviette from the pack."))
-			servleft = "2"
-			var/obj/item/serviette/W = new /obj/item/serviette
-			user.put_in_hands(W)
-			update_icon()
-			update_icon_state()
-
-		if("2")
-			to_chat(user, span_notice("You take a serviette from the pack."))
-			servleft = "1"
-			var/obj/item/serviette/W = new /obj/item/serviette
-			user.put_in_hands(W)
-			update_icon()
-			update_icon_state()
-
-		if("1")
-			to_chat(user, span_notice("You take a serviette from the pack."))
-			servleft = "0"
-			var/obj/item/serviette/W = new /obj/item/serviette
-			user.put_in_hands(W)
-			update_icon()
-			update_icon_state()
-
-		if("0")
-			to_chat(user, span_notice("There are no serviettes left!"))
-			update_icon()
-			update_icon_state()
+	if(!servleft)
+		to_chat(user, span_notice("You take a serviette from [src]."))
+		servleft--
+		var/obj/item/serviette/W = new /obj/item/serviette
+		user.put_in_hands(W)
+		update_icon()
+		update_icon_state()
+	else
+		to_chat(user, span_notice("There are no serviettes left!"))

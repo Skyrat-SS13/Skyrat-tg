@@ -238,7 +238,7 @@
 				target.adjustArousal(5)
 				target.adjustPain(5)
 				target.apply_status_effect(/datum/status_effect/spanked)
-				if(HAS_TRAIT(target, TRAIT_MASOCHISM))
+				if(HAS_TRAIT(target, TRAIT_MASOCHISM || TRAIT_BIMBO))
 					SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "pervert spanked", /datum/mood_event/perv_spanked)
 				playsound(loc, 'sound/weapons/whip.ogg', 60)
 
@@ -252,7 +252,7 @@
 				target.adjustArousal(3)
 				target.adjustPain(8)
 				target.apply_status_effect(/datum/status_effect/spanked)
-				if(HAS_TRAIT(target, TRAIT_MASOCHISM))
+				if(HAS_TRAIT(target, TRAIT_MASOCHISM || TRAIT_BIMBO))
 					SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "pervert spanked", /datum/mood_event/perv_spanked)
 				playsound(loc, 'sound/weapons/whip.ogg', 100)
 		else
