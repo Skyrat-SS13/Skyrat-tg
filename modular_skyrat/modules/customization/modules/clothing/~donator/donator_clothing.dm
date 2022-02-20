@@ -1320,4 +1320,6 @@
 	name = "tactical hairbrush"
 	desc = "Sometimes, after a brush with death, a good grooming is just the thing for tactical stress relief. "
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_right.dmi'
 	icon_state = "tacticalbrush"
