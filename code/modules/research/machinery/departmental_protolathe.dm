@@ -44,4 +44,4 @@
 	allowed_department_flags = DEPARTMENTAL_FLAG_SECURITY
 	department_tag = "Security"
 	circuit = /obj/item/circuitboard/machine/protolathe/department/security
-	stripe_color = "#DE3A3A"
+	stripe_color = "#486091" //SKYRAT EDIT - ORIGINAL "#DE3A3A"
