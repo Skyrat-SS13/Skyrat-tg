@@ -1310,7 +1310,7 @@
 // Donation reward for Cimika, on behalf of tf4
 /obj/item/clothing/neck/fishpendant
 	name = "fish necklace"
-	desc = "A simple, silver necklace with a blue tuna pendant. \"L. Alazawi\" is inscribed on the back. You get the feeling it would go well with potatoes and green beans."
+	desc = "A simple, silver necklace with a blue tuna pendant.\n\"L. Alazawi\" is inscribed on the back. You get the feeling it would go well with potatoes and green beans."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/necklaces.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
 	icon_state = "fishpendant"
