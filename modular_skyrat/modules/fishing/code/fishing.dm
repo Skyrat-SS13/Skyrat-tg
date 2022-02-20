@@ -68,21 +68,20 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	playsound(atom_parent, 'sound/machines/ping.ogg', 35, FALSE)
 	atom_parent.do_alert_animation()
 
-/datum/component/fishing/proc/finish_fishing(atom/fisher = null, master_involved = FALSE)
+/datum/component/fishing/proc/finish_fishing(obj/item/fishing_rod/fisher = null, master_involved = FALSE)
 	SIGNAL_HANDLER
 	if(reel_sound_timer)
 		deltimer(reel_sound_timer)
 	if(mutate_parent)
 		atom_parent.cut_overlay(mutate_parent)
 		QDEL_NULL(mutate_parent)
-	if(!fisher)
+	if(!fisher || !istype(fisher))
 		return
-	var/obj/item/fishing_rod/fisher_rod = fisher
 	if(COOLDOWN_FINISHED(src, start_fishing_window) && !COOLDOWN_FINISHED(src, stop_fishing_window))
 		var/turf/fisher_turf = get_turf(fisher)
-		create_reward(fisher_turf, fisher_rod.fishing_focus)
+		create_reward(fisher_turf, fisher.fishing_focus)
 		if(master_involved)
-			create_reward(fisher_turf, fisher_rod.fishing_focus)
+			create_reward(fisher_turf, fisher.fishing_focus)
 
 /datum/component/fishing/proc/create_reward(turf/spawning_turf, focus)
 	var/atom/spawning_reward
@@ -236,20 +235,20 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 		RegisterSignal(target_atom, COMSIG_MOVABLE_MOVED, .proc/check_movement, override = TRUE)
 	SEND_SIGNAL(target_atom, COMSIG_START_FISHING)
 
-/obj/item/fishing_rod/attackby(obj/item/I, mob/living/user, params)
-	if(I.tool_behaviour == TOOL_CROWBAR)
+/obj/item/fishing_rod/attackby(obj/item/attacking_item, mob/living/user, params)
+	if(attacking_item.tool_behaviour == TOOL_CROWBAR)
 		var/obj/item/fishing_focus/find_focus = locate() in contents
 		if(find_focus)
 			find_focus.forceMove(get_turf(src))
 		fishing_focus = FOCUS_NONE
-		I.play_tool_sound(src, 50)
+		attacking_item.play_tool_sound(src, 50)
 		cut_overlays()
 		return
-	if(istype(I, /obj/item/fishing_focus))
+	if(istype(attacking_item, /obj/item/fishing_focus))
 		if(fishing_focus != FOCUS_NONE)
 			to_chat(user, span_warning("You need to remove the current attachment first, use a crowbar!"))
 			return
-		var/obj/item/fishing_focus/get_focus = I
+		var/obj/item/fishing_focus/get_focus = attacking_item
 		get_focus.forceMove(src)
 		fishing_focus = get_focus.given_focus
 		add_overlay(image(icon='modular_skyrat/modules/fishing/icons/fishing.dmi', icon_state="[get_focus.icon_state]_attach"))
