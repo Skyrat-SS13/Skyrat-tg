@@ -1,3 +1,5 @@
+#define MAX_IMBUE_STORAGE 250
+
 //the component that is attached to clothes that allows them to be imbued
 //ONLY USE THIS FOR CLOTHING
 /datum/component/reagent_clothing
@@ -20,7 +22,7 @@
 	if(set_slot)
 		checking_slot = set_slot
 	parent_clothing = parent
-	parent_clothing.create_reagents(250, INJECTABLE | REFILLABLE)
+	parent_clothing.create_reagents(MAX_IMBUE_STORAGE, INJECTABLE | REFILLABLE)
 	applying_container = new /obj/item/reagent_containers(src)
 	RegisterSignal(parent_clothing, COMSIG_ITEM_EQUIPPED, .proc/set_wearer)
 	RegisterSignal(parent_clothing, COMSIG_ITEM_PRE_UNEQUIP, .proc/remove_wearer)
@@ -68,7 +70,7 @@
 	if(!istype(parent, /obj/item))
 		return COMPONENT_INCOMPATIBLE //they need to be weapons, I already said this
 	parent_weapon = parent
-	parent_weapon.create_reagents(250, INJECTABLE | REFILLABLE)
+	parent_weapon.create_reagents(MAX_IMBUE_STORAGE, INJECTABLE | REFILLABLE)
 	RegisterSignal(parent_weapon, COMSIG_ITEM_ATTACK, .proc/inject_attacked)
 
 /datum/component/reagent_weapon/Destroy(force, silent)
@@ -83,3 +85,5 @@
 	var/mob/living_target = target
 	for(var/create_reagent in imbued_reagent)
 		living_target.reagents.add_reagent(create_reagent, 1)
+
+#undef MAX_IMBUE_STORAGE

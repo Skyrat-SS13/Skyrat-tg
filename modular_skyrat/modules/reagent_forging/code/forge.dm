@@ -12,6 +12,12 @@
 #define FORGE_LEVEL_TWO 2
 #define FORGE_LEVEL_THREE 3
 
+#define MAX_UPGRADE_SINEW 10
+#define MAX_UPGRADE_GOLIATH 3
+#define MAX_UPGRADE_REGEN 6
+
+#define MIN_IMBUE_REQUIRED 100
+
 /obj/structure/reagent_forge
 	name = "forge"
 	desc = "A structure built out of bricks, with the intended purpose of heating up metal."
@@ -77,9 +83,9 @@
 		if(FORGE_LEVEL_THREE)
 			. += span_boldwarning("[src] has been touched by a master smithy; It is fully upgraded!<br>")
 	if(forge_level < FORGE_LEVEL_THREE)
-		. += span_notice("[src] has [goliath_ore_improvement]/3 goliath hides.")
-		. += span_notice("[src] has [current_sinew]/10 watcher sinews.")
-		. += span_notice("[src] has [current_core]/6 regenerative cores.")
+		. += span_notice("[src] has [goliath_ore_improvement]/[MAX_UPGRADE_GOLIATH] goliath hides.")
+		. += span_notice("[src] has [current_sinew]/[MAX_UPGRADE_SINEW] watcher sinews.")
+		. += span_notice("[src] has [current_core]/[MAX_UPGRADE_REGEN] regenerative cores.")
 	. += span_notice("<br>[src] is currently [forge_temperature] degrees hot, going towards [target_temperature] degrees.<br>")
 	if(reagent_forging)
 		. += span_warning("[src] has a red tinge, it is ready to imbue chemicals into reagent objects.")
@@ -274,7 +280,7 @@
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
 		in_use = TRUE
-		if(sinew_lower_chance >= 100) //max is 100
+		if(sinew_lower_chance >= (MAX_UPGRADE_SINEW * 10)) //max is 100
 			fail_message(user, "You cannot insert any more of [I]!")
 			return
 		to_chat(user, span_warning("You start lining [src] with [I]..."))
@@ -313,7 +319,7 @@
 		qdel(I)
 		current_core++
 		in_use = FALSE
-		if(current_core >= 6) //use six regenerative cores to get reagent forging capabilities on the forge
+		if(current_core >= MAX_UPGRADE_REGEN) //use six regenerative cores to get reagent forging capabilities on the forge
 			create_reagent_forge()
 		return
 
@@ -323,7 +329,7 @@
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
 		in_use = TRUE
-		if(goliath_ore_improvement >= 3)
+		if(goliath_ore_improvement >= MAX_UPGRADE_GOLIATH)
 			fail_message(user, "You have applied the max amount of [goliath_hide]!")
 			return
 		to_chat(user, span_warning("You start to improve [src] with [goliath_hide]..."))
@@ -446,7 +452,7 @@
 			fail_message(user, "You fail imbueing [attacking_item]!")
 			return
 		for(var/datum/reagent/weapon_reagent in attacking_item.reagents.reagent_list)
-			if(weapon_reagent.volume < 100)
+			if(weapon_reagent.volume < MIN_IMBUE_REQUIRED)
 				attacking_item.reagents.remove_all_type(weapon_reagent.type)
 				continue
 			weapon_component.imbued_reagent += weapon_reagent.type
@@ -481,7 +487,7 @@
 			fail_message(user, "You fail imbueing [attacking_item]!")
 			return
 		for(var/datum/reagent/clothing_reagent in attacking_item.reagents.reagent_list)
-			if(clothing_reagent.volume < 100)
+			if(clothing_reagent.volume < MIN_IMBUE_REQUIRED)
 				attacking_item.reagents.remove_all_type(clothing_reagent.type)
 				continue
 			clothing_component.imbued_reagent += clothing_reagent.type
@@ -606,3 +612,9 @@
 #undef FORGE_LEVEL_ONE
 #undef FORGE_LEVEL_TWO
 #undef FORGE_LEVEL_THREE
+
+#undef MAX_UPGRADE_SINEW
+#undef MAX_UPGRADE_GOLIATH
+#undef MAX_UPGRADE_REGEN
+
+#undef MIN_IMBUE_REQUIRED
