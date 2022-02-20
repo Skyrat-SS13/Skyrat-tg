@@ -187,7 +187,7 @@
 		goliath_ore_improvement = MAX_UPGRADE_GOLIATH
 		forge_level = FORGE_LEVEL_ONE
 	if(user_smithing_skill >= SKILL_LEVEL_EXPERT)
-		sinew_lower_chance = 100
+		sinew_lower_chance = MAX_UPGRADE_SINEW * 10 //100, just written funny!
 		current_sinew = MAX_UPGRADE_SINEW
 		forge_level = FORGE_LEVEL_TWO
 	if(user_smithing_skill >= SKILL_LEVEL_MASTER)
