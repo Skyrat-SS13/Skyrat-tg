@@ -23,6 +23,10 @@
 	var/list/pattern_categories = list("Back","Face","Neck","Belt","Ears","Glasses","Gloves","Hat","Shoes","Suit","Jumpsuit")
 	var/selected_category = "Jumpsuit"
 	var/printing = FALSE
+	var/search_string
+	var/search_include_name = TRUE
+	var/search_include_desc = TRUE
+	var/search_include_author = FALSE
 
 /obj/machinery/pattern_table/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -58,17 +62,31 @@
 			printing = FALSE
 			. = TRUE
 		if("ban_pattern_admin")
-			var/is_admin = is_admin(usr.client)
-			if(!is_admin)
-				balloon_alert(usr, "not an admin!") // The button shouldn't be available, but cheeky fuckers messing with tgui could send this input anyways so we sanity check.
-				return
 			var/selected_pattern = params["pattern_id"]
-			var/are_you_sure = tgui_alert(usr, "ADMIN: Are you sure you want to ban this pattern?", "Pattern Ban", list("Yes", "No"))
+			var/datum/tailor_clothing/clothing_datum = SSclothing_database.clothing_loaded[selected_pattern]
+			var/is_admin = is_admin(usr.client) || usr.client.ckey == clothing_datum.ckey_author
+			if(!is_admin)
+				balloon_alert(usr, "not an admin/doesn't own!") // The button shouldn't be available, but cheeky fuckers messing with tgui could send this input anyways so we sanity check.
+				return
+			var/are_you_sure = tgui_alert(usr, "Are you sure you want to delist this pattern?", "Pattern Ban", list("Yes", "No"))
 			if(are_you_sure == "Yes")
-				var/datum/tailor_clothing/clothing_datum = SSclothing_database.clothing_loaded[selected_pattern]
 				clothing_datum.ban_pattern()
 				message_admins("[key_name(usr)] banned [clothing_datum.name] (ID #[clothing_datum.id]) from the pattern database.")
 				log_admin("[key_name(usr)] banned [clothing_datum.name] (ID #[clothing_datum.id]) from the pattern database.")
+			. = TRUE
+		if("set_search_string")
+			search_string = params["input"]
+			if(length(search_string) > MAX_NAME_LEN)
+				search_string = null
+			. = TRUE
+		if("set_search_include_name")
+			search_include_name = !search_include_name
+			. = TRUE
+		if("set_search_include_desc")
+			search_include_desc = !search_include_desc
+			. = TRUE
+		if("set_search_include_author")
+			search_include_author = !search_include_author
 			. = TRUE
 
 /obj/machinery/pattern_table/ui_data(mob/user)
@@ -76,13 +94,39 @@
 	var/list/patterns = list()
 	var/is_admin = is_admin(user.client)
 	for(var/datum/tailor_clothing/clothing_datum in SSclothing_database.clothing_loaded)
+		if(!clothing_datum.approved && CONFIG_GET(flag/enable_clothing_approval_queue))
+			continue // Unapproved clothing if the queue's enabled.
 		if(selected_category == clothing_datum.slot && !clothing_datum.banned)
-			patterns.Add(list(clothing_datum.get_list()))
-			var/icon/inventory_icon = new(file("data/clothing_icons/[clothing_datum.id].dmi"), "inventory")
-			user << browse_rsc(inventory_icon, "clothing_[clothing_datum.id].png")
+			if(search_string)
+				if(search_include_name && findtext(clothing_datum.name, search_string))
+					patterns.Add(list(clothing_datum.get_list()))
+					var/icon/inventory_icon = new(file("data/clothing_icons/[clothing_datum.id].dmi"), "inventory")
+					user << browse_rsc(inventory_icon, "clothing_[clothing_datum.id].png")
+					continue
+				else if(search_include_desc && findtext(clothing_datum.desc, search_string))
+					patterns.Add(list(clothing_datum.get_list()))
+					var/icon/inventory_icon = new(file("data/clothing_icons/[clothing_datum.id].dmi"), "inventory")
+					user << browse_rsc(inventory_icon, "clothing_[clothing_datum.id].png")
+					continue
+				else if(search_include_author && findtext(clothing_datum.author, search_string))
+					patterns.Add(list(clothing_datum.get_list()))
+					var/icon/inventory_icon = new(file("data/clothing_icons/[clothing_datum.id].dmi"), "inventory")
+					user << browse_rsc(inventory_icon, "clothing_[clothing_datum.id].png")
+					continue
+				else
+					continue
+			else
+				patterns.Add(list(clothing_datum.get_list()))
+				var/icon/inventory_icon = new(file("data/clothing_icons/[clothing_datum.id].dmi"), "inventory")
+				user << browse_rsc(inventory_icon, "clothing_[clothing_datum.id].png")
 	data["patterns"] = patterns
 	data["category"] = selected_category
 	data["is_admin"] = is_admin
+	data["ckey_user"] = user.ckey
+	data["search_string"] = search_string
+	data["search_include_name"] = search_include_name
+	data["search_include_desc"] = search_include_desc
+	data["search_include_author"] = search_include_author
 	return data
 
 /obj/machinery/pattern_table/attack_hand(mob/living/user, list/modifiers)
@@ -161,7 +205,15 @@
 	new_clothing.slot = slot_input
 	new_clothing.digitigrade = digitigrade
 	SSclothing_database.register_clothing(new_clothing, clothing_icon)
-	user.balloon_alert(user, "pattern uploaded!")
-	var/obj/item/pattern_kit/pattern_kit_new = new(get_turf(src))
-	pattern_kit_new.clothing_datum = new_clothing
-	pattern_kit_new.update_details()
+	if(CONFIG_GET(flag/enable_clothing_approval_queue))
+		user.balloon_alert(user, "pattern uploaded, awaiting approval!")
+		message_admins("[key_name(usr)] uploaded a new pattern: [clothing_name] and it has been placed in the approval queue.")
+		return
+	else
+		user.balloon_alert(user, "pattern uploaded!")
+		message_admins("[key_name(usr)] uploaded a new pattern: [clothing_name].")
+		var/obj/item/pattern_kit/pattern_kit_new = new(get_turf(src))
+		pattern_kit_new.clothing_datum = new_clothing
+		pattern_kit_new.update_details()
+		return
+

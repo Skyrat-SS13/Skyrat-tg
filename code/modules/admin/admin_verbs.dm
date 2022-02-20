@@ -23,7 +23,8 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/fix_air, /*resets air in designated radius to its default atmos composition*/
 	/client/proc/revokebunkerbypass, //SKYRAT EDIT ADDITION - PANICBUNKER
 	/client/proc/addbunkerbypass, //SKYRAT EDIT ADDITION - PANICBUNKER
-	/client/proc/requests
+	/client/proc/requests,
+	/client/proc/clothing_approval_queue, // SKYRAT EDIT ADDITION - CLOTHING QUEUE
 	)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)
