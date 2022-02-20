@@ -100,6 +100,7 @@
 	desc = "A fancy looking security belt emblazoned with markings of the security medic. Sadly only holds security gear."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
+	worn_icon_state = "belt_medic"
 	icon_state = "belt_medic"
 
 /obj/item/storage/belt/security/medic/full/PopulateContents()
