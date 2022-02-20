@@ -609,24 +609,7 @@
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	icon_state = "hecu_vest"
-	var/mag_cooldown = 0
 	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 40, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
-
-/obj/item/clothing/suit/armor/vest/marine/hecu/examine(mob/user)
-	. = ..()
-	. += span_notice("Alt-click to take a spare magazine.")
-
-/obj/item/clothing/suit/armor/vest/marine/hecu/AltClick(mob/user)
-	. = ..()
-	if(loc != user || !user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
-		return
-	if(mag_cooldown < world.time)
-		var/obj/item/ammo_box/magazine/m16/FFS = new /obj/item/ammo_box/magazine/m16(src) ///FFS stands for five-five-six btw
-		user.put_in_hands(FFS)
-		to_chat(user, span_notice("You fumble through your drop pouches, getting a spare mag."))
-		mag_cooldown = world.time+12000
-	else
-		to_chat(user, span_warning("You just took a magazine! You should wait at least twenty minutes, lest you burn through your stash."))
 
 /obj/item/clothing/head/helmet/marine/hecu
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
