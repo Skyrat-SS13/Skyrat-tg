@@ -388,5 +388,6 @@
 
 /obj/item/toy/plush/rubi/attack_self(mob/user)
 	. = ..()
-	user.changeNext_move(CLICK_CD_MELEE) // To avoid spam
+	user.changeNext_move(CLICK_CD_MELEE) // To avoid spam, in some cases (sadly not all of them)
+	SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "hug", /datum/mood_event/warmhug, src)
 	user.visible_message(span_notice("[user] hugs \the [src]."), span_notice("You hug \the [src]."))
