@@ -87,7 +87,7 @@
 	/// Hacked state, see [/mob/living/simple_animal/drone/proc/update_drone_hack]
 	var/hacked = FALSE
 	/// If we have laws to minimize bothering others. Enables or disables drone laws enforcement components (use [/mob/living/simple_animal/drone/proc/set_shy] to set)
-	var/shy = TRUE
+	var/shy = FALSE //SKYRAT EDIT: Original: TRUE
 	/// Flavor text announced to drones on [/mob/proc/Login]
 	var/flavortext = \
 	"\n<big><span class='warning'>DO NOT INTERFERE WITH THE ROUND AS A DRONE OR YOU WILL BE DRONE BANNED</span></big>\n"+\
