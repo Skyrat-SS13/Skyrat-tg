@@ -325,7 +325,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 	if(in_hands)
 		if((istype(held, /obj/item/clothing/sextoy/dildo/dildo_side) || istype(secondary_held, /obj/item/clothing/sextoy/dildo/dildo_side)) && held?.item_flags == ABSTRACT | HAND_ITEM)
-			QDEL_NULL((istype(held, /obj/item/clothing/sextoy/dildo/dildo_side) ? held : secondary_held))
+			QDEL_NULL((istype(held, /obj/item/clothing/sextoy/dildo/dildo_side)) ? held : secondary_held)
 			user.visible_message(span_notice("[user] puts one end of [src] back.")) // I tried to work out what this message is trying to say, but I can't quite get it.
 			in_hands = FALSE
 			return
