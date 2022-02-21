@@ -1,7 +1,7 @@
 /obj/structure/closet/secure_closet/ds2atmos
 	name = "energy axe cabinet"
 	desc = "A cabinet storing an energy fire axe along with basic firefighting tools."
-	icon = 'modular_skyrat/modules/sec_haul/icons/lockers/closet.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
 	icon_state = "riot"
 	req_access = list(ACCESS_SYNDICATE)
 
