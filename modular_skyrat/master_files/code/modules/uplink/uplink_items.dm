@@ -44,15 +44,6 @@
 	restricted = TRUE
 	progression_minimum = 60 MINUTES
 
-/*	Commented out per host request
-/datum/uplink_item/dangerous/smgc20r_traitor
-	name = "C-20r Submachine Gun"
-	desc = "A fully-loaded Scarborough Arms bullpup submachine gun. The C-20r fires .45 rounds with a \
-			24-round magazine and is compatible with suppressors."
-	item = /obj/item/gun/ballistic/automatic/c20r/unrestricted
-	cost = 14
-	progression_minimum = 60 MINUTES
-*/
 
 /datum/uplink_item/dangerous/shotgun_traitor
 	name = "Bulldog Shotgun"
