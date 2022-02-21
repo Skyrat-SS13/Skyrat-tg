@@ -131,7 +131,7 @@
 	for high-ranking Cybersun officers, a few spares have been reserved for field agents."
 	item = /obj/item/radio/headset/chameleon/advanced
 	cost = 4 //Also a BIGBOY tool. Though inconvienent to wield, this allows the wearer to spy and interact with any one frequency they desire, even without the proper encryption key, along with flashbang protection and loudmode. Cannot breach syndiecomms by itself.
-	progression_minimum = 60 MINUTES
+	progression_minimum = 20 MINUTES
 
 /datum/uplink_item/stealthy_tools/syndieshotglasses
 	name = "Extra Large Syndicate Shotglasses"
@@ -307,7 +307,7 @@
 	desc = "A Type III heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
 	item = /obj/item/clothing/suit/armor/bulletproof
 	cost = 1
-	progression_minimum = 30 MINUTES
+	progression_minimum = 15 MINUTES
 
 //HELMETS
 /datum/uplink_item/suits/swathelmet_traitor
@@ -315,7 +315,7 @@
 	desc = "An extremely robust, space-worthy helmet in a nefarious red and black stripe pattern."
 	item = /obj/item/clothing/head/helmet/swat
 	cost = 2
-	progression_minimum = 30 MINUTES
+	progression_minimum = 10 MINUTES
 
 //IMPLANTS
 /datum/uplink_item/implants/antistun_traitor
@@ -369,7 +369,7 @@
 	desc = "Fight the power with this frontline combatant kit, featuring armor and armaments commonly utilized by assault operative teams."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/metaops
 	cost = 23
-	progression_minimum = 60 MINUTES //+10 minutes because of the bulldog
+	progression_minimum = 60 MINUTES //Contains a bulldog and thus takes high reputation
 
 /datum/uplink_item/bundles_tc/bond
 	name = "Classic Spy bundle"
@@ -418,21 +418,21 @@
 	desc = "Ayyy fuggedaboudit! This bundle contains everything to be your own one man mafioso. Including an icon of the Virgin Mary for your own authentic mafia nickname. Gang members not included."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/downtownspecial
 	cost = 25
-	progression_minimum = 60 MINUTES //+5 for the thompson
+	progression_minimum = 60 MINUTES //Contains a thompson and thus takes high reputation
 
 /datum/uplink_item/bundles_tc/ocelotfoxtrot
 	name = "Snake Eater bundle"
 	desc = "A kit themed around one certain gun spinning cat. Includes his famous colt special, and personalised ammo."
 	item = /obj/item/storage/box/syndie_kit/loadout/ocelotfoxtrot
 	cost = 15
-	progression_minimum = 60 MINUTES //+5 minutes for the .357 peacemaker
+	progression_minimum = 60 MINUTES //Contains a .357 and thus takes high reputation
 
 /datum/uplink_item/bundles_tc/nt_impostor
 	name = "Corporate Deceit bundle"
 	desc = "Don the identities of the most powerful men and women in Nanotrasen, and pull strings from the shadows as you please with this specialized kit."
 	item = /obj/item/storage/box/syndie_kit/loadout/nt_impostor
 	cost = 20
-	progression_minimum = 60 MINUTES //+5 minutes for the .357
+	progression_minimum = 60 MINUTES //Contains a .357 and thus takes high reputation
 
 /datum/uplink_item/bundles_tc/lasermanbundle
 	name = "Laserman bundle"
