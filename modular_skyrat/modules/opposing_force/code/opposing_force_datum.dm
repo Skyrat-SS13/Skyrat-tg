@@ -841,3 +841,21 @@
 			report += "<br>"
 
 	return report.Join("\n")
+
+/datum/action/opfor
+	name = "Open Opposing Force Panel"
+	button_icon_state = "round_end"
+
+/datum/action/opfor/Trigger(trigger_flags)
+	. = ..()
+	if(!.)
+		return
+	owner.opposing_force()
+
+/datum/action/opfor/IsAvailable()
+	if(!target)
+		return FALSE
+	. = ..()
+	if(!.)
+		return
+	return TRUE
