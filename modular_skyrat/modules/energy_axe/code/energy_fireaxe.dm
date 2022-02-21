@@ -6,6 +6,7 @@
 	base_icon_state = "energy_axe"
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/energyaxe_lefthand.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/energyaxe_righthand.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
 	name = "energy fire axe"
 	desc = "You aren't quite sure if this counts as a fire axe anymore, but it sure is fancy! A tag hangs off of it reading; 'properly of the Gorlex Marauders'"
 	force = 5
