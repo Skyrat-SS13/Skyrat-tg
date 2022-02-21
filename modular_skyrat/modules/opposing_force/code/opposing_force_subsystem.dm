@@ -199,4 +199,4 @@ SUBSYSTEM_DEF(opposing_force)
 /datum/controller/subsystem/opposing_force/proc/give_opfor_button(datum/mind/player_mind)
 	var/datum/action/opfor/info_button
 	info_button = new(src)
-	info_button.Grant(player_mind)
+	info_button.Grant(player_mind.current)
