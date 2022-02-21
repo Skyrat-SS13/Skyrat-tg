@@ -18,11 +18,20 @@
 	if(!charging)
 		return
 
+<<<<<<< HEAD
 	//. += image(charging.icon, charging.icon_state) SKYRAT EDIT REMOVAL
 	. += "ccharger-on"
+=======
+>>>>>>> c95321042e2 (Resprites power cells, fixes and cleans up power cells and power cell derivatives (#64900))
 	if(!(machine_stat & (BROKEN|NOPOWER)))
 		var/newlevel = round(charging.percent() * 4 / 100)
 		. += "ccharger-o[newlevel]"
+	. += image(charging.icon, charging.icon_state)
+	if(charging.grown_battery)
+		. += mutable_appearance('icons/obj/power.dmi', "grown_wires")
+	. += "ccharger-[charging.connector_type]-on"
+	if((charging.charge > 0.01) && charging.charge_light_type)
+		. += mutable_appearance('icons/obj/power.dmi', "cell-[charging.charge_light_type]-o[(charging.percent() >= 99.5) ? 2 : 1]")
 
 /obj/machinery/cell_charger/examine(mob/user)
 	. = ..()
