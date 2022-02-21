@@ -766,7 +766,7 @@ export const AdminTab = (props, context) => {
                     {equipment.count}
                   </LabeledList.Item>
                   {item.admin_note.length === 0 ? (
-                  null
+                    null
                   ) : (
                     <LabeledList.Item label="Equipment Note">
                       {item.admin_note}
