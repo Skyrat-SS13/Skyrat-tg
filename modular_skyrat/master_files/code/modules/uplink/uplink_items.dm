@@ -62,6 +62,14 @@
 	cost = 13
 	progression_minimum = 60 MINUTES
 
+/datum/uplink_item/dangerous/shield_traitor
+	name = "Energy Shield"
+	desc = "An incredibly useful personal shield projector, capable of reflecting energy projectiles and defending \
+			against other attacks. Pair with an Energy Sword for a killer combination."
+	item = /obj/item/shield/energy
+	cost = 5
+	progression_minimum = 45 MINUTES
+
 /datum/uplink_item/dangerous/katana_traitor
 	name = "Katana"
 	desc = "An incredibly sharp sword used by Samurais. Woefully underpowered in D20."
@@ -77,6 +85,14 @@
 	progression_minimum = 25 MINUTES
 
 //STEALTHY WEAPONS
+/datum/uplink_item/stealthy_weapons/cqc_traitor
+	name = "CQC Manual"
+	desc = "A manual that teaches a single user tactical Close-Quarters Combat before self-destructing."
+	item = /obj/item/book/granter/martial/cqc
+	cost = 23
+	surplus = 17
+	progression_minimum = 30 MINUTES
+
 // Removed from the uplink for the time being.
 /*datum/uplink_item/stealthy_weapons/cqcplus
 	name = "CQC+ Manual"
