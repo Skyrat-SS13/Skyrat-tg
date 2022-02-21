@@ -1,4 +1,4 @@
-// Uplinks
+// Uplinks starting TC
 /datum/component/uplink/Initialize(
 	owner,
 	lockable = TRUE,
@@ -11,13 +11,14 @@
 	starting_tc = 10
 	return ..()
 
-/obj/item/implant/uplink/starting/Initialize(mapload, uplink_handler)
+/obj/item/implant/uplink/implant(mob/living/carbon/target, mob/user, silent, force)
 	. = ..()
 
-	starting_tc = 10 - UPLINK_IMPLANT_TELECRYSTAL_COST
+	var/datum/component/uplink/uplink = GetComponent(/datum/component/uplink)
+	uplink.set_telecrystals(10 - UPLINK_IMPLANT_TELECRYSTAL_COST)
 
 
-// Progression
+// Progression multiplier
 /datum/traitor_objective
 	// Determines how influential global progression will affect this objective. Set to 0 to disable.
 	global_progression_influence_intensity = 0.5
@@ -25,7 +26,7 @@
 	global_progression_deviance_required = 0.5
 
 
-// Objectives
+// Objectives rewards
 /datum/traitor_objective/hack_comm_console
 	progression_reward = 20 MINUTES
 	telecrystal_reward = 3
