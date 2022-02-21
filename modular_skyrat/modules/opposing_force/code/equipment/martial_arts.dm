@@ -15,7 +15,7 @@
 /datum/opposing_force_equipment/martial_art/kravmaga
 	name = "Krav Maga Implanter"
 	item_type = /obj/item/implanter/krav_maga
-	desc = "No need for gloves! This handy implanter teaches you everything you need to know about Krav Maga."
+	description = "No need for gloves! This handy implanter teaches you everything you need to know about Krav Maga."
 
 /datum/opposing_force_equipment/martial_art/plasmafist
 	item_type = /obj/item/book/granter/martial/plasma_fist
