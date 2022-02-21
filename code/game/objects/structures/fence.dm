@@ -113,13 +113,8 @@
 
 /obj/structure/fence/door/Initialize(mapload)
 	. = ..()
-<<<<<<< HEAD
-	if(open) //SKYRAT EDIT CHANGE
-		update_door_status()
-=======
 
 	update_icon_state()
->>>>>>> 44fbe266e46 (Fix chainlink fence doors having incorrect icon/density (#64882))
 
 /obj/structure/fence/door/opened
 	icon_state = "door_opened"
