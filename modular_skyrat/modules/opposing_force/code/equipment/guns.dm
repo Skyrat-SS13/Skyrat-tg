@@ -6,24 +6,31 @@
 
 /datum/opposing_force_equipment/gun/m16
 	item_type = /obj/item/gun/ballistic/automatic/assault_rifle/m16
+	admin_note = "WARNING: This weapon is extremely powerful, firing a 3 round burst of 35 damage bullets."
 
 /datum/opposing_force_equipment/gun/m16m
 	item_type = /obj/item/gun/ballistic/automatic/assault_rifle/m16/modern
+	admin_note = "WARNING: This weapon is extremely powerful, firing a 3 round burst of 30 damage bullets. The modern version features a halfed spread and reduced fire delay."
 
 /datum/opposing_force_equipment/gun/m16patriot
 	item_type = /obj/item/gun/ballistic/automatic/assault_rifle/m16/modern/v2
+	admin_note = "WARNING: This weapon is extremely powerful, firing a 4 round burst of 30 damage bullets. The patriot version features a halfed fire delay."
 
 /datum/opposing_force_equipment/gun/akm
 	item_type = /obj/item/gun/ballistic/automatic/assault_rifle/akm
+	admin_note = "WARNING: This weapon is extremely powerful, firing a 3 round burst of 38 damage bullets."
 
 /datum/opposing_force_equipment/gun/akmm
 	item_type = /obj/item/gun/ballistic/automatic/assault_rifle/akm/modern
+	admin_note = "WARNING: This weapon is extremely powerful, firing a 3 round burst of 38 damage bullets. The modern version has a halfed fire delay."
 
 /datum/opposing_force_equipment/gun/mp40
 	item_type = /obj/item/gun/ballistic/automatic/submachine_gun/mp40
+	admin_note = "WARNING: This weapon is extremely powerful, firing a 3 round burst of 30 damage bullets."
 
 /datum/opposing_force_equipment/gun/mp40m/modern
-	item_type = /obj/item/gun/ballistic/automatic/submachine_gun/mp40
+	item_type = /obj/item/gun/ballistic/automatic/submachine_gun/mp40/modern
+	admin_note = "WARNING: This weapon is extremely powerful, firing a 4 round burst of 30 damage bullets. The modern version has a reduced fire delay."
 
 /datum/opposing_force_equipment/gun/pps
 	item_type = /obj/item/gun/ballistic/automatic/submachine_gun/pps
@@ -32,31 +39,40 @@
 
 /datum/opposing_force_equipment/gun/ppsh
 	item_type = /obj/item/gun/ballistic/automatic/submachine_gun/ppsh
+	admin_note = "WARNING: This weapon is extremely powerful, firing a 6 round burst of 22 damage bullets."
 
 /datum/opposing_force_equipment/gun/ppshm
 	item_type = /obj/item/gun/ballistic/automatic/submachine_gun/ppsh/modern
+	admin_note = "WARNING: This weapon is extremely powerful, firing a 5 round burst of 22 damage bullets. The modern version features 25% less spread."
 
 /datum/opposing_force_equipment/gun/stg
 	item_type = /obj/item/gun/ballistic/automatic/assault_rifle/stg
+	admin_note = "WARNING: This weapon is extremely powerful, firing a 4 round burst of 40 damage bullets."
 
 /datum/opposing_force_equipment/gun/stgm
 	item_type = /obj/item/gun/ballistic/automatic/assault_rifle/stg/modern
+	admin_note = "WARNING: This weapon is extremely powerful, firing a 4 round burst of 40 damage bullets. The modern version features 20% reduced fire delay."
 
 /datum/opposing_force_equipment/gun/fg42
 	item_type = /obj/item/gun/ballistic/automatic/battle_rifle/fg42
+	admin_note = "WARNING: This weapon is extremely powerful, firing a 2 round burst of 45 damage bullets."
 
 /datum/opposing_force_equipment/gun/fg42m
 	item_type = /obj/item/gun/ballistic/automatic/battle_rifle/fg42/modern
+	admin_note = "WARNING: This weapon is extremely powerful, firing a 3 round burst of 45 damage bullets. The modern version has a halfed fire delay."
 
 /datum/opposing_force_equipment/gun/uzi
 	item_type = /obj/item/gun/ballistic/automatic/mini_uzi
 	description = "The uzi nine millimeter, a timeless submachinegun for a warrior out of time."
+	admin_note = "WARNING: This weapon is decently powerful, firing a 2 round burst of 30 damage bullets."
 
 /datum/opposing_force_equipment/gun/mg34
 	item_type = /obj/item/gun/ballistic/automatic/mg34
+	admin_note = "WARNING: This weapon is extremely powerful, being a fully-automatic light machine gun firing 45 damage bullets."
 
 /datum/opposing_force_equipment/gun/cfa
 	item_type = /obj/item/gun/ballistic/automatic/cfa_rifle
+	admin_note = "WARNING: This weapon is very powerful, firing single-shot 60 damage bullets."
 
 /datum/opposing_force_equipment/gun/m23
 	item_type = /obj/item/gun/ballistic/shotgun/m23
@@ -75,21 +91,27 @@
 /datum/opposing_force_equipment/gun/g357
 	item_type = /obj/item/gun/ballistic/revolver
 	description = "A .357 magnum revolver. Seven shots, more than enough to kill anything that moves."
+	admin_note = "WARNING: This weapon is very powerful, firing semi-auto 60 damage bullets."
 
 /datum/opposing_force_equipment/gun/mateba
 	item_type = /obj/item/gun/ballistic/revolver/mateba
+	admin_note = "WARNING: This weapon is very powerful, firing semi-auto 60 damage bullets."
 
 /datum/opposing_force_equipment/gun/nagant
 	item_type = /obj/item/gun/ballistic/revolver/nagant
+	admin_note = "WARNING: This weapon is very powerful, firing semi-auto 60 damage bullets."
 
 /datum/opposing_force_equipment/gun/snub
 	item_type = /obj/item/gun/ballistic/automatic/pistol/cfa_snub
+	admin_note = "Fires 20 damage bullets."
 
 /datum/opposing_force_equipment/gun/ruby
 	item_type = /obj/item/gun/ballistic/automatic/pistol/cfa_ruby
+	admin_note = "Fires 40 damage bullets."
 
 /datum/opposing_force_equipment/gun/wildcat
 	item_type = /obj/item/gun/ballistic/automatic/cfa_wildcat
+	admin_note = "Fires a 3 round burst of 15 damage bullets."
 
 //oddities
 /datum/opposing_force_equipment/gun/ninjastar

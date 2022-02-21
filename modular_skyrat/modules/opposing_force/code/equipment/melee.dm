@@ -6,7 +6,7 @@
 
 /datum/opposing_force_equipment/melee/metalbat
 	item_type = /obj/item/melee/baseball_bat/ablative
-	description = "A highly reflective baseball bat for when you need to crack skulls and run away from security in the same night."
+	description = "A highly reflective baseball bat for when you need to crack skulls and run away from security in the same night. Can reflect lasers."
 
 /datum/opposing_force_equipment/melee/esword
 	item_type = /obj/item/melee/energy/sword

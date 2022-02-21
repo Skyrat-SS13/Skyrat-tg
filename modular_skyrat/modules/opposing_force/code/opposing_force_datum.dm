@@ -190,6 +190,7 @@
 				"name" = opfor_equipment.name,
 				"description" = opfor_equipment.description,
 				"equipment_category" = opfor_equipment.category,
+				"admin_note" = opfor_equipment.admin_note,
 			))
 		data["equipment_list"] += list(list(
 			"category" = equipment_category,
@@ -208,6 +209,7 @@
 			"reason" = equipment.reason,
 			"denied_reason" = equipment.denied_reason,
 			"count" = equipment.count,
+			"admin_note" = equipment.opposing_force_equipment.admin_note,
 			)
 		data["selected_equipment"] += list(equipment_data)
 

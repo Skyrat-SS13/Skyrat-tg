@@ -25,6 +25,7 @@
 	name = "Syndicate Bomb"
 	item_type = /obj/item/sbeacondrop/bomb
 	description = "A large, powerful bomb that can be wrenched down and armed with a variable timer."
+	admin_note = "WARNING: This is a pretty big bomb, it can take out entire rooms."
 
 /datum/opposing_force_equipment/bomb/syndicate_emp
 	name = "Syndicate EMP Bomb"

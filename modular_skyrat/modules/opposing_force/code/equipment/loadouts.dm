@@ -37,6 +37,7 @@
 	name = "Robohand bundle"
 	item_type = /obj/item/storage/backpack/duffelbag/syndie/loadout/robohand
 	description = "Themed after the infamous terrorist(or not), Johnny Robohand. The gun inside requires your arm to be robotic. It comes with a robotic replacement arm. Wake the fuck up, samurai."
+	admin_note = "BIG FUCKING WARNING: This bundle is extremely powerful, containing a 60 damage gun and multiple magazines of ammunition, in addition to various implants. Use with EXTREME discretion."
 
 /datum/opposing_force_equipment/loadout/ocelotfoxtrot
 	name = "Snake Eater bundle"
