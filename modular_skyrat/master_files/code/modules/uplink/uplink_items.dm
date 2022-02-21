@@ -44,6 +44,7 @@
 	restricted = TRUE
 	progression_minimum = 60 MINUTES
 
+/*	Commented out per host request
 /datum/uplink_item/dangerous/smgc20r_traitor
 	name = "C-20r Submachine Gun"
 	desc = "A fully-loaded Scarborough Arms bullpup submachine gun. The C-20r fires .45 rounds with a \
@@ -51,6 +52,7 @@
 	item = /obj/item/gun/ballistic/automatic/c20r/unrestricted
 	cost = 14
 	progression_minimum = 60 MINUTES
+*/
 
 /datum/uplink_item/dangerous/shotgun_traitor
 	name = "Bulldog Shotgun"
@@ -60,6 +62,7 @@
 	cost = 13
 	progression_minimum = 60 MINUTES
 
+/* Commented out per host request
 /datum/uplink_item/dangerous/shield_traitor
 	name = "Energy Shield"
 	desc = "An incredibly useful personal shield projector, capable of reflecting energy projectiles and defending \
@@ -67,6 +70,7 @@
 	item = /obj/item/shield/energy
 	cost = 5
 	progression_minimum = 60 MINUTES
+*/
 
 /datum/uplink_item/dangerous/katana_traitor
 	name = "Katana"
@@ -83,6 +87,7 @@
 	progression_minimum = 25 MINUTES
 
 //STEALTHY WEAPONS
+/* Commented out per host request
 /datum/uplink_item/stealthy_weapons/cqc_traitor
 	name = "CQC Manual"
 	desc = "A manual that teaches a single user tactical Close-Quarters Combat before self-destructing."
@@ -90,6 +95,7 @@
 	cost = 23
 	surplus = 17
 	progression_minimum = 45 MINUTES
+*/
 
 // Removed from the uplink for the time being.
 /*datum/uplink_item/stealthy_weapons/cqcplus
@@ -160,6 +166,7 @@
 	surplus = 35
 	progression_minimum = 45 MINUTES
 
+/* Commented out per host request
 /datum/uplink_item/explosives/nukeop_traitor
 	name = "Nuclear Delivery Grenade"
 	desc = "A very confusing grenade containing 2 dehydrated nuclear operatives. Stand back when primed."
@@ -167,6 +174,7 @@
 	cost = 7
 	surplus = 35
 	progression_minimum = 45 MINUTES
+*/
 
 /datum/uplink_item/explosives/bonebang
 	name = "Bonebang"
@@ -364,12 +372,14 @@
 	cost = 15
 	progression_minimum = 25 MINUTES
 
+/* Commented out per host request
 /datum/uplink_item/bundles_tc/metaops
 	name = "Bulldog Operative bundle"
 	desc = "Fight the power with this frontline combatant kit, featuring armor and armaments commonly utilized by assault operative teams."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/metaops
 	cost = 23
 	progression_minimum = 60 MINUTES //Contains a bulldog and thus takes high reputation
+*/
 
 /datum/uplink_item/bundles_tc/bond
 	name = "Classic Spy bundle"
