@@ -24,6 +24,15 @@
 
 /datum/opposing_force_equipment/gun
 	category = OPFOR_EQUIPMENT_CATEGORY_RANGED_WEAPONS
+
+/datum/opposing_force_equipment/gun/bulldog
+	item_type = /obj/item/gun/ballistic/shotgun/bulldog/unrestricted
+	description = "A fully-loaded semi-automatic drum-fed shotgun. Compatible with all 12g rounds. Designed for close quarter anti-personnel engagements."
+
+/datum/opposing_force_equipment/gun/smgc20r
+	item_type = /obj/item/gun/ballistic/automatic/c20r/unrestricted
+	description = "A fully-loaded Scarborough Arms bullpup submachine gun. The C-20r fires .45 rounds with a 24-round magazine and is compatible with suppressors."
+
 /datum/opposing_force_equipment/gun/m1911
 	item_type = /obj/item/gun/ballistic/automatic/pistol/m1911
 	description = "A semi-automatic .45 caliber pistol. Gold standard for sidearms."
@@ -138,6 +147,42 @@
  */
 /datum/opposing_force_equipment/ammo
 	category = OPFOR_EQUIPMENT_CATEGORY_AMMUNITION
+
+/datum/opposing_force_equipment/ammo/m12g
+	item_type = /obj/item/ammo_box/magazine/m12g
+	description = "An additional 8-round buckshot magazine for use with the Bulldog shotgun. Front towards enemy."
+
+/datum/opposing_force_equipment/ammo/m12g_dragon
+	item_type = /obj/item/ammo_box/magazine/m12g/dragon
+	description = "An alternative 8-round dragon's breath magazine for use in the Bulldog shotgun. 'I'm a fire starter, twisted fire starter!'"
+
+/datum/opposing_force_equipment/ammo/m12g_meteor
+	item_type = /obj/item/ammo_box/magazine/m12g/meteor
+	description = "An alternative 8-round meteorslug magazine for use in the Bulldog shotgun. Great for blasting airlocks off their frames and knocking down enemies."
+
+/datum/opposing_force_equipment/ammo/m12g_slug
+	item_type = /obj/item/ammo_box/magazine/m12g/slug
+	description = "An additional 8-round slug magazine for use with the Bulldog shotgun. Now 8 times less likely to shoot your pals."
+
+/datum/opposing_force_equipment/ammo/m12g_empty
+	item_type = /obj/item/ammo_box/magazine/m12g/empty
+	description = "An empty 8-round magazine for use in the Bulldog shotgun. Ammunition not included."
+
+/datum/opposing_force_equipment/ammo/smgm45
+	item_type = /obj/item/ammo_box/magazine/smgm45
+	description = "An additional 24-round .45 magazine suitable for use with the C-20r submachine gun."
+
+/datum/opposing_force_equipment/ammo/smgm45_ap
+	item_type = /obj/item/ammo_box/magazine/smgm45/ap
+	description = "An additional 24-round .45 magazine suitable for use with the C-20r submachine gun. These rounds are less effective at injuring the target but penetrate protective gear."
+
+/datum/opposing_force_equipment/ammo/smgm45_dragon
+	item_type = /obj/item/ammo_box/magazine/smgm45/incen
+	description = "An additional 24-round .45 magazine suitable for use with the C-20r submachine gun. Loaded with incendiary rounds which inflict little damage, but ignite the target."
+
+/datum/opposing_force_equipment/ammo/smgm45_empty
+	item_type = /obj/item/ammo_box/magazine/smgm45/empty
+	description = "An additional, empty 24-round .45 magazine suitable for use with the C-20r submachine gun. Ammunition not included."
 
 /datum/opposing_force_equipment/ammo/m45
 	item_type = /obj/item/ammo_box/magazine/m45
