@@ -6541,9 +6541,6 @@
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "bcT" = (
-/obj/structure/closet/secure_closet/brig{
-	name = "Prisoner Locker"
-	},
 /obj/machinery/status_display/evac/directional/south,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -6555,6 +6552,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/structure/closet/secure_closet/brig/genpop,
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "bcU" = (
@@ -33957,9 +33955,6 @@
 /turf/closed/wall,
 /area/medical/virology)
 "dXu" = (
-/obj/structure/closet/secure_closet/brig{
-	name = "Prisoner Locker"
-	},
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -33971,6 +33966,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/structure/closet/secure_closet/brig/genpop,
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "dXI" = (
@@ -42717,10 +42713,13 @@
 /turf/open/floor/iron,
 /area/engineering/supermatter/room)
 "gcs" = (
-/obj/item/radio/intercom/directional/south,
+/obj/item/radio/intercom/directional/south{
+	pixel_x = 26
+	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
+/obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark,
 /area/brigofficer)
 "gcu" = (
@@ -54980,6 +54979,14 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
+/obj/structure/table,
+/obj/effect/spawner/random/food_or_drink/donkpockets{
+	pixel_x = -14;
+	pixel_y = 6
+	},
+/obj/item/storage/fancy/donut_box{
+	pixel_x = 4
+	},
 /turf/open/floor/iron,
 /area/security/office)
 "jCF" = (
@@ -60026,9 +60033,6 @@
 /turf/open/floor/plating,
 /area/security/checkpoint/supply)
 "kVT" = (
-/obj/structure/closet/secure_closet/brig{
-	name = "Prisoner Locker"
-	},
 /obj/machinery/status_display/ai/directional/south,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -60040,6 +60044,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/structure/closet/secure_closet/brig/genpop,
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "kWe" = (
@@ -65370,6 +65375,11 @@
 	pixel_y = -32
 	},
 /obj/effect/turf_decal/tile/red,
+/obj/structure/table,
+/obj/machinery/microwave{
+	pixel_x = -3;
+	pixel_y = 6
+	},
 /turf/open/floor/iron,
 /area/security/office)
 "mms" = (
@@ -98954,6 +98964,7 @@
 /turf/closed/wall,
 /area/commons/dorms)
 "vbv" = (
+/obj/machinery/light/small/directional/south,
 /turf/open/floor/wood/tile,
 /area/security/prison)
 "vbE" = (
