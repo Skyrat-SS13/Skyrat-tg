@@ -1230,3 +1230,6 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 
 	client.mob.hud_used.hidden_inventory_update(client.mob)
 	client.mob.hud_used.persistent_inventory_update(client.mob)
+
+/obj/item/proc/is_in_genital(mob/living/carbon/human/the_guy)
+	return !!(src == the_guy.penis || src == the_guy.vagina || src == the_guy.anus || src == the_guy.nipples)

@@ -129,6 +129,7 @@
 	taste_description = "liquid desire"
 	color = "#FF2BFF"
 	overdose_threshold = 25
+	overdose_pref_datum = /datum/preference/toggle/erp/bimbofication
 
 	emote_probability = 5
 	thought_probability = 5
@@ -147,6 +148,14 @@
 	if(prob(thought_probability) && current_cycle >= extreme_thought_threshold)
 		var/displayed_extreme_thought = pick(extreme_aroused_thoughts)
 		to_chat(exposed_mob, span_purple("[displayed_extreme_thought]"))
+
+/datum/reagent/drug/aphrodisiac/crocin/hexacrocin/overdose_effects(mob/living/carbon/human/exposed_mob)
+	if(prob(95) || HAS_TRAIT(exposed_mob, TRAIT_BIMBO))
+		return ..()
+
+	to_chat(exposed_mob, span_purple("Your libido is going haywire! It feels like speaking is much harder..."))
+	exposed_mob.gain_trauma(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_BASIC)
+	ADD_TRAIT(exposed_mob, TRAIT_BIMBO, LEWDCHEM_TRAIT)
 
 //Dopamine. Generates in character after orgasm.
 /datum/reagent/drug/aphrodisiac/dopamine
@@ -304,10 +313,15 @@
 	if(exposed_mob.reagents.has_reagent(/datum/reagent/drug/aphrodisiac/crocin/hexacrocin))
 		exposed_mob.reagents.remove_reagent(/datum/reagent/drug/aphrodisiac/crocin/hexacrocin, reagent_reduction_amount)
 
-/datum/reagent/drug/aphrodisiac/camphor/pentacamphor/overdose_effects(mob/living/carbon/human/exposed_mob)
+/datum/reagent/drug/aphrodisiac/camphor/pentacamphor/overdose_start(mob/living/carbon/human/exposed_mob)
 	if(!HAS_TRAIT(exposed_mob, TRAIT_NEVERBONER))
 		to_chat(exposed_mob, span_notice("You feel like you'll never feel aroused again..."))
-		ADD_TRAIT(exposed_mob,TRAIT_NEVERBONER, LEWDCHEM_TRAIT)
+		ADD_TRAIT(exposed_mob, TRAIT_NEVERBONER, LEWDCHEM_TRAIT)
+	if(!HAS_TRAIT(exposed_mob, TRAIT_BIMBO))
+		return
+	exposed_mob.cure_trauma_type(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_ABSOLUTE)
+	to_chat(exposed_mob, span_notice("Your mind is free. Your thoughts are pure and innocent once more."))
+	REMOVE_TRAIT(exposed_mob, TRAIT_BIMBO, LEWDCHEM_TRAIT)
 
 /*
 * GENITAL ENLARGEMENT CHEMICALS
