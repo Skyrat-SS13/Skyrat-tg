@@ -18,6 +18,10 @@
 	opposing_force_equipment = null
 	return ..()
 
+/// Called when the gear is issued, use for unique services (e.g. a power outage) that don't have an item
+/datum/opposing_force_equipment/proc/on_issue(mob/living/target)
+	return
+
 /datum/opposing_force_objective
 	/// The name of the objective
 	var/title = ""
@@ -432,7 +436,10 @@
 		if(iterating_equipment.status != OPFOR_EQUIPMENT_STATUS_APPROVED)
 			continue
 		for(var/i in 1 to iterating_equipment.count)
-			new iterating_equipment.opposing_force_equipment.item_type(spawned_box)
+			if(!istype(iterating_equipment.opposing_force_equipment.item_type, /obj/effect/gibspawner/generic)) // This is what's used in place of an item in uplinks, so it's the same here
+				new iterating_equipment.opposing_force_equipment.item_type(spawned_box)
+			iterating_equipment.opposing_force_equipment.on_issue(target)
+
 	if(ishuman(target))
 		var/mob/living/carbon/human/human = target
 		human.put_in_hands(spawned_box)
