@@ -438,11 +438,18 @@
 		human.put_in_hands(spawned_box)
 	if(target.mind.has_antag_datum(/datum/antagonist/traitor))
 		var/datum/component/uplink/uplink = target.mind.find_syndicate_uplink(TRUE)
-		uplink.load_tc(user, 10)
+		var/obj/item/stack/telecrystals = create_tc()
+		uplink.load_tc(user, telecrystals)
 
 	add_log(user.ckey, "Issued gear")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has issued all approved equipment")
-	equipment_issued = TRUE
+
+
+/datum/opposing_force/proc/create_tc()
+	var/tc = list()
+	for(var/i = 1 to 10)
+		tc += new /obj/item/stack/telecrystal(src)
+	return tc
 
 /**
  * Control procs
