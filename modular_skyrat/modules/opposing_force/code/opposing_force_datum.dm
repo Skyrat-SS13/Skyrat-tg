@@ -444,10 +444,9 @@
 	add_log(user.ckey, "Issued gear")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has issued all approved equipment")
 
-
 /datum/opposing_force/proc/create_tc()
 	var/tc = list()
-	for(var/i = 1 to 10)
+	for(var/i = 1 to 10) // Our 10 + 10 TC
 		tc += new /obj/item/stack/telecrystal(src)
 	return tc
 
