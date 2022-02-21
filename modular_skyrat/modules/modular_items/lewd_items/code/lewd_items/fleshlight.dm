@@ -25,14 +25,6 @@
 		"red" = image (icon = src.icon, icon_state = "[initial(icon_state)]_red"),
 		"yellow" = image(icon = src.icon, icon_state = "[initial(icon_state)]_yellow"))
 
-/// A check for the radial color choice menu
-/obj/item/clothing/sextoy/fleshlight/proc/check_menu(mob/living/user)
-	if(!istype(user))
-		return FALSE
-	if(user.incapacitated())
-		return FALSE
-	return TRUE
-
 /obj/item/clothing/sextoy/fleshlight/Initialize()
 	. = ..()
 	update_icon()
@@ -45,7 +37,7 @@
 	icon_state = "[initial(icon_state)]_[current_color]"
 	inhand_icon_state = "[initial(icon_state)]_[current_color]"
 
-/obj/item/clothing/sextoy/fleshlight/AltClick(mob/user, obj/item/I)
+/obj/item/clothing/sextoy/fleshlight/AltClick(mob/user, obj/item/object)
 	if(color_changed)
 		return
 	. = ..()
