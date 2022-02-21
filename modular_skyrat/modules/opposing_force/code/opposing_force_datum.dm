@@ -424,9 +424,20 @@
 	add_log(user.ckey, "Selected equipment: [incoming_equipment.name]")
 
 /datum/opposing_force/proc/issue_gear(mob/user)
-	if(!selected_equipment.len || !isliving(mind_reference.current) || status != OPFOR_STATUS_APPROVED || equipment_issued)
+	if(!isliving(mind_reference.current) || status != OPFOR_STATUS_APPROVED || equipment_issued)
 		return
 	var/mob/living/target = mind_reference.current
+	if(target.mind.has_antag_datum(/datum/antagonist/traitor))
+		var/datum/antagonist/traitor/traitor_datum = target.mind.has_antag_datum(/datum/antagonist/traitor)
+		var/datum/component/uplink/uplink
+		if(traitor_datum && traitor_datum.uplink_ref)
+			uplink = target.mind.find_syndicate_uplink(TRUE)
+		if(uplink)
+			var/obj/item/stack/telecrystals = new /obj/item/stack/telecrystal(src)
+			telecrystals.amount = TELECRYSTALS_OPFOR_BONUS
+			uplink.load_tc(user, telecrystals)
+			add_log(user.ckey, "Gained TC")
+
 	var/obj/item/storage/box/spawned_box = new(get_turf(target))
 	for(var/datum/opposing_force_selected_equipment/iterating_equipment as anything in selected_equipment)
 		if(iterating_equipment.status != OPFOR_EQUIPMENT_STATUS_APPROVED)
