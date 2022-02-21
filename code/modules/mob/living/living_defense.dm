@@ -57,7 +57,8 @@
 	return BULLET_ACT_HIT
 
 /mob/living/bullet_act(obj/projectile/P, def_zone, piercing_hit = FALSE)
-	. = ..()
+	var/armor = check_projectile_armor(def_zone, P)
+	. = ..(P, def_zone, piercing_hit, armor)
 	if(!P.nodamage && (. != BULLET_ACT_BLOCK))
 		var/attack_direction = get_dir(P.starting, src)
 		apply_damage(P.damage, P.damage_type, def_zone, armor, wound_bonus=P.wound_bonus, bare_wound_bonus=P.bare_wound_bonus, sharpness = P.sharpness, attack_direction = attack_direction)
@@ -66,7 +67,7 @@
 			check_projectile_dismemberment(P, def_zone)
 	return . ? BULLET_ACT_HIT : BULLET_ACT_BLOCK
 
-/mob/living/check_projectile_armor(def_zone, obj/projectile/impacting_projectile)
+/mob/living/proc/check_projectile_armor(def_zone, obj/projectile/impacting_projectile)
 	return run_armor_check(def_zone, impacting_projectile.flag, "","",impacting_projectile.armour_penetration, "", FALSE, impacting_projectile.weak_against_armour)
 
 /mob/living/proc/check_projectile_dismemberment(obj/projectile/P, def_zone)
