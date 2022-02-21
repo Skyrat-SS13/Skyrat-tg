@@ -25,7 +25,7 @@
 	var/uplink_flag = UPLINK_TRAITORS
 
 ///obj/item/uplink/Initialize(mapload, owner, tc_amount = 20) //ORIGINAL
-/obj/item/uplink/Initialize(mapload, owner, tc_amount = 35) //SKYRAT EDIT CHANGE
+/obj/item/uplink/Initialize(mapload, owner, tc_amount = 10) //SKYRAT EDIT CHANGE
 	. = ..()
 	AddComponent(/datum/component/uplink, owner, FALSE, TRUE, uplink_flag, tc_amount)
 
@@ -73,12 +73,12 @@
 
 // Multitool uplink
 ///obj/item/multitool/uplink/Initialize(mapload, owner, tc_amount = 20) //ORIGINAL
-/obj/item/multitool/uplink/Initialize(mapload, owner, tc_amount = 35) //SKYRAT EDIT CHANGE
+/obj/item/multitool/uplink/Initialize(mapload, owner, tc_amount = 10) //SKYRAT EDIT CHANGE
 	. = ..()
 	AddComponent(/datum/component/uplink, owner, FALSE, TRUE, UPLINK_TRAITORS, tc_amount)
 
 // Pen uplink
 ///obj/item/pen/uplink/Initialize(mapload, owner, tc_amount = 20) //ORIGINAL
-/obj/item/pen/uplink/Initialize(mapload, owner, tc_amount = 35) //SKYRAT EDIT CHANGE
+/obj/item/pen/uplink/Initialize(mapload, owner, tc_amount = 10) //SKYRAT EDIT CHANGE
 	. = ..()
 	AddComponent(/datum/component/uplink, owner, TRUE, FALSE, UPLINK_TRAITORS, tc_amount)
