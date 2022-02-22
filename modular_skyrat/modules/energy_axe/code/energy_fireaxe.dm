@@ -8,7 +8,7 @@
 	righthand_file = 'modular_skyrat/master_files/icons/mob/energyaxe_righthand.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
 	name = "energy fire axe"
-	desc = "You aren't quite sure if this counts as a fire axe anymore, but it sure is fancy! A tag hangs off of it reading; 'properly of the Gorlex Marauders'"
+	desc = "You aren't quite sure if this counts as a fire axe anymore, but it sure is fancy! A tag hangs off of it reading: 'properly of the Gorlex Marauders'"
 	force = 5
 	throwforce = 15
 	w_class = WEIGHT_CLASS_BULKY
