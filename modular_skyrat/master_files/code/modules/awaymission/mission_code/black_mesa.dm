@@ -316,12 +316,20 @@
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/death(gibbed)
 	. = ..()
-	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_death01.ogg', 100)
+	alert_sound_to_playing('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_death01.ogg')
 	new /obj/effect/singularity_creation(loc)
+	message_admins("[src] has been defeated, a spacetime cascade will occur in 10 seconds.")
+	addtimer(CALLBACK(src, .proc/endgame_shit),  10 SECONDS)
+
+/mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/proc/endgame_shit()
+	to_chat(world, span_danger("You feel as though a powerful force has been defeated..."))
+	var/datum/round_event_control/resonance_cascade/event_to_start = new()
+	event_to_start.runEvent()
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/LoseAggro()
 	. = ..()
 	set_combat_mode(FALSE)
+
 /datum/round_event_control/resonance_cascade
 	name = "Portal Storm: Spacetime Cascade"
 	typepath = /datum/round_event/portal_storm/resonance_cascade
