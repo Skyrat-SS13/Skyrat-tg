@@ -1,4 +1,4 @@
-/obj/item/gun/ballistic/automatic/assault_rifle/akm
+/obj/item/gun/ballistic/automatic/akm
 	name = "\improper AKM rifle"
 	desc = "A timeless Russian infantry rifle chambered in an extremely outdated round. This is one of over two hundred million copies produced - in and outside of Sol. A tool for a revolution, an insurgency, justice, or crime. This rifle and its variants truly have no bounds."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns.dmi'
@@ -37,7 +37,7 @@
 	desc = "a banana-shaped double-stack magazine able to hold 45 rounds of 7.62x39mm Soviet ammunition. It's meant to be used on a light machine gun, but it's just a longer AK magazine."
 	max_ammo = 45
 
-/obj/item/gun/ballistic/automatic/assault_rifle/akm/modern
+/obj/item/gun/ballistic/automatic/akm/modern
 	name = "\improper tactical AKMS"
 	desc = "a modernized version of the most iconic infantry rifle ever produced. This one has aftermarket parts and attachments, making it a better contender against its modern buddies. It still uses the same outdated rounds."
 	icon_state = "akm_modern"
