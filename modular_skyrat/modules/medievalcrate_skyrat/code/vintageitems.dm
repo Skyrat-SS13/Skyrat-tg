@@ -1,6 +1,7 @@
 /obj/item/clothing/gloves/plate/larp
 	desc = "They're like gloves, but made of metal. Better not touch any live wires!"
 	siemens_coefficient = 1
+	armor = list(MELEE = 10, BULLET = 5, LASER = 5, ENERGY = 5, BOMB = 5, BIO = 0, FIRE = 60, ACID = 60)
 
 /obj/item/clothing/gloves/plate/larp/red
 	icon_state = "crusader-red"
