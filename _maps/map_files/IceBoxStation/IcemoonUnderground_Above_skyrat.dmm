@@ -4919,6 +4919,10 @@
 /obj/effect/turf_decal/bot_red,
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"mx" = (
+/obj/structure/closet/secure_closet/evidence,
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "my" = (
 /obj/structure/grille/broken,
 /obj/effect/decal/cleanable/glass,
@@ -9590,6 +9594,7 @@
 "xR" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/structure/cable,
+/obj/effect/landmark/blobstart,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/bar)
 "xS" = (
@@ -10015,6 +10020,7 @@
 /obj/structure/bed,
 /obj/item/bedsheet/dorms,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/landmark/blobstart,
 /turf/open/floor/plating,
 /area/security/prison/safe)
 "za" = (
@@ -12093,6 +12099,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/mine/living_quarters)
+"Em" = (
+/obj/structure/closet{
+	name = "Evidence Closet 3"
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "En" = (
 /obj/structure/flora/tree/pine,
 /turf/open/floor/plating/asteroid/snow/icemoon,
@@ -14634,6 +14646,17 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/security/prison)
+"KJ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/item/storage/secure/safe/directional/north{
+	name = "evidence safe";
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "KK" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 1
@@ -16343,13 +16366,9 @@
 /turf/open/floor/iron,
 /area/science/xenobiology)
 "Pg" = (
-/obj/structure/rack,
-/obj/item/surgicaldrill,
-/obj/item/scalpel{
-	pixel_x = 2;
-	pixel_y = 6
+/obj/structure/closet{
+	name = "Evidence Closet 1"
 	},
-/obj/item/crowbar,
 /turf/open/floor/iron/dark,
 /area/security/interrogation)
 "Ph" = (
@@ -16382,20 +16401,19 @@
 /turf/open/floor/grass,
 /area/service/hydroponics)
 "Pl" = (
-/obj/machinery/computer/security/telescreen/interrogation{
-	pixel_y = 30
+/obj/structure/closet{
+	name = "Evidence Closet 2"
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/dark,
 /area/security/interrogation)
 "Pm" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security{
-	name = "Interrogation Observation";
+	name = "Evidence Storage";
 	req_access_txt = "63"
 	},
-/obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark,
 /area/security/interrogation)
 "Pn" = (
@@ -16435,8 +16453,9 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/medical/virology)
 "Ps" = (
-/obj/structure/table,
-/obj/item/storage/box/evidence,
+/obj/structure/closet{
+	name = "Evidence Closet 4"
+	},
 /turf/open/floor/iron/dark,
 /area/security/interrogation)
 "Pt" = (
@@ -16535,9 +16554,11 @@
 /turf/open/floor/iron,
 /area/security/prison)
 "PE" = (
-/obj/structure/table,
-/obj/item/folder/yellow{
-	name = "Detective's Findings"
+/obj/structure/closet{
+	name = "Evidence Closet 5"
+	},
+/obj/machinery/camera/directional/south{
+	c_tag = "Security - Evidence Storage"
 	},
 /turf/open/floor/iron/dark,
 /area/security/interrogation)
@@ -55900,9 +55921,9 @@ LG
 MG
 NY
 dN
-Ol
-Ol
-LZ
+Em
+KJ
+mx
 dN
 ak
 ak
