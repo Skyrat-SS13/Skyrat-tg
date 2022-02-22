@@ -10,7 +10,6 @@
 	worn_icon_state = "mg34"
 	inhand_icon_state = "mg34"
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg34_fire.ogg'
-	fire_sound = 'sound/weapons/gun/l6/shot.ogg'
 	rack_sound = 'sound/weapons/gun/l6/l6_rack.ogg'
 	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
 	fire_sound_volume = 70
@@ -35,12 +34,11 @@
 
 /obj/item/gun/ballistic/automatic/mg34/examine(mob/user)
 	. = ..()
-	. += "<b>alt + click</b> to [cover_open ? "close" : "open"] the dust cover."
+	. += "<b>RMB</b> to [cover_open ? "close" : "open"] the dust cover."
 	if(cover_open && magazine)
 		. += span_notice("It seems like you could use an <b>empty hand</b> to remove the magazine.")
 
-/obj/item/gun/ballistic/automatic/mg34/AltClick(mob/user)
-	. = ..()
+/obj/item/gun/ballistic/automatic/mg34/attack_hand_secondary(mob/user, list/modifiers)
 	if(!user.canUseTopic(src))
 		return
 	cover_open = !cover_open
