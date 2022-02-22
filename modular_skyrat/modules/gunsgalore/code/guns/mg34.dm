@@ -1,7 +1,7 @@
 /obj/item/gun/ballistic/automatic/mg34
-	name = "\improper MG-9 GPMG"
-	desc = "A reproduction of the German MG-3 general purpose machine gun, this one is a revision from the 2200's and was one of several thousand distributed to SolFed expedition teams. It has been rechambered to fire 7.92mm Mauser instead of 7.62mm NATO."
-	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns.dmi'
+	name = "\improper MG-34"
+	desc = "A reproduction of the German MG-34 general purpose machine gun, this one is a revision from the 2200's and was one of several thousand distributed to SolFed expedition teams. It has been rechambered to fire 7.92mm Mauser instead of 7.62mm NATO."
+	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_righthand.dmi'
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_back.dmi'
@@ -29,7 +29,6 @@
 	tac_reloads = FALSE
 	var/cover_open = FALSE
 
-
 /obj/item/gun/ballistic/automatic/mg34/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
@@ -39,7 +38,6 @@
 	. += "<b>alt + click</b> to [cover_open ? "close" : "open"] the dust cover."
 	if(cover_open && magazine)
 		. += span_notice("It seems like you could use an <b>empty hand</b> to remove the magazine.")
-
 
 /obj/item/gun/ballistic/automatic/mg34/AltClick(mob/user)
 	. = ..()
@@ -58,24 +56,17 @@
 	. = ..()
 	. += "[base_icon_state]_door_[cover_open ? "open" : "closed"]"
 
-
-/obj/item/gun/ballistic/automatic/mg34/afterattack(atom/target as mob|obj|turf, mob/living/user as mob|obj, flag, params)
+/obj/item/gun/ballistic/automatic/mg34/can_shoot()
 	if(cover_open)
-		to_chat(user, span_warning("[src]'s cover is open! Close it before firing!"))
-		return
-	else
-		. = ..()
-		update_appearance()
+		balloon_alert_to_viewers("cover open!")
+		return FALSE
+	return chambered
 
-//ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/item/gun/ballistic/automatic/mg34/attack_hand(mob/user, list/modifiers)
-	if (loc != user)
-		..()
+/obj/item/gun/ballistic/automatic/mg34/eject_magazine(mob/user, display_message = TRUE, obj/item/ammo_box/magazine/tac_load = null)
+	if(!cover_open)
+		to_chat(user, span_warning("The cover is closed! Open it before ejecting the magazine!"))
 		return
-	if (!cover_open)
-		to_chat(user, span_warning("[src]'s cover is closed! Open it before trying to remove the magazine!"))
-		return
-	..()
+	return ..()
 
 /obj/item/gun/ballistic/automatic/mg34/attackby(obj/item/A, mob/user, params)
 	if(!cover_open && istype(A, mag_type))
@@ -93,12 +84,8 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/gun/ballistic/automatic/mg34/packapunch //INFINITY GUNNNNNNNN
-	name = "MG34 UBER"
+	name = "\improper MG-34 UBER"
 	desc = "Here, there, seems like everywhere. Nasty things are happening, now everyone is scared. Old Jeb Brown the Blacksmith, he saw his mother die. A critter took a bite from her and now she's in the sky. "
-	icon_state = "mg34_packapunch"
-	base_icon_state = "mg34_packapunch"
-	worn_icon_state = "mg34_packapunch"
-	inhand_icon_state = "mg34_packapunch"
 	fire_delay = 0.04
 	burst_size = 5
 	spread = 5

@@ -1,12 +1,12 @@
 /obj/item/gun/ballistic/automatic/pps
 	name = "\improper PPS-43"
 	desc = "A very cheap, barely reliable reproduction of a personal defense weapon based on the original Soviet model. Not nearly as infamous as the Mosin."
-	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns.dmi'
+	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns40x32.dmi'
 	icon_state = "pps"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_righthand.dmi'
 	inhand_icon_state = "pps"
-	slot_flags = ITEM_SLOT_BELT
+	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
 	mag_type = /obj/item/ammo_box/magazine/pps
 	can_suppress = FALSE
 	burst_size = 3

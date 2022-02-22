@@ -57,10 +57,6 @@
 	item_type = /obj/item/gun/ballistic/automatic/fg42
 	admin_note = "WARNING: This weapon is extremely powerful, firing a 2 round burst of 45 damage bullets."
 
-/datum/opposing_force_equipment/gun/fg42m
-	item_type = /obj/item/gun/ballistic/automatic/fg42/modern
-	admin_note = "WARNING: This weapon is extremely powerful, firing a 3 round burst of 45 damage bullets. The modern version has a halfed fire delay."
-
 /datum/opposing_force_equipment/gun/uzi
 	item_type = /obj/item/gun/ballistic/automatic/mini_uzi
 	description = "The uzi nine millimeter, a timeless submachinegun for a warrior out of time."
