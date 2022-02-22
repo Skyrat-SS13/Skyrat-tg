@@ -6584,9 +6584,6 @@
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "bcT" = (
-/obj/structure/closet/secure_closet/brig{
-	name = "Prisoner Locker"
-	},
 /obj/machinery/status_display/evac/directional/south,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -6598,6 +6595,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/structure/closet/secure_closet/brig/genpop,
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "bcU" = (
@@ -7168,7 +7166,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/white,
-/area/security/brig)
+/area/security/medical)
 "biA" = (
 /obj/structure/sink{
 	pixel_y = 22
@@ -7181,7 +7179,7 @@
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/white,
-/area/security/brig)
+/area/security/medical)
 "biB" = (
 /obj/structure/bed,
 /obj/machinery/iv_drip,
@@ -7197,7 +7195,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/white,
-/area/security/brig)
+/area/security/medical)
 "biE" = (
 /obj/item/kirbyplants/random,
 /obj/effect/turf_decal/tile/red{
@@ -7295,7 +7293,7 @@
 	},
 /obj/item/bodybag/stasis,
 /turf/open/floor/iron/white,
-/area/security/brig)
+/area/security/medical)
 "bku" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -7523,7 +7521,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/white,
-/area/security/brig)
+/area/security/medical)
 "bme" = (
 /obj/machinery/light/small/directional/south,
 /obj/machinery/holopad,
@@ -7532,7 +7530,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/white,
-/area/security/brig)
+/area/security/medical)
 "bmf" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -7541,13 +7539,13 @@
 /obj/item/radio/intercom/directional/south,
 /obj/structure/closet/secure_closet/security_medic,
 /turf/open/floor/iron/white,
-/area/security/brig)
+/area/security/medical)
 "bmg" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/sign/departments/medbay/alt,
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/security/brig)
+/area/security/medical)
 "bmh" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -12913,6 +12911,11 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/cargo/office)
+"bWr" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/security/medical)
 "bWv" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -34036,9 +34039,6 @@
 /turf/closed/wall,
 /area/medical/virology)
 "dXu" = (
-/obj/structure/closet/secure_closet/brig{
-	name = "Prisoner Locker"
-	},
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -34050,6 +34050,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/structure/closet/secure_closet/brig/genpop,
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "dXI" = (
@@ -42820,10 +42821,14 @@
 /turf/open/floor/iron,
 /area/engineering/supermatter/room)
 "gcs" = (
-/obj/item/radio/intercom/directional/south,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
+/obj/machinery/light/directional/south,
+/obj/item/radio/intercom/directional/south{
+	pixel_x = 26
+	},
+/obj/machinery/light_switch/directional/south,
 /turf/open/floor/iron/dark,
 /area/brigofficer)
 "gcu" = (
@@ -55097,6 +55102,14 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
+/obj/structure/table,
+/obj/effect/spawner/random/food_or_drink/donkpockets{
+	pixel_x = -14;
+	pixel_y = 6
+	},
+/obj/item/storage/fancy/donut_box{
+	pixel_x = 4
+	},
 /turf/open/floor/iron,
 /area/security/office)
 "jCF" = (
@@ -60147,9 +60160,6 @@
 /turf/open/floor/plating,
 /area/security/checkpoint/supply)
 "kVT" = (
-/obj/structure/closet/secure_closet/brig{
-	name = "Prisoner Locker"
-	},
 /obj/machinery/status_display/ai/directional/south,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -60159,6 +60169,10 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/brig/genpop,
+/obj/structure/railing{
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
@@ -65511,6 +65525,11 @@
 	pixel_y = -32
 	},
 /obj/effect/turf_decal/tile/red,
+/obj/structure/table,
+/obj/machinery/microwave{
+	pixel_x = -3;
+	pixel_y = 6
+	},
 /turf/open/floor/iron,
 /area/security/office)
 "mms" = (
@@ -69112,7 +69131,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
-/area/security/brig)
+/area/security/medical)
 "njy" = (
 /obj/machinery/navbeacon{
 	codes_txt = "delivery;dir=4";
@@ -78680,6 +78699,9 @@
 /obj/structure/sign/poster/ripped{
 	pixel_y = 32
 	},
+/obj/item/storage/box/ingredients/random,
+/obj/item/storage/box/ingredients/random,
+/obj/item/storage/box/ingredients/random,
 /turf/open/floor/iron/cafeteria,
 /area/security/prison)
 "pGU" = (
@@ -95506,7 +95528,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/white,
-/area/security/brig)
+/area/security/medical)
 "udX" = (
 /obj/machinery/camera/directional/east{
 	c_tag = "Central Hallway - Head of Personnel Line";
@@ -99211,6 +99233,7 @@
 /turf/closed/wall,
 /area/commons/dorms)
 "vbv" = (
+/obj/machinery/light/small/directional/south,
 /turf/open/floor/wood/tile,
 /area/security/prison)
 "vbE" = (
@@ -99276,6 +99299,9 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/iron,
 /area/cargo/office)
+"vcw" = (
+/turf/closed/wall/r_wall,
+/area/security/medical)
 "vcC" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral{
@@ -105490,7 +105516,7 @@
 	},
 /obj/effect/landmark/start/security_medic,
 /turf/open/floor/iron/white,
-/area/security/brig)
+/area/security/medical)
 "wJk" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
@@ -160766,10 +160792,10 @@ aFn
 aFm
 aFm
 aaa
-bgZ
-biy
-biy
-biy
+vcw
+bWr
+bWr
+bWr
 bnG
 bpf
 brg
@@ -161023,7 +161049,7 @@ kiO
 bcJ
 aFm
 aaa
-bgZ
+vcw
 biz
 bkk
 bmd
@@ -161280,7 +161306,7 @@ siU
 bcK
 aFm
 aaa
-bgZ
+vcw
 biA
 wJe
 bme
@@ -161537,7 +161563,7 @@ siU
 rKh
 aFm
 aaa
-bgZ
+vcw
 biB
 udO
 bmf
@@ -161794,8 +161820,8 @@ rHx
 aFm
 aFm
 aFm
-bgZ
-biy
+vcw
+bWr
 njv
 bmg
 bnG
