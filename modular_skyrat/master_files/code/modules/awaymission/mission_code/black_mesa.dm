@@ -5,6 +5,11 @@
 	name = "Black Mesa Outside"
 	static_lighting = FALSE
 
+/turf/closed/mineral/black_mesa
+	turf_type = /turf/open/floor/plating/beach/sand/black_mesa
+	baseturfs = /turf/open/floor/plating/beach/sand/black_mesa
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+
 //Floors that no longer lead into space (innovative!)
 /turf/open/floor/plating/beach/sand/black_mesa
 	baseturfs = /turf/open/floor/plating/beach/sand/black_mesa
