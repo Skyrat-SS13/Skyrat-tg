@@ -18,7 +18,7 @@
 	light_on = FALSE
 	attack_verb_continuous = list("attacks", "chops", "cleaves", "tears", "lacerates", "cuts")
 	attack_verb_simple = list("attack", "chop", "cleave", "tear", "lacerate", "cut")
-	armour_penetration = 25
+	armour_penetration = 35
 	sharpness = SHARP_EDGED
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
 	special_desc = "An energized fireaxe of Syndicate descent."
