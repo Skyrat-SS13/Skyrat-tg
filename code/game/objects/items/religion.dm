@@ -345,11 +345,12 @@
 	name = "Plate Gauntlets"
 	icon_state = "crusader"
 	desc = "They're like gloves, but made of metal."
-	siemens_coefficient = 0
+	siemens_coefficient = 1 // SKYRAT EDIT ORIGINAL: 0
 	cold_protection = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
+	armor = list(MELEE = 10, BULLET = 5, LASER = 5, ENERGY = 5, BOMB = 5, BIO = 0, FIRE = 60, ACID = 60) // SKYRAT ADDITION
 
 /obj/item/clothing/gloves/plate/red
 	icon_state = "crusader-red"
@@ -362,8 +363,8 @@
 	desc = "Metal boots, they look heavy."
 	icon_state = "crusader"
 	w_class = WEIGHT_CLASS_NORMAL
-	armor = list(MELEE = 50, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 60, BIO = 0, FIRE = 60, ACID = 60) //does this even do anything on boots?
-	clothing_flags = NOSLIP
+	armor = list(MELEE = 10, BULLET = 5, LASER = 5, ENERGY = 5, BOMB = 5, BIO = 0, FIRE = 60, ACID = 60) // SKYRAT EDIT ORIGINAL: MELEE = 50, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 60, BIO = 0, FIRE = 60, ACID = 60
+	// SKYRAT REMOVAL // clothing_flags = NOSLIP
 	cold_protection = FEET
 	min_cold_protection_temperature = SHOES_MIN_TEMP_PROTECT
 	heat_protection = FEET
