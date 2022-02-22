@@ -196,7 +196,7 @@ SUBSYSTEM_DEF(opposing_force)
 	return returned_html.Join("<br>")
 
 /// Gives a mind the opfor action button, which calls the opfor verb when pressed
-/datum/controller/subsystem/opposing_force/proc/give_opfor_button(datum/mind/player_mind)
+/datum/controller/subsystem/opposing_force/proc/give_opfor_button(mob/living/carbon/human/player)
 	var/datum/action/opfor/info_button
 	info_button = new(src)
-	info_button.Grant(player_mind.current)
+	info_button.Grant(player)
