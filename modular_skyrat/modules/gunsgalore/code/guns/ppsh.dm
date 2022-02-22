@@ -20,6 +20,10 @@
 	alt_icons = TRUE
 	realistic = TRUE
 	dirt_modifier = 0.3
+	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_cock.ogg'
+	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
+	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
+	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
 
 /obj/item/ammo_box/magazine/ppsh
 	name = "ppsh-41 magazine (7.62×25mm)"
