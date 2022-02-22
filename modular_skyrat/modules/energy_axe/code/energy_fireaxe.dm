@@ -20,7 +20,7 @@
 	attack_verb_simple = list("attack", "chop", "cleave", "tear", "lacerate", "cut")
 	armour_penetration = 25
 	sharpness = SHARP_EDGED
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE_TOY
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
 	special_desc = "An energized fireaxe of Syndicate descent."
 	max_integrity = 200
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 100, ACID = 30)
