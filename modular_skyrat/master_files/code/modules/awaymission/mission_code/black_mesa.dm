@@ -628,7 +628,7 @@
 	mask = /obj/item/clothing/mask/balaclavaadjust
 	gloves = /obj/item/clothing/gloves/combat
 	suit = /obj/item/clothing/suit/armor/vest/marine/hecu
-	suit_store = /obj/item/gun/ballistic/automatic/assault_rifle/m16
+	suit_store = /obj/item/gun/ballistic/automatic/m16
 	belt = /obj/item/storage/belt/security/webbing
 	ears = /obj/item/radio/headset
 	shoes = /obj/item/clothing/shoes/combat

@@ -175,7 +175,7 @@
 			new /obj/item/gun/ballistic/automatic/assault_rifle/akm(src)
 			for(var/i in 1 to 2)
 				new /obj/item/ammo_box/magazine/akm(src)
-			new /obj/item/gun/ballistic/automatic/submachine_gun/ppsh(src)
+			new /obj/item/gun/ballistic/automatic/ppsh(src)
 			for(var/i in 1 to 2)
 				new /obj/item/ammo_box/magazine/ppsh(src)
 			new /obj/item/gun/ballistic/automatic/assault_rifle/stg(src)
