@@ -1,5 +1,14 @@
 /datum/opposing_force_equipment/gun
 	category = OPFOR_EQUIPMENT_CATEGORY_RANGED_WEAPONS
+
+/datum/opposing_force_equipment/gun/bulldog
+	item_type = /obj/item/gun/ballistic/shotgun/bulldog/unrestricted
+	description = "A fully-loaded semi-automatic drum-fed shotgun. Compatible with all 12g rounds. Designed for close quarter anti-personnel engagements."
+
+/datum/opposing_force_equipment/gun/smgc20r
+	item_type = /obj/item/gun/ballistic/automatic/c20r/unrestricted
+	description = "A fully-loaded Scarborough Arms bullpup submachine gun. The C-20r fires .45 rounds with a 24-round magazine and is compatible with suppressors."
+
 /datum/opposing_force_equipment/gun/m1911
 	item_type = /obj/item/gun/ballistic/automatic/pistol/m1911
 	description = "A semi-automatic .45 caliber pistol. Gold standard for sidearms."
