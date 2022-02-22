@@ -702,7 +702,7 @@
 
 	back = /obj/item/storage/backpack
 
-	backpack_contents = list(/obj/item/gun/ballistic/automatic/cfa_wildcat, /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat = 4)
+	backpack_contents = list(/obj/item/gun/ballistic/revolver/mateba, /obj/item/ammo_box/a357 = 5)
 
 	l_hand = /obj/item/crowbar/freeman
 
