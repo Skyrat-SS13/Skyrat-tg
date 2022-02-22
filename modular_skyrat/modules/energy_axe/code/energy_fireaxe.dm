@@ -40,16 +40,17 @@
 	START_PROCESSING(SSobj, src)
 	set_light_on(TRUE)
 
+//Swap hitsounds into the smack sound
+
 /obj/item/fireaxe/energy/proc/energy_unwield(obj/item/source, mob/living/carbon/user)
 	SIGNAL_HANDLER
 
 	wielded = FALSE
-	w_class = initial(w_class)
 	hitsound = "swing_hit"
 	STOP_PROCESSING(SSobj, src)
 	set_light_on(FALSE)
 
 /obj/item/fireaxe/energy/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/energy_wield)
-	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/energy_unwield)
+	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/energy_wield, override = TRUE)
+	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/energy_unwield, override = TRUE)
