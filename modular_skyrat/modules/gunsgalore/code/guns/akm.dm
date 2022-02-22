@@ -26,7 +26,7 @@
 	name = "\improper AKM magazine"
 	desc = "a banana-shaped double-stack magazine able to hold 30 rounds of 7.62x39mm Soviet ammunition. It's said that in the early days of SolFed's spread, Spanish colony rebels often referred to these as 'Goat Horns'."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
-	icon_state = "7.62mm"
+	icon_state = "akm"
 	ammo_type = /obj/item/ammo_casing/realistic/a762x39
 	caliber = "a762x39"
 	max_ammo = 30

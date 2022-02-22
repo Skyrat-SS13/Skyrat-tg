@@ -23,7 +23,7 @@
 /obj/item/ammo_box/magazine/fg42
 	name = "fg42 magazine (7.92×57mm)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
-	icon_state = "7.92mm"
+	icon_state = "fg42"
 	ammo_type = /obj/item/ammo_casing/realistic/a792x57
 	caliber = "a792x57"
 	max_ammo = 20

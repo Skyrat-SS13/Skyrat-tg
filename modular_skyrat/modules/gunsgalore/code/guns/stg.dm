@@ -23,7 +23,7 @@
 /obj/item/ammo_box/magazine/stg
 	name = "stg magazine (7.92×33mm)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
-	icon_state = "7.92mm"
+	icon_state = "stg"
 	ammo_type = /obj/item/ammo_casing/realistic/a792x33
 	caliber = "a792x33"
 	max_ammo = 30

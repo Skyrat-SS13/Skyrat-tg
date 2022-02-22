@@ -25,7 +25,7 @@
 /obj/item/ammo_box/magazine/mp40
 	name = "mp40 magazine (9mmx19)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
-	icon_state = "9mm"
+	icon_state = "mp40"
 	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = "c9mm"
 	max_ammo = 32
