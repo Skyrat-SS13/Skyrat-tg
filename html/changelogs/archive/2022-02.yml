@@ -677,3 +677,250 @@
       now show what potential uses they have.
   - balance: Tribal weapons are now ashwalker-only
   - balance: 'Bone spear was nerfed. qol: adds a bone sword to the ash walker village.'
+2022-02-17:
+  AshTheDerg:
+  - rscadd: Added Cyborg Drink Shakers
+  - rscadd: Added Cyborg Medical Hypo
+  - rscadd: Added Cyborg Mop
+  - rscadd: Added Cyborg Light Replacer, as well as recharge code
+  Ebin-Halcyon:
+  - imageadd: Upstream sprites for Jackboots that fit on digitigrade + Teshari security
+      clothing that fit the upstream look
+  GoldenAlpharex:
+  - bugfix: Disabled tgchat's ping feature in an attempt to stop it from failing to
+      display certain messages.
+  Ironnhawk:
+  - code_imp: Fixed the check to determine for players who SSD from Disconnection
+      and still have a Mind loaded.
+  Melbert:
+  - admin: Force-completing heretic objectives in the traitor panel count for ascension,
+      if you wanna skip the queue.
+  Nari Harimoto:
+  - bugfix: icebox now has one, and only one, APC per area
+  Nerev4r:
+  - balance: Synths now take less damage, though a bit more than humans do.
+  - balance: Synths now take half the stun they previously did from EMPs, and half
+      the brain damage. Slightly less physical damage.
+  - bugfix: Tend wounds no longer applies to robutts.
+  - rscadd: Adds slightly more (BBQ) flavor to synth EMP messages.
+  - balance: Synths no longer revive from just healing them, try the new..
+  - balance: Synthetic chassis restoration surgery has been reworked to just reviving
+      them.
+  - balance: Synthetic brain surgery is now repeatable.
+  - balance: It now takes a little bit to apply welding/cables to someone else.
+  OrionTheFox:
+  - rscadd: Nanotrasen's Frontier Division, while still not able to intercept enemy
+      communications, has decided to at the least supply their stations with a shift-start
+      Divergency Report, listing all station Traits and Goals for that shift!
+  SkyratBot:
+  - bugfix: The Lizard's Gas will no longer start out with Active Turfs at the start
+      of a round.
+  - imageadd: resprites the mailman outfit
+  - balance: Nanotrasen upgrades Anti-Tider back pack and find a way to make a compact
+      version for security modsuit, researchers still high on caffeine creates module
+      version of atmos resin backpack
+  - bugfix: Syndicate quickly steals designs and applies them to their pyro backpack
+      transforming it into module names:Fikou for almost entire code work, TGMC for
+      sound and Cursed Birb
+  - bugfix: Honkbots now no longer spam you and break the game
+  - imageadd: RCDs' Radial Menu new uses the updated Chairs, ID Cards, Stools, and
+      Walls. 2562.
+  - rscadd: The Chaplain's office was split in two by maintenance on Kilostation,
+      and Nanotrasen has finally bothered to install an APC in the part where all
+      of the caskets were kept.
+  - balance: Kudzu now stops spreading if the tile it is on is under 100K without
+      the cold-proofing mutation.
+  - balance: Kudzu now has a severity system for mutations. Different mutations cost
+      different severity based on their effects. There is a maximum severity which
+      is dependent on potency, while more severe mutations also are rarer.
+  - balance: Kudzu's maximum severity is now a linear function of its potency, with
+      it ranging from 10 to 20.
+  - balance: Kudzu's maximum spread cap per seed is now 2/3 of its old value.
+  - balance: Kudzu's spread speed is now 1/2 of its old value, but is still capped
+      at a minimum of 1 new kudzu tile per tick.
+  - balance: Kudzu spawned by the random spacevines event's stats have been slightly
+      buffed to replicate old behavior.
+  - balance: Venus human traps now are affected by the cold without cold-proofing.
+  - balance: Kudzu's thorns and toxicity mutations are now significantly more lethal.
+  - balance: Venus human traps now no longer have a 2 second ranged hardstun, but
+      instead deal 85 stamina damage and a 1 second knockdown.
+  - balance: Venus human traps' damage has been lowered slightly by 20%.
+  - code_imp: Kudzu "severity" values now reflect severity in terms of gameplay, old
+      severity values (used for certain mutations) are now defines instead.
+  - code_imp: Eliminates process_temperature in kudzu and moves to a flags-based system
+      for traits
+  - bugfix: Venus human traps' vines now get deleted after they die.
+  - bugfix: Unsuitable cold and heat damage for simplemobs don't get overrided by
+      unsuitable atmos damage anymore.
+  - bugfix: Staff at Centcom are busy people! They are no longer allowed to go on
+      valentines dates.
+  - rscadd: Across all of Nanotrasen's active stations, the little cubby pocket colloquially
+      known as "Security's Medical Ward" has now been standardized with it's own area
+      name. Our little buddy is growing up!
+  - rscadd: In order to give such an important area a much needed upgrade, Nanotrasen
+      added an whole extra three cubic meters to the medical area of the Security
+      division of the station. Feel free to kick out those legs.
+  Zenitheevee:
+  - balance: removes milk's healing and usage from breastmilk.
+  jjpark-kb:
+  - balance: ash tools/clothing costs less materials
+  - code_imp: ashwalker-specific recipe code improved
+  jupyterkat, weirdbutton, lamella, the_catfish:
+  - rscadd: Shibari bondage ropes
+  - rscadd: Shibari bondage stand
+  theOOZ aka ghostsheep:
+  - imageadd: 'Adds the MekaNIKA cyborg skinline to: peacekeeper, medical, janitor,
+      service, cargo-technician, syndicate, and ninja modules'
+2022-02-18:
+  SkyratBot:
+  - spellcheck: Makes it so the loader modsuit says it is not airtight with examined.
+  - bugfix: Gunpowder and teslium once again use their intended explosion scaling.
+      Which is to say "more" and "not".
+  jjpark-kb:
+  - bugfix: vines are back in maint as they should
+  - code_imp: update our vines to be more in line with /tg/ (besides the cold temp)
+2022-02-19:
+  Ebin-Halcyon:
+  - imageadd: Some jean types fit on digitigrade legs now
+  - imageadd: Hawaiian shirts now look nicer
+  OrionTheFox:
+  - rscdel: Removed Loincloths; the Ashwalkers much preferred their own ashen garb
+      anyways.
+  SkyratBot:
+  - balance: Gave the Saints Suit cold protection.
+  - bugfix: Following numerous reports, CentCom has downloaded more RAM into the Orion
+      Trail arcade machines, thus drastically reducing the occurrence of loading screens.
+  - bugfix: Fix cigarettes icon to update properly when extinguished.
+  - bugfix: Fixes an issue with the Ian respawning side of the "Ian Adventure" station
+      trait.
+  - soundadd: Brimdemons have a different laser firing sound.
+  - admin: SDQL2 commands that attempted to _new some very simple datums will no longer
+      runtime.
+  Wallem:
+  - bugfix: Fixes sign language users not being able to sign in space. Fixes the visual
+      indicator when attempting to sign while cuffed.
+  tastyfish:
+  - rscadd: Newscasters, request consoles, and status displays now have a backlight
+      on their displays and emit a soft glow.
+  - imageadd: Updated the newscaster, request console, and status display sprites
+      to work with being emissive.
+  - refactor: Internally refactored status display visual updating, so that it retains
+      state across power loss, etc.
+2022-02-20:
+  SkyratBot:
+  - admin: Facehuggers leaping onto people's faces is now logged in the facehugged's
+      combat logs.
+  - bugfix: Fixed progression traitor uplinks suddenly changing owners when implanted
+      with an uplink implant.
+2022-02-21:
+  Melbert:
+  - bugfix: Void's ritual of knowledge is void path correctly
+  - refactor: The Anomaly Neutralizer uses the effect remover component now
+  - bugfix: Fixes heretic target assignment. They should actually be getting Heads
+      of Staff and such as intended as sacrifice targets.
+  Ryll/Shaps:
+  - admin: asay pings now have their own unique sound instead of sharing the vote
+      prompt sound
+  SkyratBot:
+  - bugfix: arm implants breaking the drop key
+  - balance: The CRAB-17/Nanotrasen Space-Coin Market is now indestructible. Attacking
+      it repulses you back one tile instead. ID cards now instantly swipe on it instead
+      of requiring a progress bar, and ID card holders like PDAs and wallets can also
+      be directly used on it without having to remove IDs. It still blows up when
+      all ID cards with bank accounts have been swiped on it or after 8 minutes.
+  - balance: every modsuit theme can hold more stuff in suit storage
+  - bugfix: Snow will now behave properly inside ruins on IceBox Station.
+  - balance: Paramedics no longer have access to Auxiliary base, the Supermatter engine
+      room (including insuls), the Cargo shuttle, and EVA. Use a Medical MODsuit instead,
+      you lazy bum!
+  - balance: Paramedics now have access to Mining bay.
+  - bugfix: Clown cyborg soaps will no longer bug out after running out of uses
+  - bugfix: fixes smooth movement breaking sometimes
+  - imageadd: For those on the mapping end, the Science Breakroom now has a new area
+      turf sprite, bringing it in line with the likes of Medical and Engineering.
+      Believe me, it helps.
+  - bugfix: Nanotrasen has fixed up the space area surrounding the AI Upload on KiloStation.
+      The cameras should work a bit better now, and the excess lights were removed.
+      You probably won't notice the latter, though.
+  - bugfix: 'TGUI static data loading screens no longer resize the window temporarily.
+      Note: If you are using a UI that gets a lot of these, please make an issue report.'
+  - balance: Malf AIs can detonate their borgs at the robotics console once again.
+  - imageadd: Cytology Lab and two different variations of the Central Hall have had
+      their sprites corrected into splendidly new ones.
+  Stalkeros:
+  - soundadd: Mesa's Glock-17's firing sound is back.
+  Toastgoats:
+  - imageadd: New space dragon sprite!
+  ToryJ for making me code dive:
+  - balance: Nerfed Base Laser damage to 22 from 27
+  - balance: Nerfed the MCR Laser damage to 20.
+  - balance: Made the undercharger no longer give grip bonuses when activated.
+  - balance: Repeater beams do 15 damage each for a total of 30 damage.
+  - balance: Scatter beams do 10 damage each for a total of 30 damage.
+  - balance: Moves the superheater upgrade to an illegal MCR attachments tree.
+  - balance: 'Superheater lasers do 15 damage but still keep 2 firestacks. expansion:
+      Adds Hellfire upgrade in place of superheater, deals 25 damage and has the wound
+      bonuses of hellfire lasers. expansion: Adds a Lance upgrade that gives the MCR
+      the firing delay of 2 seconds however it fires a Heavy Laser beam at twice the
+      projectile speed. expansion: Adds an Illegal Repeater upgrade that does the
+      same damage but has 50 armor penetration. expansion: Adds an Illegal Scatter
+      upgrade that shoots 7 pellets for a total of 45 damage. expansion: Adds an Illegal
+      suppressor upgrade. It suppresses the laser somehow. expansion: Adds two new
+      cargo crates for MCR attachments. expansion: Adds a Clown Tech extension for
+      MCR''s, a bikehorn upgrade that makes you shoot yellow beams of slipping and
+      low stamina damage. expansion: Adds 3 new skins to the MCR.'
+  - balance: Lowers the attachment slots of Advanced Cells to 2 and BS Cells to 3.
+  - balance: Makes loading a new Cell into the MCR take 4 seconds while tactical reloading
+      takes 6 seconds.
+  - balance: Adds a reloading assister attachment that makes loading a cell take 2
+      seconds.
+  - balance: Adds a tac-reload helping attachment that makes tactical reloads 3 seconds.
+  - bugfix: Makes the MCR ammo boxes use their actual sprite.
+  - spellcheck: Fixes some of the comments in the MCR Module.
+  - imageadd: Adds sprites to the afformentioned additions.
+  Wallem:
+  - imageadd: Departmental protolathes/techfabs have colored stripes to tell the departments
+      apart.
+  Zenitheevee:
+  - rscadd: Puts in 5 new crates for Cargo, themed around near-impossible to obtain
+      items for non-chef-accessible personel
+  - code_imp: Removes the bloat cargo file and re-fits its contents into the packs
+      file
+  Zonespace27:
+  - balance: Feather tickling is now a +0 mood bonus instead of a +4
+  - spellcheck: Conflicting message about the HoP managing supply is now corrected.
+  - refactor: Refactored some organic interface update items.
+  - refactor: Refactored yet more organic interface items
+  jjpark-kb:
+  - rscadd: added back bimbo trait/trauma
+  kannthus:
+  - rscadd: Ghost Cafe - Beach Resort
+  malleyeno:
+  - bugfix: Fixed bug where pre-made Ashwalker names were overwritten by a random
+      lizard name.
+  softcerv:
+  - bugfix: High-Heel Jackboots no longer bring up a reskin menu.
+2022-02-22:
+  GoldenAlpharex:
+  - bugfix: Fixed the weird description when you hit the *say hotkey.
+  PositiveEntropy, Naevii:
+  - imageadd: Resprites the Head of Security Greatcoat!
+  - imageadd: Resprites the object icon of the Head of Security Trenchcoat
+  Zonespace27:
+  - rscdel: 'Progression traitors no longer have end-of-round objectives (notably
+      the reputation-requirement objectives), your greentext is guaranteed, folks.
+      qol: Antagonists get a reminder to follow RP rules at roundstart. qol: OPFOR
+      has an action button now.'
+  jjpark-kb:
+  - balance: drones are no longer shy (they are not restricted)
+  - rscadd: added fishing attachments (check misc crafting tab)
+  - balance: doubles strange rock chance in fishing
+  - bugfix: water basins can be upgraded now by journeyman smithies
+  - balance: lowered reagent cap in reagent forging items from 500 to 250
+  - balance: lowered required reagents in reagent forging from 200 to 100
+  - balance: increased the amount of cores required to start reagent forging from
+      3 to 6
+  - balance: reagent weapons will now directly inject the chemicals without snowflake
+      code
+  softcerv:
+  - balance: The CMO Hypospray can now pierce thick clothing.

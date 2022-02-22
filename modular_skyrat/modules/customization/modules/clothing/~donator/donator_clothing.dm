@@ -205,7 +205,7 @@
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	mutant_variants = NONE
 
-//Donation reward for Thedragmeme
+// Donation reward for Thedragmeme
 // might make it have some flavour functionality in future, a'la rewritable piece of paper - JOKES ON YOU I'M MAKING IT DRAW
 /obj/item/canvas/drawingtablet
 	name = "drawing tablet"
@@ -301,7 +301,7 @@
 	icon_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	button_icon_state = "drawingtablet"
 
-//Donation reward for Thedragmeme
+// Donation reward for Thedragmeme
 /obj/item/clothing/suit/furcoat
 	name = "leather coat"
 	desc = "A thick, comfy looking leather coat. It's got some fluffy fur at the collar and sleeves."
@@ -314,7 +314,7 @@
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	mutant_variants = NONE
 
-//Donation reward for Thedragmeme
+// Donation reward for Thedragmeme
 /obj/item/clothing/under/syndicate/tacticool/black
 	name = "black turtleneck"
 	desc = "Tacticool as fug. Comfy too."
@@ -326,7 +326,7 @@
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 5)	//same armor as a greyshirt - DONOR ITEMS ARE PURELY COSMETIC
 	has_sensor = HAS_SENSORS	//Actually has sensors, to balance the new lack of armor
 
-//Donation reward for Thedragmeme
+// Donation reward for Thedragmeme
 /obj/item/clothing/shoes/jackboots/heel
 	name = "high-heeled jackboots"
 	desc = "Almost like regular jackboots... why are they on a high heel?"
@@ -334,8 +334,10 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/feet.dmi'
 	icon_state = "heel-jackboots"
 	mutant_variants = NONE
+	uses_advanced_reskins = FALSE
+	unique_reskin = NONE
 
-//Donation reward for Bloodrite
+// Donation reward for Bloodrite
 /obj/item/clothing/shoes/clown_shoes/britches
 	desc = "The prankster's standard-issue clowning shoes. They look extraordinarily cute. Ctrl-click to toggle waddle dampeners."
 	name = "Britches' shoes"
@@ -345,7 +347,7 @@
 	mutant_variants = NONE
 	resistance_flags = FIRE_PROOF
 
-//Donation reward for Bloodrite
+// Donation reward for Bloodrite
 /obj/item/clothing/under/rank/civilian/clown/britches
 	name = "Britches' dress"
 	desc = "<i>'HONK!' (but cute)</i>"
@@ -355,7 +357,7 @@
 	mutant_variants = NONE
 	resistance_flags = FIRE_PROOF
 
-//Donation reward for Bloodrite
+// Donation reward for Bloodrite
 /obj/item/clothing/mask/gas/britches
 	name = "Britches' mask"
 	desc = "A true prankster's facial attire. Cute."
@@ -370,7 +372,7 @@
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FIRE_PROOF
 
-//Donation reward for Farsighted Nightlight
+// Donation reward for Farsighted Nightlight
 /obj/item/clothing/mask/gas/nightlight
 	name = "FAR-14C IRU"
 	desc = "A close-fitting respirator designed by Forestiian Armories, commonly used by Military and Civilian Personnel alike. It reeks of Militarism."
@@ -388,7 +390,7 @@
 /obj/item/clothing/mask/gas/nightlight/ui_action_click(mob/user, action)
 	adjustmask(user)
 
-//Donation reward for TheOOZ
+// Donation reward for TheOOZ
 /obj/item/clothing/mask/kindle
 	name = "mask of Kindle"
 	desc = "The mask which belongs to Nanotrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material feels like it's made entirely out of inexpensive plastic."
@@ -436,7 +438,7 @@
 	icon_state = "kindle"
 	inhand_icon_state = "kindle"
 
-//Donation reward for Random516
+// Donation reward for Random516
 /obj/item/clothing/head/drake_skull
 	name = "skull of an ashdrake"
 	desc = "How did they get this?"
@@ -447,7 +449,7 @@
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	mutant_variants = NONE
 
-//Donation reward for Random516
+// Donation reward for Random516
 /obj/item/clothing/gloves/fingerless/blutigen_wraps
 	name = "Blutigen wraps"
 	desc = "The one who wears these had everything and yet lost it all..."
@@ -455,7 +457,7 @@
 	icon_state = "blutigen_wraps"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/hands.dmi'
 
-//Donation reward for Random516
+// Donation reward for Random516
 /obj/item/clothing/suit/blutigen_kimono
 	name = "Blutigen kimono"
 	desc = "For the eyes bestowed upon this shall seek adventure..."
@@ -465,7 +467,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	mutant_variants = NONE
 
-//Donation reward for Random516
+// Donation reward for Random516
 /obj/item/clothing/under/custom/blutigen_undergarment
 	name = "Dragon undergarments"
 	desc = "The Dragon wears the sexy?"
@@ -479,13 +481,13 @@
 	var/list/spans = list()
 	actions_types = list(/datum/action/item_action/hypno_whisper)
 
-//Donation reward for CoffeePot
+// Donation reward for CoffeePot
 /obj/item/clothing/gloves/ring/hypno/coffeepot
 	name = "hypnodemon's ring"
 	desc = "A pallid, softly desaturated-looking gold ring that doesn't look like it belongs. It's hard to put one's finger on why it feels at odds with the world around it - the shine coming off it looks like it could be a mismatch with the lighting in the room, or it could be that it seems to glint and twinkle occasionally when there's no obvious reason for it to - though only when you're not really looking."
 	spans = list("velvet")
 
-//Donation reward for Bippys
+// Donation reward for Bippys
 /obj/item/clothing/gloves/ring/hypno/bippys
 	name = "hypnobot hexnut"
 	desc = "A silver bolt component that once belonged to a very peculiar IPC. It's large enough to be worn as a ring on nearly any finger, and is said to amplify the voice of one's mind to another's in the softness of a Whisper..."
@@ -505,7 +507,7 @@
 		return
 	user.whisper(message, spans = spans)
 
-//Donation reward for SlippyJoe
+// Donation reward for SlippyJoe
 /obj/item/clothing/head/avipilot
 	name = "smuggler's flying cap"
 	desc = "Shockingly, despite space winds, and the lack of any practicality, this pilot cap seems to be fairly well standing, there's a rabbit head seemingly stamped into the side of it."
@@ -542,7 +544,7 @@
 /obj/item/clothing/head/avipilot/attack_self(mob/living/carbon/user)
 	adjust_goggles(user)
 
-//Donation reward for NetraKyram
+// Donation reward for NetraKyram
 /obj/item/clothing/under/custom/kilano
 	name = "black and gold dress uniform"
 	desc = "A light black and gold dress made out some sort of silky material."
@@ -552,7 +554,7 @@
 	mutant_variants = NONE
 	fitted = FEMALE_UNIFORM_TOP
 
-//Donation reward for NetraKyram
+// Donation reward for NetraKyram
 /obj/item/clothing/gloves/kilano
 	name = "black and gold gloves"
 	desc = "Some black and gold gloves, It seems like they're made to match something."
@@ -560,7 +562,7 @@
 	icon_state = "kilanogloves"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/hands.dmi'
 
-//Donation reward for NetraKyram
+// Donation reward for NetraKyram
 /obj/item/clothing/shoes/winterboots/kilano
 	name = "black and gold boots"
 	desc = "Some heavy furred boots, why would you need fur on a space station? Seems redundant."
@@ -571,7 +573,7 @@
 
 
 /****************LEGACY REWARDS***************/
-//Donation reward for inferno707
+// Donation reward for inferno707
 /obj/item/clothing/neck/cloak/inferno
 	name = "Kiara's cloak"
 	desc = "The design on this seems a little too familiar."
@@ -581,7 +583,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 
-//Donation reward for inferno707
+// Donation reward for inferno707
 /obj/item/clothing/neck/inferno_collar
 	name = "Kiara's collar"
 	desc = "A soft black collar that seems to stretch to fit whoever wears it."
@@ -605,7 +607,7 @@
 	if(tagname)
 		name = "[initial(name)] - [tagname]"
 
-//Donation reward for inferno707
+// Donation reward for inferno707
 /obj/item/clothing/accessory/medal/steele
 	name = "Insignia Of Steele"
 	desc = "An intricate pendant given to those who help a key member of the Steele Corporation."
@@ -613,7 +615,7 @@
 	icon_state = "steele"
 	medaltype = "medal-silver"
 
-//Donation reward for inferno707
+// Donation reward for inferno707
 /obj/item/toy/darksabre
 	name = "Kiara's sabre"
 	desc = "This blade looks as dangerous as its owner."
@@ -626,7 +628,7 @@
 /obj/item/toy/darksabre/get_belt_overlay()
 	return mutable_appearance('modular_skyrat/master_files/icons/donator/obj/custom.dmi', "darksheath-darksabre")
 
-//Donation reward for inferno707
+// Donation reward for inferno707
 /obj/item/storage/belt/sabre/darksabre
 	name = "ornate sheathe"
 	desc = "An ornate and rather sinister looking sabre sheathe."
@@ -645,7 +647,7 @@
 	new /obj/item/toy/darksabre(src)
 	update_icon()
 
-//Donation reward for inferno707
+// Donation reward for inferno707
 /obj/item/clothing/suit/armor/vest/darkcarapace
 	name = "dark armor"
 	desc = "A dark, non-functional piece of armor sporting a red and black finish."
@@ -657,7 +659,7 @@
 	mutant_variants = NONE
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 0, "acid" = 0)
 
-//Donation reward for inferno707
+// Donation reward for inferno707
 /obj/item/clothing/mask/hheart
 	name = "Hollow Heart"
 	desc = "It's an odd ceramic mask. Set in the internal side are several suspicious electronics branded by Steele Tech."
@@ -699,7 +701,7 @@
 		ooser.update_action_buttons_icon()
 		to_chat(ooser, span_notice("You toggle the [src] to [possible_colors[c_color_index]]."))
 
-//Donation reward for asky / Zulie
+// Donation reward for asky / Zulie
 /obj/item/clothing/suit/hooded/cloak/zuliecloak
 	name = "Project: Zul-E"
 	desc = "A standard version of a prototype cloak given out by Nanotrasen higher ups. It's surprisingly thick and heavy for a cloak despite having most of it's tech stripped. It also comes with a bluespace trinket which calls it's accompanying hat onto the user. A worn inscription on the inside of the cloak reads 'Fleuret' ...the rest is faded away."
@@ -720,7 +722,7 @@
 	flags_inv = null
 	mutant_variants = NONE
 
-//Donation reward for Lyricalpaws
+// Donation reward for Lyricalpaws
 /obj/item/clothing/neck/cloak/healercloak
 	name = "legendary healer's cloak"
 	desc = "Worn by the most skilled professional medics on the station, this legendary cloak is only attainable by becoming the pinnacle of healing. This status symbol represents the wearer has spent countless years perfecting their craft of helping the sick and wounded."
@@ -728,7 +730,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
 
-//Donation reward for Kathrin Bailey / Floof Ball
+// Donation reward for Kathrin Bailey / Floof Ball
 /obj/item/clothing/under/custom/lannese
 	name = "Lannese dress"
 	desc = "An alien cultural garment for women, coming from a distant planet named Cantalan."
@@ -747,7 +749,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|FEET
 
-//Donation reward for Hacker T.Dog
+// Donation reward for Hacker T.Dog
 /obj/item/clothing/suit/scraparmour
 	name = "scrap armour"
 	desc = "A shoddily crafted piece of armour. It provides no benefit apart from being clunky."
@@ -757,7 +759,7 @@
 	worn_icon_state = "scraparmor"
 	body_parts_covered = CHEST
 
-//Donation reward for Enzoman
+// Donation reward for Enzoman
 /obj/item/clothing/mask/luchador/enzo
 	name = "mask of El Red Templar"
 	desc = "A mask belonging to El Red Templar, a warrior of lucha. Taking it from him is not recommended."
@@ -768,7 +770,7 @@
 	clothing_flags = MASKINTERNALS
 	mutant_variants = NONE
 
-//Donation Reward for Grand Vegeta
+// Donation Reward for Grand Vegeta
 /obj/item/clothing/under/mikubikini
 	name = "starlight singer bikini"
 	desc = " "
@@ -779,7 +781,7 @@
 	body_parts_covered = CHEST|GROIN
 	fitted = FEMALE_UNIFORM_TOP
 
-//Donation Reward for Grand Vegeta
+// Donation Reward for Grand Vegeta
 /obj/item/clothing/suit/mikujacket
 	name = "starlight singer jacket"
 	desc = " "
@@ -788,7 +790,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	worn_icon_state = "mikujacket"
 
-//Donation Reward for Grand Vegeta
+// Donation Reward for Grand Vegeta
 /obj/item/clothing/head/mikuhair
 	name = "starlight singer hair"
 	desc = " "
@@ -798,7 +800,7 @@
 	worn_icon_state = "mikuhair"
 	flags_inv = HIDEHAIR
 
-//Donation Reward for Grand Vegeta
+// Donation Reward for Grand Vegeta
 /obj/item/clothing/gloves/mikugloves
 	name = "starlight singer gloves"
 	desc = " "
@@ -807,7 +809,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/hands.dmi'
 	worn_icon_state = "mikugloves"
 
-//Donation Reward for Grand Vegeta
+// Donation Reward for Grand Vegeta
 /obj/item/clothing/shoes/sneakers/mikuleggings
 	name = "starlight singer leggings"
 	greyscale_config = null
@@ -970,7 +972,7 @@
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
-//Donation reward for GoldenAlpharex
+// Donation reward for GoldenAlpharex
 /obj/item/clothing/glasses/welding/goldengoggles
 	name = "steampunk goggles"
 	desc = "This really feels like something you'd expect to see sitting on top of a certain ginger's head... They have a rather fancy brass trim around the lenses."
@@ -1101,7 +1103,7 @@
 
 // End of the code for GoldenAlpharex's donator item :^)
 
-//Donation reward for MyGuy49
+// Donation reward for MyGuy49
 /obj/item/clothing/suit/cloak/ashencloak
 	name = "ashen wastewalker cloak"
 	desc = "A cloak of advanced make. Clearly beyond what ashwalkers are capable of, it was probably pulled from a downed vessel or something. It seems to have been reinforced with goliath hide and watcher sinew, and the hood has been torn off."
@@ -1111,7 +1113,7 @@
 	body_parts_covered = CHEST|LEGS|ARMS
 	mutant_variants = NONE
 
-//Donation reward for Hacker T.Dog
+// Donation reward for Hacker T.Dog
 /obj/item/clothing/head/nanotrasen_representative/hubert
 	name = "CC ensign's cap"
 	desc = "A tailor made peaked cap, denoting the rank of Ensign."
@@ -1119,7 +1121,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "CCofficerhat"
 
-//Donation reward for Hacker T.Dog
+// Donation reward for Hacker T.Dog
 /obj/item/clothing/suit/armor/vest/nanotrasen_representative/hubert
 	name = "CC ensign's armoured vest"
 	desc = "A tailor made Ensign's armoured vest, providing the same protection - but in a more stylish fashion."
@@ -1127,7 +1129,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "CCvest"
 
-//Donation reward for Hacker T.Dog
+// Donation reward for Hacker T.Dog
 /obj/item/clothing/under/rank/nanotrasen_representative/hubert
 	name = "CC ensign's uniform"
 	desc = "A tailor-made Ensign's uniform, various medals and chains hang down from it."
@@ -1135,7 +1137,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "CCofficer"
 
-//Donation reward for Cherno_00
+// Donation reward for Cherno_00
 /obj/item/clothing/head/ushanka/frosty
 	name = "blue ushanka"
 	desc = "A dark blue ushanka with a hand-stitched snowflake on the front. Cool to the touch."
@@ -1145,7 +1147,7 @@
 	upsprite = "fushankaup"
 	downsprite = "fushankadown"
 
-//Donation reward for M97screwsyourparents
+// Donation reward for M97screwsyourparents
 /obj/item/clothing/neck/cross
 	name = "silver cross"
 	desc = "A silver cross to be worn on a chain around your neck. Certain to bring you favour from up above."
@@ -1153,7 +1155,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
 	icon_state = "cross"
 
-//Donation reward for gamerguy14948
+// Donation reward for gamerguy14948
 /obj/item/storage/belt/fannypack/occult
 	name = "trinket belt"
 	desc = "A belt covered in various trinkets collected through time. Doesn't look like there's much space for anything else nowadays."
@@ -1162,7 +1164,7 @@
 	icon_state = "occultfannypack"
 	worn_icon_state = "occultfannypack"
 
-//Donation reward for gamerguy14948
+// Donation reward for gamerguy14948
 /obj/item/clothing/under/occult
 	name = "occult collector's outfit"
 	desc = "A set of clothes fit for someone dapper that isn't afraid of getting dirty."
@@ -1171,7 +1173,7 @@
 	icon_state = "occultoutfit"
 	mutant_variants = NONE
 
-//Donation reward for gamerguy14948
+// Donation reward for gamerguy14948
 /obj/item/clothing/head/hooded/occult
 	name = "hood"
 	desc = "Certainly makes you look more ominous."
@@ -1181,7 +1183,7 @@
 	mutant_variants = NONE
 	dynamic_hair_suffix = "+generic"
 
-//Donation reward for gamerguy14948
+// Donation reward for gamerguy14948
 /obj/item/clothing/suit/hooded/occult
 	name = "occult collector's coat"
 	desc = "A big, heavy coat lined with leather and ivory cloth, adorned with a hood. It looks dusty."
@@ -1191,7 +1193,7 @@
 	hoodtype = /obj/item/clothing/head/hooded/occult
 	mutant_variants = NONE
 
-//Donation reward for gamerguy14948
+// Donation reward for gamerguy14948
 /obj/item/toy/plush/donator/voodoo
 	name = "voodoo doll"
 	desc = "A not so small voodoo doll made out of cut and sewn potato bags. It almost looks cute."
@@ -1207,7 +1209,7 @@
 	worn_icon_vox = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask_vox.dmi'
 	icon_state = "death"
 
-//Donation reward for 1ceres
+// Donation reward for 1ceres
 /obj/item/clothing/glasses/rosecolored
 	name = "rose-colored glasses"
 	desc = "Goggle-shaped glasses that seem to have a HUD-like feed in some odd line-based script. It doesn’t look like they were made by NT."
@@ -1254,7 +1256,7 @@
 		if(!isnull(choice))
 			name = "license to [choice]"
 
-//Donation reward for 1ceres
+// Donation reward for 1ceres
 /obj/item/sequence_scanner/korpstech
 	name = "Korpstech genetics scanner"
 	desc = "A hand-held sequence scanner for analyzing someone's gene sequence on the fly. This one is bright pink and has some kind of Helix shape on its back."
@@ -1266,7 +1268,7 @@
 	righthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_right.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
 
-//Donation reward for 1ceres
+// Donation reward for 1ceres
 /obj/item/poster/korpstech
 	name = "Korps Genetics poster"
 	poster_type = /obj/structure/sign/poster/contraband/korpstech
@@ -1277,7 +1279,7 @@
 	desc = "This poster bears a huge, pink helix on it, with smaller text underneath it that reads 'The Korps institute, advancing the Genetics field since 2423!'"
 	icon_state = "korpsposter"
 
-//Donation reward for Kay-Nite
+// Donation reward for Kay-Nite
 /obj/item/clothing/glasses/eyepatch/rosecolored
 	name = "rose-colored eyepatch"
 	desc = "A customized eyepatch with a bright pink HUD floating in front of it. It looks like there's more to it than just an eyepatch, considering the materials it's made of."
@@ -1285,7 +1287,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
 	icon_state = "rosepatch"
 
-//Donation reward for Cimika
+// Donation reward for Cimika
 /obj/item/clothing/suit/toggle/labcoat/tenrai
 	name = "Tenrai labcoat"
 	desc = "A labcoat crafted from a variety of pristine materials, sewn together with a frightening amount of skill. The fabric is aery, smooth as silk, and exceptionally pleasant to the touch. The golden stripes are visible in the dark, working as a beacon to the injured. A small label on the inside of it reads \"Tenrai Kitsunes Supremacy\"."
@@ -1306,3 +1308,22 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
 	icon_state = "larpswat"
 	mutant_variants = NONE
+
+// Donation reward for Cimika, on behalf of tf4
+/obj/item/clothing/neck/fishpendant
+	name = "fish necklace"
+	desc = "A simple, silver necklace with a blue tuna pendant.\n\"L. Alazawi\" is inscribed on the back. You get the feeling it would go well with potatoes and green beans."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/necklaces.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
+	icon_state = "fishpendant"
+
+// Donation reward for Weredoggo
+/obj/item/hairbrush/tactical
+	name = "tactical hairbrush"
+	desc = "Sometimes, after a brush with death, a good grooming is just the thing for tactical stress relief. "
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_right.dmi'
+	icon_state = "tacticalbrush"
+	inhand_icon_state = "tacticalbrush"
+

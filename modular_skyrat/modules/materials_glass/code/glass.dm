@@ -216,6 +216,9 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	. = ..()
 	. += GLOB.titaniumglass_recipes
 
+/obj/item/stack/sheet/titaniumglass/fifty
+	amount = 50
+
 /obj/item/stack/sheet/plastitaniumglass
 	name = "plastitanium glass"
 	desc = "A glass sheet made out of a plasma-titanium-silicate alloy."
