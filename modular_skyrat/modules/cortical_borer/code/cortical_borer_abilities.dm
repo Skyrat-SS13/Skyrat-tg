@@ -884,37 +884,21 @@
 		return
 	switch(ability_choice)
 		if("Produce Offspring")
-			if(locate(/datum/action/cooldown/produce_offspring) in cortical_owner.known_abilities)
-				to_chat(cortical_owner, span_warning("You already have this ability!"))
-				cortical_owner.stat_evolution += 2
-				return
 			var/datum/action/attack_action = new /datum/action/cooldown/produce_offspring()
 			attack_action.Grant(cortical_owner)
 			cortical_owner.known_abilities += /datum/action/cooldown/produce_offspring
 			return
 		if("Learn Chemical from Blood")
-			if(locate(/datum/action/cooldown/learn_bloodchemical) in cortical_owner.known_abilities)
-				to_chat(cortical_owner, span_warning("You already have this ability!"))
-				cortical_owner.stat_evolution += 2
-				return
 			var/datum/action/attack_action = new /datum/action/cooldown/learn_bloodchemical()
 			attack_action.Grant(cortical_owner)
 			cortical_owner.known_abilities += /datum/action/cooldown/learn_bloodchemical
 			return
 		if("Revive Host")
-			if(locate(/datum/action/cooldown/revive_host) in cortical_owner.known_abilities)
-				to_chat(cortical_owner, span_warning("You already have this ability!"))
-				cortical_owner.stat_evolution += 2
-				return
 			var/datum/action/attack_action = new /datum/action/cooldown/revive_host()
 			attack_action.Grant(cortical_owner)
 			cortical_owner.known_abilities += /datum/action/cooldown/revive_host
 			return
 		if("Willing Host")
-			if(locate(/datum/action/cooldown/willing_host) in cortical_owner.known_abilities)
-				to_chat(cortical_owner, span_warning("You already have this ability!"))
-				cortical_owner.stat_evolution += 2
-				return
 			var/datum/action/attack_action = new /datum/action/cooldown/willing_host()
 			attack_action.Grant(cortical_owner)
 			cortical_owner.known_abilities += /datum/action/cooldown/willing_host
