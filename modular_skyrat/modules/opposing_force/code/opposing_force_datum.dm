@@ -18,6 +18,10 @@
 	opposing_force_equipment = null
 	return ..()
 
+/// Called when the gear is issued, use for unique services (e.g. a power outage) that don't have an item
+/datum/opposing_force_equipment/proc/on_issue(mob/living/target)
+	return
+
 /datum/opposing_force_objective
 	/// The name of the objective
 	var/title = ""
@@ -186,6 +190,7 @@
 				"name" = opfor_equipment.name,
 				"description" = opfor_equipment.description,
 				"equipment_category" = opfor_equipment.category,
+				"admin_note" = opfor_equipment.admin_note,
 			))
 		data["equipment_list"] += list(list(
 			"category" = equipment_category,
@@ -204,6 +209,7 @@
 			"reason" = equipment.reason,
 			"denied_reason" = equipment.denied_reason,
 			"count" = equipment.count,
+			"admin_note" = equipment.opposing_force_equipment.admin_note,
 			)
 		data["selected_equipment"] += list(equipment_data)
 
@@ -432,7 +438,10 @@
 		if(iterating_equipment.status != OPFOR_EQUIPMENT_STATUS_APPROVED)
 			continue
 		for(var/i in 1 to iterating_equipment.count)
-			new iterating_equipment.opposing_force_equipment.item_type(spawned_box)
+			if(!istype(iterating_equipment.opposing_force_equipment.item_type, /obj/effect/gibspawner/generic)) // This is what's used in place of an item in uplinks, so it's the same here
+				new iterating_equipment.opposing_force_equipment.item_type(spawned_box)
+			iterating_equipment.opposing_force_equipment.on_issue(target)
+
 	if(ishuman(target))
 		var/mob/living/carbon/human/human = target
 		human.put_in_hands(spawned_box)
@@ -841,3 +850,21 @@
 			report += "<br>"
 
 	return report.Join("\n")
+
+/datum/action/opfor
+	name = "Open Opposing Force Panel"
+	button_icon_state = "round_end"
+
+/datum/action/opfor/Trigger(trigger_flags)
+	. = ..()
+	if(!.)
+		return
+	owner.opposing_force()
+
+/datum/action/opfor/IsAvailable()
+	if(!target)
+		return FALSE
+	. = ..()
+	if(!.)
+		return
+	return TRUE

@@ -89,13 +89,6 @@
 	if(hud_used?.action_intent)
 		hud_used.action_intent.update_appearance()
 	//SKYRAT EDIT ADDITION BEGIN
-	if(istype(get_active_held_item(), /obj/item/gun))
-		var/obj/item/gun/G = get_active_held_item()
-		if(G.has_gun_safety)
-			if(combat_mode)
-				G.toggle_safety(src, "off")
-			else
-				G.toggle_safety(src, "on")
 	if(!ishuman(src) && !ckey)
 		if(combat_mode)
 			set_combat_indicator(TRUE)

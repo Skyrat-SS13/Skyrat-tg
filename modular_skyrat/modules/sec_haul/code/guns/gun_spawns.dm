@@ -85,7 +85,7 @@
 	gun_count = 2
 	guns = list(
 		/obj/item/gun/ballistic/automatic/ar,
-		/obj/item/gun/ballistic/automatic/assault_rifle/m16,
+		/obj/item/gun/ballistic/automatic/m16,
 		/obj/item/gun/ballistic/automatic/cfa_rifle,
 	)
 
