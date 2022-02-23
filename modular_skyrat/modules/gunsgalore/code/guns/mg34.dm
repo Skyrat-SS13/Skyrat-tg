@@ -9,7 +9,7 @@
 	base_icon_state = "mg34"
 	worn_icon_state = "mg34"
 	inhand_icon_state = "mg34"
-	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg34_fire.ogg'
+	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg42_fire.ogg'
 	rack_sound = 'sound/weapons/gun/l6/l6_rack.ogg'
 	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
 	fire_sound_volume = 70
@@ -113,9 +113,9 @@
 	icon_state = "mg42"
 	base_icon_state = "mg42"
 	fire_sound_volume = 100
-	spread = 12
 	fire_delay = 0.5
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg42_fire.ogg'
+	mag_type = /obj/item/ammo_box/magazine/mg42
 	/// If we are resting, the bipod is deployed.
 	var/bipod_deployed = FALSE
 	/// How hot the barrel is, 0 - 100
@@ -163,10 +163,10 @@
 	SIGNAL_HANDLER
 	if(resting)
 		bipod_deployed = TRUE
-		spread = SPREAD_DEPLOYED
+		base_spread = SPREAD_DEPLOYED
 	else
 		bipod_deployed = FALSE
-		spread = SPREAD_UNDEPLOYED
+		base_spread = SPREAD_UNDEPLOYED
 	playsound(src, 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg42_bipod.ogg', 100)
 	balloon_alert_to_viewers("bipod [bipod_deployed ? "deployed" : "undeployed"]!")
 	update_overlays()
@@ -178,7 +178,7 @@
 	barrel_heat += HEAT_PER_SHOT
 	if(barrel_heat >= 100)
 		overheated = TRUE
-		playsound(src, 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg42_overheat.ogg', 100)
+		playsound(src, 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg_overheat.ogg', 100)
 		addtimer(CALLBACK(src, .proc/reset_overheat), TIME_TO_COOLDOWN)
 	update_overlays()
 
@@ -208,5 +208,5 @@
 	icon_state = "mg42_drum"
 	ammo_type = /obj/item/ammo_casing/realistic/a792x57
 	caliber = "a792x57"
-	max_ammo = 250
+	max_ammo = 250 // It's a lot, but the gun overheats.
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
