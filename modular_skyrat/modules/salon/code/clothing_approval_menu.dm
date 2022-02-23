@@ -67,10 +67,14 @@
 	switch(action)
 		if("approve_pattern")
 			clothing_datum.approve_pattern()
+			message_admins("[key_name(holder)] approved the pattern [clothing_datum.name]. (ID #[clothing_datum.id])")
+			log_game("[key_name(holder)] approved the pattern [clothing_datum.name]. (ID #[clothing_datum.id])")
 			load_next_pattern()
 			. = TRUE
 		if("deny_pattern")
 			clothing_datum.ban_pattern()
+			message_admins("[key_name(holder)] denied the pattern [clothing_datum.name]. (ID #[clothing_datum.id])")
+			log_game("[key_name(holder)] denied the pattern [clothing_datum.name]. (ID #[clothing_datum.id])")
 			load_next_pattern()
 			. = TRUE
 		if("rotate")
