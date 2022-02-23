@@ -1435,7 +1435,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		if(!user.dna.species.attack_sound)
 			attack_sound = get_sfx("punch")
 		else
-			attack_sound = species.attack_sound
+			attack_sound = user.dna.species.attack_sound
 		playsound(target.loc, attack_sound, 25, TRUE, -1)
 		// SKYRAT EDTI END
 
