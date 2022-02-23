@@ -4,7 +4,6 @@
 /obj/item/crowbar
 	icon = 'modular_skyrat/modules/aesthetics/tools/tools.dmi'
 
-
 /obj/item/crowbar/power
 	lefthand_file = 'modular_skyrat/modules/aesthetics/tools/tools_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/tools/tools_righthand.dmi'
