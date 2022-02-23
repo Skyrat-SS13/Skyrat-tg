@@ -7,13 +7,13 @@
 	idle_power_usage = 2
 	active_power_usage = 500
 	density = TRUE
-	var/obj/item/stack/sheet/cloth/cloth_to_use
+	var/obj/item/stack/sheet/cloth_to_use
 	var/obj/item/pattern_kit/pattern_kit_to_use
 	var/operating = FALSE
 
 /obj/machinery/sewing_machine/attackby(obj/item/weapon, mob/user, params)
 	. = ..()
-	if(istype(weapon, /obj/item/stack/sheet/cloth) && !cloth_to_use)
+	if((istype(weapon, /obj/item/stack/sheet/cloth) || istype(weapon, /obj/item/stack/sheet/durathread)) && !cloth_to_use)
 		user.balloon_alert(user, "inserted [weapon]")
 		cloth_to_use = weapon
 		weapon.forceMove(src)
@@ -48,13 +48,15 @@
 		if(!operating || !pattern_kit_to_use || !cloth_to_use)
 			user.balloon_alert(user, "cancelled!")
 			return
-		pattern_kit_to_use.forceMove(get_turf(src))
+		var/armored = FALSE
+		if(istype(cloth_to_use, /obj/item/stack/sheet/durathread))
+			armored = TRUE // durathread used
 		cloth_to_use.use(1)
 		if(QDELETED(cloth_to_use))
-			user.balloon_alert(user, "out of cloth")
+			user.balloon_alert(user, "out of cloth/durathread")
 			cloth_to_use = null
 		else
-			user.balloon_alert(user, "[cloth_to_use.amount] cloth left")
+			user.balloon_alert(user, "[cloth_to_use.amount] [cloth_to_use] left")
 
 		var/list/clothing_map = list(
 			"Back" = /obj/item/storage/backpack,
@@ -68,6 +70,16 @@
 			"Shoes" = /obj/item/clothing/shoes,
 			"Suit" = /obj/item/clothing/suit,
 			"Jumpsuit" = /obj/item/clothing/under,
+		)
+		var/list/clothing_armor_map = list(
+			"Hat" = HEAD,
+			"Suit" = CHEST,
+			"Jumpsuit" = CHEST|GROIN|LEGS|ARMS,
+		)
+		var/list/clothing_armor_values = list(
+			"Hat" = list(MELEE = 20, BULLET = 10, LASER = 30, ENERGY = 40, BOMB = 15, BIO = 0, FIRE = 40, ACID = 50, WOUND = 5),
+			"Suit" = list(MELEE = 20, BULLET = 10, LASER = 30, ENERGY = 40, BOMB = 15, BIO = 0, FIRE = 40, ACID = 50),
+			"Jumpsuit" = list(MELEE = 10, LASER = 10, FIRE = 40, ACID = 10, BOMB = 5),
 		)
 		var/list/slot_match = list(
 			"Back" = ITEM_SLOT_BACK,
@@ -88,6 +100,9 @@
 		clothing_made.name = pattern_kit_to_use.clothing_datum.name
 		clothing_made.desc = pattern_kit_to_use.clothing_datum.desc
 		clothing_made.icon = new /icon(file("data/clothing_icons/[pattern_kit_to_use.clothing_datum.id].dmi"))
+		if((pattern_kit_to_use.clothing_datum.slot in clothing_armor_map) && armored)
+			clothing_made.armor = getArmor(arglist(clothing_armor_values[pattern_kit_to_use.clothing_datum.slot]))
+			clothing_made.body_parts_covered = clothing_armor_map[pattern_kit_to_use.clothing_datum.slot]
 		if(pattern_kit_to_use.clothing_datum.slot == "Jumpsuit")
 			var/icon/onmob_icon = new(clothing_made.icon, "onmob")
 			var/icon/stupid_fucking_jumpsuit_icon_bug = icon()
