@@ -1,8 +1,13 @@
 /datum/opposing_force_equipment/gun
 	category = OPFOR_EQUIPMENT_CATEGORY_RANGED_WEAPONS
+
 /datum/opposing_force_equipment/gun/m1911
 	item_type = /obj/item/gun/ballistic/automatic/pistol/m1911
 	description = "A semi-automatic .45 caliber pistol. Gold standard for sidearms."
+
+/datum/opposing_force_equipment/gun/luger
+	item_type = /obj/item/gun/ballistic/automatic/pistol/luger
+	description = "An iconic semi-automatic pistol chambered in 9mm. It takes makarov magazines."
 
 /datum/opposing_force_equipment/gun/m16
 	item_type = /obj/item/gun/ballistic/automatic/m16
@@ -49,10 +54,6 @@
 	item_type = /obj/item/gun/ballistic/automatic/stg
 	admin_note = "WARNING: This weapon is extremely powerful, firing a 4 round burst of 40 damage bullets."
 
-/datum/opposing_force_equipment/gun/stgm
-	item_type = /obj/item/gun/ballistic/automatic/stg/modern
-	admin_note = "WARNING: This weapon is extremely powerful, firing a 4 round burst of 40 damage bullets. The modern version features 20% reduced fire delay."
-
 /datum/opposing_force_equipment/gun/fg42
 	item_type = /obj/item/gun/ballistic/automatic/fg42
 	admin_note = "WARNING: This weapon is extremely powerful, firing a 2 round burst of 45 damage bullets."
@@ -64,6 +65,10 @@
 
 /datum/opposing_force_equipment/gun/mg34
 	item_type = /obj/item/gun/ballistic/automatic/mg34
+	admin_note = "WARNING: This weapon is extremely powerful, being a fully-automatic light machine gun firing 45 damage bullets."
+
+/datum/opposing_force_equipment/gun/mg42
+	item_type = /obj/item/gun/ballistic/automatic/mg34/mg42
 	admin_note = "WARNING: This weapon is extremely powerful, being a fully-automatic light machine gun firing 45 damage bullets."
 
 /datum/opposing_force_equipment/gun/cfa

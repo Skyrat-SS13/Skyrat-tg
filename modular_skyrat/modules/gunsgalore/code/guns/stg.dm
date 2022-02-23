@@ -1,7 +1,7 @@
 /obj/item/gun/ballistic/automatic/stg
-	name = "\improper StG-44"
-	desc = "A reproduction of a German infantry rifle chambered in 7.92mm. An attempt to put rifle-cartridge automatic weapons outside the hands of machine gunners, it was almost the first select-fire rifle. Almost."
-	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns.dmi'
+	name = "\improper Armadyne StG-45"
+	desc = "A reproduction of the Sturmgewehr 44 German infantry rifle chambered in 7.92mm, manufactured by the Oldarms division of the Armadyne Corporation."
+	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns40x32.dmi'
 	icon_state = "stg"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_righthand.dmi'
@@ -32,13 +32,4 @@
 	caliber = "a792x33"
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
-
-
-/obj/item/gun/ballistic/automatic/stg/modern
-	name = "\improper StG-560"
-	desc = "A modernized reproduction of the StG-44, full of aftermarket parts that barely make it perform any better. Looks like it's out of the videogame Return to Fortress Dogenstein."
-	icon_state = "stg_modern"
-	inhand_icon_state = "stg"
-	worn_icon_state = "stg"
-	fire_delay = 1.2
 

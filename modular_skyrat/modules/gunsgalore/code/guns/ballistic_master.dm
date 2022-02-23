@@ -211,6 +211,8 @@
 	new /obj/item/ammo_box/magazine/pps(src)
 	new /obj/item/gun/ballistic/automatic/mg34/mg42(src)
 	new /obj/item/ammo_box/magazine/mg42(src)
+	new /obj/item/gun/ballistic/automatic/pistol/luger(src)
+	new /obj/item/ammo_box/magazine/m9mm(src)
 
 /obj/effect/temp_visual/dir_setting/firing_effect
 	light_system = MOVABLE_LIGHT

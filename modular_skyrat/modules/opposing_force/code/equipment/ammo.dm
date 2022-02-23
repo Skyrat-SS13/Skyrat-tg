@@ -39,6 +39,9 @@
 /datum/opposing_force_equipment/ammo/mg34
 	item_type = /obj/item/ammo_box/magazine/mg34
 
+/datum/opposing_force_equipment/ammo/mg42
+	item_type = /obj/item/ammo_box/magazine/mg42
+
 /datum/opposing_force_equipment/ammo/cm762
 	item_type = /obj/item/ammo_box/magazine/cm762
 	description = "7.62 bullets in a ten round magazine for Cantanheim 7.62 rifle."

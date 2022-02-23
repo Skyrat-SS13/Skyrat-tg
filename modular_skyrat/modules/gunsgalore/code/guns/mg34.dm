@@ -97,21 +97,24 @@
 	magazine.top_off()
 
 /// BIGGER BROTHER
-#define SPREAD_UNDEPLOYED 12
+#define SPREAD_UNDEPLOYED 17
 #define SPREAD_DEPLOYED 6
 #define HEAT_PER_SHOT 1.5
 #define TIME_TO_COOLDOWN 20 SECONDS
-#define BARREL_COOLDOWN_RATE 3
+#define BARREL_COOLDOWN_RATE 2
 
 /obj/item/gun/ballistic/automatic/mg34/mg42
-	name = "\improper MG-42"
-	desc = "An updated version of the German MG-42 machine gun chambered in 7.92 Mauser, it has a bipod for better stability when deployed."
+	name = "\improper Armadyne MG-9V GPMG"
+	desc = "An updated version of the German Maschinengewehr 42 machine gun chambered in 7.92 Mauser, it has a bipod for better stability when deployed. It is a reproduction manufactured by the Oldarms division of the Armadyne Corporation."
 	icon_state = "mg42"
 	base_icon_state = "mg42"
+	worn_icon_state = "mg42"
+	inhand_icon_state = "mg42"
 	fire_sound_volume = 100
 	fire_delay = 0.5
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg42_fire.ogg'
 	mag_type = /obj/item/ammo_box/magazine/mg42
+	spread = SPREAD_UNDEPLOYED
 	/// If we are resting, the bipod is deployed.
 	var/bipod_deployed = FALSE
 	/// How hot the barrel is, 0 - 100
@@ -127,6 +130,7 @@
 /obj/item/gun/ballistic/automatic/mg34/mg42/process(delta_time)
 	if(barrel_heat > 0)
 		barrel_heat -= BARREL_COOLDOWN_RATE * delta_time
+		update_appearance()
 
 /obj/item/gun/ballistic/automatic/mg34/mg42/examine(mob/user)
 	. = ..()
@@ -136,7 +140,7 @@
 		if(75 to INFINITY)
 			. += span_warning("The barrel looks moulten!")
 	if(overheated)
-		. += span_danger("The barrel is overheated!")
+		. += span_danger("It is heatlocked!")
 
 /obj/item/gun/ballistic/automatic/mg34/mg42/can_shoot()
 	if(cover_open)
@@ -144,6 +148,7 @@
 		return FALSE
 	if(overheated)
 		balloon_alert_to_viewers("overheated!")
+		shoot_with_empty_chamber()
 		return FALSE
 	return chambered
 
@@ -154,6 +159,9 @@
 /obj/item/gun/ballistic/automatic/mg34/mg42/dropped(mob/user)
 	. = ..()
 	UnregisterSignal(user, COMSIG_LIVING_UPDATED_RESTING)
+	bipod_deployed = FALSE
+	base_spread = SPREAD_UNDEPLOYED
+	update_appearance()
 
 /obj/item/gun/ballistic/automatic/mg34/mg42/proc/deploy_bipod(datum/datum_source, resting)
 	SIGNAL_HANDLER
@@ -165,7 +173,7 @@
 		base_spread = SPREAD_UNDEPLOYED
 	playsound(src, 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg42_bipod.ogg', 100)
 	balloon_alert_to_viewers("bipod [bipod_deployed ? "deployed" : "undeployed"]!")
-	update_overlays()
+	update_appearance()
 
 /obj/item/gun/ballistic/automatic/mg34/mg42/proc/process_heat()
 	SIGNAL_HANDLER
@@ -176,11 +184,11 @@
 		overheated = TRUE
 		playsound(src, 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg_overheat.ogg', 100)
 		addtimer(CALLBACK(src, .proc/reset_overheat), TIME_TO_COOLDOWN)
-	update_overlays()
+	update_appearance()
 
 /obj/item/gun/ballistic/automatic/mg34/mg42/proc/reset_overheat()
 	overheated = FALSE
-	update_overlays()
+	update_appearance()
 
 /obj/item/gun/ballistic/automatic/mg34/mg42/update_overlays()
 	. = ..()
@@ -189,7 +197,7 @@
 	switch(barrel_heat)
 		if(50 to 75)
 			. += "[base_icon_state]_barrel_hot"
-		if(75 to 100)
+		if(75 to INFINITY)
 			. += "[base_icon_state]_barrel_overheat"
 
 #undef SPREAD_UNDEPLOYED
@@ -205,4 +213,4 @@
 	ammo_type = /obj/item/ammo_casing/realistic/a792x57
 	caliber = "a792x57"
 	max_ammo = 250 // It's a lot, but the gun overheats.
-	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
