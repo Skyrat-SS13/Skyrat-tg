@@ -24,7 +24,7 @@
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
 
 /obj/item/ammo_box/magazine/pps
-	name = "pps magazine (7.62×25mm)"
+	name = "pps magazine (7.62x25mm)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "pps"
 	ammo_type = /obj/item/ammo_casing/realistic/a762x25

@@ -34,7 +34,7 @@
 
 /obj/item/gun/ballistic/automatic/mg34/examine(mob/user)
 	. = ..()
-	. += "<b>RMB</b> to [cover_open ? "close" : "open"] the dust cover."
+	. += "<b>RMB with an empty hand</b> to [cover_open ? "close" : "open"] the dust cover."
 	if(cover_open && magazine)
 		. += span_notice("It seems like you could use an <b>empty hand</b> to remove the magazine.")
 
@@ -45,6 +45,7 @@
 	to_chat(user, span_notice("You [cover_open ? "open" : "close"] [src]'s cover."))
 	playsound(src, 'sound/weapons/gun/l6/l6_door.ogg', 60, TRUE)
 	update_appearance()
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/gun/ballistic/automatic/mg34/update_icon_state()
 	. = ..()
@@ -73,7 +74,7 @@
 	..()
 
 /obj/item/ammo_box/magazine/mg34
-	name = "mg9 drum (7.92×57mm)"
+	name = "mg34 drum (7.92x57mm)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "mg34_drum"
 	ammo_type = /obj/item/ammo_casing/realistic/a792x57
@@ -98,3 +99,114 @@
 /obj/item/gun/ballistic/automatic/mg34/packapunch/process_chamber(empty_chamber, from_firing, chamber_next_round)
 	. = ..()
 	magazine.top_off()
+
+/// BIGGER BROTHER
+#define SPREAD_UNDEPLOYED 12
+#define SPREAD_DEPLOYED 6
+#define HEAT_PER_SHOT 1.5
+#define TIME_TO_COOLDOWN 20 SECONDS
+#define BARREL_COOLDOWN_RATE 3
+
+/obj/item/gun/ballistic/automatic/mg34/mg42
+	name = "\improper MG-42"
+	desc = "An updated version of the German MG-42 machine gun chambered in 7.92 Mauser, it has a bipod for better stability when deployed."
+	icon_state = "mg42"
+	base_icon_state = "mg42"
+	fire_sound_volume = 100
+	spread = 12
+	fire_delay = 0.5
+	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg42_fire.ogg'
+	/// If we are resting, the bipod is deployed.
+	var/bipod_deployed = FALSE
+	/// How hot the barrel is, 0 - 100
+	var/barrel_heat = 0
+	/// Have we overheated?
+	var/overheated = FALSE
+
+/obj/item/gun/ballistic/automatic/mg34/mg42/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_GUN_FIRED, .proc/process_heat)
+	START_PROCESSING(SSobj, src)
+
+/obj/item/gun/ballistic/automatic/mg34/mg42/process(delta_time)
+	if(barrel_heat > 0)
+		barrel_heat -= BARREL_COOLDOWN_RATE * delta_time
+
+/obj/item/gun/ballistic/automatic/mg34/mg42/examine(mob/user)
+	. = ..()
+	switch(barrel_heat)
+		if(50 to 75)
+			. += span_warning("The barrel looks hot.")
+		if(75 to INFINITY)
+			. += span_warning("The barrel looks moulten!")
+	if(overheated)
+		. += span_danger("The barrel is overheated!")
+
+/obj/item/gun/ballistic/automatic/mg34/mg42/can_shoot()
+	if(cover_open)
+		balloon_alert_to_viewers("cover open!")
+		return FALSE
+	if(overheated)
+		balloon_alert_to_viewers("overheated!")
+		return FALSE
+	return chambered
+
+/obj/item/gun/ballistic/automatic/mg34/mg42/pickup(mob/user)
+	. = ..()
+	RegisterSignal(user, COMSIG_LIVING_UPDATED_RESTING, .proc/deploy_bipod)
+
+/obj/item/gun/ballistic/automatic/mg34/mg42/dropped(mob/user)
+	. = ..()
+	UnregisterSignal(user, COMSIG_LIVING_UPDATED_RESTING)
+
+/obj/item/gun/ballistic/automatic/mg34/mg42/proc/deploy_bipod(datum/datum_source, resting)
+	SIGNAL_HANDLER
+	if(resting)
+		bipod_deployed = TRUE
+		spread = SPREAD_DEPLOYED
+	else
+		bipod_deployed = FALSE
+		spread = SPREAD_UNDEPLOYED
+	playsound(src, 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg42_bipod.ogg', 100)
+	balloon_alert_to_viewers("bipod [bipod_deployed ? "deployed" : "undeployed"]!")
+	update_overlays()
+
+/obj/item/gun/ballistic/automatic/mg34/mg42/proc/process_heat()
+	SIGNAL_HANDLER
+	if(overheated)
+		return
+	barrel_heat += HEAT_PER_SHOT
+	if(barrel_heat >= 100)
+		overheated = TRUE
+		playsound(src, 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg42_overheat.ogg', 100)
+		addtimer(CALLBACK(src, .proc/reset_overheat), TIME_TO_COOLDOWN)
+	update_overlays()
+
+/obj/item/gun/ballistic/automatic/mg34/mg42/proc/reset_overheat()
+	overheated = FALSE
+	update_overlays()
+
+/obj/item/gun/ballistic/automatic/mg34/mg42/update_overlays()
+	. = ..()
+	. += "[base_icon_state]_[bipod_deployed ? "bipod_deployed" : "bipod"]"
+
+	switch(barrel_heat)
+		if(50 to 75)
+			. += "[base_icon_state]_barrel_hot"
+		if(75 to 100)
+			. += "[base_icon_state]_barrel_overheat"
+
+#undef SPREAD_UNDEPLOYED
+#undef SPREAD_DEPLOYED
+#undef HEAT_PER_SHOT
+#undef TIME_TO_COOLDOWN
+#undef BARREL_COOLDOWN_RATE
+
+/obj/item/ammo_box/magazine/mg42
+	name = "mg42 drum (7.92x57mm)"
+	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
+	icon_state = "mg42_drum"
+	ammo_type = /obj/item/ammo_casing/realistic/a792x57
+	caliber = "a792x57"
+	max_ammo = 250
+	multiple_sprites = AMMO_BOX_FULL_EMPTY

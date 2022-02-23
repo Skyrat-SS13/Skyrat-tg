@@ -26,7 +26,7 @@
 	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magout.ogg'
 
 /obj/item/ammo_box/magazine/fg42
-	name = "fg42 magazine (7.92×57mm)"
+	name = "fg42 magazine (7.92x57mm)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "fg42"
 	ammo_type = /obj/item/ammo_casing/realistic/a792x57

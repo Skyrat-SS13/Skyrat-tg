@@ -25,7 +25,7 @@
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magout.ogg'
 
 /obj/item/ammo_box/magazine/stg
-	name = "stg magazine (7.92×33mm)"
+	name = "stg magazine (7.92x33mm)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "stg"
 	ammo_type = /obj/item/ammo_casing/realistic/a792x33
