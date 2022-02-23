@@ -638,7 +638,7 @@
 	name = "HECU Grunt"
 	uniform = /obj/item/clothing/under/rank/security/officer/hecu
 	head = /obj/item/clothing/head/helmet/marine/hecu
-	mask = /obj/item/clothing/mask/balaclavaadjust
+	mask = /obj/item/clothing/mask/gas/syndicate/ds
 	gloves = /obj/item/clothing/gloves/combat
 	suit = /obj/item/clothing/suit/armor/vest/marine/hecu
 	suit_store = /obj/item/gun/ballistic/automatic/m16
