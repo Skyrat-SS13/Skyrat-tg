@@ -651,7 +651,7 @@
 	backpack_contents = list(
 		/obj/item/storage/box/survival/radio,
 		/obj/item/ammo_box/magazine/m16 = 3,
-		/obj/item/storage/firstaid/expeditionary,
+		/obj/item/storage/firstaid/emergency,
 		/obj/item/storage/box/hecu_rations,
 		/obj/item/gun/ballistic/automatic/pistol/g17/mesa,
 		/obj/item/ammo_box/magazine/multi_sprite/g17 = 2,
