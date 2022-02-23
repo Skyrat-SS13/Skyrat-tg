@@ -858,9 +858,28 @@
 		to_chat(owner, span_warning("You do not have 2 stat points for an ability!"))
 		return
 	cortical_owner.stat_evolution -= 2
-	var/ability_choice = tgui_input_list(cortical_owner, "Choose your ability!", "Ability Choice", list("Produce Offspring", "Learn Chemical from Blood", "Revive Host", "Willing Host"))
+	var/list/abil_list = list("Produce Offspring", "Learn Chemical from Blood", "Revive Host", "Willing Host")
+	for(var/ability in abil_list)
+		switch(ability)
+			if("Produce Offspring")
+				if(locate(/datum/action/cooldown/produce_offspring) in cortical_owner.known_abilities)
+					abil_list.Remove("Produce Offspring")
+			else if("Learn Chemical from Blood")
+				if(locate(/datum/action/cooldown/learn_bloodchemical) in cortical_owner.known_abilities)
+					abil_list.Remove("Learn Chemical from Blood")
+			else if("Revive Host")
+				if(locate(/datum/action/cooldown/revive_host) in cortical_owner.known_abilities)
+					abil_list.Remove("Revive Host")
+			else if("Willing Host")
+				if(locate(/datum/action/cooldown/willing_host) in cortical_owner.known_abilities)
+					abil_list.Remove("Willing Host")
+	if(!length(abil_list))
+		to_chat(owner, span_warning("You already have all abilities!"))
+		cortical_owner.stat_evolution += 2
+		return
+	var/ability_choice = tgui_input_list(cortical_owner, "Choose your ability!", "Ability Choice", abil_list)
 	if(!ability_choice)
-		to_chat(owner, span_warning("You did not choose an ability"))
+		to_chat(owner, span_warning("You did not choose an ability."))
 		cortical_owner.stat_evolution += 2
 		return
 	switch(ability_choice)
