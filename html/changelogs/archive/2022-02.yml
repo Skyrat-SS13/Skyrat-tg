@@ -812,3 +812,180 @@
       combat logs.
   - bugfix: Fixed progression traitor uplinks suddenly changing owners when implanted
       with an uplink implant.
+2022-02-21:
+  Melbert:
+  - bugfix: Void's ritual of knowledge is void path correctly
+  - refactor: The Anomaly Neutralizer uses the effect remover component now
+  - bugfix: Fixes heretic target assignment. They should actually be getting Heads
+      of Staff and such as intended as sacrifice targets.
+  Ryll/Shaps:
+  - admin: asay pings now have their own unique sound instead of sharing the vote
+      prompt sound
+  SkyratBot:
+  - bugfix: arm implants breaking the drop key
+  - balance: The CRAB-17/Nanotrasen Space-Coin Market is now indestructible. Attacking
+      it repulses you back one tile instead. ID cards now instantly swipe on it instead
+      of requiring a progress bar, and ID card holders like PDAs and wallets can also
+      be directly used on it without having to remove IDs. It still blows up when
+      all ID cards with bank accounts have been swiped on it or after 8 minutes.
+  - balance: every modsuit theme can hold more stuff in suit storage
+  - bugfix: Snow will now behave properly inside ruins on IceBox Station.
+  - balance: Paramedics no longer have access to Auxiliary base, the Supermatter engine
+      room (including insuls), the Cargo shuttle, and EVA. Use a Medical MODsuit instead,
+      you lazy bum!
+  - balance: Paramedics now have access to Mining bay.
+  - bugfix: Clown cyborg soaps will no longer bug out after running out of uses
+  - bugfix: fixes smooth movement breaking sometimes
+  - imageadd: For those on the mapping end, the Science Breakroom now has a new area
+      turf sprite, bringing it in line with the likes of Medical and Engineering.
+      Believe me, it helps.
+  - bugfix: Nanotrasen has fixed up the space area surrounding the AI Upload on KiloStation.
+      The cameras should work a bit better now, and the excess lights were removed.
+      You probably won't notice the latter, though.
+  - bugfix: 'TGUI static data loading screens no longer resize the window temporarily.
+      Note: If you are using a UI that gets a lot of these, please make an issue report.'
+  - balance: Malf AIs can detonate their borgs at the robotics console once again.
+  - imageadd: Cytology Lab and two different variations of the Central Hall have had
+      their sprites corrected into splendidly new ones.
+  Stalkeros:
+  - soundadd: Mesa's Glock-17's firing sound is back.
+  Toastgoats:
+  - imageadd: New space dragon sprite!
+  ToryJ for making me code dive:
+  - balance: Nerfed Base Laser damage to 22 from 27
+  - balance: Nerfed the MCR Laser damage to 20.
+  - balance: Made the undercharger no longer give grip bonuses when activated.
+  - balance: Repeater beams do 15 damage each for a total of 30 damage.
+  - balance: Scatter beams do 10 damage each for a total of 30 damage.
+  - balance: Moves the superheater upgrade to an illegal MCR attachments tree.
+  - balance: 'Superheater lasers do 15 damage but still keep 2 firestacks. expansion:
+      Adds Hellfire upgrade in place of superheater, deals 25 damage and has the wound
+      bonuses of hellfire lasers. expansion: Adds a Lance upgrade that gives the MCR
+      the firing delay of 2 seconds however it fires a Heavy Laser beam at twice the
+      projectile speed. expansion: Adds an Illegal Repeater upgrade that does the
+      same damage but has 50 armor penetration. expansion: Adds an Illegal Scatter
+      upgrade that shoots 7 pellets for a total of 45 damage. expansion: Adds an Illegal
+      suppressor upgrade. It suppresses the laser somehow. expansion: Adds two new
+      cargo crates for MCR attachments. expansion: Adds a Clown Tech extension for
+      MCR''s, a bikehorn upgrade that makes you shoot yellow beams of slipping and
+      low stamina damage. expansion: Adds 3 new skins to the MCR.'
+  - balance: Lowers the attachment slots of Advanced Cells to 2 and BS Cells to 3.
+  - balance: Makes loading a new Cell into the MCR take 4 seconds while tactical reloading
+      takes 6 seconds.
+  - balance: Adds a reloading assister attachment that makes loading a cell take 2
+      seconds.
+  - balance: Adds a tac-reload helping attachment that makes tactical reloads 3 seconds.
+  - bugfix: Makes the MCR ammo boxes use their actual sprite.
+  - spellcheck: Fixes some of the comments in the MCR Module.
+  - imageadd: Adds sprites to the afformentioned additions.
+  Wallem:
+  - imageadd: Departmental protolathes/techfabs have colored stripes to tell the departments
+      apart.
+  Zenitheevee:
+  - rscadd: Puts in 5 new crates for Cargo, themed around near-impossible to obtain
+      items for non-chef-accessible personel
+  - code_imp: Removes the bloat cargo file and re-fits its contents into the packs
+      file
+  Zonespace27:
+  - balance: Feather tickling is now a +0 mood bonus instead of a +4
+  - spellcheck: Conflicting message about the HoP managing supply is now corrected.
+  - refactor: Refactored some organic interface update items.
+  - refactor: Refactored yet more organic interface items
+  jjpark-kb:
+  - rscadd: added back bimbo trait/trauma
+  kannthus:
+  - rscadd: Ghost Cafe - Beach Resort
+  malleyeno:
+  - bugfix: Fixed bug where pre-made Ashwalker names were overwritten by a random
+      lizard name.
+  softcerv:
+  - bugfix: High-Heel Jackboots no longer bring up a reskin menu.
+2022-02-22:
+  GoldenAlpharex:
+  - bugfix: Fixed the weird description when you hit the *say hotkey.
+  PositiveEntropy, Naevii:
+  - imageadd: Resprites the Head of Security Greatcoat!
+  - imageadd: Resprites the object icon of the Head of Security Trenchcoat
+  Zonespace27:
+  - rscdel: 'Progression traitors no longer have end-of-round objectives (notably
+      the reputation-requirement objectives), your greentext is guaranteed, folks.
+      qol: Antagonists get a reminder to follow RP rules at roundstart. qol: OPFOR
+      has an action button now.'
+  jjpark-kb:
+  - balance: drones are no longer shy (they are not restricted)
+  - rscadd: added fishing attachments (check misc crafting tab)
+  - balance: doubles strange rock chance in fishing
+  - bugfix: water basins can be upgraded now by journeyman smithies
+  - balance: lowered reagent cap in reagent forging items from 500 to 250
+  - balance: lowered required reagents in reagent forging from 200 to 100
+  - balance: increased the amount of cores required to start reagent forging from
+      3 to 6
+  - balance: reagent weapons will now directly inject the chemicals without snowflake
+      code
+  softcerv:
+  - balance: The CMO Hypospray can now pierce thick clothing.
+2022-02-23:
+  ErdinyoBarboza:
+  - bugfix: Makes the Icebox Gulag in line with the TG map by adding the plasma moat.
+      Now gulag is actually secure.
+  - bugfix: Fixes the wrong turfs in Icebox Gulag.
+  - bugfix: Fixes the wrong turfs in Metastation
+  - bugfix: 'Fixes the empty ingredient boxes in Icebox Perma. qol: Gives Meta and
+      Delta station genpop lockers instead of the basic variant. You can use the prisoner
+      ID on them to link them. qol: Gives Meta and Delta Perma Ingredient boxes.'
+  - bugfix: Gives Icebox the missing Blob Spawns on Security and Service 2nd Z Level
+  - bugfix: Gives Icebox Locker Room actual personal lockers
+  Gandalf2k15:
+  - bugfix: The HEV suit now functions again.
+  GoldenAlpharex:
+  - bugfix: Ghosts are 100% less afraid of bobbing up and down, and will no longer
+      keep their orbit when they shouldn't be keeping it.
+  Melbert:
+  - bugfix: Eldritch Amulet no longer gives thermal vision when it shouldn't
+  SkyratBot:
+  - bugfix: Fixed gygax smash not logging the driver
+  - bugfix: Fixed mechs being punched using power but punching as a mech not using
+      power
+  - bugfix: Fixed mechs not taking damage from mech punches if punched while having
+      no power
+  - bugfix: Fixed weapon damage types only being respected for mech punches sometimes
+  - bugfix: Fixed toxins mech damage mode playing sounds on punches despite doing
+      nothing
+  - refactor: Mech punch code partly redone
+  - admin: mech punches will now ALWAYS be logged, even against objects
+  - code_imp: adds p_theirs() proc
+  - code_imp: reshuffled some mech bay code please report issues on the github
+  - bugfix: An odysseus' sleeper will now realize when a previously contained patient
+      has left the sleeper through unconventional means.
+  - bugfix: 'Non-dense mobs will no longer knock monkeys over (Ex: Revenants, Bots,
+      Lizards, Alien larvas).'
+  - balance: 'Blobs can destroy mineral turfs like they can walls qol: Adds balloon
+      alerts for blob overmind qol: Adds contextual screen tips for blob overmind
+      qol: Off-station blobs are lighter than regular blobs'
+  - bugfix: Fixes bug where on-station blobs were not counted towards victory when
+      expanded from off-station blobs
+  - bugfix: Fixes issue with cores and nodes having their color applied twice
+  - rscadd: Ratfish can now be found in moisture traps.
+  - bugfix: fixed distortion effects cutting each other
+  Wallem:
+  - rscadd: Some prisoners have been complaining about the cold weather in the permabrig,
+      so we've dug through disposals and found a couple hats for 'em.
+  YakumoChen:
+  - refactor: MCR lathe design stuff
+  - bugfix: A bug in one of the material costs for one of the camos
+  Zonespace27:
+  - code_imp: Split OPFOR's equipment file into smaller, category-based ones
+  - admin: Some of the more powerful OPFOR items have admin notes attached to them
+      detailing why they're so good.
+  - bugfix: OPFOR action button should now properly appear.
+  jjpark-kb:
+  - rscadd: 'meta station: added a drone dispenser'
+  - rscadd: 'drones will now slip through doors if they are unable to bump open them
+      qol: drone dispensers have materials roundstart qol: drones are now assigned
+      a number 100-999 in their name qol: drones now have removable backpacks qol:
+      drones now have AA'
+  - admin: drones now have their machinery interactions logged
+  tastyfish:
+  - rscadd: Made air alarm and keycard authenticator emissive.
+  - imageadd: Updated air alarm and keycard authenticator sprites to work with being
+      emissive.
