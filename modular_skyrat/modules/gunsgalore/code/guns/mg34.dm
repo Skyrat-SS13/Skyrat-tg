@@ -9,7 +9,7 @@
 	base_icon_state = "mg34"
 	worn_icon_state = "mg34"
 	inhand_icon_state = "mg34"
-	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg42_fire.ogg'
+	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg34_fire.ogg'
 	rack_sound = 'sound/weapons/gun/l6/l6_rack.ogg'
 	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
 	fire_sound_volume = 70
