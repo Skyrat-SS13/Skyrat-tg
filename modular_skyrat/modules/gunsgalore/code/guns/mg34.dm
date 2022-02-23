@@ -47,10 +47,6 @@
 	update_appearance()
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-/obj/item/gun/ballistic/automatic/mg34/update_icon_state()
-	. = ..()
-	inhand_icon_state = "[base_icon_state][cover_open ? "open" : "closed"][magazine ? "mag":"nomag"]"
-
 /obj/item/gun/ballistic/automatic/mg34/update_overlays()
 	. = ..()
 	. += "[base_icon_state]_door_[cover_open ? "open" : "closed"]"
