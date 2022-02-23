@@ -29,8 +29,10 @@
 		if(do_after(user, 2 SECONDS, src))
 			user.balloon_alert(user, "machine unjammed")
 			operating = FALSE
-			cloth_to_use.forceMove(get_turf(src))
-			pattern_kit_to_use.forceMove(get_turf(src))
+			if(cloth_to_use)
+				cloth_to_use.forceMove(get_turf(src))
+			if(pattern_kit_to_use)
+				pattern_kit_to_use.forceMove(get_turf(src))
 			cloth_to_use = null
 			pattern_kit_to_use = null
 			return
