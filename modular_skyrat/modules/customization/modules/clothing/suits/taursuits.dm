@@ -60,3 +60,6 @@
 
 /obj/item/clothing/suit/hooded/hostile_environment
 	mutant_variants = STYLE_TAUR_SNAKE|STYLE_TAUR_PAW|STYLE_DIGITIGRADE
+
+/obj/item/clothing/suit/armor/riot/chaplain/clock
+	mutant_variants = STYLE_TAUR_SNAKE|STYLE_DIGITIGRADE
