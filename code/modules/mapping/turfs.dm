@@ -7,7 +7,7 @@
 /turf
 	var/prevent_rcd_deconstruction = FALSE
 
-/turf/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
+/turf/closed/wall/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
 	if(prevent_rcd_deconstruction)
 		return FALSE
 	return ..()
