@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/pistol/pepperball
 	name = "\improper Armadyne Pepperball AHG"
-	desc = "A fantastically shit weapon used for self defence and created for the soul purpose of underfunded security forces, meet the Pepperball AHG."
+	desc = "A fantastically shit weapon used for self defence and created for the sole purpose of underfunded security forces, meet the Pepperball AHG."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pepperball.dmi'
 	icon_state = "peppergun"
 	w_class = WEIGHT_CLASS_NORMAL
