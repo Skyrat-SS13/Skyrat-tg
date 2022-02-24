@@ -15,7 +15,7 @@
 	layer = MOB_LAYER
 	plane = GAME_PLANE_FOV_HIDDEN
 	//The sound this plays on impact.
-	var/hitsound = 'sound/weapons/pierce.ogg'
+	var/hitsound // SKYRAT EDIT CHANGE
 	var/hitsound_wall = ""
 
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF

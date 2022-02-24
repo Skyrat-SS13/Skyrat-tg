@@ -31,7 +31,13 @@
 		hitx = target.pixel_x + rand(-8, 8)
 		hity = target.pixel_y + rand(-8, 8)
 
-	playsound(src, get_sfx_skyrat(target.impact_sound), vol_by_damage(), TRUE, -1)
+	var/impact_sound
+	if(hitsound)
+		impact_sound = hitsound
+	else
+		impact_sound = target.impact_sound
+		get_sfx()
+	playsound(src, get_sfx_skyrat(impact_sound), vol_by_damage(), TRUE, -1)
 
 	if(!nodamage && (damage_type == BRUTE || damage_type == BURN) && iswallturf(target_loca) && prob(75))
 		var/turf/closed/wall/W = target_loca
