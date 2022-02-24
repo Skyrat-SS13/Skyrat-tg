@@ -66,7 +66,7 @@
 
 /datum/opposing_force_equipment/ammo/fg42
 	item_type = /obj/item/ammo_box/magazine/fg42
-	description = "A twenty round magazine for the FG-42. Uses 7.92×57mm ammunition."
+	description = "A twenty round magazine for the FG-42. Uses 7.92x57mm ammunition."
 
 /datum/opposing_force_equipment/ammo/m9mm
 	item_type = /obj/item/ammo_box/magazine/uzim9mm
@@ -74,6 +74,9 @@
 
 /datum/opposing_force_equipment/ammo/mg34
 	item_type = /obj/item/ammo_box/magazine/mg34
+
+/datum/opposing_force_equipment/ammo/mg42
+	item_type = /obj/item/ammo_box/magazine/mg42
 
 /datum/opposing_force_equipment/ammo/cm762
 	item_type = /obj/item/ammo_box/magazine/cm762

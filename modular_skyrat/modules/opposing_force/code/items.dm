@@ -34,8 +34,8 @@
 	new /obj/item/clothing/shoes/combat(src)
 
 /obj/item/ammo_box/magazine/m16/extended //i will add custom sprites to this
-	name = "m4a1 magazine (5.56×45mm)"
-	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/m16/m16.dmi'
+	name = "m4a1 magazine (5.56x45mm)"
+	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "5.56mm"
 	ammo_type = /obj/item/ammo_casing/a556
 	caliber = "a556"
