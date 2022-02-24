@@ -244,12 +244,6 @@
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#55DD55"))
 
-/obj/item/clothing/suit/poncho
-    mutant_variants = STYLE_TAUR_ALL
-
-/obj/item/clothing/suit/apron
-    mutant_variants = STYLE_TAUR_ALL
-
 /obj/item/clothing/suit/toggle/lawyer/white
 	name = "white suit jacket"
 	desc = "A very versatile part of a suit ensable. Oddly in fashion with mobsters."
