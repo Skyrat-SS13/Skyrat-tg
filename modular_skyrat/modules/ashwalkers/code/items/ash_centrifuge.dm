@@ -1,7 +1,7 @@
 /obj/item/reagent_containers/glass/primitive_centrifuge
 	name = "primitive centrifuge"
 	desc = "A small cup that allows a person to slowly spin out liquids they do not desire."
-	icon = 'modular_skyrat/modules/ash_chemical_centrifuge/icons/chemical.dmi'
+	icon = 'modular_skyrat/modules/ashwalkers/icons/chemical.dmi'
 	icon_state = "primitive_centrifuge"
 
 /obj/item/reagent_containers/glass/primitive_centrifuge/examine()
