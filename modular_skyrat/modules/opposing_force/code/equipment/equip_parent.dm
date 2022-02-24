@@ -18,4 +18,4 @@
 	/// Category of the item. See opposing_force_defines.dm for a list of categories.
 	var/category = ""
 	/// Note to admins, useful if the item is extraordinarily strong
-	var/admin_note = ""
+	var/admin_note
