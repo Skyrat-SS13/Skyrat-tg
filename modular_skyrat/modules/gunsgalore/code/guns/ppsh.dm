@@ -1,14 +1,14 @@
 /obj/item/gun/ballistic/automatic/ppsh
 	name = "\improper PPSh-41"
 	desc = "A reproduction of a simple Soviet SMG chambered in 7.62x25 Tokarev rounds. Its heavy wooden stock and leather breech buffer help absorb the bolt’s heavy recoil, making it great for spraying and praying. Uraaaa!"
-	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns.dmi'
+	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns40x32.dmi'
 	icon_state = "ppsh"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_righthand.dmi'
 	inhand_icon_state = "ppsh"
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_back.dmi'
 	worn_icon_state = "ppsh"
-	slot_flags = ITEM_SLOT_BELT
+	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	mag_type = /obj/item/ammo_box/magazine/ppsh
 	can_suppress = FALSE
@@ -26,7 +26,7 @@
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
 
 /obj/item/ammo_box/magazine/ppsh
-	name = "ppsh-41 magazine (7.62×25mm)"
+	name = "ppsh-41 magazine (7.62x25mm)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "ppsh"
 	ammo_type = /obj/item/ammo_casing/realistic/a762x25
