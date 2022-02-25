@@ -1,3 +1,4 @@
+/*
 /obj/item/clothing/sextoy/buttplug
 	name = "buttplug"
 	desc = "I'm meant to put that WHERE?!"
@@ -128,3 +129,4 @@
 		if(!(target.pain < 22.5)) //yeah, this will cause pain. No buttplug gib intended, sry
 			return
 		target.adjustPain(target*delta_time)
+*/
