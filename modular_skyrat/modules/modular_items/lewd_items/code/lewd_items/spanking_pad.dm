@@ -1,4 +1,4 @@
-/obj/item/spanking_pad
+/*/obj/item/spanking_pad
 	name = "spanking pad"
 	desc = "A leather pad with a handle."
 	icon_state = "spankpad"
@@ -84,3 +84,4 @@
 				target.apply_status_effect(/datum/status_effect/subspace)
 			user.visible_message(span_purple("[user] [message]!"))
 			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/slap.ogg', 100, 1, -1)
+*/
