@@ -52,6 +52,7 @@
 		/obj/item/clothing/suit/hooded/wintercoat/christmas/green = 5,
 		/obj/item/clothing/suit/hooded/wintercoat/christmas/gamerpc = 5,
 		/obj/item/clothing/shoes/winterboots/christmas = 5,
+		/obj/item/clothing/shoes/winterboots/christmas/red = 5,
 		/obj/item/clothing/shoes/winterboots/christmas/green = 5,
 		/obj/item/clothing/suit/trenchbrown = 5,
 		/obj/item/clothing/suit/trenchblack = 5,

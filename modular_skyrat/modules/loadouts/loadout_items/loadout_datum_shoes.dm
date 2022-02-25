@@ -17,8 +17,12 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 
 //christmas, readd them round december
 /*/datum/loadout_item/shoes/christmas
-	name = "Red Christmas Boots"
+	name = "Christmas Boots"
 	item_path = /obj/item/clothing/shoes/winterboots/christmas
+
+/*/datum/loadout_item/shoes/christmas/red
+	name = "Red Christmas Boots"
+	item_path = /obj/item/clothing/shoes/winterboots/christmas/red
 
 /datum/loadout_item/shoes/christmas/green
 	name = "Green Christmas Boots"
