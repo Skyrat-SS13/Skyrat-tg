@@ -301,7 +301,6 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/clothing/accessory/mime_fan_pin = 25,
 		/obj/item/clothing/accessory/lawyers_badge = 5,
 		/obj/item/clothing/accessory/waistcoat = 25,
-		/obj/item/clothing/ears/headphones = 5,
 		/obj/item/clothing/glasses/blindfold/white = 25,
 		/obj/item/clothing/glasses/eyepatch = 25,
 		/obj/item/clothing/glasses/heat = 25,
