@@ -1,3 +1,4 @@
+/*
 /obj/item/kinky_shocker
 	name = "kinky shocker"
 	desc = "A small toy that can weakly shock someone."
@@ -275,3 +276,4 @@
 	target.adjustStaminaLoss(3)
 	target.adjustPain(9)
 	target.stuttering += 20
+*/
