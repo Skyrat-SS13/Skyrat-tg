@@ -78,7 +78,7 @@
 		/obj/item/clothing/under/suit/helltaker = 5,
 		/obj/item/clothing/under/suit/helltaker/skirt = 5,
 		/obj/item/clothing/glasses/betterunshit = 5,
-		/obj/item/clothing/glasses/thin = 5,
+		/obj/item/clothing/glasses/regular/thin = 5,
 		/obj/item/clothing/head/fedora/beige = 5,
 		/obj/item/clothing/head/fedora/white = 5,
 		/obj/item/clothing/head/fedora/fedblack = 5,
