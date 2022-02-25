@@ -1,4 +1,4 @@
-//Yes, whip is mask item, because character can take it in mouth. For some BDSM scenarios it would be cool, but if you make it better with same functionality - go ahead, make me proud.
+/*//Yes, whip is mask item, because character can take it in mouth. For some BDSM scenarios it would be cool, but if you make it better with same functionality - go ahead, make me proud.
 
 /obj/item/clothing/mask/leatherwhip
 	name = "leather whip"
@@ -294,3 +294,4 @@
 /// Switches between hard and weak mode
 /obj/item/clothing/mask/leatherwhip/proc/toggle_mode()
 	current_whip_type = modes[current_whip_type]
+*/
