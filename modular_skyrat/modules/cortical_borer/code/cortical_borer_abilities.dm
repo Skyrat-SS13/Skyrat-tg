@@ -64,35 +64,38 @@
 		to_chat(owner, span_warning("You do not have 5 upgrade points for a focus!"))
 		return
 	cortical_owner.stat_evolution -= 5
-	var/focus_choice = tgui_input_list(cortical_owner, "Choose your focus!", "Focus Choice", list("Head focus", "Chest focus", "Arm focus", "Leg focus"))
+	var/list/focus_list = list("Head focus", "Chest focus", "Arm focus", "Leg focus")
+	for(var/focus in focus_list)
+		switch(focus)
+			if("Head focus")
+				if(cortical_owner.body_focus & FOCUS_HEAD)
+					focus_list -= focus
+			if("Chest focus")
+				if(cortical_owner.body_focus & FOCUS_CHEST)
+					focus_list -= focus
+			if("Arm focus")
+				if(cortical_owner.body_focus & FOCUS_ARMS)
+					focus_list -= focus
+			if("Leg focus")
+				if(cortical_owner.body_focus & FOCUS_LEGS)
+					focus_list -= focus
+	if(!length(focus_list))
+		to_chat(owner, span_warning("You already have all focuses!"))
+		cortical_owner.stat_evolution += 5
+		return
+	var/focus_choice = tgui_input_list(cortical_owner, "Choose your focus!", "Focus Choice", focus_list)
 	if(!focus_choice)
-		to_chat(owner, span_warning("You did not choose a focus"))
+		to_chat(owner, span_warning("You did not choose a focus."))
 		cortical_owner.stat_evolution += 5
 		return
 	switch(focus_choice)
 		if("Head focus")
-			if(cortical_owner.body_focus & FOCUS_HEAD)
-				to_chat(cortical_owner, span_warning("You already have this focus!"))
-				cortical_owner.stat_evolution += 5
-				return
 			cortical_owner.body_focus |= FOCUS_HEAD
 		if("Chest focus")
-			if(cortical_owner.body_focus & FOCUS_CHEST)
-				to_chat(cortical_owner, span_warning("You already have this focus!"))
-				cortical_owner.stat_evolution += 5
-				return
 			cortical_owner.body_focus |= FOCUS_CHEST
 		if("Arm focus")
-			if(cortical_owner.body_focus & FOCUS_ARMS)
-				to_chat(cortical_owner, span_warning("You already have this focus!"))
-				cortical_owner.stat_evolution += 5
-				return
 			cortical_owner.body_focus |= FOCUS_ARMS
 		if("Leg focus")
-			if(cortical_owner.body_focus & FOCUS_LEGS)
-				to_chat(cortical_owner, span_warning("You already have this focus!"))
-				cortical_owner.stat_evolution += 5
-				return
 			cortical_owner.body_focus |= FOCUS_LEGS
 	borer_focus_remove(cortical_owner.human_host)
 	borer_focus_add(cortical_owner.human_host)
