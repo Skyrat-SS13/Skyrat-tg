@@ -2,3 +2,6 @@
 
 /obj/item/clothing/under/color/
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_VOX|STYLE_TAUR_SNAKE
+
+/obj/item/clothing/under/rank/captain
+	mutant_variants = STYLE_DIGITIGRADE|STYLE_VOX|STYLE_TAUR_SNAKE
