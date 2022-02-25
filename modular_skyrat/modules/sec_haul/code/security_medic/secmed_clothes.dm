@@ -29,6 +29,22 @@
 	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/flashlight, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/beaker, /obj/item/reagent_containers/pill, /obj/item/storage/pill_bottle, /obj/item/paper, /obj/item/melee/baton/telescopic, /obj/item/soap, /obj/item/tank/internals/emergency_oxygen, /obj/item/gun, /obj/item/storage/firstaid)
 
 /obj/item/clothing/under/rank/security/peacekeeper/security_medic
+	name = "security medics's turtleneck"
+	desc = "A comfy red turtleneck with a white armband, denoting the wearer as a security medic."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
+	icon_state = "security_medic_turtleneck"
+
+/obj/item/clothing/under/rank/security/peacekeeper/security_medic/skirt
+	name = "security medics's skirtleneck"
+	desc = "A comfy red turtleneck with a white armband and brown skirt, denoting the wearer as a security medic."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
+	icon_state = "security_medic_turtleneck_skirt"
+
+/obj/item/clothing/under/rank/security/peacekeeper/security_medic/old
 	name = "security medics's uniform"
 	desc = "A lightly armored uniform worn by Nanotrasen's Asset Protection Medical Corps."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
