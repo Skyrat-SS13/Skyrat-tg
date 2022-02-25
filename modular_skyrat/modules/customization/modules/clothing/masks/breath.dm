@@ -115,21 +115,17 @@
 
 /obj/item/clothing/mask/balaclava/threehole
 	name = "three hole balaclava"
-	desc = "Tiocfaidh ar la."
+	desc = "A well-fitting balaclava with an two eyeholes and one mouth-hole. Perfect for drinking while also committing crimes."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
-	icon_state = "balaclavam"
+	icon_state = "balaclava_3hole"
 	inhand_icon_state = "balaclava"
 
 /obj/item/clothing/mask/balaclava/threehole/green
-	name = "three hole green balaclava"
-	desc = "Tiocfaidh ar la."
+	name = "green three hole balaclava"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
-	icon_state = "swatclavam"
-	inhand_icon_state = "balaclava"
-
-
+	icon_state = "swatclava"
 
 /obj/item/clothing/mask/gas/german
 	name = "black gas mask"
