@@ -1,6 +1,19 @@
+//Moves all clothing icons to our own files.
+//KEEP THEM UP TO DATE, ITS EASY TO JUST PASTE TG'S UPDATES WHERE NEEDED AND LEAVE OUR UNIQUE ONES PAST THE MARKER-STATE
+
+//These are broken up in case some need re-pathing past the base type (under vs under/rank/x)
 
 ///////////////////////////////////////////////////////////////////////SHOES
+/obj/item/clothing/shoes
+	icon = 'icons/obj/clothing/shoes.dmi'
+
 ///////////////////////////////////////////////////////////////////////UNIFORMS
+
+
+
+/obj/item/clothing/under/rank/civilian
+	icon = 'icons/obj/clothing/under/civilian.dmi'
+	worn_icon = 'icons/mob/clothing/under/civilian.dmi'
 
 /obj/item/clothing/under/rank/civilian/chef/skirt
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
