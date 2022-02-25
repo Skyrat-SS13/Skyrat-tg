@@ -1,4 +1,4 @@
-///////////////////////
+/*///////////////////////
 //CODE FOR SERVIETTES//
 ///////////////////////
 
@@ -104,3 +104,4 @@
 		update_icon_state()
 	else
 		to_chat(user, span_notice("There are no serviettes left!"))
+*/
