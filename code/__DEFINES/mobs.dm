@@ -516,7 +516,11 @@
 /// Total number of layers for mob overlays
 #define TOTAL_LAYERS 38 //KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
 /// Mutations layer - Tk headglows, cold resistance glow, etc
+<<<<<<< HEAD
 #define MUTATIONS_LAYER 37
+=======
+#define MUTATIONS_LAYER 31
+>>>>>>> 234d4c1217e (makes most alerts, defines (#65086))
 /// Mutantrace features (tail when looking south) that must appear behind the body parts
 #define BODY_BEHIND_LAYER 36
 /// Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
