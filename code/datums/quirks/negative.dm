@@ -846,6 +846,9 @@
 /datum/quirk/bad_touch/proc/uncomfortable_touch()
 	SIGNAL_HANDLER
 
+	if(quirk_holder.stat == DEAD)
+		return
+
 	new /obj/effect/temp_visual/annoyed(quirk_holder.loc)
 	var/datum/component/mood/mood = quirk_holder.GetComponent(/datum/component/mood)
 	if(mood.sanity <= SANITY_NEUTRAL)
@@ -855,7 +858,7 @@
 
 /datum/quirk/claustrophobia
 	name = "Claustrophobia"
-	desc = "You are terrified of small spaces and certain jolly figures. If you are placed inside any container, locker, or machinery, a panic attack sets in and you struggle to breath."
+	desc = "You are terrified of small spaces and certain jolly figures. If you are placed inside any container, locker, or machinery, a panic attack sets in and you struggle to breathe."
 	icon = "box-open"
 	value = -4
 	medical_record_text = "Patient demonstrates a fear of tight spaces."
@@ -886,7 +889,7 @@
 		if(nick_spotted)
 			to_chat(quirk_holder, span_warning("Santa Claus is here! I gotta get out of here!"))
 		else
-			to_chat(quirk_holder, span_warning("You feel trapped!  Must escape... can't breath..."))
+			to_chat(quirk_holder, span_warning("You feel trapped!  Must escape... can't breathe..."))
 
 ///investigates whether possible_saint_nick possesses a high level of christmas cheer
 /datum/quirk/claustrophobia/proc/evaluate_jolly_levels(mob/living/carbon/human/possible_saint_nick)

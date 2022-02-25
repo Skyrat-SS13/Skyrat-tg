@@ -15,3 +15,12 @@
 				/obj/item/stack/sheet/sinew = 1)
 	time = 30
 	category = CAT_PRIMAL
+
+/datum/crafting_recipe/doubletank
+	name = "Double emergency oxygen tank"
+	reqs = list(
+		/obj/item/tank/internals/emergency_oxygen/engi = 2,
+		/obj/item/stack/sticky_tape = 1,
+	)
+	result = /obj/item/tank/internals/emergency_oxygen/double/empty
+	category = CAT_MISC

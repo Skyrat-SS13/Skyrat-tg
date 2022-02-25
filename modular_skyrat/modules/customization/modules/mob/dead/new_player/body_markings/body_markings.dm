@@ -485,6 +485,11 @@
 	icon_state = "tat_heart"
 	affected_bodyparts = CHEST | ARM_LEFT | ARM_RIGHT
 
+/datum/body_marking/tattoo/heart_groin
+	name = "Tattoo - Heart (Groin)"
+	icon_state = "tat_heart_groin"
+	affected_bodyparts = CHEST
+
 /datum/body_marking/tattoo/hive
 	name = "Tattoo - Hive"
 	icon_state = "tat_hive"

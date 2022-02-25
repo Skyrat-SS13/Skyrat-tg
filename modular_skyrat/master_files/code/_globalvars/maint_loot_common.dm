@@ -335,7 +335,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/clothing/under/dress/skirt/polychromic = 100,
 		/obj/item/clothing/under/dress/skirt/polychromic/pleated = 100,
 		/obj/item/clothing/under/misc/poly_bottomless = 100,
-		/obj/item/clothing/under/misc/poly_kilt = 100,
+		/obj/item/clothing/under/misc/colourable_kilt = 100,
 		/obj/item/clothing/under/misc/poly_shirt = 100,
 		/obj/item/clothing/under/misc/poly_tanktop = 100,
 		/obj/item/clothing/under/misc/poly_tanktop/female = 100,

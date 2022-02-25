@@ -2,152 +2,13 @@
 ///CODE FOR LEWD QUIRKS///
 //////////////////////////
 
-//////////////////////
-///SEXUAL OBSESSION///
-//////////////////////
-
-/*
-Removed it as quirk because it can cause huge disaster and furry massacre.
-I already saw enough in "Lone digger" video
-
-But i keeped it as unobtainable breain trauma, so admins can add it through VV *IN VERY SPECIFIC SITUATIONS*. If you're not lazy you can add it as smite, but i wouldn't recommend it.
-*/
-
-/datum/brain_trauma/special/sexual_obsession
-	name = "Sexual obsession"
-	desc = "The patient is obsessed with having sex with random people."
-	scan_desc = "sexual obsession"
-	gain_text = ""
-	lose_text = span_notice("You feel much calmer than before. You don't feel the need to harass anyone.")
-	can_gain = TRUE
-	random_gain = FALSE
-	resilience = TRAUMA_RESILIENCE_SURGERY
-	var/mob/living/carbon/human/obsession
-	var/satisfaction = 100
-	var/stress = 0
-	var/viewing = FALSE
-
-/datum/brain_trauma/special/sexual_obsession/on_gain()
-	if(!obsession)//admins didn't set one
-		obsession = find_obsession()
-		if(!obsession)//we didn't find one
-			lose_text = ""
-			qdel(src)
-			return
-	gain_text = span_purple("You feel an inexplicable desire to have sex with someone...")
-	ADD_TRAIT(owner, TRAIT_SOBSESSED, APHRO_TRAIT)
-
-/datum/brain_trauma/special/sexual_obsession/on_lose()
-	REMOVE_TRAIT(owner, TRAIT_SOBSESSED, APHRO_TRAIT)
-
-/datum/brain_trauma/special/sexual_obsession/on_life(delta_time, times_fired)
-	var/mob/living/carbon/human/H = owner
-	if(satisfaction <= 0)
-		if(stress <= 100)
-			stress +=1
-		switch(rand(1,6))
-			if(1)
-				if(stress < 95)
-					to_chat(owner, span_purple("You feel slightly aroused..."))
-				else
-					to_chat(owner, span_purple("Lust spreads over your body!"))
-					owner.emote("moan")
-			if(2)
-				if(stress < 95)
-					to_chat(owner, span_purple("You can't stop shaking..."))
-					owner.do_jitter_animation(20)
-				else
-					to_chat(owner, span_purple("You feel hot and seduced!"))
-					owner.dizziness += 20
-					owner.add_confusion(20)
-					owner.Jitter(20)
-					owner.do_jitter_animation(20)
-					owner.adjustStaminaLoss(50)
-
-			if(3, 4)
-				if(stress < 95)
-					to_chat(owner, span_purple("You bring your thighs together in lust."))
-				else
-					to_chat(owner, span_purple("Desire is driving you mad!"))
-					owner.hallucination += 30
-
-			if(5)
-				if(stress < 95)
-					to_chat(owner, span_purple("You feel like your genitals are burning..."))
-					owner.adjustOxyLoss(8)
-					owner.blur_eyes(10)
-				else
-					to_chat(owner, span_purple("You need something to satisfy this desire! Something... Or someone?"))
-					owner.adjustOxyLoss(16)
-					owner.blur_eyes(10)
-					owner.visible_message(pick(span_purple("[owner] seductively wags their hips.") + "\n",
-										span_purple("[owner] moans in lust!") + "\n",
-										span_purple("[owner] touches [owner.p_them()]self in intimate places...") + "\n",
-										span_purple("[owner] trembling longingly.") + "\n",
-										span_purple("[owner] moans indecently!") + "\n"))
-	if(satisfaction >= 0.20)
-		satisfaction -= 0.20
-
-	if(satisfaction <= 0.20)
-		if(stress <= 100)
-			stress +=1
-
-	if(get_dist(get_turf(owner), get_turf(obsession)) < 2)
-		if(obsession.pleasure >= 20 && owner.has_status_effect(/datum/status_effect/climax))
-			satisfaction = 100
-			stress = 0
-
-	if(!obsession || obsession.stat == DEAD) //being aroused by corpses is kind of sin. It was my opportunity to check if target is dead.
-		viewing = FALSE
-		return
-
-	if(get_dist(get_turf(owner), get_turf(obsession)) > 7)
-		viewing = FALSE //they are further than our viewrange they are not viewing us
-		return//so we're not searching everything in view every tick
-
-	if(obsession in view(7, owner))
-		viewing = TRUE
-	else
-		viewing = FALSE
-	if(viewing)
-		H.adjustArousal(3) //Nymph looking at their target and get aroused. Everything logical.
-
-/datum/brain_trauma/special/sexual_obsession/proc/stare(datum/source, mob/living/examining_mob, triggering_examiner)
-	SIGNAL_HANDLER
-	if(examining_mob != owner || !triggering_examiner || prob(80))
-		return
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, obsession, span_warning("You catch [examining_mob] staring at you lustfully..."), 3))
-	return COMSIG_BLOCK_EYECONTACT
-
-/datum/brain_trauma/special/sexual_obsession/proc/find_obsession()
-	var/list/viable_minds = list() //The first list, which excludes hijinks
-	var/list/possible_targets = list() //The second list, which filters out silicons and simplemobs
-	var/list/special_pool = list() //The special list, for quirk-based
-	var/chosen_victim  //The obsession target
-
-	for(var/mob/player in GLOB.player_list) //prevents crewmembers falling in love with nuke ops they never met, and other annoying hijinks
-		if(SSticker.IsRoundInProgress() && istype(get_area(player), /area/centcom/interlink))
-			continue
-		if(player.mind && player.stat != DEAD && !isnewplayer(player) && !isbrain(player) && player.client && player != owner && SSjob.GetJob(player.mind.assigned_role))
-			if(player?.client?.prefs?.read_preference(/datum/preference/toggle/erp/noncon))
-				viable_minds += player.mind
-	for(var/datum/mind/possible_target in viable_minds)
-		if(possible_target != owner && ishuman(possible_target.current))
-			possible_targets += possible_target.current
-
-	//Do we have any special target?
-	if(length(special_pool))
-		chosen_victim = pick(special_pool)
-		return chosen_victim
-
-	//If not, pick any other ordinary target
-	if(possible_targets.len > 0)
-		chosen_victim = pick(possible_targets)
-	return chosen_victim
-
 /////////////////
 ///BIMBO TRAIT///
 /////////////////
+
+/datum/brain_trauma
+	///Whether the trauma will be displayed on a scanner or kiosk
+	var/display_scanner = TRUE
 
 /datum/brain_trauma/special/bimbo
 	name = "Permanent hormonal disruption"
@@ -155,126 +16,159 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	scan_desc = "permanent hormonal disruption"
 	gain_text = span_purple("Your thoughts get cloudy, but it turns you on like hell.")
 	lose_text = span_warning("A pleasant coolness spreads throughout your body, You are thinking clearly again.")
+	//people need to be able to gain it through the chemical OD
 	can_gain = TRUE
+	//people should not be able to randomly get this trauma
 	random_gain = FALSE
+	//we don't want this to be displayed on a scanner
+	display_scanner = FALSE
 	resilience = TRAUMA_RESILIENCE_LOBOTOMY
-	var/satisfaction = 1000
+	///how satisfied the person is, gained through climaxing
+	//max is 300, min is 0
+	var/satisfaction = 300
+	///how stressed the person is, gained through zero satisfaction
+	//max is 300, min is 0
 	var/stress = 0
 
-/datum/brain_trauma/special/bimbo/on_life()
-	var/mob/living/carbon/human/H = owner
-	if(satisfaction > 1)
-		satisfaction -=1
+	COOLDOWN_DECLARE(desire_cooldown)
+	///The time between each desire message within company
+	var/desire_cooldown_number = 30 SECONDS
+	///The list of manual emotes that will be done when unsatisfied
+	var/static/list/lust_emotes = list(
+		"pants as their body trembles lightly.",
+		"lightly touches themselves up and down, feeling every inch.",
+		"puts their finger in their mouth and slightly bites down.",
+		"places their hands on their hip as they slowly gyrate.",
+		"moans, their head tilted slightly."
+	)
 
-	H.adjustArousal(10)
-
-	if(H.pleasure < 80)
-		H.adjustPleasure(5)
-
-	if(satisfaction <= 0)
-		if(prob(10))
-			switch(rand(1,6))
-				if(1)
-					if(stress >= 100)
-						to_chat(owner, span_purple("You feel slightly aroused..."))
-					else
-						to_chat(owner, span_purple("Lust spreads over your body!"))
-						owner.emote("moan")
-				if(2)
-					if(stress >= 100)
-						to_chat(owner, span_purple("You can't stop shaking..."))
-						owner.do_jitter_animation(20)
-					else
-						to_chat(owner, span_purple("You feel hot and seduced!"))
-						owner.dizziness += 20
-						owner.add_confusion(20)
-						owner.Jitter(20)
-						owner.do_jitter_animation(20)
-						owner.adjustStaminaLoss(50)
-				if(3, 4)
-					if(stress >= 100)
-						to_chat(owner, span_purple("You bring your thighs together in lust."))
-					else
-						to_chat(owner, span_purple("Desire is driving you mad!"))
-						owner.hallucination += 30
-				if(5)
-					if(stress >= 100)
-						to_chat(owner, span_purple("You feel like your genitals are burning..."))
-						owner.adjustOxyLoss(8)
-						owner.blur_eyes(10)
-					else
-						to_chat(owner, span_purple("You need something to satisfy this desire! Something... Or someone?"))
-						owner.adjustOxyLoss(16)
-						owner.blur_eyes(15)
-						owner.visible_message(pick(span_purple("[owner] wags their hips seductively.") + "\n",
-											span_purple("[owner] moans in lust!") + "\n",
-											span_purple("[owner] touches [owner.p_them()]self in intimate places...") + "\n",
-											span_purple("[owner] trembling longingly.") + "\n",
-											span_purple("[owner] moans indecently!") + "\n"))
-
-	if(in_company() && satisfaction >= 0)
-		satisfaction -= 1
-
-	if(in_company() && satisfaction == 300)
-		to_chat(owner, span_purple("Jeez, it's hot in here.."))
-
-	if(in_company() && satisfaction == 250)
-		to_chat(owner, span_purple("Desire fogs your decisions."))
-
-	if(in_company() && satisfaction == 200)
-		to_chat(owner, span_purple("Your clothes grow uncomfortable."))
-
-	if(in_company() && satisfaction == 150)
-		to_chat(owner, span_purple("You'd hit that. Yeah. That's at least a six."))
-
-	if(in_company() && satisfaction == 100)
-		to_chat(owner, span_purple("You can't STAND it, you need a partner NOW!")	)
-
-	if(in_company() && satisfaction <= 0)
-		if(stress <= 100)
-			stress +=1
-
-	if(in_company() && owner.has_status_effect(/datum/status_effect/climax))
-		stress = 0
-		satisfaction = 1000
-
-	if(!(in_company()) && owner.has_status_effect(/datum/status_effect/climax) && satisfaction <= 500)
-		stress = 0
-		satisfaction = 500
-
-/datum/brain_trauma/special/bimbo/proc/in_company()
-	if(HAS_TRAIT(owner, TRAIT_BLIND))
+/**
+ * If we are not satisfied, this will be ran through
+ */
+/datum/brain_trauma/special/bimbo/proc/try_unsatisfied()
+	var/mob/living/carbon/human/human_owner = owner
+	//we definitely need an owner; but if you are satisfied, just return
+	if(satisfaction || !human_owner)
 		return FALSE
-	for(var/mob/living/carbon/human/M in oview(owner, 4))
-		if(!isliving(M)) //ghosts ain't people
+	//we need to feel consequences for being unsatisfied
+	//the message that will be sent to the owner at the end
+	var/lust_message = "Your breath begins to feel warm..."
+	//we are using if statements so that it slowly becomes more and more to the person
+	human_owner.manual_emote(pick(lust_emotes))
+	if(stress >= 60)
+		human_owner.Jitter(20)
+		lust_message = "You feel a static sensation all across your skin..."
+	if(stress >= 120)
+		human_owner.blur_eyes(10)
+		lust_message = "You vision begins to blur, the heat beginning to rise..."
+	if(stress >= 180)
+		owner.hallucination += 30
+		lust_message = "You begin to fantasize of what you could do to someone..."
+	if(stress >= 240)
+		human_owner.adjustStaminaLoss(30)
+		lust_message = "You body feels so very hot, almost unwilling to cooperate..."
+	if(stress >= 300)
+		human_owner.adjustOxyLoss(40)
+		lust_message = "You feel your neck tightening, straining..."
+	to_chat(human_owner, span_purple(lust_message))
+	return TRUE
+
+/**
+ * If we have climaxed, return true
+ */
+/datum/brain_trauma/special/bimbo/proc/check_climaxed()
+	if(owner.has_status_effect(/datum/status_effect/climax))
+		stress = 0
+		satisfaction = 300
+		return TRUE
+	return FALSE
+
+/datum/brain_trauma/special/bimbo/on_life()
+	var/mob/living/carbon/human/human_owner = owner
+
+	//Check if we climaxed, if so, just stop for now
+	if(check_climaxed())
+		return
+	//if we are satisfied, slowly lower satisfaction as well as stress
+	if(satisfaction)
+		satisfaction = clamp(satisfaction - 1, 0, 300)
+		stress = clamp(stress - 1, 0, 300)
+	//since we are not satisfied, increase our stress
+	else
+		stress = clamp(stress + 1, 0, 300)
+
+	human_owner.adjustArousal(10)
+	if(human_owner.pleasure < 80)
+		human_owner.adjustPleasure(5)
+
+	//Anything beyond this obeys a cooldown system because we don't want to spam it
+	if(!COOLDOWN_FINISHED(src, desire_cooldown))
+		return
+	COOLDOWN_START(src, desire_cooldown, desire_cooldown_number)
+
+	//if we are unsatisfied, do this code block and then stop
+	if(try_unsatisfied())
+		return
+
+	//Anything beyond this requires company
+	if(!in_company())
+		//since you aren't within company, you won't be satisfied
+		satisfaction = clamp(satisfaction - 1, 0, 1000)
+		to_chat(human_owner, span_purple("You feel so alone without someone..."))
+		return
+
+	switch(satisfaction)
+		if(0 to 100)
+			to_chat(human_owner, span_purple("You can't STAND it, you need a partner NOW!"))
+		if(101 to 150)
+			to_chat(human_owner, span_purple("You'd hit that. Yeah. That's at least a six."))
+		if(151 to 200)
+			to_chat(human_owner, span_purple("Your clothes are feeling tight."))
+		if(201 to 250)
+			to_chat(human_owner, span_purple("Desire fogs your decisions."))
+		if(251 to 1000)
+			to_chat(human_owner, span_purple("Jeez, it's hot in here.."))
+
+/**
+ * If we have another human in view, return true
+ */
+/datum/brain_trauma/special/bimbo/proc/in_company()
+	for(var/mob/living/carbon/human/human_check in oview(owner, 4))
+		if(!istype(human_check))
 			continue
-		if(istype(M))
-			return TRUE
+		return TRUE
 	return FALSE
 
 /datum/brain_trauma/special/bimbo/handle_speech(datum/source, list/speech_args)
-	if(HAS_TRAIT(owner, TRAIT_BIMBO))
-		var/message = speech_args[SPEECH_MESSAGE]
-		var/list/split_message = splittext(message, " ") //List each word in the message
-		for (var/i in 1 to length(split_message))
-			if(findtext(split_message[i], "*") || findtext(split_message[i], ";") || findtext(split_message[i], ":"))
-				continue
-			split_message[i] = pick("Mmmph... Guuuh.","Hmmphh","Mmmfhg","Gmmmh...","Hnnnnngh... Ghh","Fmmmmph...")
+	if(!HAS_TRAIT(owner, TRAIT_BIMBO)) //You have the trauma but not the trait, go ahead and fail here
+		return ..()
+	var/message = speech_args[SPEECH_MESSAGE]
+	var/list/split_message = splittext(message, " ") //List each word in the message
+	for (var/i in 1 to length(split_message))
+		if(findtext(split_message[i], "*") || findtext(split_message[i], ";") || findtext(split_message[i], ":"))
+			continue
+		if(prob(10))
+			var/insert_muffle = pick("... Mmmph...", "... Hmmphh...", "... Gmmmh...", "... Fmmmmph...")
+			split_message[i] = split_message[i] + insert_muffle
 
-		message = jointext(split_message, " ")
-		speech_args[SPEECH_MESSAGE] = message
+	message = jointext(split_message, " ")
+	speech_args[SPEECH_MESSAGE] = message
 
 /datum/brain_trauma/special/bimbo/on_gain()
 	SEND_SIGNAL(owner, COMSIG_ADD_MOOD_EVENT, "bimbo", /datum/mood_event/bimbo)
-	ADD_TRAIT(owner,TRAIT_BIMBO, APHRO_TRAIT)
+	if(!HAS_TRAIT_FROM(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT))
+		ADD_TRAIT(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT)
 	RegisterSignal(owner, COMSIG_MOB_SAY, .proc/handle_speech)
-	ADD_TRAIT(owner,TRAIT_MASOCHISM, APHRO_TRAIT)
+	if(!HAS_TRAIT_FROM(owner, TRAIT_MASOCHISM, APHRO_TRAIT))
+		ADD_TRAIT(owner, TRAIT_MASOCHISM, APHRO_TRAIT)
 
 /datum/brain_trauma/special/bimbo/on_lose()
 	SEND_SIGNAL(owner, COMSIG_CLEAR_MOOD_EVENT, "bimbo", /datum/mood_event/bimbo)
-	REMOVE_TRAIT(owner,TRAIT_BIMBO, APHRO_TRAIT)
+	if(HAS_TRAIT_FROM(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT))
+		REMOVE_TRAIT(owner,TRAIT_BIMBO, LEWDCHEM_TRAIT)
 	UnregisterSignal(owner, COMSIG_MOB_SAY)
-	REMOVE_TRAIT(owner,TRAIT_MASOCHISM, APHRO_TRAIT)
+	if(HAS_TRAIT_FROM(owner, TRAIT_MASOCHISM, APHRO_TRAIT))
+		REMOVE_TRAIT(owner, TRAIT_MASOCHISM, APHRO_TRAIT)
 
 //Mood boost
 /datum/mood_event/bimbo
@@ -296,15 +190,15 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 
 /datum/quirk/masochism/post_add()
 	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	ADD_TRAIT(H,TRAIT_MASOCHISM, LEWDQUIRK_TRAIT)
-	H.pain_limit = 60
+	var/mob/living/carbon/human/affected_human = quirk_holder
+	ADD_TRAIT(affected_human, TRAIT_MASOCHISM, LEWDQUIRK_TRAIT)
+	affected_human.pain_limit = 60
 
 /datum/quirk/masochism/remove()
 	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	REMOVE_TRAIT(H,TRAIT_MASOCHISM, LEWDQUIRK_TRAIT)
-	H.pain_limit = 0
+	var/mob/living/carbon/human/affected_human = quirk_holder
+	REMOVE_TRAIT(affected_human, TRAIT_MASOCHISM, LEWDQUIRK_TRAIT)
+	affected_human.pain_limit = 0
 
 ////////////////
 ///NEVERBONER///
@@ -320,12 +214,12 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	resilience = TRAUMA_RESILIENCE_ABSOLUTE
 
 /datum/brain_trauma/special/neverboner/on_gain()
-	var/mob/living/carbon/human/H = owner
-	ADD_TRAIT(H,TRAIT_NEVERBONER, APHRO_TRAIT)
+	var/mob/living/carbon/human/affected_human = owner
+	ADD_TRAIT(affected_human, TRAIT_NEVERBONER, APHRO_TRAIT)
 
 /datum/brain_trauma/special/neverboner/on_lose()
-	var/mob/living/carbon/human/H = owner
-	REMOVE_TRAIT(H,TRAIT_NEVERBONER, APHRO_TRAIT)
+	var/mob/living/carbon/human/affected_human = owner
+	REMOVE_TRAIT(affected_human, TRAIT_NEVERBONER, APHRO_TRAIT)
 
 ////////////
 ///SADISM///
@@ -343,13 +237,13 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 
 /datum/quirk/sadism/post_add()
 	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	H.gain_trauma(/datum/brain_trauma/special/sadism, TRAUMA_RESILIENCE_ABSOLUTE)
+	var/mob/living/carbon/human/affected_human = quirk_holder
+	affected_human.gain_trauma(/datum/brain_trauma/special/sadism, TRAUMA_RESILIENCE_ABSOLUTE)
 
 /datum/quirk/sadism/remove()
 	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	H?.cure_trauma_type(/datum/brain_trauma/special/sadism, TRAUMA_RESILIENCE_ABSOLUTE)
+	var/mob/living/carbon/human/affected_human = quirk_holder
+	affected_human?.cure_trauma_type(/datum/brain_trauma/special/sadism, TRAUMA_RESILIENCE_ABSOLUTE)
 
 /datum/brain_trauma/special/sadism
 	name = "Sadism"
@@ -379,6 +273,46 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 			return TRUE
 	return FALSE
 
+//Shibari update quirks: Rope bunny and rigger. One have additional mood bonus (0) and exist for same reason as ananas affinity, other one can faster tie ropes on character because why not.
+//Rope bunny code
+/datum/quirk/ropebunny
+	name = "Rope bunny"
+	desc = "You love being tied up."
+	value = 0 //ERP Traits don't have price. They are priceless. Ba-dum-tss
+	mob_trait = TRAIT_ROPEBUNNY
+	gain_text = span_danger("You really want to be restrained for some reason.")
+	lose_text = span_notice("Being restrained doesn't arouse you anymore.")
+	icon = "link"
+
+/datum/quirk/ropebunny/post_add()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	ADD_TRAIT(H,TRAIT_ROPEBUNNY, LEWDQUIRK_TRAIT)
+
+/datum/quirk/ropebunny/remove()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	REMOVE_TRAIT(H,TRAIT_ROPEBUNNY, LEWDQUIRK_TRAIT)
+
+//Rigger code
+/datum/quirk/rigger
+	name = "Rigger"
+	desc = "You find the weaving of rope knots on the body wonderful."
+	value = 0 //ERP Traits don't have price. They are priceless. Ba-dum-tss
+	mob_trait = TRAIT_RIGGER
+	gain_text = span_danger("Suddenly you understand rope weaving much better than before.")
+	lose_text = span_notice("Rope knots looks complicated again.")
+	icon = "chain-broken"
+
+/datum/quirk/rigger/post_add()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	ADD_TRAIT(H,TRAIT_RIGGER, LEWDQUIRK_TRAIT)
+
+/datum/quirk/rigger/remove()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	REMOVE_TRAIT(H,TRAIT_RIGGER, LEWDQUIRK_TRAIT)
 /datum/mood_event/sadistic
 	description = span_purple("Others' suffering makes me happier\n")
 

@@ -2,6 +2,12 @@
 "aE" = (
 /obj/structure/closet/crate,
 /obj/machinery/light/small/directional/south,
+/obj/structure/sign/warning/coldtemp{
+	pixel_y = -32
+	},
+/obj/structure/sign/warning/xeno_mining{
+	pixel_x = 29
+	},
 /turf/open/floor/iron/smooth,
 /area/mine/eva)
 "aI" = (
@@ -98,6 +104,11 @@
 	dir = 8
 	},
 /obj/machinery/light/small/directional/west,
+/obj/structure/sign/warning/gasmask{
+	desc = "A sign that warns of dangerous gasses in the air, instructing you to wear internals.";
+	pixel_x = 3;
+	pixel_y = -32
+	},
 /turf/open/floor/iron/dark/side,
 /area/mine/eva)
 "dt" = (
@@ -137,9 +148,9 @@
 /turf/open/floor/wood/large,
 /area/mine/eva)
 "dX" = (
-/obj/structure/fence,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
-/area/icemoon/underground/explored)
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/plating/snowed/icemoon,
+/area/mine/eva)
 "dY" = (
 /obj/effect/decal/remains/human,
 /turf/open/floor/plating/asteroid/snow/icemoon,
@@ -171,11 +182,11 @@
 /turf/open/floor/plating,
 /area/mine/eva)
 "fB" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 4
+/obj/structure/sign/warning/gasmask{
+	desc = "A sign that warns of dangerous gasses in the air, instructing you to wear internals.";
+	pixel_y = -32
 	},
-/obj/machinery/light/small/directional/south,
-/turf/open/floor/plating/snowed/icemoon,
+/turf/open/floor/plating,
 /area/mine/mechbay)
 "fI" = (
 /obj/structure/fence/end{
@@ -197,6 +208,12 @@
 /obj/machinery/power/apc/auto_name/directional/west,
 /turf/open/floor/iron/dark,
 /area/mine/mechbay)
+"gm" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/smooth,
+/area/mine/mechbay)
 "gn" = (
 /obj/structure/fence{
 	dir = 4
@@ -209,6 +226,18 @@
 	},
 /turf/open/floor/iron/freezer,
 /area/mine/eva)
+"gC" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 6
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
+/turf/open/floor/plating/snowed/icemoon,
+/area/icemoon/underground/explored)
 "gF" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/spawner/north,
@@ -303,6 +332,18 @@
 	dir = 1
 	},
 /area/mine/eva)
+"jU" = (
+/obj/machinery/door/airlock/external{
+	glass = 1;
+	name = "Mining Mech Bay External Airlock";
+	opacity = 0;
+	req_access_txt = "48"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "mining-mechbay-external"
+	},
+/turf/open/floor/plating,
+/area/mine/mechbay)
 "ka" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/spawner/west,
@@ -351,11 +392,9 @@
 /turf/open/floor/plating,
 /area/mine/eva)
 "lQ" = (
-/obj/structure/fence/corner{
-	dir = 6
-	},
-/turf/open/floor/plating/asteroid/snow/icemoon,
-/area/icemoon/underground/explored)
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/plating/snowed/smoothed/icemoon,
+/area/mine/eva)
 "lV" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -374,6 +413,10 @@
 /obj/machinery/shower{
 	dir = 1
 	},
+/obj/structure/sign/warning/gasmask{
+	desc = "A sign that warns of dangerous gasses in the air, instructing you to wear internals.";
+	pixel_y = -32
+	},
 /turf/open/floor/iron/smooth,
 /area/mine/eva)
 "mi" = (
@@ -391,6 +434,9 @@
 	},
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
+"mu" = (
+/turf/open/lava/plasma/ice_moon,
+/area/icemoon/underground)
 "mH" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -426,9 +472,6 @@
 "of" = (
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/icemoon/underground/explored)
-"or" = (
-/turf/closed/wall/ice,
-/area/mine/mechbay)
 "oy" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -497,7 +540,7 @@
 /obj/machinery/firealarm/directional/north,
 /obj/machinery/camera{
 	c_tag = "Mining B-2 Hallway";
-	dir = 6
+	dir = 9
 	},
 /turf/open/floor/iron/dark/side{
 	dir = 1
@@ -507,10 +550,11 @@
 /turf/open/genturf,
 /area/icemoon/underground/unexplored/rivers/deep)
 "rQ" = (
-/obj/machinery/light/small/directional/north,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/machinery/camera/directional/north{
 	c_tag = "Mining Mech Bay"
 	},
+/obj/machinery/light/small/directional/north,
 /turf/open/floor/iron/smooth,
 /area/mine/mechbay)
 "sw" = (
@@ -524,8 +568,9 @@
 "sy" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/ore_box,
+/obj/machinery/light/small/directional/west,
 /turf/open/floor/plating/snowed/smoothed/icemoon,
-/area/icemoon/underground/explored)
+/area/mine/eva)
 "sE" = (
 /obj/structure/rack,
 /obj/structure/cable,
@@ -710,7 +755,7 @@
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/camera{
 	c_tag = "Mining Break Room";
-	dir = 6
+	dir = 9
 	},
 /obj/machinery/light_switch/directional/north{
 	pixel_x = 9
@@ -749,6 +794,10 @@
 /obj/machinery/space_heater,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
+/area/mine/eva)
+"CZ" = (
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/plating/snowed/icemoon,
 /area/mine/eva)
 "Dh" = (
 /obj/machinery/vending/coffee,
@@ -802,11 +851,17 @@
 /turf/open/floor/plating/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
 "EL" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 4
+/obj/structure/sign/warning/coldtemp{
+	pixel_y = 32
 	},
-/obj/machinery/light/small/directional/north,
-/turf/open/floor/plating/snowed/icemoon,
+/obj/structure/sign/warning/xeno_mining{
+	pixel_x = 29
+	},
+/obj/structure/rack,
+/obj/item/pickaxe,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/clothing/mask/breath,
+/turf/open/floor/plating,
 /area/mine/mechbay)
 "ER" = (
 /obj/structure/railing{
@@ -837,20 +892,15 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/obj/structure/sign/poster/official/random{
+/obj/structure/sign/warning/gasmask{
+	desc = "A sign that warns of dangerous gasses in the air, instructing you to wear internals.";
+	pixel_x = -2;
 	pixel_y = 32
 	},
 /turf/open/floor/iron/dark/side{
 	dir = 1
 	},
 /area/mine/eva)
-"Fm" = (
-/obj/structure/cable,
-/obj/structure/fence/door/opened,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
-/area/icemoon/underground/explored)
 "Ft" = (
 /obj/structure/fluff/tram_rail/end{
 	dir = 4
@@ -887,8 +937,20 @@
 	},
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/icemoon/underground/explored)
+"Hd" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
+/turf/open/floor/plating/snowed/icemoon,
+/area/icemoon/underground/explored)
 "Hf" = (
-/turf/closed/wall/ice,
+/turf/closed/wall/r_wall,
 /area/mine/eva)
 "Hn" = (
 /obj/effect/turf_decal/tile/brown{
@@ -937,12 +999,8 @@
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
 "IG" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/fence/door,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
-/area/icemoon/underground/explored)
+/turf/closed/wall/r_wall,
+/area/mine/mechbay)
 "IN" = (
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/iron/smooth,
@@ -1022,6 +1080,13 @@
 /obj/structure/window/reinforced/spawner,
 /turf/open/floor/plating,
 /area/mine/eva)
+"LX" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/plating/snowed/smoothed/icemoon,
+/area/mine/mechbay)
 "Mt" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing,
@@ -1061,7 +1126,8 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/sign/poster/official/random{
+/obj/structure/sign/warning/coldtemp{
+	pixel_x = -2;
 	pixel_y = -32
 	},
 /turf/open/floor/iron/dark/side,
@@ -1098,11 +1164,9 @@
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/underground/explored)
 "Om" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
-/turf/open/floor/iron/smooth,
-/area/mine/mechbay)
+/obj/structure/fence,
+/turf/open/floor/plating/snowed/smoothed/icemoon,
+/area/icemoon/underground/explored)
 "Op" = (
 /obj/structure/cable/multilayer/multiz,
 /turf/open/floor/plating/snowed/icemoon,
@@ -1123,7 +1187,21 @@
 /area/mine/eva)
 "OM" = (
 /obj/machinery/airalarm/directional/west,
+/obj/machinery/light/small/directional/west,
 /turf/open/floor/iron/dark,
+/area/mine/mechbay)
+"OW" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 5
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/plating/snowed/icemoon,
 /area/mine/mechbay)
 "Pf" = (
 /obj/effect/turf_decal/tile/brown{
@@ -1165,6 +1243,10 @@
 	dir = 4
 	},
 /obj/machinery/light/small/directional/west,
+/obj/structure/sign/warning/coldtemp{
+	pixel_x = 3;
+	pixel_y = 32
+	},
 /turf/open/floor/iron/dark/side{
 	dir = 1
 	},
@@ -1222,9 +1304,19 @@
 /obj/structure/lattice/catwalk,
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
+"Th" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/fence/door,
+/turf/open/floor/plating/snowed/smoothed/icemoon,
+/area/icemoon/underground/explored)
 "Tm" = (
-/obj/vehicle/ridden/atv/snowmobile,
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/obj/structure/cable,
+/obj/structure/fence/door/opened,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/icemoon/underground/explored)
 "TS" = (
 /obj/effect/turf_decal/stripes/line{
@@ -1232,6 +1324,9 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
+	},
+/obj/structure/sign/warning/xeno_mining{
+	pixel_x = 29
 	},
 /turf/open/floor/plating,
 /area/mine/eva)
@@ -1263,9 +1358,15 @@
 /turf/open/floor/wood/large,
 /area/mine/eva)
 "Ui" = (
-/obj/machinery/door/poddoor/shutters{
-	id = "Dozer_Launch";
-	name = "Mining Mech Bay"
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/external{
+	glass = 1;
+	name = "Mining Mech Bay External Airlock";
+	opacity = 0;
+	req_access_txt = "48"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "mining-mechbay-external"
 	},
 /turf/open/floor/plating,
 /area/mine/mechbay)
@@ -1313,11 +1414,8 @@
 /turf/open/floor/plating/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
 "Vd" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 4
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/icemoon/underground/explored)
+/turf/open/floor/plating,
+/area/mine/mechbay)
 "Vm" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -1340,11 +1438,11 @@
 /turf/open/floor/iron/dark,
 /area/mine/eva)
 "VG" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
+/obj/structure/fence/corner{
+	dir = 6
 	},
-/turf/open/floor/iron/smooth,
-/area/mine/mechbay)
+/turf/open/floor/plating/asteroid/snow/icemoon,
+/area/icemoon/underground/explored)
 "Xi" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -19083,7 +19181,7 @@ Hf
 ka
 ka
 ka
-Jo
+Hf
 dt
 Vq
 Al
@@ -19336,11 +19434,11 @@ TT
 Jk
 Jk
 Oi
-Jo
+Hf
 vT
 hw
 KP
-Jo
+Hf
 Mt
 lp
 ig
@@ -19593,7 +19691,7 @@ Jk
 Jk
 Jk
 tX
-Jo
+Hf
 Jo
 gx
 Jo
@@ -19847,7 +19945,7 @@ uh
 vp
 Jk
 Jk
-Jk
+dX
 Hf
 aI
 Jo
@@ -19856,8 +19954,8 @@ DD
 cZ
 Jo
 aI
-Jo
-Jk
+Hf
+CZ
 Jk
 Jk
 NI
@@ -20360,8 +20458,8 @@ rK
 uh
 vp
 Jk
-Jk
-Jo
+dX
+Hf
 Jo
 Jo
 Jo
@@ -20374,8 +20472,8 @@ Jo
 aI
 aI
 aI
-Jo
-Jo
+Hf
+Hf
 lp
 lp
 rK
@@ -20618,7 +20716,7 @@ uh
 nb
 ZA
 Oi
-Jo
+Hf
 YD
 Jo
 VA
@@ -20632,7 +20730,7 @@ YN
 YN
 Uh
 Dh
-Jo
+Hf
 lp
 lp
 lp
@@ -20874,7 +20972,7 @@ rK
 uh
 Jk
 Hf
-Jo
+Hf
 Jo
 lF
 Xi
@@ -20889,7 +20987,7 @@ OH
 TY
 Uh
 wi
-Jo
+Hf
 lp
 lp
 lp
@@ -21130,7 +21228,7 @@ rK
 rK
 uh
 Jk
-Jo
+Hf
 XO
 lE
 lF
@@ -21146,7 +21244,7 @@ Yn
 Um
 Ej
 va
-Jo
+Hf
 Ng
 lp
 lp
@@ -21387,7 +21485,7 @@ rK
 rK
 uh
 Jk
-Jo
+Hf
 qV
 OA
 lF
@@ -21403,7 +21501,7 @@ dR
 YN
 bt
 Id
-Jo
+Hf
 of
 lp
 lp
@@ -21643,7 +21741,7 @@ rK
 rK
 rK
 uh
-Jo
+Hf
 Jo
 Jo
 Xi
@@ -21900,7 +21998,7 @@ rK
 rK
 rK
 uh
-Jo
+Hf
 Oh
 Co
 lF
@@ -22157,7 +22255,7 @@ rK
 rK
 rK
 uh
-Jo
+Hf
 qV
 Dz
 lF
@@ -22414,7 +22512,7 @@ rK
 rK
 rK
 uh
-Jo
+Hf
 CT
 qV
 Vm
@@ -22430,7 +22528,7 @@ qL
 cF
 hJ
 tH
-or
+IG
 uh
 UP
 lp
@@ -22671,12 +22769,12 @@ rK
 rK
 rK
 uh
-nb
-Jo
-Jo
-Jo
 Hf
-Jo
+Hf
+Hf
+Hf
+Hf
+Hf
 Jo
 LJ
 jy
@@ -22684,7 +22782,7 @@ zk
 Ny
 oc
 ta
-Om
+oc
 oc
 eb
 Xk
@@ -22940,8 +23038,8 @@ Nt
 lZ
 Ny
 rQ
-VG
-oc
+ta
+gm
 IN
 Ki
 Xk
@@ -23196,12 +23294,12 @@ zz
 Nt
 aE
 Ny
-Ui
-Ui
-Ui
 Ny
+Ui
+jU
 Ny
-or
+IG
+IG
 py
 uh
 uh
@@ -23444,19 +23542,19 @@ rK
 UP
 uh
 Em
-Tm
+uh
 of
 of
 of
 Hf
 LJ
 lV
-zk
-Ny
+Hf
+IG
 EL
 Vd
 fB
-or
+IG
 tO
 Op
 aW
@@ -23701,20 +23799,20 @@ rK
 rK
 uh
 gn
-Tm
+uh
 of
 of
 of
+lQ
 of
-of
-gT
-gT
-Fm
-gT
 gT
 gT
 IG
-gT
+IG
+jU
+jU
+IG
+LX
 FP
 Hy
 uh
@@ -23958,20 +24056,20 @@ rK
 rK
 uh
 gn
+uh
+uh
+uh
+of
+of
+of
+of
+gT
 Tm
-uh
-uh
-of
-of
-of
-of
-of
-Em
-uh
-of
-of
-gn
-of
+OW
+Hd
+gC
+Th
+gT
 of
 Hy
 uh
@@ -24214,23 +24312,23 @@ rK
 rK
 rK
 uh
-cU
-iU
-iU
-iU
-iU
-iU
-iU
-GM
-dX
-lQ
+gn
+uh
+uh
+uh
+uh
 of
+of
+of
+of
+Em
 uh
+of
+of
+gn
 uh
-cU
-dX
-dX
-lQ
+of
+Hy
 uh
 uh
 rK
@@ -24471,23 +24569,23 @@ rK
 rK
 rK
 uh
-uh
-uh
-uh
-uh
-uh
-uh
-uh
+cU
+iU
+iU
+iU
+iU
+iU
+iU
+GM
+Om
+VG
 of
 uh
 uh
-uh
-of
-of
-uh
-uh
-uh
-uh
+cU
+Om
+Om
+VG
 uh
 rK
 rK
@@ -24727,25 +24825,25 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-of
-rK
-rK
-UP
+uh
+uh
+uh
+uh
+uh
+uh
+uh
 uh
 of
 uh
-rK
-rK
-rK
-rK
-rK
+uh
+uh
+of
+of
+uh
+uh
+uh
+uh
+uh
 rK
 rK
 rK
@@ -24991,13 +25089,13 @@ rK
 rK
 rK
 rK
+of
 rK
 rK
-rK
-rK
+UP
 uh
+of
 uh
-rK
 rK
 rK
 rK
@@ -25252,8 +25350,8 @@ rK
 rK
 rK
 rK
-of
-rK
+uh
+uh
 rK
 rK
 rK
@@ -25509,7 +25607,7 @@ rK
 rK
 rK
 rK
-rK
+of
 rK
 rK
 rK
@@ -26173,7 +26271,7 @@ rK
 rK
 rK
 rK
-rK
+mu
 rK
 rK
 rK
@@ -26430,9 +26528,9 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
+mu
+mu
+mu
 rK
 rK
 rK
@@ -26688,11 +26786,11 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -26945,11 +27043,11 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -27203,12 +27301,12 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -27461,15 +27559,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 pH
@@ -27720,14 +27818,14 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 pH
@@ -27977,15 +28075,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -28234,15 +28332,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -28491,15 +28589,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -28750,13 +28848,13 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -29007,13 +29105,13 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -29264,14 +29362,14 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -29521,15 +29619,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -29778,15 +29876,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -30036,14 +30134,14 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -30294,13 +30392,13 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -30552,13 +30650,13 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -30809,13 +30907,13 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -31064,15 +31162,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -31320,16 +31418,16 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -31577,16 +31675,16 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -31834,15 +31932,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -32091,15 +32189,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -32347,15 +32445,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -32603,16 +32701,16 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -32860,16 +32958,16 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -33116,17 +33214,17 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -33373,16 +33471,16 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -33630,14 +33728,14 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -33887,14 +33985,14 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -34144,14 +34242,14 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -34401,13 +34499,13 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -34656,14 +34754,14 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -34912,11 +35010,11 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -35169,10 +35267,10 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -36968,15 +37066,15 @@ rK
 rK
 rK
 rK
+mu
+mu
 rK
 rK
 rK
 rK
 rK
 rK
-rK
-rK
-rK
+mu
 rK
 rK
 rK
@@ -37225,15 +37323,15 @@ rK
 rK
 rK
 rK
+mu
+mu
 rK
 rK
 rK
 rK
 rK
 rK
-rK
-rK
-rK
+mu
 rK
 rK
 rK
@@ -37482,15 +37580,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -37739,15 +37837,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -37996,15 +38094,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -38253,15 +38351,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -38510,15 +38608,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -38767,15 +38865,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -39024,15 +39122,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -39280,16 +39378,16 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -39537,16 +39635,16 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -39794,16 +39892,16 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -40051,16 +40149,16 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -40308,15 +40406,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -40565,15 +40663,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -40822,15 +40920,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -41080,14 +41178,14 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -41337,14 +41435,14 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -41594,14 +41692,14 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -41852,13 +41950,13 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -42109,12 +42207,12 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -42366,12 +42464,12 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -42623,12 +42721,12 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -42879,12 +42977,12 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -43136,12 +43234,12 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -43393,12 +43491,12 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -43650,12 +43748,12 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -43907,12 +44005,12 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -44162,14 +44260,14 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -44418,15 +44516,15 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -44674,16 +44772,16 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -44931,16 +45029,16 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -45186,18 +45284,18 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -45443,18 +45541,18 @@ rK
 rK
 rK
 rK
+mu
+mu
+mu
+mu
 rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -45699,20 +45797,20 @@ rK
 rK
 rK
 rK
+mu
+mu
+mu
+mu
 rK
 rK
 rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -45956,6 +46054,8 @@ rK
 rK
 rK
 rK
+mu
+mu
 rK
 rK
 rK
@@ -45965,12 +46065,10 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
+mu
 rK
 rK
 rK
@@ -46213,6 +46311,7 @@ rK
 rK
 rK
 rK
+mu
 rK
 rK
 rK
@@ -46224,10 +46323,9 @@ rK
 rK
 rK
 rK
-rK
-rK
-rK
-rK
+mu
+mu
+mu
 rK
 rK
 rK
@@ -46484,8 +46582,8 @@ rK
 rK
 rK
 rK
-rK
-rK
+mu
+mu
 rK
 rK
 rK

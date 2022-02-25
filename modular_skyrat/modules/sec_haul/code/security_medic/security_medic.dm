@@ -42,8 +42,7 @@
 		/obj/item/reagent_containers/hypospray/medipen/survival/luxury = 5
 	)
 	rpg_title = "Battle Cleric"
-	job_type_flags = JOB_STATION_JOB
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 
 /datum/job/security_medic/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
@@ -96,6 +95,22 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/lockers/closet.dmi'
 	icon_state = "secmed"
 
+/obj/item/storage/belt/security/medic
+	name = "security medic's belt"
+	desc = "A fancy looking security belt emblazoned with markings of the security medic. Sadly only holds security gear."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
+	worn_icon_state = "belt_medic"
+	icon_state = "belt_medic"
+
+/obj/item/storage/belt/security/medic/full/PopulateContents()
+	new /obj/item/reagent_containers/spray/pepper(src)
+	new /obj/item/restraints/handcuffs(src)
+	new /obj/item/grenade/flashbang(src)
+	new /obj/item/assembly/flash/handheld(src)
+	new /obj/item/melee/baton/security/loaded(src)
+	update_appearance()
+
 /obj/structure/closet/secure_closet/security_medic/PopulateContents()
 	..()
 	new /obj/item/clothing/suit/toggle/labcoat/security_medic(src)
@@ -106,5 +121,6 @@
 	new /obj/item/storage/firstaid/emergency(src)
 	new /obj/item/clothing/suit/straight_jacket(src)
 	new /obj/item/storage/belt/medical(src)
-	new /obj/item/storage/belt/security/full(src)
+	new /obj/item/storage/belt/security/medic/full(src)
 	new /obj/item/clothing/under/rank/medical/doctor/red(src)
+	new /obj/item/clothing/under/rank/security/peacekeeper/security_medic/old

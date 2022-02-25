@@ -323,30 +323,6 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
-"bf" = (
-/obj/machinery/power/apc/syndicate{
-	dir = 1;
-	name = "Syndicate Cargo Pod APC";
-	pixel_y = 32;
-	start_charge = 0
-	},
-/obj/structure/cable,
-/obj/structure/closet/crate/secure/gear{
-	req_one_access_txt = "150"
-	},
-/obj/item/circuitboard/machine/circuit_imprinter/offstation,
-/obj/item/circuitboard/machine/protolathe/offstation,
-/obj/item/stack/sheet/iron/twenty,
-/obj/item/stack/sheet/glass{
-	amount = 10
-	},
-/obj/item/stack/cable_coil,
-/obj/item/circuitboard/computer/rdconsole,
-/obj/item/storage/box/stockparts/deluxe,
-/obj/item/storage/box/stockparts/deluxe,
-/obj/item/storage/box/beakers,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/space/has_grav/syndicate_forgotten_cargopod)
 "bg" = (
 /obj/structure/sign/poster/contraband/syndicate_pistol,
 /turf/closed/wall/r_wall/syndicate,
@@ -440,16 +416,6 @@
 /obj/item/card/id/advanced/chameleon,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_cargopod)
-"bv" = (
-/obj/machinery/power/apc/syndicate{
-	dir = 1;
-	name = "Syndicate Forgotten Ship APC";
-	pixel_y = 32;
-	start_charge = 0
-	},
-/obj/structure/cable,
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bw" = (
 /obj/structure/closet/syndicate{
 	anchored = 1;
@@ -1127,15 +1093,6 @@
 /obj/item/clothing/shoes/combat,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
-"dh" = (
-/obj/machinery/camera/xray{
-	c_tag = "Cargo pod";
-	dir = 6;
-	network = list("fsci");
-	screen_loc = ""
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/space/has_grav/syndicate_forgotten_cargopod)
 "di" = (
 /obj/structure/closet/crate/secure/gear{
 	req_one_access_txt = "150"
@@ -1226,6 +1183,40 @@
 /obj/effect/spawner/random/contraband/armory,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"lu" = (
+/obj/machinery/power/apc/syndicate{
+	dir = 1;
+	name = "Syndicate Cargo Pod APC";
+	pixel_y = 25;
+	start_charge = 0
+	},
+/obj/structure/cable,
+/obj/structure/closet/crate/secure/gear{
+	req_one_access_txt = "150"
+	},
+/obj/item/circuitboard/machine/circuit_imprinter/offstation,
+/obj/item/circuitboard/machine/protolathe/offstation,
+/obj/item/stack/sheet/iron/twenty,
+/obj/item/stack/sheet/glass{
+	amount = 10
+	},
+/obj/item/stack/cable_coil,
+/obj/item/circuitboard/computer/rdconsole,
+/obj/item/storage/box/stockparts/deluxe,
+/obj/item/storage/box/stockparts/deluxe,
+/obj/item/storage/box/beakers,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_cargopod)
+"Ai" = (
+/obj/machinery/power/apc/syndicate{
+	dir = 1;
+	name = "Syndicate Forgotten Ship APC";
+	pixel_y = 25;
+	start_charge = 0
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "Ia" = (
 /obj/structure/closet/crate/secure/gear{
 	req_one_access_txt = "150"
@@ -1242,6 +1233,15 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/pod/dark,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
+"OD" = (
+/obj/machinery/camera/xray{
+	c_tag = "Cargo pod";
+	dir = 9;
+	network = list("fsci");
+	screen_loc = ""
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_cargopod)
 "WR" = (
 /obj/structure/closet/crate/secure/gear{
 	req_one_access_txt = "150"
@@ -2363,7 +2363,7 @@ aY
 ba
 ba
 bb
-dh
+OD
 bj
 bm
 bj
@@ -2389,7 +2389,7 @@ bZ
 bO
 bS
 bZ
-bv
+Ai
 aP
 aK
 aP
@@ -2410,7 +2410,7 @@ aY
 aY
 ba
 bb
-bf
+lu
 bh
 bj
 bj

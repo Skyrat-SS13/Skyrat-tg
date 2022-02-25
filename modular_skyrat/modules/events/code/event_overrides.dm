@@ -54,3 +54,41 @@
  */
 /datum/round_event_control/spider_infestation
 	min_players = 70
+
+/**
+ * Meteor Waves
+ *
+ * Weight:
+ * Decreased to see less of this event-- causes too much destruction
+ * Max Occurances:
+ * Decreased so it can only happen once
+ */
+/datum/round_event_control/meteor_wave
+	weight = 3
+	max_occurrences = 1
+
+/datum/round_event_control/meteor_wave/threatening
+	weight = 2
+	max_occurrences = 1
+
+/datum/round_event_control/meteor_wave/catastrophic
+	weight = 1
+	max_occurrences = 1
+
+/**
+ * Sentient Disease
+ *
+ * Removed:
+ * Causes too many casualities on high pop
+ */
+/datum/round_event_control/sentient_disease
+	max_occurrences = 0
+
+/**
+ * Lone Ops
+ *
+ * Removed:
+ * Does not have policy. Will re-add if/when policy is added
+ */
+/datum/round_event_control/operative
+	max_occurrences = 0

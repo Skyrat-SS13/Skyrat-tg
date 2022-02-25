@@ -63,7 +63,7 @@
 			if(no_brain && istype(I, /obj/item/organ/brain))
 				qdel(I)
 				continue
-			if(no_organs && !istype(I, (/obj/item/organ/brain || /obj/item/organ/corticalstack))) //Skyrat edit - Neural Laces -  babyproofed
+			if(no_organs && !istype(I, /obj/item/organ/brain))
 				qdel(I)
 				continue
 			I.Remove(src)

@@ -1,3 +1,5 @@
+#define MAX_IMBUE_STORAGE 250
+
 //the component that is attached to clothes that allows them to be imbued
 //ONLY USE THIS FOR CLOTHING
 /datum/component/reagent_clothing
@@ -20,7 +22,7 @@
 	if(set_slot)
 		checking_slot = set_slot
 	parent_clothing = parent
-	parent_clothing.create_reagents(500, INJECTABLE | REFILLABLE)
+	parent_clothing.create_reagents(MAX_IMBUE_STORAGE, INJECTABLE | REFILLABLE)
 	applying_container = new /obj/item/reagent_containers(src)
 	RegisterSignal(parent_clothing, COMSIG_ITEM_EQUIPPED, .proc/set_wearer)
 	RegisterSignal(parent_clothing, COMSIG_ITEM_PRE_UNEQUIP, .proc/remove_wearer)
@@ -61,8 +63,6 @@
 /datum/component/reagent_weapon
 	///the item that the component is attached to
 	var/obj/item/parent_weapon
-	///the container that will apply the chemicals
-	var/obj/item/reagent_containers/applying_container
 	///the list of imbued reagents that will given to the human owner
 	var/list/imbued_reagent = list()
 
@@ -70,14 +70,12 @@
 	if(!istype(parent, /obj/item))
 		return COMPONENT_INCOMPATIBLE //they need to be weapons, I already said this
 	parent_weapon = parent
-	parent_weapon.create_reagents(500, INJECTABLE | REFILLABLE)
-	applying_container = new /obj/item/reagent_containers(src)
+	parent_weapon.create_reagents(MAX_IMBUE_STORAGE, INJECTABLE | REFILLABLE)
 	RegisterSignal(parent_weapon, COMSIG_ITEM_ATTACK, .proc/inject_attacked)
 
 /datum/component/reagent_weapon/Destroy(force, silent)
 	UnregisterSignal(parent_weapon, COMSIG_ITEM_ATTACK)
 	parent_weapon = null
-	QDEL_NULL(applying_container)
 	return ..()
 
 /datum/component/reagent_weapon/proc/inject_attacked(datum/source, mob/living/target, mob/living/user, params)
@@ -86,5 +84,6 @@
 		return
 	var/mob/living_target = target
 	for(var/create_reagent in imbued_reagent)
-		applying_container.reagents.add_reagent(create_reagent, 0.5)
-		applying_container.reagents.trans_to(target = living_target, amount = 0.5, methods = INJECT)
+		living_target.reagents.add_reagent(create_reagent, 1)
+
+#undef MAX_IMBUE_STORAGE

@@ -101,10 +101,3 @@
 	trapped_borer.forceMove(get_turf(src))
 	trapped_borer = null
 	update_appearance()
-
-/datum/crafting_recipe/cortical_cage
-	name = "Cortical Borer Cage"
-	result = /obj/item/cortical_cage
-	reqs = list(/obj/item/forging/complete/plate = 2,
-				/obj/item/stack/rods = 4)
-	category = CAT_MISC

@@ -19,6 +19,7 @@
 	icon_state = "kiosk"
 	base_icon_state = "kiosk"
 	layer = ABOVE_MOB_LAYER
+	plane = GAME_PLANE_UPPER
 	density = TRUE
 	circuit = /obj/item/circuitboard/machine/medical_kiosk
 	payment_department = ACCOUNT_MED
@@ -235,6 +236,10 @@
 		var/list/trauma_text = list()
 		for(var/t in patient.get_traumas())
 			var/datum/brain_trauma/trauma = t
+			//SKYRAT EDIT: Scary Traits (Bimbo)
+			if(!trauma.display_scanner)
+				continue
+			//SKYRAT EDIT: Scary Traits (Bimbo)
 			var/trauma_desc = ""
 			switch(trauma.resilience)
 				if(TRAUMA_RESILIENCE_SURGERY)

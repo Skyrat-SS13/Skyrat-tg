@@ -24,23 +24,27 @@
 	cost = PAYCHECK_MEDIUM * 1.5
 	access_view = ACCESS_BRIG
 	contains = list(/obj/item/ammo_box/c38/match/bouncy)
-//SKYRAT EDIT REMOVAL BEGIN
-/*
+
+/datum/supply_pack/goody/mars_single
+	name = "Colt Detective Special Single-Pack"
+	desc = "The HoS took your gun and your badge? No problem! Just pay the absurd taxation fee and you too can be reunited with the lethal power of a .38!"
+	cost = PAYCHECK_HARD * 40 //they really mean a premium here
+	access_view = ACCESS_FORENSICS_LOCKERS
+	contains = list(/obj/item/gun/ballistic/revolver/detective)
+
 /datum/supply_pack/goody/stingbang
 	name = "Stingbang Single-Pack"
 	desc = "Contains one \"stingbang\" grenade, perfect for playing meanhearted pranks."
 	cost = PAYCHECK_HARD * 2.5
 	access_view = ACCESS_BRIG
 	contains = list(/obj/item/grenade/stingbang)
-*/
-//SKYRAT EDIT REMOVAL END
+
 /datum/supply_pack/goody/Survivalknives_single
 	name = "Survival Knife Single-Pack"
-	desc = "Contains one sharpened survival knive. Guaranteed to fit snugly inside any Nanotrasen-standard boot."
+	desc = "Contains one sharpened survival knive. Guaranteed to fit snugly inside any Nanotrasen-standard boot. Weapons permit not included." //SKYRAT EDIT - CONTRABAND CLARIFICATION
 	cost = PAYCHECK_HARD * 1.75
 	contains = list(/obj/item/knife/combat/survival)
-//SKYRAT EDIT REMOVAL BEGIN
-/*
+
 /datum/supply_pack/goody/ballistic_single
 	name = "Combat Shotgun Single-Pack"
 	desc = "For when the enemy absolutely needs to be replaced with lead. Contains one Aussec-designed Combat Shotgun, and one Shotgun Bandolier."
@@ -62,24 +66,13 @@
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/weaponcrafting/gunkit/hellgun)
 
-/datum/supply_pack/goody/wt550_single
-	name = "WT-550 Auto Rifle Single-Pack"
-	desc = "Contains one high-powered, semiautomatic rifles chambered in 4.6x30mm." // "high-powered" lol yea right
-	cost = PAYCHECK_HARD * 20
+/datum/supply_pack/goody/thermal_single
+	name = "Thermal Pistol Holster Single-Pack"
+	desc = "Contains twinned thermal pistols in a holster, ready for use in the field."
+	cost = PAYCHECK_HARD * 15
 	access_view = ACCESS_ARMORY
-	contains = list(/obj/item/gun/ballistic/automatic/wt550)
+	contains = list(/obj/item/storage/belt/holster/thermal)
 
-/datum/supply_pack/goody/wt550ammo_single
-	name = "WT-550 Auto Rifle Ammo Single-Pack"
-	desc = "Contains a 20-round magazine for the WT-550 Auto Rifle. Each magazine is designed to facilitate rapid tactical reloads."
-	cost = PAYCHECK_HARD * 6
-	access_view = ACCESS_ARMORY
-	contains = list(/obj/item/ammo_box/magazine/wt550m9)
-
-*/
-//SKYRAT EDIT REMOVAL END
-
-/datum/supply_pack/goody/techbox //SKYRAT EDIT ADDITION
 
 /datum/supply_pack/goody/sologamermitts
 	name = "Insulated Gloves Single-Pack"
@@ -89,7 +82,7 @@
 
 /datum/supply_pack/goody/gripper_single
 	name = "Gripper Gloves Single-Pack"
-	desc = "A spare pair of gripper gloves. Perfect for when the security vendor is empty (or when you're not actually a security officer)."
+	desc = "A spare pair of gripper gloves. Perfect for when the security vendor is empty (or when you're not actually a security officer). Contraband permit not included." //SKYRAT EDIT - CONTRABAND CLARIFICATION
 	cost = PAYCHECK_HARD * 6
 	contains = list(/obj/item/clothing/gloves/tackler)
 

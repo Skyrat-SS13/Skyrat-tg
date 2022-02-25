@@ -91,10 +91,12 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 /datum/loadout_item/glasses/thin
 	name = "Thin Glasses"
 	item_path = /obj/item/clothing/glasses/thin
+	additional_tooltip_contents = list("PRESCRIPTION - This item functions with the 'nearsighted' quirk.")
 
 /datum/loadout_item/glasses/better
 	name = "Modern Glasses"
 	item_path = /obj/item/clothing/glasses/betterunshit
+	additional_tooltip_contents = list("PRESCRIPTION - This item functions with the 'nearsighted' quirk.")
 
 /datum/loadout_item/glasses/eyewrap
 	name = "Eyepatch Wrap"
@@ -111,12 +113,13 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 /datum/loadout_item/glasses/medicpatch
 	name = "Medical Eyepatch"
 	item_path = /obj/item/clothing/glasses/hud/eyepatch/med
-	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST, JOB_PARAMEDIC)
+	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST, JOB_PARAMEDIC, JOB_SECURITY_MEDIC)
 
 /datum/loadout_item/glasses/robopatch
 	name = "Diagnostic Eyepatch"
 	item_path = /obj/item/clothing/glasses/hud/eyepatch/diagnostic
 	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_VANGUARD_OPERATIVE)
+
 /datum/loadout_item/glasses/scipatch
 	name = "Science Eyepatch"
 	item_path = /obj/item/clothing/glasses/hud/eyepatch/sci
@@ -125,22 +128,22 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 /datum/loadout_item/glasses/sechud
 	name = "Security Hud"
 	item_path = /obj/item/clothing/glasses/hud/security
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_SECURITY_SERGEANT, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_CIVIL_DISPUTES_OFFICER)
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_BOUNCER, JOB_ORDERLY, JOB_SCIENCE_GUARD, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD)
 
 /datum/loadout_item/glasses/secpatch
 	name = "Security Eyepatch Hud"
 	item_path = /obj/item/clothing/glasses/hud/eyepatch/sec
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_SECURITY_SERGEANT, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_CIVIL_DISPUTES_OFFICER)
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_BOUNCER, JOB_ORDERLY, JOB_SCIENCE_GUARD, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD)
 
 /datum/loadout_item/glasses/sechud_glasses
 	name = "Prescription Security Hud"
 	item_path = /obj/item/clothing/glasses/hud/security/prescription
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_BOUNCER, JOB_ORDERLY, JOB_SCIENCE_GUARD, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD)
 
 /datum/loadout_item/glasses/medhud_glasses
 	name = "Prescription Medical Hud"
 	item_path = /obj/item/clothing/glasses/hud/health/prescription
-	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST, JOB_PARAMEDIC)
+	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST, JOB_PARAMEDIC, JOB_SECURITY_MEDIC)
 
 /datum/loadout_item/glasses/diaghud_glasses
 	name = "Prescription Diagnostic Hud"
