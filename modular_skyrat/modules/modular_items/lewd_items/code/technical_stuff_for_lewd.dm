@@ -1,3 +1,4 @@
+/*
 //////////////////////////////////////////////////////////////////////////
 //THIS IS NOT HERESY, DO NOT TOUCH IT IN THE NAME OF GOD//////////////////
 //I made this file to prevent myself from touching normal files///////////
@@ -1233,3 +1234,4 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 
 /obj/item/proc/is_in_genital(mob/living/carbon/human/the_guy)
 	return !!(src == the_guy.penis || src == the_guy.vagina || src == the_guy.anus || src == the_guy.nipples)
+*/
