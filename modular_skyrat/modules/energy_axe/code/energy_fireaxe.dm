@@ -11,22 +11,13 @@
 	desc = "You aren't quite sure if this counts as a fire axe anymore, but it sure is fancy! A tag hangs off of it reading: 'properly of the Gorlex Marauders'"
 	force = 5
 	throwforce = 15
-	w_class = WEIGHT_CLASS_BULKY
 	light_system = MOVABLE_LIGHT
 	light_range = 6
 	light_color = COLOR_SOFT_RED
 	light_on = FALSE
-	attack_verb_continuous = list("attacks", "chops", "cleaves", "tears", "lacerates", "cuts")
-	attack_verb_simple = list("attack", "chop", "cleave", "tear", "lacerate", "cut")
 	armour_penetration = 35
-	sharpness = SHARP_EDGED
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
-	special_desc = "An energized fireaxe of Syndicate descent."
-	max_integrity = 200
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 100, ACID = 30)
-	resistance_flags = FIRE_PROOF
-	wound_bonus = -15
-	bare_wound_bonus = 20
+	special_desc = "An energized fire axe used in Syndicate bases for breaking glass, and people."
 
 /obj/item/fireaxe/energy/ComponentInitialize()
 	. = ..()
@@ -40,7 +31,7 @@
 	START_PROCESSING(SSobj, src)
 	set_light_on(TRUE)
 
-//Swap hitsounds into the smack sound
+//Swap hitsounds from energy slash to basic smack sound when unwielded
 
 /obj/item/fireaxe/energy/proc/energy_unwield(obj/item/source, mob/living/carbon/user)
 	SIGNAL_HANDLER
