@@ -20725,12 +20725,14 @@
 	},
 /area/maintenance/port/aft)
 "bEn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
 /obj/structure/sign/poster/contraband/random{
 	pixel_y = 32
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
 /area/maintenance/central)
 "bEp" = (
 /obj/effect/turf_decal/tile/blue{
@@ -39228,16 +39230,6 @@
 /obj/item/analyzer,
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
-"enJ" = (
-/obj/machinery/door/airlock/external{
-	name = "Atmospherics External Airlock";
-	req_access_txt = "24"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/turf/open/floor/plating/airless,
-/area/engineering/atmos)
 "enM" = (
 /obj/item/radio/intercom/directional/west,
 /obj/structure/window/reinforced,
@@ -40157,7 +40149,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron,
-/area/engineering/atmos)
+/area/maintenance/disposal/incinerator)
 "eIs" = (
 /obj/structure/table,
 /obj/machinery/light/directional/west,
@@ -41308,11 +41300,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/command/heads_quarters/captain)
-"fhA" = (
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
-/area/engineering/atmos)
 "fhH" = (
 /obj/structure/flora/grass/jungle/b,
 /obj/structure/flora/ausbushes/fullgrass,
@@ -50036,9 +50023,6 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/sign/poster/official/pda_ad{
-	pixel_y = -32
-	},
 /turf/open/floor/carpet/green,
 /area/service/library)
 "jmh" = (
@@ -52864,7 +52848,7 @@
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
-/area/engineering/atmos)
+/area/maintenance/disposal/incinerator)
 "kxi" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -54701,9 +54685,6 @@
 /obj/item/rcl/pre_loaded,
 /obj/item/storage/crayons,
 /obj/item/storage/crayons,
-/obj/structure/sign/painting/library{
-	pixel_y = 32
-	},
 /turf/open/floor/iron/dark,
 /area/service/library)
 "lnA" = (
@@ -58475,7 +58456,7 @@
 	},
 /obj/effect/turf_decal/bot,
 /obj/item/radio/intercom/directional/north,
-/obj/structure/closet/secure_closet/personal/patient,
+/obj/machinery/suit_storage_unit/medical,
 /turf/open/floor/iron/dark,
 /area/medical/paramedic)
 "mVX" = (
@@ -60377,7 +60358,7 @@
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
-/area/engineering/atmos)
+/area/maintenance/disposal/incinerator)
 "nYd" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -64136,6 +64117,9 @@
 /obj/item/hand_labeler,
 /obj/machinery/light/small/directional/south,
 /obj/item/radio/intercom/directional/east,
+/obj/structure/sign/painting/library{
+	pixel_y = -32
+	},
 /turf/open/floor/iron/dark,
 /area/service/library)
 "pBd" = (
@@ -64577,16 +64561,6 @@
 "pKa" = (
 /turf/closed/wall/r_wall/rust,
 /area/command/heads_quarters/cmo)
-"pKi" = (
-/obj/machinery/door/airlock/external{
-	name = "Atmospherics External Airlock";
-	req_access_txt = "24"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/turf/open/floor/plating/airless,
-/area/engineering/atmos)
 "pKt" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -78670,9 +78644,6 @@
 "wei" = (
 /turf/closed/wall/rust,
 /area/cargo/sorting)
-"wev" = (
-/turf/open/floor/plating,
-/area/engineering/atmos)
 "weD" = (
 /obj/machinery/modular_computer/console/preset/engineering{
 	dir = 4
@@ -108080,7 +108051,7 @@ lnq
 pkU
 pBc
 thp
-bEn
+bRY
 nJY
 xFx
 kbk
@@ -108337,7 +108308,7 @@ lXq
 cRN
 sim
 sim
-bRX
+bEn
 mSA
 gml
 fZk
@@ -109925,7 +109896,7 @@ bvF
 idD
 acm
 rJU
-enJ
+jOO
 aFI
 tIV
 wDG
@@ -110182,7 +110153,7 @@ oaK
 oLp
 tvH
 rJU
-fhA
+kpf
 aFI
 gzy
 tXc
@@ -111210,7 +111181,7 @@ fFk
 rop
 rgj
 nHA
-wev
+tNt
 aFI
 fvj
 rok
@@ -111467,7 +111438,7 @@ mXf
 yfh
 cKv
 wEf
-pKi
+xSr
 aFJ
 aFJ
 aFJ
