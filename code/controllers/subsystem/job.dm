@@ -547,7 +547,7 @@ SUBSYSTEM_DEF(job)
 		//SKYRAT EDIT START - ALTERNATIVE_JOB_TITLES
 		if(chosen_title != default_title)
 			to_chat(player_client, span_infoplain(span_warning("Remember that alternate titles are purely for flavor and roleplay.")))
-			to_chat(player_client, span_infoplain("<span class='doyourjobidiot'>Do not use your \"[chosen_title]\" alt title as an excuse to forego your duties as a [job.title].</span>"))
+			to_chat(player_client, span_infoplain(span_doyourjobidiot("Do not use your \"[chosen_title]\" alt title as an excuse to forego your duties as a [job.title].")))
 		//SKYRAT EDIT END
 		var/related_policy = get_policy(job.title)
 		if(related_policy)

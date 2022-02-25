@@ -29,6 +29,7 @@
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
+	SSopposing_force.give_opfor_button(src) //SKYRAT EDIT - OPFOR SYSTEM
 
 /mob/living/carbon/human/proc/setup_human_dna()
 	//initialize dna. for spawned humans; overwritten by other code

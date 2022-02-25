@@ -352,7 +352,6 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 //////////////////////////////
 /// Breach Control MODsuit ///
 /obj/item/mod/control/pre_equipped/atmospheric/breach_control //Just a different kit as 811 wont be raiding Robotics; otherwise the same look (For now???)
-	theme = /datum/mod_theme/atmospheric
 	theme = /datum/mod_theme/atmospheric/breach_control
 	applied_cell = /obj/item/stock_parts/cell/super
 	initial_modules = list(
@@ -476,7 +475,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	ears = /obj/item/radio/headset/headset_sec/alt
 	l_pocket = /obj/item/restraints/handcuffs
 	id = /obj/item/card/id/advanced/solfed
-	r_hand = /obj/item/gun/ballistic/automatic/assault_rifle/m16
+	r_hand = /obj/item/gun/ballistic/automatic/m16
 	backpack_contents = list(/obj/item/storage/box/handcuffs = 1,
 		/obj/item/melee/baton/security/loaded = 1,
 		/obj/item/ammo_box/magazine/m16 = 4

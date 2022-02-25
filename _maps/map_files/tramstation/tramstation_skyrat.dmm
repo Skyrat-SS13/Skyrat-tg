@@ -1586,7 +1586,7 @@
 /obj/machinery/status_display/ai/directional/south,
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "aky" = (
 /obj/structure/dresser,
 /turf/open/floor/carpet,
@@ -5530,7 +5530,7 @@
 /obj/structure/extinguisher_cabinet/directional/west,
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "aGp" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -5602,8 +5602,9 @@
 	icon_state = "plant-21"
 	},
 /obj/machinery/firealarm/directional/south,
+/obj/machinery/camera/directional/west,
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "aGF" = (
 /turf/closed/wall,
 /area/maintenance/central)
@@ -6245,7 +6246,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "aMf" = (
 /obj/machinery/newscaster/directional/north,
 /obj/structure/table/glass,
@@ -8292,7 +8293,7 @@
 	dir = 9
 	},
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "bij" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -9153,6 +9154,12 @@
 	},
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
+"bzP" = (
+/obj/effect/turf_decal/trimline/purple/filled/corner{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/science/lobby)
 "bzU" = (
 /obj/effect/turf_decal/trimline/brown/filled/corner{
 	dir = 4
@@ -9811,6 +9818,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/primary/tram/left)
+"bLK" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/white,
+/area/science/lobby)
 "bLN" = (
 /obj/effect/spawner/structure/window/reinforced/tinted,
 /turf/open/floor/plating,
@@ -12248,10 +12259,6 @@
 	},
 /area/science/breakroom)
 "cLd" = (
-/obj/machinery/door/airlock/medical{
-	name = "Surgery";
-	req_access_txt = "5"
-	},
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
 	},
@@ -12264,6 +12271,10 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/medical{
+	name = "Surgery";
+	req_access_txt = "45"
+	},
 /turf/open/floor/iron/white,
 /area/medical/surgery)
 "cLf" = (
@@ -13083,6 +13094,7 @@
 	},
 /obj/item/storage/toolbox/mechanical,
 /obj/item/stack/cable_coil,
+/obj/machinery/newscaster/directional/east,
 /turf/open/floor/iron/white,
 /area/science/lab)
 "cXZ" = (
@@ -13970,7 +13982,7 @@
 	pixel_y = 3
 	},
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "dqK" = (
 /obj/machinery/atmospherics/pipe/multiz/scrubbers/visible/layer2{
 	dir = 8
@@ -15811,7 +15823,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
-/obj/machinery/newscaster/directional/north,
 /turf/open/floor/iron/white,
 /area/science/lab)
 "dZi" = (
@@ -23018,6 +23029,11 @@
 "gre" = (
 /turf/closed/wall/r_wall,
 /area/ai_monitored/turret_protected/aisat_interior)
+"grv" = (
+/obj/effect/turf_decal/trimline/purple/filled/line,
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/science/lobby)
 "grP" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -23127,7 +23143,7 @@
 	desc = "A vending machine with various toys. Not for the faint of heart. This one seems to have a reduced inventory.";
 	name = "NanoTrasen Approved LustWish";
 	payment_department = "SEC";
-	products = list(/obj/item/clothing/sextoy/signalvib = 8, /obj/item/assembly/signaler = 0, /obj/item/clothing/sextoy/eggvib = 8, /obj/item/clothing/sextoy/buttplug = 6, /obj/item/clothing/sextoy/nipple_clamps = 4, /obj/item/clothing/sextoy/double_dildo = 3, /obj/item/clothing/sextoy/vibroring = 6, /obj/item/condom_pack = 20, /obj/item/clothing/sextoy/dildo = 8, /obj/item/clothing/sextoy/custom_dildo = 8, /obj/item/tickle_feather = 8, /obj/item/clothing/sextoy/fleshlight = 8, /obj/item/kinky_shocker = 4, /obj/item/clothing/mask/leatherwhip = 4, /obj/item/clothing/sextoy/magic_wand = 4, /obj/item/bdsm_candle = 4, /obj/item/spanking_pad = 4, /obj/item/clothing/sextoy/vibrator = 4, /obj/item/serviette_pack = 10, /obj/item/restraints/handcuffs/lewd = 0, /obj/item/key/collar = 48, /obj/item/pillow = 32, /obj/item/clothing/mask/ballgag = 8, /obj/item/clothing/mask/ballgag/choking = 8, /obj/item/clothing/mask/muzzle/ring = 4, /obj/item/clothing/head/domina_cap = 5, /obj/item/clothing/head/helmet/space/deprivation_helmet = 5, /obj/item/clothing/head/maid = 5, /obj/item/clothing/glasses/blindfold/kinky = 5, /obj/item/clothing/ears/kinky_headphones = 5, /obj/item/clothing/mask/gas/bdsm_mask = 5, /obj/item/reagent_containers/glass/lewd_filter = 5, /obj/item/clothing/glasses/hypno = 4, /obj/item/clothing/head/kitty = 4, /obj/item/clothing/head/rabbitears = 4, /obj/item/clothing/neck/kink_collar = 8, /obj/item/clothing/neck/human_petcollar = 8, /obj/item/clothing/neck/human_petcollar/choker = 8, /obj/item/clothing/neck/human_petcollar/locked/cow = 8, /obj/item/clothing/neck/human_petcollar/locked/bell = 8, /obj/item/clothing/neck/human_petcollar/locked/cross = 8, /obj/item/clothing/neck/human_petcollar/locked/spike = 8, /obj/item/clothing/under/misc/latex_catsuit = 8, /obj/item/clothing/suit/straight_jacket/latex_straight_jacket = 0, /obj/item/clothing/under/costume/maid = 5, /obj/item/clothing/under/rank/civilian/janitor/maid = 5, /obj/item/clothing/under/costume/lewdmaid = 5, /obj/item/clothing/suit/straight_jacket/shackles = 0, /obj/item/clothing/under/stripper_outfit = 5, /obj/item/clothing/under/misc/stripper/bunnysuit = 5, /obj/item/clothing/under/misc/stripper/bunnysuit/white = 5, /obj/item/clothing/under/misc/gear_harness = 4, /obj/item/clothing/gloves/ball_mittens = 8, /obj/item/clothing/gloves/latex_gloves = 8, /obj/item/clothing/gloves/evening = 5, /obj/item/clothing/shoes/latex_socks = 8, /obj/item/clothing/shoes/latexheels = 4, /obj/item/clothing/shoes/dominaheels = 4, /obj/item/clothing/shoes/jackboots/thigh = 3, /obj/item/clothing/shoes/jackboots/knee = 3, /obj/item/clothing/strapon = 6, /obj/item/storage/belt/erpbelt = 5, /obj/item/reagent_containers/pill/crocin = 20, /obj/item/reagent_containers/pill/camphor = 10, /obj/item/reagent_containers/glass/bottle/crocin = 6, /obj/item/reagent_containers/glass/bottle/camphor = 3, /obj/item/reagent_containers/glass/bottle/breast_enlarger = 6, /obj/item/reagent_containers/glass/bottle/penis_enlarger = 6, /obj/item/clothing/glasses/nice_goggles = 1, /obj/item/storage/box/bdsmbed_kit = 0, /obj/item/storage/box/strippole_kit = 0, /obj/item/storage/box/xstand_kit = 0, /obj/item/storage/box/milking_kit = 0)
+	products = list(/obj/item/clothing/sextoy/eggvib/signalvib = 8, /obj/item/assembly/signaler = 0, /obj/item/clothing/sextoy/eggvib = 8, /obj/item/clothing/sextoy/buttplug = 6, /obj/item/clothing/sextoy/nipple_clamps = 4, /obj/item/clothing/sextoy/double_dildo = 3, /obj/item/clothing/sextoy/vibroring = 6, /obj/item/condom_pack = 20, /obj/item/clothing/sextoy/dildo = 8, /obj/item/clothing/sextoy/custom_dildo = 8, /obj/item/tickle_feather = 8, /obj/item/clothing/sextoy/fleshlight = 8, /obj/item/kinky_shocker = 4, /obj/item/clothing/mask/leatherwhip = 4, /obj/item/clothing/sextoy/magic_wand = 4, /obj/item/bdsm_candle = 4, /obj/item/spanking_pad = 4, /obj/item/clothing/sextoy/vibrator = 4, /obj/item/serviette_pack = 10, /obj/item/restraints/handcuffs/lewd = 0, /obj/item/key/collar = 48, /obj/item/pillow = 32, /obj/item/clothing/mask/ballgag = 8, /obj/item/clothing/mask/ballgag/choking = 8, /obj/item/clothing/mask/muzzle/ring = 4, /obj/item/clothing/head/domina_cap = 5, /obj/item/clothing/head/helmet/space/deprivation_helmet = 5, /obj/item/clothing/head/maid = 5, /obj/item/clothing/glasses/blindfold/kinky = 5, /obj/item/clothing/ears/kinky_headphones = 5, /obj/item/clothing/mask/gas/bdsm_mask = 5, /obj/item/reagent_containers/glass/lewd_filter = 5, /obj/item/clothing/glasses/hypno = 4, /obj/item/clothing/head/kitty = 4, /obj/item/clothing/head/rabbitears = 4, /obj/item/clothing/neck/kink_collar = 8, /obj/item/clothing/neck/human_petcollar = 8, /obj/item/clothing/neck/human_petcollar/choker = 8, /obj/item/clothing/neck/human_petcollar/locked/cow = 8, /obj/item/clothing/neck/human_petcollar/locked/bell = 8, /obj/item/clothing/neck/human_petcollar/locked/cross = 8, /obj/item/clothing/neck/human_petcollar/locked/spike = 8, /obj/item/clothing/under/misc/latex_catsuit = 8, /obj/item/clothing/suit/straight_jacket/latex_straight_jacket = 0, /obj/item/clothing/under/costume/maid = 5, /obj/item/clothing/under/rank/civilian/janitor/maid = 5, /obj/item/clothing/under/costume/lewdmaid = 5, /obj/item/clothing/suit/straight_jacket/shackles = 0, /obj/item/clothing/under/stripper_outfit = 5, /obj/item/clothing/under/misc/stripper/bunnysuit = 5, /obj/item/clothing/under/misc/stripper/bunnysuit/white = 5, /obj/item/clothing/under/misc/gear_harness = 4, /obj/item/clothing/gloves/ball_mittens = 8, /obj/item/clothing/gloves/latex_gloves = 8, /obj/item/clothing/gloves/evening = 5, /obj/item/clothing/shoes/latex_socks = 8, /obj/item/clothing/shoes/latexheels = 4, /obj/item/clothing/shoes/dominaheels = 4, /obj/item/clothing/shoes/jackboots/thigh = 3, /obj/item/clothing/shoes/jackboots/knee = 3, /obj/item/clothing/strapon = 6, /obj/item/storage/belt/erpbelt = 5, /obj/item/reagent_containers/pill/crocin = 20, /obj/item/reagent_containers/pill/camphor = 10, /obj/item/reagent_containers/glass/bottle/crocin = 6, /obj/item/reagent_containers/glass/bottle/camphor = 3, /obj/item/reagent_containers/glass/bottle/breast_enlarger = 6, /obj/item/reagent_containers/glass/bottle/penis_enlarger = 6, /obj/item/clothing/glasses/nice_goggles = 1, /obj/item/storage/box/bdsmbed_kit = 0, /obj/item/storage/box/strippole_kit = 0, /obj/item/storage/box/xstand_kit = 0, /obj/item/storage/box/milking_kit = 0)
 	},
 /turf/open/floor/iron,
 /area/security/prison)
@@ -24123,7 +24139,7 @@
 	},
 /obj/item/paper_bin,
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "gNb" = (
 /obj/effect/spawner/random/vending/colavend,
 /obj/effect/turf_decal/tile/neutral,
@@ -24971,8 +24987,9 @@
 "hdH" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "hdO" = (
 /obj/structure/industrial_lift/tram{
 	icon_state = "plating"
@@ -26257,6 +26274,7 @@
 /area/command/heads_quarters/captain/private)
 "hBt" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/secondary/exit)
 "hBE" = (
@@ -28070,6 +28088,12 @@
 /obj/structure/cable,
 /turf/open/floor/catwalk_floor,
 /area/maintenance/tram/left)
+"img" = (
+/obj/effect/turf_decal/trimline/purple/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/science/lobby)
 "ims" = (
 /obj/effect/turf_decal/trimline/neutral/filled/corner{
 	dir = 8
@@ -32895,6 +32919,12 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/miningdock)
+"jWj" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/science/lobby)
 "jWm" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/secure_closet/security/sec,
@@ -34248,8 +34278,9 @@
 /obj/effect/turf_decal/trimline/purple/filled/corner,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "kum" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -34641,6 +34672,9 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"kDJ" = (
+/turf/closed/wall/r_wall,
+/area/science/lobby)
 "kDL" = (
 /obj/effect/turf_decal/trimline/white/line{
 	dir = 5
@@ -35252,7 +35286,7 @@
 "kPK" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "kPW" = (
 /obj/effect/turf_decal/trimline/red/filled/corner{
 	dir = 8
@@ -35614,16 +35648,16 @@
 /turf/open/floor/wood,
 /area/service/theater)
 "kWC" = (
-/obj/machinery/door/airlock/medical/glass{
-	name = "Medical Freezer";
-	req_access_txt = "5"
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/medical/glass{
+	name = "Medical Freezer";
+	req_access_txt = "45"
+	},
 /turf/open/floor/iron/freezer,
 /area/medical/coldroom)
 "kWD" = (
@@ -36255,7 +36289,7 @@
 "lgb" = (
 /obj/machinery/door/airlock/medical/glass{
 	name = "Medical Freezer";
-	req_access_txt = "5"
+	req_access_txt = "45"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -38127,7 +38161,7 @@
 /obj/item/clothing/gloves/color/latex,
 /obj/item/clothing/glasses/science,
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "lSr" = (
 /obj/effect/spawner/random/engineering/tracking_beacon,
 /obj/effect/turf_decal/trimline/neutral/filled/line{
@@ -39175,7 +39209,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "mnK" = (
 /obj/effect/turf_decal/trimline/brown/filled/line,
 /obj/effect/turf_decal/stripes/corner{
@@ -39572,6 +39606,12 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/commons/dorms)
+"mvJ" = (
+/obj/effect/turf_decal/trimline/purple/filled/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/science/lobby)
 "mvT" = (
 /obj/structure/table/wood,
 /obj/item/radio/intercom,
@@ -47369,7 +47409,7 @@
 "pmr" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
-/area/science/research)
+/area/science/lobby)
 "pmA" = (
 /obj/structure/table/glass,
 /obj/structure/window/reinforced{
@@ -47816,7 +47856,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "pwP" = (
 /obj/machinery/door/airlock/mining{
 	name = "Drone Bay";
@@ -49016,6 +49056,7 @@
 /obj/effect/turf_decal/trimline/neutral/corner{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/primary/tram/right)
 "pPe" = (
@@ -49142,7 +49183,7 @@
 "pRp" = (
 /obj/machinery/door/airlock/medical{
 	name = "Surgery";
-	req_access_txt = "5"
+	req_access_txt = "45"
 	},
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
@@ -49751,8 +49792,9 @@
 /area/medical/surgery)
 "qdu" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "qeg" = (
 /obj/effect/turf_decal/trimline/red/filled/corner{
 	dir = 8
@@ -52066,8 +52108,9 @@
 "qXU" = (
 /obj/effect/turf_decal/trimline/purple/filled/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "qXV" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/machinery/light/small/directional/north,
@@ -52221,6 +52264,7 @@
 	pixel_y = -32
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/primary/tram/right)
 "raL" = (
@@ -54070,6 +54114,7 @@
 "rLM" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/firedoor,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/primary/tram/right)
 "rLX" = (
@@ -54225,8 +54270,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/landmark/event_spawn,
 /obj/machinery/destructive_scanner,
+/obj/structure/cable,
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "rPq" = (
 /obj/effect/turf_decal/loading_area,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -55111,6 +55157,10 @@
 /obj/machinery/airalarm/directional/south,
 /turf/open/floor/iron/dark,
 /area/security/interrogation)
+"sdn" = (
+/obj/effect/turf_decal/trimline/purple/filled/corner,
+/turf/open/floor/iron/white,
+/area/science/lobby)
 "sdr" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/landmark/event_spawn,
@@ -56123,7 +56173,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "swA" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
@@ -58227,6 +58277,7 @@
 /obj/effect/turf_decal/trimline/purple/filled/line,
 /obj/effect/turf_decal/trimline/neutral/filled/warning,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/primary/tram/right)
 "tin" = (
@@ -59847,7 +59898,7 @@
 	dir = 5
 	},
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "tKg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet,
@@ -62241,8 +62292,9 @@
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 1
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "uAe" = (
 /obj/structure/transit_tube,
 /obj/effect/turf_decal/sand/plating,
@@ -62867,6 +62919,10 @@
 /obj/item/clothing/mask/breath,
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"uMl" = (
+/obj/effect/turf_decal/trimline/purple/filled/line,
+/turf/open/floor/iron/white,
+/area/science/lobby)
 "uMm" = (
 /obj/structure/table,
 /obj/effect/turf_decal/trimline/purple/filled/line{
@@ -63800,6 +63856,7 @@
 "veM" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/landmark/event_spawn,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/primary/tram/right)
 "vfe" = (
@@ -64018,7 +64075,7 @@
 "vkr" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "vkJ" = (
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 8
@@ -66172,7 +66229,7 @@
 	},
 /obj/item/paicard,
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "wak" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -66288,6 +66345,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen/diner)
+"wco" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/hallway/primary/tram/right)
 "wcz" = (
 /obj/machinery/door/airlock/hatch,
 /obj/effect/decal/cleanable/dirt,
@@ -68619,6 +68682,9 @@
 	},
 /turf/open/floor/iron/white,
 /area/science/cytology)
+"wUM" = (
+/turf/closed/wall,
+/area/science/lobby)
 "wUT" = (
 /obj/structure/fluff/tram_rail/anchor{
 	dir = 1
@@ -69198,7 +69264,7 @@
 "xej" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "xen" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -69549,6 +69615,7 @@
 /obj/effect/turf_decal/trimline/purple/filled/corner,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/trimline/neutral/corner,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/primary/tram/right)
 "xjk" = (
@@ -72034,14 +72101,11 @@
 /obj/item/kirbyplants{
 	icon_state = "plant-21"
 	},
-/obj/machinery/camera{
-	c_tag = "Science - Lobby";
-	dir = 6;
-	network = list("ss13","rd")
-	},
 /obj/effect/landmark/start/hangover,
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/south,
 /turf/open/floor/iron/white,
-/area/science/research)
+/area/science/lobby)
 "xXQ" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/structure/disposalpipe/segment{
@@ -181556,12 +181620,12 @@ ayt
 hko
 aEd
 vZZ
-bJd
+wUM
 pmr
 pmr
 pmr
-der
-der
+kDJ
+kDJ
 kvg
 kvg
 oky
@@ -181818,7 +181882,7 @@ big
 dqE
 waa
 aGm
-bJd
+wUM
 kvg
 akF
 ply
@@ -182071,10 +182135,10 @@ rqh
 aur
 qDM
 pmr
-msN
+jWj
 xej
-qdu
-aPA
+bLK
+bzP
 aGE
 kvg
 sIA
@@ -182328,11 +182392,11 @@ lgw
 pas
 alc
 swz
-lMH
-ngB
+mvJ
+sdn
 mnD
-bLs
-jrL
+img
+uMl
 oky
 bWJ
 xEz
@@ -182583,7 +182647,7 @@ ujT
 ayt
 oDr
 aEh
-sQP
+wco
 hdH
 qdu
 qXU
@@ -182842,11 +182906,11 @@ tld
 aur
 xjf
 aLZ
-bLs
-aPA
+img
+bzP
 pwI
-lMH
-jrL
+mvJ
+grv
 oky
 bWJ
 xEz
@@ -183099,10 +183163,10 @@ lJz
 aEd
 tim
 pmr
-msN
+jWj
 kPK
 vkr
-ngB
+sdn
 xXP
 kvg
 dZf
@@ -183360,7 +183424,7 @@ tJX
 lSf
 gML
 akw
-bJd
+wUM
 kvg
 xXB
 xeG
@@ -183612,12 +183676,12 @@ ayt
 aCA
 aur
 raJ
-bJd
+wUM
 pmr
 pmr
 pmr
-der
-der
+kDJ
+kDJ
 kvg
 kvg
 oky
