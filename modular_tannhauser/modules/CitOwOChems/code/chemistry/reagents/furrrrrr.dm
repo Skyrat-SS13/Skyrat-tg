@@ -22,7 +22,7 @@
 /datum/reagent/OwO/furranium/expose_mob(mob/living/carbon/human/M, method=INJECT, reac_volume)
 	if(method == INJECT)
 		var/turf/T = get_turf(M)
-		M.adjustOxyLoss(reac_volume * 0.5)
+		M.adjustOxyLoss(reac_volume)
 		//M.DefaultCombatKnockdown(50)
 		if(reac_volume >= 10)
 			M.Stun(reac_volume * 0.25)
