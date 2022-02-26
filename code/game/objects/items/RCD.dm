@@ -694,6 +694,10 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 			furnish_delay = 20
 
 /obj/item/construction/rcd/proc/rcd_create(atom/A, mob/user)
+	// SKYRAT EDIT ADDITION
+	if(A.prevent_rcd_deconstruction)
+		return FALSE
+	// SKYRAT EDIT END
 	var/list/rcd_results = A.rcd_vals(user, src)
 	if(!rcd_results)
 		return FALSE

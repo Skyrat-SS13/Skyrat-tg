@@ -813,8 +813,6 @@ new /datum/stack_recipe("paper frame door", /obj/structure/mineral_door/paperfra
 /obj/item/stack/sheet/meat/five
 	amount = 5
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 /obj/item/stack/sheet/pizza
 	name = "pepperoni sheetzzas"
 	desc = "It's a delicious pepperoni sheetzza!"
@@ -831,8 +829,6 @@ new /datum/stack_recipe("paper frame door", /obj/structure/mineral_door/paperfra
 	amount = 20
 /obj/item/stack/sheet/pizza/five
 	amount = 5
-*/
-//SKYRAT EDIT REMOVAL END
 
 /obj/item/stack/sheet/sandblock
 	name = "blocks of sand"
