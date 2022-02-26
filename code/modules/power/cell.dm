@@ -72,7 +72,7 @@
 	. += mutable_appearance(charge_overlay_icon, "cell-o[((charge / maxcharge) >= 0.995) ? 2 : 1]") //SKYRAT EDIT CHANGE
 
 /obj/item/stock_parts/cell/proc/percent() // return % charge of cell
-	return 100*charge/maxcharge
+	return 100 * charge / maxcharge
 
 // use power from a cell
 /obj/item/stock_parts/cell/use(amount, force)
@@ -110,7 +110,7 @@
 		. += "The charge meter reads [charge]/[maxcharge] MF."
 	// SKYRAT EDIT END
 	else
-		. += "The charge meter reads [round(src.percent() )]%."
+		. += "The charge meter reads [CEILING(percent(), 0.1)]%." //so it doesn't say 0% charge when the overlay indicates it still has charge
 
 /obj/item/stock_parts/cell/suicide_act(mob/user)
 	user.visible_message(span_suicide("[user] is licking the electrodes of [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
