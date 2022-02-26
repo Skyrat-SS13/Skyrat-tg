@@ -70,3 +70,6 @@ GLOBAL_LIST_INIT(color_list_ghoul, list( \
 	"Plutonium Blue" = "a5cfcc", \
 	"Marked Red" = "f05b68" \
 ))
+
+/// Generates a list of naga taur uniform sprites in text form.
+GLOBAL_LIST_INIT(naga_taur_uniform_sprites, icon_states('modular_skyrat/master_files/icons/mob/clothing/uniform_taur_snake.dmi'))
