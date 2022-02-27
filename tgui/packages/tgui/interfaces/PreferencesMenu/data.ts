@@ -34,8 +34,10 @@ export type Name = {
   group: string;
 };
 
-export type ServerSpeciesData = {
+export type Species = {
   name: string;
+  desc: string;
+  lore: string[];
   icon: string;
 
   use_skintones: BooleanLike;
@@ -43,11 +45,32 @@ export type ServerSpeciesData = {
 
   enabled_features: string[];
 
+<<<<<<< HEAD
   liked_food: Food[];
   disliked_food: Food[];
   toxic_food: Food[];
 
   veteran_only: boolean; // SKYRAT EDIT - Veteran quirks
+=======
+  perks: {
+    positive: Perk[];
+    negative: Perk[];
+    neutral: Perk[];
+  };
+
+  diet?: {
+    liked_food: Food[];
+    disliked_food: Food[];
+    toxic_food: Food[];
+  };
+
+};
+
+export type Perk = {
+  ui_icon: string;
+  name: string;
+  description: string;
+>>>>>>> 7bb2f0b96ce (De-hardcodes the species preference pages, deleting the species pages and generating them in constant data on the DM side instead (#65140))
 };
 
 export type Department = {
@@ -231,6 +254,6 @@ export type ServerData = {
   random: {
     randomizable: string[];
   };
-  species: Record<string, ServerSpeciesData>;
+  species: Record<string, Species>;
   [otheyKey: string]: unknown;
 };
