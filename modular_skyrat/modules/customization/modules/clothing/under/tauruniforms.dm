@@ -1,4 +1,4 @@
-/// Possible values: 2: Has an alternate sprite. 1: Has no alternate sprite.
+/// Possible values: 2: Has an alternate sprite. 1: Has no alternate sprite. none: Has not been checked.
 /obj/item/var/static/has_snake_alt = list()
 
 /// Check: Is src's (the generated jumpsuit) icon_state equal to a icon within any of the dedicated taur uniform DMI files? If yes, add the relevant bitflag and check other files.
@@ -7,8 +7,7 @@
 	if (mutant_variants & STYLE_TAUR_SNAKE)
 		return
 	if (has_snake_alt[icon_state] == 2)
-		if (!(mutant_variants & STYLE_TAUR_SNAKE))
-			mutant_variants |= STYLE_TAUR_SNAKE
+		mutant_variants |= STYLE_TAUR_SNAKE
 	else if (has_snake_alt[icon_state] == 1)
 		return
 	else if (icon_state in GLOB.naga_taur_uniform_sprites)
