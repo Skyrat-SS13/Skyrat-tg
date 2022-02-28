@@ -21,7 +21,7 @@
 	var/maxamount = 3
 	var/emission_amount = 1
 	var/recharge_timerid
-	var/backblast = TRUE
+	var/backblast = FALSE
 	name = "upgraded disabler"
 	Initialize(mapload)
 		. = ..()
@@ -70,9 +70,9 @@
 		if(!istype(T) || T.planetary_atmos || T.return_air().return_pressure() > (WARNING_HIGH_PRESSURE - 10))
 			return
 		var/datum/gas_mixture/emissions = new
-		ADD_GAS(/datum/gas/water_vapor, emissions.gases)
-		emissions.gases[/datum/gas/water_vapor][MOLES] = emission_amount + (recharge_time / 24)
-		emissions.temperature = BODYTEMP_HEAT_WARNING_2
+		ADD_GAS(/datum/gas/carbon_dioxide, emissions.gases)
+		emissions.gases[/datum/gas/carbon_dioxide][MOLES] = emission_amount + (recharge_time / 64)
+		emissions.temperature = BODYTEMP_HEAT_WARNING_3 // They get hot!
 		T.assume_air(emissions)
 		T.air_update_turf(FALSE, FALSE)
 		if(prob(33))
