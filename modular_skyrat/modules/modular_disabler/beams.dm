@@ -18,7 +18,7 @@
 
 
 /obj/projectile/beam/disabler/weak/shove
-	damage = 18
+	damage = 11 //maybe it will stun you lol
 	projectile_piercing = PASSMOB
 /obj/projectile/beam/disabler/weak/shove/on_hit(atom/target, blocked, pierce_hit)
 	. = ..()
@@ -79,6 +79,8 @@
 			return
 		beepsky_hallucination = new()
 		hit.gain_trauma(beepsky_hallucination, TRAUMA_RESILIENCE_ABSOLUTE)
-		spawn(30 SECONDS)
-		if(beepsky_hallucination)
-			QDEL_NULL(beepsky_hallucination)
+		addtimer(CALLBACK(src, .proc/remove_hallucinate, beepsky_hallucination), 30 SECONDS)
+
+/obj/projectile/beam/disabler/hallucinate/proc/remove_hallucinate(beepsky_hallucination)
+	if(beepsky_hallucination)
+		QDEL_NULL(beepsky_hallucination)
