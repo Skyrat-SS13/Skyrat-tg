@@ -53,6 +53,7 @@
 	desc = "A pile of clay that can be used to create ceramic artwork."
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
 	icon_state = "clay"
+	merge_type = /obj/item/stack/clay
 
 /datum/export/ceramics
 	cost = 1000
