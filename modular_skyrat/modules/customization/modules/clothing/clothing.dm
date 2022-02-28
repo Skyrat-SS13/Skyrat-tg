@@ -46,7 +46,7 @@
  * Finally, if all of the conditions are false, has_taur_sprite for that icon state will be set to false.
  *
  * DO NOT RELY ON THIS PROC TO DO YOUR WORK FOR YOU. If you are adding a new item, or a sprite, you SHOULD be manually setting your mutant_variants flags, otherwise the for
- * loop will be ran and cause slight performance loss.
+ * loop may be ran and cause slight performance loss.
  */
 /obj/item/clothing/proc/handle_taur_sprites() //niko-if i do not come back in a week and entirely refactor how this works gitban me
 	if (istype(src, /obj/item/clothing/suit))
@@ -56,12 +56,12 @@
 		return
 	if (mutant_variants & STYLE_TAUR_ALL)
 		return
-	if (has_taur_sprite[icon_state] == HAS_TAUR_SPRITE)
-		if ((has_taur_snake_sprite[icon_state] == HAS_TAUR_SPRITE) && (!(mutant_variants & STYLE_TAUR_SNAKE)))
+	if (has_taur_sprite[icon_state])
+		if (has_taur_snake_sprite[icon_state] && (!(mutant_variants & STYLE_TAUR_SNAKE)))
 			mutant_variants |= STYLE_TAUR_SNAKE
-		if ((has_taur_horse_sprite[icon_state] == HAS_TAUR_SPRITE) && (!(mutant_variants & STYLE_TAUR_HOOF)))
+		if (has_taur_horse_sprite[icon_state] && (!(mutant_variants & STYLE_TAUR_HOOF)))
 			mutant_variants |= STYLE_TAUR_HOOF
-		if ((has_taur_paw_sprite[icon_state] == HAS_TAUR_SPRITE) && (!(mutant_variants & STYLE_TAUR_PAW)))
+		if (has_taur_paw_sprite[icon_state] && (!(mutant_variants & STYLE_TAUR_PAW)))
 			mutant_variants |= STYLE_TAUR_PAW
 		return // If we already know this icon state has a taur sprite, skip the for loop and take from the cache
 	else if (has_taur_sprite[icon_state] == HAS_NO_TAUR_SPRITE)
@@ -86,7 +86,7 @@
 		taur_sprite = TRUE
 		if (!(mutant_variants & STYLE_TAUR_PAW))
 			mutant_variants |= STYLE_TAUR_PAW
-	if (!(taur_sprite)) // If none of the 3 above if statements are true, it has no alt sprite
+	if (!taur_sprite) // If none of the 3 above if statements are true, it has no alt sprite
 		has_taur_sprite[icon_state] = HAS_NO_TAUR_SPRITE
 
 
@@ -103,17 +103,17 @@
  * Finally, if all of the conditions are false, has_taur_sprite_suit for that icon state will be set to false.
  *
  * DO NOT RELY ON THIS PROC TO DO YOUR WORK FOR YOU. If you are adding a new item, or a sprite, you SHOULD be manually setting your mutant_variants flags, otherwise the for
- * loop will be ran and cause slight performance loss.
+ * loop may be ran and cause slight performance loss.
  */
 /obj/item/clothing/proc/handle_taur_sprites_for_suits()
 	if (mutant_variants & STYLE_TAUR_ALL)
 		return
-	if (has_taur_sprite_suit[icon_state] == HAS_TAUR_SPRITE)
-		if ((has_taur_snake_sprite_suit[icon_state] == HAS_TAUR_SPRITE) && (!(mutant_variants & STYLE_TAUR_SNAKE)))
+	if (has_taur_sprite_suit[icon_state])
+		if (has_taur_snake_sprite_suit[icon_state] && (!(mutant_variants & STYLE_TAUR_SNAKE)))
 			mutant_variants |= STYLE_TAUR_SNAKE
-		if ((has_taur_horse_sprite_suit[icon_state] == HAS_TAUR_SPRITE) && (!(mutant_variants & STYLE_TAUR_HOOF)))
+		if (has_taur_horse_sprite_suit[icon_state] && (!(mutant_variants & STYLE_TAUR_HOOF)))
 			mutant_variants |= STYLE_TAUR_HOOF
-		if ((has_taur_paw_sprite_suit[icon_state] == HAS_TAUR_SPRITE) && (!(mutant_variants & STYLE_TAUR_PAW)))
+		if (has_taur_paw_sprite_suit[icon_state] && (!(mutant_variants & STYLE_TAUR_PAW)))
 			mutant_variants |= STYLE_TAUR_PAW
 		return // If we already know this icon state has a taur sprite, skip the for loop and take from the cache
 	else if (has_taur_sprite_suit[icon_state] == HAS_NO_TAUR_SPRITE)
@@ -138,7 +138,7 @@
 		taur_sprite = TRUE
 		if (!(mutant_variants & STYLE_TAUR_PAW))
 			mutant_variants |= STYLE_TAUR_PAW
-	if (!(taur_sprite)) // If none of the 3 above if statements are true, it has no alt sprite
+	if (!taur_sprite) // If none of the 3 above if statements are true, it has no alt sprite
 		has_taur_sprite_suit[icon_state] = HAS_NO_TAUR_SPRITE
 
 
