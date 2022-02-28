@@ -19,6 +19,129 @@
 	var/greyscale_config_worn_taur_paw
 	var/greyscale_config_worn_taur_hoof
 
+	var/static/has_alt_sprite = list()
+	var/static/has_alt_snake_sprite = list()
+	var/static/has_alt_paw_sprite = list()
+	var/static/has_alt_horse_sprite = list()
+
+	var/static/has_alt_sprite_suit = list()
+	var/static/has_alt_snake_sprite_suit = list()
+	var/static/has_alt_paw_sprite_suit = list()
+	var/static/has_alt_horse_sprite_suit = list()
+
+/obj/item/clothing/Initialize(mapload)
+	. = ..()
+	handle_taur_sprites()
+
+// Convert this to obj/item if you need to make a item sprite. It'll become more intensive due to it, but yeah
+
+/**
+ * Called in /obj/item/clothing/Initialize().
+ *
+ * Quits instantly if mutant_variants has STYLE_TAUR_ALL, then checks to see if the clothing's icon state has an alt sprite for taurs. If no, it then checks to see if
+ * the icon state EXPLICITELY has no taur sprites. If no, it then checks 3 DMI files for the icon_state, and if it appears in any of them, has_alt_sprite is set to
+ * true for that icon state, then it sets the more specific list to true for that state, and finally the specific mutant_variants bitflag for the clothing if the
+ * clothing doesnt already have it.
+ *
+ * Finally, if all of the conditions are false, has_alt_sprite for that icon state will be set to false.
+ *
+ * DO NOT RELY ON THIS PROC TO DO YOUR WORK FOR YOU. If you are adding a new item, or a sprite, you SHOULD be manually setting your mutant_variants flags, otherwise this proc
+ * will be called and cause slight performance loss.
+ */
+/obj/item/clothing/proc/handle_taur_sprites() //niko-if i do not come back in a week and entirely refactor how this works gitban me
+	if (istype(src, /obj/item/clothing/suit))
+		handle_taur_sprites_for_suits()
+		return
+	if (!(istype(src, /obj/item/clothing/under)))
+		return
+	if (mutant_variants & STYLE_TAUR_ALL)
+		return
+	if (has_alt_sprite[icon_state] == HAS_ALT_SPRITE)
+		if ((has_alt_snake_sprite[icon_state] == HAS_ALT_SPRITE) && (!(mutant_variants & STYLE_TAUR_SNAKE)))
+			mutant_variants |= STYLE_TAUR_SNAKE
+		if ((has_alt_horse_sprite[icon_state] == HAS_ALT_SPRITE) && (!(mutant_variants & STYLE_TAUR_HOOF)))
+			mutant_variants |= STYLE_TAUR_HOOF
+		if ((has_alt_paw_sprite[icon_state] == HAS_ALT_SPRITE) && (!(mutant_variants & STYLE_TAUR_PAW)))
+			mutant_variants |= STYLE_TAUR_PAW
+		return
+	else if (has_alt_sprite[icon_state] == HAS_NO_ALT_SPRITE)
+		return
+	// Code only goes here if has_alt_sprite[] == nothing, AKA if init has never been ran
+	var/has_alt = FALSE
+	if (icon_state in GLOB.naga_taur_uniform_sprites)
+		has_alt_sprite[icon_state] = HAS_ALT_SPRITE
+		has_alt_snake_sprite[icon_state] = HAS_ALT_SPRITE
+		has_alt = TRUE
+		if (!(mutant_variants & STYLE_TAUR_SNAKE))
+			mutant_variants |= STYLE_TAUR_SNAKE
+	if (icon_state in GLOB.horse_taur_uniform_sprites)
+		has_alt_sprite[icon_state] = HAS_ALT_SPRITE
+		has_alt_horse_sprite[icon_state] = HAS_ALT_SPRITE
+		has_alt = TRUE
+		if (!(mutant_variants & STYLE_TAUR_HOOF))
+			mutant_variants |= STYLE_TAUR_HOOF
+	if (icon_state in GLOB.pawed_taur_uniform_sprites)
+		has_alt_sprite[icon_state] = HAS_ALT_SPRITE
+		has_alt_paw_sprite[icon_state] = HAS_ALT_SPRITE
+		has_alt = TRUE
+		if (!(mutant_variants & STYLE_TAUR_PAW))
+			mutant_variants |= STYLE_TAUR_PAW
+	if (!(has_alt)) // If none of the 3 above if statements are true, it has no alt sprite
+		has_alt_sprite[icon_state] = HAS_NO_ALT_SPRITE
+
+
+/**
+ * Called in handle_taur_sprites().
+ *
+ * Suit variation of handle_taur_sprites().
+ *
+ * Quits instantly if mutant_variants has STYLE_TAUR_ALL, then checks to see if the clothing's icon state has an alt sprite for taurs. If no, it then checks to see if
+ * the icon state EXPLICITELY has no taur sprites. If no, it then checks 3 DMI files for the icon_state, and if it appears in any of them, has_alt_sprite is set to
+ * true for that icon state, then it sets the more specific list to true for that state, and finally the specific mutant_variants bitflag for the clothing if the
+ * clothing doesnt already have it.
+ *
+ * Finally, if all of the conditions are false, has_alt_sprite for that icon state will be set to false.
+ *
+ * DO NOT RELY ON THIS PROC TO DO YOUR WORK FOR YOU. If you are adding a new item, or a sprite, you SHOULD be manually setting your mutant_variants flags, otherwise this proc
+ * will be called and cause slight performance loss.
+ */
+/obj/item/clothing/proc/handle_taur_sprites_for_suits()
+	if (mutant_variants & STYLE_TAUR_ALL)
+		return
+	if (has_alt_sprite_suit[icon_state] == HAS_ALT_SPRITE)
+		if ((has_alt_snake_sprite_suit[icon_state] == HAS_ALT_SPRITE) && (!(mutant_variants & STYLE_TAUR_SNAKE)))
+			mutant_variants |= STYLE_TAUR_SNAKE
+		if ((has_alt_horse_sprite_suit[icon_state] == HAS_ALT_SPRITE) && (!(mutant_variants & STYLE_TAUR_HOOF)))
+			mutant_variants |= STYLE_TAUR_HOOF
+		if ((has_alt_paw_sprite_suit[icon_state] == HAS_ALT_SPRITE) && (!(mutant_variants & STYLE_TAUR_PAW)))
+			mutant_variants |= STYLE_TAUR_PAW
+		return
+	else if (has_alt_sprite_suit[icon_state] == HAS_NO_ALT_SPRITE)
+		return
+	// Code only goes here if has_alt_sprite[] == nothing, AKA if init has never been ran
+	var/has_alt_suit = FALSE
+	if (icon_state in GLOB.naga_taur_suit_sprites)
+		has_alt_sprite_suit[icon_state] = HAS_ALT_SPRITE
+		has_alt_snake_sprite_suit[icon_state] = HAS_ALT_SPRITE
+		has_alt_suit = TRUE
+		if (!(mutant_variants & STYLE_TAUR_SNAKE))
+			mutant_variants |= STYLE_TAUR_SNAKE
+	if (icon_state in GLOB.horse_taur_suit_sprites)
+		has_alt_sprite_suit[icon_state] = HAS_ALT_SPRITE
+		has_alt_horse_sprite_suit[icon_state] = HAS_ALT_SPRITE
+		has_alt_suit = TRUE
+		if (!(mutant_variants & STYLE_TAUR_HOOF))
+			mutant_variants |= STYLE_TAUR_HOOF
+	if (icon_state in GLOB.pawed_taur_suit_sprites)
+		has_alt_sprite_suit[icon_state] = HAS_ALT_SPRITE
+		has_alt_paw_sprite_suit[icon_state] = HAS_ALT_SPRITE
+		has_alt_suit = TRUE
+		if (!(mutant_variants & STYLE_TAUR_PAW))
+			mutant_variants |= STYLE_TAUR_PAW
+	if (!(has_alt_suit)) // If none of the 3 above if statements are true, it has no alt sprite
+		has_alt_sprite_suit[icon_state] = HAS_NO_ALT_SPRITE
+
+
 /obj/item/clothing/head
 	mutant_variants = STYLE_MUZZLE | STYLE_VOX
 
