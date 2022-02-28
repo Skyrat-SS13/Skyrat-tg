@@ -33,7 +33,9 @@
 	. = ..()
 	handle_taur_sprites()
 
-// Convert this to obj/item if you need to make a item sprite. It'll become more intensive due to it, but yeah
+// NOTE FOR BOTH HANDLE_TAUR PROCS: These CAN be converted to handle other things, like digi sprites, or to be ran on init of ANY item. But be aware: For every dependancy you
+// add (digi sprites), you also add a for loop on init, which costs CPU time. The bigger the lists, and the more lists, the more memory we use. We want to use the least amount
+// of lists and loops as possible, and the cache system I set up doesn't completely get rid of the costs.
 
 /**
  * Called in /obj/item/clothing/Initialize().
