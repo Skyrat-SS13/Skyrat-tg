@@ -79,6 +79,9 @@
 			if(!special_accessory_style && (OFFSET_ACCESSORY in dna.species.offset_features))
 				U.accessory_overlay.pixel_x = dna.species.offset_features[OFFSET_ACCESSORY][1]
 				U.accessory_overlay.pixel_y = dna.species.offset_features[OFFSET_ACCESSORY][2]
+				if(applied_style & STYLE_TAUR_ALL) //override for taurs which are not a species
+					U.accessory_overlay.pixel_x += 16
+
 
 		if(OFFSET_UNIFORM in dna.species.offset_features)
 			uniform_overlay.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]

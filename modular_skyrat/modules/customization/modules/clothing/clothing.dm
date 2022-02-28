@@ -108,7 +108,7 @@
  * loop may be ran and cause slight performance loss.
  */
 /obj/item/clothing/proc/handle_taur_sprites_for_suits()
-	if (mutant_variants & STYLE_TAUR_ALL)
+	if (mutant_variants & STYLE_TAUR)
 		return
 	if (has_taur_sprite_suit[icon_state])
 		if (has_taur_snake_sprite_suit[icon_state] && (!(mutant_variants & STYLE_TAUR_SNAKE)))
@@ -142,7 +142,6 @@
 			mutant_variants |= STYLE_TAUR_PAW
 	if (!taur_sprite) // If none of the 3 above if statements are true, it has no alt sprite
 		has_taur_sprite_suit[icon_state] = HAS_NO_TAUR_SPRITE
-
 
 /obj/item/clothing/head
 	mutant_variants = STYLE_MUZZLE | STYLE_VOX
