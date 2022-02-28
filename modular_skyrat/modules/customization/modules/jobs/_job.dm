@@ -62,7 +62,7 @@
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS, "Paraplegic" = TRUE)
 
 /datum/job/brigoff
-	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
+	banned_quirks = list(SEC_RESTRICTED_QUIRKS, "Paraplegic" = TRUE)
 
 /datum/job/blueshield
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS, "Paraplegic" = TRUE)
