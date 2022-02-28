@@ -16,7 +16,7 @@
 		return ..()
 	if(istype(attacking_item, /obj/item/forging/hammer))
 		var/obj/item/forging/hammer/attacking_hammer = attacking_item
-		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER) * attacking_hammer.work_time
+		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER) * attacking_hammer.toolspeed
 		while(atom_integrity < max_integrity)
 			if(!do_after(user, skill_modifier, src))
 				return
@@ -185,7 +185,7 @@
 		return ..()
 	if(istype(attacking_item, /obj/item/forging/hammer))
 		var/obj/item/forging/hammer/attacking_hammer = attacking_item
-		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER) * attacking_hammer.work_time
+		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER) * attacking_hammer.toolspeed
 		while(atom_integrity < max_integrity)
 			if(!do_after(user, skill_modifier, src))
 				return

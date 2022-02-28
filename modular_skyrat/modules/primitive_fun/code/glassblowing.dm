@@ -1,15 +1,4 @@
-#define DEFAULT_TIMED 5 SECONDS
-#define MASTER_TIMED 2 SECONDS
-
-/obj/item/skillchip/glassblowing_master
-	name = "Glassblowing Master skillchip"
-	desc = "A master of glass, perhaps even capable of creating life from glass and fire."
-	auto_traits = list(TRAIT_GLASSBLOWING_MASTER)
-	skill_name = "Glass-Blowing Master"
-	skill_description = "Master the ability to use glass within glassblowing."
-	skill_icon = "certificate"
-	activate_message = span_notice("The faults within the glass are now to be seen.")
-	deactivate_message = span_notice("Glass becomes more obscured.")
+#define DEFAULT_TIMED 4 SECONDS
 
 /obj/item/glassblowing
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
@@ -59,20 +48,19 @@
 	name = "molten glass"
 	desc = "A glob of molten glass, ready to be shaped into art."
 	icon_state = "molten_glass"
-	///the time check against world.time if its still molten / requires heating up
-	var/world_molten = 0
-	var/list/required_actions = list(0,0,0,0,0) //blowing, spinning, paddles, shears, jacks
+	//the cooldown if its still molten / requires heating up
+	COOLDOWN_DECLARE(remaining_heat)
+	///the list of required steps to produce the chosen_item: blowing, spinning, paddles, shears, jacks
+	var/list/required_actions = list(0,0,0,0,0)
+	///the list of current steps: blowing, spinning, paddles, shears, jacks
 	var/list/current_actions = list(0,0,0,0,0)
+	///the typepath of the item that will be produced when the required actions are met
 	var/chosen_item
-
-/obj/item/glassblowing/molten_glass/Initialize()
-	. = ..()
-	world_molten = world.time + 15 SECONDS
 
 /obj/item/glassblowing/molten_glass/examine(mob/user)
 	. = ..()
-	if(world_molten < world.time)
-		. += span_notice("[src] has cooled down and will require reheating to modify!")
+	if(COOLDOWN_FINISHED(src, remaining_heat))
+		. += span_warning("[src] has cooled down and will require reheating to modify!")
 	if(required_actions[1])
 		. += "You require [required_actions[1]] blowing actions!"
 		. += "You currently have [current_actions[1]] blowing actions!"
@@ -93,7 +81,7 @@
 	if(!isliving(user))
 		return ..()
 	var/mob/living/living_user = user
-	if(world_molten >= world.time)
+	if(!COOLDOWN_FINISHED(src, remaining_heat))
 		to_chat(living_user, span_warning("You burn your hands trying to pick up [src]!"))
 		living_user.adjustFireLoss(15)
 		user.dropItemToGround(src)
@@ -105,6 +93,7 @@
 	desc = "A tool that is used to hold the molten glass as well as help shape it."
 	icon_state = "blow_pipe_empty"
 	var/in_use = FALSE
+	tool_behaviour = TOOL_BLOWROD
 
 /datum/crafting_recipe/glass_blowing_rod
 	name = "Glass-blowing Blowing Rod"
@@ -115,24 +104,30 @@
 /obj/item/glassblowing/blowing_rod/examine(mob/user)
 	. = ..()
 	var/obj/item/glassblowing/molten_glass/find_glass = locate() in contents
-	if(find_glass)
-		if(find_glass.required_actions[1])
-			. += "You require [find_glass.required_actions[1]] blowing actions!"
-			. += "You currently have [find_glass.current_actions[1]] blowing actions!"
-		if(find_glass.required_actions[2])
-			. += "You require [find_glass.required_actions[2]] spinning actions!"
-			. += "You currently have [find_glass.current_actions[2]] spinning actions!"
-		if(find_glass.required_actions[3])
-			. += "You require [find_glass.required_actions[3]] paddling actions!"
-			. += "You currently have [find_glass.current_actions[3]] paddling actions!"
-		if(find_glass.required_actions[4])
-			. += "You require [find_glass.required_actions[4]] shearing actions!"
-			. += "You currently have [find_glass.current_actions[4]] shearing actions!"
-		if(find_glass.required_actions[5])
-			. += "You require [find_glass.required_actions[5]] jacking actions!"
-			. += "You currently have [find_glass.current_actions[5]] jacking actions!"
+	if(!find_glass)
+		return
+	if(COOLDOWN_FINISHED(find_glass, remaining_heat))
+		. += span_warning("[src] has cooled down and will require reheating to modify!")
+	if(find_glass.required_actions[1])
+		. += "You require [find_glass.required_actions[1]] blowing actions!"
+		. += "You currently have [find_glass.current_actions[1]] blowing actions!"
+	if(find_glass.required_actions[2])
+		. += "You require [find_glass.required_actions[2]] spinning actions!"
+		. += "You currently have [find_glass.current_actions[2]] spinning actions!"
+	if(find_glass.required_actions[3])
+		. += "You require [find_glass.required_actions[3]] paddling actions!"
+		. += "You currently have [find_glass.current_actions[3]] paddling actions!"
+	if(find_glass.required_actions[4])
+		. += "You require [find_glass.required_actions[4]] shearing actions!"
+		. += "You currently have [find_glass.current_actions[4]] shearing actions!"
+	if(find_glass.required_actions[5])
+		. += "You require [find_glass.required_actions[5]] jacking actions!"
+		. += "You currently have [find_glass.current_actions[5]] jacking actions!"
 
-/obj/item/glassblowing/blowing_rod/proc/check_valid_table()
+/obj/item/glassblowing/blowing_rod/proc/check_valid_table(mob/living/user)
+	var/skill_level = user.mind.get_skill_level(/datum/skill/production)
+	if(skill_level >= SKILL_LEVEL_MASTER) //as a master, you can skip tables
+		return TRUE
 	for(var/obj/structure/table/check_table in range(1, get_turf(src)))
 		if(!(check_table.resistance_flags & FLAMMABLE))
 			return TRUE //if you can find a table that is not flammable, good
@@ -145,7 +140,7 @@
 		var/obj/item/glassblowing/molten_glass/attacking_glass = target
 		var/obj/item/glassblowing/molten_glass/find_glass = locate() in contents
 		if(find_glass)
-			to_chat(user, span_warning("[src] already has some glass on it still!"))
+			to_chat(user, span_warning("[src] already has some glass on it!"))
 			return
 		attacking_glass.forceMove(src)
 		to_chat(user, span_notice("[src] picks up [target]."))
@@ -154,7 +149,7 @@
 	return ..()
 
 /obj/item/glassblowing/blowing_rod/attackby(obj/item/I, mob/living/user, params)
-	var/actioning_speed = HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER) ? MASTER_TIMED : DEFAULT_TIMED
+	var/actioning_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * DEFAULT_TIMED
 	var/obj/item/glassblowing/molten_glass/find_glass = locate() in contents
 
 	if(istype(I, /obj/item/glassblowing/molten_glass))
@@ -170,7 +165,7 @@
 		if(in_use)
 			return
 		in_use = TRUE
-		if(!check_valid_table())
+		if(!check_valid_table(user))
 			to_chat(user, span_warning("You must be near a non-flammable table!"))
 			in_use = FALSE
 			return
@@ -179,20 +174,21 @@
 			to_chat(user, span_warning("You interrupt an action!"))
 			in_use = FALSE
 			return
-		if(!check_valid_table())
+		if(!check_valid_table(user))
 			to_chat(user, span_warning("You must be near a non-flammable table!"))
 			in_use = FALSE
 			return
 		find_glass.current_actions[3]++
 		to_chat(user, span_notice("You finish using [I] on [src]."))
 		in_use = FALSE
+		user.mind.adjust_experience(/datum/skill/production, 10)
 		return
 
 	if(istype(I, /obj/item/glassblowing/shears))
 		if(in_use)
 			return
 		in_use = TRUE
-		if(!check_valid_table())
+		if(!check_valid_table(user))
 			to_chat(user, span_warning("You must be near a non-flammable table!"))
 			in_use = FALSE
 			return
@@ -201,20 +197,21 @@
 			to_chat(user, span_warning("You interrupt an action!"))
 			in_use = FALSE
 			return
-		if(!check_valid_table())
+		if(!check_valid_table(user))
 			to_chat(user, span_warning("You must be near a non-flammable table!"))
 			in_use = FALSE
 			return
 		find_glass.current_actions[4]++
 		to_chat(user, span_notice("You finish using [I] on [src]."))
 		in_use = FALSE
+		user.mind.adjust_experience(/datum/skill/production, 10)
 		return
 
 	if(istype(I, /obj/item/glassblowing/jacks))
 		if(in_use)
 			return
 		in_use = TRUE
-		if(!check_valid_table())
+		if(!check_valid_table(user))
 			to_chat(user, span_warning("You must be near a non-flammable table!"))
 			in_use = FALSE
 			return
@@ -223,23 +220,24 @@
 			to_chat(user, span_warning("You interrupt an action!"))
 			in_use = FALSE
 			return
-		if(!check_valid_table())
+		if(!check_valid_table(user))
 			to_chat(user, span_warning("You must be near a non-flammable table!"))
 			in_use = FALSE
 			return
 		find_glass.current_actions[5]++
 		to_chat(user, span_notice("You finish using [I] on [src]."))
 		in_use = FALSE
+		user.mind.adjust_experience(/datum/skill/production, 10)
 		return
 
 	return ..()
 
 /obj/item/glassblowing/blowing_rod/attack_self(mob/user, modifiers)
-	var/actioning_speed = HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER) ? MASTER_TIMED : DEFAULT_TIMED
 	var/obj/item/glassblowing/molten_glass/find_glass = locate() in contents
+	var/actioning_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * DEFAULT_TIMED
 
 	if(find_glass)
-		if(find_glass.world_molten < world.time)
+		if(COOLDOWN_FINISHED(find_glass, remaining_heat))
 			to_chat(user, span_warning("The glass has cooled down far too much to be handled..."))
 			return
 		if(in_use)
@@ -276,7 +274,7 @@
 				return
 			switch(action_choice)
 				if("Blow")
-					if(!check_valid_table())
+					if(!check_valid_table(user))
 						to_chat(user, span_warning("You must be near a non-flammable table!"))
 						in_use = FALSE
 						return
@@ -285,14 +283,15 @@
 						to_chat(user, span_warning("You interrupt an action!"))
 						in_use = FALSE
 						return
-					if(!check_valid_table())
+					if(!check_valid_table(user))
 						to_chat(user, span_warning("You must be near a non-flammable table!"))
 						in_use = FALSE
 						return
 					find_glass.current_actions[1]++
 					to_chat(user, span_notice("You finish blowing [src]."))
+					user.mind.adjust_experience(/datum/skill/production, 10)
 				if("Spin")
-					if(!check_valid_table())
+					if(!check_valid_table(user))
 						to_chat(user, span_warning("You must be near a non-flammable table!"))
 						in_use = FALSE
 						return
@@ -301,41 +300,48 @@
 						to_chat(user, span_warning("You interrupt an action!"))
 						in_use = FALSE
 						return
-					if(!check_valid_table())
+					if(!check_valid_table(user))
 						to_chat(user, span_warning("You must be near a non-flammable table!"))
 						in_use = FALSE
 						return
 					find_glass.current_actions[2]++
 					to_chat(user, span_notice("You finish spinning [src]."))
+					user.mind.adjust_experience(/datum/skill/production, 10)
 				if("Remove")
 					if(find_glass.current_actions[1] < find_glass.required_actions[1])
 						in_use = FALSE
 						find_glass.forceMove(get_turf(src))
+						icon_state = "blow_pipe_empty"
 						return
 					if(find_glass.current_actions[2] < find_glass.required_actions[2])
 						in_use = FALSE
 						find_glass.forceMove(get_turf(src))
+						icon_state = "blow_pipe_empty"
 						return
 					if(find_glass.current_actions[3] < find_glass.required_actions[3])
 						in_use = FALSE
 						find_glass.forceMove(get_turf(src))
+						icon_state = "blow_pipe_empty"
 						return
 					if(find_glass.current_actions[4] < find_glass.required_actions[4])
 						in_use = FALSE
 						find_glass.forceMove(get_turf(src))
+						icon_state = "blow_pipe_empty"
 						return
 					if(find_glass.current_actions[5] < find_glass.required_actions[5])
 						in_use = FALSE
 						find_glass.forceMove(get_turf(src))
+						icon_state = "blow_pipe_empty"
 						return
 					new find_glass.chosen_item(get_turf(src))
+					user.mind.adjust_experience(/datum/skill/production, 30)
 					in_use = FALSE
 					qdel(find_glass)
+					icon_state = "blow_pipe_empty"
 					return
 			in_use = FALSE
 			return
 	return ..()
-
 
 /obj/item/glassblowing/jacks
 	name = "jacks"
@@ -392,4 +398,3 @@
 	return ..()
 
 #undef DEFAULT_TIMED
-#undef MASTER_TIMED
