@@ -50,7 +50,7 @@
 
 //Security
 /datum/job/security_officer
-	banned_quirks = list(SEC_RESTRICTED_QUIRKS, "Paraplegic" = TRUE)
+	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
 /datum/job/detective
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS, "Blind" = TRUE)
@@ -59,13 +59,11 @@
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
 /datum/job/security_medic
-	banned_quirks = list(SEC_RESTRICTED_QUIRKS, "Paraplegic" = TRUE)
+	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
-/datum/job/brigoff
-	banned_quirks = list(SEC_RESTRICTED_QUIRKS, "Paraplegic" = TRUE)
 
 /datum/job/blueshield
-	banned_quirks = list(SEC_RESTRICTED_QUIRKS, "Paraplegic" = TRUE)
+	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
 /datum/job/nanotrasen_representative
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
