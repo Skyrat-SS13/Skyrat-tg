@@ -56,38 +56,38 @@
 		return
 	if (mutant_variants & STYLE_TAUR_ALL)
 		return
-	if (has_alt_sprite[icon_state] == HAS_ALT_SPRITE)
-		if ((has_alt_snake_sprite[icon_state] == HAS_ALT_SPRITE) && (!(mutant_variants & STYLE_TAUR_SNAKE)))
+	if (has_alt_sprite[icon_state] == HAS_TAUR_SPRITE)
+		if ((has_alt_snake_sprite[icon_state] == HAS_TAUR_SPRITE) && (!(mutant_variants & STYLE_TAUR_SNAKE)))
 			mutant_variants |= STYLE_TAUR_SNAKE
-		if ((has_alt_horse_sprite[icon_state] == HAS_ALT_SPRITE) && (!(mutant_variants & STYLE_TAUR_HOOF)))
+		if ((has_alt_horse_sprite[icon_state] == HAS_TAUR_SPRITE) && (!(mutant_variants & STYLE_TAUR_HOOF)))
 			mutant_variants |= STYLE_TAUR_HOOF
-		if ((has_alt_paw_sprite[icon_state] == HAS_ALT_SPRITE) && (!(mutant_variants & STYLE_TAUR_PAW)))
+		if ((has_alt_paw_sprite[icon_state] == HAS_TAUR_SPRITE) && (!(mutant_variants & STYLE_TAUR_PAW)))
 			mutant_variants |= STYLE_TAUR_PAW
 		return // If we already know this icon state has a taur sprite, skip the for loop and take from the cache
-	else if (has_alt_sprite[icon_state] == HAS_NO_ALT_SPRITE)
+	else if (has_alt_sprite[icon_state] == HAS_NO_TAUR_SPRITE)
 		return
 	// Code only goes here if has_alt_sprite[] == nothing, AKA if init has never been ran
 	var/has_alt = FALSE
 	if (icon_state in GLOB.naga_taur_uniform_sprites)
-		has_alt_sprite[icon_state] = HAS_ALT_SPRITE
-		has_alt_snake_sprite[icon_state] = HAS_ALT_SPRITE
+		has_alt_sprite[icon_state] = HAS_TAUR_SPRITE
+		has_alt_snake_sprite[icon_state] = HAS_TAUR_SPRITE
 		has_alt = TRUE
 		if (!(mutant_variants & STYLE_TAUR_SNAKE))
 			mutant_variants |= STYLE_TAUR_SNAKE
 	if (icon_state in GLOB.horse_taur_uniform_sprites)
-		has_alt_sprite[icon_state] = HAS_ALT_SPRITE //This block of code is checking the 3 DMI files for the icon state and setting flags/vars dynamically based on that
-		has_alt_horse_sprite[icon_state] = HAS_ALT_SPRITE // We want to avoid using this because for loops on init are costly-hence, the lists we use
+		has_alt_sprite[icon_state] = HAS_TAUR_SPRITE //This block of code is checking the 3 DMI files for the icon state and setting flags/vars dynamically based on that
+		has_alt_horse_sprite[icon_state] = HAS_TAUR_SPRITE // We want to avoid using this because for loops on init are costly-hence, the lists we use
 		has_alt = TRUE
 		if (!(mutant_variants & STYLE_TAUR_HOOF))
 			mutant_variants |= STYLE_TAUR_HOOF
 	if (icon_state in GLOB.pawed_taur_uniform_sprites)
-		has_alt_sprite[icon_state] = HAS_ALT_SPRITE
-		has_alt_paw_sprite[icon_state] = HAS_ALT_SPRITE
+		has_alt_sprite[icon_state] = HAS_TAUR_SPRITE
+		has_alt_paw_sprite[icon_state] = HAS_TAUR_SPRITE
 		has_alt = TRUE
 		if (!(mutant_variants & STYLE_TAUR_PAW))
 			mutant_variants |= STYLE_TAUR_PAW
 	if (!(has_alt)) // If none of the 3 above if statements are true, it has no alt sprite
-		has_alt_sprite[icon_state] = HAS_NO_ALT_SPRITE
+		has_alt_sprite[icon_state] = HAS_NO_TAUR_SPRITE
 
 
 /**
@@ -108,38 +108,38 @@
 /obj/item/clothing/proc/handle_taur_sprites_for_suits()
 	if (mutant_variants & STYLE_TAUR_ALL)
 		return
-	if (has_alt_sprite_suit[icon_state] == HAS_ALT_SPRITE)
-		if ((has_alt_snake_sprite_suit[icon_state] == HAS_ALT_SPRITE) && (!(mutant_variants & STYLE_TAUR_SNAKE)))
+	if (has_alt_sprite_suit[icon_state] == HAS_TAUR_SPRITE)
+		if ((has_alt_snake_sprite_suit[icon_state] == HAS_TAUR_SPRITE) && (!(mutant_variants & STYLE_TAUR_SNAKE)))
 			mutant_variants |= STYLE_TAUR_SNAKE
-		if ((has_alt_horse_sprite_suit[icon_state] == HAS_ALT_SPRITE) && (!(mutant_variants & STYLE_TAUR_HOOF)))
+		if ((has_alt_horse_sprite_suit[icon_state] == HAS_TAUR_SPRITE) && (!(mutant_variants & STYLE_TAUR_HOOF)))
 			mutant_variants |= STYLE_TAUR_HOOF
-		if ((has_alt_paw_sprite_suit[icon_state] == HAS_ALT_SPRITE) && (!(mutant_variants & STYLE_TAUR_PAW)))
+		if ((has_alt_paw_sprite_suit[icon_state] == HAS_TAUR_SPRITE) && (!(mutant_variants & STYLE_TAUR_PAW)))
 			mutant_variants |= STYLE_TAUR_PAW
 		return // If we already know this icon state has a taur sprite, skip the for loop and take from the cache
-	else if (has_alt_sprite_suit[icon_state] == HAS_NO_ALT_SPRITE)
+	else if (has_alt_sprite_suit[icon_state] == HAS_NO_TAUR_SPRITE)
 		return
 	// Code only goes here if has_alt_sprite[] == nothing, AKA if init has never been ran
 	var/has_alt_suit = FALSE
 	if (icon_state in GLOB.naga_taur_suit_sprites)
-		has_alt_sprite_suit[icon_state] = HAS_ALT_SPRITE
-		has_alt_snake_sprite_suit[icon_state] = HAS_ALT_SPRITE
+		has_alt_sprite_suit[icon_state] = HAS_TAUR_SPRITE
+		has_alt_snake_sprite_suit[icon_state] = HAS_TAUR_SPRITE
 		has_alt_suit = TRUE
 		if (!(mutant_variants & STYLE_TAUR_SNAKE))
 			mutant_variants |= STYLE_TAUR_SNAKE
 	if (icon_state in GLOB.horse_taur_suit_sprites)
-		has_alt_sprite_suit[icon_state] = HAS_ALT_SPRITE //This block of code is checking the 3 DMI files for the icon state and setting flags/vars dynamically based on that
-		has_alt_horse_sprite_suit[icon_state] = HAS_ALT_SPRITE // We want to avoid using this because for loops on init are costly-hence, the lists we use
+		has_alt_sprite_suit[icon_state] = HAS_TAUR_SPRITE //This block of code is checking the 3 DMI files for the icon state and setting flags/vars dynamically based on that
+		has_alt_horse_sprite_suit[icon_state] = HAS_TAUR_SPRITE // We want to avoid using this because for loops on init are costly-hence, the lists we use
 		has_alt_suit = TRUE
 		if (!(mutant_variants & STYLE_TAUR_HOOF))
 			mutant_variants |= STYLE_TAUR_HOOF
 	if (icon_state in GLOB.pawed_taur_suit_sprites)
-		has_alt_sprite_suit[icon_state] = HAS_ALT_SPRITE
-		has_alt_paw_sprite_suit[icon_state] = HAS_ALT_SPRITE
+		has_alt_sprite_suit[icon_state] = HAS_TAUR_SPRITE
+		has_alt_paw_sprite_suit[icon_state] = HAS_TAUR_SPRITE
 		has_alt_suit = TRUE
 		if (!(mutant_variants & STYLE_TAUR_PAW))
 			mutant_variants |= STYLE_TAUR_PAW
 	if (!(has_alt_suit)) // If none of the 3 above if statements are true, it has no alt sprite
-		has_alt_sprite_suit[icon_state] = HAS_NO_ALT_SPRITE
+		has_alt_sprite_suit[icon_state] = HAS_NO_TAUR_SPRITE
 
 
 /obj/item/clothing/head
