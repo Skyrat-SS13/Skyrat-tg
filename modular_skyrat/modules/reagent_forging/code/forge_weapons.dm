@@ -151,6 +151,22 @@
 	resistance_flags = FIRE_PROOF
 	attack_verb_continuous = list("bashes", "whacks")
 	attack_verb_simple = list("bash", "whack")
+	tool_behaviour = TOOL_HAMMER
+	///the list of things that, if attacked, will set the attack speed to rapid
+	var/static/list/fast_attacks = list(
+		/obj/structure/reagent_anvil,
+		/obj/structure/reagent_crafting_bench
+	)
+
+/obj/item/forging/reagent_weapon/hammer/Initialize()
+	. = ..()
+	AddElement(/datum/element/kneejerk)
+
+/obj/item/forging/reagent_weapon/hammer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	. = ..()
+	if(!is_type_in_list(target, fast_attacks))
+		return
+	user.changeNext_move(CLICK_CD_RAPID)
 
 /obj/item/shield/riot/buckler/reagent_weapon //Same as a buckler, but metal.
 	name = "reagent plated buckler shield"

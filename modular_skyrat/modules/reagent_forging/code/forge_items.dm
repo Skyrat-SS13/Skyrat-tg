@@ -28,6 +28,7 @@
 	desc = "A hammer specifically crafted for use in forging. Used to slowly shape metal; careful, you could break something with it!"
 	icon_state = "hammer"
 	tool_behaviour = TOOL_HAMMER
+	///the list of things that, if attacked, will set the attack speed to rapid
 	var/static/list/fast_attacks = list(
 		/obj/structure/reagent_anvil,
 		/obj/structure/reagent_crafting_bench

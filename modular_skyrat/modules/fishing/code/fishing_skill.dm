@@ -4,7 +4,8 @@
 	desc = "The person who enjoys the solitute to enjoy the catch."
 	modifiers = list(
 		SKILL_SPEED_MODIFIER = list(1, 0.95, 0.9, 0.85, 0.75, 0.6, 0.5),
-		SKILL_PROBS_MODIFIER = list(0, 5, 10, 20, 40, 80, 100)
+		SKILL_PROBS_MODIFIER = list(0, 5, 10, 20, 40, 80, 100),
+		SKILL_RANDS_MODIFIER = list(0, 0, 0, 0, 0, 1, 1)
 	)
 	skill_cape_path = /obj/item/clothing/neck/cloak/skill_reward/fishing
 
