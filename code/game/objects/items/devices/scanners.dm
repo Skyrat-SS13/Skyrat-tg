@@ -188,9 +188,9 @@ GENE SCANNER
 	if(user.incapacitated())
 		return
 
-	if(user.is_blind())
+/*	if(user.is_blind())	SKYRAT EDIT - Blindness overhaul
 		to_chat(user, span_warning("You realize that your scanner has no accessibility support for the blind!"))
-		return
+		return	SKYRAT EDIT END	*/
 
 	// the final list of strings to render
 	var/render_list = list()
@@ -463,9 +463,9 @@ GENE SCANNER
 	if(user.incapacitated())
 		return
 
-	if(user.is_blind())
+/*	if(user.is_blind())	SKYRAT EDIT - Blindness overhaul
 		to_chat(user, span_warning("You realize that your scanner has no accessibility support for the blind!"))
-		return
+		return	SKYRAT EDIT END	*/
 
 	if(istype(target) && target.reagents)
 		var/render_list = list()
@@ -541,9 +541,9 @@ GENE SCANNER
 	if(!istype(patient) || user.incapacitated())
 		return
 
-	if(user.is_blind())
+/*	if(user.is_blind())	SKYRAT EDIT - Blindness overhaul
 		to_chat(user, span_warning("You realize that your scanner has no accessibility support for the blind!"))
-		return
+		return	SKYRAT EDIT END	*/
 
 	var/render_list = ""
 	for(var/i in patient.get_wounded_bodyparts())
