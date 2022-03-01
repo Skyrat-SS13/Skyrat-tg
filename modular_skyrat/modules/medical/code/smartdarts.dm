@@ -36,9 +36,22 @@
 	desc = "An adjusted version of the medical syringe gun that only allows smartdarts to be chambered"
 	w_class = WEIGHT_CLASS_NORMAL //I might need to look into changing this later depending on feedback
 
+/obj/item/gun/syringe/smartdart/Initialize()
+	. = ..()
+	chambered = new /obj/item/ammo_casing/syringegun/dart(src)
+
 /obj/item/gun/syringe/smartdart/attackby(obj/item/container, mob/user, params, show_msg = TRUE)
 	if(istype(container, /obj/item/reagent_containers/syringe/smartdart))
 		..()
 	else
 		to_chat(user, span_notice("[container] is unable to fit inside of the [src]! Try using a smartdart instead."))
 		return FALSE
+
+//Smartdart projectiles
+/obj/item/ammo_casing/syringegun/dart
+	harmful = FALSE
+	projectile_type = /obj/projectile/bullet/dart/syringe/dart
+
+/obj/projectile/bullet/dart/syringe/dart
+	name = "smartdart"
+	damage = 0
