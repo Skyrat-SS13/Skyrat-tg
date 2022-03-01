@@ -80,26 +80,12 @@
 /obj/item/glassblowing/molten_glass/pickup(mob/user)
 	if(!isliving(user))
 		return ..()
+	. = ..()
 	var/mob/living/living_user = user
 	if(!COOLDOWN_FINISHED(src, remaining_heat))
 		to_chat(living_user, span_warning("You burn your hands trying to pick up [src]!"))
 		living_user.adjustFireLoss(15)
 		user.dropItemToGround(src)
-		return
-	return ..()
-
-/obj/item/glassblowing/blowing_rod
-	name = "blowing rod"
-	desc = "A tool that is used to hold the molten glass as well as help shape it."
-	icon_state = "blow_pipe_empty"
-	var/in_use = FALSE
-	tool_behaviour = TOOL_BLOWROD
-
-/datum/crafting_recipe/glass_blowing_rod
-	name = "Glass-blowing Blowing Rod"
-	result = /obj/item/glassblowing/blowing_rod
-	reqs = list(/obj/item/stack/sheet/iron = 5)
-	category = CAT_PRIMAL
 
 /obj/item/glassblowing/blowing_rod/examine(mob/user)
 	. = ..()
@@ -148,86 +134,29 @@
 		return
 	return ..()
 
-/obj/item/glassblowing/blowing_rod/attackby(obj/item/I, mob/living/user, params)
+/obj/item/glassblowing/blowing_rod/attackby(obj/item/attacking_item, mob/living/user, params)
 	var/actioning_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * DEFAULT_TIMED
 	var/obj/item/glassblowing/molten_glass/find_glass = locate() in contents
 
-	if(istype(I, /obj/item/glassblowing/molten_glass))
+	if(istype(attacking_item, /obj/item/glassblowing/molten_glass))
 		if(find_glass)
 			to_chat(user, span_warning("[src] already has some glass on it still!"))
 			return
-		I.forceMove(src)
-		to_chat(user, span_notice("[src] picks up [I]."))
+		attacking_item.forceMove(src)
+		to_chat(user, span_notice("[src] picks up [attacking_item]."))
 		icon_state = "blow_pipe_full"
 		return
 
-	if(istype(I, /obj/item/glassblowing/paddle))
-		if(in_use)
-			return
-		in_use = TRUE
-		if(!check_valid_table(user))
-			to_chat(user, span_warning("You must be near a non-flammable table!"))
-			in_use = FALSE
-			return
-		to_chat(user, span_notice("You begin using [I] on [src]."))
-		if(!do_after(user, actioning_speed, target = src))
-			to_chat(user, span_warning("You interrupt an action!"))
-			in_use = FALSE
-			return
-		if(!check_valid_table(user))
-			to_chat(user, span_warning("You must be near a non-flammable table!"))
-			in_use = FALSE
-			return
-		find_glass.current_actions[3]++
-		to_chat(user, span_notice("You finish using [I] on [src]."))
-		in_use = FALSE
-		user.mind.adjust_experience(/datum/skill/production, 10)
+	if(istype(attacking_item, /obj/item/glassblowing/paddle))
+		do_glass_step(3, user, attacking_item, actioning_speed)
 		return
 
-	if(istype(I, /obj/item/glassblowing/shears))
-		if(in_use)
-			return
-		in_use = TRUE
-		if(!check_valid_table(user))
-			to_chat(user, span_warning("You must be near a non-flammable table!"))
-			in_use = FALSE
-			return
-		to_chat(user, span_notice("You begin using [I] on [src]."))
-		if(!do_after(user, actioning_speed, target = src))
-			to_chat(user, span_warning("You interrupt an action!"))
-			in_use = FALSE
-			return
-		if(!check_valid_table(user))
-			to_chat(user, span_warning("You must be near a non-flammable table!"))
-			in_use = FALSE
-			return
-		find_glass.current_actions[4]++
-		to_chat(user, span_notice("You finish using [I] on [src]."))
-		in_use = FALSE
-		user.mind.adjust_experience(/datum/skill/production, 10)
+	if(istype(attacking_item, /obj/item/glassblowing/shears))
+		do_glass_step(4, user, attacking_item, actioning_speed)
 		return
 
-	if(istype(I, /obj/item/glassblowing/jacks))
-		if(in_use)
-			return
-		in_use = TRUE
-		if(!check_valid_table(user))
-			to_chat(user, span_warning("You must be near a non-flammable table!"))
-			in_use = FALSE
-			return
-		to_chat(user, span_notice("You begin using [I] on [src]."))
-		if(!do_after(user, actioning_speed, target = src))
-			to_chat(user, span_warning("You interrupt an action!"))
-			in_use = FALSE
-			return
-		if(!check_valid_table(user))
-			to_chat(user, span_warning("You must be near a non-flammable table!"))
-			in_use = FALSE
-			return
-		find_glass.current_actions[5]++
-		to_chat(user, span_notice("You finish using [I] on [src]."))
-		in_use = FALSE
-		user.mind.adjust_experience(/datum/skill/production, 10)
+	if(istype(attacking_item, /obj/item/glassblowing/jacks))
+		do_glass_step(5, user, attacking_item, actioning_speed)
 		return
 
 	return ..()
@@ -274,65 +203,14 @@
 				return
 			switch(action_choice)
 				if("Blow")
-					if(!check_valid_table(user))
-						to_chat(user, span_warning("You must be near a non-flammable table!"))
-						in_use = FALSE
-						return
-					to_chat(user, span_notice("You begin blowing [src]."))
-					if(!do_after(user, actioning_speed, target = src))
-						to_chat(user, span_warning("You interrupt an action!"))
-						in_use = FALSE
-						return
-					if(!check_valid_table(user))
-						to_chat(user, span_warning("You must be near a non-flammable table!"))
-						in_use = FALSE
-						return
-					find_glass.current_actions[1]++
-					to_chat(user, span_notice("You finish blowing [src]."))
-					user.mind.adjust_experience(/datum/skill/production, 10)
+					do_glass_step(1, user, src, actioning_speed)
 				if("Spin")
-					if(!check_valid_table(user))
-						to_chat(user, span_warning("You must be near a non-flammable table!"))
-						in_use = FALSE
-						return
-					to_chat(user, span_notice("You begin spinning [src]."))
-					if(!do_after(user, actioning_speed, target = src))
-						to_chat(user, span_warning("You interrupt an action!"))
-						in_use = FALSE
-						return
-					if(!check_valid_table(user))
-						to_chat(user, span_warning("You must be near a non-flammable table!"))
-						in_use = FALSE
-						return
-					find_glass.current_actions[2]++
-					to_chat(user, span_notice("You finish spinning [src]."))
-					user.mind.adjust_experience(/datum/skill/production, 10)
+					do_glass_step(2, user, src, actioning_speed)
 				if("Remove")
-					if(find_glass.current_actions[1] < find_glass.required_actions[1])
-						in_use = FALSE
-						find_glass.forceMove(get_turf(src))
-						icon_state = "blow_pipe_empty"
-						return
-					if(find_glass.current_actions[2] < find_glass.required_actions[2])
-						in_use = FALSE
-						find_glass.forceMove(get_turf(src))
-						icon_state = "blow_pipe_empty"
-						return
-					if(find_glass.current_actions[3] < find_glass.required_actions[3])
-						in_use = FALSE
-						find_glass.forceMove(get_turf(src))
-						icon_state = "blow_pipe_empty"
-						return
-					if(find_glass.current_actions[4] < find_glass.required_actions[4])
-						in_use = FALSE
-						find_glass.forceMove(get_turf(src))
-						icon_state = "blow_pipe_empty"
-						return
-					if(find_glass.current_actions[5] < find_glass.required_actions[5])
-						in_use = FALSE
-						find_glass.forceMove(get_turf(src))
-						icon_state = "blow_pipe_empty"
-						return
+					for(var/iterate in 1 to 5)
+						if(find_glass.current_actions[iterate] < find_glass.required_actions[iterate])
+							remove_glass()
+							return
 					new find_glass.chosen_item(get_turf(src))
 					user.mind.adjust_experience(/datum/skill/production, 30)
 					in_use = FALSE
@@ -343,38 +221,82 @@
 			return
 	return ..()
 
+/obj/item/glassblowing/blowing_rod/proc/fail_message(message, mob/user)
+	to_chat(user, span_warning(message))
+	in_use = FALSE
+
+/obj/item/glassblowing/blowing_rod/proc/do_glass_step(number, mob/user, obj/item/attacking_item, actioning_speed)
+	var/obj/item/glassblowing/molten_glass/find_glass = locate() in contents
+	if(!find_glass)
+		return
+	if(in_use)
+		return
+	in_use = TRUE
+	if(!check_valid_table(user))
+		fail_message("You must be near a non-flammable table!", user)
+		return
+	to_chat(user, span_notice("You begin using [attacking_item] on [src]."))
+	if(!do_after(user, actioning_speed, target = src))
+		fail_message("You interrupt an action!", user)
+		return
+	if(!check_valid_table(user))
+		fail_message("You must be near a non-flammable table!", user)
+		return
+	find_glass.current_actions[number]++
+	to_chat(user, span_notice("You finish using [attacking_item] on [src]."))
+	in_use = FALSE
+	user.mind.adjust_experience(/datum/skill/production, 10)
+
+/obj/item/glassblowing/blowing_rod/proc/remove_glass()
+	var/obj/item/glassblowing/molten_glass/find_glass = locate() in contents
+	if(!find_glass)
+		return
+	in_use = FALSE
+	find_glass.forceMove(get_turf(src))
+	icon_state = "blow_pipe_empty"
+
+/datum/crafting_recipe/glassblowing_recipe
+	reqs = list(/obj/item/stack/sheet/iron = 5)
+	category = CAT_PRIMAL
+
+/obj/item/glassblowing/blowing_rod
+	name = "blowing rod"
+	desc = "A tool that is used to hold the molten glass as well as help shape it."
+	icon_state = "blow_pipe_empty"
+	///whether the item is in use currently; will try to prevent many other actions on it
+	var/in_use = FALSE
+	tool_behaviour = TOOL_BLOWROD
+
+/datum/crafting_recipe/glassblowing_recipe/glass_blowing_rod
+	name = "Glass-blowing Blowing Rod"
+	result = /obj/item/glassblowing/blowing_rod
+
 /obj/item/glassblowing/jacks
 	name = "jacks"
 	desc = "A tool that helps shape glass during the art process."
 	icon_state = "jacks"
 
-/datum/crafting_recipe/glass_jack
+/datum/crafting_recipe/glassblowing_recipe/glass_jack
 	name = "Glass-blowing Jacks"
 	result = /obj/item/glassblowing/jacks
-	reqs = list(/obj/item/stack/sheet/iron = 5)
-	category = CAT_PRIMAL
 
 /obj/item/glassblowing/paddle
 	name = "paddle"
 	desc = "A tool that helps shape glass during the art process."
 	icon_state = "paddle"
 
-/datum/crafting_recipe/glass_paddle
+/datum/crafting_recipe/glassblowing_recipe/glass_paddle
 	name = "Glass-blowing Paddle"
 	result = /obj/item/glassblowing/paddle
-	reqs = list(/obj/item/stack/sheet/iron = 5)
-	category = CAT_PRIMAL
 
 /obj/item/glassblowing/shears
 	name = "shears"
 	desc = "A tool that helps shape glass during the art process."
 	icon_state = "shears"
 
-/datum/crafting_recipe/glass_shears
+/datum/crafting_recipe/glassblowing_recipe/glass_shears
 	name = "Glass-blowing Shears"
 	result = /obj/item/glassblowing/shears
-	reqs = list(/obj/item/stack/sheet/iron = 5)
-	category = CAT_PRIMAL
 
 /obj/item/glassblowing/metal_cup
 	name = "metal cup"
@@ -382,11 +304,9 @@
 	icon_state = "metal_cup_empty"
 	var/has_sand = FALSE
 
-/datum/crafting_recipe/glass_metal_cup
+/datum/crafting_recipe/glassblowing_recipe/glass_metal_cup
 	name = "Glass-blowing Metal Cup"
 	result = /obj/item/glassblowing/metal_cup
-	reqs = list(/obj/item/stack/sheet/iron = 5)
-	category = CAT_PRIMAL
 
 /obj/item/glassblowing/metal_cup/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/stack/ore/glass))

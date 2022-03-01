@@ -28,32 +28,24 @@
 	balloon_alert(user, "the water deepens!")
 	AddComponent(/datum/component/fishing, set_loot = GLOB.fishing_weights, allow_fishes = TRUE)
 
-/obj/structure/reagent_water_basin/attackby(obj/item/I, mob/living/user, params)
-	if(istype(I, /obj/item/stack/ore/glass))
-		var/obj/item/stack/ore/glass/glass_obj = I
+/obj/structure/reagent_water_basin/attackby(obj/item/attacking_item, mob/living/user, params)
+	if(istype(attacking_item, /obj/item/stack/ore/glass))
+		var/obj/item/stack/ore/glass/glass_obj = attacking_item
 		if(!glass_obj.use(1))
 			return
 		new /obj/item/stack/clay(get_turf(src))
 		user.mind.adjust_experience(/datum/skill/production, 1)
 		return
 
-	if(istype(I, /obj/item/stack/ore/bluespace_crystal))
+	if(istype(attacking_item, /obj/item/stack/ore/bluespace_crystal))
 		var/check_fishable = GetComponent(/datum/component/fishing)
 		if(check_fishable)
 			return
-		var/obj/item/stack/ore/bluespace_crystal/bs_crystal = I
+		var/obj/item/stack/ore/bluespace_crystal/bs_crystal = attacking_item
 		if(!bs_crystal.use(1))
 			return
 		balloon_alert(user, "the water deepens!")
 		AddComponent(/datum/component/fishing, set_loot = GLOB.fishing_weights, allow_fishes = TRUE)
-		return
-
-	if(I.tool_behaviour == TOOL_WRENCH)
-		wrench_act(user, I)
-		return
-
-	if(I.tool_behaviour == TOOL_TONG)
-		tong_act(user, I)
 		return
 
 	return ..()
@@ -77,8 +69,7 @@
 	if(search_incomplete?.times_hit >= search_incomplete.average_hits)
 		to_chat(user, span_notice("You cool down the metal-- it is ready."))
 		user.mind.adjust_experience(/datum/skill/smithing, 10) //using the water basin on a ready item gives decent experience.
-		var/obj/item/forging/complete/spawn_item = search_incomplete.spawn_item
-		new spawn_item(get_turf(src))
+		new search_incomplete.spawn_item(get_turf(src))
 		qdel(search_incomplete)
 		tool.icon_state = "tong_empty"
 	return FALSE

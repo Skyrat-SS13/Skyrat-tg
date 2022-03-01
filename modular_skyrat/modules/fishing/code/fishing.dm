@@ -93,10 +93,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 		if(FOCUS_NONE)
 			switch(rand(1, 100))
 				if(1 to 33)
-					if(!enhanced_reward)
-						spawning_reward = pick_weight(GLOB.trash_loot)
-					else
-						spawning_reward = pick_weight(GLOB.maintenance_loot)
+					spawning_reward = enhanced_reward ? pick_weight(GLOB.maintenance_loot) : pick_weight(GLOB.trash_loot)
 					while(islist(spawning_reward))
 						spawning_reward = pick_weight(spawning_reward)
 				if(34 to 66)
@@ -105,10 +102,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 				if(67 to 100)
 					spawning_reward = pick_weight(possible_loot)
 		if(FOCUS_TRASH)
-			if(!enhanced_reward)
-				spawning_reward = pick_weight(GLOB.trash_loot)
-			else
-				spawning_reward = pick_weight(GLOB.maintenance_loot)
+			spawning_reward = enhanced_reward ? pick_weight(GLOB.maintenance_loot) : pick_weight(GLOB.trash_loot)
 			while(islist(spawning_reward))
 				spawning_reward = pick_weight(spawning_reward)
 		if(FOCUS_FISH)
@@ -214,10 +208,11 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 
 /obj/item/fishing_rod/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	var/skill_level = user.mind.get_skill_level(/datum/skill/fishing)
+	var/skill_prob = user.mind.get_skill_modifier(/datum/skill/fishing, SKILL_PROBS_MODIFIER)
 	if((!is_wielded && skill_level < SKILL_LEVEL_MASTER) || get_dist(target, user) >= 4)
 		return
 	if(target_atom)
-		if(user.mind.get_skill_level(/datum/skill/fishing) >= SKILL_LEVEL_MASTER)
+		if(skill_prob)
 			SEND_SIGNAL(target_atom, COMSIG_FINISH_FISHING, fisher = src, master_involved = TRUE, user = user)
 			target_atom = null
 			return

@@ -330,7 +330,7 @@
 			return
 		in_use = TRUE
 		if(!reagent_forging)
-			fail_message(user, "You must enchant [src] to allow reagent imbueing!")
+			fail_message(user, "You must enchant [src] to allow reagent imbuing!")
 			return
 		var/datum/component/reagent_weapon/weapon_component = attacking_weapon.GetComponent(/datum/component/reagent_weapon)
 		if(!weapon_component)
@@ -340,7 +340,7 @@
 			fail_message(user, "[attacking_weapon] has already been imbued!")
 			return
 		if(!do_after(user, skill_modifier * 10 SECONDS, target = src))
-			fail_message(user, "You fail imbueing [attacking_weapon]!")
+			fail_message(user, "You fail imbuing [attacking_weapon]!")
 			return
 		for(var/datum/reagent/weapon_reagent in attacking_weapon.reagents.reagent_list)
 			if(weapon_reagent.volume < MIN_IMBUE_REQUIRED)
@@ -349,11 +349,11 @@
 			weapon_component.imbued_reagent += weapon_reagent.type
 			attacking_weapon.name = "[weapon_reagent.name] [attacking_weapon.name]"
 		if(attacking_weapon.name == initial(attacking_weapon.name))
-			fail_message(user, "You failed imbueing [attacking_weapon]...")
+			fail_message(user, "You failed imbuing [attacking_weapon]...")
 			return
 		attacking_weapon.color = mix_color_from_reagents(attacking_weapon.reagents.reagent_list)
-		to_chat(user, span_notice("You finish imbueing [attacking_weapon]..."))
-		user.mind.adjust_experience(/datum/skill/smithing, 60) //successfully imbueing will grant great experience!
+		to_chat(user, span_notice("You finish imbuing [attacking_weapon]..."))
+		user.mind.adjust_experience(/datum/skill/smithing, 60) //successfully imbuing will grant great experience!
 		playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
 		in_use = FALSE
 		return TRUE
@@ -365,7 +365,7 @@
 			return
 		in_use = TRUE
 		if(!reagent_forging)
-			fail_message(user, "You must enchant [src] to allow reagent imbueing!")
+			fail_message(user, "You must enchant [src] to allow reagent imbuing!")
 			return
 		var/datum/component/reagent_clothing/clothing_component = attacking_clothing.GetComponent(/datum/component/reagent_clothing)
 		if(!clothing_component)
@@ -375,7 +375,7 @@
 			fail_message(user, "[attacking_clothing] has already been imbued!")
 			return
 		if(!do_after(user, skill_modifier * 10 SECONDS, target = src))
-			fail_message(user, "You fail imbueing [attacking_clothing]!")
+			fail_message(user, "You fail imbuing [attacking_clothing]!")
 			return
 		for(var/datum/reagent/clothing_reagent in attacking_clothing.reagents.reagent_list)
 			if(clothing_reagent.volume < MIN_IMBUE_REQUIRED)
@@ -384,11 +384,11 @@
 			clothing_component.imbued_reagent += clothing_reagent.type
 			attacking_clothing.name = "[clothing_reagent.name] [attacking_clothing.name]"
 		if(attacking_clothing.name == initial(attacking_clothing.name))
-			fail_message(user, "You failed imbueing [attacking_clothing]...")
+			fail_message(user, "You failed imbuing [attacking_clothing]...")
 			return
 		attacking_clothing.color = mix_color_from_reagents(attacking_clothing.reagents.reagent_list)
-		to_chat(user, span_notice("You finish imbueing [attacking_clothing]..."))
-		user.mind.adjust_experience(/datum/skill/smithing, 60) //successfully imbueing will grant great experience!
+		to_chat(user, span_notice("You finish imbuing [attacking_clothing]..."))
+		user.mind.adjust_experience(/datum/skill/smithing, 60) //successfully imbuing will grant great experience!
 		playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
 		in_use = FALSE
 		return TRUE
@@ -482,13 +482,13 @@
 	var/src_turf = get_turf(src)
 	var/spawning_item = ore_item.refined_type
 	var/spawning_amount = max(1, (1 + goliath_ore_improvement) * ore_item.amount)
-	var/experient_amount = spawning_amount * ore_item.mine_experience
+	var/experience_amount = spawning_amount * ore_item.mine_experience
 	for(var/spawn_ore in 1 to spawning_amount)
 		new spawning_item(src_turf)
 	in_use = FALSE
 	to_chat(user, span_notice("You successfully smelt [ore_item]."))
-	user.mind.adjust_experience(/datum/skill/smithing, experient_amount) //useful smelting means you get some experience
-	user.mind.adjust_experience(/datum/skill/mining, experient_amount) //useful smelting means you get some experience
+	user.mind.adjust_experience(/datum/skill/smithing, experience_amount) //useful smelting means you get some experience
+	user.mind.adjust_experience(/datum/skill/mining, experience_amount) //useful smelting means you get some experience
 	qdel(ore_item)
 	return FALSE
 

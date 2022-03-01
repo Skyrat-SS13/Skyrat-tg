@@ -38,9 +38,9 @@
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
 	var/forge_item
 
-/obj/item/ceramic/attackby(obj/item/I, mob/living/user, params)
-	if(istype(I, /obj/item/toy/crayon))
-		var/obj/item/toy/crayon/crayon_item = I
+/obj/item/ceramic/attackby(obj/item/attacking_item, mob/living/user, params)
+	if(istype(attacking_item, /obj/item/toy/crayon))
+		var/obj/item/toy/crayon/crayon_item = attacking_item
 		if(!forge_item || !crayon_item.paint_color)
 			return
 		color = crayon_item.paint_color
@@ -130,11 +130,11 @@
 		"You stop the throwing wheel, admiring your new creation...",
 	)
 
-/obj/structure/throwing_wheel/attackby(obj/item/I, mob/living/user, params)
-	if(istype(I, /obj/item/stack/clay))
+/obj/structure/throwing_wheel/attackby(obj/item/attacking_item, mob/living/user, params)
+	if(istype(attacking_item, /obj/item/stack/clay))
 		if(has_clay)
 			return
-		var/obj/item/stack/stack_item = I
+		var/obj/item/stack/stack_item = attacking_item
 		if(!stack_item.use(1))
 			return
 		has_clay = TRUE
@@ -155,7 +155,7 @@
 
 /obj/structure/throwing_wheel/proc/use_clay(spawn_type, mob/user)
 	var/spinning_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * DEFAULT_SPIN
-	for(var/loop_try in 1 to 4)
+	for(var/loop_try in 1 to length(given_message))
 		if(!do_after(user, spinning_speed, target = src))
 			in_use = FALSE
 			return
@@ -164,7 +164,6 @@
 	user.mind.adjust_experience(/datum/skill/production, 50)
 	has_clay = FALSE
 	icon_state = "throw_wheel_empty"
-	in_use = FALSE
 
 /obj/structure/throwing_wheel/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
@@ -192,7 +191,6 @@
 					use_clay(/obj/item/ceramic/plate, user)
 				if("Bowl")
 					use_clay(/obj/item/ceramic/bowl, user)
-			return
 		if("Remove")
 			if(!do_after(user, spinning_speed, target = src))
 				in_use = FALSE
@@ -202,7 +200,6 @@
 			has_clay = FALSE
 			in_use = FALSE
 			icon_state = "throw_wheel_empty"
-			return
 	in_use = FALSE
 
 #undef DEFAULT_SPIN
