@@ -1,4 +1,4 @@
 /area/command/heads_quarters/captain/private/nt_rep
-	name = "Nanotrasen Representative's Office"
+	name = "Nanotrasen Consultant's Office"
 	icon_state = "centcom"
 

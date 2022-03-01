@@ -161,7 +161,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/attack_verb = "punch"
 	/// The visual effect of the attack.
 	var/attack_effect = ATTACK_EFFECT_PUNCH
-	var/sound/attack_sound = 'sound/weapons/punch1.ogg'
+	var/sound/attack_sound //SKYRAT EDIT CHANGE
 	var/sound/miss_sound = 'sound/weapons/punchmiss.ogg'
 
 	///What gas does this species breathe? Used by suffocation screen alerts, most of actual gas breathing is handled by mutantlungs. See [life.dm][code/modules/mob/living/carbon/human/life.dm]
@@ -1430,7 +1430,14 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 		var/armor_block = target.run_armor_check(affecting, MELEE)
 
-		playsound(target.loc, user.dna.species.attack_sound, 25, TRUE, -1)
+		// SKYRAT EDIT CHANGE
+		var/sound/attack_sound
+		if(!user.dna.species.attack_sound)
+			attack_sound = get_sfx("punch")
+		else
+			attack_sound = user.dna.species.attack_sound
+		playsound(target.loc, attack_sound, 25, TRUE, -1)
+		// SKYRAT EDTI END
 
 		target.visible_message(span_danger("[user] [atk_verb]ed [target]!"), \
 						span_userdanger("You're [atk_verb]ed by [user]!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, user)
