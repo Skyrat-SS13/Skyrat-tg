@@ -46,3 +46,6 @@
 		telecrystal_reward = 3
 	else if(istype(target_item, /datum/objective_item/steal/caplaser))
 		telecrystal_reward = 2
+
+	if(!telecrystal_reward)	// No reward is unfun
+		telecrystal_reward = 1
