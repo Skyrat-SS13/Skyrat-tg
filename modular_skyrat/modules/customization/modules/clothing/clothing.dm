@@ -32,7 +32,7 @@
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_VOX
 
 /obj/item/clothing/suit
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_VOX
+	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL|STYLE_VOX
 
 /obj/item/clothing/gloves
 	mutant_variants = STYLE_VOX

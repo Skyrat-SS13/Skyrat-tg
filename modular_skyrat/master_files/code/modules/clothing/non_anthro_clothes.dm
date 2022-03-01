@@ -274,6 +274,9 @@
 /obj/item/clothing/suit/ianshirt
 	mutant_variants = NONE
 
+/obj/item/clothing/suit/poncho
+	mutant_variants = NONE
+
 /obj/item/clothing/suit/wizrobe
 	mutant_variants = NONE
 
