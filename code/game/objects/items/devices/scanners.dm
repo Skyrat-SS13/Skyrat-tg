@@ -98,6 +98,11 @@ GENE SCANNER
 	var/advanced = FALSE
 	custom_price = PAYCHECK_HARD
 
+/obj/item/healthanalyzer/Initialize(mapload)
+	. = ..()
+
+	register_item_context()
+
 /obj/item/healthanalyzer/examine(mob/user)
 	. = ..()
 	. += span_notice("Alt-click [src] to toggle the limb damage readout.")
@@ -160,6 +165,24 @@ GENE SCANNER
 	chemscan(user, victim)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
+/obj/item/healthanalyzer/add_item_context(
+	obj/item/source,
+	list/context,
+	atom/target,
+)
+	if (!isliving(target))
+		return NONE
+
+	switch (scanmode)
+		if (SCANMODE_HEALTH)
+			context[SCREENTIP_CONTEXT_LMB] = "Scan health"
+		if (SCANMODE_WOUND)
+			context[SCREENTIP_CONTEXT_LMB] = "Scan wounds"
+
+	context[SCREENTIP_CONTEXT_RMB] = "Scan chemicals"
+
+	return CONTEXTUAL_SCREENTIP_SET
+
 // Used by the PDA medical scanner too
 /proc/healthscan(mob/user, mob/living/target, mode = SCANNER_VERBOSE, advanced = FALSE)
 	if(user.incapacitated())
@@ -195,12 +218,17 @@ GENE SCANNER
 			advanced = TRUE
 
 	// Husk detection
-	if(advanced && HAS_TRAIT_FROM(target, TRAIT_HUSK, BURN))
-		render_list += "<span class='alert ml-1'>Subject has been husked by severe burns.</span>\n"
-	else if (advanced && HAS_TRAIT_FROM(target, TRAIT_HUSK, CHANGELING_DRAIN))
-		render_list += "<span class='alert ml-1'>Subject has been husked by dessication.</span>\n"
-	else if(HAS_TRAIT(target, TRAIT_HUSK))
-		render_list += "<span class='alert ml-1'>Subject has been husked.</span>\n"
+	if(HAS_TRAIT(target, TRAIT_HUSK))
+		if(advanced)
+			if(HAS_TRAIT_FROM(target, TRAIT_HUSK, BURN))
+				render_list += "<span class='alert ml-1'>Subject has been husked by severe burns.</span>\n"
+			else if (HAS_TRAIT_FROM(target, TRAIT_HUSK, CHANGELING_DRAIN))
+				render_list += "<span class='alert ml-1'>Subject has been husked by dessication.</span>\n"
+			else
+				render_list += "<span class='alert ml-1'>Subject has been husked by mysterious causes.</span>\n"
+
+		else
+			render_list += "<span class='alert ml-1'>Subject has been husked.</span>\n"
 
 	if(target.getStaminaLoss())
 		if(advanced)
@@ -220,6 +248,10 @@ GENE SCANNER
 		if(LAZYLEN(carbontarget.get_traumas()))
 			var/list/trauma_text = list()
 			for(var/datum/brain_trauma/trauma in carbontarget.get_traumas())
+				//SKYRAT EDIT: Scary Traits (Bimbo)
+				if(!trauma.display_scanner)
+					continue
+				//SKYRAT EDIT: Scary Traits (Bimbo)
 				var/trauma_desc = ""
 				switch(trauma.resilience)
 					if(TRAUMA_RESILIENCE_SURGERY)

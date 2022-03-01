@@ -146,9 +146,6 @@
 /datum/job/security_officer
 	alt_titles = list("Security Officer", "Security Operative", "Peacekeeper")
 
-/datum/job/security_sergeant
-	alt_titles = list("Security Sergeant", "Security Squad Leader", "Security Task Force Leader", "Security Fireteam Leader", "Security Enforcer") //why are these all so edgy, you're a mall cop
-
 /datum/job/shaft_miner
 	alt_titles = list("Shaft Miner", "Excavator", "Spelunker", "Drill Technician", "Prospector")
 

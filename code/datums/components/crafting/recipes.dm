@@ -658,7 +658,8 @@
 
 /datum/crafting_recipe/radiogloves/New()
 	..()
-	blacklist |= subtypesof(/obj/item/radio)
+	blacklist |= typesof(/obj/item/radio/headset)
+	blacklist |= typesof(/obj/item/radio/intercom)
 
 /datum/crafting_recipe/mixedbouquet
 	name = "Mixed bouquet"
@@ -927,6 +928,7 @@
 	result = /obj/item/knife/combat/bone
 	time = 20
 	reqs = list(/obj/item/stack/sheet/bone = 2)
+	always_available = FALSE //SKYRAT EDIT
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/bonespear
@@ -935,6 +937,7 @@
 	time = 30
 	reqs = list(/obj/item/stack/sheet/bone = 4,
 				/obj/item/stack/sheet/sinew = 1)
+	always_available = FALSE //SKYRAT EDIT
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/boneaxe
@@ -943,6 +946,7 @@
 	time = 50
 	reqs = list(/obj/item/stack/sheet/bone = 6,
 				/obj/item/stack/sheet/sinew = 3)
+	always_available = FALSE //SKYRAT EDIT
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/bonfire

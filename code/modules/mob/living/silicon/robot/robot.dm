@@ -188,6 +188,10 @@
 		to_chat(src,span_userdanger("ERROR: Model installer reply timeout. Please check internal connections."))
 		return
 
+	if(lockcharge == TRUE)
+		to_chat(src,span_userdanger("ERROR: Lockdown is engaged. Please disengage lockdown to pick module."))
+		return
+
 	// SKYRAT EDIT START - Making the cyborg model list static to reduce how many times it's generated.
 	if(!length(GLOB.cyborg_model_list))
 		GLOB.cyborg_model_list = list(

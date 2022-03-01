@@ -107,7 +107,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/g17
 	can_suppress = FALSE
-	fire_sound = 'sound/weapons/gun/pistol/shot_alt.ogg'
+	fire_sound = 'modular_skyrat/master_files/sound/weapons/glock17_fire.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
@@ -664,7 +664,7 @@
 
 /obj/item/gun/ballistic/automatic/g11
 	name = "\improper G11 K-490"
-	desc = "An outdated german caseless battle rifle that has been revised countless times during the late 2400s. Takes 4.73×33mm toploaded magazines."
+	desc = "An outdated german caseless battle rifle that has been revised countless times during the late 2400s. Takes 4.73x33mm toploaded magazines."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/g11.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -690,7 +690,7 @@
 	dirt_modifier = 0.1
 
 /obj/item/ammo_box/magazine/multi_sprite/g11
-	name = "4.73×33mm top-loader magazine"
+	name = "4.73x33mm top-loader magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g11"
 	ammo_type = /obj/item/ammo_casing/caseless/b473

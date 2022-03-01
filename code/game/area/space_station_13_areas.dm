@@ -823,6 +823,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Chapel Dock"
 	icon_state = "construction"
 
+/area/service/chapel/storage
+	name = "\improper Chapel Storage"
+	icon_state = "chapelstorage"
+
 /area/service/lawoffice
 	name = "\improper Law Office"
 	icon_state = "law"
@@ -871,6 +875,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/engineering/main
 	name = "Engineering"
 	icon_state = "engine"
+
+/area/engineering/hallway
+	name = "Engineering Hallway"
+	icon_state = "engine_hallway"
 
 /area/engineering/atmos
 	name = "Atmospherics"
@@ -1189,6 +1197,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Brig"
 	icon_state = "brig"
 
+/area/security/medical
+	name = "\improper Security Medical"
+	icon_state = "security_medical"
+
 /area/security/brig/upper
 	name = "\improper Brig Overlook"
 	icon_state = "upperbrig"
@@ -1396,8 +1408,17 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	airlock_wires = /datum/wires/airlock/science
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
+/area/science/lobby
+	name = "\improper Science Lobby"
+	icon_state = "science_lobby"
+
+/area/science/lower
+	name = "\improper Lower Science Division"
+	icon_state = "lower_science"
+
 /area/science/breakroom
 	name = "\improper Science Break Room"
+	icon_state = "science_breakroom"
 
 /area/science/lab
 	name = "Research and Development"
@@ -1428,6 +1449,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Ordnance Mixing Chamber"
 	icon_state = "ord_mix_chamber"
 	area_flags = BLOBS_ALLOWED | UNIQUE_AREA | CULT_PERMITTED
+
+/area/science/mixing/hallway
+	name = "\improper Ordnance Mixing Hallway"
+	icon_state = "ord_mix_hallway"
+
+/area/science/mixing/launch
+	name = "\improper Ordnance Mixing Launch Site"
+	icon_state = "ord_mix_launch"
 
 /area/science/genetics
 	name = "\improper Genetics Lab"

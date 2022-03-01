@@ -382,7 +382,6 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	new/datum/stack_recipe("white jumpsuit", /obj/item/clothing/under/color/white, 3), \
 	new/datum/stack_recipe("white shoes", /obj/item/clothing/shoes/sneakers/white, 2), \
 	new/datum/stack_recipe("white scarf", /obj/item/clothing/neck/scarf, 1), \
-	new/datum/stack_recipe("loincloth", /obj/item/clothing/under/costume/loincloth/cloth, 2), /*SKYRAT EDIT ADDITION*/ \
 	null, \
 	new/datum/stack_recipe("backpack", /obj/item/storage/backpack, 4), \
 	new/datum/stack_recipe("duffel bag", /obj/item/storage/backpack/duffelbag, 6), \
@@ -392,6 +391,7 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	new/datum/stack_recipe("mining satchel", /obj/item/storage/bag/ore, 4), \
 	new/datum/stack_recipe("chemistry bag", /obj/item/storage/bag/chemistry, 4), \
 	new/datum/stack_recipe("bio bag", /obj/item/storage/bag/bio, 4), \
+	new/datum/stack_recipe("science bag", /obj/item/storage/bag/xeno, 4), \
 	new/datum/stack_recipe("construction bag", /obj/item/storage/bag/construction, 4), \
 	new/datum/stack_recipe("xenoarch bag", /obj/item/storage/bag/xenoarch, 4), /*SKYRAT EDIT ADDITION*/ \
 	null, \
@@ -814,8 +814,6 @@ new /datum/stack_recipe("paper frame door", /obj/structure/mineral_door/paperfra
 /obj/item/stack/sheet/meat/five
 	amount = 5
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 /obj/item/stack/sheet/pizza
 	name = "pepperoni sheetzzas"
 	desc = "It's a delicious pepperoni sheetzza!"
@@ -832,8 +830,6 @@ new /datum/stack_recipe("paper frame door", /obj/structure/mineral_door/paperfra
 	amount = 20
 /obj/item/stack/sheet/pizza/five
 	amount = 5
-*/
-//SKYRAT EDIT REMOVAL END
 
 /obj/item/stack/sheet/sandblock
 	name = "blocks of sand"

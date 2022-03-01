@@ -98,11 +98,15 @@
 #define HIDEHEADGEAR (1<<11)
 ///for lizard snouts, because some HIDEFACE clothes don't actually conceal that portion of the head.
 #define HIDESNOUT (1<<12)
-///SKYRAT EDIT ADDITION: CUSTOM EAR TOGGLE FOR ANTHRO/ETC EAR SHOWING - Manually set this on items you want anthro ears to show on!
+///hides mutant/moth wings, does not apply to functional wings
+#define HIDEMUTWINGS (1<<13)
+
+//SKYRAT EDIT ADDITION: CUSTOM EAR TOGGLE FOR ANTHRO/ETC EAR SHOWING -
+/// Manually set this on items you want anthro ears to show on!
 #define SHOWSPRITEEARS (1<<13)
 /// Does this sprite also hide the spine on tails? Realistically only useful for the clothes that have a special tail overlay, like MODsuits
 #define HIDESPINE (1<<14)
-//SKYRAT EDIT ADDITION BEGIN - ERP UPDATE
+/// Does this sprite hide devious devices?
 #define HIDESEXTOY (1<<15)
 //SKYRAT EDIT ADDITION END
 
@@ -189,6 +193,7 @@ GLOBAL_LIST_INIT(detective_vest_allowed, typecacheof(list(
 	/obj/item/tank/internals/plasmaman,
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
+	/obj/item/storage/belt/holster/thermal,
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 	)))
 
@@ -206,6 +211,7 @@ GLOBAL_LIST_INIT(security_vest_allowed, typecacheof(list(
 	/obj/item/tank/internals/plasmaman,
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
+	/obj/item/storage/belt/holster/thermal,
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 	)))
 
@@ -219,6 +225,7 @@ GLOBAL_LIST_INIT(security_wintercoat_allowed, typecacheof(list(
 	/obj/item/restraints/handcuffs,
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
+	/obj/item/storage/belt/holster/thermal,
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 	)))
 
