@@ -424,12 +424,12 @@
 				adjust_item_drop_location(P)
 				reagents.trans_to(P, vol_each, transfered_by = usr)
 		if(item_type == "smartdart")
-			var/obj/item/reagent_containers/syringe/smartdart/P
+			var/obj/item/reagent_containers/syringe/smartdart/dart
 			for(var/i = 0; i < amount; i++)
-				P = new/obj/item/reagent_containers/syringe/smartdart(drop_location())
-				P.name = trim("[name] smartdart")
-				adjust_item_drop_location(P)
-				reagents.trans_to(P, vol_each, transfered_by = usr)
+				dart = new/obj/item/reagent_containers/syringe/smartdart(drop_location())
+				dart.name = trim("[name] smartdart")
+				adjust_item_drop_location(dart)
+				reagents.trans_to(dart, vol_each, transfered_by = usr)
 		//SKYRAT EDIT ADDTION END
 			return TRUE
 		if(item_type == "condimentPack")
