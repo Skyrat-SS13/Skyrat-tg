@@ -20,7 +20,7 @@
 	desc = "It's a green jumpsuit with some gold markings denoting the rank of \"Nanotrasen Consultant\"."
 	name = "nanotrasen consultant's jumpsuit"
 	icon_state = "nt_consultant"
-	inhand_icon_state = "b_suit"
+	inhand_icon_state = "dg_suit"
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
@@ -30,7 +30,6 @@
 	name = "nanotrasen consultant's jumpskirt"
 	desc = "It's a green jumpskirt with some gold markings denoting the rank of \"Nanotrasen Consultant\"."
 	icon_state = "nt_consultant_skirt"
-	inhand_icon_state = "b_suit"
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
