@@ -18,15 +18,14 @@
 	if(isliving(target))
 		to_chat(user, span_warning("The [src] is unable to take blood."))
 		return SECONDARY_ATTACK_CONTINUE_CHAIN
-	else
-		if(!target.reagents.total_volume)
-			to_chat(user, span_warning("[target] is empty!"))
-			return SECONDARY_ATTACK_CONTINUE_CHAIN
-		if(!target.is_drawable(user))
-			to_chat(user, span_warning("You cannot directly remove reagents from [target]!"))
-			return SECONDARY_ATTACK_CONTINUE_CHAIN
-		var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this, transfered_by = user) // transfer from, transfer to - who cares?
-		to_chat(user, span_notice("You fill [src] with [trans] units of the solution. It now contains [reagents.total_volume] units."))
+	if(!target.reagents.total_volume)
+		to_chat(user, span_warning("[target] is empty!"))
+		return SECONDARY_ATTACK_CONTINUE_CHAIN
+	if(!target.is_drawable(user))
+		to_chat(user, span_warning("You cannot directly remove reagents from [target]!"))
+		return SECONDARY_ATTACK_CONTINUE_CHAIN
+	var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this, transfered_by = user) // transfer from, transfer to - who cares?
+	to_chat(user, span_notice("You fill [src] with [trans] units of the solution. It now contains [reagents.total_volume] units."))
 
 	return SECONDARY_ATTACK_CONTINUE_CHAIN
 
