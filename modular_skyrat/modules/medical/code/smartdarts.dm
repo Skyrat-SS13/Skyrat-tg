@@ -1,7 +1,7 @@
 //The smartdarts themselves
 /obj/item/reagent_containers/syringe/smartdart
 	name = "medical smartdart"
-	desc = "allows the user to safely inject chemicals at a range without harming the patient"
+	desc = "Allows the user to safely inject chemicals at a range without harming the patient."
 	volume = 10
 
 //Code that handles the base interactions involving smartdarts
@@ -33,7 +33,7 @@
 //The base smartdartgun
 /obj/item/gun/syringe/smartdart
 	name = "medical smartdart gun"
-	desc = "An adjusted version of the medical syringe gun that only allows smartdarts to be chambered"
+	desc = "An adjusted version of the medical syringe gun that only allows smartdarts to be chambered."
 	w_class = WEIGHT_CLASS_NORMAL //I might need to look into changing this later depending on feedback
 
 /obj/item/gun/syringe/smartdart/Initialize()
@@ -79,9 +79,9 @@
 							prevention_used = TRUE
 					else
 						mob.reagents.add_reagent(meds.type, meds.volume)
-				mob.visible_message(span_notice("[src] embeds itself into [mob]"), span_notice("You feel a small prick as the [src] embeds itself into you"))
+				mob.visible_message(span_notice("[src] embeds itself into [mob]"), span_notice("You feel a small prick as [src] embeds itself into you."))
 				if(prevention_used) //Used to signal that allergens were not injected into the target mob.
-					mob.visible_message(span_notice("[src] lets out a short beep"), span_notice("You hear a short beep from the [src]"))
+					mob.visible_message(span_notice("[src] lets out a short beep."), span_notice("You hear a short beep from [src]."))
 					playsound(loc, 'sound/machines/ping.ogg', 50, 1, -1)
 				return BULLET_ACT_HIT
 			else
