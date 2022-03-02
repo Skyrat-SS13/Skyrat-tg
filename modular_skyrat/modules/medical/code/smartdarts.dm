@@ -55,3 +55,40 @@
 /obj/projectile/bullet/dart/syringe/dart
 	name = "smartdart"
 	damage = 0
+	var/is_allergic = FALSE
+	var/list/allergyList = list()
+	var/prevention_used = FALSE
+
+/obj/projectile/bullet/dart/syringe/dart/on_hit(atom/target, blocked = FALSE)
+	if(iscarbon(target))
+		var/mob/living/carbon/mob = target
+		if(blocked != 100) // not completely blocked
+			if(mob.can_inject(target_zone = def_zone, injection_flags = inject_flags)) // Pass the hit zone to see if it can inject by whether it hit the head or the body.
+				//Checks to see if the target has allergies
+				for(var/datum/quirk/quirky as anything in mob.quirks)
+					if(istype(quirky, /datum/quirk/item_quirk/allergic))
+						var/datum/quirk/item_quirk/allergic/allergies_quirk = quirky
+						allergyList = allergies_quirk.allergies
+						is_allergic = TRUE
+				//The code that handles the actual injections
+				for(var/datum/reagent/medicine/meds in reagents.reagent_list)
+					if(is_allergic)
+						if(!is_type_in_list(meds, allergyList))
+							mob.reagents.add_reagent(meds.type, meds.volume)
+						else
+							prevention_used = TRUE
+					else
+						mob.reagents.add_reagent(meds.type, meds.volume)
+				mob.visible_message(span_notice("[src] embeds itself into [mob]"), span_notice("You feel a small prick as the [src] embeds itself into you"))
+				if(prevention_used) //Used to signal that allergens were not injected into the target mob.
+					mob.visible_message(span_notice("[src] lets out a short beep"), span_notice("You hear a short beep from the [src]"))
+					playsound(loc, 'sound/machines/ping.ogg', 50, 1, -1)
+				return BULLET_ACT_HIT
+			else
+				blocked = 100
+				target.visible_message(span_danger("\The [src] is deflected!"), \
+									   span_userdanger("You are protected against \the [src]!"))
+	..(target, blocked)
+	reagents.flags &= ~(NO_REACT)
+	reagents.handle_reactions()
+	return BULLET_ACT_HIT
