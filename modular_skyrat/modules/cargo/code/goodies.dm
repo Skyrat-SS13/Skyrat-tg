@@ -68,7 +68,6 @@
 	name = "Makarov Self Defense Pistol"
 	desc = "A small, slow firing and low capacity pistol, but hey, it's better then a crowbar, right? (Does not include a weapons permit.)"
 	cost = PAYCHECK_MEDIUM * 28
-	contraband = TRUE
 	contains = list(/obj/item/storage/box/gunset/makarov)
 
 /datum/supply_pack/goody/pepperball
