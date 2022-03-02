@@ -89,17 +89,32 @@
 				else
 					SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "oogabooga", /datum/mood_event/sacrifice_bad)
 
-/obj/structure/lavaland/ash_walker/proc/remake_walker(datum/mind/oldmind, oldname)
-	var/mob/living/carbon/human/M = new /mob/living/carbon/human(get_step(loc, pick(GLOB.alldirs)))
-	M.set_species(/datum/species/lizard/ashwalker)
-	M.real_name = oldname
-	M.underwear = "Nude"
-	M.update_body()
-	M.remove_language(/datum/language/common)
-	oldmind.transfer_to(M)
-	M.mind.grab_ghost()
-	to_chat(M, "<b>You have been pulled back from beyond the grave, with a new body and renewed purpose. Glory to the Necropolis!</b>")
-	playsound(get_turf(M),'sound/magic/exit_blood.ogg', 100, TRUE)
+/obj/structure/lavaland/ash_walker/proc/remake_walker(datum/mind/oldmind, oldname) // SKYRAT EDIT BEGIN - Ashwalker Respawning Fix
+	var/mob/living/carbon/human/M
+	var/ask = tgui_alert(oldmind, "You have been returned to the nest. \nDo you wish to be a random Ash Walker or your loaded Ash-Walker?", "Returned to Nest", list("Loaded Character", "Random Ash-Walker"))
+	switch(ask)
+		if("Random Ash-Walker")
+			M = new /mob/living/carbon/human(get_step(loc, pick(GLOB.alldirs)))
+			M.set_species(/datum/species/lizard/ashwalker)
+			M.real_name = oldname
+			M.underwear = "Nude"
+			M.update_body()
+			M.remove_language(/datum/language/common)
+			oldmind.transfer_to(M)
+			M.mind.grab_ghost()
+			to_chat(M, "<b>You have been pulled back from beyond the grave, with a new body and renewed purpose. Glory to the Necropolis!</b>")
+			playsound(get_turf(M),'sound/magic/exit_blood.ogg', 100, TRUE)
+		if("Loaded Character")
+			M = new /mob/living/carbon/human(get_step(loc, pick(GLOB.alldirs)))
+			M?.client?.prefs?.safe_transfer_prefs_to(M)
+			M.dna.update_dna_identity()
+			if(!M.dna.species.id == SPECIES_LIZARD_ASH)
+				QDEL_NULL(M)
+				to_chat(oldmind, "Load an Ash-Walker to this slot!")
+				return
+			to_chat(M, "<b>You have been pulled back from beyond the grave, with a new body and renewed purpose. Glory to the Necropolis!</b>")
+			playsound(get_turf(M),'sound/magic/exit_blood.ogg', 100, TRUE) // SKYRAT EDIT END - Ashwalker Respawning Fix
+
 
 /obj/structure/lavaland/ash_walker/proc/spawn_mob()
 	if(meat_counter >= ASH_WALKER_SPAWN_THRESHOLD)
