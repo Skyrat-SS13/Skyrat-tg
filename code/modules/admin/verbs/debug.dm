@@ -654,6 +654,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		exists[L.ruin_template] = landmark
 
 	var/list/names = list()
+<<<<<<< HEAD
 	names += "---- Space Ruins ----"
 	for(var/name in SSmapping.space_ruins_templates)
 		names[name] = list(SSmapping.space_ruins_templates[name], ZTRAIT_SPACE_RUINS, list(/area/space))
@@ -670,6 +671,14 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	for(var/name in SSmapping.rockplanet_ruins_templates)
 		names[name] = list(SSmapping.rockplanet_ruins_templates[name], ZTRAIT_ROCKPLANET_RUINS, list(/area/rockplanet/surface/outdoors/unexplored))
 //SKYRAT EDIT END//
+=======
+	for (var/theme in SSmapping.themed_ruins)
+		names += "---- [theme] ----"
+		for (var/name in SSmapping.themed_ruins[theme])
+			var/datum/map_template/ruin/ruin = SSmapping.themed_ruins[theme][name]
+			names[name] = list(ruin, theme, list(ruin.default_area))
+
+>>>>>>> 4e9731712ad (Dehardcodes SSmapping (#65077))
 
 	var/ruinname = input("Select ruin", "Spawn Ruin") as null|anything in sort_list(names)
 	var/data = names[ruinname]
