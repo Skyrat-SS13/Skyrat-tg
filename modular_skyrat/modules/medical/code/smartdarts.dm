@@ -6,7 +6,7 @@
 
 //Code that handles the base interactions involving smartdarts
 /obj/item/reagent_containers/syringe/smartdart/afterattack(atom/target, mob/user, proximity)
-	to_chat(user, span_warning("You cannot directly inject from a smartdart"))
+	to_chat(user, span_warning("The [src] is unable to directly inject chemicals."))
 	return
 //A majority of this code is from the original syringes.dm file.
 /obj/item/reagent_containers/syringe/smartdart/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
@@ -16,7 +16,7 @@
 		to_chat(user, span_notice("[src] is full."))
 		return SECONDARY_ATTACK_CONTINUE_CHAIN
 	if(isliving(target))
-		to_chat(user, span_warning("You are unable to take blood with a smartdart"))
+		to_chat(user, span_warning("The [src] is unable to take blood."))
 		return SECONDARY_ATTACK_CONTINUE_CHAIN
 	else
 		if(!target.reagents.total_volume)
