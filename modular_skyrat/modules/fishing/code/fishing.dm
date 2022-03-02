@@ -81,7 +81,6 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	if(COOLDOWN_FINISHED(src, start_fishing_window) && !COOLDOWN_FINISHED(src, stop_fishing_window))
 		var/turf/fisher_turf = get_turf(fisher)
 		create_reward(fisher_turf, fisher.fishing_focus, user)
-		user.mind.adjust_experience(/datum/skill/fishing, 10)
 		var/skill_prob = user.mind.get_skill_modifier(/datum/skill/fishing, SKILL_PROBS_MODIFIER)
 		if(prob(skill_prob))
 			create_reward(fisher_turf, fisher.fishing_focus, user)
@@ -89,6 +88,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 /datum/component/fishing/proc/create_reward(turf/spawning_turf, focus, mob/living/user)
 	var/atom/spawning_reward
 	var/enhanced_reward = user.mind.get_skill_modifier(/datum/skill/fishing, SKILL_RANDS_MODIFIER)
+	user.mind.adjust_experience(/datum/skill/fishing, 10)
 	switch(focus)
 		if(FOCUS_NONE)
 			switch(rand(1, 100))
@@ -208,14 +208,9 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 
 /obj/item/fishing_rod/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	var/skill_level = user.mind.get_skill_level(/datum/skill/fishing)
-	var/skill_prob = user.mind.get_skill_modifier(/datum/skill/fishing, SKILL_PROBS_MODIFIER)
 	if((!is_wielded && skill_level < SKILL_LEVEL_MASTER) || get_dist(target, user) >= 4)
 		return
 	if(target_atom)
-		if(skill_prob)
-			SEND_SIGNAL(target_atom, COMSIG_FINISH_FISHING, fisher = src, master_involved = TRUE, user = user)
-			target_atom = null
-			return
 		SEND_SIGNAL(target_atom, COMSIG_FINISH_FISHING, fisher = src, user = user)
 		target_atom = null
 		return

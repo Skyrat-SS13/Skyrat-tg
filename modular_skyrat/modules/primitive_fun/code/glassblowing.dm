@@ -148,15 +148,15 @@
 		return
 
 	if(istype(attacking_item, /obj/item/glassblowing/paddle))
-		do_glass_step(3, user, attacking_item, actioning_speed)
+		do_glass_step(3, user, "paddle", actioning_speed)
 		return
 
 	if(istype(attacking_item, /obj/item/glassblowing/shears))
-		do_glass_step(4, user, attacking_item, actioning_speed)
+		do_glass_step(4, user, "shear", actioning_speed)
 		return
 
 	if(istype(attacking_item, /obj/item/glassblowing/jacks))
-		do_glass_step(5, user, attacking_item, actioning_speed)
+		do_glass_step(5, user, "jack", actioning_speed)
 		return
 
 	return ..()
@@ -197,15 +197,15 @@
 			in_use = FALSE
 			return
 		else
+			in_use = FALSE
 			var/action_choice = tgui_alert(user, "What would you like to do?", "Action Selection", list("Blow", "Spin", "Remove"))
 			if(!action_choice)
-				in_use = FALSE
 				return
 			switch(action_choice)
 				if("Blow")
-					do_glass_step(1, user, src, actioning_speed)
+					do_glass_step(1, user, "blow", actioning_speed)
 				if("Spin")
-					do_glass_step(2, user, src, actioning_speed)
+					do_glass_step(2, user, "spin", actioning_speed)
 				if("Remove")
 					for(var/iterate in 1 to 5)
 						if(find_glass.current_actions[iterate] < find_glass.required_actions[iterate])
@@ -213,11 +213,9 @@
 							return
 					new find_glass.chosen_item(get_turf(src))
 					user.mind.adjust_experience(/datum/skill/production, 30)
-					in_use = FALSE
 					qdel(find_glass)
 					icon_state = "blow_pipe_empty"
 					return
-			in_use = FALSE
 			return
 	return ..()
 
@@ -225,7 +223,7 @@
 	to_chat(user, span_warning(message))
 	in_use = FALSE
 
-/obj/item/glassblowing/blowing_rod/proc/do_glass_step(number, mob/user, obj/item/attacking_item, actioning_speed)
+/obj/item/glassblowing/blowing_rod/proc/do_glass_step(number, mob/user, message, actioning_speed)
 	var/obj/item/glassblowing/molten_glass/find_glass = locate() in contents
 	if(!find_glass)
 		return
@@ -235,7 +233,7 @@
 	if(!check_valid_table(user))
 		fail_message("You must be near a non-flammable table!", user)
 		return
-	to_chat(user, span_notice("You begin using [attacking_item] on [src]."))
+	to_chat(user, span_notice("You begin to [message] [src]."))
 	if(!do_after(user, actioning_speed, target = src))
 		fail_message("You interrupt an action!", user)
 		return
@@ -243,7 +241,7 @@
 		fail_message("You must be near a non-flammable table!", user)
 		return
 	find_glass.current_actions[number]++
-	to_chat(user, span_notice("You finish using [attacking_item] on [src]."))
+	to_chat(user, span_notice("You finish trying to [message] [src]."))
 	in_use = FALSE
 	user.mind.adjust_experience(/datum/skill/production, 10)
 

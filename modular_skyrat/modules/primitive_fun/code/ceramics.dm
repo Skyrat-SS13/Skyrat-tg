@@ -56,7 +56,7 @@
 	merge_type = /obj/item/stack/clay
 
 /datum/export/ceramics
-	cost = 1000
+	cost = 1500
 	unit_name = "ceramic product"
 	export_types = list(/obj/item/plate/ceramic,
 						/obj/item/reagent_containers/glass/bowl/ceramic,
