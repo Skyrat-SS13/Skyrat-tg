@@ -785,6 +785,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/medical/doctor/formal
 	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST, JOB_SECURITY_MEDIC, JOB_PARAMEDIC, JOB_PSYCHOLOGIST)
 
+/datum/loadout_item/under/formal/formalmedskirt
+	name = "Formal Medical Skirt"
+	item_path = /obj/item/clothing/under/rank/medical/doctor/formal/skirt
+	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST, JOB_SECURITY_MEDIC, JOB_PARAMEDIC, JOB_PSYCHOLOGIST)
+
 /datum/loadout_item/under/formal/kimono
 	name = "Kimono"
 	item_path = /obj/item/clothing/under/costume/kimono
