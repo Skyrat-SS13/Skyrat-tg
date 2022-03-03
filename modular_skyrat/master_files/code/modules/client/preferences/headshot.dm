@@ -27,6 +27,7 @@
 		//input(usr, "Please make sure to use a relatively work-safe image of the head to shoulder or chest area to maintain immersion level. Think of it as a headshot for your ID.", "Notice") in list("Close")
 		to_chat(usr, span_notice("Please make sure to use a relatively work-safe image of the head to shoulder or chest area to maintain immersion level. Think of it as a headshot for your ID."))
 		to_chat(usr, span_notice("If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser."))
+		to_chat(usr, span_notice("Keep in mind that the photo will be downsized to 250x250 pixels, so the more square the photo, the better it will look."))
 	stored_link = value
 	return TRUE
 
