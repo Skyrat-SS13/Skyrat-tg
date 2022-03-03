@@ -11,8 +11,8 @@
 /datum/preference/text/headshot/is_valid(value)
 	if(!length(value)) //Just to get blank ones out of the way
 		return TRUE
-	if(!is_veteran_player(usr?.client))
-		to_chat(usr, span_warning("You must be a veteran to use this feature!"))
+	if(!is_veteran_player(usr?.client) && !(usr?.ckey in GLOB.donator_list))
+		to_chat(usr, span_warning("You must be a veteran or donator to use this feature!"))
 		return
 	if(!findtext(value, "https://"))
 		to_chat(usr, span_warning("You need \"https://\" in the link!"))
@@ -29,3 +29,8 @@
 		to_chat(usr, span_notice("If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser."))
 	stored_link = value
 	return TRUE
+
+/datum/preference/text/headshot/deserialize(input, datum/preferences/preferences)
+	if(!is_veteran_player(usr?.client) && !(usr?.ckey in GLOB.donator_list))
+		input = ""
+	return STRIP_HTML_SIMPLE(input, MAX_FLAVOR_LEN)
