@@ -60,7 +60,8 @@
 	name = "smartdart"
 	damage = 0
 	var/list/allergyList = list()
-	var/prevention_used = FALSE
+	var/prevention_used = FALSE //Is allergy prevention used?
+	//List containing chemicals that Smartdarts can Inject.
 	var/list/allowed_medicine = list(
 		/datum/reagent/medicine,
 		/datum/reagent/vaccine
