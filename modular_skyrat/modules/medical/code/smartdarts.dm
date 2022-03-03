@@ -73,6 +73,7 @@
 		reagents.flags &= ~(NO_REACT)
 		reagents.handle_reactions()
 		return BULLET_ACT_HIT
+
 	var/mob/living/carbon/injectee = target
 	if(!injectee.can_inject(target_zone = def_zone, injection_flags = inject_flags)) // if the syringe is blocked
 		blocked = 100
@@ -80,13 +81,15 @@
 		target.visible_message(span_danger("\The [src] is deflected!"), \
 							span_userdanger("You are protected against \the [src]!"))
 		return
-		//Checks to see if the target has allergies
+
+	//Checks for allergies, and saves allergies to a list if they are present
 	for(var/datum/quirk/quirky as anything in injectee.quirks)
 		if(!istype(quirky, /datum/quirk/item_quirk/allergic))
 			continue
 		var/datum/quirk/item_quirk/allergic/allergies_quirk = quirky
 		allergyList = allergies_quirk.allergies
-			//The code that handles the actual injections
+
+	//The code that handles the actual injections
 	for(var/datum/reagent/meds in reagents.reagent_list)
 		if(!is_type_in_list(meds, allowed_medicine))
 			continue
@@ -94,6 +97,7 @@
 			prevention_used = TRUE
 		else
 			injectee.reagents.add_reagent(meds.type, meds.volume)
+
 	injectee.visible_message(span_notice("[src] embeds itself into [injectee]"), span_notice("You feel a small prick as [src] embeds itself into you."))
 	if(prevention_used) //Used to signal that allergens were not injected into the target mob.
 		injectee.visible_message(span_notice("[src] lets out a short beep."), span_notice("You hear a short beep from [src]."))
