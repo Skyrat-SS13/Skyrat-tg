@@ -780,6 +780,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "White Suit"
 	item_path = /obj/item/clothing/under/suit/white
 
+/datum/loadout_item/under/formal/fancy_suit
+	name = "Fancy Suit"
+	item_path = /obj/item/clothing/under/suit/fancy
+
 /datum/loadout_item/under/formal/formalmed
 	name = "Formal Medical Suit"
 	item_path = /obj/item/clothing/under/rank/medical/doctor/formal
