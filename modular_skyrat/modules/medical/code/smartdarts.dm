@@ -37,6 +37,8 @@
 	name = "medical smartdart gun"
 	desc = "An adjusted version of the medical syringe gun that only allows smartdarts to be chambered."
 	w_class = WEIGHT_CLASS_NORMAL //I might need to look into changing this later depending on feedback
+	icon = 'modular_skyrat/modules/medical/icons/obj/dartguns.dmi'
+	icon_state = "smartdartgun"
 
 /obj/item/gun/syringe/smartdart/Initialize()
 	. = ..()
