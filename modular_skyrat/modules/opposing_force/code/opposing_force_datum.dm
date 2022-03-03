@@ -455,6 +455,7 @@
 
 	add_log(user.ckey, "Issued gear")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has issued all approved equipment")
+	equipment_issued = TRUE
 
 
 ////
