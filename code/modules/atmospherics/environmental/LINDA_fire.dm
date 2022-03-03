@@ -1,4 +1,11 @@
+/// Returns reactions which will contribute to a hotspot's size.
+/proc/init_hotspot_reactions()
+	var/list/fire_reactions = list()
+	for (var/datum/gas_reaction/reaction as anything in subtypesof(/datum/gas_reaction))
+		if(initial(reaction.expands_hotspot))
+			fire_reactions += reaction
 
+	return fire_reactions
 
 /atom/proc/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	return null
@@ -114,6 +121,7 @@
  */
 /obj/effect/hotspot/proc/perform_exposure()
 	var/turf/open/location = loc
+	var/datum/gas_mixture/reference
 	if(!istype(location) || !(location.air))
 		return
 
@@ -123,19 +131,26 @@
 
 	//Passive mode
 	if(bypassing)
-		volume = location.air.reaction_results["fire"]*FIRE_GROWTH_RATE
-		temperature = location.air.temperature
+		reference = location.air // Our color and volume will depend on the turf's gasmix
 	//Active mode
 	else
 		var/datum/gas_mixture/affected = location.air.remove_ratio(volume/location.air.volume)
 		if(affected) //in case volume is 0
+			reference = affected // Our color and volume will depend on this small sparked gasmix
 			affected.temperature = temperature
 			affected.react(src)
-			temperature = affected.temperature
-			volume = affected.reaction_results["fire"]*FIRE_GROWTH_RATE
 			location.assume_air(affected)
 
+<<<<<<< HEAD
 	location.PolluteListTurf(list(/datum/pollutant/smoke = 15, /datum/pollutant/carbon_air_pollution = 5), POLLUTION_ACTIVE_EMITTER_CAP) //SKYRAT EDIT ADDITION
+=======
+	if(reference)
+		volume = 0
+		var/list/cached_results = reference.reaction_results
+		for (var/reaction in SSair.hotspot_reactions)
+			volume += cached_results[reaction] * FIRE_GROWTH_RATE
+		temperature = reference.temperature
+>>>>>>> eeb54659314 (Ordnance Content Update: Scientific Papers (#62284))
 
 	// Handles the burning of atoms.
 	for(var/A in location)
