@@ -65,7 +65,7 @@
 			message_admins("[target],[value],[target.payday_modifier]\n")
 
 /datum/preference/choiced/education/create_default_value()
-	return NEW_HIRE_RATE
+	return "Vocational"
 
 //Faction Code
 /datum/preference/choiced/origin
