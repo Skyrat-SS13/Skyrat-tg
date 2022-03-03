@@ -424,9 +424,8 @@
 				adjust_item_drop_location(P)
 				reagents.trans_to(P, vol_each, transfered_by = usr)
 		if(item_type == "smartdart")
-			var/obj/item/reagent_containers/syringe/smartdart/dart
 			for(var/i in 1 to amount)
-				dart = new(drop_location())
+				var/obj/item/reagent_containers/syringe/smartdart/dart = new(drop_location())
 				dart.name = trim("[name] smartdart")
 				adjust_item_drop_location(dart)
 				reagents.trans_to(dart, vol_each, transfered_by = usr)
