@@ -40,16 +40,16 @@ export const ExaminePanel = (props, context) => {
                   )}
                 </Section>
                 <Section height="310px" title="Headshot">
-                <img
-                  src={resolveAsset(headshot)}
-                  height="250px"
-                  width="250px"
-                />
+                  <img
+                    src={resolveAsset(headshot)}
+                    height="250px"
+                    width="250px"
+                  />
                 </Section>
               </>
             ) : (
               <Section fill title="Character Preview">
-              {!obscured
+                {!obscured
               && (
                 <ByondUi
                   height="100%"
