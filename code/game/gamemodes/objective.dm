@@ -110,6 +110,7 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 		dupe_search_range = get_owners()
 	var/list/possible_targets = list()
 	var/try_target_late_joiners = FALSE
+	var/hitlist = list() // SKYRAT EDIT ADDITION: Adding certain trait users to a hit list.
 	for(var/I in owners)
 		var/datum/mind/O = I
 		if(O.late_joiner)
@@ -128,8 +129,11 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 			continue
 		if(possible_target in blacklist)
 			continue
-		// SKYRAT EDIT ADDITION START - Players in the interlink can't be obsession targets
+		// SKYRAT EDIT ADDITION START - Players in the interlink can't be obsession targets && // SKYRAT EDIT ADDITION: Adding certain trait users to a hit list.
 		if(SSticker.IsRoundInProgress() && istype(target_area, /area/centcom/interlink))
+			continue
+		if(possible_target.current.risk_increased)
+			hitlist += possible_target
 			continue
 		// SKYRAT EDIT END
 		possible_targets += possible_target
@@ -141,7 +145,10 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 				possible_targets -= PT
 		if(!possible_targets.len)
 			possible_targets = all_possible_targets
-	if(possible_targets.len > 0)
+	//SKYRAT EDIT BEGIN - Traitor targets have a 80% chance to be people on the hitlist
+	if(prob(80))
+		target = pick(hitlist)
+	else if(possible_targets.len > 0) // SKYRAT EDIT END
 		target = pick(possible_targets)
 	update_explanation_text()
 	return target
