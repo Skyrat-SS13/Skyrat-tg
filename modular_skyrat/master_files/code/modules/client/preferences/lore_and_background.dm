@@ -14,6 +14,8 @@
 #define SLAVE "Indentured Servant"
 #define NORMAL "Regular Employee"
 
+#define MYSTERIOUS "Default (Unknown)"
+
 #define OLD_MONEY "Old Money"
 #define PRODIGY "Prodigy"
 #define C_LIST "C-List Celebrity"
@@ -26,6 +28,7 @@
 
 
 	var/possible_options_education = list(
+		MYSTERIOUS,
 		"Trainee",
 		"Student",
 		"Uneducated",
@@ -59,13 +62,13 @@
 			message_admins("[target],[value],[target.payday_modifier]\n")
 			target.payday_modifier -= RATE_3_REDUCTION
 			message_admins("[target],[value],[target.payday_modifier]\n")
-		else //Failsafe for bad input. Non-listed selections new hire rate, no input is unset rate.
+		else //Failsafe for bad input.. We default to RATE_2_REDUCTION - Unset(error!) is even less.
 			message_admins("[target],[value],[target.payday_modifier]\n")
-			target.payday_modifier -= value ? NEW_HIRE_RATE : UNSET_RATE
+			target.payday_modifier -= value ? RATE_2_REDUCTION : UNSET_RATE
 			message_admins("[target],[value],[target.payday_modifier]\n")
 
 /datum/preference/choiced/education/create_default_value()
-	return "Vocational"
+	return MYSTERIOUS
 
 //Faction Code
 /datum/preference/choiced/origin
@@ -73,6 +76,7 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	var/possible_options_origin = list(
+		MYSTERIOUS,
 		DEBTSLAVE,
 		MIGRANT,
 		LOST,
@@ -109,13 +113,13 @@
 			target.payday_modifier = 0 // Todo, trait here.
 			message_admins("[target],[value],[target.payday_modifier]\n")
 
-		else //Failsafe for bad input.. Unset is stateless, undefined inputs = NANOTRASEN(no difference) .
+		else //Failsafe for bad input.. We default to RATE_2_REDUCTION - Unset(error!) is even less. .
 			message_admins("[target],[value],[target.payday_modifier]\n")
-			target.payday_modifier -= value ? NEW_HIRE_RATE : UNSET_RATE
+			target.payday_modifier -= value ? RATE_2_REDUCTION : UNSET_RATE
 			message_admins("[target],[value],[target.payday_modifier]\n")
 
 /datum/preference/choiced/origin/create_default_value()
-	return NORMAL
+	return MYSTERIOUS
 
 //Faction Code
 /datum/preference/choiced/social_status
@@ -123,6 +127,7 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	var/possible_options_social_status = list(
+		MYSTERIOUS,
 		OLD_MONEY,
 		C_LIST,
 		PRODIGY,
@@ -156,13 +161,13 @@
 			message_admins("[target],[value],[target.payday_modifier]\n")
 			target.payday_modifier -= RATE_3_REDUCTION // Todo, trait here.
 			message_admins("[target],[value],[target.payday_modifier]\n")
-		else //Failsafe for bad input.. Unset is stateless
+		else //Failsafe for bad input.. We default to RATE_2_REDUCTION - Unset(error!) is even less.
 			message_admins("[target],[value],[target.payday_modifier]\n")
-			target.payday_modifier -= value ? RATE_3_REDUCTION : UNSET_RATE
+			target.payday_modifier -= value ? RATE_2_REDUCTION : UNSET_RATE
 			message_admins("[target],[value],[target.payday_modifier]\n")
 
 /datum/preference/choiced/social_status/create_default_value()
-	return NORMAL
+	return MYSTERIOUS
 
 /datum/quirk/item_quirk/family_heirloom/prodigy //based off family heirloom
 	name = "Fancy Diploma"
