@@ -40,5 +40,3 @@
 
 /turf/open/floor/iron/recharge_floor/asteroid/lowpressure
 	initial_gas_mix = "o2=14;n2=30;TEMP=293.15"
-
-/obj/effect/turf_decal
