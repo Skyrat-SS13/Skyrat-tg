@@ -64,3 +64,6 @@
 		icon_state = "[primitive ? "primitive_" : ""]anvil_empty"
 		qdel(search_incomplete_src)
 	return FALSE
+
+/obj/structure/reagent_anvil/hammer_act_secondary(mob/living/user, obj/item/tool)
+	hammer_act(user, tool)
