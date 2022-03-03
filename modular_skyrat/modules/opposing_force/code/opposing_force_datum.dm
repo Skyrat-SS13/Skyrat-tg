@@ -424,8 +424,9 @@
 	add_log(user.ckey, "Selected equipment: [incoming_equipment.name]")
 
 /datum/opposing_force/proc/issue_gear(mob/user)
-	if(!selected_equipment.len || !isliving(mind_reference.current) || status != OPFOR_STATUS_APPROVED || equipment_issued)
+	if(!isliving(mind_reference.current) || status != OPFOR_STATUS_APPROVED || equipment_issued)
 		return
+
 	var/mob/living/target = mind_reference.current
 	var/obj/item/storage/box/spawned_box = new(get_turf(target))
 	for(var/datum/opposing_force_selected_equipment/iterating_equipment as anything in selected_equipment)
@@ -438,17 +439,34 @@
 		human.put_in_hands(spawned_box)
 	if(target.mind.has_antag_datum(/datum/antagonist/traitor))
 		var/datum/component/uplink/uplink = target.mind.find_syndicate_uplink(TRUE)
-		var/obj/item/stack/telecrystals = create_tc()
+		var/obj/item/stack/telecrystals =  new /obj/item/stack/telecrystal(src)
+		telecrystals.amount += TELECRYSTALS_OPFOR_BONUS
 		uplink.load_tc(user, telecrystals)
+		add_log(user.ckey, "Received their OPFOR TC.")
 
 	add_log(user.ckey, "Issued gear")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has issued all approved equipment")
 
-/datum/opposing_force/proc/create_tc()
-	var/tc = list()
-	for(var/i = 1 to 10) // Our 10 + 10 TC
-		tc += new /obj/item/stack/telecrystal(src)
-	return tc
+
+////
+// Uplinks starting TC
+/datum/component/uplink/Initialize(
+	owner,
+	lockable = TRUE,
+	enabled = FALSE,
+	uplink_flag = UPLINK_TRAITORS,
+	starting_tc = TELECRYSTALS_DEFAULT,
+	has_progression = FALSE,
+	datum/uplink_handler/uplink_handler_override,
+)
+	starting_tc = TELECRYSTALS_SKYRAT
+	return ..()
+
+/obj/item/implant/uplink/implant(mob/living/carbon/target, mob/user, silent, force)
+	. = ..()
+
+	var/datum/component/uplink/uplink = GetComponent(/datum/component/uplink)
+	uplink.set_telecrystals(TELECRYSTALS_SKYRAT - UPLINK_IMPLANT_TELECRYSTAL_COST)
 
 /**
  * Control procs
