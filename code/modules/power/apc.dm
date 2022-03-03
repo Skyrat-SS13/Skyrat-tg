@@ -195,9 +195,6 @@
 /obj/machinery/power/apc/highcap/ten_k
 	cell_type = /obj/item/stock_parts/cell/high
 
-/obj/machinery/power/apc/highcap/fifteen_k
-	cell_type = /obj/item/stock_parts/cell/high/plus
-
 /obj/machinery/power/apc/auto_name
 	auto_name = TRUE
 
