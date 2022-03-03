@@ -72,9 +72,10 @@
 		return
 		//Checks to see if the target has allergies
 	for(var/datum/quirk/quirky as anything in injectee.quirks)
-		if(istype(quirky, /datum/quirk/item_quirk/allergic))
-			var/datum/quirk/item_quirk/allergic/allergies_quirk = quirky
-			allergyList = allergies_quirk.allergies
+		if(!istype(quirky, /datum/quirk/item_quirk/allergic))
+			continue
+		var/datum/quirk/item_quirk/allergic/allergies_quirk = quirky
+		allergyList = allergies_quirk.allergies
 			//The code that handles the actual injections
 	for(var/datum/reagent/medicine/meds in reagents.reagent_list)
 		if(is_type_in_list(meds, allergyList))
