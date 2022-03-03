@@ -56,6 +56,10 @@
 	damage = 0
 	var/list/allergyList = list()
 	var/prevention_used = FALSE
+	var/list/allowed_medicine = list(
+		/datum/reagent/medicine,
+		/datum/reagent/vaccine
+	)
 
 /obj/projectile/bullet/dart/syringe/dart/on_hit(atom/target, blocked = FALSE)
 	if(!iscarbon(target))
@@ -77,7 +81,9 @@
 		var/datum/quirk/item_quirk/allergic/allergies_quirk = quirky
 		allergyList = allergies_quirk.allergies
 			//The code that handles the actual injections
-	for(var/datum/reagent/medicine/meds in reagents.reagent_list)
+	for(var/datum/reagent/meds in reagents.reagent_list)
+		if(!is_type_in_list(meds, allowed_medicine))
+			continue
 		if(is_type_in_list(meds, allergyList))
 			prevention_used = TRUE
 		else
