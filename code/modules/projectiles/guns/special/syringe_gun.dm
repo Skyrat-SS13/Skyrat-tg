@@ -38,7 +38,7 @@
 	if(!syringes.len)
 		return
 	//SKYRAT EDIT SMARTDARTS
-	if(istype(syringes[syringes.len], /obj/item/reagent_containers/syringe/smartdart))
+	if(istype(syringes[length(syringes)], /obj/item/reagent_containers/syringe/smartdart))
 		chambered = new /obj/item/ammo_casing/syringegun/dart(src)
 	else
 		chambered = new /obj/item/ammo_casing/syringegun(src)
