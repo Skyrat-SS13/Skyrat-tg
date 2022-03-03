@@ -415,6 +415,7 @@
 				P.name = trim("[name] bottle")
 				adjust_item_drop_location(P)
 				reagents.trans_to(P, vol_each, transfered_by = usr)
+				return TRUE
 		//SKYRAT EDIT ADDTION START
 		if(item_type == "vial")
 			var/obj/item/reagent_containers/glass/vial/small/P
@@ -423,14 +424,15 @@
 				P.name = trim("[name] vial")
 				adjust_item_drop_location(P)
 				reagents.trans_to(P, vol_each, transfered_by = usr)
+				return TRUE
 		if(item_type == "smartdart")
 			for(var/i in 1 to amount)
 				var/obj/item/reagent_containers/syringe/smartdart/dart = new(drop_location())
 				dart.name = trim("[name] smartdart")
 				adjust_item_drop_location(dart)
 				reagents.trans_to(dart, vol_each, transfered_by = usr)
+				return TRUE
 		//SKYRAT EDIT ADDTION END
-			return TRUE
 		if(item_type == "condimentPack")
 			var/obj/item/reagent_containers/food/condiment/pack/P
 			for(var/i in 1 to amount)
