@@ -205,6 +205,8 @@
 /datum/antagonist/traitor/proc/forge_traitor_objectives()
 	objectives.Cut()
 
+	//SKYRAT EDIT START - OBJECTIVE REMOVAL
+	/*
 	var/datum/objective/traitor_progression/final_objective = new /datum/objective/traitor_progression()
 	final_objective.owner = owner
 	objectives += final_objective
@@ -212,7 +214,8 @@
 	var/datum/objective/traitor_objectives/objective_completion = new /datum/objective/traitor_objectives()
 	objective_completion.owner = owner
 	objectives += objective_completion
-
+	*/
+	//SKYRAT EDIT END
 
 /datum/antagonist/traitor/apply_innate_effects(mob/living/mob_override)
 	. = ..()

@@ -32,7 +32,7 @@
 
 	uniform = /obj/item/clothing/under/enclave
 	suit = /obj/item/clothing/suit/armor/vest/alt
-	suit_store = /obj/item/gun/ballistic/automatic/assault_rifle/m16
+	suit_store = /obj/item/gun/ballistic/automatic/m16
 
 	gloves = /obj/item/clothing/gloves/combat
 

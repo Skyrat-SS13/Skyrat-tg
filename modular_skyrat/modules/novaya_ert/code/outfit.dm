@@ -6,7 +6,7 @@
 	mask = /obj/item/clothing/mask/balaclavaadjust
 	uniform = /obj/item/clothing/under/costume/nri
 	suit = /obj/item/clothing/suit/armor/vest/russian/nri
-	suit_store = /obj/item/gun/ballistic/automatic/assault_rifle/akm
+	suit_store = /obj/item/gun/ballistic/automatic/akm
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/storage/belt/military/nri/full
 	back = /obj/item/storage/backpack/satchel/leather
@@ -37,7 +37,7 @@
 	head = /obj/item/clothing/head/beret/sec/nri
 	glasses = /obj/item/clothing/glasses/thermal/eyepatch
 	belt = /obj/item/storage/belt/military/nri/full_commander
-	suit_store = /obj/item/gun/ballistic/automatic/submachine_gun/ppsh
+	suit_store = /obj/item/gun/ballistic/automatic/ppsh
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/firstaid/emergency, /obj/item/clothing/mask/gas/alt, /obj/item/clothing/accessory/armband, /obj/item/megaphone, /obj/item/binoculars)
 

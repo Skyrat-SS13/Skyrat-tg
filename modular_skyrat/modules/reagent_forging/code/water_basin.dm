@@ -13,13 +13,17 @@
 
 /obj/structure/reagent_water_basin/examine(mob/user)
 	. = ..()
-	. += span_notice("[src] can be upgraded through a bluespace crystal or a journeyman smithy!")
+	var/check_fishable = GetComponent(/datum/component/fishing)
+	if(!check_fishable)
+		. += span_notice("[src] can be upgraded through a bluespace crystal or a journeyman smithy!")
+	else
+		. += span_notice("[src] has been upgraded! There is a strange orb that floats within the water... it seems to be replacing the water slowly.")
 
 /obj/structure/reagent_water_basin/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	var/smithing_skill = user.mind.get_skill_level(/datum/skill/smithing)
 	var/check_fishable = GetComponent(/datum/component/fishing)
-	if(smithing_skill < SKILL_LEVEL_JOURNEYMAN && check_fishable)
+	if(smithing_skill < SKILL_LEVEL_JOURNEYMAN || check_fishable)
 		return
 	balloon_alert(user, "the water deepens!")
 	AddComponent(/datum/component/fishing, set_loot = GLOB.fishing_weights, allow_fishes = TRUE)
@@ -63,7 +67,7 @@
 		var/obj/item/stack/ore/bluespace_crystal/bs_crystal = I
 		if(!bs_crystal.use(1))
 			return
-		to_chat(user, span_notice("You connect [src], through bluespace, to a distant ocean."))
+		balloon_alert(user, "the water deepens!")
 		AddComponent(/datum/component/fishing, set_loot = GLOB.fishing_weights, allow_fishes = TRUE)
 
 	return ..()

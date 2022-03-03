@@ -61,41 +61,6 @@
 			return
 	. = ..()
 
-/obj/item/gun/ballistic/assault_rifle
-	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_cock.ogg'
-	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
-	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
-	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magout.ogg'
-	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magout.ogg'
-
-/obj/item/gun/ballistic/battle_rifle
-	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_cock.ogg'
-	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magin.ogg'
-	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magin.ogg'
-	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magout.ogg'
-	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magout.ogg'
-
-/obj/item/gun/ballistic/machine_gun
-	rack_sound = 'sound/weapons/gun/l6/l6_rack.ogg'
-	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magin.ogg'
-	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magin.ogg'
-	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magout.ogg'
-	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magout.ogg'
-
-/obj/item/gun/ballistic/sniper_rifle
-	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_cock.ogg'
-	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magin.ogg'
-	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magin.ogg'
-	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magout.ogg'
-	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magout.ogg'
-
-/obj/item/gun/ballistic/submachine_gun
-	rack_sound = 'sound/weapons/gun/smg/smgrack.ogg'
-	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
-	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
-	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
-	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
-
 /obj/item/gun/ballistic/proc/jam(unjam = FALSE, mob/living/user)
 	if(unjam && jammed != TRUE)
 		unjam_time = clamp((jam_chance*10)/(durability/10), 0, 50)
@@ -228,42 +193,26 @@
 
 /obj/structure/closet/crate/secure/weapon/ww2/PopulateContents()
 	. = ..()
-	new /obj/item/gun/ballistic/automatic/battle_rifle/fg42(src)
+	new /obj/item/gun/ballistic/automatic/fg42(src)
 	new /obj/item/ammo_box/magazine/fg42(src)
-	new /obj/item/gun/ballistic/automatic/assault_rifle/akm(src)
+	new /obj/item/gun/ballistic/automatic/akm(src)
 	new /obj/item/ammo_box/magazine/akm(src)
-	new /obj/item/gun/ballistic/automatic/assault_rifle/m16(src)
+	new /obj/item/gun/ballistic/automatic/m16(src)
 	new /obj/item/ammo_box/magazine/m16(src)
 	new /obj/item/gun/ballistic/automatic/mg34(src)
 	new /obj/item/ammo_box/magazine/mg34(src)
-	new /obj/item/gun/ballistic/automatic/submachine_gun/mp40(src)
+	new /obj/item/gun/ballistic/automatic/mp40(src)
 	new /obj/item/ammo_box/magazine/mp40(src)
-	new /obj/item/gun/ballistic/automatic/assault_rifle/stg(src)
+	new /obj/item/gun/ballistic/automatic/stg(src)
 	new /obj/item/ammo_box/magazine/stg(src)
-	new /obj/item/gun/ballistic/automatic/submachine_gun/ppsh(src)
+	new /obj/item/gun/ballistic/automatic/ppsh(src)
 	new /obj/item/ammo_box/magazine/ppsh(src)
-	new /obj/item/gun/ballistic/automatic/submachine_gun/pps(src)
+	new /obj/item/gun/ballistic/automatic/pps(src)
 	new /obj/item/ammo_box/magazine/pps(src)
-
-/obj/structure/closet/crate/secure/weapon/ww2
-	name = "modern weapons crate"
-	desc = "A secure weapons crate. Looks like it's from the 25th century."
-	icon_state = "weaponcrate"
-
-/obj/structure/closet/crate/secure/weapon/ww2/PopulateContents()
-	. = ..()
-	new /obj/item/gun/ballistic/automatic/battle_rifle/fg42/modern(src)
-	new /obj/item/ammo_box/magazine/fg42(src)
-	new /obj/item/gun/ballistic/automatic/assault_rifle/akm/modern(src)
-	new /obj/item/ammo_box/magazine/akm(src)
-	new /obj/item/gun/ballistic/automatic/assault_rifle/m16/modern(src)
-	new /obj/item/ammo_box/magazine/m16(src)
-	new /obj/item/gun/ballistic/automatic/submachine_gun/mp40/modern(src)
-	new /obj/item/ammo_box/magazine/mp40(src)
-	new /obj/item/gun/ballistic/automatic/assault_rifle/stg/modern(src)
-	new /obj/item/ammo_box/magazine/stg(src)
-	new /obj/item/gun/ballistic/automatic/submachine_gun/ppsh/modern(src)
-	new /obj/item/ammo_box/magazine/ppsh(src)
+	new /obj/item/gun/ballistic/automatic/mg34/mg42(src)
+	new /obj/item/ammo_box/magazine/mg42(src)
+	new /obj/item/gun/ballistic/automatic/pistol/luger(src)
+	new /obj/item/ammo_box/magazine/m9mm(src)
 
 /obj/effect/temp_visual/dir_setting/firing_effect
 	light_system = MOVABLE_LIGHT
