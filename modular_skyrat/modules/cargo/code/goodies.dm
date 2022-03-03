@@ -70,6 +70,14 @@
 	cost = PAYCHECK_MEDIUM * 28
 	contains = list(/obj/item/storage/box/gunset/makarov)
 
+/datum/supply_pack/goody/makarov_ammo
+	name = "Makarov Ammo Resupply"
+	desc = "An ammobox and a few spare magazines for a Makarov 10mm self defense pistol, for self defense, of course."
+	cost = PAYCHECK_MEDIUM * 8
+	contains = list(/obj/item/ammo_box/advanced/b10mm,
+					/obj/item/ammo_box/magazine/multi_sprite/makarov,
+					/obj/item/ammo_box/magazine/multi_sprite/makarov)
+
 /datum/supply_pack/goody/pepperball
 	name = "PepperBall Self Defense Weapon"
 	desc = "A 'state of the art' self defense weapon, firing balls of condensed pepperspray, don't aim for the face. Weapons permit not included."
