@@ -173,6 +173,7 @@
 	name = "Fancy Diploma"
 	desc = "You own a very fancy diploma and bring it everywhere! You have to keep it safe!"
 	medical_record_text = "Patient is obsessed with learning."
+	icon = "box"
 
 /datum/quirk/item_quirk/family_heirloom/prodigy/add_unique()
 	var/mob/living/carbon/human/human_holder = quirk_holder
