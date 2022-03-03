@@ -116,7 +116,7 @@
 /datum/supply_pack/goody/wildcatammo_single
 	name = "CFA Wildcat Ammo Single-Pack"
 	desc = "Contains a 30-round magazine for the CFA Wildcat."
-	cost = PAYCHECK_HARD * 8
+	cost = PAYCHECK_HARD * 6
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat)
 
