@@ -18,11 +18,6 @@
 	if(!charging)
 		return
 
-<<<<<<< HEAD
-	//. += image(charging.icon, charging.icon_state) SKYRAT EDIT REMOVAL
-	. += "ccharger-on"
-=======
->>>>>>> c95321042e2 (Resprites power cells, fixes and cleans up power cells and power cell derivatives (#64900))
 	if(!(machine_stat & (BROKEN|NOPOWER)))
 		var/newlevel = round(charging.percent() * 4 / 100)
 		. += "ccharger-o[newlevel]"
