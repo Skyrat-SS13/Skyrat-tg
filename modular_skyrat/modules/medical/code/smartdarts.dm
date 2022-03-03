@@ -3,6 +3,9 @@
 	name = "medical smartdart"
 	desc = "Allows the user to safely inject chemicals at a range without harming the patient."
 	volume = 10
+	icon = 'modular_skyrat/modules/medical/icons/obj/smartdarts.dmi'
+	icon_state = "dart_0"
+	base_icon_state = "dart"
 
 //Code that handles the base interactions involving smartdarts
 /obj/item/reagent_containers/syringe/smartdart/afterattack(atom/target, mob/user, proximity)
