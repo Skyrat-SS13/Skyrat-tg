@@ -320,6 +320,9 @@
 		"chem_dispenser",
 		"chem_heater",
 		"chem_mass_spec",
+		//SKYRAT EDIT - RESEARCH DESIGNS
+		"smartdartgun",
+		//SKYRAT EDIT - END
 		"chem_master",
 		"chem_pack",
 		"crewpinpointerprox",
@@ -1260,7 +1263,7 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
-/datum/techweb_node/combat_cyber_implants 
+/datum/techweb_node/combat_cyber_implants
 	id = "combat_cyber_implants"
 	display_name = "Combat Cybernetic Implants"
 	description = "Military grade combat implants to improve performance."
