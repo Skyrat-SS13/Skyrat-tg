@@ -851,7 +851,7 @@
   - soundadd: Mesa's Glock-17's firing sound is back.
   Toastgoats:
   - imageadd: New space dragon sprite!
-  ToryJ for making me code dive:
+  ErdinyoBarboza, ToryJ for making me code dive:
   - balance: Nerfed Base Laser damage to 22 from 27
   - balance: Nerfed the MCR Laser damage to 20.
   - balance: Made the undercharger no longer give grip bonuses when activated.
@@ -1057,3 +1057,48 @@
   - imageadd: HONK Co. Pranks have released a new set of stencils for any cardboard
       cutouts you might find lying around, these ones EXTRA "RR-REAL HELP M-". Whatever
       that means.
+2022-02-27:
+  ATHATH:
+  - bugfix: Buckling yourself to and then unbuckling yourself from a stasis bed will
+      no longer permanently halt the effects of any gravitum in your system.
+  - bugfix: Liverless creatures can no longer retain the effects of gravitum indefinitely,
+      as it will now decay in their bodies (just as it does in the bodies of livered
+      creatures).
+  Melbert:
+  - bugfix: Fixes a few potential issues with heretic rituals.
+  - code_imp: Adds proper stack support to heretic rituals. Also allows for more specific
+      "ritual failure" feedback.
+  OrionTheFox:
+  - rscdel: Nanotrasen has tidied up the tram platform on the Interlink
+  SkyratBot:
+  - bugfix: The pAI candidate menu now properly switches between IC and OOC comments.
+  - code_imp: Implements some missing SDQL 2 wrappers.
+  - bugfix: wall decals on survival pod ruin should be on the pod walls now
+  - bugfix: Bicycles can now be repaired with a welder and have actually sensible
+      max_integrity and integrity_failure values.
+  - rscadd: On Tramstation, Nanotrasen installed new APCs on the lower aspects of
+      the Science Division.
+  - rscadd: MetaStation's Maintenance Area Plans have been redrafted. Expect to see
+      a few new APCs here and there.
+  - bugfix: Took out an extra apc in deltastation transfer center which screwed with
+      the power
+  - bugfix: Adjusted cargo tech jumpsuits and jumpskirts now show your arms from all
+      angles, and the adjusted cargo jumpsuit now uses the normal jumpsuit legs instead
+      of the digitigrade ones.
+  - bugfix: AI's "O" sound on vox now sounds like an O instead of an I.
+  - bugfix: Monkeys can no longer bite people to give them heart attacks
+  - spellcheck: Nanotrasen found out that the factory for glass floors were capitalizing
+      their names, so they promptly shut down the factory to build a new one for the
+      express purpose of not capitalizing their names.
+  - bugfix: Examining cells won't say they have 0% charge when the overlay indicates
+      they don't
+  - code_imp: Fixes some code style issues for more free GBP
+  Wallem & Imaginos:
+  - balance: Splits biobags into virology & science bags. Virology bags can't hold
+      slime cores or cytology equipment, and science bags can't hold medipens & bloodbags.
+  - imageadd: Changes all storage bag sprites
+  Zonespace27:
+  - bugfix: There is no longer a "generic" item in the OPFOR services tab.
+  tastyfish:
+  - bugfix: Opening an air alarm panel now renders the overlays correctly.
+  - rscadd: Most status displays now have USB support for circuits.

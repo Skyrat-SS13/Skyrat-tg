@@ -36922,6 +36922,17 @@
 "ert" = (
 /turf/closed/wall,
 /area/service/library/abandoned)
+"erE" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/structure/chair/office{
+	dir = 1
+	},
+/obj/machinery/light_switch/directional/west,
+/obj/effect/landmark/start/nanotrasen_consultant,
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain/private/nt_rep)
 "erV" = (
 /obj/structure/table/reinforced,
 /obj/item/assembly/timer,
@@ -41587,15 +41598,6 @@
 	icon_state = "wood-broken2"
 	},
 /area/service/library/abandoned)
-"fHL" = (
-/obj/machinery/button/curtain{
-	id = "ntconshutter";
-	pixel_x = -25;
-	pixel_y = 23
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood/parquet,
-/area/command/heads_quarters/captain/private/nt_rep)
 "fHS" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -43410,21 +43412,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/maintenance/port/greater)
-"gmi" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes/line,
-/obj/machinery/door/airlock/maintenance{
-	name = "Nanotrasen Consultant's Office Maintenance";
-	req_access_txt = "101"
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/mapping_helpers/airlock/locked,
-/turf/open/floor/iron,
-/area/command/heads_quarters/captain/private/nt_rep)
 "gmN" = (
 /obj/machinery/air_sensor/atmos/nitrous_tank,
 /turf/open/floor/engine/n2o,
@@ -43593,6 +43580,14 @@
 	dir = 1
 	},
 /area/hallway/primary/aft)
+"gon" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters{
+	id = "ntconshutter";
+	name = "Privacy Shutter"
+	},
+/turf/open/floor/plating,
+/area/command/heads_quarters/captain/private/nt_rep)
 "gos" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -49416,6 +49411,15 @@
 	},
 /turf/open/floor/iron/white,
 /area/command/heads_quarters/cmo)
+"hYo" = (
+/obj/machinery/button/curtain{
+	id = "ntconshutter";
+	pixel_x = -25;
+	pixel_y = 23
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/parquet,
+/area/command/heads_quarters/captain/private/nt_rep)
 "hYG" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -51930,13 +51934,6 @@
 /obj/effect/spawner/random/contraband/armory,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
-"iFY" = (
-/obj/structure/chair/office{
-	dir = 1
-	},
-/obj/effect/landmark/start/nanotrasen_consultant,
-/turf/open/floor/carpet/green,
-/area/command/heads_quarters/captain/private/nt_rep)
 "iGk" = (
 /obj/structure/chair/comfy/brown{
 	dir = 8
@@ -58182,14 +58179,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
-"kuY" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/shutters{
-	id = "ntconshutter";
-	name = "Privacy Shutter"
-	},
-/turf/open/floor/plating,
-/area/command/heads_quarters/captain/private/nt_rep)
 "kvc" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -63822,18 +63811,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/engineering/main)
-"lQO" = (
-/obj/structure/table/wood,
-/obj/item/kirbyplants{
-	desc = "A gift to the NT Consultant from the Quartermaster, a show of good faith as a newly-recognized head of staff.";
-	icon_state = "plant-11";
-	pixel_y = 8
-	},
-/obj/effect/turf_decal/siding/wood{
-	dir = 4
-	},
-/turf/open/floor/wood/parquet,
-/area/command/heads_quarters/captain/private/nt_rep)
 "lQR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -65663,6 +65640,19 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/maintenance/aft)
+"moO" = (
+/obj/item/radio/intercom/directional/west,
+/obj/structure/sign/picture_frame/showroom/one{
+	desc = "A photo frame to commemorate Nanotrasen's Employee of the Month - an entirely unbiased decision made by the NT Consultant.";
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/ash{
+	desc = "Well, that's the end of that.";
+	name = "burnt employment contract"
+	},
+/obj/item/lighter,
+/turf/open/floor/wood/parquet,
+/area/command/heads_quarters/captain/private/nt_rep)
 "moQ" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/item/clothing/suit/jacket/letterman_nanotrasen,
@@ -66766,11 +66756,6 @@
 	},
 /turf/open/floor/plating,
 /area/engineering/atmos)
-"mDE" = (
-/obj/structure/closet/secure_closet/nanotrasen_consultant/station,
-/obj/machinery/status_display/evac/directional/north,
-/turf/open/floor/wood/parquet,
-/area/command/heads_quarters/captain/private/nt_rep)
 "mDJ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -69290,6 +69275,11 @@
 /obj/item/pen,
 /turf/open/floor/iron,
 /area/hallway/primary/central/fore)
+"nkZ" = (
+/obj/structure/closet/secure_closet/nanotrasen_consultant/station,
+/obj/machinery/status_display/evac/directional/north,
+/turf/open/floor/wood/parquet,
+/area/command/heads_quarters/captain/private/nt_rep)
 "nlj" = (
 /obj/structure/table,
 /obj/item/stack/package_wrap,
@@ -71715,6 +71705,18 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos/project)
+"nSQ" = (
+/obj/structure/table/wood,
+/obj/item/kirbyplants{
+	desc = "A gift to the NT Consultant from the Quartermaster, a show of good faith as a newly-recognized head of staff.";
+	icon_state = "plant-11";
+	pixel_y = 8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood/parquet,
+/area/command/heads_quarters/captain/private/nt_rep)
 "nTb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 9
@@ -79737,6 +79739,21 @@
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron,
 /area/science/research)
+"pWa" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/door/airlock/maintenance{
+	name = "Nanotrasen Consultant's Office Maintenance";
+	req_access_txt = "101"
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/iron,
+/area/command/heads_quarters/captain/private/nt_rep)
 "pWb" = (
 /obj/structure/chair/sofa/bench/right{
 	dir = 8
@@ -85616,17 +85633,6 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
-"rxm" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 6
-	},
-/obj/structure/chair/office{
-	dir = 1
-	},
-/obj/machinery/light_switch/directional/west,
-/obj/effect/landmark/start/nanotrasen_consultant,
-/turf/open/floor/carpet/green,
-/area/command/heads_quarters/captain/private/nt_rep)
 "rxn" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -89871,6 +89877,16 @@
 	},
 /turf/open/floor/plating,
 /area/cargo/storage)
+"sDI" = (
+/obj/machinery/door/airlock/corporate{
+	name = "Nanotrasen Consultant's Office";
+	req_access_txt = "101"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/command/heads_quarters/captain/private/nt_rep)
 "sDK" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -94426,6 +94442,13 @@
 /obj/structure/closet,
 /turf/open/floor/iron,
 /area/maintenance/port/fore)
+"tMA" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/obj/effect/landmark/start/nanotrasen_consultant,
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain/private/nt_rep)
 "tME" = (
 /obj/effect/spawner/random/vending/snackvend,
 /obj/machinery/light/directional/south,
@@ -96241,19 +96264,6 @@
 /obj/effect/turf_decal/tile/yellow,
 /turf/open/floor/iron,
 /area/security/prison)
-"uoE" = (
-/obj/item/radio/intercom/directional/west,
-/obj/structure/sign/picture_frame/showroom/one{
-	desc = "A photo frame to commemorate Nanotrasen's Employee of the Month - an entirely unbiased decision made by the NT Consultant.";
-	pixel_y = 32
-	},
-/obj/effect/decal/cleanable/ash{
-	desc = "Well, that's the end of that.";
-	name = "burnt employment contract"
-	},
-/obj/item/lighter,
-/turf/open/floor/wood/parquet,
-/area/command/heads_quarters/captain/private/nt_rep)
 "uoR" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -96854,16 +96864,6 @@
 /obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/iron,
 /area/engineering/atmos)
-"uwy" = (
-/obj/machinery/door/airlock/corporate{
-	name = "Nanotrasen Consultant's Office";
-	req_access_txt = "101"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/command/heads_quarters/captain/private/nt_rep)
 "uwB" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/purple{
@@ -142810,7 +142810,7 @@ xuj
 qat
 rga
 opc
-uoE
+moO
 cfX
 lSv
 opc
@@ -143323,8 +143323,8 @@ gay
 kUf
 opc
 ghJ
-rxm
-fHL
+erE
+hYo
 mDk
 jlr
 opc
@@ -143579,7 +143579,7 @@ ceG
 rrT
 haE
 opc
-mDE
+nkZ
 iNJ
 wJU
 frj
@@ -143841,7 +143841,7 @@ mpx
 sLR
 ecw
 wHq
-gmi
+pWa
 seu
 mnr
 eUy
@@ -144094,7 +144094,7 @@ wsA
 oDC
 opc
 kbG
-iFY
+tMA
 lwv
 ecV
 aro
@@ -144611,7 +144611,7 @@ sGh
 sGh
 sGh
 jbH
-lQO
+nSQ
 opc
 gvd
 alf
@@ -144867,8 +144867,8 @@ ozD
 vhQ
 nHT
 sEe
-uwy
-kuY
+sDI
+gon
 opc
 wWP
 alf

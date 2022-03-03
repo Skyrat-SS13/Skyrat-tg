@@ -46,6 +46,38 @@
 	item_type = /obj/item/ammo_box/magazine/cm762
 	description = "7.62 bullets in a ten round magazine for Cantanheim 7.62 rifle."
 
+/datum/opposing_force_equipment/ammo/makarov
+	item_type = /obj/item/ammo_box/magazine/m9mm
+	description = "A magazine of ammo for the Makarov."
+
+/datum/opposing_force_equipment/ammo/makarov_fire
+	item_type = /obj/item/ammo_box/magazine/m9mm/fire
+	description = "A magazine of incendiary ammunition for the Makarov."
+
+/datum/opposing_force_equipment/ammo/makarov_ap
+	item_type = /obj/item/ammo_box/magazine/m9mm/ap
+	description = "A magazine of armor-piercing ammunition for the Makarov."
+
+/datum/opposing_force_equipment/ammo/makarov_hp
+	item_type = /obj/item/ammo_box/magazine/m9mm/hp
+	description = "A magazine of hollow-point ammunition for the Makarov."
+
+/datum/opposing_force_equipment/ammo/aps
+	item_type = /obj/item/ammo_box/magazine/m9mm_aps
+	description = "A magazine of ammunition for the Stechkin APS."
+
+/datum/opposing_force_equipment/ammo/aps_fire
+	item_type = /obj/item/ammo_box/magazine/m9mm_aps/fire
+	description = "A magazine of incendiary ammunition for the Stechkin APS."
+
+/datum/opposing_force_equipment/ammo/aps_ap
+	item_type = /obj/item/ammo_box/magazine/m9mm_aps/ap
+	description = "A magazine of armor-piercing ammunition for the Stechkin APS."
+
+/datum/opposing_force_equipment/ammo/aps_hp
+	item_type = /obj/item/ammo_box/magazine/m9mm_aps/hp
+	description = "A magazine of hollow-point ammunition for the Stechkin APS."
+
 /datum/opposing_force_equipment/ammo/a357
 	item_type = /obj/item/ammo_box/a357
 	description = "A seven-round .357 magnum speedloader for a revolver."
