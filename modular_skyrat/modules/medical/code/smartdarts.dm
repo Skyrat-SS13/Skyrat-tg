@@ -48,7 +48,7 @@
 	if(istype(container, /obj/item/reagent_containers/syringe/smartdart))
 		..()
 	else
-		to_chat(user, span_notice("[container] is unable to fit inside of the [src]! Try using a smartdart instead."))
+		to_chat(user, span_notice("[container] is unable to fit inside of the [src]! Try using a <b>smart-dart</b> instead."))
 		return FALSE
 
 //Smartdart projectiles
