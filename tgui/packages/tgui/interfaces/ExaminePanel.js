@@ -1,6 +1,7 @@
 import { useBackend } from '../backend';
 import { Stack, Section, ByondUi } from '../components';
 import { Window } from '../layouts';
+import { resolveAsset } from '../assets';
 
 export const ExaminePanel = (props, context) => {
   const { act, data } = useBackend(context);
@@ -12,6 +13,7 @@ export const ExaminePanel = (props, context) => {
     ooc_notes,
     custom_species,
     custom_species_lore,
+    headshot,
   } = data;
   return (
     <Window
@@ -22,7 +24,31 @@ export const ExaminePanel = (props, context) => {
       <Window.Content>
         <Stack fill>
           <Stack.Item width="30%">
-            <Section fill title="Character Preview">
+            {headshot.length !== 0 ? (
+              <>
+                <Section height="310px" title="Character Preview">
+                  {!obscured
+                  && (
+                    <ByondUi
+                      height="260px"
+                      width="100%"
+                      className="ExaminePanel__map"
+                      params={{
+                        id: assigned_map,
+                        type: 'map',
+                      }} />
+                  )}
+                </Section>
+                <Section height="310px" title="Headshot">
+                <img
+                  src={resolveAsset(headshot)}
+                  height="250px"
+                  width="250px"
+                />
+                </Section>
+              </>
+            ) : (
+              <Section fill title="Character Preview">
               {!obscured
               && (
                 <ByondUi
@@ -34,7 +60,9 @@ export const ExaminePanel = (props, context) => {
                     type: 'map',
                   }} />
               )}
-            </Section>
+              </Section>
+            )}
+
           </Stack.Item>
           <Stack.Item grow>
             <Stack fill vertical>

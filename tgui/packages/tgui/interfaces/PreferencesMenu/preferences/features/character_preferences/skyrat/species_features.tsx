@@ -32,6 +32,12 @@ export const ooc_notes: Feature<string> = {
   component: FeatureTextInput,
 };
 
+export const headshot: Feature<string> = {
+  name: "Headshot",
+  description: "Add an image to your character, visible on close examination. Requires it be formatted properly.",
+  component: FeatureShortTextInput,
+};
+
 export const custom_species: Feature<string> = {
   name: "Custom Species Name",
   description: "Want to have a fancy species name? Put it here, or leave it blank if you want to use your species' default name.",
