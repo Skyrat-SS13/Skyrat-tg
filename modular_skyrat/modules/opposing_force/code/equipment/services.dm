@@ -1,20 +1,22 @@
 /datum/opposing_force_equipment/service
 	category = OPFOR_EQUIPMENT_CATEGORY_SERVICES
-	item_type = /obj/effect/gibspawner/generic
 
 /datum/opposing_force_equipment/service/rep
 	name = "100 Reputation"
 	description = "Grant your Syndicate uplink 100 reputation, should you have one."
+	item_type = /obj/effect/gibspawner/generic
 	var/rep_count = 100
 
 /datum/opposing_force_equipment/service/rep/high
 	name = "500 Reputation"
 	description = "Grant your Syndicate uplink 500 reputation, should you have one."
+	item_type = /obj/effect/gibspawner/generic
 	rep_count = 500
 
 /datum/opposing_force_equipment/service/rep/very_high
 	name = "1000 Reputation"
 	description = "Grant your Syndicate uplink 1000 reputation, should you have one."
+	item_type = /obj/effect/gibspawner/generic
 	rep_count = 1000
 
 /datum/opposing_force_equipment/service/rep/on_issue(mob/living/target)
@@ -29,6 +31,7 @@
 /datum/opposing_force_equipment/service/power_outage
 	name = "Power Outage"
 	description = "A virus will be uploaded to the engineering processing servers to force a routine power grid check, forcing all APCs on the station to be temporarily disabled."
+	item_type = /obj/effect/gibspawner/generic
 	admin_note = "Equivalent to the Grid Check random event."
 
 /datum/opposing_force_equipment/service/power_outage/on_issue()
@@ -38,6 +41,7 @@
 /datum/opposing_force_equipment/service/telecom_outage
 	name = "Telecomms Outage"
 	description = "A virus will be uploaded to the telecommunication processing servers to temporarily disable themselves."
+	item_type = /obj/effect/gibspawner/generic
 	admin_note = "Equivalent to the Communications Blackout random event."
 
 /datum/opposing_force_equipment/service/telecom_outage/on_issue()
@@ -47,6 +51,7 @@
 /datum/opposing_force_equipment/service/market_crash
 	name = "Market Crash"
 	description = "Some forged documents will be given to Nanotrasen, skyrocketing the price of all on-station vendors for a short while."
+	item_type = /obj/effect/gibspawner/generic
 	admin_note = "Equivalent to the Market Crash random event."
 
 /datum/opposing_force_equipment/service/market_crash/on_issue()

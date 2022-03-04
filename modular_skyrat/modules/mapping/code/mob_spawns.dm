@@ -297,7 +297,7 @@
 	id = /obj/item/card/id/away/tarkon/sci
 	l_hand = /obj/item/inducer
 	l_pocket = null
-	r_pocket = /obj/item/stock_parts/cell/high/plus
+	r_pocket = /obj/item/stock_parts/cell/high
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/med
 	prompt_name = "an abandoned medical resident"
