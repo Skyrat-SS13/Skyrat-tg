@@ -1,0 +1,125 @@
+2022-03-01:
+  Axietheaxolotl, PositiveEntropy:
+  - imageadd: Nanotrasen has now tackled overhauling the visual aesthetic of the Chief
+      Medical Officer, changing their jumpsuits and labcoat, and altering their original
+      pastel blue color to turquoise!
+  - imageadd: Nitriles now look much more rubbery than before!
+  ErdinyoBarboza:
+  - bugfix: Fixes DeltaStation Service area AI pathfinding. Bots will no longer get
+      stuck on the railings.
+  Gandalf2k15:
+  - rscadd: Different objects now have different bullet impact sounds.
+  Melbert:
+  - balance: Raw Prophets have been adjusted slightly. They now have more max health,
+      a slightly lower sight range (but the ability to toggle it on or off), drop
+      all their component parts on death, and do more damage for every consecutive
+      attack on a target they do.
+  Ryll/Shaps:
+  - admin: You can now create links to a datum's VV window in asay by posting the
+      datum's memory reference. The reference is now printed in the VV menu right
+      below the fancytype, for copying purposes..
+  - admin: Tagged datums will now show their tag index in VV
+  - bugfix: Projectiles now respect armor again
+  SkyratBot:
+  - spellcheck: fixes false info with vampires becoming bats
+  - bugfix: If you've ever walked through the maintenance tunnels near DeltaStation's
+      Atmospherics and spotted a very dark lattice, it has been fixed.
+  - admin: Going stealth mode now drops your orbiters and blocks you from being orbited.
+  - bugfix: fixes accounting's alert being cut in half
+  - bugfix: the description of traitor under antagonist preferences is now up to date
+      with their progressive nature
+  - admin: Since _pick doesn't accept lists, I've added _pick_list for you to use
+      in sdql. Please table everyone on the station kthnx
+  - bugfix: fixed vv checking if the client is a turf, and instead checked the thing
+      that might be a turf, properly updating the vv window
+  - bugfix: On TramStation, the Ordnance Burning Room (for your Tritium) no longer
+      owns that bit of space where noxious gases are meant to vent out into.
+  - bugfix: Poly's death streak resets upon surviving
+  - bugfix: fixes thieves not being able to complete the guns objective
+  - bugfix: You no longer need an entire wheel of cheese to make Moth Foods
+  - bugfix: In MetaStation Atmospherics, the floor light is no longer installed right
+      on top of a canister.
+  - rscadd: adds helianthus cocktail
+  - bugfix: Security can now once again lock down the brig front desk on Icebox
+  - bugfix: The AI no longer can start a full OSI investigation when the tips of your
+      combat boots hit Kilostation, thanks to the fact the firedoors that formerly
+      automatically triggered the fire alarm whenever you use the external airlocks
+      are gone.
+2022-03-02:
+  SkyratBot:
+  - refactor: redid some savanna-ivanov mech code please report any new issues on
+      the github
+  - rscadd: On Meta, Delta, and Tram Stations, expect to see the word "Funeral" dance
+      across your eyes a few times as you enter the chapel.
+  - rscadd: On IceBoxStation, the Chapel has undergone some new area definitions,
+      and the wiring for the power to these areas have changed a bit from what you
+      were accustomed to previously.
+  - bugfix: Fixed being able to push "off" something you're moving towards, allowing
+      for infinite movement in one direction in space, at your walk speed
+  - bugfix: Fixes a weird bug with spellbooks that may have been locking some spell
+      options when you did some specific actions
+  - imageadd: New fireaxe inhand, worn, and in cabinet sprites.
+  - bugfix: lobstrosities charge now
+  tf-4:
+  - tweak: '"Nanotrasen Representative" has been renamed to "Nanotrasen Consultant".'
+2022-03-03:
+  OrionTheFox:
+  - bugfix: Nanotrasen has properly updated their databases with their rebranding
+      of Representatives to Consultants (Icons r fixd)
+  tastyfish:
+  - bugfix: NT's technicians have gone around and calibrated the horizontal align
+      on the air alarm screens.
+2022-03-04:
+  GoldenAlpharex:
+  - imageadd: Nanotrasen's Fashion Department has released a brand-new fancy suit,
+      which can be easily recolored before sale in any ClothesMate, and offered as
+      an option for the employees that want to go to work in STYLE.
+  - bugfix: Fixed the greyscale gradient on the Tamamo Kitsune Tails and the inner
+      part of the Fox ears, to be easier to work with color-wise.
+  SkyratBot:
+  - code_imp: Fixes a minor code styling issue with atmos.
+  - refactor: Converts airlock controllers (ie incinerator access consoles) to use
+      TGUI.
+  - spellcheck: Fixes a spelling mistake in thief lore blurbs.
+  - bugfix: Prevents exploit allowing you to monitor Centcom and CTF frequencies.
+  - bugfix: Various cooking recipes that simply said they required 'food' now properly
+      use plain bread slices.
+  - bugfix: Fully eating a can of pine nuts no longer creates an error sprite.
+  - balance: 'Hand mining weak turfs (i.e. snow) is now affected by mining level (so
+      legendary would take 7.5 seconds instead of 15) qol: Multiple people can now
+      attempt to manually mine the same mineral turf qol: If you fail to manually
+      mine a turf you can try again immediately instead of having to wait for the
+      cooldown to end'
+  - bugfix: You can no longer mine a snow turf by hand if you're already doing it
+  - code_imp: Uses variables and time defines for mining speeds instead of deciseconds
+      and magic numbers
+  - bugfix: modsuit clamp can carry wrapped crates
+  - bugfix: modsuit activation is no longer affected by do after slowdowns
+  - imageadd: Congratulations, you now have a new Area Turf Sprite for Engineering's
+      Technical Storage.
+  - code_imp: minor change to TGUI button content to use flexboxes. This caused a
+      bug in the past, report if you notice anything weird.
+  - imageadd: Power cells and the cell charger have been resprited, the charger will
+      now look correct with a much wider variety of non-standard power cells
+  - rscdel: Removed the uncraftable 15k charge high-capacity power cell+, all instances
+      have been replaced with the regular 10k charge high-capacity cell
+  - bugfix: Erroneous power cell charge indicators have been removed from many non-standard
+      types of power cells
+  - bugfix: All varieties of marauder mech including the nuke ops mauler come with
+      a bluespace power cell, consistent with other nuke op mechs
+  - bugfix: Power cell charge indicators will now update while in a cell charger
+  - bugfix: Potato and other crop batteries will not have their wires disappear when
+      on cell chargers
+  - bugfix: Robotic basic and simple mobs are now damaged by EMPs.
+  - bugfix: Instant recall spell no longer recalls anchored objects, such as microwaves,
+      if the marked item is placed inside of one.
+  - bugfix: you can knock monkeys over by crossing them again.
+  Wallem:
+  - balance: Adds a minimum threshold to ant piles biting through shoes.
+  - balance: Giant ants are now peaceful hostile mobs. This means they will attack
+      anything that does not have the "neutral" factiontype. To compensate, the price
+      to make one has been raised.
+  - imageadd: It appears the invasive "space ant" has gotten into our formerly secret
+      uranium reserves and as such have mutated slightly, gaining a slight bioluminescence.
+  tastyfish:
+  - bugfix: Papers and photos pinned to airlocks now actually animate.

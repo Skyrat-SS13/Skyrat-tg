@@ -391,6 +391,7 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	new/datum/stack_recipe("mining satchel", /obj/item/storage/bag/ore, 4), \
 	new/datum/stack_recipe("chemistry bag", /obj/item/storage/bag/chemistry, 4), \
 	new/datum/stack_recipe("bio bag", /obj/item/storage/bag/bio, 4), \
+	new/datum/stack_recipe("science bag", /obj/item/storage/bag/xeno, 4), \
 	new/datum/stack_recipe("construction bag", /obj/item/storage/bag/construction, 4), \
 	new/datum/stack_recipe("xenoarch bag", /obj/item/storage/bag/xenoarch, 4), /*SKYRAT EDIT ADDITION*/ \
 	null, \
@@ -813,8 +814,6 @@ new /datum/stack_recipe("paper frame door", /obj/structure/mineral_door/paperfra
 /obj/item/stack/sheet/meat/five
 	amount = 5
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 /obj/item/stack/sheet/pizza
 	name = "pepperoni sheetzzas"
 	desc = "It's a delicious pepperoni sheetzza!"
@@ -831,8 +830,6 @@ new /datum/stack_recipe("paper frame door", /obj/structure/mineral_door/paperfra
 	amount = 20
 /obj/item/stack/sheet/pizza/five
 	amount = 5
-*/
-//SKYRAT EDIT REMOVAL END
 
 /obj/item/stack/sheet/sandblock
 	name = "blocks of sand"

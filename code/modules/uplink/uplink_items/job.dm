@@ -271,6 +271,8 @@
 
 // High progression cost
 
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/uplink_item/role_restricted/spider_injector
 	name = "Australicus Slime Mutator"
 	desc = "Crikey mate, it's been a wild travel from the Australicus sector but we've managed to get \
@@ -282,6 +284,8 @@
 	cost = 10
 	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST)
 
+*/
+// SKYRAT EDIT END
 /datum/uplink_item/role_restricted/blastcannon
 	name = "Blast Cannon"
 	desc = "A highly specialized weapon, the Blast Cannon is actually relatively simple. It contains an attachment for a tank transfer valve mounted to an angled pipe specially constructed \

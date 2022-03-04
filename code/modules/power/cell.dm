@@ -36,15 +36,12 @@
 	var/ratingdesc = TRUE
 	///If it's a grown that acts as a battery, add a wire overlay to it.
 	var/grown_battery = FALSE
-<<<<<<< HEAD
-=======
 	///What charge lige sprite to use, null if no light
 	var/charge_light_type = "standard"
 	///What connector sprite to use when in a cell charger, null if no connectors
 	var/connector_type = "standard"
 	///Does the cell start without any charge?
 	var/empty = FALSE
->>>>>>> b810c85e245 (Replacing power cells with RPED takes their charge into account (#65033))
 
 /obj/item/stock_parts/cell/get_cell()
 	return src
@@ -54,13 +51,6 @@
 	create_reagents(5, INJECTABLE | DRAINABLE)
 	if (override_maxcharge)
 		maxcharge = override_maxcharge
-<<<<<<< HEAD
-	charge = maxcharge
-	/* SKYRAT EDIT REMOVAL
-	if(ratingdesc)
-		desc += " This one has a rating of [display_energy(maxcharge)], and you should not swallow it."
-	*/ // SKYRAT EDIT END
-=======
 	rating = max(round(maxcharge / 10000, 1), 1)
 	if(!charge)
 		charge = maxcharge
@@ -68,7 +58,6 @@
 		charge = 0
 	if(ratingdesc)
 		desc += " This one has a rating of [display_energy(maxcharge)][prob(10) ? ", and you should not swallow it" : ""]." //joke works better if it's not on every cell
->>>>>>> b810c85e245 (Replacing power cells with RPED takes their charge into account (#65033))
 	update_appearance()
 
 /obj/item/stock_parts/cell/create_reagents(max_vol, flags)
@@ -86,12 +75,12 @@
 	. = ..()
 	if(grown_battery)
 		. += mutable_appearance('icons/obj/power.dmi', "grown_wires")
-	if(charge < 0.01)
+	if((charge < 0.01) || !charge_light_type)
 		return
-	. += mutable_appearance(charge_overlay_icon, "cell-o[((charge / maxcharge) >= 0.995) ? 2 : 1]") //SKYRAT EDIT CHANGE
+	. += mutable_appearance('icons/obj/power.dmi', "cell-[charge_light_type]-o[(percent() >= 99.5) ? 2 : 1]")
 
 /obj/item/stock_parts/cell/proc/percent() // return % charge of cell
-	return 100*charge/maxcharge
+	return 100 * charge / maxcharge
 
 // use power from a cell
 /obj/item/stock_parts/cell/use(amount, force)
@@ -129,7 +118,7 @@
 		. += "The charge meter reads [charge]/[maxcharge] MF."
 	// SKYRAT EDIT END
 	else
-		. += "The charge meter reads [round(src.percent() )]%."
+		. += "The charge meter reads [CEILING(percent(), 0.1)]%." //so it doesn't say 0% charge when the overlay indicates it still has charge
 
 /obj/item/stock_parts/cell/suicide_act(mob/user)
 	user.visible_message(span_suicide("[user] is licking the electrodes of [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
@@ -297,23 +286,8 @@
 	custom_materials = list(/datum/material/glass=60)
 	chargerate = 1500
 
-<<<<<<< HEAD
-/obj/item/stock_parts/cell/high/plus
-	name = "high-capacity power cell+"
-	desc = "Where did these come from?"
-	icon_state = "h+cell"
-	maxcharge = 15000
-	chargerate = 2250
-	rating = 2
-
-/obj/item/stock_parts/cell/high/empty/Initialize(mapload)
-	. = ..()
-	charge = 0
-	update_appearance()
-=======
 /obj/item/stock_parts/cell/high/empty
 	empty = TRUE
->>>>>>> b810c85e245 (Replacing power cells with RPED takes their charge into account (#65033))
 
 /obj/item/stock_parts/cell/super
 	name = "super-capacity power cell"
@@ -376,6 +350,8 @@
 	icon_state = "potato"
 	charge = 100
 	maxcharge = 300
+	charge_light_type = null
+	connector_type = null
 	custom_materials = null
 	grown_battery = TRUE //it has the overlays for wires
 	custom_premium_price = PAYCHECK_ASSISTANT
@@ -402,12 +378,8 @@
 	icon_state = "yellow slime extract"
 	custom_materials = null
 	maxcharge = 5000
-<<<<<<< HEAD
-	rating = 5
-=======
 	charge_light_type = null
 	connector_type = "slimecore"
->>>>>>> b810c85e245 (Replacing power cells with RPED takes their charge into account (#65033))
 
 /obj/item/stock_parts/cell/beam_rifle
 	name = "beam rifle capacitor"
@@ -443,6 +415,8 @@
 	icon_state = "crystal_cell"
 	maxcharge = 50000
 	chargerate = 0
+	charge_light_type = null
+	connector_type = "crystal"
 	custom_materials = null
 	grind_results = null
 
