@@ -68,8 +68,15 @@
 	name = "Makarov Self Defense Pistol"
 	desc = "A small, slow firing and low capacity pistol, but hey, it's better then a crowbar, right? (Does not include a weapons permit.)"
 	cost = PAYCHECK_MEDIUM * 28
-	contraband = TRUE
 	contains = list(/obj/item/storage/box/gunset/makarov)
+
+/datum/supply_pack/goody/makarov_ammo
+	name = "Makarov Ammo Resupply"
+	desc = "An ammobox and a few spare magazines for a Makarov 10mm self defense pistol, for self defense, of course."
+	cost = PAYCHECK_MEDIUM * 8
+	contains = list(/obj/item/ammo_box/advanced/b10mm,
+					/obj/item/ammo_box/magazine/multi_sprite/makarov,
+					/obj/item/ammo_box/magazine/multi_sprite/makarov)
 
 /datum/supply_pack/goody/pepperball
 	name = "PepperBall Self Defense Weapon"
@@ -119,6 +126,13 @@
 	cost = PAYCHECK_HARD * 6
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat)
+
+/datum/supply_pack/goody/temp_single
+	name = "Temperature Gun Kit Single-Pack"
+	desc = "Contains a gunkit for a temperature gun, usable on an Allstar SC-2 Laser Carbine to convert it into firing temperature-affecting shots instead of lasers."
+	cost = PAYCHECK_MEDIUM * 2
+	access_view = ACCESS_ARMORY
+	contains = list(/obj/item/weaponcrafting/gunkit/temperature)
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Carpet Packs ////////////////////////////////////
