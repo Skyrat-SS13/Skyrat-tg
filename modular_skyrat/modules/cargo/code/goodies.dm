@@ -99,6 +99,13 @@
 	contains = list(/obj/item/gun_maintenance_supplies,
 					/obj/item/gun_maintenance_supplies)
 
+/datum/supply_pack/goody/temp_single
+	name = "Temperature Gun Kit Single-Pack"
+	desc = "Contains a gunkit for a temperature gun, usable on an Allstar SC-2 Laser Carbine to convert it into firing temperature-affecting shots instead of lasers."
+	cost = PAYCHECK_MEDIUM * 2
+	access_view = ACCESS_ARMORY
+	contains = list(/obj/item/weaponcrafting/gunkit/temperature)
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Carpet Packs ////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
