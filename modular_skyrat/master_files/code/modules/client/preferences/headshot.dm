@@ -20,8 +20,8 @@
 	if(!findtext(value, ".png") && !findtext(value, ".jpg"))
 		to_chat(usr, span_warning("You need either \".png\" or \".jpg\" in the link!"))
 		return
-	if(!findtext(value, "imgur") && !findtext(value, "gyazo"))
-		to_chat(usr, span_warning("The link needs to be an unshortened Imgur or Gyazo link!"))
+	if(!findtext(value, "imgur") && !findtext(value, "gyazo") && !findtext(value, "media.discordapp"))
+		to_chat(usr, span_warning("The link needs to be an unshortened Imgur, Gyazo, or Discordapp link!"))
 		return
 	if(stored_link != value)
 		//input(usr, "Please make sure to use a relatively work-safe image of the head to shoulder or chest area to maintain immersion level. Think of it as a headshot for your ID.", "Notice") in list("Close")
