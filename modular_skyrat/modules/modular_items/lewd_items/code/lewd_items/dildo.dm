@@ -23,6 +23,8 @@
 	var/size_changed = FALSE
 	/// If it's part of a double-sided toy or not
 	var/side_double = FALSE
+	/// If the toy can have its sprite changed
+	var/change_sprite = TRUE
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_ANUS|ITEM_SLOT_VAGINA
 	moth_edible = FALSE
@@ -59,8 +61,8 @@
 
 /obj/item/clothing/sextoy/dildo/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]"
+	icon_state = "[initial(icon_state)][change_sprite ? "_[current_color]" : ""]"
+	inhand_icon_state = "[initial(icon_state)][change_sprite ? "_[current_color]" : ""]"
 
 /obj/item/clothing/sextoy/dildo/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
@@ -196,22 +198,22 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	/// Static list of possible colors for the toy
 	var/static/list/poly_colors = list("#FFFFFF", "#FF8888", "#888888")
+	current_color = null
+
+	var/static/list/dildo_sizes = list()
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_ANUS|ITEM_SLOT_VAGINA
 	moth_edible = FALSE
 
 /obj/item/clothing/sextoy/dildo/custom_dildo/populate_dildo_designs()
-	dildo_designs = list(
+	dildo_sizes = list(
 		"small" = image (icon = src.icon, icon_state = "[initial(icon_state)]_small"),
 		"medium" = image(icon = src.icon, icon_state = "[initial(icon_state)]_medium"),
 		"big" = image(icon = src.icon, icon_state = "[initial(icon_state)]_big"))
 
 /obj/item/clothing/sextoy/dildo/custom_dildo/AltClick(mob/living/user, obj/item/I)
 	if(!size_changed)
-		. = ..()
-		if(.)
-			return
-		var/choice = show_radial_menu(user,src, dildo_designs, custom_check = CALLBACK(src, /obj/item/clothing/sextoy/proc/check_menu, user, I), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, dildo_sizes, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		poly_size = choice
@@ -236,9 +238,9 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 			color = GLOB.dildo_colors[color_choice]
 	update_icon_state()
 	if(src && !user.incapacitated() && in_range(user,src))
-		var/transparency_choice = tgui_input_number(user, "Choose the transparency of your dildo. Lower is more transparent! (192-255)", "Dildo Transparency", 255, 192)
+		var/transparency_choice = tgui_input_number(user, "Choose the transparency of your dildo. Lower is more transparent! (192-255)", "Dildo Transparency", 255, 255, 192)
 		if(src && transparency_choice && !user.incapacitated() && in_range(user,src))
-			sanitize_integer(transparency_choice, 192, 255, 192)
+			sanitize_integer(transparency_choice, 191, 255, 192)
 			alpha = transparency_choice
 	update_icon_state()
 	return TRUE
@@ -274,6 +276,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	var/in_hands = FALSE
 	/// Reference to the end of the toy that you can hold when the other end is inserted in you
 	var/obj/item/clothing/sextoy/dildo_side/the_toy
+	change_sprite = FALSE
 	moth_edible = FALSE
 
 /obj/item/clothing/sextoy/dildo/double_dildo/Initialize()
@@ -285,6 +288,9 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/item/clothing/sextoy/dildo/double_dildo/populate_dildo_designs()
+	return
+
+/obj/item/clothing/sextoy/dildo/double_dildo/AltClick(mob/user, obj/item/object)
 	return
 
 /// Proc to update the actionbutton icon
@@ -325,7 +331,8 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 	if(in_hands)
 		if((istype(held, /obj/item/clothing/sextoy/dildo/dildo_side) || istype(secondary_held, /obj/item/clothing/sextoy/dildo/dildo_side)) && held?.item_flags == ABSTRACT | HAND_ITEM)
-			QDEL_NULL((istype(held, /obj/item/clothing/sextoy/dildo/dildo_side)) ? held : secondary_held)
+			var/qdel_hand = ((istype(held, /obj/item/clothing/sextoy/dildo/dildo_side)) ? held : secondary_held)
+			QDEL_NULL(qdel_hand)
 			user.visible_message(span_notice("[user] puts one end of [src] back.")) // I tried to work out what this message is trying to say, but I can't quite get it.
 			in_hands = FALSE
 			return
