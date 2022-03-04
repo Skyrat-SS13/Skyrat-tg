@@ -116,14 +116,14 @@
 /datum/supply_pack/goody/wildcat_single
 	name = "CFA Wildcat Single-Pack"
 	desc = "Contains one Cantalan Federal Arms Wildcat Sub Machine Gun, chambered in .32 caliber."
-	cost = PAYCHECK_HARD * 40
+	cost = PAYCHECK_HARD * 8
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/gun/ballistic/automatic/cfa_wildcat)
 
 /datum/supply_pack/goody/wildcatammo_single
 	name = "CFA Wildcat Ammo Single-Pack"
 	desc = "Contains a 30-round magazine for the CFA Wildcat."
-	cost = PAYCHECK_HARD * 6
+	cost = PAYCHECK_HARD * 4
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat)
 
