@@ -47,6 +47,11 @@
 	description = "An implanter that will make you explode on death in a massive explosion, fun!"
 	admin_note = "Warning: Equivalent to 10 microbombs."
 
+/datum/opposing_force_equipment/implant/emp
+	name = "EMP Implant"
+	item_type = /obj/item/implanter/emp
+	description = "An implanter that grants you the ability to create several EMP pulses, centered on you."
+
 // Cybernetic Enhancements
 /datum/opposing_force_equipment/implant/nodrop
 	item_type = /obj/item/autosurgeon/organ/syndicate/nodrop
