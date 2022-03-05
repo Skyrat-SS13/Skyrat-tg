@@ -60,24 +60,38 @@
 	resistance_flags = FIRE_PROOF|ACID_PROOF|FREEZE_PROOF
 	clothing_flags = SNUG_FIT
 
+///Whether PCV is activated or not.
 	var/activated = FALSE
+
+///Whether PCV is activating (whoa) or not.
 	var/activating = FALSE
 
+///(Current) suit user.
 	var/mob/living/carbon/current_user
+
+///(Current) compatible helmet.
 	var/obj/item/clothing/head/helmet/space/pcv_suit/current_helmet
+
+///(Current) internals tank.
 	var/obj/item/tank/internals/current_internals_tank
+
+///Built-in radio for death announcement.
 	var/obj/item/radio/internal_radio
 
+///Damage-related vars used by healing system.
 	var/user_old_bruteloss
 	var/user_old_fireloss
 	var/user_old_toxloss
 	var/user_old_cloneloss
 	var/user_old_oxyloss
 
+///Used by the flatlining/death announcement to announce your death (duh) in the outlined radio channel.
 	var/radio_channel = RADIO_CHANNEL_COMMON
 
+///No idea - I've copypasted HEV code.
 	var/timer_id = null
 
+///Voiceline cooldowns to prevent spamming.
 	var/voice_current_cooldown
 	var/healing_current_cooldown
 	var/health_statement_cooldown
@@ -85,6 +99,7 @@
 	var/acid_statement_cooldown
 	var/rad_statement_cooldown
 
+///Whether or not the suit is currently blaring an alarm.
 	var/blood_loss_alarm = FALSE
 	var/toxins_alarm = FALSE
 	var/batt_50_alarm = FALSE
@@ -97,9 +112,13 @@
 	var/health_dropping_alarm = FALSE
 	var/seek_medical_attention_alarm = FALSE
 
+///Notification system selection variable.
 	var/send_notifications = PCV_NOTIFICATION_TEXT_AND_VOICE
+
+///Which line is currently being played.
 	var/playing_voice_line
 
+///Voice line queue.
 	var/list/queued_voice_lines = list()
 
 /obj/item/clothing/suit/space/pcv_suit/Initialize()
@@ -154,8 +173,7 @@
 	var/obj/item/clothing/suit/space/pcv_suit/my_suit = target
 	var/new_setting = tgui_input_list(my_suit.current_user, "Please select your notification settings.", "PCV Notification Settings", PCV_NOTIFICATIONS)
 
-	if(!new_setting)
-		new_setting = PCV_NOTIFICATION_TEXT_AND_VOICE
+		new_setting ||= PCV_NOTIFICATION_TEXT_AND_VOICE
 
 	to_chat(my_suit.current_user, span_notice("[my_suit] notification mode is now [new_setting]."))
 
@@ -206,7 +224,7 @@
 			queued_voice_lines += sound_in
 		return
 
-	if(queued_voice_lines.len)
+	if(length(queued_voice_lines))
 		var/voice_line = queued_voice_lines[1]
 		var/sound/voice = sound(voice_line, wait = 1, channel = CHANNEL_PCV)
 		voice.status = SOUND_STREAM

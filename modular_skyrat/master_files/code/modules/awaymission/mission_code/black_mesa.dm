@@ -630,6 +630,13 @@
 	icon_state = "hecu_helm"
 	clothing_flags = SNUG_FIT | PLASMAMAN_HELMET_EXEMPT
 	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
+	can_flashlight = FALSE
+
+/obj/item/clothing/head/helmet/marine/hecu/Initialize(mapload)
+	set_attached_light(null)
+	update_helmlight()
+	update_appearance()
+	. = ..()
 
 /obj/item/storage/backpack/ert/odst/hecu
 	name = "hecu backpack"
