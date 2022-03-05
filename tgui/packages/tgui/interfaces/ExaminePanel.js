@@ -24,7 +24,7 @@ export const ExaminePanel = (props, context) => {
       <Window.Content>
         <Stack fill>
           <Stack.Item width="30%">
-            {!!headshot ? (
+            {!headshot ? (
               <Section fill title="Character Preview">
                 {!obscured
             && (
