@@ -644,6 +644,7 @@
 	suit_store = /obj/item/gun/ballistic/automatic/m16
 	belt = /obj/item/storage/belt/security/webbing
 	ears = /obj/item/radio/headset
+	glasses = /obj/item/clothing/glasses/night
 	shoes = /obj/item/clothing/shoes/combat
 	l_pocket = /obj/item/grenade/smokebomb
 	r_pocket = /obj/item/binoculars
