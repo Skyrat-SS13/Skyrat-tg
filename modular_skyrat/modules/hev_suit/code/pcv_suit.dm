@@ -173,7 +173,7 @@
 	var/obj/item/clothing/suit/space/pcv_suit/my_suit = target
 	var/new_setting = tgui_input_list(my_suit.current_user, "Please select your notification settings.", "PCV Notification Settings", PCV_NOTIFICATIONS)
 
-		new_setting ||= PCV_NOTIFICATION_TEXT_AND_VOICE
+	new_setting ||= PCV_NOTIFICATION_TEXT_AND_VOICE
 
 	to_chat(my_suit.current_user, span_notice("[my_suit] notification mode is now [new_setting]."))
 
