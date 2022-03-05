@@ -357,8 +357,8 @@
 	spawn_all_loot = TRUE
 	loot = list(/obj/item/gun/ballistic/automatic/cfa_wildcat = 30,
 				/obj/item/clothing/mask/gas/hecu2 = 20,
-				/obj/item/clothing/head/helmet = 20,
-				/obj/item/clothing/suit/armor/vest = 15,
+				/obj/item/clothing/head/helmet/marine/hecu = 20,
+				/obj/item/clothing/suit/armor/vest/marine/hecu = 15,
 				/obj/item/clothing/shoes/combat = 15)
 
 /obj/effect/spawner/random/hecu_deagle
@@ -366,8 +366,8 @@
 	spawn_all_loot = TRUE
 	loot = list(/obj/item/gun/ballistic/automatic/pistol/deagle = 30,
 				/obj/item/clothing/mask/gas/hecu2 = 20,
-				/obj/item/clothing/head/helmet = 20,
-				/obj/item/clothing/suit/armor/vest = 15,
+				/obj/item/clothing/head/helmet/marine/hecu = 20,
+				/obj/item/clothing/suit/armor/vest/marine/hecu = 15,
 				/obj/item/clothing/shoes/combat = 15)
 
 ///////////////////HECU
@@ -637,10 +637,10 @@
 /datum/outfit/hecu
 	name = "HECU Grunt"
 	uniform = /obj/item/clothing/under/rank/security/officer/hecu
-	head = /obj/item/clothing/head/helmet/marine/hecu
-	mask = /obj/item/clothing/mask/gas/syndicate/ds
+	head = /obj/item/clothing/head/helmet/space/pcv_suit
+	mask = /obj/item/clothing/mask/gas/hecu2
 	gloves = /obj/item/clothing/gloves/combat
-	suit = /obj/item/clothing/suit/armor/vest/marine/hecu
+	suit = /obj/item/clothing/suit/space/pcv_suit
 	suit_store = /obj/item/gun/ballistic/automatic/m16
 	belt = /obj/item/storage/belt/security/webbing
 	ears = /obj/item/radio/headset
