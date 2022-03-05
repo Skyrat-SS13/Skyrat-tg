@@ -151,7 +151,7 @@
 	assignment = "Cargo Technician"
 	trim_state = "trim_cargotechnician"
 	sechud_icon_state = SECHUD_CARGO_TECHNICIAN
-	extra_access = list(ACCESS_QM, ACCESS_MINING, ACCESS_MINING_STATION)
+	extra_access = list(ACCESS_MINING, ACCESS_MINING_STATION) // SKYRAT EDIT - No longer gives "ACCESS_QM"
 	minimal_access = list(ACCESS_CARGO, ACCESS_MAILSORTING, ACCESS_MAINT_TUNNELS, ACCESS_MECH_MINING, ACCESS_MINERAL_STOREROOM)
 	config_job = "cargo_technician"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
@@ -513,7 +513,7 @@
 	assignment = "Shaft Miner"
 	trim_state = "trim_shaftminer"
 	sechud_icon_state = SECHUD_SHAFT_MINER
-	extra_access = list(ACCESS_CARGO, ACCESS_MAINT_TUNNELS, ACCESS_QM)
+	extra_access = list(ACCESS_CARGO, ACCESS_MAINT_TUNNELS) // SKYRAT EDIT - No longer gives "ACCESS_QM"
 	minimal_access = list(ACCESS_AUX_BASE, ACCESS_MAILSORTING, ACCESS_MECH_MINING, ACCESS_MINERAL_STOREROOM, ACCESS_MINING,
 					ACCESS_MINING_STATION)
 	config_job = "shaft_miner"
