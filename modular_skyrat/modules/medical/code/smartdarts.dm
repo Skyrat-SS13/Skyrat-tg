@@ -9,8 +9,11 @@
 
 //Code that handles the base interactions involving smartdarts
 /obj/item/reagent_containers/syringe/smartdart/afterattack(atom/target, mob/user, proximity)
-	to_chat(user, span_warning("The [src] is unable to directly inject chemicals."))
-	return
+	if(isliving(target))
+		to(chat(user,span_notice("The [src] is unable to manually inject"))
+		return
+	else
+		return
 //A majority of this code is from the original syringes.dm file.
 /obj/item/reagent_containers/syringe/smartdart/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!try_syringe(target, user, proximity_flag))
