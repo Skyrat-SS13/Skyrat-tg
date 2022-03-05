@@ -9,7 +9,7 @@
 /obj/item/clothing/shoes/jackboots/ashwalker/legate
 	icon = 'modular_skyrat/modules/ashwalkers/icons/shoes.dmi'
 	worn_icon = 'modular_skyrat/modules/ashwalkers/icons/feet.dmi'
-	icon_state = "legionlegat"
+	icon_state = "legionlegate"
 	mutant_variants = NONE
 
 /obj/item/clothing/shoes/wraps/ashwalker

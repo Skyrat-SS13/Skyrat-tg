@@ -150,8 +150,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 		return TRUE
 
 	var/mob/living/carbon/human/amazed_human = user
+// SKYRAT EDIT BEGIN - Magic Mirror Character Application
+	var/choice
+	var/ask = tgui_alert(user, "Would you like to apply your loaded character?","Confirm", list("Yes!", "No, I want to manually edit my character here."))
 
-	var/choice = tgui_input_list(user, "Something to change?", "Magical Grooming", list("name", "race", "gender", "hair", "eyes"))
+	if(ask == "Yes!")
+		user?.client?.prefs?.safe_transfer_prefs_to(amazed_human)
+	else
+		choice = tgui_input_list(user, "Something to change?", "Magical Grooming", list("name", "race", "gender", "hair", "eyes"))
+// SKYRAT EDIT END
 	if(isnull(choice))
 		return TRUE
 
