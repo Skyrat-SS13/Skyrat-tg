@@ -32,3 +32,18 @@
 	name = "10000 Space Cash Bill"
 	item_type = /obj/item/stack/spacecash/c10000
 	description = "Cold hard cash. When you REALLY need to bribe or buy your way in. Or to payroll your gangmembers."
+
+/datum/opposing_force_equipment/other/ninjastar
+	item_type = /obj/item/throwing_star
+	description = "Be the maintenance ninja you always wanted to be. Does not come with multi-throwing cybernetics."
+
+/datum/opposing_force_equipment/other/throwing_weapons
+	item_type = /obj/item/storage/box/syndie_kit/throwing_weapons
+	description = "A box of shurikens and reinforced bolas from ancient Earth martial arts. They are highly effective \
+		throwing weapons. The bolas can knock a target down and the shurikens will embed into limbs."
+	name = "Box of Throwing Weapons"
+
+/datum/opposing_force_equipment/other/origami
+	item_type = /obj/item/storage/box/syndie_kit/origami_bundle
+	description = "A box containing a guide on how to craft masterful works of origami, allowing you to transform normal pieces of paper into \
+		perfectly aerodynamic (and potentially lethal) paper airplanes."
