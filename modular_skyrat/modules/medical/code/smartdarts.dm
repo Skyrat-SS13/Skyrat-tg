@@ -1,6 +1,6 @@
-//The smartdarts themselves
+//The SmartDarts themselves
 /obj/item/reagent_containers/syringe/smartdart
-	name = "medical smartdart"
+	name = "SmartDart"
 	desc = "Allows the user to safely inject chemicals at a range without harming the patient."
 	volume = 10
 	icon = 'modular_skyrat/modules/medical/icons/obj/smartdarts.dmi'
@@ -40,8 +40,8 @@
 
 //The base smartdartgun
 /obj/item/gun/syringe/smartdart
-	name = "medical smartdart gun"
-	desc = "An adjusted version of the medical syringe gun that only allows smartdarts to be chambered."
+	name = "medical SmartDart gun"
+	desc = "An adjusted version of the medical syringe gun that only allows SmartDarts to be chambered."
 	w_class = WEIGHT_CLASS_NORMAL //I might need to look into changing this later depending on feedback
 	icon = 'modular_skyrat/modules/medical/icons/obj/dartguns.dmi'
 	icon_state = "smartdartgun"
@@ -63,7 +63,7 @@
 	projectile_type = /obj/projectile/bullet/dart/syringe/dart
 
 /obj/projectile/bullet/dart/syringe/dart
-	name = "smartdart"
+	name = "SmartDart"
 	damage = 0
 	var/list/allergyList = list()
 	var/prevention_used = FALSE //Is allergy prevention used?
