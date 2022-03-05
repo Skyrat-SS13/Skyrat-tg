@@ -16,17 +16,6 @@
 	description = "A fully-kitted toolbox scavenged from maintenance by our highly-paid monkeys. The toolbox \
 		itself is weighted especially to bash any head in and comes with a free pair of insulated combat gloves."
 
-/datum/opposing_force_equipment/gear/engichip
-	item_type = /obj/item/skillchip/job/engineer
-	description = "A skillchip that, when installed, allows the user to recognise airlock and APC wire layouts and understand their functionality at a glance. Highly valuable and sought after."
-
-/datum/opposing_force_equipment/gear/roboticist
-	item_type = /obj/item/skillchip/job/roboticist
-	description = "A skillchip that, when installed, allows the user to recognise cyborg wire layouts and understand their functionality at a glance."
-
-/datum/opposing_force_equipment/gear/tacticool
-	item_type = /obj/item/skillchip/chameleon/reload
-
 /datum/opposing_force_equipment/gear/thermalgoggles
 	item_type = /obj/item/clothing/glasses/thermal
 	description = "A pair of thermal goggles. Cannot be chameleon disguised."
@@ -46,11 +35,6 @@
 /datum/opposing_force_equipment/gear/projector
 	item_type = /obj/item/chameleon
 	description = "A projector that allows its user to turn into any scanned object. Pairs well with a cluttered room and ambush weapon."
-
-/datum/opposing_force_equipment/gear/box
-	item_type = /obj/item/implanter/stealth
-	description = "An implanter that grants you the ability to wield the ultimate in invisible box technology. Best used in conjunction with \
-					a tape recorder playing Snake Eater."
 
 /datum/opposing_force_equipment/gear/sechud
 	item_type = /obj/item/clothing/glasses/hud/security/chameleon
@@ -75,16 +59,6 @@
 	item_type = /obj/item/reagent_containers/glass/rag/large
 	description = "A damp rag made with extra absorbant materials. The perfectly innocent tool to kidnap your local assistant. \
 			Apply up to 30u liquids and use combat mode to smother anyone not covering their mouth."
-
-/datum/opposing_force_equipment/gear/nodrop
-	item_type = /obj/item/autosurgeon/organ/syndicate/nodrop
-	name = "Anti Drop Implant"
-	description = "An implant that prevents you from dropping items in your hand involuntarily. Comes loaded in a syndicate autosurgeon."
-
-/datum/opposing_force_equipment/gear/hackerman
-	item_type = /obj/item/autosurgeon/organ/syndicate/hackerman
-	name = "Hacking Arm Implant"
-	description = "An advanced arm implant that comes with cutting edge hacking tools. Perfect for the cybernetically enhanced wirerunners."
 
 /datum/opposing_force_equipment/gear/mulligan
 	name = "Mulligan"
