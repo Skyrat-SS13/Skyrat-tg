@@ -42,6 +42,9 @@
 /datum/opposing_force_equipment/pistol/glock17
 	item_type = /obj/item/gun/ballistic/automatic/pistol/g17
 
+/datum/opposing_force_equipment/pistol/glock18
+	item_type = /obj/item/gun/ballistic/automatic/pistol/g18
+
 /datum/opposing_force_equipment/pistol/ladon
 	item_type = /obj/item/gun/ballistic/automatic/pistol/ladon
 
