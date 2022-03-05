@@ -428,6 +428,26 @@
 	M.adjust_bodytemperature(-5 * REM * TEMPERATURE_DAMAGE_COEFFICIENT * delta_time, M.get_body_temp_normal())
 	..()
 
+<<<<<<< HEAD
+=======
+/datum/reagent/consumable/roy_rogers
+	name = "Roy Rogers"
+	description = "A sweet fizzy drink."
+	color = "#53090B"
+	quality = DRINK_GOOD
+	taste_description = "fruity overlysweet cola"
+	glass_icon_state = "royrogers"
+	glass_name = "Roy Rogers"
+	glass_desc = "90% sugar in a glass."
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+/datum/reagent/consumable/roy_rogers/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
+	M.Jitter(6 * REM * delta_time) //not as strong as coffe, still this is a lot of sugar
+	M.adjust_drowsyness(-5 * REM * delta_time)
+	M.adjust_bodytemperature(-5 * REM * TEMPERATURE_DAMAGE_COEFFICIENT * delta_time, M.get_body_temp_normal())
+	return ..()
+
+>>>>>>> 0bab3d1cfbe ([COOL BUG READ FOR MORE INFO] Fix vaccines not working in chem masters by giving Fungal TB's vaccine (and others) a name + Add unit test for duplicate chem names + Rename fake beer + Ratio (#65241))
 /datum/reagent/consumable/nuka_cola
 	name = "Nuka Cola"
 	description = "Cola, cola never changes."
@@ -785,6 +805,24 @@
 	..()
 	. = TRUE
 
+<<<<<<< HEAD
+=======
+/datum/reagent/consumable/cinderella
+	name = "Cinderella"
+	description = "Most definitely a fruity alcohol cocktail to have while partying with your friends."
+	color = "#FF6A50"
+	quality = DRINK_VERYGOOD
+	taste_description = "sweet tangy fruit"
+	glass_icon_state = "cinderella"
+	glass_name = "Cinderlla"
+	glass_desc = "There is not a single drop of alcohol in this thing."
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+/datum/reagent/consumable/cinderella/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
+	M.adjust_disgust(-5 * REM * delta_time)
+	return ..()
+
+>>>>>>> 0bab3d1cfbe ([COOL BUG READ FOR MORE INFO] Fix vaccines not working in chem masters by giving Fungal TB's vaccine (and others) a name + Add unit test for duplicate chem names + Rename fake beer + Ratio (#65241))
 /datum/reagent/consumable/cherryshake
 	name = "Cherry Shake"
 	description = "A cherry flavored milkshake."
@@ -1066,6 +1104,26 @@
 		M.adjust_drowsyness(1 * REM * delta_time)
 	return ..()
 
+<<<<<<< HEAD
+=======
+/datum/reagent/consumable/agua_fresca
+	name = "Agua Fresca"
+	description = "A refreshing watermelon agua fresca. Perfect on a day at the holodeck."
+	color = "#D25B66"
+	quality = DRINK_VERYGOOD
+	taste_description = "cool refreshing watermelon"
+	glass_icon_state = "aguafresca"
+	glass_name = "Agua Fresca"
+	glass_desc = "90% water, but still refreshing."
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+/datum/reagent/consumable/agua_fresca/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
+	M.adjust_bodytemperature(-8 * REM * TEMPERATURE_DAMAGE_COEFFICIENT * delta_time, M.get_body_temp_normal())
+	if(M.getToxLoss() && DT_PROB(10, delta_time))
+		M.adjustToxLoss(-0.5, 0)
+	return ..()
+
+>>>>>>> 0bab3d1cfbe ([COOL BUG READ FOR MORE INFO] Fix vaccines not working in chem masters by giving Fungal TB's vaccine (and others) a name + Add unit test for duplicate chem names + Rename fake beer + Ratio (#65241))
 /datum/reagent/consumable/mushroom_tea
 	name = "Mushroom Tea"
 	description = "A savoury glass of tea made from polypore mushroom shavings, originally native to Tizira."
