@@ -138,8 +138,43 @@
 	name = "Hypnotic Flash"
 	item_type = /obj/item/assembly/flash/hypnotic
 	description = "A modified flash able to hypnotize targets. If the target is not in a mentally vulnerable state, it will only confuse and pacify them temporarily."
+	admin_note = "Able to hypnotize people with the next phrase said after exposure."
 
 /datum/opposing_force_equipment/gear/hypnobang
 	name = "Hypnotic Flashbang"
 	item_type = /obj/item/grenade/hypnotic
 	description = "A modified flashbang able to hypnotize targets. If the target is not in a mentally vulnerable state, it will only confuse and pacify them temporarily."
+	admin_note = "Able to hypnotize people with the next phrase said after exposure."
+
+/datum/opposing_force_equipment/gear/agentcard
+	name = "Agent Card"
+	item_type = /obj/item/card/id/advanced/chameleon
+	description = "A highly advanced chameleon ID card. Touch this card on another ID card or player to choose which accesses to copy. Has special magnetic properties which force it to the front of wallets."
+
+/datum/opposing_force_equipment/gear/agentcarddeluxe
+	name = "Deluxe Agent Identification Card"
+	item_type = /obj/item/card/id/advanced/chameleon/black
+	description = "Created by Cybersun Industries to be the ultimate for field operations, this upgraded Agent ID \
+	comes with all the fluff of the original, but with an upgraded microchip - allowing for the storage of all \
+	standard Nanotrasen access codes in one conveinent package. Now in glossy olive by default!"
+	admin_note = "Has no limit on how many accesses it can store."
+
+/datum/opposing_force_equipment/gear/chameleonheadsetdeluxe
+	name = "Advanced Chameleon Headset"
+	item_type = /obj/item/radio/headset/chameleon/advanced
+	description = "A premium model Chameleon Headset. All the features you love of the original, but now with flashbang \
+	protection, voice amplification, memory-foam, HD Sound Quality, and extra-wide spectrum dial. Usually reserved \
+	for high-ranking Cybersun officers, a few spares have been reserved for field agents."
+
+/datum/opposing_force_equipment/gear/syndiejaws
+	name = "Syndicate Jaws of Life"
+	item_type = /obj/item/crowbar/power/syndicate
+	description = "Based on a Nanotrasen model, this powerful tool can be used as both a crowbar and a pair of wirecutters. \
+	In its crowbar configuration, it can be used to force open airlocks. Very useful for entering the station or its departments."
+
+/datum/opposing_force_equipment/gear/combatmedkit
+	name = "Syndicate Combat Medic Kit"
+	item_type = /obj/item/storage/firstaid/tactical
+	desc = "This first aid kit is a suspicious brown and red. Included is a combat stimulant injector \
+			for rapid healing, a medical night vision HUD for quick identification of injured personnel, \
+			and other supplies helpful for a field medic."
