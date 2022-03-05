@@ -30,7 +30,7 @@
 #define PCV_NOTIFICATIONS list(PCV_NOTIFICATION_TEXT_AND_VOICE, PCV_NOTIFICATION_TEXT, PCV_NOTIFICATION_VOICE, PCV_NOTIFICATION_OFF)
 
 /obj/item/clothing/head/helmet/space/pcv_suit
-	name = "powered combat vest helmet"
+	name = "powered combat helmet"
 	desc = "The Mark II PCV suit helmet."
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
