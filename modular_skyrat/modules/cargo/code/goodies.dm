@@ -52,7 +52,7 @@
 
 /datum/supply_pack/goody/wt550_single
 	name = "WT-550 Auto Rifle Single-Pack"
-	desc = "Contains one high-powered, semiautomatic rifles chambered in 4.6x30mm." // "high-powered" lol yea right
+	desc = "Contains one high-powered, semiautomatic rifle chambered in 4.6x30mm." // "high-powered" lol yea right
 	cost = PAYCHECK_HARD * 20
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/gun/ballistic/automatic/wt550)
@@ -98,6 +98,34 @@
 	cost = PAYCHECK_MEDIUM * 3
 	contains = list(/obj/item/gun_maintenance_supplies,
 					/obj/item/gun_maintenance_supplies)
+
+/datum/supply_pack/goody/mcr_single
+	name = "MCR-01 Microfusion Single-Pack"
+	desc = "Contains one advanced Micron Control Systems Incorporated supplied MCR-01 Microfusion weapons platform."
+	cost = PAYCHECK_HARD * 22
+	access_view = ACCESS_ARMORY
+	contains = list(/obj/item/gun/microfusion/mcr01/advanced)
+
+/datum/supply_pack/goody/mcrammo_single
+	name = "Microfusion Cell Single-Pack"
+	desc = "Contains a box of three Microfusion cells, compatible with all MCR-01 Microfusion weapons."
+	cost = PAYCHECK_HARD * 6
+	access_view = ACCESS_ARMORY
+	contains = list(/obj/item/storage/box/ammo_box/microfusion/advanced)
+
+/datum/supply_pack/goody/wildcat_single
+	name = "CFA Wildcat Single-Pack"
+	desc = "Contains one Cantalan Federal Arms Wildcat Sub Machine Gun, chambered in .32 caliber."
+	cost = PAYCHECK_HARD * 8
+	access_view = ACCESS_ARMORY
+	contains = list(/obj/item/gun/ballistic/automatic/cfa_wildcat)
+
+/datum/supply_pack/goody/wildcatammo_single
+	name = "CFA Wildcat Ammo Single-Pack"
+	desc = "Contains a 30-round magazine for the CFA Wildcat."
+	cost = PAYCHECK_HARD * 4
+	access_view = ACCESS_ARMORY
+	contains = list(/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat)
 
 /datum/supply_pack/goody/temp_single
 	name = "Temperature Gun Kit Single-Pack"
