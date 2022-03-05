@@ -40,8 +40,8 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/smartdartgun
-	name = "Medical Smartdart Gun"
-	desc = "An adjusted version of the medical syringe gun that only allows smartdarts to be chambered."
+	name = "Medical SmartDart Gun"
+	desc = "An adjusted version of the medical syringe gun that only allows SmartDarts to be chambered."
 	id = "smartdartgun"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 2000, /datum/material/glass = 10000, /datum/material/silver = 4000)

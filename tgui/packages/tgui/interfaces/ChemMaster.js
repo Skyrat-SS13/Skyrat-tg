@@ -340,7 +340,7 @@ const PackagingControls = (props, context) => {
       )}
       {!condi && (
         <PackagingControlsItem
-          label="Smartdarts"
+          label="SmartDarts"
           amount={dartAmount}
           amountUnit="darts"
           sideNote="max 10u"
