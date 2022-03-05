@@ -26,7 +26,7 @@ export const ExaminePanel = (props, context) => {
           <Stack.Item width="30%">
             {!!headshot ? (
               <Section fill title="Character Preview">
-              {!obscured
+                {!obscured
             && (
               <ByondUi
                 height="100%"
@@ -37,7 +37,7 @@ export const ExaminePanel = (props, context) => {
                   type: 'map',
                 }} />
             )}
-            </Section>
+              </Section>
             ) : (
               <>
                 <Section height="310px" title="Character Preview">
