@@ -24,7 +24,21 @@ export const ExaminePanel = (props, context) => {
       <Window.Content>
         <Stack fill>
           <Stack.Item width="30%">
-            {headshot.length !== 0 ? (
+            {!!headshot ? (
+              <Section fill title="Character Preview">
+              {!obscured
+            && (
+              <ByondUi
+                height="100%"
+                width="100%"
+                className="ExaminePanel__map"
+                params={{
+                  id: assigned_map,
+                  type: 'map',
+                }} />
+            )}
+            </Section>
+            ) : (
               <>
                 <Section height="310px" title="Character Preview">
                   {!obscured
@@ -47,20 +61,6 @@ export const ExaminePanel = (props, context) => {
                   />
                 </Section>
               </>
-            ) : (
-              <Section fill title="Character Preview">
-                {!obscured
-              && (
-                <ByondUi
-                  height="100%"
-                  width="100%"
-                  className="ExaminePanel__map"
-                  params={{
-                    id: assigned_map,
-                    type: 'map',
-                  }} />
-              )}
-              </Section>
             )}
 
           </Stack.Item>
