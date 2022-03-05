@@ -4,9 +4,9 @@
 	icon_state = "sterile"
 	inhand_icon_state = "sterile"
 	w_class = WEIGHT_CLASS_TINY
-	flags_inv = HIDEFACE|HIDESNOUT
+	flags_inv =  HIDESNOUT //SKYRAT EDIT - ORIGINAL HIDEFACE|HIDESNOUT
 	flags_cover = MASKCOVERSMOUTH
-	visor_flags_inv = HIDEFACE|HIDESNOUT
+	visor_flags_inv = HIDESNOUT //SKYRAT EDIT - ORIGINAL HIDEFACE|HIDESNOUT
 	visor_flags_cover = MASKCOVERSMOUTH
 	permeability_coefficient = 0.01
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 25, FIRE = 0, ACID = 0)
