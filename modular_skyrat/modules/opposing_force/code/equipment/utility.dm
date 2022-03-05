@@ -108,3 +108,38 @@
 /datum/opposing_force_equipment/gear/ventcrawl_book
 	item_type = /obj/item/book/granter/traitsr/ventcrawl_book
 	admin_note = "WARNING: Incredibly powerful, use discretion when handing this out."
+
+/datum/opposing_force_equipment/gear/holoparasite
+	item_type = /obj/item/guardiancreator/tech/choose/traitor
+	admin_note = "Lets a ghost take control of a guardian spirit bound to the user."
+
+/datum/opposing_force_equipment/gear/launchpad
+	name = "Briefcase Launchpad"
+	item_type = /obj/item/storage/briefcase/launchpad
+	description = "A briefcase containing a launchpad, a device able to teleport items and people to and from targets up to eight tiles away from the briefcase. \
+			Also includes a remote control, disguised as an ordinary folder. Touch the briefcase with the remote to link it."
+
+/datum/opposing_force_equipment/gear/camera_bug
+	name = "Camera Bug"
+	item_type = /obj/item/camera_bug
+
+/datum/opposing_force_equipment/gear/microlaser
+	name = "Radioactive Microlaser"
+	item_type = /obj/item/healthanalyzer/rad_laser
+	description = "A radioactive microlaser disguised as a standard Nanotrasen health analyzer. When used, it emits a \
+			powerful burst of radiation, which, after a short delay, can incapacitate all but the most protected \
+			of humanoids."
+
+/datum/opposing_force_equipment/gear/stimpack
+	name = "Stimulant Medipen"
+	item_type = /obj/item/reagent_containers/hypospray/medipen/stimulants
+
+/datum/opposing_force_equipment/gear/hypnoflash
+	name = "Hypnotic Flash"
+	item_type = /obj/item/assembly/flash/hypnotic
+	description = "A modified flash able to hypnotize targets. If the target is not in a mentally vulnerable state, it will only confuse and pacify them temporarily."
+
+/datum/opposing_force_equipment/gear/hypnobang
+	name = "Hypnotic Flashbang"
+	item_type = /obj/item/grenade/hypnotic
+	description = "A modified flashbang able to hypnotize targets. If the target is not in a mentally vulnerable state, it will only confuse and pacify them temporarily."

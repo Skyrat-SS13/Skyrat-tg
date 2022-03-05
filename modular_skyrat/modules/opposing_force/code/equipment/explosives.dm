@@ -30,4 +30,16 @@
 /datum/opposing_force_equipment/bomb/syndicate_emp
 	name = "Syndicate EMP Bomb"
 	item_type = /obj/item/sbeacondrop/emp
-	description = "A modified version of the Syndicate Bomb that releases a large EMP instead.."
+	description = "A modified version of the Syndicate Bomb that releases a large EMP instead."
+
+/datum/opposing_force_equipment/bomb/minibomb
+	name = "Syndicate Minibomb"
+	item_type = /obj/item/grenade/syndieminibomb
+	description = "The minibomb is a grenade with a five-second fuse. Upon detonation, it will create a small hull breach \
+			in addition to dealing high amounts of damage to nearby personnel."
+
+/datum/opposing_force_equipment/bomb/pizza
+	name = "Pizza Bomb"
+	item_type = /obj/item/pizzabox/bomb
+	description = "A pizza box with a bomb cunningly attached to the lid. The timer needs to be set by opening the box; afterwards, \
+			opening the box again will trigger the detonation after the timer has elapsed. Comes with free pizza, for you or your target!"
