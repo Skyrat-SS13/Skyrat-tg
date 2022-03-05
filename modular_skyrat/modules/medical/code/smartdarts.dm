@@ -11,9 +11,7 @@
 /obj/item/reagent_containers/syringe/smartdart/afterattack(atom/target, mob/user, proximity)
 	if(isliving(target))
 		to(chat(user,span_notice("The [src] is unable to manually inject"))
-		return
-	else
-		return
+	return
 //A majority of this code is from the original syringes.dm file.
 /obj/item/reagent_containers/syringe/smartdart/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!try_syringe(target, user, proximity_flag))
