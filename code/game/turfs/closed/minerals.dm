@@ -17,13 +17,8 @@
 	plane = GAME_PLANE_UPPER
 	base_icon_state = "smoothrocks"
 	temperature = TCMB
-<<<<<<< HEAD
 	color = "#677" //SKYRAT EDIT ADDITION
 	var/smooth_icon = 'modular_skyrat/modules/liquids/icons/turf/smoothrocks.dmi' //SKYRAT EDIT CHANGE
-	var/environment_type = "asteroid"
-=======
-	var/smooth_icon = 'icons/turf/smoothrocks.dmi'
->>>>>>> b27646ff16f (Removes the `environment_type` var from mineral turfs (#65234))
 	var/turf/open/floor/plating/turf_type = /turf/open/floor/plating/asteroid/airless
 	var/obj/item/stack/ore/mineralType = null
 	var/mineralAmt = 3
