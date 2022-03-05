@@ -52,16 +52,16 @@
 /datum/opposing_force_equipment/bomb/viscerator
 	name = "Viscerator Delivery Grenade"
 	item_type = /obj/item/grenade/spawnergrenade/manhacks
-	desc = "A unique grenade that deploys a swarm of viscerators upon activation, which will chase down and shred \
+	description = "A unique grenade that deploys a swarm of viscerators upon activation, which will chase down and shred \
 			any non-operatives in the area."
 
 /datum/opposing_force_equipment/bomb/buzzkill
 	name = "Buzzkill Grenade"
 	item_type = /obj/item/grenade/spawnergrenade/buzzkill
-	desc = "A grenade that release a swarm of angry bees upon activation. These bees indiscriminately attack friend or foe \
+	description = "A grenade that release a swarm of angry bees upon activation. These bees indiscriminately attack friend or foe \
 			with random toxins. Courtesy of the BLF and Tiger Cooperative."
 
 /datum/opposing_force_equipment/bomb/bonebang
 	name = "Bonebang"
 	item_type = /obj/item/grenade/stingbang/bonebang
-	desc = "A horrifying grenade filled with what looks to be bone and gore, which upon detonation will fill the room you're in with bone fragments."
+	description = "A horrifying grenade filled with what looks to be bone and gore, which upon detonation will fill the room you're in with bone fragments."

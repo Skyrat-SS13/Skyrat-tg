@@ -175,6 +175,6 @@
 /datum/opposing_force_equipment/gear/combatmedkit
 	name = "Syndicate Combat Medic Kit"
 	item_type = /obj/item/storage/firstaid/tactical
-	desc = "This first aid kit is a suspicious brown and red. Included is a combat stimulant injector \
+	description = "This first aid kit is a suspicious brown and red. Included is a combat stimulant injector \
 			for rapid healing, a medical night vision HUD for quick identification of injured personnel, \
 			and other supplies helpful for a field medic."
