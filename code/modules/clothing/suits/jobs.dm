@@ -72,7 +72,7 @@
 	name = "noir trenchcoat"
 	desc = "A hard-boiled private investigator's dark trenchcoat."
 	icon_state = "noirdet"
-	inhand_icon_state = "noirdet"
+	inhand_icon_state = "greydet"
 
 /obj/item/clothing/suit/det_suit/noir
 	name = "noir suit coat"
