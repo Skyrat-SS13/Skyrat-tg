@@ -168,14 +168,12 @@
 	mineralType = /obj/item/xenoarch/strange_rock
 
 /turf/closed/mineral/strange_rock/volcanic
-	environment_type = "basalt"
 	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	defer_change = TRUE
 
 /turf/closed/mineral/random/volcanic
-	environment_type = "basalt"
 	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -188,7 +186,6 @@
 		/turf/closed/mineral/gibtonite/volcanic = 4, /obj/item/stack/ore/bluespace_crystal = 1)
 
 /turf/closed/mineral/strange_rock/ice
-	environment_type = "snow_cavern"
 	icon_state = "icerock_strange"
 	smooth_icon = 'icons/turf/walls/icerock_wall.dmi'
 	base_icon_state = "icerock_wall"
@@ -220,7 +217,6 @@
 
 //small gibonite fix
 /turf/closed/mineral/gibtonite/asteroid
-	environment_type = "asteroid"
 	icon_state = "redrock_Gibonite"
 	smooth_icon = 'icons/turf/walls/red_wall.dmi'
 	base_icon_state = "red_wall"
@@ -231,7 +227,6 @@
 	defer_change = TRUE
 
 /turf/closed/mineral/strange_rock/asteroid
-	environment_type = "asteroid"
 	icon_state = "redrock_strange"
 	smooth_icon = 'icons/turf/walls/red_wall.dmi'
 	base_icon_state = "red_wall"

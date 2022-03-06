@@ -32,7 +32,7 @@
 	icon_state = "nt_consultant_skirt"
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/head/nanotrasen_consultant
 	name = "nanotrasen consultant's hat"
