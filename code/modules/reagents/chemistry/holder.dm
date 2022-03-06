@@ -594,11 +594,7 @@
 	return amount
 
 /// Copies the reagents to the target object
-<<<<<<< HEAD
-/datum/reagents/proc/copy_to(obj/target, amount=1, multiplier=1, preserve_data=1, no_react=0) //SKYRAT EDIT CHANGE
-=======
 /datum/reagents/proc/copy_to(obj/target, amount = 1, multiplier = 1, preserve_data = TRUE, no_react = FALSE)
->>>>>>> b5fd679c4f7 (Makes reagent copying also copy temperature. (#65151))
 	var/list/cached_reagents = reagent_list
 	if(!target || !total_volume)
 		return
@@ -632,16 +628,6 @@
 		target_holder.handle_reactions()
 		src.handle_reactions()
 
-<<<<<<< HEAD
-	src.update_total()
-	R.update_total()
-	//SKYRAT EDIT CHANGE BEGIN
-	if(!no_react)
-		R.handle_reactions()
-		src.handle_reactions()
-	//SKYRAT EDIT CHANGE END
-=======
->>>>>>> b5fd679c4f7 (Makes reagent copying also copy temperature. (#65151))
 	return amount
 
 ///Multiplies the reagents inside this holder by a specific amount
