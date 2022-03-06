@@ -30,12 +30,12 @@
 		"yellow" = image(icon = src.icon, icon_state = "vibrator_yellow_low"),
 		"green" = image(icon = src.icon, icon_state = "vibrator_green_low"))
 
-/obj/item/clothing/sextoy/vibrator/AltClick(mob/user, obj/item/I)
+/obj/item/clothing/sextoy/vibrator/AltClick(mob/user, obj/item/object)
 	if(color_changed == FALSE)
 		. = ..()
 		if(.)
 			return
-		var/choice = show_radial_menu(user,src, vibrator_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, vibrator_designs, custom_check = CALLBACK(src, .proc/check_menu, user, object), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_color = choice
@@ -44,14 +44,6 @@
 		color_changed = TRUE
 	else
 		return
-
-//to check if we can change vibrator's model
-/obj/item/clothing/sextoy/vibrator/proc/check_menu(mob/living/user)
-	if(!istype(user))
-		return FALSE
-	if(user.incapacitated())
-		return FALSE
-	return TRUE
 
 /obj/item/clothing/sextoy/vibrator/Initialize()
 	. = ..()

@@ -164,7 +164,7 @@
 /datum/supply_pack/security/wildcat
 	name = "CFA Wildcat Supply Crate"
 	desc = "Local police running low on equipment? Neighbor particularly loud in the early morning? This should help out. (Does not include weapons permits.)"
-	cost = CARGO_CRATE_VALUE * 55 // Bit cheaper then the next up, because it's not to good.
+	cost = CARGO_CRATE_VALUE * 15 // Bit cheaper then the next up, because it's not to good.
 	contains = list(/obj/item/gun/ballistic/automatic/cfa_wildcat,
 					/obj/item/gun/ballistic/automatic/cfa_wildcat,
 					/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
