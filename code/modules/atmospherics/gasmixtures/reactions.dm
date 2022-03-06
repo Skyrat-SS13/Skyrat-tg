@@ -841,13 +841,9 @@
 	cached_gases[/datum/gas/plasma][MOLES] += consumed_amount * 0.8
 	cached_gases[/datum/gas/bz][MOLES] -= consumed_amount
 	energy_released += consumed_amount * 60000
-<<<<<<< HEAD
-	radiation_pulse(location, max_range = min(sqrt(consumed_amount) / 1.5, 20), threshold = 15 * INVERSE(15 + consumed_amount), chance = 50)
-=======
 	if(energy_released > 60000 * (air.volume / 2500) ** 3)
 		radiation_pulse(location, max_range = min(sqrt(consumed_amount) / 1.5, 20), threshold = 15 * INVERSE(15 + consumed_amount), chance = 50)
 	SET_REACTION_RESULTS(consumed_amount)
->>>>>>> ac21ef9078d (No, we don't want radiation getting released in large pipenets fuck you fuckr uyu! (#65212))
 	for(var/mob/living/carbon/L in location)
 		L.hallucination += consumed_amount
 	if(energy_released)
@@ -888,13 +884,9 @@
 	cached_gases[/datum/gas/proto_nitrate][MOLES] -= produced_amount * 0.01
 	cached_gases[/datum/gas/hydrogen][MOLES] += produced_amount
 	energy_released += produced_amount * 10000
-<<<<<<< HEAD
-	radiation_pulse(location, max_range = min(sqrt(produced_amount) / 1.5, 20), threshold = 15 * INVERSE(15 + produced_amount), chance = 50)
-=======
 	if(energy_released > 10000 * (air.volume / 2500) ** 3)
 		radiation_pulse(location, max_range = min(sqrt(produced_amount) / 1.5, 20), threshold = 15 * INVERSE(15 + produced_amount), chance = 50)
 	SET_REACTION_RESULTS(produced_amount)
->>>>>>> ac21ef9078d (No, we don't want radiation getting released in large pipenets fuck you fuckr uyu! (#65212))
 	if(energy_released)
 		var/new_heat_capacity = air.heat_capacity()
 		if(new_heat_capacity > MINIMUM_HEAT_CAPACITY)
