@@ -141,16 +141,13 @@
 			affected.react(src)
 			location.assume_air(affected)
 
-<<<<<<< HEAD
 	location.PolluteListTurf(list(/datum/pollutant/smoke = 15, /datum/pollutant/carbon_air_pollution = 5), POLLUTION_ACTIVE_EMITTER_CAP) //SKYRAT EDIT ADDITION
-=======
 	if(reference)
 		volume = 0
 		var/list/cached_results = reference.reaction_results
 		for (var/reaction in SSair.hotspot_reactions)
 			volume += cached_results[reaction] * FIRE_GROWTH_RATE
 		temperature = reference.temperature
->>>>>>> eeb54659314 (Ordnance Content Update: Scientific Papers (#62284))
 
 	// Handles the burning of atoms.
 	for(var/A in location)
