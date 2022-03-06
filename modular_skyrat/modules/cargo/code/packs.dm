@@ -234,6 +234,15 @@
 					/obj/item/clothing/suit/armor/vest/alt,
 					/obj/item/clothing/suit/armor/vest/alt)
 	crate_name = "armor crate"
+	
+/datum/supply_pack/security/deployablebarricades
+	name = "C.U.C.K.S Deployable Barricades"
+	desc = "Two cases of deployable barricades, for all your fortification needs."
+	cost = CARGO_CRATE_VALUE * 4
+	contains = list(/obj/item/storage/barricade,
+					/obj/item/storage/barricade,)
+	crate_name = "C.U.C.K.S Crate
+
 
 //////////////////////////////////////////////////////////////////////////////
 ///////////////////////////// Engineering ////////////////////////////////////
