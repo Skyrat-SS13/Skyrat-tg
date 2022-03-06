@@ -66,13 +66,8 @@
 /obj/machinery/airalarm
 	name = "air alarm"
 	desc = "A machine that monitors atmosphere levels. Goes off if the area is dangerous."
-<<<<<<< HEAD
 	icon = 'icons/obj/monitors.dmi' //OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-	icon_state = "alarm0"
-=======
-	icon = 'icons/obj/monitors.dmi'
 	icon_state = "alarmp"
->>>>>>> 6a161378bc7 (Fixes an Oversight in Air Alarm Sprites for Mappers (#65237))
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 4
 	active_power_usage = 8
