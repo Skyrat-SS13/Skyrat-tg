@@ -241,7 +241,7 @@
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(/obj/item/storage/barricade,
 					/obj/item/storage/barricade,)
-	crate_name = "C.U.C.K.S Crate
+	crate_name = "C.U.C.K.S Crate"
 
 
 //////////////////////////////////////////////////////////////////////////////
