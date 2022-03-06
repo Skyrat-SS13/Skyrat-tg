@@ -20,7 +20,7 @@
 	if(!findtext(value, ".png") && !findtext(value, ".jpg"))
 		to_chat(usr, span_warning("You need either \".png\" or \".jpg\" in the link!"))
 		return
-	if(!findtext(value, "https://imgur.com") && !findtext(value, "https://i.gyazo.com") && !findtext(value, "https://media.discordapp.com"))
+	if(!findtext(value, "https://imgur.com") && !findtext(value, "https://i.gyazo.com") && !findtext(value, "https://media.discordapp.net"))
 		to_chat(usr, span_warning("The link needs to be an unshortened Imgur, Gyazo, or Discordapp link!"))
 		return
 	if(!stored_link[usr.ckey])
