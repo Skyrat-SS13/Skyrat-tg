@@ -644,10 +644,10 @@
 /datum/outfit/hecu
 	name = "HECU Grunt"
 	uniform = /obj/item/clothing/under/rank/security/officer/hecu
-	head = /obj/item/clothing/head/helmet/space/pcv_suit
+	head = /obj/item/clothing/head/helmet/space/hev_suit/pcv
 	mask = /obj/item/clothing/mask/gas/hecu2
 	gloves = /obj/item/clothing/gloves/combat
-	suit = /obj/item/clothing/suit/space/pcv_suit
+	suit = /obj/item/clothing/suit/space/hev_suit/pcv
 	suit_store = /obj/item/gun/ballistic/automatic/m16
 	belt = /obj/item/storage/belt/security/webbing
 	ears = /obj/item/radio/headset
