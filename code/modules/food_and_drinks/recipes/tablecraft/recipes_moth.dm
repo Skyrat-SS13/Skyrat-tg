@@ -484,4 +484,3 @@
 	)
 	result = /obj/item/food/soup/red_porridge
 	subcategory = CAT_MOTH
-
