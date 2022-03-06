@@ -103,7 +103,7 @@
 	admin_note = "Allows a ghost to take control of a Cortical Borer."
 
 /datum/opposing_force_equipment/gear/borer_egg/on_issue(mob/living/target)
-	new /obj/effect/mob_spawn/ghost_role/borer_egg(get_turf(src))
+	new /obj/effect/mob_spawn/ghost_role/borer_egg/opfor(get_turf(src))
 
 /datum/opposing_force_equipment/gear/ventcrawl_book
 	item_type = /obj/item/book/granter/traitsr/ventcrawl_book
