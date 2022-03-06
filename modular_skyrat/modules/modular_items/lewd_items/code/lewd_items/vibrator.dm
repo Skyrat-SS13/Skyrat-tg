@@ -1,5 +1,5 @@
 #define DEFAULT_AROUSAL_INCREASE 4
-#define DEAFAULT_PLEASURE_INCREASE 2
+#define DEFAULT_PLEASURE_INCREASE 2
 
 //This code huge and blocky, but we're working on update for... my god, 4 months. If you can upgrade it - do it, but don't remove or break something, test carefully. This item is insertable.
 /obj/item/clothing/sextoy/vibrator
@@ -102,7 +102,7 @@
 		if(vibration_mode == "hard") //no mercy
 			user.adjustArousal(1.5 * delta_time)
 			user.adjustPleasure(1.5 * delta_time)
-	else if(!toy_on && U.arousal < 30)
+	else if(!toy_on && user.arousal < 30)
 		user.adjustArousal(0.5 * delta_time)
 		user.adjustPleasure(0.5 * delta_time)
 
