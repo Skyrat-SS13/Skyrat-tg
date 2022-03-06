@@ -493,6 +493,6 @@
        /datum/reagent/consumable/salt = 1,
        /obj/item/food/grown/chili = 1,
        /obj/item/food/grown/tomato = 1
-   )
+	)
    result = /obj/item/food/soup/vegetarian_chili
    subcategory = CAT_MOTH
