@@ -547,6 +547,9 @@
 	caliber = CALIBER_10MM
 	start_empty = TRUE
 
+/obj/item/ammo_box/revolver/zeta/full
+	start_empty = FALSE
+
 /////////////////////////////////////////////////////////REVOLUTION
 /obj/item/gun/ballistic/revolver/revolution
 	name = "\improper Revolution-8 'Spurmaster'"
@@ -576,6 +579,9 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	caliber = CALIBER_9MM
 	start_empty = TRUE
+
+/obj/item/ammo_box/revolver/revolution/full
+	start_empty = FALSE
 
 /////////////////SMARTGUN 40x32
 /obj/item/gun/ballistic/automatic/smartgun
