@@ -58,15 +58,9 @@
 	belt = /obj/item/pda/warden
 	ears = /obj/item/radio/headset/headset_sec/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-<<<<<<< HEAD
 	gloves = /obj/item/clothing/gloves/color/black/security //SKYRAT EDIT CHANGE
-	head = /obj/item/clothing/head/warden
+	head = /obj/item/clothing/head/warden // SKYRAT EDIT CHANGE - ORIGINAL: head = /obj/item/clothing/head/warden/red
 	shoes = /obj/item/clothing/shoes/jackboots/security //SKYRAT EDIT CHANGE
-=======
-	gloves = /obj/item/clothing/gloves/color/black
-	head = /obj/item/clothing/head/warden/red
-	shoes = /obj/item/clothing/shoes/jackboots
->>>>>>> c907fc24450 (Resprites the Warden Outfits (And Misc. Security Stuff) (#65211))
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
 
