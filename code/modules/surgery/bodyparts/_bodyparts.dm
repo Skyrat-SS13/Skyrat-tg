@@ -116,10 +116,10 @@
 	/// If we have a splint currently applied
 	var/datum/bodypart_aid/splint/current_splint
 	//SKYRAT EDIT CHANGE END
-	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/self_grasp])
-	var/obj/item/self_grasp/grasped_by
 	var/rendered_bp_icon //SKYRAT EDIT ADDITION - CUSTOMIZATION
 	var/organic_render = TRUE //SKYRAT EDIT ADDITION - CUSTOMIZATION
+	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/hand_item/self_grasp])
+	var/obj/item/hand_item/self_grasp/grasped_by
 
 	///A list of all the external organs we've got stored to draw horns, wings and stuff with (special because we are actually in the limbs unlike normal organs :/ )
 	var/list/obj/item/organ/external/external_organs = list()
