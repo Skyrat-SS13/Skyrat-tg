@@ -113,6 +113,7 @@
 		return
 
 	var/message = ""
+	var/targetedsomewhere = FALSE
 	if(!toy_on)
 		to_chat(user, span_notice("[src] must be on to use it!"))
 		return
@@ -122,6 +123,7 @@
 
 	switch(user.zone_selected) //to let code know what part of body we gonna vibe
 		if(BODY_ZONE_PRECISE_GROIN)
+			targetedsomewhere = TRUE
 			var/obj/item/organ/genital/penis = target.getorganslot(ORGAN_SLOT_PENIS)
 			var/obj/item/organ/genital/vagina = target.getorganslot(ORGAN_SLOT_VAGINA)
 			if((vagina && penis) && (vagina.visibility_preference == GENITAL_ALWAYS_SHOW && penis.visibility_preference == GENITAL_ALWAYS_SHOW || target.is_bottomless()))
@@ -147,6 +149,7 @@
 				target.emote(pick("twitch_s","moan","blush"))
 
 		if(BODY_ZONE_CHEST)
+			targetedsomewhere = TRUE
 			var/obj/item/organ/genital/breasts = target.getorganslot(ORGAN_SLOT_BREASTS)
 			if(target.is_topless() || breasts.visibility_preference == GENITAL_ALWAYS_SHOW)
 				message = (user == target) ? pick("massages their [breasts ? "breasts" : "nipples"] with the [src]","[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their tits with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] teases [target]'s [breasts ? "breasts" : "nipples"] with [src]", "uses [src] to[vibration_mode == "low" ? " slowly" : ""] massage [target]'s [breasts ? "tits" : "nipples"]", "uses [src] to tease [target]'s [breasts ? "boobs" : "nipples"]", "rubs [target]'s [breasts ? "tits" : "nipples"] with [src]")
@@ -158,7 +161,8 @@
 			else
 				to_chat(user, span_danger("Looks like [target]'s chest is covered!"))
 				return
-
+	if(!targetedsomewhere)
+		return
 	user.visible_message(span_purple("[user] [message]!"))
 	playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE, ignore_walls = FALSE)
 
