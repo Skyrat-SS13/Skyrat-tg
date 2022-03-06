@@ -428,8 +428,6 @@
 	M.adjust_bodytemperature(-5 * REM * TEMPERATURE_DAMAGE_COEFFICIENT * delta_time, M.get_body_temp_normal())
 	..()
 
-<<<<<<< HEAD
-=======
 /datum/reagent/consumable/roy_rogers
 	name = "Roy Rogers"
 	description = "A sweet fizzy drink."
@@ -447,7 +445,6 @@
 	M.adjust_bodytemperature(-5 * REM * TEMPERATURE_DAMAGE_COEFFICIENT * delta_time, M.get_body_temp_normal())
 	return ..()
 
->>>>>>> 0bab3d1cfbe ([COOL BUG READ FOR MORE INFO] Fix vaccines not working in chem masters by giving Fungal TB's vaccine (and others) a name + Add unit test for duplicate chem names + Rename fake beer + Ratio (#65241))
 /datum/reagent/consumable/nuka_cola
 	name = "Nuka Cola"
 	description = "Cola, cola never changes."
@@ -805,8 +802,6 @@
 	..()
 	. = TRUE
 
-<<<<<<< HEAD
-=======
 /datum/reagent/consumable/cinderella
 	name = "Cinderella"
 	description = "Most definitely a fruity alcohol cocktail to have while partying with your friends."
@@ -822,7 +817,6 @@
 	M.adjust_disgust(-5 * REM * delta_time)
 	return ..()
 
->>>>>>> 0bab3d1cfbe ([COOL BUG READ FOR MORE INFO] Fix vaccines not working in chem masters by giving Fungal TB's vaccine (and others) a name + Add unit test for duplicate chem names + Rename fake beer + Ratio (#65241))
 /datum/reagent/consumable/cherryshake
 	name = "Cherry Shake"
 	description = "A cherry flavored milkshake."
@@ -1104,8 +1098,6 @@
 		M.adjust_drowsyness(1 * REM * delta_time)
 	return ..()
 
-<<<<<<< HEAD
-=======
 /datum/reagent/consumable/agua_fresca
 	name = "Agua Fresca"
 	description = "A refreshing watermelon agua fresca. Perfect on a day at the holodeck."
@@ -1123,7 +1115,6 @@
 		M.adjustToxLoss(-0.5, 0)
 	return ..()
 
->>>>>>> 0bab3d1cfbe ([COOL BUG READ FOR MORE INFO] Fix vaccines not working in chem masters by giving Fungal TB's vaccine (and others) a name + Add unit test for duplicate chem names + Rename fake beer + Ratio (#65241))
 /datum/reagent/consumable/mushroom_tea
 	name = "Mushroom Tea"
 	description = "A savoury glass of tea made from polypore mushroom shavings, originally native to Tizira."
