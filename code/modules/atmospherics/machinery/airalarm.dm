@@ -67,7 +67,7 @@
 	name = "air alarm"
 	desc = "A machine that monitors atmosphere levels. Goes off if the area is dangerous."
 	icon = 'icons/obj/monitors.dmi' //OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-	icon_state = "alarm0"
+	icon_state = "alarmp"
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 4
 	active_power_usage = 8
