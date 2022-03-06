@@ -8208,7 +8208,6 @@
 /area/security/brig)
 "bto" = (
 /obj/structure/cable,
-/obj/item/kirbyplants/random,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
@@ -8223,6 +8222,7 @@
 	name = "Engineering Cell";
 	pixel_y = 32
 	},
+/obj/structure/closet/secure_closet/security/engine,
 /turf/open/floor/iron,
 /area/security/checkpoint/engineering)
 "btt" = (
@@ -53660,6 +53660,7 @@
 	},
 /obj/structure/cable,
 /obj/effect/landmark/start/engineering_guard,
+/obj/item/kirbyplants/random,
 /turf/open/floor/iron,
 /area/security/checkpoint/engineering)
 "jtO" = (
@@ -110322,12 +110323,14 @@
 /turf/open/floor/iron,
 /area/commons/fitness/recreation)
 "ycZ" = (
-/obj/machinery/button/curtain{
-	id = "ntconshutter";
-	pixel_x = -25;
-	pixel_y = 23
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/button/door{
+	id = "ntconshutter";
+	name = "Privacy Shutter";
+	pixel_x = -37;
+	pixel_y = 33;
+	specialfunctions = 4
+	},
 /turf/open/floor/wood/parquet,
 /area/command/heads_quarters/captain/private/nt_rep)
 "ydg" = (
