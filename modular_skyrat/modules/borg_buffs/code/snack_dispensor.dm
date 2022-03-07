@@ -10,6 +10,8 @@
 /obj/item/borg/upgrade/snack_dispensor
 	name = "Borg Snack Dispensor"
 	desc = "Gives any borg the ability to dispense speciality snacks."
+	/// For storing modules that we remove, since the upgraded snack dispensor automatically removes inferior versions
+	var/list/removed_modules = list()
 
 /obj/item/borg/upgrade/snack_dispensor/action(mob/living/silicon/robot/R, user)
 	. = ..()
@@ -17,6 +19,12 @@
 		var/obj/item/borg_snack_dispensor/snack_dispensor = new /obj/item/borg_snack_dispensor(R.model)
 		R.model.basic_modules += snack_dispensor
 		R.model.add_module(snack_dispensor, FALSE, TRUE)
+		for(var/obj/item/rsf/cookiesynth/cookiesynth in R.model)
+			removed_modules += cookiesynth
+			R.model.remove_module(cookiesynth)
+		for(var/obj/item/borg/lollipop/lollipop in R.model)
+			removed_modules += lollipop
+			R.model.remove_module(lollipop)
 
 /obj/item/borg/upgrade/snack_dispensor/deactivate(mob/living/silicon/robot/R, user)
 	. = ..()
@@ -24,6 +32,8 @@
 		return
 	for(var/obj/item/borg_snack_dispensor/dispensor in R.model)
 		R.model.remove_module(dispensor, TRUE)
+	for(var/obj/item as anything in removed_modules)
+		R.model.add_module(item, FALSE, TRUE)
 
 /obj/item/borg_snack_dispensor
 	name = "\improper Automated Snack Dispensor"
@@ -32,13 +42,18 @@
 	icon_state = "rsf"
 	/// Contains the PATH of the selected snack
 	var/atom/selected_snack
+	/// Whether snacks are launched when targeted at a distance
+	var/launch_mode = FALSE
+	/// A list of all valid snacks
 	var/list/valid_snacks = list(
 		/obj/item/food/cookie/bacon,
 		/obj/item/food/cookie/cloth,
 		/obj/item/food/cookie/sugar,
 		/obj/item/food/lollipop/cyborg
 	)
+	/// Minimum amount of charge a borg can have before snack printing is disallowed
 	var/borg_charge_cutoff = 200
+	/// The amount of charge used per print of a snack
 	var/borg_charge_usage = 50
 
 /obj/item/borg_snack_dispensor/Initialize(mapload)
@@ -80,6 +95,23 @@
 	playsound(loc, 'sound/machines/click.ogg', 10, TRUE)
 	to_chat(patron, span_notice("[user] dispenses [snack] into your empty hand and you reflexively grasp it."))
 	to_chat(user, span_notice("You dispense [snack] into the hand of [user]."))
+
+/obj/item/borg_snack_dispensor/pre_attack(atom/A, mob/living/user, params)
+	if(Adjacent(A) || !launch_mode)
+		return ..()
+	if(!selected_snack)
+		to_chat(user, span_warning("No snack selected."))
+		return
+	var/mob/living/silicon/robot/borg = user
+	if(borg.cell.charge < borg_charge_cutoff)
+		to_chat(user, span_danger("Automated Safety Measures restrict the operation of [src] while under [borg_charge_cutoff]!"))
+		return
+	if(!borg.cell.use(borg_charge_usage))
+		to_chat(user, span_danger("Failure printing snack: power failure!"))
+		return
+	var/atom/movable/snack = new selected_snack(get_turf(src))
+	snack.throw_at(A, 7, 2, user, TRUE, FALSE, gentle = TRUE)
+	user.visible_message(span_notice("[src] launches [snack] at [A]!"))
 
 /obj/item/food/cookie/bacon
 	name = "Strip of Bacon"
