@@ -15,16 +15,17 @@
 
 /obj/item/borg/upgrade/snack_dispenser/action(mob/living/silicon/robot/R, user)
 	. = ..()
-	if(.)
-		var/obj/item/borg_snack_dispenser/snack_dispenser = new(R.model)
-		R.model.basic_modules += snack_dispenser
-		R.model.add_module(snack_dispenser, FALSE, TRUE)
-		for(var/obj/item/rsf/cookiesynth/cookiesynth in R.model)
-			removed_modules += cookiesynth
-			R.model.remove_module(cookiesynth)
-		for(var/obj/item/borg/lollipop/lollipop in R.model)
-			removed_modules += lollipop
-			R.model.remove_module(lollipop)
+	if(!.)
+		return
+	var/obj/item/borg_snack_dispenser/snack_dispenser = new(R.model)
+	R.model.basic_modules += snack_dispenser
+	R.model.add_module(snack_dispenser, FALSE, TRUE)
+	for(var/obj/item/rsf/cookiesynth/cookiesynth in R.model)
+		removed_modules += cookiesynth
+		R.model.remove_module(cookiesynth)
+	for(var/obj/item/borg/lollipop/lollipop in R.model)
+		removed_modules += lollipop
+		R.model.remove_module(lollipop)
 
 /obj/item/borg/upgrade/snack_dispenser/deactivate(mob/living/silicon/robot/R, user)
 	. = ..()
@@ -63,8 +64,7 @@
 
 /obj/item/borg_snack_dispenser/examine(mob/user)
 	. = ..()
-	var/snack_name = initial(selected_snack.name)
-	. += "It is currently set to dispense [snack_name]."
+	. += "It is currently set to dispense [initial(selected_snack.name)]."
 	. += "You can AltClick it to [(launch_mode ? "disable" : "enable")] launch mode."
 
 /obj/item/borg_snack_dispenser/attack_self(mob/user, modifiers)
