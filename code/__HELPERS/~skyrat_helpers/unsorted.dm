@@ -23,7 +23,7 @@
 		return
 
 	. = list()
-
+	var/old_luminosity = center_turf.luminosity
 	if(range_radius <= 0) //special case for if only source cares
 		for(var/atom/movable/target as anything in center_turf)
 			var/list/recursive_contents = target.important_recursive_contents?[RECURSIVE_CONTENTS_HEARING_SENSITIVE]
