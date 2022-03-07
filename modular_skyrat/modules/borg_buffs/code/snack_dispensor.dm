@@ -2,9 +2,9 @@
 	name = "Cyborg Upgrade (Snack Dispenser)"
 	id = "borg_upgrade_snacks"
 	build_type = MECHFAB
-	build_path = /obj/item/borg/upgrade/snack_dispensor
+	build_path = /obj/item/borg/upgrade/snack_dispenser
 	materials = list(/datum/material/iron = 700, /datum/material/glass = 500)
-	construction_time = 10
+	construction_time = 1 SECONDS
 	category = list("Cyborg Upgrade Modules")
 
 /obj/item/borg/upgrade/snack_dispenser
@@ -13,10 +13,10 @@
 	/// For storing modules that we remove, since the upgraded snack dispensor automatically removes inferior versions
 	var/list/removed_modules = list()
 
-/obj/item/borg/upgrade/snack_dispensor/action(mob/living/silicon/robot/R, user)
+/obj/item/borg/upgrade/snack_dispenser/action(mob/living/silicon/robot/R, user)
 	. = ..()
 	if(.)
-		var/obj/item/borg_snack_dispensor/snack_dispenser = new(R.model)
+		var/obj/item/borg_snack_dispenser/snack_dispenser = new(R.model)
 		R.model.basic_modules += snack_dispenser
 		R.model.add_module(snack_dispenser, FALSE, TRUE)
 		for(var/obj/item/rsf/cookiesynth/cookiesynth in R.model)
@@ -37,7 +37,7 @@
 		R.model.add_module(item, FALSE, TRUE)
 
 /obj/item/borg_snack_dispenser
-	name = "\improper Automated Borg Snack Dispensor"
+	name = "\improper Automated Borg Snack Dispenser"
 	desc = "Has the ability to automatically print many differnt forms of snacks. Now Lizard approved!"
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rsf"
