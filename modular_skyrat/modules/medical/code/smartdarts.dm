@@ -10,7 +10,7 @@
 //Code that handles the base interactions involving smartdarts
 /obj/item/reagent_containers/syringe/smartdart/afterattack(atom/target, mob/user, proximity)
 	if(isliving(target))
-		to_chat(user, span_warning("The [src] is unable to manually inject"))
+		to_chat(user, span_warning("The [src] is unable to manually inject chemicals."))
 	return
 //A majority of this code is from the original syringes.dm file.
 /obj/item/reagent_containers/syringe/smartdart/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
@@ -54,7 +54,7 @@
 	if(istype(container, /obj/item/reagent_containers/syringe/smartdart))
 		..()
 	else
-		to_chat(user, span_notice("[container] is unable to fit inside of the [src]! Try using a <b>smart-dart</b> instead."))
+		to_chat(user, span_notice("[container] is unable to fit inside of the [src]! Try using a <b>SmartDart</b> instead."))
 		return FALSE
 
 //Smartdart projectiles
