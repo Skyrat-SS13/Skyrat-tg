@@ -5,8 +5,11 @@
 	set desc = "Local OOC, seen only by those in view."
 	set category = "OOC"
 
-	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, span_danger(" Speech is currently admin-disabled."))
+	looc(msg)
+
+/client/proc/looc(msg, wall_pierce)
+	if(GLOB.say_disabled)
+		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 
 	if(!mob)
@@ -18,9 +21,9 @@
 
 	if(!holder)
 		if(!GLOB.looc_allowed)
-			to_chat(src, span_danger(" LOOC is globally muted"))
+			to_chat(src, span_danger("LOOC is globally muted."))
 			return
-		if(handle_spam_prevention(msg,MUTE_OOC))
+		if(handle_spam_prevention(msg, MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
 			to_chat(src, span_boldannounce("<B>Advertising other servers is not allowed.</B>"))
@@ -30,7 +33,7 @@
 			to_chat(src, span_danger("You cannot use LOOC (muted)."))
 			return
 		if(mob.stat)
-			to_chat(src, span_danger("You cannot use LOOC while unconscious or dead."))  //Skyrat change
+			to_chat(src, span_danger("You cannot use LOOC while unconscious or dead."))
 			return
 		if(istype(mob, /mob/dead))
 			to_chat(src, span_danger("You cannot use LOOC while ghosting."))
@@ -39,13 +42,19 @@
 	msg = emoji_parse(msg)
 
 	mob.log_talk(msg,LOG_OOC, tag="LOOC")
-
-	var/list/heard = get_hearers_in_view(LOOC_RANGE, get_top_level_mob(src.mob))
+	var/list/heard
+	if(wall_pierce)
+		heard = get_hearers_in_range(LOOC_RANGE, get_top_level_mob(src.mob))
+	else
+		heard = get_hearers_in_view(LOOC_RANGE, get_top_level_mob(src.mob))
 
 	//so the ai can post looc text
-	if(istype(mob,/mob/living/silicon/ai))
+	if(istype(mob, /mob/living/silicon/ai))
 		var/mob/living/silicon/ai/ai = mob
-		heard = get_hearers_in_view(LOOC_RANGE, ai.eyeobj)
+		if(wall_pierce)
+			heard = get_hearers_in_range(LOOC_RANGE, ai.eyeobj)
+		else
+			heard = get_hearers_in_view(LOOC_RANGE, ai.eyeobj)
 	//so the ai can see looc text
 	for(var/mob/living/silicon/ai/ai as anything in GLOB.ai_list)
 		if(ai.client && !(ai in heard) && (ai.eyeobj in heard))
