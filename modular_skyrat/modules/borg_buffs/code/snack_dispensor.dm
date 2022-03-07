@@ -1,5 +1,5 @@
-/datum/design/borg_snack_dispensor
-	name = "Cyborg Upgrade (Snack Dispensor)"
+/datum/design/borg_snack_dispenser
+	name = "Cyborg Upgrade (Snack Dispenser)"
 	id = "borg_upgrade_snacks"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/snack_dispensor
@@ -7,8 +7,8 @@
 	construction_time = 10
 	category = list("Cyborg Upgrade Modules")
 
-/obj/item/borg/upgrade/snack_dispensor
-	name = "Cyborg Upgrade (Snack Dispensor)"
+/obj/item/borg/upgrade/snack_dispenser
+	name = "Cyborg Upgrade (Snack Dispenser)"
 	desc = "Gives any borg the ability to dispense speciality snacks."
 	/// For storing modules that we remove, since the upgraded snack dispensor automatically removes inferior versions
 	var/list/removed_modules = list()
@@ -16,9 +16,9 @@
 /obj/item/borg/upgrade/snack_dispensor/action(mob/living/silicon/robot/R, user)
 	. = ..()
 	if(.)
-		var/obj/item/borg_snack_dispensor/snack_dispensor = new /obj/item/borg_snack_dispensor(R.model)
-		R.model.basic_modules += snack_dispensor
-		R.model.add_module(snack_dispensor, FALSE, TRUE)
+		var/obj/item/borg_snack_dispensor/snack_dispenser = new(R.model)
+		R.model.basic_modules += snack_dispenser
+		R.model.add_module(snack_dispenser, FALSE, TRUE)
 		for(var/obj/item/rsf/cookiesynth/cookiesynth in R.model)
 			removed_modules += cookiesynth
 			R.model.remove_module(cookiesynth)
@@ -26,17 +26,17 @@
 			removed_modules += lollipop
 			R.model.remove_module(lollipop)
 
-/obj/item/borg/upgrade/snack_dispensor/deactivate(mob/living/silicon/robot/R, user)
+/obj/item/borg/upgrade/snack_dispenser/deactivate(mob/living/silicon/robot/R, user)
 	. = ..()
 	if(!.)
 		return
-	for(var/obj/item/borg_snack_dispensor/dispensor in R.model)
-		R.model.remove_module(dispensor, TRUE)
+	for(var/obj/item/borg_snack_dispenser/dispenser in R.model)
+		R.model.remove_module(dispenser, TRUE)
 	for(var/obj/item as anything in removed_modules)
 		R.model.basic_modules += item
 		R.model.add_module(item, FALSE, TRUE)
 
-/obj/item/borg_snack_dispensor
+/obj/item/borg_snack_dispenser
 	name = "\improper Automated Borg Snack Dispensor"
 	desc = "Has the ability to automatically print many differnt forms of snacks. Now Lizard approved!"
 	icon = 'icons/obj/tools.dmi'
@@ -57,17 +57,17 @@
 	/// The amount of charge used per print of a snack
 	var/borg_charge_usage = 50
 
-/obj/item/borg_snack_dispensor/Initialize(mapload)
+/obj/item/borg_snack_dispenser/Initialize(mapload)
 	. = ..()
 	selected_snack = selected_snack ||  LAZYACCESS(valid_snacks, 1)
 
-/obj/item/borg_snack_dispensor/examine(mob/user)
+/obj/item/borg_snack_dispenser/examine(mob/user)
 	. = ..()
 	var/snack_name = initial(selected_snack.name)
 	. += "It is currently set to dispense [snack_name]."
 	. += "You can AltClick it to [(launch_mode ? "disable" : "enable")] launch mode."
 
-/obj/item/borg_snack_dispensor/attack_self(mob/user, modifiers)
+/obj/item/borg_snack_dispenser/attack_self(mob/user, modifiers)
 	var/list/choices = list()
 	for(var/atom/snack as anything in valid_snacks)
 		choices[initial(snack.name)] = snack
@@ -83,7 +83,7 @@
 	var/snack_name = initial(selected_snack.name)
 	to_chat(user, span_notice("[src] is now dispensing [snack_name]"))
 
-/obj/item/borg_snack_dispensor/attack(mob/living/patron, mob/living/user, params)
+/obj/item/borg_snack_dispenser/attack(mob/living/patron, mob/living/user, params)
 	var/empty_hand = LAZYACCESS(patron.get_empty_held_indexes(), 1)
 	if(!empty_hand)
 		to_chat(user, span_warning("[patron] has no free hands!"))
@@ -105,11 +105,11 @@
 	to_chat(patron, span_notice("[user] dispenses [snack] into your empty hand and you reflexively grasp it."))
 	to_chat(user, span_notice("You dispense [snack] into the hand of [user]."))
 
-/obj/item/borg_snack_dispensor/AltClick(mob/user)
+/obj/item/borg_snack_dispenser/AltClick(mob/user)
 	launch_mode = !launch_mode
 	to_chat(user, span_notice("[src] is [(launch_mode ? "now" : "no longer")] launching snacks at a distance."))
 
-/obj/item/borg_snack_dispensor/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/borg_snack_dispenser/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(Adjacent(target) || !launch_mode)
 		return ..()
 	if(!selected_snack)
