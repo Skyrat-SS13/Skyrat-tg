@@ -989,6 +989,7 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	discount_experiments = list(/datum/experiment/scanning/points/machinery_pinpoint_scan/tier3_microlaser = 4000)
+	required_experiments = list(/datum/experiment/ordnance/gaseous/noblium)
 
 /////////////////////////Clown tech/////////////////////////
 /datum/techweb_node/clown
@@ -1230,6 +1231,7 @@
 		"cybernetic_stomach_tier3",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
+	required_experiments = list(/datum/experiment/ordnance/gaseous/bz)
 
 /datum/techweb_node/cyber_implants
 	id = "cyber_implants"
@@ -1259,6 +1261,7 @@
 		"ci-toolset",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+	required_experiments = list(/datum/experiment/ordnance/gaseous/nitrium)
 
 /datum/techweb_node/combat_cyber_implants 
 	id = "combat_cyber_implants"
@@ -1420,7 +1423,6 @@
 		"ammoworkbench_disk_lethal", //SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
-	required_experiments = list(/datum/experiment/explosion/calibration)
 
 /datum/techweb_node/adv_weaponry
 	id = "adv_weaponry"
@@ -1432,7 +1434,7 @@
 		"ammo_workbench", //SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
-	required_experiments = list(/datum/experiment/explosion/medium)
+	required_experiments = list(/datum/experiment/ordnance/explosive/highyieldbomb)
 
 /datum/techweb_node/electric_weapons
 	id = "electronic_weapons"
@@ -1491,7 +1493,6 @@
 		"pyro_Grenade",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-	required_experiments = list(/datum/experiment/explosion/maxcap)
 
 /datum/techweb_node/exotic_ammo
 	id = "exotic_ammo"

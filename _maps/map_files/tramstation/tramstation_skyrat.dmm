@@ -1336,7 +1336,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/obj/machinery/doppler_array/research/science{
+/obj/machinery/doppler_array{
 	dir = 4
 	},
 /obj/item/radio/intercom/directional/north,
@@ -3890,8 +3890,8 @@
 /turf/open/floor/wood,
 /area/service/library)
 "axo" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/machinery/firealarm/directional/west,
+/obj/machinery/research/anomaly_refinery,
 /turf/open/floor/iron,
 /area/science/mixing)
 "axp" = (
@@ -6356,6 +6356,10 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/maintenance/starboard/lesser)
+"aNn" = (
+/obj/structure/lattice/catwalk,
+/turf/open/space/basic,
+/area/science/mixing)
 "aNx" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -8098,6 +8102,11 @@
 	},
 /turf/open/floor/iron,
 /area/security/office)
+"bfA" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/iron,
+/area/science/mixing)
 "bfD" = (
 /obj/effect/turf_decal/trimline/red/filled/corner{
 	dir = 4
@@ -11103,11 +11112,24 @@
 /turf/open/floor/iron,
 /area/hallway/secondary/exit)
 "cmN" = (
-/obj/structure/chair{
-	dir = 4
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
+	},
+/obj/structure/table,
+/obj/item/computer_hardware/hard_drive/portable{
+	pixel_x = -2
+	},
+/obj/item/computer_hardware/hard_drive/portable{
+	pixel_x = -5;
+	pixel_y = 8
+	},
+/obj/item/computer_hardware/hard_drive/portable{
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/obj/item/computer_hardware/hard_drive/portable{
+	pixel_x = -8;
+	pixel_y = -3
 	},
 /turf/open/floor/iron,
 /area/science/mixing)
@@ -16345,9 +16367,8 @@
 	dir = 4
 	},
 /obj/machinery/camera{
-	c_tag = "Science - Ordnance Lab North";
-	dir = 1;
-	network = list("ss13","rd")
+	c_tag = "Civilian - Lounge South-West";
+	dir = 10
 	},
 /turf/open/floor/iron,
 /area/science/mixing)
@@ -18122,6 +18143,13 @@
 "eJf" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/airalarm/directional/north,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 8
+	},
+/obj/machinery/camera{
+	c_tag = "Civilian - Lounge South-West";
+	dir = 10
+	},
 /turf/open/floor/iron,
 /area/science/mixing)
 "eJt" = (
@@ -19538,7 +19566,12 @@
 /turf/open/floor/iron,
 /area/construction/mining/aux_base)
 "fjs" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 4
+	},
 /obj/effect/turf_decal/bot,
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/north,
 /turf/open/floor/iron,
 /area/science/mixing)
 "fjG" = (
@@ -23050,6 +23083,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/firedoor/heavy,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/science/mixing)
 "gqD" = (
@@ -26204,6 +26238,12 @@
 	},
 /turf/open/floor/iron,
 /area/security/courtroom)
+"hzJ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/science/mixing)
 "hAe" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/table/glass,
@@ -31912,7 +31952,7 @@
 	},
 /obj/machinery/camera{
 	c_tag = "Science - Ordnance Lab South";
-	dir = 4;
+	dir = 6;
 	network = list("ss13","rd")
 	},
 /turf/open/floor/iron,
@@ -42519,6 +42559,12 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron/white,
 /area/medical/chemistry)
+"nBb" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/science/mixing)
 "nBh" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 1
@@ -47944,12 +47990,9 @@
 /turf/open/floor/iron,
 /area/command/gateway)
 "pxh" = (
-/obj/machinery/research/explosive_compressor,
 /obj/effect/turf_decal/bot,
-/obj/machinery/camera{
-	c_tag = "Science - Ordnance Launch Room";
-	dir = 1;
-	network = list("ss13","rd")
+/obj/machinery/atmospherics/components/binary/tank_compressor{
+	dir = 8
 	},
 /turf/open/floor/iron,
 /area/science/mixing)
@@ -66327,6 +66370,7 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "wbE" = (
+/obj/structure/lattice,
 /turf/open/space/basic,
 /area/science/mixing)
 "wbI" = (
@@ -118672,7 +118716,7 @@ wAe
 tjk
 mSi
 wbE
-wbE
+aNn
 wbE
 klD
 qIr
@@ -121238,7 +121282,7 @@ lMe
 okC
 ewK
 ako
-lkD
+nBb
 alD
 hQD
 mSi
@@ -121752,7 +121796,7 @@ lMe
 fYH
 fYH
 axo
-lkD
+nBb
 kKS
 ftL
 fYH
@@ -122008,8 +122052,8 @@ lMe
 lMe
 fYH
 fjs
-hWi
-okR
+bfA
+hzJ
 tEW
 uQe
 fYH
