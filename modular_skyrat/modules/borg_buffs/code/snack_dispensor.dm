@@ -33,6 +33,7 @@
 	for(var/obj/item/borg_snack_dispensor/dispensor in R.model)
 		R.model.remove_module(dispensor, TRUE)
 	for(var/obj/item as anything in removed_modules)
+		R.model.basic_modules += item
 		R.model.add_module(item, FALSE, TRUE)
 
 /obj/item/borg_snack_dispensor
@@ -96,7 +97,11 @@
 	to_chat(patron, span_notice("[user] dispenses [snack] into your empty hand and you reflexively grasp it."))
 	to_chat(user, span_notice("You dispense [snack] into the hand of [user]."))
 
-/obj/item/borg_snack_dispensor/pre_attack(atom/A, mob/living/user, params)
+/obj/item/borg_snack_dispensor/attack_self_secondary(mob/user, modifiers)
+	launch_mode = !launch_mode
+	to_chat(user, span_notice("[src] is [(launch_mode ? "now" : "no longer")] launching snacks at a distance."))
+
+/obj/item/borg_snack_dispensor/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(Adjacent(A) || !launch_mode)
 		return ..()
 	if(!selected_snack)
@@ -111,6 +116,7 @@
 		return
 	var/atom/movable/snack = new selected_snack(get_turf(src))
 	snack.throw_at(A, 7, 2, user, TRUE, FALSE, gentle = TRUE)
+	playsound(loc, 'sound/machines/click.ogg', 10, TRUE)
 	user.visible_message(span_notice("[src] launches [snack] at [A]!"))
 
 /obj/item/food/cookie/bacon
