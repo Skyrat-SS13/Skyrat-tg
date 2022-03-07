@@ -97,12 +97,12 @@
 	to_chat(patron, span_notice("[user] dispenses [snack] into your empty hand and you reflexively grasp it."))
 	to_chat(user, span_notice("You dispense [snack] into the hand of [user]."))
 
-/obj/item/borg_snack_dispensor/attack_self_secondary(mob/user, modifiers)
+/obj/item/borg_snack_dispensor/AltClick(mob/user)
 	launch_mode = !launch_mode
 	to_chat(user, span_notice("[src] is [(launch_mode ? "now" : "no longer")] launching snacks at a distance."))
 
 /obj/item/borg_snack_dispensor/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	if(Adjacent(A) || !launch_mode)
+	if(Adjacent(target) || !launch_mode)
 		return ..()
 	if(!selected_snack)
 		to_chat(user, span_warning("No snack selected."))
@@ -115,9 +115,9 @@
 		to_chat(user, span_danger("Failure printing snack: power failure!"))
 		return
 	var/atom/movable/snack = new selected_snack(get_turf(src))
-	snack.throw_at(A, 7, 2, user, TRUE, FALSE, gentle = TRUE)
+	snack.throw_at(target, 7, 2, user, TRUE, FALSE, gentle = TRUE)
 	playsound(loc, 'sound/machines/click.ogg', 10, TRUE)
-	user.visible_message(span_notice("[src] launches [snack] at [A]!"))
+	user.visible_message(span_notice("[src] launches [snack] at [target]!"))
 
 /obj/item/food/cookie/bacon
 	name = "Strip of Bacon"
