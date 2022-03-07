@@ -83,7 +83,7 @@
 	var/snack_name = initial(selected_snack.name)
 	to_chat(user, span_notice("[src] is now dispensing [snack_name]."))
 
-/obj/item/borg_snack_dispenser/attack(mob/living/patron, mob/living/user, params)
+/obj/item/borg_snack_dispenser/attack(mob/living/patron, mob/living/silicon/robot/user, params)
 	var/empty_hand = LAZYACCESS(patron.get_empty_held_indexes(), 1)
 	if(!empty_hand)
 		to_chat(user, span_warning("[patron] has no free hands!"))
@@ -91,11 +91,12 @@
 	if(!selected_snack)
 		to_chat(user, span_warning("No snack selected."))
 		return
-	var/mob/living/silicon/robot/borg = user
-	if(borg.cell.charge < borg_charge_cutoff)
+	if(!istype(user))
+		CRASH("[src] being used by non borg [user]")
+	if(user.cell.charge < borg_charge_cutoff)
 		to_chat(user, span_danger("Automated Safety Measures restrict the operation of [src] while under [borg_charge_cutoff]!"))
 		return
-	if(!borg.cell.use(borg_charge_usage))
+	if(!user.cell.use(borg_charge_usage))
 		to_chat(user, span_danger("Failure printing snack: power failure!"))
 		return
 	var/atom/snack = new selected_snack(src)
@@ -109,17 +110,18 @@
 	launch_mode = !launch_mode
 	to_chat(user, span_notice("[src] is [(launch_mode ? "now" : "no longer")] launching snacks at a distance."))
 
-/obj/item/borg_snack_dispenser/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/borg_snack_dispenser/afterattack(atom/target, mob/living/silicon/robot/user, proximity_flag, click_parameters)
 	if(Adjacent(target) || !launch_mode)
 		return ..()
 	if(!selected_snack)
 		to_chat(user, span_warning("No snack selected."))
 		return
-	var/mob/living/silicon/robot/borg = user
-	if(borg.cell.charge < borg_charge_cutoff)
+	if(!istype(user))
+		CRASH("[src] being used by non borg [user]")
+	if(user.cell.charge < borg_charge_cutoff)
 		to_chat(user, span_danger("Automated Safety Measures restrict the operation of [src] while under [borg_charge_cutoff]!"))
 		return
-	if(!borg.cell.use(borg_charge_usage))
+	if(!user.cell.use(borg_charge_usage))
 		to_chat(user, span_danger("Failure printing snack: power failure!"))
 		return
 	var/atom/movable/snack = new selected_snack(get_turf(src))
