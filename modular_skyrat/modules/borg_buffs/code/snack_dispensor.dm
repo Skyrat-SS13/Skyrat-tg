@@ -8,7 +8,7 @@
 	category = list("Cyborg Upgrade Modules")
 
 /obj/item/borg/upgrade/snack_dispensor
-	name = "Borg Snack Dispensor"
+	name = "Cyborg Upgrade (Snack Dispensor)"
 	desc = "Gives any borg the ability to dispense speciality snacks."
 	/// For storing modules that we remove, since the upgraded snack dispensor automatically removes inferior versions
 	var/list/removed_modules = list()
@@ -37,7 +37,7 @@
 		R.model.add_module(item, FALSE, TRUE)
 
 /obj/item/borg_snack_dispensor
-	name = "\improper Automated Snack Dispensor"
+	name = "\improper Automated Borg Snack Dispensor"
 	desc = "Has the ability to automatically print many differnt forms of snacks. Now Lizard approved!"
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rsf"
