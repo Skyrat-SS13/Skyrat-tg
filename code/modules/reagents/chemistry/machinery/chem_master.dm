@@ -424,7 +424,7 @@
 				P.name = trim("[name] vial")
 				adjust_item_drop_location(P)
 				reagents.trans_to(P, vol_each, transfered_by = usr)
-				return TRUE
+			return TRUE
 		if(item_type == "smartdart")
 			for(var/i in 1 to amount)
 				var/obj/item/reagent_containers/syringe/smartdart/dart = new(drop_location())
