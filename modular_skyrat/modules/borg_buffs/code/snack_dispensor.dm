@@ -77,6 +77,8 @@
 		selected_snack = choices[1]
 	else
 		var/selected = tgui_input_list(user, "Select Snack", "Snack Selection", choices)
+		if(!selected)
+			return
 		selected_snack = choices[selected]
 	var/snack_name = initial(selected_snack.name)
 	to_chat(user, span_notice("[src] is now dispensing [snack_name]"))
