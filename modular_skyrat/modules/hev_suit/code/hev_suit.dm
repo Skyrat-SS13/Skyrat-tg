@@ -317,7 +317,7 @@
 	activating = TRUE
 
 	if(first_use)
-		var/sound/song = sound('modular_skyrat/master_files/sound/blackmesa/hev/anomalous_materials.ogg', volume = 50)
+		var/sound/song = sound(activation_song, volume = 50)
 		SEND_SOUND(current_user, song)
 		first_use = FALSE
 
@@ -811,7 +811,7 @@
 	resistance_flags = FIRE_PROOF|ACID_PROOF|FREEZE_PROOF
 	clothing_flags = SNUG_FIT
 
-	activation_song = 'modular_skyrat/master_files/sound/blackmesa/hev/anomalous_materials.ogg'
+	activation_song = 'modular_skyrat/master_files/sound/blackmesa/pcv/planet.ogg'
 
 	logon_sound = 'modular_skyrat/master_files/sound/blackmesa/pcv/01_pcv_logon.ogg'
 	armor_sound = 'modular_skyrat/master_files/sound/blackmesa/pcv/02_powerarmor_on.ogg'
