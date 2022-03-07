@@ -1,8 +1,8 @@
 #define LOOC_RANGE 7
 
-/client/verb/looc(msg as text)
-	set name = "LOOC"
-	set desc = "Local OOC, seen only by those in view."
+/client/verb/looc_wallpierce(msg as text)
+	set name = "LOOC (Wall Piercing)"
+	set desc = "Local OOC, seen by anyone within 7 tiles of you."
 	set category = "OOC"
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
@@ -40,12 +40,12 @@
 
 	mob.log_talk(msg,LOG_OOC, tag="LOOC")
 
-	var/list/heard = get_hearers_in_view(LOOC_RANGE, get_top_level_mob(src.mob))
+	var/list/heard = get_hearers_in_range(LOOC_RANGE, get_top_level_mob(src.mob))
 
 	//so the ai can post looc text
 	if(istype(mob,/mob/living/silicon/ai))
 		var/mob/living/silicon/ai/ai = mob
-		heard = get_hearers_in_view(LOOC_RANGE, ai.eyeobj)
+		heard = get_hearers_in_range(LOOC_RANGE, ai.eyeobj)
 	//so the ai can see looc text
 	for(var/mob/living/silicon/ai/ai as anything in GLOB.ai_list)
 		if(ai.client && !(ai in heard) && (ai.eyeobj in heard))
@@ -63,13 +63,13 @@
 		if (isobserver(hearing))
 			continue //Also handled later.
 
-		to_chat(hearing_client, span_looc(span_prefix("LOOC:</span> <EM>[src.mob.name]:</EM> <span class='message'>[msg]")))
+		to_chat(hearing_client, span_looc(span_prefix("LOOC (WALL PIERCE):</span> <EM>[src.mob.name]:</EM> <span class='message'>[msg]")))
 
 	for(var/cli in GLOB.admins)
 		var/client/cli_client = cli
 		if (admin_seen[cli_client])
-			to_chat(cli_client, span_looc("[ADMIN_FLW(usr)] <span class='prefix'>LOOC:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span>"))
+			to_chat(cli_client, span_looc("[ADMIN_FLW(usr)] <span class='prefix'>LOOC (WALL PIERCE):</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span>"))
 		else if (cli_client.prefs.read_preference(/datum/preference/toggle/admin/see_looc))
-			to_chat(cli_client, span_rlooc("[ADMIN_FLW(usr)] <span class='prefix'>(R)LOOC:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span>"))
+			to_chat(cli_client, span_rlooc("[ADMIN_FLW(usr)] <span class='prefix'>(R)LOOC (WALL PIERCE):</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span>"))
 
 #undef LOOC_RANGE
