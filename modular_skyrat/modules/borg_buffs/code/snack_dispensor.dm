@@ -81,7 +81,7 @@
 			return
 		selected_snack = choices[selected]
 	var/snack_name = initial(selected_snack.name)
-	to_chat(user, span_notice("[src] is now dispensing [snack_name]"))
+	to_chat(user, span_notice("[src] is now dispensing [snack_name]."))
 
 /obj/item/borg_snack_dispenser/attack(mob/living/patron, mob/living/user, params)
 	var/empty_hand = LAZYACCESS(patron.get_empty_held_indexes(), 1)
