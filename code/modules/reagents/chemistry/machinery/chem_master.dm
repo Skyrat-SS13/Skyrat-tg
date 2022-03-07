@@ -431,7 +431,7 @@
 				dart.name = trim("[name] SmartDart")
 				adjust_item_drop_location(dart)
 				reagents.trans_to(dart, vol_each, transfered_by = usr)
-				return TRUE
+			return TRUE
 		//SKYRAT EDIT ADDTION END
 		if(item_type == "condimentPack")
 			var/obj/item/reagent_containers/food/condiment/pack/P
