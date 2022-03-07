@@ -61,6 +61,12 @@
 	. = ..()
 	selected_snack = selected_snack ||  LAZYACCESS(valid_snacks, 1)
 
+/obj/item/borg_snack_dispensor/examine(mob/user)
+	. = ..()
+	var/snack_name = initial(selected_snack.name)
+	. += "It is currently set to dispense [snack_name]."
+	. += "You can AltClick it to [(launch_mode ? "disable" : "enable")] launch mode."
+
 /obj/item/borg_snack_dispensor/attack_self(mob/user, modifiers)
 	var/list/choices = list()
 	for(var/atom/snack as anything in valid_snacks)
