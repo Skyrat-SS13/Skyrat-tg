@@ -89,23 +89,21 @@
 
 /// Generates a special objective and adds it to the objective list.
 /datum/antagonist/malf_ai/proc/forge_special_objective()
-	// SKYRAT EDIT START
-	var/special_pick = rand(1,2)
+	var/special_pick = rand(3,4) // SKYRAT EDIT - REMOVING PURGE/BLOCK
 	switch(special_pick)
-		/*if(1)
+		if(1)
 			var/datum/objective/block/block_objective = new
 			block_objective.owner = owner
 			objectives += block_objective
 		if(2)
 			var/datum/objective/purge/purge_objective = new
 			purge_objective.owner = owner
-			objectives += purge_objective*/
-		if(1)
+			objectives += purge_objective
+		if(3)
 			var/datum/objective/robot_army/robot_objective = new
 			robot_objective.owner = owner
 			objectives += robot_objective
-		if(2) //Protect and strand a target
-	// SKYRAT EDIT END
+		if(4) //Protect and strand a target
 			var/datum/objective/protect/yandere_one = new
 			yandere_one.owner = owner
 			objectives += yandere_one
