@@ -14,7 +14,7 @@
 /obj/item/borg/upgrade/snack_dispensor/action(mob/living/silicon/robot/R, user)
 	. = ..()
 	if(.)
-		var/obj/item/Leyla <cmyum@shillaprecision.com>/snack_dispensor = new /obj/item/borg_snack_dispensor(R.model)
+		var/obj/item/borg_snack_dispensor/snack_dispensor = new /obj/item/borg_snack_dispensor(R.model)
 		R.model.basic_modules += snack_dispensor
 		R.model.add_module(snack_dispensor, FALSE, TRUE)
 
