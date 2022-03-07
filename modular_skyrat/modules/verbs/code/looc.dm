@@ -5,9 +5,9 @@
 	set desc = "Local OOC, seen only by those in view."
 	set category = "OOC"
 
-	looc(msg)
+	looc_message(msg)
 
-/client/proc/looc(msg, wall_pierce)
+/client/proc/looc_message(msg, wall_pierce)
 	if(GLOB.say_disabled)
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
