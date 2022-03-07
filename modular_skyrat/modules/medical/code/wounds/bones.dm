@@ -202,7 +202,7 @@
 	examine_desc = "is awkwardly jammed out of place"
 	occur_text = "jerks violently and becomes unseated"
 	severity = WOUND_SEVERITY_MODERATE
-	viable_zones = list(BODY_ZONE_HEAD, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+	viable_zones = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 	interaction_efficiency_penalty = 1.5
 	limp_slowdown = 3
 	threshold_minimum = 35
