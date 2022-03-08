@@ -2,7 +2,7 @@
 /datum/unit_test/opfor_item_desc
 
 /datum/unit_test/opfor_item_desc/Run()
-	for(var/datum/opposing_force_equipment/opfor_parent as anything in GLOB.opfor_equipment_parents)
-		for(var/datum/opposing_force_equipment/opfor_item as anything in subtypesof(opfor_parent))
+	for(var/datum/opposing_force_equipment/opfor_parent in GLOB.opfor_equipment_parents)
+		for(var/datum/opposing_force_equipment/opfor_item in subtypesof(opfor_parent))
 			if(!length(opfor_item.description) && !length(opfor_item.item_type.desc))
 				Fail("Opposing Force equipment datum [opfor_item] lacks a name.")
