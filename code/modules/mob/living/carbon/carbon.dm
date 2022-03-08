@@ -664,8 +664,8 @@
 	if(!client)
 		return
 
-	if(health <= crit_threshold)
-		var/severity = 0
+	if(stat != CONSCIOUS) // SKYRAT EDIT: Pain system
+		var/severity = 1 // SKYRAT EDIT
 		switch(health)
 			if(-20 to -10)
 				severity = 1
@@ -733,7 +733,7 @@
 		clear_fullscreen("oxy")
 
 	//Fire and Brute damage overlay (BSSR)
-	var/hurtdamage = getBruteLoss() + getFireLoss() + damageoverlaytemp
+/* 	var/hurtdamage = getBruteLoss() + getFireLoss() + damageoverlaytemp // SKYRAT EDIT: MOVED TO MODULAR
 	if(hurtdamage)
 		var/severity = 0
 		switch(hurtdamage)
@@ -751,10 +751,10 @@
 				severity = 6
 		overlay_fullscreen("brute", /atom/movable/screen/fullscreen/brute, severity)
 	else
-		clear_fullscreen("brute")
+		clear_fullscreen("brute") */
 
-/mob/living/carbon/update_health_hud(shown_health_amount)
-	if(!client || !hud_used)
+///mob/living/carbon/update_health_hud(shown_health_amount) //SKYRAT EDIT: MOVED TO MODULAR
+/* 	if(!client || !hud_used)
 		return
 	if(hud_used.healths)
 		if(stat != DEAD)
@@ -776,7 +776,7 @@
 			else
 				hud_used.healths.icon_state = "health6"
 		else
-			hud_used.healths.icon_state = "health7"
+			hud_used.healths.icon_state = "health7" */
 
 /mob/living/carbon/update_stamina_hud(shown_stamina_amount)
 	if(!client || !hud_used?.stamina)
