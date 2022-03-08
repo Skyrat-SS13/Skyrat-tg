@@ -46,7 +46,6 @@
 #include "~skyrat/opposing_force_desc.dm"
 #include "~skyrat/opposing_force_items.dm"
 #include "~skyrat/opposing_force_names.dm"
-/*
 #include "achievements.dm"
 #include "anchored_mobs.dm"
 #include "anonymous_themes.dm"
@@ -118,7 +117,6 @@
 #include "tgui_create_message.dm"
 #include "timer_sanity.dm"
 #include "traitor.dm"
-*/
 #include "unit_test.dm"
 //#include "wizard.dm"
 #ifdef REFERENCE_TRACKING_DEBUG //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter
