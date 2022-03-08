@@ -826,20 +826,20 @@
 
 
 /mob/living/carbon/update_stat()
-	if(status_flags & GODMODE)
+/* 	if(status_flags & GODMODE)
 		return
 	if(stat != DEAD)
 		if(health <= HEALTH_THRESHOLD_DEAD && !HAS_TRAIT(src, TRAIT_NODEATH))
 			death()
 			return
-//		if(health <= hardcrit_threshold && !HAS_TRAIT(src, TRAIT_NOHARDCRIT)) // SKYRAT EDIT BEGIN: Pain Mechanics
-//			set_stat(HARD_CRIT)
+		if(health <= hardcrit_threshold && !HAS_TRAIT(src, TRAIT_NOHARDCRIT))
+			set_stat(HARD_CRIT)
 		else if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 			set_stat(UNCONSCIOUS)
-//		else if(health <= crit_threshold && !HAS_TRAIT(src, TRAIT_NOSOFTCRIT))
-//			set_stat(SOFT_CRIT) // SKYRAT EDIT END: Pain Mechanics
+		else if(health <= crit_threshold && !HAS_TRAIT(src, TRAIT_NOSOFTCRIT))
+			set_stat(SOFT_CRIT)
 		else
-			set_stat(CONSCIOUS)
+			set_stat(CONSCIOUS) */
 	update_damage_hud()
 	update_health_hud()
 	update_stamina_hud()
