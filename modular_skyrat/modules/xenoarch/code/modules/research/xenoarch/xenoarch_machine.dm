@@ -229,7 +229,7 @@
 		world_compare = world.time + (process_speed * 4)
 		addtimer(CALLBACK(src, .proc/do_machine_process), (process_speed * 4))
 		return
-	if(istype(weapon, /obj/item/xenoarch/strange_rock))
+	else if(istype(weapon, /obj/item/xenoarch/strange_rock))
 		insert_xeno_item(weapon, user)
 		return
 	return ..()
