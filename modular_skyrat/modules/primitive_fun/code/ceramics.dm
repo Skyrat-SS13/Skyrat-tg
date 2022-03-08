@@ -62,7 +62,7 @@
 	icon_state = "clay"
 
 /datum/export/ceramics
-	cost = 1000
+	cost = CARGO_CRATE_VALUE * 5
 	unit_name = "ceramic product"
 	export_types = list(/obj/item/plate/ceramic,
 						/obj/item/reagent_containers/glass/bowl/ceramic,
@@ -72,7 +72,7 @@
 	. = ..()
 
 /datum/export/ceramics_unfinished
-	cost = 300
+	cost = CARGO_CRATE_VALUE * 1.5
 	unit_name = "unfinished ceramic product"
 	export_types = list(/obj/item/ceramic/plate,
 						/obj/item/ceramic/bowl,
