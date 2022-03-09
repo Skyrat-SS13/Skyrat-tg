@@ -16,8 +16,8 @@
 
 	for(var/datum/opposing_force_equipment/opfor as anything in compiled_subtypes)
 		var/datum/opposing_force_equipment/opfor_obj = new opfor()
-		if(!opfor.item_type)
-			Fail("Opposing Force equipment datum [opfor_item] lacks an `item_type`.")
+		if(!opfor_obj.item_type)
+			Fail("Opposing Force equipment datum [opfor_obj] lacks an `item_type`.")
 		qdel(opfor_obj)
 
 #undef DATUM_PATH_LEN
