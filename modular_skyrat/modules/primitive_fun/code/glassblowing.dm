@@ -9,7 +9,7 @@
 	icon_state = "glass_globe"
 
 /datum/export/glassblowing
-	cost = CARGO_CRATE_VALUE * 15
+	cost = CARGO_CRATE_VALUE * 5
 	unit_name = "glassblowing product"
 	export_types = list(/obj/item/glassblowing/glass_lens,
 						/obj/item/glassblowing/glass_globe,

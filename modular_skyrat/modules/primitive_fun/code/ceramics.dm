@@ -56,7 +56,7 @@
 	merge_type = /obj/item/stack/clay
 
 /datum/export/ceramics
-	cost = CARGO_CRATE_VALUE * 5
+	cost = CARGO_CRATE_VALUE * 2
 	unit_name = "ceramic product"
 	export_types = list(/obj/item/plate/ceramic,
 						/obj/item/reagent_containers/glass/bowl/ceramic,
@@ -66,7 +66,7 @@
 	. = ..()
 
 /datum/export/ceramics_unfinished
-	cost = CARGO_CRATE_VALUE * 1.5
+	cost = CARGO_CRATE_VALUE * 0.5
 	unit_name = "unfinished ceramic product"
 	export_types = list(/obj/item/ceramic/plate,
 						/obj/item/ceramic/bowl,
