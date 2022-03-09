@@ -164,7 +164,7 @@
 /datum/supply_pack/security/wildcat
 	name = "CFA Wildcat Supply Crate"
 	desc = "Local police running low on equipment? Neighbor particularly loud in the early morning? This should help out. (Does not include weapons permits.)"
-	cost = CARGO_CRATE_VALUE * 55 // Bit cheaper then the next up, because it's not to good.
+	cost = CARGO_CRATE_VALUE * 15 // Bit cheaper then the next up, because it's not to good.
 	contains = list(/obj/item/gun/ballistic/automatic/cfa_wildcat,
 					/obj/item/gun/ballistic/automatic/cfa_wildcat,
 					/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
@@ -634,18 +634,18 @@
 	desc = "Contains two authentic suits of armor, swords, and two bows and cuirass' for the cowards hiding in the back."
 	cost = CARGO_CRATE_VALUE * 30
 	contraband = TRUE
-	contains = list(/obj/item/clothing/suit/armor/riot/knight/red,
-					/obj/item/clothing/gloves/plate/red,
+	contains = list(/obj/item/clothing/suit/armor/riot/knight/larp/red,
+					/obj/item/clothing/gloves/plate/larp/red,
 					/obj/item/clothing/head/helmet/knight/red,
-					/obj/item/clothing/shoes/plate/red,
+					/obj/item/clothing/shoes/plate/larp/red,
 					/obj/item/claymore/weak/weaker,
-					/obj/item/clothing/shoes/plate/blue,
-					/obj/item/clothing/suit/armor/riot/knight/blue,
-					/obj/item/clothing/gloves/plate/blue,
+					/obj/item/clothing/shoes/plate/larp/blue,
+					/obj/item/clothing/suit/armor/riot/knight/larp/blue,
+					/obj/item/clothing/gloves/plate/larp/blue,
 					/obj/item/clothing/head/helmet/knight/blue,
 					/obj/item/claymore/weak/weaker,
-					/obj/item/clothing/suit/armor/vest/cuirass,
-					/obj/item/clothing/suit/armor/vest/cuirass,
+					/obj/item/clothing/suit/armor/vest/cuirass/larp,
+					/obj/item/clothing/suit/armor/vest/cuirass/larp,
 					/obj/item/gun/ballistic/bow,
 					/obj/item/gun/ballistic/bow,
 					/obj/item/storage/bag/quiver,

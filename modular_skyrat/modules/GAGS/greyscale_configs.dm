@@ -224,6 +224,16 @@
 *	SUITS
 */
 
+// FANCY SUITS
+/datum/greyscale_config/fancy_suit
+	name = "Fancy Suit"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/fancy_suits.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/fancy_suits/fancy_suit.json'
+
+/datum/greyscale_config/fancy_suit/worn
+	name = "Fancy Suit Worn"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/fancy_suits/fancy_suit_worn.json'
+
 // HOODIES
 /datum/greyscale_config/hoodie
 	name = "Hoodie"

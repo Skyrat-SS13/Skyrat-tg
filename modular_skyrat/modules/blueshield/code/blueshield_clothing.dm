@@ -15,7 +15,7 @@
 	name = "blueshield's skivvy"
 	desc = "A cozier alternative to the normal blueshield's suit. It's made out of an expensive, all-natural wool."
 	icon_state = "bs_turtleneck"
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/security/blueshield/turtleneck/skirt
 	name = "blueshield's skirtleneck"
@@ -26,7 +26,7 @@
 	desc = "A \"tactical\" skirt seemingly outfitted in Nanotrasen's standard corporate-chic."
 	name = "blueshield's skirt"
 	icon_state = "blueshieldskirt"
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/head/helmet/space/plasmaman/blueshield
 	name = "blueshield envirosuit helmet"

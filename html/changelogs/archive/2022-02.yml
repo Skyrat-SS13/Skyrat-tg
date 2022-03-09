@@ -851,7 +851,7 @@
   - soundadd: Mesa's Glock-17's firing sound is back.
   Toastgoats:
   - imageadd: New space dragon sprite!
-  ToryJ for making me code dive:
+  ErdinyoBarboza, ToryJ for making me code dive:
   - balance: Nerfed Base Laser damage to 22 from 27
   - balance: Nerfed the MCR Laser damage to 20.
   - balance: Made the undercharger no longer give grip bonuses when activated.
@@ -989,3 +989,116 @@
   - rscadd: Made air alarm and keycard authenticator emissive.
   - imageadd: Updated air alarm and keycard authenticator sprites to work with being
       emissive.
+2022-02-24:
+  ErdinyoBarboza:
+  - balance: Vintage Renaissance Crate's content has been rebalanced. The shoes are
+      no longer noslip, gloves do not provide insulation and overall rebalances the
+      armor values
+  - refactor: Modularizes the Vintage Renaissance Crate
+  Gandalf2k15:
+  - rscadd: New sprites for the FG42, MG34, STG44 and PPS.
+  - rscadd: MG-9V GPMG and P-09X.
+  Melbert:
+  - admin: Fixes some heretic logs. Final knowledge uplink log should be clearer,
+      and ghoul admin message no longer has a typo.
+  OrionTheFox:
+  - imageadd: Added/Tweaked Skyrat-override icons for the Combat Wrench, Caravan Crowbar,
+      Chem/Mining Plumber, ARCD, E-Welder, Powertools (Now yellow!), and Syndie Inducer
+  - imagedel: Removed lots of unused or redundant icons from the tools.dmi override
+      file
+  SkyratBot:
+  - bugfix: Fixes radio gloves being uncraftable
+  - bugfix: Fixes a blue screen in the Pandemic from loading multiple viruses.
+  - balance: On IceBoxStation, Nanotrasen has finally stopped clearing out excessively
+      large swatches of land for the gulagged prisoners in order to help them work
+      for their points.
+  - rscadd: Nanotrasen has now made it so that the room that you launch your home-made
+      bombs from is now known as the "Launch Site" across all five stations.
+  - bugfix: 'Makes the IceBoxStation Underground (Level 2) wastes immune to radiation
+      and also paints the maintenance as such to let people take shelter. qol: Makes
+      the IceBoxStation Service Hall Exit into a properly cycled airlock system. qol:
+      Icebox Locker Room now has real personal lockers once more. qol: Icebox Service
+      Exit is not properly mapped with external airlocks and cycled doors.'
+  - bugfix: Fixes beam rifle not causing an explosion on impact mode.
+  - bugfix: Ratfish can now properly show up in moisture traps
+  - code_imp: Moisture traps are coded a little better now
+  - spellcheck: fixed some wording in the moisture trap bite feedback
+  - bugfix: Players are no longer able to create walls using sheets that arent linked
+      to a material
+  - bugfix: Holy water's cult deconvertion timer now resets when transferred to a
+      new mob
+2022-02-25:
+  Ebin-Halcyon:
+  - imageadd: Security medics have gotten a new shipment of clothing
+  Gandalf2k15:
+  - bugfix: OPFOR no longer bluescreens.
+  OrionTheFox:
+  - imageadd: added a new icon for the pet crate that matches the other crates
+  - imagedel: deleted lots of redundant or unused icons, including some that were
+      overriding TG's the-same-but-greyscale benches
+  PositiveEntropy, Retlaw34:
+  - imageadd: Resprites the Suit Storage Unit into a 3/4ths perspective!
+  SkyratBot:
+  - bugfix: disktoaster storages now have their proper lights. all hail the toaster
+  - bugfix: Added the missing variable "plane" to floor lights.
+  - spellcheck: Claustrophobics will now breathe instead of breath.
+  - bugfix: fixes Metastation hydroponics shutter access
+  - balance: Thieves can no longer scale, and can only run once.
+  - balance: Increased the number of thieves by 2.
+  - bugfix: Frostoil reagent will no longer achieve negative temperature when exposed
+      to air. Changes behaviour to make air converge to 2.7 kelvin instead.
+  - code_imp: Any object that inherits the simple_rotation component will always use
+      AltClick.
+  kannthus:
+  - rscadd: Beckoning gesture in interactions (Ctrl+Click)
+2022-02-26:
+  SkyratBot:
+  - spellcheck: Space dragons are now "it" instead of "he".
+  - imageadd: HONK Co. Pranks have released a new set of stencils for any cardboard
+      cutouts you might find lying around, these ones EXTRA "RR-REAL HELP M-". Whatever
+      that means.
+2022-02-27:
+  ATHATH:
+  - bugfix: Buckling yourself to and then unbuckling yourself from a stasis bed will
+      no longer permanently halt the effects of any gravitum in your system.
+  - bugfix: Liverless creatures can no longer retain the effects of gravitum indefinitely,
+      as it will now decay in their bodies (just as it does in the bodies of livered
+      creatures).
+  Melbert:
+  - bugfix: Fixes a few potential issues with heretic rituals.
+  - code_imp: Adds proper stack support to heretic rituals. Also allows for more specific
+      "ritual failure" feedback.
+  OrionTheFox:
+  - rscdel: Nanotrasen has tidied up the tram platform on the Interlink
+  SkyratBot:
+  - bugfix: The pAI candidate menu now properly switches between IC and OOC comments.
+  - code_imp: Implements some missing SDQL 2 wrappers.
+  - bugfix: wall decals on survival pod ruin should be on the pod walls now
+  - bugfix: Bicycles can now be repaired with a welder and have actually sensible
+      max_integrity and integrity_failure values.
+  - rscadd: On Tramstation, Nanotrasen installed new APCs on the lower aspects of
+      the Science Division.
+  - rscadd: MetaStation's Maintenance Area Plans have been redrafted. Expect to see
+      a few new APCs here and there.
+  - bugfix: Took out an extra apc in deltastation transfer center which screwed with
+      the power
+  - bugfix: Adjusted cargo tech jumpsuits and jumpskirts now show your arms from all
+      angles, and the adjusted cargo jumpsuit now uses the normal jumpsuit legs instead
+      of the digitigrade ones.
+  - bugfix: AI's "O" sound on vox now sounds like an O instead of an I.
+  - bugfix: Monkeys can no longer bite people to give them heart attacks
+  - spellcheck: Nanotrasen found out that the factory for glass floors were capitalizing
+      their names, so they promptly shut down the factory to build a new one for the
+      express purpose of not capitalizing their names.
+  - bugfix: Examining cells won't say they have 0% charge when the overlay indicates
+      they don't
+  - code_imp: Fixes some code style issues for more free GBP
+  Wallem & Imaginos:
+  - balance: Splits biobags into virology & science bags. Virology bags can't hold
+      slime cores or cytology equipment, and science bags can't hold medipens & bloodbags.
+  - imageadd: Changes all storage bag sprites
+  Zonespace27:
+  - bugfix: There is no longer a "generic" item in the OPFOR services tab.
+  tastyfish:
+  - bugfix: Opening an air alarm panel now renders the overlays correctly.
+  - rscadd: Most status displays now have USB support for circuits.

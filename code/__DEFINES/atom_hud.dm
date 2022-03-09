@@ -129,7 +129,7 @@
 #define SECHUD_SCIENCE_GUARD "hudscienceguard"
 //SR Nanotrasen
 #define SECHUD_BLUESHIELD "hudblueshield"
-#define SECHUD_NT_REP "hudnanotrasenrepresentative"
+#define SECHUD_NT_CONSULTANT "hudnanotrasenconsultant"
 //SR SolFed
 #define SECHUD_SPACE_POLICE "hudspacepolice"
 #define SECHUD_SOLFED "hudsolfed"

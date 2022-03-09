@@ -191,8 +191,6 @@
 		valid_chrom_list += "none"
 		return
 
-	valid_chrom_list += "Reinforcement"
-
 	if(stabilizer_coeff != -1)
 		valid_chrom_list += "Stabilizer"
 	if(synchronizer_coeff != -1)

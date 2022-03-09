@@ -638,7 +638,7 @@
 	name = "HECU Grunt"
 	uniform = /obj/item/clothing/under/rank/security/officer/hecu
 	head = /obj/item/clothing/head/helmet/marine/hecu
-	mask = /obj/item/clothing/mask/balaclavaadjust
+	mask = /obj/item/clothing/mask/gas/syndicate/ds
 	gloves = /obj/item/clothing/gloves/combat
 	suit = /obj/item/clothing/suit/armor/vest/marine/hecu
 	suit_store = /obj/item/gun/ballistic/automatic/m16
@@ -651,7 +651,7 @@
 	backpack_contents = list(
 		/obj/item/storage/box/survival/radio,
 		/obj/item/ammo_box/magazine/m16 = 3,
-		/obj/item/storage/firstaid/expeditionary,
+		/obj/item/storage/firstaid/emergency,
 		/obj/item/storage/box/hecu_rations,
 		/obj/item/gun/ballistic/automatic/pistol/g17/mesa,
 		/obj/item/ammo_box/magazine/multi_sprite/g17 = 2,
