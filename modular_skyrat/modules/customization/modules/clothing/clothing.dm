@@ -40,7 +40,7 @@
 /**
  * Called in /obj/item/clothing/Initialize().
  *
- * Quits instantly if mutant_variants has STYLE_TAUR_ALL, then checks to see if the clothing's icon state has an alt sprite for taurs. If no, it then checks to see if
+ * Quits instantly if mutant_variants has all taur styles (STYLE_TAUR), then checks to see if the clothing's icon state has an alt sprite for taurs. If no, it then checks to see if
  * the icon state EXPLICITELY has no taur sprites. If no, it then checks 3 DMI files for the icon_state, and if it appears in any of them, has_taur_sprite is set to
  * true for that icon state, then it sets the more specific list to true for that state, and finally the specific mutant_variants bitflag for the clothing if the
  * clothing doesnt already have it.
@@ -56,7 +56,7 @@
 		return
 	if (!(istype(src, /obj/item/clothing/under))) //remove this if we ever make a taur sprite for anything else, this is for performance
 		return
-	if (mutant_variants & STYLE_TAUR_ALL)
+	if (mutant_variants & STYLE_TAUR)
 		return
 	if (has_taur_sprite[icon_state])
 		if (has_taur_snake_sprite[icon_state] && (!(mutant_variants & STYLE_TAUR_SNAKE)))
@@ -97,7 +97,7 @@
  *
  * Suit variation of handle_taur_sprites().
  *
- * Quits instantly if mutant_variants has STYLE_TAUR_ALL, then checks to see if the clothing's icon state has an alt sprite for taurs. If no, it then checks to see if
+ * Quits instantly if mutant_variants has all taur styles (STYLE_TAUR), then checks to see if the clothing's icon state has an alt sprite for taurs. If no, it then checks to see if
  * the icon state EXPLICITELY has no taur sprites. If no, it then checks 3 DMI files for the icon_state, and if it appears in any of them, has_taur_sprite_suit is set to
  * true for that icon state, then it sets the more specific list to true for that state, and finally the specific mutant_variants bitflag for the clothing if the
  * clothing doesnt already have it.
