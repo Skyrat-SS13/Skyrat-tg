@@ -11,7 +11,7 @@
 /datum/preference/text/headshot/is_valid(value)
 	if(!length(value)) //Just to get blank ones out of the way
 		return TRUE
-	if(!is_veteran_player(usr?.client) && !(usr?.ckey in GLOB.donator_list))
+	if(!is_veteran_player(usr?.client) && !(usr?.ckey in GLOB.donator_list)) // Remove if `is_accessible` works
 		to_chat(usr, span_warning("You must be a veteran or donator to use this feature!"))
 		return
 	if(!findtext(value, "https://"))
@@ -36,3 +36,8 @@
 	if(!is_veteran_player(usr?.client) && !(usr?.ckey in GLOB.donator_list))
 		input = ""
 	return STRIP_HTML_SIMPLE(input, MAX_FLAVOR_LEN)
+
+/datum/preference/text/headshot/is_accessible(datum/preferences/preferences)
+	if(!is_veteran_player(usr?.client) && !(usr?.ckey in GLOB.donator_list))
+		return FALSE
+	. = ..()
