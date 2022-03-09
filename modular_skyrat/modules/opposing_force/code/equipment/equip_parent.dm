@@ -1,21 +1,3 @@
-/// Global list of equipment parents, used for unit testing. PLEASE PLEASE PLEASE UPDATE THIS WITH NEW CATEGORIES AS THEY GET ADDED
-GLOBAL_LIST_INIT(opfor_equipment_parents, list(
-	/datum/opposing_force_equipment/ammo,
-	/datum/opposing_force_equipment/clothing,
-	/datum/opposing_force_equipment/bomb,
-	/datum/opposing_force_equipment/implant,
-	/datum/opposing_force_equipment/loadout,
-	/datum/opposing_force_equipment/martial_art,
-	/datum/opposing_force_equipment/melee,
-	/datum/opposing_force_equipment/other,
-	/datum/opposing_force_equipment/pistol,
-	/datum/opposing_force_equipment/rifle,
-	/datum/opposing_force_equipment/service,
-	/datum/opposing_force_equipment/shotgun,
-	/datum/opposing_force_equipment/spell,
-	/datum/opposing_force_equipment/submachine_gun,
-	/datum/opposing_force_equipment/gear
-))
 
 /**
  * OPFOR EQUIPMENT DATUM
