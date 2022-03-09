@@ -1,43 +1,5 @@
 #define DATUM_PATH_LEN 33
 
-///Checks that all OPFOR items have a desc, either on the datum itself or the item it's attached to
-/datum/unit_test/opfor_item_desc
-
-/datum/unit_test/opfor_item_desc/Run()
-	var/list/subtype_pre = subtypesof(/datum/opposing_force_equipment)
-	var/list/compiled_subtypes = list()
-	for(var/datum/opposing_force_equipment/opfor as anything in subtype_pre)
-		var/path_string = "[opfor]"
-		var/partially_cut = splicetext(path_string, 1, DATUM_PATH_LEN, "") // now looks like `parent` or `parent/opforitem`
-		var/result_cut = splicetext(partially_cut, 1, findtext(partially_cut, "/"), "") // now will just be /opforitem
-		if(!findtext(result_cut, "/"))
-			continue
-		compiled_subtypes += opfor
-
-	for(var/datum/opposing_force_equipment/opfor_parent as anything in compiled_subtypes)
-		for(var/datum/opposing_force_equipment/opfor_item as anything in subtypesof(opfor_parent))
-			if(!length(opfor_item.description) && !length(opfor_item.item_type.desc))
-				Fail("Opposing Force equipment datum [opfor_item] lacks a name.")
-
-///Checks that all OPFOR items have a name, either on the datum itself or the item it's attached to
-/datum/unit_test/opfor_item_names
-
-/datum/unit_test/opfor_item_names/Run()
-	var/list/subtype_pre = subtypesof(/datum/opposing_force_equipment)
-	var/list/compiled_subtypes = list()
-	for(var/datum/opposing_force_equipment/opfor as anything in subtype_pre)
-		var/path_string = "[opfor]"
-		var/partially_cut = splicetext(path_string, 1, DATUM_PATH_LEN, "") // now looks like `parent` or `parent/opforitem`
-		var/result_cut = splicetext(partially_cut, 1, findtext(partially_cut, "/"), "") // now will just be /opforitem
-		if(!findtext(result_cut, "/"))
-			continue
-		compiled_subtypes += opfor
-
-	for(var/datum/opposing_force_equipment/opfor_parent as anything in compiled_subtypes)
-		for(var/datum/opposing_force_equipment/opfor_item as anything in subtypesof(opfor_parent))
-			if(!length(opfor_item.name) && !length(opfor_item.item_type.name))
-				Fail("Opposing Force equipment datum [opfor_item] lacks a name.")
-
 ///Checks that all OPFOR items have an `item_type` associated with them
 /datum/unit_test/opfor_items
 
@@ -52,10 +14,10 @@
 			continue
 		compiled_subtypes += opfor
 
-	for(var/datum/opposing_force_equipment/opfor_parent as anything in compiled_subtypes)
-		for(var/datum/opposing_force_equipment/opfor_item as anything in subtypesof(opfor_parent))
-			if(opfor_item.item_type)
-				continue
+	for(var/datum/opposing_force_equipment/opfor as anything in compiled_subtypes)
+		var/datum/opposing_force_equipment/opfor_obj = new opfor()
+		if(!opfor.item_type)
 			Fail("Opposing Force equipment datum [opfor_item] lacks an `item_type`.")
+		qdel(opfor_obj)
 
 #undef DATUM_PATH_LEN
