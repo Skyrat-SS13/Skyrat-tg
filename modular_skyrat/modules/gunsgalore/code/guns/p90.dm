@@ -30,3 +30,4 @@
 	caliber = "c32acp"
 	max_ammo = 50
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	
