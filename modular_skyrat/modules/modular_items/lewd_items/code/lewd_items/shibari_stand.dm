@@ -3,7 +3,6 @@
 	desc = "A stand for buckling people with ropes."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi'
 	icon_state = "shibari_stand"
-	max_buckled_mobs = 1
 	max_integrity = 75
 	layer = 4
 	item_chair = null
@@ -65,8 +64,8 @@
 				span_hear("You hear loose ropes."))
 		add_fingerprint(user)
 		if(isliving(buckled.pulledby))
-			var/mob/living/L = buckled.pulledby
-			L.set_pull_offsets(buckled, L.grab_state)
+			var/mob/living/living_mob = buckled.pulledby
+			living_mob.set_pull_offsets(buckled, living_mob.grab_state)
 	unbuckle_mob(buckled_mob)
 	return buckled
 
@@ -188,7 +187,6 @@
 	name = "shibari stand construction kit"
 	desc = "Construction requires a wrench."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
-	throwforce = 0
 	icon_state = "shibari_kit"
 	w_class = WEIGHT_CLASS_HUGE
 
