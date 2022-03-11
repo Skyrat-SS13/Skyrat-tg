@@ -20,9 +20,9 @@
 	var/greyscale_config_worn_taur_hoof
 
 	var/static/list/has_taur_sprite = list()
-	var/static/list/has_taur_snake_sprite[icon_state] = list()
-	var/static/list/has_taur_paw_sprite[icon_state] = list()
-	var/static/list/has_taur_horse_sprite[icon_state] = list()
+	var/static/list/has_taur_snake_sprite = list()
+	var/static/list/has_taur_paw_sprite = list()
+	var/static/list/has_taur_horse_sprite = list()
 
 	var/static/list/has_taur_sprite_suit = list()
 	var/static/list/has_taur_snake_sprite_suit = list()
