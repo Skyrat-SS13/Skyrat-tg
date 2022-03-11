@@ -1,3 +1,4 @@
+/*
 #define CANDLE_LUMINOSITY 2
 #define PAIN_DEFAULT 9
 
@@ -197,3 +198,4 @@
 
 #undef CANDLE_LUMINOSITY
 #undef PAIN_DEFAULT
+*/
