@@ -3,6 +3,7 @@
  *
  * Sends a message. Requires a shell.
  */
+/* //SKYRAT EDIT START
 /obj/item/circuit_component/speech
 	display_name = "Speech"
 	desc = "A component that sends a message. Requires a shell."
@@ -35,3 +36,4 @@
 		else
 			say(message.value)
 		TIMER_COOLDOWN_START(parent, COOLDOWN_CIRCUIT_SPEECH, speech_cooldown)
+*/ //SKYRAT EDIT END

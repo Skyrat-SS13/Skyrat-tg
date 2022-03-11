@@ -3,6 +3,7 @@
  *
  * Acts like poly. Says whatever it hears.
  */
+/*
 /obj/item/integrated_circuit/loaded/speech_relay
 
 /obj/item/integrated_circuit/loaded/speech_relay/Initialize(mapload)
@@ -18,3 +19,4 @@
 	speech.rel_y = 200
 
 	speech.message.connect(hear.message_port)
+*/

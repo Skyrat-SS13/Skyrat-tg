@@ -3,6 +3,7 @@
  *
  * Says "Hello World" when triggered. Needs to be wired up and connected first.
  */
+/* SKYRAT EDIT START
 /obj/item/integrated_circuit/loaded/hello_world
 
 /obj/item/integrated_circuit/loaded/hello_world/Initialize(mapload)
@@ -12,3 +13,4 @@
 
 	speech.message.set_input("Hello World")
 
+*/ //SKYRAT EDIT END
