@@ -39,26 +39,18 @@
 		"pink" = image(icon = src.icon, icon_state = "vibroring_pink_off"),
 		"teal" = image(icon = src.icon, icon_state = "vibroring_teal_off"))
 
-/obj/item/clothing/sextoy/vibroring/AltClick(mob/user, obj/item/I)
+/obj/item/clothing/sextoy/vibroring/AltClick(mob/user, obj/item/object)
 	if(color_changed)
 		return
 	. = ..()
 	if(.)
 		return
-	var/choice = show_radial_menu(user,src, vibroring_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, vibroring_designs, custom_check = CALLBACK(src, .proc/check_menu, user, object), radius = 36, require_near = TRUE)
 	if(!choice)
 		return FALSE
 	current_color = choice
 	update_icon()
 	color_changed = TRUE
-
-/// A check to ensure the user can open the radial menu
-/obj/item/clothing/sextoy/vibroring/proc/check_menu(mob/living/user)
-	if(!istype(user))
-		return FALSE
-	if(user.incapacitated())
-		return FALSE
-	return TRUE
 
 /obj/item/clothing/sextoy/vibroring/Initialize()
 	. = ..()

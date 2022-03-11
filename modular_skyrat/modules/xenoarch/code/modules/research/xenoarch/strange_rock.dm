@@ -6,6 +6,10 @@
 #define BRUSH_UNCOVER	(2<<1) //when the strange rock is brushed and the strange rock reveals what it held.
 #define BRUSH_NONE		(2<<2) //when the strange rock is brushed, with no additional effects.
 
+#define REWARD_ONE 1
+#define REWARD_TWO 2
+#define REWARD_THREE 3
+
 /obj/item/xenoarch/strange_rock
 	name = "strange rock"
 	desc = "A mysterious, strange rock that has the potential to have a wonderful item. Also possible for it to have our disposed garbage."
@@ -29,6 +33,8 @@
 	var/adv_scanned = FALSE
 	///The scan state for when encountering the strange rock ore in mining.
 	var/scan_state = "rock_Strange"
+	///The tier of the item that was chosen, 1-100 then 1-3
+	var/choose_tier
 
 /obj/item/xenoarch/strange_rock/Initialize()
 	. = ..()
@@ -45,17 +51,20 @@
 		. += span_warning("The rock is crumbling, even just brushing it will destroy it!")
 
 /obj/item/xenoarch/strange_rock/proc/create_item()
-	var/choose_tier = rand(1,100)
+	choose_tier = rand(1,100)
 	switch(choose_tier)
 		if(1 to 70)
 			hidden_item = pick_weight(GLOB.tier1_reward)
+			choose_tier = REWARD_ONE
 		if(71 to 97)
 			hidden_item = pick_weight(GLOB.tier2_reward)
+			choose_tier = REWARD_TWO
 		if(98 to 100)
 			hidden_item = pick_weight(GLOB.tier3_reward)
+			choose_tier = REWARD_THREE
 
 /obj/item/xenoarch/strange_rock/proc/create_depth()
-	max_depth = rand(21, 100)
+	max_depth = rand(21, (30 * choose_tier))
 	safe_depth = rand(1, 10)
 	item_depth = rand((max_depth - safe_depth), max_depth)
 	dug_depth = rand(0, 10)
@@ -168,14 +177,12 @@
 	mineralType = /obj/item/xenoarch/strange_rock
 
 /turf/closed/mineral/strange_rock/volcanic
-	environment_type = "basalt"
 	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	defer_change = TRUE
 
 /turf/closed/mineral/random/volcanic
-	environment_type = "basalt"
 	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -188,7 +195,6 @@
 		/turf/closed/mineral/gibtonite/volcanic = 4, /obj/item/stack/ore/bluespace_crystal = 1)
 
 /turf/closed/mineral/strange_rock/ice
-	environment_type = "snow_cavern"
 	icon_state = "icerock_strange"
 	smooth_icon = 'icons/turf/walls/icerock_wall.dmi'
 	base_icon_state = "icerock_wall"
@@ -220,7 +226,6 @@
 
 //small gibonite fix
 /turf/closed/mineral/gibtonite/asteroid
-	environment_type = "asteroid"
 	icon_state = "redrock_Gibonite"
 	smooth_icon = 'icons/turf/walls/red_wall.dmi'
 	base_icon_state = "red_wall"
@@ -231,7 +236,6 @@
 	defer_change = TRUE
 
 /turf/closed/mineral/strange_rock/asteroid
-	environment_type = "asteroid"
 	icon_state = "redrock_strange"
 	smooth_icon = 'icons/turf/walls/red_wall.dmi'
 	base_icon_state = "red_wall"
@@ -256,3 +260,7 @@
 #undef BRUSH_DELETE
 #undef BRUSH_UNCOVER
 #undef BRUSH_NONE
+
+#undef REWARD_ONE
+#undef REWARD_TWO
+#undef REWARD_THREE

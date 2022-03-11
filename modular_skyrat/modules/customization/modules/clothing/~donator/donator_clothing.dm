@@ -475,7 +475,7 @@
 	icon_state = "blutigen_undergarment"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	mutant_variants = NONE
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/gloves/ring/hypno
 	var/list/spans = list()
@@ -552,7 +552,7 @@
 	icon_state = "kilanosuit"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	mutant_variants = NONE
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 // Donation reward for NetraKyram
 /obj/item/clothing/gloves/kilano
@@ -740,7 +740,7 @@
 	mutant_variants = NONE
 	inhand_icon_state = "lannese"
 	can_adjust = TRUE
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	body_parts_covered = CHEST|GROIN|LEGS|FEET
 
 /obj/item/clothing/under/custom/lannese/vambrace
@@ -779,7 +779,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	worn_icon_state = "mikubikini"
 	body_parts_covered = CHEST|GROIN
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 // Donation Reward for Grand Vegeta
 /obj/item/clothing/suit/mikujacket

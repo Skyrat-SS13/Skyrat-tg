@@ -836,7 +836,7 @@
 		return
 
 
-	var/obj/item/coomer = new /obj/item/coom(user)
+	var/obj/item/coomer = new /obj/item/hand_item/coom(user)
 	var/mob/living/carbon/human/H = user
 	var/obj/item/held = user.get_active_held_item()
 	var/obj/item/unheld = user.get_inactive_held_item()
@@ -852,17 +852,14 @@
 		qdel(coomer)
 		to_chat(user, span_warning("You're incapable of masturbating."))
 
-/obj/item/coom
+/obj/item/hand_item/coom
 	name = "cum"
 	desc = "C-can I watch...?"
 	icon = 'icons/obj/hydroponics/harvest.dmi'
 	icon_state = "eggplant"
 	inhand_icon_state = "nothing"
-	force = 0
-	throwforce = 0
-	item_flags = DROPDEL | ABSTRACT | HAND_ITEM
 
-/obj/item/coom/attack(mob/living/M, mob/user, proximity)
+/obj/item/hand_item/coom/attack(mob/living/M, mob/user, proximity)
 	if (CONFIG_GET(flag/disable_erp_preferences))
 		return
 	if(!proximity)
@@ -907,7 +904,7 @@
 		qdel(src)
 
 //jerk off into bottles
-/obj/item/coom/afterattack(obj/target, mob/user, proximity)
+/obj/item/hand_item/coom/afterattack(obj/target, mob/user, proximity)
 	. = ..()
 	if (CONFIG_GET(flag/disable_erp_preferences))
 		return
