@@ -65,7 +65,8 @@
 /obj/projectile/bullet/dart/syringe/dart
 	name = "SmartDart"
 	damage = 0
-	var/list/allergyList = list()
+	//A list used to store to store the allergns of the target, so that it can be compared with later.
+	var/list/allergy_list = list()
 	///Is allergy prevention used?
 	var/prevention_used = FALSE
 	///List containing chemicals that Smartdarts can Inject.
@@ -94,13 +95,13 @@
 		if(!istype(quirky, /datum/quirk/item_quirk/allergic))
 			continue
 		var/datum/quirk/item_quirk/allergic/allergies_quirk = quirky
-		allergyList = allergies_quirk.allergies
+		allergy_list = allergies_quirk.allergies
 
 	//The code that handles the actual injections
 	for(var/datum/reagent/meds in reagents.reagent_list)
 		if(!is_type_in_list(meds, allowed_medicine))
 			continue
-		if(is_type_in_list(meds, allergyList))
+		if(is_type_in_list(meds, allergy_list))
 			prevention_used = TRUE
 		else
 			injectee.reagents.add_reagent(meds.type, meds.volume)
