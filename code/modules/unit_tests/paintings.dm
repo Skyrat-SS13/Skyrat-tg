@@ -3,6 +3,10 @@
 
 /datum/unit_test/paintings/Run()
 	for(var/obj/item/canvas/canvas_prototype as anything in typesof(/obj/item/canvas))
+		//SKYRAT EDIT START
+		if(istype(canvas_prototype, /obj/item/canvas/drawingtablet))
+			continue
+		//SKYRAT EDIT END
 		var/canvas_icons = icon_states(initial(canvas_prototype.icon))
 		var/canvas_icon_state = initial(canvas_prototype.icon_state)
 		for(var/frame_type in SSpersistent_paintings.frame_types_by_patronage_tier)
