@@ -1,4 +1,7 @@
 #define COMSIG_SHOCK_UPDATE "shock_update"
+
+/mob/living/carbon/Life(delta_time = SSMOBS_DT, times_fired)
+	flow_control()
 /mob/living/carbon
 	var/lastpainmessage
 	var/in_shock
@@ -7,8 +10,7 @@
 	Initialize(mapload)
 		. = ..()
 		RegisterSignal(src, COMSIG_SHOCK_UPDATE, .proc/shock_helper)
-	Life()
-		SEND_SIGNAL(src, COMSIG_SHOCK_UPDATE)
+
 	proc/flow_control()
 		SIGNAL_HANDLER
 		injuries = calc_injuries()
@@ -17,6 +19,7 @@
 		if(stat == DEAD)	flow_rate = 0
 		else	flow_rate = clamp(rand(BASE_FLOW_RATE, BASE_FLOW_RATE_UPPER) + calc_pain(), 0, FLOW_RATE_ARREST)
 		shock_helper(flow_rate)
+		update_health_hud()
 
 	proc/calc_pain()
 		var/pain_score = 1
@@ -49,7 +52,7 @@
 
 
 
-		if(last_bpm == 0)
+		if(last_bpm <= 0)
 			death()
 			set_stat(DEAD)
 	proc/can_leave_shock(last_bpm)
@@ -97,7 +100,7 @@
 					in_shock = TRUE
 					shock_dying(flow_rate, pulsetimer)
 					current_pain_message_helper("Soft-crit")
-				if(health = hardcrit_threshold && !HAS_TRAIT(src, TRAIT_NOHARDCRIT))
+				if(health == hardcrit_threshold && !HAS_TRAIT(src, TRAIT_NOHARDCRIT))
 					set_stat(HARD_CRIT)
 					in_shock = TRUE
 					shock_dying(flow_rate, pulsetimer)
@@ -123,7 +126,7 @@
 	updatehealth()
 		. = ..()
 		shock_helper()
-		flow_control()
+//		flow_control()
 	update_health_hud(shown_health_amount)
 		if(!client || !hud_used)
 			return
@@ -195,8 +198,8 @@
 		else
 			playsound(src, 'modular_skyrat/sound/effects/flatline.ogg', 20)
 	if(beepvalid)
-		addtimer(CALLBACK(src, .proc/ekg, patient), 2 SECONDS)
-		if(!patient.stat == DEAD)
+		addtimer(CALLBACK(src, .proc/ekg, patient), 2 SECONDS) // SFX length
+		if(patient.stat != DEAD)
 			SEND_SIGNAL(patient, COMSIG_SHOCK_UPDATE)
 
 /obj/structure/table/optable/proc/chill_out(mob/living/target)
