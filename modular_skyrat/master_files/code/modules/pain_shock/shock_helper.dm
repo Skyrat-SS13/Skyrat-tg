@@ -7,150 +7,150 @@
 	var/in_shock
 	var/flow_rate = BASE_FLOW_RATE
 	var/injuries
-	Initialize(mapload)
-		. = ..()
-		RegisterSignal(src, COMSIG_SHOCK_UPDATE, .proc/shock_helper)
+/mob/living/carbon/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_SHOCK_UPDATE, .proc/shock_helper)
 
-	proc/flow_control()
-		SIGNAL_HANDLER
-		injuries = calc_injuries()
+/mob/living/carbon/proc/flow_control()
+	SIGNAL_HANDLER
+	injuries = calc_injuries()
 //		var/pain_score = injuries + length(all_wounds) // old, backup and sketchy
-		calc_pain()
-		if(stat == DEAD)	flow_rate = 0
-		else	flow_rate = clamp(rand(BASE_FLOW_RATE, BASE_FLOW_RATE_UPPER) + calc_pain(), 0, FLOW_RATE_ARREST)
-		shock_helper(flow_rate)
-		update_health_hud()
+	calc_pain()
+	if(stat == DEAD)	flow_rate = 0
+	else	flow_rate = clamp(rand(BASE_FLOW_RATE, BASE_FLOW_RATE_UPPER) + calc_pain(), 0, FLOW_RATE_ARREST)
+	shock_helper(flow_rate)
+	update_health_hud()
 
-	proc/calc_pain()
-		var/pain_score = 1
-		for(var/i in all_wounds)
-			var/datum/wound/iterwound = i
-			if(iterwound.severity == WOUND_SEVERITY_SEVERE || WOUND_SEVERITY_CRITICAL || WOUND_SEVERITY_LOSS)
-				pain_score += SHOCK_STAGE_MODERATE
-			if(iterwound.severity == WOUND_SEVERITY_MODERATE || WOUND_SEVERITY_TRIVIAL)
-				pain_score += SHOCK_STAGE_MINOR
+/mob/living/carbon/proc/calc_pain()
+	var/pain_score = 1
+	for(var/i in all_wounds)
+		var/datum/wound/iterwound = i
+		if(iterwound.severity == WOUND_SEVERITY_SEVERE || WOUND_SEVERITY_CRITICAL || WOUND_SEVERITY_LOSS)
+			pain_score += SHOCK_STAGE_MODERATE
+		if(iterwound.severity == WOUND_SEVERITY_MODERATE || WOUND_SEVERITY_TRIVIAL)
+			pain_score += SHOCK_STAGE_MINOR
 
-		pain_score += getBruteLoss() + getFireLoss() + getToxLoss() + getOxyLoss() + (getStaminaLoss()) / 6
-		return pain_score
+	pain_score += getBruteLoss() + getFireLoss() + getToxLoss() + getOxyLoss() + (getStaminaLoss()) / 6
+	return pain_score
 
-	proc/calc_injuries()
-		var/injuries
-		for(var/i in all_wounds)
-			injuries++
-		return injuries
+/mob/living/carbon/proc/calc_injuries()
+	var/injuries
+	for(var/i in all_wounds)
+		injuries++
+	return injuries
 
-	proc/shock_dying(last_bpm, pulsetimer)
-		if(!in_shock)
-			return
-		if(in_shock)
-			if(can_leave_shock(last_bpm))
-				in_shock = FALSE
-				to_chat(src, span_hypnophrase("You body tingles painfully as your nerves come back..."))
-			else if(!can_leave_shock(last_bpm))
-				current_pain_message_helper("Shock")
-				losebreath += 0.25
-
-
-
-		if(last_bpm <= 0)
-			death()
-			set_stat(DEAD)
-	proc/can_leave_shock(last_bpm)
-		var/truepain = calc_pain()
-		if(truepain <= 100)
-			return TRUE
-		return FALSE
-	proc/resetpainmsg()
-		lastpainmessage = null
-	proc/current_pain_message_helper(current_pain)
-		if(lastpainmessage)
-			return
-		lastpainmessage = TRUE
-		addtimer(CALLBACK(src, .proc/resetpainmsg), 15 SECONDS)
-		var/list/close2death = list("a human", "a moth", "a felinid", "a lizard", "a particularly resilient slime", "a syndicate agent", "a clown", "a mime", "a mortal foe", "an innocent bystander")
-
-		switch(current_pain)
-			if("Shock")
-				to_chat(src, span_resonate("You feel your body shutting down..."))
-			if("Minor")
-				to_chat(src, span_resonate("I could use some painkillers right about now..."))
-			if("Moderate")
-				to_chat(src, span_resonate("It hurts so much!"))
-
-			if("Major")
-				to_chat(src, span_resonate("Make the pain stop!"))
-
-			if("Severe")
-				to_chat(src, span_resonate("Please! End the pain!"))
-			if("Soft-crit")
-				var/dream = span_italics(". . . You think about . . . ") + span_hypnophrase("[pick(close2death)]")
-				to_chat(src, dream)
-			if("Dying")
-				to_chat(src, span_unconscious(pick("Where am I?", "What's going on?")))
-
-	proc/shock_helper(flow_rate)
-		var/pulsetimer = world.timeofday
-		SIGNAL_HANDLER
-		if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT) && stat != DEAD)
-			set_stat(UNCONSCIOUS)
-		switch(flow_rate)
-			if(FLOW_RATE_ARREST)
-				if(stat != HARD_CRIT && !HAS_TRAIT(src, TRAIT_NOSOFTCRIT))
-					set_stat(SOFT_CRIT)
-					in_shock = TRUE
-					shock_dying(flow_rate, pulsetimer)
-					current_pain_message_helper("Soft-crit")
-				if(health == hardcrit_threshold && !HAS_TRAIT(src, TRAIT_NOHARDCRIT))
-					set_stat(HARD_CRIT)
-					in_shock = TRUE
-					shock_dying(flow_rate, pulsetimer)
-					current_pain_message_helper("Dying")
-				if(health <= HEALTH_THRESHOLD_DEAD && !HAS_TRAIT(src, TRAIT_NODEATH))
-					to_chat(src, span_unconscious("Death..."))
-					shock_dying(flow_rate, pulsetimer)
+/mob/living/carbon/proc/shock_dying(last_bpm, pulsetimer)
+	if(!in_shock)
+		return
+	if(in_shock)
+		if(can_leave_shock(last_bpm))
+			in_shock = FALSE
+			to_chat(src, span_hypnophrase("You body tingles painfully as your nerves come back..."))
+		else if(!can_leave_shock(last_bpm))
+			current_pain_message_helper("Shock")
+			losebreath += 0.25
 
 
-			if(180 to 299)
-				current_pain_message_helper("Severe")
-				set_stat(CONSCIOUS)
-			if(120 to 140)
-				current_pain_message_helper("Minor")
-				set_stat(CONSCIOUS)
-			if(140 to 160)
-				current_pain_message_helper("Moderate")
-				set_stat(CONSCIOUS)
-			if(160 to 180)
-				current_pain_message_helper("Major")
-				set_stat(CONSCIOUS)
 
-	updatehealth()
-		. = ..()
-		shock_helper()
+	if(last_bpm <= 0)
+		death()
+		set_stat(DEAD)
+/mob/living/carbon/proc/can_leave_shock(last_bpm)
+	var/truepain = calc_pain()
+	if(truepain <= 100)
+		return TRUE
+	return FALSE
+/mob/living/carbon/proc/resetpainmsg()
+	lastpainmessage = null
+/mob/living/carbon/proc/current_pain_message_helper(current_pain)
+	if(lastpainmessage)
+		return
+	lastpainmessage = TRUE
+	addtimer(CALLBACK(src, .proc/resetpainmsg), 15 SECONDS)
+	var/list/close2death = list("a human", "a moth", "a felinid", "a lizard", "a particularly resilient slime", "a syndicate agent", "a clown", "a mime", "a mortal foe", "an innocent bystander")
+
+	switch(current_pain)
+		if("Shock")
+			to_chat(src, span_resonate("You feel your body shutting down..."))
+		if("Minor")
+			to_chat(src, span_resonate("I could use some painkillers right about now..."))
+		if("Moderate")
+			to_chat(src, span_resonate("It hurts so much!"))
+
+		if("Major")
+			to_chat(src, span_resonate("Make the pain stop!"))
+
+		if("Severe")
+			to_chat(src, span_resonate("Please! End the pain!"))
+		if("Soft-crit")
+			var/dream = span_italics(". . . You think about . . . ") + span_hypnophrase("[pick(close2death)]")
+			to_chat(src, dream)
+		if("Dying")
+			to_chat(src, span_unconscious(pick("Where am I?", "What's going on?")))
+
+/mob/living/carbon/proc/shock_helper(flow_rate)
+	var/pulsetimer = world.timeofday
+	SIGNAL_HANDLER
+	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT) && stat != DEAD)
+		set_stat(UNCONSCIOUS)
+	switch(flow_rate)
+		if(FLOW_RATE_ARREST)
+			if(stat != HARD_CRIT && !HAS_TRAIT(src, TRAIT_NOSOFTCRIT))
+				set_stat(SOFT_CRIT)
+				in_shock = TRUE
+				shock_dying(flow_rate, pulsetimer)
+				current_pain_message_helper("Soft-crit")
+			if(health == hardcrit_threshold && !HAS_TRAIT(src, TRAIT_NOHARDCRIT))
+				set_stat(HARD_CRIT)
+				in_shock = TRUE
+				shock_dying(flow_rate, pulsetimer)
+				current_pain_message_helper("Dying")
+			if(health <= HEALTH_THRESHOLD_DEAD && !HAS_TRAIT(src, TRAIT_NODEATH))
+				to_chat(src, span_unconscious("Death..."))
+				shock_dying(flow_rate, pulsetimer)
+
+
+		if(180 to 299)
+			current_pain_message_helper("Severe")
+			set_stat(CONSCIOUS)
+		if(120 to 140)
+			current_pain_message_helper("Minor")
+			set_stat(CONSCIOUS)
+		if(140 to 160)
+			current_pain_message_helper("Moderate")
+			set_stat(CONSCIOUS)
+		if(160 to 180)
+			current_pain_message_helper("Major")
+			set_stat(CONSCIOUS)
+
+/mob/living/carbon/updatehealth()
+	. = ..()
+	shock_helper()
 //		flow_control()
-	update_health_hud(shown_health_amount)
-		if(!client || !hud_used)
-			return
-		var/atom/movable/screen/healths/pulse = hud_used.healths
-		pulse.maptext = MAPTEXT(flow_rate)
-		if(hud_used.healths) // MOVED TO MODULAR
-			. = 1
-			if(shown_health_amount == null)
-				shown_health_amount = health
-			switch(flow_rate)
-				if(60 to 90)
-					hud_used.healths.icon_state = "health1"
-				if(90 to 110)
-					hud_used.healths.icon_state = "health2"
-				if(110 to 130)
-					hud_used.healths.icon_state = "health3"
-				if(130 to 200)
-					hud_used.healths.icon_state = "health4"
-				if(200 to 299)
-					hud_used.healths.icon_state = "health5"
-			if(in_shock && stat != DEAD)
-				hud_used.healths.icon_state = "health6"
-			if(stat == DEAD)
-				hud_used.healths.icon_state = "health7"
+/mob/living/carbon/update_health_hud(shown_health_amount)
+	if(!client || !hud_used)
+		return
+	var/atom/movable/screen/healths/pulse = hud_used.healths
+	pulse.maptext = MAPTEXT(flow_rate)
+	if(hud_used.healths) // MOVED TO MODULAR
+		. = 1
+		if(shown_health_amount == null)
+			shown_health_amount = health
+		switch(flow_rate)
+			if(60 to 90)
+				hud_used.healths.icon_state = "health1"
+			if(90 to 110)
+				hud_used.healths.icon_state = "health2"
+			if(110 to 130)
+				hud_used.healths.icon_state = "health3"
+			if(130 to 200)
+				hud_used.healths.icon_state = "health4"
+			if(200 to 299)
+				hud_used.healths.icon_state = "health5"
+		if(in_shock && stat != DEAD)
+			hud_used.healths.icon_state = "health6"
+		if(stat == DEAD)
+			hud_used.healths.icon_state = "health7"
 /mob/living/carbon/update_damage_hud()
 	. = ..()
 	if(flow_rate)
