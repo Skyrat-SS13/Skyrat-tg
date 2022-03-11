@@ -22,10 +22,10 @@
 	alt_titles = list("Barber", "Salon Manager", "Salon Technician", "Stylist", "Colorist")
 
 /datum/job/bartender
-	alt_titles = list("Bartender", "Mixologist", "Barkeeper")
+	alt_titles = list("Bartender", "Mixologist", "Barkeeper", "Barista")
 
 /datum/job/blueshield
-	alt_titles = list("Blueshield", "Command Bodyguard", "Executive Protection Agent")
+	alt_titles = list("Blueshield", "Command Bodyguard", "Executive Protection Agent", "Personal Protection Specialist")
 
 /datum/job/botanist
 	alt_titles = list("Botanist", "Hydroponicist", "Gardener", "Botanical Researcher", "Herbalist")
@@ -43,10 +43,10 @@
 	alt_titles = list("Cargo Technician", "Deck Worker", "Mailman")
 
 /datum/job/chaplain
-	alt_titles = list("Chaplain", "Priest", "Preacher", "Reverend", "Oracle", "Pontifex", "Magister", "High Priest", "Imam", "Rabbi", "Monk") //i would add OT III but honestly, thats way too specific
+	alt_titles = list("Chaplain", "Priest", "Preacher", "Reverend", "Oracle", "Pontifex", "Magister", "High Priest", "Imam", "Rabbi", "Monk", "Pope", "Metropolitan") //i would add OT III but honestly, thats way too specific
 
 /datum/job/chemist
-	alt_titles = list("Chemist", "Pharmacist", "Pharmacologist")
+	alt_titles = list("Chemist", "Pharmacist", "Pharmacologist", "Apothecary")
 
 /datum/job/chief_engineer
 	alt_titles = list("Chief Engineer", "Engineering Foreman", "Head of Engineering")
@@ -55,13 +55,13 @@
 	alt_titles = list("Chief Medical Officer", "Medical Director", "Head of Medical")
 
 /datum/job/clown
-	alt_titles = list("Clown", "Jester")
+	alt_titles = list("Clown", "Jester", "Comedian", "Comic")
 
 /datum/job/cook
 	alt_titles = list("Cook", "Chef", "Butcher", "Culinary Artist", "Sous-Chef")
 
 /datum/job/curator
-	alt_titles = list("Curator", "Librarian", "Journalist", "Archivist")
+	alt_titles = list("Curator", "Librarian", "Journalist", "Archivist", "Adventurer", "Archaeologist")
 
 /datum/job/customs_agent
 	alt_titles = list("Customs Agent", "Customs Guard", "Supply Guard")
@@ -91,7 +91,7 @@
 	alt_titles = list("Head of Security", "Security Commander", "Chief Constable", "Chief of Security", "Sheriff")
 
 /datum/job/janitor
-	alt_titles = list("Janitor", "Custodian", "Custodial Technician", "Sanitation Technician", "Maintenance Technician", "Concierge", "Maid")
+	alt_titles = list("Janitor", "Custodian", "Custodial Technician", "Sanitation Technician", "Maintenance Technician", "Concierge", "Maid", "Caretaker")
 
 /datum/job/lawyer
 	alt_titles = list("Lawyer", "Internal Affairs Agent", "Human Resources Agent", "Defence Attorney", "Public Defender", "Barrister", "Prosecutor")
@@ -124,7 +124,6 @@
 	alt_titles = list("Roboticist", "Biomechanical Engineer", "Mechatronic Engineer")
 
 /datum/job/science_guard // See ordlerly
-
 
 /datum/job/scientist
 	alt_titles = list(
