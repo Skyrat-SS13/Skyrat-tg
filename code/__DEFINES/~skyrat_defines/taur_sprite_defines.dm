@@ -1,2 +1,0 @@
-#define HAS_TAUR_SPRITE 1
-#define HAS_NO_TAUR_SPRITE 0

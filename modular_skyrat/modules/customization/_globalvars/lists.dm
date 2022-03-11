@@ -71,16 +71,16 @@ GLOBAL_LIST_INIT(color_list_ghoul, list( \
 	"Marked Red" = "f05b68" \
 ))
 
-/// Generates a list of naga taur uniform sprites in text form.
+/// Generates a list of naga taur uniform icon_states in text form.
 GLOBAL_LIST_INIT(naga_taur_uniform_sprites, icon_states('modular_skyrat/master_files/icons/mob/clothing/uniform_taur_snake.dmi'))
-/// Generates a list of pawed taur uniform sprites in text form.
+/// Generates a list of pawed taur uniform icon_states in text form.
 GLOBAL_LIST_INIT(horse_taur_uniform_sprites, icon_states('modular_skyrat/master_files/icons/mob/clothing/uniform_taur_hoof.dmi'))
-/// Generates a list of hoofed taur uniform sprites in text form.
+/// Generates a list of hoofed taur uniform icon_states in text form.
 GLOBAL_LIST_INIT(pawed_taur_uniform_sprites, icon_states('modular_skyrat/master_files/icons/mob/clothing/uniform_taur_paw.dmi'))
-/// Generates a list of naga taur suit sprites in text form.
+/// Generates a list of naga taur suit icon_states in text form.
 GLOBAL_LIST_INIT(naga_taur_suit_sprites, icon_states('modular_skyrat/master_files/icons/mob/clothing/suit_taur_snake.dmi'))
-/// Generates a list of pawed taur suit sprites in text form.
+/// Generates a list of pawed taur suit icon_states in text form.
 GLOBAL_LIST_INIT(horse_taur_suit_sprites, icon_states('modular_skyrat/master_files/icons/mob/clothing/suit_taur_hoof.dmi'))
-/// Generates a list of hoofed taur suit sprites in text form.
+/// Generates a list of hoofed taur suit icon_states in text form.
 GLOBAL_LIST_INIT(pawed_taur_suit_sprites, icon_states('modular_skyrat/master_files/icons/mob/clothing/suit_taur_paw.dmi'))
 
