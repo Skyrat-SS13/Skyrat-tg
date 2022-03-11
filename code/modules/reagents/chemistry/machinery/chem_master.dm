@@ -415,7 +415,7 @@
 				P.name = trim("[name] bottle")
 				adjust_item_drop_location(P)
 				reagents.trans_to(P, vol_each, transfered_by = usr)
-				return TRUE
+			return TRUE
 		//SKYRAT EDIT ADDTION START
 		if(item_type == "vial")
 			var/obj/item/reagent_containers/glass/vial/small/P
