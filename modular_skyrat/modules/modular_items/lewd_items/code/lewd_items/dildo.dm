@@ -1,3 +1,4 @@
+/*
 #define AROUSAL_REGULAR_THRESHOLD 25
 //////////////////
 ///NORMAL DILDO///
@@ -412,3 +413,4 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	ADD_TRAIT(src, TRAIT_NODROP, STRAPON_TRAIT)
 
 #undef AROUSAL_REGULAR_THRESHOLD
+*/
