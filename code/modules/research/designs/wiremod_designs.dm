@@ -117,12 +117,12 @@
 	name = "Get Species Component"
 	id = "comp_species"
 	build_path = /obj/item/circuit_component/species
-
+/*
 /datum/design/component/speech
 	name = "Speech Component"
 	id = "comp_speech"
 	build_path = /obj/item/circuit_component/speech
-
+*/
 /datum/design/component/timepiece
 	name = "Timepiece Component"
 	id = "comp_timepiece"
