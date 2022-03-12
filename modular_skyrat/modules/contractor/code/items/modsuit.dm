@@ -229,7 +229,7 @@
 
 /obj/item/mod/module/armor_booster/contractor // Much flatter distribution because contractor suit gets a shitton of armor already
 	armor_values = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20)
-	added_slowdown = 0
+	added_slowdown = 0.5 //Bulky as shit
 
 // I absolutely fuckin hate having to do this
 /obj/item/clothing/head/mod/contractor
