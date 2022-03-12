@@ -453,3 +453,12 @@
 /obj/projectile/bullet/incendiary/c46x30mm
 	name = "6.5x25mm incendiary bullet"
 	
+/obj/projectile/bullet/p50/soporific   // COMMON BULLET IS ALREADY OVERRIDEN IN MODULAR > BULLETREBALANCE > CODE > sniper.dm
+	name =".416 tranquilizer"
+	
+/obj/projectile/bullet/p50/penetrator
+	name = ".416 hyper armor piercing bullet"
+	
+/obj/projectile/bullet/a50ae
+	name = ".454 Trucidator bullet"
+	
