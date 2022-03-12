@@ -84,6 +84,13 @@
 		/obj/item/clothing/head/fedora/white = 5,
 		/obj/item/clothing/head/fedora/fedblack = 5,
 		/obj/item/clothing/head/fedora/fedbrown = 5,
+		/obj/item/clothing/suit/jacket/leather/polychromic = 5,
+		/obj/item/clothing/under/misc/polyshorts = 5,
+		/obj/item/clothing/under/misc/polyjumpsuit = 5,
+		/obj/item/clothing/under/misc/poly_bottomless = 5,
+		/obj/item/clothing/under/misc/polysweater = 5,
+		/obj/item/clothing/under/shorts/polychromic = 5,
+		/obj/item/clothing/under/shorts/polychromic/pantsu = 5,
 	)
 
 	skyrat_premium = list( //being here means you're artificially rare, congratulations
