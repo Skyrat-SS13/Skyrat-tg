@@ -793,6 +793,7 @@
 	clothing_flags = SNUG_FIT
 	clothing_traits = list(TRAIT_MEDICAL_HUD,TRAIT_NIGHT_VISION)
 	flags_cover = HEADCOVERSEYES | PEPPERPROOF
+	flash_protect = null
 	visor_flags_inv = null
 	visor_flags = null
 	slowdown = 0

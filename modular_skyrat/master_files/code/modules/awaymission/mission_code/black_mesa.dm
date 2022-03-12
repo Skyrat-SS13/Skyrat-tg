@@ -357,8 +357,8 @@
 	spawn_all_loot = TRUE
 	loot = list(/obj/item/gun/ballistic/automatic/cfa_wildcat = 30,
 				/obj/item/clothing/mask/gas/hecu2 = 20,
-				/obj/item/clothing/head/helmet/marine/hecu = 20,
-				/obj/item/clothing/suit/armor/vest/marine/hecu = 15,
+				/obj/item/clothing/head/helmet = 20,
+				/obj/item/clothing/suit/armor/vest = 15,
 				/obj/item/clothing/shoes/combat = 15)
 
 /obj/effect/spawner/random/hecu_deagle
@@ -366,8 +366,8 @@
 	spawn_all_loot = TRUE
 	loot = list(/obj/item/gun/ballistic/automatic/pistol/deagle = 30,
 				/obj/item/clothing/mask/gas/hecu2 = 20,
-				/obj/item/clothing/head/helmet/marine/hecu = 20,
-				/obj/item/clothing/suit/armor/vest/marine/hecu = 15,
+				/obj/item/clothing/head/helmet = 20,
+				/obj/item/clothing/suit/armor/vest = 15,
 				/obj/item/clothing/shoes/combat = 15)
 
 ///////////////////HECU
@@ -615,28 +615,6 @@
 	inhand_icon_state = "r_suit"
 	uses_advanced_reskins = FALSE
 	unique_reskin = null
-
-///It looks fairly fitting for an "elite tacticool squad", so we'll just reuse it with the Expeditionary Corps' gear stats, and without that plasteel mention, until someone sprites/finds a better one. To make it fair.
-/obj/item/clothing/suit/armor/vest/marine/hecu
-	desc = "A set of the finest mass produced, stamped steel armor plates, containing an environmental protection unit for all-condition door kicking."
-	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
-	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
-	icon_state = "hecu_vest"
-	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 40, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
-
-/obj/item/clothing/head/helmet/marine/hecu
-	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
-	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
-	icon_state = "hecu_helm"
-	clothing_flags = SNUG_FIT | PLASMAMAN_HELMET_EXEMPT
-	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
-	can_flashlight = FALSE
-
-/obj/item/clothing/head/helmet/marine/hecu/Initialize(mapload)
-	set_attached_light(null)
-	update_helmlight()
-	update_appearance()
-	. = ..()
 
 /obj/item/storage/backpack/ert/odst/hecu
 	name = "hecu backpack"
