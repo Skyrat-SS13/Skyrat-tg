@@ -16,7 +16,7 @@
 	inhand_icon_state = "b_suit"
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	fitted = FEMALE_UNIFORM_TOP
 
 /obj/item/clothing/under/rank/captain/suit
 	name = "captain's suit"
@@ -32,7 +32,7 @@
 	inhand_icon_state = "dg_suit"
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	fitted = FEMALE_UNIFORM_TOP
 
 /obj/item/clothing/under/rank/captain/parade
 	name = "captain's formal uniform"

@@ -43,7 +43,7 @@
 
 /obj/structure/closet/secure_closet/barber/PopulateContents()
 	new /obj/item/clothing/mask/surgical(src) // These three are here, so the barber can pick and choose what he's painting.
-	new /obj/item/clothing/under/rank/medical/scrubs/blue(src)
+	new /obj/item/clothing/under/rank/medical/doctor/blue(src)
 	new /obj/item/clothing/suit/apron/surgical(src)
 	new /obj/item/clothing/accessory/waistcoat(src)
 	new /obj/item/clothing/under/rank/civilian/lawyer/purpsuit(src)

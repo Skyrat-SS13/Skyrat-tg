@@ -99,8 +99,6 @@ Slimecrossing Items
 	custom_materials = null
 	maxcharge = 50000
 	chargerate = 2500
-	charge_light_type = null
-	connector_type = "slimecore"
 
 //Barrier cube - Chilling Grey
 /obj/item/barriercube

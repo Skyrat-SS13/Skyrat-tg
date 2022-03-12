@@ -10,13 +10,14 @@
 	level_max = 0 //cannot be improved
 	cooldown_min = 100
 	include_user = TRUE
-	action_icon_state = "summons"
-	///The obj marked for recall
+
 	var/obj/marked_item
 
-/obj/effect/proc_holder/spell/targeted/summonitem/cast(list/targets, mob/user = usr)
+	action_icon_state = "summons"
+
+/obj/effect/proc_holder/spell/targeted/summonitem/cast(list/targets,mob/user = usr)
 	for(var/mob/living/L in targets)
-		var/list/hand_items = list(L.get_active_held_item(), L.get_inactive_held_item())
+		var/list/hand_items = list(L.get_active_held_item(),L.get_inactive_held_item())
 		var/message
 
 		if(!marked_item) //linking item to the spell
@@ -78,15 +79,12 @@
 						M.dropItemToGround(item_to_retrieve)
 
 					else
-						var/obj/retrieved_item = item_to_retrieve.loc
-						if(retrieved_item.anchored)
-							return
-						if(istype(retrieved_item, /obj/machinery/portable_atmospherics)) //Edge cases for moved machinery
-							var/obj/machinery/portable_atmospherics/P = retrieved_item
+						if(istype(item_to_retrieve.loc, /obj/machinery/portable_atmospherics/)) //Edge cases for moved machinery
+							var/obj/machinery/portable_atmospherics/P = item_to_retrieve.loc
 							P.disconnect()
 							P.update_appearance()
 
-						item_to_retrieve = retrieved_item
+						item_to_retrieve = item_to_retrieve.loc
 
 					infinite_recursion += 1
 

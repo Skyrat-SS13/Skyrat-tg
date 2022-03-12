@@ -1,5 +1,5 @@
 /obj/item/clothing/under/dress
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	fitted = FEMALE_UNIFORM_TOP
 	can_adjust = FALSE
 	body_parts_covered = CHEST|GROIN
 	icon = 'icons/obj/clothing/under/dress.dmi'
@@ -22,7 +22,7 @@
 	desc = "Fashion in space."
 	icon_state = "striped_dress"
 	inhand_icon_state = "striped_dress"
-	female_sprite_flags = FEMALE_UNIFORM_FULL
+	fitted = FEMALE_UNIFORM_FULL
 
 /obj/item/clothing/under/dress/sailor
 	name = "sailor dress"

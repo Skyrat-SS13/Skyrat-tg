@@ -15,7 +15,7 @@
 
 /datum/emote/living/alien/hiss/get_sound(mob/living/user)
 	if(isalienadult(user))
-		return SFX_HISS
+		return "hiss"
 
 /datum/emote/living/alien/roar
 	key = "roar"

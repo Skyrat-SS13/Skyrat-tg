@@ -27,7 +27,7 @@ export const ThermoMachine = (props, context) => {
           average: [.65, .825],
           bad: [.4225, .64],
         }}>
-        {(data.efficiency * 100).toFixed(2) + " %"}
+        {Math.round(data.efficiency * 10000)/100 + " %"}
       </ProgressBar>
     </LabeledList.Item>
   );

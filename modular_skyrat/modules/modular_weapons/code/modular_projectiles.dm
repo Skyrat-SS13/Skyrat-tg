@@ -28,9 +28,6 @@
 	damage = 5
 	stamina = 20
 	wound_bonus = -75
-	shrapnel_type = null
-	sharpness = NONE
-	embedding = null
 
 /obj/item/ammo_casing/c32/ap
 	name = ".32 armor-piercing bullet"

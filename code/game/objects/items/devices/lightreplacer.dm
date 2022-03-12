@@ -222,7 +222,7 @@
 
 /obj/item/lightreplacer/proc/Emag()
 	obj_flags ^= EMAGGED
-	playsound(src.loc, SFX_SPARKS, 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+	playsound(src.loc, "sparks", 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	if(obj_flags & EMAGGED)
 		name = "shortcircuited [initial(name)]"
 	else
@@ -254,9 +254,13 @@
 	if(!used)
 		to_chat(U, span_warning("\The [src]'s refill light blinks red."))
 
-/obj/item/lightreplacer/cyborg/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, CYBORG_ITEM_TRAIT)
+/obj/item/lightreplacer/proc/janicart_insert(mob/user, obj/structure/janitorialcart/J)
+	J.put_in_cart(src, user)
+	J.myreplacer = src
+	J.update_appearance()
+
+/obj/item/lightreplacer/cyborg/janicart_insert(mob/user, obj/structure/janitorialcart/J)
+	return
 
 #undef LIGHT_OK
 #undef LIGHT_EMPTY

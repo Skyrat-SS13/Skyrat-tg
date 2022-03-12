@@ -49,6 +49,3 @@
     new /obj/item/clothing/head/rice_hat(src)
     new /obj/item/katana/weak/curator(src)
     new /obj/item/clothing/shoes/sandal(src)
-
-/obj/item/modular_computer/laptop/preset/civilian/closed
-	start_open = FALSE

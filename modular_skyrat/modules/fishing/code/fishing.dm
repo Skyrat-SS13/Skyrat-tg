@@ -49,12 +49,11 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 		deltimer(reel_sound_timer)
 	return ..()
 
-/datum/component/fishing/proc/start_fishing(mob/living/user)
+/datum/component/fishing/proc/start_fishing()
 	SIGNAL_HANDLER
-	var/random_fish_time = rand(3 SECONDS, 6 SECONDS) * user.mind.get_skill_modifier(/datum/skill/fishing, SKILL_SPEED_MODIFIER)
-	var/fishing_buffer = random_fish_time + (2 SECONDS / user.mind.get_skill_modifier(/datum/skill/fishing, SKILL_SPEED_MODIFIER))
+	var/random_fish_time = rand(3 SECONDS, 6 SECONDS)
 	COOLDOWN_START(src, start_fishing_window, random_fish_time)
-	COOLDOWN_START(src, stop_fishing_window, fishing_buffer)
+	COOLDOWN_START(src, stop_fishing_window, random_fish_time + 2 SECONDS)
 	if(reel_sound_timer)
 		deltimer(reel_sound_timer)
 	if(mutate_parent)
@@ -69,7 +68,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	playsound(atom_parent, 'sound/machines/ping.ogg', 35, FALSE)
 	atom_parent.do_alert_animation()
 
-/datum/component/fishing/proc/finish_fishing(obj/item/fishing_rod/fisher = null, mob/living/user)
+/datum/component/fishing/proc/finish_fishing(obj/item/fishing_rod/fisher = null, master_involved = FALSE)
 	SIGNAL_HANDLER
 	if(reel_sound_timer)
 		deltimer(reel_sound_timer)
@@ -80,36 +79,47 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 		return
 	if(COOLDOWN_FINISHED(src, start_fishing_window) && !COOLDOWN_FINISHED(src, stop_fishing_window))
 		var/turf/fisher_turf = get_turf(fisher)
-		create_reward(fisher_turf, fisher.fishing_focus, user)
-		var/skill_prob = user.mind.get_skill_modifier(/datum/skill/fishing, SKILL_PROBS_MODIFIER)
-		if(prob(skill_prob))
-			create_reward(fisher_turf, fisher.fishing_focus, user)
+		create_reward(fisher_turf, fisher.fishing_focus)
+		if(master_involved)
+			create_reward(fisher_turf, fisher.fishing_focus)
 
-/datum/component/fishing/proc/create_reward(turf/spawning_turf, focus, mob/living/user)
+/datum/component/fishing/proc/create_reward(turf/spawning_turf, focus)
 	var/atom/spawning_reward
-	var/enhanced_reward = user.mind.get_skill_modifier(/datum/skill/fishing, SKILL_RANDS_MODIFIER)
-	user.mind.adjust_experience(/datum/skill/fishing, 10)
 	switch(focus)
 		if(FOCUS_NONE)
 			switch(rand(1, 100))
 				if(1 to 33)
-					spawning_reward = enhanced_reward ? pick_weight(GLOB.maintenance_loot) : pick_weight(GLOB.trash_loot)
+					spawning_reward = pick_weight(GLOB.trash_loot)
 					while(islist(spawning_reward))
 						spawning_reward = pick_weight(spawning_reward)
 				if(34 to 66)
 					if(generate_fish)
 						generate_fish(spawning_turf, random_fish_type())
-				if(67 to 100)
+				if(67 to 98)
 					spawning_reward = pick_weight(possible_loot)
+				if(99 to 100)
+					spawning_reward = /obj/item/skillchip/fishing_master
 		if(FOCUS_TRASH)
-			spawning_reward = enhanced_reward ? pick_weight(GLOB.maintenance_loot) : pick_weight(GLOB.trash_loot)
-			while(islist(spawning_reward))
-				spawning_reward = pick_weight(spawning_reward)
+			switch(rand(1, 100))
+				if(1 to 98)
+					spawning_reward = pick_weight(GLOB.trash_loot)
+					while(islist(spawning_reward))
+						spawning_reward = pick_weight(spawning_reward)
+				if(99 to 100)
+					spawning_reward = /obj/item/skillchip/fishing_master
 		if(FOCUS_FISH)
-			if(generate_fish)
-				generate_fish(spawning_turf, random_fish_type())
+			switch(rand(1, 100))
+				if(1 to 98)
+					if(generate_fish)
+						generate_fish(spawning_turf, random_fish_type())
+				if(99 to 100)
+					spawning_reward = /obj/item/skillchip/fishing_master
 		if(FOCUS_ORE)
-			spawning_reward = pick_weight(possible_loot)
+			switch(rand(1, 100))
+				if(1 to 98)
+					spawning_reward = pick_weight(possible_loot)
+				if(99 to 100)
+					spawning_reward = /obj/item/skillchip/fishing_master
 	if(spawning_reward)
 		new spawning_reward(spawning_turf)
 	atom_parent.balloon_alert_to_viewers("something has been caught!")
@@ -121,6 +131,16 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 /turf/open/lava/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/fishing, set_loot = GLOB.fishing_weights, allow_fishes = FALSE)
+
+/obj/item/skillchip/fishing_master
+	name = "M4ST3R B41T skillchip"
+	desc = "A master of fishing, capable of wrangling the whole ocean if we must."
+	auto_traits = list(TRAIT_FISHING_MASTER)
+	skill_name = "Fishing Master"
+	skill_description = "Master the ability to fish."
+	skill_icon = "certificate"
+	activate_message = span_notice("The fish and junk become far more visible beneath the surface.")
+	deactivate_message = span_notice("The surface begins to cloud up, making it hard to see beneath.")
 
 /obj/item/fishing_rod
 	name = "fishing rod"
@@ -136,8 +156,6 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	var/mob/listening_to
 	///what the fishing rod will focus on when fishing
 	var/fishing_focus = FOCUS_NONE
-	///whether the fishing rod is being dual-wielded
-	var/is_wielded = FALSE
 
 /obj/item/fishing_rod/primitive
 	icon_state = "lava_rod"
@@ -145,15 +163,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 
 /obj/item/fishing_rod/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/two_handed)
-	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
-	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)
-
-/obj/item/fishing_rod/proc/on_wield()
-	is_wielded = TRUE
-
-/obj/item/fishing_rod/proc/on_unwield()
-	is_wielded = FALSE
+	AddComponent(/datum/component/two_handed, require_twohands=TRUE)
 
 /obj/item/fishing_rod/examine(mob/user)
 	. = ..()
@@ -207,11 +217,14 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 		SEND_SIGNAL(target_atom, COMSIG_FINISH_FISHING, fisher = src)
 
 /obj/item/fishing_rod/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	var/skill_level = user.mind.get_skill_level(/datum/skill/fishing)
-	if((!is_wielded && skill_level < SKILL_LEVEL_MASTER) || get_dist(target, user) >= 4)
+	if(get_dist(target, user) >= 4)
 		return
 	if(target_atom)
-		SEND_SIGNAL(target_atom, COMSIG_FINISH_FISHING, fisher = src, user = user)
+		if(HAS_TRAIT(user, TRAIT_FISHING_MASTER))
+			SEND_SIGNAL(target_atom, COMSIG_FINISH_FISHING, fisher = src, master_involved = TRUE)
+			target_atom = null
+			return
+		SEND_SIGNAL(target_atom, COMSIG_FINISH_FISHING, fisher = src)
 		target_atom = null
 		return
 	var/check_fishable = target.GetComponent(/datum/component/fishing)
@@ -220,9 +233,17 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	target_atom = target
 	if(ismovable(target_atom))
 		RegisterSignal(target_atom, COMSIG_MOVABLE_MOVED, .proc/check_movement, override = TRUE)
-	SEND_SIGNAL(target_atom, COMSIG_START_FISHING, user = user)
+	SEND_SIGNAL(target_atom, COMSIG_START_FISHING)
 
 /obj/item/fishing_rod/attackby(obj/item/attacking_item, mob/living/user, params)
+	if(attacking_item.tool_behaviour == TOOL_CROWBAR)
+		var/obj/item/fishing_focus/find_focus = locate() in contents
+		if(find_focus)
+			find_focus.forceMove(get_turf(src))
+		fishing_focus = FOCUS_NONE
+		attacking_item.play_tool_sound(src, 50)
+		cut_overlays()
+		return
 	if(istype(attacking_item, /obj/item/fishing_focus))
 		if(fishing_focus != FOCUS_NONE)
 			to_chat(user, span_warning("You need to remove the current attachment first, use a crowbar!"))
@@ -233,15 +254,6 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 		add_overlay(image(icon='modular_skyrat/modules/fishing/icons/fishing.dmi', icon_state="[get_focus.icon_state]_attach"))
 		return
 	return ..()
-
-/obj/item/fishing_rod/crowbar_act(mob/living/user, obj/item/tool)
-	var/obj/item/fishing_focus/find_focus = locate() in contents
-	if(find_focus)
-		find_focus.forceMove(get_turf(src))
-	fishing_focus = FOCUS_NONE
-	tool.play_tool_sound(src, 50)
-	cut_overlays()
-	return
 
 /obj/item/fishing_focus
 	icon = 'modular_skyrat/modules/fishing/icons/fishing.dmi'

@@ -13,9 +13,8 @@
  * * max_value - Specifies a maximum value. If none is set, any number can be entered. Pressing "max" defaults to 1000.
  * * min_value - Specifies a minimum value. Often 0.
  * * timeout - The timeout of the number input, after which the modal will close and qdel itself. Set to zero for no timeout.
- * * round_value - whether the inputted number is rounded down into an integer.
  */
-/proc/tgui_input_number(mob/user, message, title = "Number Input", default = 0, max_value = 10000, min_value = 0, timeout = 0, round_value = TRUE)
+/proc/tgui_input_number(mob/user, message, title = "Number Input", default = 0, max_value = 10000, min_value = 0, timeout = 0)
 	if (!user)
 		user = usr
 	if (!istype(user))
@@ -26,9 +25,8 @@
 			return
 	// Client does NOT have tgui_input on: Returns regular input
 	if(!user.client.prefs.read_preference(/datum/preference/toggle/tgui_input))
-		var/input_number = input(user, message, title, default) as null|num
-		return clamp(round_value ? round(input_number) : input_number, min_value, max_value)
-	var/datum/tgui_input_number/number_input = new(user, message, title, default, max_value, min_value, timeout, round_value)
+		return clamp(round(input(user, message, title, default) as null|num), min_value, max_value)
+	var/datum/tgui_input_number/number_input = new(user, message, title, default, max_value, min_value, timeout)
 	number_input.ui_interact(user)
 	number_input.wait()
 	if (number_input)
@@ -49,9 +47,8 @@
  * * min_value - Specifies a minimum value. Often 0.
  * * callback - The callback to be invoked when a choice is made.
  * * timeout - The timeout of the number input, after which the modal will close and qdel itself. Set to zero for no timeout.
- * * round_value - whether the inputted number is rounded down into an integer.
  */
-/proc/tgui_input_number_async(mob/user, message, title = "Number Input", default = 0, max_value = 10000, min_value = 0, datum/callback/callback, timeout = 60 SECONDS, round_value = TRUE)
+/proc/tgui_input_number_async(mob/user, message, title = "Number Input", default = 0, max_value = 10000, min_value = 0, datum/callback/callback, timeout = 60 SECONDS)
 	if (!user)
 		user = usr
 	if (!istype(user))
@@ -62,9 +59,8 @@
 			return
 	// Client does NOT have tgui_input on: Returns regular input
 	if(!user.client.prefs.read_preference(/datum/preference/toggle/tgui_input))
-		var/input_number = input(user, message, title, default) as null|num
-		return clamp(round_value ? round(input_number) : input_number, min_value, max_value)
-	var/datum/tgui_input_number/async/number_input = new(user, message, title, default, max_value, min_value, callback, timeout, round_value)
+		return clamp(round(input(user, message, title, default) as null|num), min_value, max_value)
+	var/datum/tgui_input_number/async/number_input = new(user, message, title, default, max_value, min_value, callback, timeout)
 	number_input.ui_interact(user)
 
 /**
@@ -92,17 +88,14 @@
 	var/timeout
 	/// The title of the TGUI window
 	var/title
-	/// Whether the submitted number is rounded down into an integer.
-	var/round_value
 
 
-/datum/tgui_input_number/New(mob/user, message, title, default, max_value, min_value, timeout, round_value)
+/datum/tgui_input_number/New(mob/user, message, title, default, max_value, min_value, timeout)
 	src.default = default
 	src.max_value = max_value
 	src.message = message
 	src.min_value = min_value
 	src.title = title
-	src.round_value = round_value
 	if (timeout)
 		src.timeout = timeout
 		start_time = world.time
@@ -166,7 +159,7 @@
 		if("submit")
 			if(!isnum(params["entry"]))
 				CRASH("A non number was input into tgui input number by [usr]")
-			var/choice = round_value ? round(params["entry"]) : params["entry"]
+			var/choice = round(params["entry"])
 			if(choice > max_value)
 				CRASH("A number greater than the max value was input into tgui input number by [usr]")
 			if(choice < min_value)

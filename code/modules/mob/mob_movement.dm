@@ -556,9 +556,8 @@
 	if(zMove(DOWN, z_move_flags = ZMOVE_FLIGHT_FLAGS|ZMOVE_FEEDBACK|ventcrawling_flag))
 		to_chat(src, span_notice("You move down."))
 	return FALSE
-
 /mob/abstract_move(atom/destination)
 	var/turf/new_turf = get_turf(destination)
-	if((istype(new_turf, /turf/cordon) || is_secret_level(new_turf.z)) && !client?.holder)
+	if(is_secret_level(new_turf.z) && !client?.holder)
 		return
 	return ..()

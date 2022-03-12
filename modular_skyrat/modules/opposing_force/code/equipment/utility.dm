@@ -16,6 +16,17 @@
 	description = "A fully-kitted toolbox scavenged from maintenance by our highly-paid monkeys. The toolbox \
 		itself is weighted especially to bash any head in and comes with a free pair of insulated combat gloves."
 
+/datum/opposing_force_equipment/gear/engichip
+	item_type = /obj/item/skillchip/job/engineer
+	description = "A skillchip that, when installed, allows the user to recognise airlock and APC wire layouts and understand their functionality at a glance. Highly valuable and sought after."
+
+/datum/opposing_force_equipment/gear/roboticist
+	item_type = /obj/item/skillchip/job/roboticist
+	description = "A skillchip that, when installed, allows the user to recognise cyborg wire layouts and understand their functionality at a glance."
+
+/datum/opposing_force_equipment/gear/tacticool
+	item_type = /obj/item/skillchip/chameleon/reload
+
 /datum/opposing_force_equipment/gear/thermalgoggles
 	item_type = /obj/item/clothing/glasses/thermal
 	description = "A pair of thermal goggles. Cannot be chameleon disguised."
@@ -35,6 +46,11 @@
 /datum/opposing_force_equipment/gear/projector
 	item_type = /obj/item/chameleon
 	description = "A projector that allows its user to turn into any scanned object. Pairs well with a cluttered room and ambush weapon."
+
+/datum/opposing_force_equipment/gear/box
+	item_type = /obj/item/implanter/stealth
+	description = "An implanter that grants you the ability to wield the ultimate in invisible box technology. Best used in conjunction with \
+					a tape recorder playing Snake Eater."
 
 /datum/opposing_force_equipment/gear/sechud
 	item_type = /obj/item/clothing/glasses/hud/security/chameleon
@@ -60,6 +76,16 @@
 	description = "A damp rag made with extra absorbant materials. The perfectly innocent tool to kidnap your local assistant. \
 			Apply up to 30u liquids and use combat mode to smother anyone not covering their mouth."
 
+/datum/opposing_force_equipment/gear/nodrop
+	item_type = /obj/item/autosurgeon/organ/syndicate/nodrop
+	name = "Anti Drop Implant"
+	description = "An implant that prevents you from dropping items in your hand involuntarily. Comes loaded in a syndicate autosurgeon."
+
+/datum/opposing_force_equipment/gear/hackerman
+	item_type = /obj/item/autosurgeon/organ/syndicate/hackerman
+	name = "Hacking Arm Implant"
+	description = "An advanced arm implant that comes with cutting edge hacking tools. Perfect for the cybernetically enhanced wirerunners."
+
 /datum/opposing_force_equipment/gear/mulligan
 	name = "Mulligan"
 	item_type = /obj/item/reagent_containers/syringe/mulligan
@@ -77,78 +103,8 @@
 	admin_note = "Allows a ghost to take control of a Cortical Borer."
 
 /datum/opposing_force_equipment/gear/borer_egg/on_issue(mob/living/target)
-	new /obj/effect/mob_spawn/ghost_role/borer_egg/opfor(get_turf(src))
+	new /obj/effect/mob_spawn/ghost_role/borer_egg(get_turf(src))
 
 /datum/opposing_force_equipment/gear/ventcrawl_book
 	item_type = /obj/item/book/granter/traitsr/ventcrawl_book
 	admin_note = "WARNING: Incredibly powerful, use discretion when handing this out."
-
-/datum/opposing_force_equipment/gear/holoparasite
-	item_type = /obj/item/guardiancreator/tech/choose/traitor
-	admin_note = "Lets a ghost take control of a guardian spirit bound to the user."
-
-/datum/opposing_force_equipment/gear/launchpad
-	name = "Briefcase Launchpad"
-	item_type = /obj/item/storage/briefcase/launchpad
-	description = "A briefcase containing a launchpad, a device able to teleport items and people to and from targets up to eight tiles away from the briefcase. \
-			Also includes a remote control, disguised as an ordinary folder. Touch the briefcase with the remote to link it."
-
-/datum/opposing_force_equipment/gear/camera_bug
-	name = "Camera Bug"
-	item_type = /obj/item/camera_bug
-
-/datum/opposing_force_equipment/gear/microlaser
-	name = "Radioactive Microlaser"
-	item_type = /obj/item/healthanalyzer/rad_laser
-	description = "A radioactive microlaser disguised as a standard Nanotrasen health analyzer. When used, it emits a \
-			powerful burst of radiation, which, after a short delay, can incapacitate all but the most protected \
-			of humanoids."
-
-/datum/opposing_force_equipment/gear/stimpack
-	name = "Stimulant Medipen"
-	item_type = /obj/item/reagent_containers/hypospray/medipen/stimulants
-
-/datum/opposing_force_equipment/gear/hypnoflash
-	name = "Hypnotic Flash"
-	item_type = /obj/item/assembly/flash/hypnotic
-	description = "A modified flash able to hypnotize targets. If the target is not in a mentally vulnerable state, it will only confuse and pacify them temporarily."
-	admin_note = "Able to hypnotize people with the next phrase said after exposure."
-
-/datum/opposing_force_equipment/gear/hypnobang
-	name = "Hypnotic Flashbang"
-	item_type = /obj/item/grenade/hypnotic
-	description = "A modified flashbang able to hypnotize targets. If the target is not in a mentally vulnerable state, it will only confuse and pacify them temporarily."
-	admin_note = "Able to hypnotize people with the next phrase said after exposure."
-
-/datum/opposing_force_equipment/gear/agentcard
-	name = "Agent Card"
-	item_type = /obj/item/card/id/advanced/chameleon
-	description = "A highly advanced chameleon ID card. Touch this card on another ID card or player to choose which accesses to copy. Has special magnetic properties which force it to the front of wallets."
-
-/datum/opposing_force_equipment/gear/agentcarddeluxe
-	name = "Deluxe Agent Identification Card"
-	item_type = /obj/item/card/id/advanced/chameleon/black
-	description = "Created by Cybersun Industries to be the ultimate for field operations, this upgraded Agent ID \
-	comes with all the fluff of the original, but with an upgraded microchip - allowing for the storage of all \
-	standard Nanotrasen access codes in one conveinent package. Now in glossy olive by default!"
-	admin_note = "Has no limit on how many accesses it can store."
-
-/datum/opposing_force_equipment/gear/chameleonheadsetdeluxe
-	name = "Advanced Chameleon Headset"
-	item_type = /obj/item/radio/headset/chameleon/advanced
-	description = "A premium model Chameleon Headset. All the features you love of the original, but now with flashbang \
-	protection, voice amplification, memory-foam, HD Sound Quality, and extra-wide spectrum dial. Usually reserved \
-	for high-ranking Cybersun officers, a few spares have been reserved for field agents."
-
-/datum/opposing_force_equipment/gear/syndiejaws
-	name = "Syndicate Jaws of Life"
-	item_type = /obj/item/crowbar/power/syndicate
-	description = "Based on a Nanotrasen model, this powerful tool can be used as both a crowbar and a pair of wirecutters. \
-	In its crowbar configuration, it can be used to force open airlocks. Very useful for entering the station or its departments."
-
-/datum/opposing_force_equipment/gear/combatmedkit
-	name = "Syndicate Combat Medic Kit"
-	item_type = /obj/item/storage/firstaid/tactical
-	description = "This first aid kit is a suspicious brown and red. Included is a combat stimulant injector \
-			for rapid healing, a medical night vision HUD for quick identification of injured personnel, \
-			and other supplies helpful for a field medic."

@@ -77,26 +77,24 @@
 		return
 	pick_sign(user)
 
-/obj/structure/sign/barsign/screwdriver_act(mob/living/user, obj/item/tool)
-	tool.play_tool_sound(src)
-	if(!panel_open)
-		to_chat(user, span_notice("You open the maintenance panel."))
-		set_sign(new /datum/barsign/hiddensigns/signoff)
-		panel_open = TRUE
-		return TOOL_ACT_TOOLTYPE_SUCCESS
-	to_chat(user, span_notice("You close the maintenance panel."))
-
-	if(broken)
-		set_sign(new /datum/barsign/hiddensigns/empbarsign)
-	else if(!chosen_sign)
-		set_sign(new /datum/barsign/hiddensigns/signoff)
-	else
-		set_sign(chosen_sign)
-	panel_open = FALSE
-	return TOOL_ACT_TOOLTYPE_SUCCESS
-
 /obj/structure/sign/barsign/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/stack/cable_coil) && panel_open)
+	if(I.tool_behaviour == TOOL_SCREWDRIVER)
+		if(!panel_open)
+			to_chat(user, span_notice("You open the maintenance panel."))
+			set_sign(new /datum/barsign/hiddensigns/signoff)
+			panel_open = TRUE
+		else
+			to_chat(user, span_notice("You close the maintenance panel."))
+			if(!broken)
+				if(!chosen_sign)
+					set_sign(new /datum/barsign/hiddensigns/signoff)
+				else
+					set_sign(chosen_sign)
+			else
+				set_sign(new /datum/barsign/hiddensigns/empbarsign)
+			panel_open = FALSE
+
+	else if(istype(I, /obj/item/stack/cable_coil) && panel_open)
 		var/obj/item/stack/cable_coil/C = I
 		if(!broken)
 			to_chat(user, span_warning("This sign is functioning properly!"))
@@ -107,11 +105,8 @@
 			broken = FALSE
 		else
 			to_chat(user, span_warning("You need at least two lengths of cable!"))
-		return TRUE
-
-	if (broken)
-		return TRUE
-	return ..()
+	else
+		return ..()
 
 
 /obj/structure/sign/barsign/emp_act(severity)

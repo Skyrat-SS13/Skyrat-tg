@@ -87,10 +87,7 @@
 /datum/ai_behavior/use_on_object/setup(datum/ai_controller/controller, target_key)
 	. = ..()
 	var/datum/weakref/target_ref = controller.blackboard[target_key]
-	var/target = target_ref?.resolve()
-	if(!target)
-		return FALSE
-	controller.current_movement_target = target
+	controller.current_movement_target = target_ref?.resolve()
 
 /datum/ai_behavior/use_on_object/perform(delta_time, datum/ai_controller/controller, target_key)
 	. = ..()

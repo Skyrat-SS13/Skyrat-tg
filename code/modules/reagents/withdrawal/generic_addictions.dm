@@ -178,15 +178,15 @@
 	. = ..()
 	var/list/possibilities = list()
 	if(!HAS_TRAIT(affected_carbon, TRAIT_RESISTHEAT))
-		possibilities += ALERT_TEMPERATURE_HOT
+		possibilities += "temphot"
 	if(!HAS_TRAIT(affected_carbon, TRAIT_RESISTCOLD))
-		possibilities += ALERT_TEMPERATURE_COLD
+		possibilities += "tempcold"
 	var/obj/item/organ/lungs/lungs = affected_carbon.getorganslot(ORGAN_SLOT_LUNGS)
 	if(lungs)
 		if(lungs.safe_oxygen_min)
-			possibilities += ALERT_NOT_ENOUGH_OXYGEN
+			possibilities += "not_enough_oxy"
 		if(lungs.safe_oxygen_max)
-			possibilities += ALERT_TOO_MUCH_OXYGEN
+			possibilities += "too_much_oxy"
 	var/type = pick(possibilities)
 	hallucination = new(affected_carbon, TRUE, type, 120 MINUTES)//last for a while basically
 

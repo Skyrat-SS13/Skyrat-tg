@@ -45,9 +45,6 @@
 			if(input == code)
 				if(!spawned_loot)
 					spawn_loot()
-				if(qdel_on_open)
-					qdel(src)
-					return
 				tamperproof = 0 // set explosion chance to zero, so we dont accidently hit it with a multitool and instantly die
 				togglelock(user)
 			else if(!input || !sanitycheck || length(sanitised) != codelen)
@@ -58,9 +55,8 @@
 				attempts--
 				if(attempts == 0)
 					boom(user)
-		return
-
-	return ..()
+	else
+		return ..()
 
 /obj/structure/closet/crate/secure/loot/AltClick(mob/living/user)
 	if(!user.canUseTopic(src, BE_CLOSE))
@@ -110,14 +106,18 @@
 
 /obj/structure/closet/crate/secure/loot/togglelock(mob/user, silent = FALSE)
 	if(!locked)
-		. = ..() //Run the normal code.
-		if(locked) //Double check if the crate actually locked itself when the normal code ran.
+		. = ..()
+		if(locked)
 			//reset the anti-tampering, number of attempts and last attempt when the lock is re-enabled.
 			tamperproof = initial(tamperproof)
 			attempts = initial(attempts)
 			lastattempt = null
 		return
 	if(tamperproof)
+		boom(user)
+		return
+	if (qdel_on_open)
+		qdel(src)
 		return
 	return ..()
 

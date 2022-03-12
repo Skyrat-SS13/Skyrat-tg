@@ -119,7 +119,6 @@
 	name = "beach"
 	icon = 'icons/misc/beach.dmi'
 	flags_1 = NONE
-	turf_flags = NO_RUST
 	attachment_holes = FALSE
 	bullet_bounce_sound = null
 	footstep = FOOTSTEP_SAND
@@ -304,7 +303,6 @@
 	footstep = FOOTSTEP_GRASS
 	barefootstep = FOOTSTEP_GRASS
 	clawfootstep = FOOTSTEP_GRASS
-	turf_flags = NO_RUST
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_FLOOR_GRASS)

@@ -325,7 +325,7 @@
 		C.forceMove(src)
 		cell = C
 		return
-	cell = new /obj/item/stock_parts/cell/high(src)
+	cell = new /obj/item/stock_parts/cell/high/plus(src)
 
 ///Adds a scanning module, for use in Map-spawned mechs, Nuke Ops mechs, and admin-spawned mechs. Mechs built by hand will replace this.
 /obj/vehicle/sealed/mecha/proc/add_scanmod(obj/item/stock_parts/scanning_module/sm=null)
@@ -455,34 +455,34 @@
 			var/cellcharge = cell.charge/cell.maxcharge
 			switch(cellcharge)
 				if(0.75 to INFINITY)
-					occupant.clear_alert(ALERT_CHARGE)
+					occupant.clear_alert("charge")
 				if(0.5 to 0.75)
-					occupant.throw_alert(ALERT_CHARGE, /atom/movable/screen/alert/lowcell, 1)
+					occupant.throw_alert("charge", /atom/movable/screen/alert/lowcell, 1)
 				if(0.25 to 0.5)
-					occupant.throw_alert(ALERT_CHARGE, /atom/movable/screen/alert/lowcell, 2)
+					occupant.throw_alert("charge", /atom/movable/screen/alert/lowcell, 2)
 				if(0.01 to 0.25)
-					occupant.throw_alert(ALERT_NEW_LAW, /atom/movable/screen/alert/lowcell, 3)
+					occupant.throw_alert("charge", /atom/movable/screen/alert/lowcell, 3)
 				else
-					occupant.throw_alert(ALERT_NEW_LAW, /atom/movable/screen/alert/emptycell)
+					occupant.throw_alert("charge", /atom/movable/screen/alert/emptycell)
 
 		var/integrity = atom_integrity/max_integrity*100
 		switch(integrity)
 			if(30 to 45)
-				occupant.throw_alert(ALERT_MECH_DAMAGE, /atom/movable/screen/alert/low_mech_integrity, 1)
+				occupant.throw_alert("mech damage", /atom/movable/screen/alert/low_mech_integrity, 1)
 			if(15 to 35)
-				occupant.throw_alert(ALERT_MECH_DAMAGE, /atom/movable/screen/alert/low_mech_integrity, 2)
+				occupant.throw_alert("mech damage", /atom/movable/screen/alert/low_mech_integrity, 2)
 			if(-INFINITY to 15)
-				occupant.throw_alert(ALERT_MECH_DAMAGE, /atom/movable/screen/alert/low_mech_integrity, 3)
+				occupant.throw_alert("mech damage", /atom/movable/screen/alert/low_mech_integrity, 3)
 			else
-				occupant.clear_alert(ALERT_MECH_DAMAGE)
+				occupant.clear_alert("mech damage")
 		var/atom/checking = occupant.loc
 		// recursive check to handle all cases regarding very nested occupants,
 		// such as brainmob inside brainitem inside MMI inside mecha
 		while(!isnull(checking))
 			if(isturf(checking))
 				// hit a turf before hitting the mecha, seems like they have been moved out
-				occupant.clear_alert(ALERT_CHARGE)
-				occupant.clear_alert(ALERT_MECH_DAMAGE)
+				occupant.clear_alert("charge")
+				occupant.clear_alert("mech damage")
 				occupant = null
 				break
 			else if (checking == src)
@@ -1116,8 +1116,8 @@
 	UnregisterSignal(M, COMSIG_MOB_CLICKON)
 	UnregisterSignal(M, COMSIG_MOB_MIDDLECLICKON)
 	UnregisterSignal(M, COMSIG_MOB_SAY)
-	M.clear_alert(ALERT_CHARGE)
-	M.clear_alert(ALERT_MECH_DAMAGE)
+	M.clear_alert("charge")
+	M.clear_alert("mech damage")
 	if(M.client)
 		M.update_mouse_pointer()
 		M.client.view_size.resetToDefault()

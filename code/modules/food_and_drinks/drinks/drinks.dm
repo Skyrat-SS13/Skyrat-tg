@@ -137,9 +137,7 @@
 /obj/item/reagent_containers/food/drinks/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()
 	if(!.) //if the bottle wasn't caught
-		SplashReagents(hit_atom, override_spillable = TRUE)
-		smash(hit_atom)
-
+		smash(hit_atom, throwingdatum?.thrower, TRUE)
 
 /obj/item/reagent_containers/food/drinks/proc/smash(atom/target, mob/thrower, ranged = FALSE)
 	if(!isGlass)
@@ -158,7 +156,7 @@
 	if(prob(33))
 		var/obj/item/shard/S = new(drop_location())
 		target.Bumped(S)
-	playsound(src, SFX_SHATTER, 70, TRUE)
+	playsound(src, "shatter", 70, TRUE)
 	transfer_fingerprints_to(B)
 	qdel(src)
 	target.Bumped(B)
@@ -705,7 +703,7 @@
 
 	to_chat(user, "You pull back the tab of [src] with a satisfying pop.") //Ahhhhhhhh
 	reagents.flags |= OPENCONTAINER
-	playsound(src, SFX_CAN_OPEN, 50, TRUE)
+	playsound(src, "can_open", 50, TRUE)
 	spillable = TRUE
 	throwforce = 0
 

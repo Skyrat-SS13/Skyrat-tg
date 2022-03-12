@@ -34,7 +34,7 @@
 	desc = "We've saved money by giving you half a shirt!"
 	icon_state = "croptop"
 	body_parts_covered = CHEST|GROIN|ARMS
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	fitted = FEMALE_UNIFORM_TOP
 	can_adjust = FALSE
 
 /obj/item/clothing/under/misc/gear_harness
@@ -432,7 +432,7 @@
 	desc = "A single leaf, designed to cover the genitalia of the wearer. Seek not temptation."
 	icon_state = "adam"
 	body_parts_covered = GROIN
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	fitted = FEMALE_UNIFORM_TOP
 
 /obj/item/clothing/under/misc/evilcargo
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
@@ -459,7 +459,7 @@
 	body_parts_covered = GROIN
 	can_adjust = FALSE
 	mutant_variants = NONE
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	fitted = FEMALE_UNIFORM_TOP
 
 /obj/item/clothing/under/rank/civilian/hydroponics/trouser
 	desc = "A green set of trousers, perfect for making pigs smoke."
@@ -470,7 +470,7 @@
 	body_parts_covered = GROIN
 	can_adjust = FALSE
 	mutant_variants = NONE
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	fitted = FEMALE_UNIFORM_TOP
 
 /obj/item/clothing/under/rank/security/peacekeeper/trousers
 	name = "peacekeeper's trousers"
@@ -481,7 +481,7 @@
 	body_parts_covered = GROIN
 	can_adjust = FALSE
 	mutant_variants = NONE
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	fitted = FEMALE_UNIFORM_TOP
 
 /obj/item/clothing/under/rank/security/peacekeeper/trousers/red
 	name = "security officer's trousers"
@@ -687,7 +687,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "lucifer"
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	fitted = FEMALE_UNIFORM_TOP
 	obj_flags = UNIQUE_RENAME
 	unique_reskin = list(
 		"Pride" = "lucifer",

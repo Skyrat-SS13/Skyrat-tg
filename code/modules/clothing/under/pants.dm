@@ -1,7 +1,7 @@
 /obj/item/clothing/under/pants
 	gender = PLURAL
 	body_parts_covered = GROIN|LEGS
-	female_sprite_flags = NO_FEMALE_UNIFORM
+	fitted = NO_FEMALE_UNIFORM
 	can_adjust = FALSE
 	custom_price = PAYCHECK_EASY
 	icon = 'icons/obj/clothing/under/shorts_pants.dmi'

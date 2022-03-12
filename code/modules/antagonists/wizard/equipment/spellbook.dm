@@ -544,82 +544,99 @@
 /datum/spellbook_entry/summon
 	name = "Summon Stuff"
 	category = "Rituals"
-	limit = 1
 	refundable = FALSE
 	buy_word = "Cast"
 
-/datum/spellbook_entry/summon/Buy(mob/living/carbon/human/user, obj/item/spellbook/book)
-	log_spellbook("[key_name(user)] cast [src] for [cost] points")
-	SSblackbox.record_feedback("tally", "wizard_spell_learned", 1, name)
-	times++
-	return TRUE
-
+/datum/spellbook_entry/summon/CanBuy(mob/living/carbon/human/user,obj/item/spellbook/book)
+	return ..() && !times
+//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGE
+/*
 /datum/spellbook_entry/summon/ghosts
 	name = "Summon Ghosts"
 	desc = "Spook the crew out by making them see dead people. Be warned, ghosts are capricious and occasionally vindicative, and some will use their incredibly minor abilities to frustrate you."
 	cost = 0
 
 /datum/spellbook_entry/summon/ghosts/Buy(mob/living/carbon/human/user, obj/item/spellbook/book)
-	summon_ghosts(user)
+	log_spellbook("[key_name(user)] cast [src] for [cost] points")
+	SSblackbox.record_feedback("tally", "wizard_spell_learned", 1, name)
+	new /datum/round_event/wizard/ghost()
+	times++
+	to_chat(user, span_notice("You have cast summon ghosts!"))
 	playsound(get_turf(user), 'sound/effects/ghost2.ogg', 50, TRUE)
-	return ..()
-
+	return TRUE
+*/
+//SKYRAT EDIT REMOVAL END
 /datum/spellbook_entry/summon/guns
 	name = "Summon Guns"
 	desc = "Nothing could possibly go wrong with arming a crew of lunatics just itching for an excuse to kill you. There is a good chance that they will shoot each other first."
 
 /datum/spellbook_entry/summon/guns/IsAvailable()
-	// Summon Guns requires 100 threat.
-	var/datum/game_mode/dynamic/mode = SSticker.mode
-	if(mode.threat_level < MINIMUM_THREAT_FOR_RITUALS)
+	if(!SSticker.mode) // In case spellbook is placed on map
 		return FALSE
-	// Also must be config enabled
+	if(istype(SSticker.mode, /datum/game_mode/dynamic)) // Disable events on dynamic
+		var/datum/game_mode/dynamic/mode = SSticker.mode
+		if(mode.threat_level < MINIMUM_THREAT_FOR_RITUALS)
+			return FALSE
 	return !CONFIG_GET(flag/no_summon_guns)
 
 /datum/spellbook_entry/summon/guns/Buy(mob/living/carbon/human/user,obj/item/spellbook/book)
-	summon_guns(user, 10)
+	log_spellbook("[key_name(user)] cast [src] for [cost] points")
+	SSblackbox.record_feedback("tally", "wizard_spell_learned", 1, name)
+	rightandwrong(SUMMON_GUNS, user, 10)
+	times++
 	playsound(get_turf(user), 'sound/magic/castsummon.ogg', 50, TRUE)
-	return ..()
+	to_chat(user, span_notice("You have cast summon guns!"))
+	return TRUE
 
 /datum/spellbook_entry/summon/magic
 	name = "Summon Magic"
 	desc = "Share the wonders of magic with the crew and show them why they aren't to be trusted with it at the same time."
 
 /datum/spellbook_entry/summon/magic/IsAvailable()
-	// Summon Magic requires 100 threat.
-	var/datum/game_mode/dynamic/mode = SSticker.mode
-	if(mode.threat_level < MINIMUM_THREAT_FOR_RITUALS)
+	if(!SSticker.mode) // In case spellbook is placed on map
 		return FALSE
-	// Also must be config enabled
+	if(istype(SSticker.mode, /datum/game_mode/dynamic)) // Disable events on dynamic
+		var/datum/game_mode/dynamic/mode = SSticker.mode
+		if(mode.threat_level < MINIMUM_THREAT_FOR_RITUALS)
+			return FALSE
 	return !CONFIG_GET(flag/no_summon_magic)
 
 /datum/spellbook_entry/summon/magic/Buy(mob/living/carbon/human/user,obj/item/spellbook/book)
-	summon_magic(user, 10)
+	log_spellbook("[key_name(user)] cast [src] for [cost] points")
+	SSblackbox.record_feedback("tally", "wizard_spell_learned", 1, name)
+	rightandwrong(SUMMON_MAGIC, user, 10)
+	times++
 	playsound(get_turf(user), 'sound/magic/castsummon.ogg', 50, TRUE)
-	return ..()
+	to_chat(user, span_notice("You have cast summon magic!"))
+	return TRUE
 
 /datum/spellbook_entry/summon/events
 	name = "Summon Events"
 	desc = "Give Murphy's law a little push and replace all events with special wizard ones that will confound and confuse everyone. Multiple castings increase the rate of these events."
 	cost = 2
-	limit = 5 // Each purchase can intensify it.
+	limit = 1
 
 /datum/spellbook_entry/summon/events/IsAvailable()
-	// Summon Events requires 100 threat.
-	var/datum/game_mode/dynamic/mode = SSticker.mode
-	if(mode.threat_level < MINIMUM_THREAT_FOR_RITUALS)
+	if(!SSticker.mode) // In case spellbook is placed on map
 		return FALSE
-	// Also, must be config enabled
+	if(istype(SSticker.mode, /datum/game_mode/dynamic)) // Disable events on dynamic
+		var/datum/game_mode/dynamic/mode = SSticker.mode
+		if(mode.threat_level < MINIMUM_THREAT_FOR_RITUALS)
+			return FALSE
 	return !CONFIG_GET(flag/no_summon_events)
 
-/datum/spellbook_entry/summon/events/Buy(mob/living/carbon/human/user, obj/item/spellbook/book)
-	summon_events(user)
+/datum/spellbook_entry/summon/events/Buy(mob/living/carbon/human/user,obj/item/spellbook/book)
+	log_spellbook("[key_name(user)] cast [src] for [cost] points")
+	SSblackbox.record_feedback("tally", "wizard_spell_learned", 1, name)
+	summonevents()
+	times++
 	playsound(get_turf(user), 'sound/magic/castsummon.ogg', 50, TRUE)
-	return ..()
+	to_chat(user, span_notice("You have cast summon events."))
+	return TRUE
 
 /datum/spellbook_entry/summon/events/GetInfo()
-	if(times > 0)
-		. += "You have cast it [times] time\s.<br>"
+	if(times>0)
+		. += "You cast it [times] times.<br>"
 	return .
 
 /datum/spellbook_entry/summon/curse_of_madness
@@ -628,12 +645,16 @@
 	cost = 4
 
 /datum/spellbook_entry/summon/curse_of_madness/Buy(mob/living/carbon/human/user, obj/item/spellbook/book)
+	log_spellbook("[key_name(user)] cast [src] for [cost] points")
+	SSblackbox.record_feedback("tally", "wizard_spell_learned", 1, name)
+	times++
 	var/message = tgui_input_text(user, "Whisper a secret truth to drive your victims to madness", "Whispers of Madness")
 	if(!message)
 		return FALSE
 	curse_of_madness(user, message)
+	to_chat(user, span_notice("You have cast the curse of insanity!"))
 	playsound(user, 'sound/magic/mandswap.ogg', 50, TRUE)
-	return ..()
+	return TRUE
 
 #undef MINIMUM_THREAT_FOR_RITUALS
 

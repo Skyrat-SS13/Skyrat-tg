@@ -230,12 +230,12 @@
 	lose_text = "<span class='notice'>You feel in control of your hands again.</span>"
 
 /datum/brain_trauma/severe/discoordination/on_gain()
-	. = ..()
-	owner.apply_status_effect(/datum/status_effect/discoordinated)
+	ADD_TRAIT(owner, TRAIT_DISCOORDINATED_TOOL_USER, TRAUMA_TRAIT)
+	..()
 
 /datum/brain_trauma/severe/discoordination/on_lose()
-	owner.remove_status_effect(/datum/status_effect/discoordinated)
-	return ..()
+	REMOVE_TRAIT(owner, TRAIT_DISCOORDINATED_TOOL_USER, TRAUMA_TRAIT)
+	..()
 
 /datum/brain_trauma/severe/pacifism
 	name = "Traumatic Non-Violence"

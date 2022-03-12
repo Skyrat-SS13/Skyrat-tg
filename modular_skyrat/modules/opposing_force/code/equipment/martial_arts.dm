@@ -1,5 +1,5 @@
 /datum/opposing_force_equipment/martial_art
-	category = OPFOR_EQUIPMENT_CATEGORY_MARTIAL_ARTS
+	category = OPFOR_EQUIPMENT_CATEGORY_MARTIAL_ART
 
 /datum/opposing_force_equipment/martial_art/cqc
 	item_type = /obj/item/book/granter/martial/cqc

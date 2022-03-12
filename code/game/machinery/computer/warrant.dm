@@ -23,8 +23,6 @@
 					notice = "<br>**REPORT TO THE BRIG**"
 				if("Incarcerated")
 					background = "background-color:#CD6500;"
-				if("Suspected")
-					background = "background-color:#CD6500;"
 				if("Paroled")
 					background = "background-color:#CD6500;"
 				if("Discharged")
@@ -130,7 +128,7 @@
 								to_chat(M, span_notice("The fine has been paid in full."))
 							SSblackbox.ReportCitation(text2num(href_list["cdataid"]),"","","","", 0, pay)
 							qdel(C)
-							playsound(src, SFX_TERMINAL_TYPE, 25, FALSE)
+							playsound(src, "terminal_type", 25, FALSE)
 					else
 						to_chat(M, span_warning("Fines can only be paid with holochips!"))
 	updateUsrDialog()

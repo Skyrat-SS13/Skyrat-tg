@@ -167,17 +167,16 @@
 
 	if(machine_stat & BROKEN)
 		return
-	var/initial_stat = machine_stat
 	if(powered(power_channel))
-		set_machine_stat(machine_stat & ~NOPOWER)
-		if(initial_stat & NOPOWER)
+		if(machine_stat & NOPOWER)
 			SEND_SIGNAL(src, COMSIG_MACHINERY_POWER_RESTORED)
 			. = TRUE
+		set_machine_stat(machine_stat & ~NOPOWER)
 	else
-		set_machine_stat(machine_stat | NOPOWER)
-		if(!(initial_stat & NOPOWER))
+		if(!(machine_stat & NOPOWER))
 			SEND_SIGNAL(src, COMSIG_MACHINERY_POWER_LOST)
 			. = TRUE
+		set_machine_stat(machine_stat | NOPOWER)
 	update_appearance()
 
 // connect the machine to a powernet if a node cable or a terminal is present on the turf

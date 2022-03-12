@@ -133,7 +133,7 @@
 	righthand_file = 'icons/mob/inhands/equipment/briefcase_righthand.dmi'
 	desc = "A large briefcase with a digital locking system."
 	force = 8
-	hitsound = SFX_SWING_HIT
+	hitsound = "swing_hit"
 	throw_speed = 2
 	throw_range = 4
 	w_class = WEIGHT_CLASS_BULKY

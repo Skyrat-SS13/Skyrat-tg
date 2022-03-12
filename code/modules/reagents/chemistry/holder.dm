@@ -594,40 +594,41 @@
 	return amount
 
 /// Copies the reagents to the target object
-/datum/reagents/proc/copy_to(obj/target, amount = 1, multiplier = 1, preserve_data = TRUE, no_react = FALSE)
+/datum/reagents/proc/copy_to(obj/target, amount=1, multiplier=1, preserve_data=1, no_react=0) //SKYRAT EDIT CHANGE
 	var/list/cached_reagents = reagent_list
 	if(!target || !total_volume)
 		return
 
-	var/datum/reagents/target_holder
+	var/datum/reagents/R
 	if(istype(target, /datum/reagents))
-		target_holder = target
+		R = target
 	else
 		if(!target.reagents)
 			return
-		target_holder = target.reagents
+		R = target.reagents
 
 	if(amount < 0)
 		return
 
-	amount = min(min(amount, total_volume), target_holder.maximum_volume - target_holder.total_volume)
+	amount = min(min(amount, total_volume), R.maximum_volume-R.total_volume)
 	var/part = amount / total_volume
 	var/trans_data = null
 	for(var/datum/reagent/reagent as anything in cached_reagents)
 		var/copy_amount = reagent.volume * part
 		if(preserve_data)
 			trans_data = reagent.data
-		target_holder.add_reagent(reagent.type, copy_amount * multiplier, trans_data, chem_temp, reagent.purity, reagent.ph, no_react = TRUE, ignore_splitting = reagent.chemical_flags & REAGENT_DONOTSPLIT)
+		R.add_reagent(reagent.type, copy_amount * multiplier, trans_data, added_purity = reagent.purity, added_ph = reagent.ph, no_react = TRUE, ignore_splitting = reagent.chemical_flags & REAGENT_DONOTSPLIT)
 
+	//pass over previous ongoing reactions before handle_reactions is called
+	transfer_reactions(R)
+
+	src.update_total()
+	R.update_total()
+	//SKYRAT EDIT CHANGE BEGIN
 	if(!no_react)
-		// pass over previous ongoing reactions before handle_reactions is called
-		transfer_reactions(target_holder)
-
-		src.update_total()
-		target_holder.update_total()
-		target_holder.handle_reactions()
+		R.handle_reactions()
 		src.handle_reactions()
-
+	//SKYRAT EDIT CHANGE END
 	return amount
 
 ///Multiplies the reagents inside this holder by a specific amount
