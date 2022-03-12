@@ -895,6 +895,17 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Atmospherics Project Room"
 	icon_state = "atmos_projectroom"
 
+<<<<<<< HEAD
+=======
+/area/engineering/atmos/pumproom
+	name = "\improper Atmospherics Pumping Room"
+	icon_state = "atmos_pump_room"
+
+/area/engineering/atmos/mix
+	name = "\improper Atmospherics Mixing Room"
+	icon_state = "atmos_mix"
+
+>>>>>>> ca1bb723e98 (Correction of Misdescription of DeltaStation Atmospherics Areas (#65380))
 /area/engineering/atmos/storage
 	name = "\improper Atmospherics Storage Room"
 	icon_state = "atmos_storage"
