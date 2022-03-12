@@ -452,7 +452,7 @@
 			var/obj/item/stack/telecrystals =  new /obj/item/stack/telecrystal(src)
 			telecrystals.amount = TELECRYSTALS_OPFOR_BONUS
 			target.put_in_hands(telecrystals)
-			to_chat(target, span_alert("A stack of telecrystals forms in your hands!"))
+			to_chat(target, span_alert("A stack of [telecrystals.amount] [telecrystals] forms in your hands!"))
 			add_log(user.ckey, "Received their OPFOR TC.")
 		else
 			log_admin("Issue loading TC for [target]. Did they lose their uplink?")
