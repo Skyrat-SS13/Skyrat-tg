@@ -394,5 +394,18 @@
 	desc = "A 5.7x28mm incendiary bullet casing."
 	
 /obj/item/ammo_casing/c45
-	name = ".45 bullet casing"
-	desc = "A .45 bullet casing."
+	name = ".460 Ceres polymer casing"
+	desc = "A .460 bullet casing."
+
+/obj/item/ammo_casing/c45/ap
+	name = ".460 Ceres +P polymer casing"
+	desc = "An Armor Piercing .460 bullet casing."
+	
+/obj/item/ammo_casing/c45/inc
+	name = ".460 Ceres IND biodegradable casing"
+	desc = "An Incendiary .460 bullet casing."
+	
+/obj/item/ammo_casing/a50ae
+	name = ".454 Trucidator polymer casing"
+	desc = "A .454 Trucidator bullet casing. Extremely powerful."
+	
