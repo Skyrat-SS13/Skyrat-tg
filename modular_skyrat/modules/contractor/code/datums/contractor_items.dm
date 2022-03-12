@@ -12,11 +12,40 @@
 	/// Cost of the item in contract rep.
 	var/cost
 
+/// Subtract cost, and spawn if it's an item.
+/datum/contractor_item/proc/handle_purchase(datum/contractor_hub/hub, mob/living/user)
+	if(hub.contract_rep >= cost)
+		hub.contract_rep -= cost
+	else
+		return FALSE
+
+	if(limited >= 1)
+		limited -= 1
+	else
+		return FALSE
+
+	hub.purchased_items.Add(src)
+
+	user.playsound_local(user, 'sound/machines/uplinkpurchase.ogg', 100)
+
+	if(item && ispath(item))
+		var/atom/item_to_create = new item(get_turf(user))
+
+		if(user.put_in_hands(item_to_create))
+			to_chat(user, span_notice("Your purchase materializes into your hands!"))
+		else
+			to_chat(user, span_notice("Your purchase materializes onto the floor."))
+
+		return item_to_create
+	else if(item && !ispath(item))
+		stack_trace("Contractor item [src] has an item that isn't a path.")
+	return TRUE
+
 /datum/contractor_item/contract_reroll
 	name = "Contract Reroll"
 	desc = "Request a reroll of your current contract list. Will generate a new target, payment, and dropoff for the contracts you currently have available."
 	item_icon = "dice"
-	limited = 2
+	limited = 3
 	cost = 0
 
 /datum/contractor_item/contract_reroll/handle_purchase(datum/contractor_hub/hub)
@@ -130,31 +159,18 @@
 	power_fail(35, 50)
 	priority_announce("Abnormal activity detected in [station_name()]'s powernet. As a precautionary measure, the station's power will be shut off for an indeterminate duration.", "Critical Power Failure", ANNOUNCER_POWEROFF)
 
-// Subtract cost, and spawn if it's an item.
-/datum/contractor_item/proc/handle_purchase(datum/contractor_hub/hub, mob/living/user)
-	if(hub.contract_rep >= cost)
-		hub.contract_rep -= cost
-	else
-		return FALSE
+/datum/contractor_item/comms_blackout
+	name = "Comms Outage"
+	desc = "Request Syndicate Command to disable station Telecommunications. Disables telecommunications across the station for a medium duration."
+	item_icon = "phone-slash"
+	limited = 2
+	cost = 3
 
-	if(limited >= 1)
-		limited -= 1
-	else
-		return FALSE
+/datum/contractor_item/comms_blackout/handle_purchase(datum/contractor_hub/hub)
+	. = ..()
 
-	hub.purchased_items.Add(src)
+	if(!(.))
+		return
+	var/datum/round_event_control/event = locate(/datum/round_event_control/communications_blackout) in SSevents.control
+	event.runEvent()
 
-	user.playsound_local(user, 'sound/machines/uplinkpurchase.ogg', 100)
-
-	if(item && ispath(item))
-		var/atom/item_to_create = new item(get_turf(user))
-
-		if(user.put_in_hands(item_to_create))
-			to_chat(user, span_notice("Your purchase materializes into your hands!"))
-		else
-			to_chat(user, span_notice("Your purchase materializes onto the floor."))
-
-		return item_to_create
-	else if(item && !ispath(item))
-		stack_trace("Contractor item [src] has an item that isn't a path.")
-	return TRUE
