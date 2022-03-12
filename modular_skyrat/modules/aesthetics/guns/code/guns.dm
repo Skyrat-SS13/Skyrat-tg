@@ -322,6 +322,8 @@
 	ammo_type = /obj/item/ammo_casing/a762
 	caliber = CALIBER_A762
 	max_ammo = 20
+	
+// BULLET UN-RETROFUTIRIZATION PR
 
 /obj/item/ammo_casing/a762
 	name = "5.8x42mm Mk. VII polymer casing"
@@ -367,3 +369,30 @@
 	name = "hornet's nest shell"
 	desc = "A 12 gauge shell filled with some kind of material that excels at incapacitating targets. Contains a lot of pellets."
 	
+/obj/item/ammo_casing/p50
+	name = ".416 Stabilis polymer casing"
+	desc = "A .416 bullet casing."
+	
+/obj/item/ammo_casing/p50/soporific
+	name = ".416 Stabilis tranquilizer casing"
+	desc = "A .416 bullet casing, specialised in sending the target to sleep, instead of hell."
+	
+/obj/item/ammo_casing/p50/penetrator
+	name = ".416 Stabilis APFSDS ++P bullet casing"
+	desc = "A .416 round casing designed to go through basically everything. A label warns not to use the round if the weapon cannot handle pressures greater than 85000 PSI."
+	
+/obj/item/ammo_casing/c46x30mm
+	name = "5.7x28mm Mk. II bullet casing"
+	desc = "A 5.7x28mm bullet casing."
+	
+/obj/item/ammo_casing/c46x30mm/ap
+	name = "5.7x28mm SS2390 bullet casing"
+	desc = "A 5.7x28mm armor-piercing bullet casing."
+	
+/obj/item/ammo_casing/c46x30mm/inc
+	name = "5.7x28mm Mk. II INDbullet casing"
+	desc = "A 5.7x28mm incendiary bullet casing."
+	
+/obj/item/ammo_casing/c45
+	name = ".45 bullet casing"
+	desc = "A .45 bullet casing."
