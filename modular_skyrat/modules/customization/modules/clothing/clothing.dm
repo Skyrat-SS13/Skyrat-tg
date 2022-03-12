@@ -19,14 +19,22 @@
 	var/greyscale_config_worn_taur_paw
 	var/greyscale_config_worn_taur_hoof
 
+	/// has_taur_sprite[icon_state]: Does this icon_state have ANY taur sprite?
 	var/static/list/has_taur_sprite = list()
+	/// has_taur_snake_sprite[icon_state]: Does this icon_state have a snake taur sprite?
 	var/static/list/has_taur_snake_sprite = list()
+	/// has_taur_paw_sprite[icon_state]: Does this icon_state have a pawed taur sprite?
 	var/static/list/has_taur_paw_sprite = list()
+	/// has_taur_horse_sprite[icon_state]: Does this icon_state have a hooved taur sprite?
 	var/static/list/has_taur_horse_sprite = list()
 
+	/// has_taur_sprite_suit[icon_state]: has_taur_sprite but for /obj/item/clothng/suit
 	var/static/list/has_taur_sprite_suit = list()
+	/// has_taur_snake_sprite_suit[icon_state]: has_taur_snake_sprite but for /obj/item/clothing/suit
 	var/static/list/has_taur_snake_sprite_suit = list()
+	/// has_taur_paw_sprite_suit[icon_state]: has_taur_paw_sprite but for /obj/item/clothing/suit
 	var/static/list/has_taur_paw_sprite_suit = list()
+	/// has_taur_horse_sprite_suit[icon_state]: has_taur_horse_sprite but for /obj/item/clothing/suit
 	var/static/list/has_taur_horse_sprite_suit = list()
 
 /obj/item/clothing/Initialize(mapload)
