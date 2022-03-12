@@ -382,16 +382,16 @@
 	desc = "A .416 round casing designed to go through basically everything. A label warns not to use the round if the weapon cannot handle pressures greater than 85000 PSI."
 	
 /obj/item/ammo_casing/c46x30mm
-	name = "5.7x28mm Mk. II bullet casing"
-	desc = "A 5.7x28mm bullet casing."
+	name = "6.5x25mm bullet casing"
+	desc = "A 6.5x25mm bullet casing."
 	
 /obj/item/ammo_casing/c46x30mm/ap
-	name = "5.7x28mm SS2390 bullet casing"
-	desc = "A 5.7x28mm armor-piercing bullet casing."
+	name = "6.5x25mm AP bullet casing"
+	desc = "A 6.5x25mm armor-piercing bullet casing."
 	
 /obj/item/ammo_casing/c46x30mm/inc
-	name = "5.7x28mm Mk. II INDbullet casing"
-	desc = "A 5.7x28mm incendiary bullet casing."
+	name = "6.5x25mm IND bullet casing"
+	desc = "A 6.5x25mm incendiary bullet casing."
 	
 /obj/item/ammo_casing/c45
 	name = ".460 Ceres polymer casing"
@@ -408,4 +408,48 @@
 /obj/item/ammo_casing/a50ae
 	name = ".454 Trucidator polymer casing"
 	desc = "A .454 Trucidator bullet casing. Extremely powerful."
+	
+// The ones above are the casings for the ammo, whereas the ones below are the actual projectiles that give you feedback when you're shot
+	
+/obj/projectile/bullet/a556
+	name = ".277 Aestus bullet"
+	
+/obj/projectile/bullet/a556/phasic
+	name = ".277 PHASE bullet"
+	
+/obj/projectile/bullet/a762
+	name = "5.8x42mm bullet"
+	
+/obj/projectile/bullet/a762/enchanted
+	name = "enchanted 5.8x24mm bullet"
+	
+/obj/projectile/bullet/c9mm
+	name = "9x25mm bullet"
+	
+/obj/projectile/bullet/c9mm/ap
+	name = "9x25mm armor-piercing bullet"
+	
+/obj/projectile/bullet/c9mm/hp
+	name = "9x25mm hollow-point bullet"
+	
+/obj/projectile/bullet/incendiary/c9mm
+	name = "9x25mm incendiary bullet"
+	
+/obj/projectile/bullet/c45
+	name = ".460 bullet"
+	
+/obj/projectile/bullet/c45/ap
+	name = ".460 armor-piercing bullet"
+	
+/obj/projectile/bullet/incendiary/c45
+	name = ".460 incendiary bullet"
+	
+/obj/projectile/bullet/c46x30mm
+	name = "6.5x25mm bullet"
+	
+/obj/projectile/bullet/c46x30mm/ap
+	name = "6.5x25mm armor-piercing bullet"
+	
+/obj/projectile/bullet/incendiary/c46x30mm
+	name = "6.5x25mm incendiary bullet"
 	
