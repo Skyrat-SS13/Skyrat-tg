@@ -448,10 +448,13 @@
 		human.put_in_hands(spawned_box)
 	if(target.mind.has_antag_datum(/datum/antagonist/traitor))
 		var/datum/component/uplink/uplink = target.mind.find_syndicate_uplink(TRUE)
-		var/obj/item/stack/telecrystals =  new /obj/item/stack/telecrystal(src)
-		telecrystals.amount += TELECRYSTALS_OPFOR_BONUS
-		uplink.load_tc(user, telecrystals)
-		add_log(user.ckey, "Received their OPFOR TC.")
+		if(uplink)
+			var/obj/item/stack/telecrystals =  new /obj/item/stack/telecrystal(src)
+			telecrystals.amount += TELECRYSTALS_OPFOR_BONUS
+			uplink.load_tc(user, telecrystals)
+			add_log(user.ckey, "Received their OPFOR TC.")
+		else
+			log_admin("Issue loading TC for [target]. Did they lose their uplink?")
 
 	add_log(user.ckey, "Issued gear")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has issued all approved equipment")
