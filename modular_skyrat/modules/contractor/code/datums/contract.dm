@@ -245,5 +245,4 @@
 		if(!iscarbon(target))
 			return
 		var/mob/living/carbon/unlucky_fellow = target
-		if (unlucky_fellow.can_heartattack())
-			unlucky_fellow.set_heartattack(TRUE)
+		unlucky_fellow.death()
