@@ -1378,7 +1378,7 @@
 
 /mob/living/carbon/proc/disarm_collision(datum/source, mob/living/carbon/shover, mob/living/carbon/target, shove_blocked)
 	SIGNAL_HANDLER
-	if(src == target || LAZYFIND(target.buckled_mobs, src) || !can_be_shoved_into)
+	if(src == target || LAZYFIND(target.buckled_mobs, src) || !can_be_shoved_into || prob(75)) // SKYRAT EDIT: Less slips
 		return
 	target.Knockdown(SHOVE_KNOCKDOWN_HUMAN)
 	if(!is_shove_knockdown_blocked())

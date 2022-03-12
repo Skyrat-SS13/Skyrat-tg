@@ -73,7 +73,7 @@
  */
 /datum/component/slippery/proc/Slip(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	SIGNAL_HANDLER
-	if(!isliving(arrived))
+	if(!isliving(arrived) || prob(75)) // SKYRAT EDIT: Less slips, like bro, come on.
 		return
 	var/mob/living/victim = arrived
 	if(!(victim.movement_type & FLYING) && victim.slip(knockdown_time, parent, lube_flags, paralyze_time, force_drop_items) && callback)
