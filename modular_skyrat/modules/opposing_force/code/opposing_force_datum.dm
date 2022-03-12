@@ -450,8 +450,9 @@
 		var/datum/component/uplink/uplink = target.mind.find_syndicate_uplink(TRUE)
 		if(uplink)
 			var/obj/item/stack/telecrystals =  new /obj/item/stack/telecrystal(src)
-			telecrystals.amount += TELECRYSTALS_OPFOR_BONUS
-			uplink.load_tc(user, telecrystals)
+			telecrystals.amount = TELECRYSTALS_OPFOR_BONUS
+			target.put_in_hands(telecrystals)
+			to_chat(target, span_alert("A stack of telecrystals forms in your hands!"))
 			add_log(user.ckey, "Received their OPFOR TC.")
 		else
 			log_admin("Issue loading TC for [target]. Did they lose their uplink?")
