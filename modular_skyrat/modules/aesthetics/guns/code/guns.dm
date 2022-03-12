@@ -265,19 +265,19 @@
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 
 /obj/item/gun/ballistic/rifle/boltaction
-	name = "\improper Mosin Nagant 91-30"
-	desc = "This piece of junk looks like something that could have been used 700 years ago. It feels slightly moist."
-	sawn_desc = "An extremely sawn-off Mosin Nagant, popularly known as an \"obrez\". There was probably a reason it wasn't manufactured this short to begin with."
+	name = "\improper Sportiv Precision Rifle"
+	desc = "A mid 2400s precision bolt action rifle rifle made primarily for competitions. The words 'НРИ Aрсенал' are expertly etched on the stock."
+	sawn_desc = "A very compact sawn-off Sportiv, popularly known as an \"obrez\". There was probably a reason it wasn't manufactured this short to begin with."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
 /obj/item/gun/ballistic/rifle/boltaction/brand_new
-	name = "\improper Mosin Nagant M39"
-	desc = "A freshly-produced Mosin Nagant variant issued by Nanotrasen for their interns. You would rather not damage it."
+	name = "\improper Sportiv-3 Precision Rifle"
+	desc = "A freshly-produced modern Sportiv variant issued by Nanotrasen for their interns. You would rather not damage it."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
 /obj/item/gun/ballistic/rifle/boltaction/brand_new/quartermaster
-	name = "\improper FTU 'Archangel' Mosin"
-	desc = "A very... Modernized MN91-30 rifle, the frame even feels a little flimsy. This thing was probably built with a conversion kit from spaceBay."
+	name = "\improper FTU 'Archangel' Sportiv"
+	desc = "A tacticoolized Sportiv rifle, the frame even feels a little flimsy. This thing was probably built with a three hundred credit conversion kit from spessBay."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	icon_state = "bubba"
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
@@ -287,7 +287,7 @@
 	realistic = TRUE
 
 /obj/item/ammo_box/magazine/internal/boltaction/bubba
-	name = "mosin nagant extended internal magazine"
+	name = "sportiv extended internal magazine"
 	desc = "How did you get it out?"
 	ammo_type = /obj/item/ammo_casing/a762
 	caliber = CALIBER_A762
@@ -301,13 +301,13 @@
 
 /obj/item/gun/ballistic/automatic/c20r/unrestricted/cmg1
 	name = "\improper NT CMG-1"
-	desc = "A bullpup three-round burst .45 PDW with an eerily familiar design. It has a foldable stock and a dot sight."
+	desc = "A bullpup three-round burst .460 PDW with an eerily familiar design, designed for espionage operations. It has a foldable stock and a dot sight."
 	icon_state = "cmg1"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
 /obj/item/gun/ballistic/automatic/ar/modular/model75
 	name = "\improper NT ARG-75"
-	desc = "A contemporary rifle that just exited its prototype phase and has started production, a rare sight for now. It's equipped with a heavy duty integrally suppressed barrel, 1.4 times scope and a topmounted laser sight."
+	desc = "A contemporary rifle that's fresh out of its prototype phase and has in production, a rare sight for now. It's equipped with a heavy duty integrally suppressed barrel, 1.4 times scope and a topmounted laser sight."
 	icon_state = "arg75"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	fire_sound = 'sound/weapons/gun/pistol/shot_suppressed.ogg'
@@ -316,9 +316,37 @@
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
-	name = "7.62mm straight magazine"
+	name = "5.8x42mm Mk. VII straight magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/a762
 	caliber = CALIBER_A762
 	max_ammo = 20
+
+/obj/item/ammo_casing/a762
+	name = "5.8x42mm Mk. VII polymer casing"
+	desc = "A 5.8x42mm bullet casing."
+	
+/obj/item/ammo_casing/a556
+	name = "6.8mm SPC polymer casing"
+	desc = "A 6.8mm bullet casing."
+	
+/obj/item/ammo_casing/a556/phasic
+	name = "6.8mm PRC polymer casing"
+	desc = "A 6.8m phasic bullet casing. Ignores all surfaces except organic matter."
+	
+/obj/item/ammo_casing/shotgun
+	name = "shotgun slug"
+	desc = "A 12 gauge tungsten slug."
+	
+/obj/item/ammo_casing/shotgun/executioner
+	name = "expanding shotgun slug"
+	desc = "A 12 gauge tungsten slug purpose built to annihilate flesh on impact."
+	
+/obj/item/ammo_casing/shotgun/pulverizer
+	name = "pulverizer shotgun slug"
+	desc = "A 12 gauge uranium slug purpose built to break bones on impact."
+	
+/obj/item/ammo_casing/shotgun/incendiary
+	name = "incendiary slug"
+	desc = "An incendiary-coated shotgun slug."
