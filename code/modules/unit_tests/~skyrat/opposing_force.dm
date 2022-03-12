@@ -18,7 +18,7 @@
 	for(var/datum/opposing_force_equipment/opfor_item as anything in compiled_subtypes)
 		//var/datum/opposing_force_equipment/opfor_obj = new opfor()
 		if(!initial(opfor_item.item_type))
-			Fail("Opposing Force equipment datum [opfor_obj] lacks an `item_type`.")
+			Fail("Opposing Force equipment datum [opfor_item] lacks an `item_type`.")
 		var/obj/dupe_scan = dupe_check.Find(initial(opfor_item.item_type))
 		if(dupe_scan)
 			Fail("Opposing Force Equipment datum [opfor_item] has the same item type ([dupe_scan]) as another datum.")
