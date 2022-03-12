@@ -349,4 +349,21 @@
 	
 /obj/item/ammo_casing/shotgun/incendiary
 	name = "incendiary slug"
-	desc = "An incendiary-coated shotgun slug."
+	desc = "A 12 gauge magnesium slug meant for \"setting shit on fire and looking cool while you do it\"."
+	
+/obj/item/ammo_casing/shotgun/stunslug
+	name = "taser slug"
+	desc = "A 12 gauge silver slug with electrical microcomponents meant to incapacitate targets."
+	
+/obj/item/ammo_casing/shotgun/meteorslug
+	name = "meteor slug"
+	desc = "A 12 gauge shell rigged with CMC technology, which launches a heap of matter with great force when fired."
+
+/obj/item/ammo_casing/shotgun/frag12
+	name = "FRAG-12 slug"
+	desc = "A 12 gauge shell containing high explosives, made for defeating some barriers, defeat light vehicles, and disrupt IEDs. Or intercept assistants."
+	
+/obj/item/ammo_casing/shotgun/incapacitate
+	name = "hornet's nest shell"
+	desc = "A 12 gauge shell filled with some kind of material that excels at incapacitating targets. Contains a lot of pellets."
+	
