@@ -13,13 +13,13 @@
 	alt_titles = list("AI", "Station Intelligence", "Automated Overseer")
 
 /datum/job/assistant
-	alt_titles = list("Assistant", "Civilian", "Tourist", "Businessman", "Businesswoman", "Trader", "Entertainer", "Freelancer", "Artist", "Off-Duty Staff")
+	alt_titles = list("Assistant", "Civilian", "Tourist", "Businessman", "Businesswoman", "Trader", "Entertainer", "Freelancer", "Artist", "Off-Duty Staff", "Off-Duty Crew")
 
 /datum/job/atmospheric_technician
-	alt_titles = list("Atmospheric Technician", "Life Support Technician", "Emergency Fire Technician")
+	alt_titles = list("Atmospheric Technician", "Life Support Technician", "Emergency Fire Technician", "Firefighter")
 
 /datum/job/barber
-	alt_titles = list("Salon Manager", "Salon Technician", "Stylist", "Colorist")
+	alt_titles = list("Barber", "Salon Manager", "Salon Technician", "Stylist", "Colorist")
 
 /datum/job/bartender
 	alt_titles = list("Bartender", "Mixologist", "Barkeeper")

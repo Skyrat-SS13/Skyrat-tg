@@ -46,6 +46,8 @@
 		"Pavise Shield" = /obj/item/shield/riot/buckler/reagent_weapon/pavise,
 		"Buckler Shield" = /obj/item/shield/riot/buckler/reagent_weapon,
 		"Coil" = /obj/item/forging/coil,
+		"Seed Mesh" = /obj/item/seed_mesh,
+		"Primitive Centrifuge" = /obj/item/reagent_containers/glass/primitive_centrifuge,
 	)
 
 /obj/structure/reagent_crafting_bench/examine(mob/user)
@@ -113,6 +115,11 @@
 			required_plate = 5
 		if("Coil")
 			required_chain = 2
+		if("Seed Mesh")
+			required_chain = 4
+			required_plate = 1
+		if("Primitive Centrifuge")
+			required_plate = 1
 	if(!required_hits)
 		required_hits = (required_chain * 2) + (required_plate * 2) + (required_coil * 2)
 	balloon_alert(user, "choice made!")
@@ -142,53 +149,6 @@
 //when inserting the materials
 /obj/structure/reagent_crafting_bench/attackby(obj/item/attacking_item, mob/user, params)
 	update_appearance()
-	//if we are attacking with a hammer and we have a goal in mind!
-	if(istype(attacking_item, /obj/item/forging/hammer))
-		playsound(src, 'modular_skyrat/modules/reagent_forging/sound/forge.ogg', 50, TRUE)
-		if(length(contents))
-			if(istype(contents[1], /obj/item/forging/complete))
-				var/obj/item/forging/complete/complete_content = contents[1]
-				if(!complete_content?.spawning_item)
-					balloon_alert(user, "no craftable!")
-					return
-				if(current_wood < 2)
-					balloon_alert(user, "not enough wood!")
-					return
-				current_wood -= 2
-				var/spawning_item = complete_content.spawning_item
-				qdel(complete_content)
-				new spawning_item(src)
-				user.mind.adjust_experience(/datum/skill/smithing, 15) //creating grants you something
-				balloon_alert(user, "item crafted!")
-				update_appearance()
-				return
-		if(!goal_item_path)
-			balloon_alert(user, "no choice made!")
-			return
-		if(!check_required_materials(user))
-			return
-		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER) * 1 SECONDS
-		if(!COOLDOWN_FINISHED(src, hit_cooldown))
-			current_hits -= 3
-			balloon_alert(user, "bad hit!")
-			if(current_hits <= -required_hits)
-				clear_required()
-			return
-		COOLDOWN_START(src, hit_cooldown, skill_modifier)
-		if(current_hits >= required_hits && !length(contents))
-			new goal_item_path(src)
-			balloon_alert(user, "item crafted!")
-			update_appearance()
-			user.mind.adjust_experience(/datum/skill/smithing, 15) //creating grants you something
-			current_chain -= required_chain
-			current_plate -= required_plate
-			current_coil -= required_coil
-			clear_required()
-			return
-		current_hits++
-		balloon_alert(user, "good hit!")
-		user.mind.adjust_experience(/datum/skill/smithing, 2) //useful hammering means you get some experience
-		return
 
 	//the block of code where we add the amounts for each type
 	if(istype(attacking_item, /obj/item/stack/sheet/mineral/wood))
@@ -225,20 +185,66 @@
 		update_appearance()
 		return
 
-	//destroying the thing
-	if(attacking_item.tool_behaviour == TOOL_WRENCH)
-		var/turf/src_turf = get_turf(src)
-		for(var/i in 1 to current_chain)
-			new /obj/item/forging/complete/chain(src_turf)
-		for(var/i in 1 to current_plate)
-			new /obj/item/forging/complete/plate(src_turf)
-		for(var/i in 1 to current_coil)
-			new /obj/item/forging/coil(src_turf)
-		var/spawning_wood = current_wood + 5
-		for(var/i in 1 to spawning_wood)
-			new /obj/item/stack/sheet/mineral/wood(src_turf)
-		attacking_item.play_tool_sound(src, 50)
-		qdel(src)
-		return
-
 	return ..()
+
+/obj/structure/reagent_crafting_bench/wrench_act(mob/living/user, obj/item/tool)
+	tool.play_tool_sound(src)
+	var/turf/src_turf = get_turf(src)
+	for(var/i in 1 to current_chain)
+		new /obj/item/forging/complete/chain(src_turf)
+	for(var/i in 1 to current_plate)
+		new /obj/item/forging/complete/plate(src_turf)
+	for(var/i in 1 to current_coil)
+		new /obj/item/forging/coil(src_turf)
+	var/spawning_wood = current_wood + 5
+	for(var/i in 1 to spawning_wood)
+		new /obj/item/stack/sheet/mineral/wood(src_turf)
+	qdel(src)
+	return TRUE
+
+/obj/structure/reagent_crafting_bench/hammer_act(mob/living/user, obj/item/tool)
+	playsound(src, 'modular_skyrat/modules/reagent_forging/sound/forge.ogg', 50, TRUE)
+	if(length(contents))
+		if(istype(contents[1], /obj/item/forging/complete))
+			var/obj/item/forging/complete/complete_content = contents[1]
+			if(!complete_content?.spawning_item)
+				balloon_alert(user, "no craftable!")
+				return FALSE
+			if(current_wood < 2)
+				balloon_alert(user, "not enough wood!")
+				return FALSE
+			current_wood -= 2
+			var/spawning_item = complete_content.spawning_item
+			qdel(complete_content)
+			new spawning_item(src)
+			user.mind.adjust_experience(/datum/skill/smithing, 30) //creating grants you something
+			balloon_alert(user, "item crafted!")
+			update_appearance()
+			return FALSE
+	if(!goal_item_path)
+		balloon_alert(user, "no choice made!")
+		return FALSE
+	if(!check_required_materials(user))
+		return FALSE
+	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER) * 1 SECONDS
+	if(!COOLDOWN_FINISHED(src, hit_cooldown))
+		current_hits -= 3
+		balloon_alert(user, "bad hit!")
+		if(current_hits <= -required_hits)
+			clear_required()
+		return FALSE
+	COOLDOWN_START(src, hit_cooldown, skill_modifier)
+	if(current_hits >= required_hits && !length(contents))
+		new goal_item_path(src)
+		balloon_alert(user, "item crafted!")
+		update_appearance()
+		user.mind.adjust_experience(/datum/skill/smithing, 30) //creating grants you something
+		current_chain -= required_chain
+		current_plate -= required_plate
+		current_coil -= required_coil
+		clear_required()
+		return FALSE
+	current_hits++
+	balloon_alert(user, "good hit!")
+	user.mind.adjust_experience(/datum/skill/smithing, 2) //useful hammering means you get some experience
+	return FALSE
