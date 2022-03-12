@@ -202,7 +202,7 @@
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular/syndicate
 	name = "'Caracal' anti-materiel rifle"  //we flop out
-	desc = "A sleek, light bullpup .50 BMG sniper rifle with a reciprocating barrel, nicknamed 'Caracal' by Scarborough Arms. Its compact folding parts make it able to fit into a backpack, and its modular barrel can have a suppressor installed within it rather than as a muzzle extension. Its advanced scope accounts for all ballistic inaccuracies of a reciprocating barrel."
+	desc = "A sleek, light bullpup .416 Stabilis sniper rifle with a reciprocating barrel, nicknamed 'Caracal' by Scarborough Arms. Its compact folding parts make it able to fit into a backpack, and its modular barrel can have a suppressor installed within it rather than as a muzzle extension. Its advanced scope accounts for all ballistic inaccuracies of a reciprocating barrel."
 	icon_state = "sysniper"
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
 	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle_s.ogg'
@@ -248,7 +248,7 @@
 
 /obj/item/gun/ballistic/automatic/ar/modular/solrifle
 	name = "MCRS-5B ICWS"
-	desc = "State of the art expensive combat rifle used by the SFMC. This one is a lighter model that fires 5.56, designed for use by pilots. Do it for her."
+	desc = "State of the art expensive combat rifle used by the SFMC. This one is a lighter model that fires .277 Aestus, designed for use by pilots. How many guns do you need?"
 	icon_state = "mcrs"
 	inhand_icon_state = "arg"
 	selector_switch_icon = TRUE
@@ -330,12 +330,12 @@
 	desc = "A 5.8x42mm bullet casing."
 	
 /obj/item/ammo_casing/a556
-	name = "6.8mm SPC polymer casing"
-	desc = "A 6.8mm bullet casing."
+	name = ".277 Aestus polymer casing"
+	desc = "A .277 bullet casing."
 	
 /obj/item/ammo_casing/a556/phasic
-	name = "6.8mm PRC polymer casing"
-	desc = "A 6.8m phasic bullet casing. Ignores all surfaces except organic matter."
+	name = ".277 Aestus PHASE polymer casing"
+	desc = "A .277 Aestus phasic bullet casing. Ignores all surfaces except organic matter."
 	
 /obj/item/ammo_casing/shotgun
 	name = "shotgun slug"
