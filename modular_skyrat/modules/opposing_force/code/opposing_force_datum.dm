@@ -73,6 +73,8 @@
 	var/admin_requested_changes = ""
 	/// The ckey of the person that made this application
 	var/ckey
+	/// Contractor hub datum, used if the user OPFORs for a contractor kit
+	var/datum/contractor_hub/contractor_hub
 
 	COOLDOWN_DECLARE(static/request_update_cooldown)
 	COOLDOWN_DECLARE(static/ping_cooldown)
@@ -848,6 +850,9 @@
 				continue
 			report += "</b>[opfor_equipment.opposing_force_equipment.name]<b><br>"
 			report += "<br>"
+
+	if(contractor_hub)
+		report += contractor_round_end()
 
 	return report.Join("\n")
 
