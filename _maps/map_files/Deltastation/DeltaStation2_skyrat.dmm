@@ -5440,7 +5440,7 @@
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
 "aPJ" = (
-/obj/machinery/doppler_array/research/science{
+/obj/machinery/doppler_array{
 	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -30574,7 +30574,7 @@
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/item/clothing/suit/jacket{
 	desc = "All the class of a trenchcoat without the security fibers.";
-	icon_state = "greydet";
+	icon_state = "noirdet";
 	name = "trenchcoat"
 	},
 /obj/item/clothing/suit/jacket{
@@ -38030,7 +38030,7 @@
 /obj/machinery/light/directional/south,
 /obj/item/clothing/suit/jacket{
 	desc = "All the class of a trenchcoat without the security fibers.";
-	icon_state = "greydet";
+	icon_state = "noirdet";
 	name = "trenchcoat"
 	},
 /obj/item/clothing/suit/toggle/lawyer/black,
@@ -42842,6 +42842,13 @@
 /obj/machinery/airalarm/directional/north,
 /turf/open/floor/iron,
 /area/hallway/primary/central/aft)
+"gcE" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/science/mixing)
 "gcT" = (
 /obj/effect/turf_decal/siding/green{
 	dir = 10
@@ -61027,7 +61034,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
 /turf/open/floor/iron,
 /area/science/mixing)
 "lgs" = (
@@ -77844,14 +77850,18 @@
 /turf/open/floor/iron/checker,
 /area/service/hydroponics/garden/abandoned)
 "puE" = (
+/obj/machinery/newscaster/directional/north,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 8
+	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/obj/machinery/atmospherics/components/unary/portables_connector/visible,
-/obj/machinery/newscaster/directional/north,
 /obj/machinery/light_switch/directional/east{
 	pixel_y = 26
 	},
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/science/mixing)
 "puL" = (
@@ -86576,7 +86586,7 @@
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
 "rLO" = (
-/obj/machinery/research/explosive_compressor,
+/obj/machinery/research/anomaly_refinery,
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
@@ -90378,11 +90388,23 @@
 "sJb" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/gloves/color/latex,
-/obj/item/clothing/glasses/science,
-/obj/item/clothing/glasses/science,
 /obj/effect/turf_decal/bot,
 /obj/machinery/light/directional/south,
+/obj/item/computer_hardware/hard_drive/portable{
+	pixel_x = -5;
+	pixel_y = 8
+	},
+/obj/item/computer_hardware/hard_drive/portable{
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/obj/item/computer_hardware/hard_drive/portable{
+	pixel_x = -2
+	},
+/obj/item/computer_hardware/hard_drive/portable{
+	pixel_x = -8;
+	pixel_y = -3
+	},
 /turf/open/floor/iron,
 /area/science/mixing)
 "sJk" = (
@@ -91569,7 +91591,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/obj/machinery/atmospherics/components/unary/portables_connector/visible,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/science/mixing)
 "sYF" = (
@@ -93056,7 +93080,9 @@
 /area/engineering/main)
 "twD" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/machinery/atmospherics/components/unary/portables_connector/visible,
+/obj/machinery/atmospherics/components/binary/tank_compressor{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/science/mixing)
 "txh" = (
@@ -95954,7 +95980,8 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/obj/machinery/airalarm/directional/east,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/science/mixing)
 "ukj" = (
@@ -96975,9 +97002,6 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
-	},
-/obj/machinery/atmospherics/components/trinary/filter{
-	dir = 8
 	},
 /turf/open/floor/iron,
 /area/science/mixing)
@@ -140828,7 +140852,7 @@ aad
 drP
 puE
 ujY
-mYu
+gcE
 whX
 oDB
 sCm
