@@ -1,9 +1,14 @@
+#define LENGTH_LONGEST_LINK 29 //set to the length to the char length of the longest link
+
 /datum/preference/text/headshot
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "headshot"
 	/// Assoc list of ckeys and their link, used to cut down on chat spam
 	var/list/stored_link = list()
+	var/static/link_regex = regex("^https://imgur.com|https://i.gyazo.com|https://media.discordapp.net$")
+	var/static/end_regex = regex("^.jpg|.png|.jpeg$")
+
 
 /datum/preference/text/headshot/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.dna.features["headshot"] = value
@@ -11,13 +16,13 @@
 /datum/preference/text/headshot/is_valid(value)
 	if(!length(value)) //Just to get blank ones out of the way
 		return TRUE
-	if(!findtext(value, "https://"))
+	if(!findtext(value, "https://", 1, 9))
 		to_chat(usr, span_warning("You need \"https://\" in the link!"))
 		return
-	if(!findtext(value, ".png") && !findtext(value, ".jpg"))
-		to_chat(usr, span_warning("You need either \".png\" or \".jpg\" in the link!"))
+	if(!findtext(value, end_regex))
+		to_chat(usr, span_warning("You need either \".png\", \".jpg\", or \".jpeg\" in the link!"))
 		return
-	if(!findtext(value, "https://imgur.com", 1, 18) && !findtext(value, "https://i.gyazo.com", 1, 20) && !findtext(value, "https://media.discordapp.net", 1, 29))
+	if(!findtext(value, link_regex, 1, LENGTH_LONGEST_LINK))
 		to_chat(usr, span_warning("The link needs to be an unshortened Imgur, Gyazo, or Discordapp link!"))
 		return
 	if(!stored_link[usr.ckey])
@@ -39,3 +44,5 @@
 	if(!is_veteran_player(usr?.client) && !(usr?.ckey in GLOB.donator_list))
 		return FALSE
 	return ..()
+
+#undef LENGTH_LONGEST_LINK
