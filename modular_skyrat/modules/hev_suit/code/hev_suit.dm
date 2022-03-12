@@ -792,7 +792,7 @@
 	resistance_flags = FIRE_PROOF|ACID_PROOF|FREEZE_PROOF
 	clothing_flags = SNUG_FIT
 	clothing_traits = list(TRAIT_MEDICAL_HUD,TRAIT_NIGHT_VISION)
-	flags_cover = PEPPERPROOF
+	flags_cover = HEADCOVERSEYES | PEPPERPROOF
 	visor_flags_inv = null
 	visor_flags = null
 	slowdown = 0
