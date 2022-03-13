@@ -61,6 +61,7 @@
 	you_are_text = "You are an Imperial Enclave outfit."
 	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by ransoming crew and stealing credits."
 	spawner_job_path = /datum/job/space_pirate
+	restricted_species = /datum/species/human
 	spawn_oldpod = FALSE
 
 /datum/job/fugitive_hunter
