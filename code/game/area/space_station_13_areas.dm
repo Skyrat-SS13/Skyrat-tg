@@ -827,6 +827,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Chapel Storage"
 	icon_state = "chapelstorage"
 
+/area/service/chapel/funeral
+	name = "\improper Chapel Funeral Room"
+	icon_state = "chapelfuneral"
+
 /area/service/lawoffice
 	name = "\improper Law Office"
 	icon_state = "law"
@@ -889,6 +893,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/engineering/atmos/project
 	name = "\improper Atmospherics Project Room"
+	icon_state = "atmos_projectroom"
 
 /area/engineering/atmos/storage
 	name = "\improper Atmospherics Storage Room"
@@ -900,9 +905,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/engineering/atmos/office
 	name = "\improper Atmospherics Office"
+	icon_state = "atmos_office"
 
 /area/engineering/atmos/hfr_room
 	name = "\improper Atmospherics HFR Room"
+	icon_state = "atmos_HFR"
 
 /area/engineering/atmospherics_engine
 	name = "\improper Atmospherics Engine"
@@ -949,7 +956,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/engineering/storage/tech
 	name = "Technical Storage"
-	icon_state = "aux_storage"
+	icon_state = "tech_storage"
 
 /area/engineering/storage/tcomms
 	name = "Telecomms Storage"
@@ -982,6 +989,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	ambience_index = AMBIENCE_ENGI
 	airlock_wires = /datum/wires/airlock/engineering
 	sound_environment = SOUND_AREA_SPACE
+	base_lighting_alpha = 255
 
 /area/solars/fore
 	name = "\improper Fore Solar Array"
