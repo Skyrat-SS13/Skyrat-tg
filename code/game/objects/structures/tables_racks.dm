@@ -42,12 +42,13 @@
 		buildstack = _buildstack
 	AddElement(/datum/element/climbable)
 
+	/* SKYRAT EDIT REMOVAL
 	var/static/list/loc_connections = list(
 		COMSIG_CARBON_DISARM_COLLIDE = .proc/table_carbon,
 	)
 
 	AddElement(/datum/element/connect_loc, loc_connections)
-
+	*/
 	if (!(flags_1 & NODECONSTRUCT_1))
 		var/static/list/tool_behaviors = list(
 			TOOL_SCREWDRIVER = list(
