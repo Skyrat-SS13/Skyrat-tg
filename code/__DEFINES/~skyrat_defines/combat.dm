@@ -18,6 +18,9 @@
 
 #define PUNCH_STAMINA_MULTIPLIER 2.6
 
+// Shove damage
+#define SHOVE_STAMINA_SOLID 10
+
 //STAMINA REGEN
 #define STAMINA_STATIC_REGEN_MULTIPLIER 0.4
 //Flat amount regenerated per 2 seconds, multiplied by a lot of variables
