@@ -28,7 +28,7 @@
 	name = "Blacksmith's Tale"
 	desc = "Opens up the Path of Rust to you. \
 		Allows you to transmute a knife with any trash item into a Rusty Blade. \
-		You can only create two at a time."
+		You can only create five at a time." //SKYRAT EDIT two to five
 	gain_text = "\"Let me tell you a story\", said the Blacksmith, as he gazed deep into his rusty blade."
 	next_knowledge = list(/datum/heretic_knowledge/rust_fist)
 	banned_knowledge = list(
@@ -44,7 +44,7 @@
 		/obj/item/trash = 1,
 	)
 	result_atoms = list(/obj/item/melee/sickly_blade/rust)
-	limit = 2
+	limit = 5 //SKYRAT EDIT - ORIGINAL: 2
 	cost = 1
 	priority = MAX_KNOWLEDGE_PRIORITY - 5
 	route = PATH_RUST
