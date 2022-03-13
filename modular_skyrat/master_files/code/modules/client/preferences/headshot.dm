@@ -23,7 +23,7 @@
 		to_chat(usr, span_warning("You need either \".png\", \".jpg\", or \".jpeg\" in the link!"))
 		return
 	if(!findtext(value, link_regex, 1, LENGTH_LONGEST_LINK))
-		to_chat(usr, span_warning("The link needs to be an unshortened Imgur, Gyazo, or Discordapp link!"))
+		to_chat(usr, span_warning("The link needs to be an unshortened Gyazo or Discordapp link!"))
 		return
 	if(!stored_link[usr?.ckey])
 		stored_link[usr.ckey] = null
