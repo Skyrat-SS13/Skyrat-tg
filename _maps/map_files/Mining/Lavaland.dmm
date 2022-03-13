@@ -830,21 +830,6 @@
 "dg" = (
 /turf/open/floor/circuit,
 /area/mine/maintenance)
-"di" = (
-/obj/machinery/telecomms/relay/preset/mining,
-/obj/machinery/light/small/directional/north,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/mine/maintenance)
 "dj" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/dark,
@@ -877,21 +862,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/mine/living_quarters)
-"dn" = (
-/obj/structure/table,
-/obj/item/storage/medkit/toxin{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/blue,
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/turf/open/floor/iron/white,
-/area/mine/living_quarters)
 "do" = (
 /obj/machinery/power/terminal{
 	dir = 1
@@ -901,6 +871,15 @@
 	anchored = 1
 	},
 /turf/open/floor/plating,
+/area/mine/living_quarters)
+"dq" = (
+/obj/structure/table,
+/obj/item/storage/medkit/regular,
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
 /area/mine/living_quarters)
 "dr" = (
 /obj/machinery/atmospherics/components/tank/air{
@@ -940,15 +919,6 @@
 "dD" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/white,
-/area/mine/living_quarters)
-"dE" = (
-/obj/structure/table,
-/obj/item/storage/medkit/regular,
-/obj/effect/turf_decal/tile/blue,
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
 /turf/open/floor/iron/white,
 /area/mine/living_quarters)
 "dF" = (
@@ -1583,6 +1553,11 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron,
 /area/mine/production)
+"gf" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/closet/crate,
+/turf/open/floor/plating,
+/area/mine/production)
 "gg" = (
 /turf/open/floor/iron,
 /area/mine/xenoarch/maintenance/east)
@@ -2078,18 +2053,6 @@
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
-"iO" = (
-/obj/effect/turf_decal/tile/brown{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/brown{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron,
-/area/mine/living_quarters)
 "iQ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/tile/brown/half{
@@ -5178,6 +5141,17 @@
 	},
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
+"Cf" = (
+/obj/structure/table,
+/obj/item/storage/medkit/regular,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/mine/laborcamp)
 "Cg" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
@@ -7177,6 +7151,21 @@
 	},
 /turf/open/floor/iron,
 /area/mine/xenoarch/living)
+"Sb" = (
+/obj/structure/table,
+/obj/item/storage/medkit/toxin{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/mine/living_quarters)
 "Sd" = (
 /obj/machinery/hydroponics/constructable,
 /obj/effect/turf_decal/tile/green{
@@ -7551,6 +7540,12 @@
 /obj/effect/turf_decal/vg_decals/atmos/nitrous_oxide,
 /turf/open/floor/engine/n2o,
 /area/mine/xenoarch/engineering)
+"UM" = (
+/obj/machinery/telecomms/relay/preset/mining,
+/obj/machinery/light/small/directional/north,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/mine/maintenance)
 "UN" = (
 /obj/structure/reagent_dispensers/watertank/high,
 /obj/effect/turf_decal/bot,
@@ -7599,17 +7594,6 @@
 /obj/structure/lattice/catwalk,
 /turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
-"Vb" = (
-/obj/structure/table,
-/obj/item/storage/medkit/regular,
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/turf/open/floor/iron/white,
-/area/mine/laborcamp)
 "Ve" = (
 /obj/structure/chair{
 	dir = 8
@@ -14881,7 +14865,7 @@ aD
 aD
 aD
 ap
-Vb
+Cf
 YJ
 aq
 au
@@ -16188,7 +16172,7 @@ aj
 aj
 ab
 cQ
-di
+UM
 KY
 dP
 eb
@@ -17987,8 +17971,8 @@ aj
 ai
 ad
 cM
-dn
-dE
+Sb
+dq
 dQ
 ec
 eq
@@ -20817,9 +20801,9 @@ ab
 ab
 aj
 ab
-cR
-iO
-cR
+br
+oK
+br
 ab
 ab
 aj
@@ -21074,9 +21058,9 @@ ab
 aj
 aj
 aj
-cR
-eq
-cR
+br
+eC
+br
 ab
 aj
 aj
@@ -21331,9 +21315,9 @@ ab
 aj
 aj
 aj
-cR
-eq
-cR
+br
+eC
+br
 aj
 aj
 aj
@@ -21588,9 +21572,9 @@ ab
 ab
 aj
 aj
-cR
-eq
-cR
+br
+eC
+br
 aj
 aj
 aj
@@ -21845,7 +21829,7 @@ ab
 ab
 aj
 aj
-br
+gf
 eC
 br
 aj
