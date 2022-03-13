@@ -29,6 +29,8 @@
 	var/datum/weakref/holder_connect_loc_behalf
 
 /datum/component/slippery/Initialize(knockdown, lube_flags = NONE, datum/callback/callback, paralyze, force_drop = FALSE, slot_whitelist)
+	paralyze = 0 // SKYRAT EDIT ADDITION - COMBAT OVERHAUL
+	force_drop = FALSE // SKYRAT EDIT ADDITION - COMBAT OVERHAUL
 	src.knockdown_time = max(knockdown, 0)
 	src.paralyze_time = max(paralyze, 0)
 	src.force_drop_items = force_drop
@@ -50,6 +52,8 @@
 		AddComponent(/datum/component/connect_loc_behalf, parent, default_connections)
 
 /datum/component/slippery/InheritComponent(datum/component/slippery/component, i_am_original, knockdown, lube_flags = NONE, datum/callback/callback, paralyze, force_drop = FALSE, slot_whitelist)
+	paralyze = 0 // SKYRAT EDIT ADDITION - COMBAT OVERHAUL
+	force_drop = FALSE // SKYRAT EDIT ADDITION - COMBAT OVERHAUL
 	if(component)
 		knockdown = component.knockdown_time
 		lube_flags = component.lube_flags
