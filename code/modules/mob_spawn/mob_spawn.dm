@@ -264,7 +264,6 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_type = /mob/living/carbon/human
-	restricted_species = list(/datum/species/lizard/ashwalker) //SKYRAT EDIT ADDITION
 
 /obj/effect/mob_spawn/corpse/human
 	icon_state = "corpsehuman"
