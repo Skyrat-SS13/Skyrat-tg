@@ -303,10 +303,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	default_mutant_bodyparts = list("tail" = "Cat", "ears" = "Cat")
 	learnable_languages = list(/datum/language/common, /datum/language/nekomimetic)
 
-/datum/species/human/monkey
-	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("tail" = "Monkey")
-
 /datum/species/human
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("ears" = "None", "tail" = "None", "wings" = "None")

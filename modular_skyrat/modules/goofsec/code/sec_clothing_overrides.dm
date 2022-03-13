@@ -94,7 +94,7 @@
 		if(istype(I, /obj/item/gun))
 			playsound(parent, 'modular_skyrat/modules/sec_haul/sound/holsterin.ogg', 50, TRUE, -5)
 		else
-			playsound(parent, "rustle", 50, TRUE, -5)
+			playsound(parent, SFX_RUSTLE, 50, TRUE, -5)
 
 	for(var/mob/viewing in viewers(user, null))
 		if(M == viewing)

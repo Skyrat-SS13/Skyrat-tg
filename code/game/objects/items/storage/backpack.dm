@@ -71,7 +71,7 @@
 	user.dropItemToGround(src, TRUE)
 	user.Stun(100, ignore_canstun = TRUE)
 	sleep(20)
-	playsound(src, "rustle", 50, TRUE, -5)
+	playsound(src, SFX_RUSTLE, 50, TRUE, -5)
 	qdel(user)
 
 /obj/item/storage/backpack/santabag
@@ -313,7 +313,7 @@
 
 /obj/item/storage/backpack/satchel/flat/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE, INVISIBILITY_OBSERVER, use_anchor = TRUE)
+	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE, INVISIBILITY_MAXIMUM, use_anchor = TRUE) // SKYRAT EDIT - ORIGINAL: INVISIBILITY_OBSERVER
 
 /obj/item/storage/backpack/satchel/flat/ComponentInitialize()
 	. = ..()
