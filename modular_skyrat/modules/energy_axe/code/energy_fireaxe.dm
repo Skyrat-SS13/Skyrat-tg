@@ -37,7 +37,7 @@
 	SIGNAL_HANDLER
 
 	wielded = FALSE
-	hitsound = "swing_hit"
+	hitsound = SFX_SWING_HIT
 	STOP_PROCESSING(SSobj, src)
 	set_light_on(FALSE)
 
