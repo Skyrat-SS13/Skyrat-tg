@@ -135,19 +135,6 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/shuttle/arrival)
-"l" = (
-/obj/structure/table/reinforced,
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 32
-	},
-/obj/item/storage/firstaid/regular{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/firstaid/regular,
-/obj/effect/turf_decal/bot,
-/turf/open/floor/iron,
-/area/shuttle/arrival)
 "m" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
@@ -176,10 +163,6 @@
 /turf/open/floor/iron{
 	heat_capacity = 1e+006
 	},
-/area/shuttle/arrival)
-"p" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/open/floor/iron,
 /area/shuttle/arrival)
 "q" = (
 /obj/effect/turf_decal/tile/neutral,
@@ -302,14 +285,6 @@
 	},
 /turf/open/floor/iron,
 /area/shuttle/arrival)
-"F" = (
-/obj/machinery/light/directional/north,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/vending/wallmed/directional/north{
-	use_power = 0
-	},
-/turf/open/floor/iron,
-/area/shuttle/arrival)
 "G" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
@@ -343,11 +318,6 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/turf/open/floor/iron,
-/area/shuttle/arrival)
-"L" = (
-/obj/structure/closet/wardrobe/grey,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron,
 /area/shuttle/arrival)
 "M" = (
@@ -406,7 +376,7 @@
 	},
 /turf/open/floor/iron,
 /area/shuttle/arrival)
-"U" = (
+"T" = (
 /obj/machinery/computer{
 	dir = 1;
 	name = "Shuttle computer"
@@ -423,6 +393,36 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/turf/open/floor/iron,
+/area/shuttle/arrival)
+"W" = (
+/obj/machinery/light/directional/north,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/vending/wallmed/directional/north{
+	use_power = 0
+	},
+/turf/open/floor/iron,
+/area/shuttle/arrival)
+"X" = (
+/obj/structure/table/reinforced,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 32
+	},
+/obj/item/storage/medkit/regular{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/medkit/regular,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/iron,
+/area/shuttle/arrival)
+"Y" = (
+/obj/structure/closet/wardrobe/grey,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron,
+/area/shuttle/arrival)
+"Z" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron,
 /area/shuttle/arrival)
 
@@ -469,14 +469,14 @@ b
 e
 h
 j
-p
-p
-p
-p
-p
-p
-p
-p
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
 H
 g
 g
@@ -488,33 +488,33 @@ b
 e
 h
 k
-p
-p
+Z
+Z
 v
 v
 v
 v
 B
-p
+Z
 I
 N
 Q
-U
+T
 h
 "}
 (5,1,1) = {"
 c
 d
 f
-l
-p
+X
+Z
 s
 w
 x
 y
 x
 f
-F
+W
 J
 O
 R
@@ -526,18 +526,18 @@ b
 e
 h
 m
-p
-p
+Z
+Z
 u
 u
 u
 u
 D
-p
+Z
 K
 P
 S
-U
+T
 h
 "}
 (7,1,1) = {"
@@ -545,15 +545,15 @@ b
 e
 h
 j
-p
-p
-p
-p
-p
-p
-p
-p
-L
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Y
 g
 g
 h
