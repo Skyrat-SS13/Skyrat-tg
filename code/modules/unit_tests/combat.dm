@@ -68,7 +68,7 @@
 	TEST_ASSERT(pre_attack_hit, "Pre-attack signal was not fired")
 	TEST_ASSERT(attack_hit, "Attack signal was not fired")
 	TEST_ASSERT(post_attack_hit, "Post-attack signal was not fired")
-
+/* SKYRAT EDIT REMOVAL
 /datum/unit_test/disarm/Run()
 	var/mob/living/carbon/human/attacker = allocate(/mob/living/carbon/human)
 	var/mob/living/carbon/human/victim = allocate(/mob/living/carbon/human)
@@ -99,3 +99,4 @@
 	TEST_ASSERT_EQUAL(victim.loc.x, run_loc_floor_bottom_left.x + 2, "Victim was moved after being pushed against a wall")
 	TEST_ASSERT(victim.has_status_effect(/datum/status_effect/incapacitating/knockdown), "Victim was not knocked down after being pushed against a wall")
 	TEST_ASSERT_EQUAL(victim.get_active_held_item(), null, "Victim didn't drop toolbox after being pushed against a wall")
+*/

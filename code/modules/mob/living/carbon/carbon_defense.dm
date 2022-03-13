@@ -359,7 +359,7 @@
 			log_combat(src, target, "shoved", "knocking them down")
 			return
 			*/
-			target.apply_damage(SHOVE_STAMINA_SOLID, STAMINA, BODY_ZONE_CHEST)
+			target.apply_damage(SHOVE_STAMINA_SOLID, STAMINA, BODY_ZONE_CHEST) // Shoving into a solid object deals some stamina damage.
 			// SKYRAT EDIT END
 
 	target.visible_message(span_danger("[name] shoves [target.name]!"),
