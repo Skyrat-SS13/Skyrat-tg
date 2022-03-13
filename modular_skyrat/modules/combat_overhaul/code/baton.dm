@@ -4,6 +4,7 @@
 
 /obj/item/melee/baton/security
 	knockdown_time = (0 SECONDS)
+	stamina_damage = 20
 
 /obj/item/melee/baton/security/apply_stun_effect_end(mob/living/target)
 	return FALSE
