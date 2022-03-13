@@ -140,7 +140,6 @@ GLOBAL_PROTECT(admin_verbs_server)
 	/client/proc/cmd_admin_delete, /*delete an instance/object/mob/etc*/
 	/client/proc/cmd_debug_del_all,
 	/client/proc/toggle_random_events,
-	/client/proc/set_mining_map, //SKYRAT EDIT ADDITION
 	/client/proc/forcerandomrotate,
 	/client/proc/adminchangemap,
 	/client/proc/panicbunker,
@@ -176,6 +175,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/set_dynex_scale,
 	/client/proc/cmd_display_del_log,
 	/client/proc/outfit_manager,
+	/client/proc/open_colorblind_test,
 	/client/proc/generate_wikichem_list,
 	/client/proc/modify_goals,
 	/client/proc/debug_huds,
