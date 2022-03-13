@@ -1,6 +1,6 @@
 /obj/item/forging
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
-	var/work_time = 2 SECONDS
+	toolspeed = 1 SECONDS
 	///whether the item is in use or not
 	var/in_use = FALSE
 
@@ -9,10 +9,11 @@
 	desc = "A set of tongs specifically crafted for use in forging. A wise man once said 'I lift things up and put them down.'"
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
 	icon_state = "tong_empty"
+	tool_behaviour = TOOL_TONG
 
 /obj/item/forging/tongs/primitive
 	name = "primitive forging tongs"
-	work_time = 3 SECONDS
+	toolspeed = 2 SECONDS
 
 /obj/item/forging/tongs/attack_self(mob/user, modifiers)
 	. = ..()
@@ -26,6 +27,18 @@
 	name = "forging hammer"
 	desc = "A hammer specifically crafted for use in forging. Used to slowly shape metal; careful, you could break something with it!"
 	icon_state = "hammer"
+	tool_behaviour = TOOL_HAMMER
+	///the list of things that, if attacked, will set the attack speed to rapid
+	var/static/list/fast_attacks = list(
+		/obj/structure/reagent_anvil,
+		/obj/structure/reagent_crafting_bench
+	)
+
+/obj/item/forging/hammer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	. = ..()
+	if(!is_type_in_list(target, fast_attacks))
+		return
+	user.changeNext_move(CLICK_CD_RAPID)
 
 /obj/item/forging/hammer/primitive
 	name = "primitive forging hammer"
@@ -34,10 +47,11 @@
 	name = "forging billow"
 	desc = "A billow specifically crafted for use in forging. Used to stoke the flames and keep the forge lit."
 	icon_state = "billow"
+	tool_behaviour = TOOL_BILLOW
 
 /obj/item/forging/billow/primitive
 	name = "primitive forging billow"
-	work_time = 3 SECONDS
+	toolspeed = 2 SECONDS
 
 //incomplete pre-complete items
 /obj/item/forging/incomplete

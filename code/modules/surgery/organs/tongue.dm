@@ -354,7 +354,7 @@
 	languages_possible = languages_possible_alien
 
 /obj/item/organ/tongue/alien/modify_speech(datum/source, list/speech_args)
-	playsound(owner, "hiss", 25, TRUE, TRUE)
+	playsound(owner, SFX_HISS, 25, TRUE, TRUE)
 
 /obj/item/organ/tongue/bone
 	name = "bone \"tongue\""
