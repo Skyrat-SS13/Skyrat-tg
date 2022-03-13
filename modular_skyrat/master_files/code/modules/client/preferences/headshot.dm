@@ -6,8 +6,8 @@
 	savefile_key = "headshot"
 	/// Assoc list of ckeys and their link, used to cut down on chat spam
 	var/list/stored_link = list()
-	var/static/link_regex = regex("^https://imgur.com|https://i.imgur.com|https://i.gyazo.com|https://media.discordapp.net|https://media.discordapp.net|https://cdn.discordapp.com$")
-	var/static/end_regex = regex("^.jpg|.jpg|.png|.jpeg$") //Regex is terrible, don't touch the duplicate .jpg
+	var/static/link_regex = regex("^https://i.gyazo.com|https://media.discordapp.net|https://cdn.discordapp.com|https://media.discordapp.net$") //Do not touch the damn duplicates.
+	var/static/end_regex = regex("^.jpg|.jpg|.png|.jpeg|.jpeg$") //Regex is terrible, don't touch the duplicate extensions
 
 
 /datum/preference/text/headshot/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
