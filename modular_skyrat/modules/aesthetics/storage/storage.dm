@@ -1,4 +1,4 @@
-/obj/item/storage/firstaid/emergency
+/obj/item/storage/medkit/emergency
 	icon = 'modular_skyrat/modules/aesthetics/storage/storage.dmi'
 
 /obj/item/borg/upgrade/rped
@@ -13,8 +13,6 @@
 /obj/item/storage/part_replacer/cyborg
 	icon = 'modular_skyrat/modules/aesthetics/storage/storage.dmi'
 
-/obj/item/storage/firstaid
-	icon = 'modular_skyrat/modules/aesthetics/storage/storage.dmi'
 
 /obj/item/storage/box
 	icon = 'modular_skyrat/modules/aesthetics/storage/storage.dmi'

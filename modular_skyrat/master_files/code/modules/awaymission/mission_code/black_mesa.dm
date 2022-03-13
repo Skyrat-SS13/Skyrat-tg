@@ -605,6 +605,7 @@
 	prompt_name = "a tactical squad member"
 	outfit = /datum/outfit/hecu
 	you_are_text = "You are an elite tactical squad deployed into the research facility to contain the infestation. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
+	restricted_species = list(/datum/species/human)
 
 /obj/item/clothing/under/rank/security/officer/hecu
 	name = "hecu jumpsuit"
@@ -637,7 +638,7 @@
 	backpack_contents = list(
 		/obj/item/storage/box/survival/radio,
 		/obj/item/ammo_box/magazine/m16 = 3,
-		/obj/item/storage/firstaid/emergency,
+		/obj/item/storage/medkit/emergency,
 		/obj/item/storage/box/hecu_rations,
 		/obj/item/gun/ballistic/automatic/pistol/g17/mesa,
 		/obj/item/ammo_box/magazine/multi_sprite/g17 = 2,

@@ -18,7 +18,7 @@
 		/obj/item/melee/baton/security/loaded,\
 		/obj/item/gun/energy/cell_loaded/medigun/upgraded,\
 		/obj/item/storage/box/medicells,\
-		/obj/item/storage/firstaid/tactical/ntrauma,\
+		/obj/item/storage/medkit/tactical/ntrauma,\
 		)
 	//Chosen cells are based off the worst things to deal with: TraumaTeam is built for worst-case scenarios, so they get a temperature cell and a better toxin cell
 
@@ -28,7 +28,7 @@
 		/obj/item/melee/baton/security/loaded ,\
 		/obj/item/reagent_containers/hypospray/combat,\
 		/obj/item/gun/medbeam,\
-		/obj/item/storage/firstaid/tactical/ntrauma,\
+		/obj/item/storage/medkit/tactical/ntrauma,\
 		/obj/item/roller,\
 		)
 
@@ -77,11 +77,11 @@
 	new /obj/item/healthanalyzer/advanced(src)
 	new	/obj/item/reagent_containers/hypospray/combat(src)
 
-/obj/item/storage/firstaid/tactical/ntrauma
+/obj/item/storage/medkit/tactical/ntrauma
 	name = "trauma medical kit"
 	desc = "I hope you've got insurance, because the Trauma Team's premiums are HIGH."
 
-/obj/item/storage/firstaid/tactical/ntrauma/PopulateContents()
+/obj/item/storage/medkit/tactical/ntrauma/PopulateContents()
 	new /obj/item/stack/medical/gauze(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/defibrillator/compact/combat/loaded/nanotrasen(src)
