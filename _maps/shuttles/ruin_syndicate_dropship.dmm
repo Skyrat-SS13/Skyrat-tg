@@ -34,10 +34,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/caravan/syndicate3)
-"dd" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/open/floor/iron/dark,
-/area/shuttle/caravan/syndicate3)
 "dZ" = (
 /obj/structure/shuttle/engine/propulsion/burst{
 	dir = 8
@@ -95,6 +91,11 @@
 /obj/machinery/light/small/directional/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/pod/dark,
+/area/shuttle/caravan/syndicate3)
+"kY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
 /area/shuttle/caravan/syndicate3)
 "mJ" = (
 /obj/structure/shuttle/engine/propulsion/burst/left{
@@ -210,19 +211,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/caravan/syndicate3)
-"vA" = (
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/airlock/hatch{
-	id_tag = "caravansyndicate3_bolt_bridge";
-	name = "Bridge";
-	req_access_txt = "150"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/open/floor/iron/dark,
-/area/shuttle/caravan/syndicate3)
 "vQ" = (
 /obj/structure/shuttle/engine/propulsion/burst/right{
 	dir = 8
@@ -263,6 +251,17 @@
 /obj/machinery/firealarm/directional/south,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/pod/dark,
+/area/shuttle/caravan/syndicate3)
+"Da" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Ready Room";
+	req_access_txt = "150"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
 /area/shuttle/caravan/syndicate3)
 "Dt" = (
 /obj/effect/turf_decal/stripes/line{
@@ -332,6 +331,20 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/caravan/syndicate3)
+"Ia" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/medkit/regular,
+/obj/item/assembly/flash/handheld,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/caravan/syndicate3)
 "Ij" = (
 /obj/machinery/turretid{
 	ailock = 1;
@@ -380,18 +393,17 @@
 /obj/item/clothing/shoes/sneakers/black,
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/caravan/syndicate3)
-"Nj" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/medkit/regular,
-/obj/item/assembly/flash/handheld,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
+"MR" = (
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/hatch{
+	id_tag = "caravansyndicate3_bolt_bridge";
+	name = "Bridge";
+	req_access_txt = "150"
 	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 4
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
 	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/caravan/syndicate3)
 "NH" = (
@@ -405,17 +417,6 @@
 /obj/item/clothing/under/syndicate,
 /obj/item/clothing/glasses/night,
 /turf/open/floor/mineral/plastitanium,
-/area/shuttle/caravan/syndicate3)
-"Oa" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Ready Room";
-	req_access_txt = "150"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/open/floor/iron/dark,
 /area/shuttle/caravan/syndicate3)
 "Pt" = (
 /obj/effect/turf_decal/stripes/line{
@@ -490,8 +491,7 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/shuttle/caravan/syndicate3)
-"VH" = (
-/obj/effect/decal/cleanable/dirt,
+"Vr" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/caravan/syndicate3)
@@ -592,7 +592,7 @@ Tn
 Tn
 EO
 ss
-dd
+Vr
 BQ
 Cm
 Tn
@@ -601,7 +601,7 @@ Tn
 Tn
 sn
 ss
-dd
+Vr
 UD
 rV
 Tn
@@ -610,7 +610,7 @@ Tn
 Tn
 NH
 Fa
-dd
+Vr
 qE
 Dt
 Tn
@@ -619,7 +619,7 @@ Tn
 Rj
 Tn
 Tn
-Oa
+Da
 Tn
 Tn
 PL
@@ -628,7 +628,7 @@ PL
 gl
 xC
 al
-dd
+Vr
 bo
 bB
 KS
@@ -637,7 +637,7 @@ KS
 Tn
 Lq
 YU
-VH
+kY
 ZI
 HJ
 Tn
@@ -646,7 +646,7 @@ Tn
 Tn
 Tn
 Tn
-vA
+MR
 Tn
 Tn
 Tn
@@ -655,7 +655,7 @@ Tn
 Tn
 uy
 Gx
-dd
+Vr
 ZZ
 Sl
 Tn
@@ -666,7 +666,7 @@ ns
 Ij
 HM
 Wr
-Nj
+Ia
 rU
 "}
 (14,1,1) = {"
