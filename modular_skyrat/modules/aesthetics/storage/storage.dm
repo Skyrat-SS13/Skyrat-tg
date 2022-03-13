@@ -1,4 +1,4 @@
-/obj/item/storage/firstaid/emergency
+/obj/item/storage/medkit/emergency
 	icon = 'modular_skyrat/modules/aesthetics/storage/storage.dmi'
 
 /obj/item/borg/upgrade/rped

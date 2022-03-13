@@ -39,7 +39,7 @@
 	generate_items_inside(items_inside,src)
 
 <<<<<<< HEAD:code/game/objects/items/storage/firstaid.dm
-/obj/item/storage/firstaid/emergency//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/storage/medkit/emergency//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 =======
 /obj/item/storage/medkit/emergency
 >>>>>>> ed06adde605 ([MDB IGNORE] 3/4th medkit sprites + firstaid > medkit (#65230)):code/game/objects/items/storage/medkit.dm

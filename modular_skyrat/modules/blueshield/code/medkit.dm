@@ -1,8 +1,8 @@
-/obj/item/storage/firstaid/tactical/blueshield
+/obj/item/storage/medkit/tactical/blueshield
 	name = "blueshield combat medical kit"
 	desc = "Blue boy to the rescue!"
 
-/obj/item/storage/firstaid/tactical/blueshield/PopulateContents()
+/obj/item/storage/medkit/tactical/blueshield/PopulateContents()
 	if(empty)
 		return
 	new /obj/item/stack/medical/gauze(src)
