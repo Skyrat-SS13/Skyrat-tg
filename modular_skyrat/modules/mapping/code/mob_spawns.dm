@@ -137,6 +137,7 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	head = /obj/item/clothing/head/sec/navywarden/syndicate
+	eyes = /obj/item/clothing/glasses/hud/security/sunglasses
 	ears = /obj/item/radio/headset/interdyne
 
 	backpack_contents = list(
@@ -152,6 +153,7 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/bulletproof/old
 	head = /obj/item/clothing/head/helmet/swat/ds
+	eyes = /obj/item/clothing/glasses/hud/security/sunglasses
 	mask = /obj/item/clothing/mask/gas/syndicate/ds
 	ears = /obj/item/radio/headset/interdyne
 
