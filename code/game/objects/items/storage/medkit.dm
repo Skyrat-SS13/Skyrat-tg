@@ -38,11 +38,7 @@
 		/obj/item/reagent_containers/hypospray/medipen = 1)
 	generate_items_inside(items_inside,src)
 
-<<<<<<< HEAD:code/game/objects/items/storage/firstaid.dm
-/obj/item/storage/medkit/emergency//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
-=======
 /obj/item/storage/medkit/emergency
->>>>>>> ed06adde605 ([MDB IGNORE] 3/4th medkit sprites + firstaid > medkit (#65230)):code/game/objects/items/storage/medkit.dm
 	icon_state = "medbriefcase"
 	name = "emergency medkit"
 	desc = "A very simple first aid kit meant to secure and stabilize serious wounds for later treatment."
