@@ -159,7 +159,7 @@
 
 //Dopamine. Generates in character after orgasm.
 /datum/reagent/drug/aphrodisiac/dopamine
-	name = "dopamine"
+	name = "dopamine...?"
 	description = "Pure happiness"
 	taste_description = "an indescribable, slightly sour taste. Something in it relaxes you, filling you with pleasure."
 	color = "#97ffee"

@@ -16,10 +16,6 @@
 	description = "A fully-kitted toolbox scavenged from maintenance by our highly-paid monkeys. The toolbox \
 		itself is weighted especially to bash any head in and comes with a free pair of insulated combat gloves."
 
-/datum/opposing_force_equipment/gear/thermalgoggles
-	item_type = /obj/item/clothing/glasses/thermal
-	description = "A pair of thermal goggles. Cannot be chameleon disguised."
-
 /datum/opposing_force_equipment/gear/xraygoggles
 	item_type = /obj/item/clothing/glasses/thermal/xray
 	description = "A pair of low-light x-ray goggles manufactured by the Syndicate. Cannot be chameleon disguised. Makes wearer more vulnerable to bright lights."
@@ -33,6 +29,7 @@
 	description = "A belt that allows its wearer to temporarily turn invisible. Only recharges in dark areas. Use wisely."
 
 /datum/opposing_force_equipment/gear/projector
+	name = "Chameleon Projector"
 	item_type = /obj/item/chameleon
 	description = "A projector that allows its user to turn into any scanned object. Pairs well with a cluttered room and ambush weapon."
 
@@ -41,10 +38,12 @@
 	description = "A stolen Security HUD refitted with chameleon technology. Provides flash protection."
 
 /datum/opposing_force_equipment/gear/aidetector
+	name = "AI Detector Multitool"
 	item_type = /obj/item/multitool/ai_detect
 	description = "A multitool that lets you see the AI's vision cone with an overlaid HUD and know if you're being watched."
 
 /datum/opposing_force_equipment/gear/noslip
+	name = "Chameleon No-Slips"
 	item_type = /obj/item/clothing/shoes/chameleon/noslip
 	description = "No-slip chameleon shoes, for when you plan on running through hell and back."
 
@@ -77,7 +76,7 @@
 	admin_note = "Allows a ghost to take control of a Cortical Borer."
 
 /datum/opposing_force_equipment/gear/borer_egg/on_issue(mob/living/target)
-	new /obj/effect/mob_spawn/ghost_role/borer_egg(get_turf(src))
+	new /obj/effect/mob_spawn/ghost_role/borer_egg/opfor(get_turf(src))
 
 /datum/opposing_force_equipment/gear/ventcrawl_book
 	item_type = /obj/item/book/granter/traitsr/ventcrawl_book
