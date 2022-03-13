@@ -85,7 +85,7 @@ GLOBAL_LIST_INIT(horse_taur_suit_sprites, init_taur_sprites('modular_skyrat/mast
 GLOBAL_LIST_INIT(pawed_taur_suit_sprites, init_taur_sprites('modular_skyrat/master_files/icons/mob/clothing/suit_taur_paw.dmi'))
 
 /**
- * Init proc for the taur_sprites globals. Called on startup, generates the lists of icon_states in the provided file.area
+ * Init proc for the taur_sprites globals. Called on startup, generates the lists of icon_states in the provided file.
  *
  * Args:
  * * target_dmi: The filepath of the target file that we are taking our icon_states from, starting from modular_skyrat, wrapped in ''.
