@@ -159,7 +159,7 @@
 	desc = "An extremely short black dress, for those with no shame."
 	icon_state = "littleblackdress_s"
 	body_parts_covered = CHEST|GROIN
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	can_adjust = FALSE
 
 /obj/item/clothing/under/dress/pinktutu
@@ -169,5 +169,5 @@
 	desc = "A fluffy pink tutu."
 	icon_state = "pinktutu_s"
 	body_parts_covered = CHEST|GROIN
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	can_adjust = FALSE

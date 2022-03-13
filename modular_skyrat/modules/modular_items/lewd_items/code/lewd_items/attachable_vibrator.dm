@@ -38,12 +38,12 @@
 		"pink" = image(icon = src.icon, icon_state = "[initial(icon_state)]_pink_low[(istype(src, /obj/item/clothing/sextoy/eggvib/signalvib)) ? "_on" : ""]"),
 		"teal" = image(icon = src.icon, icon_state = "[initial(icon_state)]_teal_low[(istype(src, /obj/item/clothing/sextoy/eggvib/signalvib)) ? "_on" : ""]"))
 
-/obj/item/clothing/sextoy/eggvib/AltClick(mob/user, obj/item/I)
+/obj/item/clothing/sextoy/eggvib/AltClick(mob/user, obj/item/object)
 	if(!color_changed)
 		. = ..()
 		if(.)
 			return
-		var/choice = show_radial_menu(user,src, vib_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user,src, vib_designs, custom_check = CALLBACK(src, .proc/check_menu, user, object), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_color = choice
@@ -62,14 +62,6 @@
 				to_chat(user, span_notice("You turn off the vibrating egg. Fun time's over."))
 		update_icon()
 		update_icon_state()
-
-/// A check to see if you can access the toy's color choice radial menu
-/obj/item/clothing/sextoy/eggvib/proc/check_menu(mob/living/user)
-	if(!istype(user))
-		return FALSE
-	if(user.incapacitated())
-		return FALSE
-	return TRUE
 
 /obj/item/clothing/sextoy/eggvib/Initialize()
 	. = ..()
@@ -197,7 +189,7 @@
 
 /obj/item/clothing/sextoy/eggvib/signalvib/AltClick(mob/user, obj/item/I)
 	if(!color_changed)
-		var/choice = show_radial_menu(user,src, vib_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user,src, vib_designs, custom_check = CALLBACK(src, /obj/item/clothing/sextoy/proc/check_menu, user, I), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_color = choice

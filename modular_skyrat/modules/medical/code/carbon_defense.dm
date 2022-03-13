@@ -11,7 +11,7 @@
 		to_chat(src, span_danger("You fail to grasp your [grasped_part.name]."))
 		return
 
-	var/obj/item/self_grasp/grasp = new
+	var/obj/item/hand_item/self_grasp/grasp = new
 	if(starting_hand_index != active_hand_index || !put_in_active_hand(grasp))
 		to_chat(src, span_danger("You fail to grasp your [grasped_part.name]."))
 		QDEL_NULL(grasp)
