@@ -138,7 +138,7 @@
 	var/loadout_enabled = FALSE
 	/// Can we use our quirks for this role?
 	var/quirks_enabled = FALSE
-	/// Are we limited to a certain species type?
+	/// Are we limited to a certain species type? LISTED TYPE
 	var/restricted_species
 	// SKYRAT EDIT END
 
@@ -159,7 +159,7 @@
 	if(!SSticker.HasRoundStarted() || !loc)
 		return
 	// SKYRAT EDIT ADDITION
-	if(restricted_species && user.client?.prefs?.read_preference(/datum/preference/choiced/species) != restricted_species)
+	if(restricted_species && !(user.client?.prefs?.read_preference(/datum/preference/choiced/species) in restricted_species))
 		to_chat(user, span_warning("You cannot use this role because you are not the correct species!"))
 		return
 	// SKYRAT EDIT END
@@ -264,6 +264,7 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_type = /mob/living/carbon/human
+	restricted_species = list(/datum/species/lizard/ashwalker)
 
 /obj/effect/mob_spawn/corpse/human
 	icon_state = "corpsehuman"
