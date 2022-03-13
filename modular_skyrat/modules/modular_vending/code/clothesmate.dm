@@ -34,6 +34,8 @@
 		/obj/item/clothing/under/dress/skirt/polychromic = 5,
 		/obj/item/clothing/under/dress/skirt/polychromic/pleated = 5,
 		/obj/item/clothing/suit/hooded/wintercoat/polychromic = 5,
+		/obj/item/clothing/suit/jacket/leather/polychromic = 5,
+		/obj/item/clothing/under/misc/polyshorts = 5,
 		/obj/item/clothing/neck/cloak/colourable = 5,
 		/obj/item/clothing/neck/cloak/colourable/veil = 5,
 		/obj/item/clothing/neck/cloak/colourable/shroud = 5,
@@ -84,8 +86,6 @@
 		/obj/item/clothing/head/fedora/white = 5,
 		/obj/item/clothing/head/fedora/fedblack = 5,
 		/obj/item/clothing/head/fedora/fedbrown = 5,
-		/obj/item/clothing/suit/jacket/leather/polychromic = 5,
-		/obj/item/clothing/under/misc/polyshorts = 5,
 	)
 
 	skyrat_premium = list( //being here means you're artificially rare, congratulations
