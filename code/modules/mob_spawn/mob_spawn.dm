@@ -159,7 +159,7 @@
 	if(!SSticker.HasRoundStarted() || !loc)
 		return
 	// SKYRAT EDIT ADDITION
-	if(restricted_species && !istype(user.client?.prefs?.read_preference(/datum/preference/choiced/species), restricted_species))
+	if(restricted_species && user.client?.prefs?.read_preference(/datum/preference/choiced/species) != restricted_species)
 		to_chat(user, span_warning("You cannot use this role because you are not the correct species!"))
 		return
 	// SKYRAT EDIT END
