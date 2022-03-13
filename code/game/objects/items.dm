@@ -236,14 +236,14 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		if(damtype == BURN)
 			hitsound = 'sound/items/welder.ogg'
 		if(damtype == BRUTE)
-			hitsound = "swing_hit"
+			hitsound = SFX_SWING_HIT
 
 	add_weapon_description()
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_NEW_ITEM, src)
 	if(LAZYLEN(embedding))
 		updateEmbedding()
-	if(mapload)
+	if(mapload && !GLOB.steal_item_handler.generated_items)
 		add_stealing_item_objective()
 
 /obj/item/Destroy(force)
@@ -826,7 +826,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(damtype == BURN)
 		. = 'sound/weapons/sear.ogg'
 	else
-		. = "desecration"
+		. = SFX_DESECRATION
 
 /obj/item/proc/open_flame(flame_heat=700)
 	var/turf/location = loc
@@ -990,6 +990,10 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	delay *= toolspeed * skill_modifier
 
+	// SKYRAT EDIT ADDITION
+	if(welding_sparks) // If we have sparks, assume we are a welding tool.
+		target.add_overlay(welding_sparks)
+	// SKYRAT EDIT END
 
 	// Play tool sound at the beginning of tool usage.
 	play_tool_sound(target, volume)
@@ -1000,24 +1004,45 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 		if(ismob(target))
 			if(!do_mob(user, target, delay, extra_checks=tool_check))
+				// SKYRAT EDIT ADDITION
+				if(welding_sparks)
+					target.cut_overlay(welding_sparks)
+				// SKYRAT EDIT END
 				return
 
 		else
 			if(!do_after(user, delay, target=target, extra_checks=tool_check))
+				// SKYRAT EDIT ADDITION
+				if(welding_sparks)
+					target.cut_overlay(welding_sparks)
+				// SKYRAT EDIT END
 				return
 	else
 		// Invoke the extra checks once, just in case.
 		if(extra_checks && !extra_checks.Invoke())
+			// SKYRAT EDIT ADDITION
+			if(welding_sparks)
+				target.cut_overlay(welding_sparks)
+			// SKYRAT EDIT END
 			return
 
 	// Use tool's fuel, stack sheets or charges if amount is set.
 	if(amount && !use(amount))
+		// SKYRAT EDIT ADDITION
+		if(welding_sparks)
+			target.cut_overlay(welding_sparks)
+		// SKYRAT EDIT END
 		return
 
 	// Play tool sound at the end of tool usage,
 	// but only if the delay between the beginning and the end is not too small
 	if(delay >= MIN_TOOL_SOUND_DELAY)
 		play_tool_sound(target, volume)
+
+	// SKYRAT EDIT ADDITION
+	if(welding_sparks)
+		target.cut_overlay(welding_sparks)
+	// SKYRAT EDIT END
 
 	return TRUE
 
@@ -1218,12 +1243,12 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 				var/obj/item/shard/broken_glass = new /obj/item/shard(loc)
 				broken_glass.name = "broken [name]"
 				broken_glass.desc = "This used to be \a [name], but it sure isn't anymore."
-				playsound(victim, "shatter", 25, TRUE)
+				playsound(victim, SFX_SHATTER, 25, TRUE)
 				qdel(src)
 				if(QDELETED(source_item))
 					broken_glass.on_accidental_consumption(victim, user)
 			else //33% chance to just "crack" it (play a sound) and leave it in the bread
-				playsound(victim, "shatter", 15, TRUE)
+				playsound(victim, SFX_SHATTER, 15, TRUE)
 			discover_after = FALSE
 
 		victim.adjust_disgust(33)
