@@ -627,9 +627,9 @@
 	gloves = /obj/item/clothing/gloves/combat
 	suit = /obj/item/clothing/suit/space/hev_suit/pcv
 	suit_store = /obj/item/gun/ballistic/automatic/m16
-	belt = /obj/item/storage/belt/security/webbing
+	belt = /obj/item/storage/belt/military/assault
 	ears = /obj/item/radio/headset
-	glasses = /obj/item/clothing/glasses/night
+	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	shoes = /obj/item/clothing/shoes/combat
 	l_pocket = /obj/item/grenade/smokebomb
 	r_pocket = /obj/item/binoculars
@@ -649,11 +649,6 @@
 /datum/outfit/hecu/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
 	. = ..()
 	equipped_human.faction |= FACTION_HECU
-	equipped_human.hairstyle = "Crewcut"
-	equipped_human.hair_color = COLOR_ALMOST_BLACK
-	equipped_human.facial_hairstyle = "Shaved"
-	equipped_human.facial_hair_color = COLOR_ALMOST_BLACK
-	equipped_human.update_hair()
 
 /datum/id_trim/hecu
 	assignment = "HECU Soldier"
@@ -751,3 +746,48 @@
 	new dessert(src)
 	new /obj/item/storage/box/gum(src)
 	new /obj/item/food/spacers_sidekick(src)
+
+/obj/item/minespawner/explosive
+	name = "deactivated explosive landmine"
+	desc = "When activated, will deploy into a highly explosive mine after 3 seconds passes, perfect for lazy marines looking to cover their fortifications with no effort."
+	icon = 'icons/obj/items_and_weapons.dmi'
+	icon_state = "uglymine"
+
+	mine_type = /obj/effect/mine/explosive
+
+/obj/machinery/deployable_turret/hmg/mesa
+	name = "heavy machine gun turret"
+	desc = "A heavy calibre machine gun commonly used by marine forces, famed for it's ability to give people on the recieving end more holes than normal."
+	icon_state = "hmg"
+	max_integrity = 250
+	projectile_type = /obj/projectile/bullet/manned_turret/hmg/mesa
+	anchored = TRUE
+	number_of_shots = 3
+	cooldown_duration = 1 SECONDS
+	rate_of_fire = 2
+	firesound = 'sound/weapons/gun/hmg/hmg.ogg'
+	overheatsound = 'sound/weapons/gun/smg/smgrack.ogg'
+	can_be_undeployed = TRUE
+	spawned_on_undeploy = /obj/item/deployable_turret_folded/mesa
+
+/obj/machinery/deployable_turret/hmg/mesa/unbuckle_mob(mob/living/buckled_mob, force = FALSE, can_fall = TRUE)
+	. = ..()
+	set_anchored(TRUE)
+	STOP_PROCESSING(SSfastprocess, src)
+
+/obj/item/deployable_turret_folded/mesa
+	name = "folded heavy machine gun"
+	desc = "A folded and unloaded heavy machine gun, ready to be deployed and used."
+	icon = 'icons/obj/turrets.dmi'
+	icon_state = "folded_hmg"
+	max_integrity = 250
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK
+
+/obj/item/deployable_turret_folded/mesa/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/deployable, 5 SECONDS, /obj/machinery/deployable_turret/hmg/mesa, delete_on_use = TRUE)
+
+/obj/projectile/bullet/manned_turret/hmg/mesa
+	icon_state = "redtrac"
+	damage = 35
