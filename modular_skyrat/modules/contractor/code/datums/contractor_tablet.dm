@@ -11,9 +11,13 @@
 	undeletable = 1
 	tgui_id = "SyndContractor"
 	program_icon = "tasks"
+	/// Error message if there is one
 	var/error = ""
+	/// If the info screen is displayed or not
 	var/info_screen = TRUE
+	/// If the contract uplink's been assigned to a person yet
 	var/assigned = FALSE
+	/// If this is the first opening of the tablet
 	var/first_load = TRUE
 
 /datum/computer_file/program/contract_uplink/run_program(mob/living/user)
@@ -96,7 +100,7 @@
 					else
 						to_chat(user, span_notice("Your payment materializes onto the floor."))
 
-				hard_drive.opfor_data.contractor_hub.contract_TC_payed_out += hard_drive.opfor_data.contractor_hub.contract_TC_to_redeem
+				hard_drive.opfor_data.contractor_hub.contract_paid_out += hard_drive.opfor_data.contractor_hub.contract_TC_to_redeem
 				hard_drive.opfor_data.contractor_hub.contract_TC_to_redeem = 0
 				return TRUE
 			else
@@ -147,7 +151,7 @@
 		data["logged_in"] = TRUE
 		data["station_name"] = GLOB.station_name
 		data["redeemable_tc"] = opfor_data.contractor_hub.contract_TC_to_redeem
-		data["earned_tc"] = opfor_data.contractor_hub.contract_TC_payed_out
+		data["earned_tc"] = opfor_data.contractor_hub.contract_paid_out
 		data["contracts_completed"] = opfor_data.contractor_hub.contracts_completed
 		data["contract_rep"] = opfor_data.contractor_hub.contract_rep
 

@@ -6,7 +6,7 @@
 	give_objectives = TRUE // We give them their own custom objective.
 	show_in_antagpanel = FALSE // Not a proper/full antag.
 	give_uplink = FALSE // Don't give them an uplink.
-
+	/// Team datum that contains the contractor and the support unit
 	var/datum/team/contractor_team/contractor_team
 
 /// Team for storing both the contractor and their support unit - only really for the HUD and admin logging.

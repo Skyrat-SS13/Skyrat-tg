@@ -3,7 +3,7 @@
 	var/total_spent_rep = 0
 
 	var/completed_contracts = contractor_hub.contracts_completed
-	var/tc_total = contractor_hub.contract_TC_payed_out + contractor_hub.contract_TC_to_redeem
+	var/tc_total = contractor_hub.contract_paid_out + contractor_hub.contract_TC_to_redeem
 
 	var/contractor_item_icons = "" // Icons of purchases
 	var/contractor_support_unit = "" // Set if they had a support unit - and shows appended to their contracts completed
