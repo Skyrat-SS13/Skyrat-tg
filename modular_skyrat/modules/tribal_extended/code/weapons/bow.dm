@@ -17,6 +17,7 @@
 	casing_ejector = FALSE
 	internal_magazine = TRUE
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL //so ashwalkers can use it
+	has_gun_safety = FALSE
 
 /obj/item/gun/ballistic/tribalbow/shoot_with_empty_chamber()
 	return

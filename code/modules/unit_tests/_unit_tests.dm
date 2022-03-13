@@ -43,6 +43,9 @@
 /// A trait source when adding traits through unit tests
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
+// SKYRAT EDIT START
+#include "~skyrat/opposing_force.dm"
+//SKYRAT EDIT END
 #include "achievements.dm"
 #include "anchored_mobs.dm"
 #include "anonymous_themes.dm"
@@ -97,6 +100,7 @@
 #include "reagent_id_typos.dm"
 #include "reagent_mod_expose.dm"
 #include "reagent_mod_procs.dm"
+#include "reagent_names.dm"
 #include "reagent_recipe_collisions.dm"
 #include "resist.dm"
 #include "say.dm"

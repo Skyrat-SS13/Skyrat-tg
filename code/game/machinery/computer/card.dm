@@ -38,7 +38,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		"Clown", //SKYRAT EDIT: Host request
 		"Security Sergeant", //SKYRAT EDIT ADDITION - SEC_HAUL
 		"Blueshield",	//SKYRAT EDIT: Blueshield slots should never be above 1.
-		"Nanotrasen Representative", //SKYRAT EDIT ADDITION
+		"Nanotrasen Consultant", //SKYRAT EDIT ADDITION
 		"Prisoner")
 
 	//The scaling factor of max total positions in relation to the total amount of people on board the station in %
