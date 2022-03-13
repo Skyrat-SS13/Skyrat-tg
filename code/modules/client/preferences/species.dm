@@ -52,13 +52,7 @@
 /datum/preference/choiced/species/compile_constant_data()
 	var/list/data = list()
 
-<<<<<<< HEAD
-	var/list/food_flags = FOOD_FLAGS
-
-	for (var/species_id in (get_selectable_species() + get_customizable_races())) //SKYRAT EDIT CHANGE - ORIGINAL: for (var/species_id in get_selectable_species())
-=======
-	for (var/species_id in get_selectable_species())
->>>>>>> 7bb2f0b96ce (De-hardcodes the species preference pages, deleting the species pages and generating them in constant data on the DM side instead (#65140))
+	for (var/species_id in (get_selectable_species() + get_customizable_races())) //SKYRAT EDIT CHANGE
 		var/species_type = GLOB.species_list[species_id]
 		var/datum/species/species = new species_type()
 
@@ -73,26 +67,6 @@
 		data[species_id]["perks"] = species.get_species_perks()
 		data[species_id]["diet"] =  species.get_species_diet()
 
-<<<<<<< HEAD
-		if (!(TRAIT_NOHUNGER in species.inherent_traits))
-			diet = list(
-				"liked_food" = bitfield_to_list(species.liked_food, food_flags),
-				"disliked_food" = bitfield_to_list(species.disliked_food, food_flags),
-				"toxic_food" = bitfield_to_list(species.toxic_food, food_flags),
-			)
-
-		data[species_id] = list(
-			"name" = species.name,
-			"icon" = sanitize_css_class_name(species.name),
-
-			"use_skintones" = species.use_skintones,
-			"sexes" = species.sexes,
-
-			"enabled_features" = species.get_features(),
-			"veteran_only" = species.veteran_only,
-		) + diet
-=======
 		qdel(species)
->>>>>>> 7bb2f0b96ce (De-hardcodes the species preference pages, deleting the species pages and generating them in constant data on the DM side instead (#65140))
 
 	return data

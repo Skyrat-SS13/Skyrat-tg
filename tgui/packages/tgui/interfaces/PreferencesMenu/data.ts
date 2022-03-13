@@ -45,13 +45,8 @@ export type Species = {
 
   enabled_features: string[];
 
-<<<<<<< HEAD
-  liked_food: Food[];
-  disliked_food: Food[];
-  toxic_food: Food[];
-
   veteran_only: boolean; // SKYRAT EDIT - Veteran quirks
-=======
+
   perks: {
     positive: Perk[];
     negative: Perk[];
@@ -70,7 +65,6 @@ export type Perk = {
   ui_icon: string;
   name: string;
   description: string;
->>>>>>> 7bb2f0b96ce (De-hardcodes the species preference pages, deleting the species pages and generating them in constant data on the DM side instead (#65140))
 };
 
 export type Department = {
