@@ -24,7 +24,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "balaclava_ds"
-	flags_inv = HIDEHAIR | HIDEFACIALHAIR | HIDEEARS | HIDEFACE
+	flags_inv = HIDEHAIR | HIDEFACE | HIDEEARS | HIDEFACIALHAIR
 
 /obj/item/clothing/shoes/combat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
