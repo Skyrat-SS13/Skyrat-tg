@@ -605,6 +605,7 @@
 	prompt_name = "a tactical squad member"
 	outfit = /datum/outfit/hecu
 	you_are_text = "You are an elite tactical squad deployed into the research facility to contain the infestation. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
+	restricted_species = list(/datum/species/human)
 
 /obj/item/clothing/under/rank/security/officer/hecu
 	name = "hecu jumpsuit"
