@@ -33,6 +33,7 @@
 	description = "A virus will be uploaded to the engineering processing servers to force a routine power grid check, forcing all APCs on the station to be temporarily disabled."
 	item_type = /obj/effect/gibspawner/generic
 	admin_note = "Equivalent to the Grid Check random event."
+	max_amount = 1
 
 /datum/opposing_force_equipment/service/power_outage/on_issue()
 	var/datum/round_event_control/event = locate(/datum/round_event_control/grid_check) in SSevents.control
@@ -43,6 +44,7 @@
 	description = "A virus will be uploaded to the telecommunication processing servers to temporarily disable themselves."
 	item_type = /obj/effect/gibspawner/generic
 	admin_note = "Equivalent to the Communications Blackout random event."
+	max_amount = 1
 
 /datum/opposing_force_equipment/service/telecom_outage/on_issue()
 	var/datum/round_event_control/event = locate(/datum/round_event_control/communications_blackout) in SSevents.control
@@ -53,6 +55,7 @@
 	description = "Some forged documents will be given to Nanotrasen, skyrocketing the price of all on-station vendors for a short while."
 	item_type = /obj/effect/gibspawner/generic
 	admin_note = "Equivalent to the Market Crash random event."
+	max_amount = 1
 
 /datum/opposing_force_equipment/service/market_crash/on_issue()
 	var/datum/round_event_control/event = locate(/datum/round_event_control/market_crash) in SSevents.control
