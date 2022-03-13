@@ -49,7 +49,7 @@
 			if(STYLE_VOX)
 				icon_file = w_uniform.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/species/vox/uniform.dmi'
 			if(STYLE_TESHARI)
-				icon_file = TESHARI_UNIFORM_ICON
+				icon_file = w_uniform.worn_icon_teshari || TESHARI_UNIFORM_ICON
 
 		if(applied_style & STYLE_TAUR_ALL)
 			x_override = 64
@@ -131,7 +131,7 @@
 			if(STYLE_VOX)
 				icon_file = wear_suit.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/species/vox/suit.dmi'
 			if(STYLE_TESHARI)
-				icon_file = TESHARI_SUIT_ICON
+				icon_file = wear_suit.worn_icon_teshari || TESHARI_SUIT_ICON
 
 		if(applied_style & STYLE_TAUR_ALL)
 			x_override = 64
@@ -178,7 +178,7 @@
 			icon_file = shoes.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/feet_digi.dmi'
 		else if(isteshari(src))
 			applied_styles = STYLE_TESHARI
-			icon_file = TESHARI_FEET_ICON
+			icon_file = shoes.worn_icon_teshari || TESHARI_FEET_ICON
 
 		overlays_standing[SHOES_LAYER] = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', override_icon = icon_file, mutant_styles = applied_styles, species = dna.species.species_clothing_path)
 		var/mutable_appearance/shoes_overlay = overlays_standing[SHOES_LAYER]
@@ -221,7 +221,7 @@
 			icon_file = gloves.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/species/vox/hands.dmi'
 		else if(isteshari(src))
 			applied_styles = STYLE_TESHARI
-			icon_file = TESHARI_HANDS_ICON
+			icon_file = gloves.worn_icon_teshari || TESHARI_HANDS_ICON
 
 		overlays_standing[GLOVES_LAYER] = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = 'icons/mob/clothing/hands.dmi', override_icon = icon_file, mutant_styles = applied_styles, species = dna.species.species_clothing_path)
 		gloves_overlay = overlays_standing[GLOVES_LAYER]
@@ -255,7 +255,7 @@
 				icon_file = glasses.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/species/vox/eyes.dmi'
 			else if(isteshari(src))
 				applied_style |= STYLE_TESHARI
-				icon_file = TESHARI_EYES_ICON
+				icon_file = glasses.worn_icon_teshari ||TESHARI_EYES_ICON
 			overlays_standing[GLASSES_LAYER] = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = 'icons/mob/clothing/eyes.dmi', override_icon = icon_file, mutant_styles = applied_style, species = dna.species.species_clothing_path)
 
 		var/mutable_appearance/glasses_overlay = overlays_standing[GLASSES_LAYER]
