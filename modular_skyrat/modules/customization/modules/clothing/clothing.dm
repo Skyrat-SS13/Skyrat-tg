@@ -21,48 +21,69 @@
 
 	/// has_taur_sprite[icon_state]: Does this icon_state have ANY taur sprite?
 	var/static/list/has_taur_sprite = list()
-	/// has_taur_snake_sprite[icon_state]: Does this icon_state have a snake taur sprite?
-	var/static/list/has_taur_snake_sprite = list()
-	/// has_taur_paw_sprite[icon_state]: Does this icon_state have a pawed taur sprite?
-	var/static/list/has_taur_paw_sprite = list()
-	/// has_taur_horse_sprite[icon_state]: Does this icon_state have a hooved taur sprite?
-	var/static/list/has_taur_horse_sprite = list()
 
 	/// has_taur_sprite_suit[icon_state]: has_taur_sprite but for /obj/item/clothng/suit
 	var/static/list/has_taur_sprite_suit = list()
-	/// has_taur_snake_sprite_suit[icon_state]: has_taur_snake_sprite but for /obj/item/clothing/suit
-	var/static/list/has_taur_snake_sprite_suit = list()
-	/// has_taur_paw_sprite_suit[icon_state]: has_taur_paw_sprite but for /obj/item/clothing/suit
-	var/static/list/has_taur_paw_sprite_suit = list()
-	/// has_taur_horse_sprite_suit[icon_state]: has_taur_horse_sprite but for /obj/item/clothing/suit
-	var/static/list/has_taur_horse_sprite_suit = list()
 
 /obj/item/clothing/Initialize(mapload)
 	. = ..()
 	handle_taur_sprites()
 
-// NOTE FOR BOTH HANDLE_TAUR PROCS: These CAN be converted to handle other things, like digi sprites, or to be ran on init of ANY item. But be aware: For every dependancy you
-// add (digi sprites), you also add a for loop on init, which costs CPU time. The bigger the lists, and the more lists, the more memory we use. We want to use the least amount
-// of lists and loops as possible, and the cache system I set up doesn't completely get rid of the costs.
+/* NOTE FOR handle_taur_sprites(): This can be converted to handle things like digi sprites, vox, etc. I just didn't do it because I don't want to refactor the entire
+system for this one pr. ~niko */
 
 /**
  * Called in /obj/item/clothing/Initialize().
  *
  * Quits instantly if mutant_variants has all taur styles (STYLE_TAUR), then checks to see if the clothing's icon state has an alt sprite for taurs. If no, it then checks to see if
  * the icon state EXPLICITELY has no taur sprites. If no, it then checks 3 DMI files for the icon_state, and if it appears in any of them, has_taur_sprite is set to
- * true for that icon state, then it sets the more specific list to true for that state, and finally the specific mutant_variants bitflag for the clothing if the
- * clothing doesnt already have it.
+ * true for that icon state, then it sets the more specific list to true for that state, and finally the specific mutant_variants bitflag for the clothing.
  *
  * Finally, if all of the conditions are false, has_taur_sprite for that icon state will be set to false.
  *
- * DO NOT RELY ON THIS PROC TO DO YOUR WORK FOR YOU. If you are adding a new item, or a sprite, you SHOULD be manually setting your mutant_variants flags, otherwise the for
- * loop may be ran and cause slight performance loss.
+ * Has seperate logic for suits, as they use a different set of DMIs as of now.
  */
 /obj/item/clothing/proc/handle_taur_sprites()
 
-	if (istype(src, /obj/item/clothing/suit))
-		handle_taur_sprites_for_suits()
+	if (istype(src, /obj/item/clothing/suit)) //override for suits, which use different dmis
+
+		if (mutant_variants & STYLE_TAUR)
+			return
+
+		if (has_taur_sprite_suit[icon_state]) // Very slightly speeds up the proc by letting things with no sprites instantly return
+			if (GLOB.naga_taur_suit_sprites[icon_state])
+				mutant_variants |= STYLE_TAUR_SNAKE
+			if (GLOB.horse_taur_suit_sprites[icon_state])
+				mutant_variants |= STYLE_TAUR_HOOF
+			if (GLOB.pawed_taur_suit_sprites[icon_state])
+				mutant_variants |= STYLE_TAUR_PAW
+			return
+
+		else if (has_taur_sprite_suit[icon_state] == FALSE)
+			return
+		// Code only goes here if has_taur_sprite_suit[] == nothing, AKA if init has never been ran
+		var/taur_sprite_suit = FALSE
+
+		if (GLOB.naga_taur_suit_sprites[icon_state])
+			has_taur_sprite_suit[icon_state] = TRUE
+			taur_sprite_suit = TRUE
+			mutant_variants |= STYLE_TAUR_SNAKE
+
+		if (GLOB.horse_taur_suit_sprites[icon_state])
+			has_taur_sprite_suit[icon_state] = TRUE //This block of code is checking the 3 DMI files for the icon state and setting flags/vars dynamically based on that
+			taur_sprite_suit = TRUE
+			mutant_variants |= STYLE_TAUR_HOOF
+
+		if (GLOB.pawed_taur_suit_sprites[icon_state])
+			has_taur_sprite_suit[icon_state] = TRUE
+			taur_sprite_suit = TRUE
+			mutant_variants |= STYLE_TAUR_PAW
+
+		if (!taur_sprite_suit) // If none of the 3 above if statements are true, it has no alt sprite
+			has_taur_sprite_suit[icon_state] = FALSE
+			return
 		return
+		//END OF OVERRIDE
 
 	if (!(istype(src, /obj/item/clothing/under))) //remove this if we ever make a taur sprite for anything else, this is for performance
 		return
@@ -71,101 +92,36 @@
 		return
 
 	if (has_taur_sprite[icon_state])
-		if (has_taur_snake_sprite[icon_state] && (!(mutant_variants & STYLE_TAUR_SNAKE)))
+		if (GLOB.naga_taur_uniform_sprites[icon_state])
 			mutant_variants |= STYLE_TAUR_SNAKE
-		if (has_taur_horse_sprite[icon_state] && (!(mutant_variants & STYLE_TAUR_HOOF)))
+		if (GLOB.horse_taur_uniform_sprites[icon_state])
 			mutant_variants |= STYLE_TAUR_HOOF
-		if (has_taur_paw_sprite[icon_state] && (!(mutant_variants & STYLE_TAUR_PAW)))
+		if (GLOB.pawed_taur_uniform_sprites[icon_state])
 			mutant_variants |= STYLE_TAUR_PAW
-		return // If we already know this icon state has a taur sprite, skip the for loop and take from the cache
+		return // Very slightly speeds up the proc by letting things with no sprites instantly return
 
 	else if (has_taur_sprite[icon_state] == FALSE)
 		return
 	// Code only goes here if has_taur_sprite[] == nothing, AKA if init has never been ran
 	var/taur_sprite = FALSE
 
-	if (icon_state in GLOB.naga_taur_uniform_sprites)
+	if (GLOB.naga_taur_uniform_sprites[icon_state])
 		has_taur_sprite[icon_state] = TRUE
-		has_taur_snake_sprite[icon_state] = TRUE
 		taur_sprite = TRUE
-		if (!(mutant_variants & STYLE_TAUR_SNAKE))
-			mutant_variants |= STYLE_TAUR_SNAKE
+		mutant_variants |= STYLE_TAUR_SNAKE
 
-	if (icon_state in GLOB.horse_taur_uniform_sprites)
+	if (GLOB.horse_taur_uniform_sprites[icon_state])
 		has_taur_sprite[icon_state] = TRUE //This block of code is checking the 3 DMI files for the icon state and setting flags/vars dynamically based on that
-		has_taur_horse_sprite[icon_state] = TRUE // We want to avoid using this because for loops on init are costly-hence, the lists we use
 		taur_sprite = TRUE
-		if (!(mutant_variants & STYLE_TAUR_HOOF))
-			mutant_variants |= STYLE_TAUR_HOOF
+		mutant_variants |= STYLE_TAUR_HOOF
 
-	if (icon_state in GLOB.pawed_taur_uniform_sprites)
+	if (GLOB.pawed_taur_uniform_sprites[icon_state])
 		has_taur_sprite[icon_state] = TRUE
-		has_taur_paw_sprite[icon_state] = TRUE
 		taur_sprite = TRUE
-		if (!(mutant_variants & STYLE_TAUR_PAW))
-			mutant_variants |= STYLE_TAUR_PAW
+		mutant_variants |= STYLE_TAUR_PAW
 
 	if (!taur_sprite) // If none of the 3 above if statements are true, it has no alt sprite
 		has_taur_sprite[icon_state] = FALSE
-
-
-/**
- * Called in handle_taur_sprites().
- *
- * Suit variation of handle_taur_sprites().
- *
- * Quits instantly if mutant_variants has all taur styles (STYLE_TAUR), then checks to see if the clothing's icon state has an alt sprite for taurs. If no, it then checks to see if
- * the icon state EXPLICITELY has no taur sprites. If no, it then checks 3 DMI files for the icon_state, and if it appears in any of them, has_taur_sprite_suit is set to
- * true for that icon state, then it sets the more specific list to true for that state, and finally the specific mutant_variants bitflag for the clothing if the
- * clothing doesnt already have it.
- *
- * Finally, if all of the conditions are false, has_taur_sprite_suit for that icon state will be set to false.
- *
- * DO NOT RELY ON THIS PROC TO DO YOUR WORK FOR YOU. If you are adding a new item, or a sprite, you SHOULD be manually setting your mutant_variants flags, otherwise the for
- * loop may be ran and cause slight performance loss.
- */
-/obj/item/clothing/proc/handle_taur_sprites_for_suits()
-
-	if (mutant_variants & STYLE_TAUR)
-		return
-
-	if (has_taur_sprite_suit[icon_state])
-		if (has_taur_snake_sprite_suit[icon_state] && (!(mutant_variants & STYLE_TAUR_SNAKE)))
-			mutant_variants |= STYLE_TAUR_SNAKE
-		if (has_taur_horse_sprite_suit[icon_state] && (!(mutant_variants & STYLE_TAUR_HOOF)))
-			mutant_variants |= STYLE_TAUR_HOOF
-		if (has_taur_paw_sprite_suit[icon_state] && (!(mutant_variants & STYLE_TAUR_PAW)))
-			mutant_variants |= STYLE_TAUR_PAW
-		return // If we already know this icon state has a taur sprite, skip the for loop and take from the cache
-
-	else if (has_taur_sprite_suit[icon_state] == FALSE)
-		return
-	// Code only goes here if has_taur_sprite_suit[] == nothing, AKA if init has never been ran
-	var/taur_sprite = FALSE
-
-	if (icon_state in GLOB.naga_taur_suit_sprites)
-		has_taur_sprite_suit[icon_state] = TRUE
-		has_taur_snake_sprite_suit[icon_state] = TRUE
-		taur_sprite = TRUE
-		if (!(mutant_variants & STYLE_TAUR_SNAKE))
-			mutant_variants |= STYLE_TAUR_SNAKE
-
-	if (icon_state in GLOB.horse_taur_suit_sprites)
-		has_taur_sprite_suit[icon_state] = TRUE //This block of code is checking the 3 DMI files for the icon state and setting flags/vars dynamically based on that
-		has_taur_horse_sprite_suit[icon_state] = TRUE // We want to avoid using this because for loops on init are costly-hence, the lists we use
-		taur_sprite = TRUE
-		if (!(mutant_variants & STYLE_TAUR_HOOF))
-			mutant_variants |= STYLE_TAUR_HOOF
-
-	if (icon_state in GLOB.pawed_taur_suit_sprites)
-		has_taur_sprite_suit[icon_state] = TRUE
-		has_taur_paw_sprite_suit[icon_state] = TRUE
-		taur_sprite = TRUE
-		if (!(mutant_variants & STYLE_TAUR_PAW))
-			mutant_variants |= STYLE_TAUR_PAW
-
-	if (!taur_sprite) // If none of the 3 above if statements are true, it has no alt sprite
-		has_taur_sprite_suit[icon_state] = FALSE
 
 /obj/item/clothing/head
 	mutant_variants = STYLE_MUZZLE | STYLE_VOX

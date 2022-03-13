@@ -72,15 +72,23 @@ GLOBAL_LIST_INIT(color_list_ghoul, list( \
 ))
 
 /// Generates a list of naga taur uniform icon_states in text form.
-GLOBAL_LIST_INIT(naga_taur_uniform_sprites, icon_states('modular_skyrat/master_files/icons/mob/clothing/uniform_taur_snake.dmi'))
+GLOBAL_LIST_INIT(naga_taur_uniform_sprites, init_taur_sprites('modular_skyrat/master_files/icons/mob/clothing/uniform_taur_snake.dmi'))
 /// Generates a list of pawed taur uniform icon_states in text form.
-GLOBAL_LIST_INIT(horse_taur_uniform_sprites, icon_states('modular_skyrat/master_files/icons/mob/clothing/uniform_taur_hoof.dmi'))
+GLOBAL_LIST_INIT(horse_taur_uniform_sprites, init_taur_sprites('modular_skyrat/master_files/icons/mob/clothing/uniform_taur_hoof.dmi'))
 /// Generates a list of hoofed taur uniform icon_states in text form.
-GLOBAL_LIST_INIT(pawed_taur_uniform_sprites, icon_states('modular_skyrat/master_files/icons/mob/clothing/uniform_taur_paw.dmi'))
+GLOBAL_LIST_INIT(pawed_taur_uniform_sprites, init_taur_sprites('modular_skyrat/master_files/icons/mob/clothing/uniform_taur_paw.dmi'))
 /// Generates a list of naga taur suit icon_states in text form.
-GLOBAL_LIST_INIT(naga_taur_suit_sprites, icon_states('modular_skyrat/master_files/icons/mob/clothing/suit_taur_snake.dmi'))
+GLOBAL_LIST_INIT(naga_taur_suit_sprites, init_taur_sprites('modular_skyrat/master_files/icons/mob/clothing/suit_taur_snake.dmi'))
 /// Generates a list of pawed taur suit icon_states in text form.
-GLOBAL_LIST_INIT(horse_taur_suit_sprites, icon_states('modular_skyrat/master_files/icons/mob/clothing/suit_taur_hoof.dmi'))
+GLOBAL_LIST_INIT(horse_taur_suit_sprites, init_taur_sprites('modular_skyrat/master_files/icons/mob/clothing/suit_taur_hoof.dmi'))
 /// Generates a list of hoofed taur suit icon_states in text form.
-GLOBAL_LIST_INIT(pawed_taur_suit_sprites, icon_states('modular_skyrat/master_files/icons/mob/clothing/suit_taur_paw.dmi'))
+GLOBAL_LIST_INIT(pawed_taur_suit_sprites, init_taur_sprites('modular_skyrat/master_files/icons/mob/clothing/suit_taur_paw.dmi'))
+
+/proc/init_taur_sprites(target_dmi)
+	var/taur_sprites = list()
+
+	for (var/icon_state in icon_states(target_dmi))
+		taur_sprites[icon_state] = TRUE
+
+	return taur_sprites
 
