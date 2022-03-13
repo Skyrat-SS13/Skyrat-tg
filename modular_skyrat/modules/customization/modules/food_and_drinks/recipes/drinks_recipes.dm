@@ -178,7 +178,7 @@
 
 /datum/chemical_reaction/drink/milkshake_chocolate
 	results = list(/datum.reagent/consumable/milkshake_chocolate = 5)
-	required_reagents = list(/datum/reagent/consumable/coco = 1, /datum/reagent/consumable/ice = 2, /datum/reagent/consumable/cream = 2)
+	required_reagents = list(/datum/reagent/consumable/coco = 1, /datum.reagent/consumable/milkshake = 2, /datum/reagent/consumable/cream = 2)
 
 /datum/chemical_reaction/drink/milkshake_strawberry
 	results = list(/datum.reagent/consumable/milkshake_strawberry = 5)

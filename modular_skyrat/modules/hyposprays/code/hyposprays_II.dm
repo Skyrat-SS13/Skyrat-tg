@@ -230,7 +230,7 @@
 
 	switch(mode)
 		if(HYPO_INJECT)
-			vial.reagents.trans_to(injectee, vial.amount_per_transfer_from_this)
+			vial.reagents.trans_to(injectee, vial.amount_per_transfer_from_this, methods = INJECT)
 		if(HYPO_SPRAY)
 			vial.reagents.trans_to(injectee, vial.amount_per_transfer_from_this, methods = PATCH)
 

@@ -139,10 +139,9 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	null, \
 	new/datum/stack_recipe("anvil", /obj/structure/reagent_anvil, 10, time = 20, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("forge", /obj/structure/reagent_forge, 10, time = 20, one_per_turf = TRUE, on_floor = TRUE), \
-	new/datum/stack_recipe("throwing wheel", /obj/structure/throwing_wheel, 10, time = 20, one_per_turf = TRUE, on_floor = TRUE), \
-	new/datum/stack_recipe("primitive centrifuge", /obj/item/reagent_containers/glass/primitive_centrifuge, 10)
+	new/datum/stack_recipe("throwing wheel", /obj/structure/throwing_wheel, 10, time = 20, one_per_turf = TRUE, on_floor = TRUE),
 ))
-// SKYRAT EDIT ADDITIONS - Anvil,Forge, Throwing wheel, Primitive centrifuge, metal barricade, wrestling turnbuckle
+// SKYRAT EDIT ADDITIONS - Anvil,Forge, Throwing wheel, metal barricade, wrestling turnbuckle
 
 /obj/item/stack/sheet/iron//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "iron"
