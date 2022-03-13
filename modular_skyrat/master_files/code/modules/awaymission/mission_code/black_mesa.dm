@@ -258,11 +258,11 @@
 	icon = 'modular_skyrat/master_files/icons/mob/nihilanth.dmi'
 	icon_state = "nihilanth"
 	icon_living = "nihilanth"
-	base_pixel_x = -156
-	pixel_x = -156
-	base_pixel_y = -154
+	pixel_x = -64
+	pixel_y = -64
+	base_pixel_x = -64
+	base_pixel_y = -64
 	speed = 3
-	pixel_y = -154
 	bound_height = 64
 	bound_width = 64
 	icon_dead = "bullsquid_dead"
@@ -605,6 +605,7 @@
 	prompt_name = "a tactical squad member"
 	outfit = /datum/outfit/hecu
 	you_are_text = "You are an elite tactical squad deployed into the research facility to contain the infestation. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
+	restricted_species = list(/datum/species/human)
 
 /obj/item/clothing/under/rank/security/officer/hecu
 	name = "hecu jumpsuit"
