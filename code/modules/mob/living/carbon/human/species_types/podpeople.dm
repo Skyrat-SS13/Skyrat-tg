@@ -50,3 +50,11 @@
 		H.adjustToxLoss(3 * REAGENTS_EFFECT_MULTIPLIER * delta_time)
 		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * delta_time)
 		return TRUE
+
+// SKYRAT EDIT ADDITION
+/datum/species/pod/get_species_description()
+	return FALSE
+
+/datum/species/pod/get_species_lore()
+	return FALSE
+// SKYRAT EDIT END

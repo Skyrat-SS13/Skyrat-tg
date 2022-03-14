@@ -654,6 +654,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Recreation Area"
 	icon_state = "rec"
 
+/area/commons/fitness/recreation/entertainment
+	name = "\improper Entertainment Center"
+	icon_state = "entertainment"
+
 // Commons - Vacant Rooms
 /area/commons/vacant_room
 	name = "\improper Vacant Room"
@@ -894,6 +898,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/engineering/atmos/project
 	name = "\improper Atmospherics Project Room"
 	icon_state = "atmos_projectroom"
+
+/area/engineering/atmos/pumproom
+	name = "\improper Atmospherics Pumping Room"
+	icon_state = "atmos_pump_room"
+
+/area/engineering/atmos/mix
+	name = "\improper Atmospherics Mixing Room"
+	icon_state = "atmos_mix"
 
 /area/engineering/atmos/storage
 	name = "\improper Atmospherics Storage Room"
