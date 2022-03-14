@@ -354,19 +354,21 @@
 ///////////////////HECU SPAWNERS
 /obj/effect/spawner/random/hecu_smg
 	name = "HECU SMG drops"
-	spawn_all_loot = TRUE
-	loot = list(/obj/item/gun/ballistic/automatic/cfa_wildcat = 30,
-				/obj/item/clothing/mask/gas/hecu2 = 20,
-				/obj/item/clothing/head/helmet = 20,
+	spawn_all_loot = FALSE
+	loot = list(/obj/item/gun/ballistic/automatic/cfa_wildcat = 15,
+				/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat = 25,
+				/obj/item/clothing/mask/gas/hecu2 = 15,
+				/obj/item/clothing/head/helmet = 15,
 				/obj/item/clothing/suit/armor/vest = 15,
 				/obj/item/clothing/shoes/combat = 15)
 
 /obj/effect/spawner/random/hecu_deagle
 	name = "HECU Deagle drops"
-	spawn_all_loot = TRUE
-	loot = list(/obj/item/gun/ballistic/automatic/pistol/deagle = 30,
-				/obj/item/clothing/mask/gas/hecu2 = 20,
-				/obj/item/clothing/head/helmet = 20,
+	spawn_all_loot = FALSE
+	loot = list(/obj/item/gun/ballistic/automatic/pistol/deagle = 15,
+				/obj/item/ammo_box/magazine/m50 = 25,
+				/obj/item/clothing/mask/gas/hecu2 = 15,
+				/obj/item/clothing/head/helmet = 15,
 				/obj/item/clothing/suit/armor/vest = 15,
 				/obj/item/clothing/shoes/combat = 15)
 
@@ -499,10 +501,70 @@
 	loot = list(/obj/item/clothing/suit/armor/vest/blueshirt, /obj/item/gun/ballistic/automatic/pistol/g17/mesa)
 	rapid_melee = 1
 
+/mob/living/simple_animal/hostile/blackmesa/blackops
+	name = "black operative"
+	desc = "Why do we always have to clean up a mess the grunts can't handle?"
+	icon = 'modular_skyrat/master_files/icons/mob/blackmesa.dmi'
+	icon_state = "blackops"
+	icon_living = "blackops"
+	icon_dead = "blackops"
+	icon_gib = "syndicate_gib"
+	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
+	sentience_type = SENTIENCE_HUMANOID
+	speak_chance = 0 /// muh silent operator or something
+	speak = list("Stop right there!")
+	turns_per_move = 5
+	speed = 0
+	stat_attack = HARD_CRIT
+	robust_searching = 1
+	maxHealth = 200
+	health = 200
+	harm_intent_damage = 25
+	melee_damage_lower = 30
+	melee_damage_upper = 30
+	attack_verb_continuous = "strikes"
+	attack_verb_simple = "strikes"
+	attack_sound = 'sound/effects/woodhit.ogg'
+	combat_mode = TRUE
+	loot = list(/obj/item/melee/baton)
+	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
+	unsuitable_atmos_damage = 7.5
+	faction = list(FACTION_BLACKOPS)
+	check_friendly_fire = 1
+	status_flags = CANPUSH
+	del_on_death = 1
+	dodging = TRUE
+	rapid_melee = 2
+	footstep_type = FOOTSTEP_MOB_SHOE
+	alert_sounds = null /// they operate silently you know???
+
+/mob/living/simple_animal/hostile/blackmesa/blackops/ranged
+	ranged = TRUE
+	rapid = 2
+	retreat_distance = 5
+	minimum_distance = 5
+	icon_state = "blackops_ranged"
+	icon_living = "blackops_ranged"
+	casingtype = /obj/item/ammo_casing/a556/weak
+	projectilesound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/m16_fire.ogg'
+	loot = list(/obj/item/ammo_box/magazine/m16)
+	rapid_melee = 1
+
+/obj/projectile/bullet/a556/weak
+	name = "surplus 5.56mm bullet"
+	damage = 25
+	armour_penetration = 10
+	wound_bonus = -40
+
+/obj/item/ammo_casing/a556/weak
+	name = "5.56mm surplus bullet casing"
+	desc = "A 5.56mm surplus bullet casing."
+	projectile_type = /obj/projectile/bullet/a556/weak
+
 /obj/machinery/porta_turret/black_mesa
 	use_power = IDLE_POWER_USE
 	req_access = list(ACCESS_CENT_GENERAL)
-	faction = list(FACTION_XEN, FACTION_BLACKMESA, FACTION_HECU)
+	faction = list(FACTION_XEN, FACTION_BLACKMESA, FACTION_HECU, FACTION_BLACKOPS)
 	mode = TURRET_LETHAL
 	uses_stored = FALSE
 	max_integrity = 120
@@ -792,3 +854,30 @@
 /obj/projectile/bullet/manned_turret/hmg/mesa
 	icon_state = "redtrac"
 	damage = 35
+
+/obj/item/storage/toolbox/emergency/turret/mesa
+	name = "USMC stationary defense deployment system"
+	desc = "You feel a strange urge to hit this with a wrench."
+
+/obj/item/storage/toolbox/emergency/turret/mesa/PopulateContents()
+	new /obj/item/screwdriver(src)
+	new /obj/item/wrench(src)
+	new /obj/item/weldingtool(src)
+	new /obj/item/crowbar(src)
+	new /obj/item/analyzer(src)
+	new /obj/item/wirecutters(src)
+
+/obj/item/storage/toolbox/emergency/turret/mesa/attackby(obj/item/I, mob/living/user, params)
+	if(I.tool_behaviour == TOOL_WRENCH && user.combat_mode)
+		user.visible_message(span_danger("[user] bashes [src] with [I]!"), \
+			span_danger("You bash [src] with [I]!"), null, COMBAT_MESSAGE_RANGE)
+		playsound(src, "sound/items/drill_use.ogg", 80, TRUE, -1)
+		var/obj/machinery/porta_turret/syndicate/pod/toolbox/mesa/turret = new(get_turf(loc))
+		turret.faction = list("[REF(user)]")
+		qdel(src)
+
+	..()
+
+/obj/machinery/porta_turret/syndicate/pod/toolbox/mesa
+	max_integrity = 100
+	faction = list(FACTION_HECU)
