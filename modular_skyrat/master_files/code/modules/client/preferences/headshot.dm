@@ -35,11 +35,6 @@
 	stored_link[usr?.ckey] = value
 	return TRUE
 
-/datum/preference/text/headshot/deserialize(input, datum/preferences/preferences)
-	if(!is_veteran_player(usr?.client) && !(usr?.ckey in GLOB.donator_list))
-		input = ""
-	return STRIP_HTML_SIMPLE(input, MAX_FLAVOR_LEN)
-
 /datum/preference/text/headshot/is_accessible(datum/preferences/preferences)
 	if(!is_veteran_player(usr?.client) && !(usr?.ckey in GLOB.donator_list))
 		return FALSE
