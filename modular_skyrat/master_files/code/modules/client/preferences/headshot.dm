@@ -11,7 +11,7 @@
 
 
 /datum/preference/text/headshot/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	target.dna.features["headshot"] = value
+	target.dna.features["headshot"] = preferences.headshot
 
 /datum/preference/text/headshot/is_valid(value)
 	if(!length(value)) //Just to get blank ones out of the way
@@ -33,6 +33,7 @@
 		to_chat(usr, span_notice("Keep in mind that the photo will be downsized to 250x250 pixels, so the more square the photo, the better it will look."))
 		log_game("[usr] has set their Headshot image to '[value]'.")
 	stored_link[usr?.ckey] = value
+	target?.client.prefs.headshot = value
 	return TRUE
 
 /datum/preference/text/headshot/is_accessible(datum/preferences/preferences)
