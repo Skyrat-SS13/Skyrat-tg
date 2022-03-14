@@ -307,7 +307,7 @@
 
 /obj/item/gun/ballistic/automatic/ar/modular/model75
 	name = "\improper NT ARG-75"
-	desc = "A contemporary rifle that's fresh out of its prototype phase and has in production, a rare sight for now. It's equipped with a heavy duty integrally suppressed barrel, 1.4 times scope and a topmounted laser sight."
+	desc = "A contemporary rifle that's fresh out of its prototype phase and is currently in production, a rare sight for the time being. It's equipped with a heavy duty integrally suppressed barrel, 1.4 times scope and a topmounted laser sight."
 	icon_state = "arg75"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	fire_sound = 'sound/weapons/gun/pistol/shot_suppressed.ogg'
