@@ -1,7 +1,7 @@
 #define COMSIG_SHOCK_UPDATE "shock_update"
 
-/mob/living/carbon/Life(delta_time = SSMOBS_DT, times_fired)
-	flow_control()
+/* /mob/living/carbon/Life(delta_time = SSMOBS_DT, times_fired)
+	flow_control() */
 /mob/living/carbon
 	var/lastpainmessage
 	var/in_shock
@@ -123,9 +123,9 @@
 			current_pain_message_helper("Major")
 			set_stat(CONSCIOUS)
 
-/mob/living/carbon/updatehealth()
-	. = ..()
-	shock_helper()
+//mob/living/carbon/updatehealth()
+//	. = ..()
+//	shock_helper()
 //		flow_control()
 /mob/living/carbon/update_health_hud(shown_health_amount)
 	if(!client || !hud_used)
