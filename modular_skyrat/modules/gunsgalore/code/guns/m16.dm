@@ -25,13 +25,14 @@
 
 /obj/item/ammo_box/magazine/m16
 	name = "\improper XM-2537 Magazine"
-	desc = "A double-stack translucent polymer magazine for use with the XM-2537 rifles. Holds 30 rounds of .277 Aestus.
+	desc = "A double-stack translucent polymer magazine for use with the XM-2537 rifles. Holds 30 rounds of .277 Aestus."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "m16"
 	ammo_type = /obj/item/ammo_casing/a556
 	caliber = "a556"
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
 
 /obj/item/gun/ballistic/automatic/m16/modern
 	name = "\improper XM-2537 SOPMOD"
@@ -54,7 +55,7 @@
 
 /obj/item/ammo_box/magazine/m16/patriot
 	name = "\improper XM-2537 Magazine"
-	desc = "A double-stack solid polymer magazine specialized for use with the XM-2537 Patriae. Holds 50 rounds of .277 Aestus.
+	desc = "A double-stack solid polymer magazine specialized for use with the XM-2537 Patriae. Holds 50 rounds of .277 Aestus."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "m16"
 	ammo_type = /obj/item/ammo_casing/a556
