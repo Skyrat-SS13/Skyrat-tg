@@ -205,7 +205,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/storage/box/firecrackers = 10,
 		/obj/item/storage/box/fireworks/dangerous = 5,
 		/obj/item/storage/box/hug/medical = 100,
-		/obj/item/storage/firstaid/ancient = 25,
+		/obj/item/storage/medkit/ancient = 25,
 		/obj/item/storage/toolbox/emergency/old = 25,
 		/obj/item/storage/toolbox/mechanical/old = 25,
 		/obj/item/tailclub = 25,

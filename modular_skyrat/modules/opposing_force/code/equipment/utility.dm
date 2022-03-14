@@ -16,10 +16,6 @@
 	description = "A fully-kitted toolbox scavenged from maintenance by our highly-paid monkeys. The toolbox \
 		itself is weighted especially to bash any head in and comes with a free pair of insulated combat gloves."
 
-/datum/opposing_force_equipment/gear/thermalgoggles
-	item_type = /obj/item/clothing/glasses/thermal
-	description = "A pair of thermal goggles. Cannot be chameleon disguised."
-
 /datum/opposing_force_equipment/gear/xraygoggles
 	item_type = /obj/item/clothing/glasses/thermal/xray
 	description = "A pair of low-light x-ray goggles manufactured by the Syndicate. Cannot be chameleon disguised. Makes wearer more vulnerable to bright lights."
@@ -33,6 +29,7 @@
 	description = "A belt that allows its wearer to temporarily turn invisible. Only recharges in dark areas. Use wisely."
 
 /datum/opposing_force_equipment/gear/projector
+	name = "Chameleon Projector"
 	item_type = /obj/item/chameleon
 	description = "A projector that allows its user to turn into any scanned object. Pairs well with a cluttered room and ambush weapon."
 
@@ -41,10 +38,12 @@
 	description = "A stolen Security HUD refitted with chameleon technology. Provides flash protection."
 
 /datum/opposing_force_equipment/gear/aidetector
+	name = "AI Detector Multitool"
 	item_type = /obj/item/multitool/ai_detect
 	description = "A multitool that lets you see the AI's vision cone with an overlaid HUD and know if you're being watched."
 
 /datum/opposing_force_equipment/gear/noslip
+	name = "Chameleon No-Slips"
 	item_type = /obj/item/clothing/shoes/chameleon/noslip
 	description = "No-slip chameleon shoes, for when you plan on running through hell and back."
 
@@ -148,7 +147,7 @@
 
 /datum/opposing_force_equipment/gear/combatmedkit
 	name = "Syndicate Combat Medic Kit"
-	item_type = /obj/item/storage/firstaid/tactical
+	item_type = /obj/item/storage/medkit/tactical
 	description = "This first aid kit is a suspicious brown and red. Included is a combat stimulant injector \
 			for rapid healing, a medical night vision HUD for quick identification of injured personnel, \
 			and other supplies helpful for a field medic."

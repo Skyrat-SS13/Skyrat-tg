@@ -258,11 +258,11 @@
 	icon = 'modular_skyrat/master_files/icons/mob/nihilanth.dmi'
 	icon_state = "nihilanth"
 	icon_living = "nihilanth"
-	base_pixel_x = -156
-	pixel_x = -156
-	base_pixel_y = -154
+	pixel_x = -64
+	pixel_y = -64
+	base_pixel_x = -64
+	base_pixel_y = -64
 	speed = 3
-	pixel_y = -154
 	bound_height = 64
 	bound_width = 64
 	icon_dead = "bullsquid_dead"
@@ -605,6 +605,7 @@
 	prompt_name = "a tactical squad member"
 	outfit = /datum/outfit/hecu
 	you_are_text = "You are an elite tactical squad deployed into the research facility to contain the infestation. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
+	restricted_species = list(/datum/species/human)
 
 /obj/item/clothing/under/rank/security/officer/hecu
 	name = "hecu jumpsuit"
@@ -616,34 +617,20 @@
 	uses_advanced_reskins = FALSE
 	unique_reskin = null
 
-///It looks fairly fitting for an "elite tacticool squad", so we'll just reuse it with the Expeditionary Corps' gear stats, and without that plasteel mention, until someone sprites/finds a better one. To make it fair.
-/obj/item/clothing/suit/armor/vest/marine/hecu
-	desc = "A set of the finest mass produced, stamped steel armor plates, containing an environmental protection unit for all-condition door kicking."
-	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
-	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
-	icon_state = "hecu_vest"
-	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 40, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
-
-/obj/item/clothing/head/helmet/marine/hecu
-	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
-	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
-	icon_state = "hecu_helm"
-	clothing_flags = SNUG_FIT | PLASMAMAN_HELMET_EXEMPT
-	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
-
 /obj/item/storage/backpack/ert/odst/hecu
 	name = "hecu backpack"
 
 /datum/outfit/hecu
 	name = "HECU Grunt"
 	uniform = /obj/item/clothing/under/rank/security/officer/hecu
-	head = /obj/item/clothing/head/helmet/marine/hecu
-	mask = /obj/item/clothing/mask/gas/syndicate/ds
+	head = /obj/item/clothing/head/helmet/space/hev_suit/pcv
+	mask = /obj/item/clothing/mask/gas/hecu2
 	gloves = /obj/item/clothing/gloves/combat
-	suit = /obj/item/clothing/suit/armor/vest/marine/hecu
+	suit = /obj/item/clothing/suit/space/hev_suit/pcv
 	suit_store = /obj/item/gun/ballistic/automatic/m16
 	belt = /obj/item/storage/belt/security/webbing
 	ears = /obj/item/radio/headset
+	glasses = /obj/item/clothing/glasses/night
 	shoes = /obj/item/clothing/shoes/combat
 	l_pocket = /obj/item/grenade/smokebomb
 	r_pocket = /obj/item/binoculars
@@ -651,7 +638,7 @@
 	backpack_contents = list(
 		/obj/item/storage/box/survival/radio,
 		/obj/item/ammo_box/magazine/m16 = 3,
-		/obj/item/storage/firstaid/emergency,
+		/obj/item/storage/medkit/emergency,
 		/obj/item/storage/box/hecu_rations,
 		/obj/item/gun/ballistic/automatic/pistol/g17/mesa,
 		/obj/item/ammo_box/magazine/multi_sprite/g17 = 2,

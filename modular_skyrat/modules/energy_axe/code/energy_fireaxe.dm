@@ -8,7 +8,7 @@
 	righthand_file = 'modular_skyrat/master_files/icons/mob/energyaxe_righthand.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
 	name = "energy fire axe"
-	desc = "You aren't quite sure if this counts as a fire axe anymore, but it sure is fancy! A tag hangs off of it reading: 'properly of the Gorlex Marauders'"
+	desc = "You aren't quite sure if this counts as a fire axe anymore, but it sure is fancy! A tag hangs off of it reading: \"property of the Gorlex Marauders\""
 	force = 5
 	throwforce = 15
 	light_system = MOVABLE_LIGHT
@@ -21,7 +21,7 @@
 
 /obj/item/fireaxe/energy/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/two_handed, force_unwielded=10, force_wielded=30, icon_wielded="[base_icon_state]1", wieldsound='sound/weapons/saberon.ogg', unwieldsound='sound/weapons/saberoff.ogg')
+	AddComponent(/datum/component/two_handed, force_unwielded = 10, force_wielded = 33, icon_wielded = "[base_icon_state]1", wieldsound = 'sound/weapons/saberon.ogg', unwieldsound = 'sound/weapons/saberoff.ogg')
 
 /obj/item/fireaxe/energy/proc/energy_wield(obj/item/source, mob/living/carbon/user)
 	SIGNAL_HANDLER
