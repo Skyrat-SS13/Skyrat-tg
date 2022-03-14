@@ -1,6 +1,7 @@
 /datum/species/pod
 	// A mutation caused by a human being ressurected in a revival pod. These regain health in light, and begin to wither in darkness.
 	name = "Podperson"
+	plural_form = "Podpeople"
 	id = SPECIES_PODPERSON
 	default_color = "59CE00"
 	species_traits = list(MUTCOLORS,EYECOLOR, HAS_FLESH, HAS_BONE)
@@ -49,3 +50,11 @@
 		H.adjustToxLoss(3 * REAGENTS_EFFECT_MULTIPLIER * delta_time)
 		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * delta_time)
 		return TRUE
+
+// SKYRAT EDIT ADDITION
+/datum/species/pod/get_species_description()
+	return FALSE
+
+/datum/species/pod/get_species_lore()
+	return FALSE
+// SKYRAT EDIT END
