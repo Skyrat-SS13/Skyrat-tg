@@ -5,7 +5,7 @@ SUBSYSTEM_DEF(ticket_ping)
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	wait = 3 MINUTES
 
-/datum/controller/subsystem/ambience/fire(resumed)
+/datum/controller/subsystem/ticket_ping/fire(resumed)
 	var/valid_ahelps
 	var/valid_opfors
 	for(var/datum/admin_help/ahelp in GLOB.ahelp_tickets.active_tickets)
