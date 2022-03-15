@@ -1,3 +1,7 @@
+#define RANSOM_LOWER 25
+#define RANSOM_UPPER 75
+#define CONTRACTOR_RANSOM_CUT 0.35
+
 /datum/syndicate_contract
 	/// Unique ID tied to the contract
 	var/id = 0
@@ -44,7 +48,7 @@
 	contract.payout = rand(1, 2)
 	contract.generate_dropoff()
 
-	ransom = 100 * rand(25, 75)
+	ransom = 100 * rand(RANSOM_LOWER, RANSOM_UPPER)
 
 	var/base = pick_list(WANTED_FILE, "basemessage")
 	var/verb_string = pick_list(WANTED_FILE, "verb")
@@ -106,17 +110,17 @@
 			opfor_data.contractor_hub.current_contract = null
 
 	if (iscarbon(target))
-		for(var/obj/item/W in target)
+		for(var/obj/item/target_item in target)
 			if (ishuman(target))
-				var/mob/living/carbon/human/H = target
-				if(W == H.w_uniform)
+				var/mob/living/carbon/human/target_human = target
+				if(target_item == target_human.w_uniform)
 					continue //So all they're left with are shoes and uniform.
-				if(W == H.shoes)
+				if(target_item == target_human.shoes)
 					continue
 
 
-			target.transferItemToLoc(W)
-			victim_belongings.Add(W)
+			target.transferItemToLoc(target_item)
+			victim_belongings.Add(target_item)
 
 	var/obj/structure/closet/supplypod/extractionpod/pod = source
 
@@ -135,13 +139,13 @@
 	// This is slightly delayed because of the sleep calls above to handle the narrative.
 	// We don't want to tell the station instantly.
 	var/points_to_check
-	var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
-	if(D)
-		points_to_check = D.account_balance
+	var/datum/bank_account/bank = SSeconomy.get_dep_account(ACCOUNT_CAR)
+	if(bank)
+		points_to_check = bank.account_balance
 	if(points_to_check >= ransom)
-		D.adjust_money(-ransom)
+		bank.adjust_money(-ransom)
 	else
-		D.adjust_money(-points_to_check)
+		bank.adjust_money(-points_to_check)
 
 	priority_announce("One of your crew was captured by a rival organisation - we've needed to pay their ransom to bring them back. \
 					As is policy we've taken a portion of the station's funds to offset the overall cost.", null, null, null, "Nanotrasen Asset Protection")
@@ -157,7 +161,7 @@
 	var/obj/item/card/id/owner_id = contract.owner.current?.get_idcard(TRUE)
 
 	if(owner_id?.registered_account)
-		owner_id.registered_account.adjust_money(ransom * 0.35)
+		owner_id.registered_account.adjust_money(ransom * CONTRACTOR_RANSOM_CUT)
 
 		owner_id.registered_account.bank_card_talk("We've processed the ransom, agent. Here's your cut - your balance is now \
 		[owner_id.registered_account.account_balance] credits.", TRUE)
@@ -166,7 +170,7 @@
 /datum/syndicate_contract/proc/handleVictimExperience(mob/living/target)
 	// Ship 'em back - dead or alive, 4 minutes wait.
 	// Even if they weren't the target, we're still treating them the same.
-	addtimer(CALLBACK(src, .proc/returnVictim, target), (60 * 10) * 4)
+	addtimer(CALLBACK(src, .proc/returnVictim, target), 4 MINUTES)
 
 	if (target.stat == DEAD)
 		return
@@ -191,9 +195,9 @@
 	sleep(10 SECONDS)
 	target.flash_act()
 	target.Unconscious(200)
-	to_chat(target, "<span class='reallybig hypnophrase'>A million voices echo in your head... <i>\"Your mind held many valuable secrets - \
+	to_chat(target, span_hypnophrase(span_reallybig(">A million voices echo in your head... <i>\"Your mind held many valuable secrets - \
 				we thank you for providing them. Your value is expended, and you will be ransomed back to your station. We always get paid, \
-				so it's only a matter of time before we ship you back...\"</i></span>")
+				so it's only a matter of time before we ship you back...\"</i>")))
 	target.blur_eyes(10)
 	target.Dizzy(15)
 	target.add_confusion(20)
@@ -209,7 +213,7 @@
 			possible_drop_loc.Add(possible_drop)
 
 	if (length(possible_drop_loc) > 0)
-		var/pod_rand_loc = rand(1, possible_drop_loc.len)
+		var/pod_rand_loc = rand(1, length(possible_drop_loc))
 
 		var/obj/structure/closet/supplypod/return_pod = new()
 		return_pod.bluespace = TRUE
@@ -246,3 +250,7 @@
 			return
 		var/mob/living/carbon/unlucky_fellow = target
 		unlucky_fellow.death()
+
+#undef RANSOM_LOWER
+#undef RANSOM_UPPER
+#undef CONTRACTOR_RANSOM_CUT

@@ -1,3 +1,5 @@
+#define LOWEST_TC 30
+
 /datum/contractor_hub
 	/// How much reputation the contractor has
 	var/contract_rep = 0
@@ -42,9 +44,6 @@
 	if(length(to_generate) > length(GLOB.data_core.locked))
 		to_generate.Cut(1, length(GLOB.data_core.locked))
 
-	// We don't want the sum of all the payouts to be under this amount
-	var/lowest_TC_threshold = 30
-
 	var/total = 0
 	var/lowest_paying_sum = 0
 	var/datum/syndicate_contract/lowest_paying_contract
@@ -54,11 +53,11 @@
 
 	// Support contract generation happening multiple times
 	var/start_index = 1
-	if (assigned_contracts.len != 0)
-		start_index = assigned_contracts.len + 1
+	if (length(assigned_contracts))
+		start_index = length(assigned_contracts) + 1
 
 	// Generate contracts, and find the lowest paying.
-	for(var/i in 1 to to_generate.len)
+	for(var/i in 1 to length(to_generate))
 		var/datum/syndicate_contract/contract_to_add = new(owner, assigned_targets, to_generate[i])
 		var/contract_payout_total = contract_to_add.contract.payout + contract_to_add.contract.payout_bonus
 
@@ -75,5 +74,7 @@
 		start_index++
 
 	// If the threshold for TC payouts isn't reached, boost the lowest paying contract
-	if (total < lowest_TC_threshold)
-		lowest_paying_contract.contract.payout_bonus += (lowest_TC_threshold - total)
+	if (total < LOWEST_TC)
+		lowest_paying_contract.contract.payout_bonus += (LOWEST_TC - total)
+
+#undef LOWEST_TC

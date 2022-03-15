@@ -5,10 +5,10 @@
 	program_icon_state = "assign"
 	extended_desc = "A standard, Syndicate issued system for handling important contracts while on the field."
 	size = 10
-	requires_ntnet = 0
-	available_on_ntnet = 0
-	unsendable = 1
-	undeletable = 1
+	requires_ntnet = FALSE
+	available_on_ntnet = FALSE
+	unsendable = TRUE
+	undeletable = TRUE
 	tgui_id = "SyndContractor"
 	program_icon = "tasks"
 	/// Error message if there is one

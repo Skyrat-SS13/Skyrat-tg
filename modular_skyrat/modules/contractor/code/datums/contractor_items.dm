@@ -106,8 +106,8 @@
 	var/list/mob/dead/observer/candidates = poll_ghost_candidates("Do you want to play as the Contractor Support Unit for [user.real_name]?", ROLE_PAI, FALSE, 100, POLL_IGNORE_CONTRACTOR_SUPPORT)
 
 	if(LAZYLEN(candidates))
-		var/mob/dead/observer/C = pick(candidates)
-		spawn_contractor_partner(user, C.key)
+		var/mob/dead/observer/picked_obs = pick(candidates)
+		spawn_contractor_partner(user, picked_obs.key)
 	else
 		to_chat(user, span_notice("No available agents at this time, please try again later."))
 
