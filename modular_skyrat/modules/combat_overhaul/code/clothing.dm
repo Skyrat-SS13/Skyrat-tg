@@ -1,5 +1,6 @@
 #define REQUIRED_REPAIR_STACK 5
 #define REPAIR_TIME 20 SECONDS
+
 /obj/item/clothing/examine(mob/user)
 	. = ..()
 	if(armor.bio || armor.bomb || armor.bullet || armor.energy || armor.laser || armor.melee || armor.fire || armor.acid)
@@ -13,3 +14,4 @@
 		if(do_after(user, REPAIR_TIME, src))
 			to_chat(user, span_notice("You repair the armor plating."))
 			armor.integrity = 100
+	return ..()
