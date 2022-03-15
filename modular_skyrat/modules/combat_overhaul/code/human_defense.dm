@@ -15,9 +15,10 @@
 		// We calculate the raw damage that the bullet will inflict, it will be the bullets damage type.
 		var/calculated_damage = clamp(projectile_damage - armor_rating, 0, INFINITY)
 		// Any left over bullet damage is converted into stamina damage.
-		var/calculated_stamina_damage = clamp(calculated_damage - projectile_damage, 0, INFINITY)
+		var/calculated_stamina_damage = clamp(projectile_damage - calculated_damage, 0, INFINITY)
 		// Wound bonus is only dealt if the armor is "penetrated".
 		var/wound_bonus = (calculated_damage > armor_rating) ? hitting_projectile.wound_bonus : 0
+
 		// Now we apply the damage, if any.
 		if(calculated_damage > 0)
 			apply_damage(
@@ -55,6 +56,26 @@
 			)
 		if(hitting_projectile.dismemberment)
 			check_projectile_dismemberment(hitting_projectile, def_zone)
+
+		// Now we deal with displaying the damage feedback. I have to admit, this is really bad code.
+		var/obj/item/bodypart/bodypart
+		if(isbodypart(def_zone))
+			bodypart = def_zone
+		else
+			bodypart = get_bodypart(check_zone(def_zone))
+		// We have confirmed that our bodypart does indeed exist...
+		if(bodypart)
+			var/list/clothing_zones = list(head, wear_mask, wear_suit, w_uniform, back, gloves, shoes, belt, s_store, glasses, ears, wear_id, wear_neck) // Hate.
+			for(var/clothing_zone in clothing_zones)
+				if(!clothing_zone)
+					continue
+				if(clothing_zone && istype(clothing_zone, /obj/item/clothing))
+					var/obj/item/clothing/clothing = clothing_zone
+					if(clothing.body_parts_covered & bodypart.body_part) // We have a piece of armor that is protecting this bodypart.
+						if(wound_bonus)
+							to_chat(src, span_userdanger("[clothing] that was covering your [bodypart.name] was penetrated!"))
+						else
+							to_chat(src, span_danger("[clothing] that was covering your [bodypart.name] fully absorbed the hit!"))
 
 		to_chat(src, "DEBUG: bullet_damage:[projectile_damage] | calculated_damage:[calculated_damage] | calculated_stamina_damage:[calculated_stamina_damage] | wound_bonus:[wound_bonus] | armor_rating:[armor_rating] | attack_direction:[attack_direction]")
 
