@@ -2,8 +2,11 @@
 	/// Our integrity, from 0 - 100 percent.
 	var/integrity = 100
 
-/datum/armor/getRating(rating) // THIS IS A PROC OVERRIDE
-	return vars[rating] / 100 * integrity // Armor can be damaged in our new system, so this override enables us to use it to calculate things.
+/datum/armor/getRating(rating, ignore_integrity) // THIS IS A PROC OVERRIDE
+	if(ignore_integrity)
+		return vars[rating]
+	else
+		return vars[rating] / 100 * integrity // Armor can be damaged in our new system, so this override enables us to use it to calculate things.
 
 // Degrades the armor integrity.
 /datum/armor/proc/degrade(damage, damage_type)
