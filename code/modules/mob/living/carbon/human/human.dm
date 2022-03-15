@@ -392,7 +392,7 @@
 				return
 
 	//SKYRAT EDIT ADDITION BEGIN - VIEW RECORDS
-	if (is_special_character(usr))
+	if (is_special_character(usr) || usr.mind.has_exploitables_override)
 		var/perpname = get_face_name(get_id_name(""))
 		var/datum/data/record/EXP = find_record("name", perpname, GLOB.data_core.general)
 		if(href_list["exprecords"])

@@ -95,6 +95,10 @@
 	// SKYRAT EDIT ADDITION -- EXPLOITABLE MENU
 	///Tracks if the target has the view_exploitables_verb verb. THIS MUST BE CHANGED IF THE VERB IS ADDED OR REMOVED OR ELSE STUFF BREAKS.
 	var/has_exploitable_menu = FALSE
+	/// While true, allows for unconditional access to examined exploitables.
+	var/has_exploitables_override = FALSE
+	/// Both a marker for having the exploitable menu verb, and the access key to certain alternate conditions in if statements to allow the user to use the exploitable menu.
+	var/has_exploitable_menu_override = FALSE
 
 /datum/mind/New(_key)
 	key = _key
@@ -320,9 +324,9 @@
 		var/datum/antagonist/A = a
 		A.on_removal()
 	//SKYRAT EDIT ADDITION BEGIN - EXPLOITABLE MENU
-	if (has_exploitable_menu)
-		remove_verb(current, /mob/proc/view_exploitables_verb)
-		has_exploitable_menu = FALSE
+		if (has_exploitable_menu)
+			remove_verb(current, /mob/proc/view_exploitables_verb)
+			has_exploitable_menu = FALSE
 	//SKYRAT EDIT ADDITION END
 
 /datum/mind/proc/has_antag_datum(datum_type, check_subtypes = TRUE)
@@ -719,6 +723,23 @@
 					log_admin("[key_name(usr)] tried and failed to give [current] an uplink.")
 				else
 					log_admin("[key_name(usr)] gave [current] an uplink.")
+			if("toggleexploitables")
+				if (has_exploitables_override)
+					has_exploitables_override = FALSE
+				else
+					has_exploitables_override = TRUE
+				log_admin("[key_name(usr)] toggled [current]'s exploitables override to [has_exploitables_override].")
+				message_admins("[key_name(usr)] toggled [current]'s exploitables override to [has_exploitables_override].")
+			if("toggleexploitablesmenu")
+				if (has_exploitable_menu_override)
+					has_exploitable_menu_override = FALSE
+					remove_verb(current, /mob/proc/view_exploitables_verb)
+				else
+					has_exploitable_menu_override = TRUE
+					add_verb(current, /mob/proc/view_exploitables_verb)
+				log_admin("[key_name(usr)] toggled [current]'s exploitable menu override to [has_exploitable_menu_override].")
+				message_admins("[key_name(usr)] toggled [current]'s exploitable menu override to [has_exploitable_menu_override].")
+
 
 	else if (href_list["obj_announce"])
 		announce_objectives()

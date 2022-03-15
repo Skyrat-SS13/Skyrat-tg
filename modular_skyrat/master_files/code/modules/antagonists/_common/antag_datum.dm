@@ -1,5 +1,5 @@
 /datum/antagonist
-	//Should this antagonist be allowed to view exploitable information?
+	/// Should this antagonist be allowed to view exploitable information?
 	var/view_exploitables = FALSE
 
 /datum/antagonist/heretic

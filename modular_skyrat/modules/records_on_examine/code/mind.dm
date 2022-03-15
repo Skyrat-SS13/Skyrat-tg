@@ -1,4 +1,6 @@
 /datum/mind/proc/handle_exploitables_menu()
+	if (has_exploitable_menu_override)
+		return
 	//Only returns true if no datums are present in the mind. Without this, the for loop would end prematurely, as it would be null.
 	if (!antag_datums)
 		if (has_exploitable_menu)

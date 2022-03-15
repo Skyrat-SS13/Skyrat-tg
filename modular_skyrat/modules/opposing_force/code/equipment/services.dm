@@ -57,3 +57,22 @@
 /datum/opposing_force_equipment/service/market_crash/on_issue()
 	var/datum/round_event_control/event = locate(/datum/round_event_control/market_crash) in SSevents.control
 	event.runEvent()
+
+/datum/opposing_force_equipment/service/give_exploitables
+	name = "Exploitables Access"
+	description = "You will be given access to a network of exploitable information of certain crewmates, viewable on examine."
+	item_type = /obj/effect/gibspawner/generic
+	admin_note = "Gives them access to exploitables, which most antags get for existing."
+
+/datum/opposing_force_equipment/service/give_exploitables/on_issue(mob/living/target)
+	target.mind.has_exploitables_override = TRUE
+
+/datum/opposing_force_equipment/service/give_exploitables_menu
+	name = "Exploitables Menu Access"
+	description = "You will be given access to a network of exploitable information of certain crewmates, viewable using a OOC verb."
+	item_type = /obj/effect/gibspawner/generic
+	admin_note = "Gives them access to the exploitables menu, which lets them view the exploitables of anyone from anywhere."
+
+/datum/opposing_force_equipment/service/give_exploitables_menu/on_issue(mob/living/target)
+	target.mind.has_exploitable_menu_override = TRUE
+	add_verb(target, /mob/proc/view_exploitables_verb)
