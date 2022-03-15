@@ -527,7 +527,7 @@
 		total_stamina += (BP.stamina_dam * BP.stam_damage_coeff)
 	set_health(round(maxHealth - getOxyLoss() - getToxLoss() - getCloneLoss() - total_burn - total_brute, DAMAGE_PRECISION))
 	staminaloss = round(total_stamina, DAMAGE_PRECISION)
-	update_stat()
+//	update_stat() // Skyrat edit
 	if(((maxHealth - total_burn) < HEALTH_THRESHOLD_DEAD*2) && stat == DEAD )
 		become_husk(BURN)
 	med_hud_set_health()
@@ -689,18 +689,18 @@
 				severity = 10
 		if(stat != HARD_CRIT)
 			var/visionseverity = 4
-			switch(health)
-				if(-8 to -4)
+			switch(flow_rate) // SKYRAT EDIT START - Health System
+				if(300 to 150)
 					visionseverity = 5
-				if(-12 to -8)
+				if(150 to 130)
 					visionseverity = 6
-				if(-16 to -12)
+				if(130 to 110)
 					visionseverity = 7
-				if(-20 to -16)
+				if(110 to 60)
 					visionseverity = 8
-				if(-24 to -20)
+				if(60 to 30)
 					visionseverity = 9
-				if(-INFINITY to -24)
+				if(30 to -INFINITY) // SKYRAT EDIT END
 					visionseverity = 10
 			overlay_fullscreen("critvision", /atom/movable/screen/fullscreen/crit/vision, visionseverity)
 		else
@@ -826,20 +826,20 @@
 
 
 /mob/living/carbon/update_stat()
-/* 	if(status_flags & GODMODE)
+	if(status_flags & GODMODE)
 		return
 	if(stat != DEAD)
-		if(health <= HEALTH_THRESHOLD_DEAD && !HAS_TRAIT(src, TRAIT_NODEATH))
-			death()
+		if(health <= HEALTH_THRESHOLD_DEAD && !HAS_TRAIT(src, TRAIT_NODEATH)) // SKYRAT EDIT BEGIN: HEALTH REWORK
+//			death()
 			return
-		if(health <= hardcrit_threshold && !HAS_TRAIT(src, TRAIT_NOHARDCRIT))
-			set_stat(HARD_CRIT)
-		else if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
-			set_stat(UNCONSCIOUS)
-		else if(health <= crit_threshold && !HAS_TRAIT(src, TRAIT_NOSOFTCRIT))
-			set_stat(SOFT_CRIT)
-		else
-			set_stat(CONSCIOUS) */
+//		if(health <= hardcrit_threshold && !HAS_TRAIT(src, TRAIT_NOHARDCRIT))
+//			set_stat(HARD_CRIT)*/
+	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
+		set_stat(UNCONSCIOUS)
+/* 		else if(health <= crit_threshold && !HAS_TRAIT(src, TRAIT_NOSOFTCRIT))
+			set_stat(SOFT_CRIT) */
+	else
+		set_stat(CONSCIOUS) // SKYRAT EDIT END
 	update_damage_hud()
 	update_health_hud()
 	update_stamina_hud()

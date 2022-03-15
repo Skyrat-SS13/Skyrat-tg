@@ -16,9 +16,13 @@
 	injuries = calc_injuries()
 //		var/pain_score = injuries + length(all_wounds) // old, backup and sketchy
 	calc_pain()
-	if(stat == DEAD)	flow_rate = 0
+	if(stat == DEAD)
+		flow_rate = 0
+		update_health_hud()
+		return
 	else	flow_rate = clamp(rand(BASE_FLOW_RATE, BASE_FLOW_RATE_UPPER) + calc_pain(), 0, FLOW_RATE_ARREST)
-	shock_helper(flow_rate)
+	in_shock ? shock_dying(flow_rate) : shock_helper(flow_rate)
+
 	update_health_hud()
 
 /mob/living/carbon/proc/calc_pain()
@@ -40,21 +44,24 @@
 	return injuries
 
 /mob/living/carbon/proc/shock_dying(last_bpm, pulsetimer)
-	if(!in_shock)
+	if(!in_shock || stat == DEAD)
 		return
 	if(in_shock)
 		if(can_leave_shock(last_bpm))
 			in_shock = FALSE
+			set_stat(CONSCIOUS)
 			to_chat(src, span_hypnophrase("You body tingles painfully as your nerves come back..."))
 		else if(!can_leave_shock(last_bpm))
+			if(stat != SOFT_CRIT)
+				set_stat(SOFT_CRIT)
 			current_pain_message_helper("Shock")
 			losebreath += 0.25
+		flow_rate -= clamp(losebreath,3,15) // Double negative when in crit?
 
-
-
-	if(last_bpm <= 0)
+	if(flow_rate <= 0 || stat != DEAD)
 		death()
-		set_stat(DEAD)
+
+
 /mob/living/carbon/proc/can_leave_shock(last_bpm)
 	var/truepain = calc_pain()
 	if(truepain <= 100)
@@ -89,25 +96,24 @@
 			to_chat(src, span_unconscious(pick("Where am I?", "What's going on?")))
 
 /mob/living/carbon/proc/shock_helper(flow_rate)
-	var/pulsetimer = world.timeofday
 	SIGNAL_HANDLER
-	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT) && stat != DEAD)
-		set_stat(UNCONSCIOUS)
+/* 	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT) && stat != DEAD || stat != UNCONSCIOUS)
+		set_stat(UNCONSCIOUS) */
 	switch(flow_rate)
 		if(FLOW_RATE_ARREST)
-			if(stat != HARD_CRIT && !HAS_TRAIT(src, TRAIT_NOSOFTCRIT))
+			if(stat != HARD_CRIT || stat != SOFT_CRIT && !HAS_TRAIT(src, TRAIT_NOSOFTCRIT))
 				set_stat(SOFT_CRIT)
 				in_shock = TRUE
-				shock_dying(flow_rate, pulsetimer)
+//				shock_dying(flow_rate, pulsetimer)
 				current_pain_message_helper("Soft-crit")
-			if(health == hardcrit_threshold && !HAS_TRAIT(src, TRAIT_NOHARDCRIT))
+			if(health == hardcrit_threshold || stat != HARD_CRIT && !HAS_TRAIT(src, TRAIT_NOHARDCRIT))
 				set_stat(HARD_CRIT)
 				in_shock = TRUE
-				shock_dying(flow_rate, pulsetimer)
+//				shock_dying(flow_rate, pulsetimer)
 				current_pain_message_helper("Dying")
 			if(health <= HEALTH_THRESHOLD_DEAD && !HAS_TRAIT(src, TRAIT_NODEATH))
 				to_chat(src, span_unconscious("Death..."))
-				shock_dying(flow_rate, pulsetimer)
+//				shock_dying(flow_rate, pulsetimer)
 
 
 		if(180 to 299)
