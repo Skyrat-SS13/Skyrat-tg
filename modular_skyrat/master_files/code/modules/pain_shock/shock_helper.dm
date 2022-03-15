@@ -4,7 +4,7 @@
 	flow_control() */
 /mob/living/carbon
 	var/lastpainmessage
-	var/in_shock
+	var/in_shock = FALSE
 	var/flow_rate = BASE_FLOW_RATE
 	var/injuries
 /mob/living/carbon/Initialize(mapload)
@@ -20,7 +20,7 @@
 		flow_rate = 0
 		update_health_hud()
 		return
-	else	flow_rate = clamp(rand(BASE_FLOW_RATE, BASE_FLOW_RATE_UPPER) + calc_pain(), 0, FLOW_RATE_ARREST)
+	else if(!in_shock)	flow_rate = clamp(rand(BASE_FLOW_RATE, BASE_FLOW_RATE_UPPER) + calc_pain(), 0, FLOW_RATE_ARREST)
 	in_shock ? shock_dying(flow_rate) : shock_helper(flow_rate)
 
 	update_health_hud()
@@ -56,9 +56,9 @@
 				set_stat(SOFT_CRIT)
 			current_pain_message_helper("Shock")
 			losebreath += 0.25
-		flow_rate -= clamp(losebreath,3,15) // Double negative when in crit?
+		flow_rate -= losebreath // Double negative when in crit?
 
-	if(flow_rate <= 0 || stat != DEAD)
+	if(flow_rate <= 0 && stat != DEAD)
 		death()
 
 
@@ -79,19 +79,22 @@
 	switch(current_pain)
 		if("Shock")
 			to_chat(src, span_resonate("You feel your body shutting down..."))
+			Jitter(15)
 		if("Minor")
 			to_chat(src, span_resonate("I could use some painkillers right about now..."))
 		if("Moderate")
 			to_chat(src, span_resonate("It hurts so much!"))
-
+			Jitter(15)
 		if("Major")
 			to_chat(src, span_resonate("Make the pain stop!"))
-
+			Jitter(15)
 		if("Severe")
 			to_chat(src, span_resonate("Please! End the pain!"))
+			Jitter(15)
 		if("Soft-crit")
 			var/dream = span_italics(". . . You think about . . . ") + span_hypnophrase("[pick(close2death)]")
 			to_chat(src, dream)
+			Jitter(15)
 		if("Dying")
 			to_chat(src, span_unconscious(pick("Where am I?", "What's going on?")))
 

@@ -1947,14 +1947,15 @@
 	. = ..()
 	if(isnull(.))
 		return
-
+	if(iscarbon(src))// SKYRAT EDIT: //handle this on our code.
+		return // SKYRAT EDIT: //handle this on our code.
 	switch(.) //Previous stat.
 		if(CONSCIOUS)
 			if(stat >= UNCONSCIOUS)
 				ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
 			ADD_TRAIT(src, TRAIT_HANDS_BLOCKED, STAT_TRAIT)
-//			ADD_TRAIT(src, TRAIT_INCAPACITATED, STAT_TRAIT) // SKYRAT EDIT: COMBAT REWORK
-//			ADD_TRAIT(src, TRAIT_FLOORED, STAT_TRAIT) // SKYRAT EDIT: COMBAR REWORK
+			ADD_TRAIT(src, TRAIT_INCAPACITATED, STAT_TRAIT)
+			ADD_TRAIT(src, TRAIT_FLOORED, STAT_TRAIT)
 		if(SOFT_CRIT)
 			if(stat >= UNCONSCIOUS)
 				ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT) //adding trait sources should come before removing to avoid unnecessary updates
@@ -1966,7 +1967,6 @@
 		if(HARD_CRIT)
 			if(stat != UNCONSCIOUS)
 				cure_blind(UNCONSCIOUS_TRAIT)
-			ADD_TRAIT(src, TRAIT_FLOORED, STAT_TRAIT) //SKYRAT EDIT: Combat Rework // Down, but not out.
 		if(DEAD)
 			remove_from_dead_mob_list()
 			add_to_alive_mob_list()
@@ -1989,10 +1989,8 @@
 				become_blind(UNCONSCIOUS_TRAIT)
 			if(health <= crit_threshold && !HAS_TRAIT(src, TRAIT_NOSOFTCRIT))
 				ADD_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
-				ADD_TRAIT(src, TRAIT_FLOORED, STAT_TRAIT)
 			else
 				REMOVE_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
-				REMOVE_TRAIT(src, TRAIT_FLOORED, STAT_TRAIT)
 		if(HARD_CRIT)
 			if(. != UNCONSCIOUS)
 				become_blind(UNCONSCIOUS_TRAIT)
