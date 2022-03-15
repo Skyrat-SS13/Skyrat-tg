@@ -31,3 +31,6 @@
 
 /area/shuttle/labor/advanced
 	name = "NMC Drudge"
+
+/area/mine/safekeep
+	name = "Mining Equipment Safekeeping Room"
