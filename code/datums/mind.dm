@@ -723,6 +723,7 @@
 					log_admin("[key_name(usr)] tried and failed to give [current] an uplink.")
 				else
 					log_admin("[key_name(usr)] gave [current] an uplink.")
+			//SKYRAT EDIT ADDITION BEGIN -- EXPLOITABLES
 			if("toggleexploitables")
 				if (has_exploitables_override)
 					has_exploitables_override = FALSE
@@ -739,6 +740,7 @@
 					add_verb(current, /mob/proc/view_exploitables_verb)
 				log_admin("[key_name(usr)] toggled [current]'s exploitable menu override to [has_exploitable_menu_override].")
 				message_admins("[key_name(usr)] toggled [current]'s exploitable menu override to [has_exploitable_menu_override].")
+			//SKYRAT EDIT ADDITION END
 
 
 	else if (href_list["obj_announce"])
