@@ -6,7 +6,19 @@ SUBSYSTEM_DEF(ticket_ping)
 	wait = 3 MINUTES
 
 /datum/controller/subsystem/ambience/fire(resumed)
-	if(!length(GLOB.ahelp_tickets.active_tickets) && !length(SSopposing_force.submitted_applications))
+	var/valid_ahelps
+	var/valid_opfors
+	for(var/datum/admin_help/ahelp in GLOB.ahelp_tickets.active_tickets)
+		if(ahelp.handler)
+			continue
+		valid_ahelps++
+
+	for(var/datum/opposing_force/opfor in SSopposing_force.submitted_applications)
+		if(opfor.handling_admin)
+			continue
+		valid_opfors++
+
+	if(!valid_ahelps && !valid_opfors)
 		return
 
-	message_admins(span_adminnotice("There are currently [length(GLOB.ahelp_tickets.active_tickets) ? "[length(GLOB.ahelp_tickets.active_tickets)] staff tickets open " : ""][(length(GLOB.ahelp_tickets.active_tickets) && length(SSopposing_force.submitted_applications)) ? "and " ""][length(SSopposing_force.submitted_applications) ? "[length(SSopposing_force.submitted_applications)] Opposing Force applications open" : ""]."))
+	message_admins(span_adminnotice("There are currently [valid_ahelps ? "[valid_ahelps] unhandled staff tickets open" : ""][(valid_ahelps && valid_opfors) ? " and " ""][valid_opfors ? "[valid_opfors] unhandled Opposing Force applications open" : ""]."))
