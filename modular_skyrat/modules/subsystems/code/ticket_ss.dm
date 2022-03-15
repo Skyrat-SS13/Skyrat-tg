@@ -21,4 +21,4 @@ SUBSYSTEM_DEF(ticket_ping)
 	if(!valid_ahelps && !valid_opfors)
 		return
 
-	message_admins(span_adminnotice("There are currently [valid_ahelps ? "[valid_ahelps] unhandled staff tickets open" : ""][(valid_ahelps && valid_opfors) ? " and " : ""][valid_opfors ? "[valid_opfors] unhandled Opposing Force applications open" : ""]."))
+	message_admins(span_adminnotice("There are currently [valid_ahelps ? "[valid_ahelps] unhandled staff ticket[valid_ahelps == 1 ? "" : "s"] open" : ""][(valid_ahelps && valid_opfors) ? " and " : ""][valid_opfors ? "[valid_opfors] unhandled Opposing Force application[valid_opfors == 1 ? "" : "s"] open" : ""]."))
