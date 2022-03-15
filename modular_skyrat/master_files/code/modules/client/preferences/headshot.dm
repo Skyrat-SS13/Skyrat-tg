@@ -37,7 +37,7 @@
 	return TRUE
 
 /datum/preference/text/headshot/is_accessible(datum/preferences/preferences)
-	if(!is_veteran_player(usr?.client) && !(usr?.ckey in GLOB.donator_list))
+	if(!is_veteran_player(usr?.client) && !GLOB.donator_list[usr.ckey])
 		return FALSE
 	return ..()
 
