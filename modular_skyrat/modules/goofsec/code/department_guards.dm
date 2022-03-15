@@ -436,7 +436,7 @@
 					span_warning("[user] prods you with [src]. Luckily, it shut off due to being in the wrong area."))
 				active = FALSE
 				balloon_alert(user, "wrong department")
-				playsound(src, "sparks", 75, TRUE, -1)
+				playsound(src, SFX_SPARKS, 75, TRUE, -1)
 				update_appearance()
 				return BATON_ATTACK_DONE
 	. = ..()
@@ -458,7 +458,7 @@
 							span_warning("You scramble [src]'s departmental lock, allowing it to be used freely!"),
 							span_hear("You hear a faint electrical spark."))
 		balloon_alert(user, "emagged")
-		playsound(src, "sparks", 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+		playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		emagged = TRUE
 
 /obj/item/melee/baton/security/loaded/departmental/medical

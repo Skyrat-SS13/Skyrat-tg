@@ -33,7 +33,7 @@
 	name = "Principle of Hunger"
 	desc = "Opens up the Path of Flesh to you. \
 		Allows you to transmute a knife and a pool of blood into a Bloody Blade. \
-		You can only create three at a time."
+		You can only create twenty at a time." //SKYRAT EDIT three to twenty
 	gain_text = "Hundreds of us starved, but not me... I found strength in my greed."
 	next_knowledge = list(/datum/heretic_knowledge/limited_amount/flesh_grasp)
 	banned_knowledge = list(
@@ -49,7 +49,7 @@
 		/obj/effect/decal/cleanable/blood = 1,
 	)
 	result_atoms = list(/obj/item/melee/sickly_blade/flesh)
-	limit = 3 // Bumped up so they can arm up their ghouls too.
+	limit = 20 // Bumped up so they can arm up their ghouls too. //SKYRAT EDIT - ORIGINAL: 3
 	cost = 1
 	priority = MAX_KNOWLEDGE_PRIORITY - 5
 	route = PATH_FLESH

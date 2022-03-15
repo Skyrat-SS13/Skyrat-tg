@@ -46,6 +46,8 @@
 		"Pavise Shield" = /obj/item/shield/riot/buckler/reagent_weapon/pavise,
 		"Buckler Shield" = /obj/item/shield/riot/buckler/reagent_weapon,
 		"Coil" = /obj/item/forging/coil,
+		"Seed Mesh" = /obj/item/seed_mesh,
+		"Primitive Centrifuge" = /obj/item/reagent_containers/glass/primitive_centrifuge,
 	)
 
 /obj/structure/reagent_crafting_bench/examine(mob/user)
@@ -113,6 +115,11 @@
 			required_plate = 5
 		if("Coil")
 			required_chain = 2
+		if("Seed Mesh")
+			required_chain = 4
+			required_plate = 1
+		if("Primitive Centrifuge")
+			required_plate = 1
 	if(!required_hits)
 		required_hits = (required_chain * 2) + (required_plate * 2) + (required_coil * 2)
 	balloon_alert(user, "choice made!")
