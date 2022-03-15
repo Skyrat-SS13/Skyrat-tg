@@ -88,6 +88,8 @@ export const PortraitPicker = (props, context) => {
                 </Section>
               </Flex.Item>
             </Flex>
+//SKYRAT EDIT CHANGE BEGIN
+/*
             <Flex.Item mt={1}>
               <NoticeBox info>
                 Only the 23x23 or 24x24 canvas size art can be
@@ -104,6 +106,15 @@ export const PortraitPicker = (props, context) => {
                 you change your display portrait, for any reason.
               </NoticeBox>
             </Flex.Item>
+*/
+            <Flex.Item mt={1}>
+              <NoticeBox info>
+                Only the 23x23 or 24x24 canvas size art can be
+                displayed. Central Command reserves the right to request
+                you change your display portrait, for any reason.
+              </NoticeBox>
+            </Flex.Item>
+//SKYRAT EDIT CHANGE END
           </Flex.Item>
         </Flex>
       </Window.Content>
