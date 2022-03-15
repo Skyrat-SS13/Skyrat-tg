@@ -1,29 +1,33 @@
-/mob/living/carbon/human/bullet_act(obj/projectile/bullet, def_zone, piercing_hit = FALSE)
-	. = call(src, /atom/proc/bullet_act)(bullet, def_zone, piercing_hit)
-	if(!bullet.nodamage && (. != BULLET_ACT_BLOCK))
-		var/attack_direction = get_dir(bullet.starting, src)
+/mob/living/carbon/human/bullet_act(obj/projectile/hitting_projectile, def_zone, piercing_hit = FALSE)
+	SEND_SIGNAL(src, COMSIG_ATOM_BULLET_ACT, hitting_projectile, def_zone)
+	// This armor check only matters for the visuals and messages in on_hit(), it's not actually used to reduce damage since
+	// only living mobs use armor to reduce damage, but on_hit() is going to need the value no matter what is shot.
+	var/visual_armor_check = check_projectile_armor(def_zone, hitting_projectile)
+	. = hitting_projectile.on_hit(src, visual_armor_check, def_zone, piercing_hit)
+	if(!hitting_projectile.nodamage && (. != BULLET_ACT_BLOCK))
+		var/attack_direction = get_dir(hitting_projectile.starting, src)
 		// First, let's get the bullets base damage.
-		var/bullet_damage = bullet.damage
+		var/projectile_damage = hitting_projectile.damage
 		// Let's get the armor rating, it takes into account the integrity for us.
-		var/armor_rating = get_and_process_armor(def_zone, bullet.flag, bullet_damage)
+		var/armor_rating = get_and_process_armor(def_zone, hitting_projectile.flag, projectile_damage)
 		// We take the bullets armor penetration and remove it from our armor rating. Make sure to clamp it so it can't go below 0.
-		armor_rating = clamp(armor_rating - bullet.armour_penetration, 0, INFINITY)
+		armor_rating = clamp(armor_rating - hitting_projectile.armour_penetration, 0, INFINITY)
 		// We calculate the raw damage that the bullet will inflict, it will be the bullets damage type.
-		var/calculated_damage = clamp(bullet_damage - armor_rating, 0, INFINITY)
+		var/calculated_damage = clamp(projectile_damage - armor_rating, 0, INFINITY)
 		// Any left over bullet damage is converted into stamina damage.
-		var/calculated_stamina_damage = clamp(calculated_damage - bullet_damage, 0, INFINITY)
+		var/calculated_stamina_damage = clamp(calculated_damage - projectile_damage, 0, INFINITY)
 		// Wound bonus is only dealt if the armor is "penetrated".
-		var/wound_bonus = (calculated_damage > armor_rating) ? bullet.wound_bonus : 0
+		var/wound_bonus = (calculated_damage > armor_rating) ? hitting_projectile.wound_bonus : 0
 		// Now we apply the damage, if any.
 		if(calculated_damage > 0)
 			apply_damage(
 				calculated_damage,
-				bullet.damage_type,
+				hitting_projectile.damage_type,
 				def_zone,
 				FALSE,
 				wound_bonus = wound_bonus,
-				bare_wound_bonus = bullet.bare_wound_bonus,
-				sharpness = bullet.sharpness,
+				bare_wound_bonus = hitting_projectile.bare_wound_bonus,
+				sharpness = hitting_projectile.sharpness,
 				attack_direction = attack_direction
 				)
 		if(calculated_stamina_damage > 0)
@@ -36,23 +40,23 @@
 			)
 		// We need effects to occur so things like an e-crossbow can't be nulled permanently by armor.
 		apply_effects(
-			bullet.stun,
-			bullet.knockdown,
-			bullet.unconscious,
-			bullet.slur,
-			bullet.stutter,
-			bullet.eyeblur,
-			bullet.drowsy,
+			hitting_projectile.stun,
+			hitting_projectile.knockdown,
+			hitting_projectile.unconscious,
+			hitting_projectile.slur,
+			hitting_projectile.stutter,
+			hitting_projectile.eyeblur,
+			hitting_projectile.drowsy,
 			armor,
-			bullet.stamina,
-			bullet.jitter,
-			bullet.paralyze,
-			bullet.immobilize
+			hitting_projectile.stamina,
+			hitting_projectile.jitter,
+			hitting_projectile.paralyze,
+			hitting_projectile.immobilize
 			)
-		if(bullet.dismemberment)
-			check_projectile_dismemberment(bullet, def_zone)
+		if(hitting_projectile.dismemberment)
+			check_projectile_dismemberment(hitting_projectile, def_zone)
 
-		to_chat(src, "DEBUG: calculated_damage:[calculated_damage] | calculated_stamina_damage:[calculated_stamina_damage] | wound_bonus:[wound_bonus] | armor_rating:[armor_rating] | attack_direction:[attack_direction]")
+		to_chat(src, "DEBUG: bullet_damage:[projectile_damage] | calculated_damage:[calculated_damage] | calculated_stamina_damage:[calculated_stamina_damage] | wound_bonus:[wound_bonus] | armor_rating:[armor_rating] | attack_direction:[attack_direction]")
 
 	return . ? BULLET_ACT_HIT : BULLET_ACT_BLOCK
 
