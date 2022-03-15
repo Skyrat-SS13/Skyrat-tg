@@ -46,20 +46,19 @@
 /mob/living/carbon/proc/shock_dying(last_bpm, pulsetimer)
 	if(!in_shock || stat == DEAD)
 		return
-	if(in_shock)
-		if(can_leave_shock(last_bpm))
-			in_shock = FALSE
-			set_stat(CONSCIOUS)
-			to_chat(src, span_hypnophrase("You body tingles painfully as your nerves come back..."))
-		else if(!can_leave_shock(last_bpm))
-			if(stat != SOFT_CRIT)
-				set_stat(SOFT_CRIT)
-			current_pain_message_helper("Shock")
-			losebreath += 0.25
-		flow_rate -= losebreath // Double negative when in crit?
+	if(can_leave_shock(last_bpm))
+		in_shock = FALSE
+		set_stat(CONSCIOUS)
+		to_chat(src, span_hypnophrase("You body tingles painfully as your nerves come back..."))
+	else if(!can_leave_shock(last_bpm))
+		if(stat != SOFT_CRIT)
+			set_stat(SOFT_CRIT)
+		current_pain_message_helper("Shock")
+		losebreath += 0.25
+	flow_rate -= losebreath // Double negative when in crit?
 
 	if(flow_rate <= 0 && stat != DEAD)
-		death()
+		adjustOrganLoss(ORGAN_SLOT_BRAIN, losebreath)
 
 
 /mob/living/carbon/proc/can_leave_shock(last_bpm)
