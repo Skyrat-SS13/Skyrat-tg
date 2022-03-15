@@ -58,3 +58,6 @@
 	new /obj/item/storage/belt/military(src)
 	new /obj/item/card/id/advanced/chameleon(src)
 	new /obj/item/mod/control/pre_equipped/nuclear(src)
+
+/obj/item/guardiancreator/tech/choose/traitor/opfor
+	allowling = TRUE

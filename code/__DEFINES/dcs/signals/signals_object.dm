@@ -64,11 +64,15 @@
 /// from /obj/machinery/atmospherics/components/binary/valve/toggle(): (on)
 #define COMSIG_VALVE_SET_OPEN "valve_toggled"
 
-/// from /obj/machinery/atmospherics/components/binary/pump/set_on(active): (on)
-#define COMSIG_PUMP_SET_ON "pump_set_on"
+/// from /obj/machinery/atmospherics/set_on(active): (on)
+#define COMSIG_ATMOS_MACHINE_SET_ON "atmos_machine_set_on"
 
 /// from /obj/machinery/light_switch/set_lights(), sent to every switch in the area: (status)
 #define COMSIG_LIGHT_SWITCH_SET "light_switch_set"
+
+/// from /obj/machinery/fire_alarm/reset(), /obj/machinery/fire_alarm/alarm(): (status)
+#define COMSIG_FIREALARM_ON_TRIGGER "firealarm_trigger"
+#define COMSIG_FIREALARM_ON_RESET "firealarm_reset"
 
 // /obj access signals
 
@@ -381,3 +385,4 @@
 /// from base of /obj/item/slimepotion/speed/afterattack(): (obj/target, /obj/src, mob/user)
 #define COMSIG_SPEED_POTION_APPLIED "speed_potion"
 	#define SPEED_POTION_STOP (1<<0)
+

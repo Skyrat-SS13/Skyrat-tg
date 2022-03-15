@@ -150,7 +150,7 @@
 				. += get_airlock_overlay("sparks_open", overlays_file, em_block = FALSE)
 
 	if(note)
-		. += get_airlock_overlay(note_type(), note_overlay_file, em_block = TRUE)
+		. += get_airlock_overlay(get_note_state(frame_state), note_overlay_file, em_block = TRUE)
 
 	if(frame_state == AIRLOCK_FRAME_CLOSED && seal)
 		. += get_airlock_overlay("sealed", overlays_file, em_block = TRUE)
@@ -186,7 +186,6 @@
 /obj/machinery/door/airlock
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/public.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/overlays.dmi'
-	note_overlay_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/overlays.dmi'
 
 /obj/machinery/door/airlock/command
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/command.dmi'
@@ -342,7 +341,6 @@
 /obj/machinery/door/airlock/external
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/external/external.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/external/overlays.dmi'
-	note_overlay_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/external/overlays.dmi'
 
 //CENTCOMM
 /obj/machinery/door/airlock/centcom
@@ -362,12 +360,10 @@
 /obj/machinery/door/airlock/hatch
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/hatch/centcom.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/hatch/overlays.dmi'
-	note_overlay_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/hatch/overlays.dmi'
 
 /obj/machinery/door/airlock/maintenance_hatch
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/hatch/maintenance.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/hatch/overlays.dmi'
-	note_overlay_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/hatch/overlays.dmi'
 
 //HIGH SEC
 /obj/machinery/door/airlock/highsecurity

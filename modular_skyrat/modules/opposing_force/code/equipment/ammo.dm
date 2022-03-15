@@ -124,3 +124,107 @@
 
 /datum/opposing_force_equipment/ammo/wildcatincendiary
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/incendiary
+
+/datum/opposing_force_equipment/ammo/glock17
+	name = "Glock 17 Magazine"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/g17
+
+/datum/opposing_force_equipment/ammo/glock17hp
+	name = "Glock 17 Magazine (HP)"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/g17/hp
+
+/datum/opposing_force_equipment/ammo/glock18
+	name = "Glock 18 Magazine"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/g18
+
+/datum/opposing_force_equipment/ammo/glock18hp
+	name = "Glock 18 Magazine (HP)"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/g18/hp
+
+/datum/opposing_force_equipment/ammo/ladon
+	name = "P-3 'Ladon' Magazine"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/ladon
+
+/datum/opposing_force_equipment/ammo/ladonhp
+	name = "P-3 'Ladon' Magazine (HP)"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/ladon/hp
+
+/datum/opposing_force_equipment/ammo/dozer
+	name = "DZR-9 'Dozer' Magazine"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/dozer
+
+/datum/opposing_force_equipment/ammo/dozerhp
+	name = "DZR-9 'Dozer' Magazine (HP)"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/dozer/hp
+
+/datum/opposing_force_equipment/ammo/pdh
+	name = "PDH-6H 'Peacekeeper' Magazine"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/pdh
+
+/datum/opposing_force_equipment/ammo/pdhhp
+	name = "PDH-6H 'Peacekeeper' Magazine (HP)"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/pdh/hp
+
+/datum/opposing_force_equipment/ammo/mk58
+	name = "MK-58 Magazine"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/mk58
+
+/datum/opposing_force_equipment/ammo/mk58hp
+	name = "MK-58 Magazine (HP)"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/mk58/hp
+
+/datum/opposing_force_equipment/ammo/croon
+	name = "DT-4 'Croon' Magazine"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/croon
+
+/datum/opposing_force_equipment/ammo/zeta
+	name = "Zeta-6 'Spurchamber' Speedloader"
+	item_type = /obj/item/ammo_box/revolver/zeta/full
+
+/datum/opposing_force_equipment/ammo/revolution
+	name = "Revolution-8 'Spurmaster' Speedloader"
+	item_type = /obj/item/ammo_box/revolver/revolution/full
+
+/datum/opposing_force_equipment/ammo/g11
+	name = "G11 K-490 Magazine"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/g11
+
+/datum/opposing_force_equipment/ammo/g11hp
+	name = "G11 K-490 Magazine (HP)"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/g11/hp
+
+/datum/opposing_force_equipment/ammo/bulldog
+	name = "Bulldog Magazine"
+	item_type = /obj/item/ammo_box/magazine/m12g
+
+/datum/opposing_force_equipment/ammo/bulldogslug
+	name = "Bulldog Magazine (Slug)"
+	item_type = /obj/item/ammo_box/magazine/m12g/slug
+
+/datum/opposing_force_equipment/ammo/bulldogstun
+	name = "Bulldog Magazine (Stun)"
+	item_type = /obj/item/ammo_box/magazine/m12g/stun
+
+/datum/opposing_force_equipment/ammo/bulldogfire
+	name = "Bulldog Magazine (Incendiary)"
+	item_type = /obj/item/ammo_box/magazine/m12g/dragon
+
+/datum/opposing_force_equipment/ammo/bulldogmeteor
+	name = "Bulldog Magazine (Meteor)"
+	item_type = /obj/item/ammo_box/magazine/m12g/meteor
+
+/datum/opposing_force_equipment/ammo/c20r
+	name = "C-20r Magazine"
+	item_type = /obj/item/ammo_box/magazine/smgm45
+
+/datum/opposing_force_equipment/ammo/c20rap
+	name = "C-20r Magazine (AP)"
+	item_type = /obj/item/ammo_box/magazine/smgm45/ap
+
+/datum/opposing_force_equipment/ammo/c20rfire
+	name = "C-20r Magazine (Incendiary)"
+	item_type = /obj/item/ammo_box/magazine/smgm45/incen
+
+/datum/opposing_force_equipment/ammo/pepperball
+	name = "Pepperball Magazine"
+	item_type = /obj/item/ammo_box/magazine/pepperball
