@@ -558,7 +558,7 @@
 	casingtype = /obj/item/ammo_casing/a556/weak
 	projectilesound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/m16_fire.ogg'
 	attack_sound = 'sound/weapons/punch1.ogg'
-	loot = list/obj/effect/gibspawner/human, /obj/item/ammo_box/magazine/m16)
+	loot = list(/obj/effect/gibspawner/human, /obj/item/ammo_box/magazine/m16)
 	rapid_melee = 1
 
 /obj/projectile/bullet/a556/weak
