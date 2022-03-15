@@ -9,5 +9,5 @@
 /datum/armor/proc/degrade(damage, damage_type)
 	if(vars[damage_type] <= 0) // If the rating type has no armor, don't damage it.
 		return
-	integrity = clamp(integrity - damage / 100, 0, 100)
+	integrity = clamp(integrity - damage / 10, 0, 100)
 	to_chat(world, "DEGRADE: [damage], [damage_type], [integrity]")

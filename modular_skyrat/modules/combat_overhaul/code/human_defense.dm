@@ -1,5 +1,8 @@
 /mob/living/carbon/human/bullet_act(obj/projectile/hitting_projectile, def_zone, piercing_hit = FALSE)
 	SEND_SIGNAL(src, COMSIG_ATOM_BULLET_ACT, hitting_projectile, def_zone)
+	// This armor check only matters for the visuals and messages in on_hit(), it's not actually used to reduce damage since
+	// only living mobs use armor to reduce damage, but on_hit() is going to need the value no matter what is shot.
+	var/visual_armor_check = check_projectile_armor(def_zone, hitting_projectile)
 	. = hitting_projectile.on_hit(src, visual_armor_check, def_zone, piercing_hit)
 	if(!hitting_projectile.nodamage && (. != BULLET_ACT_BLOCK))
 		var/attack_direction = get_dir(hitting_projectile.starting, src)
