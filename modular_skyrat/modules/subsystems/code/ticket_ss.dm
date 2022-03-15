@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(ticket_ping)
 	var/valid_ahelps
 	var/valid_opfors
 	for(var/datum/admin_help/ahelp in GLOB.ahelp_tickets.active_tickets)
-		if(ahelp.handler)
+		if(ahelp.handler || ahelp.ticket_ping_stop)
 			continue
 		valid_ahelps++
 
