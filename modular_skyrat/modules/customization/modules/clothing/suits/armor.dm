@@ -75,6 +75,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "coathopformal"
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/hopformal
 
 /obj/item/clothing/head/hooded/winterhood/hopformal
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
