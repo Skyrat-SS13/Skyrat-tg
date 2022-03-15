@@ -894,3 +894,8 @@
 /obj/machinery/porta_turret/syndicate/pod/toolbox/mesa
 	max_integrity = 100
 	faction = list(FACTION_HECU)
+
+/obj/structure/alien/weeds/xen
+	name = "xen weeds"
+	desc = "A thick vine-like surface covers the floor."
+	color = "#ac3b06"
