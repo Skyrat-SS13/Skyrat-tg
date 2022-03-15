@@ -34,7 +34,7 @@
 		if(iterwound.severity == WOUND_SEVERITY_MODERATE || WOUND_SEVERITY_TRIVIAL)
 			pain_score += SHOCK_STAGE_MINOR
 
-	pain_score += getBruteLoss() + getFireLoss() + getToxLoss() + getOxyLoss() + (getStaminaLoss()) / 6
+	pain_score += getBruteLoss() + getFireLoss() + getToxLoss() + getOxyLoss() + getStaminaLoss() / 6
 	return pain_score
 
 /mob/living/carbon/proc/calc_injuries()
