@@ -115,9 +115,9 @@
 		if(bodypart && istype(bodypart, /obj/item/clothing))
 			var/obj/item/clothing/clothing = bodypart
 			if(clothing.body_parts_covered & def_zone.body_part)
-				protection += clothing.armor.getRating(damage_type)
+				protection += clothing.get_armor_rating(damage_type)
 				// Here is where we degrade the armor.
-				clothing.armor.degrade(damage, damage_type)
+				clothing.degrade_armor(damage, damage_type)
 	protection += physiology.armor.getRating(damage_type)
 	return protection
 
