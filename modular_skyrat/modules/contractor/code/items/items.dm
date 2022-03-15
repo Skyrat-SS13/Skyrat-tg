@@ -82,7 +82,7 @@
 		/obj/item/flashlight/emp,
 		/obj/item/reagent_containers/syringe/mulligan,
 		/obj/item/clothing/shoes/chameleon/noslip,
-		/obj/item/storage/firstaid/tactical,
+		/obj/item/storage/medkit/tactical,
 		/obj/item/encryptionkey/syndicate,
 		/obj/item/clothing/glasses/thermal/syndi,
 		/obj/item/slimepotion/slime/sentience/nuclear,
