@@ -71,7 +71,7 @@
 					continue
 				if(clothing_zone && istype(clothing_zone, /obj/item/clothing))
 					var/obj/item/clothing/clothing = clothing_zone
-					if(clothing.body_parts_covered & bodypart.body_part) // We have a piece of armor that is protecting this bodypart.
+					if(clothing.body_parts_covered & bodypart.body_part && clothing.armor.getRating[hitting_projectile.damage_type]) // We have a piece of armor that is protecting this bodypart.
 						if(wound_bonus)
 							to_chat(src, span_userdanger("[clothing] that was covering your [bodypart.name] was penetrated!"))
 						else
