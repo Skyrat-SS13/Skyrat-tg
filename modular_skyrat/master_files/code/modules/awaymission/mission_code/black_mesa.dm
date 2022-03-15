@@ -511,8 +511,8 @@
 	icon_gib = "syndicate_gib"
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
-	speak_chance = 0 /// muh silent operator or something
-	speak = list("Stop right there!")
+	speak_chance = 10
+	speak = list("Got a visual!")
 	turns_per_move = 5
 	speed = 0
 	stat_attack = HARD_CRIT
@@ -526,7 +526,7 @@
 	attack_verb_simple = "strikes"
 	attack_sound = 'sound/effects/woodhit.ogg'
 	combat_mode = TRUE
-	loot = list(/obj/item/melee/baton)
+	loot = list(/obj/effect/gibspawner/human)
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 7.5
 	faction = list(FACTION_BLACKOPS)
@@ -536,7 +536,17 @@
 	dodging = TRUE
 	rapid_melee = 2
 	footstep_type = FOOTSTEP_MOB_SHOE
-	alert_sounds = null /// they operate silently you know???
+	alert_sounds = list(
+		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert01.ogg',
+		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert02.ogg',
+		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert03.ogg',
+		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert04.ogg',
+		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert05.ogg',
+		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert06.ogg',
+		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert07.ogg',
+		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert08.ogg'
+	)
+
 
 /mob/living/simple_animal/hostile/blackmesa/blackops/ranged
 	ranged = TRUE
@@ -547,7 +557,8 @@
 	icon_living = "blackops_ranged"
 	casingtype = /obj/item/ammo_casing/a556/weak
 	projectilesound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/m16_fire.ogg'
-	loot = list(/obj/item/ammo_box/magazine/m16)
+	attack_sound = 'sound/weapons/punch1.ogg'
+	loot = list/obj/effect/gibspawner/human, /obj/item/ammo_box/magazine/m16)
 	rapid_melee = 1
 
 /obj/projectile/bullet/a556/weak
@@ -666,7 +677,9 @@
 	name = "HECU"
 	prompt_name = "a tactical squad member"
 	outfit = /datum/outfit/hecu
-	you_are_text = "You are an elite tactical squad deployed into the research facility to contain the infestation. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
+	you_are_text = "You are an elite tactical squad deployed into the research facility to contain the infestation."
+	flavour_text = "You and three other marines have been selected for a guard duty near one of the Black Mesa's entrances. You haven't heard much from the north-west post, except for the sounds of gunshots, and their radios went silent. On top of that, your escape helicopter, if any, was shot down mid-flight, and another one won't arrive so soon - you are likely on your own, at least for now."
+	important_text = "Do not try to explore the level unless Vanguard is dead. Stay around your area."
 	restricted_species = list(/datum/species/human)
 
 /obj/item/clothing/under/rank/security/officer/hecu
