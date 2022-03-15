@@ -1,9 +1,54 @@
 /mob/living/carbon/human/bullet_act(obj/projectile/hitting_projectile, def_zone, piercing_hit = FALSE)
+	if(dna?.species)
+		var/spec_return = dna.species.bullet_act(hitting_projectile, src)
+		if(spec_return)
+			return spec_return
+
+	//MARTIAL ART STUFF
+	if(mind)
+		if(mind.martial_art && mind.martial_art.can_use(src)) //Some martial arts users can deflect projectiles!
+			var/martial_art_result = mind.martial_art.on_projectile_hit(src, hitting_projectile, def_zone)
+			if(!(martial_art_result == BULLET_ACT_HIT))
+				return martial_art_result
+
+	if(!(hitting_projectile.original == src && hitting_projectile.firer == src)) //can't block or reflect when shooting yourself
+		if(hitting_projectile.reflectable & REFLECT_NORMAL)
+			if(check_reflect(def_zone)) // Checks if you've passed a reflection% check
+				visible_message(span_danger("The [hitting_projectile.name] gets reflected by [src]!"), \
+								span_userdanger("The [hitting_projectile.name] gets reflected by [src]!"))
+				// Find a turf near or on the original location to bounce to
+				if(!isturf(loc)) //Open canopy mech (ripley) check. if we're inside something and still got hit
+					hitting_projectile.force_hit = TRUE //The thing we're in passed the bullet to us. Pass it back, and tell it to take the damage.
+					loc.bullet_act(hitting_projectile, def_zone, piercing_hit)
+					return BULLET_ACT_HIT
+				if(hitting_projectile.starting)
+					var/new_x = hitting_projectile.starting.x + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
+					var/new_y = hitting_projectile.starting.y + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
+					var/turf/curloc = get_turf(src)
+
+					// redirect the projectile
+					hitting_projectile.original = locate(new_x, new_y, hitting_projectile.z)
+					hitting_projectile.starting = curloc
+					hitting_projectile.firer = src
+					hitting_projectile.yo = new_y - curloc.y
+					hitting_projectile.xo = new_x - curloc.x
+					var/new_angle_s = hitting_projectile.Angle + rand(120,240)
+					while(new_angle_s > 180) // Translate to regular projectile degrees
+						new_angle_s -= 360
+					hitting_projectile.set_angle(new_angle_s)
+
+				return BULLET_ACT_FORCE_PIERCE // complete projectile permutation
+
+		if(check_shields(hitting_projectile, hitting_projectile.damage, "the [hitting_projectile.name]", PROJECTILE_ATTACK, hitting_projectile.armour_penetration))
+			hitting_projectile.on_hit(src, 100, def_zone, piercing_hit)
+			return BULLET_ACT_HIT
+
 	SEND_SIGNAL(src, COMSIG_ATOM_BULLET_ACT, hitting_projectile, def_zone)
 	// This armor check only matters for the visuals and messages in on_hit(), it's not actually used to reduce damage since
 	// only living mobs use armor to reduce damage, but on_hit() is going to need the value no matter what is shot.
 	var/visual_armor_check = check_projectile_armor(def_zone, hitting_projectile)
 	. = hitting_projectile.on_hit(src, visual_armor_check, def_zone, piercing_hit)
+
 	if(!hitting_projectile.nodamage && (. != BULLET_ACT_BLOCK))
 		var/attack_direction = get_dir(hitting_projectile.starting, src)
 		// First, let's get the bullets base damage.
@@ -71,7 +116,7 @@
 					continue
 				if(clothing_zone && istype(clothing_zone, /obj/item/clothing))
 					var/obj/item/clothing/clothing = clothing_zone
-					if(clothing.body_parts_covered & bodypart.body_part && clothing.armor.getRating(hitting_projectile.damage_type, TRUE)) // We have a piece of armor that is protecting this bodypart.
+					if(clothing.body_parts_covered & bodypart.body_part && clothing.armor.getRating(hitting_projectile.flag, TRUE)) // We have a piece of armor that is protecting this bodypart.
 						if(wound_bonus)
 							to_chat(src, span_userdanger("[clothing] that was covering your [bodypart.name] was penetrated!"))
 						else
