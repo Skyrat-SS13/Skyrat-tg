@@ -80,22 +80,22 @@
 			loadout_desc = "<span class='notice'>You have chosen the CQB class, your role is to deal with hand-to-hand combat!</span>"
 		if("demoman")
 			chosen_loadout_type = /datum/outfit/assaultops/demoman
-			loadout_desc = "<span class='notice'>You have chosen the Demolitions class, your role is to blow shit up!</span>"
+			loadout_desc = span_notice("You have chosen the Demolitions class, your role is to blow shit up!")
 		if("medic")
 			chosen_loadout_type = /datum/outfit/assaultops/medic
-			loadout_desc = "<span class='notice'>You have chosen the Medic class, your role is providing medical aid to fellow operatives!</span>"
+			loadout_desc = span_notice("You have chosen the Medic class, your role is providing medical aid to fellow operatives!")
 		if("heavy")
 			chosen_loadout_type = /datum/outfit/assaultops/heavy
-			loadout_desc = "<span class='notice'>You have chosen the Heavy class, your role is continuous suppression!</span>"
+			loadout_desc = span_notice("You have chosen the Heavy class, your role is continuous suppression!")
 		if("assault")
 			chosen_loadout_type = /datum/outfit/assaultops/assault
-			loadout_desc = "<span class='notice'>You have chosen the Assault class, your role is general combat!</span>"
+			loadout_desc = span_notice("You have chosen the Assault class, your role is general combat!")
 		if("sniper")
 			chosen_loadout_type = /datum/outfit/assaultops/sniper
-			loadout_desc = "<span class='notice'>You have chosen the Sniper class, your role is suppressive fire!</span>"
+			loadout_desc = span_notice("You have chosen the Sniper class, your role is suppressive fire!")
 		if("tech")
 			chosen_loadout_type = /datum/outfit/assaultops/tech
-			loadout_desc = "<span class='notice'>You have chosen the Tech class, your role is hacking!</span>"
+			loadout_desc = span_notice("You have chosen the Tech class, your role is hacking!")
 		else
 			chosen_loadout_type = pick(/datum/outfit/assaultops/cqb, /datum/outfit/assaultops/demoman, /datum/outfit/assaultops/medic, /datum/outfit/assaultops/heavy, /datum/outfit/assaultops/assault, /datum/outfit/assaultops/sniper, /datum/outfit/assaultops/tech)
 
