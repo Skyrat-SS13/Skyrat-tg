@@ -148,7 +148,7 @@
 	item = /obj/effect/gibspawner/generic
 	surplus = 0
 	progression_minimum = 20 MINUTES
-	cost = 4
+	cost = 3
 	restricted = TRUE
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
 
