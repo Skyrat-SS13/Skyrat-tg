@@ -26,9 +26,11 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	/// Is the door locked?
 	var/locked = FALSE
+	/// Is the system currently processing?
 	var/processing = FALSE
-	var/process_finish_time
+	/// The link to our timer ID so we can override it if need be.
 	var/timer_id
+	/// The human occupant currently inside. Used for easier referencing later on.
 	var/mob/living/carbon/human/human_occupant
 
 /obj/machinery/interrogator/examine(mob/user)
@@ -111,7 +113,7 @@
 		balloon_alert_to_viewers("no comms link!")
 		return
 	if(!ishuman(occupant))
-		balloon_alert_to_viewers("invalid target dna!")
+		balloon_alert_to_viewers("invalid target DNA!")
 		return
 	human_occupant = occupant
 	if(human_occupant.stat == DEAD)
@@ -119,7 +121,7 @@
 		return
 	var/datum/objective/interrogate/objective = get_goldeneye_target(human_occupant)
 	if(!objective || objective.goldeneye_key_uploaded) // Preventing abuse by method of duplication.
-		balloon_alert_to_viewers("no goldeneye data!")
+		balloon_alert_to_viewers("no GoldenEye data!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 100)
 		return
 

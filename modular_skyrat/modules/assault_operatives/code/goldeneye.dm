@@ -9,11 +9,12 @@ GLOBAL_LIST_EMPTY(goldeneye_keys)
 
 /obj/item/goldeneye_key
 	name = "\improper GoldenEye Authentication Key"
-	desc = "A high profile authentication key to Nanotrasens GoldenEye defence network."
+	desc = "A high profile authentication key to Nanotrasen's GoldenEye defence network."
 	icon = 'modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi'
 	icon_state = "goldeneye_key"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	var/extract_name = "NO DATA"
+	/// The objective that this key links to. Used to mark the objective as complete once it's uploaded into the terminal.
 	var/datum/objective/interrogate/linked_objective
 
 /obj/item/goldeneye_key/Initialize(mapload)
@@ -33,13 +34,18 @@ GLOBAL_LIST_EMPTY(goldeneye_keys)
 
 /obj/machinery/goldeneye_upload_terminal
 	name = "\improper GoldenEye Defnet Upload Terminal"
-	desc = "An ominous terminal with some ports and keypads, the screen is scrolling with illegable nonsense. It has a strange marking on the side, a red ring with a gold circle within."
+	desc = "An ominous terminal with some ports and keypads, the screen is scrolling with illegible nonsense. It has a strange marking on the side, a red ring with a gold circle within."
+
 	icon = 'modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi'
 	icon_state = "goldeneye_terminal"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	/// Is the system currently in use? Used to prevent spam and abuse.
+	var/uploading = FALSE
 
 /obj/machinery/goldeneye_upload_terminal/attackby(obj/item/weapon, mob/user, params)
 	. = ..()
+	if(uploading)
+		return
 	if(!istype(weapon, /obj/item/goldeneye_key))
 		say("AUTHENTICATION ERROR: Please do not insert foreign objects into terminal.")
 		playsound(src, 'sound/machines/nuke/angry_beep.ogg', 100)
@@ -47,14 +53,21 @@ GLOBAL_LIST_EMPTY(goldeneye_keys)
 	var/obj/item/goldeneye_key/inserting_key = weapon
 	say("GOLDENEYE KEY ACCEPTED: Please wait while the key is verified...")
 	playsound(src, 'sound/machines/nuke/general_beep.ogg', 100)
+	uploading = TRUE
 	if(do_after(user, 10 SECONDS, src))
 		say("GOLDENEYE KEY AUTHENTICATED!")
 		inserting_key.linked_objective.goldeneye_key_uploaded = TRUE
 		priority_announce("GOLDENEYE DEFENCE NETWORK SECURITY INTEGRITY LOST, KEYCARD STOLEN AND UPLOADED.", "GoldenEye Defence Network")
+		playsound(src, 'sound/machines/nuke/confirm_beep.ogg', 100)
+		uploading = FALSE
 		qdel(inserting_key)
+	else
+		say("GOLDENEYE KEY VERIFICATION FAILED: Please try again.")
+		playsound(src, 'sound/machines/nuke/angry_beep.ogg', 100)
+		uploading = FALSE
 
 /obj/item/pinpointer/nuke/goldeneye
-	name = "goldeneye keycard pinpointer"
+	name = "\improper GoldenEye Keycard Pinpointer"
 	desc = "A handheld tracking device that locks onto certain signals. This one is configured to locate any GoldenEye keycards."
 	icon_state = "pinpointer_syndicate"
 	worn_icon_state = "pinpointer_black"

@@ -1,6 +1,7 @@
 
 /datum/objective/interrogate
 	name = "interrogate"
+	/// Are we an antagonist or a job? It's used to determine how the explanation text is displayed.
 	var/target_role_type = FALSE
 	martyr_compatible = TRUE
 	/// Has a goldeneye key linked to this objective been uploaded?

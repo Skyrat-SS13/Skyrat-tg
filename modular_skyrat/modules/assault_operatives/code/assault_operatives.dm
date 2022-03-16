@@ -14,7 +14,9 @@
 	show_to_ghosts = TRUE
 	hijack_speed = 2
 	preview_outfit = /datum/outfit/syndicate
+	/// The default outfit given BEFORE they choose their equipment.
 	var/assault_operative_default_outfit = /datum/outfit/syndicate
+	/// The team linked to this antagonist datum.
 	var/datum/team/assault_operatives/assault_team
 	/// Should we move the operative to a designated spawn point?
 	var/send_to_spawnpoint = TRUE
@@ -77,7 +79,7 @@
 	switch(chosen_loadout)
 		if("cqb")
 			chosen_loadout_type = /datum/outfit/assaultops/cqb
-			loadout_desc = "<span class='notice'>You have chosen the CQB class, your role is to deal with hand-to-hand combat!</span>"
+			loadout_desc = span_notice("You have chosen the CQB class, your role is to deal with hand-to-hand combat!")
 		if("demoman")
 			chosen_loadout_type = /datum/outfit/assaultops/demoman
 			loadout_desc = span_notice("You have chosen the Demolitions class, your role is to blow shit up!")
