@@ -15,7 +15,6 @@
  *
  * After a key has been extracted, it will send a pod somewhere into maintenance, and the syndicates will know about it straight away.
  */
-
 /obj/machinery/interrogator
 	name = "In-TERROR-gator"
 	desc = "A morraly corrupt piece of machinery used to extract the human mind into a GoldenEye authentication key. The process is said to be one of the most painful experiences someone can endure."
@@ -165,7 +164,7 @@
 		say("Critical error! Aborting.")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 100)
 		return
-	to_chat(human_occupant, span_userdanger("You feel something penetrating your brain, it feels as though your childhood memories are fading! Please, make it stop! After a moment of slience you realise you can't remember what happened to you!"))
+	to_chat(human_occupant, span_userdanger("You feel something penetrating your brain, it feels as though your childhood memories are fading! Please, make it stop! After a moment of silence, you realize you can't remember what happened to you!"))
 	human_occupant.emote("scream")
 	human_occupant.apply_damage(20, BRUTE, BODY_ZONE_HEAD)
 	human_occupant.Jitter(3 MINUTES)
@@ -200,7 +199,7 @@
 	for(var/obj/item/pinpointer/nuke/goldeneye/disk_pinpointers in GLOB.pinpointer_list)
 		disk_pinpointers.target = new_key
 		disk_pinpointers.switch_mode_to(TRACK_GOLDENEYE) //Pinpointer will track the newly created goldeneye key.
-	notify_ghosts("GoldenEye key launched!", source=new_key, action=NOTIFY_ORBIT, header="Something's Interesting!")
+	notify_ghosts("GoldenEye key launched!", source = new_key, action = NOTIFY_ORBIT, header = "Something's Interesting!")
 
 /obj/machinery/interrogator/proc/find_drop_turf()
 	var/list/possible_turfs = list()

@@ -41,6 +41,7 @@ GLOBAL_LIST_EMPTY(goldeneye_keys)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	/// Is the system currently in use? Used to prevent spam and abuse.
 	var/uploading = FALSE
+	density = TRUE
 
 /obj/machinery/goldeneye_upload_terminal/attackby(obj/item/weapon, mob/user, params)
 	. = ..()
