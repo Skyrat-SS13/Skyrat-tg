@@ -41482,6 +41482,17 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/security/brig)
+"gKS" = (
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/machinery/doppler_array{
+	dir = 4
+	},
+/obj/item/radio/intercom/directional/north,
+/turf/open/floor/iron,
+/area/science/mixing)
 "gLF" = (
 /obj/machinery/light{
 	dir = 8;
@@ -42787,7 +42798,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
-/area/science/mixing/chamber)
+/area/science/mixing)
 "hPG" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -43238,9 +43249,6 @@
 /turf/open/floor/carpet,
 /area/service/library)
 "ijU" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 10
 	},
@@ -50742,6 +50750,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/science/xenobiology)
+"oNQ" = (
+/obj/structure/lattice,
+/turf/closed/wall,
+/area/science/mixing)
 "oOf" = (
 /obj/structure/closet/l3closet/security,
 /obj/item/clothing/suit/bio_suit/security,
@@ -53278,6 +53290,10 @@
 /area/security/execution/education)
 "rge" = (
 /obj/effect/turf_decal/bot,
+/obj/machinery/airalarm/directional/north,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/science/mixing)
 "rgn" = (
@@ -53367,6 +53383,11 @@
 	},
 /turf/open/floor/iron/white/corner,
 /area/hallway/secondary/exit/departure_lounge)
+"rkD" = (
+/obj/machinery/research/anomaly_refinery,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/iron,
+/area/science/mixing)
 "rlf" = (
 /obj/machinery/light/directional/west,
 /obj/structure/table,
@@ -54699,6 +54720,28 @@
 	},
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
+"smT" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/structure/table,
+/obj/item/computer_hardware/hard_drive/portable{
+	pixel_x = -2
+	},
+/obj/item/computer_hardware/hard_drive/portable{
+	pixel_x = -5;
+	pixel_y = 8
+	},
+/obj/item/computer_hardware/hard_drive/portable{
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/obj/item/computer_hardware/hard_drive/portable{
+	pixel_x = -8;
+	pixel_y = -3
+	},
+/turf/open/floor/iron,
+/area/science/mixing)
 "smW" = (
 /obj/machinery/door/window/northleft{
 	base_state = "right";
@@ -58319,9 +58362,10 @@
 /turf/open/floor/iron,
 /area/commons/dorms/barracks)
 "vkY" = (
-/obj/machinery/camera/autoname/directional/north,
-/obj/structure/table,
-/obj/machinery/computer/security/telescreen/ordnance,
+/obj/effect/turf_decal/bot,
+/obj/machinery/atmospherics/components/binary/tank_compressor{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/science/mixing)
 "vkZ" = (
@@ -58740,8 +58784,11 @@
 /turf/open/floor/plating,
 /area/maintenance/department/security/brig)
 "vDH" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 4
+	},
 /obj/effect/turf_decal/bot,
-/obj/item/radio/intercom/directional/north,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/science/mixing)
 "vDN" = (
@@ -61455,9 +61502,9 @@
 /obj/machinery/portable_atmospherics/scrubber/huge,
 /obj/machinery/camera{
 	c_tag = "Science - Toxins Primary Storage";
-	dir = 6;
 	name = "science camera";
-	network = list("ss13","rd")
+	network = list("ss13","rd");
+	dir = 10
 	},
 /turf/open/floor/iron/dark,
 /area/science/storage)
@@ -61562,6 +61609,14 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron,
 /area/commons/dorms)
+"xTR" = (
+/obj/machinery/computer/security/telescreen/ordnance{
+	dir = 1;
+	pixel_y = -30
+	},
+/obj/structure/chair/office/light,
+/turf/open/floor/iron,
+/area/science/mixing)
 "xUq" = (
 /turf/open/floor/iron/dark/blue/side{
 	dir = 5
@@ -109112,9 +109167,9 @@ bwm
 bwm
 bwm
 ndI
-cVH
-cVH
-cVH
+rkD
+mAh
+mAh
 cVH
 eIZ
 ndI
@@ -109368,10 +109423,10 @@ jjT
 kLa
 bwm
 aaa
-aht
-aaa
-aaa
-aht
+oNQ
+mAh
+mAh
+mAh
 cVH
 nkG
 ndI
@@ -109625,10 +109680,10 @@ sAK
 sAK
 bwm
 aaa
-pDW
-aaa
-aaa
-aht
+ndI
+gKS
+smT
+xTR
 ndI
 rQA
 ndI
@@ -109882,10 +109937,10 @@ hHZ
 sAK
 bwm
 aht
-pDW
-aaa
-aaa
-aht
+ndI
+cVH
+cVH
+cVH
 cdm
 cdm
 cdm
