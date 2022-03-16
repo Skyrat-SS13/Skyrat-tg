@@ -162,7 +162,7 @@
 		say("Critical error! Aborting.")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 100)
 		return
-	to_chat(human_occupant, span_userdanger("You feel something penetrating your brain, it feels as though your childhood memories are fading! Please, make it stop! After a moment of slience you realise you can't remember what happened to you!"))
+	to_chat(human_occupant, span_userdanger("You feel something penetrating your brain, it feels as though your childhood memories are fading! Please, make it stop! After a moment of silence, you realize you can't remember what happened to you!"))
 	human_occupant.emote("scream")
 	human_occupant.apply_damage(20, BRUTE, BODY_ZONE_HEAD)
 	human_occupant.Jitter(3 MINUTES)
