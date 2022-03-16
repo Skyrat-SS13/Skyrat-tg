@@ -16,8 +16,11 @@
 	luminosity = 1
 
 	var/alarm_playing = FALSE
+	/// Are we triggered?
 	var/triggered = FALSE
+	/// Currently connected alarms.
 	var/list/obj/machinery/base_alarm/alarms = list()
+	/// The area that we use to trigger other alarms.
 	var/area/myarea = null
 
 /obj/machinery/base_alarm/Initialize()
@@ -51,12 +54,12 @@
 
 /obj/machinery/base_alarm/proc/alarm()
 	for(var/i in alarms)
-		var/obj/machinery/base_alarm/A = i
-		A.icon_state = "alarm_on"
-		A.set_light(l_power = 2)
-		A.triggered = TRUE
-		if(!A.alarm_playing)
-			A.alarm_playing = TRUE
+		var/obj/machinery/base_alarm/iterating_alarm = i
+		iterating_alarm.icon_state = "alarm_on"
+		iterating_alarm.set_light(l_power = 2)
+		iterating_alarm.triggered = TRUE
+		if(!iterating_alarm.alarm_playing)
+			iterating_alarm.alarm_playing = TRUE
 			playsound(A, 'modular_skyrat/modules/assault_operatives/sound/goldeneyealarm.ogg', 30)
 			addtimer(CALLBACK(A, .proc/alarm_sound), 65)
 
@@ -69,7 +72,7 @@
 
 /obj/machinery/base_alarm/proc/reset(mob/user)
 	for(var/i in alarms)
-		var/obj/machinery/base_alarm/A = i
-		A.icon_state = "alarm"
-		A.set_light(l_power = 0)
-		A.triggered = FALSE
+		var/obj/machinery/base_alarm/iterating_alarm = i
+		iterating_alarm.icon_state = "alarm"
+		iterating_alarm.set_light(l_power = 0)
+		iterating_alarm.triggered = FALSE

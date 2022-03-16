@@ -60,7 +60,7 @@
 
 /obj/effect/landmark/start/assaultop/Initialize()
 	. = ..()
-	GLOB.assault_operative_start += src
+	GLOB.assault_operative_start += get_turf(src)
 
 /obj/effect/spawner/armory_spawn/assaultops
 	name = "gun spawner"

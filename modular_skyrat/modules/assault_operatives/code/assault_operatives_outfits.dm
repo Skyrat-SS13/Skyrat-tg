@@ -19,21 +19,21 @@
 	var/command_radio = FALSE
 	var/cqc = FALSE
 
-/datum/outfit/assaultops/post_equip(mob/living/carbon/human/H)
-	var/obj/item/radio/R = H.ears
-	R.set_frequency(FREQ_SYNDICATE)
-	R.freqlock = TRUE
+/datum/outfit/assaultops/post_equip(mob/living/carbon/human/equipping_human)
+	var/obj/item/radio/radio = equipping_human.ears
+	radio.set_frequency(FREQ_SYNDICATE)
+	radio.freqlock = TRUE
 	if(command_radio)
-		R.command = TRUE
+		radio.command = TRUE
 
 	if(cqc)
 		var/datum/martial_art/cqc/MA = new
-		MA.teach(H)
+		MA.teach(equipping_human)
 
-	var/obj/item/implant/weapons_auth/W = new/obj/item/implant/weapons_auth(H)
-	W.implant(H)
+	var/obj/item/implant/weapons_auth/weapons_authorisation = new/obj/item/implant/weapons_auth(equipping_human)
+	weapons_authorisation.implant(equipping_human)
 
-	H.update_icons()
+	equipping_human.update_icons()
 
 /datum/outfit/assaultops/cqb
 	name = "Assault Operative - CQB"

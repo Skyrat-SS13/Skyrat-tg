@@ -36,21 +36,21 @@
 	products.Cut()
 	product_records.Cut()
 
-	var/mob/living/carbon/human/H = user
+	var/mob/living/carbon/human/human_user = user
 
 	//Find all the ammo we should display
-	for(var/i in H.contents)
+	for(var/i in human_user.contents)
 		if(istype(i, /obj/item/gun/ballistic))
-			var/obj/item/gun/ballistic/G = i
-			if(!G.internal_magazine)
-				products.Add(G.mag_type)
+			var/obj/item/gun/ballistic/gun = i
+			if(!gun.internal_magazine)
+				products.Add(gun.mag_type)
 		if(istype(i, /obj/item/storage))
-			var/obj/item/storage/S = i
-			for(var/C in S.contents)
+			var/obj/item/storage/storage = i
+			for(var/C in storage.contents)
 				if(istype(C, /obj/item/gun/ballistic))
-					var/obj/item/gun/ballistic/G = C
-					if(!G.internal_magazine)
-						products.Add(G.mag_type)
+					var/obj/item/gun/ballistic/gun = C
+					if(!gun.internal_magazine)
+						products.Add(gun.mag_type)
 
 	//Add our items to the list of products
 	build_inventory(products, product_records, FALSE)
@@ -63,15 +63,15 @@
 	for(var/typepath in productlist)
 		var/amount = 4
 		var/atom/temp = typepath
-		var/datum/data/vending_product/R = new /datum/data/vending_product()
+		var/datum/data/vending_product/vending_product = new /datum/data/vending_product()
 
 		GLOB.vending_products[typepath] = 1
-		R.name = initial(temp.name)
-		R.product_path = typepath
+		vending_product.name = initial(temp.name)
+		vending_product.product_path = typepath
 		if(!start_empty)
-			R.amount = amount
-		R.max_amount = amount
-		R.custom_price = 0
-		R.custom_premium_price = 0
-		R.age_restricted = FALSE
-		recordlist += R
+			vending_product.amount = amount
+		vending_product.max_amount = amount
+		vending_product.custom_price = 0
+		vending_product.custom_premium_price = 0
+		vending_product.age_restricted = FALSE
+		recordlist += vending_product
