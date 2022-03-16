@@ -1,3 +1,4 @@
+/// End-round generation proc
 /datum/opposing_force/proc/contractor_round_end()
 	var/result = ""
 	var/total_spent_rep = 0

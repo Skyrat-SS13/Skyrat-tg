@@ -22,12 +22,14 @@
 	/// Amount of TC that has yet to be redeemed
 	var/contract_TC_to_redeem = 0
 
+/// Generates a list of all valid hub items to set for purchase
 /datum/contractor_hub/proc/create_hub_items()
 	for(var/path in contractor_items)
 		var/datum/contractor_item/contractor_item = new path
 
 		hub_items.Add(contractor_item)
 
+/// Create initial list of contracts
 /datum/contractor_hub/proc/create_contracts(datum/mind/owner)
 
 	// 6 initial contracts

@@ -26,6 +26,7 @@
 
 	generate(blacklist)
 
+/// Generation of the contract, called on New()
 /datum/syndicate_contract/proc/generate(blacklist)
 	contract.find_target(null, blacklist)
 
@@ -56,6 +57,7 @@
 	var/location = pick_list_weighted(WANTED_FILE, "location")
 	wanted_message = "[base] [verb_string] [noun] [location]."
 
+/// Handler to find a valid turn and launch victim collector
 /datum/syndicate_contract/proc/handle_extraction(mob/living/user)
 	if (contract.target && contract.dropoff_check(user, contract.target.current))
 
@@ -68,7 +70,7 @@
 
 	return FALSE
 
-// Launch the pod to collect our victim.
+/// Launch the pod to collect our victim.
 /datum/syndicate_contract/proc/launch_extraction_pod(turf/empty_pod_turf)
 	var/obj/structure/closet/supplypod/extractionpod/empty_pod = new()
 
@@ -152,6 +154,7 @@
 
 	INVOKE_ASYNC(src, .proc/finish_enter)
 
+/// Called when person is finished shoving in, awards ransome money
 /datum/syndicate_contract/proc/finish_enter()
 	sleep(3 SECONDS)
 
@@ -166,7 +169,7 @@
 		owner_id.registered_account.bank_card_talk("We've processed the ransom, agent. Here's your cut - your balance is now \
 		[owner_id.registered_account.account_balance] credits.", TRUE)
 
-// They're off to holding - handle the return timer and give some text about what's going on.
+/// They're off to holding - handle the return timer and give some text about what's going on.
 /datum/syndicate_contract/proc/handleVictimExperience(mob/living/target)
 	// Ship 'em back - dead or alive, 4 minutes wait.
 	// Even if they weren't the target, we're still treating them the same.
@@ -202,7 +205,7 @@
 	target.Dizzy(15)
 	target.add_confusion(20)
 
-// We're returning the victim
+/// We're returning the victim
 /datum/syndicate_contract/proc/returnVictim(mob/living/target)
 	var/list/possible_drop_loc = list()
 
