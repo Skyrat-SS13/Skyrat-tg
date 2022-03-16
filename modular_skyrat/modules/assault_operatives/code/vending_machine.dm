@@ -1,4 +1,4 @@
-//VENDING MACHINES>>>>>>>>>>>>>>>>>>>>>>>>>
+//VENDING MACHINES
 /obj/machinery/vending/assaultops_ammo
 	name = "\improper Syndicate Ammo Station"
 	desc = "An ammo vending machine which holds a variety of different ammo mags."
