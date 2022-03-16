@@ -20858,7 +20858,7 @@
 /area/science/research)
 "bDn" = (
 /obj/machinery/door/airlock/research{
-	name = "Toxins Storage";
+	name = "Ordnance Storage";
 	req_access_txt = "71"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -21762,7 +21762,9 @@
 "bGA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/directional/south,
-/obj/machinery/computer/atmos_control/ordnancemix,
+/obj/machinery/computer/atmos_control/ordnancemix{
+	dir = 1
+	},
 /turf/open/floor/iron/white,
 /area/science/mixing)
 "bGB" = (
@@ -22685,7 +22687,7 @@
 "bKb" = (
 /obj/machinery/door/firedoor/heavy,
 /obj/machinery/door/airlock/research{
-	name = "Toxins Launch Room Access";
+	name = "Ordnance Launch Room Access";
 	req_access_txt = "8"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
@@ -23627,7 +23629,7 @@
 	pixel_y = -22
 	},
 /turf/open/floor/iron/white,
-/area/science/mixing)
+/area/science/mixing/chamber)
 "bNA" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating,
@@ -43352,13 +43354,6 @@
 /obj/structure/sign/painting/library,
 /turf/closed/wall,
 /area/service/library)
-"nWa" = (
-/obj/machinery/airalarm/mixingchamber{
-	dir = 1;
-	pixel_y = 10
-	},
-/turf/closed/wall/r_wall,
-/area/science/mixing/chamber)
 "nWo" = (
 /obj/machinery/cryopod{
 	dir = 4
@@ -46481,7 +46476,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/research{
-	name = "Toxins Storage";
+	name = "Ordnance Storage";
 	req_access_txt = "71"
 	},
 /obj/structure/cable,
@@ -102662,7 +102657,7 @@ bEs
 bMy
 bMy
 bNx
-nWa
+dGF
 vmV
 dGF
 dGF
