@@ -35,9 +35,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 
 	var/sent_antags = params["antags"]
-	to_chat(world, sent_antags)
 	var/toggled = params["toggled"]
-	to_chat(world, toggled)
 
 	var/antags = list()
 
@@ -102,7 +100,6 @@
 		serialized_antags = list()
 
 		for (var/special_role in GLOB.special_roles)
-			to_chat(world, "G S A: [special_role]")
 			serialized_antags[serialize_antag_name(special_role)] = special_role
 
 	return serialized_antags

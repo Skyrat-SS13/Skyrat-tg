@@ -103,7 +103,6 @@
 		objectives += new_target
 
 	for(var/datum/mind/mind in members)
-		to_chat(world, "FOUND MIND: [mind]")
 		var/datum/antagonist/assault_operative/assault_op = mind.has_antag_datum(/datum/antagonist/assault_operative)
 		assault_op.objectives |= objectives
 
