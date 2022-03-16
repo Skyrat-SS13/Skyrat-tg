@@ -53,8 +53,8 @@
 
 // SKYRAT EDIT ADDITION
 /datum/species/pod/get_species_description()
-	return FALSE
+	return "Plant lore!"
 
 /datum/species/pod/get_species_lore()
-	return FALSE
+	return list("You're a plant!")
 // SKYRAT EDIT END
