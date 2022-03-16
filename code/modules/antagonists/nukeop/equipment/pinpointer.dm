@@ -12,6 +12,8 @@
 			msg += "\"01000001 01001001\"."
 		if(TRACK_INFILTRATOR)
 			msg += "\"vasvygengbefuvc\"."
+		if(TRACK_GOLDENEYE)
+			msg += "\"goldeneye_key\"."
 		else
 			msg = "Its tracking indicator is blank."
 	. += msg
@@ -50,6 +52,10 @@
 					target = A
 		if(TRACK_INFILTRATOR)
 			target = SSshuttle.getShuttle("syndicate")
+		// SKYRAT EDIT ADDITION
+		if(TRACK_GOLDENEYE)
+			target = GLOB.goldeneye_keys[1] // Track the first goldeneye key in existence.
+		// SKYRAT EDIT END
 	..()
 
 /obj/item/pinpointer/nuke/proc/switch_mode_to(new_mode)
