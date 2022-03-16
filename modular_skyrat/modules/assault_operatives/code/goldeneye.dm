@@ -37,6 +37,7 @@ GLOBAL_LIST_EMPTY(goldeneye_keys)
 	icon = 'modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi'
 	icon_state = "goldeneye_terminal"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	density = TRUE
 
 /obj/machinery/goldeneye_upload_terminal/attackby(obj/item/weapon, mob/user, params)
 	. = ..()
