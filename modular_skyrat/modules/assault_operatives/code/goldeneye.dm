@@ -50,8 +50,6 @@ GLOBAL_LIST_EMPTY(goldeneye_keys)
 	if(do_after(user, 10 SECONDS, src))
 		say("GOLDENEYE KEY AUTHENTICATED!")
 		inserting_key.linked_objective.goldeneye_key_uploaded = TRUE
-		inserting_key.linked_objective.linked_key = null
-		inserting_key.linked_objective = null
 		priority_announce("GOLDENEYE DEFENCE NETWORK SECURITY INTEGRITY LOST, KEYCARD STOLEN AND UPLOADED.", "GoldenEye Defence Network")
 		qdel(inserting_key)
 
