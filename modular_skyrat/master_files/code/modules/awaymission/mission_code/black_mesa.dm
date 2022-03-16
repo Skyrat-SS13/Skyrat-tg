@@ -622,6 +622,7 @@
 	outfit = /datum/outfit/science_team
 	you_are_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	flavour_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
+	restricted_species = list(/datum/species/human)
 
 /datum/outfit/science_team
 	name = "Scientist"
@@ -679,8 +680,8 @@
 	outfit = /datum/outfit/hecu
 	you_are_text = "You are an elite tactical squad deployed into the research facility to contain the infestation."
 	flavour_text = "You and three other marines have been selected for a guard duty near one of the Black Mesa's entrances. You haven't heard much from the north-west post, except for the sounds of gunshots, and their radios went silent. On top of that, your escape helicopter, if any, was shot down mid-flight, and another one won't arrive so soon - you are likely on your own, at least for now."
-	important_text = "Do not try to explore the level unless Vanguard is dead. Stay around your area."
-	restricted_species = list(/datum/species/human)
+	important_text = "Do not try to explore the level unless Vanguard is dead. Stay around your area. Allowed races are humans and IPCs."
+	restricted_species = list(/datum/species/human, /datum/species/robotic/ipc)
 
 /obj/item/clothing/under/rank/security/officer/hecu
 	name = "hecu jumpsuit"
