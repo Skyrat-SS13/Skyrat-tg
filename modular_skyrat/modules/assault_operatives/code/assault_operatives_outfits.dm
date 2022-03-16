@@ -10,7 +10,7 @@
 	gloves =  /obj/item/clothing/gloves/combat
 	back = /obj/item/storage/backpack/fireproof
 	ears = /obj/item/radio/headset/syndicate/alt
-	l_pocket = /obj/item/modular_computer/tablet/nukeops
+	l_pocket = /obj/item/pinpointer/nuke/goldeneye
 	id = /obj/item/card/id/advanced/chameleon
 	back = /obj/item/mod/control/pre_equipped/nuclear
 	suit_store = /obj/item/gun/ballistic/automatic/pistol/aps
@@ -55,8 +55,8 @@
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/knife/combat,\
 		/obj/item/gun/energy/disabler,\
-		/obj/item/gun/ballistic/automatic/gyropistol,\
-		/obj/item/ammo_box/magazine/m75=4,\
+		/obj/item/gun/ballistic/shotgun/bulldog,\
+		/obj/item/ammo_box/magazine/m12g=4,\
 		/obj/item/implant/explosive/macro, \
 		/obj/item/storage/box/assaultops/demoman
 		)
@@ -86,8 +86,6 @@
 /datum/outfit/assaultops/heavy
 	name = "Assault Operative - Heavy Gunner"
 
-
-	back = /obj/item/mod/control/pre_equipped/elite
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/knife/combat,\
 		/obj/item/gun/energy/disabler,\
@@ -99,8 +97,6 @@
 /datum/outfit/assaultops/assault
 	name = "Assault Operative - Assault"
 
-
-	back = /obj/item/mod/control/pre_equipped/elite
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/knife/combat,\
 		/obj/item/gun/energy/disabler,\
@@ -112,7 +108,6 @@
 	name = "Assault Operative - Sniper"
 
 
-	back = /obj/item/mod/control/pre_equipped/elite
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/knife/combat,\
 		/obj/item/gun/energy/disabler,\

@@ -1,5 +1,3 @@
-GLOBAL_LIST_EMPTY(assaultop_start)
-
 /area/shuttle/syndicate/cruiser
 	name = "Syndicate Cruiser"
 
@@ -62,7 +60,7 @@ GLOBAL_LIST_EMPTY(assaultop_start)
 
 /obj/effect/landmark/start/assaultop/Initialize()
 	. = ..()
-	GLOB.assaultop_start += src
+	GLOB.assault_operative_start += src
 
 /obj/effect/spawner/armory_spawn/assaultops
 	name = "gun spawner"

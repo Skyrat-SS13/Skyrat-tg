@@ -22,10 +22,15 @@
 	var/equipped_class = null
 	//If not assigned a team by default ops will try to join existing ones, set this to TRUE to always create new team.
 	var/always_new_team = FALSE
+	var/spawn_text = "Your mission is to assault NTSS13 and get all of the GoldenEye keys that you can from the heads of staff that reside there. \
+	Use your pinpointer to locate these after you have extracted the GoldenEye key from the head of staff. It will be sent in by droppod. \
+	You must then upload the key to the GoldenEye upload terminal on this GoldenEye station. After you have completed your mission, \
+	The GoldenEye defence network will fall, and we will gain access to Nanotrasen's military systems. Good luck agent."
 
 /datum/antagonist/assault_operative/greet()
 	owner.current.playsound_local(get_turf(owner.current), 'modular_skyrat/modules/assault_operatives/sound/assault_operatives_greet.ogg', 30, 0, use_reverb = FALSE)
 	to_chat(owner, span_big("You are an assault operative!"))
+	to_chat(owner, span_red(spawn_text))
 	owner.announce_objectives()
 
 /datum/antagonist/assault_operative/on_gain()

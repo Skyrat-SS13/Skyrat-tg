@@ -16,7 +16,7 @@
 
 /obj/machinery/porta_turret/assaultops/shuttle
 	scan_range = 9
-	lethal_projectile = /obj/projectile/bullet/p50/penetrator/shuttle
+	lethal_projectile = /obj/projectile/bullet/a357
 	lethal_projectile_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
 	stun_projectile = /obj/projectile/energy/electrode
 	stun_projectile_sound = 'sound/weapons/taser.ogg'
