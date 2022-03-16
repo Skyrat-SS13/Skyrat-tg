@@ -50,44 +50,15 @@
 		return TRUE
 	log_game("DYNAMIC: [ruletype] [name] failed to get any eligible assault operatives. Refunding [cost] threat.")
 	return FALSE
-/*
+
+
 /datum/dynamic_ruleset/roundstart/assault_operatives/round_result()
 	var/result = assault_operatives_team.get_result()
+	SSticker.news_report = OPERATIVE_SKIRMISH
 	switch(result)
-		if(ASSAULT_RESULT_WIN)
+		if(ASSAULT_RESULT_OPERATIVE_WIN)
 			SSticker.mode_result = "win - assault operatives extracted data"
-
-
-
-
-		if(NUKE_RESULT_FLUKE)
-			SSticker.mode_result = "loss - syndicate nuked - disk secured"
-			SSticker.news_report = NUKE_SYNDICATE_BASE
-		if(NUKE_RESULT_NUKE_WIN)
-			SSticker.mode_result = "win - syndicate nuke"
-			SSticker.news_report = STATION_NUKED
-		if(NUKE_RESULT_NOSURVIVORS)
-			SSticker.mode_result = "halfwin - syndicate nuke - did not evacuate in time"
-			SSticker.news_report = STATION_NUKED
-		if(NUKE_RESULT_WRONG_STATION)
-			SSticker.mode_result = "halfwin - blew wrong station"
-			SSticker.news_report = NUKE_MISS
-		if(NUKE_RESULT_WRONG_STATION_DEAD)
-			SSticker.mode_result = "halfwin - blew wrong station - did not evacuate in time"
-			SSticker.news_report = NUKE_MISS
-		if(NUKE_RESULT_CREW_WIN_SYNDIES_DEAD)
-			SSticker.mode_result = "loss - evacuation - disk secured - syndi team dead"
-			SSticker.news_report = OPERATIVES_KILLED
-		if(NUKE_RESULT_CREW_WIN)
-			SSticker.mode_result = "loss - evacuation - disk secured"
-			SSticker.news_report = OPERATIVES_KILLED
-		if(NUKE_RESULT_DISK_LOST)
-			SSticker.mode_result = "halfwin - evacuation - disk not secured"
-			SSticker.news_report = OPERATIVE_SKIRMISH
-		if(NUKE_RESULT_DISK_STOLEN)
-			SSticker.mode_result = "halfwin - detonation averted"
-			SSticker.news_report = OPERATIVE_SKIRMISH
-		else
-			SSticker.mode_result = "halfwin - interrupted"
-			SSticker.news_report = OPERATIVE_SKIRMISH
-*/
+		if(ASSAULT_RESULT_OPERATIVE_PARTIAL_WIN)
+			SSticker.mode_result = "partial win - assault operatives extracted some data"
+		if(ASSAULT_RESULT_CREW_WIN)
+			SSticker.mode_result = "loss - assault operatives failed to extract data"

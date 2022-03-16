@@ -13,8 +13,8 @@
 	antag_moodlet = /datum/mood_event/focused
 	show_to_ghosts = TRUE
 	hijack_speed = 2
-	preview_outfit = /datum/outfit/nuclear_operative_elite
-	var/assault_operative_default_outfit = /datum/outfit/nuclear_operative
+	preview_outfit = /datum/outfit/syndicate
+	var/assault_operative_default_outfit = /datum/outfit/syndicate
 	var/datum/team/assault_operatives/assault_team
 	/// Should we move the operative to a designated spawn point?
 	var/send_to_spawnpoint = TRUE
@@ -29,23 +29,84 @@
 	owner.announce_objectives()
 
 /datum/antagonist/assault_operative/on_gain()
+	give_alias()
 	. = ..()
 	equip_operative()
 	if(send_to_spawnpoint)
 		move_to_spawnpoint()
+	show_choices()
 
+
+/datum/antagonist/assault_operative/proc/give_alias()
+	owner.current.real_name = "GoldenEye Operative #[rand(100, 1000)]"
+
+/datum/antagonist/assault_operative/proc/show_choices()
+	if(equipped_class)
+		return
+	if(!ishuman(owner.current))
+		return
+	var/mob/living/carbon/human/human = owner.current
+
+	if(human.dna.species.id == "plasmaman" )
+		human.set_species(/datum/species/human)
+
+
+	var/list/loadouts = list(
+		"cqb" = image(icon = 'modular_skyrat/modules/assault_operatives/icons/radial.dmi', icon_state = "cqb"),
+		"demoman" = image(icon = 'modular_skyrat/modules/assault_operatives/icons/radial.dmi', icon_state = "demoman"),
+		"medic" = image(icon = 'modular_skyrat/modules/assault_operatives/icons/radial.dmi', icon_state = "medic"),
+		"heavy" = image(icon = 'modular_skyrat/modules/assault_operatives/icons/radial.dmi', icon_state = "heavy"),
+		"assault" = image(icon = 'modular_skyrat/modules/assault_operatives/icons/radial.dmi', icon_state = "assault"),
+		"sniper" = image(icon = 'modular_skyrat/modules/assault_operatives/icons/radial.dmi', icon_state = "sniper"),
+		"tech" = image(icon = 'modular_skyrat/modules/assault_operatives/icons/radial.dmi', icon_state = "tech"),
+		)
+
+	var/chosen_loadout = show_radial_menu(human, human, loadouts, radius = 40)
+
+	var/datum/outfit/assaultops/chosen_loadout_type
+
+	var/loadout_desc = ""
+
+	switch(chosen_loadout)
+		if("cqb")
+			chosen_loadout_type = /datum/outfit/assaultops/cqb
+			loadout_desc = "<span class='notice'>You have chosen the CQB class, your role is to deal with hand-to-hand combat!</span>"
+		if("demoman")
+			chosen_loadout_type = /datum/outfit/assaultops/demoman
+			loadout_desc = "<span class='notice'>You have chosen the Demolitions class, your role is to blow shit up!</span>"
+		if("medic")
+			chosen_loadout_type = /datum/outfit/assaultops/medic
+			loadout_desc = "<span class='notice'>You have chosen the Medic class, your role is providing medical aid to fellow operatives!</span>"
+		if("heavy")
+			chosen_loadout_type = /datum/outfit/assaultops/heavy
+			loadout_desc = "<span class='notice'>You have chosen the Heavy class, your role is continuous suppression!</span>"
+		if("assault")
+			chosen_loadout_type = /datum/outfit/assaultops/assault
+			loadout_desc = "<span class='notice'>You have chosen the Assault class, your role is general combat!</span>"
+		if("sniper")
+			chosen_loadout_type = /datum/outfit/assaultops/sniper
+			loadout_desc = "<span class='notice'>You have chosen the Sniper class, your role is suppressive fire!</span>"
+		if("tech")
+			chosen_loadout_type = /datum/outfit/assaultops/tech
+			loadout_desc = "<span class='notice'>You have chosen the Tech class, your role is hacking!</span>"
+		else
+			chosen_loadout_type = pick(/datum/outfit/assaultops/cqb, /datum/outfit/assaultops/demoman, /datum/outfit/assaultops/medic, /datum/outfit/assaultops/heavy, /datum/outfit/assaultops/assault, /datum/outfit/assaultops/sniper, /datum/outfit/assaultops/tech)
+
+	if(!chosen_loadout)
+		chosen_loadout_type = /datum/outfit/assaultops
+
+	human.equipOutfit(chosen_loadout_type)
+
+	to_chat(human, loadout_desc)
+
+	equipped_class = chosen_loadout
+	return TRUE
 
 /datum/antagonist/assault_operative/proc/equip_operative()
 	if(!ishuman(owner.current))
 		return
 	var/mob/living/carbon/human/human = owner.current
-	human.set_species(/datum/species/human)
 	human.equipOutfit(assault_operative_default_outfit)
-	human.hairstyle = "Crewcut"
-	human.hair_color = COLOR_ALMOST_BLACK
-	human.facial_hairstyle = "Shaved"
-	human.facial_hair_color = COLOR_ALMOST_BLACK
-	human.update_hair()
 	return TRUE
 
 /datum/antagonist/assault_operative/create_team(datum/team/assault_operatives/new_team)
