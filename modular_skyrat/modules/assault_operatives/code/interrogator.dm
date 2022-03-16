@@ -15,7 +15,6 @@
  *
  * After a key has been extracted, it will send a pod somewhere into maintenance, and the syndicates will know about it straight away.
  */
-
 /obj/machinery/interrogator
 	name = "In-TERROR-gator"
 	desc = "A morraly corrupt piece of machinery used to extract the human mind into a GoldenEye authentication key. The process is said to be one of the most painful experiences someone can endure."
