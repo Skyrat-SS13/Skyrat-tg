@@ -155,7 +155,7 @@
 /datum/uplink_item/stealthy_tools/announcement/spawn_item(spawn_path, mob/user, datum/uplink_handler/uplink_handler, atom/movable/source)
 	var/input = tgui_input_text(user, "Choose Announcement Message", "")
 	if(!input)
-		uplink_handler.telecrystals += 4
+		uplink_handler.telecrystals += cost
 		addtimer(CALLBACK(src, .proc/unlog, uplink_handler), 5 SECONDS)
 		return
 
