@@ -193,12 +193,11 @@
 		var/datum/antagonist/assault_operative/assault_op = mind.has_antag_datum(/datum/antagonist/assault_operative)
 		assault_op.objectives |= objectives
 
-	addtimer(CALLBACK(src,.proc/update_objectives), HEAD_UPDATE_PERIOD, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, .proc/update_objectives), HEAD_UPDATE_PERIOD, TIMER_UNIQUE)
 
 /datum/team/assault_operatives/proc/operatives_dead()
-	for(var/i in members)
-		var/datum/mind/operative_mind = i
-		if(ishuman(operative_mind.current) && (operative_mind.current.stat != DEAD))
+	for(var/datum/mind/operative_mind/iterating_mind in members)
+		if(ishuman(iterating_mind.current) && (iterating_mind.current.stat != DEAD))
 			return FALSE
 	return TRUE
 

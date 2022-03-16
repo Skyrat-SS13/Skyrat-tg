@@ -15,6 +15,7 @@
 	//Trick to get the glowing overlay visible from a distance
 	luminosity = 1
 
+	/// Is the alarm currently playing? WAIT WHY IS THIS NOT A LOOPING SOUND
 	var/alarm_playing = FALSE
 	/// Are we triggered?
 	var/triggered = FALSE
@@ -53,8 +54,7 @@
 		alarm()
 
 /obj/machinery/base_alarm/proc/alarm()
-	for(var/i in alarms)
-		var/obj/machinery/base_alarm/iterating_alarm = i
+	for(var/obj/machinery/base_alarm/iterating_alarm in alarms)
 		iterating_alarm.icon_state = "alarm_on"
 		iterating_alarm.set_light(l_power = 2)
 		iterating_alarm.triggered = TRUE
@@ -71,8 +71,7 @@
 		addtimer(CALLBACK(src, .proc/alarm_sound), 65)
 
 /obj/machinery/base_alarm/proc/reset(mob/user)
-	for(var/i in alarms)
-		var/obj/machinery/base_alarm/iterating_alarm = i
+	for(var/obj/machinery/base_alarm/iterating_alarm in alarms)
 		iterating_alarm.icon_state = "alarm"
 		iterating_alarm.set_light(l_power = 0)
 		iterating_alarm.triggered = FALSE

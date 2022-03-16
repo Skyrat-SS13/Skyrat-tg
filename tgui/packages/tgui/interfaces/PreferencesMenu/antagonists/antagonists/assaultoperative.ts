@@ -13,9 +13,9 @@ const AssaultOperative: Antagonist = {
   description: [
     multiline`
       Good afternoon 0013, you have been selected to join an elite strike team
-      designated to locating and forging GoldenEye keys. Your mission, whether
-      or not you choose to accept it, is to get these keys and use them to
-      destroy Nanotrasen's GoldenEye Defence Network.
+      designated to locating and forging GoldenEye keys. Your mission is to
+      get these keys and use them to turn Nanotrasens GoldenEye defence
+      network against them. The GoldenEye network requires 3 keys to activate.
     `,
 
     OPERATIVE_MECHANICAL_DESCRIPTION,
