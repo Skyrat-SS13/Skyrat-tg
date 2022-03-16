@@ -10,6 +10,7 @@
 	onstation = FALSE
 	light_mask = "liberation-light-mask"
 	default_price = 0
+	/// Have we been FILLED?
 	var/filled = FALSE
 
 /obj/machinery/vending/assaultops_ammo/ui_interact(mob/user, datum/tgui/ui)
@@ -39,16 +40,16 @@
 	var/mob/living/carbon/human/human_user = user
 
 	//Find all the ammo we should display
-	for(var/i in human_user.contents)
-		if(istype(i, /obj/item/gun/ballistic))
-			var/obj/item/gun/ballistic/gun = i
+	for(var/object in human_user.contents)
+		if(istype(object, /obj/item/gun/ballistic))
+			var/obj/item/gun/ballistic/gun = object
 			if(!gun.internal_magazine)
 				products.Add(gun.mag_type)
-		if(istype(i, /obj/item/storage))
-			var/obj/item/storage/storage = i
-			for(var/C in storage.contents)
-				if(istype(C, /obj/item/gun/ballistic))
-					var/obj/item/gun/ballistic/gun = C
+		if(istype(object, /obj/item/storage))
+			var/obj/item/storage/storage = object
+			for(var/storage_item in storage.contents)
+				if(istype(storage_item, /obj/item/gun/ballistic))
+					var/obj/item/gun/ballistic/gun = storage_item
 					if(!gun.internal_magazine)
 						products.Add(gun.mag_type)
 

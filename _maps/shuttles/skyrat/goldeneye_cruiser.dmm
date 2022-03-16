@@ -361,11 +361,10 @@
 	name = "Syndicate Radio Intercom";
 	pixel_y = 22
 	},
-/obj/machinery/vending/assaultops_ammo,
-/obj/structure/window/reinforced{
-	dir = 4;
-	layer = 2.9
-	},
+/obj/structure/rack,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/iron/fifty,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "aT" = (
@@ -377,7 +376,8 @@
 	dir = 1;
 	icon_state = "ast_warn"
 	},
-/obj/machinery/vending/assaultops_ammo,
+/obj/effect/turf_decal/bot,
+/obj/machinery/ammo_workbench/unlocked,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "aV" = (
@@ -385,10 +385,10 @@
 	dir = 5;
 	icon_state = "ast_warn"
 	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/vending/assaultops_ammo,
+/obj/structure/rack,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "aW" = (
@@ -510,17 +510,7 @@
 	dir = 8;
 	icon_state = "tube"
 	},
-/obj/machinery/door/window{
-	dir = 2;
-	icon_state = "leftsecure";
-	name = "ammo dispensary";
-	req_access_txt = "150"
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	layer = 2.9
-	},
-/obj/effect/turf_decal/bot,
+/obj/structure/window/reinforced,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "bh" = (
@@ -530,7 +520,6 @@
 	name = "ammo dispensary";
 	req_access_txt = "150"
 	},
-/obj/effect/turf_decal/bot,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "bi" = (
@@ -541,16 +530,7 @@
 	dir = 4;
 	icon_state = "tube"
 	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/window{
-	dir = 2;
-	icon_state = "leftsecure";
-	name = "ammo dispensary";
-	req_access_txt = "150"
-	},
-/obj/effect/turf_decal/bot,
+/obj/structure/window/reinforced,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "bj" = (
@@ -796,16 +776,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
-"bG" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/plasma/plastitanium,
-/obj/machinery/door/poddoor{
-	id = "cruiserbrigblastdoor";
-	name = "cruiser blast door"
-	},
-/obj/structure/sign/departments/security,
-/turf/open/floor/plating,
-/area/shuttle/syndicate/cruiser/brig)
 "bH" = (
 /obj/structure/bed/maint,
 /obj/effect/turf_decal/bot,
@@ -911,6 +881,7 @@
 "bS" = (
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/structure/cable,
+/obj/machinery/recharge_station,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
 "bT" = (
@@ -930,6 +901,7 @@
 /obj/item/storage/belt/military,
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
+/obj/item/melee/baton,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "bU" = (
@@ -1232,6 +1204,7 @@
 /obj/item/restraints/legcuffs,
 /obj/item/restraints/legcuffs,
 /obj/item/restraints/legcuffs,
+/obj/item/melee/baton/security/loaded,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "cz" = (
@@ -1572,6 +1545,8 @@
 /obj/structure/sign/warning/nosmoking{
 	pixel_x = 28
 	},
+/obj/machinery/recharge_station,
+/obj/machinery/recharge_station,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/engineering)
 "dC" = (
@@ -1733,13 +1708,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
-"hk" = (
-/obj/effect/turf_decal/stripes/red/box,
-/obj/machinery/porta_turret/assaultops{
-	name = "Point Defense Turret"
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/syndicate/cruiser/hallway)
 "hl" = (
 /obj/machinery/light/no_nightlight{
 	dir = 1;
@@ -1774,17 +1742,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/airlock)
-"hr" = (
-/obj/machinery/light/no_nightlight{
-	dir = 8;
-	icon_state = "tube"
-	},
-/obj/effect/turf_decal/stripes/red/box,
-/obj/machinery/porta_turret/assaultops{
-	name = "Point Defense Turret"
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/syndicate/cruiser/hallway)
 "hs" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -2083,6 +2040,20 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
+"pE" = (
+/obj/structure/table/reinforced,
+/obj/item/bodybag/environmental/prisoner/syndicate,
+/obj/item/bodybag/environmental/prisoner/syndicate,
+/obj/item/bodybag/environmental/prisoner/syndicate,
+/obj/item/bodybag/environmental/prisoner/syndicate,
+/obj/item/bodybag/environmental/prisoner/syndicate,
+/obj/item/bodybag/environmental/prisoner/syndicate,
+/obj/item/bodybag/environmental/prisoner/syndicate,
+/obj/item/bodybag/environmental/prisoner/syndicate,
+/obj/item/bodybag/environmental/prisoner/syndicate,
+/obj/item/bodybag/environmental/prisoner/syndicate,
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/cruiser/hallway)
 "rg" = (
 /obj/machinery/power/terminal,
 /obj/structure/cable,
@@ -2233,6 +2204,10 @@
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
+"Zv" = (
+/obj/structure/sign/departments/security,
+/turf/closed/wall/r_wall/syndicate/cruiser,
+/area/shuttle/syndicate/cruiser/brig)
 
 (1,1,1) = {"
 aa
@@ -2246,7 +2221,7 @@ as
 as
 as
 as
-Bq
+ca
 ca
 bj
 bj
@@ -2376,11 +2351,11 @@ as
 aW
 ca
 ca
-bG
+bR
 bR
 bR
 bY
-ca
+Zv
 ca
 ca
 ca
@@ -2410,13 +2385,13 @@ cg
 ct
 cy
 cC
-aY
+pE
 bE
 bl
 gX
 bU
 gX
-hr
+bl
 hH
 dk
 dk
@@ -2543,7 +2518,7 @@ cM
 db
 gY
 hc
-hk
+aY
 ht
 aZ
 cP
@@ -2552,7 +2527,7 @@ cU
 gU
 dk
 ie
-do
+Ma
 "}
 (11,1,1) = {"
 ae
@@ -2703,9 +2678,9 @@ cT
 gV
 cT
 cI
-hk
+aY
 cK
-hk
+aY
 dk
 df
 Pe
