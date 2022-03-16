@@ -89,7 +89,7 @@
 
 /// Generates a special objective and adds it to the objective list.
 /datum/antagonist/malf_ai/proc/forge_special_objective()
-	var/special_pick = rand(1,4)
+	var/special_pick = rand(3,4) // SKYRAT EDIT - REMOVING PURGE/BLOCK
 	switch(special_pick)
 		if(1)
 			var/datum/objective/block/block_objective = new

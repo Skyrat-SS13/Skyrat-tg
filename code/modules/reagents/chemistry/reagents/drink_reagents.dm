@@ -809,7 +809,7 @@
 	quality = DRINK_VERYGOOD
 	taste_description = "sweet tangy fruit"
 	glass_icon_state = "cinderella"
-	glass_name = "Cinderlla"
+	glass_name = "Cinderella"
 	glass_desc = "There is not a single drop of alcohol in this thing."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
@@ -857,7 +857,7 @@
 
 /datum/reagent/consumable/caramelshake
 	name = "Caramel Shake"
-	description = "A aramel flavored milkshake. Your teeth hurt looking at it."
+	description = "A caramel flavored milkshake. Your teeth hurt looking at it."
 	color = "#E17C00"
 	quality = DRINK_GOOD
 	nutriment_factor = 10 * REAGENTS_METABOLISM
@@ -1146,27 +1146,6 @@
 		M.adjustToxLoss(-1, 0)
 	..()
 	. = TRUE
-
-/datum/reagent/consumable/lean
-	name = "Lean"
-	description = "The drank that makes you go wheezy."
-	color = "#DE55ED"
-	quality = DRINK_NICE
-	taste_description = "purple and a hint of opioid."
-	glass_icon_state = "lean"
-	glass_name = "Lean"
-	glass_desc = "A drink that makes your life less miserable."
-	addiction_types = list(/datum/addiction/opiods = 6)
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-
-/datum/reagent/consumable/lean/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
-	if(M.slurring < 3)
-		M.slurring += 2 * REM * delta_time
-	if(M.druggy < 3)
-		M.adjust_drugginess(1 * REM * delta_time)
-	if(M.drowsyness < 3)
-		M.adjust_drowsyness(1 * REM * delta_time)
-	return ..()
 
 /datum/reagent/consumable/agua_fresca
 	name = "Agua Fresca"

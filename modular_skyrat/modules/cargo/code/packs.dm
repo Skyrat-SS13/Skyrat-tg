@@ -57,11 +57,11 @@
 	name = "Mixed Medical Kits"
 	desc = "Contains one of each medical kits for dealing with a variety of injured crewmembers."
 	cost = CARGO_CRATE_VALUE * 5
-	contains = list(/obj/item/storage/firstaid/toxin,
-					/obj/item/storage/firstaid/o2,
-					/obj/item/storage/firstaid/brute,
-					/obj/item/storage/firstaid/fire,
-					/obj/item/storage/firstaid/regular)
+	contains = list(/obj/item/storage/medkit/toxin,
+					/obj/item/storage/medkit/o2,
+					/obj/item/storage/medkit/brute,
+					/obj/item/storage/medkit/fire,
+					/obj/item/storage/medkit/regular)
 	crate_name = "medical kit crate"
 
 /datum/supply_pack/medical/medipens
@@ -234,6 +234,15 @@
 					/obj/item/clothing/suit/armor/vest/alt,
 					/obj/item/clothing/suit/armor/vest/alt)
 	crate_name = "armor crate"
+
+/datum/supply_pack/security/deployablebarricades
+	name = "C.U.C.K.S Deployable Barricades"
+	desc = "Two cases of deployable barricades, for all your fortification needs."
+	cost = CARGO_CRATE_VALUE * 4
+	contains = list(/obj/item/storage/barricade,
+					/obj/item/storage/barricade,)
+	crate_name = "C.U.C.K.S Crate"
+
 
 //////////////////////////////////////////////////////////////////////////////
 ///////////////////////////// Engineering ////////////////////////////////////
