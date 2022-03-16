@@ -27,8 +27,8 @@
 		radio.command = TRUE
 
 	if(cqc)
-		var/datum/martial_art/cqc/MA = new
-		MA.teach(equipping_human)
+		var/datum/martial_art/cqc/martial_arts = new
+		martial_arts.teach(equipping_human)
 
 	var/obj/item/implant/weapons_auth/weapons_authorisation = new/obj/item/implant/weapons_auth(equipping_human)
 	weapons_authorisation.implant(equipping_human)
@@ -38,12 +38,14 @@
 /datum/outfit/assaultops/cqb
 	name = "Assault Operative - CQB"
 
-	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
-		/obj/item/knife/combat,\
-		/obj/item/gun/energy/disabler,\
-		/obj/item/gun/ballistic/automatic/c20r,\
-		/obj/item/ammo_box/magazine/smgm45=4,\
-		)
+	l_hand = /obj/item/gun/ballistic/automatic/c20r
+
+	backpack_contents = list(
+		/obj/item/storage/box/survival/syndie,
+		/obj/item/knife/combat,
+		/obj/item/gun/energy/disabler,
+		/obj/item/ammo_box/magazine/smgm45 = 4,
+	)
 
 	cqc = TRUE
 
@@ -51,15 +53,22 @@
 	name = "Assault Operative - Demolitions"
 
 	belt = /obj/item/storage/belt/grenade/full
-	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
-		/obj/item/knife/combat,\
-		/obj/item/gun/energy/disabler,\
-		/obj/item/gun/ballistic/shotgun/bulldog,\
-		/obj/item/ammo_box/magazine/m12g=4,\
-		/obj/item/implant/explosive/macro, \
-		/obj/item/storage/box/assaultops/demoman
-		)
+
+	r_hand = /obj/item/gun/ballistic/shotgun/bulldog
+
 	l_hand = /obj/item/mod/control/pre_equipped/research
+
+	implants = list(/obj/item/implant/explosive/macro)
+
+	backpack_contents = list(
+		/obj/item/storage/box/survival/syndie,
+		/obj/item/knife/combat,
+		/obj/item/gun/energy/disabler,
+		/obj/item/implant/explosive/macro,
+		/obj/item/storage/box/assaultops/demoman,
+		/obj/item/ammo_box/magazine/m12g = 4,
+	)
+
 
 /obj/item/storage/box/assaultops/demoman
 	name = "Assault Operative - Demolitions"
@@ -72,48 +81,58 @@
 /datum/outfit/assaultops/medic
 	name = "Assault Operative - Medic"
 
-
 	glasses = /obj/item/clothing/glasses/hud/health
+
 	belt = /obj/item/storage/belt/medical/paramedic
-	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
-		/obj/item/gun/energy/disabler,\
-		/obj/item/gun/ballistic/automatic/pps,\
-		/obj/item/ammo_box/magazine/pps=2,\
-		/obj/item/storage/medkit/tactical=2,\
-		/obj/item/gun/medbeam)
+
+	l_hand = /obj/item/gun/ballistic/automatic/pps
+
+	backpack_contents = list(
+		/obj/item/storage/box/survival/syndie,
+		/obj/item/gun/energy/disabler,
+		/obj/item/ammo_box/magazine/pps = 2,
+		/obj/item/storage/medkit/tactical = 2,
+		/obj/item/gun/medbeam,
+	)
 
 /datum/outfit/assaultops/heavy
 	name = "Assault Operative - Heavy Gunner"
 
 	l_hand = /obj/item/gun/ballistic/automatic/mg34/mg42
 
-	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
-		/obj/item/knife/combat,\
-		/obj/item/gun/energy/disabler,\
-		/obj/item/ammo_box/magazine/mg42=1,\
-		/obj/item/grenade/syndieminibomb)
+	backpack_contents = list(
+		/obj/item/storage/box/survival/syndie,
+		/obj/item/knife/combat,
+		/obj/item/gun/energy/disabler,
+		/obj/item/grenade/syndieminibomb,
+		/obj/item/ammo_box/magazine/mg42,
+	)
 
 
 /datum/outfit/assaultops/assault
 	name = "Assault Operative - Assault"
 
-	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
-		/obj/item/knife/combat,\
-		/obj/item/gun/energy/disabler,\
-		/obj/item/gun/ballistic/automatic/stg,\
-		/obj/item/ammo_box/magazine/stg=4,\
-		/obj/item/grenade/syndieminibomb=2)
+	l_hand = /obj/item/gun/ballistic/automatic/stg
+
+	backpack_contents = list(
+		/obj/item/storage/box/survival/syndie,
+		/obj/item/knife/combat,
+		/obj/item/grenade/syndieminibomb = 2,
+		/obj/item/ammo_box/magazine/stg = 4,
+	)
 
 /datum/outfit/assaultops/sniper
 	name = "Assault Operative - Sniper"
 
+	l_hand = /obj/item/gun/ballistic/automatic/sniper_rifle/modular/blackmarket
 
-	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
-		/obj/item/knife/combat,\
-		/obj/item/gun/energy/disabler,\
-		/obj/item/gun/ballistic/automatic/sniper_rifle/modular/blackmarket,\
-		/obj/item/ammo_box/magazine/sniper_rounds=4,\
-		/obj/item/grenade/syndieminibomb=2)
+	backpack_contents = list(
+		/obj/item/storage/box/survival/syndie,
+		/obj/item/knife/combat,
+		/obj/item/gun/energy/disabler,
+		/obj/item/grenade/syndieminibomb = 2,
+		/obj/item/ammo_box/magazine/sniper_rounds = 4,
+	)
 
 /datum/outfit/assaultops/tech
 	name = "Assault Operative - Tech"
@@ -122,13 +141,16 @@
 
 	belt = /obj/item/storage/belt/military/abductor/full/assaultops
 
-	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
-		/obj/item/knife/combat,\
-		/obj/item/gun/energy/disabler,\
-		/obj/item/gun/ballistic/automatic/fg42,\
-		/obj/item/ammo_box/magazine/fg42=4,\
-		/obj/item/card/emag,\
-		/obj/item/card/emag/doorjack)
+	l_hand = /obj/item/gun/ballistic/automatic/fg42
+
+	backpack_contents = list(
+		/obj/item/storage/box/survival/syndie,
+		/obj/item/knife/combat,
+		/obj/item/gun/energy/disabler,
+		/obj/item/card/emag,
+		/obj/item/card/emag/doorjack,
+		/obj/item/ammo_box/magazine/fg42 = 4,
+	)
 
 /obj/item/storage/belt/military/abductor/full/assaultops
 	name = "Assault Belt"
