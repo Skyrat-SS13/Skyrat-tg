@@ -50,11 +50,13 @@
 		return
 	if(!ishuman(owner.current))
 		return
-	var/mob/living/carbon/human/human = owner.current
+	var/mob/living/carbon/human/human_target = owner.current
 
-	if(human.dna.species.id == "plasmaman" )
-		human.set_species(/datum/species/human)
+	if(human_target.dna.species.id == "plasmaman" )
+		human_target.set_species(/datum/species/human)
+		to_chat(human_target, span_userdanger("You are now a human!"))
 
+	to_chat(human_target, span_greentext("Select your loadout from the radial menu!"))
 
 	var/list/loadouts = list(
 		"cqb" = image(icon = 'modular_skyrat/modules/assault_operatives/icons/radial.dmi', icon_state = "cqb"),
@@ -66,7 +68,7 @@
 		"tech" = image(icon = 'modular_skyrat/modules/assault_operatives/icons/radial.dmi', icon_state = "tech"),
 		)
 
-	var/chosen_loadout = show_radial_menu(human, human, loadouts, radius = 40)
+	var/chosen_loadout = show_radial_menu(human_target, human_target, loadouts, radius = 40)
 
 	var/datum/outfit/assaultops/chosen_loadout_type
 
@@ -100,9 +102,17 @@
 	if(!chosen_loadout)
 		chosen_loadout_type = /datum/outfit/assaultops
 
-	human.equipOutfit(chosen_loadout_type)
+	for(var/obj/item/item in human_target.get_equipped_items(TRUE))
+		qdel(item)
 
-	to_chat(human, loadout_desc)
+	var/obj/item/organ/brain/human_brain = human_target.getorganslot(BRAIN)
+	human_brain.destroy_all_skillchips() // get rid of skillchips to prevent runtimes
+
+	human_target.equipOutfit(chosen_loadout_type)
+
+	human_target.regenerate_icons()
+
+	to_chat(human_target, loadout_desc)
 
 	equipped_class = chosen_loadout
 	return TRUE
@@ -110,8 +120,17 @@
 /datum/antagonist/assault_operative/proc/equip_operative()
 	if(!ishuman(owner.current))
 		return
-	var/mob/living/carbon/human/human = owner.current
-	human.equipOutfit(assault_operative_default_outfit)
+	var/mob/living/carbon/human/human_target = owner.current
+	for(var/obj/item/item in human_target.get_equipped_items(TRUE))
+		qdel(item)
+
+	var/obj/item/organ/brain/human_brain = human_target.getorganslot(BRAIN)
+	human_brain.destroy_all_skillchips() // get rid of skillchips to prevent runtimes
+
+	human_target.equipOutfit(assault_operative_default_outfit)
+
+	human_target.regenerate_icons()
+
 	return TRUE
 
 /datum/antagonist/assault_operative/create_team(datum/team/assault_operatives/new_team)
