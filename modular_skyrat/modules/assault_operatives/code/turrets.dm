@@ -1,4 +1,4 @@
-//TURRETS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//TURRETS
 /obj/machinery/porta_turret/assaultops
 	use_power = IDLE_POWER_USE
 	req_access = list(ACCESS_SYNDICATE)

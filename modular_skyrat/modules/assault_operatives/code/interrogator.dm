@@ -197,7 +197,7 @@
 	for(var/obj/item/pinpointer/nuke/goldeneye/disk_pinpointers in GLOB.pinpointer_list)
 		disk_pinpointers.target = new_key
 		disk_pinpointers.switch_mode_to(TRACK_GOLDENEYE) //Pinpointer will track the newly created goldeneye key.
-	notify_ghosts("GoldenEye key launched!", source=new_key, action=NOTIFY_ORBIT, header="Something's Interesting!")
+	notify_ghosts("GoldenEye key launched!", source = new_key, action = NOTIFY_ORBIT, header = "Something's Interesting!")
 
 /obj/machinery/interrogator/proc/find_drop_turf()
 	var/list/possible_turfs = list()

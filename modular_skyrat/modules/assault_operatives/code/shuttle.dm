@@ -13,8 +13,8 @@
 /obj/machinery/computer/shuttle/goldeneye_cruiser/launch_check(mob/user)
 	return TRUE
 
-/obj/machinery/computer/shuttle/goldeneye_cruiser/allowed(mob/M)
-	if(issilicon(M) && !(ROLE_SYNDICATE in M.faction))
+/obj/machinery/computer/shuttle/goldeneye_cruiser/allowed(mob/to_check)
+	if(issilicon(to_check) && !(ROLE_SYNDICATE in to_check.faction))
 		return FALSE
 	return ..()
 
