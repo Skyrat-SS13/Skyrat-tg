@@ -2,7 +2,6 @@
 /datum/outfit/assaultops
 	name = "I couldn't choose one!"
 
-	head = /obj/item/clothing/head/helmet/swat
 	mask = /obj/item/clothing/mask/gas/syndicate
 	glasses = /obj/item/clothing/glasses/thermal
 	uniform = /obj/item/clothing/under/syndicate
