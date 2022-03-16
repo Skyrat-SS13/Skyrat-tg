@@ -12,6 +12,7 @@
 /obj/item/grenade/spawnergrenade/goose
 	name = "goose delivery grenade"
 	spawner_type = /mob/living/simple_animal/hostile/retaliate/goose/territorial
+	deliveryamt = 3
 
 /mob/living/simple_animal/hostile/retaliate/goose/territorial
 	name = "territorial goose"
@@ -19,3 +20,7 @@
 	attack_same = FALSE
 	taunt_chance = 100
 	emote_taunt = list("hisses", "honks")
+	harm_intent_damage = 8
+	obj_damage = 50
+	melee_damage_lower = 20
+	melee_damage_upper = 20
