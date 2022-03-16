@@ -39,8 +39,7 @@
 
 /datum/map_template/shuttle/goldeneye_cruiser
 	name = "goldeneye cruiser"
-	prefix = "_maps/shuttles/skyrat"
+	prefix = "_maps/shuttles/skyrat/"
 	port_id = "goldeneye"
 	suffix = "cruiser"
 	who_can_purchase = null
-

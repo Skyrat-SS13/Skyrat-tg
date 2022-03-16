@@ -85,10 +85,11 @@
 /datum/outfit/assaultops/heavy
 	name = "Assault Operative - Heavy Gunner"
 
+	l_hand = /obj/item/gun/ballistic/automatic/mg34/mg42
+
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/knife/combat,\
 		/obj/item/gun/energy/disabler,\
-		/obj/item/gun/ballistic/automatic/mg34/mg42,\
 		/obj/item/ammo_box/magazine/mg42=1,\
 		/obj/item/grenade/syndieminibomb)
 

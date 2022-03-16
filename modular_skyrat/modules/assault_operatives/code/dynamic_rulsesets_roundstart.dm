@@ -22,13 +22,13 @@
 	var/datum/team/assault_operatives/assault_operatives_team
 
 /datum/dynamic_ruleset/roundstart/assault_operatives/ready(population, forced = FALSE)
-	required_candidates = get_antag_cap(population)
+	required_candidates = 1
 	. = ..()
 
 /datum/dynamic_ruleset/roundstart/assault_operatives/pre_execute(population)
 	. = ..()
 	// If ready() did its job, candidates should have 5 or more members in it
-	var/operatives = get_antag_cap(population)
+	var/operatives = 1
 	for(var/operatives_number = 1 to operatives)
 		if(candidates.len <= 0)
 			break
