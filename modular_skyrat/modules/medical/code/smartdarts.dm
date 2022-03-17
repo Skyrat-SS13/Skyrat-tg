@@ -5,6 +5,7 @@
 	volume = 10
 	icon = 'modular_skyrat/modules/medical/icons/obj/smartdarts.dmi'
 	icon_state = "dart_0"
+	possible_transfer_amounts = list(1, 2, 5, 10)
 	base_icon_state = "dart"
 
 //Code that handles the base interactions involving smartdarts
