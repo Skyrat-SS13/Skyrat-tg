@@ -12,11 +12,7 @@
 	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	flags_1 = NO_SCREENTIPS_1
-<<<<<<< HEAD
-	turf_flags = CAN_BE_DIRTY_1 /// SKYRAT EDIT - Overriden in modular_skyrat\modules\decay_subsystem\code\decay_turf_handling.dm
-=======
-	turf_flags = CAN_BE_DIRTY_1 | IS_SOLID
->>>>>>> 0e904f70328 ([MDB IGNORE] Moves non floor turfs off /floor. You can put lattices on lavaland edition (#65504))
+	turf_flags = CAN_BE_DIRTY_1 | IS_SOLID/// SKYRAT EDIT - Overriden in modular_skyrat\modules\decay_subsystem\code\decay_turf_handling.dm
 	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_OPEN_FLOOR)
 	canSmoothWith = list(SMOOTH_GROUP_OPEN_FLOOR, SMOOTH_GROUP_TURF_OPEN)
 

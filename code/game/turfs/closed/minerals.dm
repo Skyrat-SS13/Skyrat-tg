@@ -17,14 +17,9 @@
 	plane = GAME_PLANE_UPPER
 	base_icon_state = "smoothrocks"
 	temperature = TCMB
-<<<<<<< HEAD
 	color = "#677" //SKYRAT EDIT ADDITION
 	var/smooth_icon = 'modular_skyrat/modules/liquids/icons/turf/smoothrocks.dmi' //SKYRAT EDIT CHANGE
-	var/turf/open/floor/plating/turf_type = /turf/open/floor/plating/asteroid/airless
-=======
-	var/smooth_icon = 'icons/turf/smoothrocks.dmi'
 	var/turf/open/floor/plating/turf_type = /turf/open/misc/asteroid/airless
->>>>>>> 0e904f70328 ([MDB IGNORE] Moves non floor turfs off /floor. You can put lattices on lavaland edition (#65504))
 	var/obj/item/stack/ore/mineralType = null
 	var/mineralAmt = 3
 	var/scan_state = "" //Holder for the image we display when we're pinged by a mining scanner
