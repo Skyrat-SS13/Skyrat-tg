@@ -118,8 +118,7 @@
 	if(human_occupant.stat == DEAD)
 		balloon_alert_to_viewers("occupant is dead!")
 		return
-	var/datum/objective/interrogate/objective = get_goldeneye_target(human_occupant)
-	if(!objective || objective.goldeneye_key_uploaded) // Preventing abuse by method of duplication.
+	if(!SSgoldeneye.check_goldeneye_target(human_occupant.mind)) // Preventing abuse by method of duplication.
 		balloon_alert_to_viewers("no GoldenEye data!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 100)
 		return
@@ -179,7 +178,7 @@
 	addtimer(CALLBACK(src, .proc/announce_creation), ALERT_CREW_TIME)
 
 /obj/machinery/interrogator/proc/announce_creation()
-	priority_announce("CRITICAL SECURITY BREACH DETECTED! A GoldenEye authentication key has been illegally printed, locate it at all costs!", "GoldenEye Defence Network", ANNOUNCER_KLAXON)
+	priority_announce("CRITICAL SECURITY BREACH DETECTED! A GoldenEye authentication key has been illegally printed, locate it at all costs! Check GPS devices for location!", "GoldenEye Defence Network", ANNOUNCER_KLAXON)
 	for(var/obj/item/pinpointer/nuke/disk_pinpointers in GLOB.pinpointer_list)
 		disk_pinpointers.switch_mode_to(TRACK_GOLDENEYE) //Pinpointer will track the newly created goldeneye key.
 
@@ -191,14 +190,13 @@
 	else
 		new_key = new
 	new_key.extract_name = human_occupant.real_name
-	var/datum/objective/interrogate/objective = get_goldeneye_target(human_occupant)
-	objective.linked_key = src
-	new_key.linked_objective = objective
+	// Add them to the goldeneye extracted list. This list is capable of having nulls.
+	SSgoldeneye.extract_mind(human_occupant.mind)
 	var/obj/structure/closet/supplypod/pod = new
 	new /obj/effect/pod_landingzone(landingzone, pod, new_key)
-	for(var/obj/item/pinpointer/nuke/goldeneye/disk_pinpointers in GLOB.pinpointer_list)
-		disk_pinpointers.target = new_key
-		disk_pinpointers.switch_mode_to(TRACK_GOLDENEYE) //Pinpointer will track the newly created goldeneye key.
+	for(var/datum/status_effect/goldeneye_pinpointer/iterating_pinpointer in GLOB.goldeneye_pinpointers)
+		iterating_pinpointer.set_target(new_key)
+
 	notify_ghosts("GoldenEye key launched!", source = new_key, action = NOTIFY_ORBIT, header = "Something's Interesting!")
 
 /obj/machinery/interrogator/proc/find_drop_turf()

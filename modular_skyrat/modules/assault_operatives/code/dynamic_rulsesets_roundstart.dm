@@ -50,18 +50,12 @@
 		iterating_mind.add_antag_datum(new_op, assault_operatives_team)
 	if(assault_operatives_team.members.len)
 		assault_operatives_team.update_objectives()
+		SSgoldeneye.required_keys = get_goldeneye_key_count()
 		return TRUE
 	log_game("DYNAMIC: [ruletype] [name] failed to get any eligible assault operatives. Refunding [cost] threat.")
 	return FALSE
 
 
-/datum/dynamic_ruleset/roundstart/assault_operatives/round_result()
-	var/result = assault_operatives_team.get_result()
-	SSticker.news_report = OPERATIVE_SKIRMISH
-	switch(result)
-		if(ASSAULT_RESULT_OPERATIVE_WIN)
-			SSticker.mode_result = "win - assault operatives extracted data"
-		if(ASSAULT_RESULT_OPERATIVE_PARTIAL_WIN)
-			SSticker.mode_result = "partial win - assault operatives extracted some data"
-		if(ASSAULT_RESULT_CREW_WIN)
-			SSticker.mode_result = "loss - assault operatives failed to extract data"
+/// Returns the required goldeneye keys for activation. This is to make sure we don't have an impossible to achieve goal. However, there has to be at least one key.
+/datum/dynamic_ruleset/roundstart/assault_operatives/proc/get_goldeneye_key_count()
+	return clamp(LAZYLEN(SSjob.get_all_heads()), 1, GOLDENEYE_REQUIRED_KEYS_MAXIMUM)

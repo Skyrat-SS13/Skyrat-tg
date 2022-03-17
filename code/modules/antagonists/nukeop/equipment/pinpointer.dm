@@ -54,7 +54,7 @@
 			target = SSshuttle.getShuttle("syndicate")
 		// SKYRAT EDIT ADDITION
 		if(TRACK_GOLDENEYE)
-			target = GLOB.goldeneye_keys[1] // Track the first goldeneye key in existence.
+			target = SSgoldeneye.goldeneye_keys[1] // Track the first goldeneye key in existence.
 		// SKYRAT EDIT END
 	..()
 

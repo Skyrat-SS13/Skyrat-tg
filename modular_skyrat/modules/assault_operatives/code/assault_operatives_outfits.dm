@@ -1,6 +1,69 @@
+GLOBAL_LIST_INIT(assaultops_equipment, build_assaultops_equipment())
+
+/datum/assaultops_outfit
+	/// The name of this outfit, if not set, defaults to the outfit name.
+	var/name
+	/// Our description to display what this outfit is.
+	var/description = "No description set"
+	/// The icon we pass to TGUI.
+	var/icon = "cog"
+	/// The linked outfit.
+	var/datum/outfit/assaultops/outfit = /datum/outfit/assaultops
+
+/// Builds a list of available assaultops equipment.
+/proc/build_assaultops_equipment()
+	var/list/equipment_list = list()
+	for(var/datum/assaultops_outfit/iterating_assaultops_outfit as anything in subtypesof(/datum/assaultops_outfit))
+		var/datum/assaultops_outfit/spawned_assaultops_outfit = new iterating_assaultops_outfit()
+		spawned_assaultops_outfit.name ||= initial(spawned_assaultops_outfit.outfit.name)
+		equipment_list += spawned_assaultops_outfit
+	return equipment_list
+
+/datum/assaultops_outfit/cqb
+	name = "Close Quarters Combat"
+	description = "A class that excels in close quarters combat."
+	outfit = /datum/outfit/assaultops/cqb
+	icon = "hand-back-fist"
+
+/datum/assaultops_outfit/demoman
+	name = "Demolitions Expert"
+	description = "A class that excels in 'controlled demolitions', or to blow shit up, in other words."
+	outfit = /datum/outfit/assaultops/demoman
+	icon = "bomb"
+
+/datum/assaultops_outfit/medic
+	name = "Medic"
+	description = "A class that excels in healing."
+	outfit = /datum/outfit/assaultops/medic
+	icon = "syringe"
+
+/datum/assaultops_outfit/heavy
+	name = "Heavy Weapons Specialist"
+	description = "A class that excels in heavy weapons. You get the big guns."
+	outfit = /datum/outfit/assaultops/heavy
+	icon = "weight-hanging"
+
+/datum/assaultops_outfit/assault
+	name = "Infantry Man"
+	description = "A class that is a well rounded class, capable of taking on any situation."
+	outfit = /datum/outfit/assaultops/assault
+	icon = "running"
+
+/datum/assaultops_outfit/sniper
+	name = "Sniper"
+	description = "A class that excels in long range combat."
+	outfit = /datum/outfit/assaultops/sniper
+	icon = "binoculars"
+
+/datum/assaultops_outfit/engineer
+	name = "Engineer"
+	description = "A class that excels in hacking and engineering."
+	outfit = /datum/outfit/assaultops/engineer
+	icon = "wrench"
+
 //KITS
 /datum/outfit/assaultops
-	name = "I couldn't choose one!"
+	name = "Assault Ops - Default"
 
 	mask = /obj/item/clothing/mask/gas/syndicate
 	glasses = /obj/item/clothing/glasses/thermal
@@ -9,14 +72,12 @@
 	gloves =  /obj/item/clothing/gloves/combat
 	back = /obj/item/storage/backpack/fireproof
 	ears = /obj/item/radio/headset/syndicate/alt
-	l_pocket = /obj/item/pinpointer/nuke/goldeneye
 	id = /obj/item/card/id/advanced/chameleon
-	back = /obj/item/mod/control/pre_equipped/nuclear
-	suit_store = /obj/item/gun/ballistic/automatic/pistol/aps
-	r_pocket = /obj/item/ammo_box/magazine/m9mm_aps
 	belt = /obj/item/storage/belt/utility/syndicate
 
+	/// Do we spawn with a command radio?
 	var/command_radio = FALSE
+	/// Do we give the mob CQC?
 	var/cqc = FALSE
 
 /datum/outfit/assaultops/post_equip(mob/living/carbon/human/equipping_human)
@@ -110,7 +171,7 @@
 
 
 /datum/outfit/assaultops/assault
-	name = "Assault Operative - Assault"
+	name = "Assault Operative - Infantry"
 
 	l_hand = /obj/item/gun/ballistic/automatic/stg
 
@@ -134,8 +195,8 @@
 		/obj/item/ammo_box/magazine/sniper_rounds = 4,
 	)
 
-/datum/outfit/assaultops/tech
-	name = "Assault Operative - Tech"
+/datum/outfit/assaultops/engineer
+	name = "Assault Operative - Engineer"
 
 	suit = /obj/item/mod/control/pre_equipped/elite/flamethrower
 

@@ -1,37 +1,91 @@
-GLOBAL_LIST_EMPTY(goldeneye_keys)
-
+GLOBAL_LIST_EMPTY(goldeneye_pinpointers)
 
 /**
  * GoldenEye defence network
  *
- * Contains: Key and Terminal
+ * Contains: Subsystem, Key, Terminal and Objective
  */
 
+SUBSYSTEM_DEF(goldeneye)
+	name = "GoldenEye"
+	init_order = INIT_ORDER_DEFAULT
+	flags = SS_NO_FIRE
+	/// A tracked list of all our keys.
+	var/list/goldeneye_keys = list()
+	/// A list of minds that have been extracted and thus cannot be extracted again.
+	var/list/goldeneye_extracted_minds = list()
+	/// How many keys have been uploaded to GoldenEye.
+	var/uploaded_keys = 0
+	/// How many keys do we need to activate GoldenEye? Can be overriden by Dynamic if there aren't enough heads of staff.
+	var/required_keys = GOLDENEYE_REQUIRED_KEYS_MAXIMUM
+	/// Have we been activated?
+	var/goldeneye_activated = FALSE
+
+/// A safe proc for adding a targets mind to the tracked extracted minds.
+/datum/controller/subsystem/goldeneye/proc/extract_mind(datum/mind/target_mind)
+	goldeneye_extracted_minds += target_mind
+
+/// A safe proc for registering a new key to the goldeneye system.
+/datum/controller/subsystem/goldeneye/proc/upload_key()
+	uploaded_keys++
+	check_condition()
+
+/// Checks our activation condition after an upload has occured.
+/datum/controller/subsystem/goldeneye/proc/check_condition()
+	if(uploaded_keys >= required_keys)
+		activate()
+		return
+	priority_announce("UNAUTHORISED KEYCARD UPLOAD DETECTED. [uploaded_keys]/[required_keys] KEYS UPLOADED.", "GoldenEye Defence Network")
+
+/// Activates goldeneye.
+/datum/controller/subsystem/goldeneye/proc/activate()
+	var/message = "/// GOLDENEYE ACTIVATED /// \n \
+	Unauthorised GoldenEye Defence Network access detected. \n \
+	Targeting system override detected. \n \
+	New target: NTSS13 \n \
+	The GoldenEye defence network has been activated."
+	priority_announce(message, "GoldenEye Defence Network", ANNOUNCER_KLAXON)
+	goldeneye_activated = TRUE
+	// TODO: Add a big laser to split the station in two.
+
+/// Checks if a mind(target_mind) is a head and if they aren't in the goldeneye_extracted_minds list.
+/datum/controller/subsystem/goldeneye/proc/check_goldeneye_target(datum/mind/target_mind)
+	var/list/heads_list = SSjob.get_all_heads()
+	for(var/datum/mind/iterating_mind as anything in heads_list)
+		if(target_mind == iterating_mind) // We have a match, let's check if they've already been extracted.
+			if(target_mind in goldeneye_extracted_minds) // They've already been extracted, no double extracts!
+				return FALSE
+			return TRUE
+	return FALSE
+
+// Goldeneye key
 /obj/item/goldeneye_key
-	name = "\improper GoldenEye Authentication Key"
+	name = "\improper GoldenEye Authentication Keycard"
 	desc = "A high profile authentication key to Nanotrasen's GoldenEye defence network."
 	icon = 'modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi'
 	icon_state = "goldeneye_key"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	/// A unique tag that is used to identify this key.
+	var/goldeneye_tag = "G00000"
+	/// Flavour text for who's mind is in the key.
 	var/extract_name = "NO DATA"
-	/// The objective that this key links to. Used to mark the objective as complete once it's uploaded into the terminal.
-	var/datum/objective/interrogate/linked_objective
 
 /obj/item/goldeneye_key/Initialize(mapload)
 	. = ..()
-	GLOB.goldeneye_keys += src
-	name = "\improper GoldenEye Authentication Key: G[rand(10000, 100000)]"
+	SSgoldeneye.goldeneye_keys += src
+	goldeneye_tag = "G[rand(10000, 99999)]"
+	name = "\improper GoldenEye Authentication Key: [goldeneye_tag]"
+	AddComponent(/datum/component/gps/item, goldeneye_tag)
 
 /obj/item/goldeneye_key/examine(mob/user)
 	. = ..()
 	. += "The DNA data link belongs to: [extract_name]"
 
 /obj/item/goldeneye_key/Destroy(force)
-	linked_objective.linked_key = null
-	linked_objective = null
-	GLOB.goldeneye_keys -= src
+	SSgoldeneye.goldeneye_keys -= src
 	return ..()
 
+// Upload terminal
 /obj/machinery/goldeneye_upload_terminal
 	name = "\improper GoldenEye Defnet Upload Terminal"
 	desc = "An ominous terminal with some ports and keypads, the screen is scrolling with illegible nonsense. It has a strange marking on the side, a red ring with a gold circle within."
@@ -57,9 +111,8 @@ GLOBAL_LIST_EMPTY(goldeneye_keys)
 	uploading = TRUE
 	if(do_after(user, 10 SECONDS, src))
 		say("GOLDENEYE KEY AUTHENTICATED!")
-		inserting_key.linked_objective.goldeneye_key_uploaded = TRUE
-		priority_announce("GOLDENEYE DEFENCE NETWORK SECURITY INTEGRITY LOST, KEYCARD STOLEN AND UPLOADED.", "GoldenEye Defence Network")
 		playsound(src, 'sound/machines/nuke/confirm_beep.ogg', 100)
+		SSgoldeneye.upload_key()
 		uploading = FALSE
 		qdel(inserting_key)
 	else
@@ -67,6 +120,7 @@ GLOBAL_LIST_EMPTY(goldeneye_keys)
 		playsound(src, 'sound/machines/nuke/angry_beep.ogg', 100)
 		uploading = FALSE
 
+// Pinpointer
 /obj/item/pinpointer/nuke/goldeneye
 	name = "\improper GoldenEye Keycard Pinpointer"
 	desc = "A handheld tracking device that locks onto certain signals. This one is configured to locate any GoldenEye keycards."
@@ -80,10 +134,10 @@ GLOBAL_LIST_EMPTY(goldeneye_keys)
 	START_PROCESSING(SSfastprocess, src)
 
 /obj/item/pinpointer/nuke/goldeneye/attack_self(mob/living/user)
-	if(!LAZYLEN(GLOB.goldeneye_keys))
+	if(!LAZYLEN(SSgoldeneye.goldeneye_keys))
 		to_chat(user, span_danger("ERROR! No GoldenEye keys detected!"))
 		return
-	target = tgui_input_list(user, "Select GoldenEye key to track", "GoldenEye key", GLOB.goldeneye_keys)
+	target = tgui_input_list(user, "Select GoldenEye key to track", "GoldenEye key", SSgoldeneye.goldeneye_keys)
 	if(target)
 		to_chat(user, span_notice("Set to track: [target.name]"))
 
@@ -91,8 +145,86 @@ GLOBAL_LIST_EMPTY(goldeneye_keys)
 	if(QDELETED(target))
 		target = null
 
-/proc/get_goldeneye_target(mob/living/target)
-	for(var/datum/objective/interrogate/objective in GLOB.objectives)
-		if(objective.target == target.mind)
-			return objective
+// Objective
+/datum/objective/goldeneye
+	name = "subvert goldeneye"
+	objective_name = "Subvert GoldenEye"
+	explanation_text = "Extract all of the required GoldenEye Authentication Keys from the heads of staff and activate GoldenEye."
+	martyr_compatible = TRUE
+
+/datum/objective/goldeneye/check_completion()
+	if(SSgoldeneye.goldeneye_activated)
+		return TRUE
 	return FALSE
+
+// Internal pinpointer
+#define PINPOINTER_PING_TIME (4 SECONDS)
+
+/atom/movable/screen/alert/status_effect/goldeneye_pinpointer
+	name = "Target Integrated Pinpointer"
+	desc = "Even stealthier than a normal implant, it points to a selected GoldenEye keycard."
+	icon = 'icons/obj/device.dmi'
+	icon_state = "pinon"
+
+/datum/status_effect/goldeneye_pinpointer
+	id = "goldeneye_pinpointer"
+	duration = -1
+	tick_interval = PINPOINTER_PING_TIME
+	alert_type = /atom/movable/screen/alert/status_effect/goldeneye_pinpointer
+	/// The range until you're considered 'close'
+	var/range_mid = 8
+	/// The range until you're considered 'too far away'
+	var/range_far = 16
+	/// The target we are pointing towards, refreshes every tick.
+	var/obj/item/target
+	/// Our linked antagonist datum, if any.
+	var/datum/antagonist/assault_operative/linked_antagonist
+
+/datum/status_effect/goldeneye_pinpointer/New(list/arguments)
+	GLOB.goldeneye_pinpointers += src
+	return ..()
+
+/datum/status_effect/goldeneye_pinpointer/Destroy()
+	GLOB.goldeneye_pinpointers -= src
+	if(linked_antagonist)
+		linked_antagonist.pinpointer = null
+		linked_antagonist = null
+	return ..()
+
+/datum/status_effect/goldeneye_pinpointer/tick()
+	if(!owner)
+		qdel(src)
+		return
+	point_to_target()
+
+///Show the distance and direction of a scanned target
+/datum/status_effect/goldeneye_pinpointer/proc/point_to_target()
+	if(!target)
+		linked_alert.icon_state = "pinonnull"
+		return
+
+	var/turf/here = get_turf(owner)
+	var/turf/there = get_turf(target)
+
+	if(here.z != there.z)
+		linked_alert.icon_state = "pinonnull"
+		return
+	if(!get_dist_euclidian(here,there))
+		linked_alert.icon_state = "pinondirect"
+		return
+	linked_alert.setDir(get_dir(here, there))
+
+	var/dist = (get_dist(here, there))
+	if(dist >= 1 && dist <= range_mid)
+		linked_alert.icon_state = "pinonclose"
+	else if(dist > range_mid && dist <= range_far)
+		linked_alert.icon_state = "pinonmedium"
+	else if(dist > range_far)
+		linked_alert.icon_state = "pinonfar"
+
+
+/datum/status_effect/goldeneye_pinpointer/proc/set_target(obj/item/new_target)
+	target = new_target
+	to_chat(owner, span_redtext("Integrated pinpointer set to: [target.name]"))
+
+#undef PINPOINTER_PING_TIME
