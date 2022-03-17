@@ -76,6 +76,11 @@
 	steal_objective.find_target()
 	objectives += steal_objective
 
+/datum/antagonist/traitor/greet()
+	..()
+	if(!silent)
+		to_chat(owner.current, span_notice("Fill out an Opposing Force application to earn an extra [TELECRYSTALS_OPFOR_SKYRAT] TC on approval."))
+
 /datum/antagonist/pirate
 	view_exploitables = TRUE //pirates are flexible antags, not strictly bound by their objective. i could see this working
 
