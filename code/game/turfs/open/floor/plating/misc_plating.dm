@@ -6,7 +6,7 @@
 	initial_gas_mix = OPENTURF_LOW_PRESSURE
 	baseturfs = /turf/open/floor/plating/lowpressure
 
-/turf/open/floor/plating/icemoon
+/turf/open/misc/icemoon
 	icon_state = "plating"
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 
