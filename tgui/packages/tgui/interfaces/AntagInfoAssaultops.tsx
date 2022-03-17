@@ -227,7 +227,7 @@ const KeyPrintout = (props, context) => {
                     disabled={key.selected}
                     key={key.name}
                     icon="key"
-                    content={key.selected ? key.name + ' (' + key.coord_x + ', ' + key.coord_y + ', ' + key.coord_z + ')' + ' (Tracking)' : key.name}
+                    content={key.selected ? key.name + ' (' + key.coord_x + ', ' + key.coord_y + ', ' + key.coord_z + ')' + ' (Tracking)' : key.name + ' (' + key.coord_x + ', ' + key.coord_y + ', ' + key.coord_z + ')'}
                     onClick={() => act('track_key', {
                       key_ref: key.ref,
                     })} />

@@ -112,10 +112,11 @@
 /datum/antagonist/assault_operative/proc/get_goldeneye_keys()
 	var/list/goldeneye_keys = list()
 	for(var/obj/item/goldeneye_key/iterating_key in SSgoldeneye.goldeneye_keys)
+		var/turf/location = get_turf(iterating_key)
 		goldeneye_keys += list(list(
-			"coord_x" = iterating_key.x,
-			"coord_y" = iterating_key.y,
-			"coord_z" = iterating_key.z,
+			"coord_x" = location.x,
+			"coord_y" = location.y,
+			"coord_z" = location.z,
 			"selected" = pinpointer?.target == iterating_key,
 			"name" = iterating_key.goldeneye_tag,
 			"ref" = REF(iterating_key),

@@ -35,15 +35,16 @@ SUBSYSTEM_DEF(goldeneye)
 	if(uploaded_keys >= required_keys)
 		activate()
 		return
-	priority_announce("UNAUTHORISED KEYCARD UPLOAD DETECTED. [uploaded_keys]/[required_keys] KEYS UPLOADED.", "GoldenEye Defence Network")
+	priority_announce("UNAUTHORISED KEYCARD UPLOAD DETECTED. [uploaded_keys]/[required_keys] KEYCARDS UPLOADED.", "GoldenEye Defence Network")
 
 /// Activates goldeneye.
 /datum/controller/subsystem/goldeneye/proc/activate()
-	var/message = "/// GOLDENEYE ACTIVATED /// \n \
+	var/message = "/// GOLDENEYE DEFENCE NETWORK BREACHED /// \n \
 	Unauthorised GoldenEye Defence Network access detected. \n \
+	ICARUS online. \n \
 	Targeting system override detected. \n \
 	New target: NTSS13 \n \
-	The GoldenEye defence network has been activated."
+	ICARUS firing protocols activated."
 	priority_announce(message, "GoldenEye Defence Network", ANNOUNCER_KLAXON)
 	goldeneye_activated = TRUE
 	// TODO: Add a big laser to split the station in two.
