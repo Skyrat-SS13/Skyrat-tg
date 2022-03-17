@@ -22,3 +22,7 @@ SUBSYSTEM_DEF(ticket_ping)
 		return
 
 	message_admins(span_adminnotice("There are currently [valid_ahelps ? "[valid_ahelps] unhandled staff ticket[valid_ahelps == 1 ? "" : "s"] open" : ""][(valid_ahelps && valid_opfors) ? " and " : ""][valid_opfors ? "[valid_opfors] unhandled Opposing Force application[valid_opfors == 1 ? "" : "s"] open" : ""]."))
+	for(var/client/staff as anything in GLOB.admins)
+		if(staff?.prefs?.toggles & SOUND_ADMINHELP) //may as well.
+			SEND_SOUND(staff, sound('modular_skyrat/modules/subsystems/sounds/soft_ping.ogg'))
+		window_flash(staff, ignorepref = TRUE)
