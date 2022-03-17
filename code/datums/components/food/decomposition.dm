@@ -73,7 +73,11 @@
 
 	var/turf/open/open_turf = food.loc
 
+<<<<<<< HEAD
 	if(!istype(open_turf) || istype(open_turf, /turf/open/lava) || istype(open_turf, /turf/open/floor/plating/asteroid/basalt)) //Are we actually in a valid open turf?
+=======
+	if(!istype(open_turf) || istype(open_turf, /turf/open/lava) || istype(open_turf, /turf/open/misc/asteroid)) //Are we actually in a valid open turf?
+>>>>>>> 99413ebcd92 (makes decomposing take all asteroid floor into account (#65439))
 		remove_timer()
 		return
 
