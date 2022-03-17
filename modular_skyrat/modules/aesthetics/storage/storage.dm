@@ -93,7 +93,7 @@
 
 
 /obj/item/storage/box/cyber_implants
-	illustration = NULL //Included in the sprite
+	illustration = null //Included in the sprite
 
 //Unchanged from TG:
 /obj/item/storage/box/monkeycubes
