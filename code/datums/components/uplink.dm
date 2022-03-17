@@ -44,7 +44,7 @@
 	lockable = TRUE,
 	enabled = FALSE,
 	uplink_flag = UPLINK_TRAITORS,
-	starting_tc = TELECRYSTALS_DEFAULT,
+	starting_tc = TELECRYSTALS_DEFAULT_SKYRAT, //SKYRAT EDIT
 	has_progression = FALSE,
 	datum/uplink_handler/uplink_handler_override,
 )

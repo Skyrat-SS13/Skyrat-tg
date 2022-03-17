@@ -545,6 +545,8 @@
 	send_system_message("[approver ? get_admin_ckey(approver) : "The OPFOR subsystem"] has approved the application")
 	send_admins_opfor_message("[span_green("APPROVED")]: [ADMIN_LOOKUPFLW(approver)] has approved [ckey]'s application")
 	ticket_counter_add_handled(approver.key, 1)
+	var/datum/component/uplink/uplink = mind_reference.find_syndicate_uplink(FALSE)
+	uplink.uplink_handler.telecrystals += TELECRYSTALS_OPFOR_SKYRAT
 
 /datum/opposing_force/proc/close_application(mob/user)
 	if(status == OPFOR_STATUS_NOT_SUBMITTED)

@@ -11,7 +11,7 @@
 	/// The current uplink flag of this uplink
 	var/uplink_flag = NONE
 	/// This uplink has progression
-	var/has_progression = TRUE
+	var/has_progression = FALSE //SKYRAT EDIT
 	/// The amount of experience points this traitor has
 	var/progression_points = 0
 	/// The purchase log of this uplink handler
