@@ -98,6 +98,9 @@
 		var/datum/quirk/item_quirk/allergic/allergies_quirk = quirky
 		allergy_list = allergies_quirk.allergies
 
+	//Variable that handles storage of chemical temperature
+	var/chemical_temp = reagents.chem_temp
+
 	//The code that handles the actual injections
 	for(var/datum/reagent/meds in reagents.reagent_list)
 		if(!is_type_in_list(meds, allowed_medicine))
@@ -105,7 +108,7 @@
 		if(is_type_in_list(meds, allergy_list))
 			prevention_used = TRUE
 		else
-			injectee.reagents.add_reagent(meds.type, meds.volume)
+			injectee.reagents.add_reagent(meds.type, meds.volume, null, chemical_temp, meds.purity)
 
 	injectee.visible_message(span_notice("[src] embeds itself into [injectee]"), span_notice("You feel a small prick as [src] embeds itself into you."))
 	if(prevention_used) //Used to signal that allergens were not injected into the target mob.
