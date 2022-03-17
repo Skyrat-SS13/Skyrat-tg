@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { LabeledList, Stack, Button, Section, ProgressBar, Box, Tabs } from '../components';
+import { LabeledList, Stack, Button, Section, ProgressBar, Box, Tabs, Divider } from '../components';
 import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
 
@@ -28,6 +28,9 @@ type ExtractedTargets = {
 }
 
 type GoldeneyeKeys = {
+  coord_x: number;
+  coord_y: number;
+  coord_z: number;
   name: string;
   ref: string;
   selected: BooleanLike;
@@ -35,6 +38,8 @@ type GoldeneyeKeys = {
 
 type Info = {
   equipped: Number;
+  required_keys: Number;
+  uploaded_keys: Number;
   loadouts: Loadouts[];
   objectives: Objectives[];
   available_targets: AvailableTargets[];
@@ -46,12 +51,14 @@ export const AntagInfoAssaultops = (props, context) => {
   const [tab, setTab] = useLocalState(context, 'tab', 1);
   const { data } = useBackend<Info>(context);
   const {
+    required_keys,
+    uploaded_keys,
     equipped,
     objectives,
   } = data;
   return (
     <Window
-      theme="syndicate"
+      theme="hackerman"
       width={650}
       height={650}>
       <Window.Content>
@@ -66,8 +73,23 @@ export const AntagInfoAssaultops = (props, context) => {
                   </Box>
                 </Box>
               </Stack.Item>
-              <Section title="GoldenEye Subversion Progress">
-                <ProgressBar />
+              <Section title="GoldenEye Subversion Progress" fontSize="15px">
+                <Stack>
+                  <Stack.Item grow>
+                    <ProgressBar
+                      color="green"
+                      value={uploaded_keys}
+                      minValue={0}
+                      maxValue={required_keys}
+                    />
+                  </Stack.Item>
+                  <Stack.Item color="yellow" >
+                    Required Keycards: {required_keys}
+                  </Stack.Item>
+                  <Stack.Item color="green">
+                    Uploaded Keycards: {uploaded_keys}
+                  </Stack.Item>
+                </Stack>
               </Section>
             </Section>
             <Section title="Objectives">
@@ -116,7 +138,7 @@ export const AntagInfoAssaultops = (props, context) => {
             {tab === 2 && (
               <KeyPrintout />
             )}
-            {tab === 3 && (
+            {tab === 3 && !equipped && (
               <EquipmentPrintout />
             )}
           </Stack.Item>
@@ -134,7 +156,7 @@ const TargetPrintout = (props, context) => {
   } = data;
   return (
     <Section grow>
-      <Box textColor="yellow" fontSize="20px" mb={1}>Target List</Box>
+      <Box textColor="red" fontSize="20px" mb={1}>Target List</Box>
       <Stack>
         <Stack.Item grow>
           <Section title="Available Targets">
@@ -154,10 +176,11 @@ const TargetPrintout = (props, context) => {
             </LabeledList>
           </Section>
         </Stack.Item>
+        <Divider vertical />
         <Stack.Item grow>
           <Section title="Extracted Targets">
             <Box textColor="green" mb={2}>
-              These are targets you have extracted a GoldenEye key from.
+              These are targets you have extracted a GoldenEye keycard from.
               They cannot be extracted again.
             </Box>
             <LabeledList>
@@ -204,7 +227,7 @@ const KeyPrintout = (props, context) => {
                     disabled={key.selected}
                     key={key.name}
                     icon="key"
-                    content={key.selected ? key.name + ' (Tracking)' : key.name}
+                    content={key.selected ? key.name + ' (' + key.coord_x + ', ' + key.coord_y + ', ' + key.coord_z + ')' + ' (Tracking)' : key.name}
                     onClick={() => act('track_key', {
                       key_ref: key.ref,
                     })} />
@@ -218,7 +241,6 @@ const KeyPrintout = (props, context) => {
     </Section>
   );
 };
-
 
 const EquipmentPrintout = (props, context) => {
   const { act, data } = useBackend<Info>(context);

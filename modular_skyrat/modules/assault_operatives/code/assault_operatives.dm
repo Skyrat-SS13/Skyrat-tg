@@ -66,6 +66,10 @@
 
 	data["loadouts"] = get_loadouts()
 
+	data["required_keys"] = SSgoldeneye.required_keys
+
+	data["uploaded_keys"] = SSgoldeneye.uploaded_keys
+
 	data["available_targets"] = get_available_targets()
 	data["extracted_targets"] = get_extracted_targets()
 
@@ -109,6 +113,9 @@
 	var/list/goldeneye_keys = list()
 	for(var/obj/item/goldeneye_key/iterating_key in SSgoldeneye.goldeneye_keys)
 		goldeneye_keys += list(list(
+			"coord_x" = iterating_key.x,
+			"coord_y" = iterating_key.y,
+			"coord_z" = iterating_key.z,
 			"selected" = pinpointer?.target == iterating_key,
 			"name" = iterating_key.goldeneye_tag,
 			"ref" = REF(iterating_key),

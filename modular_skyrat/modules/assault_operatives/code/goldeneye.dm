@@ -3,7 +3,7 @@ GLOBAL_LIST_EMPTY(goldeneye_pinpointers)
 /**
  * GoldenEye defence network
  *
- * Contains: Subsystem, Key, Terminal and Objective
+ * Contains: Subsystem, Keycard, Terminal and Objective
  */
 
 SUBSYSTEM_DEF(goldeneye)
@@ -61,7 +61,7 @@ SUBSYSTEM_DEF(goldeneye)
 // Goldeneye key
 /obj/item/goldeneye_key
 	name = "\improper GoldenEye Authentication Keycard"
-	desc = "A high profile authentication key to Nanotrasen's GoldenEye defence network."
+	desc = "A high profile authentication keycard to Nanotrasen's GoldenEye defence network."
 	icon = 'modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi'
 	icon_state = "goldeneye_key"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
@@ -74,7 +74,7 @@ SUBSYSTEM_DEF(goldeneye)
 	. = ..()
 	SSgoldeneye.goldeneye_keys += src
 	goldeneye_tag = "G[rand(10000, 99999)]"
-	name = "\improper GoldenEye Authentication Key: [goldeneye_tag]"
+	name = "\improper GoldenEye Authentication Keycard: [goldeneye_tag]"
 	AddComponent(/datum/component/gps/item, goldeneye_tag)
 
 /obj/item/goldeneye_key/examine(mob/user)
@@ -106,17 +106,17 @@ SUBSYSTEM_DEF(goldeneye)
 		playsound(src, 'sound/machines/nuke/angry_beep.ogg', 100)
 		return
 	var/obj/item/goldeneye_key/inserting_key = weapon
-	say("GOLDENEYE KEY ACCEPTED: Please wait while the key is verified...")
+	say("GOLDENEYE KEYCARD ACCEPTED: Please wait while the keycard is verified...")
 	playsound(src, 'sound/machines/nuke/general_beep.ogg', 100)
 	uploading = TRUE
 	if(do_after(user, 10 SECONDS, src))
-		say("GOLDENEYE KEY AUTHENTICATED!")
+		say("GOLDENEYE KEYCARD AUTHENTICATED!")
 		playsound(src, 'sound/machines/nuke/confirm_beep.ogg', 100)
 		SSgoldeneye.upload_key()
 		uploading = FALSE
 		qdel(inserting_key)
 	else
-		say("GOLDENEYE KEY VERIFICATION FAILED: Please try again.")
+		say("GOLDENEYE KEYCARD VERIFICATION FAILED: Please try again.")
 		playsound(src, 'sound/machines/nuke/angry_beep.ogg', 100)
 		uploading = FALSE
 
@@ -137,7 +137,7 @@ SUBSYSTEM_DEF(goldeneye)
 	if(!LAZYLEN(SSgoldeneye.goldeneye_keys))
 		to_chat(user, span_danger("ERROR! No GoldenEye keys detected!"))
 		return
-	target = tgui_input_list(user, "Select GoldenEye key to track", "GoldenEye key", SSgoldeneye.goldeneye_keys)
+	target = tgui_input_list(user, "Select GoldenEye keycard to track", "GoldenEye keycard", SSgoldeneye.goldeneye_keys)
 	if(target)
 		to_chat(user, span_notice("Set to track: [target.name]"))
 
