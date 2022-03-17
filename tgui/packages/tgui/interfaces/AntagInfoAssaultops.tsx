@@ -30,6 +30,7 @@ type ExtractedTargets = {
 type GoldeneyeKeys = {
   name: string;
   ref: string;
+  selected: BooleanLike;
 }
 
 type Info = {
@@ -96,7 +97,7 @@ export const AntagInfoAssaultops = (props, context) => {
                     width="100%"
                     selected={tab === 2}
                     onClick={() => setTab(2)}>
-                    GoldenEye Keys
+                    GoldenEye Keycards
                   </Tabs.Tab>
                   {!equipped && (
                     <Tabs.Tab
@@ -185,9 +186,9 @@ const KeyPrintout = (props, context) => {
   } = data;
   return (
     <Section grow>
-      <Box textColor="red" fontSize="20px">GoldenEye Keys</Box>
+      <Box textColor="red" fontSize="20px">GoldenEye Keycards</Box>
       <Box mb={1}>
-        A list of GoldenEye keys currently in existence.
+        A list of GoldenEye keycards currently in existence.
         Select one to track where it is using your hud.
       </Box>
       <Stack vertical fill>
@@ -200,6 +201,7 @@ const KeyPrintout = (props, context) => {
                     width="100%"
                     textAlign="center"
                     color="yellow"
+                    disabled={key.selected}
                     key={key.name}
                     icon="key"
                     content={key.name}
