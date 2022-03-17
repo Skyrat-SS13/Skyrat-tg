@@ -252,7 +252,6 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 		/obj/item/rack_parts = 100,
 		/obj/item/radio/headset = 100,
 		/obj/item/reagent_containers/food/drinks/coffee = 50,
-		/obj/item/reagent_containers/food/drinks/colocup/lean = 50,
 		/obj/item/reagent_containers/food/drinks/flask = 50,
 		/obj/item/reagent_containers/food/drinks/ice/prison = 200,
 		/obj/item/reagent_containers/spray/pestspray = 50,

@@ -73,9 +73,9 @@
 			name = "internals crate"
 			icon_state = "o2crate"
 		if(4)
-			new /obj/item/storage/firstaid/regular(src)
-			new /obj/item/storage/firstaid/o2(src)
-			new /obj/item/storage/firstaid/toxin(src)
+			new /obj/item/storage/medkit/regular(src)
+			new /obj/item/storage/medkit/o2(src)
+			new /obj/item/storage/medkit/toxin(src)
 			new /obj/item/reagent_containers/hypospray/medipen(src)
 			new /obj/item/reagent_containers/hypospray/medipen/ekit(src)
 			desc = "A medical crate."

@@ -64,7 +64,7 @@
 /datum/job/blueshield
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
-/datum/job/nanotrasen_representative
+/datum/job/nanotrasen_consultant
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
 // Command
