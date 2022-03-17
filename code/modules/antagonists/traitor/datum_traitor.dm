@@ -27,6 +27,10 @@
 
 	/// The uplink handler that this traitor belongs to.
 	var/datum/uplink_handler/uplink_handler
+	// SKYRAT EDIT START
+	///the final objective the traitor has to accomplish, be it escaping, hijacking, or just martyrdom.
+	var/datum/objective/ending_objective
+	// SKYRAT EDIT END
 
 	var/uplink_sale_count = 3
 
@@ -69,6 +73,7 @@
 
 	if(give_objectives)
 		forge_traitor_objectives()
+		forge_ending_objective() //SKYRAT EDIT
 
 	var/faction = prob(75) ? FACTION_SYNDICATE : FACTION_NANOTRASEN
 
@@ -217,9 +222,12 @@
 
 	*/
 	var/objective_limit = CONFIG_GET(number/traitor_objectives_amount)
+	var/objective_count = 0
 
 	for(var/objective in objective_count to objective_limit - 1)
 		objectives += forge_single_generic_objective()
+
+
 	//SKYRAT EDIT END
 
 /datum/antagonist/traitor/apply_innate_effects(mob/living/mob_override)

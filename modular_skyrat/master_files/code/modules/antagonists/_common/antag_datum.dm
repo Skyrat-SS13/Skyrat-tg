@@ -64,7 +64,7 @@
 		objectives += kill_objective
 		return
 
-	if(prob(DOWNLOAD_PROB) && !(locate(/datum/objective/download) in objectives) && !(owner.assigned_role.departments & DEPARTMENT_SCIENCE))
+	if(prob(DOWNLOAD_PROB) && !(locate(/datum/objective/download) in objectives) && !(owner.assigned_role.departments_list.Find(/datum/job_department/science)))
 		var/datum/objective/download/download_objective = new
 		download_objective.owner = owner
 		download_objective.gen_amount_goal()
@@ -75,6 +75,29 @@
 	steal_objective.owner = owner
 	steal_objective.find_target()
 	objectives += steal_objective
+
+/datum/antagonist/traitor/proc/forge_ending_objective()
+	if(is_hijacker)
+		ending_objective = new /datum/objective/hijack
+		ending_objective.owner = owner
+		return
+
+	var/martyr_compatibility = TRUE
+
+	for(var/datum/objective/traitor_objective in objectives)
+		if(!traitor_objective.martyr_compatible)
+			martyr_compatibility = FALSE
+			break
+
+	if(martyr_compatibility && prob(MARTYR_PROB))
+		ending_objective = new /datum/objective/martyr
+		ending_objective.owner = owner
+		objectives += ending_objective
+		return
+
+	ending_objective = new /datum/objective/escape
+	ending_objective.owner = owner
+	objectives += ending_objective
 
 /datum/antagonist/traitor/greet()
 	..()
