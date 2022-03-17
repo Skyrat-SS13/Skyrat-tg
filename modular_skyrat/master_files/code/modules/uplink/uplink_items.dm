@@ -144,29 +144,13 @@
 
 /datum/uplink_item/stealthy_tools/announcement
 	name = "Fake Announcement"
-	desc = "When purchased, make a fake announcement of your choice."
-	item = /obj/effect/gibspawner/generic
+	desc = "A device that allows you to spoof an announcement to the station of your choice."
+	item = /obj/item/device/traitor_announcer
 	surplus = 0
 	progression_minimum = 20 MINUTES
 	cost = 3
 	restricted = TRUE
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
-
-/datum/uplink_item/stealthy_tools/announcement/spawn_item(spawn_path, mob/living/user, datum/uplink_handler/uplink_handler, atom/movable/source)
-	var/input = tgui_input_text(user, "Choose Announcement Message", "")
-	if(!input)
-		uplink_handler.telecrystals += cost
-		addtimer(CALLBACK(src, .proc/unlog, uplink_handler), 5 SECONDS)
-		return
-
-	priority_announce(html_decode(user.treat_message(input)), null, ANNOUNCER_CAPTAIN, JOB_CAPTAIN, has_important_message = TRUE)
-	user.log_talk(input, LOG_SAY, tag = "priority announcement")
-	message_admins("[ADMIN_LOOKUPFLW(user)] has purchased a priority announement from their uplink.")
-	return source
-
-/// `spawn_item()` is called before the item is added to the purchase log, so we've gotta remove it after a few seconds.
-/datum/uplink_item/stealthy_tools/announcement/proc/unlog(datum/uplink_handler/uplink_handler)
-	uplink_handler.purchase_log -= src
 
 //EXPLOSIVES
 /datum/uplink_item/explosives/buzzkill_traitor
