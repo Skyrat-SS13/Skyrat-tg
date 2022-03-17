@@ -114,7 +114,7 @@ const CrewTableEntry = (props, context) => {
     name,
     assignment,
     ijob,
-    is_robot,
+    is_robot, //SKYRAT EDIT ADD
     life_status,
     oxydam,
     toxdam,
