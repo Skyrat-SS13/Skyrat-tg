@@ -217,6 +217,7 @@ SUBSYSTEM_DEF(goldeneye)
 ///Show the distance and direction of a scanned target
 /datum/status_effect/goldeneye_pinpointer/proc/point_to_target()
 	if(QDELETED(target))
+		linked_alert.icon_state = "pinonnull"
 		target = null
 		return
 	if(!target)
