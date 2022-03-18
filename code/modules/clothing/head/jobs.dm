@@ -140,8 +140,6 @@
 	armor = list(MELEE = 40, BULLET = 30, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 10, FIRE = 50, ACID = 60, WOUND = 10)
 	icon_state = "hoscap"
 	strip_delay = 80
-<<<<<<< HEAD
-	dynamic_hair_suffix = ""
 	//SKYRAT EDIT ADDITION START
 	unique_reskin = list(
 		"Sheriff" = list(
@@ -170,9 +168,6 @@
 		)
 	)
 	/// SKYRAT EDIT ADDITION END
-=======
-
->>>>>>> 0c305d0c581 (Removes Dynamic Hair Suffixes (#65209))
 
 /obj/item/clothing/head/hos/syndicate
 	name = "syndicate cap"
