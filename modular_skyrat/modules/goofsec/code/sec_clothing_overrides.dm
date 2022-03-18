@@ -468,6 +468,18 @@
 		to_chat(H, span_alertwarning("Lopland Peacekeeper uniforms don't include a Skirt variant! You've been equipped with a jumpsuit instead."))
 		uniform = /obj/item/clothing/under/rank/security/officer
 
+/datum/job/head_of_security/pre_equip(mob/living/carbon/human/H)
+	. = ..()
+	if(H.jumpsuit_style == PREF_SKIRT)
+		to_chat(H, span_alertwarning("Lopland Peacekeeper uniforms don't include a Skirt variant! You've been equipped with a jumpsuit instead."))
+		uniform = /obj/item/clothing/under/rank/security/head_of_security
+
+/datum/job/warden/pre_equip(mob/living/carbon/human/H)
+	. = ..()
+	if(H.jumpsuit_style == PREF_SKIRT)
+		to_chat(H, span_alertwarning("Lopland Peacekeeper uniforms don't include a Skirt variant! You've been equipped with a jumpsuit instead."))
+		uniform = /obj/item/clothing/under/rank/security/warden
+
 //PDA Greyscale Overrides
 /obj/item/pda/security
 	greyscale_colors = "#2B356D#1E1E1E"
