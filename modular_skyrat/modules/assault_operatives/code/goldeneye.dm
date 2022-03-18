@@ -1,5 +1,8 @@
 GLOBAL_LIST_EMPTY(goldeneye_pinpointers)
 
+#define ICARUS_IGINTION_TIME_LOWER 10 SECONDS
+#define ICARUS_IGINTION_TIME_UPPER 10 SECONDS
+
 /**
  * GoldenEye defence network
  *
@@ -20,6 +23,8 @@ SUBSYSTEM_DEF(goldeneye)
 	var/required_keys = GOLDENEYE_REQUIRED_KEYS_MAXIMUM
 	/// Have we been activated?
 	var/goldeneye_activated = FALSE
+	/// How long until ICARUS fires?
+	var/ignition_time = ICARUS_IGINTION_TIME_UPPER
 
 /// A safe proc for adding a targets mind to the tracked extracted minds.
 /datum/controller/subsystem/goldeneye/proc/extract_mind(datum/mind/target_mind)
@@ -39,15 +44,24 @@ SUBSYSTEM_DEF(goldeneye)
 
 /// Activates goldeneye.
 /datum/controller/subsystem/goldeneye/proc/activate()
+	ignition_time = rand(ICARUS_IGINTION_TIME_LOWER, ICARUS_IGINTION_TIME_UPPER)
 	var/message = "/// GOLDENEYE DEFENCE NETWORK BREACHED /// \n \
 	Unauthorised GoldenEye Defence Network access detected. \n \
 	ICARUS online. \n \
-	Targeting system override detected. \n \
-	New target: NTSS13 \n \
-	ICARUS firing protocols activated."
-	priority_announce(message, "GoldenEye Defence Network", ANNOUNCER_KLAXON)
+	Targeting system override detected... \n \
+	New target: /NTSS13/ \n \
+	ICARUS firing protocols activated. \n \
+	ETA to fire:[ignition_time / 10] seconds."
+
+	priority_announce(message, "GoldenEye Defence Network")
 	goldeneye_activated = TRUE
-	// TODO: Add a big laser to split the station in two.
+
+	addtimer(CALLBACK(src, .proc/fire_icarus), ignition_time)
+
+
+/datum/controller/subsystem/goldeneye/proc/fire_icarus()
+	var/datum/round_event_control/icarus_sunbeam/event_to_start = new()
+	event_to_start.runEvent()
 
 /// Checks if a mind(target_mind) is a head and if they aren't in the goldeneye_extracted_minds list.
 /datum/controller/subsystem/goldeneye/proc/check_goldeneye_target(datum/mind/target_mind)

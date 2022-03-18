@@ -159,14 +159,15 @@ GLOBAL_LIST_INIT(assaultops_equipment, build_assaultops_equipment())
 /datum/outfit/assaultops/heavy
 	name = "Assault Operative - Heavy Gunner"
 
-	l_hand = /obj/item/gun/ballistic/automatic/mg34/mg42
+	l_hand = /obj/item/gun/ballistic/automatic/pitbull/pulse/r40
+
 
 	backpack_contents = list(
 		/obj/item/storage/box/survival/syndie,
 		/obj/item/knife/combat,
 		/obj/item/gun/energy/disabler,
 		/obj/item/grenade/syndieminibomb,
-		/obj/item/ammo_box/magazine/mg42,
+		/obj/item/ammo_box/magazine/pulse/r40 = 4,
 	)
 
 
