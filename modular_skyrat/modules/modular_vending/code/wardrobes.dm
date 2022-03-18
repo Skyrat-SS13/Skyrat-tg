@@ -1,9 +1,3 @@
-/obj/machinery/vending/wardrobe/sec_wardrobe
-	skyrat_products = list(
-		/obj/item/clothing/under/utility/sec/old = 3,
-		/obj/item/clothing/suit/toggle/jacket/sec/old = 3,
-	)
-
 /obj/machinery/vending/wardrobe/medi_wardrobe
 	skyrat_products = list(
 		/obj/item/radio/headset/headset_med = 3,
