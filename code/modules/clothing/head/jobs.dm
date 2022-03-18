@@ -141,26 +141,33 @@
 	icon_state = "hoscap"
 	strip_delay = 80
 	//SKYRAT EDIT ADDITION START
+	uses_advanced_reskins = TRUE
 	unique_reskin = list(
-		"Sheriff" = list(
+		"Red Cap" = list(
+			RESKIN_ICON = 'icons/obj/clothing/hats.dmi',
+			RESKIN_ICON_STATE = "hoscap",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/head.dmi',
+			RESKIN_WORN_ICON_STATE = "hoscap"
+		),
+		"Blue Cap" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi',
+			RESKIN_ICON_STATE = "hoscap_blue",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi',
+			RESKIN_WORN_ICON_STATE = "hoscap_blue"
+		),
+		"Sol Cap" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi',
+			RESKIN_ICON_STATE = "policechiefcap",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi',
+			RESKIN_WORN_ICON_STATE = "policechiefcap"
+		),
+		"Sheriff Hat" = list(
 			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi',
 			RESKIN_ICON_STATE = "cowboyhat_sec",
 			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi',
 			RESKIN_WORN_ICON_STATE = "cowboyhat_sec"
 		),
-		"Sol" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi',
-			RESKIN_ICON_STATE = "policechiefcap",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi',
-			RESKIN_WORN_ICON_STATE = "policechiefcap"
-		),
-		"Imperial" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi',
-			RESKIN_ICON_STATE = "policechiefcap",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi',
-			RESKIN_WORN_ICON_STATE = "policechiefcap"
-		),
-		"Wide Sheriff" = list(
+		"Wide Sheriff Hat" = list(
 			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi',
 			RESKIN_ICON_STATE = "cowboy_black_sec",
 			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi',
@@ -180,6 +187,7 @@
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#3F3C40#FFCE5B"
+	uses_advanced_reskins = FALSE //Skyrat Edit - prevents reskinning the beret into a not-beret
 
 /obj/item/clothing/head/hos/beret/navyhos
 	name = "head of security's formal beret"
