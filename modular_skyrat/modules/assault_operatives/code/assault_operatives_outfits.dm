@@ -199,7 +199,7 @@ GLOBAL_LIST_INIT(assaultops_equipment, build_assaultops_equipment())
 /datum/outfit/assaultops/engineer
 	name = "Assault Operative - Engineer"
 
-	suit = /obj/item/mod/control/pre_equipped/elite/flamethrower
+	back = /obj/item/mod/control/pre_equipped/elite/flamethrower
 
 	belt = /obj/item/storage/belt/military/abductor/full/assaultops
 
