@@ -90,7 +90,7 @@ SUBSYSTEM_DEF(goldeneye)
 	SSgoldeneye.goldeneye_keys += src
 	goldeneye_tag = "G[rand(10000, 99999)]"
 	name = "\improper GoldenEye Authentication Keycard: [goldeneye_tag]"
-	AddComponent(/datum/component/gps/item, goldeneye_tag, overlay_state = null)
+	AddComponent(/datum/component/gps, goldeneye_tag)
 
 /obj/item/goldeneye_key/examine(mob/user)
 	. = ..()
