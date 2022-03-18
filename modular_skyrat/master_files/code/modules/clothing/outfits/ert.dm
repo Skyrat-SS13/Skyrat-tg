@@ -22,7 +22,7 @@
 	skillchips = list(/obj/item/skillchip/disk_verifier)
 
 	backpack_contents = list(/obj/item/storage/box/survival/engineer = 1,\
-		/obj/item/storage/firstaid/regular = 1,\
+		/obj/item/storage/medkit/regular = 1,\
 		/obj/item/flashlight = 1,\
 		/obj/item/storage/box/handcuffs = 1)
 

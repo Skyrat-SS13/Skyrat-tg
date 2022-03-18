@@ -10,5 +10,5 @@
 /turf/open/floor/glass
 	turf_flags = CAN_BE_DIRTY_1 /// No breaking the glass (doesn't leave plating behind)
 
-/turf/open/floor/plating/asteroid
+/turf/open/misc/asteroid
 	turf_flags = NONE /// They shouldn't break and they shouldn't be dirty, it's literally already a dirty turf.

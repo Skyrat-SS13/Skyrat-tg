@@ -389,7 +389,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	suit_store = /obj/item/flashlight/pen/paramedic
 	backpack_contents = list(/obj/item/storage/box/survival = 1,
 		/obj/item/roller = 1,
-		/obj/item/storage/firstaid/medical = 1,
+		/obj/item/storage/medkit/surgery = 1,
 		/obj/item/solfed_reporter/swat_caller = 1,
 		/obj/item/beamout_tool = 1)
 
