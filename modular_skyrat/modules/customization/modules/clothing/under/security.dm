@@ -15,8 +15,8 @@
 /obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol
 	name = "sol chief of police uniform"
 	desc = "A white satin shirt with a leather belt, the belt buckle is a large NT."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "policechiefalt"
 
 // DETECTIVE
@@ -77,8 +77,8 @@
 /obj/item/clothing/under/rank/security/peacekeeper/sol
 	name = "sol police uniform"
 	desc = "A light blue shirt with navy pants, perfect for opressing the Underclasses, like Catgirls."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "policealt"
 
 ///WARDEN

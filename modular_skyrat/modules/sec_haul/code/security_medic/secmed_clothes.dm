@@ -40,17 +40,13 @@
 /obj/item/clothing/under/rank/security/peacekeeper/security_medic
 	name = "security medics's turtleneck"
 	desc = "A comfy turtleneck with a white armband, denoting the wearer as a security medic."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "security_medic_turtleneck"
 
 /obj/item/clothing/under/rank/security/peacekeeper/security_medic/skirt
 	name = "security medics's skirtleneck"
 	desc = "A comfy turtleneck with a white armband and brown skirt, denoting the wearer as a security medic."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
 	icon_state = "security_medic_turtleneck_skirt"
 
 /obj/item/clothing/head/beret/sec/peacekeeper/security_medic

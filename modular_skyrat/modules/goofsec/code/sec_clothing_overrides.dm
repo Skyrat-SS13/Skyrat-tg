@@ -392,8 +392,8 @@
 //////////////////////
 //Officer
 /obj/item/clothing/under/rank/security/officer
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "security_black"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
@@ -413,14 +413,14 @@
 
 //Warden
 /obj/item/clothing/under/rank/security/warden
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "warden_black"
 
 //HoS
 /obj/item/clothing/under/rank/security/head_of_security
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "hos_black"
 
 /////////////////////
@@ -584,3 +584,5 @@
 	worn_icon = 'icons/mob/clothing/suits/wintercoat.dmi'
 	icon_state = "coatsecurity"
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/red
+
+//PLASMA MEN ARE TO BE LEFT ALONE!!!
