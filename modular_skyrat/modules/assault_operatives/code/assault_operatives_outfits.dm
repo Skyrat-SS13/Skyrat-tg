@@ -75,10 +75,13 @@ GLOBAL_LIST_INIT(assaultops_equipment, build_assaultops_equipment())
 	id = /obj/item/card/id/advanced/chameleon
 	belt = /obj/item/storage/belt/utility/syndicate
 
+	id_trim = /datum/id_trim/chameleon/operative
+
 	/// Do we spawn with a command radio?
 	var/command_radio = FALSE
 	/// Do we give the mob CQC?
 	var/cqc = FALSE
+
 
 /datum/outfit/assaultops/post_equip(mob/living/carbon/human/equipping_human)
 	var/obj/item/radio/radio = equipping_human.ears
@@ -93,6 +96,8 @@ GLOBAL_LIST_INIT(assaultops_equipment, build_assaultops_equipment())
 
 	var/obj/item/implant/weapons_auth/weapons_authorisation = new/obj/item/implant/weapons_auth(equipping_human)
 	weapons_authorisation.implant(equipping_human)
+
+	equipping_human.faction |= ROLE_SYNDICATE
 
 	equipping_human.update_icons()
 

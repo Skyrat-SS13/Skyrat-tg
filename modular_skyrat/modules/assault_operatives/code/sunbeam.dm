@@ -59,7 +59,6 @@
 		transform = our_matrix
 	notify_ghosts("An ICARUS sunbeam has been launched! [target_atom ? "Towards: [target_atom.name]" : ""]", source = src, action = NOTIFY_ORBIT, header = "Somethings burning!")
 	soundloop = new(src, TRUE)
-	playsound(src, 'modular_skyrat/modules/assault_operatives/sound/sunbeam_fire.ogg', 100, FALSE, 20)
 
 /obj/effect/sunbeam/Destroy(force)
 	QDEL_NULL(soundloop)
@@ -151,7 +150,8 @@
 	announceWhen = 1
 
 /datum/round_event/icarus_sunbeam/announce(fake)
-	priority_announce("/// ICARUS SUNBEAM WEAPONS SYSTEM ACTIVATED, USE EXTREME CAUTION! ///", "GoldenEye Defence Network", ANNOUNCER_ICARUS)
+	priority_announce("/// ICARUS SUNBEAM WEAPONS SYSTEM ACTIVATED, USE EXTREME CAUTION! ///", "GoldenEye Defence Network", ANNOUNCER_KLAXON)
+	alert_sound_to_playing('modular_skyrat/modules/assault_operatives/sound/sunbeam_fire.ogg')
 
 /datum/round_event/icarus_sunbeam/start()
 	var/startside = pick(GLOB.cardinals)

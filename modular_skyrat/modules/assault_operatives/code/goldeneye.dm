@@ -1,7 +1,6 @@
 GLOBAL_LIST_EMPTY(goldeneye_pinpointers)
 
-#define ICARUS_IGINTION_TIME_LOWER 10 SECONDS
-#define ICARUS_IGINTION_TIME_UPPER 10 SECONDS
+#define ICARUS_IGINTION_TIME 20 SECONDS
 
 /**
  * GoldenEye defence network
@@ -24,7 +23,7 @@ SUBSYSTEM_DEF(goldeneye)
 	/// Have we been activated?
 	var/goldeneye_activated = FALSE
 	/// How long until ICARUS fires?
-	var/ignition_time = ICARUS_IGINTION_TIME_UPPER
+	var/ignition_time = ICARUS_IGINTION_TIME
 
 /// A safe proc for adding a targets mind to the tracked extracted minds.
 /datum/controller/subsystem/goldeneye/proc/extract_mind(datum/mind/target_mind)
@@ -44,16 +43,15 @@ SUBSYSTEM_DEF(goldeneye)
 
 /// Activates goldeneye.
 /datum/controller/subsystem/goldeneye/proc/activate()
-	ignition_time = rand(ICARUS_IGINTION_TIME_LOWER, ICARUS_IGINTION_TIME_UPPER)
 	var/message = "/// GOLDENEYE DEFENCE NETWORK BREACHED /// \n \
 	Unauthorised GoldenEye Defence Network access detected. \n \
 	ICARUS online. \n \
 	Targeting system override detected... \n \
 	New target: /NTSS13/ \n \
 	ICARUS firing protocols activated. \n \
-	ETA to fire:[ignition_time / 10] seconds."
+	ETA to fire: [ignition_time / 10] seconds."
 
-	priority_announce(message, "GoldenEye Defence Network")
+	priority_announce(message, "GoldenEye Defence Network", ANNOUNCER_ICARUS)
 	goldeneye_activated = TRUE
 
 	addtimer(CALLBACK(src, .proc/fire_icarus), ignition_time)
@@ -115,6 +113,10 @@ SUBSYSTEM_DEF(goldeneye)
 /obj/machinery/goldeneye_upload_terminal/attackby(obj/item/weapon, mob/user, params)
 	. = ..()
 	if(uploading)
+		return
+	if(!is_station_level(z))
+		say("CONNECTION TO GOLDENEYE NOT DETECTED: Please return to comms range.")
+		playsound(src, 'sound/machines/nuke/angry_beep.ogg', 100)
 		return
 	if(!istype(weapon, /obj/item/goldeneye_key))
 		say("AUTHENTICATION ERROR: Please do not insert foreign objects into terminal.")

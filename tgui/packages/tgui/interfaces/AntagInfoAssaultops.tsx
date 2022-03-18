@@ -74,22 +74,28 @@ export const AntagInfoAssaultops = (props, context) => {
                 </Box>
               </Stack.Item>
               <Section title="GoldenEye Subversion Progress" fontSize="15px">
-                <Stack>
-                  <Stack.Item grow>
-                    <ProgressBar
-                      color="green"
-                      value={uploaded_keys}
-                      minValue={0}
-                      maxValue={required_keys}
-                    />
-                  </Stack.Item>
-                  <Stack.Item color="yellow" >
-                    Required Keycards: {required_keys}
-                  </Stack.Item>
-                  <Stack.Item color="green">
-                    Uploaded Keycards: {uploaded_keys}
-                  </Stack.Item>
-                </Stack>
+                {uploaded_keys >= required_keys ? (
+                  <Box fontSize="20px" color="green">
+                    GOLDENEYE ACTIVATED, WELL DONE OPERATIVE.
+                  </Box>
+                ) : (
+                  <Stack>
+                    <Stack.Item grow>
+                      <ProgressBar
+                        color="green"
+                        value={uploaded_keys}
+                        minValue={0}
+                        maxValue={required_keys}
+                      />
+                    </Stack.Item>
+                    <Stack.Item color="yellow" >
+                      Required Keycards: {required_keys}
+                    </Stack.Item>
+                    <Stack.Item color="green">
+                      Uploaded Keycards: {uploaded_keys}
+                    </Stack.Item>
+                  </Stack>
+                )}
               </Section>
             </Section>
             <Section title="Objectives">

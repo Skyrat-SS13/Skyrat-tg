@@ -17,7 +17,7 @@
  */
 /obj/machinery/interrogator
 	name = "In-TERROR-gator"
-	desc = "A morraly corrupt piece of machinery used to extract the human mind into a GoldenEye authentication key. The process is said to be one of the most painful experiences someone can endure."
+	desc = "A morraly corrupt piece of machinery used to extract the human mind into a GoldenEye authentication key. The process is said to be one of the most painful experiences someone can endure. Alt+click to start the process."
 	icon = 'modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi'
 	icon_state = "interrogator_open"
 	state_open = FALSE
@@ -178,7 +178,7 @@
 	addtimer(CALLBACK(src, .proc/announce_creation), ALERT_CREW_TIME)
 
 /obj/machinery/interrogator/proc/announce_creation()
-	priority_announce("CRITICAL SECURITY BREACH DETECTED! A GoldenEye authentication key has been illegally printed, locate it at all costs! Check GPS devices for location!", "GoldenEye Defence Network", ANNOUNCER_KLAXON)
+	priority_announce("CRITICAL SECURITY BREACH DETECTED! A GoldenEye authentication keycard has been illegally extracted and is being sent in somewhere on the station!", "GoldenEye Defence Network")
 	for(var/obj/item/pinpointer/nuke/disk_pinpointers in GLOB.pinpointer_list)
 		disk_pinpointers.switch_mode_to(TRACK_GOLDENEYE) //Pinpointer will track the newly created goldeneye key.
 
