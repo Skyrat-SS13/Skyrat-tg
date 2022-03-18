@@ -27,7 +27,7 @@
 /obj/item/clothing/under/rank/security/brigguard/sweater/women
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "brigguardsuitw"
+	icon_state = "brigguardsweatw"
 	mutant_variants = NONE
 
 

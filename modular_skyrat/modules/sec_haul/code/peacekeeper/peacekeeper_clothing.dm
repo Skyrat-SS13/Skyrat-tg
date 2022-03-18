@@ -116,20 +116,6 @@
 	icon_state = "peacekeeper_black"
 	worn_icon_state = "peacekeeper_black"
 
-/obj/item/clothing/suit/toggle/labcoat/junior_officer
-	name = "junior officer coat"
-	desc = "An Armadyne coat that offers very minimal protection."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "juniorjacket"
-	inhand_icon_state = "jacket"
-	blood_overlay_type = "coat"
-	body_parts_covered = CHEST|ARMS
-	allowed = list(/obj/item/gun/ballistic/automatic/pistol/pepperball, /obj/item/melee/baton)
-	armor = list(MELEE = 15, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 0, BIO = 50, FIRE = 50, ACID = 50)
-	toggle_noun = "zipper"
-	mutant_variants = NONE
-
 /obj/item/clothing/suit/armor/hos/trenchcoat/peacekeeper
 	name = "armored peacekeeper trenchcoat"
 	desc = "A trenchcoat enhanced with a special lightweight kevlar. The epitome of tactical plainclothes."
