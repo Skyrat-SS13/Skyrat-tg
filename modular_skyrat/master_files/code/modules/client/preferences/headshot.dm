@@ -26,7 +26,7 @@
 		to_chat(usr, span_warning("The link needs to be an unshortened Gyazo or Discordapp link!"))
 		return
 	if(!stored_link[usr?.ckey])
-		stored_link[usr.ckey] = null
+		stored_link[usr?.ckey] = null
 	if(stored_link[usr?.ckey] != value)
 		to_chat(usr, span_notice("Please use a relatively SFW image of the head and shoulder area to maintain immersion level. Think of it as a headshot for your ID. Lastly, [span_bold("do not use a real life photo or use any image that is less than serious.")]"))
 		to_chat(usr, span_notice("If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser."))
@@ -37,7 +37,7 @@
 	return TRUE
 
 /datum/preference/text/headshot/is_accessible(datum/preferences/preferences)
-	if(!is_veteran_player(usr?.client) && !GLOB.donator_list[usr.ckey] && !is_admin(usr?.client))
+	if(!is_veteran_player(usr?.client) && !GLOB.donator_list[usr?.ckey] && !is_admin(usr?.client))
 		return FALSE
 	return ..()
 
