@@ -73,6 +73,8 @@
 	var/admin_requested_changes = ""
 	/// The ckey of the person that made this application
 	var/ckey
+	/// Corresponding stat() click button
+	var/obj/effect/statclick/opfor_specific/stat_button
 
 	COOLDOWN_DECLARE(static/request_update_cooldown)
 	COOLDOWN_DECLARE(static/ping_cooldown)
@@ -81,6 +83,8 @@
 	src.mind_reference = mind_reference
 	ckey = ckey(mind_reference.key)
 	send_system_message("[ckey] created the application")
+	stat_button = new()
+	stat_button.opfor = src
 
 /datum/opposing_force/Destroy(force)
 	mind_reference.opposing_force = null
@@ -89,6 +93,7 @@
 	QDEL_LIST(objectives)
 	QDEL_LIST(admin_chat)
 	QDEL_LIST(modification_log)
+	QDEL_NULL(stat_button)
 	return ..()
 
 /datum/opposing_force/Topic(href, list/href_list)
@@ -868,3 +873,21 @@
 	if(!.)
 		return
 	return TRUE
+
+/obj/effect/statclick/opfor_specific
+	var/datum/opposing_force/opfor
+
+/obj/effect/statclick/opfor_specific/Destroy()
+	opfor = null
+	. = ..()
+
+/obj/effect/statclick/opfor_specific/Click()
+	if (!usr.client?.holder)
+		message_admins("[key_name_admin(usr)] non-holder clicked on an OPFOR statclick! ([src])")
+		log_game("[key_name(usr)] non-holder clicked on an OPFOR statclick! ([src])")
+		return
+
+	opfor.ui_interact(usr)
+
+/obj/effect/statclick/opfor_specific/proc/Action()
+	Click()

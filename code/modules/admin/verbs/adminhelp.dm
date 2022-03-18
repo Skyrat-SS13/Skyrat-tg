@@ -115,7 +115,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	//SKYRAT EDIT ADDITION
 	if(LAZYLEN(SSopposing_force.submitted_applications))
 		for(var/datum/opposing_force/opposing_force as anything in SSopposing_force.submitted_applications)
-			L[++L.len] = list("[opposing_force.handling_admin ? "H-[opposing_force.handling_admin]. " : ""]OPFOR: [opposing_force.ckey]", null, REF(opposing_force))
+			L[++L.len] = list("[opposing_force.handling_admin ? "H-[opposing_force.handling_admin]. " : ""]OPFOR:", "[opposing_force.stat_button.update(" [opposing_force.ckey] ")]", null, REF(opposing_force.stat_button))
 	//SKYRAT EDIT END
 	return L
 
