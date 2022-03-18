@@ -130,7 +130,6 @@ GLOBAL_LIST_INIT(assaultops_equipment, build_assaultops_equipment())
 		/obj/item/storage/box/survival/syndie,
 		/obj/item/knife/combat,
 		/obj/item/gun/energy/disabler,
-		/obj/item/implant/explosive/macro,
 		/obj/item/storage/box/assaultops/demoman,
 		/obj/item/ammo_box/magazine/m12g = 4,
 	)
