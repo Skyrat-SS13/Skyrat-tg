@@ -109,6 +109,11 @@
 	icon_state = "labcoat_highvis"
 	mutant_variants = NONE
 
+/obj/item/clothing/suit/toggle/labcoat/highvis/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
+	. = ..()
+	if(!isinhands)
+		. += emissive_appearance(icon_file, "[icon_state]-emissive", alpha = src.alpha)
+
 /obj/item/clothing/suit/toggle/labcoat/para_red
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
