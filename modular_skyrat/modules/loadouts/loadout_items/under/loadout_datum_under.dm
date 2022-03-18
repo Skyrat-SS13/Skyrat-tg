@@ -118,10 +118,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/sectrafficop
 	name = "Sol Traffic Cop Uniform"
-	item_path = /obj/item/clothing/under/rank/security/peacekeeper/junior/sol/traffic
+	item_path = /obj/item/clothing/under/rank/security/peacekeeper/sol/traffic
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_SECURITY_MEDIC)
 
-/datum/loadout_item/under/jumpsuit/solofficerthing
+/datum/loadout_item/under/jumpsuit/solofficer
 	name = "Sol Officer Uniform"
 	item_path = /obj/item/clothing/under/rank/security/peacekeeper/sol
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_SECURITY_MEDIC)

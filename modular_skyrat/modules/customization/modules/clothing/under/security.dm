@@ -1,16 +1,6 @@
-// MODULAR SECURITY WEAR
+// MODULAR SECURITY WEAR (NOT OVERRIDES, LOOK IN 'modular_skyrat\modules\goofsec\code\sec_clothing_overrides.dm')
 
 // HEAD OF SECURITY
-
-/obj/item/clothing/under/rank/security/head_of_security/parade
-	name = "head of security's male formal uniform"
-	desc = "A luxurious uniform for the head of security, woven in a deep red. On the lapel is a small pin in the shape of a deer's head."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "hos_parade_male"
-	inhand_icon_state = "hos_parade_male"
-	can_adjust = FALSE
-
 /obj/item/clothing/suit/armor/hos/parade
 	name = "head of security's parade jacket"
 	desc = "A luxurious deep red jacket for the head of security, woven with a golden trim. It smells of gunpowder and authority."
@@ -30,32 +20,8 @@
 	icon_state = "policechiefalt"
 
 // DETECTIVE
-
-/obj/item/clothing/under/rank/security/detective/undersuit
-	name = "detective's undersuit"
-	desc = "A cool beige undersuit for the discerning PI."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "det_undersuit"
-	inhand_icon_state = "det_undersuit"
-	mutant_variants = NONE
-	can_adjust = FALSE
-
-/obj/item/clothing/suit/det_bomber
-	name = "detective's bomber jacket"
-	desc = "A classic bomber jacket in a deep red. It has a clip on the breast to attach your badge."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "det_bomber"
-	inhand_icon_state = "det_bomber"
-	body_parts_covered = CHEST|ARMS
-	armor = list(MELEE = 25, BULLET = 10, LASER = 25, ENERGY = 35, BOMB = 0, BIO = 0, FIRE = 0, ACID = 45)
-	cold_protection = CHEST|ARMS
-	mutant_variants = NONE
-	heat_protection = CHEST|ARMS
-
 /obj/item/clothing/under/rank/security/detective/cowboy
-	name = "blond cowboy uniform"
+	name = "blonde cowboy uniform"
 	desc = "A blue shirt with some cool cowboy socks. You dig."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
@@ -63,7 +29,7 @@
 	mutant_variants = NONE
 	can_adjust = FALSE
 
-/obj/item/clothing/under/rank/security/detective/cowboy/armorless
+/obj/item/clothing/under/rank/security/detective/cowboy/armorless //Donator variant, just uses the sprite.
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 
 /obj/item/clothing/suit/cowboyvest
@@ -97,7 +63,38 @@
 	mutant_variants = NONE
 	can_adjust = FALSE
 
-/// SEC GENERAL
+///CDO
+/obj/item/clothing/under/rank/security/peacekeeper/sol/cadet
+	name = "sol police cadet uniform"
+	desc = "A light blue shirt with navy pants, perfect for pretending you matter."
+	icon_state = "policecadetalt"
+
+/obj/item/clothing/under/rank/security/peacekeeper/sol/traffic
+	name = "sol traffic police uniform"
+	desc = "A light blue shirt with navy pants, perfect for standing and shouting at cars."
+	icon_state = "policetrafficalt"
+///OFFICERS
+/obj/item/clothing/under/rank/security/peacekeeper/sol
+	name = "sol police uniform"
+	desc = "A light blue shirt with navy pants, perfect for opressing the Underclasses, like Catgirls."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "policealt"
+
+///WARDEN
+/obj/item/clothing/under/rank/security/warden/peacekeeper/sol
+	name = "sol warden uniform"
+	desc = "A light blue shirt with navy pants, this one seems to have been modified for fat asses, like yourself."
+	icon_state = "policewardenalt"
+
+///SECMED
+/obj/item/clothing/under/rank/medical/doctor/red
+	name = "security medic scrubs"
+	desc = "It's made of a special fiber that provides minor protection against biohazards and acid. This one is in a deep red."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "scrubsred"
+	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 30, ACID = 30, WOUND = 10)
 
 /// PRISONER
 /obj/item/clothing/under/rank/prisoner/protcust
@@ -155,45 +152,3 @@
 	greyscale_config_inhand_left = null
 	greyscale_config_inhand_right = null
 	greyscale_config_worn = null
-
-///CDO
-/obj/item/clothing/under/rank/security/peacekeeper/junior/sol
-	name = "sol police cadet uniform"
-	desc = "A light blue shirt with navy pants, perfect for pretending you matter."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "policecadetalt"
-
-/obj/item/clothing/under/rank/security/peacekeeper/junior/sol/traffic
-	name = "sol traffic police uniform"
-	desc = "A light blue shirt with navy pants, perfect for standing and shouting at cars."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "policetrafficalt"
-///OFFICERS
-/obj/item/clothing/under/rank/security/peacekeeper/sol
-	name = "sol police uniform"
-	desc = "A light blue shirt with navy pants, perfect for opressing the Underclasses, like Catgirls."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "policealt"
-
-///WARDEN
-/obj/item/clothing/under/rank/security/warden/peacekeeper/sol
-	name = "sol warden uniform"
-	desc = "A light blue shirt with navy pants, this one seems to have been modified for fat asses, like yourself."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "policewardenalt"
-
-///SECMED
-/obj/item/clothing/under/rank/medical/doctor/red
-	name = "security medic scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards and acid. This one is in a deep red."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "scrubsred"
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 30, ACID = 30, WOUND = 10)
-
-
-
