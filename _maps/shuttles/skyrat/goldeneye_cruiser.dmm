@@ -1476,6 +1476,21 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/medical)
+"Ih" = (
+/obj/machinery/light/no_nightlight{
+	dir = 8;
+	icon_state = "tube"
+	},
+/obj/machinery/turretid{
+	control_area = null;
+	name = "Prisoner Control Turret";
+	req_access = null;
+	req_access_txt = "150";
+	pixel_x = -28;
+	system_id = "cruiser_turrets_prison"
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/cruiser/hallway)
 "Ii" = (
 /turf/template_noop,
 /area/template_noop)
@@ -1647,10 +1662,6 @@
 /obj/machinery/hydroponics/constructable,
 /turf/open/floor/iron/dark/brown,
 /area/shuttle/syndicate/cruiser/brig)
-"Md" = (
-/obj/structure/sign/departments/security,
-/turf/closed/wall/r_wall/syndicate/cruiser,
-/area/shuttle/syndicate/cruiser/brig)
 "Mo" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/stripes/line{
@@ -1807,6 +1818,14 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/bridge)
+"OB" = (
+/obj/machinery/porta_turret/assaultops/shuttle{
+	name = "Prisoner Control Turret";
+	system_id = "cruiser_turrets_prison"
+	},
+/obj/effect/turf_decal/stripes/red/box,
+/turf/open/floor/iron,
+/area/shuttle/syndicate/cruiser/brig)
 "OL" = (
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 8;
@@ -2115,6 +2134,13 @@
 	dir = 1;
 	icon_state = "pipe11-3"
 	},
+/obj/machinery/turretid{
+	control_area = null;
+	name = "Internal Turret Control";
+	pixel_y = 30;
+	req_access = null;
+	req_access_txt = "150"
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/airlock)
 "SE" = (
@@ -2133,13 +2159,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/engineering)
-"SP" = (
-/obj/machinery/porta_turret/assaultops/shuttle{
-	name = "Defense System Turret";
-	system_id = "cruiser_turrets_outer"
-	},
-/turf/closed/wall/r_wall/syndicate/cruiser,
-/area/shuttle/syndicate/cruiser/brig)
 "SZ" = (
 /obj/machinery/light/dim{
 	dir = 4;
@@ -2590,7 +2609,7 @@ Hr
 vI
 tF
 yx
-dU
+OB
 yx
 yx
 yx
@@ -2628,7 +2647,7 @@ hB
 NL
 WL
 Er
-SP
+Er
 kQ
 kQ
 kQ
@@ -2752,7 +2771,7 @@ rW
 rW
 rW
 aU
-Md
+Er
 Er
 Er
 Er
@@ -2784,7 +2803,7 @@ Vn
 nW
 Ri
 eJ
-Hs
+Ih
 Qq
 Rv
 Qq
