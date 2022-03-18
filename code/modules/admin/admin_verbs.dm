@@ -81,6 +81,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/admin_open_event_spawners_menu, //SKYRAT EDIT ADDITION - EVENTS
 	/datum/admins/proc/toggleaooc,		//SKYRAT EDIT ADDITION - ADMIN
 	/datum/admins/proc/togglesooc,		//SKYRAT EDIT ADDITION - ADMIN
+	/client/proc/view_opfors,			//SKYRAT EDIT
 	/datum/admins/proc/open_borgopanel,
 	/datum/admins/proc/view_all_circuits,
 	/datum/admins/proc/view_all_sdql_spells,
