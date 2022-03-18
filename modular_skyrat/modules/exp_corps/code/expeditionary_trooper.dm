@@ -174,7 +174,7 @@
 	new /obj/item/skillchip/job/engineer(src)
 	new /obj/item/storage/bag/material(src)
 
-//edgy loner with knives
+//edgy loner with knives AND A FUKKEN gun
 /obj/structure/closet/crate/secure/exp_corps/marksman/PopulateContents()
 	new /obj/item/storage/medkit/regular(src)
 	new /obj/item/storage/box/expeditionary_survival(src)
@@ -185,3 +185,4 @@
 	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
 	new /obj/item/storage/belt/military/expeditionary_corps/marksman(src)
 	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
+	new /obj/item/storage/box/gunset/ladon(src)
