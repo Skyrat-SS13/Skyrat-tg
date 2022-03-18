@@ -13,10 +13,10 @@
 	antag_moodlet = /datum/mood_event/focused
 	show_to_ghosts = TRUE
 	hijack_speed = 2
-	preview_outfit = /datum/outfit/syndicate
+	preview_outfit = /datum/outfit/assaultops
 	ui_name = "AntagInfoAssaultops"
 	/// The default outfit given BEFORE they choose their equipment.
-	var/assault_operative_default_outfit = /datum/outfit/syndicate
+	var/assault_operative_default_outfit = /datum/outfit/assaultops
 	/// The team linked to this antagonist datum.
 	var/datum/team/assault_operatives/assault_team
 	/// Should we move the operative to a designated spawn point?

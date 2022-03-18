@@ -146,12 +146,12 @@ GLOBAL_LIST_INIT(assaultops_equipment, build_assaultops_equipment())
 
 	belt = /obj/item/storage/belt/medical/paramedic
 
-	l_hand = /obj/item/gun/ballistic/automatic/pps
+	l_hand = /obj/item/gun/ballistic/automatic/p90
 
 	backpack_contents = list(
 		/obj/item/storage/box/survival/syndie,
 		/obj/item/gun/energy/disabler,
-		/obj/item/ammo_box/magazine/pps = 2,
+		/obj/item/ammo_box/magazine/p90 = 2,
 		/obj/item/storage/medkit/tactical = 2,
 		/obj/item/gun/medbeam,
 	)
