@@ -12,7 +12,7 @@
 #define PCV_ARMOR_POWEROFF list(30, 30, 30, 30, 30, 30, 20, 20, 20, 10)
 
 #define HEV_ARMOR_POWERON list(60, 60, 60, 60, 90, 100, 100, 100, 100, 30)
-#define PCV_ARMOR_POWERON list(45, 45, 45, 45, 60, 75, 50, 50, 50, 40)
+#define PCV_ARMOR_POWERON list(40, 40, 40, 40, 60, 75, 50, 50, 50, 40)
 
 #define HEV_POWERUSE_AIRTANK 2
 
@@ -22,10 +22,14 @@
 #define HEV_COOLDOWN_HEAL 10 SECONDS
 #define HEV_COOLDOWN_RADS 20 SECONDS
 #define HEV_COOLDOWN_ACID 20 SECONDS
+#define PCV_COOLDOWN_HEAL 15 SECONDS
+#define PCV_COOLDOWN_RADS 30 SECONDS
+#define PCV_COOLDOWN_ACID 30 SECONDS
 
 #define HEV_HEAL_AMOUNT 10
 #define PCV_HEAL_AMOUNT 5
 #define HEV_BLOOD_REPLENISHMENT 20
+#define PCV_BLOOD_REPLENISHMENT 10
 
 #define HEV_NOTIFICATION_TEXT_AND_VOICE "VOICE_AND_TEXT"
 #define HEV_NOTIFICATION_TEXT "TEXT_ONLY"
@@ -130,6 +134,11 @@
 	var/acid_statement_cooldown
 	var/rad_statement_cooldown
 
+	///Static cooldowns for even more armor differentiation, duuh.
+	var/health_static_cooldown = HEV_COOLDOWN_HEAL
+	var/rads_static_cooldown = HEV_COOLDOWN_RADS
+	var/acid_static_cooldown = HEV_COOLDOWN_ACID
+
 	///Muh alarms
 	var/blood_loss_alarm = FALSE
 	var/toxins_alarm = FALSE
@@ -151,6 +160,7 @@
 	var/armor_poweroff = HEV_ARMOR_POWEROFF
 	var/armor_poweron = HEV_ARMOR_POWERON
 	var/heal_amount = HEV_HEAL_AMOUNT
+	var/blood_replenishment = HEV_BLOOD_REPLENISHMENT
 	var/suit_name = "HEV MARK IV"
 
 	var/list/queued_voice_lines = list()
@@ -522,7 +532,7 @@
 		return
 	if(current_user.blood_volume < BLOOD_VOLUME_OKAY)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
-			current_user.blood_volume += HEV_BLOOD_REPLENISHMENT
+			current_user.blood_volume += blood_replenishment
 		if(!blood_loss_alarm)
 			send_hev_sound(blood_loss_sound)
 			blood_loss_alarm = TRUE
@@ -566,12 +576,12 @@
 	if(new_stamloss)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
 			current_user.adjustStaminaLoss(-HEV_HEAL_AMOUNT)
-			healing_current_cooldown = world.time + HEV_COOLDOWN_HEAL * 2
+			healing_current_cooldown = world.time + health_static_cooldown * 2
 
 	if(new_oxyloss)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
 			current_user.adjustOxyLoss(-HEV_HEAL_AMOUNT)
-			healing_current_cooldown = world.time + HEV_COOLDOWN_HEAL
+			healing_current_cooldown = world.time + health_static_cooldown
 			send_message("ADRENALINE ADMINISTERED", HEV_COLOR_BLUE)
 			send_hev_sound(morphine_sound)
 		return
@@ -579,7 +589,7 @@
 	if(new_bruteloss)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
 			current_user.adjustBruteLoss(-HEV_HEAL_AMOUNT)
-			healing_current_cooldown = world.time + HEV_COOLDOWN_HEAL
+			healing_current_cooldown = world.time + health_static_cooldown
 			send_message("BRUTE MEDICAL ATTENTION ADMINISTERED", HEV_COLOR_BLUE)
 			send_hev_sound(wound_sound)
 		return
@@ -587,7 +597,7 @@
 	if(new_fireloss)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
 			current_user.adjustFireLoss(-HEV_HEAL_AMOUNT)
-			healing_current_cooldown = world.time + HEV_COOLDOWN_HEAL
+			healing_current_cooldown = world.time + health_static_cooldown
 			send_message("BURN MEDICAL ATTENTION ADMINISTERED", HEV_COLOR_BLUE)
 			send_hev_sound(wound_sound)
 		return
@@ -595,7 +605,7 @@
 	if(new_toxloss)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
 			current_user.adjustToxLoss(-HEV_HEAL_AMOUNT)
-			healing_current_cooldown = world.time + HEV_COOLDOWN_HEAL
+			healing_current_cooldown = world.time + health_static_cooldown
 			send_message("TOXIN MEDICAL ATTENTION ADMINISTERED", HEV_COLOR_BLUE)
 			send_hev_sound(antitoxin_sound)
 		return
@@ -603,7 +613,7 @@
 	if(new_cloneloss)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
 			current_user.adjustCloneLoss(-HEV_HEAL_AMOUNT)
-			healing_current_cooldown = world.time + HEV_COOLDOWN_HEAL
+			healing_current_cooldown = world.time + health_static_cooldown
 			send_message("MEDICAL ATTENTION ADMINISTERED", HEV_COLOR_BLUE)
 			send_hev_sound(antidote_sound)
 		return
@@ -661,7 +671,7 @@
 	SIGNAL_HANDLER
 	if(world.time <= acid_statement_cooldown)
 		return
-	acid_statement_cooldown = world.time + HEV_COOLDOWN_ACID
+	acid_statement_cooldown = world.time + acid_static_cooldown
 	send_hev_sound(chemical_sound)
 
 /obj/item/clothing/suit/space/hev_suit/proc/weaponselect()
@@ -852,6 +862,10 @@
 	armor_poweroff = PCV_ARMOR_POWEROFF
 	armor_poweron = PCV_ARMOR_POWERON
 	heal_amount = PCV_HEAL_AMOUNT
+	blood_replenishment = PCV_BLOOD_REPLENISHMENT
+	health_static_cooldown = PCV_COOLDOWN_HEAL
+	rads_static_cooldown = PCV_COOLDOWN_RADS
+	acid_static_cooldown = PCV_COOLDOWN_ACID
 	suit_name = "PCV MARK II"
 
 #undef HEV_COLOR_GREEN

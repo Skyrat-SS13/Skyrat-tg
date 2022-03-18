@@ -6,20 +6,20 @@
 	static_lighting = FALSE
 
 /turf/closed/mineral/black_mesa
-	turf_type = /turf/open/floor/plating/beach/sand/black_mesa
-	baseturfs = /turf/open/floor/plating/beach/sand/black_mesa
+	turf_type = /turf/open/misc/beach/sand/black_mesa
+	baseturfs = /turf/open/misc/beach/sand/black_mesa
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 
 //Floors that no longer lead into space (innovative!)
-/turf/open/floor/plating/beach/sand/black_mesa
-	baseturfs = /turf/open/floor/plating/beach/sand/black_mesa
+/turf/open/misc/beach/sand/black_mesa
+	baseturfs = /turf/open/misc/beach/sand/black_mesa
 	name = "sand"
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = TRUE
 
 /obj/effect/baseturf_helper/black_mesa
 	name = "black mesa sand baseturf editor"
-	baseturf = /turf/open/floor/plating/beach/sand/black_mesa
+	baseturf = /turf/open/misc/beach/sand/black_mesa
 
 /mob/living/simple_animal/hostile/blackmesa
 	var/list/alert_sounds
@@ -354,19 +354,21 @@
 ///////////////////HECU SPAWNERS
 /obj/effect/spawner/random/hecu_smg
 	name = "HECU SMG drops"
-	spawn_all_loot = TRUE
-	loot = list(/obj/item/gun/ballistic/automatic/cfa_wildcat = 30,
-				/obj/item/clothing/mask/gas/hecu2 = 20,
-				/obj/item/clothing/head/helmet = 20,
+	spawn_all_loot = FALSE
+	loot = list(/obj/item/gun/ballistic/automatic/cfa_wildcat = 15,
+				/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat = 25,
+				/obj/item/clothing/mask/gas/hecu2 = 15,
+				/obj/item/clothing/head/helmet = 15,
 				/obj/item/clothing/suit/armor/vest = 15,
 				/obj/item/clothing/shoes/combat = 15)
 
 /obj/effect/spawner/random/hecu_deagle
 	name = "HECU Deagle drops"
-	spawn_all_loot = TRUE
-	loot = list(/obj/item/gun/ballistic/automatic/pistol/deagle = 30,
-				/obj/item/clothing/mask/gas/hecu2 = 20,
-				/obj/item/clothing/head/helmet = 20,
+	spawn_all_loot = FALSE
+	loot = list(/obj/item/gun/ballistic/automatic/pistol/deagle = 15,
+				/obj/item/ammo_box/magazine/m50 = 25,
+				/obj/item/clothing/mask/gas/hecu2 = 15,
+				/obj/item/clothing/head/helmet = 15,
 				/obj/item/clothing/suit/armor/vest = 15,
 				/obj/item/clothing/shoes/combat = 15)
 
@@ -499,10 +501,81 @@
 	loot = list(/obj/item/clothing/suit/armor/vest/blueshirt, /obj/item/gun/ballistic/automatic/pistol/g17/mesa)
 	rapid_melee = 1
 
+/mob/living/simple_animal/hostile/blackmesa/blackops
+	name = "black operative"
+	desc = "Why do we always have to clean up a mess the grunts can't handle?"
+	icon = 'modular_skyrat/master_files/icons/mob/blackmesa.dmi'
+	icon_state = "blackops"
+	icon_living = "blackops"
+	icon_dead = "blackops"
+	icon_gib = "syndicate_gib"
+	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
+	sentience_type = SENTIENCE_HUMANOID
+	speak_chance = 10
+	speak = list("Got a visual!")
+	turns_per_move = 5
+	speed = 0
+	stat_attack = HARD_CRIT
+	robust_searching = 1
+	maxHealth = 200
+	health = 200
+	harm_intent_damage = 25
+	melee_damage_lower = 30
+	melee_damage_upper = 30
+	attack_verb_continuous = "strikes"
+	attack_verb_simple = "strikes"
+	attack_sound = 'sound/effects/woodhit.ogg'
+	combat_mode = TRUE
+	loot = list(/obj/effect/gibspawner/human)
+	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
+	unsuitable_atmos_damage = 7.5
+	faction = list(FACTION_BLACKOPS)
+	check_friendly_fire = 1
+	status_flags = CANPUSH
+	del_on_death = 1
+	dodging = TRUE
+	rapid_melee = 2
+	footstep_type = FOOTSTEP_MOB_SHOE
+	alert_sounds = list(
+		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert01.ogg',
+		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert02.ogg',
+		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert03.ogg',
+		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert04.ogg',
+		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert05.ogg',
+		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert06.ogg',
+		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert07.ogg',
+		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert08.ogg'
+	)
+
+
+/mob/living/simple_animal/hostile/blackmesa/blackops/ranged
+	ranged = TRUE
+	rapid = 2
+	retreat_distance = 5
+	minimum_distance = 5
+	icon_state = "blackops_ranged"
+	icon_living = "blackops_ranged"
+	casingtype = /obj/item/ammo_casing/a556/weak
+	projectilesound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/m16_fire.ogg'
+	attack_sound = 'sound/weapons/punch1.ogg'
+	loot = list(/obj/effect/gibspawner/human, /obj/item/ammo_box/magazine/m16)
+	rapid_melee = 1
+
+/obj/projectile/bullet/a556/weak
+	name = "surplus 5.56mm bullet"
+	damage = 25
+	armour_penetration = 10
+	wound_bonus = -40
+
+/obj/item/ammo_casing/a556/weak
+	name = "5.56mm surplus bullet casing"
+	desc = "A 5.56mm surplus bullet casing."
+	projectile_type = /obj/projectile/bullet/a556/weak
+
 /obj/machinery/porta_turret/black_mesa
 	use_power = IDLE_POWER_USE
 	req_access = list(ACCESS_CENT_GENERAL)
-	faction = list(FACTION_XEN, FACTION_BLACKMESA, FACTION_HECU)
+	faction = list(FACTION_XEN, FACTION_BLACKMESA, FACTION_HECU, FACTION_BLACKOPS)
 	mode = TURRET_LETHAL
 	uses_stored = FALSE
 	max_integrity = 120
@@ -549,6 +622,7 @@
 	outfit = /datum/outfit/science_team
 	you_are_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	flavour_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
+	restricted_species = list(/datum/species/human)
 
 /datum/outfit/science_team
 	name = "Scientist"
@@ -604,8 +678,10 @@
 	name = "HECU"
 	prompt_name = "a tactical squad member"
 	outfit = /datum/outfit/hecu
-	you_are_text = "You are an elite tactical squad deployed into the research facility to contain the infestation. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
-	restricted_species = list(/datum/species/human)
+	you_are_text = "You are an elite tactical squad deployed into the research facility to contain the infestation."
+	flavour_text = "You and four other marines have been selected for a guard duty near one of the Black Mesa's entrances. You haven't heard much from the north-west post, except for the sounds of gunshots, and their radios went silent. On top of that, your escape helicopter, if any, was shot down mid-flight, and another one won't arrive so soon; with your machinegunner being shot down with a precise headshot by something, or SOMEONE. You are likely on your own, at least for now."
+	important_text = "Do not try to explore the level unless Vanguard is dead. Stay around your area. Allowed races are humans and IPCs."
+	restricted_species = list(/datum/species/human, /datum/species/robotic/ipc)
 
 /obj/item/clothing/under/rank/security/officer/hecu
 	name = "hecu jumpsuit"
@@ -628,9 +704,9 @@
 	gloves = /obj/item/clothing/gloves/combat
 	suit = /obj/item/clothing/suit/space/hev_suit/pcv
 	suit_store = /obj/item/gun/ballistic/automatic/m16
-	belt = /obj/item/storage/belt/security/webbing
+	belt = /obj/item/storage/belt/military/assault
 	ears = /obj/item/radio/headset
-	glasses = /obj/item/clothing/glasses/night
+	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	shoes = /obj/item/clothing/shoes/combat
 	l_pocket = /obj/item/grenade/smokebomb
 	r_pocket = /obj/item/binoculars
@@ -650,11 +726,6 @@
 /datum/outfit/hecu/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
 	. = ..()
 	equipped_human.faction |= FACTION_HECU
-	equipped_human.hairstyle = "Crewcut"
-	equipped_human.hair_color = COLOR_ALMOST_BLACK
-	equipped_human.facial_hairstyle = "Shaved"
-	equipped_human.facial_hair_color = COLOR_ALMOST_BLACK
-	equipped_human.update_hair()
 
 /datum/id_trim/hecu
 	assignment = "HECU Soldier"
@@ -752,3 +823,80 @@
 	new dessert(src)
 	new /obj/item/storage/box/gum(src)
 	new /obj/item/food/spacers_sidekick(src)
+
+/obj/item/minespawner/explosive
+	name = "deactivated explosive landmine"
+	desc = "When activated, will deploy into a highly explosive mine after 3 seconds passes, perfect for lazy marines looking to cover their fortifications with no effort."
+	icon = 'icons/obj/items_and_weapons.dmi'
+	icon_state = "uglymine"
+
+	mine_type = /obj/effect/mine/explosive
+
+/obj/machinery/deployable_turret/hmg/mesa
+	name = "heavy machine gun turret"
+	desc = "A heavy calibre machine gun commonly used by marine forces, famed for it's ability to give people on the recieving end more holes than normal."
+	icon_state = "hmg"
+	max_integrity = 250
+	projectile_type = /obj/projectile/bullet/manned_turret/hmg/mesa
+	anchored = TRUE
+	number_of_shots = 3
+	cooldown_duration = 1 SECONDS
+	rate_of_fire = 2
+	firesound = 'sound/weapons/gun/hmg/hmg.ogg'
+	overheatsound = 'sound/weapons/gun/smg/smgrack.ogg'
+	can_be_undeployed = TRUE
+	spawned_on_undeploy = /obj/item/deployable_turret_folded/mesa
+
+/obj/machinery/deployable_turret/hmg/mesa/unbuckle_mob(mob/living/buckled_mob, force = FALSE, can_fall = TRUE)
+	. = ..()
+	set_anchored(TRUE)
+	STOP_PROCESSING(SSfastprocess, src)
+
+/obj/item/deployable_turret_folded/mesa
+	name = "folded heavy machine gun"
+	desc = "A folded and unloaded heavy machine gun, ready to be deployed and used."
+	icon = 'icons/obj/turrets.dmi'
+	icon_state = "folded_hmg"
+	max_integrity = 250
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK
+
+/obj/item/deployable_turret_folded/mesa/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/deployable, 5 SECONDS, /obj/machinery/deployable_turret/hmg/mesa, delete_on_use = TRUE)
+
+/obj/projectile/bullet/manned_turret/hmg/mesa
+	icon_state = "redtrac"
+	damage = 35
+
+/obj/item/storage/toolbox/emergency/turret/mesa
+	name = "USMC stationary defense deployment system"
+	desc = "You feel a strange urge to hit this with a wrench."
+
+/obj/item/storage/toolbox/emergency/turret/mesa/PopulateContents()
+	new /obj/item/screwdriver(src)
+	new /obj/item/wrench(src)
+	new /obj/item/weldingtool(src)
+	new /obj/item/crowbar(src)
+	new /obj/item/analyzer(src)
+	new /obj/item/wirecutters(src)
+
+/obj/item/storage/toolbox/emergency/turret/mesa/attackby(obj/item/I, mob/living/user, params)
+	if(I.tool_behaviour == TOOL_WRENCH && user.combat_mode)
+		user.visible_message(span_danger("[user] bashes [src] with [I]!"), \
+			span_danger("You bash [src] with [I]!"), null, COMBAT_MESSAGE_RANGE)
+		playsound(src, "sound/items/drill_use.ogg", 80, TRUE, -1)
+		var/obj/machinery/porta_turret/syndicate/pod/toolbox/mesa/turret = new(get_turf(loc))
+		turret.faction = list("[REF(user)]")
+		qdel(src)
+
+	..()
+
+/obj/machinery/porta_turret/syndicate/pod/toolbox/mesa
+	max_integrity = 100
+	faction = list(FACTION_HECU)
+
+/obj/structure/alien/weeds/xen
+	name = "xen weeds"
+	desc = "A thick vine-like surface covers the floor."
+	color = "#ac3b06"
