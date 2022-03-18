@@ -209,7 +209,7 @@
 	if (!preview_outfit)
 		return null
 
-	var/icon/final_icon = render_preview_outfit(preview_outfit)
+	var/icon/final_icon = icon('modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi', "goldeneye_key")
 
 	return finish_preview_icon(final_icon)
 
