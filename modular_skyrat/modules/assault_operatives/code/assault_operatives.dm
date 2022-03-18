@@ -36,6 +36,11 @@
 	QDEL_NULL(pinpointer)
 	return ..()
 
+/datum/antagonist/assault_operative/apply_innate_effects(mob/living/mob_override)
+	add_team_hud(mob_override || owner.current, /datum/antagonist/assault_operative)
+
+/datum/antagonist/assault_operative/get_team()
+	return assault_team
 
 /datum/antagonist/assault_operative/greet()
 	owner.current.playsound_local(get_turf(owner.current), 'modular_skyrat/modules/assault_operatives/sound/assault_operatives_greet.ogg', 30, 0, use_reverb = FALSE)
@@ -51,12 +56,24 @@
 	if(send_to_spawnpoint)
 		move_to_spawnpoint()
 
-/datum/antagonist/assault_operative/proc/forge_objectives()
-	if(assault_team)
-		objectives |= assault_team.objectives
-
-/datum/antagonist/assault_operative/proc/give_alias()
-	owner.current.real_name = "GoldenEye Operative #[rand(100, 1000)]"
+/datum/antagonist/assault_operative/create_team(datum/team/assault_operatives/new_team)
+	if(!new_team)
+		if(!always_new_team)
+			for(var/datum/antagonist/assault_operative/assault_operative in GLOB.antagonists)
+				if(!assault_operative.owner)
+					stack_trace("Antagonist datum without owner in GLOB.antagonists: [assault_operative]")
+					continue
+				if(assault_operative.assault_team)
+					assault_team = assault_operative.assault_team
+					return
+		assault_team = new /datum/team/assault_operatives
+		assault_team.add_member(owner)
+		assault_team.update_objectives()
+		return
+	if(!istype(new_team))
+		stack_trace("Wrong team type passed to [type] initialization.")
+	assault_team = new_team
+	assault_team.add_member(owner)
 
 // UI systems
 /datum/antagonist/assault_operative/ui_data(mob/user)
@@ -77,6 +94,22 @@
 
 	data["objectives"] = get_objectives()
 	return data
+
+/datum/antagonist/assault_operative/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("equip_loadout")
+			var/datum/assaultops_outfit/selected_outfit = locate(params["equipment_ref"]) in GLOB.assaultops_equipment
+			if(!selected_outfit)
+				return
+			select_equipment(usr, selected_outfit)
+		if("track_key")
+			var/obj/item/goldeneye_key/selected_key = locate(params["key_ref"]) in SSgoldeneye.goldeneye_keys
+			if(!selected_key)
+				return
+			pinpointer.set_target(selected_key)
 
 /datum/antagonist/assault_operative/proc/get_loadouts()
 	var/list/loadout_data = list()
@@ -123,21 +156,6 @@
 		))
 	return goldeneye_keys
 
-/datum/antagonist/assault_operative/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	if(.)
-		return
-	switch(action)
-		if("equip_loadout")
-			var/datum/assaultops_outfit/selected_outfit = locate(params["equipment_ref"]) in GLOB.assaultops_equipment
-			if(!selected_outfit)
-				return
-			select_equipment(usr, selected_outfit)
-		if("track_key")
-			var/obj/item/goldeneye_key/selected_key = locate(params["key_ref"]) in SSgoldeneye.goldeneye_keys
-			if(!selected_key)
-				return
-			pinpointer.set_target(selected_key)
 
 /datum/antagonist/assault_operative/proc/select_equipment(mob/user, datum/assaultops_outfit/selected_outfit)
 	if(equipped_class)
@@ -156,6 +174,13 @@
 	to_chat(human_to_equip, selected_outfit.description)
 
 	equipped_class = selected_outfit
+
+/datum/antagonist/assault_operative/proc/forge_objectives()
+	if(assault_team)
+		objectives |= assault_team.objectives
+
+/datum/antagonist/assault_operative/proc/give_alias()
+	owner.current.real_name = "GoldenEye Operative #[rand(100, 1000)]"
 
 /datum/antagonist/assault_operative/proc/equip_operative()
 	if(!ishuman(owner.current))
@@ -179,24 +204,7 @@
 
 	return TRUE
 
-/datum/antagonist/assault_operative/create_team(datum/team/assault_operatives/new_team)
-	if(!new_team)
-		if(!always_new_team)
-			for(var/datum/antagonist/assault_operative/assault_operative in GLOB.antagonists)
-				if(!assault_operative.owner)
-					stack_trace("Antagonist datum without owner in GLOB.antagonists: [assault_operative]")
-					continue
-				if(assault_operative.assault_team)
-					assault_team = assault_operative.assault_team
-					return
-		assault_team = new /datum/team/assault_operatives
-		assault_team.add_member(owner)
-		assault_team.update_objectives()
-		return
-	if(!istype(new_team))
-		stack_trace("Wrong team type passed to [type] initialization.")
-	assault_team = new_team
-	assault_team.add_member(owner)
+
 
 
 /datum/antagonist/assault_operative/proc/move_to_spawnpoint()
@@ -289,8 +297,6 @@
 		return ASSAULT_RESULT_STALEMATE
 	else
 		return
-
-
 
 /**
  * ASSAULT OPERATIVE JOB TYPE
