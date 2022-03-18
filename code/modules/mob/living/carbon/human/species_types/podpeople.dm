@@ -44,6 +44,7 @@
 
 	if(H.nutrition < NUTRITION_LEVEL_STARVING + 50)
 		H.take_overall_damage(1 * delta_time, 0)
+	..()
 
 /datum/species/pod/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)
 	if(chem.type == /datum/reagent/toxin/plantbgone)
@@ -53,8 +54,8 @@
 
 // SKYRAT EDIT ADDITION
 /datum/species/pod/get_species_description()
-	return FALSE
+	return "Plant lore!"
 
 /datum/species/pod/get_species_lore()
-	return FALSE
+	return list("You're a plant!")
 // SKYRAT EDIT END
