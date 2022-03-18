@@ -1,10 +1,9 @@
 // Put tiles here if you want planet ones!
 
-/turf/open/floor/plating/dirt/planet
-	baseturfs = /turf/open/floor/plating/dirt/planet
+/turf/open/misc/dirt/planet
+	baseturfs = /turf/open/misc/dirt/planet
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = TRUE
-	attachment_holes = FALSE
 	footstep = FOOTSTEP_SAND
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
@@ -13,46 +12,46 @@
 // We don't want to create chasms upon destruction, as this is too easy to abuse.
 // For some reason, the dirt used Lavaland atmos (OPENTURF_LOW_PRESSURE), this would suck whilst on the planet.
 
-/turf/open/floor/plating/grass/planet
+/turf/open/misc/grass/planet
 	planetary_atmos = TRUE
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
-	baseturfs = /turf/open/floor/plating/sandy_dirt/planet
+	baseturfs = /turf/open/misc/sandy_dirt/planet
 
-/turf/open/floor/plating/grass/jungle/planet
+/turf/open/misc/grass/jungle/planet
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = TRUE
-	baseturfs = /turf/open/floor/plating/sandy_dirt/planet
+	baseturfs = /turf/open/misc/sandy_dirt/planet
 // We want planetary atmos, but most importantly, to become dirt upon destruction. Well, dirt, then dirtier dirt.
 // Why are we doing this? Grief-proofing. It'd suck if I walked out my house and there was just a space tile and all the air in the city is being sucked in because some smackhead destroyed the ground in the night somehow.
 
-/turf/open/floor/plating/sandy_dirt/planet
+/turf/open/misc/sandy_dirt/planet
 	planetary_atmos = TRUE
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
-	baseturfs = /turf/open/floor/plating/dirt/planet
+	baseturfs = /turf/open/misc/dirt/planet
 
 /////////////   GRASS TURFS   /////////////
 ///////////////////////////////////////////
 /////////////   SNOW  TURFS   /////////////
-/turf/open/floor/plating/asteroid/snow/indestructible
+/turf/open/misc/asteroid/snow/indestructible
 	gender = PLURAL
 	name = "snow"
 	desc = "Pretty snow! It's not too cold."
-	baseturfs = /turf/open/floor/plating/asteroid/snow/indestructible
+	baseturfs = /turf/open/misc/asteroid/snow/indestructible
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	slowdown = 1
 	planetary_atmos = FALSE
 
-/turf/open/floor/plating/asteroid/snow/indestructible/planet
-	baseturfs = /turf/open/floor/plating/asteroid/snow/indestructible/planet
+/turf/open/misc/asteroid/snow/indestructible/planet
+	baseturfs = /turf/open/misc/asteroid/snow/indestructible/planet
 	planetary_atmos = TRUE
 /* This works but doesn't mesh well with lighting at the moment.
-/turf/open/floor/plating/asteroid/snow/indestructible/overlay
-	baseturfs = /turf/open/floor/plating/asteroid/snow/indestructible/overlay
+/turf/open/misc/asteroid/snow/indestructible/overlay
+	baseturfs = /turf/open/misc/asteroid/snow/indestructible/overlay
 	planetary_atmos = FALSE
 	var/obj/effect/overlay/snow/snow_overlay = new()
 
-/turf/open/floor/plating/asteroid/snow/indestructible/overlay/planet
-	baseturfs = /turf/open/floor/plating/asteroid/snow/indestructible/overlay/planet
+/turf/open/misc/asteroid/snow/indestructible/overlay/planet
+	baseturfs = /turf/open/misc/asteroid/snow/indestructible/overlay/planet
 	planetary_atmos = TRUE
 
 /obj/effect/overlay/snow
@@ -65,7 +64,7 @@
 	anchored = TRUE
 	vis_flags = NONE
 
-/turf/open/floor/plating/asteroid/snow/indestructible/overlay/Initialize()
+/turf/open/misc/asteroid/snow/indestructible/overlay/Initialize()
 	..()
 	vis_contents += snow_overlay
 */
@@ -77,8 +76,8 @@
 
 /turf/closed/mineral/earth_like
 	icon_state = "rock"
-	turf_type = /turf/open/floor/plating/asteroid
-	baseturfs = /turf/open/floor/plating/asteroid
+	turf_type = /turf/open/misc/asteroid
+	baseturfs = /turf/open/misc/asteroid
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	defer_change = TRUE
 
@@ -88,8 +87,8 @@
 	icon_state = "redrock"
 	smooth_icon = 'icons/turf/walls/red_wall.dmi'
 	base_icon_state = "red_wall"
-	turf_type = /turf/open/floor/plating/asteroid/lowpressure
-	baseturfs = /turf/open/floor/plating/asteroid/lowpressure
+	turf_type = /turf/open/misc/asteroid/lowpressure
+	baseturfs = /turf/open/misc/asteroid/lowpressure
 	initial_gas_mix = OPENTURF_LOW_PRESSURE
 	defer_change = TRUE
 
