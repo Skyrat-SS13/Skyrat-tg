@@ -357,10 +357,14 @@
 				span_userdanger("You're knocked down from a shove by [name]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, src)
 			to_chat(src, span_danger("You shove [target.name], knocking [target.p_them()] down!"))
 			log_combat(src, target, "shoved", "knocking them down")
-			return
 			*/
 			target.apply_damage(SHOVE_STAMINA_SOLID, STAMINA, BODY_ZONE_CHEST) // Shoving into a solid object deals some stamina damage.
+			target.visible_message(span_danger("[name] brutally shoves [target.name], what a hit!"),
+				span_userdanger("You get brutally shoved by [name]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, src)
+			to_chat(src, span_danger("You brutally shove [target.name]!"))
+			log_combat(src, target, "shoved", "brutally shoved against a dense object")
 			// SKYRAT EDIT END
+			return	
 
 	target.visible_message(span_danger("[name] shoves [target.name]!"),
 		span_userdanger("You're shoved by [name]!"), span_hear("You hear aggressive shuffling!"), COMBAT_MESSAGE_RANGE, src)
