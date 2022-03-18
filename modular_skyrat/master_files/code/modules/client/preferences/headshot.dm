@@ -11,7 +11,7 @@
 
 
 /datum/preference/text/headshot/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	target.dna.features["headshot"] = preferences.headshot
+	target?.dna.features["headshot"] = preferences?.headshot
 
 /datum/preference/text/headshot/is_valid(value)
 	if(!length(value)) //Just to get blank ones out of the way
