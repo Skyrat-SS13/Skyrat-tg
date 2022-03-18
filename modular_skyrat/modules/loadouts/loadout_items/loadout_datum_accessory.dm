@@ -61,9 +61,14 @@ GLOBAL_LIST_INIT(loadout_accessory, generate_loadout_items(/datum/loadout_item/a
 	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_ENGINEERING_GUARD)
 
 /datum/loadout_item/accessory/armband_security
-	name = "Red Armband"
+	name = "Security Armband"
 	item_path = /obj/item/clothing/accessory/armband
-	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC)
+
+/datum/loadout_item/accessory/armband_security_deputy
+	name = "Security Deputy Armband"
+	item_path = /obj/item/clothing/accessory/armband/deputy
+	restricted_roles = list(JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/accessory/armband_science
 	name = "Science Armband"
