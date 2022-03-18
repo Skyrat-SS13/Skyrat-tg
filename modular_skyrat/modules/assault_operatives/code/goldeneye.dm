@@ -200,6 +200,9 @@ SUBSYSTEM_DEF(goldeneye)
 
 ///Show the distance and direction of a scanned target
 /datum/status_effect/goldeneye_pinpointer/proc/point_to_target()
+	if(QDELETED(target))
+		target = null
+		return
 	if(!target)
 		linked_alert.icon_state = "pinonnull"
 		return
@@ -207,6 +210,9 @@ SUBSYSTEM_DEF(goldeneye)
 	var/turf/here = get_turf(owner)
 	var/turf/there = get_turf(target)
 
+	if(!here || !there)
+		linked_alert.icon_state = "pinonnull"
+		return
 	if(here.z != there.z)
 		linked_alert.icon_state = "pinonnull"
 		return
