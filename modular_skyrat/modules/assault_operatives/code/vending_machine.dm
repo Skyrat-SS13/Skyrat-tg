@@ -5,7 +5,6 @@
 	icon_state = "liberationstation"
 	vend_reply = "Item dispensed."
 	scan_id = FALSE
-	armor = list(MELEE = 100, BULLET = 100, LASER = 100, ENERGY = 100, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 50)
 	resistance_flags = FIRE_PROOF
 	onstation = FALSE
 	light_mask = "liberation-light-mask"
