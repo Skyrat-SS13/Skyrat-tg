@@ -122,8 +122,6 @@
 
 /obj/machinery/vending/wardrobe/det_wardrobe
 	skyrat_products = list(
-		/obj/item/clothing/under/rank/security/detective/undersuit = 2,
-		/obj/item/clothing/suit/det_bomber = 2,
 		/obj/item/clothing/head/fedora/beige = 2,
 		/obj/item/clothing/head/fedora/white = 2,
 		/obj/item/clothing/head/fedora/fedblack = 2,

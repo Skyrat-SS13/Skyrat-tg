@@ -77,18 +77,6 @@
 	desc = "A tactical peacekeeper uniform, woven with a lightweight layer of kevlar to provide minor ballistic and stab protection."
 	icon_state = "peacekeeper_tac"
 
-/obj/item/clothing/under/rank/security/peacekeeper/blue
-	name = "blue peacekeeper uniform"
-	icon_state = "bsecurity"
-
-/obj/item/clothing/under/rank/security/peacekeeper/junior
-	name = "peacekeeper junior officer poloshirt"
-	desc = "A sleek peackeeper poloshirt and pants, this one is special. It's for junior officers."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
-	icon_state = "junior_officer"
-
 /obj/item/clothing/under/rank/security/peacekeeper/sergeant
 	name = "peacekeeper sergeant uniform"
 	desc = "A sleek peackeeper uniform, signifying the rank of Sergeant."
