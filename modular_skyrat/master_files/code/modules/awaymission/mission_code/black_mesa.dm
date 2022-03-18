@@ -6,20 +6,20 @@
 	static_lighting = FALSE
 
 /turf/closed/mineral/black_mesa
-	turf_type = /turf/open/floor/plating/beach/sand/black_mesa
-	baseturfs = /turf/open/floor/plating/beach/sand/black_mesa
+	turf_type = /turf/open/misc/beach/sand/black_mesa
+	baseturfs = /turf/open/misc/beach/sand/black_mesa
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 
 //Floors that no longer lead into space (innovative!)
-/turf/open/floor/plating/beach/sand/black_mesa
-	baseturfs = /turf/open/floor/plating/beach/sand/black_mesa
+/turf/open/misc/beach/sand/black_mesa
+	baseturfs = /turf/open/misc/beach/sand/black_mesa
 	name = "sand"
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = TRUE
 
 /obj/effect/baseturf_helper/black_mesa
 	name = "black mesa sand baseturf editor"
-	baseturf = /turf/open/floor/plating/beach/sand/black_mesa
+	baseturf = /turf/open/misc/beach/sand/black_mesa
 
 /mob/living/simple_animal/hostile/blackmesa
 	var/list/alert_sounds
