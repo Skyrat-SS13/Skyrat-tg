@@ -118,11 +118,11 @@
 	glass_colour_type = /datum/client_colour/glass_colour/blue
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
-		"Black Variant" = list(
+		"Dark-Tint Variant" = list(
 			RESKIN_ICON_STATE = "security_hud_black",
 			RESKIN_WORN_ICON_STATE = "security_hud_black"
 		),
-		"Blue Variant" = list(
+		"Light-Tint Variant" = list(
 			RESKIN_ICON_STATE = "security_hud_blue",
 			RESKIN_WORN_ICON_STATE = "security_hud_blue"
 		),
@@ -133,7 +133,7 @@
 
 /obj/item/clothing/glasses/hud/security/night
 	icon_state = "security_hud_nv"
-
+	glass_colour_type = /datum/client_colour/glass_colour/green
 
 /////////////////////
 //----- HEAD ------//
