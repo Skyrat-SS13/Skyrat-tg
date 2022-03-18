@@ -1,5 +1,6 @@
 /////////
 // Overwrites all the security icons with our own bluesec versions; this means little to no mapping/spawning conflicts!
+// (Also includes 'old' versions at the bottom of the file, for the purpose of crates/vendors/admin shenanigans. Can't remove them ENTIRELY after all!)
 /////////
 
 //////////////////////////
@@ -359,10 +360,6 @@
 		"White Variant" = list(
 			RESKIN_ICON_STATE = "vest_white",
 			RESKIN_WORN_ICON_STATE = "vest_white"
-		),
-		"Peacekeeper Variant" = list(
-			RESKIN_ICON_STATE = "peacekeeper_armor",
-			RESKIN_WORN_ICON_STATE = "peacekeeper"
 		)
 	)
 
@@ -492,3 +489,98 @@
 
 /obj/item/pda/heads/hos
 	greyscale_colors = "#2B356D#1E1E1E"
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//A bunch of Re-overrides so that admins can keep using some redsec stuff; not all of them have this though!
+
+//Eyes//
+/obj/item/clothing/glasses/hud/security/red
+	icon = 'icons/obj/clothing/glasses.dmi'
+	worn_icon = 'icons/mob/clothing/eyes.dmi'
+	icon_state = "securityhud"
+	glass_colour_type = /datum/client_colour/glass_colour/red
+
+/obj/item/clothing/glasses/hud/security/sunglasses/red
+	icon = 'icons/obj/clothing/glasses.dmi'
+	worn_icon = 'icons/mob/clothing/eyes.dmi'
+	icon_state = "sunhudsec"
+	glass_colour_type = /datum/client_colour/glass_colour/darkred
+	uses_advanced_reskins = FALSE
+
+/obj/item/clothing/glasses/hud/security/sunglasses/eyepatch/red
+	icon = 'icons/obj/clothing/glasses.dmi'
+	worn_icon = 'icons/mob/clothing/eyes.dmi'
+	icon_state = "hudpatch"
+
+/obj/item/clothing/glasses/hud/security/night/red
+	icon = 'icons/obj/clothing/glasses.dmi'
+	worn_icon = 'icons/mob/clothing/eyes.dmi'
+	icon_state = "securityhudnight"
+
+
+//Back//
+/obj/item/storage/backpack/security/red
+	icon = 'icons/obj/storage.dmi'
+	worn_icon = 'icons/mob/clothing/back.dmi'
+	icon_state = "backpack_black"
+	uses_advanced_reskins = FALSE
+
+/obj/item/storage/backpack/satchel/sec/red
+	icon = 'icons/obj/storage.dmi'
+	worn_icon = 'icons/mob/clothing/back.dmi'
+	icon_state = "security_satchel"
+
+/obj/item/storage/backpack/duffelbag/sec/red
+	icon = 'icons/obj/storage.dmi'
+	worn_icon = 'icons/mob/clothing/back.dmi'
+	icon_state = "duffel-sec"
+	uses_advanced_reskins = FALSE
+
+//Belt//
+/obj/item/storage/belt/security/red
+	icon = 'icons/obj/clothing/belts.dmi'
+	worn_icon = 'icons/mob/clothing/belt.dmi'
+	icon_state = "security"
+	inhand_icon_state = "security"
+	worn_icon_state = "security"
+	uses_advanced_reskins = FALSE
+
+//Head//
+/obj/item/clothing/head/helmet/sec/red
+	icon = 'icons/obj/clothing/hats.dmi'
+	worn_icon = 'icons/mob/clothing/head.dmi'
+	icon_state = "helmet"
+	actions_types = null
+	can_toggle = FALSE
+	mutant_variants = NONE
+	flags_cover = HEADCOVERSEYES
+	flags_inv = HIDEHAIR
+
+//Uniform//
+/obj/item/clothing/under/rank/security/officer/red
+	icon = 'icons/obj/clothing/under/security.dmi'
+	worn_icon = 'icons/mob/clothing/under/security.dmi'
+	icon_state = "rsecurity"
+	uses_advanced_reskins = FALSE
+
+/obj/item/clothing/under/rank/security/warden/red
+	icon = 'icons/obj/clothing/under/security.dmi'
+	worn_icon = 'icons/mob/clothing/under/security.dmi'
+	icon_state = "rwarden"
+
+/obj/item/clothing/under/rank/security/head_of_security/red
+	icon = 'icons/obj/clothing/under/security.dmi'
+	worn_icon = 'icons/mob/clothing/under/security.dmi'
+	icon_state = "rhos"
+
+//Winter Coat
+/obj/item/clothing/head/hooded/winterhood/security/red
+	icon = 'icons/obj/clothing/head/winterhood.dmi'
+	worn_icon = 'icons/mob/clothing/head/winterhood.dmi'
+	icon_state = "hood_security"
+
+/obj/item/clothing/suit/hooded/wintercoat/security/red
+	icon = 'icons/obj/clothing/suits/wintercoat.dmi'
+	worn_icon = 'icons/mob/clothing/suits/wintercoat.dmi'
+	icon_state = "coatsecurity"
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/red
