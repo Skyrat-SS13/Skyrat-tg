@@ -159,6 +159,9 @@
 	var/turf/start_turf = spaceDebrisStartLoc(startside, end_turf.z)
 	new /obj/effect/sunbeam(start_turf, end_turf)
 
-#undef SUNBEAM_OBLITERATION_COOLDOWN
 #undef SUNBEAM_OBLITERATION_RANGE_FIRE
 #undef SUNBEAM_OBLITERATION_RANGE_FLATTEN
+#undef SUNBEAM_OBLITERATION_COOLDOWN
+#undef SUNBEAM_MOVEMENT_COOLDOWN
+#undef SUNBEAM_DEFAULT_SCALE_X
+#undef SUNBEAM_DEFAULT_SCALE_Y
