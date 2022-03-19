@@ -24,11 +24,11 @@
 
 /obj/item/ammo_box/magazine/akm
 	name = "\improper Krinkov magazine"
-	desc = "a banana-shaped double-stack magazine able to hold 30 rounds of 7.62x39mm ammunition. It's said that in the early days of SolFed's spread, Hispanic colony rebels and militiamen often referred to these as 'Goat Horns'."
+	desc = "a banana-shaped double-stack magazine able to hold 30 rounds of tungsten-tipped 5.45x39mm 7N30 polymer ammo."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "akm"
 	ammo_type = /obj/item/ammo_casing/realistic/a762x39
-	caliber = "a762x39"
+	caliber = "a545x39"
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -39,7 +39,7 @@
 
 /obj/item/gun/ballistic/automatic/akm/modern
 	name = "\improper Bubba's Krinkov"
-	desc = "a tacticoolized version of the most iconic Human rifle ever produced. This one has aftermarket parts and attachments all over the place. It still uses the same outdated rounds."
+	desc = "a tacticoolized version of the most iconic Human rifle ever produced. This one has aftermarket parts and attachments all over the place. It still uses the same rounds."
 	icon_state = "akm_modern"
 	inhand_icon_state = "akm"
 	worn_icon_state = "akm"
