@@ -1,6 +1,7 @@
 /////////
 // Overwrites all the security icons with our own bluesec versions; this means little to no mapping/spawning conflicts!
 // (Also includes 'old' versions at the bottom of the file, for the purpose of crates/vendors/admin shenanigans. Can't remove them ENTIRELY after all!)
+//PLASMA MEN ARE TO BE LEFT ALONE!!! ARMADYNE/LOPLAND DONT MAKE PEACEKEEPER PLASMASUITS!
 /////////
 
 //////////////////////////
@@ -585,4 +586,3 @@
 	icon_state = "coatsecurity"
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/red
 
-//PLASMA MEN ARE TO BE LEFT ALONE!!!

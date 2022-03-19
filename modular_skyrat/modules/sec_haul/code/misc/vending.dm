@@ -22,7 +22,7 @@
 		/obj/item/storage/fancy/donut_box = 2
 	)
 	premium = list(
-		/obj/item/storage/belt/security/webbing/peacekeeper = 5, //SKYRAT EDIT CHANGE - added /peacekeepr
+		/obj/item/storage/belt/security/webbing/peacekeeper = 5, //SKYRAT EDIT CHANGE - added /peacekeeper
 		/obj/item/coin/antagtoken = 1,
 		/obj/item/clothing/head/helmet/blueshirt = 1,
 		/obj/item/clothing/suit/armor/vest/blueshirt = 1,
