@@ -398,7 +398,7 @@
 	set_vehicle_dir_offsets(EAST, movable_parent.pixel_x, 0)
 	set_vehicle_dir_offsets(WEST, movable_parent.pixel_x, 0)
 
-#define OVERSIZED_OFFSET
-#define OVERSIZED_SIDE_OFFSET
-#define REGULAR_OFFSET
-#define REGULAR_SIDE_OFFSET
+#undef OVERSIZED_OFFSET
+#undef OVERSIZED_SIDE_OFFSET
+#undef REGULAR_OFFSET
+#undef REGULAR_SIDE_OFFSET
