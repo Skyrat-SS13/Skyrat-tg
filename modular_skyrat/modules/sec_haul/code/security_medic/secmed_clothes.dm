@@ -29,8 +29,9 @@
 	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/flashlight, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/beaker, /obj/item/reagent_containers/pill, /obj/item/storage/pill_bottle, /obj/item/paper, /obj/item/melee/baton/telescopic, /obj/item/soap, /obj/item/tank/internals/emergency_oxygen, /obj/item/gun, /obj/item/storage/medkit)
 
 /obj/item/clothing/suit/armor/vest/peacekeeper/security_medic/lopland //For the newest iteration
-	icon_state = "secmed_armor_blue"
-	worn_icon_state = "secmed_armor_blue"
+	desc = "A standard security vest with hi-vis identifiers to show the wearer is a security medic. That, or a target."
+	icon_state = "secmed_armor_hivis"
+	worn_icon_state = "secmed_armor_hivis"
 
 /obj/item/clothing/suit/armor/vest/peacekeeper/security_medic/lopland/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
@@ -66,8 +67,9 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/sec/peacekeeper/security_medic/lopland //For the newest iteration
-	icon_state = "secmed_helmet_lop"
-	worn_icon_state = "secmed_helmet_lop"
+	desc = "A standard issue combat helmet with hi-vis symbols taped on, for security medics. Has decent tensile strength and armor. Keep your head down."
+	icon_state = "secmed_helmet_hivis"
+	worn_icon_state = "secmed_helmet_hivis"
 
 /obj/item/clothing/head/helmet/sec/peacekeeper/security_medic/lopland/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
