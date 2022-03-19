@@ -68,8 +68,8 @@
 	restricted_species = list(/datum/species/human, /datum/species/robotic/ipc)
 
 /obj/item/clothing/under/rank/security/officer/hecu
-	name = "hecu jumpsuit"
-	desc = "A tactical HECU fatigues for regular troops complete with USMC belt buckle." ///SIR YES SIR HOORAH
+	name = "urban camouflage BDU"
+	desc = "A baggy military camouflage uniform with an ERDL pattern. The range of whites and greys proves useful in urban environments."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "hecu_uniform"
@@ -79,6 +79,37 @@
 
 /obj/item/storage/backpack/ert/odst/hecu
 	name = "hecu backpack"
+	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
+	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
+	icon_state = "hecu_pack"
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Olive" = list(
+			RESKIN_ICON_STATE = "hecu_pack",
+			RESKIN_WORN_ICON_STATE = "hecu_pack"
+		),
+		"Black" = list(
+			RESKIN_ICON_STATE = "hecu_pack_black",
+			RESKIN_WORN_ICON_STATE = "hecu_pack_black"
+		),
+	)
+
+/obj/item/storage/belt/military/assault/hecu
+	name = "hecu warbelt"
+	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
+	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
+	icon_state = "hecu_belt"
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Olive" = list(
+			RESKIN_ICON_STATE = "hecu_belt",
+			RESKIN_WORN_ICON_STATE = "hecu_belt"
+		),
+		"Black" = list(
+			RESKIN_ICON_STATE = "hecu_belt_black",
+			RESKIN_WORN_ICON_STATE = "hecu_belt_black"
+		),
+	)
 
 /datum/outfit/hecu
 	name = "HECU Grunt"
@@ -88,7 +119,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 	suit = /obj/item/clothing/suit/space/hev_suit/pcv
 	suit_store = /obj/item/gun/ballistic/automatic/m16
-	belt = /obj/item/storage/belt/military/assault
+	belt = /obj/item/storage/belt/military/assault/hecu
 	ears = /obj/item/radio/headset
 	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	shoes = /obj/item/clothing/shoes/combat
