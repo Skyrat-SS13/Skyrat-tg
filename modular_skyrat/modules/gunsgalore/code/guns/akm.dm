@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/akm
 	name = "\improper Krinkov rifle"
-	desc = "A timeless carbine design chambered in an extremely outdated round. This is one of over two hundred million copies produced - in and outside of Sol. A tool for a revolution, an insurgency, justice, or crime. It truly has no bounds."
+	desc = "A timeless carbine design chambered in the NRI's 5.45 tungsten ammo. This is one of over two hundred million copies produced - in and outside of Sol. A tool for a revolution, an insurgency, justice, or crime. It truly has no bounds."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns40x32.dmi'
 	icon_state = "akm"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_lefthand.dmi'
@@ -27,7 +27,7 @@
 	desc = "a banana-shaped double-stack magazine able to hold 30 rounds of tungsten-tipped 5.45x39mm 7N30 polymer ammo."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "akm"
-	ammo_type = /obj/item/ammo_casing/realistic/a762x39
+	ammo_type = /obj/item/ammo_casing/realistic/a545x39
 	caliber = "a545x39"
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
