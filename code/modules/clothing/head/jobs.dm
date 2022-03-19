@@ -187,7 +187,7 @@
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#3F3C40#FFCE5B"
-	uses_advanced_reskins = FALSE //Skyrat Edit - prevents reskinning the beret into a not-beret
+	current_skin = "beret_badge"	//SKYRAT EDIT ADDITION - prevents reskinning the hat; a bit hacky to say its already reskinned but its better than a code rewrite
 
 /obj/item/clothing/head/hos/beret/navyhos
 	name = "head of security's formal beret"

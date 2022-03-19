@@ -505,7 +505,7 @@
 	worn_icon = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "sunhudsec"
 	glass_colour_type = /datum/client_colour/glass_colour/darkred
-	uses_advanced_reskins = FALSE
+	current_skin = "sunhudsec"	//prevents reskinning; a bit hacky to say its already reskinned but its better than a code rewrite
 
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch/red
 	icon = 'icons/obj/clothing/glasses.dmi'
@@ -522,19 +522,19 @@
 /obj/item/storage/backpack/security/red
 	icon = 'icons/obj/storage.dmi'
 	worn_icon = 'icons/mob/clothing/back.dmi'
-	icon_state = "backpack_black"
-	uses_advanced_reskins = FALSE
+	icon_state = "securitypack"
+	current_skin = "securitypack"	//prevents reskinning
 
 /obj/item/storage/backpack/satchel/sec/red
 	icon = 'icons/obj/storage.dmi'
 	worn_icon = 'icons/mob/clothing/back.dmi'
-	icon_state = "security_satchel"
+	icon_state = "satchel-sec"
 
 /obj/item/storage/backpack/duffelbag/sec/red
 	icon = 'icons/obj/storage.dmi'
 	worn_icon = 'icons/mob/clothing/back.dmi'
 	icon_state = "duffel-sec"
-	uses_advanced_reskins = FALSE
+	current_skin = "duffel-sec"	//prevents reskinning
 
 //Belt//
 /obj/item/storage/belt/security/red
@@ -543,7 +543,7 @@
 	icon_state = "security"
 	inhand_icon_state = "security"
 	worn_icon_state = "security"
-	uses_advanced_reskins = FALSE
+	current_skin = "security"	//prevents reskinning
 
 //Head//
 /obj/item/clothing/head/helmet/sec/red
@@ -561,7 +561,7 @@
 	icon = 'icons/obj/clothing/under/security.dmi'
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
 	icon_state = "rsecurity"
-	uses_advanced_reskins = FALSE
+	current_skin = "rsecurity"	//prevents reskinning
 
 /obj/item/clothing/under/rank/security/warden/red
 	icon = 'icons/obj/clothing/under/security.dmi'
