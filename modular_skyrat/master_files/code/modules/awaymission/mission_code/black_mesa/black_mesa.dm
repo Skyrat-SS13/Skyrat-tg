@@ -120,6 +120,7 @@
 	zoomable = 1
 	zoom_amt = 2
 	fire_delay = 3 SECONDS
+	fire_sound = 'sound/weapons/lasercannonfire.ogg'
 
 /obj/item/ammo_box/magazine/recharge/marksman
 	ammo_type = /obj/item/ammo_casing/caseless/laser/marksman
