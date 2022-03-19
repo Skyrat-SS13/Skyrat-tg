@@ -1181,7 +1181,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "occulthood"
 	mutant_variants = NONE
-	dynamic_hair_suffix = "+generic"
 
 // Donation reward for gamerguy14948
 /obj/item/clothing/suit/hooded/occult

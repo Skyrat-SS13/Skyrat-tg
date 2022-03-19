@@ -63,7 +63,6 @@
 	name = "maid headband"
 	desc = "Maid in China."
 	icon_state = "maid"
-	dynamic_hair_suffix = ""
 	mutant_variants = NONE
 
 
