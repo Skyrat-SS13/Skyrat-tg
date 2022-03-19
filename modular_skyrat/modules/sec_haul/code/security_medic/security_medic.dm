@@ -117,7 +117,6 @@
 //	new /obj/item/clothing/suit/hazardvest/security_medic(src) //Add later as not-red
 	new /obj/item/clothing/suit/toggle/labcoat/highvis(src)	//Replacement for the sec_medic labcoat for now
 	new /obj/item/clothing/head/helmet/sec/peacekeeper/security_medic/lopland(src)
-	new /obj/item/clothing/under/rank/security/peacekeeper/tactical(src)
 	new /obj/item/radio/headset/headset_medsec(src)
 	new /obj/item/storage/medkit/emergency(src)
 	new /obj/item/clothing/suit/straight_jacket(src)

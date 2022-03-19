@@ -67,6 +67,7 @@
 
 /obj/item/clothing/head/helmet/sec/peacekeeper/security_medic/lopland //For the newest iteration
 	icon_state = "secmed_helmet_lop"
+	worn_icon_state = "secmed_helmet_lop"
 
 /obj/item/clothing/head/helmet/sec/peacekeeper/security_medic/lopland/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
