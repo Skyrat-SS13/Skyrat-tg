@@ -51,16 +51,16 @@
 	wound_falloff_tile = 0
 //
 
-//7.62x39mm M43
+//FICTIONAL NRI 5.45 AMMO
 /obj/item/ammo_casing/realistic/a762x39
-	name = "7.62x39 bullet casing"
-	desc = "A 7.62x39mm M43 bullet casing."
-	icon_state = "762x39-casing"
-	caliber = "a762x39"
+	name = "5.45x39 bullet casing"
+	desc = "A 5.45x39mm tungsten-tipped 7N30-B polymer casing."
+	icon_state = "545x39-casing"
+	caliber = "a545x39"
 	projectile_type = /obj/projectile/bullet/a762x39
 
-/obj/projectile/bullet/a762x39
-	name = "7.62x25 bullet"
+/obj/projectile/bullet/a545x39
+	name = "5.45x39mm bullet"
 	damage = 38
 	wound_bonus = 35
 	armour_penetration = 40
