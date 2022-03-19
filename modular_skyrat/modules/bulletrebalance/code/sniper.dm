@@ -1,5 +1,5 @@
 /obj/projectile/bullet/p50
-	name =".50 BMG bullet"
+	name =".416 Stabilis bullet"
 	speed = 0.2
 	damage = 110  //You have 135 health, not a guaranteed instant critical. Unless....
 	paralyze = 0 //Knocks you on your ass hard enough as-is, we won't need the paralyze stat
