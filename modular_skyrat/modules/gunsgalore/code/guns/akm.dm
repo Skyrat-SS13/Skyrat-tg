@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/akm
-	name = "\improper AKM rifle"
-	desc = "A timeless Russian infantry rifle chambered in an extremely outdated round. This is one of over two hundred million copies produced - in and outside of Sol. A tool for a revolution, an insurgency, justice, or crime. This rifle and its variants truly have no bounds."
+	name = "\improper Krinkov rifle"
+	desc = "A timeless carbine design chambered in the NRI's 5.45 tungsten ammo. This is one of over two hundred million copies produced - in and outside of Sol. A tool for a revolution, an insurgency, justice, or crime. It truly has no bounds."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns40x32.dmi'
 	icon_state = "akm"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_lefthand.dmi'
@@ -23,23 +23,23 @@
 	realistic = TRUE
 
 /obj/item/ammo_box/magazine/akm
-	name = "\improper AKM magazine"
-	desc = "a banana-shaped double-stack magazine able to hold 30 rounds of 7.62x39mm Soviet ammunition. It's said that in the early days of SolFed's spread, Spanish colony rebels often referred to these as 'Goat Horns'."
+	name = "\improper Krinkov magazine"
+	desc = "a banana-shaped double-stack magazine able to hold 30 rounds of tungsten-tipped 5.45x39mm 7N30 polymer ammo."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "akm"
-	ammo_type = /obj/item/ammo_casing/realistic/a762x39
-	caliber = "a762x39"
+	ammo_type = /obj/item/ammo_casing/realistic/a545x39
+	caliber = "a545x39"
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/akm/banana
-	name = "\improper RPK magazine"
-	desc = "a banana-shaped double-stack magazine able to hold 45 rounds of 7.62x39mm Soviet ammunition. It's meant to be used on a light machine gun, but it's just a longer AK magazine."
+	name = "\improper Krinkov banana magazine"
+	desc = "a banana-shaped double-stack magazine able to hold 45 rounds of 7.62x39mm ammunition. It's meant to be used on a light machine gun, but it's just a longer AK magazine."
 	max_ammo = 45
 
 /obj/item/gun/ballistic/automatic/akm/modern
-	name = "\improper tactical AKMS"
-	desc = "a modernized version of the most iconic infantry rifle ever produced. This one has aftermarket parts and attachments, making it a better contender against its modern buddies. It still uses the same outdated rounds."
+	name = "\improper Bubba's Krinkov"
+	desc = "a tacticoolized version of the most iconic Human rifle ever produced. This one has aftermarket parts and attachments all over the place. It still uses the same rounds."
 	icon_state = "akm_modern"
 	inhand_icon_state = "akm"
 	worn_icon_state = "akm"
