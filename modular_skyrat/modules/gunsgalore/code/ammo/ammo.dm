@@ -52,12 +52,12 @@
 //
 
 //FICTIONAL NRI 5.45 AMMO
-/obj/item/ammo_casing/realistic/a762x39
+/obj/item/ammo_casing/realistic/a545x39
 	name = "5.45x39 bullet casing"
 	desc = "A 5.45x39mm tungsten-tipped 7N30-B polymer casing."
 	icon_state = "545x39-casing"
 	caliber = "a545x39"
-	projectile_type = /obj/projectile/bullet/a762x39
+	projectile_type = /obj/projectile/bullet/a545x39
 
 /obj/projectile/bullet/a545x39
 	name = "5.45x39mm bullet"
