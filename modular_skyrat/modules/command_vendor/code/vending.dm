@@ -112,8 +112,6 @@
 		/obj/item/clothing/under/rank/security/head_of_security/imperial = 1,
 		/obj/item/clothing/suit/armor/hos/navyblue = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/parade = 1,
-		/obj/item/clothing/suit/armor/hos/parade = 1,
-		/obj/item/clothing/suit/armor/hos/parade/female = 1,
 		/obj/item/clothing/suit/armor/hos/hos_formal = 1,
 		/obj/item/clothing/neck/mantle/hosmantle = 1,
 		/obj/item/clothing/shoes/sneakers/brown = 1
