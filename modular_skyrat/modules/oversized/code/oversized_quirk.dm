@@ -24,12 +24,12 @@
 	var/speedmod = human_holder.dna.species.speedmod + OVERSIZED_SPEED_SLOWDOWN
 	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 	var/obj/item/organ/stomach/oldstomach = human_holder.getorganslot(ORGAN_SLOT_STOMACH)
-	to_chat(human_holder, span_warning("You feel your massive stomach rumble!"))
-	if(oldstomach)
+	if(oldstomach.type == /obj/item/organ/stomach)
 		oldstomach.Remove(human_holder, special = TRUE)
 		qdel(oldstomach)
-	var/obj/item/organ/stomach/oversized/newstomach = new //YOU LOOK HUGE, THAT MUST MEAN YOU HAVE HUGE GUTS! RIP AND TEAR YOUR HUGE GUTS!
-	newstomach.Insert(human_holder, special = TRUE)
+		var/obj/item/organ/stomach/oversized/newstomach = new //YOU LOOK HUGE, THAT MUST MEAN YOU HAVE HUGE GUTS! RIP AND TEAR YOUR HUGE GUTS!
+		newstomach.Insert(human_holder, special = TRUE)
+		to_chat(human_holder, span_warning("You feel your massive stomach rumble!"))
 
 /datum/quirk/oversized/remove()
 	var/mob/living/carbon/human/human_holder = quirk_holder
