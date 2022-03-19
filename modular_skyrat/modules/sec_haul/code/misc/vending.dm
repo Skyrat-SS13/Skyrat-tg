@@ -22,7 +22,7 @@
 		/obj/item/storage/fancy/donut_box = 2
 	)
 	premium = list(
-		/obj/item/storage/belt/security/webbing = 5,
+		/obj/item/storage/belt/security/webbing/peacekeeper = 5, //SKYRAT EDIT CHANGE - added /peacekeepr
 		/obj/item/coin/antagtoken = 1,
 		/obj/item/clothing/head/helmet/blueshirt = 1,
 		/obj/item/clothing/suit/armor/vest/blueshirt = 1,
@@ -93,6 +93,6 @@
 					/obj/item/clothing/under/utility/sec/old = 3,
 					/obj/item/clothing/suit/toggle/jacket/sec/old = 3,
 					)
-	premium = list( /obj/item/clothing/under/rank/security/officer/formal = 3,
-					/obj/item/clothing/suit/security/officer = 3,
-					/obj/item/clothing/head/beret/sec/navyofficer = 3)
+	premium = list( /obj/item/clothing/under/rank/security/officer/formal = 5,
+					/obj/item/clothing/suit/security/officer = 5,
+					/obj/item/clothing/head/beret/sec/navyofficer = 5)
