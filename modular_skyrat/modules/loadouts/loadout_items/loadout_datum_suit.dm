@@ -241,7 +241,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/toggle/trackjacket
 
 /datum/loadout_item/suit/croptop
-	name = "Black crop top turtleneck"
+	name = "Black Crop Top Turtleneck"
 	item_path = /obj/item/clothing/suit/croptop
 
 /*Flannels go inside Misc*/
