@@ -1,11 +1,11 @@
 // For any mob that can be ridden
 
-//SKYRAT EDIT: Human Riding Defines
+//SKYRAT EDIT START: Human Riding Defines
 #define OVERSIZED_OFFSET 18
 #define OVERSIZED_SIDE_OFFSET 11
 #define REGULAR_OFFSET 6
 #define REGULAR_SIDE_OFFSET 4
-
+//SKYRAT EDIT END
 /datum/component/riding/creature
 	/// If TRUE, this creature's movements can be controlled by the rider while mounted (as opposed to riding cyborgs and humans, which is passive)
 	var/can_be_driven = TRUE
@@ -398,7 +398,10 @@
 	set_vehicle_dir_offsets(EAST, movable_parent.pixel_x, 0)
 	set_vehicle_dir_offsets(WEST, movable_parent.pixel_x, 0)
 
+
+//SKYRAT EDIT START: Human Riding Defines
 #undef OVERSIZED_OFFSET
 #undef OVERSIZED_SIDE_OFFSET
 #undef REGULAR_OFFSET
 #undef REGULAR_SIDE_OFFSET
+//SKYRAT EDIT END
