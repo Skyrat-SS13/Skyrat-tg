@@ -495,50 +495,50 @@
 //A bunch of Re-overrides so that admins can keep using some redsec stuff; not all of them have this though!
 
 //Eyes//
-/obj/item/clothing/glasses/hud/security/red
+/obj/item/clothing/glasses/hud/security/redsec
 	icon = 'icons/obj/clothing/glasses.dmi'
 	worn_icon = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "securityhud"
 	glass_colour_type = /datum/client_colour/glass_colour/red
 
-/obj/item/clothing/glasses/hud/security/sunglasses/red
+/obj/item/clothing/glasses/hud/security/sunglasses/redsec
 	icon = 'icons/obj/clothing/glasses.dmi'
 	worn_icon = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "sunhudsec"
 	glass_colour_type = /datum/client_colour/glass_colour/darkred
 	current_skin = "sunhudsec"	//prevents reskinning; a bit hacky to say its already reskinned but its better than a code rewrite
 
-/obj/item/clothing/glasses/hud/security/sunglasses/eyepatch/red
+/obj/item/clothing/glasses/hud/security/sunglasses/eyepatch/redsec
 	icon = 'icons/obj/clothing/glasses.dmi'
 	worn_icon = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "hudpatch"
 
-/obj/item/clothing/glasses/hud/security/night/red
+/obj/item/clothing/glasses/hud/security/night/redsec
 	icon = 'icons/obj/clothing/glasses.dmi'
 	worn_icon = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "securityhudnight"
 
 
 //Back//
-/obj/item/storage/backpack/security/red
+/obj/item/storage/backpack/security/redsec
 	icon = 'icons/obj/storage.dmi'
 	worn_icon = 'icons/mob/clothing/back.dmi'
 	icon_state = "securitypack"
 	current_skin = "securitypack"	//prevents reskinning
 
-/obj/item/storage/backpack/satchel/sec/red
+/obj/item/storage/backpack/satchel/sec/redsec
 	icon = 'icons/obj/storage.dmi'
 	worn_icon = 'icons/mob/clothing/back.dmi'
 	icon_state = "satchel-sec"
 
-/obj/item/storage/backpack/duffelbag/sec/red
+/obj/item/storage/backpack/duffelbag/sec/redsec
 	icon = 'icons/obj/storage.dmi'
 	worn_icon = 'icons/mob/clothing/back.dmi'
 	icon_state = "duffel-sec"
 	current_skin = "duffel-sec"	//prevents reskinning
 
 //Belt//
-/obj/item/storage/belt/security/red
+/obj/item/storage/belt/security/redsec
 	icon = 'icons/obj/clothing/belts.dmi'
 	worn_icon = 'icons/mob/clothing/belt.dmi'
 	icon_state = "security"
@@ -547,7 +547,7 @@
 	current_skin = "security"	//prevents reskinning
 
 //Head//
-/obj/item/clothing/head/helmet/sec/red
+/obj/item/clothing/head/helmet/sec/redsec
 	icon = 'icons/obj/clothing/hats.dmi'
 	worn_icon = 'icons/mob/clothing/head.dmi'
 	icon_state = "helmet"
@@ -558,31 +558,31 @@
 	flags_inv = HIDEHAIR
 
 //Uniform//
-/obj/item/clothing/under/rank/security/officer/red
+/obj/item/clothing/under/rank/security/officer/redsec
 	icon = 'icons/obj/clothing/under/security.dmi'
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
 	icon_state = "rsecurity"
 	current_skin = "rsecurity"	//prevents reskinning
 
-/obj/item/clothing/under/rank/security/warden/red
+/obj/item/clothing/under/rank/security/warden/redsec
 	icon = 'icons/obj/clothing/under/security.dmi'
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
 	icon_state = "rwarden"
 
-/obj/item/clothing/under/rank/security/head_of_security/red
+/obj/item/clothing/under/rank/security/head_of_security/redsec
 	icon = 'icons/obj/clothing/under/security.dmi'
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
 	icon_state = "rhos"
 
 //Winter Coat
-/obj/item/clothing/head/hooded/winterhood/security/red
+/obj/item/clothing/head/hooded/winterhood/security/redsec
 	icon = 'icons/obj/clothing/head/winterhood.dmi'
 	worn_icon = 'icons/mob/clothing/head/winterhood.dmi'
 	icon_state = "hood_security"
 
-/obj/item/clothing/suit/hooded/wintercoat/security/red
+/obj/item/clothing/suit/hooded/wintercoat/security/redsec
 	icon = 'icons/obj/clothing/suits/wintercoat.dmi'
 	worn_icon = 'icons/mob/clothing/suits/wintercoat.dmi'
 	icon_state = "coatsecurity"
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/red
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/redsec
 

@@ -77,13 +77,13 @@
 /obj/item/vending_refill/wardrobe/peacekeeper_wardrobe
 	machine_name = "Peacekeeper outfitting station"
 
-//List for the old one, for when its mapped in; curates it nicely, adds /red to the items, and also prevents some conflicts with the above vendor
+//List for the old one, for when its mapped in; curates it nicely, adds /redsec to the items, and also prevents some conflicts with the above vendor
 /obj/machinery/vending/wardrobe/sec_wardrobe
-	products = list(/obj/item/clothing/suit/hooded/wintercoat/security/red = 3,
-					/obj/item/storage/backpack/security/red = 3,
-					/obj/item/storage/backpack/satchel/sec/red = 3,
-					/obj/item/storage/backpack/duffelbag/sec/red = 3,
-					/obj/item/clothing/under/rank/security/officer/red = 3,
+	products = list(/obj/item/clothing/suit/hooded/wintercoat/security/redsec = 3,
+					/obj/item/storage/backpack/security/redsec = 3,
+					/obj/item/storage/backpack/satchel/sec/redsec = 3,
+					/obj/item/storage/backpack/duffelbag/sec/redsec = 3,
+					/obj/item/clothing/under/rank/security/officer/redsec = 3,
 					/obj/item/clothing/shoes/jackboots = 3,
 					/obj/item/clothing/head/beret/sec = 3,
 					/obj/item/clothing/head/soft/sec = 3,
