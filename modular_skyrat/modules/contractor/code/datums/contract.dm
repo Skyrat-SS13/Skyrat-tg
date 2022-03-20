@@ -59,16 +59,17 @@
 
 /// Handler to find a valid turn and launch victim collector
 /datum/syndicate_contract/proc/handle_extraction(mob/living/user)
-	if (contract.target && contract.dropoff_check(user, contract.target.current))
+	if(!(contract.target && contract.dropoff_check(user, contract.target.current)))
+		return FALSE
 
-		var/turf/free_location = find_obstruction_free_location(3, user, contract.dropoff)
+	var/turf/free_location = find_obstruction_free_location(3, user, contract.dropoff)
 
-		if (free_location)
-			// We've got a valid location, launch.
-			launch_extraction_pod(free_location)
-			return TRUE
+	if(!free_location)
+		return FALSE
 
-	return FALSE
+	launch_extraction_pod(free_location)
+	return TRUE
+
 
 /// Launch the pod to collect our victim.
 /datum/syndicate_contract/proc/launch_extraction_pod(turf/empty_pod_turf)
@@ -83,20 +84,19 @@
 
 	new /obj/effect/pod_landingzone(empty_pod_turf, empty_pod)
 
-/datum/syndicate_contract/proc/enter_check(datum/source, sent_mob)
+/datum/syndicate_contract/proc/enter_check(datum/source, mob/living/sent_mob)
 	SIGNAL_HANDLER
 	if(!istype(source, /obj/structure/closet/supplypod/extractionpod))
 		return
-	if(!isliving(sent_mob))
+	if(!istype(sent_mob))
 		return
-	var/mob/living/target = sent_mob
 	var/datum/opposing_force/opfor_data = contract.owner.opposing_force
 
-	if (target == contract.target.current)
+	if (sent_mob == contract.target.current)
 		opfor_data.contractor_hub.contract_TC_to_redeem += contract.payout
 		opfor_data.contractor_hub.contracts_completed += 1
 
-		if (target.stat != DEAD)
+		if (sent_mob.stat != DEAD)
 			opfor_data.contractor_hub.contract_TC_to_redeem += contract.payout_bonus
 
 		status = CONTRACT_STATUS_COMPLETE
@@ -106,37 +106,37 @@
 
 		opfor_data.contractor_hub.contract_rep += 2
 	else
-		status = CONTRACT_STATUS_ABORTED // Sending a target that wasn't even yours is as good as just aborting it
+		status = CONTRACT_STATUS_ABORTED // Sending a sent_mob that wasn't even yours is as good as just aborting it
 
 		if (opfor_data.contractor_hub.current_contract == src)
 			opfor_data.contractor_hub.current_contract = null
 
-	if (iscarbon(target))
-		for(var/obj/item/target_item in target)
-			if (ishuman(target))
-				var/mob/living/carbon/human/target_human = target
-				if(target_item == target_human.w_uniform)
+	if (iscarbon(sent_mob))
+		for(var/obj/item/sent_mob_item in sent_mob)
+			if (ishuman(sent_mob))
+				var/mob/living/carbon/human/sent_mob_human = sent_mob
+				if(sent_mob_item == sent_mob_human.w_uniform)
 					continue //So all they're left with are shoes and uniform.
-				if(target_item == target_human.shoes)
+				if(sent_mob_item == sent_mob_human.shoes)
 					continue
 
 
-			target.transferItemToLoc(target_item)
-			victim_belongings.Add(target_item)
+			sent_mob.transferItemToLoc(sent_mob_item)
+			victim_belongings.Add(sent_mob_item)
 
 	var/obj/structure/closet/supplypod/extractionpod/pod = source
 
 	// Handle the pod returning
 	pod.startExitSequence(pod)
 
-	if (ishuman(target))
-		var/mob/living/carbon/human/target_human = target
+	if (ishuman(sent_mob))
+		var/mob/living/carbon/human/sent_mob_human = sent_mob
 
 		// After we remove items, at least give them what they need to live.
-		target_human.dna.species.give_important_for_life(target_human)
+		sent_mob_human.dna.species.give_important_for_life(sent_mob_human)
 
 	// After pod is sent we start the victim narrative/heal.
-	INVOKE_ASYNC(src, .proc/handleVictimExperience, target)
+	INVOKE_ASYNC(src, .proc/handle_victim_experience, sent_mob)
 
 	// This is slightly delayed because of the sleep calls above to handle the narrative.
 	// We don't want to tell the station instantly.
@@ -170,10 +170,10 @@
 		[owner_id.registered_account.account_balance] credits.", TRUE)
 
 /// They're off to holding - handle the return timer and give some text about what's going on.
-/datum/syndicate_contract/proc/handleVictimExperience(mob/living/target)
+/datum/syndicate_contract/proc/handle_victim_experience(mob/living/target)
 	// Ship 'em back - dead or alive, 4 minutes wait.
 	// Even if they weren't the target, we're still treating them the same.
-	addtimer(CALLBACK(src, .proc/returnVictim, target), 4 MINUTES)
+	addtimer(CALLBACK(src, .proc/return_victim, target), 4 MINUTES)
 
 	if (target.stat == DEAD)
 		return
@@ -206,7 +206,7 @@
 	target.add_confusion(20)
 
 /// We're returning the victim
-/datum/syndicate_contract/proc/returnVictim(mob/living/target)
+/datum/syndicate_contract/proc/return_victim(mob/living/target)
 	var/list/possible_drop_loc = list()
 
 	for(var/turf/possible_drop in contract.dropoff.contents)

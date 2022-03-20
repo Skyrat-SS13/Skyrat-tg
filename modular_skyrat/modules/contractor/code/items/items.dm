@@ -1,3 +1,5 @@
+#define SMALL_ITEM_AMOUNT 3
+
 /obj/item/storage/box/syndicate/contract_kit
 	name = "Contract Kit"
 	special_desc = "Supplied to Syndicate contractors."
@@ -101,14 +103,9 @@
 		/obj/item/healthanalyzer/rad_laser
 	)
 
-	var/obj/item1 = pick_n_take(item_list)
-	var/obj/item2 = pick_n_take(item_list)
-	var/obj/item3 = pick_n_take(item_list)
-
-	// Create two, non repeat items from the list.
-	new item1(src)
-	new item2(src)
-	new item3(src)
+	for(var/iteration in 1 to SMALL_ITEM_AMOUNT)
+		var/obj/item/small_item = pick_n_take(item_list)
+		new small_item(src)
 
 	// Paper guide
 	new /obj/item/paper/contractor_guide(src)
@@ -137,3 +134,5 @@
 	can_use_indoors = TRUE
 	special_desc_requirement = EXAMINE_CHECK_CONTRACTOR
 	special_desc = "A modified fulton pack that can be used indoors thanks to Bluespace technology. Favored by Syndicate Contractors."
+
+#undef SMALL_ITEM_AMOUNT

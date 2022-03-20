@@ -37,8 +37,13 @@
 	r_hand = /obj/item/storage/toolbox/syndicate
 	id_trim = /datum/id_trim/chameleon/operative
 
-	backpack_contents = list(/obj/item/storage/box/survival, /obj/item/implanter/uplink, /obj/item/clothing/mask/chameleon,
-							/obj/item/storage/fancy/cigarettes/cigpack_syndicate, /obj/item/lighter)
+	backpack_contents = list(
+	/obj/item/storage/box/survival,
+	/obj/item/implanter/uplink,
+	/obj/item/clothing/mask/chameleon,
+	/obj/item/storage/fancy/cigarettes/cigpack_syndicate,
+	/obj/item/lighter
+	)
 
 /datum/outfit/contractor_partner/post_equip(mob/living/carbon/human/partner, visualsOnly)
 	. = ..()
