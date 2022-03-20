@@ -16,7 +16,7 @@
 /datum/antagonist/traitor/contractor_support/forge_traitor_objectives()
 	var/datum/objective/generic_objective = new
 
-	generic_objective.name = "Follow Contractor's Orders"
+	generic_objective.name = "Follow the Contractor's Orders"
 	generic_objective.explanation_text = "Follow your orders. Assist agents in this mission area."
 
 	generic_objective.completed = TRUE
@@ -40,9 +40,9 @@
 	backpack_contents = list(/obj/item/storage/box/survival, /obj/item/implanter/uplink, /obj/item/clothing/mask/chameleon,
 							/obj/item/storage/fancy/cigarettes/cigpack_syndicate, /obj/item/lighter)
 
-/datum/outfit/contractor_partner/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/contractor_partner/post_equip(mob/living/carbon/human/partner, visualsOnly)
 	. = ..()
-	var/obj/item/clothing/mask/cigarette/syndicate/cig = H.get_item_by_slot(ITEM_SLOT_MASK)
+	var/obj/item/clothing/mask/cigarette/syndicate/cig = partner.get_item_by_slot(ITEM_SLOT_MASK)
 
 	// pre-light their cig
 	cig.light()

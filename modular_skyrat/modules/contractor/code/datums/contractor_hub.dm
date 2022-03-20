@@ -59,8 +59,8 @@
 		start_index = length(assigned_contracts) + 1
 
 	// Generate contracts, and find the lowest paying.
-	for(var/i in 1 to length(to_generate))
-		var/datum/syndicate_contract/contract_to_add = new(owner, assigned_targets, to_generate[i])
+	for(var/contract_gen in 1 to length(to_generate))
+		var/datum/syndicate_contract/contract_to_add = new(owner, assigned_targets, to_generate[contract_gen])
 		var/contract_payout_total = contract_to_add.contract.payout + contract_to_add.contract.payout_bonus
 
 		assigned_targets.Add(contract_to_add.contract.target)
