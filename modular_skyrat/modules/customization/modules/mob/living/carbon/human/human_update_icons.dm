@@ -149,13 +149,13 @@
 				var/obj/item/clothing/under/U = w_uniform
 				if (U.applied_style_store & STYLE_TAUR_ALL)
 					if (!(U.has_overlays_shifted_due_to_taur) && (U.accessory_overlay))
-						U.accessory_overlay.pixel_x += 16
-						U.has_overlays_shifted_due_to_taur = TRUE
+						U.accessory_overlay.pixel_x += 16  //If both the suit and uniform support taur sprites but the uniform has not shifted the overlay,
+						U.has_overlays_shifted_due_to_taur = TRUE // shift it.
 
 		else if (istype(w_uniform, /obj/item/clothing/under))
 			var/obj/item/clothing/under/U = w_uniform
-			if (U.applied_style_store & STYLE_TAUR_ALL)
-				if (U.has_overlays_shifted_due_to_taur)
+			if (U.applied_style_store & STYLE_TAUR_ALL) // If this suit doesnt support taur sprites but the uniform does (and has the overlay shifted to accomodate),
+				if (U.has_overlays_shifted_due_to_taur) // reset it to normal until we take the suit off
 					U.accessory_overlay.pixel_x -= 16
 					U.has_overlays_shifted_due_to_taur = FALSE
 
@@ -166,6 +166,7 @@
 			suit_overlay.pixel_y += dna.species.offset_features[OFFSET_SUIT][2]
 		overlays_standing[SUIT_LAYER] = suit_overlay
 
+	// Only fired if the suit is being taken off, shifts accessory overlays back to normal if this suit didnt allow for taur sprites but the jumpsuti did
 	else if (istype(w_uniform, /obj/item/clothing/under))
 		var/obj/item/clothing/under/U = w_uniform
 		if ((U.applied_style_store & STYLE_TAUR_ALL) && (U.accessory_overlay) && !(U.has_overlays_shifted_due_to_taur))
