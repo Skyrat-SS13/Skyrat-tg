@@ -122,12 +122,11 @@ GLOBAL_LIST_INIT(assaultops_equipment, build_assaultops_equipment())
 
 	r_hand = /obj/item/gun/ballistic/shotgun/bulldog
 
-	l_hand = /obj/item/mod/control/pre_equipped/research
-
-	implants = list(/obj/item/implant/explosive/macro)
+	back = /obj/item/mod/control/pre_equipped/research
 
 	backpack_contents = list(
 		/obj/item/storage/box/survival/syndie,
+		/obj/item/sbeacondrop/bomb = 2,
 		/obj/item/knife/combat,
 		/obj/item/gun/energy/disabler,
 		/obj/item/storage/box/assaultops/demoman,
@@ -163,7 +162,7 @@ GLOBAL_LIST_INIT(assaultops_equipment, build_assaultops_equipment())
 /datum/outfit/assaultops/heavy
 	name = "Assault Operative - Heavy Gunner"
 
-	l_hand = /obj/item/gun/ballistic/automatic/pitbull/pulse/r40
+	l_hand = /obj/item/gun/ballistic/automatic/mg34
 
 
 	backpack_contents = list(

@@ -75,3 +75,6 @@
 		vending_product.custom_premium_price = 0
 		vending_product.age_restricted = FALSE
 		recordlist += vending_product
+
+
+
