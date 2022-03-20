@@ -146,11 +146,12 @@
 	icon_state = "hecu"
 
 /obj/item/clothing/mask/gas/hecu2
-	name = "modern gas mask"
-	desc = "MY. ASS. IS. HEAVY."
+	name = "M40 gas mask"
+	desc = "A deprecated field protective mask developed during the 20th century in Sol-3. It's designed to protect from chemical agents, biological agents, and nuclear fallout particles. It does not protect the user from ammonia or from lack of oxygen, though the filter can be replaced with a tube for any air tank."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "hecu2"
+	flags_inv = HIDEHAIR
 
 /obj/item/clothing/mask/gas/soviet
 	name = "soviet gas mask"

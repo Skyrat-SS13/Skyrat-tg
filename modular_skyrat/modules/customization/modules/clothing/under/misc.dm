@@ -34,7 +34,7 @@
 	desc = "We've saved money by giving you half a shirt!"
 	icon_state = "croptop"
 	body_parts_covered = CHEST|GROIN|ARMS
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	can_adjust = FALSE
 
 /obj/item/clothing/under/misc/gear_harness
@@ -432,7 +432,7 @@
 	desc = "A single leaf, designed to cover the genitalia of the wearer. Seek not temptation."
 	icon_state = "adam"
 	body_parts_covered = GROIN
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/misc/evilcargo
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
@@ -459,7 +459,7 @@
 	body_parts_covered = GROIN
 	can_adjust = FALSE
 	mutant_variants = NONE
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/civilian/hydroponics/trouser
 	desc = "A green set of trousers, perfect for making pigs smoke."
@@ -470,7 +470,7 @@
 	body_parts_covered = GROIN
 	can_adjust = FALSE
 	mutant_variants = NONE
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/security/peacekeeper/trousers
 	name = "peacekeeper's trousers"
@@ -481,7 +481,7 @@
 	body_parts_covered = GROIN
 	can_adjust = FALSE
 	mutant_variants = NONE
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/security/peacekeeper/trousers/red
 	name = "security officer's trousers"
@@ -623,16 +623,6 @@
 	name = "head of personnel's female formal uniform"
 	icon_state = "hop_parade_female"
 
-/obj/item/clothing/under/rank/medical/chief_medical_officer/turtleneck
-	name = "chief medical officer's turtleneck"
-	desc = "A light blue turtleneck and brown khakis, for a doctor with a superior sense of style."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "cmoturtle"
-	inhand_icon_state = "b_suit"
-	can_adjust = TRUE
-	alt_covers_chest = TRUE
-
 /obj/item/clothing/under/rank/captain/kilt
 	desc = "Not a skirt, it is, however, armoured and decorated with a tartan sash."
 	name = "captain's kilt"
@@ -687,7 +677,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "lucifer"
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	obj_flags = UNIQUE_RENAME
 	unique_reskin = list(
 		"Pride" = "lucifer",

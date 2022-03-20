@@ -115,7 +115,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	//SKYRAT EDIT ADDITION
 	if(LAZYLEN(SSopposing_force.submitted_applications))
 		for(var/datum/opposing_force/opposing_force as anything in SSopposing_force.submitted_applications)
-			L[++L.len] = list("[opposing_force.handling_admin ? "H-[opposing_force.handling_admin]. " : ""]OPFOR: [opposing_force.ckey]", null, REF(opposing_force))
+			L[++L.len] = list("[opposing_force.handling_admin ? "H-[opposing_force.handling_admin]. " : ""]OPFOR:", "[opposing_force.stat_button.update(" [opposing_force.ckey] ")]", null, REF(opposing_force.stat_button))
 	//SKYRAT EDIT END
 	return L
 
@@ -196,6 +196,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/static/ticket_counter = 0
 	/// The list of clients currently responding to the opening ticket before it gets a response
 	var/list/opening_responders
+	//SKYRAT EDIT START
+	/// Have we requested this ticket to stop being part of the Ticket Ping subsystem?
+	var/ticket_ping_stop = FALSE
+	//SKYRAT EDIT END
 
 /**
  * Call this on its own to create a ticket, don't manually assign current_ticket
@@ -360,6 +364,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=handleissue'>HANDLE</A>)" //SKYRAT EDIT ADDITION - ADMIN
+	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=pingmute'>PING MUTE</A>)" //SKYRAT EDIT
 
 //private
 /datum/admin_help/proc/LinkedReplyName(ref_src)
@@ -635,6 +640,12 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		//SKYRAT EDIT ADDITION BEING - ADMIN
 		if("handleissue")
 			HandleIssue()
+		if("pingmute")
+			ticket_ping_stop = !ticket_ping_stop
+			SSblackbox.record_feedback("tally", "ahelp_stats", 1, "pingmute")
+			var/msg = "Ticket [TicketHref("#[id]")] has been [ticket_ping_stop ? "" : "un"]muted from the Ticket Ping Subsystem by [key_name_admin(usr)]."
+			message_admins(msg)
+			log_admin_private(msg)
 		//SKYRAT EDIT ADDITION END
 
 //
@@ -1039,3 +1050,36 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 	if(length(admins_to_ping))
 		admins_to_ping[ADMINSAY_PING_UNDERLINE_NAME_INDEX] = jointext(msglist, " ") // without tuples, we must make do!
 		return admins_to_ping
+
+/**
+ * Checks a given message to see if any of the words contain a memory ref for a datum. Said ref should not have brackets around it
+ *
+ * Returns nothing if no refs are found, otherwise returns an associative list with ckey -> client
+ * Also modifies msg to underline and linkify the [ref] so other admins can click on the address to open the VV entry for said datum
+ *
+ * Arguments:
+ * * msg - the message being scanned
+ */
+/proc/check_memory_refs(msg)
+	if(!findtext(msg, GLOB.is_memref))
+		return
+
+	//explode the input msg into a list
+	var/list/msglist = splittext(msg, " ")
+	var/list/datums_to_ref = list()
+
+	var/i = 0
+	for(var/word in msglist)
+		i++
+		if(!length(word))
+			continue
+		var/word_with_brackets = "\[[word]\]" // the actual memory address lookups need the bracket wraps
+		var/datum/check_datum = locate(word_with_brackets)
+		if(!istype(check_datum))
+			continue
+		msglist[i] = "<u><a href='?_src_=vars;[HrefToken(TRUE)];Vars=[word_with_brackets]'>[word_with_brackets]</A></u>"
+		datums_to_ref[word] = word
+
+	if(length(datums_to_ref))
+		datums_to_ref[ADMINSAY_LINK_DATUM_REF] = jointext(msglist, " ") // without tuples, we must make do!
+		return datums_to_ref

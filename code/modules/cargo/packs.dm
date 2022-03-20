@@ -1244,11 +1244,11 @@
 					/obj/item/storage/box/medigels,
 					/obj/item/storage/box/syringes,
 					/obj/item/storage/box/bodybags,
-					/obj/item/storage/firstaid/regular,
-					/obj/item/storage/firstaid/o2,
-					/obj/item/storage/firstaid/toxin,
-					/obj/item/storage/firstaid/brute,
-					/obj/item/storage/firstaid/fire,
+					/obj/item/storage/medkit/regular,
+					/obj/item/storage/medkit/o2,
+					/obj/item/storage/medkit/toxin,
+					/obj/item/storage/medkit/brute,
+					/obj/item/storage/medkit/fire,
 					/obj/item/defibrillator/loaded,
 					/obj/item/reagent_containers/blood/o_minus,
 					/obj/item/storage/pill_bottle/mining,
@@ -1403,8 +1403,8 @@
 					/obj/item/assembly/prox_sensor,
 					/obj/item/assembly/prox_sensor,
 					/obj/item/assembly/prox_sensor,
-					/obj/item/storage/firstaid,
-					/obj/item/storage/firstaid,
+					/obj/item/storage/medkit,
+					/obj/item/storage/medkit,
 					/obj/item/healthanalyzer,
 					/obj/item/healthanalyzer,
 					/obj/item/clothing/head/hardhat/red,
@@ -2526,12 +2526,37 @@
 
 /datum/supply_pack/misc/aquarium_fish
 	name = "Aquarium Fish Case"
-	desc = "An aquarium fish handpicked by monkeys from our collection."
+	desc = "An aquarium fish bundle handpicked by monkeys from our collection."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/storage/fish_case/random,
+					/obj/item/storage/fish_case/random,
 					/obj/item/storage/fish_case/random)
 	crate_name = "aquarium fish crate"
-/* - SKYRAT EDIT: rest tight bikey
+
+/datum/supply_pack/misc/freshwater_fish
+	name = "Freshwater Fish Case"
+	desc = "Aquarium fish that have had most of their mud cleaned off."
+	cost = CARGO_CRATE_VALUE * 2
+	contains = list(/obj/item/storage/fish_case/random/freshwater,
+					/obj/item/storage/fish_case/random/freshwater)
+	crate_name = "freshwater fish crate"
+
+/datum/supply_pack/misc/saltwater_fish
+	name = "Saltwater Fish Case"
+	desc = "Aquarium fish that fill the room with the smell of salt."
+	cost = CARGO_CRATE_VALUE * 2
+	contains = list(/obj/item/storage/fish_case/random/saltwater,
+					/obj/item/storage/fish_case/random/saltwater)
+	crate_name = "saltwater fish crate"
+
+/datum/supply_pack/misc/tiziran_fish
+	name = "Tirizan Fish Case"
+	desc = "Tiziran saltwater fish imported from the Zagos Sea."
+	cost = CARGO_CRATE_VALUE * 2
+	contains = list(/obj/item/storage/fish_case/tiziran,
+					/obj/item/storage/fish_case/tiziran)
+	crate_name = "tiziran fish crate"
+
 /datum/supply_pack/misc/bicycle
 	name = "Bicycle"
 	desc = "Nanotrasen reminds all employees to never toy with powers outside their control."
@@ -2539,7 +2564,7 @@
 	contains = list(/obj/vehicle/ridden/bicycle)
 	crate_name = "Bicycle Crate"
 	crate_type = /obj/structure/closet/crate/large
-*/
+
 /datum/supply_pack/misc/bigband
 	name = "Big Band Instrument Collection"
 	desc = "Get your sad station movin' and groovin' with this fine collection! Contains nine different instruments!"

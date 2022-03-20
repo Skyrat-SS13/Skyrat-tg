@@ -694,6 +694,10 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 			furnish_delay = 20
 
 /obj/item/construction/rcd/proc/rcd_create(atom/A, mob/user)
+	// SKYRAT EDIT ADDITION
+	if(A.prevent_rcd_deconstruction)
+		return FALSE
+	// SKYRAT EDIT END
 	var/list/rcd_results = A.rcd_vals(user, src)
 	if(!rcd_results)
 		return FALSE
@@ -820,12 +824,16 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 /obj/item/construction/rcd/pre_attack(atom/A, mob/user, params)
 	. = ..()
 	mode = construction_mode
+	if(!A.rcd_vals(user, src))
+		return
 	rcd_create(A, user)
 	return TRUE
 
 /obj/item/construction/rcd/pre_attack_secondary(atom/target, mob/living/user, params)
 	. = ..()
 	mode = RCD_DECONSTRUCT
+	if(!target.rcd_vals(user, src))
+		return
 	rcd_create(target, user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
