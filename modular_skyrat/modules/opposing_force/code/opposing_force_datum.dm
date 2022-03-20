@@ -443,7 +443,7 @@
 		if(iterating_equipment.status != OPFOR_EQUIPMENT_STATUS_APPROVED)
 			continue
 		for(var/i in 1 to iterating_equipment.count)
-			if(!istype(iterating_equipment.opposing_force_equipment.item_type, /obj/effect/gibspawner/generic)) // This is what's used in place of an item in uplinks, so it's the same here
+			if(!(iterating_equipment.opposing_force_equipment.item_type == /obj/effect/gibspawner/generic)) // This is what's used in place of an item in uplinks, so it's the same here
 				new iterating_equipment.opposing_force_equipment.item_type(spawned_box)
 			iterating_equipment.opposing_force_equipment.on_issue(target)
 
