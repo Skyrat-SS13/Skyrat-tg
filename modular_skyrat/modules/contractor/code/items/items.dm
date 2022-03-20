@@ -66,6 +66,7 @@
 	new /obj/item/card/id/advanced/chameleon(src)
 	new /obj/item/lighter(src)
 	new /obj/item/uplink/opfor(src)
+	new /obj/item/jammer(src)
 
 /obj/item/storage/box/syndicate/contract_kit/PopulateContents()
 	new /obj/item/modular_computer/tablet/syndicate_contract_uplink/preset/uplink(src)
@@ -92,7 +93,12 @@
 		/obj/item/gun/ballistic/automatic/c20r/toy/unrestricted/riot,
 		/obj/item/reagent_containers/hypospray/medipen/stimulants,
 		/obj/item/storage/box/syndie_kit/imp_freedom,
-		/obj/item/toy/eightball/haunted
+		/obj/item/crowbar/power/syndicate,
+		/obj/item/clothing/gloves/tackler/combat/insulated,
+		/obj/item/storage/box/syndie_kit/emp,
+		/obj/item/radio/headset/chameleon/advanced,
+		/obj/item/shield/energy,
+		/obj/item/healthanalyzer/rad_laser
 	)
 
 	var/obj/item1 = pick_n_take(item_list)
