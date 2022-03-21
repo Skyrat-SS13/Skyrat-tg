@@ -28,8 +28,8 @@
 	//Inject or spray?
 	var/mode = HYPO_INJECT
 	var/obj/item/reagent_containers/glass/vial/vial
-	var/start_vial = /obj/item/reagent_containers/glass/vial/small
-	var/spawnwithvial = TRUE
+	var/start_vial
+	var/spawnwithvial = FALSE
 
 	//Time taken to inject others
 	var/inject_wait = WAIT_INJECT
@@ -52,6 +52,7 @@
 	desc = "The deluxe hypospray can take larger 120-unit vials. It also acts faster and can deliver more reagents per spray."
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	start_vial = /obj/item/reagent_containers/glass/vial/large/deluxe
+	spawnwithvial = TRUE
 	small_only = FALSE
 	inject_wait = DELUXE_WAIT_INJECT
 	spray_wait = DELUXE_WAIT_SPRAY
