@@ -52,7 +52,7 @@
 	mutant_variants = NONE
 	can_adjust = FALSE
 
-///CDO
+///Police Uniforms
 /obj/item/clothing/under/rank/security/peacekeeper/sol/cadet
 	name = "sol police cadet uniform"
 	desc = "A light blue shirt with navy pants, perfect for pretending you matter."
@@ -75,6 +75,8 @@
 	name = "sol warden uniform"
 	desc = "A light blue shirt with navy pants, this one seems to have been modified for fat asses, like yourself."
 	icon_state = "policewardenalt"
+	
+// End Police Uniforms
 
 ///SECMED
 /obj/item/clothing/under/rank/medical/doctor/red
