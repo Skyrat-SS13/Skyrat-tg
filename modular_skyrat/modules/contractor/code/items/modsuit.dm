@@ -231,6 +231,15 @@
 	armor_values = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20)
 	added_slowdown = 0.5 //Bulky as shit
 
+/obj/item/mod/control/update_appearance(updates)
+	var/obj/item/mod/module/chameleon/chameleon_module = modules.Find(/obj/item/mod/module/chameleon)
+	if(!chameleon_module)
+		return ..()
+	if(chameleon_module.on)
+		return
+
+	return ..()
+
 // I absolutely fuckin hate having to do this
 /obj/item/clothing/head/mod/contractor
 	worn_icon = 'modular_skyrat/modules/contractor/icons/worn_modsuit.dmi'
