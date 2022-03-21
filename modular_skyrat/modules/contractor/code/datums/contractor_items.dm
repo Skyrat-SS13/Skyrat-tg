@@ -82,7 +82,7 @@
 
 /datum/contractor_item/fulton_extraction_kit
 	name = "Fulton Extraction Kit"
-	desc = "For getting your target across the station to those difficult dropoffs. Place the beacon somewhere secure, and link the pack. Activating the pack on your target in space will send them over to the beacon - make sure they're not just going to run away though!"
+	desc = "For getting your target across the station to those difficult dropoffs. Place the beacon somewhere secure, and link the pack. Activating the pack on your target will send them over to the beacon - make sure they're not just going to run away though!"
 	item = /obj/item/storage/box/contractor/fulton_extraction
 	item_icon = "parachute-box"
 	limited = 1
@@ -174,3 +174,10 @@
 	var/datum/round_event_control/event = locate(/datum/round_event_control/communications_blackout) in SSevents.control
 	event.runEvent()
 
+/datum/contractor_item/baton_holster
+	name = "Baton Holster Module"
+	desc = "Never worry about dropping your baton again with this holster module! Simply insert your baton into the module, put it in your MODsuit, and deploy it at will."
+	item = /obj
+	item_icon = ""
+	limited = 1
+	cost = 1

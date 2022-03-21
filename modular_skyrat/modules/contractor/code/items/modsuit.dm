@@ -12,6 +12,16 @@
 		/obj/item/mod/module/holster,
 	)
 
+/obj/item/mod/control/pre_equipped/contractor/upgraded
+	applied_cell = /obj/item/stock_parts/cell/bluespace
+	initial_modules = list(
+		/obj/item/mod/module/storage/syndicate,
+		/obj/item/mod/module/jetpack,
+		/obj/item/mod/module/dna_lock,
+		/obj/item/mod/module/holster,
+		/obj/item/mod/module/baton_holster/preloaded,
+	)
+
 // For the record: modularity makes me want to die
 /obj/item/mod/control/pre_equipped/contractor/Initialize(mapload, new_theme, new_skin, new_core)
 	. = ..()
@@ -247,3 +257,76 @@
 /obj/item/clothing/shoes/mod/contractor
 	worn_icon = 'modular_skyrat/modules/contractor/icons/worn_modsuit.dmi'
 	icon = 'modular_skyrat/modules/contractor/icons/modsuit.dmi'
+
+
+/obj/item/mod/module/baton_holster
+	name = "MOD baton holster module"
+	desc = "A module installed into the chest of a MODSuit, this allows you \
+		to retrieve an inserted baton from the suit at will. Insert a baton \
+		by hitting the module, while it is removed from the suit, with the baton. \
+		Remove an inserted baton with a wrench."
+	icon_state = "holster"
+	icon = 'modular_skyrat/modules/contractor/icons/modsuit_modules.dmi'
+	complexity = 3
+	incompatible_modules = list(/obj/item/mod/module/baton_holster)
+	module_type = MODULE_USABLE
+	/// Ref to the baton
+	var/obj/item/melee/baton/telescopic/contractor_baton/stored_batong
+	/// If the baton is out or not
+	var/deployed = FALSE
+
+// doesn't give a shit if it's deployed or not
+/obj/item/mod/module/baton_holster/on_select()
+	on_use()
+	SEND_SIGNAL(mod, COMSIG_MOD_MODULE_SELECTED, src)
+
+/obj/item/mod/module/baton_holster/attackby(obj/item/attacking_item, mob/user, params)
+	. = ..()
+	if(!istype(attacking_item, /obj/item/melee/baton/telescopic/contractor_baton) || stored_batong)
+		return
+	balloon_alert(user, "[attacking_item] inserted.")
+	attacking_item.forceMove(src)
+	stored_batong = attacking_item
+
+/obj/item/mod/module/baton_holster/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	if(!stored_batong)
+		return
+	balloon_alert(user, "[stored_batong] removed.")
+	stored_batong.forceMove(get_turf(src))
+	stored_batong = null
+
+/obj/item/mod/module/baton_holster/Destroy()
+	if(stored_batong)
+		stored_batong.forceMove(get_turf(src))
+		stored_batong = null
+	. = ..()
+
+/obj/item/mod/module/baton_holster/on_use()
+	if(!deployed)
+		deploy(mod.wearer)
+	else
+		undeploy(mod.wearer)
+
+/obj/item/mod/module/baton_holster/proc/deploy(mob/living/user)
+	if(!(stored_batong in src))
+		return
+	if(!user.put_in_hands(stored_batong))
+		to_chat(user, span_warning("You need a free hand to hold [stored_batong]!"))
+		return
+	deployed = TRUE
+
+/obj/item/mod/module/baton_holster/proc/undeploy(mob/living/user)
+	if(!user)
+		user = mod.wearer
+	if(QDELETED(stored_batong))
+		return
+	user.temporarilyRemoveItemFromInventory(stored_batong, TRUE)
+	stored_batong.forceMove(src)
+	deployed = FALSE
+
+/obj/item/mod/module/baton_holster/preloaded
+
+/obj/item/mod/module/baton_holster/preloaded/Initialize(mapload)
+	. = ..()
+	stored_batong = new(src)
