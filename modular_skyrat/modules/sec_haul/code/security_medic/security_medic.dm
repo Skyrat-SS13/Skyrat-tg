@@ -59,9 +59,9 @@
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
 	shoes = /obj/item/clothing/shoes/jackboots/security
 	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
-	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/security_medic/lopland
+	suit = /obj/item/clothing/suit/toggle/labcoat/security_medic/blue
 	l_hand = /obj/item/storage/medkit/brute
-	head = /obj/item/clothing/head/helmet/sec/peacekeeper/security_medic/lopland
+	head = /obj/item/clothing/head/beret/sec/peacekeeper/security_medic
 	backpack_contents = list(/obj/item/gun/energy/disabler = 1)
 	backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec
@@ -113,10 +113,9 @@
 
 /obj/structure/closet/secure_closet/security_medic/PopulateContents()
 	..()
-//	new /obj/item/clothing/suit/toggle/labcoat/security_medic(src) //Add later as not-red
-//	new /obj/item/clothing/suit/hazardvest/security_medic(src) //Add later as not-red
-	new /obj/item/clothing/suit/toggle/labcoat/highvis(src)	//Replacement for the sec_medic labcoat for now
-	new /obj/item/clothing/head/helmet/sec/peacekeeper/security_medic/lopland(src)
+	new /obj/item/clothing/suit/toggle/labcoat/security_medic/blue(src)
+	new /obj/item/clothing/suit/hazardvest/security_medic/blue(src)
+	new /obj/item/clothing/head/helmet/sec/peacekeeper/security_medic(src)
 	new /obj/item/radio/headset/headset_medsec(src)
 	new /obj/item/storage/medkit/emergency(src)
 	new /obj/item/clothing/suit/straight_jacket(src)

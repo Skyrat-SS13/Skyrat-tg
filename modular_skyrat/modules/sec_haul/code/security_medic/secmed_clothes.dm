@@ -7,6 +7,10 @@
 	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50, WOUND = 10)
 	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/flashlight, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/beaker, /obj/item/reagent_containers/pill, /obj/item/storage/pill_bottle, /obj/item/paper, /obj/item/melee/baton/telescopic, /obj/item/soap, /obj/item/tank/internals/emergency_oxygen, /obj/item/gun, /obj/item/storage/medkit)
 
+/obj/item/clothing/suit/toggle/labcoat/security_medic/blue
+	icon_state = "secmed_labcoat_blue"
+	worn_icon_state = "secmed_labcoat_blue"
+
 /obj/item/clothing/suit/hazardvest/security_medic
 	name = "security medic's vest"
 	desc = "A lightweight vest worn by the Security Medic."
@@ -18,6 +22,10 @@
 	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/flashlight, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/beaker, /obj/item/reagent_containers/pill, /obj/item/storage/pill_bottle, /obj/item/paper, /obj/item/melee/baton/telescopic, /obj/item/soap, /obj/item/tank/internals/emergency_oxygen, /obj/item/gun, /obj/item/storage/medkit)
 	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50, WOUND = 10)
 
+/obj/item/clothing/suit/hazardvest/security_medic/blue
+	icon_state = "secmed_vest_blue"
+	worn_icon_state = "secmed_vest_blue"
+
 /obj/item/clothing/suit/armor/vest/peacekeeper/security_medic
 	name = "security medic's armor vest"
 	desc = "A security medic's armor vest, with little pockets for little things."
@@ -27,16 +35,6 @@
 	worn_icon_state = "secmed_armor"
 	mutant_variants = NONE
 	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/flashlight, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/beaker, /obj/item/reagent_containers/pill, /obj/item/storage/pill_bottle, /obj/item/paper, /obj/item/melee/baton/telescopic, /obj/item/soap, /obj/item/tank/internals/emergency_oxygen, /obj/item/gun, /obj/item/storage/medkit)
-
-/obj/item/clothing/suit/armor/vest/peacekeeper/security_medic/lopland //For the newest iteration
-	desc = "A standard security vest with hi-vis identifiers to show the wearer is a security medic. That, or a target."
-	icon_state = "secmed_armor_hivis"
-	worn_icon_state = "secmed_armor_hivis"
-
-/obj/item/clothing/suit/armor/vest/peacekeeper/security_medic/lopland/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
-	. = ..()
-	if(!isinhands)
-		. += emissive_appearance(icon_file, "[icon_state]-emissive", alpha = src.alpha)
 
 /obj/item/clothing/under/rank/security/peacekeeper/security_medic
 	name = "security medics's turtleneck"
@@ -65,13 +63,3 @@
 	worn_icon_state = "secmed_helmet"
 	icon_state = "secmed_helmet"
 	mutant_variants = NONE
-
-/obj/item/clothing/head/helmet/sec/peacekeeper/security_medic/lopland //For the newest iteration
-	desc = "A standard issue combat helmet with hi-vis symbols taped on, for security medics. Has decent tensile strength and armor. Keep your head down."
-	icon_state = "secmed_helmet_hivis"
-	worn_icon_state = "secmed_helmet_hivis"
-
-/obj/item/clothing/head/helmet/sec/peacekeeper/security_medic/lopland/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
-	. = ..()
-	if(!isinhands)
-		. += emissive_appearance(icon_file, "[icon_state]-emissive", alpha = src.alpha)
