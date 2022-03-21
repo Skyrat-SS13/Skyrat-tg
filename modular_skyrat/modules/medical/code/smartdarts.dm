@@ -103,12 +103,33 @@
 
 	//The code that handles the actual injections
 	for(var/datum/reagent/meds in reagents.reagent_list)
+		//Variable to store OD threshold (If present)
+		var/overdose_amount
+		//Amount of chemicals to inject, Changes if OD is present
+		var/inject_amount = meds.volume
+
+		if(meds.overdose_threshold > 0)
+			overdose_amount = meds.overdose_threshold
+
+			//This is mostly here for chemicals that have a low enough OD that an entire dart could trigger it
+			if(inject_amount >= overdose_amount)
+				inject_amount = overdose_amount
+
+			for(var/datum/reagent/injectee_chemical in injectee.reagents.reagent_list)
+				if(istype(injectee_chemical, meds))
+					inject_amount = overdose_amount - injectee_chemical.volume
+
+			inject_amount = inject_amount - 2 //This is here to give a bit of a buffer. If this is not here, the overdose prevention will fail to work.
+
+			if(inject_amount <= 0)
+				continue
+
 		if(!is_type_in_list(meds, allowed_medicine))
 			continue
 		if(is_type_in_list(meds, allergy_list))
 			prevention_used = TRUE
 		else
-			injectee.reagents.add_reagent(meds.type, meds.volume, null, chemical_temp, meds.purity)
+			injectee.reagents.add_reagent(meds.type, inject_amount, null, chemical_temp, meds.purity)
 
 	injectee.visible_message(span_notice("[src] embeds itself into [injectee]"), span_notice("You feel a small prick as [src] embeds itself into you."))
 	if(prevention_used) //Used to signal that allergens were not injected into the target mob.
