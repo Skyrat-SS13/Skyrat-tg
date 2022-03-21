@@ -4,4 +4,6 @@
 
 /obj/item/melee/baton/telescopic/contractor_baton/dropped(mob/user, silent)
 	. = ..()
-	holster?.undeploy()
+	if(!holster)
+		return
+	holster.undeploy()

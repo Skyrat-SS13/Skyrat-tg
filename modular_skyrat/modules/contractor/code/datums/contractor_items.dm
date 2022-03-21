@@ -176,8 +176,8 @@
 
 /datum/contractor_item/baton_holster
 	name = "Baton Holster Module"
-	desc = "Never worry about dropping your baton again with this holster module! Simply insert your baton into the module, put it in your MODsuit, and deploy it at will."
-	item = /obj
-	item_icon = ""
+	desc = "Never worry about dropping your baton again with this holster module! Simply insert your baton into the module, put it in your MODsuit, and the baton will retract whenever dropped."
+	item = /obj/item/mod/module/baton_holster
+	item_icon = "arrow-up-from-arc" //I cannot find anything better, replace if you find something more fitting
 	limited = 1
 	cost = 1
