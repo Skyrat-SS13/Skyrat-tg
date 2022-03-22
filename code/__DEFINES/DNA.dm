@@ -35,9 +35,15 @@
 #define DNA_SKIN_TONE_BLOCK 3
 #define DNA_UNI_IDENTITY_BLOCKS 7
 
+<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular_skyrat/modules/customization/_DEFINES/DNA.dm)
 /*
 #define DNA_FEATURE_BLOCKS 15
+=======
+/// This number needs to equal the total number of DNA blocks
+#define DNA_FEATURE_BLOCKS 16
+
+>>>>>>> a364ce1e681 ([READY] Podperson hair (sprites by Shiets!)  (#65205))
 #define DNA_MUTANT_COLOR_BLOCK 1
 #define DNA_ETHEREAL_COLOR_BLOCK 2
 #define DNA_LIZARD_MARKINGS_BLOCK 3
@@ -53,6 +59,7 @@
 #define DNA_MOTH_MARKINGS_BLOCK 13
 #define DNA_MUSHROOM_CAPS_BLOCK 14
 #define DNA_MONKEY_TAIL_BLOCK 15
+<<<<<<< HEAD
 */ //SKYRAT EDIT CHANGE - ORIGINAL
 #define DNA_FEATURE_BLOCKS GLOB.dna_total_feature_blocks
 
@@ -65,6 +72,9 @@
 
 // SKYRAT EDIT CHANGE END
 
+=======
+#define DNA_POD_HAIR_BLOCK 16
+>>>>>>> a364ce1e681 ([READY] Podperson hair (sprites by Shiets!)  (#65205))
 
 #define DNA_SEQUENCE_LENGTH 4
 #define DNA_MUTATION_BLOCKS 8
@@ -139,6 +149,7 @@
 #define ORGAN_SLOT_EXTERNAL_WINGS "wings"
 #define ORGAN_SLOT_EXTERNAL_ANTENNAE "antennae"
 #define ORGAN_SLOT_EXTERNAL_BODYMARKINGS "bodymarkings"
+#define ORGAN_SLOT_EXTERNAL_POD_HAIR "pod_hair"
 
 
 /// Xenomorph organ slots
