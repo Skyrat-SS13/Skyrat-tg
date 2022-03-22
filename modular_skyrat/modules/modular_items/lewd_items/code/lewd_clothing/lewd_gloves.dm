@@ -10,7 +10,7 @@
 
 //That part allows reinforcing this item with handcuffs
 /obj/item/clothing/gloves/ball_mittens/attackby(obj/item/attacking_item, mob/user, params)
-    if(!istype(attacking_item, /obj/item/restraints/handcuffs))
+	if(!istype(attacking_item, /obj/item/restraints/handcuffs))
 		return ..()
 	var/obj/item/clothing/gloves/ball_mittens_reinforced/reinforced_muffs = new
 	remove_item_from_storage(user)

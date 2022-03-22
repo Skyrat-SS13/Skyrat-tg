@@ -19,9 +19,9 @@
 	breakouttime = 1 SECONDS
 
 /obj/item/clothing/suit/straight_jacket/latex_straight_jacket/attackby(obj/item/attacking_item, mob/user, params) //That part allows reinforcing this item with normal straightjacket
-    if(!istype(attacking_item, /obj/item/clothing/suit/straight_jacket))
+	if(!istype(attacking_item, /obj/item/clothing/suit/straight_jacket))
 		return ..()
-	var/obj/item/clothing/suit/straight_jacket/latex_straight_jacket/reinforced/reinforced_jacket = new
+	var/obj/item/clothing/suit/straight_jacket/latex_straight_jacket/reinforced/reinforced_jacket = new()
 	remove_item_from_storage(user)
 	user.put_in_hands(reinforced_jacket)
 	to_chat(user, span_notice("You reinforce the belts on [src] with [attacking_item]."))

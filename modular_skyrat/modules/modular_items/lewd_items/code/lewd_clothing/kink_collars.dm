@@ -64,7 +64,6 @@
 	if(!istype(key))
 		return
 	var/id = REF(src)
-	var/obj/item/clothing/neck/kink_collar/locked/collar = src
 	var/obj/item/key/kink_collar/collar_key = key
 	collar_key.key_id = id
 

@@ -63,11 +63,11 @@
 //message when equipping that thing
 /obj/item/clothing/glasses/blindfold/kinky/equipped(mob/living/carbon/user, slot)
 	. = ..()
-	if(src == C.glasses)
-		to_chat(C, span_purple("The blindfold blocks your vision! You can't make out anything on the other side..."))
+	if(src == user.glasses)
+		to_chat(user, span_purple("The blindfold blocks your vision! You can't make out anything on the other side..."))
 
 //message when unequipping that thing
 /obj/item/clothing/glasses/blindfold/kinky/dropped(mob/living/carbon/user)
 	. = ..()
-	if(src == C.glasses)
-		to_chat(C, span_purple("The blindfold no longer restricts your vision."))
+	if(src == user.glasses)
+		to_chat(user, span_purple("The blindfold no longer restricts your vision."))

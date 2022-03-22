@@ -36,7 +36,7 @@
 //to change model
 /obj/item/clothing/ears/kinky_headphones/AltClick(mob/user, obj/item/I)
 	if(color_changed)
-		return_typenames
+		return
 	. = ..()
 	if(.)
 		return
