@@ -142,14 +142,16 @@
 /datum/armament_entry/assault_operatives/secondary/pistol/deagle_camo
 	item_type = /obj/item/gun/ballistic/automatic/pistol/deagle/camo
 	cost = 9
+/datum/armament_entry/assault_operatives/secondary/pistol/deagle_camo
+	item_type = /obj/item/gun/energy/kinetic_accelerator/crossbow
+	cost = 6
 
 /datum/armament_entry/assault_operatives/secondary/pistol/automag
 	item_type = /obj/item/gun/ballistic/automatic/pistol/automag
 	cost = 8
 
-/datum/armament_entry/assault_operatives/secondary/pistol/automag
-	item_type = /obj/item/gun/ballistic/automatic/pistol/automag
-	cost = 8
+/datum/armament_entry/assault_operatives/secondary/pistol/energy_gun
+	item_type = /obj/item/gun/energy/e_gun
 
 /datum/armament_entry/assault_operatives/secondary/pistol/taser
 	item_type = /obj/item/gun/energy/e_gun/advtaser
@@ -389,7 +391,7 @@
 	cost = 1
 
 /datum/armament_entry/assault_operatives/utility/ration_pack
-	item_type = /obj/item/storage/box/rationsk
+	item_type = /obj/item/storage/box/rations
 	cost = 1
 
 /datum/armament_entry/assault_operatives/utility/nightvisions
@@ -419,3 +421,11 @@
 /datum/armament_entry/assault_operatives/utility/toolbox
 	item_type = /obj/item/storage/toolbox/syndicate
 	cost = 1
+
+/datum/armament_entry/assault_operatives/utility
+	item_type = /obj/item/storage/toolbox/syndicate
+	cost = 1
+/datum/armament_entry/assault_operatives/utility/dehy_carp
+	item_type = /obj/item/toy/plush/carpplushie/dehy_carp
+	cost = 1
+

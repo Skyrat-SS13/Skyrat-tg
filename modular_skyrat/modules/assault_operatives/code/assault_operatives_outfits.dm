@@ -14,7 +14,7 @@
 	belt = /obj/item/storage/belt/military
 	head = /obj/item/clothing/head/flatcap
 
-	backpack_contents = list(/obj/item/storage/box/syndicate/)
+	backpack_contents = list(/obj/item/storage/box/syndie_kit/chameleon)
 
 	id_trim = /datum/id_trim/chameleon/operative
 
@@ -23,12 +23,7 @@
 	var/obj/item/radio/radio = equipping_human.ears
 	radio.set_frequency(FREQ_SYNDICATE)
 	radio.freqlock = TRUE
-	if(command_radio)
-		radio.command = TRUE
-
-	if(cqc)
-		var/datum/martial_art/cqc/martial_arts = new
-		martial_arts.teach(equipping_human)
+	radio.command = TRUE
 
 	var/obj/item/implant/weapons_auth/weapons_authorisation = new/obj/item/implant/weapons_auth(equipping_human)
 	weapons_authorisation.implant(equipping_human)
