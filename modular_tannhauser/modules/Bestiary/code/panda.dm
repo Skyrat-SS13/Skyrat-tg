@@ -30,3 +30,17 @@
 	icon_living = "zest_panda"
 	icon_dead = "blue_dead_panda"
 	gender = MALE
+
+/datum/supply_pack/critter/redpanda
+	name = "Red Panda Crate"
+	desc = "Also known as the lesser panda, but don't tell it that or you'll hurt its feelings."
+	cost = CARGO_CRATE_VALUE * 10
+	contains = list(/mob/living/simple_animal/pet/redpanda)
+	crate_name = "red panda crate"
+
+/datum/supply_pack/critter/redpanda/generate()
+	. = ..()
+	if(prob(3))
+		var/mob/living/simple_animal/pet/redpanda/D = locate() in .
+		qdel(D)
+		new /mob/living/simple_animal/pet/redpanda/zesty(.)
