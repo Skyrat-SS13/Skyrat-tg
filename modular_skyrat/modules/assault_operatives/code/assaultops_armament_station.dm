@@ -187,12 +187,12 @@
 	cost = 5
 
 // EXPLOSIVES
-#define ARMAMENT_CATEGORY_MELEE "Explosives"
-#define ARMAMENT_CATEGORY_MELEE_LIMIT 4
+#define ARMAMENT_CATEGORY_EXPLOSIVES "Explosives"
+#define ARMAMENT_CATEGORY_EXPLOSIVESLIMIT 4
 
 /datum/armament_entry/assault_operatives/explosives
-	category = ARMAMENT_CATEGORY_MELEE
-	category_item_limit = ARMAMENT_CATEGORY_MELEE_LIMIT
+	category = ARMAMENT_CATEGORY_EXPLOSIVES
+	category_item_limit = ARMAMENT_CATEGORY_EXPLOSIVESLIMIT
 
 /datum/armament_entry/assault_operatives/explosives/minibomb
 	item_type = /obj/item/grenade/syndieminibomb
@@ -373,6 +373,10 @@
 	item_type = /obj/item/gun/medbeam
 	cost = 5
 
+/datum/armament_entry/assault_operatives/medical/defib
+	item_type = /obj/item/defibrillator/compact/combat/loaded
+	cost = 3
+
 #define ARMAMENT_CATEGORY_UTILITY "Utility Supplies"
 #define ARMAMENT_CATEGORY_UTILITY_LIMIT 5
 
@@ -388,4 +392,30 @@
 	item_type = /obj/item/storage/box/rationsk
 	cost = 1
 
+/datum/armament_entry/assault_operatives/utility/nightvisions
+	item_type = /obj/item/clothing/glasses/night
+	cost = 3
 
+/datum/armament_entry/assault_operatives/utility/thermals
+	item_type = /obj/item/clothing/glasses/thermal
+	cost = 5
+
+/datum/armament_entry/assault_operatives/utility/sunglasses
+	item_type = /obj/item/clothing/glasses/sunglasses
+	cost = 1
+
+/datum/armament_entry/assault_operatives/utility/doorjack
+	item_type = /obj/item/card/emag/doorjack
+	name = "Doorjack"
+	description = "Hacks open doors permanently."
+	cost = 3
+
+/datum/armament_entry/assault_operatives/utility/emag
+	item_type = /obj/item/card/emag/doorjack
+	name = "Emag"
+	description = "Disrupts electronics."
+	cost = 3
+
+/datum/armament_entry/assault_operatives/utility/toolbox
+	item_type = /obj/item/storage/toolbox/syndicate
+	cost = 1

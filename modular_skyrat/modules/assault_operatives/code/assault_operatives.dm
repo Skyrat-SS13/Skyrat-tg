@@ -21,8 +21,6 @@
 	var/datum/team/assault_operatives/assault_team
 	/// Should we move the operative to a designated spawn point?
 	var/send_to_spawnpoint = TRUE
-	/// What class have we equipped? None means we haven't selected one yet.
-	var/equipped_class = null
 	//If not assigned a team by default ops will try to join existing ones, set this to TRUE to always create new team.
 	var/always_new_team = FALSE
 	var/spawn_text = "Your mission is to assault NTSS13 and get all of the GoldenEye keys that you can from the heads of staff that reside there. \
@@ -79,10 +77,6 @@
 /datum/antagonist/assault_operative/ui_data(mob/user)
 	var/list/data = list()
 
-	data["equipped"] = equipped_class ? TRUE : FALSE
-
-	data["loadouts"] = get_loadouts()
-
 	data["required_keys"] = SSgoldeneye.required_keys
 
 	data["uploaded_keys"] = SSgoldeneye.uploaded_keys
@@ -100,27 +94,11 @@
 	if(.)
 		return
 	switch(action)
-		if("equip_loadout")
-			var/datum/assaultops_outfit/selected_outfit = locate(params["equipment_ref"]) in GLOB.assaultops_equipment
-			if(!selected_outfit)
-				return
-			select_equipment(usr, selected_outfit)
 		if("track_key")
 			var/obj/item/goldeneye_key/selected_key = locate(params["key_ref"]) in SSgoldeneye.goldeneye_keys
 			if(!selected_key)
 				return
 			pinpointer.set_target(selected_key)
-
-/datum/antagonist/assault_operative/proc/get_loadouts()
-	var/list/loadout_data = list()
-	for(var/datum/assaultops_outfit/iterating_outfit in GLOB.assaultops_equipment)
-		loadout_data += list(list(
-			"name" = iterating_outfit.name,
-			"description" = iterating_outfit.description,
-			"icon" = iterating_outfit.icon,
-			"ref" = REF(iterating_outfit),
-		))
-	return loadout_data
 
 /datum/antagonist/assault_operative/proc/get_available_targets()
 	var/list/available_targets_data = list()
@@ -157,24 +135,6 @@
 	return goldeneye_keys
 
 
-/datum/antagonist/assault_operative/proc/select_equipment(mob/user, datum/assaultops_outfit/selected_outfit)
-	if(equipped_class)
-		return
-	if(!ishuman(user))
-		CRASH("Attempted to select equipment for non-human user.")
-	var/mob/living/carbon/human/human_to_equip = user
-
-	var/obj/item/organ/brain/human_brain = human_to_equip.getorganslot(BRAIN)
-	human_brain.destroy_all_skillchips() // get rid of skillchips to prevent runtimes
-
-	human_to_equip.equipOutfit(selected_outfit.outfit)
-
-	human_to_equip.regenerate_icons()
-
-	to_chat(human_to_equip, selected_outfit.description)
-
-	equipped_class = selected_outfit
-
 /datum/antagonist/assault_operative/proc/forge_objectives()
 	if(assault_team)
 		objectives |= assault_team.objectives
@@ -203,9 +163,6 @@
 	pinpointer = human_target.apply_status_effect(/datum/status_effect/goldeneye_pinpointer)
 
 	return TRUE
-
-
-
 
 /datum/antagonist/assault_operative/proc/move_to_spawnpoint()
 	var/team_number = 1

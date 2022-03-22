@@ -3,12 +3,6 @@ import { LabeledList, Stack, Button, Section, ProgressBar, Box, Tabs, Divider } 
 import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
 
-type Loadouts = {
-  name: string;
-  description: string;
-  icon: string;
-  ref: string;
-}
 
 type Objectives = {
   count: number;
@@ -40,7 +34,6 @@ type Info = {
   equipped: Number;
   required_keys: Number;
   uploaded_keys: Number;
-  loadouts: Loadouts[];
   objectives: Objectives[];
   available_targets: AvailableTargets[];
   extracted_targets: ExtractedTargets[];
@@ -53,7 +46,6 @@ export const AntagInfoAssaultops = (props, context) => {
   const {
     required_keys,
     uploaded_keys,
-    equipped,
     objectives,
   } = data;
   return (
@@ -127,14 +119,6 @@ export const AntagInfoAssaultops = (props, context) => {
                     onClick={() => setTab(2)}>
                     GoldenEye Keycards
                   </Tabs.Tab>
-                  {!equipped && (
-                    <Tabs.Tab
-                      width="100%"
-                      selected={tab === 3}
-                      onClick={() => setTab(3)}>
-                      Equipment
-                    </Tabs.Tab>
-                  )}
                 </Tabs>
               </Stack.Item>
             </Stack>
@@ -143,9 +127,6 @@ export const AntagInfoAssaultops = (props, context) => {
             )}
             {tab === 2 && (
               <KeyPrintout />
-            )}
-            {tab === 3 && !equipped && (
-              <EquipmentPrintout />
             )}
           </Stack.Item>
         </Stack>
@@ -241,43 +222,6 @@ const KeyPrintout = (props, context) => {
               ))}
             </Stack>
 
-          </Section>
-        </Stack.Item>
-      </Stack>
-    </Section>
-  );
-};
-
-const EquipmentPrintout = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
-  const {
-    loadouts,
-  } = data;
-  return (
-    <Section grow>
-      <Stack vertical fill>
-        <Stack.Item>
-          <Section>
-            {!loadouts && "None!" || loadouts.map(loadout => (
-              <Section
-                title={loadout.name}
-                key={loadout.ref}
-                buttons={(
-                  <Button
-                    icon={loadout.icon}
-                    color="good"
-                    content="Equip"
-                    onClick={() => act('equip_loadout', {
-                      equipment_ref: loadout.ref,
-                    })} />
-                )}>
-                <LabeledList>
-                  <LabeledList.Item label="Description">
-                    {loadout.description}
-                  </LabeledList.Item>
-                </LabeledList>
-              </Section>
-            )) }
           </Section>
         </Stack.Item>
       </Stack>
