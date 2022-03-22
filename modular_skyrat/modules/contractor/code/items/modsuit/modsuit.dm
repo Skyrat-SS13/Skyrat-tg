@@ -63,6 +63,14 @@
 		piece.icon_state = "[skin]-[initial(piece.icon_state)]"
 	update_flags()
 
+/obj/item/mod/control/update_appearance(updates)
+	var/obj/item/mod/module/chameleon/chameleon_module = modules.Find(/obj/item/mod/module/chameleon)
+	if(!chameleon_module)
+		return ..()
+	if(chameleon_module.on)
+		return
+
+	return ..()
 
 // I absolutely fuckin hate having to do this
 /obj/item/clothing/head/mod/contractor
