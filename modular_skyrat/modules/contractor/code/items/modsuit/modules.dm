@@ -37,6 +37,7 @@
 	stored_batong.forceMove(get_turf(src))
 	stored_batong.holster = null
 	stored_batong = null
+	tool.play_tool_sound(src)
 
 /obj/item/mod/module/baton_holster/Destroy()
 	if(stored_batong)
@@ -123,8 +124,8 @@
 	update_look(mod.wearer, picked_item)
 
 /obj/item/mod/module/chameleon/on_install()
-	chameleon_name = initial(mod.name)
-	chameleon_desc = initial(mod.name)
+	chameleon_name = mod.name
+	chameleon_desc = mod.desc
 	chameleon_icon_state = "[mod.skin]-[initial(mod.icon_state)]"
 	chameleon_icon = mod.icon
 	chameleon_worn_icon = initial(mod.worn_icon)
@@ -199,3 +200,6 @@
 /obj/item/mod/module/armor_booster/contractor // Much flatter distribution because contractor suit gets a shitton of armor already
 	armor_values = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20)
 	added_slowdown = 0.5 //Bulky as shit
+	desc = "An embedded set of armor plates, allowing the suit's already extremely high protection \
+		to be increased further. However, the plating, while deployed, will slow down the user \
+		and make the suit unable to vacuum seal so this extra armor provides zero ability for extravehicular activity while deployed."

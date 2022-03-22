@@ -181,3 +181,19 @@
 	item_icon = "arrow-up-from-arc" //I cannot find anything better, replace if you find something more fitting
 	limited = 1
 	cost = 1
+
+/datum/contractor_item/baton_upgrade_cuff
+	name = "Baton Cuff Upgrade"
+	desc = "Using technology reverse-engineered from some alien batons we had lying around, you can now cuff people using your baton with the secondary attack. Due to technical limitations, only cable cuffs and zipties work, and they need to be loaded into the baton manually."
+	item = /obj/item/baton_upgrade/cuff
+	item_icon = "handcuff"
+	limited = 1
+	cost = 1
+
+/datum/contractor_item/baton_upgrade_mute
+	name = "Baton Mute Upgrade"
+	desc = "A relatively new advancement in completely proprietary baton technology, this baton upgrade will mute anyone hit for ten seconds, maximizing at twenty seconds."
+	item = /obj/item/baton_upgrade/mute
+	item_icon = "comment-slash"
+	limited = 1
+	cost = 2

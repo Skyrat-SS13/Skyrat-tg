@@ -60,4 +60,3 @@
 	special_desc_requirement = EXAMINE_CHECK_CONTRACTOR
 	special_desc = "A modified fulton pack that can be used indoors thanks to Bluespace technology. Favored by Syndicate Contractors."
 
-#undef SMALL_ITEM_AMOUNT

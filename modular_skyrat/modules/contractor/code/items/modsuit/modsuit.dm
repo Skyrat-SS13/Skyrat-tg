@@ -61,6 +61,7 @@
 		piece.permeability_coefficient = theme.permeability_coefficient
 		piece.siemens_coefficient = theme.siemens_coefficient
 		piece.icon_state = "[skin]-[initial(piece.icon_state)]"
+	update_flags()
 
 
 // I absolutely fuckin hate having to do this

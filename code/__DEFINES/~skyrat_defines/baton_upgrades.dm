@@ -1,0 +1,2 @@
+#define BATON_CUFF_UPGRADE (1<<0)
+#define BATON_MUTE_UPGRADE (1<<1)
