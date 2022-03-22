@@ -159,9 +159,6 @@
 /obj/item/clothing/under/rank/medical/doctor/skirt
 	mutant_variants = NONE
 
-/obj/item/clothing/under/rank/medical/chemist
-	mutant_variants = NONE
-
 /obj/item/clothing/under/rank/medical/paramedic/skirt
 	mutant_variants = NONE
 
