@@ -158,7 +158,7 @@
 	item_type = /obj/item/gun/ballistic/automatic/pistol/pepperball
 	cost = 4
 
-
+// MELEE WEAPONS
 #define ARMAMENT_CATEGORY_MELEE "Melee Weapons"
 #define ARMAMENT_CATEGORY_MELEE_LIMIT 1
 
@@ -182,9 +182,57 @@
 	item_type = /obj/item/melee/baton/security/loaded
 	cost = 3
 
-/datum/armament_entry/assault_operatives/melee/baton
+/datum/armament_entry/assault_operatives/melee/baton_telescopic
 	item_type = /obj/item/melee/baton/telescopic
 	cost = 5
+
+// EXPLOSIVES
+#define ARMAMENT_CATEGORY_MELEE "Explosives"
+#define ARMAMENT_CATEGORY_MELEE_LIMIT 4
+
+/datum/armament_entry/assault_operatives/explosives
+	category = ARMAMENT_CATEGORY_MELEE
+	category_item_limit = ARMAMENT_CATEGORY_MELEE_LIMIT
+
+/datum/armament_entry/assault_operatives/explosives/minibomb
+	item_type = /obj/item/grenade/syndieminibomb
+	cost = 3
+
+/datum/armament_entry/assault_operatives/explosives/frag
+	item_type = /obj/item/grenade/frag
+	cost = 3
+
+/datum/armament_entry/assault_operatives/explosives/emp_grenade
+	item_type = /obj/item/grenade/empgrenade
+	cost = 3
+
+/datum/armament_entry/assault_operatives/explosives/flashbang
+	item_type = /obj/item/grenade/flashbang
+	cost = 1
+
+/datum/armament_entry/assault_operatives/explosives/smoke
+	item_type = /obj/item/grenade/smokebomb
+	cost = 1
+
+/datum/armament_entry/assault_operatives/explosives/c4
+	item_type = /obj/item/grenade/c4
+	cost = 1
+
+/datum/armament_entry/assault_operatives/explosives/x4
+	item_type = /obj/item/grenade/c4/x4
+	cost = 2
+
+/datum/armament_entry/assault_operatives/explosives/bag_of_c4
+	item_type = /obj/item/storage/backpack/duffelbag/syndie/c4
+	cost = 10
+
+/datum/armament_entry/assault_operatives/explosives/bag_of_x4
+	item_type = /obj/item/storage/backpack/duffelbag/syndie/x4
+	cost = 6
+
+/datum/armament_entry/assault_operatives/explosives/bomb
+	item_type = /obj/item/supplypod_beacon
+	cost = 6
 
 // BODYARMOR
 #define ARMAMENT_CATEGORY_ARMOR_BODY "Body Armor"
@@ -241,8 +289,11 @@
 	item_type = /obj/item/clothing/head/helmet/swat
 	cost = 7
 
-
 /datum/armament_entry/assault_operatives/headgear/helmet/syndicate
+	item_type = /obj/item/clothing/head/helmet/swat
+	cost = 7
+
+/datum/armament_entry/assault_operatives/headgear/helmet/syndicate_beret
 	item_type = /obj/item/clothing/head/hos/beret/syndicate
 	cost = 6
 
@@ -322,6 +373,19 @@
 	item_type = /obj/item/gun/medbeam
 	cost = 5
 
-#define ARMAMENT_CATEGORY_MEDICAL "Utility Supplies"
-#define ARMAMENT_CATEGORY_MEDICAL_LIMIT 5
+#define ARMAMENT_CATEGORY_UTILITY "Utility Supplies"
+#define ARMAMENT_CATEGORY_UTILITY_LIMIT 5
+
+/datum/armament_entry/assault_operatives/utility
+	category = ARMAMENT_CATEGORY_UTILITY
+	category_item_limit = ARMAMENT_CATEGORY_UTILITY_LIMIT
+
+/datum/armament_entry/assault_operatives/utility/survival_pack
+	item_type = /obj/item/storage/box/nri_survival_pack
+	cost = 1
+
+/datum/armament_entry/assault_operatives/utility/ration_pack
+	item_type = /obj/item/storage/box/rationsk
+	cost = 1
+
 
