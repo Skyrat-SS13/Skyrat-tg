@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Section, Stack, Box, Divider, Button } from '../components';
+import { Section, Stack, Box, Divider, Button, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
 export const ArmamentStation = (props, context) => {
@@ -8,7 +8,9 @@ export const ArmamentStation = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     armaments_list = [],
-    remaining_points,
+    card_inserted,
+    card_points,
+    card_name,
   } = data;
   return (
     <Window
@@ -18,7 +20,29 @@ export const ArmamentStation = (props, context) => {
       height={600}>
       <Window.Content>
         <Section fill title="Armaments Station">
-          <Box fontSize="20px">Remaining Points: {remaining_points}</Box>
+          {card_inserted ? (
+            <Stack>
+              <Stack.Item grow fill>
+                <Box>
+                  <b>Inserted Card:</b> {card_name}
+                </Box>
+                <Box>
+                  <b>Remaining Points:</b> {card_points}
+                </Box>
+              </Stack.Item>
+              <Stack.Item>
+                <Button
+                  icon="eject"
+                  fontSize="20px"
+                  content="Eject Card"
+                  onClick={() => act('eject_card')} />
+              </Stack.Item>
+            </Stack>
+          ) : (
+            <NoticeBox color="bad">
+              No card inserted.
+            </NoticeBox>
+          )}
           <Divider />
           <Stack fill grow>
             <Stack.Item mr={1}>
@@ -28,8 +52,7 @@ export const ArmamentStation = (props, context) => {
                     <Stack.Item key={armament_category.category}>
                       <Button
                         width="100%"
-                        key={armament_category.category}
-                        content={armament_category.category + armament_category.category_limit > 0 ? ' (Pick ' + armament_category.category_limit + ')' : ''}
+                        content={armament_category.category + ' (Pick ' + armament_category.category_limit + ')'}
                         selected={category === armament_category.category}
                         onClick={() =>
                           setCategory(armament_category.category)} />
@@ -53,6 +76,8 @@ export const ArmamentStation = (props, context) => {
                               fontSize="15px"
                               textAlign="center"
                               selected={weapon === item.ref}
+                              disabled={item.purchased >= item.quantity
+                                || item.purchased >= item.quantity}
                               width="100%"
                               key={item.ref}
                               onClick={() =>
@@ -99,11 +124,12 @@ export const ArmamentStation = (props, context) => {
                           <Stack.Item>
                             {item.description}
                           </Stack.Item>
-                          <Stack.Item>
-                            {'Quantity Remaining: ' + item.quantity - item.purchased}
+                          <Stack.Item
+                            textColor={(item.quantity - item.purchased) <= 0 ? "red" : "green"}>
+                            {'Quantity Remaining: ' + (item.quantity - item.purchased)}
                           </Stack.Item>
                           <Stack.Item
-                            textColor={item.cost > remaining_points ? "red" : "green"}>
+                            textColor={(item.cost > card_points || !card_inserted) ? "red" : "green"}>
                             {'Cost: ' + item.cost}
                           </Stack.Item>
                           <Stack.Item>
@@ -111,10 +137,11 @@ export const ArmamentStation = (props, context) => {
                               content="Buy"
                               textAlign="center"
                               width="100%"
-                              disabled={item.cost > remaining_points}
+                              disabled={item.cost > card_points
+                                || item.purchased >= item.quantity}
                               onClick={() => act('equip_item', {
-                                ref: item.ref,
-                              })} />
+                                armament_ref: item.ref })}
+                            />
                           </Stack.Item>
                         </Stack>
                       )

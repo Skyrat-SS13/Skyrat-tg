@@ -308,7 +308,6 @@
 /datum/job/assault_operative/get_roundstart_spawn_point()
 	return pick(GLOB.assault_operative_start)
 
-
 /datum/job/assault_operative/get_latejoin_spawn_point()
 	return pick(GLOB.assault_operative_start)
 

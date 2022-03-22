@@ -13,9 +13,9 @@
  * @author Gandalf2k15
  */
 
-GLOBAL_LIST_INIT(armament_entries, build_armament_entry_list())
+GLOBAL_LIST_INIT(armament_entries, build_armament_list())
 // Do not touch this.
-/proc/build_armament_entry_list()
+/proc/build_armament_list()
 	var/list/armament_dataset = list()
 	for(var/datum/armament_entry/armament_entry as anything in subtypesof(/datum/armament_entry))
 		// Set up our categories so we can add items to them
@@ -53,21 +53,21 @@ GLOBAL_LIST_INIT(armament_entries, build_armament_entry_list())
 		else
 			// Because of how the UI system works, categories cannot exist with nothing in them, so we
 			// only set the OTHER category if something can go inside it! This seems like a copy paste job, but it needs to be here.
-			if(!(ARMAMENT_CATEGORY_OTHER in armament_dataset))
-				armament_dataset[ARMAMENT_CATEGORY_OTHER] = list(CATEGORY_ENTRY, CATEGORY_LIMIT)
-				armament_dataset[ARMAMENT_CATEGORY_OTHER][CATEGORY_LIMIT] = ARMAMENT_CATEGORY_OTHER_LIMIT
+			if(!(ARMAMENT_CATEGORY_STANDARD in armament_dataset))
+				armament_dataset[ARMAMENT_CATEGORY_STANDARD] = list(CATEGORY_ENTRY, CATEGORY_LIMIT)
+				armament_dataset[ARMAMENT_CATEGORY_STANDARD][CATEGORY_LIMIT] = ARMAMENT_CATEGORY_STANDARD_LIMIT
 			// We don't have home :( add us to the other category.
 			if(spawned_armament_entry.subcategory)
 				// Check to see if we've already made the subcategory.
-				if(!(spawned_armament_entry.subcategory in armament_dataset[ARMAMENT_CATEGORY_OTHER][CATEGORY_ENTRY]))
-					armament_dataset[ARMAMENT_CATEGORY_OTHER][CATEGORY_ENTRY][spawned_armament_entry.subcategory] = list()
+				if(!(spawned_armament_entry.subcategory in armament_dataset[ARMAMENT_CATEGORY_STANDARD][CATEGORY_ENTRY]))
+					armament_dataset[ARMAMENT_CATEGORY_STANDARD][CATEGORY_ENTRY][spawned_armament_entry.subcategory] = list()
 				// Finally, we add the entry into the list.
-				armament_dataset[ARMAMENT_CATEGORY_OTHER][CATEGORY_ENTRY][spawned_armament_entry.subcategory] += spawned_armament_entry
+				armament_dataset[ARMAMENT_CATEGORY_STANDARD][CATEGORY_ENTRY][spawned_armament_entry.subcategory] += spawned_armament_entry
 			else
 				// Unset subcategories default to the NONE category.
-				if(!(ARMAMENT_SUBCATEGORY_NONE in armament_dataset[ARMAMENT_CATEGORY_OTHER][CATEGORY_ENTRY]))
-					armament_dataset[ARMAMENT_CATEGORY_OTHER][CATEGORY_ENTRY][ARMAMENT_SUBCATEGORY_NONE] = list()
-				armament_dataset[ARMAMENT_CATEGORY_OTHER][CATEGORY_ENTRY][ARMAMENT_SUBCATEGORY_NONE] += spawned_armament_entry
+				if(!(ARMAMENT_SUBCATEGORY_NONE in armament_dataset[ARMAMENT_CATEGORY_STANDARD][CATEGORY_ENTRY]))
+					armament_dataset[ARMAMENT_CATEGORY_STANDARD][CATEGORY_ENTRY][ARMAMENT_SUBCATEGORY_NONE] = list()
+				armament_dataset[ARMAMENT_CATEGORY_STANDARD][CATEGORY_ENTRY][ARMAMENT_SUBCATEGORY_NONE] += spawned_armament_entry
 	return armament_dataset
 
 //////////////////////
@@ -81,7 +81,7 @@ GLOBAL_LIST_INIT(armament_entries, build_armament_entry_list())
 	/// The item path that we refer to when equipping. If left empty, it will be considered abstract.
 	var/obj/item_type
 	/// Category of the item. This is used to group items together in the UI.
-	var/category = ARMAMENT_CATEGORY_OTHER
+	var/category = ARMAMENT_CATEGORY_STANDARD
 	/// This is an abstract variable, only set this for base category types. It should not be overriden by subtypes. Set to 0 for infinite.
 	var/category_item_limit = 0
 	/// Our subcategory, where the item will be listed.
@@ -102,75 +102,7 @@ GLOBAL_LIST_INIT(armament_entries, build_armament_entry_list())
 
 /// This proc handles how the item should be equipped to the player. This needs to return either TRUE or FALSE, TRUE being that it was able to equip the item.
 /datum/armament_entry/proc/equip_to_human(mob/living/carbon/human/equipping_human, obj/item/item_to_equip)
+	return equipping_human.equip_to_slot_if_possible(item_to_equip, slot_to_equip)
 
-// PRIMARY WEAPONS
-/datum/armament_entry/primary
-	category = ARMAMENT_CATEGORY_PRIMARY
-	category_item_limit = ARMAMENT_CATEGORY_PRIMARY_LIMIT
-
-/datum/armament_entry/primary/equip_to_human(mob/living/carbon/human/equipping_human)
-
-/datum/armament_entry/primary/submachinegun
-	subcategory = ARMAMENT_SUBCATEGORY_SUBMACHINEGUN
-
-/datum/armament_entry/primary/submachinegun/p90
-	item_type = /obj/item/gun/ballistic/automatic/p90
-
-/datum/armament_entry/primary/submachinegun/wildcat
-	item_type = /obj/item/gun/ballistic/automatic/cfa_wildcat
-
-/datum/armament_entry/primary/submachinegun/lynx
-	item_type = /obj/item/gun/ballistic/automatic/cfa_lynx
-
-/datum/armament_entry/primary/assaultrifle
-	subcategory = ARMAMENT_SUBCATEGORY_ASSAULTRIFLE
-
-/datum/armament_entry/primary/assaultrifle/akm
-	item_type = /obj/item/gun/ballistic/automatic/akm
-
-/datum/armament_entry/primary/assaultrifle/m16
-	item_type = /obj/item/gun/ballistic/automatic/m16
-
-// SECONDARY WEAPONS
-/datum/armament_entry/secondary
-	category = ARMAMENT_CATEGORY_SECONDARY
-	category_item_limit = ARMAMENT_CATEGORY_SECONDARY_LIMIT
-
-/datum/armament_entry/secondary/pistol
-	subcategory = ARMAMENT_SUBCATEGORY_PISTOL
-
-/datum/armament_entry/secondary/pistol/m1911
-	item_type = /obj/item/gun/ballistic/automatic/pistol/m1911
-
-/datum/armament_entry/secondary/pistol/m1911
-	item_type = /obj/item/gun/ballistic/automatic/pistol/aps
-
-/datum/armament_entry/secondary/revolver
-	subcategory = ARMAMENT_SUBCATEGORY_REVOLVER
-
-/datum/armament_entry/secondary/revolver/zeta
-	item_type = /obj/item/gun/ballistic/revolver/zeta
-
-// BODYARMOR
-/datum/armament_entry/bodyarmor
-	category = ARMAMENT_CATEGORY_ARMOR_BODY
-	category_item_limit = ARMAMENT_CATEGORY_ARMOR_BODY_LIMIT
-
-/datum/armament_entry/bodyarmor/normal
-	item_type = /obj/item/clothing/suit/armor/vest
-
-/datum/armament_entry/bodyarmor/bulletproof
-	item_type = /obj/item/clothing/suit/armor/bulletproof
-
-// HELMETS
-/datum/armament_entry/helmet
-	category = ARMAMENT_CATEGORY_ARMOR_HEAD
-	category_item_limit = ARMAMENT_CATEGORY_ARMOR_HEAD_LIMIT
-
-/datum/armament_entry/helmet/normal
-	item_type = /obj/item/clothing/head/helmet
-
-/datum/armament_entry/helmet/bulletproof
-	item_type = /obj/item/clothing/head/helmet/alt
-
-// UTILITY
+/datum/armament_entry/proc/after_equip(turf/safe_drop_location, obj/item/item_to_equip)
+	return TRUE

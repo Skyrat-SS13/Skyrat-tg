@@ -65,15 +65,16 @@ GLOBAL_LIST_INIT(assaultops_equipment, build_assaultops_equipment())
 /datum/outfit/assaultops
 	name = "Assault Ops - Default"
 
-	mask = /obj/item/clothing/mask/gas/syndicate
+	mask = /obj/item/clothing/mask/gas/alt
 	glasses = /obj/item/clothing/glasses/thermal
-	uniform = /obj/item/clothing/under/syndicate
+	uniform = /obj/item/clothing/under/syndicate/camo
 	shoes = /obj/item/clothing/shoes/combat
 	gloves =  /obj/item/clothing/gloves/combat
 	back = /obj/item/storage/backpack/fireproof
 	ears = /obj/item/radio/headset/syndicate/alt
 	id = /obj/item/card/id/advanced/chameleon
-	belt = /obj/item/storage/belt/utility/syndicate
+	belt = /obj/item/storage/belt/military
+	head = /obj/item/clothing/head/flatcap
 
 	id_trim = /datum/id_trim/chameleon/operative
 
