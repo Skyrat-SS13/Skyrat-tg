@@ -55,7 +55,7 @@
 	perlin_zoom = 65
 
 /datum/biome/basalt
-	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
+	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
 	flora_types = list(
 		/obj/structure/flora/rock,
 		/obj/structure/flora/rock/pile,

@@ -53,13 +53,13 @@
 	if(map_path)
 		if(!map_file)
 			WARNING("No map file passed on planet generation")
-		SSmapping.LoadGroup(null, 
-							name, 
-							map_path, 
-							map_file, 
-							default_traits = default_traits_input,  
-							ov_obj = linked_overmap_object, 
-							weather_controller_type = weather_controller_type, 
+		SSmapping.LoadGroup(null,
+							name,
+							map_path,
+							map_file,
+							default_traits = default_traits_input,
+							ov_obj = linked_overmap_object,
+							weather_controller_type = weather_controller_type,
 							atmosphere_type = atmosphere_type,
 							day_night_controller_type = day_night_controller_type,
 							rock_color = picked_rock_color,
@@ -118,7 +118,7 @@
 /datum/planet_template/proc/SeedRuins(list/z_levels)
 	if(!spawns_planetary_ruins)
 		return
-	var/eligible_ruins = SSmapping.planet_ruins_templates.Copy()
+	var/eligible_ruins = SSmapping.themed_ruins[ZTRAIT_PLANETARY_RUINS].Copy()
 	for(var/ruin_name in eligible_ruins)
 		var/datum/map_template/ruin/planetary/planetary_ruin = eligible_ruins[ruin_name]
 		if(!(planet_flags & planetary_ruin.planet_requirements))
@@ -151,6 +151,6 @@
 			lava_ruins -= i
 
 	if (z_levels.len)
-		seedRuins(z_levels, CONFIG_GET(number/lavaland_budget), list(/area/lavaland/surface/outdoors/unexplored), SSmapping.lava_ruins_templates)
+		seedRuins(z_levels, CONFIG_GET(number/lavaland_budget), list(/area/lavaland/surface/outdoors/unexplored), SSmapping.themed_ruins[ZTRAIT_LAVA_RUINS])
 		for (var/lava_z in z_levels)
 			spawn_rivers(lava_z)

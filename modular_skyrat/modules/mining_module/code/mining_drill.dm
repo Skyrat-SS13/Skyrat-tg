@@ -427,7 +427,7 @@
 	. = ..()
 	//Very mechanical, so EMP proof
 	AddElement(/datum/element/empprotection, EMP_PROTECT_SELF | EMP_PROTECT_WIRES)
-	AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS, null, CALLBACK(src, .proc/can_be_rotated))
+	AddComponent(/datum/component/simple_rotation, ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE, null, CALLBACK(src, .proc/can_be_rotated))
 
 /obj/machinery/mining_brace/proc/can_be_rotated(mob/user, rotation_type)
 	if(anchored)

@@ -170,12 +170,12 @@
 /obj/effect/spawner/random/medical/medkit
 	name = "medkit spawner"
 	loot = list(
-		/obj/item/storage/firstaid/regular = 1,
-		/obj/item/storage/firstaid/emergency = 1,
-		/obj/item/storage/firstaid/fire = 1,
-		/obj/item/storage/firstaid/toxin = 1,
-		/obj/item/storage/firstaid/o2 = 1,
-		/obj/item/storage/firstaid/brute = 1
+		/obj/item/storage/medkit/regular = 1,
+		/obj/item/storage/medkit/emergency = 1,
+		/obj/item/storage/medkit/fire = 1,
+		/obj/item/storage/medkit/toxin = 1,
+		/obj/item/storage/medkit/o2 = 1,
+		/obj/item/storage/medkit/brute = 1
 	)
 
 /obj/effect/spawner/random/modsuit
@@ -241,8 +241,8 @@
 /obj/effect/spawner/random/ballistic_weapon
 	name = "ballistic weapon spawner"
 	loot = list(
-		/obj/item/gun/ballistic/automatic/assault_rifle/akm,
-		/obj/item/gun/ballistic/automatic/assault_rifle/m16,
+		/obj/item/gun/ballistic/automatic/akm,
+		/obj/item/gun/ballistic/automatic/m16,
 		/obj/item/gun/ballistic/shotgun/sas14 = 1,
 	)
 

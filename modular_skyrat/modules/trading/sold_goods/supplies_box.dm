@@ -225,7 +225,7 @@
 	weighted_spawns_amount = 4
 
 /datum/supplies_box_loot/medical
-	guaranteed_spawns = list(/obj/item/storage/firstaid/regular)
+	guaranteed_spawns = list(/obj/item/storage/medkit/regular)
 	weighted_spawns = list(
 		/obj/item/stack/medical/bruise_pack = 5,
 		/obj/item/stack/medical/ointment= 5,
@@ -262,7 +262,7 @@
 	guaranteed_spawns = list(
 		/obj/item/gun/ballistic/automatic/pistol,
 		/obj/item/switchblade,
-		/obj/item/storage/firstaid/regular
+		/obj/item/storage/medkit/regular
 		)
 	weighted_spawns = list(
 		/obj/item/ammo_box/magazine/m9mm = 10,

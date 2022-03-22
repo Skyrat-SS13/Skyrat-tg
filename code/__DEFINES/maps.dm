@@ -67,6 +67,7 @@ require only minor tweaks.
 #define ZTRAIT_ICE_RUINS_UNDERGROUND "Ice Ruins Underground"
 #define ZTRAIT_ISOLATED_RUINS "Isolated Ruins" //Placing ruins on z levels with this trait will use turf reservation instead of usual placement.
 #define ZTRAIT_ROCKPLANET_RUINS "Rockplanet Ruins" //SKYRAT EDIT - Adds Ruins to Rockplanet mining map
+#define ZTRAIT_PLANETARY_RUINS "Planetary Ruins" //SKYRAT EDIT - Ztrait for ruins on overmap planets - TODO move this somewhere modular
 
 /* SKYRAT EDIT REMOVAL
 // boolean - weather types that occur on the level

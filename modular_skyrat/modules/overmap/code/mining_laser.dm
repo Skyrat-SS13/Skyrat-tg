@@ -14,7 +14,7 @@
 	. = ..()
 	extension = new extension_type(src)
 	extension.ApplyToPosition(get_turf(src))
-	AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE)
+	AddComponent(/datum/component/simple_rotation)
 
 /obj/machinery/mining_laser/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
 	extension.ApplyToPosition(get_turf(src))

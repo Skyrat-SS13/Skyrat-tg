@@ -227,25 +227,25 @@
 	cost = 300
 	stock_high = 1
 	stock_low = 1
-	path = /obj/item/storage/firstaid
+	path = /obj/item/storage/medkit/regular
 
 /datum/sold_goods/firstaid_fire
 	cost = 500
 	stock_high = 1
 	stock_low = 1
-	path = /obj/item/storage/firstaid/fire
+	path = /obj/item/storage/medkit/fire
 
 /datum/sold_goods/firstaid_brute
 	cost = 500
 	stock_high = 1
 	stock_low = 1
-	path = /obj/item/storage/firstaid/brute
+	path = /obj/item/storage/medkit/brute
 
 /datum/sold_goods/firstaid_toxin
 	cost = 500
 	stock_high = 1
 	stock_low = 1
-	path = /obj/item/storage/firstaid/toxin
+	path = /obj/item/storage/medkit/toxin
 
 /datum/sold_goods/pill_bottle_multiver
 	cost = 300
@@ -359,7 +359,7 @@
 	cost = 400
 	trading_types = list(/mob/living/simple_animal/bot = TRADER_SUBTYPES,
 						/mob/living/simple_animal/bot/secbot = TRADER_BLACKLIST_SUBTYPES,
-						/mob/living/simple_animal/bot/honkbot = TRADER_BLACKLIST_TYPES)
+						/mob/living/simple_animal/bot/secbot/honkbot = TRADER_BLACKLIST_TYPES)
 
 /datum/sold_goods/random_bot/two
 

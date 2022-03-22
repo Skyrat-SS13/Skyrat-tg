@@ -41,9 +41,9 @@
 /atom/Click(location,control,params)
 	if(flags_1 & INITIALIZED_1)
 		SEND_SIGNAL(src, COMSIG_CLICK, location, control, params, usr)
-		//SKYRAT EDIT ADDITION
-		if(SEND_SIGNAL(usr, COMSIG_CLICKON, src, params) & COMSIG_CANCEL_CLICKON)
-			return
+		//SKYRAT EDIT ADDITION - I don't think I need this?
+		//if(SEND_SIGNAL(usr, COMSIG_CLICKON, src, params) & COMSIG_CANCEL_CLICKON)
+		//	return
 		//SKYRAT EDIT END
 		usr.ClickOn(src, params)
 

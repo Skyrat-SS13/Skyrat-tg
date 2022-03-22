@@ -41,7 +41,7 @@
 
 /datum/overmap_shuttle_controller/proc/AddControl(mob/living/our_guy)
 	mob_controller = our_guy
-	RegisterSignal(mob_controller, COMSIG_CLICKON, .proc/ControllerClick)
+	RegisterSignal(mob_controller, COMSIG_MOB_CLICKON, .proc/ControllerClick)
 	mob_controller.client.perspective = EYE_PERSPECTIVE
 	mob_controller.client.eye = overmap_obj.my_visual
 	mob_controller.client.show_popup_menus = FALSE
@@ -58,7 +58,7 @@
 	if(mob_controller)
 		if(freeform_docker)
 			AbortFreeform()
-		UnregisterSignal(mob_controller, COMSIG_CLICKON)
+		UnregisterSignal(mob_controller, COMSIG_MOB_CLICKON)
 		mob_controller.client.perspective = MOB_PERSPECTIVE
 		mob_controller.client.eye = mob_controller
 		mob_controller.client.show_popup_menus = TRUE
@@ -91,12 +91,12 @@
 		return
 	if(modifiers["shift"])
 		A.examine(source)
-		return COMSIG_CANCEL_CLICKON
+		return COMSIG_MOB_CANCEL_CLICKON
 	if(modifiers["right"])
 		overmap_obj.CommandMove(A.x,A.y)
-		return COMSIG_CANCEL_CLICKON
+		return COMSIG_MOB_CANCEL_CLICKON
 
-	return COMSIG_CANCEL_CLICKON
+	return COMSIG_MOB_CANCEL_CLICKON
 
 /datum/action/innate/quit_control
 	name = "Quit Control"

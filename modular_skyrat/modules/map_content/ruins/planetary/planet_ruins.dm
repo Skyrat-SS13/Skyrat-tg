@@ -2,6 +2,7 @@
 	prefix = "_maps/RandomRuins/Planet/"
 	allow_duplicates = FALSE
 	/// A bitfield representing the requirements of the ruin for it to be spawned (Planet properties are checked)
+	ruin_type = ZTRAIT_PLANETARY_RUINS
 	var/planet_requirements = NONE
 
 /datum/map_template/ruin/planetary/colony
