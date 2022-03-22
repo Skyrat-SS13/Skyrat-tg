@@ -1,6 +1,8 @@
 /obj/item/storage/bag/medpens
 	name = "medpen pouch"
 	desc = "A pouch containing several different types of lifesaving medipens."
+	icon = 'modular_skyrat/modules/modular_items/icons/storage.dmi'
+	icon_state = "medpen_pouch"
 
 /obj/item/storage/bag/medpens/ComponentInitialize()
 	. = ..()

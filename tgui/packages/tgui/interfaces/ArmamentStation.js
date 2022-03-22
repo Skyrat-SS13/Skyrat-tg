@@ -3,7 +3,7 @@ import { Section, Stack, Box, Divider, Button, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
 export const ArmamentStation = (props, context) => {
-  const [category, setCategory] = useLocalState(context, 'category');
+  const [category, setCategory] = useLocalState(context, 'category', '');
   const [weapon, setArmament] = useLocalState(context, 'weapon');
   const { act, data } = useBackend(context);
   const {
@@ -19,7 +19,7 @@ export const ArmamentStation = (props, context) => {
       width={1000}
       height={600}>
       <Window.Content>
-        <Section fill title="Armaments Station">
+        <Section grow height="100%" title="Armaments Station">
           {card_inserted ? (
             <Stack>
               <Stack.Item grow fill>
@@ -63,41 +63,43 @@ export const ArmamentStation = (props, context) => {
             </Stack.Item>
             <Divider vertical />
             <Stack.Item grow mr={1}>
-              {armaments_list.map(armament_category => (
-                armament_category.category === category && (
-                  armament_category.subcategories.map(subcat => (
-                    <Section
-                      key={subcat.subcategory}
-                      title={subcat.subcategory}>
-                      <Stack vertical>
-                        {subcat.items.map(item => (
-                          <Stack.Item key={item.ref}>
-                            <Button
-                              fontSize="15px"
-                              textAlign="center"
-                              selected={weapon === item.ref}
-                              disabled={item.purchased >= item.quantity
-                                || item.purchased >= item.quantity}
-                              width="100%"
-                              key={item.ref}
-                              onClick={() =>
-                                setArmament(item.ref)}>
-                              <img
-                                src={`data:image/jpeg;base64,${item.icon}`}
-                                style={{
-                                  'vertical-align': 'middle',
-                                  'horizontal-align': 'middle',
-                                }}
-                              />
-                              &nbsp;{item.name}
-                            </Button>
-                          </Stack.Item>
-                        ))}
-                      </Stack>
-                    </Section>
-                  ))
-                )
-              ))}
+              <Section title={category} scrollable fill height="480px">
+                {armaments_list.map(armament_category => (
+                  armament_category.category === category && (
+                    armament_category.subcategories.map(subcat => (
+                      <Section
+                        key={subcat.subcategory}
+                        title={subcat.subcategory}>
+                        <Stack vertical>
+                          {subcat.items.map(item => (
+                            <Stack.Item key={item.ref}>
+                              <Button
+                                fontSize="15px"
+                                textAlign="center"
+                                selected={weapon === item.ref}
+                                disabled={item.purchased >= item.quantity
+                                  || item.purchased >= item.quantity}
+                                width="100%"
+                                key={item.ref}
+                                onClick={() =>
+                                  setArmament(item.ref)}>
+                                <img
+                                  src={`data:image/jpeg;base64,${item.icon}`}
+                                  style={{
+                                    'vertical-align': 'middle',
+                                    'horizontal-align': 'middle',
+                                  }}
+                                />
+                                &nbsp;{item.name}
+                              </Button>
+                            </Stack.Item>
+                          ))}
+                        </Stack>
+                      </Section>
+                    ))
+                  )
+                ))}
+              </Section>
             </Stack.Item>
             <Divider vertical />
             <Stack.Item width="20%">
