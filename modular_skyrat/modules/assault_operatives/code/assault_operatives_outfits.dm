@@ -14,7 +14,7 @@
 	belt = /obj/item/storage/belt/military
 	head = /obj/item/clothing/head/flatcap
 
-	backpack_contents = list(/obj/item/storage/box/syndie_kit/chameleon)
+	backpack_contents = list(/obj/item/storage/box/syndie_kit/chameleon, /obj/item/armament_points_card/assaultops)
 
 	id_trim = /datum/id_trim/chameleon/operative
 

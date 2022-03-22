@@ -149,7 +149,9 @@
 
 	playsound(src, 'sound/machines/machine_vend.ogg', 50, TRUE, extrarange = -3)
 
-	armament_entry.equip_to_human(human_to_equip, new_item)
+	if(armament_entry.equip_to_human(human_to_equip, new_item))
+		to_chat(user, span_notice("Equipped directly to your person."))
+		playsound(src, 'sound/items/equip/toolbelt_equip.ogg', 100)
 	armament_entry.after_equip(drop_location(), new_item)
 
 /**
