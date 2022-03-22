@@ -12,7 +12,7 @@
 
 // POINTS CARDS
 /obj/item/armament_points_card/assaultops
-	points = 30
+	points = 40
 
 // ARMAMENT ENTRIES
 
