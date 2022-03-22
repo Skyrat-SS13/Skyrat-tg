@@ -40,7 +40,7 @@
 
 /datum/supply_pack/critter/redpanda/generate()
 	. = ..()
-	if(prob(1))
+	if(prob(3))
 		var/mob/living/simple_animal/pet/redpanda/D = locate() in .
 		qdel(D)
 		new /mob/living/simple_animal/pet/redpanda/zesty(.)
