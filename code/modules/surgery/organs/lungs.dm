@@ -582,8 +582,11 @@
 #define GAS_TOLERANCE 5
 
 /obj/item/organ/lungs/ashwalker/Initialize(mapload)
+	//SKYRAT EDIT ADDITION - THIS IS CANCER, WHY ARE LUNGS LIKE THIS.
+	if(!SSair.planetary[LAVALAND_DEFAULT_ATMOS])
+		return ..()
+	//SKYRAT EDIT END
 	. = ..()
-
 	var/datum/gas_mixture/immutable/planetary/mix = SSair.planetary[LAVALAND_DEFAULT_ATMOS]
 
 	if(!mix?.total_moles()) // this typically means we didn't load lavaland, like if we're using #define LOWMEMORYMODE

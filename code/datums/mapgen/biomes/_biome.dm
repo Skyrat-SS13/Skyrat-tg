@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 ///This datum handles the transitioning from a turf to a specific biome, and handles spawning decorative structures and mobs.
 /datum/biome
 	///Type of turf this biome creates
@@ -48,3 +49,4 @@
 
 /datum/biome/mountain
 	turf_type = /turf/closed/mineral/random/jungle
+*/

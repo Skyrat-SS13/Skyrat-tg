@@ -31,6 +31,9 @@
 	///How long it takes to mine this turf without tools, if it's weak.
 	var/hand_mine_speed = 15 SECONDS
 
+	/// Whether the rock will turn to the rock_color of its level //SKYRAT EDIT ADDITION
+	var/turn_to_level_color = TRUE //SKYRAT EDIT ADDITION
+
 /turf/closed/mineral/Initialize(mapload)
 	. = ..()
 	var/matrix/M = new
@@ -39,6 +42,11 @@
 	icon = smooth_icon
 	var/static/list/behaviors = list(TOOL_MINING)
 	AddElement(/datum/element/bump_click, tool_behaviours = behaviors, allow_unarmed = TRUE)
+	//SKYRAT EDIT ADDITION
+	if(!color && turn_to_level_color)
+		var/datum/space_level/level = SSmapping.z_list[z]
+		color = level.rock_color
+	//SKYRAT EDIT END
 
 /turf/closed/mineral/proc/Spread_Vein()
 	var/spreadChance = initial(mineralType.spreadChance)
@@ -275,6 +283,8 @@
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 	weak_turf = TRUE
 
+	turn_to_level_color = FALSE //SKYRAT EDIT ADDITION
+
 /turf/closed/mineral/random/snow/Change_Ore(ore_type, random = 0)
 	. = ..()
 	if(mineralType)
@@ -499,11 +509,14 @@
 	smooth_icon = 'icons/turf/walls/red_wall.dmi'
 	base_icon_state = "red_wall"
 
+	turn_to_level_color = FALSE //SKYRAT EDIT ADDITION
+
 /turf/closed/mineral/random/stationside/asteroid
 	name = "iron rock"
 	icon = 'icons/turf/mining.dmi'
 	smooth_icon = 'icons/turf/walls/red_wall.dmi'
 	base_icon_state = "red_wall"
+	turn_to_level_color = FALSE //SKYRAT EDIT ADDITION
 
 /turf/closed/mineral/random/stationside/asteroid/porus
 	name = "porous iron rock"
@@ -539,7 +552,7 @@
 /turf/closed/mineral/gibtonite/proc/explosive_reaction(mob/user = null, triggered_by_explosion = 0)
 	if(stage == GIBTONITE_UNSTRUCK)
 		activated_overlay = mutable_appearance('icons/turf/smoothrocks.dmi', "rock_Gibtonite_inactive", ON_EDGED_TURF_LAYER) //shows in gaps between pulses if there are any
-		activated_overlay.plane = GAME_PLANE_UPPER
+		activated_overlay.appearance_flags = RESET_COLOR //SKYRAT EDIT ADDITION
 		add_overlay(activated_overlay)
 		name = "gibtonite deposit"
 		desc = "An active gibtonite reserve. Run!"

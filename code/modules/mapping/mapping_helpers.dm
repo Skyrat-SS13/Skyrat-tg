@@ -597,7 +597,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/mapping_helpers/no_lava)
 	if(!level || !length(traits_to_add))
 		return
 	level.traits |= traits_to_add
-	SSweather.update_z_level(level) //in case of someone adding a weather for the level, we want SSweather to update for that
+	//SSweather.update_z_level(level) //in case of someone adding a weather for the level, we want SSweather to update for that SKYRAT EDIT REMOVAL
 
 /obj/effect/mapping_helpers/circuit_spawner
 	name = "circuit spawner"

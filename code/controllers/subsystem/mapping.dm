@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR MAPPING.DM IN MASTER FILES.
 SUBSYSTEM_DEF(mapping)
 	name = "Mapping"
 	init_order = INIT_ORDER_MAPPING
@@ -611,4 +612,6 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		CHECK_TICK
 
 		spawner.spawn_loot()
+		spawner.hide()
 		qdel(spawner)
+*/

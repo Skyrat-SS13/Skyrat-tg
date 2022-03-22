@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR OVERMAPS
 //used for holding information about unique properties of maps
 //feed it json files that match the datum layout
 //defaults to box
@@ -190,3 +191,4 @@
 
 /datum/map_config/proc/MakeNextMap()
 	return config_filename == PATH_TO_NEXT_MAP_JSON || fcopy(config_filename, PATH_TO_NEXT_MAP_JSON)
+*/

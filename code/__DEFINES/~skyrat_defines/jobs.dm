@@ -8,4 +8,5 @@
 #define HEAD_RESTRICTED_QUIRKS "Blind" = TRUE, "Deaf" = TRUE, "Mute" = TRUE, "Foreigner" = TRUE, "Chunky Fingers" = TRUE
 #define TECH_RESTRICTED_QUIRKS "Chunky Fingers" = TRUE
 
+#define FACTION_TRADERSHIP "Tradership"
 #define FLAVOR_TEXT_CHAR_REQUIREMENT 150

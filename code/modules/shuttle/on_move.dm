@@ -167,10 +167,13 @@ All ShuttleMove procs go here
 /area/proc/onShuttleMove(turf/oldT, turf/newT, area/underlying_old_area)
 	if(newT == oldT) // In case of in place shuttle rotation shenanigans.
 		return TRUE
-
+	var/area/target_area = oldT.underlying_area ? oldT.underlying_area : underlying_old_area //SKYRAT EDIT ADDITION
 	contents -= oldT
-	underlying_old_area.contents += oldT
-	oldT.change_area(src, underlying_old_area)
+	//underlying_old_area.contents += oldT //SKYRAT EDIT CHANGE
+	//oldT.change_area(src, underlying_old_area)
+	target_area.contents += oldT
+	oldT.change_area(src, target_area)
+	oldT.underlying_area = null
 	//The old turf has now been given back to the area that turf originaly belonged to
 
 	var/area/old_dest_area = newT.loc
@@ -179,11 +182,13 @@ All ShuttleMove procs go here
 	old_dest_area.contents -= newT
 	contents += newT
 	newT.change_area(old_dest_area, src)
+	newT.underlying_area = old_dest_area //SKYRAT EDIT ADDITION
 	return TRUE
 
 // Called on areas after everything has been moved
 /area/proc/afterShuttleMove(new_parallax_dir)
 	parallax_movedir = new_parallax_dir
+	UpdateDayNightTurfs(find_controller = TRUE) //SKYRAT EDIT CHANGE
 	return TRUE
 
 /area/proc/lateShuttleMove()

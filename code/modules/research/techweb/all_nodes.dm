@@ -649,11 +649,10 @@
 		"bluespace_pod",
 		"launchpad",
 		"launchpad_console",
-		"quantumpad",
 		"tele_hub",
 		"tele_station",
 		"teleconsole",
-	)
+	) //SKYRAT EDIT REMOVAL - REMOVED "quantumpad"
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	discount_experiments = list(/datum/experiment/scanning/points/machinery_tiered_scan/tier3_bluespacemachines = 4000)
 
@@ -666,11 +665,9 @@
 		"bluespace_matter_bin",
 		"bluespacebodybag",
 		"femto_mani",
-		"quantum_keycard",
-		"swapper",
 		"triphasic_scanning",
 		"wormholeprojector",
-	)
+	)//SKYRAT EDIT REMOVAL - REMOVED "quantum_keycard" & "swapper"
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	discount_experiments = list(/datum/experiment/scanning/points/machinery_tiered_scan/tier3_variety = 5000)
 		/* /datum/experiment/exploration_scan/random/condition) this should have a point cost but im not even sure the experiment works properly lmao*/
@@ -1303,7 +1300,10 @@
 		"superresonator",
 		"triggermod",
 		"mecha_kineticgun",
-	)//e a r l y    g a  m e)
+		"mining_drill",
+		"mining_brace",
+		"metal_density_scanner"
+	)//e a r l y    g a  m e) //SKYRAT EDIT ADDITION
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
 /datum/techweb_node/adv_mining
@@ -1316,9 +1316,9 @@
 		"hypermod",
 		"jackhammer",
 		"plasmacutter_adv",
-
 		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"ripleyupgradef"
+		"ripleyupgradef",
+		"adv_metal_density_scanner"
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)

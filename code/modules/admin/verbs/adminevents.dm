@@ -500,7 +500,12 @@
 	if(!isnum(z_level))
 		return
 
-	SSweather.run_weather(weather_type, z_level)
+	//SKYRAT EDIT CHANGE
+	var/datum/weather_controller/weather_controller = SSmapping.GetLevelWeatherController(z_level)
+	if(!weather_controller)
+		return
+	weather_controller.RunWeather(weather_type)
+	//SKYRAT EDIT END
 
 	message_admins("[key_name_admin(usr)] started weather of type [weather_type] on the z-level [z_level].")
 	log_admin("[key_name(usr)] started weather of type [weather_type] on the z-level [z_level].")

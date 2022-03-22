@@ -33,17 +33,6 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
-"dm" = (
-/obj/structure/table,
-/obj/machinery/firealarm/directional/south{
-	dir = 1
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "en" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 4
@@ -146,6 +135,13 @@
 "lp" = (
 /turf/template_noop,
 /area/template_noop)
+"lr" = (
+/obj/effect/mob_spawn/ghost_role/human/blackmarket{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "mb" = (
 /obj/machinery/computer/crew{
 	dir = 4
@@ -268,6 +264,25 @@
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"ss" = (
+/obj/machinery/firealarm/directional/west{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/structure/chair/sofa/bench/right{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "sB" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
@@ -420,6 +435,22 @@
 	dir = 1
 	},
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"zw" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/effect/spawner/random/contraband/prison,
+/obj/effect/spawner/random/contraband/armory,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "AD" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -517,6 +548,17 @@
 /turf/open/floor/iron/dark/side{
 	dir = 4
 	},
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"Fe" = (
+/obj/structure/table,
+/obj/machinery/firealarm/directional/south{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "Fq" = (
 /obj/structure/rack,
@@ -638,29 +680,6 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/powered/skyrat/blackmarket)
-"Pd" = (
-/obj/structure/rack,
-/obj/effect/turf_decal/tile/brown{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/brown{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/yellow{
-	dir = 8
-	},
-/obj/effect/spawner/random/contraband/prison,
-/obj/effect/spawner/random/contraband/armory,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/powered/skyrat/blackmarket)
-"Ph" = (
-/obj/effect/mob_spawn/ghost_role/human/blackmarket{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "Py" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
@@ -805,25 +824,6 @@
 /obj/structure/table,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
-"YR" = (
-/obj/machinery/firealarm/directional/west{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/brown{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/brown{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/yellow{
-	dir = 8
-	},
-/obj/structure/chair/sofa/bench/right{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "Zh" = (
 /turf/closed/wall,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
@@ -922,7 +922,7 @@ Hq
 qJ
 OC
 Zh
-Ph
+lr
 Rv
 Zh
 YG
@@ -1000,7 +1000,7 @@ Zh
 af
 Yn
 nE
-Pd
+zw
 PG
 LL
 vj
@@ -1094,7 +1094,7 @@ Zh
 Zh
 Zh
 Qm
-YR
+ss
 qA
 Bp
 mb
@@ -1159,7 +1159,7 @@ De
 OA
 De
 MN
-dm
+Fe
 Zh
 YG
 YG

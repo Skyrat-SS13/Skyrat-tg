@@ -16,12 +16,13 @@
 
 	area_type = /area
 	protected_areas = list(/area/space)
-	target_trait = ZTRAIT_STATION
+	//target_trait = ZTRAIT_STATION SKYRAT EDIT REMOVAL
 
 	overlay_layer = ABOVE_OPEN_TURF_LAYER //Covers floors only
 	overlay_plane = FLOOR_PLANE
 	immunity_type = TRAIT_LAVA_IMMUNE
 
+	multiply_blend_on_main_stage = TRUE //SKYRAT EDIT ADDITION
 
 /datum/weather/floor_is_lava/can_weather_act(mob/living/mob_to_check)
 	if(!mob_to_check.client) //Only sentient people are going along with it!

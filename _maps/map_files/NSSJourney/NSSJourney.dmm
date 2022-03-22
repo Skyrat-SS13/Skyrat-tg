@@ -14795,17 +14795,6 @@
 	},
 /turf/open/floor/iron/freezer,
 /area/commons/toilet/locker)
-"bgs" = (
-/obj/docking_port/stationary{
-	dir = 2;
-	dwidth = 11;
-	height = 22;
-	id = "whiteship_home";
-	name = "SS13: Auxiliary Dock, Station-Port";
-	width = 35
-	},
-/turf/open/space/basic,
-/area/space)
 "bgv" = (
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall,
@@ -36380,6 +36369,20 @@
 /obj/machinery/power/apc/auto_name/directional/east,
 /turf/open/floor/plating,
 /area/ai_monitored/turret_protected/aisat/maint)
+"dSv" = (
+/obj/machinery/hydroponics/soil{
+	desc = "A patch of fertile soil that you can plant stuff in.";
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "dirt";
+	layer = 2.0001;
+	plane = -7;
+	self_sustaining = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/planetary/dirt,
+/area/security/prison)
 "dSx" = (
 /obj/effect/turf_decal/plaque{
 	icon_state = "L4"
@@ -45941,6 +45944,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/science/storage)
+"mPo" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/machinery/computer/shuttle_purchase{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/hallway/secondary/entry)
 "mPs" = (
 /obj/structure/table,
 /obj/machinery/light_switch{
@@ -46242,6 +46254,49 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/medbay)
+"nbJ" = (
+/obj/structure/closet/crate/hydroponics,
+/obj/item/seeds/aloe,
+/obj/item/seeds/apple,
+/obj/item/seeds/cabbage,
+/obj/item/seeds/whitebeet,
+/obj/item/seeds/redbeet,
+/obj/item/seeds/sugarcane,
+/obj/item/seeds/sunflower,
+/obj/item/seeds/tea,
+/obj/item/seeds/tea/astra,
+/obj/item/seeds/tobacco,
+/obj/item/seeds/tomato/blood,
+/obj/item/seeds/cocoapod/vanillapod,
+/obj/item/seeds/cocoapod,
+/obj/item/seeds/coffee/robusta,
+/obj/item/seeds/coffee,
+/obj/item/seeds/corn,
+/obj/item/seeds/cotton,
+/obj/item/seeds/potato/sweet,
+/obj/item/food/grown/poppy,
+/obj/item/food/grown/poppy/geranium,
+/obj/item/food/grown/poppy/lily,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/garlic,
+/obj/item/food/grown/onion,
+/obj/item/food/grown/peas,
+/obj/item/grown/log,
+/obj/item/food/grown/mushroom/chanterelle,
+/obj/machinery/hydroponics/soil{
+	desc = "A patch of fertile soil that you can plant stuff in.";
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "dirt";
+	layer = 2.0001;
+	plane = -7;
+	self_sustaining = 1
+	},
+/obj/item/food/grown/wheat,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/planetary/dirt,
+/area/security/prison)
 "nce" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -48670,6 +48725,17 @@
 /obj/effect/turf_decal/trimline/blue/filled/warning,
 /turf/open/floor/iron/white,
 /area/medical/medbay)
+"pof" = (
+/obj/machinery/hydroponics/soil{
+	desc = "A patch of fertile soil that you can plant stuff in.";
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "dirt";
+	layer = 2.0001;
+	plane = -7;
+	self_sustaining = 1
+	},
+/turf/open/floor/planetary/dirt,
+/area/security/prison)
 "poE" = (
 /obj/effect/turf_decal/trimline/darkblue/filled/warning{
 	dir = 1
@@ -50292,6 +50358,12 @@
 	},
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain/private/nt_rep)
+"qSg" = (
+/obj/docking_port/stationary/huge{
+	dir = 2
+	},
+/turf/open/space/basic,
+/area/space)
 "qSS" = (
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/white,
@@ -53116,13 +53188,6 @@
 	},
 /turf/open/floor/wood,
 /area/maintenance/aft)
-"tBp" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
-/obj/structure/reagent_dispensers/water_cooler,
-/turf/open/floor/iron,
-/area/hallway/secondary/entry)
 "tBt" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/virology/glass{
@@ -67607,7 +67672,7 @@ jei
 arB
 nQD
 ayn
-tBp
+mPo
 aAC
 xzh
 xzh
@@ -68124,7 +68189,7 @@ ayk
 beK
 auP
 cyt
-bgs
+qSg
 xzh
 xzh
 xzh
@@ -82949,12 +83014,12 @@ acd
 fJv
 sKX
 dci
-xJu
-uza
-uza
-uza
-uza
-uza
+nbJ
+dSv
+dSv
+dSv
+dSv
+dSv
 acd
 dCE
 ulw
@@ -83463,12 +83528,12 @@ acd
 saJ
 sKX
 frT
-uAt
-uAt
+pof
+pof
 dyj
-uAt
-uAt
-uAt
+pof
+pof
+pof
 acd
 fGw
 fGw
@@ -83976,13 +84041,13 @@ aai
 hhR
 mam
 pqP
-uAt
+pof
 ulw
-uAt
+pof
 dyj
-uAt
+pof
 ulw
-uAt
+pof
 acd
 fGw
 npG
@@ -84233,13 +84298,13 @@ aai
 aai
 fyu
 aai
-uAt
+pof
 ulw
-uAt
+pof
 dyj
-uAt
+pof
 ulw
-uAt
+pof
 acd
 mez
 hXd
@@ -84490,13 +84555,13 @@ aai
 hhR
 mam
 aai
-uAt
+pof
 ulw
-uAt
+pof
 dyj
-uAt
+pof
 ulw
-uAt
+pof
 acd
 tIC
 vJW

@@ -42,7 +42,11 @@
 	totallums = (totallums - minlum) / (maxlum - minlum)
 
 	totallums += dynamic_lumcount
-
+	//SKYRAT EDIT ADDITION
+	/// Nessecary for day/night and thunder to properly illuminate stuff
+	var/area/A = loc
+	totallums += A.luminosity
+	//SKYRAT EDIT END
 	return CLAMP01(totallums)
 
 // Returns a boolean whether the turf is on soft lighting.

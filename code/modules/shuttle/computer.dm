@@ -20,17 +20,132 @@
 	/// Authorization request cooldown to prevent request spam to admin staff
 	COOLDOWN_DECLARE(request_cooldown)
 
+	var/uses_overmap = TRUE //SKYRAT EDIT ADDITION
+
 /obj/machinery/computer/shuttle/Initialize(mapload)
 	. = ..()
 	if(!mapload)
 		connect_to_shuttle(SSshuttle.get_containing_shuttle(src))
 
-/obj/machinery/computer/shuttle/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "ShuttleConsole", name)
-		ui.open()
+//SKYRAT EDIT ADDITION
+/obj/machinery/computer/shuttle/attacked_by(obj/item/smacking_object, mob/living/user)
+	if(istype(smacking_object, /obj/item/navigation_datacard))
+		var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
+		if(M.gateway_stranded)
+			to_chat(user, span_notice("You insert [smacking_object] into [src], loading the navigational data!"))
+			say("Navigational data loaded.")
+			playsound(loc, 'sound/machines/terminal_insert_disc.ogg', 35, 1)
+			M.gateway_stranded = FALSE
+			qdel(smacking_object)
+		else
+			to_chat(user, span_notice("[src] does not have a corrupted navigations system!"))
+			say("Error loading navigational disk.")
+//SKYRAT EDIT END
 
+/obj/machinery/computer/shuttle/ui_interact(mob/user, datum/tgui/ui)
+	//SKYRAT EDIT ADDITION/CHANGE
+	if(uses_overmap)
+		var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
+		if(!M)
+			return
+		var/list/dat = list("<center>")
+		var/status_info
+		if(admin_controlled)
+			status_info = "Unauthorized Access"
+		else if(locked)
+			status_info = "Locked"
+		else if(M.gateway_stranded)
+			status_info = "NAVIGATIONAL SYSTEM ERROR, RECALIBRATION REQUIRED!"
+		else
+			switch(M.mode)
+				if(SHUTTLE_IGNITING)
+					status_info = "Igniting"
+				if(SHUTTLE_IDLE)
+					status_info = "Idle"
+				if(SHUTTLE_RECHARGING)
+					status_info = "Recharging"
+				else
+					status_info = "In Transit"
+		dat += "STATUS: <b>[status_info]</b>"
+		var/link
+		if(M.mode == SHUTTLE_IDLE)
+			link = "href='?src=[REF(src)];task=overmap_launch'"
+		else
+			link = "class='linkOff'"
+		dat += "<BR><BR><a [link]>Depart to Overmap</a><BR>"
+
+		dat += "<a href='?src=[REF(src)];task=engines_on']>Engines On</a> <a href='?src=[REF(src)];task=engines_off']>Engines Off</a>"
+
+		dat += "<BR><BR><a [M.my_overmap_object ? "href='?src=[REF(src)];task=overmap_view'" : "class='linkOff'"]>Overmap View</a>"
+		dat += "<BR><a [M.my_overmap_object ? "href='?src=[REF(src)];task=overmap_ship_controls'" : "class='linkOff'"]>Ship Controls</a></center>"
+		var/datum/browser/popup = new(user, "shuttle_computer", name, 300, 200)
+		popup.set_content(dat.Join())
+		popup.open()
+	else
+		ui = SStgui.try_update_ui(user, src, ui)
+		if(!ui)
+			ui = new(user, src, "ShuttleConsole", name)
+			ui.open()
+
+/obj/machinery/computer/shuttle/Topic(href, href_list)
+	var/mob/user = usr
+	if(!isliving(user) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+		return
+	var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
+	if(M.gateway_stranded)
+		to_chat(usr, span_warning("Shuttle navigation systems are inoperable. Contact your IT supervisor immediately."))
+		say("Navigational systems error.")
+		playsound(src, 'modular_skyrat/modules/overmap/sound/shuttle_voice/error_navigation.ogg', OVERMAP_SHUTTLE_ALERT_VOLUME)
+		return
+	switch(href_list["task"])
+		if("engines_off")
+			M.TurnEnginesOff()
+			say("Engines offline.")
+			playsound(src, 'modular_skyrat/modules/overmap/sound/shuttle_voice/engines_off.ogg', OVERMAP_SHUTTLE_ALERT_VOLUME)
+		if("engines_on")
+			M.TurnEnginesOn()
+			say("Engines online.")
+			playsound(src, 'modular_skyrat/modules/overmap/sound/shuttle_voice/engines_on.ogg', OVERMAP_SHUTTLE_ALERT_VOLUME)
+		if("overmap_view")
+			if(M.my_overmap_object)
+				M.my_overmap_object.GrantOvermapView(usr, get_turf(src))
+				return
+		if("overmap_ship_controls")
+			if(M.my_overmap_object)
+				M.my_overmap_object.DisplayUI(usr, get_turf(src))
+				return
+		if("overmap_launch")
+			if(!uses_overmap)
+				return
+			if(!launch_check(usr))
+				return
+			if(M.launch_status == ENDGAME_LAUNCHED)
+				to_chat(usr, "<span class='warning'>You've already escaped. Never going back to that place again!</span>")
+				return
+			if(no_destination_swap)
+				if(M.mode == SHUTTLE_RECHARGING)
+					to_chat(usr, "<span class='warning'>Shuttle engines are not ready for use.</span>")
+					return
+				if(M.mode != SHUTTLE_IDLE)
+					to_chat(usr, "<span class='warning'>Shuttle already in transit.</span>")
+					return
+			if(uses_overmap)
+				if(M.DrawDockingThrust())
+					M.possible_destinations = possible_destinations
+					M.destination = "overmap"
+					M.mode = SHUTTLE_IGNITING
+					M.play_engine_sound(src, TRUE)
+					M.setTimer(5 SECONDS)
+					say("Shuttle departing. Please stand away from the doors.")
+					playsound(src, 'modular_skyrat/modules/overmap/sound/shuttle_voice/launch.ogg', OVERMAP_SHUTTLE_ALERT_VOLUME)
+					log_shuttle("[key_name(usr)] has sent shuttle \"[M]\" into the overmap.")
+					ui_interact(usr)
+					return
+				else
+					say("Engine power insufficient to take off.")
+					playsound(src, 'modular_skyrat/modules/overmap/sound/shuttle_voice/error_engines.ogg', OVERMAP_SHUTTLE_ALERT_VOLUME)
+	ui_interact(usr)
+//SKYRAT EDIT END
 /obj/machinery/computer/shuttle/ui_data(mob/user)
 	var/list/data = list()
 	var/list/options = params2list(possible_destinations)
@@ -88,6 +203,10 @@
 
 /obj/machinery/computer/shuttle/ui_act(action, params)
 	. = ..()
+	//SKYRAT EDIT ADDITION
+	if(uses_overmap)
+		return
+	//SKYRAT EDIT END
 	if(.)
 		return
 	if(!allowed(usr))

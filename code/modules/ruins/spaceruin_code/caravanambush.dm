@@ -52,7 +52,7 @@
 	desc = "Used to control the Small Freighter."
 	circuit = /obj/item/circuitboard/computer/caravan/trade1
 	shuttleId = "caravantrade1"
-	possible_destinations = "whiteship_away;whiteship_home;whiteship_z4;whiteship_lavaland;caravantrade1_custom;caravantrade1_ambush"
+	possible_destinations = "whiteship_away;whiteship_home;whiteship_z4;whiteship_lavaland;caravantrade1_custom;caravantrade1_ambush;hugedock;largedock" //SKYRAT EDIT CHANGE
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/caravan/Initialize(mapload)
 	. = ..()
@@ -82,7 +82,7 @@
 	light_color = COLOR_SOFT_RED
 	circuit = /obj/item/circuitboard/computer/caravan/pirate
 	shuttleId = "caravanpirate"
-	possible_destinations = "caravanpirate_custom;caravanpirate_ambush"
+	possible_destinations = "caravanpirate_custom;caravanpirate_ambush;hugedock;largedock" //SKYRAT EDIT CHANGE
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/caravan/pirate
 	name = "Pirate Cutter Navigation Computer"
@@ -106,7 +106,7 @@
 	req_access = list(ACCESS_SYNDICATE)
 	circuit = /obj/item/circuitboard/computer/caravan/syndicate1
 	shuttleId = "caravansyndicate1"
-	possible_destinations = "caravansyndicate1_custom;caravansyndicate1_ambush;caravansyndicate1_listeningpost"
+	possible_destinations = "caravansyndicate1_custom;caravansyndicate1_ambush;caravansyndicate1_listeningpost;hugedock;largedock;mediumdock" //SKYRAT EDIT CHANGE
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/caravan/syndicate1
 	name = "Syndicate Fighter Navigation Computer"
@@ -154,7 +154,7 @@
 	light_color = COLOR_SOFT_RED
 	circuit = /obj/item/circuitboard/computer/caravan/syndicate3
 	shuttleId = "caravansyndicate3"
-	possible_destinations = "caravansyndicate3_custom;caravansyndicate3_ambush;caravansyndicate3_listeningpost"
+	possible_destinations = "caravansyndicate3_custom;caravansyndicate3_ambush;caravansyndicate3_listeningpost;hugedock;largedock;mediumdock" //SKYRAT EDIT CHANGE
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/caravan/syndicate3
 	name = "Syndicate Drop Ship Navigation Computer"

@@ -16,12 +16,14 @@
 
 	area_type = /area
 	protect_indoors = FALSE
-	target_trait = ZTRAIT_VOIDSTORM
+	//target_trait = ZTRAIT_VOIDSTORM SKYRAT EDIT REMOVAL
 
 	immunity_type = TRAIT_VOIDSTORM_IMMUNE
 
 	barometer_predictable = FALSE
 	perpetual = TRUE
+
+	multiply_blend_on_main_stage = TRUE//SKYRAT EDIT CHANGE
 
 
 /datum/weather/void_storm/can_weather_act(mob/living/mob_to_check)
