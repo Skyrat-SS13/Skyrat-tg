@@ -1,6 +1,7 @@
 ///This spawner clears the terrain of flora, and ScrapeAway's mineral turfs
 /obj/effect/spawner/clear
 	name = "clear terrain"
+	icon_state = "annoyed"
 
 /obj/effect/spawner/clear/Initialize()
 	..()
