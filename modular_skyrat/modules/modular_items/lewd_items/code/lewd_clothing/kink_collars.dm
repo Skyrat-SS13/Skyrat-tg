@@ -127,7 +127,7 @@
 		if(!to_lock)
 			REMOVE_TRAIT(src, TRAIT_NODROP, TRAIT_NODROP)
 		return
-	to_chat(user, span_warning("It looks like the lock is brokenn - now it's just an ordinary old collar."))
+	to_chat(user, span_warning("It looks like the lock is broken - now it's just an ordinary old collar."))
 	locked = FALSE
 	REMOVE_TRAIT(src, TRAIT_NODROP, TRAIT_NODROP)
 
