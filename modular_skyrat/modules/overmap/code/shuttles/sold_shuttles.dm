@@ -33,6 +33,7 @@
 	detailed_desc = "Sporting seating for four, and living space for one, the Vulture series of ships is an excellent choice for the average crew member to take a space vacation. Including the mining laser on board, the enterprising pilot could even go for some ore asteroid mining."
 	shuttle_id = "common_vulture"
 	cost = 7500
+	stock = 2
 	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
 	shuttle_type = SHUTTLE_MINING
 
@@ -42,6 +43,7 @@
 	detailed_desc = "With seating for three, and a small cargo capacity, the Baserunner series certainly sets no records, but remains a very affordable option for anyone in need of a service shuttle for a variety of missions."
 	shuttle_id = "common_baserunner"
 	cost = 5000
+	stock = 3
 	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
 
 /datum/sold_shuttle/common_workman
@@ -49,6 +51,7 @@
 	desc = "An extremely small resource collection ship, seats a single person."
 	detailed_desc = "While diminutive in size, the Workman series of mining shuttles makes up for that in price and utility, perfect for when you need a ship to mine some asteroids, and you need it now."
 	cost = 3000
+	stock = 5
 	allowed_docks = list(DOCKS_SMALL_UPWARDS)
 
 ////////////////////////
@@ -60,6 +63,7 @@
 	detailed_desc = "With full trading suite, and decently sized cargo bay to boot, the Crow series of ships may not get any awards for looks, but it gets the job done, a mobile cargo department at your fingertips for the right price."
 	shuttle_id = "exploration_crow"
 	cost = 7500
+	stock = 2
 	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
 	shuttle_type = SHUTTLE_EXPLORATION
 
@@ -69,6 +73,7 @@
 	detailed_desc = "Sporting just about everything an up and coming pilot could want on a shuttle, the Deckard series is a jack of all trades, and master of none, paired with the reasonable price range it makes a good ship for pilots of all experience levels."
 	shuttle_id = "exploration_deckard"
 	cost = 6000
+	stock = 3
 	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
 	shuttle_type = SHUTTLE_EXPLORATION
 
@@ -78,6 +83,7 @@
 	detailed_desc = "Rocking just about any crew facility a captain could want on a ship, the Nexus series is a perfect shuttle for long flights across the stars, should you have deep enough pockets to afford buying one."
 	shuttle_id = "exploration_nexus"
 	cost = 15500
+	stock = 2
 	allowed_docks = list(DOCKS_HUGE_UPWARDS)
 	shuttle_type = SHUTTLE_EXPLORATION
 
@@ -112,6 +118,7 @@
 		<BR> - 50 titanium sheets\
 		"
 	cost = 3000
+	stock = 3
 	shuttle_id = "common_platform_small"
 	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
 
@@ -133,6 +140,7 @@
 		<BR> - 100 titanium sheets\
 		"
 	cost = 5000
+	stock = 2
 	shuttle_id = "common_platform_medium"
 	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
 
