@@ -21,12 +21,16 @@
 	icon = 'modular_skyrat/modules/aesthetics/storage/storage.dmi'
 
 /obj/item/storage/box/rubbershot
-	icon_state = "secbox"
-	illustration = "beanbag"
+	icon_state = "secbox_xl"
+	illustration = "rubbershot"
 
 /obj/item/storage/box/lethalshot
-	icon_state = "secbox"
+	icon_state = "secbox_xl"
 	illustration = "buckshot"
+
+/obj/item/storage/box/beanbag
+	icon_state = "secbox_xl"
+	illustration = "beanbag"
 
 /obj/item/storage/box/swab
 	icon_state = "medbox"
@@ -40,6 +44,9 @@
 /obj/item/storage/box/evidence
 	icon_state = "secbox"
 	illustration = "evidence"
+
+/obj/item/storage/box/rxglasses/spyglasskit
+	icon_state = "secbox"
 
 /obj/item/storage/box/holobadge
 	icon_state = "secbox"
@@ -84,3 +91,22 @@
 /obj/item/storage/box/silver_sulf
 	icon_state = "medbox"
 
+
+/obj/item/storage/box/cyber_implants
+	illustration = null //Included in the sprite
+
+//Unchanged from TG:
+/obj/item/storage/box/monkeycubes
+	icon = 'icons/obj/storage.dmi'
+
+/obj/item/storage/box/gum
+	icon = 'icons/obj/storage.dmi'
+
+/obj/item/storage/box/donkpockets
+	icon = 'icons/obj/storage.dmi'
+
+/obj/item/storage/box/papersack
+	icon = 'icons/obj/storage.dmi'
+
+/obj/item/storage/box/mothic_rations
+	icon = 'icons/obj/storage.dmi'
