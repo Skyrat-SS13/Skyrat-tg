@@ -5517,7 +5517,7 @@
 	dir = 1
 	},
 /turf/open/floor/iron/dark/red/side{
-	dir = 9
+	dir = 8
 	},
 /area/security/brig/upper)
 "aZo" = (
@@ -22537,6 +22537,7 @@
 /area/engineering/supermatter/room)
 "dvs" = (
 /obj/structure/cable,
+/obj/effect/landmark/start/brigoff,
 /turf/open/floor/iron/dark/purple/side,
 /area/brigofficer)
 "dvF" = (
@@ -28899,10 +28900,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/security/execution/transfer)
-"efa" = (
-/obj/effect/landmark/start/brigoff,
-/turf/open/floor/iron/dark,
-/area/security/prison)
 "efb" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
 /turf/closed/wall/r_wall,
@@ -43599,6 +43596,7 @@
 "iAL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/landmark/start/brigoff,
 /turf/open/floor/iron/dark/purple,
 /area/brigofficer)
 "iAN" = (
@@ -48364,7 +48362,7 @@
 "jZC" = (
 /obj/machinery/camera{
 	c_tag = "Prison Isolation Cell";
-	dir = 9;
+	dir = 4;
 	network = list("ss13","prison","isolation")
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -64868,7 +64866,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/landmark/start/brigoff,
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "oGz" = (
@@ -70396,6 +70393,7 @@
 	},
 /obj/structure/closet/crate/trashcart/laundry,
 /obj/item/reagent_containers/hypospray/medipen,
+/obj/item/toy/crayon/spraycan,
 /turf/open/floor/iron/kitchen{
 	dir = 1
 	},
@@ -75429,7 +75427,7 @@
 	},
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark/red/side{
-	dir = 10
+	dir = 8
 	},
 /area/security/brig/upper)
 "rHy" = (
@@ -75473,7 +75471,6 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
-/obj/effect/landmark/start/brigoff,
 /obj/structure/cable,
 /turf/open/floor/iron/kitchen{
 	dir = 1
@@ -75527,6 +75524,13 @@
 	dir = 1
 	},
 /turf/open/floor/iron,
+/area/security/prison)
+"rIL" = (
+/obj/effect/spawner/random/structure/girder{
+	loot = list(/obj/structure/falsewall = 50, /turf/closed/wall = 50);
+	name = "fifty% falsewall, fifty% wall"
+	},
+/turf/open/floor/plating,
 /area/security/prison)
 "rIN" = (
 /obj/effect/turf_decal/tile/bar,
@@ -80927,11 +80931,6 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/qm)
-"tgY" = (
-/obj/structure/lattice,
-/obj/structure/grille,
-/turf/open/space,
-/area/space)
 "tgZ" = (
 /obj/structure/lattice/catwalk,
 /turf/open/space,
@@ -148097,8 +148096,8 @@ aaa
 aaa
 aaa
 aaa
-tgY
-nOg
+aac
+aad
 aFm
 rrJ
 syA
@@ -148352,9 +148351,9 @@ aaa
 aaa
 aaa
 aaa
-tgY
+aac
 aaa
-tgY
+aac
 aaa
 aFm
 jyz
@@ -148609,12 +148608,12 @@ aaa
 aaa
 aaa
 aaa
-tgY
-nOg
-tgY
+aac
+aad
+aac
 aaa
 aFm
-aKV
+rIL
 aKV
 aKV
 aKV
@@ -148866,9 +148865,9 @@ aaa
 aaa
 aaa
 aaa
-tgY
+aac
 aaa
-tgY
+aac
 aaa
 aFm
 rJj
@@ -149123,10 +149122,10 @@ aaa
 aaa
 aaa
 aaa
-tgY
+aac
 aaa
-tgY
-nOg
+aac
+aad
 aFm
 rJj
 ucZ
@@ -149380,9 +149379,9 @@ aaa
 aaa
 aaa
 aaa
-tgY
+aac
 aaa
-tgY
+aac
 aaa
 aFm
 rJj
@@ -149400,7 +149399,7 @@ gcs
 aKV
 egZ
 gkK
-efa
+eLB
 eLB
 eLB
 iQj
@@ -149411,7 +149410,7 @@ sFM
 iAL
 rjB
 nKK
-aaa
+aad
 fCV
 aZo
 whb
@@ -149637,9 +149636,9 @@ aaa
 aaa
 aaa
 aaa
-tgY
-nOg
-tgY
+aac
+aad
+aac
 aaa
 aFm
 rJj
@@ -149894,9 +149893,9 @@ aaa
 aaa
 aaa
 aaa
-tgY
+aac
 aaa
-tgY
+aac
 aaa
 aFm
 aKV
@@ -150153,8 +150152,8 @@ aaa
 aaa
 aaa
 aaa
-tgY
-nOg
+aac
+aad
 aFm
 pVy
 kpg
@@ -151438,8 +151437,8 @@ aaa
 aaa
 aaa
 aaa
-tgY
-nOg
+aac
+aad
 aFm
 uuS
 mqw
@@ -151693,9 +151692,9 @@ aaa
 aaa
 aaa
 aaa
-tgY
+aac
 aaa
-tgY
+aac
 aaa
 aFm
 aKV
@@ -151950,9 +151949,9 @@ aaa
 aaa
 aaa
 aaa
-tgY
-nOg
-tgY
+aac
+aad
+aac
 aaa
 aFm
 dVK
@@ -152207,9 +152206,9 @@ aaa
 aaa
 aaa
 aaa
-tgY
+aac
 aaa
-tgY
+aac
 aaa
 smo
 uOG
@@ -152464,10 +152463,10 @@ aaa
 aaa
 aaa
 aaa
-tgY
+aac
 aaa
-tgY
-nOg
+aac
+aad
 aFm
 aKV
 aKV
@@ -152721,9 +152720,9 @@ aaa
 aaa
 aaa
 aaa
-tgY
+aac
 aaa
-tgY
+aac
 aaa
 aFm
 lYW
@@ -152978,9 +152977,9 @@ aaa
 aaa
 aaa
 aaa
-tgY
-nOg
-tgY
+aac
+aad
+aac
 aaa
 aFm
 buR
@@ -153235,9 +153234,9 @@ aaa
 aaa
 aaa
 aaa
-tgY
+aac
 aaa
-tgY
+aac
 aaa
 aFm
 aKV
@@ -153494,8 +153493,8 @@ aaa
 aaa
 aaa
 aaa
-tgY
-nOg
+aac
+aad
 aFm
 lYW
 qbt
@@ -153776,7 +153775,7 @@ aKV
 wDi
 hHu
 aKV
-aKV
+rIL
 aFm
 aKZ
 aUD
@@ -154267,8 +154266,8 @@ aaa
 aaa
 aaa
 aaa
-nOg
-nOg
+aad
+aad
 aaa
 aaa
 smo
@@ -154523,8 +154522,8 @@ aaa
 aaa
 aaa
 aaa
-nOg
-nOg
+aad
+aad
 aaa
 aaa
 aaa
@@ -154779,12 +154778,12 @@ aaa
 aaa
 aaa
 aaa
-tgY
-nOg
+aac
+aad
 aaa
 aaa
 aaa
-nOg
+aad
 smo
 smo
 smo
@@ -155036,17 +155035,17 @@ aaa
 aaa
 aaa
 aaa
-tgY
-tgY
+aac
+aac
 aaa
 aaa
-nOg
-nOg
-nOg
+aad
+aad
+aad
 aaa
 aaa
 aaa
-nOg
+aad
 aFm
 cjA
 sOy
@@ -155294,16 +155293,16 @@ aaa
 aaa
 aaa
 aaa
-tgY
-tgY
-nOg
-nOg
-nOg
+aac
+aac
+aad
+aad
+aad
 aaa
 aaa
 aaa
-nOg
-nOg
+aad
+aad
 aFm
 smo
 aFm
@@ -155552,24 +155551,24 @@ aaa
 aaa
 aaa
 aaa
-tgY
-tgY
-nOg
+aac
+aac
+aad
 aaa
 aaa
 aaa
-nOg
-nOg
+aad
+aad
 aaa
 aaa
-nOg
+aad
 aaa
-nOg
+aad
 aaa
 aaa
-nOg
+aad
 aaa
-nOg
+aad
 aaa
 aFm
 jwY
@@ -155810,23 +155809,23 @@ aaa
 aaa
 aaa
 aaa
-tgY
-tgY
+aac
+aac
 aaa
 aaa
-nOg
-nOg
+aad
+aad
 aaa
 aaa
-tgY
-tgY
-tgY
-tgY
-tgY
+aac
+aac
+aac
+aac
+aac
 aaa
-tgY
-tgY
-tgY
+aac
+aac
+aac
 aaa
 aFm
 aFm
@@ -156068,10 +156067,10 @@ aaa
 aaa
 aaa
 aaa
-tgY
-tgY
-nOg
-nOg
+aac
+aac
+aad
+aad
 aaa
 aaa
 aaa
@@ -156086,7 +156085,7 @@ aaa
 aaa
 aaa
 aaa
-nOg
+aad
 aaa
 aaa
 aaa
@@ -156326,8 +156325,8 @@ aaa
 aaa
 aaa
 aaa
-tgY
-tgY
+aac
+aac
 aaa
 aaa
 aaa
@@ -156343,8 +156342,8 @@ aaa
 aaa
 aaa
 aaa
-tgY
-tgY
+aac
+aac
 aaa
 aaa
 aaa
