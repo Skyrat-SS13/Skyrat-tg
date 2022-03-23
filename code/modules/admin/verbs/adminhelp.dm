@@ -115,7 +115,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	//SKYRAT EDIT ADDITION
 	if(LAZYLEN(SSopposing_force.submitted_applications))
 		for(var/datum/opposing_force/opposing_force as anything in SSopposing_force.submitted_applications)
-			L[++L.len] = list("[opposing_force.handling_admin ? "H-[opposing_force.handling_admin]. " : ""]OPFOR: [opposing_force.ckey]", null, REF(opposing_force))
+			L[++L.len] = list("[opposing_force.handling_admin ? "H-[opposing_force.handling_admin]. " : ""]OPFOR:", "[opposing_force.stat_button.update(" [opposing_force.ckey] ")]", null, REF(opposing_force.stat_button))
 	//SKYRAT EDIT END
 	return L
 
@@ -196,6 +196,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/static/ticket_counter = 0
 	/// The list of clients currently responding to the opening ticket before it gets a response
 	var/list/opening_responders
+	//SKYRAT EDIT START
+	/// Have we requested this ticket to stop being part of the Ticket Ping subsystem?
+	var/ticket_ping_stop = FALSE
+	//SKYRAT EDIT END
 
 /**
  * Call this on its own to create a ticket, don't manually assign current_ticket
@@ -360,6 +364,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=handleissue'>HANDLE</A>)" //SKYRAT EDIT ADDITION - ADMIN
+	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=pingmute'>PING MUTE</A>)" //SKYRAT EDIT
 
 //private
 /datum/admin_help/proc/LinkedReplyName(ref_src)
@@ -635,6 +640,12 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		//SKYRAT EDIT ADDITION BEING - ADMIN
 		if("handleissue")
 			HandleIssue()
+		if("pingmute")
+			ticket_ping_stop = !ticket_ping_stop
+			SSblackbox.record_feedback("tally", "ahelp_stats", 1, "pingmute")
+			var/msg = "Ticket [TicketHref("#[id]")] has been [ticket_ping_stop ? "" : "un"]muted from the Ticket Ping Subsystem by [key_name_admin(usr)]."
+			message_admins(msg)
+			log_admin_private(msg)
 		//SKYRAT EDIT ADDITION END
 
 //

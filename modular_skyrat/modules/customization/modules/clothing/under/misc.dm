@@ -623,16 +623,6 @@
 	name = "head of personnel's female formal uniform"
 	icon_state = "hop_parade_female"
 
-/obj/item/clothing/under/rank/medical/chief_medical_officer/turtleneck
-	name = "chief medical officer's turtleneck"
-	desc = "A light blue turtleneck and brown khakis, for a doctor with a superior sense of style."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "cmoturtle"
-	inhand_icon_state = "b_suit"
-	can_adjust = TRUE
-	alt_covers_chest = TRUE
-
 /obj/item/clothing/under/rank/captain/kilt
 	desc = "Not a skirt, it is, however, armoured and decorated with a tartan sash."
 	name = "captain's kilt"

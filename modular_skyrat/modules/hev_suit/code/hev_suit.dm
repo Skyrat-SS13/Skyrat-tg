@@ -12,7 +12,7 @@
 #define PCV_ARMOR_POWEROFF list(30, 30, 30, 30, 30, 30, 20, 20, 20, 10)
 
 #define HEV_ARMOR_POWERON list(60, 60, 60, 60, 90, 100, 100, 100, 100, 30)
-#define PCV_ARMOR_POWERON list(45, 45, 45, 45, 60, 75, 50, 50, 50, 40)
+#define PCV_ARMOR_POWERON list(40, 40, 40, 40, 60, 75, 50, 50, 50, 40)
 
 #define HEV_POWERUSE_AIRTANK 2
 
@@ -22,10 +22,14 @@
 #define HEV_COOLDOWN_HEAL 10 SECONDS
 #define HEV_COOLDOWN_RADS 20 SECONDS
 #define HEV_COOLDOWN_ACID 20 SECONDS
+#define PCV_COOLDOWN_HEAL 15 SECONDS
+#define PCV_COOLDOWN_RADS 30 SECONDS
+#define PCV_COOLDOWN_ACID 30 SECONDS
 
 #define HEV_HEAL_AMOUNT 10
 #define PCV_HEAL_AMOUNT 5
 #define HEV_BLOOD_REPLENISHMENT 20
+#define PCV_BLOOD_REPLENISHMENT 10
 
 #define HEV_NOTIFICATION_TEXT_AND_VOICE "VOICE_AND_TEXT"
 #define HEV_NOTIFICATION_TEXT "TEXT_ONLY"
@@ -130,6 +134,11 @@
 	var/acid_statement_cooldown
 	var/rad_statement_cooldown
 
+	///Static cooldowns for even more armor differentiation, duuh.
+	var/health_static_cooldown = HEV_COOLDOWN_HEAL
+	var/rads_static_cooldown = HEV_COOLDOWN_RADS
+	var/acid_static_cooldown = HEV_COOLDOWN_ACID
+
 	///Muh alarms
 	var/blood_loss_alarm = FALSE
 	var/toxins_alarm = FALSE
@@ -151,6 +160,7 @@
 	var/armor_poweroff = HEV_ARMOR_POWEROFF
 	var/armor_poweron = HEV_ARMOR_POWERON
 	var/heal_amount = HEV_HEAL_AMOUNT
+	var/blood_replenishment = HEV_BLOOD_REPLENISHMENT
 	var/suit_name = "HEV MARK IV"
 
 	var/list/queued_voice_lines = list()
@@ -522,7 +532,7 @@
 		return
 	if(current_user.blood_volume < BLOOD_VOLUME_OKAY)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
-			current_user.blood_volume += HEV_BLOOD_REPLENISHMENT
+			current_user.blood_volume += blood_replenishment
 		if(!blood_loss_alarm)
 			send_hev_sound(blood_loss_sound)
 			blood_loss_alarm = TRUE
@@ -566,12 +576,12 @@
 	if(new_stamloss)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
 			current_user.adjustStaminaLoss(-HEV_HEAL_AMOUNT)
-			healing_current_cooldown = world.time + HEV_COOLDOWN_HEAL * 2
+			healing_current_cooldown = world.time + health_static_cooldown * 2
 
 	if(new_oxyloss)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
 			current_user.adjustOxyLoss(-HEV_HEAL_AMOUNT)
-			healing_current_cooldown = world.time + HEV_COOLDOWN_HEAL
+			healing_current_cooldown = world.time + health_static_cooldown
 			send_message("ADRENALINE ADMINISTERED", HEV_COLOR_BLUE)
 			send_hev_sound(morphine_sound)
 		return
@@ -579,7 +589,7 @@
 	if(new_bruteloss)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
 			current_user.adjustBruteLoss(-HEV_HEAL_AMOUNT)
-			healing_current_cooldown = world.time + HEV_COOLDOWN_HEAL
+			healing_current_cooldown = world.time + health_static_cooldown
 			send_message("BRUTE MEDICAL ATTENTION ADMINISTERED", HEV_COLOR_BLUE)
 			send_hev_sound(wound_sound)
 		return
@@ -587,7 +597,7 @@
 	if(new_fireloss)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
 			current_user.adjustFireLoss(-HEV_HEAL_AMOUNT)
-			healing_current_cooldown = world.time + HEV_COOLDOWN_HEAL
+			healing_current_cooldown = world.time + health_static_cooldown
 			send_message("BURN MEDICAL ATTENTION ADMINISTERED", HEV_COLOR_BLUE)
 			send_hev_sound(wound_sound)
 		return
@@ -595,7 +605,7 @@
 	if(new_toxloss)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
 			current_user.adjustToxLoss(-HEV_HEAL_AMOUNT)
-			healing_current_cooldown = world.time + HEV_COOLDOWN_HEAL
+			healing_current_cooldown = world.time + health_static_cooldown
 			send_message("TOXIN MEDICAL ATTENTION ADMINISTERED", HEV_COLOR_BLUE)
 			send_hev_sound(antitoxin_sound)
 		return
@@ -603,7 +613,7 @@
 	if(new_cloneloss)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
 			current_user.adjustCloneLoss(-HEV_HEAL_AMOUNT)
-			healing_current_cooldown = world.time + HEV_COOLDOWN_HEAL
+			healing_current_cooldown = world.time + health_static_cooldown
 			send_message("MEDICAL ATTENTION ADMINISTERED", HEV_COLOR_BLUE)
 			send_hev_sound(antidote_sound)
 		return
@@ -661,7 +671,7 @@
 	SIGNAL_HANDLER
 	if(world.time <= acid_statement_cooldown)
 		return
-	acid_statement_cooldown = world.time + HEV_COOLDOWN_ACID
+	acid_statement_cooldown = world.time + acid_static_cooldown
 	send_hev_sound(chemical_sound)
 
 /obj/item/clothing/suit/space/hev_suit/proc/weaponselect()
@@ -781,7 +791,7 @@
 
 /obj/item/clothing/head/helmet/space/hev_suit/pcv
 	name = "powered combat helmet"
-	desc = "The Mark II PCV suit helmet."
+	desc = "A deprecated combat helmet developed during the early 21th century in Sol-3, with protections rated level III-A. Contains attachment points for AN/PVS night vision goggles."
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	icon_state = "hecu_helm"
@@ -791,16 +801,35 @@
 	obj_flags = NO_MAT_REDEMPTION
 	resistance_flags = FIRE_PROOF|ACID_PROOF|FREEZE_PROOF
 	clothing_flags = SNUG_FIT
-	clothing_traits = list(TRAIT_MEDICAL_HUD,TRAIT_NIGHT_VISION)
+	clothing_traits = null
 	flags_cover = HEADCOVERSEYES | PEPPERPROOF
 	flash_protect = null
 	visor_flags_inv = null
 	visor_flags = null
 	slowdown = 0
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Basic" = list(
+			RESKIN_ICON_STATE = "hecu_helm",
+			RESKIN_WORN_ICON_STATE = "hecu_helm"
+		),
+		"Corpsman" = list(
+			RESKIN_ICON_STATE = "hecu_helm_medic",
+			RESKIN_WORN_ICON_STATE = "hecu_helm_medic"
+		),
+		"Basic Black" = list(
+			RESKIN_ICON_STATE = "hecu_helm_black",
+			RESKIN_WORN_ICON_STATE = "hecu_helm_black"
+		),
+		"Corpsman Black" = list(
+			RESKIN_ICON_STATE = "hecu_helm_medic_black",
+			RESKIN_WORN_ICON_STATE = "hecu_helm_medic_black"
+		),
+	)
 
 /obj/item/clothing/suit/space/hev_suit/pcv
 	name = "powered combat vest"
-	desc = "The Mark II PCV suit protects the user from a number of hazardous environments and has in build ballistic protection."
+	desc = "An electrically charged piece of body armor, the power stiffens the suit's fibers to provide a layer of resilient armor in response to trauma received from kinetic force.  It's fitted with a geiger counter, tactical radio, a heads up display and a combat cocktail injector that allows the user to function normally even after serious injury. The concentration of mass in the lower rear side from the onboard computer makes your ass feel heavy."
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	icon_state = "hecu_vest"
@@ -811,6 +840,26 @@
 	actions_types = list(/datum/action/item_action/hev_toggle, /datum/action/item_action/hev_toggle_notifs)
 	resistance_flags = FIRE_PROOF|ACID_PROOF|FREEZE_PROOF
 	clothing_flags = SNUG_FIT
+	show_hud = FALSE
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Basic" = list(
+			RESKIN_ICON_STATE = "hecu_vest",
+			RESKIN_WORN_ICON_STATE = "hecu_vest"
+		),
+		"Corpsman" = list(
+			RESKIN_ICON_STATE = "hecu_vest_medic",
+			RESKIN_WORN_ICON_STATE = "hecu_vest_medic"
+		),
+		"Basic Black" = list(
+			RESKIN_ICON_STATE = "hecu_vest_black",
+			RESKIN_WORN_ICON_STATE = "hecu_vest_black"
+		),
+		"Corpsman Black" = list(
+			RESKIN_ICON_STATE = "hecu_vest_medic_black",
+			RESKIN_WORN_ICON_STATE = "hecu_vest_medic_black"
+		),
+	)
 
 	activation_song = 'modular_skyrat/master_files/sound/blackmesa/pcv/planet.ogg'
 
@@ -852,7 +901,15 @@
 	armor_poweroff = PCV_ARMOR_POWEROFF
 	armor_poweron = PCV_ARMOR_POWERON
 	heal_amount = PCV_HEAL_AMOUNT
+	blood_replenishment = PCV_BLOOD_REPLENISHMENT
+	health_static_cooldown = PCV_COOLDOWN_HEAL
+	rads_static_cooldown = PCV_COOLDOWN_RADS
+	acid_static_cooldown = PCV_COOLDOWN_ACID
 	suit_name = "PCV MARK II"
+
+/obj/item/clothing/suit/space/hev_suit/pcv/AltClick(mob/living/user)
+	reskin_obj(user)
+	. = ..()
 
 #undef HEV_COLOR_GREEN
 #undef HEV_COLOR_RED

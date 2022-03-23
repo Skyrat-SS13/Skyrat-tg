@@ -545,3 +545,207 @@
       grilles in the Hotel no longer shock you.
   tastyfish:
   - bugfix: Geese now act like geese if provoked again.
+2022-03-16:
+  Ryll/Shaps:
+  - bugfix: Dog AI's should no longer lock up and become unresponsive after failed
+      fetch attempts
+  - soundadd: Dogs in harass mode that are guarding against someone will now make
+      growling sounds
+  SkyratBot:
+  - bugfix: fixes the doppler array nullifying some of your bombs.
+  - bugfix: Armsky and Pingsky aren't pAI controllable anymore.
+  - rscdel: Lean has been removed entirely from the game
+  - bugfix: Water vapor should wet and freeze floors once again.
+  Wallem:
+  - rscadd: Seeing how many miners we lose on a weekly basis, we've decided to dig
+      through some of our prototypes to get something to help you all. Your venders
+      have been supplied with Kheiral Cuffs, a wrist-worn suit sensor range booster.
+      Note that any accelerated aging caused by the device will not be counted towards
+      your retirement.
+2022-03-17:
+  Fikou:
+  - imageadd: new punching bag sprites!!!!!!!!!!!!!!!!
+  LeonY24:
+  - rscadd: P-90 submachinegun, chambered in .32 ACP.
+  SkyratBot:
+  - bugfix: Pride pins can be reskinned again, accessories whose location can be toggled
+      now do so with right-click.
+  - bugfix: The Syndicate realized that the indoor portion of their top-secret Nuclear
+      Operative base actually partially owned some of the outside portion of the planetary
+      body it rests on. It has been corrected.
+  - imageadd: The police baton has been resprited into a handsome beatin' stick worthy
+      for a lone-wolf detective who doesn't play by the rules to whack perps with.
+  - bugfix: Fixed two firelocks being on the same tile in the Starfury.
+  - bugfix: Podpeople now take self-respiration into account when taking damage from
+      critical condition, like most other species.
+  - admin: Silicon law logs are shorter and easier to read
+  - bugfix: supply pods, crab-17s, explosions in general(?), and ash drakes(?????????)
+      no longer make a shattering sound.
+  - code_imp: turns some "if ("s into "if("s in sound.dm
+  Zonespace27:
+  - rscdel: Barnyard curse is no longer an OPFOR item
+2022-03-18:
+  ErdinyoBarboza:
+  - bugfix: Security Snowmobile storage no longer depressurizes entire security
+  - bugfix: Fixes some minor turfs in MetaStation
+  - bugfix: Adds the no ruin generation turfs to IceboxStation
+  Melbert:
+  - bugfix: Makes the wizard's Lich Phylactery mechanic actually work consistently.
+  - bugfix: The description of the Bind Soul spell (and entry) should match its behavior
+      a bit more accurately now. You will revive regardless if your body is destroyed
+      or leaves the z-level. With each revival, the time it takes to respawn does
+      not change, but the duration of the stun does.
+  - refactor: 'Makes Phylacteries a component. qol: Gave Lich Phylacerties some QoL
+      features and pizazz. Examining it''ll offer more information to wizards and
+      ghosts.'
+  OrionTheFox:
+  - bugfix: fixed the skyrat boxes having a few borked icons
+  - imageadd: shotgun shell boxes and plastic boxes have undergone some respriting
+  SkyratBot:
+  - bugfix: Using telekinesis will no longer break chameleon.
+  - bugfix: Fixes being able to spam deny sounds on deliver first crates.
+  - bugfix: Prevents invalid materials being used on airlock assemblies.
+  - imageadd: On the mapping end, the Diner now has it's own area turf. If you don't
+      know what that means, just know that it's a good thing.
+  - bugfix: drones are no longer shy around maint rats and such
+  - rscadd: Parts and Machine frame to build an ORM from the golem ship
+  - rscdel: Removed Prebuilt ORM from the golem ship
+  - bugfix: soulscythes are now immune to mining planet storms
+  nikothedude:
+  - rscadd: All job-default jumpsuits have been resprited to be taur-compatable, and
+      a few more.
+2022-03-19:
+  AtoriBirb:
+  - bugfix: Missing 'suspected' icon set
+  Ebin-Halcyon:
+  - imageadd: Upstream medical and security clothing now fit on digi legs
+  ErdinyoBarboza:
+  - code_imp: Ceramics and Glassware use Cargo Crate Value Pricing. They will now
+      follow the current economic pricing.
+  - balance: 'Balances the pricing of Ceramics and Glassware by making them more in
+      line with the rest of the economy expansion: Adds more exportables to opiates.'
+  Gandalf2k15:
+  - balance: You can now move while tactically reloading a weapon.
+  - bugfix: Magazines will no longer drop onto the ground during tactical reloads.
+  RatFromTheJungle:
+  - rscadd: Added depart-mental armbands to the loadout.
+  SkyratBot:
+  - code_imp: tgui chat now supports embedding components into it via html attributes.
+      Go make the game look better lads.
+  - rscadd: 'On DeltaStation, IceBoxStation, and TramStation: Nanotrasen has now blocked
+      off the area informally known as the "Cargo Lobby", and formally defined it.'
+  - rscadd: Random Poster Spawners now have directional variants. You don't have to
+      memorize the pixel offset for those anymore (it was 32).
+  - rscadd: Rather then being tileable with just floor tiles, lavaland turfs, asteroid
+      and snow (among other things) now support lattice -> floor tile construction
+  - bugfix: Because of the above, you can now properly fix the icebox mining shuttle
+  - refactor: Non floor turfs are no longer typed as floor. This may break things,
+      please yell at me if it does
+  - bugfix: Ants now don't appear on icemoon/space asteroids, rather than only lavaland.
+  - imageadd: further medkit tweaks
+  Tastyfish:
+  - rscadd: The syndicate managed to stuff an entire flock of geese into a grenade.
+      Be careful.
+  Zenitheevee:
+  - bugfix: previous black market chevvy driver fired for drunk parking, ship returned
+      to the trader station.
+  Zonespace27:
+  - admin: Added a new subsystem that messages admins every 3 minutes if there are
+      any open, unhandled OPFORs/Staff tickets
+  - bugfix: Wiki page that the NTR is linked to is now correct.
+  - bugfix: OPFOR services should no longer create gibs
+  - bugfix: Exploitable Information verb now gets properly removed when your antagonist
+      status is.
+  - rscadd: Purchase fake announcements from a traitor uplink for 3 TC.
+  - admin: New admin verb, View-OPFORs. Equivalent to the OPFOR section of check-antagonists
+      without the bloat.
+2022-03-20:
+  Dex:
+  - bugfix: Fixed training toolbox sprite
+  GoldenAlpharex:
+  - bugfix: Fixed a merge conflict in our codeowners file. Sorry Cobby, no more pings
+      for you!
+  SkyratBot:
+  - rscadd: resonators will now have their fields spread
+  - bugfix: 'Fixed a potential BSOD in its TGUI if no painting was ever archived.
+      qol: The AI Portrait Picker also got a similar treatment.'
+  - bugfix: Fixes issue with low/no power screen alerts not clearing after leaving
+      a mech
+  jjpark-kb:
+  - bugfix: bringing back the xenoarch base
+2022-03-21:
+  SkyratBot:
+  - balance: allows you to heal using plasma fixation in minor amounts of plasma such
+      as in Icebox's atmosphere
+  - bugfix: The reality-defying cheese wedge in the Entemology Outreach Center on
+      Icemoon has been succesfully contained and replaced with a normal one.
+  - rscadd: Adds the Format List and Format Associate List wiremod component, for
+      ease of formatting lists of items.
+  Zonespace27:
+  - rscadd: Contract Kit now available via OPFOR menu.
+  - code_imp: Refactored contractor kit code
+2022-03-22:
+  SkyratBot:
+  - bugfix: fixes medical scrub being named "under"
+  - bugfix: Fixes a runtime in build mode's KABOOM.
+  - bugfix: Prevents iron/adamantine/yellow slime cookies from being to able to stack
+      their bonuses.
+  Zonespace27:
+  - bugfix: Contractor kit opfor item now spawns the correct item
+  - bugfix: Contractor MODSuit now looks correct
+2022-03-23:
+  Ghommie:
+  - rscadd: 'Added a palette component for palettes and spraycans: Right click the
+      item while it''s in your active hand to access a radial menu that allows you
+      to store, select or edit up to 14 colors for palettes and 8 for spraycans. Right-Click
+      one of the color to pick a new color value, Left-Click to select it. qol: Furthermore,
+      a graphical palette containing the colors of the palette component will show
+      up in the Canvas UI when painting with a tool that has said component, allowing
+      you to select colors without unfocusing from the UI window.'
+  - rscdel: Removed the ctrl-click (color picker) shortcut from spraycans, as I felt
+      it to be too clunky and no longer necessary now (I'm the person that made it
+      btw).
+  Jolly:
+  - rscadd: Charlie and Delta Storage rooms were added (as an area).
+  - rscadd: Charlie Dorms were added (as an area).
+  - imageadd: Fresh coat of paint for the Old Station (Charlie Station ruin) area
+      sprites.
+  - bugfix: The Beach Biodome had the water turf corrected, and as such, shouldn't
+      have atmos issues.
+  Melbert:
+  - balance: Flesh Heretic's summon objective now counts all summons done, alive or
+      dead, instead of all alive summons. Still does not include flesh ghouls or voiceless
+      dead.
+  SkyratBot:
+  - bugfix: The Kilostation chapel has less stacked turf decals. They're still around,
+      though.. Watching. Waiting... Additionally, magic power has been NUKED from
+      the maintenance room back there. Pour one out.
+  - bugfix: All lights (and cameras) in the Kilostation chapel have been PREPARED
+      FOR THE FUTURE. And by the future, I mean the wallening.
+  - bugfix: BCI overlays now actually work
+  - imageadd: Changed BCI counter overlay numbers to make them more readable
+  - bugfix: Blood-spread-only diseases will no longer always spread upon exposure
+      to blood.
+  - bugfix: Fixes two random lattices in the bottom corner of the Cent Com map
+  - bugfix: Fixes the description for mice being incredibly rude, judgmental, and
+      insulting towards mice, who are objectively adorable.
+  - bugfix: Recyclers no longer eat their own parts when dismantled.
+  - bugfix: Fixes tritium fires not releasing radiation when they should.
+  - bugfix: Fixes water vapour condensation requiring a temperature 20K lower than
+      usual.
+  - code_imp: Adds defines for tritium fire radiation stuff.
+  - bugfix: Fixed runtime on Give screen alert where a proximity check was happening
+      twice
+  - bugfix: Fixed being able to take things as a dead person
+  - bugfix: Bluespace shelters now come with a ceiling.
+  - code_imp: Added optional automatic ceiling generation for map templates.
+  - bugfix: Makes shuttle engine crates actually purchasable if you bought the BYOS
+      shuttle.
+  - bugfix: Proximity sensors inside chemical grenades should work now.
+  - bugfix: blob spores and game-controlled blobbernuts no longer get stuck thinking
+      they can't walk thru blob tiles. This has been broken for over a year and so
+      you should expect blob spores to be more of a threat then you are used to.
+  - imageadd: adjusted black undershirt side sprites to be more in line with the front
+      sprite
+  - imageadd: adjusted white undershirt side sprites to be more in line with the front
+      sprite
