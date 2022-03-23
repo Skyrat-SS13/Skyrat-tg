@@ -59,9 +59,3 @@
 	suffix = "titan"
 	name = "NCV Titan"
 	who_can_purchase = null
-
-/datum/map_template/shuttle/overmap/carrier
-	port_id = "carrier"
-	suffix = "vixen"
-	name = "NLV Vixen"
-	who_can_purchase = null
