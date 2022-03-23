@@ -242,6 +242,11 @@
 /////////////////////
 //----- NECK ------//
 /////////////////////
+/obj/item/clothing/neck/cloak/hos
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
+	icon_state = "hoscloak_blue"
+
 //Not technically an override but oh well
 /obj/item/clothing/neck/security_cape
 	name = "security cape"
@@ -424,6 +429,14 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "hos_black"
 
+/obj/item/clothing/under/rank/security/head_of_security/parade
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
+	icon_state = "hos_parade_male_blue"
+
+/obj/item/clothing/under/rank/security/head_of_security/parade/female
+	icon_state = "hos_parade_fem_blue"
+
 /////////////////////
 //----- FEET ------//
 /////////////////////
@@ -518,6 +531,11 @@
 	worn_icon = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "securityhudnight"
 
+//Neck//
+/obj/item/clothing/neck/cloak/hos/redsec
+	icon = 'icons/obj/clothing/cloaks.dmi'
+	worn_icon = 'icons/mob/clothing/neck.dmi'
+	icon_state = "hoscloak"
 
 //Back//
 /obj/item/storage/backpack/security/redsec
@@ -573,6 +591,16 @@
 	icon = 'icons/obj/clothing/under/security.dmi'
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
 	icon_state = "rhos"
+
+/obj/item/clothing/under/rank/security/head_of_security/parade/redsec
+	icon = 'icons/obj/clothing/under/security.dmi'
+	worn_icon = 'icons/mob/clothing/under/security.dmi'
+	icon_state = "hos_parade_male"
+
+/obj/item/clothing/under/rank/security/head_of_security/parade/female/redsec
+	icon = 'icons/obj/clothing/under/security.dmi'
+	worn_icon = 'icons/mob/clothing/under/security.dmi'
+	icon_state = "hos_parade_fem_blue"
 
 //Winter Coat
 /obj/item/clothing/head/hooded/winterhood/security/redsec
