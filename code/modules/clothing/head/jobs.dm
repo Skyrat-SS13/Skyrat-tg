@@ -140,41 +140,6 @@
 	armor = list(MELEE = 40, BULLET = 30, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 10, FIRE = 50, ACID = 60, WOUND = 10)
 	icon_state = "hoscap"
 	strip_delay = 80
-	//SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Red Cap" = list(
-			RESKIN_ICON = 'icons/obj/clothing/hats.dmi',
-			RESKIN_ICON_STATE = "hoscap",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/head.dmi',
-			RESKIN_WORN_ICON_STATE = "hoscap"
-		),
-		"Blue Cap" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi',
-			RESKIN_ICON_STATE = "hoscap_blue",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi',
-			RESKIN_WORN_ICON_STATE = "hoscap_blue"
-		),
-		"Sol Cap" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi',
-			RESKIN_ICON_STATE = "policechiefcap",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi',
-			RESKIN_WORN_ICON_STATE = "policechiefcap"
-		),
-		"Sheriff Hat" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi',
-			RESKIN_ICON_STATE = "cowboyhat_sec",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi',
-			RESKIN_WORN_ICON_STATE = "cowboyhat_sec"
-		),
-		"Wide Sheriff Hat" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi',
-			RESKIN_ICON_STATE = "cowboy_black_sec",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi',
-			RESKIN_WORN_ICON_STATE = "cowboy_black_sec"
-		)
-	)
-	/// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/head/hos/syndicate
 	name = "syndicate cap"

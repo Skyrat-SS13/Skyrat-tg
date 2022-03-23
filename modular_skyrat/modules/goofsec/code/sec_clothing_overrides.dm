@@ -239,6 +239,38 @@
 		),
 	)
 
+/obj/item/clothing/head/hos
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "hoscap_blue"
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Blue Cap" = list(
+			RESKIN_ICON_STATE = "hoscap_blue",
+			RESKIN_WORN_ICON_STATE = "hoscap_blue"
+		),
+		"Sol Cap" = list(
+			RESKIN_ICON_STATE = "policechiefcap",
+			RESKIN_WORN_ICON_STATE = "policechiefcap"
+		),
+		"Sheriff Hat" = list(
+			RESKIN_ICON_STATE = "cowboyhat_black",
+			RESKIN_WORN_ICON_STATE = "cowboyhat_black"
+		),
+		"Wide Sheriff Hat" = list(
+			RESKIN_ICON_STATE = "cowboy_black",
+			RESKIN_WORN_ICON_STATE = "cowboy_black"
+		)
+	)
+
+//Need to quickly redefine this so the icon doesnt break
+/obj/item/clothing/head/hos/syndicate
+	icon = 'icons/obj/clothing/hats.dmi'
+	worn_icon = 'icons/mob/clothing/head.dmi'
+	icon_state = "hoscap"
+	current_skin = "hoscap" //Prevents reskinning
+
+
 /////////////////////
 //----- NECK ------//
 /////////////////////
