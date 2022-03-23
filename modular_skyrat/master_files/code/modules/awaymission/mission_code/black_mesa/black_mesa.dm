@@ -137,7 +137,7 @@
 
 /obj/projectile/beam/marksman
 	name = "laser beam"
-	damage = 90
+	damage = 70
 	armour_penetration = 30
 	hitscan = TRUE
 	icon_state = "gaussstrong"
