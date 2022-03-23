@@ -66,9 +66,6 @@
 	cost = 150
 	path = /obj/item/assembly/flash
 
-/datum/sold_goods/paint
-	trading_types = list(/obj/item/paint = TRADER_SUBTYPES)
-
 /datum/sold_goods/aicard
 	stock = 1
 	cost = 200
