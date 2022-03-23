@@ -11,7 +11,7 @@
 	. = ..()
 	if(!holster)
 		return
-	holster.undeploy()
+	holster.undeploy(user)
 
 /obj/item/melee/baton/telescopic/contractor_baton/attack_secondary(mob/living/victim, mob/living/user, params)
 	if(!(upgrade_flags & BATON_CUFF_UPGRADE) || !active)
@@ -25,13 +25,11 @@
 	if(istype(attacking_item, /obj/item/baton_upgrade))
 		var/obj/item/baton_upgrade/upgrade = attacking_item
 		if(!(upgrade_flags & upgrade.upgrade_flag))
-			if(!upgrade_flags)
-				desc += "<br><br>[span_boldnotice("[src] has the following upgrades attached:")]"
 			upgrade_flags |= upgrade.upgrade_flag
-			desc += "<br>[span_notice("[attacking_item].")]"
+			upgrade.desc_update(src)
 			attacking_item.forceMove(src)
 			balloon_alert(user, "[attacking_item] attached")
-	if(!(upgrade_flags & BATON_CUFF_UPGRADE))
+	if(!(upgrade_flags & BATON_CUFF_UPGRADE) && !(upgrade_flags & BATON_ALL_UPGRADE))
 		return
 	if(!istype(attacking_item, /obj/item/restraints/handcuffs/cable))
 		return
@@ -54,16 +52,24 @@
 
 /obj/item/melee/baton/telescopic/contractor_baton/additional_effects_non_cyborg(mob/living/carbon/target, mob/living/user)
 	. = ..()
-	if(!(upgrade_flags & BATON_MUTE_UPGRADE) || !istype(target))
+	if(!((upgrade_flags & BATON_MUTE_UPGRADE) && !(upgrade_flags & BATON_ALL_UPGRADE))|| !istype(target))
 		return
 	if(target.silent >= (MUTE_CYCLES * 2))
 		return
 	target.silent += MUTE_CYCLES //10 seconds of mute a hit up to 20 max
 
+/obj/item/melee/baton/telescopic/contractor_baton/upgraded
+	upgrade_flags = BATON_ALL_UPGRADE
+	desc = "A compact, specialised baton assigned to Syndicate contractors. Applies light electrical shocks to targets. This one seems to be fully upgraded with unremovable parts."
+
 /obj/item/baton_upgrade
 	icon = 'modular_skyrat/modules/contractor/icons/baton_upgrades.dmi'
 	var/upgrade_flag
-	var/upgrade_info = ""
+
+/obj/item/baton_upgrade/proc/desc_update(obj/item/melee/baton/telescopic/contractor_baton/batong)
+	if(!batong.upgrade_flags)
+		desc += "<br><br>[span_boldnotice("[batong] has the following upgrades attached:")]"
+	desc += "<br>[span_notice("[src].")]"
 
 /obj/item/baton_upgrade/cuff
 	name = "handcuff baton upgrade"

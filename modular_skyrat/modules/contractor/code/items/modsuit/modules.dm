@@ -59,20 +59,20 @@
 		to_chat(user, span_warning("You need a free hand to hold [stored_batong]!"))
 		return
 	deployed = TRUE
-	balloon_alert(user, "[src] deployed")
+	balloon_alert(user, "[stored_batong] deployed")
 
 /obj/item/mod/module/baton_holster/proc/undeploy(mob/living/user)
 	if(QDELETED(stored_batong))
 		return
 	stored_batong.forceMove(src)
 	deployed = FALSE
-	balloon_alert(user, "[src] retracted")
+	balloon_alert(user, "[stored_batong] retracted")
 
 /obj/item/mod/module/baton_holster/preloaded
 
 /obj/item/mod/module/baton_holster/preloaded/Initialize(mapload)
 	. = ..()
-	stored_batong = new(src)
+	stored_batong = new/obj/item/melee/baton/telescopic/contractor_baton/upgraded(src)
 	stored_batong.holster = src
 
 
