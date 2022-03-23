@@ -21,6 +21,11 @@
 	var/list/created_atoms = list()
 	//make sure this list is accounted for/cleared if you request it from ssatoms!
 
+	// vars for automatic ceiling generation
+	var/has_ceiling = FALSE
+	var/turf/ceiling_turf = /turf/open/floor/plating
+	var/list/ceiling_baseturfs = list()
+
 	//SKYRAT EDIT ADDITION
 	/// The type of the overmap object that will be created
 	var/datum/overmap_object/overmap_type
@@ -33,6 +38,7 @@
 		preload_size(mappath, cache)
 	if(rename)
 		name = rename
+	ceiling_baseturfs.Insert(1, /turf/baseturf_bottom)
 
 /datum/map_template/proc/preload_size(path, cache = FALSE)
 	var/datum/parsed_map/parsed = new(file(path))
@@ -185,8 +191,19 @@
 	//initialize things that are normally initialized after map load
 	initTemplateBounds(bounds)
 
+	if(has_ceiling)
+		var/affected_turfs = get_affected_turfs(T, FALSE)
+		generate_ceiling(affected_turfs)
+
 	log_game("[name] loaded at [T.x],[T.y],[T.z]")
 	return bounds
+
+/datum/map_template/proc/generate_ceiling(affected_turfs)
+	for (var/turf/turf in affected_turfs)
+		var/turf/ceiling = get_step_multiz(turf, UP)
+		if (ceiling)
+			if (istype(ceiling, /turf/open/openspace) || istype(ceiling, /turf/open/space/openspace))
+				ceiling.ChangeTurf(ceiling_turf, ceiling_baseturfs, CHANGETURF_INHERIT_AIR)
 
 /datum/map_template/proc/post_load()
 	return
