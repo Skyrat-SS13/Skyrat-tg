@@ -76,7 +76,7 @@
 
 	for(var/i in day_night_adjacent_turfs)
 		var/turf/iterated_turf = i
-		var/mutable_appearance/appearance_to_add = mutable_appearance('icons/effects/daynight_blend.dmi', "white", DAY_NIGHT_LIGHTING_LAYER, LIGHTING_PLANE, 255, RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM)
+		var/mutable_appearance/appearance_to_add = mutable_appearance('modular_skyrat/modules/overmap/icons/daynight_blend.dmi', "white", DAY_NIGHT_LIGHTING_LAYER, LIGHTING_PLANE, 255, RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM)
 		appearance_to_add.color = last_day_night_color
 		appearance_to_add.alpha = last_day_night_alpha
 		appearance_to_add.icon_state = "[day_night_adjacent_turfs[i]]"

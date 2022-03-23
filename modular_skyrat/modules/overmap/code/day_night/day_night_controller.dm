@@ -98,7 +98,7 @@
 	last_color = target_color
 	last_alpha = target_light
 
-	var/mutable_appearance/appearance_to_add = mutable_appearance('icons/effects/daynight_blend.dmi', "white")
+	var/mutable_appearance/appearance_to_add = mutable_appearance('modular_skyrat/modules/overmap/icons/daynight_blend.dmi', "white")
 	appearance_to_add.plane = LIGHTING_PLANE
 	appearance_to_add.layer = DAY_NIGHT_LIGHTING_LAYER
 	appearance_to_add.color = target_color
