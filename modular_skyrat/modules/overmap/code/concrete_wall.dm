@@ -16,3 +16,9 @@
 	if(I.tool_behaviour == TOOL_WELDER)
 		to_chat(user, "<span class='warning'>This wall is way too hard to cut through!</span>")
 	return FALSE
+
+/turf/closed/wall/concrete/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
+	return FALSE
+
+/turf/closed/wall/concrete/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
+	return FALSE
