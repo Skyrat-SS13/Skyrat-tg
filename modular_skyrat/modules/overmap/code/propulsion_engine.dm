@@ -26,6 +26,11 @@
 	var/extension_type = /datum/shuttle_extension/engine/propulsion
 	var/datum/shuttle_extension/engine/propulsion/extension
 
+/obj/machinery/atmospherics/components/unary/engine/examine(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("The engine [anchored ? "is <b>fastened</b> to the floor" : "could be <b>fastened</b> to the floor"].")
+	. += SPAN_NOTICE("The engine [is_welded ? "is <b>welded</b> to the floor" : "could be <b>welded</b> to the floor"].")
+
 /obj/machinery/atmospherics/components/unary/engine/set_init_directions()
 	initialize_directions = REVERSE_DIR(dir)
 

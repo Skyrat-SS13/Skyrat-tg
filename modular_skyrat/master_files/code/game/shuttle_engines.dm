@@ -29,6 +29,11 @@
 		extension = new extension_type(src)
 		ApplyExtension()
 
+/obj/structure/shuttle/engine/examine(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("The engine [(state >= ENGINE_WRENCHED) ? "is <b>fastened</b> to the floor" : "could be <b>fastened</b> to the floor"].")
+	. += SPAN_NOTICE("The engine [(state >= ENGINE_WELDED) ? "is <b>welded</b> to the floor" : "could be <b>welded</b> to the floor"].")
+
 /obj/structure/shuttle/engine/proc/DrawThrust()
 	SEND_SIGNAL(src, COMSIG_ENGINE_DRAWN_POWER)
 
