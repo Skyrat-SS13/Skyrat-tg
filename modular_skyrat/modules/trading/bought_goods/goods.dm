@@ -6,58 +6,50 @@
 	name = "fossils"
 	cost = 300
 	trading_types = list(/obj/item/fossil = TRADER_THIS_TYPE)
-	stock_low = 2
-	stock_high = 5
+	stock = 5
 
 /datum/bought_goods/excavation_junk
 	name = "ancient artifacts"
 	cost = 250
 	trading_types = list(/obj/item/excavation_junk = TRADER_THIS_TYPE)
-	stock_low = 2
-	stock_high = 5
+	stock = 5
 
 /datum/bought_goods/excavation_artifact
 	name = "unknown artifacts"
 	cost = 350
 	trading_types = list(/obj/item/unknown_artifact = TRADER_THIS_TYPE)
-	stock_low = 2
-	stock_high = 5
+	stock = 5
 
 /datum/bought_goods/anomalous_crystal
 	name = "anomalous crystals"
 	cost = 700
 	trading_types = list(/obj/item/anomalous_sliver/crystal = TRADER_THIS_TYPE)
-	stock_low = 2
-	stock_high = 4
+	stock = 4
 
 /////////Medical Supplier/////////
 
 /datum/bought_goods/lungs
 	name = "lungs"
 	cost = 300
-	stock_low = 2
-	stock_high = 5
+	stock = 5
 	trading_types = list(/obj/item/organ/lungs = TRADER_THIS_TYPE)
 
 /datum/bought_goods/heart
 	name = "hearts"
 	cost = 300
-	stock_low = 2
-	stock_high = 5
+	stock = 5
 	trading_types = list(/obj/item/organ/heart = TRADER_THIS_TYPE)
 
 /datum/bought_goods/liver
 	name = "livers"
 	cost = 300
-	stock_low = 2
-	stock_high = 5
+	stock = 5
 	trading_types = list(/obj/item/organ/liver = TRADER_THIS_TYPE)
 
 /datum/bought_goods/reagent/meth
 	cost = 40
 	reagent_type = /datum/reagent/drug/methamphetamine
-	stock_low = 20
-	stock_high = 50
+	stock = 50
 
 /////////Pet Shop Employee/////////
 

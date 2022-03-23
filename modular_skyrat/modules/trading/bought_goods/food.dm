@@ -6,22 +6,19 @@
 	name = "carp fillets"
 	cost = 15
 	trading_types = list(/obj/item/food/fishmeat/carp = TRADER_THIS_TYPE)
-	stock_high = 10
-	stock_low = 5
+	stock = 10
 
 /datum/bought_goods/cabbage // 40-100c
 	name = "cabbages"
 	cost = 10
 	trading_types = list(/obj/item/food/grown/cabbage = TRADER_THIS_TYPE)
-	stock_high = 10
-	stock_low = 4
+	stock = 10
 
 /datum/bought_goods/batter // 80-150c
 	name = "cake batter"
 	cost = 10
 	trading_types = list(/obj/item/food/cakebatter = TRADER_THIS_TYPE)
-	stock_high = 15
-	stock_low = 8
+	stock = 15
 
 /////////Farming Apprentice/////////
 
@@ -29,22 +26,19 @@
 	name = "eggs"
 	cost = 10
 	trading_types = list(/obj/item/food/egg = TRADER_THIS_TYPE)
-	stock_high = 18
-	stock_low = 8
+	stock = 18
 
 /datum/bought_goods/produce // 80-160c
 	name = "grown produce"
 	cost = 10
 	trading_types = list(/obj/item/food/grown = TRADER_SUBTYPES)
-	stock_high = 16
-	stock_low = 8
+	stock = 16
 
 /datum/bought_goods/logs // 90-150c
 	name = "towercap logs"
 	cost = 15
 	trading_types = list(/obj/item/grown/log = TRADER_THIS_TYPE)
-	stock_high = 10
-	stock_low = 6
+	stock = 10
 
 /////////Pizza Shop Employee/////////
 
@@ -52,33 +46,28 @@
 	name = "dough"
 	cost = 10
 	trading_types = list(/obj/item/food/dough = TRADER_THIS_TYPE)
-	stock_high = 12
-	stock_low = 5
+	stock = 12
 
 /datum/bought_goods/tomato // 50-120c
 	name = "tomatos"
 	cost = 10
 	trading_types = list(/obj/item/food/grown/tomato = TRADER_THIS_TYPE)
-	stock_high = 12
-	stock_low = 5
+	stock = 12
 
 /datum/bought_goods/cheesewheels // 75-135c
 	name = "cheese wheels"
 	cost = 15
 	trading_types = list(/obj/item/food/cheese/wheel = TRADER_THIS_TYPE)
-	stock_high = 9
-	stock_low = 5
+	stock = 9
 
 /datum/bought_goods/chanterelle // 72-144c
 	name = "chanterelle clusters"
 	cost = 12
 	trading_types = list(/obj/item/food/grown/mushroom/chanterelle = TRADER_THIS_TYPE)
-	stock_high = 12
-	stock_low = 6
+	stock = 12
 
 /datum/bought_goods/pineapple // 60-130c
 	name = "pineapples"
 	cost = 10
 	trading_types = list(/obj/item/food/grown/pineapple = TRADER_THIS_TYPE)
-	stock_high = 13
-	stock_low = 6
+	stock = 13

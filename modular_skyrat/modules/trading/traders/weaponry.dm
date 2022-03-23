@@ -14,14 +14,15 @@
 				"compliment_accept" = "Ha! Good one!",
 				"insult_good"       = "I expected better from you. I suppose in that, I was wrong.",
 				"insult_bad"        = "If I had my gun I'd shoot you!")
-	possible_sold_goods = list(/datum/sold_goods/makarov = 100,
-								/datum/sold_goods/m1911 = 100,
-								/datum/sold_goods/shotgun = 100,
-								/datum/sold_goods/ammo_9mm = 100,
-								/datum/sold_goods/ammo_45 = 100,
-								/datum/sold_goods/ammo_shotgun_buckshot = 100,
-								/datum/sold_goods/ammo_shotgun_slug = 100)
-	target_sold_goods_amount = 5
+	sold_goods = list(
+		/datum/sold_goods/makarov,
+		/datum/sold_goods/m1911,
+		/datum/sold_goods/shotgun,
+		/datum/sold_goods/ammo_9mm,
+		/datum/sold_goods/ammo_45,
+		/datum/sold_goods/ammo_shotgun_buckshot,
+		/datum/sold_goods/ammo_shotgun_slug
+		)
 	possible_bounties = list(
 		/datum/trader_bounty/gun_celebration_day = 150,
 		/datum/trader_bounty/reagent/ammo_requisition = 200,
@@ -44,12 +45,13 @@
 				"compliment_accept" = "Yes, I am very smart.",
 				"insult_good"       = "Energy weapons are TWICE the gun kinetic guns are!",
 				"insult_bad"        = "That's... very mean. I won't think twice about blacklisting your channel, so stop.")
-	possible_sold_goods = list(/datum/sold_goods/egun = 100,
-								/datum/sold_goods/mini_egun = 100,
-								/datum/sold_goods/lasgun = 100,
-								/datum/sold_goods/hellgun = 100,
-								/datum/sold_goods/aegun = 100)
-	target_sold_goods_amount = 4
+	sold_goods = list(
+		/datum/sold_goods/egun,
+		/datum/sold_goods/mini_egun,
+		/datum/sold_goods/lasgun,
+		/datum/sold_goods/hellgun,
+		/datum/sold_goods/aegun
+		)
 	possible_bounties = list(
 		/datum/trader_bounty/anomalous_energy_sources = 100,
 		/datum/trader_bounty/unlimited_power = 100

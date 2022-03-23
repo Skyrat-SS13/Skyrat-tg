@@ -22,8 +22,6 @@
 	var/supply_box_loot_sheet
 
 /obj/structure/supplies_box/Initialize()
-	. = ..()
-	AddElement(/datum/element/climbable, climb_time = 2 SECONDS, climb_stun = 0)
 	switch(supply_box_type)
 		if(SUPPLY_BOX_WOOD)
 			max_integrity = 100
@@ -38,6 +36,8 @@
 				icon_state = "mil_supply"
 			else
 				icon_state = "metal_supply"
+	. = ..()
+	AddElement(/datum/element/climbable, climb_time = 2 SECONDS, climb_stun = 0)
 	update_appearance()
 
 /obj/structure/supplies_box/update_overlays()

@@ -248,10 +248,9 @@
 					dat += "</tr>"
 					var/even = TRUE
 					var/goodie_index = 0
-					for(var/i in connected_trader.sold_goods)
+					for(var/datum/sold_goods/goodie as anything in connected_trader.sold_goods)
 						even = !even
 						goodie_index++
-						var/datum/sold_goods/goodie = connected_trader.sold_goods[i]
 						dat += "<tr style='background-color: [even ? "#17191C" : "#23273C"];'>"
 						dat += "<td>[goodie.name]</td>"
 						dat += "<td>[goodie.current_stock ? goodie.current_stock : "OUT!"]</td>"
@@ -269,10 +268,9 @@
 					dat += "</tr>"
 					var/even = TRUE
 					var/goodie_index = 0
-					for(var/i in connected_trader.bought_goods)
+					for(var/datum/bought_goods/goodie as anything in connected_trader.bought_goods)
 						even = !even
 						goodie_index++
-						var/datum/bought_goods/goodie = connected_trader.bought_goods[i]
 						dat += "<tr style='background-color: [even ? "#17191C" : "#23273C"];'>"
 						dat += "<td>[goodie.name]</td>"
 						dat += "<td>[goodie.cost_label]</td>"
@@ -368,7 +366,7 @@
 					var/index = text2num(href_list["index"])
 					if(connected_trader.sold_goods.len < index)
 						return
-					var/datum/sold_goods/goodie = connected_trader.sold_goods[connected_trader.sold_goods[index]]
+					var/datum/sold_goods/goodie = connected_trader.sold_goods[index]
 					switch(href_list["sold_type"])
 						if("buy")
 							last_transmission = connected_trader.requested_buy(living_user, src, goodie)
@@ -383,7 +381,7 @@
 					var/index = text2num(href_list["index"])
 					if(connected_trader.bought_goods.len < index)
 						return
-					var/datum/bought_goods/goodie = connected_trader.bought_goods[connected_trader.bought_goods[index]]
+					var/datum/bought_goods/goodie = connected_trader.bought_goods[index]
 					switch(href_list["bought_type"])
 						if("sell")
 							last_transmission = connected_trader.requested_sell(living_user, src, goodie)

@@ -44,12 +44,23 @@
 
 /datum/sold_goods/pizzabox
 	cost = 200
-	trading_types = list(/obj/item/pizzabox/margherita = TRADER_THIS_TYPE,
-						/obj/item/pizzabox/vegetable = TRADER_THIS_TYPE,
-						/obj/item/pizzabox/mushroom = TRADER_THIS_TYPE,
-						/obj/item/pizzabox/meat = TRADER_THIS_TYPE,
-						/obj/item/pizzabox/pineapple = TRADER_THIS_TYPE)
 
-/datum/sold_goods/pizzabox/two
-/datum/sold_goods/pizzabox/three
-/datum/sold_goods/pizzabox/four
+/datum/sold_goods/pizzabox/margherita
+	name = "margherita pizza"
+	path = /obj/item/pizzabox/margherita
+
+/datum/sold_goods/pizzabox/vegetable
+	name = "vegetable pizza"
+	path = /obj/item/pizzabox/vegetable
+
+/datum/sold_goods/pizzabox/mushroom
+	name = "mushroom pizza"
+	path = /obj/item/pizzabox/mushroom
+
+/datum/sold_goods/pizzabox/meat
+	name = "meat pizza"
+	path = /obj/item/pizzabox/meat
+
+/datum/sold_goods/pizzabox/pineapple
+	name = "pineapple pizza"
+	path = /obj/item/pizzabox/pineapple

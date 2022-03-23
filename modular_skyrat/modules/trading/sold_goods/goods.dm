@@ -23,81 +23,40 @@
 /datum/sold_goods/belt/nitrogen
 	cost = 100
 	path = /obj/item/tank/internals/nitrogen/belt
-	stock_high = 5
-	stock_low = 3
+	stock = 5
 
 /datum/sold_goods/belt/plasma
 	cost = 180
 	path = /obj/item/tank/internals/plasmaman/belt
-	stock_high = 5
-	stock_low = 3
+	stock = 5
 
 /datum/sold_goods/emergency_oxygen
 	cost = 60
 	path = /obj/item/tank/internals/emergency_oxygen
-	stock_high = 5
-	stock_low = 3
+	stock = 5
 
 /datum/sold_goods/voidsuit
 	name = "vintage space suit"
-	cost = 1250
+	cost = 1500
 	path = /obj/item/storage/box/hero/astronaut
-	stock_high = 1
-	stock_low = 1
+	stock = 2
 
-/////////Clothing Store Employee/////////
+/datum/sold_goods/insulated_gloves
+	cost = 800
+	path = /obj/item/clothing/gloves/color/yellow
+	stock = 3
 
-/datum/sold_goods/clothing_under
-	trading_types = list(/obj/item/clothing/under = TRADER_SUBTYPES,
-						/obj/item/clothing/under/syndicate = TRADER_BLACKLIST_TYPES,
-						/obj/item/clothing/under/chameleon = TRADER_BLACKLIST_TYPES)
-/datum/sold_goods/clothing_under/two
-/datum/sold_goods/clothing_under/three
-/datum/sold_goods/clothing_under/four
-/datum/sold_goods/clothing_under/five
-/datum/sold_goods/clothing_under/six
+/datum/sold_goods/toolbox_kit
+	name = "toolboxes kit"
+	cost = 400
+	path = list(
+		/obj/item/storage/toolbox/mechanical,
+		/obj/item/storage/toolbox/electrical,
+		/obj/item/storage/toolbox/emergency
+		)
+	stock = 3
 
-/datum/sold_goods/clothing_suit
-	cost = 150
-	trading_types = list(/obj/item/clothing/suit = TRADER_SUBTYPES,
-						/obj/item/clothing/suit/armor = TRADER_BLACKLIST_TYPES,
-						/obj/item/clothing/under/chameleon = TRADER_BLACKLIST_TYPES,
-						/obj/item/clothing/suit/space = TRADER_BLACKLIST_TYPES)
-
-/datum/sold_goods/clothing_suit/two
-
-/datum/sold_goods/clothing_boots
-	trading_types = list(/obj/item/clothing/shoes = TRADER_SUBTYPES,
-						/obj/item/clothing/shoes/combat = TRADER_BLACKLIST_TYPES,
-						/obj/item/clothing/shoes/chameleon = TRADER_BLACKLIST_TYPES)
-
-/datum/sold_goods/clothing_boots/two
-/datum/sold_goods/clothing_boots/three
-/datum/sold_goods/clothing_boots/four
-
-/datum/sold_goods/clothing_head
-	trading_types = list(/obj/item/clothing/head = TRADER_SUBTYPES,
-						/obj/item/clothing/head/helmet = TRADER_BLACKLIST_TYPES,
-						/obj/item/clothing/head/chameleon = TRADER_BLACKLIST_TYPES)
-
-/datum/sold_goods/clothing_head/two
-/datum/sold_goods/clothing_head/three
-/datum/sold_goods/clothing_head/four
-
-/datum/sold_goods/clothing_gloves
-	trading_types = list(/obj/item/clothing/gloves = TRADER_SUBTYPES,
-						/obj/item/clothing/gloves/tackler = TRADER_BLACKLIST_TYPES,
-						/obj/item/clothing/gloves/combat = TRADER_BLACKLIST_TYPES,
-						/obj/item/clothing/gloves/rapid = TRADER_BLACKLIST_TYPES)
-
-/datum/sold_goods/clothing_gloves/two
-/datum/sold_goods/clothing_gloves/three
-
-/datum/sold_goods/budget_insuls
-	cost = 355
-	path = /obj/item/clothing/gloves/color/fyellow
-
-/////////Drugstore Employee/////////
+/////////Convinience Store Employee/////////
 
 /datum/sold_goods/flashlight
 	cost = 50
@@ -111,8 +70,7 @@
 	trading_types = list(/obj/item/paint = TRADER_SUBTYPES)
 
 /datum/sold_goods/aicard
-	stock_high = 1
-	stock_low = 1
+	stock = 1
 	cost = 200
 	path = /obj/item/aicard
 
@@ -134,8 +92,7 @@
 	path = /obj/item/megaphone
 
 /datum/sold_goods/paicard
-	stock_high = 1
-	stock_low = 1
+	stock = 1
 	cost = 200
 	path = /obj/item/paicard
 
@@ -179,12 +136,6 @@
 	cost = 250
 	path = /obj/item/anomaly_neutralizer
 
-/datum/sold_goods/random_medical_stack
-	cost = 200
-	trading_types = list(/obj/item/stack/medical = TRADER_SUBTYPES)
-
-/datum/sold_goods/random_medical_stack/two
-
 /datum/sold_goods/grey_bull
 	cost = 50
 	path = /obj/item/reagent_containers/food/drinks/soda_cans/grey_bull
@@ -192,21 +143,30 @@
 /////////Electronic Shop Employee/////////
 
 /datum/sold_goods/electronics
-	trading_types = list(/obj/item/electronics = TRADER_SUBTYPES)
+	cost = 100
 
-/datum/sold_goods/electronics/two
+/datum/sold_goods/electronics/airlock
+	path = /obj/item/electronics/airlock
+
+/datum/sold_goods/electronics/airalarm
+	path = /obj/item/electronics/airalarm
+
+/datum/sold_goods/electronics/apc
+	path = /obj/item/electronics/apc
+
+/datum/sold_goods/electronics/firelock
+	path = /obj/item/electronics/firelock
+	stock = 10
+	cost = 50
+
+/datum/sold_goods/electronics/firealarm
+	path = /obj/item/electronics/firealarm
 
 /datum/sold_goods/cable_coil
 	path = /obj/item/stack/cable_coil
 
 /datum/sold_goods/computer_battery
 	path = /obj/item/computer_hardware/battery
-
-/datum/sold_goods/computer_hardware
-	trading_types = list(/obj/item/computer_hardware = TRADER_SUBTYPES)
-
-/datum/sold_goods/computer_hardware/two
-/datum/sold_goods/computer_hardware/three
 
 /datum/sold_goods/laptop
 	cost = 500
@@ -215,73 +175,66 @@
 /datum/sold_goods/cell
 	path = /obj/item/stock_parts/cell
 
-/datum/sold_goods/decent_cell
-	cost = 200
-	trading_types = list(/obj/item/stock_parts/cell/upgraded = TRADER_THIS_TYPE,
-							/obj/item/stock_parts/cell/upgraded/plus = TRADER_THIS_TYPE,
-							/obj/item/stock_parts/cell/high = TRADER_THIS_TYPE)
+/datum/sold_goods/high_cell
+	cost = 300
+	path = /obj/item/stock_parts/cell/high
 
 /////////Medical Supplier/////////
 
+/datum/sold_goods/suture
+	cost = 100
+	stock = 2
+	path = /obj/item/stack/medical/suture
+
+/datum/sold_goods/mesh
+	cost = 100
+	stock = 2
+	path = /obj/item/stack/medical/mesh
+
 /datum/sold_goods/firstaid
 	cost = 300
-	stock_high = 1
-	stock_low = 1
+	stock = 1
 	path = /obj/item/storage/medkit/regular
 
 /datum/sold_goods/firstaid_fire
 	cost = 500
-	stock_high = 1
-	stock_low = 1
+	stock = 1
 	path = /obj/item/storage/medkit/fire
 
 /datum/sold_goods/firstaid_brute
 	cost = 500
-	stock_high = 1
-	stock_low = 1
+	stock = 1
 	path = /obj/item/storage/medkit/brute
 
 /datum/sold_goods/firstaid_toxin
 	cost = 500
-	stock_high = 1
-	stock_low = 1
+	stock = 1
 	path = /obj/item/storage/medkit/toxin
 
 /datum/sold_goods/pill_bottle_multiver
 	cost = 300
-	stock_high = 1
-	stock_low = 1
+	stock = 1
 	path = /obj/item/storage/pill_bottle/multiver
 
 /datum/sold_goods/pill_bottle_iron
 	cost = 200
-	stock_high = 1
-	stock_low = 1
+	stock = 1
 	path = /obj/item/storage/pill_bottle/iron
 
 /datum/sold_goods/bottle_morphine
 	cost = 200
-	stock_high = 1
-	stock_low = 1
+	stock = 1
 	path = /obj/item/reagent_containers/glass/bottle/morphine
 
 /datum/sold_goods/bottle_chloral
 	cost = 200
-	stock_high = 1
-	stock_low = 1
+	stock = 1
 	path = /obj/item/reagent_containers/glass/bottle/chloralhydrate
 
 /datum/sold_goods/bottle_epinephrine
 	cost = 200
-	stock_high = 1
-	stock_low = 1
+	stock = 1
 	path = /obj/item/reagent_containers/glass/bottle/epinephrine
-
-/datum/sold_goods/pill_bottle_iron
-	cost = 200
-	stock_high = 1
-	stock_low = 1
-	path = /obj/item/storage/pill_bottle/iron
 
 /datum/sold_goods/scalpel
 	path = /obj/item/scalpel
@@ -310,38 +263,32 @@
 /////////Pet Shop Employee/////////
 
 /datum/sold_goods/corgi
-	stock_high = 1
-	stock_low = 1
+	stock = 1
 	cost = 300
 	path = /mob/living/simple_animal/pet/dog/corgi
 
 /datum/sold_goods/fox
-	stock_high = 1
-	stock_low = 1
+	stock = 1
 	cost = 400
 	path = /mob/living/simple_animal/pet/fox
 
 /datum/sold_goods/cat
-	stock_high = 1
-	stock_low = 1
+	stock = 1
 	cost = 200
 	path = /mob/living/simple_animal/pet/cat
 
 /datum/sold_goods/penguin
-	stock_high = 1
-	stock_low = 1
+	stock = 1
 	cost = 400
 	path = /mob/living/simple_animal/pet/penguin/emperor
 
 /datum/sold_goods/sloth
-	stock_high = 1
-	stock_low = 1
+	stock = 1
 	cost = 300
 	path = /mob/living/simple_animal/sloth
 
 /datum/sold_goods/lizard
-	stock_high = 1
-	stock_low = 1
+	stock = 1
 	cost = 200
 	path = /mob/living/simple_animal/hostile/lizard
 
@@ -349,42 +296,41 @@
 
 /datum/sold_goods/posibrain
 	cost = 400
-	stock_high = 1
-	stock_low = 1
+	stock = 1
 	path = /obj/item/mmi/posibrain
 
-/datum/sold_goods/random_bot
-	stock_high = 1
-	stock_low = 1
+/datum/sold_goods/bot
+	stock = 1
 	cost = 400
-	trading_types = list(/mob/living/simple_animal/bot = TRADER_SUBTYPES,
-						/mob/living/simple_animal/bot/secbot = TRADER_BLACKLIST_SUBTYPES,
-						/mob/living/simple_animal/bot/secbot/honkbot = TRADER_BLACKLIST_TYPES)
 
-/datum/sold_goods/random_bot/two
+/datum/sold_goods/bot/medbot
+	path = /mob/living/simple_animal/bot/medbot
+	cost = 500
 
-/datum/sold_goods/incomplete_bot
-	cost = 200
-	trading_types = list(/obj/item/bot_assembly = TRADER_SUBTYPES)
+/datum/sold_goods/bot/firebot
+	path = /mob/living/simple_animal/bot/firebot
+
+/datum/sold_goods/bot/floorbot
+	path = /mob/living/simple_animal/bot/floorbot
+
+/datum/sold_goods/bot/cleanbot
+	path = /mob/living/simple_animal/bot/cleanbot
 
 /////////Rock'n'Drill Mining Inc/////////
 
 /datum/sold_goods/mining_kit
 	cost = 350
 	path = /obj/item/storage/backpack/duffelbag/mining_conscript/basic
-	stock_high = 4
-	stock_low = 2
+	stock = 4
 
 /datum/sold_goods/stack/iron_ten
-	stock_high = 3
-	stock_low = 10
+	stock = 3
 	amount = 10
 	cost = 100
 	path = /obj/item/stack/sheet/iron
 
 /datum/sold_goods/stack/glass_ten
-	stock_high = 3
-	stock_low = 10
+	stock = 3
 	amount = 10
 	cost = 100
 	path = /obj/item/stack/sheet/glass
@@ -416,31 +362,127 @@
 
 /////////Toy Shop Employee/////////
 
-/datum/sold_goods/toy
-	cost = 100
-	trading_types = list(/obj/item/toy = TRADER_SUBTYPES,
-						/obj/item/toy/figure = TRADER_BLACKLIST_TYPES)
+/datum/sold_goods/plushie_crate
+	name = "plushie crate"
+	cost = 1100
+	path = list(
+		/obj/item/toy/plush/carpplushie,
+		/obj/item/toy/plush/slimeplushie,
+		/obj/item/toy/plush/lizard_plushie,
+		/obj/item/toy/plush/snakeplushie,
+		/obj/item/toy/plush/plasmamanplushie,
+		/obj/item/toy/plush/beeplushie,
+		/obj/item/toy/plush/moth,
+		/obj/item/toy/plush/pkplush
+		)
+	container_path = /obj/structure/closet/crate/wooden
+	stock = 2
 
-/datum/sold_goods/toy/two
-/datum/sold_goods/toy/three
-/datum/sold_goods/toy/four
+/datum/sold_goods/actionfigure_box
+	name = "action figures box"
+	cost = 600
+	path = /obj/item/storage/box/actionfigure
+	stock = 5
 
-/datum/sold_goods/toy_plushie
-	cost = 100
-	trading_types = list(/obj/item/toy/plush = TRADER_SUBTYPES)
+/datum/sold_goods/foamforce_shotguns
+	name = "Foam Force shotguns crate"
+	cost = 1000
+	path = list(
+		/obj/item/gun/ballistic/shotgun/toy,
+		/obj/item/gun/ballistic/shotgun/toy,
+		/obj/item/gun/ballistic/shotgun/toy,
+		/obj/item/gun/ballistic/shotgun/toy,
+		/obj/item/gun/ballistic/shotgun/toy,
+		/obj/item/gun/ballistic/shotgun/toy
+		)
+	container_path = /obj/structure/closet/crate/wooden
+	stock = 2
 
-/datum/sold_goods/toy_figure
-	cost = 150
-	trading_types = list(/obj/item/toy/figure = TRADER_SUBTYPES)
+/datum/sold_goods/foamforce_pistols
+	name = "Foam Force pistols crate"
+	cost = 2000
+	path = list(
+		/obj/item/gun/ballistic/automatic/pistol/toy,
+		/obj/item/gun/ballistic/automatic/pistol/toy,
+		/obj/item/ammo_box/magazine/toy/pistol,
+		/obj/item/ammo_box/magazine/toy/pistol
+		)
+	container_path = /obj/structure/closet/crate/wooden
+	stock = 2
 
-/datum/sold_goods/toy_figure/two
-
-/datum/sold_goods/toy_guns
-	cost = 200
-	trading_types = list(/obj/item/gun/ballistic/automatic/toy = TRADER_THIS_TYPE,
-							/obj/item/gun/ballistic/automatic/pistol/toy = TRADER_THIS_TYPE,
-							/obj/item/gun/ballistic/shotgun/toy = TRADER_THIS_TYPE,
-							/obj/item/gun/ballistic/automatic/l6_saw/toy = TRADER_THIS_TYPE)
+/datum/sold_goods/toy_crate
+	name = "toys crate"
+	cost = 1000
+	num_contained = 5
+	path = list(
+		/obj/item/storage/box/snappops,
+		/obj/item/toy/talking/ai,
+		/obj/item/toy/talking/codex_gigas,
+		/obj/item/clothing/under/syndicate/tacticool,
+		/obj/item/toy/sword,
+		/obj/item/toy/gun,
+		/obj/item/gun/ballistic/shotgun/toy/crossbow,
+		/obj/item/storage/box/fakesyndiesuit,
+		/obj/item/storage/crayons,
+		/obj/item/toy/spinningtoy,
+		/obj/item/toy/balloon/arrest,
+		/obj/item/toy/mecha/ripley,
+		/obj/item/toy/mecha/ripleymkii,
+		/obj/item/toy/mecha/hauler,
+		/obj/item/toy/mecha/clarke,
+		/obj/item/toy/mecha/odysseus,
+		/obj/item/toy/mecha/gygax,
+		/obj/item/toy/mecha/durand,
+		/obj/item/toy/mecha/savannahivanov,
+		/obj/item/toy/mecha/phazon,
+		/obj/item/toy/mecha/honk,
+		/obj/item/toy/mecha/darkgygax,
+		/obj/item/toy/mecha/mauler,
+		/obj/item/toy/mecha/darkhonk,
+		/obj/item/toy/mecha/deathripley,
+		/obj/item/toy/mecha/reticence,
+		/obj/item/toy/mecha/marauder,
+		/obj/item/toy/mecha/seraph,
+		/obj/item/toy/mecha/firefighter,
+		/obj/item/toy/cards/deck,
+		/obj/item/toy/nuke,
+		/obj/item/toy/minimeteor,
+		/obj/item/toy/redbutton,
+		/obj/item/toy/talking/owl,
+		/obj/item/toy/talking/griffin,
+		/obj/item/coin/antagtoken,
+		/obj/item/stack/tile/fakespace/loaded,
+		/obj/item/stack/tile/fakepit/loaded,
+		/obj/item/stack/tile/eighties/loaded,
+		/obj/item/toy/toy_xeno,
+		/obj/item/storage/box/actionfigure,
+		/obj/item/restraints/handcuffs/fake,
+		/obj/item/grenade/chem_grenade/glitter/pink,
+		/obj/item/grenade/chem_grenade/glitter/blue,
+		/obj/item/grenade/chem_grenade/glitter/white,
+		/obj/item/toy/eightball,
+		/obj/item/toy/windup_toolbox,
+		/obj/item/toy/clockwork_watch,
+		/obj/item/toy/toy_dagger,
+		/obj/item/extendohand/acme,
+		/obj/item/hot_potato/harmless/toy,
+		/obj/item/card/emagfake,
+		/obj/item/clothing/shoes/wheelys,
+		/obj/item/clothing/shoes/kindle_kicks,
+		/obj/item/toy/plush/goatplushie,
+		/obj/item/toy/plush/moth,
+		/obj/item/toy/plush/pkplush,
+		/obj/item/toy/plush/rouny,
+		/obj/item/storage/belt/military/snack,
+		/obj/item/toy/brokenradio,
+		/obj/item/toy/braintoy,
+		/obj/item/toy/eldritch_book,
+		/obj/item/storage/box/heretic_box,
+		/obj/item/toy/foamfinger,
+		/obj/item/clothing/glasses/trickblindfold
+		)
+	container_path = /obj/structure/closet/crate/wooden
+	stock = 3
 
 /////////Xenolife Collector/////////
 

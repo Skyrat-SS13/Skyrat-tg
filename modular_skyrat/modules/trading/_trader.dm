@@ -13,13 +13,9 @@
 	var/trade_flags = TRADER_MONEY|TRADER_BARTER|TRADER_SELLS_GOODS|TRADER_BUYS_GOODS
 	/// The hub they belong to
 	var/datum/trade_hub/hub
-	/// Associative list of sold goods datums, key is type, value is chance that the datum will apply
-	var/list/possible_sold_goods
-	/// Associative list of bought goods datums, key is type, value is chance that the datum will apply
-	var/list/possible_bought_goods
-	/// List of sold good datums. If you want all of them to be guaranteed, make sure `target_sold_goods_amount` is greater than the amount of items in here
+	/// List of sold good datums. Defined by types, on initialization they'll turn into refs to their objects.
 	var/list/sold_goods = list()
-	/// List of bought goods datums. If you want all of them to be guaranteed, make sure `target_bought_goods_amount` is greater than the amount of items in here
+	/// List of bought goods datums. Defined by types, on initialization they'll turn into refs to their objects.
 	var/list/bought_goods = list()
 	/// Cash they hold, they won't be able to pay out if it gets too low
 	var/current_credits = DEFAULT_TRADER_CREDIT_AMOUNT
@@ -38,20 +34,11 @@
 	/// How much more items are valuable to the merchant for purchasing (in %)
 	var/buy_margin = 1
 	/// How much more items are expensive for the users to purchase (in %)
-	var/sell_margin = 1.15
-	/// How much more, or less items will he have on stock. Minimum of 1 per datum
-	var/quantity_multiplier = 1
+	var/sell_margin = 1.10
 	/// Amount of disposition gained per each trade
 	var/disposition_per_trade = 3
 	/// Amount of disposition lost per each rejection
 	var/disposition_per_reject = 3
-
-	/// The amount of individual purchase items the trader will try and have. If equal or more, he'll loose a sold datum, if less he'll try and get a new one
-	var/target_sold_goods_amount = 7
-	/// The amount of individual bought items the trader will try and have. If equal or more, he'll loose a bought datum, if less he'll try and get a new one
-	var/target_bought_goods_amount = 4
-	/// How much more or less the trader will initialize with in stock
-	var/initial_goods_amount_randomness = 1
 
 	/// Whether the trader rotates stock or not
 	var/rotates_stock = TRUE
@@ -101,8 +88,7 @@
 	return TRUE
 
 /datum/trader/proc/get_matching_bought_datum(atom/movable/AM)
-	for(var/b in bought_goods)
-		var/datum/bought_goods/goodie = bought_goods[b]
+	for(var/datum/bought_goods/goodie as anything in bought_goods)
 		if(goodie.Validate(AM) && goodie.CheckAmount(AM))
 			return goodie
 
@@ -411,32 +397,16 @@
 		GainSuppliesBounty()
 	if(prob(initial_delivery_gain_chance))
 		GainDelivery()
-	if(possible_bought_goods)
-		var/list/candidates = possible_bought_goods.Copy()
-		var/amount_of_iterations = rand(target_bought_goods_amount-initial_goods_amount_randomness,target_bought_goods_amount+initial_goods_amount_randomness)
-		if(amount_of_iterations > 0)
-			for(var/i in 1 to amount_of_iterations)
-				if(!length(candidates))
-					break
-				var/picked_type = pick_weight(candidates)
-				candidates -= picked_type
-				//Safety check
-				if(!bought_goods[picked_type])
-					CreateBoughtGoodieType(picked_type)
-		candidates = null
-	if(possible_sold_goods)
-		var/list/candidates = possible_sold_goods.Copy()
-		var/amount_of_iterations = rand(target_sold_goods_amount-initial_goods_amount_randomness,target_sold_goods_amount+initial_goods_amount_randomness)
-		if(amount_of_iterations > 0)
-			for(var/i in 1 to amount_of_iterations)
-				if(!length(candidates))
-					break
-				var/picked_type = pick_weight(candidates)
-				candidates -= picked_type
-				//Safety check
-				if(!sold_goods[picked_type])
-					CreateSoldGoodieType(picked_type)
-		candidates = null
+	if(sold_goods)
+		var/list/sold_good_init = list()
+		for(var/type_to_init in sold_goods)
+			sold_good_init += new type_to_init(TRADER_COST_MACRO(sell_margin,price_variance))
+		sold_goods = sold_good_init
+	if(bought_goods)
+		var/list/bought_goods_init = list()
+		for(var/type_to_init in bought_goods)
+			bought_goods_init += new type_to_init(TRADER_COST_MACRO(sell_margin,price_variance))
+		bought_goods = bought_goods_init
 
 /datum/trader/proc/GainNormalBounty()
 	if(!possible_bounties || current_bounty)
@@ -464,6 +434,8 @@
 	var/delivery_type = pick_weight(possible_deliveries)
 	deliveries += new delivery_type(src)
 
+#define TRADER_RESTOCK_ESCAPE_CHANCE 60
+
 /datum/trader/proc/RotateStock()
 	if(prob(bounty_gain_chance))
 		GainNormalBounty()
@@ -471,115 +443,36 @@
 		GainSuppliesBounty()
 	if(prob(delivery_gain_chance))
 		GainDelivery()
-	if(prob(TRADER_ABSOLUTE_STOCK_ROTATION_CHANCE))
-		RemoveAllStock()
-		InitializeStock()
-		return
-	//Remove up to 1 sold goodie that we've ran out of stock
-	if(sold_goods.len && prob(TRADER_CHANCE_TO_REMOVE_EMPTY_STOCK))
-		for(var/chosen_type in sold_goods)
-			var/datum/sold_goods/goodie = sold_goods[chosen_type]
-			if(!goodie.current_stock)
-				RemoveSoldGoodieType(chosen_type)
-				break
+	// Restock some sold goodies
+	if(sold_goods)
+		for(var/datum/sold_goods/goodie as anything in sold_goods)
+			var/percentage_remaining = goodie.current_stock / goodie.stock
+			if(percentage_remaining <= TRADER_RESTOCK_THRESHOLD)
+				goodie.current_stock = goodie.stock
+				if(prob(TRADER_RESTOCK_ESCAPE_CHANCE)) //Chance that it's the end of restocking for this tick
+					break
+	// Restock some bought goodies
+	if(bought_goods)
+		for(var/datum/bought_goods/goodie as anything in bought_goods)
+			if(isnull(goodie.stock))
+				continue
+			var/percentage_remaining = goodie.amount / goodie.stock
+			if(percentage_remaining <= TRADER_RESTOCK_THRESHOLD)
+				goodie.amount = goodie.stock
+				if(prob(TRADER_RESTOCK_ESCAPE_CHANCE)) //Chance that it's the end of restocking for this tick
+					break
 
-	//Remove up to 1 bought goodie that we've ran out of stock
-	if(bought_goods.len && prob(TRADER_CHANCE_TO_REMOVE_EMPTY_STOCK))
-		for(var/chosen_type in bought_goods)
-			var/datum/bought_goods/goodie = bought_goods[chosen_type]
-			if(!isnull(goodie.amount) && !goodie.amount)
-				RemoveBoughtGoodieType(chosen_type)
-				break
-
-	//Simulate other people "purchasing" the stock items
-	for(var/chosen_type in sold_goods)
-		var/datum/sold_goods/goodie = sold_goods[chosen_type]
-		if(goodie.current_stock && prob(TRADER_STRANGER_PURCHASE_ITEM_CHANCE))
-			goodie.current_stock--
-
-	if(possible_sold_goods)
-		if(prob(TRADER_CHANCE_TO_DO_STOCK_FIXING))
-			if(sold_goods.len < target_sold_goods_amount)
-				//Too little items than what we're aiming for, try and add an item on a chance
-				CreateSoldGoodieAtRandom()
-			else
-				//Too many items, remove one at random
-				RemoveSoldGoodieAtRandom()
-
-		//Randomness for the sake of randomeness
-		if(prob(TRADER_WILDCARD_STOCK_ROTATE_CHANCE))
-			if(prob(50))
-				CreateSoldGoodieAtRandom()
-			else
-				RemoveSoldGoodieAtRandom()
-
-	if(possible_bought_goods)
-		if(prob(TRADER_CHANCE_TO_DO_STOCK_FIXING))
-			if(bought_goods.len < target_bought_goods_amount)
-				//Too little items than what we're aiming for, try and add an item on a chance
-				CreateBoughtGoodieAtRandom()
-			else
-				//Too many items, remove one at random
-				RemoveBoughtGoodieAtRandom()
-
-		//Randomness for the sake of randomeness
-		if(prob(TRADER_WILDCARD_STOCK_ROTATE_CHANCE))
-			if(prob(50))
-				CreateBoughtGoodieAtRandom()
-			else
-				RemoveBoughtGoodieAtRandom()
-
-/datum/trader/proc/CreateSoldGoodieAtRandom()
-	for(var/i in 1 to TRADER_ROTATE_STOCK_TRIES)
-		var/picked_type = pick(possible_sold_goods)
-		if(!sold_goods[picked_type])
-			CreateSoldGoodieType(picked_type)
-			break
-
-/datum/trader/proc/RemoveSoldGoodieAtRandom()
-	if(!sold_goods.len)
-		return
-	var/picked_type = pick(sold_goods)
-	RemoveSoldGoodieType(picked_type)
-
-/datum/trader/proc/CreateBoughtGoodieAtRandom()
-	for(var/i in 1 to TRADER_ROTATE_STOCK_TRIES)
-		var/picked_type = pick(possible_bought_goods)
-		if(!bought_goods[picked_type])
-			CreateBoughtGoodieType(picked_type)
-			break
-
-/datum/trader/proc/RemoveBoughtGoodieAtRandom()
-	if(!bought_goods.len)
-		return
-	var/picked_type = pick(bought_goods)
-	RemoveBoughtGoodieType(picked_type)
-
-/datum/trader/proc/CreateSoldGoodieType(passed_type)
-	sold_goods[passed_type] = new passed_type(TRADER_COST_MACRO(sell_margin,price_variance), quantity_multiplier)
-
-/datum/trader/proc/CreateBoughtGoodieType(passed_type)
-	bought_goods[passed_type] = new passed_type(TRADER_COST_MACRO(buy_margin,price_variance), quantity_multiplier)
-
-/datum/trader/proc/RemoveSoldGoodieType(passed_type)
-	qdel(sold_goods[passed_type])
-	sold_goods -= passed_type
-
-/datum/trader/proc/RemoveBoughtGoodieType(passed_type)
-	qdel(bought_goods[passed_type])
-	bought_goods -= passed_type
+#undef TRADER_RESTOCK_ESCAPE_CHANCE
 
 /datum/trader/proc/RemoveAllStock()
-	for(var/goodie_type in sold_goods)
-		RemoveSoldGoodieType(goodie_type)
-	for(var/goodie_type in bought_goods)
-		RemoveBoughtGoodieType(goodie_type)
+	for(var/goodie in sold_goods)
+		qdel(goodie)
+	for(var/goodie in bought_goods)
+		qdel(goodie)
 
 /datum/trader/Destroy()
 	RemoveAllStock()
-	possible_sold_goods = null
 	sold_goods = null
-	possible_bought_goods = null
 	bought_goods = null
 
 	for(var/i in connected_consoles)

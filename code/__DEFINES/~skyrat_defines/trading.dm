@@ -36,23 +36,11 @@
 
 #define TRADER_DISPOSITION_REJECT_HAILS -50
 
-//How many times there'll be a random iteration to see if we can get a new stock (already existing rules are rejected)
-#define TRADER_ROTATE_STOCK_TRIES 4
+/// What value the traders will round their costs to
+#define TRADER_PRICE_ROUNDING 10
 
-//Chance of randomly removing or adding a trading datum per stock rotate
-#define TRADER_WILDCARD_STOCK_ROTATE_CHANCE 30
-
-//Chance of dumping and re-initializating all of the stock the trader has
-#define TRADER_ABSOLUTE_STOCK_ROTATION_CHANCE 5
-
-//Chance for a "stranger" to "purchase" an item, rolled per each stock rotation per each sold item
-#define TRADER_STRANGER_PURCHASE_ITEM_CHANCE 10
-
-//Whats the chance we'll remove an empty stock sold goodie per stock rotate
-#define TRADER_CHANCE_TO_REMOVE_EMPTY_STOCK 70
-
-//Chance to remove/add our datums to try and aim towards the `target_sold_goods_amount` etc.
-#define TRADER_CHANCE_TO_DO_STOCK_FIXING 60
+/// Percentage threshold of remaining stock at which they should restock that item
+#define TRADER_RESTOCK_THRESHOLD 0.35
 
 #define TRADE_HARD_BARGAIN_MARGIN 0.03
 
