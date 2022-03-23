@@ -68,35 +68,32 @@
 	UNSETEMPTY(day_night_adjacent_turfs)
 
 /area/proc/ApplyDayNightTurfs()
+	LAZYINITLIST(day_night_turf_appearance_translation)
 	last_day_night_color = subbed_day_night_controller.last_color
 	last_day_night_alpha = subbed_day_night_controller.last_alpha
 
-	var/mutable_appearance/appearance_to_add = mutable_appearance('modular_skyrat/modules/overmap/icons/daynight_blend.dmi', "white", DAY_NIGHT_LIGHTING_LAYER, LIGHTING_PLANE, 255, RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM)
-	appearance_to_add.color = last_day_night_color
-	appearance_to_add.alpha = last_day_night_alpha
-
-	for(var/i in day_night_adjacent_turfs)
-		var/turf/iterated_turf = i
-		appearance_to_add.icon_state = "[day_night_adjacent_turfs[i]]"
-		iterated_turf.underlays += appearance_to_add
-		if(subbed_day_night_controller.has_applied_luminosity != last_day_night_luminosity)
-			if(subbed_day_night_controller.has_applied_luminosity)
-				iterated_turf.luminosity++
-			else
-				iterated_turf.luminosity--
 	last_day_night_luminosity = subbed_day_night_controller.has_applied_luminosity
 
-/area/proc/ClearDayNightTurfs()
-	var/mutable_appearance/appearance_to_clear = mutable_appearance('modular_skyrat/modules/overmap/icons/daynight_blend.dmi', "white", DAY_NIGHT_LIGHTING_LAYER, LIGHTING_PLANE, 255, RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM)
-	appearance_to_clear.color = last_day_night_color
-	appearance_to_clear.alpha = last_day_night_alpha
 	for(var/i in day_night_adjacent_turfs)
 		var/turf/iterated_turf = i
-		appearance_to_clear.icon_state = "[day_night_adjacent_turfs[i]]"
-		iterated_turf.underlays -= appearance_to_clear
-		if(!subbed_day_night_controller && last_day_night_luminosity)
-			iterated_turf.luminosity--
-			last_day_night_luminosity = null
+		var/mutable_appearance/appearance_to_add = mutable_appearance('icons/effects/daynight_blend.dmi', "white", DAY_NIGHT_LIGHTING_LAYER, LIGHTING_PLANE, 255, RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM)
+		appearance_to_add.color = last_day_night_color
+		appearance_to_add.alpha = last_day_night_alpha
+		appearance_to_add.icon_state = "[day_night_adjacent_turfs[i]]"
+		iterated_turf.underlays += appearance_to_add
+		day_night_turf_appearance_translation[iterated_turf] = appearance_to_add
+		if(iterated_turf.lighting_object)
+			iterated_turf.lighting_object.daynight_area = src
+		if(last_day_night_luminosity)
+			iterated_turf.luminosity = 1
+
+/area/proc/ClearDayNightTurfs()
+	for(var/i in day_night_adjacent_turfs)
+		var/turf/iterated_turf = i
+		iterated_turf.underlays -= day_night_turf_appearance_translation[iterated_turf]
+		if(iterated_turf.lighting_object)
+			iterated_turf.lighting_object.daynight_area = null
+	day_night_turf_appearance_translation = null
 
 /area/proc/UpdateDayNightTurfs(rebuild = FALSE, datum/day_night_controller/newsub, full_unsub = FALSE, find_controller = FALSE)
 	if(outdoors)

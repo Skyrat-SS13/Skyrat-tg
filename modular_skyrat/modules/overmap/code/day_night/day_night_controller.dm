@@ -44,6 +44,7 @@
 	var/has_applied_luminosity = FALSE
 	var/last_color = "#FFFFFF"
 	var/last_alpha = 1
+	var/mutable_appearance/area_appearance
 	var/list/subscribed_blend_areas = list()
 
 /datum/day_night_controller/proc/subscribe_blend_area(area/area_to_sub)
@@ -89,20 +90,20 @@
 	if(target_color == last_color && target_light == last_alpha)
 		return
 
-	var/mutable_appearance/appearance_to_add = mutable_appearance('modular_skyrat/modules/overmap/icons/daynight_blend.dmi', "white")
-	appearance_to_add.plane = LIGHTING_PLANE
-	appearance_to_add.layer = DAY_NIGHT_LIGHTING_LAYER
-	appearance_to_add.color = last_color
-	appearance_to_add.alpha = last_alpha
-	for(var/i in affected_areas)
-		var/area/my_area = i
-		my_area.underlays -= appearance_to_add
+	if(area_appearance)
+		for(var/i in affected_areas)
+			var/area/my_area = i
+			my_area.underlays -= area_appearance
 
 	last_color = target_color
 	last_alpha = target_light
 
+	var/mutable_appearance/appearance_to_add = mutable_appearance('icons/effects/daynight_blend.dmi', "white")
+	appearance_to_add.plane = LIGHTING_PLANE
+	appearance_to_add.layer = DAY_NIGHT_LIGHTING_LAYER
 	appearance_to_add.color = target_color
 	appearance_to_add.alpha = target_light
+	area_appearance = appearance_to_add
 	var/do_luminosity = (target_light > MINIMUM_LIGHT_FOR_LUMINOSITY) ? TRUE : FALSE
 
 	for(var/i in affected_areas)
@@ -112,7 +113,7 @@
 				my_area.luminosity++
 			else
 				my_area.luminosity--
-		my_area.underlays += appearance_to_add
+		my_area.underlays += area_appearance
 	has_applied_luminosity = do_luminosity
 
 	for(var/i in subscribed_blend_areas)

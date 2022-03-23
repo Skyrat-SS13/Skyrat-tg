@@ -8,6 +8,11 @@
 	///the turf that our light is applied to
 	var/turf/affected_turf
 
+	// SKYRAT EDIT ADDITION
+	/// Area which gets linked to a lighting object to make it consider the luminosity from the day/night blending from the area. Yes this isn't ideal, but applying luminosity up to 2 (from both sources) on the turf is not ideal either
+	var/area/daynight_area
+	// SKYRAT EDIT ADDITION END
+
 /datum/lighting_object/New(turf/source)
 	if(!isturf(source))
 		qdel(src, force=TRUE)
@@ -84,6 +89,12 @@
 	// This number is mostly arbitrary.
 	var/set_luminosity = max > 1e-6
 	#endif
+
+	// SKYRAT EDIT ADDITION
+	// Respect daynight blending from an area for luminosity here.
+	if(daynight_area && daynight_area.last_day_night_luminosity)
+		set_luminosity = 1
+	// SKYRAT EDIT ADDITION END
 
 	if((rr & gr & br & ar) && (rg + gg + bg + ag + rb + gb + bb + ab == 8))
 		//anything that passes the first case is very likely to pass the second, and addition is a little faster in this case
