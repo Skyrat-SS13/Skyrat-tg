@@ -154,6 +154,7 @@
 	name = "Thunderdome (Team 2)"
 	icon_state = "green"
 
+<<<<<<< HEAD
 /area/tdome/tdomeadmin
 	name = "Thunderdome (Admin.)"
 	icon_state = "purple"
@@ -163,6 +164,16 @@
 	name = "Thunderdome (Observer.)"
 	icon_state = "purple"
 	static_lighting = TRUE // SKYRAT EDIT - Dynamic Lights on CentCom
+=======
+/area/tdome/tdomeadmin //delete this
+/area/tdome/administration
+	name = "Thunderdome Administration"
+	icon_state = "thunder_admin"
+
+/area/tdome/observation
+	name = "Thunderdome Observation"
+	icon_state = "thunder_observe"
+>>>>>>> 6473ee06c32 (Adds Area Turf Sprites for Certain Centcom Z-Level Areas (#65459))
 
 
 //ENEMY
@@ -170,7 +181,7 @@
 //Wizard
 /area/wizard_station
 	name = "Wizard's Den"
-	icon_state = "yellow"
+	icon_state = "wizards_den"
 	static_lighting = TRUE
 	requires_power = FALSE
 	has_gravity = STANDARD_GRAVITY
@@ -181,10 +192,9 @@
 //Abductors
 /area/abductor_ship
 	name = "Abductor Ship"
-	icon_state = "yellow"
+	icon_state = "abductor_ship"
 	requires_power = FALSE
 	area_flags = UNIQUE_AREA | NOTELEPORT
-
 	static_lighting = FALSE
 	base_lighting_alpha = 255
 	has_gravity = STANDARD_GRAVITY
