@@ -24,15 +24,6 @@
 	icon_state = "beret"
 	greyscale_colors = "#EAEAEA"
 
-/obj/item/clothing/head/soft/black/junior_officer
-	name = "peacekeeper junior officer cap"
-	desc = "A junior officers cap, wearing this increases your robustness, apparently."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "juniorsoft"
-	soft_type = "junior"
-	mutant_variants = NONE
-
 /obj/item/clothing/head/sec/peacekeeper/sergeant
 	name = "peacekeeper sergeant hat"
 	desc = "A drill sergeants cap, wearing this increases your loudness. So they say."

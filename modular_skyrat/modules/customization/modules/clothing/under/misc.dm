@@ -263,20 +263,6 @@
 	icon_state = "checkered"
 
 ///FORMAL DEPT
-/obj/item/clothing/under/rank/medical/virologist/formal ///Do NOT add this to the vendor unless you want Peter Griffen
-	desc = "It's not what you think, I swear."
-	name = "formal virologist suit"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "pathologist"
-	inhand_icon_state = "w_suit"
-
-/obj/item/clothing/under/rank/medical/virologist/formal/skirt
-	name = "formal virologist skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "pathologist_skirt"
-
 /obj/item/clothing/under/rank/medical/doctor/formal
 	desc = "A white shirt with blue pants, lined with a protection against some light biohazards."
 	name = "medical doctor's formal wear"
