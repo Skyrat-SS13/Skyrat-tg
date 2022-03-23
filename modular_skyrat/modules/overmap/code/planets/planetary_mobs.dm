@@ -22,7 +22,7 @@
 	)
 	minbodytemp = 0
 	maxbodytemp = 1500
-	weather_immunities = list("snow", "lava", "ash", "acid")
+	weather_immunities = list(TRAIT_SNOWSTORM_IMMUNE,TRAIT_LAVA_IMMUNE,TRAIT_ASHSTORM_IMMUNE,ACID)
 
 	faction = list("planet")
 
@@ -166,7 +166,6 @@
 	)
 	minbodytemp = 0
 	maxbodytemp = 1500
-	weather_immunities = list("snow", "lava", "ash", "acid")
 	faction = list("planet")
 
 /mob/living/simple_animal/thinbug
