@@ -106,8 +106,7 @@
 		if(8)
 			msg += "[span_boldnicegreen("I feel amazing!")]\n"
 		if(9)
-<<<<<<< HEAD
-			msg += "<span class='nicegreen'>I love life!</span>\n"
+			msg += "[span_boldnicegreen("I love life!")]\n"
 	*/
 	//SKYRAT EDIT CHANGE BEGIN - ALEXITHYMIA
 	if(!HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE))
@@ -133,10 +132,6 @@
 	else
 		msg += "[span_notice("No clue.")]\n"
 	//SKYRAT EDIT CHANGE END
-=======
-			msg += "[span_boldnicegreen("I love life!")]\n"
-
->>>>>>> 77ba501459e (Refactor mood events font colors, spans, and newlines (#65597))
 	msg += "[span_notice("Moodlets:")]\n"//All moodlets
 	//if(mood_events.len) //ORIGINAL
 	if(mood_events.len && !HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE)) //SKYRAT EDIT CHANGE - ALEXITHYMIA
@@ -154,13 +149,8 @@
 				if(MOOD_LEVEL_HAPPY2 to INFINITY)
 					msg += span_boldnicegreen(event.description + "\n")
 	else
-<<<<<<< HEAD
-		msg += "[span_nicegreen("I don't have much of a reaction to anything right now.")]\n"
-	to_chat(user, examine_block(msg)) //SKYRAT EDIT CHANGE
-=======
 		msg += "[span_grey("I don't have much of a reaction to anything right now.")]\n"
-	to_chat(user, msg)
->>>>>>> 77ba501459e (Refactor mood events font colors, spans, and newlines (#65597))
+	to_chat(user, examine_block(msg)) //SKYRAT EDIT CHANGE
 
 ///Called after moodevent/s have been added/removed.
 /datum/component/mood/proc/update_mood()
