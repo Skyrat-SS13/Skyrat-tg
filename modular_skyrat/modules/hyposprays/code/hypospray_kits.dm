@@ -90,9 +90,6 @@
 	if(empty)
 		return
 	new /obj/item/hypospray/mkii(src)
-	new /obj/item/reagent_containers/glass/vial/small(src)
-	new /obj/item/reagent_containers/glass/vial/small(src)
-	new /obj/item/reagent_containers/glass/vial/small(src)
 
 /obj/item/storage/hypospraykit/cmo
 	name = "deluxe hypospray kit"
