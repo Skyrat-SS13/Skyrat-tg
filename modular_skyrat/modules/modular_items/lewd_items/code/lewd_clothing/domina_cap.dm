@@ -7,17 +7,13 @@
 	mutant_variants = NONE
 
 //message when equipping that thing
-/obj/item/clothing/head/domina_cap/equipped(mob/user, slot)
+/obj/item/clothing/head/domina_cap/equipped(mob/living/carbon/user, slot)
 	. = ..()
-	var/mob/living/carbon/C = user
-	if(src == C.head)
+	if(src == user.head)
 		to_chat(user, span_purple("You feel much more determined."))
-	else
-		return
 
 //message when unequipping that thing
-/obj/item/clothing/head/domina_cap/dropped(mob/user)
+/obj/item/clothing/head/domina_cap/dropped(mob/living/carbon/user)
 	. = ..()
-	var/mob/living/carbon/C = user
-	if(src == C.head)
+	if(src == user.head)
 		to_chat(user, span_purple("BDSM session ended, huh?"))

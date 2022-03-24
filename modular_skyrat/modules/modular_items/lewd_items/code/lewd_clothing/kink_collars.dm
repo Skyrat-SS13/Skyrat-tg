@@ -37,7 +37,9 @@
 	slot_flags = ITEM_SLOT_NECK
 	w_class = WEIGHT_CLASS_SMALL
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/kink_collar
+	/// What the name on the tag is
 	var/tagname = null
+	/// Item path of on-init creation in the collar's storage
 	var/treat_path = /obj/item/food/cookie
 	unique_reskin = list("Cyan" = "collar_cyan",
 						"Yellow" = "collar_yellow",
@@ -55,15 +57,15 @@
 
 /obj/item/clothing/neck/kink_collar/Initialize()
 	. = ..()
-	var/Key
-	if(treat_path)
-		Key = new treat_path(src)
-		if(istype(Key,/obj/item/key/kink_collar))
-			var/id = rand(111111,999999)
-			var/obj/item/clothing/neck/kink_collar/locked/L = src
-			var/obj/item/key/kink_collar/K = Key
-			L.key_id = id
-			K.key_id = id
+	var/obj/item/key/kink_collar/key
+	if(!treat_path)
+		return
+	key = new treat_path(src)
+	if(!istype(key))
+		return
+	var/id = REF(src)
+	var/obj/item/key/kink_collar/collar_key = key
+	collar_key.key_id = id
 
 //reskin code
 
@@ -91,9 +93,10 @@
 	inhand_icon_state = "lock_collar_cyan"
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/kink_collar/locked
 	treat_path = /obj/item/key/kink_collar
-	var/lock = FALSE
-	var/broke = FALSE
-	var/key_id = null //Adding unique id to collar
+	/// If the collar is currently locked
+	var/locked = FALSE
+	/// If the collar has been broken or not
+	var/broken = FALSE
 	unique_reskin = list("Cyan" = "lock_collar_cyan",
 						"Yellow" = "lock_collar_yellow",
 						"Green" = "lock_collar_green",
@@ -117,57 +120,49 @@
 
 //locking or unlocking collar code
 
-/obj/item/clothing/neck/kink_collar/locked/proc/IsLocked(var/L,mob/user)
-	if(!broke)
-		if(L == TRUE)
-			to_chat(user, span_warning("The collar locks with a resounding click!"))
-			lock = TRUE
-		if(L == FALSE)
-			to_chat(user, span_warning("The collar unlocks with a small clunk."))
-			lock = FALSE
+/obj/item/clothing/neck/kink_collar/locked/proc/IsLocked(to_lock, mob/user)
+	if(!broken)
+		to_chat(user, span_warning("[to_lock ? "The collar locks with a resounding click!" : "The collar unlocks with a small clunk."]"))
+		locked = (to_lock ? TRUE : FALSE)
+		if(!to_lock)
 			REMOVE_TRAIT(src, TRAIT_NODROP, TRAIT_NODROP)
-	else
-		to_chat(user, span_warning("It looks like the lock is broken - now it's just an ordinary old collar."))
-		lock = FALSE
-		REMOVE_TRAIT(src, TRAIT_NODROP, TRAIT_NODROP)
+		return
+	to_chat(user, span_warning("It looks like the lock is broken - now it's just an ordinary old collar."))
+	locked = FALSE
+	REMOVE_TRAIT(src, TRAIT_NODROP, TRAIT_NODROP)
 
-/obj/item/clothing/neck/kink_collar/locked/attackby(obj/item/K, mob/user, params)
-	var/obj/item/clothing/neck/kink_collar/locked/collar = src
-	if(istype(K, /obj/item/key/kink_collar))
-		var/obj/item/key/kink_collar/key = K
-		if(key.key_id==collar.key_id)
-			if(lock != FALSE)
-				IsLocked(FALSE,user)
-			else
-				IsLocked(TRUE,user)
-		else
-			to_chat(user, span_warning("This isn't the correct key!"))
-	return
+/obj/item/clothing/neck/kink_collar/locked/attackby(obj/item/key/kink_collar/attack_item, mob/user, params)
+	if(!istype(attack_item))
+		return
+	if(attack_item.key_id == REF(src))
+		IsLocked((locked ? FALSE : TRUE),user)
+		return
+	to_chat(user, span_warning("This isn't the correct key!"))
 
-/obj/item/clothing/neck/kink_collar/locked/equipped(mob/living/U, slot)
-	.=..()
-	var/mob/living/carbon/human/H = U
-	if(lock == TRUE && src == H.wear_neck)
-		ADD_TRAIT(src, TRAIT_NODROP, TRAIT_NODROP)
-		to_chat(H, span_warning("You hear a suspicious click around your neck - it seems the collar is now locked!"))
+/obj/item/clothing/neck/kink_collar/locked/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(!(locked && src == user.wear_neck))
+		return
+	ADD_TRAIT(src, TRAIT_NODROP, TRAIT_NODROP)
+	to_chat(user, span_warning("You hear a suspicious click around your neck - it seems the collar is now locked!"))
 
 //this code prevents wearer from taking collar off if it's locked. Have fun!
 
 /obj/item/clothing/neck/kink_collar/locked/attack_hand(mob/user)
-	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK) && lock != FALSE)
+	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK) && locked)
 		to_chat(user, span_warning("The collar is locked! You'll need to unlock it before you can take it off!"))
 		return
 	add_fingerprint(usr)
 	return ..()
 
 /obj/item/clothing/neck/kink_collar/locked/MouseDrop(atom/over_object)
-	var/mob/M = usr
-	if(loc == usr && usr.get_item_by_slot(ITEM_SLOT_NECK) && lock != FALSE && istype(over_object, /atom/movable/screen/inventory/hand))
-		to_chat(usr, span_warning("The collar is locked! You'll need to unlock it before you can take it off!"))
+	var/mob/user = usr
+	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK) && locked && istype(over_object, /atom/movable/screen/inventory/hand))
+		to_chat(user, span_warning("The collar is locked! You'll need to unlock it before you can take it off!"))
 		return
-	var/atom/movable/screen/inventory/hand/H = over_object
-	if(M.putItemFromInventoryInHandIfPossible(src, H.held_index))
-		add_fingerprint(usr)
+	var/atom/movable/screen/inventory/hand/inv_hand = over_object
+	if(user.putItemFromInventoryInHandIfPossible(src, inv_hand.held_index))
+		add_fingerprint(user)
 	return ..()
 
 //This is a KEY moment of this code. You got it. Key.
@@ -179,7 +174,9 @@
 	desc = "A key for a tiny lock on a collar or bag."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	icon_state = "collar_key"
-	var/keyname = null//name of our key. It's null by default.
+	/// The name inscribed on the key
+	var/keyname = null
+	/// The ID of the key to pair with a collar. Will normally be the ref of the collar
 	var/key_id = null //Adding same unique id to key
 	unique_reskin = list("Cyan" = "collar_key_blue",
 						"Yellow" = "collar_key_yellow",
@@ -205,50 +202,49 @@
 	name = "[initial(name)] - [keyname]"
 
 //we checking if we can open collar with THAT KEY with SAME ID as the collar.
-/obj/item/key/kink_collar/attack(mob/living/M, mob/living/user, params)
+/obj/item/key/kink_collar/attack(mob/living/carbon/human/target, mob/living/user, params)
+	if(!istype(target))
+		return
 	. = ..()
-	var/mob/living/carbon/target = M
-	if(istype(target.wear_neck,/obj/item/clothing/neck/kink_collar/locked/))
-		var/obj/item/key/kink_collar/key = src
-		var/obj/item/clothing/neck/kink_collar/locked/collar = target.wear_neck
-		if(collar.key_id == key.key_id)
-			if(collar.lock != FALSE)
-				collar.IsLocked(FALSE,user)
-			else
-				collar.IsLocked(TRUE,user)
-		else
-			to_chat(user, span_warning("This isn't the correct key!"))
-	return
+	if(!istype(target.wear_neck, /obj/item/clothing/neck/kink_collar/locked))
+		return
+	var/obj/item/clothing/neck/kink_collar/locked/collar = target.wear_neck
+	if(REF(collar) == src.key_id)
+		collar.IsLocked((collar.locked ? FALSE : TRUE),user)
+	else
+		to_chat(user, span_warning("This isn't the correct key!"))
 
-/obj/item/circular_saw/attack(mob/living/M, mob/living/user, params)
-	. = ..()
-	var/mob/living/carbon/target = M
-	if(istype(target.wear_neck,/obj/item/clothing/neck/kink_collar/locked/))
-		var/obj/item/clothing/neck/kink_collar/locked/collar = target.wear_neck
-		if(!collar.broke)
-			if(target != user)
-				to_chat(user, span_warning("You try to cut the lock right off!"))
-				if(do_after(user, 20, target))
-					collar.broke = TRUE
-					collar.IsLocked(FALSE,user)
-					if(rand(0,2) == 0) //chance to get damage
-						to_chat(user, span_warning("You successfully cut away the lock, but gave [target.name] several cuts in the process!"))
-						target.apply_damage(rand(1,4),BRUTE,BODY_ZONE_HEAD,wound_bonus=10)
-					else
-						to_chat(user, span_warning("You successfully cut away the lock!"))
-			else
-				to_chat(user, span_warning("You try to cut the lock right off!"))
-				if(do_after(user, 30, target))
-					if(rand(0,2) == 0)
-						to_chat(user, span_warning("You successfully cut away the lock, but gave yourself several cuts in the process!"))
-						collar.broke = TRUE
-						collar.IsLocked(FALSE,user)
-						target.apply_damage(rand(2,4),BRUTE,BODY_ZONE_HEAD,wound_bonus=10)
-					else
-						to_chat(user, span_warning("You fail to cut away the lock, cutting yourself in the process!"))
-						target.apply_damage(rand(3,5),BRUTE,BODY_ZONE_HEAD,wound_bonus=30)
+/obj/item/circular_saw/attack(mob/living/carbon/target, mob/living/user, params)
+	if(!istype(target))
+		return
+	if(!istype(target.wear_neck, /obj/item/clothing/neck/kink_collar/locked))
+		return ..()
+	var/obj/item/clothing/neck/kink_collar/locked/collar = target.wear_neck
+	if(collar.broken)
+		to_chat(user, span_warning("The lock is already broken!"))
+		return
+	to_chat(user, span_warning("You try to cut the lock right off!"))
+	if(target != user)
+		if(!do_after(user, 2 SECONDS, target))
+			return
+		collar.broken = TRUE
+		collar.IsLocked(FALSE, user)
+		if(prob(33)) //chance to get damage
+			to_chat(user, span_warning("You successfully cut away the lock, but gave [target.name] several cuts in the process!"))
+			target.apply_damage(rand(1,4), BRUTE, BODY_ZONE_HEAD, wound_bonus=10)
 		else
-			to_chat(user, span_warning("The lock is already broken!"))
+			to_chat(user, span_warning("You successfully cut away the lock!"))
+	else
+		if(!do_after(user, 3 SECONDS, target))
+			return
+		if(prob(33))
+			to_chat(user, span_warning("You successfully cut away the lock, but gave yourself several cuts in the process!"))
+			collar.broken = TRUE
+			collar.IsLocked(FALSE,user)
+			target.apply_damage(rand(2,4), BRUTE, BODY_ZONE_HEAD, wound_bonus=10)
+		else
+			to_chat(user, span_warning("You fail to cut away the lock, cutting yourself in the process!"))
+			target.apply_damage(rand(3,5), BRUTE, BODY_ZONE_HEAD, wound_bonus=30)
 
 /////////////////////////
 ///MIND CONTROL COLLAR///
@@ -264,18 +260,24 @@
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	icon_state = "mindcontroller"
+	/// Reference to the mind control collar
 	var/obj/item/clothing/neck/mind_collar/collar = null
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/mind_controller/Initialize(mapload, collar)
-    //Store the collar on creation.
-	src.collar = collar
-	. = ..() //very important to call parent in Intialize
+/obj/item/mind_controller/Initialize(mapload, collar_init)
+	. = ..()
+	src.collar = collar_init
+
+/obj/item/mind_controller/Destroy(force)
+	collar?.remote = null
+	collar = null
+	. = ..()
 
 /obj/item/mind_controller/attack_self(mob/user)
-	if (collar)
-		collar.emoting = stripped_input(user, "Change the emotion pattern")
-		collar.emoting_proc()
+	if(!collar)
+		return
+	collar.emoting = tgui_input_text(user, "Change the emotion pattern.", max_length = MAX_MESSAGE_LEN)
+	collar.emoting_proc()
 
 //Collar stuff
 /obj/item/clothing/neck/mind_collar
@@ -285,9 +287,10 @@
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "mindcollar"
 	inhand_icon_state = "mindcollar"
+	/// Reference to the mind control remote
 	var/obj/item/mind_controller/remote = null
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/kink_collar/mind_collar
-	var/emoting = "Shivers"
+	var/emoting = "Shivers."
 
 /obj/item/clothing/neck/mind_collar/Initialize()
 	. = ..()
@@ -295,12 +298,11 @@
 	remote.forceMove(src)
 
 /obj/item/clothing/neck/mind_collar/proc/emoting_proc()
-	var/mob/living/carbon/human/U = src.loc
-	if(istype(U) && src == U.wear_neck)
-		U.emote("me", 1,"[emoting]", TRUE)
+	var/mob/living/carbon/human/user = src.loc
+	if(istype(user) && src == user.wear_neck)
+		user.emote("me", 1, "[emoting]", TRUE)
 
 /obj/item/clothing/neck/mind_collar/Destroy()
-	if(remote)
-		remote.collar = null
-		remote = null
-	return ..()
+	remote?.collar = null
+	remote = null
+	. = ..()
