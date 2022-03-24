@@ -82,17 +82,14 @@
 	mob_controller.update_parallax_contents()
 	mob_controller.remote_control = overmap_obj.my_visual
 
-/datum/overmap_shuttle_controller/proc/ControllerClick(datum/source, atom/A, params)
+/datum/overmap_shuttle_controller/proc/ControllerClick(datum/source, atom/A, modifiers)
 	SIGNAL_HANDLER
 	if(A.z != overmap_obj.current_system.z_level)
 		return
-	var/list/modifiers = params2list(params)
-	if(modifiers["shift"] && modifiers["right"])
-		return
-	if(modifiers["shift"])
+	if(LAZYACCESS(modifiers, SHIFT_CLICK))
 		A.examine(source)
 		return COMSIG_MOB_CANCEL_CLICKON
-	if(modifiers["right"])
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		overmap_obj.CommandMove(A.x,A.y)
 		return COMSIG_MOB_CANCEL_CLICKON
 

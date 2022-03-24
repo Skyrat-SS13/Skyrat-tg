@@ -358,9 +358,9 @@ Used by the AI doomsday and the self-destruct nuke.
 	else if (!isnull(config.minetype) && config.minetype != "none")
 		INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
 
-	//Load the NCV Titan
-	var/datum/misc_template/ncv_titan/titan_template = new /datum/misc_template/ncv_titan
-	titan_template.LoadTemplate(SSovermap.main_system, rand(5, 25), rand(5, 25))
+	//Load the NCV Titan - Commented out until I find a way to prevent us from gang stalking hubert on the titan
+	// var/datum/misc_template/ncv_titan/titan_template = new /datum/misc_template/ncv_titan
+	// titan_template.LoadTemplate(SSovermap.main_system, rand(5, 25), rand(5, 25))
 
 	var/list/planet_list = SPAWN_PLANET_WEIGHT_LIST
 	if(config.amount_of_planets_spawned)

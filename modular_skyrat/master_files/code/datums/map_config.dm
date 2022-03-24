@@ -55,7 +55,7 @@
 	/// Possible water colors of the loaded map
 	var/list/water_color
 
-	var/amount_of_planets_spawned = 1
+	var/amount_of_planets_spawned = 2
 
 	var/ore_node_seeder_type
 
