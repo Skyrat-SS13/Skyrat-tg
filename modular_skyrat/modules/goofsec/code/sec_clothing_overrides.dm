@@ -237,9 +237,6 @@
 		),
 	)
 
-/obj/item/clothing/head/hos/beret/black
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "hos_black"
 
 /////////////////////
 //----- NECK ------//
@@ -371,6 +368,7 @@
 	)
 
 /obj/item/clothing/suit/armor/hos/trenchcoat/black
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "hos_black"
 	uses_advanced_reskins = TRUE
