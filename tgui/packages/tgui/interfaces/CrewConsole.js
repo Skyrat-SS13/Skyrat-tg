@@ -135,7 +135,7 @@ const CrewTableEntry = (props, context) => {
         //SKYRAT EDIT BEGIN: Displaying robotic species Icon
         }
       <Table.Cell collapsing textAlign="center">
-        {is_robot ? <Icon name="cog" size={1} /> : ""}
+        {is_robot ? <Icon name="wrench" color="#B7410E" size={1} /> : ""}
       </Table.Cell>
         {
           //SKYRAT EDIT END
