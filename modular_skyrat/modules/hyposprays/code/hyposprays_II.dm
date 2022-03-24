@@ -28,7 +28,9 @@
 	//Inject or spray?
 	var/mode = HYPO_INJECT
 	var/obj/item/reagent_containers/glass/vial/vial
+	//If the Hypospray starts with a vial, what vial does it start with?
 	var/start_vial
+	//Does the Hypospray start with a vial?
 	var/spawnwithvial = FALSE
 
 	//Time taken to inject others
