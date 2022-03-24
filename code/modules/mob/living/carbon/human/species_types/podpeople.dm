@@ -55,7 +55,6 @@
 		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * delta_time)
 		return TRUE
 
-<<<<<<< HEAD
 // SKYRAT EDIT ADDITION
 /datum/species/pod/get_species_description()
 	return "Plant lore!"
@@ -63,7 +62,7 @@
 /datum/species/pod/get_species_lore()
 	return list("You're a plant!")
 // SKYRAT EDIT END
-=======
+
 /datum/species/pod/randomize_main_appearance_element(mob/living/carbon/human/human_mob)
 	var/hairstyle = pick(GLOB.pod_hair_list)
 	human_mob.dna.features["pod_hair"] = hairstyle
@@ -74,4 +73,3 @@
 	var/obj/item/organ/external/organ = human_mob.getorganslot(ORGAN_SLOT_EXTERNAL_POD_HAIR )
 	organ.set_sprite(new_style)
 	human_mob.update_body_parts()
->>>>>>> a364ce1e681 ([READY] Podperson hair (sprites by Shiets!)  (#65205))

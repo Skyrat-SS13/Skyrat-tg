@@ -38,7 +38,6 @@
 	H.dna.features["body_markings"] = pick(GLOB.body_markings_list)
 	H.dna.features["moth_wings"] = pick(GLOB.moth_wings_list)
 	H.dna.features["moth_antennae"] = pick(GLOB.moth_antennae_list)
-<<<<<<< HEAD
 	*/
 	//SKYRAT EDIT REMOVAL END
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
@@ -48,9 +47,7 @@
 	H.dna.species.mutant_bodyparts = H.dna.mutant_bodyparts.Copy()
 	H.dna.species.body_markings = H.dna.body_markings.Copy()
 	//SKYRAT EDIT ADDITION END
-=======
 	H.dna.features["pod_hair"] = pick(GLOB.pod_hair_list)
->>>>>>> a364ce1e681 ([READY] Podperson hair (sprites by Shiets!)  (#65205))
 
 	H.update_body()
 	H.update_hair()

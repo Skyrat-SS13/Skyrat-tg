@@ -35,7 +35,6 @@
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_antennae, GLOB.moth_antennae_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings, GLOB.moth_markings_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/monkey, GLOB.tails_list_monkey)
-<<<<<<< HEAD
 	*/
 	//SKYRAT EDIT REMOVAL END
 
@@ -52,9 +51,8 @@
 		GLOB.laugh_types[L.name] = spath
 	sort_list(GLOB.laugh_types, /proc/cmp_typepaths_asc)
 	//SKYRAT EDIT END
-=======
+
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, GLOB.pod_hair_list)
->>>>>>> a364ce1e681 ([READY] Podperson hair (sprites by Shiets!)  (#65205))
 
 	//Species
 	for(var/spath in subtypesof(/datum/species))
