@@ -64,12 +64,13 @@
 	update_flags()
 
 /obj/item/mod/control/update_appearance(updates)
-	var/obj/item/mod/module/chameleon/chameleon_module = modules.Find(/obj/item/mod/module/chameleon)
-	if(!chameleon_module)
-		return ..()
-	if(chameleon_module.on)
-		return
-
+	for(var/obj/item/mod/module/chameleon/module as anything in modules)
+		if(!istype(module))
+			continue
+		if(!module)
+			return ..()
+		if(module.on)
+			return
 	return ..()
 
 // I absolutely fuckin hate having to do this
