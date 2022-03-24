@@ -371,7 +371,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "hos_black"
-	uses_advanced_reskins = TRUE
 
 //Standard Bulletproof Vest
 /obj/item/clothing/suit/armor/bulletproof
