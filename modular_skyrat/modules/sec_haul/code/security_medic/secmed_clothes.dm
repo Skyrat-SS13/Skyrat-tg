@@ -67,3 +67,24 @@
 	worn_icon_state = "secmed_helmet"
 	icon_state = "secmed_helmet"
 	mutant_variants = NONE
+
+/obj/item/storage/belt/security/medic
+	name = "security medic's belt"
+	desc = "A fancy looking security belt emblazoned with markings of the security medic. Sadly only holds security gear."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
+	worn_icon_state = "belt_medic"
+	icon_state = "belt_medic"
+
+/obj/item/storage/belt/security/medic/full/PopulateContents()
+	new /obj/item/reagent_containers/spray/pepper(src)
+	new /obj/item/restraints/handcuffs(src)
+	new /obj/item/grenade/flashbang(src)
+	new /obj/item/assembly/flash/handheld(src)
+	new /obj/item/melee/baton/security/loaded(src)
+	update_appearance()
+
+/obj/item/storage/belt/security/medic/alternate
+	name = "security medic's belt"
+	worn_icon_state = "belt_medic_alt"
+	icon_state = "belt_medic_alt"
