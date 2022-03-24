@@ -19,6 +19,7 @@
 #define CHANNEL_BICYCLE 1012
 #define CHANNEL_MBOX 1011
 #define CHANNEL_HEV 1010
+#define CHANNEL_PCV 1009
 //SKYRAT EDIT CHANGE END
 ///Default range of a sound.
 #define SOUND_RANGE 17
@@ -35,7 +36,7 @@
 //THIS SHOULD ALWAYS BE THE LOWEST ONE!
 //KEEP IT UPDATED
 
-#define CHANNEL_HIGHEST_AVAILABLE 1009 //SKYRAT EDIT CHANGE - JUKEBOX > ORIGINAL VALUE 1015
+#define CHANNEL_HIGHEST_AVAILABLE 1008 //SKYRAT EDIT CHANGE - JUKEBOX > ORIGINAL VALUE 1015
 
 #define MAX_INSTRUMENT_CHANNELS (128 * 6)
 
@@ -190,3 +191,32 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 	ANNOUNCER_KLAXON
 	//SKYRAT EDIT END
 ))
+
+/// List of all of our sound keys.
+#define SFX_BODYFALL "bodyfall"
+#define SFX_BULLET_MISS "bullet_miss"
+#define SFX_CAN_OPEN "can_open"
+#define SFX_CLOWN_STEP "clown_step"
+#define SFX_DESECRATION "desecration"
+#define SFX_EXPLOSION "explosion"
+#define SFX_EXPLOSION_CREAKING "explosion_creaking"
+#define SFX_HISS "hiss"
+#define SFX_HONKBOT_E "honkbot_e"
+#define SFX_HULL_CREAKING "hull_creaking"
+#define SFX_HYPERTORUS_CALM "hypertorus_calm"
+#define SFX_HYPERTORUS_MELTING "hypertorus_melting"
+#define SFX_IM_HERE "im_here"
+#define SFX_LAW "law"
+#define SFX_PAGE_TURN "page_turn"
+#define SFX_PUNCH "punch"
+#define SFX_REVOLVER_SPIN "revolver_spin"
+#define SFX_RICOCHET "ricochet"
+#define SFX_RUSTLE "rustle"
+#define SFX_SHATTER "shatter"
+#define SFX_SM_CALM "sm_calm"
+#define SFX_SM_DELAM "sm_delam"
+#define SFX_SPARKS "sparks"
+#define SFX_SUIT_STEP "suit_step"
+#define SFX_SWING_HIT "swing_hit"
+#define SFX_TERMINAL_TYPE "terminal_type"
+#define SFX_WARPSPEED "warpspeed"

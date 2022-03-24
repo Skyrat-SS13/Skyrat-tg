@@ -7,6 +7,8 @@
 	var/greyscale_config_worn_digi
 	/// Icon file for mob worn overlays, if the user is a vox.
 	var/icon/worn_icon_vox
+	/// Icon file for mob worn overlays, if the user is a teshari.
+	var/icon/worn_icon_teshari
 	/// The config type to use for greyscaled worn sprites for vox characters. Both this and greyscale_colors must be assigned to work.
 	var/greyscale_config_worn_vox
 
@@ -155,9 +157,6 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/medical/doctor/skirt
-	mutant_variants = NONE
-
-/obj/item/clothing/under/rank/medical/chemist
 	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/medical/paramedic/skirt

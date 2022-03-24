@@ -7,9 +7,6 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/skillchip/job/engineer = 10,
 		/obj/item/skillchip/job/roboticist = 10,
 		/obj/item/skillchip/light_remover = 10,
-		/obj/item/skillchip/glassblowing_master = 10,
-		/obj/item/skillchip/ceramic_master = 10,
-		/obj/item/skillchip/fishing_master = 10,
 		/obj/item/skillchip/useless_adapter = 25,
 		/obj/item/skillchip/wine_taster = 50
 	) = 50,
@@ -208,7 +205,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/storage/box/firecrackers = 10,
 		/obj/item/storage/box/fireworks/dangerous = 5,
 		/obj/item/storage/box/hug/medical = 100,
-		/obj/item/storage/firstaid/ancient = 25,
+		/obj/item/storage/medkit/ancient = 25,
 		/obj/item/storage/toolbox/emergency/old = 25,
 		/obj/item/storage/toolbox/mechanical/old = 25,
 		/obj/item/tailclub = 25,

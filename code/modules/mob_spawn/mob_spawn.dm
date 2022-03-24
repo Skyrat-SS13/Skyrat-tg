@@ -138,6 +138,8 @@
 	var/loadout_enabled = FALSE
 	/// Can we use our quirks for this role?
 	var/quirks_enabled = FALSE
+	/// Are we limited to a certain species type? LISTED TYPE
+	var/restricted_species
 	// SKYRAT EDIT END
 
 /obj/effect/mob_spawn/ghost_role/Initialize(mapload)
@@ -156,6 +158,11 @@
 /obj/effect/mob_spawn/ghost_role/attack_ghost(mob/user)
 	if(!SSticker.HasRoundStarted() || !loc)
 		return
+	// SKYRAT EDIT ADDITION
+	if(restricted_species && !(user.client?.prefs?.read_preference(/datum/preference/choiced/species) in restricted_species))
+		to_chat(user, span_warning("You cannot use this role because you are not the correct species!"))
+		return
+	// SKYRAT EDIT END
 	if(prompt_ghost)
 		var/ghost_role = tgui_alert(usr, "Become [prompt_name]? (Warning, You can no longer be revived!)",, list("Yes", "No"))
 		if(ghost_role != "Yes" || !loc || QDELETED(user))

@@ -305,7 +305,7 @@
 "ek" = (
 /obj/item/radio/intercom/directional/south,
 /obj/machinery/light/small/directional/west,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/mine/xenoarch/living)
 "en" = (
 /obj/effect/turf_decal/tile/purple/half{
@@ -508,7 +508,7 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/science/cytology)
 "hl" = (
-/obj/structure/reagent_anvil,
+/obj/structure/reagent_crafting_bench,
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
 "hs" = (
@@ -700,7 +700,6 @@
 /area/mine/xenoarch/living)
 "kh" = (
 /obj/structure/reagent_water_basin,
-/obj/machinery/light/small/directional/north,
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
 "km" = (
@@ -723,7 +722,10 @@
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/science/cytology)
 "ku" = (
-/obj/structure/reagent_crafting_bench,
+/obj/structure/rack,
+/obj/item/forging/billow/primitive,
+/obj/item/forging/hammer/primitive,
+/obj/item/forging/tongs/primitive,
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
 "kv" = (
@@ -1239,7 +1241,7 @@
 /area/lavaland/surface/outdoors)
 "rJ" = (
 /obj/machinery/light/small/directional/east,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/mine/xenoarch/living)
 "rM" = (
 /obj/machinery/door/airlock/research{
@@ -1462,9 +1464,7 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/living)
 "vd" = (
-/obj/structure/rack,
-/obj/item/stack/sheet/mineral/wood/fifty,
-/obj/item/stack/rods/fifty,
+/obj/structure/reagent_anvil,
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
 "vi" = (
@@ -1954,7 +1954,7 @@
 /turf/open/floor/plating,
 /area/mine/xenoarch/engineering/hfr)
 "CN" = (
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "CO" = (
 /obj/structure/disposalpipe/segment,
@@ -2061,6 +2061,10 @@
 /area/mine/xenoarch/science)
 "DZ" = (
 /obj/structure/table,
+/obj/item/stack/sheet/mineral/wood/fifty,
+/obj/item/stack/sheet/mineral/wood/fifty,
+/obj/item/stack/rods/fifty,
+/obj/item/stack/rods/fifty,
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
 "Ea" = (
@@ -2332,12 +2336,9 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/maintenance/east)
 "HT" = (
-/obj/structure/rack,
-/obj/item/forging/billow/primitive,
-/obj/item/forging/hammer/primitive,
-/obj/item/forging/tongs/primitive,
-/turf/open/floor/plating,
-/area/mine/xenoarch/maintenance/west)
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/iron,
+/area/mine/xenoarch/living)
 "HV" = (
 /obj/structure/table,
 /obj/structure/microscope,
@@ -3335,7 +3336,6 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/science/xenoarch)
 "Ww" = (
-/obj/structure/reagent_water_basin,
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
@@ -4784,7 +4784,7 @@ CN
 CN
 CN
 lb
-kh
+Pg
 oZ
 oZ
 oZ
@@ -4834,7 +4834,7 @@ CN
 CN
 lb
 tP
-oZ
+kh
 DZ
 oZ
 ku
@@ -4882,9 +4882,9 @@ CN
 CN
 CN
 lb
-HT
-oZ
-oZ
+lb
+lb
+kh
 oZ
 hl
 lb
@@ -4930,9 +4930,9 @@ Wc
 CN
 CN
 CN
+CN
+CN
 lb
-lb
-HT
 tP
 Ww
 vd
@@ -4980,7 +4980,7 @@ CN
 CN
 CN
 CN
-lb
+QW
 QW
 QW
 QW
@@ -5530,8 +5530,8 @@ ak
 ak
 ak
 Xr
-eK
-eK
+HT
+HT
 eK
 eK
 Ts

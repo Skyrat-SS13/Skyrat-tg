@@ -39,39 +39,43 @@ GLOBAL_LIST_INIT(loadout_accessory, generate_loadout_items(/datum/loadout_item/a
 	name = "Pride Pin"
 	item_path = /obj/item/clothing/accessory/pride
 
-/* TO DO - ADD THESE
-/datum/loadout_item/accessory/blue_green_armband
-	name = "Blue and Green Armband"
-	item_path = /obj/item/clothing/accessory/armband/hydro_cosmetic
 
-/datum/loadout_item/accessory/brown_armband
-	name = "Brown Armband"
-	item_path = /obj/item/clothing/accessory/armband/cargo_cosmetic
+/datum/loadout_item/accessory/armband_medblue
+	name = "Medical Armband (blue stripe)"
+	item_path = /obj/item/clothing/accessory/armband/medblue
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_VIROLOGIST, JOB_ORDERLY)
 
-/datum/loadout_item/accessory/green_armband
-	name = "Green Armband"
-	item_path = /obj/item/clothing/accessory/armband/service_cosmetic
+/datum/loadout_item/accessory/armband_med
+	name = "Medical Armband (white)"
+	item_path = /obj/item/clothing/accessory/armband/med
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_VIROLOGIST, JOB_ORDERLY)
 
-/datum/loadout_item/accessory/purple_armband
-	name = "Purple Armband"
-	item_path = /obj/item/clothing/accessory/armband/science_cosmetic
+/datum/loadout_item/accessory/armband_cargo
+	name = "Cargo Armband"
+	item_path = /obj/item/clothing/accessory/armband/cargo
+	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT)
 
-/datum/loadout_item/accessory/red_armband
-	name = "Red Armband"
-	item_path = /obj/item/clothing/accessory/armband/deputy_cosmetic
+/datum/loadout_item/accessory/armband_engineering
+	name = "Engineering Armband"
+	item_path = /obj/item/clothing/accessory/armband/engine
+	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_ENGINEERING_GUARD)
 
-/datum/loadout_item/accessory/yellow_armband
-	name = "Yellow Reflective Armband"
-	item_path = /obj/item/clothing/accessory/armband/engine_cosmetic
+/datum/loadout_item/accessory/armband_security
+	name = "Security Armband"
+	item_path = /obj/item/clothing/accessory/armband
+	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC)
 
-/datum/loadout_item/accessory/white_armband
-	name = "White Armband"
-	item_path = /obj/item/clothing/accessory/armband/med_cosmetic
+/datum/loadout_item/accessory/armband_security_deputy
+	name = "Security Deputy Armband"
+	item_path = /obj/item/clothing/accessory/armband/deputy
+	restricted_roles = list(JOB_CORRECTIONS_OFFICER)
 
-/datum/loadout_item/accessory/white_blue_armband
-	name = "White and Blue Armband"
-	item_path = /obj/item/clothing/accessory/armband/medblue_cosmetic
+/datum/loadout_item/accessory/armband_science
+	name = "Science Armband"
+	item_path = /obj/item/clothing/accessory/armband/science
+	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_VANGUARD_OPERATIVE, JOB_SCIENCE_GUARD)
 
+/* to do later
 /datum/loadout_item/accessory/dogtags
 	name = "Name-Inscribed Dogtags"
 	item_path = /obj/item/clothing/accessory/cosmetic_dogtag

@@ -1,6 +1,44 @@
 /turf/open/floor
 	icon = 'modular_skyrat/modules/aesthetics/floors/icons/floors.dmi'
 
+//Removes redundant textured stuff from this radial, as all of ours are textured by default
+/obj/item/stack/tile/iron
+	tile_reskin_types = list(
+		/obj/item/stack/tile/iron,
+		/obj/item/stack/tile/iron/edge,
+		/obj/item/stack/tile/iron/half,
+		/obj/item/stack/tile/iron/corner,
+		/obj/item/stack/tile/iron/large,
+		/obj/item/stack/tile/iron/dark,
+		/obj/item/stack/tile/iron/dark/smooth_edge,
+		/obj/item/stack/tile/iron/dark/smooth_half,
+		/obj/item/stack/tile/iron/dark/smooth_corner,
+		/obj/item/stack/tile/iron/dark/smooth_large,
+		/obj/item/stack/tile/iron/dark_side,
+		/obj/item/stack/tile/iron/dark_corner,
+		/obj/item/stack/tile/iron/checker,
+		/obj/item/stack/tile/iron/white,
+		/obj/item/stack/tile/iron/white/smooth_edge,
+		/obj/item/stack/tile/iron/white/smooth_half,
+		/obj/item/stack/tile/iron/white/smooth_corner,
+		/obj/item/stack/tile/iron/white/smooth_large,
+		/obj/item/stack/tile/iron/white_side,
+		/obj/item/stack/tile/iron/white_corner,
+		/obj/item/stack/tile/iron/cafeteria,
+		/obj/item/stack/tile/iron/recharge_floor,
+		/obj/item/stack/tile/iron/smooth,
+		/obj/item/stack/tile/iron/smooth_edge,
+		/obj/item/stack/tile/iron/smooth_half,
+		/obj/item/stack/tile/iron/smooth_corner,
+		/obj/item/stack/tile/iron/smooth_large,
+		/obj/item/stack/tile/iron/chapel,
+		/obj/item/stack/tile/iron/showroomfloor,
+		/obj/item/stack/tile/iron/solarpanel,
+		/obj/item/stack/tile/iron/freezer,
+		/obj/item/stack/tile/iron/grimy,
+		/obj/item/stack/tile/iron/sepia,
+	)
+
 // iron Kitchen
 /turf/open/floor/iron/kitchen
 	icon_state = "blackchecker"
