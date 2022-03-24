@@ -23,7 +23,7 @@
 	config_entry_value = "A major engineering emergency has developed. Non-engineering personnel are required to obey relevant instructions from engineering staff and are recommended to evacuate affected areas."
 
 /datum/config_entry/string/alert_orange_downto
-	config_entry_value = "A major engineering emergency has developed. Non-engineering personnel are required to evacuate obey relevant instructions from engineering staff and are recommended to evacuate affected areas."
+	config_entry_value = "A major engineering emergency has developed. Non-engineering personnel are required to obey relevant instructions from engineering staff and are recommended to evacuate affected areas."
 
 /datum/config_entry/string/alert_violet_upto
 	config_entry_value = "A major medical emergency has developed. Non-medical personnel are required to obey all relevant instructions from medical staff. All crew are advised to wear internals and minimize unecessary contact."
