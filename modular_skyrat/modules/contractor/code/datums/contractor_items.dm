@@ -82,7 +82,7 @@
 
 /datum/contractor_item/fulton_extraction_kit
 	name = "Fulton Extraction Kit"
-	desc = "For getting your target across the station to those difficult dropoffs. Place the beacon somewhere secure, and link the pack. Activating the pack on your target in space will send them over to the beacon - make sure they're not just going to run away though!"
+	desc = "For getting your target across the station to those difficult dropoffs. Place the beacon somewhere secure, and link the pack. Activating the pack on your target will send them over to the beacon - make sure they're not just going to run away though!"
 	item = /obj/item/storage/box/contractor/fulton_extraction
 	item_icon = "parachute-box"
 	limited = 1
@@ -174,3 +174,26 @@
 	var/datum/round_event_control/event = locate(/datum/round_event_control/communications_blackout) in SSevents.control
 	event.runEvent()
 
+/datum/contractor_item/baton_holster
+	name = "Baton Holster Module"
+	desc = "Never worry about dropping your baton again with this holster module! Simply insert your baton into the module, put it in your MODsuit, and the baton will retract whenever dropped."
+	item = /obj/item/mod/module/baton_holster
+	item_icon = "arrow-up-from-arc" //I cannot find anything better, replace if you find something more fitting
+	limited = 1
+	cost = 1
+
+/datum/contractor_item/baton_upgrade_cuff
+	name = "Baton Cuff Upgrade"
+	desc = "Using technology reverse-engineered from some alien batons we had lying around, you can now cuff people using your baton with the secondary attack. Due to technical limitations, only cable cuffs and zipties work, and they need to be loaded into the baton manually."
+	item = /obj/item/baton_upgrade/cuff
+	item_icon = "handcuff"
+	limited = 1
+	cost = 1
+
+/datum/contractor_item/baton_upgrade_mute
+	name = "Baton Mute Upgrade"
+	desc = "A relatively new advancement in completely proprietary baton technology, this baton upgrade will mute anyone hit for ten seconds, maximizing at twenty seconds."
+	item = /obj/item/baton_upgrade/mute
+	item_icon = "comment-slash"
+	limited = 1
+	cost = 2
