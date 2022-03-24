@@ -4,7 +4,7 @@
 /datum/unit_test/paintings/Run()
 	for(var/obj/item/canvas/canvas_prototype as anything in typesof(/obj/item/canvas))
 		//SKYRAT EDIT START
-		if(initial(canvas_prototype.type) == /obj/item/canvas/drawingtablet) //This doesn't need frames.
+		if(canvas_prototype == /obj/item/canvas/drawingtablet) //This doesn't need frames.
 			continue
 		//SKYRAT EDIT END
 		var/canvas_icons = icon_states(initial(canvas_prototype.icon))
