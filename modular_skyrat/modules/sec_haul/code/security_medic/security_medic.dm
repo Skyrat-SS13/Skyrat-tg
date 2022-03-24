@@ -123,4 +123,4 @@
 	new /obj/item/storage/belt/medical(src)
 	new /obj/item/storage/belt/security/medic/full(src)
 	new /obj/item/clothing/under/rank/medical/doctor/red(src)
-	new /obj/item/clothing/under/rank/security/peacekeeper/security_medic/old
+	new /obj/item/clothing/under/rank/security/peacekeeper/security_medic/alternate
