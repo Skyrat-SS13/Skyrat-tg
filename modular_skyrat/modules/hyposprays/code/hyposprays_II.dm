@@ -25,26 +25,26 @@
 	var/list/allowed_containers = list(/obj/item/reagent_containers/glass/vial/small)
 	/// Is the hypospray only able to use small vials. Relates to the loaded overlays
 	var/small_only = TRUE
-	//Inject or spray?
+	/// Inject or spray?
 	var/mode = HYPO_INJECT
 	var/obj/item/reagent_containers/glass/vial/vial
-	//If the Hypospray starts with a vial, what vial does it start with?
+	/// If the Hypospray starts with a vial, which vial does it start with?
 	var/start_vial
-	//Does the Hypospray start with a vial?
+	/// Does the Hypospray start with a vial?
 	var/spawnwithvial = FALSE
 
-	//Time taken to inject others
+	/// Time taken to inject others
 	var/inject_wait = WAIT_INJECT
-	//Time taken to spray others
+	/// Time taken to spray others
 	var/spray_wait = WAIT_SPRAY
-	//Time taken to inject self
+	/// Time taken to inject self
 	var/inject_self = SELF_INJECT
-	//Time taken to spray self
+	/// Time taken to spray self
 	var/spray_self = SELF_SPRAY
 
-	//Can you hotswap vials? - now all hyposprays can!
+	/// Can you hotswap vials? - now all hyposprays can!
 	var/quickload = TRUE
-	//Does it penetrate clothing?
+	/// Does it penetrate clothing?
 	var/penetrates = null
 
 /obj/item/hypospray/mkii/cmo
