@@ -19,13 +19,6 @@
 ///////////////////
 //Common shuttles//
 ///////////////////
-/datum/sold_shuttle/common_mining
-	name = "Small Travel Shuttle"
-	desc = "Small shuttle fitted for up to 4 people. Perfect for travel, but not much else"
-	detailed_desc = "It's small sized and it's equipped with 1 burst engine"
-	cost = 5000
-	shuttle_id = "mining_common_meta"
-	allowed_docks = list(DOCKS_SMALL_UPWARDS)
 
 /datum/sold_shuttle/common_vulture
 	name = "MS Vulture"
@@ -57,6 +50,7 @@
 ////////////////////////
 //Exploration shuttles//
 ////////////////////////
+
 /datum/sold_shuttle/crow
 	name = "NXV Crow"
 	desc = "A medium sized cargo shuttle, equipped with living quarters."
