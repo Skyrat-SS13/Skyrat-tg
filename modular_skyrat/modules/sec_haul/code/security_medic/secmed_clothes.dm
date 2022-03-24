@@ -48,6 +48,14 @@
 	desc = "A comfy turtleneck with a white armband and brown skirt, denoting the wearer as a security medic."
 	icon_state = "security_medic_turtleneck_skirt"
 
+/obj/item/clothing/under/rank/security/peacekeeper/security_medic/old
+	name = "security medics's uniform"
+	desc = "A lightly armored uniform worn by Nanotrasen's Asset Protection Medical Corps."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
+	icon_state = "security_medic_jumpsuit"
+
 /obj/item/clothing/head/beret/sec/peacekeeper/security_medic
 	name = "security medic's beret"
 	desc = "A robust beret with the medical insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."

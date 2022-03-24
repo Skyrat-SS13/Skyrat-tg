@@ -212,10 +212,6 @@
 	toggle_noun = "zipper"
 	armor = list(MELEE = 10, BULLET = 5, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 
-/obj/item/clothing/suit/toggle/brit/sec/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
-	. = ..()
-	if(!isinhands)
-		. += emissive_appearance(icon_file, "[icon_state]-emissive", alpha = src.alpha)
 
 /obj/item/clothing/suit/toggle/lawyer/black/better
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
