@@ -95,6 +95,8 @@
 /obj/item/clothing/neck/cloak/fleet_admiral
 	name = "fleet admiral's cape"
 	desc = "A godly cape worn by the highest ranking person in the Nanotrasen Navy, the Fleet Admiral."
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
 	icon_state = "cape_fleet_admiral"
 
 ///////////

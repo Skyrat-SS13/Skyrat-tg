@@ -194,4 +194,4 @@
 	l_pocket = /obj/item/melee/baton/telescopic
 
 	back = /obj/item/storage/backpack/satchel/leather
-	backpack_contents = list(/obj/item/storage/box/survival/security, /obj/item/storage/box/gunset/pdh_captain)
+	backpack_contents = list(/obj/item/storage/box/survival/security, /obj/item/storage/box/gunset/pdh_corpo)
