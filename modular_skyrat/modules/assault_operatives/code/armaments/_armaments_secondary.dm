@@ -60,6 +60,3 @@
 	item_type = /obj/item/book/granter/martial/cqc
 	cost = 10
 
-/datum/armament_entry/assault_operatives/secondary/cqc_plus
-	item_type = /obj/item/book/granter/martial/cqc/plus
-	cost = 20
