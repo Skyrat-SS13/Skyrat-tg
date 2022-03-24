@@ -176,4 +176,4 @@
 	maximum_pressure = ONE_ATMOSPHERE
 
 	minimum_temp = T20C - 100
-	maximum_temp = T20C - 10
+	maximum_temp = T20C - 30
