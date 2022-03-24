@@ -2528,14 +2528,16 @@
 /turf/open/floor/plating/airless,
 /area/ruin/space/derelict/atmospherics)
 "lN" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber,
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored{
+	chamber_id = "ks13"
+	},
 /turf/open/floor/engine/air{
 	initial_gas_mix = "o2=20000;n2=80000;TEMP=293.15"
 	},
 /area/ruin/space/derelict/atmospherics)
 "lO" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos{
-	name = "engine outlet injector"
+/obj/machinery/atmospherics/components/unary/outlet_injector/monitored{
+	chamber_id = "ks13"
 	},
 /turf/open/floor/engine/air{
 	initial_gas_mix = "o2=20000;n2=80000;TEMP=293.15"
@@ -3164,7 +3166,9 @@
 /turf/open/floor/iron,
 /area/ruin/space/derelict/bridge)
 "pZ" = (
-/obj/machinery/air_sensor/atmos/air_tank,
+/obj/machinery/air_sensor{
+	chamber_id = "ks13"
+	},
 /turf/open/floor/engine/air{
 	initial_gas_mix = "o2=20000;n2=80000;TEMP=293.15"
 	},
@@ -3516,6 +3520,12 @@
 "Lv" = (
 /turf/closed/wall,
 /area/template_noop)
+"LT" = (
+/obj/machinery/computer/atmos_control/noreconnect{
+	atmos_chambers = list("ks13" = "Air Supply")
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/derelict/atmospherics)
 "LX" = (
 /obj/machinery/power/smes/engineering{
 	charge = 0
@@ -8023,7 +8033,7 @@ gk
 lv
 lv
 lv
-lt
+LT
 ls
 lt
 lt
