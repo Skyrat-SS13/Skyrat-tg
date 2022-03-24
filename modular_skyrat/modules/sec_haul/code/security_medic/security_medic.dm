@@ -102,6 +102,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 	worn_icon_state = "belt_medic"
 	icon_state = "belt_medic"
+	current_skin = "belt_medic" //Prevents reskinning
 
 /obj/item/storage/belt/security/medic/full/PopulateContents()
 	new /obj/item/reagent_containers/spray/pepper(src)

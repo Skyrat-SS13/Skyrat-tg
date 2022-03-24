@@ -63,6 +63,7 @@
 					/obj/item/storage/backpack/satchel/sec = 3,
 					/obj/item/storage/backpack/duffelbag/sec = 3,
 					/obj/item/clothing/under/rank/security/officer = 10,
+					/obj/item/clothing/under/rank/security/peacekeeper/tactical = 4,
 					/obj/item/clothing/shoes/jackboots/security = 10,
 					/obj/item/clothing/head/security_garrison = 10,
 					/obj/item/clothing/head/security_cap = 10,

@@ -15,7 +15,7 @@
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	icon_state = "beret_badge"
-	greyscale_colors = "#3F3C40#333399"
+	greyscale_colors = "#3F3C40#375989"
 	mutant_variants = NONE
 
 /obj/item/clothing/head/beret/sec/peacekeeper/white
