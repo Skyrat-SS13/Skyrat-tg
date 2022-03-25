@@ -47,6 +47,7 @@
 	H.dna.species.mutant_bodyparts = H.dna.mutant_bodyparts.Copy()
 	H.dna.species.body_markings = H.dna.body_markings.Copy()
 	//SKYRAT EDIT ADDITION END
+	H.dna.features["pod_hair"] = pick(GLOB.pod_hair_list)
 
 	H.update_body()
 	H.update_hair()

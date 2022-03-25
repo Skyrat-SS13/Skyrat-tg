@@ -79,7 +79,7 @@
 	icon_state = "bouncebeam"
 	damage = 30
 	damage_type = STAMINA
-	flag = ENERGY
+	armor_flag = ENERGY
 	eyeblur = 1
 	tracer_type = /obj/effect/projectile/tracer/disabler/bounce
 	light_range = 5
@@ -110,7 +110,7 @@
 	icon_state = "bouncebeam_red"
 	damage = 20
 	damage_type = BURN
-	flag = LASER
+	armor_flag = LASER
 	light_range = 5
 	light_power = 0.75
 	speed = 1.4

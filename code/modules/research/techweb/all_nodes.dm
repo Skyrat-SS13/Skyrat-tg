@@ -253,6 +253,8 @@
 		"comp_element_find",
 		"comp_filter_list",
 		"comp_foreach",
+		"comp_format",
+		"comp_format_assoc",
 		"comp_get_column",
 		"comp_gps",
 		"comp_health",
@@ -823,6 +825,7 @@
 	prereq_ids = list("base")
 	design_ids = list(
 		"paicard",
+		"borg_upgrade_snacks", // SKYRAT ADDITION - BETTER BORG SNACK DISPENSORS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -1269,7 +1272,7 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	required_experiments = list(/datum/experiment/ordnance/gaseous/nitrium)
 
-/datum/techweb_node/combat_cyber_implants 
+/datum/techweb_node/combat_cyber_implants
 	id = "combat_cyber_implants"
 	display_name = "Combat Cybernetic Implants"
 	description = "Military grade combat implants to improve performance."
