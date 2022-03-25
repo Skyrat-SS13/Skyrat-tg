@@ -304,12 +304,14 @@
 	our_weapon = null
 	return ..()
 
-/datum/shuttle_extension/weapon/Fire(datum/overmap_object/target)
+/datum/shuttle_extension/weapon/proc/Fire(datum/overmap_object/target)
 	. = ..()
 	var/projectile_to_fire = our_weapon.projectile_type
 	new projectile_to_fire(overmap_object.current_system, overmap_object.x, overmap_object.y, overmap_object.partial_x, overmap_object.partial_y, overmap_object, target)
+	next_fire = world.time + our_weapon.firing_cooldown
+	PostFire(target)
 
-/datum/shuttle_extension/weapon/mining_laser/PostFire(datum/overmap_object/target)
+/datum/shuttle_extension/weapon/proc/PostFire(datum/overmap_object/target)
 	if(our_weapon)
 		our_weapon.PostFire()
 
@@ -320,13 +322,6 @@
 /datum/shuttle_extension/weapon/RemoveFromOvermapObject()
 	overmap_object.weapon_extensions -= src
 	..()
-
-/datum/shuttle_extension/weapon/proc/PostFire(datum/overmap_object/target)
-	return
-
-/datum/shuttle_extension/weapon/proc/Fire(datum/overmap_object/target)
-	next_fire = world.time + our_weapon.firing_cooldown
-	PostFire(target)
 
 /datum/shuttle_extension/weapon/proc/CanFire(datum/overmap_object/target)
 	if(next_fire > world.time)
