@@ -118,14 +118,13 @@
 /datum/planet_template/proc/SeedRuins(list/z_levels)
 	if(!spawns_planetary_ruins)
 		return
-	var/eligible_ruins = SSmapping.themed_ruins[ZTRAIT_PLANETARY_RUINS].Copy()
+	var/eligible_ruins = SSmapping.themed_ruins[ZTRAIT_PLANETARY_RUINS]
 	for(var/ruin_name in eligible_ruins)
 		var/datum/map_template/ruin/planetary/planetary_ruin = eligible_ruins[ruin_name]
 		if(!(planet_flags & planetary_ruin.planet_requirements))
 			eligible_ruins -= ruin_name
 
 	seedRuins(z_levels, ruin_budget, list(area_type), eligible_ruins)
-
 
 /datum/planet_template/lavaland
 	name = "Lavaland"
