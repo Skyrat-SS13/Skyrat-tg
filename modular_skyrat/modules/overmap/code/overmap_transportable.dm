@@ -127,6 +127,6 @@
 	qdel(src)
 
 /obj/effect/abstract/overmap/stranded
-	icon_state = "smallobject"
+	icon_state = "importantobject"
 	layer = OVERMAP_LAYER_LOOT
-	color = COLOR_MAGENTA
+	color = COLOR_DARK_ORANGE
