@@ -1,7 +1,5 @@
 
-///////////
-// UNDER //
-///////////
+// UNDER
 /obj/item/clothing/under/rank/centcom/naval
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
@@ -27,9 +25,7 @@
 	desc = "A uniform worn by those with the rank Fleet Admiral in the Nanotrasen Navy."
 	icon_state = "naval_fleet_admiral"
 
-////////////
-// GLOVES //
-////////////
+// GLOVES
 /obj/item/clothing/gloves/combat/naval
 	name = "nanotrasen naval gloves"
 	desc = "A high quality pair of thick gloves covered in gold stitching, given to Nanotrasen's Naval Commanders."
@@ -42,9 +38,7 @@
 	icon_state = "naval_fleet_admiral"
 
 
-//////////
-// HATS //
-//////////
+// HATS
 /obj/item/clothing/head/caphat/naval
 	name = "naval cap"
 	desc = "A cap worn by those in the Nanotrasen Navy."
@@ -65,9 +59,7 @@
 	icon_state = "naval_fleet_admiral"
 
 
-//////////
-// NECK //
-//////////
+// NECK
 /obj/item/clothing/neck/pauldron
 	name = "lieutenant commander's pauldron"
 	desc = "A red padded pauldron signifying the rank of Lieutenant Commander of the Nanotrasen Navy."
@@ -99,9 +91,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
 	icon_state = "cape_fleet_admiral"
 
-///////////
-// SUITS //
-///////////
+// SUITS
 /obj/item/clothing/suit/armor/vest/capcarapace/naval
 	name = "naval carapace"
 	desc = "A carapace worn by Naval Command members."
@@ -109,9 +99,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
 	icon_state = "naval_carapace"
 
-/////////////
-// GLASSES //
-/////////////
+// GLASSES
 /obj/item/clothing/glasses/hud/security/sunglasses/black
 	name = "black security sunglasses"
 	desc = "A pair of black sunglasses worn by Naval Command officers."
