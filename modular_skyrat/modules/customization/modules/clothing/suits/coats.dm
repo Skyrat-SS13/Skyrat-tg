@@ -253,10 +253,10 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/suit/poncho
-    mutant_variants = STYLE_TAUR_HOOF
+    mutant_variants = NONE
 
 /obj/item/clothing/suit/apron
-    mutant_variants = STYLE_TAUR_HOOF|STYLE_TAUR_PAW
+    mutant_variants = NONE
 
 /obj/item/clothing/suit/hooded/wintercoat/christmas
 	name = "red christmas coat"
