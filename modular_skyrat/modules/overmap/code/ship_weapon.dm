@@ -28,7 +28,7 @@
 	playsound(src, firing_sound, 65, TRUE)
 	var/turf/effect_spot = get_turf(src)
 	effect_spot = get_step(effect_spot, dir)
-	var/obj/effect = visual_firing_effect(effect_spot)
+	var/obj/effect = new visual_firing_effect(effect_spot)
 	effect.dir = dir
 
 /obj/machinery/ship_weapon/Destroy()
@@ -47,11 +47,11 @@
 	name = "mining laser"
 	desc = "A powerful laser specializing in drilling and breaking down large rocks"
 	projectile_type = /datum/overmap_object/projectile/damaging/mining
-	build_path = /obj/machinery/ship_weapon/mining_laser
 	circuit = /obj/item/circuitboard/machine/ship_weapon/mining_laser
 
 /obj/item/circuitboard/machine/ship_weapon/mining_laser
 	name = "Ship Mining Laser (Machine Board)"
+	build_path = /obj/machinery/ship_weapon/mining_laser
 
 /obj/effect/temp_visual/ship_weapon_fire
 	icon = 'modular_skyrat/modules/overmap/icons/mining_laser.dmi'

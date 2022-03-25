@@ -310,7 +310,7 @@
 	new projectile_to_fire(overmap_object.current_system, overmap_object.x, overmap_object.y, overmap_object.partial_x, overmap_object.partial_y, overmap_object, target)
 
 /datum/shuttle_extension/weapon/mining_laser/PostFire(datum/overmap_object/target)
-	if(our_laser)
+	if(our_weapon)
 		our_weapon.PostFire()
 
 /datum/shuttle_extension/weapon/AddToOvermapObject(datum/overmap_object/shuttle/object_to_add)
