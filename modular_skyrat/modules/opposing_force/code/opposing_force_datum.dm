@@ -73,6 +73,8 @@
 	var/admin_requested_changes = ""
 	/// The ckey of the person that made this application
 	var/ckey
+	/// Contractor hub datum, used if the user OPFORs for a contractor kit
+	var/datum/contractor_hub/contractor_hub
 	/// Corresponding stat() click button
 	var/obj/effect/statclick/opfor_specific/stat_button
 
@@ -443,7 +445,7 @@
 		if(iterating_equipment.status != OPFOR_EQUIPMENT_STATUS_APPROVED)
 			continue
 		for(var/i in 1 to iterating_equipment.count)
-			if(!istype(iterating_equipment.opposing_force_equipment.item_type, /obj/effect/gibspawner/generic)) // This is what's used in place of an item in uplinks, so it's the same here
+			if(!(iterating_equipment.opposing_force_equipment.item_type == /obj/effect/gibspawner/generic)) // This is what's used in place of an item in uplinks, so it's the same here
 				new iterating_equipment.opposing_force_equipment.item_type(spawned_box)
 			iterating_equipment.opposing_force_equipment.on_issue(target)
 
@@ -853,6 +855,9 @@
 				continue
 			report += "</b>[opfor_equipment.opposing_force_equipment.name]<b><br>"
 			report += "<br>"
+
+	if(contractor_hub)
+		report += contractor_round_end()
 
 	return report.Join("\n")
 

@@ -29,6 +29,14 @@
 	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/flashlight, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/beaker, /obj/item/reagent_containers/pill, /obj/item/storage/pill_bottle, /obj/item/paper, /obj/item/melee/baton/telescopic, /obj/item/soap, /obj/item/tank/internals/emergency_oxygen, /obj/item/gun, /obj/item/storage/medkit)
 
 /obj/item/clothing/under/rank/security/peacekeeper/security_medic
+	name = "security medics's uniform"
+	desc = "A lightly armored uniform worn by Nanotrasen's Asset Protection Medical Corps."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
+	icon_state = "security_medic_jumpsuit"
+
+/obj/item/clothing/under/rank/security/peacekeeper/security_medic/alternate
 	name = "security medics's turtleneck"
 	desc = "A comfy red turtleneck with a white armband, denoting the wearer as a security medic."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
@@ -43,14 +51,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
 	icon_state = "security_medic_turtleneck_skirt"
-
-/obj/item/clothing/under/rank/security/peacekeeper/security_medic/old
-	name = "security medics's uniform"
-	desc = "A lightly armored uniform worn by Nanotrasen's Asset Protection Medical Corps."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
-	icon_state = "security_medic_jumpsuit"
 
 /obj/item/clothing/head/beret/sec/peacekeeper/security_medic
 	name = "security medic's beret"
@@ -67,3 +67,24 @@
 	worn_icon_state = "secmed_helmet"
 	icon_state = "secmed_helmet"
 	mutant_variants = NONE
+
+/obj/item/storage/belt/security/medic
+	name = "security medic's belt"
+	desc = "A fancy looking security belt emblazoned with markings of the security medic. Sadly only holds security gear."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
+	worn_icon_state = "belt_medic"
+	icon_state = "belt_medic"
+
+/obj/item/storage/belt/security/medic/full/PopulateContents()
+	new /obj/item/reagent_containers/spray/pepper(src)
+	new /obj/item/restraints/handcuffs(src)
+	new /obj/item/grenade/flashbang(src)
+	new /obj/item/assembly/flash/handheld(src)
+	new /obj/item/melee/baton/security/loaded(src)
+	update_appearance()
+
+/obj/item/storage/belt/security/medic/alternate
+	name = "security medic's belt"
+	worn_icon_state = "belt_medic_alt"
+	icon_state = "belt_medic_alt"

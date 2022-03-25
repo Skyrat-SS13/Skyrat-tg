@@ -37,7 +37,8 @@
 
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular_skyrat/modules/customization/_DEFINES/DNA.dm)
 /*
-#define DNA_FEATURE_BLOCKS 15
+/// This number needs to equal the total number of DNA blocks
+#define DNA_FEATURE_BLOCKS 16
 #define DNA_MUTANT_COLOR_BLOCK 1
 #define DNA_ETHEREAL_COLOR_BLOCK 2
 #define DNA_LIZARD_MARKINGS_BLOCK 3
@@ -65,6 +66,7 @@
 
 // SKYRAT EDIT CHANGE END
 
+#define DNA_POD_HAIR_BLOCK 16
 
 #define DNA_SEQUENCE_LENGTH 4
 #define DNA_MUTATION_BLOCKS 8
@@ -139,6 +141,7 @@
 #define ORGAN_SLOT_EXTERNAL_WINGS "wings"
 #define ORGAN_SLOT_EXTERNAL_ANTENNAE "antennae"
 #define ORGAN_SLOT_EXTERNAL_BODYMARKINGS "bodymarkings"
+#define ORGAN_SLOT_EXTERNAL_POD_HAIR "pod_hair"
 
 
 /// Xenomorph organ slots

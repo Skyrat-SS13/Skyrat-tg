@@ -791,7 +791,7 @@
 
 /obj/item/clothing/head/helmet/space/hev_suit/pcv
 	name = "powered combat helmet"
-	desc = "The Mark II PCV suit helmet."
+	desc = "A deprecated combat helmet developed during the early 21th century in Sol-3, with protections rated level III-A. Contains attachment points for AN/PVS night vision goggles."
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	icon_state = "hecu_helm"
@@ -801,16 +801,35 @@
 	obj_flags = NO_MAT_REDEMPTION
 	resistance_flags = FIRE_PROOF|ACID_PROOF|FREEZE_PROOF
 	clothing_flags = SNUG_FIT
-	clothing_traits = list(TRAIT_MEDICAL_HUD,TRAIT_NIGHT_VISION)
+	clothing_traits = null
 	flags_cover = HEADCOVERSEYES | PEPPERPROOF
 	flash_protect = null
 	visor_flags_inv = null
 	visor_flags = null
 	slowdown = 0
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Basic" = list(
+			RESKIN_ICON_STATE = "hecu_helm",
+			RESKIN_WORN_ICON_STATE = "hecu_helm"
+		),
+		"Corpsman" = list(
+			RESKIN_ICON_STATE = "hecu_helm_medic",
+			RESKIN_WORN_ICON_STATE = "hecu_helm_medic"
+		),
+		"Basic Black" = list(
+			RESKIN_ICON_STATE = "hecu_helm_black",
+			RESKIN_WORN_ICON_STATE = "hecu_helm_black"
+		),
+		"Corpsman Black" = list(
+			RESKIN_ICON_STATE = "hecu_helm_medic_black",
+			RESKIN_WORN_ICON_STATE = "hecu_helm_medic_black"
+		),
+	)
 
 /obj/item/clothing/suit/space/hev_suit/pcv
 	name = "powered combat vest"
-	desc = "The Mark II PCV suit protects the user from a number of hazardous environments and has in build ballistic protection."
+	desc = "An electrically charged piece of body armor, the power stiffens the suit's fibers to provide a layer of resilient armor in response to trauma received from kinetic force.  It's fitted with a geiger counter, tactical radio, a heads up display and a combat cocktail injector that allows the user to function normally even after serious injury. The concentration of mass in the lower rear side from the onboard computer makes your ass feel heavy."
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	icon_state = "hecu_vest"
@@ -821,6 +840,26 @@
 	actions_types = list(/datum/action/item_action/hev_toggle, /datum/action/item_action/hev_toggle_notifs)
 	resistance_flags = FIRE_PROOF|ACID_PROOF|FREEZE_PROOF
 	clothing_flags = SNUG_FIT
+	show_hud = FALSE
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Basic" = list(
+			RESKIN_ICON_STATE = "hecu_vest",
+			RESKIN_WORN_ICON_STATE = "hecu_vest"
+		),
+		"Corpsman" = list(
+			RESKIN_ICON_STATE = "hecu_vest_medic",
+			RESKIN_WORN_ICON_STATE = "hecu_vest_medic"
+		),
+		"Basic Black" = list(
+			RESKIN_ICON_STATE = "hecu_vest_black",
+			RESKIN_WORN_ICON_STATE = "hecu_vest_black"
+		),
+		"Corpsman Black" = list(
+			RESKIN_ICON_STATE = "hecu_vest_medic_black",
+			RESKIN_WORN_ICON_STATE = "hecu_vest_medic_black"
+		),
+	)
 
 	activation_song = 'modular_skyrat/master_files/sound/blackmesa/pcv/planet.ogg'
 
@@ -867,6 +906,10 @@
 	rads_static_cooldown = PCV_COOLDOWN_RADS
 	acid_static_cooldown = PCV_COOLDOWN_ACID
 	suit_name = "PCV MARK II"
+
+/obj/item/clothing/suit/space/hev_suit/pcv/AltClick(mob/living/user)
+	reskin_obj(user)
+	. = ..()
 
 #undef HEV_COLOR_GREEN
 #undef HEV_COLOR_RED
