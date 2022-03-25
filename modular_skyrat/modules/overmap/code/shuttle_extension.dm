@@ -305,7 +305,6 @@
 	return ..()
 
 /datum/shuttle_extension/weapon/proc/Fire(datum/overmap_object/target)
-	. = ..()
 	var/projectile_to_fire = our_weapon.projectile_type
 	new projectile_to_fire(overmap_object.current_system, overmap_object.x, overmap_object.y, overmap_object.partial_x, overmap_object.partial_y, overmap_object, target)
 	next_fire = world.time + our_weapon.firing_cooldown
