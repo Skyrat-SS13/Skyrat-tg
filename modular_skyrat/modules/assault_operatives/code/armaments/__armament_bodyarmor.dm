@@ -26,3 +26,11 @@
 /datum/armament_entry/assault_operatives/bodyarmor/marine
 	item_type = /obj/item/clothing/suit/armor/vest/marine
 	cost = 10
+
+/datum/armament_entry/assault_operatives/bodyarmor/elite_modsuit
+	item_type = /obj/item/mod/control/pre_equipped/elite
+	cost = 15
+
+/datum/armament_entry/assault_operatives/bodyarmor/elite_modsuit_flamer
+	item_type = /obj/item/mod/control/pre_equipped/elite/flamethrower
+	cost = 18
