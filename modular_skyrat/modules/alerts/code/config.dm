@@ -2,10 +2,10 @@
 	default = "All threats to the station have passed. Security may not have high powered weapons and may not search or arrest without Probable Cause."
 
 /datum/config_entry/string/alert_blue_upto
-	default = "The station has received reliable information about possible hostile activity on the station. Security staff may have high powered nonlethal weaponry, and may search crew members with authorization from the Head of Security, Warden, or Captain."
+	default = "The station has received reliable information about possible hostile activity on the station. Security staff may have longarms with nonlethals, and may search crew members with authorization from the Head of Security, Warden, or Captain."
 
 /datum/config_entry/string/alert_blue_downto
-	default = "The immediate threat has passed. Security may no longer have lethal weapons, but may continue to have high powered nonlethal weaponry. Searches are allowed with authorization from the Head of Security, Warden, or Captain."
+	default = "The immediate threat has passed. Security may no longer have lethal weapons, but may continue to have longarms with nonlethals. Searches are allowed with authorization from the Head of Security, Warden, or Captain."
 
 /datum/config_entry/string/alert_amber_upto
 	config_entry_value = "A major security emergency has developed. Security staff may have lethal weapons. Random searches are allowed and advised. All security personnel are required to disengage personal activities and come to active duty. Non-security personnel are required to obey all relevant instructions from security staff."
