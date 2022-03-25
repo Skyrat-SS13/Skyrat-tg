@@ -329,11 +329,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	can_augment = FALSE
 	learnable_languages = list(/datum/language/common, /datum/language/voltaic)
 
-/datum/species/pod
-	name = "Primal Podperson"
-	always_customizable = TRUE
-	learnable_languages = list(/datum/language/common, /datum/language/sylvan)
-
 /datum/species/proc/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	returned["mcolor"] = random_color()
