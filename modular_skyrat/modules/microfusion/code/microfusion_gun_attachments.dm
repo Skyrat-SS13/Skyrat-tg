@@ -652,7 +652,7 @@ HONK!! Does subpar stamina damage but slips people.
 	chambered.loaded_projectile.light_color = COLOR_VIVID_YELLOW
 	chambered.loaded_projectile.damage_type = STAMINA
 	chambered.loaded_projectile.damage = 20
-	chambered.loaded_projectile.flag = ENERGY
+	chambered.loaded_projectile.armor_flag = ENERGY
 	chambered.loaded_projectile.AddComponent(/datum/component/slippery, 20)
 	chambered.loaded_projectile.hitsound = 'sound/misc/slip.ogg'
 	chambered.loaded_projectile.impact_type = /obj/effect/projectile/impact/disabler
