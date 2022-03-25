@@ -1,5 +1,9 @@
 /obj/item/toy/plush
 	var/can_random_spawn = TRUE			//if this is FALSE, don't spawn this for random plushies.
+	
+/obj/item/toy/plush/carpplushie/dehy_carp
+	can_random_spawn = FALSE
+
 //	var/snowflake_idvar/snowflake_id
 
 
@@ -11,7 +15,7 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 		if(!initial(abstract.can_random_spawn))
 			continue
 		. += i
-
+/*
 /obj/item/toy/plush/random
 	name = "Illegal plushie"
 	desc = "Something fucked up"
@@ -29,12 +33,13 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 
 	new newtype(loc)
 	return INITIALIZE_HINT_QDEL
-
+*/
 /obj/item/toy/plush/plushling
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "blue_fox"
 	name = "peculiar plushie"
 	desc = "An adorable stuffed toy- wait, did it just move?"
+	can_random_spawn = FALSE
 	var/absorb_cooldown = 100 //ticks cooldown between absorbs
 	var/next_absorb = 0 //When can it absorb another plushie
 	var/check_interval = 20
