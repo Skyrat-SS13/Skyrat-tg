@@ -1,3 +1,4 @@
+/*
 /obj/item/clothing/suit/straight_jacket/latex_straight_jacket
 	name = "latex straight jacket"
 	desc = "A toy that is unable to actually restrain anyone. Still fun to wear!"
@@ -47,3 +48,4 @@
 	equip_delay_self = NONE
 	strip_delay = 12 SECONDS
 	breakouttime = 300 SECONDS
+*/
