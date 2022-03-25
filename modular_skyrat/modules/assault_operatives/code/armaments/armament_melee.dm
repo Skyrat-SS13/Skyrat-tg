@@ -27,7 +27,3 @@
 	item_type = /obj/item/melee/baton/telescopic
 	cost = 5
 
-/datum/armament_entry/assault_operatives/melee/contractor_baton
-	item_type = /obj/item/melee/baton/telescopic/contractor_baton
-	cost = 6
-

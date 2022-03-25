@@ -39,9 +39,10 @@
 #define ROLE_SPACE_DRAGON "Space Dragon"
 #define ROLE_SPIDER "Spider"
 #define ROLE_WIZARD_MIDROUND "Wizard (Midround)"
-//SKYRAT EDIT ADDITION
+// SKYRAT EDIT ADDITION
 #define ROLE_BORER "Borer"
 #define ROLE_ASSAULT_OPERATIVE "Assault Operative"
+// SKYRAT EDIT END
 
 // Latejoin roles
 #define ROLE_HERETIC_SMUGGLER "Heretic Smuggler"

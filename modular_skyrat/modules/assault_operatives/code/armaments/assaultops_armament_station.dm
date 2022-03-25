@@ -30,7 +30,7 @@
 			spawned_box.name = "ammo box - [spawned_ballistic_gun.name]"
 			for(var/i in 1 to mags_to_spawn)
 				new spawned_ballistic_gun.mag_type (spawned_box)
-
+	return ..()
 
 
 
