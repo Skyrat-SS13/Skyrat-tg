@@ -30,7 +30,6 @@
 
 /datum/armament_entry/assault_operatives/primary/submachinegun/ppsh
 	item_type = /obj/item/gun/ballistic/automatic/ppsh
-	mags_to_spawn = 1
 
 /datum/armament_entry/assault_operatives/primary/submachinegun/c20r
 	item_type = /obj/item/gun/ballistic/automatic/c20r
@@ -56,7 +55,12 @@
 
 /datum/armament_entry/assault_operatives/primary/special/l6saw
 	item_type = /obj/item/gun/ballistic/automatic/l6_saw
-	cost = 20
+	cost = 15
+	mags_to_spawn = 2
+
+/datum/armament_entry/assault_operatives/primary/special/mg9
+	item_type = /obj/item/gun/ballistic/automatic/mg34/mg42
+	cost = 15
 	mags_to_spawn = 2
 
 /datum/armament_entry/assault_operatives/primary/special/smartgun
