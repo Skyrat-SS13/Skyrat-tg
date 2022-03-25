@@ -1,3 +1,4 @@
+/*
 //normal ball mittens
 /obj/item/clothing/gloves/ball_mittens
 	name = "ball mittens"
@@ -39,3 +40,4 @@
 	w_class = WEIGHT_CLASS_SMALL
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_gloves.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_gloves.dmi'
+*/
