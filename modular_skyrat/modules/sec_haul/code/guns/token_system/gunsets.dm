@@ -266,6 +266,7 @@
 /obj/item/storage/box/gunset/pdh
 	name = "pdh 'osprey' supply box"
 	w_class = WEIGHT_CLASS_NORMAL
+
 /obj/item/gun/ballistic/automatic/pistol/pdh/nomag
 	spawnwithmagazine = FALSE
 
