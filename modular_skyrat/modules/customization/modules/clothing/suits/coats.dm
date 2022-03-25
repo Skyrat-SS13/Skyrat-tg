@@ -252,6 +252,12 @@
 	icon_state = "suitjacket_white"
 	mutant_variants = NONE
 
+/obj/item/clothing/suit/poncho
+    mutant_variants = STYLE_TAUR_HOOF
+
+/obj/item/clothing/suit/apron
+    mutant_variants = STYLE_TAUR_HOOF|STYLE_TAUR_PAW
+
 /obj/item/clothing/suit/hooded/wintercoat/christmas
 	name = "red christmas coat"
 	desc = "A festive red Christmas coat! Smells like Candy Cane!"
