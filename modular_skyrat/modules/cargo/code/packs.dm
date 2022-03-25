@@ -419,7 +419,6 @@
 	crate_name = "dance machine crate"
 */
 
-
 /datum/supply_pack/service/snowmobile
 	name = "Snowmobile kit"
 	desc = "trapped on a frigid wasteland? need to get around fast? purchase a refurbished snowmobile, with a FREE 10 microsecond warranty!"
