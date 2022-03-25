@@ -339,7 +339,7 @@
 /datum/supply_pack/engineering/overmap_trade
 	name = "Shuttle Trade Suite Boards Crate"
 	desc = "Contains boards for the trade console and telepad, meant for mounting on shuttles and for trading with interstellar trading hubs, apply money for best results."
-	cost CARGO_CRATE_VALUE * 2
+	cost =  CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/circuitboard/machine/trade_pad,
 					/obj/item/circuitboard/computer/trade_console)
 	crate_name = "Shuttle Trade Suite Boards Crate"
