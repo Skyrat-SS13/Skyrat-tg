@@ -460,13 +460,12 @@
 		. += "<span class='info'><b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]</span>"
 
 	//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-	if (is_special_character(user))
-		var/datum/data/record/is_in_world = find_record("name", perpname, GLOB.data_core.general) //apparantly golden is okay with offstation roles having no records, FYI
-		if (is_in_world && length(is_in_world.fields["exploitable_records"]) >= 2)
-			for(var/datum/antagonist/antag_datum in user.mind.antag_datums)
-				if (antag_datum.view_exploitables)
-					. += "<a href='?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>"
-					break
+	if (src.mind.can_see_exploitables)
+		var/datum/data/record/target_records = find_record("name", perpname, GLOB.data_core.general) //apparantly golden is okay with offstation roles having no records, FYI
+		var/exploitable_text = target_records.fields["exploitable_records"]
+		if (target_records && ((length(exploitable_text) >= 2) && ((exploitable_text) != EXPLOITABLE_DEFAULT_TEXT)))
+			. += "<a href='?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>"
+
 	//SKYRAT EDIT END
 	//SKYRAT EDIT ADDITION BEGIN - GUNPOINT
 	if(gunpointing)

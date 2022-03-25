@@ -392,10 +392,10 @@
 				return
 
 	//SKYRAT EDIT ADDITION BEGIN - VIEW RECORDS
-	if (is_special_character(usr))
-		var/perpname = get_face_name(get_id_name(""))
-		var/datum/data/record/EXP = find_record("name", perpname, GLOB.data_core.general)
-		if(href_list["exprecords"])
+	if(href_list["exprecords"])
+		if (src.mind.can_see_exploitables)
+			var/perpname = get_face_name(get_id_name(""))
+			var/datum/data/record/EXP = find_record("name", perpname, GLOB.data_core.general)
 			to_chat(usr, "<b>Exploitable information:</b> [EXP.fields["exploitable_records"]]")
 	//SKYRAT EDIT END
 
