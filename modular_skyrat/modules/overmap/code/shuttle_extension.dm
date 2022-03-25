@@ -294,7 +294,24 @@
 /datum/shuttle_extension/weapon
 	name = "Weapon"
 	var/next_fire = 0
-	var/fire_cooldown = 3 SECONDS
+	var/obj/machinery/ship_weapon/our_weapon
+
+/datum/shuttle_extension/weapon/New(obj/machinery/ship_weapon/passed_machine)
+	. = ..()
+	our_weapon = passed_machine
+
+/datum/shuttle_extension/weapon/Destroy()
+	our_weapon = null
+	return ..()
+
+/datum/shuttle_extension/weapon/Fire(datum/overmap_object/target)
+	. = ..()
+	var/projectile_to_fire = our_weapon.projectile_type
+	new projectile_to_fire(overmap_object.current_system, overmap_object.x, overmap_object.y, overmap_object.partial_x, overmap_object.partial_y, overmap_object, target)
+
+/datum/shuttle_extension/weapon/mining_laser/PostFire(datum/overmap_object/target)
+	if(our_laser)
+		our_weapon.PostFire()
 
 /datum/shuttle_extension/weapon/AddToOvermapObject(datum/overmap_object/shuttle/object_to_add)
 	. = ..()
@@ -308,7 +325,7 @@
 	return
 
 /datum/shuttle_extension/weapon/proc/Fire(datum/overmap_object/target)
-	next_fire = world.time + fire_cooldown
+	next_fire = world.time + our_weapon.firing_cooldown
 	PostFire(target)
 
 /datum/shuttle_extension/weapon/proc/CanFire(datum/overmap_object/target)
@@ -317,24 +334,3 @@
 	if(TWO_POINT_DISTANCE_OV(overmap_object,target) >= 1)
 		return FALSE
 	return TRUE
-
-/datum/shuttle_extension/weapon/mining_laser
-	name = "Mining Laser"
-	///Reference to the physical weapon machine
-	var/obj/machinery/mining_laser/our_laser
-
-/datum/shuttle_extension/weapon/mining_laser/New(obj/machinery/mining_laser/passed_machine)
-	. = ..()
-	our_laser = passed_machine
-
-/datum/shuttle_extension/weapon/mining_laser/Destroy()
-	our_laser = null
-	return ..()
-
-/datum/shuttle_extension/weapon/mining_laser/Fire(datum/overmap_object/target)
-	. = ..()
-	new /datum/overmap_object/projectile/damaging/mining(overmap_object.current_system, overmap_object.x, overmap_object.y, overmap_object.partial_x, overmap_object.partial_y, overmap_object, target)
-
-/datum/shuttle_extension/weapon/mining_laser/PostFire(datum/overmap_object/target)
-	if(our_laser)
-		our_laser.PostFire()

@@ -332,7 +332,7 @@
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/obj/item/circuitboard/computer/shuttle_common_docks,
 					/obj/item/circuitboard/machine/shield_generator,
-					/obj/item/circuitboard/machine/mining_laser,
+					/obj/item/circuitboard/machine/ship_weapon/mining_laser,
 					/obj/item/circuitboard/machine/transporter)
 	crate_name = "Shuttle Upgrade Machine Boards Crate"
 
