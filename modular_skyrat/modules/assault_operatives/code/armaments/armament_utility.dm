@@ -84,7 +84,3 @@
 	description = "Based on a Nanotrasen model, this powerful tool can be used as both a crowbar and a pair of wirecutters. \
 	In its crowbar configuration, it can be used to force open airlocks. Very useful for entering the station or its departments."
 	cost = 3
-
-/datum/armament_entry/assault_operatives/utility/stealthbox
-	item_type = /obj/item/storage/box/syndie_kit/imp_stealth
-	cost = 8
