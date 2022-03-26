@@ -7,14 +7,14 @@
 	exp_manifest_out[DEPARTMENT_UNASSIGNED] = list()
 
 	var/list/departments_by_type = SSjob.joinable_departments_by_type
-	for(var/datum/data/record/exploitable_record in GLOB.data_core.general)
-		var/exploitables = exploitable_record.fields["exploitable_records"]
+	for(var/datum/data/record/general_record in GLOB.data_core.general)
+		var/exploitables = general_record.fields["exploitable_records"]
 		var/exploitables_empty = ((length(exploitables) < 1) || ((exploitables) == EXPLOITABLE_DEFAULT_TEXT))
 		if (exploitables_empty)
 			continue
-		var/name = exploitable_record.fields["name"]
-		var/rank = exploitable_record.fields["rank"]
-//		var/truerank = exploitable_record.fields["truerank"]
+		var/name = general_record.fields["name"]
+		var/rank = general_record.fields["rank"]
+//		var/truerank = general_record.fields["truerank"]
 		var/datum/job/job = SSjob.GetJob(rank)
 		if(!job || !(job.job_flags & JOB_CREW_MANIFEST) || !LAZYLEN(job.departments_list) && (!exploitables_empty)) // In case an unlawful custom rank is added.
 			var/list/exp_misc_list = exp_manifest_out[DEPARTMENT_UNASSIGNED]
@@ -68,8 +68,8 @@
 		return
 	if(action == "show_exploitables")
 		var/exploitable_id = params["exploitable_id"]
-		var/datum/data/record/exploitable_record = find_record("name", exploitable_id, GLOB.data_core.general)
-		to_chat(usr, "<b>Exploitable information:</b> [exploitable_record.fields["exploitable_records"]]")
+		var/datum/data/record/general_record = find_record("name", exploitable_id, GLOB.data_core.general)
+		to_chat(usr, "<b>Exploitable information:</b> [general_record.fields["exploitable_records"]]")
 
 /datum/record_manifest/ui_data(mob/user)
 	var/list/positions = list()
