@@ -598,6 +598,7 @@
 	slowdown_inactive = 1
 	slowdown_active = 0.5
 	allowed_suit_storage = list(
+		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -652,6 +653,7 @@
 	slowdown_inactive = 0.75
 	slowdown_active = 0.25
 	allowed_suit_storage = list(
+		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -708,6 +710,7 @@
 	slowdown_inactive = 0.75
 	slowdown_active = 0.25
 	allowed_suit_storage = list(
+		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -810,6 +813,7 @@
 	ui_theme = "syndicate"
 	inbuilt_modules = list(/obj/item/mod/module/armor_booster)
 	allowed_suit_storage = list(
+		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -887,6 +891,7 @@
 	ui_theme = "syndicate"
 	inbuilt_modules = list(/obj/item/mod/module/armor_booster)
 	allowed_suit_storage = list(
+		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -1043,6 +1048,7 @@
 	slowdown_inactive = 0.5
 	slowdown_active = 0
 	allowed_suit_storage = list(
+		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -1116,6 +1122,7 @@
 	siemens_coefficient = 0
 	complexity_max = DEFAULT_MAX_COMPLEXITY + 10
 	allowed_suit_storage = list(
+		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -1169,6 +1176,7 @@
 	slowdown_inactive = 0.5
 	slowdown_active = 0
 	allowed_suit_storage = list(
+		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
