@@ -46,7 +46,7 @@
 	detailed_desc = "While diminutive in size, the Workman series of mining shuttles makes up for that in price and utility, perfect for when you need a ship to mine some asteroids, and you need it now."
 	cost = 3000
 	stock = 5
-	allowed_docks = list(DOCKS_SMALL_UPWARDS)
+	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
 	shuttle_type = SHUTTLE_MINING
 
 ////////////////////////
