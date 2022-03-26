@@ -94,6 +94,9 @@
 		if(mod.wearer)
 			balloon_alert(mod.wearer, "not active!")
 		return
+	if(mod.wearer.wear_suit != mod.chestplate)
+		balloon_alert(mod.wearer, "chestplate retracted!")
+		return
 	if(module_type != MODULE_USABLE)
 		if(active)
 			on_deactivation()
