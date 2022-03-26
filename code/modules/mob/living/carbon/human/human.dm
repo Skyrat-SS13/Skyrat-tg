@@ -393,7 +393,7 @@
 
 	//SKYRAT EDIT ADDITION BEGIN - VIEW RECORDS
 	if(href_list["exprecords"])
-		if (src.mind.can_see_exploitables)
+		if (mind.can_see_exploitables)
 			var/examined_name = get_face_name(get_id_name("")) //Named as such because this is the name we see when we examine
 			var/datum/data/record/target_general_records = find_record("name", examined_name, GLOB.data_core.general)
 			to_chat(usr, "<b>Exploitable information:</b> [target_general_records.fields["exploitable_records"]]")
