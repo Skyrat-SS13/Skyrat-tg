@@ -98,11 +98,8 @@
 	overlay_list += appearance
 
 /obj/item/organ/external/proc/set_sprite(sprite_name)
-	return
-	/* SKYRAT EDIT REMOVAL
 	sprite_datum = get_sprite_datum(sprite_name)
-	cache_key = generate_icon_cache()
-	*/
+	// cache_key = generate_icon_cache() - SKYRAT EDIT REMOVAL
 
 ///Generate a unique key based on our sprites. So that if we've aleady drawn these sprites, they can be found in the cache and wont have to be drawn again (blessing and curse)
 /obj/item/organ/external/proc/generate_icon_cache()
