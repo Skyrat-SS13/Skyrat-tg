@@ -7,6 +7,7 @@
 #define CHANNEL_HEARTBEAT 1020 //sound channel for heartbeats
 #define CHANNEL_AMBIENCE 1019
 #define CHANNEL_BUZZ 1018
+<<<<<<< HEAD
 #define CHANNEL_BICYCLE 1017
 #define CHANNEL_MBOX 1016
 */
@@ -21,6 +22,10 @@
 #define CHANNEL_HEV 1010
 #define CHANNEL_PCV 1009
 //SKYRAT EDIT CHANGE END
+=======
+#define CHANNEL_TRAITOR 1017
+
+>>>>>>> f8794c441b4 (Mystery boxes no longer cut off each other's audio (#65655))
 ///Default range of a sound.
 #define SOUND_RANGE 17
 #define MEDIUM_RANGE_SOUND_EXTRARANGE -5
