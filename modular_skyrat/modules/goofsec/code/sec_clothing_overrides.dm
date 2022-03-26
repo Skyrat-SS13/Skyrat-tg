@@ -48,8 +48,8 @@
 /obj/item/storage/belt/security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
-	icon_state = "belt_black"
-	worn_icon_state = "belt_black"
+	icon_state = "belt_white"
+	worn_icon_state = "belt_white"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
@@ -237,6 +237,7 @@
 		),
 	)
 
+
 /////////////////////
 //----- NECK ------//
 /////////////////////
@@ -309,7 +310,7 @@
 	desc = "A pair of security gloves."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
-	icon_state = "gloves_black"
+	icon_state = "gloves_white"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
@@ -345,7 +346,7 @@
 	desc = "An armored vest designed for use in combat, used by security personnel."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "vest_black"
+	icon_state = "vest_white"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
@@ -365,6 +366,11 @@
 			RESKIN_WORN_ICON_STATE = "peacekeeper"
 		)
 	)
+
+/obj/item/clothing/suit/armor/hos/trenchcoat/black
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "hos_black"
 
 //Standard Bulletproof Vest
 /obj/item/clothing/suit/armor/bulletproof
