@@ -99,12 +99,11 @@
 
 /obj/item/organ/external/proc/set_sprite(sprite_name)
 	sprite_datum = get_sprite_datum(sprite_name)
-	// cache_key = generate_icon_cache() - SKYRAT EDIT REMOVAL
+	cache_key = generate_icon_cache()
 
 ///Generate a unique key based on our sprites. So that if we've aleady drawn these sprites, they can be found in the cache and wont have to be drawn again (blessing and curse)
 /obj/item/organ/external/proc/generate_icon_cache()
-	return ""
-	//return "[sprite_datum.icon_state]_[feature_key]" SKYRAT EDIT REMOVAL
+	return "[sprite_datum.icon_state]_[feature_key]"
 
 /**This exists so sprite accessories can still be per-layer without having to include that layer's
 *  number in their sprite name, which causes issues when those numbers change.
@@ -135,7 +134,8 @@
 ///Because all the preferences have names like "Beautiful Sharp Snout" we need to get the sprite datum with the actual important info
 /obj/item/organ/external/proc/get_sprite_datum(sprite)
 	var/list/feature_list = get_global_feature_list()
-	return feature_list[sprite]
+	if(!isnull(feature_list[sprite]))
+		return feature_list[sprite]
 
 ///Return a dumb glob list for this specific feature (called from parse_sprite)
 /obj/item/organ/external/proc/get_global_feature_list()
