@@ -38,6 +38,7 @@
 	cost = 5000
 	stock = 3
 	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
+	shuttle_type = SHUTTLE_MINING
 
 /datum/sold_shuttle/common_workman
 	name = "MS Workman"
@@ -46,6 +47,7 @@
 	cost = 3000
 	stock = 5
 	allowed_docks = list(DOCKS_SMALL_UPWARDS)
+	shuttle_type = SHUTTLE_MINING
 
 ////////////////////////
 //Exploration shuttles//
