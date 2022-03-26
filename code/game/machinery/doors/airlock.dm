@@ -121,6 +121,7 @@
 	var/detonated = FALSE
 	var/abandoned = FALSE
 	var/cutAiWire = FALSE
+	var/autoname = FALSE
 	var/doorOpen = 'sound/machines/airlock.ogg'
 	var/doorClose = 'sound/machines/airlockclose.ogg'
 	var/doorDeni = 'sound/machines/deniedbeep.ogg' // i'm thinkin' Deni's
@@ -222,6 +223,8 @@
 				panel_open = TRUE
 	if(cutAiWire)
 		wires.cut(WIRE_AI)
+	if(autoname)
+		name = get_area_name(src, TRUE)
 	update_appearance()
 
 
