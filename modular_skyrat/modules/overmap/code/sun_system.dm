@@ -16,8 +16,8 @@
 	var/x_offset = 0
 	var/y_offset = 0
 	/// The furthest x and y in the sun system
-	var/maxx = 30
-	var/maxy = 30
+	var/maxx = 50
+	var/maxy = 50
 
 /datum/overmap_sun_system/proc/IsOutOfBoundsX(passed_x)
 	return (passed_x > maxx || passed_x < 1)
