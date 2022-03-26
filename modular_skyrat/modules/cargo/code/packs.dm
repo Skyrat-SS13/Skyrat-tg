@@ -324,7 +324,8 @@
 					/obj/item/circuitboard/machine/propulsion_engine,
 					/obj/item/circuitboard/machine/propulsion_engine,
 					/obj/item/circuitboard/machine/propulsion_engine)
-	crate_name = "Propulsion Engine Boards Crate"
+	crate_name = "Propulsion Engine Boards Box"
+	crate_type = /obj/structure/closet/crate/cardboard/mothic
 
 /datum/supply_pack/engineering/overmap_essentials
 	name = "Shuttle Upgrade Machine Boards Crate"
@@ -334,7 +335,8 @@
 					/obj/item/circuitboard/machine/shield_generator,
 					/obj/item/circuitboard/machine/ship_weapon/mining_laser,
 					/obj/item/circuitboard/machine/transporter)
-	crate_name = "Shuttle Upgrade Machine Boards Crate"
+	crate_name = "Shuttle Upgrade Machine Boards Box"
+	crate_type = /obj/structure/closet/crate/cardboard/mothic
 
 /datum/supply_pack/engineering/overmap_trade
 	name = "Shuttle Trade Suite Boards Crate"
@@ -342,7 +344,8 @@
 	cost =  CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/circuitboard/machine/trade_pad,
 					/obj/item/circuitboard/computer/trade_console)
-	crate_name = "Shuttle Trade Suite Boards Crate"
+	crate_name = "Shuttle Trade Suite Boards Box"
+	crate_type = /obj/structure/closet/crate/cardboard/mothic
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Misc Crates /////////////////////////////////////
