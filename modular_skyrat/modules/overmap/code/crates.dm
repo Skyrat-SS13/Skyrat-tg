@@ -1,8 +1,7 @@
 
-/obj/structure/closet/crate/build_your_shuttle
-	icon_state = "engi_crate"
+/obj/structure/closet/crate/cardboard/mothic/build_your_shuttle
 
-/obj/structure/closet/crate/build_your_shuttle/PopulateContents()
+/obj/structure/closet/crate/cardboard/mothic/build_your_shuttle/PopulateContents()
 	. = ..()
 	new /obj/item/circuitboard/computer/shuttle_common_docks(src)
 	new /obj/item/pipe_dispenser(src)
@@ -13,19 +12,14 @@
 	new /obj/item/electronics/airalarm(src)
 	new /obj/item/circuitboard/machine/propulsion_engine(src)
 
-/obj/structure/closet/crate/build_your_shuttle_extra
-	icon_state = "engi_crate"
+/obj/structure/closet/crate/cardboard/mothic/build_your_shuttle_extra
 
-/obj/structure/closet/crate/build_your_shuttle_extra/PopulateContents()
+/obj/structure/closet/crate/cardboard/mothic/build_your_shuttle_extra/PopulateContents()
 	. = ..()
 	new /obj/item/stack/sheet/iron/fifty(src)
 	new /obj/item/stack/sheet/glass/fifty(src)
 	new /obj/item/stack/sheet/mineral/titanium/fifty(src)
 	new /obj/item/circuitboard/machine/propulsion_engine(src)
-
-/obj/structure/closet/crate/large/air_can/PopulateContents()
-	. = ..()
-	new /obj/machinery/portable_atmospherics/canister/air(src)
 
 /obj/structure/closet/crate/large/air_can/PopulateContents()
 	. = ..()

@@ -241,8 +241,8 @@
 /obj/effect/spawner/random/ballistic_weapon
 	name = "ballistic weapon spawner"
 	loot = list(
-		/obj/item/gun/ballistic/automatic/akm,
-		/obj/item/gun/ballistic/automatic/m16,
+		/obj/item/gun/ballistic/automatic/akm = 1,
+		/obj/item/gun/ballistic/automatic/m16 = 1,
 		/obj/item/gun/ballistic/shotgun/sas14 = 1,
 	)
 
