@@ -72,7 +72,7 @@
 	gain_text = span_notice("You feel like you won't be able to use guns anymore...")
 	lose_text = span_notice("You suddenly feel like you can use guns again!")
 	medical_record_text = "Patient is unable to use firearms. Reasoning unknown."
-	value = -6
+	value = -4
 	mob_trait = TRAIT_NOGUNS
 	icon = "hand-middle-finger"
 
