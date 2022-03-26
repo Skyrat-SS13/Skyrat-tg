@@ -1186,7 +1186,6 @@
 				return
 		INVOKE_ASYNC(src, (density ? .proc/open : .proc/close), 2)
 
-
 /obj/machinery/door/airlock/open(forced=0)
 	if( operating || welded || locked || seal )
 		return FALSE
@@ -1203,7 +1202,7 @@
 		playsound(src, forcedOpen, 30, TRUE) //SKYRAT EDIT CHANGE - AESTHETICS
 
 	if(autoclose)
-		autoclose_in(normalspeed ? 150 : 15)
+		autoclose_in(normalspeed ? 8 SECONDS : 1.5 SECONDS)
 
 	if(!density)
 		return TRUE
