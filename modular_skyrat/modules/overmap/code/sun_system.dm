@@ -109,6 +109,8 @@
 					new transp_type(src, iterated_x, iterated_y)
 				if(prob(ORE_ROCK_PER_TILE_CHANCE))
 					new /datum/overmap_object/ore_rock(src, iterated_x, iterated_y)
+					if(prob(ORE_ROCK_DOUBLE_CHANCE))
+						new /datum/overmap_object/ore_rock(src, iterated_x, iterated_y)
 	//Spawn hazards
 	SeedHazards()
 

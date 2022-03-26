@@ -57,6 +57,7 @@
 
 //Generaton stuff
 #define ORE_ROCK_PER_TILE_CHANCE 9
+#define ORE_ROCK_DOUBLE_CHANCE 30
 
 #define TRANSPORTABLE_LOOT_CHANCE_PER_TILE 7
 #define TRANSPORTABLE_LOOT_TABLE list(/datum/overmap_object/transportable/debris = 60, \
