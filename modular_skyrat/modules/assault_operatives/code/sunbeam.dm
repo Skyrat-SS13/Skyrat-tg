@@ -117,10 +117,12 @@
 	volume = 100
 	extra_range = 25
 
-/client/proc/spawn_sunbeam(mob/living/target_mob in GLOB.mob_living_list)
+/client/proc/spawn_sunbeam()
 	set category = "Admin.Fun"
 	set name = "Spawn Sunbeam"
 	set desc = "Spawns an ICARUS sunbeam at your location and sends it towards a target."
+
+	var/mob/living/target_mob = tgui_input_list(usr, "Select a mob", "Mob", GLOB.mob_living_list)
 
 	if(!target_mob)
 		return
