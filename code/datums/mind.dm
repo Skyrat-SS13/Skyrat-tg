@@ -307,7 +307,6 @@
 	var/datum/antagonist/A = has_antag_datum(datum_type)
 	if(A)
 		A.on_removal()
-		handle_exploitables() //SKYRAT EDIT ADDITION - EXPLOITABLE MENU
 
 		return TRUE
 
@@ -316,7 +315,6 @@
 	for(var/a in antag_datums)
 		var/datum/antagonist/A = a
 		A.on_removal()
-	handle_exploitables() //SKYRAT EDIT ADDITION BEGIN - EXPLOITABLE MENU
 
 /datum/mind/proc/has_antag_datum(datum_type, check_subtypes = TRUE)
 	if(!datum_type)
@@ -714,9 +712,10 @@
 					log_admin("[key_name(usr)] gave [current] an uplink.")
 			//SKYRAT EDIT ADDITION BEGIN -- EXPLOITABLES
 			if("toggleexploitables")
-				has_exploitables_override = !has_exploitables_override
-				log_admin("[key_name(usr)] toggled [current]'s exploitables override to [has_exploitables_override].")
-				message_admins("[key_name(usr)] toggled [current]'s exploitables override to [has_exploitables_override].")
+				has_exploitables_override = !has_exploitables_override //First we set the override to be the opposite of whatever it was apon execution, then we
+				handle_exploitables() // use ternaries to convert this into true/false for admin logs.
+				log_admin("[key_name(usr)] toggled [current]'s exploitables override to [(has_exploitables_override) ? "true" : "false"].")
+				message_admins("[key_name(usr)] toggled [current]'s exploitables override to [(has_exploitables_override) ? "true" : "false"].")
 			//SKYRAT EDIT ADDITION END
 
 	else if (href_list["obj_announce"])
