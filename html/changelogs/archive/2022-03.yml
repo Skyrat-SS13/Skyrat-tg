@@ -749,3 +749,136 @@
       sprite
   - imageadd: adjusted white undershirt side sprites to be more in line with the front
       sprite
+2022-03-24:
+  AtoriBirb:
+  - imageadd: 4 new plush sprites to plushies.dmi
+  OrionTheFox:
+  - rscadd: Added a fakelattice you can walk through, and adds it to the Ghostship/Salvagepost
+      ruins. Now you can explore them, whoops.
+  RatFromTheJungle:
+  - bugfix: you can now actually, research the advanced vision node, and all statements
+      saying I forgot to add it are slanderous.
+  Seris02:
+  - bugfix: the HoP winter coat has been separated into two coats, and the old icons
+      that were supposed to be put in in the last fix PR for it are actually now back
+      in the files.
+  SkyratBot:
+  - bugfix: Fixes being able to use revival surgery on blacklisted defib victims
+  - imageadd: On the mapping end, the Abductor Ship, the Wizard's Ship, and the Thunderdome
+      Administration and Observation Areas now have new area turf sprites. Does this
+      matter to your in-game experience? Probably not.
+  - refactor: 'cryotubes can now work with any gases expansion: cryotubes patients
+      will actually breathe the air inside the tube and will respond to the gas accordingly
+      (they''ll suffer from breath loss if not in proper atmosphere inside the tube)
+      expansion: cryoxadone heals only if the patient is alseep, making the use of
+      the anesthetic no longer just fluff but also functional qol: replaced oxygen
+      canisters with anesthetic ones (a mix of oxygen and n2o at 65-35 ratio) for
+      allowing the patient to sleep'
+  - bugfix: Nanotrasen realized that Kilo's Arrivals had a horrendous glitch... the
+      lights and cameras weren't hooked up to anything. How saddening. It's been fixed
+      now.
+  - bugfix: Also, Nanotrasen realized they spilled some dark juice (trademark) on
+      some other lattices in that area so they cleaned up after themselves as well.
+      How responsible!
+  - bugfix: Nanotrasen realized that they should stop installing grilles right on
+      top of the Air Flow Meters on IceBoxStation.
+  - rscadd: 'Becoming the patron of a painting now lets you select a different appearance
+      for the frame it''s in. This appearance will persist between rounds (the ability
+      to modify the frame won''t, though). The more credits have been spent on the
+      patronage, the better the options: from 150 for the iron frame up to 12000 for
+      the supermatter one (doesn''t dust nor irradiate).'
+  - bugfix: You can now sponsor a painting that hasn't been archived yet. Just make
+      sure it's inserted in a frame with persistence on.
+  - bugfix: fixed some mismatches between sprites and sizes for a few canvases.
+  - admin: When you send people to Admin Prison for any number of reasons, please
+      take joy in knowing they can't explode out the floors any more.
+  - refactor: 'refactored the electrolyzer to use datumized reactions instead of hardcode
+      them in process expansion: added the hypernoblium to antinoblium conversion,
+      when hypernoblium is exposed to the electrolyzer it will be converted to antinoblium'
+  - bugfix: xray beams can now be resisted by laser-resistant armor
+  - code_imp: /obj/projectile flag is renamed to armor_flag
+  - bugfix: Fixed icebox plasma facility mood event color not working.
+  - code_imp: Improved mood events descriptions to be simpler to write.
+  - imageadd: On the mapping end, CentCom has now been covered in a fresh new paint...
+      of area turfs! Who doesn't love those!
+  ZephyrTFA:
+  - rscadd: Upgraded Borg Snack Dispensor
+  Zonespace27:
+  - spellcheck: Fixed many spelling errors in organic interface messages
+  - refactor: Refactored some organic interface clothing
+  - rscadd: New module for contractor MODSuit, baton holster
+  - rscadd: Two contractor baton upgrades
+  - bugfix: Contractor MODSuit now protects you against pressure when you aren't using
+      an armor booster
+  - bugfix: Contractor MODSuit name and desc now get updated properly when a chameleon
+      module wears off
+  magatsuchi:
+  - bugfix: allows changelings to re-enter their body despite DNR ban
+  this awesome text:
+  - balance: MODsuits have some armor.
+2022-03-25:
+  2cents:
+  - imageadd: Updated security sprites.
+  Gandalf2k15:
+  - rscadd: Security medic sprites have been rearranged.
+  Shiets, Dragomagol:
+  - rscadd: Podpeople now have plant-like growths springing from their heads!
+  - rscadd: Podpeople can style their "hair" with secateurs
+  SkyratBot:
+  - bugfix: Fixed Departmental Techfab machine board for service being named oddly
+      compared to the other ones.
+  - balance: xray lasers now have 100 armor penetration
+  - imageadd: Nanotrasen has upgraded "that machine that prints all of those decals
+      on our station tiles" to now print two corners that face opposite each other
+      at the same time. Very cool!
+  - bugfix: Fixed the size of plaques on the painting UI. They were awfully thin.
+  - bugfix: Fixed 24x24 paintings not being centered inside their frames.
+  - bugfix: Bot's modes have been fixed, Medibots will no longer be on 'arrest' mode.
+2022-03-26:
+  AtoriBirb:
+  - code_imp: swapped a plush sound file to one less red-code inducing
+  ErdinyoBarboza:
+  - bugfix: The construction interns finally installed access restrictions to Icebox
+      Armory.
+  SkyratBot:
+  - bugfix: Fixed double firelocks in Deltastation's fore customs area.
+  - bugfix: Kiosk wands can no longer be put into storage containers
+  - bugfix: Nukies can no longer lock their own uplink.
+  - bugfix: Clicking on airlock with ID Scan wire cut, should not open airlock.
+  - bugfix: Fix an overlooked crystallizer issue where gases wouldn't get consumed
+      because of a fixed rate of removal instead of an percentage based one.
+  Wallem:
+  - bugfix: GPSes don't start deactivated anymore, which also brings back most space
+      ruin GPS signals. Sorry about that.
+2022-03-27:
+  Jolly:
+  - bugfix: SnowCabin.dmm had its active turfs rectified.
+  SkyratBot:
+  - balance: Sentient Diseases now require a minimum playercount of 25 to activate,
+      up from 10.
+  - rscadd: Added command encryption keys to the cargo order console
+  - bugfix: TGUI and Tooltip windows now work with high-dpi web browsers
+  - bugfix: The latejoin menu will now properly close when you join the game
+  - bugfix: IceBox had two washing machines on the same tile, as well as a bit brighter
+      than usual decals. That tile is back to normal.
+  - bugfix: The engineering console on Icebox is once again connected to the station's
+      grid and can see APC status and available power.
+  - imageadd: For those who seek out rarer materials, Runite Bars have a nicer appearance.
+  - bugfix: Fixed airlocks and windoors not being able to be attacked by melee weapons
+      in combat mode.
+  - bugfix: Fix tritium fire releasing more radiation than it should.
+  - rscadd: Nanotrasen has refurbished the Recreation Deck on DeltaStation. Feel free
+      to "ooh" and "aah" at all of the new features that have been added.
+  - bugfix: The chairs on the casino shuttle are now facing the proper directions
+  - bugfix: 'The Zeta shuttle brig now uses the brig shuttle area qol: Shuttle doors
+      that previously had varedited accesses now use preset access helpers'
+  - soundadd: Sound effects for attacking bushes, trees, mushrooms and rocks.
+  - code_imp: Minor code improvements in flora.dm
+  - balance: Airlocks will now autoclose in 8 seconds rather then 15
+  - bugfix: If you were a prisoner on KiloStation and you noticed some abnormally
+      dark rocks, I hope you are pleased to know that they have been brightened up.
+      No compensation is offered.
+  - bugfix: Fixes nonhuman head of departments showing up as their original species
+      in security records.
+  - balance: Destroy the Blackbox is now worth 6-9 TC instead of 4 TC
+  - bugfix: Fixed stray syndicate supply pods not containing any items.

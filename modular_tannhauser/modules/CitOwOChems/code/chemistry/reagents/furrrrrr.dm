@@ -21,18 +21,17 @@
 
 /datum/reagent/OwO/furranium/expose_mob(mob/living/carbon/human/M, method=INJECT, reac_volume)
 	if(method == INJECT)
-		var/turf/T = get_turf(M)
 		M.adjustOxyLoss(reac_volume)
-		//M.DefaultCombatKnockdown(50)
-		if(reac_volume >= 10)
-			M.Stun(reac_volume * 0.25)
 		M.emote("cough")
-		var/obj/item/toy/plush/P = pick(subtypesof(/obj/item/toy/plush))
-		new P(T)
-		M.visible_message("<span class='warning'>[M] suddenly coughs up a [P.name]!</b></span>",\
-						"<span class='warning'>You feel a lump form in your throat, as you suddenly cough up what seems to be a hairball?</b></span>")
-		var/T2 = get_random_station_turf()
-		P.throw_at(T2, 8, 1)
+		//M.DefaultCombatKnockdown(50)
+		if(reac_volume >= 15)
+			M.Stun(reac_volume * 0.25)
+			var/obj/item/toy/plush/PType = pick(GLOB.valid_plushie_paths)
+			var/obj/item/toy/plush/P = new PType(get_turf(M))
+			M.visible_message("<span class='warning'>[M] suddenly coughs up a [P.name]!</b></span>",\
+							"<span class='warning'>You feel a lump form in your throat, as you suddenly cough up what seems to be a hairball?</b></span>")
+			var/T2 = get_random_station_turf()
+			P.throw_at(T2, 8, 1)
 	..()
 
 /datum/reagent/OwO/furranium/on_mob_life(mob/living/carbon/M)

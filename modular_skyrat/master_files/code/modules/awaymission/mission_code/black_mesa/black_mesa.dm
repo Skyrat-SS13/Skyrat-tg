@@ -121,7 +121,7 @@
 	weapon_weight = WEAPON_HEAVY
 	zoomable = 1
 	zoom_amt = 5
-	fire_delay = 3 SECONDS
+	fire_delay = 4 SECONDS
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/chaingun_fire.ogg'
 
 /obj/item/ammo_box/magazine/recharge/marksman
@@ -137,8 +137,8 @@
 
 /obj/projectile/beam/marksman
 	name = "laser beam"
-	damage = 50
-	armour_penetration = 10
+	damage = 70
+	armour_penetration = 30
 	hitscan = TRUE
 	icon_state = "gaussstrong"
 	tracer_type = /obj/effect/projectile/tracer/solar

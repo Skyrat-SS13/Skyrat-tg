@@ -58,7 +58,7 @@
 	damage_type = BURN
 	nodamage = FALSE
 	knockdown = 20
-	flag = BIO
+	armor_flag = BIO
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/neurotoxin
 	hitsound = 'modular_skyrat/master_files/sound/blackmesa/bullsquid/splat1.ogg'
 	hitsound_wall = 'modular_skyrat/master_files/sound/blackmesa/bullsquid/splat1.ogg'
@@ -270,7 +270,7 @@
 	damage = 20
 	damage_type = BURN
 	light_range = 2
-	flag = ENERGY
+	armor_flag = ENERGY
 	light_color = LIGHT_COLOR_YELLOW
 	hitsound = 'sound/weapons/sear.ogg'
 	hitsound_wall = 'sound/weapons/effects/searwall.ogg'

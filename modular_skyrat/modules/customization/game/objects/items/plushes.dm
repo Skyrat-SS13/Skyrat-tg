@@ -281,6 +281,46 @@
 	attack_verb_continuous = list("wehs")
 	attack_verb_simple = list("weh")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
+	
+/obj/item/toy/plush/blue_cat
+	name = "blue cat plushie"
+	desc = "A bright blue cat plush with neon pink hair, here to hand out kisses wherever kisses need be."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_skyy"
+	inhand_icon_state = "plushie_skyy"
+	attack_verb_continuous = list("kisses", "hugs", "purrs against")
+	attack_verb_simple = list("kisses", "hugs", "purrs against")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/nya.ogg' = 1)
+
+/obj/item/toy/plush/igneous_synth
+	name = "igneous synth plushie"
+	desc = "Not actually made of igneous rock, giving this plush a hug will let you feel like you're being squeezed by the jaws of life!"
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_granite"
+	inhand_icon_state = "plushie_granite"
+	attack_verb_continuous = list("bleps", "SQUEEZES", "pies")
+	attack_verb_simple = list("bleps", "SQUEEZES", "pies")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg' = 1)
+
+/obj/item/toy/plush/edgy_bird
+	name = "edgy birb plushie"
+	desc = "An edgy plush of an edgy bird. You could swear it's teleporting to a different spot every time you look away..."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_koto"
+	inhand_icon_state = "plushie_koto"
+	attack_verb_continuous = list("pecks", "teleports behind", "caws at")
+	attack_verb_simple = list("pecks", "teleports behind", "caws at")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/caw.ogg' = 1)
+
+/obj/item/toy/plush/tree_ferret
+	name = "tree ferret plushy"
+	desc = "This plush will always put on a smile to make your day as bright as the sun. Hugging him makes you feel warm and fuzzy. Comes with plush chemical vials to fix your non emotional traumas too!"
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_sels"
+	inhand_icon_state = "plushie_sels"
+	attack_verb_continuous = list("hugs", "cackles at", "health analyzes")
+	attack_verb_simple = list("hugs", "cackles at", "health analyzes")
+	squeak_override = list('sound/creatures/venus_trap_hurt.ogg' = 1)
 
 /obj/item/toy/plush/fox/mia
 	name = "Mia’s fox plushie"
