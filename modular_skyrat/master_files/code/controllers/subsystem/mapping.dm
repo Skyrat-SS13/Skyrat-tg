@@ -350,7 +350,7 @@ Used by the AI doomsday and the self-destruct nuke.
 	if(config.space_ruin_levels)
 		for(var/i in 1 to config.space_ruin_levels)
 			++space_levels_so_far
-			add_new_zlevel("Ruins Area [i]", ZTRAITS_SPACE, overmap_obj = new /datum/overmap_object/ruins(SSovermap.main_system, rand(5,25), rand(5,25)))
+			add_new_zlevel("Ruins Area [i]", ZTRAITS_SPACE, overmap_obj = new /datum/overmap_object/ruins(SSovermap.main_system, rand(5,45), rand(5,45)))
 	//Load planets
 	if(config.minetype == "lavaland")
 		var/datum/planet_template/lavaland_template = planet_templates[/datum/planet_template/lavaland]
@@ -370,7 +370,7 @@ Used by the AI doomsday and the self-destruct nuke.
 			var/picked_planet_type = pick_weight(planet_list)
 			planet_list -= picked_planet_type
 			var/datum/planet_template/picked_template = planet_templates[picked_planet_type]
-			picked_template.LoadTemplate(SSovermap.main_system, rand(5,25), rand(5,25))
+			picked_template.LoadTemplate(SSovermap.main_system, rand(5,45), rand(5,45))
 #endif
 
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
