@@ -549,8 +549,6 @@
 	desc = "A 5.56mm surplus bullet casing."
 	projectile_type = /obj/projectile/bullet/a556/weak
 
-#define MOB_PLACER_RANGE 12
-
 /obj/effect/random_mob_placer
 	name = "mob placer"
 	icon = 'icons/effects/mapping_helpers.dmi'
@@ -559,22 +557,9 @@
 
 /obj/effect/random_mob_placer/Initialize(mapload)
 	. = ..()
-	for(var/turf/iterating_turf in range(MOB_PLACER_RANGE, src))
-		RegisterSignal(iterating_turf, COMSIG_ATOM_ENTERED, .proc/trigger)
-
-/obj/effect/random_mob_placer/proc/trigger(datum/source, atom/movable/entered_atom)
-	if(!isliving(entered_atom))
-		return
-	var/mob/living/entered_mob = entered_atom
-
-	if(!entered_mob.client)
-		return
-
 	var/mob/picked_mob = pick(possible_mobs)
 	new picked_mob(loc)
-	qdel(src)
-
-#undef MOB_PLACER_RANGE
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/random_mob_placer/xen
 	possible_mobs = list(
