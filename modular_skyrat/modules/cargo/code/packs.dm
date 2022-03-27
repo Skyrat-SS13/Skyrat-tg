@@ -319,7 +319,7 @@
 /datum/supply_pack/engineering/overmap_engines
 	name = "Propulsion Engine Boards Crate"
 	desc = "Contains four boards for constructing our high quality FTail (TM) series of propulsion engines, connect to gas supply for best results."
-	cost = CARGO_CRATE_VALUE * 2
+	cost = CARGO_CRATE_VALUE * 4
 	contains = list(/obj/item/circuitboard/machine/propulsion_engine,
 					/obj/item/circuitboard/machine/propulsion_engine,
 					/obj/item/circuitboard/machine/propulsion_engine,
@@ -330,7 +330,7 @@
 /datum/supply_pack/engineering/overmap_essentials
 	name = "Shuttle Upgrade Machine Boards Crate"
 	desc = "Contains several boards for machines meant to upgrade your private shuttles, with a shield generator, transporter pad, mining laser, and even spare control console included."
-	cost = CARGO_CRATE_VALUE * 3
+	cost = CARGO_CRATE_VALUE * 6
 	contains = list(/obj/item/circuitboard/computer/shuttle_common_docks,
 					/obj/item/circuitboard/machine/shield_generator,
 					/obj/item/circuitboard/machine/ship_weapon/mining_laser,
@@ -341,7 +341,7 @@
 /datum/supply_pack/engineering/overmap_trade
 	name = "Shuttle Trade Suite Boards Crate"
 	desc = "Contains boards for the trade console and telepad, meant for mounting on shuttles and for trading with interstellar trading hubs, apply money for best results."
-	cost =  CARGO_CRATE_VALUE * 2
+	cost =  CARGO_CRATE_VALUE * 4
 	contains = list(/obj/item/circuitboard/machine/trade_pad,
 					/obj/item/circuitboard/computer/trade_console)
 	crate_name = "Shuttle Trade Suite Boards Box"
