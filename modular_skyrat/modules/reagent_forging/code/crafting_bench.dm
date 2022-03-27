@@ -23,12 +23,14 @@
 	var/current_coil = 0
 	///the amount of coils required
 	var/required_coil = 0
+	///the amount of wood within the bench
+	var/current_wood = 0
+	///the amount of wood required
+	var/required_wood = 0
 	///the amount of hits required to complete the item
 	var/required_hits = 0
 	///the current amount of hits
 	var/current_hits = 0
-	///the amount of wood currently stored
-	var/current_wood = 0
 	//so we can't just keep being hit without cooldown
 	COOLDOWN_DECLARE(hit_cooldown)
 	///the choices allowed in crafting
@@ -48,6 +50,8 @@
 		"Coil" = /obj/item/forging/coil,
 		"Seed Mesh" = /obj/item/seed_mesh,
 		"Primitive Centrifuge" = /obj/item/reagent_containers/glass/primitive_centrifuge,
+		"Bokken" = /obj/item/forging/reagent_weapon/bokken,
+		"Bow" = /obj/item/forging/incomplete_bow,
 	)
 
 /obj/structure/reagent_crafting_bench/examine(mob/user)
@@ -61,16 +65,24 @@
 			. += span_warning("[current_plate]/[required_plate] plates stored.")
 		if(required_coil)
 			. += span_warning("[current_coil]/[required_coil] coils stored.")
+		if(required_wood)
+			. += span_warning("[current_wood]/[required_wood] wood stored.")
 	if(length(contents))
 		. += span_notice("Held Item: [contents[1]]")
 
 /obj/structure/reagent_crafting_bench/update_appearance(updates)
 	. = ..()
-	icon_state = "crafting_bench_[length(contents) ? "full" : "empty"]"
+	cut_overlays()
+	if(!length(contents))
+		return
+	var/image/overlayed_item = image(icon = contents[1].icon, icon_state = contents[1].icon_state)
+	overlayed_item.transform = matrix(1.5, 0, 0, 0, 0.8, 0)
+	add_overlay(overlayed_item)
 
 //when picking a design or clearing a design
 /obj/structure/reagent_crafting_bench/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
+	update_appearance()
 	if(length(contents))
 		var/obj/item/moving_item = contents[1]
 		user.put_in_hands(moving_item)
@@ -120,8 +132,12 @@
 			required_plate = 1
 		if("Primitive Centrifuge")
 			required_plate = 1
+		if("Bokken")
+			required_wood = 4
+		if("Bow")
+			required_wood = 4
 	if(!required_hits)
-		required_hits = (required_chain * 2) + (required_plate * 2) + (required_coil * 2)
+		required_hits = (required_chain * 2) + (required_plate * 2) + (required_coil * 2) + (required_wood * 2)
 	balloon_alert(user, "choice made!")
 	update_appearance()
 
@@ -133,6 +149,7 @@
 	required_chain = 0
 	required_plate = 0
 	required_coil = 0
+	required_wood = 0
 
 /obj/structure/reagent_crafting_bench/proc/check_required_materials(mob/living/user)
 	if(current_chain < required_chain)
@@ -142,6 +159,9 @@
 		balloon_alert(user, "not enough materials!")
 		return FALSE
 	if(current_coil < required_coil)
+		balloon_alert(user, "not enough materials!")
+		return FALSE
+	if(current_wood < required_wood)
 		balloon_alert(user, "not enough materials!")
 		return FALSE
 	return TRUE
@@ -242,6 +262,7 @@
 		current_chain -= required_chain
 		current_plate -= required_plate
 		current_coil -= required_coil
+		current_wood -= required_wood
 		clear_required()
 		return FALSE
 	current_hits++
