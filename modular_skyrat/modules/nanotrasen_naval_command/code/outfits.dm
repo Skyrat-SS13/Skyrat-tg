@@ -1,4 +1,6 @@
 /datum/outfit/centcom/naval
+	name = "Nanotrasen Naval Command - Default"
+	uniform = /obj/item/clothing/under/rank/centcom/naval/ensign
 	id = /obj/item/card/id/advanced/centcom
 	l_pocket = /obj/item/melee/baton/telescopic
 	shoes = /obj/item/clothing/shoes/combat/swat
