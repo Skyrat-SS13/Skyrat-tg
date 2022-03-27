@@ -70,7 +70,7 @@
 //Amount of hazard clusters being spawned
 #define DEFAULT_HAZARD_CLUSTER_AMOUNT 100
 //Their "dropoff", which is a value which will be subtracted every time a node spreads, into a chance to continue spreading. Higher dropoff = smaller nodes
-#define DEFAULT_HAZARD_CLUSTER_DROPOFF 4
+#define DEFAULT_HAZARD_CLUSTER_DROPOFF 3
 //All overmap hazards to be seeded randomly by default
 #define DEFAULT_OVERMAP_HAZARDS list(/datum/overmap_object/hazard/asteroid, \
 									/datum/overmap_object/hazard/dust, \

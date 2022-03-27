@@ -3,8 +3,9 @@
 	desc = "Used to call and send the labor camp shuttle."
 	circuit = /obj/item/circuitboard/computer/labor_shuttle
 	shuttleId = "laborcamp"
-	possible_destinations = "laborcamp_home;laborcamp_away;mediumdock;largedock;hugedock" //SKYRAT EDIT CHANGE
+	possible_destinations = "laborcamp_home;laborcamp_away"
 	req_access = list(ACCESS_BRIG)
+	uses_overmap = FALSE /// SKYRAT EDIT ADDITION
 
 /obj/machinery/computer/shuttle/labor/one_way
 	name = "prisoner shuttle console"
