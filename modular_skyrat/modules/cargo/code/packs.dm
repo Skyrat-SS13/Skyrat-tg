@@ -325,7 +325,7 @@
 					/obj/item/circuitboard/machine/propulsion_engine,
 					/obj/item/circuitboard/machine/propulsion_engine)
 	crate_name = "Propulsion Engine Boards Box"
-	crate_type = /obj/structure/closet/crate/cardboard/mothic
+	crate_type = /obj/structure/closet/crate/cardboard/fops
 
 /datum/supply_pack/engineering/overmap_essentials
 	name = "Shuttle Upgrade Machine Boards Crate"
@@ -336,7 +336,7 @@
 					/obj/item/circuitboard/machine/ship_weapon/mining_laser,
 					/obj/item/circuitboard/machine/transporter)
 	crate_name = "Shuttle Upgrade Machine Boards Box"
-	crate_type = /obj/structure/closet/crate/cardboard/mothic
+	crate_type = /obj/structure/closet/crate/cardboard/fops
 
 /datum/supply_pack/engineering/overmap_trade
 	name = "Shuttle Trade Suite Boards Crate"
@@ -345,7 +345,7 @@
 	contains = list(/obj/item/circuitboard/machine/trade_pad,
 					/obj/item/circuitboard/computer/trade_console)
 	crate_name = "Shuttle Trade Suite Boards Box"
-	crate_type = /obj/structure/closet/crate/cardboard/mothic
+	crate_type = /obj/structure/closet/crate/cardboard/fops
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Misc Crates /////////////////////////////////////
@@ -431,6 +431,18 @@
 			/obj/item/clothing/mask/gas/explorer = 1)
 	crate_name = "snowmobile kit"
 	crate_type = /obj/structure/closet/crate/large
+
+/datum/supply_pack/misc/shuttle_crew_outfits
+	name = "Shuttle Crew Outfit Supply Crate"
+	desc = "Looking to start your own shuttle crew to search the stars? Luckily for you, there are a few local fleets pawning off their surplus equipment. Contains equipment for one pilot and three extra crew."
+	cost = CARGO_CRATE_VALUE * 6
+	contains = list(/obj/item/storage/bag/garment/exp_pilot,
+					/obj/item/storage/bag/garment/exp_crew,
+					/obj/item/storage/bag/garment/exp_crew,
+					/obj/item/storage/bag/garment/exp_crew,
+					/obj/item/storage/box/mothic_rations)
+	crate_name = "surplus fleet supply box"
+	crate_type = /obj/structure/closet/crate/cardboard/fops
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Food Stuff //////////////////////////////////////
