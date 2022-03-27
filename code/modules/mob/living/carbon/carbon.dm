@@ -547,6 +547,7 @@
 		REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
 		REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
 		filters -= FILTER_STAMINACRIT
+		remove_status_indicator("stunned") // SKYRAT EDIT ADDITION: Status indicators
 	else
 		return
 	update_stamina_hud()

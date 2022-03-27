@@ -617,10 +617,9 @@
 	if (new_confusion)
 		var/datum/status_effect/confusion/confusion_status = has_status_effect(/datum/status_effect/confusion) || apply_status_effect(/datum/status_effect/confusion)
 		confusion_status.set_strength(new_confusion)
-		add_status_indicator("confused")
+		add_status_indicator("confused") // SKYRAT EDIT ADDITION: Status indicators
 	else
 		remove_status_effect(/datum/status_effect/confusion)
-		remove_status_indicator("confused")
 
 /// Add confusion to the mob. Confusion will make the mob walk randomly.
 /// Shorthand for set_confusion(confusion + x).

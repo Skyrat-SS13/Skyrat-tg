@@ -1,4 +1,4 @@
-#define PLANE_STATUS 4.8 //Status Indicators that show over mobs' heads when certain things like stuns affect them.
+#define PLANE_STATUS -2 //Status Indicators that show over mobs' heads when certain things like stuns affect them.
 
 #define VIS_STATUS			24
 
@@ -16,7 +16,6 @@
 /mob/living/proc/add_status_indicator(image/thing)
 	if(get_status_indicator(thing)) // No duplicates, please.
 		return
-	to_chat(src, thing)
 	if(!istype(thing, /image))
 		thing = image(icon = 'modular_skyrat/master_files/icons/mob/status_indicators.dmi', loc = src, icon_state = thing)
 
@@ -52,8 +51,8 @@
 		return
 	var/mob/living/carbon/carbon = src
 	// Now put them back on in the right spot.
-	var/our_sprite_x = carbon.dna.features["body_size"]
-	var/our_sprite_y = carbon.dna.features["body_size"]
+	var/our_sprite_x = 32 * carbon.dna.current_body_size
+	var/our_sprite_y = 24 * carbon.dna.current_body_size
 
 	var/x_offset = our_sprite_x // Add your own offset here later if you want.
 	var/y_offset = our_sprite_y + STATUS_INDICATOR_Y_OFFSET
@@ -73,11 +72,9 @@
 
 		// This is a semi-HUD element, in a similar manner as medHUDs, in that they're 'above' everything else in the world,
 		// but don't pierce obfuscation layers such as blindness or darkness, unlike actual HUD elements like inventory slots.
-		I.plane = 101
-		I.layer = RUNECHAT_PLANE
+		I.plane = PLANE_STATUS
+		I.layer = ABOVE_GAME_PLANE
 		I.appearance_flags = PIXEL_SCALE|TILE_BOUND|NO_CLIENT_COLOR|RESET_COLOR|RESET_ALPHA|RESET_TRANSFORM|KEEP_APART
-		I.pixel_y = y_offset
-		I.pixel_x = current_x_position
 		I.pixel_y = y_offset
 		I.pixel_x = current_x_position
 		add_overlay(I)
@@ -88,19 +85,19 @@
 /mob/living/proc/get_icon_scale()
 	var/mob/living/carbon/carbon = src
 
-	return carbon.dna.features["body_size"]
+	return carbon.dna.current_body_size
 
 
 
 
 
 
-/* /atom/movable/screen/plane_master/status
+/atom/movable/screen/plane_master/runechat/status
 	name = "status plane master"
-	plane = RUNECHAT_PLANE
-	appearance_flags = PLANE_STATUS
+	plane = PLANE_STATUS
+	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_OVERLAY
-	render_relay_plane = RENDER_PLANE_NON_GAME */
+	render_relay_plane = RENDER_PLANE_NON_GAME
 
 #undef STATUS_INDICATOR_Y_OFFSET
 #undef STATUS_INDICATOR_ICON_X_SIZE
