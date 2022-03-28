@@ -19,7 +19,6 @@
 		ui = new(user, src, "Vending")
 		ui.open()
 
-
 /obj/machinery/vending/assaultops_ammo/proc/fill_ammo(mob/user)
 	if(last_shopper == user && filled)
 		return
@@ -75,6 +74,3 @@
 		vending_product.custom_premium_price = 0
 		vending_product.age_restricted = FALSE
 		recordlist += vending_product
-
-
-
