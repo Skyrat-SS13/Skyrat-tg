@@ -20,6 +20,6 @@
 	icon_state = "com_headset_alt"
 
 /obj/item/radio/headset/heads/qm/alt
-	name = "\proper the quartermaster's headset"
+	name = "\proper the quartermaster's bowman headset"
 	desc = "The headset of the king (or queen) of paperwork. Protects ears from flashbangs."
 	icon_state = "com_headset_alt"

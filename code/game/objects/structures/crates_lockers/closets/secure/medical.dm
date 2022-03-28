@@ -79,6 +79,7 @@
 	new /obj/item/storage/bag/garment/chief_medical(src)
 	new /obj/item/cartridge/cmo(src)
 	new /obj/item/radio/headset/heads/cmo(src)
+	new /obj/item/radio/headset/heads/cmo/alt(src) //SKYRAT EDIT ADDITION
 	new /obj/item/megaphone/command(src)
 	new /obj/item/defibrillator/compact/loaded(src)
 	new /obj/item/healthanalyzer/advanced(src)

@@ -9,6 +9,7 @@
 	new /obj/item/storage/bag/garment/engineering_chief (src)
 	new /obj/item/cartridge/ce(src)
 	new /obj/item/radio/headset/heads/ce(src)
+	new /obj/item/radio/headset/heads/ce/alt(src) //SKYRAT EDIT ADDITION
 	new /obj/item/megaphone/command(src)
 	new /obj/item/areaeditor/blueprints(src)
 	new /obj/item/holosign_creator/atmos(src)
