@@ -12,8 +12,10 @@
 			msg += "\"01000001 01001001\"."
 		if(TRACK_INFILTRATOR)
 			msg += "\"vasvygengbefuvc\"."
+		/// SKYRAT EDIT BEGIN
 		if(TRACK_GOLDENEYE)
 			msg += "\"goldeneye_key\"."
+		/// SKYRAT EDIT END
 		else
 			msg = "Its tracking indicator is blank."
 	. += msg
