@@ -14,12 +14,16 @@
 	ears = /obj/item/radio/headset/chameleon/advanced
 	l_pocket = /obj/item/modular_computer/tablet/syndicate_contract_uplink/preset/uplink
 	id = /obj/item/card/id/advanced/chameleon
-	backpack_contents = list(/obj/item/storage/box/survival/syndie = 1,\
-	/obj/item/storage/box/syndicate/contract_kit/midround = 1,\
-		/obj/item/knife/combat/survival)
+	backpack_contents = list(
+		/obj/item/storage/box/survival/syndie,
+		/obj/item/storage/box/syndicate/contract_kit/midround,
+		/obj/item/knife/combat/survival,
+	)
 
-	implants = list(/obj/item/implant/uplink/precharged,
-					/obj/item/implant/explosive)
+	implants = list(
+		/obj/item/implant/uplink/precharged,
+		/obj/item/implant/explosive,
+	)
 
 	id_trim = /datum/id_trim/chameleon/contractor
 
