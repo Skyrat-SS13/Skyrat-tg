@@ -549,7 +549,7 @@
 	desc = "A 5.56mm surplus bullet casing."
 	projectile_type = /obj/projectile/bullet/a556/weak
 
-#define MOB_PLACER_RANGE 12 // One more tile than the biggest viewrange we have.
+#define MOB_PLACER_RANGE CONFIG_GET(string/default_view) + 1 // One more tile than the biggest viewrange we have.
 
 /obj/effect/random_mob_placer
 	name = "mob placer"
