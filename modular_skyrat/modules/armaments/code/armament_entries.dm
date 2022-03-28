@@ -5,7 +5,7 @@
  * It is strongly suggested that if you wish to make your own armaments station, you
  * create your own entries.
  *
- * Armament stations are capable of having a restricted list of producs, which you should fill if you plan on making
+ * Armament stations are capable of having a restricted list of products, which you should fill if you plan on making
  * your own station. This is the products variable. If you plan on using the premade list, you can leave this empty.
  *
  * Create your own file with all of the entries if you do wish to make your own custom armaments vendor.
@@ -97,7 +97,7 @@ GLOBAL_LIST_INIT(armament_entries, build_armament_list())
 
 /datum/armament_entry/proc/create_icon_cache() // TODO: Make this use overlays.
 	var/obj/item/test_item = new item_type()
-	cached_base64 = icon2base64(getFlatIcon(test_item, no_anim=TRUE))
+	cached_base64 = icon2base64(getFlatIcon(test_item, no_anim = TRUE))
 	qdel(test_item)
 
 /// This proc handles how the item should be equipped to the player. This needs to return either TRUE or FALSE, TRUE being that it was able to equip the item.
