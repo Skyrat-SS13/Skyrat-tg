@@ -10,8 +10,8 @@
 	inhand_icon_state = "gring"
 	worn_icon_state = "gring"
 	body_parts_covered = 0
-	transfer_prints = TRUE
-	strip_delay = 40
+	strip_delay = 4 SECONDS
+	clothing_traits = list(TRAIT_FINGERPRINT_PASSTHROUGH)
 
 /obj/item/clothing/gloves/ring/suicide_act(mob/living/carbon/user)
 	user.visible_message(span_suicide("\[user] is putting the [src] in [user.p_their()] mouth! It looks like [user] is trying to choke on the [src]!"))
