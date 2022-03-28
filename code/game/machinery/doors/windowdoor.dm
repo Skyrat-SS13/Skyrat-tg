@@ -432,11 +432,7 @@
 
 /obj/machinery/door/window/brigdoor/security/holding
 	name = "holding cell door"
-<<<<<<< HEAD
-	req_one_access = list(ACCESS_SEC_DOORS, ACCESS_LAWYER) //love for the lawyer
-=======
 	req_one_access = list(ACCESS_BRIG_ENTRANCE) //lawyer also gets brig_entrance
->>>>>>> 82daae06495 (Renames some security accesses + misc (#65679))
 
 /obj/machinery/door/window/northleft
 	dir = NORTH
