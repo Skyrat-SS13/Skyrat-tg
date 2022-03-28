@@ -39,8 +39,10 @@
 #define ROLE_SPACE_DRAGON "Space Dragon"
 #define ROLE_SPIDER "Spider"
 #define ROLE_WIZARD_MIDROUND "Wizard (Midround)"
-//SKYRAT EDIT: Cortical Borers
+// SKYRAT EDIT ADDITION
 #define ROLE_BORER "Borer"
+#define ROLE_ASSAULT_OPERATIVE "Assault Operative"
+// SKYRAT EDIT END
 
 // Latejoin roles
 #define ROLE_HERETIC_SMUGGLER "Heretic Smuggler"
@@ -120,6 +122,9 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_THIEF = 0,
 	ROLE_TRAITOR = 0,
 	ROLE_WIZARD = 14,
+	// SKYRAT EDIT ADDITION
+	ROLE_ASSAULT_OPERATIVE = 14,
+	// SKYRAT EDIT END
 
 	// Midround
 	ROLE_ABDUCTOR = 0,

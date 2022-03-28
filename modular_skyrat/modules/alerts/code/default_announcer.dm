@@ -39,6 +39,7 @@
 		ANNOUNCER_ERTYES = 'modular_skyrat/modules/alerts/sound/ai/default/yesert.ogg',
 		ANNOUNCER_MUTANTS = 'modular_skyrat/modules/alerts/sound/ai/default/hazdet.ogg',
 		ANNOUNCER_KLAXON = 'modular_skyrat/master_files/sound/blackmesa/siren1_long.ogg',
+		ANNOUNCER_ICARUS = 'modular_skyrat/modules/assault_operatives/sound/icarus_alarm.ogg',
 		ANNOUNCER_BLUESPACEARTY_2 = 'modular_skyrat/modules/alerts/sound/artillery.ogg',
 		ANNOUNCER_CME = 'modular_skyrat/modules/cme/sound/cme_warning.ogg',
 		)
