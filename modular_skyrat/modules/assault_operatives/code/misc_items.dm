@@ -7,12 +7,12 @@
 
 /obj/item/storage/bag/medpens/ComponentInitialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_w_class = WEIGHT_CLASS_NORMAL
-	STR.max_combined_w_class = 30
-	STR.max_items = 4
-	STR.display_numerical_stacking = FALSE
-	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/hypospray))
+	var/datum/component/storage/storage_component = GetComponent(/datum/component/storage)
+	storage_component.max_w_class = WEIGHT_CLASS_NORMAL
+	storage_component.max_combined_w_class = 30
+	storage_component.max_items = 4
+	storage_component.display_numerical_stacking = FALSE
+	storage_component.can_hold = typecacheof(list(/obj/item/reagent_containers/hypospray))
 
 
 /obj/item/storage/bag/medpens/PopulateContents()
