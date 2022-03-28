@@ -188,7 +188,7 @@
 
 /obj/structure/closet/secure_closet/detective
 	name = "\improper detective's cabinet"
-	req_access = list(ACCESS_FORENSICS_LOCKERS)
+	req_access = list(ACCESS_FORENSICS)
 	icon_state = "cabinet"
 	resistance_flags = FLAMMABLE
 	max_integrity = 70
@@ -275,7 +275,7 @@
 	anchored = TRUE
 	name = "Secure Evidence Closet"
 	req_access_txt = "0"
-	req_one_access_txt = list(ACCESS_ARMORY, ACCESS_FORENSICS_LOCKERS)
+	req_one_access_txt = list(ACCESS_ARMORY, ACCESS_FORENSICS)
 
 /obj/structure/closet/secure_closet/brig/PopulateContents()
 	..()
