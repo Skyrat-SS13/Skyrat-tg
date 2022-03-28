@@ -9,6 +9,8 @@
 	var/obj/item/mod/module/baton_holster/holster
 	/// Bitflags for what upgrades the baton has
 	var/upgrade_flags
+	/// If the baton lists its upgrades
+	var/lists_upgrades = TRUE
 
 /obj/item/melee/baton/telescopic/contractor_baton/Initialize(mapload)
 	. = ..()
@@ -43,7 +45,6 @@
 		var/obj/item/baton_upgrade/upgrade = attacking_item
 		if(!(upgrade_flags & upgrade.upgrade_flag))
 			upgrade_flags |= upgrade.upgrade_flag
-			upgrade.desc_update(src)
 			attacking_item.forceMove(src)
 			balloon_alert(user, "[attacking_item] attached")
 	if(!(upgrade_flags & BATON_CUFF_UPGRADE) && !(upgrade_flags & BATON_ALL_UPGRADE))
@@ -79,9 +80,17 @@
 			target.apply_damage(BONUS_STAMINA_DAM, STAMINA, BODY_ZONE_CHEST)
 			target.stuttering += BONUS_STUTTER
 
+/obj/item/melee/baton/telescopic/contractor_baton/examine(mob/user)
+	. = ..()
+	if(upgrade_flags && lists_upgrades)
+		. += "<br><br>[span_boldnotice("[src] has the following upgrades attached:")]"
+	for(var/obj/item/baton_upgrade/upgrade in contents)
+		. += "<br>[span_notice("[upgrade].")]"
+
 /obj/item/melee/baton/telescopic/contractor_baton/upgraded
-	upgrade_flags = BATON_ALL_UPGRADE
 	desc = "A compact, specialised baton assigned to Syndicate contractors. Applies light electrical shocks to targets. This one seems to be fully upgraded with unremovable parts."
+	lists_upgrades = FALSE
+	upgrade_flags = BATON_ALL_UPGRADE
 
 /obj/item/melee/baton/telescopic/contractor_baton/upgraded/Initialize(mapload)
 	. = ..()
@@ -94,11 +103,6 @@
 /obj/item/baton_upgrade
 	icon = 'modular_skyrat/modules/contractor/icons/baton_upgrades.dmi'
 	var/upgrade_flag
-
-/obj/item/baton_upgrade/proc/desc_update(obj/item/melee/baton/telescopic/contractor_baton/batong)
-	if(!batong.upgrade_flags)
-		batong.desc += "<br><br>[span_boldnotice("[batong] has the following upgrades attached:")]"
-	batong.desc += "<br>[span_notice("[src].")]"
 
 /obj/item/baton_upgrade/cuff
 	name = "handcuff baton upgrade"
