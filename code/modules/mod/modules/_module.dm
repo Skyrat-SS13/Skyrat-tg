@@ -275,6 +275,7 @@
 		return
 	/* SKYRAT EDIT START - Making MODsuits mutant-compatible - ORIGINAL:
 	var/mutable_appearance/module_icon = mutable_appearance('icons/mob/clothing/mod.dmi', used_overlay, layer = standing.layer + 0.1)
+	module_icon.appearance_flags |= RESET_COLOR
 	. += module_icon
 	*/
 	return handle_module_icon(standing, used_overlay)

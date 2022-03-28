@@ -271,6 +271,8 @@ function tag_pr($payload, $opened) {
 
 	check_tag_and_replace($payload, '[dnm]', 'Do Not Merge', $tags);
 
+	check_tag_and_replace($payload, '[host]', 'Host Request', $tags);
+
 	return array($tags, $remove);
 }
 
@@ -335,7 +337,7 @@ function handle_pr($payload) {
 	global $discord_announce_blacklist;
 	global $no_changelog;
 	global $game_announce_whitelist;
-	
+
 	$action = 'opened';
 	$validated = validate_user($payload);
 	switch ($payload["action"]) {

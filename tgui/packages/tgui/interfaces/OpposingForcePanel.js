@@ -765,13 +765,9 @@ export const AdminTab = (props, context) => {
                   <LabeledList.Item label="Amount">
                     {equipment.count}
                   </LabeledList.Item>
-                  {item.admin_note.length === 0 ? (
-                    null
-                  ) : (
-                    <LabeledList.Item label="Equipment Note">
-                      {item.admin_note}
-                    </LabeledList.Item>
-                  )}
+                  <LabeledList.Item label="Equipment Note">
+                    {item.admin_note}
+                  </LabeledList.Item>
                 </LabeledList>
               </Section>
             ))

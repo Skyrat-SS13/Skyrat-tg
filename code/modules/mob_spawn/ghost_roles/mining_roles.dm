@@ -35,7 +35,7 @@
 		if(3)
 			flavour_text += "you were a doctor on one of Nanotrasen's space stations, but you left behind that damn corporation's tyranny and everything it stood for. From a metaphorical hell \
 			to a literal one, you find yourself nonetheless missing the recycled air and warm floors of what you left behind... but you'd still rather be here than there."
-			outfit.uniform = /obj/item/clothing/under/rank/medical/doctor
+			outfit.uniform = /obj/item/clothing/under/rank/medical/scrubs/blue
 			outfit.suit = /obj/item/clothing/suit/toggle/labcoat
 			outfit.back = /obj/item/storage/backpack/medic
 		if(4)
@@ -155,6 +155,7 @@
 	and eventually bring life to this desolate planet while waiting for contact from your creators. \
 	Estimated time of last contact: Deployment, 5000 millennia ago."
 	spawner_job_path = /datum/job/lifebringer
+	restricted_species = list(/datum/species/pod) //SKYRAT EDIT ADDITION
 
 /obj/effect/mob_spawn/ghost_role/human/seed_vault/Initialize(mapload)
 	. = ..()
@@ -222,6 +223,7 @@
 	spawner_job_path = /datum/job/ash_walker
 	var/datum/team/ashwalkers/team
 	var/obj/structure/ash_walker_eggshell/eggshell
+	restricted_species = list(/datum/species/lizard/ashwalker) //SKYRAT EDIT ADDITION
 
 /obj/effect/mob_spawn/ghost_role/human/ash_walker/Destroy()
 	eggshell = null

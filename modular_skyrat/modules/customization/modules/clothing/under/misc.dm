@@ -34,7 +34,7 @@
 	desc = "We've saved money by giving you half a shirt!"
 	icon_state = "croptop"
 	body_parts_covered = CHEST|GROIN|ARMS
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	can_adjust = FALSE
 
 /obj/item/clothing/under/misc/gear_harness
@@ -82,13 +82,6 @@
 	inhand_icon_state = "kilt"
 	armor = list(MELEE = 30, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 10, ACID = 20, WOUND = 10)
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-
-/obj/item/clothing/under/misc/discounder
-	name = "superstar cop uniform"
-	desc = "Flare cut trousers and a dirty shirt that might have been classy before someone took a piss in the armpits, it's the dress of a superstar."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "jamrock_suit"
 
 /obj/item/clothing/under/misc/kimunder
 	name = "aerostatic suit"
@@ -270,20 +263,6 @@
 	icon_state = "checkered"
 
 ///FORMAL DEPT
-/obj/item/clothing/under/rank/medical/virologist/formal ///Do NOT add this to the vendor unless you want Peter Griffen
-	desc = "It's not what you think, I swear."
-	name = "formal virologist suit"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "pathologist"
-	inhand_icon_state = "w_suit"
-
-/obj/item/clothing/under/rank/medical/virologist/formal/skirt
-	name = "formal virologist skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "pathologist_skirt"
-
 /obj/item/clothing/under/rank/medical/doctor/formal
 	desc = "A white shirt with blue pants, lined with a protection against some light biohazards."
 	name = "medical doctor's formal wear"
@@ -432,7 +411,7 @@
 	desc = "A single leaf, designed to cover the genitalia of the wearer. Seek not temptation."
 	icon_state = "adam"
 	body_parts_covered = GROIN
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/misc/evilcargo
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
@@ -459,7 +438,7 @@
 	body_parts_covered = GROIN
 	can_adjust = FALSE
 	mutant_variants = NONE
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/civilian/hydroponics/trouser
 	desc = "A green set of trousers, perfect for making pigs smoke."
@@ -470,7 +449,7 @@
 	body_parts_covered = GROIN
 	can_adjust = FALSE
 	mutant_variants = NONE
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/security/peacekeeper/trousers
 	name = "peacekeeper's trousers"
@@ -481,7 +460,7 @@
 	body_parts_covered = GROIN
 	can_adjust = FALSE
 	mutant_variants = NONE
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/security/peacekeeper/trousers/red
 	name = "security officer's trousers"
@@ -623,16 +602,6 @@
 	name = "head of personnel's female formal uniform"
 	icon_state = "hop_parade_female"
 
-/obj/item/clothing/under/rank/medical/chief_medical_officer/turtleneck
-	name = "chief medical officer's turtleneck"
-	desc = "A light blue turtleneck and brown khakis, for a doctor with a superior sense of style."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "cmoturtle"
-	inhand_icon_state = "b_suit"
-	can_adjust = TRUE
-	alt_covers_chest = TRUE
-
 /obj/item/clothing/under/rank/captain/kilt
 	desc = "Not a skirt, it is, however, armoured and decorated with a tartan sash."
 	name = "captain's kilt"
@@ -687,7 +656,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "lucifer"
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	obj_flags = UNIQUE_RENAME
 	unique_reskin = list(
 		"Pride" = "lucifer",

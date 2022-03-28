@@ -41,9 +41,9 @@
 			user.mind?.adjust_experience(/datum/skill/cleaning, max(round(cleanies.beauty/CLEAN_SKILL_BEAUTY_ADJUSTMENT),0)) //again, intentional that this does NOT round but mops do.
 			qdel(target)
 			qdel(src)
-			var/obj/item/serviette_used/W = new /obj/item/serviette_used
+			var/obj/item/serviette_used/used_serviette = new /obj/item/serviette_used
 			remove_item_from_storage(user)
-			user.put_in_hands(W)
+			user.put_in_hands(used_serviette)
 
 	else if(istype(target, /obj/structure/window))
 		user.visible_message(span_notice("[user] begins to clean \the [target.name] with [src]..."), span_notice("You begin to clean \the [target.name] with [src]..."))
@@ -53,9 +53,9 @@
 			target.set_opacity(initial(target.opacity))
 			user.mind?.adjust_experience(/datum/skill/cleaning, CLEAN_SKILL_GENERIC_WASH_XP)
 			qdel(src)
-			var/obj/item/serviette_used/W = new /obj/item/serviette_used
+			var/obj/item/serviette_used/used_serviette = new /obj/item/serviette_used
 			remove_item_from_storage(user)
-			user.put_in_hands(W)
+			user.put_in_hands(used_serviette)
 
 	else
 		user.visible_message(span_notice("[user] begins to clean \the [target.name] with [src]..."), span_notice("You begin to clean \the [target.name] with [src]..."))
@@ -68,9 +68,9 @@
 			target.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 			user.mind?.adjust_experience(/datum/skill/cleaning, CLEAN_SKILL_GENERIC_WASH_XP)
 			qdel(src)
-			var/obj/item/serviette_used/W = new /obj/item/serviette_used
+			var/obj/item/serviette_used/used_serviette = new /obj/item/serviette_used
 			remove_item_from_storage(user)
-			user.put_in_hands(W)
+			user.put_in_hands(used_serviette)
 
 ///////////////////////////
 //CODE FOR SERVIETTE PACK//
@@ -98,8 +98,8 @@
 	if(!servleft)
 		to_chat(user, span_notice("You take a serviette from [src]."))
 		servleft--
-		var/obj/item/serviette/W = new /obj/item/serviette
-		user.put_in_hands(W)
+		var/obj/item/serviette/used_serviette = new /obj/item/serviette
+		user.put_in_hands(used_serviette)
 		update_icon()
 		update_icon_state()
 	else
