@@ -11,7 +11,7 @@
 	subcategory = ARMAMENT_SUBCATEGORY_MEDKIT
 
 /datum/armament_entry/assault_operatives/medical/medkit/basic
-	item_type = /obj/item/storage/medkit
+	item_type = /obj/item/storage/medkit/regular
 	cost = 1
 
 /datum/armament_entry/assault_operatives/medical/medkit/brute

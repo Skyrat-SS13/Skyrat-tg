@@ -3,6 +3,7 @@
 	desc = "A pouch containing several different types of lifesaving medipens."
 	icon = 'modular_skyrat/modules/modular_items/icons/storage.dmi'
 	icon_state = "medpen_pouch"
+	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_POCKETS
 
 /obj/item/storage/bag/medpens/ComponentInitialize()
 	. = ..()
