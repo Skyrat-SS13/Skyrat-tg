@@ -358,7 +358,8 @@
 				ROLE_SYNDICATE,
 				ROLE_TRAITOR,
 				ROLE_WIZARD,
-				ROLE_BORER,//SKYRAT EDIT: Cortical Borers
+				ROLE_BORER, //SKYRAT EDIT
+				ROLE_ASSAULT_OPERATIVE, //SKYRAT EDIT
 			),
 			"Skyrat Ban Options" = list(
 				BAN_PACIFICATION,
