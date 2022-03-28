@@ -83,13 +83,6 @@
 	armor = list(MELEE = 30, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 10, ACID = 20, WOUND = 10)
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 
-/obj/item/clothing/under/misc/discounder
-	name = "superstar cop uniform"
-	desc = "Flare cut trousers and a dirty shirt that might have been classy before someone took a piss in the armpits, it's the dress of a superstar."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "jamrock_suit"
-
 /obj/item/clothing/under/misc/kimunder
 	name = "aerostatic suit"
 	desc = "A crisp and well-pressed suit; professional, comfortable and curiously authoritative."
@@ -270,20 +263,6 @@
 	icon_state = "checkered"
 
 ///FORMAL DEPT
-/obj/item/clothing/under/rank/medical/virologist/formal ///Do NOT add this to the vendor unless you want Peter Griffen
-	desc = "It's not what you think, I swear."
-	name = "formal virologist suit"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "pathologist"
-	inhand_icon_state = "w_suit"
-
-/obj/item/clothing/under/rank/medical/virologist/formal/skirt
-	name = "formal virologist skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "pathologist_skirt"
-
 /obj/item/clothing/under/rank/medical/doctor/formal
 	desc = "A white shirt with blue pants, lined with a protection against some light biohazards."
 	name = "medical doctor's formal wear"
