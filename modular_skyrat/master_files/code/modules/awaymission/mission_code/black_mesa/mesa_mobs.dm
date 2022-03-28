@@ -549,7 +549,7 @@
 	desc = "A 5.56mm surplus bullet casing."
 	projectile_type = /obj/projectile/bullet/a556/weak
 
-#define MOB_PLACER_RANGE CONFIG_GET(string/default_view) + 1 // One more tile than the biggest viewrange we have.
+#define MOB_PLACER_RANGE 16 // One more tile than the biggest viewrange we have.
 
 /obj/effect/random_mob_placer
 	name = "mob placer"
@@ -563,6 +563,7 @@
 		RegisterSignal(iterating_turf, COMSIG_ATOM_ENTERED, .proc/trigger)
 
 /obj/effect/random_mob_placer/proc/trigger(datum/source, atom/movable/entered_atom)
+	SIGNAL_HANDLER
 	if(!isliving(entered_atom))
 		return
 	var/mob/living/entered_mob = entered_atom
