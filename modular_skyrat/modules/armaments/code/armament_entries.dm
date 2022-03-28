@@ -5,7 +5,7 @@
  * It is strongly suggested that if you wish to make your own armaments station, you
  * create your own entries.
  *
- * Armament stations are capable of having a restricted list of producs, which you should fill if you plan on making
+ * Armament stations are capable of having a restricted list of products, which you should fill if you plan on making
  * your own station. This is the products variable. If you plan on using the premade list, you can leave this empty.
  *
  * Create your own file with all of the entries if you do wish to make your own custom armaments vendor.
