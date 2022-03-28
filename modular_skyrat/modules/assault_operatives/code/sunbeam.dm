@@ -4,6 +4,7 @@
 #define SUNBEAM_MOVEMENT_COOLDOWN 0.3 SECONDS
 #define SUNBEAM_DEFAULT_SCALE_X 2
 #define SUNBEAM_DEFAULT_SCALE_Y 2
+#define SUNBEAM_OVERLAYS 16
 
 /obj/effect/sunbeam
 	name = "\improper ICARUS Sunbeam"
@@ -66,7 +67,7 @@
 
 /obj/effect/sunbeam/update_overlays()
 	. = ..()
-	for(var/i in 1 to 16)
+	for(var/i in 1 to SUNBEAM_OVERLAYS)
 		var/mutable_appearance/beam_overlay = mutable_appearance(icon, "sunray")
 		beam_overlay.pixel_y = beam_offset_y * i
 		. += beam_overlay
@@ -149,7 +150,7 @@
 	max_occurrences = 0
 
 /datum/round_event/icarus_sunbeam
-	announceWhen = 1
+	announceWhen = 1 // Instant announcement
 
 /datum/round_event/icarus_sunbeam/announce(fake)
 	priority_announce("/// ICARUS SUNBEAM WEAPONS SYSTEM ACTIVATED, USE EXTREME CAUTION! ///", "GoldenEye Defence Network", ANNOUNCER_KLAXON)

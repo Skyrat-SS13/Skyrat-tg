@@ -256,8 +256,6 @@
 		return ASSAULT_RESULT_LOSS
 	else if(!goldeneye_activated && operatives_dead_status)
 		return ASSAULT_RESULT_STALEMATE
-	else
-		return
 
 /**
  * ASSAULT OPERATIVE JOB TYPE

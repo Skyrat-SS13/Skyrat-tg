@@ -1,6 +1,7 @@
 GLOBAL_LIST_EMPTY(goldeneye_pinpointers)
 
-#define ICARUS_IGINTION_TIME 20 SECONDS
+#define ICARUS_IGNITION_TIME 20 SECONDS
+#define PINPOINTER_PING_TIME 4 SECONDS
 
 /**
  * GoldenEye defence network
@@ -23,7 +24,7 @@ SUBSYSTEM_DEF(goldeneye)
 	/// Have we been activated?
 	var/goldeneye_activated = FALSE
 	/// How long until ICARUS fires?
-	var/ignition_time = ICARUS_IGINTION_TIME
+	var/ignition_time = ICARUS_IGNITION_TIME
 
 /// A safe proc for adding a targets mind to the tracked extracted minds.
 /datum/controller/subsystem/goldeneye/proc/extract_mind(datum/mind/target_mind)
@@ -103,13 +104,13 @@ SUBSYSTEM_DEF(goldeneye)
 /obj/machinery/goldeneye_upload_terminal
 	name = "\improper GoldenEye Defnet Upload Terminal"
 	desc = "An ominous terminal with some ports and keypads, the screen is scrolling with illegible nonsense. It has a strange marking on the side, a red ring with a gold circle within."
-
 	icon = 'modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi'
 	icon_state = "goldeneye_terminal"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	density = TRUE
 	/// Is the system currently in use? Used to prevent spam and abuse.
 	var/uploading = FALSE
-	density = TRUE
+
 
 /obj/machinery/goldeneye_upload_terminal/attackby(obj/item/weapon, mob/user, params)
 	. = ..()
@@ -176,7 +177,7 @@ SUBSYSTEM_DEF(goldeneye)
 	return FALSE
 
 // Internal pinpointer
-#define PINPOINTER_PING_TIME (4 SECONDS)
+
 
 /atom/movable/screen/alert/status_effect/goldeneye_pinpointer
 	name = "Target Integrated Pinpointer"
@@ -252,4 +253,5 @@ SUBSYSTEM_DEF(goldeneye)
 	target = new_target
 	to_chat(owner, span_redtext("Integrated pinpointer set to: [target.name]"))
 
+#undef ICARUS_IGNITION_TIME
 #undef PINPOINTER_PING_TIME
