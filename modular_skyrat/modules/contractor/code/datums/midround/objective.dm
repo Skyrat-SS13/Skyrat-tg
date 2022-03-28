@@ -2,6 +2,7 @@
 	name = "contractor"
 	explanation_text = "Complete at least %CONTRACTNUM% contract%S%."
 	martyr_compatible = TRUE
+	/// How many contracts are needed, rand(1, 3)
 	var/contracts_needed
 
 /datum/objective/contractor_total/New(text)

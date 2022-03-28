@@ -9,6 +9,7 @@
 	antag_moodlet = /datum/mood_event/focused
 	show_to_ghosts = TRUE
 	suicide_cry = "FOR THE CONTRACTS!!"
+	/// The outfit the contractor is equipped with
 	var/contractor_outfit = /datum/outfit/contractor
 
 /datum/antagonist/contractor/proc/equip_guy()
