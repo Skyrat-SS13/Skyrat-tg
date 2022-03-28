@@ -1,3 +1,5 @@
+#define TIGHT_SLOWDOWN 2
+
 /obj/item/clothing/suit/corset
 	name = "corset"
 	desc = "A tight latex corset. How can anybody fit in THAT?"
@@ -16,26 +18,24 @@
 
 	/// Has it been laced tightly?
 	var/laced_tight = FALSE
-	/// How much does it slow us down when laced tight?
-	var/tight_slowdown = 2
 
 /obj/item/clothing/suit/corset/AltClick(mob/user)
 	laced_tight = !laced_tight
 	to_chat(user, span_notice("You [laced_tight ? "tighten" : "loosen"] the corset, making it far [laced_tight ? "harder" : "easier"] to breathe."))
 	playsound(user, laced_tight ? 'sound/items/handling/cloth_pickup.ogg' : 'sound/items/handling/cloth_drop.ogg', 40, TRUE)
 	if(laced_tight)
-		slowdown = tight_slowdown
+		slowdown = TIGHT_SLOWDOWN
 		return
 	slowdown = initial(slowdown)
 
-/obj/item/clothing/suit/corset/equipped(mob/user, slot)
+/obj/item/clothing/suit/corset/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	var/mob/living/carbon/human/wearer = user
-	if(laced_tight && src == wearer.wear_suit)
+	if(laced_tight && src == user.wear_suit)
 		to_chat(user, span_purple("The corset squeezes tightly against your ribs! Breathing suddenly feels much more difficult."))
 
-/obj/item/clothing/suit/corset/dropped(mob/user)
+/obj/item/clothing/suit/corset/dropped(mob/living/carbon/human/user)
 	. = ..()
-	var/mob/living/carbon/human/wearer = user
-	if(laced_tight && src == wearer.wear_suit)
-		to_chat(user, span_purple("Phew. Now you can breath normally."))
+	if(laced_tight && src == user.wear_suit)
+		to_chat(user, span_purple("Phew. Now you can breathe normally."))
+
+#undef TIGHT_SLOWDOWN

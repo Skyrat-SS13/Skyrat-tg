@@ -937,8 +937,8 @@
 /obj/item/clothing/under/rank/security/rax
 	name = "banded uniform"
 	desc = "Personalized and tailored to fit, this uniform is designed to protect without compromising its stylishness."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
 	icon_state = "hos_black"
 	mutant_variants = STYLE_DIGITIGRADE
@@ -1181,7 +1181,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "occulthood"
 	mutant_variants = NONE
-	dynamic_hair_suffix = "+generic"
 
 // Donation reward for gamerguy14948
 /obj/item/clothing/suit/hooded/occult

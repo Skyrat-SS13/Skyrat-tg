@@ -147,6 +147,7 @@
 #define ANNOUNCER_ERTYES "announcer_ertyes"
 #define ANNOUNCER_MUTANTS "announcer_mutants"
 #define ANNOUNCER_KLAXON "announcer_klaxon"
+#define ANNOUNCER_ICARUS "announcer_icarus"
 //SKYRAT EDIT END
 
 
@@ -188,7 +189,8 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 	ANNOUNCER_SPOOKY,
 	ANNOUNCER_ERTYES,
 	ANNOUNCER_MUTANTS,
-	ANNOUNCER_KLAXON
+	ANNOUNCER_KLAXON,
+	ANNOUNCER_ICARUS,
 	//SKYRAT EDIT END
 ))
 
@@ -220,3 +222,6 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 #define SFX_SWING_HIT "swing_hit"
 #define SFX_TERMINAL_TYPE "terminal_type"
 #define SFX_WARPSPEED "warpspeed"
+#define SFX_CRUNCHY_BUSH_WHACK "crunchy_bush_whack"
+#define SFX_TREE_CHOP "tree_chop"
+#define SFX_ROCK_TAP "rock_tap"
