@@ -731,9 +731,13 @@
 		return ..()
 
 	var/obj/item/bodypart/grasped_part = get_bodypart(zone_selected)
+<<<<<<< HEAD
 	//SKYRAT EDIT CHANGE BEGIN - MEDICAL
 	/*
 	if(!grasped_part?.get_bleed_rate())
+=======
+	if(!grasped_part?.get_part_bleed_rate())
+>>>>>>> c4fa0d4affc (Adds mob bleeding overlays, tweaks some bleeding balance (#65371))
 		return
 	var/starting_hand_index = active_hand_index
 	if(starting_hand_index == grasped_part.held_index)
@@ -741,7 +745,7 @@
 		return
 
 	to_chat(src, span_warning("You try grasping at your [grasped_part.name], trying to stop the bleeding..."))
-	if(!do_after(src, 1.5 SECONDS))
+	if(!do_after(src, 0.75 SECONDS))
 		to_chat(src, span_danger("You fail to grasp your [grasped_part.name]."))
 		return
 
@@ -761,7 +765,7 @@
 	desc = "Sometimes all you can do is slow the bleeding."
 	icon_state = "latexballon"
 	inhand_icon_state = "nothing"
-	slowdown = 1
+	slowdown = 0.5
 	item_flags = DROPDEL | ABSTRACT | NOBLUDGEON | SLOWS_WHILE_IN_HAND | HAND_ITEM
 	/// The bodypart we're staunching bleeding on, which also has a reference to us in [/obj/item/bodypart/var/grasped_by]
 	var/obj/item/bodypart/grasped_part
