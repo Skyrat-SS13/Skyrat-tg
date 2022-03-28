@@ -23,7 +23,8 @@
 		/obj/item/armament_token/sidearm_blackmarket = 2,
 	)
 	premium = list(
-		/obj/item/storage/belt/security/webbing = 5,
+		/obj/item/storage/belt/security/webbing = 4,
+		/obj/item/storage/belt/security/webbing/peacekeeper = 4,
 		/obj/item/coin/antagtoken = 1,
 		/obj/item/clothing/head/helmet/blueshirt = 3,
 		/obj/item/clothing/suit/armor/vest/blueshirt = 3,
@@ -63,28 +64,44 @@
 					/obj/item/storage/backpack/satchel/sec = 5,
 					/obj/item/storage/backpack/duffelbag/sec = 5,
 					/obj/item/clothing/under/rank/security/officer = 10,
+					/obj/item/clothing/under/rank/security/peacekeeper/tactical = 4,
 					/obj/item/clothing/shoes/jackboots/security = 10,
 					/obj/item/clothing/head/security_garrison = 10,
 					/obj/item/clothing/head/security_cap = 10,
-					/obj/item/clothing/gloves/color/black/security = 10,
-					/obj/item/storage/backpack/security/peacekeeper = 5,
-					/obj/item/storage/backpack/satchel/sec/peacekeeper = 5,
 					/obj/item/clothing/head/beret/sec/peacekeeper = 5,
-					/obj/item/clothing/under/rank/security/peacekeeper = 5,
-					/obj/item/clothing/under/rank/security/peacekeeper/tactical = 5,
-					)
-	premium = list(/obj/item/storage/belt/security/webbing/peacekeeper = 5,
-					/obj/item/clothing/suit/security/officer = 3,
-					/obj/item/clothing/head/beret/sec/navyofficer = 3
+					/obj/item/clothing/gloves/color/black/security = 10,
 					)
 	contraband = list(/obj/item/clothing/head/helmet/stormtrooper = 2,
 					/obj/item/clothing/suit/armor/stormtrooper = 2,
 					/obj/item/clothing/shoes/combat/stormtrooper = 2,
 					/obj/item/clothing/gloves/combat/peacekeeper/stormtrooper = 2,
 					)
+	premium = list( /obj/item/clothing/under/rank/security/officer/formal = 3,
+					/obj/item/clothing/suit/security/officer = 3,
+					/obj/item/clothing/head/beret/sec/navyofficer = 3)
 	refill_canister = /obj/item/vending_refill/wardrobe/peacekeeper_wardrobe
 	payment_department = ACCOUNT_SEC
 	light_color = COLOR_MODERATE_BLUE
 
 /obj/item/vending_refill/wardrobe/peacekeeper_wardrobe
 	machine_name = "Peacekeeper outfitting station"
+
+//List for the old one, for when its mapped in; curates it nicely, adds /redsec to the items, and also prevents some conflicts with the above vendor
+/obj/machinery/vending/wardrobe/sec_wardrobe
+	products = list(/obj/item/clothing/suit/hooded/wintercoat/security/redsec = 3,
+					/obj/item/storage/backpack/security/redsec = 3,
+					/obj/item/storage/backpack/satchel/sec/redsec = 3,
+					/obj/item/storage/backpack/duffelbag/sec/redsec = 3,
+					/obj/item/clothing/under/rank/security/officer/redsec = 3,
+					/obj/item/clothing/shoes/jackboots = 3,
+					/obj/item/clothing/head/beret/sec = 3,
+					/obj/item/clothing/head/soft/sec = 3,
+					/obj/item/clothing/mask/bandana/red = 3,
+					/obj/item/clothing/gloves/color/black = 3,
+					/obj/item/clothing/under/rank/security/officer/skirt = 3,
+					/obj/item/clothing/under/utility/sec/old = 3,
+					/obj/item/clothing/suit/toggle/jacket/sec/old = 3,
+					)
+	premium = list( /obj/item/clothing/under/rank/security/officer/formal = 5,
+					/obj/item/clothing/suit/security/officer = 5,
+					/obj/item/clothing/head/beret/sec/navyofficer = 5)
