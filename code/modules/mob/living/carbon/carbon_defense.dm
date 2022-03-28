@@ -482,7 +482,7 @@
 		"<span class='notice'>You boop [src] on the nose.</span>")
 	//SKYRAT EDIT ADDITION END
 
-	else if(check_zone(M.zone_selected) == BODY_ZONE_HEAD) //Headpats!
+	else if(check_zone(M.zone_selected) == BODY_ZONE_HEAD && get_bodypart(BODY_ZONE_HEAD)) //Headpats!
 		//SKYRAT EDIT ADDITION
 		if(HAS_TRAIT(src, TRAIT_OVERSIZED) && !HAS_TRAIT(M, TRAIT_OVERSIZED))
 			visible_message(span_warning("[M] tries to pat [src] on the head, but can't reach!"))
