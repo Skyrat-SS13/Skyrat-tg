@@ -201,7 +201,7 @@
 	var/alive_operatives = 0
 	for(var/datum/mind/iterating_mind in members)
 		if(ishuman(iterating_mind.current) && (iterating_mind.current.stat != DEAD))
-			alive_operatives ++
+			alive_operatives++
 	if(alive_operatives == 0)
 		return ASSAULTOPS_ALL_DEAD
 	if(alive_operatives >= total_operatives)
