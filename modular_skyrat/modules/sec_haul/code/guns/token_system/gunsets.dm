@@ -263,13 +263,14 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/g18(src)
 
 //HOP
-/obj/item/storage/box/gunset/pdh_hop
+/obj/item/storage/box/gunset/pdh
 	name = "pdh 'osprey' supply box"
 	w_class = WEIGHT_CLASS_NORMAL
+
 /obj/item/gun/ballistic/automatic/pistol/pdh/nomag
 	spawnwithmagazine = FALSE
 
-/obj/item/storage/box/gunset/pdh_hop/PopulateContents()
+/obj/item/storage/box/gunset/pdh/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pistol/pdh/nomag(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh(src)

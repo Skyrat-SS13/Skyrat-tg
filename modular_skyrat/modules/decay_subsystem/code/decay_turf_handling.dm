@@ -1,6 +1,3 @@
-/// A turf flag, much higher than what the other turf flags are at because I don't want to cause conflicts by accident.
-#define CAN_DECAY_BREAK_1 (1<<23)
-
 /turf/open/floor
 	turf_flags = CAN_BE_DIRTY_1 | CAN_DECAY_BREAK_1 // We do it this way because we can then easily pick what we don't want to be broken.
 
