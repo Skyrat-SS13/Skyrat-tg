@@ -514,53 +514,33 @@
 
 // Mob Overlays Indexes
 /// Total number of layers for mob overlays
-<<<<<<< HEAD
-#define TOTAL_LAYERS 38 //KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
+#define TOTAL_LAYERS 39 //KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
 /// Mutations layer - Tk headglows, cold resistance glow, etc
-#define MUTATIONS_LAYER 37
+#define MUTATIONS_LAYER 38
 /// Mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODY_BEHIND_LAYER 36
+#define BODY_BEHIND_LAYER 37
 /// Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
-#define BODYPARTS_LAYER 35
+#define BODYPARTS_LAYER 36
 /// Mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_ADJ_LAYER 34
+#define BODY_ADJ_LAYER 35
 /// Underwear, undershirts, socks, eyes, lips(makeup)
-#define BODY_LAYER 33
+#define BODY_LAYER 34
 /// Mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define FRONT_MUTATIONS_LAYER 32
+#define FRONT_MUTATIONS_LAYER 33
 /// Damage indicators (cuts and burns)
-#define DAMAGE_LAYER 31
+#define DAMAGE_LAYER 32
 //SKYRAT EDIT ADDITION BEGIN. This layer is used for things that shouldn't be over clothes, but should be over mutations - BUMPED UP ^
-#define BODY_FRONT_UNDER_CLOTHES 30
+#define BODY_FRONT_UNDER_CLOTHES 31
 //SKYRAT EDIT ADDITION END
 /// Jumpsuit clothing layer
-#define UNIFORM_LAYER 29
+#define UNIFORM_LAYER 30
 //SKYRAT EDIT ADDITION BEGIN - BUMPED UP ^
-#define ANUS_LAYER 28
-#define VAGINA_LAYER 27
-#define PENIS_LAYER 26
-#define NIPPLES_LAYER 25
-#define BANDAGE_LAYER 24
+#define ANUS_LAYER 29
+#define VAGINA_LAYER 28
+#define PENIS_LAYER 27
+#define NIPPLES_LAYER 26
+#define BANDAGE_LAYER 25
 //SKYRAT EDIT ADDITION END
-=======
-#define TOTAL_LAYERS 32 //KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
-/// Mutations layer - Tk headglows, cold resistance glow, etc
-#define MUTATIONS_LAYER 32
-/// Mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODY_BEHIND_LAYER 31
-/// Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
-#define BODYPARTS_LAYER 30
-/// Mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_ADJ_LAYER 29
-/// Underwear, undershirts, socks, eyes, lips(makeup)
-#define BODY_LAYER 28
-/// Mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define FRONT_MUTATIONS_LAYER 27
-/// Damage indicators (cuts and burns)
-#define DAMAGE_LAYER 26
-/// Jumpsuit clothing layer
-#define UNIFORM_LAYER 25
->>>>>>> c4fa0d4affc (Adds mob bleeding overlays, tweaks some bleeding balance (#65371))
 /// ID card layer (might be deprecated)
 #define ID_LAYER 24
 /// ID card layer

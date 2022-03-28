@@ -279,12 +279,9 @@
 
 	apply_overlay(BODYPARTS_LAYER)
 	update_damage_overlays()
-<<<<<<< HEAD
+	update_wound_overlays()
 */
 //SKYRAT EDIT REMOVAL END
-=======
-	update_wound_overlays()
->>>>>>> c4fa0d4affc (Adds mob bleeding overlays, tweaks some bleeding balance (#65371))
 
 
 

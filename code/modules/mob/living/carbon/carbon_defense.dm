@@ -731,13 +731,9 @@
 		return ..()
 
 	var/obj/item/bodypart/grasped_part = get_bodypart(zone_selected)
-<<<<<<< HEAD
 	//SKYRAT EDIT CHANGE BEGIN - MEDICAL
 	/*
-	if(!grasped_part?.get_bleed_rate())
-=======
 	if(!grasped_part?.get_part_bleed_rate())
->>>>>>> c4fa0d4affc (Adds mob bleeding overlays, tweaks some bleeding balance (#65371))
 		return
 	var/starting_hand_index = active_hand_index
 	if(starting_hand_index == grasped_part.held_index)
