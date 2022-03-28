@@ -73,7 +73,7 @@
 		return
 	if((upgrade_flags & BATON_MUTE_UPGRADE) || (upgrade_flags & BATON_ALL_UPGRADE))
 		if(target.silent < (MUTE_CYCLES * MUTE_MAX_MOD))
-			target.silent += MUTE_CYCLES //10 seconds of mute a hit up to 20 max
+			target.silent = min((target.silent + MUTE_CYCLES), (MUTE_CYCLES * MUTE_MAX_MOD))
 	if((upgrade_flags & BATON_FOCUS_UPGRADE) || (upgrade_flags & BATON_ALL_UPGRADE))
 		if(target == user.mind?.opposing_force?.contractor_hub?.current_contract?.contract.target?.current) // Pain
 			target.apply_damage(BONUS_STAMINA_DAM, STAMINA, BODY_ZONE_CHEST)
@@ -85,7 +85,7 @@
 
 /obj/item/melee/baton/telescopic/contractor_baton/upgraded/Initialize(mapload)
 	. = ..()
-	for(var/num in 1 to CUFF_MAXIMUM)
+	for(var/i in 1 to CUFF_MAXIMUM)
 		new/obj/item/restraints/handcuffs/cable(src)
 
 /obj/item/melee/baton/telescopic/contractor_baton/upgraded/wrench_act(mob/living/user, obj/item/tool)

@@ -80,7 +80,7 @@
 	icon_state = "syndiebox"
 	illustration = "writing_syndie"
 
-/obj/item/storage/box/syndicate/contract_kit/PopulateContents()
+/obj/item/storage/box/syndicate/contract_kit/midround/PopulateContents()
 	// All about 4 TC or less - some nukeops only items, but fit nicely to the theme.
 	var/list/item_list = list(
 		/obj/item/storage/backpack/duffelbag/syndie/x4,
