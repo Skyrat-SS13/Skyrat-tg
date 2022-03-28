@@ -137,6 +137,7 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	head = /obj/item/clothing/head/sec/navywarden/syndicate
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	ears = /obj/item/radio/headset/interdyne
 
 	backpack_contents = list(
@@ -152,6 +153,7 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/bulletproof/old
 	head = /obj/item/clothing/head/helmet/swat/ds
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	mask = /obj/item/clothing/mask/gas/syndicate/ds
 	ears = /obj/item/radio/headset/interdyne
 
@@ -297,7 +299,7 @@
 	id = /obj/item/card/id/away/tarkon/sci
 	l_hand = /obj/item/inducer
 	l_pocket = null
-	r_pocket = /obj/item/stock_parts/cell/high/plus
+	r_pocket = /obj/item/stock_parts/cell/high
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/med
 	prompt_name = "an abandoned medical resident"

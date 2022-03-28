@@ -34,7 +34,7 @@
 	new /obj/item/clothing/shoes/combat(src)
 
 /obj/item/ammo_box/magazine/m16/extended //i will add custom sprites to this
-	name = "m4a1 magazine (5.56×45mm)"
+	name = "m4a1 magazine (5.56x45mm)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "5.56mm"
 	ammo_type = /obj/item/ammo_casing/a556
@@ -58,3 +58,6 @@
 	new /obj/item/storage/belt/military(src)
 	new /obj/item/card/id/advanced/chameleon(src)
 	new /obj/item/mod/control/pre_equipped/nuclear(src)
+
+/obj/item/guardiancreator/tech/choose/traitor/opfor
+	allowling = TRUE

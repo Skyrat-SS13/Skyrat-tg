@@ -475,7 +475,7 @@
 	icon_state = "blutigen_undergarment"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	mutant_variants = NONE
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/gloves/ring/hypno
 	var/list/spans = list()
@@ -552,7 +552,7 @@
 	icon_state = "kilanosuit"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	mutant_variants = NONE
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 // Donation reward for NetraKyram
 /obj/item/clothing/gloves/kilano
@@ -740,7 +740,7 @@
 	mutant_variants = NONE
 	inhand_icon_state = "lannese"
 	can_adjust = TRUE
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	body_parts_covered = CHEST|GROIN|LEGS|FEET
 
 /obj/item/clothing/under/custom/lannese/vambrace
@@ -779,7 +779,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	worn_icon_state = "mikubikini"
 	body_parts_covered = CHEST|GROIN
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 // Donation Reward for Grand Vegeta
 /obj/item/clothing/suit/mikujacket
@@ -937,8 +937,8 @@
 /obj/item/clothing/under/rank/security/rax
 	name = "banded uniform"
 	desc = "Personalized and tailored to fit, this uniform is designed to protect without compromising its stylishness."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
 	icon_state = "hos_black"
 	mutant_variants = STYLE_DIGITIGRADE
@@ -1113,24 +1113,24 @@
 	body_parts_covered = CHEST|LEGS|ARMS
 	mutant_variants = NONE
 
-// Donation reward for Hacker T.Dog
-/obj/item/clothing/head/nanotrasen_representative/hubert
+//Donation reward for Hacker T.Dog
+/obj/item/clothing/head/nanotrasen_consultant/hubert
 	name = "CC ensign's cap"
 	desc = "A tailor made peaked cap, denoting the rank of Ensign."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "CCofficerhat"
 
-// Donation reward for Hacker T.Dog
-/obj/item/clothing/suit/armor/vest/nanotrasen_representative/hubert
+//Donation reward for Hacker T.Dog
+/obj/item/clothing/suit/armor/vest/nanotrasen_consultant/hubert
 	name = "CC ensign's armoured vest"
 	desc = "A tailor made Ensign's armoured vest, providing the same protection - but in a more stylish fashion."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "CCvest"
 
-// Donation reward for Hacker T.Dog
-/obj/item/clothing/under/rank/nanotrasen_representative/hubert
+//Donation reward for Hacker T.Dog
+/obj/item/clothing/under/rank/nanotrasen_consultant/hubert
 	name = "CC ensign's uniform"
 	desc = "A tailor-made Ensign's uniform, various medals and chains hang down from it."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
@@ -1181,7 +1181,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "occulthood"
 	mutant_variants = NONE
-	dynamic_hair_suffix = "+generic"
 
 // Donation reward for gamerguy14948
 /obj/item/clothing/suit/hooded/occult

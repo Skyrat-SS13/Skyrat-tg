@@ -106,14 +106,11 @@
 		/obj/item/clothing/under/rank/security/head_of_security/peacekeeper = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/skirt = 1,
-		/obj/item/clothing/under/rank/security/head_of_security/grey = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/alt = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/alt/skirt = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/imperial = 1,
 		/obj/item/clothing/suit/armor/hos/navyblue = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/parade = 1,
-		/obj/item/clothing/suit/armor/hos/parade = 1,
-		/obj/item/clothing/suit/armor/hos/parade/female = 1,
 		/obj/item/clothing/suit/armor/hos/hos_formal = 1,
 		/obj/item/clothing/neck/mantle/hosmantle = 1,
 		/obj/item/clothing/shoes/sneakers/brown = 1
@@ -134,12 +131,12 @@
 		)
 
 	access_lists["[ACCESS_CENT_GENERAL]"] = list( // CC Rep Shiz
-		/obj/item/clothing/head/nanotrasen_representative = 1,
-		/obj/item/clothing/head/nanotrasen_representative/beret = 1,
-		/obj/item/clothing/head/beret/centcom_formal/ntrep = 1,
-		/obj/item/clothing/under/rank/nanotrasen_representative = 1,
-		/obj/item/clothing/under/rank/nanotrasen_representative/skirt = 1,
+		/obj/item/clothing/head/nanotrasen_consultant = 1,
+		/obj/item/clothing/head/nanotrasen_consultant/beret = 1,
+		/obj/item/clothing/head/beret/centcom_formal/nt_consultant = 1,
+		/obj/item/clothing/under/rank/nanotrasen_consultant = 1,
+		/obj/item/clothing/under/rank/nanotrasen_consultant/skirt = 1,
 		/obj/item/clothing/head/centhat = 1,
 		/obj/item/clothing/head/centcom_cap = 1,
-		/obj/item/clothing/suit/armor/centcom_formal/ntrep = 1
+		/obj/item/clothing/suit/armor/centcom_formal/nt_consultant = 1
 		)

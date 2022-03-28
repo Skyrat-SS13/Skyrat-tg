@@ -7,42 +7,50 @@
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_eyes.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
+	/// If the color of the goggles have been changed before.
 	var/color_changed = FALSE
+	/// Current color of the goggles, can change and affects sprite
 	var/current_hypnogoggles_color = "pink"
+	/// Static list of all goggle designs, used in the color picker radial selection menu
 	var/static/list/hypnogoggles_designs
-
+	/// The person wearing the goggles
 	var/mob/living/carbon/victim
-	var/codephrase = "Obey"//There SHOULD be default phrase, because if there is none - goggles will go buggy when you equip them without setting phrase.
+	/// The hypnotic codephrase. Default always required otherwise things break.
+	var/codephrase = "Obey."
 
 /obj/item/clothing/glasses/hypno/equipped(mob/user, slot)//Adding hypnosis on equip
 	. = ..()
 	victim = user
 	if(slot != ITEM_SLOT_EYES)
 		return
-	if(iscarbon(victim) && victim.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
-		if(codephrase != "")
-			victim.gain_trauma(new /datum/brain_trauma/induced_hypnosis(codephrase), TRAUMA_RESILIENCE_BASIC)
-		else
-			codephrase = "Obey"
-			victim.gain_trauma(new /datum/brain_trauma/induced_hypnosis(codephrase), TRAUMA_RESILIENCE_BASIC)
+	if(!(iscarbon(victim) && victim.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy)))
+		return
+	if(codephrase != "")
+		victim.gain_trauma(new /datum/brain_trauma/induced_hypnosis(codephrase), TRAUMA_RESILIENCE_BASIC)
+	else
+		codephrase = "Obey."
+		victim.gain_trauma(new /datum/brain_trauma/induced_hypnosis(codephrase), TRAUMA_RESILIENCE_BASIC)
 
 /obj/item/clothing/glasses/hypno/dropped(mob/user)//Removing hypnosis on unequip
 	. = ..()
-	if(victim.glasses == src)
-		victim.cure_trauma_type(/datum/brain_trauma/induced_hypnosis, TRAUMA_RESILIENCE_BASIC)
-		victim = null
+	if(!(victim.glasses == src))
+		return
+	victim.cure_trauma_type(/datum/brain_trauma/induced_hypnosis, TRAUMA_RESILIENCE_BASIC)
+	victim = null
 
 /obj/item/clothing/glasses/hypno/Destroy()
 	. = ..()
-	if(victim)
-		if(victim.glasses == src)
-			victim.cure_trauma_type(/datum/brain_trauma/induced_hypnosis, TRAUMA_RESILIENCE_BASIC)
+	if(!victim)
+		return
+	if(!(victim.glasses == src))
+		return
+	victim.cure_trauma_type(/datum/brain_trauma/induced_hypnosis, TRAUMA_RESILIENCE_BASIC)
 
 /obj/item/clothing/glasses/hypno/attack_self(mob/user)//Setting up hypnotising phrase
 	. = ..()
-	codephrase = stripped_input(user, "Change the hypnotic phrase")
+	codephrase = tgui_input_text(user, "Change the hypnotic phrase", max_length = MAX_MESSAGE_LEN)
 
-//create radial menu
+/// Populates the list of hypnogoggle designs to pick from, called on init
 /obj/item/clothing/glasses/hypno/proc/populate_hypnogoggles_designs()
 	hypnogoggles_designs = list(
 		"pink" = image (icon = src.icon, icon_state = "hypnogoggles_pink"),
@@ -55,18 +63,17 @@
 
 //to change model
 /obj/item/clothing/glasses/hypno/AltClick(mob/user, obj/item/I)
-	if(color_changed == FALSE)
-		. = ..()
-		if(.)
-			return
-		var/choice = show_radial_menu(user,src, hypnogoggles_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
-		if(!choice)
-			return FALSE
-		current_hypnogoggles_color = choice
-		update_icon()
-		color_changed = TRUE
-	else
+	if(color_changed)
 		return
+	. = ..()
+	if(.)
+		return
+	var/choice = show_radial_menu(user,src, hypnogoggles_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+	if(!choice)
+		return FALSE
+	current_hypnogoggles_color = choice
+	update_icon()
+	color_changed = TRUE
 
 //to check if we can change kinkphones's model
 /obj/item/clothing/glasses/hypno/proc/check_menu(mob/living/user)
@@ -131,12 +138,13 @@
 
 /datum/brain_trauma/induced_hypnosis/on_life(delta_time, times_fired)
 	..()
-	if(DT_PROB(1, delta_time))
-		switch(rand(1,2))
-			if(1)
-				to_chat(owner, span_hypnophrase("<i>...[lowertext(hypnotic_phrase)]...</i>"))
-			if(2)
-				new /datum/hallucination/chat(owner, TRUE, FALSE, span_hypnophrase("[hypnotic_phrase]"))
+	if(!(DT_PROB(1, delta_time)))
+		return
+	switch(rand(1,2))
+		if(1)
+			to_chat(owner, span_hypnophrase("<i>...[lowertext(hypnotic_phrase)]...</i>"))
+		if(2)
+			new /datum/hallucination/chat(owner, TRUE, FALSE, span_hypnophrase("[hypnotic_phrase]"))
 
 /datum/brain_trauma/induced_hypnosis/handle_hearing(datum/source, list/hearing_args)
 	hearing_args[HEARING_RAW_MESSAGE] = target_phrase.Replace(hearing_args[HEARING_RAW_MESSAGE], span_hypnophrase("$1"))

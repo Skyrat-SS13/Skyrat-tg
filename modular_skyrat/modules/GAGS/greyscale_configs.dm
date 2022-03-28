@@ -224,6 +224,16 @@
 *	SUITS
 */
 
+// FANCY SUITS
+/datum/greyscale_config/fancy_suit
+	name = "Fancy Suit"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/fancy_suits.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/fancy_suits/fancy_suit.json'
+
+/datum/greyscale_config/fancy_suit/worn
+	name = "Fancy Suit Worn"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/fancy_suits/fancy_suit_worn.json'
+
 // HOODIES
 /datum/greyscale_config/hoodie
 	name = "Hoodie"
@@ -276,6 +286,14 @@
 /datum/greyscale_config/jumpsuit_worn/vox
 	name = "Worn Jumpsuit - Vox"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_vox.dmi'
+
+/datum/greyscale_config/jumpsuit_worn/taur/snake
+	name = "Worn Jumpsuit - Naga"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_snake.dmi'
+
+/datum/greyscale_config/jumpsuit_prison_worn/taur/snake
+	name = "Worn Prison Jumpsuit - Naga"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_snake.dmi'
 
 /datum/greyscale_config/jumpsuit_prison_worn/vox
 	name = "Worn Prison Jumpsuit - Vox"
