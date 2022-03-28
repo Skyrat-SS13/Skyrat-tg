@@ -6,6 +6,7 @@
 	desc = "A traditional ancient Earth Japanese Kimono"
 	icon_state = "kimono"
 	body_parts_covered = CHEST|GROIN
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY //Stop cutting a hole in the Kimono, please :)
 
 /obj/item/clothing/under/costume/kimono/dark
 	name = "dark kimono"
