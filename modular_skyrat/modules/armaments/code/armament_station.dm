@@ -169,7 +169,7 @@
 
 /obj/item/armament_points_card/Initialize(mapload)
 	. = ..()
-	update_maptext()
+	maptext = span_maptext("<div align='center' valign='middle' style='position:relative'>[points]</div>")
 
 /obj/item/armament_points_card/examine(mob/user)
 	. = ..()
