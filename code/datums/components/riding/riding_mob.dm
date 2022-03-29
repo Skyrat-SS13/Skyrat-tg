@@ -262,9 +262,29 @@
 /datum/component/riding/creature/human/get_offsets(pass_index)
 	var/mob/living/carbon/human/H = parent
 	if(H.buckle_lying) //SKYRAT EDIT BEGIN - Oversized Overhaul
-		return (HAS_TRAIT(H, TRAIT_OVERSIZED)) ? list(TEXT_NORTH = list(0, OVERSIZED_OFFSET), TEXT_SOUTH = list(0, OVERSIZED_OFFSET), TEXT_EAST = list(0, OVERSIZED_OFFSET), TEXT_WEST = list(0, OVERSIZED_OFFSET)) : list(TEXT_NORTH = list(0, REGULAR_OFFSET), TEXT_SOUTH = list(0, REGULAR_OFFSET), TEXT_EAST = list(0, REGULAR_OFFSET), TEXT_WEST = list(0, REGULAR_OFFSET))
+		return HAS_TRAIT(H, TRAIT_OVERSIZED) ? list(
+				TEXT_NORTH = list(0, OVERSIZED_OFFSET),
+				TEXT_SOUTH = list(0, OVERSIZED_OFFSET),
+				TEXT_EAST = list(0, OVERSIZED_OFFSET),
+				TEXT_WEST = list(0, OVERSIZED_OFFSET),
+			) : list(
+				TEXT_NORTH = list(0, REGULAR_OFFSET),
+				TEXT_SOUTH = list(0, REGULAR_OFFSET),
+				TEXT_EAST = list(0, REGULAR_OFFSET), 
+				TEXT_WEST = list(0, REGULAR_OFFSET),
+			)
 	else
-		return (HAS_TRAIT(H, TRAIT_OVERSIZED)) ? list(TEXT_NORTH = list(0, OVERSIZED_OFFSET), TEXT_SOUTH = list(0, OVERSIZED_OFFSET), TEXT_EAST = list(-OVERSIZED_SIDE_OFFSET, OVERSIZED_OFFSET), TEXT_WEST = list(OVERSIZED_SIDE_OFFSET, OVERSIZED_OFFSET)) : list(TEXT_NORTH = list(0, REGULAR_OFFSET), TEXT_SOUTH = list(0, REGULAR_OFFSET), TEXT_EAST = list(-REGULAR_OFFSET, REGULAR_SIDE_OFFSET), TEXT_WEST = list(REGULAR_OFFSET, REGULAR_SIDE_OFFSET))
+		return HAS_TRAIT(H, TRAIT_OVERSIZED) ? list(
+				TEXT_NORTH = list(0, OVERSIZED_OFFSET),
+				TEXT_SOUTH = list(0, OVERSIZED_OFFSET),
+				TEXT_EAST = list(-OVERSIZED_SIDE_OFFSET, OVERSIZED_OFFSET),
+				TEXT_WEST = list(OVERSIZED_SIDE_OFFSET, OVERSIZED_OFFSET),
+			) : list(
+				TEXT_NORTH = list(0, REGULAR_OFFSET),
+				TEXT_SOUTH = list(0, REGULAR_OFFSET),
+				TEXT_EAST = list(-REGULAR_OFFSET, REGULAR_SIDE_OFFSET),
+				TEXT_WEST = list(REGULAR_OFFSET, REGULAR_SIDE_OFFSET)
+			)
 	//SKYRAT EDIT END
 /datum/component/riding/creature/human/force_dismount(mob/living/dismounted_rider)
 	var/atom/movable/AM = parent
