@@ -28,9 +28,6 @@
 	cost = 10
 
 /datum/armament_entry/assault_operatives/bodyarmor/elite_modsuit
+	name = "Elite Syndicate MODsuit"
 	item_type = /obj/item/mod/control/pre_equipped/elite
 	cost = 15
-
-/datum/armament_entry/assault_operatives/bodyarmor/elite_modsuit_flamer
-	item_type = /obj/item/mod/control/pre_equipped/elite/flamethrower
-	cost = 18
