@@ -26,7 +26,7 @@
 	var/datum/uplink_handler/handler = the_uplink.uplink_handler
 	if(!handler)
 		return
-	handler.progression_points += rep_count
+	handler.progression_points += (rep_count * 60)
 
 /datum/opposing_force_equipment/service/power_outage
 	name = "Power Outage"
