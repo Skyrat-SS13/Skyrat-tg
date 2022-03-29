@@ -261,7 +261,8 @@
 
 /datum/component/riding/creature/human/get_offsets(pass_index)
 	var/mob/living/carbon/human/H = parent
-	if(H.buckle_lying) //SKYRAT EDIT BEGIN - Oversized Overhaul
+	//SKYRAT EDIT BEGIN - Oversized Overhaul
+	if(H.buckle_lying)
 		return HAS_TRAIT(H, TRAIT_OVERSIZED) ? list(
 				TEXT_NORTH = list(0, OVERSIZED_OFFSET),
 				TEXT_SOUTH = list(0, OVERSIZED_OFFSET),
@@ -270,7 +271,7 @@
 			) : list(
 				TEXT_NORTH = list(0, REGULAR_OFFSET),
 				TEXT_SOUTH = list(0, REGULAR_OFFSET),
-				TEXT_EAST = list(0, REGULAR_OFFSET), 
+				TEXT_EAST = list(0, REGULAR_OFFSET),
 				TEXT_WEST = list(0, REGULAR_OFFSET),
 			)
 	else
