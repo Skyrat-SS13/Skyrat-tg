@@ -1,5 +1,5 @@
 #define ARMAMENT_CATEGORY_MODULES "MODsuit Modules"
-#define ARMAMENT_CATEGORY_MODULES_LIMIT 3
+#define ARMAMENT_CATEGORY_MODULES_LIMIT 2
 
 /datum/armament_entry/assault_operatives/modules
 	category = ARMAMENT_CATEGORY_MODULES
