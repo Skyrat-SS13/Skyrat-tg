@@ -87,7 +87,7 @@
 	if(!injectee.can_inject(target_zone = def_zone, injection_flags = inject_flags)) // if the syringe is blocked
 		blocked = 100
 	if(blocked == 100)
-		target.visible_message(span_danger("\The [src] is deflected!"), \
+		target.visible_message(span_danger("\The [src] is deflected!"),
 							span_userdanger("You are protected against \the [src]!"))
 		return
 
