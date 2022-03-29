@@ -38,7 +38,6 @@
 		if(bprv & BODYPART_LIFE_UPDATE_HEALTH)
 			update_stamina() //needs to go before updatehealth to remove stamcrit
 			updatehealth()
-	flow_control() // SKYRAT EDIT: Flow Rate, if this is not here stamina breaks.
 	check_cremation(delta_time, times_fired)
 
 	if(. && mind) //. == not dead
@@ -46,6 +45,7 @@
 			var/datum/addiction/addiction = SSaddiction.all_addictions[key]
 			addiction.process_addiction(src, delta_time, times_fired)
 	if(stat != DEAD)
+		flow_control() // SKYRAT EDIT ADDITION: Flow Rate, if this is not here stamina breaks and you die many times over.
 		return 1
 
 ///////////////

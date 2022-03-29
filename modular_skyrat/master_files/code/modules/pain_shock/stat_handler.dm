@@ -1,5 +1,7 @@
 /mob/living/carbon/set_stat(new_stat)
 	. = ..()
+	if(. == DEAD && new_stat == DEAD) // insurance
+		return
 	if(should_be_critical(new_stat))
 		ADD_TRAIT(src, TRAIT_HANDS_BLOCKED, STAT_TRAIT)
 		ADD_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
@@ -52,8 +54,8 @@
 	var/answer = FALSE
 	if(in_shock)
 		answer = TRUE
-	if(health <= hardcrit_threshold)
+	if(health <= hardcrit_threshold || stat == DEAD)
 		answer = TRUE
-	if(new_stat == SOFT_CRIT || new_stat == HARD_CRIT)
+	if(new_stat == SOFT_CRIT || new_stat == HARD_CRIT || new_stat == DEAD)
 		answer = TRUE
 	return answer

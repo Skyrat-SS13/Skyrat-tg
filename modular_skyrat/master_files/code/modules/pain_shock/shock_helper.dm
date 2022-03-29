@@ -55,7 +55,7 @@
 			set_stat(SOFT_CRIT)
 		current_pain_message_helper("Shock")
 		losebreath += 0.25
-	flow_rate = clamp(flow_rate, FLOW_RATE_DEAD, FLOW_RATE_ARREST) - losebreath // Double negative when in crit?
+	flow_rate = clamp(flow_rate - losebreath, FLOW_RATE_DEAD, FLOW_RATE_ARREST) // Double negative when in crit?
 
 	if(flow_rate <= 0 && stat != DEAD)
 		adjustOrganLoss(ORGAN_SLOT_BRAIN, losebreath)
