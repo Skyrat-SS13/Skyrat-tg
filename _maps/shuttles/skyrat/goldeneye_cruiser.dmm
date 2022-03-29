@@ -99,6 +99,7 @@
 /area/shuttle/syndicate/cruiser/engineering)
 "cq" = (
 /obj/structure/table,
+/obj/item/instrument/harmonica,
 /turf/open/floor/iron,
 /area/shuttle/syndicate/cruiser/brig)
 "cN" = (
@@ -128,7 +129,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/door/airlock/engineering{
-	name = "Engine";
+	name = "Engine Bay";
 	req_access_txt = "150"
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden,
@@ -597,15 +598,18 @@
 /obj/structure/table/reinforced,
 /obj/item/storage/box/bodybags,
 /obj/item/stack/sticky_tape,
-/obj/item/clothing/under/rank/prisoner,
-/obj/item/clothing/under/rank/prisoner,
-/obj/item/clothing/under/rank/prisoner,
-/obj/item/clothing/under/rank/prisoner,
-/obj/item/clothing/under/rank/prisoner,
-/obj/item/clothing/under/rank/prisoner,
-/obj/item/clothing/under/rank/prisoner,
-/obj/item/clothing/under/rank/prisoner,
-/obj/item/clothing/under/rank/prisoner,
+/obj/item/clothing/under/rank/prisoner/syndicate,
+/obj/item/clothing/under/rank/prisoner/syndicate,
+/obj/item/clothing/under/rank/prisoner/syndicate,
+/obj/item/clothing/under/rank/prisoner/syndicate,
+/obj/item/clothing/under/rank/prisoner/syndicate,
+/obj/item/clothing/under/rank/prisoner/syndicate,
+/obj/item/clothing/under/rank/prisoner/syndicate,
+/obj/item/clothing/under/rank/prisoner/syndicate,
+/obj/item/clothing/under/rank/prisoner/syndicate,
+/obj/item/clothing/under/rank/prisoner/syndicate,
+/obj/item/clothing/under/rank/prisoner/syndicate,
+/obj/item/clothing/under/rank/prisoner/syndicate,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "ob" = (
@@ -791,6 +795,9 @@
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
+/obj/item/toy/cards/deck{
+	pixel_y = 4
+	},
 /turf/open/floor/iron,
 /area/shuttle/syndicate/cruiser/brig)
 "sH" = (
@@ -928,6 +935,11 @@
 "vt" = (
 /obj/structure/cable,
 /obj/structure/table,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/pen,
 /turf/open/floor/iron,
 /area/shuttle/syndicate/cruiser/brig)
 "vv" = (
@@ -1062,6 +1074,9 @@
 /area/shuttle/syndicate/cruiser/brig)
 "yt" = (
 /obj/structure/table/reinforced,
+/obj/item/toy/figure/syndie{
+	name = "\improper Syndicate Operative action figure"
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/bridge)
 "yx" = (
@@ -1138,7 +1153,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/door/airlock/hatch{
-	name = "Preparation Room";
+	name = "EVA Storage";
 	req_access_txt = "150"
 	},
 /turf/open/floor/iron/dark,
@@ -1228,7 +1243,9 @@
 	icon_state = "pipe11-3"
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/machinery/door/airlock/highsecurity,
+/obj/machinery/door/airlock/highsecurity{
+	name = "Interrogation"
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "Ce" = (
@@ -1355,6 +1372,7 @@
 	icon_state = "shower"
 	},
 /obj/effect/turf_decal/bot,
+/obj/structure/drain,
 /turf/open/floor/pod/dark,
 /area/shuttle/syndicate/cruiser/brig)
 "Fu" = (
@@ -1822,6 +1840,10 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
+"OS" = (
+/obj/structure/sign/poster/contraband/donk_co,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/syndicate/cruiser/brig)
 "Pb" = (
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 8;
@@ -2017,6 +2039,42 @@
 /obj/item/bodybag/environmental/prisoner/syndicate,
 /obj/item/bodybag/environmental/prisoner/syndicate,
 /obj/item/bodybag/environmental/prisoner/syndicate,
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_y = 12
+	},
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_y = 12
+	},
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_y = 12
+	},
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_y = 12
+	},
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_y = 12
+	},
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_y = 12
+	},
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_y = 12
+	},
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_y = 12
+	},
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_y = 12
+	},
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_y = 12
+	},
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_y = 12
+	},
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_y = 12
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "Rv" = (
@@ -2244,17 +2302,14 @@
 /area/shuttle/syndicate/cruiser/engineering)
 "Vn" = (
 /obj/structure/table/reinforced,
-/obj/item/restraints/handcuffs/energy,
-/obj/item/restraints/handcuffs/energy,
-/obj/item/restraints/handcuffs/energy,
-/obj/item/restraints/handcuffs/energy,
-/obj/item/restraints/handcuffs/energy,
-/obj/item/restraints/handcuffs/energy,
-/obj/item/restraints/handcuffs/energy,
-/obj/item/restraints/legcuffs,
-/obj/item/restraints/legcuffs,
-/obj/item/restraints/legcuffs,
 /obj/item/melee/baton/security/loaded,
+/obj/item/storage/box/handcuffs{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/storage/box/zipties{
+	pixel_x = -2
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "Vr" = (
@@ -2356,7 +2411,9 @@
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/shuttle/syndicate/cruiser/engineering)
 "WL" = (
-/obj/machinery/door/airlock/glass,
+/obj/machinery/door/airlock/bathroom{
+	name = "Brig Restroom"
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/brig)
 "Xh" = (
@@ -2419,6 +2476,7 @@
 /area/shuttle/syndicate/cruiser/hallway)
 "Yx" = (
 /obj/effect/turf_decal/stripes/corner,
+/obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "YJ" = (
@@ -2621,7 +2679,7 @@ YO
 YO
 YO
 YO
-NL
+OS
 iO
 yx
 JD

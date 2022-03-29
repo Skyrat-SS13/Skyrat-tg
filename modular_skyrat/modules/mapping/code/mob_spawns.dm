@@ -94,7 +94,7 @@
 
 /datum/outfit/ds2/prisoner
 	name = "Syndicate Prisoner"
-	uniform = /obj/item/clothing/under/rank/prisoner
+	uniform = /obj/item/clothing/under/rank/prisoner/syndicate
 	shoes = /obj/item/clothing/shoes/sneakers/orange
 	id = /obj/item/card/id/advanced/prisoner
 

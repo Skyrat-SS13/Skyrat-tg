@@ -143,3 +143,9 @@
 	greyscale_config_inhand_left = null
 	greyscale_config_inhand_right = null
 	greyscale_config_worn = null
+
+/obj/item/clothing/under/rank/prisoner/syndicate
+	name = "syndicate prisoner jumpsuit"
+	desc = "A crimson red jumpsuit worn by syndicate captives. Its sensors have been shorted out."
+	greyscale_colors = "#992300"
+	has_sensor = FALSE
