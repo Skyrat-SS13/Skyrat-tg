@@ -1,5 +1,5 @@
 /obj/item/gun/ballistic/automatic/mg34
-	name = "\improper MG-34"
+	name = "\improper MG-4T"
 	desc = "A reproduction of the German MG-34 general purpose machine gun, this one is a revision from the 2200's and was one of several thousand distributed to SolFed expedition teams. It has been rechambered to fire 7.92mm Mauser instead of 7.62mm NATO."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_lefthand.dmi'
@@ -104,7 +104,7 @@
 #define BARREL_COOLDOWN_RATE 2
 
 /obj/item/gun/ballistic/automatic/mg34/mg42
-	name = "\improper Armadyne MG-9V GPMG"
+	name = "\improper MG-9V GPMG"
 	desc = "An updated version of the German Maschinengewehr 42 machine gun chambered in 7.92 Mauser, it has a bipod for better stability when deployed. It is a reproduction manufactured by the Oldarms division of the Armadyne Corporation."
 	icon_state = "mg42"
 	base_icon_state = "mg42"
@@ -212,5 +212,5 @@
 	icon_state = "mg42_drum"
 	ammo_type = /obj/item/ammo_casing/realistic/a792x57
 	caliber = "a792x57"
-	max_ammo = 250 // It's a lot, but the gun overheats.
+	max_ammo = 150 // It's a lot, but the gun overheats.
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC

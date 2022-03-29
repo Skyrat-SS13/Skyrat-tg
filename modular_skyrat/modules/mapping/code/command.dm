@@ -25,4 +25,4 @@
 	worn_icon_state = "dress_cap_s"
 	body_parts_covered = CHEST|GROIN|ARMS
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-
+	can_adjust = FALSE

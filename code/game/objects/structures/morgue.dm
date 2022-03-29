@@ -274,6 +274,10 @@ GLOBAL_LIST_EMPTY(crematoriums)
 				qdel(M)
 
 		for(var/obj/O in conts) //conts defined above, ignores crematorium and tray
+			// SKYRAT EDIT ADDITION
+			if(istype(O, /obj/item/goldeneye_key))
+				continue
+			// SKYRAT EDIT END
 			qdel(O)
 
 		if(!locate(/obj/effect/decal/cleanable/ash) in get_step(src, dir))//prevent pile-up

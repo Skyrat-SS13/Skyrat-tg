@@ -325,6 +325,9 @@
 /obj/item/clothing/suit/hooded/cultrobes/eldritch
 	mutant_variants = NONE
 
+/obj/item/clothing/suit/armor/vest/marine
+	mutant_variants = NONE
+
 //FEET>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
