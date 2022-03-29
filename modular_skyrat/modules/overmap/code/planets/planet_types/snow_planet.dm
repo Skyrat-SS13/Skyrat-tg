@@ -63,7 +63,7 @@
 		),
 	)
 	high_height_biome = /datum/biome/mountain
-	perlin_zoom = 65
+	perlin_zoom = 30
 
 /datum/biome/grass_tundra
 	turf_type = /turf/open/floor/planetary/grass
@@ -162,18 +162,22 @@
 
 /datum/atmosphere/snow
 	base_gases = list(
-		/datum/gas/nitrogen=80,
-		/datum/gas/oxygen=20,
+		/datum/gas/carbon_dioxide=40,
+		/datum/gas/pluoxium=5,
 	)
 	normal_gases = list(
-		/datum/gas/oxygen=5,
+		/datum/gas/water_vapor=10,
 		/datum/gas/nitrogen=5,
-		/datum/gas/carbon_dioxide=1,
+		/datum/gas/oxygen=5,
 	)
-	restricted_chance = 0
+	restricted_gases = list(
+		/datum/gas/nitrium=5,
+		/datum/gas/helium=5,
+	)
+	restricted_chance = 10
 
-	minimum_pressure = ONE_ATMOSPHERE - 30
-	maximum_pressure = ONE_ATMOSPHERE
+	minimum_pressure = HAZARD_LOW_PRESSURE + 10
+	maximum_pressure = LAVALAND_EQUIPMENT_EFFECT_PRESSURE - 10
 
-	minimum_temp = T20C - 100
-	maximum_temp = T20C - 30
+	minimum_temp = BODYTEMP_COLD_DAMAGE_LIMIT - 100
+	maximum_temp = BODYTEMP_COLD_DAMAGE_LIMIT + 10

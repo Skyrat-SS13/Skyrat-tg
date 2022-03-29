@@ -64,7 +64,7 @@
 		),
 	)
 	high_height_biome = /datum/biome/mountain
-	perlin_zoom = 65
+	perlin_zoom = 30
 
 /datum/biome/grass
 	turf_type = /turf/open/floor/planetary/grass
@@ -103,7 +103,7 @@
 
 /datum/atmosphere/lush
 	base_gases = list(
-		/datum/gas/nitrogen=80,
+		/datum/gas/nitrogen=10,
 		/datum/gas/oxygen=20,
 	)
 	normal_gases = list(
@@ -115,5 +115,5 @@
 	minimum_pressure = ONE_ATMOSPHERE - 10
 	maximum_pressure = ONE_ATMOSPHERE + 20
 
-	minimum_temp = T20C - 10
-	maximum_temp = T20C + 20
+	minimum_temp = T20C
+	maximum_temp = BODYTEMP_HEAT_DAMAGE_LIMIT -10

@@ -77,7 +77,7 @@
 		),
 	)
 	high_height_biome = /datum/biome/mountain
-	perlin_zoom = 65
+	perlin_zoom = 30
 
 /datum/biome/chlorine_desert
 	turf_type = /turf/open/floor/planetary/chlorine_sand
@@ -96,20 +96,26 @@
 
 /datum/atmosphere/chlorine
 	base_gases = list(
-		/datum/gas/nitrogen=80,
-		/datum/gas/carbon_dioxide=20
-	) //CO2 because chlorine gas isn't a thing now
-	normal_gases = list(
-		/datum/gas/oxygen=5,
-		/datum/gas/nitrogen=5
+		/datum/gas/zauker=5,
+		/datum/gas/carbon_dioxide=30,
 	)
-	restricted_chance = 0
+	normal_gases = list(
+		/datum/gas/helium=5,
+		/datum/gas/nitrogen=5,
+		/datum/gas/hydrogen=5,
+	)
+	restricted_gases = list(
+		/datum/gas/zauker=2,
+		/datum/gas/antinoblium=1,
+		/datum/gas/miasma=2,
+	) // Chlorine planets can be lucrative business, but can also just fucking kill you
+	restricted_chance = 20
 
 	minimum_pressure = ONE_ATMOSPHERE - 30
-	maximum_pressure = ONE_ATMOSPHERE
+	maximum_pressure = HAZARD_HIGH_PRESSURE - 20
 
-	minimum_temp = T20C - 100
-	maximum_temp = T20C
+	minimum_temp = BODYTEMP_COLD_DAMAGE_LIMIT - 70
+	maximum_temp = BODYTEMP_COLD_DAMAGE_LIMIT - 10
 
 /turf/open/floor/planetary/chlorine_sand
 	gender = PLURAL

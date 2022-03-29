@@ -58,7 +58,7 @@
 		),
 	)
 	high_height_biome = /datum/biome/mountain
-	perlin_zoom = 65
+	perlin_zoom = 30
 
 /datum/biome/desert
 	turf_type = /turf/open/floor/planetary/sand/desert
@@ -83,20 +83,20 @@
 
 /datum/atmosphere/desert
 	base_gases = list(
-		/datum/gas/nitrogen=80,
-		/datum/gas/oxygen=20,
+		/datum/gas/nitrogen=20,
+		/datum/gas/pluoxium=10,
 	)
 	normal_gases = list(
-		/datum/gas/oxygen=5,
+		/datum/gas/carbon_dioxide=5,
 		/datum/gas/nitrogen=5,
 	)
 	restricted_chance = 0
 
-	minimum_pressure = ONE_ATMOSPHERE
-	maximum_pressure = ONE_ATMOSPHERE  + 50
+	minimum_pressure = WARNING_LOW_PRESSURE - 10
+	maximum_pressure = ONE_ATMOSPHERE
 
-	minimum_temp = T20C + 20
-	maximum_temp = T20C + 80
+	minimum_temp = BODYTEMP_HEAT_DAMAGE_LIMIT - 20
+	maximum_temp = BODYTEMP_HEAT_DAMAGE_LIMIT + 10
 
 /turf/open/floor/planetary/sand/desert
 	gender = PLURAL

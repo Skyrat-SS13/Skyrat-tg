@@ -261,14 +261,14 @@ Used by the AI doomsday and the self-destruct nuke.
 	for (var/level in traits)
 		space_levels += add_new_zlevel("[name][i ? " [i + 1]" : ""]", level, null, overmap_obj = ov_obj)
 		++i
-	var/datum/atmosphere/atmos
-	if(atmosphere_type)
-		atmos = new atmosphere_type()
-	var/datum/ore_node_seeder/ore_node_seeder
-	if(ore_node_seeder_type)
-		ore_node_seeder = new ore_node_seeder_type
 	for(var/c in space_levels)
 		var/datum/space_level/level = c
+		var/datum/ore_node_seeder/ore_node_seeder
+		var/datum/atmosphere/atmos
+		if(atmosphere_type)
+			atmos = new atmosphere_type()
+		if(ore_node_seeder_type)
+			ore_node_seeder = new ore_node_seeder_type
 		if(ore_node_seeder)
 			ore_node_seeder.SeedToLevel(level.z_value)
 		if(atmos)
@@ -281,19 +281,18 @@ Used by the AI doomsday and the self-destruct nuke.
 			level.grass_color = grass_color
 		if(water_color)
 			level.water_color = water_color
-	if(atmos)
-		qdel(atmos)
-	if(ore_node_seeder)
-		qdel(ore_node_seeder)
-	//Apply the weather controller to the levels if able
-	if(weather_controller_type)
-		var/datum/weather_controller/weather_controller = new weather_controller_type(space_levels)
-		if(ov_obj)
-			weather_controller.LinkOvermapObject(ov_obj)
-	if(day_night_controller_type)
-		var/datum/day_night_controller/day_night = new day_night_controller_type(space_levels)
-		day_night.LinkOvermapObject(ov_obj)
-	space_levels = null
+		if(atmos)
+			qdel(atmos)
+		if(ore_node_seeder)
+			qdel(ore_node_seeder)
+		//Apply the weather controller to the levels if able
+		if(weather_controller_type)
+			var/datum/weather_controller/weather_controller = new weather_controller_type(space_levels)
+			if(ov_obj)
+				weather_controller.LinkOvermapObject(ov_obj)
+		if(day_night_controller_type)
+			var/datum/day_night_controller/day_night = new day_night_controller_type(space_levels)
+			day_night.LinkOvermapObject(ov_obj)
 
 	// load the maps
 	for (var/P in parsed_maps)

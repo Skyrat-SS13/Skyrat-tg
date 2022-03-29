@@ -48,7 +48,7 @@
 		)
 	)
 	high_height_biome = /datum/biome/mountain
-	perlin_zoom = 65
+	perlin_zoom = 30
 
 /datum/biome/barren
 	turf_type = /turf/open/floor/planetary/barren

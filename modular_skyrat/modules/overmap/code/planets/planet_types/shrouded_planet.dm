@@ -78,7 +78,7 @@
 		),
 	)
 	high_height_biome = /datum/biome/mountain
-	perlin_zoom = 65
+	perlin_zoom = 30
 
 /datum/biome/shrouded_sand
 	turf_type = /turf/open/floor/planetary/shrouded_sand
@@ -112,17 +112,18 @@
 
 /datum/atmosphere/shrouded
 	base_gases = list(
-		/datum/gas/nitrogen=80,
 		/datum/gas/oxygen=20,
 	)
 	normal_gases = list(
-		/datum/gas/bz=2,
-		/datum/gas/carbon_dioxide=2,
+		/datum/gas/bz=5,
+		/datum/gas/nitrogen=5,
+		/datum/gas/oxygen=5,
+		/datum/gas/helium=5,
 	)
 	restricted_chance = 0
 
-	minimum_pressure = ONE_ATMOSPHERE - 10
-	maximum_pressure = ONE_ATMOSPHERE + 20
+	minimum_pressure = HAZARD_LOW_PRESSURE + 10
+	maximum_pressure = WARNING_HIGH_PRESSURE - 10
 
-	minimum_temp = T20C - 30
-	maximum_temp = T20C - 10
+	minimum_temp = BODYTEMP_COLD_DAMAGE_LIMIT - 20
+	maximum_temp = BODYTEMP_COLD_DAMAGE_LIMIT + 20

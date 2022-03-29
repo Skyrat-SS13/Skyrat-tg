@@ -52,7 +52,7 @@
 		),
 	)
 	high_height_biome = /datum/biome/mountain
-	perlin_zoom = 65
+	perlin_zoom = 30
 
 /datum/biome/basalt
 	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
@@ -80,18 +80,22 @@
 
 /datum/atmosphere/volcanic
 	base_gases = list(
-		/datum/gas/nitrogen=80,
-		/datum/gas/oxygen=20,
+		/datum/gas/nitrogen=25,
+		/datum/gas/pluoxium=5,
 	)
 	normal_gases = list(
-		/datum/gas/oxygen=5,
+		/datum/gas/bz=10,
 		/datum/gas/nitrogen=5,
-		/datum/gas/carbon_dioxide=2,
+		/datum/gas/carbon_dioxide=5,
 	)
-	restricted_chance = 0
+	restricted_gases = list(
+		/datum/gas/plasma=5,
+		/datum/gas/helium=5,
+	)
+	restricted_chance = 10
 
-	minimum_pressure = ONE_ATMOSPHERE + 30
-	maximum_pressure = ONE_ATMOSPHERE + 80
+	minimum_pressure = HAZARD_LOW_PRESSURE + 10
+	maximum_pressure = LAVALAND_EQUIPMENT_EFFECT_PRESSURE - 10
 
-	minimum_temp = T20C + 100
-	maximum_temp = T20C + 200
+	minimum_temp = BODYTEMP_HEAT_WOUND_LIMIT + 10
+	maximum_temp = BODYTEMP_HEAT_WOUND_LIMIT + 200

@@ -54,7 +54,7 @@
 		),
 	)
 	high_height_biome = /datum/biome/mountain
-	perlin_zoom = 65
+	perlin_zoom = 30
 
 /datum/biome/mudlands
 	turf_type = /turf/open/floor/planetary/dirt/jungle/dark
@@ -118,18 +118,17 @@
 
 /datum/atmosphere/jungle
 	base_gases = list(
-		/datum/gas/nitrogen=80,
-		/datum/gas/oxygen=20,
+		/datum/gas/nitrogen=10,
+		/datum/gas/oxygen=40,
 	)
 	normal_gases = list(
 		/datum/gas/oxygen=5,
 		/datum/gas/nitrogen=5,
-		/datum/gas/carbon_dioxide=2,
 	)
 	restricted_chance = 0
 
-	minimum_pressure = ONE_ATMOSPHERE
+	minimum_pressure = ONE_ATMOSPHERE - 10
 	maximum_pressure = ONE_ATMOSPHERE + 20
 
-	minimum_temp = T20C + 20
-	maximum_temp = T20C + 40
+	minimum_temp = T20C
+	maximum_temp = BODYTEMP_HEAT_DAMAGE_LIMIT -10
