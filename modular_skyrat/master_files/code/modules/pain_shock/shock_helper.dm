@@ -55,7 +55,7 @@
 			set_stat(SOFT_CRIT)
 		current_pain_message_helper("Shock")
 		losebreath += 0.25
-	flow_rate -= losebreath // Double negative when in crit?
+	flow_rate = clamp(flow_rate, FLOW_RATE_DEAD, FLOW_RATE_ARREST) - losebreath // Double negative when in crit?
 
 	if(flow_rate <= 0 && stat != DEAD)
 		adjustOrganLoss(ORGAN_SLOT_BRAIN, losebreath)
@@ -99,8 +99,6 @@
 
 /mob/living/carbon/proc/shock_helper(flow_rate)
 	SIGNAL_HANDLER
-/* 	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT) && stat != DEAD || stat != UNCONSCIOUS)
-		set_stat(UNCONSCIOUS) */
 	switch(flow_rate)
 		if(FLOW_RATE_ARREST)
 			if(stat != HARD_CRIT || stat != SOFT_CRIT && !HAS_TRAIT(src, TRAIT_NOSOFTCRIT))
@@ -111,25 +109,21 @@
 			if(health == hardcrit_threshold || stat != HARD_CRIT && !HAS_TRAIT(src, TRAIT_NOHARDCRIT))
 				set_stat(HARD_CRIT)
 				in_shock = TRUE
-//				shock_dying(flow_rate, pulsetimer)
 				current_pain_message_helper("Dying")
-			if(health <= HEALTH_THRESHOLD_DEAD && !HAS_TRAIT(src, TRAIT_NODEATH))
-				to_chat(src, span_unconscious("Death..."))
-//				shock_dying(flow_rate, pulsetimer)
 
 
-		if(180 to 299)
+		if(180 to FLOW_RATE_ARREST - 1)
 			current_pain_message_helper("Severe")
-			set_stat(CONSCIOUS)
+//			set_stat(CONSCIOUS)
 		if(120 to 140)
 			current_pain_message_helper("Minor")
-			set_stat(CONSCIOUS)
+//			set_stat(CONSCIOUS)
 		if(140 to 160)
 			current_pain_message_helper("Moderate")
-			set_stat(CONSCIOUS)
+//			set_stat(CONSCIOUS)
 		if(160 to 180)
 			current_pain_message_helper("Major")
-			set_stat(CONSCIOUS)
+//			set_stat(CONSCIOUS)
 
 //mob/living/carbon/updatehealth()
 //	. = ..()
