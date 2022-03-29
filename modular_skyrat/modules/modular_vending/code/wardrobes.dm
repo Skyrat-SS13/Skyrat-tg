@@ -34,18 +34,18 @@
 
 /obj/machinery/vending/wardrobe/cargo_wardrobe
 	skyrat_products = list(
-		/obj/item/clothing/under/misc/cargo_long = 3,
-		/obj/item/clothing/under/utility/cargo/gorka = 3,
-		/obj/item/clothing/under/utility/cargo/turtleneck = 3,
-		/obj/item/clothing/under/utility/cargo = 3,
-		/obj/item/clothing/under/rank/cargo/casualman = 3,
+		/obj/item/clothing/under/rank/cargo/tech/skyrat/long = 3,
+		/obj/item/clothing/under/rank/cargo/tech/skyrat/gorka = 3,
+		/obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck = 3,
+		/obj/item/clothing/under/rank/cargo/tech/skyrat/utility = 3,
+		/obj/item/clothing/under/rank/cargo/tech/skyrat/casualman = 3,
 		/obj/item/clothing/suit/gorka/supply = 3,
 		/obj/item/clothing/suit/toggle/jacket/supply = 3,
 	)
 
 	skyrat_contraband = list(
 		/obj/item/clothing/under/suit/white/scarface = 2,
-		/obj/item/clothing/under/misc/evilcargo = 2,
+		/obj/item/clothing/under/rank/cargo/tech/skyrat/evil = 2,
 	)
 
 /obj/machinery/vending/wardrobe/robo_wardrobe
