@@ -5,6 +5,10 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
+"ar" = (
+/obj/item/toy/beach_ball/holoball,
+/turf/open/floor/iron,
+/area/shuttle/syndicate/cruiser/brig)
 "ax" = (
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/engineering)
@@ -97,9 +101,21 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
+"cf" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/shuttle/syndicate/cruiser/brig)
 "cq" = (
 /obj/structure/table,
 /obj/item/instrument/harmonica,
+/turf/open/floor/iron,
+/area/shuttle/syndicate/cruiser/brig)
+"cx" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 10
+	},
 /turf/open/floor/iron,
 /area/shuttle/syndicate/cruiser/brig)
 "cN" = (
@@ -272,6 +288,12 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
+"gq" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 9
+	},
+/turf/open/floor/iron,
+/area/shuttle/syndicate/cruiser/brig)
 "gr" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -556,6 +578,11 @@
 	},
 /turf/open/floor/circuit/red,
 /area/shuttle/syndicate/cruiser/hallway)
+"mg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/space_heater,
+/turf/open/floor/iron,
+/area/shuttle/syndicate/cruiser/brig)
 "mP" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -595,15 +622,28 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/bridge)
 "nW" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/box/bodybags,
-/obj/item/stack/sticky_tape,
-/obj/item/clothing/under/rank/prisoner/syndicate,
-/obj/item/clothing/under/rank/prisoner/syndicate,
-/obj/item/clothing/under/rank/prisoner/syndicate,
-/obj/item/clothing/under/rank/prisoner/syndicate,
-/obj/item/clothing/under/rank/prisoner/syndicate,
-/obj/item/clothing/under/rank/prisoner/syndicate,
+/obj/structure/closet/secure_closet{
+	name = "Prisoner Locker";
+	req_access_txt = "150"
+	},
+/obj/item/clothing/shoes/sneakers/crimson,
+/obj/item/clothing/shoes/sneakers/crimson,
+/obj/item/clothing/shoes/sneakers/crimson,
+/obj/item/clothing/shoes/sneakers/crimson,
+/obj/item/clothing/shoes/sneakers/crimson,
+/obj/item/clothing/shoes/sneakers/crimson,
+/obj/item/clothing/shoes/sneakers/crimson,
+/obj/item/clothing/shoes/sneakers/crimson,
+/obj/item/clothing/shoes/sneakers/crimson,
+/obj/item/clothing/shoes/sneakers/crimson,
+/obj/item/clothing/shoes/sneakers/crimson,
+/obj/item/clothing/shoes/sneakers/crimson,
+/obj/item/clothing/under/rank/prisoner/skirt/syndicate,
+/obj/item/clothing/under/rank/prisoner/skirt/syndicate,
+/obj/item/clothing/under/rank/prisoner/skirt/syndicate,
+/obj/item/clothing/under/rank/prisoner/skirt/syndicate,
+/obj/item/clothing/under/rank/prisoner/skirt/syndicate,
+/obj/item/clothing/under/rank/prisoner/skirt/syndicate,
 /obj/item/clothing/under/rank/prisoner/syndicate,
 /obj/item/clothing/under/rank/prisoner/syndicate,
 /obj/item/clothing/under/rank/prisoner/syndicate,
@@ -658,6 +698,10 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
+"ox" = (
+/obj/effect/turf_decal/stripes/white/line,
+/turf/open/floor/iron,
+/area/shuttle/syndicate/cruiser/brig)
 "oD" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
@@ -967,7 +1011,9 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/airlock)
 "vI" = (
-/mob/living/simple_animal/mouse/white,
+/mob/living/simple_animal/mouse/white{
+	faction = list("Syndicate")
+	},
 /obj/structure/chair/stool/directional/west,
 /turf/open/floor/iron,
 /area/shuttle/syndicate/cruiser/brig)
@@ -1633,6 +1679,13 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/medical)
+"KZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/shuttle/syndicate/cruiser/brig)
 "Li" = (
 /obj/machinery/seed_extractor,
 /turf/open/floor/plating,
@@ -2029,51 +2082,38 @@
 /area/shuttle/syndicate/cruiser/armory)
 "Ri" = (
 /obj/structure/table/reinforced,
-/obj/item/bodybag/environmental/prisoner/syndicate,
-/obj/item/bodybag/environmental/prisoner/syndicate,
-/obj/item/bodybag/environmental/prisoner/syndicate,
-/obj/item/bodybag/environmental/prisoner/syndicate,
-/obj/item/bodybag/environmental/prisoner/syndicate,
-/obj/item/bodybag/environmental/prisoner/syndicate,
-/obj/item/bodybag/environmental/prisoner/syndicate,
-/obj/item/bodybag/environmental/prisoner/syndicate,
-/obj/item/bodybag/environmental/prisoner/syndicate,
-/obj/item/bodybag/environmental/prisoner/syndicate,
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_y = 12
+/obj/item/bodybag/environmental/prisoner/syndicate{
+	pixel_y = 8
 	},
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_y = 12
+/obj/item/bodybag/environmental/prisoner/syndicate{
+	pixel_y = 8
 	},
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_y = 12
+/obj/item/bodybag/environmental/prisoner/syndicate{
+	pixel_y = 8
 	},
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_y = 12
+/obj/item/bodybag/environmental/prisoner/syndicate{
+	pixel_y = 8
 	},
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_y = 12
+/obj/item/bodybag/environmental/prisoner/syndicate{
+	pixel_y = 8
 	},
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_y = 12
+/obj/item/bodybag/environmental/prisoner/syndicate{
+	pixel_y = 8
 	},
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_y = 12
+/obj/item/bodybag/environmental/prisoner/syndicate{
+	pixel_y = 8
 	},
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_y = 12
+/obj/item/bodybag/environmental/prisoner/syndicate{
+	pixel_y = 8
 	},
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_y = 12
+/obj/item/bodybag/environmental/prisoner/syndicate{
+	pixel_y = 8
 	},
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_y = 12
+/obj/item/bodybag/environmental/prisoner/syndicate{
+	pixel_y = 8
 	},
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_y = 12
-	},
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_y = 12
+/obj/item/bodybag/environmental/prisoner/syndicate{
+	pixel_y = 8
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -2204,6 +2244,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/airlock)
+"Tb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/shuttle/syndicate/cruiser/brig)
 "Td" = (
 /obj/machinery/turretid{
 	name = "DANGER: Outer Turret Control";
@@ -2301,7 +2348,6 @@
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
 "Vn" = (
-/obj/structure/table/reinforced,
 /obj/item/melee/baton/security/loaded,
 /obj/item/storage/box/handcuffs{
 	pixel_x = -4;
@@ -2310,6 +2356,12 @@
 /obj/item/storage/box/zipties{
 	pixel_x = -2
 	},
+/obj/structure/closet/secure_closet{
+	name = "Secure Storage";
+	req_access_txt = "150"
+	},
+/obj/item/stack/sticky_tape,
+/obj/item/storage/box/bodybags,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "Vr" = (
@@ -2385,6 +2437,12 @@
 /obj/structure/sign/warning/fire,
 /turf/closed/wall/r_wall/syndicate/cruiser,
 /area/shuttle/syndicate/cruiser/engineering)
+"Wd" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/shuttle/syndicate/cruiser/brig)
 "Wt" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -2474,6 +2532,12 @@
 "Yi" = (
 /turf/closed/wall/r_wall/syndicate,
 /area/shuttle/syndicate/cruiser/hallway)
+"Yn" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/shuttle/syndicate/cruiser/brig)
 "Yx" = (
 /obj/effect/turf_decal/stripes/corner,
 /obj/effect/decal/cleanable/blood/old,
@@ -2586,10 +2650,10 @@ Ii
 gj
 NL
 Li
-iO
-yx
-yx
-iO
+KZ
+Yn
+Yn
+Tb
 yx
 dU
 JV
@@ -2618,10 +2682,10 @@ gj
 NL
 lp
 cq
-yx
+Wd
 iO
-yx
-yx
+ar
+ox
 iO
 yx
 oR
@@ -2650,10 +2714,10 @@ NL
 Hr
 vI
 tF
-yx
-yx
-yx
-yx
+cx
+cf
+cf
+gq
 yx
 yx
 kc
@@ -2680,7 +2744,7 @@ YO
 YO
 YO
 OS
-iO
+mg
 yx
 JD
 JD
