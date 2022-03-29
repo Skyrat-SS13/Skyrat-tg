@@ -238,9 +238,6 @@
 	if(json["global_trading_hub_type"])
 		global_trading_hub_type = text2path(json["global_trading_hub_type"])
 
-	if(json["ore_node_seeder_type"])
-		atmosphere_type = text2path(json["ore_node_seeder_type"])
-
 	if(json["localized_trading_hub_types"])
 		var/list/hub_types = json["localized_trading_hub_types"]
 		for(var/hub_type in hub_types)
