@@ -71,8 +71,8 @@
 	new /obj/item/clothing/suit/hooded/wintercoat/hopformal(src)
 
 /obj/item/storage/bag/garment/hos/PopulateContents()
-	new /obj/item/clothing/under/rank/security/head_of_security/grey(src)
-	new /obj/item/clothing/under/rank/security/head_of_security/skirt(src)
+	//new /obj/item/clothing/under/rank/security/head_of_security/grey(src) //SKYRAT EDIT REMOVAL
+	//new /obj/item/clothing/under/rank/security/head_of_security/skirt(src) //SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/under/rank/security/head_of_security/alt(src)
 	new /obj/item/clothing/under/rank/security/head_of_security/alt/skirt(src)
 	new /obj/item/clothing/under/rank/security/head_of_security/parade/female(src)
