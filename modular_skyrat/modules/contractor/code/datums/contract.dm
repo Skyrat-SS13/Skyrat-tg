@@ -205,7 +205,8 @@
 	target.Dizzy(15)
 	target.add_confusion(20)
 	to_chat(target, span_doyourjobidiot(span_reallybig("You do not remember anything that happened this shift except being stuffed to a suspicious pod. \
-				Do not metagame your OOC knowledge and roleplay accordingly.")))
+				Do not metagame your OOC knowledge and roleplay accordingly. This applies even if you have \
+				entered the pod willingly.")))
 
 /// We're returning the victim
 /datum/syndicate_contract/proc/return_victim(mob/living/target)
