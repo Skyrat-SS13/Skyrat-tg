@@ -56,14 +56,14 @@
 /turf/open/water/xen_acid
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	color = COLOR_VIBRANT_LIME
-	light_range = 1
+	light_range = 2
 	light_color = COLOR_VIBRANT_LIME
 	/// How much damage we deal if a mob enters us.
 	var/acid_damage = 50
 
 /turf/open/water/xen_acid/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
-	if(isliving(arrived))
+	if(isliving(arrived) && !istype(arrived, /mob/living/simple_animal/hostile/blackmesa/xen/bullsquid)) // Bull squid territory!
 		var/mob/living/unlucky_mob = arrived
 		unlucky_mob.adjustFireLoss(acid_damage)
 		playsound(unlucky_mob, 'sound/weapons/sear.ogg', 100, TRUE)

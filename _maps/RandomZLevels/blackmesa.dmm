@@ -28,7 +28,8 @@
 /area/awaymission/black_mesa)
 "ag" = (
 /obj/structure/lattice/catwalk,
-/turf/open/space/basic,
+/obj/machinery/light/dim/directional/west,
+/turf/open/floor/iron/dark,
 /area/awaymission/black_mesa/xen)
 "ah" = (
 /obj/machinery/door/airlock/multi_tile/glass{
@@ -477,6 +478,11 @@
 /obj/item/flashlight/flare,
 /turf/open/floor/iron/freezer,
 /area/awaymission/black_mesa)
+"cA" = (
+/obj/structure/table,
+/obj/machinery/computer/secure_data/laptop,
+/turf/open/misc/xen,
+/area/awaymission/black_mesa/xen)
 "cB" = (
 /obj/structure/window/reinforced/spawner,
 /obj/structure/window/reinforced/spawner{
@@ -871,6 +877,7 @@
 /obj/structure/cable,
 /obj/structure/table,
 /obj/machinery/light/cold/directional/east,
+/obj/item/modular_computer/laptop,
 /turf/open/floor/iron/dark,
 /area/awaymission/black_mesa/xen)
 "fa" = (
@@ -1640,6 +1647,10 @@
 	},
 /turf/open/chasm,
 /area/awaymission/black_mesa)
+"ju" = (
+/obj/structure/table,
+/turf/open/floor/iron/dark,
+/area/awaymission/black_mesa/xen)
 "jw" = (
 /obj/structure/closet/crate/bin,
 /obj/item/pen,
@@ -4400,6 +4411,12 @@
 /obj/machinery/door/airlock/silver,
 /turf/open/floor/iron/textured_large,
 /area/awaymission/black_mesa)
+"xY" = (
+/obj/structure/cable,
+/obj/structure/table,
+/obj/machinery/computer/secure_data/laptop,
+/turf/open/floor/iron/dark,
+/area/awaymission/black_mesa/xen)
 "xZ" = (
 /obj/structure/flora/biolumi/lamp/weaklight,
 /obj/structure/alien/weeds/xen,
@@ -5194,6 +5211,10 @@
 /obj/structure/flora/biolumi/flower/weaklight,
 /turf/open/floor/plating/elevatorshaft,
 /area/awaymission/black_mesa)
+"CC" = (
+/obj/structure/sign/warning/electricshock,
+/turf/closed/wall/r_wall,
+/area/awaymission/black_mesa/xen)
 "CD" = (
 /obj/machinery/light/red,
 /obj/structure/lattice/catwalk,
@@ -7978,6 +7999,12 @@
 /obj/structure/alien/weeds/xen,
 /turf/open/floor/iron/smooth_large,
 /area/awaymission/black_mesa)
+"Rf" = (
+/obj/structure/cable,
+/obj/structure/table,
+/obj/item/modular_computer/laptop,
+/turf/open/floor/iron/dark,
+/area/awaymission/black_mesa/xen)
 "Rh" = (
 /obj/machinery/power/supermatter_crystal/shard/hugbox,
 /turf/open/floor/engine,
@@ -8871,6 +8898,10 @@
 /obj/item/storage/box/hecu_rations,
 /turf/open/floor/plating,
 /area/awaymission/black_mesa)
+"VR" = (
+/obj/effect/decal/remains/human,
+/turf/open/water/xen_acid,
+/area/awaymission/black_mesa/xen)
 "VS" = (
 /obj/effect/turf_decal/trimline/green/filled/line,
 /obj/structure/flora/biolumi/mine/weaklight,
@@ -15614,8 +15645,8 @@ RP
 Pu
 RP
 Ot
-Ot
-Ot
+Rf
+HW
 rv
 rv
 JU
@@ -15871,11 +15902,11 @@ JU
 Fu
 JU
 rv
+ju
+HW
 rv
-Ot
 rv
-rv
-JU
+uK
 JU
 JU
 JU
@@ -16128,8 +16159,8 @@ Fu
 Fu
 JU
 pz
-rv
-Ot
+ju
+xY
 rv
 rv
 XY
@@ -16385,8 +16416,8 @@ Fu
 Fu
 JU
 pz
-rv
-Ot
+ju
+HW
 rv
 rv
 XY
@@ -16642,11 +16673,11 @@ JU
 Fu
 JU
 rv
+ju
+xY
 rv
-Ot
 rv
-rv
-JU
+uK
 JU
 JU
 JU
@@ -16899,8 +16930,8 @@ JU
 Fu
 JU
 rv
-rv
-Ot
+ju
+HW
 rv
 rv
 JU
@@ -17167,7 +17198,7 @@ Fu
 Fu
 Fu
 Fu
-Fu
+CC
 oE
 oE
 rz
@@ -20785,7 +20816,7 @@ rz
 oE
 Fu
 JU
-Fu
+cA
 bF
 Fu
 Fu
@@ -22108,17 +22139,17 @@ JA
 JA
 JA
 JA
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+Is
+Is
+Is
+Is
+Is
+Is
+Is
+Is
+Is
+Is
+Is
 JA
 JA
 JA
@@ -22361,11 +22392,11 @@ JA
 JA
 JA
 JA
-ag
-ag
-ag
-ag
-ag
+Is
+Is
+Is
+Is
+Is
 yh
 yh
 MM
@@ -22375,7 +22406,7 @@ yh
 XY
 XY
 yh
-ag
+Is
 JA
 JA
 JA
@@ -22618,7 +22649,7 @@ JA
 JA
 JA
 JA
-ag
+Is
 yh
 yh
 yh
@@ -22632,7 +22663,7 @@ rv
 rv
 rv
 yh
-ag
+Is
 JA
 JA
 JA
@@ -22875,7 +22906,7 @@ JA
 JA
 JA
 JA
-ag
+Is
 yh
 rv
 rv
@@ -22889,7 +22920,7 @@ rv
 rv
 rv
 yh
-ag
+Is
 JA
 JA
 JA
@@ -23132,7 +23163,7 @@ JA
 JA
 JA
 JA
-ag
+Is
 MM
 rv
 rv
@@ -23146,7 +23177,7 @@ rv
 rv
 rv
 yh
-ag
+Is
 JA
 JA
 JA
@@ -23389,7 +23420,7 @@ JA
 JA
 JA
 JA
-ag
+Is
 MM
 rv
 rv
@@ -23403,8 +23434,8 @@ rv
 rv
 rv
 yh
-ag
-ag
+Is
+Is
 JA
 JA
 JA
@@ -23646,7 +23677,7 @@ JA
 JA
 JA
 JA
-ag
+Is
 yh
 rv
 rv
@@ -23661,7 +23692,7 @@ rv
 rv
 yh
 yh
-ag
+Is
 JA
 JA
 JA
@@ -23903,7 +23934,7 @@ JA
 JA
 JA
 JA
-ag
+Is
 yh
 rv
 rv
@@ -23918,7 +23949,7 @@ rv
 rv
 rv
 yh
-ag
+Is
 JA
 JA
 JA
@@ -24160,7 +24191,7 @@ JA
 JA
 JA
 JA
-ag
+Is
 yh
 yh
 rv
@@ -24175,7 +24206,7 @@ rv
 rv
 rv
 yh
-ag
+Is
 JA
 JA
 JA
@@ -24417,8 +24448,8 @@ JA
 JA
 JA
 JA
-ag
-ag
+Is
+Is
 yh
 rv
 rv
@@ -24432,7 +24463,7 @@ rv
 rv
 rv
 MM
-ag
+Is
 JA
 JA
 JA
@@ -24675,7 +24706,7 @@ JA
 JA
 JA
 JA
-ag
+Is
 yh
 rv
 rv
@@ -24689,7 +24720,7 @@ rv
 rv
 rv
 MM
-ag
+Is
 JA
 JA
 JA
@@ -24932,7 +24963,7 @@ JA
 JA
 JA
 JA
-ag
+Is
 MM
 rv
 rv
@@ -24946,7 +24977,7 @@ rv
 rv
 rv
 MM
-ag
+Is
 JA
 JA
 JA
@@ -25189,7 +25220,7 @@ JA
 JA
 JA
 JA
-ag
+Is
 MM
 rv
 rv
@@ -25203,7 +25234,7 @@ rv
 rv
 rv
 MM
-ag
+Is
 JA
 JA
 JA
@@ -25446,7 +25477,7 @@ JA
 JA
 JA
 JA
-ag
+Is
 MM
 rv
 rv
@@ -25460,7 +25491,7 @@ rv
 rv
 rv
 yh
-ag
+Is
 JA
 JA
 JA
@@ -25703,7 +25734,7 @@ JA
 JA
 JA
 JA
-ag
+Is
 yh
 rv
 rv
@@ -25717,7 +25748,7 @@ rv
 rv
 rv
 yh
-ag
+Is
 JA
 JA
 JA
@@ -25960,7 +25991,7 @@ JA
 JA
 JA
 JA
-ag
+Is
 yh
 yh
 yh
@@ -25974,7 +26005,7 @@ MM
 MM
 yh
 yh
-ag
+Is
 JA
 JA
 JA
@@ -26217,21 +26248,21 @@ JA
 JA
 JA
 JA
+Is
+Is
+Is
 ag
+Is
+Is
 ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+Is
+Is
+Is
+Is
+Is
+Is
+Is
+Is
 JA
 JA
 JA
@@ -26462,7 +26493,7 @@ oE
 oE
 oE
 Fu
-Eb
+jU
 JA
 JA
 JA
@@ -26719,8 +26750,8 @@ oE
 Fu
 Fu
 RD
+jU
 Eb
-Eb
 JA
 JA
 JA
@@ -26732,9 +26763,9 @@ JA
 JA
 JA
 JA
-ag
+Is
 md
-JA
+rv
 JA
 JA
 JA
@@ -26976,7 +27007,7 @@ Dx
 Fu
 Fu
 Fu
-Eb
+jU
 JA
 Eb
 Eb
@@ -26989,9 +27020,9 @@ JA
 JA
 JA
 JA
-ag
+Is
 md
-Eb
+Is
 JA
 JA
 JA
@@ -27246,9 +27277,9 @@ JA
 JA
 JA
 JA
-ag
+Is
 md
-Eb
+Is
 JA
 JA
 JA
@@ -28019,7 +28050,7 @@ JA
 JA
 Eb
 JA
-JA
+VR
 JA
 md
 JA
@@ -29303,7 +29334,7 @@ JA
 JA
 JA
 wg
-JA
+VR
 JA
 JA
 JA
@@ -32631,18 +32662,18 @@ oE
 Fu
 Fu
 Fu
-ag
-Eb
+jU
+jU
 JA
 Eb
 Eb
 Eb
-JA
+VR
 JA
 wg
 JA
 JA
-JA
+VR
 JA
 JA
 JA
@@ -32888,8 +32919,8 @@ Fu
 Fu
 WX
 Fu
-ag
-ag
+jU
+jU
 JA
 JA
 wg
@@ -33145,8 +33176,8 @@ Fu
 Fu
 Fu
 Fu
-ag
-ag
+jU
+jU
 JA
 JA
 JA

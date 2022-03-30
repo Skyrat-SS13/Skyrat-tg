@@ -3,9 +3,6 @@
 	mid_sounds = list('modular_skyrat/modules/black_mesa/sound/lc_mainbeam.ogg' = 1)
 	mid_length = 8.1 SECONDS
 	volume = 100
-	extra_range = 25
-	falloff_exponent = 10
-	falloff_distance = 5
 
 /obj/effect/bump_teleporter/lambda
 	name = "\improper Lambda Teleporter"
@@ -42,7 +39,7 @@
 	if(ishuman(movable_atom))
 		var/mob/living/carbon/human/teleporting_human = movable_atom
 		teleporting_human.flash_act(10, 1, 1, /atom/movable/screen/fullscreen/flash/lambda, length = 3 SECONDS)
-		teleporting_human.Unconscious(10 SECONDS)
+		teleporting_human.Unconscious(15 SECONDS)
 		teleporting_human.playsound_local(get_turf(teleporting_human), 'modular_skyrat/modules/black_mesa/sound/lc_teleport.ogg', 100)
 
 /atom/movable/screen/fullscreen/flash/lambda
