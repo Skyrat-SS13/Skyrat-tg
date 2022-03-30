@@ -200,15 +200,12 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/static/ticket_counter = 0
 	/// The list of clients currently responding to the opening ticket before it gets a response
 	var/list/opening_responders
-<<<<<<< HEAD
 	//SKYRAT EDIT START
 	/// Have we requested this ticket to stop being part of the Ticket Ping subsystem?
 	var/ticket_ping_stop = FALSE
 	//SKYRAT EDIT END
-=======
 	/// Whether this ahelp has sent a webhook or not, and what type
 	var/webhook_sent = WEBHOOK_NONE
->>>>>>> 7e32bdfca13 (Pingbus changes and improvements (#65625))
 
 /**
  * Call this on its own to create a ticket, don't manually assign current_ticket
