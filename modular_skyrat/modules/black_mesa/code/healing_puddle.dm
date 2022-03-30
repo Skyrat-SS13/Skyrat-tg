@@ -7,7 +7,7 @@
 
 /obj/structure/water_source/puddle/healing/Initialize(mapload)
 	. = ..()
-	START_PROCESSING(SSObj, src)
+	START_PROCESSING(SSobj, src)
 
 /obj/structure/water_source/puddle/healing/process(delta_time)
 	for(var/mob/living/iterating_mob in loc)

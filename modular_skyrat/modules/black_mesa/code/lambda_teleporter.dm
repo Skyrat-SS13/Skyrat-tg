@@ -1,3 +1,12 @@
+
+/datum/looping_sound/lambda
+	mid_sounds = list('sound/machines/sm/loops/calm.ogg' = 1)
+	mid_length = 8.1 SECONDS
+	volume = 40
+	extra_range = 25
+	falloff_exponent = 10
+	falloff_distance = 5
+
 /obj/effect/bump_teleporter/lambda
 	name = "\improper Lambda Teleporter"
 	desc = "A super powerful teleporter capable of transporting you across dimensions."
@@ -5,6 +14,16 @@
 	icon_state = "energy_ball"
 	pixel_x = -32
 	pixel_y = -32
+	light_range = 6
+	var/datum/looping_sound/lambda/looping_sound
+
+/obj/effect/bump_teleporter/lambda/Initialize(mapload)
+	. = ..()
+	looping_sound = new(src, TRUE)
+
+/obj/effect/bump_teleporter/lambda/Destroy()
+	QDEL_NULL(looping_sound)
+	return ..()
 
 /obj/effect/bump_teleporter/lambda/Bumped(atom/movable/movable_atom)
 	if(!id_target)
