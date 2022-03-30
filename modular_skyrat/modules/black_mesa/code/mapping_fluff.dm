@@ -24,9 +24,9 @@
 	openSound = 'modular_skyrat/modules/black_mesa/sound/xen_door.ogg'
 	closeSound = 'modular_skyrat/modules/black_mesa/sound/xen_door.ogg'
 
-/obj/machinery/door/keycard/xen_boss
+/obj/machinery/door/keycard/xen
 	name = "locktight organic door"
-	desc = "Complete the puzzle to open this door."
+	desc = "An oddly robust organic looking door."
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_door.dmi'
 	icon_state = "resin"
 	puzzle_id = "xen"
@@ -37,6 +37,5 @@
 	color = "#ac3b06"
 	puzzle_id = "xen"
 
-/obj/effect/sliding_puzzle/xen
-	reward_type = /obj/item/keycard/xen
+
 

@@ -11,7 +11,7 @@
 
 /obj/structure/xen_crystal/Initialize(mapload)
 	. = ..()
-	var/color_to_set = pick(COLOR_VIBRANT_LIME, COLOR_RED, COLOR_PURPLE)
+	var/color_to_set = pick(COLOR_VIBRANT_LIME, COLOR_VIVID_YELLOW, COLOR_LIGHT_PINK, LIGHT_COLOR_ELECTRIC_GREEN)
 	color = color_to_set
 	light_color = color_to_set
 
