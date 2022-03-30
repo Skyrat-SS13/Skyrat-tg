@@ -75,3 +75,7 @@
 	max_integrity = 100
 	faction = list(FACTION_HECU)
 	shot_delay = 0.75
+
+
+/obj/machinery/porta_turret/black_mesa/friendly
+	faction = list(FACTION_STATION)
