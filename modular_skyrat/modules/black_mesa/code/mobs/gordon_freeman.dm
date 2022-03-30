@@ -19,26 +19,35 @@
 	loot = list(/obj/item/crowbar/freeman/ultimate, /obj/machinery/door/keycard/xen/freeman_boss_exit)
 	/// If we have support pylons, this is true.
 	var/shielded = FALSE
+	/// How many shields we have protecting us
+	var/shield_count = 0
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/gordon_freeman/update_overlays()
 	. = ..()
 	if(shielded)
 		. += mutable_appearance('icons/effects/effects.dmi', "shield-yellow", MOB_SHIELD_LAYER)
 
-
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/gordon_freeman/proc/lose_shield()
-	shielded = FALSE
-	update_appearance()
+	shield_count--
+	if(shield_count <= 0)
+		shielded = FALSE
+		update_appearance()
+
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/gordon_freeman/apply_damage(damage, damagetype, def_zone, blocked, forced, spread_damage, wound_bonus, bare_wound_bonus, sharpness, attack_direction)
+	if(shielded)
+		balloon_alert_to_viewers("ineffective!")
+		return FALSE
+	return ..()
 
 /obj/structure/xen_pylon
 	name = "shield pylon"
 	desc = "It seems to be some kind of force field generator."
 	icon = 'modular_skyrat/modules/black_mesa/icons/plants.dmi'
 	icon_state = "crystal_pylon"
-	max_integrity = 200
+	max_integrity = 350
 	density = TRUE
 	/// The range at which we provide shield support to a mob.
-	var/shield_range = 20
+	var/shield_range = 50
 	/// The mob we are currently shielding.
 	var/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/gordon_freeman/freeman
 	var/datum/beam/current_beam = null
@@ -47,10 +56,11 @@
 /obj/structure/xen_pylon/Initialize(mapload)
 	. = ..()
 	for(var/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/gordon_freeman/iterating_freeman in circle_range(src, shield_range))
-		if(linked_mob)
+		if(freeman)
 			break
 		freeman = iterating_freeman
 		freeman.shielded = TRUE
+		freeman.shield_count++
 		freeman.update_appearance()
 		current_beam = Beam(freeman, icon_state="red_lightning", time = 10 MINUTES, maxdistance = shield_range)
 		RegisterSignal(current_beam, COMSIG_PARENT_QDELETING, .proc/beam_died)
