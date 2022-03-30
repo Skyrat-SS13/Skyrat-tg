@@ -25,6 +25,11 @@
 	if(shielded)
 		. += mutable_appearance('icons/effects/effects.dmi', "shield-yellow", MOB_SHIELD_LAYER)
 
+
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/gordon_freeman/proc/lose_shield()
+	shielded = FALSE
+	update_appearance()
+
 /obj/structure/xen_pylon
 	name = "shield pylon"
 	desc = "It seems to be some kind of force field generator."
@@ -33,29 +38,44 @@
 	max_integrity = 200
 	density = TRUE
 	/// The range at which we provide shield support to a mob.
-	var/shield_range = 10
+	var/shield_range = 20
 	/// The mob we are currently shielding.
-	var/mob/living/linked_mob
+	var/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/gordon_freeman/freeman
 	var/datum/beam/current_beam = null
 
 
 /obj/structure/xen_pylon/Initialize(mapload)
 	. = ..()
-	START_PROCESSING(SSobj, src)
-
-/obj/structure/xen_pylon/Destroy()
-	linked_mob = null
-	QDEL_NULL(current_beam)
-	return ..()
-
-/obj/structure/xen_pylon/process(delta_time)
-	for(var/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/gordon_freeman/freeman in circle_range(src, shield_range))
-		linked_mob = freeman
+	for(var/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/gordon_freeman/iterating_freeman in circle_range(src, shield_range))
+		if(linked_mob)
+			break
+		freeman = iterating_freeman
 		freeman.shielded = TRUE
 		freeman.update_appearance()
 		current_beam = Beam(freeman, icon_state="red_lightning", time = 10 MINUTES, maxdistance = shield_range)
-		return
-	linked_mob = null
+		RegisterSignal(current_beam, COMSIG_PARENT_QDELETING, .proc/beam_died)
+		RegisterSignal(freeman, COMSIG_PARENT_QDELETING, .proc/gordon_died)
+
+
+/obj/structure/xen_pylon/proc/gordon_died()
+	SIGNAL_HANDLER
+	freeman = null
+
+/obj/structure/xen_pylon/proc/beam_died()
+	SIGNAL_HANDLER
+	current_beam = null
+	if(freeman)
+		freeman.lose_shield()
+		freeman = null
+
+/obj/structure/xen_pylon/Destroy()
+	if(freeman)
+		freeman.lose_shield()
+		freeman = null
+	QDEL_NULL(current_beam)
+	playsound(src, 'sound/magic/lightningbolt.ogg', 100, TRUE)
+	return ..()
+
 
 /obj/machinery/door/keycard/xen/freeman_boss_entry
 	name = "entry door"
