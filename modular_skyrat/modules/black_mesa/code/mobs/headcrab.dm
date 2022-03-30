@@ -15,9 +15,13 @@
 	turns_per_move = 7
 	maxHealth = 100
 	health = 100
+	ranged = TRUE
+	dodging = TRUE
 	harm_intent_damage = 15
 	melee_damage_lower = 17
 	melee_damage_upper = 17
+	retreat_distance = 4
+	minimum_distance = 4
 	attack_sound = 'sound/weapons/bite.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
 	loot = list(/obj/item/stack/sheet/bone)
@@ -33,15 +37,19 @@
 	. = ..()
 	charge = new /datum/action/cooldown/mob_cooldown/charge/basic_charge()
 	charge.Grant(src)
+	charge.cooldown_time = 0
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/Destroy()
 	QDEL_NULL(charge)
 	return ..()
 
-/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/OpenFire()
-	if(client)
-		return
-	charge.Trigger(target)
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/Shoot(atom/targeted_atom)
+	charge.Trigger(targeted_atom)
+	playsound(
+		src,
+		pick('modular_skyrat/modules/black_mesa/sound/mobs/headcrab/attack1.ogg', 'modular_skyrat/modules/black_mesa/sound/mobs/headcrab/attack2.ogg', 'modular_skyrat/modules/black_mesa/sound/mobs/headcrab/attack3.ogg'),
+		100
+		)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/death(gibbed)
 	. = ..()
@@ -52,14 +60,20 @@
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()
-	if(hit_atom && stat != DEAD)
-		if(ishuman(hit_atom))
-			var/mob/living/carbon/human/human_to_dunk = hit_atom
-			if(!human_to_dunk.get_item_by_slot(ITEM_SLOT_HEAD) && prob(50)) //Anything on de head stops the head hump
-				if(zombify(human_to_dunk))
-					to_chat(human_to_dunk, span_userdanger("[src] latches onto your head as it pierces your skull, instantly killing you!"))
-					playsound(src, 'modular_skyrat/modules/black_mesa/sound/mobs/headcrab/headbite.ogg', 100)
-					human_to_dunk.death(FALSE)
+	if(!hit_atom || stat == DEAD)
+		return
+	if(!isliving(hit_atom))
+		return
+	playsound(src, 'modular_skyrat/modules/black_mesa/sound/mobs/headcrab/headbite.ogg', 100)
+	var/mob/living/hit_mob = hit_atom
+	hit_mob.apply_damage(melee_damage_upper, BRUTE)
+	if(!ishuman(hit_atom))
+		return
+	var/mob/living/carbon/human/human_to_dunk = hit_atom
+	if(!human_to_dunk.get_item_by_slot(ITEM_SLOT_HEAD) && prob(50)) //Anything on de head stops the head hump
+		if(zombify(human_to_dunk))
+			to_chat(human_to_dunk, span_userdanger("[src] latches onto your head as it pierces your skull, instantly killing you!"))
+			human_to_dunk.death(FALSE)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/proc/zombify(mob/living/carbon/human/zombified_human)
 	if(is_zombie)

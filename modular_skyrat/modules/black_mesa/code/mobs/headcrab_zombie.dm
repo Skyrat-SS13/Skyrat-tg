@@ -4,8 +4,9 @@
 	icon = 'modular_skyrat/modules/black_mesa/icons/mobs.dmi'
 	icon_state = "zombie"
 	maxHealth = 110
-	flip_on_death = TRUE
-	icon_gib = null
+	health = 110
+	del_on_death = TRUE
+	loot = (/obj/effect/gibspawner/human)
 	speak_chance = 1
 	speak_emote = list("growls")
 	speed = 1
@@ -36,12 +37,14 @@
 	desc = "About that brain I owed ya!"
 	icon_state = "security_zombie"
 	maxHealth = 140 // Armor!
+	health = 140
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/hev
 	name = "zombified hazardous environment specialist"
 	desc = "User death... surpassed."
 	icon_state = "hev_zombie"
 	maxHealth = 250
+	health = 250
 	alert_sounds = list(
 		'modular_skyrat/modules/black_mesa/sound/mobs/zombies/hzv1.ogg',
 		'modular_skyrat/modules/black_mesa/sound/mobs/zombies/hzv2.ogg',
