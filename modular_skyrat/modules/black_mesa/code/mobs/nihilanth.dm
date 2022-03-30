@@ -28,6 +28,7 @@
 	attack_sound = 'sound/weapons/punch1.ogg'
 	status_flags = NONE
 	del_on_death = TRUE
+	wander = FALSE
 	loot = list(/obj/effect/gibspawner/xeno, /obj/item/stack/sheet/bluespace_crystal/fifty, /obj/item/key/gateway)
 
 /obj/item/stack/sheet/bluespace_crystal/fifty
@@ -75,3 +76,4 @@
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/LoseAggro()
 	. = ..()
 	set_combat_mode(FALSE)
+

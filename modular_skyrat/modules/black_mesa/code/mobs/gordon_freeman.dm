@@ -11,12 +11,15 @@
 	name = "\improper Gordon Freeman"
 	desc = "Gordon Freeman in the flesh."
 	icon_state = "gordon_freeman"
+	speed = -2
+	environment_smash = ENVIRONMENT_SMASH_RWALLS
 	health = 1000
 	maxHealth = 1000
 	melee_damage_lower = 45
 	melee_damage_upper = 45
+	wander = FALSE
 	attack_sound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
-	loot = list(/obj/item/crowbar/freeman/ultimate, /obj/machinery/door/keycard/xen/freeman_boss_exit)
+	loot = list(/obj/item/crowbar/freeman/ultimate, /obj/item/keycard/freeman_boss_exit)
 	/// If we have support pylons, this is true.
 	var/shielded = FALSE
 	/// How many shields we have protecting us
@@ -114,3 +117,14 @@
 
 /obj/effect/sliding_puzzle/freeman
 	reward_type = /obj/item/keycard/freeman_boss_entry
+
+
+
+/obj/effect/freeman_blocker
+	name = "freeman blocker"
+
+/obj/effect/freeman_blocker/CanPass(atom/blocker, movement_dir, blocker_opinion)
+	. = ..()
+	if(istype(blocker, /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/gordon_freeman))
+		return FALSE
+	return TRUE

@@ -37,5 +37,19 @@
 	color = "#ac3b06"
 	puzzle_id = "xen"
 
+/obj/machinery/conveyor/inverted/auto
+	processing_flags = START_PROCESSING_ON_INIT
 
+/obj/machinery/conveyor/inverted/auto/Initialize(mapload, newdir)
+	. = ..()
+	set_operating(TRUE)
 
+/obj/machinery/conveyor/inverted/auto/update()
+	. = ..()
+	if(.)
+		set_operating(TRUE)
+
+/obj/structure/marker_beacon/green
+	picked_color = "Lime"
+	// set icon_state to make it clear for mappers
+	icon_state = "markerlime-on"

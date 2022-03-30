@@ -26,12 +26,14 @@
 /obj/effect/bump_teleporter/singularity_pull()
 	return
 
+/* SKYRAT EDIT REMOVAL  - MOVED TO BLACK_MESA
 /obj/effect/bump_teleporter/Bumped(atom/movable/AM)
-	//if(!ismob(AM)) SKYRAT EDIT REMOVAL
-	//	return SKYRAT EDIT REMOVAL
+	if(!ismob(AM))
+		return
 	if(!id_target)
 		return
 
 	for(var/obj/effect/bump_teleporter/BT in AllTeleporters)
 		if(BT.id == src.id_target)
 			AM.forceMove(BT.loc) //Teleport to location with correct id.
+*/
