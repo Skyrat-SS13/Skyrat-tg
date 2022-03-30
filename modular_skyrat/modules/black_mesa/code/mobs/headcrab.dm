@@ -78,7 +78,7 @@
 		if(prob(50))
 			human_to_dunk.visible_message(span_warning("[human_to_dunk]'s headgear is knocked off by [src]!"), span_userdanger("Your headgear is knocked off by [src]!"))
 			head_item.forceMove(get_turf(human_to_dunk))
-			head_item.dropped(user, TRUE)
+			head_item.dropped(human_to_dunk, TRUE)
 	else if(prob(50) && zombify(human_to_dunk))
 		to_chat(human_to_dunk, span_userdanger("[src] latches onto your head as it pierces your skull, instantly killing you!"))
 		human_to_dunk.death(FALSE)
