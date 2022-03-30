@@ -2,6 +2,8 @@
 	name = "healing puddle"
 	desc = "By some otherworldy power, this puddle of water seems to slowly regenerate things!"
 	color = "#71ffff"
+	light_range = 3
+	light_color = "#71ffff"
 	/// How much do we heal the current person?
 	var/heal_amount = 2
 

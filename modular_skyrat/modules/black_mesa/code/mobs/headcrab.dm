@@ -106,3 +106,6 @@
 		copy_overlays(oldguy, TRUE)
 		var/mutable_appearance/blob_head_overlay = mutable_appearance('modular_skyrat/master_files/icons/mob/blackmesa.dmi', "headcrab_zombie")
 		add_overlay(blob_head_overlay)
+
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/fast
+	speed = -2

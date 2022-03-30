@@ -1,8 +1,8 @@
 
 /datum/looping_sound/lambda
-	mid_sounds = list('sound/machines/sm/loops/calm.ogg' = 1)
+	mid_sounds = list('modular_skyrat/modules/black_mesa/sound/lc_mainbeam.ogg' = 1)
 	mid_length = 8.1 SECONDS
-	volume = 40
+	volume = 100
 	extra_range = 25
 	falloff_exponent = 10
 	falloff_distance = 5
@@ -14,6 +14,7 @@
 	icon_state = "energy_ball"
 	pixel_x = -32
 	pixel_y = -32
+	invisibility = 0
 	light_range = 6
 	var/datum/looping_sound/lambda/looping_sound
 
