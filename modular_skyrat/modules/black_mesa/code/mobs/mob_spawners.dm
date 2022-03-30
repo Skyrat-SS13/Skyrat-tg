@@ -20,7 +20,7 @@
 
 /obj/effect/random_mob_placer
 	name = "mob placer"
-	icon = 'icons/effects/mapping_helpers.dmi'
+	icon = 'modular_skyrat/modules/black_mesa/icons/mapping_helpers.dmi'
 	icon_state = "mobspawner"
 	var/list/possible_mobs = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab)
 
@@ -45,15 +45,35 @@
 #undef MOB_PLACER_RANGE
 
 /obj/effect/random_mob_placer/xen
+	icon_state = "spawn_xen"
 	possible_mobs = list(
 		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab,
 		/mob/living/simple_animal/hostile/blackmesa/xen/houndeye,
-		/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid
+		/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid,
+	)
+
+/obj/effect/random_mob_placer/xen/zombie
+	icon_state = "spawn_zombie"
+	possible_mobs = list(
+		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/scientist,
+		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/guard,
 	)
 
 /obj/effect/random_mob_placer/blackops
+	icon_state = "spawn_blackops"
 	possible_mobs = list(
 		/mob/living/simple_animal/hostile/blackmesa/blackops,
 		/mob/living/simple_animal/hostile/blackmesa/blackops/ranged,
 	)
 
+/obj/effect/random_mob_placer/hev_zombie
+	icon_state = "spawn_hev"
+	possible_mobs = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/hev)
+
+/obj/effect/random_mob_placer/scientist_zombie
+	icon_state = "spawn_zombiescientist"
+	possible_mobs = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/scientist)
+
+/obj/effect/random_mob_placer/scientist_zombie
+	icon_state = "spawn_zombiesec"
+	possible_mobs = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/guard)

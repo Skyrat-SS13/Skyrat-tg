@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab
 	name = "headcrab"
 	desc = "Don't let it latch onto your hea-... hey, that's kinda cool."
-	icon = 'modular_skyrat/master_files/icons/mob/blackmesa.dmi'
+	icon = 'modular_skyrat/modules/black_mesa/icons/mobs.dmi'
 	icon_state = "headcrab"
 	icon_living = "headcrab"
 	icon_dead = "headcrab_dead"
@@ -22,7 +22,7 @@
 	gold_core_spawnable = HOSTILE_SPAWN
 	loot = list(/obj/item/stack/sheet/bone)
 	alert_sounds = list(
-		'modular_skyrat/master_files/sound/blackmesa/headcrab/alert1.ogg'
+		'modular_skyrat/modules/black_mesa/sound/mobs/headcrab/alert1.ogg'
 	)
 	var/is_zombie = FALSE
 	var/mob/living/carbon/human/oldguy
@@ -46,8 +46,8 @@
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/death(gibbed)
 	. = ..()
 	playsound(src, pick(list(
-		'modular_skyrat/master_files/sound/blackmesa/headcrab/die1.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/headcrab/die2.ogg'
+		'modular_skyrat/modules/black_mesa/sound/mobs/headcrab/die1.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/headcrab/die2.ogg'
 	)), 100)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
@@ -58,7 +58,7 @@
 			if(!human_to_dunk.get_item_by_slot(ITEM_SLOT_HEAD) && prob(50)) //Anything on de head stops the head hump
 				if(zombify(human_to_dunk))
 					to_chat(human_to_dunk, span_userdanger("[src] latches onto your head as it pierces your skull, instantly killing you!"))
-					playsound(src, 'modular_skyrat/master_files/sound/blackmesa/headcrab/headbite.ogg', 100)
+					playsound(src, 'modular_skyrat/modules/black_mesa/sound/mobs/headcrab/headbite.ogg', 100)
 					human_to_dunk.death(FALSE)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/proc/zombify(mob/living/carbon/human/zombified_human)
@@ -104,7 +104,7 @@
 	. = ..()
 	if(is_zombie)
 		copy_overlays(oldguy, TRUE)
-		var/mutable_appearance/blob_head_overlay = mutable_appearance('modular_skyrat/master_files/icons/mob/blackmesa.dmi', "headcrab_zombie")
+		var/mutable_appearance/blob_head_overlay = mutable_appearance('modular_skyrat/modules/black_mesa/icons/mobs.dmi', "headcrab_zombie")
 		add_overlay(blob_head_overlay)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/fast

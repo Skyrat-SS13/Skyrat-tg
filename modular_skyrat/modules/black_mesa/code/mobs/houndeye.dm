@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/blackmesa/xen/houndeye
 	name = "houndeye"
 	desc = "Some highly aggressive alien creature. Thrives in toxic environments."
-	icon = 'modular_skyrat/master_files/icons/mob/blackmesa.dmi'
+	icon = 'modular_skyrat/modules/black_mesa/icons/mobs.dmi'
 	icon_state = "houndeye"
 	icon_living = "houndeye"
 	icon_dead = "houndeye_dead"
@@ -28,11 +28,11 @@
 	maxbodytemp = 1500
 	loot = list(/obj/item/stack/sheet/bluespace_crystal)
 	alert_sounds = list(
-		'modular_skyrat/master_files/sound/blackmesa/houndeye/he_alert1.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/houndeye/he_alert2.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/houndeye/he_alert3.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/houndeye/he_alert4.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/houndeye/he_alert5.ogg'
+		'modular_skyrat/modules/black_mesa/sound/mobs/houndeye/he_alert1.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/houndeye/he_alert2.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/houndeye/he_alert3.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/houndeye/he_alert4.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/houndeye/he_alert5.ogg'
 	)
 	/// Charging ability
 	var/datum/action/cooldown/mob_cooldown/charge/basic_charge/charge

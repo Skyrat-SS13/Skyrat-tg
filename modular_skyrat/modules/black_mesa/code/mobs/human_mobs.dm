@@ -2,7 +2,7 @@
 /mob/living/simple_animal/hostile/blackmesa/hecu
 	name = "HECU Grunt"
 	desc = "I didn't sign on for this shit. Monsters, sure, but civilians? Who ordered this operation anyway?"
-	icon = 'modular_skyrat/master_files/icons/mob/blackmesa.dmi'
+	icon = 'modular_skyrat/modules/black_mesa/icons/mobs.dmi'
 	icon_state = "hecu_melee"
 	icon_living = "hecu_melee"
 	icon_dead = "hecu_dead"
@@ -35,14 +35,14 @@
 	rapid_melee = 2
 	footstep_type = FOOTSTEP_MOB_SHOE
 	alert_sounds = list(
-		'modular_skyrat/master_files/sound/blackmesa/hecu/hg_alert01.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/hecu/hg_alert03.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/hecu/hg_alert04.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/hecu/hg_alert05.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/hecu/hg_alert06.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/hecu/hg_alert07.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/hecu/hg_alert08.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/hecu/hg_alert10.ogg'
+		'modular_skyrat/modules/black_mesa/sound/mobs/hecu/hg_alert01.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/hecu/hg_alert03.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/hecu/hg_alert04.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/hecu/hg_alert05.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/hecu/hg_alert06.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/hecu/hg_alert07.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/hecu/hg_alert08.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/hecu/hg_alert10.ogg'
 	)
 
 
@@ -69,7 +69,7 @@
 /mob/living/simple_animal/hostile/blackmesa/sec
 	name = "Security Guard"
 	desc = "About that beer I owe'd ya!"
-	icon = 'modular_skyrat/master_files/icons/mob/blackmesa.dmi'
+	icon = 'modular_skyrat/modules/black_mesa/icons/mobs.dmi'
 	icon_state = "security_guard_melee"
 	icon_living = "security_guard_melee"
 	icon_dead = "security_guard_dead"
@@ -102,17 +102,17 @@
 	rapid_melee = 2
 	footstep_type = FOOTSTEP_MOB_SHOE
 	alert_sounds = list(
-		'modular_skyrat/master_files/sound/blackmesa/security_guard/annoyance01.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/security_guard/annoyance02.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/security_guard/annoyance02.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/security_guard/annoyance03.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/security_guard/annoyance04.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/security_guard/annoyance05.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/security_guard/annoyance06.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/security_guard/annoyance07.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/security_guard/annoyance08.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/security_guard/annoyance09.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/security_guard/annoyance10.ogg'
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/annoyance01.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/annoyance02.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/annoyance02.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/annoyance03.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/annoyance04.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/annoyance05.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/annoyance06.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/annoyance07.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/annoyance08.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/annoyance09.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/annoyance10.ogg'
 	)
 
 
@@ -130,7 +130,7 @@
 /mob/living/simple_animal/hostile/blackmesa/blackops
 	name = "black operative"
 	desc = "Why do we always have to clean up a mess the grunts can't handle?"
-	icon = 'modular_skyrat/master_files/icons/mob/blackmesa.dmi'
+	icon = 'modular_skyrat/modules/black_mesa/icons/mobs.dmi'
 	icon_state = "blackops"
 	icon_living = "blackops"
 	icon_dead = "blackops"
@@ -163,14 +163,14 @@
 	rapid_melee = 2
 	footstep_type = FOOTSTEP_MOB_SHOE
 	alert_sounds = list(
-		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert01.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert02.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert03.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert04.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert05.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert06.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert07.ogg',
-		'modular_skyrat/master_files/sound/blackmesa/blackops/bo_alert08.ogg'
+		'modular_skyrat/modules/black_mesa/sound/mobs/blackops/bo_alert01.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/blackops/bo_alert02.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/blackops/bo_alert03.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/blackops/bo_alert04.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/blackops/bo_alert05.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/blackops/bo_alert06.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/blackops/bo_alert07.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/blackops/bo_alert08.ogg'
 	)
 
 
