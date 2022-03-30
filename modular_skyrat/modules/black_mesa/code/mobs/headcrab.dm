@@ -11,6 +11,7 @@
 	speak_emote = list("growls")
 	speed = 1
 	emote_taunt = list("growls", "snarls", "grumbles")
+	ranged_message = "jumps"
 	taunt_chance = 100
 	turns_per_move = 7
 	maxHealth = 100
@@ -32,6 +33,8 @@
 	var/mob/living/carbon/human/oldguy
 	/// Charging ability
 	var/datum/action/cooldown/mob_cooldown/charge/basic_charge/charge
+	var/throw_at_range = 10
+	var/throw_at_speed = 2
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/Initialize(mapload)
 	. = ..()
@@ -44,7 +47,7 @@
 	return ..()
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/Shoot(atom/targeted_atom)
-	charge.Trigger(targeted_atom)
+	throw_at(targeted_atom, throw_at_range, throw_at_speed)
 	playsound(
 		src,
 		pick('modular_skyrat/modules/black_mesa/sound/mobs/headcrab/attack1.ogg', 'modular_skyrat/modules/black_mesa/sound/mobs/headcrab/attack2.ogg', 'modular_skyrat/modules/black_mesa/sound/mobs/headcrab/attack3.ogg'),
@@ -70,10 +73,15 @@
 	if(!ishuman(hit_atom))
 		return
 	var/mob/living/carbon/human/human_to_dunk = hit_atom
-	if(!human_to_dunk.get_item_by_slot(ITEM_SLOT_HEAD) && prob(50)) //Anything on de head stops the head hump
-		if(zombify(human_to_dunk))
-			to_chat(human_to_dunk, span_userdanger("[src] latches onto your head as it pierces your skull, instantly killing you!"))
-			human_to_dunk.death(FALSE)
+	var/obj/item/head_item = human_to_dunk.get_item_by_slot(ITEM_SLOT_HEAD)
+	if(head_item)
+		if(prob(50))
+			human_to_dunk.visible_message(span_warning("[human_to_dunk]'s headgear is knocked off by [src]!"), span_userdanger("Your headgear is knocked off by [src]!"))
+			head_item.forceMove(get_turf(human_to_dunk))
+			head_item.dropped(user, TRUE)
+	else if(prob(50) && zombify(human_to_dunk))
+		to_chat(human_to_dunk, span_userdanger("[src] latches onto your head as it pierces your skull, instantly killing you!"))
+		human_to_dunk.death(FALSE)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/proc/zombify(mob/living/carbon/human/zombified_human)
 	if(is_zombie)
@@ -90,6 +98,8 @@
 	melee_damage_lower += 8
 	melee_damage_upper += 11
 	obj_damage = 21 //now that it has a corpse to puppet, it can properly attack structures
+	ranged = FALSE
+	dodging = FALSE
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	movement_type = GROUND
 	icon_state = ""
@@ -100,6 +110,12 @@
 	update_appearance()
 	visible_message(span_warning("The corpse of [zombified_human.name] suddenly rises!"))
 	return TRUE
+
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/Destroy()
+	if(oldguy)
+		oldguy.forceMove(get_turf(src))
+		oldguy = null
+	return ..()
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/death(gibbed)
 	. = ..()
