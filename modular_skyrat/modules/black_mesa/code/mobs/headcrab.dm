@@ -77,8 +77,7 @@
 	if(head_item)
 		if(prob(50))
 			human_to_dunk.visible_message(span_warning("[human_to_dunk]'s headgear is knocked off by [src]!"), span_userdanger("Your headgear is knocked off by [src]!"))
-			head_item.forceMove(get_turf(human_to_dunk))
-			head_item.dropped(human_to_dunk, TRUE)
+			dropItemToGround(head_item)
 	else if(prob(50) && zombify(human_to_dunk))
 		to_chat(human_to_dunk, span_userdanger("[src] latches onto your head as it pierces your skull, instantly killing you!"))
 		human_to_dunk.death(FALSE)
@@ -100,6 +99,8 @@
 	obj_damage = 21 //now that it has a corpse to puppet, it can properly attack structures
 	ranged = FALSE
 	dodging = FALSE
+	retreat_distance = 0
+	minimum_distance = 0
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	movement_type = GROUND
 	icon_state = ""
