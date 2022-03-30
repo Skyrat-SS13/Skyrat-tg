@@ -153,11 +153,11 @@
 						U.has_overlays_shifted_due_to_taur = TRUE // shift it.
 
 		else if (istype(w_uniform, /obj/item/clothing/under))
-			var/obj/item/clothing/under/U = w_uniform
-			if (U.applied_style_store & STYLE_TAUR_ALL) // If this suit doesnt support taur sprites but the uniform does (and has the overlay shifted to accomodate),
-				if (U.has_overlays_shifted_due_to_taur) // reset it to normal until we take the suit off
-					U.accessory_overlay.pixel_x -= 16
-					U.has_overlays_shifted_due_to_taur = FALSE
+			var/obj/item/clothing/under/uniform = w_uniform
+			if (uniform.applied_style_store & STYLE_TAUR_ALL) // If this suit doesnt support taur sprites but the uniform does (and has the overlay shifted to accomodate),
+				if (uniform.has_overlays_shifted_due_to_taur) // reset it to normal until we take the suit off
+					uniform.accessory_overlay.pixel_x -= 16
+					uniform.has_overlays_shifted_due_to_taur = FALSE
 
 		overlays_standing[SUIT_LAYER] = wear_suit.build_worn_icon(default_layer = SUIT_LAYER, default_icon_file = 'icons/mob/clothing/suit.dmi', override_icon = icon_file, override_x_center = x_override, mutant_styles = applied_style, species = dna.species.species_clothing_path)
 		var/mutable_appearance/suit_overlay = overlays_standing[SUIT_LAYER]
@@ -166,12 +166,12 @@
 			suit_overlay.pixel_y += dna.species.offset_features[OFFSET_SUIT][2]
 		overlays_standing[SUIT_LAYER] = suit_overlay
 
-	// Only fired if the suit is being taken off, shifts accessory overlays back to normal if this suit didnt allow for taur sprites but the jumpsuti did
+	// Only fired if the suit is being taken off, shifts accessory overlays back to normal if this suit didnt allow for taur sprites but the jumpsuit did
 	else if (istype(w_uniform, /obj/item/clothing/under))
-		var/obj/item/clothing/under/U = w_uniform
-		if ((U.applied_style_store & STYLE_TAUR_ALL) && (U.accessory_overlay) && !(U.has_overlays_shifted_due_to_taur))
-			U.accessory_overlay.pixel_x += 16
-			U.has_overlays_shifted_due_to_taur = TRUE
+		var/obj/item/clothing/under/uniform = w_uniform
+		if ((uniform.applied_style_store & STYLE_TAUR_ALL) && (uniform.accessory_overlay) && !(uniform.has_overlays_shifted_due_to_taur))
+			uniform.accessory_overlay.pixel_x += 16
+			uniform.has_overlays_shifted_due_to_taur = TRUE
 
 	update_hair()
 	update_mutant_bodyparts()
