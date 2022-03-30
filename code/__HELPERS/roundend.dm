@@ -827,7 +827,7 @@
 	set desc = "Teleport to a no EORG area."
 	var/mob/living/H = mob
 	H.revive(full_heal=TRUE,admin_revive=TRUE)
-	H.unbuckle_mob()
+	unbuckle_mob(H)
 	var/obj/effect/landmark/eorg/eorg_tele_loc = pick(GLOB.eorg_teleport)
 	H.forceMove(eorg_tele_loc.loc)
 	to_chat(H, "<BR><BR><span class='narsiesmall'>You are in a safe zone. Do NOT commit EORG.</span>")
