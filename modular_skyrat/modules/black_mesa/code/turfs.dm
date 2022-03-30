@@ -29,21 +29,25 @@
 	desc = "It's mirky and filled with strange organisms."
 	name = "xen water"
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_turfs.dmi'
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 
 /turf/open/misc/beach/coastline_t/xen
 	desc = "It's mirky and filled with strange organisms."
 	name = "xen water"
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_turfs.dmi'
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 
 /turf/open/misc/beach/coastline_t/sandwater_inner/xen
 	desc = "It's mirky and filled with strange organisms."
 	name = "xen water"
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_turfs.dmi'
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 
 /turf/open/misc/beach/coastline_b/xen
 	name = "xen water"
 	desc = "It's mirky and filled with strange organisms."
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_turfs.dmi'
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 
 /turf/open/misc/dirt/planet/xen
 	name = "strange path"

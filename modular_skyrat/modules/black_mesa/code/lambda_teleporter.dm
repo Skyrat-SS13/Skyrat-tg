@@ -41,5 +41,9 @@
 
 	if(ishuman(movable_atom))
 		var/mob/living/carbon/human/teleporting_human = movable_atom
+		teleporting_human.flash_act(10, 1, 1, /atom/movable/screen/fullscreen/flash/lambda, length = 3 SECONDS)
 		teleporting_human.Unconscious(10 SECONDS)
 		teleporting_human.playsound_local(get_turf(teleporting_human), 'modular_skyrat/modules/black_mesa/sound/lc_teleport.ogg', 100)
+
+/atom/movable/screen/fullscreen/flash/lambda
+	color = COLOR_GREEN

@@ -12,7 +12,7 @@
 	/// Our faction
 	var/faction = FACTION_XEN
 	/// Our range to shock folks in.
-	var/shock_range = 5
+	var/shock_range = 6
 	/// Our cooldown on the shocking.
 	var/shock_cooldown = 3 SECONDS
 	/// The zap power
