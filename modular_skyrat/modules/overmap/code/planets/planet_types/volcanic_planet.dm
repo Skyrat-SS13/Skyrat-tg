@@ -80,17 +80,17 @@
 
 /datum/atmosphere/volcanic
 	base_gases = list(
-		/datum/gas/nitrogen=25,
-		/datum/gas/pluoxium=5,
+		/datum/gas/nitrogen=2.5,
+		/datum/gas/pluoxium=0.5,
 	)
 	normal_gases = list(
-		/datum/gas/bz=10,
-		/datum/gas/nitrogen=5,
-		/datum/gas/carbon_dioxide=5,
+		/datum/gas/bz=1,
+		/datum/gas/nitrogen=0.5,
+		/datum/gas/carbon_dioxide=0.5,
 	)
 	restricted_gases = list(
-		/datum/gas/plasma=5,
-		/datum/gas/helium=5,
+		/datum/gas/plasma=0.5,
+		/datum/gas/helium=0.5,
 	)
 	restricted_chance = 10
 

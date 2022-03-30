@@ -162,17 +162,17 @@
 
 /datum/atmosphere/snow
 	base_gases = list(
-		/datum/gas/carbon_dioxide=40,
-		/datum/gas/pluoxium=5,
+		/datum/gas/carbon_dioxide=4,
+		/datum/gas/pluoxium=0.5,
 	)
 	normal_gases = list(
-		/datum/gas/water_vapor=10,
-		/datum/gas/nitrogen=5,
-		/datum/gas/oxygen=5,
+		/datum/gas/water_vapor=1,
+		/datum/gas/nitrogen=0.5,
+		/datum/gas/oxygen=0.5,
 	)
 	restricted_gases = list(
-		/datum/gas/nitrium=5,
-		/datum/gas/helium=5,
+		/datum/gas/nitrium=0.5,
+		/datum/gas/helium=0.5,
 	)
 	restricted_chance = 10
 
