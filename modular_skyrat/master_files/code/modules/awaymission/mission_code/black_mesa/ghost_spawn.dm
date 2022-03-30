@@ -56,7 +56,7 @@
 /datum/id_trim/security_guard
 	assignment = "Security Guard"
 	trim_state = "trim_securityofficer"
-	access = list(ACCESS_SEC_DOORS, ACCESS_SECURITY, ACCESS_AWAY_SEC)
+	access = list(ACCESS_BRIG_ENTRANCE, ACCESS_SECURITY, ACCESS_AWAY_SEC)
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu
 	name = "HECU"
@@ -145,4 +145,4 @@
 /datum/id_trim/hecu
 	assignment = "HECU Soldier"
 	trim_state = "trim_securityofficer"
-	access = list(ACCESS_SEC_DOORS, ACCESS_SECURITY, ACCESS_AWAY_SEC)
+	access = list(ACCESS_BRIG_ENTRANCE, ACCESS_SECURITY, ACCESS_AWAY_SEC)
