@@ -232,11 +232,14 @@
 		var/mob/m = M
 		if (!m.client)
 			continue
-		m.client.verbs += /client/proc/eorg_teleport
+		
+		if (isobserver(m))
+			continue
 
+		add_verb(m.client, /client/proc/eorg_teleport)
 		if (m.client?.prefs?.read_preference(/datum/preference/toggle/eorg_preference))
-			var/eorg_tele_loc = pick(GLOB.eorg_teleport.loc)
-			m.forceMove(eorg_tele_loc)
+			var/obj/effect/landmark/eorg/eorg_tele_loc = pick(GLOB.eorg_teleport)
+			m.forceMove(eorg_tele_loc.loc)
 			to_chat(m, "<BR><span class='narsiesmall'>You have chosen not to EORG. Do not commit EORG or you will be banned!</span>")
 			to_chat(m, "<BR><BR><span class='notice'>You have been successfully recovered from SS13 and are on your way to the nearest transit interchange. There's some time before the next shuttle home comes though, time to relax.</span>")
 			to_chat(m, "<span class='greentext'>You've made it.</span>")
@@ -825,7 +828,7 @@
 	var/mob/living/H = mob
 	H.revive(full_heal=TRUE,admin_revive=TRUE)
 	H.unbuckle_mob()
-	var/eorg_tele_loc = pick(GLOB.eorg_teleport.loc)
-	H.forceMove(pick(eorg_tele_loc))
+	var/obj/effect/landmark/eorg/eorg_tele_loc = pick(GLOB.eorg_teleport)
+	H.forceMove(eorg_tele_loc.loc)
 	to_chat(H, "<BR><BR><span class='narsiesmall'>You are in a safe zone. Do NOT commit EORG.</span>")
 	to_chat(H, "<BR><span class='notice'>You have been successfully recovered from SS13 and are on your way to the nearest transit interchange. It's time to go home. You've made it.</span>")
