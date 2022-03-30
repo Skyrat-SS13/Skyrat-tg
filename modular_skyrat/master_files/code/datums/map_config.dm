@@ -226,7 +226,7 @@
 			water_color = json["water_color"]
 
 	if(json["amount_of_planets_spawned"])
-		atmosphere_type = text2path(json["amount_of_planets_spawned"])
+		amount_of_planets_spawned = text2path(json["amount_of_planets_spawned"])
 
 	temp = json["amount_of_planets_spawned"]
 	if(isnum(temp))
