@@ -64,6 +64,9 @@
 								"Exosuit Ammunition",
 								"Cyborg Upgrade Modules",
 								"Cybernetics",
+								//SKYRAT EDIT START - ipc_printing
+								"IPC Parts",
+								//SKYRAT EDIT END
 								"Implants",
 								"Control Interfaces",
 								"MOD Construction",
@@ -190,6 +193,13 @@
 
 		else if(ispath(built_item, /obj/item/borg_restart_board))
 			sub_category += "All Cyborgs" //Otherwise the restart board shows in the "parts" category, which seems dumb
+
+		// SKYRAT EDIT START - ipc_printing
+
+		else if(findtext(built_item, "robot_ipc") || findtext(built_item,"power_cord"))
+			sub_category += "IPC Parts"
+
+		//SKYRAT EDIT END
 
 		else if(istype(D, /datum/design/module))
 			var/datum/design/module/module_design = D
