@@ -15,13 +15,18 @@
 	light_range = 6
 	color = COLOR_CYAN
 	var/datum/looping_sound/lambda/looping_sound
+	var/atom/movable/warp_effect/effect
 
 /obj/effect/bump_teleporter/lambda/Initialize(mapload)
 	. = ..()
 	looping_sound = new(src, TRUE)
+	effect = new(src)
+	vis_contents += effect
 
 /obj/effect/bump_teleporter/lambda/Destroy()
 	QDEL_NULL(looping_sound)
+	vis_contents -= effect
+	QDEL_NULL(effect)
 	return ..()
 
 /obj/effect/bump_teleporter/lambda/Bumped(atom/movable/movable_atom)
