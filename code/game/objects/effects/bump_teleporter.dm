@@ -27,8 +27,8 @@
 	return
 
 /obj/effect/bump_teleporter/Bumped(atom/movable/AM)
-	if(!ismob(AM))
-		return
+	//if(!ismob(AM)) SKYRAT EDIT REMOVAL
+	//	return SKYRAT EDIT REMOVAL
 	if(!id_target)
 		return
 
