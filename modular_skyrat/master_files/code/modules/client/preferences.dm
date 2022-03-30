@@ -50,6 +50,9 @@
 	//Determines if the player has undergone TGUI preferences migration, if so, this will prevent constant loading.
 	var/tgui_prefs_migration = TRUE
 
+	//whether the player of the character is listed on the round-end report
+	var/eorg_teleport = FALSE
+
 /datum/preferences/proc/species_updated(species_type)
 	all_quirks = list()
 	//Reset cultural stuff
