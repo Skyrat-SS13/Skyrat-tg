@@ -69,7 +69,6 @@
 	else if(damaged_state == CLOTHING_PRISTINE && has_sensor == BROKEN_SENSORS)
 		has_sensor = HAS_SENSORS
 
-<<<<<<< HEAD
 /obj/item/clothing/under/Initialize(mapload)
 	. = ..()
 	if(random_sensor)
@@ -80,8 +79,6 @@
 		species_clothing_icon_state = "under_skirt"
 	// SKYRAT EDIT END
 
-=======
->>>>>>> bdd0192168d (Fix jumpsuits to drop accessories when destroyed (#65768))
 /obj/item/clothing/under/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
