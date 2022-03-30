@@ -13,6 +13,7 @@
 	pixel_y = -32
 	invisibility = 0
 	light_range = 6
+	color = COLOR_CYAN
 	var/datum/looping_sound/lambda/looping_sound
 
 /obj/effect/bump_teleporter/lambda/Initialize(mapload)
