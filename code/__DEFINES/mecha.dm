@@ -31,8 +31,6 @@
 #define MECHA_SECURE_BOLTS 1
 #define MECHA_LOOSE_BOLTS 2
 #define MECHA_OPEN_HATCH 3
-<<<<<<< HEAD
-=======
 
 // Some mechs must (at least for now) use snowflake handling of their UI elements, these defines are for that
 // when changing MUST update the same-named tsx file constants
@@ -49,4 +47,3 @@
 #define MECHA_AMMO_MISSILE_AP "AP missile"
 #define MECHA_AMMO_FLASHBANG "Flashbang"
 #define MECHA_AMMO_CLUSTERBANG "Clusterbang"
->>>>>>> 7dff2d00ad1 (Better mech ammo names and new ammo defines (#65817))
