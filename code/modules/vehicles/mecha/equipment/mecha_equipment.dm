@@ -148,11 +148,20 @@
 	log_message("[src] attached.", LOG_MECHA)
 	update_chassis_page()
 
+<<<<<<< HEAD
 ///Detaches equipment and updates relevant equipment trackers. Optional argument of atom to forcemove to once detached
+=======
+/**
+ * called to detach this equipment
+ * Args:
+ * * moveto: optional target to move this equipment to
+ */
+>>>>>>> 048c1ab20e3 (Minor mech_equipment/proc/detach code improvements (#65811))
 /obj/item/mecha_parts/mecha_equipment/proc/detach(atom/moveto)
 	SHOULD_CALL_PARENT(TRUE)
 	moveto = moveto || get_turf(chassis)
 	forceMove(moveto)
+<<<<<<< HEAD
 	LAZYREMOVE(chassis.equipment, src)
 	if(chassis.selected == src)
 		chassis.selected = null
@@ -166,6 +175,21 @@
 		return
 	if(href_list["detach"])
 		detach()
+=======
+	LAZYREMOVE(chassis.flat_equipment, src)
+	var/to_unequip_slot = equipment_slot
+	if(equipment_slot == MECHA_WEAPON)
+		if(chassis.equip_by_category[MECHA_R_ARM] == src)
+			to_unequip_slot = MECHA_R_ARM
+		else
+			to_unequip_slot = MECHA_L_ARM
+	if(islist(chassis.equip_by_category[to_unequip_slot]))
+		chassis.equip_by_category[to_unequip_slot] -= src
+	else
+		chassis.equip_by_category[to_unequip_slot] = null
+	log_message("[src] removed from equipment.", LOG_MECHA)
+	chassis = null
+>>>>>>> 048c1ab20e3 (Minor mech_equipment/proc/detach code improvements (#65811))
 
 /obj/item/mecha_parts/mecha_equipment/log_message(message, message_type=LOG_GAME, color=null, log_globally)
 	if(chassis)
