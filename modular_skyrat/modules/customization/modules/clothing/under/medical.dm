@@ -1,24 +1,23 @@
+/obj/item/clothing/under/rank/medical
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/medical_digi.dmi'	//Anything that was in the medical.dmi, should be in the medical_digi.dmi
+
 /obj/item/clothing/under/rank/medical/doctor/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/medical.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/medical.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/medical_digi.dmi'
 
 /obj/item/clothing/under/rank/medical/chemist/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/medical.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/medical.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/medical_digi.dmi'
 
 /obj/item/clothing/under/rank/medical/scrubs/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/medical.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/medical.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/medical_digi.dmi'
 	icon_state = "scrubswhite" //Because for some reason TG's scrubs dont have an icon on their basetype
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one seems to be the original Scrub." //Just an easter-egg
 
 /obj/item/clothing/under/rank/medical/paramedic/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/medical.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/medical.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/medical_digi.dmi'
 
 //Add a 'medical/chief_medical_officer/skyrat' or 'medical/virologist/skyrat' if you make CMO or Virologist uniforms
 
