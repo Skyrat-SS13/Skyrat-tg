@@ -134,6 +134,12 @@ export const ArmamentStation = (props, context) => {
                             textColor={(item.cost > card_points || !card_inserted) ? "red" : "green"}>
                             {'Cost: ' + item.cost}
                           </Stack.Item>
+                          {!!item.buyable_ammo && (
+                            <Stack.Item
+                              textColor={(item.magazine_cost > card_points || !card_inserted) ? "red" : "green"}>
+                              {'Ammo Cost: ' + item.magazine_cost}
+                            </Stack.Item>
+                          )}
                           <Stack.Item>
                             <Button
                               content="Buy"
@@ -145,6 +151,18 @@ export const ArmamentStation = (props, context) => {
                                 armament_ref: item.ref })}
                             />
                           </Stack.Item>
+                          {!!item.buyable_ammo && (
+                            <Stack.Item>
+                              <Button
+                                content="Buy Ammo"
+                                textAlign="center"
+                                width="100%"
+                                disabled={item.magazine_cost > card_points}
+                                onClick={() => act('buy_ammo', {
+                                  armament_ref: item.ref })}
+                              />
+                            </Stack.Item>
+                          )}
                         </Stack>
                       )
                     ))

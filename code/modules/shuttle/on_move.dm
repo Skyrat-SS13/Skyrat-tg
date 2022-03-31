@@ -169,10 +169,9 @@ All ShuttleMove procs go here
 		return TRUE
 	var/area/target_area = oldT.underlying_area ? oldT.underlying_area : underlying_old_area //SKYRAT EDIT ADDITION
 	contents -= oldT
-	//underlying_old_area.contents += oldT //SKYRAT EDIT CHANGE
-	//oldT.change_area(src, underlying_old_area)
 	target_area.contents += oldT
-	oldT.change_area(src, target_area)
+	underlying_old_area.contents += oldT
+	oldT.transfer_area_lighting(src, target_area)
 	oldT.underlying_area = null
 	//The old turf has now been given back to the area that turf originaly belonged to
 
@@ -181,8 +180,8 @@ All ShuttleMove procs go here
 
 	old_dest_area.contents -= newT
 	contents += newT
-	newT.change_area(old_dest_area, src)
 	newT.underlying_area = old_dest_area //SKYRAT EDIT ADDITION
+	newT.transfer_area_lighting(old_dest_area, src)
 	return TRUE
 
 // Called on areas after everything has been moved
