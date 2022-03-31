@@ -540,7 +540,7 @@
 		to_chat(H, span_alertwarning("Lopland Peacekeeper uniforms don't include a Skirt variant! You've been equipped with a jumpsuit instead."))
 		uniform = /obj/item/clothing/under/rank/security/officer
 
-/datum/outfit/job/head_of_security/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/hos/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	if(H.jumpsuit_style == PREF_SKIRT)
 		to_chat(H, span_alertwarning("Lopland Peacekeeper uniforms don't include a Skirt variant! You've been equipped with a jumpsuit instead."))
