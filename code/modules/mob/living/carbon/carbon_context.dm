@@ -24,8 +24,10 @@
 		if (body_position == STANDING_UP)
 			if(check_zone(user.zone_selected) == BODY_ZONE_HEAD && get_bodypart(BODY_ZONE_HEAD))
 				context[SCREENTIP_CONTEXT_LMB] = "Headpat"
-			else if(user.zone_selected == BODY_ZONE_PRECISE_GROIN && !isnull(getorgan(/obj/item/organ/tail)))
+			/* SKYRAT REMOVAL START - No taill pulling
+			else if(check_zone(user.zone_selected) == BODY_ZONE_PRECISE_GROIN && !isnull(getorgan(/obj/item/organ/tail)))
 				context[SCREENTIP_CONTEXT_LMB] = "Pull tail"
+			*/ // SKYRAT REMOVAL END
 			else
 				context[SCREENTIP_CONTEXT_LMB] = "Hug"
 		else if (health >= 0 && !HAS_TRAIT(src, TRAIT_FAKEDEATH))

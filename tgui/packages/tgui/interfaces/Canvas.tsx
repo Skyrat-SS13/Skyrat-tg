@@ -5,6 +5,8 @@ import { useBackend } from '../backend';
 import { Box, Button, Flex } from '../components';
 import { Window } from '../layouts';
 
+const PX_PER_UNIT = 24;
+
 type PaintCanvasProps = Partial<{
   onCanvasModifiedHandler: (data : PointData[]) => void,
   value: string[][],
@@ -187,7 +189,6 @@ type PaletteColor = {
 
 type CanvasData = {
   grid: string[][],
-  px_per_unit: number,
   finalized: boolean,
   name: string,
   editable: boolean,
@@ -203,8 +204,8 @@ type CanvasData = {
 export const Canvas = (props, context) => {
   const { act, data } = useBackend<CanvasData>(context);
   const [width, height] = getImageSize(data.grid);
-  const scaled_width = width * data.px_per_unit;
-  const scaled_height = height * data.px_per_unit;
+  const scaled_width = width * PX_PER_UNIT;
+  const scaled_height = height * PX_PER_UNIT;
   const average_plaque_height = 90;
   const palette_height = 36;
   return (

@@ -220,13 +220,13 @@ const TankCompressorControls = (props, context) => {
           <Stack.Item grow>
             <Section fill scrollable title={inputData.name}>
               {!inputData.total_moles && <Modal>{'No Gas Present'}</Modal>}
-              <GasmixParser gasmix={inputData} />
+              <GasmixParser {...inputData} />
             </Section>
           </Stack.Item>
           <Stack.Item grow>
             <Section fill scrollable title={outputData.name}>
               {!outputData.inputData && <Modal>{'No Gas Present'}</Modal>}
-              <GasmixParser gasmix={outputData} />
+              <GasmixParser {...outputData} />
             </Section>
           </Stack.Item>
           <Stack.Item grow>
@@ -241,7 +241,7 @@ const TankCompressorControls = (props, context) => {
                 />
               }>
               {!bufferData.total_moles && <Modal>{'No Gas Present'}</Modal>}
-              <GasmixParser gasmix={bufferData} />
+              <GasmixParser {...bufferData} />
             </Section>
           </Stack.Item>
         </Stack>
