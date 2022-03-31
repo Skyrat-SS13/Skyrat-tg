@@ -9,20 +9,10 @@
 	movedelay = 1.25
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	lights_power = 7
+	deflect_chance = 10
 	step_energy_drain = 15 //slightly higher energy drain since you movin those wheels FAST
 	armor = list(MELEE = 20, BULLET = 10, LASER = 20, ENERGY = 10, BOMB = 60, BIO = 0, FIRE = 100, ACID = 100) //low armor to compensate for fire protection and speed
-	equip_by_category = list(
-		MECHA_L_ARM = null,
-		MECHA_R_ARM = null,
-		MECHA_UTILITY = list(/obj/item/mecha_parts/mecha_equipment/orebox_manager),
-		MECHA_POWER = list(),
-		MECHA_ARMOR = list(),
-	)
-	max_equip_by_category = list(
-		MECHA_UTILITY = 3,
-		MECHA_POWER = 1,
-		MECHA_ARMOR = 1,
-	)
+	max_equip = 7
 	wreckage = /obj/structure/mecha_wreckage/clarke
 	enter_delay = 40
 	mecha_flags = ADDING_ACCESS_POSSIBLE | IS_ENCLOSED | HAS_LIGHTS | MMI_COMPATIBLE | OMNIDIRECTIONAL_ATTACKS
@@ -31,6 +21,8 @@
 /obj/vehicle/sealed/mecha/working/clarke/Initialize(mapload)
 	. = ..()
 	box = new(src)
+	var/obj/item/mecha_parts/mecha_equipment/orebox_manager/ME = new(src)
+	ME.attach(src)
 
 /obj/vehicle/sealed/mecha/working/clarke/Destroy()
 	INVOKE_ASYNC(box, /obj/structure/ore_box/proc/dump_box_contents)
@@ -48,13 +40,12 @@
 	desc = "An automated ore box management device."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "bin"
-	equipment_slot = MECHA_UTILITY
 	selectable = FALSE
 	detachable = FALSE
 	/// Var to avoid istype checking every time the topic button is pressed. This will only work inside Clarke mechs.
 	var/obj/vehicle/sealed/mecha/working/clarke/hostmech
 
-/obj/item/mecha_parts/mecha_equipment/orebox_manager/attach(obj/vehicle/sealed/mecha/M, attach_right = FALSE)
+/obj/item/mecha_parts/mecha_equipment/orebox_manager/attach(obj/vehicle/sealed/mecha/M)
 	. = ..()
 	if(istype(M, /obj/vehicle/sealed/mecha/working/clarke))
 		hostmech = M
@@ -63,11 +54,14 @@
 	hostmech = null //just in case
 	return ..()
 
-/obj/item/mecha_parts/mecha_equipment/orebox_manager/ui_act(action, list/params)
+/obj/item/mecha_parts/mecha_equipment/orebox_manager/Topic(href,href_list)
 	. = ..()
-	if(action == "toggle")
-		hostmech.box?.dump_box_contents()
-		activated = TRUE
+	if(!hostmech || !hostmech.box)
+		return
+	hostmech.box.dump_box_contents()
+
+/obj/item/mecha_parts/mecha_equipment/orebox_manager/get_equip_info()
+	return "[..()] [hostmech?.box ? "<a href='?src=[REF(src)];mode=0'>Unload Cargo</a>" : "Error"]"
 
 #define SEARCH_COOLDOWN 1 MINUTES
 

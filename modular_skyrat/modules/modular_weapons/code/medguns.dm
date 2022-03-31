@@ -73,8 +73,8 @@
 	name = "medigun operating manual"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/misc.dmi'
 	icon_state = "manual"
-	starting_author = "VeyMedical"
-	starting_title = "Medigun Operating Manual"
+	author = "VeyMedical"
+	title = "Medigun Operating Manual"
 	page_link = "Guide_to_Mediguns"
 	skyrat_wiki = TRUE
 

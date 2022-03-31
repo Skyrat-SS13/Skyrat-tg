@@ -193,7 +193,7 @@ const BombProcessorContent = (props, context) => {
           {!gasList[2].total_moles && (
             <Modal textAlign="center">{'No Gas Present'}</Modal>
           )}
-          <GasmixParser gasmix={gasList[2]} />
+          <GasmixParser {...gasList[2]} />
         </Section>
       </Stack.Item>
       <Stack.Item grow>
@@ -209,7 +209,7 @@ const BombProcessorContent = (props, context) => {
                 {!individualGasmix.total_moles && (
                   <Modal textAlign="center">{'No Gas Present'}</Modal>
                 )}
-                <GasmixParser gasmix={individualGasmix} />
+                <GasmixParser {...individualGasmix} />
               </Section>
             </Stack.Item>
           ))}
