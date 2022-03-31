@@ -263,34 +263,6 @@
 	icon_state = "checkered"
 
 ///FORMAL DEPT
-/obj/item/clothing/under/rank/medical/doctor/formal
-	desc = "A white shirt with blue pants, lined with a protection against some light biohazards."
-	name = "medical doctor's formal wear"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "senior_medical"
-
-/obj/item/clothing/under/rank/medical/doctor/formal/skirt
-	desc = "A white shirt with a blue skirt, lined with a protection against some light biohazards."
-	name = "medical doctor's formal skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "senior_medical_skirt"
-
-/obj/item/clothing/under/rank/medical/chemist/formal
-	desc = "A orange shirt with white pants, lined with protection against chemical spills."
-	name = "chemist's formal wear"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "pharmacist"
-
-/obj/item/clothing/under/rank/medical/chemist/formal/skirt
-	desc = "A orange shirt with a white skirt, lined with protection against chemical spills."
-	name = "chemist's formal skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "pharmacist_skirt"
-
 /obj/item/clothing/under/rank/engineering/engineer/formal
 	desc = "A white shirt with garrish mustard pants, lined with protection against light radiation and fire."
 	name = "engineer's formal wear"
@@ -387,12 +359,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "cia"
 
-/obj/item/clothing/under/rank/medical/doctor/red/unarm
-	name = "red scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in a deep red."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "scrubsred"
+
 
 /obj/item/clothing/under/suit/white/scarface
 	name = "cuban suit"
@@ -420,14 +387,6 @@
 	desc = "Yep, here’s your problem. Someone set this thing to evil."
 	icon_state = "qmsynd"
 	can_adjust = FALSE
-
-
-/obj/item/clothing/under/rank/medical/doctor/white
-	name = "white scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in a cream white colour."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "scrubswhite"
 
 /obj/item/clothing/under/rank/engineering/engineer/trouser
 	desc = "A yellow set of trousers that somehow protect against radiation."

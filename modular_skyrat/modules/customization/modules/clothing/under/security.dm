@@ -75,16 +75,13 @@
 	name = "sol warden uniform"
 	desc = "A light blue shirt with navy pants, this one seems to have been modified for fat asses, like yourself."
 	icon_state = "policewardenalt"
-	
+
 // End Police Uniforms
 
 ///SECMED
-/obj/item/clothing/under/rank/medical/doctor/red
+/obj/item/clothing/under/rank/medical/scrubs/skyrat/red/sec
 	name = "security medic scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards and acid. This one is in a deep red."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "scrubsred"
+	desc = "It's made of a special fiber that provides minor protection against biohazards and acid, along with some light padding. This one is in a deep red."
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 30, ACID = 30, WOUND = 10)
 
 /// PRISONER
