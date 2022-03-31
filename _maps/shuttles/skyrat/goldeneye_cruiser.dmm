@@ -320,16 +320,15 @@
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
 "gG" = (
-/obj/machinery/airalarm/syndicate{
-	dir = 8;
-	pixel_x = 24
-	},
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -26
 	},
 /obj/structure/table/reinforced,
 /obj/structure/bedsheetbin,
+/obj/machinery/flasher/directional/east{
+	id = "syndicatecruiserbrig"
+	},
 /turf/open/floor/iron,
 /area/shuttle/syndicate/cruiser/brig)
 "gI" = (
@@ -578,6 +577,16 @@
 	},
 /turf/open/floor/circuit/red,
 /area/shuttle/syndicate/cruiser/hallway)
+"lZ" = (
+/obj/structure/cable,
+/obj/machinery/button/door{
+	id = "cruisermedicalshutters";
+	name = "Medbay Shutters";
+	pixel_x = -24;
+	pixel_y = 24
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/cruiser/medical)
 "mg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/space_heater,
@@ -653,31 +662,7 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "ob" = (
-/obj/structure/closet/crate,
-/obj/item/reagent_containers/glass/bowl,
-/obj/effect/spawner/random/contraband/prison,
-/obj/item/reagent_containers/glass/bowl,
-/obj/item/reagent_containers/glass/bowl,
-/obj/item/reagent_containers/glass/bowl,
-/obj/item/reagent_containers/glass/bowl,
-/obj/item/reagent_containers/glass/bowl,
-/obj/item/reagent_containers/glass/bowl,
-/obj/item/reagent_containers/glass/bowl,
-/obj/item/kitchen/fork/plastic,
-/obj/item/kitchen/fork/plastic,
-/obj/item/kitchen/fork/plastic,
-/obj/item/storage/box/drinkingglasses,
-/obj/item/kitchen/spoon/plastic,
-/obj/item/kitchen/spoon/plastic,
-/obj/item/kitchen/spoon/plastic,
-/obj/item/knife/plastic,
-/obj/item/knife/plastic,
-/obj/item/knife/plastic,
-/obj/item/storage/bag/tray/cafeteria,
-/obj/item/storage/bag/tray/cafeteria,
-/obj/item/storage/bag/tray/cafeteria,
-/obj/item/storage/bag/tray/cafeteria,
-/obj/item/storage/box/drinkingglasses,
+/obj/machinery/oven,
 /turf/open/floor/iron/cafeteria,
 /area/shuttle/syndicate/cruiser/brig)
 "or" = (
@@ -722,6 +707,7 @@
 "oR" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/table,
+/obj/item/trash/ready_donk,
 /turf/open/floor/iron,
 /area/shuttle/syndicate/cruiser/brig)
 "pf" = (
@@ -854,12 +840,16 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/engineering)
 "tr" = (
+/obj/effect/turf_decal/caution/stand_clear,
+/obj/effect/turf_decal/bot,
 /obj/machinery/button/door{
 	id = "cruisermedicalshutters";
-	name = "Medbay Shutters"
+	name = "Medbay Shutters";
+	pixel_x = 24;
+	pixel_y = 24
 	},
-/turf/closed/wall/r_wall/syndicate/cruiser,
-/area/shuttle/syndicate/cruiser/medical)
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/cruiser/hallway)
 "tF" = (
 /obj/effect/spawner/random/trash/grime,
 /obj/structure/chair/stool/directional/west,
@@ -872,12 +862,7 @@
 	pixel_y = 22
 	},
 /obj/effect/turf_decal/stripes/red/box,
-/obj/machinery/porta_turret/assaultops{
-	name = "Point Defense Turret"
-	},
-/obj/machinery/porta_turret/assaultops{
-	name = "Point Defense Turret"
-	},
+/obj/machinery/porta_turret/syndicate/assaultops/internal,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "tV" = (
@@ -1099,7 +1084,7 @@
 /turf/open/floor/circuit/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "xd" = (
-/obj/machinery/porta_turret/assaultops/shuttle{
+/obj/machinery/porta_turret/syndicate/assaultops/shuttle{
 	name = "Defense System Turret";
 	system_id = "cruiser_turrets_outer"
 	},
@@ -1129,7 +1114,7 @@
 /turf/open/floor/iron,
 /area/shuttle/syndicate/cruiser/brig)
 "yz" = (
-/obj/machinery/porta_turret/assaultops/shuttle{
+/obj/machinery/porta_turret/syndicate/assaultops/shuttle{
 	name = "Defense System Turret";
 	system_id = "cruiser_turrets_outer"
 	},
@@ -1171,8 +1156,32 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/eva)
 "zV" = (
-/obj/machinery/oven,
-/turf/open/floor/iron/dark/brown,
+/obj/structure/closet/crate,
+/obj/item/reagent_containers/glass/bowl,
+/obj/effect/spawner/random/contraband/prison,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/kitchen/fork/plastic,
+/obj/item/kitchen/fork/plastic,
+/obj/item/kitchen/fork/plastic,
+/obj/item/storage/box/drinkingglasses,
+/obj/item/kitchen/spoon/plastic,
+/obj/item/kitchen/spoon/plastic,
+/obj/item/kitchen/spoon/plastic,
+/obj/item/knife/plastic,
+/obj/item/knife/plastic,
+/obj/item/knife/plastic,
+/obj/item/storage/bag/tray/cafeteria,
+/obj/item/storage/bag/tray/cafeteria,
+/obj/item/storage/bag/tray/cafeteria,
+/obj/item/storage/bag/tray/cafeteria,
+/obj/item/storage/box/drinkingglasses,
+/turf/open/floor/iron/cafeteria,
 /area/shuttle/syndicate/cruiser/brig)
 "Af" = (
 /obj/effect/turf_decal/stripes/asteroid/line{
@@ -1215,7 +1224,7 @@
 /area/shuttle/syndicate/cruiser/hallway)
 "AU" = (
 /obj/machinery/griddle,
-/turf/open/floor/plating,
+/turf/open/floor/iron/cafeteria,
 /area/shuttle/syndicate/cruiser/brig)
 "Ba" = (
 /obj/structure/grille,
@@ -1331,12 +1340,19 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/bridge)
 "Dg" = (
-/obj/machinery/porta_turret/assaultops/shuttle{
+/obj/machinery/porta_turret/syndicate/assaultops/shuttle{
 	name = "Defense System Turret";
 	system_id = "cruiser_turrets_outer"
 	},
 /turf/closed/wall/r_wall/syndicate/cruiser,
 /area/shuttle/syndicate/cruiser/engineering)
+"Di" = (
+/obj/machinery/porta_turret/syndicate/assaultops/shuttle{
+	name = "Defense System Turret";
+	system_id = "cruiser_turrets_outer"
+	},
+/turf/closed/wall/r_wall/syndicate/cruiser,
+/area/shuttle/syndicate/cruiser/medical)
 "Dp" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden,
@@ -1436,9 +1452,7 @@
 	pixel_x = 26
 	},
 /obj/effect/turf_decal/stripes/red/box,
-/obj/machinery/porta_turret/assaultops{
-	name = "Point Defense Turret"
-	},
+/obj/machinery/porta_turret/syndicate/assaultops/internal,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "FV" = (
@@ -1696,6 +1710,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark/brown,
 /area/shuttle/syndicate/cruiser/brig)
+"Lz" = (
+/obj/machinery/airalarm/syndicate{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/floor/iron,
+/area/shuttle/syndicate/cruiser/brig)
 "LK" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -1721,6 +1742,13 @@
 /obj/machinery/hydroponics/constructable,
 /turf/open/floor/iron/dark/brown,
 /area/shuttle/syndicate/cruiser/brig)
+"Mc" = (
+/obj/machinery/porta_turret/syndicate/assaultops/shuttle{
+	name = "Defense System Turret";
+	system_id = "cruiser_turrets_outer"
+	},
+/turf/closed/wall/r_wall/syndicate,
+/area/shuttle/syndicate/cruiser/bridge)
 "Mo" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/stripes/line{
@@ -1748,7 +1776,7 @@
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
 "MG" = (
-/obj/machinery/porta_turret/assaultops/shuttle{
+/obj/machinery/porta_turret/syndicate/assaultops/shuttle{
 	name = "Defense System Turret";
 	system_id = "cruiser_turrets_outer"
 	},
@@ -1908,6 +1936,7 @@
 	icon_state = "tube"
 	},
 /obj/structure/rack/gunrack,
+/obj/item/gun/energy/ionrifle,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "Pc" = (
@@ -1926,6 +1955,19 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
+"Pg" = (
+/obj/machinery/light/no_nightlight{
+	dir = 8;
+	icon_state = "tube"
+	},
+/obj/machinery/button/flasher{
+	id = "syndicatecruiserbrig";
+	pixel_x = -23;
+	pixel_y = 8;
+	req_access_txt = "150"
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/cruiser/hallway)
 "Pn" = (
 /obj/machinery/light/no_nightlight,
 /turf/open/floor/iron/dark,
@@ -1986,9 +2028,7 @@
 	pixel_x = 32
 	},
 /obj/effect/turf_decal/stripes/red/box,
-/obj/machinery/porta_turret/assaultops{
-	name = "Point Defense Turret"
-	},
+/obj/machinery/porta_turret/syndicate/assaultops/internal,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "Qa" = (
@@ -2451,10 +2491,8 @@
 /area/shuttle/syndicate/cruiser/hallway)
 "Wx" = (
 /obj/structure/cable,
-/obj/machinery/porta_turret/assaultops{
-	name = "Point Defense Turret"
-	},
 /obj/effect/turf_decal/stripes/red/box,
+/obj/machinery/porta_turret/syndicate/assaultops/internal,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "Wz" = (
@@ -2462,7 +2500,7 @@
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
 "WB" = (
-/obj/machinery/porta_turret/assaultops/shuttle{
+/obj/machinery/porta_turret/syndicate/assaultops/shuttle{
 	name = "Defense System Turret";
 	system_id = "cruiser_turrets_outer"
 	},
@@ -2519,7 +2557,7 @@
 	dir = 8;
 	icon_state = "tube"
 	},
-/turf/open/floor/iron/showroomfloor,
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/medical)
 "Yc" = (
 /obj/machinery/atmospherics/components/binary/pump/on{
@@ -2718,7 +2756,7 @@ cx
 cf
 cf
 gq
-yx
+Lz
 yx
 kc
 AU
@@ -2860,7 +2898,7 @@ MA
 bV
 "}
 (10,1,1) = {"
-aC
+Mc
 le
 wP
 Xh
@@ -2909,7 +2947,7 @@ Vn
 nW
 Ri
 eJ
-Hs
+Pg
 Qq
 Rv
 Qq
@@ -3031,7 +3069,7 @@ RF
 EJ
 eJ
 hx
-gl
+tr
 gl
 gl
 gl
@@ -3062,7 +3100,7 @@ iU
 zc
 iU
 gr
-tr
+iU
 Xv
 Xv
 Xv
@@ -3095,7 +3133,7 @@ RO
 nr
 vP
 XK
-qc
+lZ
 qc
 qc
 Ie
@@ -3180,7 +3218,7 @@ NJ
 WB
 "}
 (20,1,1) = {"
-aC
+Mc
 le
 HW
 Xh
@@ -3217,9 +3255,9 @@ aC
 Ba
 Ba
 Ba
-xd
+Ms
 iU
-iU
+Di
 iU
 kG
 kG
