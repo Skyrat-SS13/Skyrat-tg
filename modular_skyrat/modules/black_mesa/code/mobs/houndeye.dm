@@ -14,8 +14,8 @@
 	emote_taunt = list("growls", "snarls", "grumbles")
 	taunt_chance = 100
 	turns_per_move = 7
-	maxHealth = 110
-	health = 110
+	maxHealth = 100
+	health = 100
 	obj_damage = 50
 	harm_intent_damage = 10
 	melee_damage_lower = 20

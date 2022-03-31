@@ -63,3 +63,4 @@
 		mob_to_neutralize.faction = factions
 		mob_to_neutralize.visible_message(span_green("[mob_to_neutralize] is overcome by a wave of peace and tranquility!"))
 		new /obj/effect/particle_effect/sparks/quantum(get_turf(mob_to_neutralize))
+	qdel(src)

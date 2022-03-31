@@ -12,8 +12,8 @@
 	speed = 1
 	emote_taunt = list("growls", "snarls", "grumbles")
 	taunt_chance = 100
-	melee_damage_lower = 20
-	melee_damage_upper = 20
+	melee_damage_lower = 21
+	melee_damage_upper = 21
 	attack_sound = 'modular_skyrat/modules/black_mesa/sound/mobs/zombies/claw_strike.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
 	alert_cooldown_time = 8 SECONDS

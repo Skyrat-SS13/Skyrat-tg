@@ -30,6 +30,7 @@
 	del_on_death = TRUE
 	wander = FALSE
 	loot = list(/obj/effect/gibspawner/xeno, /obj/item/stack/sheet/bluespace_crystal/fifty, /obj/item/key/gateway)
+	movement_type = FLYING
 
 /obj/item/stack/sheet/bluespace_crystal/fifty
 	amount = 50

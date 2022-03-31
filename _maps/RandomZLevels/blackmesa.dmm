@@ -577,6 +577,13 @@
 "cS" = (
 /turf/open/floor/mineral/titanium,
 /area/awaymission/black_mesa)
+"cU" = (
+/obj/structure/window/reinforced/spawner/north,
+/obj/structure/table,
+/obj/item/stack/ore/bluespace_crystal,
+/obj/effect/random_mob_placer/xen,
+/turf/open/floor/iron/textured_large,
+/area/awaymission/black_mesa)
 "cV" = (
 /obj/structure/chair/sofa/bench/left{
 	dir = 8
@@ -1814,6 +1821,10 @@
 /obj/item/ammo_box/magazine/m16,
 /turf/open/floor/iron/dark,
 /area/awaymission/black_mesa/xen)
+"jB" = (
+/obj/structure/sign/warning/biohazard,
+/turf/closed/wall/r_wall,
+/area/awaymission/black_mesa/xen)
 "jC" = (
 /obj/structure/table/wood,
 /obj/item/storage/box/hecu_rations,
@@ -3036,6 +3047,9 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/machinery/door/poddoor{
+	id = "teleporter_catwalk"
+	},
 /turf/open/floor/engine,
 /area/awaymission/black_mesa)
 "pz" = (
@@ -3064,6 +3078,12 @@
 	dir = 4
 	},
 /turf/open/floor/iron/textured,
+/area/awaymission/black_mesa)
+"pF" = (
+/obj/machinery/computer{
+	dir = 4
+	},
+/turf/open/floor/iron/smooth_large,
 /area/awaymission/black_mesa)
 "pH" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
@@ -3713,6 +3733,14 @@
 /obj/item/gun_maintenance_supplies,
 /obj/item/gun_maintenance_supplies,
 /obj/item/storage/medkit/regular,
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/black_mesa)
+"sZ" = (
+/obj/structure/table,
+/obj/machinery/button/door{
+	id = "teleporter_catwalk";
+	name = "Teleporter Catwalk Control"
+	},
 /turf/open/floor/iron/smooth_large,
 /area/awaymission/black_mesa)
 "ta" = (
@@ -4522,6 +4550,13 @@
 	dir = 9
 	},
 /area/awaymission/black_mesa/xen)
+"wN" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/obj/effect/random_mob_placer/xen/zombie,
+/turf/open/floor/iron,
+/area/awaymission/black_mesa)
 "wO" = (
 /obj/structure/table,
 /obj/item/folder/red,
@@ -5937,6 +5972,11 @@
 /obj/structure/cable,
 /turf/open/floor/plating/cobblestone,
 /area/awaymission/black_mesa)
+"DR" = (
+/obj/structure/spacevine/xen/thick,
+/obj/structure/sign/warning/biohazard,
+/turf/open/misc/xen,
+/area/awaymission/black_mesa/xen)
 "DT" = (
 /obj/structure/fluff/bus/dense{
 	icon_state = "hoodbottom"
@@ -7077,6 +7117,12 @@
 /obj/structure/sign/warning/radiation,
 /turf/closed/wall/r_wall,
 /area/awaymission/black_mesa)
+"Jy" = (
+/obj/machinery/porta_turret/black_mesa/friendly,
+/turf/open/misc/beach/coastline_t/sandwater_inner/xen{
+	dir = 8
+	},
+/area/awaymission/black_mesa/xen)
 "Jz" = (
 /obj/machinery/computer{
 	dir = 8
@@ -17299,7 +17345,7 @@ Qg
 Qg
 Qg
 Qg
-nR
+jB
 oE
 oE
 rz
@@ -17557,7 +17603,7 @@ Qg
 Qg
 wK
 hL
-Fu
+Xg
 oE
 oE
 rz
@@ -18014,7 +18060,7 @@ rz
 rz
 oE
 oE
-Dx
+DR
 Fu
 Fu
 Fu
@@ -18583,7 +18629,7 @@ rz
 rz
 oE
 oE
-hL
+Jy
 Fu
 Fu
 Fu
@@ -18841,7 +18887,7 @@ rz
 rz
 oE
 oE
-Fu
+jB
 Fu
 Fu
 Fu
@@ -19357,8 +19403,8 @@ rz
 rz
 oE
 oE
-sK
-sK
+hE
+hE
 oE
 oE
 rz
@@ -35765,7 +35811,7 @@ Fu
 Fu
 Fu
 Fu
-Fu
+WX
 Fu
 Fu
 Fu
@@ -40678,9 +40724,9 @@ Yr
 Yr
 kN
 Qk
-kN
-kN
-kN
+pF
+sZ
+pF
 Qk
 kN
 Yr
@@ -68001,8 +68047,8 @@ dK
 Yr
 VX
 LW
-ss
-QG
+wN
+LW
 LW
 LW
 fW
@@ -69187,7 +69233,7 @@ UK
 UK
 Yr
 LN
-ID
+TV
 Yr
 pN
 SZ
@@ -69702,7 +69748,7 @@ IB
 An
 Ve
 Ve
-OT
+cU
 Yr
 Vi
 Ln
@@ -74294,7 +74340,7 @@ IA
 IA
 ez
 IA
-IA
+kg
 IA
 jr
 IA
@@ -74545,7 +74591,7 @@ rz
 rz
 No
 Yr
-IA
+kg
 IA
 IA
 IA
@@ -74805,13 +74851,13 @@ Yr
 IA
 IE
 IA
-IA
+kg
 IA
 Ti
 IA
 BW
 IA
-IA
+kg
 Yr
 No
 rz

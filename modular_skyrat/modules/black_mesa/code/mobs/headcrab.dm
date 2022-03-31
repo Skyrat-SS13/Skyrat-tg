@@ -20,10 +20,10 @@
 	ranged = TRUE
 	dodging = TRUE
 	harm_intent_damage = 15
-	melee_damage_lower = 17
-	melee_damage_upper = 17
-	retreat_distance = 4
-	minimum_distance = 4
+	melee_damage_lower = 10
+	melee_damage_upper = 10
+	retreat_distance = 5
+	minimum_distance = 5
 	attack_sound = 'sound/weapons/bite.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
 	loot = list(/obj/item/stack/sheet/bone)
@@ -74,7 +74,7 @@
 	if(!ishuman(hit_atom))
 		return
 	var/mob/living/carbon/human/human_to_dunk = hit_atom
-	if(human_to_dunk.get_item_by_slot(ITEM_SLOT_HEAD) && prob(50) && zombify(human_to_dunk))
+	if(!human_to_dunk.get_item_by_slot(ITEM_SLOT_HEAD) && prob(50) && zombify(human_to_dunk))
 		to_chat(human_to_dunk, span_userdanger("[src] latches onto your head as it pierces your skull, instantly killing you!"))
 		human_to_dunk.death(FALSE)
 
