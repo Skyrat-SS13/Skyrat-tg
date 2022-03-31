@@ -16,6 +16,7 @@
 	turns_per_move = 7
 	maxHealth = 100
 	health = 100
+	speed = 2
 	ranged = TRUE
 	dodging = TRUE
 	harm_intent_damage = 15
@@ -73,12 +74,7 @@
 	if(!ishuman(hit_atom))
 		return
 	var/mob/living/carbon/human/human_to_dunk = hit_atom
-	var/obj/item/head_item = human_to_dunk.get_item_by_slot(ITEM_SLOT_HEAD)
-	if(head_item)
-		if(prob(50))
-			human_to_dunk.visible_message(span_warning("[human_to_dunk]'s headgear is knocked off by [src]!"), span_userdanger("Your headgear is knocked off by [src]!"))
-			dropItemToGround(head_item)
-	else if(prob(50) && zombify(human_to_dunk))
+	if(human_to_dunk.get_item_by_slot(ITEM_SLOT_HEAD) && prob(50) && zombify(human_to_dunk))
 		to_chat(human_to_dunk, span_userdanger("[src] latches onto your head as it pierces your skull, instantly killing you!"))
 		human_to_dunk.death(FALSE)
 
