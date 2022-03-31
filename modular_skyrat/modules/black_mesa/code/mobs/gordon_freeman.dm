@@ -23,6 +23,7 @@
 
 /obj/structure/xen_pylon/freeman
 	shield_range = 20
+	max_integrity = 300
 
 /obj/structure/xen_pylon/freeman/register_mob(mob/living/simple_animal/hostile/blackmesa/xen/mob_to_register)
 	if(!istype(mob_to_register, /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/gordon_freeman))
