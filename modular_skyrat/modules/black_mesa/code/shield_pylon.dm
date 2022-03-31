@@ -1,4 +1,6 @@
 /mob/living/simple_animal/hostile/blackmesa/xen
+	/// Can we be shielded by pylons?
+	var/can_be_shielded = TRUE
 	/// If we have support pylons, this is true.
 	var/shielded = FALSE
 	/// How many shields we have protecting us
@@ -37,6 +39,8 @@
 /obj/structure/xen_pylon/Initialize(mapload)
 	. = ..()
 	for(var/mob/living/simple_animal/hostile/blackmesa/xen/iterating_mob in range(shield_range, src))
+		if(!iterating_mob.can_be_shielded)
+			continue
 		register_mob(iterating_mob)
 	for(var/turf/iterating_turf in RANGE_TURFS(shield_range, src))
 		RegisterSignal(iterating_turf, COMSIG_ATOM_ENTERED, .proc/mob_entered_range)
@@ -46,6 +50,8 @@
 	if(!isxenmob(entered_atom))
 		return
 	var/mob/living/simple_animal/hostile/blackmesa/xen/entered_xen_mob = entered_atom
+	if(!entered_xen_mob.can_be_shielded)
+		return
 	register_mob(entered_xen_mob)
 
 /obj/structure/xen_pylon/proc/register_mob(mob/living/simple_animal/hostile/blackmesa/xen/mob_to_register)

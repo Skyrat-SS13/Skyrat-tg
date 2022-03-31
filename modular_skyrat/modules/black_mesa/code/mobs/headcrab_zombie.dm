@@ -5,8 +5,7 @@
 	icon_state = "zombie"
 	maxHealth = 110
 	health = 110
-	del_on_death = TRUE
-	loot = (/obj/effect/gibspawner/human)
+	icon_dead = "zombie_dead"
 	speak_chance = 1
 	speak_emote = list("growls")
 	speed = 1
@@ -26,6 +25,9 @@
 		'modular_skyrat/modules/black_mesa/sound/mobs/zombies/alert6.ogg',
 	)
 
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/death(gibbed)
+	new /obj/effect/gibspawner/human(get_turf(src))
+	return ..()
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/scientist
 	name = "zombified scientist"
