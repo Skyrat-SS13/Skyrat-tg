@@ -32,19 +32,3 @@
 	crate_name = "energy armory token crate"
 
 
-/datum/supply_pack/security/red_uniforms
-	name = "CorpSec Red Uniform Crate"
-	desc = "A crate of red uniforms we had stored before outsourcing our security equipment. A darker color than we remem- oh wait that's just blood."
-	cost = CARGO_CRATE_VALUE * 3
-	access_view = ACCESS_SECURITY
-	contains = list(/obj/item/clothing/under/rank/security/officer/redsec,
-					/obj/item/clothing/under/rank/security/officer/redsec,
-					/obj/item/clothing/under/rank/security/officer/redsec,
-					/obj/item/clothing/under/rank/security/officer/redsec,
-					/obj/item/clothing/under/rank/security/officer/redsec,
-					/obj/item/clothing/under/rank/security/officer/redsec,
-					/obj/item/clothing/under/rank/security/warden/redsec,
-					/obj/item/clothing/under/rank/security/head_of_security/redsec,
-					/obj/item/clothing/suit/hooded/wintercoat/security/redsec,
-					/obj/item/clothing/suit/hooded/wintercoat/security/redsec)
-	crate_name = "red security uniform crate"

@@ -219,7 +219,7 @@
 /obj/structure/jobtape/police
 	name = "police tape"
 	desc = "A length of police tape. Do not cross."
-	req_one_access = list(ACCESS_SECURITY, ACCESS_FORENSICS_LOCKERS)
+	req_one_access = list(ACCESS_SECURITY, ACCESS_FORENSICS)
 	icon_base = "police"
 
 /obj/item/taperoll/engi
