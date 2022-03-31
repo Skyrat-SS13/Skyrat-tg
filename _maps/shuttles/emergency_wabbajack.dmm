@@ -103,13 +103,6 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
-"ax" = (
-/obj/machinery/door/airlock/titanium{
-	name = "Emergency Shuttle Airlock";
-	req_access_txt = "2"
-	},
-/turf/open/floor/plating,
-/area/shuttle/escape/brig)
 "ay" = (
 /obj/structure/table,
 /obj/item/paper_bin,
@@ -130,13 +123,6 @@
 /obj/item/coin/mythril,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
-"aB" = (
-/obj/machinery/door/airlock/public/glass{
-	name = "Emergency Shuttle Brig";
-	req_access_txt = "2"
-	},
-/turf/open/floor/mineral/plastitanium/red/brig,
-/area/shuttle/escape/brig)
 "aC" = (
 /obj/machinery/door/airlock/titanium,
 /turf/open/floor/mineral/titanium,
@@ -149,10 +135,6 @@
 	name = "NT Lepton Violet"
 	},
 /turf/open/floor/plating,
-/area/shuttle/escape)
-"aF" = (
-/obj/machinery/door/window/left/directional/east,
-/turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "aG" = (
 /obj/structure/extinguisher_cabinet/directional/east,
@@ -214,10 +196,6 @@
 "aR" = (
 /obj/machinery/chem_master,
 /turf/open/floor/mineral/titanium/white,
-/area/shuttle/escape)
-"aS" = (
-/obj/machinery/door/window/right/directional/east,
-/turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "aT" = (
 /obj/structure/table/glass,
@@ -319,6 +297,17 @@
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
+"kA" = (
+/obj/machinery/door/airlock/titanium{
+	name = "Emergency Shuttle Airlock"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/turf/open/floor/plating,
+/area/shuttle/escape/brig)
+"nF" = (
+/obj/machinery/door/window/right/directional/east,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
 "sM" = (
 /obj/structure/table,
 /obj/item/storage/toolbox/mechanical,
@@ -329,6 +318,13 @@
 /obj/item/wrench/medical,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
+"uz" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Emergency Shuttle Brig"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/turf/open/floor/mineral/plastitanium/red/brig,
+/area/shuttle/escape/brig)
 "Aj" = (
 /obj/structure/destructible/cult/item_dispenser/forge/engine,
 /obj/effect/turf_decal/tile/red/fourcorners,
@@ -361,6 +357,10 @@
 /obj/structure/chair/comfy/shuttle,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
+"Pz" = (
+/obj/machinery/door/window/left/directional/east,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
 "Wj" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -387,7 +387,7 @@ aa
 ab
 ab
 ab
-ax
+kA
 ab
 aD
 ab
@@ -436,7 +436,7 @@ ab
 bj
 al
 al
-aB
+uz
 aq
 aq
 aq
@@ -533,11 +533,11 @@ ao
 au
 az
 ab
-aF
+Pz
 Ec
 aq
 Ec
-aS
+nF
 as
 aI
 aI
