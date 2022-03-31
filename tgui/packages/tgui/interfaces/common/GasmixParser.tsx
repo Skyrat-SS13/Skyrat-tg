@@ -19,7 +19,7 @@ type GasmixParserProps = {
   pressureOnClick?: () => void;
   reactionOnClick?: (reaction_id: string) => void;
   // Whether we need to show the number of the reaction or not
-  detailedReactions?: boolean; 
+  detailedReactions?: boolean;
 };
 
 export const GasmixParser = (props: GasmixParserProps, context) => {
@@ -110,7 +110,7 @@ export const GasmixParser = (props: GasmixParserProps, context) => {
                     onClick={() => reactionOnClick(reaction[0])}
                   />
                 </Box>
-              ) : (reaction[1])
+              ) : (<div>{reaction[1]}</div>)
             )
             : 'No reactions detected'}
         </LabeledList.Item>

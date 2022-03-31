@@ -1163,14 +1163,6 @@
 /obj/item/stock_parts/matter_bin,
 /turf/open/floor/iron/airless,
 /area/ruin/space/derelict/bridge/access)
-"fB" = (
-/obj/structure/table,
-/obj/item/stock_parts/cell{
-	charge = 100;
-	maxcharge = 15000
-	},
-/turf/open/floor/iron/airless,
-/area/ruin/space/derelict/bridge/access)
 "fC" = (
 /turf/template_noop,
 /area/ruin/space/derelict/bridge/access)
@@ -2527,22 +2519,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/ruin/space/derelict/atmospherics)
-"lN" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored{
-	chamber_id = "ks13"
-	},
-/turf/open/floor/engine/air{
-	initial_gas_mix = "o2=20000;n2=80000;TEMP=293.15"
-	},
-/area/ruin/space/derelict/atmospherics)
-"lO" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/monitored{
-	chamber_id = "ks13"
-	},
-/turf/open/floor/engine/air{
-	initial_gas_mix = "o2=20000;n2=80000;TEMP=293.15"
-	},
-/area/ruin/space/derelict/atmospherics)
 "lP" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Atmospherics Access";
@@ -3165,14 +3141,6 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/derelict/bridge)
-"pZ" = (
-/obj/machinery/air_sensor{
-	chamber_id = "ks13"
-	},
-/turf/open/floor/engine/air{
-	initial_gas_mix = "o2=20000;n2=80000;TEMP=293.15"
-	},
-/area/ruin/space/derelict/atmospherics)
 "rC" = (
 /obj/structure/closet/crate,
 /obj/item/stack/sheet/mineral/titanium{
@@ -3192,6 +3160,14 @@
 /obj/item/wallframe/airalarm,
 /turf/open/floor/plating/airless,
 /area/ruin/space/derelict/atmospherics)
+"ti" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored{
+	chamber_id = "ks13"
+	},
+/turf/open/floor/engine/air{
+	initial_gas_mix = "o2=20000;n2=80000;TEMP=293.15"
+	},
+/area/ruin/space/derelict/atmospherics)
 "tS" = (
 /turf/template_noop,
 /area/ruin/unpowered/no_grav)
@@ -3205,6 +3181,12 @@
 /obj/effect/spawner/random/maintenance,
 /turf/open/floor/iron,
 /area/ruin/space/derelict/bridge/access)
+"uD" = (
+/obj/machinery/computer/atmos_control/noreconnect{
+	atmos_chambers = list("ks13" = "Air Supply")
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/derelict/atmospherics)
 "vf" = (
 /obj/structure/grille,
 /turf/open/floor/plating/airless,
@@ -3393,6 +3375,11 @@
 /obj/structure/grille,
 /turf/open/floor/plating/airless,
 /area/ruin/space/derelict/atmospherics)
+"EU" = (
+/obj/structure/table,
+/obj/item/stock_parts/cell/high,
+/turf/open/floor/iron/airless,
+/area/ruin/space/derelict/bridge/access)
 "FU" = (
 /obj/structure/table,
 /obj/structure/window/reinforced{
@@ -3520,12 +3507,6 @@
 "Lv" = (
 /turf/closed/wall,
 /area/template_noop)
-"LT" = (
-/obj/machinery/computer/atmos_control/noreconnect{
-	atmos_chambers = list("ks13" = "Air Supply")
-	},
-/turf/open/floor/plating/airless,
-/area/ruin/space/derelict/atmospherics)
 "LX" = (
 /obj/machinery/power/smes/engineering{
 	charge = 0
@@ -3575,6 +3556,14 @@
 /obj/effect/spawner/random/maintenance/three,
 /turf/open/floor/iron,
 /area/ruin/space/derelict/arrival)
+"NX" = (
+/obj/machinery/air_sensor{
+	chamber_id = "ks13"
+	},
+/turf/open/floor/engine/air{
+	initial_gas_mix = "o2=20000;n2=80000;TEMP=293.15"
+	},
+/area/ruin/space/derelict/atmospherics)
 "Ob" = (
 /obj/item/clothing/head/helmet/space/eva,
 /turf/open/floor/iron/airless,
@@ -3643,6 +3632,14 @@
 	icon_state = "damaged2"
 	},
 /area/ruin/space/derelict/hallway/primary/port)
+"QV" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/monitored{
+	chamber_id = "ks13"
+	},
+/turf/open/floor/engine/air{
+	initial_gas_mix = "o2=20000;n2=80000;TEMP=293.15"
+	},
+/area/ruin/space/derelict/atmospherics)
 "QW" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/maintenance,
@@ -8033,7 +8030,7 @@ gk
 lv
 lv
 lv
-LT
+uD
 ls
 lt
 lt
@@ -8144,7 +8141,7 @@ go
 go
 gk
 lw
-lN
+ti
 Qt
 PR
 MS
@@ -8256,8 +8253,8 @@ gc
 go
 go
 gk
-pZ
-lO
+NX
+QV
 ES
 VV
 mk
@@ -10374,7 +10371,7 @@ ZB
 ZB
 ZB
 cs
-fB
+EU
 fx
 fx
 fS
