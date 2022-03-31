@@ -74,7 +74,7 @@
 
 	check_atmos()
 
-	if(prob(0.004) && icon == 'icons/obj/doors/doorfireglass.dmi')
+	if(prob(0.000) && icon == 'icons/obj/doors/doorfireglass.dmi')//	SKYRAT EDIT: 0.004 chance to 0.000
 		base_icon_state = "sus"
 		desc += " This one looks a bit sus..."
 
