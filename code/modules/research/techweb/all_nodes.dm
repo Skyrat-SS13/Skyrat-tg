@@ -326,6 +326,9 @@
 		"chem_dispenser",
 		"chem_heater",
 		"chem_mass_spec",
+		//SKYRAT EDIT - RESEARCH DESIGNS
+		"smartdartgun",
+		//SKYRAT EDIT - END
 		"chem_master",
 		"chem_pack",
 		"crewpinpointerprox",
