@@ -1,4 +1,5 @@
 #define LENGTH_LONGEST_LINK 29 //set to the length to the char length of the longest link
+#define LENGTH_LONGEST_EXTENSION 4 //set to the length of the longest file extension
 
 /datum/preference/text/headshot
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
@@ -19,7 +20,7 @@
 	if(!findtext(value, "https://", 1, 9))
 		to_chat(usr, span_warning("You need \"https://\" in the link!"))
 		return
-	if(!findtext(value, end_regex))
+	if(!findtext(value, end_regex, abs(LENGTH_LONGEST_EXTENSION - length(value)), length(value)))
 		to_chat(usr, span_warning("You need either \".png\", \".jpg\", or \".jpeg\" in the link!"))
 		return
 	if(!findtext(value, link_regex, 1, LENGTH_LONGEST_LINK))
@@ -44,3 +45,4 @@
 	return ..()
 
 #undef LENGTH_LONGEST_LINK
+#undef LENGTH_LONGEST_EXTENSION
