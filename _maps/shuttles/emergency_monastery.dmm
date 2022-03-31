@@ -520,19 +520,6 @@
 /obj/structure/window/reinforced,
 /turf/open/space/basic,
 /area/shuttle/escape)
-"gL" = (
-/obj/machinery/light/small/directional/east,
-/obj/machinery/door/window/northright{
-	dir = 2;
-	name = "Curator Desk Door";
-	req_access_txt = "37"
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/escape)
 "gW" = (
 /obj/structure/closet/crate/bin,
 /turf/open/floor/iron,
@@ -869,6 +856,21 @@
 /obj/machinery/meter,
 /turf/open/floor/plating,
 /area/shuttle/escape)
+"lv" = (
+/obj/machinery/light/small/directional/west,
+/obj/machinery/door/window/right/directional/north{
+	base_state = "left";
+	dir = 2;
+	icon_state = "left";
+	name = "Curator Desk Door";
+	req_access_txt = "37"
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
 "lB" = (
 /turf/open/floor/iron/chapel{
 	dir = 8
@@ -1001,17 +1003,19 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
-"nK" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/tinted/fulltile,
-/turf/open/floor/iron/dark,
-/area/shuttle/escape)
-"nO" = (
-/obj/machinery/door/window/eastleft{
+"nC" = (
+/obj/machinery/door/window/left/directional/east{
+	base_state = "right";
 	dir = 1;
+	icon_state = "right";
 	name = "Coffin Storage";
 	req_one_access_txt = "22"
 	},
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
+"nK" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/tinted/fulltile,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "nQ" = (
@@ -1438,11 +1442,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
-"ub" = (
-/obj/structure/table/wood,
-/obj/machinery/computer/libraryconsole/bookmanagement,
-/turf/open/floor/iron/dark,
-/area/shuttle/escape)
 "uc" = (
 /obj/structure/bookcase/random/religion,
 /obj/machinery/light/small/directional/north,
@@ -1618,15 +1617,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
-"wz" = (
-/obj/machinery/mass_driver/chapelgun,
-/obj/machinery/door/window/eastleft{
-	dir = 8;
-	name = "Mass Driver"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/dark,
-/area/shuttle/escape)
 "wG" = (
 /obj/structure/chair,
 /turf/open/misc/asteroid,
@@ -1696,6 +1686,15 @@
 "xB" = (
 /obj/machinery/vending/wardrobe/chap_wardrobe,
 /turf/open/floor/carpet,
+/area/shuttle/escape)
+"xP" = (
+/obj/machinery/mass_driver/chapelgun,
+/obj/machinery/door/window/left/directional/east{
+	dir = 8;
+	name = "Mass Driver"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "xX" = (
 /obj/effect/turf_decal/stripes/line{
@@ -1830,21 +1829,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/escape)
-"zj" = (
-/obj/machinery/light/small/directional/west,
-/obj/machinery/door/window/northright{
-	base_state = "left";
-	dir = 2;
-	icon_state = "left";
-	name = "Curator Desk Door";
-	req_access_txt = "37"
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/escape)
 "zm" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
@@ -1900,6 +1884,14 @@
 /obj/machinery/light/small/directional/east,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
+"zS" = (
+/obj/machinery/door/window/left/directional/east{
+	dir = 1;
+	name = "Coffin Storage";
+	req_one_access_txt = "22"
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "zU" = (
@@ -2076,6 +2068,15 @@
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/grass,
+/area/shuttle/escape)
+"CP" = (
+/obj/machinery/door/window/right/directional/north{
+	base_state = "left";
+	icon_state = "left";
+	name = "Secure Art Exhibit";
+	req_access_txt = "37"
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "CR" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
@@ -2569,6 +2570,19 @@
 	},
 /turf/open/floor/grass,
 /area/shuttle/escape)
+"Jw" = (
+/obj/machinery/light/small/directional/east,
+/obj/machinery/door/window/right/directional/north{
+	dir = 2;
+	name = "Curator Desk Door";
+	req_access_txt = "37"
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
 "Jy" = (
 /obj/machinery/light/small/directional/north,
 /obj/effect/turf_decal/tile/yellow,
@@ -2666,16 +2680,6 @@
 /obj/item/plate,
 /obj/item/kitchen/fork,
 /turf/open/misc/asteroid,
-/area/shuttle/escape)
-"Kw" = (
-/obj/machinery/door/window/eastleft{
-	base_state = "right";
-	dir = 1;
-	icon_state = "right";
-	name = "Coffin Storage";
-	req_one_access_txt = "22"
-	},
-/turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "KE" = (
 /obj/machinery/airalarm/directional/north,
@@ -2806,13 +2810,6 @@
 /obj/machinery/light/small/directional/west,
 /obj/item/instrument/violin,
 /turf/open/floor/iron/grimy,
-/area/shuttle/escape)
-"Mc" = (
-/obj/machinery/door/window/northright{
-	name = "Secure Art Exhibit";
-	req_access_txt = "37"
-	},
-/turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "Md" = (
 /obj/machinery/light/small/directional/east,
@@ -2949,6 +2946,13 @@
 	pixel_x = 32
 	},
 /obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
+"No" = (
+/obj/machinery/door/window/right/directional/north{
+	name = "Secure Art Exhibit";
+	req_access_txt = "37"
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "Np" = (
@@ -3779,6 +3783,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
+"WY" = (
+/obj/structure/table/wood,
+/obj/machinery/computer/libraryconsole/bookmanagement,
+/turf/open/floor/iron/dark,
+/area/shuttle/escape)
 "Xb" = (
 /obj/structure/table/wood,
 /obj/item/kirbyplants{
@@ -3993,15 +4002,6 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/escape)
-"ZP" = (
-/obj/machinery/door/window/northright{
-	base_state = "left";
-	icon_state = "left";
-	name = "Secure Art Exhibit";
-	req_access_txt = "37"
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
@@ -4718,7 +4718,7 @@ Nh
 Nf
 nr
 Gy
-nO
+zS
 BX
 Oi
 jx
@@ -4888,7 +4888,7 @@ oa
 eQ
 Si
 Ti
-wz
+xP
 Xs
 jn
 JG
@@ -5128,7 +5128,7 @@ mG
 kh
 nr
 Gy
-Kw
+nC
 BX
 kn
 jx
@@ -5975,7 +5975,7 @@ Om
 ar
 TR
 jx
-zj
+lv
 QH
 zE
 nr
@@ -6543,13 +6543,13 @@ Lu
 Am
 jx
 jx
-ub
+WY
 SJ
 SJ
 kt
 UK
 jx
-gL
+Jw
 QH
 zE
 nr
@@ -6941,7 +6941,7 @@ Na
 eQ
 eQ
 eQ
-ZP
+CP
 Qw
 yc
 Ho
@@ -7023,7 +7023,7 @@ eQ
 eQ
 eQ
 eQ
-Mc
+No
 bu
 yc
 Ho

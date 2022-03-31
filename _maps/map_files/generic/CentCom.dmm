@@ -1184,11 +1184,6 @@
 /obj/machinery/photocopier,
 /turf/open/floor/catwalk_floor,
 /area/centcom/holding)
-"ew" = (
-/obj/structure/table/wood,
-/obj/machinery/computer/libraryconsole/bookmanagement,
-/turf/open/floor/carpet/black,
-/area/centcom/holding)
 "ex" = (
 /obj/effect/turf_decal/tile/yellow/half,
 /obj/effect/turf_decal/tile/yellow/half{
@@ -3510,14 +3505,6 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/supply)
-"mh" = (
-/obj/machinery/door/window/northright{
-	dir = 4;
-	name = "Security Desk";
-	req_access_txt = "103"
-	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/centcom/evacuation/ship)
 "mi" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -4358,6 +4345,11 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/centcom/control)
+"oY" = (
+/obj/structure/table/wood,
+/obj/machinery/computer/libraryconsole/bookmanagement,
+/turf/open/floor/carpet/black,
+/area/centcom/holding)
 "oZ" = (
 /obj/structure/closet/secure_closet/freezer/meat/open,
 /obj/item/food/fishmeat,
@@ -9089,6 +9081,21 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/centcom/ferry)
+"Go" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/shower{
+	pixel_y = 16
+	},
+/obj/structure/curtain,
+/obj/machinery/door/window/brigdoor/left/directional/south{
+	name = "Shower"
+	},
+/obj/item/soap/deluxe,
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/turf/open/floor/iron/white,
+/area/centcom/admin)
 "Gr" = (
 /obj/structure/window/reinforced{
 	color = "#008000";
@@ -9283,21 +9290,6 @@
 	dir = 8
 	},
 /turf/open/floor/iron/grimy,
-/area/centcom/admin)
-"HW" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/shower{
-	pixel_y = 16
-	},
-/obj/structure/curtain,
-/obj/machinery/door/window/brigdoor/southleft{
-	name = "Shower"
-	},
-/obj/item/soap/deluxe,
-/obj/machinery/atmospherics/components/unary/vent_pump/on,
-/turf/open/floor/iron/white,
 /area/centcom/admin)
 "Ir" = (
 /obj/machinery/computer/emergency_shuttle{
@@ -11496,6 +11488,14 @@
 "QV" = (
 /turf/open/floor/iron/grimy,
 /area/centcom/admin)
+"QW" = (
+/obj/machinery/door/window/right/directional/north{
+	dir = 4;
+	name = "Security Desk";
+	req_access_txt = "103"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/centcom/evacuation/ship)
 "QY" = (
 /obj/item/storage/box/handcuffs,
 /obj/item/ammo_box/a357,
@@ -36427,7 +36427,7 @@ fO
 OT
 bX
 Sd
-ew
+oY
 Rv
 YC
 YC
@@ -37455,7 +37455,7 @@ fO
 Vo
 ba
 Sd
-ew
+oY
 Rv
 YC
 YC
@@ -40579,7 +40579,7 @@ KV
 Lg
 Lm
 Lg
-mh
+QW
 Lt
 KH
 KH
@@ -52321,7 +52321,7 @@ aa
 aa
 aa
 On
-HW
+Go
 fP
 On
 Qg
