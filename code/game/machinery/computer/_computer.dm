@@ -33,19 +33,26 @@
 	. = ..()
 	if(icon_keyboard)
 		if(machine_stat & NOPOWER)
-			return . + "[icon_keyboard]_off"
-		. += icon_keyboard
+			. += "[icon_keyboard]_off"
+		else
+			. += icon_keyboard
 
 	// This whole block lets screens ignore lighting and be visible even in the darkest room
-	var/overlay_state = icon_screen
 	if(machine_stat & BROKEN)
-		overlay_state = "[icon_state]_broken"
-		. += mutable_appearance(icon, overlay_state)
+		. += mutable_appearance(icon, "[icon_state]_broken")
 		return // If we don't do this broken computers glow in the dark.
 
+<<<<<<< HEAD
 	. += mutable_appearance(icon, overlay_state)
 	. += emissive_appearance(icon, overlay_state)
 */
+=======
+	if(machine_stat & NOPOWER) // Your screen can't be on if you've got no damn charge
+		return
+
+	. += mutable_appearance(icon, icon_screen)
+	. += emissive_appearance(icon, icon_screen)
+>>>>>>> 0c4af38f416 ([MDB IGNORE] TGUI library, plus polish (#65326))
 
 /obj/machinery/computer/power_change()
 	. = ..()
