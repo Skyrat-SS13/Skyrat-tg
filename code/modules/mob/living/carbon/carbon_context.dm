@@ -15,14 +15,21 @@
 	else if (human_user == src)
 		context[SCREENTIP_CONTEXT_LMB] = "Check injuries"
 
-		if (get_bodypart(human_user.zone_selected)?.get_bleed_rate())
+		if (get_bodypart(human_user.zone_selected)?.get_part_bleed_rate())
 			context[SCREENTIP_CONTEXT_CTRL_LMB] = "Grab limb"
 
 	if (human_user != src)
 		context[SCREENTIP_CONTEXT_RMB] = "Shove"
 
 		if (body_position == STANDING_UP)
-			context[SCREENTIP_CONTEXT_LMB] = "Comfort"
+			if(check_zone(user.zone_selected) == BODY_ZONE_HEAD && get_bodypart(BODY_ZONE_HEAD))
+				context[SCREENTIP_CONTEXT_LMB] = "Headpat"
+			/* SKYRAT REMOVAL START - No taill pulling
+			else if(check_zone(user.zone_selected) == BODY_ZONE_PRECISE_GROIN && !isnull(getorgan(/obj/item/organ/tail)))
+				context[SCREENTIP_CONTEXT_LMB] = "Pull tail"
+			*/ // SKYRAT REMOVAL END
+			else
+				context[SCREENTIP_CONTEXT_LMB] = "Hug"
 		else if (health >= 0 && !HAS_TRAIT(src, TRAIT_FAKEDEATH))
 			context[SCREENTIP_CONTEXT_LMB] = "Shake"
 		else

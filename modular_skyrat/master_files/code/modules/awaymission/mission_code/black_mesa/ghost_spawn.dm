@@ -33,13 +33,13 @@
 	outfit = /datum/outfit/security_guard
 	you_are_text = "You are a security guard in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
 
-/obj/item/clothing/under/rank/security/peacekeeper/junior/sol/blackmesa
+/obj/item/clothing/under/rank/security/peacekeeper/sol/traffic/blackmesa
 	name = "security guard uniform"
 	desc = "About that beer I owe'd ya!"
 
 /datum/outfit/security_guard
 	name = "Security Guard"
-	uniform = /obj/item/clothing/under/rank/security/peacekeeper/junior/sol/blackmesa
+	uniform = /obj/item/clothing/under/rank/security/peacekeeper/sol/traffic/blackmesa
 	head = /obj/item/clothing/head/helmet/blueshirt
 	gloves = /obj/item/clothing/gloves/color/black
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt
@@ -56,7 +56,7 @@
 /datum/id_trim/security_guard
 	assignment = "Security Guard"
 	trim_state = "trim_securityofficer"
-	access = list(ACCESS_SEC_DOORS, ACCESS_SECURITY, ACCESS_AWAY_SEC)
+	access = list(ACCESS_BRIG_ENTRANCE, ACCESS_SECURITY, ACCESS_AWAY_SEC)
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu
 	name = "HECU"
@@ -145,4 +145,4 @@
 /datum/id_trim/hecu
 	assignment = "HECU Soldier"
 	trim_state = "trim_securityofficer"
-	access = list(ACCESS_SEC_DOORS, ACCESS_SECURITY, ACCESS_AWAY_SEC)
+	access = list(ACCESS_BRIG_ENTRANCE, ACCESS_SECURITY, ACCESS_AWAY_SEC)

@@ -87,6 +87,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/ruin/space/derelict/solar_control)
+"aE" = (
+/obj/machinery/door/window/eastleft{
+	name = "Heads of Staff";
+	req_access_txt = "19"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/derelict/bridge/access)
 "aF" = (
 /obj/effect/spawner/structure/window/hollow/reinforced/end{
 	dir = 1
@@ -404,6 +411,10 @@
 /obj/machinery/door/airlock/external/ruin,
 /turf/open/floor/iron,
 /area/ruin/space/derelict/solar_control)
+"cc" = (
+/obj/machinery/door/window/southright,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/derelict/medical)
 "cd" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/airless,
@@ -909,13 +920,6 @@
 	icon_state = "damaged2"
 	},
 /area/ruin/space/derelict/singularity_engine)
-"eB" = (
-/obj/machinery/door/window/eastleft{
-	name = "Heads of Staff";
-	req_access_txt = "19"
-	},
-/turf/open/floor/iron,
-/area/ruin/space/derelict/bridge/access)
 "eC" = (
 /obj/structure/table,
 /obj/item/paicard,
@@ -1161,14 +1165,6 @@
 	pixel_y = -7
 	},
 /obj/item/stock_parts/matter_bin,
-/turf/open/floor/iron/airless,
-/area/ruin/space/derelict/bridge/access)
-"fB" = (
-/obj/structure/table,
-/obj/item/stock_parts/cell{
-	charge = 100;
-	maxcharge = 15000
-	},
 /turf/open/floor/iron/airless,
 /area/ruin/space/derelict/bridge/access)
 "fC" = (
@@ -2123,15 +2119,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/airless,
 /area/ruin/space/derelict/medical/chapel)
-"jN" = (
-/obj/machinery/door/window/southleft,
-/obj/structure/cable,
-/turf/open/floor/iron/white/airless,
-/area/ruin/space/derelict/medical)
-"jO" = (
-/obj/machinery/door/window/southright,
-/turf/open/floor/iron/white/airless,
-/area/ruin/space/derelict/medical)
 "jQ" = (
 /obj/machinery/door/airlock/research{
 	name = "Toxins Research";
@@ -2526,20 +2513,6 @@
 	dir = 8
 	},
 /turf/open/floor/plating/airless,
-/area/ruin/space/derelict/atmospherics)
-"lN" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber,
-/turf/open/floor/engine/air{
-	initial_gas_mix = "o2=20000;n2=80000;TEMP=293.15"
-	},
-/area/ruin/space/derelict/atmospherics)
-"lO" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos{
-	name = "engine outlet injector"
-	},
-/turf/open/floor/engine/air{
-	initial_gas_mix = "o2=20000;n2=80000;TEMP=293.15"
-	},
 /area/ruin/space/derelict/atmospherics)
 "lP" = (
 /obj/machinery/door/airlock/maintenance{
@@ -3163,8 +3136,8 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/derelict/bridge)
-"pZ" = (
-/obj/machinery/air_sensor/atmos/air_tank,
+"rw" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber,
 /turf/open/floor/engine/air{
 	initial_gas_mix = "o2=20000;n2=80000;TEMP=293.15"
 	},
@@ -3241,6 +3214,11 @@
 	icon_state = "damaged3"
 	},
 /area/ruin/space/derelict/se_solar)
+"wL" = (
+/obj/structure/table,
+/obj/item/stock_parts/cell/high,
+/turf/open/floor/iron/airless,
+/area/ruin/space/derelict/bridge/access)
 "xa" = (
 /obj/structure/table,
 /obj/effect/spawner/random/maintenance,
@@ -3319,6 +3297,11 @@
 /obj/item/melee/baton,
 /turf/open/floor/iron,
 /area/ruin/space/derelict/bridge/access)
+"AI" = (
+/obj/machinery/door/window/southleft,
+/obj/structure/cable,
+/turf/open/floor/iron/white/airless,
+/area/ruin/space/derelict/medical)
 "Ba" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/maintenance/two,
@@ -3388,6 +3371,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
 /obj/structure/grille,
 /turf/open/floor/plating/airless,
+/area/ruin/space/derelict/atmospherics)
+"EV" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos{
+	name = "engine outlet injector"
+	},
+/turf/open/floor/engine/air{
+	initial_gas_mix = "o2=20000;n2=80000;TEMP=293.15"
+	},
 /area/ruin/space/derelict/atmospherics)
 "FU" = (
 /obj/structure/table,
@@ -3616,6 +3607,12 @@
 	dir = 8
 	},
 /area/ruin/space/derelict/medical/chapel)
+"Qc" = (
+/obj/machinery/air_sensor/atmos/air_tank,
+/turf/open/floor/engine/air{
+	initial_gas_mix = "o2=20000;n2=80000;TEMP=293.15"
+	},
+/area/ruin/space/derelict/atmospherics)
 "Qt" = (
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/visible,
@@ -6995,7 +6992,7 @@ hY
 hX
 hX
 jD
-jN
+AI
 gc
 gc
 gc
@@ -7108,7 +7105,7 @@ hz
 hY
 hY
 jE
-jO
+cc
 go
 go
 go
@@ -8134,7 +8131,7 @@ go
 go
 gk
 lw
-lN
+rw
 Qt
 PR
 MS
@@ -8246,8 +8243,8 @@ gc
 go
 go
 gk
-pZ
-lO
+Qc
+EV
 ES
 VV
 mk
@@ -10364,7 +10361,7 @@ ZB
 ZB
 ZB
 cs
-fB
+wL
 fx
 fx
 fS
@@ -11150,7 +11147,7 @@ cs
 dF
 dF
 eq
-eB
+aE
 eJ
 eO
 dF

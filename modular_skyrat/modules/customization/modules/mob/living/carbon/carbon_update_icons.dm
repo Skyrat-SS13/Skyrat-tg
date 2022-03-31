@@ -36,6 +36,7 @@
 
 	apply_overlay(BODYPARTS_LAYER)
 	update_damage_overlays()
+	update_wound_overlays()
 
 /mob/living/carbon/proc/generate_icon_render_key()
 	for(var/X in bodyparts)

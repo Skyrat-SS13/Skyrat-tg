@@ -16,6 +16,12 @@
 	///Is this source self-replenishing?
 	var/refilling = FALSE
 
+/obj/structure/reagent_dispensers/Initialize(mapload)
+	. = ..()
+
+	if(icon_state == "water" && SSevents.holidays?[APRIL_FOOLS])
+		icon_state = "water_fools"
+
 /obj/structure/reagent_dispensers/examine(mob/user)
 	. = ..()
 	if(can_be_tanked)
@@ -88,6 +94,12 @@
 	desc = "A tank full of industrial welding fuel. Do not consume."
 	icon_state = "fuel"
 	reagent_id = /datum/reagent/fuel
+
+/obj/structure/reagent_dispensers/fueltank/Initialize(mapload)
+	. = ..()
+
+	if(SSevents.holidays?[APRIL_FOOLS])
+		icon_state = "fuel_fools"
 
 /obj/structure/reagent_dispensers/fueltank/boom(damage_type = BRUTE, guaranteed_violent = FALSE) //SKYRAT EDIT CHANGE
 	if(damage_type == BURN || guaranteed_violent)
