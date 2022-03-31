@@ -47,6 +47,7 @@
 /obj/vehicle/sealed/proc/mob_try_enter(mob/M)
 	if(!istype(M))
 		return FALSE
+<<<<<<< HEAD
 	if(occupant_amount() >= max_occupants)
 		return FALSE
 	//SKYRAT EDIT ADDITION
@@ -55,12 +56,20 @@
 		return FALSE
 	//SKYRAT EDIT END
 	if(do_after(M, get_enter_delay(M), src, timed_action_flags = IGNORE_HELD_ITEM))
+=======
+	if(do_after(M, get_enter_delay(M), src, timed_action_flags = IGNORE_HELD_ITEM, extra_checks = CALLBACK(src, .proc/enter_checks, M)))
+>>>>>>> 57ab486a10b (Humans no longer "enter" mechs twice (#65819))
 		mob_enter(M)
 		return TRUE
 	return FALSE
 
+/// returns enter do_after delay for the given mob in ticks
 /obj/vehicle/sealed/proc/get_enter_delay(mob/M)
 	return enter_delay
+
+///Extra checks to perform during the do_after to enter the vehicle
+/obj/vehicle/sealed/proc/enter_checks(mob/M)
+	return occupant_amount() < max_occupants
 
 /obj/vehicle/sealed/proc/mob_enter(mob/M, silent = FALSE)
 	if(!istype(M))
