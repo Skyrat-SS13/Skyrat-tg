@@ -105,6 +105,7 @@
 		/obj/item/clothing/head/hos/peacekeeper/sol = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/peacekeeper = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol = 1,
+		/obj/item/clothing/under/rank/security/head_of_security/skirt = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/alt = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/alt/skirt = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/imperial = 1,

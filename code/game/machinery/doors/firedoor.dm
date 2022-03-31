@@ -6,7 +6,7 @@
 /obj/machinery/door/firedoor
 	name = "firelock"
 	desc = "Apply crowbar."
-	icon = 'icons/obj/doors/doorfireglass.dmi'
+	icon = 'icons/obj/doors/Doorfireglass.dmi'
 	icon_state = "door_open"
 	opacity = FALSE
 	density = FALSE
@@ -73,10 +73,6 @@
 		merger_typecache = typecacheof(/obj/machinery/door/firedoor)
 
 	check_atmos()
-
-	if(prob(0.000) && icon == 'icons/obj/doors/doorfireglass.dmi')//	SKYRAT EDIT: 0.004 chance to 0.000
-		base_icon_state = "sus"
-		desc += " This one looks a bit sus..."
 
 	return INITIALIZE_HINT_LATELOAD
 
@@ -461,9 +457,9 @@
 /obj/machinery/door/firedoor/do_animate(animation)
 	switch(animation)
 		if("opening")
-			flick("[base_icon_state]_opening", src)
+			flick("door_opening", src)
 		if("closing")
-			flick("[base_icon_state]_closing", src)
+			flick("door_closing", src)
 
 /obj/machinery/door/firedoor/update_icon_state()
 	. = ..()
