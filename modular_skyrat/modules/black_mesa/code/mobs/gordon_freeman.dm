@@ -27,6 +27,8 @@
 /obj/structure/xen_pylon/freeman/register_mob(mob/living/simple_animal/hostile/blackmesa/xen/mob_to_register)
 	if(!istype(mob_to_register, /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/gordon_freeman))
 		return
+	if(mob_to_register in shielded_mobs)
+		return
 	shielded_mobs += mob_to_register
 	mob_to_register.shielded = TRUE
 	mob_to_register.shield_count++

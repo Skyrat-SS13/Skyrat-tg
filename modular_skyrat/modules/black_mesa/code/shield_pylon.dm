@@ -35,9 +35,9 @@
 
 /obj/structure/xen_pylon/Initialize(mapload)
 	. = ..()
-	for(var/mob/living/simple_animal/hostile/blackmesa/xen/iterating_mob in circle_range(src, shield_range))
+	for(var/mob/living/simple_animal/hostile/blackmesa/xen/iterating_mob in range(src, shield_range))
 		register_mob(iterating_mob)
-	for(var/turf/iterating_turf as anything in circle_range_turfs(src, shield_range))
+	for(var/turf/iterating_turf as anything in RANGE_TURFS(shield_range, src))
 		RegisterSignal(iterating_turf, COMSIG_ATOM_ENTERED, .proc/mob_entered_range)
 
 /obj/structure/xen_pylon/proc/mob_entered_range(datum/source, atom/movable/entered_atom)
@@ -48,6 +48,8 @@
 	register_mob(entered_xen_mob)
 
 /obj/structure/xen_pylon/proc/register_mob(mob/living/simple_animal/hostile/blackmesa/xen/mob_to_register)
+	if(mob_to_register in shielded_mobs)
+		return
 	shielded_mobs += mob_to_register
 	mob_to_register.shielded = TRUE
 	mob_to_register.shield_count++
@@ -60,13 +62,15 @@
 /obj/structure/xen_pylon/proc/mob_died(atom/movable/source, force)
 	SIGNAL_HANDLER
 	var/datum/beam/beam = shielded_mobs[source]
-	qdel(beam)
+	QDEL_NULL(beam)
 	shielded_mobs[source] = null
 
-/obj/structure/xen_pylon/proc/beam_died(datum/source, force)
+/obj/structure/xen_pylon/proc/beam_died(datum/beam/beam_to_kill)
 	SIGNAL_HANDLER
+	to_chat(world, beam_to_kill)
 	for(var/mob/living/simple_animal/hostile/blackmesa/xen/iterating_mob as anything in shielded_mobs)
-		if(shielded_mobs[iterating_mob] == source)
+		if(shielded_mobs[iterating_mob] == beam_to_kill)
+			to_chat(world, "PASS")
 			iterating_mob.lose_shield()
 			shielded_mobs[iterating_mob] = null
 			shielded_mobs -= iterating_mob
@@ -76,7 +80,7 @@
 		iterating_mob.lose_shield()
 		shielded_mobs -= iterating_mob
 		var/datum/beam/beam = shielded_mobs[iterating_mob]
-		qdel(beam)
+		QDEL_NULL(beam)
 		shielded_mobs[iterating_mob] = null
 	shielded_mobs = null
 	playsound(src, 'sound/magic/lightningbolt.ogg', 100, TRUE)
