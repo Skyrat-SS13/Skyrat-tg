@@ -128,5 +128,8 @@
 /obj/item/clothing/head/beret/sec/peacekeeper
 	greyscale_config_worn_teshari = /datum/greyscale_config/beret_badge/worn/teshari
 
+/obj/item/clothing/head/beret/sec/peacekeeper/white
+	greyscale_config_worn_teshari = /datum/greyscale_config/beret_badge/worn/teshari
+
 /obj/item/clothing/neck/ranger_poncho
 	greyscale_config_worn_teshari = /datum/greyscale_config/ranger_poncho/worn/teshari
