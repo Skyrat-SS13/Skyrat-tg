@@ -868,44 +868,16 @@
 	user.whisper(message, spans = spans)
 
 // Donation reward for CandleJax
-/obj/item/clothing/head/helmet/sec/peacekeeper/jax
-	name = "HepUnit standard helmet"
-	desc = "An adjustable riot-grade helmet which protects the user from most forms of blunt force trauma. It comes included with floodlights for deployment in darker environments, as well as a powered visor that can be energized with a current to conceal the users face."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
-
-	icon_state = "hephelmet-visor-nolight"
-	worn_icon_state = "hephelmet-visor-nolight"
-	actions_types = list(/datum/action/item_action/togglevisor)
-
-	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
-	flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES
-	visor_flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
-	visor_flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES
-	var/visor = TRUE
-
-/datum/action/item_action/togglevisor
-	name = "Adjust visor"
-
-/obj/item/clothing/head/helmet/sec/peacekeeper/jax/ui_action_click(mob/living/carbon/user, datum/action)
-	. = ..()
-
-	if(istype(action, /datum/action/item_action/togglevisor))
-		visor = !visor
-		if(visor)
-			flags_inv = HIDEHAIR | HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
-		else
-			flags_inv = HIDEHAIR
-		update_icon()
-
-		if(user)
-			user.head_update(src, forced = 1)
-			user.update_action_buttons_icon()
-
-/obj/item/clothing/head/helmet/sec/peacekeeper/jax/update_icon_state()
-	. = ..()
-	icon_state = "hephelmet-[visor ? "visor" : "novisor"]-[attached_light?.on?"light":"nolight"]"
-	worn_icon_state = icon_state
+/obj/item/clothing/shoes/wheelys/funky
+	name = "Special-Edition Rainbow-Lightup Wheely-Heels"
+	desc = "Uses patented retractable wheel technology. Features Drawers-Brand light-up technology! Also, like, really comfy."
+	worn_icon_state = "wheelys_funks"
+	icon_state = "sneakers"
+	worn_icon = 'modular_skyrat/master_files/icons/mob/large-worn-icons/64x64/feet.dmi'
+	worn_x_dimension = 64
+	worn_y_dimension = 64
+	clothing_flags = LARGE_WORN_ICON
+	actions_types = list(/datum/action/item_action/wheelys)
 
 // Donation reward for Raxraus
 /obj/item/clothing/under/rax_turtleneck

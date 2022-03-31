@@ -101,11 +101,10 @@
 	item_path = /obj/item/clothing/glasses/welding/goldengoggles
 	ckeywhitelist = list("goldenalpharex")
 
-/datum/loadout_item/head/hephelmet
-	name = "HepUnit Standard Helmet"
-	item_path = /obj/item/clothing/head/helmet/sec/peacekeeper/jax
+/datum/loadout_item/shoes/funksheels
+	name = "Super-Cool Heelies"
+	item_path = /obj/item/clothing/shoes/wheelys/funky
 	ckeywhitelist = list("candlejax")
-	restricted_roles = list(JOB_VANGUARD_OPERATIVE,JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/head/emissionhelm
 	name = "Emission's Helmet"
