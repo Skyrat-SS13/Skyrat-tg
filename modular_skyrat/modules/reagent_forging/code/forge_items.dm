@@ -248,11 +248,13 @@
 /obj/item/arrow_spawner
 	name = "arrow spawner"
 	desc = "You shouldn't see this."
+	/// the amount of arrows that are spawned from the spawner
+	var/spawning_amount = 4
 
 /obj/item/arrow_spawner/Initialize(mapload)
 	. = ..()
 	var/turf/src_turf = get_turf(src)
-	for(var/i in 1 to 4)
+	for(var/i in 1 to spawning_amount)
 		new /obj/item/ammo_casing/caseless/arrow/wood/forged(src_turf)
 	qdel(src)
 
