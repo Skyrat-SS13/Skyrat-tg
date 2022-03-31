@@ -16,6 +16,10 @@
 	name = "Beret Worn - Vox"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/beret_vox.dmi'
 
+/datum/greyscale_config/beret/worn/teshari
+	name = "Beret Worn - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/beret_teshari.dmi'
+
 /datum/greyscale_config/beret_badge
 	name = "Beret With Badge"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/beret.dmi'
@@ -28,6 +32,10 @@
 /datum/greyscale_config/beret_badge/worn/vox
 	name = "Beret With Badge Worn - Vox"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/beret_vox.dmi'
+
+/datum/greyscale_config/beret_badge/worn/teshari
+	name = "Beret With Badge Worn - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/beret_teshari.dmi'
 
 /datum/greyscale_config/beret_badge_fancy
 	name = "Beret With Fancy Badge"
@@ -44,14 +52,6 @@
 
 /datum/greyscale_config/beret_badge_fancy/worn/teshari
 	name = "Beret With Fancy Badge Worn - Teshari"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/beret_teshari.dmi'
-
-/datum/greyscale_config/beret_badge/worn/teshari
-	name = "Beret With Badge Worn - Teshari"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/beret_teshari.dmi'
-
-/datum/greyscale_config/beret/worn/teshari
-	name = "Beret Worn - Teshari"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/beret_teshari.dmi'
 
 //MUSHROOM CAP
@@ -118,10 +118,9 @@
 	name = "Ranger Poncho Worn"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/ranger_poncho/ranger_poncho_worn.json'
 
-/datum/greyscale_config/ranger_poncho/teshari
+/datum/greyscale_config/ranger_poncho/worn/teshari
 	name = "Ranger Poncho Worn - Teshari"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/ranger_poncho_teshari.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/ranger_poncho/ranger_poncho_worn.json'
 
 // CLOAKS
 /datum/greyscale_config/cloak
