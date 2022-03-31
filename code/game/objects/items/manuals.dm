@@ -310,18 +310,9 @@
 	//desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations." //ORIGINAL
 	desc = "A set of Nanotrasen regulations for keeping law and order on their space stations." //SKYRAT EDIT CHANGE
 	icon_state = "bookSpaceLaw"
-<<<<<<< HEAD
-	author = "Nanotrasen"
-	//title = "Space Law" //ORIGINAL
-	title = "Corporate Regulations" //SKYRAT EDIT CHANGE
-	//page_link = "Space_Law" //ORIGINAL
-	page_link = "Corporate_Regulations" //SKYRAT EDIT CHANGE
-	skyrat_wiki = TRUE //SKYRAT EDIT ADDITION
-=======
 	starting_author = "Nanotrasen"
 	starting_title = "Space Law"
 	page_link = "Space_Law"
->>>>>>> 0c4af38f416 ([MDB IGNORE] TGUI library, plus polish (#65326))
 
 /obj/item/book/manual/wiki/security_space_law/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] pretends to read \the [src] intently... then promptly dies of laughter!"))
