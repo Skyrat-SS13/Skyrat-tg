@@ -1,5 +1,5 @@
 
-/obj/item/shockplant
+/obj/structure/shockplant
 	name = "electrical plant"
 	desc = "It glows with a warm buzz."
 	icon = 'modular_skyrat/modules/black_mesa/icons/plants.dmi'
@@ -20,12 +20,12 @@
 
 	COOLDOWN_DECLARE(shock_cooldown_timer)
 
-/obj/item/shockplant/Initialize(mapload)
+/obj/structure/shockplant/Initialize(mapload)
 	. = ..()
 	for(var/turf/open/iterating_turf as anything in circle_view_turfs(src, shock_range))
 		RegisterSignal(iterating_turf, COMSIG_ATOM_ENTERED, .proc/trigger)
 
-/obj/item/shockplant/proc/trigger(datum/source, atom/movable/entered_atom)
+/obj/structure/shockplant/proc/trigger(datum/source, atom/movable/entered_atom)
 	SIGNAL_HANDLER
 
 	if(!COOLDOWN_FINISHED(src, shock_cooldown_timer))
