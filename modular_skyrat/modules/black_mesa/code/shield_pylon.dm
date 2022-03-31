@@ -28,6 +28,7 @@
 	icon_state = "crystal_pylon"
 	max_integrity = 70
 	density = TRUE
+	anchored = TRUE
 	/// The range at which we provide shield support to a mob.
 	var/shield_range = 8
 	/// A list of mobs we are currently shielding with attached beams.
@@ -58,14 +59,15 @@
 	mob_to_register.update_appearance()
 	var/datum/beam/created_beam = Beam(mob_to_register, icon_state = "red_lightning", time = 10 MINUTES, maxdistance = (shield_range - 1))
 	shielded_mobs[mob_to_register] = created_beam
-	RegisterSignal(created_beam, COMSIG_PARENT_QDELETING, .proc/beam_died)
-	RegisterSignal(mob_to_register, COMSIG_PARENT_QDELETING, .proc/mob_died)
+	RegisterSignal(created_beam, COMSIG_PARENT_QDELETING, .proc/beam_died, override = TRUE)
+	RegisterSignal(mob_to_register, COMSIG_PARENT_QDELETING, .proc/mob_died, override = TRUE)
 
 /obj/structure/xen_pylon/proc/mob_died(atom/movable/source, force)
 	SIGNAL_HANDLER
 	var/datum/beam/beam = shielded_mobs[source]
 	QDEL_NULL(beam)
 	shielded_mobs[source] = null
+	shielded_mobs -= source
 
 /obj/structure/xen_pylon/proc/beam_died(datum/beam/beam_to_kill)
 	SIGNAL_HANDLER

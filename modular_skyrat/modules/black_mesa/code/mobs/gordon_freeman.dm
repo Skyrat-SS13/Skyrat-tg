@@ -22,7 +22,7 @@
 	loot = list(/obj/item/crowbar/freeman/ultimate, /obj/item/keycard/freeman_boss_exit)
 
 /obj/structure/xen_pylon/freeman
-	shield_range = 20
+	shield_range = 30
 	max_integrity = 300
 
 /obj/structure/xen_pylon/freeman/register_mob(mob/living/simple_animal/hostile/blackmesa/xen/mob_to_register)

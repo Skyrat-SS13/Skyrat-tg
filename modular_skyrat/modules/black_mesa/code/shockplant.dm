@@ -5,6 +5,7 @@
 	icon = 'modular_skyrat/modules/black_mesa/icons/plants.dmi'
 	icon_state = "electric_plant"
 	density = TRUE
+	anchored = TRUE
 	max_integrity = 200
 	light_range = 15
 	light_power = 0.5

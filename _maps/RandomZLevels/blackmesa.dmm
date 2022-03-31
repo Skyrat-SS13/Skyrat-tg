@@ -690,12 +690,6 @@
 /obj/structure/alien/weeds/xen,
 /turf/open/floor/iron/textured_large,
 /area/awaymission/black_mesa)
-"dG" = (
-/obj/machinery/conveyor/inverted/auto{
-	dir = 8
-	},
-/turf/open/floor/vault/alien,
-/area/awaymission/black_mesa/xen)
 "dI" = (
 /obj/machinery/modular_computer/console/preset/cargochat/science{
 	dir = 8
@@ -1506,9 +1500,7 @@
 /turf/open/floor/iron/textured_large,
 /area/awaymission/black_mesa)
 "ie" = (
-/obj/machinery/conveyor/inverted/auto{
-	dir = 1
-	},
+/obj/machinery/conveyor/auto,
 /turf/open/floor/vault/alien,
 /area/awaymission/black_mesa/xen)
 "if" = (
@@ -2211,7 +2203,7 @@
 /area/awaymission/black_mesa)
 "ly" = (
 /obj/structure/alien/weeds/xen,
-/obj/item/shockplant,
+/obj/structure/shockplant,
 /turf/open/floor/iron/smooth,
 /area/awaymission/black_mesa)
 "lz" = (
@@ -3970,7 +3962,7 @@
 /turf/open/floor/iron/dark,
 /area/awaymission/black_mesa)
 "uj" = (
-/obj/item/shockplant,
+/obj/structure/shockplant,
 /turf/open/misc/xen,
 /area/awaymission/black_mesa/xen)
 "uk" = (
@@ -4123,7 +4115,7 @@
 /turf/open/floor/iron/smooth_large,
 /area/awaymission/black_mesa)
 "uM" = (
-/obj/structure/closet/supplypod/pre_open,
+/obj/structure/pod,
 /turf/open/misc/xen,
 /area/awaymission/black_mesa/xen)
 "uN" = (
@@ -7363,9 +7355,7 @@
 	id = "factory_lower_start";
 	id_target = "factory_lower_end"
 	},
-/obj/machinery/conveyor/inverted/auto{
-	dir = 1
-	},
+/obj/machinery/conveyor/auto,
 /turf/open/floor/vault/alien,
 /area/awaymission/black_mesa/xen)
 "Lc" = (
@@ -7652,7 +7642,7 @@
 /turf/open/floor/mineral/titanium,
 /area/awaymission/black_mesa)
 "Mj" = (
-/obj/item/shockplant,
+/obj/structure/shockplant,
 /turf/open/water/beach/xen,
 /area/awaymission/black_mesa/xen)
 "Mm" = (
@@ -8035,12 +8025,12 @@
 /turf/open/floor/iron/textured_large,
 /area/awaymission/black_mesa)
 "Ob" = (
-/obj/machinery/conveyor/inverted/auto{
-	dir = 8
-	},
 /obj/effect/bump_teleporter{
 	id_target = "factory_upper_start";
 	id = "factory_upper_end"
+	},
+/obj/machinery/conveyor/auto{
+	dir = 4
 	},
 /turf/open/floor/vault/alien,
 /area/awaymission/black_mesa/xen)
@@ -8862,9 +8852,7 @@
 	id = "factory_upper_start";
 	id_target = "factory_upper_end"
 	},
-/obj/machinery/conveyor/inverted/auto{
-	dir = 1
-	},
+/obj/machinery/conveyor/auto,
 /turf/open/floor/vault/alien,
 /area/awaymission/black_mesa/xen)
 "Sf" = (
@@ -9257,13 +9245,6 @@
 /obj/item/ammo_box/magazine/multi_sprite/ladon,
 /turf/open/floor/carpet/blue,
 /area/awaymission/black_mesa)
-"Uh" = (
-/obj/machinery/conveyor/inverted/auto{
-	dir = 8
-	},
-/obj/structure/marker_beacon/green,
-/turf/open/floor/vault/alien,
-/area/awaymission/black_mesa/xen)
 "Ui" = (
 /obj/structure/deployable_barricade/metal/plasteel,
 /turf/open/misc/ironsand,
@@ -9918,10 +9899,8 @@
 /turf/open/floor/plating,
 /area/awaymission/black_mesa)
 "Xb" = (
-/obj/machinery/conveyor/inverted/auto{
-	dir = 1
-	},
 /obj/effect/random_mob_placer/xen,
+/obj/machinery/conveyor/auto,
 /turf/open/floor/vault/alien,
 /area/awaymission/black_mesa/xen)
 "Xc" = (
@@ -10238,12 +10217,6 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/black_mesa)
-"YE" = (
-/obj/structure/xen_pylon{
-	pixel_y = 14
-	},
-/turf/closed/indestructible/rock/xen,
-/area/awaymission/black_mesa/xen)
 "YF" = (
 /obj/structure/fluff/bus/passable{
 	icon_state = "topdoor"
@@ -10449,10 +10422,10 @@
 	},
 /area/awaymission/black_mesa)
 "ZE" = (
-/obj/machinery/conveyor/inverted/auto{
-	dir = 8
-	},
 /obj/effect/random_mob_placer/xen,
+/obj/machinery/conveyor/auto{
+	dir = 4
+	},
 /turf/open/floor/vault/alien,
 /area/awaymission/black_mesa/xen)
 "ZF" = (
@@ -11396,7 +11369,7 @@ oE
 Fu
 Fu
 Fu
-uj
+Fu
 Fu
 Fu
 oE
@@ -21491,7 +21464,7 @@ rz
 rz
 oE
 oE
-YE
+oE
 oE
 oE
 oE
@@ -27450,7 +27423,7 @@ ie
 ie
 ie
 vq
-dG
+kE
 Fu
 Fu
 Fu
@@ -27706,8 +27679,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -27963,8 +27936,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Cy
@@ -28477,8 +28450,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -28734,8 +28707,8 @@ QU
 Fu
 Fu
 SK
-dG
-dG
+kE
+kE
 SK
 Fu
 Fu
@@ -28991,8 +28964,8 @@ QU
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 SG
 Jf
 Jf
@@ -29248,8 +29221,8 @@ QU
 Fu
 Cy
 Fu
-dG
-dG
+kE
+kE
 Qm
 md
 aq
@@ -29505,8 +29478,8 @@ QU
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Qm
 wQ
 md
@@ -29762,8 +29735,8 @@ QU
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Qm
 md
 aq
@@ -30276,8 +30249,8 @@ QU
 Fu
 Fu
 SK
-dG
-dG
+kE
+kE
 SK
 Fu
 Fu
@@ -30533,8 +30506,8 @@ QU
 Fu
 QU
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -30790,8 +30763,8 @@ QU
 QU
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -31047,8 +31020,8 @@ QU
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -31304,8 +31277,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -31561,8 +31534,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Cy
@@ -31818,8 +31791,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -32075,8 +32048,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -32589,8 +32562,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 SG
 Jf
 Jf
@@ -32846,8 +32819,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Qm
 md
 aq
@@ -33103,8 +33076,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Qm
 wQ
 md
@@ -33360,8 +33333,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Qm
 md
 aq
@@ -33617,8 +33590,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 SG
 Ev
 Ev
@@ -34131,8 +34104,8 @@ Fu
 Cy
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -34388,8 +34361,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -34645,8 +34618,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Cy
 Fu
@@ -34902,8 +34875,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -35159,8 +35132,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -35673,8 +35646,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -35930,8 +35903,8 @@ Fu
 Fu
 Fu
 SK
-dG
-dG
+kE
+kE
 SK
 Fu
 Fu
@@ -36187,8 +36160,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 SG
 Jf
 Jf
@@ -36444,8 +36417,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Qm
 md
 aq
@@ -36701,8 +36674,8 @@ Cy
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Qm
 wQ
 md
@@ -36958,8 +36931,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Qm
 md
 aq
@@ -37472,8 +37445,8 @@ Fu
 Fu
 Fu
 SK
-dG
-Uh
+kE
+kE
 SK
 Fu
 Fu
@@ -37729,8 +37702,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -37986,8 +37959,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -38243,8 +38216,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -38500,8 +38473,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Cy
@@ -39014,8 +38987,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -39271,8 +39244,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -39528,8 +39501,8 @@ Fu
 Fu
 Fu
 SK
-dG
-dG
+kE
+kE
 SK
 Fu
 Fu
@@ -39785,8 +39758,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 SG
 Jf
 Jf
@@ -40042,8 +40015,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Qm
 md
 aq
@@ -40299,8 +40272,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Qm
 wQ
 md
@@ -40556,8 +40529,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Qm
 md
 aq
@@ -40813,8 +40786,8 @@ GI
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 SG
 Ev
 Ev
@@ -41327,8 +41300,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -41584,8 +41557,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -41841,8 +41814,8 @@ Fu
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -42098,8 +42071,8 @@ oE
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -42355,8 +42328,8 @@ oE
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -42612,8 +42585,8 @@ oE
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Cy
@@ -42869,8 +42842,8 @@ oE
 Fu
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -43126,8 +43099,8 @@ oE
 oE
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -43640,8 +43613,8 @@ rz
 oE
 Fu
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Fu
@@ -43897,8 +43870,8 @@ rz
 oE
 oE
 Fu
-dG
-dG
+kE
+kE
 Fu
 Fu
 Cy
@@ -44154,8 +44127,8 @@ rz
 rz
 oE
 oE
-dG
-dG
+kE
+kE
 oE
 Fu
 Fu
@@ -44411,8 +44384,8 @@ rz
 rz
 rz
 oE
-dG
-dG
+kE
+kE
 oE
 oE
 oE
@@ -44668,8 +44641,8 @@ rz
 rz
 rz
 oE
-dG
-dG
+kE
+kE
 oE
 rz
 rz
@@ -44925,8 +44898,8 @@ rz
 rz
 rz
 oE
-dG
-dG
+kE
+kE
 oE
 rz
 rz
@@ -45182,8 +45155,8 @@ rz
 rz
 rz
 oE
-dG
-dG
+kE
+kE
 oE
 rz
 rz
@@ -45439,8 +45412,8 @@ rz
 rz
 rz
 oE
-dG
-dG
+kE
+kE
 oE
 rz
 rz
@@ -45696,8 +45669,8 @@ rz
 rz
 rz
 oE
-dG
-dG
+kE
+kE
 oE
 rz
 rz

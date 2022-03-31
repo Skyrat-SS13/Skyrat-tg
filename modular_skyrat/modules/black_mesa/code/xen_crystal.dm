@@ -6,6 +6,7 @@
 	light_power = 2
 	light_range = 4
 	density = TRUE
+	anchored = TRUE
 	/// Have we been harvested?
 	var/harvested = FALSE
 

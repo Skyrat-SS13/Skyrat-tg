@@ -54,12 +54,11 @@
 	// set icon_state to make it clear for mappers
 	icon_state = "markerlime-on"
 
-/obj/structure/closet/supplypod/pre_open
+/obj/structure/pod
 	name = "supply pod"
-	desc = "A pod sent in from outer space."
-	stay_after_drop = TRUE
-	style = STYLE_BLUE
+	desc = "Someone must have sent this a long way."
+	icon = 'modular_skyrat/modules/black_mesa/icons/structures.dmi'
+	icon_state = "pod"
+	pixel_x = SUPPLYPOD_X_OFFSET
+	anchored = TRUE
 
-/obj/structure/closet/supplypod/pre_open/Initialize(mapload, customStyle)
-	. = ..()
-	open_pod()
