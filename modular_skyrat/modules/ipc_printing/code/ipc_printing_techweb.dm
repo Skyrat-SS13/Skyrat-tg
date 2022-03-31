@@ -5,7 +5,7 @@
 	prereq_ids = list("basic_medical")
 	design_ids = list(
 		"ipc_stomach_design",
-		"ipc ears_design",
+		"ipc_ears_design",
 		"ipc_tongue_design",
 		"ipc_eyes_design",
 		"ipc_lungs_design",
