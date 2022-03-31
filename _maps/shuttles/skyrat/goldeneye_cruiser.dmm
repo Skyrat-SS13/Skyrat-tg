@@ -77,11 +77,11 @@
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/brig)
 "by" = (
-/obj/machinery/power/apc/auto_name/directional/north{
-	req_access_txt = "150"
-	},
 /obj/structure/cable,
 /obj/effect/spawner/random/entertainment/arcade,
+/obj/machinery/power/apc/auto_name/directional/north{
+	req_access = list(150)
+	},
 /turf/open/floor/iron,
 /area/shuttle/syndicate/cruiser/brig)
 "bO" = (
@@ -240,9 +240,6 @@
 /area/shuttle/syndicate/cruiser/hallway)
 "fq" = (
 /obj/structure/table/reinforced,
-/obj/machinery/power/apc/auto_name/directional/west{
-	req_access_txt = "150"
-	},
 /obj/structure/cable,
 /obj/machinery/firealarm{
 	dir = 1;
@@ -253,6 +250,9 @@
 /obj/item/clothing/under/syndicate/combat,
 /obj/item/clothing/mask/gas/syndicate,
 /obj/item/clothing/mask/gas/syndicate,
+/obj/machinery/power/apc/auto_name/directional/west{
+	req_access = list(150)
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/eva)
 "fV" = (
@@ -725,11 +725,11 @@
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
 "pQ" = (
-/obj/machinery/power/apc/auto_name/directional/north{
-	req_access_txt = "150"
-	},
 /obj/structure/cable,
 /obj/machinery/recharge_station,
+/obj/machinery/power/apc/auto_name/directional/north{
+	req_access = list(150)
+	},
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
 "qc" = (
@@ -881,11 +881,11 @@
 /obj/item/storage/belt/military,
 /obj/item/storage/belt/military,
 /obj/item/storage/belt/military,
-/obj/machinery/power/apc/auto_name/directional/south{
-	req_access_txt = "150"
-	},
 /obj/structure/cable,
 /obj/item/melee/baton,
+/obj/machinery/power/apc/auto_name/directional/south{
+	req_access = list(150)
+	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "ux" = (
@@ -1477,7 +1477,9 @@
 /area/shuttle/syndicate/cruiser/bridge)
 "Gq" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/south,
+/obj/machinery/power/apc/auto_name/directional/south{
+	req_access = list(150)
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "Gw" = (
@@ -1558,10 +1560,10 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/bridge)
 "Ie" = (
-/obj/machinery/power/apc/auto_name/directional/south{
-	req_access_txt = "150"
-	},
 /obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/south{
+	req_access = list(150)
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/medical)
 "Ii" = (
@@ -1948,7 +1950,6 @@
 	dir = 8;
 	icon_state = "ast_warn"
 	},
-/obj/structure/cable,
 /obj/machinery/light/red{
 	dir = 8;
 	icon_state = "tube"
@@ -1958,11 +1959,11 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "Pc" = (
-/obj/machinery/power/apc/auto_name/directional/south{
-	req_access_txt = "150"
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/power/apc/auto_name/directional/south{
+	req_access = list(150)
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/bridge)
 "Pe" = (
@@ -2222,11 +2223,11 @@
 	pixel_y = -32;
 	req_access_txt = "150"
 	},
-/obj/machinery/power/apc/auto_name/directional/south{
-	req_access_txt = "150"
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
+	},
+/obj/machinery/power/apc/auto_name/directional/south{
+	req_access = list(150)
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/airlock)
@@ -2248,12 +2249,12 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/bridge)
 "Sx" = (
-/obj/machinery/power/apc/auto_name/directional/north{
-	req_access_txt = "150"
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/power/apc/auto_name/directional/north{
+	req_access = list(150)
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "Sz" = (
@@ -2391,7 +2392,6 @@
 	icon_state = "ast_warn"
 	},
 /obj/structure/table/reinforced,
-/obj/structure/cable,
 /obj/item/storage/box/syndie_kit/imp_stealth,
 /obj/item/storage/box/syndie_kit/imp_stealth,
 /obj/item/suppressor,
