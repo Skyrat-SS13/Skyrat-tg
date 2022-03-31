@@ -1,14 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ak" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 4
-	},
-/obj/machinery/door/window/westright{
-	dir = 4;
-	name = "airlock"
-	},
-/turf/open/floor/iron/dark,
-/area/mine/mechbay)
 "an" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/spawner/west,
@@ -22,52 +12,57 @@
 "at" = (
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/underground/explored)
-"au" = (
-/obj/structure/chair/stool/directional/south,
-/obj/machinery/flasher/directional/west{
-	id = "GulagCell 1"
-	},
-/obj/structure/sign/poster/official/obey{
-	pixel_y = 32
-	},
+"aE" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+/obj/machinery/camera/directional/east{
+	c_tag = "Labor Camp Operations";
+	network = list("labor")
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"aR" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"aD" = (
-/turf/open/misc/asteroid/snow/icemoon,
-/area/icemoon/surface/outdoors/labor_camp)
-"aG" = (
-/obj/machinery/door/airlock/public/glass{
-	name = "Showers"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/freezer,
-/area/mine/laborcamp)
-"aP" = (
-/turf/closed/wall/r_wall,
-/area/mine/laborcamp)
-"aV" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"bm" = (
-/obj/structure/chair/stool/directional/west,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"by" = (
-/obj/machinery/mineral/processing_unit{
+/obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
+/obj/machinery/door/airlock/security/glass{
+	name = "Labor Camp Ultilities";
+	req_access_txt = "2"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"aW" = (
+/obj/structure/sign/warning/docking{
+	pixel_x = -32
+	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"bg" = (
+/obj/machinery/power/port_gen/pacman{
+	anchored = 1
+	},
+/turf/open/floor/iron/smooth,
+/area/mine/laborcamp/security)
+"bq" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/iron/white,
 /area/mine/laborcamp)
 "bz" = (
 /obj/effect/turf_decal/loading_area{
@@ -75,6 +70,19 @@
 	},
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/icemoon/underground/explored)
+"bC" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/freezer,
+/area/mine/laborcamp)
+"bE" = (
+/obj/structure/bed,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp)
 "bH" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -98,26 +106,48 @@
 	},
 /turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
-"bN" = (
+"cc" = (
+/obj/machinery/atmospherics/components/binary/pump/on{
+	dir = 8;
+	name = "Air to Distro"
+	},
+/obj/structure/sink{
+	pixel_y = 20
+	},
+/obj/item/mop,
+/obj/item/reagent_containers/glass/bucket,
+/turf/open/floor/iron/smooth,
+/area/mine/laborcamp/security)
+"cd" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/machinery/camera/directional/south{
+	c_tag = "Labor Camp Security Office";
+	network = list("labor")
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"cj" = (
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"bX" = (
-/obj/machinery/power/port_gen/pacman{
-	anchored = 1
-	},
 /turf/open/floor/iron/smooth,
 /area/mine/laborcamp/security)
 "cm" = (
 /obj/structure/closet/crate,
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/underground/explored)
-"cv" = (
-/obj/machinery/computer/security/labor,
-/obj/structure/cable,
+"cs" = (
+/obj/machinery/light/directional/west,
+/obj/structure/closet/secure_closet/freezer/gulag_fridge,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
 	},
 /turf/open/floor/iron,
 /area/mine/laborcamp/security)
@@ -128,42 +158,21 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/mine/eva)
-"cA" = (
-/obj/machinery/vending/security{
-	onstation_override = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
+"cF" = (
+/obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"cJ" = (
-/obj/machinery/door/airlock{
-	name = "Unisex Restroom"
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
 /area/mine/laborcamp)
-"cP" = (
-/obj/machinery/door/airlock{
-	name = "Restroom"
-	},
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"cQ" = (
+"cG" = (
+/obj/machinery/light/small/directional/north,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/tomato,
-/obj/item/seeds/onion,
-/obj/item/seeds/garlic,
-/obj/item/seeds/carrot,
-/obj/item/seeds/ambrosia,
-/obj/item/seeds/apple,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "cW" = (
@@ -176,28 +185,38 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/mine/eva)
-"da" = (
-/obj/effect/turf_decal/bot,
-/obj/structure/ore_box,
+"dd" = (
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/plating/snowed/icemoon,
+/area/mine/eva)
+"dv" = (
+/obj/machinery/door/airlock/public/glass{
+	id_tag = "gulag2";
+	name = "Cell 2"
+	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
-"dd" = (
-/obj/machinery/light/small/directional/north,
-/turf/open/floor/plating/snowed/icemoon,
-/area/mine/eva)
-"dk" = (
-/obj/structure/rack,
-/obj/item/storage/bag/ore,
-/obj/item/flashlight,
-/obj/item/pickaxe,
-/obj/item/clothing/glasses/meson,
-/obj/item/mining_scanner,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/hooded/wintercoat,
+"dL" = (
+/obj/machinery/door/airlock/highsecurity{
+	name = "Labor Camp Monitoring";
+	req_access_txt = "2"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/iron,
+/area/mine/laborcamp)
+"dM" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/item/seeds/soya,
+/turf/open/floor/iron/dark,
 /area/mine/laborcamp)
 "ea" = (
 /obj/effect/turf_decal/tile/brown,
@@ -207,52 +226,13 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark/side,
 /area/mine/eva)
-"ec" = (
-/obj/structure/table,
-/obj/item/toy/cards/deck,
+"ef" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"ee" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/directional/south,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"ej" = (
-/obj/machinery/washing_machine,
-/obj/effect/turf_decal/tile/blue{
+/obj/effect/turf_decal/loading_area{
 	dir = 8
 	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/cafeteria,
-/area/mine/laborcamp)
-"ep" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/machinery/light/directional/north,
-/obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/north,
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"ey" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
-"ez" = (
-/obj/item/kirbyplants/random,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
 "eL" = (
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/brown{
@@ -268,13 +248,6 @@
 	},
 /turf/open/floor/iron/dark/side,
 /area/mine/eva)
-"eQ" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
-/turf/open/floor/iron/smooth,
-/area/mine/laborcamp/security)
 "eR" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -319,36 +292,26 @@
 /obj/machinery/power/apc/auto_name/directional/west,
 /turf/open/floor/iron/dark,
 /area/mine/mechbay)
-"fo" = (
-/obj/machinery/hydroponics/constructable,
-/obj/effect/turf_decal/tile/green{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/green,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/seeds/redbeet,
-/obj/machinery/light/directional/east,
-/turf/open/floor/iron/dark,
-/area/mine/laborcamp)
+"fr" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
 "fF" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/icemoon/underground/explored)
-"fN" = (
+"fP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/directional/east,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"fQ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/airlock/public/glass{
-	id_tag = "cellblock1";
-	name = "Labor Camp Operations"
+/obj/item/kirbyplants{
+	icon_state = "plant-05"
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/camera/directional/west{
+	c_tag = "Labor Camp Cellblock";
+	network = list("labor")
+	},
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "fR" = (
@@ -366,19 +329,10 @@
 /obj/structure/railing,
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
-"fV" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
+"fW" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
-/area/mine/laborcamp)
-"ge" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/freezer,
 /area/mine/laborcamp)
 "gf" = (
 /obj/structure/cable,
@@ -392,49 +346,31 @@
 	},
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/underground/explored)
-"gi" = (
-/obj/structure/table,
-/obj/structure/bedsheetbin,
-/obj/effect/turf_decal/tile/blue{
+"gj" = (
+/obj/structure/chair{
 	dir = 8
 	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"gp" = (
+/obj/machinery/camera/directional/west{
+	c_tag = "Labor Camp External West";
+	network = list("labor")
 	},
-/turf/open/floor/iron/cafeteria,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/mine/laborcamp)
-"gs" = (
-/obj/effect/turf_decal/tile/green{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/green{
-	dir = 4
+"gE" = (
+/obj/structure/sign/poster/official/obey{
+	pixel_y = 32
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/mine/laborcamp)
-"gA" = (
-/obj/machinery/light/small/directional/east,
-/turf/open/floor/plating,
+/turf/open/floor/iron,
 /area/mine/laborcamp)
 "gI" = (
 /obj/effect/gibspawner/human,
 /turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
-"gL" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/structure/closet/secure_closet/labor_camp_security,
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"gQ" = (
-/obj/structure/chair/office{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
 "gU" = (
 /obj/structure/stairs/north,
 /obj/structure/railing{
@@ -442,16 +378,6 @@
 	},
 /turf/open/floor/iron,
 /area/mine/eva)
-"gV" = (
-/obj/machinery/door/airlock/public/glass{
-	id_tag = "gulag3";
-	name = "Cell 3"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
 "gW" = (
 /obj/structure/fluff/tram_rail{
 	pixel_y = 17
@@ -469,48 +395,27 @@
 	},
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/icemoon/underground/explored)
-"hb" = (
-/obj/machinery/door/airlock/medical/glass{
-	name = "Infirmary"
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/white,
-/area/mine/laborcamp)
-"hk" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/mob/living/simple_animal/bot/secbot/beepsky{
-	desc = "Powered by the tears and sweat of laborers.";
-	name = "Prison Ofitser"
-	},
+"ha" = (
 /obj/structure/cable,
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"ho" = (
-/turf/open/floor/plating,
-/area/mine/laborcamp/security)
-"hs" = (
-/obj/machinery/atmospherics/components/binary/pump/on{
-	dir = 8;
-	name = "Air to Distro"
+/obj/machinery/power/smes{
+	charge = 5e+006
 	},
-/obj/structure/sink{
-	pixel_y = 20
+/obj/machinery/camera/directional/south{
+	c_tag = "Labor Camp Utilities";
+	network = list("labor")
 	},
-/obj/item/mop,
-/obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/iron/smooth,
 /area/mine/laborcamp/security)
+"hb" = (
+/obj/structure/sign/poster/official/work_for_a_future{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"hn" = (
+/turf/closed/mineral/random/labormineral/ice,
+/area/icemoon/surface/outdoors/labor_camp)
 "hv" = (
 /obj/machinery/door/airlock/external{
 	glass = 1;
@@ -544,6 +449,9 @@
 /obj/machinery/newscaster/directional/east,
 /turf/open/floor/wood/large,
 /area/mine/eva)
+"hB" = (
+/turf/closed/wall/r_wall,
+/area/mine/laborcamp/security)
 "hD" = (
 /obj/structure/fence/corner{
 	dir = 9
@@ -551,6 +459,9 @@
 /obj/structure/lattice/catwalk,
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
+"hE" = (
+/turf/closed/wall,
+/area/mine/laborcamp)
 "hI" = (
 /obj/structure/chair/comfy/beige{
 	dir = 1;
@@ -558,31 +469,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/mine/eva)
-"hO" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/directional/north,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"ia" = (
-/obj/machinery/shower{
-	pixel_y = 22
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/turf/open/floor/iron/freezer,
-/area/mine/laborcamp)
 "ip" = (
 /obj/machinery/light/small/directional/west,
 /obj/structure/table,
 /turf/open/floor/plating,
 /area/mine/eva)
-"iq" = (
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
 "it" = (
 /obj/structure/sink{
 	dir = 8;
@@ -603,14 +494,6 @@
 	},
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/icemoon/underground/explored)
-"iz" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/newscaster/directional/north,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
 "iC" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -630,105 +513,77 @@
 /obj/structure/railing/corner,
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
-"iJ" = (
-/obj/machinery/door/airlock{
-	name = "Labor Camp Library"
-	},
+"iK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"iM" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+/obj/machinery/light/small/directional/west,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
-/obj/machinery/door/airlock/security/glass{
-	name = "Labor Camp Shuttle Prisoner Airlock";
-	req_access_txt = "2"
-	},
 /turf/open/floor/iron,
 /area/mine/laborcamp)
+"iN" = (
+/obj/machinery/computer/secure_data,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"iW" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/structure/table,
+/obj/item/restraints/handcuffs,
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
 "jd" = (
-/obj/structure/rack,
-/obj/item/wirecutters,
+/obj/item/kirbyplants/random,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/mine/laborcamp/security)
-"jj" = (
-/obj/machinery/hydroponics/constructable,
-/obj/effect/turf_decal/tile/green{
-	dir = 1
+"ji" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "labor";
+	name = "labor camp blast door"
 	},
-/obj/effect/turf_decal/tile/green{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/item/cultivator,
-/obj/item/seeds/potato,
-/turf/open/floor/iron/dark,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"jl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/newscaster/directional/north,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron,
 /area/mine/laborcamp)
 "jr" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/mine/eva)
-"ju" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
-	},
-/turf/open/floor/iron/smooth,
-/area/mine/laborcamp/security)
-"jA" = (
-/obj/structure/cable,
-/obj/machinery/power/smes{
-	charge = 5e+006
-	},
-/obj/machinery/camera/directional/south{
-	c_tag = "Labor Camp Utilities";
-	network = list("labor")
-	},
-/turf/open/floor/iron/smooth,
-/area/mine/laborcamp/security)
-"jC" = (
+"jN" = (
+/obj/effect/turf_decal/bot,
+/obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"jI" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/machinery/door/airlock/security/glass{
-	name = "Labor Camp Shuttle Security Airlock"
-	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
-"jQ" = (
-/obj/structure/table,
-/obj/effect/turf_decal/tile/red,
-/obj/machinery/recharger,
-/turf/open/floor/iron,
+"jX" = (
+/obj/structure/cable,
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
 /area/mine/laborcamp/security)
 "kc" = (
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/large,
 /area/mine/eva)
-"ke" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/airlock/public/glass{
-	id_tag = "cellblock1";
-	name = "Labor Camp Cellblock"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
 "kf" = (
 /obj/structure/fence/corner{
 	dir = 6
@@ -736,17 +591,14 @@
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/underground/explored)
 "kD" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/reagent_containers/glass/bucket,
-/turf/open/floor/iron/dark,
-/area/mine/laborcamp)
-"kG" = (
 /obj/structure/table,
-/obj/item/paper_bin{
+/obj/item/reagent_containers/food/condiment/saltshaker{
 	pixel_x = -3;
-	pixel_y = 7
+	pixel_y = 5
 	},
-/obj/item/pen,
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = 3
+	},
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "kH" = (
@@ -760,36 +612,33 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark/side,
 /area/mine/eva)
-"kR" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
+"kM" = (
+/obj/structure/sign/poster/official/do_not_question{
+	pixel_y = 32
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/south,
-/turf/open/floor/iron/cafeteria,
-/area/mine/laborcamp)
-"lc" = (
-/obj/structure/table,
-/obj/item/cigbutt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"lf" = (
+/obj/structure/sign/departments/medbay/alt{
+	pixel_x = -32
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"lj" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/machinery/light/directional/north,
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/north,
 /turf/open/floor/iron,
 /area/mine/laborcamp/security)
-"ll" = (
-/obj/machinery/hydroponics/constructable,
-/obj/effect/turf_decal/tile/green{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/green,
-/obj/item/seeds/soya,
-/turf/open/floor/iron/dark,
-/area/mine/laborcamp)
 "ln" = (
 /obj/machinery/space_heater,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -828,12 +677,35 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/plating/snowed/icemoon,
 /area/mine/eva)
-"lz" = (
-/obj/effect/turf_decal/bot,
-/obj/structure/ore_box,
-/obj/effect/decal/cleanable/dirt,
+"lF" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/machinery/door/window/right/directional/west{
+	dir = 4;
+	name = "airlock"
+	},
+/turf/open/floor/iron/dark,
+/area/mine/mechbay)
+"lI" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/mine/laborcamp)
+"lK" = (
+/obj/structure/table,
+/obj/item/toy/cards/deck,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"lQ" = (
+/obj/structure/rack,
+/obj/item/wirecutters,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
 "lX" = (
 /obj/structure/fence{
 	dir = 1
@@ -852,24 +724,18 @@
 	},
 /turf/open/floor/plating,
 /area/mine/eva)
-"mt" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+"mr" = (
+/obj/structure/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/microwave{
+	pixel_y = 6
+	},
 /turf/open/floor/iron,
-/area/mine/laborcamp/security)
+/area/mine/laborcamp)
 "mw" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/iron/smooth,
 /area/mine/eva)
-"mz" = (
-/obj/machinery/light/small/directional/south,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/button/door/directional/north{
-	id = "labor";
-	name = "Labor Camp Lockdown";
-	req_access_txt = "2"
-	},
-/turf/open/floor/iron,
-/area/mine/laborcamp)
 "mB" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing/corner,
@@ -878,9 +744,25 @@
 	},
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
-"mC" = (
-/obj/structure/bookcase,
-/turf/open/floor/iron,
+"mD" = (
+/obj/machinery/seed_extractor,
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
 /area/mine/laborcamp)
 "mE" = (
 /obj/structure/lattice/catwalk,
@@ -889,6 +771,14 @@
 	},
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
+"mH" = (
+/obj/machinery/atmospherics/pipe/layer_manifold/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/sign/poster/official/random/directional/north,
+/turf/open/floor/iron/smooth,
+/area/mine/laborcamp/security)
 "mR" = (
 /obj/structure/fence{
 	dir = 4
@@ -911,31 +801,30 @@
 	dir = 1
 	},
 /area/mine/eva)
-"mX" = (
-/obj/machinery/door/airlock/public/glass{
-	id_tag = "gulag1";
-	name = "Cell 1"
+"no" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"nl" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/directional/north,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
 /obj/structure/cable,
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/mine/laborcamp/security)
+/turf/open/floor/iron/cafeteria,
+/area/mine/laborcamp)
 "nw" = (
 /obj/structure/railing/corner{
 	dir = 4
 	},
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/underground/explored)
-"nz" = (
-/obj/structure/chair/stool/directional/west,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
+"nC" = (
+/turf/open/misc/asteroid/snow/icemoon,
+/area/icemoon/surface/outdoors/labor_camp)
 "nD" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -951,36 +840,28 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/mine/eva)
-"nS" = (
-/obj/effect/turf_decal/tile/green{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/green,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/sink/kitchen{
-	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
-	dir = 1;
-	name = "old sink";
-	pixel_y = -5
-	},
-/turf/open/floor/iron/dark,
-/area/mine/laborcamp)
-"nV" = (
-/obj/structure/chair{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
 "oc" = (
 /obj/structure/flora/tree/pine,
 /turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
-"oh" = (
-/obj/structure/bed,
+"od" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"og" = (
+/turf/closed/wall,
+/area/mine/laborcamp/security)
+"oi" = (
+/obj/structure/table,
+/obj/item/paper,
+/obj/item/pen,
+/obj/machinery/light/small/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/camera/directional/west{
+	c_tag = "Labor Camp Cell 2";
+	network = list("labor")
 	},
 /turf/open/floor/iron,
 /area/mine/laborcamp)
@@ -1014,28 +895,28 @@
 	},
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/mine/mechbay)
+"ot" = (
+/obj/machinery/atmospherics/components/tank/air{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/mine/laborcamp/security)
+"ov" = (
+/obj/machinery/computer/shuttle/labor/one_way{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp)
 "oP" = (
 /obj/structure/fence/door,
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/underground/explored)
-"oU" = (
-/obj/structure/gulag_beacon,
+"oS" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
-"oW" = (
-/obj/machinery/computer/secure_data,
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"pg" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer2{
-	dir = 1
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/mine/laborcamp/security)
 "pj" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/spawner/north,
@@ -1050,19 +931,23 @@
 /obj/effect/turf_decal/siding/white,
 /turf/open/floor/iron/smooth,
 /area/mine/mechbay)
-"pt" = (
-/obj/machinery/vending/sustenance,
+"pE" = (
+/obj/machinery/atmospherics/components/tank/air{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/mine/laborcamp/security)
+"pF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/directional/east,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"pC" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
+/obj/machinery/door/airlock/public/glass{
+	id_tag = "cellblock1";
+	name = "Labor Camp Operations"
 	},
-/obj/machinery/door/airlock/security/glass{
-	name = "Labor Camp Shuttle Security Airlock"
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "pI" = (
@@ -1070,6 +955,13 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/icemoon/underground/explored)
+"pN" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/iron/freezer,
+/area/mine/laborcamp)
 "pP" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/freezer,
@@ -1078,71 +970,62 @@
 /obj/structure/lattice/catwalk,
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
-"pV" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/radio/intercom/directional/north,
-/turf/open/floor/iron,
+"qe" = (
+/obj/machinery/light/small/directional/south,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/mine/laborcamp)
 "qj" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/airalarm/directional/north,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"ql" = (
-/obj/structure/table,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/food_or_drink/donkpockets,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"qo" = (
-/obj/structure/table,
-/obj/item/paper,
-/obj/item/pen,
-/obj/machinery/light/small/directional/west,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/camera/directional/west{
-	c_tag = "Labor Camp Cell 1";
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/machinery/camera/directional/east{
+	c_tag = "Labor Camp Infirmary";
 	network = list("labor")
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/mine/laborcamp)
+"qm" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/structure/closet/secure_closet/labor_camp_security,
 /turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"qn" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
 /area/mine/laborcamp)
 "qr" = (
-/obj/structure/table,
-/obj/item/reagent_containers/food/condiment/saltshaker{
-	pixel_x = -3;
-	pixel_y = 5
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
 	},
-/obj/item/reagent_containers/food/condiment/peppermill{
-	pixel_x = 3
-	},
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"qy" = (
-/obj/machinery/conveyor{
-	id = "gulag"
+/obj/machinery/door/airlock/security/glass{
+	name = "Labor Camp Shuttle Prisoner Airlock";
+	req_access_txt = "2"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/turf/open/floor/iron,
 /area/mine/laborcamp)
+"qv" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/mine/laborcamp/security)
 "qC" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
 /turf/open/floor/plating,
 /area/mine/eva)
-"qD" = (
-/obj/structure/closet/crate/internals,
-/obj/item/tank/internals/emergency_oxygen,
-/obj/item/tank/internals/emergency_oxygen,
-/obj/item/tank/internals/emergency_oxygen,
-/obj/item/tank/internals/emergency_oxygen,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
 "qF" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/item/kirbyplants/fullysynthetic{
@@ -1153,15 +1036,6 @@
 /obj/structure/sign/poster/official/random/directional/west,
 /turf/open/floor/stone,
 /area/mine/eva)
-"qG" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
 "qI" = (
 /turf/open/genturf,
 /area/icemoon/underground/unexplored/rivers/deep)
@@ -1172,14 +1046,23 @@
 	},
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
-"qW" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/mineral/labor_points_checker{
-	pixel_y = 25
+"qT" = (
+/obj/structure/table,
+/obj/item/storage/fancy/donut_box,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
 /obj/structure/cable,
+/obj/item/clothing/head/beanie/stripedred,
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"qU" = (
+/obj/structure/chair/stool/directional/west,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "qX" = (
@@ -1189,31 +1072,47 @@
 "rd" = (
 /turf/open/floor/iron,
 /area/mine/eva)
-"rs" = (
-/obj/structure/table,
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/turf/open/floor/iron/white,
-/area/mine/laborcamp)
-"rP" = (
-/obj/structure/sink/kitchen{
-	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
-	dir = 8;
-	name = "old sink";
-	pixel_x = 12
-	},
-/turf/open/floor/iron/freezer,
-/area/mine/laborcamp)
-"rQ" = (
+"rp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small/directional/west,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"rq" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/security/glass{
+	name = "Labor Camp Monitoring";
+	req_access_txt = "2"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"rr" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/ore_box,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"rA" = (
+/obj/item/kirbyplants{
+	icon_state = "plant-10"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"rD" = (
+/obj/structure/chair/stool/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"rV" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "sd" = (
@@ -1227,31 +1126,23 @@
 /obj/structure/fluff/tram_rail,
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
-"sg" = (
-/obj/machinery/light/small/directional/south,
-/turf/open/misc/asteroid/snow/icemoon,
-/area/mine/laborcamp)
-"sl" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/loading_area{
-	dir = 8
+"sm" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
 	},
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"sr" = (
-/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/camera/directional/south{
+	c_tag = "Labor Camp Mud Room";
+	network = list("labor")
+	},
 /obj/structure/cable,
-/turf/open/floor/plating,
-/area/mine/laborcamp/security)
-"su" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/structure/sign/poster/official/twelve_gauge{
-	pixel_y = 32
-	},
 /turf/open/floor/iron,
 /area/mine/laborcamp/security)
+"sp" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/ore_box,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
 "sz" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing/corner{
@@ -1260,24 +1151,21 @@
 /obj/structure/railing,
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
-"sD" = (
-/obj/structure/girder,
-/turf/open/floor/plating/snowed/icemoon,
-/area/mine/eva)
-"sL" = (
-/obj/structure/chair/stool/directional/south,
-/obj/machinery/flasher/directional/west{
-	id = "GulagCell 2"
-	},
-/obj/structure/sign/poster/official/work_for_a_future{
-	pixel_y = 32
+"sB" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
+"sK" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/red,
+/obj/machinery/recharger,
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
 "sP" = (
 /obj/structure/table/wood,
 /obj/effect/spawner/random/food_or_drink/donkpockets,
@@ -1285,109 +1173,80 @@
 /obj/item/radio/intercom/directional/south,
 /turf/open/floor/stone,
 /area/mine/eva)
-"sX" = (
+"sU" = (
+/obj/structure/table,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/pen,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"sV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/north,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"te" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/smooth,
+/area/mine/laborcamp/security)
+"ti" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"tc" = (
-/turf/closed/wall,
-/area/mine/laborcamp)
-"tf" = (
-/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/mob/living/simple_animal/bot/secbot/beepsky{
+	desc = "Powered by the tears and sweat of laborers.";
+	name = "Prison Ofitser"
+	},
 /obj/structure/cable,
-/turf/open/floor/plating,
-/area/mine/laborcamp/security)
-"tk" = (
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
-/area/mine/laborcamp)
+/area/mine/laborcamp/security)
 "tl" = (
 /obj/structure/girder,
 /obj/structure/lattice/catwalk,
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
-"tq" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/machinery/door/airlock/security/glass{
-	name = "Labor Camp Shuttle Prisoner Airlock";
-	req_access_txt = "2"
-	},
+"tm" = (
+/obj/machinery/vending/sustenance,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/east,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "tr" = (
 /obj/structure/railing/corner,
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
-"tv" = (
-/obj/machinery/door/poddoor/preopen{
-	id = "labor";
-	name = "labor camp blast door"
+"tw" = (
+/obj/machinery/shower{
+	pixel_y = 22
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
+/obj/item/soap/nanotrasen,
+/obj/item/bikehorn/rubberducky/plasticducky,
+/turf/open/floor/iron/freezer,
 /area/mine/laborcamp)
 "tE" = (
 /obj/machinery/newscaster/directional/north,
 /obj/structure/closet/firecloset,
 /turf/open/floor/iron/dark,
 /area/mine/eva)
-"tN" = (
-/obj/effect/turf_decal/delivery,
-/obj/effect/decal/cleanable/dirt,
+"tH" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
 /turf/open/floor/iron,
-/area/mine/laborcamp)
+/area/mine/laborcamp/security)
 "tZ" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
 /area/mine/mechbay)
-"uh" = (
-/obj/machinery/door/airlock/security/glass{
-	name = "Labor Camp Airlock"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"ul" = (
-/obj/structure/rack,
-/obj/item/wrench,
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"um" = (
-/obj/structure/cable,
-/obj/machinery/power/terminal{
-	dir = 8
-	},
-/obj/structure/closet/crate{
-	icon_state = "crateopen"
-	},
-/obj/machinery/light/directional/south,
-/obj/item/stack/sheet/mineral/plasma/thirty,
-/turf/open/floor/iron/smooth,
-/area/mine/laborcamp/security)
-"uv" = (
-/obj/structure/table,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/book/manual/chef_recipes{
-	pixel_x = 2;
-	pixel_y = 6
-	},
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"uz" = (
-/obj/structure/chair/stool/directional/north,
-/obj/structure/sign/poster/official/report_crimes{
-	pixel_x = -32
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
 "uL" = (
 /obj/machinery/light/small/directional/east,
 /obj/effect/turf_decal/stripes/corner{
@@ -1395,12 +1254,19 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/mine/mechbay)
-"uS" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/camera/directional/east{
-	c_tag = "Labor Camp Library";
-	network = list("labor")
+"uR" = (
+/obj/machinery/computer/security/labor,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
 	},
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"uT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "uV" = (
@@ -1420,29 +1286,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark/side,
 /area/mine/eva)
-"uX" = (
-/obj/structure/table,
-/obj/effect/turf_decal/tile/red,
-/obj/item/paper_bin,
-/obj/item/pen,
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"uZ" = (
-/obj/machinery/door/airlock/external{
-	glass = 1;
-	name = "Labor Camp External Airlock";
-	opacity = 0
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/mine/laborcamp)
-"vi" = (
+"vc" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"vq" = (
+/obj/effect/turf_decal/bot,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "vx" = (
@@ -1473,22 +1326,37 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/mine/eva)
-"vQ" = (
-/obj/machinery/conveyor{
-	dir = 8;
-	id = "gulag"
+"wf" = (
+/obj/machinery/biogenerator,
+/obj/effect/turf_decal/tile/green{
+	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/plasticflaps,
-/turf/open/floor/plating,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/mine/laborcamp)
-"vS" = (
-/obj/structure/ore_box,
-/turf/open/misc/asteroid/snow/icemoon,
-/area/icemoon/underground/explored)
 "wk" = (
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/icemoon/underground/explored)
+"wo" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sink/kitchen{
+	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
+	dir = 1;
+	name = "old sink";
+	pixel_y = -5
+	},
+/turf/open/floor/iron/dark,
+/area/mine/laborcamp)
 "wv" = (
 /obj/structure/table,
 /obj/item/flashlight/lantern,
@@ -1515,23 +1383,26 @@
 	dir = 1
 	},
 /area/mine/eva)
+"wL" = (
+/obj/machinery/mineral/processing_unit_console,
+/turf/closed/wall,
+/area/mine/laborcamp)
 "xa" = (
 /obj/machinery/mechpad,
 /turf/open/floor/iron/smooth,
 /area/mine/mechbay)
-"xi" = (
-/obj/machinery/conveyor_switch/oneway{
-	id = "gulag";
-	name = "labor camp conveyor"
-	},
+"xh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/south,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
-"xk" = (
-/obj/structure/toilet{
-	dir = 4
-	},
-/obj/machinery/light/small/directional/north,
-/turf/open/floor/iron/freezer,
+"xj" = (
+/obj/structure/ore_box,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"xl" = (
+/turf/closed/wall/r_wall,
 /area/mine/laborcamp)
 "xo" = (
 /obj/structure/toilet{
@@ -1546,14 +1417,12 @@
 	},
 /turf/open/floor/iron/freezer,
 /area/mine/eva)
-"xs" = (
-/obj/structure/table,
-/obj/item/plate,
-/obj/item/kitchen/fork,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+"xr" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/iron,
-/area/mine/laborcamp)
+/area/mine/laborcamp/security)
 "xD" = (
 /obj/item/bodypart/head,
 /obj/effect/decal/cleanable/blood,
@@ -1571,9 +1440,24 @@
 /obj/item/organ/heart,
 /turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
+"xU" = (
+/obj/structure/table,
+/obj/item/cigbutt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
 "yt" = (
 /turf/closed/mineral/random/snow,
 /area/icemoon/underground/explored)
+"yw" = (
+/obj/structure/bookcase,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"yA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_containers/glass/bucket,
+/turf/open/floor/iron/dark,
+/area/mine/laborcamp)
 "yN" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -1586,29 +1470,15 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/mine/eva)
-"yZ" = (
-/obj/structure/table,
-/obj/item/storage/fancy/donut_box,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/structure/cable,
-/obj/item/clothing/head/beanie/stripedred,
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"zj" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/blue{
+"zo" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/white,
+/obj/machinery/door/airlock/security/glass{
+	name = "Labor Camp Shuttle Prisoner Airlock";
+	req_access_txt = "2"
+	},
+/turf/open/floor/iron,
 /area/mine/laborcamp)
 "zp" = (
 /obj/structure/girder,
@@ -1623,25 +1493,23 @@
 "zt" = (
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
-"zx" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
+"zv" = (
+/obj/machinery/conveyor{
+	id = "gulag"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small/directional/north,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
-/obj/structure/cable,
-/turf/open/floor/iron/cafeteria,
+/turf/open/floor/plating,
 /area/mine/laborcamp)
 "zy" = (
 /obj/structure/fence,
 /turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
+"zA" = (
+/obj/structure/table,
+/obj/machinery/computer/bookmanagement,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
 "zM" = (
 /obj/machinery/door/window{
 	dir = 1;
@@ -1650,10 +1518,34 @@
 /obj/structure/sign/poster/official/random/directional/west,
 /turf/open/floor/circuit/green,
 /area/mine/mechbay)
-"Ab" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
+"zY" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
 	},
+/obj/structure/sign/poster/official/twelve_gauge{
+	pixel_y = 32
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"zZ" = (
+/obj/machinery/shower{
+	pixel_y = 22
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/turf/open/floor/iron/freezer,
+/area/mine/laborcamp)
+"Ab" = (
+/obj/structure/sink/kitchen{
+	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
+	name = "old sink";
+	pixel_y = 28
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/turf/open/floor/iron/freezer,
+/area/mine/laborcamp)
+"Ac" = (
+/obj/machinery/status_display/evac/directional/north,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "Ah" = (
@@ -1672,23 +1564,14 @@
 	dir = 1
 	},
 /area/mine/eva)
-"Al" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+"Ao" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/airalarm/directional/north,
 /turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"AD" = (
+/area/mine/laborcamp)
+"Ar" = (
 /obj/structure/cable,
-/obj/machinery/door/airlock/security/glass{
-	name = "Labor Camp Monitoring";
-	req_access_txt = "2"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"AE" = (
-/turf/closed/wall,
 /area/mine/laborcamp/security)
 "AT" = (
 /obj/structure/rack,
@@ -1696,26 +1579,12 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/open/floor/plating,
 /area/mine/eva)
-"AU" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/mine/laborcamp)
 "AY" = (
 /obj/structure/fence/door{
 	dir = 4
 	},
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/icemoon/underground/explored)
-"Bb" = (
-/obj/effect/turf_decal/bot,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/mine/laborcamp)
 "Bg" = (
 /obj/structure/fence{
 	dir = 4
@@ -1726,22 +1595,32 @@
 /mob/living/simple_animal/hostile/asteroid/gutlunch,
 /turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
-"Bt" = (
-/obj/effect/turf_decal/bot,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"BD" = (
-/obj/machinery/door/airlock/security/glass{
-	name = "Labor Camp Airlock"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+"Bu" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/turf_decal/tile/green{
 	dir = 1
 	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/cultivator,
+/obj/item/seeds/potato,
+/turf/open/floor/iron/dark,
+/area/mine/laborcamp)
+"BC" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/structure/sign/warning/gasmask{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"BF" = (
-/turf/open/floor/iron/freezer,
 /area/mine/laborcamp)
 "BH" = (
 /obj/effect/turf_decal/stripes/end{
@@ -1762,13 +1641,6 @@
 	},
 /turf/open/floor/iron/dark/side,
 /area/mine/eva)
-"BR" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
 "BT" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/spawner/west,
@@ -1788,59 +1660,21 @@
 	dir = 1
 	},
 /area/mine/eva)
-"Cd" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"Ch" = (
+"BZ" = (
+/obj/structure/closet/secure_closet/brig,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/directional/south,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
-"Cr" = (
-/obj/structure/toilet{
-	dir = 8
-	},
-/obj/machinery/light/small/directional/north,
-/turf/open/floor/plating,
-/area/mine/laborcamp/security)
 "Ct" = (
-/obj/machinery/shower{
-	pixel_y = 22
-	},
-/obj/item/soap/nanotrasen,
-/obj/item/bikehorn/rubberducky/plasticducky,
-/turf/open/floor/iron/freezer,
-/area/mine/laborcamp)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/sign/poster/official/random/directional/north,
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
 "CM" = (
 /obj/machinery/recharge_station,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/mine/eva)
-"CP" = (
-/obj/machinery/light/directional/east,
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"CS" = (
-/obj/structure/bed,
-/obj/item/bedsheet/medical,
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/obj/machinery/camera/directional/east{
-	c_tag = "Labor Camp Infirmary";
-	network = list("labor")
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
-/turf/open/floor/iron/white,
-/area/mine/laborcamp)
 "CZ" = (
 /obj/structure/fluff/tram_rail{
 	pixel_y = 17
@@ -1848,6 +1682,16 @@
 /obj/structure/fluff/tram_rail,
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
+"Db" = (
+/obj/machinery/mineral/unloading_machine{
+	dir = 1;
+	icon_state = "unloader-corner";
+	input_dir = 1;
+	output_dir = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/mine/laborcamp)
 "Dc" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -1860,46 +1704,19 @@
 	},
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/underground/explored)
-"Di" = (
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"Dk" = (
-/obj/machinery/door/window/westleft{
-	name = "airlock"
-	},
-/turf/open/floor/iron/dark,
-/area/mine/mechbay)
-"Dr" = (
-/obj/machinery/biogenerator,
-/obj/effect/turf_decal/tile/green{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/green{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/green,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/mine/laborcamp)
-"Ds" = (
-/obj/structure/sink/kitchen{
-	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
-	name = "old sink";
-	pixel_y = 28
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/turf/open/floor/iron/freezer,
-/area/mine/laborcamp)
-"Dt" = (
-/obj/machinery/door/airlock/highsecurity{
-	name = "Labor Camp Monitoring";
-	req_access_txt = "2"
-	},
+"Dx" = (
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"DB" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "DH" = (
@@ -1909,31 +1726,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/icemoon/underground/explored)
-"DU" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/structure/table,
-/obj/item/restraints/handcuffs,
-/obj/machinery/airalarm/directional/north,
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
 "Eh" = (
 /obj/structure/rack,
 /obj/item/mecha_parts/mecha_equipment/drill,
 /obj/structure/sign/poster/official/random/directional/east,
 /turf/open/floor/iron/smooth,
 /area/mine/mechbay)
-"Ei" = (
-/obj/machinery/camera/directional/south{
-	c_tag = "Labor Camp External North";
-	network = list("labor")
-	},
-/turf/open/misc/asteroid/snow/icemoon,
-/area/mine/laborcamp)
 "En" = (
 /obj/machinery/airalarm/directional/west,
 /obj/machinery/light/small/directional/west,
@@ -1946,65 +1744,107 @@
 /obj/structure/sign/nanotrasen,
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/underground/explored)
-"Er" = (
-/obj/structure/closet/crate,
-/turf/open/misc/asteroid/snow/icemoon,
-/area/icemoon/underground/explored)
+"Eu" = (
+/obj/structure/closet/crate/internals,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/internals/emergency_oxygen,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
 "ED" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/iron/dark,
 /area/mine/eva)
-"EF" = (
-/obj/machinery/seed_extractor,
-/obj/effect/turf_decal/tile/green{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/green{
+"EL" = (
+/obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/effect/turf_decal/tile/green{
+/obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
-/obj/structure/window/reinforced{
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/mine/laborcamp)
-"EG" = (
-/obj/machinery/light/small/directional/north,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"EI" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron,
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/south,
+/turf/open/floor/iron/cafeteria,
 /area/mine/laborcamp)
 "EN" = (
 /obj/effect/gibspawner/human/bodypartless,
 /turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
-"Fe" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/mine/laborcamp)
-"Fh" = (
-/obj/machinery/door/airlock/public/glass{
-	id_tag = "gulag2";
-	name = "Cell 2"
+"EP" = (
+/obj/machinery/door/airlock/security/glass{
+	name = "Labor Camp Airlock"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"EQ" = (
+/obj/structure/chair/stool/directional/south,
+/obj/machinery/flasher/directional/west{
+	id = "GulagCell 3"
+	},
+/obj/structure/sign/poster/official/obey{
+	pixel_y = 32
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
 /turf/open/floor/iron,
+/area/mine/laborcamp)
+"EV" = (
+/obj/structure/ore_box,
+/turf/open/misc/asteroid/snow/icemoon,
+/area/icemoon/underground/explored)
+"EW" = (
+/obj/structure/chair/stool/directional/south,
+/obj/machinery/flasher/directional/west{
+	id = "GulagCell 1"
+	},
+/obj/structure/sign/poster/official/obey{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"Fd" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/red,
+/obj/item/paper_bin,
+/obj/item/pen,
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"Fk" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/machinery/door/airlock/security/glass{
+	name = "Labor Camp Shuttle Security Airlock"
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"Fn" = (
+/obj/structure/sink/kitchen{
+	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
+	dir = 8;
+	name = "old sink";
+	pixel_x = 12
+	},
+/turf/open/floor/iron/freezer,
 /area/mine/laborcamp)
 "Ft" = (
 /turf/open/floor/iron/smooth,
@@ -2024,6 +1864,13 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/stone,
 /area/mine/eva)
+"Fz" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/plating,
+/area/mine/laborcamp/security)
 "FC" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -2031,51 +1878,29 @@
 	},
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
-"FI" = (
-/obj/structure/table,
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/obj/machinery/light/small/directional/south,
-/turf/open/floor/iron/white,
-/area/mine/laborcamp)
 "FK" = (
-/obj/machinery/status_display/evac/directional/north,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"FO" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/sign/poster/official/random/directional/north,
-/turf/open/floor/iron,
+/turf/open/floor/iron/smooth,
 /area/mine/laborcamp/security)
-"FY" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
+"FQ" = (
+/obj/structure/gulag_beacon,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
-"FZ" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-10"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"Gd" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/camera/directional/east{
-	c_tag = "Labor Camp Operations";
-	network = list("labor")
+"FT" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
 	},
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "Gi" = (
 /turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
+"Gp" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating/snowed/icemoon,
+/area/mine/laborcamp/security)
 "Gv" = (
 /obj/structure/closet/crate/bin,
 /turf/open/floor/iron/dark,
@@ -2093,23 +1918,44 @@
 	},
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/underground/explored)
-"GE" = (
+"GO" = (
 /obj/structure/cable,
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
+/obj/machinery/power/terminal{
 	dir = 8
 	},
-/obj/machinery/camera/directional/south{
-	c_tag = "Labor Camp Security Office";
-	network = list("labor")
+/obj/structure/closet/crate{
+	icon_state = "crateopen"
 	},
-/turf/open/floor/iron,
+/obj/machinery/light/directional/south,
+/obj/item/stack/sheet/mineral/plasma/thirty,
+/turf/open/floor/iron/smooth,
 /area/mine/laborcamp/security)
 "GR" = (
 /turf/closed/wall/r_wall,
 /area/mine/eva)
-"Hg" = (
-/obj/structure/cable,
+"GW" = (
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/plating,
+/area/mine/laborcamp)
+"He" = (
+/obj/machinery/door/airlock/external{
+	glass = 1;
+	name = "Labor Camp External Airlock";
+	opacity = 0
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/turf/open/floor/plating,
+/area/mine/laborcamp)
+"Hf" = (
+/obj/effect/turf_decal/tile/red,
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"Hl" = (
+/obj/structure/girder,
+/turf/open/floor/plating/snowed/icemoon,
+/area/icemoon/underground/explored)
+"Ht" = (
+/obj/machinery/light/directional/east,
 /turf/open/floor/iron,
 /area/mine/laborcamp/security)
 "HA" = (
@@ -2133,12 +1979,20 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark/side,
 /area/mine/eva)
+"HO" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
 "HQ" = (
-/obj/structure/sign/poster/official/obey{
-	pixel_y = 32
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
+/turf/open/floor/iron/dark,
 /area/mine/laborcamp)
 "HV" = (
 /obj/structure/fence/corner{
@@ -2170,12 +2024,6 @@
 	},
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
-"Ip" = (
-/obj/machinery/computer/shuttle/labor/one_way{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/mine/laborcamp)
 "IH" = (
 /obj/structure/fence{
 	dir = 1
@@ -2185,13 +2033,12 @@
 	},
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/underground/explored)
-"IN" = (
-/obj/machinery/atmospherics/pipe/layer_manifold/supply/hidden{
-	dir = 4
+"IM" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/sign/poster/official/random/directional/north,
-/turf/open/floor/iron/smooth,
+/turf/open/floor/iron,
 /area/mine/laborcamp/security)
 "IX" = (
 /obj/effect/turf_decal/tile/brown,
@@ -2205,6 +2052,38 @@
 /obj/item/radio/intercom/directional/south,
 /turf/open/floor/iron/dark/side,
 /area/mine/eva)
+"IZ" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"Jb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"Jk" = (
+/obj/machinery/vending/security{
+	onstation_override = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"Jq" = (
+/obj/machinery/door/airlock{
+	name = "Labor Camp Library"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
 "Jv" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/machinery/camera/directional/north{
@@ -2236,60 +2115,54 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/mine/mechbay)
-"JJ" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"Kh" = (
-/obj/effect/turf_decal/bot,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+"JQ" = (
+/obj/structure/table,
+/obj/item/plate,
+/obj/item/kitchen/fork,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
-"Kn" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 1
-	},
-/obj/structure/sign/warning/gasmask{
-	pixel_y = 32
-	},
+"JR" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/mineral/labor_points_checker{
+	pixel_y = 25
+	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"Kr" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/turf_decal/tile/red,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"JW" = (
+/obj/machinery/light/directional/south,
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/machinery/door/airlock/security/glass{
-	name = "Labor Camp Ultilities";
-	req_access_txt = "2"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/red,
 /turf/open/floor/iron,
 /area/mine/laborcamp/security)
-"Kz" = (
+"Kf" = (
+/obj/machinery/conveyor{
+	dir = 10;
+	id = "gulag"
+	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/kirbyplants{
-	icon_state = "plant-05"
+/turf/open/floor/plating,
+/area/mine/laborcamp)
+"Km" = (
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "gulag"
 	},
-/obj/machinery/camera/directional/west{
-	c_tag = "Labor Camp Cellblock";
-	network = list("labor")
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/plasticflaps,
+/turf/open/floor/plating,
+/area/mine/laborcamp)
+"Kx" = (
+/obj/machinery/door/airlock{
+	name = "Unisex Restroom"
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "KA" = (
@@ -2301,13 +2174,29 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/plating,
 /area/mine/eva)
+"KM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"KN" = (
+/obj/machinery/mineral/processing_unit{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/mine/laborcamp)
 "KW" = (
 /obj/structure/cable,
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/icemoon/underground/explored)
-"Lj" = (
-/obj/machinery/mineral/processing_unit_console,
-/turf/closed/wall,
+"Lh" = (
+/obj/structure/chair/stool/directional/north,
+/obj/structure/sign/poster/official/report_crimes{
+	pixel_x = -32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
 /area/mine/laborcamp)
 "Ll" = (
 /obj/structure/lattice/catwalk,
@@ -2333,12 +2222,24 @@
 	},
 /turf/open/floor/stone,
 /area/mine/eva)
-"Lq" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+"Ln" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"Lo" = (
+/obj/machinery/washing_machine,
+/obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/cafeteria,
+/area/mine/laborcamp)
 "Lv" = (
 /obj/structure/window/reinforced/spawner/east,
 /obj/machinery/computer/mech_bay_power_console{
@@ -2369,6 +2270,17 @@
 	dir = 1
 	},
 /area/mine/eva)
+"LB" = (
+/obj/structure/table,
+/obj/structure/bedsheetbin,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/iron/cafeteria,
+/area/mine/laborcamp)
 "LC" = (
 /obj/structure/sign/warning/coldtemp{
 	pixel_y = 32
@@ -2393,6 +2305,13 @@
 	},
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
+"LI" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
 "LN" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/item/kirbyplants/fullysynthetic{
@@ -2403,21 +2322,65 @@
 /obj/machinery/firealarm/directional/north,
 /turf/open/floor/stone,
 /area/mine/eva)
+"LT" = (
+/obj/structure/closet/crate,
+/turf/open/misc/asteroid/snow/icemoon,
+/area/icemoon/underground/explored)
+"LY" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"Mc" = (
+/obj/machinery/light/small/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/button/door/directional/north{
+	id = "labor";
+	name = "Labor Camp Lockdown";
+	req_access_txt = "2"
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"Mm" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/smooth,
+/area/mine/laborcamp/security)
 "Mw" = (
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/icemoon/underground/explored)
-"MB" = (
-/obj/structure/chair/stool/directional/south,
-/obj/machinery/flasher/directional/west{
-	id = "GulagCell 3"
-	},
-/obj/structure/sign/poster/official/obey{
-	pixel_y = 32
+"MA" = (
+/obj/structure/sign/poster/official/safety_report{
+	pixel_x = -32
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
+/obj/machinery/camera/directional/west{
+	c_tag = "Labor Camp Central";
+	network = list("labor")
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"MJ" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Showers"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/freezer,
+/area/mine/laborcamp)
+"MN" = (
+/obj/structure/table,
+/obj/item/paper,
+/obj/item/pen,
+/obj/machinery/light/small/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/camera/directional/west{
+	c_tag = "Labor Camp Cell 1";
+	network = list("labor")
 	},
 /turf/open/floor/iron,
 /area/mine/laborcamp)
@@ -2435,14 +2398,15 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/mine/eva)
-"Nd" = (
-/obj/machinery/atmospherics/components/tank/air{
+"Nc" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/plating,
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"Ne" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
 /area/mine/laborcamp/security)
 "Nf" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -2456,23 +2420,40 @@
 /obj/structure/cable/multilayer/multiz,
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/underground/explored)
-"Np" = (
-/turf/closed/mineral/random/labormineral/ice,
-/area/icemoon/surface/outdoors/labor_camp)
 "Nt" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating,
 /area/mine/eva)
-"Nv" = (
-/obj/machinery/door/airlock/external{
-	glass = 1;
-	name = "Labor Camp External Airlock";
-	opacity = 0
+"Nu" = (
+/obj/structure/table,
+/obj/item/paper,
+/obj/item/pen,
+/obj/machinery/light/small/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/camera/directional/west{
+	c_tag = "Labor Camp Cell 3";
+	network = list("labor")
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/turf/open/floor/plating,
+/turf/open/floor/iron,
 /area/mine/laborcamp)
-"Nw" = (
+"NB" = (
+/turf/closed/wall,
+/area/mine/eva)
+"NK" = (
+/obj/structure/chair/stool/directional/south,
+/obj/machinery/flasher/directional/west{
+	id = "GulagCell 2"
+	},
+/obj/structure/sign/poster/official/work_for_a_future{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"NT" = (
 /obj/structure/rack,
 /obj/item/storage/bag/ore,
 /obj/item/pickaxe,
@@ -2481,44 +2462,6 @@
 /obj/item/mining_scanner,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/suit/hooded/wintercoat,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"Nx" = (
-/obj/structure/table,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"NB" = (
-/turf/closed/wall,
-/area/mine/eva)
-"NE" = (
-/turf/closed/wall/r_wall,
-/area/mine/laborcamp/security)
-"NP" = (
-/obj/machinery/camera/directional/west{
-	c_tag = "Labor Camp External West";
-	network = list("labor")
-	},
-/turf/open/misc/asteroid/snow/icemoon,
-/area/mine/laborcamp)
-"NR" = (
-/obj/structure/table,
-/obj/item/paper,
-/obj/item/pen,
-/obj/machinery/light/small/directional/west,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/camera/directional/west{
-	c_tag = "Labor Camp Cell 2";
-	network = list("labor")
-	},
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"NX" = (
-/obj/structure/closet/secure_closet/brig,
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "NY" = (
@@ -2546,17 +2489,20 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/mine/eva)
-"OB" = (
-/obj/structure/chair/comfy/brown{
+"Ox" = (
+/obj/machinery/door/airlock/medical/glass{
+	name = "Infirmary"
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/white,
+/area/mine/laborcamp)
 "OS" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -2577,15 +2523,22 @@
 	dir = 1
 	},
 /area/mine/eva)
-"OW" = (
-/turf/open/floor/iron,
+"Pe" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/plant_analyzer,
+/turf/open/floor/iron/dark,
 /area/mine/laborcamp)
-"Pa" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
 "Pj" = (
 /obj/structure/table,
 /obj/item/paper{
@@ -2598,26 +2551,36 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood/large,
 /area/mine/eva)
-"PD" = (
-/obj/structure/sign/departments/medbay/alt{
-	pixel_x = -32
+"Pr" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/directional/west,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
-"PO" = (
-/obj/structure/ore_box,
+"PC" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/white,
+/area/mine/laborcamp)
+"PE" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/public/glass{
+	id_tag = "cellblock1";
+	name = "Labor Camp Cellblock"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
-"PP" = (
-/obj/machinery/conveyor{
-	dir = 10;
-	id = "gulag"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+"PH" = (
+/turf/open/floor/iron/freezer,
 /area/mine/laborcamp)
 "PR" = (
 /obj/structure/chair/comfy/beige{
@@ -2627,16 +2590,32 @@
 /obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/iron/dark,
 /area/mine/eva)
-"Qr" = (
-/obj/machinery/light/small/directional/south,
-/obj/machinery/camera/directional/south{
-	c_tag = "Labor Camp Showers";
-	network = list("labor")
+"PU" = (
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"Qe" = (
+/obj/structure/rack,
+/obj/item/wrench,
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"QA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"QC" = (
+/obj/machinery/door/airlock/public/glass{
+	id_tag = "gulag3";
+	name = "Cell 3"
 	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
-	},
-/turf/open/floor/iron/freezer,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"QK" = (
+/obj/effect/turf_decal/delivery,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
 /area/mine/laborcamp)
 "QN" = (
 /obj/structure/cable,
@@ -2647,6 +2626,21 @@
 	},
 /turf/open/floor/plating,
 /area/mine/eva)
+"QO" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/mine/laborcamp/security)
+"QX" = (
+/obj/machinery/door/airlock/security/glass{
+	name = "Labor Camp Airlock"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
 "Ra" = (
 /obj/structure/ore_box,
 /turf/open/floor/plating/snowed/smoothed/icemoon,
@@ -2701,12 +2695,6 @@
 /obj/machinery/airalarm/directional/south,
 /turf/open/floor/stone,
 /area/mine/eva)
-"RK" = (
-/obj/machinery/atmospherics/components/tank/air{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/mine/laborcamp/security)
 "RP" = (
 /obj/structure/stairs/north,
 /obj/structure/railing{
@@ -2714,17 +2702,6 @@
 	},
 /turf/open/floor/iron,
 /area/mine/eva)
-"RY" = (
-/obj/structure/table,
-/obj/item/storage/medkit/regular,
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/turf/open/floor/iron/white,
-/area/mine/laborcamp)
 "Sb" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -2738,18 +2715,6 @@
 /obj/item/cigbutt,
 /turf/open/floor/wood/large,
 /area/mine/eva)
-"Sf" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
-	},
-/turf/open/floor/iron/white,
-/area/mine/laborcamp)
 "Sj" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -2762,36 +2727,22 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/mine/eva)
-"Sm" = (
-/turf/open/floor/iron/smooth,
-/area/mine/laborcamp/security)
+"Ss" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/camera/directional/east{
+	c_tag = "Labor Camp Library";
+	network = list("labor")
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp)
 "Sy" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/smooth,
 /area/mine/mechbay)
-"SF" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/smooth,
-/area/mine/laborcamp/security)
-"SM" = (
-/obj/machinery/mineral/unloading_machine{
-	dir = 1;
-	icon_state = "unloader-corner";
-	input_dir = 1;
-	output_dir = 2
-	},
-/obj/effect/decal/cleanable/dirt,
+"SO" = (
 /turf/open/floor/plating,
-/area/mine/laborcamp)
-"ST" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/mine/laborcamp)
+/area/mine/laborcamp/security)
 "SW" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -2799,23 +2750,11 @@
 	},
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
-"SX" = (
-/obj/machinery/light/directional/south,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red,
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"Tb" = (
-/obj/structure/table,
-/obj/item/paper,
-/obj/item/pen,
-/obj/machinery/light/small/directional/west,
+"SY" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/camera/directional/west{
-	c_tag = "Labor Camp Cell 3";
-	network = list("labor")
+/obj/machinery/light/directional/south,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
 	},
 /turf/open/floor/iron,
 /area/mine/laborcamp)
@@ -2826,10 +2765,15 @@
 	},
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
-"Tu" = (
-/obj/structure/girder,
-/turf/open/floor/plating/snowed/icemoon,
-/area/icemoon/underground/explored)
+"Tx" = (
+/obj/machinery/computer/prisoner,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
 "TC" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -2864,28 +2808,18 @@
 	},
 /turf/open/floor/iron/freezer,
 /area/mine/eva)
-"TF" = (
-/obj/machinery/hydroponics/constructable,
-/obj/effect/turf_decal/tile/green{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/green{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/green,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/item/plant_analyzer,
-/turf/open/floor/iron/dark,
-/area/mine/laborcamp)
 "TX" = (
 /obj/structure/closet/crate{
 	icon_state = "crateopen"
 	},
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/underground/explored)
+"Ua" = (
+/obj/machinery/door/airlock{
+	name = "Restroom"
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
 "Uc" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -2893,26 +2827,18 @@
 /obj/structure/fence/door,
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/icemoon/underground/explored)
-"Ul" = (
-/obj/effect/turf_decal/tile/red,
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"Uu" = (
-/turf/closed/wall,
-/area/mine/mechbay)
-"UN" = (
-/obj/effect/turf_decal/bot,
+"Uh" = (
+/obj/machinery/door/airlock/public/glass{
+	id_tag = "gulag1";
+	name = "Cell 1"
+	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
-"UV" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
+"Uu" = (
+/turf/closed/wall,
+/area/mine/mechbay)
 "Vg" = (
 /obj/structure/fluff/tram_rail/end{
 	dir = 4
@@ -2939,12 +2865,16 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/mine/mechbay)
-"Vo" = (
-/obj/structure/sign/warning/docking{
-	pixel_x = -32
+"Vs" = (
+/obj/machinery/door/airlock/external{
+	glass = 1;
+	name = "Labor Camp External Airlock";
+	opacity = 0
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/turf/open/floor/plating,
 /area/mine/laborcamp)
 "Vz" = (
 /obj/machinery/telecomms/relay/preset/mining,
@@ -2952,6 +2882,27 @@
 /obj/structure/window/reinforced/spawner/north,
 /turf/open/floor/circuit/green,
 /area/mine/mechbay)
+"VE" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/mine/laborcamp)
+"VF" = (
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"VN" = (
+/obj/structure/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp)
 "VS" = (
 /obj/machinery/door/airlock/external{
 	glass = 1;
@@ -2990,49 +2941,63 @@
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/mine/eva)
-"Wq" = (
-/obj/structure/sign/poster/official/work_for_a_future{
-	pixel_y = 32
+"Wr" = (
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 2;
+	height = 5;
+	id = "laborcamp_away";
+	name = "labor camp";
+	width = 9
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"Wy" = (
-/obj/structure/table,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/microwave{
-	pixel_y = 6
-	},
-/turf/open/floor/iron,
-/area/mine/laborcamp)
-"WH" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 4
-	},
-/obj/machinery/camera/directional/south{
-	c_tag = "Labor Camp Mud Room";
-	network = list("labor")
-	},
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/mine/laborcamp/security)
-"WI" = (
-/obj/machinery/light/directional/west,
-/obj/structure/closet/secure_closet/freezer/gulag_fridge,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
+/turf/open/misc/asteroid/snow/icemoon,
+/area/icemoon/underground/explored)
+"WJ" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/turf_decal/tile/green{
 	dir = 8
 	},
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/seeds/onion,
+/turf/open/floor/iron/dark,
+/area/mine/laborcamp)
+"WM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/radio/intercom/directional/north,
 /turf/open/floor/iron,
-/area/mine/laborcamp/security)
+/area/mine/laborcamp)
+"WU" = (
+/obj/machinery/conveyor_switch/oneway{
+	id = "gulag";
+	name = "labor camp conveyor"
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp)
 "Xc" = (
 /obj/effect/turf_decal/box,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/smooth,
 /area/mine/mechbay)
+"Xd" = (
+/obj/structure/girder,
+/turf/open/floor/plating/snowed/icemoon,
+/area/mine/eva)
+"Xh" = (
+/obj/machinery/light/small/directional/south,
+/obj/machinery/camera/directional/south{
+	c_tag = "Labor Camp Showers";
+	network = list("labor")
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/freezer,
+/area/mine/laborcamp)
 "Xs" = (
 /obj/structure/window/reinforced/spawner/east,
 /obj/effect/turf_decal/siding/white{
@@ -3080,33 +3045,45 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/stone,
 /area/mine/eva)
-"XG" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/mine/laborcamp)
-"Ya" = (
-/obj/machinery/computer/prisoner,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
+"XN" = (
+/obj/structure/table,
+/obj/item/storage/medkit/regular,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
 	},
-/obj/effect/turf_decal/tile/red,
-/obj/structure/cable,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/mine/laborcamp)
+"XS" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/machinery/door/airlock/security/glass{
+	name = "Labor Camp Shuttle Security Airlock"
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
-/area/mine/laborcamp/security)
+/area/mine/laborcamp)
 "Ye" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/mine/mechbay)
-"Yp" = (
-/obj/structure/sign/poster/official/safety_report{
-	pixel_x = -32
-	},
+"Yg" = (
+/obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/camera/directional/west{
-	c_tag = "Labor Camp Central";
-	network = list("labor")
+/obj/item/book/manual/chef_recipes{
+	pixel_x = 2;
+	pixel_y = 6
 	},
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"Yh" = (
+/obj/structure/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "YK" = (
@@ -3114,45 +3091,13 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/mine/eva)
-"YP" = (
-/obj/machinery/hydroponics/constructable,
-/obj/effect/turf_decal/tile/green{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/green,
-/obj/effect/turf_decal/tile/green{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/item/seeds/onion,
-/turf/open/floor/iron/dark,
-/area/mine/laborcamp)
-"YU" = (
-/obj/machinery/hydroponics/constructable,
-/obj/effect/turf_decal/tile/green{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/green{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/item/seeds/carrot,
-/turf/open/floor/iron/dark,
-/area/mine/laborcamp)
-"Zd" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 2;
-	height = 5;
-	id = "laborcamp_away";
-	name = "labor camp";
-	width = 9
+"Zb" = (
+/obj/machinery/camera/directional/south{
+	c_tag = "Labor Camp External North";
+	network = list("labor")
 	},
 /turf/open/misc/asteroid/snow/icemoon,
-/area/icemoon/underground/explored)
+/area/mine/laborcamp)
 "Zl" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -3169,15 +3114,59 @@
 "Zs" = (
 /turf/closed/wall/ice,
 /area/icemoon/underground/explored)
+"Zu" = (
+/obj/structure/chair/comfy/brown{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/mine/laborcamp/security)
+"ZI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/tomato,
+/obj/item/seeds/onion,
+/obj/item/seeds/garlic,
+/obj/item/seeds/carrot,
+/obj/item/seeds/ambrosia,
+/obj/item/seeds/apple,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
+"ZJ" = (
+/obj/structure/rack,
+/obj/item/storage/bag/ore,
+/obj/item/flashlight,
+/obj/item/pickaxe,
+/obj/item/clothing/glasses/meson,
+/obj/item/mining_scanner,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/suit/hooded/wintercoat,
+/turf/open/floor/iron,
+/area/mine/laborcamp)
 "ZK" = (
-/obj/structure/sign/poster/official/do_not_question{
-	pixel_y = 32
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/mine/laborcamp)
+"ZL" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/turf/open/floor/iron,
+/obj/item/seeds/carrot,
+/turf/open/floor/iron/dark,
 /area/mine/laborcamp)
 "ZO" = (
 /obj/structure/cable,
@@ -3194,11 +3183,22 @@
 /obj/item/clothing/head/helmet/skull,
 /turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
-"ZX" = (
-/obj/structure/table,
-/obj/machinery/computer/bookmanagement,
+"ZV" = (
+/obj/machinery/door/window/left/directional/west{
+	name = "airlock"
+	},
+/turf/open/floor/iron/dark,
+/area/mine/mechbay)
+"ZZ" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
+/obj/item/seeds/redbeet,
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/dark,
 /area/mine/laborcamp)
 
 (1,1,1) = {"
@@ -22220,7 +22220,7 @@ qI
 qI
 "}
 (75,1,1) = {"
-aD
+nC
 zt
 zt
 zt
@@ -22364,7 +22364,7 @@ qI
 qI
 Gi
 Zs
-Tu
+Hl
 cm
 GR
 KF
@@ -22477,8 +22477,8 @@ qI
 qI
 "}
 (76,1,1) = {"
-aD
-aD
+nC
+nC
 zt
 zt
 zt
@@ -22734,9 +22734,9 @@ qI
 qI
 "}
 (77,1,1) = {"
-aD
-Np
-Np
+nC
+hn
+hn
 zt
 zt
 zt
@@ -22991,10 +22991,10 @@ qI
 qI
 "}
 (78,1,1) = {"
-aD
-Np
-Np
-Np
+nC
+hn
+hn
+hn
 zt
 zt
 zt
@@ -23248,11 +23248,11 @@ qI
 qI
 "}
 (79,1,1) = {"
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -23505,12 +23505,12 @@ qI
 qI
 "}
 (80,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -23762,13 +23762,13 @@ qI
 qI
 "}
 (81,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -23919,7 +23919,7 @@ Uu
 NY
 Xs
 Lv
-Dk
+ZV
 Vz
 lZ
 Gi
@@ -24019,14 +24019,14 @@ qI
 qI
 "}
 (82,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -24042,8 +24042,8 @@ zt
 zt
 zt
 zt
-aD
-aD
+nC
+nC
 zt
 zt
 zt
@@ -24176,7 +24176,7 @@ tZ
 xa
 Xc
 pm
-ak
+lF
 or
 MP
 Gi
@@ -24276,17 +24276,17 @@ qI
 qI
 "}
 (83,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -24297,10 +24297,10 @@ zt
 zt
 zt
 zt
-Np
-Np
-aD
-aD
+hn
+hn
+nC
+nC
 zt
 zt
 zt
@@ -24533,18 +24533,18 @@ qI
 qI
 "}
 (84,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -24552,13 +24552,13 @@ zt
 zt
 zt
 zt
-Np
-Np
-Np
-Np
-aD
-aD
-aD
+hn
+hn
+hn
+hn
+nC
+nC
+nC
 zt
 zt
 zt
@@ -24677,7 +24677,7 @@ qI
 Gi
 Gi
 Gi
-sD
+Xd
 Wl
 Ra
 Mw
@@ -24790,33 +24790,33 @@ qI
 qI
 "}
 (85,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
 zt
 zt
 zt
-Np
-Np
-Np
-Np
-Np
-Np
-aD
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+nC
+nC
 zt
 zt
 zt
@@ -25047,33 +25047,33 @@ qI
 qI
 "}
 (86,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -25304,34 +25304,34 @@ qI
 qI
 "}
 (87,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -25561,34 +25561,34 @@ qI
 qI
 "}
 (88,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
 zt
 zt
 zt
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -25818,36 +25818,36 @@ qI
 qI
 "}
 (89,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
-aD
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
+nC
+nC
 zt
-aD
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+nC
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -26075,40 +26075,37 @@ qI
 qI
 "}
 (90,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
 zt
 zt
-aD
-aD
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-zt
-zt
-zt
+nC
+nC
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -26117,8 +26114,11 @@ zt
 zt
 zt
 zt
-aD
-aD
+zt
+zt
+zt
+nC
+nC
 zt
 zt
 zt
@@ -26332,38 +26332,38 @@ qI
 qI
 "}
 (91,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
-aD
-aD
-aD
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
+nC
+nC
+nC
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -26373,10 +26373,10 @@ zt
 zt
 zt
 zt
-Np
-aD
-aD
-aD
+hn
+nC
+nC
+nC
 zt
 zt
 zt
@@ -26589,51 +26589,51 @@ qI
 qI
 "}
 (92,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
 zt
 zt
 zt
-Np
-Np
-Np
-aD
-aD
-aD
+hn
+hn
+hn
+nC
+nC
+nC
 zt
 zt
 zt
@@ -26846,52 +26846,52 @@ qI
 qI
 "}
 (93,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
 zt
 zt
-Np
-Np
-Np
-Np
-aD
-aD
-aD
-aD
+hn
+hn
+hn
+hn
+nC
+nC
+nC
+nC
 zt
 zt
 zt
@@ -27103,53 +27103,53 @@ qI
 qI
 "}
 (94,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
 zt
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -27360,54 +27360,54 @@ qI
 qI
 "}
 (95,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -27617,55 +27617,55 @@ qI
 qI
 "}
 (96,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -27874,55 +27874,55 @@ qI
 qI
 "}
 (97,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -28131,55 +28131,55 @@ qI
 qI
 "}
 (98,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -28388,56 +28388,56 @@ qI
 qI
 "}
 (99,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -28645,57 +28645,57 @@ qI
 qI
 "}
 (100,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -28902,57 +28902,57 @@ qI
 qI
 "}
 (101,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -29159,58 +29159,58 @@ qI
 qI
 "}
 (102,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -29416,58 +29416,58 @@ qI
 qI
 "}
 (103,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -29673,59 +29673,59 @@ qI
 qI
 "}
 (104,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -29930,59 +29930,59 @@ qI
 qI
 "}
 (105,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
 zt
 zt
 zt
@@ -30187,59 +30187,59 @@ qI
 qI
 "}
 (106,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
+nC
 zt
 zt
 zt
@@ -30444,61 +30444,61 @@ qI
 qI
 "}
 (107,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
-aD
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
+nC
+nC
 zt
 zt
 zt
@@ -30701,60 +30701,60 @@ qI
 qI
 "}
 (108,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -30958,60 +30958,60 @@ qI
 qI
 "}
 (109,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -31215,60 +31215,60 @@ qI
 qI
 "}
 (110,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -31472,61 +31472,61 @@ qI
 qI
 "}
 (111,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -31729,61 +31729,61 @@ qI
 qI
 "}
 (112,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -31986,62 +31986,62 @@ qI
 qI
 "}
 (113,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -32243,63 +32243,63 @@ qI
 qI
 "}
 (114,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -32500,63 +32500,63 @@ qI
 qI
 "}
 (115,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -32757,61 +32757,61 @@ qI
 qI
 "}
 (116,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -33014,60 +33014,60 @@ qI
 qI
 "}
 (117,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -33271,43 +33271,43 @@ qI
 qI
 "}
 (118,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
@@ -33528,42 +33528,42 @@ qI
 qI
 "}
 (119,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
@@ -33785,42 +33785,42 @@ qI
 qI
 "}
 (120,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
@@ -34042,40 +34042,40 @@ qI
 qI
 "}
 (121,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
@@ -34299,39 +34299,39 @@ qI
 qI
 "}
 (122,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
@@ -34556,39 +34556,39 @@ qI
 qI
 "}
 (123,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
@@ -34601,7 +34601,7 @@ wk
 Gi
 wk
 wk
-Zd
+Wr
 Gi
 Gi
 wk
@@ -34813,39 +34813,39 @@ qI
 qI
 "}
 (124,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
@@ -35070,39 +35070,39 @@ qI
 qI
 "}
 (125,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
@@ -35327,39 +35327,39 @@ qI
 qI
 "}
 (126,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
@@ -35584,39 +35584,39 @@ qI
 qI
 "}
 (127,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
@@ -35841,57 +35841,57 @@ qI
 qI
 "}
 (128,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
 Gi
 Gi
 Gi
-aP
-XG
-XG
-XG
-XG
-aP
-pC
-aP
-aP
-aP
-iM
-aP
+xl
+ZK
+ZK
+ZK
+ZK
+xl
+Fk
+xl
+xl
+xl
+zo
+xl
 zt
 zt
 zt
@@ -36098,57 +36098,57 @@ qI
 qI
 "}
 (129,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
 Gi
 Gi
 Gi
-aP
-tk
-nz
-nz
-tk
-tc
-mz
-tc
-Ip
-tc
-EG
-aP
+xl
+QA
+rD
+rD
+QA
+hE
+Mc
+hE
+ov
+hE
+cG
+xl
 zt
 zt
 zt
@@ -36355,57 +36355,57 @@ qI
 qI
 "}
 (130,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
 Gi
 Gi
 Gi
-aP
-HQ
+xl
+gE
+kD
+VN
+xh
+hE
+XS
+hE
+FQ
+hE
 qr
-Nx
-Ch
-tc
-jI
-tc
-oU
-tc
-tq
-aP
+xl
 zt
 zt
 zt
@@ -36612,66 +36612,66 @@ qI
 qI
 "}
 (131,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
-XG
-XG
-XG
-aP
-qj
-ec
-xs
-tk
-tc
-tv
-tc
-FK
-Vo
-tk
-aP
-NE
-NE
-NE
-sr
-NE
-sr
-sr
-sr
-NE
+ZK
+ZK
+ZK
+xl
+Ao
+lK
+JQ
+QA
+hE
+ji
+hE
+Ac
+aW
+QA
+xl
+hB
+hB
+hB
+qv
+hB
+qv
+qv
+qv
+hB
 Gi
 Gi
 Gi
@@ -36869,67 +36869,67 @@ qI
 qI
 "}
 (132,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
 Gi
-XG
-BF
-Qr
-tc
-tk
-tk
-bm
-tk
-Yp
-OW
-tk
-OW
-AU
-ee
-aP
-DU
-cA
-WI
-yZ
-NE
-lc
-mt
-ez
-tf
-pg
+ZK
+PH
+Xh
+hE
+QA
+QA
+qU
+QA
+MA
+VF
+QA
+VF
+rp
+SY
+xl
+iW
+Jk
+cs
+qT
+hB
+xU
+Ne
+jd
+QO
+Gp
 Gi
 Gi
 Gi
@@ -37126,68 +37126,68 @@ qI
 qI
 "}
 (133,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
 Gi
-Ei
-aP
-ia
-ge
-aG
-aV
-aV
-vi
-vi
-vi
-vi
-vi
-FY
-FY
-vi
-Dt
-hk
-jC
-Hg
-OB
-NE
-nV
-Di
-Hg
-NE
-NE
-NE
+Zb
+xl
+zZ
+bC
+MJ
+od
+od
+uT
+uT
+uT
+uT
+uT
+oS
+oS
+uT
+dL
+ti
+xr
+Ar
+Zu
+hB
+gj
+PU
+Ar
+hB
+hB
+hB
 Gi
 Gi
 qI
@@ -37383,68 +37383,68 @@ qI
 qI
 "}
 (134,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
 Gi
 Gi
 Gi
-Er
-aP
+LT
+xl
+tw
+Fn
+hE
+tm
+QA
+uT
+QA
+mr
+Yh
+Yg
+rA
+BZ
+BZ
+xl
+zY
+fr
+PU
+cd
+hB
 Ct
-rP
-tc
-pt
-tk
-vi
-tk
-Wy
-ql
-uv
-FZ
-NX
-NX
-aP
-su
-Al
-Di
-GE
-NE
-FO
-Di
-Hg
-uh
-Di
-BD
+PU
+Ar
+EP
+PU
+QX
 Gi
 Gi
 qI
@@ -37640,68 +37640,68 @@ qI
 qI
 "}
 (135,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
 Gi
 Gi
-XG
-XG
-XG
-aP
-tc
-tc
-tc
-tc
-Wq
-vi
-tk
-EF
-YU
-jj
-TF
-aP
-aP
-aP
-ep
-Al
-JJ
-UV
-nl
-mt
-Cd
-WH
-NE
-NE
-NE
+ZK
+ZK
+ZK
+xl
+hE
+hE
+hE
+hE
+hb
+uT
+QA
+mD
+ZL
+Bu
+Pe
+xl
+xl
+xl
+lj
+fr
+IZ
+LI
+jX
+Ne
+LY
+sm
+hB
+hB
+hB
 Gi
 Gi
 qI
@@ -37897,68 +37897,68 @@ qI
 qI
 "}
 (136,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
 Gi
 Gi
-XG
-RY
-rs
-tc
-ZX
-uz
-rQ
-tc
-pV
-vi
-tk
-gs
-Fe
-kD
-nS
-aP
-ho
-cP
-sX
-Pa
-Pa
-Pa
-AD
-Pa
-Pa
-Pa
-Pa
-jd
-sr
+ZK
+XN
+VE
+hE
+zA
+Lh
+iK
+hE
+WM
+uT
+QA
+HQ
+qn
+yA
+wo
+xl
+SO
+Ua
+IM
+Dx
+Dx
+Dx
+rq
+Dx
+Dx
+Dx
+Dx
+lQ
+qv
 Gi
 Gi
 qI
@@ -38154,68 +38154,68 @@ qI
 qI
 "}
 (137,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
 Gi
 Gi
-XG
-Sf
-FI
-tc
-kG
-ey
-aV
-iJ
-bN
-vi
-cQ
-Dr
-ll
-fo
-YP
-aP
-Cr
-AE
-oW
-Di
-Lq
-Ul
-nl
-Di
-CP
-Di
-Pa
-ul
-sr
+ZK
+cF
+bq
+hE
+sU
+KM
+od
+Jq
+HO
+uT
+ZI
+wf
+dM
+ZZ
+WJ
+xl
+Fz
+og
+iN
+PU
+Nc
+Hf
+jX
+PU
+Ht
+PU
+Dx
+Qe
+qv
 Gi
 Gi
 qI
@@ -38411,69 +38411,69 @@ qI
 qI
 "}
 (138,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
 Gi
 Gi
-XG
-zj
-CS
-tc
-mC
-uS
-tc
-tc
-tc
-ke
-tc
-tc
-tc
-tc
-tc
-aP
-NE
-NE
-cv
-gQ
-Di
-SX
-NE
-NE
-NE
-NE
-Kr
-NE
-NE
-NE
+ZK
+PC
+qj
+hE
+yw
+Ss
+hE
+hE
+hE
+PE
+hE
+hE
+hE
+hE
+hE
+xl
+hB
+hB
+uR
+tH
+PU
+JW
+hB
+hB
+hB
+hB
+aR
+hB
+hB
+hB
 Gi
 qI
 qI
@@ -38668,69 +38668,69 @@ qI
 qI
 "}
 (139,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
 Gi
 Gi
-aP
-zj
-tc
-tc
-tc
-tc
-tc
-xk
-tc
-iz
-Kz
-tc
-au
-qo
-XG
+xl
+PC
+hE
+hE
+hE
+hE
+hE
+pN
+hE
+jl
+fP
+hE
+EW
+MN
+ZK
 zt
 zt
-sr
-Ya
-uX
-jQ
-gL
-NE
+qv
+Tx
+Fd
+sK
+qm
+hB
 zt
 Gi
-NE
-SF
-eQ
-jA
-NE
+hB
+cj
+Mm
+ha
+hB
 Gi
 qI
 qI
@@ -38925,69 +38925,69 @@ qI
 qI
 "}
 (140,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
 Gi
-vS
-aP
-zj
-tc
-Nw
-Nw
-Nw
-tc
-Ds
-cJ
-vi
-aV
-mX
-aV
-oh
-XG
+EV
+xl
+PC
+hE
+NT
+NT
+NT
+hE
+Ab
+Kx
+uT
+od
+Uh
+od
+bE
+ZK
 zt
 zt
-sr
-sr
-sr
-sr
-sr
-NE
+qv
+qv
+qv
+qv
+qv
+hB
 zt
 Gi
-NE
-IN
-ju
-um
-NE
+hB
+mH
+te
+GO
+hB
 Gi
 qI
 qI
@@ -39182,54 +39182,54 @@ qI
 qI
 "}
 (141,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
 Gi
-vS
-aP
-hb
-tc
-dk
-tk
-tk
-tc
-tc
-tc
-FY
-tk
-tc
-tc
-tc
-aP
+EV
+xl
+Ox
+hE
+ZJ
+QA
+QA
+hE
+hE
+hE
+oS
+QA
+hE
+hE
+hE
+xl
 zt
 zt
 zt
@@ -39240,11 +39240,11 @@ zt
 zt
 zt
 Gi
-NE
-hs
-Sm
-bX
-NE
+hB
+cc
+FK
+bg
+hB
 Gi
 qI
 qI
@@ -39439,54 +39439,54 @@ qI
 qI
 "}
 (142,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
-sg
-aP
-aP
-aP
-qG
-PD
-OW
-tk
-tk
-tk
-qD
-tc
+qe
+xl
+xl
+xl
+DB
+lf
+VF
+QA
+QA
+QA
+Eu
+hE
+kM
+QA
+hE
+NK
+oi
 ZK
-tk
-tc
-sL
-NR
-XG
 zt
 zt
 zt
@@ -39497,11 +39497,11 @@ zt
 zt
 zt
 Gi
-NE
-Nd
-Nd
-NE
-NE
+hB
+pE
+pE
+hB
+hB
 Gi
 qI
 qI
@@ -39696,54 +39696,54 @@ qI
 qI
 "}
 (143,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
-Nv
-gA
-uZ
-fV
-Bb
-Bt
-Bt
-lz
-ST
-tk
-tc
-hO
-aV
-Fh
-bN
-oh
-XG
+He
+GW
+Vs
+sB
+FT
+vq
+vq
+sp
+Pr
+QA
+hE
+sV
+od
+dv
+HO
+bE
+ZK
 zt
 zt
 zt
@@ -39754,10 +39754,10 @@ zt
 zt
 zt
 Gi
-NE
-RK
-RK
-NE
+hB
+ot
+ot
+hB
 Gi
 Gi
 qI
@@ -39953,54 +39953,54 @@ qI
 qI
 "}
 (144,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
-sg
-aP
-aP
-aP
-Kn
-da
-da
-Kh
-UN
-aV
-aV
-fQ
-vi
-tk
-tc
-tc
-tc
-aP
+qe
+xl
+xl
+xl
+BC
+rr
+rr
+jN
+rV
+od
+od
+pF
+uT
+QA
+hE
+hE
+hE
+xl
 zt
 zt
 zt
@@ -40011,10 +40011,10 @@ zt
 zt
 zt
 Gi
-NE
-NE
-NE
-NE
+hB
+hB
+hB
+hB
 Gi
 Gi
 qI
@@ -40210,54 +40210,54 @@ qI
 qI
 "}
 (145,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
-Er
-XG
-iq
-tk
-Ab
-tk
-tk
-tk
-EI
-tk
-tc
-qW
-tk
-tc
-MB
-Tb
-XG
+LT
+ZK
+fW
+QA
+lI
+QA
+QA
+QA
+vc
+QA
+hE
+JR
+QA
+hE
+EQ
+Nu
+ZK
 zt
 zt
 zt
@@ -40467,54 +40467,54 @@ qI
 qI
 "}
 (146,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
 Gi
-XG
-tk
-tk
-Gd
-tk
-xi
-fN
-OW
-sl
-tc
-vi
-aV
-gV
-aV
-oh
-XG
+ZK
+QA
+QA
+aE
+QA
+WU
+Jb
+VF
+ef
+hE
+uT
+od
+QC
+od
+bE
+ZK
 zt
 zt
 zt
@@ -40724,54 +40724,54 @@ qI
 qI
 "}
 (147,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
 Gi
-XG
-PO
-BR
-tc
-tc
-Lj
-tc
-tc
-vQ
-aP
-zx
-kR
-aP
-aP
-aP
-aP
+ZK
+xj
+Ln
+hE
+hE
+wL
+hE
+hE
+Km
+xl
+no
+EL
+xl
+xl
+xl
+xl
 zt
 zt
 zt
@@ -40981,51 +40981,51 @@ qI
 qI
 "}
 (148,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
 Gi
-XG
-PO
-tN
-SM
-qy
-by
-qy
-qy
-PP
-aP
-gi
-ej
-XG
+ZK
+xj
+QK
+Db
+zv
+KN
+zv
+zv
+Kf
+xl
+LB
+Lo
+ZK
 Gi
 Gi
 zt
@@ -41238,51 +41238,51 @@ qI
 qI
 "}
 (149,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
 Gi
-XG
-XG
-XG
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-XG
-XG
-XG
+ZK
+ZK
+ZK
+xl
+xl
+xl
+xl
+xl
+xl
+xl
+ZK
+ZK
+ZK
 Gi
 Gi
 zt
@@ -41495,34 +41495,34 @@ qI
 qI
 "}
 (150,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
@@ -41532,7 +41532,7 @@ Gi
 Gi
 Gi
 Gi
-NP
+gp
 Gi
 Gi
 Gi
@@ -41752,34 +41752,34 @@ qI
 qI
 "}
 (151,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
@@ -42009,37 +42009,37 @@ qI
 qI
 "}
 (152,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
-Np
+hn
 Gi
 Gi
 Gi
@@ -42266,38 +42266,38 @@ qI
 qI
 "}
 (153,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
@@ -42523,38 +42523,38 @@ qI
 qI
 "}
 (154,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 Gi
 Gi
 Gi
@@ -42780,53 +42780,53 @@ qI
 qI
 "}
 (155,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -43037,53 +43037,53 @@ qI
 qI
 "}
 (156,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -43294,53 +43294,53 @@ qI
 qI
 "}
 (157,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -43551,53 +43551,53 @@ qI
 qI
 "}
 (158,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -43808,53 +43808,53 @@ qI
 qI
 "}
 (159,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -44065,53 +44065,53 @@ qI
 qI
 "}
 (160,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
 zt
 zt
 zt
@@ -44322,53 +44322,53 @@ qI
 qI
 "}
 (161,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
+nC
 zt
 zt
 zt
@@ -44579,53 +44579,53 @@ qI
 qI
 "}
 (162,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
+nC
 zt
 zt
 zt
@@ -44836,53 +44836,53 @@ qI
 qI
 "}
 (163,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
 zt
 zt
 zt
@@ -45093,50 +45093,50 @@ qI
 qI
 "}
 (164,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -45350,50 +45350,50 @@ qI
 qI
 "}
 (165,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -45607,50 +45607,50 @@ qI
 qI
 "}
 (166,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -45864,50 +45864,50 @@ qI
 qI
 "}
 (167,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -46121,50 +46121,50 @@ qI
 qI
 "}
 (168,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -46378,50 +46378,50 @@ qI
 qI
 "}
 (169,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -46635,47 +46635,47 @@ qI
 qI
 "}
 (170,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -46892,47 +46892,47 @@ qI
 qI
 "}
 (171,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -47149,47 +47149,47 @@ qI
 qI
 "}
 (172,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -47406,48 +47406,48 @@ qI
 qI
 "}
 (173,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
+nC
 zt
 zt
 zt
@@ -47663,47 +47663,47 @@ qI
 qI
 "}
 (174,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
+nC
 zt
 zt
 zt
@@ -47920,47 +47920,47 @@ qI
 qI
 "}
 (175,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
+nC
 zt
 zt
 zt
@@ -48177,44 +48177,44 @@ qI
 qI
 "}
 (176,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -48434,44 +48434,44 @@ qI
 qI
 "}
 (177,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -48691,44 +48691,44 @@ qI
 qI
 "}
 (178,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -48948,44 +48948,44 @@ qI
 qI
 "}
 (179,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -49205,44 +49205,44 @@ qI
 qI
 "}
 (180,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -49462,44 +49462,44 @@ qI
 qI
 "}
 (181,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -49719,43 +49719,43 @@ qI
 qI
 "}
 (182,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -49976,43 +49976,43 @@ qI
 qI
 "}
 (183,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -50233,42 +50233,42 @@ qI
 qI
 "}
 (184,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -50490,42 +50490,42 @@ qI
 qI
 "}
 (185,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -50747,42 +50747,42 @@ qI
 qI
 "}
 (186,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -51004,42 +51004,42 @@ qI
 qI
 "}
 (187,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -51261,41 +51261,41 @@ qI
 qI
 "}
 (188,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -51518,41 +51518,41 @@ qI
 qI
 "}
 (189,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
-aD
-aD
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
+nC
+nC
+nC
 zt
 zt
 zt
@@ -51775,40 +51775,40 @@ qI
 qI
 "}
 (190,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
+nC
 zt
 zt
 zt
@@ -52032,39 +52032,39 @@ qI
 qI
 "}
 (191,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
 zt
 zt
 zt
@@ -52289,38 +52289,38 @@ qI
 qI
 "}
 (192,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -52546,38 +52546,38 @@ qI
 qI
 "}
 (193,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -52803,37 +52803,37 @@ qI
 qI
 "}
 (194,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -53060,37 +53060,37 @@ qI
 qI
 "}
 (195,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -53317,36 +53317,36 @@ qI
 qI
 "}
 (196,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -53574,35 +53574,35 @@ qI
 qI
 "}
 (197,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -53831,34 +53831,34 @@ qI
 qI
 "}
 (198,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -54088,33 +54088,33 @@ qI
 qI
 "}
 (199,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -54345,33 +54345,33 @@ qI
 qI
 "}
 (200,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -54602,31 +54602,31 @@ qI
 qI
 "}
 (201,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
+nC
 zt
 zt
 zt
@@ -54859,30 +54859,30 @@ qI
 qI
 "}
 (202,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
 zt
 zt
 zt
@@ -55116,30 +55116,30 @@ qI
 qI
 "}
 (203,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
 zt
 zt
 zt
@@ -55373,30 +55373,30 @@ qI
 qI
 "}
 (204,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
 zt
 zt
 zt
@@ -55630,29 +55630,29 @@ qI
 qI
 "}
 (205,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -55887,29 +55887,29 @@ qI
 qI
 "}
 (206,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -56144,29 +56144,29 @@ qI
 qI
 "}
 (207,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -56401,28 +56401,28 @@ qI
 qI
 "}
 (208,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -56658,28 +56658,28 @@ qI
 qI
 "}
 (209,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -56915,28 +56915,28 @@ qI
 qI
 "}
 (210,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -57172,27 +57172,27 @@ qI
 qI
 "}
 (211,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -57429,27 +57429,27 @@ qI
 qI
 "}
 (212,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -57686,26 +57686,26 @@ qI
 qI
 "}
 (213,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
-aD
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
+nC
+nC
 zt
 zt
 zt
@@ -57943,26 +57943,26 @@ qI
 qI
 "}
 (214,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
-aD
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
+nC
+nC
 zt
 zt
 zt
@@ -58200,25 +58200,25 @@ qI
 qI
 "}
 (215,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
+nC
 zt
 zt
 zt
@@ -58457,24 +58457,24 @@ qI
 qI
 "}
 (216,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
 zt
 zt
 zt
@@ -58714,24 +58714,24 @@ qI
 qI
 "}
 (217,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -58971,24 +58971,24 @@ qI
 qI
 "}
 (218,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -59228,24 +59228,24 @@ qI
 qI
 "}
 (219,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -59485,23 +59485,23 @@ qI
 qI
 "}
 (220,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -59742,23 +59742,23 @@ qI
 qI
 "}
 (221,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -59999,22 +59999,22 @@ qI
 qI
 "}
 (222,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -60256,22 +60256,22 @@ qI
 qI
 "}
 (223,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -60513,21 +60513,21 @@ qI
 qI
 "}
 (224,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -60770,20 +60770,20 @@ qI
 qI
 "}
 (225,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -61027,19 +61027,19 @@ qI
 qI
 "}
 (226,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
+nC
 zt
 zt
 zt
@@ -61284,18 +61284,18 @@ qI
 qI
 "}
 (227,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
+nC
 zt
 zt
 zt
@@ -61541,17 +61541,17 @@ qI
 qI
 "}
 (228,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-aD
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+nC
 zt
 zt
 zt
@@ -61798,16 +61798,16 @@ qI
 qI
 "}
 (229,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -62055,15 +62055,15 @@ qI
 qI
 "}
 (230,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -62312,15 +62312,15 @@ qI
 qI
 "}
 (231,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -62569,14 +62569,14 @@ qI
 qI
 "}
 (232,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -62826,14 +62826,14 @@ qI
 qI
 "}
 (233,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -63083,13 +63083,13 @@ qI
 qI
 "}
 (234,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -63340,13 +63340,13 @@ qI
 qI
 "}
 (235,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -63597,12 +63597,12 @@ qI
 qI
 "}
 (236,1,1) = {"
-Np
-Np
-Np
-Np
-Np
-aD
+hn
+hn
+hn
+hn
+hn
+nC
 zt
 zt
 zt
@@ -63854,12 +63854,12 @@ qI
 qI
 "}
 (237,1,1) = {"
-Np
-Np
-Np
-Np
-aD
-aD
+hn
+hn
+hn
+hn
+nC
+nC
 zt
 zt
 zt
@@ -64111,10 +64111,10 @@ qI
 qI
 "}
 (238,1,1) = {"
-Np
-Np
-Np
-Np
+hn
+hn
+hn
+hn
 zt
 zt
 zt
@@ -64368,9 +64368,9 @@ qI
 qI
 "}
 (239,1,1) = {"
-Np
-Np
-Np
+hn
+hn
+hn
 zt
 zt
 zt
@@ -64625,8 +64625,8 @@ qI
 qI
 "}
 (240,1,1) = {"
-Np
-Np
+hn
+hn
 zt
 zt
 zt
@@ -64882,7 +64882,7 @@ qI
 qI
 "}
 (241,1,1) = {"
-Np
+hn
 zt
 zt
 zt
