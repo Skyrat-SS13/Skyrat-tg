@@ -39,11 +39,9 @@
 	id = "cruiserbrigblastdoor";
 	name = "cruiser blast door"
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 4;
-	icon_state = "pipe11-3"
-	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/brig)
 "aV" = (
@@ -78,6 +76,12 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/brig)
+"bw" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/cruiser/hallway)
 "by" = (
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/structure/cable,
@@ -105,6 +109,7 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/shuttle/syndicate/cruiser/brig)
 "cq" = (
@@ -118,6 +123,10 @@
 	},
 /turf/open/floor/iron,
 /area/shuttle/syndicate/cruiser/brig)
+"cz" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/cruiser/medical)
 "cN" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/structure/cable,
@@ -125,7 +134,8 @@
 /area/shuttle/syndicate/cruiser/brig)
 "cS" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/bridge)
 "df" = (
@@ -148,8 +158,9 @@
 	name = "Engine Bay";
 	req_access_txt = "150"
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/engineering)
 "dG" = (
@@ -179,29 +190,23 @@
 "el" = (
 /turf/closed/wall/r_wall/syndicate/cruiser,
 /area/shuttle/syndicate/cruiser/eva)
-"er" = (
-/obj/machinery/power/terminal,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/shuttle/syndicate/cruiser/engineering)
 "eu" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "ex" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 4;
-	external_pressure_bound = 140;
-	pressure_checks = 0
-	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
 "eI" = (
@@ -215,18 +220,6 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/bridge)
-"eJ" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 4;
-	icon_state = "pipe11-3"
-	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/syndicate/cruiser/hallway)
 "fb" = (
 /obj/machinery/suit_storage_unit/syndicate,
 /turf/open/floor/iron/dark,
@@ -241,6 +234,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/medical)
+"fd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/shuttle/syndicate/cruiser/brig)
 "fq" = (
 /obj/structure/table/reinforced,
 /obj/machinery/power/apc/auto_name/directional/west,
@@ -292,6 +292,7 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 9
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/shuttle/syndicate/cruiser/brig)
 "gr" = (
@@ -306,11 +307,9 @@
 	name = "Medbay";
 	req_access_txt = "150"
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 4;
-	icon_state = "pipe11-3"
-	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/medical)
 "gB" = (
@@ -348,6 +347,14 @@
 /obj/machinery/ammo_workbench/unlocked,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
+"gN" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/shuttle/syndicate/cruiser/brig)
 "hx" = (
 /obj/machinery/light/no_nightlight{
 	dir = 4;
@@ -367,13 +374,20 @@
 /obj/item/mop,
 /turf/open/floor/iron,
 /area/shuttle/syndicate/cruiser/brig)
+"hE" = (
+/obj/machinery/light/no_nightlight{
+	dir = 8;
+	icon_state = "tube"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/cruiser/hallway)
 "hS" = (
 /obj/machinery/power/terminal,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 4;
-	icon_state = "pipe11-3"
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
 "hY" = (
@@ -385,17 +399,6 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/pod/dark,
 /area/shuttle/syndicate/cruiser/medical)
-"ik" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/syndicate/cruiser/hallway)
 "is" = (
 /obj/machinery/sleeper/syndie{
 	dir = 8;
@@ -435,15 +438,15 @@
 "iU" = (
 /turf/closed/wall/r_wall/syndicate/cruiser,
 /area/shuttle/syndicate/cruiser/medical)
-"iZ" = (
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/shuttle/syndicate/cruiser/brig)
 "jd" = (
 /turf/closed/wall/r_wall/syndicate/cruiser,
 /area/shuttle/syndicate/cruiser/airlock)
 "je" = (
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/eva)
 "jg" = (
@@ -452,10 +455,8 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/bridge)
 "jz" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 6;
-	icon_state = "pipe11-3"
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "kc" = (
@@ -481,6 +482,9 @@
 	},
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -26
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
@@ -527,7 +531,8 @@
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "le" = (
@@ -543,6 +548,8 @@
 	},
 /obj/effect/turf_decal/stripes/corner,
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "lp" = (
@@ -564,11 +571,9 @@
 	},
 /obj/structure/cable,
 /obj/structure/fans/tiny,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 8;
-	icon_state = "pipe11-3"
-	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/airlock)
 "lW" = (
@@ -666,37 +671,25 @@
 /turf/open/floor/iron/cafeteria,
 /area/shuttle/syndicate/cruiser/brig)
 "or" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
 /turf/open/floor/iron/dark,
-/area/shuttle/syndicate/cruiser/hallway)
-"ow" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 8;
-	icon_state = "pipe11-3"
-	},
-/turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "ox" = (
 /obj/effect/turf_decal/stripes/white/line,
 /turf/open/floor/iron,
 /area/shuttle/syndicate/cruiser/brig)
 "oD" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 1
-	},
 /obj/machinery/button/door{
 	id = "cruiserhallshutters";
 	name = "Hall Shutters";
 	pixel_x = 0;
 	pixel_y = -22;
 	req_access_txt = "150"
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -717,14 +710,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/engineering)
-"pg" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 4;
-	icon_state = "pipe11-3"
-	},
-/turf/open/floor/iron,
-/area/shuttle/syndicate/cruiser/brig)
 "pm" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -733,7 +718,8 @@
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "pB" = (
@@ -763,10 +749,8 @@
 /area/shuttle/syndicate/cruiser/armory)
 "qf" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 4;
-	icon_state = "pipe11-3"
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "qw" = (
@@ -780,6 +764,8 @@
 	dir = 1
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "qM" = (
@@ -799,11 +785,12 @@
 	dir = 8
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
 /obj/effect/turf_decal/stripes/corner,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "rW" = (
@@ -816,7 +803,7 @@
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/brig)
 "sj" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
 /turf/open/floor/mineral/plastitanium/red,
@@ -835,10 +822,15 @@
 	pixel_x = 26
 	},
 /obj/machinery/atmospherics/components/tank/air{
-	dir = 8
+	dir = 8;
+	piping_layer = 4
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/engineering)
+"tc" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/cruiser/hallway)
 "tr" = (
 /obj/effect/turf_decal/caution/stand_clear,
 /obj/effect/turf_decal/bot,
@@ -925,7 +917,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/bridge)
 "uC" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/bridge)
 "uE" = (
@@ -959,6 +951,8 @@
 	dir = 4
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "vt" = (
@@ -981,18 +975,17 @@
 	name = "Bridge";
 	req_access_txt = "150"
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/bridge)
 "vB" = (
 /obj/effect/turf_decal/caution/stand_clear,
 /obj/effect/turf_decal/bot,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 9;
-	icon_state = "pipe11-3"
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/airlock)
 "vI" = (
@@ -1004,10 +997,8 @@
 /area/shuttle/syndicate/cruiser/brig)
 "vP" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 4;
-	icon_state = "pipe11-3"
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/medical)
 "vW" = (
@@ -1062,10 +1053,9 @@
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/armory)
 "wH" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 4
-	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/shuttle/syndicate/cruiser/brig)
 "wP" = (
@@ -1081,14 +1071,12 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/circuit/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "xd" = (
-/obj/machinery/porta_turret/syndicate/assaultops/shuttle{
-	name = "Defense System Turret";
-	system_id = "cruiser_turrets_outer"
-	},
-/turf/closed/wall/r_wall/syndicate/cruiser,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/bridge)
 "xM" = (
 /obj/machinery/airalarm/syndicate{
@@ -1102,6 +1090,13 @@
 "xT" = (
 /obj/structure/weightmachine/stacklifter,
 /turf/open/floor/plating,
+/area/shuttle/syndicate/cruiser/brig)
+"ya" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron,
 /area/shuttle/syndicate/cruiser/brig)
 "yt" = (
 /obj/structure/table/reinforced,
@@ -1139,7 +1134,8 @@
 	id = "cruiserhallshutters";
 	name = "Hall Shutters"
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "yQ" = (
@@ -1151,6 +1147,10 @@
 /obj/structure/window/reinforced/plasma/plastitanium,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/medical)
+"ze" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/cruiser/hallway)
 "zp" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/iron/dark,
@@ -1183,6 +1183,9 @@
 /obj/item/storage/box/drinkingglasses,
 /turf/open/floor/iron/cafeteria,
 /area/shuttle/syndicate/cruiser/brig)
+"Aa" = (
+/turf/open/floor/plating/airless,
+/area/template_noop)
 "Af" = (
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 9;
@@ -1199,6 +1202,12 @@
 /obj/item/stack/sheet/iron/fifty,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
+"Ao" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/template_noop)
 "At" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -1211,6 +1220,8 @@
 	name = "EVA Storage";
 	req_access_txt = "150"
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/eva)
 "AL" = (
@@ -1220,6 +1231,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/circuit/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "AU" = (
@@ -1260,6 +1272,7 @@
 /area/shuttle/syndicate/cruiser/hallway)
 "BC" = (
 /obj/machinery/light/red,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/engineering)
 "BO" = (
@@ -1293,14 +1306,12 @@
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 4;
-	icon_state = "pipe11-3"
-	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/machinery/door/airlock/highsecurity{
 	name = "Interrogation"
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "Ce" = (
@@ -1323,6 +1334,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/medical)
+"Cq" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/closed/wall/r_wall/syndicate/cruiser,
+/area/shuttle/syndicate/cruiser/hallway)
 "CF" = (
 /obj/machinery/light/cold/no_nightlight{
 	dir = 4;
@@ -1352,15 +1367,17 @@
 	system_id = "cruiser_turrets_outer"
 	},
 /turf/closed/wall/r_wall/syndicate/cruiser,
-/area/shuttle/syndicate/cruiser/medical)
+/area/shuttle/syndicate/cruiser/bridge)
 "Dp" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
 "DE" = (
 /obj/structure/cable,
 /obj/machinery/light/warm/no_nightlight,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/bridge)
 "DR" = (
@@ -1466,18 +1483,12 @@
 /area/shuttle/syndicate/cruiser/bridge)
 "Gq" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 9;
-	icon_state = "pipe11-3"
-	},
 /obj/machinery/power/apc/auto_name/directional/south,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "Gw" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 10;
-	icon_state = "pipe11-3"
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/medical)
 "GQ" = (
@@ -1504,9 +1515,9 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "Hw" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 4;
-	icon_state = "pipe11-3"
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
@@ -1517,6 +1528,9 @@
 "HC" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -1529,10 +1543,8 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/airlock)
 "HJ" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 6;
-	icon_state = "pipe11-3"
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "HR" = (
@@ -1587,6 +1599,10 @@
 	},
 /turf/open/floor/pod/dark,
 /area/shuttle/syndicate/cruiser/medical)
+"Ja" = (
+/obj/structure/marker_beacon/burgundy,
+/turf/open/floor/plating/airless,
+/area/template_noop)
 "Jo" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -1623,6 +1639,8 @@
 	dir = 8
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "JH" = (
@@ -1715,6 +1733,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/shuttle/syndicate/cruiser/brig)
 "LK" = (
@@ -1823,10 +1842,8 @@
 /area/shuttle/syndicate/cruiser/brig)
 "ND" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 4;
-	icon_state = "pipe11-3"
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "NJ" = (
@@ -1882,14 +1899,11 @@
 	name = "Syndicate Radio Intercom";
 	pixel_y = 22
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 6;
-	icon_state = "pipe11-3"
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "Ow" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
@@ -1942,6 +1956,7 @@
 "Pc" = (
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/bridge)
 "Pe" = (
@@ -1999,6 +2014,8 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "PQ" = (
@@ -2095,6 +2112,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "QM" = (
@@ -2113,11 +2132,9 @@
 	id = "cruiserarmoryblastdoor";
 	name = "cruiser blast door"
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 4;
-	icon_state = "pipe11-3"
-	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "Ri" = (
@@ -2170,14 +2187,12 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 4;
-	icon_state = "pipe11-3"
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "Rx" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
@@ -2202,8 +2217,15 @@
 	req_access_txt = "150"
 	},
 /obj/machinery/power/apc/auto_name/directional/south,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/airlock)
+"So" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/template_noop)
 "Sr" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -2224,10 +2246,8 @@
 "Sx" = (
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 4;
-	icon_state = "pipe11-3"
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "Sz" = (
@@ -2248,10 +2268,6 @@
 	dir = 8;
 	icon_state = "tube"
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 1;
-	icon_state = "pipe11-3"
-	},
 /obj/machinery/turretid{
 	control_area = null;
 	name = "Internal Turret Control";
@@ -2259,6 +2275,7 @@
 	req_access = null;
 	req_access_txt = "150"
 	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/airlock)
 "SE" = (
@@ -2267,6 +2284,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/bridge)
 "SH" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/eva)
 "SK" = (
@@ -2436,6 +2454,8 @@
 	dir = 1
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "VI" = (
@@ -2444,9 +2464,6 @@
 	},
 /obj/machinery/recharge_station,
 /obj/machinery/recharge_station,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden{
-	dir = 10
-	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/engineering)
 "VJ" = (
@@ -2487,6 +2504,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/circuit/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "Wx" = (
@@ -2515,6 +2533,11 @@
 "Xh" = (
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/bridge)
+"Xp" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/shuttle/syndicate/cruiser/brig)
 "Xv" = (
 /obj/machinery/door/poddoor/shutters{
 	id = "cruisermedicalshutters";
@@ -2522,6 +2545,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/medical)
+"XA" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/cruiser/eva)
 "XG" = (
 /obj/structure/shuttle/engine/propulsion,
 /obj/effect/turf_decal/stripes/line,
@@ -2565,6 +2594,8 @@
 	name = "Connector to Ship"
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
 "Yi" = (
@@ -2579,6 +2610,7 @@
 "Yx" = (
 /obj/effect/turf_decal/stripes/corner,
 /obj/effect/decal/cleanable/blood/old,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "YJ" = (
@@ -2721,10 +2753,10 @@ NL
 lp
 cq
 Wd
-iO
+fd
 ar
 ox
-iO
+ya
 yx
 oR
 ob
@@ -2754,7 +2786,7 @@ vI
 tF
 cx
 cf
-cf
+gN
 gq
 Lz
 yx
@@ -2766,16 +2798,16 @@ gI
 gj
 LS
 mP
-Ii
-Ii
+So
+So
 "}
 (6,1,1) = {"
 Ii
 Ii
 Ii
 Ii
-aC
-xd
+Mc
+Ms
 Kj
 YO
 YO
@@ -2786,7 +2818,7 @@ mg
 yx
 JD
 JD
-yx
+Xp
 hB
 NL
 WL
@@ -2798,8 +2830,8 @@ kQ
 Yi
 kQ
 Bk
-Ii
-Ii
+Ja
+So
 "}
 (7,1,1) = {"
 Ii
@@ -2818,7 +2850,7 @@ by
 cN
 vt
 sn
-iZ
+wH
 xT
 Er
 BO
@@ -2830,8 +2862,8 @@ Qc
 JJ
 lW
 kQ
-Ii
-Ii
+Aa
+So
 "}
 (8,1,1) = {"
 Ii
@@ -2861,9 +2893,9 @@ Rx
 AL
 Wt
 wQ
-kQ
-Ii
-Ii
+Cq
+Ao
+So
 "}
 (9,1,1) = {"
 Ii
@@ -2882,14 +2914,14 @@ oI
 Ne
 gc
 iO
-pg
+wH
 gG
 Er
 BO
 Fh
 Er
 Sx
-RF
+tc
 Yx
 HC
 YX
@@ -2946,12 +2978,12 @@ TX
 Vn
 nW
 Ri
-eJ
+VG
 Pg
 Qq
 Rv
 Qq
-Hs
+hE
 qf
 ZP
 ZP
@@ -2978,7 +3010,7 @@ or
 RF
 RF
 RF
-eJ
+VG
 RF
 RF
 Rv
@@ -3000,16 +3032,16 @@ Xh
 uC
 cS
 vv
-ik
-ik
+JG
+JG
 qw
 vh
 yI
-ik
 JG
-ik
-ik
-ik
+JG
+JG
+JG
+JG
 QI
 rE
 eu
@@ -3035,19 +3067,19 @@ Ms
 Qn
 RF
 RF
-eJ
+VG
 Rv
 RF
 RF
 RF
 RF
-RF
+bw
 RF
 PI
 RF
 Rv
-RF
-eJ
+ze
+VG
 Pn
 ZP
 dG
@@ -3061,13 +3093,13 @@ pB
 kK
 SE
 la
-Xh
+xd
 Pc
 Ms
 FD
 RF
 EJ
-eJ
+VG
 hx
 tr
 gl
@@ -3080,7 +3112,7 @@ Qo
 gk
 RF
 lk
-ik
+JG
 dE
 Yc
 Dp
@@ -3111,11 +3143,11 @@ At
 el
 el
 RF
-ow
+VG
 Pn
 ZP
 kT
-er
+hS
 pf
 ZP
 af
@@ -3162,7 +3194,7 @@ tV
 Ms
 iz
 RO
-RO
+cz
 Gw
 Ow
 Fu
@@ -3203,7 +3235,7 @@ hY
 IC
 el
 fb
-SH
+XA
 fb
 el
 SB
@@ -3255,9 +3287,9 @@ aC
 Ba
 Ba
 Ba
-Ms
-iU
 Di
+iU
+iU
 iU
 kG
 kG
