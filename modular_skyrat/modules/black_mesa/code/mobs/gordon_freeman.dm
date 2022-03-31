@@ -21,8 +21,20 @@
 	attack_sound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
 	loot = list(/obj/item/crowbar/freeman/ultimate, /obj/item/keycard/freeman_boss_exit)
 
+/obj/structure/xen_pylon/freeman
+	shield_range = 20
 
-
+/obj/structure/xen_pylon/freeman/register_mob(mob/living/simple_animal/hostile/blackmesa/xen/mob_to_register)
+	if(!istype(mob_to_register, /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/gordon_freeman))
+		return
+	shielded_mobs += mob_to_register
+	mob_to_register.shielded = TRUE
+	mob_to_register.shield_count++
+	mob_to_register.update_appearance()
+	var/datum/beam/created_beam = Beam(mob_to_register, icon_state = "red_lightning", time = 10 MINUTES, maxdistance = shield_range)
+	shielded_mobs[mob_to_register] = created_beam
+	RegisterSignal(created_beam, COMSIG_PARENT_QDELETING, .proc/beam_died)
+	RegisterSignal(mob_to_register, COMSIG_PARENT_QDELETING, .proc/mob_died)
 
 /obj/machinery/door/keycard/xen/freeman_boss_entry
 	name = "entry door"

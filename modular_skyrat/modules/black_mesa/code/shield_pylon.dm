@@ -37,7 +37,15 @@
 	. = ..()
 	for(var/mob/living/simple_animal/hostile/blackmesa/xen/iterating_mob in circle_range(src, shield_range))
 		register_mob(iterating_mob)
+	for(var/turf/iterating_turf as anything in circle_range_turfs(src, shield_range))
+		RegisterSignal(iterating_turf, COMSIG_ATOM_ENTERED, .proc/mob_entered_range)
 
+/obj/structure/xen_pylon/proc/mob_entered_range(datum/source, atom/movable/entered_atom)
+	SIGNAL_HANDLER
+	if(!isxenmob(entered_atom))
+		return
+	var/mob/living/simple_animal/hostile/blackmesa/xen/entered_xen_mob = entered_atom
+	register_mob(entered_xen_mob)
 
 /obj/structure/xen_pylon/proc/register_mob(mob/living/simple_animal/hostile/blackmesa/xen/mob_to_register)
 	shielded_mobs += mob_to_register
@@ -55,7 +63,7 @@
 	qdel(beam)
 	shielded_mobs[source] = null
 
-/obj/structure/xen_pylon/proc/beam_died(atom/movable/source, force)
+/obj/structure/xen_pylon/proc/beam_died(datum/source, force)
 	SIGNAL_HANDLER
 	for(var/mob/living/simple_animal/hostile/blackmesa/xen/iterating_mob as anything in shielded_mobs)
 		if(shielded_mobs[iterating_mob] == source)
