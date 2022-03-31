@@ -77,3 +77,40 @@
 	if(istype(blocker, /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/gordon_freeman))
 		return FALSE
 	return TRUE
+
+/datum/outfit/gordon_freeman
+	name = "Gordon Freeman"
+	uniform = /obj/item/clothing/under/misc/hlscience
+	head = /obj/item/clothing/head/helmet/space/hev_suit
+	ears = /obj/item/radio/headset/headset_cent/commander
+	belt = /obj/item/storage/belt/utility/full
+	neck = /obj/item/clothing/neck/tie/horrible
+	shoes = /obj/item/clothing/shoes/combat
+
+	suit = /obj/item/clothing/suit/space/hev_suit
+	suit_store = /obj/item/tank/internals/oxygen
+
+	back = /obj/item/storage/backpack
+
+	backpack_contents = list(/obj/item/gun/ballistic/revolver/mateba, /obj/item/ammo_box/a357 = 5)
+
+	l_hand = /obj/item/crowbar/freeman
+
+	id = /obj/item/card/id/advanced/centcom
+	id_trim = /datum/id_trim/gordon_freeman
+
+/datum/outfit/gordon_freeman/post_equip(mob/living/carbon/human/our_human, visualsOnly)
+	. = ..()
+	var/obj/item/card/id/id_card = our_human.wear_id
+	if(istype(id_card))
+		id_card.registered_name = our_human.real_name
+		id_card.update_label()
+		id_card.update_icon()
+
+/datum/id_trim/gordon_freeman
+	trim_state = "trim_scientist"
+	assignment = "Theoretical Physicist"
+
+/datum/id_trim/gordon_freeman/New()
+	. = ..()
+	access = SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_ALL_STATION))
