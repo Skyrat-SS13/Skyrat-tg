@@ -22,7 +22,7 @@
 	greyscale_config = /datum/greyscale_config/beret
 	greyscale_config_worn = /datum/greyscale_config/beret/worn
 	icon_state = "beret"
-	greyscale_colors = "#eaeaea" "#3b358b"
+	greyscale_colors = "#EAEAEA#353535"
 
 /obj/item/clothing/head/sec/peacekeeper/sergeant
 	name = "peacekeeper sergeant hat"
