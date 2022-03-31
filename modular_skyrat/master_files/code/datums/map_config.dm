@@ -45,7 +45,7 @@
 	/// Type of our day and night controller, can be left blank for none
 	var/day_night_controller_type
 	/// Type of the atmosphere that will be loaded on station
-	var/atmosphere_type = /datum/atmosphere
+	var/atmosphere_type = /datum/atmosphere/lavaland
 	/// Possible rock colors of the loaded map
 	var/list/rock_color
 	/// Possible plant colors of the loaded map
