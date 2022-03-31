@@ -21,9 +21,8 @@
 /obj/item/clothing/head/beret/sec/peacekeeper/white
 	greyscale_config = /datum/greyscale_config/beret
 	greyscale_config_worn = /datum/greyscale_config/beret/worn
-	greyscale_config_worn_teshari = /datum/greyscale_config/beret_badge/worn/teshari
 	icon_state = "beret"
-	greyscale_colors = "#EAEAEA"
+	greyscale_colors = "#eaeaea" "#3b358b"
 
 /obj/item/clothing/head/sec/peacekeeper/sergeant
 	name = "peacekeeper sergeant hat"
