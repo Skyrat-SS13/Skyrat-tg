@@ -47,12 +47,12 @@
 	owner.announce_objectives()
 
 /datum/antagonist/assault_operative/on_gain()
-	give_alias()
 	. = ..()
 	equip_operative()
 	forge_objectives()
 	if(send_to_spawnpoint)
 		move_to_spawnpoint()
+	give_alias()
 
 /datum/antagonist/assault_operative/create_team(datum/team/assault_operatives/new_team)
 	if(!new_team)

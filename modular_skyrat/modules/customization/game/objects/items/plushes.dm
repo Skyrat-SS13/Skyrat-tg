@@ -282,6 +282,46 @@
 	attack_verb_simple = list("weh")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
 	
+/obj/item/toy/plush/blue_dog
+	name = "Blue Dog Plushie"
+	desc = "A devious looking husky that seems to be begging for headpats. It smells faintly of blueberries."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_cobalt"
+	inhand_icon_state = "plushie_cobalt"
+	attack_verb_continuous = list("barks at", "borks at", "woofs at")
+	attack_verb_simple = list("barks at", "borks at", "woofs at")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/bark1.ogg'=1, 'modular_skyrat/modules/emotes/sound/voice/bark2.ogg'=1)
+
+/obj/item/toy/plush/engi_snek
+	name = "Engineering Snek Plushie"
+	desc = "This plush looks like it knows the difference between pumps and pipes! The arm is detachable, so don't lose it!"
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_tyri"
+	inhand_icon_state = "plushie_tyri"
+	attack_verb_continuous = list("fixes", "unbolts","welds")
+	attack_verb_simple = list("fixes", "unbolts","welds")
+	squeak_override = list('sound/items/screwdriver.ogg' = 1, 'sound/items/drill_use.ogg' = 1, 'sound/items/welder.ogg' = 1)
+
+/obj/item/toy/plush/glitch_synth
+	name = "Glitching Synthetic Plushie"
+	desc = "A synthetic plush, the interface seems to glitch out every time you give it a hug or call it cute!"
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_rex"
+	inhand_icon_state = "plushie_rex"
+	attack_verb_continuous = list("beeps", "hugs", "health analyzes")
+	attack_verb_simple = list("beeps", "hugs", "health analyzes")
+	squeak_override = list('sound/machines/twobeep_high.ogg' = 1)
+
+/obj/item/toy/plush/boom_bird
+	name = "Boom Bird Plushie"
+	desc = "This little bird plushie may look like a nerd, but you have the sneaking suspicion it might be valid! Why does your skin start to glow when you hug it?"
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_dima"
+	inhand_icon_state = "plushie_dima"
+	attack_verb_continuous = list("punches", "explodes on", "peeps")
+	attack_verb_simple = list("punches", "explodes on", "peeps")
+	squeak_override = list('sound/machines/sm/accent/delam/1.ogg' = 1)
+	
 /obj/item/toy/plush/blue_cat
 	name = "blue cat plushie"
 	desc = "A bright blue cat plush with neon pink hair, here to hand out kisses wherever kisses need be."

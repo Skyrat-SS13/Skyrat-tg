@@ -68,6 +68,8 @@
 					"icon" = armament_entry.cached_base64,
 					"name" = armament_entry.name,
 					"cost" = armament_entry.cost,
+					"buyable_ammo" = armament_entry.magazine ? TRUE : FALSE,
+					"magazine_cost" = armament_entry.magazine_cost,
 					"quantity" = armament_entry.max_purchase,
 					"purchased" = purchased_items[armament_entry] ? purchased_items[armament_entry] : 0,
 					"description" = armament_entry.description,
@@ -98,21 +100,46 @@
 
 	switch(action)
 		if("equip_item")
-			var/datum/armament_entry/armament_entry
-			for(var/category in GLOB.armament_entries)
-				for(var/subcategory in GLOB.armament_entries[category][CATEGORY_ENTRY])
-					armament_entry = locate(params["armament_ref"]) in GLOB.armament_entries[category][CATEGORY_ENTRY][subcategory]
-					if(armament_entry)
-						break
-				if(armament_entry)
-					break
-			if(!armament_entry)
+			var/check = check_item(params["armament_ref"])
+			if(!check)
 				return
-			if(products && !(armament_entry.type in products))
+			select_armament(usr, check)
+		if("buy_ammo")
+			var/check = check_item(params["armament_ref"])
+			if(!check)
 				return
-			select_armament(usr, armament_entry)
+			buy_ammo(usr, check, params["quantity"])
 		if("eject_card")
 			eject_card(usr)
+
+/obj/machinery/armament_station/proc/buy_ammo(mob/user, datum/armament_entry/armament_entry, quantity = 1)
+	if(!armament_entry.magazine)
+		return
+	if(!inserted_card)
+		to_chat(user, span_warning("No card inserted!"))
+		return
+	var/quantity_cost = armament_entry.magazine_cost * quantity
+	if(!inserted_card.use_points(quantity_cost))
+		to_chat(user, span_warning("Not enough points!"))
+		return
+	for(var/i in 1 to quantity)
+		new armament_entry.magazine(drop_location())
+
+
+/obj/machinery/armament_station/proc/check_item(reference)
+	var/datum/armament_entry/armament_entry
+	for(var/category in GLOB.armament_entries)
+		for(var/subcategory in GLOB.armament_entries[category][CATEGORY_ENTRY])
+			armament_entry = locate(reference) in GLOB.armament_entries[category][CATEGORY_ENTRY][subcategory]
+			if(armament_entry)
+				break
+		if(armament_entry)
+			break
+	if(!armament_entry)
+		return FALSE
+	if(products && !(armament_entry.type in products))
+		return FALSE
+	return armament_entry
 
 /obj/machinery/armament_station/proc/eject_card(mob/user)
 	if(!inserted_card)

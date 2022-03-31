@@ -140,3 +140,16 @@
 	greyscale_config_inhand_left = null
 	greyscale_config_inhand_right = null
 	greyscale_config_worn = null
+
+/obj/item/clothing/under/rank/prisoner/syndicate
+	name = "syndicate prisoner jumpsuit"
+	desc = "A crimson red jumpsuit worn by syndicate captives. Its sensors have been shorted out."
+	greyscale_colors = "#992300"
+	has_sensor = FALSE
+	
+/obj/item/clothing/under/rank/prisoner/skirt/syndicate
+	name = "syndicate prisoner jumpskirt"
+	desc = "A crimson red jumpskirt worn by syndicate captives. Its sensors have been shorted out."
+	greyscale_colors = "#992300"
+	has_sensor = FALSE
+	mutant_variants = NONE

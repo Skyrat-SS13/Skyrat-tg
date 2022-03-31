@@ -292,9 +292,6 @@
 /obj/item/clothing/suit/hazardvest
 	mutant_variants = NONE
 
-/obj/item/clothing/suit/security/officer/russian
-	mutant_variants = NONE
-
 /obj/item/clothing/suit/pirate/captain
 	mutant_variants = NONE
 
@@ -442,7 +439,7 @@
 /obj/item/clothing/suit/yuri
 	mutant_variants = NONE
 
-/obj/item/clothing/suit/security/officer
+/obj/item/clothing/suit/security
 	mutant_variants = NONE
 
 /obj/item/clothing/under/costume/swagoutfit
