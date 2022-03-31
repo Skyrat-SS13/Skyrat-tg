@@ -53,3 +53,13 @@
 	picked_color = "Lime"
 	// set icon_state to make it clear for mappers
 	icon_state = "markerlime-on"
+
+/obj/structure/closet/supplypod/pre_open
+	name = "supply pod"
+	desc = "A pod sent in from outer space."
+	stay_after_drop = TRUE
+	style = STYLE_BLUE
+
+/obj/structure/closet/supplypod/pre_open/Initialize(mapload, customStyle)
+	. = ..()
+	open_pod()
