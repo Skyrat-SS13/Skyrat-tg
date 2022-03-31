@@ -29,6 +29,7 @@
 	name = "cargo technician's long jumpsuit"
 	desc = "For crate-pushers who'd rather protect their legs than show them off."
 	icon_state = "cargo_long"
+	alt_covers_chest = FALSE
 
 /obj/item/clothing/under/rank/cargo/tech/skyrat/gorka
 	name = "supply gorka"
@@ -52,9 +53,7 @@
 	name = "cargo tech casual wear"
 	desc = "A Cargonium brown with matching trousers. It's adjusted for pushing crates."
 	icon_state = "cargotechjean"
-	inhand_icon_state = "lb_suit"
 	can_adjust = FALSE
-	mutant_variants = STYLE_DIGITIGRADE
 
 /////////////////////////////////////////
 ///////////// QUARTERMASTER /////////////
@@ -83,16 +82,16 @@
 	name = "quartermaster's formal jumpsuit"
 	desc = "A white shirt with some Cargoium Brown trousers. Expect to see a shotgun wrapped around it."
 	icon_state = "supply_chief"
-	inhand_icon_state = "lb_suit"
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/cargo/qm/skyrat/formal/skirt
 	name = "quartermaster's formal jumpskirt"
 	desc = "A white shirt with a Cargoium Brown skirt. Expect to see a shotgun wrapped around it."
 	icon_state = "supply_chief"
-	inhand_icon_state = "lb_suit"
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	can_adjust = FALSE
+	body_parts_covered = CHEST|GROIN|ARMS
+	dying_key = DYE_REGISTRY_JUMPSKIRT
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/cargo/qm/skyrat/casual
 	name = "quartermaster's casual wear"
