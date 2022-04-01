@@ -6,6 +6,7 @@
 	icon_living = "vortigaunt"
 	icon_dead = "vortigaunt_dead"
 	icon_gib = null
+	gender = MALE
 	faction = list(FACTION_STATION, "neutral")
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
 	speak_chance = 1
@@ -40,6 +41,7 @@
 		'modular_skyrat/modules/black_mesa/sound/mobs/vortigaunt/alert05.ogg',
 		'modular_skyrat/modules/black_mesa/sound/mobs/vortigaunt/alert06.ogg',
 	)
+	/// SOunds we play when asked to follow/unfollow.
 	var/list/follow_sounds = list(
 		'modular_skyrat/modules/black_mesa/sound/mobs/vortigaunt/village_argue01.ogg',
 		'modular_skyrat/modules/black_mesa/sound/mobs/vortigaunt/village_argue02.ogg',
@@ -48,41 +50,15 @@
 		'modular_skyrat/modules/black_mesa/sound/mobs/vortigaunt/village_argue05.ogg',
 		'modular_skyrat/modules/black_mesa/sound/mobs/vortigaunt/village_argue05a.ogg',
 	)
-	/// The thing we are going to try and follow.
-	var/datum/weakref/following
-	/// The max distance we allow for following.
-	var/max_follow_distance = 20
+	var/follow_speed = 1
+	var/follow_distance = 2
 
-/mob/living/simple_animal/hostile/blackmesa/xen/vortigaunt/examine(mob/user)
+/mob/living/simple_animal/hostile/blackmesa/xen/vortigaunt/Initialize(mapload)
 	. = ..()
-	. += "Right click to get them to follow you."
+	AddComponent(/datum/component/follow, follow_sounds, follow_sounds, follow_distance, follow_speed)
 
-/mob/living/simple_animal/hostile/blackmesa/xen/vortigaunt/AltClick(mob/user)
-	. = ..()
-	if(!isliving(user))
-		return
-	var/mob/living/living_user = user
-	if(!faction_check(living_user.faction, faction))
-		return
-	set_following(living_user)
-
-/mob/living/simple_animal/hostile/blackmesa/xen/vortigaunt/proc/set_following(mob/living/user)
-	playsound(src, pick(follow_sounds), 100)
-	if(following?.resolve())
-		say("No longer following!")
-		following = null
-		LoseTarget()
-	else
-		say("Following you!")
-		following = WEAKREF(user)
-		Goto(user, 1, 1)
-
-/mob/living/simple_animal/hostile/blackmesa/xen/vortigaunt/Life()
-	. = ..()
-	var/user_to_follow = following?.resolve()
-	if(!user_to_follow)
-		return
-	if(get_dist_euclidian(src, user_to_follow) > max_follow_distance)
-		following = null
-		LoseTarget()
-		return
+/mob/living/simple_animal/hostile/blackmesa/xen/vortigaunt/slave
+	name = "slave vortigaunt"
+	desc = "Bound by the shackles of a sinister force. He does not want to hurt you."
+	icon_state = "vortigaunt_slave"
+	faction = list(FACTION_XEN)
