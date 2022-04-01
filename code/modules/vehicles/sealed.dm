@@ -47,7 +47,6 @@
 /obj/vehicle/sealed/proc/mob_try_enter(mob/M)
 	if(!istype(M))
 		return FALSE
-<<<<<<< HEAD
 	if(occupant_amount() >= max_occupants)
 		return FALSE
 	//SKYRAT EDIT ADDITION
@@ -55,10 +54,7 @@
 		to_chat(M, span_warning("You are far too big for this!"))
 		return FALSE
 	//SKYRAT EDIT END
-	if(do_after(M, get_enter_delay(M), src, timed_action_flags = IGNORE_HELD_ITEM))
-=======
 	if(do_after(M, get_enter_delay(M), src, timed_action_flags = IGNORE_HELD_ITEM, extra_checks = CALLBACK(src, .proc/enter_checks, M)))
->>>>>>> 57ab486a10b (Humans no longer "enter" mechs twice (#65819))
 		mob_enter(M)
 		return TRUE
 	return FALSE
