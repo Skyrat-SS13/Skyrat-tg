@@ -52,12 +52,12 @@
 	if(following)
 		if(follow_sounds)
 			playsound(parent_mob, pick(follow_sounds), 100)
-		parent_mob.say("Following you!")
+		INVOKE_ASYNC(parent_mob, /atom/movable.proc/say, "Following you!")
 		parent_mob.Goto(living_user)
 	else
 		if(unfollow_sounds)
 			playsound(parent_mob, pick(unfollow_sounds), 100)
-		parent_mob.say("No longer following!")
+		INVOKE_ASYNC(parent_mob, /atom/movable.proc/say, "No longer following!")
 		parent_mob.LoseTarget()
 
 /datum/component/follow/proc/on_examine(datum/source, mob/examiner, list/examine_text)
