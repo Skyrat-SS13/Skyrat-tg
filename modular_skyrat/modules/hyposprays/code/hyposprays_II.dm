@@ -205,7 +205,7 @@
 			to_chat(user, span_warning("The limb is missing!"))
 			return
 	//Always log attemped injections for admins
-	var/contained = vial.reagents.log_list()
+	var/contained = vial.reagents.get_reagent_log_string()
 	log_combat(user, injectee, "attemped to inject", src, addition="which had [contained]")
 
 	if(!vial)
