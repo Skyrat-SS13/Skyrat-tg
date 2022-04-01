@@ -83,7 +83,7 @@
 	possible_mobs = list(/mob/living/simple_animal/hostile/blackmesa/sec, /mob/living/simple_animal/hostile/blackmesa/sec/ranged)
 
 /obj/effect/random_mob_placer/vortigaunt_hostile
-	icon_state = "spawn_vortigaunt_hostile"
+	icon_state = "spawn_vortigaunt_slave"
 	possible_mobs = list(/mob/living/simple_animal/hostile/blackmesa/xen/vortigaunt/slave)
 
 /obj/effect/random_mob_placer/vortigaunt
