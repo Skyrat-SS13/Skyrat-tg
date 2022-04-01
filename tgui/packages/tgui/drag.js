@@ -53,7 +53,7 @@ const getScreenPosition = () => [
   0 - screenOffset[1],
 ];
 
-const getScreenSize = () => [
+export const getScreenSize = () => [
   window.screen.availWidth * pixelRatio,
   window.screen.availHeight * pixelRatio,
 ];
