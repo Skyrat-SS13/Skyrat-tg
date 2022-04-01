@@ -19,7 +19,7 @@ type GasmixParserProps = {
   pressureOnClick?: () => void;
   reactionOnClick?: (reaction_id: string) => void;
   // Whether we need to show the number of the reaction or not
-  detailedReactions?: boolean; 
+  detailedReactions?: boolean;
 };
 
 export const GasmixParser = (props: GasmixParserProps, context) => {

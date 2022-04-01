@@ -47,7 +47,7 @@
 
 /datum/outfit/lavaland_syndicate/shaftminer
 	name = "Lavaland Syndicate Shaft Miner"
-	uniform = /obj/item/clothing/under/utility/cargo/syndicate
+	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility/syndicate
 	suit = null //Subtype moment
 	r_pocket = /obj/item/storage/bag/ore
 	backpack_contents = list(
@@ -60,7 +60,7 @@
 
 /datum/outfit/lavaland_syndicate/shaftminer/deckofficer
 	name = "Lavaland Syndicate Deck Officer"
-	uniform = /obj/item/clothing/under/rank/cargo/qm/syndie
+	uniform = /obj/item/clothing/under/rank/cargo/qm/skyrat/syndie
 	neck = /obj/item/clothing/neck/cloak/qm/syndie
 	ears = /obj/item/radio/headset/interdyne/command
 	id = /obj/item/card/id/advanced/silver/generic
