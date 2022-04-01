@@ -461,3 +461,11 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/goose_honk.ogg'
+
+/datum/emote/living/tiltsus
+	key = "tiltsus"
+	key_third_person = "tiltsus"
+	message = "tilts their head in the same way that famous american actor, Dwayne The Rock Johnson would, raising an eyebrow."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/emotes/funi.ogg'
