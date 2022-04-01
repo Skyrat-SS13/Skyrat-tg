@@ -138,14 +138,6 @@
 	desc = "A plain grey shirt and black pants - a much more rugged option compared to the jumpsuit."
 	icon_state = "greyshirt"
 
-/obj/item/clothing/under/misc/cargo_long
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	name = "cargo technician's long jumpsuit"
-	desc = "For crate-pushers who'd rather protect their legs than show them off."
-	icon_state = "cargo_long"
-	can_adjust = TRUE
-
 /obj/item/clothing/under/misc/mechanic
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'

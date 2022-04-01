@@ -8,41 +8,55 @@
 	return (((a + epsilon) > b) && ((a - epsilon) < b))
 
 /** A simple rudimentary gasmix to information list converter. Can be used for UIs.
- * Args: 
+ * Args:
  * - gasmix: [/datum/gas_mixture]
  * - name: String used to name the list, optional.
  * Returns: A list parsed_gasmixes with the following structure:
- * - parsed_gasmixes - Assoc List
- * -- Key: name			Value: String			Desc: Gasmix Name
- * -- Key: temperature		Value: Number			Desc: Temperature in kelvins
- * -- Key: volume 			Value: Number			Desc: Volume in liters
- * -- Key: pressure 		Value: Number			Desc: Pressure in kPa
- * -- Key: ref				Value: Text				Desc: The reference for the instantiated gasmix.
- * -- Key: gases			Value: Assoc list		Desc: List of gasses in our gasmix
- * --- Key: gas_name 		Value: Gas Mole			Desc: Gas Name - Gas Amount pair
+ * - parsed_gasmixes    Value: Assoc List     Desc: The thing we return
+ * -- Key: name         Value: String         Desc: Gasmix Name
+ * -- Key: temperature  Value: Number         Desc: Temperature in kelvins
+ * -- Key: volume       Value: Number         Desc: Volume in liters
+ * -- Key: pressure     Value: Number         Desc: Pressure in kPa
+ * -- Key: ref          Value: String         Desc: The reference for the instantiated gasmix.
+ * -- Key: gases        Value: Numbered list  Desc: List of gasses in our gasmix
+ * --- Key: 1           Value: String         Desc: gas id var from the gas
+ * --- Key: 2           Value: String         Desc: Human readable gas name.
+ * --- Key: 3           Value: Number         Desc: Mol amount of the gas.
+ * -- Key: gases        Value: Numbered list  Desc: Assoc list of reactions that occur inside.
+ * --- Key: 1           Value: String         Desc: reaction id var from the gas.
+ * --- Key: 2           Value: String         Desc: Human readable reaction name.
+ * --- Key: 3           Value: Number         Desc: The number associated with the reaction.
  * Returned list should always be filled with keys even if value are nulls.
  */
 /proc/gas_mixture_parser(datum/gas_mixture/gasmix, name)
 	. = list(
 		"gases" = list(),
+		"reactions" = list(),
 		"name" = name,
 		"total_moles" = null,
 		"temperature" = null,
 		"volume"= null,
 		"pressure"= null,
-		"ref" = null,
-		)
+		"reference" = null,
+	)
 	if(!gasmix)
 		return
-	for(var/gas_id in gasmix.gases)
-		.["gases"][gasmix.gases[gas_id][GAS_META][META_GAS_NAME]] = gasmix.gases[gas_id][MOLES]
+	for(var/gas_path in gasmix.gases)
+		.["gases"] += list(list(
+			gasmix.gases[gas_path][GAS_META][META_GAS_ID],
+			gasmix.gases[gas_path][GAS_META][META_GAS_NAME],
+			gasmix.gases[gas_path][MOLES],
+		))
+	for(var/datum/gas_reaction/reaction_result as anything in gasmix.reaction_results)
+		.["reactions"] += list(list(
+			initial(reaction_result.id),
+			initial(reaction_result.name),
+			gasmix.reaction_results[reaction_result],
+		))
 	.["total_moles"] = gasmix.total_moles()
 	.["temperature"] = gasmix.temperature
 	.["volume"] = gasmix.volume
 	.["pressure"] = gasmix.return_pressure()
-<<<<<<< HEAD
-	.["ref"] = REF(gasmix)
-=======
 	.["reference"] = REF(gasmix)
 
 GLOBAL_LIST_EMPTY(reaction_handbook)
@@ -70,8 +84,8 @@ GLOBAL_LIST_EMPTY(gas_handbook)
 		gas_info["specific_heat"] = meta_information[META_GAS_SPECIFIC_HEAT]
 		gas_info["reactions"] = list()
 		momentary_gas_list[gas_path] = gas_info
-	
-	for (var/datum/gas_reaction/reaction_path as anything in subtypesof(/datum/gas_reaction)) 
+
+	for (var/datum/gas_reaction/reaction_path as anything in subtypesof(/datum/gas_reaction))
 		var/datum/gas_reaction/reaction = new reaction_path
 		var/list/reaction_info = list()
 		reaction_info["id"] = reaction.id
@@ -103,7 +117,7 @@ GLOBAL_LIST_EMPTY(gas_handbook)
 			reaction_info["factors"] += list(factor_info)
 		GLOB.reaction_handbook += list(reaction_info)
 		qdel(reaction)
-	
+
 	for (var/gas_info_index in momentary_gas_list)
 		GLOB.gas_handbook += list(momentary_gas_list[gas_info_index])
 
@@ -111,4 +125,3 @@ GLOBAL_LIST_EMPTY(gas_handbook)
 /// For UIs, simply do data += return_atmos_handbooks() to use.
 /proc/return_atmos_handbooks()
 	return list("gasInfo" = GLOB.gas_handbook, "reactionInfo" = GLOB.reaction_handbook)
->>>>>>> 204cbbb736c (Ingame Atmos Reaction Guide (#65271))
