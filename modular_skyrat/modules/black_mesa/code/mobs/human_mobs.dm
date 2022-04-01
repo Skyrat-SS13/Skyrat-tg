@@ -76,8 +76,6 @@
 	icon_gib = "syndicate_gib"
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
-	speak_chance = 10
-	speak = list("Hey, freeman! Over here!")
 	turns_per_move = 5
 	speed = 0
 	stat_attack = HARD_CRIT
@@ -145,8 +143,12 @@
 		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/imstickinghere04.ogg',
 		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/imstickinghere05.ogg',
 	)
+	var/follow_speed = 2
+	var/follow_distance = 2
 
-/mob/living/simple_animal/hostile/blackmesa/sec/Initialize
+/mob/living/simple_animal/hostile/blackmesa/sec/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/follow, follow_sounds, unfollow_sounds, follow_distance, follow_speed)
 
 
 /mob/living/simple_animal/hostile/blackmesa/sec/ranged

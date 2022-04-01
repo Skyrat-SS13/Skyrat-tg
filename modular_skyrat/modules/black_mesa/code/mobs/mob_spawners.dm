@@ -77,3 +77,15 @@
 /obj/effect/random_mob_placer/scientist_zombie
 	icon_state = "spawn_zombiesec"
 	possible_mobs = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/guard)
+
+/obj/effect/random_mob_placer/security_guard
+	icon_state = "spawn_guard"
+	possible_mobs = list(/mob/living/simple_animal/hostile/blackmesa/sec, /mob/living/simple_animal/hostile/blackmesa/sec/ranged)
+
+/obj/effect/random_mob_placer/vortigaunt_hostile
+	icon_state = "spawn_vortigaunt_hostile"
+	possible_mobs = list(/mob/living/simple_animal/hostile/blackmesa/xen/vortigaunt/slave)
+
+/obj/effect/random_mob_placer/vortigaunt
+	icon_state = "spawn_vortigaunt"
+	possible_mobs = list(/mob/living/simple_animal/hostile/blackmesa/xen/vortigaunt)

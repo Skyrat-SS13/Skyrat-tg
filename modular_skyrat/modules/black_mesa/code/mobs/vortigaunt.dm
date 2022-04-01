@@ -19,8 +19,8 @@
 	ranged_message = "fires"
 	taunt_chance = 100
 	turns_per_move = 7
-	maxHealth = 100
-	health = 100
+	maxHealth = 130
+	health = 130
 	speed = 3
 	ranged = TRUE
 	dodging = TRUE

@@ -11,18 +11,26 @@
 	var/list/follow_sounds
 	/// Sounds we play when the mob stops following via alt click.
 	var/list/unfollow_sounds
+	/// The speed at which we follow the user.
+	var/follow_speed = 2
+	/// The distance we keep from the user.
+	var/follow_distance = 1
 	/// Are we currently following? Used for playing sounds.
 	var/following = FALSE
 	/// Our parent mob.
 	var/mob/living/simple_animal/hostile/parent_mob
 
-/datum/component/follow/Initialize(_follow_sounds, _unfollow_sounds, follow_distance = 1, follow_speed = 2)
+/datum/component/follow/Initialize(_follow_sounds, _unfollow_sounds, _follow_distance = 1, _follow_speed = 2)
 	if(!ishostile(parent))
 		return COMPONENT_INCOMPATIBLE
 	if(_follow_sounds)
 		follow_sounds = _follow_sounds
 	if(_unfollow_sounds)
 		unfollow_sounds = _unfollow_sounds
+	if(_follow_distance)
+		follow_distance = _follow_distance
+	if(_follow_speed)
+		follow_speed = _follow_speed
 	RegisterSignal(parent, COMSIG_HOSTILE_MOB_LOST_TARGET, .proc/lost_target)
 	RegisterSignal(parent, COMSIG_CLICK_ALT, .proc/toggle_follow)
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/on_examine)
@@ -32,8 +40,6 @@
 	UnregisterSignal(parent, COMSIG_HOSTILE_MOB_LOST_TARGET)
 	UnregisterSignal(parent, COMSIG_CLICK_ALT)
 	parent_mob = null
-	QDEL_LIST(follow_sounds)
-	QDEL_LIST(unfollow_sounds)
 	return ..()
 
 /datum/component/follow/proc/lost_target()
@@ -49,7 +55,7 @@
 		if(follow_sounds)
 			playsound(parent_mob, pick(follow_sounds), 100)
 		INVOKE_ASYNC(parent_mob, /atom/movable.proc/say, "Following you!")
-		parent_mob.Goto(living_user)
+		parent_mob.Goto(living_user, follow_speed, follow_distance)
 	else
 		if(unfollow_sounds)
 			playsound(parent_mob, pick(unfollow_sounds), 100)
