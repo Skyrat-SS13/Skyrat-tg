@@ -119,13 +119,13 @@
 		/obj/item/clothing/head/beret/cargo/qm/alt = 1,
 		/obj/item/clothing/under/rank/cargo/qm = 1,
 		/obj/item/clothing/under/rank/cargo/qm/skirt = 1,
-		/obj/item/clothing/under/utility/cargo/gorka/head = 1,
-		/obj/item/clothing/under/utility/cargo/turtleneck/head = 1,
+		/obj/item/clothing/under/rank/cargo/qm/skyrat/gorka = 1,
+		/obj/item/clothing/under/rank/cargo/qm/skyrat/turtleneck = 1,
 		/obj/item/clothing/suit/brownfurrich = 1,
-		/obj/item/clothing/under/rank/cargo/qm/casual = 1,
+		/obj/item/clothing/under/rank/cargo/qm/skyrat/casual = 1,
 		/obj/item/clothing/suit/toggle/jacket/supply/head = 1,
-        /obj/item/clothing/under/rank/cargo/qm/formal = 1,
-		/obj/item/clothing/under/rank/cargo/qm/formal/skirt = 1,
+        /obj/item/clothing/under/rank/cargo/qm/skyrat/formal = 1,
+		/obj/item/clothing/under/rank/cargo/qm/skyrat/formal/skirt = 1,
 		/obj/item/clothing/shoes/sneakers/brown = 1
 		)
 
