@@ -21,13 +21,13 @@
 
 /datum/armament_entry/assault_operatives/bodyarmor/swat
 	item_type = /obj/item/clothing/suit/armor/swat
-	cost = 6
+	cost = 5
 
 /datum/armament_entry/assault_operatives/bodyarmor/marine
 	item_type = /obj/item/clothing/suit/armor/vest/marine
-	cost = 10
+	cost = 6
 
 /datum/armament_entry/assault_operatives/bodyarmor/elite_modsuit
 	name = "Elite Syndicate MODsuit"
 	item_type = /obj/item/mod/control/pre_equipped/elite
-	cost = 15
+	cost = 8
