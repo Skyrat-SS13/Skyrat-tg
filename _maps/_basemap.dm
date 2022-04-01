@@ -21,7 +21,6 @@
 		#include "map_files\MetaStation\MetaStation_skyrat.dmm"
 		#include "map_files\IceBoxStation\IceBoxStation_skyrat.dmm"
 		#include "map_files\IceBoxStation\IcemoonUnderground_Above_skyrat.dmm"
-		#include "map_files\IceBoxStation\IcemoonUnderground_Below_skyrat.dmm"
 		#include "map_files\tramstation\tramstation_skyrat.dmm"
 		#include "map_files\Blueshift\BlueShift_upper.dmm"
 		#include "map_files\Blueshift\BlueShift_middle.dmm"
