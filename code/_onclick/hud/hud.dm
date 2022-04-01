@@ -352,7 +352,6 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 			item.icon = new_erp_ui_style
 
 	erp_ui_style = new_erp_ui_style
-	hide_actions_toggle.InitialiseIcon(src)
 
 //SKYRAT EDIT - ADDITION - ERP ICONS FIX - END
 
