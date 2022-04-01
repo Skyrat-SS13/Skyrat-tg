@@ -114,6 +114,39 @@
 		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/annoyance09.ogg',
 		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/annoyance10.ogg'
 	)
+	var/list/follow_sounds = list(
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/leadon01.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/leadon02.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/leadon03.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/leadtheway01.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/leadtheway02.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/leadtheway03.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/leadtheway04.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/leadtheway05.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/leadtheway06.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/leadtheway07.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/leadtheway08.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/letsgo01.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/letsgo02.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/letsgo03.ogg',
+		)
+	var/list/unfollow_sounds = list(
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/holddownspot01.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/holddownspot02.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/holddownspot03.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/holddownspot04.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/holddownspot05.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/illstayhere01.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/illstayhere02.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/illstayhere03.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/imstickinghere01.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/imstickinghere02.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/imstickinghere03.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/imstickinghere04.ogg',
+		'modular_skyrat/modules/black_mesa/sound/mobs/security_guard/imstickinghere05.ogg',
+	)
+
+/mob/living/simple_animal/hostile/blackmesa/sec/Initialize
 
 
 /mob/living/simple_animal/hostile/blackmesa/sec/ranged

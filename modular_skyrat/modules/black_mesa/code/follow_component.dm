@@ -26,6 +26,7 @@
 	RegisterSignal(parent, COMSIG_HOSTILE_MOB_LOST_TARGET, .proc/lost_target)
 	RegisterSignal(parent, COMSIG_CLICK_ALT, .proc/toggle_follow)
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/on_examine)
+	parent_mob = parent
 
 /datum/component/follow/Destroy(force, silent)
 	UnregisterSignal(parent, COMSIG_HOSTILE_MOB_LOST_TARGET)
@@ -39,14 +40,9 @@
 	SIGNAL_HANDLER
 	following = FALSE
 
-/datum/component/follow/proc/toggle_follow(datum/source, mob/user)
+/datum/component/follow/proc/toggle_follow(datum/source, mob/living/living_user)
 	SIGNAL_HANDLER
-	if(!isliving(user))
-		return
-	var/mob/living/living_user = user
-	if(!living_user.can_interact_with(parent_mob))
-		return
-	if(!faction_check(living_user, parent_mob))
+	if(!istype(living_user) || !living_user.canUseTopic(parent_mob, TRUE))
 		return
 	following = !following
 	if(following)
