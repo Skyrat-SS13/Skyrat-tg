@@ -59,7 +59,7 @@
 	light_range = 2
 	light_color = COLOR_VIBRANT_LIME
 	/// How much damage we deal if a mob enters us.
-	var/acid_damage = 50
+	var/acid_damage = 30
 
 /turf/open/water/xen_acid/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
