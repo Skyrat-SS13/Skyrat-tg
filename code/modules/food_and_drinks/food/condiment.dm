@@ -133,10 +133,10 @@
 	icon_state = "saltshakersmall"
 	icon_empty = "emptyshaker"
 	inhand_icon_state = ""
-	possible_transfer_amounts = list(1,20) //for clown turning the lid off
+	possible_transfer_amounts = list(1,100) //for clown turning the lid off //SKYRAT EDIT CHANGE
 	amount_per_transfer_from_this = 1
-	volume = 20
-	list_reagents = list(/datum/reagent/consumable/salt = 20)
+	volume = 100 //SKYRAT EDIT CHANGE
+	list_reagents = list(/datum/reagent/consumable/salt = 100) //SKYRAT EDIT CHANGE
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/food/condiment/saltshaker/suicide_act(mob/user)
