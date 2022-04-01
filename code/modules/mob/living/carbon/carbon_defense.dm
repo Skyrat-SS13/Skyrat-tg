@@ -502,7 +502,6 @@
 			if(HAS_TRAIT(src, TRAIT_BADTOUCH))
 				to_chat(M, span_warning("[src] looks visibly upset as you pat [p_them()] on the head."))
 
-	/* SKYRAT EDIT START - Not even going to start with this one
 	else if ((M.zone_selected == BODY_ZONE_PRECISE_GROIN) && !isnull(src.getorgan(/obj/item/organ/tail)))
 		SEND_SIGNAL(src, COMSIG_CARBON_TAILPULL, M)
 		M.visible_message(span_notice("[M] pulls on [src]'s tail!"), \
@@ -513,7 +512,6 @@
 			to_chat(M, span_warning("[src] makes a grumbling noise as you pull on [p_their()] tail."))
 		else
 			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "tailpulled", /datum/mood_event/tailpulled)
-	*/ // SKYRAT EDIT END
 	else
 		SEND_SIGNAL(src, COMSIG_CARBON_HUGGED, M)
 		SEND_SIGNAL(M, COMSIG_CARBON_HUG, M, src)
