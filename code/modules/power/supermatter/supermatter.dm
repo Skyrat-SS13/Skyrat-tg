@@ -247,6 +247,8 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	///Do we show this crystal in the CIMS modular program
 	var/include_in_cims = TRUE
 
+	var/freonbonus = 0
+
 
 /obj/machinery/power/supermatter_crystal/Initialize(mapload)
 	. = ..()
@@ -490,9 +492,9 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 //this is here to eat arguments
 /obj/machinery/power/supermatter_crystal/proc/call_explode()
 	SIGNAL_HANDLER
-
 	explode()
 
+<<<<<<< HEAD
 /// Consume things that run into the supermatter from the tram. The tram calls forceMove (doesn't call Bump/ed) and not Move, and I'm afraid changing it will do something chaotic
 /obj/machinery/power/supermatter_crystal/proc/tram_contents_consume(datum/source, list/tram_contents)
 	SIGNAL_HANDLER
@@ -1213,6 +1215,8 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	base_icon_state = "darkmatter"
 	icon_state = "darkmatter"
 
+=======
+>>>>>>> 0302ba21b5e (Splits supermatter.dm into multiple files (#65805))
 /obj/machinery/power/supermatter_crystal/proc/supermatter_pull(turf/center, pull_range = 3)
 	playsound(center, 'sound/weapons/marauder.ogg', 100, TRUE, extrarange = pull_range - world.view)
 	for(var/atom/movable/movable_atom in orange(pull_range,center))
@@ -1403,6 +1407,44 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 			child_targets_hit = targets_hit.Copy() //Pass by ref begone
 		supermatter_zap(target, new_range, zap_str, zap_flags, child_targets_hit, zap_cutoff, power_level, zap_icon)
 
+/obj/machinery/power/supermatter_crystal/engine
+	is_main_engine = TRUE
+
+/obj/machinery/power/supermatter_crystal/shard
+	name = "supermatter shard"
+	desc = "A strangely translucent and iridescent crystal that looks like it used to be part of a larger structure."
+	base_icon_state = "darkmatter_shard"
+	icon_state = "darkmatter_shard"
+	anchored = FALSE
+	gasefficency = 0.125
+	explosion_power = 12
+	layer = ABOVE_MOB_LAYER
+	plane = GAME_PLANE_UPPER
+	moveable = TRUE
+	psyOverlay = /obj/overlay/psy/shard
+
+/obj/machinery/power/supermatter_crystal/shard/engine
+	name = "anchored supermatter shard"
+	is_main_engine = TRUE
+	anchored = TRUE
+	moveable = FALSE
+
+// When you wanna make a supermatter shard for the dramatic effect, but
+// don't want it exploding suddenly
+/obj/machinery/power/supermatter_crystal/shard/hugbox
+	name = "anchored supermatter shard"
+	takes_damage = FALSE
+	produces_gas = FALSE
+	power_changes = FALSE
+	processes = FALSE //SHUT IT DOWN
+	moveable = FALSE
+	anchored = TRUE
+
+/obj/machinery/power/supermatter_crystal/shard/hugbox/fakecrystal //Hugbox shard with crystal visuals, used in the Supermatter/Hyperfractal shuttle
+	name = "supermatter crystal"
+	base_icon_state = "darkmatter"
+	icon_state = "darkmatter"
+
 /obj/overlay/psy
 	icon = 'icons/obj/supermatter.dmi'
 	icon_state = "psy"
@@ -1411,10 +1453,6 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 /obj/overlay/psy/shard
 	icon_state = "psy_shard"
 
-#undef HALLUCINATION_RANGE
-#undef GRAVITATIONAL_ANOMALY
-#undef FLUX_ANOMALY
-#undef PYRO_ANOMALY
 #undef BIKE
 #undef COIL
 #undef ROD
