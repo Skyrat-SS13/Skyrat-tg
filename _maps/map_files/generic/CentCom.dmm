@@ -5,6 +5,14 @@
 "ad" = (
 /turf/open/space,
 /area/space)
+"ae" = (
+/obj/machinery/door/window/right/directional/north{
+	dir = 4;
+	name = "Security Desk";
+	req_access_txt = "103"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/centcom/evacuation/ship)
 "al" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -3510,14 +3518,6 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/supply)
-"mh" = (
-/obj/machinery/door/window/northright{
-	dir = 4;
-	name = "Security Desk";
-	req_access_txt = "103"
-	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/centcom/evacuation/ship)
 "mi" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -3570,13 +3570,6 @@
 /area/centcom/courtroom)
 "mo" = (
 /obj/structure/table/wood,
-/turf/open/floor/iron/grimy,
-/area/centcom/courtroom)
-"mq" = (
-/obj/structure/chair{
-	dir = 8
-	},
-/obj/machinery/light/directional/east,
 /turf/open/floor/iron/grimy,
 /area/centcom/courtroom)
 "mr" = (
@@ -4059,6 +4052,13 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/centcom/ferry)
+"of" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/grimy,
+/area/centcom/courtroom)
 "og" = (
 /obj/item/clothing/shoes/galoshes{
 	pixel_y = -8
@@ -8535,6 +8535,21 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/control)
+"Da" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/shower{
+	pixel_y = 16
+	},
+/obj/structure/curtain,
+/obj/machinery/door/window/brigdoor/left/directional/south{
+	name = "Shower"
+	},
+/obj/item/soap/deluxe,
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/turf/open/floor/iron/white,
+/area/centcom/admin)
 "Di" = (
 /turf/closed/indestructible/riveted,
 /area/ai_multicam_room)
@@ -9278,21 +9293,6 @@
 	dir = 8
 	},
 /turf/open/floor/iron/grimy,
-/area/centcom/admin)
-"HW" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/shower{
-	pixel_y = 16
-	},
-/obj/structure/curtain,
-/obj/machinery/door/window/brigdoor/southleft{
-	name = "Shower"
-	},
-/obj/item/soap/deluxe,
-/obj/machinery/atmospherics/components/unary/vent_pump/on,
-/turf/open/floor/iron/white,
 /area/centcom/admin)
 "Ir" = (
 /obj/machinery/computer/emergency_shuttle{
@@ -10529,6 +10529,15 @@
 	initial_gas_mix = "TEMP=2.7"
 	},
 /area/centcom/holding)
+"NT" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/machinery/light/directional/west,
+/obj/machinery/computer/security/telescreen/entertainment/directional/north,
+/obj/machinery/newscaster/directional/west,
+/turf/open/floor/iron/white,
+/area/centcom/admin)
 "NU" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom"
@@ -13589,15 +13598,6 @@
 	},
 /obj/item/stamp,
 /turf/open/floor/iron/grimy,
-/area/centcom/admin)
-"XX" = (
-/obj/structure/toilet{
-	dir = 4
-	},
-/obj/machinery/light/directional/west,
-/obj/machinery/computer/security/telescreen/entertainment/directional/north,
-/obj/machinery/newscaster/directional/west,
-/turf/open/floor/iron/white,
 /area/centcom/admin)
 "Ya" = (
 /turf/closed/indestructible/riveted,
@@ -40575,7 +40575,7 @@ KV
 Lg
 Lm
 Lg
-mh
+ae
 Lt
 KH
 KH
@@ -52060,7 +52060,7 @@ aa
 aa
 aa
 On
-XX
+NT
 TW
 fG
 nA
@@ -52317,7 +52317,7 @@ aa
 aa
 aa
 On
-HW
+Da
 fP
 On
 Qg
@@ -66450,7 +66450,7 @@ zo
 pc
 Xc
 KD
-mq
+of
 na
 dp
 gC
