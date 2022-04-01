@@ -531,11 +531,13 @@
 
 	teleport_effect(officer.loc)
 
-	var/list/turf_list = list()
+	var/static/list/turf_list
 
-	for(var/turf/turf_in_area in get_area_turfs(/area/security/brig))
-		if(!turf_in_area.is_blocked_turf())
-			turf_list += turf_in_area
+	if(!turf_list)
+		turf_list = list()
+		for(var/turf/turf_in_area in get_area_turfs(/area/security/brig))
+			if(!turf_in_area.is_blocked_turf())
+				turf_list += turf_in_area
 
 	officer.visible_message(span_notice("[officer] teleports to back to security, reestablishing a calm medbay environment!"))
 
