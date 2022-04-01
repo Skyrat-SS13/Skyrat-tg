@@ -605,7 +605,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/soviet
 	name = "Soviet Coat"
-	item_path = /obj/item/clothing/suit/brownbattlecoat
+	item_path = /obj/item/clothing/suit/soviet
 
 /datum/loadout_item/suit/allies
 	name = "Allies Coat"

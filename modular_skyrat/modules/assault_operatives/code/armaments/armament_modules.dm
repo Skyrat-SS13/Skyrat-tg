@@ -16,4 +16,13 @@
 /datum/armament_entry/assault_operatives/modules/energy_shield
 	description = "Projects three self recharging forcefields around the suit, protecting the user from incoming attacks."
 	item_type = /obj/item/mod/module/energy_shield
-	cost = 5
+	cost = 8
+	
+/datum/armament_entry/assault_operatives/modules/cloak
+	item_type = /obj/item/mod/module/stealth
+	cost = 4
+	
+/datum/armament_entry/assault_operatives/modules/carry
+	item_type = /obj/item/mod/module/quick_carry
+	cost = 2
+
