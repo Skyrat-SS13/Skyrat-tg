@@ -96,6 +96,7 @@
 
 /obj/item/storage/briefcase/medicalgunset/standard/PopulateContents()
 	new /obj/item/gun/energy/cell_loaded/medigun/standard(src)
+	new /obj/item/weaponcell/medical/utility/sec_remover(src)
 	new /obj/item/book/manual/wiki/mediguns(src)
 
 /obj/item/storage/briefcase/medicalgunset/cmo
@@ -108,6 +109,7 @@
 	new /obj/item/weaponcell/medical/brute(src)
 	new /obj/item/weaponcell/medical/burn(src)
 	new /obj/item/weaponcell/medical/toxin(src)
+	new /obj/item/weaponcell/medical/utility/sec_remover(src)
 	new /obj/item/book/manual/wiki/mediguns(src)
 
 /*
