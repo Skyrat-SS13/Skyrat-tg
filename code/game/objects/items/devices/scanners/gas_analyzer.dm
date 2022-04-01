@@ -31,6 +31,7 @@
 	user.visible_message(span_suicide("[user] begins to analyze [user.p_them()]self with [src]! The display shows that [user.p_theyre()] dead!"))
 	return BRUTELOSS
 
+/* //SKYRAT EDIT REMOVAL - THIS IS COMMENTED UNTIL I FIGURE OUT A CLEAN WAY TO MAKE THIS WORK
 /obj/item/analyzer/AltClick(mob/user) //Barometer output for measuring when the next storm happens
 	..()
 
@@ -74,6 +75,7 @@
 				to_chat(user, span_warning("[src]'s barometer function says a storm will land in approximately [butchertime(fixed)]."))
 		cooldown = TRUE
 		addtimer(CALLBACK(src,/obj/item/analyzer/proc/ping), cooldown_time)
+*/
 
 /obj/item/analyzer/proc/ping()
 	if(isliving(loc))
@@ -125,7 +127,7 @@
 
 /**
  * Outputs a message to the user describing the target's gasmixes.
- * 
+ *
  * Gets called by analyzer_act, which in turn is called by tool_act.
  * Also used in other chat-based gas scans.
  */
@@ -133,7 +135,7 @@
 	var/mixture = target.return_analyzable_air()
 	if(!mixture)
 		return FALSE
-	
+
 	var/icon = target
 	var/message = list()
 	if(!silent && isliving(user))
@@ -158,7 +160,7 @@
 
 		if(total_moles > 0)
 			message += span_notice("Moles: [round(total_moles, 0.01)] mol")
-				
+
 			var/list/cached_gases = air.gases
 			for(var/id in cached_gases)
 				var/gas_concentration = cached_gases[id][MOLES]/total_moles
@@ -168,7 +170,7 @@
 			message += span_notice("Pressure: [round(pressure, 0.01)] kPa")
 		else
 			message += airs.len > 1 ? span_notice("This node is empty!") : span_notice("[target] is empty!")
-		
+
 		if(tool)
 			tool.last_gasmix_data += list(gas_mixture_parser(air, mix_name))
 
