@@ -16,12 +16,13 @@
 	turns_per_move = 7
 	maxHealth = 100
 	health = 100
-	speed = 2
+	speed = 3
 	ranged = TRUE
 	dodging = TRUE
+	ranged_cooldown_time = 4 SECONDS
 	harm_intent_damage = 15
-	melee_damage_lower = 10
-	melee_damage_upper = 10
+	melee_damage_lower = 5
+	melee_damage_upper = 5
 	retreat_distance = 5
 	minimum_distance = 5
 	attack_sound = 'sound/weapons/bite.ogg'

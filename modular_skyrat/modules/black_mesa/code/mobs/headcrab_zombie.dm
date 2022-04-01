@@ -3,8 +3,10 @@
 	desc = "This unlucky person has had a headcrab latch onto their head. Ouch."
 	icon = 'modular_skyrat/modules/black_mesa/icons/mobs.dmi'
 	icon_state = "zombie"
+	icon_living = "zombie"
 	maxHealth = 110
 	health = 110
+	icon_gib = null
 	icon_dead = "zombie_dead"
 	speak_chance = 1
 	speak_emote = list("growls")
@@ -33,11 +35,14 @@
 	name = "zombified scientist"
 	desc = "Even after death, I still have to wear this horrible tie!"
 	icon_state = "scientist_zombie"
+	icon_living = "scientist_zombie"
+
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/guard
 	name = "zombified guard"
 	desc = "About that brain I owed ya!"
 	icon_state = "security_zombie"
+	icon_living = "security_zombie"
 	maxHealth = 140 // Armor!
 	health = 140
 
@@ -45,6 +50,7 @@
 	name = "zombified hazardous environment specialist"
 	desc = "User death... surpassed."
 	icon_state = "hev_zombie"
+	icon_living = "hev_zombie"
 	maxHealth = 250
 	health = 250
 	alert_sounds = list(
