@@ -6208,8 +6208,13 @@
 /turf/closed/wall,
 /area/security/courtroom)
 "ave" = (
-/obj/docking_port/stationary/huge{
-	dir = 8
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 11;
+	height = 22;
+	id = "whiteship_home";
+	name = "SS13: Auxiliary Dock, Station-Port";
+	width = 35
 	},
 /turf/open/space/basic,
 /area/space)
@@ -63229,13 +63234,11 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/sign/warning/vacuum/external{
 	pixel_x = -32
-	},
-/obj/machinery/computer/shuttle_purchase{
-	dir = 4
 	},
 /turf/open/floor/plating,
 /area/cargo/warehouse)

@@ -11513,16 +11513,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
-"dnj" = (
-/obj/structure/table,
-/obj/item/paper_bin{
-	pixel_y = 3
-	},
-/obj/item/pen{
-	pixel_y = 3
-	},
-/turf/open/floor/glass/reinforced,
-/area/hallway/secondary/exit)
 "dnP" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
@@ -25408,12 +25398,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/aft/upper)
-"iDg" = (
-/obj/machinery/computer/shuttle_purchase{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/textured_large,
-/area/hallway/secondary/exit)
 "iDm" = (
 /obj/machinery/disposal/bin,
 /obj/machinery/light_switch/directional/east,
@@ -34493,8 +34477,13 @@
 /turf/open/floor/iron/dark,
 /area/maintenance/department/medical)
 "lSZ" = (
-/obj/docking_port/stationary/huge{
-	dir = 8
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 11;
+	height = 22;
+	id = "whiteship_home";
+	name = "SS13: Auxiliary Dock, Station-Port";
+	width = 35
 	},
 /turf/open/space/openspace,
 /area/space)
@@ -48986,7 +48975,9 @@
 /turf/open/floor/carpet/green,
 /area/command/heads_quarters/captain/private/nt_rep)
 "rzf" = (
-/turf/open/floor/glass/reinforced,
+/turf/open/floor/glass/reinforced{
+	initial_gas_mix = "TEMP=2.7"
+	},
 /area/hallway/secondary/exit)
 "rzq" = (
 /obj/structure/cable,
@@ -58424,11 +58415,6 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/wood,
 /area/blueshield)
-"van" = (
-/obj/structure/table,
-/obj/machinery/cell_charger,
-/turf/open/floor/glass/reinforced,
-/area/hallway/secondary/exit)
 "vaq" = (
 /obj/structure/safe,
 /obj/item/storage/secure/briefcase{
@@ -63507,12 +63493,6 @@
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/plating,
 /area/maintenance/fore/upper)
-"wRg" = (
-/obj/machinery/modular_computer/console/preset/civilian{
-	dir = 4
-	},
-/turf/open/floor/glass/reinforced,
-/area/hallway/secondary/exit)
 "wRx" = (
 /obj/structure/chair,
 /obj/effect/turf_decal/stripes/line{
@@ -84997,8 +84977,8 @@ vlC
 yir
 yir
 yir
-hbB
-rDH
+vlC
+ybV
 hbB
 dcB
 hbB
@@ -85254,9 +85234,9 @@ xuf
 yir
 yir
 yir
+xuf
+wtr
 rDH
-wRg
-iDg
 rzf
 rDH
 ylQ
@@ -85511,9 +85491,9 @@ xuf
 wtr
 wtr
 wtr
+xuf
+wtr
 rDH
-dnj
-sQf
 rzf
 rDH
 ylQ
@@ -85768,9 +85748,9 @@ xuf
 wtr
 wtr
 wtr
+xuf
+wtr
 rDH
-van
-sQf
 rzf
 rDH
 xuf
@@ -86025,8 +86005,8 @@ ybV
 ybV
 ybV
 ybV
-hbB
-rDH
+ybV
+xrt
 hbB
 sHi
 hbB
