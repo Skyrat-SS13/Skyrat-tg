@@ -57,7 +57,7 @@
 /obj/item/radio/headset/headset_bs/alt
 	icon_state = "bshield_headset_alt"
 
-/obj/item/radio/headset/headset_sec/alt/ComponentInitialize()
+/obj/item/radio/headset/headset_bs/alt/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
