@@ -46,18 +46,16 @@
 /mob/living/carbon/proc/shock_dying(last_bpm, pulsetimer)
 	if(!in_shock || stat == DEAD)
 		return
-	if(can_leave_shock(last_bpm))
+	if(can_leave_shock(last_bpm) && stat != DEAD)
 		in_shock = FALSE
 		set_stat(CONSCIOUS)
 		to_chat(src, span_hypnophrase("You body tingles painfully as your nerves come back..."))
-	else if(!can_leave_shock(last_bpm))
-		if(stat != SOFT_CRIT)
-			set_stat(SOFT_CRIT)
+	else
 		current_pain_message_helper("Shock")
 		losebreath += 0.25
 	flow_rate = clamp(flow_rate - losebreath, FLOW_RATE_DEAD, FLOW_RATE_ARREST) // Double negative when in crit?
 
-	if(flow_rate <= 0 && stat != DEAD)
+	if(flow_rate <= 0)
 		adjustOrganLoss(ORGAN_SLOT_BRAIN, losebreath)
 
 
@@ -72,7 +70,7 @@
 	if(lastpainmessage)
 		return
 	lastpainmessage = TRUE
-	addtimer(CALLBACK(src, .proc/resetpainmsg), 15 SECONDS)
+	addtimer(CALLBACK(src, .proc/resetpainmsg), 45 SECONDS)
 	var/list/close2death = list("a human", "a moth", "a felinid", "a lizard", "a particularly resilient slime", "a syndicate agent", "a clown", "a mime", "a mortal foe", "an innocent bystander")
 
 	switch(current_pain)
@@ -103,11 +101,13 @@
 		if(FLOW_RATE_ARREST)
 			if(stat != HARD_CRIT || stat != SOFT_CRIT && !HAS_TRAIT(src, TRAIT_NOSOFTCRIT))
 				set_stat(SOFT_CRIT)
+				to_chat(src, "shock_helper made us [SOFT_CRIT]")
 				in_shock = TRUE
 //				shock_dying(flow_rate, pulsetimer)
 				current_pain_message_helper("Soft-crit")
-			if(health == hardcrit_threshold || stat != HARD_CRIT && !HAS_TRAIT(src, TRAIT_NOHARDCRIT))
+			if(calc_pain() > hardcrit_threshold || stat != HARD_CRIT && !HAS_TRAIT(src, TRAIT_NOHARDCRIT)) // testing..
 				set_stat(HARD_CRIT)
+				to_chat(src, "shock_helper made us [HARD_CRIT]")
 				in_shock = TRUE
 				current_pain_message_helper("Dying")
 

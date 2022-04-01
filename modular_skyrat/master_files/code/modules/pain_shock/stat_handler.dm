@@ -5,7 +5,8 @@
 	if(should_be_critical(new_stat))
 		ADD_TRAIT(src, TRAIT_HANDS_BLOCKED, STAT_TRAIT)
 		ADD_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
-		if(flow_rate <= 80)
+		to_chat(src, "my fancy set_start ran and we're supposed to be [new_stat] according to it")
+		if(flow_rate <= 60)
 			ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
 			ADD_TRAIT(src, TRAIT_FLOORED, STAT_TRAIT)
 		if(stat == DEAD)
@@ -25,7 +26,7 @@
 				if(stat >= UNCONSCIOUS)
 					REMOVE_TRAIT(src, TRAIT_FLOORED, STAT_TRAIT)
 					REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_KNOCKEDOUT)
-			if(UNCONSCIOUS)
+/* 			if(UNCONSCIOUS)
 				if(stat == DEAD)
 					consider_the_score(new_stat)
 				if(stat != HARD_CRIT)
@@ -35,7 +36,7 @@
 					ADD_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
 				else
 					REMOVE_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
-					cure_blind(UNCONSCIOUS_TRAIT)
+					cure_blind(UNCONSCIOUS_TRAIT) */
 			if(DEAD)
 				ADD_TRAIT(src, TRAIT_FLOORED, STAT_TRAIT)
 				REMOVE_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
@@ -57,5 +58,6 @@
 	if(health <= hardcrit_threshold || stat == DEAD)
 		answer = TRUE
 	if(new_stat == SOFT_CRIT || new_stat == HARD_CRIT || new_stat == DEAD)
+		to_chat(src, "Ya??")
 		answer = TRUE
 	return answer
