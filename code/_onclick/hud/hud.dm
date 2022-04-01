@@ -14,9 +14,8 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	"Clockwork" = 'icons/hud/screen_clockwork.dmi',
 	"Glass" = 'icons/hud/screen_glass.dmi'
 ))
-
+/*
 //SKYRAT EDIT - ADDITION - ERP ICONS FIX
-
 GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	"Midnight" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/midnight.dmi',
 	"Retro" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/retro.dmi',
@@ -26,19 +25,18 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	"Clockwork" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/clockwork.dmi',
 	"Glass" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/glass.dmi'
 ))
-
 //SKYRAT EDIT - ADDITION - ERP ICONS FIX - END
-
+*/
 /proc/ui_style2icon(ui_style)
 	return GLOB.available_ui_styles[ui_style] || GLOB.available_ui_styles[GLOB.available_ui_styles[1]]
-
+/*
 //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 
 /proc/erp_ui_style2icon(ui_style)
 	return GLOB.available_erp_ui_styles[ui_style] || GLOB.available_erp_ui_styles[GLOB.available_erp_ui_styles[1]]
 
 //SKYRAT EDIT - ADDITION - ERP ICONS FIX - END
-
+*/
 /datum/hud
 	var/mob/mymob
 
@@ -163,11 +161,13 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	action_intent = null
 	zone_select = null
 	pull_icon = null
-
+	
 	QDEL_LIST(toggleable_inventory)
+/*
 	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 	QDEL_LIST(erp_toggleable_inventory) // Destroy ERP stuff
 	//SKYRAT EDIT ADDITION END
+*/
 	QDEL_LIST(hotkeybuttons)
 	throw_icon = null
 	QDEL_LIST(infodisplay)
@@ -231,10 +231,12 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 				screenmob.client.screen += static_inventory
 			if(toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.inventory_shown)
 				screenmob.client.screen += toggleable_inventory
+/*
 			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 			if(erp_toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 				screenmob.client.screen += erp_toggleable_inventory
 			//SKYRAT EDIT ADDITION END
+*/
 			if(hotkeybuttons.len && !hotkey_ui_hidden)
 				screenmob.client.screen += hotkeybuttons
 			if(infodisplay.len)
@@ -251,10 +253,12 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 				screenmob.client.screen -= static_inventory
 			if(toggleable_inventory.len)
 				screenmob.client.screen -= toggleable_inventory
+/*
 			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 			if(erp_toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 				screenmob.client.screen -= erp_toggleable_inventory
 			//SKYRAT EDIT ADDITION END
+*/
 			if(hotkeybuttons.len)
 				screenmob.client.screen -= hotkeybuttons
 			if(infodisplay.len)
@@ -275,10 +279,12 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 				screenmob.client.screen -= static_inventory
 			if(toggleable_inventory.len)
 				screenmob.client.screen -= toggleable_inventory
+/*
 			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 			if(toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 				screenmob.client.screen -= erp_toggleable_inventory
 			//SKYRAT EDIT ADDITION END
+*/
 			if(hotkeybuttons.len)
 				screenmob.client.screen -= hotkeybuttons
 			if(infodisplay.len)
@@ -339,7 +345,7 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 
 	ui_style = new_ui_style
 	build_hand_slots()
-
+/*
 //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 
 /datum/hud/proc/update_erp_ui_style(new_erp_ui_style)
@@ -354,7 +360,7 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	erp_ui_style = new_erp_ui_style
 
 //SKYRAT EDIT - ADDITION - ERP ICONS FIX - END
-
+*/
 //Triggered when F12 is pressed (Unless someone changed something in the DMF)
 /mob/verb/button_pressed_F12()
 	set name = "F12"
