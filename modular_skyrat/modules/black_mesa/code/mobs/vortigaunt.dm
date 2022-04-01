@@ -6,7 +6,7 @@
 	icon_living = "vortigaunt"
 	icon_dead = "vortigaunt_dead"
 	icon_gib = null
-	faction = list(FACTION_STATION, FACTION_NONE)
+	faction = list(FACTION_STATION, "neutral")
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
 	speak_chance = 1
 	speak_emote = list("galungs")
@@ -59,8 +59,6 @@
 
 /mob/living/simple_animal/hostile/blackmesa/xen/vortigaunt/AltClick(mob/user)
 	. = ..()
-	if(!can_interact(user))
-		return
 	if(!isliving(user))
 		return
 	var/mob/living/living_user = user
@@ -73,9 +71,11 @@
 	if(following?.resolve())
 		say("No longer following!")
 		following = null
+		LoseTarget()
 	else
 		say("Following you!")
 		following = WEAKREF(user)
+		Goto(user, 1, 1)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/vortigaunt/Life()
 	. = ..()
@@ -84,6 +84,5 @@
 		return
 	if(get_dist_euclidian(src, user_to_follow) > max_follow_distance)
 		following = null
+		LoseTarget()
 		return
-	step_towards(src, user_to_follow)
-
