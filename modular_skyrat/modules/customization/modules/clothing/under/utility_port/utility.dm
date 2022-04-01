@@ -33,35 +33,6 @@
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
 	has_sensor = NO_SENSORS
 
-/obj/item/clothing/under/utility/cargo
-	name = "supply utility uniform"
-	desc = "A utility uniform worn by Supply and Delivery services."
-	icon_state = "util_cargo"
-
-/obj/item/clothing/under/utility/cargo/syndicate
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
-	has_sensor = NO_SENSORS
-
-/obj/item/clothing/under/utility/cargo/gorka
-	name = "supply gorka"
-	desc = "A fancy gorka worn by Supply and Delivery services."
-	icon_state = "gorka_cargo"
-
-/obj/item/clothing/under/utility/cargo/turtleneck
-	name = "supply turtleneck"
-	desc = "A snug turtleneck sweater worn by Supply and Delivery services."
-	icon_state = "turtleneck_cargo"
-
-/obj/item/clothing/under/utility/cargo/gorka/head
-	name = "quartermaster's gorka"
-	desc = "A fancy gorka worn by Supply and Delivery's head of staff, as shown by the fancy silver badge."
-	icon_state = "gorka_qm"
-
-/obj/item/clothing/under/utility/cargo/turtleneck/head
-	name = "quartermaster's turtleneck"
-	desc = "A snug turtleneck sweater worn by Supply and Delivery's head of staff, as shown by the fancy silver badge."
-	icon_state = "turtleneck_qm"
-
 /obj/item/clothing/under/utility/sec
 	name = "security utility uniform"
 	desc = "A utility uniform worn by Security officers."
