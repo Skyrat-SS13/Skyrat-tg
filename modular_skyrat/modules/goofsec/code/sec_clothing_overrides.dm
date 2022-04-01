@@ -428,6 +428,10 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "security_wintercoat_hood"
 
+/obj/item/clothing/head/hooded/winterhood/security/hos	//Need to quickly re-define this bc it should still use the winterhood file
+	icon = 'icons/obj/clothing/head/winterhood.dmi'
+	worn_icon = 'icons/mob/clothing/head/winterhood.dmi'
+
 /obj/item/clothing/suit/hooded/wintercoat/security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
@@ -536,7 +540,7 @@
 		to_chat(H, span_alertwarning("Lopland Peacekeeper uniforms don't include a Skirt variant! You've been equipped with a jumpsuit instead."))
 		uniform = /obj/item/clothing/under/rank/security/officer
 
-/datum/outfit/job/head_of_security/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/hos/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	if(H.jumpsuit_style == PREF_SKIRT)
 		to_chat(H, span_alertwarning("Lopland Peacekeeper uniforms don't include a Skirt variant! You've been equipped with a jumpsuit instead."))
@@ -657,7 +661,7 @@
 /obj/item/clothing/under/rank/security/head_of_security/parade/female/redsec
 	icon = 'icons/obj/clothing/under/security.dmi'
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
-	icon_state = "hos_parade_fem_blue"
+	icon_state = "hos_parade_fem"
 
 //Winter Coat
 /obj/item/clothing/head/hooded/winterhood/security/redsec
