@@ -537,7 +537,7 @@
 		if(!turf_in_area.is_blocked_turf())
 			turf_list += turf_in_area
 
-	officer.visible_message(span_notice("[officer] teleports to back to security, reestablishing a calm medbay enviorment!"))
+	officer.visible_message(span_notice("[officer] teleports to back to security, reestablishing a calm medbay environment!"))
 
 	do_teleport(officer, pick(turf_list))
 
