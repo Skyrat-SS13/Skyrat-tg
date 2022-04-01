@@ -1027,33 +1027,6 @@
 		return FALSE
 	return ..()
 
-<<<<<<< HEAD
-	visible_message(span_notice("[M] starts to climb into [name]."))
-
-	if(do_after(M, enter_delay, target = src))
-		if(atom_integrity <= 0)
-			to_chat(M, span_warning("You cannot get in the [name], it has been destroyed!"))
-		else if(LAZYLEN(occupants) >= max_occupants)
-			to_chat(M, span_danger("[occupants[length(occupants)]] was faster! Try better next time, loser."))//get the last one that hopped in
-		else if(M.buckled)
-			to_chat(M, span_warning("You can't enter the exosuit while buckled."))
-		else if(M.has_buckled_mobs())
-			to_chat(M, span_warning("You can't enter the exosuit with other creatures attached to you!"))
-		else
-			moved_inside(M)
-			return ..()
-	else
-		to_chat(M, span_warning("You stop entering the exosuit!"))
-
-
-/obj/vehicle/sealed/mecha/generate_actions()
-	initialize_passenger_action_type(/datum/action/vehicle/sealed/mecha/mech_eject)
-	initialize_controller_action_type(/datum/action/vehicle/sealed/mecha/mech_toggle_internals, VEHICLE_CONTROL_SETTINGS)
-	initialize_controller_action_type(/datum/action/vehicle/sealed/mecha/mech_toggle_lights, VEHICLE_CONTROL_SETTINGS)
-	initialize_controller_action_type(/datum/action/vehicle/sealed/mecha/mech_view_stats, VEHICLE_CONTROL_SETTINGS)
-	initialize_controller_action_type(/datum/action/vehicle/sealed/mecha/strafe, VEHICLE_CONTROL_DRIVE)
-=======
->>>>>>> 57ab486a10b (Humans no longer "enter" mechs twice (#65819))
 
 /obj/vehicle/sealed/mecha/proc/moved_inside(mob/living/newoccupant)
 	if(!(newoccupant?.client))
@@ -1146,10 +1119,6 @@
 	else if(isAI(M))
 		var/mob/living/silicon/ai/AI = M
 		if(forced)//This should only happen if there are multiple AIs in a round, and at least one is Malf.
-			//SKYRAT EDIT ADDITION BEGIN -- MECH CI
-			disable_ci(AI)
-			UnregisterSignal(AI, COMSIG_MOB_CI_TOGGLED) // Manual override because this doesn't finish the proc normally.
-			//SKYRAT EDIT ADDITION END
 			AI.gib()  //If one Malf decides to steal a mech from another AI (even other Malfs!), they are destroyed, as they have nowhere to go when replaced.
 			AI = null
 			mecha_flags &= ~SILICON_PILOT
