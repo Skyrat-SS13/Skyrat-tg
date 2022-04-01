@@ -29,6 +29,10 @@
 	description = "Disrupts electronics."
 	cost = 3
 
+/datum/armament_entry/assault_operatives/utility/pouch
+	item_type = /obj/item/storage/bag/ammo
+	cost = 1
+
 /datum/armament_entry/assault_operatives/utility/toolbox
 	item_type = /obj/item/storage/toolbox/syndicate
 	cost = 1
@@ -64,3 +68,14 @@
 	description = "Based on a Nanotrasen model, this powerful tool can be used as both a crowbar and a pair of wirecutters. \
 	In its crowbar configuration, it can be used to force open airlocks. Very useful for entering the station or its departments."
 	cost = 3
+
+/datum/armament_entry/assault_operatives/utility/jammer
+	name = "Radio Jammer"
+	description = "When activated, this cell powered device will block all outgoing radio communication."
+	item_type = /obj/item/jammer
+	cost = 4
+	
+/datum/armament_entry/assault_operatives/utility/deluxe_id
+	name = "Deluxe Agent ID Card"
+	item_type = /obj/item/card/id/advanced/chameleon/black
+	cost = 5
