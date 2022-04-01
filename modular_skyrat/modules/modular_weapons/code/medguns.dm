@@ -272,6 +272,13 @@
 	icon_state = "body"
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/body_teleporter
 
+//The ultimate step forward for HRP.
+/obj/item/weaponcell/medical/utility/sec_remover
+	name = "Oppressive Force Relocation Medicell"
+	desc = "A medicell that safely relocates security personnel"
+	icon_state =  "Brute3"
+	ammo_type = /obj/item/ammo_casing/energy/medical/utility/sec_remover
+
 //Empty Medicell//
 /obj/item/device/custom_kit/empty_cell //Having the empty cell as an upgrade kit sounds jank, but it should work well.
 	name = "empty salve medicell"

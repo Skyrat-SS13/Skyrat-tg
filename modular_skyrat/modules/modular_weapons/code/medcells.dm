@@ -508,6 +508,47 @@
 		usr.visible_message(span_notice("[usr] deactivates \the [src]."), span_notice("You deactivate \the [src]."))
 		qdel(src)
 
+//Oppressive Force Relocation
+/obj/item/ammo_casing/energy/medical/utility/sec_remover
+	projectile_type = /obj/projectile/energy/medical/utility/sec_remover
+	select_name = "sec-b-gone"
+	select_color = "#850000"
+
+/obj/projectile/energy/medical/utility/sec_remover
+	name = "bluespace transportation field"
+
+/obj/projectile/energy/medical/utility/sec_remover/on_hit(mob/living/target)
+	. = ..()
+
+	var/mob/living/carbon/human/officer = target
+
+	if(!istype(get_area(target), /area/medical)) //We don't want this to work everywhere, do we?
+		return FALSE
+
+	var/target_access = officer.wear_id.GetAccess() //Stores the access of the target within a variable
+	if(!(ACCESS_BRIG in target_access))
+		return FALSE
+
+	teleport_effect(officer.loc)
+
+	var/list/turf_list = list()
+
+	for(var/turf/turf_in_area in get_area_turfs(/area/security/brig))
+		if(!turf_in_area.is_blocked_turf())
+			turf_list += turf_in_area
+
+	officer.visible_message(span_notice("[officer] teleports to back to security, reestablishing a calm medbay enviorment!"))
+
+	do_teleport(officer, pick(turf_list))
+
+	teleport_effect(officer.loc)
+
+/obj/projectile/energy/medical/utility/sec_remover/proc/teleport_effect(var/location)
+	var/datum/effect_system/spark_spread/quantum/sparks = new /datum/effect_system/spark_spread/quantum //uses the teleport effect from quantum pads
+	sparks.set_up(5, 1, get_turf(location))
+	sparks.start()
+
+
 //End of utility
 #undef UPGRADED_MEDICELL_PASSFLAGS
 #undef MINIMUM_TEMP_DIFFERENCE
