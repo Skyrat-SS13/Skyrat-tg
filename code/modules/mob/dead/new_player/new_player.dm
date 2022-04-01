@@ -103,14 +103,10 @@
 	var/less_input_message
 	if(SSlag_switch.measures[DISABLE_DEAD_KEYLOOP])
 		less_input_message = " - Notice: Observer freelook is currently disabled."
-	//SKYRAT EDIT CHANGE BEGIN - NOTICE_REMOVE
-	//var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe? You will not be able to play this round![less_input_message]","Player Setup", "Yes", "No") - SKYRAT EDIT - ORIGINAL
-	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe?[less_input_message]","Player Setup", "Yes", "No")
-	//SKYRAT EDIT CHANGE END
-
+	// Don't convert this to tgui please, it's way too important
+	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe?[less_input_message]", "Observe", "Yes", "No") //SKYRAT EDIT CHANGE
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
-		src << browse(null, "window=playersetup") //closes the player setup window
 		return FALSE
 
 	var/mob/dead/observer/observer = new()
@@ -285,7 +281,7 @@
 				if(SHUTTLE_RECALL, SHUTTLE_IDLE)
 					SSticker.mode.make_antag_chance(humanc)
 				if(SHUTTLE_CALL)
-					if(SSshuttle.emergency.timeLeft(1) > initial(SSshuttle.emergencyCallTime)*0.5)
+					if(SSshuttle.emergency.timeLeft(1) > initial(SSshuttle.emergency_call_time)*0.5)
 						SSticker.mode.make_antag_chance(humanc)
 
 	if((job.job_flags & JOB_ASSIGN_QUIRKS) && humanc && CONFIG_GET(flag/roundstart_traits))

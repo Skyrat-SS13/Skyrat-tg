@@ -5,5 +5,5 @@
 
 /datum/antagonist/ert/traumateam/leader
 	name = "Trauma Team Leader"
-	outfit = /datum/outfit/centcom/ert/medic/traumateam
+	outfit = /datum/outfit/centcom/ert/medic/traumateam/leader
 	role = "Commander"

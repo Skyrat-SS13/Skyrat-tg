@@ -46,18 +46,15 @@
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
 
-/obj/item/clothing/under/misc/poly_kilt
-	name = "polychromic kilt"
+/obj/item/clothing/under/misc/colourable_kilt
+	name = "colourable kilt"
 	desc = "It's not a skirt!"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "polykilt"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	icon_state = "kilt"
+	greyscale_config = /datum/greyscale_config/kilt
+	greyscale_config_worn = /datum/greyscale_config/kilt/worn
+	greyscale_colors = "#008000#777777"
+	flags_1 = IS_PLAYER_COLORABLE_1
 	mutant_variants = NONE
-
-/obj/item/clothing/under/misc/poly_kilt/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#FFFFFF", "#FF8888", "#FFFFFF"))
 
 /obj/item/clothing/under/misc/royalkilt
 	name = "royal kilt"
@@ -659,3 +656,77 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "helltakerskirt"
+
+/obj/item/clothing/under/costume/christmas
+	name = "christmas costume"
+	desc = "Can you believe it guys? Christmas. Just a lightyear away!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "christmasmaler"
+
+/obj/item/clothing/under/costume/christmas/green
+	name = "green christmas costume"
+	desc = "Alright buddy, you have two options here. You can be a saint, or you can be a Grinch. Those are your two choices. Choose wisely."
+	icon_state = "christmasmaleg"
+
+/obj/item/clothing/under/croptop/christmas
+	name = "sexy christmas costume"
+	desc = "Can you believe it guys? Christmas. Just a lightyear away!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "christmasfemaler"
+
+/obj/item/clothing/under/croptop/christmas/green
+	name = "sexy green christmas costume"
+	desc = "Alright buddy, you have two options here. You can be a saint, or you can be a Grinch. Those are your two choices. Choose wisely."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "christmasfemaleg"
+
+/obj/item/clothing/under/rank/civilian/lawyer/inferno
+	name = "inferno suit"
+	desc = "Stylish enough to impress the devil."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "lucifer"
+	fitted = FEMALE_UNIFORM_TOP
+	obj_flags = UNIQUE_RENAME
+	unique_reskin = list(
+		"Pride" = "lucifer",
+		"Wrath" = "justice",
+		"Gluttony" = "malina",
+		"Envy" = "zdara",
+		"Vanity" = "cereberus",
+	)
+
+/obj/item/clothing/under/rank/civilian/lawyer/inferno/skirt
+	name = "inferno suitskirt"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "modeus"
+	obj_flags = UNIQUE_RENAME
+	unique_reskin = list(
+		"Lust" = "modeus",
+		"Sloth" = "pande",
+	)
+
+/obj/item/clothing/under/rank/civilian/lawyer/inferno/beeze
+	name = "designer inferno suit"
+	desc = "A fancy tail-coated suit with a fluffy bow emblazoned on the chest, complete with an NT pin."
+	icon_state = "beeze"
+	obj_flags = null
+	unique_reskin = null
+
+/obj/item/clothing/under/suit/black/female/trousers //i swear this already existed, but whatever
+	name = "feminine suit"
+	desc = "Perfect for a secretary that does no work. This time with pants!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "black_suit_fem"
+
+/obj/item/clothing/under/rank/captain/black
+	name = "captains black suit"
+	desc = "A very sleek naval captains uniform for those who think they're commanding a battleship."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "captainblacksuit"

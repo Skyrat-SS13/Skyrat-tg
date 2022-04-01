@@ -164,7 +164,7 @@ GLOBAL_LIST_INIT(xeno_recipes, list ( \
 	visible_message(span_notice("[src] burns up, leaving a sheet of leather behind!"))
 	new /obj/item/stack/sheet/leather(loc) // only one sheet remains to incentivise not burning your wethide to dry it
 	qdel(src)
-	
+
 
 /*
  * Leather SHeet
@@ -191,6 +191,7 @@ GLOBAL_LIST_INIT(leather_recipes, list ( \
 	//SKYRAT EDIT ADDITION BEGIN
 	new/datum/stack_recipe("gear harness", /obj/item/clothing/under/misc/gear_harness, 6), \
 	new/datum/stack_recipe("loincloth", /obj/item/clothing/under/costume/loincloth, 2), \
+	new/datum/stack_recipe("xenoarch belt", /obj/item/storage/belt/utility/xenoarch, 4), \
 	//SKYRAT EDIT ADDITION END
 	new/datum/stack_recipe("sheriff vest", /obj/item/clothing/accessory/vest_sheriff, 4), \
 	new/datum/stack_recipe_list("cowboy hats", list( \

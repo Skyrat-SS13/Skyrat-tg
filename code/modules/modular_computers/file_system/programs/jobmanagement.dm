@@ -14,7 +14,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 	program_icon = "address-book"
 
 	var/change_position_cooldown = 30
-	//Jobs you cannot open new positions for
+	///Jobs blacklisted from having their slots edited.
 	var/list/blacklisted = list(
 		JOB_CAPTAIN,
 		JOB_HEAD_OF_PERSONNEL,
@@ -25,7 +25,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		JOB_CLOWN,
 		JOB_BLUESHIELD,
 		JOB_NT_REP, // SKYRAT EDIT ADD END
-		JOB_CHIEF_MEDICAL_OFFICER,
+		JOB_CHIEF_ENGINEER,
 		JOB_CHIEF_MEDICAL_OFFICER,
 		JOB_AI,
 		JOB_CYBORG,

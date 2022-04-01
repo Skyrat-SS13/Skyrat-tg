@@ -99,8 +99,8 @@ The cell is stable and will not emit sparks when firing.
 	. = ..()
 	microfusion_gun.recoil -= recoil_to_add
 	microfusion_gun.spread -= spread_to_add
-	microfusion_gun.microfusion_lens.pellets -= microfusion_gun.microfusion_lens.pellets
-	microfusion_gun.microfusion_lens.variance -= microfusion_gun.microfusion_lens.variance
+	microfusion_gun.microfusion_lens.pellets -= pellets_to_add
+	microfusion_gun.microfusion_lens.variance -= variance_to_add
 
 /*
 REPEATER ATTACHMENT
@@ -301,9 +301,10 @@ Converts shots to STAMNINA damage.
 /obj/item/microfusion_gun_attachment/undercharger/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	if(toggle)
-		microfusion_gun.heat_dissipation_bonus -= cooling_rate_increase
-		microfusion_gun.recoil -= recoil_to_remove
-		microfusion_gun.spread -= spread_to_remove
+		toggle = FALSE
+		microfusion_gun.heat_dissipation_bonus += cooling_rate_increase
+		microfusion_gun.recoil += recoil_to_remove
+		microfusion_gun.spread += spread_to_remove
 	microfusion_gun.fire_sound = microfusion_gun.chambered?.fire_sound
 
 /*

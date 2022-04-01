@@ -98,40 +98,47 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		// Note that jobs divisible by 10 are considered heads of staff, and bolded
 		// 00: Captain
 		JOB_CAPTAIN = 00,
-		JOB_BLUESHIELD = 01, // SKYRAT EDIT ADDITION
 		// 10-19: Security
 		JOB_HEAD_OF_SECURITY = 10,
 		JOB_WARDEN = 11,
 		JOB_SECURITY_OFFICER = 12,
+		/* SKYRAT REMOVAL - We need those slots for our own jobs, these jobs aren't on Skyrat anymore anyway.
 		JOB_SECURITY_OFFICER_MEDICAL = 13,
 		JOB_SECURITY_OFFICER_ENGINEERING = 14,
 		JOB_SECURITY_OFFICER_SCIENCE = 15,
 		JOB_SECURITY_OFFICER_SUPPLY = 16,
+		*/
+		JOB_SECURITY_SERGEANT = 13, // SKYRAT EDIT ADDITION
+		JOB_SECURITY_MEDIC = 14, // SKYRAT EDIT ADDITION
+		JOB_CORRECTIONS_OFFICER = 15, // SKYRAT EDIT ADDITION
 		JOB_DETECTIVE = 17,
-		JOB_SECURITY_MEDIC = 18, // SKYRAT EDIT ADDITION
-		JOB_SECURITY_SERGEANT = 19, // SKYRAT EDIT ADDITION
 		// 20-29: Medbay
 		JOB_CHIEF_MEDICAL_OFFICER = 20,
 		JOB_CHEMIST = 21,
 		JOB_VIROLOGIST = 22,
 		JOB_MEDICAL_DOCTOR = 23,
 		JOB_PARAMEDIC = 24,
+		JOB_ORDERLY = 25, // SKYRAT EDIT ADDITION
+		JOB_PSYCHOLOGIST = 26, // SKYRAT EDIT - ORIGINAL: JOB_PSYCHOLOGIST = 71,
 		// 30-39: Science
 		JOB_RESEARCH_DIRECTOR = 30,
 		JOB_SCIENTIST = 31,
 		JOB_ROBOTICIST = 32,
 		JOB_GENETICIST = 33,
 		JOB_VANGUARD_OPERATIVE = 34, // SKYRAT EDIT ADDITION
+		JOB_SCIENCE_GUARD = 35, // SKYRAT EDIT ADDITION
 		// 40-49: Engineering
 		JOB_CHIEF_ENGINEER = 40,
 		JOB_STATION_ENGINEER = 41,
 		JOB_ATMOSPHERIC_TECHNICIAN = 42,
+		JOB_ENGINEERING_GUARD = 43, // SKYRAT EDIT ADDITION
 		// 50-59: Cargo
-		JOB_HEAD_OF_PERSONNEL = 50,
-		JOB_QUARTERMASTER = 51,
+		JOB_QUARTERMASTER = 50,  // SKYRAT EDIT - ORIGINAL: JOB_QUARTERMASTER = 51,
 		JOB_SHAFT_MINER = 52,
 		JOB_CARGO_TECHNICIAN = 53,
+		JOB_CUSTOMS_AGENT = 54, // SKYRAT EDIT ADDITION
 		// 60+: Civilian/other
+		JOB_HEAD_OF_PERSONNEL = 60, // SKYRAT EDIT - ORIGINAL: JOB_HEAD_OF_PERSONNEL = 50,
 		JOB_BARTENDER = 61,
 		JOB_COOK = 62,
 		JOB_BOTANIST = 63,
@@ -141,8 +148,9 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_MIME = 67,
 		JOB_JANITOR = 68,
 		JOB_LAWYER = 69,
-		JOB_PSYCHOLOGIST = 71,
-		// 200-229: Centcom
+		JOB_BARBER = 71, // SKYRAT EDIT ADDITION
+		JOB_BOUNCER = 72, // SKYRAT EDIT ADDITION
+		// 200-239: Centcom
 		JOB_CENTCOM_ADMIRAL = 200,
 		JOB_CENTCOM = 201,
 		JOB_CENTCOM_OFFICIAL = 210,
@@ -159,6 +167,8 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_ERT_CHAPLAIN = 225,
 		JOB_ERT_JANITOR = 226,
 		JOB_ERT_DEATHSQUAD = 227,
+		JOB_NT_REP = 230, // SKYRAT EDIT ADDITION
+		JOB_BLUESHIELD = 231, // SKYRAT EDIT ADDITION
 
 		// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before assistants
 		JOB_ASSISTANT = 999,
@@ -171,11 +181,12 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		ui.open()
 
 /datum/crewmonitor/proc/show(mob/M, source)
-	ui_sources[WEAKREF(M)] = source
+	ui_sources[WEAKREF(M)] = WEAKREF(source)
 	ui_interact(M)
 
 /datum/crewmonitor/ui_host(mob/user)
-	return ui_sources[WEAKREF(user)]
+	var/datum/weakref/host_ref = ui_sources[WEAKREF(user)]
+	return host_ref?.resolve()
 
 /datum/crewmonitor/ui_data(mob/user)
 	var/z = user.z
@@ -249,7 +260,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 
 		// Binary living/dead status
 		if (sensor_mode >= SENSOR_LIVING)
-			entry["life_status"] = !tracked_living_mob.stat
+			entry["life_status"] = (tracked_living_mob.stat != DEAD)
 
 		// Damage
 		if (sensor_mode >= SENSOR_VITALS)

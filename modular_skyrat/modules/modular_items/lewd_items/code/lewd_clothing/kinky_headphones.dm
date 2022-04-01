@@ -97,7 +97,7 @@
 	name = "Toggle kinky headphones"
 	desc = "Plays some nice relaxing music"
 
-/datum/action/item_action/toggle_kinky_headphones/Trigger()
+/datum/action/item_action/toggle_kinky_headphones/Trigger(trigger_flags)
 	var/obj/item/clothing/ears/kinky_headphones/H = target
 	if(istype(H))
 		H.toggle(owner)

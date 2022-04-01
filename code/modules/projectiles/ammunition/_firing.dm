@@ -16,13 +16,13 @@
 		AddComponent(/datum/component/pellet_cloud, projectile_type, pellets)
 		SEND_SIGNAL(src, COMSIG_PELLET_CLOUD_INIT, target, user, fired_from, randomspread, spread, zone_override, params, distro)
 
-	if(click_cooldown_override)
-		user.changeNext_move(click_cooldown_override)
-	else
-		if(user.staminaloss > STAMINA_THRESHOLD_TIRED_CLICK_CD) //SKYRAT EDIT CHANGE BEGIN: user.changeNext_move(CLICK_CD_RANGE)
-			user.changeNext_move(CLICK_CD_RANGE_TIRED)
-		else
-			user.changeNext_move(CLICK_CD_RANGE) //SKYRAT EDIT END
+	//var/next_delay = click_cooldown_override || CLICK_CD_RANGE // ORIGINAL
+	var/next_delay = click_cooldown_override || ((user.staminaloss <= STAMINA_THRESHOLD_TIRED_CLICK_CD) ? CLICK_CD_RANGE : CLICK_CD_RANGE_TIRED) // SKYRAT EDIT CHANGE
+	if(HAS_TRAIT(user, TRAIT_DOUBLE_TAP))
+		next_delay = round(next_delay * 0.5)
+
+	user.changeNext_move(next_delay)
+
 	user.newtonian_move(get_dir(target, user))
 	update_appearance()
 	return TRUE

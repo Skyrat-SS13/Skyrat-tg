@@ -41,7 +41,6 @@
 	)
 
 	veteran_only = TRUE
-
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
 /datum/outfit/job/blueshield
@@ -52,9 +51,9 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	id = /obj/item/card/id/advanced/centcom
 	shoes = /obj/item/clothing/shoes/jackboots
-	ears = /obj/item/radio/headset/heads/blueshield/alt
+	ears = /obj/item/radio/headset/headset_bs/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-	backpack_contents = list(/obj/item/storage/box/gunset/blueshield,/obj/item/melee/baton/security/loaded = 1)
+	backpack_contents = list(/obj/item/storage/box/gunset/blueshield, /obj/item/melee/baton/security/loaded = 1)
 	implants = list(/obj/item/implant/mindshield)
 	backpack = /obj/item/storage/backpack/blueshield
 	satchel = /obj/item/storage/backpack/satchel/blueshield
@@ -71,15 +70,28 @@
 	head = /obj/item/clothing/head/helmet/space/plasmaman/blueshield
 	uniform = /obj/item/clothing/under/plasmaman/blueshield
 
-
 /obj/item/storage/box/gunset/blueshield
-	name = "CFA 'Lynx' gunset"
+	name = "Allstar SC-3 PDW 'Hellfire' Gunset"
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/box/gunset/blueshield/PopulateContents()
 	. = ..()
-	new /obj/item/gun/ballistic/automatic/cfa_lynx/no_mag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
+	new /obj/item/gun/energy/laser/hellgun/blueshield(src)
+
+/obj/item/ammo_casing/energy/laser/hellfire/bs
+	projectile_type = /obj/projectile/beam/laser/hellfire
+	e_cost = 83 //Lets it squeeze out a few more shots
+	select_name = "maim"
+
+/obj/item/gun/energy/laser/hellgun/blueshield
+	name = "\improper Allstar SC-3 PDW 'Hellfire'"
+	desc = "A prototype energy carbine, despite NT's ban on hellfire weaponry due to negative press. \
+            Allstar continued to work on it, compacting it into a small form-factor for personal defense. \
+            As part of the Asset Retention Program created by Nanotrasen, Allstar's prototype began to be put into use. \
+            It has the <b><span style='color:red'>Allstar Energy Weapons</span></b> logo painted next to the charge display."
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
+	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
+	icon_state = "hellfirepdw"
+	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire/bs)

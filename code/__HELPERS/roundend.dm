@@ -311,6 +311,8 @@
 	//Antagonists
 	parts += antag_report()
 
+	parts += opfor_report() //SKYRAT EDIT ADDITION
+
 	parts += hardcore_random_report()
 
 	CHECK_TICK
@@ -631,27 +633,6 @@
 			currrent_category = A.roundend_category
 			previous_category = A
 		result += A.roundend_report()
-		//SKYRAT EDIT ADDITION BEGIN - AMBITIONS
-		if(A.owner && A.owner.my_ambitions)
-			var/datum/ambitions/AMB = A.owner.my_ambitions
-			result += "<br>Narrative: [AMB.narrative]"
-			result += "<br>Objectives:"
-			for(var/stri in AMB.objectives)
-				result += "<br>* [stri]"
-			var/intensity = "NOT SET"
-			switch(AMB.intensity)
-				if(AMBITION_INTENSITY_STEALTH)
-					intensity = "Stealth"
-				if(AMBITION_INTENSITY_MILD)
-					intensity = "Mild"
-				if(AMBITION_INTENSITY_MEDIUM)
-					intensity = "Medium"
-				if(AMBITION_INTENSITY_SEVERE)
-					intensity = "Severe"
-				if(AMBITION_INTENSITY_EXTREME)
-					intensity = "Extreme"
-			result += "<br>Intensity: [intensity]"
-		//SKYRAT EDIT ADDITION END - AMBITIONS
 		result += "<br><br>"
 		CHECK_TICK
 
@@ -676,7 +657,7 @@
 	name = "Show roundend report"
 	button_icon_state = "round_end"
 
-/datum/action/report/Trigger()
+/datum/action/report/Trigger(trigger_flags)
 	if(owner && GLOB.common_report && SSticker.current_state == GAME_STATE_FINISHED)
 		SSticker.show_roundend_report(owner.client)
 

@@ -16,6 +16,7 @@
 	icon = 'icons/effects/spacevines.dmi'
 	icon_state = "bud0"
 	layer = SPACEVINE_MOB_LAYER
+	plane = GAME_PLANE_UPPER_FOV_HIDDEN
 	opacity = FALSE
 	canSmoothWith = null
 	smoothing_flags = NONE
@@ -107,8 +108,9 @@
 	health_doll_icon = "venus_human_trap"
 	mob_biotypes = MOB_ORGANIC | MOB_PLANT
 	layer = SPACEVINE_MOB_LAYER
-	health = 60 //SKYRAT EDIT CHANGE
-	maxHealth = 60 //SKYRAT EDIT CHANGE
+	plane = GAME_PLANE_UPPER_FOV_HIDDEN
+	health = 60 //SKYRAT EDIT CHANGE - ORIGINAL = 50
+	maxHealth = 60 //SKYRAT EDIT CHANGE - ORIGINAL = 50
 	ranged = TRUE
 	harm_intent_damage = 5
 	obj_damage = 60
@@ -242,5 +244,11 @@
 /mob/living/simple_animal/hostile/venus_human_trap/death(gibbed)
 	for(var/i in vines)
 		qdel(i)
+	return ..()
+
+/mob/living/simple_animal/hostile/venus_human_trap/start_pulling(atom/movable/AM, state, force, supress_message)
+	if(isliving(AM))
+		to_chat(src, span_boldwarning("You cannot drag living things!"))
+		return
 	return ..()
 //SKYRAT EDIT END

@@ -18,7 +18,7 @@
 /*
 	Overwriting of base procs
 */
-/datum/wound/muscle/wound_injury(datum/wound/old_wound = null)
+/datum/wound/muscle/wound_injury(datum/wound/old_wound = null, attack_direction)
 	// hook into gaining/losing gauze so crit muscle wounds can re-enable/disable depending if they're slung or not
 	RegisterSignal(limb, list(COMSIG_BODYPART_SPLINTED, COMSIG_BODYPART_SPLINT_DESTROYED), .proc/update_inefficiencies)
 
@@ -117,7 +117,7 @@
 			limp_slowdown = initial(limp_slowdown) * limb.current_splint.splint_factor
 		else
 			limp_slowdown = initial(limp_slowdown)
-		victim.apply_status_effect(STATUS_EFFECT_LIMP)
+		victim.apply_status_effect(/datum/status_effect/limp)
 	else if(limb.body_zone in list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
 		if(limb.current_splint)
 			interaction_efficiency_penalty = 1 + ((interaction_efficiency_penalty - 1) * limb.current_splint.splint_factor)

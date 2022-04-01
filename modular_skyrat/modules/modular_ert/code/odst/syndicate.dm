@@ -1,6 +1,6 @@
 /obj/item/clothing/under/odst
 	name = "shocktrooper uniform"
-	desc = "A highly reinforced uniform, designed to be paired with the ODST hardsuit."
+	desc = "A highly reinforced uniform."
 	icon_state = "ert_odst"
 	inhand_icon_state = "ert_odst"
 	has_sensor = NO_SENSORS

@@ -30,6 +30,7 @@
 		#include "map_files\NSSJourney\NSSJourney.dmm"
 		#include "map_files\WaterKiloStation\WaterKiloStation.dmm"
 		#include "map_files\WaterKiloStation\WaterKiloBelow.dmm"
+		#include "map_files\tramstation\tramstation_skyrat.dmm"
 		// The mining maps
 		#include "map_files\Mining\Icemoon.dmm"
 		#include "map_files\Mining\Rockplanet.dmm"

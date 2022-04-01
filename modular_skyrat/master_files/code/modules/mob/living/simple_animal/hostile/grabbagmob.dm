@@ -294,7 +294,7 @@
 
 /mob/living/simple_animal/hostile/looter/ranged/space
 	name = "Looter Shipbreaker"
-	desc = "A scavenger with an outdated hardsuit, likely out here to get salvage."
+	desc = "A scavenger with an outdated spacesuit, likely out here to get salvage."
 	icon_state = "scavsmg"
 	icon_living = "scavsmg"
 	casingtype = /obj/item/ammo_casing/c9mm
@@ -707,7 +707,7 @@
 
 /mob/living/simple_animal/hostile/syndimouse
 	name = "Syndicate Mousepretive"
-	desc = "A mouse in a Syndicate combat hardsuit, built for mice!"
+	desc = "A mouse in a Syndicate combat MODsuit, built for mice!"
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "mouse_operative"
 	icon_living = "mouse_operative"
@@ -925,7 +925,7 @@
 
 /mob/living/simple_animal/hostile/vox/ranged/space
 	name = "Vox Space Raider"
-	desc = "A Vox in a hardsuit, with a gun!"
+	desc = "A Vox in a space suit, with a gun!"
 	icon_state = "voxspace"
 	icon_living = "voxspace"
 	icon_dead = "voxspacedead"
@@ -940,7 +940,7 @@
 
 /mob/living/simple_animal/hostile/vox/ranged/space/laser
 	name = "Vox Helmsman"
-	desc = "Space-faring Vox raider, armed with a laser rifle and wearing a hardsuit."
+	desc = "Space-faring Vox raider, armed with a laser rifle and wearing a MODsuit."
 	icon_state = "voxspacelaser"
 	icon_living = "voxspacelaser"
 	icon_dead = "voxspacedead"

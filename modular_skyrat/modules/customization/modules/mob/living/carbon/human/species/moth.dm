@@ -15,7 +15,8 @@
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP
+		TRAIT_CAN_STRIP,
+		TRAIT_CAN_USE_FLIGHT_POTION,
 	)
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/moth_parts_greyscale.dmi'
 	learnable_languages = list(/datum/language/common, /datum/language/moffic)

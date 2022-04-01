@@ -10,6 +10,7 @@
 #define TRAIT_SENSITIVESNOUT "sensitive_snout" // Snout hurts when booped
 #define TRAIT_DETECTIVE "detective_ability" //Given to the detective, if they have this, they can see syndicate special descriptions.
 #define TRAIT_FREE_GHOST "free_ghost" // Can ghost and return freely with this trait
+#define GLOVES_TRAIT "gloves_trait" //Traits associated with wearing gloves
 #define QUIRK_LINGUIST "Linguist" // Extra language point.
 #define GLUED_ITEM_TRAIT "glued-item" // This is for glued items, undroppable. Syndie glue applies this.
 #define TRAIT_STICKY_FINGERS "sticky_fingers" //This is so a mob can strip items faster and picks them up after
@@ -61,3 +62,6 @@
 
 /// Caninid trait
 #define TRAIT_CANINE "trait_canine"
+
+/// Cargo Loader trait
+#define TRAIT_TRASHMAN "trait_trashman"

@@ -72,16 +72,12 @@
 				opt = input("How Many", ROLE_CULTIST, 2) as num|null
 			if(ROLE_HERETIC)
 				opt = input("How Many", ROLE_HERETIC, 2) as num|null
-			if(ROLE_MONKEY)
-				opt = input("How Many", ROLE_MONKEY, 1) as num|null
 			if(ROLE_REV)
 				opt = input("How Many", ROLE_REV, 1) as num|null
 			if(ROLE_OPERATIVE)
 				opt = input("How Many", ROLE_OPERATIVE, 3) as num|null
 			if(ROLE_FAMILIES)
 				opt = input("How Many", ROLE_FAMILIES, 2) as num|null
-			if(ROLE_INTERNAL_AFFAIRS)
-				opt = input("How Many", ROLE_INTERNAL_AFFAIRS, 1) as num|null
 			if(ROLE_BROTHER)
 				opt = input("How Many", ROLE_BROTHER, 2) as num|null
 		if(src.make_antag(href_list["makeAntag"], opt))
@@ -780,6 +776,21 @@
 		var/mob/M = locate(href_list["adminplayeropts"])
 		show_player_panel(M)
 
+	else if(href_list["ppbyckey"])
+		var/target_ckey = href_list["ppbyckey"]
+		var/mob/original_mob = locate(href_list["ppbyckeyorigmob"]) in GLOB.mob_list
+		var/mob/target_mob = get_mob_by_ckey(target_ckey)
+		if(!target_mob)
+			to_chat(usr, span_warning("No mob found with that ckey."))
+			return
+
+		if(original_mob == target_mob)
+			to_chat(usr, span_warning("[target_ckey] is still in their original mob: [original_mob]."))
+			return
+
+		to_chat(usr, span_notice("Jumping to [target_ckey]'s new mob: [target_mob]!"))
+		show_player_panel(target_mob)
+
 	else if(href_list["adminplayerobservefollow"])
 		if(!isobserver(usr) && !check_rights(R_ADMIN))
 			return
@@ -796,6 +807,8 @@
 
 	else if(href_list["adminplayerobservecoodjump"])
 		if(!isobserver(usr) && !check_rights(R_ADMIN))
+			return
+		if(isnewplayer(usr))
 			return
 
 		var/x = text2num(href_list["X"])
@@ -1596,7 +1609,7 @@
 		if(!check_rights(R_ADMIN))
 			return
 		var/list/type_choices = typesof(/datum/station_goal)
-		var/picked = tgui_input_list(usr, "Choose goal type",, type_choices)
+		var/picked = tgui_input_list(usr, "Choose goal type", "Station Goal", type_choices)
 		if(!picked)
 			return
 		var/datum/station_goal/G = new picked()
@@ -1980,6 +1993,14 @@
 		if(!check_rights(R_ADMIN))
 			return
 		GLOB.interviews.ui_interact(usr)
+
+	else if(href_list["tag_datum"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/datum/datum_to_tag = locate(href_list["tag_datum"])
+		if(!datum_to_tag)
+			return
+		return add_tagged_datum(datum_to_tag)
 
 	else if(href_list["del_tag"])
 		if(!check_rights(R_ADMIN))

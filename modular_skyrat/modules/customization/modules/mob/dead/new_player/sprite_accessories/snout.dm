@@ -8,7 +8,7 @@
 	genetic = TRUE
 
 /datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if((H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || (H.head && (H.head.flags_inv & HIDEFACE)) || !HD)
+	if((H.wear_mask && (H.wear_mask.flags_inv & HIDESNOUT)) || (H.head && (H.head.flags_inv & HIDESNOUT)) || !HD)
 		return TRUE
 	return FALSE
 
@@ -36,9 +36,17 @@
 	name = "Beak"
 	icon_state = "bird"
 
+/datum/sprite_accessory/snouts/mammal/birdsmall
+	name = "Beak (small)"
+	icon_state = "birdsmall"
+
 /datum/sprite_accessory/snouts/mammal/bigbeak
 	name = "Big Beak"
 	icon_state = "bigbeak"
+
+/datum/sprite_accessory/snouts/mammal/corvidbeak
+	name = "Corvid Beak"
+	icon_state = "corvidbeak"
 
 /datum/sprite_accessory/snouts/mammal/bug
 	name = "Bug"
@@ -329,11 +337,9 @@
 	name = "Zebra"
 	icon_state = "hzebra"
 
-/datum/sprite_accessory/snouts/mammal/sbeak
-	name = "Corvid Beak"
-	icon_state = "sbeak"
-	extra = TRUE
-	//extra_color_src = MATRIXED
+/datum/sprite_accessory/snouts/mammal/fcorvidbeak
+	name = "Corvid Beak (Top)"
+	icon_state = "fcorvidbeak"
 
 /datum/sprite_accessory/snouts/mammal/akula/shark_light
 	name = "Shark Light"

@@ -7,6 +7,7 @@
 	righthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/ppsh/ppsh_righthand.dmi'
 	inhand_icon_state = "ppsh"
 	slot_flags = ITEM_SLOT_BELT
+	w_class = WEIGHT_CLASS_BULKY
 	mag_type = /obj/item/ammo_box/magazine/ppsh
 	can_suppress = FALSE
 	spread = 20

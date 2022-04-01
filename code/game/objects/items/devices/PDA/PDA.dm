@@ -618,8 +618,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 					playsound(src, 'sound/machines/terminal_select.ogg', 15, TRUE)
 			if("Drone Phone")
 				var/alert_s = tgui_input_list(U, "Alert severity level", "Ping Drones", list("Low","Medium","High","Critical"))
+				if(isnull(alert_s))
+					return
 				var/area/A = get_area(U)
-				if(A && alert_s && !QDELETED(U))
+				if(A && !QDELETED(U))
 					var/msg = span_boldnotice("NON-DRONE PING: [U.name]: [alert_s] priority alert in [A.name]!")
 					_alert_drones(msg, TRUE, U)
 					to_chat(U, msg)
@@ -797,6 +799,12 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if((last_text && world.time < last_text + 10) || (everyone && last_everyone && world.time < last_everyone + PDA_SPAM_DELAY))
 		return FALSE
 
+	var/turf/position = get_turf(src)
+	for(var/obj/item/jammer/jammer as anything in GLOB.active_jammers)
+		var/turf/jammer_turf = get_turf(jammer)
+		if(position?.z == jammer_turf.z && (get_dist(position, jammer_turf) <= jammer.range))
+			return FALSE
+
 	var/list/filter_result = CAN_BYPASS_FILTER(user) ? null : is_ic_filtered_for_pdas(message)
 	if (filter_result)
 		REPORT_CHAT_FILTER_TO_USER(user, filter_result)
@@ -811,6 +819,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	if(prob(1))
 		message += "\nSent from my PDA"
+	// SKYRAT EDIT BEGIN - PDA messages show a visible message, to comply with CI policy on calling for backup.
+	user.visible_message(span_notice("[user] presses some buttons on [user.p_their()] [src]."), span_notice("You press some buttons on your [src]."))
+	user.balloon_alert_to_viewers("sent a PDA message")
+	// SKYRAT EDIT END
 	// Send the signal
 	var/list/string_targets = list()
 	for (var/obj/item/pda/P in targets)
@@ -1071,8 +1083,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 		sig_list += list(COMSIG_AIRLOCK_OPEN, COMSIG_AIRLOCK_CLOSE)
 	else
 		sig_list += list(COMSIG_ATOM_ATTACK_HAND)
-	target.AddComponent(/datum/component/sound_player, amount = (rand(15,20)), signal_or_sig_list = sig_list)
-	installed_cartridge.charges --
+	target.AddComponent(/datum/component/sound_player, uses = rand(15,20), signal_list = sig_list)
+	installed_cartridge.charges--
 	return TRUE
 
 
@@ -1260,8 +1272,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		plist[avoid_assoc_duplicate_keys(pda.owner, namecounts)] = pda
 
 	var/choice = tgui_input_list(user, "Please select a PDA", "PDA Messenger", sort_list(plist))
-
-	if (!choice)
+	if (isnull(choice))
 		return
 
 	var/selected = plist[choice]

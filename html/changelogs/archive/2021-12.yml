@@ -568,3 +568,395 @@
   - bugfix: The Nanotrasen News Network has updated their news tickers for when a
       station horrifically blows up to be more accommodating towards the person directly
       responsible for making sure it didn't horrifically blow up.
+2021-12-23:
+  Melbert:
+  - bugfix: Removed a floating teleport beacon in Icebox's chapel
+  - bugfix: Fixed APC visibilty in icebox science outpost / RD office
+  - bugfix: Fixed Air alarm accessibility in icebox atmos office
+  SkyratBot:
+  - rscadd: Gas Masks now limit your field of view
+  - rscadd: Added field of view mechanics. It's darkness can be tweaked by a pref
+  - rscadd: Blind, nearsighted and fov-limited people will now see sounds as visual
+      effects.
+  - bugfix: Flying over lava no longer erroneously ignites you ablaze.
+  - bugfix: Balloon alerts when picking up staffs as a non wizard now properly appears
+      over the player's head.
+  - bugfix: Fixed players appearing above fire and foam.
+  - bugfix: Fixed garbage bags being uncleanable by mops, for silly silly reasons
+  - bugfix: fixed a missing wire in Deltastation's Arrivals Solar array, connecting
+      the control console to the array
+  - bugfix: TGUI list input will now respond to having large/swapped buttons in preferences.
+  - bugfix: BYOND functionality restored in TGUI input lists - keyboard support. Up/Down,
+      type a letter to jump to it (while search is not visible).
+  - bugfix: Allows the supermatter crystal to produce gases while powered, even in
+      absolutely empty turfs, excluding space turfs.
+  - bugfix: You can no longer wrap a locker to bypass the drag slowdown.
+  - bugfix: fixed potential bucket corruption in timer reset_buckets
+  kannthus:
+  - spellcheck: Fixed a typo on the barricade
+2021-12-24:
+  Ebin-Halcyon:
+  - bugfix: Syndicate operatives have been taken off unpaid break and are back to
+      work on Bioweapon research. Along with other workers returning to work.
+  - bugfix: DS-2 and Interdyne's air alarms no longer float off walls.
+  Gandalf2k15:
+  - rscadd: CME has been nerfed
+  GoldenAlpharex:
+  - bugfix: Fixed external organs not showing on certain species (again).
+  Higgin:
+  - balance: Doing surgery on somebody without first making them unconscious now leaves
+      them with a lingering mood penalty. The mood penalty's time and intensity can
+      be reduced with numbing agents like copious amounts of alcohol, Miner's Salve,
+      Lidocaine, and Morphine _if used prior to surgery._
+  - rscadd: Roboticists can now purchase two forms of anesthetic in their job wardrobe
+      vendors (N2O gas/morphine.)
+  - balance: Things which apply stasis now maintain unconsciousness if you go into
+      stasis unconscious and numbing effects if you go into stasis numbed.
+  OrionTheFox:
+  - rscadd: 'Added a whole new load of security drip, including gauntlets, new HuDs/NV
+      HuDs, new tackler gloves/Krav Maga gloves, remodeled visor helmets (which fit
+      muzzles now!), boot reskins, a blue belt, and a white uniform. Security are
+      also unable to spawn with skirts now as well, seeing as they have no peacekeeper
+      sprite. qol: The Peacekeeper Outfitting Station has had a new model shipped
+      out by Lopland themselves, giving Peacekeepers all the uniforms they''ll ever
+      need. This has replaced all old P.O.S''s'
+  - bugfix: Metastation's lockerroom-to-firingrange door has been fixed. Again.
+  - bugfix: 'Security''s helmet lights should stop being weird whenever their visor
+      is toggled qol: Security reskins can now be set to the default skin; no more
+      radial menu spam on your black belts!'
+  - bugfix: Icebox Gas Miners Do Not Exist; as a bonus, Icebox prison isnt breached
+      any more
+  RatFromTheJungle:
+  - bugfix: Fixed an icon-file oopsie with the new sidecuts
+  - rscdel: Deletes modular adv-egun crafting recipe, making it once more crafted
+      with energy guns, and not laser guns.
+  - rscadd: the crusader belt can now hold like, half the swords present on station,
+      namely the ones that already fit on the belt-slot.
+  SkyratBot:
+  - bugfix: Fixed mops wetting the turf when you refill them from the mop bucket I'm
+      oranges and I don't put changelogs on my PRs
+  - bugfix: Non-headrev revs can be properly revived after a revolution is quelled
+      again.
+  - bugfix: Inverse reagents are now properly consumed when being transferred into
+      a living body (eg. through syringes).
+  - bugfix: Fixes FoV mask and hiding in potted plants
+  - bugfix: You can no longer continue a surgery if the organ in question is somehow
+      removed whilst mid operation.
+  - bugfix: You will no longer spasm if you're unconscious/dead.
+  - bugfix: skin tone sorting
+  - refactor: refactor various color procs to use natives instead
+  - spellcheck: Fixed a number of typos in HTML elements that would cause messages
+      to not render properly.
+  - bugfix: Changed the font of some messages to better reflect if they were errors,
+      notices.
+  - bugfix: You can no longer bypass the red alert lock on the escape pod safe.
+  - bugfix: Fixes an exploit with thermite burn times.
+  - bugfix: Fixes width on black market uplinks to show three delivery options. Technology!
+  - bugfix: Void cloak (and other items intended to be invisible) can longer be seen
+      and unequipped in the strip menu.
+  - bugfix: Fixes the ablative trenchcoat giving you a permanent sechud.
+  - bugfix: Fixes Tramstation Vacant Commissary not having shutters
+  - bugfix: Engineers now have access to the SM's External Airlock on Tramstation
+  Spc-Dragonfruits:
+  - rscadd: Added 4 new half-shave hairstyles
+  - imageadd: Added icons for long half shave, messy half shave, long messy half shave
+      and glamorous half shave.
+  armhulen:
+  - refactor: Mob spawns are refactored, no more assortment of "random, instant, and
+      roundstart" vars on every mob spawn type
+  - refactor: if there are some minimal differences in how mob spawners feel, that's
+      why!
+  axietheaxolotl:
+  - bugfix: The NT Rep's jacket now uses a proper name and subtyping
+  dawsonkeyes:
+  - rscadd: The Marked One now resides in his arena on Lavaland
+  - rscadd: A new crusher trophy and weapon are now obtainable on Lavaland
+  kannthus:
+  - bugfix: Rotates the Chapels Morgue on Icebox to make it functional again
+  - rscadd: Alternative Jester outfit and hat to Autodrobe
+  - rscadd: Jester shoes to the Loadout, job restricted for clown
+  sasichkamega:
+  - bugfix: with a flavor length of FLAVOR_TEXT_CHAR_REQUIREMENT characters, you can
+      now join the game
+  tastyfish:
+  - bugfix: The advanced camera console's and AI's camera search function now works
+      again.
+  - bugfix: Advanced shuttle tiles now show the underlying environment on the transparent
+      parts instead of a black void.
+  tf-4:
+  - bugfix: 'Old sidearms are unobtainable once more, as they should be. Armoury discrepancies
+      have been normalised. qol: That one shocked grille has been removed from Blueshift.
+      You know the one.'
+  theOOZ:
+  - bugfix: Ninja-cyborgs can access their module's tools again.
+2021-12-25:
+  AtoriBirb:
+  - imageadd: added new hair sprite to our modular hair.dmi
+  GoldenAlpharex, sprites from WalterJe:
+  - imageadd: Updated the sprites of the conveyor belts and the conveyor switches,
+      ported and adapted from Tau Ceti!
+  - refactor: Brought up to today's standards conveyor codes, alongside properly documenting
+      it. Also changed how conveyor corners are handled to make them both more intuitive
+      for mappers and for people in-game.
+  Iamgoofball:
+  - balance: You can no longer expand non-32x32 cyborg sprites.
+  - rscdel: Removes the Cyborg Shrinker from the techweb.
+  Kapu1178:
+  - tweak: Actual Round Timer is now actually accurate.
+  OrionTheFox:
+  - bugfix: Security's caps and gauntlets fit better now
+  SkyratBot:
+  - bugfix: the observe button's tgui is now functional.
+  - spellcheck: Fixed a small spelling mistake in the sparring rite ritual.
+  - refactor: 'Many more tgui inputs have been converted over: Paystands, paintings,
+      pet names and more.'
+  - bugfix: TGUI inputs now support automatically selecting preexisting input (BYOND
+      default behavior).
+  - bugfix: You can now press ESC to exit TGUI inputs.
+  - bugfix: Fixes a bluescreen when turning on admin mode in NtOS chat software.
+  - bugfix: 'Literally 1984: NtOS chat admins can now properly mute others.'
+  - bugfix: Turning off NtOS admin mode now properly returns you to the channel.
+  - bugfix: NtOS chat screen widened slightly to fix clipping issue on the participants
+      panel.
+  - bugfix: Clipping and sizing issues on drone consoles have been fixed.
+2021-12-26:
+  E3N Artificial Intelligence:
+  - rscadd: Surplus SolFed Marine IPCs have been shipped to Nanotrasen in a trade
+      deal.
+  Fikou, theOOZ:
+  - imageadd: adds a new janiborg sprite!
+  ? 'Fikou; Sprites: PositiveEntropy, Azlan, Infrared_Baron, Thunder12345, Yeeye;
+    Code: Waltermeldron, Goof, Armhulen, ArcaneMusic, DatBoiTim; Descriptions: Nerevar'
+  : - rscadd: Adds Modular Suits. Printable at robotics.
+    - rscdel: Removes Hardsuits.
+    - balance: Almost all Hardsuits have been replaced with MODsuits.
+    - balance: HECKsuit, Berserker Hardsuit, Cult Hardsuit and Carp Hardsuit became
+        hoodies, the first 2 losing their spaceproofness
+    - rscdel: Cybersun, Combat Medic and Owl Hardsuits didn't make the cut.
+    - refactor: Changes how mob gravity checks are made. Uses a gravity negation trait.
+        As part of this, space wind pushing you is handled by gravity negation, not
+        noslips.
+    - balance: Hardsuits no longer defend from tackles, but negating gravity does.
+    - code_imp: 'Adds support for digitigrade compatible shoes. qol: Piercing syringes
+        now pierce when used from hand, not just as projectile.'
+    - code_imp: Removes the unused outside of admin shenanigans cult hardsuit requirement
+        for spells.
+  Higgin:
+  - balance: Medibot healing time increased by a factor of five.
+  Melbert:
+  - bugfix: Updated the binary key's description / examine text to actually describe
+      its abilities.
+  OrionTheFox:
+  - bugfix: The Explorer Gasmask now has a muzzle variant
+  - bugfix: Various masks now show muzzles thru them, as they were meant to. Luchador
+      momento.
+  - bugfix: Helmets will now properly hide masks beneath them, instead of causing
+      sprite clipping.
+  - code_imp: Added the SHOWSPRITEEARS flag, to force ears to show over an item with
+      HIDEHAIR. This will let sprites with earholes actually fit ears thru them, but
+      not show the hair instead
+  SkyratBot:
+  - imageadd: The Spider Clan has issued a recall of all it's katanas, replacing them
+      with new ones that are differently styled. Something about the old ones being
+      literally impossible to find in bright conditions. Or maybe they just didnt
+      like how it looked so they changed its "sprite".
+  - imageadd: Resprites the sec grenade launcher
+  - bugfix: Disarming a heavily incapacitated person with krav maga will no longer
+      make them recoil in pain.
+  - bugfix: The HoP will now get strange reagent in the mail if Ian is dead, as originally
+      intended.
+  - imageadd: The PanD.E.M.I.C 2200 is now visually different than the ChemMaster
+  - bugfix: Fix AIs inside a AI restorer computer now die if the computer is destroyed
+      while they are inside it.
+  - bugfix: Tesla reactive armour now has separate emp and cooldown messages
+  - bugfix: plopped an xmas tree in tramsation's chapel
+  - bugfix: dogs will no longer forget to unbuckle themselves when fetching items
+      thrown nearby
+  - bugfix: Double click and enter on tgui input lists no longer clears selection.
+  - bugfix: 'Functionality restored: typing while not selecting the search bar will
+      refocus. You can also quick search by typing while the search bar is hidden.'
+  - refactor: Support for current value selections has been added to tgui input lists
+      - lists now work for suit sensors, etc.
+  jjpark-kb:
+  - soundadd: added a started/stopped typing sound for tts device
+  softcerv:
+  - balance: the toxin mode on the medigun now heals more or less according to how
+      many non-medicine chemicals are inside of the patient's bloodstream.
+  'tf4, Sprites: Zydras':
+  - rscadd: Mince pies are now available to create!
+2021-12-27:
+  AtoriBirb:
+  - bugfix: small line of code in hair.dm
+  Gandalf2k15:
+  - bugfix: The SAD no longer churns out mutated abominations of yourself and should
+      work correctly.
+  - bugfix: Ghost role spawners can now use your character.
+  SkyratBot:
+  - code_imp: Some code improvements and proper use of department datums by independent
+      nation creation
+  - refactor: Some wonderful cleanup of separatist code, if you notice minor differences
+      it's because of that.
+  - admin: The nations ruleset is back(?) and disabled for admins to run fi they so
+      desire
+  - bugfix: Makes all cyborg storage items drop their contents on module change.
+  - bugfix: Fix all types of grenades to be deleted when shot bullets.
+  - bugfix: Sechailer no longer has FOV.
+  - bugfix: SWAT mask no longer has a tint.
+  - bugfix: the protect objective now checks for mob and brain suicides
+  - bugfix: Restores the cardborg sprite.
+  - bugfix: Cult robes now have sprites for when the hood is down
+  axietheaxolotl:
+  - imageadd: Resprited the Tactical Turtleneck Suit
+  thestubborn:
+  - bugfix: instead of not working, the Executive Suit and Executive Suitskirt Alts
+      work, someone accidentally turned the working button off :(
+2021-12-28:
+  GoldenAlpharex:
+  - bugfix: The Automated Announcement System went through therapy and is no longer
+      feeling so socially anxious it forgets how to use a radio to announce anything
+      over Common.
+  Iamgoofball + whoever made the contractor baton sprites I codersprite modified:
+  - rscadd: 'All maps now have proper Departmental Guard offices, instead of Security
+      outposts in each department. The computers in said offices have been adjusted
+      where needed. expansion: Departmental Guards now have lockers that contain two
+      sets of departmental guard gear in their new offices.'
+  - rscadd: Departmental Guards now have Departmental Batons.
+  - balance: Departmental Batons work as normal inside their department.
+  - balance: Departmental Batons have three charges for non-departmental uses.
+  - balance: A charge is expended when you baton someone outside of your department.
+  - balance: If all three charges are expended, the baton is unusable until you return
+      to your department and reactivate the baton.
+  - balance: This will reduce the ability of Guards to roll around the station and
+      exert authority where they aren't supposed to be exerting authority.
+  - balance: This will encourage Guards to naturally stay near their department and
+      keep it safe.
+  - balance: The charges system allows Guards to punish people who kite around the
+      edge of their department, while punishing Guards who over-extend too far and
+      should be calling Security.
+  - balance: Departmental Guards have had their cuffs replaced with colored cableties
+      for their department.
+  - rscadd: Departmental Guards are given security HUDs, not HUDglasses, primarily
+      so that they can see job icons and see if someone who ran into their department
+      followed by redshirts is wanted by Security or not, so as to improve communication.
+  - balance: They do not have the access needed to adjust records, however, and will
+      be on read-only mode.
+  - rscdel: All Departmental Guard, Security Officer, HoS, and Warden Stun Batons
+      have been removed from the backpack, and are now in the belts in your security
+      lockers, instead of in your backpack.
+  - balance: 'This is to keep the number of batons on the map at a consistent level
+      regardless of Security staffing. qol: Your Security Belt can now be reskinned
+      between Security and Peacekeeper variants.'
+  - balance: Brig Officers have had their baton replaced by a Departmental Prison
+      Baton.
+  - balance: Brig Officers have had their taser removed and replaced with a disabler
+      because it's not 2012 anymore and we don't give Security tasers.
+  - rscdel: Security Medics have had their telescopic batons removed, because that's
+      a Head of Staff item and shouldn't be available to rank and file staffers. Telescopic
+      baton creep is a problem and is being slowly addressed.
+  - rscdel: Security Medics have had their firearm removed, as it was an oversight
+      from the original Goofsec PR, and they shouldn't be packing heat like that over
+      other officers.
+  - bugfix: Map icons have been added for the spawn points of all new Skyrat jobs.
+  - bugfix: Spawn points have been added to all maps for Departmental Guards.
+  - rscdel: Security Sergeant has been removed after discussion with policymakers
+      and other developers on the project.
+  - rscadd: An additional Security Officer slot has been opened.
+  OrionTheFox:
+  - bugfix: Icebox's prison maint door has the right access, and the tcomms control
+      room doesnt start out frozen
+  SkyratBot:
+  - spellcheck: Removed a visible b> from Cult's objective text.
+  - bugfix: Tramstation Court Room and Lawyer's Office now have lights
+  - admin: The Save Shell admin circuit component now properly loads circuits that
+      use a BCI or MODsuit module as their shell.
+  - bugfix: fixed weird "Mob Spawner" objects showing up when you killed clowns
+  - refactor: Mech Fabricator's `output_part_info()` proc is much more optimized.
+  - bugfix: You can no longer get an alert by checking your mood with telekinesis.
+  - bugfix: Some antags (like Abductors) no longer have 2 antag gain messages.
+  - spellcheck: Gaining and losing antagonist status will now be properly written
+      with 'the', as needed.
+  - bugfix: Fixes phylactery exploits.  Liches can no longer be soulstone captured
+      or be debrained and put into an MMI.
+  lessthnthree:
+  - bugfix: Tajaran species now has feline voice modifier.
+2021-12-29:
+  GoldenAlpharex:
+  - bugfix: Fixes fireplaces not producing light when they should be fully lit.
+  - rscdel: Removes the new janiborg sprites so we can properly add them back when
+      all the tall borgs are finished.
+  Melbert:
+  - bugfix: Dirt piles can no longer exceed their maximum reagent capacity by 10.
+      Sorry prison botanists.
+  SkyratBot:
+  - bugfix: the mod installer from charliestation no longer has infinite uses
+  - bugfix: fixes broken sprites on prototype suit
+  - bugfix: fixes intellicards not updating
+  - bugfix: fixes techwebs having two of the same modsuit module
+  - bugfix: fixes autofire acting weird with screen objects
+  - bugfix: fixes modsuits bricking when stripping or putting another one on with
+      the pathfinder
+  - bugfix: fixes modsuits deleting everything inside when they explode
+  - bugfix: fixes ais in modsuits not being able to use abilities
+  - bugfix: 'fixes the tether not being able to hook onto catwalks/lattices qol: ais
+      in modsuits now make the user stand up instead of weirdly crawling qol: a modsuit
+      being destroyed with an ai inside now pops it out as a small card you can recover
+      from with an intellicard qol: modsuit module radial is now more friendly, showing
+      you tooltips and which modules are active qol: mech fabricator module list is
+      now sorted'
+  - bugfix: Mulebots can be turned on/off again, and their wires can once again be
+      interacted with
+  - bugfix: pAI's can once again be placed in Bots.
+  - bugfix: Unlocked bots can once again be interacted with, even if you don't have
+      access to it, if already unlocked.
+  - bugfix: italian mafioso now get their proper names
+  - admin: admins can now view family objectives from the traitor panel
+  - bugfix: fixed zombie powder not sleeping you on ingestion and on further ingestion.
+  - bugfix: fixed a say emoting bug where forced says' were being turned into emotes
+2021-12-30:
+  Gandalf2k15:
+  - rscdel: The ambitions system has been banished to hell.
+  - rscdel: The antagonists module has been reset to TG
+  GoldenAlpharex:
+  - bugfix: Fixes turrets causing runtimes in the Syndicate bases.
+  - bugfix: Removes a few duplicate lattices from Shuttle5832.
+  - bugfix: Fixes the runtimes with Orderlies and Custom Agents not having the right
+      accesses to apply their trims, which popped up at every round start.
+  - bugfix: Fixes the tactical suit not using the right file and therefore runtiming
+      at roundstart.
+  SkyratBot:
+  - bugfix: Ghosts can now enter a posibrain that has already had a player in it before.
+  - bugfix: ais in modsuits without wearers cant magically move out of closets/disposals/morgues
+      anymore
+  - bugfix: speed potions work on modsuits and use a signal system
+  - bugfix: Forcefully tampered with a customer bot's wiring, it should pay for Ale
+      now.
+  jjpark-kb:
+  - rscadd: added the crank cell; alt-click it to charge it-- it will lose charges
+      over time. Find in trash piles and xenoarch loot
+  - rscadd: added the auto-charge cell. Find it in xenoarch loot
+  tastyfish:
+  - bugfix: Dogginos is now accepting emergency orders again.
+  theOOZ:
+  - rscadd: Mime mask checks snout type upon variation selection.
+2021-12-31:
+  Melbert:
+  - bugfix: Exo-drone fuel pellets delete when empty.
+  - bugfix: Exo-drone launchers now update their icon correctly when adding / removing
+      fuel. Removing fuel with a crowbar also doesn't smack the launcher when done.
+  - bugfix: Fixes a hard-del with the exo-drone launcher.
+  SkyratBot:
+  - bugfix: 'NanoTrasen fixed a problem with their orion trail arcade machines relaying
+      security and medical comms to the most dangerous demographic: gamers. NanoTrasen
+      assures you that this security exploit will never happen again.'
+  - bugfix: you cant make radios play comms with a broken speaker by setting their
+      frequency anymore.
+  - bugfix: Spidercharges can now only be blown up in their intended location.
+  - bugfix: Non-suicided brains put into suicided bodies will no longer be marked
+      as suicided. Consequentially, said suicided bodies can be used for brain transplants.
+  - bugfix: The ablative trenchcoat actually gives you a sechud again.
+  - bugfix: accessories on clothes placed inside garment bags will no longer delete
+      themselves.
+  - code_imp: space/openspace turfs now exist to make multi-z space turfs act more
+      space-like.
+  tastyfish:
+  - spellcheck: Fixed augmented lung messages.

@@ -55,7 +55,6 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	name = "Snake Plush"
 	item_path = /obj/item/toy/plush/snakeplushie
 
-
 /datum/loadout_item/toys/slime
 	name = "Slime plushie"
 	item_path = /obj/item/toy/plush/slimeplushie
@@ -179,6 +178,10 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 /datum/loadout_item/toys/lizzyplush
 	name = "Odd yoga lizzy plushie"
 	item_path = /obj/item/toy/plush/lizzyplush
+
+/datum/loadout_item/toys/xixi
+	name = "Familiar Harpy Plushie"
+	item_path = /obj/item/toy/plush/xixi
 
 /datum/loadout_item/toys/card_binder
 	name = "Card Binder"

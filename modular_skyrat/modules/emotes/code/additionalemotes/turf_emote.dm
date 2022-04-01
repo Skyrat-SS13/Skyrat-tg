@@ -65,8 +65,7 @@ var/current_turf
 			var/list/snake_taurs = list("Naga", "Cybernetic Naga")
 			if(human_user.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME] in snake_taurs)
 				user.allowed_turfs -= list("pawprint", "hoofprint", "clawprint")
-				if(!(human_user.wear_suit && istype(human_user.wear_suit, /obj/item/clothing/suit/space/hardsuit)))
-					user.allowed_turfs += "constrict"
+				user.allowed_turfs += "constrict"
 
 		//clothing
 		var/obj/item/shoes = user.get_item_by_slot(ITEM_SLOT_FEET)

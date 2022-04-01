@@ -37,7 +37,7 @@
 
 /obj/item/clothing/under/color/random/Initialize(mapload)
 	..()
-	var/obj/item/clothing/under/color/C = get_random_jumpsuit()
+	var/obj/item/clothing/under/color/C = get_random_variant() // SKYRAT EDIT CHANGE - use local proc that handles prefs
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		H.equip_to_slot_or_del(new C(H), ITEM_SLOT_ICLOTHING, initial=TRUE) //or else you end up with naked assistants running around everywhere...

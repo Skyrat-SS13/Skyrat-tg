@@ -52,7 +52,8 @@
 					/datum/reagent/consumable/ethanol/triple_sec,
 					/datum/reagent/consumable/ethanol/creme_de_coconut,
 					/datum/reagent/consumable/nothing,
-					/datum/reagent/consumable/laughter,)
+					/datum/reagent/consumable/laughter,
+					/datum/reagent/consumable/ethanol/synthanol,)
 
 /obj/item/reagent_containers/borghypo/borgshaker/specific/soda
 	name = "cyborg soda shaker"
@@ -172,7 +173,7 @@
 		if(done_any) // Only show a message if we succeeded at least once
 			user.visible_message(span_notice("[user] recharged [target_atom]!"), span_notice("You recharged [target_atom]!"))
 		recharging = FALSE
-		return FALSE
+		return TRUE
 	recharging = FALSE
 
 

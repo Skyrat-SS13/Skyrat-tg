@@ -131,16 +131,14 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 	name = "Skin Tight Skull Bandana"
 	item_path = /obj/item/clothing/mask/bandana/skull/ft
 
-
 /datum/loadout_item/mask/gas_glass
 	name = "Glass Gas Mask"
 	item_path = /obj/item/clothing/mask/gas/glass
 
-
 /datum/loadout_item/mask/surgical
 	name = "Sterile Mask"
 	item_path = /obj/item/clothing/mask/surgical
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_VIROLOGIST, JOB_CHEMIST, JOB_GENETICIST, JOB_PARAMEDIC, JOB_PSYCHOLOGIST,JOB_SECURITY_MEDIC)
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_VIROLOGIST, JOB_CHEMIST, JOB_GENETICIST, JOB_PARAMEDIC, JOB_PSYCHOLOGIST, JOB_SECURITY_MEDIC, JOB_ORDERLY)
 
 //Families Gear
 /datum/loadout_item/mask/driscoll

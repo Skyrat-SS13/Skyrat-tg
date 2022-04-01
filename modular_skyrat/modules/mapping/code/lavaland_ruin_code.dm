@@ -1,26 +1,37 @@
 //SPAWNERS//
-/obj/effect/mob_spawn/human/lavaland_syndicate/shaftminer
+/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/shaftminer
 	name = "Syndicate Shaft Miner"
-	short_desc = "You are a syndicate shaft miner, employed in a top secret research facility developing biological weapons."
+	you_are_text = "You are a syndicate shaft miner, employed in a top secret research facility developing biological weapons."
 	outfit = /datum/outfit/lavaland_syndicate/shaftminer
 
-/obj/effect/mob_spawn/human/lavaland_syndicate/comms/space
+/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/comms/space
 	outfit = /datum/outfit/lavaland_syndicate/comms/space
 
-/obj/effect/mob_spawn/human/lavaland_syndicate/shaftminer/ice
+/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/shaftminer/ice
 	name = "Syndicate Shaft Miner"
-	short_desc = "You are a syndicate shaft miner, employed in a top secret research facility developing biological weapons."
+	you_are_text = "You are a syndicate shaft miner, employed in a top secret research facility developing biological weapons."
 	outfit = /datum/outfit/lavaland_syndicate/shaftminer/ice
 
-/obj/effect/mob_spawn/human/lavaland_syndicate/ice
+/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/ice
 	name = "Syndicate Bioweapon Scientist"
-	short_desc = "You are a syndicate science technician, employed in a top secret research facility developing biological weapons."
+	you_are_text = "You are a syndicate science technician, employed in a top secret research facility developing biological weapons."
 	outfit = /datum/outfit/lavaland_syndicate/ice
 
 //OUTFITS//
 /datum/outfit/lavaland_syndicate
 	uniform = /obj/item/clothing/under/utility/sci/syndicate
 	ears = /obj/item/radio/headset/interdyne
+
+/datum/outfit/lavaland_syndicate/post_equip(mob/living/carbon/human/syndicate, visualsOnly = FALSE)
+	syndicate.faction |= ROLE_SYNDICATE
+
+	var/obj/item/card/id/id_card = syndicate.wear_id
+	if(istype(id_card))
+		id_card.registered_name = syndicate.real_name
+		id_card.update_label()
+		id_card.update_icon()
+
+	return ..()
 
 /datum/outfit/lavaland_syndicate/ice
 	uniform = /obj/item/clothing/under/syndicate
@@ -55,12 +66,12 @@
 	id = /obj/item/card/id/advanced/silver/generic
 	id_trim = /datum/id_trim/syndicom/skyrat/interdyne/deckofficer
 
-/obj/effect/mob_spawn/human/lavaland_syndicate/deckofficer
+/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/deckofficer
 	name = "Syndicate Deck Officer"
-	short_desc = "You are a syndicate Deck Officer, employed in a top secret research facility developing biological weapons."
+	you_are_text = "You are a syndicate Deck Officer, employed in a top secret research facility developing biological weapons."
 	outfit = /datum/outfit/lavaland_syndicate/shaftminer/deckofficer
 
-/obj/effect/mob_spawn/human/lavaland_syndicate/deckofficer/Destroy()
+/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/deckofficer/Destroy()
 	new/obj/structure/fluff/empty_sleeper/syndicate/captain(get_turf(src))
 	return ..()
 

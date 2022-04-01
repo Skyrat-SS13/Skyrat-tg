@@ -299,6 +299,23 @@
 	inhand_icon_state = "security"//Could likely use a better one.
 	worn_icon_state = "security"
 	content_overlays = TRUE
+	// SKYRAT EDIT ADDITION START
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Basic Security" = list(
+			RESKIN_ICON = 'icons/obj/clothing/belts.dmi',
+			RESKIN_ICON_STATE = "security",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/belt.dmi',
+			RESKIN_WORN_ICON_STATE = "security"
+		),
+		"Peacekeeper" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi',
+			RESKIN_ICON_STATE = "peacekeeperbelt",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi',
+			RESKIN_WORN_ICON_STATE = "peacekeeperbelt"
+		)
+	)
+	// SKYRAT EDIT ADDITION END
 
 /obj/item/storage/belt/security/ComponentInitialize()
 	. = ..()

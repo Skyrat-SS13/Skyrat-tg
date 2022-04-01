@@ -11,7 +11,7 @@
 
 /*----- Black Market Shuttle Datum + related code -----*/
 /datum/map_template/shuttle/ruin/blackmarket_chevvy
-	prefix = "_maps/skyrat/shuttles/"
+	prefix = "_maps/shuttles/skyrat/"
 	suffix = "blackmarket_chevvy"
 	name = "Black Market Chevvy"
 
@@ -29,7 +29,7 @@
 	shuttleId = "blackmarket_chevvy"
 	lock_override = NONE
 	shuttlePortId = "blackmarket_chevvy_custom"
-	jumpto_ports = list("blackmarket_chevvy_home" = 1, "whiteship_home" = 1)
+	jump_to_ports = list("blackmarket_chevvy_home" = 1, "whiteship_home" = 1)
 	view_range = 0
 	x_offset = 2
 	y_offset = 0
@@ -40,6 +40,7 @@
 /*----- End of Black Market Shuttle Code -----*/
 
 /datum/map_template/shuttle/prison_transport
+	prefix = "_maps/shuttles/skyrat/"
 	port_id = "prison_transport"
 	suffix = "skyrat"
 	name = "Prison Transporter NSS-74"
@@ -51,7 +52,7 @@
 	shuttleId = "slaver_syndie"
 	lock_override = NONE
 	shuttlePortId = "slaver"
-	jumpto_ports = list("whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1, "syndicate_ne" = 1, "syndicate_nw" = 1, "syndicate_n" = 1, "syndicate_se" = 1, "syndicate_sw" = 1, "syndicate_s" = 1)
+	jump_to_ports = list("whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1, "syndicate_ne" = 1, "syndicate_nw" = 1, "syndicate_n" = 1, "syndicate_se" = 1, "syndicate_sw" = 1, "syndicate_s" = 1)
 	view_range = 10
 	x_offset = 0
 	y_offset = 0
@@ -71,32 +72,31 @@
 
 /datum/map_template/shuttle/slaver_ship
 	port_id = "slaver ship"
-	prefix = "_maps/skyrat/shuttles/"
+	prefix = "_maps/shuttles/skyrat/"
 	port_id = "slaver"
 	suffix = "syndie"
 	name = "Slaver Ship"
 	who_can_purchase = null
 
-/obj/effect/mob_spawn/human/guild/slaver
+/obj/effect/mob_spawn/ghost_role/human/guild
+	name = "Privateer Slaver"
+	prompt_name = "a privateer slaver"
+	you_are_text = "You're here to capture valuable hostages to sell into slavery."
+	flavour_text = "You're part of a privateer crew that sometimes takes contracts from the illusive Guild, which offers bounties and contracts to independent crews. Raiding colonies of the many less technologically advanced species in the area is much easier than this. You've been told that your mission is to capture as many valuable hostages from the station as possible. Your anonymous employer insists on the importance of humiliating SolFed by snatching those under their protection from right under their noses."
+	important_text = ""
+
+/obj/effect/mob_spawn/ghost_role/human/guild/slaver
 	name = "Privateer Slaver"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
-	short_desc = "You're here to capture valuable hostages to sell into slavery."
-	flavour_text = "You're part of a privateer crew that sometimes takes contracts from the illusive Guild, which offers bounties and contracts to independent crews. Raiding colonies of the many less technologically advanced species in the area is much easier than this. You've been told that your mission is to capture as many valuable hostages from the station as possible. Your anonymous employer insists on the importance of humiliating SolFed by snatching those under their protection from right under their noses."
-	important_info = ""
 	outfit = /datum/outfit/guild/slaver
-	excluded_gamemodes = list()
-	can_use_alias = TRUE
-	death = FALSE
-	any_station_species = TRUE
 
-/obj/effect/mob_spawn/human/guild/slaver/captain
+/obj/effect/mob_spawn/ghost_role/human/guild/slaver/captain
 	name = "Privateer Slaver Captain"
-	short_desc = "You lead a small team focused on capturing hostages."
+	you_are_text = "You lead a small team focused on capturing hostages."
 	flavour_text = "You're the captain of a privateer crew that sometimes takes contracts from the illusive Guild, which offers bounties and contracts to independent crews, like yours! Lead your crew to infiltrate the station and capture hostages and hold them till the station's emergency shuttle leaves. The higher ranking the hostages, the more you'll get paid out. You're free to (and encouraged to) beat and humiliate, but not kill. Your anonymous employer wants your victims as their personel slaves. They mentioned something about propaganda? Ah, who knows with the Guild... All sorts of types posts these bounties."
-	important_info = "You are expected to roleplay heavily and lead effectively in this role."
+	important_text = "You are expected to roleplay heavily and lead effectively in this role."
 	outfit = /datum/outfit/guild/slaver/captain
-	excluded_gamemodes = list()
 
 /obj/item/radio/headset/guild
 	keyslot = new /obj/item/encryptionkey/headset_guild
@@ -161,3 +161,30 @@
 		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/rubber,
 		/obj/item/megaphone/command
 	)
+
+/*----- Tarkon Shuttle Datum + related code -----*/
+/datum/map_template/shuttle/ruin/tarkon_driver
+	prefix = "_maps/skyrat/shuttles/"
+	suffix = "tarkon_driver"
+	name = "Tarkon Drill Driver"
+
+/obj/machinery/computer/shuttle/tarkon_driver
+	name = "Tarkon Driver Control"
+	desc = "Used to control the Tarkon Driver."
+	circuit = /obj/item/circuitboard/computer/tarkon_driver
+	shuttleId = "tarkon_driver"
+	possible_destinations = "tarkon_driver_custom;port_tarkon;whiteship_home"
+
+/obj/machinery/computer/camera_advanced/shuttle_docker/tarkon_driver
+	name = "Tarkon Driver Navigation Computer"
+	desc = "The Navigation console for the Tarkon Driver. A broken \"Engage Drill\" button seems to dimly blink in a yellow colour"
+	shuttleId = "tarkon_driver"
+	lock_override = NONE
+	shuttlePortId = "tarkon_driver_custom"
+	jump_to_ports = list("port_tarkon" = 1, "whiteship_home" = 1)
+	view_range = 0
+
+/obj/item/circuitboard/computer/tarkon_driver
+	name = "Chevvy Control Console (Computer Board)"
+	build_path = /obj/machinery/computer/shuttle/tarkon_driver
+/*----- End of Tarkon Shuttle Code -----*/

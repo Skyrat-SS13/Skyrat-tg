@@ -247,7 +247,7 @@
 //Applies brute and burn damage to the organ. Returns 1 if the damage-icon states changed at all.
 //Damage will not exceed max_damage using this proc
 //Cannot apply negative damage
-/obj/item/bodypart/proc/receive_damage(brute = 0, burn = 0, stamina = 0, blocked = 0, updating_health = TRUE, required_status = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE) // maybe separate BRUTE_SHARP and BRUTE_OTHER eventually somehow hmm
+/obj/item/bodypart/proc/receive_damage(brute = 0, burn = 0, stamina = 0, blocked = 0, updating_health = TRUE, required_status = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null)
 	var/hit_percent = (100-blocked)/100
 	if((!brute && !burn && !stamina) || hit_percent <= 0)
 		return FALSE
@@ -331,17 +331,17 @@
 		//This makes it so the more damaged bodyparts are, the more likely they are to get wounds
 		//However, this bonus isn't applied when the object doesn't pass the initial wound threshold, nor is it when it already has enough wounding dmg
 		if(wounding_dmg < DAMAGED_BODYPART_BONUS_WOUNDING_BONUS)
-			var/damaged_percent = (brute_dam + burn_dam)/max_damage
+			var/damaged_percent = (brute_dam + burn_dam) / max_damage
 			if(damaged_percent > DAMAGED_BODYPART_BONUS_WOUNDING_THRESHOLD)
 				damaged_percent = DAMAGED_BODYPART_BONUS_WOUNDING_THRESHOLD
-			wounding_dmg = min(DAMAGED_BODYPART_BONUS_WOUNDING_BONUS, wounding_dmg+(damaged_percent*DAMAGED_BODYPART_BONUS_WOUNDING_COEFF))
+			wounding_dmg = min(DAMAGED_BODYPART_BONUS_WOUNDING_BONUS, wounding_dmg + (damaged_percent * DAMAGED_BODYPART_BONUS_WOUNDING_COEFF))
 
 		if(current_gauze)
 			current_gauze.take_damage()
 		if(current_splint)
 			current_splint.take_damage()
-		//SKYRAT EDIT ADDITION - MEDICAL
-		check_wounding(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus)
+		//SKYRAT EDIT ADDITION END - MEDICAL
+		check_wounding(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus, attack_direction)
 
 	for(var/datum/wound/iter_wound as anything in wounds)
 		iter_wound.receive_damage(wounding_type, wounding_dmg, wound_bonus)
@@ -435,7 +435,7 @@
  * * wound_bonus- The wound_bonus of an attack
  * * bare_wound_bonus- The bare_wound_bonus of an attack
  */
-/obj/item/bodypart/proc/check_wounding(woundtype, damage, wound_bonus, bare_wound_bonus)
+/obj/item/bodypart/proc/check_wounding(woundtype, damage, wound_bonus, bare_wound_bonus, attack_direction)
 	if(HAS_TRAIT(owner, TRAIT_NEVER_WOUNDED))
 		return
 
@@ -458,7 +458,7 @@
 
 	if(injury_roll > WOUND_DISMEMBER_OUTRIGHT_THRESH && prob(get_damage() / max_damage * 100))
 		var/datum/wound/loss/dismembering = new
-		dismembering.apply_dismember(src, woundtype, outright=TRUE)
+		dismembering.apply_dismember(src, woundtype, outright = TRUE, attack_direction = attack_direction)
 		return
 
 	// quick re-check to see if bare_wound_bonus applies, for the benefit of log_wound(), see about getting the check from check_woundings_mods() somehow
@@ -484,10 +484,10 @@
 		if(initial(possible_wound.threshold_minimum) < injury_roll)
 			var/datum/wound/new_wound
 			if(replaced_wound)
-				new_wound = replaced_wound.replace_wound(possible_wound)
+				new_wound = replaced_wound.replace_wound(possible_wound, attack_direction = attack_direction)
 			else
 				new_wound = new possible_wound
-				new_wound.apply_wound(src)
+				new_wound.apply_wound(src, attack_direction = attack_direction)
 			log_wound(owner, new_wound, damage, wound_bonus, bare_wound_bonus, base_roll) // dismembering wounds are logged in the apply_wound() for loss wounds since they delete themselves immediately, these will be immediately returned
 			return new_wound
 
@@ -845,7 +845,7 @@
 		else
 			species_color = ""
 
-		if(!dropping_limb && human_owner.dna.check_mutation(HULK))
+		if(!dropping_limb && human_owner.dna.check_mutation(/datum/mutation/human/hulk))
 			mutation_color = "#00aa00"
 		else
 			mutation_color = ""
@@ -876,7 +876,7 @@
 //Gives you a proper icon appearance for the dismembered limb
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
 /*
-/obj/item/bodypart/proc/get_limb_icon(dropped)
+/obj/item/bodypart/proc/get_limb_icon(dropped, draw_external_organs)
 	icon_state = "" //to erase the default sprite, we're building the visual aspects of the bodypart through overlays alone.
 
 	. = list()
@@ -916,6 +916,8 @@
 	if((body_zone != BODY_ZONE_HEAD && body_zone != BODY_ZONE_CHEST))
 		should_draw_gender = FALSE
 
+	var/draw_color
+
 	if(!is_organic_limb())
 		limb.icon = icon
 		limb.icon_state = "[body_zone]" //Inorganic limbs are agender
@@ -934,43 +936,45 @@
 				aux_em_block.dir = image_dir
 				aux.overlays += aux_em_block
 
-		return
-
-	if(should_draw_greyscale)
-		limb.icon = icon_greyscale
-		if(should_draw_gender)
-			limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
-		else if(use_digitigrade)
-			limb.icon_state = "digitigrade_[use_digitigrade]_[body_zone]"
-		else
-			limb.icon_state = "[species_id]_[body_zone]"
 	else
-		limb.icon = 'icons/mob/human_parts.dmi'
-		if(should_draw_gender)
-			limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
+		if(should_draw_greyscale)
+			limb.icon = icon_greyscale
+			if(should_draw_gender)
+				limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
+			else if(use_digitigrade)
+				limb.icon_state = "digitigrade_[use_digitigrade]_[body_zone]"
+			else
+				limb.icon_state = "[species_id]_[body_zone]"
 		else
-			limb.icon_state = "[species_id]_[body_zone]"
-
-	if(aux_zone)
-		aux = image(limb.icon, "[species_id]_[aux_zone]", -aux_layer, image_dir)
-		. += aux
-
-	if(should_draw_greyscale)
-		var/draw_color = mutation_color || species_color || (skin_tone && skintone2hex(skin_tone))
-		if(draw_color)
-			limb.color = draw_color
-			if(aux_zone)
-				aux.color = draw_color
-	if(blocks_emissive)
-		var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, alpha = limb.alpha)
-		limb_em_block.dir = image_dir
-		limb.overlays += limb_em_block
+			limb.icon = 'icons/mob/human_parts.dmi'
+			if(should_draw_gender)
+				limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
+			else
+				limb.icon_state = "[species_id]_[body_zone]"
 
 		if(aux_zone)
-			var/mutable_appearance/aux_em_block = emissive_blocker(aux.icon, aux.icon_state, alpha = aux.alpha)
-			aux_em_block.dir = image_dir
-			aux.overlays += aux_em_block
+			aux = image(limb.icon, "[species_id]_[aux_zone]", -aux_layer, image_dir)
+			. += aux
 
+		if(should_draw_greyscale)
+			draw_color = mutation_color || species_color || (skin_tone && skintone2hex(skin_tone))
+			if(draw_color)
+				limb.color = draw_color
+				if(aux_zone)
+					aux.color = draw_color
+
+		if(blocks_emissive)
+			var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, alpha = limb.alpha)
+			limb_em_block.dir = image_dir
+			limb.overlays += limb_em_block
+
+			if(aux_zone)
+				var/mutable_appearance/aux_em_block = emissive_blocker(aux.icon, aux.icon_state, alpha = aux.alpha)
+				aux_em_block.dir = image_dir
+				aux.overlays += aux_em_block
+
+	if(!draw_external_organs)
+		return
 
 	//Draw external organs like horns and frills
 	for(var/obj/item/organ/external/external_organ in external_organs)

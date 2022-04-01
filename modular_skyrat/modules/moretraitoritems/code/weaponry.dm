@@ -1,7 +1,3 @@
-/obj/item/vibro_weapon/ninjasr
-	block_chance = 25
-	force = 13
-
 /obj/item/clothing/head/sus_bowler
 	name = "odd bowler"
 	desc = "A deep black bowler. Inside the hat, there is a sleek red S, with a smaller X insignia embroidered within. On closer inspection, the brim feels oddly weighted..."

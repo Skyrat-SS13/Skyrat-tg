@@ -14,14 +14,15 @@
 	attack_verb_simple = list("mop", "bash", "bludgeon", "whack")
 	resistance_flags = FLAMMABLE
 	var/mopcount = 0
-	var/mopcap = 50 //SKYRAT EDIT CHANGE
-	var/mopspeed = 15
+	///Maximum volume of reagents it can hold.
+	var/max_reagent_volume = 50 // SKYRAT EDIT - ORIGINAL: 15
+	var/mopspeed = 1.5 SECONDS
 	force_string = "robust... against germs"
 	var/insertable = TRUE
 
 /obj/item/mop/Initialize(mapload)
 	. = ..()
-	create_reagents(mopcap)
+	create_reagents(max_reagent_volume)
 	//SKYRAT EDIT ADDITION
 	AddElement(/datum/element/liquids_interaction, on_interaction_callback = /obj/item/mop/.proc/attack_on_liquids_turf)
 
@@ -39,7 +40,7 @@
 	//SKYRAT EDIT END
 
 /obj/item/mop/proc/clean(turf/A, mob/living/cleaner)
-	if(reagents.has_reagent(/datum/reagent/water, 1) || reagents.has_reagent(/datum/reagent/water/holywater, 1) || reagents.has_reagent(/datum/reagent/consumable/ethanol/vodka, 1) || reagents.has_reagent(/datum/reagent/space_cleaner, 1))
+	if(reagents.has_chemical_flag(REAGENT_CLEANS, 1))
 		// If there's a cleaner with a mind, let's gain some experience!
 		if(cleaner?.mind)
 			var/total_experience_gain = 0
@@ -98,7 +99,7 @@
 /obj/item/mop/advanced
 	desc = "The most advanced tool in a custodian's arsenal, complete with a condenser for self-wetting! Just think of all the viscera you will clean up with this! Due to the self-wetting technology, it proves very inefficient for cleaning up spills." //SKYRAT EDIT
 	name = "advanced mop"
-	mopcap = 100 //SKYRAT EDIT CHANGE
+	max_reagent_volume = 100 // SKYRAT EDIT - ORIGINAL: 10
 	icon_state = "advmop"
 	inhand_icon_state = "mop"
 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
@@ -106,7 +107,7 @@
 	force = 12
 	throwforce = 14
 	throw_range = 4
-	mopspeed = 8
+	mopspeed = 0.8 SECONDS
 	var/refill_enabled = TRUE //Self-refill toggle for when a janitor decides to mop with something other than water.
 	/// Amount of reagent to refill per second
 	var/refill_rate = 0.5
@@ -126,7 +127,7 @@
 	playsound(user, 'sound/machines/click.ogg', 30, TRUE)
 
 /obj/item/mop/advanced/process(delta_time)
-	var/amadd = min(mopcap - reagents.total_volume, refill_rate * delta_time)
+	var/amadd = min(max_reagent_volume - reagents.total_volume, refill_rate * delta_time)
 	if(amadd > 0)
 		reagents.add_reagent(refill_reagent, amadd)
 

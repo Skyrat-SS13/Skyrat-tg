@@ -5,6 +5,30 @@ SERVERSQLNAME
 ## Comment this out if you'd like a server that cares only about local bans in the database.
 RESPECT_GLOBAL_BANS
 
+## Automatic population control population limit, will send players(not admins) to the overflow server.
+## Set to 0 to disable
+## MAKE SURE YOU SET AN OVERFLOW IP!
+HARD_PLAYER_CAP 0
+
+## Player prompt to change servers after this cap.
+## Set to 0 to disable
+## MAKE SURE YOU SET AN OVERFLOW IP!
+SOFT_PLAYER_CAP 0
+
+## The IP of the overflow server. See above.
+#OVERFLOW_SERVER_IP byond://example:1337
+
+## Cross server OOC
+## Sends this servers OOC to all other cross servers. Uses cross server name as an identity.
+#ENABLE_CROSS_SERVER_OOC
+
+## Cross server ASAY
+## Sends this servers ASAY to all other cross servers. Uses cross server name as an identity.
+#ENABLE_CROSS_SERVER_ASAY
+
+## The non-IC name we send to OOC and adminsay.
+#CROSS_SERVER_NAME
+
 ## Comment this out if you want to use the SQL based mentor system, the legacy system uses mentors.txt.
 ## You need to set up your database to use the SQL based system.
 ## This flag is automatically enabled if SQL_ENABLED isn't
@@ -26,9 +50,6 @@ CRYO_MIN_SSD_TIME 15
 
 ## log subtler emotes in game.txt
 #LOG_SUBTLER
-
-## log ambition changes in game.txt
-LOG_AMBITION
 
 ## autovote initial delay (deciseconds in real time) before first automatic transfer vote call (default 120 minutes)
 ## Set to 0 to disable the subsystem altogether.
@@ -69,6 +90,14 @@ PC_MOB_TEXT As a player controlled mob you are expected to play the role to the 
 ## Toggles off SSDecay when uncommented, HIGHLY recommended for map test-merges, to avoid giving it a bad first impression.
 SSDECAY_DISABLED
 
+## Toggles off SSDecay nests when uncommented, HIGHLY recommended for map test-merges, to avoid giving it a bad first impression.
+## If SSDECAY_DISABLED is uncommented, then it does not matter if this is commented out since this config requires SSDecay to be enabled first.
+SSDECAY_DISABLE_NESTS
+
 ## Disables any ERP preferences for codebases that don't want it.
 #DISABLE_ERP_PREFERENCES
 #ERP_EMOTES_TO_DISABLE cum
+
+## Lobby Camera Intro
+## Put # in front to disable
+LOBBY_CAMERA

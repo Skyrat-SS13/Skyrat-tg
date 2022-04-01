@@ -87,8 +87,6 @@ SUBSYSTEM_DEF(ticker)
 	var/list/music = list()
 	var/use_rare_music = prob(1)
 
-	real_round_start_time = world.realtime //SKYRAT EDIT ADDITION
-
 	for(var/S in provisional_title_music)
 		var/lower = lowertext(S)
 		var/list/L = splittext(lower,"+")
@@ -271,6 +269,7 @@ SUBSYSTEM_DEF(ticker)
 	LAZYCLEARLIST(round_start_events)
 
 	SEND_SIGNAL(src, COMSIG_TICKER_ROUND_STARTING)
+	real_round_start_time = world.timeofday //SKYRAT EDIT ADDITION
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
 	round_start_time = world.time
@@ -573,7 +572,7 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/send_news_report()
 	var/news_message
 	var/news_source = "Nanotrasen News Network"
-	var/decoded_station_name = html_decode(station_name()) //decode station_name to avoid minor_announce double encode
+	var/decoded_station_name = html_decode("[CONFIG_GET(string/cross_comms_name)]([station_name()])") //decode station_name to avoid minor_announce double encode //SKYRAT EDIT CHANGE
 	switch(news_report)
 		if(NUKE_SYNDICATE_BASE)
 			news_message = "In a daring raid, the heroic crew of [decoded_station_name] detonated a nuclear device in the heart of a terrorist base."
@@ -610,12 +609,6 @@ SUBSYSTEM_DEF(ticker)
 			news_message = "Tensions have flared with the Space Wizard Federation following the death of one of their members aboard [decoded_station_name]."
 		if(STATION_NUKED)
 			news_message = "[decoded_station_name] activated its self-destruct device for unknown reasons. Attempts to clone the Captain for arrest and execution are underway."
-		if(CLOCK_SUMMON)
-			news_message = "The garbled messages about hailing a mouse and strange energy readings from [decoded_station_name] have been discovered to be an ill-advised, if thorough, prank by a clown."
-		if(CLOCK_SILICONS)
-			news_message = "The project started by [decoded_station_name] to upgrade their silicon units with advanced equipment have been largely successful, though they have thus far refused to release schematics in a violation of company policy."
-		if(CLOCK_PROSELYTIZATION)
-			news_message = "The burst of energy released near [decoded_station_name] has been confirmed as merely a test of a new weapon. However, due to an unexpected mechanical error, their communications system has been knocked offline."
 		if(SHUTTLE_HIJACK)
 			news_message = "During routine evacuation procedures, the emergency shuttle of [decoded_station_name] had its navigation protocols corrupted and went off course, but was recovered shortly after."
 		if(GANG_OPERATING)
@@ -633,6 +626,7 @@ SUBSYSTEM_DEF(ticker)
 	//SKYRAT EDIT - END
 
 	if(news_message && length(CONFIG_GET(keyed_list/cross_server))) //SKYRAT EDIT - CONFIG CHECK MOVED FROM ROUNDEND.DM
+		news_message += " (Shift on [CONFIG_GET(string/cross_server_name)] ending!)" //SKYRAT EDIT ADDITION
 		send2otherserver(news_source, news_message,"News_Report")
 	//SKYRAT EDIT - START
 	if(news_message)

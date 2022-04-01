@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/submachine_gun/mp40
 	name = "\improper MP-40"
-	desc = "The instantly recognizable 'nazi gun'. Extremely outdated SMG that has only seen service during Sol-3's second World War. This one's a poor, unlicensed reproduction."
+	desc = "The instantly recognizable 'kraut gun'. Extremely outdated SMG that has only seen service during Sol-3's second World War. This one's a poor, unlicensed reproduction."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/mp40/mp40.dmi'
 	icon_state = "mp40"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/mp40/mp40_lefthand.dmi'

@@ -11,7 +11,7 @@
 	bayonet_icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun40x32.dmi'
 	gunlight_icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/microfusion/icons/guns_righthand.dmi'
 	has_gun_safety = TRUE
 	can_flashlight = FALSE
 	can_bayonet = FALSE
@@ -563,7 +563,7 @@
 		return
 	var/obj/projectile/exam_proj
 	readout += "Our heroic interns have shown that one can theoretically stay standing after..."
-	exam_proj = GLOB.proj_by_path_key[microfusion_lens?.projectile_type]
+	exam_proj = initial(microfusion_lens?.projectile_type)
 
 	if(!istype(exam_proj))
 		return readout.Join("\n")

@@ -72,7 +72,7 @@
 		PRcounts[id] = 1
 	else
 		++PRcounts[id]
-		if(PRcounts[id] > PR_ANNOUNCEMENTS_PER_ROUND)
+		if(PRcounts[id] > CONFIG_GET(number/pr_announcements_per_round))
 			return
 
 	var/final_composed = span_announce("PR: [input[keyword]]")
@@ -157,7 +157,8 @@
 	require_comms_key = TRUE
 
 /datum/world_topic/news_report/Run(list/input)
-	minor_announce(input["message"], "Breaking Update From [input["message_sender"]]")
+
+	priority_announce(input["message"], "Breaking Update From [input["message_sender"]]") //SKYRAT EDIT CHANGE
 
 /datum/world_topic/adminmsg
 	keyword = "adminmsg"

@@ -133,7 +133,7 @@
 			gloves = I
 			//SKYRAT EDIT ADDITION - ERP UPDATE
 			if(gloves.breakouttime)
-				ADD_TRAIT(src, TRAIT_RESTRAINED, SUIT_TRAIT)
+				ADD_TRAIT(src, TRAIT_RESTRAINED, GLOVES_TRAIT)
 				stop_pulling()
 				update_action_buttons_icon()
 			//SKYRAT EDIT ADDITION END
@@ -280,7 +280,7 @@
 	else if(I == gloves)
 		//SKYRAT EDIT ADDITION - ERP UPDATE
 		if(gloves.breakouttime) //when unequipping a straightjacket
-			REMOVE_TRAIT(src, TRAIT_RESTRAINED, SUIT_TRAIT)
+			REMOVE_TRAIT(src, TRAIT_RESTRAINED, GLOVES_TRAIT)
 			drop_all_held_items() //suit is restraining
 			update_action_buttons_icon() //certain action buttons may be usable again.
 		//SKYRAT EDIT ADDITION END
@@ -417,7 +417,8 @@
 		if(equip_to_slot_if_possible(thing, slot_type))
 			update_inv_hands()
 		return
-	if(!SEND_SIGNAL(equipped_item, COMSIG_CONTAINS_STORAGE)) // not a storage item
+	var/datum/component/storage/storage = equipped_item.GetComponent(/datum/component/storage)
+	if(!storage)
 		if(!thing)
 			equipped_item.attack_hand(src)
 		else
@@ -427,10 +428,11 @@
 		if(!SEND_SIGNAL(equipped_item, COMSIG_TRY_STORAGE_INSERT, thing, src))
 			to_chat(src, span_warning("You can't fit [thing] into your [equipped_item.name]!"))
 		return
-	if(!equipped_item.contents.len) // nothing to take out
+	var/atom/real_location = storage.real_location()
+	if(!real_location.contents.len) // nothing to take out
 		to_chat(src, span_warning("There's nothing in your [equipped_item.name] to take out!"))
 		return
-	var/obj/item/stored = equipped_item.contents[equipped_item.contents.len]
+	var/obj/item/stored = real_location.contents[real_location.contents.len]
 	if(!stored || stored.on_found(src))
 		return
 	stored.attack_hand(src) // take out thing from item in storage slot

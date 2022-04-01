@@ -7,7 +7,7 @@
 	genetic = TRUE
 
 /datum/sprite_accessory/horns/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
+	if(H.head && ((H.head.flags_inv & HIDEHAIR) && H.try_hide_mutant_parts) || !HD)
 		return TRUE
 	return FALSE
 
@@ -33,6 +33,14 @@
 /datum/sprite_accessory/horns/uni
 	name = "Uni"
 	icon_state = "uni"
+
+/datum/sprite_accessory/horns/oni
+	name = "Oni"
+	icon_state = "oni"
+
+/datum/sprite_accessory/horns/oni_large
+	name = "Oni (Large)"
+	icon_state = "oni_large"
 
 /datum/sprite_accessory/horns/big
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/horns_big.dmi'

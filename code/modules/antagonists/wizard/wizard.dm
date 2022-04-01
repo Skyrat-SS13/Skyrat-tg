@@ -1,5 +1,5 @@
 /datum/antagonist/wizard
-	name = "Space Wizard"
+	name = "\improper Space Wizard"
 	roundend_category = "wizards/witches"
 	antagpanel_category = "Wizard"
 	job_rank = ROLE_WIZARD
@@ -64,12 +64,7 @@
 	return wiz_team
 
 /datum/antagonist/wizard/on_gain()
-	//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGES
-	/*
-	register()
 	equip_wizard()
-	*/
-	//SKYRAT EDIT REMOVAL END
 	if(give_objectives)
 		create_objectives()
 	if(move_to_lair)
@@ -108,9 +103,6 @@
 	owner.current.forceMove(pick(GLOB.wizardstart))
 
 /datum/antagonist/wizard/proc/create_objectives()
-	objectives += new /datum/objective/ambitions() //SKYRAT EDIT ADDITION - WIZARD CHANGES
-	//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGES
-	/*
 	switch(rand(1,100))
 		if(1 to 30)
 			var/datum/objective/assassinate/kill_objective = new
@@ -155,16 +147,9 @@
 				var/datum/objective/hijack/hijack_objective = new
 				hijack_objective.owner = owner
 				objectives += hijack_objective
-	*/
-	//SKYRAT EDIT REMOVAL END
 
 /datum/antagonist/wizard/on_removal()
-	//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGES
-	/*
-	unregister()
 	owner.RemoveAllSpells() // TODO keep track which spells are wizard spells which innate stuff
-	*/
-	//SKYRAT EDIT REMOVAL END
 	return ..()
 
 /datum/antagonist/wizard/proc/equip_wizard()
@@ -176,11 +161,7 @@
 	if(strip)
 		H.delete_equipment()
 	//Wizards are human by default. Use the mirror if you want something else.
-	//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGES
-	/*
 	H.set_species(/datum/species/human)
-	*/
-	//SKYRAT EDIT REMOVAL END
 	if(H.age < wiz_age)
 		H.age = wiz_age
 	H.equipOutfit(outfit_type)
@@ -190,9 +171,6 @@
 	var/list/data = list()
 	data["objectives"] = get_objectives()
 	return data
-
-/datum/antagonist/wizard/farewell()
-	to_chat(owner, span_userdanger("You have been brainwashed! You are no longer a wizard!"))
 
 /datum/antagonist/wizard/proc/rename_wizard()
 	set waitfor = FALSE
@@ -278,7 +256,8 @@
 	move_to_lair = FALSE
 
 /datum/antagonist/wizard/apprentice/imposter/greet()
-	to_chat(owner, "<B>You are an imposter! Trick and confuse the crew to misdirect malice from your handsome original!</B>")
+	. = ..()
+	to_chat(owner, "<B>Trick and confuse the crew to misdirect malice from your handsome original!</B>")
 	owner.announce_objectives()
 
 /datum/antagonist/wizard/apprentice/imposter/equip_wizard()

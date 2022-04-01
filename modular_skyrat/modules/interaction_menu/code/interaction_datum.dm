@@ -48,6 +48,8 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	var/list/interaction_requires = list()
 	/// What color should the interaction button be?
 	var/color = "blue"
+	/// What sexuality preference do we display for.
+	var/sexuality = ""
 
 /datum/interaction/proc/allow_act(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target == user && usage == INTERACTION_OTHER)
@@ -155,6 +157,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	target_pleasure = sanitize_integer(json["target_pleasure"], 0, 100, 0)
 	target_pain = sanitize_integer(json["target_pain"], 0, 100, 0)
 	lewd = sanitize_integer(json["lewd"], 0, 1, 0)
+	sexuality = sanitize_text(json["sexuality"])
 	return TRUE
 
 /datum/interaction/proc/json_save(path)
@@ -184,6 +187,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		"target_pleasure" = target_pleasure,
 		"target_pain" = target_pain,
 		"lewd" = lewd,
+		"sexuality" = sexuality,
 	)
 	var/file = file(fpath)
 	WRITE_FILE(file, json_encode(json))
@@ -253,6 +257,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		interaction.target_pleasure = sanitize_integer(ijson["target_pleasure"], 0, 100, 0)
 		interaction.target_pain = sanitize_integer(ijson["target_pain"], 0, 100, 0)
 		interaction.lewd = sanitize_integer(ijson["lewd"], 0, 1, 0)
+		interaction.sexuality = sanitize_text(ijson["sexuality"])
 
 		GLOB.interaction_instances[iname] = interaction
 

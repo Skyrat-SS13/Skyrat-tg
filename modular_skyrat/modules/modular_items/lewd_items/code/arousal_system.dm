@@ -316,7 +316,7 @@
 	pleasure = min(max(pleasure,0),100)
 
 // get damage for pain system
-/datum/species/apply_damage(damage, damagetype, def_zone, blocked, mob/living/carbon/human/H, forced, spread_damage, wound_bonus, bare_wound_bonus, sharpness)
+/datum/species/apply_damage(damage, damagetype, def_zone, blocked, mob/living/carbon/human/H, forced, spread_damage, wound_bonus, bare_wound_bonus, sharpness, attack_direction)
 	. = ..()
 	if(!.)
 		return

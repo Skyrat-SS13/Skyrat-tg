@@ -1,9 +1,9 @@
-/datum/loadout_item/pocket_items/miafoxplush
+/datum/loadout_item/toys/miafoxplush
 	name = "Mia’s fox plushie"
 	item_path = /obj/item/toy/plush/fox/mia
 	ckeywhitelist = list("fuzlet")
 
-/datum/loadout_item/pocket_items/teasefoxplush
+/datum/loadout_item/toys/teasefoxplush
 	name = "Teasable fox plushie"
 	item_path = /obj/item/toy/plush/fox/kailyn
 	ckeywhitelist = list("ratraus")
@@ -145,9 +145,9 @@
 	ckeywhitelist = list("enzoman")
 
 /datum/loadout_item/mask/nightlight_mask
-	name = "FAR-13 SRU"
+	name = "FAR-14C IRU"
 	item_path = /obj/item/clothing/mask/gas/nightlight
-	ckeywhitelist = list("farsightednightlight", "raxraus")
+	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres")
 
 /datum/loadout_item/mask/kindle_mask
 	name = "Kindle's mask"
@@ -202,7 +202,7 @@
 
 /datum/loadout_item/neck/kiaracollar
 	name = "Kiara's collar"
-	item_path = /obj/item/clothing/neck/human_petcollar/inferno
+	item_path = /obj/item/clothing/neck/inferno_collar
 	ckeywhitelist = list("inferno707")
 
 /datum/loadout_item/pocket_items/kiaramedal
@@ -215,7 +215,7 @@
 	item_path = /obj/item/clothing/mask/hheart
 	ckeywhitelist = list("inferno707")
 
-/datum/loadout_item/pocket_items/darksabre
+/datum/loadout_item/toys/darksabre
 	name = "Dark Sabre"
 	item_path = /obj/item/toy/darksabre
 	ckeywhitelist = list("inferno707")
@@ -318,18 +318,6 @@
 	item_path = /obj/item/clothing/neck/cross
 	ckeywhitelist = list("m97screwsyourparents")
 
-/datum/loadout_item/suit/pcrc_jacket
-	name = "PCRC Armored Jacket"
-	item_path = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/pcrc
-	ckeywhitelist = list("1ceres")
-	restricted_roles = list(JOB_ORDERLY, JOB_BOUNCER, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD, JOB_SCIENCE_GUARD)
-
-/datum/loadout_item/under/jumpsuit/pcrc_clothes
-	name = "PCRC Business Clothes"
-	item_path = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/pcrc
-	ckeywhitelist = list("1ceres")
-	restricted_roles = list(JOB_ORDERLY, JOB_BOUNCER, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD, JOB_SCIENCE_GUARD)
-
 /datum/loadout_item/suit/occult_coat
 	name = "Occult Collector's Coat"
 	item_path = /obj/item/clothing/suit/hooded/occult
@@ -345,7 +333,7 @@
 	item_path = /obj/item/storage/belt/fannypack/occult
 	ckeywhitelist = list("gamerguy14948")
 
-/datum/loadout_item/pocket_items/voodooplush
+/datum/loadout_item/toys/voodooplush
 	name = "Voodoo Doll"
 	item_path = /obj/item/toy/plush/donator/voodoo
 	ckeywhitelist = list("gamerguy14948")
@@ -358,9 +346,40 @@
 /datum/loadout_item/glasses/roseglasses
 	name = "Rose-Colored Glasses"
 	item_path = /obj/item/clothing/glasses/rosecolored
-	ckeywhitelist = list("1ceres", "thebamboozler", "irrigoimport", "zeskorion", "wizardlywoz", "aether217", "duckymomo", "samarai1000", "funkyfetusstrikesback")
+	ckeywhitelist = list("1ceres", "irrigoimport", "zeskorion", "wizardlywoz", "duckymomo", "samarai1000", "funkyfetusstrikesback", "m97screwsyourparents", "lynxqueen" , "kaynite", "mahalia" )
 
 /datum/loadout_item/pocket_items/fuzzy_huglicense
 	name = "License To Hug"
 	item_path = /obj/item/card/fuzzy_license
 	ckeywhitelist = list("fuzlet")
+
+/datum/loadout_item/pocket_items/korpstech_scanner
+	name = "Korpstech Genetics Scanner"
+	item_path = /obj/item/sequence_scanner/korpstech
+	ckeywhitelist = list("1ceres")
+	restricted_roles = list(JOB_GENETICIST, JOB_RESEARCH_DIRECTOR)
+
+/datum/loadout_item/pocket_items/korpstech_poster
+	name = "Korpstech Poster"
+	item_path = /obj/item/poster/korpstech
+	ckeywhitelist = list("1ceres")
+
+/datum/loadout_item/glasses/roseeyepatch
+	name = "Rose-Colored Eyepatch"
+	item_path = /obj/item/clothing/glasses/eyepatch/rosecolored
+	ckeywhitelist = list("kaynite")
+
+/datum/loadout_item/suit/tenrai_coat
+	name = "Tenrai Coat"
+	item_path = /obj/item/clothing/suit/toggle/labcoat/tenrai
+	ckeywhitelist = list("cimika")
+
+/datum/loadout_item/mask/larpswat
+	name = "Foam Force SWAT Mask"
+	item_path = /obj/item/clothing/mask/gas/larpswat
+	ckeywhitelist = list("erdinyobarboza")
+
+/datum/loadout_item/toys/zappplush
+	name = "Lil' Zapp Plushie"
+	item_path = /obj/item/toy/plush/zapp
+	donator_only = TRUE

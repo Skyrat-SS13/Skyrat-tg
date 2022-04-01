@@ -24,13 +24,16 @@
 
 /datum/antagonist/cortical_borer
 	name = "Cortical Borer"
-	job_rank = ROLE_ALIEN
+	job_rank = ROLE_BORER
 	show_in_antagpanel = TRUE
 	roundend_category = "cortical borers"
 	antagpanel_category = "Cortical borers"
 	prevent_roundtype_conversion = FALSE
 	show_to_ghosts = TRUE
 	var/datum/team/cortical_borers/borers
+
+/datum/antagonist/cortical_borer/get_preview_icon()
+	return finish_preview_icon(icon('modular_skyrat/modules/cortical_borer/icons/animal.dmi', "brainslug"))
 
 /datum/antagonist/cortical_borer/get_team()
 	return borers
@@ -67,6 +70,18 @@
 		parts += span_greentext("Borers were able to survive the shift!")
 	else
 		parts += span_redtext("Borers were unable to survive the shift!")
+	if(GLOB.successful_egg_number >= GLOB.objective_egg_borer_number)
+		parts += span_greentext("Borers were able to produce enough eggs!")
+	else
+		parts += span_redtext("Borers were unable to produce enough eggs!")
+	if(length(GLOB.willing_hosts) >= GLOB.objective_willing_hosts)
+		parts += span_greentext("Borers were able to gather enough willing hosts!")
+	else
+		parts += span_redtext("Borers were unable to gather enough willing hosts!")
+	if(GLOB.successful_blood_chem >= GLOB.objective_blood_borer)
+		parts += span_greentext("Borers were able to learn enough chemicals through the blood!")
+	else
+		parts += span_redtext("Borers were unable to learn enough chemicals through the blood!")
 	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"
 
 /datum/round_event_control/cortical_borer
@@ -116,3 +131,46 @@
 		to_chat(spawned_cb, span_warning("You are a cortical borer! You can fear someone to make them stop moving, but make sure to inhabit them! You only grow/heal/talk when inside a host!"))
 	for(var/mob/dead_mob in GLOB.dead_mob_list)
 		to_chat(dead_mob, span_notice("The cortical borers have been selected, you are able to orbit them! Remember, they can reproduce!"))
+
+/datum/dynamic_ruleset/midround/from_ghosts/cortical_borer
+	name = "Cortical Borer Infestation"
+	antag_datum = /datum/antagonist/cortical_borer
+	antag_flag = ROLE_BORER
+	enemy_roles = list(
+		JOB_CAPTAIN,
+		JOB_DETECTIVE,
+		JOB_HEAD_OF_SECURITY,
+		JOB_SECURITY_OFFICER,
+	)
+	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
+	required_candidates = 1
+	weight = 3
+	cost = 15
+	requirements = list(101,101,101,70,50,40,20,15,10,10)
+	repeatable = TRUE
+	var/list/vents = list()
+
+/datum/dynamic_ruleset/midround/from_ghosts/cortical_borer/execute()
+	for(var/obj/machinery/atmospherics/components/unary/vent_pump/temp_vent in GLOB.machines)
+		if(QDELETED(temp_vent))
+			continue
+		if(is_station_level(temp_vent.loc.z) && !temp_vent.welded)
+			var/datum/pipeline/temp_vent_parent = temp_vent.parents[1]
+			if(!temp_vent_parent)
+				continue // No parent vent
+			// Stops Borers getting stuck in small networks.
+			// See: Security, Virology
+			if(temp_vent_parent.other_atmos_machines.len > 20)
+				vents += temp_vent
+	if(!vents.len)
+		return FALSE
+	. = ..()
+
+/datum/dynamic_ruleset/midround/from_ghosts/cortical_borer/generate_ruleset_body(mob/applicant)
+	var/obj/vent = pick_n_take(vents)
+	var/mob/living/simple_animal/cortical_borer/new_borer = new(vent.loc)
+	new_borer.key = applicant.key
+	new_borer.move_into_vent(vent)
+	message_admins("[ADMIN_LOOKUPFLW(new_borer)] has been made into a borer by the midround ruleset.")
+	log_game("DYNAMIC: [key_name(new_borer)] was spawned as a borer by the midround ruleset.")
+	return new_borer

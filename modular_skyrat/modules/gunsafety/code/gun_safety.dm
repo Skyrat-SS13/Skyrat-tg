@@ -15,3 +15,16 @@
 
 /obj/item/gun/ballistic/rifle/enchanted
 	has_gun_safety = FALSE
+	
+/obj/item/gun/ballistic/automatic/laser/ctf
+	has_gun_safety = FALSE
+
+/obj/item/gun/ballistic/shotgun/ctf
+	has_gun_safety = FALSE
+
+/obj/item/gun/ballistic/automatic/laser/ctf/marksman
+	has_gun_safety = FALSE
+
+/obj/item/gun/ballistic/automatic/pistol/deagle/ctf
+	has_gun_safety = FALSE
+	

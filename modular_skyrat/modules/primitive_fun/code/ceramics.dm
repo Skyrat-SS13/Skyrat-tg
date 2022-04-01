@@ -129,7 +129,7 @@
 /obj/structure/throwing_wheel/attackby(obj/item/I, mob/living/user, params)
 	var/spinning_speed = HAS_TRAIT(user, TRAIT_CERAMIC_MASTER) ? MASTER_SPIN : DEFAULT_SPIN
 	if(istype(I, /obj/item/ceramic/clay))
-		if(length(contents) >= 1)
+		if(length(contents))
 			return
 		if(!do_after(user, spinning_speed, target = src))
 			return
@@ -172,7 +172,7 @@
 	if(in_use)
 		return
 	in_use = TRUE
-	if(length(contents) >= 1)
+	if(length(contents))
 		var/user_input = tgui_alert(user, "What would you like to do?", "Choice Selection", list("Create", "Remove"))
 		if(!user_input)
 			in_use = FALSE

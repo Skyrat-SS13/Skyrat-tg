@@ -1,6 +1,6 @@
 /*----- Template for ruins, prevents needing to re-type the filepath prefix -----*/
 /datum/map_template/ruin/rockplanet
-	prefix = "modular_skyrat/modules/mapping/_maps/RandomRuins/RockplanetRuins/"	//Originally _maps\skyrat\RandomRuins\AsteroidRuins, but now they're stored with all our servers Ruins - plus, asteroid was too vague
+	prefix = "_maps/RandomRuins/RockplanetRuins/"
 	allow_duplicates = FALSE
 /*------*/
 

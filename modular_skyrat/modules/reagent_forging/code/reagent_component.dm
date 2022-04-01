@@ -86,5 +86,5 @@
 		return
 	var/mob/living_target = target
 	for(var/create_reagent in imbued_reagent)
-		applying_container.reagents.add_reagent(create_reagent, 0.5)
-		applying_container.reagents.trans_to(target = living_target, amount = 0.5, methods = INJECT)
+		applying_container.reagents.add_reagent(create_reagent, 1)
+		applying_container.reagents.trans_to(target = living_target, amount = 1, methods = INJECT)

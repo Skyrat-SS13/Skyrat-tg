@@ -314,34 +314,3 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "peacekeeper_riot"
-
-//HARDSUITS
-/obj/item/clothing/head/helmet/space/hardsuit/security_peacekeeper
-	name = "Armadyne SS-01 voidsuit helmet"
-	desc = "An Armadyne brand voidsuit helmet, with a decent layer of armor, this one comes in the peacekeeper colors."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "hardsuit0-peacekeeper"
-	inhand_icon_state = "sec_helm"
-	hardsuit_type = "peacekeeper"
-	armor = list(MELEE = 35, BULLET = 15, LASER = 30,ENERGY = 40, BOMB = 10, BIO = 100, FIRE = 75, ACID = 75, WOUND = 20)
-
-/obj/item/clothing/suit/space/hardsuit/security_peacekeeper
-	name = "Armadyne SS-01 voidsuit"
-	desc = "An Armadyne brand voidsuit, with a decent layer of armor, this one comes in the peacekeeper colors."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
-	icon_state = "hardsuit-peacekeeper"
-	inhand_icon_state = "sec_hardsuit"
-	armor = list(MELEE = 35, BULLET = 15, LASER = 30, ENERGY = 40, BOMB = 10, BIO = 100, FIRE = 75, ACID = 75, WOUND = 20)
-	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/security_peacekeeper
-	hardsuit_tail_colors = list("#BBBBBB", "#444444", "#333377")
-
-/obj/machinery/suit_storage_unit/security_peacekeeper
-	suit_type = /obj/item/clothing/suit/space/hardsuit/security_peacekeeper
-	mask_type = /obj/item/clothing/mask/gas/sechailer
-
-/obj/item/clothing/suit/space/hardsuit/security_peacekeeper/Initialize()
-	. = ..()
-	allowed = GLOB.security_hardsuit_allowed

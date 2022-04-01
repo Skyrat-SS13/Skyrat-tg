@@ -364,6 +364,7 @@ SUBSYSTEM_DEF(explosions)
 	if(!silent)
 		shake_the_room(epicenter, orig_max_distance, far_dist, devastation_range, heavy_impact_range)
 
+	/* SKYRAT EDIT CHANGE
 	if(heavy_impact_range > 1)
 		var/datum/effect_system/explosion/E
 		if(smoke)
@@ -372,6 +373,24 @@ SUBSYSTEM_DEF(explosions)
 			E = new
 		E.set_up(epicenter)
 		E.start()
+	*/
+	if(heavy_impact_range > 1)
+		if(smoke)
+			var/datum/effect_system/explosion/E = new /datum/effect_system/explosion/smoke
+			E.set_up(epicenter)
+			E.start()
+		else
+			var/datum/effect_system/explosion_skyrat/E
+			switch(heavy_impact_range)
+				if(1 to 2)
+					E = new
+				if(3 to 5)
+					E = new /datum/effect_system/explosion_skyrat/medium
+				else
+					E = new /datum/effect_system/explosion_skyrat/large
+			E.set_up(epicenter)
+			E.start()
+	// SKYRAT EDIT END
 
 	//flash mobs
 	if(flash_range)
@@ -646,7 +665,7 @@ SUBSYSTEM_DEF(explosions)
 		lowturf = list()
 		for(var/thing in low_turf)
 			var/turf/turf_thing = thing
-			turf_thing.ex_act(EXPLODE_LIGHT)
+			EX_ACT(turf_thing, EXPLODE_LIGHT)
 		cost_lowturf = MC_AVERAGE(cost_lowturf, TICK_DELTA_TO_MS(TICK_USAGE_REAL - timer))
 
 		timer = TICK_USAGE_REAL
@@ -654,7 +673,7 @@ SUBSYSTEM_DEF(explosions)
 		medturf = list()
 		for(var/thing in med_turf)
 			var/turf/turf_thing = thing
-			turf_thing.ex_act(EXPLODE_HEAVY)
+			EX_ACT(turf_thing, EXPLODE_HEAVY)
 		cost_medturf = MC_AVERAGE(cost_medturf, TICK_DELTA_TO_MS(TICK_USAGE_REAL - timer))
 
 		timer = TICK_USAGE_REAL
@@ -662,7 +681,7 @@ SUBSYSTEM_DEF(explosions)
 		highturf = list()
 		for(var/thing in high_turf)
 			var/turf/turf_thing = thing
-			turf_thing.ex_act(EXPLODE_DEVASTATE)
+			EX_ACT(turf_thing, EXPLODE_DEVASTATE)
 		cost_highturf = MC_AVERAGE(cost_highturf, TICK_DELTA_TO_MS(TICK_USAGE_REAL - timer))
 
 		timer = TICK_USAGE_REAL
@@ -687,7 +706,7 @@ SUBSYSTEM_DEF(explosions)
 			var/atom/movable/movable_thing = thing
 			if(QDELETED(movable_thing))
 				continue
-			movable_thing.ex_act(EXPLODE_DEVASTATE)
+			EX_ACT(movable_thing, EXPLODE_DEVASTATE)
 		cost_high_mov_atom = MC_AVERAGE(cost_high_mov_atom, TICK_DELTA_TO_MS(TICK_USAGE_REAL - timer))
 
 		timer = TICK_USAGE_REAL
@@ -697,7 +716,7 @@ SUBSYSTEM_DEF(explosions)
 			var/atom/movable/movable_thing = thing
 			if(QDELETED(movable_thing))
 				continue
-			movable_thing.ex_act(EXPLODE_HEAVY)
+			EX_ACT(movable_thing, EXPLODE_HEAVY)
 		cost_med_mov_atom = MC_AVERAGE(cost_med_mov_atom, TICK_DELTA_TO_MS(TICK_USAGE_REAL - timer))
 
 		timer = TICK_USAGE_REAL
@@ -707,7 +726,7 @@ SUBSYSTEM_DEF(explosions)
 			var/atom/movable/movable_thing = thing
 			if(QDELETED(movable_thing))
 				continue
-			movable_thing.ex_act(EXPLODE_LIGHT)
+			EX_ACT(movable_thing, EXPLODE_LIGHT)
 		cost_low_mov_atom = MC_AVERAGE(cost_low_mov_atom, TICK_DELTA_TO_MS(TICK_USAGE_REAL - timer))
 
 

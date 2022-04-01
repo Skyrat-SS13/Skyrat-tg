@@ -49,7 +49,7 @@
 	id = "ash-walker"
 	description = "A race of unbreathing lizards live here, that run faster than a human can, worship a broken dead city, and are capable of reproducing by something involving tentacles? \
 	Probably best to stay clear."
-	prefix = "modular_skyrat/modules/mapping/_maps/RandomRuins/LavaRuins/" // SKYRAT ADDITION
+	prefix = "_maps/RandomRuins/LavaRuins/skyrat/" // SKYRAT ADDITION
 	suffix = "lavaland_surface_ash_walker1_skyrat.dmm" // SKYRAT EDIT - ORIGINAL: lavaland_surface_ash_walker1.dmm
 	always_place = TRUE //SKYRAT EDIT CHANGE
 	allow_duplicates = FALSE
@@ -204,14 +204,6 @@
 	suffix = "lavaland_surface_hermit.dmm"
 	allow_duplicates = FALSE
 	cost = 10
-
-/datum/map_template/ruin/lavaland/swarmer_boss
-	name = "Crashed Shuttle"
-	id = "swarmerboss"
-	description = "A Syndicate shuttle had an unfortunate stowaway..."
-	suffix = "lavaland_surface_swarmer_crash.dmm"
-	allow_duplicates = FALSE
-	cost = 20
 
 /datum/map_template/ruin/lavaland/miningripley
 	name = "Ripley"

@@ -42,7 +42,7 @@
 
 	//Can you hotswap vials? - now all hyposprays can!
 	var/quickload = TRUE
-	//Does it go through hardsuits?
+	//Does it penetrate clothing?
 	var/penetrates = null
 
 /obj/item/hypospray/mkii/cmo

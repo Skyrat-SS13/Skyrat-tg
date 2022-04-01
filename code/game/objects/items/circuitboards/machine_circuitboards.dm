@@ -397,12 +397,6 @@
 		/obj/item/stock_parts/manipulator = 1)
 	def_components = list(/obj/item/stack/ore/bluespace_crystal = /obj/item/stack/ore/bluespace_crystal/artificial)
 
-/obj/item/circuitboard/machine/paystand
-	name = "Pay Stand (Machine Board)"
-	greyscale_colors = CIRCUIT_COLOR_GENERIC
-	build_path = /obj/machinery/paystand
-	req_components = list()
-
 /obj/item/circuitboard/machine/protolathe
 	name = "Protolathe (Machine Board)"
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
@@ -455,7 +449,7 @@
 	if (is_special_type)
 		return FALSE
 	var/position = fridges_name_paths.Find(build_path, fridges_name_paths)
-	position = (position == fridges_name_paths.len) ? 1 : (position + 1)
+	position = (position == length(fridges_name_paths)) ? 1 : (position + 1)
 	build_path = fridges_name_paths[position]
 	to_chat(user, span_notice("You set the board to [fridges_name_paths[build_path]]."))
 	return TRUE
@@ -518,7 +512,7 @@
 		/obj/machinery/vending/cigarette = "ShadyCigs Deluxe",
 		/obj/machinery/vending/games = "\improper Good Clean Fun",
 		/obj/machinery/vending/autodrobe = "AutoDrobe",
-		/obj/machinery/vending/wardrobe/peacekeeper_wardrobe = "Peacekeeper Outfitting Station", //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/machinery/vending/wardrobe/sec_wardrobe = "SecDrobe",
+		/obj/machinery/vending/wardrobe/sec_wardrobe/peacekeeper = "Peacekeeper Outfitting Station", //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/machinery/vending/wardrobe/sec_wardrobe = "SecDrobe",
 		/obj/machinery/vending/wardrobe/det_wardrobe = "DetDrobe",
 		/obj/machinery/vending/wardrobe/medi_wardrobe = "MediDrobe",
 		/obj/machinery/vending/wardrobe/engi_wardrobe = "EngiDrobe",
@@ -564,7 +558,11 @@
 		display_vending_names_paths = list()
 		for(var/path in vending_names_paths)
 			display_vending_names_paths[vending_names_paths[path]] = path
-	var/choice = input(user, "Choose a new brand", "Select an Item") as null|anything in sort_list(display_vending_names_paths)
+	var/choice = tgui_input_list(user, "Choose a new brand", "Select an Item", sort_list(display_vending_names_paths))
+	if(isnull(choice))
+		return
+	if(isnull(display_vending_names_paths[choice]))
+		return
 	set_type(display_vending_names_paths[choice])
 	return TRUE
 
@@ -734,11 +732,13 @@
 
 /obj/item/circuitboard/machine/medical_kiosk/multitool_act(mob/living/user)
 	. = ..()
-	var/new_cost = input("Set a new cost for using this medical kiosk.", "New cost", custom_cost) as num|null
-	if(!new_cost || (loc != user))
+	var/new_cost = tgui_input_number(user, "New cost for using this medical kiosk", "Pricing", custom_cost, 1000, 10)
+	if(!new_cost || QDELETED(user) || QDELETED(src) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+		return
+	if(loc != user)
 		to_chat(user, span_warning("You must hold the circuitboard to change its cost!"))
 		return
-	custom_cost = clamp(round(new_cost, 1), 10, 1000)
+	custom_cost = new_cost
 	to_chat(user, span_notice("The cost is now set to [custom_cost]."))
 
 /obj/item/circuitboard/machine/medical_kiosk/examine(mob/user)

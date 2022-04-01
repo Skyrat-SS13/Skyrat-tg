@@ -46,9 +46,6 @@
 		//
 		qdel(src)
 
-/datum/antagonist/wizard/apprentice/imposter/spawnersr //Yes, This is actually dumb.
-	uses_ambitions = FALSE
-
 /datum/antagonist/wizard/apprentice/imposter/spawnersr/on_gain()
 	. = ..()
 	equip_wizard()

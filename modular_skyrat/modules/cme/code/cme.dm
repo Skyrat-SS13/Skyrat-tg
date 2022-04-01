@@ -15,10 +15,10 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme
 	name = "Coronal Mass Ejection: Random"
 	typepath = /datum/round_event/cme
-	weight = 5
-	min_players = 30
+	weight = 4
+	min_players = 60
 	max_occurrences = 1
-	earliest_start = 25 MINUTES
+	earliest_start = 30 MINUTES
 
 /datum/round_event/cme
 	startWhen = 6

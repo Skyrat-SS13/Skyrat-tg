@@ -4,6 +4,15 @@
 	spark_system.attach(src)
 
 	ADD_TRAIT(src, TRAIT_CAN_STRIP, INNATE_TRAIT)
+	AddComponent(/datum/component/tippable, \
+		tip_time = 3 SECONDS, \
+		untip_time = 2 SECONDS, \
+		self_right_time = 60 SECONDS, \
+		post_tipped_callback = CALLBACK(src, .proc/after_tip_over), \
+		post_untipped_callback = CALLBACK(src, .proc/after_righted), \
+		roleplay_friendly = TRUE, \
+		roleplay_emotes = list(/datum/emote/living/human/buzz, /datum/emote/living/human/buzz2, /datum/emote/living/human/beep, /datum/emote/living/human/beep2), \
+		roleplay_callback = CALLBACK(src, .proc/untip_roleplay)) // SKYRAT EDIT CHANGE
 
 	wires = new /datum/wires/robot(src)
 	AddElement(/datum/element/empprotection, EMP_PROTECT_WIRES)
@@ -33,6 +42,8 @@
 
 	if(lawupdate)
 		make_laws()
+		for (var/law in laws.inherent)
+			lawcheck += law
 		if(!TryConnectToAI())
 			lawupdate = FALSE
 
@@ -148,6 +159,7 @@
 	QDEL_NULL(inv1)
 	QDEL_NULL(inv2)
 	QDEL_NULL(inv3)
+	QDEL_NULL(hands)
 	QDEL_NULL(spark_system)
 	QDEL_NULL(alert_control)
 	cell = null
@@ -176,40 +188,42 @@
 		to_chat(src,span_userdanger("ERROR: Model installer reply timeout. Please check internal connections."))
 		return
 
-	var/list/model_list = list(
-		"Engineering" = /obj/item/robot_model/engineering,
-		"Medical" = /obj/item/robot_model/medical,
-		"Miner" = /obj/item/robot_model/miner,
-		"Janitor" = /obj/item/robot_model/janitor,
-		"Service" = /obj/item/robot_model/service,
-	)
-	if(!CONFIG_GET(flag/disable_peaceborg))
-		model_list["Peacekeeper"] = /obj/item/robot_model/peacekeeper
-	/* SKYRAT EDIT: DISABLED SECURITY CYBORG FOR TECHWEB SETUP
-	if(!CONFIG_GET(flag/disable_secborg))
-		model_list["Security"] = /obj/item/robot_model/security
-	*/
-	// SKYRAT EDIT ADDITION: Techweb locked cyborg modules
-	for(var/i in SSresearch.science_tech.researched_designs)
-		var/datum/design/cyborg_module/D = SSresearch.techweb_design_by_id(i)
-		if(!istype(D))
-			continue
-		if(D.unlocked_module_name == "Security" && CONFIG_GET(flag/disable_secborg))
-			continue
-		model_list[D.unlocked_module_name] = D.unlocked_module_path
-	// SKYRAT EDIT END
-	// Create radial menu for choosing borg model
-	var/list/model_icons = list()
-	for(var/option in model_list)
-		var/obj/item/robot_model/model = model_list[option]
-		var/model_icon = initial(model.cyborg_base_icon)
-		model_icons[option] = image(icon = 'icons/mob/robots.dmi', icon_state = model_icon)
+	if(lockcharge == TRUE)
+		to_chat(src,span_userdanger("ERROR: Lockdown is engaged. Please disengage lockdown to pick module."))
+		return
 
-	var/input_model = show_radial_menu(src, src, model_icons, radius = 42)
+	// SKYRAT EDIT START - Making the cyborg model list static to reduce how many times it's generated.
+	if(!length(GLOB.cyborg_model_list))
+		GLOB.cyborg_model_list = list(
+			"Engineering" = /obj/item/robot_model/engineering,
+			"Medical" = /obj/item/robot_model/medical,
+			"Cargo" = /obj/item/robot_model/cargo,
+			"Miner" = /obj/item/robot_model/miner,
+			"Janitor" = /obj/item/robot_model/janitor,
+			"Service" = /obj/item/robot_model/service,
+		)
+		if(!CONFIG_GET(flag/disable_peaceborg))
+			GLOB.cyborg_model_list["Peacekeeper"] = /obj/item/robot_model/peacekeeper
+		if(!CONFIG_GET(flag/disable_secborg))
+			GLOB.cyborg_model_list["Security"] = /obj/item/robot_model/security
+
+		for(var/model in GLOB.cyborg_model_list)
+			// Creating the lists here since we know all the model icons will need them right after.
+			GLOB.cyborg_all_models_icon_list[model] = list()
+
+	// Create radial menu for choosing borg model
+	if(!length(GLOB.cyborg_base_models_icon_list))
+		for(var/option in GLOB.cyborg_model_list)
+			var/obj/item/robot_model/model = GLOB.cyborg_model_list[option]
+			var/model_icon = initial(model.cyborg_base_icon)
+			GLOB.cyborg_base_models_icon_list[option] = image(icon = 'modular_skyrat/master_files/icons/mob/robots.dmi', icon_state = model_icon) // SKYRAT EDIT - CARGO BORGS - ORIGINAL: model_icons[option] = image(icon = 'icons/mob/robots.dmi', icon_state = model_icon)
+	// SKYRAT EDIT END
+
+	var/input_model = show_radial_menu(src, src, GLOB.cyborg_base_models_icon_list, radius = 42)
 	if(!input_model || model.type != /obj/item/robot_model)
 		return
 
-	model.transform_to(model_list[input_model])
+	model.transform_to(GLOB.cyborg_model_list[input_model])
 
 
 /// Used to setup the a basic and (somewhat) unique name for the robot.
@@ -304,6 +318,16 @@
 		return FALSE
 	return ..()
 
+
+/mob/living/silicon/robot/proc/after_tip_over(mob/user)
+	if(hat)
+		hat.forceMove(drop_location())
+	unbuckle_all_mobs()
+
+///For any special cases for robots after being righted.
+/mob/living/silicon/robot/proc/after_righted(mob/user)
+	return
+
 /mob/living/silicon/robot/proc/allowed(mob/M)
 	//check if it doesn't require any access at all
 	if(check_access(null))
@@ -355,7 +379,7 @@
 		else
 			eye_lights.icon_state = "[model.special_light_key ? "[model.special_light_key]":"[model.cyborg_base_icon]"]_e"
 			eye_lights.color = COLOR_WHITE
-			eye_lights.plane = GAME_PLANE
+			eye_lights.plane = ABOVE_GAME_PLANE
 		eye_lights.icon = icon
 		add_overlay(eye_lights)
 
@@ -694,6 +718,11 @@
 	SEND_SIGNAL(src, COMSIG_BORG_SAFE_DECONSTRUCT)
 	uneq_all()
 	shown_robot_modules = FALSE
+
+	for(var/obj/item/storage/bag in model.contents) // drop all of the items that may be stored by the cyborg
+		for(var/obj/item in bag)
+			item.forceMove(drop_location())
+
 	if(hud_used)
 		hud_used.update_robot_modules_display()
 
@@ -741,14 +770,8 @@
 		for(var/trait in model.model_traits)
 			ADD_TRAIT(src, trait, MODEL_TRAIT)
 
-	if(model.clean_on_move)
-		AddElement(/datum/element/cleaning)
-	else
-		RemoveElement(/datum/element/cleaning)
-
 	hat_offset = model.hat_offset
 
-	magpulse = model.magpulsing
 	INVOKE_ASYNC(src, .proc/updatename)
 
 
@@ -879,7 +902,7 @@
 	icon_icon = 'icons/mob/actions/actions_AI.dmi'
 	button_icon_state = "ai_core"
 
-/datum/action/innate/undeployment/Trigger()
+/datum/action/innate/undeployment/Trigger(trigger_flags)
 	if(!..())
 		return FALSE
 	var/mob/living/silicon/robot/R = owner
@@ -1017,3 +1040,6 @@
 	var/datum/job/cyborg/cyborg_job_ref = SSjob.GetJobType(/datum/job/cyborg)
 
 	.[cyborg_job_ref.title] = minutes
+
+/mob/living/silicon/robot/proc/untip_roleplay()
+	to_chat(src, span_notice("Your frustration has empowered you! You can now right yourself faster!"))

@@ -100,11 +100,9 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Text-to-Speech Device"
 	item_path = /obj/item/ttsdevice
 
-
 /datum/loadout_item/pocket_items/paicard
 	name = "Personal AI device"
 	item_path = /obj/item/paicard
-
 
 /datum/loadout_item/pocket_items/cigar
 	name = "Cigar"
@@ -123,44 +121,41 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Flask"
 	item_path = /obj/item/reagent_containers/food/drinks/flask
 
-
 /datum/loadout_item/pocket_items/skub
 	name = "Skub"
 	item_path = /obj/item/skub
 
 /datum/loadout_item/pocket_items/multipen
-	name = "A multicolored pen"
+	name = "Multicolored pen"
 	item_path = /obj/item/pen/fourcolor
 
 /datum/loadout_item/pocket_items/fountainpen
-	name = "A fancy pen"
+	name = "Fancy pen"
 	item_path = /obj/item/pen/fountain
 
-
 /datum/loadout_item/pocket_items/modular_tablet
-	name = "A modular tablet"
+	name = "Modular tablet"
 	item_path = /obj/item/modular_computer/tablet/preset/cheap/
 
 
 /datum/loadout_item/pocket_items/modular_laptop
-	name = "A modular laptop"
+	name = "Modular laptop"
 	item_path = /obj/item/modular_computer/laptop/preset/civilian
 
 
 /datum/loadout_item/pocket_items/ringbox_gold
-	name = "A gold ring box"
+	name = "Gold ring box"
 	item_path = /obj/item/storage/fancy/ringbox
 
 
 /datum/loadout_item/pocket_items/ringbox_silver
-	name = "A silver ring box"
+	name = "Silver ring box"
 	item_path = /obj/item/storage/fancy/ringbox/silver
 
 
 /datum/loadout_item/pocket_items/ringbox_diamond
-	name = "A diamond ring box"
+	name = "Diamond ring box"
 	item_path = /obj/item/storage/fancy/ringbox/diamond
-
 
 /datum/loadout_item/pocket_items/tapeplayer
 	name = "Taperecorder"
@@ -177,8 +172,6 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/pocket_items/hhmirror
 	name = "Handheld Mirror"
 	item_path = /obj/item/hhmirror
-
-
 
 /datum/loadout_item/pocket_items/cross
 	name = "Ornate Cross"

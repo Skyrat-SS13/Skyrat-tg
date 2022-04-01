@@ -49,16 +49,17 @@
 	icon_state = "random_shotgun"
 	gun_count = 4
 	guns = list(
-		/obj/item/gun/ballistic/shotgun/m23,
-		/obj/item/gun/ballistic/shotgun/automatic/as2,
-		/obj/item/gun/ballistic/shotgun/sas14,
+		/obj/item/gun/ballistic/shotgun/riot,
+		/obj/item/gun/ballistic/shotgun/riot,
+		/obj/item/gun/ballistic/shotgun/riot,
+		/obj/item/gun/ballistic/shotgun/riot,
 	)
 
 /obj/structure/closet/ammunitionlocker/useful/PopulateContents()
-	new /obj/item/storage/box/rubbershot_14gauge(src)
-	new /obj/item/storage/box/rubbershot_14gauge(src)
-	new /obj/item/storage/box/rubbershot_14gauge(src)
-	new /obj/item/storage/box/rubbershot_14gauge(src)
+	new /obj/item/storage/box/rubbershot(src)
+	new /obj/item/storage/box/rubbershot(src)
+	new /obj/item/storage/box/rubbershot(src)
+	new /obj/item/storage/box/rubbershot(src)
 
 //////////////////////////AMMO BOXES
 /obj/item/storage/box/ammo_box

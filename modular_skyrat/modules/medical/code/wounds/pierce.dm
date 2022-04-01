@@ -33,7 +33,7 @@
 			return
 		victim.self_grasp_bleeding_limb(limb)
 
-/datum/wound/pierce/wound_injury(datum/wound/old_wound)
+/datum/wound/pierce/wound_injury(datum/wound/old_wound, attack_direction)
 	blood_flow = initial_flow
 
 /datum/wound/pierce/receive_damage(wounding_type, wounding_dmg, wound_bonus)
