@@ -42,7 +42,11 @@
 	// Androids don't eat, hunger or metabolise foods. Let's do some cleanup.
 	C.set_safe_hunger_level()
 
+<<<<<<< HEAD
 /datum/species/android/on_species_loss(mob/living/carbon/C)
+=======
+/datum/species/android/replace_body(mob/living/carbon/target, datum/species/new_species)
+>>>>>>> b9a522d9736 (Please be some jank that magically fixes it (#65887))
 	. = ..()
 	for(var/X in C.bodyparts)
 		var/obj/item/bodypart/O = X
