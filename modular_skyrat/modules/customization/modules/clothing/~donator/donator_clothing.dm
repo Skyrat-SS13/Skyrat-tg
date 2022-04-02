@@ -870,7 +870,7 @@
 // Donation reward for CandleJax
 /obj/item/clothing/shoes/wheelys/funky
 	name = "Special-Edition Rainbow-Lightup Wheely-Heels"
-	desc = "Uses patented retractable wheel technology. Features Drawers-Brand light-up technology! Also, like, really comfy."
+	desc = "Uses patented retractable wheel technology. Also, like, really comfy."
 	worn_icon_state = "wheelys_funks"
 	icon_state = "sneakers"
 	worn_icon = 'modular_skyrat/master_files/icons/mob/large-worn-icons/64x64/feet.dmi'
