@@ -71,11 +71,6 @@
 					/obj/item/clothing/head/beret/sec/peacekeeper = 5,
 					/obj/item/clothing/gloves/color/black/security = 10,
 					)
-	contraband = list(/obj/item/clothing/head/helmet/stormtrooper = 2,
-					/obj/item/clothing/suit/armor/stormtrooper = 2,
-					/obj/item/clothing/shoes/combat/stormtrooper = 2,
-					/obj/item/clothing/gloves/combat/peacekeeper/stormtrooper = 2,
-					)
 	premium = list( /obj/item/clothing/under/rank/security/officer/formal = 3,
 					/obj/item/clothing/suit/security/officer = 3,
 					/obj/item/clothing/head/beret/sec/navyofficer = 3)
