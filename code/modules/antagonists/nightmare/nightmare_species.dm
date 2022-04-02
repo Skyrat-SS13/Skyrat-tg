@@ -4,7 +4,11 @@
 /datum/species/shadow/nightmare
 	name = "Nightmare"
 	id = SPECIES_NIGHTMARE
+<<<<<<< HEAD
 	limbs_id = SPECIES_SHADOW
+=======
+	examine_limb_id = "shadow"
+>>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 	burnmod = 1.5
 	no_equip = list(ITEM_SLOT_MASK, ITEM_SLOT_OCLOTHING, ITEM_SLOT_GLOVES, ITEM_SLOT_FEET, ITEM_SLOT_ICLOTHING, ITEM_SLOT_SUITSTORE)
 	species_traits = list(NOBLOOD,NO_UNDERWEAR,NO_DNA_COPY,NOTRANSSTING,NOEYESPRITES)
