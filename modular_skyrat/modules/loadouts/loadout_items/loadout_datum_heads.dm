@@ -475,7 +475,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_SECURITY_MEDIC, JOB_HEAD_OF_SECURITY, JOB_WARDEN)
 
 /datum/loadout_item/head/navybluewardenberet
-	name = "Warden's navyblue beret"
+	name = "Warden's Navy Blue beret"
 	item_path = /obj/item/clothing/head/beret/sec/navywarden
 	restricted_roles = list(JOB_WARDEN)
 
