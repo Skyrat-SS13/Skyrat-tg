@@ -56,6 +56,10 @@
 	item_type = /obj/item/gun/ballistic/automatic/pistol/pepperball
 	cost = 4
 
+/datum/armament_entry/assault_operatives/secondary/kravmaga
+	item_type = /obj/item/clothing/gloves/krav_maga/combatglovesplus
+	cost = 5
+
 /datum/armament_entry/assault_operatives/secondary/cqc
 	name = "CQC Manual"
 	item_type = /obj/item/book/granter/martial/cqc
