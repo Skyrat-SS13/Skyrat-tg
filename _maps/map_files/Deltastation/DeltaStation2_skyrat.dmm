@@ -157,13 +157,6 @@
 	},
 /turf/open/space,
 /area/space)
-"aaS" = (
-/obj/docking_port/stationary/random{
-	id = "pod_lavaland";
-	name = "lavaland"
-	},
-/turf/open/space/basic,
-/area/space)
 "aaU" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/effect/turf_decal/bot,
@@ -313,11 +306,11 @@
 /obj/item/kirbyplants{
 	icon_state = "plant-21"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
 /obj/structure/sign/warning/pods{
 	pixel_x = 32
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
 	},
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
@@ -6635,6 +6628,13 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/security/detectives_office)
+"bta" = (
+/obj/machinery/light/directional/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/hallway/secondary/entry)
 "btb" = (
 /obj/structure/cable,
 /obj/effect/spawner/structure/window/reinforced,
@@ -30241,6 +30241,13 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/central/fore)
+"fwq" = (
+/obj/effect/turf_decal/delivery,
+/obj/machinery/computer/shuttle/arrivals/recall{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/hallway/secondary/entry)
 "fwB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/directional/north,
@@ -38314,10 +38321,10 @@
 /turf/open/floor/wood,
 /area/commons/dorms)
 "igz" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
 /obj/item/radio/intercom/directional/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "igB" = (
@@ -64630,6 +64637,9 @@
 "qqb" = (
 /turf/closed/wall/r_wall,
 /area/engineering/hallway)
+"qqf" = (
+/turf/open/floor/iron,
+/area/hallway/secondary/entry)
 "qqj" = (
 /obj/machinery/vending/cigarette,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -64933,6 +64943,17 @@
 /obj/item/taperecorder,
 /turf/open/floor/iron/grimy,
 /area/command/bridge)
+"qtX" = (
+/obj/machinery/light/directional/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/camera/directional/east{
+	c_tag = "Arrivals Dock - Fore Starboard";
+	name = "dock camera"
+	},
+/turf/open/floor/iron,
+/area/hallway/secondary/entry)
 "quh" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -122204,11 +122225,11 @@ abf
 aaO
 aaO
 abf
-acY
 aaO
 tyv
 aaO
 axS
+fwq
 ban
 dAd
 fms
@@ -122461,11 +122482,11 @@ aad
 aaa
 aaa
 aad
-aaa
 aaO
 app
 aaO
 aaO
+abf
 abf
 abf
 aaO
@@ -122718,11 +122739,11 @@ aad
 aad
 aad
 aad
-aad
 aaO
 qfg
 aaO
 aad
+aaa
 aaa
 aaa
 aad
@@ -125791,8 +125812,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
-abe
+abf
+abf
 abf
 abf
 abf
@@ -126046,15 +126067,15 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
 aaO
-abE
 aaO
+aaO
+ilu
+agB
+bta
+adQ
+bta
+adQ
 igz
 ilu
 agB
@@ -126302,17 +126323,17 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaS
-aaa
-aaa
-aaa
-afT
-abC
-aca
-abC
-acu
+rsc
+vFx
+pmV
+fth
+ves
+ves
+ves
+ayN
+ves
+ayN
+qqf
 ves
 ves
 ves
@@ -126560,15 +126581,15 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
 aaO
-aNG
 aaO
+aaO
+wKU
+aco
+qtX
+wKU
+qtX
+wKU
 abP
 wKU
 aco
@@ -126819,8 +126840,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
-abe
+abf
+abf
 abf
 abf
 abf
@@ -128385,7 +128406,7 @@ aaa
 aaa
 aaa
 aaa
-rsc
+aaa
 vFx
 pmV
 fth

@@ -3987,12 +3987,6 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
-"aoe" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
-/turf/open/floor/plating/airless,
-/area/space/nearstation)
 "aof" = (
 /obj/structure/sign/nanotrasen,
 /turf/closed/wall,
@@ -17295,6 +17289,14 @@
 "bnv" = (
 /turf/closed/wall,
 /area/hallway/primary/starboard)
+"bnx" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/door/airlock/external{
+	name = "Security Escape Pod";
+	space_dir = 2
+	},
+/turf/open/floor/plating/airless,
+/area/maintenance/port/aft)
 "bnz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -19554,9 +19556,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/primary/port)
-"bAD" = (
-/turf/closed/wall/mineral/plastitanium,
-/area/maintenance/port/aft)
 "bAM" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "service maintenance";
@@ -34107,13 +34106,14 @@
 /turf/open/floor/grass,
 /area/hallway/secondary/exit/departure_lounge)
 "cGA" = (
-/obj/docking_port/stationary/random{
-	dir = 2;
-	id = "pod_lavaland";
-	name = "lavaland"
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small{
+	dir = 8
 	},
-/turf/open/space,
-/area/space/nearstation)
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/maintenance/port/aft)
 "cGB" = (
 /obj/machinery/door/airlock/external{
 	name = "Solar Maintenance";
@@ -36810,6 +36810,19 @@
 /obj/machinery/air_sensor/nitrous_tank,
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
+"dxw" = (
+/obj/structure/lattice/catwalk,
+/obj/docking_port/stationary{
+	dheight = 3;
+	dir = 2;
+	dwidth = 8;
+	height = 11;
+	id = "ferry_home";
+	name = "Port Bay 2";
+	width = 20
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "dxH" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored/nitrous_output{
 	dir = 1
@@ -46982,6 +46995,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/warden)
+"hPE" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/door/airlock/external{
+	name = "Security Escape Pod";
+	space_dir = 2
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/maintenance/port/aft)
 "hPF" = (
 /obj/structure/bed/dogbed/runtime,
 /obj/effect/turf_decal/tile/neutral,
@@ -49625,16 +49648,11 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "iSt" = (
-/obj/docking_port/stationary{
-	dir = 2;
-	dwidth = 1;
-	height = 4;
-	name = "escape pod loader";
-	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
-	width = 3
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
 	},
-/turf/open/space/basic,
-/area/space)
+/area/maintenance/port/aft)
 "iSz" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/stripes/line{
@@ -54818,6 +54836,16 @@
 	luminosity = 2
 	},
 /area/ai_monitored/turret_protected/ai_upload)
+"kRG" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/maintenance/port/aft)
 "kRX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -63445,6 +63473,10 @@
 	},
 /turf/open/floor/plating,
 /area/engineering/supermatter/room)
+"oAp" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall,
+/area/maintenance/port/aft)
 "oAB" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
@@ -67663,6 +67695,11 @@
 /obj/machinery/status_display/evac/directional/north,
 /turf/open/floor/iron,
 /area/hallway/primary/starboard)
+"qfT" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/maintenance/port/aft)
 "qfW" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -72794,11 +72831,6 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron/dark,
 /area/service/bar/atrium)
-"spG" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/misc/asteroid/airless,
-/area/space/nearstation)
 "spN" = (
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
@@ -77746,6 +77778,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cargo/sorting)
+"uqC" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/maintenance/port/aft)
 "uqP" = (
 /obj/structure/table,
 /obj/machinery/newscaster/directional/east,
@@ -85697,6 +85735,13 @@
 /obj/machinery/firealarm/directional/east,
 /turf/open/floor/iron/dark,
 /area/engineering/storage/tech)
+"xJg" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/computer/shuttle/arrivals/recall{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/hallway/secondary/entry)
 "xJF" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -103723,13 +103768,13 @@ bzO
 ajd
 aer
 ajd
+aer
 ajd
 anZ
-bAD
-agw
-aoc
-jsX
+ajd
 aaa
+aaa
+acm
 aaa
 aaa
 aaa
@@ -103980,16 +104025,16 @@ cJX
 cIA
 iTK
 cIA
-aaa
-aaa
-aaa
-cry
-aod
-ldU
-aaa
-aaa
-aaa
-aaa
+kRG
+uqC
+uqC
+oAp
+oAp
+ajd
+ajd
+ajd
+ajd
+acK
 aaa
 aaa
 aaa
@@ -104238,15 +104283,15 @@ crD
 cGK
 sNO
 iSt
-aaa
-aaa
-cry
+uqC
+uqC
+uqC
 cGA
-cmJ
-aaa
-aaa
-aaa
-aaa
+uqC
+uqC
+uqC
+hPE
+acK
 aaa
 aaa
 aaa
@@ -104494,16 +104539,16 @@ cta
 cIA
 cmf
 cIA
-aaa
-aaa
-aaa
-cry
-aod
-ldU
-aaa
-aaa
-aaa
-aaa
+cmf
+uqC
+uqC
+uqC
+qfT
+uqC
+uqC
+uqC
+bnx
+dxw
 aaa
 aaa
 aaa
@@ -104751,16 +104796,16 @@ ajx
 ajx
 akl
 ajx
+akl
 ajx
 anZ
-bAD
-aob
-aoe
-jsX
-aaa
-aaa
-aaa
-aaa
+ajd
+ajd
+ajd
+ajd
+ajd
+ajd
+acK
 aaa
 aaa
 aaa
@@ -127871,10 +127916,10 @@ bYg
 bYx
 bTD
 bWZ
-rmc
+uyO
+xJg
 bUf
-bUf
-bUf
+bPX
 bUN
 bUN
 bUN
@@ -128128,10 +128173,10 @@ bYg
 bTq
 bTO
 kQl
-cll
-cCj
-eOk
-msi
+rmc
+bUf
+bUf
+bUf
 bUN
 bUN
 bUN
@@ -128385,10 +128430,10 @@ bYg
 bYy
 bYP
 bZv
-bWT
-bSr
-bWT
-bQa
+cll
+cCj
+eOk
+msi
 bUN
 bUN
 bUN
@@ -128642,10 +128687,10 @@ bWM
 bPe
 bZC
 bPe
-bOc
-aeu
-aeu
-spG
+bWT
+bSr
+bWT
+bQa
 bUN
 bUN
 bUN
