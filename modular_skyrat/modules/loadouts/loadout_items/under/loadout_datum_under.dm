@@ -118,17 +118,17 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/sectrafficop
 	name = "Sol Traffic Cop Uniform"
-	item_path = /obj/item/clothing/under/rank/security/peacekeeper/junior/sol/traffic
+	item_path = /obj/item/clothing/under/rank/security/peacekeeper/sol/traffic
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_SECURITY_MEDIC)
 
-/datum/loadout_item/under/jumpsuit/solofficerthing
+/datum/loadout_item/under/jumpsuit/solofficer
 	name = "Sol Officer Uniform"
 	item_path = /obj/item/clothing/under/rank/security/peacekeeper/sol
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_SECURITY_MEDIC)
 
 /datum/loadout_item/under/jumpsuit/disco
-	name = "Superstar Cop Suit"
-	item_path = /obj/item/clothing/under/misc/discounder
+	name = "Superstar Cop Uniform"
+	item_path = /obj/item/clothing/under/rank/security/detective/disco
 	restricted_roles = list(JOB_DETECTIVE)
 
 /datum/loadout_item/under/jumpsuit/seckilt
@@ -167,7 +167,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/utility_cargo
 	name = "Supply Utility Uniform"
-	item_path = /obj/item/clothing/under/utility/cargo
+	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
 	restricted_roles = list(JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_QUARTERMASTER, JOB_CUSTOMS_AGENT)
 
 /datum/loadout_item/under/jumpsuit/utility_sec
@@ -540,12 +540,12 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/cargo_casual
 	name = "Cargo Tech Casual Wear"
-	item_path = /obj/item/clothing/under/rank/cargo/casualman
+	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/casualman
 	restricted_roles = list(JOB_CARGO_TECHNICIAN)
 
 /datum/loadout_item/under/miscellaneous/cargo_casual
 	name = "Black Cargo Uniform"
-	item_path = /obj/item/clothing/under/misc/evilcargo
+	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/evil
 	restricted_roles = list(JOB_CARGO_TECHNICIAN)
 
 /datum/loadout_item/under/miscellaneous/eve

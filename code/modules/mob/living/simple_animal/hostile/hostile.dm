@@ -364,6 +364,7 @@
 	in_melee = FALSE
 	SSmove_manager.stop_looping(src)
 	LoseAggro()
+	SEND_SIGNAL(src, COMSIG_HOSTILE_MOB_LOST_TARGET) // SKYRAT EDIT ADDITION
 
 //////////////END HOSTILE MOB TARGETTING AND AGGRESSION////////////
 
