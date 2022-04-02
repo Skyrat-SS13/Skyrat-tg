@@ -216,13 +216,12 @@
 		var/borg_skin = show_radial_menu(cyborg, cyborg, reskin_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 38, require_near = TRUE)
 		if(!borg_skin)
 			return FALSE
-		//SKYRAT EDIT START
 		var/list/details = borg_skins[borg_skin]
+		//SKYRAT EDIT START
 		if(cyborg.hasExpanded && (((R_TRAIT_WIDE in details[SKIN_FEATURES]) && (R_TRAIT_WIDE in model_features)) || ((R_TRAIT_TALL in details[SKIN_FEATURES]) && (R_TRAIT_TALL in model_features))))
 			to_chat(cyborg, span_warning("You can't make yourself into a larger frame when you've already used an expander!"))
 			return FALSE
 		//SKYRAT EDIT END
-		var/list/details = borg_skins[borg_skin]
 		if(!isnull(details[SKIN_ICON_STATE]))
 			cyborg_base_icon = details[SKIN_ICON_STATE]
 		if(!isnull(details[SKIN_ICON]))
