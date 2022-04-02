@@ -9,6 +9,7 @@ export const Advertisement = (props, context) => {
     <Pane
       onComponentDidMount={() => {
         recallWindowGeometry({ size: getScreenSize() });
+        Byond.winset(window.__windowId__, { "titlebar": "0" });
       }}
       theme="abductor">
       <Box

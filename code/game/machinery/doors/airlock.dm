@@ -269,8 +269,9 @@
 	playsound(src, 'sound/airlock_ad.ogg', 100, FALSE)
 	if(do_after(potential_customer, 20 SECONDS, src))
 		. = TRUE
+	SEND_SOUND(usr, sound(null))
 	var/datum/tgui/ui = SStgui.get_open_ui(potential_customer, advertisement)
-	if(!QDELETED(ui))
+	if(ui && !QDELETED(ui))
 		ui.close()
 
 
