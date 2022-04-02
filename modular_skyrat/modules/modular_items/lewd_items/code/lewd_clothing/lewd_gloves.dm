@@ -30,7 +30,7 @@
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_gloves.dmi'
 	clothing_flags = DANGEROUS_OBJECT
 	breakouttime = 100 SECONDS //do not touch this, i beg you.
-
+*/
 //latex gloves
 /obj/item/clothing/gloves/latex_gloves
 	name = "latex gloves"
@@ -40,4 +40,4 @@
 	w_class = WEIGHT_CLASS_SMALL
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_gloves.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_gloves.dmi'
-*/
+
