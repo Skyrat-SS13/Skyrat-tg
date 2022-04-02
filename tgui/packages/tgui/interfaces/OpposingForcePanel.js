@@ -766,7 +766,7 @@ export const AdminTab = (props, context) => {
                     {equipment.count}
                   </LabeledList.Item>
                   <LabeledList.Item label="Equipment Note">
-                    {item.admin_note}
+                    {equipment.admin_note}
                   </LabeledList.Item>
                 </LabeledList>
               </Section>
