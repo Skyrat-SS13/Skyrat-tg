@@ -26,7 +26,7 @@
 		user.newtonian_move(get_dir(target, user))
 	else if(ismovable(fired_from))
 		var/atom/movable/firer = fired_from
-		if(!firer.newtonian_move(get_dir(target, fired_from), instant = TRUE))
+		if(!firer.anchored && !firer.newtonian_move(get_dir(target, fired_from), instant = TRUE)) // SKYRAT EDIT CHANGE
 			var/throwtarget = get_step(fired_from, get_dir(target, fired_from))
 			firer.safe_throw_at(throwtarget, 1, 2)
 	update_appearance()

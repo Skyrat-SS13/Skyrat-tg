@@ -23,7 +23,7 @@
 	/// If using a wrench on the turret will start undeploying it
 	var/can_be_undeployed = FALSE
 	/// What gets spawned if the object is undeployed
-	var/obj/spawned_on_undeploy = /obj/item/advanced_deployable_turret_folded
+	var/obj/spawned_on_undeploy = /obj/item/heavy_machine_gun_folded
 	/// How long it takes for a wrench user to undeploy the object
 	var/undeploy_time = 3 SECONDS
 	/// Our currently loaded ammo box.
@@ -226,7 +226,7 @@
 	if(!shooting_client)
 		return FALSE
 	var/atom/target_atom = shooting_client?.mouse_object_ref?.resolve()
-	if(!target_atom || !get_turf(target_atom))
+	if(!target_atom || !get_turf(target_atom) || istype(target_atom, /atom/movable/screen))
 		return FALSE
 	if(!can_fire())
 		return FALSE
@@ -361,7 +361,7 @@
 			user.pixel_x = 18
 			user.pixel_y = -8
 
-/obj/item/advanced_deployable_turret_folded
+/obj/item/heavy_machine_gun_folded
 	name = "\improper folded T-90 heavy machine gun"
 	desc = "A folded and unloaded heavy machine gun, ready to be deployed and used."
 	icon = 'modular_skyrat/modules/heavy_machine_gun/icons/turret_objects.dmi'
@@ -374,6 +374,6 @@
 	/// How long it takes to deploy.
 	var/deploy_time = 5 SECONDS
 
-/obj/item/advanced_deployable_turret_folded/Initialize(mapload)
+/obj/item/heavy_machine_gun_folded/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/deployable, deploy_time, type_to_deploy, delete_on_use = TRUE)
