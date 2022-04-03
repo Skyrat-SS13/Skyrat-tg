@@ -68,7 +68,11 @@
 	static_inventory += using
 
 	using = new /atom/movable/screen/navigate
+<<<<<<< HEAD
 	using.screen_loc = ui_alien_navigate_menu
+=======
+	using.screen_loc = ui_navigate_menu
+>>>>>>> 8a51c106651 ([MDB IGNORE] Adds dead space navigation (#65741))
 	using.hud = src
 	static_inventory += using
 

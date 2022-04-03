@@ -229,7 +229,11 @@
 
 // Navigation
 	using = new /atom/movable/screen/navigate
+<<<<<<< HEAD
 	using.screen_loc = ui_pai_navigate_menu
+=======
+	using.screen_loc = ui_navigate_menu
+>>>>>>> 8a51c106651 ([MDB IGNORE] Adds dead space navigation (#65741))
 	static_inventory += using
 
 // Host Monitor
