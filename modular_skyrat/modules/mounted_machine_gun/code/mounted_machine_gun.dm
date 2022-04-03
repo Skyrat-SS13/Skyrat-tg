@@ -1,3 +1,6 @@
+#define BARREL_HEAT_THRESHOLD_LOW 50
+#define BARREL_HEAT_THRESHOLD_HIGH 75
+
 /obj/machinery/mounted_machine_gun
 	name = "\improper T90 Mounted Machine Gun"
 	desc = "A high calibre mounted machine gun capable of laying down copious amounts of suppressive fire."
@@ -57,6 +60,8 @@
 	var/cooldown_time = 20 SECONDS
 	/// How quickly the barrel naturally cools down
 	var/passive_barrel_cooldown_rate = 2
+	/// How much heat we can sustain before locking.
+	var/max_barrel_heat = 100
 
 	COOLDOWN_DECLARE(trigger_cooldown)
 
@@ -75,7 +80,7 @@
 	return ..()
 
 /obj/machinery/mounted_machine_gun/process(delta_time)
-	if(barrel_heat > 0)
+	if(barrel_heat)
 		barrel_heat -= passive_barrel_cooldown_rate * delta_time
 		update_appearance()
 
@@ -87,9 +92,9 @@
 		. += "cover_open"
 
 	switch(barrel_heat)
-		if(50 to 75)
+		if(BARREL_HEAT_THRESHOLD_LOW to BARREL_HEAT_THRESHOLD_HIGH)
 			. += "[base_icon_state]_barrel_hot"
-		if(75 to INFINITY)
+		if(BARREL_HEAT_THRESHOLD_HIGH to INFINITY)
 			. += "[base_icon_state]_barrel_overheat"
 
 /obj/machinery/mounted_machine_gun/examine(mob/user)
@@ -98,9 +103,9 @@
 		. += span_notice("It has [ammo_box] loaded, with [ammo_box.ammo_count()] rounds remaining.")
 	. += span_notice("The cover is [cover_open ? "open" : "closed"].")
 	switch(barrel_heat)
-		if(50 to 75)
+		if(BARREL_HEAT_THRESHOLD_LOW to BARREL_HEAT_THRESHOLD_HIGH)
 			. += span_warning("The barrel looks hot.")
-		if(75 to INFINITY)
+		if(BARREL_HEAT_THRESHOLD_HIGH to INFINITY)
 			. += span_warning("The barrel looks moulten!")
 	if(overheated)
 		. += span_danger("It is heatlocked!")
@@ -124,14 +129,13 @@
 //BUCKLE HOOKS
 /obj/machinery/mounted_machine_gun/unbuckle_mob(mob/living/buckled_mob, force = FALSE, can_fall = TRUE)
 	playsound(src,'sound/mecha/mechmove01.ogg', 50, TRUE)
-	for(var/obj/item/I in buckled_mob.held_items)
-		if(istype(I, /obj/item/gun_control))
-			qdel(I)
+	for(var/obj/item/iterating_item in buckled_mob.held_items)
+		if(istype(iterating_item, /obj/item/gun_control))
+			qdel(iterating_item)
 	if(istype(buckled_mob))
 		buckled_mob.pixel_x = buckled_mob.base_pixel_x
 		buckled_mob.pixel_y = buckled_mob.base_pixel_y
-		if(buckled_mob.client)
-			buckled_mob.client.view_size.resetToDefault()
+		buckled_mob?.client?.view_size.resetToDefault()
 	set_anchored(FALSE)
 	unregister_mob(current_user)
 	current_user = null
@@ -287,7 +291,7 @@
 	casing.bounce_away(TRUE)
 
 	barrel_heat += barrel_heat_per_shot
-	if(barrel_heat >= 100)
+	if(barrel_heat >= max_barrel_heat)
 		overheated = TRUE
 		playsound(src, 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg_overheat.ogg', 100)
 		particles = new /particles/smoke()
