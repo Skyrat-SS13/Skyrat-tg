@@ -11,6 +11,8 @@
 #define COMSIG_MOB_CUMFACED "mob_cumfaced" //from /datum/component/cumfaced/Initialize(), when you get covered in cum
 ///Fired in combat_indicator.dm, used for syncing CI between mech and pilot
 #define COMSIG_MOB_CI_TOGGLED "mob_ci_toggled"
+/// When a hostile simple mob loses it's target.
+#define COMSIG_HOSTILE_MOB_LOST_TARGET "hostile_mob_lost_target"
 
 //Gun signals
 ///When a gun is switched to automatic fire mode
