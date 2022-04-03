@@ -22,12 +22,12 @@
 			. += span_notice("There is \a [cell] loaded in the chamber.") //Shows what cells are currently inside of the gun
 
 /// Handles insertion of weapon cells
-/obj/item/gun/energy/cell_loaded/attackby(obj/item/weaponcell/C, mob/user)
-	if(is_type_in_list(C, allowed_cells)) // Checks allowed_cells to see if the gun is able to load the cells.
+/obj/item/gun/energy/cell_loaded/attackby(obj/item/weaponcell/used_cell, mob/user)
+	if(is_type_in_list(used_cell, allowed_cells)) // Checks allowed_cells to see if the gun is able to load the cells.
 		if(cellcount >= maxcells) //Prevents the user from loading any cells past the maximum cell allowance
 			to_chat(user, span_notice("The [src] is full, take a cell out to make room"))
 		else
-			var/obj/item/weaponcell/cell = C
+			var/obj/item/weaponcell/cell = used_cell
 			if(!user.transferItemToLoc(cell, src))
 				return
 			playsound(loc, 'sound/machines/click.ogg', 50, 1)
