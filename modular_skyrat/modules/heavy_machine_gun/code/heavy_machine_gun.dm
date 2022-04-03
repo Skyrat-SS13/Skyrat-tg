@@ -2,7 +2,7 @@
 	name = "\improper T90 Heavy Machine Gun"
 	desc = "A high calibre heavy machine gun capable of laying down copious amounts of suppressive fire."
 	icon = 'modular_skyrat/modules/heavy_machine_gun/icons/turret.dmi'
-	icon_state = "heavy_machine_gun"
+	icon_state = "hmg"
 	can_buckle = TRUE
 	anchored = FALSE
 	density = TRUE
@@ -45,19 +45,38 @@
 	/// The position of our bolt. TRUE = locked(ready to fire) FALSE = forward(not ready to fire)
 	var/bolt = TRUE
 
+	// Heat mechanics
+	/// How much barrel heat we generate per shot
+	var/barrel_heat_per_shot = 1.5
+	/// The current barrel heat.
+	var/barrel_heat = 0
+	/// Have we overheated?
+	var/overheated = FALSE
+	/// How long it takes until we can fire again after a heatlock.
+	var/cooldown_time = 20 SECONDS
+	/// How quickly the barrel naturally cools down
+	var/passive_barrel_cooldown_rate = 2
+
 	COOLDOWN_DECLARE(trigger_cooldown)
 
 
 /obj/machinery/heavy_machine_gun/Initialize(mapload)
 	. = ..()
 	ammo_box = new ammo_box_type(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/machinery/heavy_machine_gun/Destroy()
 	QDEL_NULL(ammo_box)
+	QDEL_NULL(particles)
 	if(current_user)
 		unregister_mob(current_user)
 		current_user = null
 	return ..()
+
+/obj/machinery/heavy_machine_gun/process(delta_time)
+	if(barrel_heat > 0)
+		barrel_heat -= passive_barrel_cooldown_rate * delta_time
+		update_appearance()
 
 /obj/machinery/heavy_machine_gun/update_overlays()
 	. = ..()
@@ -65,6 +84,25 @@
 		. += "ammo_box"
 	if(cover_open)
 		. += "cover_open"
+
+	switch(barrel_heat)
+		if(50 to 75)
+			. += "[base_icon_state]_barrel_hot"
+		if(75 to INFINITY)
+			. += "[base_icon_state]_barrel_overheat"
+
+/obj/machinery/heavy_machine_gun/examine(mob/user)
+	. = ..()
+	if(ammo_box)
+		. += span_notice("It has [ammo_box] loaded, with [ammo_box.ammo_count()] rounds remaining.")
+	. += span_notice("The cover is [cover_open ? "open" : "closed"].")
+	switch(barrel_heat)
+		if(50 to 75)
+			. += span_warning("The barrel looks hot.")
+		if(75 to INFINITY)
+			. += span_warning("The barrel looks moulten!")
+	if(overheated)
+		. += span_danger("It is heatlocked!")
 
 /// Undeploying, for when you want to move your big dakka around
 /obj/machinery/heavy_machine_gun/wrench_act(mob/living/user, obj/item/wrench/used_wrench)
@@ -247,9 +285,23 @@
 	casing.forceMove(drop_location()) //Eject casing onto ground.
 	casing.bounce_away(TRUE)
 
+	barrel_heat += barrel_heat_per_shot
+	if(barrel_heat >= 100)
+		overheated = TRUE
+		playsound(src, 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg_overheat.ogg', 100)
+		particles = new /particles/smoke()
+		addtimer(CALLBACK(src, .proc/reset_overheat), cooldown_time)
+
+	update_appearance()
+
 	ammo_box.update_appearance()
 
 	return TRUE
+
+/obj/machinery/heavy_machine_gun/proc/reset_overheat()
+	overheated = FALSE
+	update_appearance()
+	QDEL_NULL(particles)
 
 // Used to stop firing after the trigger is released.
 /obj/machinery/heavy_machine_gun/proc/trigger_released(client/shooting_client, atom/object, turf/location, control, params)
@@ -277,6 +329,9 @@
 		fire_result = FALSE
 	if(cover_open)
 		balloon_alert_to_viewers("cover open!")
+		fire_result = FALSE
+	if(overheated)
+		balloon_alert_to_viewers("barrel heatlocked!")
 		fire_result = FALSE
 	if(!fire_result)
 		playsound(src, 'sound/weapons/gun/general/dry_fire.ogg', 50, TRUE)
