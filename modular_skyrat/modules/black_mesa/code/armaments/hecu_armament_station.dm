@@ -1,18 +1,8 @@
 // VENDOR
 /obj/machinery/armament_station/hecu
-	name = "Military Grade Armament Station"
+	required_access = list(ACCESS_AWAY_SEC)
 
-	req_access = list(ACCESS_AWAY_SEC)
-
-
-/obj/machinery/armament_station/hecu/Initialize(mapload)
-	. = ..()
-	products = subtypesof(/datum/armament_entry/hecu)
-
-
-// POINTS CARDS
-/obj/item/armament_points_card/hecu
-	points = 40
+	armament_type = /datum/armament_entry/assault_operatives
 
 // ARMAMENT ENTRIES
 

@@ -129,7 +129,7 @@
 		/obj/item/storage/medkit/emergency,
 		/obj/item/storage/box/hecu_rations,
 		/obj/item/knife/combat,
-		/obj/item/armament_points_card/hecu
+		/obj/item/armament_points_card/assaultops
 	)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu
