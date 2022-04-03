@@ -36,8 +36,6 @@
 	var/fire_delay = 0.3 SECONDS
 	/// The current timer to fire the next round.
 	var/nextshot_timer_id
-	/// A weakref to our last dragged object.
-	var/datum/weakref/last_dragged_atom
 	/// Is our cover open? Used to access the ammo box!
 	var/cover_open = FALSE
 	/// Do we have a supressor or something installed?
@@ -364,7 +362,7 @@
 			user.pixel_y = -8
 
 /obj/item/advanced_deployable_turret_folded
-	name = "folded heavy machine gun"
+	name = "\improper folded T-90 heavy machine gun"
 	desc = "A folded and unloaded heavy machine gun, ready to be deployed and used."
 	icon = 'modular_skyrat/modules/heavy_machine_gun/icons/turret_objects.dmi'
 	icon_state = "folded_hmg"
