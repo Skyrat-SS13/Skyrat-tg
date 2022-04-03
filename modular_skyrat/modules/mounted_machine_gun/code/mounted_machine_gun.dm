@@ -1,7 +1,7 @@
-/obj/machinery/heavy_machine_gun
-	name = "\improper T90 Heavy Machine Gun"
-	desc = "A high calibre heavy machine gun capable of laying down copious amounts of suppressive fire."
-	icon = 'modular_skyrat/modules/heavy_machine_gun/icons/turret.dmi'
+/obj/machinery/mounted_machine_gun
+	name = "\improper T90 Mounted Machine Gun"
+	desc = "A high calibre mounted machine gun capable of laying down copious amounts of suppressive fire."
+	icon = 'modular_skyrat/modules/mounted_machine_gun/icons/turret.dmi'
 	icon_state = "hmg"
 	base_icon_state = "hmg"
 	can_buckle = TRUE
@@ -20,11 +20,11 @@
 	/// Sound to play at the end of a burst
 	var/overheatsound = 'sound/weapons/sear.ogg'
 	/// Sound to play when firing
-	var/firesound = 'modular_skyrat/modules/heavy_machine_gun/sound/50cal_box_01.ogg'
+	var/firesound = 'modular_skyrat/modules/mounted_machine_gun/sound/50cal_box_01.ogg'
 	/// If using a wrench on the turret will start undeploying it
 	var/can_be_undeployed = FALSE
 	/// What gets spawned if the object is undeployed
-	var/obj/spawned_on_undeploy = /obj/item/heavy_machine_gun_folded
+	var/obj/spawned_on_undeploy = /obj/item/mounted_machine_gun_folded
 	/// How long it takes for a wrench user to undeploy the object
 	var/undeploy_time = 3 SECONDS
 	/// Our currently loaded ammo box.
@@ -34,7 +34,7 @@
 	/// A reference to our current user.
 	var/mob/living/current_user
 	/// The delay between each shot that is sent downrange.
-	var/fire_delay = 0.3 SECONDS
+	var/fire_delay = 0.2 SECONDS
 	/// The current timer to fire the next round.
 	var/nextshot_timer_id
 	/// Is our cover open? Used to access the ammo box!
@@ -48,7 +48,7 @@
 
 	// Heat mechanics
 	/// How much barrel heat we generate per shot
-	var/barrel_heat_per_shot = 3
+	var/barrel_heat_per_shot = 2
 	/// The current barrel heat.
 	var/barrel_heat = 0
 	/// Have we overheated?
@@ -61,12 +61,12 @@
 	COOLDOWN_DECLARE(trigger_cooldown)
 
 
-/obj/machinery/heavy_machine_gun/Initialize(mapload)
+/obj/machinery/mounted_machine_gun/Initialize(mapload)
 	. = ..()
 	ammo_box = new ammo_box_type(src)
 	START_PROCESSING(SSobj, src)
 
-/obj/machinery/heavy_machine_gun/Destroy()
+/obj/machinery/mounted_machine_gun/Destroy()
 	QDEL_NULL(ammo_box)
 	QDEL_NULL(particles)
 	if(current_user)
@@ -74,12 +74,12 @@
 		current_user = null
 	return ..()
 
-/obj/machinery/heavy_machine_gun/process(delta_time)
+/obj/machinery/mounted_machine_gun/process(delta_time)
 	if(barrel_heat > 0)
 		barrel_heat -= passive_barrel_cooldown_rate * delta_time
 		update_appearance()
 
-/obj/machinery/heavy_machine_gun/update_overlays()
+/obj/machinery/mounted_machine_gun/update_overlays()
 	. = ..()
 	if(ammo_box)
 		. += "ammo_box"
@@ -92,7 +92,7 @@
 		if(75 to INFINITY)
 			. += "[base_icon_state]_barrel_overheat"
 
-/obj/machinery/heavy_machine_gun/examine(mob/user)
+/obj/machinery/mounted_machine_gun/examine(mob/user)
 	. = ..()
 	if(ammo_box)
 		. += span_notice("It has [ammo_box] loaded, with [ammo_box.ammo_count()] rounds remaining.")
@@ -106,7 +106,7 @@
 		. += span_danger("It is heatlocked!")
 
 /// Undeploying, for when you want to move your big dakka around
-/obj/machinery/heavy_machine_gun/wrench_act(mob/living/user, obj/item/wrench/used_wrench)
+/obj/machinery/mounted_machine_gun/wrench_act(mob/living/user, obj/item/wrench/used_wrench)
 	. = ..()
 	if(!can_be_undeployed)
 		return
@@ -122,7 +122,7 @@
 	qdel(src)
 
 //BUCKLE HOOKS
-/obj/machinery/heavy_machine_gun/unbuckle_mob(mob/living/buckled_mob, force = FALSE, can_fall = TRUE)
+/obj/machinery/mounted_machine_gun/unbuckle_mob(mob/living/buckled_mob, force = FALSE, can_fall = TRUE)
 	playsound(src,'sound/mecha/mechmove01.ogg', 50, TRUE)
 	for(var/obj/item/I in buckled_mob.held_items)
 		if(istype(I, /obj/item/gun_control))
@@ -137,7 +137,7 @@
 	current_user = null
 	. = ..()
 
-/obj/machinery/heavy_machine_gun/user_buckle_mob(mob/living/user_to_buckle, mob/buckling_user, check_loc = TRUE)
+/obj/machinery/mounted_machine_gun/user_buckle_mob(mob/living/user_to_buckle, mob/buckling_user, check_loc = TRUE)
 	if(user_to_buckle.incapacitated() || !istype(user_to_buckle))
 		return
 	user_to_buckle.forceMove(get_turf(src))
@@ -155,13 +155,13 @@
 
 	update_positioning()
 
-/obj/machinery/heavy_machine_gun/AltClick(mob/user)
+/obj/machinery/mounted_machine_gun/AltClick(mob/user)
 	. = ..()
 	if(!can_interact(user))
 		return
 	toggle_cover(user)
 
-/obj/machinery/heavy_machine_gun/attack_hand_secondary(mob/living/user, list/modifiers)
+/obj/machinery/mounted_machine_gun/attack_hand_secondary(mob/living/user, list/modifiers)
 	. = ..()
 	if(!istype(user))
 		return
@@ -174,7 +174,7 @@
 		return
 	remove_ammo_box(user)
 
-/obj/machinery/heavy_machine_gun/attackby(obj/item/weapon, mob/user, params)
+/obj/machinery/mounted_machine_gun/attackby(obj/item/weapon, mob/user, params)
 	. = ..()
 	if(!istype(weapon, ammo_box_type))
 		return
@@ -183,24 +183,24 @@
 		return
 	ammo_box = weapon
 	weapon.forceMove(src)
-	playsound(src, 'modular_skyrat/modules/heavy_machine_gun/sound/insert_ammobox.ogg', 100)
+	playsound(src, 'modular_skyrat/modules/mounted_machine_gun/sound/insert_ammobox.ogg', 100)
 	balloon_alert("ammo box inserted!")
 
-/obj/machinery/heavy_machine_gun/proc/remove_ammo_box(mob/living/user)
+/obj/machinery/mounted_machine_gun/proc/remove_ammo_box(mob/living/user)
 	ammo_box.forceMove(drop_location())
 	user.put_in_hands(ammo_box)
 	ammo_box = null
-	playsound(src, 'modular_skyrat/modules/heavy_machine_gun/sound/remove_ammobox.ogg', 100)
+	playsound(src, 'modular_skyrat/modules/mounted_machine_gun/sound/remove_ammobox.ogg', 100)
 	balloon_alert(user, "ammo box removed!")
 	update_appearance()
 
-/obj/machinery/heavy_machine_gun/proc/toggle_cover(mob/user)
+/obj/machinery/mounted_machine_gun/proc/toggle_cover(mob/user)
 	cover_open = !cover_open
 	balloon_alert(user, "cover [cover_open ? "opened" : "closed"]!")
-	playsound(src, cover_open ? 'modular_skyrat/modules/heavy_machine_gun/sound/open_lid.ogg' : 'modular_skyrat/modules/heavy_machine_gun/sound/close_lid.ogg', 100)
+	playsound(src, cover_open ? 'modular_skyrat/modules/mounted_machine_gun/sound/open_lid.ogg' : 'modular_skyrat/modules/mounted_machine_gun/sound/close_lid.ogg', 100)
 
 /// Registers all the required signals and sets up the client to work with the turret.
-/obj/machinery/heavy_machine_gun/proc/register_user(mob/living/user_to_buckle)
+/obj/machinery/mounted_machine_gun/proc/register_user(mob/living/user_to_buckle)
 	current_user = user_to_buckle
 
 	for(var/hand_item in user_to_buckle.held_items)
@@ -223,12 +223,12 @@
 	user_to_buckle.client?.view_size.setTo(view_range)
 	user_to_buckle.pixel_y = 14
 
-/obj/machinery/heavy_machine_gun/proc/unregister_mob(mob/living/user)
+/obj/machinery/mounted_machine_gun/proc/unregister_mob(mob/living/user)
 	UnregisterSignal(user, COMSIG_MOB_LOGIN)
 	UnregisterSignal(user.client, COMSIG_CLIENT_MOUSEDOWN)
 	UnregisterSignal(user.client, COMSIG_CLIENT_MOUSEUP)
 
-/obj/machinery/heavy_machine_gun/proc/trigger_pulled(client/shooting_client, atom/_target, turf/location, control, params)
+/obj/machinery/mounted_machine_gun/proc/trigger_pulled(client/shooting_client, atom/_target, turf/location, control, params)
 	SIGNAL_HANDLER
 	if(!check_click_modifiers(params2list(params)))
 		return
@@ -253,7 +253,7 @@
 
 	INVOKE_ASYNC(src, .proc/process_fire, shooting_client, params)
 
-/obj/machinery/heavy_machine_gun/proc/process_fire(client/shooting_client, params)
+/obj/machinery/mounted_machine_gun/proc/process_fire(client/shooting_client, params)
 	if(!shooting_client)
 		return
 
@@ -262,7 +262,7 @@
 
 	nextshot_timer_id = addtimer(CALLBACK(src, .proc/process_fire, shooting_client), fire_delay, TIMER_STOPPABLE)
 
-/obj/machinery/heavy_machine_gun/proc/fire_at(client/shooting_client, params)
+/obj/machinery/mounted_machine_gun/proc/fire_at(client/shooting_client, params)
 	if(!current_user)
 		return FALSE
 	if(!shooting_client)
@@ -299,13 +299,13 @@
 
 	return TRUE
 
-/obj/machinery/heavy_machine_gun/proc/reset_overheat()
+/obj/machinery/mounted_machine_gun/proc/reset_overheat()
 	overheated = FALSE
 	update_appearance()
 	QDEL_NULL(particles)
 
 // Used to stop firing after the trigger is released.
-/obj/machinery/heavy_machine_gun/proc/trigger_released(client/shooting_client, atom/object, turf/location, control, params)
+/obj/machinery/mounted_machine_gun/proc/trigger_released(client/shooting_client, atom/object, turf/location, control, params)
 	SIGNAL_HANDLER
 	if(nextshot_timer_id)
 		deltimer(nextshot_timer_id)
@@ -314,13 +314,13 @@
 	shooting_client.mouse_pointer_icon = shooting_client.mouse_override_icon
 
 // Re-registers the required signals to the client after they reconnect.
-/obj/machinery/heavy_machine_gun/proc/reregister_trigger(mob/source_mob)
+/obj/machinery/mounted_machine_gun/proc/reregister_trigger(mob/source_mob)
 	SIGNAL_HANDLER
 	RegisterSignal(source_mob, COMSIG_CLIENT_MOUSEDOWN, .proc/trigger_pulled, TRUE)
 	RegisterSignal(source_mob.client, COMSIG_CLIENT_MOUSEUP, .proc/trigger_released, TRUE)
 
 // Performs all checks and plays a sound if we can't fire.
-/obj/machinery/heavy_machine_gun/proc/can_fire()
+/obj/machinery/mounted_machine_gun/proc/can_fire()
 	var/fire_result = TRUE
 	if(!ammo_box)
 		drop_bolt()
@@ -340,18 +340,18 @@
 		cock_bolt()
 	return fire_result
 
-/obj/machinery/heavy_machine_gun/proc/drop_bolt()
+/obj/machinery/mounted_machine_gun/proc/drop_bolt()
 	if(!bolt)
 		return
 	bolt = FALSE
 
-/obj/machinery/heavy_machine_gun/proc/cock_bolt()
+/obj/machinery/mounted_machine_gun/proc/cock_bolt()
 	if(bolt)
 		return
 	bolt = TRUE
-	playsound(src, 'modular_skyrat/modules/heavy_machine_gun/sound/cock_bolt.ogg', 100)
+	playsound(src, 'modular_skyrat/modules/mounted_machine_gun/sound/cock_bolt.ogg', 100)
 
-/obj/machinery/heavy_machine_gun/proc/check_click_modifiers(modifiers)
+/obj/machinery/mounted_machine_gun/proc/check_click_modifiers(modifiers)
 	if(LAZYACCESS(modifiers, SHIFT_CLICK))
 		return FALSE
 	if(LAZYACCESS(modifiers, CTRL_CLICK))
@@ -364,7 +364,7 @@
 		return FALSE
 	return TRUE
 
-/obj/machinery/heavy_machine_gun/proc/update_positioning(atom/target_atom)
+/obj/machinery/mounted_machine_gun/proc/update_positioning(atom/target_atom)
 	if(!current_user)
 		return FALSE
 
@@ -376,7 +376,7 @@
 		if(istype(target_turf)) //They're hovering over something in the map.
 			direction_track(current_user, target_turf)
 
-/obj/machinery/heavy_machine_gun/proc/direction_track(mob/user, atom/targeted)
+/obj/machinery/mounted_machine_gun/proc/direction_track(mob/user, atom/targeted)
 	if(user.incapacitated())
 		return
 	setDir(get_dir(src,targeted))
@@ -423,19 +423,19 @@
 			user.pixel_x = 18
 			user.pixel_y = -8
 
-/obj/item/heavy_machine_gun_folded
-	name = "\improper folded T-90 heavy machine gun"
-	desc = "A folded and unloaded heavy machine gun, ready to be deployed and used."
-	icon = 'modular_skyrat/modules/heavy_machine_gun/icons/turret_objects.dmi'
+/obj/item/mounted_machine_gun_folded
+	name = "\improper folded T-90 mounted machine gun"
+	desc = "A folded and unloaded mounted machine gun, ready to be deployed and used."
+	icon = 'modular_skyrat/modules/mounted_machine_gun/icons/turret_objects.dmi'
 	icon_state = "folded_hmg"
 	max_integrity = 250
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
 	/// The type we deploy.
-	var/type_to_deploy = /obj/machinery/heavy_machine_gun
+	var/type_to_deploy = /obj/machinery/mounted_machine_gun
 	/// How long it takes to deploy.
 	var/deploy_time = 5 SECONDS
 
-/obj/item/heavy_machine_gun_folded/Initialize(mapload)
+/obj/item/mounted_machine_gun_folded/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/deployable, deploy_time, type_to_deploy, delete_on_use = TRUE)
