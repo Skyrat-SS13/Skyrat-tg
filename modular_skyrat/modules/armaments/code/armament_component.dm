@@ -36,8 +36,9 @@
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/on_attackby)
 
 /datum/component/armament/Destroy(force, silent)
-	inserted_card.forceMove(parent_atom.drop_location())
-	inserted_card = null
+	if(inserted_card)
+		inserted_card.forceMove(parent_atom.drop_location())
+		inserted_card = null
 	return ..()
 
 /datum/component/armament/proc/on_attackby(atom/target, obj/item, mob/user)
