@@ -76,8 +76,8 @@
 /obj/item/gun/energy/cell_loaded/AltClick(mob/user, modifiers)
 	if(cellcount >= 1) //Checks to see if there is a cell inside of the gun, before removal.
 		to_chat(user, span_notice("You remove a cell"))
-
 		var/obj/item/last_cell = installedcells[installedcells.len]
+
 		if(last_cell)
 			last_cell.forceMove(drop_location())
 			user.put_in_hands(last_cell)
@@ -90,6 +90,7 @@
 		to_chat(user, span_notice("The [src] has no cells inside"))
 		return ..()
 
-/obj/item/gun/energy/cell_loaded/alltypes //This is for debug.
+/// A cellgun used for debug, it is able to use any weaponcell.
+/obj/item/gun/energy/cell_loaded/alltypes
 	name = "omni gun"
 	allowed_cells = list(/obj/item/weaponcell)

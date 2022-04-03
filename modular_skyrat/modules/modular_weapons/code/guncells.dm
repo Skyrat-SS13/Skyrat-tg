@@ -60,8 +60,8 @@
 	if(medicell_examine)
 		balloon_alert(user, "safety [is_toggled ? "enabled" : "disabled"]")
 		return
-
 	else if(refresh_shot_name())
 		balloon_alert(user, "set to [shot_name]")
+
 	return
 
