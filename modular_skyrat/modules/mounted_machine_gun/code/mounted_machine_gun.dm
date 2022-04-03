@@ -2,8 +2,8 @@
 	name = "\improper T90 Mounted Machine Gun"
 	desc = "A high calibre mounted machine gun capable of laying down copious amounts of suppressive fire."
 	icon = 'modular_skyrat/modules/mounted_machine_gun/icons/turret.dmi'
-	icon_state = "hmg"
-	base_icon_state = "hmg"
+	icon_state = "mmg"
+	base_icon_state = "mmg"
 	can_buckle = TRUE
 	anchored = FALSE
 	density = TRUE
@@ -30,7 +30,7 @@
 	/// Our currently loaded ammo box.
 	var/obj/item/ammo_box/magazine/ammo_box
 	/// Our ammo box type.
-	var/ammo_box_type = /obj/item/ammo_box/magazine/hmg_box
+	var/ammo_box_type = /obj/item/ammo_box/magazine/mmg_box
 	/// A reference to our current user.
 	var/mob/living/current_user
 	/// The delay between each shot that is sent downrange.
@@ -268,7 +268,7 @@
 	if(!shooting_client)
 		return FALSE
 	var/atom/target_atom = shooting_client?.mouse_object_ref?.resolve()
-	if(!target_atom || !get_turf(target_atom) || istype(target_atom, /atom/movable/screen) || target_atom == src)
+	if(QDELETED(target_atom) || !target_atom || !get_turf(target_atom) || istype(target_atom, /atom/movable/screen) || target_atom == src)
 		return FALSE
 	update_positioning(target_atom)
 	if(!can_fire())
@@ -379,7 +379,7 @@
 /obj/machinery/mounted_machine_gun/proc/direction_track(mob/user, atom/targeted)
 	if(user.incapacitated())
 		return
-	setDir(get_dir(src,targeted))
+	setDir(get_dir(src, targeted))
 	user.setDir(dir)
 	switch(dir)
 		if(NORTH)

@@ -1,4 +1,4 @@
-/obj/item/ammo_box/magazine/hmg_box
+/obj/item/ammo_box/magazine/mmg_box
 	name = "\improper .50 BMG ammo box"
 	desc = "A big box full of beltfed ammo."
 	icon = 'modular_skyrat/modules/mounted_machine_gun/icons/turret_objects.dmi'
