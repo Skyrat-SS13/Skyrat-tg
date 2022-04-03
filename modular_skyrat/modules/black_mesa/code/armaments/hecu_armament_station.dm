@@ -2,7 +2,7 @@
 /obj/machinery/armament_station/hecu
 	required_access = list(ACCESS_AWAY_SEC)
 
-	armament_type = /datum/armament_entry/assault_operatives
+	armament_type = /datum/armament_entry/hecu
 
 // ARMAMENT ENTRIES
 
