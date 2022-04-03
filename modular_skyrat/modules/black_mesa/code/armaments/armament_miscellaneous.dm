@@ -18,7 +18,7 @@
 	cost = 1
 
 /datum/armament_entry/hecu/misc/pizza
-	item_type = /obj/item/pizzabox/margherita
+	item_type = /obj/item/food/pizza/margherita
 	max_purchase = 3
 	cost = 1
 
