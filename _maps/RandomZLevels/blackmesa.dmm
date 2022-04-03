@@ -703,6 +703,10 @@
 /obj/structure/alien/weeds/xen,
 /turf/open/floor/iron/textured_large,
 /area/awaymission/black_mesa)
+"dH" = (
+/obj/effect/baseturf_helper/black_mesa/xen,
+/turf/open/misc/xen,
+/area/awaymission/black_mesa/xen)
 "dI" = (
 /obj/machinery/modular_computer/console/preset/cargochat/science{
 	dir = 8
@@ -1665,6 +1669,7 @@
 /area/awaymission/black_mesa)
 "iM" = (
 /obj/structure/bed/maint,
+/obj/item/armament_points_card/hecu,
 /turf/open/misc/ironsand,
 /area/awaymission/black_mesa)
 "iN" = (
@@ -2220,11 +2225,6 @@
 /obj/machinery/light/small/red/directional/west,
 /turf/open/floor/plating,
 /area/awaymission/black_mesa)
-"ly" = (
-/obj/structure/alien/weeds/xen,
-/obj/structure/shockplant,
-/turf/open/floor/iron/smooth,
-/area/awaymission/black_mesa)
 "lz" = (
 /obj/machinery/light/cold{
 	dir = 4
@@ -2476,6 +2476,10 @@
 /obj/item/gun_maintenance_supplies,
 /obj/item/gun_maintenance_supplies,
 /obj/item/gun_maintenance_supplies,
+/obj/item/ammo_box/magazine/mp5,
+/obj/item/ammo_box/magazine/mp5,
+/obj/item/ammo_box/magazine/m16/extended,
+/obj/item/ammo_box/magazine/m16/extended,
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/black_mesa)
 "mD" = (
@@ -2862,11 +2866,12 @@
 /area/awaymission/black_mesa)
 "oz" = (
 /obj/structure/rack/shelf,
-/obj/item/ammo_box/magazine/m16,
-/obj/item/ammo_box/magazine/m16,
-/obj/item/ammo_box/magazine/m16,
-/obj/item/ammo_box/magazine/m16,
-/obj/item/ammo_box/magazine/m16,
+/obj/item/ammo_box/magazine/m16/extended,
+/obj/item/ammo_box/magazine/m16/extended,
+/obj/item/ammo_box/magazine/m16/extended,
+/obj/item/ammo_box/magazine/m16/extended,
+/obj/item/ammo_box/magazine/m16/extended,
+/obj/item/ammo_box/magazine/m16/extended,
 /turf/open/floor/iron/smooth_large,
 /area/awaymission/black_mesa)
 "oA" = (
@@ -2920,10 +2925,10 @@
 /area/awaymission/black_mesa)
 "oN" = (
 /obj/structure/table,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
 /obj/item/paper/crumpled{
 	text = "hey uh... pal, i left some mags in the crates, so... yeah."
 	},
+/obj/item/ammo_box/magazine/mp5,
 /turf/open/floor/iron/dark/blue,
 /area/awaymission/black_mesa)
 "oO" = (
@@ -3512,12 +3517,6 @@
 /obj/structure/alien/weeds/xen,
 /turf/open/floor/iron/green,
 /area/awaymission/black_mesa)
-"rM" = (
-/obj/structure/chair/stool,
-/obj/structure/alien/weeds/xen,
-/obj/effect/random_mob_placer/xen,
-/turf/open/floor/iron/smooth,
-/area/awaymission/black_mesa)
 "rO" = (
 /turf/open/floor/iron/textured{
 	icon_state = "floorscorched2"
@@ -3625,7 +3624,9 @@
 /area/awaymission/black_mesa)
 "sr" = (
 /obj/structure/table,
-/obj/item/gun/ballistic/automatic/proto/unrestricted,
+/obj/item/gun/ballistic/automatic/proto/unrestricted{
+	name = "\improper Saber SMG"
+	},
 /turf/open/misc/xen,
 /area/awaymission/black_mesa/xen)
 "ss" = (
@@ -3813,7 +3814,7 @@
 /area/awaymission/black_mesa)
 "tk" = (
 /obj/structure/rack/shelf,
-/obj/item/gun/ballistic/automatic/p90,
+/obj/item/gun/ballistic/automatic/mp5,
 /turf/open/floor/iron/smooth_large,
 /area/awaymission/black_mesa)
 "tl" = (
@@ -4095,8 +4096,8 @@
 /area/awaymission/black_mesa)
 "uB" = (
 /obj/effect/bump_teleporter{
-	id_target = "factory_lower_start";
-	id = "factory_lower_end"
+	id = "factory_lower_end";
+	id_target = "factory_lower_start"
 	},
 /turf/open/floor/vault/alien,
 /area/awaymission/black_mesa/xen)
@@ -4112,11 +4113,11 @@
 /area/awaymission/black_mesa)
 "uF" = (
 /obj/structure/rack/shelf,
-/obj/item/ammo_box/magazine/p90,
-/obj/item/ammo_box/magazine/p90,
-/obj/item/ammo_box/magazine/p90,
-/obj/item/ammo_box/magazine/p90,
-/obj/item/ammo_box/magazine/p90,
+/obj/item/ammo_box/magazine/mp5,
+/obj/item/ammo_box/magazine/mp5,
+/obj/item/ammo_box/magazine/mp5,
+/obj/item/ammo_box/magazine/mp5,
+/obj/item/ammo_box/magazine/mp5,
 /turf/open/floor/iron/smooth_large,
 /area/awaymission/black_mesa)
 "uG" = (
@@ -4971,14 +4972,6 @@
 /area/awaymission/black_mesa)
 "yz" = (
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/ammo_box/magazine/m16,
-/obj/item/ammo_box/magazine/m16,
-/obj/item/ammo_box/magazine/m16,
-/obj/item/ammo_box/magazine/m16,
-/obj/item/ammo_box/magazine/m16,
-/obj/item/ammo_box/magazine/m16,
-/obj/item/ammo_box/magazine/m16,
-/obj/item/ammo_box/magazine/m16,
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/awaymission/black_mesa)
@@ -5118,7 +5111,7 @@
 /area/awaymission/black_mesa)
 "zq" = (
 /obj/structure/rack/gunrack,
-/obj/item/gun/ballistic/automatic/cfa_wildcat,
+/obj/item/gun/ballistic/automatic/mp5,
 /turf/open/floor/iron/dark/blue,
 /area/awaymission/black_mesa)
 "zs" = (
@@ -5180,10 +5173,8 @@
 	},
 /area/awaymission/black_mesa/xen)
 "zE" = (
-/obj/item/ammo_box/magazine/cm762,
-/turf/open/floor/iron/smooth_large{
-	icon_state = "damaged2"
-	},
+/obj/item/ammo_box/magazine/m16/extended,
+/turf/open/floor/iron/smooth_large,
 /area/awaymission/black_mesa)
 "zF" = (
 /obj/structure/alien/resin/membrane,
@@ -5384,15 +5375,6 @@
 /area/awaymission/black_mesa)
 "AK" = (
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/minespawner/explosive,
-/obj/item/minespawner/explosive,
-/obj/item/minespawner/explosive,
-/obj/item/minespawner/explosive,
-/obj/item/minespawner/explosive,
-/obj/item/minespawner/explosive,
-/obj/item/grenade/frag,
-/obj/item/grenade/frag,
-/obj/item/grenade/frag,
 /turf/open/floor/iron/dark,
 /area/awaymission/black_mesa)
 "AL" = (
@@ -5492,13 +5474,6 @@
 "Bs" = (
 /obj/effect/gibspawner/human,
 /turf/open/floor/iron/textured_large,
-/area/awaymission/black_mesa)
-"Bu" = (
-/obj/structure/rack/shelf,
-/obj/item/reagent_containers/hypospray/medipen/stimulants,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
-/turf/open/floor/iron/smooth,
 /area/awaymission/black_mesa)
 "Bv" = (
 /obj/item/food/urinalcake,
@@ -5934,8 +5909,8 @@
 /turf/open/floor/iron/smooth_large,
 /area/awaymission/black_mesa)
 "DB" = (
-/obj/item/storage/box/gunset/m23,
-/turf/open/floor/iron/dark,
+/obj/item/ammo_box/magazine/m16/extended,
+/turf/open/floor/iron/textured,
 /area/awaymission/black_mesa)
 "DD" = (
 /obj/effect/gibspawner/human,
@@ -6138,7 +6113,6 @@
 	dir = 5
 	},
 /obj/structure/table,
-/obj/item/storage/medkit/expeditionary,
 /obj/item/storage/box/bodybags,
 /turf/open/floor/iron/dark,
 /area/awaymission/black_mesa)
@@ -6257,11 +6231,6 @@
 /area/awaymission/black_mesa)
 "Fk" = (
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/ammo_box/magazine/m16,
-/obj/item/ammo_box/magazine/m16,
-/obj/item/ammo_box/magazine/m16,
-/obj/item/ammo_box/magazine/m16,
-/obj/item/ammo_box/magazine/m16,
 /obj/item/ammo_box/magazine/m16,
 /obj/item/ammo_box/magazine/m16,
 /obj/item/ammo_box/magazine/m16,
@@ -6433,7 +6402,7 @@
 "Ga" = (
 /obj/structure/closet/crate/large,
 /obj/structure/closet/crate/large,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
+/obj/item/ammo_box/magazine/mp5,
 /turf/open/floor/plating,
 /area/awaymission/black_mesa)
 "Gb" = (
@@ -6758,12 +6727,6 @@
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
-/area/awaymission/black_mesa)
-"HJ" = (
-/obj/effect/turf_decal/trimline/green/filled/line,
-/obj/effect/random_mob_placer/xen,
-/obj/structure/alien/weeds/xen,
-/turf/open/floor/iron/smooth,
 /area/awaymission/black_mesa)
 "HL" = (
 /obj/structure/chair/sofa/bench/right{
@@ -7112,7 +7075,7 @@
 /area/awaymission/black_mesa)
 "Jp" = (
 /obj/structure/closet/crate/large,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
+/obj/item/ammo_box/magazine/mp5,
 /turf/open/floor/plating,
 /area/awaymission/black_mesa)
 "Jq" = (
@@ -7230,7 +7193,7 @@
 /turf/open/floor/mineral/titanium/white,
 /area/awaymission/black_mesa)
 "JT" = (
-/obj/item/greentext,
+/obj/item/book/granter/crafting_recipe/pipegun_prime,
 /turf/open/misc/ironsand,
 /area/awaymission/black_mesa)
 "JU" = (
@@ -8124,8 +8087,8 @@
 /area/awaymission/black_mesa)
 "Ob" = (
 /obj/effect/bump_teleporter{
-	id_target = "factory_upper_start";
-	id = "factory_upper_end"
+	id = "factory_upper_end";
+	id_target = "factory_upper_start"
 	},
 /turf/open/floor/vault/alien,
 /area/awaymission/black_mesa/xen)
@@ -8196,7 +8159,6 @@
 /area/awaymission/black_mesa)
 "Ow" = (
 /obj/item/stack/cable_coil,
-/obj/item/storage/belt/utility/full,
 /obj/item/clothing/glasses/welding,
 /obj/item/lightreplacer,
 /obj/structure/rack/shelf,
@@ -8536,15 +8498,7 @@
 /turf/open/floor/engine,
 /area/awaymission/black_mesa)
 "Qi" = (
-/obj/structure/closet/crate/secure/weapon,
-/obj/item/ammo_box/magazine/multi_sprite/g17,
-/obj/item/ammo_box/magazine/multi_sprite/g17,
-/obj/item/ammo_box/magazine/multi_sprite/g17,
-/obj/item/ammo_box/magazine/multi_sprite/g17,
-/obj/item/ammo_box/magazine/multi_sprite/g17,
-/obj/item/ammo_box/magazine/multi_sprite/g17,
-/obj/item/ammo_box/magazine/multi_sprite/g17,
-/obj/item/ammo_box/magazine/multi_sprite/g17,
+/obj/machinery/armament_station/hecu,
 /turf/open/floor/iron/dark,
 /area/awaymission/black_mesa)
 "Qk" = (
@@ -9014,10 +8968,6 @@
 	},
 /turf/open/floor/iron/textured,
 /area/awaymission/black_mesa)
-"Sv" = (
-/obj/item/gun/ballistic/automatic/cfa_rifle,
-/turf/open/floor/iron/smooth_large,
-/area/awaymission/black_mesa)
 "Sw" = (
 /obj/item/keycard/yellow,
 /turf/open/floor/iron/dark,
@@ -9356,17 +9306,7 @@
 /area/awaymission/black_mesa/xen)
 "Ul" = (
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/ammo_box/magazine/m12g/dragon,
-/obj/item/ammo_box/magazine/m12g,
-/obj/item/ammo_box/magazine/m12g,
-/obj/item/ammo_box/magazine/m12g,
-/obj/item/ammo_box/magazine/m12g/slug,
-/obj/item/ammo_box/magazine/m12g/slug,
-/obj/item/ammo_box/magazine/m12g,
-/obj/item/ammo_box/magazine/m12g/slug,
-/obj/item/ammo_box/magazine/m12g/slug,
-/obj/item/ammo_box/magazine/m12g,
-/obj/item/ammo_box/magazine/m12g,
+/obj/item/stack/sheet/iron/twenty,
 /turf/open/floor/iron/dark,
 /area/awaymission/black_mesa)
 "Um" = (
@@ -9630,8 +9570,8 @@
 "Vt" = (
 /obj/structure/lattice/catwalk,
 /obj/effect/bump_teleporter{
-	id = "lambda_destination";
-	density = 0
+	density = 0;
+	id = "lambda_destination"
 	},
 /turf/open/floor/engine,
 /area/awaymission/black_mesa/xen)
@@ -9871,7 +9811,8 @@
 "WA" = (
 /obj/structure/rack/shelf,
 /obj/item/reagent_containers/hypospray/medipen/stimulants,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
+/obj/item/ammo_box/magazine/mp5,
+/obj/item/ammo_box/magazine/mp5,
 /turf/open/floor/iron/smooth,
 /area/awaymission/black_mesa)
 "WB" = (
@@ -17303,7 +17244,7 @@ Fu
 Fu
 Fu
 Fu
-Fu
+dH
 RP
 rv
 JU
@@ -45097,7 +45038,7 @@ ca
 ec
 AX
 UK
-xo
+UK
 CG
 sV
 HE
@@ -45116,7 +45057,7 @@ nz
 cj
 IS
 rg
-DB
+UK
 Zy
 Al
 cj
@@ -45354,7 +45295,7 @@ ca
 vp
 Iw
 Iw
-LL
+UK
 qi
 cj
 Tb
@@ -48681,8 +48622,8 @@ rz
 rz
 No
 No
-zE
-zE
+lV
+lV
 kH
 kN
 kN
@@ -49195,9 +49136,9 @@ rz
 rz
 No
 Yr
-zE
+lV
 kN
-Sv
+kN
 kN
 kN
 Yr
@@ -61543,7 +61484,7 @@ fj
 fj
 Yr
 fd
-kN
+zE
 kN
 kN
 Yr
@@ -69231,7 +69172,7 @@ hi
 Yr
 No
 Yr
-Bu
+WA
 UL
 Zc
 UL
@@ -69599,7 +69540,7 @@ lZ
 Ly
 ts
 Ms
-jc
+nM
 mY
 Yr
 Du
@@ -71266,7 +71207,7 @@ Ve
 ct
 XS
 Ve
-Ve
+DB
 kD
 jh
 jh
@@ -71898,10 +71839,10 @@ bP
 sP
 tB
 tB
-rM
+tB
 sP
 mj
-jc
+nM
 Jm
 Yr
 Yr
@@ -72411,7 +72352,7 @@ Hl
 bP
 UJ
 Yr
-ly
+nM
 Yr
 QS
 Hl
@@ -72673,7 +72614,7 @@ sP
 sP
 Hl
 xp
-HJ
+Jm
 Yr
 fz
 bL
@@ -73434,7 +73375,7 @@ Wy
 Bp
 sP
 sP
-Bp
+sP
 xZ
 sP
 sP

@@ -63,8 +63,8 @@
 	prompt_name = "a tactical squad member"
 	outfit = /datum/outfit/hecu
 	you_are_text = "You are an elite tactical squad deployed into the research facility to contain the infestation."
-	flavour_text = "You and four other marines have been selected for a guard duty near one of the Black Mesa's entrances. You haven't heard much from the north-west post, except for the sounds of gunshots, and their radios went silent. On top of that, your escape helicopter, if any, was shot down mid-flight, and another one won't arrive so soon; with your machinegunner being shot down with a precise headshot by something, or SOMEONE. You are likely on your own, at least for now."
-	important_text = "Do not try to explore the level unless Vanguard is dead. Stay around your area. Allowed races are humans and IPCs."
+	flavour_text = "You and four other marines have been selected for a guard duty near one of the Black Mesa's entrances. You haven't heard much from the north-west post, except for the sounds of gunshots, and their radios went silent. On top of that, your escape helicopter was shot down mid-flight, and another one won't arrive so soon; with your machinegunner being shot down with a precise headshot by something, or SOMEONE. You are likely on your own, at least for now."
+	important_text = "Do not try to explore the level unless Vanguard is dead or cooperative. Stay around your area. Allowed races are humans and IPCs."
 	restricted_species = list(/datum/species/human, /datum/species/robotic/ipc)
 
 /obj/item/clothing/under/rank/security/officer/hecu
@@ -82,6 +82,7 @@
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	icon_state = "hecu_pack"
+	worn_icon_state = "hecu_pack"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Olive" = list(
@@ -99,6 +100,7 @@
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	icon_state = "hecu_belt"
+	worn_icon_state = "hecu_belt"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Olive" = list(
@@ -114,29 +116,24 @@
 /datum/outfit/hecu
 	name = "HECU Grunt"
 	uniform = /obj/item/clothing/under/rank/security/officer/hecu
-	head = /obj/item/clothing/head/helmet/space/hev_suit/pcv
 	mask = /obj/item/clothing/mask/gas/hecu2
 	gloves = /obj/item/clothing/gloves/combat
-	suit = /obj/item/clothing/suit/space/hev_suit/pcv
-	suit_store = /obj/item/gun/ballistic/automatic/m16
 	belt = /obj/item/storage/belt/military/assault/hecu
 	ears = /obj/item/radio/headset
-	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	shoes = /obj/item/clothing/shoes/combat
 	l_pocket = /obj/item/grenade/smokebomb
 	r_pocket = /obj/item/binoculars
 	back = /obj/item/storage/backpack/ert/odst/hecu
 	backpack_contents = list(
 		/obj/item/storage/box/survival/radio,
-		/obj/item/ammo_box/magazine/m16 = 3,
 		/obj/item/storage/medkit/emergency,
 		/obj/item/storage/box/hecu_rations,
-		/obj/item/gun/ballistic/automatic/pistol/g17/mesa,
-		/obj/item/ammo_box/magazine/multi_sprite/g17 = 2,
-		/obj/item/knife/combat
+		/obj/item/knife/combat,
+		/obj/item/armament_points_card/hecu
 	)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu
+	skillchips = list(/obj/item/skillchip/chameleon/reload)
 
 /datum/outfit/hecu/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
 	. = ..()
@@ -145,4 +142,4 @@
 /datum/id_trim/hecu
 	assignment = "HECU Soldier"
 	trim_state = "trim_securityofficer"
-	access = list(ACCESS_BRIG_ENTRANCE, ACCESS_SECURITY, ACCESS_AWAY_SEC)
+	access = list(ACCESS_BRIG_ENTRANCE, ACCESS_SECURITY, ACCESS_AWAY_SEC, ACCESS_AWAY_GENERIC3)

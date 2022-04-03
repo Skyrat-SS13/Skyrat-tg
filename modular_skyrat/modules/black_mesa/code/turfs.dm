@@ -13,6 +13,10 @@
 	name = "black mesa sand baseturf editor"
 	baseturf = /turf/open/misc/ironsand/black_mesa
 
+/obj/effect/baseturf_helper/black_mesa/xen
+	name = "xen baseturf editor"
+	baseturf = /turf/open/water/xen_acid
+
 /turf/closed/indestructible/rock/xen
 	name = "strange wall"
 	color = "#ac3b06"
@@ -24,42 +28,50 @@
 	icon_state = "xen_turf"
 	footstep = FOOTSTEP_GRASS
 	barefootstep = FOOTSTEP_GRASS
+	planetary_atmos = TRUE
 
 /turf/open/water/beach/xen
 	desc = "It's mirky and filled with strange organisms."
 	name = "xen water"
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_turfs.dmi'
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	planetary_atmos = TRUE
 
 /turf/open/misc/beach/coastline_t/xen
 	desc = "It's mirky and filled with strange organisms."
 	name = "xen water"
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_turfs.dmi'
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	planetary_atmos = TRUE
 
 /turf/open/misc/beach/coastline_t/sandwater_inner/xen
 	desc = "It's mirky and filled with strange organisms."
 	name = "xen water"
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_turfs.dmi'
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	planetary_atmos = TRUE
 
 /turf/open/misc/beach/coastline_b/xen
 	name = "xen water"
 	desc = "It's mirky and filled with strange organisms."
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_turfs.dmi'
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	planetary_atmos = TRUE
 
 /turf/open/misc/dirt/planet/xen
 	name = "strange path"
 	color = "#ee5f1c"
+	planetary_atmos = TRUE
 
 /turf/open/water/xen_acid
+	baseturfs = /turf/open/chasm
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	planetary_atmos = TRUE
 	color = COLOR_VIBRANT_LIME
 	light_range = 2
 	light_color = COLOR_VIBRANT_LIME
 	/// How much damage we deal if a mob enters us.
-	var/acid_damage = 30
+	var/acid_damage = 10
 
 /turf/open/water/xen_acid/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
