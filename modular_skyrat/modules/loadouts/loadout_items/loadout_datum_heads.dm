@@ -460,7 +460,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	restricted_roles = list(JOB_HEAD_OF_SECURITY)
 
 /datum/loadout_item/head/navyblueofficerberet
-	name = "Security Officer's Navyblue beret"
+	name = "Security Officer's Navy Blue beret"
 	item_path = /obj/item/clothing/head/beret/sec/navyofficer
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_SECURITY_MEDIC, JOB_HEAD_OF_SECURITY, JOB_WARDEN)
 
@@ -471,11 +471,11 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/soltrafficoff
 	name = "Traffic Officer Cap"
-	item_path = /obj/item/clothing/head/soltraffic
+	item_path = /obj/item/clothing/head/sec/peacekeeper/sol/traffic
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_SECURITY_MEDIC, JOB_HEAD_OF_SECURITY, JOB_WARDEN)
 
 /datum/loadout_item/head/navybluewardenberet
-	name = "Warden's navyblue beret"
+	name = "Warden's Navy Blue beret"
 	item_path = /obj/item/clothing/head/beret/sec/navywarden
 	restricted_roles = list(JOB_WARDEN)
 

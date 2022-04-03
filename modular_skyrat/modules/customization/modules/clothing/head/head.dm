@@ -189,7 +189,7 @@
 	icon_state = "policechiefcap"
 	mutant_variants = NONE
 
-/obj/item/clothing/head/soltraffic
+/obj/item/clothing/head/sec/peacekeeper/sol/traffic
 	name = "sol traffic cop cap"
 	desc = "You think that's Shitcurrity? That's just Civil Shitsputes, I'll show you REAL Shitcurrity."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
