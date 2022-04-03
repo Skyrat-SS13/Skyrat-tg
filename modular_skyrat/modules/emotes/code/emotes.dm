@@ -307,6 +307,21 @@
 	message = "squints."
 	message_AI = "zooms in."
 
+/datum/emote/living/smirk
+	key = "smirk"
+	key_third_person = "smirks"
+	message = "smirks."
+
+/datum/emote/living/eyeroll
+	key = "eyeroll"
+	key_third_person = "rolls their eyes"
+	message = "rolls their eyes."
+
+/datum/emote/living/huff
+	key = "huffs"
+	key_third_person = "huffs"
+	message = "huffs!"
+
 /datum/emote/living/clear
 	key = "clear"
 	key_third_person = "clears their throat"
