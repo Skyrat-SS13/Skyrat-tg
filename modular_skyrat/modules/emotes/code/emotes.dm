@@ -334,8 +334,8 @@
 		return 'modular_skyrat/modules/emotes/sound/emotes/voxcough.ogg'
 	if(iscarbon(user))
 		if(user.gender == MALE)
-			return 'modular_skyrat/modules/emotes/sound/emotes/male/male_cough_2.ogg',
-		return 'modular_skyrat/modules/emotes/sound/emotes/female/female_cough_1.ogg',
+			return 'modular_skyrat/modules/emotes/sound/emotes/male/male_cough_2.ogg')
+		return 'modular_skyrat/modules/emotes/sound/emotes/female/female_cough_1.ogg')
 	return
 
 // Avian revolution
