@@ -2,13 +2,9 @@
 /obj/machinery/armament_station/assault_operatives
 	name = "Military Grade Armament Station"
 
-	req_access = list(ACCESS_SYNDICATE)
+	required_access = list(ACCESS_SYNDICATE)
 
-
-/obj/machinery/armament_station/assault_operatives/Initialize(mapload)
-	. = ..()
-	products = subtypesof(/datum/armament_entry/assault_operatives)
-
+	armament_type = /datum/armament_entry/assault_operatives
 
 // POINTS CARDS
 /obj/item/armament_points_card/assaultops
