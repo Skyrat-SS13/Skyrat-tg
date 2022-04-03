@@ -13,7 +13,7 @@
 	name = "black mesa sand baseturf editor"
 	baseturf = /turf/open/misc/ironsand/black_mesa
 
-/obj/effect/baseturf_helper/black_mesa/xen
+/obj/effect/baseturf_helper/black_mesa_xen
 	name = "xen baseturf editor"
 	baseturf = /turf/open/water/xen_acid
 
