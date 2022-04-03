@@ -326,17 +326,6 @@
 	key = "clear"
 	key_third_person = "clears their throat"
 	message = "clears their throat."
-	emote_type = EMOTE_AUDIBLE
-	vary = TRUE
-
-/datum/emote/living/clear/get_sound(mob/living/user)
-	if(isvox(user))
-		return 'modular_skyrat/modules/emotes/sound/emotes/voxcough.ogg'
-	if(iscarbon(user))
-		if(user.gender == MALE)
-			return 'modular_skyrat/modules/emotes/sound/emotes/male/male_cough_2.ogg')
-		return 'modular_skyrat/modules/emotes/sound/emotes/female/female_cough_1.ogg')
-	return
 
 // Avian revolution
 /datum/emote/living/bawk
