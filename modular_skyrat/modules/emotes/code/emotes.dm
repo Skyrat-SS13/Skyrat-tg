@@ -289,6 +289,40 @@
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg'
 	mob_type_allowed_typecache = list(/mob/living) //Beep already exists on brains and silicons
 
+/datum/emote/living/blink2
+	key = "blink2"
+	key_third_person = "blinks twice"
+	message = "blinks twice."
+	message_AI = "has their display flicker twice."
+
+/datum/emote/living/rblink
+	key = "rblink"
+	key_third_person = "rapidly blinks"
+	message = "rapidly blinks!"
+	message_AI = "has their display port flash rapidly!"
+
+/datum/emote/living/squint
+	key = "squint"
+	key_third_person = "squints"
+	message = "squints."
+	message_AI = "zooms in."
+
+/datum/emote/living/clear
+	key = "clear"
+	key_third_person = "clears their throat"
+	message = "clears their throat."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+
+/datum/emote/living/clear/get_sound(mob/living/user)
+	if(isvox(user))
+		return 'modular_skyrat/modules/emotes/sound/emotes/voxcough.ogg'
+	if(iscarbon(user))
+		if(user.gender == MALE)
+			return 'modular_skyrat/modules/emotes/sound/emotes/male/male_cough_2.ogg',
+		return 'modular_skyrat/modules/emotes/sound/emotes/female/female_cough_1.ogg',
+	return
+
 // Avian revolution
 /datum/emote/living/bawk
 	key = "bawk"
