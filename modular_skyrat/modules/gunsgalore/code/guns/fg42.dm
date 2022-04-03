@@ -1,5 +1,5 @@
 /obj/item/gun/ballistic/automatic/fg42
-	name = "\improper FG-42"
+	name = "\improper FGP-90"
 	desc = "A German paratrooper rifle designed to be used at long range chambered in 7.92x57mm. Most likely a reproduction of the original."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns40x32.dmi'
 	icon_state = "fg42"

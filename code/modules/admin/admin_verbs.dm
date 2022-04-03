@@ -98,6 +98,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/spawn_mob_spawner, // SKYRAT EDIT ADDITION
 	/client/proc/request_more_opfor, //SKYRAT EDIT ADDITION
 	/client/proc/fix_say, // SKYRAT EDIT ADDITION
+	/client/proc/spawn_sunbeam, // SKYRAT EDIT ADDITION
 	/client/proc/cmd_select_equipment,
 	/client/proc/cmd_admin_gib_self,
 	/client/proc/drop_bomb,

@@ -52,6 +52,8 @@
 	sort_list(GLOB.laugh_types, /proc/cmp_typepaths_asc)
 	//SKYRAT EDIT END
 
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, GLOB.pod_hair_list)
+
 	//Species
 	for(var/spath in subtypesof(/datum/species))
 		var/datum/species/S = new spath()
@@ -122,7 +124,7 @@ GLOBAL_LIST_INIT(WALLITEMS_INTERIOR, typecacheof(list(
 	/obj/item/storage/secure/safe,
 	/obj/machinery/airalarm,
 	/obj/machinery/bluespace_vendor,
-	/obj/machinery/bounty_board,
+	/obj/machinery/newscaster,
 	/obj/machinery/button,
 	/obj/machinery/computer/security/telescreen,
 	/obj/machinery/computer/security/telescreen/entertainment,
