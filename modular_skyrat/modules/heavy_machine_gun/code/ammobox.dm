@@ -5,7 +5,7 @@
 	icon_state = "ammobox"
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	max_ammo = 100
-	ammo_type = /obj/item/ammo_casing/hmg/mesa
+	ammo_type = /obj/item/ammo_casing/b50cal
 	caliber = CALIBER_50BMG
 
 /obj/item/ammo_casing/b50cal
