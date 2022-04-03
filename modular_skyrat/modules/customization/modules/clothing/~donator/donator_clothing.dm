@@ -272,9 +272,9 @@
 
 /obj/structure/sign/painting/frame_canvas(mob/user,obj/item/canvas/new_canvas)
 	if(istype(new_canvas, /obj/item/canvas/drawingtablet)) // NO FINALIZING THIS BITCH.
-		return
+		return FALSE
 	else
-		..()
+		return ..()
 
 /obj/item/canvas/var/nooverlayupdates = FALSE
 

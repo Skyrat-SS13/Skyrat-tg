@@ -2,7 +2,7 @@
  * Armament Station
  *
  * These are the stations designed to be used by players to outfit themselves.
- * They contain a "products" variable which you can populate with your own set of armament entries.
+ * They are a container for the armament component, which must be supplied with a type path of armament entries, and optionally a list of required accesses to use the vendor.
  *
  * If you plan on making your own station, it is strongly recommended you use your own armament entries for whatever it is you're doing.
  *
@@ -10,176 +10,23 @@
  *
  * @author Gandalf2k15
  */
-
 /obj/machinery/armament_station
 	name = "Armament Outfitting Station"
 	desc = "A versatile station for equipping your weapons."
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "liberationstation"
 	density = TRUE
-	/// Used to keep track of what categories have been used
-	var/list/used_categories = list()
-	/// Used to keep track of what items have been purchased
-	var/list/purchased_items = list()
-	/// If set, will limit this station to the products within this list.
-	var/list/products
-	/// The points card that is currently inserted.
-	var/obj/item/armament_points_card/inserted_card
+	/// The armament entry type path that will fill the armament station's list.
+	var/armament_type
+	/// The access needed to use the vendor
+	var/list/required_access = list()
 
-/obj/machinery/armament_station/attackby(obj/item/weapon, mob/user, params)
+/obj/machinery/armament_station/ComponentInitialize()
 	. = ..()
-	if(istype(weapon, /obj/item/armament_points_card))
-		var/obj/item/inserting_card = weapon
-		if(inserted_card)
-			to_chat(user, span_warning("There is already a card inserted into [src]!"))
-			return
-		inserted_card = inserting_card
-		inserted_card.forceMove(src)
-		to_chat(user, span_notice("You insert [inserting_card] into [src]!"))
-		playsound(src, 'sound/machines/terminal_insert_disc.ogg', 70)
-
-/obj/machinery/armament_station/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "ArmamentStation")
-		ui.open()
-
-// This data proc may look complex. That's because it is.
-/obj/machinery/armament_station/ui_data(mob/user)
-	var/list/data = list()
-
-	data["card_inserted"] = inserted_card ? TRUE : FALSE
-	data["card_name"] = "unknown"
-	data["card_points"] = 0
-	if(inserted_card)
-		data["card_points"] = inserted_card.points
-		data["card_name"] = inserted_card.name
-
-	data["armaments_list"] = list()
-	for(var/armament_category as anything in GLOB.armament_entries)
-		var/list/armament_subcategories = list()
-		for(var/subcategory as anything in GLOB.armament_entries[armament_category][CATEGORY_ENTRY])
-			var/list/subcategory_items = list()
-			for(var/datum/armament_entry/armament_entry as anything in GLOB.armament_entries[armament_category][CATEGORY_ENTRY][subcategory])
-				if(products && !(armament_entry.type in products))
-					continue
-				subcategory_items += list(list(
-					"ref" = REF(armament_entry),
-					"icon" = armament_entry.cached_base64,
-					"name" = armament_entry.name,
-					"cost" = armament_entry.cost,
-					"buyable_ammo" = armament_entry.magazine ? TRUE : FALSE,
-					"magazine_cost" = armament_entry.magazine_cost,
-					"quantity" = armament_entry.max_purchase,
-					"purchased" = purchased_items[armament_entry] ? purchased_items[armament_entry] : 0,
-					"description" = armament_entry.description,
-					"armament_category" = armament_entry.category,
-					"equipment_subcategory" = armament_entry.subcategory,
-				))
-			if(!LAZYLEN(subcategory_items))
-				continue
-			armament_subcategories += list(list(
-				"subcategory" = subcategory,
-				"items" = subcategory_items,
-			))
-		if(!LAZYLEN(armament_subcategories))
-			continue
-		data["armaments_list"] += list(list(
-			"category" = armament_category,
-			"category_limit" = GLOB.armament_entries[armament_category][CATEGORY_LIMIT],
-			"category_uses" = used_categories[armament_category],
-			"subcategories" = armament_subcategories,
-		))
-
-	return data
-
-/obj/machinery/armament_station/ui_act(action, list/params)
-	. = ..()
-	if(.)
+	if(!armament_type)
 		return
+	AddComponent(/datum/component/armament, subtypesof(armament_type), ACCESS_SYNDICATE)
 
-	switch(action)
-		if("equip_item")
-			var/check = check_item(params["armament_ref"])
-			if(!check)
-				return
-			select_armament(usr, check)
-		if("buy_ammo")
-			var/check = check_item(params["armament_ref"])
-			if(!check)
-				return
-			buy_ammo(usr, check, params["quantity"])
-		if("eject_card")
-			eject_card(usr)
-
-/obj/machinery/armament_station/proc/buy_ammo(mob/user, datum/armament_entry/armament_entry, quantity = 1)
-	if(!armament_entry.magazine)
-		return
-	if(!inserted_card)
-		to_chat(user, span_warning("No card inserted!"))
-		return
-	var/quantity_cost = armament_entry.magazine_cost * quantity
-	if(!inserted_card.use_points(quantity_cost))
-		to_chat(user, span_warning("Not enough points!"))
-		return
-	for(var/i in 1 to quantity)
-		new armament_entry.magazine(drop_location())
-
-
-/obj/machinery/armament_station/proc/check_item(reference)
-	var/datum/armament_entry/armament_entry
-	for(var/category in GLOB.armament_entries)
-		for(var/subcategory in GLOB.armament_entries[category][CATEGORY_ENTRY])
-			armament_entry = locate(reference) in GLOB.armament_entries[category][CATEGORY_ENTRY][subcategory]
-			if(armament_entry)
-				break
-		if(armament_entry)
-			break
-	if(!armament_entry)
-		return FALSE
-	if(products && !(armament_entry.type in products))
-		return FALSE
-	return armament_entry
-
-/obj/machinery/armament_station/proc/eject_card(mob/user)
-	if(!inserted_card)
-		to_chat(user, span_warning("No card inserted!"))
-		return
-	inserted_card.forceMove(drop_location())
-	user.put_in_hands(inserted_card)
-	inserted_card = null
-	to_chat(user, span_notice("Card ejected!"))
-	playsound(src, 'sound/machines/terminal_insert_disc.ogg', 70)
-
-/obj/machinery/armament_station/proc/select_armament(mob/user, datum/armament_entry/armament_entry)
-	if(!inserted_card)
-		to_chat(user, span_warning("No card inserted!"))
-		return
-	if(used_categories[armament_entry.category] >= GLOB.armament_entries[armament_entry.category][CATEGORY_LIMIT])
-		to_chat(user, span_warning("Category limit reached!"))
-		return
-	if(purchased_items[armament_entry] >= armament_entry.max_purchase)
-		to_chat(user, span_warning("Item limit reached!"))
-		return
-	if(!ishuman(user))
-		return
-	if(!inserted_card.use_points(armament_entry.cost))
-		to_chat(user, span_warning("Not enough points!"))
-		return
-
-	var/mob/living/carbon/human/human_to_equip = user
-
-	var/obj/item/new_item = new armament_entry.item_type(drop_location())
-
-	used_categories[armament_entry.category]++
-	purchased_items[armament_entry]++
-
-	playsound(src, 'sound/machines/machine_vend.ogg', 50, TRUE, extrarange = -3)
-
-	if(armament_entry.equip_to_human(human_to_equip, new_item))
-		to_chat(user, span_notice("Equipped directly to your person."))
-		playsound(src, 'sound/items/equip/toolbelt_equip.ogg', 100)
-	armament_entry.after_equip(drop_location(), new_item)
 
 /**
  * Armament points card
