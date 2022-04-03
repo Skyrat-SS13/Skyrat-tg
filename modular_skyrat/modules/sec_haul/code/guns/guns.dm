@@ -36,6 +36,7 @@
 	emp_damageable = TRUE
 	armadyne = TRUE
 	fire_delay = 1.90
+	has_gun_safety = FALSE
 
 /obj/item/ammo_box/magazine/multi_sprite/g17
 	name = "9x19mm double stack magazine"
@@ -77,6 +78,7 @@
 	mag_display = FALSE
 	mag_display_ammo = FALSE
 	can_flashlight = TRUE
+	has_gun_safety = FALSE
 
 /obj/item/ammo_box/magazine/multi_sprite/g18
 	name = "extended 9x19mm magazine"
