@@ -135,7 +135,7 @@
 	if(fire_select_modes.len > 1)
 		firemode_action = new(src)
 		firemode_action.button_icon_state = "fireselect_[fire_select]"
-		firemode_action.UpdateButtonIcon()
+		firemode_action.UpdateButtons()
 
 /obj/item/gun/ComponentInitialize()
 	. = ..()
@@ -244,7 +244,7 @@
 	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
 	update_appearance()
 	firemode_action.button_icon_state = "fireselect_[fire_select]"
-	firemode_action.UpdateButtonIcon()
+	firemode_action.UpdateButtons()
 	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
 	return TRUE
 
@@ -397,7 +397,7 @@
 	else
 		safety = !safety
 	tsafety.button_icon_state = "safety_[safety ? "on" : "off"]"
-	tsafety.UpdateButtonIcon()
+	tsafety.UpdateButtons()
 	playsound(src, 'sound/weapons/empty.ogg', 100, TRUE)
 	user.visible_message(span_notice("[user] toggles [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"]."),
 	span_notice("You toggle [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"]."))

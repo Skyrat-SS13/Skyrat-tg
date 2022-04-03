@@ -169,14 +169,12 @@
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	alt_covers_chest = TRUE
 
-/* //SKYRAT EDIT CHANGE - OVERRIDDEN BY modular_skyrat/modules/customization/modules/clothing/under/security.dm
 /obj/item/clothing/under/rank/security/head_of_security/parade
 	name = "head of security's parade uniform"
 	desc = "A male head of security's luxury-wear, for special occasions."
 	icon_state = "hos_parade_male"
 	inhand_icon_state = "r_suit"
 	can_adjust = FALSE
-*/
 
 /obj/item/clothing/under/rank/security/head_of_security/parade/female
 	name = "head of security's formal uniform"

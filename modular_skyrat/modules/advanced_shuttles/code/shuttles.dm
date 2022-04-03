@@ -62,7 +62,7 @@
 	port_id = "escape_pod"
 	suffix = "default_skyrat"
 
-/datum/map_template/shuttle/emergency
+/datum/map_template/shuttle/emergency/default
 	prefix = "_maps/shuttles/skyrat/"
 	suffix = "skyrat"
 	name = "Standard Emergency Shuttle"
