@@ -26,6 +26,7 @@
 	desc = "It feels soft to the touch, like a carpet... only... wet."
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_turfs.dmi'
 	icon_state = "xen_turf"
+	baseturfs = /turf/open/misc/xen
 	footstep = FOOTSTEP_GRASS
 	barefootstep = FOOTSTEP_GRASS
 	planetary_atmos = TRUE
