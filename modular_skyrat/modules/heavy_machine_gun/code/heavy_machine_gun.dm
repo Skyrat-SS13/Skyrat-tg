@@ -3,6 +3,7 @@
 	desc = "A high calibre heavy machine gun capable of laying down copious amounts of suppressive fire."
 	icon = 'modular_skyrat/modules/heavy_machine_gun/icons/turret.dmi'
 	icon_state = "hmg"
+	base_icon_state = "hmg"
 	can_buckle = TRUE
 	anchored = FALSE
 	density = TRUE
@@ -47,7 +48,7 @@
 
 	// Heat mechanics
 	/// How much barrel heat we generate per shot
-	var/barrel_heat_per_shot = 1.5
+	var/barrel_heat_per_shot = 3
 	/// The current barrel heat.
 	var/barrel_heat = 0
 	/// Have we overheated?
