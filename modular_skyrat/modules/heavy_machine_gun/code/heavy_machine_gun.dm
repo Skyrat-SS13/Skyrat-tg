@@ -228,13 +228,12 @@
 	var/atom/target_atom = shooting_client?.mouse_object_ref?.resolve()
 	if(!target_atom || !get_turf(target_atom) || istype(target_atom, /atom/movable/screen))
 		return FALSE
+	update_positioning(target_atom)
 	if(!can_fire())
 		return FALSE
 	var/obj/item/ammo_casing/casing = ammo_box.get_round()
 	if(!casing)
 		return FALSE
-
-	update_positioning()
 
 	if(!casing.fire_casing(target_atom, current_user, params, 0, suppressed, null, spread, src))// Actually firing the gun.
 		return
@@ -304,12 +303,14 @@
 		return FALSE
 	return TRUE
 
-/obj/machinery/heavy_machine_gun/proc/update_positioning()
+/obj/machinery/heavy_machine_gun/proc/update_positioning(atom/target_atom)
 	if(!current_user)
 		return FALSE
+
 	var/client/controlling_client = current_user.client
 	if(controlling_client)
-		var/atom/target_atom = controlling_client.mouse_object_ref?.resolve()
+		if(!target_atom)
+			target_atom = controlling_client.mouse_object_ref?.resolve()
 		var/turf/target_turf = get_turf(target_atom)
 		if(istype(target_turf)) //They're hovering over something in the map.
 			direction_track(current_user, target_turf)
