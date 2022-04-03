@@ -1,12 +1,17 @@
 /obj/item/gun/energy/cell_loaded //The basic cell loaded gun
 	name = "cell-loaded gun"
 	desc = "A energy gun that functions by loading cells for ammo types"
-	var/list/allowed_cells = list() //What kind of cells can the gun load? This can either be an entire type or only very specific cells.
-	var/maxcells = 3 //How much cells can the gun hold.
-	var/cellcount = 0 //How many cells are currently inserted
-	var/list/installedcells = list() //What cells are currently inserted?
-	has_gun_safety = TRUE
+	/// List containing what cells are allowed to be installed by the gun. This includes all subtypes.
+	var/list/allowed_cells = list()
+	/// The maximum amount of cells that a cell loaded gun can hold at once.
+	var/maxcells = 3
+	/// Counts how many cells are currently installed.
+	var/cellcount = 0
+	/// A list that contains the currently installed cells.
+	var/list/installedcells = list()
+
 	automatic_charge_overlays = FALSE //This is needed because Cell based guns use their own custom overlay system.
+	has_gun_safety = TRUE
 
 /obj/item/gun/energy/cell_loaded/examine(mob/user)
 	. = ..()
@@ -16,9 +21,10 @@
 		for(var/cell in installedcells)
 			. += span_notice("There is \a [cell] loaded in the chamber.") //Shows what cells are currently inside of the gun
 
-/obj/item/gun/energy/cell_loaded/attackby(obj/item/weaponcell/C, mob/user) //Inserts a cell.
-	if(is_type_in_list(C, allowed_cells))//Checks to see if the gun has the capacity based on allowed_types to load a cell.
-		if(cellcount >= maxcells) //Are there too many cells inside of the gun?
+/// Handles insertion of weapon cells
+/obj/item/gun/energy/cell_loaded/attackby(obj/item/weaponcell/C, mob/user)
+	if(is_type_in_list(C, allowed_cells)) // Checks allowed_cells to see if the gun is able to load the cells.
+		if(cellcount >= maxcells) //Prevents the user from loading any cells past the maximum cell allowance
 			to_chat(user, span_notice("The [src] is full, take a cell out to make room"))
 		else
 			var/obj/item/weaponcell/cell = C
@@ -59,7 +65,7 @@
 		. += new /mutable_appearance(charge_overlay)
 
 /obj/item/gun/energy/cell_loaded/AltClick(mob/user, modifiers)
-	if(cellcount >= 1) //Is there a cell inside?
+	if(cellcount >= 1) //Checks to see if there is a cell inside of the gun, before removal.
 		to_chat(user, span_notice("You remove a cell"))
 		var/obj/item/last_cell = installedcells[installedcells.len]
 		if(last_cell)
