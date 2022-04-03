@@ -20,6 +20,7 @@
 /turf/closed/indestructible/rock/xen
 	name = "strange wall"
 	color = "#ac3b06"
+	baseturfs = /turf/closed/indestructible/rock/xen
 
 /turf/open/misc/xen
 	name = "strange weeds"
