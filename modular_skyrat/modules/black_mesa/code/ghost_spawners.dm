@@ -142,4 +142,4 @@
 /datum/id_trim/hecu
 	assignment = "HECU Soldier"
 	trim_state = "trim_securityofficer"
-	access = list(ACCESS_BRIG_ENTRANCE, ACCESS_SECURITY, ACCESS_AWAY_SEC, ACCESS_AWAY_GENERIC3)
+	access = list(ACCESS_BRIG_ENTRANCE, ACCESS_SECURITY, ACCESS_AWAY_SEC)
