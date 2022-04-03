@@ -152,7 +152,7 @@
 	user.put_in_hands(ammo_box)
 	ammo_box = null
 	playsound(src, 'modular_skyrat/modules/heavy_machine_gun/sound/remove_ammobox.ogg', 100)
-	balloon_alert("ammo box removed!")
+	balloon_alert(user, "ammo box removed!")
 	update_appearance()
 
 /obj/machinery/heavy_machine_gun/proc/toggle_cover(mob/user)
@@ -209,6 +209,9 @@
 	if(current_user != shooting_client.mob)
 		return
 
+	shooting_client.mouse_override_icon = 'icons/effects/mouse_pointers/weapon_pointer.dmi'
+	shooting_client.mouse_pointer_icon = shooting_client.mouse_override_icon
+
 	INVOKE_ASYNC(src, .proc/process_fire, shooting_client, params)
 
 /obj/machinery/heavy_machine_gun/proc/process_fire(client/shooting_client, params)
@@ -226,7 +229,7 @@
 	if(!shooting_client)
 		return FALSE
 	var/atom/target_atom = shooting_client?.mouse_object_ref?.resolve()
-	if(!target_atom || !get_turf(target_atom) || istype(target_atom, /atom/movable/screen))
+	if(!target_atom || !get_turf(target_atom) || istype(target_atom, /atom/movable/screen) || target_atom == src)
 		return FALSE
 	update_positioning(target_atom)
 	if(!can_fire())
@@ -249,11 +252,13 @@
 	return TRUE
 
 // Used to stop firing after the trigger is released.
-/obj/machinery/heavy_machine_gun/proc/trigger_released(datum/source, atom/object, turf/location, control, params)
+/obj/machinery/heavy_machine_gun/proc/trigger_released(client/shooting_client, atom/object, turf/location, control, params)
 	SIGNAL_HANDLER
 	if(nextshot_timer_id)
 		deltimer(nextshot_timer_id)
 		nextshot_timer_id = null
+	shooting_client.mouse_override_icon = null
+	shooting_client.mouse_pointer_icon = shooting_client.mouse_override_icon
 
 // Re-registers the required signals to the client after they reconnect.
 /obj/machinery/heavy_machine_gun/proc/reregister_trigger(mob/source_mob)
