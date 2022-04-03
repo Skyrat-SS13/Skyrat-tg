@@ -34,6 +34,7 @@
 	desc = "It's mirky and filled with strange organisms."
 	name = "xen water"
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_turfs.dmi'
+	baseturfs = /turf/open/water/beach/xen
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = TRUE
 
@@ -41,6 +42,7 @@
 	desc = "It's mirky and filled with strange organisms."
 	name = "xen water"
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_turfs.dmi'
+	baseturfs = /turf/open/misc/beach/coastline_t/xen
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = TRUE
 
@@ -48,6 +50,7 @@
 	desc = "It's mirky and filled with strange organisms."
 	name = "xen water"
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_turfs.dmi'
+	baseturfs = /turf/open/misc/beach/coastline_t/sandwater_inner/xen
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = TRUE
 
@@ -55,16 +58,18 @@
 	name = "xen water"
 	desc = "It's mirky and filled with strange organisms."
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_turfs.dmi'
+	baseturfs = /turf/open/misc/beach/coastline_b/xen
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = TRUE
 
 /turf/open/misc/dirt/planet/xen
 	name = "strange path"
 	color = "#ee5f1c"
+	baseturfs = /turf/open/misc/dirt/planet/xen
 	planetary_atmos = TRUE
 
 /turf/open/water/xen_acid
-	baseturfs = /turf/open/chasm
+	baseturfs = /turf/open/water/xen_acid
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = TRUE
 	color = COLOR_VIBRANT_LIME
