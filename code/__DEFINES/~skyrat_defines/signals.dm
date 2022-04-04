@@ -68,3 +68,6 @@
 
 /// From mob/living/*/set_combat_mode(): (new_state)
 #define COMSIG_LIVING_COMBAT_MODE_TOGGLE "living_combat_mode_toggle"
+
+/// EXPERIMENTAL: from client/mousemove(client, object, location, control, params)
+#define COMSIG_CLIENT_MOUSEMOVE "client_mousemove"

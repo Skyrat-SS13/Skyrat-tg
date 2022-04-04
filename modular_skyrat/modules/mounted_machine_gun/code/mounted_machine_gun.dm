@@ -63,6 +63,8 @@
 	/// How much heat we can sustain before locking.
 	var/max_barrel_heat = 100
 
+	var/datum/weakref/last_target_atom
+
 	COOLDOWN_DECLARE(trigger_cooldown)
 
 
@@ -223,14 +225,26 @@
 	RegisterSignal(current_user, COMSIG_MOB_LOGIN, .proc/reregister_trigger) // I really really hate byond.
 	RegisterSignal(current_user.client, COMSIG_CLIENT_MOUSEDOWN, .proc/trigger_pulled)
 	RegisterSignal(current_user.client, COMSIG_CLIENT_MOUSEUP, .proc/trigger_released)
+	RegisterSignal(current_user.client, COMSIG_CLIENT_MOUSEMOVE, .proc/update_target)
+	RegisterSignal(current_user.client, COMSIG_CLIENT_MOUSEDRAG, .proc/update_target)
 
 	user_to_buckle.client?.view_size.setTo(view_range)
 	user_to_buckle.pixel_y = 14
+
+/obj/machinery/mounted_machine_gun/proc/update_target(client/shooting_client, atom/new_target, location, control, params)
+	if(!istype(new_target))
+		return
+	if(istype(new_target, /atom/movable/screen))
+		return
+	to_chat(world, "new target: [new_target]")
+	last_target_atom = WEAKREF(new_target)
 
 /obj/machinery/mounted_machine_gun/proc/unregister_mob(mob/living/user)
 	UnregisterSignal(user, COMSIG_MOB_LOGIN)
 	UnregisterSignal(user.client, COMSIG_CLIENT_MOUSEDOWN)
 	UnregisterSignal(user.client, COMSIG_CLIENT_MOUSEUP)
+	UnregisterSignal(user.client, COMSIG_CLIENT_MOUSEDRAG)
+	UnregisterSignal(user.client, COMSIG_CLIENT_MOUSEMOVE)
 
 /obj/machinery/mounted_machine_gun/proc/trigger_pulled(client/shooting_client, atom/_target, turf/location, control, params)
 	SIGNAL_HANDLER
@@ -271,7 +285,8 @@
 		return FALSE
 	if(!shooting_client)
 		return FALSE
-	var/atom/target_atom = shooting_client?.mouse_object_ref?.resolve()
+	var/atom/target_atom = last_target_atom?.resolve()
+	to_chat(world, "fire_at target: [target_atom]")
 	if(QDELETED(target_atom) || !target_atom || !get_turf(target_atom) || istype(target_atom, /atom/movable/screen) || target_atom == src)
 		return FALSE
 	update_positioning(target_atom)
@@ -322,6 +337,8 @@
 	SIGNAL_HANDLER
 	RegisterSignal(source_mob, COMSIG_CLIENT_MOUSEDOWN, .proc/trigger_pulled, TRUE)
 	RegisterSignal(source_mob.client, COMSIG_CLIENT_MOUSEUP, .proc/trigger_released, TRUE)
+	RegisterSignal(current_user.client, COMSIG_CLIENT_MOUSEMOVE, .proc/update_target, TRUE)
+	RegisterSignal(current_user.client, COMSIG_CLIENT_MOUSEDRAG, .proc/update_target, TRUE)
 
 // Performs all checks and plays a sound if we can't fire.
 /obj/machinery/mounted_machine_gun/proc/can_fire()
