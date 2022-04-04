@@ -76,6 +76,7 @@
 /obj/machinery/mounted_machine_gun/Destroy()
 	QDEL_NULL(ammo_box)
 	QDEL_NULL(particles)
+	QDEL_NULL(last_target_atom)
 	if(current_user)
 		unregister_mob(current_user)
 		current_user = null
@@ -236,7 +237,6 @@
 		return
 	if(istype(over_object, /atom/movable/screen))
 		return
-	to_chat(world, "new target: [over_object]")
 	last_target_atom = WEAKREF(over_object)
 
 /obj/machinery/mounted_machine_gun/proc/update_target(client/shooting_client, atom/new_target, location, control, params)
@@ -244,7 +244,6 @@
 		return
 	if(istype(new_target, /atom/movable/screen))
 		return
-	to_chat(world, "new target: [new_target]")
 	last_target_atom = WEAKREF(new_target)
 
 /obj/machinery/mounted_machine_gun/proc/unregister_mob(mob/living/user)
@@ -294,7 +293,6 @@
 	if(!shooting_client)
 		return FALSE
 	var/atom/target_atom = last_target_atom?.resolve()
-	to_chat(world, "fire_at target: [target_atom]")
 	if(QDELETED(target_atom) || !target_atom || !get_turf(target_atom) || istype(target_atom, /atom/movable/screen) || target_atom == src)
 		return FALSE
 	update_positioning(target_atom)
