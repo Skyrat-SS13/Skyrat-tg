@@ -55,7 +55,7 @@
 
 /datum/status_effect/incapacitating/knockdown/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_FLOORED, TRAIT_STATUS_EFFECT(id))
-	owner.remove_status_indicator("weakened") // SKYRAT EDIT ADDITION: Status indicators
+	if(id != STAT_TRAIT)	owner.remove_status_indicator("weakened") // SKYRAT EDIT ADDITION: Status indicators
 	return ..()
 
 
@@ -71,7 +71,7 @@
 
 /datum/status_effect/incapacitating/immobilized/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(id))
-	owner.remove_status_indicator("weakened") // SKYRAT EDIT ADDITION: Status indicators
+	if(id != STAT_TRAIT)	owner.remove_status_indicator("weakened") // SKYRAT EDIT ADDITION: Status indicators
 	return ..()
 
 

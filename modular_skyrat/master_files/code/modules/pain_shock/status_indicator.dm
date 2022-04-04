@@ -13,6 +13,18 @@
 /mob/living
 	var/list/status_indicators = null // Will become a list as needed.
 
+/mob/living/carbon/proc/is_critical()
+	if(HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION))
+		return TRUE
+
+/mob/living/carbon/death(gibbed) // On death, we clear the indiciators
+	..() // Call the TG death. Do not . = ..()!
+	for(var/iteration in status_indicators) // When we die, clear the indicators.
+		remove_status_indicator(icon_state) // The indicators are named after their icon_state and type
+/mob/living/carbon/handle_status_effects()
+	..() // Yea, this makes it so the OG proc is called too! Do not . = ..()!
+	is_critical() ? add_status_indicator("weakened") : remove_status_indicator("weakened") // Critical condition - Jank, but otherwise it doesn't show up!
+
 /mob/living/proc/add_status_indicator(image/thing)
 	if(get_status_indicator(thing)) // No duplicates, please.
 		return
@@ -83,9 +95,11 @@
 		current_x_position += STATUS_INDICATOR_ICON_X_SIZE + STATUS_INDICATOR_ICON_MARGIN
 
 /mob/living/proc/get_icon_scale()
-	var/mob/living/carbon/carbon = src
+	if(!iscarbon(src)) // normal mobs are always 1 for scale - not borg compatible but ok
+		return 1
+	var/mob/living/carbon/carbon = src // we're possibly a player! We have size prefs!
 
-	return carbon.dna.current_body_size
+	return carbon?.dna.current_body_size
 
 
 
