@@ -322,6 +322,11 @@
 	key_third_person = "huffs"
 	message = "huffs!"
 
+/datum/emote/living/etwitch
+	key = "etwitch"
+	key_third_person = "twitches their ears"
+	message = "twitches their ears!"
+
 /datum/emote/living/clear
 	key = "clear"
 	key_third_person = "clears their throat"
