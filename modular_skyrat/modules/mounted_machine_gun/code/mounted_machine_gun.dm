@@ -62,7 +62,7 @@
 	var/passive_barrel_cooldown_rate = 2
 	/// How much heat we can sustain before locking.
 	var/max_barrel_heat = 100
-
+	/// Our last registered target atom.
 	var/datum/weakref/last_target_atom
 
 	COOLDOWN_DECLARE(trigger_cooldown)
@@ -233,6 +233,7 @@
 	user_to_buckle.pixel_y = 14
 
 /obj/machinery/mounted_machine_gun/proc/update_target_drag(client/shooting_client, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+	SIGNAL_HANDLER
 	if(!istype(over_object))
 		return
 	if(istype(over_object, /atom/movable/screen))
@@ -240,6 +241,7 @@
 	last_target_atom = WEAKREF(over_object)
 
 /obj/machinery/mounted_machine_gun/proc/update_target(client/shooting_client, atom/new_target, location, control, params)
+	SIGNAL_HANDLER
 	if(!istype(new_target))
 		return
 	if(istype(new_target, /atom/movable/screen))
@@ -275,6 +277,8 @@
 
 	shooting_client.mouse_override_icon = 'icons/effects/mouse_pointers/weapon_pointer.dmi'
 	shooting_client.mouse_pointer_icon = shooting_client.mouse_override_icon
+
+	last_target_atom = WEAKREF(_target)
 
 	INVOKE_ASYNC(src, .proc/process_fire, shooting_client, params)
 
