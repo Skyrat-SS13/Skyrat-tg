@@ -7,3 +7,11 @@
 	build_path = /obj/item/bodybag/stasis
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/board/stasissleeper
+	name = "Machine Design (Lifeform Stasis Unit)"
+	desc = "The circuit board for a Stasis Unit"
+	id = "stasissleeper"
+	build_path = /obj/item/circuitboard/machine/stasissleeper
+	category = list("Machine Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
