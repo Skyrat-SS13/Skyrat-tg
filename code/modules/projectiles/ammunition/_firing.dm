@@ -26,14 +26,14 @@
 		user.newtonian_move(get_dir(target, user))
 	else if(ismovable(fired_from))
 		var/atom/movable/firer = fired_from
-		if(!firer.anchored && !firer.newtonian_move(get_dir(target, fired_from), instant = TRUE)) // SKYRAT EDIT CHANGE
+		if(!firer.newtonian_move(get_dir(target, fired_from), instant = TRUE))
 			var/throwtarget = get_step(fired_from, get_dir(target, fired_from))
 			firer.safe_throw_at(throwtarget, 1, 2)
 	update_appearance()
 	return TRUE
 
 /obj/item/ammo_casing/proc/tk_firing(mob/living/user, atom/fired_from)
-	return fired_from.loc != user ? TRUE : FALSE
+	return FALSE // SKYRAT EDIT CHANGE - Shit's broken, wait till upstream fix it.
 
 /obj/item/ammo_casing/proc/ready_proj(atom/target, mob/living/user, quiet, zone_override = "", atom/fired_from)
 	if (!loaded_projectile)
