@@ -15,7 +15,7 @@
 
 // Actual Implants
 /datum/opposing_force_equipment/implant/stealth
-	name = "Syndicate Radio Implant"
+	name = "Stealth Implant"
 	item_type = /obj/item/implanter/stealth
 	description = "An implanter that grants you the ability to wield the ultimate in invisible box technology. Best used in conjunction with \
 					a tape recorder playing Snake Eater."
