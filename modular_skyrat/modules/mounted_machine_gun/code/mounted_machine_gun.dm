@@ -62,6 +62,8 @@
 	var/passive_barrel_cooldown_rate = 2
 	/// How much heat we can sustain before locking.
 	var/max_barrel_heat = 100
+	/// Our last registered target atom.
+	var/datum/weakref/last_target_atom
 
 	COOLDOWN_DECLARE(trigger_cooldown)
 
@@ -74,6 +76,7 @@
 /obj/machinery/mounted_machine_gun/Destroy()
 	QDEL_NULL(ammo_box)
 	QDEL_NULL(particles)
+	QDEL_NULL(last_target_atom)
 	if(current_user)
 		unregister_mob(current_user)
 		current_user = null
@@ -223,14 +226,24 @@
 	RegisterSignal(current_user, COMSIG_MOB_LOGIN, .proc/reregister_trigger) // I really really hate byond.
 	RegisterSignal(current_user.client, COMSIG_CLIENT_MOUSEDOWN, .proc/trigger_pulled)
 	RegisterSignal(current_user.client, COMSIG_CLIENT_MOUSEUP, .proc/trigger_released)
+	RegisterSignal(current_user.client, COMSIG_CLIENT_MOUSEDRAG, .proc/update_target_drag)
 
 	user_to_buckle.client?.view_size.setTo(view_range)
 	user_to_buckle.pixel_y = 14
+
+/obj/machinery/mounted_machine_gun/proc/update_target_drag(client/shooting_client, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+	SIGNAL_HANDLER
+	if(!istype(over_object))
+		return
+	if(istype(over_object, /atom/movable/screen))
+		return
+	last_target_atom = WEAKREF(over_object)
 
 /obj/machinery/mounted_machine_gun/proc/unregister_mob(mob/living/user)
 	UnregisterSignal(user, COMSIG_MOB_LOGIN)
 	UnregisterSignal(user.client, COMSIG_CLIENT_MOUSEDOWN)
 	UnregisterSignal(user.client, COMSIG_CLIENT_MOUSEUP)
+	UnregisterSignal(user.client, COMSIG_CLIENT_MOUSEDRAG)
 
 /obj/machinery/mounted_machine_gun/proc/trigger_pulled(client/shooting_client, atom/_target, turf/location, control, params)
 	SIGNAL_HANDLER
@@ -255,6 +268,8 @@
 	shooting_client.mouse_override_icon = 'icons/effects/mouse_pointers/weapon_pointer.dmi'
 	shooting_client.mouse_pointer_icon = shooting_client.mouse_override_icon
 
+	last_target_atom = WEAKREF(_target)
+
 	INVOKE_ASYNC(src, .proc/process_fire, shooting_client, params)
 
 /obj/machinery/mounted_machine_gun/proc/process_fire(client/shooting_client, params)
@@ -271,7 +286,7 @@
 		return FALSE
 	if(!shooting_client)
 		return FALSE
-	var/atom/target_atom = shooting_client?.mouse_object_ref?.resolve()
+	var/atom/target_atom = last_target_atom?.resolve()
 	if(QDELETED(target_atom) || !target_atom || !get_turf(target_atom) || istype(target_atom, /atom/movable/screen) || target_atom == src)
 		return FALSE
 	update_positioning(target_atom)
@@ -322,6 +337,7 @@
 	SIGNAL_HANDLER
 	RegisterSignal(source_mob, COMSIG_CLIENT_MOUSEDOWN, .proc/trigger_pulled, TRUE)
 	RegisterSignal(source_mob.client, COMSIG_CLIENT_MOUSEUP, .proc/trigger_released, TRUE)
+	RegisterSignal(current_user.client, COMSIG_CLIENT_MOUSEDRAG, .proc/update_target_drag, TRUE)
 
 // Performs all checks and plays a sound if we can't fire.
 /obj/machinery/mounted_machine_gun/proc/can_fire()
