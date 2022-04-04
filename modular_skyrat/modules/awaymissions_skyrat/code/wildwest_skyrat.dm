@@ -33,4 +33,4 @@
 	r_pocket = /obj/item/radio
 
 /turf/closed/mineral/wildwest
-	baseturfs = /turf/open/floor/plating/ironsand
+	baseturfs = /turf/open/misc/ironsand

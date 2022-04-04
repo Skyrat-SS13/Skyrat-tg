@@ -22,7 +22,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
-/obj/item/clothing/under/rank/medical
+/obj/item/clothing/under/rank/medical/paramedic
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
@@ -93,8 +93,6 @@
 	mutant_variants = NONE
 
 ///////////////////////////////////////////////////////////////////////HEAD
-/obj/item/clothing/head/bio_hood
-	dynamic_hair_suffix = ""
 
 /obj/item/clothing/head/bio_hood/general
 	worn_icon = 'modular_skyrat/modules/aesthetics/clothing/head.dmi'

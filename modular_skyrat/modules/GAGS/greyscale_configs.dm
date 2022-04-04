@@ -287,6 +287,14 @@
 	name = "Worn Jumpsuit - Vox"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_vox.dmi'
 
+/datum/greyscale_config/jumpsuit_worn/taur/snake
+	name = "Worn Jumpsuit - Naga"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_snake.dmi'
+
+/datum/greyscale_config/jumpsuit_prison_worn/taur/snake
+	name = "Worn Prison Jumpsuit - Naga"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_snake.dmi'
+
 /datum/greyscale_config/jumpsuit_prison_worn/vox
 	name = "Worn Prison Jumpsuit - Vox"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_vox.dmi'

@@ -317,6 +317,7 @@
 /obj/item/gun/ballistic/can_shoot()
 	return chambered
 
+/* SKYRAT EDIT REMOVAL MOVED TO MODULAR BALLISTIC_MASTER.DM
 /obj/item/gun/ballistic/attackby(obj/item/A, mob/user, params)
 	. = ..()
 	if (.)
@@ -369,7 +370,7 @@
 			return
 
 	return FALSE
-
+*/ // SKYRAT EDIT END
 /obj/item/gun/ballistic/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 
 	if(magazine && chambered.loaded_projectile && can_misfire && misfire_probability > 0)
