@@ -84,6 +84,9 @@
 	paycheck = PAYCHECK_HARD
 	paycheck_department = ACCOUNT_MED
 
+	mind_traits = list(TRAIT_DONUT_LOVER)
+	liver_traits = list(TRAIT_MEDICAL_METABOLISM)
+
 	display_order = JOB_DISPLAY_ORDER_ORDERLY
 	bounty_types = CIV_JOB_MED
 	departments_list = list(
@@ -152,6 +155,9 @@
 
 	paycheck = PAYCHECK_HARD
 	paycheck_department = ACCOUNT_SCI
+
+	mind_traits = list(TRAIT_DONUT_LOVER)
+	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
 
 	display_order = JOB_DISPLAY_ORDER_SCIENCE_GUARD
 	bounty_types = CIV_JOB_SCI
@@ -222,6 +228,9 @@
 
 	paycheck = PAYCHECK_HARD
 	paycheck_department = ACCOUNT_SRV
+
+	mind_traits = list(TRAIT_DONUT_LOVER)
+	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
 
 	display_order = JOB_DISPLAY_ORDER_BOUNCER
 	bounty_types = CIV_JOB_DRINK
@@ -297,6 +306,9 @@
 	paycheck = PAYCHECK_HARD
 	paycheck_department = ACCOUNT_CAR
 
+	mind_traits = list(TRAIT_DONUT_LOVER)
+	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
+
 	display_order = JOB_DISPLAY_ORDER_CUSTOMS_AGENT
 	bounty_types = CIV_JOB_RANDOM
 	departments_list = list(
@@ -364,6 +376,9 @@
 
 	paycheck = PAYCHECK_HARD
 	paycheck_department = ACCOUNT_ENG
+
+	mind_traits = list(TRAIT_DONUT_LOVER)
+	liver_traits = list(TRAIT_ENGINEER_METABOLISM)
 
 	display_order = JOB_DISPLAY_ORDER_ENGINEER_GUARD
 	bounty_types = CIV_JOB_ENG
