@@ -16,15 +16,21 @@
 /mob/living/carbon/proc/is_critical()
 	if(HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION))
 		return TRUE
-
+/mob/living/carbon/proc/is_grabbed()
+	if(HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, CHOKEHOLD_TRAIT))
+		return TRUE
+/mob/living/carbon/proc/is_grabbed_kill()
+	if(HAS_TRAIT_FROM(src, TRAIT_FLOORED, CHOKEHOLD_TRAIT))
+		return TRUE
 /mob/living/carbon/death(gibbed) // On death, we clear the indiciators
 	..() // Call the TG death. Do not . = ..()!
 	for(var/iteration in status_indicators) // When we die, clear the indicators.
 		remove_status_indicator(icon_state) // The indicators are named after their icon_state and type
 /mob/living/carbon/handle_status_effects()
 	..() // Yea, this makes it so the OG proc is called too! Do not . = ..()!
-	is_critical() ? add_status_indicator("weakened") : remove_status_indicator("weakened") // Critical condition - Jank, but otherwise it doesn't show up!
-
+	is_critical() ? add_status_indicator("weakened") : remove_status_indicator("weakened") // Critical condition handling - Jank, but otherwise it doesn't show up when you are critical!
+	is_grabbed_kill() ? add_status_indicator("paralysis") : remove_status_indicator("paralysis")
+	is_grabbed() ? add_status_indicator("stunned") : remove_status_indicator("stunned")
 /mob/living/proc/add_status_indicator(image/thing)
 	if(get_status_indicator(thing)) // No duplicates, please.
 		return
