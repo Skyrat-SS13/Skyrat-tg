@@ -8,6 +8,23 @@
 #define STATUS_INDICATOR_ICON_X_SIZE 16 // Don't need to care about the Y size due to the origin being on the bottom side.
 #define STATUS_INDICATOR_ICON_MARGIN 2 // The space between two status indicators.
 
+/datum/preference/toggle/enable_status_indicators
+	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
+	savefile_key = "enable_status_indicators"
+	savefile_identifier = PREFERENCE_PLAYER
+
+/datum/preference/toggle/enable_status_indicators/create_default_value()
+	return TRUE
+
+/datum/preference/toggle/enable_status_indicators/apply_to_client(client/client, value)
+	. = ..()
+	var/atom/movable/screen/plane_master/runechat/status/status = locate() in client?.screen
+	if(!status)
+		return
+	if(value)
+		status.alpha = 255
+	else
+		status.alpha = 0
 /mob
 	var/status_enabled = TRUE
 /mob/living
@@ -16,21 +33,26 @@
 /mob/living/carbon/proc/is_critical()
 	if(HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION))
 		return TRUE
+
 /mob/living/carbon/proc/is_grabbed()
 	if(HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, CHOKEHOLD_TRAIT))
 		return TRUE
+
 /mob/living/carbon/proc/is_grabbed_kill()
 	if(HAS_TRAIT_FROM(src, TRAIT_FLOORED, CHOKEHOLD_TRAIT))
 		return TRUE
+
 /mob/living/carbon/death(gibbed) // On death, we clear the indiciators
 	..() // Call the TG death. Do not . = ..()!
 	for(var/iteration in status_indicators) // When we die, clear the indicators.
 		remove_status_indicator(icon_state) // The indicators are named after their icon_state and type
+
 /mob/living/carbon/handle_status_effects()
 	..() // Yea, this makes it so the OG proc is called too! Do not . = ..()!
 	is_critical() ? add_status_indicator("weakened") : remove_status_indicator("weakened") // Critical condition handling - Jank, but otherwise it doesn't show up when you are critical!
 	is_grabbed_kill() ? add_status_indicator("paralysis") : remove_status_indicator("paralysis")
 	is_grabbed() ? add_status_indicator("stunned") : remove_status_indicator("stunned")
+
 /mob/living/proc/add_status_indicator(image/thing)
 	if(get_status_indicator(thing)) // No duplicates, please.
 		return
@@ -106,11 +128,6 @@
 	var/mob/living/carbon/carbon = src // we're possibly a player! We have size prefs!
 
 	return carbon?.dna.current_body_size
-
-
-
-
-
 
 /atom/movable/screen/plane_master/runechat/status
 	name = "status plane master"
