@@ -6,8 +6,6 @@
 	var/list/allowed_cells = list()
 	/// The maximum amount of cells that a cell loaded gun can hold at once.
 	var/maxcells = 3
-	/// Counts how many cells are currently installed.
-	var/cellcount = 0
 	/// A list that contains the currently installed cells.
 	var/list/installedcells = list()
 
@@ -17,7 +15,7 @@
 /obj/item/gun/energy/cell_loaded/examine(mob/user)
 	. = ..()
 	if(maxcells)
-		. += "<b>[cellcount]</b> out of <b>[maxcells]</b> cell slots are filled."
+		. += "<b>[installedcells.len]</b> out of <b>[maxcells]</b> cell slots are filled."
 		. += span_info("You can use AltClick with an empty hand to remove the most recently inserted cell from the chamber.")
 
 		for(var/cell in installedcells)
@@ -26,7 +24,7 @@
 /// Handles insertion of weapon cells
 /obj/item/gun/energy/cell_loaded/attackby(obj/item/weaponcell/used_cell, mob/user)
 	if(is_type_in_list(used_cell, allowed_cells)) // Checks allowed_cells to see if the gun is able to load the cells.
-		if(cellcount >= maxcells) //Prevents the user from loading any cells past the maximum cell allowance
+		if(installedcells.len >= maxcells) //Prevents the user from loading any cells past the maximum cell allowance
 			to_chat(user, span_notice("[src] is full, take a cell out to make room."))
 			return
 
@@ -38,7 +36,6 @@
 		to_chat(user, span_notice("You install the [cell]."))
 		ammo_type += new cell.ammo_type(src)
 		installedcells += cell
-		cellcount += 1
 	else
 		..()
 
@@ -74,7 +71,7 @@
 		. += new /mutable_appearance(charge_overlay)
 
 /obj/item/gun/energy/cell_loaded/AltClick(mob/user, modifiers)
-	if(cellcount <= 0) //Checks to see if there is a cell inside of the gun, before removal.
+	if(!installedcells.len) //Checks to see if there is a cell inside of the gun, before removal.
 		to_chat(user, span_notice("The [src] has no cells inside"))
 		return ..()
 
@@ -87,7 +84,6 @@
 
 	installedcells -= last_cell
 	ammo_type.len--
-	cellcount -= 1
 	select_fire(user)
 
 /// A cellgun used for debug, it is able to use any weaponcell.
