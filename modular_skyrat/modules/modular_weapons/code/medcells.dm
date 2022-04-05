@@ -59,8 +59,9 @@
 	var/non_medicine_chems = 0 //Keeps track of how many chemicals in the bloodstream aren't medicine.
 
 	for(var/reagent in target.reagents.reagent_list)
-		if(!istype(reagent, /datum/reagent/medicine))
-			non_medicine_chems += 1
+		if(istype(reagent, /datum/reagent/medicine))
+			continue
+		non_medicine_chems += 1
 
 	return non_medicine_chems
 
