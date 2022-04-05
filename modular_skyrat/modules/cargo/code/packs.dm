@@ -113,7 +113,7 @@
 	cost = CARGO_CRATE_VALUE * 30
 	access = ACCESS_MEDICAL
 	contains = list(/obj/item/gun/syringe)
-	crate_name = "replacement syringe gun crate"
+	crate_name = "replacement syringe gun crate."
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Security ////////////////////////////////////////
