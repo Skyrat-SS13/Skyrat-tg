@@ -107,6 +107,14 @@
 					/obj/item/weaponcell/medical/toxin)
 	crate_name = "medicell replacement crate"
 
+/datum/supply_pack/medical/syringe_gun
+	name = "Syringe Gun"
+	desc = "A replacement medical syringe gun"
+	cost = CARGO_CRATE_VALUE * 30
+	access = ACCESS_MEDICAL
+	contains = list(/obj/item/gun/syringe)
+	crate_name = "replacement syringe gun crate"
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Security ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
