@@ -65,7 +65,7 @@
 
 	charge_overlay.color = shot.select_color
 
-	for(var/i = ratio, i >= 1, i--)
+	for(var/i in 0 to ratio)
 		charge_overlay.pixel_x = ammo_x_offset * (i - 1)
 		charge_overlay.pixel_y = ammo_y_offset * (i - 1)
 		. += new /mutable_appearance(charge_overlay)
