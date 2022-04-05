@@ -356,7 +356,7 @@
 		return FALSE
 	visible_message(span_danger("[src] manages to [cuff_break ? "break" : "remove"] [I]!"))
 	to_chat(src, span_notice("You successfully [cuff_break ? "break" : "remove"] [I]."))
-	
+
 	if(cuff_break)
 		. = !((I == handcuffed) || (I == legcuffed))
 		qdel(I)
@@ -553,7 +553,6 @@
 		REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
 		REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
 		filters -= FILTER_STAMINACRIT
-		remove_status_indicator("stunned") // SKYRAT EDIT ADDITION: Status indicators
 	else
 		return
 	update_stamina_hud()

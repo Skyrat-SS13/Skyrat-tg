@@ -20,7 +20,6 @@
 	filters += FILTER_STAMINACRIT
 	if(getStaminaLoss() < 162) // Puts you a little further into the initial stamcrit, makes stamcrit harder to outright counter with chems. // SKYRAT EDIT: ORIGINAL if(getStaminaLoss() < 120 * 1.35)
 		adjustStaminaLoss(30, FALSE)
-	add_status_indicator("stunned") // SKYRAT EDIT ADDITON: Status Indicators
 
 
 /mob/living/carbon/adjust_drugginess(amount)

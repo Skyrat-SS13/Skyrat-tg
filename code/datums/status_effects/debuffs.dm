@@ -33,12 +33,10 @@
 	ADD_TRAIT(owner, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(id))
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(id))
 	ADD_TRAIT(owner, TRAIT_HANDS_BLOCKED, TRAIT_STATUS_EFFECT(id))
-	owner.add_status_indicator("stunned") // SKYRAT EDIT ADDITION: Status indicators
 /datum/status_effect/incapacitating/stun/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(id))
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(id))
 	REMOVE_TRAIT(owner, TRAIT_HANDS_BLOCKED, TRAIT_STATUS_EFFECT(id))
-	owner.remove_status_indicator("stunned") // SKYRAT EDIT ADDITION: Status indicators
 	return ..()
 
 
@@ -51,11 +49,9 @@
 	if(!.)
 		return
 	ADD_TRAIT(owner, TRAIT_FLOORED, TRAIT_STATUS_EFFECT(id))
-	owner.add_status_indicator("weakened") // SKYRAT EDIT ADDITION: Status indicators
 
 /datum/status_effect/incapacitating/knockdown/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_FLOORED, TRAIT_STATUS_EFFECT(id))
-	if(id != STAT_TRAIT)	owner.remove_status_indicator("weakened") // SKYRAT EDIT ADDITION: Status indicators
 	return ..()
 
 
@@ -69,9 +65,9 @@
 		return
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(id))
 
+
 /datum/status_effect/incapacitating/immobilized/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(id))
-	if(id != STAT_TRAIT)	owner.remove_status_indicator("weakened") // SKYRAT EDIT ADDITION: Status indicators
 	return ..()
 
 
@@ -87,14 +83,12 @@
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(id))
 	ADD_TRAIT(owner, TRAIT_FLOORED, TRAIT_STATUS_EFFECT(id))
 	ADD_TRAIT(owner, TRAIT_HANDS_BLOCKED, TRAIT_STATUS_EFFECT(id))
-	owner.add_status_indicator("paralysis") // SKYRAT EDIT ADDITION: Status indicators
 
 /datum/status_effect/incapacitating/paralyzed/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(id))
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(id))
 	REMOVE_TRAIT(owner, TRAIT_FLOORED, TRAIT_STATUS_EFFECT(id))
 	REMOVE_TRAIT(owner, TRAIT_HANDS_BLOCKED, TRAIT_STATUS_EFFECT(id))
-	owner.remove_status_indicator("paralysis") // SKYRAT EDIT ADDITION: Status indicators
 	return ..()
 
 //INCAPACITATED
@@ -108,12 +102,10 @@
 	if(!.)
 		return
 	ADD_TRAIT(owner, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(id))
-	owner.add_status_indicator("weakened") // SKYRAT EDIT ADDITION: Status indicators
 
 // When the status effect runs out, your TRAIT_INCAPACITATED is removed.
 /datum/status_effect/incapacitating/incapacitated/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(id))
-	owner.remove_status_indicator("weakened") // SKYRAT EDIT ADDITION: Status indicators
 	return ..()
 
 
@@ -127,11 +119,9 @@
 	if(!.)
 		return
 	ADD_TRAIT(owner, TRAIT_KNOCKEDOUT, TRAIT_STATUS_EFFECT(id))
-	owner.add_status_indicator("sleeping") // SKYRAT EDIT ADDITION: Status indicators
 
 /datum/status_effect/incapacitating/unconscious/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_KNOCKEDOUT, TRAIT_STATUS_EFFECT(id))
-	owner.remove_status_indicator("sleeping") // SKYRAT EDIT ADDITION: Status indicators
 	return ..()
 
 /datum/status_effect/incapacitating/unconscious/tick()
@@ -170,7 +160,6 @@
 		tick_interval = -1
 	RegisterSignal(owner, SIGNAL_ADDTRAIT(TRAIT_SLEEPIMMUNE), .proc/on_owner_insomniac)
 	RegisterSignal(owner, SIGNAL_REMOVETRAIT(TRAIT_SLEEPIMMUNE), .proc/on_owner_sleepy)
-	owner.add_status_indicator("sleeping") // SKYRAT EDIT ADDITION: Status indicators
 
 
 /datum/status_effect/incapacitating/sleeping/on_remove()
@@ -178,7 +167,6 @@
 	if(!HAS_TRAIT(owner, TRAIT_SLEEPIMMUNE))
 		REMOVE_TRAIT(owner, TRAIT_KNOCKEDOUT, TRAIT_STATUS_EFFECT(id))
 		tick_interval = initial(tick_interval)
-		owner.remove_status_indicator("sleeping") // SKYRAT EDIT ADDITION: Status indicators
 
 	return ..()
 
@@ -255,7 +243,6 @@
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(id))
 	ADD_TRAIT(owner, TRAIT_HANDS_BLOCKED, TRAIT_STATUS_EFFECT(id))
 	ADD_TRAIT(owner, TRAIT_NUMBED, "stasis") //SKYRAT EDIT START - STASIS APPLIES NUMBING
-	owner.add_status_indicator("paralysis") // SKYRAT EDIT ADDITION: Status indicators
 	owner.throw_alert("numbed", /atom/movable/screen/alert/numbed) //SKYRAT EDIT END
 	owner.add_filter("stasis_status_ripple", 2, list("type" = "ripple", "flags" = WAVE_BOUNDED, "radius" = 0, "size" = 2))
 	var/filter = owner.get_filter("stasis_status_ripple")
@@ -272,7 +259,6 @@
 /datum/status_effect/grouped/stasis/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(id))
 	REMOVE_TRAIT(owner, TRAIT_HANDS_BLOCKED, TRAIT_STATUS_EFFECT(id))
-	owner.remove_status_indicator("paralysis") // SKYRAT EDIT ADDITION: Status indicators
 	if(HAS_TRAIT(owner, TRAIT_NUMBED)) //SKYRAT EDIT START - STASIS END REMOVES NUMBING
 		REMOVE_TRAIT(owner, TRAIT_NUMBED, "stasis")
 		owner.clear_alert("numbed") //SKYRAT EDIT END
@@ -547,7 +533,6 @@
 /datum/status_effect/confusion/tick()
 	strength -= 1
 	if (strength <= 0)
-		owner.remove_status_indicator("confused")// SKYRAT EDIT ADDITION: Status indicators
 		owner.remove_status_effect(/datum/status_effect/confusion)
 		return
 

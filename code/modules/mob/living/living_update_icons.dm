@@ -3,7 +3,6 @@
 /mob/living/update_transform()
 	perform_update_transform() // carbon mobs do it differently than silicons and simple animals.
 	SEND_SIGNAL(src, COMSIG_LIVING_POST_UPDATE_TRANSFORM) // ...and we want the signal to be sent last.
-	handle_status_indicators() // SKYRAT EDIT
 
 /mob/living/proc/perform_update_transform()
 	var/matrix/ntransform = matrix(transform) //aka transform.Copy()
