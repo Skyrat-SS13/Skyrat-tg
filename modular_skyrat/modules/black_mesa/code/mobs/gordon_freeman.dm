@@ -9,7 +9,7 @@
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/gordon_freeman
 	name = "\improper Gordon Freeman"
-	desc = "Gordon Freeman in the flesh."
+	desc = "Gordon Freeman in the flesh. Or in the zombified form, it seems."
 	icon_state = "gordon_freeman"
 	speed = -2
 	environment_smash = ENVIRONMENT_SMASH_RWALLS
@@ -66,8 +66,6 @@
 
 /obj/effect/sliding_puzzle/freeman
 	reward_type = /obj/item/keycard/freeman_boss_entry
-
-
 
 /obj/effect/freeman_blocker
 	name = "freeman blocker"

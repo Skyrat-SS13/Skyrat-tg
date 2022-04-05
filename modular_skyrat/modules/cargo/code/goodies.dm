@@ -136,7 +136,7 @@
 
 /datum/supply_pack/goody/croon_single
 	name = "Croon Single-Pack"
-	desc = "Contains one Croon Sub Machine Gun chambered in .32, not exactly reliable... but it'll do you okay."
+	desc = "Contains one Croon Sub Machine Gun chambered in 6.3mm, not exactly reliable... but it'll do you okay."
 	cost = PAYCHECK_HARD * 10
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/gun/ballistic/automatic/croon)
