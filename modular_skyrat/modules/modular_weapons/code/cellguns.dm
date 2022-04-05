@@ -27,7 +27,7 @@
 /obj/item/gun/energy/cell_loaded/attackby(obj/item/weaponcell/used_cell, mob/user)
 	if(is_type_in_list(used_cell, allowed_cells)) // Checks allowed_cells to see if the gun is able to load the cells.
 		if(cellcount >= maxcells) //Prevents the user from loading any cells past the maximum cell allowance
-			to_chat(user, span_notice("The [src] is full, take a cell out to make room"))
+			to_chat(user, span_notice("[src] is full, take a cell out to make room."))
 			return
 
 		var/obj/item/weaponcell/cell = used_cell
@@ -44,7 +44,7 @@
 
 /obj/item/gun/energy/cell_loaded/update_overlays()
 	. = ..()
-	var/overlay_icon_state = "[icon_state]"
+	var/overlay_icon_state = icon_state
 	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
 
 	if(modifystate)
