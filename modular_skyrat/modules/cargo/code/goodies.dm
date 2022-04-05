@@ -134,6 +134,29 @@
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/weaponcrafting/gunkit/temperature)
 
+/datum/supply_pack/goody/croon_single
+	name = "Croon Single-Pack"
+	desc = "Contains one Croon Sub Machine Gun chambered in .32, not exactly reliable... but it'll do you okay."
+	cost = PAYCHECK_HARD * 10
+	access_view = ACCESS_ARMORY
+	contains = list(/obj/item/gun/ballistic/automatic/croon)
+	contraband = TRUE
+
+/datum/supply_pack/goody/croonammo_single
+	name = "Croon Ammo Single-Pack"
+	desc = "Contains a 15-round magazine for the Croon SMG."
+	cost = PAYCHECK_HARD * 3
+	access_view = ACCESS_ARMORY
+	contains = list(/obj/item/ammo_box/magazine/multi_sprite/croon)
+	contraband = TRUE
+
+/datum/supply_pack/goody/lasergun_single
+	name = "Allstar SC-1 Single-Pack"
+	desc = "Contains one Allstar Lasers SC-1 laser gun."
+	cost = PAYCHECK_HARD * 10
+	access_view = ACCESS_ARMORY
+	contains = list(/obj/item/gun/energy/laser)
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Carpet Packs ////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
