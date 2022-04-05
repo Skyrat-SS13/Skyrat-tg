@@ -30,8 +30,11 @@
 /mob/living
 	var/list/status_indicators = null // Will become a list as needed.
 
+/mob/living/carbon/proc/is_critical()
+	if(HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION))
+		return TRUE
 /mob/living/carbon/proc/is_weakened()
-	if(HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION) || HAS_TRAIT_FROM(src, TRAIT_FLOORED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || has_status_effect(/datum/status_effect/incapacitating/knockdown))
+	if(HAS_TRAIT_FROM(src, TRAIT_FLOORED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || has_status_effect(/datum/status_effect/incapacitating/knockdown))
 		return TRUE
 
 /mob/living/carbon/proc/is_stunned()
@@ -80,6 +83,7 @@
 	is_unconcious() ? add_status_indicator("sleeping") : remove_status_indicator("sleeping")
 	is_confused() ? add_status_indicator("confused") : remove_status_indicator("confused")
 	is_blind_status() ? add_status_indicator("blinded") : remove_status_indicator("blinded")
+	is_critical() ? add_status_indicator("critical") : remove_status_indicator("critical")
 
 /mob/living/proc/add_status_indicator(image/thing)
 	if(get_status_indicator(thing)) // No duplicates, please.
