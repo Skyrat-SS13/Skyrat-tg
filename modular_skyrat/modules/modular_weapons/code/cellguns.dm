@@ -57,7 +57,7 @@
 	var/ratio = get_charge_ratio()
 	ratio = get_charge_ratio()
 
-	if(ratio == 0 && display_empty)
+	if(!ratio && display_empty)
 		. += "[icon_state]_empty"
 		return
 
