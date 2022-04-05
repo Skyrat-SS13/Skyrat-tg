@@ -167,7 +167,11 @@
 			message += span_notice("Pressure: [round(pressure, 0.01)] kPa")
 		else
 			message += airs.len > 1 ? span_notice("This node is empty!") : span_notice("[target] is empty!")
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> 8633d46927e ([NO GBP] Fixes breathedeep catridge not working (#65854))
 		gasmix_data += list(gas_mixture_parser(air, mix_name))
 
 	if(istype(tool))
