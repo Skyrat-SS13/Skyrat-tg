@@ -108,10 +108,12 @@
 	if(!.)
 		return
 	ADD_TRAIT(owner, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(id))
+	owner.add_status_indicator("weakened") // SKYRAT EDIT ADDITION: Status indicators
 
 // When the status effect runs out, your TRAIT_INCAPACITATED is removed.
 /datum/status_effect/incapacitating/incapacitated/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(id))
+	owner.remove_status_indicator("weakened") // SKYRAT EDIT ADDITION: Status indicators
 	return ..()
 
 
