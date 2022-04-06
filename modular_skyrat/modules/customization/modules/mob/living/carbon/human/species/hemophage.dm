@@ -63,7 +63,7 @@
 	if(vampire.stat == DEAD)
 		return
 	if(istype(vampire.loc, /obj/structure/closet) && !istype(vampire.loc, /obj/structure/closet/body_bag))
-		vampire.heal_overall_damage(1.5 * delta_time, 1.5 * delta_time, 0, BODYPART_ORGANIC) // Fast, but not as fast due to them being able to use normal lockers.
+		vampire.heal_overall_damage(1.5 * delta_time, 1.5 * delta_time, 0, BODYTYPE_ORGANIC) // Fast, but not as fast due to them being able to use normal lockers.
 		vampire.adjustToxLoss(-1 * delta_time) // 50% base speed to keep it fair.
 		vampire.adjustOxyLoss(-2 * delta_time)
 		vampire.adjustCloneLoss(-0.5 * delta_time) // HARDMODE DAMAGE

@@ -6,7 +6,7 @@
 
 	target_mobtypes = list(/mob/living/carbon/human)
 	possible_locs = list(BODY_ZONE_CHEST)
-	requires_bodypart_type = BODYPART_ROBOTIC
+	requires_bodypart_type = BODYTYPE_ROBOTIC
 	desc = "A procedure that welds the robotic limbs back into the patient's preferred state aswell as re-applying their paintjob."
 
 /datum/surgery_step/restore_paintjob
@@ -32,7 +32,7 @@
 	playsound(target.loc, 'sound/effects/spray.ogg', 5, 1, 5)
 	if(target?.dna?.species)
 		for(var/obj/item/bodypart/O in target.bodyparts)
-			if(O.status == BODYPART_ROBOTIC)
+			if(!IS_ORGANIC_LIMB(O))
 				O.rendered_bp_icon = target.dna.species.limbs_icon
 				O.species_id = target.dna.species.limbs_id
 				O.organic_render = TRUE
