@@ -252,22 +252,22 @@
 	new /obj/item/implanter/freedom(src)
 	new /obj/item/stack/telecrystal(src) //The failsafe/self destruct isn't an item we can physically include in the kit, but 1 TC is technically enough to buy the equivalent.
 
-/obj/item/storage/box/syndicate/contract_kit
+/obj/item/storage/box/syndicate/contract_kit //SKYRAT EDIT - CHANGED IN MODULAR FOLDER
 	name = "Contract Kit"
 	desc = "Supplied to Syndicate contractors."
 	icon_state = "syndiebox"
 	illustration = "writing_syndie"
 
-/obj/item/storage/box/syndicate/contractor_loadout
+/obj/item/storage/box/syndicate/contractor_loadout //SKYRAT EDIT - CHANGED IN MODULAR FOLDER
 	name = "Standard Loadout"
 	desc = "Supplied to Syndicate contractors, providing their specialised space suit and chameleon uniform."
 	icon_state = "syndiebox"
 	illustration = "writing_syndie"
 
-/obj/item/paper/contractor_guide
+/obj/item/paper/contractor_guide //SKYRAT EDIT - CHANGED IN MODULAR FOLDER
 	name = "Contractor Guide"
 
-/obj/item/paper/contractor_guide/Initialize(mapload)
+/obj/item/paper/contractor_guide/Initialize(mapload) //SKYRAT EDIT - CHANGED IN MODULAR FOLDER
 	info = {"<p>Welcome agent, congratulations on your new position as contractor. On top of your already assigned objectives,
 			this kit will provide you contracts to take on for TC payments.</p>
 
