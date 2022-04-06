@@ -93,7 +93,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	H.remove_overlay(BODY_FRONT_LAYER)
 	H.remove_overlay(BODY_FRONT_UNDER_CLOTHES)
 
-	var/g = (H.body_type == FEMALE) ? "f" : "m"
+	var/g = (H.physique == FEMALE) ? "f" : "m"
 	for(var/bodypart in bodyparts_to_add)
 		var/datum/sprite_accessory/S = bodypart
 		var/key = S.key

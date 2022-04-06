@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL
 #define USE_GENDER "Use gender"
 
 /datum/preference/choiced/body_type
@@ -27,4 +26,4 @@
 	return initial(species.sexes)
 
 #undef USE_GENDER
-*/
+

@@ -58,7 +58,7 @@
 		var/mutable_appearance/uniform_overlay
 
 		if(dna && dna.species.sexes && !applied_style)
-			if(body_type == FEMALE && U.female_sprite_flags != NO_FEMALE_UNIFORM)
+			if(physique == FEMALE && U.female_sprite_flags != NO_FEMALE_UNIFORM)
 				uniform_overlay = U.build_worn_icon(default_layer = UNIFORM_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, femaleuniform = U.female_sprite_flags, override_state = target_overlay, override_icon = icon_file, override_x_center = x_override, mutant_styles = applied_style, species = dna.species.species_clothing_path)
 
 		if(!uniform_overlay)

@@ -119,7 +119,7 @@
 					render_limb_string = "digitigrade_[use_digitigrade]_[render_limb_string]"
 			if(BODY_ZONE_CHEST)
 				if(BM.gendered)
-					var/gendaar = (H.body_type == FEMALE) ? "f" : "m"
+					var/gendaar = (H.physique == FEMALE) ? "f" : "m"
 					render_limb_string = "[render_limb_string]_[gendaar]"
 
 		var/mutable_appearance/accessory_overlay
