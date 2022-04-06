@@ -96,7 +96,6 @@
 
 /obj/item/storage/briefcase/medicalgunset/standard/PopulateContents()
 	new /obj/item/gun/energy/cell_loaded/medigun/standard(src)
-	new /obj/item/weaponcell/medical/utility/sec_remover(src)
 	new /obj/item/book/manual/wiki/mediguns(src)
 
 /obj/item/storage/briefcase/medicalgunset/cmo
@@ -109,7 +108,6 @@
 	new /obj/item/weaponcell/medical/brute(src)
 	new /obj/item/weaponcell/medical/burn(src)
 	new /obj/item/weaponcell/medical/toxin(src)
-	new /obj/item/weaponcell/medical/utility/sec_remover(src)
 	new /obj/item/book/manual/wiki/mediguns(src)
 
 /*
@@ -274,12 +272,11 @@
 	icon_state = "body"
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/body_teleporter
 
-//The ultimate step forward for HRP.
-/obj/item/weaponcell/medical/utility/sec_remover
+/obj/item/weaponcell/medical/utility/relocation
 	name = "Oppressive Force Relocation Medicell"
-	desc = "A medicell that safely relocates security personnel"
+	desc = "A medicell that safely relocates personnel"
 	icon_state =  "Brute3"
-	ammo_type = /obj/item/ammo_casing/energy/medical/utility/sec_remover
+	ammo_type = /obj/item/ammo_casing/energy/medical/utility/relocation
 
 //Empty Medicell//
 /obj/item/device/custom_kit/empty_cell //Having the empty cell as an upgrade kit sounds jank, but it should work well.

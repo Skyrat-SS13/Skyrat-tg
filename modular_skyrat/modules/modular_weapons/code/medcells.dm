@@ -511,7 +511,7 @@
 //Oppressive Force Relocation
 /obj/item/ammo_casing/energy/medical/utility/relocation
 	projectile_type = /obj/projectile/energy/medical/utility/relocation
-	select_name = "sec-b-gone"
+	select_name = "relocation"
 	select_color = "#850000"
 
 /obj/projectile/energy/medical/utility/relocation
