@@ -18,8 +18,6 @@
 			obscure_name = TRUE
 
 	//SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
-	var/obscured = check_obscured_slots()
-	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
 	var/species_visible
 	var/species_name_string
 	if(skipface || get_visible_name() == "Unknown")

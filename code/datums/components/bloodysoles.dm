@@ -241,7 +241,6 @@
 /datum/component/bloodysoles/feet/update_icon()
 	if(ishuman(wielder))
 		var/mob/living/carbon/human/human = wielder
-		fix_soles() //SKYRAT ADDITION - DIGI_BLOODSOLE
 		if(NOBLOODOVERLAY in human.dna.species.species_traits)
 			return
 		if(bloody_shoes[BLOOD_STATE_HUMAN] > 0 && !is_obscured())

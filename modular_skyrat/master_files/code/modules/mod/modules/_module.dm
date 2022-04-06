@@ -19,7 +19,7 @@
 /obj/item/mod/module/proc/handle_module_icon(mutable_appearance/standing, module_icon_state)
 	. = list()
 	if(mod.wearer)
-		if(mod.chestplate && (mod.chestplate.mutant_variants & STYLE_DIGITIGRADE) && (DIGITIGRADE in mod.wearer.dna.species.species_traits))
+		if(mod.chestplate && (mod.chestplate.mutant_variants & STYLE_DIGITIGRADE) && (mod.wearer.dna.species.bodytype & BODYTYPE_DIGITIGRADE))
 			suit_mutant_variants |= STYLE_DIGITIGRADE
 
 		if(mod.helmet && (mod.helmet.mutant_variants & STYLE_MUZZLE) && mod.wearer.dna.species.mutant_bodyparts["snout"])
