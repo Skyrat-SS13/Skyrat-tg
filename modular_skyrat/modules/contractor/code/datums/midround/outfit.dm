@@ -2,16 +2,16 @@
 	name = "Syndicate Contractor - Full Kit"
 
 	glasses = /obj/item/clothing/glasses/night
-	mask = /obj/item/clothing/mask/chameleon
+	mask = /obj/item/clothing/mask/gas/syndicate
 	back = /obj/item/mod/control/pre_equipped/contractor/upgraded
 	r_pocket = /obj/item/tank/internals/emergency_oxygen/engi
 	internals_slot = ITEM_SLOT_RPOCKET
 	belt = /obj/item/storage/belt/military
 
-	uniform = /obj/item/clothing/under/chameleon
-	shoes = /obj/item/clothing/shoes/chameleon/noslip
+	uniform = /obj/item/clothing/under/syndicate/coldres
+	shoes = /obj/item/clothing/shoes/combat/swat
 	gloves = /obj/item/clothing/gloves/combat
-	ears = /obj/item/radio/headset/chameleon/advanced
+	ears = /obj/item/radio/headset/syndicate/alt
 	l_pocket = /obj/item/modular_computer/tablet/syndicate_contract_uplink/preset/uplink
 	id = /obj/item/card/id/advanced/chameleon
 	backpack_contents = list(

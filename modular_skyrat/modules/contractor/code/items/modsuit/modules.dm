@@ -203,3 +203,15 @@
 	desc = "An embedded set of armor plates, allowing the suit's already extremely high protection \
 		to be increased further. However, the plating, while deployed, will slow down the user \
 		and make the suit unable to vacuum seal so this extra armor provides zero ability for extravehicular activity while deployed."
+
+/obj/item/mod/module/springlock/contractor
+	name = "MOD magnetic suit deployment module"
+	desc = "A much more modern version of a springlock system. \
+	This is a module that uses magnets to speed up the deployment and retraction time of your MODsuit."
+	//Find icon later
+
+/obj/item/mod/module/springlock/on_suit_activation() // This module is actually *not* a death trap.
+	return
+
+/obj/item/mod/module/springlock/on_suit_deactivation()
+	return
