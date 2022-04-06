@@ -7457,14 +7457,14 @@
 /obj/effect/turf_decal/trimline/darkblue/filled/warning{
 	dir = 1
 	},
-/obj/machinery/door/poddoor/preopen{
-	id = "brigfront";
-	name = "Brig Blast door"
-	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/poddoor/shutters/window{
 	id = "BrigBigEntrance";
 	name = "Brig shutters"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "brigfront";
+	name = "Brig Blast door"
 	},
 /turf/open/floor/iron/dark,
 /area/security/brig)
@@ -7907,12 +7907,6 @@
 /obj/structure/extinguisher_cabinet/directional/west,
 /turf/open/floor/iron,
 /area/construction/mining/aux_base)
-"cdm" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/east,
-/turf/open/floor/wood,
-/area/service/abandoned_gambling_den)
 "cdo" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
@@ -8382,7 +8376,6 @@
 /area/maintenance/port/aft)
 "cpS" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/south,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
@@ -9000,11 +8993,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/hydroponics)
-"cAt" = (
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/iron,
-/area/maintenance/department/crew_quarters/bar)
 "cAu" = (
 /turf/open/floor/iron/chapel,
 /area/service/chapel)
@@ -13579,8 +13567,8 @@
 /obj/effect/turf_decal/stripes/full,
 /obj/effect/turf_decal/stripes/white/full,
 /obj/machinery/door/poddoor/shutters{
-	id = "Sbay1";
-	name = "Shuttle Bay 1"
+	id = "securitydock1";
+	name = "security dock 1"
 	},
 /turf/open/floor/iron/dark,
 /area/security/processing)
@@ -18702,13 +18690,13 @@
 /obj/effect/turf_decal/trimline/darkblue/filled/warning{
 	dir = 1
 	},
-/obj/machinery/door/poddoor/preopen{
-	id = "brigfront";
-	name = "Brig Blast door"
-	},
 /obj/machinery/door/poddoor/shutters/window{
 	id = "BrigBigEntrance";
 	name = "Brig shutters"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "brigfront";
+	name = "Brig Blast door"
 	},
 /turf/open/floor/iron/dark,
 /area/security/brig)
@@ -22182,7 +22170,7 @@
 	height = 5;
 	id = "laborcamp_home";
 	name = "fore bay 1";
-	roundstart_template = /datum/map_template/shuttle/labour/box;
+	roundstart_template = /datum/map_template/shuttle/labour/skyrat;
 	width = 9
 	},
 /turf/open/floor/iron/dark,
@@ -25388,13 +25376,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/service/abandoned_gambling_den)
-"iyq" = (
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment{
-	dir = 6
-	},
-/turf/open/floor/plating,
-/area/maintenance/department/crew_quarters/bar)
 "iys" = (
 /obj/machinery/plate_press{
 	pixel_y = 4
@@ -33432,7 +33413,6 @@
 /turf/open/floor/iron,
 /area/engineering/supermatter/room)
 "llL" = (
-/obj/structure/cable,
 /obj/effect/landmark/blobstart,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
@@ -43458,18 +43438,6 @@
 /obj/machinery/computer/security/labor{
 	dir = 1
 	},
-/obj/machinery/button{
-	id = "Sbay2";
-	name = "Hangar Door 2";
-	pixel_x = 25;
-	pixel_y = -5
-	},
-/obj/machinery/button{
-	id = "Sbay1";
-	name = "Hangar Door 1";
-	pixel_x = 25;
-	pixel_y = 6
-	},
 /obj/item/radio/intercom/directional/south,
 /obj/structure/railing{
 	dir = 8
@@ -43478,17 +43446,33 @@
 	c_tag = "Security - Flight Control";
 	dir = 4
 	},
-/obj/machinery/button{
-	id = "Sbay3";
-	name = "Hangar 1 External Blast Door";
-	pixel_x = 37;
-	pixel_y = 6
+/obj/machinery/button/door{
+	id = "securitydock1";
+	name = "Security Dock 1 Shutters";
+	pixel_x = 26;
+	pixel_y = -6;
+	req_access_txt = "3"
 	},
-/obj/machinery/button{
-	id = "Sbay4";
-	name = "Hangar 2 External Blast Door";
+/obj/machinery/button/door{
+	id = "securitydock2";
+	name = "Security Dock 2 Shutters";
 	pixel_x = 37;
-	pixel_y = -5
+	pixel_y = -6;
+	req_access_txt = "3"
+	},
+/obj/machinery/button/door{
+	id = "securityblast1";
+	name = "Dock 1 blast doors";
+	pixel_x = 26;
+	pixel_y = 5;
+	req_access_txt = "63"
+	},
+/obj/machinery/button/door{
+	id = "securityblast2";
+	name = "Dock 2 blast doors";
+	pixel_x = 37;
+	pixel_y = 5;
+	req_access_txt = "63"
 	},
 /turf/open/floor/iron,
 /area/security/processing)
@@ -46271,7 +46255,6 @@
 /turf/open/floor/iron,
 /area/security/prison)
 "pTQ" = (
-/obj/structure/cable,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -47658,8 +47641,8 @@
 /obj/effect/turf_decal/stripes/full,
 /obj/effect/turf_decal/stripes/white/full,
 /obj/machinery/door/poddoor/shutters{
-	id = "Sbay2";
-	name = "Shuttle Bay 2"
+	id = "securitydock2";
+	name = "security dock 2"
 	},
 /turf/open/floor/iron/dark,
 /area/security/processing)
@@ -51548,7 +51531,8 @@
 	},
 /obj/structure/fans/tiny/forcefield,
 /obj/machinery/door/poddoor/preopen{
-	id = "Sbay3"
+	id = "securityblast1";
+	name = "Shuttle Bay Blast door"
 	},
 /turf/open/floor/plating,
 /area/security/processing)
@@ -52895,7 +52879,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/light/directional/north,
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -54814,14 +54797,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/command/heads_quarters/ce)
-"tbK" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/service/abandoned_gambling_den)
 "tbO" = (
 /obj/structure/sign/directions/security{
 	dir = 1;
@@ -55853,13 +55828,6 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/office)
-"tvi" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/airalarm/directional/north,
-/turf/open/floor/iron,
-/area/hallway/primary/central/fore)
 "tvj" = (
 /obj/structure/closet/crate{
 	icon_state = "crateopen"
@@ -63229,13 +63197,6 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/starboard)
-"vVp" = (
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/maintenance/starboard/fore)
 "vVt" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
@@ -65926,7 +65887,6 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/neutral,
-/obj/machinery/light/directional/north,
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -67311,7 +67271,8 @@
 	},
 /obj/structure/fans/tiny/forcefield,
 /obj/machinery/door/poddoor/preopen{
-	id = "Sbay4"
+	id = "securityblast2";
+	name = "Shuttle Bay Blast door"
 	},
 /turf/open/floor/plating,
 /area/security/processing)
@@ -68686,10 +68647,6 @@
 "xLG" = (
 /turf/closed/wall,
 /area/service/library/printer)
-"xLS" = (
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/maintenance/department/crew_quarters/bar)
 "xLZ" = (
 /obj/structure/chair/stool/directional/west{
 	dir = 4
@@ -69650,7 +69607,6 @@
 "yaG" = (
 /obj/item/kirbyplants/random,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
 /turf/open/floor/wood,
 /area/service/abandoned_gambling_den)
 "yaR" = (
@@ -70214,6 +70170,11 @@
 	},
 /turf/open/floor/plating,
 /area/cargo/qm)
+"yjL" = (
+/obj/effect/turf_decal/tile/red,
+/obj/machinery/airalarm/directional/east,
+/turf/open/floor/iron,
+/area/hallway/primary/central/fore)
 "ykf" = (
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -103302,7 +103263,7 @@ wrb
 bGU
 tCR
 xqt
-tvi
+tCR
 tCR
 tCR
 qHc
@@ -103816,7 +103777,7 @@ jrY
 und
 eZV
 eoe
-jrY
+yjL
 jrY
 lit
 aiY
@@ -112075,7 +112036,7 @@ aCt
 hwX
 xcz
 teh
-xLS
+kQS
 aFs
 oMN
 oMN
@@ -112332,7 +112293,7 @@ xGw
 nBD
 jHQ
 npv
-vGc
+lsP
 oMN
 oMN
 aFs
@@ -112589,7 +112550,7 @@ nIo
 cVC
 xVd
 oGT
-xLS
+kQS
 oMN
 oMN
 oMN
@@ -112845,8 +112806,8 @@ aGW
 skO
 xWH
 xcz
-iyq
-cAt
+xNX
+qBg
 qBg
 xyX
 qBg
@@ -113348,7 +113309,7 @@ avF
 wgt
 wgt
 itL
-cdm
+wgt
 yaG
 xVd
 xVd
@@ -113359,7 +113320,7 @@ xVd
 xcz
 xVd
 xVd
-vVp
+bSZ
 alP
 yjA
 yjA
@@ -113606,7 +113567,7 @@ fUC
 fUC
 xcz
 xVd
-tbK
+qOS
 xVd
 xUQ
 kCc
@@ -113616,7 +113577,7 @@ dTn
 anf
 thg
 xUQ
-vVp
+bSZ
 vbB
 yjA
 yjA
@@ -113863,17 +113824,17 @@ asy
 asy
 rmY
 xVd
-wAT
-wAT
-wAT
-wAT
+anf
+anf
+anf
+anf
 alP
 anf
 cWK
 anf
 oUM
 anf
-vVp
+bSZ
 alP
 xmT
 yjA
@@ -114123,14 +114084,14 @@ xcz
 alP
 vbB
 vbB
-wAT
+anf
 wJz
 dhJ
 pXx
 anf
 qIn
 uId
-vVp
+bSZ
 mJB
 ioH
 yjA
@@ -114380,14 +114341,14 @@ xcz
 kgs
 anf
 alP
-wAT
-wAT
+anf
+anf
 llL
-wAT
-wAT
-wAT
-wAT
-vVp
+anf
+anf
+anf
+anf
+bSZ
 bQp
 ioH
 yjA
