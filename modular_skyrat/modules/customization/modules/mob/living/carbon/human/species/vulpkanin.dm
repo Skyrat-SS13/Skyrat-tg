@@ -33,7 +33,7 @@
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/mammal_parts_greyscale.dmi'
-	limbs_id = SPECIES_MAMMAL
+	examine_limbs_id = SPECIES_MAMMAL
 
 /datum/species/vulpkanin/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST

@@ -36,7 +36,7 @@
 	toxic_food = TOXIC
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/akula_parts_greyscale.dmi'
-	limbs_id = SPECIES_AKULA
+	examine_limbs_id = SPECIES_AKULA
 
 /datum/species/aquatic/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
