@@ -630,7 +630,6 @@
 	drop_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg'
 	pickup_sound =  'sound/items/handling/cloth_pickup.ogg'
 	slot_flags = ITEM_SLOT_VAGINA | ITEM_SLOT_ANUS | ITEM_SLOT_PENIS | ITEM_SLOT_NIPPLES
-	var/mutantrace_variation = NO_MUTANTRACE_VARIATION //Are there special sprites for specific situations? Don't use this unless you need to.
 
 /obj/item/clothing/sextoy/dropped(mob/user)
 	..()
@@ -847,9 +846,7 @@
 					client.screen += shoes					//add it to client's screen
 			update_observer_view(shoes,1)
 			var/icon_file = shoes.worn_icon
-			var/applied_styles = NONE
-			if((DIGITIGRADE in dna.species.species_traits) && (shoes.mutant_variants & STYLE_DIGITIGRADE))
-				applied_styles |= STYLE_DIGITIGRADE
+			if((shoes.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && (shoes.mutant_variants & STYLE_DIGITIGRADE))
 				icon_file = shoes.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/feet_digi.dmi'
 
 			overlays_standing[SHOES_LAYER] = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', override_icon = icon_file, mutant_styles = applied_styles)

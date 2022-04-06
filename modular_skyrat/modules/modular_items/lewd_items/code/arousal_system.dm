@@ -735,9 +735,9 @@
 
 	if(ishuman(parent))
 		var/mob/living/carbon/human/H = parent
-		if(H.dna.species.limbs_id == SPECIES_LIZARD)
+		if(H.dna.species.id == SPECIES_LIZARD)
 			cumface.icon_state = "cumface_lizard"
-		else if(H.dna.species.limbs_id == SPECIES_MONKEY)
+		else if(H.dna.species.id == SPECIES_MONKEY)
 			cumface.icon_state = "cumface_monkey"
 		else if(H.dna.species.id == SPECIES_VOX)
 			cumface.icon_state = "cumface_vox"
