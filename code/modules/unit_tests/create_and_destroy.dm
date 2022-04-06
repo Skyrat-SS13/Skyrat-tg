@@ -96,6 +96,8 @@
 	ignore += typesof(/obj/structure/biohazard_blob)
 	//Unused - not supposed to be spawned without SSliquids
 	ignore += typesof(/turf/open/openspace/ocean)
+	//Baseturf editors can only go up to ten, stop this.
+	ignore += typesof(/obj/effect/baseturf_helper)
 	//SKYRAT EDIT END
 
 	var/list/cached_contents = spawn_at.contents.Copy()

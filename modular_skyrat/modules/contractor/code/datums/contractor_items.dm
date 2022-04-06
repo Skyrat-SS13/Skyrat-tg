@@ -149,7 +149,7 @@
 	desc = "Request Syndicate Command to distrupt the station's powernet. Disables power across the station for a short duration."
 	item_icon = "bolt"
 	limited = 2
-	cost = 3
+	cost = 2
 
 /datum/contractor_item/blackout/handle_purchase(datum/contractor_hub/hub)
 	. = ..()
@@ -164,7 +164,7 @@
 	desc = "Request Syndicate Command to disable station Telecommunications. Disables telecommunications across the station for a medium duration."
 	item_icon = "phone-slash"
 	limited = 2
-	cost = 3
+	cost = 2
 
 /datum/contractor_item/comms_blackout/handle_purchase(datum/contractor_hub/hub)
 	. = ..()
@@ -178,7 +178,7 @@
 	name = "Baton Holster Module"
 	desc = "Never worry about dropping your baton again with this holster module! Simply insert your baton into the module, put it in your MODsuit, and the baton will retract whenever dropped."
 	item = /obj/item/mod/module/baton_holster
-	item_icon = "arrow-up-from-arc" //I cannot find anything better, replace if you find something more fitting
+	item_icon = "wrench" //I cannot find anything better, replace if you find something more fitting
 	limited = 1
 	cost = 1
 
@@ -186,7 +186,7 @@
 	name = "Baton Cuff Upgrade"
 	desc = "Using technology reverse-engineered from some alien batons we had lying around, you can now cuff people using your baton with the secondary attack. Due to technical limitations, only cable cuffs and zipties work, and they need to be loaded into the baton manually."
 	item = /obj/item/baton_upgrade/cuff
-	item_icon = "handcuff"
+	item_icon = "hands-bound"
 	limited = 1
 	cost = 1
 
@@ -195,5 +195,13 @@
 	desc = "A relatively new advancement in completely proprietary baton technology, this baton upgrade will mute anyone hit for ten seconds, maximizing at twenty seconds."
 	item = /obj/item/baton_upgrade/mute
 	item_icon = "comment-slash"
+	limited = 1
+	cost = 2
+
+/datum/contractor_item/baton_upgrade_focus
+	name = "Baton Focus Upgrade"
+	desc = "When applied to a baton, it will exhaust the target even more, should they be the target of your current contract."
+	item = /obj/item/baton_upgrade/focus
+	item_icon = "eye"
 	limited = 1
 	cost = 2
