@@ -509,27 +509,27 @@
 		qdel(src)
 
 //Oppressive Force Relocation
-/obj/item/ammo_casing/energy/medical/utility/sec_remover
-	projectile_type = /obj/projectile/energy/medical/utility/sec_remover
+/obj/item/ammo_casing/energy/medical/utility/relocation
+	projectile_type = /obj/projectile/energy/medical/utility/relocation
 	select_name = "sec-b-gone"
 	select_color = "#850000"
 
-/obj/projectile/energy/medical/utility/sec_remover
+/obj/projectile/energy/medical/utility/relocation
 	name = "bluespace transportation field"
 
-/obj/projectile/energy/medical/utility/sec_remover/on_hit(mob/living/target)
+/obj/projectile/energy/medical/utility/relocation/on_hit(mob/living/target)
 	. = ..()
 
-	var/mob/living/carbon/human/officer = target
+	var/mob/living/carbon/human/teleportee = target
 
 	if(!istype(get_area(target), /area/medical)) //We don't want this to work everywhere, do we?
 		return FALSE
 
-	var/target_access = officer.wear_id.GetAccess() //Stores the access of the target within a variable
+	var/target_access = teleportee.wear_id.GetAccess() //Stores the access of the target within a variable
 	if(!(ACCESS_BRIG in target_access))
 		return FALSE
 
-	teleport_effect(officer.loc)
+	teleport_effect(teleportee.loc)
 
 	var/static/list/turf_list
 
@@ -539,13 +539,13 @@
 			if(!turf_in_area.is_blocked_turf())
 				turf_list += turf_in_area
 
-	officer.visible_message(span_notice("[officer] teleports to back to security, reestablishing a calm medbay environment!"))
+	teleportee.visible_message(span_notice("[teleportee] teleports to back to security, reestablishing a calm medbay environment!"))
 
-	do_teleport(officer, pick(turf_list))
+	do_teleport(teleportee, pick(turf_list))
 
-	teleport_effect(officer.loc)
+	teleport_effect(teleportee.loc)
 
-/obj/projectile/energy/medical/utility/sec_remover/proc/teleport_effect(var/location)
+/obj/projectile/energy/medical/utility/relocation/proc/teleport_effect(var/location)
 	var/datum/effect_system/spark_spread/quantum/sparks = new /datum/effect_system/spark_spread/quantum //uses the teleport effect from quantum pads
 	sparks.set_up(5, 1, get_turf(location))
 	sparks.start()
