@@ -28,6 +28,7 @@
 	species_language_holder = /datum/language_holder/jelly
 	ass_image = 'icons/ass/assslime.png'
 
+<<<<<<< HEAD
 /datum/species/jelly/on_species_loss(mob/living/carbon/C)
 	if(regenerate_limbs)
 		regenerate_limbs.Remove(C)
@@ -35,17 +36,37 @@
 	if(slime_change)
 		slime_change.Remove(C)
 	//SKYRAT EDIT ADDITION END
+=======
+	bodypart_overrides = list(
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/jelly,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/jelly,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/jelly,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/jelly,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/jelly,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/jelly,
+	)
+
+/datum/species/jelly/on_species_loss(mob/living/carbon/old_jellyperson)
+	if(regenerate_limbs)
+		regenerate_limbs.Remove(old_jellyperson)
+	old_jellyperson.RemoveElement(/datum/element/soft_landing)
+>>>>>>> 4cbd6039ff9 (Beds, Sofas, Slimes, And Jellypeople now provide a soft landing (#65918))
 	..()
 
-/datum/species/jelly/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+/datum/species/jelly/on_species_gain(mob/living/carbon/new_jellyperson, datum/species/old_species)
 	..()
-	if(ishuman(C))
+	if(ishuman(new_jellyperson))
 		regenerate_limbs = new
+<<<<<<< HEAD
 		regenerate_limbs.Grant(C)
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		slime_change = new
 		slime_change.Grant(C)
 		//SKYRAT EDIT ADDITION END
+=======
+		regenerate_limbs.Grant(new_jellyperson)
+	new_jellyperson.AddElement(/datum/element/soft_landing)
+>>>>>>> 4cbd6039ff9 (Beds, Sofas, Slimes, And Jellypeople now provide a soft landing (#65918))
 
 /datum/species/jelly/spec_life(mob/living/carbon/human/H, delta_time, times_fired)
 	if(H.stat == DEAD) //can't farm slime jelly from a dead slime/jelly person indefinitely
