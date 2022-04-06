@@ -109,7 +109,7 @@
 
 /datum/supply_pack/medical/syringe_gun
 	name = "Syringe Gun"
-	desc = "A replacement medical syringe gun"
+	desc = "A replacement medical syringe gun."
 	cost = CARGO_CRATE_VALUE * 30
 	access = ACCESS_MEDICAL
 	contains = list(/obj/item/gun/syringe)
