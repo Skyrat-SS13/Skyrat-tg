@@ -115,7 +115,7 @@
 		return
 	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.sprite_accessories["ipc_chassis"][chassis[MUTANT_INDEX_NAME]]
 	if(chassis_of_choice)
-		limbs_id = chassis_of_choice.icon_state
+		examine_limb_id = chassis_of_choice.icon_state
 		if(chassis_of_choice.color_src)
 			species_traits += MUTCOLORS
 		C.update_body()

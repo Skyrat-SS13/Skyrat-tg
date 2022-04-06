@@ -35,7 +35,7 @@
 	toxic_food = TOXIC
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	examine_limbs_id = SPECIES_LIZARD
+	examine_limb_id = SPECIES_LIZARD
 
 /datum/species/unathi/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST

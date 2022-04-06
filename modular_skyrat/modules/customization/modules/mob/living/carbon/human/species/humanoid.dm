@@ -28,4 +28,4 @@
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	payday_modifier = 0.75
-	examine_limbs_id = SPECIES_HUMAN
+	examine_limb_id = SPECIES_HUMAN

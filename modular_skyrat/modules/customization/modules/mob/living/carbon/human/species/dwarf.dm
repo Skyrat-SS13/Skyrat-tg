@@ -1,7 +1,7 @@
 /datum/species/dwarf
 	name = "Dwarf"
 	id = SPECIES_DWARF
-	examine_limbs_id = SPECIES_HUMAN
+	examine_limb_id = SPECIES_HUMAN
 	default_color = "#FFFFFF"
 	say_mod = "bellows"
 	species_traits = list(

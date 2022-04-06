@@ -1,7 +1,7 @@
 /datum/species/human/ghoul
 	name = "Ghoul"
 	id = SPECIES_GHOUL
-	limbs_id = "ghoul"
+	examine_limb_id = "ghoul"
 	say_mod = "rasps"
 	default_color = "#c4af7c"
 	species_traits = list(NOEYESPRITES, DYNCOLORS, HAS_FLESH, HAS_BONE, HAIR, FACEHAIR)
@@ -48,7 +48,7 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
 
-	bodypart_overides = list(
+	bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/ghoul,
 		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/ghoul,
 		BODY_ZONE_HEAD = /obj/item/bodypart/head,
@@ -155,7 +155,7 @@
 				return FALSE
 
 			// Robot Arms Fail
-			if (affecting.status != BODYPART_ORGANIC)
+			if (!IS_ORGANIC_LIMB(affecting))
 				to_chat(user, "That thing is on there good. It's not coming off with a gentle tug.")
 				return FALSE
 
