@@ -3,10 +3,6 @@
 	name = "Felinid"
 	id = SPECIES_FELINE
 	say_mod = "meows"
-<<<<<<< HEAD
-	limbs_id = SPECIES_HUMAN
-=======
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 
 	mutant_bodyparts = list("tail_human" = "Cat", "ears" = "Cat", "wings" = "None")
 

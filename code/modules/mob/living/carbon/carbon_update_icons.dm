@@ -258,15 +258,6 @@
 		if(!(icon_render_keys[limb.body_zone] == old_key)) //If the keys match, that means the limb doesn't need to be redrawn
 			needs_update += limb
 
-<<<<<<< HEAD
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
-/mob/living/carbon/proc/update_body_parts()
-	//CHECK FOR UPDATE
-	var/oldkey = icon_render_key
-	icon_render_key = generate_icon_render_key()
-	if(oldkey == icon_render_key)
-=======
 
 	var/list/missing_bodyparts = get_missing_limbs()
 	if(((dna ? dna.species.max_bodypart_count : BODYPARTS_DEFAULT_MAXIMUM) - icon_render_keys.len) != missing_bodyparts.len) //Checks to see if the target gained or lost any limbs.
@@ -275,40 +266,36 @@
 			icon_render_keys -= missing_limb //Removes dismembered limbs from the key list
 
 	if(!needs_update.len && !limb_count_update)
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 		return
+
+	// SKYRAT EDIT ADDITION
+	var/is_taur = FALSE
+	if(dna?.species.mutant_bodyparts["taur"])
+		var/datum/sprite_accessory/taur/sprite_accessory = GLOB.sprite_accessories["taur"][dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
+		if(sprite_accessory.hide_legs)
+			is_taur = TRUE
+	// SKYRAT EDIT END
 
 	remove_overlay(BODYPARTS_LAYER)
 
 	//GENERATE NEW LIMBS
 	var/list/new_limbs = list()
-<<<<<<< HEAD
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/BP = X
-		new_limbs += BP.get_limb_icon()
-=======
 	for(var/obj/item/bodypart/limb as anything in bodyparts)
 		if(limb in needs_update) //Checks to see if the limb needs to be redrawn
+			// SKYRAT EDIT ADDITION
+			if(is_taur && (limb.body_part == LEG_LEFT || limb.body_part == LEG_RIGHT))
+				continue
+			// SKYRAT EDIT END
 			var/bodypart_icon = limb.get_limb_icon()
 			new_limbs += bodypart_icon
 			limb_icon_cache[icon_render_keys[limb.body_zone]] = bodypart_icon //Caches the icon with the bodypart key, as it is new
 		else
 			new_limbs += limb_icon_cache[icon_render_keys[limb.body_zone]] //Pulls existing sprites from the cache
 
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 	if(new_limbs.len)
 		overlays_standing[BODYPARTS_LAYER] = new_limbs
 
 	apply_overlay(BODYPARTS_LAYER)
-<<<<<<< HEAD
-	update_damage_overlays()
-	update_wound_overlays()
-*/
-//SKYRAT EDIT REMOVAL END
-=======
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
-
-
 
 /////////////////////////
 // Limb Icon Cache 2.0 //
@@ -339,27 +326,6 @@
 
 	return .
 
-<<<<<<< HEAD
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
-/mob/living/carbon/proc/generate_icon_render_key()
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/BP = X
-		. += "-[BP.body_zone]"
-		if(BP.use_digitigrade)
-			. += "-digitigrade[BP.use_digitigrade]"
-		if(BP.animal_origin)
-			. += "-[BP.animal_origin]"
-		if(BP.status == BODYPART_ORGANIC)
-			. += "-organic"
-		else
-			. += "-robotic"
-
-	if(HAS_TRAIT(src, TRAIT_HUSK))
-		. += "-husk"
-*/
-//SKYRAT EDIT REMOVAL END
-=======
 ///Generates a cache key specifically for husks
 /obj/item/bodypart/proc/generate_husk_key()
 	RETURN_TYPE(/list)
@@ -382,7 +348,6 @@
 	if(show_debrained)
 		. += "-SHOW_DEBRAINED"
 		return .
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 
 	. += "-[hair_style]"
 	. += "-[fixed_hair_color || override_hair_color || hair_color]"

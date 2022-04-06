@@ -180,9 +180,5 @@
 		if(scar_text)
 			. += "[scar_text]"
 
-<<<<<<< HEAD
-	return msg
-*/
-=======
 	return .
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
+*/

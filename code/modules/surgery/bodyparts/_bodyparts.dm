@@ -649,35 +649,6 @@
 		return TRUE
 	return FALSE
 
-<<<<<<< HEAD
-//Change organ status
-/obj/item/bodypart/proc/change_bodypart_status(new_limb_status, heal_limb, change_icon_to_default)
-	status = new_limb_status
-	if(heal_limb)
-		burn_dam = 0
-		brute_dam = 0
-		brutestate = 0
-		burnstate = 0
-
-	if(change_icon_to_default)
-		if(status == BODYPART_ORGANIC)
-			icon = icon_greyscale
-			organic_render = TRUE //SKYRAT EDIT ADDITION - CUSTOMIZATION
-		else if(status == BODYPART_ROBOTIC)
-			icon = icon_robotic
-			organic_render = FALSE //SKYRAT EDIT ADDITION - CUSTOMIZATION
-
-	if(owner)
-		owner.updatehealth()
-		owner.update_body() //if our head becomes robotic, we remove the lizard horns and human hair.
-		owner.update_hair()
-		owner.update_damage_overlays()
-
-/obj/item/bodypart/proc/is_organic_limb()
-	return (status == BODYPART_ORGANIC)
-
-=======
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 //we inform the bodypart of the changes that happened to the owner, or give it the informations from a source mob.
 //set is_creating to true if you want to change the appearance of the limb outside of mutation changes or forced changes.
 /obj/item/bodypart/proc/update_limb(dropping_limb = FALSE, is_creating = FALSE)
@@ -709,14 +680,6 @@
 		var/mob/living/carbon/human/human_owner = owner
 
 		var/datum/species/owner_species = human_owner.dna.species
-<<<<<<< HEAD
-		if(organic_render) //SKYRAT EDIT ADDITION - CUSTOMIZATION
-			species_id = owner_species.limbs_id
-			alpha = owner_species.specific_alpha
-			rendered_bp_icon = owner_species.limbs_icon //SKYRAT EDIT ADDITION - CUSTOMIZATION
-		species_id = owner_species.limbs_id
-=======
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 		species_flags_list = human_owner.dna.species.species_traits
 		limb_gender = (human_owner.physique == MALE) ? "m" : "f"
 
@@ -761,18 +724,13 @@
 		img.pixel_y = px_y
 	add_overlay(standing)
 
-<<<<<<< HEAD
-//Gives you a proper icon appearance for the dismembered limb
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
 /*
-/obj/item/bodypart/proc/get_limb_icon(dropped, draw_external_organs)
-=======
 ///Generates an /image for the limb to be used as an overlay
 /obj/item/bodypart/proc/get_limb_icon(dropped)
 	SHOULD_CALL_PARENT(TRUE)
 	RETURN_TYPE(/list)
 
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 	icon_state = "" //to erase the default sprite, we're building the visual aspects of the bodypart through overlays alone.
 
 	. = list()
@@ -855,55 +813,15 @@
 				// Invert the colour of the pod hair's flower
 				draw_color = rgb(255 - rgb_list[1], 255 - rgb_list[2], 255 - rgb_list[3])
 			if(external_organ.layers & external_layer)
-<<<<<<< HEAD
-				external_organ.get_overlays(., image_dir, external_organ.bitflag_to_layer(external_layer), icon_gender, draw_color)
+				external_organ.get_overlays(., image_dir, external_organ.bitflag_to_layer(external_layer), limb_gender, draw_color)
 */
 //SKYRAT EDIT REMOVAL END
-=======
-				external_organ.get_overlays(., image_dir, external_organ.bitflag_to_layer(external_layer), limb_gender, draw_color)
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
 	drop_organs()
-<<<<<<< HEAD
-	qdel(src)
-
-/// Get whatever wound of the given type is currently attached to this limb, if any
-/obj/item/bodypart/proc/get_wound_type(checking_type)
-	if(isnull(wounds))
-		return
-
-	for(var/wound in wounds)
-		if(istype(wound, checking_type))
-			return wound
-
-/**
- * update_wounds() is called whenever a wound is gained or lost on this bodypart, as well as if there's a change of some kind on a bone wound possibly changing disabled status
- *
- * Covers tabulating the damage multipliers we have from wounds (burn specifically), as well as deleting our gauze wrapping if we don't have any wounds that can use bandaging
- *
- * Arguments:
- * * replaced- If true, this is being called from the remove_wound() of a wound that's being replaced, so the bandage that already existed is still relevant, but the new wound hasn't been added yet
- */
-/obj/item/bodypart/proc/update_wounds(replaced = FALSE)
-	var/dam_mul = 1 //initial(wound_damage_multiplier)
-
-	// we can (normally) only have one wound per type, but remember there's multiple types (smites like :B:loodless can generate multiple cuts on a limb)
-	for(var/datum/wound/iter_wound as anything in wounds)
-		dam_mul *= iter_wound.damage_mulitplier_penalty
-
-	/*
-	if(!LAZYLEN(wounds) && current_gauze && !replaced) // no more wounds = no need for the gauze anymore
-		owner.visible_message(span_notice("\The [current_gauze.name] on [owner]'s [name] falls away."), span_notice("The [current_gauze.name] on your [name] falls away."))
-		QDEL_NULL(current_gauze)
-	*/
-
-	wound_damage_multiplier = dam_mul
-=======
 	return ..()
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 
 /**
  * Calculates how much blood this limb is losing per life tick

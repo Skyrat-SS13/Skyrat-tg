@@ -25,15 +25,9 @@ GLOBAL_LIST_INIT(creamable, typecacheof(list(
 
 	if(ishuman(parent))
 		var/mob/living/carbon/human/H = parent
-<<<<<<< HEAD
-		if(H.dna.species.limbs_id == SPECIES_LIZARD)
-			creamface.icon_state = "creampie_lizard"
-		else if(H.dna.species.limbs_id == SPECIES_MONKEY)
-=======
 		if(H.dna.species.bodytype & BODYTYPE_SNOUTED)
 			creamface.icon_state = "creampie_lizard"
 		else if(H.dna.species.bodytype & BODYTYPE_MONKEY)
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 			creamface.icon_state = "creampie_monkey"
 		else
 			creamface.icon_state = "creampie_human"

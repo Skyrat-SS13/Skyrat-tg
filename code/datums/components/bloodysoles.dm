@@ -282,15 +282,6 @@
 
 	..()
 
-//SKYRAT EDIT ADDITION BEGIN - DIGI_BLOODSOLE
-/datum/component/bloodysoles/feet/proc/fix_soles()
-	var/mob/living/carbon/H = parent
-	if (DIGITIGRADE in H.dna.species.species_traits)
-		if (bloody_feet.icon_state != "shoeblood_digi")
-			bloody_feet = mutable_appearance('modular_skyrat/modules/digi_bloodsole/icons/blood.dmi', "shoeblood_digi", SHOES_LAYER)
-	else if (bloody_feet.icon_state != "shoeblood")
-		bloody_feet = mutable_appearance('icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
-//SKYRAT EDIT ADDITION END
 
 /datum/component/bloodysoles/feet/proc/unequip_shoecover(datum/source)
 	SIGNAL_HANDLER

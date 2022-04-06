@@ -27,10 +27,6 @@
 	damage_overlay_type = SPECIES_SYNTH
 	mutanttongue = /obj/item/organ/tongue/robot
 	species_language_holder = /datum/language_holder/synthetic
-<<<<<<< HEAD
-	limbs_id = SPECIES_SYNTH
-=======
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 	wings_icons = list("Robotic")
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 

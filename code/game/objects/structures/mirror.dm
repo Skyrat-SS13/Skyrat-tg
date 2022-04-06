@@ -50,12 +50,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 
 	hairdresser.hairstyle = new_style
 
-<<<<<<< HEAD
-	hairdresser.update_hair()
-*/
-=======
 	hairdresser.update_hair(is_creating = TRUE)
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
+*/
 
 /obj/structure/mirror/examine_status(mob/user)
 	if(broken)

@@ -525,154 +525,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	SEND_SIGNAL(C, COMSIG_SPECIES_LOSS, src)
 
 /**
-<<<<<<< HEAD
- * Handles hair icons and dynamic hair.
- *
- * Handles hiding hair with clothing, hair layers, losing hair due to husking or augmented heads, facial hair, head hair, and hair styles.
- * Arguments:
- * * H - Human, whoever we're handling the hair for
- * * forced_colour - The colour of hair we're forcing on this human. Leave null to not change. Mind the british spelling!
- */
-/datum/species/proc/handle_hair(mob/living/carbon/human/H, forced_colour)
-	H.remove_overlay(HAIR_LAYER)
-	var/obj/item/bodypart/head/noggin = H.get_bodypart(BODY_ZONE_HEAD)
-	if(!noggin) //Decapitated
-		return
-
-	if(HAS_TRAIT(H, TRAIT_HUSK) || HAS_TRAIT(H, TRAIT_INVISIBLE_MAN))
-		return
-	var/datum/sprite_accessory/S
-	var/list/standing = list()
-
-	var/hair_hidden = FALSE //ignored if the matching dynamic_X_suffix is non-empty
-	var/facialhair_hidden = FALSE // ^
-
-	//for augmented heads
-	if(noggin.status == BODYPART_ROBOTIC && !(ROBOTIC_LIMBS in species_traits)) //SKYRAT EDIT CHANGE - CUSTOMIZATION
-		return
-
-	//we check if our hat or helmet hides our facial hair.
-	if(H.head)
-		var/obj/item/I = H.head
-		if(I.flags_inv & HIDEFACIALHAIR)
-			facialhair_hidden = TRUE
-
-	if(H.wear_mask)
-		var/obj/item/I = H.wear_mask
-		if(I.flags_inv & HIDEFACIALHAIR)
-			facialhair_hidden = TRUE
-
-	if(H.facial_hairstyle && (FACEHAIR in species_traits) && !facialhair_hidden)
-		S = GLOB.facial_hairstyles_list[H.facial_hairstyle]
-		if(S)
-
-			var/mutable_appearance/facial_overlay = mutable_appearance(S.icon, S.icon_state, -HAIR_LAYER)
-			var/mutable_appearance/gradient_overlay
-
-			if(!forced_colour)
-				if(hair_color)
-					if(hair_color == "mutcolor")
-						facial_overlay.color = H.dna.features["mcolor"]
-					else if(hair_color == "fixedmutcolor")
-						facial_overlay.color = fixed_mut_color
-					else
-						facial_overlay.color = hair_color
-				else
-					facial_overlay.color = H.facial_hair_color
-				//Gradients
-				var/grad_style = LAZYACCESS(H.grad_style, GRADIENT_FACIAL_HAIR_KEY)
-				if(grad_style)
-					var/grad_color = LAZYACCESS(H.grad_color, GRADIENT_FACIAL_HAIR_KEY)
-					gradient_overlay = make_gradient_overlay(S.icon, S.icon_state, HAIR_LAYER, GLOB.facial_hair_gradients_list[grad_style], grad_color)
-			else
-				facial_overlay.color = forced_colour
-
-			facial_overlay.alpha = hair_alpha
-			facial_overlay.overlays += emissive_blocker(S.icon, S.icon_state, alpha = hair_alpha)
-
-			standing += facial_overlay
-			if(gradient_overlay)
-				standing += gradient_overlay
-
-	if(H.head)
-		var/obj/item/I = H.head
-		if(I.flags_inv & HIDEHAIR)
-			hair_hidden = TRUE
-
-	if(H.w_uniform)
-		var/obj/item/item_uniform = H.w_uniform
-		if(item_uniform.flags_inv & HIDEHAIR)
-			hair_hidden = TRUE
-
-	if(H.wear_mask)
-		var/obj/item/I = H.wear_mask
-		if(I.flags_inv & HIDEHAIR)
-			hair_hidden = TRUE
-
-	if(!hair_hidden)
-		var/mutable_appearance/hair_overlay = mutable_appearance(layer = -HAIR_LAYER)
-		var/mutable_appearance/gradient_overlay
-		if(!hair_hidden && !H.getorgan(/obj/item/organ/brain)) //Applies the debrained overlay if there is no brain
-			if(!(NOBLOOD in species_traits))
-				hair_overlay.icon = 'icons/mob/human_face.dmi'
-				hair_overlay.icon_state = "debrained"
-
-		else if(H.hairstyle && (HAIR in species_traits))
-			S = GLOB.hairstyles_list[H.hairstyle]
-			if(S)
-				var/hair_state = S.icon_state
-				var/hair_file = S.icon
-
-				hair_overlay.icon = hair_file
-				hair_overlay.icon_state = hair_state
-
-				if(!forced_colour)
-					if(hair_color)
-						if(hair_color == "mutcolor")
-							hair_overlay.color = H.dna.features["mcolor"]
-						else if(hair_color == "fixedmutcolor")
-							hair_overlay.color = fixed_mut_color
-						else
-							hair_overlay.color = hair_color
-					else
-						hair_overlay.color = H.hair_color
-
-					//Gradients
-					var/grad_style = LAZYACCESS(H.grad_style, GRADIENT_HAIR_KEY)
-					if(grad_style)
-						var/grad_color = LAZYACCESS(H.grad_color, GRADIENT_HAIR_KEY)
-						gradient_overlay = make_gradient_overlay(hair_file, hair_state, HAIR_LAYER, GLOB.hair_gradients_list[grad_style], grad_color)
-				else
-					hair_overlay.color = forced_colour
-
-				hair_overlay.alpha = hair_alpha
-				if(OFFSET_FACE in H.dna.species.offset_features)
-					hair_overlay.pixel_x += H.dna.species.offset_features[OFFSET_FACE][1]
-					hair_overlay.pixel_y += H.dna.species.offset_features[OFFSET_FACE][2]
-
-		if(hair_overlay.icon)
-			hair_overlay.overlays += emissive_blocker(hair_overlay.icon, hair_overlay.icon_state, alpha = hair_alpha)
-			standing += hair_overlay
-			if(gradient_overlay)
-				standing += gradient_overlay
-
-	if(standing.len)
-		H.overlays_standing[HAIR_LAYER] = standing
-
-	H.apply_overlay(HAIR_LAYER)
-
-/datum/species/proc/make_gradient_overlay(file, icon, layer, datum/sprite_accessory/gradient, grad_color)
-	var/mutable_appearance/gradient_overlay = mutable_appearance(layer = -layer)
-	var/icon/temp = icon(gradient.icon, gradient.icon_state)
-	var/icon/temp_hair = icon(file, icon)
-	temp.Blend(temp_hair, ICON_ADD)
-	gradient_overlay.icon = temp
-	gradient_overlay.color = grad_color
-	return gradient_overlay
-
-/**
-=======
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
  * Handles the body of a human
  *
  * Handles lipstick, having no eyes, eye color, undergarnments like underwear, undershirts, and socks, and body layers.
@@ -1082,20 +934,13 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		if(ITEM_SLOT_FEET)
 			if(H.num_legs < 2)
 				return FALSE
-<<<<<<< HEAD
-			/* SKYRAT EDIT REMOVAL - Digitigrade legs are functional too ;)
-			if((DIGITIGRADE in species_traits) && !(I.item_flags & IGNORE_DIGITIGRADE))
-				if(!disable_warning)
-					to_chat(H, span_warning("The footwear around here isn't compatible with your feet!"))
-				return FALSE
-			*/ // SKYRAT EDIT END
-=======
+			/* SKYRAT EDIT REMOVAL
 			if((bodytype & BODYTYPE_DIGITIGRADE) && !(I.item_flags & IGNORE_DIGITIGRADE))
 				if(!(I.supports_variations_flags & (CLOTHING_DIGITIGRADE_VARIATION|CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON)))
 					if(!disable_warning)
 						to_chat(H, span_warning("The footwear around here isn't compatible with your feet!"))
 					return FALSE
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
+			*/
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(ITEM_SLOT_BELT)
 			var/obj/item/bodypart/O = H.get_bodypart(BODY_ZONE_CHEST)
@@ -2162,16 +2007,12 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				wings_icon = pick(wings_icons)
 	else
 		wings_icon = wings_icons[1]
-<<<<<<< HEAD
-	var/obj/item/organ/external/wings/functional/wings = new(null, wings_icon, H.body_type)
+
+	var/obj/item/organ/external/wings/functional/wings = new(null, wings_icon, H.physique)
 	// SKYRAT EDIT START - Fixes the loss of wings to just run the insert twice
 	if(H.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS))
 		wings.Insert(H)
 	// SKYRAT EDIT END
-=======
-
-	var/obj/item/organ/external/wings/functional/wings = new(null, wings_icon, H.physique)
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 	wings.Insert(H)
 	handle_mutant_bodyparts(H)
 /**
@@ -2188,22 +2029,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 /datum/species/proc/spec_unarmedattack(mob/living/carbon/human/user, atom/target, modifiers)
 	return FALSE
 
-<<<<<<< HEAD
-
-///Removes any non-native limbs from the mob
-/datum/species/proc/fix_non_native_limbs(mob/living/carbon/human/H)
-	for(var/X in H.bodyparts)
-		var/obj/item/bodypart/current_part = X
-		var/obj/item/bodypart/species_part = bodypart_overides[current_part.body_zone]
-
-		if(current_part.type == species_part)
-			continue
-
-		current_part.change_bodypart(species_part)
-
 /* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
-=======
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 /// Returns a list of strings representing features this species has.
 /// Used by the preferences UI to know what buttons to show.
 /datum/species/proc/get_features()
@@ -2231,6 +2057,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	return features
 */
+
 /// Given a human, will adjust it before taking a picture for the preferences UI.
 /// This should create a CONSISTENT result, so the icons don't randomly change.
 /datum/species/proc/prepare_human_for_preview(mob/living/carbon/human/human)

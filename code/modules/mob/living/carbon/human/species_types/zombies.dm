@@ -78,13 +78,8 @@
 
 /datum/species/zombie/infectious
 	name = "Infectious Zombie"
-<<<<<<< HEAD
-	id = SPECIES_ZOMBIE
-	limbs_id = SPECIES_ZOMBIE_HALLOWEEN
-=======
 	id = SPECIES_ZOMBIE_INFECTIOUS
 	examine_limb_id = SPECIES_ZOMBIE
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 	mutanthands = /obj/item/zombie_hand
 	armor = 20 // 120 damage to KO a zombie, which kills it
 	speedmod = 1.6
@@ -146,17 +141,10 @@
 		infection.Insert(C)
 
 // Your skin falls off
-<<<<<<< HEAD
-/datum/species/krokodil_addict
-	name = "Human"
-	id = SPECIES_ADDICT
-	limbs_id = SPECIES_ZOMBIE_HALLOWEEN //They look like zombies
-=======
 /datum/species/human/krokodil_addict
 	name = "\improper Human"
 	id = SPECIES_ZOMBIE_KROKODIL
 	examine_limb_id = SPECIES_HUMAN
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 	sexes = 0
 	mutanttongue = /obj/item/organ/tongue/zombie
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN

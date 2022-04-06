@@ -41,12 +41,7 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | ERT_SPAWN | SLIME_EXTRACT
 	liked_food = MEAT | FRUIT
 	disliked_food = CLOTH
-<<<<<<< HEAD
-	limbs_id = SPECIES_MONKEY
-	damage_overlay_type = SPECIES_MONKEY
-=======
 	damage_overlay_type = "monkey"
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 	sexes = FALSE
 	punchdamagelow = 1
 	punchdamagehigh = 3

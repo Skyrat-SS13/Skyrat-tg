@@ -293,13 +293,6 @@
 		if(pill)
 			pill.forceMove(src)
 
-<<<<<<< HEAD
-	//Make sure de-zombification happens before organ removal instead of during it
-	var/obj/item/organ/zombie_infection/ooze = owner.getorganslot(ORGAN_SLOT_ZOMBIE)
-	if(istype(ooze))
-		ooze.transfer_to_limb(src, owner)
-=======
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 	name = "[owner.real_name]'s head"
 	..()
 
@@ -450,24 +443,15 @@
 		return FALSE
 	limb = newBodyPart(limb_zone, 0, 0)
 	if(limb)
-<<<<<<< HEAD
-		if(!noheal)
-			limb.set_brute_dam(0)
-			limb.set_burn_dam(0)
-			limb.brutestate = 0
-			limb.burnstate = 0
-
+		if(!limb.attach_limb(src, 1))
+			qdel(limb)
+			return FALSE
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		if(dna?.species && (ROBOTIC_LIMBS in dna.species.species_traits))
 			limb.change_bodypart_status(BODYPART_ROBOTIC)
 		if(dna?.mutant_bodyparts["legs"] && dna.mutant_bodyparts["legs"][MUTANT_INDEX_NAME] == "Digitigrade Legs")
 			limb.use_digitigrade = FULL_DIGITIGRADE
 		//SKYRAT EDIT ADDITION END
-=======
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
-		if(!limb.attach_limb(src, 1))
-			qdel(limb)
-			return FALSE
 		limb.update_limb(is_creating = TRUE)
 		var/datum/scar/scaries = new
 		var/datum/wound/loss/phantom_loss = new // stolen valor, really

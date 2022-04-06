@@ -188,12 +188,7 @@ Lizard subspecies: ASHWALKERS
 /datum/species/lizard/ashwalker
 	name = "Ash Walker"
 	id = SPECIES_LIZARD_ASH
-<<<<<<< HEAD
-	limbs_id = SPECIES_LIZARD
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,DIGITIGRADE,HAS_FLESH,HAS_BONE)
-=======
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE)
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 	mutantlungs = /obj/item/organ/lungs/ashwalker
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
@@ -210,10 +205,6 @@ Lizard subspecies: SILVER SCALED
 /datum/species/lizard/silverscale
 	name = "Silver Scale"
 	id = SPECIES_LIZARD_SILVER
-<<<<<<< HEAD
-	limbs_id = SPECIES_LIZARD
-=======
->>>>>>> 1d0eadcb126 (Kapulimbs (#65523))
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
