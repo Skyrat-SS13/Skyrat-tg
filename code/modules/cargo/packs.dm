@@ -76,8 +76,8 @@
 					/obj/item/clothing/suit/jacket/leather/overcoat,
 					/obj/item/clothing/gloves/color/black,
 					/obj/item/clothing/head/soft,
-					/obj/item/clothing/mask/bandana/skull)//so you can properly #cargoniabikergang
-	crate_name = "biker kit"
+					/obj/item/clothing/mask/bandana/color/skull)//so you can properly #cargoniabikergang
+	crate_name = "Biker Kit"
 	crate_type = /obj/structure/closet/crate/large
 
 /datum/supply_pack/emergency/bio
@@ -2973,10 +2973,7 @@
 					/obj/item/vending_refill/wardrobe/det_wardrobe,
 					/obj/item/vending_refill/wardrobe/law_wardrobe)
 	crate_name = "security department supply crate"
-<<<<<<< HEAD
 */
-=======
->>>>>>> 0b17264a77d (Cargo crate name consistency and grammar fixes (#65820))
 
 /// Exploration drone unlockables ///
 

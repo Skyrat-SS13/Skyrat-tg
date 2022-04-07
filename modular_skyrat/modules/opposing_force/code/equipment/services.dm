@@ -60,3 +60,8 @@
 /datum/opposing_force_equipment/service/market_crash/on_issue()
 	var/datum/round_event_control/event = locate(/datum/round_event_control/market_crash) in SSevents.control
 	event.runEvent()
+
+/datum/opposing_force_equipment/service/fake_announcer
+	name = "Fake Announcement"
+	item_type = /obj/item/device/traitor_announcer
+	description = "A one-use device that lets you make an announcement of your choice, sending it to the station under the guise of the captain's authority."
