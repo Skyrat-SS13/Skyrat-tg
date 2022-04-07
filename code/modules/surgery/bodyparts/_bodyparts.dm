@@ -777,6 +777,36 @@
 
 	icon_exists(limb.icon, limb.icon_state, TRUE) //Prints a stack trace on the first failure of a given iconstate.
 
+	// MARKINGS CODE BEGIN SKYRAT EDIT
+
+	var/override_color
+	if(limb_id == "husk")
+		override_color = "#888888"
+
+	if(owner && !is_pseudopart && ishuman(owner))
+		var/mob/living/carbon/human/human = owner
+		for(var/key in human.dna.species.body_markings[body_zone])
+			var/datum/body_marking/body_marking = GLOB.body_markings[key]
+			if (!body_marking)
+				continue
+			var/render_limb_string = body_zone
+
+			var/mutable_appearance/accessory_overlay
+			var/mutable_appearance/emissive
+			accessory_overlay = mutable_appearance(body_marking.icon, "[body_marking.icon_state]_[render_limb_string]", -BODYPARTS_LAYER)
+			accessory_overlay.alpha = human.dna.species.markings_alpha
+			if (human.dna.species.body_markings[body_zone][key][2])
+				emissive = emissive_appearance_copy(accessory_overlay)
+			if(override_color)
+				accessory_overlay.color = override_color
+			else
+				accessory_overlay.color = human.dna.species.body_markings[body_zone][key][1]
+			. += accessory_overlay
+			if (emissive)
+				. += emissive
+
+	// MARKINGS CODE END SKYRAT EDIT
+
 	if(aux_zone) //Hand shit
 		aux = image(limb.icon, "[limb_id]_[aux_zone]", -aux_layer, image_dir)
 		. += aux
@@ -911,7 +941,7 @@
  * Arguments:
  * * gauze- Just the gauze stack we're taking a sheet from to apply here
  */
-/*
+/* SKYRAT EDIT REMOVAL
 /obj/item/bodypart/proc/apply_gauze(obj/item/stack/gauze)
 	if(!istype(gauze) || !gauze.absorption_capacity)
 		return
@@ -933,7 +963,7 @@
  * Arguments:
  * * seep_amt - How much absorption capacity we're removing from our current bandages (think, how much blood or pus are we soaking up this tick?)
  */
-/*
+/* SKYRAT EDIT REMOVAL
 /obj/item/bodypart/proc/seep_gauze(seep_amt = 0)
 	if(!current_gauze)
 		return

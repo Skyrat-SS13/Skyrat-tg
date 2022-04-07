@@ -342,6 +342,28 @@
 
 	return standing
 
+
+/obj/item/proc/wear_species_version(file_to_use, state_to_use, layer, species, default_file_to_use)
+	return
+
+/**
+ * Generates a species-specific clothing icon.
+ *
+ * Arguments:
+ * * file_to_use - Icon file to use for clothing sprite
+ * * state_to_use - Icon state to use within file_to_use
+ * * layer - specifies the sprite layer the sprite will be on
+ * * species - the specific species the icon will be generated for
+ * * default_file_to_use - default fallback icon to use
+ */
+/obj/item/clothing/wear_species_version(file_to_use, state_to_use, layer, species, default_file_to_use)
+	LAZYINITLIST(GLOB.species_clothing_icons[species])
+	var/icon/species_clothing_icon = GLOB.species_clothing_icons[species][get_species_clothing_key(file_to_use, state_to_use)] // Check if the icon we want already exists
+	if(!species_clothing_icon) 	// Create standing/laying icons if they don't exist
+		generate_species_clothing(file_to_use, state_to_use, species, default_file_to_use)
+	return mutable_appearance(GLOB.species_clothing_icons[species][get_species_clothing_key(file_to_use, state_to_use)], layer = -layer)
+
+/* TO DO: CHECK AND IMPLEMENT
 //Removed the icon cache from this, as its not feasible to make a cache for the plathora of customizable species and markings
 /mob/living/carbon/human/update_body_parts()
 	//CHECK FOR UPDATE
@@ -373,23 +395,4 @@
 	apply_overlay(BODYPARTS_LAYER)
 	update_damage_overlays()
 	update_wound_overlays()
-
-/obj/item/proc/wear_species_version(file_to_use, state_to_use, layer, species, default_file_to_use)
-	return
-
-/**
- * Generates a species-specific clothing icon.
- *
- * Arguments:
- * * file_to_use - Icon file to use for clothing sprite
- * * state_to_use - Icon state to use within file_to_use
- * * layer - specifies the sprite layer the sprite will be on
- * * species - the specific species the icon will be generated for
- * * default_file_to_use - default fallback icon to use
- */
-/obj/item/clothing/wear_species_version(file_to_use, state_to_use, layer, species, default_file_to_use)
-	LAZYINITLIST(GLOB.species_clothing_icons[species])
-	var/icon/species_clothing_icon = GLOB.species_clothing_icons[species][get_species_clothing_key(file_to_use, state_to_use)] // Check if the icon we want already exists
-	if(!species_clothing_icon) 	// Create standing/laying icons if they don't exist
-		generate_species_clothing(file_to_use, state_to_use, species, default_file_to_use)
-	return mutable_appearance(GLOB.species_clothing_icons[species][get_species_clothing_key(file_to_use, state_to_use)], layer = -layer)
+*/

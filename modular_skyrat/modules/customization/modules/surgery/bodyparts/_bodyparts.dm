@@ -1,3 +1,5 @@
+TO DO: CHECK AND IMPLEMENT
+
 /obj/item/bodypart/proc/get_limb_icon(dropped, draw_external_organs)
 	icon_state = "" //to erase the default sprite, we're building the visual aspects of the bodypart through overlays alone.
 
