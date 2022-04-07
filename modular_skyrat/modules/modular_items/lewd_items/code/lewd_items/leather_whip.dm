@@ -161,12 +161,14 @@
 		return
 
 	var/message = ""
+	var/targetedsomewhere = FALSE
 //and there is code for successful check, so we are whipping someone
 	if(!target.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		to_chat(user, span_danger("[target] doesn't want you to do that."))
 		return
 	switch(user.zone_selected) //to let code know what part of body we gonna whip
 		if(BODY_ZONE_L_LEG)
+			targetedsomewhere = TRUE
 			if(!target.has_feet())
 				to_chat(user, span_danger("[target] is missing their left leg!"))
 				return
@@ -192,6 +194,7 @@
 				playsound(loc, 'sound/weapons/whip.ogg', 60)
 
 		if(BODY_ZONE_R_LEG)
+			targetedsomewhere = TRUE
 			if(!target.has_feet())
 				to_chat(user, span_danger("[target] is missing their right leg!"))
 				return
@@ -217,6 +220,7 @@
 				playsound(loc, 'sound/weapons/whip.ogg', 60)
 
 		if(BODY_ZONE_HEAD)
+			targetedsomewhere = TRUE
 			message = (user == target) ? pick("wraps [src] around [target.p_their()] neck, choking [target.p_them()]self", "chokes [target.p_them()]self with [src]") : pick("chokes [target] with [src]", "twines [src] around [target]'s neck!")
 			if(prob(70) && (target.stat != DEAD))
 				target.emote(pick("gasp","choke", "moan"))
@@ -225,6 +229,7 @@
 			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 80)
 
 		if(BODY_ZONE_PRECISE_GROIN)
+			targetedsomewhere = TRUE
 			if(!target.is_bottomless())
 				to_chat(user, span_danger("[target]'s butt is covered!"))
 				return
@@ -278,6 +283,8 @@
 				target.adjustPain(4)
 				target.adjustArousal(5)
 				playsound(loc, 'sound/weapons/whip.ogg', 60)
+	if(!targetedsomewhere)
+		return
 	user.visible_message(span_purple("[user] [message]!"))
 
 //toggle low pain mode. Because sometimes screaming isn't good

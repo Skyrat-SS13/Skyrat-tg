@@ -1,6 +1,7 @@
 /datum/species/jelly
 	// Entirely alien beings that seem to be made entirely out of gel. They have three eyes and a skeleton visible within them.
 	name = "Jellyperson"
+	plural_form = "Jellypeople"
 	id = SPECIES_JELLYPERSON
 	default_color = "00FF90"
 	say_mod = "chirps"
@@ -68,7 +69,7 @@
 		Cannibalize_Body(H)
 
 	if(regenerate_limbs)
-		regenerate_limbs.UpdateButtonIcon()
+		regenerate_limbs.UpdateButtons()
 
 /datum/species/jelly/proc/Cannibalize_Body(mob/living/carbon/human/H)
 	var/list/limbs_to_consume = list(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG) - H.get_missing_limbs()
@@ -83,6 +84,21 @@
 	to_chat(H, span_userdanger("Your [consumed_limb] is drawn back into your body, unable to maintain its shape!"))
 	qdel(consumed_limb)
 	H.blood_volume += 20
+
+// Slimes have both NOBLOOD and an exotic bloodtype set, so they need to be handled uniquely here.
+// They may not be roundstart but in the unlikely event they become one might as well not leave a glaring issue open.
+/datum/species/jelly/create_pref_blood_perks()
+	var/list/to_add = list()
+
+	to_add += list(list(
+		SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
+		SPECIES_PERK_ICON = "tint",
+		SPECIES_PERK_NAME = "Jelly Blood",
+		SPECIES_PERK_DESC = "[plural_form] don't have blood, but instead have toxic [initial(exotic_blood.name)]! \
+			Jelly is extremely important, as losing it will cause you to lose limbs. Having low jelly will make medical treatment very difficult.",
+	))
+
+	return to_add
 
 /datum/action/innate/regenerate_limbs
 	name = "Regenerate Limbs"
@@ -130,6 +146,7 @@
 
 /datum/species/jelly/slime
 	name = "Slimeperson"
+	plural_form = "Slimepeople"
 	id = SPECIES_SLIMEPERSON
 	default_color = "00FFFF"
 	species_traits = list(MUTCOLORS,EYECOLOR,HAIR,FACEHAIR,NOBLOOD)
@@ -415,6 +432,7 @@
 
 /datum/species/jelly/luminescent
 	name = "Luminescent"
+	plural_form = null
 	id = SPECIES_LUMINESCENT
 	var/glow_intensity = LUMINESCENT_DEFAULT_GLOW
 	var/obj/effect/dummy/luminescent_glow/glow
@@ -457,9 +475,9 @@
 
 /datum/species/jelly/luminescent/proc/update_slime_actions()
 	integrate_extract.update_name()
-	integrate_extract.UpdateButtonIcon()
-	extract_minor.UpdateButtonIcon()
-	extract_major.UpdateButtonIcon()
+	integrate_extract.UpdateButtons()
+	extract_minor.UpdateButtons()
+	extract_major.UpdateButtons()
 
 /datum/species/jelly/luminescent/proc/update_glow(mob/living/carbon/C, intensity)
 	if(intensity)
@@ -498,7 +516,7 @@
 		name = "Eject Extract"
 		desc = "Eject your current slime extract."
 
-/datum/action/innate/integrate_extract/UpdateButtonIcon(status_only, force)
+/datum/action/innate/integrate_extract/UpdateButtons(status_only, force)
 	var/datum/species/jelly/luminescent/species = target
 	if(!species || !species.current_extract)
 		button_icon_state = "slimeconsume"
@@ -597,6 +615,7 @@
 
 /datum/species/jelly/stargazer
 	name = "Stargazer"
+	plural_form = null
 	id = SPECIES_STARGAZER
 	/// Special "project thought" telepathy action for stargazers.
 	var/datum/action/innate/project_thought/project_action

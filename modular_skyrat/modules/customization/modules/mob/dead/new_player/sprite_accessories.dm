@@ -248,6 +248,10 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "pantyhose_ripped"
 	use_static = null
 
+/datum/sprite_accessory/socks/stockings_ripped
+	name = "Stockings - Ripped"
+	icon_state = "stockings_ripped"
+
 /datum/sprite_accessory/underwear
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
 	///Whether the underwear uses a special sprite for digitigrade style (i.e. briefs, not panties). Adds a "_d" suffix to the icon state
@@ -385,7 +389,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "LIZARED Underwear"
 	icon_state = "lizared"
 	use_static = TRUE
-	
+
 /datum/sprite_accessory/underwear/digibriefs
 	name = "Digi Briefs"
 	icon_state = "briefs_d"

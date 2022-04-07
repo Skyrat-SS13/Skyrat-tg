@@ -16,7 +16,7 @@
 		return ..()
 	if(istype(attacking_item, /obj/item/forging/hammer))
 		var/obj/item/forging/hammer/attacking_hammer = attacking_item
-		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER) * attacking_hammer.work_time
+		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER) * attacking_hammer.toolspeed
 		while(atom_integrity < max_integrity)
 			if(!do_after(user, skill_modifier, src))
 				return
@@ -151,6 +151,22 @@
 	resistance_flags = FIRE_PROOF
 	attack_verb_continuous = list("bashes", "whacks")
 	attack_verb_simple = list("bash", "whack")
+	tool_behaviour = TOOL_HAMMER
+	///the list of things that, if attacked, will set the attack speed to rapid
+	var/static/list/fast_attacks = list(
+		/obj/structure/reagent_anvil,
+		/obj/structure/reagent_crafting_bench
+	)
+
+/obj/item/forging/reagent_weapon/hammer/Initialize()
+	. = ..()
+	AddElement(/datum/element/kneejerk)
+
+/obj/item/forging/reagent_weapon/hammer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	. = ..()
+	if(!is_type_in_list(target, fast_attacks))
+		return
+	user.changeNext_move(CLICK_CD_RAPID)
 
 /obj/item/shield/riot/buckler/reagent_weapon //Same as a buckler, but metal.
 	name = "reagent plated buckler shield"
@@ -185,7 +201,7 @@
 		return ..()
 	if(istype(attacking_item, /obj/item/forging/hammer))
 		var/obj/item/forging/hammer/attacking_hammer = attacking_item
-		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER) * attacking_hammer.work_time
+		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER) * attacking_hammer.toolspeed
 		while(atom_integrity < max_integrity)
 			if(!do_after(user, skill_modifier, src))
 				return
@@ -224,3 +240,71 @@
 /obj/item/shovel/reagent_weapon/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/reagent_weapon)
+
+/obj/item/ammo_casing/caseless/arrow/wood/forged
+	desc = "An arrow made of wood, typically fired from a bow. It can be reinforced with sinew."
+	projectile_type = /obj/projectile/bullet/reusable/arrow/wood/forged
+
+/obj/item/ammo_casing/caseless/arrow/wood/forged/attackby(obj/item/attacking_item, mob/user, params)
+	if(istype(attacking_item, /obj/item/stack/sheet/sinew))
+		var/obj/item/stack/stack_item = attacking_item
+		if(!stack_item.use(1))
+			return
+		new /obj/item/ammo_casing/caseless/arrow/ash(get_turf(src))
+		qdel(src)
+		return
+	return ..()
+
+/obj/projectile/bullet/reusable/arrow/wood/forged
+	name = "wooden arrow"
+	desc = "Woosh!"
+	damage = 25
+	icon_state = "arrow"
+	ammo_type = /obj/item/ammo_casing/caseless/arrow/wood/forged
+
+#define INCREASE_BLOCK_CHANGE 2
+
+/obj/item/forging/reagent_weapon/bokken
+	name = "reagent bokken"
+	desc = "A bokken that can be imbued with a reagent. It can be dual-wielded to increase block chance!"
+	force = 15
+	icon_state = "bokken"
+	inhand_icon_state = "bokken"
+	throwforce = 10
+	block_chance = 20
+	slot_flags = ITEM_SLOT_BACK
+	w_class = WEIGHT_CLASS_BULKY
+	resistance_flags = FIRE_PROOF
+	attack_verb_continuous = list("bonks", "bashes", "whacks", "pokes", "prods")
+	attack_verb_simple = list("bonk", "bash", "whack", "poke", "prod")
+	///whether the bokken is being wielded or not
+	var/wielded = FALSE
+
+/obj/item/forging/reagent_weapon/bokken/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text, final_block_chance, damage, attack_type)
+	if(wielded)
+		final_block_chance *= INCREASE_BLOCK_CHANGE
+	if(prob(final_block_chance))
+		if(attack_type == PROJECTILE_ATTACK)
+			owner.visible_message(span_danger("[owner] deflects [attack_text] with [src]!"))
+			playsound(src, pick('sound/weapons/effects/ric1.ogg', 'sound/weapons/effects/ric2.ogg', 'sound/weapons/effects/ric3.ogg', 'sound/weapons/effects/ric4.ogg', 'sound/weapons/effects/ric5.ogg'), 100, TRUE)
+		else
+			playsound(src, 'sound/weapons/parry.ogg', 75, TRUE)
+			owner.visible_message(span_danger("[owner] parries [attack_text] with [src]!"))
+		return TRUE
+	return FALSE
+
+#undef INCREASE_BLOCK_CHANGE
+
+/obj/item/forging/reagent_weapon/bokken/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
+	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)
+	AddComponent(/datum/component/two_handed, force_unwielded=15, force_wielded=7)
+
+/obj/item/forging/reagent_weapon/bokken/proc/on_wield()
+	SIGNAL_HANDLER
+	wielded = TRUE
+
+/obj/item/forging/reagent_weapon/bokken/proc/on_unwield()
+	SIGNAL_HANDLER
+	wielded = FALSE

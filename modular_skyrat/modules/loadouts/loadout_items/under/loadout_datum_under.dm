@@ -118,17 +118,17 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/sectrafficop
 	name = "Sol Traffic Cop Uniform"
-	item_path = /obj/item/clothing/under/rank/security/peacekeeper/junior/sol/traffic
+	item_path = /obj/item/clothing/under/rank/security/peacekeeper/sol/traffic
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_SECURITY_MEDIC)
 
-/datum/loadout_item/under/jumpsuit/solofficerthing
+/datum/loadout_item/under/jumpsuit/solofficer
 	name = "Sol Officer Uniform"
 	item_path = /obj/item/clothing/under/rank/security/peacekeeper/sol
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_SECURITY_MEDIC)
 
 /datum/loadout_item/under/jumpsuit/disco
-	name = "Superstar Cop Suit"
-	item_path = /obj/item/clothing/under/misc/discounder
+	name = "Superstar Cop Uniform"
+	item_path = /obj/item/clothing/under/rank/security/detective/disco
 	restricted_roles = list(JOB_DETECTIVE)
 
 /datum/loadout_item/under/jumpsuit/seckilt
@@ -136,10 +136,25 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/security/blackwatch
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_SECURITY_MEDIC)
 
-/datum/loadout_item/under/jumpsuit/para_red
-	name = "Red Paramedic Jumpsuit"
-	item_path = /obj/item/clothing/under/utility/para_red
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_PARAMEDIC, JOB_SECURITY_MEDIC)
+/datum/loadout_item/under/jumpsuit/paramed_dark
+	name = "Dark Paramedic Jumpsuit"
+	item_path = /obj/item/clothing/under/rank/medical/paramedic/skyrat/dark
+	restricted_roles = list(JOB_PARAMEDIC)
+
+/datum/loadout_item/under/jumpsuit/paramed_dark_skirt
+	name = "Dark Paramedic Jumpskirt"
+	item_path = /obj/item/clothing/under/rank/medical/paramedic/skyrat/dark/skirt
+	restricted_roles = list(JOB_PARAMEDIC)
+
+/datum/loadout_item/under/jumpsuit/chemist_formal
+	name = "Chemist's Formal Jumpsuit"
+	item_path = /obj/item/clothing/under/rank/medical/chemist/skyrat/formal
+	restricted_roles = list(JOB_CHEMIST)
+
+/datum/loadout_item/under/jumpsuit/chemist_formal_skirt
+	name = "Chemist's Formal Jumpskirt"
+	item_path = /obj/item/clothing/under/rank/medical/chemist/skyrat/formal/skirt
+	restricted_roles = list(JOB_CHEMIST)
 
 /datum/loadout_item/under/jumpsuit/utility
 	name = "Utility Uniform"
@@ -152,7 +167,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/utility_med
 	name = "Medical Utility Uniform"
-	item_path = /obj/item/clothing/under/utility/med
+	item_path = /obj/item/clothing/under/rank/medical/doctor/skyrat/utility
 	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_VIROLOGIST, JOB_GENETICIST, JOB_SECURITY_MEDIC, JOB_CHIEF_MEDICAL_OFFICER, JOB_PSYCHOLOGIST, JOB_ORDERLY)
 
 /datum/loadout_item/under/jumpsuit/utility_sci
@@ -167,7 +182,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/utility_cargo
 	name = "Supply Utility Uniform"
-	item_path = /obj/item/clothing/under/utility/cargo
+	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
 	restricted_roles = list(JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_QUARTERMASTER, JOB_CUSTOMS_AGENT)
 
 /datum/loadout_item/under/jumpsuit/utility_sec
@@ -253,6 +268,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/jeans_musthang
 	name = "Must Hang Jeans"
 	item_path = /obj/item/clothing/under/pants/mustangjeans
+
+/datum/loadout_item/under/miscellaneous/pants/blackshorts
+	name = "Black ripped shorts"
+	item_path = /obj/item/clothing/under/pants/blackshorts
 
 /datum/loadout_item/under/miscellaneous/purple_short
 	name = "Purple Shorts"
@@ -461,33 +480,33 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	restricted_roles = list(JOB_PRISONER)
 
 /datum/loadout_item/under/miscellaneous/medrscrubs
-	name = "Red Scrubs (security)"
-	item_path = /obj/item/clothing/under/rank/medical/doctor/red
+	name = "Security Medic's Scrubs"
+	item_path = /obj/item/clothing/under/rank/medical/scrubs/skyrat/red/sec
 	restricted_roles = list(JOB_SECURITY_MEDIC)
 
 /datum/loadout_item/under/miscellaneous/redscrubs
 	name = "Red Scrubs"
-	item_path = /obj/item/clothing/under/rank/medical/doctor/red/unarm
+	item_path = /obj/item/clothing/under/rank/medical/scrubs/skyrat/red
 	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST, JOB_SECURITY_MEDIC, JOB_PARAMEDIC)
 
 /datum/loadout_item/under/miscellaneous/bluescrubs
 	name = "Blue Scrubs"
-	item_path = /obj/item/clothing/under/rank/medical/doctor/blue
+	item_path = /obj/item/clothing/under/rank/medical/scrubs/blue
 	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST, JOB_SECURITY_MEDIC, JOB_PARAMEDIC)
 
 /datum/loadout_item/under/miscellaneous/greenscrubs
 	name = "Green Scrubs"
-	item_path = /obj/item/clothing/under/rank/medical/doctor/green
+	item_path = /obj/item/clothing/under/rank/medical/scrubs/green
 	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST, JOB_SECURITY_MEDIC, JOB_PARAMEDIC)
 
 /datum/loadout_item/under/miscellaneous/purplescrubs
 	name = "Purple Scrubs"
-	item_path = /obj/item/clothing/under/rank/medical/doctor/purple
+	item_path = /obj/item/clothing/under/rank/medical/scrubs/purple
 	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST, JOB_SECURITY_MEDIC, JOB_PARAMEDIC)
 
 /datum/loadout_item/under/miscellaneous/whitescrubs
 	name = "White Scrubs"
-	item_path = /obj/item/clothing/under/rank/medical/doctor/white
+	item_path = /obj/item/clothing/under/rank/medical/scrubs/skyrat/white
 	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST, JOB_SECURITY_MEDIC, JOB_PARAMEDIC)
 
 /datum/loadout_item/under/miscellaneous/swept_skirt
@@ -536,12 +555,12 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/cargo_casual
 	name = "Cargo Tech Casual Wear"
-	item_path = /obj/item/clothing/under/rank/cargo/casualman
+	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/casualman
 	restricted_roles = list(JOB_CARGO_TECHNICIAN)
 
 /datum/loadout_item/under/miscellaneous/cargo_casual
 	name = "Black Cargo Uniform"
-	item_path = /obj/item/clothing/under/misc/evilcargo
+	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/evil
 	restricted_roles = list(JOB_CARGO_TECHNICIAN)
 
 /datum/loadout_item/under/miscellaneous/eve
@@ -784,10 +803,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Fancy Suit"
 	item_path = /obj/item/clothing/under/suit/fancy
 
-/datum/loadout_item/under/formal/formalmed
-	name = "Formal Medical Suit"
-	item_path = /obj/item/clothing/under/rank/medical/doctor/formal
-	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST, JOB_SECURITY_MEDIC, JOB_PARAMEDIC, JOB_PSYCHOLOGIST)
 
 /datum/loadout_item/under/formal/kimono
 	name = "Kimono"

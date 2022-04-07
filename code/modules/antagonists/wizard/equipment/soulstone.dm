@@ -172,6 +172,11 @@
 	if(HAS_TRAIT(M, TRAIT_NO_SOUL))
 		to_chat(user, span_warning("This body does not possess a soul to capture."))
 		return
+	// SKYRAT EDIT START
+	if(!do_after(user, 5 SECONDS, M))
+		to_chat(user, span_warning("You must stand still to capture their soul!"))
+		return
+	// SKYRAT EDIT END
 	log_combat(user, M, "captured [M.name]'s soul", src)
 	capture_soul(M, user)
 

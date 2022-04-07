@@ -257,7 +257,7 @@
 				to_chat(usr, span_warning("ERROR: Unable to locate data core entry for target."))
 				return
 			if(href_list["status"])
-				var/setcriminal = input(usr, "Specify a new criminal status for this person.", "Security HUD", sec_record.fields["criminal"]) in list("None", "*Arrest*", "Incarcerated", "Paroled", "Discharged", "Cancel") //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+				var/setcriminal = input(usr, "Specify a new criminal status for this person.", "Security HUD", sec_record.fields["criminal"]) in list("None", "*Arrest*", "Incarcerated", "Suspected", "Paroled", "Discharged", "Cancel") //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 				if(setcriminal != "Cancel")
 					if(!sec_record) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 						return
@@ -478,6 +478,8 @@
 				if("*Arrest*")
 					threatcount += 5
 				if("Incarcerated")
+					threatcount += 2
+				if("Suspected")
 					threatcount += 2
 				if("Paroled")
 					threatcount += 2

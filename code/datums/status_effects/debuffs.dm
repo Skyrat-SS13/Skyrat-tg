@@ -245,7 +245,9 @@
 	owner.add_filter("stasis_status_ripple", 2, list("type" = "ripple", "flags" = WAVE_BOUNDED, "radius" = 0, "size" = 2))
 	var/filter = owner.get_filter("stasis_status_ripple")
 	animate(filter, radius = 32, time = 15, size = 0, loop = -1)
-
+	if(iscarbon(owner))
+		var/mob/living/carbon/carbon_owner = owner
+		carbon_owner.update_bodypart_bleed_overlays()
 
 /datum/status_effect/grouped/stasis/tick()
 	update_time_of_death()
@@ -260,6 +262,9 @@
 		owner.clear_alert("numbed") //SKYRAT EDIT END
 	owner.remove_filter("stasis_status_ripple")
 	update_time_of_death()
+	if(iscarbon(owner))
+		var/mob/living/carbon/carbon_owner = owner
+		carbon_owner.update_bodypart_bleed_overlays()
 	return ..()
 
 /atom/movable/screen/alert/status_effect/stasis
@@ -553,7 +558,7 @@
 	new /obj/effect/temp_visual/bleed/explode(T)
 	for(var/d in GLOB.alldirs)
 		new /obj/effect/temp_visual/dir_setting/bloodsplatter(T, d)
-	playsound(T, "desecration", 100, TRUE, -1)
+	playsound(T, SFX_DESECRATION, 100, TRUE, -1)
 
 /datum/status_effect/stacking/saw_bleed/bloodletting
 	id = "bloodletting"
@@ -1032,6 +1037,15 @@
 	processing_speed = STATUS_EFFECT_NORMAL_PROCESS
 	/// Will act as the main timer as well as changing how much damage the ants do.
 	var/ants_remaining = 0
+	/// Common phrases people covered in ants scream
+	var/static/list/ant_debuff_speech = list(
+		"GET THEM OFF ME!!",
+		"OH GOD THE ANTS!!",
+		"MAKE IT END!!",
+		"THEY'RE EVERYWHERE!!",
+		"GET THEM OFF!!",
+		"SOMEBODY HELP ME!!"
+	)
 
 /datum/status_effect/ants/on_creation(mob/living/new_owner, amount_left)
 	if(isnum(amount_left) && new_owner.stat < HARD_CRIT)
@@ -1070,7 +1084,7 @@
 		if(prob(15))
 			switch(rand(1,2))
 				if(1)
-					victim.say(pick("GET THEM OFF ME!!", "OH GOD THE ANTS!!", "MAKE IT END!!", "THEY'RE EVERYWHERE!!", "GET THEM OFF!!", "SOMEBODY HELP ME!!"), forced = /datum/status_effect/ants)
+					victim.say(pick(ant_debuff_speech), forced = /datum/status_effect/ants)
 				if(2)
 					victim.emote("scream")
 		if(prob(50)) // Most of the damage is done through random chance. When tested yielded an average 100 brute with 200u ants.
@@ -1120,7 +1134,7 @@
 /atom/movable/screen/alert/status_effect/ghoul
 	name = "Flesh Servant"
 	desc = "You are a Ghoul! A eldritch monster reanimated to serve its master."
-	icon_state = "mind_control"
+	icon_state = ALERT_MIND_CONTROL
 
 
 /datum/status_effect/stagger
@@ -1166,3 +1180,21 @@
 
 /datum/movespeed_modifier/freezing_blast
 	multiplicative_slowdown = 1
+
+/datum/status_effect/discoordinated
+	id = "discoordinated"
+	status_type = STATUS_EFFECT_UNIQUE
+	alert_type = /atom/movable/screen/alert/status_effect/discoordinated
+
+/atom/movable/screen/alert/status_effect/discoordinated
+	name = "Discoordinated"
+	desc = "You can't seem to properly use anything..."
+	icon_state = "convulsing"
+
+/datum/status_effect/discoordinated/on_apply()
+	ADD_TRAIT(owner, TRAIT_DISCOORDINATED_TOOL_USER, "[type]")
+	return ..()
+
+/datum/status_effect/discoordinated/on_remove()
+	REMOVE_TRAIT(owner, TRAIT_DISCOORDINATED_TOOL_USER, "[type]")
+	return ..()

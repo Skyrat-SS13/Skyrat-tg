@@ -27,10 +27,10 @@
 			if((strain.spread_flags & DISEASE_SPREAD_SPECIAL) || (strain.spread_flags & DISEASE_SPREAD_NON_CONTAGIOUS))
 				continue
 
-			if((methods & (TOUCH|VAPOR)) && (strain.spread_flags & DISEASE_SPREAD_CONTACT_FLUIDS))
-				exposed_mob.ContactContractDisease(strain)
-			else //ingest, patch or inject
+			if(methods & (INJECT|INGEST|PATCH))
 				exposed_mob.ForceContractDisease(strain)
+			else if((methods & (TOUCH|VAPOR)) && (strain.spread_flags & DISEASE_SPREAD_CONTACT_FLUIDS))
+				exposed_mob.ContactContractDisease(strain)
 
 	if(iscarbon(exposed_mob))
 		var/mob/living/carbon/exposed_carbon = exposed_mob
@@ -88,7 +88,14 @@
 
 	var/obj/effect/decal/cleanable/blood/bloodsplatter = locate() in exposed_turf //find some blood here
 	if(!bloodsplatter)
-		bloodsplatter = new(exposed_turf)
+		bloodsplatter = new(exposed_turf, data["viruses"])
+	else if(LAZYLEN(data["viruses"]))
+		var/list/viri_to_add = list()
+		for(var/datum/disease/virus in data["viruses"])
+			if(virus.spread_flags & DISEASE_SPREAD_CONTACT_FLUIDS)
+				viri_to_add += virus
+		if(LAZYLEN(viri_to_add))
+			bloodsplatter.AddComponent(/datum/component/infective, viri_to_add)
 	if(data["blood_DNA"])
 		bloodsplatter.add_blood_DNA(list(data["blood_DNA"] = data["blood_type"]))
 
@@ -135,6 +142,7 @@
 		src.data |= data.Copy()
 
 /datum/reagent/vaccine/fungal_tb
+	name = "Vaccine (Fungal Tuberculosis)"
 
 /datum/reagent/vaccine/fungal_tb/New(data)
 	. = ..()
@@ -1786,9 +1794,8 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/carpet/expose_turf(turf/exposed_turf, reac_volume)
-	if(isplatingturf(exposed_turf) || istype(exposed_turf, /turf/open/floor/iron))
-		var/turf/open/floor/target_floor = exposed_turf
-		target_floor.PlaceOnTop(carpet_type, flags = CHANGETURF_INHERIT_AIR)
+	if(isopenturf(exposed_turf) && exposed_turf.turf_flags & IS_SOLID && !istype(exposed_turf, /turf/open/floor/carpet))
+		exposed_turf.PlaceOnTop(carpet_type, flags = CHANGETURF_INHERIT_AIR)
 	..()
 
 /datum/reagent/carpet/black
@@ -2762,19 +2769,29 @@
 	var/ant_damage = 0
 	/// Tells the debuff how many ants we are being covered with.
 	var/amount_left = 0
+	/// List of possible common statements to scream when eating ants
+	var/static/list/ant_screams = list(
+		"THEY'RE UNDER MY SKIN!!",
+		"GET THEM OUT OF ME!!",
+		"HOLY HELL THEY BURN!!",
+		"MY GOD THEY'RE INSIDE ME!!",
+		"GET THEM OUT!!"
+		)
 
 /datum/reagent/ants/on_mob_life(mob/living/carbon/victim, delta_time)
 	victim.adjustBruteLoss(max(0.1, round((ant_damage * 0.025),0.1))) //Scales with time. Roughly 32 brute with 100u.
+	ant_damage++
+	if(ant_damage < 5) // Makes ant food a little more appetizing, since you won't be screaming as much.
+		return ..()
 	if(DT_PROB(5, delta_time))
 		if(DT_PROB(5, delta_time)) //Super rare statement
 			victim.say("AUGH NO NOT THE ANTS! NOT THE ANTS! AAAAUUGH THEY'RE IN MY EYES! MY EYES! AUUGH!!", forced = /datum/reagent/ants)
 		else
-			victim.say(pick("THEY'RE UNDER MY SKIN!!", "GET THEM OUT OF ME!!", "HOLY HELL THEY BURN!!", "MY GOD THEY'RE INSIDE ME!!", "GET THEM OUT!!"), forced = /datum/reagent/ants)
+			victim.say(pick(ant_screams), forced = /datum/reagent/ants)
 	if(DT_PROB(15, delta_time))
 		victim.emote("scream")
 	if(DT_PROB(2, delta_time)) // Stuns, but purges ants.
 		victim.vomit(rand(5,10), FALSE, TRUE, 1, TRUE, FALSE, purge_ratio = 1)
-	ant_damage++
 	return ..()
 
 /datum/reagent/ants/on_mob_end_metabolize(mob/living/living_anthill)
@@ -2812,7 +2829,7 @@
 		pests = new(exposed_turf)
 	var/spilled_ants = (round(reac_volume,1) - 5) // To account for ant decals giving 3-5 ants on initialize.
 	pests.reagents.add_reagent(/datum/reagent/ants, spilled_ants)
-	pests.update_ant_damage(spilled_ants)
+	pests.update_ant_damage()
 
 //This is intended to a be a scarce reagent to gate certain drugs and toxins with. Do not put in a synthesizer. Renewable sources of this reagent should be inefficient.
 /datum/reagent/lead

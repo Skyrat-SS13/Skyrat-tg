@@ -183,38 +183,30 @@
 	include_subtypes = TRUE
 
 //circuit boards
-/obj/item/circuitboard/machine/xenoarch_researcher
+/obj/item/circuitboard/machine/xenoarch_machine
+	greyscale_colors = CIRCUIT_COLOR_SCIENCE
+	req_components = list(
+		/obj/item/stock_parts/micro_laser = 1,
+		/obj/item/stock_parts/matter_bin = 1,
+		/obj/item/stack/cable_coil = 2,
+		/obj/item/stack/sheet/glass = 2)
+	needs_anchored = TRUE
+
+/obj/item/circuitboard/machine/xenoarch_machine/xenoarch_researcher
 	name = "Xenoarch Researcher (Machine Board)"
-	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/xenoarch/researcher
-	req_components = list(
-		/obj/item/stock_parts/micro_laser = 1,
-		/obj/item/stock_parts/matter_bin = 1,
-		/obj/item/stack/cable_coil = 2,
-		/obj/item/stack/sheet/glass = 2)
-	needs_anchored = TRUE
 
-/obj/item/circuitboard/machine/xenoarch_scanner
+/obj/item/circuitboard/machine/xenoarch_machine/xenoarch_scanner
 	name = "Xenoarch Scanner (Machine Board)"
-	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/xenoarch/scanner
-	req_components = list(
-		/obj/item/stock_parts/micro_laser = 1,
-		/obj/item/stock_parts/matter_bin = 1,
-		/obj/item/stack/cable_coil = 2,
-		/obj/item/stack/sheet/glass = 2)
-	needs_anchored = TRUE
 
-/obj/item/circuitboard/machine/xenoarch_recoverer
+/obj/item/circuitboard/machine/xenoarch_machine/xenoarch_recoverer
 	name = "Xenoarch Recoverer (Machine Board)"
-	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/xenoarch/recoverer
-	req_components = list(
-		/obj/item/stock_parts/micro_laser = 1,
-		/obj/item/stock_parts/matter_bin = 1,
-		/obj/item/stack/cable_coil = 2,
-		/obj/item/stack/sheet/glass = 2)
-	needs_anchored = TRUE
+
+/obj/item/circuitboard/machine/xenoarch_machine/xenoarch_digger
+	name = "Xenoarch Digger (Machine Board)"
+	build_path = /obj/machinery/xenoarch/digger
 
 /obj/item/paper/fluff/xenoarch_guide
 	name = "xenoarchaeology guide - MUST READ"

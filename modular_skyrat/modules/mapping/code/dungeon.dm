@@ -27,7 +27,7 @@
 	planetary_atmos = FALSE
 
 /turf/open/floor/plating/cobblestone/planet
-	baseturfs = /turf/open/floor/plating/dirt/planet
+	baseturfs = /turf/open/misc/dirt/planet
 	planetary_atmos = TRUE
 
 /turf/open/floor/plating/cobblestone/dungeon

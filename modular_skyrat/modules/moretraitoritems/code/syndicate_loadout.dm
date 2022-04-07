@@ -30,7 +30,7 @@
 	new /obj/item/clothing/glasses/thermal/syndi(src)
 	new /obj/item/knife/combat/survival(src)
 	new /obj/item/gun/energy/disabler(src)
-	new /obj/item/storage/briefcase/launchpad(src)
+// 	new /obj/item/storage/briefcase/launchpad(src) // Removed for now.
 	new /obj/item/binoculars(src)
 	new /obj/item/encryptionkey/syndicate(src)
 	new /obj/item/storage/box/syndie_kit/space(src)

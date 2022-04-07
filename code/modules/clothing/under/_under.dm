@@ -10,7 +10,8 @@
 	drop_sound = 'sound/items/handling/cloth_drop.ogg'
 	pickup_sound = 'sound/items/handling/cloth_pickup.ogg'
 	limb_integrity = 30
-	var/fitted = FEMALE_UNIFORM_FULL // For use in alternate clothing styles for women
+	/// The variable containing the flags for how the woman uniform cropping is supposed to interact with the sprite.
+	var/female_sprite_flags = FEMALE_UNIFORM_FULL
 	var/has_sensor = HAS_SENSORS // For the crew computer
 	var/random_sensor = TRUE
 	var/sensor_mode = NO_SENSORS
@@ -21,6 +22,16 @@
 	var/mutable_appearance/accessory_overlay
 	var/mutantrace_variation = NO_MUTANTRACE_VARIATION //Are there special sprites for specific situations? Don't use this unless you need to.
 	var/freshly_laundered = FALSE
+
+/obj/item/clothing/under/Initialize(mapload)
+	. = ..()
+	if(random_sensor)
+		//make the sensor mode favor higher levels, except coords.
+		sensor_mode = pick(SENSOR_VITALS, SENSOR_VITALS, SENSOR_VITALS, SENSOR_LIVING, SENSOR_LIVING, SENSOR_COORDS, SENSOR_COORDS, SENSOR_OFF)
+	// SKYRAT EDIT START - Teshari skirt
+	if(!(body_parts_covered & LEGS)) 
+		species_clothing_icon_state = "under_skirt"
+	// SKYRAT EDIT END
 
 /obj/item/clothing/under/worn_overlays(mutable_appearance/standing, isinhands = FALSE)
 	. = ..()
@@ -62,16 +73,6 @@
 	else if(damaged_state == CLOTHING_PRISTINE && has_sensor == BROKEN_SENSORS)
 		has_sensor = HAS_SENSORS
 
-/obj/item/clothing/under/Initialize(mapload)
-	. = ..()
-	if(random_sensor)
-		//make the sensor mode favor higher levels, except coords.
-		sensor_mode = pick(SENSOR_OFF, SENSOR_LIVING, SENSOR_LIVING, SENSOR_VITALS, SENSOR_VITALS, SENSOR_VITALS, SENSOR_COORDS, SENSOR_COORDS)
-	// SKYRAT EDIT START - Teshari skirt
-	if(!(body_parts_covered & LEGS)) 
-		species_clothing_icon_state = "under_skirt"
-	// SKYRAT EDIT END
-
 /obj/item/clothing/under/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
@@ -97,7 +98,7 @@
 	..()
 	if(adjusted)
 		adjusted = NORMAL_STYLE
-		fitted = initial(fitted)
+		female_sprite_flags = initial(female_sprite_flags)
 		if(!alt_covers_chest)
 			body_parts_covered |= CHEST
 
@@ -312,13 +313,13 @@
 		return
 	adjusted = !adjusted
 	if(adjusted)
-		if(fitted != FEMALE_UNIFORM_TOP)
-			fitted = NO_FEMALE_UNIFORM
+		if(female_sprite_flags != FEMALE_UNIFORM_TOP_ONLY)
+			female_sprite_flags = NO_FEMALE_UNIFORM
 		if(!alt_covers_chest) // for the special snowflake suits that expose the chest when adjusted (and also the arms, realistically)
 			body_parts_covered &= ~CHEST
 			body_parts_covered &= ~ARMS
 	else
-		fitted = initial(fitted)
+		female_sprite_flags = initial(female_sprite_flags)
 		if(!alt_covers_chest)
 			body_parts_covered |= CHEST
 			body_parts_covered |= ARMS

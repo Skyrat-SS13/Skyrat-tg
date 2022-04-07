@@ -120,7 +120,7 @@
 /obj/item/clothing/suit/toggle/labcoat/para_red/Initialize()
 	. = ..()
 	allowed += list(
-		/obj/item/storage/firstaid,
+		/obj/item/storage/medkit,
 	)
 
 //Costume-suits are located under other_port.dm, to keep them with their costume sets

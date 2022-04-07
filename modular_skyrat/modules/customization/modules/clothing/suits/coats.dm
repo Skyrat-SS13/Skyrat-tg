@@ -301,3 +301,13 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	blood_overlay_type = "coat"
+
+/obj/item/clothing/suit/croptop
+	name = "black crop top turtleneck"
+	desc = "A comfy looking turtleneck that exposes your midriff, fashionable but makes the point of a sweater moot."
+	icon_state = "croptop_black"
+	body_parts_covered = CHEST|ARMS
+	cold_protection = CHEST|ARMS
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	mutant_variants = NONE

@@ -80,5 +80,11 @@
 			to yourself. The egg is extremely fragile, do not crush it in your hand nor throw it. \
 			The egg is required to sit out in the open in order to hatch. (Cannot be hidden in closets, etc.)"
 	progression_minimum = 20 MINUTES
-	item = /obj/effect/mob_spawn/ghost_role/borer_egg
+	item = /obj/effect/mob_spawn/ghost_role/borer_egg/traitor
 	cost = 20
+
+/obj/effect/mob_spawn/ghost_role/borer_egg/traitor
+	prompt_name = "cortical borer (traitor spawned)"
+
+/obj/effect/mob_spawn/ghost_role/borer_egg/opfor
+	prompt_name = "cortical borer (OPFOR spawned)"

@@ -6,6 +6,7 @@
 	desc = "A traditional ancient Earth Japanese Kimono"
 	icon_state = "kimono"
 	body_parts_covered = CHEST|GROIN
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY //Stop cutting a hole in the Kimono, please :)
 
 /obj/item/clothing/under/costume/kimono/dark
 	name = "dark kimono"
@@ -137,14 +138,6 @@
 	desc = "A plain grey shirt and black pants - a much more rugged option compared to the jumpsuit."
 	icon_state = "greyshirt"
 
-/obj/item/clothing/under/misc/cargo_long
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	name = "cargo technician's long jumpsuit"
-	desc = "For crate-pushers who'd rather protect their legs than show them off."
-	icon_state = "cargo_long"
-	can_adjust = TRUE
-
 /obj/item/clothing/under/misc/mechanic
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
@@ -159,7 +152,7 @@
 	desc = "An extremely short black dress, for those with no shame."
 	icon_state = "littleblackdress_s"
 	body_parts_covered = CHEST|GROIN
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	can_adjust = FALSE
 
 /obj/item/clothing/under/dress/pinktutu
@@ -169,5 +162,5 @@
 	desc = "A fluffy pink tutu."
 	icon_state = "pinktutu_s"
 	body_parts_covered = CHEST|GROIN
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	can_adjust = FALSE

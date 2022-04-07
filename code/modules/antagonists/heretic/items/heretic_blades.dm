@@ -12,7 +12,8 @@
 	flags_1 = CONDUCT_1
 	sharpness = SHARP_EDGED
 	w_class = WEIGHT_CLASS_NORMAL
-	force = 17
+	force = 25 //SKYRAT EDIT - ORIGINAL: 17
+	armour_penetration = 15 // SKYRAT EDIT - ADDITION
 	throwforce = 10
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "rends")
@@ -37,7 +38,7 @@
 			to_chat(user, span_warning("You shatter [src], but your plea goes unanswered."))
 	else
 		to_chat(user,span_warning("You shatter [src]."))
-	playsound(src, "shatter", 70, TRUE) //copied from the code for smashing a glass sheet onto the ground to turn it into a shard
+	playsound(src, SFX_SHATTER, 70, TRUE) //copied from the code for smashing a glass sheet onto the ground to turn it into a shard
 	qdel(src)
 
 /obj/item/melee/sickly_blade/afterattack(atom/target, mob/user, proximity_flag, click_parameters)

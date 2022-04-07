@@ -36,6 +36,7 @@
 
 	apply_overlay(BODYPARTS_LAYER)
 	update_damage_overlays()
+	update_wound_overlays()
 
 /mob/living/carbon/proc/generate_icon_render_key()
 	for(var/X in bodyparts)
@@ -81,9 +82,12 @@
 			if(STYLE_VOX)
 				desired_icon = head.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/head_vox.dmi'
 			if(STYLE_TESHARI)
-				var/static/list/tesh_icon_states = icon_states(TESHARI_HEAD_ICON)
-				if((head.worn_icon_state || head.icon_state) in tesh_icon_states)
-					desired_icon = TESHARI_HEAD_ICON
+				if(head.worn_icon_teshari)
+					desired_icon = head.worn_icon_teshari
+				else
+					var/static/list/tesh_icon_states = icon_states(TESHARI_HEAD_ICON)
+					if((head.worn_icon_state || head.icon_state) in tesh_icon_states)
+						desired_icon = TESHARI_HEAD_ICON
 
 		overlays_standing[HEAD_LAYER] = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = 'icons/mob/clothing/head.dmi', override_icon = desired_icon, mutant_styles = used_style)
 		update_hud_head(head)
@@ -118,9 +122,12 @@
 			if(STYLE_VOX)
 				desired_icon = wear_mask.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/mask_vox.dmi'
 			if(STYLE_TESHARI)
-				var/static/list/tesh_icon_states = icon_states(TESHARI_MASK_ICON)
-				if((wear_mask.worn_icon_state || wear_mask.icon_state) in tesh_icon_states)
-					desired_icon = TESHARI_MASK_ICON
+				if(wear_mask.worn_icon_teshari)
+					desired_icon = wear_mask.worn_icon_teshari
+				else
+					var/static/list/tesh_icon_states = icon_states(TESHARI_MASK_ICON)
+					if((wear_mask.worn_icon_state || wear_mask.icon_state) in tesh_icon_states)
+						desired_icon = TESHARI_MASK_ICON
 
 		if(!(check_obscured_slots() & ITEM_SLOT_MASK))
 			overlays_standing[FACEMASK_LAYER] = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = 'icons/mob/clothing/mask.dmi', override_icon = desired_icon, mutant_styles = used_style)

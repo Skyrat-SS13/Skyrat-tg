@@ -646,6 +646,14 @@
 	holder.update_inv_penis()
 	holder.fan_hud_set_fandom()
 
+/// A check to confirm if you can open the toy's color/design radial menu
+/obj/item/clothing/sextoy/proc/check_menu(mob/living/user)
+	if(!istype(user))
+		return FALSE
+	if(user.incapacitated())
+		return FALSE
+	return TRUE
+
 /////////////////////////////
 // ICON UPDATING EXTENTION //
 /////////////////////////////

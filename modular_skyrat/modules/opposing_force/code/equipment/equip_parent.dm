@@ -1,3 +1,4 @@
+
 /**
  * OPFOR EQUIPMENT DATUM
  *
@@ -19,3 +20,5 @@
 	var/category = ""
 	/// Note to admins, useful if the item is extraordinarily strong
 	var/admin_note
+	/// How many at most can we order of a specific item?
+	var/max_amount = OPFOR_EQUIPMENT_COUNT_LIMIT

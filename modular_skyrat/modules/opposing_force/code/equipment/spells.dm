@@ -37,11 +37,6 @@
 	item_type = /obj/item/book/granter/spell/knock
 	description = "This spell opens nearby doors and closets."
 
-/datum/opposing_force_equipment/spell/barnyard
-	name = "Barnyard Curse"
-	item_type = /obj/item/book/granter/spell/barnyard
-	description = "This spell dooms an unlucky soul to possess the speech and facial attributes of a barnyard animal."
-
 /datum/opposing_force_equipment/spell/charge
 	name = "Charge"
 	item_type = /obj/item/book/granter/spell/charge

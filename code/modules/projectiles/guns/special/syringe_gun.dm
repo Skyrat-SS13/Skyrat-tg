@@ -37,6 +37,12 @@
 /obj/item/gun/syringe/recharge_newshot()
 	if(!syringes.len)
 		return
+	//SKYRAT EDIT SMARTDARTS
+	if(istype(syringes[length(syringes)], /obj/item/reagent_containers/syringe/smartdart))
+		chambered = new /obj/item/ammo_casing/syringegun/dart(src)
+	else
+		chambered = new /obj/item/ammo_casing/syringegun(src)
+	//SKYRAT EDIT SMARTDARTS END
 	chambered.newshot()
 
 /obj/item/gun/syringe/can_shoot()
@@ -193,6 +199,8 @@
 	base_pixel_x = 0
 	pixel_x = 0
 	force = 4
+	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
+	has_gun_safety = FALSE // SKYRAT EDIT
 
 /obj/item/gun/syringe/blowgun/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	visible_message(span_danger("[user] starts aiming with a blowgun!"))

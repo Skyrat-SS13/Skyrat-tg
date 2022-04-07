@@ -190,22 +190,11 @@
 	back = /obj/item/tank/internals/anesthetic
 
 //LOOT
-/obj/item/crowbar/freeman
-	name = "blood soaked crowbar"
-	desc = "A weapon wielded by an ancient physicist, the blood of hundreds seeps through this rod of iron and malice."
-	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/freeman.dmi'
-	icon_state = "crowbar"
-	force = 35
-	throwforce = 45
-	toolspeed = 0.1
-	wound_bonus = 10
-	hitsound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
-	mob_throw_hit_sound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
-	force_opens = TRUE
+
 
 /obj/effect/spawner/random/astrum
 	name = "astrum low"
-	loot = list(/obj/item/storage/firstaid/regular = 10,
+	loot = list(/obj/item/storage/medkit/regular = 10,
 				/obj/item/reagent_containers/syringe/penacid = 5,
 				/obj/item/reagent_containers/syringe/salacid = 20,
 				/obj/item/reagent_containers/syringe/oxandrolone = 20,
@@ -217,7 +206,7 @@
 
 /obj/effect/spawner/random/astrum/mid
 	name = "astrum mid"
-	loot = list(/obj/item/storage/firstaid/expeditionary = 20,
+	loot = list(/obj/item/storage/medkit/expeditionary = 20,
 				/obj/item/shield/riot/tele = 12,
 				/obj/item/dnainjector/shock = 10,
 				/obj/item/book/granter/spell/summonitem = 20,

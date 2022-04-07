@@ -43,12 +43,12 @@
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 
-/obj/item/clothing/sextoy/buttplug/AltClick(mob/user, obj/item/I)
+/obj/item/clothing/sextoy/buttplug/AltClick(mob/user, obj/item/object)
 	if(!color_changed)
 		. = ..()
 		if(.)
 			return
-		var/choice = show_radial_menu(user,src, buttplug_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user,src, buttplug_designs, custom_check = CALLBACK(src, .proc/check_menu, user, object), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_color = choice
@@ -62,20 +62,12 @@
 			. = ..()
 			if(.)
 				return
-			var/choice = show_radial_menu(user,src, buttplug_forms, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+			var/choice = show_radial_menu(user,src, buttplug_forms, custom_check = CALLBACK(src, .proc/check_menu, user, object), radius = 36, require_near = TRUE)
 			if(!choice)
 				return FALSE
 			current_size = choice
 			update_icon()
 			form_changed = TRUE
-
-/// A check to confirm if you can open the toy's color/design radial menu
-/obj/item/clothing/sextoy/buttplug/proc/check_menu(mob/living/user)
-	if(!istype(user))
-		return FALSE
-	if(user.incapacitated())
-		return FALSE
-	return TRUE
 
 /obj/item/clothing/sextoy/buttplug/Initialize()
 	. = ..()

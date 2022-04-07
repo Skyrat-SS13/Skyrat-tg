@@ -42,7 +42,7 @@
 
 /datum/job/nanotrasen_consultant/after_spawn(mob/living/H, mob/M, latejoin)
 	. = ..()
-	to_chat(H, span_boldannounce("As the Nanotrasen Consultant, you are required to follow the following placeholder policy and SOP: https://paradisestation.org/wiki/index.php/nanotrasen_consultant"))
+	to_chat(H, span_boldannounce("As the Nanotrasen Consultant, you are required to follow the following placeholder policy and SOP: https://paradisestation.org/wiki/index.php/Nanotrasen_Representative"))
 	//REMOVE THIS AFTER FAX MACHINES ARE ADDED!!!!
 	to_chat(H, span_boldannounce("If you require IC admin intervention, send an admin help until the fax machine is added."))
 
