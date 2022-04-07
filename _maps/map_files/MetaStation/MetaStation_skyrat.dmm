@@ -22,6 +22,7 @@
 "aat" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
+/mob/living/simple_animal/pet/poppy,
 /turf/open/floor/iron,
 /area/engineering/break_room)
 "aav" = (
@@ -15932,6 +15933,7 @@
 /area/commons/dorms)
 "dRZ" = (
 /obj/machinery/portable_atmospherics/canister/plasma,
+/obj/machinery/atmospherics/miner/plasma,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "dSl" = (
@@ -18547,6 +18549,7 @@
 /obj/machinery/camera/directional/east{
 	c_tag = "Atmospherics Tank - Mix"
 	},
+/obj/effect/turf_decal/vg_decals/atmos/mix,
 /turf/open/floor/engine/vacuum,
 /area/engineering/atmos)
 "eQt" = (
@@ -22685,12 +22688,9 @@
 /turf/open/floor/iron/white,
 /area/science/xenobiology/hallway)
 "gvn" = (
-/obj/structure/chair/sofa/corp/left{
-	desc = "Looks like someone threw it out. Covered in donut crumbs.";
-	name = "couch"
-	},
-/turf/open/space/basic,
-/area/space)
+/mob/living/simple_animal/pet/dog/markus,
+/turf/open/floor/iron,
+/area/cargo/storage)
 "gvH" = (
 /obj/structure/lattice/catwalk,
 /obj/item/barcodescanner,
@@ -24134,6 +24134,7 @@
 /area/maintenance/aft/greater)
 "hdc" = (
 /obj/machinery/portable_atmospherics/canister/nitrogen,
+/obj/machinery/atmospherics/miner/nitrogen,
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "hdf" = (
@@ -25125,6 +25126,7 @@
 /obj/machinery/camera/directional/east{
 	c_tag = "Atmospherics Tank - Air"
 	},
+/obj/effect/turf_decal/vg_decals/atmos/air,
 /turf/open/floor/engine/air,
 /area/engineering/atmos)
 "hAA" = (
@@ -29254,6 +29256,9 @@
 	pixel_x = 5;
 	pixel_y = 7
 	},
+/obj/machinery/posialert{
+	pixel_x = 28
+	},
 /turf/open/floor/iron,
 /area/science/robotics/lab)
 "jmG" = (
@@ -31451,6 +31456,7 @@
 /obj/machinery/camera/directional/east{
 	c_tag = "Atmospherics Tank - Toxins"
 	},
+/obj/effect/turf_decal/vg_decals/atmos/plasma,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "kcQ" = (
@@ -33920,12 +33926,10 @@
 /turf/open/floor/iron,
 /area/cargo/sorting)
 "kZk" = (
-/obj/structure/chair/sofa/corp/right{
-	desc = "Looks like someone threw it out. Covered in donut crumbs.";
-	name = "couch"
-	},
-/turf/open/space/basic,
-/area/space)
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/vending/dorms,
+/turf/open/floor/iron/dark,
+/area/commons/locker)
 "kZq" = (
 /obj/structure/sink{
 	dir = 4;
@@ -38149,9 +38153,8 @@
 /turf/open/floor/plating,
 /area/engineering/main)
 "mzS" = (
-/obj/structure/closet/wardrobe/mixed,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/effect/landmark/start/hangover/closet,
+/obj/machinery/vending/clothing,
 /turf/open/floor/iron/dark,
 /area/commons/locker)
 "mzZ" = (
@@ -39157,6 +39160,7 @@
 /obj/machinery/camera/directional/east{
 	c_tag = "Atmospherics Tank - O2"
 	},
+/obj/effect/turf_decal/vg_decals/atmos/oxygen,
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
 "mTq" = (
@@ -39276,11 +39280,9 @@
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
 "mWd" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/open/space/basic,
-/area/space)
+/mob/living/simple_animal/pet/bumbles,
+/turf/open/floor/iron,
+/area/service/hydroponics)
 "mWg" = (
 /obj/structure/girder,
 /obj/effect/spawner/random/structure/grille,
@@ -40542,6 +40544,7 @@
 /area/hallway/secondary/command)
 "ntx" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/atmospherics/miner/oxygen,
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
 "ntC" = (
@@ -40576,6 +40579,7 @@
 /obj/machinery/camera/directional/east{
 	c_tag = "Atmospherics Tank - N2"
 	},
+/obj/effect/turf_decal/vg_decals/atmos/nitrogen,
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "nua" = (
@@ -46813,6 +46817,7 @@
 /obj/machinery/camera/directional/east{
 	c_tag = "Atmospherics Tank - N2O"
 	},
+/obj/effect/turf_decal/vg_decals/atmos/nitrous_oxide,
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "pNZ" = (
@@ -52617,6 +52622,7 @@
 /area/command/heads_quarters/hos)
 "rZS" = (
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/obj/machinery/atmospherics/miner/carbon_dioxide,
 /turf/open/floor/engine/co2,
 /area/engineering/atmos)
 "saf" = (
@@ -53939,6 +53945,7 @@
 /obj/machinery/camera/directional/east{
 	c_tag = "Atmospherics Tank - CO2"
 	},
+/obj/effect/turf_decal/vg_decals/atmos/carbon_dioxide,
 /turf/open/floor/engine/co2,
 /area/engineering/atmos)
 "sDb" = (
@@ -54197,6 +54204,7 @@
 /area/science/xenobiology)
 "sHM" = (
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide,
+/obj/machinery/atmospherics/miner/n2o,
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "sHW" = (
@@ -58446,6 +58454,10 @@
 /obj/effect/landmark/start/assistant,
 /turf/open/floor/iron,
 /area/commons/fitness/recreation)
+"umn" = (
+/obj/machinery/drone_dispenser/preloaded,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "umr" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
@@ -59129,10 +59141,11 @@
 /turf/open/floor/iron/white,
 /area/security/prison)
 "uzu" = (
-/obj/machinery/vending/clothing,
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/mob/living/simple_animal/pet/dog/corgi/borgi,
 /turf/open/floor/iron/dark,
-/area/commons/locker)
+/area/science/robotics/lab)
 "uzC" = (
 /obj/machinery/atmospherics/pipe/smart/simple/yellow/visible{
 	dir = 4
@@ -62092,10 +62105,6 @@
 "vEJ" = (
 /turf/closed/wall/r_wall,
 /area/engineering/storage/tech)
-"vEN" = (
-/obj/machinery/pinpointer_dispenser,
-/turf/closed/wall,
-/area/cargo/qm)
 "vEY" = (
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /obj/machinery/defibrillator_mount/directional/south,
@@ -79450,10 +79459,10 @@ lMJ
 aaa
 aaa
 aaa
-mWd
 aaa
 aaa
-mWd
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -81815,7 +81824,7 @@ aaa
 aaa
 aaa
 aaa
-mWd
+aaa
 aaa
 aaa
 aaa
@@ -85344,7 +85353,7 @@ aaa
 aaa
 aaa
 aaa
-mWd
+aaa
 aaa
 aaa
 lMJ
@@ -86926,7 +86935,7 @@ mSN
 jbh
 lNk
 ozo
-vEN
+ozo
 sTO
 nKD
 nJQ
@@ -87686,7 +87695,7 @@ wfw
 wfw
 wfw
 wfw
-wfw
+gvn
 tzM
 lYv
 kmv
@@ -98276,7 +98285,7 @@ vkL
 orX
 tFM
 osV
-rVb
+uzu
 osV
 oou
 gYc
@@ -103654,7 +103663,7 @@ rBy
 jQZ
 uUb
 mwm
-iKa
+mWd
 iKa
 epg
 paq
@@ -103877,7 +103886,7 @@ iDA
 dTL
 qCT
 tEQ
-uzu
+sGS
 dnh
 edL
 vJG
@@ -104648,7 +104657,7 @@ dUF
 bwV
 fwn
 vgw
-mzS
+kZk
 dnh
 oJd
 dnh
@@ -105122,7 +105131,7 @@ aaa
 aaa
 aaa
 aaa
-kZk
+aaa
 sjG
 aaa
 aaa
@@ -105379,7 +105388,7 @@ aaa
 aaa
 aaa
 aaa
-gvn
+aaa
 sjG
 aaa
 aaa
@@ -106773,7 +106782,7 @@ jIn
 jIn
 jIn
 vTo
-ciL
+umn
 cKR
 geL
 fDq
