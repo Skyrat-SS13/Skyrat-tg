@@ -2479,7 +2479,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		var/obj/item/bodypart/r_leg/r_leg = new_species.bodypart_overrides[BODY_ZONE_R_LEG]
 		if(r_leg)
 			new_species.bodypart_overrides[BODY_ZONE_R_LEG] = initial(r_leg.digitigrade_type)
-		var/obj/item/bodypart/l_leg/l_leg = new_species.bodypart_overrides[BODY_ZONE_R_LEG]
+		var/obj/item/bodypart/l_leg/l_leg = new_species.bodypart_overrides[BODY_ZONE_L_LEG]
 		if(l_leg)
 			new_species.bodypart_overrides[BODY_ZONE_L_LEG] = initial(l_leg.digitigrade_type)
 

@@ -47,12 +47,12 @@
 	bodytemp_normal = T20C
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	bodypart_overrides = list(
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/ghoul,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/ghoul,
-		BODY_ZONE_HEAD = /obj/item/bodypart/head,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/ghoul,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/ghoul,
-		BODY_ZONE_CHEST = /obj/item/bodypart/chest,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant/ghoul,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant/ghoul,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/ghoul,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/ghoul,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/ghoul,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/ghoul,
 	)
 	//the chest and head cannot be turned into meat
 	//i dont have to worry about sprites due to limbs_icon, thank god
@@ -75,12 +75,12 @@
 		set_ghoul_color(H)
 
 		// 2) BODYPARTS
-		C.part_default_head = /obj/item/bodypart/head
-		C.part_default_chest = /obj/item/bodypart/chest
-		C.part_default_l_arm = /obj/item/bodypart/l_arm/ghoul
-		C.part_default_r_arm = /obj/item/bodypart/r_arm/ghoul
-		C.part_default_l_leg = /obj/item/bodypart/l_leg/ghoul
-		C.part_default_r_leg = /obj/item/bodypart/r_leg/ghoul
+		C.part_default_head = /obj/item/bodypart/head/mutant/ghoul
+		C.part_default_chest = /obj/item/bodypart/chest/mutant/ghoul
+		C.part_default_l_arm = /obj/item/bodypart/l_arm/mutant/ghoul
+		C.part_default_r_arm = /obj/item/bodypart/r_arm/mutant/ghoul
+		C.part_default_l_leg = /obj/item/bodypart/l_leg/mutant/ghoul
+		C.part_default_r_leg = /obj/item/bodypart/r_leg/mutant/ghoul
 		C.ReassignForeignBodyparts()
 
 /datum/species/proc/set_ghoul_color(mob/living/carbon/human/H)
@@ -208,72 +208,6 @@
 			return TRUE // True CANCELS the sequence.
 
 	return ..() // TRUE FALSE
-
-//LIMBS
-
-/obj/item/bodypart/r_arm/ghoul
-	icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
-
-/obj/item/bodypart/l_arm/ghoul
-	icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
-
-/obj/item/bodypart/r_leg/ghoul
-	icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
-
-/obj/item/bodypart/l_leg/ghoul
-	icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
-
-/obj/item/bodypart/r_arm/ghoul/drop_limb(special)
-	//amCondemned = TRUE
-	//var/mob/owner_cache = owner
-	..() // Create Meat, Remove Limb
-	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
-	if (percentHealth > 0)
-		// Create Meat
-		var/obj/item/food/meat/slab/newMeat = new /obj/item/food/meat/slab(src.loc)
-
-		. = newMeat // Return MEAT
-
-	qdel(src)
-
-/obj/item/bodypart/l_arm/ghoul/drop_limb(special)
-	//amCondemned = TRUE
-	//var/mob/owner_cache = owner
-	..() // Create Meat, Remove Limb
-	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
-	if (percentHealth > 0)
-		// Create Meat
-		var/obj/item/food/meat/slab/newMeat = new /obj/item/food/meat/slab(src.loc)
-
-		. = newMeat // Return MEAT
-
-	qdel(src)
-
-/obj/item/bodypart/r_leg/ghoul/drop_limb(special)
-	//amCondemned = TRUE
-	//var/mob/owner_cache = owner
-	..() // Create Meat, Remove Limb
-	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
-	if (percentHealth > 0)
-		// Create Meat
-		var/obj/item/food/meat/slab/newMeat = new /obj/item/food/meat/slab(src.loc)
-
-		. = newMeat // Return MEAT
-
-	qdel(src)
-
-/obj/item/bodypart/l_leg/ghoul/drop_limb(special)
-	//amCondemned = TRUE
-	//var/mob/owner_cache = owner
-	..() // Create Meat, Remove Limb
-	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
-	if (percentHealth > 0)
-		// Create Meat
-		var/obj/item/food/meat/slab/newMeat = new /obj/item/food/meat/slab(src.loc)
-
-		. = newMeat // Return MEAT
-
-	qdel(src)
 
 /mob/living/carbon
 	// Type References for Bodyparts
