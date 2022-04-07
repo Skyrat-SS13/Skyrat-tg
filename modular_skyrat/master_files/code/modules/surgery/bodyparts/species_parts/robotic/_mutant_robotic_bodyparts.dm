@@ -2,37 +2,44 @@
 /obj/item/bodypart/head/robot/mutant
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/synthmammal_parts_greyscale.dmi'
 	limb_id = SPECIES_SYNTHMAMMAL
+	should_draw_greyscale = TRUE
 	uses_mutcolor = TRUE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_SNOUTED //This is temporary. Ideally the "snout" external organ adds to this.
 
 /obj/item/bodypart/chest/robot/mutant
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/synthmammal_parts_greyscale.dmi'
 	uses_mutcolor = TRUE
+	should_draw_greyscale = TRUE
 	limb_id = SPECIES_SYNTHMAMMAL
 	is_dimorphic = TRUE
 
 /obj/item/bodypart/l_arm/robot/mutant
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/synthmammal_parts_greyscale.dmi'
 	limb_id = SPECIES_SYNTHMAMMAL
+	should_draw_greyscale = TRUE
 
 /obj/item/bodypart/r_arm/robot/mutant
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/synthmammal_parts_greyscale.dmi'
 	limb_id = SPECIES_SYNTHMAMMAL
+	should_draw_greyscale = TRUE
 
 /obj/item/bodypart/l_leg/robot/mutant
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/synthmammal_parts_greyscale.dmi'
 	limb_id = SPECIES_SYNTHMAMMAL
+	should_draw_greyscale = TRUE
 	digitigrade_type = /obj/item/bodypart/l_leg/robot/digitigrade
 
 /obj/item/bodypart/r_leg/robot/mutant
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/synthmammal_parts_greyscale.dmi'
 	uses_mutcolor = TRUE
+	should_draw_greyscale = TRUE
 	limb_id = SPECIES_SYNTHMAMMAL
 	digitigrade_type = /obj/item/bodypart/r_leg/robot/digitigrade
 
 /obj/item/bodypart/l_leg/robot/digitigrade
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/synthmammal_parts_greyscale.dmi'
 	uses_mutcolor = TRUE
+	should_draw_greyscale = TRUE
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_DIGITIGRADE
 	/// What is our normal limb ID? used for squashing legs.
