@@ -47,7 +47,7 @@
 	. += create_table_notices(list(
 		"name",
 		"job",
-		"is_robot", //SKYRAT EDIT ADD
+		"is_robot", //SKYRAT EDIT ADDITION - Displaying robotic species Icon
 		"life_status",
 		"suffocation",
 		"toxin",
