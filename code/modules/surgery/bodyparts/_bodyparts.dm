@@ -786,13 +786,6 @@
 	else
 		limb.icon_state = "[limb_id]_[body_zone]"
 
-	// SKYRAT EDIT ADDITION
-	if(owner && ishuman(owner))
-		var/mob/living/carbon/human/human = owner
-		if(human.dna.species.limbs_icon)
-			limb.icon = human.dna.species.limbs_icon
-	// SKYRAT EDIT END
-
 	icon_exists(limb.icon, limb.icon_state, TRUE) //Prints a stack trace on the first failure of a given iconstate.
 
 	// SKYRAT EDIT ADDITION BEGIN - MARKINGS CODE
