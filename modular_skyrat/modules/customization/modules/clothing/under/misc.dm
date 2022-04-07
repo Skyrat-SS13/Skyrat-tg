@@ -262,21 +262,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "checkered"
 
-///FORMAL DEPT
-/obj/item/clothing/under/rank/engineering/engineer/formal
-	desc = "A white shirt with garrish mustard pants, lined with protection against light radiation and fire."
-	name = "engineer's formal wear"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "senior_engineer"
-
-/obj/item/clothing/under/rank/engineering/engineer/formal/skirt
-	desc = "A white shirt with a garrish mustard skirt, lined with protection against light radiation and fire."
-	name = "engineer's formal skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "senior_engineer_skirt"
-
 /obj/item/clothing/under/rank/captain/humble
 	desc = "It's a blue jumpsuit with some small gold markings denoting the rank of \"Captain\", more humble than it's sister."
 	name = "captain's humble jumpsuit"

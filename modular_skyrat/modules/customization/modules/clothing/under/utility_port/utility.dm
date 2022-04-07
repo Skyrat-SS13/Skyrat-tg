@@ -11,16 +11,6 @@
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
 	has_sensor = NO_SENSORS
 
-/obj/item/clothing/under/utility/eng
-	name = "engineering utility uniform"
-	desc = "A utility uniform worn by Engineering personnel."
-	icon_state = "util_eng"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 60, ACID = 20) //Same stats as default engineering jumpsuit
-
-/obj/item/clothing/under/utility/eng/syndicate
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
-	has_sensor = NO_SENSORS //"Who is this SYNDICATE OPERATIVE on sensors?"
-
 /obj/item/clothing/under/utility/sci
 	name = "science utility uniform"
 	desc = "A utility uniform worn by NT-certified Science staff."
