@@ -792,6 +792,40 @@
 		aux = image(limb.icon, "[limb_id]_[aux_zone]", -aux_layer, image_dir)
 		. += aux
 
+	draw_color = mutation_color
+	if(should_draw_greyscale) //Should the limb be colored outside of a forced color?
+		draw_color ||= (species_color) || (skin_tone && skintone2hex(skin_tone))
+
+	if(draw_color)
+		limb.color = "[draw_color]"
+		if(aux_zone)
+			aux.color = "[draw_color]"
+
+	//EMISSIVE CODE START
+	if(blocks_emissive)
+		var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, alpha = limb.alpha)
+		limb_em_block.dir = image_dir
+		limb.overlays += limb_em_block
+
+		if(aux_zone)
+			var/mutable_appearance/aux_em_block = emissive_blocker(aux.icon, aux.icon_state, alpha = aux.alpha)
+			aux_em_block.dir = image_dir
+			aux.overlays += aux_em_block
+
+	//EMISSIVE CODE END
+	//Draw external organs like horns and frills
+	for(var/obj/item/organ/external/external_organ in external_organs)
+		if(!dropped && !external_organ.can_draw_on_bodypart(owner))
+			continue
+		//Some externals have multiple layers for background, foreground and between
+		for(var/external_layer in external_organ.all_layers)
+			if(istype(external_organ, /obj/item/organ/external/pod_hair))
+				var/rgb_list = rgb2num(draw_color, COLORSPACE_RGB)
+				// Invert the colour of the pod hair's flower
+				draw_color = rgb(255 - rgb_list[1], 255 - rgb_list[2], 255 - rgb_list[3])
+			if(external_organ.layers & external_layer)
+				external_organ.get_overlays(., image_dir, external_organ.bitflag_to_layer(external_layer), limb_gender, draw_color)
+
 	// SKYRAT EDIT ADDITION BEGIN - MARKINGS CODE
 	var/override_color
 	// First, check to see if this bodypart is husked. If so, we don't want to apply our sparkledog colors to the limb.
@@ -842,40 +876,6 @@
 				if (emissive)
 					. += emissive
 	// SKYRAT EDIT END - MARKINGS CODE END
-
-	draw_color = mutation_color
-	if(should_draw_greyscale) //Should the limb be colored outside of a forced color?
-		draw_color ||= (species_color) || (skin_tone && skintone2hex(skin_tone))
-
-	if(draw_color)
-		limb.color = "[draw_color]"
-		if(aux_zone)
-			aux.color = "[draw_color]"
-
-	//EMISSIVE CODE START
-	if(blocks_emissive)
-		var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, alpha = limb.alpha)
-		limb_em_block.dir = image_dir
-		limb.overlays += limb_em_block
-
-		if(aux_zone)
-			var/mutable_appearance/aux_em_block = emissive_blocker(aux.icon, aux.icon_state, alpha = aux.alpha)
-			aux_em_block.dir = image_dir
-			aux.overlays += aux_em_block
-
-	//EMISSIVE CODE END
-	//Draw external organs like horns and frills
-	for(var/obj/item/organ/external/external_organ in external_organs)
-		if(!dropped && !external_organ.can_draw_on_bodypart(owner))
-			continue
-		//Some externals have multiple layers for background, foreground and between
-		for(var/external_layer in external_organ.all_layers)
-			if(istype(external_organ, /obj/item/organ/external/pod_hair))
-				var/rgb_list = rgb2num(draw_color, COLORSPACE_RGB)
-				// Invert the colour of the pod hair's flower
-				draw_color = rgb(255 - rgb_list[1], 255 - rgb_list[2], 255 - rgb_list[3])
-			if(external_organ.layers & external_layer)
-				external_organ.get_overlays(., image_dir, external_organ.bitflag_to_layer(external_layer), limb_gender, draw_color)
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
 	SHOULD_CALL_PARENT(TRUE)

@@ -46,8 +46,6 @@
 	punchdamagehigh = 5 //highest possible punch damage
 	bodytemp_normal = T20C
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
-
 	bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/ghoul,
 		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/ghoul,

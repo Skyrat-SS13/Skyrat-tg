@@ -3,7 +3,6 @@
 	name = "Vox"
 	id = SPECIES_VOX
 	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/vox_eyes.dmi'
-	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/vox_parts_greyscale.dmi'
 	say_mod = "skrees"
 	default_color = "#00FF00"
 	can_augment = FALSE
@@ -43,6 +42,15 @@
 	species_language_holder = /datum/language_holder/vox
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	learnable_languages = list(/datum/language/common, /datum/language/vox, /datum/language/schechi)
+	digitigrade_customization = DIGITIGRADE_OPTIONAL
+	bodypart_overrides = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/vox,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/vox,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant/vox,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant/vox,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/vox,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/vox,
+	)
 
 /datum/species/vox/pre_equip_species_outfit(datum/job/job, mob/living/carbon/human/equipping, visuals_only)
 	. = ..()

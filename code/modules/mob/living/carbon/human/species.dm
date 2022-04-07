@@ -2476,8 +2476,12 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	//Note for future: Potentionally add a new C.dna.species() to build a template species for more accurate limb replacement
 
 	if((new_species.digitigrade_customization == DIGITIGRADE_OPTIONAL && target.dna.features["legs"] == "Digitigrade Legs") || new_species.digitigrade_customization == DIGITIGRADE_FORCED)
-		new_species.bodypart_overrides[BODY_ZONE_R_LEG] = /obj/item/bodypart/r_leg/digitigrade
-		new_species.bodypart_overrides[BODY_ZONE_L_LEG] = /obj/item/bodypart/l_leg/digitigrade
+		var/obj/item/bodypart/r_leg/r_leg = new_species.bodypart_overrides[BODY_ZONE_R_LEG]
+		if(r_leg)
+			new_species.bodypart_overrides[BODY_ZONE_R_LEG] = initial(r_leg.digitigrade_type)
+		var/obj/item/bodypart/l_leg/l_leg = new_species.bodypart_overrides[BODY_ZONE_R_LEG]
+		if(l_leg)
+			new_species.bodypart_overrides[BODY_ZONE_L_LEG] = initial(l_leg.digitigrade_type)
 
 	for(var/obj/item/bodypart/old_part as anything in target.bodyparts)
 		if(old_part.change_exempt_flags & BP_BLOCK_CHANGE_SPECIES)

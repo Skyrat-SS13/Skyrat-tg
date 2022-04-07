@@ -1,23 +1,17 @@
-/datum/species/mammal
-	name = "Anthromorph" //Called so because the species is so much more universal than just mammals
-	id = SPECIES_MAMMAL
+/datum/species/robotic/synthetic_mammal
+	name = "Synthetic Anthromorph"
+	id = SPECIES_SYNTHMAMMAL
+	say_mod = "states"
+	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	default_color = "#4B4B4B"
 	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAS_FLESH,
-		HAS_BONE,
-		HAIR,
+		ROBOTIC_DNA_ORGANS,
+		MUTCOLORS,EYECOLOR,
+		LIPS,HAIR,
+		ROBOTIC_LIMBS,
+		NOTRANSSTING,
 		FACEHAIR
 	)
-	inherent_traits = list(
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
-		TRAIT_CAN_USE_FLIGHT_POTION,
-	)
-	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
 		"snout" = ACC_RANDOM,
@@ -30,26 +24,17 @@
 		"head_acc" = "None",
 		"neck_acc" = "None"
 	)
-	attack_verb = "slash"
-	attack_effect = ATTACK_EFFECT_CLAW
-	attack_sound = 'sound/weapons/slash.ogg'
-	miss_sound = 'sound/weapons/slashmiss.ogg'
-	liked_food = GRAIN | MEAT
-	disliked_food = CLOTH | GROSS
-	toxic_food = TOXIC
-	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	digitigrade_customization = DIGITIGRADE_OPTIONAL
 	bodypart_overrides = list(
-		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant,
-		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/robot/mutant,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/robot/mutant,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/robot/mutant,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/robot/mutant,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/robot/mutant,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/robot/mutant,
 	)
 
-/datum/species/mammal/get_random_features()
+/datum/species/robotic/synthetic_mammal/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	var/main_color
 	var/second_color
@@ -89,7 +74,7 @@
 	returned["mcolor3"] = third_color
 	return returned
 
-/datum/species/mammal/get_random_body_markings(list/passed_features)
+/datum/species/robotic/synthetic_mammal/get_random_body_markings(list/passed_features)
 	var/name = "None"
 	var/list/candidates = GLOB.body_marking_sets.Copy()
 	for(var/candi in candidates)
@@ -103,4 +88,3 @@
 	if(BMS)
 		markings = assemble_body_markings_from_set(BMS, passed_features, src)
 	return markings
-
