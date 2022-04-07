@@ -19,6 +19,10 @@
 		uses--
 	priority_announce(html_decode(user.treat_message(input)), null, ANNOUNCER_CAPTAIN, JOB_CAPTAIN, has_important_message = TRUE)
 	user.log_talk(input, LOG_SAY, tag = "priority announcement")
-	message_admins("[ADMIN_LOOKUPFLW(user)] has purchased a priority announement from their uplink.")
+	message_admins("[ADMIN_LOOKUPFLW(user)] has used [src] to make a fake announcement of [input].")
 	if(!uses)
 		qdel(src)
+
+// Adminbus
+/obj/item/device/traitor_announcer/infinite
+	uses = -1

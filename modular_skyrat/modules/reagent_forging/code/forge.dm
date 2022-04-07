@@ -66,6 +66,7 @@
 		"Hammer" = /obj/item/forging/incomplete/hammer,
 		"Pickaxe" = /obj/item/forging/incomplete/pickaxe,
 		"Shovel" = /obj/item/forging/incomplete/shovel,
+		"Arrowhead" = /obj/item/forging/incomplete/arrowhead,
 	)
 
 /obj/structure/reagent_forge/examine(mob/user)
@@ -144,10 +145,10 @@
 
 	if(forge_temperature > 0)
 		icon_state = "[primitive ? "primitive_" : ""]forge_full"
-		light_range = 3
+		set_light(3, 1, LIGHT_COLOR_FIRE)
 	else if(forge_temperature <= 0)
 		icon_state = "[primitive ? "primitive_" : ""]forge_empty"
-		light_range = 0
+		set_light(0)
 
 /**
  * Here we fix any weird in_use bugs

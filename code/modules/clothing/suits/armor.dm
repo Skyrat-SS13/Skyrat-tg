@@ -99,12 +99,6 @@
 			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
 			RESKIN_WORN_ICON_STATE = "hostrench"
 		),
-		"Formal Jacket" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "hosformal",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "hosformal"
-		),
 		"Navy Blue Jacket" = list(
 			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
 			RESKIN_ICON_STATE = "hosbluejacket",
@@ -141,6 +135,7 @@
 	icon_state = "hosformal"
 	inhand_icon_state = "hostrench"
 	body_parts_covered = CHEST|GROIN|ARMS
+	current_skin = "hosformal"	//SKYRAT EDIT ADDITION - prevents reskinning (but not toggling!)
 
 /obj/item/clothing/suit/armor/hos/hos_formal/Initialize(mapload)
 	. = ..()
@@ -166,11 +161,11 @@
 			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
 			RESKIN_WORN_ICON_STATE = "warden_alt"
 		),
-		"Alternative Warden Armor" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "warden_jacket",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "warden_jacket"
+		"Standard" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "vest_warden",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "vest_warden",
 		),
 		"Peacekeeper" = list(
 			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',

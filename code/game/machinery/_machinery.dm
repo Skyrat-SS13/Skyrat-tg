@@ -536,6 +536,11 @@
 	if(!.)
 		return FALSE
 
+	var/turf/user_turf = get_turf(user)
+	var/turf/machine_turf = get_turf(src)
+	if(!(user_turf in machine_turf.atmos_adjacent_turfs))
+		return FALSE
+
 	if((interaction_flags_machine & INTERACT_MACHINE_REQUIRES_SIGHT) && user.is_blind())
 		to_chat(user, span_warning("This machine requires sight to use."))
 		return FALSE
@@ -967,7 +972,7 @@
 	take_damage(500, BRUTE, MELEE, 1)
 
 /obj/machinery/vv_edit_var(vname, vval)
-	if(vname == "occupant")
+	if(vname == NAMEOF(src, occupant))
 		set_occupant(vval)
 		datum_flags |= DF_VAR_EDITED
 		return TRUE
