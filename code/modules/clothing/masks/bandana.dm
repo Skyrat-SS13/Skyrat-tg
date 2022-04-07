@@ -7,7 +7,8 @@
 	slot_flags = ITEM_SLOT_MASK
 	adjusted_flags = ITEM_SLOT_HEAD
 	species_exception = list(/datum/species/golem)
-
+	icon_state = "bandana"
+	worn_icon_state = "bandana_worn"
 /obj/item/clothing/mask/bandana/attack_self(mob/user)
 	adjustmask(user)
 	//SKYRAT EDIT START: BANDANA HATS FOR MUTANTS
