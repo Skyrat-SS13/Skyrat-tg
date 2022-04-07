@@ -68,7 +68,7 @@
 		var/list/entry = list()
 		entry["name"] = player_record["name"]
 		entry["job"] = player_record["assignment"]
-		entry["is_robot"] = player_record["is_robot"] //SKYRAT EDIT ADD
+		entry["is_robot"] = player_record["is_robot"] //SKYRAT EDIT ADDITION - Displaying robotic species Icon
 		entry["life_status"] = player_record["life_status"]
 		entry["suffocation"] = player_record["oxydam"]
 		entry["toxin"] = player_record["toxdam"]
