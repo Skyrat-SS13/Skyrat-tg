@@ -920,6 +920,13 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
+"aiH" = (
+/obj/machinery/atmospherics/pipe/smart/simple/green/visible{
+	dir = 4
+	},
+/obj/machinery/meter,
+/turf/closed/wall/r_wall,
+/area/engineering/atmos)
 "aiT" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron,
@@ -2984,9 +2991,12 @@
 /obj/item/folder/white,
 /obj/item/reagent_containers/glass/beaker/cryoxadone,
 /obj/item/reagent_containers/glass/beaker/cryoxadone,
-/obj/item/reagent_containers/dropper,
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /obj/machinery/airalarm/directional/south,
+/obj/item/reagent_containers/glass/beaker/cryoxadone,
+/obj/item/reagent_containers/glass/beaker/cryoxadone,
+/obj/item/storage/pill_bottle/mannitol,
+/obj/item/reagent_containers/dropper,
 /turf/open/floor/iron/white,
 /area/medical/cryo)
 "aMQ" = (
@@ -7719,7 +7729,7 @@
 /turf/open/space,
 /area/space/nearstation)
 "bSd" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/open/floor/iron,
 /area/medical/cryo)
 "bSm" = (
@@ -10082,7 +10092,6 @@
 /turf/open/floor/iron,
 /area/hallway/primary/central/fore)
 "crK" = (
-/obj/structure/grille,
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
 	dir = 4
 	},
@@ -27236,13 +27245,6 @@
 /obj/structure/chair/stool/directional/south,
 /turf/open/floor/plating,
 /area/maintenance/fore)
-"fGc" = (
-/obj/structure/grille,
-/obj/machinery/atmospherics/pipe/smart/simple/yellow/visible{
-	dir = 4
-	},
-/turf/closed/wall/r_wall,
-/area/engineering/atmos)
 "fGi" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -45540,7 +45542,9 @@
 /area/science/misc_lab/range)
 "kYo" = (
 /obj/effect/landmark/start/medical_doctor,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/co2{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/medical/cryo)
 "kYz" = (
@@ -45921,13 +45925,6 @@
 	},
 /turf/open/floor/carpet/red,
 /area/hallway/secondary/service)
-"leT" = (
-/obj/structure/grille,
-/obj/machinery/atmospherics/pipe/smart/simple/green/visible{
-	dir = 4
-	},
-/turf/closed/wall/r_wall,
-/area/engineering/atmos)
 "lfd" = (
 /obj/machinery/light/directional/south,
 /obj/effect/decal/cleanable/dirt,
@@ -57101,7 +57098,6 @@
 	dir = 4
 	},
 /obj/machinery/meter,
-/obj/structure/grille,
 /turf/closed/wall/r_wall,
 /area/engineering/atmos)
 "osk" = (
@@ -62464,7 +62460,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/open/floor/iron,
 /area/medical/cryo)
 "pZc" = (
@@ -64699,7 +64695,6 @@
 /area/medical/surgery/aft)
 "qJT" = (
 /obj/machinery/meter,
-/obj/structure/grille,
 /obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
 	dir = 4
 	},
@@ -65282,19 +65277,10 @@
 /turf/open/floor/iron,
 /area/maintenance/port/fore)
 "qSC" = (
-/obj/structure/table,
-/obj/item/reagent_containers/glass/beaker/cryoxadone{
-	pixel_x = -6;
-	pixel_y = 6
-	},
-/obj/item/reagent_containers/glass/beaker/cryoxadone{
-	pixel_x = 6;
-	pixel_y = 6
-	},
-/obj/item/storage/pill_bottle/mannitol,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
 /turf/open/floor/iron,
 /area/medical/cryo)
 "qSK" = (
@@ -79168,7 +79154,6 @@
 /turf/open/floor/iron,
 /area/security/office)
 "uYg" = (
-/obj/structure/grille,
 /obj/machinery/atmospherics/pipe/smart/simple/yellow/visible{
 	dir = 4
 	},
@@ -82133,11 +82118,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/transit_tube)
-"vVy" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/pinpointer_dispenser,
-/turf/open/floor/plating,
-/area/hallway/secondary/entry)
 "vVI" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/item/kirbyplants/random,
@@ -82306,6 +82286,11 @@
 	},
 /turf/open/floor/circuit/telecomms,
 /area/science/xenobiology)
+"vXE" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden,
+/turf/open/floor/plating,
+/area/medical/cryo)
 "vXL" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/siding/white,
@@ -85654,7 +85639,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/open/floor/iron,
 /area/medical/cryo)
 "xau" = (
@@ -86371,6 +86356,13 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/wood,
 /area/commons/dorms)
+"xmQ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/yellow/visible{
+	dir = 4
+	},
+/obj/machinery/meter,
+/turf/closed/wall/r_wall,
+/area/engineering/atmos)
 "xmS" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -110817,13 +110809,13 @@ gem
 cfO
 byz
 vFd
-fGc
+xmQ
 jEV
-leT
+aiH
 vFd
-fGc
+xmQ
 jEV
-leT
+aiH
 vFd
 crK
 jEV
@@ -110831,17 +110823,17 @@ uYg
 vFd
 abj
 vFd
-cHo
+xmQ
 jEV
-tjL
+aiH
 vFd
-cHo
+xmQ
 jEV
-tjL
+aiH
 vFd
-cHo
+xmQ
 jEV
-tjL
+aiH
 vFd
 yfC
 vFd
@@ -123904,7 +123896,7 @@ aaa
 aaa
 aaa
 aaa
-vVy
+aaO
 wit
 svt
 tUC
@@ -134548,7 +134540,7 @@ cUG
 cPv
 bpw
 lFN
-nxe
+vXE
 qSC
 kYo
 bSd
