@@ -765,6 +765,17 @@
 			limb.overlays += limb_em_block
 		return
 
+	//HUSK SHIIIIT
+	if(is_husked)
+		limb.icon = icon_husk
+		limb.icon_state = "[husk_type]_husk_[body_zone]"
+		icon_exists(limb.icon, limb.icon_state, scream = TRUE) //Prints a stack trace on the first failure of a given iconstate.
+		if(aux_zone) //Hand shit
+			aux = image(limb.icon, "[husk_type]_husk_[aux_zone]", -aux_layer, image_dir)
+			. += aux
+		return .
+	//END HUSK SHIIIIT
+
 	////This is the MEAT of limb icon code
 	limb.icon = icon_greyscale
 	if(!should_draw_greyscale || !icon_greyscale)
@@ -778,7 +789,6 @@
 	icon_exists(limb.icon, limb.icon_state, TRUE) //Prints a stack trace on the first failure of a given iconstate.
 
 	// MARKINGS CODE BEGIN SKYRAT EDIT
-
 	var/override_color
 	if(limb_id == "husk")
 		override_color = "#888888"
@@ -804,7 +814,6 @@
 			. += accessory_overlay
 			if (emissive)
 				. += emissive
-
 	// MARKINGS CODE END SKYRAT EDIT
 
 	if(aux_zone) //Hand shit
