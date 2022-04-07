@@ -488,54 +488,6 @@
 	relevant_mutant_bodypart = "spines"
 	type_to_check = /datum/preference/toggle/spines
 
-/// Legs
-
-/datum/preference/toggle/legs
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "legs_toggle"
-	relevant_mutant_bodypart = "legs"
-	default_value = FALSE
-
-/datum/preference/toggle/legs/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	return TRUE // we dont actually want this to do anything
-
-/datum/preference/toggle/legs/is_accessible(datum/preferences/preferences)
-	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
-	return passed_initial_check || allowed
-
-/datum/preference/choiced/legs
-	savefile_key = "feature_legs"
-	savefile_identifier = PREFERENCE_CHARACTER
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	relevant_mutant_bodypart = "legs"
-
-/datum/preference/choiced/legs/is_accessible(datum/preferences/preferences)
-	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
-	var/part_enabled = preferences.read_preference(/datum/preference/toggle/legs)
-	return ((passed_initial_check || allowed) && part_enabled)
-
-/datum/preference/choiced/legs/init_possible_values()
-	return assoc_to_keys(GLOB.sprite_accessories["legs"])
-
-/datum/preference/choiced/legs/apply_to_human(mob/living/carbon/human/target, value)
-	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
-		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
-	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_NAME] = value
-
-/datum/preference/choiced/legs/create_default_value()
-	var/datum/sprite_accessory/legs/none/default = /datum/sprite_accessory/legs/none
-	return initial(default.name)
-
-/datum/preference/tri_color/legs
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "legs_color"
-	relevant_mutant_bodypart = "legs"
-	type_to_check = /datum/preference/toggle/legs
-
 /// Caps
 
 /datum/preference/toggle/caps

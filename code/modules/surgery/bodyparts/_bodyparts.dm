@@ -788,6 +788,10 @@
 
 	icon_exists(limb.icon, limb.icon_state, TRUE) //Prints a stack trace on the first failure of a given iconstate.
 
+	if(aux_zone) //Hand shit
+		aux = image(limb.icon, "[limb_id]_[aux_zone]", -aux_layer, image_dir)
+		. += aux
+
 	// SKYRAT EDIT ADDITION BEGIN - MARKINGS CODE
 	var/override_color
 	// First, check to see if this bodypart is husked. If so, we don't want to apply our sparkledog colors to the limb.
@@ -838,10 +842,6 @@
 				if (emissive)
 					. += emissive
 	// SKYRAT EDIT END - MARKINGS CODE END
-
-	if(aux_zone) //Hand shit
-		aux = image(limb.icon, "[limb_id]_[aux_zone]", -aux_layer, image_dir)
-		. += aux
 
 	draw_color = mutation_color
 	if(should_draw_greyscale) //Should the limb be colored outside of a forced color?

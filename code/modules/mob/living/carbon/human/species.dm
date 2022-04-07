@@ -405,8 +405,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
  * * old_species - The species that the carbon used to be before becoming this race, used for regenerating organs.
  * * pref_load - Preferences to be loaded from character setup, loads in preferred mutant things like bodyparts, digilegs, skin color, etc.
  */
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
 /datum/species/proc/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
 	SHOULD_CALL_PARENT(TRUE)
 	// Drop the items the new species can't wear
@@ -463,6 +461,14 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	if(TRAIT_TOXIMMUNE in inherent_traits)
 		C.setToxLoss(0, TRUE, TRUE)
 
+	// SKYRAT EDIT ADDITION
+	if(TRAIT_OXYIMMUNE in inherent_traits)
+		C.setOxyLoss(0, TRUE, TRUE)
+
+	for(var/obj/item/bodypart/B in C.bodyparts)
+		B.alpha = specific_alpha
+	// SKYRAT EDIT END
+
 	if(TRAIT_NOMETABOLISM in inherent_traits)
 		C.reagents.end_metabolization(C, keep_liverless = TRUE)
 
@@ -480,8 +486,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	C.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 
 	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
-*/
-//SKYRAT EDIT REMOVAL END
 
 /**
  * Proc called when a carbon is no longer this species.

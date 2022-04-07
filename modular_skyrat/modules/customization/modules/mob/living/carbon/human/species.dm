@@ -339,6 +339,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/get_random_body_markings(list/features) //Needs features to base the colour off of
 	return list()
 
+/*
 /datum/species/proc/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	// Drop the items the new species can't wear
 	if((AGENDER in species_traits))
@@ -416,7 +417,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	C.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 
 	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
-
+*/
 /datum/species/proc/handle_body(mob/living/carbon/human/species_human)
 	species_human.remove_overlay(BODY_LAYER)
 
@@ -552,7 +553,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	T.wagging = FALSE
 	H.update_body()
 
-/datum/species/regenerate_organs(mob/living/carbon/C,datum/species/old_species,replace_current=TRUE,list/excluded_zones)
+/datum/species/regenerate_organs(mob/living/carbon/C, datum/species/old_species, replace_current = TRUE, list/excluded_zones, visual_only = FALSE)
 	. = ..()
 	var/robot_organs = (ROBOTIC_DNA_ORGANS in C.dna.species.species_traits)
 	for(var/key in C.dna.mutant_bodyparts)

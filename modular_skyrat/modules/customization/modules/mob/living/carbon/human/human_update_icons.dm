@@ -85,6 +85,7 @@
 	apply_overlay(UNIFORM_LAYER)
 	update_mutant_bodyparts()
 
+/*
 /mob/living/carbon/human/update_inv_wear_suit()
 	remove_overlay(SUIT_LAYER)
 
@@ -142,6 +143,7 @@
 	update_mutant_bodyparts()
 
 	apply_overlay(SUIT_LAYER)
+*/
 
 /mob/living/carbon/human/update_inv_shoes()
 	remove_overlay(SHOES_LAYER)

@@ -20,7 +20,6 @@
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
 		"tail" = "Xenomorph Tail",
-		"legs" = "Digitigrade Legs",
 		"xenodorsal" = ACC_RANDOM,
 		"xenohead" = ACC_RANDOM,
 		"taur" = "None"
