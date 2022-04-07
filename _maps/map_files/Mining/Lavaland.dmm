@@ -1163,12 +1163,6 @@
 /obj/machinery/airalarm/directional/north,
 /turf/open/floor/iron,
 /area/mine/living_quarters)
-"fe" = (
-/obj/structure/bed,
-/obj/item/bedsheet/brown,
-/obj/machinery/airalarm/directional/north,
-/turf/open/floor/carpet,
-/area/mine/living_quarters)
 "fj" = (
 /obj/machinery/vending/snack,
 /obj/effect/turf_decal/tile/bar,
@@ -1400,15 +1394,6 @@
 /obj/machinery/power/apc/auto_name/directional/north,
 /turf/open/floor/iron/dark,
 /area/mine/maintenance)
-"gV" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/machinery/door/airlock/external{
-	name = "Lavaland Shuttle Airlock"
-	},
-/turf/open/floor/iron,
-/area/mine/living_quarters)
 "gX" = (
 /obj/machinery/camera/directional/north{
 	c_tag = "Public Shuttle Lobby";
@@ -1539,6 +1524,17 @@
 	},
 /turf/open/floor/iron,
 /area/mine/living_quarters)
+"jz" = (
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 3;
+	height = 7;
+	id = "lavaland_common_away";
+	name = "Mining base public dock";
+	width = 7
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "jF" = (
 /obj/structure/stone_tile/surrounding_tile,
 /obj/structure/stone_tile/surrounding_tile{
@@ -1631,6 +1627,16 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/mine/living_quarters)
+"kt" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/machinery/door/airlock/external{
+	name = "Lavaland Shuttle Airlock";
+	space_dir = 8
+	},
 /turf/open/floor/iron,
 /area/mine/living_quarters)
 "ku" = (
@@ -2139,6 +2145,16 @@
 /obj/structure/plasticflaps,
 /turf/open/floor/plating,
 /area/mine/laborcamp)
+"nZ" = (
+/obj/structure/bed{
+	dir = 4
+	},
+/obj/item/bedsheet/brown{
+	dir = 4
+	},
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/carpet,
+/area/mine/living_quarters)
 "ob" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 4
@@ -2183,13 +2199,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/mine/production)
-"oN" = (
+"oL" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
+	dir = 8
 	},
 /obj/machinery/door/airlock/external{
-	name = "Lavaland Shuttle Airlock";
-	space_dir = 8
+	name = "Lavaland Shuttle Airlock"
 	},
 /turf/open/floor/iron,
 /area/mine/living_quarters)
@@ -2754,6 +2769,10 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
+"xi" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/closed/wall,
+/area/mine/living_quarters)
 "xn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/directional/north,
@@ -2801,12 +2820,6 @@
 /obj/structure/stone_tile,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
-"yL" = (
-/obj/machinery/computer/shuttle/mining/common{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/mine/living_quarters)
 "yS" = (
 /obj/structure/stone_tile/block{
 	dir = 1
@@ -2871,10 +2884,6 @@
 /obj/structure/closet/secure_closet/labor_camp_security,
 /turf/open/floor/iron,
 /area/mine/laborcamp/security)
-"zY" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/closed/wall,
-/area/mine/living_quarters)
 "Af" = (
 /obj/machinery/light/directional/east,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -3030,6 +3039,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
+"Co" = (
+/obj/machinery/computer/shuttle/mining/common{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/mine/living_quarters)
 "Dh" = (
 /obj/machinery/light/directional/east,
 /obj/effect/turf_decal/tile/brown,
@@ -3412,17 +3427,6 @@
 	id = "whiteship_lavaland";
 	name = "lavaland wastes";
 	width = 35
-	},
-/turf/open/misc/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
-"Iz" = (
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 3;
-	height = 7;
-	id = "lavaland_common_away";
-	name = "Mining base public dock";
-	width = 7
 	},
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
@@ -10758,7 +10762,7 @@ pU
 pU
 pU
 pU
-Iz
+jz
 pU
 pU
 pU
@@ -11015,7 +11019,7 @@ pU
 pU
 pU
 cR
-oN
+kt
 cR
 pU
 pU
@@ -11526,10 +11530,10 @@ dZ
 cM
 cM
 cM
-zY
+xi
 cM
 cR
-gV
+oL
 cR
 aj
 aj
@@ -11783,7 +11787,7 @@ dZ
 cM
 Lg
 kO
-yL
+Co
 kO
 eL
 Pl
@@ -13580,13 +13584,13 @@ dZ
 eq
 fp
 cM
-fe
+nZ
 fr
 cM
-fe
+nZ
 fr
 cM
-fe
+nZ
 fr
 cM
 pU
