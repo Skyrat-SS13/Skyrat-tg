@@ -1334,13 +1334,13 @@
 	icon_state = "teshplush"
 
 // Donation reward for tobjv
-/obj/item/toy/plush/donator/immovablerod
+/obj/item/toy/plush/donator/immovable_rod
 	name = "immovable rod"
 	desc = "Realistic! But also squishy and certainly not as dangerous as its real counterpart."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	icon_state = "immrod"
 
-/obj/item/toy/plush/donator/immovablerod/Bump(atom/clong)
+/obj/item/toy/plush/donator/immovable_rod/Bump(atom/clong)
 	. = ..()
 	if(isliving(clong))
 		playsound(src, 'sound/effects/bang.ogg', 50, TRUE)

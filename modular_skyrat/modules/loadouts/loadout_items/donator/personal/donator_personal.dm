@@ -393,3 +393,13 @@
 	name = "Fish Pendant"
 	item_path = /obj/item/clothing/neck/fishpendant
 	ckeywhitelist = list("cimika")
+
+/datum/loadout_item/toys/immovable_rod_plush
+	name = "Immovable Rod Plushie"
+	item_path = /obj/item/toy/plush/donator/immovable_rod
+	ckeywhitelist = list("tobjv")
+
+/datum/loadout_item/toys/tesh_plush
+	name = "Squish-Me-Tesh Plush"
+	item_path = /obj/item/toy/plush/donator/tesh
+	ckeywhitelist = list("tobjv")
