@@ -33,6 +33,7 @@
 /mob/living/carbon/proc/is_critical()
 	if(HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION))
 		return TRUE
+
 /mob/living/carbon/proc/is_weakened()
 	if(HAS_TRAIT_FROM(src, TRAIT_FLOORED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || has_status_effect(/datum/status_effect/incapacitating/knockdown))
 		return TRUE
@@ -72,9 +73,11 @@
 /mob/living/apply_effect()
 	. = ..()
 	handle_status_effects()
+
 /mob/living/proc/immediate_combat_update(owner)
 	if(iscarbon(owner))
 		handle_status_effects()
+
 /mob/living/carbon/handle_status_effects()
 	..() // Yea, this makes it so the OG proc is called too! Do not . = ..()!
 	is_weakened() ? add_status_indicator("weakened") : remove_status_indicator("weakened") // Critical condition handling - Jank, but otherwise it doesn't show up when you are critical!
