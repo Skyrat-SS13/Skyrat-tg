@@ -131,15 +131,11 @@ const CrewTableEntry = (props, context) => {
         color={jobToColor(ijob)}>
         {name}{assignment !== undefined ? ` (${assignment})` : ""}
       </Table.Cell>
-        {
-        //SKYRAT EDIT BEGIN: Displaying robotic species Icon
-        }
+       <!-- SKYRAT EDIT START - Displaying robotic species Icon -->
       <Table.Cell collapsing textAlign="center">
         {is_robot ? <Icon name="wrench" color="#B7410E" size={1} /> : ""}
       </Table.Cell>
-        {
-          //SKYRAT EDIT END
-        }
+      <!-- SKYRAT EDIT END -->
       <Table.Cell collapsing textAlign="center">
         {life_status ? (
           <ColorBox
