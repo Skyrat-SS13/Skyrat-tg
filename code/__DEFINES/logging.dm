@@ -14,8 +14,6 @@
 #define INVESTIGATE_RADIATION "radiation"
 #define INVESTIGATE_RECORDS "records"
 #define INVESTIGATE_RESEARCH "research"
-#define INVESTIGATE_SINGULO "singulo"
-#define INVESTIGATE_SUPERMATTER "supermatter"
 #define INVESTIGATE_WIRES "wires"
 
 // Logging types for log_message()
