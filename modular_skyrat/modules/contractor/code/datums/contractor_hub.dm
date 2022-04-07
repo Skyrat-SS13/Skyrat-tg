@@ -21,6 +21,8 @@
 	var/contract_paid_out = 0
 	/// Amount of TC that has yet to be redeemed
 	var/contract_TC_to_redeem = 0
+	/// Current index number for contract IDs
+	var/start_index = 1
 
 /// Generates a list of all valid hub items to set for purchase
 /datum/contractor_hub/proc/create_hub_items()
@@ -54,7 +56,6 @@
 	to_generate = shuffle(to_generate)
 
 	// Support contract generation happening multiple times
-	var/start_index = 1
 	if (length(assigned_contracts))
 		start_index = length(assigned_contracts) + 1
 
@@ -80,3 +81,12 @@
 		lowest_paying_contract.contract.payout_bonus += (LOWEST_TC - total)
 
 #undef LOWEST_TC
+
+/datum/contractor_hub/proc/create_single_contract(datum/mind/owner, contract_payout_tier)
+	var/datum/syndicate_contract/contract_to_add = new(owner, assigned_targets, contract_payout_tier)
+
+	assigned_targets.Add(contract_to_add.contract.target)
+
+	contract_to_add.id = start_index
+	assigned_contracts.Add(contract_to_add)
+	start_index++

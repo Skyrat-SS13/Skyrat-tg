@@ -22,6 +22,14 @@
 		/obj/item/mod/module/baton_holster/preloaded,
 	)
 
+/obj/item/mod/control/pre_equipped/contractor/upgraded/adminbus
+	initial_modules = list(
+		/obj/item/mod/module/storage/syndicate,
+		/obj/item/mod/module/jetpack/advanced,
+		/obj/item/mod/module/springlock/contractor,
+		/obj/item/mod/module/baton_holster/preloaded,
+	)
+
 // For the record: modularity makes me want to die
 /obj/item/mod/control/pre_equipped/contractor/Initialize(mapload, new_theme, new_skin, new_core)
 	. = ..()

@@ -33,7 +33,7 @@
 	holster.undeploy(user)
 
 /obj/item/melee/baton/telescopic/contractor_baton/attack_secondary(mob/living/victim, mob/living/user, params)
-	if(!(upgrade_flags & BATON_CUFF_UPGRADE) || !active)
+	if(!((upgrade_flags & BATON_CUFF_UPGRADE) && (upgrade_flags & BATON_ALL_UPGRADE)) || !active)
 		return
 	for(var/obj/item/restraints/handcuffs/cuff in src.contents)
 		cuff.attack(victim, user)
