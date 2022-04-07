@@ -27,7 +27,7 @@
 		if(!applied_style)
 			if((w_uniform.mutant_variants & STYLE_VOX) && dna.species.id == "vox")
 				applied_style = STYLE_VOX
-			else if((DIGITIGRADE in dna.species.species_traits) && (w_uniform.mutant_variants & STYLE_DIGITIGRADE))
+			else if((dna.species.bodytype & BODYTYPE_DIGITIGRADE) && (w_uniform.mutant_variants & STYLE_DIGITIGRADE))
 				applied_style = STYLE_DIGITIGRADE
 			else if(isteshari(src))
 				applied_style = STYLE_TESHARI
@@ -109,7 +109,7 @@
 		if(!applied_style)
 			if((wear_suit.mutant_variants & STYLE_VOX) && dna.species.id == "vox")
 				applied_style = STYLE_VOX
-			else if((DIGITIGRADE in dna.species.species_traits) && (wear_suit.mutant_variants & STYLE_DIGITIGRADE))
+			else if((dna.species.bodytype & BODYTYPE_DIGITIGRADE) && (wear_suit.mutant_variants & STYLE_DIGITIGRADE))
 				applied_style = STYLE_DIGITIGRADE
 			else if(isteshari(src))
 				applied_style = STYLE_TESHARI
@@ -169,7 +169,7 @@
 		if((shoes.mutant_variants & STYLE_VOX) && dna.species.id == "vox")
 			applied_styles = STYLE_VOX
 			icon_file = shoes.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/species/vox/feet.dmi'
-		else if((DIGITIGRADE in dna.species.species_traits) && (shoes.mutant_variants & STYLE_DIGITIGRADE))
+		else if((dna.species.bodytype & BODYTYPE_DIGITIGRADE) && (shoes.mutant_variants & STYLE_DIGITIGRADE))
 			applied_styles = STYLE_DIGITIGRADE
 			icon_file = shoes.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/feet_digi.dmi'
 		else if(isteshari(src))
@@ -345,10 +345,6 @@
 //Removed the icon cache from this, as its not feasible to make a cache for the plathora of customizable species and markings
 /mob/living/carbon/human/update_body_parts()
 	//CHECK FOR UPDATE
-	var/oldkey = icon_render_key
-	icon_render_key = generate_icon_render_key()
-	if(oldkey == icon_render_key)
-		return
 
 	remove_overlay(BODYPARTS_LAYER)
 
@@ -370,7 +366,7 @@
 		if(is_taur && (BP.body_part == LEG_LEFT || BP.body_part == LEG_RIGHT))
 			continue
 
-		new_limbs += BP.get_limb_icon(draw_external_organs = draw_features)
+		new_limbs += BP.get_limb_icon()
 	if(new_limbs.len)
 		overlays_standing[BODYPARTS_LAYER] = new_limbs
 

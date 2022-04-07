@@ -136,6 +136,10 @@
 	var/datum/bodypart_aid/gauze/current_gauze
 	/// If we have a splint currently applied
 	var/datum/bodypart_aid/splint/current_splint
+	/// What icon do we use to render this limb? Ususally used by robotic limb augments.
+	var/rendered_bp_icon
+	/// Do we use an organic render for this robotic limb?
+	var/organic_render = TRUE
 	//SKYRAT EDIT CHANGE END
 	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/hand_item/self_grasp])
 	var/obj/item/hand_item/self_grasp/grasped_by
@@ -722,8 +726,6 @@
 		img.pixel_y = px_y
 	add_overlay(standing)
 
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
 ///Generates an /image for the limb to be used as an overlay
 /obj/item/bodypart/proc/get_limb_icon(dropped)
 	SHOULD_CALL_PARENT(TRUE)
@@ -812,8 +814,6 @@
 				draw_color = rgb(255 - rgb_list[1], 255 - rgb_list[2], 255 - rgb_list[3])
 			if(external_organ.layers & external_layer)
 				external_organ.get_overlays(., image_dir, external_organ.bitflag_to_layer(external_layer), limb_gender, draw_color)
-*/
-//SKYRAT EDIT REMOVAL END
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
 	SHOULD_CALL_PARENT(TRUE)
