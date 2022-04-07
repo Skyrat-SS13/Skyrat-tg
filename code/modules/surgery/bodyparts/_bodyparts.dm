@@ -790,14 +790,15 @@
 
 	// MARKINGS CODE BEGIN SKYRAT EDIT
 	var/override_color
-	if(limb_id == "husk")
+	// First, check to see if this bodypart is husked. If so, we don't want to apply our sparkledog colors to the limb.
+	if(is_husked)
 		override_color = "#888888"
-
+	// We need to check that the owner exists(could be a placed bodypart) and that it's not a chainsawhand and that they're a human with usable DNA.
 	if(owner && !is_pseudopart && ishuman(owner))
 		var/mob/living/carbon/human/human = owner
-		for(var/key in human.dna.species.body_markings[body_zone])
+		for(var/key in human.dna.species.body_markings[body_zone]) // Cycle through all of our currently selected markings.
 			var/datum/body_marking/body_marking = GLOB.body_markings[key]
-			if (!body_marking)
+			if (!body_marking) // Edge case prevention.
 				continue
 			var/render_limb_string = body_zone
 
