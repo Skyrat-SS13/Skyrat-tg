@@ -5,9 +5,9 @@
 		/obj/item/clothing/suit/toggle/labcoat/hospitalgown = 5,
 		/obj/item/storage/belt/medbandolier = 2,
 		/obj/item/clothing/under/rank/engineering/engineer/skyrat/hazard_chem/emt = 2,
-		/obj/item/clothing/under/rank/medical/doctor/red/unarm = 4,
-		/obj/item/clothing/under/rank/medical/doctor/white = 4,
-		/obj/item/clothing/under/utility/med = 4,
+		/obj/item/clothing/under/rank/medical/scrubs/skyrat/red = 4,
+		/obj/item/clothing/under/rank/medical/scrubs/skyrat/white = 4,
+		/obj/item/clothing/under/rank/medical/doctor/skyrat/utility = 4,
 	)
 
 /obj/machinery/vending/wardrobe/engi_wardrobe
@@ -102,8 +102,8 @@
 
 /obj/machinery/vending/wardrobe/chem_wardrobe
 	skyrat_products = list(
-		/obj/item/clothing/under/rank/medical/chemist/formal = 2,
-		/obj/item/clothing/under/rank/medical/chemist/formal/skirt = 2,
+		/obj/item/clothing/under/rank/medical/chemist/skyrat/formal = 2,
+		/obj/item/clothing/under/rank/medical/chemist/skyrat/formal/skirt = 2,
 		/obj/item/clothing/head/beret/medical/chemist = 2,
 	)
 
