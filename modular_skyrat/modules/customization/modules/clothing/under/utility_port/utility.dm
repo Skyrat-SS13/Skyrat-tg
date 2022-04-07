@@ -21,17 +21,6 @@
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
 	has_sensor = NO_SENSORS //"Who is this SYNDICATE OPERATIVE on sensors?"
 
-/obj/item/clothing/under/utility/med
-	name = "medical utility uniform"
-	desc = "A utility uniform worn by Medical doctors."
-	icon_state = "util_med"
-	permeability_coefficient = 0.5
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 0, ACID = 0) //Same stats as default medical jumpsuit
-
-/obj/item/clothing/under/utility/med/syndicate
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
-	has_sensor = NO_SENSORS
-
 /obj/item/clothing/under/utility/sci
 	name = "science utility uniform"
 	desc = "A utility uniform worn by NT-certified Science staff."
@@ -71,13 +60,6 @@
 	name = "sleek roboticst jumpsuit"
 	desc = "A sleek version of the roboticist uniform, complete with sci-fi stripes."
 	icon_state = "robosleek"
-
-/obj/item/clothing/under/utility/para_red
-	name = "red paramedic jumpsuit"
-	desc = "It's made of a special fiber that provides minor protection against biohazards. It's detailed with red stripes and medical symbols, denoting the wearer as a first-responder."
-	icon_state = "pmedred"
-	permeability_coefficient = 0.5
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 0, ACID = 0) //Same stats as the paramedic uniform
 
 /obj/item/clothing/under/utility/haz_green
 	name = "chemical hazard uniform"

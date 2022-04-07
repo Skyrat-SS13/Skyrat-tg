@@ -29,27 +29,27 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 
 /datum/loadout_item/mask/black_bandana
 	name = "Black Bandana"
-	item_path = /obj/item/clothing/mask/bandana/black
+	item_path = /obj/item/clothing/mask/bandana/color/black
 
 /datum/loadout_item/mask/blue_bandana
 	name = "Blue Bandana"
-	item_path = /obj/item/clothing/mask/bandana/blue
+	item_path = /obj/item/clothing/mask/bandana/color/blue
 
 /datum/loadout_item/mask/gold_bandana
 	name = "Gold Bandana"
-	item_path = /obj/item/clothing/mask/bandana/gold
+	item_path = /obj/item/clothing/mask/bandana/color/gold
 
 /datum/loadout_item/mask/green_bandana
 	name = "Green Bandana"
-	item_path = /obj/item/clothing/mask/bandana/green
+	item_path = /obj/item/clothing/mask/bandana/color/green
 
 /datum/loadout_item/mask/red_bandana
 	name = "Red Bandana"
-	item_path = /obj/item/clothing/mask/bandana/red
+	item_path = /obj/item/clothing/mask/bandana/color/red
 
 /datum/loadout_item/mask/skull_bandana
 	name = "Skull Bandana"
-	item_path = /obj/item/clothing/mask/bandana/skull
+	item_path = /obj/item/clothing/mask/bandana/color/skull
 
 /datum/loadout_item/mask/surgical_mask
 	name = "Face Mask"
@@ -107,29 +107,6 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 	name = "Fake moustache"
 	item_path = /obj/item/clothing/mask/fakemoustache
 
-/datum/loadout_item/mask/bandana_redft
-	name = "Skin Tight Red Bandana"
-	item_path = /obj/item/clothing/mask/bandana/red/ft
-
-/datum/loadout_item/mask/bandana_blueft
-	name = "Skin Tight Blue Bandana"
-	item_path = /obj/item/clothing/mask/bandana/blue/ft
-
-/datum/loadout_item/mask/bandana_greenft
-	name = "Skin Tight Green Bandana"
-	item_path = /obj/item/clothing/mask/bandana/green/ft
-
-/datum/loadout_item/mask/bandana_goldft
-	name = "Skin Tight Gold Bandana"
-	item_path = /obj/item/clothing/mask/bandana/gold/ft
-
-/datum/loadout_item/mask/bandana_blackft
-	name = "Skin Tight Black Bandana"
-	item_path = /obj/item/clothing/mask/bandana/black/ft
-
-/datum/loadout_item/mask/bandana_skullft
-	name = "Skin Tight Skull Bandana"
-	item_path = /obj/item/clothing/mask/bandana/skull/ft
 
 /datum/loadout_item/mask/gas_glass
 	name = "Glass Gas Mask"

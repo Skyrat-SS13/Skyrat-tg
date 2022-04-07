@@ -6120,6 +6120,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/showroomfloor,
 /area/medical/medbay/central)
 "aHL" = (
@@ -7981,8 +7982,8 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/landmark/start/paramedic,
+/obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden,
 /turf/open/floor/iron,
 /area/medical/medbay/central)
 "aSB" = (
@@ -12012,7 +12013,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
 	dir = 4
 	},
-/obj/structure/grille,
+/obj/machinery/meter,
 /turf/closed/wall/r_wall,
 /area/engineering/atmos)
 "bvG" = (
@@ -16239,7 +16240,7 @@
 /area/hallway/primary/aft)
 "cbU" = (
 /obj/effect/spawner/structure/window/reinforced/tinted,
-/turf/open/floor/plating,
+/turf/open/floor/plating/airless,
 /area/science/test_area)
 "cbX" = (
 /obj/item/target/clown,
@@ -42986,7 +42987,6 @@
 /area/ai_monitored/command/nuke_storage)
 "jQX" = (
 /obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/pinpointer_dispenser,
 /turf/open/floor/plating,
 /area/security/checkpoint/customs)
 "jRb" = (
@@ -49159,7 +49159,7 @@
 /area/maintenance/port/lesser)
 "lRG" = (
 /obj/machinery/atmospherics/pipe/smart/simple/green/visible,
-/obj/structure/grille,
+/obj/machinery/meter,
 /turf/closed/wall/r_wall/rust,
 /area/engineering/atmos)
 "lSd" = (
@@ -49245,6 +49245,7 @@
 	dir = 1
 	},
 /obj/effect/spawner/random/engineering/tracking_beacon,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/open/floor/iron/showroomfloor,
 /area/medical/medbay/central)
 "lSR" = (
@@ -52571,7 +52572,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/yellow/visible{
 	dir = 4
 	},
-/obj/structure/grille,
+/obj/machinery/meter,
 /turf/closed/wall/r_wall/rust,
 /area/engineering/atmos)
 "mUW" = (
@@ -53982,13 +53983,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/chapel/funeral)
-"nvo" = (
-/obj/structure/grille,
-/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
-	dir = 4
-	},
-/turf/closed/wall/r_wall,
-/area/engineering/atmos)
 "nvS" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/stripes/line,
@@ -54810,7 +54804,7 @@
 /area/engineering/supermatter/room)
 "nLu" = (
 /obj/machinery/atmospherics/pipe/smart/simple/yellow/visible,
-/obj/structure/grille,
+/obj/machinery/meter,
 /turf/closed/wall/r_wall,
 /area/engineering/atmos)
 "nLK" = (
@@ -56313,7 +56307,7 @@
 /area/service/library)
 "ojE" = (
 /obj/machinery/atmospherics/pipe/smart/simple/purple/visible,
-/obj/structure/grille,
+/obj/machinery/meter,
 /turf/closed/wall/r_wall,
 /area/engineering/atmos)
 "ojS" = (
@@ -60423,7 +60417,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/co2{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/medical/medbay/central)
 "pBr" = (
@@ -63283,7 +63279,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/yellow/visible{
 	dir = 4
 	},
-/obj/structure/grille,
+/obj/machinery/meter,
 /turf/closed/wall/r_wall,
 /area/engineering/atmos)
 "qwL" = (
@@ -85280,7 +85276,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/green/visible{
 	dir = 4
 	},
-/obj/structure/grille,
+/obj/machinery/meter,
 /turf/closed/wall/r_wall,
 /area/engineering/atmos)
 "xIo" = (
@@ -113492,7 +113488,7 @@ xHX
 tmq
 mUT
 idD
-nvo
+bvF
 tmq
 bvF
 idD
