@@ -17,6 +17,10 @@
 	attack_verb_simple = list("slap", "punch")
 	inhand_icon_state = "buildpipe"
 	icon = 'icons/mob/augmentation/augments.dmi'
+<<<<<<< HEAD
+=======
+	icon_static = 'icons/mob/augmentation/augments.dmi'
+>>>>>>> 351afe260b4 (Fixes Mapping Icons For Bodylimbs (Don't Get A Shock!) (#65899))
 	flags_1 = CONDUCT_1
 	icon_state = "borg_l_arm"
 	status = BODYPART_ROBOTIC
@@ -39,7 +43,13 @@
 	attack_verb_continuous = list("slaps", "punches")
 	attack_verb_simple = list("slap", "punch")
 	inhand_icon_state = "buildpipe"
+<<<<<<< HEAD
 	icon = 'icons/mob/augmentation/augments.dmi'
+=======
+	icon_static = 'icons/mob/augmentation/augments.dmi'
+	icon = 'icons/mob/augmentation/augments.dmi'
+	limb_id = "robotic"
+>>>>>>> 351afe260b4 (Fixes Mapping Icons For Bodylimbs (Don't Get A Shock!) (#65899))
 	flags_1 = CONDUCT_1
 	icon_state = "borg_r_arm"
 	status = BODYPART_ROBOTIC
@@ -62,7 +72,13 @@
 	attack_verb_continuous = list("kicks", "stomps")
 	attack_verb_simple = list("kick", "stomp")
 	inhand_icon_state = "buildpipe"
+<<<<<<< HEAD
 	icon = 'icons/mob/augmentation/augments.dmi'
+=======
+	icon_static = 'icons/mob/augmentation/augments.dmi'
+	icon = 'icons/mob/augmentation/augments.dmi'
+	limb_id = "robotic"
+>>>>>>> 351afe260b4 (Fixes Mapping Icons For Bodylimbs (Don't Get A Shock!) (#65899))
 	flags_1 = CONDUCT_1
 	icon_state = "borg_l_leg"
 	status = BODYPART_ROBOTIC
@@ -85,7 +101,13 @@
 	attack_verb_continuous = list("kicks", "stomps")
 	attack_verb_simple = list("kick", "stomp")
 	inhand_icon_state = "buildpipe"
+<<<<<<< HEAD
 	icon = 'icons/mob/augmentation/augments.dmi'
+=======
+	icon_static =  'icons/mob/augmentation/augments.dmi'
+	icon = 'icons/mob/augmentation/augments.dmi'
+	limb_id = "robotic"
+>>>>>>> 351afe260b4 (Fixes Mapping Icons For Bodylimbs (Don't Get A Shock!) (#65899))
 	flags_1 = CONDUCT_1
 	icon_state = "borg_r_leg"
 	status = BODYPART_ROBOTIC
@@ -106,7 +128,13 @@
 	name = "cyborg torso"
 	desc = "A heavily reinforced case containing cyborg logic boards, with space for a standard power cell."
 	inhand_icon_state = "buildpipe"
+<<<<<<< HEAD
 	icon = 'icons/mob/augmentation/augments.dmi'
+=======
+	icon_static =  'icons/mob/augmentation/augments.dmi'
+	icon = 'icons/mob/augmentation/augments.dmi'
+	limb_id = "robotic"
+>>>>>>> 351afe260b4 (Fixes Mapping Icons For Bodylimbs (Don't Get A Shock!) (#65899))
 	flags_1 = CONDUCT_1
 	icon_state = "borg_chest"
 	status = BODYPART_ROBOTIC
@@ -209,7 +237,13 @@
 	name = "cyborg head"
 	desc = "A standard reinforced braincase, with spine-plugged neural socket and sensor gimbals."
 	inhand_icon_state = "buildpipe"
+<<<<<<< HEAD
 	icon = 'icons/mob/augmentation/augments.dmi'
+=======
+	icon_static = 'icons/mob/augmentation/augments.dmi'
+	icon = 'icons/mob/augmentation/augments.dmi'
+	limb_id = "robotic"
+>>>>>>> 351afe260b4 (Fixes Mapping Icons For Bodylimbs (Don't Get A Shock!) (#65899))
 	flags_1 = CONDUCT_1
 	icon_state = "borg_head"
 	status = BODYPART_ROBOTIC
@@ -227,7 +261,6 @@
 
 	var/obj/item/assembly/flash/handheld/flash1 = null
 	var/obj/item/assembly/flash/handheld/flash2 = null
-
 
 /obj/item/bodypart/head/robot/handle_atom_del(atom/head_atom)
 	if(head_atom == flash1)

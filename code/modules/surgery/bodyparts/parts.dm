@@ -31,6 +31,10 @@
 
 /obj/item/bodypart/chest/monkey
 	icon = 'icons/mob/animal_parts.dmi'
+<<<<<<< HEAD
+=======
+	icon_static = 'icons/mob/animal_parts.dmi'
+>>>>>>> 351afe260b4 (Fixes Mapping Icons For Bodylimbs (Don't Get A Shock!) (#65899))
 	icon_state = "default_monkey_chest"
 	animal_origin = MONKEY_BODYPART
 	part_origin = MONKEY_BODY
@@ -135,6 +139,10 @@
 
 /obj/item/bodypart/l_arm/monkey
 	icon = 'icons/mob/animal_parts.dmi'
+<<<<<<< HEAD
+=======
+	icon_static = 'icons/mob/animal_parts.dmi'
+>>>>>>> 351afe260b4 (Fixes Mapping Icons For Bodylimbs (Don't Get A Shock!) (#65899))
 	icon_state = "default_monkey_l_arm"
 	animal_origin = MONKEY_BODYPART
 	part_origin = MONKEY_BODY
@@ -234,13 +242,16 @@
 
 /obj/item/bodypart/r_arm/monkey
 	icon = 'icons/mob/animal_parts.dmi'
+<<<<<<< HEAD
+=======
+	icon_static = 'icons/mob/animal_parts.dmi'
+>>>>>>> 351afe260b4 (Fixes Mapping Icons For Bodylimbs (Don't Get A Shock!) (#65899))
 	icon_state = "default_monkey_r_arm"
 	animal_origin = MONKEY_BODYPART
 	part_origin = MONKEY_BODY
 	wound_resistance = -10
 	px_x = 5
 	px_y = -3
-
 /obj/item/bodypart/r_arm/alien
 	icon = 'icons/mob/animal_parts.dmi'
 	icon_state = "alien_r_arm"
@@ -251,7 +262,6 @@
 	max_damage = 100
 	animal_origin = ALIEN_BODYPART
 	part_origin = ALIEN_BODY
-
 
 /obj/item/bodypart/l_leg
 	name = "left leg"
@@ -329,6 +339,10 @@
 
 /obj/item/bodypart/l_leg/monkey
 	icon = 'icons/mob/animal_parts.dmi'
+<<<<<<< HEAD
+=======
+	icon_static = 'icons/mob/animal_parts.dmi'
+>>>>>>> 351afe260b4 (Fixes Mapping Icons For Bodylimbs (Don't Get A Shock!) (#65899))
 	icon_state = "default_monkey_l_leg"
 	animal_origin = MONKEY_BODYPART
 	part_origin = MONKEY_BODY
