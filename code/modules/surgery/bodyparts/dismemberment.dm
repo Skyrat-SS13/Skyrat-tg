@@ -446,12 +446,6 @@
 		if(!limb.attach_limb(src, 1))
 			qdel(limb)
 			return FALSE
-		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-		if(dna?.species && (ROBOTIC_LIMBS in dna.species.species_traits))
-			limb.change_bodypart_status(BODYPART_ROBOTIC)
-		if(dna?.mutant_bodyparts["legs"] && dna.mutant_bodyparts["legs"][MUTANT_INDEX_NAME] == "Digitigrade Legs")
-			limb.use_digitigrade = FULL_DIGITIGRADE
-		//SKYRAT EDIT ADDITION END
 		limb.update_limb(is_creating = TRUE)
 		var/datum/scar/scaries = new
 		var/datum/wound/loss/phantom_loss = new // stolen valor, really

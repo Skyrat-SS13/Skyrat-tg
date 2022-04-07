@@ -137,8 +137,6 @@
 	/// If we have a splint currently applied
 	var/datum/bodypart_aid/splint/current_splint
 	//SKYRAT EDIT CHANGE END
-	var/rendered_bp_icon //SKYRAT EDIT ADDITION - CUSTOMIZATION
-	var/organic_render = TRUE //SKYRAT EDIT ADDITION - CUSTOMIZATION
 	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/hand_item/self_grasp])
 	var/obj/item/hand_item/self_grasp/grasped_by
 
