@@ -147,7 +147,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/utility_eng
 	name = "Engineering Utility Uniform"
-	item_path = /obj/item/clothing/under/utility/eng
+	item_path = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility
 	restricted_roles = list(JOB_STATION_ENGINEER,JOB_ATMOSPHERIC_TECHNICIAN, JOB_CHIEF_ENGINEER, JOB_ENGINEERING_GUARD)
 
 /datum/loadout_item/under/jumpsuit/utility_med
