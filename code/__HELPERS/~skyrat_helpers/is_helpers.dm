@@ -27,3 +27,6 @@
 #define ishumanoid(A) (is_species(A,/datum/species/humanoid))
 #define ismammal(A) (is_species(A,/datum/species/mammal))
 #define isinsect(A) (is_species(A,/datum/species/insect))
+
+// Xen mobs
+#define isxenmob(A) (istype(A, /mob/living/simple_animal/hostile/blackmesa/xen))

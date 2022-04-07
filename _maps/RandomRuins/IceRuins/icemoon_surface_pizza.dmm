@@ -563,6 +563,14 @@
 	},
 /turf/open/floor/iron/cafeteria,
 /area/ruin/pizzeria/kitchen)
+"se" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/machinery/light/small/broken/directional/south,
+/obj/machinery/newscaster/directional/north,
+/turf/open/floor/iron/freezer,
+/area/ruin/pizzeria)
 "sl" = (
 /obj/item/wrench,
 /obj/item/screwdriver,
@@ -810,16 +818,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
 /turf/open/floor/iron/cafeteria,
 /area/ruin/pizzeria/kitchen)
-"Bd" = (
-/obj/structure/table/reinforced,
-/obj/machinery/door/window/right/directional/south{
-	name = "Drive Thru"
-	},
-/obj/machinery/door/window/left/directional/north{
-	name = "Drive Thru"
-	},
-/turf/open/floor/iron/smooth_large,
-/area/ruin/pizzeria/kitchen)
 "Be" = (
 /obj/structure/table,
 /obj/item/stack/sheet/cardboard{
@@ -848,6 +846,19 @@
 	},
 /turf/open/floor/iron/dark/smooth_edge{
 	dir = 4
+	},
+/area/ruin/pizzeria)
+"Cf" = (
+/obj/structure/chair,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/machinery/newscaster/directional/east,
+/turf/open/floor/iron/dark/side{
+	dir = 10
 	},
 /area/ruin/pizzeria)
 "CZ" = (
@@ -917,6 +928,27 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/pizzeria)
+"EU" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/right/directional/south{
+	name = "Drive Thru"
+	},
+/obj/machinery/door/window/left/directional/north{
+	name = "Drive Thru"
+	},
+/turf/open/floor/iron/smooth_large,
+/area/ruin/pizzeria/kitchen)
+"Fe" = (
+/obj/machinery/light/small,
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/obj/machinery/newscaster/directional/north,
+/turf/open/floor/iron/freezer,
+/area/ruin/pizzeria)
 "FL" = (
 /obj/structure/fence/corner,
 /turf/open/floor/plating/snowed/smoothed/icemoon,
@@ -943,19 +975,6 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/iron/dark/side{
 	dir = 5
-	},
-/area/ruin/pizzeria)
-"HE" = (
-/obj/structure/chair,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/machinery/newscaster/directional/east,
-/turf/open/floor/iron/dark/side{
-	dir = 10
 	},
 /area/ruin/pizzeria)
 "HM" = (
@@ -1247,12 +1266,6 @@
 	dir = 5
 	},
 /area/ruin/pizzeria)
-"OF" = (
-/obj/structure/disposalpipe/segment{
-	dir = 6
-	},
-/turf/closed/wall,
-/area/ruin/pizzeria)
 "OM" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -1307,6 +1320,12 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
 /turf/open/floor/iron/freezer,
+/area/ruin/pizzeria)
+"PK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/turf/closed/wall,
 /area/ruin/pizzeria)
 "PW" = (
 /obj/structure/table/reinforced,
@@ -1641,14 +1660,6 @@
 	},
 /turf/open/floor/iron/checker,
 /area/ruin/pizzeria)
-"Yb" = (
-/obj/structure/toilet{
-	dir = 8
-	},
-/obj/machinery/light/small/broken/directional/south,
-/obj/machinery/newscaster/directional/north,
-/turf/open/floor/iron/freezer,
-/area/ruin/pizzeria)
 "Ym" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/maintenance{
@@ -1656,17 +1667,6 @@
 	req_access_txt = "28"
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
-/turf/open/floor/iron/freezer,
-/area/ruin/pizzeria)
-"YD" = (
-/obj/machinery/light/small,
-/obj/structure/toilet{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 9
-	},
-/obj/machinery/newscaster/directional/north,
 /turf/open/floor/iron/freezer,
 /area/ruin/pizzeria)
 "YW" = (
@@ -1818,7 +1818,7 @@ kG
 kG
 kG
 oM
-Bd
+EU
 Eu
 RF
 Jv
@@ -2050,9 +2050,9 @@ TK
 NL
 NL
 NL
-Yb
-OF
-YD
+se
+PK
+Fe
 NL
 ow
 Dw
@@ -2105,7 +2105,7 @@ cH
 VK
 RW
 iV
-HE
+Cf
 yn
 wS
 TK
