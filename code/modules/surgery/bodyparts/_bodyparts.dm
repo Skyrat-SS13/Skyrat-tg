@@ -786,9 +786,16 @@
 	else
 		limb.icon_state = "[limb_id]_[body_zone]"
 
+	// SKYRAT EDIT ADDITION
+	if(owner && ishuman(owner))
+		var/mob/living/carbon/human/human = owner
+		if(human.dna.species.limbs_icon)
+			limb.icon = human.dna.species.limbs_icon
+	// SKYRAT EDIT END
+
 	icon_exists(limb.icon, limb.icon_state, TRUE) //Prints a stack trace on the first failure of a given iconstate.
 
-	// MARKINGS CODE BEGIN SKYRAT EDIT
+	// SKYRAT EDIT ADDITION BEGIN - MARKINGS CODE
 	var/override_color
 	// First, check to see if this bodypart is husked. If so, we don't want to apply our sparkledog colors to the limb.
 	if(is_husked)
@@ -815,7 +822,29 @@
 			. += accessory_overlay
 			if (emissive)
 				. += emissive
-	// MARKINGS CODE END SKYRAT EDIT
+
+		if(aux_zone)
+			for(var/key in human.dna.species.body_markings[aux_zone])
+				var/datum/body_marking/body_marking = GLOB.body_markings[key]
+				if (!body_marking) // Edge case prevention.
+					continue
+
+				var/render_limb_string = aux_zone
+
+				var/mutable_appearance/emissive
+				var/mutable_appearance/accessory_overlay
+				accessory_overlay = mutable_appearance(body_marking.icon, "[body_marking.icon_state]_[render_limb_string]", -aux_layer)
+				accessory_overlay.alpha = human.dna.species.markings_alpha
+				if (human.dna.species.body_markings[aux_zone][key][2])
+					emissive = emissive_appearance_copy(accessory_overlay)
+				if(override_color)
+					accessory_overlay.color = override_color
+				else
+					accessory_overlay.color = human.dna.species.body_markings[aux_zone][key][1]
+				. += accessory_overlay
+				if (emissive)
+					. += emissive
+	// SKYRAT EDIT END - MARKINGS CODE END
 
 	if(aux_zone) //Hand shit
 		aux = image(limb.icon, "[limb_id]_[aux_zone]", -aux_layer, image_dir)
