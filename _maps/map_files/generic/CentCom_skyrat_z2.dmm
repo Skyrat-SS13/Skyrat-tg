@@ -1685,12 +1685,6 @@
 	icon_state = "white"
 	},
 /area/centcom/holding/cafepark)
-"arj" = (
-/obj/structure/sign/poster/contraband/lusty_xenomorph{
-	pixel_x = 32
-	},
-/turf/open/floor/carpet/royalblack,
-/area/centcom/holding/cafedorms)
 "arp" = (
 /obj/effect/turf_decal/tile/green,
 /obj/effect/turf_decal/tile/green{
@@ -4283,7 +4277,9 @@
 /turf/open/water/beach,
 /area/centcom/holding/cafepark)
 "aNN" = (
-/obj/structure/chair/stool/bar,
+/obj/structure/chair/stool/bar{
+	dir = 1
+	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "aNS" = (
@@ -5539,7 +5535,7 @@
 /area/centcom/interlink)
 "aXa" = (
 /obj/structure/table/wood,
-/obj/machinery/computer/bookmanagement,
+/obj/machinery/computer/libraryconsole/bookmanagement,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafepark)
 "aXd" = (
@@ -5850,6 +5846,7 @@
 /obj/item/hemostat/alien,
 /obj/item/scalpel/alien,
 /obj/item/circular_saw/alien,
+/obj/item/retractor/alien,
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
 	},
@@ -6259,6 +6256,10 @@
 /obj/structure/spacevine,
 /obj/structure/alien/weeds,
 /turf/open/misc/dirt/planet,
+/area/centcom/holding/cafepark)
+"cCL" = (
+/obj/structure/fence/door,
+/turf/open/misc/grass/planet,
 /area/centcom/holding/cafepark)
 "cEt" = (
 /obj/machinery/vending/games,
@@ -7236,7 +7237,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/vending/wardrobe/sec_wardrobe/peacekeeper,
+/obj/machinery/vending/wardrobe/sec_wardrobe,
 /turf/open/floor/iron,
 /area/centcom/holding/cafe)
 "hgr" = (
@@ -10876,6 +10877,12 @@
 	},
 /turf/open/misc/asteroid,
 /area/centcom/interlink)
+"wbV" = (
+/obj/structure/chair/stool/bar{
+	dir = 8
+	},
+/turf/open/indestructible/hotelwood,
+/area/centcom/holding/cafe)
 "wcp" = (
 /obj/effect/turf_decal/arrows{
 	dir = 1
@@ -50240,7 +50247,7 @@ aFP
 aKu
 axA
 apT
-arj
+aIN
 amF
 axA
 aVC
@@ -58181,8 +58188,8 @@ aYr
 aqf
 aHM
 aUo
-aNN
-aNN
+wbV
+wbV
 aUo
 aUo
 aUo
@@ -58740,7 +58747,7 @@ agy
 aFP
 ajj
 ajj
-ajj
+aaa
 aaa
 aaa
 aaa
@@ -58997,7 +59004,7 @@ aFP
 ayd
 aFP
 ajj
-ajj
+aaa
 aaa
 aaa
 aaa
@@ -59252,9 +59259,9 @@ aFP
 aFP
 aLH
 aFP
-aFP
-aFP
 ajj
+ajj
+aaa
 aaa
 aaa
 aaa
@@ -59509,9 +59516,9 @@ agy
 aFP
 aFP
 ahs
-aFP
-aFP
 ajj
+ajj
+aaa
 aaa
 aaa
 aaa
@@ -59765,10 +59772,10 @@ ahU
 aFP
 ayd
 aFB
-aFP
-aFP
-aFP
+awV
 ajj
+ajj
+aaa
 aaa
 aaa
 aaa
@@ -60023,9 +60030,9 @@ aLH
 aFP
 aFP
 aFP
-aFP
-aFP
+awV
 ajj
+aaa
 aaa
 aaa
 aaa
@@ -60280,9 +60287,9 @@ aFP
 aFP
 ahQ
 aFP
-aFP
-aFP
 ajj
+ajj
+aaa
 aaa
 aaa
 aaa
@@ -60537,9 +60544,9 @@ aFB
 aeT
 asX
 ahU
-aFP
 ajj
 ajj
+aaa
 aaa
 aaa
 aaa
@@ -60796,7 +60803,7 @@ aFP
 aFP
 ajj
 ajj
-ajj
+aaa
 aaa
 aaa
 aaa
@@ -61001,7 +61008,7 @@ awV
 aFP
 amT
 aFP
-agU
+cCL
 aIr
 aIr
 aIr
@@ -61053,7 +61060,7 @@ aCM
 aFB
 ajj
 ajj
-ajj
+aaa
 aaa
 aaa
 aaa
@@ -61310,7 +61317,7 @@ aMJ
 aFP
 ajj
 ajj
-ajj
+aaa
 aaa
 aaa
 aaa

@@ -114,7 +114,7 @@
 	var/message_verb_continuous = length(I.attack_verb_continuous) ? "[pick(I.attack_verb_continuous)]" : "attacks"
 	var/message_verb_simple = length(I.attack_verb_simple) ? "[pick(I.attack_verb_simple)]" : "attack"
 	//SKYRAT EDIT ADDITION BEGIN
-	if(I.force && !user.combat_mode)
+	if(I.force && !user.combat_mode && !length(I.attack_verb_simple) && !length(I.attack_verb_continuous))
 		var/random = rand(1,2)
 		switch(random)
 			if(1)

@@ -1,4 +1,4 @@
-/obj/machinery/vending/security_peacekeeper
+/obj/machinery/vending/security
 	name = "\improper Armadyne Peacekeeper Equipment Vendor"
 	desc = "An Armadyne peacekeeper equipment vendor."
 	product_ads = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
@@ -37,7 +37,7 @@
 	extra_price = PAYCHECK_HARD * 1.5
 	payment_department = ACCOUNT_SEC
 
-/obj/machinery/vending/security_peacekeeper/pre_throw(obj/item/I)
+/obj/machinery/vending/security/pre_throw(obj/item/I)
 	if(istype(I, /obj/item/grenade))
 		var/obj/item/grenade/G = I
 		G.arm_grenade()
@@ -49,7 +49,7 @@
 /obj/item/vending_refill/security_peacekeeper
 	icon_state = "refill_sec"
 
-/obj/machinery/vending/wardrobe/sec_wardrobe/peacekeeper
+/obj/machinery/vending/wardrobe/sec_wardrobe
 	name = "\improper Peacekeeper Outfitting Station"
 	desc = "A vending machine stocked with Lopland's \"Peacekeeper\" security package, including standardized uniforms and general equipment."
 	icon = 'modular_skyrat/modules/sec_haul/icons/vending/vending.dmi'
@@ -58,6 +58,7 @@
 	vend_reply = "Good luck, Peacekeeper!"
 	products = list(/obj/item/clothing/suit/hooded/wintercoat/security = 5,
 					/obj/item/clothing/suit/toggle/jacket/sec = 5,
+					/obj/item/clothing/suit/toggle/brit/sec = 5,
 					/obj/item/clothing/neck/security_cape = 5,
 					/obj/item/clothing/neck/security_cape/armplate = 5,
 					/obj/item/storage/backpack/security = 5,
@@ -65,16 +66,17 @@
 					/obj/item/storage/backpack/duffelbag/sec = 5,
 					/obj/item/clothing/under/rank/security/officer = 10,
 					/obj/item/clothing/under/rank/security/peacekeeper/tactical = 4,
+					/obj/item/clothing/under/rank/security/peacekeeper/sol/cadet = 3,
+					/obj/item/clothing/under/rank/security/peacekeeper/sol/traffic = 3,
+					/obj/item/clothing/under/rank/security/peacekeeper/sol = 3,
 					/obj/item/clothing/shoes/jackboots/security = 10,
 					/obj/item/clothing/head/security_garrison = 10,
 					/obj/item/clothing/head/security_cap = 10,
 					/obj/item/clothing/head/beret/sec/peacekeeper = 5,
+					/obj/item/clothing/head/ushanka/sec/blue = 10,
+					/obj/item/clothing/head/sec/peacekeeper/sol = 5,
+					/obj/item/clothing/head/sec/peacekeeper/sol/traffic = 5,
 					/obj/item/clothing/gloves/color/black/security = 10,
-					)
-	contraband = list(/obj/item/clothing/head/helmet/stormtrooper = 2,
-					/obj/item/clothing/suit/armor/stormtrooper = 2,
-					/obj/item/clothing/shoes/combat/stormtrooper = 2,
-					/obj/item/clothing/gloves/combat/peacekeeper/stormtrooper = 2,
 					)
 	premium = list( /obj/item/clothing/under/rank/security/officer/formal = 3,
 					/obj/item/clothing/suit/security/officer = 3,
@@ -87,7 +89,7 @@
 	machine_name = "Peacekeeper outfitting station"
 
 //List for the old one, for when its mapped in; curates it nicely, adds /redsec to the items, and also prevents some conflicts with the above vendor
-/obj/machinery/vending/wardrobe/sec_wardrobe
+/obj/machinery/vending/wardrobe/sec_wardrobe/red
 	products = list(/obj/item/clothing/suit/hooded/wintercoat/security/redsec = 3,
 					/obj/item/storage/backpack/security/redsec = 3,
 					/obj/item/storage/backpack/satchel/sec/redsec = 3,
@@ -96,7 +98,7 @@
 					/obj/item/clothing/shoes/jackboots = 3,
 					/obj/item/clothing/head/beret/sec = 3,
 					/obj/item/clothing/head/soft/sec = 3,
-					/obj/item/clothing/mask/bandana/red = 3,
+					/obj/item/clothing/mask/bandana/color/red = 3,
 					/obj/item/clothing/gloves/color/black = 3,
 					/obj/item/clothing/under/rank/security/officer/skirt = 3,
 					/obj/item/clothing/under/utility/sec/old = 3,
