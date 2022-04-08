@@ -248,7 +248,7 @@ There are several things that need to be remembered:
 		var/handled_by_bodytype
 		var/icon_file
 		// SKYRAT EDIT ADDITION
-		if((dna.species.bodytype & BODYTYPE_SNOUTED_VOX) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VOX_VARIATION))
+		if((dna.species.bodytype & BODYTYPE_VOX) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VOX_VARIATION))
 			icon_file = wear_mask.worn_icon_vox || VOX_GLASSES_FILE
 		// SKYRAT EDIT END
 		if(!(head?.flags_inv & HIDEEYES) && !(wear_mask?.flags_inv & HIDEEYES))

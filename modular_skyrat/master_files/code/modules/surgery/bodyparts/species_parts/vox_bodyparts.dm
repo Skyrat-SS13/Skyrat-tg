@@ -1,7 +1,7 @@
 // voxs!
 /obj/item/bodypart/head/mutant/vox
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/vox_parts_greyscale.dmi'
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_SNOUTED | BODYTYPE_SNOUTED_VOX
+	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_SNOUTED | BODYTYPE_VOX
 	limb_id = SPECIES_VOX
 
 /obj/item/bodypart/chest/mutant/vox

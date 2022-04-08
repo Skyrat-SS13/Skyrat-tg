@@ -79,10 +79,10 @@
 ///The limb is snouted
 #define BODYTYPE_SNOUTED (1<<5)
 // SKYRAT EDIT ADDITION
-///The limb is vox snouted
-#define BODYTYPE_SNOUTED_VOX (1<<6)
-///The limb hands use vox gloves
-#define BODYTYPE_HAND_VOX (1<<7)
+///The limb fits the vox shape
+#define BODYTYPE_VOX (1<<6)
+///The limb fits the teshari shape
+#define BODYTYPE_TESHARI (1<<7)
 // SKYRAT EDIT END
 
 //Defines for Species IDs
