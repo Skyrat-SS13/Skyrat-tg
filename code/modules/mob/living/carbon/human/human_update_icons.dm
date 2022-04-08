@@ -216,17 +216,16 @@ There are several things that need to be remembered:
 		var/handled_by_bodytype
 
 		// SKYRAT EDIT ADDITION
-		var/species_override_icon
 		if(dna.species.bodytype & BODYTYPE_HAND_VOX)
 			if(worn_item.supports_variations_flags & CLOTHING_VOX_HAND_VARIATION)
-				species_override_icon = wear_mask.worn_icon_muzzled || VOX_HAND_FILE
+				icon_file = wear_mask.worn_icon_muzzled || VOX_HAND_FILE
 		// SKYRAT EDIT END
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/hands.dmi'
 			handled_by_bodytype = FALSE
 
-		gloves_overlay = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = icon_file, override_file = species_override_icon) // SKYRAT EDIT CHANGE
+		gloves_overlay = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = icon_file, override_file = handled_by_bodytype ? icon_file : null) // SKYRAT EDIT CHANGE
 
 		if(!gloves_overlay)
 			return
@@ -255,10 +254,9 @@ There are several things that need to be remembered:
 		var/handled_by_bodytype
 		var/icon_file
 		// SKYRAT EDIT ADDITION
-		var/species_override_icon
 		if(dna.species.bodytype & BODYTYPE_SNOUTED_VOX)
 			if(worn_item.supports_variations_flags & CLOTHING_SNOUTED_VOX_VARIATION)
-				species_override_icon = wear_mask.worn_icon_vox || VOX_GLASSES_FILE
+				icon_file = wear_mask.worn_icon_vox || VOX_GLASSES_FILE
 		// SKYRAT EDIT END
 		if(!(head?.flags_inv & HIDEEYES) && !(wear_mask?.flags_inv & HIDEEYES))
 
@@ -266,7 +264,7 @@ There are several things that need to be remembered:
 				icon_file = 'icons/mob/clothing/eyes.dmi'
 				handled_by_bodytype = FALSE
 
-			glasses_overlay = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = icon_file, override_file = species_override_icon) // SKYRAT EDIT CHANGE
+			glasses_overlay = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = icon_file, override_file = handled_by_bodytype ? icon_file : null) // SKYRAT EDIT CHANGE
 
 		if(!glasses_overlay)
 			return
@@ -358,18 +356,16 @@ There are several things that need to be remembered:
 		update_hud_shoes(worn_item)
 		var/handled_by_bodytype = TRUE
 
-		var/species_override_icon // SKYRAT EDIT ADDITION
-
 		if((dna.species.bodytype & BODYTYPE_DIGITIGRADE) && (worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 			var/obj/item/bodypart/leg = src.get_bodypart(BODY_ZONE_L_LEG)
 			if(leg.limb_id == "digitigrade")//Snowflakey and bad. But it makes it look consistent.
-				species_override_icon = worn_item.worn_icon_digi || DIGITIGRADE_SHOES_FILE // SKYRAT EDIT CHANGE
+				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SHOES_FILE // SKYRAT EDIT CHANGE
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
 			handled_by_bodytype = FALSE
 			icon_file = DEFAULT_SHOES_FILE
 
-		shoes_overlay = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = icon_file, override_file = species_override_icon) // SKYRAT EDIT CHANGE
+		shoes_overlay = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = icon_file, override_file = handled_by_bodytype ? icon_file : null) // SKYRAT EDIT CHANGE
 
 		if(!shoes_overlay)
 			return
@@ -416,18 +412,17 @@ There are several things that need to be remembered:
 		var/handled_by_bodytype = FALSE
 		var/icon_file
 
+		// SKYRAT EDIT ADDITION
+		if(dna.species.bodytype & BODYTYPE_SNOUTED)
+			if(worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION)
+				icon_file = wear_mask.worn_icon_muzzled || SNOUTED_HEAD_FILE
+		// SKYRAT EDIT END
+
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
 			handled_by_bodytype = FALSE
 			icon_file = 'icons/mob/clothing/head.dmi'
 
-		// SKYRAT EDIT ADDITION
-		var/species_override_icon
-		if(dna.species.bodytype & BODYTYPE_SNOUTED)
-			if(worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION)
-				species_override_icon = wear_mask.worn_icon_muzzled || SNOUTED_HEAD_FILE
-		// SKYRAT EDIT END
-
-		head_overlay = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = icon_file, override_file = species_override_icon) // SKYRAT EDIT CHANGE
+		head_overlay = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = icon_file, override_file = handled_by_bodytype ? icon_file : null) // SKYRAT EDIT CHANGE
 
 		if(!head_overlay)
 			return
@@ -488,18 +483,16 @@ There are several things that need to be remembered:
 
 		var/handled_by_bodytype = TRUE
 
-		var/species_override_icon // SKYRAT EDIT ADDITION
-
 		//More currently unused digitigrade handling
 		if(dna.species.bodytype & BODYTYPE_DIGITIGRADE)
 			if(worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION)
-				species_override_icon = wear_suit.worn_icon_digi || DIGITIGRADE_SUIT_FILE // SKYRAT EDIT CHANGE
+				icon_file = wear_suit.worn_icon_digi || DIGITIGRADE_SUIT_FILE // SKYRAT EDIT CHANGE
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
 			handled_by_bodytype = FALSE
 			icon_file = DEFAULT_SUIT_FILE
 
-		suit_overlay = wear_suit.build_worn_icon(default_layer = SUIT_LAYER, default_icon_file = icon_file, override_file = species_override_icon) // SKYRAT EDIT CHANGE
+		suit_overlay = wear_suit.build_worn_icon(default_layer = SUIT_LAYER, default_icon_file = icon_file, override_file = handled_by_bodytype ? icon_file : null) // SKYRAT EDIT CHANGE
 
 		if(!suit_overlay)
 			return
@@ -551,10 +544,9 @@ There are several things that need to be remembered:
 		var/handled_by_bodytype = TRUE
 
 		// SKYRAT EDIT ADDITION
-		var/species_override_icon
 		if(dna.species.bodytype & BODYTYPE_SNOUTED)
 			if(worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION)
-				species_override_icon = wear_mask.worn_icon_muzzled || SNOUTED_MASK_FILE
+				icon_file = wear_mask.worn_icon_muzzled || SNOUTED_MASK_FILE
 		// SKYRAT EDIT END
 
 		if(!(ITEM_SLOT_MASK in check_obscured_slots()))
@@ -563,7 +555,7 @@ There are several things that need to be remembered:
 				icon_file = 'icons/mob/clothing/mask.dmi'
 				handled_by_bodytype = FALSE
 
-			mask_overlay = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = icon_file, override_file = species_override_icon) // SKYRAT EDIT CHANGE
+			mask_overlay = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = icon_file, override_file = handled_by_bodytype ? icon_file : null) // SKYRAT EDIT CHANGE
 
 		if(!mask_overlay)
 			return
