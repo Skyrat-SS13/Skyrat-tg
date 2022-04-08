@@ -12,6 +12,6 @@
 	explanation_text = replacetext(explanation_text, "%S%", (contracts_needed > 1 ? "s" : ""))
 
 /datum/objective/contractor_total/check_completion()
-	if(length(owner.opposing_force.contractor_hub.contracts_completed) >= contracts_needed)
+	if(owner?.opposing_force?.contractor_hub.contracts_completed >= contracts_needed)
 		return TRUE
 	return FALSE
