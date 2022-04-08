@@ -132,6 +132,11 @@ There are several things that need to be remembered:
 			if((dna?.species.bodytype & BODYTYPE_DIGITIGRADE) && (U.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 				icon_file = U.worn_icon_digi || DIGITIGRADE_UNIFORM_FILE // SKYRAT EDIT CHANGE
 
+			// SKYRAT EDIT ADDITION
+			if(dna.species.bodytype & BODYTYPE_TESHARI)
+				icon_file =TESHARI_UNIFORM_ICON
+			// SKYRAT EDIT END
+
 			//Female sprites have lower priority than digitigrade sprites
 			else if(dna.species.sexes && (dna.species.bodytype & BODYTYPE_HUMANOID) && physique == FEMALE && U.adjusted != NO_FEMALE_UNIFORM) //Agggggggghhhhh
 				woman = TRUE
@@ -215,6 +220,11 @@ There are several things that need to be remembered:
 		var/icon_file
 		var/handled_by_bodytype
 
+		// SKYRAT EDIT ADDITION
+		if(dna.species.bodytype & BODYTYPE_TESHARI)
+			icon_file =TESHARI_HANDS_ICON
+		// SKYRAT EDIT END
+
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/hands.dmi'
 			handled_by_bodytype = FALSE
@@ -250,6 +260,8 @@ There are several things that need to be remembered:
 		// SKYRAT EDIT ADDITION
 		if((dna.species.bodytype & BODYTYPE_VOX) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VOX_VARIATION))
 			icon_file = wear_mask.worn_icon_vox || VOX_GLASSES_FILE
+		if(dna.species.bodytype & BODYTYPE_TESHARI)
+			icon_file =TESHARI_EYES_ICON
 		// SKYRAT EDIT END
 		if(!(head?.flags_inv & HIDEEYES) && !(wear_mask?.flags_inv & HIDEEYES))
 
@@ -316,11 +328,16 @@ There are several things that need to be remembered:
 			var/icon_file
 			var/handled_by_bodytype = TRUE
 
+			// SKYRAT EDIT ADDITION
+			if(dna.species.bodytype & BODYTYPE_TESHARI)
+				icon_file = TESHARI_NECK_ICON
+			// SKYRAT EDIT END
+
 			if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
 				handled_by_bodytype = FALSE
 				icon_file = 'icons/mob/clothing/neck.dmi'
 
-			neck_overlay = worn_item.build_worn_icon(default_layer = NECK_LAYER, default_icon_file = icon_file)
+			neck_overlay = worn_item.build_worn_icon(default_layer = NECK_LAYER, default_icon_file = icon_file, override_file = handled_by_bodytype ? icon_file : null) // SKYRAT EDIT CHANGE
 
 			if(!neck_overlay)
 				return
@@ -353,6 +370,10 @@ There are several things that need to be remembered:
 			var/obj/item/bodypart/leg = src.get_bodypart(BODY_ZONE_L_LEG)
 			if(leg.limb_id == "digitigrade")//Snowflakey and bad. But it makes it look consistent.
 				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SHOES_FILE // SKYRAT EDIT CHANGE
+		// SKYRAT EDIT ADDITION
+		if(dna.species.bodytype & BODYTYPE_TESHARI)
+			icon_file = TESHARI_FEET_ICON
+		// SKYRAT EDIT END
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
 			handled_by_bodytype = FALSE
@@ -408,6 +429,8 @@ There are several things that need to be remembered:
 		// SKYRAT EDIT ADDITION - This needs to be refactored.
 		if((dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			icon_file = wear_mask.worn_icon_muzzled || SNOUTED_HEAD_FILE
+		if(dna.species.bodytype & BODYTYPE_TESHARI)
+			icon_file = TESHARI_HEAD_ICON
 		// SKYRAT EDIT END
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
@@ -445,11 +468,16 @@ There are several things that need to be remembered:
 		var/handled_by_bodytype = TRUE
 		var/icon_file
 
+		// SKYRAT EDIT ADDITION
+		if(dna.species.bodytype & BODYTYPE_TESHARI)
+			icon_file = TESHARI_BELT_ICON
+		// SKYRAT EDIT END
+
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
 			handled_by_bodytype = FALSE
 			icon_file = 'icons/mob/clothing/belt.dmi'
 
-		belt_overlay = belt.build_worn_icon(default_layer = BELT_LAYER, default_icon_file = icon_file)
+		belt_overlay = belt.build_worn_icon(default_layer = BELT_LAYER, default_icon_file = icon_file, override_file = handled_by_bodytype ? icon_file : null) // SKYRAT EDIT CHANGE
 
 		if(!belt_overlay)
 			return
@@ -479,6 +507,11 @@ There are several things that need to be remembered:
 		if(dna.species.bodytype & BODYTYPE_DIGITIGRADE)
 			if(worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION)
 				icon_file = wear_suit.worn_icon_digi || DIGITIGRADE_SUIT_FILE // SKYRAT EDIT CHANGE
+
+		// SKYRAT EDIT ADDITION
+		if(dna.species.bodytype & BODYTYPE_TESHARI)
+			icon_file = TESHARI_SUIT_ICON
+		// SKYRAT EDIT END
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
 			handled_by_bodytype = FALSE
@@ -536,9 +569,10 @@ There are several things that need to be remembered:
 		var/handled_by_bodytype = TRUE
 
 		// SKYRAT EDIT ADDITION
-		if(dna.species.bodytype & BODYTYPE_SNOUTED)
-			if(worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION)
-				icon_file = wear_mask.worn_icon_muzzled || SNOUTED_MASK_FILE
+		if((dna.species.bodytype & BODYTYPE_SNOUTED) && !(worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
+			icon_file = wear_mask.worn_icon_muzzled || SNOUTED_MASK_FILE
+		if(dna.species.bodytype & BODYTYPE_TESHARI)
+			icon_file = TESHARI_MASK_ICON
 		// SKYRAT EDIT END
 
 		if(!(ITEM_SLOT_MASK in check_obscured_slots()))
@@ -578,11 +612,16 @@ There are several things that need to be remembered:
 		var/icon_file = 'icons/mob/clothing/back.dmi'
 		var/handled_by_bodytype = TRUE
 
+		// SKYRAT EDIT ADDITION
+		if(dna.species.bodytype & BODYTYPE_TESHARI)
+			icon_file = TESHARI_BACK_ICON
+		// SKYRAT EDIT END
+
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/back.dmi'
 			handled_by_bodytype = FALSE
 
-		back_overlay = back.build_worn_icon(default_layer = BACK_LAYER, default_icon_file = icon_file)
+		back_overlay = back.build_worn_icon(default_layer = BACK_LAYER, default_icon_file = icon_file, override_file = handled_by_bodytype ? icon_file : null) // SKYRAT EDIT CHANGE
 
 		if(!back_overlay)
 			return
