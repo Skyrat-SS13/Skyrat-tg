@@ -37,24 +37,26 @@
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/jelly,
 	)
 
-/datum/species/jelly/on_species_loss(mob/living/carbon/C)
+/datum/species/jelly/on_species_loss(mob/living/carbon/old_jellyperson)
 	if(regenerate_limbs)
-		regenerate_limbs.Remove(C)
+		regenerate_limbs.Remove(old_jellyperson)
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	if(slime_change)
-		slime_change.Remove(C)
+		slime_change.Remove(old_jellyperson)
 	//SKYRAT EDIT ADDITION END
+	old_jellyperson.RemoveElement(/datum/element/soft_landing)
 	..()
 
-/datum/species/jelly/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+/datum/species/jelly/on_species_gain(mob/living/carbon/new_jellyperson, datum/species/old_species)
 	..()
-	if(ishuman(C))
+	if(ishuman(new_jellyperson))
 		regenerate_limbs = new
-		regenerate_limbs.Grant(C)
+		regenerate_limbs.Grant(new_jellyperson)
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		slime_change = new
-		slime_change.Grant(C)
+		slime_change.Grant(new_jellyperson)
 		//SKYRAT EDIT ADDITION END
+	new_jellyperson.AddElement(/datum/element/soft_landing)
 
 /datum/species/jelly/spec_life(mob/living/carbon/human/H, delta_time, times_fired)
 	if(H.stat == DEAD) //can't farm slime jelly from a dead slime/jelly person indefinitely

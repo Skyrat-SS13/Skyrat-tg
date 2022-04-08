@@ -5,6 +5,8 @@
 	var/list/aux_zone_markings
 	/// The alpha override of our markings.
 	var/markings_alpha
+	/// What is our normal limb ID? used for squashing legs.
+	var/base_limb_id = SPECIES_MAMMAL
 
 /obj/item/bodypart/proc/check_mutant_compatability()
 	if(ishuman(owner))
@@ -71,8 +73,6 @@
 	uses_mutcolor = TRUE
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_DIGITIGRADE
-	/// What is our normal limb ID? used for squashing legs.
-	var/base_limb_id = SPECIES_MAMMAL
 
 /obj/item/bodypart/l_leg/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
 	. = ..()
@@ -83,8 +83,6 @@
 	uses_mutcolor = TRUE
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_DIGITIGRADE
-	/// What is our normal limb ID? used for squashing legs.
-	var/base_limb_id = SPECIES_MAMMAL
 
 /obj/item/bodypart/r_leg/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
 	. = ..()

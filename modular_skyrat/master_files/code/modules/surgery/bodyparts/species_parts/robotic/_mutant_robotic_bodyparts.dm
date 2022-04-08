@@ -43,8 +43,7 @@
 	should_draw_greyscale = TRUE
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_DIGITIGRADE
-	/// What is our normal limb ID? used for squashing legs.
-	var/base_limb_id = SPECIES_SYNTHMAMMAL
+	base_limb_id = SPECIES_SYNTHMAMMAL
 
 /obj/item/bodypart/l_leg/robot/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
 	. = ..()
@@ -55,8 +54,7 @@
 	uses_mutcolor = TRUE
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_DIGITIGRADE
-	/// What is our normal limb ID? used for squashing legs.
-	var/base_limb_id = SPECIES_SYNTHMAMMAL
+	base_limb_id = SPECIES_SYNTHMAMMAL
 
 /obj/item/bodypart/r_leg/robot/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
 	. = ..()
