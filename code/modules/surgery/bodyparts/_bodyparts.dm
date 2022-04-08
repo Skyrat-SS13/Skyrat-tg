@@ -847,9 +847,16 @@
 
 			var/render_limb_string = limb_id == "digitigrade" ? ("digitigrade_1_" + body_zone) : body_zone // I am not sure why there are _1 and _2 versions of digi, so, it's staying like this.
 
+			var/gender_modifier = ""
+			if(body_zone == BODY_ZONE_CHEST) // Chest markings have male and female versions.
+				if(is_dimorphic)
+					gender_modifier = "_[limb_gender]"
+				else
+					gender_modifier = "_m" // Again, why we don't define if a marking can have male/female is byond me.
+
 			var/mutable_appearance/accessory_overlay
 			var/mutable_appearance/emissive
-			accessory_overlay = mutable_appearance(body_marking.icon, "[body_marking.icon_state]_[render_limb_string]", -BODYPARTS_LAYER)
+			accessory_overlay = mutable_appearance(body_marking.icon, "[body_marking.icon_state]_[render_limb_string][gender_modifier]", -BODYPARTS_LAYER)
 			accessory_overlay.alpha = markings_alpha
 			if(markings[key][2])
 				emissive = emissive_appearance_copy(accessory_overlay)

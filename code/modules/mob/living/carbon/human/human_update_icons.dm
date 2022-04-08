@@ -133,7 +133,7 @@ There are several things that need to be remembered:
 				icon_file = U.worn_icon_digi || DIGITIGRADE_UNIFORM_FILE // SKYRAT EDIT CHANGE
 
 			// SKYRAT EDIT ADDITION
-			if(dna.species.bodytype & BODYTYPE_TESHARI)
+			else if(dna.species.bodytype & BODYTYPE_TESHARI)
 				icon_file =TESHARI_UNIFORM_ICON
 			// SKYRAT EDIT END
 
@@ -260,7 +260,7 @@ There are several things that need to be remembered:
 		// SKYRAT EDIT ADDITION
 		if((dna.species.bodytype & BODYTYPE_VOX) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VOX_VARIATION))
 			icon_file = wear_mask.worn_icon_vox || VOX_GLASSES_FILE
-		if(dna.species.bodytype & BODYTYPE_TESHARI)
+		else if(dna.species.bodytype & BODYTYPE_TESHARI)
 			icon_file =TESHARI_EYES_ICON
 		// SKYRAT EDIT END
 		if(!(head?.flags_inv & HIDEEYES) && !(wear_mask?.flags_inv & HIDEEYES))
@@ -371,7 +371,7 @@ There are several things that need to be remembered:
 			if(leg.limb_id == "digitigrade")//Snowflakey and bad. But it makes it look consistent.
 				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SHOES_FILE // SKYRAT EDIT CHANGE
 		// SKYRAT EDIT ADDITION
-		if(dna.species.bodytype & BODYTYPE_TESHARI)
+		else if(dna.species.bodytype & BODYTYPE_TESHARI)
 			icon_file = TESHARI_FEET_ICON
 		// SKYRAT EDIT END
 
@@ -429,7 +429,7 @@ There are several things that need to be remembered:
 		// SKYRAT EDIT ADDITION - This needs to be refactored.
 		if((dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			icon_file = wear_mask.worn_icon_muzzled || SNOUTED_HEAD_FILE
-		if(dna.species.bodytype & BODYTYPE_TESHARI)
+		else if(dna.species.bodytype & BODYTYPE_TESHARI)
 			icon_file = TESHARI_HEAD_ICON
 		// SKYRAT EDIT END
 
@@ -509,7 +509,7 @@ There are several things that need to be remembered:
 				icon_file = wear_suit.worn_icon_digi || DIGITIGRADE_SUIT_FILE // SKYRAT EDIT CHANGE
 
 		// SKYRAT EDIT ADDITION
-		if(dna.species.bodytype & BODYTYPE_TESHARI)
+		else if(dna.species.bodytype & BODYTYPE_TESHARI)
 			icon_file = TESHARI_SUIT_ICON
 		// SKYRAT EDIT END
 
@@ -571,7 +571,7 @@ There are several things that need to be remembered:
 		// SKYRAT EDIT ADDITION
 		if((dna.species.bodytype & BODYTYPE_SNOUTED) && !(worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			icon_file = wear_mask.worn_icon_muzzled || SNOUTED_MASK_FILE
-		if(dna.species.bodytype & BODYTYPE_TESHARI)
+		else if(dna.species.bodytype & BODYTYPE_TESHARI)
 			icon_file = TESHARI_MASK_ICON
 		// SKYRAT EDIT END
 
