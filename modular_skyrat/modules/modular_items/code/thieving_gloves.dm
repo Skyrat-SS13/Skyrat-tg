@@ -4,7 +4,6 @@
 	clothing_traits = list(TRAIT_STICKY_FINGERS)
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
-	transfer_prints = FALSE
 	cut_type = null
 
 /datum/uplink_item/stealthy_tools/thieving_gloves

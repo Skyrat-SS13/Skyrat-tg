@@ -16,6 +16,12 @@
 	///Is this source self-replenishing?
 	var/refilling = FALSE
 
+/obj/structure/reagent_dispensers/Initialize(mapload)
+	. = ..()
+
+	if(icon_state == "water" && SSevents.holidays?[APRIL_FOOLS])
+		icon_state = "water_fools"
+
 /obj/structure/reagent_dispensers/examine(mob/user)
 	. = ..()
 	if(can_be_tanked)
@@ -88,6 +94,12 @@
 	desc = "A tank full of industrial welding fuel. Do not consume."
 	icon_state = "fuel"
 	reagent_id = /datum/reagent/fuel
+
+/obj/structure/reagent_dispensers/fueltank/Initialize(mapload)
+	. = ..()
+
+	if(SSevents.holidays?[APRIL_FOOLS])
+		icon_state = "fuel_fools"
 
 /obj/structure/reagent_dispensers/fueltank/boom(damage_type = BRUTE, guaranteed_violent = FALSE) //SKYRAT EDIT CHANGE
 	if(damage_type == BURN || guaranteed_violent)
@@ -247,10 +259,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/virusfood, 30
 	. = ..()
 	AddComponent(/datum/component/plumbing/simple_supply)
 
-/obj/structure/reagent_dispensers/plumbed/wrench_act(mob/living/user, obj/item/I)
-	..()
-	default_unfasten_wrench(user, I)
-	return TRUE
+/obj/structure/reagent_dispensers/plumbed/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	default_unfasten_wrench(user, tool)
+	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/structure/reagent_dispensers/plumbed/storage
 	name = "stationary storage tank"

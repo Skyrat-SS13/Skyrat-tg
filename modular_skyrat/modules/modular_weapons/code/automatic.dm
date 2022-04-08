@@ -37,7 +37,7 @@
 // Fills the role of a low damage, high magazine capacity magdump gun.
 /obj/item/gun/ballistic/automatic/cfa_wildcat
 	name = "\improper CFA Wildcat"
-	desc = "An old SMG, this one is chambered in .32, a very common and dirt-cheap cartridge. It has <b><span style='color:purple'>Cantalan Federal Arms</span></b> etched above the magazine well."
+	desc = "An old SMG, this one is chambered in .32, a very common and dirt-cheap cartridge. It has Cantalan Federal Arms etched above the magazine well."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile40x32.dmi'
 	icon_state = "mp5"
 	inhand_icon_state = "arg"
@@ -62,7 +62,7 @@
 
 /obj/item/gun/ballistic/automatic/cfa_lynx
 	name = "\improper CFA Lynx"
-	desc = "A carbine with a high magazine capacity. Chambered in 4.6x30mm. It has <b><span style='color:purple'>Cantalan Federal Arms</span></b> etched above the magazine well."
+	desc = "A carbine with a high magazine capacity. Chambered in 4.6x30mm. It has Cantalan Federal Arms etched above the magazine well."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "cfa-lynx"
 	inhand_icon_state = "arg"

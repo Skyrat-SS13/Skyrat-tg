@@ -19,10 +19,10 @@
 		/datum/action/item_action/mod/activate,
 		/datum/action/item_action/mod/panel,
 		/datum/action/item_action/mod/module,
-		/datum/action/item_action/mod/deploy/ai,
-		/datum/action/item_action/mod/activate/ai,
-		/datum/action/item_action/mod/panel/ai,
-		/datum/action/item_action/mod/module/ai,
+		/datum/action/item_action/mod/deploy/pai, // SKYRAT EDIT - pAIs in MODsuits
+		/datum/action/item_action/mod/activate/pai, // SKYRAT EDIT - pAIs in MODsuits
+		/datum/action/item_action/mod/panel/pai, // SKYRAT EDIT - pAIs in MODsuits
+		/datum/action/item_action/mod/module/pai, // SKYRAT EDIT - pAIs in MODsuits
 	)
 	resistance_flags = NONE
 	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
@@ -82,8 +82,10 @@
 	var/list/modules = list()
 	/// Currently used module.
 	var/obj/item/mod/module/selected_module
+	/* SKYRAT EDIT REMOVAL - MODsuit pAIs
 	/// AI mob inhabiting the MOD.
 	var/mob/living/silicon/ai/ai
+	*/ // SKYRAT EDIT END
 	/// Delay between moves as AI.
 	var/movedelay = 0
 	/// Cooldown for AI moves.
@@ -100,7 +102,6 @@
 	slowdown_inactive = theme.slowdown_inactive
 	slowdown_active = theme.slowdown_active
 	complexity_max = theme.complexity_max
-	skin = new_skin || theme.default_skin
 	ui_theme = theme.ui_theme
 	charge_drain = theme.charge_drain
 	initial_modules += theme.inbuilt_modules
@@ -134,8 +135,7 @@
 		piece.min_cold_protection_temperature = theme.min_cold_protection_temperature
 		piece.permeability_coefficient = theme.permeability_coefficient
 		piece.siemens_coefficient = theme.siemens_coefficient
-		piece.icon_state = "[skin]-[initial(piece.icon_state)]"
-	update_flags()
+	set_mod_skin(new_skin || theme.default_skin)
 	update_speed()
 	for(var/obj/item/mod/module/module as anything in initial_modules)
 		module = new module(src)
@@ -184,13 +184,7 @@
 	for(var/obj/item/mod/module/module as anything in modules)
 		for(var/obj/item/item in module)
 			item.forceMove(drop_location())
-	if(ai)
-		ai.controlled_equipment = null
-		ai.remote_control = null
-		for(var/datum/action/action as anything in actions)
-			if(action.owner == ai)
-				action.Remove(ai)
-		new /obj/item/mod/ai_minicard(drop_location(), ai)
+	remove_pai(forced = TRUE) // SKYRAT EDIT - pAIs in MODsuits
 	return ..()
 
 /obj/item/mod/control/examine(mob/user)
@@ -211,10 +205,8 @@
 			. += span_notice("You could remove [core] with a <b>wrench</b>.")
 		else
 			. += span_notice("You could use a <b>MOD core</b> on it to install one.")
-		if(ai)
-			. += span_notice("You could remove [ai] with an <b>intellicard</b>.")
-		else
-			. += span_notice("You could install an AI with an <b>intellicard</b>.")
+		if(!mod_pai)
+			. += span_notice("You could install a pAI with a <b>pAI card</b>.")
 
 /obj/item/mod/control/examine_more(mob/user)
 	. = ..()
@@ -297,7 +289,10 @@
 	return ..()
 
 /obj/item/mod/control/screwdriver_act(mob/living/user, obj/item/screwdriver)
-	if(..())
+	// SKYRAT EDIT START - pAIs in MODsuits
+	. = ..()
+	if(.)
+	// SKYRAT EDIT END
 		return TRUE
 	if(active || activating || ai_controller)
 		balloon_alert(user, "deactivate suit first!")
@@ -346,6 +341,14 @@
 	return FALSE
 
 /obj/item/mod/control/attackby(obj/item/attacking_item, mob/living/user, params)
+	// SKYRAT EDIT START - pAIs in MODsuits
+	if(istype(attacking_item, /obj/item/paicard))
+		if(!open) //mod must be open
+			balloon_alert(user, "suit must be open to transfer!")
+			return FALSE
+		insert_pai(user, attacking_item)
+		return TRUE
+	// SKYRAT EDIT END
 	if(istype(attacking_item, /obj/item/mod/module))
 		if(!open)
 			balloon_alert(user, "open the cover first!")
@@ -370,14 +373,6 @@
 		return TRUE
 	else if(is_wire_tool(attacking_item) && open)
 		wires.interact(user)
-		return TRUE
-	else if(istype(attacking_item, /obj/item/mod/paint))
-		if(active || activating)
-			balloon_alert(user, "suit is active!")
-		else if(paint(user, attacking_item))
-			balloon_alert(user, "suit painted")
-		else
-			balloon_alert(user, "not painted!")
 		return TRUE
 	else if(open && attacking_item.GetID())
 		update_access(user, attacking_item.GetID())
@@ -515,23 +510,6 @@
 		return
 	picked_module.on_select()
 
-/obj/item/mod/control/proc/paint(mob/user, obj/item/paint)
-	if(length(theme.skins) <= 1)
-		return FALSE
-	var/list/skins = list()
-	for(var/mod_skin in theme.skins)
-		skins[mod_skin] = image(icon = icon, icon_state = "[mod_skin]-control")
-	var/pick = show_radial_menu(user, src, skins, custom_check = FALSE, require_near = TRUE)
-	if(!pick || !user.is_holding(paint))
-		return FALSE
-	skin = pick
-	var/list/skin_updating = mod_parts.Copy() + src
-	for(var/obj/item/piece as anything in skin_updating)
-		piece.icon_state = "[skin]-[initial(piece.icon_state)]"
-	update_flags()
-	wearer?.regenerate_icons()
-	return TRUE
-
 /obj/item/mod/control/proc/shock(mob/living/user)
 	if(!istype(user) || get_charge() < 1)
 		return FALSE
@@ -569,10 +547,12 @@
 		var/datum/action/item_action/mod/pinned_module/action = new_module.pinned_to[REF(wearer)]
 		if(action)
 			action.Grant(wearer)
-	if(ai)
-		var/datum/action/item_action/mod/pinned_module/action = new_module.pinned_to[REF(ai)]
+	// SKYRAT EDIT START - pAIs in MODsuits
+	if(mod_pai)
+		var/datum/action/item_action/mod/pinned_module/action = new_module.pinned_to[ref(mod_pai)]
 		if(action)
-			action.Grant(ai)
+			action.Grant(mod_pai)
+	// SKYRAT EDIT END
 	if(user)
 		balloon_alert(user, "[new_module] added")
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
@@ -633,6 +613,26 @@
 	balloon_alert(wearer, "no power!")
 	toggle_activate(wearer, force_deactivate = TRUE)
 
+/obj/item/mod/control/proc/set_mod_color(new_color)
+	var/list/all_parts = mod_parts.Copy() + src
+	for(var/obj/item/part as anything in all_parts)
+		part.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
+		part.add_atom_colour(new_color, FIXED_COLOUR_PRIORITY)
+	wearer?.regenerate_icons()
+
+/obj/item/mod/control/proc/set_mod_skin(new_skin)
+	skin = new_skin
+	var/list/skin_updating = mod_parts.Copy() + src
+	var/list/selected_skin = theme.skins[new_skin]
+	for(var/obj/item/piece as anything in skin_updating)
+		if(selected_skin[MOD_ICON_OVERRIDE])
+			piece.icon = selected_skin[MOD_ICON_OVERRIDE]
+		if(selected_skin[MOD_WORN_ICON_OVERRIDE])
+			piece.worn_icon = selected_skin[MOD_WORN_ICON_OVERRIDE]
+		piece.icon_state = "[skin]-[initial(piece.icon_state)]"
+	update_flags()
+	wearer?.regenerate_icons()
+
 /obj/item/mod/control/proc/on_exit(datum/source, atom/movable/part, direction)
 	SIGNAL_HANDLER
 
@@ -644,10 +644,10 @@
 		return
 	if(part.loc == wearer)
 		return
-	if(modules.Find(part))
+	if(part in modules)
 		uninstall(part)
 		return
-	if(mod_parts.Find(part))
+	if(part in mod_parts)
 		conceal(wearer, part)
 		if(active)
 			INVOKE_ASYNC(src, .proc/toggle_activate, wearer, TRUE)
@@ -659,14 +659,11 @@
 	if(slowdown_inactive <= 0)
 		to_chat(user, span_warning("[src] has already been coated with red, that's as fast as it'll go!"))
 		return SPEED_POTION_STOP
-	if(wearer)
-		to_chat(user, span_warning("It's too dangerous to smear [speed_potion] on [src] while it's on someone!"))
+	if(active)
+		to_chat(user, span_warning("It's too dangerous to smear [speed_potion] on [src] while it's active!"))
 		return SPEED_POTION_STOP
 	to_chat(user, span_notice("You slather the red gunk over [src], making it faster."))
-	var/list/all_parts = mod_parts.Copy() + src
-	for(var/obj/item/part as anything in all_parts)
-		part.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
-		part.add_atom_colour("#FF0000", FIXED_COLOUR_PRIORITY)
+	set_mod_color("#FF0000")
 	slowdown_inactive = 0
 	slowdown_active = 0
 	update_speed()

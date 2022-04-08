@@ -140,6 +140,13 @@
 	icon_state = "hot_shovelhead"
 	spawn_item = /obj/item/forging/complete/shovel
 
+/obj/item/forging/incomplete/arrowhead
+	name = "incomplete arrowhead"
+	icon_state = "hot_arrowhead"
+	average_hits = 12
+	average_wait = 0.5 SECONDS
+	spawn_item = /obj/item/forging/complete/arrowhead
+
 //"complete" pre-complete items
 /obj/item/forging/complete
 	///the path of the item that will be created
@@ -214,10 +221,42 @@
 	icon_state = "shovelhead"
 	spawning_item = /obj/item/shovel/reagent_weapon
 
+/obj/item/forging/complete/arrowhead
+	name = "arrowhead"
+	desc = "An arrowhead, ready to get some wood for completion."
+	icon_state = "arrowhead"
+	spawning_item = /obj/item/arrow_spawner
+
 /obj/item/forging/coil
 	name = "coil"
 	desc = "A simple coil, comprised of coiled iron rods."
 	icon_state = "coil"
+
+/obj/item/forging/incomplete_bow
+	name = "incomplete bow"
+	desc = "A wooden bow that has yet to be strung."
+	icon_state = "nostring_bow"
+
+/obj/item/forging/incomplete_bow/attackby(obj/item/attacking_item, mob/user, params)
+	if(istype(attacking_item, /obj/item/weaponcrafting/silkstring))
+		new /obj/item/gun/ballistic/tribalbow(get_turf(src))
+		qdel(attacking_item)
+		qdel(src)
+		return
+	return ..()
+
+/obj/item/arrow_spawner
+	name = "arrow spawner"
+	desc = "You shouldn't see this."
+	/// the amount of arrows that are spawned from the spawner
+	var/spawning_amount = 4
+
+/obj/item/arrow_spawner/Initialize(mapload)
+	. = ..()
+	var/turf/src_turf = get_turf(src)
+	for(var/i in 1 to spawning_amount)
+		new /obj/item/ammo_casing/caseless/arrow/wood/forged(src_turf)
+	qdel(src)
 
 /obj/item/stock_parts/cell/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/forging/coil))

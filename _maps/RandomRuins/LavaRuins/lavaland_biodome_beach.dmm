@@ -163,6 +163,10 @@
 /obj/structure/chair/stool/bar/directional/west,
 /turf/open/floor/sepia,
 /area/ruin/powered/beach)
+"cP" = (
+/obj/structure/flora/ausbushes/stalkybush,
+/turf/open/water/beach/biodome,
+/area/ruin/powered/beach)
 "cV" = (
 /obj/structure/closet/secure_closet/freezer/meat{
 	req_access = null
@@ -211,11 +215,6 @@
 	dir = 4
 	},
 /turf/closed/wall/mineral/sandstone,
-/area/ruin/powered/beach)
-"eY" = (
-/obj/structure/flora/ausbushes/stalkybush,
-/obj/structure/flora/ausbushes/sparsegrass,
-/turf/open/water/beach/biodome,
 /area/ruin/powered/beach)
 "fB" = (
 /turf/open/floor/iron/stairs/medium,
@@ -289,8 +288,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4{
 	dir = 4
 	},
-/obj/item/bedsheet/dorms,
-/obj/structure/bed,
+/obj/item/bedsheet/dorms{
+	dir = 4
+	},
+/obj/structure/bed{
+	dir = 4
+	},
 /turf/open/floor/wood,
 /area/ruin/powered/beach)
 "hy" = (
@@ -335,6 +338,11 @@
 "hX" = (
 /obj/structure/punching_bag,
 /turf/open/floor/pod/dark,
+/area/ruin/powered/beach)
+"iH" = (
+/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/open/water/beach/biodome,
 /area/ruin/powered/beach)
 "jc" = (
 /obj/structure/table/wood,
@@ -386,10 +394,6 @@
 "lq" = (
 /obj/effect/turf_decal/sand,
 /turf/open/floor/sepia,
-/area/ruin/powered/beach)
-"lr" = (
-/obj/structure/flora/ausbushes/stalkybush,
-/turf/open/water/beach/biodome,
 /area/ruin/powered/beach)
 "lL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
@@ -460,6 +464,9 @@
 	dir = 4
 	},
 /turf/open/floor/pod/light,
+/area/ruin/powered/beach)
+"pz" = (
+/turf/open/water/beach/biodome,
 /area/ruin/powered/beach)
 "pE" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
@@ -610,9 +617,6 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/grimy,
 /area/ruin/powered/beach)
-"ti" = (
-/turf/open/water/beach/biodome,
-/area/ruin/powered/beach)
 "tn" = (
 /obj/structure/chair/sofa/right,
 /turf/open/floor/wood,
@@ -705,10 +709,6 @@
 	dir = 5
 	},
 /turf/closed/wall/mineral/sandstone,
-/area/ruin/powered/beach)
-"yj" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/turf/open/water/beach/biodome,
 /area/ruin/powered/beach)
 "yk" = (
 /obj/machinery/light/small/directional/east,
@@ -895,6 +895,10 @@
 "Eq" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
 /turf/open/floor/wood,
+/area/ruin/powered/beach)
+"Eu" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/open/water/beach/biodome,
 /area/ruin/powered/beach)
 "EE" = (
 /obj/structure/dresser,
@@ -1906,11 +1910,11 @@ Ti
 VI
 tO
 yT
-lr
-ti
-ti
-ti
-yj
+cP
+pz
+pz
+pz
+Eu
 Ro
 MZ
 "}
@@ -1938,11 +1942,11 @@ VI
 rz
 tO
 yT
-ti
-ti
-ti
-ti
-ti
+pz
+pz
+pz
+pz
+pz
 Ro
 MZ
 "}
@@ -1970,11 +1974,11 @@ Jr
 VI
 tO
 yT
-ti
-ti
-ti
-ti
-ti
+pz
+pz
+pz
+pz
+pz
 Ro
 MZ
 "}
@@ -2002,11 +2006,11 @@ VI
 VI
 tO
 yT
-ti
-ti
-lr
-lr
-ti
+pz
+pz
+cP
+cP
+pz
 EL
 MZ
 "}
@@ -2034,11 +2038,11 @@ Zj
 VI
 tO
 yT
-lr
-ti
-lr
-eY
-ti
+cP
+pz
+cP
+iH
+pz
 Ro
 MZ
 "}
@@ -2066,11 +2070,11 @@ VI
 VI
 tO
 yT
-ti
-ti
-ti
-ti
-ti
+pz
+pz
+pz
+pz
+pz
 Ro
 MZ
 "}
@@ -2098,11 +2102,11 @@ bL
 VI
 tO
 yT
-ti
-yj
-ti
-ti
-lr
+pz
+Eu
+pz
+pz
+cP
 Ro
 MZ
 "}
@@ -2130,11 +2134,11 @@ bM
 VI
 Xa
 yT
-ti
-ti
-ti
-ti
-ti
+pz
+pz
+pz
+pz
+pz
 EL
 MZ
 "}

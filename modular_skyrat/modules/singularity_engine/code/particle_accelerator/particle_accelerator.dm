@@ -126,7 +126,7 @@
 	. = ..()
 	if(master && master.active)
 		master.toggle_power()
-		investigate_log("was moved whilst active; it <font color='red'>powered down</font>.", INVESTIGATE_SINGULO)
+		investigate_log("was moved whilst active; it <font color='red'>powered down</font>.", INVESTIGATE_ENGINE)
 
 
 /obj/structure/particle_accelerator/update_icon_state()
