@@ -312,6 +312,14 @@
 			continue
 		. += "-[external_organ.generate_icon_cache()]"
 
+	// SKYRAT EDIT ADDITION - CACHING MARKINGS
+	for(var/key in markings)
+		if(limb_id == "digitigrade")
+			. += "-digitigrade_1_"
+		. += "-[key]"
+		. += "-[markings[key][1]]"
+	// SKYRAT EDIT END
+
 	return .
 
 ///Generates a cache key specifically for husks
