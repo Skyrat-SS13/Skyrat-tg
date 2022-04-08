@@ -21,21 +21,21 @@
 		var/icon_file = w_uniform.worn_icon
 		if(dna.species.mutant_bodyparts["taur"])
 			var/datum/sprite_accessory/taur/S = GLOB.sprite_accessories["taur"][dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
-			if(w_uniform.mutant_variants & S.taur_mode)
+			if(w_uniform.supports_variations_flags & S.taur_mode)
 				applied_style = S.taur_mode
-			else if(w_uniform.mutant_variants & S.alt_taur_mode)
+			else if(w_uniform.supports_variations_flags & S.alt_taur_mode)
 				applied_style = S.alt_taur_mode
 		if(!applied_style)
-			if((w_uniform.mutant_variants & STYLE_VOX) && dna.species.id == "vox")
+			if((w_uniform.supports_variations_flags & STYLE_VOX) && dna.species.id == "vox")
 				applied_style = STYLE_VOX
-			else if((dna.species.bodytype & BODYTYPE_DIGITIGRADE) && (w_uniform.mutant_variants & STYLE_DIGITIGRADE))
-				applied_style = STYLE_DIGITIGRADE
+			else if((dna.species.bodytype & BODYTYPE_DIGITIGRADE) && (w_uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
+				applied_style = CLOTHING_DIGITIGRADE_VARIATION
 			else if(isteshari(src))
 				applied_style = STYLE_TESHARI
 
 		var/x_override
 		switch(applied_style)
-			if(STYLE_DIGITIGRADE)
+			if(CLOTHING_DIGITIGRADE_VARIATION)
 				icon_file = w_uniform.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
 			if(STYLE_TAUR_SNAKE)
 				icon_file = w_uniform.worn_icon_taur_snake || 'modular_skyrat/master_files/icons/mob/clothing/uniform_taur_snake.dmi'
@@ -103,21 +103,21 @@
 		var/applied_style = NONE
 		if(dna.species.mutant_bodyparts["taur"])
 			var/datum/sprite_accessory/taur/S = GLOB.sprite_accessories["taur"][dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
-			if(wear_suit.mutant_variants & S.taur_mode)
+			if(wear_suit.supports_variations_flags & S.taur_mode)
 				applied_style = S.taur_mode
-			else if(wear_suit.mutant_variants & S.alt_taur_mode)
+			else if(wear_suit.supports_variations_flags & S.alt_taur_mode)
 				applied_style = S.alt_taur_mode
 		if(!applied_style)
-			if((wear_suit.mutant_variants & STYLE_VOX) && dna.species.id == "vox")
+			if((wear_suit.supports_variations_flags & STYLE_VOX) && dna.species.id == "vox")
 				applied_style = STYLE_VOX
-			else if((dna.species.bodytype & BODYTYPE_DIGITIGRADE) && (wear_suit.mutant_variants & STYLE_DIGITIGRADE))
-				applied_style = STYLE_DIGITIGRADE
+			else if((dna.species.bodytype & BODYTYPE_DIGITIGRADE) && (wear_suit.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
+				applied_style = CLOTHING_DIGITIGRADE_VARIATION
 			else if(isteshari(src))
 				applied_style = STYLE_TESHARI
 
 		var/x_override
 		switch(applied_style)
-			if(STYLE_DIGITIGRADE)
+			if(CLOTHING_DIGITIGRADE_VARIATION)
 				icon_file = wear_suit.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
 			if(STYLE_TAUR_SNAKE)
 				icon_file = wear_suit.worn_icon_taur_snake || 'modular_skyrat/master_files/icons/mob/clothing/suit_taur_snake.dmi'
@@ -168,11 +168,11 @@
 		update_observer_view(shoes,1)
 		var/icon_file = shoes.worn_icon
 		var/applied_styles = NONE
-		if((shoes.mutant_variants & STYLE_VOX) && dna.species.id == "vox")
+		if((shoes.supports_variations_flags & STYLE_VOX) && dna.species.id == "vox")
 			applied_styles = STYLE_VOX
 			icon_file = shoes.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/species/vox/feet.dmi'
-		else if((dna.species.bodytype & BODYTYPE_DIGITIGRADE) && (shoes.mutant_variants & STYLE_DIGITIGRADE))
-			applied_styles = STYLE_DIGITIGRADE
+		else if((dna.species.bodytype & BODYTYPE_DIGITIGRADE) && (shoes.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
+			applied_styles = CLOTHING_DIGITIGRADE_VARIATION
 			icon_file = shoes.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/feet_digi.dmi'
 		else if(isteshari(src))
 			applied_styles = STYLE_TESHARI
@@ -215,7 +215,7 @@
 
 		var/icon_file = gloves.worn_icon
 		var/applied_styles = NONE
-		if((gloves.mutant_variants & STYLE_VOX) && dna.species.id == "vox")
+		if((gloves.supports_variations_flags & STYLE_VOX) && dna.species.id == "vox")
 			applied_styles = STYLE_VOX
 			icon_file = gloves.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/species/vox/hands.dmi'
 		else if(isteshari(src))

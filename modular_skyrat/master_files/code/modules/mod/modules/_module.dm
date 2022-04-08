@@ -1,6 +1,6 @@
 /obj/item/mod/module
-	/// The suit's mutant_variants, currently only for the chestplate and the helmet parts of the MODsuit.
-	var/suit_mutant_variants = NONE
+	/// The suit's supports_variations_flags, currently only for the chestplate and the helmet parts of the MODsuit.
+	var/suit_supports_variations_flags = NONE
 	/// Does this module have a separate head sprite? Useful for muzzled sprites
 	var/has_head_sprite = FALSE
 	/// Is the module's visuals head-only when active? Useful for visors and such, to avoid multiplying the amount of overlay with empty images
@@ -19,18 +19,18 @@
 /obj/item/mod/module/proc/handle_module_icon(mutable_appearance/standing, module_icon_state)
 	. = list()
 	if(mod.wearer)
-		if(mod.chestplate && (mod.chestplate.mutant_variants & STYLE_DIGITIGRADE) && (mod.wearer.dna.species.bodytype & BODYTYPE_DIGITIGRADE))
-			suit_mutant_variants |= STYLE_DIGITIGRADE
+		if(mod.chestplate && (mod.chestplate.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && (mod.wearer.dna.species.bodytype & BODYTYPE_DIGITIGRADE))
+			suit_supports_variations_flags |= CLOTHING_DIGITIGRADE_VARIATION
 
-		if(mod.helmet && (mod.helmet.mutant_variants & STYLE_MUZZLE) && mod.wearer.dna.species.mutant_bodyparts["snout"])
+		if(mod.helmet && (mod.helmet.supports_variations_flags & CLOTHING_SNOUTED_VARIATION) && mod.wearer.dna.species.mutant_bodyparts["snout"])
 			var/datum/sprite_accessory/snouts/snout = GLOB.sprite_accessories["snout"][mod.wearer.dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME]]
 			if(snout.use_muzzled_sprites)
-				suit_mutant_variants |= STYLE_MUZZLE
+				suit_supports_variations_flags |= CLOTHING_SNOUTED_VARIATION
 
 	var/icon_to_use = 'icons/mob/clothing/mod.dmi'
 	var/icon_state_to_use = module_icon_state
 	var/add_overlay = TRUE
-	if(suit_mutant_variants && (mutant_variants & STYLE_DIGITIGRADE))
+	if(suit_supports_variations_flags && (supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 		icon_to_use = 'modular_skyrat/master_files/icons/mob/mod.dmi'
 		icon_state_to_use = "[module_icon_state]_digi"
 
@@ -46,7 +46,7 @@
 		icon_to_use = 'modular_skyrat/master_files/icons/mob/mod.dmi'
 		icon_state_to_use = "[module_icon_state]_head"
 
-		if(suit_mutant_variants && (mutant_variants & STYLE_MUZZLE))
+		if(suit_supports_variations_flags && (supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			icon_state_to_use = "[icon_state_to_use]_muzzled"
 
 		var/mutable_appearance/additional_module_icon = mutable_appearance(icon_to_use, icon_state_to_use, layer = standing.layer + 0.1)

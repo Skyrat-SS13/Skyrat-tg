@@ -847,7 +847,7 @@
 					client.screen += shoes					//add it to client's screen
 			update_observer_view(shoes,1)
 			var/icon_file = shoes.worn_icon
-			if((shoes.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && (shoes.mutant_variants & STYLE_DIGITIGRADE))
+			if((shoes.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && (shoes.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 				icon_file = shoes.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/feet_digi.dmi'
 
 			overlays_standing[SHOES_LAYER] = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', override_file = icon_file)

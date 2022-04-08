@@ -18,12 +18,12 @@
 			used_style = STYLE_VOX
 		else if(dna?.species.mutant_bodyparts["snout"])
 			var/datum/sprite_accessory/snouts/S = GLOB.sprite_accessories["snout"][dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME]]
-			if(S.use_muzzled_sprites && head.mutant_variants & STYLE_MUZZLE)
-				used_style = STYLE_MUZZLE
+			if(S.use_muzzled_sprites && head.supports_variations_flags & CLOTHING_SNOUTED_VARIATION)
+				used_style = CLOTHING_SNOUTED_VARIATION
 		else if(isteshari(src))
 			used_style = STYLE_TESHARI
 		switch(used_style)
-			if(STYLE_MUZZLE)
+			if(CLOTHING_SNOUTED_VARIATION)
 				desired_icon = head.worn_icon_muzzled || 'modular_skyrat/master_files/icons/mob/clothing/head_muzzled.dmi'
 			if(STYLE_VOX)
 				desired_icon = head.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/head_vox.dmi'
@@ -57,13 +57,13 @@
 			used_style = STYLE_VOX
 		else if(dna?.species.mutant_bodyparts["snout"])
 			var/datum/sprite_accessory/snouts/S = GLOB.sprite_accessories["snout"][dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME]]
-			if(S.use_muzzled_sprites && wear_mask.mutant_variants & STYLE_MUZZLE)
-				used_style = STYLE_MUZZLE
+			if(S.use_muzzled_sprites && wear_mask.supports_variations_flags & CLOTHING_SNOUTED_VARIATION)
+				used_style = CLOTHING_SNOUTED_VARIATION
 		else if(isteshari(src))
 			used_style = STYLE_TESHARI
 
 		switch(used_style)
-			if(STYLE_MUZZLE)
+			if(CLOTHING_SNOUTED_VARIATION)
 				desired_icon = wear_mask.worn_icon_muzzled || 'modular_skyrat/master_files/icons/mob/clothing/mask_muzzled.dmi'
 			if(STYLE_VOX)
 				desired_icon = wear_mask.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/mask_vox.dmi'
