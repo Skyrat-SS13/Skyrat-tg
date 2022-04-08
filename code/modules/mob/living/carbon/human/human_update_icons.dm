@@ -215,12 +215,6 @@ There are several things that need to be remembered:
 		var/icon_file
 		var/handled_by_bodytype
 
-		// SKYRAT EDIT ADDITION
-		if(dna.species.bodytype & BODYTYPE_HAND_VOX)
-			if(worn_item.supports_variations_flags & CLOTHING_VOX_HAND_VARIATION)
-				icon_file = wear_mask.worn_icon_muzzled || VOX_HAND_FILE
-		// SKYRAT EDIT END
-
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/hands.dmi'
 			handled_by_bodytype = FALSE
@@ -412,10 +406,9 @@ There are several things that need to be remembered:
 		var/handled_by_bodytype = FALSE
 		var/icon_file
 
-		// SKYRAT EDIT ADDITION
-		if(dna.species.bodytype & BODYTYPE_SNOUTED)
-			if(worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION)
-				icon_file = wear_mask.worn_icon_muzzled || SNOUTED_HEAD_FILE
+		// SKYRAT EDIT ADDITION - This needs to be refactored.
+		if((dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
+			icon_file = wear_mask.worn_icon_muzzled || SNOUTED_HEAD_FILE
 		// SKYRAT EDIT END
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
