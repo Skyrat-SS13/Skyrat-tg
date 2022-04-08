@@ -20201,7 +20201,24 @@
 "gFe" = (
 /obj/structure/rack/gunrack,
 /obj/effect/turf_decal/delivery,
-/obj/effect/spawner/armory_spawn/shotguns,
+/obj/item/gun/energy/disabler{
+	pixel_y = -6
+	},
+/obj/item/gun/energy/disabler{
+	pixel_y = -6
+	},
+/obj/item/gun/energy/disabler{
+	pixel_y = -2
+	},
+/obj/item/gun/energy/disabler{
+	pixel_y = -2
+	},
+/obj/item/gun/energy/disabler{
+	pixel_y = 2
+	},
+/obj/item/gun/energy/disabler{
+	pixel_y = 2
+	},
 /turf/open/floor/iron,
 /area/ai_monitored/security/armory)
 "gFq" = (
@@ -22626,7 +22643,7 @@
 /obj/effect/turf_decal/delivery,
 /obj/structure/rack/gunrack,
 /obj/machinery/firealarm/directional/south,
-/obj/effect/spawner/armory_spawn/microfusion,
+/obj/effect/spawner/armory_spawn/shotguns,
 /turf/open/floor/iron/dark/corner{
 	dir = 8
 	},
@@ -51067,6 +51084,7 @@
 /area/hallway/secondary/construction/engineering)
 "rMr" = (
 /obj/machinery/door/window/left{
+	dir = 8;
 	name = "Security Mech Recharge Dock";
 	req_access_txt = "63"
 	},
@@ -65564,7 +65582,7 @@
 /obj/structure/cable,
 /obj/machinery/camera{
 	c_tag = "Kitchen Diner Starboard";
-	dir = 9;
+	dir = 5;
 	name = "service camera"
 	},
 /obj/machinery/airalarm/directional/east,
