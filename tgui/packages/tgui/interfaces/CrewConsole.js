@@ -1,6 +1,6 @@
 import { sortBy } from 'common/collections';
 import { useBackend } from '../backend';
-import { Box, Button, ColorBox, Section, Table, Icon } from '../components'; //SKYRAT EDIT - ORIGINAL: import { Box, Button, ColorBox, Section, Table }
+import { Box, Button, ColorBox, Section, Table, Icon } from '../components'; // SKYRAT EDIT - ORIGINAL: import { Box, Button, ColorBox, Section, Table }
 import { COLORS } from '../constants';
 import { Window } from '../layouts';
 
@@ -114,7 +114,7 @@ const CrewTableEntry = (props, context) => {
     name,
     assignment,
     ijob,
-    is_robot, //SKYRAT EDIT ADDITION - Displaying robotic species Icon
+    is_robot, // SKYRAT EDIT ADDITION - Displaying robotic species Icon
     life_status,
     oxydam,
     toxdam,
