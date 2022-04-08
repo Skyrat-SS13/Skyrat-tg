@@ -314,8 +314,8 @@
 
 	// SKYRAT EDIT ADDITION - CACHING MARKINGS
 	for(var/key in markings)
-		if(limb_id == "digitigrade")
-			. += "-digitigrade_1_"
+		var/render_limb_string = limb_id == "digitigrade" ? ("digitigrade_1_" + body_zone) : body_zone
+		. += render_limb_string
 		. += "-[key]"
 		. += "-[markings[key][1]]"
 	// SKYRAT EDIT END
