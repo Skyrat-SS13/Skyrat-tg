@@ -752,7 +752,7 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
 		ruleset.restricted_roles |= JOB_ASSISTANT
 	// SKYRAT EDIT ADDITION
-	for(var/datum/job/iterating_job in subtypesof(/datum/job))
+	for(var/datum/job/iterating_job as anything in subtypesof(/datum/job))
 		if(!initial(iterating_job.antagonist_restricted))
 			continue
 		if(initial(iterating_job.restricted_antagonists))
