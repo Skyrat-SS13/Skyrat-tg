@@ -704,6 +704,13 @@
 
 		dmg_overlay_type = owner_species.damage_overlay_type
 
+		// SKYRAT EDIT ADDITION
+		markings = LAZYCOPY(owner_species.body_markings[body_zone])
+		if(aux_zone)
+			aux_zone_markings = LAZYCOPY(owner_species.body_markings[aux_zone])
+		markings_alpha = owner_species.markings_alpha
+		// SKYRAT EDIT END
+
 	else if(animal_origin == MONKEY_BODYPART) //currently monkeys are the only non human mob to have damage overlays.
 		dmg_overlay_type = animal_origin
 
@@ -832,9 +839,8 @@
 	if(is_husked)
 		override_color = "#888888"
 	// We need to check that the owner exists(could be a placed bodypart) and that it's not a chainsawhand and that they're a human with usable DNA.
-	if(owner && !is_pseudopart && ishuman(owner))
-		var/mob/living/carbon/human/human = owner
-		for(var/key in human.dna.species.body_markings[body_zone]) // Cycle through all of our currently selected markings.
+	if(!is_pseudopart)
+		for(var/key in markings) // Cycle through all of our currently selected markings.
 			var/datum/body_marking/body_marking = GLOB.body_markings[key]
 			if (!body_marking) // Edge case prevention.
 				continue
@@ -844,19 +850,19 @@
 			var/mutable_appearance/accessory_overlay
 			var/mutable_appearance/emissive
 			accessory_overlay = mutable_appearance(body_marking.icon, "[body_marking.icon_state]_[render_limb_string]", -BODYPARTS_LAYER)
-			accessory_overlay.alpha = human.dna.species.markings_alpha
-			if (human.dna.species.body_markings[body_zone][key][2])
+			accessory_overlay.alpha = markings_alpha
+			if(markings[key][2])
 				emissive = emissive_appearance_copy(accessory_overlay)
 			if(override_color)
 				accessory_overlay.color = override_color
 			else
-				accessory_overlay.color = human.dna.species.body_markings[body_zone][key][1]
+				accessory_overlay.color = markings[key][1]
 			. += accessory_overlay
 			if (emissive)
 				. += emissive
 
 		if(aux_zone)
-			for(var/key in human.dna.species.body_markings[aux_zone])
+			for(var/key in aux_zone_markings)
 				var/datum/body_marking/body_marking = GLOB.body_markings[key]
 				if (!body_marking) // Edge case prevention.
 					continue
@@ -866,13 +872,13 @@
 				var/mutable_appearance/emissive
 				var/mutable_appearance/accessory_overlay
 				accessory_overlay = mutable_appearance(body_marking.icon, "[body_marking.icon_state]_[render_limb_string]", -aux_layer)
-				accessory_overlay.alpha = human.dna.species.markings_alpha
-				if (human.dna.species.body_markings[aux_zone][key][2])
+				accessory_overlay.alpha = markings_alpha
+				if (aux_zone_markings[key][2])
 					emissive = emissive_appearance_copy(accessory_overlay)
 				if(override_color)
 					accessory_overlay.color = override_color
 				else
-					accessory_overlay.color = human.dna.species.body_markings[aux_zone][key][1]
+					accessory_overlay.color = aux_zone_markings[key][1]
 				. += accessory_overlay
 				if (emissive)
 					. += emissive

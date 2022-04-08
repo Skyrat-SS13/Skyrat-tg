@@ -268,24 +268,12 @@
 	if(!needs_update.len && !limb_count_update)
 		return
 
-	// SKYRAT EDIT ADDITION
-	var/is_taur = FALSE
-	if(dna?.species.mutant_bodyparts["taur"])
-		var/datum/sprite_accessory/taur/sprite_accessory = GLOB.sprite_accessories["taur"][dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
-		if(sprite_accessory.hide_legs)
-			is_taur = TRUE
-	// SKYRAT EDIT END
-
 	remove_overlay(BODYPARTS_LAYER)
 
 	//GENERATE NEW LIMBS
 	var/list/new_limbs = list()
 	for(var/obj/item/bodypart/limb as anything in bodyparts)
 		if(limb in needs_update) //Checks to see if the limb needs to be redrawn
-			// SKYRAT EDIT ADDITION
-			if(is_taur && (limb.body_part == LEG_LEFT || limb.body_part == LEG_RIGHT))
-				continue
-			// SKYRAT EDIT END
 			var/bodypart_icon = limb.get_limb_icon()
 			new_limbs += bodypart_icon
 			limb_icon_cache[icon_render_keys[limb.body_zone]] = bodypart_icon //Caches the icon with the bodypart key, as it is new
