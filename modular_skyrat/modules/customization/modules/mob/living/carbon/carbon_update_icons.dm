@@ -1,6 +1,6 @@
 
 
-
+/*
 /mob/living/carbon/update_inv_head()
 	remove_overlay(HEAD_LAYER)
 
@@ -35,7 +35,7 @@
 					if((head.worn_icon_state || head.icon_state) in tesh_icon_states)
 						desired_icon = TESHARI_HEAD_ICON
 
-		overlays_standing[HEAD_LAYER] = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = 'icons/mob/clothing/head.dmi', override_icon = desired_icon, mutant_styles = used_style)
+		overlays_standing[HEAD_LAYER] = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = 'icons/mob/clothing/head.dmi', override_file = desired_icon, mutant_styles = used_style)
 		update_hud_head(head)
 
 	apply_overlay(HEAD_LAYER)
@@ -76,7 +76,7 @@
 						desired_icon = TESHARI_MASK_ICON
 
 		if(!(check_obscured_slots() & ITEM_SLOT_MASK))
-			overlays_standing[FACEMASK_LAYER] = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = 'icons/mob/clothing/mask.dmi', override_icon = desired_icon, mutant_styles = used_style)
+			overlays_standing[FACEMASK_LAYER] = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = 'icons/mob/clothing/mask.dmi', override_file = desired_icon, mutant_styles = used_style)
 		update_hud_wear_mask(wear_mask)
 
 	apply_overlay(FACEMASK_LAYER)
@@ -96,7 +96,7 @@
 			icon_file = TESHARI_NECK_ICON
 
 		if(!(check_obscured_slots() & ITEM_SLOT_NECK))
-			overlays_standing[NECK_LAYER] = wear_neck.build_worn_icon(default_layer = NECK_LAYER, default_icon_file = 'icons/mob/clothing/neck.dmi', override_icon = icon_file, mutant_styles = applied_styles, species = dna.species.species_clothing_path)
+			overlays_standing[NECK_LAYER] = wear_neck.build_worn_icon(default_layer = NECK_LAYER, default_icon_file = 'icons/mob/clothing/neck.dmi', override_file = icon_file, mutant_styles = applied_styles, species = dna.species.species_clothing_path)
 		update_hud_neck(wear_neck)
 
 	apply_overlay(NECK_LAYER)
@@ -117,7 +117,8 @@
 				icon_file = TESHARI_BACK_ICON
 				applied_styles = STYLE_TESHARI
 
-		overlays_standing[BACK_LAYER] = back.build_worn_icon(default_layer = BACK_LAYER, default_icon_file = 'icons/mob/clothing/back.dmi', override_icon = icon_file, mutant_styles = applied_styles)
+		overlays_standing[BACK_LAYER] = back.build_worn_icon(default_layer = BACK_LAYER, default_icon_file = 'icons/mob/clothing/back.dmi', override_file = icon_file, mutant_styles = applied_styles)
 		update_hud_back(back)
 
 	apply_overlay(BACK_LAYER)
+*/

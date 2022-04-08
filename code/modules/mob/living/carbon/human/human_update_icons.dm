@@ -102,8 +102,6 @@ There are several things that need to be remembered:
 /* --------------------------------------- */
 //vvvvvv UPDATE_INV PROCS vvvvvv
 
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
 /mob/living/carbon/human/update_inv_w_uniform()
 	remove_overlay(UNIFORM_LAYER)
 
@@ -132,7 +130,7 @@ There are several things that need to be remembered:
 		if(!uniform_overlay)
 			//BEGIN SPECIES HANDLING
 			if((dna?.species.bodytype & BODYTYPE_DIGITIGRADE) && (U.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
-				icon_file = DIGITIGRADE_UNIFORM_FILE
+				icon_file = U.worn_icon_digi || DIGITIGRADE_UNIFORM_FILE // SKYRAT EDIT CHANGE
 
 			//Female sprites have lower priority than digitigrade sprites
 			else if(dna.species.sexes && (dna.species.bodytype & BODYTYPE_HUMANOID) && physique == FEMALE && U.adjusted != NO_FEMALE_UNIFORM) //Agggggggghhhhh
@@ -158,8 +156,6 @@ There are several things that need to be remembered:
 		apply_overlay(UNIFORM_LAYER)
 
 	update_mutant_bodyparts()
-*/
-//SKYRAT EDIT REMOVAL END
 
 /mob/living/carbon/human/update_inv_wear_id()
 	remove_overlay(ID_LAYER)
@@ -191,7 +187,6 @@ There are several things that need to be remembered:
 
 	apply_overlay(ID_LAYER)
 
-/*
 /mob/living/carbon/human/update_inv_gloves()
 	remove_overlay(GLOVES_LAYER)
 
@@ -220,11 +215,18 @@ There are several things that need to be remembered:
 		var/icon_file
 		var/handled_by_bodytype
 
+		// SKYRAT EDIT ADDITION
+		var/species_override_icon
+		if(dna.species.bodytype & BODYTYPE_HAND_VOX)
+			if(worn_item.supports_variations_flags & CLOTHING_VOX_HAND_VARIATION)
+				species_override_icon = wear_mask.worn_icon_muzzled || VOX_HAND_FILE
+		// SKYRAT EDIT END
+
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/hands.dmi'
 			handled_by_bodytype = FALSE
 
-		gloves_overlay = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = icon_file)
+		gloves_overlay = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = icon_file, override_file = species_override_icon) // SKYRAT EDIT CHANGE
 
 		if(!gloves_overlay)
 			return
@@ -233,10 +235,8 @@ There are several things that need to be remembered:
 			gloves_overlay.pixel_y += dna.species.offset_features[OFFSET_GLOVES][2]
 		overlays_standing[GLOVES_LAYER] = gloves_overlay
 	apply_overlay(GLOVES_LAYER)
-*/
 
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
+
 /mob/living/carbon/human/update_inv_glasses()
 	remove_overlay(GLASSES_LAYER)
 
@@ -254,13 +254,19 @@ There are several things that need to be remembered:
 
 		var/handled_by_bodytype
 		var/icon_file
+		// SKYRAT EDIT ADDITION
+		var/species_override_icon
+		if(dna.species.bodytype & BODYTYPE_SNOUTED_VOX)
+			if(worn_item.supports_variations_flags & CLOTHING_SNOUTED_VOX_VARIATION)
+				species_override_icon = wear_mask.worn_icon_vox || VOX_GLASSES_FILE
+		// SKYRAT EDIT END
 		if(!(head?.flags_inv & HIDEEYES) && !(wear_mask?.flags_inv & HIDEEYES))
 
 			if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 				icon_file = 'icons/mob/clothing/eyes.dmi'
 				handled_by_bodytype = FALSE
 
-			glasses_overlay = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = icon_file)
+			glasses_overlay = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = icon_file, override_file = species_override_icon) // SKYRAT EDIT CHANGE
 
 		if(!glasses_overlay)
 			return
@@ -269,6 +275,7 @@ There are several things that need to be remembered:
 			glasses_overlay.pixel_y += dna.species.offset_features[OFFSET_GLASSES][2]
 		overlays_standing[GLASSES_LAYER] = glasses_overlay
 	apply_overlay(GLASSES_LAYER)
+
 
 /mob/living/carbon/human/update_inv_ears()
 	remove_overlay(EARS_LAYER)
@@ -301,8 +308,7 @@ There are several things that need to be remembered:
 			ears_overlay.pixel_y += dna.species.offset_features[OFFSET_EARS][2]
 		overlays_standing[EARS_LAYER] = ears_overlay
 	apply_overlay(EARS_LAYER)
-*/
-//SKYRAT EDIT REMOVAL END
+
 
 /mob/living/carbon/human/update_inv_neck()
 	remove_overlay(NECK_LAYER)
@@ -352,16 +358,18 @@ There are several things that need to be remembered:
 		update_hud_shoes(worn_item)
 		var/handled_by_bodytype = TRUE
 
+		var/species_override_icon // SKYRAT EDIT ADDITION
+
 		if((dna.species.bodytype & BODYTYPE_DIGITIGRADE) && (worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 			var/obj/item/bodypart/leg = src.get_bodypart(BODY_ZONE_L_LEG)
 			if(leg.limb_id == "digitigrade")//Snowflakey and bad. But it makes it look consistent.
-				icon_file = DIGITIGRADE_SHOES_FILE
+				species_override_icon = worn_item.worn_icon_digi || DIGITIGRADE_SHOES_FILE // SKYRAT EDIT CHANGE
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
 			handled_by_bodytype = FALSE
 			icon_file = DEFAULT_SHOES_FILE
 
-		shoes_overlay = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = icon_file)
+		shoes_overlay = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = icon_file, override_file = species_override_icon) // SKYRAT EDIT CHANGE
 
 		if(!shoes_overlay)
 			return
@@ -412,7 +420,14 @@ There are several things that need to be remembered:
 			handled_by_bodytype = FALSE
 			icon_file = 'icons/mob/clothing/head.dmi'
 
-		head_overlay = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = icon_file)
+		// SKYRAT EDIT ADDITION
+		var/species_override_icon
+		if(dna.species.bodytype & BODYTYPE_SNOUTED)
+			if(worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION)
+				species_override_icon = wear_mask.worn_icon_muzzled || SNOUTED_HEAD_FILE
+		// SKYRAT EDIT END
+
+		head_overlay = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = icon_file, override_file = species_override_icon) // SKYRAT EDIT CHANGE
 
 		if(!head_overlay)
 			return
@@ -473,16 +488,18 @@ There are several things that need to be remembered:
 
 		var/handled_by_bodytype = TRUE
 
+		var/species_override_icon // SKYRAT EDIT ADDITION
+
 		//More currently unused digitigrade handling
 		if(dna.species.bodytype & BODYTYPE_DIGITIGRADE)
 			if(worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION)
-				icon_file = DIGITIGRADE_SUIT_FILE
+				species_override_icon = wear_suit.worn_icon_digi || DIGITIGRADE_SUIT_FILE // SKYRAT EDIT CHANGE
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
 			handled_by_bodytype = FALSE
 			icon_file = DEFAULT_SUIT_FILE
 
-		suit_overlay = wear_suit.build_worn_icon(default_layer = SUIT_LAYER, default_icon_file = icon_file)
+		suit_overlay = wear_suit.build_worn_icon(default_layer = SUIT_LAYER, default_icon_file = icon_file, override_file = species_override_icon) // SKYRAT EDIT CHANGE
 
 		if(!suit_overlay)
 			return
@@ -533,13 +550,20 @@ There are several things that need to be remembered:
 		var/icon_file = 'icons/mob/clothing/mask.dmi'
 		var/handled_by_bodytype = TRUE
 
+		// SKYRAT EDIT ADDITION
+		var/species_override_icon
+		if(dna.species.bodytype & BODYTYPE_SNOUTED)
+			if(worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION)
+				species_override_icon = wear_mask.worn_icon_muzzled || SNOUTED_MASK_FILE
+		// SKYRAT EDIT END
+
 		if(!(ITEM_SLOT_MASK in check_obscured_slots()))
 
 			if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
 				icon_file = 'icons/mob/clothing/mask.dmi'
 				handled_by_bodytype = FALSE
 
-			mask_overlay = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = icon_file)
+			mask_overlay = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = icon_file, override_file = species_override_icon) // SKYRAT EDIT CHANGE
 
 		if(!mask_overlay)
 			return
@@ -760,8 +784,7 @@ generate/load female uniform sprites matching all previously decided variables
 
 
 */
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular) - KAPU LIMB CHECK: OK
-/*
+
 /obj/item/proc/build_worn_icon(default_layer = 0, default_icon_file = null, isinhands = FALSE, femaleuniform = NO_FEMALE_UNIFORM, override_state = null, override_file = null)
 
 	//Find a valid icon_state from variables+arguments
@@ -803,8 +826,7 @@ generate/load female uniform sprites matching all previously decided variables
 	standing.color = color
 
 	return standing
-*/
-//SKYRAT EDIT REMOVAL END
+
 
 /// Returns offsets used for equipped item overlays in list(px_offset,py_offset) form.
 /obj/item/proc/get_worn_offsets(isinhands)

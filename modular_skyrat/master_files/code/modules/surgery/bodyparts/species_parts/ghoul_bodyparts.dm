@@ -1,11 +1,13 @@
 // Ghouls!
 /obj/item/bodypart/head/mutant/ghoul
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
+	is_dimorphic = FALSE
 	limb_id = SPECIES_GHOUL
 
 /obj/item/bodypart/chest/mutant/ghoul
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
 	limb_id = SPECIES_GHOUL
+	is_dimorphic = FALSE
 
 /obj/item/bodypart/l_arm/mutant/ghoul
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'

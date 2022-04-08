@@ -155,6 +155,18 @@
 #define CLOTHING_DIGITIGRADE_VARIATION (1<<1)
 ///The sprite works fine for digitigrade legs as-is.
 #define CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON (1<<2)
+// SKYRAT EDIT ADDITION
+/// The sprite works fine for snouts.
+#define CLOTHING_SNOUTED_VARIATION (1<<3)
+/// The sprite works fine for snouts as-is.
+#define CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON (1<<4)
+/// The sprite works fine for vox snouts.
+#define CLOTHING_SNOUTED_VOX_VARIATION (1<<5)
+/// The sprite works fine for vox snouts as is.
+#define CLOTHING_SNOUTED_VOX_VARIATION_NO_NEW_ICON (1<<6)
+/// The sprite works fine for vox snouts.
+#define CLOTHING_VOX_HAND_VARIATION (1<<7)
+// SKYRAT EDIT END
 
 //flags for covering body parts
 #define GLASSESCOVERSEYES (1<<0)

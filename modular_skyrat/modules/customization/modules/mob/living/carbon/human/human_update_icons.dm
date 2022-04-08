@@ -1,3 +1,4 @@
+/*
 /mob/living/carbon/human/update_inv_w_uniform()
 	remove_overlay(UNIFORM_LAYER)
 
@@ -59,10 +60,10 @@
 
 		if(dna && dna.species.sexes && !applied_style)
 			if(physique == FEMALE && U.female_sprite_flags != NO_FEMALE_UNIFORM)
-				uniform_overlay = U.build_worn_icon(default_layer = UNIFORM_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, femaleuniform = U.female_sprite_flags, override_state = target_overlay, override_icon = icon_file, override_x_center = x_override, mutant_styles = applied_style, species = dna.species.species_clothing_path)
+				uniform_overlay = U.build_worn_icon(default_layer = UNIFORM_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, femaleuniform = U.female_sprite_flags, override_state = target_overlay, override_file = icon_file, override_x_center = x_override, mutant_styles = applied_style, species = dna.species.species_clothing_path)
 
 		if(!uniform_overlay)
-			uniform_overlay = U.build_worn_icon(default_layer = UNIFORM_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_state = target_overlay, override_icon = icon_file, override_x_center = x_override, mutant_styles = applied_style, species = dna.species.species_clothing_path)
+			uniform_overlay = U.build_worn_icon(default_layer = UNIFORM_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_state = target_overlay, override_file = icon_file, override_x_center = x_override, mutant_styles = applied_style, species = dna.species.species_clothing_path)
 
 		if(U.accessory_overlay)
 			var/special_accessory_style = FALSE
@@ -85,7 +86,6 @@
 	apply_overlay(UNIFORM_LAYER)
 	update_mutant_bodyparts()
 
-/*
 /mob/living/carbon/human/update_inv_wear_suit()
 	remove_overlay(SUIT_LAYER)
 
@@ -133,7 +133,7 @@
 		if(applied_style & STYLE_TAUR_ALL)
 			x_override = 64
 
-		overlays_standing[SUIT_LAYER] = wear_suit.build_worn_icon(default_layer = SUIT_LAYER, default_icon_file = 'icons/mob/clothing/suit.dmi', override_icon = icon_file, override_x_center = x_override, mutant_styles = applied_style, species = dna.species.species_clothing_path)
+		overlays_standing[SUIT_LAYER] = wear_suit.build_worn_icon(default_layer = SUIT_LAYER, default_icon_file = 'icons/mob/clothing/suit.dmi', override_file = icon_file, override_x_center = x_override, mutant_styles = applied_style, species = dna.species.species_clothing_path)
 		var/mutable_appearance/suit_overlay = overlays_standing[SUIT_LAYER]
 		if(OFFSET_SUIT in dna.species.offset_features)
 			suit_overlay.pixel_x += dna.species.offset_features[OFFSET_SUIT][1]
@@ -143,7 +143,7 @@
 	update_mutant_bodyparts()
 
 	apply_overlay(SUIT_LAYER)
-*/
+
 
 /mob/living/carbon/human/update_inv_shoes()
 	remove_overlay(SHOES_LAYER)
@@ -178,7 +178,7 @@
 			applied_styles = STYLE_TESHARI
 			icon_file = shoes.worn_icon_teshari || TESHARI_FEET_ICON
 
-		overlays_standing[SHOES_LAYER] = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', override_icon = icon_file, mutant_styles = applied_styles, species = dna.species.species_clothing_path)
+		overlays_standing[SHOES_LAYER] = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', override_file = icon_file, mutant_styles = applied_styles, species = dna.species.species_clothing_path)
 		var/mutable_appearance/shoes_overlay = overlays_standing[SHOES_LAYER]
 		if(OFFSET_SHOES in dna.species.offset_features)
 			shoes_overlay.pixel_x += dna.species.offset_features[OFFSET_SHOES][1]
@@ -186,6 +186,7 @@
 		overlays_standing[SHOES_LAYER] = shoes_overlay
 
 	apply_overlay(SHOES_LAYER)
+
 
 /mob/living/carbon/human/update_inv_gloves()
 	remove_overlay(GLOVES_LAYER)
@@ -221,13 +222,14 @@
 			applied_styles = STYLE_TESHARI
 			icon_file = gloves.worn_icon_teshari || TESHARI_HANDS_ICON
 
-		overlays_standing[GLOVES_LAYER] = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = 'icons/mob/clothing/hands.dmi', override_icon = icon_file, mutant_styles = applied_styles, species = dna.species.species_clothing_path)
+		overlays_standing[GLOVES_LAYER] = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = 'icons/mob/clothing/hands.dmi', override_file = icon_file, mutant_styles = applied_styles, species = dna.species.species_clothing_path)
 		gloves_overlay = overlays_standing[GLOVES_LAYER]
 		if(OFFSET_GLOVES in dna.species.offset_features)
 			gloves_overlay.pixel_x += dna.species.offset_features[OFFSET_GLOVES][1]
 			gloves_overlay.pixel_y += dna.species.offset_features[OFFSET_GLOVES][2]
 	overlays_standing[GLOVES_LAYER] = gloves_overlay
 	apply_overlay(GLOVES_LAYER)
+
 
 /mob/living/carbon/human/update_inv_glasses()
 	remove_overlay(GLASSES_LAYER)
@@ -254,7 +256,7 @@
 			else if(isteshari(src))
 				applied_style |= STYLE_TESHARI
 				icon_file = glasses.worn_icon_teshari ||TESHARI_EYES_ICON
-			overlays_standing[GLASSES_LAYER] = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = 'icons/mob/clothing/eyes.dmi', override_icon = icon_file, mutant_styles = applied_style, species = dna.species.species_clothing_path)
+			overlays_standing[GLASSES_LAYER] = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = 'icons/mob/clothing/eyes.dmi', override_file = icon_file, mutant_styles = applied_style, species = dna.species.species_clothing_path)
 
 		var/mutable_appearance/glasses_overlay = overlays_standing[GLASSES_LAYER]
 		if(glasses_overlay)
@@ -263,107 +265,8 @@
 				glasses_overlay.pixel_y += dna.species.offset_features[OFFSET_GLASSES][2]
 			overlays_standing[GLASSES_LAYER] = glasses_overlay
 	apply_overlay(GLASSES_LAYER)
+*/
 
-/mob/living/carbon/human/update_inv_ears()
-	remove_overlay(EARS_LAYER)
-
-	if(!get_bodypart(BODY_ZONE_HEAD)) //decapitated
-		return
-
-	if(client && hud_used)
-		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_EARS) + 1]
-		inv.update_appearance()
-
-	if(ears)
-		ears.screen_loc = ui_ears //move the item to the appropriate screen loc
-		if(client && hud_used?.hud_shown)
-			if(hud_used.inventory_shown) //if the inventory is open
-				client.screen += ears //add it to the client's screen
-		update_observer_view(ears,1)
-		overlays_standing[EARS_LAYER] = ears.build_worn_icon(default_layer = EARS_LAYER, default_icon_file = 'icons/mob/clothing/ears.dmi', species = dna.species.species_clothing_path)
-		var/mutable_appearance/ears_overlay = overlays_standing[EARS_LAYER]
-		if(OFFSET_EARS in dna.species.offset_features)
-			ears_overlay.pixel_x += dna.species.offset_features[OFFSET_EARS][1]
-			ears_overlay.pixel_y += dna.species.offset_features[OFFSET_EARS][2]
-		overlays_standing[EARS_LAYER] = ears_overlay
-	apply_overlay(EARS_LAYER)
-
-/obj/item/proc/build_worn_icon(default_layer = 0, default_icon_file = null, isinhands = FALSE, femaleuniform = NO_FEMALE_UNIFORM, override_state = null, override_icon = null, override_x_center = null, override_y_center = null, mutant_styles = NONE, species = null)
-
-	//Find a valid icon_state from variables+arguments
-	var/t_state
-	if(override_state)
-		t_state = override_state
-	else
-		t_state = !isinhands ? (worn_icon_state ? worn_icon_state : icon_state) : (inhand_icon_state ? inhand_icon_state : icon_state)
-
-	//Find a valid icon file from variables+arguments
-	var/file_to_use
-	if(override_icon)
-		file_to_use = override_icon
-	else
-		file_to_use = !isinhands ? (worn_icon ? worn_icon : default_icon_file) : default_icon_file
-
-	//Find a valid layer from variables+arguments
-	var/layer2use = alternate_worn_layer ? alternate_worn_layer : default_layer
-
-	var/mutable_appearance/standing
-	if(species)
-		var/default_file = !isinhands ? (worn_icon ? worn_icon : default_icon_file) : default_icon_file
-		standing = wear_species_version(file_to_use, t_state, layer2use, species, default_file)
-	else if(femaleuniform)
-		standing = wear_female_version(t_state, file_to_use, layer2use, femaleuniform, greyscale_colors) //should layer2use be in sync with the adjusted value below? needs testing - shiz
-	if(!standing)
-		standing = mutable_appearance(file_to_use, t_state, -layer2use)
-
-	//Get the overlays for this item when it's being worn
-	//eg: ammo counters, primed grenade flashes, etc.
-	var/list/worn_overlays = worn_overlays(standing, isinhands, file_to_use, mutant_styles)
-	if(worn_overlays && worn_overlays.len)
-		standing.overlays.Add(worn_overlays)
-
-	var/x_center
-	var/y_center
-	if(override_x_center)
-		x_center = override_x_center
-	else
-		x_center = isinhands ? inhand_x_dimension : worn_x_dimension
-	if(override_y_center)
-		y_center = override_y_center
-	else
-		y_center = isinhands ? inhand_y_dimension : worn_y_dimension
-	standing = center_image(standing, x_center, y_center)
-
-	//Worn offsets
-	var/list/offsets = get_worn_offsets(isinhands)
-	standing.pixel_x += offsets[1]
-	standing.pixel_y += offsets[2]
-
-	standing.alpha = alpha
-	standing.color = color
-
-	return standing
-
-
-/obj/item/proc/wear_species_version(file_to_use, state_to_use, layer, species, default_file_to_use)
-	return
-
-/**
- * Generates a species-specific clothing icon.
- *
- * Arguments:
- * * file_to_use - Icon file to use for clothing sprite
- * * state_to_use - Icon state to use within file_to_use
- * * layer - specifies the sprite layer the sprite will be on
- * * species - the specific species the icon will be generated for
- * * default_file_to_use - default fallback icon to use
- */
-/obj/item/clothing/wear_species_version(file_to_use, state_to_use, layer, species, default_file_to_use)
-	LAZYINITLIST(GLOB.species_clothing_icons[species])
-	var/icon/species_clothing_icon = GLOB.species_clothing_icons[species][get_species_clothing_key(file_to_use, state_to_use)] // Check if the icon we want already exists
-	if(!species_clothing_icon) 	// Create standing/laying icons if they don't exist
-		generate_species_clothing(file_to_use, state_to_use, species, default_file_to_use)
-	return mutable_appearance(GLOB.species_clothing_icons[species][get_species_clothing_key(file_to_use, state_to_use)], layer = -layer)
 
 /* TO DO: CHECK AND IMPLEMENT
 //Removed the icon cache from this, as its not feasible to make a cache for the plathora of customizable species and markings
