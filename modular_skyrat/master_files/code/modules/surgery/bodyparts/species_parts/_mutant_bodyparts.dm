@@ -1,3 +1,7 @@
+/obj/item/bodypart
+	/// A list of all of our bodypart markings. NOT IN USE YET.
+	var/list/bodypart_markings
+
 /obj/item/bodypart/r_leg
 	/// This is used in digitigrade legs, when this leg is swapped out with the digitigrade version.
 	var/digitigrade_type = /obj/item/bodypart/r_leg/digitigrade

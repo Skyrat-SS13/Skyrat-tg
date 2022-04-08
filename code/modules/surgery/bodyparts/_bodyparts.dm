@@ -839,7 +839,7 @@
 			if (!body_marking) // Edge case prevention.
 				continue
 
-			var/render_limb_string = limb_id == "digitigrade" ? ("digitigrade_1_" + body_zone) : body_zone
+			var/render_limb_string = limb_id == "digitigrade" ? ("digitigrade_1_" + body_zone) : body_zone // I am not sure why there are _1 and _2 versions of digi, so, it's staying like this.
 
 			var/mutable_appearance/accessory_overlay
 			var/mutable_appearance/emissive
