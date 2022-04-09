@@ -561,38 +561,72 @@
 /obj/item/ammo_casing/energy/medical/utility/relocation
 	projectile_type = /obj/projectile/energy/medical/utility/relocation
 	select_name = "relocation"
-	select_color = "#850000"
+	select_color = "#140085"
 
 /obj/projectile/energy/medical/utility/relocation
 	name = "bluespace transportation field"
+	/// Determines whether or not this works anywhere?
+	var/area_locked = FALSE
+	/// A list of areas that the effect works in, if area_locked is set to true
+	var/list/teleport_areas
+	/// Where the target will be teleported to.
+	var/destination_area = /area/medical/medbay/lobby
+
+	/// Is there a grace period before someone is teleported
+	var/grace_period = FALSE
+	/// How much time does the target have to leave the area before they end up getting teleported?
+	var/time_allowance
+
+	/// Is access required to teleport
+	var/access_teleporting = FALSE
+	/// if the target doesn't have this access on their ID, they will be teleported
+	var/required_access = ACCESS_SURGERY
+
+/obj/projectile/energy/medical/utility/relocation/medical
+	area_locked = TRUE
+	teleport_areas = list(/area/medical/surgery, /area/medical/treatment_center, /area/medical/storage, /area/medical/patients_rooms)
+
+/// Handles the actual teleportation part.
+/obj/projectile/energy/medical/utility/relocation/proc/teleport_target(mob/living/teleportee)
+	if(area_locked && teleport_areas.len && !is_type_in_list(get_area(teleportee), teleport_areas)) // Does one final check to see if the target is in the area.
+		return FALSE
+
+	teleport_effect(teleportee.loc)
+
+	var/list/turf_list
+
+	if(!turf_list)
+		turf_list = list()
+		for(var/turf/turf_in_area in get_area_turfs(destination_area))
+			if(!turf_in_area.is_blocked_turf())
+				turf_list += turf_in_area
+
+	teleportee.visible_message(span_notice("[teleportee] is teleported away!"))
+
+	do_teleport(teleportee, pick(turf_list))
+
+	teleport_effect(teleportee.loc)
 
 /obj/projectile/energy/medical/utility/relocation/on_hit(mob/living/target)
 	. = ..()
 
 	var/mob/living/carbon/human/teleportee = target
 
-	if(!istype(get_area(target), /area/medical)) //We don't want this to work everywhere, do we?
+	if(area_locked && teleport_areas.len && !is_type_in_list(get_area(target), teleport_areas))
 		return FALSE
 
 	var/target_access = teleportee.wear_id.GetAccess() //Stores the access of the target within a variable
-	if(!(ACCESS_BRIG in target_access))
-		return FALSE
 
-	teleport_effect(teleportee.loc)
+	if(access_teleporting)
+		if(required_access in target_access)
+			return FALSE
 
-	var/static/list/turf_list
+	if(grace_period)
+		to_chat(teleportee, span_warning("You have [time_allowance] to leave, if you do not leave in this time, you will be forcibly teleported outside."))
+		addtimer(CALLBACK(src, .proc/teleport_target, teleportee), time_allowance)
+		return TRUE
 
-	if(!turf_list)
-		turf_list = list()
-		for(var/turf/turf_in_area in get_area_turfs(/area/security/brig))
-			if(!turf_in_area.is_blocked_turf())
-				turf_list += turf_in_area
-
-	teleportee.visible_message(span_notice("[teleportee] teleports to back to security, reestablishing a calm medbay environment!"))
-
-	do_teleport(teleportee, pick(turf_list))
-
-	teleport_effect(teleportee.loc)
+	teleport_target(teleportee)
 
 /obj/projectile/energy/medical/utility/relocation/proc/teleport_effect(var/location)
 	var/datum/effect_system/spark_spread/quantum/sparks = new /datum/effect_system/spark_spread/quantum //uses the teleport effect from quantum pads
