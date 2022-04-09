@@ -185,7 +185,7 @@ export const CargoGunConsole = (props, context) => {
                               stepPixelSize={2}
                               onChange={(e, value) => act('set_ammo_amount', {
                                 chosen_amount: value,
-                            })} />
+                              })} />
                           )}
                         </Stack>
                       )
