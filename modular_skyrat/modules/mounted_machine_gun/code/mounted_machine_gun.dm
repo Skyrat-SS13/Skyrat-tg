@@ -1,6 +1,6 @@
 #define BARREL_HEAT_THRESHOLD_LOW 50
 #define BARREL_HEAT_THRESHOLD_HIGH 75
-#define REPAIR_WELDER_COST 50
+#define REPAIR_WELDER_COST 10
 
 /obj/machinery/mounted_machine_gun
 	name = "\improper T90 Mounted Machine Gun"
@@ -11,7 +11,7 @@
 	can_buckle = TRUE
 	anchored = FALSE
 	density = TRUE
-	max_integrity = 100
+	max_integrity = 250
 	buckle_lying = 0
 	base_pixel_x = -8
 	base_pixel_y = -8
@@ -70,12 +70,6 @@
 
 	COOLDOWN_DECLARE(trigger_cooldown)
 
-
-/obj/machinery/mounted_machine_gun/Initialize(mapload)
-	. = ..()
-	ammo_box = new ammo_box_type(src)
-	START_PROCESSING(SSobj, src)
-
 /obj/machinery/mounted_machine_gun/Destroy()
 	QDEL_NULL(ammo_box)
 	QDEL_NULL(particles)
@@ -133,17 +127,19 @@
 
 /// Undeploying, for when you want to move your big dakka around
 /obj/machinery/mounted_machine_gun/wrench_act(mob/living/user, obj/item/wrench/used_wrench)
+	if(user.combat_mode)
+		return
 	if(!undeployed_type)
-		return
+		return TRUE
 	if(!ishuman(user))
-		return
+		return TRUE
 	if(ammo_box)
 		balloon_alert_to_viewers("remove ammo box!")
-		return
+		return TRUE
 	used_wrench.play_tool_sound(user)
 	balloon_alert_to_viewers("undeploying...")
 	if(!do_after(user, undeploy_time))
-		return
+		return TRUE
 	var/obj/undeployed_object = new undeployed_type(src)
 	//Keeps the health the same even if you redeploy the gun
 	undeployed_object.modify_max_integrity(max_integrity)
