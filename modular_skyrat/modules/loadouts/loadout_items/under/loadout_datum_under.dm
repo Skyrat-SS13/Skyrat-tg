@@ -136,10 +136,25 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/security/blackwatch
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_SECURITY_MEDIC)
 
-/datum/loadout_item/under/jumpsuit/para_red
-	name = "Red Paramedic Jumpsuit"
-	item_path = /obj/item/clothing/under/utility/para_red
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_PARAMEDIC, JOB_SECURITY_MEDIC)
+/datum/loadout_item/under/jumpsuit/paramed_dark
+	name = "Dark Paramedic Jumpsuit"
+	item_path = /obj/item/clothing/under/rank/medical/paramedic/skyrat/dark
+	restricted_roles = list(JOB_PARAMEDIC)
+
+/datum/loadout_item/under/jumpsuit/paramed_dark_skirt
+	name = "Dark Paramedic Jumpskirt"
+	item_path = /obj/item/clothing/under/rank/medical/paramedic/skyrat/dark/skirt
+	restricted_roles = list(JOB_PARAMEDIC)
+
+/datum/loadout_item/under/jumpsuit/chemist_formal
+	name = "Chemist's Formal Jumpsuit"
+	item_path = /obj/item/clothing/under/rank/medical/chemist/skyrat/formal
+	restricted_roles = list(JOB_CHEMIST)
+
+/datum/loadout_item/under/jumpsuit/chemist_formal_skirt
+	name = "Chemist's Formal Jumpskirt"
+	item_path = /obj/item/clothing/under/rank/medical/chemist/skyrat/formal/skirt
+	restricted_roles = list(JOB_CHEMIST)
 
 /datum/loadout_item/under/jumpsuit/utility
 	name = "Utility Uniform"
@@ -147,12 +162,12 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/utility_eng
 	name = "Engineering Utility Uniform"
-	item_path = /obj/item/clothing/under/utility/eng
+	item_path = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility
 	restricted_roles = list(JOB_STATION_ENGINEER,JOB_ATMOSPHERIC_TECHNICIAN, JOB_CHIEF_ENGINEER, JOB_ENGINEERING_GUARD)
 
 /datum/loadout_item/under/jumpsuit/utility_med
 	name = "Medical Utility Uniform"
-	item_path = /obj/item/clothing/under/utility/med
+	item_path = /obj/item/clothing/under/rank/medical/doctor/skyrat/utility
 	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_VIROLOGIST, JOB_GENETICIST, JOB_SECURITY_MEDIC, JOB_CHIEF_MEDICAL_OFFICER, JOB_PSYCHOLOGIST, JOB_ORDERLY)
 
 /datum/loadout_item/under/jumpsuit/utility_sci
@@ -465,13 +480,13 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	restricted_roles = list(JOB_PRISONER)
 
 /datum/loadout_item/under/miscellaneous/medrscrubs
-	name = "Red Scrubs (security)"
-	item_path = /obj/item/clothing/under/rank/medical/doctor/red
+	name = "Security Medic's Scrubs"
+	item_path = /obj/item/clothing/under/rank/medical/scrubs/skyrat/red/sec
 	restricted_roles = list(JOB_SECURITY_MEDIC)
 
 /datum/loadout_item/under/miscellaneous/redscrubs
 	name = "Red Scrubs"
-	item_path = /obj/item/clothing/under/rank/medical/doctor/red/unarm
+	item_path = /obj/item/clothing/under/rank/medical/scrubs/skyrat/red
 	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST, JOB_SECURITY_MEDIC, JOB_PARAMEDIC)
 
 /datum/loadout_item/under/miscellaneous/bluescrubs
@@ -491,7 +506,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/whitescrubs
 	name = "White Scrubs"
-	item_path = /obj/item/clothing/under/rank/medical/doctor/white
+	item_path = /obj/item/clothing/under/rank/medical/scrubs/skyrat/white
 	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST, JOB_SECURITY_MEDIC, JOB_PARAMEDIC)
 
 /datum/loadout_item/under/miscellaneous/swept_skirt
@@ -788,10 +803,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Fancy Suit"
 	item_path = /obj/item/clothing/under/suit/fancy
 
-/datum/loadout_item/under/formal/formalmed
-	name = "Formal Medical Suit"
-	item_path = /obj/item/clothing/under/rank/medical/doctor/formal
-	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST, JOB_SECURITY_MEDIC, JOB_PARAMEDIC, JOB_PSYCHOLOGIST)
 
 /datum/loadout_item/under/formal/kimono
 	name = "Kimono"
