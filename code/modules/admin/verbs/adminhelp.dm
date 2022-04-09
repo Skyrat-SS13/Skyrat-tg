@@ -203,6 +203,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	//SKYRAT EDIT START
 	/// Have we requested this ticket to stop being part of the Ticket Ping subsystem?
 	var/ticket_ping_stop = FALSE
+	/// Are we added to the ticket ping subsystem in the first place
+	var/ticket_ping = FALSE
 	//SKYRAT EDIT END
 	/// Whether this ahelp has sent a webhook or not, and what type
 	var/webhook_sent = WEBHOOK_NONE
@@ -244,7 +246,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	statclick = new(null, src)
 	ticket_interactions = list()
-	_interactions_player = list() // SKYRAT EDIT ADDITION -- Player ticket viewing
+	//SKYRAT EDIT START
+	_interactions_player = list()
+	addtimer(CALLBACK(src, .proc/add_to_ping_ss, 3 MINUTES))
+	//SKYRAT EDIT END
 
 	if(is_bwoink)
 		AddInteraction("<font color='blue'>[key_name_admin(usr)] PM'd [LinkedReplyName()]</font>")
