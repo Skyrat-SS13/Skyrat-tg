@@ -575,7 +575,7 @@
 	/// Is there a grace period before someone is teleported
 	var/grace_period = FALSE
 	/// How much time does the target have to leave the area before they end up getting teleported?
-	var/time_allowance
+	var/time_allowance = 10 SECONDS
 
 	/// Is access required to teleport
 	var/access_teleporting = FALSE
@@ -585,6 +585,8 @@
 /obj/projectile/energy/medical/utility/relocation/medical
 	area_locked = TRUE
 	teleport_areas = list(/area/medical/surgery, /area/medical/treatment_center, /area/medical/storage, /area/medical/patients_rooms)
+	grace_period = TRUE
+	access_teleporting = TRUE
 
 /// Handles the actual teleportation part.
 /obj/projectile/energy/medical/utility/relocation/proc/teleport_target(mob/living/teleportee)
