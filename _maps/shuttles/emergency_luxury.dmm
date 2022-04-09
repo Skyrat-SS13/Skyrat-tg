@@ -36,6 +36,13 @@
 	},
 /turf/open/floor/carpet/blue,
 /area/shuttle/escape/luxury)
+"af" = (
+/obj/machinery/door/airlock/security/glass{
+	name = "Escape Shuttle Cell"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/turf/open/floor/mineral/plastitanium/red/brig,
+/area/shuttle/escape/brig)
 "ag" = (
 /turf/closed/indestructible/riveted/plastinum,
 /area/shuttle/escape/luxury)
@@ -482,6 +489,12 @@
 /obj/item/bikehorn/rubberducky,
 /turf/open/floor/holofloor/beach/water,
 /area/shuttle/escape/luxury)
+"bG" = (
+/obj/machinery/door/window/left/directional/east,
+/turf/open/floor/holofloor/beach/coast_t{
+	dir = 8
+	},
+/area/shuttle/escape/luxury)
 "bH" = (
 /obj/structure/door_assembly,
 /turf/open/floor/plating,
@@ -513,6 +526,13 @@
 "bL" = (
 /obj/structure/window/reinforced,
 /turf/open/floor/holofloor/beach/water,
+/area/shuttle/escape/luxury)
+"bM" = (
+/obj/structure/window/reinforced,
+/obj/machinery/door/window/right/directional/east,
+/turf/open/floor/holofloor/beach/coast_t{
+	dir = 8
+	},
 /area/shuttle/escape/luxury)
 "bN" = (
 /obj/machinery/chem_dispenser/drinks/beer{
@@ -875,7 +895,15 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape/luxury)
-"qc" = (
+"zh" = (
+/turf/open/floor/mineral/diamond,
+/area/shuttle/escape/luxury)
+"Eg" = (
+/obj/machinery/vending/wallmed/directional/north,
+/obj/machinery/iv_drip,
+/turf/open/floor/carpet/cyan,
+/area/shuttle/escape/luxury)
+"Lt" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Escape Shuttle Cell"
 	},
@@ -883,34 +911,6 @@
 /obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /turf/open/floor/mineral/plastitanium/red/brig,
 /area/shuttle/escape/brig)
-"zh" = (
-/turf/open/floor/mineral/diamond,
-/area/shuttle/escape/luxury)
-"Bv" = (
-/obj/machinery/door/window/eastleft,
-/turf/open/floor/holofloor/beach/coast_t{
-	dir = 8
-	},
-/area/shuttle/escape/luxury)
-"Eg" = (
-/obj/machinery/vending/wallmed/directional/north,
-/obj/machinery/iv_drip,
-/turf/open/floor/carpet/cyan,
-/area/shuttle/escape/luxury)
-"FW" = (
-/obj/machinery/door/airlock/security/glass{
-	name = "Escape Shuttle Cell"
-	},
-/obj/effect/mapping_helpers/airlock/access/all/security/brig,
-/turf/open/floor/mineral/plastitanium/red/brig,
-/area/shuttle/escape/brig)
-"Yf" = (
-/obj/structure/window/reinforced,
-/obj/machinery/door/window/eastright,
-/turf/open/floor/holofloor/beach/coast_t{
-	dir = 8
-	},
-/area/shuttle/escape/luxury)
 
 (1,1,1) = {"
 aa
@@ -1059,7 +1059,7 @@ ab
 (10,1,1) = {"
 ag
 ag
-FW
+af
 ag
 ag
 ay
@@ -1073,7 +1073,7 @@ av
 ay
 "}
 (11,1,1) = {"
-FW
+af
 at
 at
 bD
@@ -1122,7 +1122,7 @@ ag
 "}
 (14,1,1) = {"
 ag
-qc
+Lt
 ag
 ag
 ag
@@ -1172,8 +1172,8 @@ ag
 ae
 ao
 bw
-Bv
-Yf
+bG
+bM
 bV
 aJ
 aN

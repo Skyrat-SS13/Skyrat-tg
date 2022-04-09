@@ -326,6 +326,9 @@
 		"chem_dispenser",
 		"chem_heater",
 		"chem_mass_spec",
+		//SKYRAT EDIT - RESEARCH DESIGNS
+		"smartdartgun",
+		//SKYRAT EDIT - END
 		"chem_master",
 		"chem_pack",
 		"crewpinpointerprox",
@@ -1169,6 +1172,7 @@
 		"health_hud_night",
 		"night_visision_goggles",
 		"nvgmesons",
+		"nv_scigoggles",
 		"security_hud_night",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
@@ -1801,7 +1805,6 @@
 	prereq_ids = list("adv_mecha", "bluespace_power")
 	design_ids = list(
 		"mech_ccw_armor",
-		"mech_energy_relay",
 		"mech_proj_armor",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)

@@ -1,4 +1,5 @@
 #define OVERSIZED_SPEED_SLOWDOWN 0.5
+#define OVERSIZED_HUNGER_MOD 1.5
 
 /datum/quirk/oversized
 	name = "Oversized"
@@ -20,8 +21,17 @@
 	human_holder.dna.species.punchdamagelow += OVERSIZED_HARM_DAMAGE_BONUS
 	human_holder.dna.species.punchdamagehigh += OVERSIZED_HARM_DAMAGE_BONUS
 	human_holder.blood_volume_normal = BLOOD_VOLUME_OVERSIZED
-	var/speedmod = human_holder.dna.species.speedmod + OVERSIZED_SPEED_SLOWDOWN
-	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
+	human_holder.physiology.hunger_mod *= OVERSIZED_HUNGER_MOD //50% hungrier
+	var/speed_mod = human_holder.dna.species.speedmod + OVERSIZED_SPEED_SLOWDOWN
+	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown = speed_mod)
+	var/obj/item/organ/stomach/old_stomach = human_holder.getorganslot(ORGAN_SLOT_STOMACH)
+	if(!(old_stomach.type == /obj/item/organ/stomach))
+		return
+	old_stomach.Remove(human_holder, special = TRUE)
+	qdel(old_stomach)
+	var/obj/item/organ/stomach/oversized/new_stomach = new //YOU LOOK HUGE, THAT MUST MEAN YOU HAVE HUGE GUTS! RIP AND TEAR YOUR HUGE GUTS!
+	new_stomach.Insert(human_holder, special = TRUE)
+	to_chat(human_holder, span_warning("You feel your massive stomach rumble!"))
 
 /datum/quirk/oversized/remove()
 	var/mob/living/carbon/human/human_holder = quirk_holder
@@ -32,7 +42,9 @@
 	human_holder.dna.species.punchdamagelow -= OVERSIZED_HARM_DAMAGE_BONUS
 	human_holder.dna.species.punchdamagehigh -= OVERSIZED_HARM_DAMAGE_BONUS
 	human_holder.blood_volume_normal = BLOOD_VOLUME_NORMAL
+	human_holder.physiology.hunger_mod /= OVERSIZED_HUNGER_MOD
 	var/speedmod = human_holder.dna.species.speedmod
 	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 
+#undef OVERSIZED_HUNGER_MOD
 #undef OVERSIZED_SPEED_SLOWDOWN

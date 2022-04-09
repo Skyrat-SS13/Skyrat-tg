@@ -272,9 +272,9 @@
 
 /obj/structure/sign/painting/frame_canvas(mob/user,obj/item/canvas/new_canvas)
 	if(istype(new_canvas, /obj/item/canvas/drawingtablet)) // NO FINALIZING THIS BITCH.
-		return
+		return FALSE
 	else
-		..()
+		return ..()
 
 /obj/item/canvas/var/nooverlayupdates = FALSE
 
@@ -937,8 +937,8 @@
 /obj/item/clothing/under/rank/security/rax
 	name = "banded uniform"
 	desc = "Personalized and tailored to fit, this uniform is designed to protect without compromising its stylishness."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
 	icon_state = "hos_black"
 	mutant_variants = STYLE_DIGITIGRADE
@@ -1326,3 +1326,22 @@
 	icon_state = "tacticalbrush"
 	inhand_icon_state = "tacticalbrush"
 
+// Donation reward for tobjv
+/obj/item/toy/plush/donator/tesh
+	name = "Squish-Me-Tesh"
+	desc = "Winner of Be Made Into A Plushy by ClownCo!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	icon_state = "teshplush"
+
+// Donation reward for tobjv
+/obj/item/toy/plush/donator/immovable_rod
+	name = "immovable rod"
+	desc = "Realistic! But also squishy and certainly not as dangerous as its real counterpart."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	icon_state = "immrod"
+
+/obj/item/toy/plush/donator/immovable_rod/Bump(atom/clong)
+	. = ..()
+	if(isliving(clong))
+		playsound(src, 'sound/effects/bang.ogg', 50, TRUE)
+		return

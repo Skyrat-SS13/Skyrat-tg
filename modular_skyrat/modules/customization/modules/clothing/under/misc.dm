@@ -83,13 +83,6 @@
 	armor = list(MELEE = 30, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 10, ACID = 20, WOUND = 10)
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 
-/obj/item/clothing/under/misc/discounder
-	name = "superstar cop uniform"
-	desc = "Flare cut trousers and a dirty shirt that might have been classy before someone took a piss in the armpits, it's the dress of a superstar."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "jamrock_suit"
-
 /obj/item/clothing/under/misc/kimunder
 	name = "aerostatic suit"
 	desc = "A crisp and well-pressed suit; professional, comfortable and curiously authoritative."
@@ -269,87 +262,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "checkered"
 
-///FORMAL DEPT
-/obj/item/clothing/under/rank/medical/virologist/formal ///Do NOT add this to the vendor unless you want Peter Griffen
-	desc = "It's not what you think, I swear."
-	name = "formal virologist suit"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "pathologist"
-	inhand_icon_state = "w_suit"
-
-/obj/item/clothing/under/rank/medical/virologist/formal/skirt
-	name = "formal virologist skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "pathologist_skirt"
-
-/obj/item/clothing/under/rank/medical/doctor/formal
-	desc = "A white shirt with blue pants, lined with a protection against some light biohazards."
-	name = "medical doctor's formal wear"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "senior_medical"
-
-/obj/item/clothing/under/rank/medical/doctor/formal/skirt
-	desc = "A white shirt with a blue skirt, lined with a protection against some light biohazards."
-	name = "medical doctor's formal skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "senior_medical_skirt"
-
-/obj/item/clothing/under/rank/medical/chemist/formal
-	desc = "A orange shirt with white pants, lined with protection against chemical spills."
-	name = "chemist's formal wear"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "pharmacist"
-
-/obj/item/clothing/under/rank/medical/chemist/formal/skirt
-	desc = "A orange shirt with a white skirt, lined with protection against chemical spills."
-	name = "chemist's formal skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "pharmacist_skirt"
-
-/obj/item/clothing/under/rank/engineering/engineer/formal
-	desc = "A white shirt with garrish mustard pants, lined with protection against light radiation and fire."
-	name = "engineer's formal wear"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "senior_engineer"
-
-/obj/item/clothing/under/rank/engineering/engineer/formal/skirt
-	desc = "A white shirt with a garrish mustard skirt, lined with protection against light radiation and fire."
-	name = "engineer's formal skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "senior_engineer_skirt"
-
-/obj/item/clothing/under/rank/cargo/qm/formal
-	name = "quartermaster's formal jumpsuit"
-	desc = "A white shirt with some Cargoium Brown trousers. Expect to see a shotgun wrapped around it."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "supply_chief"
-	inhand_icon_state = "lb_suit"
-
-/obj/item/clothing/under/rank/cargo/qm/formal/skirt
-	name = "quartermaster's formal jumpskirt"
-	desc = "A white shirt with a Cargoium Brown skirt. Expect to see a shotgun wrapped around it."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "supply_chief"
-	inhand_icon_state = "lb_suit"
-
-/obj/item/clothing/under/rank/cargo/qm/casual
-	name = "quartermaster's casual wear"
-	desc = "A Cargonium brown jacket with matching trousers. Expect to see a shotgun shells in the pockets."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "qmc"
-	inhand_icon_state = "lb_suit"
-
 /obj/item/clothing/under/rank/captain/humble
 	desc = "It's a blue jumpsuit with some small gold markings denoting the rank of \"Captain\", more humble than it's sister."
 	name = "captain's humble jumpsuit"
@@ -360,25 +272,6 @@
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 15)
-
-/obj/item/clothing/under/rank/cargo/casualman
-	name = "cargo tech casual wear"
-	desc = "A Cargonium brown with matching trousers. It's adjusted for pushing crates."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "cargotechjean"
-	inhand_icon_state = "lb_suit"
-	mutant_variants = STYLE_DIGITIGRADE
-
-/obj/item/clothing/under/rank/cargo/qm/syndie
-	name = "deck officer's jumpsuit"
-	desc = "A dark suit with a classic cargo vest. For the ultimate master of all things paper."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "qmsynd"
-	has_sensor = NO_SENSORS
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40)
-	can_adjust = FALSE
 
 /obj/item/clothing/under/uvf
 	name = "british combat sweater"
@@ -408,12 +301,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "cia"
 
-/obj/item/clothing/under/rank/medical/doctor/red/unarm
-	name = "red scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in a deep red."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "scrubsred"
+
 
 /obj/item/clothing/under/suit/white/scarface
 	name = "cuban suit"
@@ -441,7 +329,6 @@
 	desc = "Yep, here’s your problem. Someone set this thing to evil."
 	icon_state = "qmsynd"
 	can_adjust = FALSE
-
 
 /obj/item/clothing/under/rank/medical/doctor/white
 	name = "white scrubs"

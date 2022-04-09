@@ -240,6 +240,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Track Jacket"
 	item_path = /obj/item/clothing/suit/toggle/trackjacket
 
+/datum/loadout_item/suit/croptop
+	name = "Black Crop Top Turtleneck"
+	item_path = /obj/item/clothing/suit/croptop
+
 /*Flannels go inside Misc*/
 /datum/loadout_item/suit/flannel_black
 	name = "Black Flannel"
@@ -599,9 +603,17 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Basil Coat"
 	item_path = /obj/item/clothing/suit/basil_boys
 
-/datum/loadout_item/suit/croptop
-	name = "Black crop top turtleneck"
-	item_path = /obj/item/clothing/suit/croptop
+/datum/loadout_item/suit/soviet
+	name = "Soviet Coat"
+	item_path = /obj/item/clothing/suit/soviet
+
+/datum/loadout_item/suit/allies
+	name = "Allies Coat"
+	item_path = /obj/item/clothing/suit/allies
+
+/datum/loadout_item/suit/yuri
+	name = "Yuri Coat"
+	item_path = /obj/item/clothing/suit/yuri
 
 //Donator sutis here
 /datum/loadout_item/suit/donator

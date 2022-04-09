@@ -17,6 +17,7 @@
 	new /obj/item/clothing/head/soft(src) // Why does the QM spawn with a generic soft cap
 	*/
 	// new /obj/item/radio/headset/headset_cargo(src) //ORIGINAL
+	new	/obj/item/radio/headset/heads/qm(src) //SKYRAT EDIT ADDITION
 	new /obj/item/clothing/suit/fire/firefighter(src)
 	new /obj/item/megaphone/cargo(src)
 	new /obj/item/tank/internals/emergency_oxygen(src)
