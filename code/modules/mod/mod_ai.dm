@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL - pAIs in MODsuits
 /obj/item/mod/control/transfer_ai(interaction, mob/user, mob/living/silicon/ai/intAI, obj/item/aicard/card)
 	. = ..()
 	if(!.)
@@ -147,3 +148,4 @@
 	ai.notify_ghost_cloning("You have been recovered from the wreckage!", source = card)
 	balloon_alert(user, "AI transferred to card")
 	stored_ai = null
+*/
