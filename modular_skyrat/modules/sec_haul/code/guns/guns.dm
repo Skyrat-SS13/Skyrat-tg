@@ -259,7 +259,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = "10x25mm"
+	caliber = CALIBER_10MMAUTO
 	max_ammo = 12
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -296,7 +296,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = "10x25mm"
+	caliber = CALIBER_10MMAUTO
 	max_ammo = 6
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -534,7 +534,7 @@
 /obj/item/ammo_box/magazine/internal/cylinder/zeta
 	name = "10mm Auto revolver cylinder"
 	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = "10x25mm"
+	caliber = CALIBER_10MMAUTO
 	max_ammo = 6
 
 /obj/item/ammo_box/revolver/zeta
@@ -544,7 +544,7 @@
 	ammo_type = /obj/item/ammo_casing/b10mm
 	max_ammo = 6
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	caliber = "10x25mm"
+	caliber = CALIBER_10MMAUTO
 	start_empty = TRUE
 
 /obj/item/ammo_box/revolver/zeta/full

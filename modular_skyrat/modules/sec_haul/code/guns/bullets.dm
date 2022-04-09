@@ -137,7 +137,7 @@
 	desc = "A 10mm Auto casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
-	caliber = "10x25mm"
+	caliber = CALIBER_10MMAUTO
 	projectile_type = /obj/projectile/bullet/advanced/b10mm
 
 /obj/projectile/bullet/advanced/b10mm
@@ -151,7 +151,7 @@
 	desc = "A 10mm Auto JHP bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sh-casing"
-	caliber = "10x25mm"
+	caliber = CALIBER_10MMAUTO
 	projectile_type = /obj/projectile/bullet/advanced/b10mm/hp
 
 /obj/projectile/bullet/advanced/b10mm/hp
@@ -167,7 +167,7 @@
 	desc = "A 10mm rubber bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sr-casing"
-	caliber = "10x25mm"
+	caliber = CALIBER_10MMAUTO
 	projectile_type = /obj/projectile/bullet/advanced/b10mm/rubber
 	harmful = FALSE
 
@@ -189,7 +189,7 @@
 	desc = "A 10mm intelligent high-impact dispersal foam bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "si-casing"
-	caliber = "10x25mm"
+	caliber = CALIBER_10MMAUTO
 	projectile_type = /obj/projectile/bullet/advanced/b10mm/ihdf
 	harmful = FALSE
 
