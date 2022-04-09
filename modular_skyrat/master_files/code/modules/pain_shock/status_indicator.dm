@@ -54,9 +54,9 @@
 	if(has_status_effect(/datum/status_effect/confusion))
 		return TRUE
 
-/mob/living/carbon/proc/is_blind_status()
-	if(HAS_TRAIT_FROM(src, TRAIT_BLIND, STATUS_EFFECT_TRAIT) || HAS_TRAIT_FROM(src, TRAIT_BLIND, EYES_COVERED)) // We don't want permanently blind users (those who took the trait) to have this forever.
-		return TRUE
+/* /mob/living/carbon/proc/is_blind_status()
+	if(HAS_TRAIT_FROM(src, TRAIT_BLIND, STATUS_EFFECT_TRAIT) || HAS_TRAIT_FROM(src, TRAIT_BLIND, EYES_COVERED) && !HAS_TRAIT_FROM(src, TRAIT_BLIND, QUIRK_TRAIT)) // We don't want permanently blind users (those who took the trait) to have this forever.
+		return TRUE */ // Disabled, uncomment if we want this.
 
 /mob/living/carbon/death(gibbed) // On death, we clear the indiciators
 	..() // Call the TG death. Do not . = ..()!
@@ -85,7 +85,7 @@
 	is_stunned() ? add_status_indicator("stunned") : remove_status_indicator("stunned")
 	is_unconcious() ? add_status_indicator("sleeping") : remove_status_indicator("sleeping")
 	is_confused() ? add_status_indicator("confused") : remove_status_indicator("confused")
-	is_blind_status() ? add_status_indicator("blinded") : remove_status_indicator("blinded")
+//	is_blind_status() ? add_status_indicator("blinded") : remove_status_indicator("blinded") // Disabled, keeping for IF we decide we want this.
 	is_critical() ? add_status_indicator("critical") : remove_status_indicator("critical")
 
 /mob/living/proc/add_status_indicator(image/thing)
