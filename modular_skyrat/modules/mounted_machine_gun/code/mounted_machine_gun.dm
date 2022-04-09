@@ -1,5 +1,6 @@
 #define BARREL_HEAT_THRESHOLD_LOW 50
 #define BARREL_HEAT_THRESHOLD_HIGH 75
+#define REPAIR_WELDER_COST 50
 
 /obj/machinery/mounted_machine_gun
 	name = "\improper T90 Mounted Machine Gun"
@@ -48,6 +49,8 @@
 	var/spread = 0
 	/// The position of our bolt. TRUE = locked(ready to fire) FALSE = forward(not ready to fire)
 	var/bolt = TRUE
+	/// What we drop when undeployed.
+	var/undeployed_type = /obj/item/mounted_machine_gun_folded
 
 	// Heat mechanics
 	/// How much barrel heat we generate per shot
@@ -104,7 +107,10 @@
 	. = ..()
 	if(ammo_box)
 		. += span_notice("It has [ammo_box] loaded, with [ammo_box.ammo_count()] rounds remaining.")
-	. += span_notice("The cover is [cover_open ? "open" : "closed"].")
+	else
+		. += span_danger("It does not have an ammo box loaded!")
+	. += span_notice("The cover is [cover_open ? "open" : "closed"]. <b>Alt+click</b> to [cover_open ? "close" : "open"] it.")
+	. += span_notice("Use a welder to repair it.")
 	switch(barrel_heat)
 		if(BARREL_HEAT_THRESHOLD_LOW to BARREL_HEAT_THRESHOLD_HIGH)
 			. += span_warning("The barrel looks hot.")
@@ -113,18 +119,32 @@
 	if(overheated)
 		. += span_danger("It is heatlocked!")
 
+/obj/machinery/mounted_machine_gun/welder_act(mob/living/user, obj/item/tool)
+	if(user.combat_mode)
+		return
+	if(atom_integrity >= max_integrity)
+		balloon_alert(user, "it doesn't need repairs!")
+		return TRUE
+	balloon_alert_to_viewers("repairing...")
+	if(!tool.use_tool(src, user, 4 SECONDS, amount = REPAIR_WELDER_COST, volume = 100))
+		return TRUE
+	update_integrity(max_integrity)
+	balloon_alert_to_viewers("repaired!")
+
 /// Undeploying, for when you want to move your big dakka around
 /obj/machinery/mounted_machine_gun/wrench_act(mob/living/user, obj/item/wrench/used_wrench)
-	. = ..()
-	if(!can_be_undeployed)
+	if(!undeployed_type)
 		return
 	if(!ishuman(user))
 		return
+	if(ammo_box)
+		balloon_alert_to_viewers("remove ammo box!")
+		return
 	used_wrench.play_tool_sound(user)
-	user.balloon_alert(user, "undeploying...")
+	balloon_alert_to_viewers("undeploying...")
 	if(!do_after(user, undeploy_time))
 		return
-	var/obj/undeployed_object = new spawned_on_undeploy(src)
+	var/obj/undeployed_object = new undeployed_type(src)
 	//Keeps the health the same even if you redeploy the gun
 	undeployed_object.modify_max_integrity(max_integrity)
 	qdel(src)
