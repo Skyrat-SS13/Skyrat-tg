@@ -51,15 +51,15 @@ export const CargoGunConsole = (props, context) => {
                             setCategory(armament_category.category)} />
                       ) : (
                         <Button
-                        width="100%"
-                        color="bad"
-                        onClick={() => act('buy_company', {
-                          selected_company: armament_category.category })}
-                        content={'Purchase ' +
-                          (armament_category.category) +
-                          ' (' +
-                          (armament_category.handout ? 'Handout [Choose One]' : armament_category.cost) +
-                          ' Cr)'} />
+                          width="100%"
+                          color="bad"
+                          onClick={() => act('buy_company', {
+                            selected_company: armament_category.category })}
+                          content={'Purchase '
+                          + (armament_category.category)
+                          + ' ('
+                          + (armament_category.handout ? 'Handout [Choose One]' : armament_category.cost)
+                          + ' Cr)'} />
                       )}
                     </Stack.Item>
                   ))}
@@ -177,14 +177,14 @@ export const CargoGunConsole = (props, context) => {
                           )}
                           {!!item.buyable_ammo && (
                             <NumberInput
-                            value={ammo_amount}
-                            width="59px"
-                            minValue={0}
-                            maxValue={10}
-                            step={1}
-                            stepPixelSize={2}
-                            onChange={(e, value) => act('set_ammo_amount', {
-                              chosen_amount: value,
+                              value={ammo_amount}
+                              width="59px"
+                              minValue={0}
+                              maxValue={10}
+                              step={1}
+                              stepPixelSize={2}
+                              onChange={(e, value) => act('set_ammo_amount', {
+                                chosen_amount: value,
                             })} />
                           )}
                         </Stack>
