@@ -115,7 +115,7 @@
 
 /datum/outfit/ds2/syndicate/enginetech
 	name = "DS-2 Engine Technician"
-	uniform = /obj/item/clothing/under/utility/eng/syndicate
+	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/syndicate
 	id_trim = /datum/id_trim/syndicom/skyratnoicon/enginetechnician
 	gloves = /obj/item/clothing/gloves/combat
 
@@ -318,7 +318,7 @@
 	outfit = /datum/outfit/tarkon/engi
 
 /datum/outfit/tarkon/engi
-	uniform = /obj/item/clothing/under/utility/eng
+	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility
 	glasses = /obj/item/clothing/glasses/meson/engine/tray
 	id = /obj/item/card/id/away/tarkon/engi
 	gloves = /obj/item/clothing/gloves/combat

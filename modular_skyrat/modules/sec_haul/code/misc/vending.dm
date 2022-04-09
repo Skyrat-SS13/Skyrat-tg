@@ -1,4 +1,4 @@
-/obj/machinery/vending/security_peacekeeper
+/obj/machinery/vending/security
 	name = "\improper Armadyne Peacekeeper Equipment Vendor"
 	desc = "An Armadyne peacekeeper equipment vendor."
 	product_ads = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
@@ -37,7 +37,7 @@
 	extra_price = PAYCHECK_HARD * 1.5
 	payment_department = ACCOUNT_SEC
 
-/obj/machinery/vending/security_peacekeeper/pre_throw(obj/item/I)
+/obj/machinery/vending/security/pre_throw(obj/item/I)
 	if(istype(I, /obj/item/grenade))
 		var/obj/item/grenade/G = I
 		G.arm_grenade()
@@ -49,7 +49,7 @@
 /obj/item/vending_refill/security_peacekeeper
 	icon_state = "refill_sec"
 
-/obj/machinery/vending/wardrobe/sec_wardrobe/peacekeeper
+/obj/machinery/vending/wardrobe/sec_wardrobe
 	name = "\improper Peacekeeper Outfitting Station"
 	desc = "A vending machine stocked with Lopland's \"Peacekeeper\" security package, including standardized uniforms and general equipment."
 	icon = 'modular_skyrat/modules/sec_haul/icons/vending/vending.dmi'
@@ -89,7 +89,7 @@
 	machine_name = "Peacekeeper outfitting station"
 
 //List for the old one, for when its mapped in; curates it nicely, adds /redsec to the items, and also prevents some conflicts with the above vendor
-/obj/machinery/vending/wardrobe/sec_wardrobe
+/obj/machinery/vending/wardrobe/sec_wardrobe/red
 	products = list(/obj/item/clothing/suit/hooded/wintercoat/security/redsec = 3,
 					/obj/item/storage/backpack/security/redsec = 3,
 					/obj/item/storage/backpack/satchel/sec/redsec = 3,

@@ -312,7 +312,8 @@
 	icon_state = "bookSpaceLaw"
 	starting_author = "Nanotrasen"
 	starting_title = "Space Law"
-	page_link = "Space_Law"
+	//page_link = "Space_Law" //ORIGINAL
+	page_link = "Corporate_Regulations" //SKYRAT EDIT CHANGE
 
 /obj/item/book/manual/wiki/security_space_law/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] pretends to read \the [src] intently... then promptly dies of laughter!"))

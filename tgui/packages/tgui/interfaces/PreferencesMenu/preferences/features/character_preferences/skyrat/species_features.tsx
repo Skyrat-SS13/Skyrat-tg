@@ -635,3 +635,27 @@ export const socks_color: Feature<string> = {
   name: "Socks color",
   component: FeatureColorInput,
 };
+
+export const heterochromia_toggle: FeatureToggle = {
+  name: "Heterochromia",
+  description: "Add some lore for your species! Won't show up if there's no custom species.",
+  component: CheckboxInput,
+};
+
+export const feature_heterochromia: Feature<string> = {
+  name: "Heterochromia Selection",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureDropdownInput,
+};
+
+export const heterochromia_color: Feature<string[]> = {
+  name: "Heterochromia Colors",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriColorInput,
+};
+
+export const heterochromia_emissive: Feature<boolean[]> = {
+  name: "Heterochromia Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
+};
