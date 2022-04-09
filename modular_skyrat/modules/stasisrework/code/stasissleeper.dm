@@ -117,7 +117,7 @@
 	else if(IS_IN_STASIS(L_occupant))
 		thaw_them(L_occupant)
 
-/obj/machinery/stasissleeper/screwdriver_act(mob/living/user, obj/item/I)
+/obj/machinery/stasissleeper/screwdriver_act(mob/living/user, obj/item/used_item)
 	. = ..()
 	if(.)
 		return
@@ -127,24 +127,24 @@
 	if(state_open)
 		to_chat(user, span_warning("[src] must be closed to [panel_open ? "close" : "open"] its maintenance hatch!"))
 		return
-	default_deconstruction_screwdriver(user, "[initial(icon_state)]-o", initial(icon_state), I)
+	default_deconstruction_screwdriver(user, "[initial(icon_state)]-o", initial(icon_state), used_item)
 
-/obj/machinery/stasissleeper/wrench_act(mob/living/user, obj/item/I)
+/obj/machinery/stasissleeper/wrench_act(mob/living/user, obj/item/used_item)
 	. = ..()
-	default_change_direction_wrench(user, I)
+	default_change_direction_wrench(user, used_item)
 
-/obj/machinery/stasissleeper/crowbar_act(mob/living/user, obj/item/I)
+/obj/machinery/stasissleeper/crowbar_act(mob/living/user, obj/item/used_item)
 	. = ..()
-	if(default_pry_open(I))
+	if(default_pry_open(used_item))
 		return TRUE
-	default_deconstruction_crowbar(I)
+	default_deconstruction_crowbar(used_item)
 
-/obj/machinery/stasissleeper/default_pry_open(obj/item/I)
+/obj/machinery/stasissleeper/default_pry_open(obj/item/used_item)
 	if(occupant)
 		thaw_them(occupant)
-	. = !(state_open || panel_open || (flags_1 & NODECONSTRUCT_1)) && I.tool_behaviour == TOOL_CROWBAR
+	. = !(state_open || panel_open || (flags_1 & NODECONSTRUCT_1)) && used_item.tool_behaviour == TOOL_CROWBAR
 	if(.)
-		I.play_tool_sound(src, 50)
+		used_item.play_tool_sound(src, 50)
 		visible_message(span_notice("[usr] pries open [src]."), span_notice("You pry open [src]."))
 		open_machine()
 

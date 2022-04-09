@@ -23,6 +23,7 @@
 /obj/item/mop/Initialize(mapload)
 	. = ..()
 	create_reagents(max_reagent_volume)
+	GLOB.janitor_devices += src
 	//SKYRAT EDIT ADDITION
 	AddElement(/datum/element/liquids_interaction, on_interaction_callback = /obj/item/mop/.proc/attack_on_liquids_turf)
 
@@ -38,6 +39,10 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	return TRUE
 	//SKYRAT EDIT END
+
+/obj/item/mop/Destroy(force)
+	GLOB.janitor_devices -= src
+	return ..()
 
 /obj/item/mop/proc/clean(turf/A, mob/living/cleaner)
 	if(reagents.has_chemical_flag(REAGENT_CLEANS, 1))

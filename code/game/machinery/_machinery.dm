@@ -536,6 +536,7 @@
 	if(!.)
 		return FALSE
 
+
 	if((interaction_flags_machine & INTERACT_MACHINE_REQUIRES_SIGHT) && user.is_blind())
 		to_chat(user, span_warning("This machine requires sight to use."))
 		return FALSE

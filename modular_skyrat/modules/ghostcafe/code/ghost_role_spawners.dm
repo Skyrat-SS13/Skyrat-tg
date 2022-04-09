@@ -107,6 +107,7 @@
 	new /obj/item/clothing/neck/chameleon(src)
 	new /obj/item/storage/backpack/chameleon(src)
 	new /obj/item/storage/belt/chameleon(src)
+	new /obj/item/card/id/advanced/chameleon(src)
 
 /obj/item/card/id/advanced/ghost_cafe
 	name = "\improper Cafe ID"
