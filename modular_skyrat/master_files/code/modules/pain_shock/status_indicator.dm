@@ -1,9 +1,9 @@
-#define PLANE_STATUS -2 //Status Indicators that show over mobs' heads when certain things like stuns affect them.
+#define PLANE_STATUS -12 //Status Indicators that show over mobs' heads when certain things like stuns affect them.
 
 #define VIS_STATUS			24
 
 #define VIS_COUNT			24 //Must be highest number from above.
-
+#define STATUS_LAYER -2.1
 #define STATUS_INDICATOR_Y_OFFSET 2 // Offset from the edge of the icon sprite, so 32 pixels plus whatever number is here.
 #define STATUS_INDICATOR_ICON_X_SIZE 16 // Don't need to care about the Y size due to the origin being on the bottom side.
 #define STATUS_INDICATOR_ICON_MARGIN 2 // The space between two status indicators.
@@ -148,7 +148,7 @@
 		// This is a semi-HUD element, in a similar manner as medHUDs, in that they're 'above' everything else in the world,
 		// but don't pierce obfuscation layers such as blindness or darkness, unlike actual HUD elements like inventory slots.
 		I.plane = PLANE_STATUS
-		I.layer = ABOVE_GAME_PLANE
+		I.layer = STATUS_LAYER
 		I.appearance_flags = PIXEL_SCALE|TILE_BOUND|NO_CLIENT_COLOR|RESET_COLOR|RESET_ALPHA|RESET_TRANSFORM|KEEP_APART
 		I.pixel_y = y_offset
 		I.pixel_x = current_x_position
