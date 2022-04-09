@@ -14,3 +14,9 @@
 #define CALIBER_14GAUGE "14 Gauge"
 
 #define CALIBER_50BMG ".50 BMG"
+
+/// The caliber used by the CFA Lynx.
+#define CALIBER_42X30MM "4.2x30mm"
+
+/// The caliber used by the Catanheim.
+#define CALIBER_A68 "a68"

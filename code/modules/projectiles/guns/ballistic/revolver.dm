@@ -13,6 +13,7 @@
 	internal_magazine = TRUE
 	bolt_type = BOLT_TYPE_NO_BOLT
 	tac_reloads = FALSE
+	company_flag = COMPANY_SCARBOROUGH //SKYRAT EDIT
 	var/spin_delay = 10
 	var/recent_spin = 0
 	var/last_fire = 0
@@ -177,6 +178,7 @@
 	can_suppress = TRUE
 
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev762
+	company_flag = COMPANY_OLDARMS //SKYRAT EDIT
 
 
 // A gun to play Russian Roulette!

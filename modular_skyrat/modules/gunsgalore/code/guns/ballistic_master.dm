@@ -4,7 +4,7 @@
 	/// What the icon state is for the on-back guns
 	var/alt_icon_state
 	/// Realistic guns that use reliability and dirt
-	var/realistic = FALSE
+	var/realistic = TRUE
 	/// Is it jammed?
 	var/jammed = FALSE
 	/// How dirty a gun is.

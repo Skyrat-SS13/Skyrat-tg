@@ -1,8 +1,4 @@
 // HELMETS
-#define ARMAMENT_CATEGORY_ARMOR_HEAD "Headgear"
-#define ARMAMENT_CATEGORY_ARMOR_HEAD_LIMIT 1
-#define ARMAMENT_SUBCATEGORY_HELMET "Helmets"
-#define ARMAMENT_SUBCATEGORY_BERETS "Berets"
 
 /datum/armament_entry/assault_operatives/headgear
 	category = ARMAMENT_CATEGORY_ARMOR_HEAD

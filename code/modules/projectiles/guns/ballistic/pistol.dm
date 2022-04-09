@@ -24,6 +24,7 @@
 	fire_sound_volume = 90
 	bolt_wording = "slide"
 	suppressor_x_offset = 4
+	company_flag = COMPANY_SCARBOROUGH // SKYRAT EDIT
 
 /obj/item/gun/ballistic/automatic/pistol/no_mag
 	spawnwithmagazine = FALSE
@@ -44,6 +45,7 @@
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
+	company_flag = COMPANY_BOLT //SKYRAT EDIT
 
 /obj/item/gun/ballistic/automatic/pistol/m1911/no_mag
 	spawnwithmagazine = FALSE
@@ -76,7 +78,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/aps
 	name = "stechkin APS machine pistol"
-	desc = "An old Soviet machine pistol. It fires quickly, but kicks like a mule. Uses 9mm ammo. Has a threaded barrel for suppressors."
+	desc = "A modernized reproduction of an old Soviet machine pistol. It fires quickly, but kicks like a mule. Uses 9mm ammo. Has a threaded barrel for suppressors." //SKYRAT EDIT
 	icon_state = "aps"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/m9mm_aps
@@ -86,6 +88,7 @@
 	spread = 10
 	//actions_types = list(/datum/action/item_action/toggle_firemode) SKYRAT EDIT REMOVAL
 	suppressor_x_offset = 6
+	company_flag = COMPANY_SCARBOROUGH //SKYRAT EDIT
 
 /obj/item/gun/ballistic/automatic/pistol/stickman
 	name = "flat gun"

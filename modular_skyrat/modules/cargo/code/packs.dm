@@ -127,62 +127,7 @@
 	contains = list(/obj/item/mod/control/pre_equipped/security)
 	crate_name = "security MODsuit crate"
 
-
-/datum/supply_pack/security/armory/wt550
-	name = "WT-550 Auto Rifle Crate"
-	desc = "Contains two high-powered, semiautomatic rifles chambered in 4.6x30mm. Requires Armory access to open."
-	cost = CARGO_CRATE_VALUE * 7
-	contains = list(/obj/item/gun/ballistic/automatic/wt550,
-					/obj/item/gun/ballistic/automatic/wt550)
-	crate_name = "auto rifle crate"
-
-/datum/supply_pack/security/armory/wt550ammo
-	name = "WT-550 Auto Rifle Ammo Crate"
-	desc = "Contains four 20-round magazine for the WT-550 Auto Rifle. Each magazine is designed to facilitate rapid tactical reloads. Requires Armory access to open."
-	cost = CARGO_CRATE_VALUE * 3.5
-	contains = list(/obj/item/ammo_box/magazine/wt550m9,
-					/obj/item/ammo_box/magazine/wt550m9,
-					/obj/item/ammo_box/magazine/wt550m9,
-					/obj/item/ammo_box/magazine/wt550m9)
-
-/datum/supply_pack/security/croonsurplus
-	name = "Croon Weapons Crate"
-	desc = "Help out in a local revolt, or fund a civil war, it's not like you have a choice in supplier. (Comes with four magazines of ammo.)"
-	cost = CARGO_CRATE_VALUE * 40
-	contraband = TRUE
-	contains = list(/obj/item/gun/ballistic/automatic/croon/nomag,
-					/obj/item/gun/ballistic/automatic/croon/nomag,
-					/obj/item/ammo_box/magazine/multi_sprite/croon,
-					/obj/item/ammo_box/magazine/multi_sprite/croon,
-					/obj/item/ammo_box/magazine/multi_sprite/croon,
-					/obj/item/ammo_box/magazine/multi_sprite/croon)
-	crate_name = "unmarked weapons crate"
-	dangerous = TRUE
-
-/datum/supply_pack/security/pepperballplus
-	name = "Pepperball Self-Defense Supply Crate"
-	desc = "Uneasy times, corporate security get lost during the transfer? Protect yourself.. somewhat."
-	cost = CARGO_CRATE_VALUE * 15
-	contraband = TRUE
-	contains = list(/obj/item/storage/box/gunset/pepperball,
-					/obj/item/storage/box/gunset/pepperball)
-	crate_name = "pepperball pistol crate"
-	dangerous = TRUE
-
-/datum/supply_pack/security/wildcat
-	name = "CFA Wildcat Supply Crate"
-	desc = "Local police running low on equipment? Neighbor particularly loud in the early morning? This should help out. (Does not include weapons permits.)"
-	cost = CARGO_CRATE_VALUE * 15 // Bit cheaper then the next up, because it's not to good.
-	contains = list(/obj/item/gun/ballistic/automatic/cfa_wildcat,
-					/obj/item/gun/ballistic/automatic/cfa_wildcat,
-					/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
-					/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
-					/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
-					/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat)
-	crate_name = "CFA sponsored weapons crate"
-	dangerous = TRUE
-
-/datum/supply_pack/costumes_toys/randomised/improvised
+/datum/supply_pack/costumes_toys/randomised/improvised //If cargo/sec REALLY wants to use guns without the armament system, they *can*
 	name = "Improvised Weapons Crate"
 	desc = "Really hit rock bottom? Well, we've got a few things laying around from a sting-op on pirates we could lend you. (We'll expect these back.)" //they don't, actually.
 	contraband = TRUE
@@ -201,16 +146,6 @@
 					/obj/item/ammo_box/magazine/m10mm/rifle,
 					/obj/item/gun/ballistic/automatic/pistol/toy) //they just hate you.
 	crate_name = "dusty crate"
-/datum/supply_pack/security/armory/riotshotguns
-	name = "Peacekeeper Shotgun Crate"
-	desc = "For when the peace needs kept, and you're all out of gum. Contains 3 Peacekeeper shotguns and some non-lethal shells."
-	cost = CARGO_CRATE_VALUE * 13.25
-	contains = list(/obj/item/gun/ballistic/shotgun/riot,
-					/obj/item/gun/ballistic/shotgun/riot,
-					/obj/item/gun/ballistic/shotgun/riot,
-					/obj/item/storage/box/beanbag,
-					/obj/item/storage/box/rubbershot)
-	crate_name = "peacekeeper shotgun crate"
 
 /datum/supply_pack/security/armory/woodstock
 	name = "Woodstock Originals Crate"
