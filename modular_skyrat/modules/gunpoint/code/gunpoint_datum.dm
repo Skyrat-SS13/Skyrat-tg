@@ -37,25 +37,25 @@
 		target.gp_effect = new
 		target.vis_contents += target.gp_effect
 
-	RegisterSignal(source, COMSIG_MOVABLE_MOVED, .proc/SourceMoved)
+	RegisterSignal(source, COMSIG_MOVABLE_MOVED, .proc/source_moved)
 
-	RegisterSignal(source, COMSIG_LIVING_STATUS_STUN, .proc/SourceCC)
-	RegisterSignal(source, COMSIG_LIVING_STATUS_KNOCKDOWN, .proc/SourceCC)
-	RegisterSignal(source, COMSIG_LIVING_STATUS_PARALYZE, .proc/SourceCC)
-	RegisterSignal(source, COMSIG_LIVING_UPDATED_RESTING, .proc/SourceUpdatedResting)
+	RegisterSignal(source, COMSIG_LIVING_STATUS_STUN, .proc/source_cc)
+	RegisterSignal(source, COMSIG_LIVING_STATUS_KNOCKDOWN, .proc/source_cc)
+	RegisterSignal(source, COMSIG_LIVING_STATUS_PARALYZE, .proc/source_cc)
+	RegisterSignal(source, COMSIG_LIVING_UPDATED_RESTING, .proc/source_updated_resting)
 
-	RegisterSignal(aimed_gun, COMSIG_ITEM_EQUIPPED,.proc/ClickDestroy)
-	RegisterSignal(aimed_gun, COMSIG_ITEM_DROPPED,.proc/ClickDestroy)
+	RegisterSignal(aimed_gun, COMSIG_ITEM_EQUIPPED,.proc/click_destroy)
+	RegisterSignal(aimed_gun, COMSIG_ITEM_DROPPED,.proc/click_destroy)
 
 	RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/Destroy)
 	RegisterSignal(source, COMSIG_PARENT_QDELETING, .proc/Destroy)
 
 
-	addtimer(CALLBACK(src, .proc/LockOn), 7)
+	addtimer(CALLBACK(src, .proc/lock_on), 7)
 
-/datum/gunpoint/proc/LockOn()
+/datum/gunpoint/proc/lock_on()
 	if(src) //if we're not present then locking on failed and this datum is deleted
-		if(!CheckContinuity())
+		if(!check_continuity())
 			qdel(src)
 			return
 		locked = TRUE
@@ -68,7 +68,7 @@
 		if(target.gp_effect.icon_state != "locked")
 			target.gp_effect.icon_state = "locked"
 
-/datum/gunpoint/proc/CheckContinuity()
+/datum/gunpoint/proc/check_continuity()
 	if(!target)
 		return FALSE
 	if(source.CanGunpointAt(target))
@@ -101,23 +101,23 @@
 	aimed_gun = null
 	return ..()
 
-/datum/gunpoint/proc/ClickDestroy()
+/datum/gunpoint/proc/click_destroy()
 	SIGNAL_HANDLER
 	if(locked)
 		playsound(get_turf(source), 'modular_skyrat/modules/gunpoint/sound/targetoff.ogg', 50,1)
 	qdel(src)
 
-/datum/gunpoint/proc/SourceCC(datum/source, amount, update, ignore)
+/datum/gunpoint/proc/source_cc(datum/source, amount, update, ignore)
 	SIGNAL_HANDLER
 	if(amount && !ignore)
 		qdel(src)
 
-/datum/gunpoint/proc/SourceMoved(datum/datum_source)
+/datum/gunpoint/proc/source_moved(datum/datum_source)
 	SIGNAL_HANDLER
-	if(!CheckContinuity())
+	if(!check_continuity())
 		qdel(src)
 
-/datum/gunpoint/proc/SourceUpdatedResting(datum/datum_source, resting)
+/datum/gunpoint/proc/source_updated_resting(datum/datum_source, resting)
 	SIGNAL_HANDLER
 	if(resting)
 		qdel(src)
