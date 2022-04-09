@@ -615,9 +615,8 @@
 	if(area_locked && teleport_areas.len && !is_type_in_list(get_area(target), teleport_areas))
 		return FALSE
 
-	var/target_access = teleportee.wear_id.GetAccess() //Stores the access of the target within a variable
-
-	if(access_teleporting)
+	if(access_teleporting && teleportee.wear_id)
+		var/target_access = teleportee.wear_id.GetAccess() //Stores the access of the target within a variable
 		if(required_access in target_access)
 			return FALSE
 
