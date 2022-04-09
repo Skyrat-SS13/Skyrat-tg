@@ -115,7 +115,7 @@
 
 /datum/outfit/ds2/syndicate/enginetech
 	name = "DS-2 Engine Technician"
-	uniform = /obj/item/clothing/under/utility/eng/syndicate
+	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/syndicate
 	id_trim = /datum/id_trim/syndicom/skyratnoicon/enginetechnician
 	gloves = /obj/item/clothing/gloves/combat
 
@@ -126,7 +126,7 @@
 
 /datum/outfit/ds2/syndicate/stationmed
 	name = "DS-2 Station Medical Officer"
-	uniform = /obj/item/clothing/under/utility/med/syndicate
+	uniform = /obj/item/clothing/under/rank/medical/doctor/skyrat/utility/syndicate
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/stationmedicalofficer
 
 /datum/outfit/ds2/syndicate/masteratarms
@@ -306,7 +306,7 @@
 	outfit = /datum/outfit/tarkon/med
 
 /datum/outfit/tarkon/med
-	uniform = /obj/item/clothing/under/utility/med
+	uniform = /obj/item/clothing/under/rank/medical/doctor/skyrat/utility
 	glasses = /obj/item/clothing/glasses/hud/health
 	id = /obj/item/card/id/away/tarkon/med
 	neck = /obj/item/clothing/neck/stethoscope
@@ -318,7 +318,7 @@
 	outfit = /datum/outfit/tarkon/engi
 
 /datum/outfit/tarkon/engi
-	uniform = /obj/item/clothing/under/utility/eng
+	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility
 	glasses = /obj/item/clothing/glasses/meson/engine/tray
 	id = /obj/item/card/id/away/tarkon/engi
 	gloves = /obj/item/clothing/gloves/combat

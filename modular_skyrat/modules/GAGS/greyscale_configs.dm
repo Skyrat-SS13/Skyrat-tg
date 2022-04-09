@@ -16,6 +16,10 @@
 	name = "Beret Worn - Vox"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/beret_vox.dmi'
 
+/datum/greyscale_config/beret/worn/teshari
+	name = "Beret Worn - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/beret_teshari.dmi'
+
 /datum/greyscale_config/beret_badge
 	name = "Beret With Badge"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/beret.dmi'
@@ -29,6 +33,10 @@
 	name = "Beret With Badge Worn - Vox"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/beret_vox.dmi'
 
+/datum/greyscale_config/beret_badge/worn/teshari
+	name = "Beret With Badge Worn - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/beret_teshari.dmi'
+
 /datum/greyscale_config/beret_badge_fancy
 	name = "Beret With Fancy Badge"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/beret.dmi'
@@ -41,6 +49,10 @@
 /datum/greyscale_config/beret_badge_fancy/worn/vox
 	name = "Beret With Fancy Badge Worn - Vox"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/beret_vox.dmi'
+
+/datum/greyscale_config/beret_badge_fancy/worn/teshari
+	name = "Beret With Fancy Badge Worn - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/beret_teshari.dmi'
 
 //MUSHROOM CAP
 
@@ -105,6 +117,10 @@
 /datum/greyscale_config/ranger_poncho/worn
 	name = "Ranger Poncho Worn"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/ranger_poncho/ranger_poncho_worn.json'
+
+/datum/greyscale_config/ranger_poncho/worn/teshari
+	name = "Ranger Poncho Worn - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/ranger_poncho_teshari.dmi'
 
 // CLOAKS
 /datum/greyscale_config/cloak
@@ -299,6 +315,14 @@
 	name = "Worn Prison Jumpsuit - Vox"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_vox.dmi'
 
+/datum/greyscale_config/jumpsuit_worn/teshari
+	name = "Worn Jumpsuit - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_teshari.dmi'
+
+/datum/greyscale_config/jumpsuit_prison_worn/teshari
+	name = "Worn Prison Jumpsuit - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_teshari.dmi'
+
 // KILT
 
 /datum/greyscale_config/kilt
@@ -331,6 +355,14 @@
 /datum/greyscale_config/sneakers_orange_worn/vox
 	name = "Worn Orange Sneakers - Vox"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/sneakers_vox.dmi'
+
+/datum/greyscale_config/sneakers_worn/teshari
+	name = "Worn Sneakers - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/sneakers_teshari.dmi'
+
+/datum/greyscale_config/sneakers_orange_worn/teshari
+	name = "Worn Orange Sneakers - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/sneakers_teshari.dmi'
 
 // WRAPS
 
