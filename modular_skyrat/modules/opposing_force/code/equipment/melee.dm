@@ -52,4 +52,5 @@
 
 /datum/opposing_force_equipment/melee/hfblade
 	item_type = /obj/item/highfrequencyblade
-	admin_note = "This can gib corpses, and has chance to block."
+	admin_note = "This can gib corpses, and has chance to block.\
+	It also has very good AP and a very low attack delay. Hand this out with caution."
