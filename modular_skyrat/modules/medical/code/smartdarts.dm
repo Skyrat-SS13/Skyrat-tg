@@ -46,6 +46,7 @@
 	w_class = WEIGHT_CLASS_NORMAL //I might need to look into changing this later depending on feedback
 	icon = 'modular_skyrat/modules/medical/icons/obj/dartguns.dmi'
 	icon_state = "smartdartgun"
+	has_gun_safety = TRUE
 
 /obj/item/gun/syringe/smartdart/Initialize()
 	. = ..()

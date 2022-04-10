@@ -56,7 +56,7 @@
 	new /obj/item/binoculars(src)
 	new /obj/item/storage/fancy/cigarettes/cigpack_robust(src)
 	new /obj/item/lighter(src)
-	new /obj/item/clothing/mask/bandana/skull(src)
+	new /obj/item/clothing/mask/bandana/color/skull(src)
 
 /obj/item/clothing/shoes/combat/expeditionary_corps
 	name = "expeditionary corps boots"

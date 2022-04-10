@@ -315,11 +315,13 @@
 		send_message("ERROR - POWER SYSTEMS FAILURE - [failure_reason]", HEV_COLOR_RED)
 		return FALSE
 
-	if(!current_user.head && !istype(current_user.head, /obj/item/clothing/head/helmet/space/hev_suit))
-		send_message("ERROR - SUIT HELMET NOT ENGAGED", HEV_COLOR_RED)
+	var/obj/item/clothing/head/helmet/space/hev_suit/helmet = current_user.head
+
+	if(!helmet || !istype(helmet))
+		send_message("ERROR - SUIT HELMET NOT PRESENT", HEV_COLOR_RED)
 		return FALSE
 
-	current_helmet = current_user.head
+	current_helmet = helmet
 
 	ADD_TRAIT(current_helmet, TRAIT_NODROP, "hev_trait")
 
@@ -484,12 +486,13 @@
 		health_dropping_alarm = FALSE
 
 /obj/item/clothing/suit/space/hev_suit/proc/atmospherics()
-	if(!current_user.get_item_by_slot(ITEM_SLOT_SUITSTORE) && !istype(current_user.get_item_by_slot(ITEM_SLOT_SUITSTORE), /obj/item/tank/internals))
+	var/obj/item/tank/internals/tank = current_user.get_item_by_slot(ITEM_SLOT_SUITSTORE)
+	if(!tank || !istype(tank))
 		send_message("...FAILURE, NO TANK DETECTED", HEV_COLOR_RED)
 		send_message("CALIBRATING VITALSIGN MONITORING SYSTEMS...")
 		timer_id = addtimer(CALLBACK(src, .proc/vitalsigns), 4 SECONDS, TIMER_STOPPABLE)
 		return
-	current_internals_tank = current_user.get_item_by_slot(ITEM_SLOT_SUITSTORE)
+	current_internals_tank = tank
 	ADD_TRAIT(current_internals_tank, TRAIT_NODROP, "hev_trait")
 	to_chat(current_user, span_notice("You hear a click as [current_internals_tank] is secured to your suit."))
 	playsound(src, atmospherics_sound, 50)
@@ -759,6 +762,7 @@
 	desc = "A deprecated combat helmet developed during the early 21th century in Sol-3, with protections rated level III-A. Contains attachment points for AN/PVS night vision goggles."
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob_muzzled.dmi'
 	icon_state = "hecu_helm"
 	inhand_icon_state = "sec_helm"
 	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 20, FIRE = 20, ACID = 20, WOUND = 10)
@@ -798,6 +802,7 @@
 	desc = "An electrically charged piece of body armor, the power stiffens the suit's fibers to provide a layer of resilient armor in response to trauma received from kinetic force.  It's fitted with a geiger counter, tactical radio, a heads up display and a combat cocktail injector that allows the user to function normally even after serious injury. The concentration of mass in the lower rear side from the onboard computer makes your ass feel heavy."
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob_digi.dmi'
 	icon_state = "hecu_vest"
 	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 20, FIRE = 20, ACID = 20, WOUND = 10) //This is muhreens suit, of course it's mildly strong and balanced for PvP.
 	flags_inv = null

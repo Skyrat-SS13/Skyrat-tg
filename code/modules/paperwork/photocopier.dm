@@ -359,8 +359,13 @@
 		object.forceMove(drop_location())
 	to_chat(user, span_notice("You take [object] out of [src]. [busy ? "The [src] comes to a halt." : ""]"))
 
+/obj/machinery/photocopier/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	default_unfasten_wrench(user, tool)
+	return TOOL_ACT_TOOLTYPE_SUCCESS
+
 /obj/machinery/photocopier/attackby(obj/item/O, mob/user, params)
-	if(default_unfasten_wrench(user, O))
+	if(istype(O, /obj/item/paper))
 		return
 
 	else if(istype(O, /obj/item/paper))

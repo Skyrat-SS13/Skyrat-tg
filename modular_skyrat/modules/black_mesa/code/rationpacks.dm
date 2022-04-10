@@ -17,16 +17,19 @@
 	name = "MRE main course - Pork and Beans"
 	desc = "Main course of the ancient military ration designed for ground troops. This one is pork and beans covered in some tomato sauce."
 	tastes = list("beans" = 1, "pork" = 1, "tomato sauce" = 1)
+	foodtypes = MEAT | VEGETABLES
 
 /obj/item/food/mre_course/main/macaroni
 	name = "MRE main course - Macaroni and Cheese"
 	desc = "Main course of the ancient military ration designed for ground troops. This one is preboiled macaroni covered in some federal reserve cheese."
 	tastes = list("cold macaroni" = 1, "bland cheese" = 1)
+	foodtypes = DAIRY | GRAIN
 
 /obj/item/food/mre_course/main/rice
 	name = "MRE main course - Rice and Beef"
 	desc = "Main course of the ancient military ration designed for ground troops. This one is rice with beef, covered in gravy."
 	tastes = list("dense rice" = 1, "bits of beef" = 1, "gravy" = 1)
+	foodtypes = GRAIN | MEAT
 
 /obj/item/food/mre_course/side
 	name = "MRE side course"
@@ -37,16 +40,19 @@
 	name = "MRE side course - Cornbread"
 	desc = "Side course of the ancient military ration designed for ground troops. This one is cornbread."
 	tastes = list("cornbread" = 1)
+	foodtypes = GRAIN
 
 /obj/item/food/mre_course/side/pie
 	name = "MRE side course - Meat Pie"
 	desc = "Side course of the ancient military ration designed for ground troops. This one is some meat pie."
 	tastes = list("pie dough" = 1, "ground meat" = 1, "Texas" = 1)
+	foodtypes = MEAT | GRAIN
 
 /obj/item/food/mre_course/side/chicken
 	name = "MRE side course - Sweet 'n Sour Chicken"
 	desc = "Side course of the ancient military ration designed for ground troops. This one is some undefined chicken-looking meat covered in cheap reddish sauce."
 	tastes = list("bits of chicken meat" = 1, "sweet and sour sauce" = 1, "salt" = 1)
+	foodtypes = MEAT | FRIED
 
 /obj/item/food/mre_course/dessert
 	name = "MRE dessert"
@@ -57,16 +63,19 @@
 	name = "MRE dessert - Cookie"
 	desc = "Dessert of the ancient military ration designed for ground troops. This one is a big dry cookie."
 	tastes = list("dryness" = 1, "hard cookie" = 1, "chocolate chip" = 1)
+	foodtypes = GRAIN | SUGAR
 
 /obj/item/food/mre_course/dessert/cake
 	name = "MRE dessert - Apple Pie"
 	desc = "Dessert of the ancient military ration designed for ground troops. This one is an amorphous apple pie."
 	tastes = list("apple" = 1, "moist cake" = 1, "sugar" = 1)
+	foodtypes = GRAIN | SUGAR | FRUIT
 
 /obj/item/food/mre_course/dessert/chocolate
 	name = "MRE dessert - Dark Chocolate"
 	desc = "Dessert of the ancient military ration designed for ground troops. This one is a dark bar of chocolate."
 	tastes = list("vanilla" = 1, "artificial chocolate" = 1, "chemicals" = 1)
+	foodtypes = JUNKFOOD | SUGAR
 
 /obj/item/storage/box/hecu_rations
 	name = "Meal, Ready-to-Eat"
