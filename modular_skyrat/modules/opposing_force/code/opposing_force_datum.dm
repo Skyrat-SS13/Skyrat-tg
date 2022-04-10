@@ -316,7 +316,7 @@
 				return
 			var/denied_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this application:")
 			// Checking to see if the user is spamming the button, async and all.
-			if(status == OPFOR_STATUS_DENIED)
+			if((status == OPFOR_STATUS_DENIED) || !denied_reason)
 				return
 			SSopposing_force.deny(src, denied_reason, usr)
 		if("mute_request_updates")
@@ -335,6 +335,8 @@
 			if(!check_rights(R_ADMIN))
 				return
 			var/denied_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
+			if(!denied_reason)
+				return
 			deny_objective(usr, edited_objective, denied_reason)
 		if("approve_equipment")
 			var/datum/opposing_force_selected_equipment/equipment = locate(params["selected_equipment_ref"]) in selected_equipment
@@ -350,6 +352,8 @@
 			if(!check_rights(R_ADMIN))
 				return
 			var/denied_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
+			if(!denied_reason)
+				return
 			deny_equipment(usr, equipment, denied_reason)
 		if("flw_user")
 			if(!check_rights(R_ADMIN))
