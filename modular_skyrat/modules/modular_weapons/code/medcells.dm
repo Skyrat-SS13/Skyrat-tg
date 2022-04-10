@@ -664,6 +664,10 @@
 	teleportee.visible_message(span_notice("[teleportee] is teleported away!"))
 
 	do_teleport(teleportee, pick(turf_list), no_effects = FALSE, channel = TELEPORT_CHANNEL_QUANTUM)
+
+	var/obj/item/goodbye_treat = new /obj/item/food/lollipop/cyborg // The borg one is being used because it has psicodine instead of omnizine.
+	teleportee.put_in_hands(goodbye_treat)
+
 	return ..()
 
 //End of utility
