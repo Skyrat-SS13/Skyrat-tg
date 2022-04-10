@@ -719,7 +719,7 @@
 				else
 					log_admin("[key_name(usr)] gave [current] an uplink.")
 			//SKYRAT EDIT ADDITION BEGIN -- EXPLOITABLES
-			if("toggleexploitables")
+			if("toggle_exploitables")
 				has_exploitables_override = !has_exploitables_override //First we set the override to be the opposite of whatever it was apon execution, then we
 				handle_exploitables() // use ternaries to convert this into true/false for admin logs.
 				log_admin("[key_name(usr)] toggled [current]'s exploitables override to [(has_exploitables_override) ? "true" : "false"].")

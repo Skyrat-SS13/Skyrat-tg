@@ -35,13 +35,13 @@
 		if (!has_exploitable_menu)
 			add_verb(current, /mob/proc/view_exploitables_verb)
 			has_exploitable_menu = TRUE
-			to_chat(current, span_danger("You now have access to the View-Crew-Exploitables verb, which shows all crew who currently have exploitable info and a link to view it!"))
+			to_chat(current, span_danger(VIEW_CREW_EXPLOITABLES_GAIN_TEXT))
 		return
 
 	if(!has_exploitable_menu && can_see_exploitables)
 		add_verb(current, /mob/proc/view_exploitables_verb)
 		has_exploitable_menu = TRUE
-		to_chat(current, span_danger("You now have access to the View-Crew-Exploitables verb, which shows all crew who currently have exploitable info and a link to view it!"))
+		to_chat(current, span_danger(VIEW_CREW_EXPLOITABLES_GAIN_TEXT))
 
 	else if(has_exploitable_menu && !can_see_exploitables)
 		remove_verb(current, /mob/proc/view_exploitables_verb)
