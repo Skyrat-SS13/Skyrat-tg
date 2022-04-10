@@ -64,6 +64,8 @@
 	..()
 	var/chassis = target.dna.mutant_bodyparts["ipc_chassis"]
 	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.sprite_accessories["ipc_chassis"][chassis]
+	if(!chassis)
+		return
 	for(var/obj/item/bodypart/iterating_bodypart as anything in target.bodyparts) //Override bodypart data as necessary
 		iterating_bodypart.uses_mutcolor = chassis_of_choice.color_src ? TRUE : FALSE
 		if(iterating_bodypart.uses_mutcolor)
