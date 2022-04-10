@@ -596,6 +596,9 @@
 /obj/projectile/energy/medical/utility/relocation/on_hit(mob/living/target)
 	. = ..()
 
+	if(!ishuman(target))
+		return FALSE
+
 	var/mob/living/carbon/human/teleportee = target
 
 	if(area_locked && length(teleport_areas) && !is_type_in_list(get_area(target), teleport_areas))
@@ -644,6 +647,7 @@
 	area_locked = locked
 	destination_area = destination
 
+	addtimer(CALLBACK(src, .proc/dispense_treat), (time_allowance * 0.95))
 	QDEL_IN(src, time_allowance)
 
 /datum/component/medigun_relocation/Destroy()
@@ -665,10 +669,12 @@
 
 	do_teleport(teleportee, pick(turf_list), no_effects = FALSE, channel = TELEPORT_CHANNEL_QUANTUM)
 
-	var/obj/item/goodbye_treat = new /obj/item/food/lollipop/cyborg // The borg one is being used because it has psicodine instead of omnizine.
-	teleportee.put_in_hands(goodbye_treat)
-
 	return ..()
+
+/// Puts a treat in the teleportee's hands.
+/datum/component/medigun_relocation/proc/dispense_treat()
+	var/obj/item/goodbye_treat = new /obj/item/food/lollipop/cyborg(teleportee) // The borg one is being used because it has psicodine instead of omnizine.
+	teleportee.put_in_hands(goodbye_treat)
 
 //End of utility
 #undef UPGRADED_MEDICELL_PASSFLAGS
