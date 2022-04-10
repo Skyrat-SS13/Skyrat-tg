@@ -598,7 +598,7 @@
 
 	var/mob/living/carbon/human/teleportee = target
 
-	if(area_locked && teleport_areas.len && !is_type_in_list(get_area(target), teleport_areas))
+	if(area_locked && length(teleport_areas) && !is_type_in_list(get_area(target), teleport_areas))
 		return FALSE
 
 	if(access_teleporting && teleportee.wear_id)
@@ -610,9 +610,6 @@
 		to_chat(teleportee, span_warning("You have [time_allowance] to leave, if you do not leave in this time, you will be forcibly teleported outside."))
 		teleportee.AddComponent(/datum/component/medigun_relocation, time_allowance, destination_area, area_locked, teleport_areas)
 		return TRUE
-
-	if(area_locked && teleport_areas.len && !is_type_in_list(get_area(teleportee), teleport_areas)) // Does one final check to see if the target is in the area.
-		return FALSE
 
 	var/list/turf_list
 
@@ -646,7 +643,7 @@
 	QDEL_IN(src, time_allowance)
 
 /datum/component/medigun_relocation/Destroy()
-	if(area_locked && teleport_areas.len && !is_type_in_list(get_area(teleportee), teleport_areas))
+	if(area_locked && length(teleport_areas) && !is_type_in_list(get_area(teleportee), teleport_areas))
 		return ..()
 
 	var/list/turf_list
