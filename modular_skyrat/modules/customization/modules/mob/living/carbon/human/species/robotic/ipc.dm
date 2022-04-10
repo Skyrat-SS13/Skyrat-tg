@@ -53,17 +53,17 @@
 	var/chassis = C.dna.mutant_bodyparts["ipc_chassis"]
 	if(!chassis)
 		return
-	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.sprite_accessories["ipc_chassis"][chassis[MUTANT_INDEX_NAME]]
+	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.sprite_accessories["ipc_chassis"][chassis]
 	if(chassis_of_choice)
 		examine_limb_id = chassis_of_choice.icon_state
 		if(chassis_of_choice.color_src)
 			species_traits += MUTCOLORS
 		C.update_body()
 
-/datum/species/ipc/replace_body(mob/living/carbon/target, datum/species/new_species)
+/datum/species/robotic/ipc/replace_body(mob/living/carbon/target, datum/species/new_species)
 	..()
 	var/chassis = target.dna.mutant_bodyparts["ipc_chassis"]
-	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.sprite_accessories["ipc_chassis"][chassis[MUTANT_INDEX_NAME]]
+	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.sprite_accessories["ipc_chassis"][chassis]
 	for(var/obj/item/bodypart/iterating_bodypart as anything in target.bodyparts) //Override bodypart data as necessary
 		iterating_bodypart.uses_mutcolor = chassis_of_choice.color_src ? TRUE : FALSE
 		if(iterating_bodypart.uses_mutcolor)

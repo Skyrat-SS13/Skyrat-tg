@@ -26,10 +26,3 @@
 	limb_id = SPECIES_MUTANT
 	digitigrade_type = /obj/item/bodypart/r_leg/digitigrade/mutant_zombie
 
-/obj/item/bodypart/l_leg/digitigrade/mutant_zombie
-	icon_greyscale = 'modular_skyrat/modules/mutants/icons/mutant_parts_greyscale.dmi'
-	base_limb_id = SPECIES_MUTANT
-
-/obj/item/bodypart/r_leg/digitigrade/mutant_zombie
-	icon_greyscale = 'modular_skyrat/modules/mutants/icons/mutant_parts_greyscale.dmi'
-	base_limb_id = SPECIES_MUTANT

@@ -1,4 +1,4 @@
-/datum/species/human/ghoul
+/datum/species/ghoul
 	name = "Ghoul"
 	id = SPECIES_GHOUL
 	examine_limb_id = "ghoul"
@@ -63,7 +63,7 @@
 	if(inFeatures["ghoulcolor"] == null || inFeatures["ghoulcolor"] == "")
 		inFeatures["ghoulcolor"] = GLOB.color_list_ghoul[pick(GLOB.color_list_ghoul)]
 
-/datum/species/human/ghoul/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
+/datum/species/ghoul/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
 	// Missing Defaults in DNA? Randomize!
 	proof_ghoul_features(C.dna.features)
 
@@ -86,7 +86,7 @@
 /datum/species/proc/set_ghoul_color(mob/living/carbon/human/H)
 	return // Do Nothing
 
-/datum/species/human/ghoul/set_ghoul_color(mob/living/carbon/human/H)
+/datum/species/ghoul/set_ghoul_color(mob/living/carbon/human/H)
 	// Called on Assign, or on Color Change (or any time proof_ghoul_features() is used)
 	fixed_mut_color = H.dna.features["ghoulcolor"]
 	default_color = fixed_mut_color
@@ -139,7 +139,7 @@
 // ATTACK PROCS //
 //////////////////
 
-/datum/species/human/ghoul/disarm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
+/datum/species/ghoul/disarm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	// Targeting Self? With "DISARM"
 	if (user == target)
 		var/target_zone = user.zone_selected
@@ -177,10 +177,10 @@
 			return TRUE
 	return ..()
 
-/datum/species/human/ghoul/proc/handle_limb_mashing()
+/datum/species/ghoul/proc/handle_limb_mashing()
 	SIGNAL_HANDLER
 
-/datum/species/human/ghoul/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, mob/living/carbon/human/H, modifiers)
+/datum/species/ghoul/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, mob/living/carbon/human/H, modifiers)
 	handle_limb_mashing()
 	// MEAT LIMBS: If our limb is missing, and we're using meat, stick it in!
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
