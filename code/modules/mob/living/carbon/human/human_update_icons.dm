@@ -259,7 +259,7 @@ There are several things that need to be remembered:
 		var/icon_file
 		// SKYRAT EDIT ADDITION
 		if((dna.species.bodytype & BODYTYPE_VOX) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VOX_VARIATION))
-			icon_file = wear_mask.worn_icon_vox || VOX_GLASSES_FILE
+			icon_file = worn_item.worn_icon_vox || VOX_GLASSES_FILE
 		else if(dna.species.bodytype & BODYTYPE_TESHARI)
 			icon_file =TESHARI_EYES_ICON
 		// SKYRAT EDIT END
@@ -428,7 +428,7 @@ There are several things that need to be remembered:
 
 		// SKYRAT EDIT ADDITION - This needs to be refactored.
 		if((dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
-			icon_file = wear_mask.worn_icon_muzzled || SNOUTED_HEAD_FILE
+			icon_file = worn_item.worn_icon_muzzled || SNOUTED_HEAD_FILE
 		else if(dna.species.bodytype & BODYTYPE_TESHARI)
 			icon_file = TESHARI_HEAD_ICON
 		// SKYRAT EDIT END
@@ -506,7 +506,7 @@ There are several things that need to be remembered:
 		//More currently unused digitigrade handling
 		if(dna.species.bodytype & BODYTYPE_DIGITIGRADE)
 			if(worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION)
-				icon_file = wear_suit.worn_icon_digi || DIGITIGRADE_SUIT_FILE // SKYRAT EDIT CHANGE
+				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SUIT_FILE // SKYRAT EDIT CHANGE
 
 		// SKYRAT EDIT ADDITION
 		else if(dna.species.bodytype & BODYTYPE_TESHARI)
@@ -570,7 +570,7 @@ There are several things that need to be remembered:
 
 		// SKYRAT EDIT ADDITION
 		if((dna.species.bodytype & BODYTYPE_SNOUTED) && !(worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
-			icon_file = wear_mask.worn_icon_muzzled || SNOUTED_MASK_FILE
+			icon_file = worn_item.worn_icon_muzzled || SNOUTED_MASK_FILE
 		else if(dna.species.bodytype & BODYTYPE_TESHARI)
 			icon_file = TESHARI_MASK_ICON
 		// SKYRAT EDIT END
