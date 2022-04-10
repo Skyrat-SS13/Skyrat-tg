@@ -610,7 +610,7 @@
 			return FALSE
 
 	if(grace_period)
-		to_chat(teleportee, span_warning("You have [time_allowance] to leave, if you do not leave in this time, you will be forcibly teleported outside."))
+		to_chat(teleportee, span_warning("You have [(time_allowance / 10)] seconds to leave, if you do not leave in this time, you will be forcibly teleported outside."))
 		teleportee.AddComponent(/datum/component/medigun_relocation, time_allowance, destination_area, area_locked, teleport_areas)
 		return TRUE
 
