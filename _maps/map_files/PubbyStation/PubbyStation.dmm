@@ -27064,10 +27064,6 @@
 /turf/open/floor/plating,
 /area/medical/abandoned)
 "bPU" = (
-/obj/machinery/airalarm/unlocked{
-	dir = 4;
-	pixel_x = -23
-	},
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
@@ -27077,6 +27073,7 @@
 /obj/machinery/computer/rdconsole{
 	dir = 4
 	},
+/obj/machinery/airalarm/directional/west,
 /turf/open/floor/iron/dark,
 /area/command/heads_quarters/rd)
 "bPW" = (
@@ -28062,10 +28059,10 @@
 /turf/open/floor/iron,
 /area/hallway/primary/aft)
 "bSV" = (
-/obj/machinery/atmospherics/pipe/smart/simple/yellow/visible,
-/obj/machinery/atmospherics/pipe/smart/simple/purple/visible{
+/obj/machinery/atmospherics/pipe/bridge_pipe/purple/visible{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/bridge_pipe/yellow/visible,
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "bSW" = (
@@ -30598,7 +30595,9 @@
 /area/engineering/main)
 "cbv" = (
 /obj/machinery/meter,
-/obj/machinery/atmospherics/pipe/smart/simple/purple/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold/purple{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "cbw" = (
@@ -32141,9 +32140,8 @@
 /turf/open/floor/iron/dark,
 /area/maintenance/disposal/incinerator)
 "cjw" = (
-/obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/smart/manifold/purple{
-	dir = 4
+	dir = 8
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
@@ -33222,13 +33220,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/commons/storage/tools)
-"cow" = (
-/obj/machinery/meter,
-/obj/machinery/atmospherics/pipe/smart/simple/purple/visible{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/engineering/atmos)
 "coy" = (
 /obj/structure/curtain,
 /turf/open/floor/plastic,
@@ -36222,6 +36213,10 @@
 /obj/structure/cable,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
+"cRK" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/purple,
+/turf/open/floor/iron,
+/area/engineering/atmos)
 "cSf" = (
 /obj/structure/noticeboard{
 	pixel_y = 32
@@ -36659,6 +36654,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/chapel/office)
+"dpt" = (
+/obj/machinery/atmospherics/pipe/smart/simple/purple/visible{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/engineering/atmos)
 "dqf" = (
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/door/airlock/public/glass/incinerator/atmos_interior,
@@ -38045,10 +38046,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/command/heads_quarters/cmo)
-"eFR" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/purple,
-/turf/open/floor/iron,
-/area/engineering/atmos)
 "eFU" = (
 /obj/structure/closet/bombcloset/security,
 /obj/item/clothing/suit/bomb_suit/security,
@@ -38139,6 +38136,12 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/secondary/exit/departure_lounge)
+"eLX" = (
+/obj/machinery/atmospherics/pipe/smart/simple/purple/visible{
+	dir = 9
+	},
+/turf/open/floor/iron,
+/area/engineering/atmos)
 "eMM" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -40468,7 +40471,8 @@
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
 "gEP" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/purple{
+/obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible{
 	dir = 8
 	},
 /turf/open/floor/iron,
@@ -43016,12 +43020,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/security/brig)
-"iJu" = (
-/obj/machinery/atmospherics/pipe/smart/simple/purple/visible{
-	dir = 9
-	},
-/turf/open/floor/iron,
-/area/engineering/atmos)
 "iJw" = (
 /obj/structure/rack,
 /obj/item/restraints/handcuffs{
@@ -44287,6 +44285,13 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark,
 /area/security/office)
+"jLm" = (
+/obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/smart/simple/purple/visible{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/engineering/atmos)
 "jLN" = (
 /obj/effect/turf_decal/trimline/darkblue/filled/warning{
 	dir = 4
@@ -44707,6 +44712,12 @@
 /obj/machinery/air_sensor/nitrous_tank,
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
+"kjl" = (
+/obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
+	dir = 9
+	},
+/turf/open/floor/iron,
+/area/engineering/atmos)
 "kjA" = (
 /obj/structure/disposalpipe/sorting/mail/flip{
 	dir = 2;
@@ -44762,8 +44773,10 @@
 /turf/open/floor/carpet/executive,
 /area/commons/dorms/barracks)
 "kon" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/smart/simple/green/visible{
+	dir = 10
+	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "koE" = (
@@ -45279,12 +45292,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/cargo)
-"kID" = (
-/obj/machinery/atmospherics/pipe/smart/simple/purple/visible{
-	dir = 5
-	},
-/turf/open/floor/iron,
-/area/engineering/atmos)
 "kJw" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Firing Range Target"
@@ -52338,6 +52345,9 @@
 /obj/item/hfr_box/corner,
 /obj/item/hfr_box/corner,
 /obj/item/hfr_box/core,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/engineering/atmos/hfr_room)
 "qtb" = (
@@ -53259,6 +53269,7 @@
 /area/maintenance/disposal/incinerator)
 "rjB" = (
 /obj/machinery/door/airlock/atmos/glass,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "rjK" = (
@@ -54802,13 +54813,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/cargo/storage)
-"sqG" = (
-/obj/machinery/meter,
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/engineering/atmos)
 "sqP" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/monitored/nitrogen_input{
 	dir = 1
@@ -55082,6 +55086,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/service/library/artgallery)
+"sCL" = (
+/obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/engineering/atmos)
 "sCO" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -55280,12 +55290,6 @@
 /obj/machinery/power/energy_accumulator/grounding_rod/anchored,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
-"sLY" = (
-/obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/engineering/atmos)
 "sMM" = (
 /obj/structure/chair/stool,
 /turf/open/floor/iron/dark/purple/side{
@@ -59657,12 +59661,6 @@
 	dir = 1
 	},
 /area/security/prison)
-"wfV" = (
-/obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
-	dir = 9
-	},
-/turf/open/floor/iron,
-/area/engineering/atmos)
 "wgB" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -98584,7 +98582,7 @@ urG
 urG
 urG
 urG
-sqG
+gEP
 cnp
 mwv
 bUy
@@ -99864,13 +99862,13 @@ bWI
 urG
 wit
 bXC
-cjw
+cbv
 jxd
-cjw
+cbv
 xId
 wtw
 bXC
-iJu
+eLX
 bMf
 caC
 vbO
@@ -100126,7 +100124,7 @@ sze
 bMf
 vcp
 bMf
-cow
+jLm
 gNu
 bMf
 caC
@@ -100378,14 +100376,14 @@ wtw
 wtw
 rXv
 bXC
-gEP
-gEP
-gEP
+cjw
+cjw
+cjw
 snC
-gEP
+cjw
 bXC
-gEP
-kID
+cjw
+dpt
 lqs
 rVD
 dLt
@@ -101154,7 +101152,7 @@ bIw
 bIw
 bIw
 bXB
-sLY
+sCL
 vbO
 dHU
 bMf
@@ -101925,7 +101923,7 @@ fIR
 bMf
 bMf
 bMf
-sLY
+sCL
 vbO
 dHU
 bMf
@@ -102182,7 +102180,7 @@ jcB
 bMf
 bMf
 bMf
-sLY
+sCL
 vbO
 dHU
 bMf
@@ -102439,7 +102437,7 @@ jcB
 bMf
 bMf
 bMf
-sLY
+sCL
 vbO
 dHU
 bMf
@@ -102696,7 +102694,7 @@ jcB
 bMf
 bMf
 bMf
-sLY
+sCL
 vbO
 dHU
 bMf
@@ -102953,7 +102951,7 @@ qKj
 ccn
 bMf
 bMf
-sLY
+sCL
 qIx
 dHU
 bMf
@@ -103210,7 +103208,7 @@ iQR
 bMf
 bMf
 bMf
-sLY
+sCL
 vbO
 dHU
 bMf
@@ -103467,7 +103465,7 @@ iQR
 bMf
 bMf
 bMf
-sLY
+sCL
 vbO
 dHU
 bMf
@@ -103724,7 +103722,7 @@ iQR
 bMf
 bMf
 bMf
-sLY
+sCL
 vbO
 dHU
 bMf
@@ -103981,7 +103979,7 @@ hFR
 bMf
 bMf
 bMf
-sLY
+sCL
 qIx
 dHU
 bMf
@@ -104238,7 +104236,7 @@ iQR
 bMf
 bMf
 bMf
-sLY
+sCL
 vbO
 dHU
 bMf
@@ -104495,7 +104493,7 @@ pAR
 bMf
 bMf
 bMf
-sLY
+sCL
 vbO
 dHU
 bMf
@@ -104752,7 +104750,7 @@ bOl
 bOl
 bOl
 bOl
-wfV
+kjl
 dhz
 bSV
 ikM
@@ -105011,7 +105009,7 @@ oBZ
 wtw
 wtw
 wtw
-eFR
+cRK
 bMf
 phx
 nCP
