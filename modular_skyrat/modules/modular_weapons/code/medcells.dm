@@ -623,7 +623,7 @@
 
 	teleportee.visible_message(span_notice("[teleportee] is teleported away!"))
 
-	do_teleport(teleportee, pick(turf_list), no_effects = TRUE, channel = TELEPORT_CHANNEL_QUANTUM)
+	do_teleport(teleportee, pick(turf_list), no_effects = FALSE, channel = TELEPORT_CHANNEL_QUANTUM)
 
 
 /datum/component/medigun_relocation
@@ -658,7 +658,7 @@
 
 	teleportee.visible_message(span_notice("[teleportee] is teleported away!"))
 
-	do_teleport(teleportee, pick(turf_list), no_effects = TRUE, channel = TELEPORT_CHANNEL_QUANTUM)
+	do_teleport(teleportee, pick(turf_list), no_effects = FALSE, channel = TELEPORT_CHANNEL_QUANTUM)
 	return ..()
 
 //End of utility
