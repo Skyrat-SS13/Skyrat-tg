@@ -650,6 +650,9 @@
 	if(area_locked && length(teleport_areas) && !is_type_in_list(get_area(teleportee), teleport_areas))
 		return ..()
 
+	if(!teleportee.stat == CONSCIOUS) // This is mostly here to stop medical from accidentally teleporting out people they otherwise wouldn't want to.
+		return ..()
+
 	var/list/turf_list
 
 	if(!turf_list)
