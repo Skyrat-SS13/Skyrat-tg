@@ -626,7 +626,7 @@
 
 	do_teleport(teleportee, pick(turf_list), no_effects = FALSE, channel = TELEPORT_CHANNEL_QUANTUM)
 
-
+/// Used to handle teleporting if there is a grace period
 /datum/component/medigun_relocation
 	var/area/destination_area
 	var/mob/living/carbon/human/teleportee
