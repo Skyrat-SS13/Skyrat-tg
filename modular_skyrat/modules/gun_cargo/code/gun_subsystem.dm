@@ -8,9 +8,13 @@ SUBSYSTEM_DEF(gun_companies)
 	name = "Gun Companies"
 	wait = 120 SECONDS
 	runlevels = RUNLEVEL_GAME
+	/// Assoc list of companies that the subsystem has initialized, `"NAME" = datum_reference`
 	var/list/companies = list()
+	/// Assoc list of unpurchased companies
 	var/list/unpurchased_companies = list()
+	/// Assoc list of purchased companies
 	var/list/purchased_companies = list()
+	/// List of chosen handout company datums, for the user to pick 1
 	var/list/chosen_handouts = list()
 	/// Picked a free company yet?
 	var/handout_picked = FALSE

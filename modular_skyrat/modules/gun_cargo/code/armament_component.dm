@@ -20,15 +20,21 @@
 
 	var/mob/living/carbon/human/the_person = user
 	var/obj/item/card/id/id_card
+
 	if(istype(the_person))
 		id_card = the_person.get_idcard(TRUE)
+
 	var/budget_name = self_paid ? id_card.name : "Cargo Budget"
+
 	data["budget_name"] = budget_name
+
 	var/datum/bank_account/cargo_budget = SSeconomy.get_dep_account(ACCOUNT_CAR)
+
 	data["budget_points"] = self_paid ? id_card?.registered_account?.account_balance : cargo_budget?.account_balance
 	data["ammo_amount"] = ammo_purchase_num
 	data["self_paid"] = !!self_paid
 	data["armaments_list"] = list()
+
 	for(var/armament_category as anything in GLOB.armament_entries)
 		var/illegal_failure
 

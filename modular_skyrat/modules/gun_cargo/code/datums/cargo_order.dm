@@ -24,6 +24,6 @@
 /datum/supply_order/armament/on_spawn()
 	for(var/company in SSgun_companies.companies)
 		var/datum/gun_company/comp_datum = SSgun_companies.companies[company]
-		if(comp_datum.company_flag == selected_entry.company_bitflag)
+		if(comp_datum.company_flag == selected_entry?.company_bitflag)
 			comp_datum.interest += (is_gun ? COMPANY_INTEREST_GUN : COMPANY_INTEREST_AMMO)
 			break
