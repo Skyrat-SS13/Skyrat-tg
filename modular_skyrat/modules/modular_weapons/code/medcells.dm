@@ -625,9 +625,13 @@
 
 /// Used to handle teleporting if there is a grace period
 /datum/component/medigun_relocation
+	/// Area that the target is teleported to
 	var/area/destination_area
+	/// The person that is being teleported
 	var/mob/living/carbon/human/teleportee
+	/// Is the teleport locked to only specific areas.
 	var/area_locked
+	/// If area_locked is enabled, people can be teleported while in these areas.
 	var/list/teleport_areas
 
 /datum/component/medigun_relocation/Initialize(time_allowance, destination, locked, areas)
