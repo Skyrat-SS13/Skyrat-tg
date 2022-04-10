@@ -24,7 +24,7 @@
 	icon_state = "util_sci"
 	can_adjust = FALSE
 
-/obj/item/clothing/under/rank/medical/doctor/skyrat/utility/syndicate
+/obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
 	desc = "A utility uniform worn by Science staff."
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
 	has_sensor = NO_SENSORS
