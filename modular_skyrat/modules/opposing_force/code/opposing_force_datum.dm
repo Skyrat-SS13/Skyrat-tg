@@ -77,6 +77,8 @@
 	var/datum/contractor_hub/contractor_hub
 	/// Corresponding stat() click button
 	var/obj/effect/statclick/opfor_specific/stat_button
+	/// If it is part of the ticket ping subsystem
+	var/ticket_ping = FALSE
 
 	COOLDOWN_DECLARE(static/request_update_cooldown)
 	COOLDOWN_DECLARE(static/ping_cooldown)
@@ -497,6 +499,7 @@
 			SEND_SOUND(staff, sound('sound/effects/adminhelp.ogg'))
 		window_flash(staff, ignorepref = TRUE)
 
+	addtimer(CALLBACK(src, .proc/add_to_ping_ss), 3 MINUTES)
 	status = OPFOR_STATUS_AWAITING_APPROVAL
 	can_edit = FALSE
 	add_log(user.ckey, "Submitted to the OPFOR subsystem")
@@ -860,6 +863,11 @@
 		report += contractor_round_end()
 
 	return report.Join("\n")
+
+/datum/opposing_force/proc/add_to_ping_ss()
+	if(status != OPFOR_STATUS_APPROVED)
+		return
+	ticket_ping = TRUE
 
 /datum/action/opfor
 	name = "Open Opposing Force Panel"
