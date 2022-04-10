@@ -38,16 +38,14 @@
 	for(var/obj/item/restraints/handcuffs/cuff in src.contents)
 		cuff.attack(victim, user)
 		break
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/melee/baton/telescopic/contractor_baton/attackby(obj/item/attacking_item, mob/user, params)
 	. = ..()
 	if(istype(attacking_item, /obj/item/baton_upgrade))
-		var/obj/item/baton_upgrade/upgrade = attacking_item
-		if(!(upgrade_flags & upgrade.upgrade_flag))
-			upgrade_flags |= upgrade.upgrade_flag
-			attacking_item.forceMove(src)
-			balloon_alert(user, "[attacking_item] attached")
-	if(!(upgrade_flags & BATON_CUFF_UPGRADE) && !(upgrade_flags & BATON_ALL_UPGRADE))
+		add_upgrade(attacking_item)
+		balloon_alert(user, "[attacking_item] attached")
+	if(!(upgrade_flags & BATON_CUFF_UPGRADE))
 		return
 	if(!istype(attacking_item, /obj/item/restraints/handcuffs/cable))
 		return
@@ -72,10 +70,10 @@
 	. = ..()
 	if(!istype(target))
 		return
-	if((upgrade_flags & BATON_MUTE_UPGRADE) || (upgrade_flags & BATON_ALL_UPGRADE))
+	if((upgrade_flags & BATON_MUTE_UPGRADE))
 		if(target.silent < (MUTE_CYCLES * MUTE_MAX_MOD))
 			target.silent = min((target.silent + MUTE_CYCLES), (MUTE_CYCLES * MUTE_MAX_MOD))
-	if((upgrade_flags & BATON_FOCUS_UPGRADE) || (upgrade_flags & BATON_ALL_UPGRADE))
+	if((upgrade_flags & BATON_FOCUS_UPGRADE))
 		if(target == user.mind?.opposing_force?.contractor_hub?.current_contract?.contract.target?.current) // Pain
 			target.apply_damage(BONUS_STAMINA_DAM, STAMINA, BODY_ZONE_CHEST)
 			target.stuttering += BONUS_STUTTER
@@ -87,13 +85,20 @@
 	for(var/obj/item/baton_upgrade/upgrade in contents)
 		. += "<br>[span_notice("[upgrade].")]"
 
+/obj/item/melee/baton/telescopic/contractor_baton/proc/add_upgrade(obj/item/baton_upgrade/upgrade)
+	if(!(upgrade_flags & upgrade.upgrade_flag))
+		upgrade_flags |= upgrade.upgrade_flag
+		upgrade.forceMove(src)
+
 /obj/item/melee/baton/telescopic/contractor_baton/upgraded
-	desc = "A compact, specialised baton assigned to Syndicate contractors. Applies light electrical shocks to targets. This one seems to be fully upgraded with unremovable parts."
-	lists_upgrades = FALSE
-	upgrade_flags = BATON_ALL_UPGRADE
+	desc = "A compact, specialised baton assigned to Syndicate contractors. Applies light electrical shocks to targets. This one seems to have unremovable parts."
 
 /obj/item/melee/baton/telescopic/contractor_baton/upgraded/Initialize(mapload)
 	. = ..()
+	var/list/upgrade_subtypes = subtypesof(/obj/item/baton_upgrade)
+	for(var/upgrade in upgrade_subtypes)
+		var/obj/item/baton_upgrade/the_upgrade = new upgrade()
+		add_upgrade(the_upgrade)
 	for(var/i in 1 to CUFF_MAXIMUM)
 		new/obj/item/restraints/handcuffs/cable(src)
 
