@@ -18,11 +18,11 @@
 /obj/item/bodypart/l_leg/mutant/mutant_zombie
 	icon_greyscale = 'modular_skyrat/modules/mutants/icons/mutant_parts_greyscale.dmi'
 	limb_id = SPECIES_MUTANT
-	digitigrade_type = /obj/item/bodypart/l_leg/digitigrade/mutant_zombie
+	digitigrade_type = null
 
 /obj/item/bodypart/r_leg/mutant/mutant_zombie
 	icon_greyscale = 'modular_skyrat/modules/mutants/icons/mutant_parts_greyscale.dmi'
 	uses_mutcolor = TRUE
 	limb_id = SPECIES_MUTANT
-	digitigrade_type = /obj/item/bodypart/r_leg/digitigrade/mutant_zombie
+	digitigrade_type = null
 
