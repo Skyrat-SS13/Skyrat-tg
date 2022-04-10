@@ -566,6 +566,7 @@
 //The version that the normal medicells use
 /obj/item/ammo_casing/energy/medical/utility/relocation/standard
 	projectile_type = /obj/projectile/energy/medical/utility/relocation/standard
+	delay = 12
 
 /obj/projectile/energy/medical/utility/relocation
 	name = "bluespace transportation field"

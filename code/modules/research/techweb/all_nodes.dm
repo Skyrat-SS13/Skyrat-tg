@@ -375,6 +375,7 @@
 		"burn2medicell",
 		"toxin2medicell",
 		"oxy2medicell",
+		"relocatemedicell",
 		"tempmedicell",
 		"bodymedicell",
 		"clotmedicell",
