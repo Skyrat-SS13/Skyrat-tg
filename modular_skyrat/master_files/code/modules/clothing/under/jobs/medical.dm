@@ -41,6 +41,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/medical/scrubs/skyrat/red
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in a deep red."
@@ -61,3 +62,4 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	mutant_variants = NONE

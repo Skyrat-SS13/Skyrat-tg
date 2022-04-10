@@ -49,7 +49,7 @@
 /obj/machinery/vending/wardrobe/robo_wardrobe
 	skyrat_products = list(
 		/obj/item/clothing/head/beret/science/fancy/robo = 2,
-		/obj/item/clothing/under/utility/robo_sleek = 2,
+		/obj/item/clothing/under/rank/rnd/roboticist/skyrat/sleek = 2,
 		/obj/item/tank/internals/anesthetic = 2,
 		/obj/item/clothing/mask/breath = 2,
 		/obj/item/reagent_containers/glass/bottle/morphine = 2,
@@ -58,8 +58,8 @@
 
 /obj/machinery/vending/wardrobe/science_wardrobe
 	skyrat_products = list(
-		/obj/item/clothing/under/misc/hlscience = 3,
-		/obj/item/clothing/under/utility/sci = 3,
+		/obj/item/clothing/under/rank/rnd/scientist/skyrat/hlscience = 3,
+		/obj/item/clothing/under/rank/rnd/scientist/skyrat/utility = 3,
 		/obj/item/clothing/suit/toggle/jacket/sci = 3,
 	)
 
