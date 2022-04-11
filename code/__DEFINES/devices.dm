@@ -35,8 +35,6 @@
 #define PDA_UI_BOTS_ACCESS 48
 #define PDA_UI_EMOJI_GUIDE 49
 #define PDA_UI_SIGNALER 50
-#define PDA_UI_NEWSCASTER 51
-#define PDA_UI_NEWSCASTER_ERROR 52
 
 
 // Used by PDA and cartridge code to reduce repetitiveness of spritesheets
