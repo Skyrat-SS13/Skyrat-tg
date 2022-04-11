@@ -1,4 +1,4 @@
-/obj/item/cartridge //SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/cartridge
 	name = "generic cartridge"
 	desc = "A data cartridge for portable microcomputers."
 	icon = 'icons/obj/pda.dmi'
@@ -11,8 +11,6 @@
 	var/obj/item/integrated_signaler/radio = null
 
 	var/access = 0 //Bit flags for cartridge access
-
-	var/remote_door_id = ""
 
 	var/list/bot_access = list()
 //	Selection: SEC_BOT | ADVANCED_SEC_BOT | MULE_BOT | FLOOR_BOT | CLEAN_BOT | MED_BOT | FIRE_BOT | VIBE_BOT
@@ -92,11 +90,6 @@
 	access = CART_SECURITY
 	spam_enabled = 1
 
-/obj/item/cartridge/curator
-	name = "\improper Lib-Tweet cartridge"
-	icon_state = "cart-s"
-	access = CART_NEWSCASTER
-
 /obj/item/cartridge/roboticist
 	name = "\improper B.O.O.P. Remote Control cartridge"
 	desc = "Packed with heavy duty quad-bot interlink!"
@@ -108,7 +101,7 @@
 		VIBE_BOT,
 	)
 
-/obj/item/cartridge/signal//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/cartridge/signal
 	name = "generic signaler cartridge"
 	desc = "A data cartridge with an integrated radio signaler module."
 
@@ -139,11 +132,7 @@
 /obj/item/cartridge/hop
 	name = "\improper HumanResources9001 cartridge"
 	icon_state = "cart-h"
-<<<<<<< HEAD
-	access = CART_MANIFEST | CART_STATUS_DISPLAY | CART_SECURITY | CART_NEWSCASTER | CART_QUARTERMASTER | CART_DRONEPHONE
-=======
 	access = CART_MANIFEST | CART_STATUS_DISPLAY | CART_SECURITY | CART_QUARTERMASTER
->>>>>>> eb440d5751c (Refactors drone PDA stuff into a Botkeeper thing (#66022))
 	bot_access = list(
 		MULE_BOT,
 		CLEAN_BOT,
@@ -195,9 +184,9 @@
 
 /obj/item/cartridge/captain
 	name = "\improper Value-PAK cartridge"
-	desc = "Now with 350% more value!" //Give the Captain...EVERYTHING! (Except Mime, Clown, and Syndie)
+	desc = "Now with 350% more value!" //Give the Captain...EVERYTHING! (Except Clown and Mime ones)
 	icon_state = "cart-c"
-	access = ~(CART_CLOWN | CART_MIME | CART_REMOTE_DOOR)
+	access = ~(CART_CLOWN | CART_MIME)
 	spam_enabled = 1
 	bot_access = list(
 		SEC_BOT,
@@ -479,28 +468,6 @@
 				menu += "<b>No ore silo detected!</b>"
 			menu = jointext(menu, "")
 
-		if (PDA_UI_NEWSCASTER)
-			menu = "<h4>[PDAIMG(notes)] Newscaster Access</h4>"
-			menu += "<br> Current Newsfeed: <A href='byond://?src=[REF(src)];choice=Newscaster Switch Channel'>[current_channel ? current_channel : "None"]</a> <br>"
-			var/datum/feed_channel/current
-			for(var/datum/feed_channel/chan in GLOB.news_network.network_channels)
-				if (chan.channel_name == current_channel)
-					current = chan
-			if(!current)
-				menu += "<h5> ERROR : NO CHANNEL FOUND </h5>"
-				return menu
-			var/i = 1
-			for(var/datum/feed_message/msg in current.messages)
-				menu +="-[msg.return_body(-1)] <BR><FONT SIZE=1>\[Story by <FONT COLOR='maroon'>[msg.return_author(-1)]</FONT>\]</FONT><BR>"
-				menu +="<b><font size=1>[msg.comments.len] comment[msg.comments.len > 1 ? "s" : ""]</font></b><br>"
-				if(msg.img)
-					user << browse_rsc(msg.img, "tmp_photo[i].png")
-					menu +="<img src='tmp_photo[i].png' width = '180'><BR>"
-				i++
-				for(var/datum/feed_comment/comment in msg.comments)
-					menu +="<font size=1><small>[comment.body]</font><br><font size=1><small><small><small>[comment.author] [comment.time_stamp]</small></small></small></small></font><br>"
-			menu += "<br> <A href='byond://?src=[REF(src)];choice=Newscaster Message'>Post Message</a>"
-
 		if (PDA_UI_BOTS_ACCESS)
 			menu = "<h4>[PDAIMG(medbot)] Bots Interlink</h4>"
 			bot_control()
@@ -519,9 +486,6 @@
 
 			menu += "<br> To use an emoji in a pda message, refer to the guide and add \":\" around the emoji. Your PDA supports the following emoji:<br>"
 			menu += emoji_table
-
-		if (PDA_UI_NEWSCASTER_ERROR) //Newscaster message permission error
-			menu = "<h5> ERROR : NOT AUTHORIZED [host_pda.id ? "" : "- ID SLOT EMPTY"] </h5>"
 
 	return menu
 
@@ -584,29 +548,6 @@
 
 		if("Supply Orders")
 			host_pda.ui_mode = PDA_UI_SUPPLY_RECORDS
-
-		if("Newscaster Access")
-			host_pda.ui_mode = PDA_UI_NEWSCASTER
-
-		if("Newscaster Message")
-			var/host_pda_owner_name = host_pda.id ? "[host_pda.id.registered_name] ([host_pda.id.assignment])" : "Unknown"
-			var/message = host_pda.msg_input()
-			var/datum/feed_channel/current
-			for(var/datum/feed_channel/chan in GLOB.news_network.network_channels)
-				if (chan.channel_name == current_channel)
-					current = chan
-			if(current.locked && current.author != host_pda_owner_name)
-				host_pda.ui_mode = PDA_UI_NEWSCASTER_ERROR
-				host_pda.Topic(null,list("choice"="Refresh"))
-				return
-			GLOB.news_network.submit_article(message,host_pda.owner,current_channel)
-			host_pda.Topic(null,list("choice"=num2text(host_pda.ui_mode)))
-			return
-
-		if("Newscaster Switch Channel")
-			current_channel = host_pda.msg_input()
-			host_pda.Topic(null,list("choice"=num2text(host_pda.ui_mode)))
-			return
 
 	//emoji previews
 	if(href_list["emoji"])
