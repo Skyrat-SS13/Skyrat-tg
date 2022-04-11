@@ -16,6 +16,17 @@
 	worn_icon_state = "webbing_exp_corps"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Webbing" = list(
+			RESKIN_ICON_STATE = "webbing_exp_corps",
+			RESKIN_WORN_ICON_STATE = "webbing_exp_corps"
+		),
+		"Belt" = list(
+			RESKIN_ICON_STATE = "belt_exp_corps",
+			RESKIN_WORN_ICON_STATE = "belt_exp_corps"
+		),
+	)
 
 /obj/item/storage/belt/military/expeditionary_corps/combat_tech
 	name = "combat tech's chest rig"
@@ -114,6 +125,17 @@
 	worn_icon = 'modular_skyrat/modules/exp_corps/icons/mob_backpack.dmi'
 	slowdown = 0
 	resistance_flags = FIRE_PROOF
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Backpack" = list(
+			RESKIN_ICON_STATE = "exp_corps",
+			RESKIN_WORN_ICON_STATE = "exp_corps"
+		),
+		"Belt" = list(
+			RESKIN_ICON_STATE = "exp_corps_satchel",
+			RESKIN_WORN_ICON_STATE = "exp_corps_satchel"
+		),
+	)
 
 /obj/item/clothing/suit/armor/vest/expeditionary_corps
 	name = "expeditionary corps armor vest"
