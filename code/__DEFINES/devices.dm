@@ -7,20 +7,10 @@
 #define CART_CLOWN (1<<5)
 #define CART_MIME (1<<6)
 #define CART_REAGENT_SCANNER (1<<7)
-<<<<<<< HEAD
-#define CART_NEWSCASTER (1<<8)
-#define CART_REMOTE_DOOR (1<<9)
-#define CART_STATUS_DISPLAY (1<<10)
-#define CART_QUARTERMASTER (1<<11)
-#define CART_HYDROPONICS (1<<12)
-#define CART_DRONEPHONE (1<<13)
-#define CART_DRONEACCESS (1<<14)
-=======
 #define CART_STATUS_DISPLAY (1<<8)
 #define CART_QUARTERMASTER (1<<9)
 #define CART_DRONEPHONE (1<<10)
 #define CART_DRONEACCESS (1<<11)
->>>>>>> e7988c5e77b (removes syndicate cartridge no one uses anyways (#65953))
 
 /// PDA ui menu defines
 #define PDA_UI_HUB 0
@@ -47,8 +37,6 @@
 #define PDA_UI_BOTS_ACCESS 48
 #define PDA_UI_EMOJI_GUIDE 49
 #define PDA_UI_SIGNALER 50
-#define PDA_UI_NEWSCASTER 51
-#define PDA_UI_NEWSCASTER_ERROR 52
 
 
 // Used by PDA and cartridge code to reduce repetitiveness of spritesheets
