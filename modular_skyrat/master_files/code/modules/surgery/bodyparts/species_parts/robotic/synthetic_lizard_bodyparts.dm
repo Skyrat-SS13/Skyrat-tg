@@ -28,9 +28,11 @@
 /obj/item/bodypart/l_leg/robot/digitigrade/lizard
 	icon = 'modular_skyrat/master_files/icons/mob/species/synthliz_parts_greyscale.dmi'
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/synthliz_parts_greyscale.dmi'
+	icon_static = 'modular_skyrat/master_files/icons/mob/species/synthliz_parts_greyscale.dmi'
 	base_limb_id = SPECIES_SYNTHLIZ
 
 /obj/item/bodypart/r_leg/robot/digitigrade/lizard
 	icon = 'modular_skyrat/master_files/icons/mob/species/synthliz_parts_greyscale.dmi'
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/synthliz_parts_greyscale.dmi'
+	icon_static = 'modular_skyrat/master_files/icons/mob/species/synthliz_parts_greyscale.dmi'
 	base_limb_id = SPECIES_SYNTHLIZ
