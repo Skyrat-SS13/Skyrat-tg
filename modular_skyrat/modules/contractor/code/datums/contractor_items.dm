@@ -174,7 +174,7 @@
 	var/datum/round_event_control/event = locate(/datum/round_event_control/communications_blackout) in SSevents.control
 	event.runEvent()
 
-/datum/contractor_item/baton_holster
+/datum/contractor_item/mod_baton_holster
 	name = "Baton Holster Module"
 	desc = "Never worry about dropping your baton again with this holster module! Simply insert your baton into the module, put it in your MODsuit, and the baton will retract whenever dropped."
 	item = /obj/item/mod/module/baton_holster
@@ -186,7 +186,7 @@
 	name = "Baton Cuff Upgrade"
 	desc = "Using technology reverse-engineered from some alien batons we had lying around, you can now cuff people using your baton with the secondary attack. Due to technical limitations, only cable cuffs and zipties work, and they need to be loaded into the baton manually."
 	item = /obj/item/baton_upgrade/cuff
-	item_icon = "hands-bound"
+	item_icon = "bacon" //ditto
 	limited = 1
 	cost = 1
 
@@ -203,5 +203,13 @@
 	desc = "When applied to a baton, it will exhaust the target even more, should they be the target of your current contract."
 	item = /obj/item/baton_upgrade/focus
 	item_icon = "eye"
+	limited = 1
+	cost = 2
+
+/datum/contractor_item/mod_magnetic_suit
+	name = "Magnetic Deployment Module"
+	desc = "A module that utilizes magnets to largely reduce the time needed to deploy and retract your MODsuit."
+	item = /obj/item/mod/module/springlock/contractor
+	item_icon = "magnet"
 	limited = 1
 	cost = 2
