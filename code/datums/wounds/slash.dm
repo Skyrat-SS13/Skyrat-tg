@@ -318,13 +318,10 @@
 	status_effect_type = /datum/status_effect/wound/slash/critical
 	scar_keyword = "slashcritical"
 	wound_flags = (FLESH_WOUND | ACCEPTS_GAUZE | MANGLES_FLESH)
-<<<<<<< HEAD
-*/
-=======
 
 /datum/wound/slash/moderate/many_cuts
 	name = "Numerous Small Slashes"
 	desc = "Patient's skin has numerous small slashes and cuts, generating moderate blood loss."
 	examine_desc = "has a ton of small cuts"
 	occur_text = "is cut numerous times, leaving many small slashes."
->>>>>>> b34f810f0c4 (Festival Sect is back in 2022! (#64731))
+*/
