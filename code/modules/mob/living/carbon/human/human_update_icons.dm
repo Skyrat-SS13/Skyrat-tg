@@ -569,7 +569,7 @@ There are several things that need to be remembered:
 		var/handled_by_bodytype = TRUE
 
 		// SKYRAT EDIT ADDITION
-		if((dna.species.bodytype & BODYTYPE_SNOUTED) && !(worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
+		if((dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			icon_file = worn_item.worn_icon_muzzled || SNOUTED_MASK_FILE
 		else if(dna.species.bodytype & BODYTYPE_TESHARI)
 			icon_file = TESHARI_MASK_ICON
