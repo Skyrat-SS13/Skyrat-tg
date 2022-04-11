@@ -465,8 +465,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	if(TRAIT_OXYIMMUNE in inherent_traits)
 		C.setOxyLoss(0, TRUE, TRUE)
 
-	for(var/obj/item/bodypart/B in C.bodyparts)
-		B.alpha = specific_alpha
+	for(var/obj/item/bodypart/limb in C.bodyparts)
+		limb.alpha = specific_alpha
 	// SKYRAT EDIT END
 
 	if(TRAIT_NOMETABOLISM in inherent_traits)
