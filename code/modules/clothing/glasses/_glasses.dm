@@ -66,12 +66,8 @@
 				eyes.applyOrganDamage(5)
 
 /obj/item/clothing/glasses/AltClick(mob/user)
-<<<<<<< HEAD
 	. = ..() //SKYRAT EDIT ADDITION
-	if(glass_colour_type && ishuman(user))
-=======
 	if(glass_colour_type && !forced_glass_color && ishuman(user))
->>>>>>> 73e7d9c1151 (Adds nightmare vision goggles to maintenance (#66088))
 		var/mob/living/carbon/human/human_user = user
 
 		if (human_user.glasses != src)
