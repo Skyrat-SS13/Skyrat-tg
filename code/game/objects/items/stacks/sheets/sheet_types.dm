@@ -81,6 +81,8 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	null, \
 	new/datum/stack_recipe("wall girders (anchored)", /obj/structure/girder, 2, time = 40, one_per_turf = TRUE, on_floor = TRUE, trait_booster = TRAIT_QUICK_BUILD, trait_modifier = 0.75), \
 	null, \
+	new/datum/stack_recipe("tram wall girders (anchored)", /obj/structure/girder/tram, 2, time = 40, one_per_turf = TRUE, on_floor = FALSE, on_tram = TRUE, trait_booster = TRAIT_QUICK_BUILD, trait_modifier = 0.75), \
+	null, \
 	new/datum/stack_recipe("computer frame", /obj/structure/frame/computer, 5, time = 25, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("modular console", /obj/machinery/modular_computer/console/buildable/, 10, time = 25, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("machine frame", /obj/structure/frame/machine, 5, time = 25, one_per_turf = TRUE, on_floor = TRUE), \
@@ -137,10 +139,9 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	null, \
 	new/datum/stack_recipe("anvil", /obj/structure/reagent_anvil, 10, time = 20, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("forge", /obj/structure/reagent_forge, 10, time = 20, one_per_turf = TRUE, on_floor = TRUE), \
-	new/datum/stack_recipe("throwing wheel", /obj/structure/throwing_wheel, 10, time = 20, one_per_turf = TRUE, on_floor = TRUE), \
-	new/datum/stack_recipe("primitive centrifuge", /obj/item/reagent_containers/glass/primitive_centrifuge, 10)
+	new/datum/stack_recipe("throwing wheel", /obj/structure/throwing_wheel, 10, time = 20, one_per_turf = TRUE, on_floor = TRUE),
 ))
-// SKYRAT EDIT ADDITIONS - Anvil,Forge, Throwing wheel, Primitive centrifuge, metal barricade, wrestling turnbuckle
+// SKYRAT EDIT ADDITIONS - Anvil,Forge, Throwing wheel, metal barricade, wrestling turnbuckle
 
 /obj/item/stack/sheet/iron//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "iron"
@@ -160,6 +161,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	matter_amount = 4
 	cost = 500
 	source = /datum/robot_energy_storage/iron
+	tram_wall_type = /obj/structure/tramwall
 
 /obj/item/stack/sheet/iron/examine(mob/user)
 	. = ..()
@@ -374,6 +376,9 @@ GLOBAL_LIST_INIT(bamboo_recipes, list ( \
 	. = ..()
 	. += GLOB.bamboo_recipes
 
+/obj/item/stack/sheet/mineral/bamboo/fifty
+	amount = 50
+
 /*
  * Cloth
  */
@@ -382,6 +387,7 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	new/datum/stack_recipe("white jumpsuit", /obj/item/clothing/under/color/white, 3), \
 	new/datum/stack_recipe("white shoes", /obj/item/clothing/shoes/sneakers/white, 2), \
 	new/datum/stack_recipe("white scarf", /obj/item/clothing/neck/scarf, 1), \
+	new/datum/stack_recipe("white bandana", /obj/item/clothing/mask/bandana/color/white, 2), \
 	null, \
 	new/datum/stack_recipe("backpack", /obj/item/storage/backpack, 4), \
 	new/datum/stack_recipe("duffel bag", /obj/item/storage/backpack/duffelbag, 6), \
@@ -443,7 +449,7 @@ GLOBAL_LIST_INIT(durathread_recipes, list ( \
 	new/datum/stack_recipe("durathread jumpsuit", /obj/item/clothing/under/misc/durathread, 4, time = 40),
 	new/datum/stack_recipe("durathread beret", /obj/item/clothing/head/beret/durathread, 2, time = 40), \
 	new/datum/stack_recipe("durathread beanie", /obj/item/clothing/head/beanie/durathread, 2, time = 40), \
-	new/datum/stack_recipe("durathread bandana", /obj/item/clothing/mask/bandana/durathread, 1, time = 25), \
+	new/datum/stack_recipe("durathread bandana", /obj/item/clothing/mask/bandana/color/durathread, 1, time = 25), \
 	))
 
 /obj/item/stack/sheet/durathread

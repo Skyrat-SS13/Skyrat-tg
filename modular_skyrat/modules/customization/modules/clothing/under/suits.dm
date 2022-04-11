@@ -6,4 +6,4 @@
 	greyscale_config_worn = /datum/greyscale_config/fancy_suit/worn
 	greyscale_colors = "#FFFFFA#0075C4#7C787D"
 	flags_1 = IS_PLAYER_COLORABLE_1
-	mutant_variants = NONE
+	supports_variations_flags = NONE

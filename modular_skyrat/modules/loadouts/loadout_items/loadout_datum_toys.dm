@@ -179,6 +179,58 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	name = "Odd yoga lizzy plushie"
 	item_path = /obj/item/toy/plush/lizzyplush
 
+/datum/loadout_item/toys/mechanic_fox
+	name = "Mechanist Fox Plushie"
+	item_path = /obj/item/toy/plush/mechanic_fox
+
+/datum/loadout_item/toys/tribal_salamander
+	name = "Tribal Salamander Plushie"
+	item_path = /obj/item/toy/plush/tribal_salamander
+
+/datum/loadout_item/toys/commanding_teshari
+	name = "Commanding Teshari Plushy"
+	item_path = /obj/item/toy/plush/commanding_teshari
+
+/datum/loadout_item/toys/breakdancing_bird
+	name = "Breakdancing Bird Plushie"
+	item_path = /obj/item/toy/plush/breakdancing_bird
+
+/datum/loadout_item/toys/skreking_vox
+	name = "Skreking Vox Plushie"
+	item_path = /obj/item/toy/plush/skreking_vox
+
+/datum/loadout_item/toys/blue_dog
+	name = "Blue Dog Plushie"
+	item_path = /obj/item/toy/plush/blue_dog
+
+/datum/loadout_item/toys/engi_snek
+	name = "Engineering Snek Plushie"
+	item_path = /obj/item/toy/plush/engi_snek	
+
+/datum/loadout_item/toys/glitch_synth
+	name = "Glitching Synthetic Plushie"
+	item_path = /obj/item/toy/plush/glitch_synth
+
+/datum/loadout_item/toys/boom_bird
+	name = "Boom Bird Plushie"
+	item_path = /obj/item/toy/plush/boom_bird
+	
+/datum/loadout_item/toys/blue_cat
+	name = "Blue Cat Plushie"
+	item_path = /obj/item/toy/plush/blue_cat
+
+/datum/loadout_item/toys/igneous_synth
+	name = "Igneous Synth Plushie"
+	item_path = /obj/item/toy/plush/igneous_synth
+
+/datum/loadout_item/toys/edgy_bird
+	name = "Edgy Bird Plushie"
+	item_path = /obj/item/toy/plush/edgy_bird
+
+/datum/loadout_item/toys/tree_ferret
+	name = "Tree Ferret Plushie"
+	item_path = /obj/item/toy/plush/tree_ferret
+
 /datum/loadout_item/toys/xixi
 	name = "Familiar Harpy Plushie"
 	item_path = /obj/item/toy/plush/xixi

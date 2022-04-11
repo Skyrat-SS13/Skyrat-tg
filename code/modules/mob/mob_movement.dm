@@ -519,7 +519,7 @@
 			return FALSE
 		//SKYRAT EDIT ADDITION END
 		m_intent = MOVE_INTENT_RUN
-	plane = (m_intent == MOVE_INTENT_WALK) ? GAME_PLANE_FOV_HIDDEN : GAME_PLANE //SKYRAT EDIT ADDITION
+	plane = (m_intent == MOVE_INTENT_WALK && !HAS_TRAIT(src, TRAIT_OVERSIZED)) ? GAME_PLANE_FOV_HIDDEN : GAME_PLANE //SKYRAT EDIT ADDITION - Oversized Overhaul
 	if(hud_used?.static_inventory)
 		for(var/atom/movable/screen/mov_intent/selector in hud_used.static_inventory)
 			selector.update_appearance()
@@ -556,8 +556,9 @@
 	if(zMove(DOWN, z_move_flags = ZMOVE_FLIGHT_FLAGS|ZMOVE_FEEDBACK|ventcrawling_flag))
 		to_chat(src, span_notice("You move down."))
 	return FALSE
+
 /mob/abstract_move(atom/destination)
 	var/turf/new_turf = get_turf(destination)
-	if(is_secret_level(new_turf.z) && !client?.holder)
+	if(new_turf && (istype(new_turf, /turf/cordon) || is_secret_level(new_turf.z)) && !client?.holder)
 		return
 	return ..()

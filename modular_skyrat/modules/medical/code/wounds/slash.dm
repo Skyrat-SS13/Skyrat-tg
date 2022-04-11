@@ -18,7 +18,7 @@
 	var/initial_flow
 	/// When we have less than this amount of flow, either from treatment or clotting, we demote to a lower cut or are healed of the wound
 	var/minimum_flow
-	/// How much our blood_flow will naturally decrease per tick, not only do larger cuts bleed more blood faster, they clot slower (higher number = clot quicker, negative = opening up)
+	/// How much our blood_flow will naturally decrease per second, not only do larger cuts bleed more blood faster, they clot slower (higher number = clot quicker, negative = opening up)
 	var/clot_rate
 
 	/// Once the blood flow drops below minimum_flow, we demote it to this type of wound. If there's none, we're all better
@@ -41,12 +41,15 @@
 		victim.self_grasp_bleeding_limb(limb)
 
 /datum/wound/slash/wound_injury(datum/wound/slash/old_wound = null, attack_direction)
-	blood_flow = initial_flow
 	if(old_wound)
 		blood_flow = max(old_wound.blood_flow, initial_flow)
 		if(old_wound.severity > severity && old_wound.highest_scar)
 			highest_scar = old_wound.highest_scar
 			old_wound.highest_scar = null
+	else
+		blood_flow = initial_flow
+		if(attack_direction && victim.blood_volume > BLOOD_VOLUME_OKAY)
+			victim.spray_blood(attack_direction, severity)
 
 	if(!highest_scar)
 		highest_scar = new
@@ -62,7 +65,7 @@
 	if(!limb.current_gauze)
 		return ..()
 
-	var/list/msg = list("The cuts on [victim.p_their()] [limb.name] are wrapped with ")
+	var/list/msg = list("The cuts on [victim.p_their()] [parse_zone(limb.body_zone)] are wrapped with ")
 	// how much life we have left in these bandages
 	switch(limb.current_gauze.absorption_capacity)
 		if(0 to 1.25)
@@ -79,7 +82,7 @@
 
 /datum/wound/slash/receive_damage(wounding_type, wounding_dmg, wound_bonus)
 	if(victim.stat != DEAD && wound_bonus != CANT_WOUND && wounding_type == WOUND_SLASH) // can't stab dead bodies to make it bleed faster this way
-		blood_flow += 0.05 * wounding_dmg
+		blood_flow += WOUND_SLASH_DAMAGE_FLOW_COEFF * wounding_dmg
 
 /datum/wound/slash/drag_bleed_amount()
 	// say we have 3 severe cuts with 3 blood flow each, pretty reasonable
@@ -135,7 +138,7 @@
 		if(demotes_to)
 			replace_wound(demotes_to)
 		else
-			to_chat(victim, span_green("The cut on your [limb.name] has stopped bleeding!"))
+			to_chat(victim, span_green("The cut on your [parse_zone(limb.body_zone)] has stopped bleeding!"))
 			qdel(src)
 
 
@@ -188,13 +191,13 @@
 			continue
 		user.ForceContractDisease(iter_disease)
 
-	user.visible_message(span_notice("[user] begins licking the wounds on [victim]'s [limb.name]."), span_notice("You begin licking the wounds on [victim]'s [limb.name]..."), ignored_mobs=victim)
-	to_chat(victim, span_notice("[user] begins to lick the wounds on your [limb.name]."))
+	user.visible_message(span_notice("[user] begins licking the wounds on [victim]'s [parse_zone(limb.body_zone)]."), span_notice("You begin licking the wounds on [victim]'s [parse_zone(limb.body_zone)]..."), ignored_mobs=victim)
+	to_chat(victim, span_notice("[user] begins to lick the wounds on your [parse_zone(limb.body_zone)]."))
 	if(!do_after(user, base_treat_time, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
 		return
 
-	user.visible_message(span_notice("[user] licks the wounds on [victim]'s [limb.name]."), span_notice("You lick some of the wounds on [victim]'s [limb.name]"), ignored_mobs=victim)
-	to_chat(victim, span_green("[user] licks the wounds on your [limb.name]!"))
+	user.visible_message(span_notice("[user] licks the wounds on [victim]'s [parse_zone(limb.body_zone)]."), span_notice("You lick some of the wounds on [victim]'s [parse_zone(limb.body_zone)]"), ignored_mobs=victim)
+	to_chat(victim, span_green("[user] licks the wounds on your [parse_zone(limb.body_zone)]!"))
 	blood_flow -= 0.5
 
 	if(blood_flow > minimum_flow)
@@ -213,7 +216,7 @@
 /// If someone's putting a laser gun up to our cut to cauterize it
 /datum/wound/slash/proc/las_cauterize(obj/item/gun/energy/laser/lasgun, mob/user)
 	var/self_penalty_mult = (user == victim ? 1.25 : 1)
-	user.visible_message(span_warning("[user] begins aiming [lasgun] directly at [victim]'s [limb.name]..."), span_userdanger("You begin aiming [lasgun] directly at [user == victim ? "your" : "[victim]'s"] [limb.name]..."))
+	user.visible_message(span_warning("[user] begins aiming [lasgun] directly at [victim]'s [parse_zone(limb.body_zone)]..."), span_userdanger("You begin aiming [lasgun] directly at [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)]..."))
 	if(!do_after(user, base_treat_time  * self_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
 		return
 	var/damage = lasgun.chambered.loaded_projectile.damage
@@ -223,14 +226,14 @@
 		return
 	victim.emote("scream")
 	blood_flow -= damage / (5 * self_penalty_mult) // 20 / 5 = 4 bloodflow removed, p good
-	victim.visible_message(span_warning("The cuts on [victim]'s [limb.name] scar over!"))
+	victim.visible_message(span_warning("The cuts on [victim]'s [parse_zone(limb.body_zone)] scar over!"))
 
 /// If someone is using either a cautery tool or something with heat to cauterize this cut
 /datum/wound/slash/proc/tool_cauterize(obj/item/I, mob/user)
 	var/improv_penalty_mult = (I.tool_behaviour == TOOL_CAUTERY ? 1 : 1.25) // 25% longer and less effective if you don't use a real cautery
 	var/self_penalty_mult = (user == victim ? 1.5 : 1) // 50% longer and less effective if you do it to yourself
 
-	user.visible_message(span_danger("[user] begins cauterizing [victim]'s [limb.name] with [I]..."), span_warning("You begin cauterizing [user == victim ? "your" : "[victim]'s"] [limb.name] with [I]..."))
+	user.visible_message(span_danger("[user] begins cauterizing [victim]'s [parse_zone(limb.body_zone)] with [I]..."), span_warning("You begin cauterizing [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)] with [I]..."))
 	if(!do_after(user, base_treat_time * self_penalty_mult * improv_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
 		return
 
@@ -249,7 +252,7 @@
 /// If someone is using a suture to close this cut
 /datum/wound/slash/proc/suture(obj/item/stack/medical/suture/I, mob/user)
 	var/self_penalty_mult = (user == victim ? 1.4 : 1)
-	user.visible_message(span_notice("[user] begins stitching [victim]'s [limb.name] with [I]..."), span_notice("You begin stitching [user == victim ? "your" : "[victim]'s"] [limb.name] with [I]..."))
+	user.visible_message(span_notice("[user] begins stitching [victim]'s [parse_zone(limb.body_zone)] with [I]..."), span_notice("You begin stitching [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)] with [I]..."))
 
 	if(!do_after(user, base_treat_time * self_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
 		return
@@ -275,7 +278,7 @@
 	severity = WOUND_SEVERITY_MODERATE
 	initial_flow = 2
 	minimum_flow = 0.5
-	clot_rate = 0.12
+	clot_rate = 0.05
 	threshold_minimum = 20
 	threshold_penalty = 10
 	status_effect_type = /datum/status_effect/wound/slash/moderate
@@ -291,7 +294,7 @@
 	severity = WOUND_SEVERITY_SEVERE
 	initial_flow = 3.25
 	minimum_flow = 2.75
-	clot_rate = 0.06
+	clot_rate = 0.03
 	threshold_minimum = 50
 	threshold_penalty = 25
 	demotes_to = /datum/wound/slash/moderate
@@ -306,12 +309,18 @@
 	occur_text = "is torn open, spraying blood wildly"
 	sound_effect = 'sound/effects/wounds/blood3.ogg'
 	severity = WOUND_SEVERITY_CRITICAL
-	initial_flow = 4.25
-	minimum_flow = 4
-	clot_rate = -0.05 // critical cuts actively get worse instead of better
+	initial_flow = 4
+	minimum_flow = 3.85
+	clot_rate = -0.015 // critical cuts actively get worse instead of better
 	threshold_minimum = 80
 	threshold_penalty = 40
 	demotes_to = /datum/wound/slash/severe
 	status_effect_type = /datum/status_effect/wound/slash/critical
 	scar_keyword = "slashcritical"
 	wound_flags = (FLESH_WOUND | ACCEPTS_GAUZE | MANGLES_FLESH)
+
+/datum/wound/slash/moderate/many_cuts
+	name = "Numerous Small Slashes"
+	desc = "Patient's skin has numerous small slashes and cuts, generating moderate blood loss."
+	examine_desc = "has a ton of small cuts"
+	occur_text = "is cut numerous times, leaving many small slashes."

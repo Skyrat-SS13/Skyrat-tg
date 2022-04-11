@@ -1,5 +1,5 @@
 /datum/opposing_force_equipment/implant
-	category = OPFOR_EQUIPMENT_CATEGORY_IMPLANT
+	category = OPFOR_EQUIPMENT_CATEGORY_IMPLANTS
 
 // Skillchips
 /datum/opposing_force_equipment/implant/engichip
@@ -15,7 +15,7 @@
 
 // Actual Implants
 /datum/opposing_force_equipment/implant/stealth
-	name = "Syndicate Radio Implant"
+	name = "Stealth Implant"
 	item_type = /obj/item/implanter/stealth
 	description = "An implanter that grants you the ability to wield the ultimate in invisible box technology. Best used in conjunction with \
 					a tape recorder playing Snake Eater."
@@ -87,3 +87,8 @@
 	name = "Arm-mounted Laser Implant"
 	item_type = /obj/item/autosurgeon/organ/syndicate/laser_arm
 	description = "A variant of the arm cannon implant that fires lethal laser beams. The cannon emerges from the subject's arm and remains inside when not in use."
+
+/datum/opposing_force_equipment/implant/eswordarm
+	name = "Energy Sword Arm Implant"
+	item_type = /obj/item/autosurgeon/organ/syndicate/esword_arm
+	description = "It's an energy sword, in your arm. Pretty decent for getting past stop-searches and assassinating people. Comes loaded in a Syndicate brand autosurgeon to boot!"

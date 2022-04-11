@@ -6,7 +6,7 @@
 	strip_delay = 100
 	can_adjust = FALSE
 	body_parts_covered = NONE
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION|STYLE_TAUR_ALL
 	item_flags = DROPDEL
 	greyscale_colors = "#bd8fcf"
 	has_sensor = NO_SENSORS

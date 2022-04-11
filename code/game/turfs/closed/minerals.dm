@@ -9,7 +9,7 @@
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
 	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_MINERAL_WALLS)
 	canSmoothWith = list(SMOOTH_GROUP_MINERAL_WALLS)
-	baseturfs = /turf/open/floor/plating/asteroid/airless
+	baseturfs = /turf/open/misc/asteroid/airless
 	initial_gas_mix = AIRLESS_ATMOS
 	opacity = TRUE
 	density = TRUE
@@ -19,16 +19,16 @@
 	temperature = TCMB
 	color = "#677" //SKYRAT EDIT ADDITION
 	var/smooth_icon = 'modular_skyrat/modules/liquids/icons/turf/smoothrocks.dmi' //SKYRAT EDIT CHANGE
-	var/turf/open/floor/plating/turf_type = /turf/open/floor/plating/asteroid/airless
+	var/turf/open/floor/plating/turf_type = /turf/open/misc/asteroid/airless
 	var/obj/item/stack/ore/mineralType = null
 	var/mineralAmt = 3
 	var/scan_state = "" //Holder for the image we display when we're pinged by a mining scanner
 	var/defer_change = 0
-	// If true you can mine the mineral turf with your hands
+	// If true you can mine the mineral turf without tools.
 	var/weak_turf = FALSE
 	///How long it takes to mine this turf with tools, before the tool's speed and the user's skill modifier are factored in.
 	var/tool_mine_speed = 4 SECONDS
-	///How long it takes to mine this turf with hands, if it's weak.
+	///How long it takes to mine this turf without tools, if it's weak.
 	var/hand_mine_speed = 15 SECONDS
 
 /turf/closed/mineral/Initialize(mapload)
@@ -37,7 +37,8 @@
 	M.Translate(-4, -4)
 	transform = M
 	icon = smooth_icon
-
+	var/static/list/behaviors = list(TOOL_MINING)
+	AddElement(/datum/element/bump_click, tool_behaviours = behaviors, allow_unarmed = TRUE)
 
 /turf/closed/mineral/proc/Spread_Vein()
 	var/spreadChance = initial(mineralType.spreadChance)
@@ -89,8 +90,6 @@
 			to_chat(user, span_notice("You finish cutting into the rock."))
 			gets_drilled(user, TRUE)
 			SSblackbox.record_feedback("tally", "pick_used_mining", 1, I.type)
-	else
-		return attack_hand(user)
 
 /turf/closed/mineral/attack_hand(mob/user)
 	if(!weak_turf)
@@ -103,13 +102,17 @@
 	TIMER_COOLDOWN_START(src, REF(user), hand_mine_speed)
 	var/skill_modifier = 1
 	skill_modifier = user?.mind.get_skill_modifier(/datum/skill/mining, SKILL_SPEED_MODIFIER)
-	to_chat(user, span_notice("You start pulling out pieces of [src] with your hands..."))
+	to_chat(user, span_notice("You start pulling out pieces of [src]..."))
 	if(!do_after(user, hand_mine_speed * skill_modifier, target = src))
 		TIMER_COOLDOWN_END(src, REF(user)) //if we fail we can start again immediately
 		return
 	if(ismineralturf(src))
 		to_chat(user, span_notice("You finish pulling apart [src]."))
 		gets_drilled(user)
+
+/turf/closed/mineral/attack_robot(mob/living/silicon/robot/user)
+	if(user.Adjacent(src))
+		attack_hand(user)
 
 /turf/closed/mineral/proc/gets_drilled(user, give_exp = FALSE)
 	if (mineralType && (mineralAmt > 0))
@@ -153,22 +156,6 @@
 		H.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ), forced = "hulk")
 		gets_drilled(H)
 	return TRUE
-
-/turf/closed/mineral/Bumped(atom/movable/movable)
-	. = ..()
-	if(!isliving(movable))
-		return
-	var/mob/living/miner = movable
-	if(!ISADVANCEDTOOLUSER(miner)) // Unadvanced tool users can't mine anyway. This just prevents message spam from attackby()
-		return
-	if(iscyborg(miner))
-		var/mob/living/silicon/robot/robot = miner
-		if(robot.module_active?.tool_behaviour == TOOL_MINING)
-			attackby(robot.module_active, robot)
-		return
-	var/obj/item/mining_item = miner.is_holding_tool_quality(TOOL_MINING)
-	if(mining_item)
-		attackby(mining_item, miner)
 
 /turf/closed/mineral/acid_melt()
 	ScrapeAway()
@@ -238,8 +225,8 @@
 		/obj/item/stack/ore/silver = 50, /obj/item/stack/ore/plasma = 50, /obj/item/stack/ore/bluespace_crystal = 20)
 
 /turf/closed/mineral/random/high_chance/volcanic
-	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
-	baseturfs = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
+	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
+	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	defer_change = TRUE
 	mineralSpawnChanceList = list(
@@ -263,8 +250,8 @@
 		/obj/item/stack/ore/silver = 4, /obj/item/stack/ore/plasma = 3, /obj/item/stack/ore/iron = 50)
 
 /turf/closed/mineral/random/volcanic
-	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
-	baseturfs = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
+	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
+	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	defer_change = TRUE
 
@@ -283,8 +270,8 @@
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
 	canSmoothWith = list(SMOOTH_GROUP_CLOSED_TURFS)
 	defer_change = TRUE
-	turf_type = /turf/open/floor/plating/asteroid/snow/icemoon
-	baseturfs = /turf/open/floor/plating/asteroid/snow/icemoon
+	turf_type = /turf/open/misc/asteroid/snow/icemoon
+	baseturfs = /turf/open/misc/asteroid/snow/icemoon
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 	weak_turf = TRUE
 
@@ -304,7 +291,7 @@
 		/turf/closed/mineral/gibtonite/ice/icemoon = 4, /obj/item/stack/ore/bluespace_crystal = 1)
 
 /turf/closed/mineral/random/snow/underground
-	baseturfs = /turf/open/floor/plating/asteroid/snow/icemoon
+	baseturfs = /turf/open/misc/asteroid/snow/icemoon
 	// abundant ore
 	mineralChance = 20
 	mineralSpawnChanceList = list(
@@ -325,8 +312,8 @@
 		/turf/closed/mineral/gibtonite = 2)
 
 /turf/closed/mineral/random/labormineral/volcanic
-	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
-	baseturfs = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
+	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
+	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	defer_change = TRUE
 	mineralSpawnChanceList = list(
@@ -344,8 +331,8 @@
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
 	canSmoothWith = list(SMOOTH_GROUP_CLOSED_TURFS)
 	defer_change = TRUE
-	turf_type = /turf/open/floor/plating/asteroid/snow/icemoon
-	baseturfs = /turf/open/floor/plating/asteroid/snow/icemoon
+	turf_type = /turf/open/misc/asteroid/snow/icemoon
+	baseturfs = /turf/open/misc/asteroid/snow/icemoon
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 	defer_change = TRUE
 	mineralSpawnChanceList = list(
@@ -371,8 +358,8 @@
 	smooth_icon = 'icons/turf/walls/icerock_wall.dmi'
 	base_icon_state = "icerock_wall"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	turf_type = /turf/open/floor/plating/asteroid/snow/ice
-	baseturfs = /turf/open/floor/plating/asteroid/snow/ice
+	turf_type = /turf/open/misc/asteroid/snow/ice
+	baseturfs = /turf/open/misc/asteroid/snow/ice
 	initial_gas_mix = FROZEN_ATMOS
 	defer_change = TRUE
 
@@ -389,8 +376,8 @@
 	smooth_icon = 'icons/turf/walls/icerock_wall.dmi'
 	base_icon_state = "icerock_wall"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	turf_type = /turf/open/floor/plating/asteroid/snow/ice
-	baseturfs = /turf/open/floor/plating/asteroid/snow/ice
+	turf_type = /turf/open/misc/asteroid/snow/ice
+	baseturfs = /turf/open/misc/asteroid/snow/ice
 	initial_gas_mix = FROZEN_ATMOS
 	defer_change = TRUE
 
@@ -399,8 +386,8 @@
 	scan_state = "rock_Gold"
 
 /turf/closed/mineral/gold/volcanic
-	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
-	baseturfs = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
+	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
+	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	defer_change = TRUE
 
@@ -409,8 +396,8 @@
 	scan_state = "rock_Silver"
 
 /turf/closed/mineral/silver/ice/icemoon
-	turf_type = /turf/open/floor/plating/asteroid/snow/ice/icemoon
-	baseturfs = /turf/open/floor/plating/asteroid/snow/ice/icemoon
+	turf_type = /turf/open/misc/asteroid/snow/ice/icemoon
+	baseturfs = /turf/open/misc/asteroid/snow/ice/icemoon
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 
 /turf/closed/mineral/titanium
@@ -426,8 +413,8 @@
 	smooth_icon = 'icons/turf/walls/icerock_wall.dmi'
 	base_icon_state = "icerock_wall"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	turf_type = /turf/open/floor/plating/asteroid/snow/ice
-	baseturfs = /turf/open/floor/plating/asteroid/snow/ice
+	turf_type = /turf/open/misc/asteroid/snow/ice
+	baseturfs = /turf/open/misc/asteroid/snow/ice
 	initial_gas_mix = FROZEN_ATMOS
 	defer_change = TRUE
 
@@ -442,19 +429,19 @@
 	scan_state = "rock_BScrystal"
 
 /turf/closed/mineral/bscrystal/volcanic
-	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
-	baseturfs = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
+	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
+	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	defer_change = TRUE
 
 /turf/closed/mineral/volcanic
-	turf_type = /turf/open/floor/plating/asteroid/basalt
-	baseturfs = /turf/open/floor/plating/asteroid/basalt
+	turf_type = /turf/open/misc/asteroid/basalt
+	baseturfs = /turf/open/misc/asteroid/basalt
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 
 /turf/closed/mineral/volcanic/lava_land_surface
-	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
-	baseturfs = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
+	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
+	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	defer_change = TRUE
 
 /turf/closed/mineral/ash_rock //wall piece
@@ -465,9 +452,9 @@
 	base_icon_state = "rock_wall"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
 	canSmoothWith = list(SMOOTH_GROUP_CLOSED_TURFS)
-	baseturfs = /turf/open/floor/plating/ashplanet/wateryrock
+	baseturfs = /turf/open/misc/ashplanet/wateryrock
 	initial_gas_mix = OPENTURF_LOW_PRESSURE
-	turf_type = /turf/open/floor/plating/ashplanet/rocky
+	turf_type = /turf/open/misc/ashplanet/rocky
 	defer_change = TRUE
 
 /turf/closed/mineral/snowmountain
@@ -478,14 +465,14 @@
 	base_icon_state = "mountain_wall"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
 	canSmoothWith = list(SMOOTH_GROUP_CLOSED_TURFS)
-	baseturfs = /turf/open/floor/plating/asteroid/snow
+	baseturfs = /turf/open/misc/asteroid/snow
 	initial_gas_mix = FROZEN_ATMOS
-	turf_type = /turf/open/floor/plating/asteroid/snow
+	turf_type = /turf/open/misc/asteroid/snow
 	defer_change = TRUE
 
 /turf/closed/mineral/snowmountain/icemoon
-	turf_type = /turf/open/floor/plating/asteroid/snow/icemoon
-	baseturfs = /turf/open/floor/plating/asteroid/snow/icemoon
+	turf_type = /turf/open/misc/asteroid/snow/icemoon
+	baseturfs = /turf/open/misc/asteroid/snow/icemoon
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 
 /turf/closed/mineral/snowmountain/cavern
@@ -495,12 +482,12 @@
 	icon_state = "icerock"
 	base_icon_state = "icerock_wall"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	baseturfs = /turf/open/floor/plating/asteroid/snow/ice
-	turf_type = /turf/open/floor/plating/asteroid/snow/ice
+	baseturfs = /turf/open/misc/asteroid/snow/ice
+	turf_type = /turf/open/misc/asteroid/snow/ice
 
 /turf/closed/mineral/snowmountain/cavern/icemoon
-	baseturfs = /turf/open/floor/plating/asteroid/snow/ice/icemoon
-	turf_type = /turf/open/floor/plating/asteroid/snow/ice/icemoon
+	baseturfs = /turf/open/misc/asteroid/snow/ice/icemoon
+	turf_type = /turf/open/misc/asteroid/snow/ice/icemoon
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 
 //yoo RED ROCK RED ROCK
@@ -521,12 +508,12 @@
 /turf/closed/mineral/random/stationside/asteroid/porus
 	name = "porous iron rock"
 	desc = "This rock is filled with pockets of breathable air."
-	baseturfs = /turf/open/floor/plating/asteroid
+	baseturfs = /turf/open/misc/asteroid
 
 /turf/closed/mineral/asteroid/porous
 	name = "porous rock"
 	desc = "This rock is filled with pockets of breathable air."
-	baseturfs = /turf/open/floor/plating/asteroid
+	baseturfs = /turf/open/misc/asteroid
 
 //GIBTONITE
 
@@ -620,8 +607,8 @@
 	mined.update_visuals()
 
 /turf/closed/mineral/gibtonite/volcanic
-	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
-	baseturfs = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
+	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
+	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	defer_change = TRUE
 
@@ -630,21 +617,21 @@
 	smooth_icon = 'icons/turf/walls/icerock_wall.dmi'
 	base_icon_state = "icerock_wall"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	turf_type = /turf/open/floor/plating/asteroid/snow/ice
-	baseturfs = /turf/open/floor/plating/asteroid/snow/ice
+	turf_type = /turf/open/misc/asteroid/snow/ice
+	baseturfs = /turf/open/misc/asteroid/snow/ice
 	initial_gas_mix = FROZEN_ATMOS
 	defer_change = TRUE
 
 /turf/closed/mineral/gibtonite/ice/icemoon
-	turf_type = /turf/open/floor/plating/asteroid/snow/ice/icemoon
-	baseturfs = /turf/open/floor/plating/asteroid/snow/ice/icemoon
+	turf_type = /turf/open/misc/asteroid/snow/ice/icemoon
+	baseturfs = /turf/open/misc/asteroid/snow/ice/icemoon
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 
 /turf/closed/mineral/strong
 	name = "Very strong rock"
 	desc = "Seems to be stronger than the other rocks in the area. Only a master of mining techniques could destroy this."
-	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
-	baseturfs = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
+	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
+	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	defer_change = 1
 	smooth_icon = 'icons/turf/walls/rock_wall.dmi'

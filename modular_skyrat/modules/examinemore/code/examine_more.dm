@@ -94,6 +94,28 @@ would only be recognisable with someone that had the syndicate trait.
 						composed_message = "You note the following because of your loyalty to <b>[faction_i]</b>: <br>"
 						composed_message += special_desc
 						. += composed_message
+			//If they are a syndicate contractor or a syndicate
+			if(EXAMINE_CHECK_CONTRACTOR)
+				var/mob/living/carbon/human/human_user = user
+				if(!user?.mind.opposing_force)
+					return
+				for(var/datum/opposing_force_equipment/loadout/contractor/contractor_kit in user.mind.opposing_force.selected_equipment)
+					composed_message = "You note the following because of your [span_red("<b>Contractor Status</b>")]: <br>"
+					composed_message += special_desc
+					. += composed_message
+					return
+				if(human_user.mind.special_role == ROLE_DRIFTING_CONTRACTOR)
+					composed_message = "You note the following because of your [span_red("<b>Contractor Status</b>")]: <br>"
+					composed_message += special_desc
+					. += composed_message
+				else if(HAS_TRAIT(human_user, TRAIT_DETECTIVE))  //Useful detective!
+					composed_message = "You note the following because of your brilliant <span class='blue'><b>Detective skills</b></span>: <br>"
+					composed_message += special_desc
+					. += composed_message
+				else if((human_user.mind.special_role == ROLE_TRAITOR) || (ROLE_SYNDICATE in human_user.faction))
+					composed_message = "You note the following because of your [span_red("<b>[special_desc_affiliation ? special_desc_affiliation : "Syndicate Affiliation"]</b>")]: <br>"
+					composed_message += special_desc
+					. += composed_message
 
 //////////
 //Examples:

@@ -210,15 +210,6 @@
 		if(is_banned_from(candidate_client.ckey, BAN_ANTAGONIST))
 			candidates.Remove(candidate_player)
 			continue
-
-		if(candidate_player.mind.assigned_role.antagonist_restricted)
-			if(candidate_player.mind.assigned_role.restricted_antagonists)
-				if(antag_flag in candidate_player.mind.assigned_role.restricted_antagonists)
-					candidates.Remove(candidate_player)
-					continue
-			else //Assume it's all antagonist roles.
-				candidates.Remove(candidate_player)
-				continue
 		//SKYRAT EDIT END
 
 		if(candidate_client.get_remaining_days(minimum_required_age) > 0)

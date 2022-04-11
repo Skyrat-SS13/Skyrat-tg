@@ -65,3 +65,13 @@
 	name = "Bonebang"
 	item_type = /obj/item/grenade/stingbang/bonebang
 	description = "A horrifying grenade filled with what looks to be bone and gore, which upon detonation will fill the room you're in with bone fragments."
+
+/datum/opposing_force_equipment/bomb/flashbang
+	name = "Flashbang"
+	item_type = /obj/item/grenade/flashbang
+	description = "A flash-and-sonic stun grenade, useful for non-lethally incapacitating crowds."
+
+/datum/opposing_force_equipment/bomb/goosenade
+	name = "Flock of Geese"
+	item_type = /obj/item/grenade/clusterbuster/spawner_goose
+	description = "A grenade that releases a flock of geese upon activation. Beware the geese."

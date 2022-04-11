@@ -1,8 +1,6 @@
-#define DEFAULT_TIMED 5 SECONDS
-#define MASTER_TIMED 2 SECONDS
+#define DEFAULT_TIMED 4 SECONDS
 
 #define DEFAULT_HEATED 25 SECONDS
-#define MASTER_HEATED 50 SECONDS
 
 #define MAX_FORGE_TEMP 100
 #define MIN_FORGE_TEMP 51 //the minimum temp to actually use it
@@ -68,11 +66,12 @@
 		"Hammer" = /obj/item/forging/incomplete/hammer,
 		"Pickaxe" = /obj/item/forging/incomplete/pickaxe,
 		"Shovel" = /obj/item/forging/incomplete/shovel,
+		"Arrowhead" = /obj/item/forging/incomplete/arrowhead,
 	)
 
 /obj/structure/reagent_forge/examine(mob/user)
 	. = ..()
-	. += span_warning("<br>Perhaps using your hand on [src] when skilled will do something...")
+	. += span_warning("<br>Perhaps using your hand on [src] when skilled will do something...<br>")
 	switch(forge_level)
 		if(FORGE_LEVEL_ZERO)
 			. += span_notice("[src] has not yet been touched by a smithy.<br>")
@@ -146,10 +145,10 @@
 
 	if(forge_temperature > 0)
 		icon_state = "[primitive ? "primitive_" : ""]forge_full"
-		light_range = 3
+		set_light(3, 1, LIGHT_COLOR_FIRE)
 	else if(forge_temperature <= 0)
 		icon_state = "[primitive ? "primitive_" : ""]forge_empty"
-		light_range = 0
+		set_light(0)
 
 /**
  * Here we fix any weird in_use bugs
@@ -200,10 +199,10 @@
 	to_chat(user, span_notice("As you work with [src], you note the purity caused by heating metal with nothing but exposed flame. Examine to view what has improved!"))
 	playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
 
-/obj/structure/reagent_forge/attackby(obj/item/I, mob/living/user, params)
+/obj/structure/reagent_forge/attackby(obj/item/attacking_item, mob/living/user, params)
 	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER)
 
-	if(istype(I, /obj/item/stack/sheet/mineral/wood)) //used for weak fuel
+	if(istype(attacking_item, /obj/item/stack/sheet/mineral/wood)) //used for weak fuel
 		if(in_use) //only insert one at a time
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
@@ -211,18 +210,18 @@
 		if(forge_fuel_weak >= 5 MINUTES) //cannot insert too much
 			fail_message(user, "You only need one to two pieces of wood at a time! You have [forge_fuel_weak/10] seconds remaining!")
 			return
-		to_chat(user, span_warning("You start to throw [I] into [src]..."))
+		to_chat(user, span_warning("You start to throw [attacking_item] into [src]..."))
 		if(!do_after(user, skill_modifier * 3 SECONDS, target = src))
 			fail_message(user, "You fail fueling [src].")
 			return
-		var/obj/item/stack/sheet/stack_sheet = I
+		var/obj/item/stack/sheet/stack_sheet = attacking_item
 		if(!stack_sheet.use(1)) //you need to be able to use the item, so no glue.
 			fail_message(user, "You fail fueling [src].")
 			return
 		forge_fuel_weak += 5 MINUTES
 		in_use = FALSE
 		to_chat(user, span_notice("You successfully fuel [src]."))
-		user.mind.adjust_experience(/datum/skill/smithing, 3) //useful fueling means you get some experience
+		user.mind.adjust_experience(/datum/skill/smithing, 5) //useful fueling means you get some experience
 		if(prob(45))
 			to_chat(user, span_notice("[src]'s fuel is packed densely enough to have made some charcoal!"))
 			addtimer(CALLBACK(src, .proc/spawn_coal), 1 MINUTES)
@@ -230,7 +229,7 @@
 
 	//why use coal over wood? the target temp is set to 100 under coal, while only 50 with wood
 	//which means you have to use the billows with wood, but not with coal
-	if(istype(I, /obj/item/stack/sheet/mineral/coal)) //used for strong fuel
+	if(istype(attacking_item, /obj/item/stack/sheet/mineral/coal)) //used for strong fuel
 		if(in_use) //only insert one at a time
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
@@ -238,67 +237,44 @@
 		if(forge_fuel_strong >= 5 MINUTES) //cannot insert too much
 			fail_message(user, "You only need one piece of coal at a time! You have [forge_fuel_strong/10] seconds remaining!")
 			return
-		to_chat(user, span_warning("You start to throw [I] into [src]..."))
+		to_chat(user, span_warning("You start to throw [attacking_item] into [src]..."))
 		if(!do_after(user, skill_modifier * 3 SECONDS, target = src))
 			fail_message(user, "You fail fueling [src].")
 			return
-		var/obj/item/stack/sheet/stack_sheet = I
+		var/obj/item/stack/sheet/stack_sheet = attacking_item
 		if(!stack_sheet.use(1)) //need to be able to use the item, so no glue
 			fail_message(user, "You fail fueling [src].")
 			return
 		forge_fuel_strong += 5 MINUTES
 		in_use = FALSE
 		to_chat(user, span_notice("You successfully fuel [src]."))
-		user.mind.adjust_experience(/datum/skill/smithing, 6) //useful fueling means you get some experience
+		user.mind.adjust_experience(/datum/skill/smithing, 15) //useful fueling means you get some experience
 		return
 
-	if(istype(I, /obj/item/forging/billow))
-		var/obj/item/forging/forge_item = I
-		if(in_use) //no spamming the billows
-			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
-			return
-		in_use = TRUE
-		if(!forge_fuel_strong && !forge_fuel_weak) //if there isnt any fuel, no billow use
-			fail_message(user, "You cannot use [forge_item] without some sort of fuel in [src]!")
-			return
-		if(forge_temperature >= MAX_FORGE_TEMP) //we don't want the "temp" to overflow or something somehow
-			fail_message(user, "You can't heat [src] to be any hotter!")
-			return
-		to_chat(user, span_warning("You start to pump [forge_item] into [src]..."))
-		while(forge_temperature < 91)
-			if(!do_after(user, skill_modifier * forge_item.work_time, target = src))
-				fail_message(user, "You fail billowing [src].")
-				return
-			forge_temperature += 10
-			user.mind.adjust_experience(/datum/skill/smithing, 3) //useful heating means you get some experience
-		in_use = FALSE
-		to_chat(user, span_notice("You successfully increase the temperature inside [src]."))
-		return TRUE
-
-	if(istype(I, /obj/item/stack/sheet/sinew))
+	if(istype(attacking_item, /obj/item/stack/sheet/sinew))
 		if(in_use) //only insert one at a time
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
 		in_use = TRUE
 		if(sinew_lower_chance >= (MAX_UPGRADE_SINEW * 10)) //max is 100
-			fail_message(user, "You cannot insert any more of [I]!")
+			fail_message(user, "You cannot insert any more of [attacking_item]!")
 			return
-		to_chat(user, span_warning("You start lining [src] with [I]..."))
+		to_chat(user, span_warning("You start lining [src] with [attacking_item]..."))
 		if(!do_after(user, skill_modifier * 3 SECONDS, target = src))
-			fail_message(user, "You fail lining [src] with [I].")
+			fail_message(user, "You fail lining [src] with [attacking_item].")
 			return
-		var/obj/item/stack/sheet/stack_sheet = I
+		var/obj/item/stack/sheet/stack_sheet = attacking_item
 		if(!stack_sheet.use(1)) //need to be able to use the item, so no glue
-			fail_message(user, "You fail lining [src] with [I].")
+			fail_message(user, "You fail lining [src] with [attacking_item].")
 			return
 		playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
 		sinew_lower_chance += 10
 		current_sinew++
 		in_use = FALSE
-		to_chat(user, span_notice("You successfully line [src] with [I]."))
+		to_chat(user, span_notice("You successfully line [src] with [attacking_item]."))
 		return
 
-	if(istype(I, /obj/item/organ/regenerative_core))
+	if(istype(attacking_item, /obj/item/organ/regenerative_core))
 		if(in_use) //only insert one at a time
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
@@ -306,7 +282,7 @@
 		if(reagent_forging) //if its already able to reagent forge, why continue wasting?
 			fail_message(user, "[src] is already upgraded.")
 			return
-		var/obj/item/organ/regenerative_core/used_core = I
+		var/obj/item/organ/regenerative_core/used_core = attacking_item
 		if(used_core.inert) //no inert cores allowed
 			fail_message(user, "You cannot use an inert [used_core].")
 			return
@@ -316,15 +292,15 @@
 			return
 		to_chat(user, span_notice("You successfully sacrifice [used_core] to [src]."))
 		playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
-		qdel(I)
+		qdel(attacking_item)
 		current_core++
 		in_use = FALSE
 		if(current_core >= MAX_UPGRADE_REGEN) //use six regenerative cores to get reagent forging capabilities on the forge
 			create_reagent_forge()
 		return
 
-	if(istype(I, /obj/item/stack/sheet/animalhide/goliath_hide))
-		var/obj/item/stack/sheet/animalhide/goliath_hide/goliath_hide = I
+	if(istype(attacking_item, /obj/item/stack/sheet/animalhide/goliath_hide))
+		var/obj/item/stack/sheet/animalhide/goliath_hide/goliath_hide = attacking_item
 		if(in_use) //only insert one at a time
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
@@ -344,167 +320,83 @@
 		to_chat(user, span_notice("You successfully upgrade [src] with [goliath_hide]."))
 		return
 
-	if(istype(I, /obj/item/stack/ore))
-		var/obj/item/stack/ore/ore_stack = I
-		if(in_use) //only insert one at a time
-			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
-			return
-		in_use = TRUE
-		if(forge_temperature < MIN_FORGE_TEMP)
-			fail_message(user, "The temperature is not hot enough to start heating [ore_stack].")
-			return
-		if(!ore_stack.refined_type)
-			fail_message(user, "It is impossible to smelt [ore_stack].")
-			return
-		to_chat(user, span_warning("You start to smelt [ore_stack]..."))
-		if(!do_after(user, skill_modifier * 3 SECONDS, target = src))
-			fail_message(user, "You fail smelting [ore_stack].")
-			return
-		var/src_turf = get_turf(src)
-		var/spawning_item = ore_stack.refined_type
-		var/spawning_amount = max(1, (1 + goliath_ore_improvement) * ore_stack.amount)
-		for(var/spawn_ore in 1 to spawning_amount)
-			new spawning_item(src_turf)
-		in_use = FALSE
-		to_chat(user, span_notice("You successfully smelt [ore_stack]."))
-		user.mind.adjust_experience(/datum/skill/smithing, ore_stack.mine_experience) //useful smelting means you get some experience
-		user.mind.adjust_experience(/datum/skill/mining, ore_stack.mine_experience) //useful smelting means you get some experience
-		qdel(I)
+	if(istype(attacking_item, /obj/item/stack/ore))
+		smelt_ore(attacking_item, user)
 		return
 
-	if(istype(I, /obj/item/forging/tongs))
-		var/obj/item/forging/forge_item = I
-		if(in_use || forge_item.in_use) //only insert one at a time
-			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
-			return
-		in_use = TRUE
-		forge_item.in_use = TRUE
-		if(forge_temperature < MIN_FORGE_TEMP)
-			fail_message(user, "The temperature is not hot enough to start heating the metal.")
-			forge_item.in_use = FALSE
-			return
-		var/obj/item/forging/incomplete/search_incomplete = locate(/obj/item/forging/incomplete) in I.contents
-		if(search_incomplete)
-			if(!COOLDOWN_FINISHED(search_incomplete, heating_remainder))
-				fail_message(user, "[search_incomplete] is still hot, try to keep hammering!")
-				forge_item.in_use = FALSE
-				return
-			to_chat(user, span_warning("You start to heat up [search_incomplete]..."))
-			if(!do_after(user, skill_modifier * forge_item.work_time, target = src))
-				fail_message(user, "You fail heating up [search_incomplete].")
-				forge_item.in_use = FALSE
-				return
-			COOLDOWN_START(search_incomplete, heating_remainder, 1 MINUTES)
-			in_use = FALSE
-			forge_item.in_use = FALSE
-			user.mind.adjust_experience(/datum/skill/smithing, 2) //heating up stuff gives just a little experience
-			to_chat(user, span_notice("You successfully heat up [search_incomplete]."))
-			return TRUE
-		var/obj/item/stack/rods/search_rods = locate(/obj/item/stack/rods) in I.contents
-		if(search_rods)
-			var/user_choice = tgui_input_list(user, "What would you like to work on?", "Forge Selection", choice_list)
-			if(!user_choice)
-				fail_message(user, "You decide against continuing to forge.")
-				forge_item.in_use = FALSE
-				return
-			if(!search_rods.use(1))
-				fail_message(user, "You cannot use [search_rods]!")
-				forge_item.in_use = FALSE
-				return
-			to_chat(user, span_warning("You start to heat up [search_rods]..."))
-			if(!do_after(user, skill_modifier * forge_item.work_time, target = src))
-				fail_message(user, "You fail heating up [search_rods].")
-				forge_item.in_use = FALSE
-				return
-			var/spawn_item = choice_list[user_choice]
-			var/obj/item/forging/incomplete/incomplete_item = new spawn_item(get_turf(src))
-			COOLDOWN_START(incomplete_item, heating_remainder, 1 MINUTES)
-			in_use = FALSE
-			forge_item.in_use = FALSE
-			user.mind.adjust_experience(/datum/skill/smithing, 2) //creating an item gives you some experience, not a lot
-			to_chat(user, span_notice("You successfully heat up [search_rods], ready to forge a [user_choice]."))
-			return TRUE
-		in_use = FALSE
-		forge_item.in_use = FALSE
-		return
-
-	if(I.tool_behaviour == TOOL_WRENCH)
-		new /obj/item/stack/sheet/iron/ten(get_turf(src))
-		qdel(src)
-
-	if(I.GetComponent(/datum/component/reagent_weapon))
-		var/obj/item/attacking_item = I
+	if(attacking_item.GetComponent(/datum/component/reagent_weapon))
+		var/obj/item/attacking_weapon = attacking_item
 		if(in_use) //only insert one at a time
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
 		in_use = TRUE
 		if(!reagent_forging)
-			fail_message(user, "You must enchant [src] to allow reagent imbueing!")
+			fail_message(user, "You must enchant [src] to allow reagent imbuing!")
 			return
-		var/datum/component/reagent_weapon/weapon_component = attacking_item.GetComponent(/datum/component/reagent_weapon)
+		var/datum/component/reagent_weapon/weapon_component = attacking_weapon.GetComponent(/datum/component/reagent_weapon)
 		if(!weapon_component)
-			fail_message(user, "[attacking_item] is unable to be imbued!")
+			fail_message(user, "[attacking_weapon] is unable to be imbued!")
 			return
 		if(length(weapon_component.imbued_reagent))
-			fail_message(user, "[attacking_item] has already been imbued!")
+			fail_message(user, "[attacking_weapon] has already been imbued!")
 			return
 		if(!do_after(user, skill_modifier * 10 SECONDS, target = src))
-			fail_message(user, "You fail imbueing [attacking_item]!")
+			fail_message(user, "You fail imbuing [attacking_weapon]!")
 			return
-		for(var/datum/reagent/weapon_reagent in attacking_item.reagents.reagent_list)
+		for(var/datum/reagent/weapon_reagent in attacking_weapon.reagents.reagent_list)
 			if(weapon_reagent.volume < MIN_IMBUE_REQUIRED)
-				attacking_item.reagents.remove_all_type(weapon_reagent.type)
+				attacking_weapon.reagents.remove_all_type(weapon_reagent.type)
 				continue
 			weapon_component.imbued_reagent += weapon_reagent.type
-			attacking_item.name = "[weapon_reagent.name] [attacking_item.name]"
-		if(attacking_item.name == initial(attacking_item.name))
-			fail_message(user, "You failed imbueing [attacking_item]...")
+			attacking_weapon.name = "[weapon_reagent.name] [attacking_weapon.name]"
+		if(attacking_weapon.name == initial(attacking_weapon.name))
+			fail_message(user, "You failed imbuing [attacking_weapon]...")
 			return
-		attacking_item.color = mix_color_from_reagents(attacking_item.reagents.reagent_list)
-		to_chat(user, span_notice("You finish imbueing [attacking_item]..."))
-		user.mind.adjust_experience(/datum/skill/smithing, 30) //successfully imbueing will grant great experience!
+		attacking_weapon.color = mix_color_from_reagents(attacking_weapon.reagents.reagent_list)
+		to_chat(user, span_notice("You finish imbuing [attacking_weapon]..."))
+		user.mind.adjust_experience(/datum/skill/smithing, 60) //successfully imbuing will grant great experience!
 		playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
 		in_use = FALSE
 		return TRUE
 
-	if(I.GetComponent(/datum/component/reagent_clothing))
-		var/obj/item/attacking_item = I
+	if(attacking_item.GetComponent(/datum/component/reagent_clothing))
+		var/obj/item/attacking_clothing = attacking_item
 		if(in_use) //only insert one at a time
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
 		in_use = TRUE
 		if(!reagent_forging)
-			fail_message(user, "You must enchant [src] to allow reagent imbueing!")
+			fail_message(user, "You must enchant [src] to allow reagent imbuing!")
 			return
-		var/datum/component/reagent_clothing/clothing_component = attacking_item.GetComponent(/datum/component/reagent_clothing)
+		var/datum/component/reagent_clothing/clothing_component = attacking_clothing.GetComponent(/datum/component/reagent_clothing)
 		if(!clothing_component)
-			fail_message(user, "[attacking_item] is unable to be imbued!")
+			fail_message(user, "[attacking_clothing] is unable to be imbued!")
 			return
 		if(length(clothing_component.imbued_reagent))
-			fail_message(user, "[attacking_item] has already been imbued!")
+			fail_message(user, "[attacking_clothing] has already been imbued!")
 			return
 		if(!do_after(user, skill_modifier * 10 SECONDS, target = src))
-			fail_message(user, "You fail imbueing [attacking_item]!")
+			fail_message(user, "You fail imbuing [attacking_clothing]!")
 			return
-		for(var/datum/reagent/clothing_reagent in attacking_item.reagents.reagent_list)
+		for(var/datum/reagent/clothing_reagent in attacking_clothing.reagents.reagent_list)
 			if(clothing_reagent.volume < MIN_IMBUE_REQUIRED)
-				attacking_item.reagents.remove_all_type(clothing_reagent.type)
+				attacking_clothing.reagents.remove_all_type(clothing_reagent.type)
 				continue
 			clothing_component.imbued_reagent += clothing_reagent.type
-			attacking_item.name = "[clothing_reagent.name] [attacking_item.name]"
-		if(attacking_item.name == initial(attacking_item.name))
-			fail_message(user, "You failed imbueing [attacking_item]...")
+			attacking_clothing.name = "[clothing_reagent.name] [attacking_clothing.name]"
+		if(attacking_clothing.name == initial(attacking_clothing.name))
+			fail_message(user, "You failed imbuing [attacking_clothing]...")
 			return
-		attacking_item.color = mix_color_from_reagents(attacking_item.reagents.reagent_list)
-		to_chat(user, span_notice("You finish imbueing [attacking_item]..."))
-		user.mind.adjust_experience(/datum/skill/smithing, 30) //successfully imbueing will grant great experience!
+		attacking_clothing.color = mix_color_from_reagents(attacking_clothing.reagents.reagent_list)
+		to_chat(user, span_notice("You finish imbuing [attacking_clothing]..."))
+		user.mind.adjust_experience(/datum/skill/smithing, 60) //successfully imbuing will grant great experience!
 		playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
 		in_use = FALSE
 		return TRUE
 
-	if(istype(I, /obj/item/ceramic))
-		var/obj/item/ceramic/ceramic_item = I
-		var/ceramic_speed = HAS_TRAIT(user, TRAIT_CERAMIC_MASTER) ? MASTER_TIMED : DEFAULT_TIMED
+	if(istype(attacking_item, /obj/item/ceramic))
+		var/obj/item/ceramic/ceramic_item = attacking_item
+		var/ceramic_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * DEFAULT_TIMED
 		if(forge_temperature < MIN_FORGE_TEMP)
 			to_chat(user, span_warning("The temperature is not hot enough to start heating [ceramic_item]."))
 			return
@@ -517,38 +409,15 @@
 			return
 		to_chat(user, span_notice("You finish setting [ceramic_item]..."))
 		var/obj/item/ceramic/spawned_ceramic = new ceramic_item.forge_item(get_turf(src))
+		user.mind.adjust_experience(/datum/skill/production, 50)
 		spawned_ceramic.color = ceramic_item.color
 		qdel(ceramic_item)
 		return
 
-	if(istype(I, /obj/item/glassblowing/blowing_rod))
-		var/obj/item/glassblowing/blowing_rod/blowing_item = I
-		var/glassblowing_speed = HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER) ? MASTER_TIMED : DEFAULT_TIMED
-		var/glassblowing_amount = HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER) ? MASTER_HEATED : DEFAULT_HEATED
-		if(in_use) //only insert one at a time
-			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
-			return
-		in_use = TRUE
-		if(forge_temperature < MIN_FORGE_TEMP)
-			fail_message(user, "The temperature is not hot enough to start heating [blowing_item].")
-			return
-		var/obj/item/glassblowing/molten_glass/find_glass = locate() in blowing_item.contents
-		if(!find_glass)
-			fail_message(user, "[blowing_item] does not have any glass to heat up.")
-			return
-		to_chat(user, span_notice("You begin heating up [blowing_item]."))
-		if(!do_after(user, glassblowing_speed, target = src))
-			fail_message(user, "[blowing_item] is interrupted in its heating process.")
-			return
-		find_glass.world_molten = world.time + glassblowing_amount
-		to_chat(user, span_notice("You finish heating up [blowing_item]."))
-		in_use = FALSE
-		return TRUE
-
-	if(istype(I, /obj/item/stack/sheet/glass))
-		var/obj/item/stack/sheet/glass/glass_item = I
-		var/glassblowing_speed = HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER) ? MASTER_TIMED : DEFAULT_TIMED
-		var/glassblowing_amount = HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER) ? MASTER_HEATED : DEFAULT_HEATED
+	if(istype(attacking_item, /obj/item/stack/sheet/glass))
+		var/obj/item/stack/sheet/glass/glass_item = attacking_item
+		var/glassblowing_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * DEFAULT_TIMED
+		var/glassblowing_amount = DEFAULT_HEATED / user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER)
 		if(in_use) //only insert one at a time
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
@@ -564,13 +433,14 @@
 			return
 		in_use = FALSE
 		var/obj/item/glassblowing/molten_glass/spawned_glass = new /obj/item/glassblowing/molten_glass(get_turf(src))
-		spawned_glass.world_molten = world.time + glassblowing_amount
+		user.mind.adjust_experience(/datum/skill/production, 10)
+		COOLDOWN_START(spawned_glass, remaining_heat, glassblowing_amount)
 		return
 
-	if(istype(I, /obj/item/glassblowing/metal_cup))
-		var/obj/item/glassblowing/metal_cup/metal_item = I
-		var/glassblowing_speed = HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER) ? MASTER_TIMED : DEFAULT_TIMED
-		var/glassblowing_amount = HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER) ? MASTER_HEATED : DEFAULT_HEATED
+	if(istype(attacking_item, /obj/item/glassblowing/metal_cup))
+		var/obj/item/glassblowing/metal_cup/metal_item = attacking_item
+		var/glassblowing_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * DEFAULT_TIMED
+		var/glassblowing_amount = DEFAULT_HEATED / user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER)
 		if(in_use) //only insert one at a time
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
@@ -588,10 +458,156 @@
 		metal_item.has_sand = FALSE
 		metal_item.icon_state = "metal_cup_empty"
 		var/obj/item/glassblowing/molten_glass/spawned_glass = new /obj/item/glassblowing/molten_glass(get_turf(src))
-		spawned_glass.world_molten = world.time + glassblowing_amount
+		user.mind.adjust_experience(/datum/skill/production, 10)
+		COOLDOWN_START(spawned_glass, remaining_heat, glassblowing_amount)
 		return TRUE
 
 	return ..()
+
+/obj/structure/reagent_forge/proc/smelt_ore(obj/item/stack/ore/ore_item, mob/living/user)
+	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER)
+	if(in_use) //only insert one at a time
+		to_chat(user, span_warning("You cannot do multiple things at the same time!"))
+		return
+	in_use = TRUE
+	if(forge_temperature < MIN_FORGE_TEMP)
+		fail_message(user, "The temperature is not hot enough to start heating [ore_item].")
+		return
+	if(!ore_item.refined_type)
+		fail_message(user, "It is impossible to smelt [ore_item].")
+		return
+	to_chat(user, span_warning("You start to smelt [ore_item]..."))
+	if(!do_after(user, skill_modifier * 3 SECONDS, target = src))
+		fail_message(user, "You fail smelting [ore_item].")
+		return
+	var/src_turf = get_turf(src)
+	var/spawning_item = ore_item.refined_type
+	var/spawning_amount = max(1, (1 + goliath_ore_improvement) * ore_item.amount)
+	var/experience_amount = spawning_amount * ore_item.mine_experience
+	for(var/spawn_ore in 1 to spawning_amount)
+		new spawning_item(src_turf)
+	in_use = FALSE
+	to_chat(user, span_notice("You successfully smelt [ore_item]."))
+	user.mind.adjust_experience(/datum/skill/smithing, experience_amount) //useful smelting means you get some experience
+	user.mind.adjust_experience(/datum/skill/mining, experience_amount) //useful smelting means you get some experience
+	qdel(ore_item)
+	return FALSE
+
+/obj/structure/reagent_forge/billow_act(mob/living/user, obj/item/tool)
+	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER)
+	var/obj/item/forging/forge_item = tool
+	if(in_use) //no spamming the billows
+		to_chat(user, span_warning("You cannot do multiple things at the same time!"))
+		return FALSE
+	in_use = TRUE
+	if(!forge_fuel_strong && !forge_fuel_weak) //if there isnt any fuel, no billow use
+		fail_message(user, "You cannot use [forge_item] without some sort of fuel in [src]!")
+		return FALSE
+	if(forge_temperature >= MAX_FORGE_TEMP) //we don't want the "temp" to overflow or something somehow
+		fail_message(user, "You can't heat [src] to be any hotter!")
+		return FALSE
+	to_chat(user, span_warning("You start to pump [forge_item] into [src]..."))
+	while(forge_temperature < 91)
+		if(!do_after(user, skill_modifier * forge_item.toolspeed, target = src))
+			fail_message(user, "You fail billowing [src].")
+			return FALSE
+		forge_temperature += 10
+		user.mind.adjust_experience(/datum/skill/smithing, 5) //useful heating means you get some experience
+	in_use = FALSE
+	to_chat(user, span_notice("You successfully increase the temperature inside [src]."))
+	return FALSE
+
+/obj/structure/reagent_forge/tong_act(mob/living/user, obj/item/tool)
+	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER)
+	var/obj/item/forging/forge_item = tool
+	if(in_use || forge_item.in_use) //only insert one at a time
+		to_chat(user, span_warning("You cannot do multiple things at the same time!"))
+		return FALSE
+	in_use = TRUE
+	forge_item.in_use = TRUE
+	if(forge_temperature < MIN_FORGE_TEMP)
+		fail_message(user, "The temperature is not hot enough to start heating the metal.")
+		forge_item.in_use = FALSE
+		return FALSE
+	var/obj/item/forging/incomplete/search_incomplete = locate(/obj/item/forging/incomplete) in forge_item.contents
+	if(search_incomplete)
+		if(!COOLDOWN_FINISHED(search_incomplete, heating_remainder))
+			fail_message(user, "[search_incomplete] is still hot, try to keep hammering!")
+			forge_item.in_use = FALSE
+			return FALSE
+		to_chat(user, span_warning("You start to heat up [search_incomplete]..."))
+		if(!do_after(user, skill_modifier * forge_item.toolspeed, target = src))
+			fail_message(user, "You fail heating up [search_incomplete].")
+			forge_item.in_use = FALSE
+			return FALSE
+		COOLDOWN_START(search_incomplete, heating_remainder, 1 MINUTES)
+		in_use = FALSE
+		forge_item.in_use = FALSE
+		user.mind.adjust_experience(/datum/skill/smithing, 5) //heating up stuff gives just a little experience
+		to_chat(user, span_notice("You successfully heat up [search_incomplete]."))
+		return FALSE
+	var/obj/item/stack/rods/search_rods = locate(/obj/item/stack/rods) in forge_item.contents
+	if(search_rods)
+		var/user_choice = tgui_input_list(user, "What would you like to work on?", "Forge Selection", choice_list)
+		if(!user_choice)
+			fail_message(user, "You decide against continuing to forge.")
+			forge_item.in_use = FALSE
+			return FALSE
+		if(!search_rods.use(1))
+			fail_message(user, "You cannot use [search_rods]!")
+			forge_item.in_use = FALSE
+			return FALSE
+		to_chat(user, span_warning("You start to heat up [search_rods]..."))
+		if(!do_after(user, skill_modifier * forge_item.toolspeed, target = src))
+			fail_message(user, "You fail heating up [search_rods].")
+			forge_item.in_use = FALSE
+			return FALSE
+		var/spawn_item = choice_list[user_choice]
+		var/obj/item/forging/incomplete/incomplete_item = new spawn_item(get_turf(src))
+		COOLDOWN_START(incomplete_item, heating_remainder, 1 MINUTES)
+		in_use = FALSE
+		forge_item.in_use = FALSE
+		user.mind.adjust_experience(/datum/skill/smithing, 10) //creating an item gives you some experience, not a lot
+		to_chat(user, span_notice("You successfully heat up [search_rods], ready to forge a [user_choice]."))
+		return FALSE
+	in_use = FALSE
+	forge_item.in_use = FALSE
+	return FALSE
+
+/obj/structure/reagent_forge/blowrod_act(mob/living/user, obj/item/tool)
+	var/obj/item/glassblowing/blowing_rod/blowing_item = tool
+	var/glassblowing_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * DEFAULT_TIMED
+	var/glassblowing_amount = DEFAULT_HEATED / user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER)
+	if(in_use) //only insert one at a time
+		to_chat(user, span_warning("You cannot do multiple things at the same time!"))
+		return FALSE
+	in_use = TRUE
+	if(forge_temperature < MIN_FORGE_TEMP)
+		fail_message(user, "The temperature is not hot enough to start heating [blowing_item].")
+		return FALSE
+	var/obj/item/glassblowing/molten_glass/find_glass = locate() in blowing_item.contents
+	if(!find_glass)
+		fail_message(user, "[blowing_item] does not have any glass to heat up.")
+		return FALSE
+	if(!COOLDOWN_FINISHED(find_glass, remaining_heat))
+		fail_message(user, "[find_glass] is still has remaining heat.")
+		return FALSE
+	to_chat(user, span_notice("You begin heating up [blowing_item]."))
+	if(!do_after(user, glassblowing_speed, target = src))
+		fail_message(user, "[blowing_item] is interrupted in its heating process.")
+		return FALSE
+	COOLDOWN_START(find_glass, remaining_heat, glassblowing_amount)
+	to_chat(user, span_notice("You finish heating up [blowing_item]."))
+	user.mind.adjust_experience(/datum/skill/smithing, 10) //creating an item gives you some experience, not a lot
+	user.mind.adjust_experience(/datum/skill/production, 5)
+	in_use = FALSE
+	return FALSE
+
+/obj/structure/reagent_forge/wrench_act(mob/living/user, obj/item/tool)
+	tool.play_tool_sound(src)
+	new /obj/item/stack/sheet/iron/ten(get_turf(src))
+	qdel(src)
+	return TRUE
 
 /obj/structure/reagent_forge/ready
 	current_core = MAX_UPGRADE_REGEN
@@ -600,10 +616,8 @@
 	forge_temperature = 1000
 
 #undef DEFAULT_TIMED
-#undef MASTER_TIMED
 
 #undef DEFAULT_HEATED
-#undef MASTER_HEATED
 
 #undef MAX_FORGE_TEMP
 #undef MIN_FORGE_TEMP

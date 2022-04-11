@@ -245,7 +245,9 @@
 	owner.add_filter("stasis_status_ripple", 2, list("type" = "ripple", "flags" = WAVE_BOUNDED, "radius" = 0, "size" = 2))
 	var/filter = owner.get_filter("stasis_status_ripple")
 	animate(filter, radius = 32, time = 15, size = 0, loop = -1)
-
+	if(iscarbon(owner))
+		var/mob/living/carbon/carbon_owner = owner
+		carbon_owner.update_bodypart_bleed_overlays()
 
 /datum/status_effect/grouped/stasis/tick()
 	update_time_of_death()
@@ -260,6 +262,9 @@
 		owner.clear_alert("numbed") //SKYRAT EDIT END
 	owner.remove_filter("stasis_status_ripple")
 	update_time_of_death()
+	if(iscarbon(owner))
+		var/mob/living/carbon/carbon_owner = owner
+		carbon_owner.update_bodypart_bleed_overlays()
 	return ..()
 
 /atom/movable/screen/alert/status_effect/stasis
@@ -512,7 +517,7 @@
 
 	if(iscarbon(owner))
 		var/mob/living/carbon/carbon_owner = owner
-		carbon_owner.silent += 4
+		carbon_owner.silent += 5
 
 	return ..()
 
@@ -553,7 +558,7 @@
 	new /obj/effect/temp_visual/bleed/explode(T)
 	for(var/d in GLOB.alldirs)
 		new /obj/effect/temp_visual/dir_setting/bloodsplatter(T, d)
-	playsound(T, "desecration", 100, TRUE, -1)
+	playsound(T, SFX_DESECRATION, 100, TRUE, -1)
 
 /datum/status_effect/stacking/saw_bleed/bloodletting
 	id = "bloodletting"

@@ -217,6 +217,21 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 				to_chat(mind.current, "<BR>[span_userdanger("Your target is no longer within reach. Objective removed!")]")
 				mind.announce_objectives()
 		else if(istype(objective.target) && objective.target == mob_occupant.mind)
+			if(!istype(objective, /datum/objective/contract))
+				return
+			var/datum/opposing_force/affected_contractor = objective.owner.opposing_force
+			var/datum/contractor_hub/affected_contractor_hub = affected_contractor.contractor_hub
+			for(var/datum/syndicate_contract/affected_contract as anything in affected_contractor_hub.assigned_contracts)
+				if(!(affected_contract.contract == objective))
+					continue
+				var/contract_id = affected_contract.id
+				affected_contractor_hub.create_single_contract(objective.owner, affected_contract.payout_type)
+				affected_contractor_hub.assigned_contracts[contract_id].status = CONTRACT_STATUS_ABORTED
+				if (affected_contractor_hub.current_contract == objective)
+					affected_contractor_hub.current_contract = null
+				to_chat(objective.owner.current, "<BR>[span_userdanger("Contract target out of reach. Contract rerolled.")]")
+				break
+		else if(istype(objective.target) && objective.target == mob_occupant.mind)
 			var/old_target = objective.target
 			objective.target = null
 			if(!objective)

@@ -5,7 +5,7 @@
 	item_type = /obj/item/gun/ballistic/automatic/mp40
 	admin_note = "WARNING: This weapon is extremely powerful, firing a 3 round burst of 30 damage bullets."
 
-/datum/opposing_force_equipment/submachine_gun/mp40m/modern
+/datum/opposing_force_equipment/submachine_gun/mp40mm
 	item_type = /obj/item/gun/ballistic/automatic/mp40/modern
 	admin_note = "WARNING: This weapon is extremely powerful, firing a 4 round burst of 30 damage bullets. The modern version has a reduced fire delay."
 

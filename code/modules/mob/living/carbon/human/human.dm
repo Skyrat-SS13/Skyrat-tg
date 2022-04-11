@@ -8,6 +8,7 @@
 	create_bodyparts()
 
 	setup_human_dna()
+	prepare_huds() //Prevents a nasty runtime on human init
 
 	if(dna.species)
 		INVOKE_ASYNC(src, .proc/set_species, dna.species.type)
@@ -257,7 +258,7 @@
 				to_chat(usr, span_warning("ERROR: Unable to locate data core entry for target."))
 				return
 			if(href_list["status"])
-				var/setcriminal = input(usr, "Specify a new criminal status for this person.", "Security HUD", sec_record.fields["criminal"]) in list("None", "*Arrest*", "Incarcerated", "Paroled", "Discharged", "Cancel") //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+				var/setcriminal = input(usr, "Specify a new criminal status for this person.", "Security HUD", sec_record.fields["criminal"]) in list("None", "*Arrest*", "Incarcerated", "Suspected", "Paroled", "Discharged", "Cancel") //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 				if(setcriminal != "Cancel")
 					if(!sec_record) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 						return
@@ -392,11 +393,11 @@
 				return
 
 	//SKYRAT EDIT ADDITION BEGIN - VIEW RECORDS
-	if (is_special_character(usr))
-		var/perpname = get_face_name(get_id_name(""))
-		var/datum/data/record/EXP = find_record("name", perpname, GLOB.data_core.general)
-		if(href_list["exprecords"])
-			to_chat(usr, "<b>Exploitable information:</b> [EXP.fields["exploitable_records"]]")
+	if(href_list["exprecords"])
+		if (mind.can_see_exploitables || mind.has_exploitables_override)
+			var/examined_name = get_face_name(get_id_name("")) //Named as such because this is the name we see when we examine
+			var/datum/data/record/target_general_records = find_record("name", examined_name, GLOB.data_core.general)
+			to_chat(usr, "<b>Exploitable information:</b> [target_general_records.fields["exploitable_records"]]")
 	//SKYRAT EDIT END
 
 	..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that.
@@ -479,6 +480,8 @@
 					threatcount += 5
 				if("Incarcerated")
 					threatcount += 2
+				if("Suspected")
+					threatcount += 2
 				if("Paroled")
 					threatcount += 2
 
@@ -507,8 +510,7 @@
 		facial_hairstyle = "Shaved"
 	hairstyle = pick("Bedhead", "Bedhead 2", "Bedhead 3")
 	underwear = "Nude"
-	update_body()
-	update_hair()
+	update_body(is_creating = TRUE)
 
 /mob/living/carbon/human/singularity_pull(S, current_size)
 	..()
@@ -1191,12 +1193,6 @@
 /mob/living/carbon/human/species/snail
 	race = /datum/species/snail
 
-/mob/living/carbon/human/species/synth
-	race = /datum/species/synth
-
-/mob/living/carbon/human/species/synth/military
-	race = /datum/species/synth/military
-
 /mob/living/carbon/human/species/vampire
 	race = /datum/species/vampire
 
@@ -1205,6 +1201,3 @@
 
 /mob/living/carbon/human/species/zombie/infectious
 	race = /datum/species/zombie/infectious
-
-/mob/living/carbon/human/species/zombie/krokodil_addict
-	race = /datum/species/krokodil_addict

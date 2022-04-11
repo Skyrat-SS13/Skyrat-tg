@@ -38,11 +38,6 @@
 	description = "An energy katana seized from a dead Spider Clan ninja. As well as being highly robust, it allows the \
 		user to teleport short distances using right-click."
 
-/datum/opposing_force_equipment/melee/eswordarm
-	item_type = /obj/item/autosurgeon/organ/syndicate/esword_arm
-	name = "Energy Sword Arm Implant"
-	description = "It's an energy sword, in your arm. Pretty decent for getting past stop-searches and assassinating people. Comes loaded in a Syndicate brand autosurgeon to boot!"
-
 /datum/opposing_force_equipment/melee/powerfist
 	item_type = /obj/item/melee/powerfist
 	name = "Power Fist"
@@ -54,3 +49,8 @@
 /datum/opposing_force_equipment/melee/northstar
 	item_type = /obj/item/clothing/gloves/rapid
 	description = "By putting on these gloves, you will find you can punch things at vastly increased speed."
+
+/datum/opposing_force_equipment/melee/hfblade
+	item_type = /obj/item/highfrequencyblade
+	admin_note = "This can gib corpses, and has chance to block.\
+	It also has very good AP and a very low attack delay. Hand this out with caution."

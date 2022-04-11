@@ -23,7 +23,7 @@
             to_chat(M, span_warning("[parent] seems to be locked!"))
             return FALSE
         if(dump_destination.storage_contents_dump_act(STR, M))
-            playsound(used_belt, "rustle", 50, TRUE, -5)
+            playsound(used_belt, SFX_RUSTLE, 50, TRUE, -5)
             used_belt.do_squish(0.8, 1.2)
             return TRUE
     return FALSE

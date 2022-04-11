@@ -735,9 +735,9 @@
 
 	if(ishuman(parent))
 		var/mob/living/carbon/human/H = parent
-		if(H.dna.species.limbs_id == SPECIES_LIZARD)
+		if(H.dna.species.id == SPECIES_LIZARD)
 			cumface.icon_state = "cumface_lizard"
-		else if(H.dna.species.limbs_id == SPECIES_MONKEY)
+		else if(H.dna.species.id == SPECIES_MONKEY)
 			cumface.icon_state = "cumface_monkey"
 		else if(H.dna.species.id == SPECIES_VOX)
 			cumface.icon_state = "cumface_vox"
@@ -792,9 +792,9 @@
 
 	if(ishuman(parent))
 		var/mob/living/carbon/human/H = parent
-		if(H.dna.species.limbs_id == "lizard")
+		if(H.dna.species.id == "lizard")
 			bigcumface.icon_state = "bigcumface_lizard"
-		else if(H.dna.species.limbs_id == "monkey")
+		else if(H.dna.species.id == "monkey")
 			bigcumface.icon_state = "bigcumface_monkey"
 		else if(H.dna.species.id == "vox")
 			bigcumface.icon_state = "bigcumface_vox"
@@ -933,7 +933,7 @@
 		user.visible_message(span_warning("[user] starts masturbating into [target]!"), span_danger("You start masturbating into [target]!"))
 		if(do_after(user,60))
 			user.visible_message(span_warning("[user] cums into [target]!"), span_danger("You cum into [target]!"))
-			playsound(target, "desecration", 50, TRUE, ignore_walls = FALSE)
+			playsound(target, SFX_DESECRATION, 50, TRUE, ignore_walls = FALSE)
 			R.trans_to(target, cum_volume)
 			if(prob(40))
 				user.emote("moan")
@@ -943,7 +943,7 @@
 		if(do_after(user,60))
 			var/turf/T = get_turf(target)
 			user.visible_message(span_warning("[user] cums on [target]!"), span_danger("You cum on [target]!"))
-			playsound(target, "desecration", 50, TRUE, ignore_walls = FALSE)
+			playsound(target, SFX_DESECRATION, 50, TRUE, ignore_walls = FALSE)
 			new/obj/effect/decal/cleanable/cum(T)
 			if(prob(40))
 				user.emote("moan")

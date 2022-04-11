@@ -47,6 +47,7 @@
 	. += create_table_notices(list(
 		"name",
 		"job",
+		"is_robot", //SKYRAT EDIT ADDITION - Displaying robotic species Icon
 		"life_status",
 		"suffocation",
 		"toxin",
@@ -67,6 +68,7 @@
 		var/list/entry = list()
 		entry["name"] = player_record["name"]
 		entry["job"] = player_record["assignment"]
+		entry["is_robot"] = player_record["is_robot"] //SKYRAT EDIT ADDITION - Displaying robotic species Icon
 		entry["life_status"] = player_record["life_status"]
 		entry["suffocation"] = player_record["oxydam"]
 		entry["toxin"] = player_record["toxdam"]
@@ -218,7 +220,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 			continue
 
 		// Machinery and the target should be on the same level or different levels of the same station
-		if(pos.z != z && (!is_station_level(pos.z) || !is_station_level(z)))
+		if(pos.z != z && (!is_station_level(pos.z) || !is_station_level(z)) && !HAS_TRAIT(tracked_living_mob, TRAIT_MULTIZ_SUIT_SENSORS))
 			continue
 
 		var/mob/living/carbon/human/tracked_human = tracked_living_mob
@@ -256,6 +258,11 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 			var/trim_assignment = id_card.get_trim_assignment()
 			if (jobs[trim_assignment] != null)
 				entry["ijob"] = jobs[trim_assignment]
+
+		// SKYRAT EDIT BEGIN: Checking for robotic race
+		if (isrobotic(tracked_human))
+			entry["is_robot"] = TRUE
+		// SKYRAT EDIT END
 
 		// Binary living/dead status
 		if (sensor_mode >= SENSOR_LIVING)

@@ -10,10 +10,12 @@
 	delay = 8
 	harmful = FALSE
 	select_color = "#00d9ffff"
+
 /obj/projectile/energy/medical
 	name = "medical heal shot"
 	icon_state = "blue_laser"
 	damage = 0
+
 /obj/projectile/energy/medical/oxygen
 	name = "oxygen heal shot"
 	var/amount_healed = 10
@@ -22,78 +24,101 @@
 	. = ..()
 	if(!IsLivingHuman(target))
 		return FALSE
+
 	target.adjustOxyLoss(-amount_healed)
 
 //PROCS//
-//Applies digust by damage thresholds.
+/// Applies digust by damage thresholds.
 /obj/projectile/energy/medical/proc/DamageDisgust(mob/living/target, type_damage)
 	if(type_damage >= 100)
 		target.adjust_disgust(3)
+
 	if(type_damage >=  50 && type_damage < 100)
 		target.adjust_disgust(1.5)
-//Applies clone damage by thresholds
+
+/// Applies clone damage by thresholds
 /obj/projectile/energy/medical/proc/DamageClone(mob/living/target, type_damage, amount_healed, max_clone)
 	if(type_damage >= 50 && type_damage < 100 )
 		target.adjustCloneLoss((amount_healed * (max_clone * 0.5)))
+
 	if(type_damage >= 100)
 		target.adjustCloneLoss((amount_healed * max_clone))
-//Checks to see if the patient is living.
+
+/// Checks to see if the patient is living.
 /obj/projectile/energy/medical/proc/IsLivingHuman(mob/living/target)
 	if(!istype(target, /mob/living/carbon/human))
 		return FALSE
+
 	if(target.stat == DEAD)
 		return FALSE
 	else
 		return TRUE
-//Checks for non-medicine reagents in the bloodstream
+
+/// Checks for non-medicine reagents in the bloodstream, used for the toxin medicell.
 /obj/projectile/energy/medical/proc/checkReagents(mob/living/target)
 	var/non_medicine_chems = 0 //Keeps track of how many chemicals in the bloodstream aren't medicine.
+
 	for(var/reagent in target.reagents.reagent_list)
-		if(!istype(reagent, /datum/reagent/medicine))
-			non_medicine_chems += 1
+		if(istype(reagent, /datum/reagent/medicine))
+			continue
+		non_medicine_chems += 1
+
 	return non_medicine_chems
-//Heals Brute without safety
+
+/// Heals Brute without safety
 /obj/projectile/energy/medical/proc/healBrute(mob/living/target, amount_healed, max_clone, base_disgust)
 	if(!IsLivingHuman(target))
 		return FALSE
+
 	DamageDisgust(target, target.getBruteLoss())
 	target.adjust_disgust(base_disgust)
 	DamageClone(target, target.getBruteLoss(), amount_healed, max_clone)
 	target.adjustBruteLoss(-amount_healed)
-//Heals Burn damage without safety
+
+/// Heals Burn swithout safety
 /obj/projectile/energy/medical/proc/healBurn(mob/living/target, amount_healed, max_clone, base_disgust)
 	if(!IsLivingHuman(target))
 		return FALSE
+
 	DamageDisgust(target, target.getFireLoss())
 	target.adjust_disgust(base_disgust)
 	DamageClone(target, target.getFireLoss(), amount_healed, max_clone)
 	target.adjustFireLoss(-amount_healed)
 
+/// Heals Brute with safety
 /obj/projectile/energy/medical/proc/safeBrute(mob/living/target, amount_healed, base_disgust)
 	if(!IsLivingHuman(target))
 		return FALSE
+
 	if(target.getBruteLoss() >= 50 )
 		return FALSE
+
 	target.adjust_disgust(base_disgust)
 	target.adjustBruteLoss(-amount_healed)
 
+/// Heals Burn with safety.
 /obj/projectile/energy/medical/proc/safeBurn(mob/living/target, amount_healed, base_disgust)
 	if(!IsLivingHuman(target))
 		return FALSE
+
 	if(target.getFireLoss() >= 50 )
 		return FALSE
+
 	target.adjust_disgust(base_disgust)
 	target.adjustFireLoss(-amount_healed)
 
-//Heal Toxin damage
+/// Heals Toxins
 /obj/projectile/energy/medical/proc/healTox(mob/living/target, amount_healed)
 	if(!IsLivingHuman(target))
 		return FALSE
+
 	var/healing_multiplier = 1.5
 	var/non_meds = checkReagents(target)
 	healing_multiplier = healing_multiplier - (non_meds / 4)
+
 	if(healing_multiplier < 0.25)
 		healing_multiplier = 0.25
+
 	target.adjustToxLoss(-(amount_healed * healing_multiplier))
 
 //T1 Healing Projectiles//
@@ -113,6 +138,7 @@
 /obj/projectile/energy/medical/brute/on_hit(mob/living/target)
 	. = ..()
 	healBrute(target, amount_healed, max_clone, base_disgust)
+
 //The Basic Burn Heal//
 /obj/item/ammo_casing/energy/medical/burn1
 	projectile_type = /obj/projectile/energy/medical/burn
@@ -125,7 +151,6 @@
 	var/amount_healed = 7.5
 	var/max_clone = 2/3
 	var/base_disgust = 3
-
 
 /obj/projectile/energy/medical/burn/on_hit(mob/living/target)
 	. = ..()
@@ -156,7 +181,6 @@
 	var/amount_healed = 7.5
 	var/base_disgust = 3
 
-
 /obj/projectile/energy/medical/safe/brute/on_hit(mob/living/target)
 	. = ..()
 	safeBrute(target, amount_healed, base_disgust)
@@ -173,6 +197,7 @@
 /obj/projectile/energy/medical/safe/burn/on_hit(mob/living/target)
 	. = ..()
 	safeBurn(target, amount_healed, base_disgust)
+
 //T2 Healing Projectiles//
 //Tier II Brute Projectile//
 /obj/item/ammo_casing/energy/medical/brute2
@@ -289,6 +314,7 @@
 /obj/projectile/energy/medical/upgraded/toxin3/on_hit(mob/living/target)
 	. = ..()
 	healTox(target, 10)
+
 //SAFE MODES
 /obj/item/ammo_casing/energy/medical/brute3/safe
 	projectile_type = /obj/projectile/energy/medical/safe/brute/better/best
@@ -297,16 +323,19 @@
 	name = "safe powerful brute heal shot"
 	amount_healed = 15
 	base_disgust = 1
+
 /obj/item/ammo_casing/energy/medical/burn3/safe
 	projectile_type = /obj/projectile/energy/medical/safe/burn/better/best
+
 /obj/projectile/energy/medical/safe/burn/better/best
 	name = "safe powerful burn heal shot"
 	amount_healed = 15
 	base_disgust = 1
 
-//End of Basic Tiers of cells.//
+//End of Basic Tiers of cells.
+
 //Utility Cells
-//Base of utility
+//Utility basis
 /obj/projectile/energy/medical/utility
 	name = "utility medical shot"
 	pass_flags =  UPGRADED_MEDICELL_PASSFLAGS
@@ -323,6 +352,7 @@
 /obj/projectile/energy/medical/utility/clotting/on_hit(mob/living/target)
 	if(!IsLivingHuman(target))
 		return FALSE
+
 	if(target.reagents.get_reagent_amount(/datum/reagent/medicine/coagulant/fabricated) < 5) //injects the target with a weaker coagulant agent
 		target.reagents.add_reagent(/datum/reagent/medicine/coagulant/fabricated, 1)
 		target.reagents.add_reagent(/datum/reagent/iron, 2) //adds in iron to help compensate for the relatively weak blood clotting
@@ -341,11 +371,14 @@
 /obj/projectile/energy/medical/utility/temperature/on_hit(mob/living/target)
 	if(!IsLivingHuman(target))
 		return FALSE
+
 	var/ideal_temp = target.get_body_temp_normal(apply_change=FALSE) //Gets the temperature we should be aiming for.
 	var/current_temp = target.bodytemperature //Retrieves the targets body temperature
 	var/difference = ideal_temp - current_temp
+
 	if(abs(difference) <= MINIMUM_TEMP_DIFFERENCE) //It won't adjust temperature if the difference is too low
 		return FALSE
+
 	target.adjust_bodytemperature(difference < 0 ? -TEMP_PER_SHOT : TEMP_PER_SHOT)
 
 //Surgical Gown Medicell.
@@ -360,8 +393,10 @@
 /obj/projectile/energy/medical/utility/gown/on_hit(mob/living/target)
 	if(!istype(target, /mob/living/carbon/human)) //Dead check isn't fully needed, since it'd be reasonable for this to work on corpses.
 		return
+
 	var/mob/living/carbon/wearer = target
 	var/obj/item/clothing/gown = new /obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
+
 	if(wearer.equip_to_slot_if_possible(gown, ITEM_SLOT_OCLOTHING, 1, 1, 1))
 		wearer.visible_message(span_notice("The [gown] covers [wearer] body"), span_notice("The [gown] wraps around your body, covering you"))
 		return
@@ -377,7 +412,7 @@
 
 /obj/projectile/energy/medical/utility/salve
 	name = "salve globule"
-	icon_state = "glob_projectile" //Replace this texture later.
+	icon_state = "glob_projectile"
 	shrapnel_type = /obj/item/mending_globule/hardlight
 	embedding = list("embed_chance" = 100, ignore_throwspeed_threshold = TRUE, "pain_mult" = 0, "jostle_pain_mult" = 0, "fall_chance" = 0)
 	nodamage = TRUE
@@ -399,12 +434,16 @@
 
 /obj/projectile/energy/medical/utility/bed/on_hit(mob/living/target)
 	. = ..()
+
 	if(!istype(target, /mob/living/carbon/human)) //Only checks if they are human, it would make sense for this to work on the dead.
 		return FALSE
+
 	for(var/obj/structure/bed/roller/medigun in target.loc) //Prevents multiple beds from being spawned on the same turf
 		return FALSE
+
 	if(HAS_TRAIT(target, TRAIT_FLOORED) || target.resting) //Is the person already on the floor to begin with? Mostly a measure to prevent spamming.
 		var /obj/structure/bed/roller/medigun/created_bed = new /obj/structure/bed/roller/medigun(target.loc)
+
 		if(!target.stat == CONSCIOUS)
 			created_bed.buckle_mob(target)
 		return TRUE
@@ -422,12 +461,16 @@
 
 /obj/projectile/energy/medical/utility/body_teleporter/on_hit(mob/living/target)
 	. = ..()
+
 	if(!ishuman(target) || (target.stat != DEAD && !HAS_TRAIT(target, TRAIT_DEATHCOMA)))
 		return FALSE
+
 	var/mob/living/carbon/body = target
+
 	teleport_effect(body.loc)
 	body.forceMove(firer.loc)
 	teleport_effect(body.loc)
+
 	body.visible_message(span_notice("[body]'s body teleports to [firer]!"))
 
 /obj/projectile/energy/medical/utility/body_teleporter/proc/teleport_effect(var/location)
@@ -444,6 +487,7 @@
 /obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight/dropped(mob/user)
 	. = ..()
 	var/mob/living/carbon/wearer = user
+
 	if((wearer.get_item_by_slot(ITEM_SLOT_OCLOTHING)) == src && !QDELETED(src))
 		to_chat(wearer, span_notice("The [src] disappeared after being removed"))
 		qdel(src)
@@ -467,11 +511,14 @@
 /obj/item/mending_globule/hardlight/process()
 	if(!bodypart)
 		return FALSE
+
 	if(!bodypart.get_damage()) //Makes it poof as soon as the body part is fully healed, no keeping this on forever.
 		qdel(src)
 		return FALSE
+
 	bodypart.heal_damage(0.25,0.25) //Reduced healing rate over original
 	heals_left--
+
 	if(heals_left <= 0)
 		qdel(src)
 
@@ -503,10 +550,131 @@
 	if(over_object == usr && Adjacent(usr))
 		if(!ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE))
 			return FALSE
+
 		if(has_buckled_mobs())
 			return FALSE
+
 		usr.visible_message(span_notice("[usr] deactivates \the [src]."), span_notice("You deactivate \the [src]."))
 		qdel(src)
+
+//Oppressive Force Relocation
+/obj/item/ammo_casing/energy/medical/utility/relocation
+	projectile_type = /obj/projectile/energy/medical/utility/relocation
+	select_name = "relocation"
+	select_color = "#140085"
+
+//The version that the normal medicells use
+/obj/item/ammo_casing/energy/medical/utility/relocation/standard
+	projectile_type = /obj/projectile/energy/medical/utility/relocation/standard
+	delay = 12
+
+/obj/projectile/energy/medical/utility/relocation
+	name = "bluespace transportation field"
+	/// Determines whether or not this works anywhere?
+	var/area_locked = FALSE
+	/// A list of areas that the effect works in, if area_locked is set to true
+	var/list/teleport_areas
+	/// Where the target will be teleported to.
+	var/destination_area = /area/medical/medbay/lobby
+
+	/// Is there a grace period before someone is teleported
+	var/grace_period = FALSE
+	/// How much time does the target have to leave the area before they end up getting teleported?
+	var/time_allowance = 10 SECONDS
+
+	/// Is access required to teleport
+	var/access_teleporting = FALSE
+	/// if the target doesn't have this access on their ID, they will be teleported
+	var/required_access = ACCESS_SURGERY
+
+/obj/projectile/energy/medical/utility/relocation/standard
+	area_locked = TRUE
+	teleport_areas = list(/area/medical/surgery, /area/medical/treatment_center, /area/medical/storage, /area/medical/patients_rooms)
+	grace_period = TRUE
+	access_teleporting = TRUE
+
+/obj/projectile/energy/medical/utility/relocation/on_hit(mob/living/target)
+	. = ..()
+
+	if(!ishuman(target))
+		return FALSE
+
+	var/mob/living/carbon/human/teleportee = target
+
+	if(area_locked && length(teleport_areas) && !is_type_in_list(get_area(target), teleport_areas))
+		return FALSE
+
+	if(access_teleporting && teleportee.wear_id)
+		var/target_access = teleportee.wear_id.GetAccess() //Stores the access of the target within a variable
+		if(required_access in target_access)
+			return FALSE
+
+	if(grace_period)
+		to_chat(teleportee, span_warning("You have [(time_allowance / 10)] seconds to leave, if you do not leave in this time, you will be forcibly teleported outside."))
+		teleportee.AddComponent(/datum/component/medigun_relocation, time_allowance, destination_area, area_locked, teleport_areas)
+		return TRUE
+
+	var/list/turf_list
+
+	if(!turf_list)
+		turf_list = list()
+		for(var/turf/turf_in_area in get_area_turfs(destination_area))
+			if(!turf_in_area.is_blocked_turf())
+				turf_list += turf_in_area
+
+	teleportee.visible_message(span_notice("[teleportee] is teleported away!"))
+
+	do_teleport(teleportee, pick(turf_list), no_effects = FALSE, channel = TELEPORT_CHANNEL_QUANTUM)
+
+/// Used to handle teleporting if there is a grace period
+/datum/component/medigun_relocation
+	/// Area that the target is teleported to
+	var/area/destination_area
+	/// The person that is being teleported
+	var/mob/living/carbon/human/teleportee
+	/// Is the teleport locked to only specific areas.
+	var/area_locked
+	/// If area_locked is enabled, people can be teleported while in these areas.
+	var/list/teleport_areas
+
+/datum/component/medigun_relocation/Initialize(time_allowance, destination, locked, areas)
+	if(!isatom(parent))
+		return COMPONENT_INCOMPATIBLE
+	var/atom/parent_atom = parent
+
+	teleport_areas = areas
+	teleportee = parent_atom
+	area_locked = locked
+	destination_area = destination
+
+	addtimer(CALLBACK(src, .proc/dispense_treat), (time_allowance * 0.95))
+	QDEL_IN(src, time_allowance)
+
+/datum/component/medigun_relocation/Destroy()
+	if(area_locked && length(teleport_areas) && !is_type_in_list(get_area(teleportee), teleport_areas))
+		return ..()
+
+	if(!teleportee.stat == CONSCIOUS) // This is mostly here to stop medical from accidentally teleporting out people they otherwise wouldn't want to.
+		return ..()
+
+	var/list/turf_list
+
+	if(!turf_list)
+		turf_list = list()
+		for(var/turf/turf_in_area in get_area_turfs(destination_area))
+			if(!turf_in_area.is_blocked_turf())
+				turf_list += turf_in_area
+
+	teleportee.visible_message(span_notice("[teleportee] is teleported away!"))
+
+	do_teleport(teleportee, pick(turf_list), no_effects = FALSE, channel = TELEPORT_CHANNEL_QUANTUM)
+
+	return ..()
+
+/// Puts a treat in the teleportee's hands.
+/datum/component/medigun_relocation/proc/dispense_treat()
+	var/obj/item/goodbye_treat = new /obj/item/food/lollipop/cyborg(teleportee) // The borg one is being used because it has psicodine instead of omnizine.
+	teleportee.put_in_hands(goodbye_treat)
 
 //End of utility
 #undef UPGRADED_MEDICELL_PASSFLAGS

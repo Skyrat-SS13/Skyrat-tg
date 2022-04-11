@@ -24,7 +24,7 @@
 	icon_state = "disabler"
 	damage = 41
 	damage_type = STAMINA
-	flag = ENERGY
+	armor_flag = ENERGY
 	hitsound = 'sound/weapons/tap.ogg'
 	eyeblur = 0
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/blue_laser

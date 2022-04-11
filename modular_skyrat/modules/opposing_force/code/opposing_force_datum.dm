@@ -73,6 +73,12 @@
 	var/admin_requested_changes = ""
 	/// The ckey of the person that made this application
 	var/ckey
+	/// Contractor hub datum, used if the user OPFORs for a contractor kit
+	var/datum/contractor_hub/contractor_hub
+	/// Corresponding stat() click button
+	var/obj/effect/statclick/opfor_specific/stat_button
+	/// If it is part of the ticket ping subsystem
+	var/ticket_ping = FALSE
 
 	COOLDOWN_DECLARE(static/request_update_cooldown)
 	COOLDOWN_DECLARE(static/ping_cooldown)
@@ -81,6 +87,8 @@
 	src.mind_reference = mind_reference
 	ckey = ckey(mind_reference.key)
 	send_system_message("[ckey] created the application")
+	stat_button = new()
+	stat_button.opfor = src
 
 /datum/opposing_force/Destroy(force)
 	mind_reference.opposing_force = null
@@ -89,6 +97,7 @@
 	QDEL_LIST(objectives)
 	QDEL_LIST(admin_chat)
 	QDEL_LIST(modification_log)
+	QDEL_NULL(stat_button)
 	return ..()
 
 /datum/opposing_force/Topic(href, list/href_list)
@@ -307,7 +316,7 @@
 				return
 			var/denied_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this application:")
 			// Checking to see if the user is spamming the button, async and all.
-			if(status == OPFOR_STATUS_DENIED)
+			if((status == OPFOR_STATUS_DENIED) || !denied_reason)
 				return
 			SSopposing_force.deny(src, denied_reason, usr)
 		if("mute_request_updates")
@@ -326,6 +335,8 @@
 			if(!check_rights(R_ADMIN))
 				return
 			var/denied_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
+			if(!denied_reason)
+				return
 			deny_objective(usr, edited_objective, denied_reason)
 		if("approve_equipment")
 			var/datum/opposing_force_selected_equipment/equipment = locate(params["selected_equipment_ref"]) in selected_equipment
@@ -341,6 +352,8 @@
 			if(!check_rights(R_ADMIN))
 				return
 			var/denied_reason = tgui_input_text(usr, "Denial Reason", "Enter a reason for denying this objective:")
+			if(!denied_reason)
+				return
 			deny_equipment(usr, equipment, denied_reason)
 		if("flw_user")
 			if(!check_rights(R_ADMIN))
@@ -351,7 +364,7 @@
 	user.client?.admin_follow(mind_reference.current)
 
 /datum/opposing_force/proc/set_equipment_count(mob/user, datum/opposing_force_selected_equipment/equipment, new_count)
-	var/sanitized_newcount = sanitize_integer(new_count, 1, OPFOR_EQUIPMENT_COUNT_LIMIT)
+	var/sanitized_newcount = sanitize_integer(new_count, 1, equipment.opposing_force_equipment.max_amount)
 	equipment.count = new_count
 	add_log(user.ckey, "Set equipment '[equipment.opposing_force_equipment.name] count to [sanitized_newcount]")
 
@@ -438,7 +451,7 @@
 		if(iterating_equipment.status != OPFOR_EQUIPMENT_STATUS_APPROVED)
 			continue
 		for(var/i in 1 to iterating_equipment.count)
-			if(!istype(iterating_equipment.opposing_force_equipment.item_type, /obj/effect/gibspawner/generic)) // This is what's used in place of an item in uplinks, so it's the same here
+			if(!(iterating_equipment.opposing_force_equipment.item_type == /obj/effect/gibspawner/generic)) // This is what's used in place of an item in uplinks, so it's the same here
 				new iterating_equipment.opposing_force_equipment.item_type(spawned_box)
 			iterating_equipment.opposing_force_equipment.on_issue(target)
 
@@ -490,6 +503,7 @@
 			SEND_SOUND(staff, sound('sound/effects/adminhelp.ogg'))
 		window_flash(staff, ignorepref = TRUE)
 
+	addtimer(CALLBACK(src, .proc/add_to_ping_ss), 3 MINUTES)
 	status = OPFOR_STATUS_AWAITING_APPROVAL
 	can_edit = FALSE
 	add_log(user.ckey, "Submitted to the OPFOR subsystem")
@@ -849,7 +863,15 @@
 			report += "</b>[opfor_equipment.opposing_force_equipment.name]<b><br>"
 			report += "<br>"
 
+	if(contractor_hub)
+		report += contractor_round_end()
+
 	return report.Join("\n")
+
+/datum/opposing_force/proc/add_to_ping_ss()
+	if(status != OPFOR_STATUS_APPROVED)
+		return
+	ticket_ping = TRUE
 
 /datum/action/opfor
 	name = "Open Opposing Force Panel"
@@ -868,3 +890,21 @@
 	if(!.)
 		return
 	return TRUE
+
+/obj/effect/statclick/opfor_specific
+	var/datum/opposing_force/opfor
+
+/obj/effect/statclick/opfor_specific/Destroy()
+	opfor = null
+	. = ..()
+
+/obj/effect/statclick/opfor_specific/Click()
+	if (!usr.client?.holder)
+		message_admins("[key_name_admin(usr)] non-holder clicked on an OPFOR statclick! ([src])")
+		log_game("[key_name(usr)] non-holder clicked on an OPFOR statclick! ([src])")
+		return
+
+	opfor.ui_interact(usr)
+
+/obj/effect/statclick/opfor_specific/proc/Action()
+	Click()

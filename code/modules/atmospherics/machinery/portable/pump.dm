@@ -9,7 +9,7 @@
 ///Defaul pressure, used in the UI to reset the settings
 #define PUMP_DEFAULT_PRESSURE (ONE_ATMOSPHERE)
 
-/obj/machinery/portable_atmospherics/pump
+/obj/machinery/portable_atmospherics/pump //SKYRAT EDIT - ICON OVERRIDEN IN SCRUBBER.DM AESTHETICS
 	name = "portable air pump"
 	icon_state = "siphon"
 	density = TRUE

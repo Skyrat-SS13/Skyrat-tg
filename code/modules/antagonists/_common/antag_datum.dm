@@ -223,6 +223,9 @@ GLOBAL_LIST_EMPTY(antagonists)
 			antag_hud.remove_hud_from(current)
 
 	qdel(src)
+	// SKYRAT EDIT START
+	owner.handle_exploitables() //Inefficient here, but on_removal() is called in multiple locations
+	// SKYRAT EDIT END
 
 /**
  * Proc that sends fluff or instructional messages to the player when they are given this antag datum.

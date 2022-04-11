@@ -73,8 +73,8 @@
 	name = "medigun operating manual"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/misc.dmi'
 	icon_state = "manual"
-	author = "VeyMedical"
-	title = "Medigun Operating Manual"
+	starting_author = "VeyMedical"
+	starting_title = "Medigun Operating Manual"
 	page_link = "Guide_to_Mediguns"
 	skyrat_wiki = TRUE
 
@@ -271,6 +271,17 @@
 	desc = "A medicell that allows the user to transport a dead body to themselves."
 	icon_state = "body"
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/body_teleporter
+
+/obj/item/weaponcell/medical/utility/relocation
+	name = "Oppressive Force Relocation Medicell"
+	desc = "A medicell that safely relocates personnel"
+	icon_state =  "body"
+	ammo_type = /obj/item/ammo_casing/energy/medical/utility/relocation/standard
+
+/obj/item/weaponcell/medical/utility/relocation/upgraded
+	name = "Upgraded Oppressive Force Relocation Medicell"
+	desc = "An upgraded version of the Relocation Medicell. It has the access and area requirements removed, along with having the standard grace period disabled."
+	ammo_type = /obj/item/ammo_casing/energy/medical/utility/relocation
 
 //Empty Medicell//
 /obj/item/device/custom_kit/empty_cell //Having the empty cell as an upgrade kit sounds jank, but it should work well.

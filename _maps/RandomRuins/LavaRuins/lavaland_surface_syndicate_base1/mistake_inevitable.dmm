@@ -62,6 +62,12 @@
 /obj/item/pen,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/testlab)
+"fY" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
+/obj/machinery/power/energy_accumulator/grounding_rod/anchored,
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/ruin/syndicate_lava_base/testlab)
 "gJ" = (
 /obj/structure/table/reinforced,
 /obj/item/paper/crumpled{
@@ -161,19 +167,16 @@
 	name = "Experimentation Lab";
 	req_access_txt = "150"
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/cable,
 /obj/modular_map_connector,
 /turf/open/floor/iron/dark,
+/area/ruin/syndicate_lava_base/testlab)
+"oo" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
+/obj/machinery/power/energy_accumulator/tesla_coil/anchored,
+/obj/structure/cable,
+/turf/open/floor/engine,
 /area/ruin/syndicate_lava_base/testlab)
 "oV" = (
 /obj/structure/window/reinforced/plasma/spawner,
@@ -181,6 +184,14 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 8
 	},
+/turf/open/floor/engine,
+/area/ruin/syndicate_lava_base/testlab)
+"qY" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/cable,
 /turf/open/floor/engine,
 /area/ruin/syndicate_lava_base/testlab)
 "rT" = (
@@ -200,24 +211,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/ruin/syndicate_lava_base/testlab)
-"sF" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
-/obj/machinery/power/energy_accumulator/grounding_rod/anchored,
-/obj/structure/cable,
-/turf/open/floor/engine,
-/area/ruin/syndicate_lava_base/testlab)
 "uG" = (
 /obj/item/storage/toolbox/syndicate,
 /obj/item/pipe_dispenser,
 /obj/item/rpd_upgrade/unwrench,
 /obj/structure/rack,
 /turf/open/floor/iron/dark,
-/area/ruin/syndicate_lava_base/testlab)
-"uP" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
-/obj/machinery/power/energy_accumulator/tesla_coil/anchored,
-/obj/structure/cable,
-/turf/open/floor/engine,
 /area/ruin/syndicate_lava_base/testlab)
 "uT" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
@@ -275,14 +274,6 @@
 	},
 /turf/open/floor/engine,
 /area/ruin/syndicate_lava_base/testlab)
-"EA" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/structure/cable,
-/turf/open/floor/engine,
-/area/ruin/syndicate_lava_base/testlab)
 "EC" = (
 /obj/machinery/door/poddoor{
 	id = "lavalandsyndi_mistake"
@@ -325,7 +316,7 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/testlab)
-"OL" = (
+"Rn" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
 /obj/structure/cable,
 /turf/open/floor/engine,
@@ -445,9 +436,9 @@ aA
 em
 bs
 Yj
-EA
-EA
-EA
+qY
+qY
+qY
 Ys
 xT
 em
@@ -460,7 +451,7 @@ aA
 hK
 me
 XS
-sF
+fY
 GD
 oV
 js
@@ -475,7 +466,7 @@ aA
 EC
 me
 XS
-OL
+Rn
 js
 yO
 js
@@ -490,7 +481,7 @@ on
 em
 me
 AS
-uP
+oo
 JO
 Ce
 Rp

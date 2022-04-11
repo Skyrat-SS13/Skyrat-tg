@@ -1,20 +1,22 @@
-#define COMMUNICATION_COOLDOWN 300
-#define COMMUNICATION_COOLDOWN_AI 300
+#define COMMUNICATION_COOLDOWN (30 SECONDS)
+#define COMMUNICATION_COOLDOWN_AI (30 SECONDS)
+#define COMMUNICATION_COOLDOWN_MEETING (5 MINUTES)
 
 SUBSYSTEM_DEF(communications)
 	name = "Communications"
 	flags = SS_NO_INIT | SS_NO_FIRE
 
-	var/silicon_message_cooldown
-	var/nonsilicon_message_cooldown
+	COOLDOWN_DECLARE(silicon_message_cooldown)
+	COOLDOWN_DECLARE(nonsilicon_message_cooldown)
+	COOLDOWN_DECLARE(emergency_meeting_cooldown)
 
 /datum/controller/subsystem/communications/proc/can_announce(mob/living/user, is_silicon)
-	if(is_silicon && silicon_message_cooldown > world.time)
-		. = FALSE
-	else if(!is_silicon && nonsilicon_message_cooldown > world.time)
-		. = FALSE
+	if(is_silicon && COOLDOWN_FINISHED(src, silicon_message_cooldown))
+		return TRUE
+	else if(!is_silicon && COOLDOWN_FINISHED(src, nonsilicon_message_cooldown))
+		return TRUE
 	else
-		. = TRUE
+		return FALSE
 
 /datum/controller/subsystem/communications/proc/make_announcement(mob/living/user, is_silicon, input, syndicate, list/players)
 	if(!can_announce(user, is_silicon))
@@ -27,7 +29,7 @@ SUBSYSTEM_DEF(communications)
 		COOLDOWN_START(src, nonsilicon_message_cooldown, COMMUNICATION_COOLDOWN)
 	user.log_talk(input, LOG_SAY, tag="priority announcement")
 	message_admins("[ADMIN_LOOKUPFLW(user)] has made a priority announcement.")
-/* SKYRAT EDIT REMOVAL
+
 /**
  * Check if a mob can call an emergency meeting
  *
@@ -59,7 +61,7 @@ SUBSYSTEM_DEF(communications)
 	call_emergency_meeting(user, get_area(user))
 	COOLDOWN_START(src, emergency_meeting_cooldown, COMMUNICATION_COOLDOWN_MEETING)
 	message_admins("[ADMIN_LOOKUPFLW(user)] has called an emergency meeting.")
-*/
+
 /datum/controller/subsystem/communications/proc/send_message(datum/comm_message/sending,print = TRUE,unique = FALSE)
 	for(var/obj/machinery/computer/communications/C in GLOB.machines)
 		if(!(C.machine_stat & (BROKEN|NOPOWER)) && is_station_level(C.z))

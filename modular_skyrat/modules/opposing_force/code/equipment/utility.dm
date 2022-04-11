@@ -16,10 +16,6 @@
 	description = "A fully-kitted toolbox scavenged from maintenance by our highly-paid monkeys. The toolbox \
 		itself is weighted especially to bash any head in and comes with a free pair of insulated combat gloves."
 
-/datum/opposing_force_equipment/gear/thermalgoggles
-	item_type = /obj/item/clothing/glasses/thermal
-	description = "A pair of thermal goggles. Cannot be chameleon disguised."
-
 /datum/opposing_force_equipment/gear/xraygoggles
 	item_type = /obj/item/clothing/glasses/thermal/xray
 	description = "A pair of low-light x-ray goggles manufactured by the Syndicate. Cannot be chameleon disguised. Makes wearer more vulnerable to bright lights."
@@ -33,6 +29,7 @@
 	description = "A belt that allows its wearer to temporarily turn invisible. Only recharges in dark areas. Use wisely."
 
 /datum/opposing_force_equipment/gear/projector
+	name = "Chameleon Projector"
 	item_type = /obj/item/chameleon
 	description = "A projector that allows its user to turn into any scanned object. Pairs well with a cluttered room and ambush weapon."
 
@@ -41,16 +38,14 @@
 	description = "A stolen Security HUD refitted with chameleon technology. Provides flash protection."
 
 /datum/opposing_force_equipment/gear/aidetector
+	name = "AI Detector Multitool"
 	item_type = /obj/item/multitool/ai_detect
 	description = "A multitool that lets you see the AI's vision cone with an overlaid HUD and know if you're being watched."
 
 /datum/opposing_force_equipment/gear/noslip
+	name = "Chameleon No-Slips"
 	item_type = /obj/item/clothing/shoes/chameleon/noslip
 	description = "No-slip chameleon shoes, for when you plan on running through hell and back."
-
-/datum/opposing_force_equipment/gear/cloakmod
-	item_type = /obj/item/mod/module/stealth/ninja
-	description = "An upgraded MODsuit cloaking module stolen from the Spider Clan's finest. Consumes less power than the standard, but is obviously illegal."
 
 /datum/opposing_force_equipment/gear/suppressor
 	item_type = /obj/item/suppressor
@@ -77,7 +72,7 @@
 	admin_note = "Allows a ghost to take control of a Cortical Borer."
 
 /datum/opposing_force_equipment/gear/borer_egg/on_issue(mob/living/target)
-	new /obj/effect/mob_spawn/ghost_role/borer_egg(get_turf(src))
+	new /obj/effect/mob_spawn/ghost_role/borer_egg/opfor(get_turf(target))
 
 /datum/opposing_force_equipment/gear/ventcrawl_book
 	item_type = /obj/item/book/granter/traitsr/ventcrawl_book
@@ -148,7 +143,35 @@
 
 /datum/opposing_force_equipment/gear/combatmedkit
 	name = "Syndicate Combat Medic Kit"
-	item_type = /obj/item/storage/firstaid/tactical
+	item_type = /obj/item/storage/medkit/tactical
 	description = "This first aid kit is a suspicious brown and red. Included is a combat stimulant injector \
 			for rapid healing, a medical night vision HUD for quick identification of injured personnel, \
 			and other supplies helpful for a field medic."
+
+/datum/opposing_force_equipment/gear/cloak_mod
+	item_type = /obj/item/mod/module/stealth/ninja
+	description = "An upgraded MODsuit cloaking module stolen from the Spider Clan's finest. Consumes less power than the standard, but is obviously illegal."
+
+/datum/opposing_force_equipment/gear/thermal_mod
+	item_type = /obj/item/mod/module/visor/thermal
+	description = "A visor module for a MODsuit that allows the user to see heat signatures through hard surfaces."
+
+/datum/opposing_force_equipment/gear/noslip_mod
+	item_type = /obj/item/mod/module/noslip
+	description = "A module that prohibits you from slipping on slippery surfaces without the bulk of magboots."
+
+/datum/opposing_force_equipment/gear/jetpack_mod
+	item_type = /obj/item/mod/module/jetpack/advanced
+	description = "A jetpack usually reserved for Syndicate MODsuits, this jetpack had the safety limiters removed, allowing it to move much faster in space."
+
+/datum/opposing_force_equipment/gear/energyshield_mod
+	item_type = /obj/item/mod/module/energy_shield
+	description = "A highly illegal MODsuit module that projects a shield of energy around you, temporarily blocking conventional kinetic and laser projectiles."
+
+/datum/opposing_force_equipment/gear/biteof87_mod
+	item_type = /obj/item/mod/module/springlock/bite_of_87
+	description = "An advanced springlock module that allows the user to enter and exit their MODsuit at extremely fast speeds. There's a scratched-off warning label on the back."
+
+/datum/opposing_force_equipment/gear/flamethrower_mod
+	item_type = /obj/item/mod/module/flamethrower
+	description = "A module that allows the user to fire flames at a target from their wrist."

@@ -9,7 +9,7 @@
 /datum/species/pod/podweak
 	name = "Podperson"
 	id = SPECIES_PODPERSON_WEAK
-	limbs_id = SPECIES_PODPERSON
+	examine_limb_id = SPECIES_PODPERSON
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -36,7 +36,7 @@
 		if(H.nutrition > NUTRITION_LEVEL_ALMOST_FULL)
 			H.set_nutrition(NUTRITION_LEVEL_ALMOST_FULL)
 		if(light_amount > 0.2) //if there's enough light, heal
-			H.heal_overall_damage(0.2 * delta_time, 0.2 * delta_time, 0, BODYPART_ORGANIC)
+			H.heal_overall_damage(0.2 * delta_time, 0.2 * delta_time, 0)
 			H.adjustToxLoss(-0.2 * delta_time)
 			H.adjustOxyLoss(-0.2 * delta_time)
 

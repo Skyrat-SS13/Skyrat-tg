@@ -43,6 +43,9 @@
 /// A trait source when adding traits through unit tests
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
+// SKYRAT EDIT START
+#include "~skyrat/opposing_force.dm"
+//SKYRAT EDIT END
 #include "achievements.dm"
 #include "anchored_mobs.dm"
 #include "anonymous_themes.dm"
@@ -87,8 +90,10 @@
 #include "ntnetwork_tests.dm"
 #include "objectives.dm"
 #include "outfit_sanity.dm"
+#include "paintings.dm"
 #include "pills.dm"
 #include "plantgrowth_tests.dm"
+#include "preference_species.dm"
 #include "preferences.dm"
 #include "projectiles.dm"
 #include "quirks.dm"

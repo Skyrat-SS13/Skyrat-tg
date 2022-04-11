@@ -1,5 +1,11 @@
 // For any mob that can be ridden
 
+//SKYRAT EDIT START: Human Riding Defines
+#define OVERSIZED_OFFSET 18
+#define OVERSIZED_SIDE_OFFSET 11
+#define REGULAR_OFFSET 6
+#define REGULAR_SIDE_OFFSET 4
+//SKYRAT EDIT END
 /datum/component/riding/creature
 	/// If TRUE, this creature's movements can be controlled by the rider while mounted (as opposed to riding cyborgs and humans, which is passive)
 	var/can_be_driven = TRUE
@@ -141,7 +147,7 @@
 		var/obj/effect/proc_holder/proc_holder = ability
 		if(!proc_holder.action)
 			return
-		proc_holder.action.Share(rider)
+		proc_holder.action.GiveAction(rider)
 
 /// Takes away the riding parent's abilities from the rider
 /datum/component/riding/creature/proc/remove_abilities(mob/living/rider)
@@ -156,7 +162,7 @@
 			return
 		if(rider == proc_holder.ranged_ability_user)
 			proc_holder.remove_ranged_ability()
-		proc_holder.action.Unshare(rider)
+		proc_holder.action.HideFrom(rider)
 
 /datum/component/riding/creature/riding_can_z_move(atom/movable/movable_parent, direction, turf/start, turf/destination, z_move_flags, mob/living/rider)
 	if(!(z_move_flags & ZMOVE_CAN_FLY_CHECKS))
@@ -255,11 +261,32 @@
 
 /datum/component/riding/creature/human/get_offsets(pass_index)
 	var/mob/living/carbon/human/H = parent
+	//SKYRAT EDIT BEGIN - Oversized Overhaul
 	if(H.buckle_lying)
-		return list(TEXT_NORTH = list(0, 6), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(0, 6), TEXT_WEST = list(0, 6))
+		return HAS_TRAIT(H, TRAIT_OVERSIZED) ? list(
+				TEXT_NORTH = list(0, OVERSIZED_OFFSET),
+				TEXT_SOUTH = list(0, OVERSIZED_OFFSET),
+				TEXT_EAST = list(0, OVERSIZED_OFFSET),
+				TEXT_WEST = list(0, OVERSIZED_OFFSET),
+			) : list(
+				TEXT_NORTH = list(0, REGULAR_OFFSET),
+				TEXT_SOUTH = list(0, REGULAR_OFFSET),
+				TEXT_EAST = list(0, REGULAR_OFFSET),
+				TEXT_WEST = list(0, REGULAR_OFFSET),
+			)
 	else
-		return list(TEXT_NORTH = list(0, 6), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(-6, 4), TEXT_WEST = list( 6, 4))
-
+		return HAS_TRAIT(H, TRAIT_OVERSIZED) ? list(
+				TEXT_NORTH = list(0, OVERSIZED_OFFSET),
+				TEXT_SOUTH = list(0, OVERSIZED_OFFSET),
+				TEXT_EAST = list(-OVERSIZED_SIDE_OFFSET, OVERSIZED_OFFSET),
+				TEXT_WEST = list(OVERSIZED_SIDE_OFFSET, OVERSIZED_OFFSET),
+			) : list(
+				TEXT_NORTH = list(0, REGULAR_OFFSET),
+				TEXT_SOUTH = list(0, REGULAR_OFFSET),
+				TEXT_EAST = list(-REGULAR_OFFSET, REGULAR_SIDE_OFFSET),
+				TEXT_WEST = list(REGULAR_OFFSET, REGULAR_SIDE_OFFSET)
+			)
+	//SKYRAT EDIT END
 /datum/component/riding/creature/human/force_dismount(mob/living/dismounted_rider)
 	var/atom/movable/AM = parent
 	AM.unbuckle_mob(dismounted_rider)
@@ -391,3 +418,11 @@
 	set_vehicle_dir_offsets(NORTH, movable_parent.pixel_x, 0)
 	set_vehicle_dir_offsets(EAST, movable_parent.pixel_x, 0)
 	set_vehicle_dir_offsets(WEST, movable_parent.pixel_x, 0)
+
+
+//SKYRAT EDIT START: Human Riding Defines
+#undef OVERSIZED_OFFSET
+#undef OVERSIZED_SIDE_OFFSET
+#undef REGULAR_OFFSET
+#undef REGULAR_SIDE_OFFSET
+//SKYRAT EDIT END

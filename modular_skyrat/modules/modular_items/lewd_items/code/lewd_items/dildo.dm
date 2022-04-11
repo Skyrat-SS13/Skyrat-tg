@@ -127,13 +127,6 @@
 			if(side_double)
 				user.adjustArousal(6)
 				user.adjustPleasure(8)
-			user.visible_message(span_purple("[user] [message]!"))
-			playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE, ignore_walls = FALSE)
 
 		if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES) //Mouth only. Sorry, perverts. No eye/ear penetration for you today.
 			if(!target.is_mouth_covered())
@@ -144,13 +137,6 @@
 			target.adjustPleasure(1)
 			if(prob(70) && (target.stat != DEAD))
 				target.emote(pick("gasp","moan"))
-			user.visible_message(span_purple("[user] [message]!"))
-			playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE, ignore_walls = FALSE)
 
 
 		else
@@ -162,13 +148,14 @@
 			target.adjustPleasure(5)
 			if(prob(60) && (target.stat != DEAD))
 				target.emote(pick("twitch_s","moan","shiver"))
-			user.visible_message(span_purple("[user] [message]!"))
-			playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE, ignore_walls = FALSE)
+
+	user.visible_message(span_purple("[user] [message]!"))
+	playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
+						'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
+						'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
+						'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
+						'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
+						'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE, ignore_walls = FALSE)
 
 ///////////////////////
 ///POLYCHROMIC DILDO///

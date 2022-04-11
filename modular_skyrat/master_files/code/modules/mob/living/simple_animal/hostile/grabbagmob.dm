@@ -889,7 +889,7 @@
 	icon_dead = "voxmeleedead"
 	melee_damage_lower = 15
 	melee_damage_upper = 15
-	loot = list(/obj/effect/spawner/random/medical/firstaid = 1)
+	loot = list(/obj/effect/spawner/random/medical/medkit = 1)
 	attack_verb_continuous = "slashes"
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/weapons/bladeslice.ogg'

@@ -155,6 +155,7 @@
 	and eventually bring life to this desolate planet while waiting for contact from your creators. \
 	Estimated time of last contact: Deployment, 5000 millennia ago."
 	spawner_job_path = /datum/job/lifebringer
+	restricted_species = list(/datum/species/pod) //SKYRAT EDIT ADDITION
 
 /obj/effect/mob_spawn/ghost_role/human/seed_vault/Initialize(mapload)
 	. = ..()
@@ -222,6 +223,7 @@
 	spawner_job_path = /datum/job/ash_walker
 	var/datum/team/ashwalkers/team
 	var/obj/structure/ash_walker_eggshell/eggshell
+	restricted_species = list(/datum/species/lizard/ashwalker) //SKYRAT EDIT ADDITION
 
 /obj/effect/mob_spawn/ghost_role/human/ash_walker/Destroy()
 	eggshell = null
@@ -237,6 +239,7 @@
 	// SKYRAT EDIT MOVE
 	// Moved lizard name randomizer before parent call (so character names are preserved)
 	spawned_human.fully_replace_character_name(null,random_unique_lizard_name(gender))
+	loadout_enabled = TRUE //SKYRAT EDIT ADDITION
 	. = ..()
 	// SKYRAT EDIT END
 	to_chat(spawned_human, "<b>Drag the corpses of men and beasts to your nest. It will absorb them to create more of your kind. Invade the strange structure of the outsiders if you must. Do not cause unnecessary destruction, as littering the wastes with ugly wreckage is certain to not gain you favor. Glory to the Necropolis!</b>")

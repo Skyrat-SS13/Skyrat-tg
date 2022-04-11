@@ -1,41 +1,49 @@
 /obj/item/gun/energy/cell_loaded //The basic cell loaded gun
 	name = "cell-loaded gun"
 	desc = "A energy gun that functions by loading cells for ammo types"
-	var/list/allowed_cells = list() //What kind of cells can the gun load? This can either be an entire type or only very specific cells.
-	var/maxcells = 3 //How much cells can the gun hold.
-	var/cellcount = 0 //How many cells are currently inserted
-	var/list/installedcells = list() //What cells are currently inserted?
-	has_gun_safety = TRUE
+
+	/// List containing what cells are allowed to be installed by the gun. This includes all subtypes.
+	var/list/allowed_cells = list()
+	/// The maximum amount of cells that a cell loaded gun can hold at once.
+	var/maxcells = 3
+	/// A list that contains the currently installed cells.
+	var/list/installedcells = list()
+
 	automatic_charge_overlays = FALSE //This is needed because Cell based guns use their own custom overlay system.
+	has_gun_safety = TRUE
 
 /obj/item/gun/energy/cell_loaded/examine(mob/user)
 	. = ..()
 	if(maxcells)
-		. += "<b>[cellcount]</b> out of <b>[maxcells]</b> cell slots are filled."
+		. += "<b>[installedcells.len]</b> out of <b>[maxcells]</b> cell slots are filled."
 		. += span_info("You can use AltClick with an empty hand to remove the most recently inserted cell from the chamber.")
+
 		for(var/cell in installedcells)
 			. += span_notice("There is \a [cell] loaded in the chamber.") //Shows what cells are currently inside of the gun
 
-/obj/item/gun/energy/cell_loaded/attackby(obj/item/weaponcell/C, mob/user) //Inserts a cell.
-	if(is_type_in_list(C, allowed_cells))//Checks to see if the gun has the capacity based on allowed_types to load a cell.
-		if(cellcount >= maxcells) //Are there too many cells inside of the gun?
-			to_chat(user, span_notice("The [src] is full, take a cell out to make room"))
-		else
-			var/obj/item/weaponcell/cell = C
-			if(!user.transferItemToLoc(cell, src))
-				return
-			playsound(loc, 'sound/machines/click.ogg', 50, 1)
-			to_chat(user, span_notice("You install the [cell]."))
-			ammo_type += new cell.ammo_type(src)
-			installedcells += cell
-			cellcount += 1
+/// Handles insertion of weapon cells
+/obj/item/gun/energy/cell_loaded/attackby(obj/item/weaponcell/used_cell, mob/user)
+	if(is_type_in_list(used_cell, allowed_cells)) // Checks allowed_cells to see if the gun is able to load the cells.
+		if(installedcells.len >= maxcells) //Prevents the user from loading any cells past the maximum cell allowance
+			to_chat(user, span_notice("[src] is full, take a cell out to make room."))
+			return
+
+		var/obj/item/weaponcell/cell = used_cell
+		if(!user.transferItemToLoc(cell, src))
+			return
+
+		playsound(loc, 'sound/machines/click.ogg', 50, 1)
+		to_chat(user, span_notice("You install the [cell]."))
+		ammo_type += new cell.ammo_type(src)
+		installedcells += cell
 	else
 		..()
 
 /obj/item/gun/energy/cell_loaded/update_overlays()
 	. = ..()
-	var/overlay_icon_state = "[icon_state]"
+	var/overlay_icon_state = icon_state
 	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
+
 	if(modifystate)
 		if(single_shot_type_overlay)
 			var/mutable_appearance/full_overlay = mutable_appearance(icon, "[icon_state]_full")
@@ -45,34 +53,40 @@
 
 	var/ratio = get_charge_ratio()
 	ratio = get_charge_ratio()
-	if(ratio == 0 && display_empty)
+
+	if(!ratio && display_empty)
 		. += "[icon_state]_empty"
 		return
 
 	var/mutable_appearance/charge_overlay = mutable_appearance(icon, overlay_icon_state)
+
 	if(!shot.select_color)
 		return
+
 	charge_overlay.color = shot.select_color
-	for(var/i = ratio, i >= 1, i--)
+
+	for(var/i in 0 to ratio)
 		charge_overlay.pixel_x = ammo_x_offset * (i - 1)
 		charge_overlay.pixel_y = ammo_y_offset * (i - 1)
 		. += new /mutable_appearance(charge_overlay)
 
 /obj/item/gun/energy/cell_loaded/AltClick(mob/user, modifiers)
-	if(cellcount >= 1) //Is there a cell inside?
-		to_chat(user, span_notice("You remove a cell"))
-		var/obj/item/last_cell = installedcells[installedcells.len]
-		if(last_cell)
-			last_cell.forceMove(drop_location())
-			user.put_in_hands(last_cell)
-		installedcells -= last_cell
-		ammo_type.len--
-		cellcount -= 1
-		select_fire(user)
-	else
+	if(!installedcells.len) //Checks to see if there is a cell inside of the gun, before removal.
 		to_chat(user, span_notice("The [src] has no cells inside"))
 		return ..()
 
-/obj/item/gun/energy/cell_loaded/alltypes //This is for debug.
+	to_chat(user, span_notice("You remove a cell"))
+	var/obj/item/last_cell = installedcells[installedcells.len]
+
+	if(last_cell)
+		last_cell.forceMove(drop_location())
+		user.put_in_hands(last_cell)
+
+	installedcells -= last_cell
+	ammo_type.len--
+	select_fire(user)
+
+/// A cellgun used for debug, it is able to use any weaponcell.
+/obj/item/gun/energy/cell_loaded/alltypes
 	name = "omni gun"
 	allowed_cells = list(/obj/item/weaponcell)

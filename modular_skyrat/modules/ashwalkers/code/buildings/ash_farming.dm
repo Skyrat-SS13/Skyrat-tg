@@ -1,4 +1,4 @@
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface/attackby(obj/item/attacking_object, mob/user, params)
+/turf/open/misc/asteroid/basalt/lava_land_surface/attackby(obj/item/attacking_object, mob/user, params)
 	if(istype(attacking_object, /obj/item/grown))
 		var/obj/item/grown/attacking_grown = attacking_object
 		if(attacking_grown.seed)
@@ -11,7 +11,7 @@
 			return
 	return ..()
 
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface/proc/try_seeding(obj/item/seeds/planting_seed, obj/targeted_delete, mob/user)
+/turf/open/misc/asteroid/basalt/lava_land_surface/proc/try_seeding(obj/item/seeds/planting_seed, obj/targeted_delete, mob/user)
 	var/obj/structure/flora/ash_farming/find_farm = locate() in contents
 	if(find_farm)
 		to_chat(user, span_warning("There can only be one farm in a hole at a time!"))
