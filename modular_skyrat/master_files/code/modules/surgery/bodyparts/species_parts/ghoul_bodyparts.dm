@@ -50,8 +50,6 @@
 	qdel(src)
 
 /obj/item/bodypart/r_leg/mutant/ghoul/drop_limb(special)
-	//amCondemned = TRUE
-	//var/mob/owner_cache = owner
 	..() // Create Meat, Remove Limb
 	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
 	if (percentHealth > 0)
