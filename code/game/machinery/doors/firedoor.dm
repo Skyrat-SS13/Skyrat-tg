@@ -249,9 +249,10 @@
 /obj/machinery/door/firedoor/proc/check_atmos(turf/checked_turf)
 	var/datum/gas_mixture/environment = checked_turf.return_air()
 
-	if(environment?.temperature >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST)
+	var/pressure = environment?.return_pressure() //SKYRAT EDIT ADDITION - Micro optimisation
+	if(environment?.temperature >= BODYTEMP_HEAT_DAMAGE_LIMIT || pressure > WARNING_HIGH_PRESSURE) //SKYRAT EDIT CHANGE - BETTER LOCKS
 		return FIRELOCK_ALARM_TYPE_HOT
-	if(environment?.temperature <= BODYTEMP_COLD_DAMAGE_LIMIT)
+	if(environment?.temperature <= BODYTEMP_COLD_DAMAGE_LIMIT || pressure < WARNING_LOW_PRESSURE) //SKYRAT EDIT CHANGE - BETTER LOCKS
 		return FIRELOCK_ALARM_TYPE_COLD
 	return
 
@@ -270,20 +271,6 @@
 	var/turf/checked_turf = source
 	var/result = check_atmos(checked_turf)
 
-<<<<<<< HEAD
-	var/datum/gas_mixture/environment = my_turf.return_air()
-	var/result
-
-	var/pressure = environment?.return_pressure() //SKYRAT EDIT ADDITION - Micro optimisation
-	if(environment?.temperature >= BODYTEMP_HEAT_DAMAGE_LIMIT || pressure > WARNING_HIGH_PRESSURE) //SKYRAT EDIT CHANGE - BETTER LOCKS
-		result = FIRELOCK_ALARM_TYPE_HOT
-	if(environment?.temperature <= BODYTEMP_COLD_DAMAGE_LIMIT || pressure < WARNING_LOW_PRESSURE) //SKYRAT EDIT CHANGE - BETTER LOCKS
-		result = FIRELOCK_ALARM_TYPE_COLD
-	if(!result)
-		return
-
-	start_activation_process(result)
-=======
 	if(result && TURF_SHARES(checked_turf))
 		issue_turfs |= checked_turf
 		if(!alarm_type)
@@ -293,7 +280,6 @@
 		if(!length(issue_turfs))
 			start_deactivation_process()
 
->>>>>>> 57205f68ac0 (firelocks now automatically open once the alarms are cleared and fixed fire alarms not clearing (#65490))
 
 /**
  * Begins activation process of us and our neighbors.
