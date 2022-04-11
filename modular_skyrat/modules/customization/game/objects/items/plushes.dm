@@ -281,6 +281,136 @@
 	attack_verb_continuous = list("wehs")
 	attack_verb_simple = list("weh")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
+	
+/obj/item/toy/plush/mechanic_fox
+	name = "Mechanist Fox Plushie"
+	desc = "A fox with fabulous hair! It has a tendency to make synth plushies look good as new when placed next to them."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_cali"
+	inhand_icon_state = "plushie_cali"
+	attack_verb_continuous = list("fixes","updates","hugs")
+	attack_verb_simple = list("fixes","updates","hugs")
+	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
+
+/obj/item/toy/plush/tribal_salamander
+	name = "Tribal Salamander Plushie"
+	desc = "A water-safe plushie that always seems to lose any clothes you try to put on it."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_azu"
+	inhand_icon_state = "plushie_azu"
+	attack_verb_continuous = list("wurbles at","warbles at")
+	attack_verb_simple = list("wurbles at","warbles at")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/wurble.ogg' = 1)
+
+/obj/item/toy/plush/commanding_teshari
+    name = "Commanding Teshari Plushy"
+    desc = "A very soft plush resembling a certain science-loving, command inclined Teshari. Just holding it makes you feel cared for."
+    icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+    icon_state = "plushie_alara"
+    inhand_icon_state = "plushie_alara"
+    attack_verb_continuous = list("peeps", "wurbles", "hugs")
+    attack_verb_simple = list("peeps", "wurbles", "hugs")
+    squeak_override = list('modular_skyrat/modules/emotes/sound/voice/peep_once.ogg' = 1)
+
+/obj/item/toy/plush/breakdancing_bird
+	name = "Breakdancing Bird Plushie"
+	desc = "This little robotic bird plushie loves to give you a little dance in celebration of your achievements, no matter how mundane."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_cadicus"
+	inhand_icon_state = "plushie_cadicus"
+	attack_verb_continuous = list("boops","dances next to")
+	attack_verb_simple = list("boops","dances next to")
+	squeak_override = list('sound/machines/ping.ogg' = 1)
+
+/obj/item/toy/plush/skreking_vox
+	name = "Skreking Vox Plushie"
+	desc = "A vox plushie that seems ready to pull a gun on you and demand your money! Rumor has it that if you poke it in a particular way, it will show you its skrektual technique."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_toko"
+	inhand_icon_state = "plushie_toko"
+	attack_verb_continuous = list("rustles at","threatens","skreks at")
+	attack_verb_simple = list("rustles at","threatens","skreks at")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/voxrustle.ogg' = 1)
+	
+/obj/item/toy/plush/blue_dog
+	name = "Blue Dog Plushie"
+	desc = "A devious looking husky that seems to be begging for headpats. It smells faintly of blueberries."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_cobalt"
+	inhand_icon_state = "plushie_cobalt"
+	attack_verb_continuous = list("barks at", "borks at", "woofs at")
+	attack_verb_simple = list("barks at", "borks at", "woofs at")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/bark1.ogg'=1, 'modular_skyrat/modules/emotes/sound/voice/bark2.ogg'=1)
+
+/obj/item/toy/plush/engi_snek
+	name = "Engineering Snek Plushie"
+	desc = "This plush looks like it knows the difference between pumps and pipes! The arm is detachable, so don't lose it!"
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_tyri"
+	inhand_icon_state = "plushie_tyri"
+	attack_verb_continuous = list("fixes", "unbolts","welds")
+	attack_verb_simple = list("fixes", "unbolts","welds")
+	squeak_override = list('sound/items/screwdriver.ogg' = 1, 'sound/items/drill_use.ogg' = 1, 'sound/items/welder.ogg' = 1)
+
+/obj/item/toy/plush/glitch_synth
+	name = "Glitching Synthetic Plushie"
+	desc = "A synthetic plush, the interface seems to glitch out every time you give it a hug or call it cute!"
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_rex"
+	inhand_icon_state = "plushie_rex"
+	attack_verb_continuous = list("beeps", "hugs", "health analyzes")
+	attack_verb_simple = list("beeps", "hugs", "health analyzes")
+	squeak_override = list('sound/machines/twobeep_high.ogg' = 1)
+
+/obj/item/toy/plush/boom_bird
+	name = "Boom Bird Plushie"
+	desc = "This little bird plushie may look like a nerd, but you have the sneaking suspicion it might be valid! Why does your skin start to glow when you hug it?"
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_dima"
+	inhand_icon_state = "plushie_dima"
+	attack_verb_continuous = list("punches", "explodes on", "peeps")
+	attack_verb_simple = list("punches", "explodes on", "peeps")
+	squeak_override = list('sound/machines/sm/accent/delam/1.ogg' = 1)
+	
+/obj/item/toy/plush/blue_cat
+	name = "blue cat plushie"
+	desc = "A bright blue cat plush with neon pink hair, here to hand out kisses wherever kisses need be."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_skyy"
+	inhand_icon_state = "plushie_skyy"
+	attack_verb_continuous = list("kisses", "hugs", "purrs against")
+	attack_verb_simple = list("kisses", "hugs", "purrs against")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/nya.ogg' = 1)
+
+/obj/item/toy/plush/igneous_synth
+	name = "igneous synth plushie"
+	desc = "Not actually made of igneous rock, giving this plush a hug will let you feel like you're being squeezed by the jaws of life!"
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_granite"
+	inhand_icon_state = "plushie_granite"
+	attack_verb_continuous = list("bleps", "SQUEEZES", "pies")
+	attack_verb_simple = list("bleps", "SQUEEZES", "pies")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg' = 1)
+
+/obj/item/toy/plush/edgy_bird
+	name = "edgy birb plushie"
+	desc = "An edgy plush of an edgy bird. You could swear it's teleporting to a different spot every time you look away..."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_koto"
+	inhand_icon_state = "plushie_koto"
+	attack_verb_continuous = list("pecks", "teleports behind", "caws at")
+	attack_verb_simple = list("pecks", "teleports behind", "caws at")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/caw.ogg' = 1)
+
+/obj/item/toy/plush/tree_ferret
+	name = "tree ferret plushy"
+	desc = "This plush will always put on a smile to make your day as bright as the sun. Hugging him makes you feel warm and fuzzy. Comes with plush chemical vials to fix your non emotional traumas too!"
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_sels"
+	inhand_icon_state = "plushie_sels"
+	attack_verb_continuous = list("hugs", "cackles at", "health analyzes")
+	attack_verb_simple = list("hugs", "cackles at", "health analyzes")
+	squeak_override = list('sound/creatures/venus_trap_hurt.ogg' = 1)
 
 /obj/item/toy/plush/fox/mia
 	name = "Mia’s fox plushie"

@@ -149,6 +149,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/list/attack_verb_simple
 	///list() of species types, if a species cannot put items in a certain slot, but species type is in list, it will be able to wear that item
 	var/list/species_exception = null
+	///This is a bitfield that defines what variations exist for bodyparts like Digi legs. See: code\_DEFINES\inventory.dm
+	var/supports_variations_flags = NONE
 
 	///A weakref to the mob who threw the item
 	var/datum/weakref/thrownby = null //I cannot verbally describe how much I hate this var
@@ -311,6 +313,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		worn_icon_digi = SSgreyscale.GetColoredIconByType(greyscale_config_worn_digi, greyscale_colors)
 	if(greyscale_config_worn_vox)
 		worn_icon_vox = SSgreyscale.GetColoredIconByType(greyscale_config_worn_vox, greyscale_colors)
+	if(greyscale_config_worn_teshari)
+		worn_icon_teshari = SSgreyscale.GetColoredIconByType(greyscale_config_worn_teshari, greyscale_colors)
 	if(greyscale_config_worn_taur_snake)
 		worn_icon_taur_snake = SSgreyscale.GetColoredIconByType(greyscale_config_worn_taur_snake, greyscale_colors)
 	if(greyscale_config_worn_taur_paw)
@@ -1285,7 +1289,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
  */
 /obj/item/proc/update_action_buttons(status_only = FALSE, force = FALSE)
 	for(var/datum/action/current_action as anything in actions)
-		current_action.UpdateButtonIcon(status_only, force)
+		current_action.UpdateButtons(status_only, force)
 
 // Update icons if this is being carried by a mob
 /obj/item/wash(clean_types)
@@ -1351,8 +1355,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		worn_icon = unique_reskin[pick][RESKIN_WORN_ICON]
 	if(unique_reskin[pick][RESKIN_WORN_ICON_STATE])
 		worn_icon_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
-	if(unique_reskin[pick][RESKIN_MUTANT_VARIANTS])
-		mutant_variants = unique_reskin[pick][RESKIN_MUTANT_VARIANTS]
+	if(unique_reskin[pick][RESKIN_supports_variations_flags])
+		supports_variations_flags = unique_reskin[pick][RESKIN_supports_variations_flags]
 	if(ishuman(M))
 		var/mob/living/carbon/human/wearer = M
 		wearer.regenerate_icons() // update that mf
@@ -1435,6 +1439,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	alpha = 0
 	transform = animation_matrix
 
+	SEND_SIGNAL(src, COMSIG_ATOM_TEMPORARY_ANIMATION_START, 3)
 	// This is instant on byond's end, but to our clients this looks like a quick drop
 	animate(src, alpha = old_alpha, pixel_x = old_x, pixel_y = old_y, transform = old_transform, time = 3, easing = CUBIC_EASING)
 
@@ -1476,3 +1481,13 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	animate(attack_image, alpha = 175, transform = copy_transform.Scale(0.75), pixel_x = 0, pixel_y = 0, pixel_z = 0, time = 3)
 	animate(time = 1)
 	animate(alpha = 0, time = 3, easing = CIRCULAR_EASING|EASE_OUT)
+
+/// Common proc used by painting tools like spraycans and palettes that can access the entire 24 bits color space.
+/obj/item/proc/pick_painting_tool_color(mob/user, default_color)
+	var/chosen_color = input(user,"Pick new color", "[src]", default_color) as color|null
+	if(!chosen_color || QDELETED(src) || IS_DEAD_OR_INCAP(user) || !user.is_holding(src))
+		return
+	set_painting_tool_color(chosen_color)
+
+/obj/item/proc/set_painting_tool_color(chosen_color)
+	SEND_SIGNAL(src, COMSIG_PAINTING_TOOL_SET_COLOR, chosen_color)

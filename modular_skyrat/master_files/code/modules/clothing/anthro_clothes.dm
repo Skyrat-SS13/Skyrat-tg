@@ -2,7 +2,7 @@
 
 //HEAD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 /obj/item/clothing/head/hardhat/atmos
-	mutant_variants = STYLE_MUZZLE | STYLE_VOX
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION | CLOTHING_SNOUTED_VOX_VARIATION
 
 /obj/item/clothing/head/sombrero
 	flags_inv = HIDEHAIR | SHOWSPRITEEARS
@@ -15,10 +15,10 @@
 
 //MASK>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 /obj/item/clothing/mask/gas/atmos
-	mutant_variants = STYLE_MUZZLE | STYLE_VOX
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION | CLOTHING_SNOUTED_VOX_VARIATION
 
 /obj/item/clothing/mask/gas/atmos/captain
-	mutant_variants = STYLE_MUZZLE | STYLE_VOX
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION | CLOTHING_SNOUTED_VOX_VARIATION
 
 /obj/item/clothing/mask/luchador	//No longer has HIDESNOUT, has SHOWSPRITEEARS
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|SHOWSPRITEEARS
@@ -33,6 +33,6 @@
 
 //SUIT>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 /obj/item/clothing/suit/fire
-	mutant_variants = STYLE_DIGITIGRADE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 //FEET>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

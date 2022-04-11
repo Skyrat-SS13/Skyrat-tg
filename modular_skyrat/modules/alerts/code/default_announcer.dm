@@ -2,7 +2,8 @@
 	welcome_sounds = list('modular_skyrat/modules/alerts/sound/ai/default/welcome.ogg')
 	alert_sounds = list('modular_skyrat/modules/alerts/sound/alert2.ogg')
 	command_report_sounds = list('modular_skyrat/modules/alerts/sound/ai/default/commandreport.ogg')
-	event_sounds = list(ANNOUNCER_AIMALF = 'sound/ai/default/aimalf.ogg',
+	event_sounds = list(
+		ANNOUNCER_AIMALF = 'sound/ai/default/aimalf.ogg',
 		ANNOUNCER_ALIENS = 'modular_skyrat/modules/alerts/sound/ai/default/lifesigns.ogg',
 		ANNOUNCER_ANIMES = 'modular_skyrat/modules/alerts/sound/ai/default/animes.ogg',
 		ANNOUNCER_INTERCEPT = 'modular_skyrat/modules/alerts/sound/alert2.ogg',
@@ -37,5 +38,6 @@
 		ANNOUNCER_SPOOKY = 'modular_skyrat/modules/alerts/sound/ai/default/admin_horror_music.ogg',
 		ANNOUNCER_ERTYES = 'modular_skyrat/modules/alerts/sound/ai/default/yesert.ogg',
 		ANNOUNCER_MUTANTS = 'modular_skyrat/modules/alerts/sound/ai/default/hazdet.ogg',
-		ANNOUNCER_KLAXON = 'modular_skyrat/master_files/sound/blackmesa/siren1_long.ogg'
+		ANNOUNCER_KLAXON = 'modular_skyrat/modules/black_mesa/sound/siren1_long.ogg',
+		ANNOUNCER_ICARUS = 'modular_skyrat/modules/assault_operatives/sound/icarus_alarm.ogg',
 		)

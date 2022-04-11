@@ -151,6 +151,17 @@
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
+/datum/design/bodymedicell
+	name = "Oppressive Force Relocation Medicell"
+	desc = "A medicell that can be used to teleport non-medical staff to the lobby."
+	id = "relocatemedicell"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000, /datum/material/diamond = 500, /datum/material/bluespace = 2000)
+	reagents_list = list(/datum/reagent/eigenstate = 10)
+	build_path = /obj/item/weaponcell/medical/utility/relocation
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
 //Upgrade Kit//
 /datum/design/medigunspeedkit
 	name = "VeyMedical CWM-479 Upgrade kit"

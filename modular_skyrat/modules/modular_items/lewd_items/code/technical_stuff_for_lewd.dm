@@ -630,7 +630,6 @@
 	drop_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg'
 	pickup_sound =  'sound/items/handling/cloth_pickup.ogg'
 	slot_flags = ITEM_SLOT_VAGINA | ITEM_SLOT_ANUS | ITEM_SLOT_PENIS | ITEM_SLOT_NIPPLES
-	var/mutantrace_variation = NO_MUTANTRACE_VARIATION //Are there special sprites for specific situations? Don't use this unless you need to.
 
 /obj/item/clothing/sextoy/dropped(mob/user)
 	..()
@@ -695,7 +694,7 @@
 	var/mutable_appearance/vagina_overlay
 
 	if(!vagina_overlay)
-		vagina_overlay = U?.build_worn_icon(default_layer = VAGINA_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_icon = icon_file)
+		vagina_overlay = U?.build_worn_icon(default_layer = VAGINA_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
 	if(OFFSET_UNIFORM in dna.species.offset_features)
 		vagina_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
@@ -734,7 +733,7 @@
 	var/mutable_appearance/anus_overlay
 
 	if(!anus_overlay)
-		anus_overlay = U?.build_worn_icon(default_layer = ANUS_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_icon = icon_file)
+		anus_overlay = U?.build_worn_icon(default_layer = ANUS_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
 	if(OFFSET_UNIFORM in dna.species.offset_features)
 		anus_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
@@ -773,7 +772,7 @@
 	var/mutable_appearance/nipples_overlay
 
 	if(!nipples_overlay)
-		nipples_overlay = U?.build_worn_icon(default_layer = NIPPLES_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_icon = icon_file)
+		nipples_overlay = U?.build_worn_icon(default_layer = NIPPLES_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
 	if(OFFSET_UNIFORM in dna.species.offset_features)
 		nipples_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
@@ -812,7 +811,7 @@
 	var/mutable_appearance/penis_overlay
 
 	if(!penis_overlay)
-		penis_overlay = U?.build_worn_icon(default_layer = PENIS_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_icon = icon_file)
+		penis_overlay = U?.build_worn_icon(default_layer = PENIS_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
 	if(OFFSET_UNIFORM in dna.species.offset_features)
 		penis_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
@@ -822,6 +821,7 @@
 	apply_overlay(PENIS_LAYER)
 	update_mutant_bodyparts()
 
+/*
 // Shoes update extention for supporting correctt removing shoe in sleepbag
 /mob/living/carbon/human/update_inv_shoes()
 
@@ -847,12 +847,10 @@
 					client.screen += shoes					//add it to client's screen
 			update_observer_view(shoes,1)
 			var/icon_file = shoes.worn_icon
-			var/applied_styles = NONE
-			if((DIGITIGRADE in dna.species.species_traits) && (shoes.mutant_variants & STYLE_DIGITIGRADE))
-				applied_styles |= STYLE_DIGITIGRADE
+			if((shoes.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && (shoes.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 				icon_file = shoes.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/feet_digi.dmi'
 
-			overlays_standing[SHOES_LAYER] = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', override_icon = icon_file, mutant_styles = applied_styles)
+			overlays_standing[SHOES_LAYER] = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', override_file = icon_file)
 			var/mutable_appearance/shoes_overlay = overlays_standing[SHOES_LAYER]
 			if(OFFSET_SHOES in dna.species.offset_features)
 				shoes_overlay.pixel_x += dna.species.offset_features[OFFSET_SHOES][1]
@@ -864,7 +862,7 @@
 		return
 	else
 		..()
-
+*/
 // Updating vagina hud slot
 /mob/living/carbon/human/update_hud_vagina(obj/item/I)
 	I.screen_loc = ui_vagina

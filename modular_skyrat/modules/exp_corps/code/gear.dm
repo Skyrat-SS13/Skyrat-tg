@@ -2,7 +2,7 @@
 /obj/item/storage/medkit/expeditionary
 	name = "combat medical kit"
 	desc = "Now with 100% less bullshit."
-	icon_state = "bezerk"
+	icon_state = "medkit_tactical"
 	damagetype_healed = "all"
 
 /obj/item/storage/medkit/expeditionary/ComponentInitialize()

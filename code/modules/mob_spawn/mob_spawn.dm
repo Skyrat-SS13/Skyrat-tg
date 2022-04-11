@@ -192,9 +192,9 @@
 			var/mob/living/carbon/human/spawned_human = spawned_mob
 			mob_possessor?.client?.prefs?.safe_transfer_prefs_to(spawned_human)
 			spawned_human.dna.update_dna_identity()
-			if(loadout_enabled)
-				SSquirks.AssignQuirks(spawned_human, mob_possessor.client)
 			if(quirks_enabled)
+				SSquirks.AssignQuirks(spawned_human, mob_possessor.client)
+			if(loadout_enabled)
 				spawned_human.equip_outfit_and_loadout(outfit, mob_possessor.client.prefs)
 	// SKYRAT EDIT END
 	if(mob_possessor)
@@ -264,7 +264,6 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_type = /mob/living/carbon/human
-	restricted_species = list(/datum/species/lizard/ashwalker) //SKYRAT EDIT ADDITION
 
 /obj/effect/mob_spawn/corpse/human
 	icon_state = "corpsehuman"

@@ -775,6 +775,13 @@
 	result = /obj/item/paper_bin/bundlenatural
 	category = CAT_MISC
 
+/datum/crafting_recipe/sillycup
+	name = "Paper Cup"
+	result =  /obj/item/reagent_containers/food/drinks/sillycup
+	time = 1 SECONDS
+	reqs = list(/obj/item/paper = 2)
+	category = CAT_MISC
+
 /datum/crafting_recipe/toysword
 	name = "Toy Sword"
 	reqs = list(/obj/item/light/bulb = 1, /obj/item/stack/cable_coil = 1, /obj/item/stack/sheet/plastic = 4)
@@ -1200,7 +1207,7 @@
 	if(!HAS_TRAIT(user,TRAIT_UNDERWATER_BASKETWEAVING_KNOWLEDGE))
 		return FALSE
 	var/turf/T = get_turf(user)
-	if(istype(T,/turf/open/water) || istype(T,/turf/open/floor/plating/beach/water))
+	if(istype(T, /turf/open/water))
 		return TRUE
 	var/obj/machinery/shower/S = locate() in T
 	if(S?.on)
