@@ -2,7 +2,7 @@
 	id = "ipc_parts"
 	display_name = "IPC Organs"
 	description = "Allows Exosuit Fabricators to build IPC organs."
-	prereq_ids = list("basic_medical")
+	prereq_ids = list("adv_robotics")
 	design_ids = list(
 		"ipc_stomach_design",
 		"ipc_ears_design",
