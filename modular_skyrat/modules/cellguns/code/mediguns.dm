@@ -2,7 +2,7 @@
 /obj/item/gun/energy/cell_loaded/medigun
 	name = "medigun"
 	desc = "This is my smart gun, it won't hurt anyone friendly, infact it will make them heal! Please tell github if you somehow manage to get this gun."
-	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/projectile.dmi'
+	icon = 'modular_skyrat/modules/cellguns/icons/obj/guns/mediguns/projectile.dmi'
 	icon_state = "medigun"
 	inhand_icon_state = "chronogun" // Fits best with how the medigun looks, might be changed in the future
 	ammo_type = list(/obj/item/ammo_casing/energy/medical) // The default option that heals oxygen
@@ -27,7 +27,7 @@
 
 /obj/item/gun/energy/cell_loaded/medigun/upgraded/Initialize()
 	. = ..()
-	var/mutable_appearance/fastcharge_medigun = mutable_appearance('modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/projectile.dmi', "medigun_fastcharge")
+	var/mutable_appearance/fastcharge_medigun = mutable_appearance('modular_skyrat/modules/cellguns/icons/obj/guns/mediguns/projectile.dmi', "medigun_fastcharge")
 	add_overlay(fastcharge_medigun)
 
 // CMO and CC MediGun
@@ -41,7 +41,7 @@
 
 /obj/item/gun/energy/cell_loaded/medigun/cmo/Initialize()
 	. = ..()
-	var/mutable_appearance/cmo_medigun = mutable_appearance('modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/projectile.dmi', "medigun_cmo")
+	var/mutable_appearance/cmo_medigun = mutable_appearance('modular_skyrat/modules/cellguns/icons/obj/guns/mediguns/projectile.dmi', "medigun_cmo")
 	add_overlay(cmo_medigun)
 
 // Medigun power cells
@@ -71,7 +71,7 @@
 // Medigun wiki book
 /obj/item/book/manual/wiki/mediguns
 	name = "medigun operating manual"
-	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/misc.dmi'
+	icon = 'modular_skyrat/modules/cellguns/icons/obj/guns/mediguns/misc.dmi'
 	icon_state = "manual"
 	starting_author = "VeyMedical"
 	starting_title = "Medigun Operating Manual"
@@ -82,7 +82,7 @@
 /obj/item/storage/briefcase/medicalgunset/
 	name = "medigun supply kit"
 	desc = "A supply kit for the medigun."
-	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/misc.dmi'
+	icon = 'modular_skyrat/modules/cellguns/icons/obj/guns/mediguns/misc.dmi'
 	icon_state = "case_standard"
 	inhand_icon_state = "lockbox"
 	lefthand_file = 'icons/mob/inhands/equipment/briefcase_lefthand.dmi'
@@ -118,7 +118,7 @@
 /obj/item/weaponcell/medical
 	name = "default medicell"
 	desc = "The standard oxygen cell, most guns come with this already installed."
-	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/upgrades.dmi'
+	icon = 'modular_skyrat/modules/cellguns/icons/obj/guns/mediguns/medicells.dmi'
 	icon_state = "Oxy1"
 	w_class = WEIGHT_CLASS_SMALL
 	ammo_type = /obj/item/ammo_casing/energy/medical // This is the ammo type that all mediguns come with.
@@ -286,7 +286,7 @@
 //Empty Medicell//
 /obj/item/device/custom_kit/empty_cell //Having the empty cell as an upgrade kit sounds jank, but it should work well.
 	name = "empty salve medicell"
-	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/upgrades.dmi'
+	icon = 'modular_skyrat/modules/cellguns/icons/obj/guns/mediguns/medicells.dmi'
 	icon_state = "empty"
 	desc = "An inactive salve medicell, use this on an aloe leaf to make this into a usable cell."
 	from_obj = /obj/item/food/grown/aloe
