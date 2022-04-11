@@ -151,7 +151,7 @@
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
-/datum/design/bodymedicell
+/datum/design/relocatemedicell
 	name = "Oppressive Force Relocation Medicell"
 	desc = "A medicell that can be used to teleport non-medical staff to the lobby."
 	id = "relocatemedicell"
