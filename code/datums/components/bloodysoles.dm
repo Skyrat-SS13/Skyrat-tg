@@ -241,7 +241,6 @@
 /datum/component/bloodysoles/feet/update_icon()
 	if(ishuman(wielder))
 		var/mob/living/carbon/human/human = wielder
-		fix_soles() //SKYRAT ADDITION - DIGI_BLOODSOLE
 		if(NOBLOODOVERLAY in human.dna.species.species_traits)
 			return
 		if(bloody_shoes[BLOOD_STATE_HUMAN] > 0 && !is_obscured())
@@ -261,7 +260,7 @@
 		var/obj/item/bodypart/affecting = X
 		if(affecting.body_part == LEG_RIGHT || affecting.body_part == LEG_LEFT)
 			if(!affecting.bodypart_disabled)
-				FP.species_types |= affecting.species_id
+				FP.species_types |= affecting.limb_id
 				break
 
 
@@ -282,15 +281,6 @@
 
 	..()
 
-//SKYRAT EDIT ADDITION BEGIN - DIGI_BLOODSOLE
-/datum/component/bloodysoles/feet/proc/fix_soles()
-	var/mob/living/carbon/H = parent
-	if (DIGITIGRADE in H.dna.species.species_traits)
-		if (bloody_feet.icon_state != "shoeblood_digi")
-			bloody_feet = mutable_appearance('modular_skyrat/modules/digi_bloodsole/icons/blood.dmi', "shoeblood_digi", SHOES_LAYER)
-	else if (bloody_feet.icon_state != "shoeblood")
-		bloody_feet = mutable_appearance('icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
-//SKYRAT EDIT ADDITION END
 
 /datum/component/bloodysoles/feet/proc/unequip_shoecover(datum/source)
 	SIGNAL_HANDLER

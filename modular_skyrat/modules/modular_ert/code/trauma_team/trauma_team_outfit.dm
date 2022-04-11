@@ -112,7 +112,7 @@
 	armor = list(MELEE = 10, BULLET = 10, LASER = 10,ENERGY = 10, BOMB = 10, BIO = 100, FIRE = 80, ACID = 80)
 	resistance_flags = ACID_PROOF
 	cell = /obj/item/stock_parts/cell/super
-	mutant_variants = NONE	//Traumateam NEEDS to look nondescript. Its the whole gimmick, tactical healing.
+	supports_variations_flags = NONE	//Traumateam NEEDS to look nondescript. Its the whole gimmick, tactical healing.
 
 /obj/item/clothing/head/helmet/space/ntrauma
 	name = "trauma team helmet"
@@ -121,4 +121,4 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "ert_ntrauma"
 	resistance_flags = ACID_PROOF
-	mutant_variants = NONE	//Also good GOD I didnt want to re-sprite this helmet
+	supports_variations_flags = NONE	//Also good GOD I didnt want to re-sprite this helmet

@@ -4,8 +4,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	mutant_bodyparts = list()
 	///Self explanatory
 	var/can_have_genitals = TRUE
-	///Override of icon file of which we're taking the icons from for our limbs
-	var/limbs_icon
 	///A list of actual body markings on the owner of the species. Associative lists with keys named by limbs defines, pointing to a list with names and colors for the marking to be rendered. This is also stored in the DNA
 	var/list/list/body_markings = list()
 	///Override of the eyes icon file, used for Vox and maybe more in the future - The future is now, with Teshari using it too
@@ -33,30 +31,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/list/standing	= list()
 
 	var/obj/item/bodypart/head/HD = H.get_bodypart(BODY_ZONE_HEAD)
-
-	//Digitigrade legs are stuck in the phantom zone between true limbs and mutant bodyparts. Mainly it just needs more agressive updating than most limbs.
-	var/update_needed = FALSE
-	var/not_digitigrade = TRUE
-	for(var/X in H.bodyparts)
-		var/obj/item/bodypart/O = X
-		if(!O.use_digitigrade)
-			continue
-		not_digitigrade = FALSE
-		if(!(DIGITIGRADE in species_traits)) //Someone cut off a digitigrade leg and tacked it on
-			species_traits += DIGITIGRADE
-		var/should_be_squished = FALSE
-		if((H.wear_suit && H.wear_suit.flags_inv & HIDEJUMPSUIT && !(H.wear_suit.mutant_variants & STYLE_DIGITIGRADE) && (H.wear_suit.body_parts_covered & LEGS)) || (H.w_uniform && (H.w_uniform.body_parts_covered & LEGS) && !(H.w_uniform.mutant_variants & STYLE_DIGITIGRADE)))
-			should_be_squished = TRUE
-		if(O.use_digitigrade == FULL_DIGITIGRADE && should_be_squished)
-			O.use_digitigrade = SQUISHED_DIGITIGRADE
-			update_needed = TRUE
-		else if(O.use_digitigrade == SQUISHED_DIGITIGRADE && !should_be_squished)
-			O.use_digitigrade = FULL_DIGITIGRADE
-			update_needed = TRUE
-	if(update_needed)
-		H.update_body_parts()
-	if(not_digitigrade && (DIGITIGRADE in species_traits)) //Curse is lifted
-		species_traits -= DIGITIGRADE
 
 	if(!mutant_bodyparts)
 		H.remove_overlay(BODY_BEHIND_LAYER)
@@ -93,7 +67,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	H.remove_overlay(BODY_FRONT_LAYER)
 	H.remove_overlay(BODY_FRONT_UNDER_CLOTHES)
 
-	var/g = (H.body_type == FEMALE) ? "f" : "m"
+	var/g = (H.physique == FEMALE) ? "f" : "m"
 	for(var/bodypart in bodyparts_to_add)
 		var/datum/sprite_accessory/S = bodypart
 		var/key = S.key
@@ -363,6 +337,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/get_random_body_markings(list/features) //Needs features to base the colour off of
 	return list()
 
+/*
 /datum/species/proc/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	// Drop the items the new species can't wear
 	if((AGENDER in species_traits))
@@ -374,14 +349,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 	if(C.hud_used)
 		C.hud_used.update_locked_slots()
-
-	fix_non_native_limbs(C)
-
-	// this needs to be FIRST because qdel calls update_body which checks if we have DIGITIGRADE legs or not and if not then removes DIGITIGRADE from species_traits
-	if(C.dna.species.mutant_bodyparts["legs"] && C.dna.species.mutant_bodyparts["legs"][MUTANT_INDEX_NAME] == "Digitigrade Legs")
-		species_traits += DIGITIGRADE
-	if(DIGITIGRADE in species_traits)
-		C.Digitigrade_Leg_Swap(FALSE)
 
 	C.mob_biotypes = inherent_biotypes
 
@@ -442,21 +409,13 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		fly = new
 		fly.Grant(C)
 
-	var/robotic_limbs
-	if(ROBOTIC_LIMBS in species_traits)
-		robotic_limbs = TRUE
 	for(var/obj/item/bodypart/B in C.bodyparts)
 		B.alpha = specific_alpha
-		if(robotic_limbs)
-			B.change_bodypart_status(BODYPART_ROBOTIC, FALSE, TRUE)
-			B.organic_render = TRUE
-		else if (B.status == BODYPART_ORGANIC)
-			B.organic_render = TRUE
 
 	C.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 
 	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
-
+*/
 /datum/species/proc/handle_body(mob/living/carbon/human/species_human)
 	species_human.remove_overlay(BODY_LAYER)
 
@@ -505,7 +464,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			var/mutable_appearance/underwear_overlay
 			if(underwear)
 				var/icon_state = underwear.icon_state
-				if(underwear.has_digitigrade && (DIGITIGRADE in species_traits))
+				if(underwear.has_digitigrade && (bodytype & BODYTYPE_DIGITIGRADE))
 					icon_state += "_d"
 				underwear_overlay = mutable_appearance(underwear.icon, icon_state, -BODY_LAYER)
 				if(!underwear.use_static)
@@ -529,7 +488,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			if(socks)
 				var/mutable_appearance/socks_overlay
 				var/icon_state = socks.icon_state
-				if(DIGITIGRADE in species_traits)
+				if((bodytype & BODYTYPE_DIGITIGRADE))
 					icon_state += "_d"
 				socks_overlay = mutable_appearance(socks.icon, icon_state, -BODY_LAYER)
 				if(!socks.use_static)
@@ -592,7 +551,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	T.wagging = FALSE
 	H.update_body()
 
-/datum/species/regenerate_organs(mob/living/carbon/C,datum/species/old_species,replace_current=TRUE,list/excluded_zones)
+/datum/species/regenerate_organs(mob/living/carbon/C, datum/species/old_species, replace_current = TRUE, list/excluded_zones, visual_only = FALSE)
 	. = ..()
 	var/robot_organs = (ROBOTIC_DNA_ORGANS in C.dna.species.species_traits)
 	for(var/key in C.dna.mutant_bodyparts)
@@ -611,11 +570,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			path.build_from_dna(C.dna, key)
 			path.Insert(C, 0, FALSE)
 
-/datum/species/on_species_loss(mob/living/carbon/C, datum/species/old_species, pref_load)
-	. = ..()
-	if(ROBOTIC_LIMBS in species_traits)
-		for(var/obj/item/bodypart/B in C.bodyparts)
-			B.change_bodypart_status(BODYPART_ORGANIC, FALSE, TRUE)
 
 /datum/species/proc/spec_revival(mob/living/carbon/human/H)
 	return

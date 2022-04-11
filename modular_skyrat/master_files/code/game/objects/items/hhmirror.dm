@@ -15,7 +15,7 @@
 	desc = "A handheld mirror that allows you to change your... self?" //Later, maybe add a charge to the description.
 	icon = 'modular_skyrat/master_files/icons/obj/hhmirror.dmi'
 	icon_state = "hhmirrormagic"
-	var/list/races_blacklist = list(SPECIES_SKELETON, "agent", "angel", SPECIES_SYNTH_MILITARY, SPECIES_ZOMBIE, "clockwork golem servant", SPECIES_ANDROID, SPECIES_SYNTH, SPECIES_MUSHROOM, SPECIES_ZOMBIE_HALLOWEEN, "memezombie")
+	var/list/races_blacklist = list(SPECIES_SKELETON, "agent", "angel", SPECIES_ZOMBIE, "clockwork golem servant", SPECIES_MUSHROOM, "memezombie")
 	var/list/choosable_races = list()
 
 /obj/item/hhmirror/fullmagic/New()
