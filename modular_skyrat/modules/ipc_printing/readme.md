@@ -10,6 +10,7 @@ Allows IPC organs to be printed at Exosuit Fabricators after "IPC Organs" resear
 ### TG Proc Changes:
 
 modules\vehicles\mecha\mech_fabricator.dm (2 edits)
+modular_skyrat\modules\customization\modules\surgery\organs\ipc.dm (typo fix)
 
 ### Defines:
 
