@@ -160,6 +160,10 @@
 
 	set_sprite(feature_list[deconstruct_block(get_uni_feature_block(features, dna_block), feature_list.len)])
 
+///Colorizes the limb it's inserted to, if required.
+/obj/item/organ/external/proc/override_color(rgb_value)
+	return
+
 ///The horns of a lizard!
 /obj/item/organ/external/horns
 	name = "horns"
