@@ -307,7 +307,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				dat += "<li><a href='byond://?src=[REF(src)];choice=[PDA_UI_MESSENGER]'>[PDAIMG(mail)]Messenger</a></li>"
 				dat += "<li><a href='byond://?src=[REF(src)];choice=[PDA_UI_SKILL_TRACKER]'>[PDAIMG(skills)]Skill Tracker</a></li>"
 				dat += "<li><a href='byond://?src=[REF(src)];choice=[PDA_UI_CREW_MANIFEST]'>[PDAIMG(notes)]View Crew Manifest</a></li>" // SKYRAT EDIT - PUBLIC MANIFESTS
-
+				
 				if (cartridge)
 					if (cartridge.access & CART_CLOWN)
 						dat += "<li><a href='byond://?src=[REF(src)];choice=Honk'>[PDAIMG(honk)]Honk Synthesizer</a></li>"
@@ -357,6 +357,16 @@ GLOBAL_LIST_EMPTY(PDAs)
 						dat += "<li><a href='byond://?src=[REF(src)];choice=Reagent Scan'>[PDAIMG(reagent)][scanmode == 3 ? "Disable" : "Enable"] Reagent Scanner</a></li>"
 					if (cartridge.access & CART_ATMOS)
 						dat += "<li><a href='byond://?src=[REF(src)];choice=Gas Scan'>[PDAIMG(reagent)][scanmode == 5 ? "Disable" : "Enable"] Gas Scanner</a></li>"
+<<<<<<< HEAD
+					if (cartridge.access & CART_REMOTE_DOOR)
+						dat += "<li><a href='byond://?src=[REF(src)];choice=Toggle Door'>[PDAIMG(rdoor)]Toggle Remote Door</a></li>"
+					if (cartridge.access & CART_DRONEPHONE)
+						dat += "<li><a href='byond://?src=[REF(src)];choice=Drone Phone'>[PDAIMG(dronephone)]Drone Phone</a></li>"
+					if (cartridge.access & CART_DRONEACCESS)
+						var/blacklist_state = GLOB.drone_machine_blacklist_enabled
+						dat += "<li><a href='byond://?src=[REF(src)];drone_blacklist=[!blacklist_state];choice=Drone Access'>[PDAIMG(droneblacklist)][blacklist_state ? "Disable" : "Enable"] Drone Blacklist</a></li>"
+=======
+>>>>>>> eb440d5751c (Refactors drone PDA stuff into a Botkeeper thing (#66022))
 				dat += "<li><a href='byond://?src=[REF(src)];choice=[PDA_UI_ATMOS_SCAN]'>[PDAIMG(atmos)]Atmospheric Scan</a></li>"
 				dat += "<li><a href='byond://?src=[REF(src)];choice=Light'>[PDAIMG(flashlight)][light_on ? "Disable" : "Enable"] Flashlight</a></li>"
 				if (pai)
