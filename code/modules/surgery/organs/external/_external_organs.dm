@@ -285,7 +285,7 @@
 
 	dna_block = DNA_POD_HAIR_BLOCK
 
-	overrides_color = TRUE
+	overrides_color = FALSE // SKYRAT EDIT CHANGE - TO DO: FIX THIS FROM JUST DYING
 
 /obj/item/organ/external/pod_hair/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(!(human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))

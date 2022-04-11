@@ -468,7 +468,7 @@
 		. += "<span class='info'><b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]</span>"
 
 	//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-	if (mind.can_see_exploitables || mind.has_exploitables_override)
+	if (mind?.can_see_exploitables || mind?.has_exploitables_override)
 		var/datum/data/record/target_records = find_record("name", perpname, GLOB.data_core.general) //apparantly golden is okay with offstation roles having no records, FYI
 		var/exploitable_text = target_records.fields["exploitable_records"]
 		if (target_records && ((length(exploitable_text) > RECORDS_INVISIBLE_THRESHOLD) && ((exploitable_text) != EXPLOITABLE_DEFAULT_TEXT)))

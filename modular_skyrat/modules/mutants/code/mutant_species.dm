@@ -30,6 +30,7 @@
 
 /datum/species/mutant/infectious
 	name = "Mutated Abomination"
+	id = SPECIES_MUTANT_INFECTIOUS
 	mutanthands = /obj/item/mutant_hand
 	speedmod = 1
 	armor = 10
@@ -42,6 +43,7 @@
 
 /datum/species/mutant/infectious/fast
 	name = "Fast Mutated Abomination"
+	id = SPECIES_MUTANT_FAST
 	mutanthands = /obj/item/mutant_hand/fast
 	armor = 0
 	/// The rate the mutants regenerate at
@@ -50,6 +52,7 @@
 
 /datum/species/mutant/infectious/slow
 	name = "Slow Mutated Abomination"
+	id = SPECIES_MUTANT_SLOW
 	armor = 15
 	speedmod = 1.5
 	/// The rate the mutants regenerate at
