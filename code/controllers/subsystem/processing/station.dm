@@ -28,7 +28,7 @@ PROCESSING_SUBSYSTEM_DEF(station)
 /datum/controller/subsystem/processing/station/proc/SetupTraits()
 	// SKYRAT EDIT ADDITION
 	#ifdef LOWMEMORYMODE // NO MORE FUCKING STUPID STATION TRAITS ON STARTUP WHEN IM TESTING SHIT FUCK YOU
-		return
+	return
 	#endif
 	// SKYRAT EDIT END
 
