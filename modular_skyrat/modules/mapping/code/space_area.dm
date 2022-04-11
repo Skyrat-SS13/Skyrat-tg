@@ -172,6 +172,11 @@
 	name = "DS-2 Chemistry"
 	icon_state = "chem"
 
+//IceboxDS2
+/area/ruin/space/has_grav/skyrat/interdynefob/caverns
+	name = "DS-2 Caverns"
+	icon_state = "mining"
+
 /area/ruin/space/has_grav/shuttle8532engineering
 	name = "Shuttle 8532 Engine Room"
 
