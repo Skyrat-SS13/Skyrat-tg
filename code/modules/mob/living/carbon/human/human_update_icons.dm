@@ -261,7 +261,7 @@ There are several things that need to be remembered:
 		if((dna.species.bodytype & BODYTYPE_VOX) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VOX_VARIATION))
 			icon_file = worn_item.worn_icon_vox || VOX_GLASSES_FILE
 		else if(dna.species.bodytype & BODYTYPE_TESHARI)
-			icon_file =TESHARI_EYES_ICON
+			icon_file = TESHARI_EYES_ICON
 		// SKYRAT EDIT END
 		if(!(head?.flags_inv & HIDEEYES) && !(wear_mask?.flags_inv & HIDEEYES))
 
