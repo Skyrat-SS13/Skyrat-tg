@@ -22,6 +22,8 @@
 	var/vision_correction = FALSE
 	/// Colors your vision when worn
 	var/glass_colour_type
+	/// Whether or not vision coloring is forcing
+	var/forced_glass_color = FALSE
 
 /obj/item/clothing/glasses/suicide_act(mob/living/carbon/user)
 	user.visible_message(span_suicide("[user] is stabbing \the [src] into [user.p_their()] eyes! It looks like [user.p_theyre()] trying to commit suicide!"))
@@ -29,7 +31,7 @@
 
 /obj/item/clothing/glasses/examine(mob/user)
 	. = ..()
-	if(glass_colour_type && ishuman(user))
+	if(glass_colour_type && !forced_glass_color && ishuman(user))
 		. += span_notice("Alt-click to toggle [p_their()] colors.")
 
 /obj/item/clothing/glasses/visor_toggling()
@@ -64,8 +66,12 @@
 				eyes.applyOrganDamage(5)
 
 /obj/item/clothing/glasses/AltClick(mob/user)
+<<<<<<< HEAD
 	. = ..() //SKYRAT EDIT ADDITION
 	if(glass_colour_type && ishuman(user))
+=======
+	if(glass_colour_type && !forced_glass_color && ishuman(user))
+>>>>>>> 73e7d9c1151 (Adds nightmare vision goggles to maintenance (#66088))
 		var/mob/living/carbon/human/human_user = user
 
 		if (human_user.glasses != src)
@@ -93,7 +99,7 @@
 
 
 /mob/living/carbon/human/proc/update_glasses_color(obj/item/clothing/glasses/G, glasses_equipped)
-	if (HAS_TRAIT(src, TRAIT_SEE_GLASS_COLORS) && glasses_equipped)
+	if((HAS_TRAIT(src, TRAIT_SEE_GLASS_COLORS) || G.forced_glass_color) && glasses_equipped)
 		add_client_colour(G.glass_colour_type)
 	else
 		remove_client_colour(G.glass_colour_type)
@@ -626,3 +632,11 @@
 		icon_state = initial(icon_state)
 		desc = initial(desc)
 		bigshot.update_inv_glasses()
+
+/obj/item/clothing/glasses/nightmare_vision
+	name = "nightmare vision goggles"
+	desc = "They give off a putrid stench. Seemingly no effect on anything."
+	icon_state = "nightmare"
+	inhand_icon_state = "glasses"
+	glass_colour_type = /datum/client_colour/glass_colour/nightmare
+	forced_glass_color = TRUE
