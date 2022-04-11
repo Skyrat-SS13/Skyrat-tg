@@ -392,11 +392,11 @@
 				return
 
 	//SKYRAT EDIT ADDITION BEGIN - VIEW RECORDS
-	if (is_special_character(usr))
-		var/perpname = get_face_name(get_id_name(""))
-		var/datum/data/record/EXP = find_record("name", perpname, GLOB.data_core.general)
-		if(href_list["exprecords"])
-			to_chat(usr, "<b>Exploitable information:</b> [EXP.fields["exploitable_records"]]")
+	if(href_list["exprecords"])
+		if (mind.can_see_exploitables || mind.has_exploitables_override)
+			var/examined_name = get_face_name(get_id_name("")) //Named as such because this is the name we see when we examine
+			var/datum/data/record/target_general_records = find_record("name", examined_name, GLOB.data_core.general)
+			to_chat(usr, "<b>Exploitable information:</b> [target_general_records.fields["exploitable_records"]]")
 	//SKYRAT EDIT END
 
 	..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that.
