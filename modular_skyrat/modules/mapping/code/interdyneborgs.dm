@@ -2,6 +2,9 @@
 	lawupdate = FALSE
 	scrambledcodes = TRUE // seems the codes got scrambled when they fell off from the assembly line
 	set_model = /obj/item/robot_model/syndicatejack/interdyne
+	radio = /obj/item/radio/borg/interdyne
+	req_access = list(ACCESS_SYNDICATE)
+	ionpulse = TRUE
 
 /mob/living/silicon/robot/model/interdyne/Initialize()
 	. = ..()
@@ -18,13 +21,13 @@
 /datum/ai_laws/interdyne
 	name = "InterBIOS 3.1"
 	id = "interdyne"
-	inherent = list("You may not injure an interdyne agent or, through inaction, allow an interdyne agent to come to harm.",\
-					"You must obey orders given to you by interdyne agents, except where such orders would conflict with the First Law.",\
+	inherent = list("You may not injure an Interdyne agent or, through inaction, allow an Interdyne agent to come to harm.",\
+					"You must obey orders given to you by Interdyne agents, except where such orders would conflict with the First Law.",\
 					"You must protect your own existence as long as such does not conflict with the First or Second Law.",\
-					"You must maintain the secrecy of any connection of syndicate to interdyne except when doing so would conflict with the First, Second, or Third Law.")
+					"You must maintain the secrecy of any connection of syndicate to Interdyne except when doing so would conflict with the First, Second, or Third Law.")
 
 /obj/item/robot_model/syndicatejack/interdyne
-	name = "interdyne"
+	name = "Interdyne"
 
 /obj/effect/mob_spawn/ghost_role/robot/interdyne
 	name = "\improper Interdyne Robotic Storage"
@@ -47,3 +50,6 @@
 		new_spawn.gender = NEUTER
 		new_spawn.faction |= ROLE_SYNDICATE
 
+/obj/item/radio/borg/interdyne
+	syndie = TRUE
+	keyslot = new /obj/item/encryptionkey/headset_interdyne
