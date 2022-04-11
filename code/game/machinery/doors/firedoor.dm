@@ -46,7 +46,7 @@
 	///The merger_id and merger_typecache variables are used to make rows of firelocks activate at the same time.
 	var/merger_id = "firelocks"
 	var/static/list/merger_typecache
-	
+
 	///Overlay object for the warning lights. This and some plane settings allows the lights to glow in the dark.
 	var/mutable_appearance/warn_lights
 
@@ -68,13 +68,7 @@
 	if(!merger_typecache)
 		merger_typecache = typecacheof(/obj/machinery/door/firedoor)
 
-<<<<<<< HEAD
-	check_atmos()
-
-	if(prob(0.000) && icon == 'icons/obj/doors/doorfireglass.dmi')//	SKYRAT EDIT: 0.004 chance to 0.000
-=======
 	if(prob(0.004) && icon == 'icons/obj/doors/doorfireglass.dmi')
->>>>>>> 57205f68ac0 (firelocks now automatically open once the alarms are cleared and fixed fire alarms not clearing (#65490))
 		base_icon_state = "sus"
 		desc += " This one looks a bit sus..."
 
@@ -245,7 +239,7 @@
 /obj/machinery/door/firedoor/proc/unregister_adjacent_turfs(atom/loc)
 	for(var/dir in GLOB.cardinals)
 		var/turf/checked_turf = get_step(get_turf(loc), dir)
-	
+
 		if(!checked_turf)
 			continue
 
@@ -298,7 +292,7 @@
 		issue_turfs -= checked_turf
 		if(!length(issue_turfs))
 			start_deactivation_process()
-	
+
 >>>>>>> 57205f68ac0 (firelocks now automatically open once the alarms are cleared and fixed fire alarms not clearing (#65490))
 
 /**
