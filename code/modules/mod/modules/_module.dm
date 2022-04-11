@@ -277,15 +277,10 @@
 		used_overlay = overlay_state_inactive
 	else
 		return
-<<<<<<< HEAD
 	/* SKYRAT EDIT START - Making MODsuits mutant-compatible - ORIGINAL:
-	var/mutable_appearance/module_icon = mutable_appearance('icons/mob/clothing/mod.dmi', used_overlay, layer = standing.layer + 0.1)
-	module_icon.appearance_flags |= RESET_COLOR
-=======
 	var/mutable_appearance/module_icon = mutable_appearance(overlay_icon_file, used_overlay, layer = standing.layer + 0.1)
 	if(!use_mod_colors)
 		module_icon.appearance_flags |= RESET_COLOR
->>>>>>> 5bce3744f0d (Syndicate MODsuit resprite - sleek edition (#66087))
 	. += module_icon
 	*/
 	return handle_module_icon(standing, used_overlay)
