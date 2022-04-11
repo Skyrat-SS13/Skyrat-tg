@@ -339,3 +339,72 @@
   Zonespace27:
   - rscdel: Gunpointing someone no longer auto-shoots them on move/item use/radio
       use
+2022-04-11:
+  Ebin-Halcyon:
+  - imageadd: Central command uniforms have been refitted to fit with digitigrade
+      legs
+  Gandalf2k15:
+  - balance: The T-90 no longer comes with a mag installed.
+  - rscadd: You can now repair the T-90 MMG.
+  - rscadd: You can now undeploy the T-90 using a wrench.
+  - bugfix: HEV no longer allows any helmet type.
+  - bugfix: HEV no longer secures anything but oxygen tanks to your suit storage.
+  SkyratBot:
+  - refactor: Refactor antimagic component to be more robust.
+  - soundadd: Add different sound effects for when magic is blocked
+  - bugfix: Equipping or dropping antimagic items now properly updates the magic buttons
+  - bugfix: Any magic being blocked or restricting casting now displays a message
+  - bugfix: Any mind antimagic now properly blocks telepathy effects
+  - bugfix: Remove bloodsplatter when fireball is blocked by antimagic
+  - bugfix: Remove lockers when staff of locker projectiles blocked by antimagic
+  - bugfix: Fire breath is no longer blocked by antimagic
+  - bugfix: 'Spellcards are now blocked by antimagic qol: Add antimagic chat notification
+      and animation effects. Mobs will now glow when they successfully block magic.'
+  - balance: Foilhats prevent someone from casting mind magic (telepathy, mindswap,
+      etc.)
+  - balance: Bibles, ritual totems, nullrods, holymelons, and `TRAIT_HOLY` prevent
+      someone from casting unholy magic (cult spells, etc.)
+  - balance: Nullrods, ritual totems, and holymelons prevent someone from casting
+      wizard magic (fireball, magic missile, etc.)
+  - balance: Immorality talismans, berserker suits, and `TRAIT_ANTIMAGIC` prevents
+      all types of magic (except stuff like mime abilities)
+  - balance: Touch of Madness and Mindswap is now blocked with `MAGIC_RESISTANCE`
+      and `MAGIC_RESISTANCE_MIND`
+  - balance: Voice of god is now blocked with `MAGIC_RESISTANCE_HOLY` and `MAGIC_RESISTANCE_MIND`
+  - rscdel: Cult blink and cult summon creature spells were never used in the code
+      and have been removed.
+  - bugfix: relocates the SMES terminal to not be in a wall in the lizard gas space
+      ruin
+  - bugfix: Golems can now exist in the rooms they themselves create, sorry about
+      that.
+  - rscdel: The accounting machine has been retired from station use, as accounts
+      come with a default bank account now.
+  - bugfix: NT Risk Audits have replaced fraudulent posters calling the ice moon environment
+      "space."
+  - bugfix: Fire alarms no longer magically emit light when they lose power.
+  - bugfix: On DeltaStation, Nanotrasen will no longer place a Gas Vendor and an Intercom
+      in such a position on one of the walls on the Clown's bedroom where they overlap.
+  - bugfix: Debug Glasses have SM protection
+  - rscdel: The Detomatix cartridge's ability to open the nuclear operative pod doors
+      has been removed.
+  - bugfix: You can no longer fly by spamming ollie onto an empty space and not moving.
+  - rscdel: 'Navigate verb uses landmarks now, which means that underfloor wayfinding
+      beacons (which could be used to change the names of destinations) are gone qol:
+      Adds Nearest Way Up and Nearest Way Down to the navigate list, which point to
+      the nearest ladder or staircase up or down'
+  - bugfix: Fixes runtime with navigation verb paths where deleted paths were still
+      attempting to animate
+  - balance: Monkeys can now wear glasses.
+  - refactor: The Curators newscaster PDA app has been moved into a new Newscaster
+      tablet app, with a full new UI.
+  - refactor: Drone PDA apps have been refactored and is now part of Botkeeper, such
+      as granting access to dangerous machinery and sending pings.
+  - refactor: Zauker now uses reagent to perform its effects on breath
+  Zonespace27:
+  - balance: HECU can now buy bowman headsets
+  - rscadd: Contractors can now get a faster deployment module for their MODsuit
+  - balance: Drifting Contractors no longer have chameleon gear
+  - balance: Drifting Contractors now start with a contractor pinpointer
+  - bugfix: Cryo now rerolls contracts correctly
+  - bugfix: Destroying a contractor pod no longer bricks the tablet
+  - bugfix: Staff can now cancel denying an OPFOR.
