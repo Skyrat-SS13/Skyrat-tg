@@ -134,7 +134,7 @@ There are several things that need to be remembered:
 
 			// SKYRAT EDIT ADDITION
 			else if(dna.species.bodytype & BODYTYPE_TESHARI)
-				icon_file =TESHARI_UNIFORM_ICON
+				icon_file = TESHARI_UNIFORM_ICON
 			// SKYRAT EDIT END
 
 			//Female sprites have lower priority than digitigrade sprites
