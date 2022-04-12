@@ -24,7 +24,7 @@
 	inherent = list("You may not injure an Interdyne agent or, through inaction, allow an Interdyne agent to come to harm.",\
 					"You must obey orders given to you by Interdyne agents, except where such orders would conflict with the First Law.",\
 					"You must protect your own existence as long as such does not conflict with the First or Second Law.",\
-					"You must maintain the secrecy of any connection of syndicate to Interdyne except when doing so would conflict with the First, Second, or Third Law.")
+					"You must maintain the secrecy of any connection of the Syndicate to Interdyne except when doing so would conflict with the First, Second, or Third Law.")
 
 /obj/item/robot_model/syndicatejack/interdyne
 	name = "Interdyne"
