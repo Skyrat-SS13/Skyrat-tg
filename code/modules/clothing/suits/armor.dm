@@ -116,7 +116,7 @@
 			RESKIN_ICON_STATE = "peacekeeper_trench_hos",
 			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
 			RESKIN_WORN_ICON_STATE = "peacekeeper_trench_hos",
-			RESKIN_supports_variations_flags = NONE
+			RESKIN_SUPPORTS_VARIATIONS_FLAGS = NONE
 		)
 	)
 	/// SKYRAT EDIT ADDITION END
@@ -172,7 +172,7 @@
 			RESKIN_ICON_STATE = "peacekeeper_trench_warden",
 			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
 			RESKIN_WORN_ICON_STATE = "peacekeeper_trench_warden",
-			RESKIN_supports_variations_flags = NONE
+			RESKIN_SUPPORTS_VARIATIONS_FLAGS = NONE
 		)
 	)
 	/// SKYRAT EDIT ADDITION END
