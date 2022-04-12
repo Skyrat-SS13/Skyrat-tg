@@ -5,8 +5,8 @@
 #define VIS_COUNT			24 //Must be highest number from above.
 #define STATUS_LAYER -2.1
 #define STATUS_INDICATOR_Y_OFFSET 2 // Offset from the edge of the icon sprite, so 32 pixels plus whatever number is here.
-#define STATUS_INDICATOR_ICON_X_SIZE 16 // Don't need to care about the Y size due to the origin being on the bottom side.
-#define STATUS_INDICATOR_ICON_MARGIN 2 // The space between two status indicators.
+#define STATUS_INDICATOR_ICON_X_SIZE 0 // Don't need to care about the Y size due to the origin being on the bottom side.
+#define STATUS_INDICATOR_ICON_MARGIN 0 // The space between two status indicators. We don't do this with the current icons.
 
 /datum/preference/toggle/enable_status_indicators
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
@@ -126,7 +126,7 @@
 		return
 	var/mob/living/carbon/carbon = src
 	// Now put them back on in the right spot.
-	var/our_sprite_x = 32 * carbon.dna.current_body_size
+	var/our_sprite_x = 16 * carbon.dna.current_body_size
 	var/our_sprite_y = 24 * carbon.dna.current_body_size
 
 	var/x_offset = our_sprite_x // Add your own offset here later if you want.
