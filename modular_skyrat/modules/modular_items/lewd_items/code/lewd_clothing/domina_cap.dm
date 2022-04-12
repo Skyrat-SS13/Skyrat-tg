@@ -4,7 +4,7 @@
 	icon_state = "dominacap"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_hats.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_hats.dmi'
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 //message when equipping that thing
 /obj/item/clothing/head/domina_cap/equipped(mob/living/carbon/user, slot)

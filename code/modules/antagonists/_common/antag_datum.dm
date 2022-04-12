@@ -221,12 +221,11 @@ GLOBAL_LIST_EMPTY(antagonists)
 	for (var/datum/atom_hud/alternate_appearance/basic/has_antagonist/antag_hud as anything in GLOB.has_antagonist_huds)
 		if (!antag_hud.mobShouldSee(current))
 			antag_hud.remove_hud_from(current)
-	// SKYRAT EDIT START
-	if(owner.has_exploitable_menu)
-		remove_verb(owner.current?.client, /mob/proc/view_exploitables_verb)
-	// SKYRAT EDIT END
 
 	qdel(src)
+	// SKYRAT EDIT START
+	owner.handle_exploitables() //Inefficient here, but on_removal() is called in multiple locations
+	// SKYRAT EDIT END
 
 /**
  * Proc that sends fluff or instructional messages to the player when they are given this antag datum.

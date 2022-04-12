@@ -109,6 +109,7 @@
 	desc = "A holochip used in any armament vendor, this is for |bad people|. Do not bend."
 	icon_state = "token_blackmarket"
 	custom_price = PAYCHECK_HARD * 10 // OLD VAR: custom_premium_price = PAYCHECK_HARD * 3
+	custom_premium_price = PAYCHECK_HARD * 10
 
 /obj/item/armament_token/sidearm_blackmarket/get_available_gunsets()
 	return list(

@@ -36,7 +36,6 @@
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	payday_modifier = 0.75
 	species_clothing_path = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/teshari_matrixcolor_clothes.dmi'
-	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/teshari_parts_greyscale.dmi'
 	offset_features = list(OFFSET_UNIFORM = list(0,0), OFFSET_ID = list(0,0), OFFSET_GLOVES = list(0,0), OFFSET_GLASSES = list(0,0), OFFSET_EARS = list(0,-4), OFFSET_SHOES = list(0,0), OFFSET_S_STORE = list(0,0), OFFSET_FACEMASK = list(0,-5), OFFSET_HEAD = list(1,-4), OFFSET_FACE = list(0,0), OFFSET_BELT = list(0,0), OFFSET_BACK = list(0,-4), OFFSET_SUIT = list(0,0), OFFSET_NECK = list(0,0), OFFSET_ACCESSORY = list(0, -4))
 	coldmod = TESHARI_COLDMOD
 	heatmod = TESHARI_HEATMOD
@@ -50,3 +49,11 @@
 	species_language_holder = /datum/language_holder/teshari
 	body_size_restricted = TRUE
 	learnable_languages = list(/datum/language/common, /datum/language/vox, /datum/language/schechi)
+	bodypart_overrides = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/teshari,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/teshari,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant/teshari,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant/teshari,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/teshari,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/teshari,
+	)

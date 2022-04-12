@@ -60,3 +60,8 @@
 	item_type = /obj/item/suppressor
 	max_purchase = 4
 	cost = 4
+
+/datum/armament_entry/hecu/utility/bowman
+	item_type = /obj/item/radio/headset/headset_faction/bowman
+	max_purchase = 3
+	cost = 4

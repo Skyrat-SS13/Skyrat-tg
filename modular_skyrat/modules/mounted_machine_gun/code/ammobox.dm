@@ -17,5 +17,7 @@
 
 /obj/projectile/bullet/c50cal
 	name = ".50 BMG bullet"
-	damage = 35
+	damage = 40
+	wound_bonus = 60
+	armour_penetration = 20
 	icon_state = "redtrac"
