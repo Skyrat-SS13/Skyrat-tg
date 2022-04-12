@@ -18,10 +18,10 @@
 	desc = "A black combat sweater thrown over the standard issue shirt, perfect for wake up calls."
 	name = "corrections officer's sweater"
 	icon_state = "brigguardsweat"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/under/rank/security/brigguard/sweater/women
 	icon_state = "brigguardsweatw"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 

@@ -16,7 +16,6 @@
 	bodytemp_normal = T0C // They have no natural body heat, the environment regulates body temp
 	bodytemp_heat_damage_limit = FIRE_MINIMUM_TEMPERATURE_TO_SPREAD // Take damage at fire temp
 	bodytemp_cold_damage_limit = MINIMUM_TEMPERATURE_TO_MOVE // take damage below minimum movement temp
-	limbs_icon = 'modular_skyrat/modules/mutants/icons/mutant_parts_greyscale.dmi'
 
 /datum/species/mutant/check_roundstart_eligible()
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
@@ -31,6 +30,7 @@
 
 /datum/species/mutant/infectious
 	name = "Mutated Abomination"
+	id = SPECIES_MUTANT_INFECTIOUS
 	mutanthands = /obj/item/mutant_hand
 	speedmod = 1
 	armor = 10
@@ -43,6 +43,7 @@
 
 /datum/species/mutant/infectious/fast
 	name = "Fast Mutated Abomination"
+	id = SPECIES_MUTANT_FAST
 	mutanthands = /obj/item/mutant_hand/fast
 	armor = 0
 	/// The rate the mutants regenerate at
@@ -51,6 +52,7 @@
 
 /datum/species/mutant/infectious/slow
 	name = "Slow Mutated Abomination"
+	id = SPECIES_MUTANT_SLOW
 	armor = 15
 	speedmod = 1.5
 	/// The rate the mutants regenerate at

@@ -3,7 +3,6 @@
 	name = "Felinid"
 	id = SPECIES_FELINE
 	say_mod = "meows"
-	limbs_id = SPECIES_HUMAN
 
 	mutant_bodyparts = list("tail_human" = "Cat", "ears" = "Cat", "wings" = "None")
 
@@ -17,6 +16,7 @@
 	payday_modifier = 0.75
 	ass_image = 'icons/ass/asscat.png'
 	family_heirlooms = list(/obj/item/toy/cattoy)
+	examine_limb_id = SPECIES_HUMAN
 
 // Prevents felinids from taking toxin damage from carpotoxin
 /datum/species/human/felinid/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)

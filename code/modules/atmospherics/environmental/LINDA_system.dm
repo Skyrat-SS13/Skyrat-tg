@@ -75,6 +75,7 @@
 			UNSETEMPTY(current_turf.atmos_adjacent_turfs)
 	UNSETEMPTY(atmos_adjacent_turfs)
 	src.atmos_adjacent_turfs = atmos_adjacent_turfs
+	SEND_SIGNAL(src, COMSIG_TURF_CALCULATED_ADJACENT_ATMOS)
 
 	UpdateAdjacentPollutants() //SKYRAT EDIT ADDITION //Atmos adjacency could unlock/block adjacent pollutants, this is dirty flags anyway so its fine having it here
 
