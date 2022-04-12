@@ -210,11 +210,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if (.)
 		return
 
-	if(SSlag_switch.measures[DISABLE_CREATOR] && !is_admin(usr))
+	if(SSlag_switch.measures[DISABLE_CREATOR])
 		to_chat(usr, "The creator has been disabled. Please do not ahelp.")
 		return
 
-	log_creator("[key_name(usr)] ACTED [action]")
+	log_creator("[key_name(usr)] ACTED [action] | PREFERENCE: [params["preference"]] | VALUE: [params["value"]]")
 
 	switch (action)
 		if ("change_slot")
