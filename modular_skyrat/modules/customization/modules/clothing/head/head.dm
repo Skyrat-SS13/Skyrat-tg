@@ -123,7 +123,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "ushankared"
 	inhand_icon_state = "ushankadown"
-	mutant_variants = NONE
 	upsprite = "ushankaredup"
 	downsprite = "ushankared"
 	supports_variations_flags = NONE
@@ -136,7 +135,6 @@
 	icon_state = "ushankablue"
 	inhand_icon_state = "ushankadown"
 
-	mutant_variants = NONE
 	upsprite = "ushankablueup"
 	downsprite = "ushankablue"
 	supports_variations_flags = NONE
