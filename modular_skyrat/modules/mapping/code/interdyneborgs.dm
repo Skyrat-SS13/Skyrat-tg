@@ -30,13 +30,12 @@
 	name = "Interdyne"
 
 /obj/effect/mob_spawn/ghost_role/robot/interdyne
-	name = "\improper Interdyne Robotic Storage"
+	name = "\improper Syndicate Robotic Storage"
 	prompt_name = "an Interdyne cyborg"
-	uses = 3
-	icon = 'icons/obj/machines/heavy_lathe.dmi'
-	icon_state = "h_lathe_wloop"
+	uses = 1
+	icon = 'icons/obj/closet.dmi'
+	icon_state = "metalbox"
 	mob_name = "cyborg"
-	anchored = TRUE
 	you_are_text = "You are a syndicate cyborg, serving in a top secret research facility developing biological weapons."
 	flavour_text = "Serve the syndicate base employees to the best of your capacity while following your laws."
 	important_text = "You are not an antagonist."
@@ -49,6 +48,9 @@
 		new_spawn.updatename(new_spawn.client)
 		new_spawn.gender = NEUTER
 		new_spawn.faction |= ROLE_SYNDICATE
+		new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
+		new_spawn.emagged = TRUE
+		new_spawn.radio = /obj/item/radio/borg/interdyne
 
 /obj/item/radio/borg/interdyne
 	syndie = TRUE
