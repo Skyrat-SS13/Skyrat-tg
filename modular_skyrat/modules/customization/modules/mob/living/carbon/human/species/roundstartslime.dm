@@ -19,6 +19,14 @@
 	specific_alpha = 155
 	markings_alpha = 130 //This is set lower than the other so that the alpha values don't stack on top of each other so much
 
+	bodypart_overrides = list( //Overriding jelly bodyparts
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/slime,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/slime,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/slime,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/slime,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/slime,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/slime,
+
 /datum/action/innate/slime_change
 	name = "Alter Form"
 	check_flags = AB_CHECK_CONSCIOUS
