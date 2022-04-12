@@ -297,22 +297,9 @@ export const spines_emissive: Feature<boolean[]> = {
   component: FeatureTriBoolInput,
 };
 
-export const legs_toggle: FeatureToggle = {
+export const digitigrade_legs: FeatureChoiced = {
   name: "Legs",
-  description: "Add some lore for your species! Won't show up if there's no custom species.",
-  component: CheckboxInput,
-};
-
-export const feature_legs: Feature<string> = {
-  name: "Legs Selection",
-  description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureDropdownInput,
-};
-
-export const legs_color: Feature<string[]> = {
-  name: "Legs Colors",
-  description: "Want to have a fancy species name? Put it here, or leave it blank.",
-  component: FeatureTriColorInput,
 };
 
 export const caps_toggle: FeatureToggle = {

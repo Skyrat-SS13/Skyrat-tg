@@ -73,13 +73,13 @@
 	max_ammo = 30
 
 /obj/item/ammo_box/advanced/b10mm/hp
-	name = "10x25mm JHP box"
+	name = "10mm Auto JHP box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box50-lethal"
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
 
 /obj/item/ammo_box/advanced/b10mm/rubber
-	name = "10x25mm Rubber box"
+	name = "10mm Auto Rubber box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box50-rubber"
 	ammo_type = /obj/item/ammo_casing/b10mm/rubber
