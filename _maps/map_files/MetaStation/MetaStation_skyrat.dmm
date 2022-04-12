@@ -1282,7 +1282,6 @@
 	},
 /obj/effect/spawner/random/contraband/armory,
 /obj/effect/spawner/random/maintenance/three,
-/obj/item/gun/ballistic/rifle/boltaction,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "alW" = (
@@ -1296,6 +1295,14 @@
 /obj/item/gun/energy/ionrifle,
 /obj/item/gun/energy/temperature/security,
 /obj/item/clothing/suit/hooded/ablative,
+/obj/item/gun/grenadelauncher,
+/obj/item/storage/box/teargas{
+	pixel_x = 1;
+	pixel_y = -2
+	},
+/obj/item/storage/box/flashes{
+	pixel_x = 3
+	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "amt" = (
@@ -17102,15 +17109,8 @@
 /area/science/mixing/chamber)
 "eoL" = (
 /obj/effect/turf_decal/delivery/red,
-/obj/structure/rack,
-/obj/item/storage/box/teargas{
-	pixel_x = 1;
-	pixel_y = -2
-	},
-/obj/item/storage/box/flashes{
-	pixel_x = 3
-	},
-/obj/item/gun/grenadelauncher,
+/obj/structure/rack/gunrack,
+/obj/effect/spawner/armory_spawn/cmg,
 /turf/open/floor/iron/smooth,
 /area/ai_monitored/security/armory)
 "eoW" = (
@@ -42117,6 +42117,7 @@
 	},
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
+/obj/machinery/ammo_workbench,
 /turf/open/floor/iron/dark,
 /area/security/lockers)
 "nWk" = (
@@ -58234,8 +58235,7 @@
 	pixel_y = -24
 	},
 /obj/machinery/computer/turbine_computer{
-	dir = 1;
-	
+	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/simple/dark/visible,

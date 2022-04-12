@@ -2798,17 +2798,13 @@
 /turf/open/floor/iron/dark,
 /area/medical/medbay/central)
 "akG" = (
-/obj/structure/table,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/item/storage/box/evidence,
-/obj/item/taperecorder{
-	pixel_x = 5
-	},
+/obj/machinery/ammo_workbench,
 /turf/open/floor/iron/dark,
 /area/security/lockers)
 "akH" = (
@@ -3115,14 +3111,8 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/rack,
-/obj/item/storage/barricade{
-	pixel_y = 5
-	},
-/obj/item/storage/barricade,
-/obj/item/storage/barricade{
-	pixel_y = -5
-	},
+/obj/structure/rack/gunrack,
+/obj/effect/spawner/armory_spawn/cmg,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "aly" = (
@@ -33082,7 +33072,6 @@
 /obj/effect/spawner/random/contraband/armory,
 /obj/effect/spawner/random/maintenance/three,
 /obj/machinery/power/apc/auto_name/directional/south,
-/obj/item/gun/ballistic/rifle/boltaction,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "czZ" = (
@@ -65682,6 +65671,13 @@
 /obj/effect/decal/cleanable/cobweb,
 /obj/machinery/airalarm/directional/west,
 /obj/structure/table,
+/obj/item/storage/barricade{
+	pixel_y = -5
+	},
+/obj/item/storage/barricade,
+/obj/item/storage/barricade{
+	pixel_y = 5
+	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "pss" = (
@@ -77872,8 +77868,7 @@
 /area/command/bridge)
 "ute" = (
 /obj/machinery/computer/turbine_computer{
-	dir = 4;
-	
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/delivery,
