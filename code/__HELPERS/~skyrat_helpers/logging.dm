@@ -8,4 +8,4 @@ GLOBAL_PROTECT(character_creation_log)
 
 //This logs subtler emotes in game.txt, if the conflig flag in config\skyrat\skyrat_config.txt is true.
 /proc/log_creator(text)
-	WRITE_LOG(GLOB.character_creation_log, "SUBTLER EMOTE: [text]")
+	WRITE_LOG(GLOB.character_creation_log, "CREATOR LOG: [text]")
