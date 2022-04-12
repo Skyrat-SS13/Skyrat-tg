@@ -335,7 +335,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/maidhead
 	name = "Simple Maid Headband"
 	item_path = /obj/item/clothing/head/maid
-	additional_tooltip_contents = list("Small headband that only fits on top the head")
+	additional_tooltip_contents = list("Small headband that only fits on top the head.")
 
 /datum/loadout_item/head/maidhead2
 	name = "Frilly Maid Headband"
