@@ -27,6 +27,7 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/slime,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/slime,
 	)
+
 /datum/action/innate/slime_change
 	name = "Alter Form"
 	check_flags = AB_CHECK_CONSCIOUS
