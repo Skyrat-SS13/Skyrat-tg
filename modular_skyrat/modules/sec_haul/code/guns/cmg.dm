@@ -12,8 +12,8 @@
 	inhand_icon_state = "c20r"
 	selector_switch_icon = TRUE
 	mag_type = /obj/item/ammo_box/magazine/cmgm45
-	fire_delay = 2
-	burst_size = 3
+	fire_delay = 2.5
+	burst_size = 2
 	can_bayonet = TRUE
 	can_flashlight = TRUE
 	knife_x_offset = 26
