@@ -123,13 +123,19 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "ushankared"
 	inhand_icon_state = "ushankadown"
+	upsprite = "ushankaredup"
+	downsprite = "ushankared"
 	supports_variations_flags = NONE
+
 
 /obj/item/clothing/head/ushanka/sec/blue
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	desc = "There's more to life than money, with this blue ushanka, you can prove it for $19.99."
 	icon_state = "ushankablue"
 	inhand_icon_state = "ushankadown"
+	upsprite = "ushankablueup"
+	downsprite = "ushankablue"
 	supports_variations_flags = NONE
 
 /obj/item/clothing/head/soft/enclave
