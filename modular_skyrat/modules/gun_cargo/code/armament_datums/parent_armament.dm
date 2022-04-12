@@ -1,7 +1,8 @@
 /datum/armament_entry/cargo_gun
 	max_purchase = 10
 	category_item_limit = 10
-	///
+	cost = 1
+	/// Bitflag of the company
 	var/company_bitflag
 	/// How much stock of this item is left
 	var/stock = 10

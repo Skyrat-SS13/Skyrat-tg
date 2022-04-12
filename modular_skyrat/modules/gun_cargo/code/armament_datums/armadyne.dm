@@ -23,10 +23,6 @@
 	item_type = /obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper
 	cost = 1
 
-/datum/armament_entry/cargo_gun/armadyne/pistol/pdh6m
-	item_type = /obj/item/gun/ballistic/automatic/pistol/pdh/corpo
-	cost = 1
-
 /datum/armament_entry/cargo_gun/armadyne/pistol/mk58
 	item_type = /obj/item/gun/ballistic/automatic/pistol/mk58
 	cost = 1
