@@ -449,7 +449,7 @@
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
 		if(exposed_mob.gender == MALE)
 			exposed_mob.set_gender(FEMALE)
-			exposed_mob.body_type = exposed_mob.gender
+			exposed_mob.physique = exposed_mob.gender
 			exposed_mob.update_body()
 			exposed_mob.update_mutations_overlay()
 		if(!mob_penis)
@@ -596,7 +596,7 @@
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
 		if(exposed_mob.gender == FEMALE)
 			exposed_mob.set_gender(MALE)
-			exposed_mob.body_type = exposed_mob.gender
+			exposed_mob.physique = exposed_mob.gender
 			exposed_mob.update_body()
 			exposed_mob.update_mutations_overlay()
 		if(!mob_breasts)

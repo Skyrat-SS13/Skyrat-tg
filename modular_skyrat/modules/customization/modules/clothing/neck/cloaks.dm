@@ -21,7 +21,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	icon_state = "cowboy_poncho"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	heat_protection = CHEST
 
 /obj/item/clothing/neck/cowboylea/ComponentInitialize()
@@ -37,7 +37,7 @@
 	greyscale_config_worn = /datum/greyscale_config/ranger_poncho/worn
 	greyscale_colors = "#917A57#858585"	//Roughly the same color as the original non-greyscale item was
 	flags_1 = IS_PLAYER_COLORABLE_1
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	heat_protection = CHEST
 
 /obj/item/clothing/neck/ranger_poncho/ComponentInitialize()

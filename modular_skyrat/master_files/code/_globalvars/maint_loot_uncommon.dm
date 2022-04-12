@@ -38,7 +38,6 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/cartridge/ce = 5,
 		/obj/item/cartridge/chemistry = 50,
 		/obj/item/cartridge/cmo = 5,
-		/obj/item/cartridge/curator = 100,
 		/obj/item/cartridge/detective = 50,
 		/obj/item/cartridge/engineering = 50,
 		/obj/item/cartridge/head = 5,

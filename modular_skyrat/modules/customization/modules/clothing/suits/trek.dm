@@ -22,7 +22,7 @@
 				/obj/item/reagent_containers/glass/beaker,
 				/obj/item/storage/pill_bottle,
 				/obj/item/taperecorder)
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	body_parts_covered = CHEST|GROIN|ARMS
 	species_exception = list(/datum/species/golem)
 
