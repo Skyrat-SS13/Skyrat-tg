@@ -48207,9 +48207,8 @@
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "nlm" = (
-/obj/machinery/power/turbine{
-	dir = 4;
-	luminosity = 2
+/obj/machinery/power/turbine/turbine_outlet/constructed{
+	dir = 4
 	},
 /obj/structure/cable,
 /turf/open/floor/engine/vacuum,
@@ -49827,9 +49826,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
-/obj/machinery/computer/turbine_computer{
-	id = "incineratorturbine"
-	},
+/obj/machinery/computer/turbine_computer,
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/engineering/atmospherics_engine)
@@ -51893,7 +51890,7 @@
 	name = "Incinerator";
 	req_access_txt = "24"
 	},
-/obj/machinery/navbeacon/wayfinding/incinerator,
+/obj/effect/landmark/navigate_destination,
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
@@ -56673,6 +56670,9 @@
 	pixel_x = 32;
 	pixel_y = -32
 	},
+/obj/machinery/power/turbine/inlet_compressor/constructed{
+	dir = 4
+	},
 /turf/open/floor/engine/vacuum,
 /area/engineering/atmospherics_engine)
 "tZC" = (
@@ -60486,13 +60486,11 @@
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
 "wQQ" = (
-/obj/machinery/power/compressor{
-	comp_id = "incineratorturbine";
-	dir = 8;
-	luminosity = 2
-	},
 /obj/machinery/camera/autoname/directional/north,
 /obj/structure/cable,
+/obj/machinery/power/turbine/core_rotor/constructed{
+	dir = 4
+	},
 /turf/open/floor/engine/vacuum,
 /area/engineering/atmospherics_engine)
 "wQU" = (
