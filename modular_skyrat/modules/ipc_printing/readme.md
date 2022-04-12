@@ -5,7 +5,7 @@ MODULE ID: ipc_printing
 
 ### Description:
 
-Allows IPC organs to be printed at Exosuit Fabricators after "IPC Organs" research, with "Biological Technology" prerequisite.
+Allows IPC organs to be printed at Exosuit Fabricators after "IPC Organs" research, with "Advanced Robotics" prerequisite.
 
 ### TG Proc Changes:
 
