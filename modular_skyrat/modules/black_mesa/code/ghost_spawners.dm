@@ -81,6 +81,7 @@
 	name = "hecu backpack"
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob_digi.dmi'
 	icon_state = "hecu_pack"
 	worn_icon_state = "hecu_pack"
 	uses_advanced_reskins = TRUE
@@ -99,6 +100,7 @@
 	name = "hecu warbelt"
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob_digi.dmi'
 	icon_state = "hecu_belt"
 	worn_icon_state = "hecu_belt"
 	uses_advanced_reskins = TRUE

@@ -12,9 +12,9 @@
 	adjustmask(user)
 	//SKYRAT EDIT START: BANDANA HATS FOR MUTANTS
 	if(slot_flags & ITEM_SLOT_HEAD)
-		mutant_variants = NONE
+		supports_variations_flags = NONE
 	if(slot_flags & ITEM_SLOT_MASK)
-		mutant_variants = initial(mutant_variants)
+		supports_variations_flags = initial(supports_variations_flags)
 	//SKYRAT EDIT END
 
 /obj/item/clothing/mask/bandana/AltClick(mob/user)

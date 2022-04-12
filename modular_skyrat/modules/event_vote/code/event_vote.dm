@@ -491,7 +491,7 @@
 		log_data += "Custom Species: [iterating_human.dna.features["custom_species"]]"
 		log_data += "Sex: [iterating_human.gender]"
 		log_data += "Age: [iterating_human.age]"
-		log_data += "Body Type: [iterating_human.body_type]"
+		log_data += "Body Type: [iterating_human.physique]"
 		log_data += "Penis: [iterating_human.dna.mutant_bodyparts["penis"]["name"]]"
 		log_data += "Vagina: [iterating_human.dna.mutant_bodyparts["vagina"]["name"]]"
 		log_data += "Breasts: [iterating_human.dna.mutant_bodyparts["breasts"]["name"]]"

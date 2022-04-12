@@ -69,6 +69,9 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "exploitable_info"
 
+/datum/preference/text/exploitable/create_default_value()
+	return EXPLOITABLE_DEFAULT_TEXT
+
 /datum/preference/text/exploitable/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
 

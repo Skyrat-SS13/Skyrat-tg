@@ -50,7 +50,7 @@
 	if(!user.can_interact_with(parent_atom))
 		return
 
-	if(!istype(item, /obj/item/armament_points_card))
+	if(!istype(item, /obj/item/armament_points_card) || inserted_card)
 		return
 
 	item.forceMove(parent_atom)

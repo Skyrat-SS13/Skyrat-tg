@@ -17,7 +17,7 @@
 	greyscale_config_worn = /datum/greyscale_config/beret_badge_fancy/worn
 	greyscale_colors = "#3F3C40#5B2423#491716"
 	icon_state = "beret_badge_fancy_diagonal"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/armor/hos/trenchcoat/peacekeeper/armadyne
 	name = "armored armadyne trenchcoat"
@@ -33,7 +33,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "armadyne_jacket"
 	worn_icon_state = "armadyne_jacket"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne/armor
 	name = "armadyne armor vest"

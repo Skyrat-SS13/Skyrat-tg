@@ -104,7 +104,11 @@ would only be recognisable with someone that had the syndicate trait.
 					composed_message += special_desc
 					. += composed_message
 					return
-				if(HAS_TRAIT(human_user, TRAIT_DETECTIVE))  //Useful detective!
+				if(human_user.mind.special_role == ROLE_DRIFTING_CONTRACTOR)
+					composed_message = "You note the following because of your [span_red("<b>Contractor Status</b>")]: <br>"
+					composed_message += special_desc
+					. += composed_message
+				else if(HAS_TRAIT(human_user, TRAIT_DETECTIVE))  //Useful detective!
 					composed_message = "You note the following because of your brilliant <span class='blue'><b>Detective skills</b></span>: <br>"
 					composed_message += special_desc
 					. += composed_message

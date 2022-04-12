@@ -71,6 +71,7 @@ GLOBAL_VAR(antag_prototypes)
 				if (R.emagged)
 					common_commands += "<a href='?src=[REF(src)];silicon=unemagcyborgs'>Unemag slaved cyborgs</a>"
 					break
+	common_commands += "<a href='?src=[REF(src)];common=toggle_exploitables'>Toggle exploitables override</a>" //SKYRAT EDIT ADDITION -- EXPLOITABLES
 	return common_commands
 
 /datum/mind/proc/get_special_statuses()

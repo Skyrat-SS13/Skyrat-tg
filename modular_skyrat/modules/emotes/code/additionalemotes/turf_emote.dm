@@ -15,10 +15,10 @@ var/current_turf
 
 	if(ishuman(user))
 		//feet
-		if(!(DIGITIGRADE in human_user.dna.species.species_traits) && !(human_user.dna.species.mutant_bodyparts["taur"]))
+		if(!(human_user.dna.species.bodytype & BODYTYPE_DIGITIGRADE) && !(human_user.dna.species.mutant_bodyparts["taur"]))
 			user.allowed_turfs += "footprint"
 
-		if((DIGITIGRADE in human_user.dna.species.species_traits) || human_user.dna.species.mutant_bodyparts["taur"])
+		if((human_user.dna.species.bodytype & BODYTYPE_DIGITIGRADE) || human_user.dna.species.mutant_bodyparts["taur"])
 			user.allowed_turfs += list("pawprint", "hoofprint", "clawprint")
 
 		//species & taurs
