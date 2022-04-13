@@ -33,8 +33,8 @@
 	lower_cost = CARGO_CRATE_VALUE * 12
 	upper_cost = CARGO_CRATE_VALUE * 18
 
-/datum/armament_entry/cargo_gun/nanotrasen/smg/cmg //change when cobalt's CMG changes go through
-	item_type = /obj/item/gun/ballistic/automatic/c20r/unrestricted/cmg1
+/datum/armament_entry/cargo_gun/nanotrasen/smg/cmg
+	item_type = /obj/item/gun/ballistic/automatic/cmg
 	lower_cost = CARGO_CRATE_VALUE * 8
 	upper_cost = CARGO_CRATE_VALUE * 13
 
