@@ -27,5 +27,30 @@
 /datum/antagonist/contractor/proc/forge_objectives()
 	objectives += new/datum/objective/contractor_total
 
+/datum/antagonist/contractor/roundend_report()
+	var/list/report = list()
+
+	if(!owner)
+		CRASH("antagonist datum without owner")
+
+	report += "<b>[printplayer(owner)]</b>"
+
+	var/objectives_complete = TRUE
+	if(length(objectives))
+		report += printobjectives(objectives)
+		for(var/datum/objective/objective in objectives)
+			if(!objective.check_completion())
+				objectives_complete = FALSE
+				break
+
+	report += owner.opposing_force.contractor_round_end()
+
+	if(!length(objectives) || objectives_complete)
+		report += "<span class='greentext big'>The [name] was successful!</span>"
+	else
+		report += "<span class='redtext big'>The [name] has failed!</span>"
+
+	return report.Join("<br>")
+
 /datum/job/drifting_contractor
 	title = ROLE_DRIFTING_CONTRACTOR

@@ -8,12 +8,12 @@
 		var/obj/item/bodypart/BP = b
 		if(BP.current_gauze && BP.current_gauze.overlay_prefix)
 			var/bp_suffix = BP.body_zone
-			if(BP.use_digitigrade)
+			if(BP.bodytype & BODYTYPE_DIGITIGRADE)
 				bp_suffix += "_digitigrade"
 			overlays.add_overlay("[BP.current_gauze.overlay_prefix]_[bp_suffix]")
 		if(BP.current_splint && BP.current_splint.overlay_prefix)
 			var/bp_suffix = BP.body_zone
-			if(BP.use_digitigrade)
+			if(BP.bodytype & BODYTYPE_DIGITIGRADE)
 				bp_suffix += "_digitigrade"
 			overlays.add_overlay("[BP.current_splint.overlay_prefix]_[bp_suffix]")
 

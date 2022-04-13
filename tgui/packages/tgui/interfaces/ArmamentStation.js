@@ -77,8 +77,7 @@ export const ArmamentStation = (props, context) => {
                                 fontSize="15px"
                                 textAlign="center"
                                 selected={weapon === item.ref}
-                                disabled={item.purchased >= item.quantity
-                                  || item.purchased >= item.quantity}
+                                color={item.purchased >= item.quantity ? "bad" : "default"}
                                 width="100%"
                                 key={item.ref}
                                 onClick={() =>

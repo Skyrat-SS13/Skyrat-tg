@@ -30,7 +30,7 @@
 		return
 	var/mob/living/L = A
 	if(gunpointing && L == gunpointing.target) //Cancelling a gunpoint by shift + MMB on the target
-		gunpointing.ClickDestroy()
+		gunpointing.click_destroy()
 	else
 		if(!CanGunpointAt(L, TRUE))
 			return

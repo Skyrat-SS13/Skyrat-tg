@@ -75,6 +75,10 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	name = "Medihound plushie"
 	item_path = /obj/item/toy/plush/medihound
 
+/datum/loadout_item/toys/engihound
+	name = "Engihound plushie"
+	item_path = /obj/item/toy/plush/engihound
+
 /datum/loadout_item/toys/scrubpuppy
 	name = "Scrubpuppy plushie"
 	item_path = /obj/item/toy/plush/scrubpuppy
@@ -205,7 +209,7 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 
 /datum/loadout_item/toys/engi_snek
 	name = "Engineering Snek Plushie"
-	item_path = /obj/item/toy/plush/engi_snek	
+	item_path = /obj/item/toy/plush/engi_snek
 
 /datum/loadout_item/toys/glitch_synth
 	name = "Glitching Synthetic Plushie"
@@ -214,7 +218,7 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 /datum/loadout_item/toys/boom_bird
 	name = "Boom Bird Plushie"
 	item_path = /obj/item/toy/plush/boom_bird
-	
+
 /datum/loadout_item/toys/blue_cat
 	name = "Blue Cat Plushie"
 	item_path = /obj/item/toy/plush/blue_cat
