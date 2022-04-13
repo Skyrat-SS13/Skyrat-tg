@@ -62,6 +62,16 @@
 	attack_verb_simple = list("beep", "boop", "ping")
 	squeak_override = list('sound/machines/beep.ogg' = 1)
 
+/obj/item/toy/plush/engihound
+	name = "engi-hound plushie"
+	desc = "An adorable stuffed toy of a engihound."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_engihound"
+	inhand_icon_state = "plushie_engihound"
+	attack_verb_continuous = list("beeps", "boops", "pings")
+	attack_verb_simple = list("beep", "boop", "ping")
+	squeak_override = list('sound/machines/beep.ogg' = 1)
+
 /obj/item/toy/plush/scrubpuppy
 	name = "scrub-puppy plushie"
 	desc = "An adorable stuffed toy of a Scrubpuppy, the hard-working pup who keeps the station clean!"
@@ -281,7 +291,7 @@
 	attack_verb_continuous = list("wehs")
 	attack_verb_simple = list("weh")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
-	
+
 /obj/item/toy/plush/mechanic_fox
 	name = "Mechanist Fox Plushie"
 	desc = "A fox with fabulous hair! It has a tendency to make synth plushies look good as new when placed next to them."
@@ -331,7 +341,7 @@
 	attack_verb_continuous = list("rustles at","threatens","skreks at")
 	attack_verb_simple = list("rustles at","threatens","skreks at")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/voxrustle.ogg' = 1)
-	
+
 /obj/item/toy/plush/blue_dog
 	name = "Blue Dog Plushie"
 	desc = "A devious looking husky that seems to be begging for headpats. It smells faintly of blueberries."
@@ -371,7 +381,7 @@
 	attack_verb_continuous = list("punches", "explodes on", "peeps")
 	attack_verb_simple = list("punches", "explodes on", "peeps")
 	squeak_override = list('sound/machines/sm/accent/delam/1.ogg' = 1)
-	
+
 /obj/item/toy/plush/blue_cat
 	name = "blue cat plushie"
 	desc = "A bright blue cat plush with neon pink hair, here to hand out kisses wherever kisses need be."

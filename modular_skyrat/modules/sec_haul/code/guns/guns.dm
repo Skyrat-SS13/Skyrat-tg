@@ -254,11 +254,11 @@
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon
-	name = "10x25mm pistol magazine"
+	name = "10mm Auto pistol magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = CALIBER_10MM
+	caliber = CALIBER_10MMAUTO
 	max_ammo = 12
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -291,11 +291,11 @@
 	company_flag = COMPANY_IZHEVSK
 
 /obj/item/ammo_box/magazine/multi_sprite/makarov
-	name = "small 10x25mm pistol magazine"
+	name = "small 10mm Auto pistol magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = CALIBER_10MM
+	caliber = CALIBER_10MMAUTO
 	max_ammo = 6
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -521,7 +521,7 @@
 /////////////////////////////////////////////ZETA
 /obj/item/gun/ballistic/revolver/zeta
 	name = "\improper Zeta-6 'Spurchamber'"
-	desc = "A fairly common double-action six-shooter chambered for 10mm Peacekeeper."
+	desc = "A fairly common double-action six-shooter chambered for 10mm Auto."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/zeta.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -533,19 +533,19 @@
 	company_flag = COMPANY_BOLT
 
 /obj/item/ammo_box/magazine/internal/cylinder/zeta
-	name = "10mm revolver cylinder"
+	name = "10mm Auto revolver cylinder"
 	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = CALIBER_10MM
+	caliber = CALIBER_10MMAUTO
 	max_ammo = 6
 
 /obj/item/ammo_box/revolver/zeta
-	name = "10x25mm speedloader"
+	name = "10mm Auto speedloader"
 	desc = "Designed to quickly reload the Zeta-6."
 	icon_state = "speedloader"
 	ammo_type = /obj/item/ammo_casing/b10mm
 	max_ammo = 6
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	caliber = CALIBER_10MM
+	caliber = CALIBER_10MMAUTO
 	start_empty = TRUE
 
 /obj/item/ammo_box/revolver/zeta/full

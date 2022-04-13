@@ -26,7 +26,7 @@
 	mutantheart = /obj/item/organ/heart/vampire
 	mutanttongue = /obj/item/organ/tongue/vampire
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_id = SPECIES_HUMAN
+	examine_limb_id = SPECIES_HUMAN
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	/// Some starter text sent to the vampire initially, because vampires have shit to do to stay alive.
 	var/info_text = "You are a <span class='danger'>Hemophage</span>. You will slowly but constantly lose blood if outside of a closet-like object. If inside a closet-like object, you will slowly heal. You may gain more blood by grabbing a live victim and using your drain ability."
@@ -63,7 +63,7 @@
 	if(vampire.stat == DEAD)
 		return
 	if(istype(vampire.loc, /obj/structure/closet) && !istype(vampire.loc, /obj/structure/closet/body_bag))
-		vampire.heal_overall_damage(1.5 * delta_time, 1.5 * delta_time, 0, BODYPART_ORGANIC) // Fast, but not as fast due to them being able to use normal lockers.
+		vampire.heal_overall_damage(1.5 * delta_time, 1.5 * delta_time, 0, BODYTYPE_ORGANIC) // Fast, but not as fast due to them being able to use normal lockers.
 		vampire.adjustToxLoss(-1 * delta_time) // 50% base speed to keep it fair.
 		vampire.adjustOxyLoss(-2 * delta_time)
 		vampire.adjustCloneLoss(-0.5 * delta_time) // HARDMODE DAMAGE
