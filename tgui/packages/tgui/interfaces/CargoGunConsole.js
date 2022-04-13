@@ -82,9 +82,7 @@ export const CargoGunConsole = (props, context) => {
                                 fontSize="15px"
                                 textAlign="center"
                                 selected={weapon === item.ref}
-                                disabled={item.purchased >= item.quantity
-                                  || item.purchased >= item.quantity
-                                  || item.cant_purchase}
+                                color={item.cant_purchase ? "bad" : item.purchased >= item.quantity ? "bad" : "default"}
                                 width="100%"
                                 key={item.ref}
                                 onClick={() =>
