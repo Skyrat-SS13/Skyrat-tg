@@ -804,9 +804,9 @@
 		draw_color ||= (species_color) || (skin_tone && skintone2hex(skin_tone))
 
 	if(draw_color)
-		limb.color = "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" //SKYRAT EDIT - Alpha values on limbs //honestly this is cursed as hell
+		limb.color = "[draw_color][num2hex(owner?.dna.species.specific_alpha, 2)]" //SKYRAT EDIT - Alpha values on limbs //honestly this is cursed as hell
 		if(aux_zone)
-			aux.color = "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" //SKYRAT EDIT - Alpha values on limbs
+			aux.color = "[draw_color][num2hex(owner?.dna.species.specific_alpha, 2)]" //SKYRAT EDIT - Alpha values on limbs
 
 	//EMISSIVE CODE START
 	if(blocks_emissive)
