@@ -2792,7 +2792,6 @@
 	height = 13;
 	id = "arrivals_stationary";
 	name = "arrivals";
-	roundstart_template = null;
 	width = 5
 	},
 /turf/open/floor/plating,
@@ -8079,11 +8078,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/aft)
-"hky" = (
-/obj/structure/sign/warning/fire,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
-/turf/closed/wall/r_wall,
-/area/maintenance/disposal/incinerator)
 "hlB" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
@@ -10656,18 +10650,10 @@
 /turf/open/floor/iron,
 /area/maintenance/port)
 "jJQ" = (
-/obj/machinery/igniter{
-	id = "Incinerator"
+/obj/machinery/power/turbine/inlet_compressor{
+	dir = 4
 	},
-/obj/machinery/air_sensor/incinerator_tank{
-	pixel_x = 33;
-	pixel_y = -32
-	},
-/obj/structure/cable,
-/obj/machinery/igniter{
-	id = "Incinerator"
-	},
-/turf/open/floor/engine/vacuum,
+/turf/open/floor/engine,
 /area/maintenance/disposal/incinerator)
 "jKy" = (
 /mob/living/carbon/human/species/monkey/angry{
@@ -10979,9 +10965,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/siding/wood,
-/obj/machinery/door/window/right{
-	dir = 2
-	},
+/obj/machinery/door/window/right,
 /turf/open/floor/wood,
 /area/hallway/secondary/entry)
 "jZP" = (
@@ -12184,12 +12168,10 @@
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "lcH" = (
-/obj/machinery/power/turbine{
-	dir = 4;
-	luminosity = 2
+/obj/machinery/power/turbine/turbine_outlet{
+	dir = 4
 	},
-/obj/structure/cable,
-/turf/open/floor/engine/vacuum,
+/turf/open/floor/engine,
 /area/maintenance/disposal/incinerator)
 "lcL" = (
 /obj/structure/cable,
@@ -12664,7 +12646,6 @@
 	},
 /obj/machinery/door/window/right{
 	base_state = "left";
-	dir = 2;
 	icon_state = "left";
 	name = "Danger: Conveyor Access";
 	req_access_txt = "12"
@@ -13775,7 +13756,6 @@
 /obj/machinery/atmospherics/pipe/bridge_pipe/dark/visible{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/bridge_pipe/supply/hidden,
 /turf/open/floor/engine/vacuum,
 /area/maintenance/disposal/incinerator)
 "mxL" = (
@@ -14110,14 +14090,6 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "mLn" = (
-/obj/machinery/door/airlock/public/glass/incinerator/atmos_interior{
-	id_tag = "atmos_incinerator_airlock_exterior";
-	name = "Turbine Exterior Airlock"
-	},
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
 /obj/structure/cable,
 /turf/open/floor/engine/vacuum,
 /area/maintenance/disposal/incinerator)
@@ -14461,7 +14433,6 @@
 "ncx" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/door/window/right{
-	dir = 2;
 	name = "Atmospherics Delivery";
 	req_access_txt = "24"
 	},
@@ -14646,9 +14617,6 @@
 /obj/machinery/light_switch/directional/south{
 	pixel_y = -44
 	},
-/obj/machinery/atmospherics/pipe/layer_manifold/supply/hidden{
-	dir = 4
-	},
 /obj/machinery/airalarm/directional/south,
 /turf/open/floor/iron/dark,
 /area/maintenance/disposal/incinerator)
@@ -14700,9 +14668,6 @@
 /obj/structure/table/reinforced,
 /obj/item/t_scanner,
 /obj/machinery/light/directional/south,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
-	dir = 10
-	},
 /turf/open/floor/iron/dark,
 /area/maintenance/disposal/incinerator)
 "nmd" = (
@@ -16161,8 +16126,7 @@
 "ooK" = (
 /obj/structure/window/reinforced,
 /obj/machinery/computer/turbine_computer{
-	dir = 1;
-	
+	dir = 1
 	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
@@ -16891,7 +16855,7 @@
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 4
 	},
-/turf/closed/wall/r_wall,
+/turf/open/floor/engine/vacuum,
 /area/maintenance/disposal/incinerator)
 "oYv" = (
 /turf/closed/wall/r_wall,
@@ -17992,9 +17956,7 @@
 	id = "Luggagebelt"
 	},
 /obj/structure/cable,
-/obj/machinery/door/window/right{
-	dir = 2
-	},
+/obj/machinery/door/window/right,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/security/checkpoint)
@@ -18276,7 +18238,7 @@
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 8
 	},
-/turf/closed/wall/r_wall,
+/turf/open/floor/engine/vacuum,
 /area/maintenance/disposal/incinerator)
 "qmO" = (
 /obj/structure/cable,
@@ -18917,7 +18879,6 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/door/window/left{
-	dir = 2;
 	name = "Drone Launchsite"
 	},
 /turf/open/floor/plating,
@@ -20489,10 +20450,6 @@
 /area/cargo/warehouse)
 "stZ" = (
 /obj/machinery/door/airlock/public/glass/incinerator/atmos_interior,
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
 /obj/machinery/embedded_controller/radio/airlock_controller/incinerator_atmos{
 	pixel_x = -7;
 	pixel_y = 22
@@ -21252,9 +21209,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 5
-	},
 /turf/open/floor/iron/dark,
 /area/maintenance/disposal/incinerator)
 "tiA" = (
@@ -21694,7 +21648,6 @@
 /turf/open/floor/iron/bluespace,
 /area/engineering/atmos)
 "tGx" = (
-/obj/machinery/atmospherics/pipe/bridge_pipe/scrubbers/hidden,
 /obj/machinery/atmospherics/pipe/bridge_pipe/scrubbers/visible{
 	dir = 4
 	},
@@ -21779,11 +21732,6 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/plating,
 /area/maintenance/port)
-"tKs" = (
-/obj/structure/sign/warning/fire,
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible,
-/turf/closed/wall/r_wall,
-/area/maintenance/disposal/incinerator)
 "tLb" = (
 /obj/machinery/door/airlock/external{
 	name = "Atmospherics External Airlock";
@@ -21949,12 +21897,12 @@
 	},
 /area/security/prison/safe)
 "tTP" = (
-/obj/machinery/power/turbine/inlet_compressor/constructed{
-	dir = 8;
-	luminosity = 2
+/obj/machinery/power/turbine/core_rotor{
+	dir = 4;
+	mapping_id = "main_turbine"
 	},
-/obj/structure/cable,
-/turf/open/floor/engine/vacuum,
+/obj/structure/cable/layer1,
+/turf/open/floor/engine,
 /area/maintenance/disposal/incinerator)
 "tUm" = (
 /obj/structure/disposalpipe/sorting/mail/flip{
@@ -25713,7 +25661,6 @@
 /turf/open/floor/plating,
 /area/cargo/miningdock)
 "wZu" = (
-/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/incinerator_atmos,
 /obj/machinery/airlock_sensor/incinerator_atmos{
 	pixel_x = -24;
 	pixel_y = 24
@@ -26067,7 +26014,6 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/door/window/left{
-	dir = 2;
 	name = "Drone Launchsite"
 	},
 /obj/machinery/light/directional/east,
@@ -64565,11 +64511,11 @@ tbJ
 dJE
 oLm
 nlR
-hky
+knG
 mxu
 wZu
 tGx
-tKs
+knG
 pWd
 pWd
 pWd
