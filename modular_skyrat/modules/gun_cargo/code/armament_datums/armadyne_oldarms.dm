@@ -9,42 +9,51 @@
 
 /datum/armament_entry/cargo_gun/oldarms/pistol/nagant
 	item_type =/obj/item/gun/ballistic/revolver/nagant
-	cost = 1
+	lower_cost = CARGO_CRATE_VALUE * 8
+	upper_cost = CARGO_CRATE_VALUE * 10
 
 /datum/armament_entry/cargo_gun/oldarms/pistol/luger
 	item_type = /obj/item/gun/ballistic/automatic/pistol/luger
-	cost = 1
+	lower_cost = CARGO_CRATE_VALUE * 7
+	upper_cost = CARGO_CRATE_VALUE * 9
 
 /datum/armament_entry/cargo_gun/oldarms/smg
 	subcategory = ARMAMENT_SUBCATEGORY_SUBMACHINEGUN
 
 /datum/armament_entry/cargo_gun/oldarms/smg/mp40
 	item_type = /obj/item/gun/ballistic/automatic/mp40
-	cost = 1
+	lower_cost = CARGO_CRATE_VALUE * 16
+	upper_cost = CARGO_CRATE_VALUE * 20
 
 /datum/armament_entry/cargo_gun/oldarms/smg/uzi
 	item_type = /obj/item/gun/ballistic/automatic/mini_uzi
-	cost = 1
+	lower_cost = CARGO_CRATE_VALUE * 14
+	upper_cost = CARGO_CRATE_VALUE * 18
 
 /datum/armament_entry/cargo_gun/oldarms/smg/ppsh
 	item_type = /obj/item/gun/ballistic/automatic/ppsh
-	cost = 1
+	lower_cost = CARGO_CRATE_VALUE * 16
+	upper_cost = CARGO_CRATE_VALUE * 18
 
 /datum/armament_entry/cargo_gun/oldarms/smg/thompson
 	item_type = /obj/item/gun/ballistic/automatic/tommygun
-	cost = 1
+	lower_cost = CARGO_CRATE_VALUE * 22
+	upper_cost = CARGO_CRATE_VALUE * 25
 
 /datum/armament_entry/cargo_gun/oldarms/rifle
 	subcategory = ARMAMENT_SUBCATEGORY_ASSAULTRIFLE
 
 /datum/armament_entry/cargo_gun/oldarms/rifle/vintorez
 	item_type = /obj/item/gun/energy/vintorez
-	cost = 1
+	lower_cost = CARGO_CRATE_VALUE * 12
+	upper_cost = CARGO_CRATE_VALUE * 18
 
 /datum/armament_entry/cargo_gun/oldarms/rifle/stg
 	item_type = /obj/item/gun/ballistic/automatic/stg
-	cost = 1
+	lower_cost = CARGO_CRATE_VALUE * 18
+	upper_cost = CARGO_CRATE_VALUE * 25
 
 /datum/armament_entry/cargo_gun/oldarms/rifle/g11
 	item_type = /obj/item/gun/ballistic/automatic/g11
-	cost = 1
+	lower_cost = CARGO_CRATE_VALUE * 20
+	upper_cost = CARGO_CRATE_VALUE * 25

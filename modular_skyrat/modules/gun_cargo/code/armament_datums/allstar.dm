@@ -17,6 +17,11 @@
 	lower_cost = CARGO_CRATE_VALUE * 6
 	upper_cost = CARGO_CRATE_VALUE * 8
 
+/datum/armament_entry/cargo_gun/allstar/laser/mini_egun
+	item_type = /obj/item/gun/energy/e_gun/mini
+	lower_cost = CARGO_CRATE_VALUE * 5
+	upper_cost = CARGO_CRATE_VALUE * 7
+
 /datum/armament_entry/cargo_gun/allstar/laser/disabler
 	item_type = /obj/item/gun/energy/disabler
 	lower_cost = CARGO_CRATE_VALUE * 3

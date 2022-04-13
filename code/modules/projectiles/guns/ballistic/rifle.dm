@@ -60,8 +60,7 @@
 	knife_x_offset = 27
 	knife_y_offset = 13
 	can_be_sawn_off = TRUE
-	dirt_modifier = 0.75
-	company_flag = COMPANY_IZHEVSK //SKYRAT EDIT
+	realistic = TRUE
 
 /obj/item/gun/ballistic/rifle/boltaction/sawoff(mob/user)
 	. = ..()

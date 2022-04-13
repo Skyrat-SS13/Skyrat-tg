@@ -48,7 +48,6 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/riot
 	sawn_desc = "Come with me if you want to live."
 	can_be_sawn_off = TRUE
-	company_flag = COMPANY_NANOTRASEN //SKYRAT EDIT
 
 // Automatic Shotguns//
 
@@ -138,7 +137,6 @@
 	semi_auto = TRUE
 	internal_magazine = FALSE
 	tac_reloads = TRUE
-	company_flag = COMPANY_SCARBOROUGH
 
 
 /obj/item/gun/ballistic/shotgun/bulldog/unrestricted

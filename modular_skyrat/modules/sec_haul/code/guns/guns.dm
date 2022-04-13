@@ -200,7 +200,7 @@
 ///////////////////////////PDH PEACEKEEPER
 /obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper
 	name = "\improper PDH-6B 'Peacekeeper'"
-	desc = "A modern ballistic sidearm, used primarily by law enforcement, produced by Armadyne instead of CFA."
+	desc = "A modern ballistic sidearm, used primarily by law enforcement."
 	fire_delay = 1.95
 	icon_state = "pdh_peacekeeper"
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper

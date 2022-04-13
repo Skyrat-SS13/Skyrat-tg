@@ -40,3 +40,40 @@
 /datum/armament_entry/cargo_gun/cantalan/rifle/catanheim
 	item_type = /obj/item/gun/ballistic/automatic/cfa_rifle
 	cost = 1
+
+/datum/armament_entry/cargo_gun/cantalan/ammo
+	subcategory = ARMAMENT_SUBCATEGORY_AMMO
+	stock_mult = 2
+	is_gun = FALSE
+
+/datum/armament_entry/cargo_gun/cantalan/ammo/c34
+	item_type = /obj/item/ammo_box/c34
+	cost = 1
+
+/datum/armament_entry/cargo_gun/cantalan/ammo/c34_ap
+	item_type = /obj/item/ammo_box/c34/ap
+	cost = 1
+
+/datum/armament_entry/cargo_gun/cantalan/ammo/c34_in
+	item_type = /obj/item/ammo_box/c34/fire
+	cost = 1
+
+/datum/armament_entry/cargo_gun/cantalan/ammo/c34_rub
+	item_type = /obj/item/ammo_box/c34/rubber
+	cost = 1
+
+/datum/armament_entry/cargo_gun/cantalan/ammo/c12mm
+	item_type = /obj/item/ammo_box/c12mm
+	cost = 1
+
+/datum/armament_entry/cargo_gun/cantalan/ammo/c12mm_ap
+	item_type = /obj/item/ammo_box/c12mm/ap
+	cost = 1
+
+/datum/armament_entry/cargo_gun/cantalan/ammo/c12mm_in
+	item_type = /obj/item/ammo_box/c12mm/fire
+	cost = 1
+
+/datum/armament_entry/cargo_gun/cantalan/ammo/c12mm_hp
+	item_type = /obj/item/ammo_box/c12mm/hp
+	cost = 1

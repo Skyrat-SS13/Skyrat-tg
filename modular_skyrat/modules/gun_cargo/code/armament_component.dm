@@ -286,7 +286,6 @@
 
 /datum/component/armament/cargo_gun/proc/cost_calculate(cost)
 	. = cost
-	. += CARGO_CRATE_VALUE
 	. *= SSeconomy.pack_price_modifier
 
 /datum/component/armament/cargo_gun/ui_act(action, list/params)

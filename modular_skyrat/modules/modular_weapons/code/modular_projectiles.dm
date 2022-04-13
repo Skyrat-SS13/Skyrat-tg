@@ -342,6 +342,12 @@
 	desc = "A 12mm Magnum bullet casing. This leaves a burning trail and ignites its target."
 	projectile_type = /obj/projectile/bullet/incendiary/c12mm
 
+/obj/item/ammo_casing/c12mm/rubber
+	name = "12mm Magnum rubber bullet casing"
+	desc = "A 12mm Magnum bullet casing. This fires a non-lethal projectile to cause compliance by pain and bruising. Don't aim for the head."
+	projectile_type = /obj/projectile/bullet/c12mm/rubber
+	harmful = FALSE
+
 /obj/projectile/bullet/c12mm
 	name = "12mm bullet"
 	damage = 40
@@ -360,6 +366,18 @@
 	name = "12mm incendiary bullet"
 	damage = 20
 	fire_stacks = 2
+
+/obj/projectile/bullet/c12mm/rubber
+	name = "12mm Magnum rubber ball"
+	damage = 10
+	stamina = 40
+	ricochets_max = 6
+	ricochet_incidence_leeway = 0
+	ricochet_chance = 130
+	ricochet_decay_damage = 0.7
+	shrapnel_type = null
+	sharpness = NONE
+	embedding = null
 
 //////    12mm    //////
 ////////////////////////

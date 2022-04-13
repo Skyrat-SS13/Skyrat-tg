@@ -2,7 +2,7 @@
 #define FAILED_INTEREST 1
 #define PASSED_INTEREST 2
 #define HIGH_INTEREST 3
-
+#define INTEREST_HIGH_MULT 25
 
 SUBSYSTEM_DEF(gun_companies)
 	name = "Gun Companies"
@@ -23,10 +23,7 @@ SUBSYSTEM_DEF(gun_companies)
 	for(var/datum/gun_company/company as anything in subtypesof(/datum/gun_company))
 		var/datum/gun_company/new_company = new company
 		companies[new_company.name] = new_company
-		/*if(prob(50))
-			purchased_companies[new_company.name] = new_company //REMOVE LATER
-		else*/
-		unpurchased_companies[new_company.name] = new_company //REMOVE LATER
+		unpurchased_companies[new_company.name] = new_company
 
 	var/list/potential_handouts = list()
 	for(var/company_name in unpurchased_companies)
@@ -61,7 +58,7 @@ SUBSYSTEM_DEF(gun_companies)
 
 		company_datum.base_cost += max(rand(company_datum.cost_change_lower, company_datum.cost_change_upper), 0)
 		company_datum.base_cost = company_datum.base_cost <= 1000 ? 1000 : company_datum.base_cost
-		company_datum.cost = round(company_datum.base_cost * company_datum.cost_mult)
+		company_datum.cost = round(company_datum.base_cost * company_datum.cost_mult) + CARGO_CRATE_VALUE
 
 		var/interest_threshold = rand(1, 2)
 		var/interest_knockdown = 0.5 * interest_threshold
@@ -77,7 +74,7 @@ SUBSYSTEM_DEF(gun_companies)
 		else
 			var/non_zero_threshold = interest_threshold ? interest_threshold : 1
 
-			if(company_datum.interest < (non_zero_threshold * 25))
+			if(company_datum.interest < (non_zero_threshold * INTEREST_HIGH_MULT))
 				passed_interest_tier[company_datum] = PASSED_INTEREST
 
 			else
@@ -107,7 +104,7 @@ SUBSYSTEM_DEF(gun_companies)
 							entry_typecast.stock = max((round((stock_failed * entry_typecast.stock_mult) - 1)), 0)
 							var/gun_cost_failed = rand(entry_typecast.lower_cost, entry_typecast.upper_cost)
 							var/compound_cost = round(entry_typecast.cost * 0.1)
-							entry_typecast.cost = max((round((gun_cost_failed + compound_cost) - (0.5 * entry_typecast.lower_cost))), 0)
+							entry_typecast.cost = max((round((gun_cost_failed + compound_cost) - (0.25 * entry_typecast.lower_cost))), 0)
 							entry_typecast.magazine_cost = round((entry_typecast.cost * 0.1) * the_datum.magazine_cost_mult)
 
 						if(PASSED_INTEREST)
@@ -115,7 +112,7 @@ SUBSYSTEM_DEF(gun_companies)
 							entry_typecast.stock = max((round(stock_passed * entry_typecast.stock_mult)), 0)
 							var/gun_cost_passed = rand(entry_typecast.lower_cost, entry_typecast.upper_cost)
 							var/compound_cost = round(entry_typecast.cost * 0.1)
-							entry_typecast.cost = max((round((gun_cost_passed + compound_cost) + round((rand(1, 10) * 0.1) * entry_typecast.lower_cost))), 0)
+							entry_typecast.cost = max((round(gun_cost_passed + compound_cost)), 0)
 							entry_typecast.magazine_cost = round((entry_typecast.cost * 0.11) * the_datum.magazine_cost_mult)
 
 						if(HIGH_INTEREST)
@@ -123,7 +120,8 @@ SUBSYSTEM_DEF(gun_companies)
 							entry_typecast.stock = max((round(stock_interested * entry_typecast.stock_mult) + 1), 0)
 							var/gun_cost_high = rand(entry_typecast.lower_cost, entry_typecast.upper_cost)
 							var/compound_cost = round(entry_typecast.cost * 0.1)
-							entry_typecast.cost = max((round((gun_cost_high + compound_cost) + round((rand(5, 25) * 0.1) * entry_typecast.lower_cost))), 0)
+							entry_typecast.cost = max(round(gun_cost_high + compound_cost), 0)
 							entry_typecast.magazine_cost = round((entry_typecast.cost * 0.125) * the_datum.magazine_cost_mult)
 
 #undef MAX_HANDOUT_CHOICES
+#undef INTEREST_HIGH_MULT

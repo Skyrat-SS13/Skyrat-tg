@@ -8,7 +8,6 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/lasergun)
 	ammo_x_offset = 1
 	shaded_charge = 1
-	company_flag = COMPANY_ALLSTAR //SKYRAT EDIT
 
 /obj/item/gun/energy/laser/practice
 	name = "practice laser gun"

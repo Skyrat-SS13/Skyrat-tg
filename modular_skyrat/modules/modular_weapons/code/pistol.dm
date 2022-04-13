@@ -73,7 +73,7 @@
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
 	icon_state = "m12mm"
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_AP, AMMO_TYPE_RUBBER, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_INCENDIARY)
-	ammo_type = /obj/item/ammo_casing/c10mm
+	ammo_type = /obj/item/ammo_casing/c12mm
 	caliber = CALIBER_12MM
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
@@ -82,17 +82,17 @@
 	start_empty = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/ap
-	ammo_type = /obj/item/ammo_casing/c10mm/ap
+	ammo_type = /obj/item/ammo_casing/c12mm/ap
 	round_type = AMMO_TYPE_AP
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/rubber
-	ammo_type = /obj/item/ammo_casing/c10mm/rubber
+	ammo_type = /obj/item/ammo_casing/c12mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/hp
-	ammo_type = /obj/item/ammo_casing/c10mm/hp
+	ammo_type = /obj/item/ammo_casing/c12mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/incendiary
-	ammo_type = /obj/item/ammo_casing/c10mm/fire
+	ammo_type = /obj/item/ammo_casing/c12mm/fire
 	round_type = AMMO_TYPE_INCENDIARY
