@@ -22,8 +22,8 @@
 
 /datum/armament_entry/cargo_gun/oldarms/smg/mp40
 	item_type = /obj/item/gun/ballistic/automatic/mp40
-	lower_cost = CARGO_CRATE_VALUE * 16
-	upper_cost = CARGO_CRATE_VALUE * 20
+	lower_cost = CARGO_CRATE_VALUE * 20
+	upper_cost = CARGO_CRATE_VALUE * 24
 
 /datum/armament_entry/cargo_gun/oldarms/smg/uzi
 	item_type = /obj/item/gun/ballistic/automatic/mini_uzi
@@ -32,8 +32,8 @@
 
 /datum/armament_entry/cargo_gun/oldarms/smg/ppsh
 	item_type = /obj/item/gun/ballistic/automatic/ppsh
-	lower_cost = CARGO_CRATE_VALUE * 16
-	upper_cost = CARGO_CRATE_VALUE * 18
+	lower_cost = CARGO_CRATE_VALUE * 20
+	upper_cost = CARGO_CRATE_VALUE * 24
 
 /datum/armament_entry/cargo_gun/oldarms/smg/thompson
 	item_type = /obj/item/gun/ballistic/automatic/tommygun

@@ -37,18 +37,18 @@
 
 /datum/armament_entry/cargo_gun/bolt/m23
 	item_type = /obj/item/gun/ballistic/shotgun/m23
-	lower_cost = CARGO_CRATE_VALUE * 6
-	upper_cost = CARGO_CRATE_VALUE * 8
+	lower_cost = CARGO_CRATE_VALUE * 10
+	upper_cost = CARGO_CRATE_VALUE * 12
 
 /datum/armament_entry/cargo_gun/bolt/smg
 	subcategory = ARMAMENT_SUBCATEGORY_SUBMACHINEGUN
 
 /datum/armament_entry/cargo_gun/bolt/smg/pcr
 	item_type = /obj/item/gun/energy/pcr
-	lower_cost = CARGO_CRATE_VALUE * 10
-	upper_cost = CARGO_CRATE_VALUE * 12
+	lower_cost = CARGO_CRATE_VALUE * 16
+	upper_cost = CARGO_CRATE_VALUE * 20
 
 /datum/armament_entry/cargo_gun/bolt/smg/pitbull
 	item_type = /obj/item/gun/energy/pitbull
-	lower_cost = CARGO_CRATE_VALUE * 10
-	upper_cost = CARGO_CRATE_VALUE * 12
+	lower_cost = CARGO_CRATE_VALUE * 16
+	upper_cost = CARGO_CRATE_VALUE * 20

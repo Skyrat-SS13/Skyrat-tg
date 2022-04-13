@@ -9,8 +9,8 @@
 
 /datum/armament_entry/cargo_gun/nanotrasen/pistol/thermal_holster
 	item_type = /obj/item/storage/belt/holster/thermal
-	lower_cost = CARGO_CRATE_VALUE * 6
-	upper_cost = CARGO_CRATE_VALUE * 10
+	lower_cost = CARGO_CRATE_VALUE * 8
+	upper_cost = CARGO_CRATE_VALUE * 12
 
 /datum/armament_entry/cargo_gun/nanotrasen/shotgun
 	subcategory = ARMAMENT_SUBCATEGORY_SHOTGUN
@@ -25,10 +25,10 @@
 
 /datum/armament_entry/cargo_gun/nanotrasen/smg/saber
 	item_type = /obj/item/gun/ballistic/automatic/proto
-	lower_cost = CARGO_CRATE_VALUE * 8
-	upper_cost = CARGO_CRATE_VALUE * 14
+	lower_cost = CARGO_CRATE_VALUE * 12
+	upper_cost = CARGO_CRATE_VALUE * 18
 
-/datum/armament_entry/cargo_gun/nanotrasen/smg/cmg
+/datum/armament_entry/cargo_gun/nanotrasen/smg/cmg //change when cobalt's CMG changes go through
 	item_type = /obj/item/gun/ballistic/automatic/c20r/unrestricted/cmg1
 	lower_cost = CARGO_CRATE_VALUE * 8
 	upper_cost = CARGO_CRATE_VALUE * 13
@@ -38,15 +38,15 @@
 
 /datum/armament_entry/cargo_gun/nanotrasen/rifle/wtrifle
 	item_type = /obj/item/gun/ballistic/automatic/wt550
-	lower_cost = CARGO_CRATE_VALUE * 8
-	upper_cost = CARGO_CRATE_VALUE * 10
+	lower_cost = CARGO_CRATE_VALUE * 12
+	upper_cost = CARGO_CRATE_VALUE * 16
 
 /datum/armament_entry/cargo_gun/nanotrasen/rifle/boarder
 	item_type = /obj/item/gun/ballistic/automatic/ar
-	lower_cost = CARGO_CRATE_VALUE * 12
-	upper_cost = CARGO_CRATE_VALUE * 15
+	lower_cost = CARGO_CRATE_VALUE * 20
+	upper_cost = CARGO_CRATE_VALUE * 24
 
 /datum/armament_entry/cargo_gun/nanotrasen/rifle/model75
 	item_type = /obj/item/gun/ballistic/automatic/ar/modular/model75
-	lower_cost = CARGO_CRATE_VALUE * 8
-	upper_cost = CARGO_CRATE_VALUE * 10
+	lower_cost = CARGO_CRATE_VALUE * 14
+	upper_cost = CARGO_CRATE_VALUE * 20

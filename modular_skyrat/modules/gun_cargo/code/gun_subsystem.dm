@@ -7,6 +7,7 @@
 #define INTEREST_LOWER_RAND 5
 #define INTEREST_HIGHER_RAND 25
 #define BASE_COST_MINIMUM 1000
+#define BASE_COST_MAXIMUM 75000
 #define INTEREST_LOW_MAG_COST 0.1
 #define INTEREST_MED_MAG_COST 0.11
 #define INTEREST_HIGH_MAG_COST 0.125
@@ -27,11 +28,13 @@ SUBSYSTEM_DEF(gun_companies)
 	var/handout_picked = FALSE
 
 /datum/controller/subsystem/gun_companies/Initialize(start_timeofday)
+	// Adds the company refs to the unchanging companies list and the changing unpurchased_companies list
 	for(var/datum/gun_company/company as anything in subtypesof(/datum/gun_company))
 		var/datum/gun_company/new_company = new company
 		companies[new_company.name] = new_company
 		unpurchased_companies[new_company.name] = new_company
 
+	// Cargo gets to pick one company from several for free
 	var/list/potential_handouts = list()
 	for(var/company_name in unpurchased_companies)
 		var/datum/gun_company/picked_company = unpurchased_companies[company_name]
@@ -59,14 +62,16 @@ SUBSYSTEM_DEF(gun_companies)
 
 /datum/controller/subsystem/gun_companies/fire(resumed)
 	var/list/passed_interest_tier = list()
-
+	// Company handling
 	for(var/company in companies)
 		var/datum/gun_company/company_datum = companies[company]
 
+		// Set the prices of the companies, is intended to slowly scale up over time
 		company_datum.base_cost += max(rand(company_datum.cost_change_lower, company_datum.cost_change_upper), 0)
+		company_datum.base_cost = clamp(company_datum.base_cost, BASE_COST_MINIMUM, BASE_COST_MAXIMUM)
 		company_datum.base_cost = company_datum.base_cost <= BASE_COST_MINIMUM ? BASE_COST_MINIMUM : company_datum.base_cost
-		company_datum.cost = round(company_datum.base_cost * company_datum.cost_mult) + CARGO_CRATE_VALUE
-
+		company_datum.cost = round(company_datum.base_cost * company_datum.cost_mult)
+		// knocking down the interest of all companies
 		var/interest_threshold = rand(INTEREST_LOWER_RAND, INTEREST_HIGHER_RAND)
 		var/interest_knockdown = 0.5 * interest_threshold
 
@@ -74,7 +79,7 @@ SUBSYSTEM_DEF(gun_companies)
 			interest_knockdown *= 0.5
 
 		company_datum.interest -= interest_knockdown
-
+		// determining what heirarchy of interest the company falls in
 		if(company_datum.interest < interest_threshold)
 			passed_interest_tier[company_datum] = FAILED_INTEREST
 
@@ -91,7 +96,7 @@ SUBSYSTEM_DEF(gun_companies)
 
 
 	var/list/products = subtypesof(/datum/armament_entry/cargo_gun)
-
+	// Setting cost and stock of armament entries
 	for(var/armament_category as anything in GLOB.armament_entries)
 		for(var/subcategory as anything in GLOB.armament_entries[armament_category][CATEGORY_ENTRY])
 			for(var/datum/armament_entry/armament_entry as anything in GLOB.armament_entries[armament_category][CATEGORY_ENTRY][subcategory])
@@ -113,7 +118,7 @@ SUBSYSTEM_DEF(gun_companies)
 							entry_typecast.stock = max((round(stock_failed * entry_typecast.stock_mult)), 0)
 							var/gun_cost_failed = rand(entry_typecast.lower_cost, entry_typecast.upper_cost)
 							var/compound_cost = round(entry_typecast.cost * 0.1)
-							entry_typecast.cost = max((round((gun_cost_failed + compound_cost) - (0.25 * entry_typecast.lower_cost))), 0)
+							entry_typecast.cost = max((round((gun_cost_failed + (compound_cost + CARGO_CRATE_VALUE)) - (0.25 * entry_typecast.lower_cost)) ), 0)
 							entry_typecast.magazine_cost = round((entry_typecast.cost * INTEREST_LOW_MAG_COST) * the_datum.magazine_cost_mult)
 
 						if(PASSED_INTEREST)
@@ -121,7 +126,7 @@ SUBSYSTEM_DEF(gun_companies)
 							entry_typecast.stock = max((round(stock_passed * entry_typecast.stock_mult) + 1), 0)
 							var/gun_cost_passed = rand(entry_typecast.lower_cost, entry_typecast.upper_cost)
 							var/compound_cost = round(entry_typecast.cost * 0.1)
-							entry_typecast.cost = max((round(gun_cost_passed + compound_cost)), 0)
+							entry_typecast.cost = max((round(gun_cost_passed + compound_cost) + CARGO_CRATE_VALUE), 0)
 							entry_typecast.magazine_cost = round((entry_typecast.cost * INTEREST_MED_MAG_COST) * the_datum.magazine_cost_mult)
 
 						if(HIGH_INTEREST)
@@ -129,7 +134,7 @@ SUBSYSTEM_DEF(gun_companies)
 							entry_typecast.stock = max((round(stock_interested * entry_typecast.stock_mult) + 2), 0)
 							var/gun_cost_high = rand(entry_typecast.lower_cost, entry_typecast.upper_cost)
 							var/compound_cost = round(entry_typecast.cost * 0.1)
-							entry_typecast.cost = max(round(gun_cost_high + compound_cost), 0)
+							entry_typecast.cost = max(round(gun_cost_high + (compound_cost + CARGO_CRATE_VALUE)) , 0)
 							entry_typecast.magazine_cost = round((entry_typecast.cost * INTEREST_HIGH_MAG_COST) * the_datum.magazine_cost_mult)
 
 #undef MAX_HANDOUT_CHOICES
@@ -138,6 +143,7 @@ SUBSYSTEM_DEF(gun_companies)
 #undef INTEREST_LOWER_RAND
 #undef INTEREST_HIGHER_RAND
 #undef BASE_COST_MINIMUM
+#undef BASE_COST_MAXIMUM
 #undef INTEREST_LOW_MAG_COST
 #undef INTEREST_MED_MAG_COST
 #undef INTEREST_HIGH_MAG_COST

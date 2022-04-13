@@ -9,8 +9,8 @@
 
 /datum/armament_entry/cargo_gun/micron/rifle/mcr
 	item_type = /obj/item/gun/microfusion/mcr01
-	lower_cost = CARGO_CRATE_VALUE * 5
-	upper_cost = CARGO_CRATE_VALUE * 8
+	lower_cost = CARGO_CRATE_VALUE * 12
+	upper_cost = CARGO_CRATE_VALUE * 16
 
 /datum/armament_entry/cargo_gun/micron/ammo
 	subcategory = ARMAMENT_SUBCATEGORY_AMMO

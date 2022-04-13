@@ -14,8 +14,9 @@
 
 /datum/armament_entry/cargo_gun/scarborough/pistol/aps
 	item_type = /obj/item/gun/ballistic/automatic/pistol/aps
-	lower_cost = CARGO_CRATE_VALUE * 14
-	upper_cost = CARGO_CRATE_VALUE * 18
+	lower_cost = CARGO_CRATE_VALUE * 18
+	upper_cost = CARGO_CRATE_VALUE * 22
+	interest_required = PASSED_INTEREST
 
 /datum/armament_entry/cargo_gun/scarborough/shotgun
 	subcategory = ARMAMENT_SUBCATEGORY_SHOTGUN
@@ -40,6 +41,7 @@
 	item_type = /obj/item/gun/ballistic/automatic/m90/unrestricted
 	lower_cost = CARGO_CRATE_VALUE * 35
 	upper_cost = CARGO_CRATE_VALUE * 40
+	interest_required = HIGH_INTEREST
 
 /datum/armament_entry/cargo_gun/scarborough/part
 	subcategory = ARMAMENT_SUBCATEGORY_GUNPART
@@ -56,3 +58,4 @@
 	item_type = /obj/item/ammo_casing/a40mm
 	lower_cost = CARGO_CRATE_VALUE * 15
 	upper_cost = CARGO_CRATE_VALUE * 24
+	interest_required = HIGH_INTEREST

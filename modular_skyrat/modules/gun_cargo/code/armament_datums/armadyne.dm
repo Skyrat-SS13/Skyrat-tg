@@ -24,8 +24,8 @@
 
 /datum/armament_entry/cargo_gun/armadyne/pistol/pdh6b
 	item_type = /obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper
-	lower_cost = CARGO_CRATE_VALUE * 6
-	upper_cost = CARGO_CRATE_VALUE * 8
+	lower_cost = CARGO_CRATE_VALUE * 2
+	upper_cost = CARGO_CRATE_VALUE * 3
 
 /datum/armament_entry/cargo_gun/armadyne/pistol/mk58
 	item_type = /obj/item/gun/ballistic/automatic/pistol/mk58
@@ -34,11 +34,6 @@
 
 /datum/armament_entry/cargo_gun/armadyne/shotgun
 	subcategory = ARMAMENT_SUBCATEGORY_SHOTGUN
-
-/datum/armament_entry/cargo_gun/armadyne/shotgun/sas
-	item_type = /obj/item/gun/ballistic/shotgun/sas14
-	lower_cost = CARGO_CRATE_VALUE * 8
-	upper_cost = CARGO_CRATE_VALUE * 10
 
 /datum/armament_entry/cargo_gun/armadyne/shotgun/as2
 	item_type = /obj/item/gun/ballistic/shotgun/automatic/as2
