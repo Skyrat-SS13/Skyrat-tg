@@ -56,3 +56,17 @@
 	shrapnel_type = null
 	sharpness = NONE
 	embedding = null
+
+/obj/item/storage/box/gunset/cmg
+	name = "cmg supply box"
+
+/obj/item/gun/ballistic/automatic/cmg/nomag
+	spawnwithmagazine = FALSE
+
+
+/obj/item/storage/box/gunset/cmg/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/cmg/nomag(src)
+	new /obj/item/ammo_box/magazine/cmgm45(src)
+	new /obj/item/ammo_box/magazine/cmgm45(src)
+	new /obj/item/ammo_box/magazine/cmgm45(src)
