@@ -38,8 +38,8 @@
 
 /datum/armament_entry/cargo_gun/scarborough/rifle/m90gl // Fucking expensive as hell.
 	item_type = /obj/item/gun/ballistic/automatic/m90/unrestricted
-	lower_cost = CARGO_CRATE_VALUE * 30
-	upper_cost = CARGO_CRATE_VALUE * 35
+	lower_cost = CARGO_CRATE_VALUE * 35
+	upper_cost = CARGO_CRATE_VALUE * 40
 
 /datum/armament_entry/cargo_gun/scarborough/part
 	subcategory = ARMAMENT_SUBCATEGORY_GUNPART
@@ -54,5 +54,5 @@
 
 /datum/armament_entry/cargo_gun/scarborough/ammo/grenade
 	item_type = /obj/item/ammo_casing/a40mm
-	lower_cost = CARGO_CRATE_VALUE * 4
-	upper_cost = CARGO_CRATE_VALUE * 6
+	lower_cost = CARGO_CRATE_VALUE * 15
+	upper_cost = CARGO_CRATE_VALUE * 24
