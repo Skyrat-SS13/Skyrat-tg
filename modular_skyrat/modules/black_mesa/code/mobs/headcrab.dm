@@ -14,8 +14,8 @@
 	ranged_message = "jumps"
 	taunt_chance = 100
 	turns_per_move = 7
-	maxHealth = 100
-	health = 100
+	maxHealth = 50
+	health = 50
 	speed = 3
 	ranged = TRUE
 	dodging = TRUE
