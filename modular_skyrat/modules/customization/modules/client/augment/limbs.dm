@@ -17,7 +17,6 @@
 		oldBP.rendered_bp_icon = initial(BP.icon)
 		oldBP.icon_state = initial(BP.icon_state)
 		oldBP.should_draw_greyscale = FALSE
-		H.icon_render_key = "" //To force an update on the limbs
 	else
 		var/obj/item/bodypart/BP = new path(H)
 		var/obj/item/bodypart/oldBP = H.get_bodypart(BP.body_zone)

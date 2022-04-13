@@ -14,7 +14,7 @@
 	min_cold_protection_temperature = ARMOR_MIN_TEMP_PROTECT
 	heat_protection = CHEST|ARMS|GROIN
 	max_heat_protection_temperature = ARMOR_MAX_TEMP_PROTECT
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/rank/nanotrasen_consultant
 	desc = "It's a green jumpsuit with some gold markings denoting the rank of \"Nanotrasen Consultant\"."
@@ -45,7 +45,7 @@
 	armor = list(MELEE = 15, BULLET = 5, LASER = 15, ENERGY = 25, BOMB = 10, BIO = 0, FIRE = 30, ACID = 5, WOUND = 4)
 	strip_delay = 60
 	dog_fashion = null
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/nanotrasen_consultant/beret
 	name = "nanotrasen consultant's beret"

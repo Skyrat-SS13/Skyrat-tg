@@ -60,7 +60,7 @@
 	name = "ash walker tunic"
 	desc = "A tattered red tunic of reddened fabric."
 	icon_state = "caesar_clothes"
-	mutant_variants = STYLE_DIGITIGRADE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 /obj/item/clothing/under/costume/gladiator/ash_walker/legskirt_d
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
