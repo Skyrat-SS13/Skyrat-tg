@@ -58,7 +58,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "polyskirt"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#888888")
 
 /obj/item/clothing/under/dress/skirt/polychromic/ComponentInitialize()
@@ -92,7 +92,7 @@
 	icon_state = "polyshorts"
 	can_adjust = FALSE
 	body_parts_covered = CHEST|GROIN|ARMS
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/polyshorts/ComponentInitialize()
 	. = ..()
@@ -119,7 +119,7 @@
 	icon_state = "polybottomless"
 	body_parts_covered = CHEST|ARMS	//Because there's no bottom included
 	can_adjust = FALSE
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/poly_bottomless/ComponentInitialize()
 	. = ..()
@@ -134,7 +134,7 @@
 	worn_icon_state = "poly_turtle"
 	body_parts_covered = CHEST|GROIN|ARMS //Commando sweater is long but still doesnt have pants
 	can_adjust = FALSE
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/polysweater/ComponentInitialize()
 	. = ..()
@@ -148,7 +148,7 @@
 	icon_state = "polyshimatank"
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	var/list/poly_colors = list("#888888", "#FFFFFF", "#88CCFF")
 
 /obj/item/clothing/under/misc/poly_tanktop/ComponentInitialize()
@@ -192,7 +192,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "darkcoat"
 	inhand_icon_state = "darkcoat"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 // Donation reward for Grunnyyy
 /obj/item/clothing/neck/cloak/grunnyyy

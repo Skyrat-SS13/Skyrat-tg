@@ -29,7 +29,7 @@
 	icon_state = "cowboy_vest"
 	body_parts_covered = CHEST|ARMS
 	cold_protection = CHEST|ARMS
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	heat_protection = CHEST|ARMS
 
 /obj/item/clothing/suit/det_suit/cowboyvest
@@ -40,7 +40,7 @@
 	icon_state = "cowboy_vest"
 	body_parts_covered = CHEST|ARMS
 	cold_protection = CHEST|ARMS
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	heat_protection = CHEST|ARMS
 
 /obj/item/clothing/under/rank/security/detective/runner
