@@ -22,6 +22,9 @@
 	var/greyscale_config_worn_taur_paw
 	var/greyscale_config_worn_taur_hoof
 
+	/// Used for BODYTYPE_CUSTOM: Needs to follow this syntax: a list() with the x and y coordinates of the pixel you want to get the color from. Colors are filled in as GAGs values for fallback.
+	var/list/species_clothing_color_coords[3]
+
 /obj/item/clothing/head
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
 
