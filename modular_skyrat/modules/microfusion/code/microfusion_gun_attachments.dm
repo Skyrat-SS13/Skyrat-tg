@@ -575,7 +575,7 @@ HONK!! Does subpar stamina damage but slips people.
 	name = "bananium phase emitter upgrade"
 	desc = "An honksperimental barrel attachment that makes your lasers funnier."
 	icon_state = "attachment_honk"
-	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter, /obj/item/microfusion_gun_attachment/scattermax, /obj/item/microfusion_gun_attachment/undercharger)
+	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/scatter, /obj/item/microfusion_gun_attachment/scattermax)
 	slot = GUN_SLOT_BARREL
 	attachment_overlay_icon_state = "attachment_honk"
 	var/added_fire_delay = 20
