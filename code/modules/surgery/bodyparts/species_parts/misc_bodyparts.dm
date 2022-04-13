@@ -88,6 +88,7 @@
 /obj/item/bodypart/r_leg/slime
 	limb_id = SPECIES_SLIMEPERSON
 
+//SKYRAT ADDITION BEGIN -  Roundstartslime bodyparts for Kapulimbs
 ///ROUNDSTARTSLIME
 /obj/item/bodypart/head/roundstartslime
 	limb_id = SPECIES_SLIMEPERSON //same icon state, no real reason to make a new define
@@ -115,6 +116,7 @@
 	limb_id = SPECIES_SLIMEPERSON
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/slime_parts_greyscale.dmi'
 
+//SKYRAT ADDITION END
 ///ZOMBIE
 /obj/item/bodypart/head/zombie
 	limb_id = SPECIES_ZOMBIE
