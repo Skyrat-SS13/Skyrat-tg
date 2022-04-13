@@ -418,6 +418,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/firedoor,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
 /turf/open/floor/iron/white,
 /area/security/prison)
 "adS" = (
@@ -12014,6 +12020,18 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/storage)
+"cZM" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/security/prison)
 "cZO" = (
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
@@ -16021,6 +16039,16 @@
 /obj/effect/landmark/blobstart,
 /turf/open/floor/engine,
 /area/science/cytology)
+"etD" = (
+/obj/structure/bed,
+/obj/item/clothing/suit/straight_jacket,
+/obj/item/clothing/glasses/blindfold,
+/obj/item/clothing/mask/muzzle,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 10
+	},
+/turf/open/floor/iron/white,
+/area/security/prison)
 "etK" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -31841,6 +31869,20 @@
 /obj/structure/dresser,
 /turf/open/floor/wood,
 /area/commons/dorms)
+"jTJ" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/table/glass,
+/obj/item/folder/red,
+/obj/item/pen,
+/obj/item/folder/white{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/turf/open/floor/iron/white,
+/area/security/prison)
 "jTL" = (
 /obj/effect/turf_decal/trimline/purple/filled/corner{
 	dir = 1
@@ -40329,6 +40371,11 @@
 /obj/machinery/computer/crew{
 	dir = 8
 	},
+/obj/machinery/camera{
+	c_tag = "Security - CO Room";
+	dir = 6;
+	network = list("ss13","Security","prison")
+	},
 /turf/open/floor/iron/dark,
 /area/brigofficer)
 "naR" = (
@@ -44548,15 +44595,8 @@
 /turf/open/floor/iron,
 /area/cargo/lobby)
 "oCs" = (
-/obj/item/folder/red,
-/obj/item/pen,
-/obj/structure/table/glass,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 10
-	},
-/obj/item/folder/white{
-	pixel_x = -4;
-	pixel_y = 2
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -47348,6 +47388,10 @@
 /turf/open/floor/carpet,
 /area/cargo/qm)
 "pBh" = (
+/obj/machinery/camera{
+	c_tag = "Security - Convict Item Storage Room";
+	network = list("ss13","Security","prison")
+	},
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "pBD" = (
@@ -56751,11 +56795,7 @@
 /turf/open/floor/iron,
 /area/engineering/main)
 "sTt" = (
-/obj/structure/bed,
-/obj/item/clothing/suit/straight_jacket,
-/obj/item/clothing/glasses/blindfold,
-/obj/item/clothing/mask/muzzle,
-/obj/effect/turf_decal/trimline/blue/filled/line{
+/obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 8
 	},
 /turf/open/floor/iron/white,
@@ -59157,9 +59197,12 @@
 /area/science/research)
 "tMe" = (
 /obj/structure/cable,
-/obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/trimline/blue/filled/corner,
+/obj/effect/turf_decal/trimline/blue/filled/corner{
+	dir = 8
+	},
 /turf/open/floor/iron/white,
 /area/security/prison)
 "tMg" = (
@@ -70802,7 +70845,7 @@
 	pixel_y = 6
 	},
 /obj/machinery/camera/directional/north{
-	c_tag = "Prison Sanitarium";
+	c_tag = "Security - Prison Sanitarium";
 	network = list("ss13","Security","prison")
 	},
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -88087,9 +88130,9 @@ dhe
 dhe
 dhe
 nTn
-nTn
-nTn
-nTn
+ccM
+ccM
+ccM
 qMv
 lrn
 lFq
@@ -88344,8 +88387,8 @@ dhe
 dhe
 dhe
 nTn
-ccM
-ccM
+iwJ
+etD
 ccM
 ccM
 ccM
@@ -88601,7 +88644,7 @@ dhe
 dhe
 dhe
 nTn
-iwJ
+jTJ
 sTt
 oCs
 tHg
@@ -88862,7 +88905,7 @@ dTu
 dfR
 tMe
 adR
-jbD
+cZM
 jbD
 ubs
 fnk
