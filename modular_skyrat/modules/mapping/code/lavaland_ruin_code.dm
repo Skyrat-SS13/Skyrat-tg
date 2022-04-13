@@ -19,7 +19,7 @@
 
 //OUTFITS//
 /datum/outfit/lavaland_syndicate
-	uniform = /obj/item/clothing/under/utility/sci/syndicate
+	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
 	ears = /obj/item/radio/headset/interdyne
 
 /datum/outfit/lavaland_syndicate/post_equip(mob/living/carbon/human/syndicate, visualsOnly = FALSE)

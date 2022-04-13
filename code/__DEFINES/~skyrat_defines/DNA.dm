@@ -111,3 +111,6 @@
 #define SPECIES_HEMOPHAGE "hemophage"
 
 #define SPECIES_MUTANT "mutant"
+#define SPECIES_MUTANT_INFECTIOUS "infectious_mutant"
+#define SPECIES_MUTANT_SLOW "slow_mutant"
+#define SPECIES_MUTANT_FAST "fast_mutant"

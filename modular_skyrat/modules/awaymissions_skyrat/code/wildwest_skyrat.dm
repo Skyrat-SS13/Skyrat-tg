@@ -25,7 +25,7 @@
 
 /datum/outfit/wildwest_syndicate
 	name = "Abandoned Syndicate"
-	uniform = /obj/item/clothing/under/utility/sci/syndicate
+	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
 	shoes = /obj/item/clothing/shoes/combat
 	back = /obj/item/storage/backpack
 	id = /obj/item/card/id/advanced/black
