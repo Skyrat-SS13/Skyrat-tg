@@ -9,7 +9,7 @@
 // .32 - 15 damage pistol round.
 
 /datum/design/c32
-	name = "4.6x30mm Bullet"
+	name = ".32 Bullet"
 	id = "c32"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 1000)
