@@ -31,8 +31,9 @@
 
 /obj/effect/mob_spawn/ghost_role/robot/interdyne
 	name = "\improper Syndicate Robotic Storage"
+	desc = "The advanced technology of putting inactive borgs inside a box."
 	prompt_name = "an Interdyne cyborg"
-	uses = 1
+	uses = 3
 	icon = 'icons/obj/closet.dmi'
 	icon_state = "metalbox"
 	mob_name = "cyborg"
