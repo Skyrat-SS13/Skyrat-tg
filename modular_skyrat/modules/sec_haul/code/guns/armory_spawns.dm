@@ -96,3 +96,12 @@
 		/obj/item/gun/energy/laser/cfa_paladin,
 		/obj/item/gun/energy/e_gun,
 	)
+
+/obj/effect/spawner/armory_spawn/cmg
+	icon_state = "random_rifle"
+	gun_count = 3
+	guns = list(
+		/obj/item/gun/ballistic/automatic/cmg,
+		/obj/item/gun/ballistic/automatic/cmg,
+		/obj/item/gun/ballistic/automatic/cmg,
+	)
