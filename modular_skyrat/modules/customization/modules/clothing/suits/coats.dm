@@ -1,5 +1,5 @@
 /obj/item/clothing/suit/hooded/wintercoat
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/hooded/wintercoat/paramedic
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -143,7 +143,7 @@
 	body_parts_covered = CHEST
 	resistance_flags = NONE
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 5, "bio" = 0, "fire" = -5, "acid" = -15, "wound" = 0) //nylon sucks against acid
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/hooded/cloak/david
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -153,7 +153,7 @@
 	desc = "Ever wanted to look like a badass without ANY effort? Try this nanotrasen brand red cloak, perfect for kids"
 	hoodtype = /obj/item/clothing/head/hooded/cloakhood/david
 	body_parts_covered = CHEST|GROIN|ARMS
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/hooded/cloakhood/david
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -162,7 +162,7 @@
 	icon_state = "golhood"
 	desc = "conceal your face in shame with this nanotrasen brand hood"
 	flags_inv = HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACIALHAIR
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/urban/polychromic
 	name = "urban coat"
@@ -170,7 +170,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "urbanjacket"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/urban/polychromic/ComponentInitialize()
 	. = ..()
@@ -183,7 +183,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "deckard"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	inhand_icon_state = "det_suit"
 	blood_overlay_type = "coat"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
@@ -207,7 +207,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "hazardbg"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	blood_overlay_type = "coat"
 	toggle_noun = "zipper"
 	armor = list(MELEE = 10, BULLET = 5, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
@@ -217,7 +217,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "suitjacket_black"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 
 /obj/item/clothing/suit/duster/colorable
@@ -226,7 +226,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "duster"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/duster/colorable/ComponentInitialize()
 	. = ..()
@@ -238,7 +238,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "peacoat"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/toggle/peacoat/ComponentInitialize()
 	. = ..()
@@ -256,7 +256,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "suitjacket_white"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/hooded/wintercoat/christmas
 	name = "red christmas coat"
@@ -310,4 +310,4 @@
 	cold_protection = CHEST|ARMS
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON

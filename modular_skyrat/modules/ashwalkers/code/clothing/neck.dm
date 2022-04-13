@@ -4,4 +4,3 @@
 	icon = 'modular_skyrat/modules/ashwalkers/icons/cloaks.dmi'
 	worn_icon = 'modular_skyrat/modules/ashwalkers/icons/neck.dmi'
 	icon_state = "tribal-mantle"
-	supports_variations_flags = NONE

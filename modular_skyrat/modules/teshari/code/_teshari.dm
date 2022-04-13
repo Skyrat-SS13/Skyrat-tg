@@ -8,7 +8,7 @@
 
 /datum/species/teshari
 	name = "Teshari"
-	id = "teshari"
+	id = SPECIES_TESHARI
 	default_color = "6060FF"
 	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/teshari_eyes.dmi'
 	species_traits = list(MUTCOLORS,
@@ -35,7 +35,20 @@
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	payday_modifier = 0.75
-	species_clothing_path = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/teshari_matrixcolor_clothes.dmi'
+	custom_worn_icons = list(
+		LOADOUT_ITEM_HEAD = TESHARI_HEAD_ICON,
+		LOADOUT_ITEM_MASK = TESHARI_MASK_ICON,
+		LOADOUT_ITEM_NECK = TESHARI_NECK_ICON,
+		LOADOUT_ITEM_SUIT = TESHARI_SUIT_ICON,
+		LOADOUT_ITEM_UNIFORM = TESHARI_UNIFORM_ICON,
+		LOADOUT_ITEM_HANDS =  TESHARI_HANDS_ICON,
+		LOADOUT_ITEM_SHOES = TESHARI_FEET_ICON,
+		LOADOUT_ITEM_GLASSES = TESHARI_EYES_ICON,
+		LOADOUT_ITEM_BELT = TESHARI_BELT_ICON,
+		LOADOUT_ITEM_MISC = TESHARI_BACK_ICON,
+		LOADOUT_ITEM_ACCESSORY = TESHARI_ACCESSORIES_ICON,
+		LOADOUT_ITEM_EARS = TESHARI_EARS_ICON
+	)
 	offset_features = list(OFFSET_UNIFORM = list(0,0), OFFSET_ID = list(0,0), OFFSET_GLOVES = list(0,0), OFFSET_GLASSES = list(0,0), OFFSET_EARS = list(0,-4), OFFSET_SHOES = list(0,0), OFFSET_S_STORE = list(0,0), OFFSET_FACEMASK = list(0,-5), OFFSET_HEAD = list(1,-4), OFFSET_FACE = list(0,0), OFFSET_BELT = list(0,0), OFFSET_BACK = list(0,-4), OFFSET_SUIT = list(0,0), OFFSET_NECK = list(0,0), OFFSET_ACCESSORY = list(0, -4))
 	coldmod = TESHARI_COLDMOD
 	heatmod = TESHARI_HEATMOD

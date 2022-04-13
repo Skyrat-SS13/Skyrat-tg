@@ -374,3 +374,58 @@
 /datum/greyscale_config/wraps/worn
 	name = "Cloth Wraps (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/wraps/wraps_worn.json'
+
+// TESHARI FALLBACKS.
+
+/datum/greyscale_config/teshari
+	name = "Teshari Clothing"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/teshari_fallbacks.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/under.json'
+
+/datum/greyscale_config/teshari/under
+	name = "Teshari Under"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/under.json'
+
+/datum/greyscale_config/teshari/under_skirt
+	name = "Teshari Skirt"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/under_skirt.json'
+
+/datum/greyscale_config/teshari/shoes
+	name = "Teshari Shoes"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/shoes.json'
+
+/datum/greyscale_config/teshari/gloves
+	name = "Teshari Gloves"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/gloves.json'
+
+/datum/greyscale_config/teshari/glasses
+	name = "Teshari Glasses"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/glasses.json'
+
+/datum/greyscale_config/teshari/coat
+	name = "Teshari Coat"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/coat.json'
+
+/datum/greyscale_config/teshari/armor
+	name = "Teshari Armor"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/armor.json'
+
+/datum/greyscale_config/teshari/spacesuit
+	name = "Teshari Spacesuit"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/spacesuit.json'
+
+/datum/greyscale_config/teshari/cloak
+	name = "Teshari Cloak"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/cloak.json'
+
+/datum/greyscale_config/teshari/tie
+	name = "Teshari Tie"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/tie.json'
+
+/datum/greyscale_config/teshari/scarf
+	name = "Teshari Scarf"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/scarf.json'
+
+/datum/greyscale_config/teshari/hardsuit
+	name = "Teshari Hardsuit"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/hardsuit.json'
