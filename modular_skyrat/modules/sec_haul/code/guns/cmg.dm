@@ -17,7 +17,9 @@
 	can_bayonet = TRUE
 	can_flashlight = TRUE
 	knife_x_offset = 26
-	knife_y_offset = 12
+	knife_y_offset = 10
+	flight_x_offset = 24
+	flight_y_offset = 10
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	empty_indicator = TRUE
