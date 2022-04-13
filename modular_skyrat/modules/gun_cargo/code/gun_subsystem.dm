@@ -2,11 +2,18 @@
 #define FAILED_INTEREST 1
 #define PASSED_INTEREST 2
 #define HIGH_INTEREST 3
-#define INTEREST_HIGH_MULT 25
+#define INTEREST_HIGH_MULT 10
+#define INTEREST_CAP 75
+#define INTEREST_LOWER_RAND 5
+#define INTEREST_HIGHER_RAND 25
+#define BASE_COST_MINIMUM 1000
+#define INTEREST_LOW_MAG_COST 0.1
+#define INTEREST_MED_MAG_COST 0.11
+#define INTEREST_HIGH_MAG_COST 0.125
 
 SUBSYSTEM_DEF(gun_companies)
 	name = "Gun Companies"
-	wait = 120 SECONDS
+	wait = 20 MINUTES
 	runlevels = RUNLEVEL_GAME
 	/// Assoc list of companies that the subsystem has initialized, `"NAME" = datum_reference`
 	var/list/companies = list()
@@ -57,14 +64,14 @@ SUBSYSTEM_DEF(gun_companies)
 		var/datum/gun_company/company_datum = companies[company]
 
 		company_datum.base_cost += max(rand(company_datum.cost_change_lower, company_datum.cost_change_upper), 0)
-		company_datum.base_cost = company_datum.base_cost <= 1000 ? 1000 : company_datum.base_cost
+		company_datum.base_cost = company_datum.base_cost <= BASE_COST_MINIMUM ? BASE_COST_MINIMUM : company_datum.base_cost
 		company_datum.cost = round(company_datum.base_cost * company_datum.cost_mult) + CARGO_CRATE_VALUE
 
-		var/interest_threshold = rand(1, 2)
+		var/interest_threshold = rand(INTEREST_LOWER_RAND, INTEREST_HIGHER_RAND)
 		var/interest_knockdown = 0.5 * interest_threshold
 
 		if(company_datum in unpurchased_companies)
-			interest_knockdown *= 0.1
+			interest_knockdown *= 0.5
 
 		company_datum.interest -= interest_knockdown
 
@@ -73,8 +80,10 @@ SUBSYSTEM_DEF(gun_companies)
 
 		else
 			var/non_zero_threshold = interest_threshold ? interest_threshold : 1
-
-			if(company_datum.interest < (non_zero_threshold * INTEREST_HIGH_MULT))
+			var/calc_threshold = non_zero_threshold * INTEREST_HIGH_MULT
+			if(calc_threshold > INTEREST_CAP)
+				calc_threshold = INTEREST_CAP
+			if(company_datum.interest < calc_threshold)
 				passed_interest_tier[company_datum] = PASSED_INTEREST
 
 			else
@@ -101,27 +110,34 @@ SUBSYSTEM_DEF(gun_companies)
 
 						if(FAILED_INTEREST)
 							var/stock_failed = rand(0, 2)
-							entry_typecast.stock = max((round((stock_failed * entry_typecast.stock_mult) - 1)), 0)
+							entry_typecast.stock = max((round(stock_failed * entry_typecast.stock_mult)), 0)
 							var/gun_cost_failed = rand(entry_typecast.lower_cost, entry_typecast.upper_cost)
 							var/compound_cost = round(entry_typecast.cost * 0.1)
 							entry_typecast.cost = max((round((gun_cost_failed + compound_cost) - (0.25 * entry_typecast.lower_cost))), 0)
-							entry_typecast.magazine_cost = round((entry_typecast.cost * 0.1) * the_datum.magazine_cost_mult)
+							entry_typecast.magazine_cost = round((entry_typecast.cost * INTEREST_LOW_MAG_COST) * the_datum.magazine_cost_mult)
 
 						if(PASSED_INTEREST)
 							var/stock_passed = rand(0, 4)
-							entry_typecast.stock = max((round(stock_passed * entry_typecast.stock_mult)), 0)
+							entry_typecast.stock = max((round(stock_passed * entry_typecast.stock_mult) + 1), 0)
 							var/gun_cost_passed = rand(entry_typecast.lower_cost, entry_typecast.upper_cost)
 							var/compound_cost = round(entry_typecast.cost * 0.1)
 							entry_typecast.cost = max((round(gun_cost_passed + compound_cost)), 0)
-							entry_typecast.magazine_cost = round((entry_typecast.cost * 0.11) * the_datum.magazine_cost_mult)
+							entry_typecast.magazine_cost = round((entry_typecast.cost * INTEREST_MED_MAG_COST) * the_datum.magazine_cost_mult)
 
 						if(HIGH_INTEREST)
 							var/stock_interested = rand(0, 6)
-							entry_typecast.stock = max((round(stock_interested * entry_typecast.stock_mult) + 1), 0)
+							entry_typecast.stock = max((round(stock_interested * entry_typecast.stock_mult) + 2), 0)
 							var/gun_cost_high = rand(entry_typecast.lower_cost, entry_typecast.upper_cost)
 							var/compound_cost = round(entry_typecast.cost * 0.1)
 							entry_typecast.cost = max(round(gun_cost_high + compound_cost), 0)
-							entry_typecast.magazine_cost = round((entry_typecast.cost * 0.125) * the_datum.magazine_cost_mult)
+							entry_typecast.magazine_cost = round((entry_typecast.cost * INTEREST_HIGH_MAG_COST) * the_datum.magazine_cost_mult)
 
 #undef MAX_HANDOUT_CHOICES
 #undef INTEREST_HIGH_MULT
+#undef INTEREST_CAP
+#undef INTEREST_LOWER_RAND
+#undef INTEREST_HIGHER_RAND
+#undef BASE_COST_MINIMUM
+#undef INTEREST_LOW_MAG_COST
+#undef INTEREST_MED_MAG_COST
+#undef INTEREST_HIGH_MAG_COST
