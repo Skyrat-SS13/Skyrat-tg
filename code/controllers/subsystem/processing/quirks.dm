@@ -28,7 +28,9 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Extrovert", "Introvert"),
 		//SKYRAT EDIT ADDITION BEGIN
 		list("Nerve Stapled", "Pacifist", "Nearsighted"),
-		list("No Guns", "Chunky Fingers")
+		list("No Guns", "Chunky Fingers", "Stormtrooper Aim"),
+		list("Mute", "Social Anxiety"),
+		list("No Guns", "Pacifist")
 		//SKYRAT EDIT ADDITION END
 	)
 
