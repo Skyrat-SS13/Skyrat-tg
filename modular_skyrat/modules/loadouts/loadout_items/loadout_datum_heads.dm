@@ -333,8 +333,14 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	item_path = /obj/item/clothing/head/kepi/old
 
 /datum/loadout_item/head/maidhead
-	name = "Maid Headband"
+	name = "Simple Maid Headband"
 	item_path = /obj/item/clothing/head/maid
+	additional_tooltip_contents = list("Small headband that only fits on top the head.")
+
+/datum/loadout_item/head/maidhead2
+	name = "Frilly Maid Headband"
+	item_path = /obj/item/clothing/head/maidheadband
+	additional_tooltip_contents = list("Larger headband from the maid rework. Fits around head and ears.")
 
 /datum/loadout_item/head/widehat
 	name = "Wide Black Hat"
