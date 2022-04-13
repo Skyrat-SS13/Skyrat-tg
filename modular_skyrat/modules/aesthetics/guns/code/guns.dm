@@ -49,8 +49,8 @@
 	ammo_x_offset = 2
 
 /obj/item/gun/ballistic/shotgun/riot
-	name = "\improper AS-1 'Peacekeeper' shotgun"
-	desc = "An Aussec-made 12 gauge riot control pump shotgun fitted with an extended tube and a fixed tactical stock."
+	name = "\improper NT-1 'Peacekeeper' shotgun"
+	desc = "An Nanotrasen-made 12 gauge riot control pump shotgun fitted with an extended tube and a fixed tactical stock."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
@@ -66,7 +66,7 @@
 
 /obj/item/gun/ballistic/shotgun/automatic/combat
 	name = "\improper PK12 Mod 2 shotgun"
-	desc = "A modified Aussec Peacekeeper shotgun, this one has a pistol grip with a guard, hardlight front sight, and fitted with a heavier pin and parts for sustained fire, sadly it cannot be suppressed like its cousin. Atleast you can slamfire with it."
+	desc = "A modified Nanotrasen Peacekeeper shotgun, this one has a pistol grip with a guard, hardlight front sight, and fitted with a heavier pin and parts for sustained fire, sadly it cannot be suppressed like its cousin. Atleast you can slamfire with it."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'

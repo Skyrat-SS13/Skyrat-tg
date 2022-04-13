@@ -40,6 +40,11 @@
 	lower_cost = CARGO_CRATE_VALUE * 10
 	upper_cost = CARGO_CRATE_VALUE * 12
 
+/datum/armament_entry/cargo_gun/bolt/generic_shotgun
+	item_type = /obj/item/gun/ballistic/shotgun
+	lower_cost = CARGO_CRATE_VALUE * 8
+	upper_cost = CARGO_CRATE_VALUE * 10
+
 /datum/armament_entry/cargo_gun/bolt/smg
 	subcategory = ARMAMENT_SUBCATEGORY_SUBMACHINEGUN
 

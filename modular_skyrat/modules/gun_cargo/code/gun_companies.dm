@@ -31,3 +31,6 @@
 
 /obj/item/gun/energy/pulse
 	company_flag = COMPANY_NANOTRASEN
+
+/obj/item/gun/ballistic/shotgun/automatic/combat
+	company_flag = COMPANY_NANOTRASEN

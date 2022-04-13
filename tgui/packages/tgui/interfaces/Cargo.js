@@ -46,7 +46,7 @@ export const CargoContent = (props, context) => {
             Requests ({requests.length})
           </Tabs.Tab>
           <Tabs.Tab
-            icon="envelope"
+            icon="clipboard-list"
             selected={tab === 'gun_window'}
             onClick={() => act('gun_window')}>
             Gun Requisitions
