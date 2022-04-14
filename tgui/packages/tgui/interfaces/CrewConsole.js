@@ -170,7 +170,7 @@ const CrewTableEntry = (props, context) => {
             name="heart"
             color="#ffffff"
             size={1} />
-          : <Icon
+            : <Icon
               name="skull"
               color="#ffffff"
               size={1} />
