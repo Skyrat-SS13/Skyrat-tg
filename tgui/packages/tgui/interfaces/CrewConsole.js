@@ -1,6 +1,6 @@
 import { sortBy } from 'common/collections';
 import { useBackend } from '../backend';
-import { Box, Button, ColorBox, Section, Table, Icon } from '../components'; // SKYRAT EDIT - ORIGINAL: import { Box, Button, ColorBox, Section, Table }
+import { Box, Button, ColorBox, Section, Table, Icon } from '../components'; // SKYRAT EDIT - ORIGINAL: import { Box, Button, Section, Table }
 import { COLORS } from '../constants';
 import { Window } from '../layouts';
 
@@ -51,7 +51,7 @@ const jobToColor = jobId => {
   return COLORS.department.other;
 };
 
- // SKYRAT EDIT - ORIGINAL: 
+     // SKYRAT EDIT - ORIGINAL: 
 const healthToAttribute = (oxy, tox, burn, brute, attributeList) => {
   const healthSum = oxy + tox + burn + brute;
   const level = Math.min(Math.max(Math.ceil(healthSum / 31), 0), 5);
@@ -148,14 +148,28 @@ const CrewTableEntry = (props, context) => {
       </Table.Cell>
       {/* SKYRAT EDIT END */}
       <Table.Cell collapsing textAlign="center">
+	  {/* SKYRAT EDIT START - Displaying status Icons */}
         {oxydam !== undefined ?(
-			<Icon 
-				name={healthToAttribute(oxydam, toxdam, burndam, brutedam, HEALTH_ICON_BY_LEVEL)}
-				color={healthToAttribute(oxydam, toxdam, burndam, brutedam, HEALTH_COLOR_BY_LEVEL)}
-				size={1}/>
-				) : (
-				life_status ? <Icon name="heart" color="#ffffff" size={1} /> : <Icon name="skull" color="#ffffff" size={1} />
-		)}
+          <Icon 
+            name={healthToAttribute(
+             oxydam,
+             toxdam,
+             burndam,
+             brutedam,
+             HEALTH_ICON_BY_LEVEL)}
+            color={healthToAttribute(
+             oxydam,
+             toxdam,
+             burndam,
+             brutedam,
+             HEALTH_COLOR_BY_LEVEL)}
+            size={1}/>
+        ) : (
+            life_status ? 
+            <Icon name="heart" color="#ffffff" size={1} />:
+            <Icon name="skull" color="#ffffff" size={1} />
+          )}
+      {/* SKYRAT EDIT END */}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
         {oxydam !== undefined ? (
