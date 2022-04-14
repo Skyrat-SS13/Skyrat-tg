@@ -804,9 +804,15 @@
 		draw_color ||= (species_color) || (skin_tone && skintone2hex(skin_tone))
 
 	if(draw_color)
-		limb.color = "[draw_color][num2hex(owner?.dna.species.specific_alpha, 2)]" //SKYRAT EDIT - Alpha values on limbs //honestly this is cursed as hell
+		if(owner && owner.dna.species) //SKYRAT EDIT BEGIN - Alpha values on limbs //We check if the limb is attached and if the owner has an alpha value to append
+			limb.color = "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" //honestly this is cursed as hell
+		else //Limb is detached
+			limb.color = "[draw_color]" //SKYRAT EDIT END
 		if(aux_zone)
-			aux.color = "[draw_color][num2hex(owner?.dna.species.specific_alpha, 2)]" //SKYRAT EDIT - Alpha values on limbs
+			if(owner && owner.dna.species) //SKYRAT EDIT BEGIN - Alpha values on limbs
+				aux.color = "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]"
+			else
+				aux.color = "[draw_color]" //SKYRAT EDIT END
 
 	//EMISSIVE CODE START
 	if(blocks_emissive)
