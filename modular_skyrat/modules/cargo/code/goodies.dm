@@ -179,7 +179,7 @@
 		/obj/item/ammo_box/magazine/cmgm45,
 	)
 
-/datum/supply_pack/goody/cmg_lethal_ammo
+/datum/supply_pack/goody/weaponized_medicell
 	name = "Weaponized Medigun Cell"
 	desc = "Contains a weaponized medigun cell that allows the user to fire disabler and laser projectiles"
 	cost = PAYCHECK_HARD * 10
