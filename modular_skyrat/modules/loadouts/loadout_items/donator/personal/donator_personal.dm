@@ -373,3 +373,8 @@
 	name = "Tenrai Coat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/tenrai
 	ckeywhitelist = list("cimika")
+
+/datum/loadout_item/neck/fluffycloak
+	name = "Fluffy Cloak"
+	item_path = /obj/item/clothing/neck/cloak/fluffycloak
+	ckeywhitelist = list("RealWinterFrost")
