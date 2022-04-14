@@ -22,7 +22,7 @@ const HEALTH_ICON_BY_LEVEL = [
   'heartbeat',
   'skull',
 ];
-//SKRAY ADDITION - END:
+// SKRAY ADDITION - END:
 const jobIsHead = jobId => jobId % 10 === 0;
 
 const jobToColor = jobId => {
@@ -57,7 +57,7 @@ const healthToAttribute = (oxy, tox, burn, brute, attributeList) => {
   const level = Math.min(Math.max(Math.ceil(healthSum / 31), 0), 5);
   return attributeList[level];
 };
-//SKRAY EDIT - END:
+// SKRAY EDIT - END:
 
 const HealthStat = props => {
   const { type, value } = props;
@@ -102,11 +102,11 @@ const CrewTable = (props, context) => {
         <Table.Cell bold collapsing textAlign="center">
           Vitals
         </Table.Cell>
-        <Table.Cell bold>
+        <Table.Cell bold collapsing textAlign="center">
           Position
         </Table.Cell>
-        {!!data.link_allowed && (
-          <Table.Cell bold collapsing>
+        {(
+          <Table.Cell bold collapsing textAlign="center">
             Tracking
           </Table.Cell>
         )}
@@ -171,9 +171,9 @@ const CrewTableEntry = (props, context) => {
             color="#ffffff" 
             size={1} />
             :<Icon
-            name="skull"
-            color="#ffffff"
-            size={1} />
+              name="skull"
+              color="#ffffff"
+              size={1} />
         )}
         {/* SKYRAT EDIT END */}
       </Table.Cell>
@@ -193,7 +193,7 @@ const CrewTableEntry = (props, context) => {
         )}
       </Table.Cell>
       <Table.Cell>
-        {area !== undefined ? area : <Icon name="question" color="#ffffff" size={1} /> }
+        {area !== undefined ? area : <Icon name="question" color="#ffffff" size={1} /> } // SKYRAT EDIT - Icon from text 'N/A'
       </Table.Cell>
       {!!link_allowed && (
         <Table.Cell collapsing>
