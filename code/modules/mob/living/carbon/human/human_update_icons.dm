@@ -563,7 +563,7 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = wear_mask
 		update_hud_wear_mask(worn_item)
 		var/mutable_appearance/mask_overlay
-		var/icon_file = 'icons/mob/clothing/mask.dmi'
+		var/icon_file // SKYRATE EDIT CHANGE - replace mask icon path with default null, which is standard for these procs
 		var/handled_by_bodytype = TRUE
 
 		// SKYRAT EDIT ADDITION
