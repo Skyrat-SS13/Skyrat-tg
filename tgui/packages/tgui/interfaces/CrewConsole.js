@@ -102,11 +102,11 @@ const CrewTable = (props, context) => {
         <Table.Cell bold collapsing textAlign="center">
           Vitals
         </Table.Cell>
-        <Table.Cell bold collapsing textAlign="center">
+        <Table.Cell bold collapsing textAlign="center">{/* SKYRAT EDIT - Centers the text*/}
           Position
         </Table.Cell>
         {(
-          <Table.Cell bold collapsing textAlign="center">
+          <Table.Cell bold collapsing textAlign="center">{/* SKYRAT EDIT - Centers the text and removes old code blocking it from appearing*/}
             Tracking
           </Table.Cell>
         )}
