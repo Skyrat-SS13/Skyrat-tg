@@ -148,7 +148,7 @@ const CrewTableEntry = (props, context) => {
       </Table.Cell>
       {/* SKYRAT EDIT END */}
       <Table.Cell collapsing textAlign="center">
-       {/* SKYRAT EDIT START - Displaying status Icons */}
+        {/* SKYRAT EDIT START - Displaying status Icons */}
         {oxydam !== undefined ?(
           <Icon 
             name={healthToAttribute(
@@ -165,10 +165,15 @@ const CrewTableEntry = (props, context) => {
               HEALTH_COLOR_BY_LEVEL)}
             size={1} />
         ) : (
-          life_status ? 
-              <Icon name="heart" color="#ffffff" size={1} />
-            :<Icon name="skull" color="#ffffff" size={1} />
-            )}
+          life_status ? <Icon 
+              name="heart" 
+              color="#ffffff" 
+            size={1} />
+            :<Icon
+              name="skull"
+              color="#ffffff"
+              size={1} />
+        )}
         {/* SKYRAT EDIT END */}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
