@@ -677,6 +677,24 @@
 	teleportee.put_in_hands(goodbye_treat)
 
 //End of utility
+
+// Weaponized Medigun Cells
+
+/// Disabler
+/obj/item/ammo_casing/energy/medical/weaponized/disabler
+	projectile_type = /obj/projectile/beam/disabler
+	select_name = "disabler"
+	e_cost = 300
+
+/obj/projectile/beam/disabler/medigun
+	damage = 30
+
+/obj/item/ammo_casing/energy/medical/weaponized/laser
+	projectile_type = /obj/projectile/beam/laser
+	select_name = "kill"
+	e_cost = 400
+	harmful = TRUE
+
 #undef UPGRADED_MEDICELL_PASSFLAGS
 #undef MINIMUM_TEMP_DIFFERENCE
 #undef TEMP_PER_SHOT

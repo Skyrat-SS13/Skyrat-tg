@@ -283,6 +283,14 @@
 	desc = "An upgraded version of the Relocation Medicell. It has the access and area requirements removed, along with having the standard grace period disabled."
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/relocation
 
+// Weaponized Medicells
+/obj/item/weaponcell/medical/weaponized/standard
+	name = "Self Defense Medicell"
+	ammo_type = /obj/item/ammo_casing/energy/medical/weaponized/disabler
+	secondary_mode = /obj/item/ammo_casing/energy/medical/weaponized/laser
+	primary_mode = /obj/item/ammo_casing/energy/medical/weaponized/disabler
+	toggle_modes = TRUE
+
 //Empty Medicell//
 /obj/item/device/custom_kit/empty_cell //Having the empty cell as an upgrade kit sounds jank, but it should work well.
 	name = "empty salve medicell"
