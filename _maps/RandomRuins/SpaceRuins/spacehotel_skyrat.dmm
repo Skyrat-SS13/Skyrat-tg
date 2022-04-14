@@ -402,12 +402,8 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel)
 "cP" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/disposalpipe/segment,
-/obj/structure/grille,
-/turf/open/floor/plating,
+/obj/machinery/vending/dorms,
+/turf/open/floor/carpet/black,
 /area/ruin/space/has_grav/hotel)
 "cW" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -542,8 +538,8 @@
 /area/ruin/space/has_grav/hotel)
 "ee" = (
 /obj/structure/table,
-/obj/item/storage/firstaid/toxin,
-/obj/item/storage/firstaid/toxin{
+/obj/item/storage/medkit/toxin,
+/obj/item/storage/medkit/toxin{
 	pixel_x = -3;
 	pixel_y = -3
 	},
@@ -613,22 +609,6 @@
 /obj/machinery/light/small,
 /turf/open/floor/engine/air,
 /area/ruin/space/has_grav/hotel/power)
-"eM" = (
-/obj/machinery/airalarm/directional/south{
-	pixel_y = -24
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/hotel)
 "eN" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Hotel Maintenance";
@@ -1075,7 +1055,6 @@
 /obj/item/food/meat/slab/bear,
 /obj/item/food/meat/slab/bear,
 /obj/item/food/meat/slab/bear,
-/obj/machinery/power/apc/auto_name/directional/south,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/ruin/space/has_grav/hotel/bar)
 "gE" = (
@@ -1188,12 +1167,6 @@
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/hotel)
-"hi" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/high_volume/siphon/atmos/air_output{
-	dir = 1
-	},
-/turf/open/floor/engine/air,
-/area/ruin/space/has_grav/hotel/power)
 "hk" = (
 /obj/machinery/vending/boozeomat,
 /turf/open/floor/wood,
@@ -1336,7 +1309,7 @@
 /area/ruin/space/has_grav/hotel/workroom/quarters)
 "hF" = (
 /obj/structure/table,
-/obj/item/storage/firstaid/regular,
+/obj/item/storage/medkit/regular,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/hotel/workroom/quarters)
@@ -1396,7 +1369,8 @@
 /area/ruin/space/has_grav/hotel/dock)
 "hP" = (
 /obj/item/bikehorn/rubberducky,
-/turf/open/water/overlay/hotspring,
+/obj/effect/spawner/liquids_spawner,
+/turf/open/floor/iron/pool,
 /area/ruin/space/has_grav/hotel/pool)
 "hQ" = (
 /obj/structure/chair/sofa/corp{
@@ -1466,8 +1440,8 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/hotel/pool)
 "ih" = (
-/obj/item/storage/firstaid/fire,
-/obj/item/storage/firstaid/fire{
+/obj/item/storage/medkit/fire,
+/obj/item/storage/medkit/fire{
 	pixel_x = -3;
 	pixel_y = -3
 	},
@@ -1723,23 +1697,6 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/hotel/power)
-"iU" = (
-/obj/machinery/power/apc/highcap/five_k{
-	name = "Security APC";
-	pixel_y = -23
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/hotel)
 "iZ" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
@@ -1829,6 +1786,7 @@
 	pixel_x = 30
 	},
 /obj/effect/turf_decal/tile/yellow,
+/obj/machinery/autolathe,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/hotel/power)
 "jF" = (
@@ -2288,7 +2246,7 @@
 /area/ruin/space/has_grav/hotel/security)
 "ld" = (
 /obj/structure/table,
-/obj/item/storage/firstaid/regular,
+/obj/item/storage/medkit/regular,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 10
 	},
@@ -2946,8 +2904,8 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel/pool)
 "mO" = (
-/obj/item/storage/firstaid/brute,
-/obj/item/storage/firstaid/brute{
+/obj/item/storage/medkit/brute,
+/obj/item/storage/medkit/brute{
 	pixel_x = -3;
 	pixel_y = -3
 	},
@@ -3089,7 +3047,7 @@
 	name = "Men's Changing"
 	},
 /obj/machinery/door/firedoor,
-/turf/open/floor/wood,
+/turf/open/floor/iron/white,
 /area/ruin/space/has_grav/hotel/pool)
 "nX" = (
 /obj/effect/turf_decal/siding/wood/corner{
@@ -3138,7 +3096,6 @@
 "oD" = (
 /obj/structure/cable,
 /obj/machinery/seed_extractor,
-/obj/machinery/power/apc/auto_name/directional/south,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/hotel/bar)
 "oF" = (
@@ -3783,13 +3740,6 @@
 	},
 /turf/open/floor/iron/freezer,
 /area/ruin/space/has_grav/hotel/guestroom/room_4)
-"uV" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos{
-	dir = 4
-	},
-/obj/structure/lattice/catwalk,
-/turf/open/floor/plating/airless,
-/area/template_noop)
 "uW" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
@@ -3920,6 +3870,13 @@
 	},
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel)
+"wf" = (
+/obj/machinery/mass_driver/trash{
+	dir = 4
+	},
+/obj/machinery/door/window/left/directional/north,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/hotel/workroom)
 "wu" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -4388,12 +4345,6 @@
 	},
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/hotel)
-"An" = (
-/obj/machinery/door/window/eastright{
-	req_access_txt = "200"
-	},
-/turf/open/floor/wood,
-/area/ruin/space/has_grav/hotel/bar)
 "AA" = (
 /obj/structure/chair/stool/bar,
 /turf/open/floor/carpet/black,
@@ -4633,7 +4584,6 @@
 /area/ruin/space/has_grav/hotel)
 "Cv" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/south,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/bar)
 "Cw" = (
@@ -4852,11 +4802,11 @@
 /area/ruin/space/has_grav/hotel/bar)
 "Ex" = (
 /obj/structure/table,
-/obj/item/storage/firstaid/regular{
+/obj/item/storage/medkit/regular{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/storage/firstaid/regular,
+/obj/item/storage/medkit/regular,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/hotel)
 "EA" = (
@@ -4877,6 +4827,12 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel/workroom)
+"EH" = (
+/obj/machinery/door/window/right/directional/east{
+	req_access_txt = "200"
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/hotel/bar)
 "EI" = (
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
@@ -4971,12 +4927,10 @@
 	},
 /turf/open/floor/iron/freezer,
 /area/ruin/space/has_grav/hotel/guestroom/room_5)
-"Fn" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/nitrogen_output{
-	dir = 4
-	},
-/turf/open/floor/engine/n2,
-/area/ruin/space/has_grav/hotel/power)
+"Fr" = (
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating/airless,
+/area/template_noop)
 "Ft" = (
 /obj/structure/window/spawner/west,
 /obj/structure/sink{
@@ -5066,12 +5020,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/hotel/security)
-"Gc" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/air_input{
-	dir = 1
-	},
-/turf/open/floor/engine/air,
-/area/ruin/space/has_grav/hotel/power)
 "Gk" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible{
 	dir = 4
@@ -5168,6 +5116,7 @@
 /area/ruin/space/has_grav/hotel/guestroom/room_4)
 "Hg" = (
 /obj/structure/table,
+/obj/machinery/reagentgrinder,
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/hotel/bar)
 "Hm" = (
@@ -5377,10 +5326,6 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel)
-"Je" = (
-/obj/structure/lattice,
-/turf/closed/wall,
-/area/ruin/space/has_grav/hotel/dock)
 "Jh" = (
 /obj/structure/table/glass,
 /obj/item/reagent_containers/food/drinks/shaker,
@@ -5801,12 +5746,6 @@
 /obj/item/reagent_containers/spray/cleaner,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/hotel)
-"Nk" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/nitrogen_input{
-	dir = 4
-	},
-/turf/open/floor/engine/n2,
-/area/ruin/space/has_grav/hotel/power)
 "Nn" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
@@ -5952,8 +5891,8 @@
 "OY" = (
 /obj/structure/table,
 /obj/structure/table,
-/obj/item/storage/firstaid/o2,
-/obj/item/storage/firstaid/o2{
+/obj/item/storage/medkit/o2,
+/obj/item/storage/medkit/o2{
 	pixel_x = -3;
 	pixel_y = -3
 	},
@@ -6009,7 +5948,7 @@
 /obj/machinery/light_switch{
 	pixel_y = -24
 	},
-/turf/open/floor/iron/freezer,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/ruin/space/has_grav/hotel/bar)
 "Pq" = (
 /obj/structure/chair/sofa/corp/left,
@@ -6070,19 +6009,6 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/hotel/dock)
-"PR" = (
-/obj/machinery/mass_driver/trash{
-	dir = 4
-	},
-/obj/machinery/door/window/northleft,
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/hotel/workroom)
-"PS" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/oxygen_output{
-	dir = 4
-	},
-/turf/open/floor/engine/o2,
-/area/ruin/space/has_grav/hotel/power)
 "PU" = (
 /obj/item/soap/deluxe,
 /obj/machinery/shower{
@@ -6235,7 +6161,6 @@
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 4
 	},
-/obj/machinery/power/apc/auto_name/directional/west,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/workroom)
 "Rh" = (
@@ -6346,10 +6271,7 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/guestroom/room_1)
 "Sb" = (
-/obj/structure/table,
-/obj/machinery/reagentgrinder{
-	pixel_y = 6
-	},
+/obj/machinery/oven,
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/hotel/bar)
 "Se" = (
@@ -6397,7 +6319,8 @@
 /turf/open/floor/plating/airless,
 /area/ruin/unpowered/no_grav)
 "SJ" = (
-/turf/open/water/overlay/hotspring,
+/obj/effect/spawner/liquids_spawner,
+/turf/open/floor/iron/pool,
 /area/ruin/space/has_grav/hotel/pool)
 "SL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -6540,11 +6463,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/hotel/workroom)
-"TI" = (
-/obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/north,
-/turf/open/floor/iron/white,
-/area/ruin/space/has_grav/hotel/dock)
 "TK" = (
 /obj/item/soap/deluxe,
 /obj/machinery/shower{
@@ -6594,7 +6512,8 @@
 /area/ruin/space/has_grav/hotel/guestroom/room_1)
 "Ut" = (
 /obj/effect/light_emitter,
-/turf/open/water/overlay/hotspring,
+/obj/effect/spawner/liquids_spawner,
+/turf/open/floor/iron/pool,
 /area/ruin/space/has_grav/hotel/pool)
 "Uy" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -6817,7 +6736,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/turf/open/floor/wood,
+/turf/open/floor/iron/white,
 /area/ruin/space/has_grav/hotel/pool)
 "WH" = (
 /obj/structure/table,
@@ -6963,13 +6882,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel)
-"XO" = (
-/obj/structure/closet/secure_closet/freezer/meat{
-	req_access = null;
-	req_access_txt = "200"
-	},
-/turf/open/floor/iron/freezer,
-/area/ruin/space/has_grav/hotel/bar)
 "XQ" = (
 /obj/machinery/light{
 	dir = 4
@@ -7098,12 +7010,6 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/ruin/space/has_grav/hotel/bar)
-"YW" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/oxygen_input{
-	dir = 4
-	},
-/turf/open/floor/engine/o2,
-/area/ruin/space/has_grav/hotel/power)
 "YZ" = (
 /obj/structure/table/wood,
 /turf/open/floor/wood,
@@ -7533,7 +7439,7 @@ vN
 sN
 FD
 ac
-uV
+Fr
 aa
 ad
 aa
@@ -7593,13 +7499,13 @@ FD
 FD
 FD
 sN
-Nk
 eb
-Fn
+eb
+eb
 sN
-YW
 vN
-PS
+vN
+vN
 sN
 FD
 FD
@@ -8018,7 +7924,7 @@ yg
 wT
 kt
 kI
-Gc
+sK
 sK
 sK
 sN
@@ -8158,7 +8064,7 @@ jE
 nD
 kv
 kI
-hi
+sK
 sK
 sK
 sN
@@ -8271,7 +8177,7 @@ bN
 Th
 fi
 Yg
-XO
+Gw
 yu
 fi
 IW
@@ -8350,7 +8256,7 @@ Nb
 fi
 fi
 fi
-An
+EH
 ji
 Dp
 hl
@@ -8432,7 +8338,7 @@ iA
 iA
 ky
 fi
-iU
+bE
 jG
 jJ
 kk
@@ -9064,7 +8970,7 @@ ye
 fi
 Ty
 ed
-cP
+ed
 Fa
 ll
 ed
@@ -9134,7 +9040,7 @@ ON
 fi
 bE
 aw
-aw
+Bp
 aw
 aw
 Se
@@ -9482,7 +9388,7 @@ so
 so
 iC
 am
-eM
+bE
 jQ
 EM
 Kr
@@ -10164,7 +10070,7 @@ Nh
 Qm
 am
 jc
-jc
+cP
 wK
 iO
 eU
@@ -10856,12 +10762,12 @@ di
 oa
 Lt
 ZL
-PR
+wf
 eG
 eG
 hX
 in
-Je
+eG
 eG
 in
 Sg
@@ -10928,7 +10834,7 @@ di
 di
 zG
 eG
-TI
+hX
 hX
 fz
 fz

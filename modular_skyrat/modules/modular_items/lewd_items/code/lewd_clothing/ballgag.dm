@@ -95,9 +95,8 @@
 			set_greyscale(new_config = /datum/greyscale_config/ballgag/choking_large)
 
 // Start processing choking on equip
-/obj/item/clothing/mask/ballgag/choking/equipped(mob/user, slot)
-	var/mob/living/carbon/human/human_user = user
-	if(!(src == human_user.wear_mask && human_user.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy)))
+/obj/item/clothing/mask/ballgag/choking/equipped(mob/living/carbon/human/user, slot)
+	if(!(src == user.wear_mask && user.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy)))
 		return ..()
 	if(!chokes_wearer)
 		return ..()
@@ -114,6 +113,8 @@
 
 /obj/item/clothing/mask/ballgag/choking/process(delta_time)
 	var/mob/living/carbon/human/wearer = loc
+	if(!istype(wearer))
+		return
 	if(!(wearer.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy)))
 		return
 	if(!chokes_wearer)

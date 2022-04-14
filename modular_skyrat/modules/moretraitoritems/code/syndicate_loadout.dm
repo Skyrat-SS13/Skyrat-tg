@@ -30,7 +30,7 @@
 	new /obj/item/clothing/glasses/thermal/syndi(src)
 	new /obj/item/knife/combat/survival(src)
 	new /obj/item/gun/energy/disabler(src)
-	new /obj/item/storage/briefcase/launchpad(src)
+// 	new /obj/item/storage/briefcase/launchpad(src) // Removed for now.
 	new /obj/item/binoculars(src)
 	new /obj/item/encryptionkey/syndicate(src)
 	new /obj/item/storage/box/syndie_kit/space(src)
@@ -113,16 +113,6 @@
 	new /obj/item/card/emag/doorjack(src)
 	new /obj/item/reagent_containers/hypospray/medipen/stimulants(src)
 	new /obj/item/reagent_containers/glass/rag(src)
-
-/obj/item/storage/backpack/duffelbag/syndie/loadout/ninja/PopulateContents()
-	new /obj/item/vibro_weapon/ninjasr(src)
-	new /obj/item/reagent_containers/hypospray/medipen/stimulants(src)
-	for(var/i in 1 to 3)
-		new /obj/item/throwing_star(src)
-	new /obj/item/clothing/under/syndicate/combat(src)
-	new /obj/item/chameleon(src)
-	new /obj/item/book/granter/spell/summonitem(src)
-	new /obj/item/clothing/mask/gas/syndicate(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/loadout/darklord/PopulateContents()
 	new /obj/item/dualsaber(src)

@@ -15,14 +15,14 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 		outfit.shoes = item_path
 
 
-//christmas, after that remove them
-/datum/loadout_item/shoes/christmas
+//christmas, readd them round december
+/*/datum/loadout_item/shoes/christmas
 	name = "Red Christmas Boots"
 	item_path = /obj/item/clothing/shoes/winterboots/christmas
 
 /datum/loadout_item/shoes/christmas/green
 	name = "Green Christmas Boots"
-	item_path = /obj/item/clothing/shoes/winterboots/christmas/green
+	item_path = /obj/item/clothing/shoes/winterboots/christmas/green */
 //every christmas is last christmas
 
 /datum/loadout_item/shoes/jackboots
@@ -152,7 +152,7 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 
 /datum/loadout_item/shoes/clothwrap
 	name = "Colourable Cloth Wraps"
-	item_path = /obj/item/clothing/shoes/wraps/poly
+	item_path = /obj/item/clothing/shoes/wraps/colourable
 
 /datum/loadout_item/shoes/high_heels
 	name = "High Heels"

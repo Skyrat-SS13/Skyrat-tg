@@ -10,6 +10,7 @@
 #define DEFAULT_RELIGION "Christianity"
 #define DEFAULT_DEITY "Space Jesus"
 #define DEFAULT_BIBLE "Default Bible Name"
+#define DEFAULT_BIBLE_REPLACE(religion) "The Holy Book of [religion]"
 
 #define JOB_DISPLAY_ORDER_DEFAULT 0
 
@@ -39,6 +40,7 @@
 //Silicon
 #define JOB_AI "AI"
 #define JOB_CYBORG "Cyborg"
+#define JOB_PERSONAL_AI "Personal AI"
 //Security
 #define JOB_WARDEN "Warden"
 #define JOB_DETECTIVE "Detective"
@@ -49,8 +51,6 @@
 #define JOB_SECURITY_OFFICER_SUPPLY "Security Officer (Cargo)"
 #define JOB_CORRECTIONS_OFFICER "Corrections Officer" // SKYRAT EDIT ADDITION
 #define JOB_SECURITY_MEDIC "Security Medic" // SKYRAT EDIT ADDITION
-#define JOB_SECURITY_SERGEANT "Security Sergeant" // SKYRAT EDIT ADDITION
-#define JOB_CIVIL_DISPUTES_OFFICER "Civil Disputes Officer" // SKYRAT EDIT ADDITION
 //Engineering
 #define JOB_STATION_ENGINEER "Station Engineer"
 #define JOB_ATMOSPHERIC_TECHNICIAN "Atmospheric Technician"
@@ -86,14 +86,14 @@
 #define JOB_BARBER "Barber" // SKYRAT EDIT ADDITION
 #define JOB_BOUNCER "Bouncer" // SKYRAT EDIT ADDITION
 //ERTs
+#define JOB_ERT_DEATHSQUAD "Death Commando"
 #define JOB_ERT_COMMANDER "Emergency Response Team Commander"
 #define JOB_ERT_OFFICER "Security Response Officer"
 #define JOB_ERT_ENGINEER "Engineering Response Officer"
 #define JOB_ERT_MEDICAL_DOCTOR "Medical Response Officer"
-#define JOB_ERT_CLOWN "Entertainment Response Officer"
 #define JOB_ERT_CHAPLAIN "Religious Response Officer"
 #define JOB_ERT_JANITOR "Janitorial Response Officer"
-#define JOB_ERT_DEATHSQUAD "Death Commando"
+#define JOB_ERT_CLOWN "Entertainment Response Officer"
 //CentCom
 #define JOB_CENTCOM "Central Command"
 #define JOB_CENTCOM_OFFICIAL "CentCom Official"
@@ -107,13 +107,22 @@
 #define JOB_CENTCOM_RESEARCH_OFFICER "Research Officer"
 #define JOB_CENTCOM_SPECIAL_OFFICER "Special Ops Officer"
 #define JOB_CENTCOM_PRIVATE_SECURITY "Private Security Force"
-#define JOB_BLUESHIELD "Blueshield" // SKYRAT EDIT ADDITION
-#define JOB_NT_REP "Nanotrasen Representative" // SKYRAT EDIT ADDITION
 // SKYRAT EDIT ADDITION START
+#define JOB_BLUESHIELD "Blueshield"
+#define JOB_NT_REP "Nanotrasen Consultant"
+// Nanotrasen Naval Command jobs
+#define JOB_NAVAL_ENSIGN "Ensign"
+#define JOB_NAVAL_LIEUTENANT "Lieutenant"
+#define JOB_NAVAL_LTCR "Lieutenant Commander"
+#define JOB_NAVAL_COMMANDER "Commander"
+#define JOB_NAVAL_CAPTAIN "Captain"
+#define JOB_NAVAL_REAR_ADMIRAL "Rear Admiral"
+#define JOB_NAVAL_ADMIRAL "Admiral"
+#define JOB_NAVAL_FLEET_ADMIRAL "Fleet Admiral"
 // Off-Station
 #define JOB_SPACE_POLICE "Space Police"
-#define JOB_SOLGOV "SolGov"
-#define JOB_SOLGOV_LIASON "SolGov Liason"
+#define JOB_SOLFED "SolFed"
+#define JOB_SOLFED_LIASON "SolFed Liason"
 // SKYRAT EDIT ADDITION END
 
 
@@ -150,20 +159,18 @@
 #define JOB_DISPLAY_ORDER_EXP_CORPS 31 //SKYRAT EDIT ADDITON
 #define JOB_DISPLAY_ORDER_HEAD_OF_SECURITY 32
 #define JOB_DISPLAY_ORDER_WARDEN 33
-#define JOB_DISPLAY_ORDER_SECURITY_SERGEANT 34 //SKYRAT EDIT ADDITON
-#define JOB_DISPLAY_ORDER_DETECTIVE 35
-#define JOB_DISPLAY_ORDER_SECURITY_OFFICER 36
-#define JOB_DISPLAY_ORDER_JUNIOR_SECURITY_OFFICER 37
-#define JOB_DISPLAY_ORDER_SECURITY_MEDIC 38 //SKYRAT EDIT ADDITON
-#define JOB_DISPLAY_ORDER_PRISONER 39
-#define JOB_DISPLAY_ORDER_BRIGOFF 40 //SKYRAT EDIT ADDITON
-#define JOB_DISPLAY_ORDER_NANOTRASEN_REPRESENTATIVE 41 //SKYRAT EDIT ADDITON
-#define JOB_DISPLAY_ORDER_BLUESHIELD 42 //SKYRAT EDIT ADDITON
-#define JOB_DISPLAY_ORDER_ORDERLY 43 //SKYRAT EDIT ADDITION
-#define JOB_DISPLAY_ORDER_SCIENCE_GUARD 44 //SKYRAT EDIT ADDITION
-#define JOB_DISPLAY_ORDER_BOUNCER 45 //SKYRAT EDIT ADDITION
-#define JOB_DISPLAY_ORDER_ENGINEER_GUARD 46 //SKYRAT EDIT ADDITION
-#define JOB_DISPLAY_ORDER_CUSTOMS_AGENT 47 //SKYRAT EDIT ADDITION
+#define JOB_DISPLAY_ORDER_DETECTIVE 34
+#define JOB_DISPLAY_ORDER_SECURITY_OFFICER 35
+#define JOB_DISPLAY_ORDER_SECURITY_MEDIC 36 //SKYRAT EDIT ADDITON
+#define JOB_DISPLAY_ORDER_PRISONER 37
+#define JOB_DISPLAY_ORDER_BRIGOFF 38 //SKYRAT EDIT ADDITON
+#define JOB_DISPLAY_ORDER_NANOTRASEN_CONSULTANT 39 //SKYRAT EDIT ADDITON
+#define JOB_DISPLAY_ORDER_BLUESHIELD 40 //SKYRAT EDIT ADDITON
+#define JOB_DISPLAY_ORDER_ORDERLY 41 //SKYRAT EDIT ADDITION
+#define JOB_DISPLAY_ORDER_SCIENCE_GUARD 42 //SKYRAT EDIT ADDITION
+#define JOB_DISPLAY_ORDER_BOUNCER 43 //SKYRAT EDIT ADDITION
+#define JOB_DISPLAY_ORDER_ENGINEER_GUARD 44 //SKYRAT EDIT ADDITION
+#define JOB_DISPLAY_ORDER_CUSTOMS_AGENT 45 //SKYRAT EDIT ADDITION
 
 #define DEPARTMENT_UNASSIGNED "No department assigned"
 
@@ -207,6 +214,8 @@
 #define JOB_REOPEN_ON_ROUNDSTART_LOSS (1<<6)
 /// If the player with this job can have quirks assigned to him or not. Relevant for new player joinable jobs and roundstart antags.
 #define JOB_ASSIGN_QUIRKS (1<<7)
+/// Whether this job can be an intern.
+#define JOB_CAN_BE_INTERN (1<<8)
 
 
 #define FACTION_NONE "None"

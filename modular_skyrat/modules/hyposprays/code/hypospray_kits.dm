@@ -32,6 +32,15 @@
 	update_icon_state()
 	update_icon()
 
+
+/obj/item/storage/hypospraykit/Destroy()
+	for(var/obj/item in contents)
+		if(QDELING(loc))
+			if(item.resistance_flags & INDESTRUCTIBLE) // Because we're not supposed to delete stuff that are indestructible, but I'm too lazy to do something more complex upstream now. Later, maybe.
+				item.forceMove(get_turf(src))
+	. = ..()
+
+
 /obj/item/storage/hypospraykit/proc/populate_case_designs()
 	case_designs = list(
 		"firstaid" = image(icon = src.icon, icon_state = "firstaid-mini"),
@@ -81,9 +90,6 @@
 	if(empty)
 		return
 	new /obj/item/hypospray/mkii(src)
-	new /obj/item/reagent_containers/glass/vial/small(src)
-	new /obj/item/reagent_containers/glass/vial/small(src)
-	new /obj/item/reagent_containers/glass/vial/small(src)
 
 /obj/item/storage/hypospraykit/cmo
 	name = "deluxe hypospray kit"

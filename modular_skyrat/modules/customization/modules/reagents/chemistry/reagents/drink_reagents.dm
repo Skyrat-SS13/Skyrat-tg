@@ -11,7 +11,7 @@
 	glass_name = "tall glass of strawberry milk"
 	glass_desc = "Delicious flavored strawberry syrup mixed with milk."
 
-/datum/reagent/consumable/tea/pinkmilk/on_mob_life(mob/living/carbon/M)
+/datum/reagent/consumable/pinkmilk/on_mob_life(mob/living/carbon/M)
 	if(prob(15))
 		to_chat(M, span_notice("[pick("You cant help to smile.","You feel nostalgia all of sudden.","You remember to relax.")]"))
 	..()
@@ -28,11 +28,11 @@
 	glass_name = "mug of strawberry tea"
 	glass_desc = "Delicious traditional tea flavored with strawberries."
 
-/datum/reagent/consumable/tea/pinktea/on_mob_life(mob/living/carbon/M)
+/datum/reagent/consumable/pinktea/on_mob_life(mob/living/carbon/M)
 	if(prob(10))
 		to_chat(M, span_notice("[pick("Diamond skies where white deer fly.","Sipping strawberry tea.","Silver raindrops drift through timeless, Neverending June.","Crystal ... pearls free, with love!","Beaming love into me.")]"))
 	..()
-	. = 1
+	. = TRUE
 
 /datum/reagent/consumable/catnip_tea
 	name = "Catnip Tea"

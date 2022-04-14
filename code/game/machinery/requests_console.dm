@@ -28,7 +28,7 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 	name = "requests console"
 	desc = "A console intended to send requests to different departments on the station."
 	icon = 'icons/obj/terminals.dmi' //OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-	icon_state = "req_comp0"
+	icon_state = "req_comp_off"
 	base_icon_state = "req_comp"
 	var/department = "Unknown" //The list of all departments on the station (Determined from this variable on each unit) Set this to the same thing if you want several consoles in one department
 	var/list/messages = list() //List of all messages
@@ -81,23 +81,30 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/requests_console, 30)
 
 /obj/machinery/requests_console/update_icon_state()
 	if(open)
-		icon_state="[base_icon_state]_[hackState ? "rewired" : "open"]"
+		icon_state = "[base_icon_state]_[hackState ? "rewired" : "open"]"
 		return ..()
-	if(machine_stat & NOPOWER)
-		icon_state = "[base_icon_state]_off"
-		return ..()
+	icon_state = "[base_icon_state]_off"
+	return ..()
+
+/obj/machinery/requests_console/update_overlays()
+	. = ..()
+
+	if(open || (machine_stat & NOPOWER))
+		return
+
+	var/screen_state
 
 	if(emergency || (newmessagepriority == REQ_EXTREME_MESSAGE_PRIORITY))
-		icon_state = "[base_icon_state]3"
-		return ..()
-	if(newmessagepriority == REQ_HIGH_MESSAGE_PRIORITY)
-		icon_state = "[base_icon_state]2"
-		return ..()
-	if(newmessagepriority == REQ_NORMAL_MESSAGE_PRIORITY)
-		icon_state = "[base_icon_state]1"
-		return ..()
-	icon_state = "[base_icon_state]0"
-	return ..()
+		screen_state = "[base_icon_state]3"
+	else if(newmessagepriority == REQ_HIGH_MESSAGE_PRIORITY)
+		screen_state = "[base_icon_state]2"
+	else if(newmessagepriority == REQ_NORMAL_MESSAGE_PRIORITY)
+		screen_state = "[base_icon_state]1"
+	else
+		screen_state = "[base_icon_state]0"
+
+	. += mutable_appearance(icon, screen_state)
+	. += emissive_appearance(icon, screen_state, alpha = src.alpha)
 
 /obj/machinery/requests_console/Initialize(mapload)
 	. = ..()
@@ -272,7 +279,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/requests_console, 30)
 			var/mob/living/L = usr
 			message = L.treat_message(message)
 		minor_announce(message, "[department] Announcement:", html_encode = FALSE)
-		GLOB.news_network.SubmitArticle(message, department, "Station Announcements", null)
+		GLOB.news_network.submit_article(message, department, "Station Announcements", null)
 		usr.log_talk(message, LOG_SAY, tag="station announcement from [src]")
 		message_admins("[ADMIN_LOOKUPFLW(usr)] has made a station announcement from [src] at [AREACOORD(usr)].")
 		deadchat_broadcast(" made a station announcement from [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type=DEADCHAT_ANNOUNCEMENT)
@@ -313,7 +320,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/requests_console, 30)
 				radio_freq = FREQ_ENGINEERING
 			if("security")
 				radio_freq = FREQ_SECURITY
-			if("cargobay" || "mining")
+			if("cargobay", "mining")
 				radio_freq = FREQ_SUPPLY
 
 		var/datum/signal/subspace/messaging/rc/signal = new(src, list(
@@ -409,28 +416,32 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/requests_console, 30)
 		Radio.set_frequency(radio_freq)
 		Radio.talk_into(src, "[alert]: <i>[message]</i>", radio_freq)
 
-/obj/machinery/requests_console/attackby(obj/item/O, mob/user, params)
-	if(O.tool_behaviour == TOOL_CROWBAR)
-		if(open)
-			to_chat(user, span_notice("You close the maintenance panel."))
-			open = FALSE
-		else
-			to_chat(user, span_notice("You open the maintenance panel."))
-			open = TRUE
-		update_appearance()
-		return
-	if(O.tool_behaviour == TOOL_SCREWDRIVER)
-		if(open)
-			hackState = !hackState
-			if(hackState)
-				to_chat(user, span_notice("You modify the wiring."))
-			else
-				to_chat(user, span_notice("You reset the wiring."))
-			update_appearance()
-		else
-			to_chat(user, span_warning("You must open the maintenance panel first!"))
-		return
+/obj/machinery/requests_console/crowbar_act(mob/living/user, obj/item/tool)
 
+	tool.play_tool_sound(src, 50)
+	if(open)
+		to_chat(user, span_notice("You close the maintenance panel."))
+		open = FALSE
+	else
+		to_chat(user, span_notice("You open the maintenance panel."))
+		open = TRUE
+	update_appearance()
+	return TRUE
+
+/obj/machinery/requests_console/screwdriver_act(mob/living/user, obj/item/tool)
+	if(open)
+		hackState = !hackState
+		if(hackState)
+			to_chat(user, span_notice("You modify the wiring."))
+		else
+			to_chat(user, span_notice("You reset the wiring."))
+		update_appearance()
+		tool.play_tool_sound(src, 50)
+	else
+		to_chat(user, span_warning("You must open the maintenance panel first!"))
+	return TRUE
+
+/obj/machinery/requests_console/attackby(obj/item/O, mob/user, params)
 	var/obj/item/card/id/ID = O.GetID()
 	if(ID)
 		if(screen == REQ_SCREEN_AUTHENTICATE)

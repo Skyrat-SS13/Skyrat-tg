@@ -21,19 +21,19 @@
 	. = ..()
 	set_anchored(bolt)
 	create_reagents(buffer, reagent_flags)
-	AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS, null, CALLBACK(src, .proc/can_be_rotated))
-
-/obj/machinery/plumbing/proc/can_be_rotated(mob/user,rotation_type)
-	return !anchored
+	AddComponent(/datum/component/simple_rotation)
 
 /obj/machinery/plumbing/examine(mob/user)
 	. = ..()
 	. += span_notice("The maximum volume display reads: <b>[reagents.maximum_volume] units</b>.")
 
-/obj/machinery/plumbing/wrench_act(mob/living/user, obj/item/I)
-	..()
-	default_unfasten_wrench(user, I)
-	return TRUE
+/obj/machinery/plumbing/AltClick(mob/user)
+	return ..() // This hotkey is BLACKLISTED since it's used by /datum/component/simple_rotation
+
+/obj/machinery/plumbing/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	default_unfasten_wrench(user, tool)
+	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/machinery/plumbing/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
 	to_chat(user, span_notice("You start furiously plunging [name]."))
@@ -58,6 +58,7 @@
 	name = "input gate"
 	desc = "Can be manually filled with reagents from containers."
 	icon_state = "pipe_input"
+	pass_flags_self = PASSMACHINE | LETPASSTHROW // Small
 	reagent_flags = TRANSPARENT | REFILLABLE
 
 /obj/machinery/plumbing/input/Initialize(mapload, bolt, layer)
@@ -69,6 +70,7 @@
 	name = "output gate"
 	desc = "A manual output for plumbing systems, for taking reagents directly into containers."
 	icon_state = "pipe_output"
+	pass_flags_self = PASSMACHINE | LETPASSTHROW // Small
 	reagent_flags = TRANSPARENT | DRAINABLE
 
 /obj/machinery/plumbing/output/Initialize(mapload, bolt, layer)

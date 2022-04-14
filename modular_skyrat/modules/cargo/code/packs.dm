@@ -57,11 +57,11 @@
 	name = "Mixed Medical Kits"
 	desc = "Contains one of each medical kits for dealing with a variety of injured crewmembers."
 	cost = CARGO_CRATE_VALUE * 5
-	contains = list(/obj/item/storage/firstaid/toxin,
-					/obj/item/storage/firstaid/o2,
-					/obj/item/storage/firstaid/brute,
-					/obj/item/storage/firstaid/fire,
-					/obj/item/storage/firstaid/regular)
+	contains = list(/obj/item/storage/medkit/toxin,
+					/obj/item/storage/medkit/o2,
+					/obj/item/storage/medkit/brute,
+					/obj/item/storage/medkit/fire,
+					/obj/item/storage/medkit/regular)
 	crate_name = "medical kit crate"
 
 /datum/supply_pack/medical/medipens
@@ -107,6 +107,14 @@
 					/obj/item/weaponcell/medical/toxin)
 	crate_name = "medicell replacement crate"
 
+/datum/supply_pack/medical/syringe_gun
+	name = "Syringe Gun"
+	desc = "A replacement medical syringe gun."
+	cost = CARGO_CRATE_VALUE * 30
+	access = ACCESS_MEDICAL
+	contains = list(/obj/item/gun/syringe)
+	crate_name = "replacement syringe gun crate"
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Security ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -118,6 +126,24 @@
 	access_view = ACCESS_SECURITY
 	contains = list(/obj/item/mod/control/pre_equipped/security)
 	crate_name = "security MODsuit crate"
+
+
+/datum/supply_pack/security/armory/wt550
+	name = "WT-550 Auto Rifle Crate"
+	desc = "Contains two high-powered, semiautomatic rifles chambered in 4.6x30mm. Requires Armory access to open."
+	cost = CARGO_CRATE_VALUE * 7
+	contains = list(/obj/item/gun/ballistic/automatic/wt550,
+					/obj/item/gun/ballistic/automatic/wt550)
+	crate_name = "auto rifle crate"
+
+/datum/supply_pack/security/armory/wt550ammo
+	name = "WT-550 Auto Rifle Ammo Crate"
+	desc = "Contains four 20-round magazine for the WT-550 Auto Rifle. Each magazine is designed to facilitate rapid tactical reloads. Requires Armory access to open."
+	cost = CARGO_CRATE_VALUE * 3.5
+	contains = list(/obj/item/ammo_box/magazine/wt550m9,
+					/obj/item/ammo_box/magazine/wt550m9,
+					/obj/item/ammo_box/magazine/wt550m9,
+					/obj/item/ammo_box/magazine/wt550m9)
 
 /datum/supply_pack/security/croonsurplus
 	name = "Croon Weapons Crate"
@@ -146,7 +172,7 @@
 /datum/supply_pack/security/wildcat
 	name = "CFA Wildcat Supply Crate"
 	desc = "Local police running low on equipment? Neighbor particularly loud in the early morning? This should help out. (Does not include weapons permits.)"
-	cost = CARGO_CRATE_VALUE * 55 // Bit cheaper then the next up, because it's not to good.
+	cost = CARGO_CRATE_VALUE * 15 // Bit cheaper then the next up, because it's not to good.
 	contains = list(/obj/item/gun/ballistic/automatic/cfa_wildcat,
 					/obj/item/gun/ballistic/automatic/cfa_wildcat,
 					/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
@@ -175,6 +201,56 @@
 					/obj/item/ammo_box/magazine/m10mm/rifle,
 					/obj/item/gun/ballistic/automatic/pistol/toy) //they just hate you.
 	crate_name = "dusty crate"
+/datum/supply_pack/security/armory/riotshotguns
+	name = "Peacekeeper Shotgun Crate"
+	desc = "For when the peace needs kept, and you're all out of gum. Contains 3 Peacekeeper shotguns and some non-lethal shells."
+	cost = CARGO_CRATE_VALUE * 13.25
+	contains = list(/obj/item/gun/ballistic/shotgun/riot,
+					/obj/item/gun/ballistic/shotgun/riot,
+					/obj/item/gun/ballistic/shotgun/riot,
+					/obj/item/storage/box/beanbag,
+					/obj/item/storage/box/rubbershot)
+	crate_name = "peacekeeper shotgun crate"
+
+/datum/supply_pack/security/armory/woodstock
+	name = "Woodstock Originals Crate"
+	desc = "For when Oldschool is Cool... Or the Bartender looses their gun. again. Contains 3 woodstock shotguns"
+	cost = CARGO_CRATE_VALUE * 9.5
+	contains = list(/obj/item/gun/ballistic/shotgun,
+					/obj/item/gun/ballistic/shotgun,
+					/obj/item/gun/ballistic/shotgun)
+	crate_name = "woodstock crate"
+
+/datum/supply_pack/security/armory/wt550ammovariety
+	name = "WT-550 Auto Rifle Ammo Variety Crate"
+	desc = "AI Gone rogue and blow the Security Lathe? Anti-Corporate scum steal it? Doesn't matter, we got you covered. Contains 2 of each magazine type for the WT550 Auto Rifle."
+	cost = CARGO_CRATE_VALUE * 4.5
+	contains = list(/obj/item/ammo_box/magazine/wt550m9,
+					/obj/item/ammo_box/magazine/wt550m9,
+					/obj/item/ammo_box/magazine/wt550m9/wtap,
+					/obj/item/ammo_box/magazine/wt550m9/wtap,
+					/obj/item/ammo_box/magazine/wt550m9/wtic,
+					/obj/item/ammo_box/magazine/wt550m9/wtic)
+	crate_name = "WT550 Ammo Variety Pack"
+
+/datum/supply_pack/security/armor
+	name = "Armor Crate"
+	desc = "Three vests of well-rounded, decently-protective armor. Requires Security access to open."
+	cost = CARGO_CRATE_VALUE * 2
+	access_view = ACCESS_SECURITY
+	contains = list(/obj/item/clothing/suit/armor/vest/alt,
+					/obj/item/clothing/suit/armor/vest/alt,
+					/obj/item/clothing/suit/armor/vest/alt)
+	crate_name = "armor crate"
+
+/datum/supply_pack/security/deployablebarricades
+	name = "C.U.C.K.S Deployable Barricades"
+	desc = "Two cases of deployable barricades, for all your fortification needs."
+	cost = CARGO_CRATE_VALUE * 4
+	contains = list(/obj/item/storage/barricade,
+					/obj/item/storage/barricade,)
+	crate_name = "C.U.C.K.S Crate"
+
 
 //////////////////////////////////////////////////////////////////////////////
 ///////////////////////////// Engineering ////////////////////////////////////
@@ -400,6 +476,95 @@
 	crate_name = "wildcard food crate"
 	crate_type = /obj/structure/closet/crate/freezer
 
+/datum/supply_pack/organic/fcsurplus
+	name = "Fine Cuisine Assortment Value Pack"
+	desc = "Chef slop boring? Have high-maintenance crewmembers that with wings? Maybe you just want to revel in the sinful delight that are Cheese Curds? The Finest of our trade union has made the pack for you, containing a mix of fine oils, vinegar, and exceptionally rare ingredients."
+	cost = CARGO_CRATE_VALUE * 5
+	contains = list(/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/food/canned/tomatoes,
+					/obj/item/food/canned/tomatoes,
+					/obj/item/food/canned/pine_nuts,
+					/obj/item/food/canned/pine_nuts,
+					/obj/item/food/canned_jellyfish,
+					/obj/item/food/desert_snails,
+					/obj/item/food/larvae,
+					/obj/item/food/moonfish_eggs)
+	crate_name = "fine cuisine assortment pack"
+	crate_type = /obj/structure/closet/crate/freezer
+
+/datum/supply_pack/organic/qualityoilbulk
+	name = "Quality Oil Bulk Pack"
+	desc = "Normal cooking oil not cutting it? Chef throw all the quality stuff in the frier because they thought it was funny? Well, We got you covered, Introducing a bulk pack of Ten (10) bottles of our finest oils, blended for the perfect taste in cold recipes, and a resistance for going acrid when cooking."
+	cost = CARGO_CRATE_VALUE * 9
+	contains = list(/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil)
+	crate_name = "bulk quality oil pack"
+	crate_type = /obj/structure/closet/crate/freezer
+
+/datum/supply_pack/organic/vinegarbulk
+	name = "Vinegar Bulk Pack"
+	desc = "Mothic Cuisine night? The winged fellows in port? Well, We'll have you cooking in no time. Refined from several rich wines and cultivated for just the right bite, This pack Ten (10) Bottles of vinegar for the perfect dressings and sauces."
+	cost = CARGO_CRATE_VALUE * 4
+	contains = list(/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar)
+	crate_name = "bulk vinegar pack"
+	crate_type = /obj/structure/closet/crate/freezer
+
+/datum/supply_pack/organic/bulkcanmoff
+	name = "Bulk Mothic Canned Goods"
+	desc = "Trying your hand at pestos and sauces? Cant just grow the stuff and can it yourself? Well, No matters, No worries, We here have you covered with Five (5) cans of tomatoes and pine nuts to help care for your winged friends."
+	cost = CARGO_CRATE_VALUE * 3
+	contains = list(/obj/item/food/canned/tomatoes,
+					/obj/item/food/canned/tomatoes,
+					/obj/item/food/canned/tomatoes,
+					/obj/item/food/canned/tomatoes,
+					/obj/item/food/canned/tomatoes,
+					/obj/item/food/canned/pine_nuts,
+					/obj/item/food/canned/pine_nuts,
+					/obj/item/food/canned/pine_nuts,
+					/obj/item/food/canned/pine_nuts,
+					/obj/item/food/canned/pine_nuts)
+	crate_name = "bulk moffic pack"
+	crate_type = /obj/structure/closet/crate/freezer
+
+/datum/supply_pack/organic/bulkcanliz
+	name = "Bulk Lizard Goods"
+	desc = "Having some devious tastes? One of your scalie friends wanting something that isn't fried mystery meat? Well you're just one order away from from the perfect pleaser. Containing Three (3) Cans of our finest-sourced canned jellyfish, snails and bee larvae, An addition of Three (3) packs of cruelty free Moonfish eggs might get their hearts."
+	cost = CARGO_CRATE_VALUE * 3.5
+	contains = list(/obj/item/food/canned_jellyfish,
+					/obj/item/food/canned_jellyfish,
+					/obj/item/food/canned_jellyfish,
+					/obj/item/food/desert_snails,
+					/obj/item/food/desert_snails,
+					/obj/item/food/desert_snails,
+					/obj/item/food/moonfish_eggs,
+					/obj/item/food/moonfish_eggs,
+					/obj/item/food/moonfish_eggs,
+					/obj/item/food/larvae,
+					/obj/item/food/larvae,
+					/obj/item/food/larvae)
+	crate_name = "bulk lizard pack"
+	crate_type = /obj/structure/closet/crate/freezer
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Pack Type ///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -422,6 +587,16 @@
 					/obj/item/circuitboard/machine/chem_dispenser/drinks,
 					/obj/item/circuitboard/machine/dish_drive)
 	crate_name = "build a bar crate"
+
+/datum/supply_pack/service/hydrohelper
+	name = "Hydro-Helper Circuit Pack"
+	desc = "Botany being lazy with something? Being refused circuit boards? grow your only little garden with these three boards. (seeds and parts not included)"
+	cost = CARGO_CRATE_VALUE * 5
+	contains = list(/obj/item/circuitboard/machine/hydroponics,
+					/obj/item/circuitboard/machine/hydroponics,
+					/obj/item/circuitboard/machine/hydroponics)
+	crate_name = "garden crate"
+	crate_type = /obj/structure/closet/crate/hydroponics
 
 /datum/supply_pack/service/janitor/janpimp
 	name = "Custodial Cruiser"
@@ -476,18 +651,18 @@
 	desc = "Contains two authentic suits of armor, swords, and two bows and cuirass' for the cowards hiding in the back."
 	cost = CARGO_CRATE_VALUE * 30
 	contraband = TRUE
-	contains = list(/obj/item/clothing/suit/armor/riot/knight/red,
-					/obj/item/clothing/gloves/plate/red,
+	contains = list(/obj/item/clothing/suit/armor/riot/knight/larp/red,
+					/obj/item/clothing/gloves/plate/larp/red,
 					/obj/item/clothing/head/helmet/knight/red,
-					/obj/item/clothing/shoes/plate/red,
+					/obj/item/clothing/shoes/plate/larp/red,
 					/obj/item/claymore/weak/weaker,
-					/obj/item/clothing/shoes/plate/blue,
-					/obj/item/clothing/suit/armor/riot/knight/blue,
-					/obj/item/clothing/gloves/plate/blue,
+					/obj/item/clothing/shoes/plate/larp/blue,
+					/obj/item/clothing/suit/armor/riot/knight/larp/blue,
+					/obj/item/clothing/gloves/plate/larp/blue,
 					/obj/item/clothing/head/helmet/knight/blue,
 					/obj/item/claymore/weak/weaker,
-					/obj/item/clothing/suit/armor/vest/cuirass,
-					/obj/item/clothing/suit/armor/vest/cuirass,
+					/obj/item/clothing/suit/armor/vest/cuirass/larp,
+					/obj/item/clothing/suit/armor/vest/cuirass/larp,
 					/obj/item/gun/ballistic/bow,
 					/obj/item/gun/ballistic/bow,
 					/obj/item/storage/bag/quiver,
@@ -497,15 +672,28 @@
 					/obj/item/food/bread/plain)
 	crate_name = "vintage crate"
 
-/datum/supply_pack/service/hydrohelper
-	name = "Hydro-Helper Circuit Pack"
-	desc = "Botany being lazy with something? Being refused circuit boards? grow your only little garden with these three boards. (seeds and parts not included)"
-	cost = CARGO_CRATE_VALUE * 5
-	contains = list(/obj/item/circuitboard/machine/hydroponics,
-					/obj/item/circuitboard/machine/hydroponics,
-					/obj/item/circuitboard/machine/hydroponics)
-	crate_name = "garden crate"
+/datum/supply_pack/organic/lavalandsamples
+	name = "Planetary Flora Samples"
+	desc = "A box of samples taken from the surface of Lavaland. Requires Hydroponics access to open."
+	cost = CARGO_CRATE_VALUE * 2
+	access_view = ACCESS_HYDROPONICS
+	contains = list(/obj/item/seeds/lavaland/polypore,
+					/obj/item/seeds/lavaland/porcini,
+					/obj/item/seeds/lavaland/inocybe,
+					/obj/item/seeds/lavaland/ember,
+					/obj/item/seeds/lavaland/seraka,
+					/obj/item/seeds/star_cactus,
+					/obj/item/seeds/star_cactus)
+	crate_name = "planetary seeds crate"
 	crate_type = /obj/structure/closet/crate/hydroponics
+
+/datum/supply_pack/service/MODsuit_cargo
+	name = "Cargo Loader MODsuit Crate"
+	desc = "Contains a single quad-armed MODsuit, built to standard cargo specifications."
+	cost = CARGO_CRATE_VALUE * 13
+	access_view = ACCESS_CARGO
+	contains = list(/obj/item/mod/control/pre_equipped/loader)
+	crate_name = "cargo MODsuit crate"
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Materials & Sheets //////////////////////////////

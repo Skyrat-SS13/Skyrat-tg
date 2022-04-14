@@ -76,7 +76,7 @@
 /obj/item/nullrod/cultdagger
 	name = "ritual dagger"
 	desc = "A strange dagger said to be once used by a sinister group.. "
-	icon = 'icons/obj/wizard.dmi'
+	icon = 'icons/obj/cult/items_and_weapons.dmi'
 	icon_state = "render"
 	inhand_icon_state = "cultdagger"
 	worn_icon_state = "render"

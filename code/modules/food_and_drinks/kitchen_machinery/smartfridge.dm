@@ -68,7 +68,13 @@
 /obj/machinery/smartfridge/update_overlays()
 	. = ..()
 	if(!machine_stat)
-		. += emissive_appearance(icon, "smartfridge-light-mask", alpha = src.alpha)
+		. += emissive_appearance(icon, "[initial(icon_state)]-light-mask", alpha = src.alpha)
+
+/obj/machinery/smartfridge/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	if(default_unfasten_wrench(user, tool))
+		power_change()
+	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /*******************
 *   Item Adding
@@ -83,10 +89,6 @@
 		return
 
 	if(default_pry_open(O))
-		return
-
-	if(default_unfasten_wrench(user, O))
-		power_change()
 		return
 
 	if(default_deconstruction_crowbar(O))
@@ -214,11 +216,11 @@
 			if (params["amount"])
 				desired = text2num(params["amount"])
 			else
-				desired = tgui_input_number(usr, "How many items would you like to take out?", "Release", 1, min_value = 1)
-				if(isnull(desired))
+				desired = tgui_input_number(usr, "How many items would you like to take out?", "Release", max_value = 50)
+				if(!desired)
 					return FALSE
-				desired = round(desired)
-			if(QDELETED(src) || QDELETED(usr) || !usr.Adjacent(src)) // Sanity checkin' in case stupid stuff happens while we wait for input()
+
+			if(QDELETED(src) || QDELETED(usr) || !usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK)) // Sanity checkin' in case stupid stuff happens while we wait for input()
 				return FALSE
 
 			for(var/obj/item/dispensed_item in src)
@@ -484,6 +486,7 @@
 					/obj/item/reagent_containers/glass/beaker,
 					/obj/item/reagent_containers/spray,
 					/obj/item/reagent_containers/medigel,
+					/obj/item/reagent_containers/glass/vial, //SKYRAT EDIT HYPOSPRAYS
 					/obj/item/reagent_containers/chem_pack
 	))
 

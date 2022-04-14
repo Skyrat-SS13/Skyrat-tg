@@ -43,7 +43,7 @@
 	MA.icon = 'icons/effects/effects.dmi'
 	MA.icon_state = "launchpad_target"
 	MA.layer = ABOVE_OPEN_TURF_LAYER
-	MA.plane = 0
+	MA.plane = GAME_PLANE
 	holder.appearance = MA
 
 	update_indicator()
@@ -60,7 +60,7 @@
 
 /obj/machinery/launchpad/attackby(obj/item/I, mob/user, params)
 	if(stationary)
-		if(default_deconstruction_screwdriver(user, "lpad-idle-o", "lpad-idle", I))
+		if(default_deconstruction_screwdriver(user, "lpad-idle-open", "lpad-idle", I))
 			update_indicator()
 			return
 
@@ -169,7 +169,7 @@
 
 	var/turf/source = target
 	var/list/log_msg = list()
-	log_msg += ": [alternate_log_name || key_name(user)] triggered a teleport "
+	log_msg += "[alternate_log_name || key_name(user)] triggered a teleport "
 
 	if(sending)
 		source = dest
@@ -222,7 +222,7 @@
 	if (first)
 		log_msg += "nothing"
 	log_msg += " [sending ? "to" : "from"] [target_x], [target_y], [z] ([A ? A.name : "null area"])"
-	investigate_log(log_msg.Join(), INVESTIGATE_TELESCI)
+	log_game(log_msg.Join())
 	updateDialog()
 
 //Starts in the briefcase. Don't spawn this directly, or it will runtime when closing.
@@ -406,7 +406,7 @@
 			our_pad.display_name = new_name
 		if("remove")
 			. = TRUE
-			if(usr && tgui_alert(usr, "Are you sure?", "Unlink Launchpad", list("I'm Sure", "Abort")) == "I'm Sure")
+			if(usr && tgui_alert(usr, "Are you sure?", "Unlink Launchpad", list("Confirm", "Abort")) == "I'm Sure")
 				our_pad = null
 		if("launch")
 			sending = TRUE

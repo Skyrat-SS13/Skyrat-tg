@@ -35,7 +35,7 @@
 
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law)
 	rpg_title = "Guard Leader"
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 
 	voice_of_god_power = 1.4 //Command staff has authority
 
@@ -51,7 +51,7 @@
 	id = /obj/item/card/id/advanced/silver
 	id_trim = /datum/id_trim/job/head_of_security
 	uniform = /obj/item/clothing/under/rank/security/head_of_security
-	suit = /obj/item/clothing/suit/armor/hos/trenchcoat
+	suit = /obj/item/clothing/suit/armor/hos/trenchcoat/black //SKYRAT EDIT CHANGE
 	suit_store = /obj/item/gun/energy/e_gun
 	backpack_contents = list(
 		/obj/item/evidencebag = 1,
@@ -85,3 +85,4 @@
 	suit = null
 	head = null
 	mask = /obj/item/clothing/mask/gas/sechailer
+	internals_slot = ITEM_SLOT_SUITSTORE

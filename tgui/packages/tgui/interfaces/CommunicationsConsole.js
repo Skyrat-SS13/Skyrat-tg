@@ -306,6 +306,7 @@ const PageMain = (props, context) => {
   const {
     alertLevel,
     alertLevelTick,
+    aprilFools,
     callShuttleReasonMinLength,
     canBuyShuttles,
     canMakeAnnouncement,
@@ -316,6 +317,7 @@ const PageMain = (props, context) => {
     canSetAlertLevel,
     canToggleEmergencyAccess,
     emagged,
+    syndicate,
     emergencyAccess,
     importantActionReady,
     sectors,
@@ -342,48 +344,50 @@ const PageMain = (props, context) => {
 
   return (
     <Box>
-      <Section title="Emergency Shuttle">
-        {shuttleCalled && (
-          <Button.Confirm
-            icon="space-shuttle"
-            content="Recall Emergency Shuttle"
-            color="bad"
-            disabled={!canRecallShuttles || !shuttleRecallable}
-            tooltip={(
-              canRecallShuttles && (
-                !shuttleRecallable && "It's too late for the emergency shuttle to be recalled."
-              ) || (
-                "You do not have permission to recall the emergency shuttle."
-              )
-            )}
-            tooltipPosition="bottom-end"
-            onClick={() => act("recallShuttle")}
-          />
-        ) || (
-          <Button
-            icon="space-shuttle"
-            content="Call Emergency Shuttle"
-            disabled={shuttleCanEvacOrFailReason !== 1}
-            tooltip={
-              shuttleCanEvacOrFailReason !== 1
-                ? shuttleCanEvacOrFailReason
-                : undefined
-            }
-            tooltipPosition="bottom-end"
-            onClick={() => setCallingShuttle(true)}
-          />
-        )}
-        {!!shuttleCalledPreviously && (
-          shuttleLastCalled && (
-            <Box>
-              Most recent shuttle call/recall traced to:
-              {" "}<b>{shuttleLastCalled}</b>
-            </Box>
+      {!syndicate && (
+        <Section title="Emergency Shuttle">
+          {!!shuttleCalled && (
+            <Button.Confirm
+              icon="space-shuttle"
+              content="Recall Emergency Shuttle"
+              color="bad"
+              disabled={!canRecallShuttles || !shuttleRecallable}
+              tooltip={(
+                canRecallShuttles && (
+                  !shuttleRecallable && "It's too late for the emergency shuttle to be recalled."
+                ) || (
+                  "You do not have permission to recall the emergency shuttle."
+                )
+              )}
+              tooltipPosition="bottom-end"
+              onClick={() => act("recallShuttle")}
+            />
           ) || (
-            <Box>Unable to trace most recent shuttle/recall signal.</Box>
-          )
-        )}
-      </Section>
+            <Button
+              icon="space-shuttle"
+              content="Call Emergency Shuttle"
+              disabled={shuttleCanEvacOrFailReason !== 1}
+              tooltip={
+                shuttleCanEvacOrFailReason !== 1
+                  ? shuttleCanEvacOrFailReason
+                  : undefined
+              }
+              tooltipPosition="bottom-end"
+              onClick={() => setCallingShuttle(true)}
+            />
+          )}
+          {!!shuttleCalledPreviously && (
+            shuttleLastCalled && (
+              <Box>
+                Most recent shuttle call/recall traced to:
+                {" "}<b>{shuttleLastCalled}</b>
+              </Box>
+            ) || (
+              <Box>Unable to trace most recent shuttle/recall signal.</Box>
+            )
+          )}
+        </Section>
+      )}
 
       {!!canSetAlertLevel && (
         <Section title="Alert Level">
@@ -439,6 +443,11 @@ const PageMain = (props, context) => {
             content="Make Priority Announcement"
             onClick={() => act("makePriorityAnnouncement")}
           />}
+          {!!aprilFools && !!canMakeAnnouncement && <Button
+            icon="bullhorn"
+            content="Call Emergency Meeting"
+            onClick={() => act("emergency_meeting")}
+          />}
           {!!canToggleEmergencyAccess && <Button.Confirm
             icon="id-card-o"
             content={`${emergencyAccess ? "Disable" : "Enable"} Emergency Maintenance Access`}
@@ -446,11 +455,13 @@ const PageMain = (props, context) => {
             onClick={() => act("toggleEmergencyAccess")}
           />}
 
-          <Button
-            icon="desktop"
-            content="Set Status Display"
-            onClick={() => act("setState", { state: STATE_CHANGING_STATUS })}
-          />
+          {!syndicate && (
+            <Button
+              icon="desktop"
+              content="Set Status Display"
+              onClick={() => act("setState", { state: STATE_CHANGING_STATUS })}
+            />
+          )}
 
           <Button
             icon="envelope-o"
@@ -483,7 +494,7 @@ const PageMain = (props, context) => {
             onClick={() => setRequestingNukeCodes(true)}
           />}
 
-          {!!emagged && <Button
+          {(!!emagged && !syndicate) && <Button
             icon="undo"
             content="Restore Backup Routing Data"
             onClick={() => act("restoreBackupRoutingData")}
@@ -498,8 +509,8 @@ const PageMain = (props, context) => {
           />}
           {!!canMakeAnnouncement && <Button
             icon="bullhorn"
-            content="Call Sol Federation 911: Firefighter Response"
-            onClick={() => act("callTheFireDep")}
+            content="Call Sol Federation 811: Breach Control Response"
+            onClick={() => act("callBreachControl")}
           />}
           {!!canMakeAnnouncement && <Button
             icon="bullhorn"

@@ -44,7 +44,31 @@
 /obj/item/organ/cyberimp/arm/botany
 	name = "botany arm implant"
 	desc = "A rather simple arm implant containing tools used in gardening and botanical research."
-	items_to_create = list(/obj/item/cultivator, /obj/item/shovel/spade, /obj/item/hatchet, /obj/item/gun/energy/floragun, /obj/item/plant_analyzer, /obj/item/reagent_containers/glass/beaker/plastic, /obj/item/storage/bag/plants, /obj/item/storage/bag/plants/portaseeder)
+	items_to_create = list(/obj/item/cultivator, /obj/item/shovel/spade, /obj/item/hatchet, /obj/item/gun/energy/floragun, /obj/item/plant_analyzer, /obj/item/geneshears, /obj/item/secateurs, /obj/item/storage/bag/plants, /obj/item/storage/bag/plants/portaseeder)
+
+/obj/item/implant_mounted_chainsaw
+	name = "integrated chainsaw"
+	desc = "A chainsaw that conceals inside your arm."
+	icon_state = "chainsaw_on"
+	inhand_icon_state = "mounted_chainsaw"
+	lefthand_file = 'icons/mob/inhands/weapons/chainsaw_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/chainsaw_righthand.dmi'
+	force = 24
+	throwforce = 0
+	throw_range = 0
+	throw_speed = 0
+	sharpness = SHARP_EDGED
+	attack_verb_continuous = list("saws", "tears", "lacerates", "cuts", "chops", "dices")
+	attack_verb_simple = list("saw", "tear", "lacerate", "cut", "chop", "dice")
+	hitsound = 'sound/weapons/chainsawhit.ogg'
+	tool_behaviour = TOOL_SAW
+	toolspeed = 1
+
+/obj/item/organ/cyberimp/arm/botany/emag_act()
+	for(var/datum/weakref/created_item in items_list)
+	to_chat(usr, span_notice("You unlock [src]'s deluxe landscaping equipment!"))
+	items_list += WEAKREF(new /obj/item/implant_mounted_chainsaw(src)) //time to landscape the station
+	return TRUE
 
 /obj/item/multitool/abductor/implant
 	name = "multitool"

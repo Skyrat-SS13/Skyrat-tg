@@ -1,7 +1,9 @@
-/obj/item/construction/rcd/mattermanipulator
+/obj/item/construction/rcd/arcd/mattermanipulator
 	name = "matter manipulator"
 	desc = "A strange, familiar yet distinctly different analogue to the Nanotrasen standard RCD. Works at range, and can deconstruct reinforced walls. Reload using metal, glass, or plasteel."
 	icon = 'modular_skyrat/master_files/icons/obj/tools.dmi'
+	icon_state = "rcd"
+	worn_icon_state = "RCD"
 	ranged = TRUE
 	canRturf = TRUE
 	max_matter = 500
@@ -12,7 +14,6 @@
 /obj/item/construction/plumbing/mining
 	name = "mining plumbing constructor"
 	desc = "A type of plumbing constructor designed to harvest from geysers and collect their fluids."
-	icon = 'modular_skyrat/modules/liquids/icons/obj/tools.dmi'
 	icon_state = "plumberer_mining"
 	has_ammobar = TRUE
 

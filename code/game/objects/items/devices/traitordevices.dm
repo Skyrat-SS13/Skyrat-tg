@@ -200,7 +200,6 @@ effective or pretty fucking useless.
 	var/charge = 300
 	var/max_charge = 300
 	var/on = FALSE
-	var/old_alpha = 0
 	actions_types = list(/datum/action/item_action/toggle)
 
 /obj/item/shadowcloak/ui_action_click(mob/user)
@@ -221,14 +220,13 @@ effective or pretty fucking useless.
 	to_chat(user, span_notice("You activate [src]."))
 	src.user = user
 	START_PROCESSING(SSobj, src)
-	old_alpha = user.alpha
 	on = TRUE
 
 /obj/item/shadowcloak/proc/Deactivate()
 	to_chat(user, span_notice("You deactivate [src]."))
 	STOP_PROCESSING(SSobj, src)
 	if(user)
-		user.alpha = old_alpha
+		user.alpha = initial(user.alpha)
 	on = FALSE
 	user = null
 
@@ -261,11 +259,12 @@ effective or pretty fucking useless.
 	special_desc = "This is a black market radio jammer. Used to disrupt nearby radio communication."
 	var/active = FALSE
 	var/range = 20 //SKYRAT EDIT CHANGE - ORIGINAL:12
+	var/cell_override = /obj/item/stock_parts/cell/bluespace //SKYRAT ADDITION
 
 	//SKYRAT EDIT ADDITION BEGIN
 /obj/item/jammer/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/cell, null, CALLBACK(src, .proc/turn_off))
+	AddComponent(/datum/component/cell, cell_override, CALLBACK(src, .proc/turn_off))
 
 /obj/item/jammer/proc/turn_on()
 	active = TRUE

@@ -149,7 +149,7 @@
 	name = "Pump your blood"
 
 //You are now brea- pumping blood manually
-/datum/action/item_action/organ_action/cursed_heart/Trigger()
+/datum/action/item_action/organ_action/cursed_heart/Trigger(trigger_flags)
 	. = ..()
 	if(. && istype(target, /obj/item/organ/heart/cursed))
 		var/obj/item/organ/heart/cursed/cursed_heart = target
@@ -250,7 +250,7 @@
 	if(owner.health < 5 && COOLDOWN_FINISHED(src, adrenaline_cooldown))
 		COOLDOWN_START(src, adrenaline_cooldown, rand(25 SECONDS, 1 MINUTES))
 		to_chat(owner, span_userdanger("You feel yourself dying, but you refuse to give up!"))
-		owner.heal_overall_damage(15, 15, 0, BODYPART_ORGANIC)
+		owner.heal_overall_damage(15, 15, 0, BODYTYPE_ORGANIC)
 		if(owner.reagents.get_reagent_amount(/datum/reagent/medicine/ephedrine) < 20)
 			owner.reagents.add_reagent(/datum/reagent/medicine/ephedrine, 10)
 

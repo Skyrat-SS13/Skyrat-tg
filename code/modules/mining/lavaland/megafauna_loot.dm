@@ -253,7 +253,7 @@
 
 /obj/item/mayhem/attack_self(mob/user)
 	for(var/mob/living/carbon/human/target in range(7,user))
-		target.apply_status_effect(STATUS_EFFECT_MAYHEM)
+		target.apply_status_effect(/datum/status_effect/mayhem)
 	to_chat(user, span_notice("You shatter the bottle!"))
 	playsound(user.loc, 'sound/effects/glassbr1.ogg', 100, TRUE)
 	message_admins(span_adminnotice("[ADMIN_LOOKUPFLW(user)] has activated a bottle of mayhem!"))
@@ -587,6 +587,7 @@
 	gender = NEUTER
 	mob_biotypes = MOB_SPIRIT
 	faction = list()
+	weather_immunities = list(TRAIT_ASHSTORM_IMMUNE, TRAIT_SNOWSTORM_IMMUNE)
 	/// Blood level, used for movement and abilities in a soulscythe
 	var/blood_level = MAX_BLOOD_LEVEL
 
@@ -602,7 +603,7 @@
 /obj/projectile/soulscythe
 	name = "soulslash"
 	icon_state = "soulslash"
-	flag = MELEE //jokair
+	armor_flag = MELEE //jokair
 	damage = 15
 	light_range = 1
 	light_power = 1
@@ -755,7 +756,7 @@
 	hitsound = 'sound/weapons/sear.ogg'
 	var/turf_type = /turf/open/lava/smooth/weak
 	var/transform_string = "lava"
-	var/reset_turf_type = /turf/open/floor/plating/asteroid/basalt
+	var/reset_turf_type = /turf/open/misc/asteroid/basalt
 	var/reset_string = "basalt"
 	var/create_cooldown = 10 SECONDS
 	var/create_delay = 3 SECONDS
@@ -908,11 +909,11 @@
 /obj/item/melee/cleaving_saw/proc/nemesis_effects(mob/living/user, mob/living/target)
 	if(istype(target, /mob/living/simple_animal/hostile/asteroid/elite))
 		return
-	var/datum/status_effect/stacking/saw_bleed/existing_bleed = target.has_status_effect(STATUS_EFFECT_SAWBLEED)
+	var/datum/status_effect/stacking/saw_bleed/existing_bleed = target.has_status_effect(/datum/status_effect/stacking/saw_bleed)
 	if(existing_bleed)
 		existing_bleed.add_stacks(bleed_stacks_per_hit)
 	else
-		target.apply_status_effect(STATUS_EFFECT_SAWBLEED, bleed_stacks_per_hit)
+		target.apply_status_effect(/datum/status_effect/stacking/saw_bleed, bleed_stacks_per_hit)
 
 /*
  * Signal proc for [COMSIG_TRANSFORMING_ON_TRANSFORM].

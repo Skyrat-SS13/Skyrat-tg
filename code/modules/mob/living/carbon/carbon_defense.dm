@@ -28,7 +28,7 @@
 	else
 		. += E.bang_protect
 
-/mob/living/carbon/is_mouth_covered(head_only = 0, mask_only = 0)
+/mob/living/carbon/is_mouth_covered(head_only = FALSE, mask_only = FALSE)
 	if( (!mask_only && head && (head.flags_cover & HEADCOVERSMOUTH)) || (!head_only && wear_mask && (wear_mask.flags_cover & MASKCOVERSMOUTH)) )
 		return TRUE
 
@@ -84,10 +84,11 @@
 	if(!affecting) //missing limb? we select the first bodypart (you can never have zero, because of chest)
 		affecting = bodyparts[1]
 	SEND_SIGNAL(I, COMSIG_ITEM_ATTACK_ZONE, src, user, affecting)
-	send_item_attack_message(I, user, affecting.name, affecting)
+	send_item_attack_message(I, user, parse_zone(affecting.body_zone), affecting)
 	if(I.force)
-		apply_damage(I.force, I.damtype, affecting, wound_bonus = I.wound_bonus, bare_wound_bonus = I.bare_wound_bonus, sharpness = I.get_sharpness())
-		if(I.damtype == BRUTE && affecting.status == BODYPART_ORGANIC)
+		var/attack_direction = get_dir(user, src)
+		apply_damage(I.force, I.damtype, affecting, wound_bonus = I.wound_bonus, bare_wound_bonus = I.bare_wound_bonus, sharpness = I.get_sharpness(), attack_direction = attack_direction)
+		if(I.damtype == BRUTE && IS_ORGANIC_LIMB(affecting))
 			if(prob(33))
 				I.add_mob_blood(src)
 				var/turf/location = get_turf(src)
@@ -113,7 +114,7 @@
 	var/message_verb_continuous = length(I.attack_verb_continuous) ? "[pick(I.attack_verb_continuous)]" : "attacks"
 	var/message_verb_simple = length(I.attack_verb_simple) ? "[pick(I.attack_verb_simple)]" : "attack"
 	//SKYRAT EDIT ADDITION BEGIN
-	if(I.force && !user.combat_mode)
+	if(I.force && !user.combat_mode && !length(I.attack_verb_simple) && !length(I.attack_verb_continuous))
 		var/random = rand(1,2)
 		switch(random)
 			if(1)
@@ -205,6 +206,8 @@
 	if(..()) //successful monkey bite.
 		for(var/thing in user.diseases)
 			var/datum/disease/D = thing
+			if(D.spread_flags & (DISEASE_SPREAD_SPECIAL | DISEASE_SPREAD_NON_CONTAGIOUS))
+				continue
 			ForceContractDisease(D)
 		return TRUE
 
@@ -414,6 +417,8 @@
 		return
 	//Propagation through pulling, fireman carry
 	if(!(flags & SHOCK_ILLUSION))
+		if(undergoing_cardiac_arrest())
+			set_heartattack(FALSE)
 		var/list/shocking_queue = list()
 		if(iscarbon(pulling) && source != pulling)
 			shocking_queue += pulling
@@ -477,7 +482,7 @@
 		"<span class='notice'>You boop [src] on the nose.</span>")
 	//SKYRAT EDIT ADDITION END
 
-	else if(check_zone(M.zone_selected) == BODY_ZONE_HEAD) //Headpats!
+	else if(check_zone(M.zone_selected) == BODY_ZONE_HEAD && get_bodypart(BODY_ZONE_HEAD)) //Headpats!
 		//SKYRAT EDIT ADDITION
 		if(HAS_TRAIT(src, TRAIT_OVERSIZED) && !HAS_TRAIT(M, TRAIT_OVERSIZED))
 			visible_message(span_warning("[M] tries to pat [src] on the head, but can't reach!"))
@@ -497,7 +502,6 @@
 			if(HAS_TRAIT(src, TRAIT_BADTOUCH))
 				to_chat(M, span_warning("[src] looks visibly upset as you pat [p_them()] on the head."))
 
-	/* SKYRAT EDIT START - Not even going to start with this one
 	else if ((M.zone_selected == BODY_ZONE_PRECISE_GROIN) && !isnull(src.getorgan(/obj/item/organ/tail)))
 		SEND_SIGNAL(src, COMSIG_CARBON_TAILPULL, M)
 		M.visible_message(span_notice("[M] pulls on [src]'s tail!"), \
@@ -508,7 +512,6 @@
 			to_chat(M, span_warning("[src] makes a grumbling noise as you pull on [p_their()] tail."))
 		else
 			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "tailpulled", /datum/mood_event/tailpulled)
-	*/ // SKYRAT EDIT END
 	else
 		SEND_SIGNAL(src, COMSIG_CARBON_HUGGED, M)
 		SEND_SIGNAL(M, COMSIG_CARBON_HUG, M, src)
@@ -718,7 +721,7 @@
 	. = health
 	for (var/_limb in bodyparts)
 		var/obj/item/bodypart/limb = _limb
-		if (limb.status != BODYPART_ORGANIC)
+		if (!IS_ORGANIC_LIMB(limb))
 			. += (limb.brute_dam * limb.body_damage_coeff) + (limb.burn_dam * limb.body_damage_coeff)
 
 /mob/living/carbon/grabbedby(mob/living/carbon/user, supress_message = FALSE)
@@ -728,7 +731,7 @@
 	var/obj/item/bodypart/grasped_part = get_bodypart(zone_selected)
 	//SKYRAT EDIT CHANGE BEGIN - MEDICAL
 	/*
-	if(!grasped_part?.get_bleed_rate())
+	if(!grasped_part?.get_part_bleed_rate())
 		return
 	var/starting_hand_index = active_hand_index
 	if(starting_hand_index == grasped_part.held_index)
@@ -736,11 +739,11 @@
 		return
 
 	to_chat(src, span_warning("You try grasping at your [grasped_part.name], trying to stop the bleeding..."))
-	if(!do_after(src, 1.5 SECONDS))
+	if(!do_after(src, 0.75 SECONDS))
 		to_chat(src, span_danger("You fail to grasp your [grasped_part.name]."))
 		return
 
-	var/obj/item/self_grasp/grasp = new
+	var/obj/item/hand_item/self_grasp/grasp = new
 	if(starting_hand_index != active_hand_index || !put_in_active_hand(grasp))
 		to_chat(src, span_danger("You fail to grasp your [grasped_part.name]."))
 		QDEL_NULL(grasp)
@@ -751,21 +754,19 @@
 	//SKYRAT EDIT CHANGE END
 
 /// an abstract item representing you holding your own limb to staunch the bleeding, see [/mob/living/carbon/proc/grabbedby] will probably need to find somewhere else to put this.
-/obj/item/self_grasp
+/obj/item/hand_item/self_grasp
 	name = "self-grasp"
 	desc = "Sometimes all you can do is slow the bleeding."
 	icon_state = "latexballon"
 	inhand_icon_state = "nothing"
-	force = 0
-	throwforce = 0
-	slowdown = 1
+	slowdown = 0.5
 	item_flags = DROPDEL | ABSTRACT | NOBLUDGEON | SLOWS_WHILE_IN_HAND | HAND_ITEM
 	/// The bodypart we're staunching bleeding on, which also has a reference to us in [/obj/item/bodypart/var/grasped_by]
 	var/obj/item/bodypart/grasped_part
 	/// The carbon who owns all of this mess
 	var/mob/living/carbon/user
 
-/obj/item/self_grasp/Destroy()
+/obj/item/hand_item/self_grasp/Destroy()
 	if(user)
 		to_chat(user, span_warning("You stop holding onto your[grasped_part ? " [grasped_part.name]" : "self"]."))
 		UnregisterSignal(user, COMSIG_PARENT_QDELETING)
@@ -777,12 +778,12 @@
 	return ..()
 
 /// The limb or the whole damn person we were grasping got deleted or dismembered, so we don't care anymore
-/obj/item/self_grasp/proc/qdel_void()
+/obj/item/hand_item/self_grasp/proc/qdel_void()
 	SIGNAL_HANDLER
 	qdel(src)
 
 /// We've already cleared that the bodypart in question is bleeding in [the place we create this][/mob/living/carbon/proc/grabbedby], so set up the connections
-/obj/item/self_grasp/proc/grasp_limb(obj/item/bodypart/grasping_part)
+/obj/item/hand_item/self_grasp/proc/grasp_limb(obj/item/bodypart/grasping_part)
 	user = grasping_part.owner
 	if(!istype(user))
 		stack_trace("[src] attempted to try_grasp() with [istype(user, /datum) ? user.type : isnull(user) ? "null" : user] user")

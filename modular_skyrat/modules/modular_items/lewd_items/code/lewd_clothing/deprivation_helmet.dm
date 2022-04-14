@@ -48,7 +48,7 @@
     desc = "Makes it impossible to say anything"
 
 //Vision switcher
-/datum/action/item_action/toggle_vision/Trigger()
+/datum/action/item_action/toggle_vision/Trigger(trigger_flags)
 	var/obj/item/clothing/head/helmet/space/deprivation_helmet/H = target
 	var/mob/living/carbon/C = usr
 	if(istype(H))
@@ -58,7 +58,7 @@
 			H.SwitchHelmet("vision")
 
 //Hearing switcher
-/datum/action/item_action/toggle_hearing/Trigger()
+/datum/action/item_action/toggle_hearing/Trigger(trigger_flags)
 	var/obj/item/clothing/head/helmet/space/deprivation_helmet/H = target
 	var/mob/living/carbon/C = usr
 	if(istype(H))
@@ -68,7 +68,7 @@
 			H.SwitchHelmet("hearing")
 
 //Speech switcher
-/datum/action/item_action/toggle_speech/Trigger()
+/datum/action/item_action/toggle_speech/Trigger(trigger_flags)
 	var/obj/item/clothing/head/helmet/space/deprivation_helmet/H = target
 	var/mob/living/carbon/C = usr
 	if(istype(H))

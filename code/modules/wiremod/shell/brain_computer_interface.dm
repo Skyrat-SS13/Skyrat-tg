@@ -11,7 +11,7 @@
 	. = ..()
 
 	var/obj/item/integrated_circuit/circuit = new(src)
-	circuit.add_component(new /obj/item/circuit_component/bci_action(null, "One"))
+	circuit.add_component(new /obj/item/circuit_component/equipment_action/bci(null, "One"))
 
 	AddComponent(/datum/component/shell, list(
 		new /obj/item/circuit_component/bci_core,
@@ -34,96 +34,39 @@
 	else
 		return ..()
 
-/obj/item/circuit_component/bci_action
+/obj/item/circuit_component/equipment_action/bci
 	display_name = "BCI Action"
 	desc = "Represents an action the user can take when implanted with the brain-computer interface."
 	required_shells = list(/obj/item/organ/cyberimp/bci)
 
-	/// The icon of the button
-	var/datum/port/input/option/icon_options
-
-	/// The name to use for the button
-	var/datum/port/input/button_name
-
-	/// Called when the user presses the button
-	var/datum/port/output/signal
-
 	/// A reference to the action button itself
 	var/datum/action/innate/bci_action/bci_action
 
-/obj/item/circuit_component/bci_action/Initialize(mapload, default_icon)
-	. = ..()
-
-	if (!isnull(default_icon))
-		icon_options.set_input(default_icon)
-
-	button_name = add_input_port("Name", PORT_TYPE_STRING)
-
-	signal = add_output_port("Signal", PORT_TYPE_SIGNAL)
-
-/obj/item/circuit_component/bci_action/Destroy()
+/obj/item/circuit_component/equipment_action/bci/Destroy()
 	QDEL_NULL(bci_action)
 	return ..()
 
-/obj/item/circuit_component/bci_action/populate_options()
-	var/static/action_options = list(
-		"Blank",
-
-		"One",
-		"Two",
-		"Three",
-		"Four",
-		"Five",
-
-		"Blood",
-		"Bomb",
-		"Brain",
-		"Brain Damage",
-		"Cross",
-		"Electricity",
-		"Exclamation",
-		"Heart",
-		"Id",
-		"Info",
-		"Injection",
-		"Magnetism",
-		"Minus",
-		"Network",
-		"Plus",
-		"Power",
-		"Question",
-		"Radioactive",
-		"Reaction",
-		"Repair",
-		"Say",
-		"Scan",
-		"Shield",
-		"Skull",
-		"Sleep",
-		"Wireless",
-	)
-
-	icon_options = add_option_port("Icon", action_options)
-
-/obj/item/circuit_component/bci_action/register_shell(atom/movable/shell)
+/obj/item/circuit_component/equipment_action/bci/register_shell(atom/movable/shell)
+	. = ..()
 	var/obj/item/organ/cyberimp/bci/bci = shell
+	if(istype(bci))
+		bci_action = new(src)
+		update_action()
 
-	bci_action = new(src)
-	update_action()
+		bci.actions += list(bci_action)
 
-	bci.actions += list(bci_action)
-
-/obj/item/circuit_component/bci_action/unregister_shell(atom/movable/shell)
+/obj/item/circuit_component/equipment_action/bci/unregister_shell(atom/movable/shell)
 	var/obj/item/organ/cyberimp/bci/bci = shell
+	if(istype(bci))
+		bci.actions -= bci_action
+		QDEL_NULL(bci_action)
+	return ..()
 
-	bci.actions -= bci_action
-	QDEL_NULL(bci_action)
-
-/obj/item/circuit_component/bci_action/input_received(datum/port/input/port)
+/obj/item/circuit_component/equipment_action/bci/input_received(datum/port/input/port)
 	if (!isnull(bci_action))
 		update_action()
 
-/obj/item/circuit_component/bci_action/proc/update_action()
+/obj/item/circuit_component/equipment_action/bci/update_action()
 	bci_action.name = button_name.value
 	bci_action.button_icon_state = "bci_[replacetextEx(lowertext(icon_options.value), " ", "_")]"
 
@@ -133,9 +76,9 @@
 	check_flags = AB_CHECK_CONSCIOUS
 	button_icon_state = "bci_power"
 
-	var/obj/item/circuit_component/bci_action/circuit_component
+	var/obj/item/circuit_component/equipment_action/bci/circuit_component
 
-/datum/action/innate/bci_action/New(obj/item/circuit_component/bci_action/circuit_component)
+/datum/action/innate/bci_action/New(obj/item/circuit_component/equipment_action/bci/circuit_component)
 	..()
 
 	src.circuit_component = circuit_component
@@ -283,11 +226,15 @@
 
 	src.circuit_component = circuit_component
 
-	button.maptext_x = 2
-	button.maptext_y = 0
-	update_maptext()
+	UpdateButtons()
 
 	START_PROCESSING(SSobj, src)
+
+/datum/action/innate/bci_charge_action/CreateButton()
+	var/atom/movable/screen/movable/action_button/button = ..()
+	button.maptext_x = 2
+	button.maptext_y = 0
+	return button
 
 /datum/action/innate/bci_charge_action/Destroy()
 	circuit_component.charge_action = null
@@ -297,7 +244,7 @@
 
 	return ..()
 
-/datum/action/innate/bci_charge_action/Trigger()
+/datum/action/innate/bci_charge_action/Trigger(trigger_flags)
 	var/obj/item/stock_parts/cell/cell = circuit_component.parent.cell
 
 	if (isnull(cell))
@@ -307,9 +254,14 @@
 		to_chat(owner, span_info("You can recharge it by using a cyborg recharging station."))
 
 /datum/action/innate/bci_charge_action/process(delta_time)
-	update_maptext()
+	UpdateButtons()
 
-/datum/action/innate/bci_charge_action/proc/update_maptext()
+/datum/action/innate/bci_charge_action/UpdateButton(atom/movable/screen/movable/action_button/button, status_only = FALSE, force = FALSE)
+	. = ..()
+	if(!.)
+		return
+	if(status_only)
+		return
 	var/obj/item/stock_parts/cell/cell = circuit_component.parent.cell
 	button.maptext = cell ? MAPTEXT("[cell.percent()]%") : ""
 

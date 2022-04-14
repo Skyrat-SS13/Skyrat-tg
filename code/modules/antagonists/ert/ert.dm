@@ -209,6 +209,18 @@
 	if(istype(new_team))
 		ert_team = new_team
 
+/datum/antagonist/ert/bounty_armor
+	role = "Armored Bounty Hunter"
+	outfit = /datum/outfit/bountyarmor/ert
+
+/datum/antagonist/ert/bounty_hook
+	role = "Hookgun Bounty Hunter"
+	outfit = /datum/outfit/bountyarmor/ert
+
+/datum/antagonist/ert/bounty_synth
+	role = "Synthetic Bounty Hunter"
+	outfit = /datum/outfit/bountysynth/ert
+
 /datum/antagonist/ert/proc/forge_objectives()
 	if(ert_team)
 		objectives |= ert_team.objectives
@@ -270,7 +282,7 @@
 /datum/antagonist/ert/families/greet()
 	. = ..()
 	var/missiondesc
-	missiondesc += "<BR><B><font size=5 color=red>You are NOT a Nanotrasen Employee. You work for Sol Gov.</font></B>"
+	missiondesc += "<BR><B><font size=5 color=red>You are NOT a Nanotrasen Employee. You work for SolFed.</font></B>"
 	missiondesc += "<BR><B><font size=5 color=red>You are NOT a deathsquad. You are here to help innocents escape violence, criminal activity, and other dangerous things.</font></B>"
 	missiondesc += "<BR>You are responding to emergency calls from the station for immediate SolFed Police assistance!\n"
 	missiondesc += "<BR><B>Your Mission</B>:"

@@ -86,6 +86,9 @@
 		/obj/item/clothing/mask/animal/frog = 1,
 		/obj/item/clothing/mask/animal/rat/tribal = 1,
 		/obj/item/clothing/mask/animal/rat = 1,
+		/obj/item/clothing/mask/animal/pig = 1,
+		/obj/item/clothing/mask/animal/cowmask = 1,
+		/obj/item/clothing/mask/animal/horsehead = 1,
 		/obj/item/clothing/suit/apron/overalls = 1,
 		/obj/item/clothing/head/rabbitears =1,
 		/obj/item/clothing/accessory/vest_sheriff =1,
@@ -97,7 +100,10 @@
 		/obj/item/clothing/suit/poncho = 1,
 		/obj/item/clothing/suit/poncho/green = 1,
 		/obj/item/clothing/suit/poncho/red = 1,
+		/obj/item/clothing/head/maidheadband = 1,
 		/obj/item/clothing/under/costume/maid = 1,
+		/obj/item/clothing/gloves/maid = 1,
+		/obj/item/clothing/neck/maid = 1,
 		/obj/item/clothing/under/rank/civilian/janitor/maid = 1,
 		/obj/item/clothing/glasses/cold=1,
 		/obj/item/clothing/glasses/heat=1,
@@ -128,7 +134,8 @@
 		/obj/item/clothing/suit/changshan_blue = 1,
 		/obj/item/clothing/suit/cheongsam_red = 1,
 		/obj/item/clothing/suit/cheongsam_blue = 1,
-		/obj/item/gohei = 1
+		/obj/item/gohei = 1,
+		/obj/item/clothing/under/rank/medical/doctor/nurse = 1,
 	)
 	contraband = list(
 		/obj/item/clothing/suit/judgerobe = 1,
@@ -161,9 +168,6 @@
 	extra_price = PAYCHECK_HARD
 	payment_department = ACCOUNT_SRV
 	light_mask="theater-light-mask"
-
-/obj/machinery/vending/autodrobe/canLoadItem(obj/item/I,mob/user)
-	return (I.type in products)
 
 /obj/machinery/vending/autodrobe/all_access
 	desc = "A vending machine for costumes. This model appears to have no access restrictions."

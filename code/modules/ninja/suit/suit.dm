@@ -83,7 +83,7 @@
 	cell = new/obj/item/stock_parts/cell/high
 	cell.charge = 9000
 	cell.name = "black power cell"
-	cell.icon_state = "bscell"
+	cell.icon_state = "blkcell" //SKYRAT EDIT - original "bscell" - changed due to basetype's icon path/overlays changing
 
 /obj/item/clothing/suit/space/space_ninja/Destroy()
 	QDEL_NULL(spark_system)
@@ -168,7 +168,7 @@
 	var/design_choice = tgui_alert(ninja, "Please choose your desired suit design.",,list("Original","New Age"))
 	switch(design_choice)
 		if("Original")
-			icon_state = ninja.body_type == "female" ? "s-ninjanf" : "s-ninjan"
+			icon_state = ninja.physique == "female" ? "s-ninjanf" : "s-ninjan"
 			ninja.gloves.icon_state = "s-ninjan"
 			ninja.gloves.inhand_icon_state = "s-ninjan"
 		if("New Age")

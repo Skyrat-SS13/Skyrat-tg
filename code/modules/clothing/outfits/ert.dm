@@ -116,7 +116,7 @@
 	)
 	belt = /obj/item/storage/belt/medical
 	glasses = /obj/item/clothing/glasses/hud/health
-	l_hand = /obj/item/storage/firstaid/regular
+	l_hand = /obj/item/storage/medkit/regular
 	r_hand = /obj/item/gun/energy/e_gun
 
 /datum/outfit/centcom/ert/medic/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -351,7 +351,7 @@
 	R.keyslot = new /obj/item/encryptionkey/headset_service
 	R.recalculateChannels()
 	ADD_TRAIT(H, TRAIT_NAIVE, INNATE_TRAIT)
-	H.dna.add_mutation(CLOWNMUT)
+	H.dna.add_mutation(/datum/mutation/human/clumsy)
 	for(var/datum/mutation/human/clumsy/M in H.dna.mutations)
 		M.mutadone_proof = TRUE
 
@@ -423,7 +423,7 @@
 	)
 	belt = /obj/item/storage/belt/janitor/full
 	glasses = /obj/item/clothing/glasses/meson
-	mask = /obj/item/clothing/mask/bandana/blue
+	mask = /obj/item/clothing/mask/bandana/color/blue
 	l_pocket = /obj/item/grenade/chem_grenade/cleaner
 	r_pocket = /obj/item/grenade/chem_grenade/cleaner
 	l_hand = /obj/item/storage/bag/trash
@@ -510,7 +510,7 @@
 		/obj/item/grenade/c4/x4 = 1,
 		/obj/item/storage/box/flashbangs = 1,
 		/obj/item/storage/box/survival/engineer = 1,
-		/obj/item/storage/firstaid/regular = 1,
+		/obj/item/storage/medkit/regular = 1,
 	)
 	belt = /obj/item/gun/ballistic/revolver/mateba
 	ears = /obj/item/radio/headset/headset_cent/alt
@@ -597,8 +597,8 @@
 	head = /obj/item/clothing/head/helmet/marine/medic
 	backpack_contents = list(
 		/obj/item/reagent_containers/hypospray/combat = 1,
-		/obj/item/storage/firstaid/regular = 1,
-		/obj/item/storage/firstaid/advanced = 1,
+		/obj/item/storage/medkit/regular = 1,
+		/obj/item/storage/medkit/advanced = 1,
 	)
 	belt = /obj/item/storage/belt/medical/paramedic
 	glasses = /obj/item/clothing/glasses/hud/health/sunglasses

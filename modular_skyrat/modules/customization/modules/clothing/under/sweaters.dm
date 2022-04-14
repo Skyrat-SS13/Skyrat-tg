@@ -1,12 +1,12 @@
 /obj/item/clothing/under/sweater
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
 	name = "cream sweater"
 	desc = "Why trade style for comfort? Now you can go commando down south and still be cozy up north."
 	icon_state = "bb_turtle"
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = TRUE
-	mutant_variants = NONE
 
 /obj/item/clothing/under/sweater/black
 	name = "black sweater"

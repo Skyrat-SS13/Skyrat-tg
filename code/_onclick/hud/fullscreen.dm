@@ -82,6 +82,12 @@
 	severity = 0
 	. = ..()
 
+/atom/movable/screen/fullscreen/emergency_meeting
+	icon_state = "emergency_meeting"
+	show_when_dead = TRUE
+	layer = CURSE_LAYER
+	plane = SPLASHSCREEN_PLANE
+
 /atom/movable/screen/fullscreen/brute
 	icon_state = "brutedamageoverlay"
 	layer = UI_DAMAGE_LAYER
@@ -143,6 +149,14 @@
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "flash"
 	alpha = 80
+
+/atom/movable/screen/fullscreen/bluespace_sparkle
+	icon = 'icons/effects/effects.dmi'
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
+	icon_state = "shieldsparkles"
+	layer = FLASH_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	show_when_dead = TRUE
 
 /atom/movable/screen/fullscreen/color_vision/green
 	color = "#00ff00"

@@ -18,43 +18,11 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
-/obj/item/clothing/under/rank/civilian/mime
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-
-/obj/item/clothing/under/rank/civilian/mime/skirt
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-
-/obj/item/clothing/under/rank/civilian/lawyer/black
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-
-/obj/item/clothing/under/rank/civilian/lawyer/black/skirt
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-
-/obj/item/clothing/under/rank/civilian/lawyer/red
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-
-/obj/item/clothing/under/rank/civilian/lawyer/red/skirt
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-
-/obj/item/clothing/under/rank/civilian/lawyer/blue
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-
-/obj/item/clothing/under/rank/civilian/lawyer/blue/skirt
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-
 /obj/item/clothing/under/rank/civilian/lawyer/bluesuit
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
-/obj/item/clothing/under/rank/medical
+/obj/item/clothing/under/rank/medical/paramedic
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
@@ -122,11 +90,9 @@
 	icon_state = "labcoat_rd"
 	body_parts_covered = CHEST|ARMS|LEGS
 	armor = list(MELEE = 5, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 80, FIRE = 80, ACID = 70)
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 ///////////////////////////////////////////////////////////////////////HEAD
-/obj/item/clothing/head/bio_hood
-	dynamic_hair_suffix = ""
 
 /obj/item/clothing/head/bio_hood/general
 	worn_icon = 'modular_skyrat/modules/aesthetics/clothing/head.dmi'

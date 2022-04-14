@@ -15,7 +15,7 @@
 	name = "blueshield's skivvy"
 	desc = "A cozier alternative to the normal blueshield's suit. It's made out of an expensive, all-natural wool."
 	icon_state = "bs_turtleneck"
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/security/blueshield/turtleneck/skirt
 	name = "blueshield's skirtleneck"
@@ -26,7 +26,7 @@
 	desc = "A \"tactical\" skirt seemingly outfitted in Nanotrasen's standard corporate-chic."
 	name = "blueshield's skirt"
 	icon_state = "blueshieldskirt"
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/head/helmet/space/plasmaman/blueshield
 	name = "blueshield envirosuit helmet"
@@ -46,7 +46,7 @@
     resistance_flags = FIRE_PROOF |  ACID_PROOF
     armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 100, "acid" = 100)
 
-/obj/item/radio/headset/heads/blueshield
+/obj/item/radio/headset/headset_bs
 	name = "\proper the blueshield's headset"
 	icon = 'modular_skyrat/modules/blueshield/icons/radio.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/ears.dmi'
@@ -54,8 +54,12 @@
 	keyslot = new /obj/item/encryptionkey/heads/blueshield
 	keyslot2 = new /obj/item/encryptionkey/headset_cent
 
-/obj/item/radio/headset/heads/blueshield/alt
+/obj/item/radio/headset/headset_bs/alt
 	icon_state = "bshield_headset_alt"
+
+/obj/item/radio/headset/headset_bs/alt/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
 /obj/item/clothing/under/plasmaman/blueshield
 	name = "blueshield envirosuit"

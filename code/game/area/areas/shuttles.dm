@@ -45,6 +45,10 @@
 	name = "Syndicate Infiltrator EVA"
 
 /area/shuttle/syndicate/hallway
+	name = "Syndicate Infiltrator Hall"
+
+/area/shuttle/syndicate/engineering
+	name = "Syndicate Infiltrator Engineering"
 
 /area/shuttle/syndicate/airlock
 	name = "Syndicate Infiltrator Airlock"
@@ -64,6 +68,12 @@
 /area/shuttle/hunter
 	name = "Hunter Shuttle"
 	static_lighting = FALSE
+	base_lighting_alpha = 255
+
+/area/shuttle/hunter/russian
+	name = "Russian Cargo Hauler"
+	requires_power = TRUE
+	static_lighting = TRUE
 
 ////////////////////////////White Ship////////////////////////////
 
@@ -98,6 +108,7 @@
 	name = "Hyperspace"
 	desc = "Weeeeee"
 	static_lighting = FALSE
+	base_lighting_alpha = 255
 
 
 /area/shuttle/arrival
@@ -168,6 +179,7 @@
 	icon_state = "shuttlectf"
 	area_flags = NOTELEPORT
 	static_lighting = FALSE
+	base_lighting_alpha = 255
 
 /area/shuttle/escape/arena
 	name = "The Arena"
@@ -191,6 +203,9 @@
 
 /area/shuttle/sbc_fighter2
 	name = "SBC Fighter 2"
+
+/area/shuttle/sbc_fighter3
+	name = "SBC Fighter 3"
 
 /area/shuttle/sbc_corvette
 	name = "SBC corvette"
@@ -282,4 +297,4 @@
 	var/mob/living/M = AM
 	M.forceMove(get_turf(LA))
 	to_chat(M, "<span class='reallybig redtext'>You're trapped in a deadly arena! To escape, you'll need to drag a severed head to the escape portals.</span>", confidential = TRUE)
-	M.apply_status_effect(STATUS_EFFECT_MAYHEM)
+	M.apply_status_effect(/datum/status_effect/mayhem)

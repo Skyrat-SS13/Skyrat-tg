@@ -14,6 +14,7 @@
 	icon = 'icons/obj/machines/kitchenmachines.dmi'
 	icon_state = "oven_off"
 	density = TRUE
+	pass_flags_self = PASSMACHINE | LETPASSTHROW
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 5
 	layer = BELOW_OBJ_LAYER
@@ -171,10 +172,10 @@
 	if(default_deconstruction_crowbar(I, ignore_panel = TRUE))
 		return
 
-/obj/machinery/oven/wrench_act(mob/living/user, obj/item/I)
-	..()
-	default_unfasten_wrench(user, I, 2 SECONDS)
-	return TRUE
+/obj/machinery/oven/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	default_unfasten_wrench(user, tool, time = 2 SECONDS)
+	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 
 /obj/item/plate/oven_tray

@@ -8,7 +8,7 @@
 /mob/living/silicon/robot
 	name = "Cyborg"
 	real_name = "Cyborg"
-	icon = 'icons/mob/robots.dmi'
+	icon = 'icons/mob/robots.dmi' //SKYRAT EDIT - Modified in modular_skyrat\modules\altborgs\code\robot_defines.dm (to allow for custom transformation animations)
 	icon_state = "robot"
 	maxHealth = 100
 	health = 100
@@ -94,7 +94,8 @@
 	var/scrambledcodes = FALSE
 	///Boolean of whether the borg is locked down or not
 	var/lockcharge = FALSE
-
+	///Boolean of whether the borg was locked by its AI or nothing
+	var/ai_lockdown = FALSE
 	///Random serial number generated for each cyborg upon its initialization
 	var/ident = 0
 	var/locked = TRUE

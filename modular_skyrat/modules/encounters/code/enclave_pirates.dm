@@ -20,6 +20,14 @@
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/enclave/officer
 
+/datum/outfit/pirate/enclave_officer/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
+	. = ..()
+	equipped_human.hairstyle = "Crewcut"
+	equipped_human.hair_color = COLOR_ALMOST_BLACK
+	equipped_human.facial_hairstyle = "Shaved"
+	equipped_human.facial_hair_color = COLOR_ALMOST_BLACK
+	equipped_human.update_hair()
+
 /datum/id_trim/enclave/officer
 	assignment = "Imperial Enclave Officer"
 
@@ -32,7 +40,7 @@
 
 	uniform = /obj/item/clothing/under/enclave
 	suit = /obj/item/clothing/suit/armor/vest/alt
-	suit_store = /obj/item/gun/ballistic/automatic/assault_rifle/m16
+	suit_store = /obj/item/gun/ballistic/automatic/m16
 
 	gloves = /obj/item/clothing/gloves/combat
 
@@ -44,6 +52,14 @@
 
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/enclave
+
+/datum/outfit/pirate/enclave_trooper/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
+	. = ..()
+	equipped_human.hairstyle = "Crewcut"
+	equipped_human.hair_color = COLOR_ALMOST_BLACK
+	equipped_human.facial_hairstyle = "Shaved"
+	equipped_human.facial_hair_color = COLOR_ALMOST_BLACK
+	equipped_human.update_hair()
 
 /datum/id_trim/enclave
 	assignment = "Imperial Enclave Trooper"
@@ -61,7 +77,9 @@
 	you_are_text = "You are an Imperial Enclave outfit."
 	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by ransoming crew and stealing credits."
 	spawner_job_path = /datum/job/space_pirate
+	restricted_species = list(/datum/species/human)
 	spawn_oldpod = FALSE
+	random_appearance = TRUE
 
 /datum/job/fugitive_hunter
 	title = ROLE_FUGITIVE_HUNTER

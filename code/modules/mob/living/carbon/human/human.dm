@@ -8,6 +8,7 @@
 	create_bodyparts()
 
 	setup_human_dna()
+	prepare_huds() //Prevents a nasty runtime on human init
 
 	if(dna.species)
 		INVOKE_ASYNC(src, .proc/set_species, dna.species.type)
@@ -29,6 +30,7 @@
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
+	SSopposing_force.give_opfor_button(src) //SKYRAT EDIT - OPFOR SYSTEM
 
 /mob/living/carbon/human/proc/setup_human_dna()
 	//initialize dna. for spawned humans; overwritten by other code
@@ -93,8 +95,8 @@
 		var/datum/antagonist/changeling/changeling = mind.has_antag_datum(/datum/antagonist/changeling)
 		if(changeling)
 			. += ""
-			. += "Chemical Storage: [changeling.chem_charges]/[changeling.chem_storage]"
-			. += "Absorbed DNA: [changeling.absorbedcount]"
+			. += "Chemical Storage: [changeling.chem_charges]/[changeling.total_chem_storage]"
+			. += "Absorbed DNA: [changeling.absorbed_count]"
 
 // called when something steps onto a human
 /mob/living/carbon/human/proc/on_entered(datum/source, atom/movable/AM)
@@ -256,7 +258,7 @@
 				to_chat(usr, span_warning("ERROR: Unable to locate data core entry for target."))
 				return
 			if(href_list["status"])
-				var/setcriminal = input(usr, "Specify a new criminal status for this person.", "Security HUD", sec_record.fields["criminal"]) in list("None", "*Arrest*", "Incarcerated", "Paroled", "Discharged", "Cancel") //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+				var/setcriminal = input(usr, "Specify a new criminal status for this person.", "Security HUD", sec_record.fields["criminal"]) in list("None", "*Arrest*", "Incarcerated", "Suspected", "Paroled", "Discharged", "Cancel") //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 				if(setcriminal != "Cancel")
 					if(!sec_record) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 						return
@@ -306,7 +308,7 @@
 				var/maxFine = CONFIG_GET(number/maxfine)
 				var/t1 = tgui_input_text(usr, "Citation crime", "Security HUD")
 				var/fine = tgui_input_number(usr, "Citation fine", "Security HUD", 50, maxFine, 5)
-				if(isnull(fine))
+				if(!fine)
 					return
 				//if(!R || !t1 || !allowed_access) // ORIGINAL
 				if(!sec_record || !t1 || !allowed_access) // SKYRAT EDIT CHANGE - EXAMINE RECORDS
@@ -315,8 +317,6 @@
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 					return
-				fine = round(fine)
-				fine = min(fine, maxFine)
 
 				var/datum/data/crime/crime = GLOB.data_core.createCrimeEntry(t1, "", allowed_access, station_time_timestamp(), fine)
 				for (var/obj/item/pda/P in GLOB.PDAs)
@@ -393,11 +393,11 @@
 				return
 
 	//SKYRAT EDIT ADDITION BEGIN - VIEW RECORDS
-	if (is_special_character(usr))
-		var/perpname = get_face_name(get_id_name(""))
-		var/datum/data/record/EXP = find_record("name", perpname, GLOB.data_core.general)
-		if(href_list["exprecords"])
-			to_chat(usr, "<b>Exploitable information:</b> [EXP.fields["exploitable_records"]]")
+	if(href_list["exprecords"])
+		if (mind.can_see_exploitables || mind.has_exploitables_override)
+			var/examined_name = get_face_name(get_id_name("")) //Named as such because this is the name we see when we examine
+			var/datum/data/record/target_general_records = find_record("name", examined_name, GLOB.data_core.general)
+			to_chat(usr, "<b>Exploitable information:</b> [target_general_records.fields["exploitable_records"]]")
 	//SKYRAT EDIT END
 
 	..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that.
@@ -426,7 +426,7 @@
 /mob/living/carbon/human/try_inject(mob/user, target_zone, injection_flags)
 	. = ..()
 	if(!. && (injection_flags & INJECT_TRY_SHOW_ERROR_MESSAGE) && user)
-		var/obj/item/bodypart/the_part = get_bodypart(target_zone || user.zone_selected)
+		var/obj/item/bodypart/the_part = get_bodypart(target_zone || check_zone(user.zone_selected))
 		to_chat(user, span_alert("There is no exposed flesh or thin material on [p_their()] [the_part.name]."))
 
 /mob/living/carbon/human/assess_threat(judgement_criteria, lasercolor = "", datum/callback/weaponcheck=null)
@@ -480,6 +480,8 @@
 					threatcount += 5
 				if("Incarcerated")
 					threatcount += 2
+				if("Suspected")
+					threatcount += 2
 				if("Paroled")
 					threatcount += 2
 
@@ -508,8 +510,7 @@
 		facial_hairstyle = "Shaved"
 	hairstyle = pick("Bedhead", "Bedhead 2", "Bedhead 3")
 	underwear = "Nude"
-	update_body()
-	update_hair()
+	update_body(is_creating = TRUE)
 
 /mob/living/carbon/human/singularity_pull(S, current_size)
 	..()
@@ -587,7 +588,7 @@
 #undef CPR_PANIC_SPEED
 
 /mob/living/carbon/human/cuff_resist(obj/item/I)
-	if(dna?.check_mutation(HULK))
+	if(dna?.check_mutation(/datum/mutation/human/hulk))
 		say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ), forced = "hulk")
 		if(..(I, cuff_break = FAST_CUFFBREAK))
 			dropItemToGround(I)
@@ -750,8 +751,7 @@
 		return
 	else
 		if(hud_used.healths)
-			var/health_amount = min(health, maxHealth - getStaminaLoss())
-			if(..(health_amount)) //not dead
+			if(..()) //not dead
 				switch(hal_screwyhud)
 					if(SCREWYHUD_CRIT)
 						hud_used.healths.icon_state = "health6"
@@ -939,7 +939,7 @@
 	return ishuman(target) && target.body_position == LYING_DOWN
 
 /mob/living/carbon/human/proc/fireman_carry(mob/living/carbon/target)
-	if(!can_be_firemanned(target) || incapacitated(FALSE, TRUE))
+	if(!can_be_firemanned(target) || incapacitated(IGNORE_GRAB))
 		to_chat(src, span_warning("You can't fireman carry [target] while [target.p_they()] [target.p_are()] standing!"))
 		return
 
@@ -963,7 +963,7 @@
 		return
 
 	//Second check to make sure they're still valid to be carried
-	if(!can_be_firemanned(target) || incapacitated(FALSE, TRUE) || target.buckled)
+	if(!can_be_firemanned(target) || incapacitated(IGNORE_GRAB) || target.buckled)
 		visible_message(span_warning("[src] fails to fireman carry [target]!"))
 		return
 
@@ -979,7 +979,7 @@
 		visible_message(span_warning("[target] fails to climb onto [src]!"))
 		return
 
-	if(target.incapacitated(FALSE, TRUE) || incapacitated(FALSE, TRUE))
+	if(target.incapacitated(IGNORE_GRAB) || incapacitated(IGNORE_GRAB))
 		target.visible_message(span_warning("[target] can't hang onto [src]!"))
 		return
 
@@ -1069,9 +1069,6 @@
 
 /mob/living/carbon/human/species/golem
 	race = /datum/species/golem
-
-/mob/living/carbon/human/species/golem/random
-	race = /datum/species/golem/random
 
 /mob/living/carbon/human/species/golem/adamantine
 	race = /datum/species/golem/adamantine
@@ -1193,12 +1190,6 @@
 /mob/living/carbon/human/species/snail
 	race = /datum/species/snail
 
-/mob/living/carbon/human/species/synth
-	race = /datum/species/synth
-
-/mob/living/carbon/human/species/synth/military
-	race = /datum/species/synth/military
-
 /mob/living/carbon/human/species/vampire
 	race = /datum/species/vampire
 
@@ -1207,6 +1198,3 @@
 
 /mob/living/carbon/human/species/zombie/infectious
 	race = /datum/species/zombie/infectious
-
-/mob/living/carbon/human/species/zombie/krokodil_addict
-	race = /datum/species/krokodil_addict

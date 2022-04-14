@@ -100,7 +100,7 @@
 		/obj/item/melee/baton/security/boomerang/loaded = 1
 	)
 
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 
 /datum/outfit/job/orderly
 	name = "Orderly" // You forgot your vaccine *flexes muscles*
@@ -124,8 +124,9 @@
 	assignment = "Orderly"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_orderly"
-	extra_access = list(ACCESS_SEC_DOORS, ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_PHARMACY, ACCESS_CHEMISTRY, ACCESS_VIROLOGY, ACCESS_MECH_MEDICAL, ACCESS_MINERAL_STOREROOM)
-	minimal_access = list(ACCESS_SEC_DOORS, ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_PHARMACY, ACCESS_CHEMISTRY, ACCESS_VIROLOGY, ACCESS_MECH_MEDICAL, ACCESS_MINERAL_STOREROOM)
+	sechud_icon_state = SECHUD_ORDERLY
+	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_PHARMACY, ACCESS_CHEMISTRY, ACCESS_VIROLOGY, ACCESS_MECH_MEDICAL, ACCESS_MINERAL_STOREROOM)
+	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_PHARMACY, ACCESS_CHEMISTRY, ACCESS_VIROLOGY, ACCESS_MECH_MEDICAL, ACCESS_MINERAL_STOREROOM)
 	config_job = "orderly"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CMO, ACCESS_CHANGE_IDS)
 	job = /datum/job/orderly
@@ -167,8 +168,7 @@
 		/obj/item/clothing/mask/whistle = 5,
 		/obj/item/melee/baton/security/boomerang/loaded = 1
 	)
-
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 
 /datum/outfit/job/science_guard
 	name = "Science Guard"
@@ -192,9 +192,10 @@
 	assignment = "Science Guard"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_calhoun"
-	extra_access = list(ACCESS_SEC_DOORS, ACCESS_ROBOTICS, ACCESS_RND, ACCESS_ORDNANCE, ACCESS_ORDNANCE_STORAGE, ACCESS_RESEARCH, ACCESS_XENOBIOLOGY,
+	sechud_icon_state = SECHUD_SCIENCE_GUARD
+	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ROBOTICS, ACCESS_RND, ACCESS_ORDNANCE, ACCESS_ORDNANCE_STORAGE, ACCESS_RESEARCH, ACCESS_XENOBIOLOGY,
 					ACCESS_MECH_SCIENCE, ACCESS_MINERAL_STOREROOM, ACCESS_TECH_STORAGE, ACCESS_GENETICS, ACCESS_AUX_BASE)
-	minimal_access = list(ACCESS_SEC_DOORS, ACCESS_ROBOTICS, ACCESS_RND, ACCESS_ORDNANCE, ACCESS_ORDNANCE_STORAGE, ACCESS_RESEARCH, ACCESS_XENOBIOLOGY,
+	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ROBOTICS, ACCESS_RND, ACCESS_ORDNANCE, ACCESS_ORDNANCE_STORAGE, ACCESS_RESEARCH, ACCESS_XENOBIOLOGY,
 					ACCESS_MECH_SCIENCE, ACCESS_MINERAL_STOREROOM, ACCESS_TECH_STORAGE, ACCESS_GENETICS, ACCESS_AUX_BASE)
 	config_job = "science_guard"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_RD, ACCESS_CHANGE_IDS)
@@ -237,8 +238,7 @@
 		/obj/item/clothing/mask/whistle = 5,
 		/obj/item/melee/baton/security/boomerang/loaded = 1
 	)
-
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 
 /datum/outfit/job/bouncer
 	name = "Bouncer" // That ID looks a little suspect, pal. You ain't on the list, beat it.
@@ -268,8 +268,9 @@
 	assignment = "Bouncer"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_bouncer"
-	extra_access = list(ACCESS_SEC_DOORS, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
-	minimal_access = list(ACCESS_SEC_DOORS, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE, ACCESS_SERVICE)
+	sechud_icon_state = SECHUD_BOUNCER
+	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
+	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE, ACCESS_SERVICE)
 	config_job = "bouncer"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
 	job = /datum/job/bouncer
@@ -311,8 +312,7 @@
 		/obj/item/clothing/mask/whistle = 5,
 		/obj/item/melee/baton/security/boomerang/loaded = 1
 	)
-
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 
 /datum/outfit/job/customs_agent
 	name = "Customs Agent"
@@ -336,8 +336,9 @@
 	assignment = "Customs Agent"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_customs"
-	extra_access = list(ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM)
-	minimal_access = list(ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM)
+	sechud_icon_state = SECHUD_CUSTOMS_AGENT
+	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM)
+	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM)
 	config_job = "customs_agent"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_QM, ACCESS_CHANGE_IDS)
 	job = /datum/job/customs_agent
@@ -379,8 +380,7 @@
 		/obj/item/clothing/mask/whistle = 5,
 		/obj/item/melee/baton/security/boomerang/loaded = 1
 	)
-
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 
 /datum/outfit/job/engineering_guard
 	name = "Engineering Guard"
@@ -404,9 +404,10 @@
 	assignment = "Engineering Guard"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_engiguard"
-	extra_access = list(ACCESS_SEC_DOORS, ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE, ACCESS_AUX_BASE,
+	sechud_icon_state = SECHUD_ENGINEERING_GUARD
+	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE, ACCESS_AUX_BASE,
 					ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM)
-	minimal_access = list(ACCESS_SEC_DOORS, ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE, ACCESS_AUX_BASE,
+	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE, ACCESS_AUX_BASE,
 					ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM)
 	config_job = "engineering_guard"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CE, ACCESS_CHANGE_IDS)
@@ -418,7 +419,7 @@
 	icon = 'modular_skyrat/modules/goofsec/icons/departmental_batons.dmi'
 	var/list/valid_areas = list()
 	var/emagged = FALSE
-	var/non_departmental_uses_left = 3
+	var/non_departmental_uses_left = 4
 
 /obj/item/melee/baton/security/loaded/departmental/baton_attack(mob/living/target, mob/living/user, modifiers)
 	if(active && !emagged && cooldown_check <= world.time)
@@ -435,7 +436,7 @@
 					span_warning("[user] prods you with [src]. Luckily, it shut off due to being in the wrong area."))
 				active = FALSE
 				balloon_alert(user, "wrong department")
-				playsound(src, "sparks", 75, TRUE, -1)
+				playsound(src, SFX_SPARKS, 75, TRUE, -1)
 				update_appearance()
 				return BATON_ATTACK_DONE
 	. = ..()
@@ -446,9 +447,9 @@
 		var/area/current_area = get_area(user)
 		if(!is_type_in_list(current_area, valid_areas))
 			return
-		if(non_departmental_uses_left < 3)
+		if(non_departmental_uses_left < 4)
 			say("Non-departmental uses refreshed!")
-			non_departmental_uses_left = 3
+			non_departmental_uses_left = 4
 
 /obj/item/melee/baton/security/loaded/departmental/emag_act(mob/user)
 	if(!emagged)
@@ -457,7 +458,7 @@
 							span_warning("You scramble [src]'s departmental lock, allowing it to be used freely!"),
 							span_hear("You hear a faint electrical spark."))
 		balloon_alert(user, "emagged")
-		playsound(src, "sparks", 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+		playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		emagged = TRUE
 
 /obj/item/melee/baton/security/loaded/departmental/medical

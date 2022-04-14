@@ -9,14 +9,15 @@
 	var/t_es = p_es()
 	var/obscure_name
 
+	var/obscured = check_obscured_slots()
+	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+
 	if(isliving(user))
 		var/mob/living/L = user
 		if(HAS_TRAIT(L, TRAIT_PROSOPAGNOSIA) || HAS_TRAIT(L, TRAIT_INVISIBLE_MAN))
 			obscure_name = TRUE
 
 	//SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
-	var/obscured = check_obscured_slots()
-	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
 	var/species_visible
 	var/species_name_string
 	if(skipface || get_visible_name() == "Unknown")
@@ -38,6 +39,13 @@
 	else
 		. += "You can't make out what species they are."
 	//SKYRAT EDIT CHANGE END
+
+	/* SKYRAT EDIT REMOVAL
+	var/apparent_species
+	if(dna?.species && !skipface)
+		apparent_species = ", \an [dna.species.name]"
+	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"][apparent_species]</EM>!")
+	*/
 	//uniform
 	if(w_uniform && !(obscured & ITEM_SLOT_ICLOTHING) && !(w_uniform.item_flags & EXAMINE_SKIP))
 		//accessory
@@ -275,7 +283,7 @@
 
 		for(var/i in bodyparts)
 			var/obj/item/bodypart/body_part = i
-			if(body_part.get_bleed_rate())
+			if(body_part.get_part_bleed_rate())
 				bleeding_limbs += body_part
 			if(body_part.grasped_by)
 				grasped_limbs += body_part
@@ -430,7 +438,7 @@
 				. += "<a href='?src=[REF(src)];hud=m;evaluation=1'>\[Medical evaluation\]</a><br>"
 			. += "<a href='?src=[REF(src)];hud=m;quirk=1'>\[See quirks\]</a>"
 			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-			if (R && length(R.fields["past_records"]) >= 2)
+			if (R && length(R.fields["past_records"]) > RECORDS_INVISIBLE_THRESHOLD)
 				. += "<a href='?src=[REF(src)];hud=m;medrecords=1'>\[View medical records\]</a>"
 			//SKYRAT EDIT END
 
@@ -450,23 +458,22 @@
 					"<a href='?src=[REF(src)];hud=s;view_comment=1'>\[View comment log\]</a>",
 					"<a href='?src=[REF(src)];hud=s;add_comment=1'>\[Add comment\]</a>"), "")
 				// SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-				if (R && length(R.fields["past_records"]) >= 2)
+				if (R && length(R.fields["past_records"]) > RECORDS_INVISIBLE_THRESHOLD)
 					. += "<span class='deptradio'>Security record:</span> <a href='?src=[REF(src)];hud=s;secrecords=1'>\[View security records\]</a>"
 
-		if (R_cache && length(R_cache.fields["past_records"]) >= 2)
+		if (R_cache && length(R_cache.fields["past_records"]) > RECORDS_INVISIBLE_THRESHOLD)
 			. += "<a href='?src=[REF(src)];hud=[HAS_TRAIT(user, TRAIT_SECURITY_HUD) ? "s" : "m"];genrecords=1'>\[View general records\]</a>"
 		//SKYRAT EDIT ADDITION END
 	else if(isobserver(user))
 		. += "<span class='info'><b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]</span>"
 
 	//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-	if (is_special_character(user))
-		var/datum/data/record/is_in_world = find_record("name", perpname, GLOB.data_core.general) //apparantly golden is okay with offstation roles having no records, FYI
-		if (is_in_world && length(is_in_world.fields["exploitable_records"]) >= 2)
-			for(var/datum/antagonist/antag_datum in user.mind.antag_datums)
-				if (antag_datum.view_exploitables)
-					. += "<a href='?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>"
-					break
+	if (mind?.can_see_exploitables || mind?.has_exploitables_override)
+		var/datum/data/record/target_records = find_record("name", perpname, GLOB.data_core.general) //apparantly golden is okay with offstation roles having no records, FYI
+		var/exploitable_text = target_records.fields["exploitable_records"]
+		if (target_records && ((length(exploitable_text) > RECORDS_INVISIBLE_THRESHOLD) && ((exploitable_text) != EXPLOITABLE_DEFAULT_TEXT)))
+			. += "<a href='?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>"
+
 	//SKYRAT EDIT END
 	//SKYRAT EDIT ADDITION BEGIN - GUNPOINT
 	if(gunpointing)
@@ -484,19 +491,31 @@
 				if(!(G.is_hidden(src)))
 					. += "<span class='notice'>[t_He] has exposed genitals... <a href='?src=[REF(src)];lookup_info=genitals'>Look closer...</a></span>"
 					break
-	var/line = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
-	if(line)
-		. += line
+
+	var/flavor_text_link
+	/// The first 1-FLAVOR_PREVIEW_LIMIT characters in the mob's "flavor_text" DNA feature. FLAVOR_PREVIEW_LIMIT is defined in flavor_defines.dm.
+	var/preview_text = copytext_char((dna.features["flavor_text"]), 1, FLAVOR_PREVIEW_LIMIT)
+	// What examine_tgui.dm uses to determine if flavor text appears as "Obscured".
+	var/face_obscured = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+
+	if (!(face_obscured))
+		flavor_text_link = span_notice("[preview_text]... <a href='?src=[REF(src)];lookup_info=open_examine_panel'>Look closer?</a>")
+	else
+		flavor_text_link = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
+	if (flavor_text_link)
+		. += flavor_text_link
+
 	if(client)
 		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
 		if(erp_status_pref && erp_status_pref != "disabled")
 			. += span_notice("ERP STATUS: [erp_status_pref]")
+
 	//Temporary flavor text addition:
 	if(temporary_flavor_text)
 		if(length_char(temporary_flavor_text) <= 40)
-			. += "<span class='notice'>[temporary_flavor_text]</span>"
+			. += span_notice("<b>They look different than usual:</b> [temporary_flavor_text]")
 		else
-			. += "<span class='notice'>[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a></span>"
+			. += span_notice("<b>They look different than usual:</b> [copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a>")
 	//. += "*---------*</span>" SKYRAT EDIT REMOVAL
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 

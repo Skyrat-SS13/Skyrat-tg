@@ -1,6 +1,6 @@
 import { sortBy } from 'common/collections';
 import { useBackend } from '../backend';
-import { Box, Button, ColorBox, Section, Table } from '../components';
+import { Box, Button, ColorBox, Section, Table, Icon } from '../components'; // SKYRAT EDIT - ORIGINAL: import { Box, Button, ColorBox, Section, Table }
 import { COLORS } from '../constants';
 import { Window } from '../layouts';
 
@@ -114,6 +114,7 @@ const CrewTableEntry = (props, context) => {
     name,
     assignment,
     ijob,
+    is_robot, // SKYRAT EDIT ADDITION - Displaying robotic species Icon
     life_status,
     oxydam,
     toxdam,
@@ -130,13 +131,22 @@ const CrewTableEntry = (props, context) => {
         color={jobToColor(ijob)}>
         {name}{assignment !== undefined ? ` (${assignment})` : ""}
       </Table.Cell>
+      {/* SKYRAT EDIT START - Displaying robotic species Icon */}
       <Table.Cell collapsing textAlign="center">
-        <ColorBox
-          color={healthToColor(
-            oxydam,
-            toxdam,
-            burndam,
-            brutedam)} />
+        {is_robot ? <Icon name="wrench" color="#B7410E" size={1} /> : ""}
+      </Table.Cell>
+      {/* SKYRAT EDIT END */}
+      <Table.Cell collapsing textAlign="center">
+        {life_status ? (
+          <ColorBox
+            color={healthToColor(
+              oxydam,
+              toxdam,
+              burndam,
+              brutedam)} />
+        ) : (
+          <ColorBox color={'#ed2814'} />
+        )}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
         {oxydam !== undefined ? (

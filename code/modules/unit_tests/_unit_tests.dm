@@ -43,9 +43,13 @@
 /// A trait source when adding traits through unit tests
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
+// SKYRAT EDIT START
+#include "~skyrat/opposing_force.dm"
+//SKYRAT EDIT END
 #include "achievements.dm"
 #include "anchored_mobs.dm"
 #include "anonymous_themes.dm"
+#include "autowiki.dm"
 #include "bespoke_id.dm"
 #include "binary_insert.dm"
 #include "bloody_footprints.dm"
@@ -67,8 +71,10 @@
 #include "egg_glands.dm"
 #include "emoting.dm"
 #include "food_edibility_check.dm"
+#include "gas_transfer.dm"
 #include "greyscale_config.dm"
 #include "heretic_knowledge.dm"
+#include "heretic_rituals.dm"
 #include "holidays.dm"
 #include "hydroponics_harvest.dm"
 #include "hydroponics_self_mutations.dm"
@@ -80,10 +86,14 @@
 #include "metabolizing.dm"
 #include "mob_spawn.dm"
 #include "modsuit.dm"
+#include "modular_map_loader.dm"
 #include "ntnetwork_tests.dm"
+#include "objectives.dm"
 #include "outfit_sanity.dm"
+#include "paintings.dm"
 #include "pills.dm"
 #include "plantgrowth_tests.dm"
+#include "preference_species.dm"
 #include "preferences.dm"
 #include "projectiles.dm"
 #include "quirks.dm"
@@ -91,6 +101,7 @@
 #include "reagent_id_typos.dm"
 #include "reagent_mod_expose.dm"
 #include "reagent_mod_procs.dm"
+#include "reagent_names.dm"
 #include "reagent_recipe_collisions.dm"
 #include "resist.dm"
 #include "say.dm"
@@ -100,6 +111,7 @@
 #include "spawn_humans.dm"
 #include "spawn_mobs.dm"
 #include "species_config_sanity.dm"
+#include "species_unique_id.dm"
 #include "species_whitelists.dm"
 #include "stomach.dm"
 #include "strippable.dm"
@@ -108,14 +120,15 @@
 #include "teleporters.dm"
 #include "tgui_create_message.dm"
 #include "timer_sanity.dm"
+#include "traitor.dm"
 #include "unit_test.dm"
 #include "wizard.dm"
-#ifdef REFERENCE_TRACKING //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter
+#ifdef REFERENCE_TRACKING_DEBUG //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter
 #include "find_reference_sanity.dm"
 #endif
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL
 #undef TEST_ASSERT_NOTEQUAL
-#undef TEST_FOCUS
+//#undef TEST_FOCUS - This define is used by vscode unit test extension to pick specific unit tests to run and appended later so needs to be used out of scope here
 #endif

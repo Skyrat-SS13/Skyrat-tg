@@ -113,7 +113,7 @@
     name = "Put strapon in hand"
     desc = "Put the strapon in your hand in order to use it properly."
 
-/datum/action/item_action/take_strapon/Trigger()
+/datum/action/item_action/take_strapon/Trigger(trigger_flags)
 	var/obj/item/clothing/strapon/H = target
 	if(istype(H))
 		H.check()

@@ -81,7 +81,7 @@
 	name = "Toggle deadchat"
 	desc = "Turn off or on your ability to hear ghosts."
 
-/datum/action/toggle_dead_chat_mob/Trigger()
+/datum/action/toggle_dead_chat_mob/Trigger(trigger_flags)
 	if(!..())
 		return 0
 	var/mob/M = target
@@ -107,6 +107,7 @@
 	new /obj/item/clothing/neck/chameleon(src)
 	new /obj/item/storage/backpack/chameleon(src)
 	new /obj/item/storage/belt/chameleon(src)
+	new /obj/item/card/id/advanced/chameleon(src)
 
 /obj/item/card/id/advanced/ghost_cafe
 	name = "\improper Cafe ID"

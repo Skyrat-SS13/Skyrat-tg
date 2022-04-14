@@ -231,6 +231,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Can hear observers
 #define TRAIT_SIXTHSENSE "sixth_sense"
 #define TRAIT_FEARLESS "fearless"
+/// Ignores darkness for hearing
+#define TRAIT_HEAR_THROUGH_DARKNESS "hear_through_darkness"
 /// These are used for brain-based paralysis, where replacing the limb won't fix it
 #define TRAIT_PARALYSIS_L_ARM "para-l-arm"
 #define TRAIT_PARALYSIS_R_ARM "para-r-arm"
@@ -305,6 +307,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PERMANENTLY_ONFIRE "permanently_onfire"
 /// Galactic Common Sign Language
 #define TRAIT_SIGN_LANG "sign_language"
+/// This mob is able to use sign language over the radio.
+#define TRAIT_CAN_SIGN_ON_COMMS "can_sign_on_comms"
 /// nobody can use martial arts on this mob
 #define TRAIT_MARTIAL_ARTS_IMMUNE "martial_arts_immune"
 /// You've been cursed with a living duffelbag, and can't have more added
@@ -351,6 +355,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SPARRING "sparring"
 /// The user is currently challenging an elite mining mob. Prevents him from challenging another until he's either lost or won.
 #define TRAIT_ELITE_CHALLENGER "elite_challenger"
+/// For living mobs. It signals that the mob shouldn't have their data written in an external json for persistence.
+#define TRAIT_DONT_WRITE_MEMORY "dont_write_memory"
+/// This mob can be painted with the spraycan
+#define TRAIT_SPRAY_PAINTABLE "spray_paintable"
 
 #define TRAIT_NOBLEED "nobleed" //This carbon doesn't bleed
 /// This atom can ignore the "is on a turf" check for simple AI datum attacks, allowing them to attack from bags or lockers as long as any other conditions are met
@@ -382,11 +390,17 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait used by fugu glands to avoid double buffing
 #define TRAIT_FUGU_GLANDED "fugu_glanded"
 
+/// When someone with this trait fires a ranged weapon, their fire delays and click cooldowns are halved
+#define TRAIT_DOUBLE_TAP "double_tap"
+
 /// Trait applied to [/datum/mind] to stop someone from using the cursed hot springs to polymorph more than once.
 #define TRAIT_HOT_SPRING_CURSED "hot_spring_cursed"
 
 /// If something has been engraved/cannot be engraved
 #define TRAIT_NOT_ENGRAVABLE "not_engravable"
+
+/// Whether or not orbiting is blocked or not
+#define TRAIT_ORBITING_FORBIDDEN "orbiting_forbidden"
 
 // METABOLISMS
 // Various jobs on the station have historically had better reactions
@@ -399,19 +413,23 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_CULINARY_METABOLISM "culinary_metabolism"
 #define TRAIT_COMEDY_METABOLISM "comedy_metabolism"
 #define TRAIT_MEDICAL_METABOLISM "medical_metabolism"
-#define TRAIT_GREYTIDE_METABOLISM "greytide_metabolism"
 #define TRAIT_ENGINEER_METABOLISM "engineer_metabolism"
 #define TRAIT_ROYAL_METABOLISM "royal_metabolism"
 #define TRAIT_PRETENDER_ROYAL_METABOLISM "pretender_royal_metabolism"
 
 /// This mob can strip other mobs.
 #define TRAIT_CAN_STRIP "can_strip"
+/// Can use the nuclear device's UI, regardless of a lack of hands
+#define TRAIT_CAN_USE_NUKE "can_use_nuke"
 
 // If present on a mob or mobmind, allows them to "suplex" an immovable rod
 // turning it into a glorified potted plant, and giving them an
 // achievement. Can also be used on rod-form wizards.
 // Normally only present in the mind of a Research Director.
 #define TRAIT_ROD_SUPLEX "rod_suplex"
+
+/// This mob is currently in rod form.
+#define TRAIT_ROD_FORM "rod_form"
 
 //SKILLS
 #define TRAIT_UNDERWATER_BASKETWEAVING_KNOWLEDGE "underwater_basketweaving"
@@ -447,6 +465,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Used for limbs.
 #define TRAIT_DISABLED_BY_WOUND "disabled-by-wound"
 
+/// Mobs with this trait can't send the mining shuttle console when used outside the station itself
+#define TRAIT_FORBID_MINING_SHUTTLE_CONSOLE_OUTSIDE_STATION "forbid_mining_shuttle_console_outside_station"
 
 //important_recursive_contents traits
 /*
@@ -500,6 +520,12 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NO_IMMOBILIZE "no_immobilize"
 /// Prevents stripping this equipment
 #define TRAIT_NO_STRIP "no_strip"
+/// Disallows this item from being pricetagged with a barcode
+#define TRAIT_NO_BARCODES "no_barcode"
+/// Allows heretics to cast their spells.
+#define TRAIT_ALLOW_HERETIC_CASTING "allow_heretic_casting"
+/// Designates a heart as a living heart for a heretic.
+#define TRAIT_LIVING_HEART "living_heart"
 
 //quirk traits
 #define TRAIT_ALCOHOL_TOLERANCE "alcohol_tolerance"
@@ -533,6 +559,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SMOKER "smoker"
 /// Gives you the Shifty Eyes quirk, rarely making people who examine you think you examined them back even when you didn't
 #define TRAIT_SHIFTY_EYES "shifty_eyes"
+
+///Trait for the gamer quirk.
+#define TRAIT_GAMER "gamer"
 
 ///Trait for dryable items
 #define TRAIT_DRYABLE "trait_dryable"
@@ -754,6 +783,12 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define DRONE_SHY_TRAIT "drone_shy"
 /// Pacifism trait given by stabilized light pink extracts.
 #define STABILIZED_LIGHT_PINK_TRAIT "stabilized_light_pink"
+/// Given by the multiple_lives component to the previous body of the mob upon death.
+#define EXPIRED_LIFE_TRAIT "expired_life"
+/// Trait given to an atom/movable when they orbit something.
+#define ORBITING_TRAIT "orbiting"
+/// From the item_scaling element
+#define ITEM_SCALING_TRAIT "item_scaling"
 
 /**
 * Trait granted by [/mob/living/carbon/Initialize] and
@@ -798,6 +833,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// This human wants to see the color of their glasses, for some reason
 #define TRAIT_SEE_GLASS_COLORS "see_glass_colors"
 
+/// this mob is under the effects of the power chord
+#define TRAIT_POWER_CHORD "power_chord"
+
 // Radiation defines
 
 /// Marks that this object is irradiated
@@ -822,3 +860,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// This mob heals from cult pylons.
 #define TRAIT_HEALS_FROM_CULT_PYLONS "heals_from_cult_pylons"
+
+/// Ignore Crew monitor Z levels
+#define TRAIT_MULTIZ_SUIT_SENSORS "multiz_suit_sensors"
+
+/// Ignores body_parts_covered during the add_fingerprint() proc. Works both on the person and the item in the glove slot.
+#define TRAIT_FINGERPRINT_PASSTHROUGH "fingerprint_passthrough"

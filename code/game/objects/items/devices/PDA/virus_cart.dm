@@ -54,8 +54,6 @@
 /obj/item/cartridge/virus/syndicate
 	name = "\improper Detomatix cartridge"
 	icon_state = "cart"
-	access = CART_REMOTE_DOOR
-	remote_door_id = "smindicate" //Make sure this matches the syndicate shuttle's shield/door id!! //don't ask about the name, testing.
 	charges = 6
 
 /obj/item/cartridge/virus/syndicate/send_virus(obj/item/pda/target, mob/living/user)
@@ -68,7 +66,7 @@
 
 	var/difficulty = 0
 	if(target.cartridge)
-		difficulty += bit_count(target.cartridge.access&(CART_MEDICAL | CART_SECURITY | CART_ENGINE | CART_CLOWN | CART_JANITOR | CART_MANIFEST))
+		difficulty += bit_count(target.cartridge.access&(CART_MEDICAL | CART_SECURITY | CART_ENGINE | CART_CLOWN | CART_MANIFEST))
 		if(target.cartridge.access & CART_MANIFEST)
 			difficulty++ //if cartridge has manifest access it has extra snowflake difficulty
 	if(SEND_SIGNAL(target, COMSIG_PDA_CHECK_DETONATE) & COMPONENT_PDA_NO_DETONATE || prob(difficulty * 15))
@@ -96,6 +94,7 @@
 	name = "\improper F.R.A.M.E. cartridge"
 	icon_state = "cart"
 	var/telecrystals = 0
+	var/current_progression = 0
 
 /obj/item/cartridge/virus/frame/send_virus(obj/item/pda/target, mob/living/U)
 	if(charges <= 0)
@@ -107,11 +106,28 @@
 		to_chat(U, span_notice("Virus Sent! The unlock code to the target is: [lock_code]"))
 		var/datum/component/uplink/hidden_uplink = target.GetComponent(/datum/component/uplink)
 		if(!hidden_uplink)
-			hidden_uplink = target.AddComponent(/datum/component/uplink)
-			hidden_uplink.unlock_code = lock_code
+			var/datum/mind/target_mind
+			var/list/backup_players = list()
+			for(var/datum/mind/player as anything in get_crewmember_minds())
+				if(player.assigned_role?.title == target.id?.assignment)
+					backup_players += player
+				if(player.name == target.owner)
+					target_mind = player
+					break
+			if(!target_mind)
+				if(!length(backup_players))
+					target_mind = U.mind
+				else
+					target_mind = pick(backup_players)
+			hidden_uplink = target.AddComponent(/datum/component/uplink, target_mind, enabled = TRUE, starting_tc = telecrystals, has_progression = TRUE)
+			hidden_uplink.uplink_handler.has_objectives = TRUE
+			hidden_uplink.uplink_handler.owner = target_mind
+			hidden_uplink.uplink_handler.can_take_objectives = FALSE
+			hidden_uplink.uplink_handler.progression_points = min(SStraitor.current_global_progression, current_progression)
+			hidden_uplink.uplink_handler.generate_objectives()
+			SStraitor.register_uplink_handler(hidden_uplink.uplink_handler)
 		else
-			hidden_uplink.hidden_crystals += hidden_uplink.telecrystals //Temporarially hide the PDA's crystals, so you can't steal telecrystals.
-		hidden_uplink.telecrystals = telecrystals
+			hidden_uplink.add_telecrystals(telecrystals)
 		telecrystals = 0
 		hidden_uplink.locked = FALSE
 		hidden_uplink.active = TRUE

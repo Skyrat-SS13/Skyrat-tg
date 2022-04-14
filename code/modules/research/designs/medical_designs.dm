@@ -72,7 +72,7 @@
 	category = list("Medical Designs")
 
 /datum/design/ph_meter
-	name = "Chemical analyser"
+	name = "Chemical Analyzer"
 	id = "ph_meter"
 	build_type = PROTOLATHE | AWAY_LATHE
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
@@ -401,8 +401,6 @@
 	category = list("Implants", "Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
-//SKYRAT EDIT REMOVAL BEGIN - Noxray
-/*
 /datum/design/cyberimp_xray
 	name = "X-ray Eyes"
 	desc = "These cybernetic eyes will give you X-ray vision. Blinking is futile."
@@ -424,8 +422,6 @@
 	build_path = /obj/item/organ/eyes/robotic/thermals
 	category = list("Implants", "Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
-*/
-//SKYRAT EDIT REMOVAL END - Noxray
 
 /datum/design/cyberimp_antidrop
 	name = "Anti-Drop Implant"

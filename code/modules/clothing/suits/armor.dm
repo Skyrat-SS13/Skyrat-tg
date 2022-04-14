@@ -99,12 +99,6 @@
 			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
 			RESKIN_WORN_ICON_STATE = "hostrench"
 		),
-		"Formal Jacket" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "hosformal",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "hosformal"
-		),
 		"Navy Blue Jacket" = list(
 			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
 			RESKIN_ICON_STATE = "hosbluejacket",
@@ -122,7 +116,7 @@
 			RESKIN_ICON_STATE = "peacekeeper_trench_hos",
 			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
 			RESKIN_WORN_ICON_STATE = "peacekeeper_trench_hos",
-			RESKIN_MUTANT_VARIANTS = NONE
+			RESKIN_SUPPORTS_VARIATIONS_FLAGS = NONE
 		)
 	)
 	/// SKYRAT EDIT ADDITION END
@@ -141,6 +135,7 @@
 	icon_state = "hosformal"
 	inhand_icon_state = "hostrench"
 	body_parts_covered = CHEST|GROIN|ARMS
+	current_skin = "hosformal"	//SKYRAT EDIT ADDITION - prevents reskinning (but not toggling!)
 
 /obj/item/clothing/suit/armor/hos/hos_formal/Initialize(mapload)
 	. = ..()
@@ -166,18 +161,18 @@
 			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
 			RESKIN_WORN_ICON_STATE = "warden_alt"
 		),
-		"Alternative Warden Armor" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "warden_jacket",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "warden_jacket"
+		"Standard" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "vest_warden",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "vest_warden",
 		),
 		"Peacekeeper" = list(
 			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
 			RESKIN_ICON_STATE = "peacekeeper_trench_warden",
 			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
 			RESKIN_WORN_ICON_STATE = "peacekeeper_trench_warden",
-			RESKIN_MUTANT_VARIANTS = NONE
+			RESKIN_SUPPORTS_VARIATIONS_FLAGS = NONE
 		)
 	)
 	/// SKYRAT EDIT ADDITION END
@@ -213,7 +208,7 @@
 	icon_state = "syndievest"
 
 /obj/item/clothing/suit/armor/vest/capcarapace/captains_formal
-	name = "captain's parade jacket"
+	name = "captain's parade coat"
 	desc = "For when an armoured vest isn't fashionable enough."
 	icon_state = "capformal"
 	inhand_icon_state = "capspacesuit"
@@ -294,6 +289,22 @@
 	armor = list(MELEE = 40, BULLET = 40, LASER = 30, ENERGY = 40, BOMB = 70, BIO = 0, FIRE = 100, ACID = 100)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	strip_delay = 80
+
+/obj/item/clothing/suit/armor/swat
+	name = "MK.I SWAT Suit"
+	desc = "A tactical suit first developed in a joint effort by the defunct IS-ERI and Nanotrasen in 2321 for military operations. It has a minor slowdown, but offers decent protection."
+	icon_state = "heavy"
+	inhand_icon_state = "swat_suit"
+	armor = list(MELEE = 40, BULLET = 30, LASER = 30,ENERGY = 40, BOMB = 50, BIO = 90, FIRE = 100, ACID = 100, WOUND = 15)
+	strip_delay = 120
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	clothing_flags = THICKMATERIAL
+	cold_protection = CHEST | GROIN | LEGS | FEET | ARMS | HANDS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT_OFF
+	heat_protection = CHEST | GROIN | LEGS | FEET | ARMS | HANDS
+	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
+	slowdown = 0.7
+	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 
 //All of the armor below is mostly unused
 

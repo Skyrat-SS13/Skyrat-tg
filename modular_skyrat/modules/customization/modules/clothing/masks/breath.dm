@@ -64,55 +64,6 @@
 		adjust_mask(usr)
 
 
-
-/obj/item/clothing/mask/bandana/red/ft
-	name = "skin tight red bandana"
-	desc = "A fine red bandana with nanotech lining."
-	flags_cover = NONE
-	flags_inv = HIDEFACIALHAIR|HIDESNOUT
-	visor_flags_inv = HIDEFACIALHAIR|HIDESNOUT
-	visor_flags_cover = PEPPERPROOF
-
-/obj/item/clothing/mask/bandana/blue/ft
-	name = "skin tight blue bandana"
-	desc = "A fine blue bandana with nanotech lining."
-	flags_cover = NONE
-	flags_inv = HIDEFACIALHAIR|HIDESNOUT
-	visor_flags_inv = HIDEFACIALHAIR|HIDESNOUT
-	visor_flags_cover = PEPPERPROOF
-
-/obj/item/clothing/mask/bandana/green/ft
-	name = "skin tight green bandana"
-	desc = "A fine green bandana with nanotech lining."
-	flags_cover = NONE
-	flags_inv = HIDEFACIALHAIR|HIDESNOUT
-	visor_flags_inv = HIDEFACIALHAIR|HIDESNOUT
-	visor_flags_cover = PEPPERPROOF
-
-/obj/item/clothing/mask/bandana/gold/ft
-	name = "skin tight gold bandana"
-	desc = "A fine gold bandana with nanotech lining."
-	flags_cover = NONE
-	flags_inv = HIDEFACIALHAIR|HIDESNOUT
-	visor_flags_inv = HIDEFACIALHAIR|HIDESNOUT
-	visor_flags_cover = PEPPERPROOF
-
-/obj/item/clothing/mask/bandana/black/ft
-	name = "skin tight black bandana"
-	desc = "A fine black bandana with nanotech lining."
-	flags_cover = NONE
-	flags_inv = HIDEFACIALHAIR|HIDESNOUT
-	visor_flags_inv = HIDEFACIALHAIR|HIDESNOUT
-	visor_flags_cover = PEPPERPROOF
-
-/obj/item/clothing/mask/bandana/skull/ft
-	name = "skin tight skull bandana"
-	desc = "A fine black bandana with nanotech lining and a skull emblem."
-	flags_cover = NONE
-	flags_inv = HIDEFACIALHAIR|HIDESNOUT
-	visor_flags_inv = HIDEFACIALHAIR|HIDESNOUT
-	visor_flags_cover = PEPPERPROOF
-
 /obj/item/clothing/mask/balaclava/threehole
 	name = "three hole balaclava"
 	desc = "Tiocfaidh ar la."
@@ -146,11 +97,12 @@
 	icon_state = "hecu"
 
 /obj/item/clothing/mask/gas/hecu2
-	name = "modern gas mask"
-	desc = "MY. ASS. IS. HEAVY."
+	name = "M40 gas mask"
+	desc = "A deprecated field protective mask developed during the 20th century in Sol-3. It's designed to protect from chemical agents, biological agents, and nuclear fallout particles. It does not protect the user from ammonia or from lack of oxygen, though the filter can be replaced with a tube for any air tank."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "hecu2"
+	flags_inv = HIDEHAIR
 
 /obj/item/clothing/mask/gas/soviet
 	name = "soviet gas mask"
@@ -173,25 +125,19 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "ringgag"
 
-
-/obj/item/clothing/mask/gas/polyclown
-	name = "polychromaic clown mask"
+/obj/item/clothing/mask/gas/clown_colourable
+	name = "colourable clown mask"
 	desc = "The face of pure evil, now multicoloured."
+	icon_state = "gags_mask"
 	clothing_flags = MASKINTERNALS
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
-	icon_state = "polyclown"
-	inhand_icon_state = "clown_hat"
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FLAMMABLE
 	species_exception = list(/datum/species/golem/bananium)
-	var/is_polychromic = TRUE
-	var/poly_colors = list("#00BBBB", "#FFCC00", "#FFFFFF")
-
-/obj/item/clothing/mask/gas/polyclown/ComponentInitialize()
-	. = ..()
-	if(is_polychromic)
-		AddElement(/datum/element/polychromic, poly_colors)
+	has_fov = FALSE
+	greyscale_config = /datum/greyscale_config/clown_mask
+	greyscale_config_worn = /datum/greyscale_config/clown_mask/worn
+	greyscale_colors = "#FFFFFF#F20018#0000FF#00CC00"
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/mask/gas/clownbald
 	name = "bald clown mask"

@@ -94,7 +94,7 @@
 	using.hud = src
 	static_inventory += using
 
-	using = new/atom/movable/screen/skills
+	using = new/atom/movable/screen/navigate
 	using.icon = ui_style
 	using.hud = src
 	static_inventory += using
@@ -370,6 +370,10 @@
 	healthdoll = new /atom/movable/screen/healthdoll()
 	healthdoll.hud = src
 	infodisplay += healthdoll
+
+	stamina = new /atom/movable/screen/stamina()
+	stamina.hud = src
+	infodisplay += stamina
 
 	pull_icon = new /atom/movable/screen/pull()
 	pull_icon.icon = ui_style

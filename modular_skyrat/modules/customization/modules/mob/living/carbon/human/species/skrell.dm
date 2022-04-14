@@ -12,7 +12,8 @@
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP
+		TRAIT_CAN_STRIP,
+		TRAIT_CAN_USE_FLIGHT_POTION,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	say_mod = "warbles"
@@ -24,21 +25,28 @@
 	bodytemp_cold_damage_limit = (T20C - 10)
 	species_language_holder = /datum/language_holder/skrell
 	mutant_bodyparts = list()
-	liked_food = TOXIC | DAIRY | FRUIT
+	toxic_food = DAIRY | MEAT
+	disliked_food = RAW | CLOTH
+	liked_food = TOXIC | FRUIT | VEGETABLES
 	payday_modifier = 0.75
 	default_mutant_bodyparts = list("skrell_hair" = ACC_RANDOM)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/skrell_parts_greyscale.dmi'
 	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/skrell_eyes.dmi'
-
 	mutantbrain = /obj/item/organ/brain/skrell
 	mutanteyes = /obj/item/organ/eyes/skrell
 	mutantlungs = /obj/item/organ/lungs/skrell
 	mutantheart = /obj/item/organ/heart/skrell
 	mutantliver = /obj/item/organ/liver/skrell
 	mutanttongue = /obj/item/organ/tongue/skrell
-
 	learnable_languages = list(/datum/language/common, /datum/language/skrell)
+	bodypart_overrides = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/skrell,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/skrell,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant/skrell,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant/skrell,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/skrell,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/skrell,
+	)
 
 /obj/item/organ/tongue/skrell
 	name = "internal vocal sacs"

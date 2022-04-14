@@ -12,6 +12,8 @@
 
 /obj/item/computer_hardware/hard_drive/on_remove(obj/item/modular_computer/remove_from, mob/user)
 	remove_from.shutdown_computer()
+	for(var/datum/computer_file/program/program in stored_files)
+		program.computer = null
 
 /obj/item/computer_hardware/hard_drive/proc/install_default_programs()
 	store_file(new/datum/computer_file/program/computerconfig(src)) // Computer configuration utility, allows hardware control and displays more info than status bar
@@ -46,9 +48,13 @@
 	if(F in stored_files)
 		return FALSE
 
+	SEND_SIGNAL(F, COMSIG_MODULAR_COMPUTER_FILE_ADDING)
+
 	F.holder = src
 	stored_files.Add(F)
 	recalculate_size()
+
+	SEND_SIGNAL(F, COMSIG_MODULAR_COMPUTER_FILE_ADDED)
 	return TRUE
 
 // Use this proc to remove file from the drive. Returns 1 on success and 0 on failure. Contains necessary sanity checks.
@@ -63,8 +69,10 @@
 		return FALSE
 
 	if(F in stored_files)
+		SEND_SIGNAL(F, COMSIG_MODULAR_COMPUTER_FILE_DELETING)
 		stored_files -= F
 		recalculate_size()
+		SEND_SIGNAL(F, COMSIG_MODULAR_COMPUTER_FILE_DELETED)
 		return TRUE
 	else
 		return FALSE
@@ -171,7 +179,7 @@
 	desc = "An efficient SSD for portable devices developed by a rival organisation."
 	power_usage = 8
 	max_capacity = 70
-	var/datum/antagonist/traitor/traitor_data // Syndicate hard drive has the user's data baked directly into it on creation
+	var/datum/opposing_force/opfor_data // Syndicate hard drive has the user's data baked directly into it on creation //SKYRAT EDIT - OPFOR, NOT TRAITOR
 
 /// For tablets given to nuke ops
 /obj/item/computer_hardware/hard_drive/small/nukeops

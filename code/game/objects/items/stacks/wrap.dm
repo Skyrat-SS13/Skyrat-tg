@@ -80,6 +80,7 @@
 		var/obj/structure/big_delivery/P = new /obj/structure/big_delivery(get_turf(user.loc))
 		P.icon_state = "deliverypackage5"
 		user.forceMove(P)
+		P.contains_mobs = TRUE // SKYRAT EDIT - CARGO BORGS
 		P.add_fingerprint(user)
 		return OXYLOSS
 	else
@@ -106,6 +107,10 @@
 		return
 	if(target.anchored)
 		return
+	// SKYRAT EDIT START - Cargo borgs
+	if(!amount)
+		return
+	// SKYRAT EDIT END
 
 	if(isitem(target))
 		var/obj/item/I = target
@@ -143,6 +148,12 @@
 			O.forceMove(P)
 			P.add_fingerprint(user)
 			O.add_fingerprint(user)
+			// SKYRAT EDIT START - CARGO BORGS
+			for(var/item in O.get_all_contents())
+				if(istype(item, /mob))
+					P.contains_mobs = TRUE
+					break
+			// SKYRAT EDIT END
 		else
 			to_chat(user, span_warning("You need more paper!"))
 			return

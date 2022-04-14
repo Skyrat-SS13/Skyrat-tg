@@ -292,7 +292,8 @@ const ParametersSection = (props, context) => {
     complexity_max,
     wearer_name,
     wearer_job,
-    AI,
+    pAI, // SKYRAT EDIT - pAIs in MODsuits
+    ispAI, // SKYRAT EDIT - pAIs in MODsuits
   } = data;
   const status = malfunctioning
     ? 'Malfunctioning' : active
@@ -332,8 +333,15 @@ const ParametersSection = (props, context) => {
         <LabeledList.Item label="Occupant">
           {wearer_name}, {wearer_job}
         </LabeledList.Item>
-        <LabeledList.Item label="Onboard AI">
-          {AI || 'None'}
+        <LabeledList.Item label="Onboard pAI" buttons={
+          // SKYRAT EDIT START - pAIs in MODsuits
+          (pAI && !ispAI) ? <Button
+            icon="eject"
+            content="Eject pAI"
+            onClick={() => act('remove_pai')}
+          /> : <> </>
+        } >
+          {pAI || 'None'/* SKYRAT EDIT END */}
         </LabeledList.Item>
       </LabeledList>
     </Section>
@@ -349,7 +357,7 @@ const HardwareSection = (props, context) => {
     chestplate,
     gauntlets,
     boots,
-    cell,
+    core,
     charge,
   } = data;
   return (
@@ -373,13 +381,13 @@ const HardwareSection = (props, context) => {
           </LabeledList.Item>
         </LabeledList>
       </Collapsible>
-      <Collapsible title="Cell">
-        {cell && (
+      <Collapsible title="Core">
+        {core && (
           <LabeledList>
-            <LabeledList.Item label="Cell Type">
-              {cell}
+            <LabeledList.Item label="Core Type">
+              {core}
             </LabeledList.Item>
-            <LabeledList.Item label="Cell Charge">
+            <LabeledList.Item label="Core Charge">
               <ProgressBar
                 value={charge / 100}
                 content={charge + '%'}
@@ -391,7 +399,7 @@ const HardwareSection = (props, context) => {
             </LabeledList.Item>
           </LabeledList>
         ) || (
-          <Box color="bad" textAlign="center">No Cell Detected</Box>
+          <Box color="bad" textAlign="center">No Core Detected</Box>
         )}
       </Collapsible>
     </Section>

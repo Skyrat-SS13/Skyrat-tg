@@ -33,3 +33,6 @@
 
 // To turn off SSDecay based on a config. You're welcome.
 /datum/config_entry/flag/ssdecay_disabled
+
+// To turn off SSDecay nests based on a config. If SSDecay is disabled, this won't matter.
+/datum/config_entry/flag/ssdecay_disable_nests

@@ -1,4 +1,4 @@
-#define MOD_ACTIVATION_STEP_FLAGS IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM|IGNORE_INCAPACITATED
+#define MOD_ACTIVATION_STEP_FLAGS IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM|IGNORE_INCAPACITATED|IGNORE_SLOWDOWNS
 
 /// Creates a radial menu from which the user chooses parts of the suit to deploy/retract. Repeats until all parts are extended or retracted.
 /obj/item/mod/control/proc/choose_deploy(mob/user)
@@ -9,6 +9,8 @@
 	for(var/obj/item/piece as anything in mod_parts)
 		display_names[piece.name] = REF(piece)
 		var/image/piece_image = image(icon = piece.icon, icon_state = piece.icon_state)
+		if(piece.loc != src)
+			piece_image.underlays += image(icon = 'icons/hud/radial.dmi', icon_state = "module_active")
 		items += list(piece.name = piece_image)
 	var/pick = show_radial_menu(user, src, items, custom_check = FALSE, require_near = TRUE, tooltips = TRUE)
 	if(!pick)
@@ -17,7 +19,7 @@
 	var/obj/item/part = locate(part_reference) in mod_parts
 	if(!istype(part) || user.incapacitated())
 		return
-	if(active || activating)
+	if((active && part != helmet) || activating) // SKYRAT EDIT - Let the hair flow - ORIGINAL: if(active || activating)
 		balloon_alert(user, "deactivate the suit first!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return
@@ -36,6 +38,28 @@
 				continue
 			choose_deploy(user)
 			break
+
+/// Quickly deploys all parts (or retracts if all are on the wearer)
+/obj/item/mod/control/proc/quick_deploy(mob/user)
+	if(active || activating)
+		balloon_alert(user, "deactivate the suit first!")
+		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
+		return FALSE
+	var/deploy = FALSE
+	for(var/obj/item/part as anything in mod_parts)
+		if(part.loc != src)
+			continue
+		deploy = TRUE
+	for(var/obj/item/part as anything in mod_parts)
+		if(deploy && part.loc == src)
+			deploy(null, part)
+		else if(!deploy && part.loc != src)
+			conceal(null, part)
+	wearer.visible_message(span_notice("[wearer]'s [src] [deploy ? "deploys" : "retracts"] its' pieces with a mechanical hiss."),
+		span_notice("[src] [deploy ? "deploys" : "retracts"] its' pieces with a mechanical hiss."),
+		span_hear("You hear a mechanical hiss."))
+	playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+	return TRUE
 
 /// Deploys a part of the suit onto the user.
 /obj/item/mod/control/proc/deploy(mob/user, part)
@@ -102,7 +126,7 @@
 		balloon_alert(user, "access insufficient!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
-	if(!cell?.charge && !force_deactivate)
+	if(!get_charge() && !force_deactivate)
 		balloon_alert(user, "suit not powered!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
@@ -118,9 +142,14 @@
 	for(var/obj/item/mod/module/module as anything in modules)
 		if(!module.active)
 			continue
-		module.on_deactivation()
+		module.on_deactivation(display_message = FALSE)
 	activating = TRUE
 	to_chat(wearer, span_notice("MODsuit [active ? "shutting down" : "starting up"]."))
+	// SKYRAT EDIT START - pAIs in MODsuits
+	if(mod_pai)
+		to_chat(mod_pai, span_notice("MODsuit [active ? "shutting down" : "starting up"]."))
+	// SKYRAT EDIT END
+
 	if(do_after(wearer, activation_step_time, wearer, MOD_ACTIVATION_STEP_FLAGS))
 		to_chat(wearer, span_notice("[boots] [active ? "relax their grip on your legs" : "seal around your feet"]."))
 		playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
@@ -139,13 +168,15 @@
 		seal_part(helmet, seal = !active)
 	if(do_after(wearer, activation_step_time, wearer, MOD_ACTIVATION_STEP_FLAGS))
 		to_chat(wearer, span_notice("Systems [active ? "shut down. Parts unsealed. Goodbye" : "started up. Parts sealed. Welcome"], [wearer]."))
-		if(ai)
-			to_chat(ai, span_notice("<b>SYSTEMS [active ? "DEACTIVATED. GOODBYE" : "ACTIVATED. WELCOME"]: \"[ai]\"</b>"))
+		// SKYRAT EDIT START - pAIs in MODsuits
+		if(mod_pai)
+			to_chat(mod_pai, span_notice("<b>SYSTEMS [active ? "DEACTIVATED. GOODBYE" : "ACTIVATED. WELCOME"]: \"[mod_pai]\"</b>"))
+		// SKYRAT EDIT END
 		finish_activation(on = !active)
 		if(active)
 			playsound(src, 'sound/machines/synth_yes.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, frequency = 6000)
 			if(!malfunctioning)
-				SEND_SOUND(wearer, sound('sound/mecha/nominal.ogg', volume = 50))
+				wearer.playsound_local(get_turf(src), 'sound/mecha/nominal.ogg', 50)
 		else
 			playsound(src, 'sound/machines/synth_no.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, frequency = 6000)
 	activating = FALSE

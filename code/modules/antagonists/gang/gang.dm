@@ -215,41 +215,53 @@
 	check_flags = AB_CHECK_CONSCIOUS
 	button_icon_state = "recruit"
 	icon_icon = 'icons/obj/gang/actions.dmi'
-	cooldown_time = 60 SECONDS // SKYRAT EDIT: 30 SECONDS -> 60 SECONDS
+	cooldown_time = 300
 	/// The family antagonist datum of the "owner" of this action.
 	var/datum/antagonist/gang/my_gang_datum
 
-/datum/action/cooldown/spawn_induction_package/Trigger()
-	if(!..())
-		return FALSE
-	if(!IsAvailable())
-		return FALSE
+/datum/action/cooldown/spawn_induction_package/Activate(atom/target)
 	if(!my_gang_datum)
-		return FALSE
-	if(!istype(owner, /mob/living/carbon/human))
-		return FALSE
-	var/mob/living/carbon/human/H = owner
-	if(H.stat)
+		CRASH("[type] was created without a linked gang datum!")
+
+	if(!ishuman(owner))
 		return FALSE
 
-	var/obj/item/slapper/secret_handshake/secret_handshake_item = new(owner)
+	StartCooldown(10 SECONDS)
+	offer_handshake()
+	StartCooldown()
+	return TRUE
+
+/*
+ * Equip a handshake slapper and offer it to people nearby.
+ */
+/datum/action/cooldown/spawn_induction_package/proc/offer_handshake()
+	var/mob/living/carbon/human/human_owner = owner
+	if(human_owner.stat != CONSCIOUS || human_owner.incapacitated())
+		return FALSE
+
+	var/obj/item/hand_item/slapper/secret_handshake/secret_handshake_item = new(owner)
 	if(owner.put_in_hands(secret_handshake_item))
 		to_chat(owner, span_notice("You ready your secret handshake."))
 	else
 		qdel(secret_handshake_item)
 		to_chat(owner, span_warning("You're incapable of performing a handshake in your current state."))
 		return FALSE
-	owner.visible_message(span_notice("[src] is offering to induct people into the Family."),
-		span_notice("You offer to induct people into the Family."), null, 2)
-	if(H.has_status_effect(STATUS_EFFECT_HANDSHAKE))
+	owner.visible_message(
+		span_notice("[human_owner] is offering to induct people into the Family."),
+		span_notice("You offer to induct people into the Family."),
+		vision_distance = 2,
+		)
+	if(human_owner.has_status_effect(/datum/status_effect/offering/secret_handshake))
 		return FALSE
 	if(!(locate(/mob/living/carbon) in orange(1, owner)))
-		owner.visible_message(span_danger("[src] offers to induct people into the Family, but nobody was around."), \
-			span_warning("You offer to induct people into the Family, but nobody is around."), null, 2)
+		owner.visible_message(
+			span_danger("[human_owner] offers to induct people into the Family, but nobody was around."),
+			span_warning("You offer to induct people into the Family, but nobody is around."),
+			vision_distance = 2,
+			)
 		return FALSE
 
-	H.apply_status_effect(STATUS_EFFECT_HANDSHAKE, secret_handshake_item)
-	StartCooldown()
+	human_owner.apply_status_effect(/datum/status_effect/offering/secret_handshake, secret_handshake_item)
 	return TRUE
 
 /datum/antagonist/gang/russian_mafia
@@ -286,7 +298,7 @@
 	acceptable_clothes = list(/obj/item/clothing/under/suit/checkered,
 		/obj/item/clothing/head/fedora,
 		/obj/item/clothing/neck/scarf/green,
-		/obj/item/clothing/mask/bandana/green)
+		/obj/item/clothing/mask/bandana/color/green)
 	free_clothes = list(/obj/item/clothing/head/fedora,
 		/obj/item/clothing/under/suit/checkered,
 		/obj/item/toy/crayon/spraycan)
@@ -309,7 +321,7 @@
 	gang_id = "TS"
 	acceptable_clothes = list(/obj/item/clothing/under/pants/classicjeans,
 		/obj/item/clothing/suit/jacket,
-		/obj/item/clothing/mask/bandana/skull)
+		/obj/item/clothing/mask/bandana/color/skull/black)
 	free_clothes = list(/obj/item/clothing/suit/jacket,
 		/obj/item/clothing/under/pants/classicjeans,
 		/obj/item/toy/crayon/spraycan)
@@ -334,7 +346,7 @@
 		/obj/item/clothing/under/suit/henchmen,
 		/obj/item/clothing/neck/scarf/yellow,
 		/obj/item/clothing/head/beanie/yellow,
-		/obj/item/clothing/mask/bandana/gold,
+		/obj/item/clothing/mask/bandana/color/gold,
 		/obj/item/storage/backpack/henchmen)
 	free_clothes = list(/obj/item/storage/backpack/henchmen,
 		/obj/item/clothing/under/suit/henchmen,
@@ -360,7 +372,7 @@
 		/obj/item/clothing/shoes/yakuza,
 		/obj/item/clothing/neck/scarf/yellow,
 		/obj/item/clothing/head/beanie/yellow,
-		/obj/item/clothing/mask/bandana/gold,
+		/obj/item/clothing/mask/bandana/color/gold,
 		/obj/item/clothing/head/hardhat,
 		/obj/item/clothing/suit/yakuza)
 	free_clothes = list(/obj/item/clothing/under/costume/yakuza,
@@ -389,7 +401,7 @@
 		/obj/item/clothing/under/costume/jackbros,
 		/obj/item/clothing/shoes/jackbros,
 		/obj/item/clothing/head/jackbros,
-		/obj/item/clothing/mask/bandana/blue)
+		/obj/item/clothing/mask/bandana/color/blue)
 	free_clothes = list(/obj/item/clothing/under/costume/jackbros,
 		/obj/item/clothing/shoes/jackbros,
 		/obj/item/clothing/head/jackbros,
@@ -416,7 +428,7 @@
 		/obj/item/clothing/under/costume/dutch,
 		/obj/item/clothing/suit/dutch,
 		/obj/item/clothing/head/bowler,
-		/obj/item/clothing/mask/bandana/black)
+		/obj/item/clothing/mask/bandana/color/black)
 	free_clothes = list(/obj/item/clothing/under/costume/dutch,
 		/obj/item/clothing/head/bowler,
 		/obj/item/clothing/suit/dutch,

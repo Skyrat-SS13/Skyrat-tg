@@ -211,20 +211,25 @@
 
 		//This entire if/else chain could be in two lines but isn't for readibilties sake.
 		var/msg = message
+		var/msg_type = MSG_VISUAL
+
 		if(M.see_invisible < invisibility)//if src is invisible to M
 			msg = blind_message
+			msg_type = MSG_AUDIBLE
 		else if(T != loc && T != src) //if src is inside something and not a turf.
 			if(M != loc) // Only give the blind message to hearers that aren't the location
 				msg = blind_message
-		else if(M.lighting_alpha > LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE && T.is_softly_lit() && !in_range(T,M)) //if it is too dark, unless we're right next to them.
+				msg_type = MSG_AUDIBLE
+		else if(!HAS_TRAIT(M, TRAIT_HEAR_THROUGH_DARKNESS) && M.lighting_alpha > LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE && T.is_softly_lit() && !in_range(T,M)) //if it is too dark, unless we're right next to them.
 			msg = blind_message
+			msg_type = MSG_AUDIBLE
 		if(!msg)
 			continue
 
 		if(visible_message_flags & EMOTE_MESSAGE && runechat_prefs_check(M, visible_message_flags) && !M.is_blind())
 			M.create_chat_message(src, raw_message = raw_msg, runechat_flags = visible_message_flags)
 
-		M.show_message(msg, MSG_VISUAL, blind_message, MSG_AUDIBLE)
+		M.show_message(msg, msg_type, blind_message, MSG_AUDIBLE)
 
 
 ///Adds the functionality to self_message.
@@ -296,7 +301,7 @@
 
 
 ///Is the mob incapacitated
-/mob/proc/incapacitated(ignore_restraints = FALSE, ignore_grab = FALSE, ignore_stasis = FALSE)
+/mob/proc/incapacitated(flags)
 	return
 
 /**
@@ -814,77 +819,6 @@
 					L[++L.len] = list("[S.panel]", "[S.holder_var_type] [S.holder_var_amount]", S.name, REF(S))
 	return L
 
-#define MOB_FACE_DIRECTION_DELAY 1
-
-// facing verbs
-/**
- * Returns true if a mob can turn to face things
- *
- * Conditions:
- * * client.last_turn > world.time
- * * not dead or unconcious
- * * not anchored
- * * no transform not set
- * * we are not restrained
- */
-/mob/proc/canface()
-	if(world.time < client.last_turn)
-		return FALSE
-	if(stat >= UNCONSCIOUS)
-		return FALSE
-	if(anchored)
-		return FALSE
-	if(notransform)
-		return FALSE
-	if(HAS_TRAIT(src, TRAIT_RESTRAINED))
-		return FALSE
-	return TRUE
-
-///Checks mobility move as well as parent checks
-/mob/living/canface()
-	if(!(mobility_flags & MOBILITY_MOVE))
-		return FALSE
-	return ..()
-
-/mob/dead/observer/canface()
-	return TRUE
-
-///Hidden verb to turn east
-/mob/verb/eastface()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	setDir(EAST)
-	client.last_turn = world.time + MOB_FACE_DIRECTION_DELAY
-	return TRUE
-
-///Hidden verb to turn west
-/mob/verb/westface()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	setDir(WEST)
-	client.last_turn = world.time + MOB_FACE_DIRECTION_DELAY
-	return TRUE
-
-///Hidden verb to turn north
-/mob/verb/northface()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	setDir(NORTH)
-	client.last_turn = world.time + MOB_FACE_DIRECTION_DELAY
-	return TRUE
-
-///Hidden verb to turn south
-/mob/verb/southface()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	setDir(SOUTH)
-	client.last_turn = world.time + MOB_FACE_DIRECTION_DELAY
-	return TRUE
-
 /mob/proc/swap_hand()
 	var/obj/item/held_item = get_active_held_item()
 	if(SEND_SIGNAL(src, COMSIG_MOB_SWAP_HANDS, held_item) & COMPONENT_BLOCK_SWAP)
@@ -941,18 +875,39 @@
 	if(client)
 		client << output(null, "statbrowser:check_spells")
 
-///Return any anti magic atom on this mob that matches the magic type
-/mob/proc/anti_magic_check(magic = TRUE, holy = FALSE, tinfoil = FALSE, chargecost = 1, self = FALSE)
-	if(!magic && !holy && !tinfoil)
-		return
-	var/list/protection_sources = list()
-	if(SEND_SIGNAL(src, COMSIG_MOB_RECEIVE_MAGIC, src, magic, holy, tinfoil, chargecost, self, protection_sources) & COMPONENT_BLOCK_MAGIC)
-		if(protection_sources.len)
-			return pick(protection_sources)
-		else
-			return src
-	if((magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC)) || (!self && magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC_NO_SELFBLOCK)) || (holy && HAS_TRAIT(src, TRAIT_HOLY)))
-		return src
+/**
+ * Checks to see if the mob can cast normal magic spells.
+ *
+ * args:
+ * * magic_flags (optional) A bitfield with the type of magic being cast (see flags at: /datum/component/anti_magic)
+**/
+/mob/proc/can_cast_magic(magic_flags = MAGIC_RESISTANCE)
+	if(magic_flags == NONE) // magic with the NONE flag can always be cast
+		return TRUE
+
+	var/restrict_magic_flags = SEND_SIGNAL(src, COMSIG_MOB_RESTRICT_MAGIC, magic_flags)
+	return restrict_magic_flags == NONE
+
+/**
+ * Checks to see if the mob can block magic
+ *
+ * args:
+ * * casted_magic_flags (optional) A bitfield with the types of magic resistance being checked (see flags at: /datum/component/anti_magic)
+ * * charge_cost (optional) The cost of charge to block a spell that will be subtracted from the protection used
+**/
+/mob/proc/can_block_magic(casted_magic_flags = MAGIC_RESISTANCE, charge_cost = 1)
+	if(casted_magic_flags == NONE) // magic with the NONE flag is immune to blocking
+		return FALSE
+
+	var/list/protection_was_used = list() // this is a janky way of interrupting signals using lists
+	var/is_magic_blocked = SEND_SIGNAL(src, COMSIG_MOB_RECEIVE_MAGIC, casted_magic_flags, charge_cost, protection_was_used) & COMPONENT_MAGIC_BLOCKED
+
+	if(casted_magic_flags && HAS_TRAIT(src, TRAIT_ANTIMAGIC))
+		is_magic_blocked = TRUE
+	if((casted_magic_flags & MAGIC_RESISTANCE_HOLY) && HAS_TRAIT(src, TRAIT_HOLY))
+		is_magic_blocked = TRUE
+
+	return is_magic_blocked
 
 /**
  * Buckle a living mob to this mob. Also turns you to face the other mob
@@ -988,12 +943,12 @@
 	if(isAdminGhostAI(src) || Adjacent(A))
 		return TRUE
 	var/datum/dna/mob_dna = has_dna()
-	if(mob_dna?.check_mutation(TK) && tkMaxRangeCheck(src, A))
+	if(mob_dna?.check_mutation(/datum/mutation/human/telekinesis) && tkMaxRangeCheck(src, A))
 		return TRUE
 
 	//range check
-	if(!interaction_range)
-		return TRUE
+	if(!interaction_range) // If you don't have extra length, GO AWAY
+		return FALSE
 	var/turf/our_turf = get_turf(src)
 	var/turf/their_turf = get_turf(A)
 	if (!our_turf || !their_turf)
@@ -1053,6 +1008,9 @@
 		return FALSE
 	if(oldname == newname)
 		log_message("[src] failed name change as the new name was the same as the old one: [oldname]", LOG_OWNERSHIP)
+		return FALSE
+	if(!istext(newname) && !isnull(newname))
+		stack_trace("[src] attempted to change its name from [oldname] to the non string value [newname]")
 		return FALSE
 
 	log_message("[src] name changed from [oldname] to [newname]", LOG_OWNERSHIP)
@@ -1119,6 +1077,10 @@
 	return
 
 /mob/proc/update_health_hud()
+	return
+
+/// Changes the stamina HUD based on new information
+/mob/proc/update_stamina_hud()
 	return
 
 ///Update the lighting plane and sight of this mob (sends COMSIG_MOB_UPDATE_SIGHT)
@@ -1240,7 +1202,7 @@
  */
 /mob/vv_get_var(var_name)
 	switch(var_name)
-		if("logging")
+		if(NAMEOF(src, logging))
 			return debug_variable(var_name, logging, 0, src, FALSE)
 	. = ..()
 
@@ -1339,11 +1301,22 @@
 	SIGNAL_HANDLER
 	set_active_storage(null)
 
-///clears the client mob in our client_mobs_in_contents list
-/mob/proc/clear_client_in_contents()
-	if(client?.movingmob)
-		LAZYREMOVE(client.movingmob.client_mobs_in_contents, src)
-		client.movingmob = null
+/// Cleanup proc that's called when a mob loses a client, either through client destroy or logout
+/// Logout happens post client del, so we can't just copypaste this there. This keeps things clean and consistent
+/mob/proc/become_uncliented()
+	if(!canon_client)
+		return
+
+	for(var/foo in canon_client.player_details.post_logout_callbacks)
+		var/datum/callback/CB = foo
+		CB.Invoke()
+
+	if(canon_client?.movingmob)
+		LAZYREMOVE(canon_client.movingmob.client_mobs_in_contents, src)
+		canon_client.movingmob = null
+
+	clear_important_client_contents()
+	canon_client = null
 
 ///Shows a tgui window with memories
 /mob/verb/memory()
@@ -1399,3 +1372,9 @@
 
 	data["memories"] = memories
 	return data
+
+/mob/verb/view_skills()
+	set category = "IC"
+	set name = "View Skills"
+
+	mind?.print_levels(src)

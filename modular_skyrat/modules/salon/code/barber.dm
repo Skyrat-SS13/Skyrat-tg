@@ -21,8 +21,7 @@
 		)
 
 	family_heirlooms = list(/obj/item/hairbrush/comb, /obj/item/razor)
-
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 
 
 /datum/outfit/job/barber
@@ -44,7 +43,7 @@
 
 /obj/structure/closet/secure_closet/barber/PopulateContents()
 	new /obj/item/clothing/mask/surgical(src) // These three are here, so the barber can pick and choose what he's painting.
-	new /obj/item/clothing/under/rank/medical/doctor/blue(src)
+	new /obj/item/clothing/under/rank/medical/scrubs/blue(src)
 	new /obj/item/clothing/suit/apron/surgical(src)
 	new /obj/item/clothing/accessory/waistcoat(src)
 	new /obj/item/clothing/under/rank/civilian/lawyer/purpsuit(src)
@@ -60,7 +59,7 @@
 	new /obj/item/reagent_containers/spray/barbers_aid(src)
 	new /obj/item/reagent_containers/spray/cleaner(src)
 	new /obj/item/reagent_containers/glass/rag(src)
-	new /obj/item/storage/firstaid(src)
+	new /obj/item/storage/medkit(src)
 
 /obj/effect/landmark/start/barber
 	name = "Barber"

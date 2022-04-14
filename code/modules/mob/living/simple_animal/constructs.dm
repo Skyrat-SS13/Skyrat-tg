@@ -38,7 +38,9 @@
 	var/playstyle_string = "<span class='big bold'>You are a generic construct!</span><b> Your job is to not exist, and you should probably adminhelp this.</b>"
 	var/master = null
 	var/seeking = FALSE
-	var/can_repair_constructs = FALSE
+	/// Whether this construct can repair other constructs or cult buildings.
+	var/can_repair = FALSE
+	/// Whether this construct can repair itself. Works independently of can_repair.
 	var/can_repair_self = FALSE
 	var/runetype
 	var/datum/action/innate/cult/create_rune/our_rune
@@ -52,21 +54,18 @@
 	ADD_TRAIT(src, TRAIT_SPACEWALK, INNATE_TRAIT)
 	var/spellnum = 1
 	for(var/spell in construct_spells)
-		var/the_spell = new spell(null)
-		AddSpell(the_spell)
-		var/obj/effect/proc_holder/spell/S = mob_spell_list[spellnum]
 		var/pos = 2+spellnum*31
 		if(construct_spells.len >= 4)
 			pos -= 31*(construct_spells.len - 4)
-		S.action.button.screen_loc = "6:[pos],4:-2"
-		S.action.button.moved = "6:[pos],4:-2"
+		var/obj/effect/proc_holder/spell/the_spell = new spell(null)
+		the_spell?.action.default_button_position ="6:[pos],4:-2"
+		AddSpell(the_spell)
 		spellnum++
 	if(runetype)
-		our_rune = new runetype(src)
-		our_rune.Grant(src)
 		var/pos = 2+spellnum*31
-		our_rune.button.screen_loc = "6:[pos],4:-2"
-		our_rune.button.moved = "6:[pos],4:-2"
+		our_rune = new runetype(src)
+		our_rune.default_button_position = "6:[pos],4:-2" // Set the default position to this random position
+		our_rune.Grant(src)
 	if(icon_state)
 		add_overlay("glow_[icon_state]_[theme]")
 
@@ -102,7 +101,7 @@
 /mob/living/simple_animal/hostile/construct/attack_animal(mob/living/simple_animal/user, list/modifiers)
 	if(isconstruct(user)) //is it a construct?
 		var/mob/living/simple_animal/hostile/construct/doll = user
-		if(!doll.can_repair_constructs || (doll == src && !doll.can_repair_self))
+		if(!doll.can_repair || (doll == src && !doll.can_repair_self))
 			return ..()
 		if(theme != doll.theme)
 			return ..()
@@ -299,7 +298,7 @@
 						use magic missile, repair allied constructs, shades, and yourself (by clicking on them), \
 						<i>and, most important of all,</i> create new constructs by producing soulstones to capture souls, \
 						and shells to place those soulstones into.</b>"
-	can_repair_constructs = TRUE
+	can_repair = TRUE
 	can_repair_self = TRUE
 	///The health HUD applied to this mob.
 	var/health_hud = DATA_HUD_MEDICAL_ADVANCED
@@ -400,7 +399,7 @@
 							/obj/effect/proc_holder/spell/targeted/forcewall/cult)
 	playstyle_string = "<B>You are a Harvester. You are incapable of directly killing humans, but your attacks will remove their limbs: \
 						Bring those who still cling to this world of illusion back to the Geometer so they may know Truth. Your form and any you are pulling can pass through runed walls effortlessly.</B>"
-	can_repair_constructs = TRUE
+	can_repair = TRUE
 
 
 /mob/living/simple_animal/hostile/construct/harvester/Bump(atom/AM)

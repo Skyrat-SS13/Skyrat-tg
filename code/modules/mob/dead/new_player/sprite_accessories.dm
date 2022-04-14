@@ -1757,6 +1757,50 @@
 	icon_state = "monkey"
 	color_src = FALSE
 
+/datum/sprite_accessory/pod_hair
+	icon = 'icons/mob/podperson_hair.dmi'
+	em_block = TRUE
+
+/datum/sprite_accessory/pod_hair/ivy
+	name = "Ivy"
+	icon_state = "ivy"
+
+/datum/sprite_accessory/pod_hair/cabbage
+	name = "Cabbage"
+	icon_state = "cabbage"
+
+/datum/sprite_accessory/pod_hair/spinach
+	name = "Spinach"
+	icon_state = "spinach"
+
+/datum/sprite_accessory/pod_hair/prayer
+	name = "Prayer"
+	icon_state = "prayer"
+
+/datum/sprite_accessory/pod_hair/vine
+	name = "Vine"
+	icon_state = "vine"
+
+/datum/sprite_accessory/pod_hair/shrub
+	name = "Shrub"
+	icon_state = "shrub"
+
+/datum/sprite_accessory/pod_hair/rose
+	name = "Rose"
+	icon_state = "rose"
+
+/datum/sprite_accessory/pod_hair/orchid
+	name = "Orchid"
+	icon_state = "orchid"
+
+/datum/sprite_accessory/pod_hair/fig
+	name = "Fig"
+	icon_state = "fig"
+
+/datum/sprite_accessory/pod_hair/hibiscus
+	name = "Hibiscus"
+	icon_state = "hibiscus"
+
 /datum/sprite_accessory/snouts
 	icon = 'icons/mob/mutant_bodyparts.dmi'
 	em_block = TRUE
@@ -2131,6 +2175,22 @@
 	name = "Witch Wing"
 	icon_state = "witchwing"
 
+/datum/sprite_accessory/moth_wings/rosy
+	name = "Rosy"
+	icon_state = "rosy"
+
+/datum/sprite_accessory/moth_wings/feathery
+	name = "Feathery"
+	icon_state = "feathery"
+
+/datum/sprite_accessory/moth_wings/brown
+	name = "Brown"
+	icon_state = "brown"
+
+/datum/sprite_accessory/moth_wings/plasmafire
+	name = "Plasmafire"
+	icon_state = "plasmafire"
+
 /datum/sprite_accessory/moth_antennae //Finally splitting the sprite
 	icon = 'icons/mob/moth_antennae.dmi'
 	color_src = null
@@ -2198,6 +2258,21 @@
 /datum/sprite_accessory/moth_antennae/regal
 	name = "Regal"
 	icon_state = "regal"
+/datum/sprite_accessory/moth_antennae/rosy
+	name = "Rosy"
+	icon_state = "rosy"
+
+/datum/sprite_accessory/moth_antennae/feathery
+	name = "Feathery"
+	icon_state = "feathery"
+
+/datum/sprite_accessory/moth_antennae/brown
+	name = "Brown"
+	icon_state = "brown"
+
+/datum/sprite_accessory/moth_antennae/plasmafire
+	name = "Plasmafire"
+	icon_state = "plasmafire"
 
 /datum/sprite_accessory/moth_markings // the markings that moths can have. finally something other than the boring tan
 	icon = 'icons/mob/moth_markings.dmi'

@@ -27,7 +27,7 @@
 	result = /obj/item/ammo_casing/caseless/arrow/wood
 	reqs = list(/obj/item/stack/sheet/mineral/wood = 1,
 				/obj/item/stack/sheet/cloth= 1,
-				/obj/item/stack/rods = 1) 
+				/obj/item/stack/rods = 1)
 	time = 15
 	category = CAT_PRIMAL
 
@@ -70,6 +70,7 @@
 	reqs = list(/obj/item/stack/sheet/bone = 2,
 				/obj/item/stack/sheet/sinew = 2)
 	time = 40
+	always_available = FALSE
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/quiver

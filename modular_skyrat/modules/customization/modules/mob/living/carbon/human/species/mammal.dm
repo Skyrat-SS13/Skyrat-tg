@@ -13,7 +13,8 @@
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP
+		TRAIT_CAN_STRIP,
+		TRAIT_CAN_USE_FLIGHT_POTION,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
@@ -33,10 +34,20 @@
 	attack_effect = ATTACK_EFFECT_CLAW
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
-	liked_food = GROSS | MEAT | FRIED
+	liked_food = GRAIN | MEAT
+	disliked_food = CLOTH | GROSS
+	toxic_food = TOXIC
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/mammal_parts_greyscale.dmi'
+	digitigrade_customization = DIGITIGRADE_OPTIONAL
+	bodypart_overrides = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant,
+	)
 
 /datum/species/mammal/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
@@ -92,3 +103,4 @@
 	if(BMS)
 		markings = assemble_body_markings_from_set(BMS, passed_features, src)
 	return markings
+

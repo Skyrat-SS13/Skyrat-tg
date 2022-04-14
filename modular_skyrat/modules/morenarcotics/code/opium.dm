@@ -9,6 +9,90 @@
 	rate_up_lim = 12.5
 	purity_min = 0.5
 
+/datum/chemical_reaction/powder_heroin
+	is_cold_recipe = TRUE
+	required_reagents = list(/datum/reagent/drug/opium/heroin = 8)
+	required_temp = 250 //freeze it
+	reaction_flags = REACTION_INSTANT
+	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_CHEMICAL
+	mix_message = "The solution freezes into a powder!"
+
+/datum/chemical_reaction/powder_heroin/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i in 1 to created_volume)
+		new /obj/item/reagent_containers/heroin(location)
+
+/obj/item/reagent_containers/heroin
+	name = "heroin"
+	desc = "Take a line and take some time of man."
+	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
+	icon_state = "heroin"
+	volume = 4
+	possible_transfer_amounts = list()
+	list_reagents = list(/datum/reagent/drug/opium/heroin = 4)
+
+/obj/item/reagent_containers/heroin/proc/snort(mob/living/user)
+	if(!iscarbon(user))
+		return
+	var/covered = ""
+	if(user.is_mouth_covered(head_only = 1))
+		covered = "headgear"
+	else if(user.is_mouth_covered(mask_only = 1))
+		covered = "mask"
+	if(covered)
+		to_chat(user, span_warning("You have to remove your [covered] first!"))
+		return
+	user.visible_message(span_notice("'[user] starts snorting the [src]."))
+	if(do_after(user, 30))
+		to_chat(user, span_notice("You finish snorting the [src]."))
+		if(reagents.total_volume)
+			reagents.trans_to(user, reagents.total_volume, transfered_by = user, methods = INGEST)
+		qdel(src)
+
+/obj/item/reagent_containers/heroin/attack(mob/target, mob/user)
+	if(target == user)
+		snort(user)
+
+/obj/item/reagent_containers/heroin/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+
+	. = SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+	if(!in_range(user, src) || user.get_active_held_item())
+		return
+
+	snort(user)
+
+	return
+
+/obj/item/reagent_containers/heroinbrick
+	name = "heroin brick"
+	desc = "A brick of heroin. Good for transport!"
+	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
+	icon_state = "heroinbrick"
+	volume = 20
+	possible_transfer_amounts = list()
+	list_reagents = list(/datum/reagent/drug/opium/heroin = 20)
+
+
+/obj/item/reagent_containers/heroinbrick/attack_self(mob/user)
+	user.visible_message(span_notice("[user] starts breaking up the [src]."))
+	if(do_after(user,10))
+		to_chat(user, span_notice("You finish breaking up the [src]."))
+		for(var/i = 1 to 5)
+			new /obj/item/reagent_containers/heroin(user.loc)
+		qdel(src)
+
+/datum/crafting_recipe/heroinbrick
+	name = "heroin brick"
+	result = /obj/item/reagent_containers/heroinbrick
+	reqs = list(/obj/item/reagent_containers/heroin = 5)
+	parts = list(/obj/item/reagent_containers/heroin = 5)
+	time = 20
+	category = CAT_CHEMISTRY
+
 /datum/chemical_reaction/blacktar
 	required_reagents = list(/datum/reagent/drug/opium/blacktar = 5)
 	required_temp = 480
@@ -95,3 +179,22 @@
 	M.set_drugginess(15 * REM * delta_time)
 	M.adjustToxLoss(0.5 * REM * delta_time, 0) //toxin damage
 	..()
+
+//Exports
+/datum/export/heroin
+	cost = CARGO_CRATE_VALUE * 0.5
+	unit_name = "heroin"
+	export_types = list(/obj/item/reagent_containers/heroin)
+	include_subtypes = FALSE
+
+/datum/export/heroinbrick
+	cost = CARGO_CRATE_VALUE * 2.5
+	unit_name = "heroin brick"
+	export_types = list(/obj/item/reagent_containers/heroinbrick)
+	include_subtypes = FALSE
+
+/datum/export/blacktar
+	cost = CARGO_CRATE_VALUE * 0.4
+	unit_name = "black tar heroin"
+	export_types = list(/obj/item/reagent_containers/blacktar)
+	include_subtypes = FALSE

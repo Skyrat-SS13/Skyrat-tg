@@ -25,7 +25,7 @@
 	custom_materials = list(/datum/material/iron=10)
 	pressure_resistance = 2
 	grind_results = list(/datum/reagent/iron = 2, /datum/reagent/iodine = 1)
-	var/colour = "black" //what colour the ink is!
+	var/colour = "#000000" //what colour the ink is!
 	var/degrees = 0
 	var/font = PEN_FONT
 	embedding = list(embed_chance = 50)
@@ -38,39 +38,44 @@
 /obj/item/pen/blue
 	desc = "It's a normal blue ink pen."
 	icon_state = "pen_blue"
-	colour = "blue"
+	colour = "#0000FF"
 
 /obj/item/pen/red
 	desc = "It's a normal red ink pen."
 	icon_state = "pen_red"
-	colour = "red"
+	colour = "#FF0000"
 	throw_speed = 4 // red ones go faster (in this case, fast enough to embed!)
 
 /obj/item/pen/invisible
 	desc = "It's an invisible pen marker."
 	icon_state = "pen"
-	colour = "white"
+	colour = "#FFFFFF"
 
 /obj/item/pen/fourcolor
 	desc = "It's a fancy four-color ink pen, set to black."
 	name = "four-color pen"
 	icon_state = "pen_4color"
-	colour = "black"
+	colour = "#000000"
 
 /obj/item/pen/fourcolor/attack_self(mob/living/carbon/user)
+	. = ..()
+	var/chosen_color = "black"
 	switch(colour)
-		if("black")
-			colour = "red"
+		if("#000000")
+			colour = "#FF0000"
+			chosen_color = "red"
 			throw_speed++
-		if("red")
-			colour = "green"
+		if("#FF0000")
+			colour = "#00FF00"
+			chosen_color = "green"
 			throw_speed = initial(throw_speed)
-		if("green")
-			colour = "blue"
+		if("#00FF00")
+			colour = "#0000FF"
+			chosen_color = "blue"
 		else
-			colour = "black"
-	to_chat(user, span_notice("\The [src] will now write in [colour]."))
-	desc = "It's a fancy four-color ink pen, set to [colour]."
+			colour = "#000000"
+	to_chat(user, span_notice("\The [src] will now write in [chosen_color]."))
+	desc = "It's a fancy four-color ink pen, set to [chosen_color]."
 
 /obj/item/pen/fountain
 	name = "fountain pen"
@@ -82,7 +87,7 @@
 	name = "charcoal stylus"
 	desc = "It's just a wooden stick with some compressed ash on the end. At least it can write."
 	icon_state = "pen-charcoal"
-	colour = "dimgray"
+	colour = "#696969"
 	font = CHARCOAL_FONT
 	custom_materials = null
 	grind_results = list(/datum/reagent/ash = 5, /datum/reagent/cellulose = 10)
@@ -101,7 +106,7 @@
 	force = 5
 	throwforce = 5
 	throw_speed = 4
-	colour = "crimson"
+	colour = "#DC143C"
 	custom_materials = list(/datum/material/gold = 750)
 	sharpness = SHARP_EDGED
 	resistance_flags = FIRE_PROOF
@@ -126,12 +131,14 @@
 	. = ..()
 	if(.)
 		return
-
-	var/deg = tgui_input_number(user, "What angle would you like to rotate the pen head to? (1-360)", "Rotate Pen Head", max_value = 360)
-	if(isnull(deg))
+	if(loc != user)
+		to_chat(user, span_warning("You must be holding the pen to continue!"))
 		return
-	degrees = round(deg)
-	to_chat(user, span_notice("You rotate the top of the pen to [degrees] degrees."))
+	var/deg = tgui_input_number(user, "What angle would you like to rotate the pen head to? (0-360)", "Rotate Pen Head", max_value = 360)
+	if(isnull(deg) || QDELETED(user) || QDELETED(src) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK) || loc != user)
+		return
+	degrees = deg
+	to_chat(user, span_notice("You rotate the top of the pen to [deg] degrees."))
 	SEND_SIGNAL(src, COMSIG_PEN_ROTATED, deg, user)
 
 /obj/item/pen/attack(mob/living/M, mob/user, params)
@@ -148,7 +155,7 @@
 	. = ..()
 	//Changing name/description of items. Only works if they have the UNIQUE_RENAME object flag set
 	if(isobj(O) && proximity && (O.obj_flags & UNIQUE_RENAME))
-		var/penchoice = tgui_alert(user, "What would you like to edit?", "Pen Setting", list("Rename","Description","Reset"))
+		var/penchoice = tgui_input_list(user, "What would you like to edit?", "Pen Setting", list("Rename", "Description", "Reset"))
 		if(QDELETED(O) || !user.canUseTopic(O, BE_CLOSE))
 			return
 		if(penchoice == "Rename")
@@ -225,6 +232,10 @@
 	sharpness = SHARP_POINTY
 	/// The real name of our item when extended.
 	var/hidden_name = "energy dagger"
+	/// The real desc of our item when extended.
+	var/hidden_desc = "It's a normal black ink pen."
+	/// The real icons used when extended.
+	var/hidden_icon = "edagger"
 	/// Whether or pen is extended
 	var/extended = FALSE
 
@@ -259,13 +270,15 @@
 	extended = active
 	if(active)
 		name = hidden_name
-		icon_state = "edagger"
-		inhand_icon_state = "edagger"
+		desc = hidden_desc
+		icon_state = hidden_icon
+		inhand_icon_state = hidden_icon
 		lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 		righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 		embedding = list(embed_chance = 100) // Rule of cool
 	else
 		name = initial(name)
+		desc = initial(desc)
 		icon_state = initial(icon_state)
 		inhand_icon_state = initial(inhand_icon_state)
 		lefthand_file = initial(lefthand_file)
@@ -276,6 +289,15 @@
 	balloon_alert(user, "[hidden_name] [active ? "active":"concealed"]")
 	playsound(user ? user : src, active ? 'sound/weapons/saberon.ogg' : 'sound/weapons/saberoff.ogg', 5, TRUE)
 	return COMPONENT_NO_DEFAULT_MESSAGE
+
+///syndicate prototype for smuggling missions
+/obj/item/pen/edagger/prototype
+	name = "odd pen"
+	desc = "It's an abnormal black ink pen, with weird chunks of metal sticking out of it..."
+	hidden_name = "prototype hardlight dagger"
+	hidden_desc = "Waffle Corp R&D's prototype for energy daggers. Hardlight may be inferior \
+	to energy weapons, but it's still surprisingly deadly."
+	hidden_icon = "eprototypedagger"
 
 /obj/item/pen/survival
 	name = "survival pen"
@@ -292,4 +314,4 @@
 	tool_behaviour = TOOL_MINING //For the classic "digging out of prison with a spoon but you're in space so this analogy doesn't work" situation.
 	toolspeed = 10 //You will never willingly choose to use one of these over a shovel.
 	font = FOUNTAIN_PEN_FONT
-	colour = "blue"
+	colour = "#0000FF"
