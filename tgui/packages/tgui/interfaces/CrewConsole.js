@@ -166,7 +166,8 @@ const CrewTableEntry = (props, context) => {
               HEALTH_COLOR_BY_LEVEL)}
             size={1} />
         ) : (
-          life_status ? <Icon
+          life_status ?
+          <Icon
             name="heart"
             color="#ffffff"
             size={1} />
