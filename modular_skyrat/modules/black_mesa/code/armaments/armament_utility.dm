@@ -29,6 +29,11 @@
 	max_purchase = 1
 	cost = 4
 
+/datum/armament_entry/hecu/utility/light_device
+	item_type = /obj/item/construction/rld/mini
+	max_purchase = 2
+	cost = 3
+
 /datum/armament_entry/hecu/utility/compact_shield
 	item_type = /obj/item/shield/riot/tele
 	max_purchase = 1
@@ -59,7 +64,7 @@
 /datum/armament_entry/hecu/utility/suppressor
 	item_type = /obj/item/suppressor
 	max_purchase = 4
-	cost = 3
+	cost = 2
 
 /datum/armament_entry/hecu/utility/bowman
 	item_type = /obj/item/radio/headset/headset_faction/bowman
