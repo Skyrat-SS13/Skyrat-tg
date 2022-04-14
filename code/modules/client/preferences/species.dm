@@ -32,9 +32,14 @@
 	return values
 
 /datum/preference/choiced/species/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/prefs)
+	// SKYRAT EDIT START - Veteran-only races
+	var/datum/species/value_typepath = value
+	if(initial(value_typepath.veteran_only) && !is_veteran_player(target.client))
+		value = create_default_value()
+	// SKYRAT EDIT END
 	target.set_species(value, FALSE, FALSE, prefs?.features.Copy(), prefs?.mutant_bodyparts.Copy(), prefs?.body_markings.Copy()) // SKYRAT EDIT - Customization
 
-//SKYRAT EDIT ADDITION
+	//SKYRAT EDIT ADDITION
 	target.dna.update_body_size()
 
 	for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS))
@@ -66,6 +71,7 @@
 		data[species_id]["enabled_features"] = species.get_features()
 		data[species_id]["perks"] = species.get_species_perks()
 		data[species_id]["diet"] =  species.get_species_diet()
+		data[species_id]["veteran_only"] = species.veteran_only // SKYRAT EDIT ADDITION - Veteran races
 
 		qdel(species)
 
