@@ -1314,3 +1314,16 @@
 	. = ..()
 	if(!isinhands)
 		. += emissive_appearance(icon_file, "[icon_state]-emissive", alpha = src.alpha)
+//Donation reward for RealWinterFrost
+/obj/item/clothing/suit/toggle/labcoat/fluffycloak
+	name = "Cloak of the Fluffy"
+	desc = "This is DebugText \"Erm...Debug?\"."
+	base_icon_state = "fluffycloak"
+	icon_state = "fluffycloak"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+
+/obj/item/clothing/suit/toggle/labcoat/fluffycloak/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
+	. = ..()
+	if(!isinhands)
+		. += emissive_appearance(icon_file, "[icon_state]-emissive", alpha = src.alpha)
