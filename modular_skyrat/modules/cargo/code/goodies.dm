@@ -159,12 +159,10 @@
 
 /datum/supply_pack/goody/cmg
 	name = "NT CMG-1 Gunset Multi-Pack"
-	desc = "Contains 3 CMG-1 Gunsets with "
-	cost = PAYCHECK_HARD * 60
+	desc = "Contains a single CMG-1 Weapons kit"
+	cost = PAYCHECK_HARD * 10
 	access_view = ACCESS_ARMORY
 	contains = list(
-		/obj/item/storage/box/gunset/cmg,
-		/obj/item/storage/box/gunset/cmg,
 		/obj/item/storage/box/gunset/cmg,
 		)
 
