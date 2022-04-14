@@ -82,6 +82,11 @@
 		vampire.adjust_fire_stacks(3 * delta_time)
 		vampire.IgniteMob()
 
+/datum/species/hemophage/get_species_description()
+	return placeholder_description
+
+/datum/species/hemophage/get_species_lore()
+	return list(placeholder_lore)
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/bat
 	name = "Bat Form"

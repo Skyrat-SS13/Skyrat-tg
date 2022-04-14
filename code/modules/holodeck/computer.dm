@@ -92,7 +92,7 @@ GLOBAL_LIST_INIT(typecache_holodeck_linked_floorcheck_ok, typecacheof(list(/turf
 
 /obj/machinery/computer/holodeck/LateInitialize()//from here linked is populated and the program list is generated. its also set to load the offline program
 	linked = GLOB.areas_by_type[mapped_start_area]
-	bottom_left = locate(linked.x, linked.y, src.z)
+	bottom_left = locate(linked?.x, linked?.y, src.z) // SKYRAT EDIT: Fixing CI with our maps
 
 	var/area/computer_area = get_area(src)
 	if(istype(computer_area, /area/holodeck))
