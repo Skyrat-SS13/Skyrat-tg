@@ -1318,7 +1318,6 @@
 /obj/item/clothing/neck/cloak/fluffycloak
 	name = "Cloak of the Fluffy"
 	desc = "This is DebugText \"Erm...Debug?\"."
-	base_icon_state = "fluffycloak"
 	icon_state = "fluffycloak"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
