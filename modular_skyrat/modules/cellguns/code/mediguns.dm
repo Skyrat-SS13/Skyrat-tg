@@ -289,6 +289,7 @@
 	ammo_type = /obj/item/ammo_casing/energy/medical/weaponized/disabler
 	secondary_mode = /obj/item/ammo_casing/energy/medical/weaponized/laser
 	primary_mode = /obj/item/ammo_casing/energy/medical/weaponized/disabler
+	icon_state = "weaponized"
 	toggle_modes = TRUE
 
 //Empty Medicell//

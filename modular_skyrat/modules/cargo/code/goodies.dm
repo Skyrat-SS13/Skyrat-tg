@@ -179,6 +179,15 @@
 		/obj/item/ammo_box/magazine/cmgm45,
 	)
 
+/datum/supply_pack/goody/cmg_lethal_ammo
+	name = "Weaponized Medigun Cell"
+	desc = "Contains a weaponized medigun cell that allows the user to fire disabler and laser projectiles"
+	cost = PAYCHECK_HARD * 10
+	access_view = ACCESS_ARMORY
+	contains = list(
+		/obj/item/weaponcell/medical/weaponized/standard
+	)
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Carpet Packs ////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////

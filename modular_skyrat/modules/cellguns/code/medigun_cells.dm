@@ -693,6 +693,7 @@
 	projectile_type = /obj/projectile/beam/laser
 	select_name = "kill"
 	e_cost = 400
+	select_color = "#da0000"
 	harmful = TRUE
 
 #undef UPGRADED_MEDICELL_PASSFLAGS
