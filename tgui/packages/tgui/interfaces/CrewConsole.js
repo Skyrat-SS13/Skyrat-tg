@@ -13,8 +13,8 @@ const HEALTH_COLOR_BY_LEVEL = [
   '#e74c3c',
   '#801308', // SKYRAT EDIT - Original'#ed2814' - darker to help distinguish better,
 ];
-
-const HEALTH_ICON_BY_LEVEL = [// SKYRAT EDIT ADDITION  - Icon status list
+// SKYRAT ADDITION  - Icon status list
+const HEALTH_ICON_BY_LEVEL = [
   'heart',
   'heart',
   'heart',
@@ -22,7 +22,7 @@ const HEALTH_ICON_BY_LEVEL = [// SKYRAT EDIT ADDITION  - Icon status list
   'heartbeat',
   'skull',
 ];
-
+//SKRAY ADDITION - END:
 const jobIsHead = jobId => jobId % 10 === 0;
 
 const jobToColor = jobId => {
@@ -51,12 +51,13 @@ const jobToColor = jobId => {
   return COLORS.department.other;
 };
 
-// SKYRAT EDIT - ORIGINAL: 
+// SKYRAT EDIT - START: 
 const healthToAttribute = (oxy, tox, burn, brute, attributeList) => {
   const healthSum = oxy + tox + burn + brute;
   const level = Math.min(Math.max(Math.ceil(healthSum / 31), 0), 5);
   return attributeList[level];
 };
+//SKRAY EDIT - END:
 
 const HealthStat = props => {
   const { type, value } = props;
