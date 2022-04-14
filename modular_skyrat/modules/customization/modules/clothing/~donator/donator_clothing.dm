@@ -833,7 +833,7 @@
 // Donation reward for CandleJax
 /obj/item/clothing/under/plasmaman/candlejax
 	name = "emission's containment suit"
-	desc = "A modified envirosuit designed for internal combustion-based plasmafires."
+	desc = "A modified envirosuit featuring a reserved color scheme."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "emissionsuit"
