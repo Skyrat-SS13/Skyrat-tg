@@ -19,7 +19,7 @@ const HEALTH_ICON_BY_LEVEL = [// SKYRAT EDIT ADDITION  - Icon status list
   'heart',
   'heart',
   'heart',
-  'crutch',
+  'heartbeat',
   'skull',
 ];
 
@@ -166,13 +166,13 @@ const CrewTableEntry = (props, context) => {
             size={1} />
         ) : (
           life_status ? <Icon 
-              name="heart" 
-              color="#ffffff" 
+            name="heart" 
+            color="#ffffff" 
             size={1} />
             :<Icon
-              name="skull"
-              color="#ffffff"
-              size={1} />
+            name="skull"
+            color="#ffffff"
+            size={1} />
         )}
         {/* SKYRAT EDIT END */}
       </Table.Cell>
