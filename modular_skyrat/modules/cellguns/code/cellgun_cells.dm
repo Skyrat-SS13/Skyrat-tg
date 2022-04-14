@@ -1,7 +1,7 @@
 /obj/item/weaponcell
 	name = "default weaponcell"
 	desc = "used to add ammo types to guns"
-	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/upgrades.dmi'
+	icon = 'modular_skyrat/modules/cellguns/icons/obj/guns/mediguns/medicells.dmi'
 	icon_state = "Oxy1"
 	w_class = WEIGHT_CLASS_SMALL
 	/// The ammo type that is added by default when inserting a cell.

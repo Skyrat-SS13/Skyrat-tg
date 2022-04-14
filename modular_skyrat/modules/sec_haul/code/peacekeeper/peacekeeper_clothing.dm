@@ -7,7 +7,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "peacekeeper_helmet"
 	worn_icon_state = "peacekeeper"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/beret/sec/peacekeeper
 	name = "peacekeeper beret"
@@ -16,7 +16,7 @@
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	icon_state = "beret_badge"
 	greyscale_colors = "#3F3C40#375989"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/beret/sec/peacekeeper/white
 	greyscale_config = /datum/greyscale_config/beret
@@ -33,12 +33,12 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "peacekeeper_sergeant_cap"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/hos/beret/peacekeeper
 	name = "head of security's peacekeeper beret"
 	desc = "A special beret with the Head of Security's insignia emblazoned on it. A symbol of excellence, a badge of courage, a mark of distinction."
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/beret/sec/navywarden/peacekeeper
 	name = "warden's peacekeeper beret"
@@ -47,7 +47,7 @@
 	greyscale_config_worn = /datum/greyscale_config/beret_badge_fancy/worn
 	greyscale_colors = "#3F3C40#FF0000#00AEEF"
 	icon_state = "beret_badge_fancy_twist"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper
 	name = "peacekeeper hud glasses"
@@ -104,7 +104,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "peacekeeper_armor"
 	worn_icon_state = "peacekeeper"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/vest/peacekeeper/black
 	name = "black peacekeeper vest"
@@ -118,7 +118,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "peacekeeper_trench_hos"
 	inhand_icon_state = "hostrench"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/vest/warden/peacekeeper
 	name = "warden's peacekeeper jacket"
@@ -126,7 +126,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "peacekeeper_trench_warden"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/hooded/wintercoat/security/peacekeeper
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -149,7 +149,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "peacekeeper_spacecoat"
 	worn_icon_state = "peacekeeper_spacecoat"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 //PEACEKEEPER GLOVES
 /obj/item/clothing/gloves/combat/peacekeeper

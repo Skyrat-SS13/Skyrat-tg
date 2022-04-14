@@ -83,7 +83,7 @@
 	cell = new/obj/item/stock_parts/cell/high
 	cell.charge = 9000
 	cell.name = "black power cell"
-	cell.icon_state = "bscell"
+	cell.icon_state = "blkcell" //SKYRAT EDIT - original "bscell" - changed due to basetype's icon path/overlays changing
 
 /obj/item/clothing/suit/space/space_ninja/Destroy()
 	QDEL_NULL(spark_system)

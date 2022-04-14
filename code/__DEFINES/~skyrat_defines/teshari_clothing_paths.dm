@@ -9,3 +9,4 @@
 #define TESHARI_NECK_ICON 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/neck.dmi'
 #define TESHARI_SUIT_ICON 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
 #define TESHARI_UNIFORM_ICON 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/uniform.dmi'
+#define TESHARI_EARS_ICON 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/ears.dmi'
