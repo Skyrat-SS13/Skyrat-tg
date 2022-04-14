@@ -165,8 +165,7 @@ const CrewTableEntry = (props, context) => {
               brutedam,
               HEALTH_COLOR_BY_LEVEL)}
             size={1} />
-        ) : (
-          life_status ?
+        ) : ( life_status ?
           <Icon
             name="heart"
             color="#ffffff"
