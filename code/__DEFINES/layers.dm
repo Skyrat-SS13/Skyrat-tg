@@ -203,12 +203,20 @@
 
 #define ADMIN_POPUP_LAYER 1
 
+<<<<<<< HEAD
 //SKYRAT EDIT: Lobby Cam
 ///Plane of the "splash" icon used that shows on the lobby screen. Nothing should ever be above this. (Except the logo)
 #define BLACK_FADE 9997
 #define SPLASHSCREEN_PLANE 9998 //Previous value: 9999
 #define SKYRAT_LOGO 9999
 //SKYRAT EDIT: Lobby Cam
+=======
+///Layer for screentips
+#define SCREENTIP_LAYER 4
+
+///Plane of the "splash" icon used that shows on the lobby screen. Nothing should ever be above this.
+#define SPLASHSCREEN_PLANE 9999
+>>>>>>> 82517b4c881 (Made screentips appear on a higher layer than action buttons. (#65963))
 
 #define LOBBY_BACKGROUND_LAYER 3
 #define LOBBY_BUTTON_LAYER 4
