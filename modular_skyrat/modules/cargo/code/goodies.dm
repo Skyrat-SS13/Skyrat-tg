@@ -158,7 +158,7 @@
 	contains = list(/obj/item/gun/energy/laser)
 
 /datum/supply_pack/goody/cmg
-	name = "NT CMG-1 Gunset Multi-Pack"
+	name = "NT CMG-1 Single-kit"
 	desc = "Contains a single CMG-1 Weapons kit"
 	cost = PAYCHECK_HARD * 10
 	access_view = ACCESS_ARMORY
