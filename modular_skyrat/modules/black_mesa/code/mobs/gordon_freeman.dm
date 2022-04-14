@@ -20,6 +20,7 @@
 	wander = FALSE
 	attack_sound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
 	loot = list(/obj/item/crowbar/freeman/ultimate, /obj/item/keycard/freeman_boss_exit)
+	gold_core_spawnable = NO_SPAWN
 
 /obj/structure/xen_pylon/freeman
 	shield_range = 30
