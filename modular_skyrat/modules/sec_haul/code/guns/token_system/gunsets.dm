@@ -309,14 +309,14 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/g11(src)
 
 //SECURITY MEDIC
-/obj/item/storage/box/gunset/security_medic
+/obj/item/storage/box/gunset/firefly
 	name = "9x19mm special pistol supply box"
 	desc = "Ideally contains a special 9x19mm Pistol."
 	w_class = WEIGHT_CLASS_NORMAL
 /obj/item/gun/ballistic/automatic/pistol/firefly/nomag
 	spawnwithmagazine = FALSE
 
-/obj/item/storage/box/gunset/security_medic/PopulateContents()
+/obj/item/storage/box/gunset/firefly/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pistol/firefly/nomag(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/firefly(src)
