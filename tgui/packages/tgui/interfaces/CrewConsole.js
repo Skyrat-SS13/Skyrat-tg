@@ -165,16 +165,11 @@ const CrewTableEntry = (props, context) => {
               brutedam,
               HEALTH_COLOR_BY_LEVEL)}
             size={1} />
-        ) : ( life_status ?
-          <Icon
-            name="heart"
-            color="#ffffff"
-            size={1} />
-            : <Icon
-              name="skull"
-              color="#ffffff"
-              size={1} />
-        )}
+            ) : (life_status ? (
+              <Icon name="heart" color="#17d568" size={1} />
+            ) : (
+              <Icon name="skull" color="#B7410E" size={1} />
+            ))}
         {/* SKYRAT EDIT END */}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
