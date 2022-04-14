@@ -8,7 +8,10 @@
 	show_to_ghosts = TRUE
 	antag_moodlet = /datum/mood_event/focused
 	suicide_cry = "FOR THE SPIDER CLAN!!"
+<<<<<<< HEAD
 	preview_outfit = /datum/outfit/ninja
+=======
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 	///Whether or not this ninja will obtain objectives
 	var/give_objectives = TRUE
 	///Whether or not this ninja receives the standard equipment

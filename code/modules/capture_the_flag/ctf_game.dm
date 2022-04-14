@@ -460,11 +460,28 @@
 	notify_ghosts("[name] has been activated!", source = src, action=NOTIFY_ORBIT, header = "CTF has been activated")
 
 /obj/machinery/capture_the_flag/proc/reset_the_arena()
+<<<<<<< HEAD:code/modules/capture_the_flag/ctf_game.dm
 	if(!ctf_landmark)
 		return
 
 	if(ctf_landmark == GLOB.ctf_spawner)
 		new /obj/effect/landmark/ctf(get_turf(GLOB.ctf_spawner))
+=======
+	var/area/ctf_area = get_area(src)
+	var/static/list/ctf_object_typecache = typecacheof(list(
+				/obj/machinery,
+				/obj/effect/ctf,
+				/obj/item/ctf
+			))
+	for(var/atom/movable/area_movable in ctf_area)
+		if (ismob(area_movable))
+			continue
+		if(isstructure(area_movable))
+			var/obj/structure/ctf_structure = area_movable
+			ctf_structure.repair_damage(ctf_structure.max_integrity - ctf_structure.get_integrity())
+		else if(!is_type_in_typecache(area_movable, ctf_object_typecache))
+			qdel(area_movable)
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a:code/modules/capture_the_flag/capture_the_flag.dm
 
 
 /obj/machinery/capture_the_flag/proc/stop_ctf()

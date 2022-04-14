@@ -13,9 +13,12 @@ GLOBAL_LIST_EMPTY(asset_datums)
 /datum/asset
 	var/_abstract = /datum/asset
 	var/cached_url_mappings
+<<<<<<< HEAD
 
 	/// Whether or not this asset should be loaded in the "early assets" SS
 	var/early = FALSE
+=======
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 
 	/// Whether or not this asset can be cached across rounds of the same commit under the `CACHE_ASSETS` config.
 	/// This is not a *guarantee* the asset will be cached. Not all asset subtypes respect this field, and the

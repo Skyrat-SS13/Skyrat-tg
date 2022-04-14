@@ -90,6 +90,7 @@ GLOBAL_DATUM(current_anonymous_theme, /datum/anonymous_theme)
 		if(!player.mind || (!ishuman(player) && !issilicon(player)) || player.mind.assigned_role.faction != FACTION_STATION)
 			continue
 		if(issilicon(player))
+<<<<<<< HEAD
 			player.fully_replace_character_name(player.real_name, anonymous_ai_name(isAI(player)))
 			return
 		var/mob/living/carbon/human/human_mob = player
@@ -99,6 +100,17 @@ GLOBAL_DATUM(current_anonymous_theme, /datum/anonymous_theme)
 		if(extras_enabled)
 			player_extras(player)
 		human_mob.dna.update_dna_identity()
+=======
+			player.fully_replace_character_name(player.real_name, theme.anonymous_ai_name(isAI(player)))
+		else
+			var/mob/living/carbon/human/human_mob = player
+			var/original_name = player.real_name //id will not be changed if you do not do this
+			randomize_human(player) //do this first so the special name can be given
+			player.fully_replace_character_name(original_name, theme.anonymous_name(player))
+			if(extras_enabled)
+				player_extras(player)
+			human_mob.dna.update_dna_identity()
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 
 /**
  * restore_all_players: sets all crewmembers on station back to their preference name.

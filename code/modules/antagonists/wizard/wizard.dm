@@ -6,9 +6,13 @@
 	antag_hud_name = "wizard"
 	antag_moodlet = /datum/mood_event/focused
 	hijack_speed = 0.5
+<<<<<<< HEAD
 	ui_name = "AntagInfoWizard"
 	suicide_cry = "FOR THE FEDERATION!!"
 	preview_outfit = /datum/outfit/wizard
+=======
+	suicide_cry = "FOR THE FEDERATION!!"
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 	var/give_objectives = TRUE
 	var/strip = TRUE //strip before equipping
 	var/allow_rename = TRUE

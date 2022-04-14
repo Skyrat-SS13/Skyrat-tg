@@ -15,7 +15,11 @@
 	construction_type = /obj/item/pipe/trinary
 	pipe_state = "he_manifold"
 
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/heat_exchanging/manifold/set_init_directions()
+=======
+/obj/machinery/atmospherics/pipe/heat_exchanging/manifold/SetInitDirections()
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 	initialize_directions = ALL_CARDINALS
 	initialize_directions &= ~dir
 
