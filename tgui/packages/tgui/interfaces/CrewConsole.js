@@ -51,7 +51,7 @@ const jobToColor = jobId => {
   return COLORS.department.other;
 };
 
-// SKYRAT EDIT - START: 
+// SKYRAT EDIT - START:
 const healthToAttribute = (oxy, tox, burn, brute, attributeList) => {
   const healthSum = oxy + tox + burn + brute;
   const level = Math.min(Math.max(Math.ceil(healthSum / 31), 0), 5);
@@ -151,7 +151,7 @@ const CrewTableEntry = (props, context) => {
       <Table.Cell collapsing textAlign="center">
         {/* SKYRAT EDIT START - Displaying status Icons */}
         {oxydam !== undefined ?(
-          <Icon 
+          <Icon
             name={healthToAttribute(
               oxydam,
               toxdam,
@@ -166,14 +166,14 @@ const CrewTableEntry = (props, context) => {
               HEALTH_COLOR_BY_LEVEL)}
             size={1} />
         ) : (
-          life_status ? <Icon 
-            name="heart" 
-            color="#ffffff" 
+          life_status ? <Icon
+            name="heart"
+            color="#ffffff"
             size={1} />
-            : <Icon
-                name="skull" 
-                color="#ffffff" 
-                size={1} />
+          : <Icon
+              name="skull"
+              color="#ffffff"
+              size={1} />
         )}
         {/* SKYRAT EDIT END */}
       </Table.Cell>
