@@ -9,14 +9,12 @@
 	var/t_es = p_es()
 	var/obscure_name
 
-	var/obscured = check_obscured_slots()
-	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
-
 	if(isliving(user))
 		var/mob/living/L = user
 		if(HAS_TRAIT(L, TRAIT_PROSOPAGNOSIA) || HAS_TRAIT(L, TRAIT_INVISIBLE_MAN))
 			obscure_name = TRUE
 
+<<<<<<< HEAD
 	//SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
 	var/species_visible
 	var/species_name_string
@@ -46,6 +44,14 @@
 		apparent_species = ", \an [dna.species.name]"
 	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"][apparent_species]</EM>!")
 	*/
+=======
+	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"]</EM>!")
+
+	var/obscured = check_obscured_slots()
+	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+
+
+>>>>>>> b20d714c3a7 (Moves species readouts from examine to advanced health analyzer (#66103))
 	//uniform
 	if(w_uniform && !(obscured & ITEM_SLOT_ICLOTHING) && !(w_uniform.item_flags & EXAMINE_SKIP))
 		//accessory
