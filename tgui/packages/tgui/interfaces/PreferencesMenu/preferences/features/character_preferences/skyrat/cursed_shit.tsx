@@ -105,7 +105,7 @@ export const feature_womb: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const feature_breasts: FeatureToggle = {
+export const feature_breasts: Feature<string> = {
   name: "Breasts Choice",
   component: FeatureDropdownInput,
 };
@@ -115,7 +115,7 @@ export const breasts_skin_tone: FeatureToggle = {
   component: CheckboxInput,
 };
 
-export const breasts_skin_color: Feature<string> = {
+export const breasts_skin_color: FeatureToggle = {
   name: "Breasts uses Skin Color",
   component: CheckboxInput,
 };
