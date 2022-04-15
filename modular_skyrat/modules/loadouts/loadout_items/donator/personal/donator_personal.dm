@@ -180,19 +180,20 @@
 	ckeywhitelist = list("netrakyram")
 	restricted_roles = list(JOB_CAPTAIN)
 
-/datum/loadout_item/under/jumpsuit/kilano_suit
-	name = "black and gold dress uniform"
-	item_path = /obj/item/clothing/under/custom/kilano
+/datum/loadout_item/under/jumpsuit/netra_dress
+	name = "Black and Silver Armored Dress"
+	item_path = /obj/item/clothing/under/rank/security/blueshield/netra
+	ckeywhitelist = list("netrakyram")
+	restricted_roles = list(JOB_CAPTAIN, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY)
+
+/datum/loadout_item/gloves/netra_gloves
+	name = "Black and Silver Gloves"
+	item_path = /obj/item/clothing/gloves/netra
 	ckeywhitelist = list("netrakyram")
 
-/datum/loadout_item/gloves/kilano_gloves
-	name = "black and gold gloves"
-	item_path = /obj/item/clothing/gloves/kilano
-	ckeywhitelist = list("netrakyram")
-
-/datum/loadout_item/shoes/kilano_boots
-	name = "black and gold boots"
-	item_path = /obj/item/clothing/shoes/winterboots/kilano
+/datum/loadout_item/shoes/metra_boots
+	name = "Polished Jackboots"
+	item_path = /obj/item/clothing/shoes/jackboots/netra
 	ckeywhitelist = list("netrakyram")
 
 /datum/loadout_item/neck/kiaracloak
