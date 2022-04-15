@@ -52,7 +52,7 @@
 
 /datum/supply_pack/goody/wt550_single
 	name = "WT-550 Auto Rifle Single-Pack"
-	desc = "Contains one high-powered, semiautomatic rifle chambered in 4.6x30mm." // "high-powered" lol yea right
+	desc = "Contains one high-powered, semiautomatic rifle chambered in 4.6x30mm." // "high-powered" lol yea right //my brother in christ, 20dmg is strong
 	cost = PAYCHECK_HARD * 20
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/gun/ballistic/automatic/wt550)
@@ -170,13 +170,11 @@
 
 /datum/supply_pack/goody/cmg_lethal_ammo
 	name = "NT CMG-1 Lethal Ammo"
-	desc = "Contains 3 24-round lethal CMG-1 magazines."
-	cost = PAYCHECK_HARD * 15
+	desc = "Contains a 24-round lethal CMG-1 magazine."
+	cost = PAYCHECK_HARD * 4
 	access_view = ACCESS_ARMORY
 	contains = list(
-		/obj/item/ammo_box/magazine/cmgm45,
-		/obj/item/ammo_box/magazine/cmgm45,
-		/obj/item/ammo_box/magazine/cmgm45,
+		/obj/item/ammo_box/magazine/multi_sprite/cmg/lethal,
 	)
 
 //////////////////////////////////////////////////////////////////////////////
