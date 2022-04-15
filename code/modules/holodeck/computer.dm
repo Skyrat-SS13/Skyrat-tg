@@ -92,13 +92,8 @@ GLOBAL_LIST_INIT(typecache_holodeck_linked_floorcheck_ok, typecacheof(list(/turf
 
 /obj/machinery/computer/holodeck/LateInitialize()//from here linked is populated and the program list is generated. its also set to load the offline program
 	linked = GLOB.areas_by_type[mapped_start_area]
-	// SKYRAT EDIT BEGIN: Fixing CI with our maps
-	bottom_left = locate(linked?.x, linked?.y, src.z)
-	if(!bottom_left)
-		log_world("No matching holodeck area found - Skyrat Edition (addition?)")
-		qdel(src)
-		return
-		// SKYRAT EDIT END
+	bottom_left = locate(linked.x, linked.y, src.z)
+
 	var/area/computer_area = get_area(src)
 	if(istype(computer_area, /area/holodeck))
 		log_mapping("Holodeck computer cannot be in a holodeck, This would cause circular power dependency.")
