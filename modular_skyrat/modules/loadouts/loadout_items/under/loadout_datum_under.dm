@@ -156,6 +156,21 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/medical/chemist/skyrat/formal/skirt
 	restricted_roles = list(JOB_CHEMIST)
 
+/datum/loadout_item/under/jumpsuit/hlscientist
+	name = "Ridiculous Scientist Outfit"
+	item_path = /obj/item/clothing/under/rank/rnd/scientist/skyrat/hlscience
+	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_VANGUARD_OPERATIVE)
+
+/datum/loadout_item/under/jumpsuit/rd_jumpsuit
+	name = "Research Director's Jumpsuit"
+	item_path = /obj/item/clothing/under/rank/rnd/research_director/skyrat/jumpsuit
+	restricted_roles = list(JOB_RESEARCH_DIRECTOR)
+
+/datum/loadout_item/under/jumpsuit/rd_jumpskirt
+	name = "Research Director's Jumpskirt"
+	item_path = /obj/item/clothing/under/rank/rnd/research_director/skyrat/jumpsuit/skirt
+	restricted_roles = list(JOB_RESEARCH_DIRECTOR)
+
 /datum/loadout_item/under/jumpsuit/utility
 	name = "Utility Uniform"
 	item_path = /obj/item/clothing/under/utility
@@ -172,13 +187,8 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/utility_sci
 	name = "Science Utility Uniform"
-	item_path = /obj/item/clothing/under/utility/sci
+	item_path = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility
 	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_VANGUARD_OPERATIVE, JOB_SCIENCE_GUARD)
-
-/datum/loadout_item/under/jumpsuit/hlscientist
-	name = "Ridiculous Scientist Outfit"
-	item_path = /obj/item/clothing/under/misc/hlscience
-	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_VANGUARD_OPERATIVE)
 
 /datum/loadout_item/under/jumpsuit/utility_cargo
 	name = "Supply Utility Uniform"
