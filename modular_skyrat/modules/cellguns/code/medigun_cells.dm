@@ -498,7 +498,7 @@
 	name = "salve globule"
 	desc = "a ball of regenerative synthetic plant matter, contained within a soft hardlight field"
 	embedding = list("embed_chance" = 100, ignore_throwspeed_threshold = TRUE, "pain_mult" = 0, "jostle_pain_mult" = 0, "fall_chance" = 0)
-	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/misc.dmi'
+	icon = 'modular_skyrat/modules/cellguns/icons/obj/guns/mediguns/misc.dmi'
 	icon_state = "globule"
 	heals_left = 40 //This means it'll be heaing 15 damage per type max.
 	var/attached_part //The part that the globule is attached to
@@ -526,7 +526,7 @@
 /obj/structure/bed/roller/medigun
 	name = "hardlight roller bed"
 	desc = "A Roller Bed made out of Hardlight"
-	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/misc.dmi'
+	icon = 'modular_skyrat/modules/cellguns/icons/obj/guns/mediguns/misc.dmi'
 	max_integrity = 1
 	buildstacktype = FALSE //It would not be good if people could use this to farm materials.
 	var/deploytime = 20 SECONDS //How long the roller beds lasts for without someone buckled to it.

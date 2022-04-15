@@ -265,6 +265,11 @@
 	if(reac_volume >= 5 && HAS_TRAIT_FROM(patient, TRAIT_HUSK, BURN) && patient.getFireLoss() < UNHUSK_DAMAGE_THRESHOLD) //One carp yields 12u rezadone.
 		patient.cure_husk(BURN)
 		patient.visible_message(span_nicegreen("[patient]'s body rapidly absorbs moisture from the environment, taking on a more healthy appearance."))
+	// SKYRAT EDIT ADDITION BEGIN - non-modular changeling balancing
+	if(HAS_TRAIT_FROM(exposed_mob, TRAIT_HUSK, CHANGELING_DRAIN) && (patient.reagents.get_reagent_amount(/datum/reagent/medicine/rezadone) + reac_volume >= SYNTHFLESH_LING_UNHUSK_AMOUNT))//Costs a little more than a normal husk
+		patient.cure_husk(CHANGELING_DRAIN)
+		patient.visible_message("<span class='nicegreen'>A rubbery liquid coats [patient]'s tissues. [patient] looks a lot healthier!")
+	// SKYRAT EDIT ADDITION END
 
 /datum/reagent/medicine/spaceacillin
 	name = "Spaceacillin"
