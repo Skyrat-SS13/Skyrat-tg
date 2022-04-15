@@ -9,7 +9,7 @@
 	target_mobtypes = list(/mob/living/carbon/human)
 	possible_locs = list(BODY_ZONE_CHEST)
 	replaced_by = /datum/surgery
-	requires_bodypart_type = BODYPART_ROBOTIC
+	requires_bodypart_type = BODYTYPE_ROBOTIC
 	ignore_clothes = TRUE
 	var/healing_step_type
 	var/antispam = FALSE
@@ -89,7 +89,7 @@
 		urhealedamt_burn *= 0.55
 		umsg += " as best as you can while they have clothing on"
 		tmsg += " as best as they can while [target] has clothing on"
-	target.heal_bodypart_damage(urhealedamt_brute,urhealedamt_burn, 0, BODYPART_ROBOTIC)
+	target.heal_bodypart_damage(urhealedamt_brute,urhealedamt_burn, 0, BODYTYPE_ROBOTIC)
 	display_results(user, target, span_notice("[umsg]."),
 		"[tmsg].",
 		"[tmsg].")

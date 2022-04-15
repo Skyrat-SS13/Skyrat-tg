@@ -39,7 +39,7 @@
 	if(!unrestricted)
 		var/mob/living/carbon/human/human_user = user
 		var/obj/item/bodypart/selected_hand = human_user.get_active_hand()
-		if(selected_hand.status != BODYPART_ROBOTIC)
+		if(IS_ORGANIC_LIMB(selected_hand))
 			to_chat(user, span_warning("You can't seem to figure out how to use [src], perhaps you need to check the manual?"))
 			return
 	. = ..()

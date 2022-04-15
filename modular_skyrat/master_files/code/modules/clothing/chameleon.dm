@@ -27,7 +27,7 @@
 	if(istype(target, /obj/item/clothing/))
 		var/obj/item/clothing/target_clothing = target
 		var/obj/item/clothing/picked_clothing = picked_item
-		target_clothing.mutant_variants = initial(picked_clothing.mutant_variants)
+		target_clothing.supports_variations_flags = initial(picked_clothing.supports_variations_flags)
 		target_clothing.worn_icon_digi = initial(picked_clothing.worn_icon_digi)
 		target_clothing.worn_icon_taur_snake = initial(picked_clothing.worn_icon_taur_snake)
 		target_clothing.worn_icon_taur_paw = initial(picked_clothing.worn_icon_taur_paw)

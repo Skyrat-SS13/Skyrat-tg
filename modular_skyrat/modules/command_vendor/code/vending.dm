@@ -87,6 +87,8 @@
 		/obj/item/clothing/under/rank/rnd/research_director/alt/skirt = 1,
 		/obj/item/clothing/under/rank/rnd/research_director/turtleneck = 1,
 		/obj/item/clothing/under/rank/rnd/research_director/turtleneck/skirt = 1,
+		/obj/item/clothing/under/rank/rnd/research_director/skyrat/jumpsuit = 1,
+		/obj/item/clothing/under/rank/rnd/research_director/skyrat/jumpsuit/skirt = 1,
 		/obj/item/clothing/under/rank/rnd/research_director/imperial = 1,
 		/obj/item/clothing/neck/mantle/rdmantle = 1,
 		/obj/item/clothing/suit/toggle/labcoat = 1,

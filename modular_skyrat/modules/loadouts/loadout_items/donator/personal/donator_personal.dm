@@ -374,6 +374,11 @@
 	item_path = /obj/item/clothing/suit/toggle/labcoat/tenrai
 	ckeywhitelist = list("cimika")
 
+/datum/loadout_item/neck/fluffycloak
+	name = "Fluffy Cloak"
+	item_path = /obj/item/clothing/neck/cloak/fluffycloak
+	ckeywhitelist = list("realwinterfrost")
+
 /datum/loadout_item/mask/larpswat
 	name = "Foam Force SWAT Mask"
 	item_path = /obj/item/clothing/mask/gas/larpswat

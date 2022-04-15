@@ -5,7 +5,7 @@
 	icon_state = "stripper_p"
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/stripper/green
 	name = "green stripper outfit"
@@ -45,7 +45,7 @@
 	icon_state = "gear_harness"
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/colourable_kilt
 	name = "colourable kilt"
@@ -55,7 +55,7 @@
 	greyscale_config_worn = /datum/greyscale_config/kilt/worn
 	greyscale_colors = "#008000#777777"
 	flags_1 = IS_PLAYER_COLORABLE_1
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/royalkilt
 	name = "royal kilt"
@@ -121,7 +121,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "tac_s"
-	mutant_variants = STYLE_DIGITIGRADE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 /obj/item/clothing/under/misc/bluetracksuit
 	name = "blue tracksuit"
@@ -129,13 +129,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "tracksuit_blue"
-
-/obj/item/clothing/under/misc/hlscience
-	name = "ridiculous scientist outfit"
-	desc = "The tie is mandatory."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "hl_scientist"
 
 /obj/item/clothing/under/enclaveo
 	name = "neo american officer uniform"
@@ -179,7 +172,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "tacticool_hawaiian_orange"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/under/tachawaiian/blue
 	name = "blue tactical hawaiian outfit"
@@ -199,7 +192,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "texas"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/under/doug_dimmadome
 	name = "dimmadome formal outfit"
@@ -207,7 +200,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "doug_dimmadome"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/under/westender
 	name = "westender outfit"
@@ -215,7 +208,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "westender"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/under/rank/pmarsrobe
 	name = "priestess robe"
@@ -345,7 +338,7 @@
 	icon_state = "workpants_orange"
 	body_parts_covered = GROIN
 	can_adjust = FALSE
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/civilian/hydroponics/trouser
@@ -356,7 +349,7 @@
 	icon_state = "workpants_green"
 	body_parts_covered = GROIN
 	can_adjust = FALSE
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/security/peacekeeper/trousers
@@ -367,7 +360,7 @@
 	icon_state = "workpants_blue"
 	body_parts_covered = GROIN
 	can_adjust = FALSE
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/security/peacekeeper/trousers/red

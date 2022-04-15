@@ -5,7 +5,7 @@
 	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing.dmi'
 	worn_icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing_mob.dmi'
 	icon_state = "headdress"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 	greyscale_colors = null
 	greyscale_config = null
@@ -56,7 +56,7 @@
 	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing.dmi'
 	worn_icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing_mob.dmi'
 	icon_state = "combat_plates"
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 	greyscale_colors = null
 	greyscale_config = null

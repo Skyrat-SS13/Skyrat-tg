@@ -58,7 +58,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "polyskirt"
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#888888")
 
 /obj/item/clothing/under/dress/skirt/polychromic/ComponentInitialize()
@@ -78,7 +78,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "polysuit"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/under/misc/poly_shirt/ComponentInitialize()
 	. = ..()
@@ -92,7 +92,7 @@
 	icon_state = "polyshorts"
 	can_adjust = FALSE
 	body_parts_covered = CHEST|GROIN|ARMS
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/polyshorts/ComponentInitialize()
 	. = ..()
@@ -105,7 +105,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "polyjump"
 	can_adjust = FALSE
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/under/misc/polyjumpsuit/ComponentInitialize()
 	. = ..()
@@ -119,7 +119,7 @@
 	icon_state = "polybottomless"
 	body_parts_covered = CHEST|ARMS	//Because there's no bottom included
 	can_adjust = FALSE
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/poly_bottomless/ComponentInitialize()
 	. = ..()
@@ -134,7 +134,7 @@
 	worn_icon_state = "poly_turtle"
 	body_parts_covered = CHEST|GROIN|ARMS //Commando sweater is long but still doesnt have pants
 	can_adjust = FALSE
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/polysweater/ComponentInitialize()
 	. = ..()
@@ -148,7 +148,7 @@
 	icon_state = "polyshimatank"
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	var/list/poly_colors = list("#888888", "#FFFFFF", "#88CCFF")
 
 /obj/item/clothing/under/misc/poly_tanktop/ComponentInitialize()
@@ -167,7 +167,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "polyshortpants"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#FFFFFF")
 
 /obj/item/clothing/under/shorts/polychromic/ComponentInitialize()
@@ -179,7 +179,7 @@
 	desc = "Topless striped panties. Now with 120% more polychrome!"
 	icon_state = "polypantsu"
 	body_parts_covered = GROIN
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	poly_colors = list("#FFFFFF", "#88CCFF", "#FFFFFF")
 
 /**************CKEY EXCLUSIVES*************/
@@ -192,7 +192,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "darkcoat"
 	inhand_icon_state = "darkcoat"
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 // Donation reward for Grunnyyy
 /obj/item/clothing/neck/cloak/grunnyyy
@@ -203,7 +203,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 // Donation reward for Thedragmeme
 // might make it have some flavour functionality in future, a'la rewritable piece of paper - JOKES ON YOU I'M MAKING IT DRAW
@@ -312,7 +312,7 @@
 	blood_overlay_type = "coat"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	cold_protection = CHEST|GROIN|LEGS|ARMS
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 // Donation reward for Thedragmeme
 /obj/item/clothing/under/syndicate/tacticool/black
@@ -321,7 +321,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	icon_state = "black_turtleneck"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	can_adjust = FALSE //There wasnt an adjustable sprite anyways
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 5)	//same armor as a greyshirt - DONOR ITEMS ARE PURELY COSMETIC
 	has_sensor = HAS_SENSORS	//Actually has sensors, to balance the new lack of armor
@@ -333,7 +333,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/feet.dmi'
 	icon_state = "heel-jackboots"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	uses_advanced_reskins = FALSE
 	unique_reskin = NONE
 
@@ -344,7 +344,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/feet.dmi'
 	icon_state = "clown_shoes_cute"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	resistance_flags = FIRE_PROOF
 
 // Donation reward for Bloodrite
@@ -354,7 +354,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "clowndress"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	resistance_flags = FIRE_PROOF
 
 // Donation reward for Bloodrite
@@ -366,7 +366,7 @@
 	icon_state = "cute_mask"
 	inhand_icon_state = "clown_hat"
 	dye_color = "clown"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	clothing_flags = MASKINTERNALS
 	w_class = WEIGHT_CLASS_SMALL
 	flags_cover = MASKCOVERSEYES
@@ -398,7 +398,7 @@
 	icon_state = "kindle"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
 	inhand_icon_state = "kindle"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	clothing_flags = MASKINTERNALS
 	flags_inv = HIDEFACIALHAIR | HIDESNOUT
 	visor_flags_inv = HIDEFACIALHAIR | HIDESNOUT
@@ -447,7 +447,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/large-worn-icons/32x64/head.dmi'
 	flags_cover = HEADCOVERSEYES
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 // Donation reward for Random516
 /obj/item/clothing/gloves/fingerless/blutigen_wraps
@@ -465,7 +465,7 @@
 	icon_state = "blutigen_kimono"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	body_parts_covered = CHEST|GROIN|ARMS
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 // Donation reward for Random516
 /obj/item/clothing/under/custom/blutigen_undergarment
@@ -474,7 +474,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	icon_state = "blutigen_undergarment"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/gloves/ring/hypno
@@ -519,7 +519,7 @@
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT //about as warm as an ushanka
 	actions_types = list(/datum/action/item_action/adjust)
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	var/goggles = FALSE
 
 /obj/item/clothing/head/avipilot/proc/adjust_goggles(mob/living/carbon/user)
@@ -551,7 +551,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	icon_state = "kilanosuit"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 // Donation reward for NetraKyram
@@ -569,7 +569,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/shoes.dmi'
 	icon_state = "kilanoboots"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/feet.dmi'
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 
 /****************LEGACY REWARDS***************/
@@ -656,7 +656,7 @@
 	icon_state = "darkcarapace"
 	blood_overlay_type = "armor"
 	dog_fashion = /datum/dog_fashion/back
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 0, "acid" = 0)
 
 // Donation reward for inferno707
@@ -669,7 +669,7 @@
 	var/c_color_index = 1
 	var/list/possible_colors = list("off", "blue", "red")
 	actions_types = list(/datum/action/item_action/hheart)
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/mask/hheart/Initialize()
 	. = ..()
@@ -711,7 +711,7 @@
 	hoodtype = /obj/item/clothing/head/hooded/cloakhood/zuliecloak
 	body_parts_covered = CHEST|GROIN|ARMS
 	slot_flags = ITEM_SLOT_OCLOTHING | ITEM_SLOT_NECK //it's a cloak. it's cosmetic. so why the hell not? what could possibly go wrong?
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/head/hooded/cloakhood/zuliecloak
 	name = "NT special issue"
@@ -720,7 +720,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
 	flags_inv = null
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 // Donation reward for Lyricalpaws
 /obj/item/clothing/neck/cloak/healercloak
@@ -737,7 +737,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	icon_state = "lannese"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	inhand_icon_state = "lannese"
 	can_adjust = TRUE
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
@@ -768,7 +768,7 @@
 	icon_state = "luchador"
 	worn_icon_state = "luchador"
 	clothing_flags = MASKINTERNALS
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 // Donation Reward for Grand Vegeta
 /obj/item/clothing/under/mikubikini
@@ -941,7 +941,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
 	icon_state = "hos_black"
-	mutant_variants = STYLE_DIGITIGRADE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 // Donation reward for Raxraus
 /obj/item/clothing/under/rax_turtleneck_gray
@@ -1111,7 +1111,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	body_parts_covered = CHEST|LEGS|ARMS
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 //Donation reward for Hacker T.Dog
 /obj/item/clothing/head/nanotrasen_consultant/hubert
@@ -1171,7 +1171,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "occultoutfit"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 // Donation reward for gamerguy14948
 /obj/item/clothing/head/hooded/occult
@@ -1180,7 +1180,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "occulthood"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 // Donation reward for gamerguy14948
 /obj/item/clothing/suit/hooded/occult
@@ -1190,7 +1190,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "occultcoat"
 	hoodtype = /obj/item/clothing/head/hooded/occult
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 // Donation reward for gamerguy14948
 /obj/item/toy/plush/donator/voodoo
@@ -1300,13 +1300,27 @@
 	if(!isinhands)
 		. += emissive_appearance(icon_file, "[icon_state]-emissive", alpha = src.alpha)
 
+//Donation reward for RealWinterFrost
+/obj/item/clothing/neck/cloak/fluffycloak
+	name = "Cloak of the Fluffy One"
+	desc = "Hugs and kisses is only what this one knows, may their hugs be for all and not for their own \"For Fuffy Use Only\"."
+	icon_state = "fluffycloak"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
+
+/obj/item/clothing/neck/cloak/fluffycloak/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
+	. = ..()
+	if(!isinhands)
+		. += emissive_appearance(icon_file, "[icon_state]-emissive", alpha = src.alpha)
+
+
 /obj/item/clothing/mask/gas/larpswat
 	name = "Foam Force SWAT Mask"
 	desc = "What seems to be a SWAT mask at first, is actually a gasmask that has replica parts of a SWAT mask made from cheap plastic. Hey at least it looks good if you enjoy looking like a security larper."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
 	icon_state = "larpswat"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 // Donation reward for Cimika, on behalf of tf4
 /obj/item/clothing/neck/fishpendant
