@@ -9,8 +9,8 @@
 
 /datum/armament_entry/cargo_gun/oldarms/pistol/nagant
 	item_type =/obj/item/gun/ballistic/revolver/nagant
-	lower_cost = CARGO_CRATE_VALUE * 8
-	upper_cost = CARGO_CRATE_VALUE * 10
+	lower_cost = CARGO_CRATE_VALUE * 11
+	upper_cost = CARGO_CRATE_VALUE * 13
 
 /datum/armament_entry/cargo_gun/oldarms/pistol/luger
 	item_type = /obj/item/gun/ballistic/automatic/pistol/luger
