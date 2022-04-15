@@ -63,7 +63,7 @@
 	can_roundstart_pick = FALSE
 	company_flag = COMPANY_OLDARMS
 	cost_change_lower = -2000
-	cost_change_upper = 17500
+	cost_change_upper = 15000
 	cost = 10000
 	magazine_cost_mult = 2.5
 
@@ -79,7 +79,7 @@
 	name = "Nanotrasen Armories"
 	company_flag = COMPANY_NANOTRASEN
 	cost_change_lower = -2000
-	cost_change_upper = 11000
+	cost_change_upper = 10000
 	cost = 7500
 
 /datum/gun_company/allstar
@@ -94,7 +94,7 @@
 	can_roundstart_pick = FALSE
 	company_flag = COMPANY_MICRON
 	cost_change_lower = -2250
-	cost_change_upper = 13500 //This is an alternative to R&D, so it's expensive as hell
+	cost_change_upper = 12500 //This is an alternative to R&D, so it's expensive as hell
 	cost = 10000
 
 /datum/gun_company/dynamics

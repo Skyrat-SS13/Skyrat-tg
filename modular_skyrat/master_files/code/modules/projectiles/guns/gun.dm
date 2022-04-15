@@ -589,6 +589,9 @@
 		return remove_gun_attachment(user, tool, bayonet, "unfix")
 
 	else if(pin && user.is_holding(src))
+		if(!pin.can_remove)
+			to_chat(user, span_warning("You can't remove this firing pin!"))
+			return
 		user.visible_message(span_warning("[user] attempts to remove [pin] from [src] with [tool]."),
 		span_notice("You attempt to remove [pin] from [src]. (It will take [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)"), null, 3)
 		if(tool.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, volume = 50))
@@ -602,6 +605,9 @@
 /obj/item/gun/welder_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(.)
+		return
+	if(!pin.can_remove)
+		to_chat(user, span_warning("You can't remove this firing pin!"))
 		return
 	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
@@ -621,6 +627,9 @@
 	if(.)
 		return
 	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+		return
+	if(!pin.can_remove)
+		to_chat(user, span_warning("You can't remove this firing pin!"))
 		return
 	if(pin && user.is_holding(src))
 		user.visible_message(span_warning("[user] attempts to remove [pin] from [src] with [tool]."),
@@ -883,6 +892,14 @@
 	if(zoomable)
 		azoom = new()
 		azoom.gun = src
+
+/obj/item/gun/emag_act(mob/user, obj/item/card/emag/emag_card)
+	. = ..()
+	if(!pin.can_remove)
+		to_chat(user, span_notice("You short out the gun's firing pin, allowing it to be removed!"))
+		pin.can_remove = TRUE
+		if(!(pin.obj_flags & EMAGGED))
+			pin.obj_flags |= EMAGGED
 
 #undef FIRING_PIN_REMOVAL_DELAY
 #undef DUALWIELD_PENALTY_EXTRA_MULTIPLIER
