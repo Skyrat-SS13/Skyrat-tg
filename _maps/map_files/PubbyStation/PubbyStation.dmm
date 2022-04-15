@@ -43523,6 +43523,10 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
 	},
+/obj/machinery/button/door/directional/north{
+	id = "turbineaccess";
+	name = "Turbine Acess Button"
+	},
 /turf/open/floor/iron/dark,
 /area/engineering/atmospherics_engine)
 "jrG" = (
@@ -48506,6 +48510,10 @@
 /area/medical/virology)
 "nCy" = (
 /obj/effect/turf_decal/delivery,
+/obj/machinery/door/poddoor{
+	id = "turbineaccess";
+	name = "Turbine Access Door"
+	},
 /turf/open/floor/iron/dark,
 /area/engineering/atmospherics_engine)
 "nCF" = (
@@ -52568,8 +52576,8 @@
 	},
 /area/maintenance/department/science)
 "qJl" = (
-/obj/machinery/power/turbine/inlet_compressor/constructed,
 /obj/structure/cable,
+/obj/machinery/power/turbine/inlet_compressor,
 /turf/open/floor/engine/vacuum,
 /area/engineering/atmospherics_engine)
 "qJB" = (
@@ -57238,8 +57246,10 @@
 /turf/open/floor/plating,
 /area/maintenance/department/science)
 "uuk" = (
-/obj/machinery/power/turbine/core_rotor/constructed,
 /obj/structure/cable,
+/obj/machinery/power/turbine/core_rotor{
+	mapping_id = "main_turbine"
+	},
 /turf/open/floor/engine/vacuum,
 /area/engineering/atmospherics_engine)
 "uun" = (
@@ -60326,7 +60336,8 @@
 	},
 /obj/effect/turf_decal/trimline/yellow/filled/line,
 /obj/machinery/computer/turbine_computer{
-	dir = 8
+	dir = 8;
+	mapping_id = "main_turbine"
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/atmospherics_engine)
@@ -60599,8 +60610,8 @@
 	},
 /area/maintenance/department/security/brig)
 "wVe" = (
-/obj/machinery/power/turbine/turbine_outlet/constructed,
 /obj/structure/cable,
+/obj/machinery/power/turbine/turbine_outlet,
 /turf/open/floor/engine/vacuum,
 /area/engineering/atmospherics_engine)
 "wVu" = (
