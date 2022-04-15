@@ -14,7 +14,9 @@
 	///Whether the organ is aroused, matters for sprites, use AROUSAL_CANT, AROUSAL_NONE, AROUSAL_PARTIAL or AROUSAL_FULL
 	var/aroused = AROUSAL_NONE
 	///Whether the organ is supposed to use a skintoned variant of the sprite
-	var/uses_skintones
+	var/uses_skintones = FALSE
+	///Whether the organ is supposed to use the color of the holder's skin tone.
+	var/uses_skintones_color = FALSE
 	/// Where the genital is actually located, for clothing checks.
 	var/genital_location = GROIN
 
@@ -49,9 +51,12 @@
 	var/datum/sprite_accessory/genital/SA = GLOB.sprite_accessories[associated_key][DNA.mutant_bodyparts[associated_key][MUTANT_INDEX_NAME]]
 	genital_name = SA.name
 	genital_type = SA.icon_state
-	if(DNA.features["uses_skintones"])
-		uses_skintones = SA.uses_skintones
+	build_from_accessory(SA, DNA)
 	update_sprite_suffix()
+
+/// for specific build_from_dna behavior that also checks the genital accessory.
+/obj/item/organ/genital/proc/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
+	return
 
 /obj/item/organ/genital/proc/is_exposed()
 	if(!owner)
@@ -158,10 +163,15 @@
 /obj/item/organ/genital/penis/build_from_dna(datum/dna/DNA, associated_key)
 	..()
 	girth = DNA.features["penis_girth"]
-	var/datum/sprite_accessory/genital/penis/PS = GLOB.sprite_accessories[associated_key][DNA.mutant_bodyparts[associated_key][MUTANT_INDEX_NAME]]
-	if(PS.can_have_sheath)
-		sheath = DNA.features["penis_sheath"]
+	uses_skintones_color = DNA.features["penis_uses_skincolor"]
 	set_size(DNA.features["penis_size"])
+
+/obj/item/organ/genital/penis/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
+	var/datum/sprite_accessory/genital/penis/snake = accessory
+	if(snake.can_have_sheath)
+		sheath = DNA.features["penis_sheath"]
+	if(DNA.features["penis_uses_skintones"])
+		uses_skintones = accessory.has_skintone_shading
 
 /obj/item/organ/genital/testicles
 	name = "testicles"
@@ -190,7 +200,12 @@
 
 /obj/item/organ/genital/testicles/build_from_dna(datum/dna/DNA, associated_key)
 	..()
+	uses_skintones_color = DNA.features["testicles_uses_skincolor"]
 	set_size(DNA.features["balls_size"])
+
+/obj/item/organ/genital/testicles/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
+	if(DNA.features["testicles_uses_skintones"])
+		uses_skintones = accessory.has_skintone_shading
 
 /obj/item/organ/genital/testicles/get_sprite_size_string()
 	var/measured_size = FLOOR(genital_size,1)
@@ -228,6 +243,14 @@
 	if(aroused == AROUSAL_FULL)
 		is_dripping = 1
 	return "[genital_type]_[is_dripping]"
+
+/obj/item/organ/genital/vagina/build_from_dna(datum/dna/DNA, associated_key)
+	uses_skintones_color = DNA.features["vagina_uses_skincolor"]
+	return ..() // will update the sprite suffix
+
+/obj/item/organ/genital/vagina/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
+	if(DNA.features["vagina_uses_skintones"])
+		uses_skintones = accessory.has_skintone_shading
 
 /obj/item/organ/genital/womb
 	name = "womb"
@@ -322,7 +345,12 @@
 /obj/item/organ/genital/breasts/build_from_dna(datum/dna/DNA, associated_key)
 	..()
 	lactates = DNA.features["breasts_lactation"]
+	uses_skintones_color = DNA.features["breasts_uses_skincolor"]
 	set_size(DNA.features["breasts_size"])
+
+/obj/item/organ/genital/vagina/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
+	if(DNA.features["breasts_uses_skintones"])
+		uses_skintones = accessory.has_skintone_shading
 
 /proc/breasts_size_to_cup(number)
 	if(number < 0)

@@ -554,7 +554,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preference/tri_color
 	abstract_type = /datum/preference/tri_color
 	var/type_to_check = /datum/preference/toggle/allow_mismatched_parts
-	var/actually_check = TRUE
+	var/check_mode = TRICOLOR_CHECK_BOOLEAN
 
 /datum/preference/tri_color/deserialize(input, datum/preferences/preferences)
 	var/list/input_colors = input
@@ -567,11 +567,13 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 	return islist(value) && value.len == 3 && (findtext(value[1], GLOB.is_color) && findtext(value[2], GLOB.is_color) && findtext(value[3], GLOB.is_color))
 
 /datum/preference/tri_color/is_accessible(datum/preferences/preferences)
-	if (!actually_check || type == abstract_type)
+	if (check_mode == TRICOLOR_NO_CHECK || type == abstract_type)
 		return ..(preferences)
 	var/passed_initial_check = ..(preferences)
 	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
 	var/part_enabled = preferences.read_preference(type_to_check)
+	if(check_mode == TRICOLOR_CHECK_ACCESSORY)
+		part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, part_enabled)
 	return ((passed_initial_check || allowed) && part_enabled)
 
 /datum/preference/tri_color/apply_to_human(mob/living/carbon/human/target, value)
@@ -584,6 +586,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preference/tri_bool
 	abstract_type = /datum/preference/tri_bool
 	var/type_to_check = /datum/preference/toggle/allow_mismatched_parts
+	var/check_mode = TRICOLOR_CHECK_BOOLEAN
 
 /datum/preference/tri_bool/deserialize(input, datum/preferences/preferences)
 	var/list/input_bools = input
@@ -602,6 +605,8 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
 	var/emissives_allowed = preferences.read_preference(/datum/preference/toggle/allow_emissives)
 	var/part_enabled = preferences.read_preference(type_to_check)
+	if(check_mode == TRICOLOR_CHECK_ACCESSORY)
+		part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, part_enabled)
 	return ((passed_initial_check || allowed) && part_enabled && emissives_allowed)
 
 /datum/preference/tri_bool/apply_to_human(mob/living/carbon/human/target, value)

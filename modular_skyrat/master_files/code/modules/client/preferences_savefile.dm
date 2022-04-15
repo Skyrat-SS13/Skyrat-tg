@@ -1,4 +1,22 @@
+/**
+ * This is a cheap replica of the standard savefile version, only used for characters for now.
+ * You can't really use the non-modular version, least you eventually want asinine merge
+ * conflicts and/or potentially disastrous issues to arise, so here's your own.
+ */
+#define MODULAR_SAVEFILE_VERSION_MAX 1
+
+/datum/preferences/proc/savefile_needs_update_skyrat(savefile/S)
+	var/savefile_version
+	READ_FILE(S["modular_version"], savefile_version)
+
+	if(savefile_version < MODULAR_SAVEFILE_VERSION_MAX)
+		return savefile_version
+	return -1
+
 /datum/preferences/proc/load_character_skyrat(savefile/S)
+
+	var/needs_update = savefile_needs_update_skyrat(S)
+
 	READ_FILE(S["loadout_list"], loadout_list)
 
 	READ_FILE(S["augments"] , augments)
@@ -53,6 +71,34 @@
 		migrate_skyrat(S)
 		addtimer(CALLBACK(src, .proc/check_migration), 10 SECONDS)
 
+	if(needs_update >= 0)
+		update_character_skyrat(needs_update, S) //needs_update == savefile_version if we need an update (positive integer)
+
+/datum/preferences/proc/update_character_skyrat(current_version, savefile/S)
+
+	if(current_version < 1)
+		// removed genital toggles, with the new choiced prefs paths as assoc
+		var/static/list/old_toggles
+		if(!old_toggles)
+			old_toggles = list("penis_toggle" = /datum/preference/choiced/genital/penis,
+				"testicles_toggle" = /datum/preference/choiced/genital/testicles,
+				"vagina_toggle" = /datum/preference/choiced/genital/vagina,
+				"womb_toggle" = /datum/preference/choiced/genital/womb,
+				"breasts_toggle" = /datum/preference/choiced/genital/breasts,
+				"anus_toggle" = /datum/preference/choiced/genital/anus,
+			)
+		for(var/toggle in old_toggles)
+			var/has_genital
+			READ_FILE(S[toggle], has_genital)
+			if(!has_genital) // The toggle was off, so we make sure they have it set to the default "None" in the dropdown pref.
+				var/datum/preference/genital = GLOB.preference_entries[old_toggles[toggle]]
+				write_preference(genital, genital.create_default_value())
+
+		var/uses_skintone
+		READ_FILE(S["skin_tone_toggle"], uses_skintone)
+		for(var/pref_type in subtypesof(/datum/preference/toggle/genital_skin_tone))
+			write_preference(GLOB.preference_entries[pref_type], TRUE)
+
 /datum/preferences/proc/check_migration()
 	if(!tgui_prefs_migration)
 		to_chat(parent, examine_block(span_redtext("CRITICAL FAILURE IN PREFERENCE MIGRATION, REPORT THIS IMMEDIATELY.")))
@@ -79,7 +125,8 @@
 //SKYRAT EDIT REMOVAL END
 	WRITE_FILE(S["alt_job_titles"], alt_job_titles)
 	WRITE_FILE(S["languages"] , languages)
-	WRITE_FILE(S["tgui_prefs_migration"] , tgui_prefs_migration)
+
+	WRITE_FILE(S["modular_version"] , MODULAR_SAVEFILE_VERSION_MAX)
 
 /datum/preferences/proc/update_mutant_bodyparts(datum/preference/preference)
 	if (!preference.relevant_mutant_bodypart)
