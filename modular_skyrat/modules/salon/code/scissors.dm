@@ -51,7 +51,7 @@
 
 		if(do_after(user, haircut_duration, target_human))
 			target_human.hairstyle = hair_id
-			target_human.update_hair()
+			target_human.update_hair(is_creating = TRUE)
 			user.visible_message(span_notice("[user] successfully cuts [target_human]'s hair!"), span_notice("You successfully cut [target_human]'s hair!"))
 			new /obj/effect/decal/cleanable/hair(get_turf(src))
 	else
@@ -72,6 +72,6 @@
 
 		if(do_after(user, facial_haircut_duration, target_human))
 			target_human.facial_hairstyle = facial_hair_id
-			target_human.update_hair()
+			target_human.update_hair(is_creating = TRUE)
 			user.visible_message(span_notice("[user] successfully cuts [target_human]'s facial hair!"), span_notice("You successfully cut [target_human]'s facial hair!"))
 			new /obj/effect/decal/cleanable/hair(get_turf(src))

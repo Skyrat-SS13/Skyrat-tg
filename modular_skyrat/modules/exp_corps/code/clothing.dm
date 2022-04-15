@@ -16,6 +16,17 @@
 	worn_icon_state = "webbing_exp_corps"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Webbing" = list(
+			RESKIN_ICON_STATE = "webbing_exp_corps",
+			RESKIN_WORN_ICON_STATE = "webbing_exp_corps"
+		),
+		"Belt" = list(
+			RESKIN_ICON_STATE = "belt_exp_corps",
+			RESKIN_WORN_ICON_STATE = "belt_exp_corps"
+		),
+	)
 
 /obj/item/storage/belt/military/expeditionary_corps/combat_tech
 	name = "combat tech's chest rig"
@@ -56,7 +67,7 @@
 	new /obj/item/binoculars(src)
 	new /obj/item/storage/fancy/cigarettes/cigpack_robust(src)
 	new /obj/item/lighter(src)
-	new /obj/item/clothing/mask/bandana/skull(src)
+	new /obj/item/clothing/mask/bandana/color/skull(src)
 
 /obj/item/clothing/shoes/combat/expeditionary_corps
 	name = "expeditionary corps boots"
@@ -114,6 +125,17 @@
 	worn_icon = 'modular_skyrat/modules/exp_corps/icons/mob_backpack.dmi'
 	slowdown = 0
 	resistance_flags = FIRE_PROOF
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Backpack" = list(
+			RESKIN_ICON_STATE = "exp_corps",
+			RESKIN_WORN_ICON_STATE = "exp_corps"
+		),
+		"Belt" = list(
+			RESKIN_ICON_STATE = "exp_corps_satchel",
+			RESKIN_WORN_ICON_STATE = "exp_corps_satchel"
+		),
+	)
 
 /obj/item/clothing/suit/armor/vest/expeditionary_corps
 	name = "expeditionary corps armor vest"
@@ -147,7 +169,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	var/nightvision = FALSE
 	var/mob/living/carbon/current_user
 	actions_types = list(/datum/action/item_action/toggle_nv)

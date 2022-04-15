@@ -265,6 +265,11 @@
 	if(reac_volume >= 5 && HAS_TRAIT_FROM(patient, TRAIT_HUSK, BURN) && patient.getFireLoss() < UNHUSK_DAMAGE_THRESHOLD) //One carp yields 12u rezadone.
 		patient.cure_husk(BURN)
 		patient.visible_message(span_nicegreen("[patient]'s body rapidly absorbs moisture from the environment, taking on a more healthy appearance."))
+	// SKYRAT EDIT ADDITION BEGIN - non-modular changeling balancing
+	if(HAS_TRAIT_FROM(exposed_mob, TRAIT_HUSK, CHANGELING_DRAIN) && (patient.reagents.get_reagent_amount(/datum/reagent/medicine/rezadone) + reac_volume >= SYNTHFLESH_LING_UNHUSK_AMOUNT))//Costs a little more than a normal husk
+		patient.cure_husk(CHANGELING_DRAIN)
+		patient.visible_message("<span class='nicegreen'>A rubbery liquid coats [patient]'s tissues. [patient] looks a lot healthier!")
+	// SKYRAT EDIT ADDITION END
 
 /datum/reagent/medicine/spaceacillin
 	name = "Spaceacillin"
@@ -296,7 +301,7 @@
 
 /datum/reagent/medicine/oxandrolone/overdose_process(mob/living/M, delta_time, times_fired)
 	if(M.getFireLoss()) //It only makes existing burns worse
-		M.adjustFireLoss(4.5 * REM * delta_time, FALSE, FALSE, BODYPART_ORGANIC) // it's going to be healing either 4 or 0.5
+		M.adjustFireLoss(4.5 * REM * delta_time, FALSE, FALSE, BODYTYPE_ORGANIC) // it's going to be healing either 4 or 0.5
 		. = TRUE
 	..()
 
@@ -339,8 +344,8 @@
 		holder.add_reagent(/datum/reagent/consumable/sugar, 1)
 		holder.remove_reagent(/datum/reagent/medicine/salglu_solution, 0.5)
 	if(DT_PROB(18, delta_time))
-		M.adjustBruteLoss(0.5, FALSE, FALSE, BODYPART_ORGANIC)
-		M.adjustFireLoss(0.5, FALSE, FALSE, BODYPART_ORGANIC)
+		M.adjustBruteLoss(0.5, FALSE, FALSE, BODYTYPE_ORGANIC)
+		M.adjustFireLoss(0.5, FALSE, FALSE, BODYTYPE_ORGANIC)
 		. = TRUE
 	..()
 
@@ -409,8 +414,8 @@
 /datum/reagent/medicine/omnizine/overdose_process(mob/living/M, delta_time, times_fired)
 	M.adjustToxLoss(1.5 * REM * delta_time, FALSE)
 	M.adjustOxyLoss(1.5 * REM * delta_time, FALSE)
-	M.adjustBruteLoss(1.5 * REM * delta_time, FALSE, FALSE, BODYPART_ORGANIC)
-	M.adjustFireLoss(1.5 * REM * delta_time, FALSE, FALSE, BODYPART_ORGANIC)
+	M.adjustBruteLoss(1.5 * REM * delta_time, FALSE, FALSE, BODYTYPE_ORGANIC)
+	M.adjustFireLoss(1.5 * REM * delta_time, FALSE, FALSE, BODYTYPE_ORGANIC)
 	..()
 	. = TRUE
 
@@ -507,7 +512,7 @@
 
 /datum/reagent/medicine/sal_acid/overdose_process(mob/living/M, delta_time, times_fired)
 	if(M.getBruteLoss()) //It only makes existing bruises worse
-		M.adjustBruteLoss(4.5 * REM * delta_time, FALSE, FALSE, BODYPART_ORGANIC) // it's going to be healing either 4 or 0.5
+		M.adjustBruteLoss(4.5 * REM * delta_time, FALSE, FALSE, BODYTYPE_ORGANIC) // it's going to be healing either 4 or 0.5
 		. = TRUE
 	..()
 

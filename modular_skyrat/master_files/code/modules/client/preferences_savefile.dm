@@ -71,6 +71,8 @@
 		migrate_skyrat(S)
 		addtimer(CALLBACK(src, .proc/check_migration), 10 SECONDS)
 
+	READ_FILE(S["headshot"], headshot)
+
 	if(needs_update >= 0)
 		update_character_skyrat(needs_update, S) //needs_update == savefile_version if we need an update (positive integer)
 
@@ -126,6 +128,7 @@
 //SKYRAT EDIT REMOVAL END
 	WRITE_FILE(S["alt_job_titles"], alt_job_titles)
 	WRITE_FILE(S["languages"] , languages)
+	WRITE_FILE(S["headshot"], headshot)
 
 	WRITE_FILE(S["modular_version"] , MODULAR_SAVEFILE_VERSION_MAX)
 

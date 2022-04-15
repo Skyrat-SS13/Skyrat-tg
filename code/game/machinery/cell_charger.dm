@@ -12,6 +12,7 @@
 	var/obj/item/stock_parts/cell/charging = null
 	var/charge_rate = 250
 
+/* OVERWRITTEN IN modular_skyrat\modules\aesthetics\cells\cell.dm
 /obj/machinery/cell_charger/update_overlays()
 	. = ..()
 
@@ -27,6 +28,7 @@
 	. += "ccharger-[charging.connector_type]-on"
 	if((charging.charge > 0.01) && charging.charge_light_type)
 		. += mutable_appearance('icons/obj/power.dmi', "cell-[charging.charge_light_type]-o[(charging.percent() >= 99.5) ? 2 : 1]")
+*/
 
 /obj/machinery/cell_charger/examine(mob/user)
 	. = ..()
@@ -35,6 +37,14 @@
 		. += "Current charge: [round(charging.percent(), 1)]%."
 	if(in_range(user, src) || isobserver(user))
 		. += span_notice("The status display reads: Charging power: <b>[charge_rate]W</b>.")
+
+/obj/machinery/cell_charger/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	if(charging)
+		return FALSE
+	if(default_unfasten_wrench(user, tool))
+		update_appearance()
+	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/machinery/cell_charger/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/stock_parts/cell) && !panel_open)
@@ -70,8 +80,6 @@
 		if(!charging && default_deconstruction_screwdriver(user, icon_state, icon_state, W))
 			return
 		if(default_deconstruction_crowbar(W))
-			return
-		if(!charging && default_unfasten_wrench(user, W))
 			return
 		return ..()
 

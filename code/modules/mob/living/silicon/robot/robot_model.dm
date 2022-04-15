@@ -217,6 +217,11 @@
 		if(!borg_skin)
 			return FALSE
 		var/list/details = borg_skins[borg_skin]
+		//SKYRAT EDIT START
+		if(cyborg.hasExpanded && (((R_TRAIT_WIDE in details[SKIN_FEATURES]) && (R_TRAIT_WIDE in model_features)) || ((R_TRAIT_TALL in details[SKIN_FEATURES]) && (R_TRAIT_TALL in model_features))))
+			to_chat(cyborg, span_warning("You can't make yourself into a larger frame when you've already used an expander!"))
+			return FALSE
+		//SKYRAT EDIT END
 		if(!isnull(details[SKIN_ICON_STATE]))
 			cyborg_base_icon = details[SKIN_ICON_STATE]
 		if(!isnull(details[SKIN_ICON]))
@@ -305,7 +310,7 @@
 		/obj/item/lipstick/purple,
 		/obj/item/reagent_containers/spray/waterflower/cyborg,
 		/obj/item/borg/cyborghug/peacekeeper,
-		/obj/item/borg/lollipop/clown,
+		/obj/item/borg/lollipop,
 		/obj/item/picket_sign/cyborg,
 		/obj/item/reagent_containers/borghypo/clown,
 		/obj/item/extinguisher/mini)
@@ -563,7 +568,7 @@
 	if(reagents.has_chemical_flag(REAGENT_CLEANS, 1))
 		our_turf.wash(CLEAN_SCRUB)
 
-	reagents.expose(our_turf, TOUCH, 10)
+	reagents.expose(our_turf, TOUCH, min(1, 10 / reagents.total_volume))
 	// We use more water doing this then mopping
 	reagents.remove_any(2) //reaction() doesn't use up the reagents
 

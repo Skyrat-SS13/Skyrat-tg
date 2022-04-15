@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL - pAIs in MODsuits
 /obj/item/mod/control/transfer_ai(interaction, mob/user, mob/living/silicon/ai/intAI, obj/item/aicard/card)
 	. = ..()
 	if(!.)
@@ -13,6 +14,8 @@
 			balloon_alert(user, "transferring to card...")
 			if(!do_after(user, 5 SECONDS, target = src))
 				balloon_alert(user, "interrupted!")
+				return
+			if(!ai)
 				return
 			intAI = ai
 			intAI.ai_restore_power()//So the AI initially has power.
@@ -34,6 +37,9 @@
 			if(!intAI)
 				balloon_alert(user, "no AI in card!")
 				return
+			if(ai)
+				balloon_alert(user, "already has AI!")
+				return
 			if(intAI.deployed_shell) //Recall AI if shelled so it can be checked for a client
 				intAI.disconnect_shell()
 			if(intAI.stat || !intAI.client)
@@ -42,6 +48,8 @@
 			balloon_alert(user, "transferring to suit...")
 			if(!do_after(user, 5 SECONDS, target = src))
 				balloon_alert(user, "interrupted!")
+				return
+			if(ai)
 				return
 			balloon_alert(user, "AI transferred to suit")
 			ai_enter_mod(intAI)
@@ -140,3 +148,4 @@
 	ai.notify_ghost_cloning("You have been recovered from the wreckage!", source = card)
 	balloon_alert(user, "AI transferred to card")
 	stored_ai = null
+*/

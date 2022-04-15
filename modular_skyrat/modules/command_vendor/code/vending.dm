@@ -15,6 +15,7 @@
 		/obj/item/clothing/head/caphat = 1,
 		/obj/item/clothing/head/caphat/beret = 1,
 		/obj/item/clothing/head/caphat/beret/alt = 1,
+		/obj/item/clothing/head/imperial/cap = 1,
 		/obj/item/clothing/under/rank/captain = 1,
 		/obj/item/clothing/under/rank/captain/skirt = 1,
 		/obj/item/clothing/under/rank/captain/humble = 1,
@@ -52,6 +53,7 @@
 		/obj/item/clothing/head/hopcap = 1,
 		/obj/item/clothing/head/hopcap/beret = 1,
 		/obj/item/clothing/head/hopcap/beret/alt = 1,
+		/obj/item/clothing/head/imperial/hop = 1,
 		/obj/item/clothing/under/rank/civilian/head_of_personnel = 1,
 		/obj/item/clothing/under/rank/civilian/head_of_personnel/skirt = 1,
 		/obj/item/clothing/under/rank/civilian/head_of_personnel/turtleneck = 1,
@@ -85,6 +87,8 @@
 		/obj/item/clothing/under/rank/rnd/research_director/alt/skirt = 1,
 		/obj/item/clothing/under/rank/rnd/research_director/turtleneck = 1,
 		/obj/item/clothing/under/rank/rnd/research_director/turtleneck/skirt = 1,
+		/obj/item/clothing/under/rank/rnd/research_director/skyrat/jumpsuit = 1,
+		/obj/item/clothing/under/rank/rnd/research_director/skyrat/jumpsuit/skirt = 1,
 		/obj/item/clothing/under/rank/rnd/research_director/imperial = 1,
 		/obj/item/clothing/neck/mantle/rdmantle = 1,
 		/obj/item/clothing/suit/toggle/labcoat = 1,
@@ -93,6 +97,7 @@
 	access_lists["[ACCESS_CE]"] = list(
 		/obj/item/clothing/head/beret/engi/ce = 1,
 		/obj/item/clothing/head/beret/engi/ce/alt = 1,
+		/obj/item/clothing/head/imperial/ce = 1,
 		/obj/item/clothing/under/rank/engineering/chief_engineer = 1,
 		/obj/item/clothing/under/rank/engineering/chief_engineer/skirt = 1,
 		/obj/item/clothing/under/rank/engineering/chief_engineer/imperial = 1,
@@ -103,6 +108,7 @@
 		/obj/item/clothing/head/hos = 1,
 		/obj/item/clothing/head/hos/beret/navyhos = 1,
 		/obj/item/clothing/head/hos/peacekeeper/sol = 1,
+		/obj/item/clothing/head/imperial/hos = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/peacekeeper = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/alt = 1,
@@ -138,4 +144,15 @@
 		/obj/item/clothing/head/centhat = 1,
 		/obj/item/clothing/head/centcom_cap = 1,
 		/obj/item/clothing/suit/armor/centcom_formal/nt_consultant = 1
+		)
+
+	access_lists["[ACCESS_HEADS]"] = list(
+		/obj/item/clothing/head/imperial = 5,
+		/obj/item/clothing/head/imperial/grey = 5,
+		/obj/item/clothing/head/imperial/red = 5,
+		/obj/item/clothing/head/imperialhelmet = 5,
+		/obj/item/clothing/under/imperial = 5,
+		/obj/item/clothing/under/imperial/grey = 5,
+		/obj/item/clothing/under/imperial/grey/trouser = 5,
+		/obj/item/clothing/under/imperial/red = 5
 		)

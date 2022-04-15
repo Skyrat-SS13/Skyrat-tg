@@ -62,6 +62,16 @@
 	attack_verb_simple = list("beep", "boop", "ping")
 	squeak_override = list('sound/machines/beep.ogg' = 1)
 
+/obj/item/toy/plush/engihound
+	name = "engi-hound plushie"
+	desc = "An adorable stuffed toy of a engihound."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_engihound"
+	inhand_icon_state = "plushie_engihound"
+	attack_verb_continuous = list("beeps", "boops", "pings")
+	attack_verb_simple = list("beep", "boop", "ping")
+	squeak_override = list('sound/machines/beep.ogg' = 1)
+
 /obj/item/toy/plush/scrubpuppy
 	name = "scrub-puppy plushie"
 	desc = "An adorable stuffed toy of a Scrubpuppy, the hard-working pup who keeps the station clean!"
@@ -281,7 +291,57 @@
 	attack_verb_continuous = list("wehs")
 	attack_verb_simple = list("weh")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
-	
+
+/obj/item/toy/plush/mechanic_fox
+	name = "Mechanist Fox Plushie"
+	desc = "A fox with fabulous hair! It has a tendency to make synth plushies look good as new when placed next to them."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_cali"
+	inhand_icon_state = "plushie_cali"
+	attack_verb_continuous = list("fixes","updates","hugs")
+	attack_verb_simple = list("fixes","updates","hugs")
+	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
+
+/obj/item/toy/plush/tribal_salamander
+	name = "Tribal Salamander Plushie"
+	desc = "A water-safe plushie that always seems to lose any clothes you try to put on it."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_azu"
+	inhand_icon_state = "plushie_azu"
+	attack_verb_continuous = list("wurbles at","warbles at")
+	attack_verb_simple = list("wurbles at","warbles at")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/wurble.ogg' = 1)
+
+/obj/item/toy/plush/commanding_teshari
+    name = "Commanding Teshari Plushy"
+    desc = "A very soft plush resembling a certain science-loving, command inclined Teshari. Just holding it makes you feel cared for."
+    icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+    icon_state = "plushie_alara"
+    inhand_icon_state = "plushie_alara"
+    attack_verb_continuous = list("peeps", "wurbles", "hugs")
+    attack_verb_simple = list("peeps", "wurbles", "hugs")
+    squeak_override = list('modular_skyrat/modules/emotes/sound/voice/peep_once.ogg' = 1)
+
+/obj/item/toy/plush/breakdancing_bird
+	name = "Breakdancing Bird Plushie"
+	desc = "This little robotic bird plushie loves to give you a little dance in celebration of your achievements, no matter how mundane."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_cadicus"
+	inhand_icon_state = "plushie_cadicus"
+	attack_verb_continuous = list("boops","dances next to")
+	attack_verb_simple = list("boops","dances next to")
+	squeak_override = list('sound/machines/ping.ogg' = 1)
+
+/obj/item/toy/plush/skreking_vox
+	name = "Skreking Vox Plushie"
+	desc = "A vox plushie that seems ready to pull a gun on you and demand your money! Rumor has it that if you poke it in a particular way, it will show you its skrektual technique."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_toko"
+	inhand_icon_state = "plushie_toko"
+	attack_verb_continuous = list("rustles at","threatens","skreks at")
+	attack_verb_simple = list("rustles at","threatens","skreks at")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/voxrustle.ogg' = 1)
+
 /obj/item/toy/plush/blue_dog
 	name = "Blue Dog Plushie"
 	desc = "A devious looking husky that seems to be begging for headpats. It smells faintly of blueberries."
@@ -321,7 +381,7 @@
 	attack_verb_continuous = list("punches", "explodes on", "peeps")
 	attack_verb_simple = list("punches", "explodes on", "peeps")
 	squeak_override = list('sound/machines/sm/accent/delam/1.ogg' = 1)
-	
+
 /obj/item/toy/plush/blue_cat
 	name = "blue cat plushie"
 	desc = "A bright blue cat plush with neon pink hair, here to hand out kisses wherever kisses need be."

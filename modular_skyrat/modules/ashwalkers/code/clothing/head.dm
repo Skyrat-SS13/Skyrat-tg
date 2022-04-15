@@ -4,5 +4,5 @@
 	icon = 'modular_skyrat/modules/ashwalkers/icons/hats.dmi'
 	worn_icon = 'modular_skyrat/modules/ashwalkers/icons/head.dmi'
 	icon_state = "shamskull"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
