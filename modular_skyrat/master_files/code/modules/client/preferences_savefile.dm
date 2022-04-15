@@ -96,8 +96,9 @@
 
 		var/uses_skintone
 		READ_FILE(S["skin_tone_toggle"], uses_skintone)
-		for(var/pref_type in subtypesof(/datum/preference/toggle/genital_skin_tone))
-			write_preference(GLOB.preference_entries[pref_type], TRUE)
+		if(uses_skintone)
+			for(var/pref_type in subtypesof(/datum/preference/toggle/genital_skin_tone))
+				write_preference(GLOB.preference_entries[pref_type], TRUE)
 
 /datum/preferences/proc/check_migration()
 	if(!tgui_prefs_migration)

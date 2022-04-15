@@ -1,5 +1,6 @@
 /datum/sprite_accessory/genital
 	special_render_case = TRUE
+	special_colorize = TRUE
 	var/associated_organ_slot
 	/// If true, then there should be a variant in the icon file that's slightly pinkier to match human base colors.
 	var/has_skintone_shading = FALSE
@@ -23,11 +24,11 @@
 
 /datum/sprite_accessory/genital/get_special_render_state(mob/living/carbon/human/H)
 	var/obj/item/organ/genital/gen = H.getorganslot(associated_organ_slot)
-	return  "[gen?.sprite_suffix]"
+	return "[gen?.sprite_suffix]"
 
 /datum/sprite_accessory/genital/get_special_render_colour(mob/living/carbon/human/H, render_state)
 	var/obj/item/organ/genital/gen = H.getorganslot(associated_organ_slot)
-	if(gen?.uses_skintones_color && H.dna.species.use_skintones)
+	if(gen?.uses_skin_color && H.dna.species.use_skintones)
 		return skintone2hex(H.skin_tone)
 
 /datum/sprite_accessory/genital/penis

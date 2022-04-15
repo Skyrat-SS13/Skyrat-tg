@@ -16,7 +16,7 @@
 	///Whether the organ is supposed to use a skintoned variant of the sprite
 	var/uses_skintones = FALSE
 	///Whether the organ is supposed to use the color of the holder's skin tone.
-	var/uses_skintones_color = FALSE
+	var/uses_skin_color = FALSE
 	/// Where the genital is actually located, for clothing checks.
 	var/genital_location = GROIN
 
@@ -163,7 +163,7 @@
 /obj/item/organ/genital/penis/build_from_dna(datum/dna/DNA, associated_key)
 	..()
 	girth = DNA.features["penis_girth"]
-	uses_skintones_color = DNA.features["penis_uses_skincolor"]
+	uses_skin_color = DNA.features["penis_uses_skincolor"]
 	set_size(DNA.features["penis_size"])
 
 /obj/item/organ/genital/penis/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
@@ -200,7 +200,7 @@
 
 /obj/item/organ/genital/testicles/build_from_dna(datum/dna/DNA, associated_key)
 	..()
-	uses_skintones_color = DNA.features["testicles_uses_skincolor"]
+	uses_skin_color = DNA.features["testicles_uses_skincolor"]
 	set_size(DNA.features["balls_size"])
 
 /obj/item/organ/genital/testicles/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
@@ -245,7 +245,7 @@
 	return "[genital_type]_[is_dripping]"
 
 /obj/item/organ/genital/vagina/build_from_dna(datum/dna/DNA, associated_key)
-	uses_skintones_color = DNA.features["vagina_uses_skincolor"]
+	uses_skin_color = DNA.features["vagina_uses_skincolor"]
 	return ..() // will update the sprite suffix
 
 /obj/item/organ/genital/vagina/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
@@ -345,10 +345,10 @@
 /obj/item/organ/genital/breasts/build_from_dna(datum/dna/DNA, associated_key)
 	..()
 	lactates = DNA.features["breasts_lactation"]
-	uses_skintones_color = DNA.features["breasts_uses_skincolor"]
+	uses_skin_color = DNA.features["breasts_uses_skincolor"]
 	set_size(DNA.features["breasts_size"])
 
-/obj/item/organ/genital/vagina/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
+/obj/item/organ/genital/breasts/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
 	if(DNA.features["breasts_uses_skintones"])
 		uses_skintones = accessory.has_skintone_shading
 
