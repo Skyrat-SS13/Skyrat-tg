@@ -82,7 +82,7 @@
 	return markings
 
 /datum/species/aquatic/get_species_description()
-	return "Placeholder Description - Fill me!"
+	return placeholder_description
 
 /datum/species/aquatic/get_species_lore()
-	return list("Placeholder Lore - Fill me!")
+	return list(placeholder_lore)

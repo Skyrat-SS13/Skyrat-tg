@@ -288,8 +288,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/vampire
 	mutant_bodyparts = list()
 
-/datum/species/hemophage
-	mutant_bodyparts = list()
+/* /datum/species/hemophage
+	mutant_bodyparts = list() */ // Expanded in another file.
 
 /datum/species/plasmaman
 	mutant_bodyparts = list()

@@ -17,7 +17,7 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC
 	mutanteyes = /obj/item/organ/eyes/night_vision
 	species_language_holder = /datum/language_holder/shadowpeople
-	examine_limb_id = SPECIES_SHADOW
+	examine_limb_id = SPECIES_SHADOW // SKYRAT EDIT: Fixing Shadowpeople
 	bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/shadow,
 		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/shadow,
