@@ -52,8 +52,8 @@
 	subcategory = ARMAMENT_SUBCATEGORY_AMMO
 	stock_mult = 2
 	is_gun = FALSE
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 3
+	lower_cost = CARGO_CRATE_VALUE * 1
+	upper_cost = CARGO_CRATE_VALUE * 2
 
 /datum/armament_entry/cargo_gun/cantalan/ammo/c34
 	item_type = /obj/item/ammo_box/c34
