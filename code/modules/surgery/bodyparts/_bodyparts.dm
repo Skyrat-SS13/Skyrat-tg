@@ -806,15 +806,9 @@
 	if(draw_color)
 
 		//SKYRAT EDIT BEGIN - Alpha values on limbs //We check if the limb is attached and if the owner has an alpha value to append
-		if(owner && owner.dna.species)
-			limb.color = "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" //honestly this is cursed as hell
-		else //Limb is detached
-			limb.color = "[draw_color]"
+		limb.color = owner?.dna.species ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
 		if(aux_zone)
-			if(owner && owner.dna.species)
-				aux.color = "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]"
-			else
-				aux.color = "[draw_color]"
+			aux.color = owner?.dna.species ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
 		//SKYRAT EDIT END
 
 	//EMISSIVE CODE START
