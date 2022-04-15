@@ -204,7 +204,7 @@
 			parent_prog.requestonly = TRUE
 			parent_prog.can_approve_requests = FALSE
 	else
-		parent_prog.requestonly = TRUE
+		parent_prog?.requestonly = TRUE
 
 	if(self_paid)
 		if(!istype(id_card))
@@ -327,7 +327,7 @@
 			parent_prog.requestonly = TRUE
 			parent_prog.can_approve_requests = FALSE
 	else
-		parent_prog.requestonly = TRUE
+		parent_prog?.requestonly = TRUE
 
 	if(self_paid)
 		if(!istype(id_card))
