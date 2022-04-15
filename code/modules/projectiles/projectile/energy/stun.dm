@@ -3,9 +3,14 @@
 	icon_state = "spark"
 	color = "#FFFF00"
 	nodamage = FALSE
+<<<<<<< HEAD
 	//paralyze = 100 //SKYRAT EDIT REMOVAL - COMBAT
 	stamina = 80  //SKYRAT EDIT ADDITION - COMBAT
 	stutter = 5
+=======
+	paralyze = 100
+	stutter = 10 SECONDS
+>>>>>>> ab51d5a00c1 (Refactors speech impeding effects (drunken slurring / suttering) into status effects. Adds heretic slurring in addition to the existing cult slurring. Removes 4 vars from /living in return, which slightly optimizes Life() (wink) (#66031))
 	jitter = 20
 	hitsound = 'sound/weapons/taserhit.ogg'
 	//range = 7 //ORIGINAL
