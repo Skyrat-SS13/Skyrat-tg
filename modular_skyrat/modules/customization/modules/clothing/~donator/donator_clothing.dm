@@ -544,6 +544,20 @@
 /obj/item/clothing/head/avipilot/attack_self(mob/living/carbon/user)
 	adjust_goggles(user)
 
+
+// Donation reward for NetraKyram - public use allowed via the command vendor
+/obj/item/clothing/under/rank/captain/dress
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
+	name = "captain's dress"
+	desc = "It's a blue dress with some worn-gold markings denoting the rank of \"Captain\"."
+	icon_state = "dress_cap_s"
+	worn_icon_state = "dress_cap_s"
+	body_parts_covered = CHEST|GROIN|ARMS
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	can_adjust = FALSE
+
 // Donation reward for NetraKyram
 /obj/item/clothing/under/custom/kilano
 	name = "black and gold dress uniform"

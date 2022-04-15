@@ -14,8 +14,6 @@
 ////////////////////////////////////////
 ////////////// CARGO TECH //////////////
 /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/cargo.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/cargo.dmi'
 	name = "supply utility uniform"
 	desc = "A utility uniform worn by Supply and Delivery services."
 	icon_state = "util_cargo"
