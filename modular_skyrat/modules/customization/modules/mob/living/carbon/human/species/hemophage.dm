@@ -83,7 +83,9 @@
 		vampire.IgniteMob()
 
 /datum/species/hemophage/get_species_description()
-	return placeholder_description
+	return "Oftentimes feared for the different bits of folklore surrounding their condition, \
+		Hemophages are typically mixed amongst the crew, hiding away their blood-deficiency and \
+		the benefits that come from it from most, to enjoy a nearly-normal existence on the Frontier."
 
 /datum/species/hemophage/get_species_lore()
 	return list("Though known by many other names, 'Hemophages' are those that have found themselves the host of a bloodthirsty infection. Initially entering their hosts through the bloodstream, or activating after a period of dormancy in infants, this infection initially travels to the chest first. Afterwards, it infects several cells, making countless alterations to their genetic sequence, until it starts rapidly expanding and taking over every nearby organ, notably the heart, lungs, and stomach, forming a massive tumor vaguely reminiscent of an overgrown, coal-black heart, that hijacks them for its own benefit, and in exchange, allows the host to 'sense' the quality, and amount of blood currently occupying their body.",

@@ -31,7 +31,7 @@
 	examine_limb_id = SPECIES_HUMAN
 
 /datum/species/humanoid/get_species_description()
-	return placeholder_description + "\n This is a template species for your own creations!"
+	return "\n This is a template species for your own creations!"
 
 /datum/species/humanoid/get_species_lore()
 	return list("Make sure you fill out your own custom species lore!")

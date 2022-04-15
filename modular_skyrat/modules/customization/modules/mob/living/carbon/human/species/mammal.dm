@@ -105,7 +105,7 @@
 	return markings
 
 /datum/species/mammal/get_species_description()
-	return placeholder_description + "\n This is a template species for your own creations!"
+	return "\n This is a template species for your own creations!"
 
 
 /datum/species/mammal/get_species_lore()
