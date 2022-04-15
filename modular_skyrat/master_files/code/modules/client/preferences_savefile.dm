@@ -5,14 +5,21 @@
  */
 #define MODULAR_SAVEFILE_VERSION_MAX 1
 
+#define MODULAR_SAVEFILE_UP_TO_DATE -1
+
+/**
+ * Checks if the modular side of the savefile is up to date.
+ * If the return value is higher than 0, update_character_skyrat() will be called later.
+ */
 /datum/preferences/proc/savefile_needs_update_skyrat(savefile/save)
 	var/savefile_version
 	READ_FILE(save["modular_version"], savefile_version)
 
 	if(savefile_version < MODULAR_SAVEFILE_VERSION_MAX)
 		return savefile_version
-	return -1
+	return -MODULAR_SAVEFILE_UP_TO_DATE
 
+/// Loads the modular customizations of a character from the savefile
 /datum/preferences/proc/load_character_skyrat(savefile/save)
 
 	var/needs_update = savefile_needs_update_skyrat(save)
@@ -76,6 +83,7 @@
 	if(needs_update >= 0)
 		update_character_skyrat(needs_update, save) //needs_update == savefile_version if we need an update (positive integer)
 
+/// Brings a savefile up to date with modular preferences. Called if savefile_needs_update_skyrat() returned a value higher than 0
 /datum/preferences/proc/update_character_skyrat(current_version, savefile/save)
 
 	if(current_version < 1)
@@ -107,6 +115,7 @@
 		to_chat(parent, examine_block(span_redtext("CRITICAL FAILURE IN PREFERENCE MIGRATION, REPORT THIS IMMEDIATELY.")))
 		message_admins("PREFERENCE MIGRATION: [ADMIN_LOOKUPFLW(parent)] has failed the process for migrating PREFERENCES. Check runtimes.")
 
+/// Saves the modular customizations of a character on the savefile
 /datum/preferences/proc/save_character_skyrat(savefile/save)
 
 	WRITE_FILE(save["loadout_list"], loadout_list)
@@ -165,3 +174,6 @@
 				if (!islist(markings[marking][title]))
 					markings[marking][title] = list(sanitize_hexcolor(markings[marking][title]), FALSE)
 	return markings
+
+#undef MODULAR_SAVEFILE_VERSION_MAX
+#undef MODULAR_SAVEFILE_UP_TO_DATE
