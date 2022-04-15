@@ -70,10 +70,10 @@
 
 /datum/armament_entry/hecu/medical/injector/stimulant
 	item_type = /obj/item/reagent_containers/hypospray/medipen/stimulants
-	max_purchase = 4
-	cost = 1
+	max_purchase = 2
+	cost = 4
 
 /datum/armament_entry/hecu/medical/injector/bag
 	item_type = /obj/item/storage/bag/medpens
 	max_purchase = 2
-	cost = 3
+	cost = 5

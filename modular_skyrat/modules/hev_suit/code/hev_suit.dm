@@ -51,7 +51,14 @@
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
 	visor_flags_inv = HIDEMASK|HIDEEYES|HIDEFACE|HIDEFACIALHAIR
 	visor_flags = STOPSPRESSUREDAMAGE
+	can_flashlight = FALSE
+	dog_fashion = null
 	slowdown = 0
+
+/obj/item/clothing/head/helmet/space/hev_suit/Initialize(mapload)
+	set_attached_light(new /obj/item/flashlight/seclite)
+	update_helmlight()
+	. = ..()
 
 /obj/item/clothing/suit/space/hev_suit
 	name = "hazardous environment suit"

@@ -8,6 +8,11 @@
 	flavour_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	restricted_species = list(/datum/species/human)
 
+/obj/effect/mob_spawn/ghost_role/human/black_mesa/special(mob/living/carbon/human/spawned_human)
+	. = ..()
+	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
+	spawned_human.remove_language(/datum/language/common)
+
 /datum/outfit/science_team
 	name = "Scientist"
 	uniform = /obj/item/clothing/under/misc/hlscience
@@ -32,6 +37,11 @@
 	prompt_name = "a research facility guard"
 	outfit = /datum/outfit/security_guard
 	you_are_text = "You are a security guard in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
+
+/obj/effect/mob_spawn/ghost_role/human/black_mesa/guard/special(mob/living/carbon/human/spawned_human)
+	. = ..()
+	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
+	spawned_human.remove_language(/datum/language/common)
 
 /obj/item/clothing/under/rank/security/peacekeeper/sol/traffic/blackmesa
 	name = "security guard uniform"
@@ -66,6 +76,11 @@
 	flavour_text = "You and four other marines have been selected for a guard duty near one of the Black Mesa's entrances. You haven't heard much from the north-west post, except for the sounds of gunshots, and their radios went silent. On top of that, your escape helicopter was shot down mid-flight, and another one won't arrive so soon; with your machinegunner being shot down with a precise headshot by something, or SOMEONE. You are likely on your own, at least for now."
 	important_text = "Do not try to explore the level unless Vanguard is dead or cooperative. Stay around your area. Allowed races are humans and IPCs."
 	restricted_species = list(/datum/species/human, /datum/species/robotic/ipc)
+
+/obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu/special(mob/living/carbon/human/spawned_human)
+	. = ..()
+	spawned_human.remove_language(/datum/language/common)
+	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
 
 /obj/item/clothing/under/rank/security/officer/hecu
 	name = "urban camouflage BDU"
@@ -121,10 +136,10 @@
 	mask = /obj/item/clothing/mask/gas/hecu2
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/storage/belt/military/assault/hecu
-	ears = /obj/item/radio/headset
+	ears = /obj/item/radio/headset/headset_faction
 	shoes = /obj/item/clothing/shoes/combat
 	l_pocket = /obj/item/grenade/smokebomb
-	r_pocket = /obj/item/binoculars
+	r_pocket = null
 	back = /obj/item/storage/backpack/ert/odst/hecu
 	backpack_contents = list(
 		/obj/item/storage/box/survival/radio,
@@ -142,6 +157,55 @@
 	equipped_human.faction |= FACTION_HECU
 
 /datum/id_trim/hecu
-	assignment = "HECU Soldier"
+	assignment = "HECU Marine"
+	trim_state = "trim_securityofficer"
+	access = list(ACCESS_BRIG_ENTRANCE, ACCESS_SECURITY, ACCESS_AWAY_SEC)
+
+/obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu/leader
+	name = "HECU Squad Leader"
+	prompt_name = "a tactical squad's leader"
+	outfit = /datum/outfit/hecu/leader
+	you_are_text = "You are an elite tactical squad's leader deployed into the research facility to contain the infestation."
+	flavour_text = "You and four other marines have been selected for a guard duty near one of the Black Mesa's entrances. Due to the lack of any real briefing, and your briefing officer's death during the landing, you have no clue as to what your objective is, so you and your group have set up a camp here. You haven't heard much from the north-west post, except for the sounds of gunshots, and their radios went silent. On top of that, your escape helicopter was shot down mid-flight, and another one won't arrive so soon; with your machinegunner being shot down with a precise headshot by something, or SOMEONE. You are likely on your own, at least for now."
+	important_text = "Keep and sustain marines' morale and discipline. Delegate responsibilities at the best of your abilities. Do not try to explore the level unless Vanguard is dead or cooperative. Stay around your area. Allowed races are humans and IPCs."
+	restricted_species = list(/datum/species/human, /datum/species/robotic/ipc)
+
+/obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu/leader/special(mob/living/carbon/human/spawned_human)
+	. = ..()
+	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
+	spawned_human.grant_language(/datum/language/neorusskya, TRUE, TRUE, LANGUAGE_MIND)
+	spawned_human.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_MIND)
+	spawned_human.remove_language(/datum/language/common)
+
+/datum/outfit/hecu/leader
+	name = "HECU Captain"
+	uniform = /obj/item/clothing/under/rank/security/officer/hecu
+	head = /obj/item/clothing/head/beret/sec
+	mask = /obj/item/clothing/mask/gas/hecu2
+	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
+	belt = /obj/item/storage/belt/military/assault/hecu
+	ears = /obj/item/radio/headset/headset_faction/bowman/captain
+	shoes = /obj/item/clothing/shoes/combat
+	l_pocket = /obj/item/grenade/smokebomb
+	r_pocket = /obj/item/binoculars
+	back = /obj/item/storage/backpack/ert/odst/hecu
+	backpack_contents = list(
+		/obj/item/storage/box/survival/radio,
+		/obj/item/storage/medkit/emergency,
+		/obj/item/storage/box/hecu_rations,
+		/obj/item/knife/combat,
+		/obj/item/armament_points_card/assaultops,
+		/obj/item/book/granter/martial/cqc
+	)
+	id = /obj/item/card/id
+	id_trim = /datum/id_trim/hecu_leader
+	skillchips = list(/obj/item/skillchip/chameleon/reload)
+
+/datum/outfit/hecu/leader/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
+	. = ..()
+	equipped_human.faction |= FACTION_HECU
+
+/datum/id_trim/hecu_leader
+	assignment = "HECU Captain"
 	trim_state = "trim_securityofficer"
 	access = list(ACCESS_BRIG_ENTRANCE, ACCESS_SECURITY, ACCESS_AWAY_SEC)
