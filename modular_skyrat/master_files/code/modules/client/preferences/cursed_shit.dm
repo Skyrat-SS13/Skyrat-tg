@@ -53,6 +53,42 @@
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(genital_pref_type))
 	return part_enabled && (passed_initial_check || allowed)
 
+/datum/preference/tri_color/genital
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	check_mode = TRICOLOR_CHECK_ACCESSORY
+	abstract_type = /datum/preference/tri_color/genital
+	var/skin_color_type
+
+/datum/preference/tri_color/genital/is_accessible(datum/preferences/preferences)
+	var/passed_initial_check = ..(preferences)
+	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	var/can_color = TRUE
+	/// Checks that the use skin color pref is both enabled and actually accessible. If so, then this is useless.
+	if(preferences.read_preference(skin_color_type))
+		var/datum/preference/toggle/genital_skin_color/skincolor = GLOB.preference_entries[skin_color_type]
+		if(skincolor.is_accessible(preferences))
+			can_color = FALSE
+	return can_color && (passed_initial_check || allowed)
+
+/datum/preference/tri_bool/genital
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	check_mode = TRICOLOR_CHECK_ACCESSORY
+	abstract_type = /datum/preference/tri_bool/genital
+	var/skin_color_type
+
+/datum/preference/tri_bool/genital/is_accessible(datum/preferences/preferences)
+	var/passed_initial_check = ..(preferences)
+	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	var/can_color = TRUE
+	/// Checks that the use skin color pref is both enabled and actually accessible. If so, then this is useless.
+	if(preferences.read_preference(skin_color_type))
+		var/datum/preference/toggle/genital_skin_color/skincolor = GLOB.preference_entries[skin_color_type]
+		if(skincolor.is_accessible(preferences))
+			can_color = FALSE
+	return can_color && (passed_initial_check || allowed)
+
 // PENIS
 
 /datum/preference/choiced/genital/penis
@@ -119,21 +155,17 @@
 /datum/preference/numeric/penis_girth/create_default_value()
 	return round((PENIS_MIN_LENGTH + PENIS_MAX_GIRTH) / 2)
 
-/datum/preference/tri_color/penis
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
+/datum/preference/tri_color/genital/penis
 	savefile_key = "penis_color"
 	relevant_mutant_bodypart = "penis"
 	type_to_check = /datum/preference/choiced/genital/penis
-	check_mode = TRICOLOR_CHECK_ACCESSORY
+	skin_color_type = /datum/preference/toggle/genital_skin_color/penis
 
-/datum/preference/tri_bool/penis
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
+/datum/preference/tri_bool/genital/penis
 	savefile_key = "penis_emissive"
 	relevant_mutant_bodypart = "penis"
 	type_to_check = /datum/preference/choiced/genital/penis
-	check_mode = TRICOLOR_CHECK_ACCESSORY
+	skin_color_type = /datum/preference/toggle/genital_skin_color/penis
 
 /datum/preference/toggle/penis_taur_mode
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -198,21 +230,17 @@
 /datum/preference/toggle/genital_skin_color/testicles/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.dna.features["testicles_uses_skincolor"] = value
 
-/datum/preference/tri_color/testicles
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
+/datum/preference/tri_color/genital/testicles
 	savefile_key = "testicles_color"
 	relevant_mutant_bodypart = "testicles"
 	type_to_check = /datum/preference/choiced/genital/testicles
-	check_mode = TRICOLOR_CHECK_ACCESSORY
+	skin_color_type = /datum/preference/toggle/genital_skin_color/testicles
 
-/datum/preference/tri_bool/testicles
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
+/datum/preference/tri_bool/genital/testicles
 	savefile_key = "testicles_emissive"
 	relevant_mutant_bodypart = "testicles"
 	type_to_check = /datum/preference/choiced/genital/testicles
-	check_mode = TRICOLOR_CHECK_ACCESSORY
+	skin_color_type = /datum/preference/toggle/genital_skin_color/testicles
 
 /datum/preference/numeric/balls_size
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -260,21 +288,17 @@
 	var/datum/sprite_accessory/genital/vagina/none/default = /datum/sprite_accessory/genital/vagina/none
 	return initial(default.name)
 
-/datum/preference/tri_color/vagina
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
+/datum/preference/tri_color/genital/vagina
 	savefile_key = "vagina_color"
 	relevant_mutant_bodypart = "vagina"
 	type_to_check = /datum/preference/choiced/genital/vagina
-	check_mode = TRICOLOR_CHECK_ACCESSORY
+	skin_color_type = /datum/preference/toggle/genital_skin_color/vagina
 
-/datum/preference/tri_bool/vagina
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
+/datum/preference/tri_bool/genital/vagina
 	savefile_key = "vagina_emissive"
 	relevant_mutant_bodypart = "vagina"
 	type_to_check = /datum/preference/choiced/genital/vagina
-	check_mode = TRICOLOR_CHECK_ACCESSORY
+	skin_color_type = /datum/preference/toggle/genital_skin_color/vagina
 
 // UTERUS
 
@@ -312,21 +336,17 @@
 /datum/preference/toggle/genital_skin_color/breasts/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.dna.features["breasts_uses_skincolor"] = value
 
-/datum/preference/tri_color/breasts
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
+/datum/preference/tri_color/genital/breasts
 	savefile_key = "breasts_color"
 	relevant_mutant_bodypart = "breasts"
 	type_to_check = /datum/preference/choiced/genital/breasts
-	check_mode = TRICOLOR_CHECK_ACCESSORY
+	skin_color_type = /datum/preference/toggle/genital_skin_color/breasts
 
-/datum/preference/tri_bool/breasts
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
+/datum/preference/tri_bool/genital/breasts
 	savefile_key = "breasts_emissive"
 	relevant_mutant_bodypart = "breasts"
 	type_to_check = /datum/preference/choiced/genital/breasts
-	check_mode = TRICOLOR_CHECK_ACCESSORY
+	skin_color_type = /datum/preference/toggle/genital_skin_color/breasts
 
 /datum/preference/toggle/breasts_lactation
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES

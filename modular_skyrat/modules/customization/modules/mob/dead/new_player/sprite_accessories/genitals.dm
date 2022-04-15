@@ -22,14 +22,14 @@
 		else
 			return TRUE
 
-/datum/sprite_accessory/genital/get_special_render_state(mob/living/carbon/human/H)
-	var/obj/item/organ/genital/gen = H.getorganslot(associated_organ_slot)
-	return "[gen?.sprite_suffix]"
+/datum/sprite_accessory/genital/get_special_render_state(mob/living/carbon/human/human)
+	var/obj/item/organ/genital/genital = human.getorganslot(associated_organ_slot)
+	return "[genital?.sprite_suffix]"
 
-/datum/sprite_accessory/genital/get_special_render_colour(mob/living/carbon/human/H, render_state)
-	var/obj/item/organ/genital/gen = H.getorganslot(associated_organ_slot)
-	if(gen?.uses_skin_color && H.dna.species.use_skintones)
-		return skintone2hex(H.skin_tone)
+/datum/sprite_accessory/genital/get_special_render_colour(mob/living/carbon/human/human, render_state)
+	var/obj/item/organ/genital/genital = human.getorganslot(associated_organ_slot)
+	if(genital?.uses_skin_color && human.dna.species.use_skintones)
+		return skintone2hex(human.skin_tone)
 
 /datum/sprite_accessory/genital/penis
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/penis_onmob.dmi'

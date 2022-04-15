@@ -48,10 +48,10 @@
 
 /obj/item/organ/genital/build_from_dna(datum/dna/DNA, associated_key)
 	..()
-	var/datum/sprite_accessory/genital/SA = GLOB.sprite_accessories[associated_key][DNA.mutant_bodyparts[associated_key][MUTANT_INDEX_NAME]]
-	genital_name = SA.name
-	genital_type = SA.icon_state
-	build_from_accessory(SA, DNA)
+	var/datum/sprite_accessory/genital/accessory = GLOB.sprite_accessories[associated_key][DNA.mutant_bodyparts[associated_key][MUTANT_INDEX_NAME]]
+	genital_name = accessory.name
+	genital_type = accessory.icon_state
+	build_from_accessory(accessory, DNA)
 	update_sprite_suffix()
 
 /// for specific build_from_dna behavior that also checks the genital accessory.
