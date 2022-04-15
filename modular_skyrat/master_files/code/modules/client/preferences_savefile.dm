@@ -17,7 +17,7 @@
 
 	if(savefile_version < MODULAR_SAVEFILE_VERSION_MAX)
 		return savefile_version
-	return -MODULAR_SAVEFILE_UP_TO_DATE
+	return MODULAR_SAVEFILE_UP_TO_DATE
 
 /// Loads the modular customizations of a character from the savefile
 /datum/preferences/proc/load_character_skyrat(savefile/save)
