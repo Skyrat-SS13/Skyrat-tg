@@ -1,5 +1,4 @@
 #define MAX_AMMO_AMOUNT 10
-#define RADIO_COOLDOWN 300
 #define CARGO_CONSOLE 1
 #define IRN_CONSOLE 2
 
@@ -248,10 +247,6 @@
 			if(isnull(reason))
 				return
 
-		if(possible_console.requestonly && COOLDOWN_FINISHED(src, radio_cooldown))
-			possible_console.radio.talk_into(src, "A new order has been requested.", RADIO_CHANNEL_SUPPLY)
-			COOLDOWN_START(src, radio_cooldown, RADIO_COOLDOWN)
-
 	else if(possible_downloader)
 		var/datum/computer_file/program/budgetorders/parent_file = parent_prog
 		var/obj/item/computer_hardware/card_slot/card_slot = possible_downloader.all_components[MC_CARD]
@@ -369,10 +364,6 @@
 			if(isnull(reason))
 				return
 
-		if(possible_console.requestonly && COOLDOWN_FINISHED(src, radio_cooldown))
-			possible_console.radio.talk_into(src, "A new order has been requested.", RADIO_CHANNEL_SUPPLY)
-			COOLDOWN_START(src, radio_cooldown, RADIO_COOLDOWN)
-
 	else if(possible_downloader)
 		var/datum/computer_file/program/budgetorders/parent_file = parent_prog
 		var/obj/item/computer_hardware/card_slot/card_slot = possible_downloader.all_components[MC_CARD]
@@ -425,6 +416,15 @@
 
 		if("buy_company")
 			var/target = params["selected_company"]
+			var/obj/machinery/computer/cargo/possible_console
+
+			if(console_state == CARGO_CONSOLE)
+				possible_console = parent
+				if(possible_console.requestonly && !self_paid)
+					return
+			else if(console_state == IRN_CONSOLE)
+				if(parent_prog.requestonly && !self_paid)
+					return
 
 			for(var/find_company in SSgun_companies.unpurchased_companies)
 				if(find_company != target)
@@ -501,6 +501,5 @@
 			self_paid = !self_paid
 
 #undef MAX_AMMO_AMOUNT
-#undef RADIO_COOLDOWN
 #undef CARGO_CONSOLE
 #undef IRN_CONSOLE

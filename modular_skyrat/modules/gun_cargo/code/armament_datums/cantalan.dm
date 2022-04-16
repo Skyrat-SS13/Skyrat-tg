@@ -42,6 +42,7 @@
 
 /datum/armament_entry/cargo_gun/cantalan/rifle
 	subcategory = ARMAMENT_SUBCATEGORY_ASSAULTRIFLE
+	interest_required = HIGH_INTEREST
 
 /datum/armament_entry/cargo_gun/cantalan/rifle/catanheim
 	item_type = /obj/item/gun/ballistic/automatic/cfa_rifle

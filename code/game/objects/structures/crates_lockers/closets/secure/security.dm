@@ -133,6 +133,7 @@
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/melee/baton/security/loaded/departmental/cargo(src)
 	new /obj/item/clothing/glasses/hud/security(src)
+	new /obj/item/clothing/glasses/hud/gun_permit(src)
 
 /obj/structure/closet/secure_closet/security/engine
 	name = "\proper engineering guard's locker"

@@ -27,6 +27,7 @@
 
 /datum/armament_entry/cargo_gun/nanotrasen/smg
 	subcategory = ARMAMENT_SUBCATEGORY_SUBMACHINEGUN
+	interest_required = PASSED_INTEREST
 
 /datum/armament_entry/cargo_gun/nanotrasen/smg/saber
 	item_type = /obj/item/gun/ballistic/automatic/proto
@@ -40,11 +41,13 @@
 
 /datum/armament_entry/cargo_gun/nanotrasen/rifle
 	subcategory = ARMAMENT_SUBCATEGORY_ASSAULTRIFLE
+	interest_required = HIGH_INTEREST
 
 /datum/armament_entry/cargo_gun/nanotrasen/rifle/wtrifle
 	item_type = /obj/item/gun/ballistic/automatic/wt550
 	lower_cost = CARGO_CRATE_VALUE * 12
 	upper_cost = CARGO_CRATE_VALUE * 16
+	interest_required = PASSED_INTEREST
 
 /datum/armament_entry/cargo_gun/nanotrasen/rifle/boarder
 	item_type = /obj/item/gun/ballistic/automatic/ar

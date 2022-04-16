@@ -32,6 +32,7 @@
 	item_type = /obj/item/gun/ballistic/automatic/akm
 	lower_cost = CARGO_CRATE_VALUE * 30
 	upper_cost = CARGO_CRATE_VALUE * 35
+	interest_required = HIGH_INTEREST
 
 /datum/armament_entry/cargo_gun/izhevsk/rifle/surplus
 	item_type = /obj/item/gun/ballistic/automatic/surplus

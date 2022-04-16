@@ -25,6 +25,7 @@
 	item_type = /obj/item/gun/ballistic/shotgun/bulldog/unrestricted
 	lower_cost = CARGO_CRATE_VALUE * 18
 	upper_cost = CARGO_CRATE_VALUE * 20
+	interest_required = PASSED_INTEREST
 
 /datum/armament_entry/cargo_gun/scarborough/smg
 	subcategory = ARMAMENT_SUBCATEGORY_SUBMACHINEGUN
@@ -45,6 +46,7 @@
 
 /datum/armament_entry/cargo_gun/scarborough/part
 	subcategory = ARMAMENT_SUBCATEGORY_GUNPART
+	is_gun = FALSE
 
 /datum/armament_entry/cargo_gun/scarborough/part/suppressor
 	item_type = /obj/item/suppressor
