@@ -684,7 +684,7 @@
 /obj/item/ammo_casing/energy/medical/weaponized/disabler
 	projectile_type = /obj/projectile/beam/disabler
 	select_name = "disabler"
-	e_cost = 300
+	e_cost = 240
 
 /obj/projectile/beam/disabler/medigun
 	damage = 30
@@ -692,7 +692,7 @@
 /obj/item/ammo_casing/energy/medical/weaponized/laser
 	projectile_type = /obj/projectile/beam/laser
 	select_name = "kill"
-	e_cost = 400
+	e_cost = 300
 	select_color = "#da0000"
 	harmful = TRUE
 
