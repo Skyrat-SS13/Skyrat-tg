@@ -47,14 +47,8 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	var/inventory_shown = FALSE //Equipped item inventory
 	var/hotkey_ui_hidden = FALSE //This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
 
-<<<<<<< HEAD
-	var/atom/movable/screen/ling/chems/lingchemdisplay
-	var/atom/movable/screen/ling/sting/lingstingdisplay
-
 	var/atom/movable/screen/ammo_counter //SKYRAT EDIT ADDITION
 
-=======
->>>>>>> 4ce91e0a0ab (Ling huds persist through bodies + non carbons can sting (#66052))
 	var/atom/movable/screen/blobpwrdisplay
 
 	var/atom/movable/screen/alien_plasma_display
