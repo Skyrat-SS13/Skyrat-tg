@@ -804,7 +804,6 @@
 		draw_color ||= (species_color) || (skin_tone && skintone2hex(skin_tone))
 
 	if(draw_color)
-
 		//SKYRAT EDIT BEGIN - Alpha values on limbs //We check if the limb is attached and if the owner has an alpha value to append
 		limb.color = owner?.dna.species ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
 		if(aux_zone)
