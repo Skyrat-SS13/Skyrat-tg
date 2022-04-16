@@ -437,9 +437,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			var/mutable_appearance/eye_emissive
 			var/eye_icon = eyes_icon || 'icons/mob/human_face.dmi'
 			if(!E)
-				eye_overlay = mutable_appearance(eye_icon, "eyes_missing", -BODY_LAYER)
+				eye_overlay = mutable_appearance(eye_icon, "eyes_missing", -E.eyes_layer)
 			else
-				eye_overlay = mutable_appearance(eye_icon, E.eye_icon_state, -BODY_LAYER)
+				eye_overlay = mutable_appearance(eye_icon, E.eye_icon_state, -E.eyes_layer)
 				if (E.is_emissive)
 					eye_emissive = emissive_appearance_copy(eye_overlay)
 			if((EYECOLOR in species_traits) && E)

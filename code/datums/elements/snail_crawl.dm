@@ -32,5 +32,4 @@
 	var/turf/open/OT = get_turf(snail)
 	if(istype(OT))
 		OT.MakeSlippery(TURF_WET_WATER, 1.5 SECONDS) //SKYRAT EDIT: Roundstart Snails - No more lube
-		OT.wash(CLEAN_WASH)
 		return TRUE
