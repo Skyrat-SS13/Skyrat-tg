@@ -217,3 +217,9 @@
 	var/obj/item/bodypart/r_arm/part_default_r_arm = /obj/item/bodypart/r_arm
 	var/obj/item/bodypart/l_leg/part_default_l_leg = /obj/item/bodypart/l_leg
 	var/obj/item/bodypart/r_leg/part_default_r_leg = /obj/item/bodypart/r_leg
+
+/datum/species/ghoul/get_species_description()
+	return placeholder_description
+
+/datum/species/ghoul/get_species_lore()
+	return list(placeholder_lore)
