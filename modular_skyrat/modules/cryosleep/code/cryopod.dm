@@ -134,11 +134,13 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	///Weakref to our controller
 	var/datum/weakref/control_computer_weakref
 	COOLDOWN_DECLARE(last_no_computer_message)
+	/// if false, plays announcement on cryo
 	var/quiet = FALSE
 
 
 /obj/machinery/cryopod/quiet
 	quiet = TRUE
+
 /obj/machinery/cryopod/Initialize(mapload)
 	..()
 	return INITIALIZE_HINT_LATELOAD //Gotta populate the cryopod computer GLOB first
