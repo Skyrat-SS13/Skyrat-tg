@@ -202,8 +202,8 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/living)
 "cu" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/purple,
 /obj/effect/spawner/structure/window/reinforced/plasma,
-/obj/structure/cable,
 /turf/open/floor/plating,
 /area/mine/xenoarch/engineering/hfr)
 "cD" = (
@@ -721,10 +721,10 @@
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
 "km" = (
-/obj/effect/turf_decal/tile/yellow/half{
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
-/obj/structure/cable,
 /turf/open/floor/iron,
 /area/mine/xenoarch/engineering/hfr)
 "kq" = (
@@ -961,6 +961,9 @@
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/east)
 "np" = (
+/obj/machinery/door/poddoor{
+	id = "xaburn"
+	},
 /turf/open/floor/engine/airless,
 /area/mine/xenoarch/engineering/hfr)
 "nz" = (
@@ -1593,9 +1596,10 @@
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/east)
 "wP" = (
-/obj/effect/turf_decal/tile/yellow/anticorner,
-/obj/structure/extinguisher_cabinet/directional/east,
-/turf/open/floor/iron,
+/obj/machinery/igniter{
+	id = "xabc"
+	},
+/turf/open/floor/engine/airless,
 /area/mine/xenoarch/engineering/hfr)
 "xg" = (
 /obj/machinery/camera/directional/east{
@@ -1632,7 +1636,7 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/science/cytology)
 "xv" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/purple,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/dark,
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
 /area/mine/xenoarch/engineering/hfr)
@@ -1699,7 +1703,7 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/living)
 "yR" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
 	dir = 8
 	},
 /turf/open/floor/engine/airless,
@@ -1763,10 +1767,15 @@
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
 "zQ" = (
-/obj/machinery/door/poddoor{
-	id = "xaburn"
+/obj/effect/turf_decal/tile/yellow/anticorner{
+	dir = 4
 	},
-/turf/open/floor/engine/airless,
+/obj/machinery/computer/turbine_computer{
+	dir = 8;
+	mapping_id = "xeno_turbine"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
 /area/mine/xenoarch/engineering/hfr)
 "zT" = (
 /obj/effect/spawner/random/trash/moisture_trap,
@@ -1819,21 +1828,8 @@
 /turf/open/floor/carpet,
 /area/mine/xenoarch/living)
 "AG" = (
-/obj/machinery/computer/turbine_computer{
-	dir = 8;
-	
-	},
-/obj/structure/cable,
-/obj/machinery/button/door{
-	id = "xaburn";
-	name = "Burn chamber Vent";
-	pixel_x = 6;
-	pixel_y = -28
-	},
-/obj/machinery/button/ignition{
-	id = "xabc";
-	pixel_x = -6;
-	pixel_y = -28
+/obj/machinery/atmospherics/components/binary/pump/off/general{
+	dir = 8
 	},
 /obj/effect/turf_decal/stripes{
 	dir = 8
@@ -1841,8 +1837,8 @@
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/engineering/hfr)
 "AK" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/on{
-	dir = 8
+/obj/machinery/power/turbine/inlet_compressor/constructed{
+	dir = 1
 	},
 /turf/open/floor/engine/airless,
 /area/mine/xenoarch/engineering/hfr)
@@ -1985,9 +1981,9 @@
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
 "CM" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/dark,
-/obj/effect/spawner/structure/window/reinforced/plasma,
-/turf/open/floor/plating,
+/obj/effect/turf_decal/tile/yellow/anticorner,
+/obj/structure/cable,
+/turf/open/floor/iron,
 /area/mine/xenoarch/engineering/hfr)
 "CN" = (
 /turf/open/misc/asteroid/basalt/lava_land_surface,
@@ -2134,14 +2130,28 @@
 /turf/open/floor/plating,
 /area/mine/xenoarch/maintenance/west)
 "EC" = (
-/obj/machinery/power/turbine/inlet_compressor/constructed{
-	dir = 1
+/obj/structure/extinguisher_cabinet/directional/north,
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/machinery/button/door{
+	id = "xaburn";
+	name = "Burn chamber Vent";
+	pixel_x = 6;
+	pixel_y = -28
+	},
+/obj/machinery/button/ignition{
+	id = "xabc";
+	pixel_x = -6;
+	pixel_y = -28
 	},
 /obj/structure/cable,
-/turf/open/floor/engine/airless,
+/turf/open/floor/iron/dark,
 /area/mine/xenoarch/engineering/hfr)
 "EI" = (
-/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 8
+	},
 /turf/open/floor/engine/airless,
 /area/mine/xenoarch/engineering/hfr)
 "EP" = (
@@ -2227,9 +2237,6 @@
 /turf/open/floor/engine,
 /area/mine/xenoarch/engineering/hfr)
 "FY" = (
-/obj/machinery/igniter{
-	id = "xabc"
-	},
 /turf/open/floor/engine/airless,
 /area/mine/xenoarch/engineering/hfr)
 "Gd" = (
@@ -2784,9 +2791,11 @@
 /turf/open/floor/iron,
 /area/mine/xenoarch/science/cytology)
 "OM" = (
-/obj/machinery/power/turbine,
+/obj/machinery/power/turbine/core_rotor{
+	mapping_id = "xeno_turbine"
+	},
 /obj/structure/cable,
-/turf/open/floor/engine/airless,
+/turf/open/floor/engine,
 /area/mine/xenoarch/engineering/hfr)
 "OP" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -3495,14 +3504,8 @@
 /turf/open/floor/iron/dark,
 /area/mine/xenoarch/engineering)
 "Yj" = (
-/obj/machinery/atmospherics/components/binary/pump/off/general{
-	dir = 4
-	},
-/obj/machinery/airalarm/directional/north,
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
+/obj/machinery/power/turbine/turbine_outlet,
+/turf/open/floor/engine,
 /area/mine/xenoarch/engineering/hfr)
 "Yl" = (
 /obj/effect/turf_decal/tile/yellow/half,
@@ -3626,8 +3629,9 @@
 /area/mine/xenoarch/engineering)
 "ZN" = (
 /obj/machinery/atmospherics/components/binary/pump/off/general{
-	dir = 8
+	dir = 4
 	},
+/obj/machinery/airalarm/directional/north,
 /obj/effect/turf_decal/stripes{
 	dir = 8
 	},
@@ -5980,9 +5984,9 @@ RI
 YI
 gM
 gM
+gM
 km
-km
-wP
+hR
 Zz
 Zc
 Zc
@@ -6027,11 +6031,11 @@ Zz
 Ea
 Zz
 Zz
-Yj
+Zz
 ZN
 AG
-Zz
-Zz
+zQ
+CM
 Zz
 Zc
 Zc
@@ -6075,13 +6079,13 @@ st
 SY
 SY
 st
+SY
 Zz
-CM
 xv
 cu
 Zz
-Zc
-Zc
+EC
+Zz
 Zc
 Zc
 Zc
@@ -6124,13 +6128,13 @@ SY
 SY
 py
 SY
+SY
 Zz
-AK
 yR
 EI
-Zz
-Zz
-Zc
+AK
+OM
+Yj
 Zc
 Zc
 Zc
@@ -6173,13 +6177,13 @@ ak
 lP
 ak
 Ns
+SY
 Zz
-np
 FY
-EI
-EC
-OM
-Zc
+wP
+Zz
+Zz
+Zz
 Zc
 Zc
 Zc
@@ -6222,12 +6226,12 @@ yC
 SY
 jL
 Ns
+Ns
 Zz
 np
 np
-np
 Zz
-Zz
+Zc
 Zc
 Zc
 Zc
@@ -6271,11 +6275,11 @@ VK
 dn
 AV
 Ns
-Zz
-zQ
-zQ
-zQ
-Zz
+Zc
+Zc
+Zc
+Zc
+Zc
 Zc
 Zc
 Zc
