@@ -3,11 +3,12 @@
 	id = SPECIES_SNAIL
 	offset_features = list(OFFSET_GLASSES = list(0,4))
 	default_color = "336600" //vomit green
-	species_traits = list(MUTCOLORS, NO_UNDERWEAR, HAS_FLESH, HAS_BONE)
+	species_traits = list(MUTCOLORS,EYECOLOR,HAS_FLESH,HAS_BONE,HAIR,FACEHAIR) //SKYRAT EDIT: Roundstart Snails - Customization
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_NOSLIPALL,
+		TRAIT_WATER_BREATHING,
 	)
 	attack_verb = "slap"
 	attack_effect = ATTACK_EFFECT_DISARM
@@ -15,14 +16,16 @@
 	coldmod = 0.5 //snails only come out when its cold and wet
 	burnmod = 2
 	speedmod = 6
-	punchdamagehigh = 0.5 //snails are soft and squishy
+	punchdamagehigh = 5 //snails are soft and squishy //SKYRAT EDIT: Roundstart Snails - A Bit More Damage
 	siemens_coeff = 2 //snails are mostly water
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP
 	sexes = FALSE //snails are hermaphrodites
+	veteran_only = TRUE //SKYRAT EDIT - Roundstart Snails
 
 	mutanteyes = /obj/item/organ/eyes/snail
 	mutanttongue = /obj/item/organ/tongue/snail
-	exotic_blood = /datum/reagent/lube
+	mutantliver = /obj/item/organ/liver/snail
+	exotic_bloodtype = "L" //SKYRAT EDIT: Roundstart Snails - No more lube
 
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/snail,
@@ -40,6 +43,11 @@
 		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * delta_time)
 		return TRUE
 
+//SKYRAT EDIT: Roundstart Snails
+/datum/species/snail/check_roundstart_eligible()
+	return TRUE
+//SKYRAT EDIT: Roundstart Snails
+
 /datum/species/snail/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
 	. = ..()
 	var/obj/item/storage/backpack/bag = C.get_item_by_slot(ITEM_SLOT_BACK)
@@ -47,6 +55,7 @@
 		if(C.dropItemToGround(bag)) //returns TRUE even if its null
 			C.equip_to_slot_or_del(new /obj/item/storage/backpack/snail(C), ITEM_SLOT_BACK)
 	C.AddElement(/datum/element/snailcrawl)
+	C.update_icons()
 
 /datum/species/snail/on_species_loss(mob/living/carbon/C)
 	. = ..()
@@ -77,3 +86,8 @@
 /obj/item/storage/backpack/snail/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, "snailshell")
+
+/obj/item/storage/backpack/snail/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_combined_w_class = 30
