@@ -829,12 +829,11 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "emissionhelm"
 	inhand_icon_state = "emissionhelm"
-	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 100, FIRE = 100, ACID = 75, WOUND = 10)
 
 // Donation reward for CandleJax
-/obj/item/clothing/under/plasmaman/security/candlejax
+/obj/item/clothing/under/plasmaman/candlejax
 	name = "emission's containment suit"
-	desc = "A special containment envirosuit designed for abnormally heated plasmafires. This one seems highly customized."
+	desc = "A modified envirosuit featuring a reserved color scheme."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "emissionsuit"
@@ -1299,6 +1298,20 @@
 	. = ..()
 	if(!isinhands)
 		. += emissive_appearance(icon_file, "[icon_state]-emissive", alpha = src.alpha)
+
+//Donation reward for RealWinterFrost
+/obj/item/clothing/neck/cloak/fluffycloak
+	name = "Cloak of the Fluffy One"
+	desc = "Hugs and kisses is only what this one knows, may their hugs be for all and not for their own \"For Fuffy Use Only\"."
+	icon_state = "fluffycloak"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
+
+/obj/item/clothing/neck/cloak/fluffycloak/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
+	. = ..()
+	if(!isinhands)
+		. += emissive_appearance(icon_file, "[icon_state]-emissive", alpha = src.alpha)
+
 
 /obj/item/clothing/mask/gas/larpswat
 	name = "Foam Force SWAT Mask"

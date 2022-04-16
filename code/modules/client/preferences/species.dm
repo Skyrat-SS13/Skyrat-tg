@@ -32,11 +32,6 @@
 	return values
 
 /datum/preference/choiced/species/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/prefs)
-	// SKYRAT EDIT START - Veteran-only races
-	var/datum/species/value_typepath = value
-	if(initial(value_typepath.veteran_only) && !is_veteran_player(target.client))
-		value = create_default_value()
-	// SKYRAT EDIT END
 	target.set_species(value, FALSE, FALSE, prefs?.features.Copy(), prefs?.mutant_bodyparts.Copy(), prefs?.body_markings.Copy()) // SKYRAT EDIT - Customization
 
 	//SKYRAT EDIT ADDITION
