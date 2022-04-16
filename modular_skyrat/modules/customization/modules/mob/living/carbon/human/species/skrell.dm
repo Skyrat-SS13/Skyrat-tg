@@ -47,7 +47,11 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/skrell,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/skrell,
 	)
+/datum/species/skrell/get_species_description()
+	return placeholder_description
 
+/datum/species/skrell/get_species_lore()
+	return list(placeholder_lore)
 /obj/item/organ/tongue/skrell
 	name = "internal vocal sacs"
 	desc = "An Strange looking sac."

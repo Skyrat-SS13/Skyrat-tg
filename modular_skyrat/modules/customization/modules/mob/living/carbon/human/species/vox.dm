@@ -109,3 +109,9 @@
 
 /datum/species/vox/set_custom_worn_icon(item_slot, obj/item/item, icon/icon)
 	item.worn_icon_vox = icon
+
+/datum/species/vox/get_species_description()
+	return placeholder_description
+
+/datum/species/vox/get_species_lore()
+	return list(placeholder_lore)

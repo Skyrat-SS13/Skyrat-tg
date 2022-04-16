@@ -111,13 +111,11 @@
 	name = "Emission's Helmet"
 	item_path = /obj/item/clothing/head/helmet/space/plasmaman/candlejax
 	ckeywhitelist = list("candlejax")
-	restricted_roles = list(JOB_SHAFT_MINER, JOB_VANGUARD_OPERATIVE, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/under/jumpsuit/emissionsuit
 	name = "Emission's Suit"
-	item_path = /obj/item/clothing/under/plasmaman/security/candlejax
+	item_path = /obj/item/clothing/under/plasmaman/candlejax
 	ckeywhitelist = list("candlejax")
-	restricted_roles = list(JOB_SHAFT_MINER, JOB_VANGUARD_OPERATIVE, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/head/avipilot
 	name = "Smuggler's Flying Cap"
@@ -373,6 +371,11 @@
 	name = "Tenrai Coat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/tenrai
 	ckeywhitelist = list("cimika")
+
+/datum/loadout_item/neck/fluffycloak
+	name = "Fluffy Cloak"
+	item_path = /obj/item/clothing/neck/cloak/fluffycloak
+	ckeywhitelist = list("realwinterfrost")
 
 /datum/loadout_item/mask/larpswat
 	name = "Foam Force SWAT Mask"
