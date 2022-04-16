@@ -73,3 +73,9 @@
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = second_color
 	return returned
+
+/datum/species/unathi/get_species_description()
+	return placeholder_description
+
+/datum/species/unathi/get_species_lore()
+	return list(placeholder_lore)
