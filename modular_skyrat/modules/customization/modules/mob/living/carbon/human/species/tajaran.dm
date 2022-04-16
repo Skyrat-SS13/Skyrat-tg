@@ -91,3 +91,9 @@
 		randname += " [pick(GLOB.last_names_taj)]"
 
 	return randname
+
+/datum/species/tajaran/get_species_description()
+	return placeholder_description
+
+/datum/species/tajaran/get_species_lore()
+	return list(placeholder_lore)
