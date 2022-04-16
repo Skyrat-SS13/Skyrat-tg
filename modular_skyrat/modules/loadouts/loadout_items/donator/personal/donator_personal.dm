@@ -114,7 +114,7 @@
 
 /datum/loadout_item/under/jumpsuit/emissionsuit
 	name = "Emission's Suit"
-	item_path = /obj/item/clothing/under/plasmaman/security/candlejax
+	item_path = /obj/item/clothing/under/plasmaman/candlejax
 	ckeywhitelist = list("candlejax")
 
 /datum/loadout_item/head/avipilot
