@@ -58,7 +58,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "polyskirt"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#888888")
 
 /obj/item/clothing/under/dress/skirt/polychromic/ComponentInitialize()
@@ -92,7 +92,7 @@
 	icon_state = "polyshorts"
 	can_adjust = FALSE
 	body_parts_covered = CHEST|GROIN|ARMS
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/polyshorts/ComponentInitialize()
 	. = ..()
@@ -119,7 +119,7 @@
 	icon_state = "polybottomless"
 	body_parts_covered = CHEST|ARMS	//Because there's no bottom included
 	can_adjust = FALSE
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/poly_bottomless/ComponentInitialize()
 	. = ..()
@@ -134,7 +134,7 @@
 	worn_icon_state = "poly_turtle"
 	body_parts_covered = CHEST|GROIN|ARMS //Commando sweater is long but still doesnt have pants
 	can_adjust = FALSE
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/polysweater/ComponentInitialize()
 	. = ..()
@@ -148,7 +148,7 @@
 	icon_state = "polyshimatank"
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	var/list/poly_colors = list("#888888", "#FFFFFF", "#88CCFF")
 
 /obj/item/clothing/under/misc/poly_tanktop/ComponentInitialize()
@@ -192,7 +192,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "darkcoat"
 	inhand_icon_state = "darkcoat"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 // Donation reward for Grunnyyy
 /obj/item/clothing/neck/cloak/grunnyyy
@@ -545,31 +545,33 @@
 	adjust_goggles(user)
 
 // Donation reward for NetraKyram
-/obj/item/clothing/under/custom/kilano
-	name = "black and gold dress uniform"
-	desc = "A light black and gold dress made out some sort of silky material."
+/obj/item/clothing/under/rank/security/blueshield/netra
+	name = "black and silver armored dress"
+	desc = "An ankle length black and silver dress, made out of some shiny synthetic material with inlaid kevlar shards and silver reinforcements, a silver ring surrounds the collar, and it doesn't appear to have a zipper... How does somebody put this thing on anyways?"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	icon_state = "kilanosuit"
+	icon_state = "silver_dress"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	worn_icon_digi = null
 	supports_variations_flags = NONE
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 // Donation reward for NetraKyram
-/obj/item/clothing/gloves/kilano
-	name = "black and gold gloves"
-	desc = "Some black and gold gloves, It seems like they're made to match something."
+/obj/item/clothing/gloves/netra
+	name = "black and silver gloves"
+	desc = "Some black gloves with silver reinforcements, made of a shiny synthetic material."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
-	icon_state = "kilanogloves"
+	icon_state = "silver_dress_gloves"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/hands.dmi'
 
 // Donation reward for NetraKyram
-/obj/item/clothing/shoes/winterboots/kilano
-	name = "black and gold boots"
-	desc = "Some heavy furred boots, why would you need fur on a space station? Seems redundant."
+/obj/item/clothing/shoes/jackboots/netra
+	name = "polished jackboots"
+	desc = "Some standard issue jackboots, spit-shined to a reflective sheen, wreaking of the scent of silicon parade polish."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/shoes.dmi'
-	icon_state = "kilanoboots"
+	icon_state = "silver_dress_boots"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/feet.dmi'
 	supports_variations_flags = NONE
+	uses_advanced_reskins = FALSE
 
 
 /****************LEGACY REWARDS***************/
@@ -829,12 +831,11 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "emissionhelm"
 	inhand_icon_state = "emissionhelm"
-	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 100, FIRE = 100, ACID = 75, WOUND = 10)
 
 // Donation reward for CandleJax
-/obj/item/clothing/under/plasmaman/security/candlejax
+/obj/item/clothing/under/plasmaman/candlejax
 	name = "emission's containment suit"
-	desc = "A special containment envirosuit designed for abnormally heated plasmafires. This one seems highly customized."
+	desc = "A modified envirosuit featuring a reserved color scheme."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "emissionsuit"
@@ -1299,6 +1300,20 @@
 	. = ..()
 	if(!isinhands)
 		. += emissive_appearance(icon_file, "[icon_state]-emissive", alpha = src.alpha)
+
+//Donation reward for RealWinterFrost
+/obj/item/clothing/neck/cloak/fluffycloak
+	name = "Cloak of the Fluffy One"
+	desc = "Hugs and kisses is only what this one knows, may their hugs be for all and not for their own \"For Fuffy Use Only\"."
+	icon_state = "fluffycloak"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
+
+/obj/item/clothing/neck/cloak/fluffycloak/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
+	. = ..()
+	if(!isinhands)
+		. += emissive_appearance(icon_file, "[icon_state]-emissive", alpha = src.alpha)
+
 
 /obj/item/clothing/mask/gas/larpswat
 	name = "Foam Force SWAT Mask"

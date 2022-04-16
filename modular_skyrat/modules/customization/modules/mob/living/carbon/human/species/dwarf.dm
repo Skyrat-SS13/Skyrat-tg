@@ -26,3 +26,9 @@
 	disliked_food = JUNKFOOD | FRIED | CLOTH //Dwarves hate foods that have no nutrition other than alcohol.
 	species_language_holder = /datum/language_holder/dwarf
 	learnable_languages = list(/datum/language/common, /datum/language/dwarf)
+
+/datum/species/dwarf/get_species_description()
+	return placeholder_description
+
+/datum/species/dwarf/get_species_lore()
+	return list(placeholder_lore)

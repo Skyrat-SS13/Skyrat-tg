@@ -51,6 +51,18 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/vox,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/vox,
 	)
+	custom_worn_icons = list(
+		LOADOUT_ITEM_HEAD = VOX_HEAD_ICON,
+		LOADOUT_ITEM_MASK = VOX_MASK_ICON,
+		LOADOUT_ITEM_SUIT = VOX_SUIT_ICON,
+		LOADOUT_ITEM_UNIFORM = VOX_UNIFORM_ICON,
+		LOADOUT_ITEM_HANDS =  VOX_HANDS_ICON,
+		LOADOUT_ITEM_SHOES = VOX_FEET_ICON,
+		LOADOUT_ITEM_GLASSES = VOX_EYES_ICON,
+		LOADOUT_ITEM_BELT = VOX_BELT_ICON,
+		LOADOUT_ITEM_MISC = VOX_BACK_ICON,
+		LOADOUT_ITEM_EARS = VOX_EARS_ICON
+	)
 
 /datum/species/vox/pre_equip_species_outfit(datum/job/job, mob/living/carbon/human/equipping, visuals_only)
 	. = ..()
@@ -84,3 +96,22 @@
 	if(BMS)
 		markings = assemble_body_markings_from_set(BMS, passed_features, src)
 	return markings
+
+/datum/species/vox/get_custom_worn_icon(item_slot, obj/item/item)
+	// snowflakey but vox legs weird.
+	if(item_slot == LOADOUT_ITEM_SHOES)
+		var/obj/item/bodypart/leg = bodypart_overrides[BODY_ZONE_L_LEG] || bodypart_overrides[BODY_ZONE_R_LEG]
+		if(initial(leg?.limb_id) != "digitigrade")
+			// normal legs, force using human shoes
+			return item.worn_icon || item.icon
+
+	return item.worn_icon_vox
+
+/datum/species/vox/set_custom_worn_icon(item_slot, obj/item/item, icon/icon)
+	item.worn_icon_vox = icon
+
+/datum/species/vox/get_species_description()
+	return placeholder_description
+
+/datum/species/vox/get_species_lore()
+	return list(placeholder_lore)

@@ -113,7 +113,7 @@
 		qdel(src)
 
 /obj/item/clothing/attack(mob/living/M, mob/living/user, params)
-	if(user.combat_mode || !ismoth(M))
+	if(user.combat_mode || !ismoth(M) || ispickedupmob(src))
 		return ..()
 	if(moth_edible == TRUE)
 		if(isnull(moth_snack))

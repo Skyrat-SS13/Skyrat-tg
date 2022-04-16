@@ -16,6 +16,7 @@
 
 /datum/preference/text/headshot/is_valid(value)
 	if(!length(value)) //Just to get blank ones out of the way
+		usr?.client?.prefs?.headshot = null
 		return TRUE
 	if(!findtext(value, "https://", 1, 9))
 		to_chat(usr, span_warning("You need \"https://\" in the link!"))
@@ -34,7 +35,7 @@
 		to_chat(usr, span_notice("Keep in mind that the photo will be downsized to 250x250 pixels, so the more square the photo, the better it will look."))
 		log_game("[usr] has set their Headshot image to '[value]'.")
 	stored_link[usr?.ckey] = value
-	usr?.client.prefs.headshot = value
+	usr?.client?.prefs.headshot = value
 	return TRUE
 
 /datum/preference/text/headshot/is_accessible(datum/preferences/preferences)

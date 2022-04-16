@@ -90,7 +90,7 @@
 	icon_state = "labcoat_rd"
 	body_parts_covered = CHEST|ARMS|LEGS
 	armor = list(MELEE = 5, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 80, FIRE = 80, ACID = 70)
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 ///////////////////////////////////////////////////////////////////////HEAD
 

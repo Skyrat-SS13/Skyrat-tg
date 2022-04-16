@@ -133,8 +133,8 @@ There are several things that need to be remembered:
 				icon_file = U.worn_icon_digi || DIGITIGRADE_UNIFORM_FILE // SKYRAT EDIT CHANGE
 
 			// SKYRAT EDIT ADDITION
-			else if(dna.species.bodytype & BODYTYPE_TESHARI)
-				icon_file = TESHARI_UNIFORM_ICON
+			else if(dna.species.bodytype & BODYTYPE_CUSTOM)
+				icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform)
 			// SKYRAT EDIT END
 
 			//Female sprites have lower priority than digitigrade sprites
@@ -218,11 +218,11 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = gloves
 		update_hud_gloves(worn_item)
 		var/icon_file
-		var/handled_by_bodytype
+		var/handled_by_bodytype = TRUE
 
 		// SKYRAT EDIT ADDITION
-		if(dna.species.bodytype & BODYTYPE_TESHARI)
-			icon_file = TESHARI_HANDS_ICON
+		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_GLOVES, gloves)
 		// SKYRAT EDIT END
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
@@ -255,13 +255,11 @@ There are several things that need to be remembered:
 		var/mutable_appearance/glasses_overlay
 		update_hud_glasses(worn_item)
 
-		var/handled_by_bodytype
+		var/handled_by_bodytype = TRUE
 		var/icon_file
 		// SKYRAT EDIT ADDITION
-		if((dna.species.bodytype & BODYTYPE_VOX) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VOX_VARIATION))
-			icon_file = worn_item.worn_icon_vox || VOX_GLASSES_FILE
-		else if(dna.species.bodytype & BODYTYPE_TESHARI)
-			icon_file = TESHARI_EYES_ICON
+		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_GLASSES, glasses)
 		// SKYRAT EDIT END
 		if(!(head?.flags_inv & HIDEEYES) && !(wear_mask?.flags_inv & HIDEEYES))
 
@@ -298,6 +296,11 @@ There are several things that need to be remembered:
 		var/handled_by_bodytype = TRUE
 		var/icon_file
 
+		// SKYRAT EDIT ADDITION
+		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_EARS, ears)
+		// SKYRAT EDIT END
+
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
 			handled_by_bodytype = FALSE
 			icon_file = 'icons/mob/clothing/ears.dmi'
@@ -329,8 +332,8 @@ There are several things that need to be remembered:
 			var/handled_by_bodytype = TRUE
 
 			// SKYRAT EDIT ADDITION
-			if(dna.species.bodytype & BODYTYPE_TESHARI)
-				icon_file = TESHARI_NECK_ICON
+			if(dna.species.bodytype & BODYTYPE_CUSTOM)
+				icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_NECK, wear_neck)
 			// SKYRAT EDIT END
 
 			if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
@@ -371,8 +374,8 @@ There are several things that need to be remembered:
 			if(leg.limb_id == "digitigrade")//Snowflakey and bad. But it makes it look consistent.
 				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SHOES_FILE // SKYRAT EDIT CHANGE
 		// SKYRAT EDIT ADDITION
-		else if(dna.species.bodytype & BODYTYPE_TESHARI)
-			icon_file = TESHARI_FEET_ICON
+		else if(dna.species.bodytype & BODYTYPE_CUSTOM)
+			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_SHOES, shoes)
 		// SKYRAT EDIT END
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
@@ -423,14 +426,14 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = head
 		var/mutable_appearance/head_overlay
 		update_hud_head(worn_item)
-		var/handled_by_bodytype = FALSE
+		var/handled_by_bodytype = TRUE
 		var/icon_file
 
 		// SKYRAT EDIT ADDITION - This needs to be refactored.
-		if((dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
+		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_HEAD, head)
+		if(!icon_file && (dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			icon_file = worn_item.worn_icon_muzzled || SNOUTED_HEAD_FILE
-		else if(dna.species.bodytype & BODYTYPE_TESHARI)
-			icon_file = TESHARI_HEAD_ICON
 		// SKYRAT EDIT END
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
@@ -444,11 +447,6 @@ There are several things that need to be remembered:
 		if(!(handled_by_bodytype) && (OFFSET_HEAD in dna.species.offset_features))
 			head_overlay.pixel_x += dna.species.offset_features[OFFSET_HEAD][1]
 			head_overlay.pixel_y += dna.species.offset_features[OFFSET_HEAD][2]
-			//SKYRAT EDIT ADDITION BEGIN - TESHARI CLOTHES
-			if(head_overlay.icon == TESHARI_HEAD_ICON)
-				head_overlay.pixel_x = 0
-				head_overlay.pixel_y = 0
-			//SKYRAT EDIT ADDITION END - TESHARI CLOTHES
 		overlays_standing[HEAD_LAYER] = head_overlay
 
 	update_mutant_bodyparts()
@@ -469,8 +467,8 @@ There are several things that need to be remembered:
 		var/icon_file
 
 		// SKYRAT EDIT ADDITION
-		if(dna.species.bodytype & BODYTYPE_TESHARI)
-			icon_file = TESHARI_BELT_ICON
+		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_BELT, belt)
 		// SKYRAT EDIT END
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
@@ -509,8 +507,8 @@ There are several things that need to be remembered:
 				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SUIT_FILE // SKYRAT EDIT CHANGE
 
 		// SKYRAT EDIT ADDITION
-		else if(dna.species.bodytype & BODYTYPE_TESHARI)
-			icon_file = TESHARI_SUIT_ICON
+		else if(dna.species.bodytype & BODYTYPE_CUSTOM)
+			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_SUIT, wear_suit)
 		// SKYRAT EDIT END
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
@@ -565,14 +563,14 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = wear_mask
 		update_hud_wear_mask(worn_item)
 		var/mutable_appearance/mask_overlay
-		var/icon_file = 'icons/mob/clothing/mask.dmi'
+		var/icon_file // SKYRATE EDIT CHANGE - replace mask icon path with default null, which is standard for these procs
 		var/handled_by_bodytype = TRUE
 
 		// SKYRAT EDIT ADDITION
-		if((dna.species.bodytype & BODYTYPE_SNOUTED) && !(worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
+		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_MASK, wear_mask)
+		if(!icon_file && (dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			icon_file = worn_item.worn_icon_muzzled || SNOUTED_MASK_FILE
-		else if(dna.species.bodytype & BODYTYPE_TESHARI)
-			icon_file = TESHARI_MASK_ICON
 		// SKYRAT EDIT END
 
 		if(!(ITEM_SLOT_MASK in check_obscured_slots()))
@@ -588,11 +586,6 @@ There are several things that need to be remembered:
 		if((!handled_by_bodytype) && (OFFSET_FACEMASK in dna.species.offset_features))
 			mask_overlay.pixel_x += dna.species.offset_features[OFFSET_FACEMASK][1]
 			mask_overlay.pixel_y += dna.species.offset_features[OFFSET_FACEMASK][2]
-			//SKYRAT EDIT ADDITION BEGIN - TESHARI CLOTHES
-			if(mask_overlay.icon == TESHARI_MASK_ICON)
-				mask_overlay.pixel_x = 0
-				mask_overlay.pixel_y = 0
-			//SKYRAT EDIT ADDITION END - TESHARI CLOTHES
 		overlays_standing[FACEMASK_LAYER] = mask_overlay
 
 	apply_overlay(FACEMASK_LAYER)
@@ -613,8 +606,8 @@ There are several things that need to be remembered:
 		var/handled_by_bodytype = TRUE
 
 		// SKYRAT EDIT ADDITION
-		if(dna.species.bodytype & BODYTYPE_TESHARI)
-			icon_file = TESHARI_BACK_ICON
+		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_MISC, back)
 		// SKYRAT EDIT END
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
@@ -628,11 +621,6 @@ There are several things that need to be remembered:
 		if((!handled_by_bodytype) && (OFFSET_BACK in dna.species.offset_features))
 			back_overlay.pixel_x += dna.species.offset_features[OFFSET_BACK][1]
 			back_overlay.pixel_y += dna.species.offset_features[OFFSET_BACK][2]
-			//SKYRAT EDIT ADDITION BEGIN - TESHARI CLOTHES
-			if(back_overlay.icon == TESHARI_BACK_ICON)
-				back_overlay.pixel_x = 0
-				back_overlay.pixel_y = 0
-			//SKYRAT EDIT ADDITION END - TESHARI CLOTHES
 		overlays_standing[BACK_LAYER] = back_overlay
 	apply_overlay(BACK_LAYER)
 
