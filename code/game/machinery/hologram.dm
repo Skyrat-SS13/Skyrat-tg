@@ -231,14 +231,16 @@ Possible to do for anyone motivated enough:
 			. += line
 	//SKYRAT EDIT ADDITION END - AI QoL
 
+/obj/machinery/holopad/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	default_unfasten_wrench(user, tool)
+	return TOOL_ACT_TOOLTYPE_SUCCESS
+
 /obj/machinery/holopad/attackby(obj/item/P, mob/user, params)
 	if(default_deconstruction_screwdriver(user, "holopad_open", "holopad0", P))
 		return
 
 	if(default_pry_open(P))
-		return
-
-	if(default_unfasten_wrench(user, P))
 		return
 
 	if(default_deconstruction_crowbar(P))

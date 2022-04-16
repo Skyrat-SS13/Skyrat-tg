@@ -167,9 +167,10 @@
 					/obj/item/clothing/shoes/sneakers/black = 2,
 					/obj/item/clothing/gloves/fingerless = 2,
 					/obj/item/clothing/head/soft/black = 2,
-					/obj/item/clothing/mask/bandana/skull = 2)
+					/obj/item/clothing/mask/bandana/color/skull = 2)
 	contraband = list(/obj/item/clothing/suit/hooded/techpriest = 2,
-					/obj/item/organ/tongue/robot = 2)
+					  /obj/item/clothing/under/costume/mech_suit = 2,
+					  /obj/item/organ/tongue/robot = 2)
 	refill_canister = /obj/item/vending_refill/wardrobe/robo_wardrobe
 	extra_price = PAYCHECK_HARD * 1.2
 	payment_department = ACCOUNT_SCI
@@ -316,7 +317,6 @@
 	product_ads = "Come and get your janitorial clothing, now endorsed by lizard janitors everywhere!"
 	vend_reply = "Thank you for using the JaniDrobe!"
 	products = list(/obj/item/clothing/under/rank/civilian/janitor = 2,
-					/obj/item/cartridge/janitor = 2,
 					/obj/item/clothing/under/rank/civilian/janitor/skirt = 2,
 					/obj/item/clothing/suit/hooded/wintercoat/janitor = 2,
 					/obj/item/clothing/gloves/color/black = 2,

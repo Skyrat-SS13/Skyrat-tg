@@ -148,13 +148,23 @@
 #define ALT_STYLE 1
 #define DIGITIGRADE_STYLE 2
 
-//flags for outfits that have mutantrace variants (try not to use this): Currently only needed if you're trying to add tight fitting bootyshorts
-#define NO_MUTANTRACE_VARIATION 0
-#define MUTANTRACE_VARIATION 1
-
-#define NOT_DIGITIGRADE 0
-#define FULL_DIGITIGRADE 1
-#define SQUISHED_DIGITIGRADE 2
+//Flags (actual flags, fucker ^) for /obj/item/var/supports_variations_flags
+///No alternative sprites based on bodytype
+#define CLOTHING_NO_VARIATION (1<<0)
+///Has a sprite for digitigrade legs specifically.
+#define CLOTHING_DIGITIGRADE_VARIATION (1<<1)
+///The sprite works fine for digitigrade legs as-is.
+#define CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON (1<<2)
+// SKYRAT EDIT ADDITION
+/// The sprite works fine for snouts.
+#define CLOTHING_SNOUTED_VARIATION (1<<3)
+/// The sprite works fine for snouts as-is.
+#define CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON (1<<4)
+/// The sprite works fine for vox snouts.
+#define CLOTHING_SNOUTED_VOX_VARIATION (1<<5)
+/// The sprite works fine for vox snouts as is.
+#define CLOTHING_SNOUTED_VOX_VARIATION_NO_NEW_ICON (1<<6)
+// SKYRAT EDIT END
 
 //flags for covering body parts
 #define GLASSESCOVERSEYES (1<<0)

@@ -150,7 +150,7 @@
 	actions_types = list(/datum/action/item_action/toggle)
 	can_toggle = TRUE
 	toggle_cooldown = 0
-	mutant_variants = STYLE_MUZZLE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 
@@ -200,7 +200,7 @@
 	uses_advanced_reskins = TRUE
 	armor = list(MELEE = 30, BULLET = 25, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50)
 	strip_delay = 60
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	unique_reskin = list(
 		"Black Variant" = list(
 			RESKIN_ICON_STATE = "garrison_black",
@@ -223,7 +223,7 @@
 	armor = list(MELEE = 30, BULLET = 25, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50)
 	strip_delay = 60
 	dog_fashion = null
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	unique_reskin = list(
 		"Black Variant" = list(
 			RESKIN_ICON_STATE = "security_cap_black",
@@ -632,7 +632,7 @@
 	icon_state = "helmet"
 	actions_types = null
 	can_toggle = FALSE
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	flags_cover = HEADCOVERSEYES
 	flags_inv = HIDEHAIR
 

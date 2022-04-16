@@ -50,7 +50,7 @@
 	if(!user.can_interact_with(parent_atom))
 		return
 
-	if(!istype(item, /obj/item/armament_points_card))
+	if(!istype(item, /obj/item/armament_points_card) || inserted_card)
 		return
 
 	item.forceMove(parent_atom)
@@ -232,17 +232,47 @@
 		return TRUE
 
 	//If the mob is holding a valid ID, they pass the access check
-	else if(check_access(user.get_active_held_item()))
+	else if(check_access_obj(user.get_active_held_item()))
 		return TRUE
 
 	//if they are wearing a card that has access and are human, that works
 	else if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
-		if(check_access(human_user.wear_id))
+		if(check_access_obj(human_user.wear_id))
 			return TRUE
 
 	//if they're strange and have a hacky ID card as an animal
 	else if(isanimal(user))
 		var/mob/living/simple_animal/animal = user
-		if(check_access(animal.access_card))
+		if(check_access_obj(animal.access_card))
 			return TRUE
+
+/datum/component/armament/proc/check_access_obj(obj/item/id)
+	return check_access_list(id ? id.GetAccess() : null)
+
+/datum/component/armament/proc/check_access_list(list/access_list)
+	if(!islist(required_access)) //something's very wrong
+		return TRUE
+
+	if(!length(required_access))
+		return TRUE
+
+	if(!length(access_list) || !islist(access_list))
+		return FALSE
+
+	for(var/req in required_access)
+		if(!(req in access_list)) //doesn't have this access
+			return FALSE
+
+	return TRUE
+
+/datum/component/armament/proc/text2access(access_text)
+	. = list()
+	if(!access_text)
+		return
+	var/list/split = splittext(access_text,";")
+	for(var/split_text in split)
+		var/num_text = text2num(split_text)
+		if(!num_text)
+			continue
+		. += num_text

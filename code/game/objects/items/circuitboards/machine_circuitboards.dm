@@ -198,21 +198,29 @@
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/power/port_gen/pacman/super
 
-/obj/item/circuitboard/machine/power_compressor
-	name = "Power Compressor (Machine Board)"
+/obj/item/circuitboard/machine/turbine_compressor
+	name = "Turbine - Inlet Compressor (Machine Board)"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
-	build_path = /obj/machinery/power/compressor
+	build_path = /obj/machinery/power/turbine/inlet_compressor/constructed
 	req_components = list(
 		/obj/item/stack/cable_coil = 5,
-		/obj/item/stock_parts/manipulator = 6)
+		/obj/item/stack/sheet/iron = 5)
 
-/obj/item/circuitboard/machine/power_turbine
-	name = "Power Turbine (Machine Board)"
+/obj/item/circuitboard/machine/turbine_rotor
+	name = "Turbine - Core Rotor (Machine Board)"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
-	build_path = /obj/machinery/power/turbine
+	build_path = /obj/machinery/power/turbine/core_rotor/constructed
 	req_components = list(
 		/obj/item/stack/cable_coil = 5,
-		/obj/item/stock_parts/capacitor = 6)
+		/obj/item/stack/sheet/iron = 5)
+
+/obj/item/circuitboard/machine/turbine_stator
+	name = "Turbine - Turbine Outlet (Machine Board)"
+	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
+	build_path = /obj/machinery/power/turbine/turbine_outlet/constructed
+	req_components = list(
+		/obj/item/stack/cable_coil = 5,
+		/obj/item/stack/sheet/iron = 5)
 
 /obj/item/circuitboard/machine/protolathe/department/engineering
 	name = "Departmental Protolathe - Engineering (Machine Board)"
@@ -512,7 +520,7 @@
 		/obj/machinery/vending/cigarette = "ShadyCigs Deluxe",
 		/obj/machinery/vending/games = "\improper Good Clean Fun",
 		/obj/machinery/vending/autodrobe = "AutoDrobe",
-		/obj/machinery/vending/wardrobe/sec_wardrobe/peacekeeper = "Peacekeeper Outfitting Station", //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/machinery/vending/wardrobe/sec_wardrobe = "SecDrobe",
+		/obj/machinery/vending/wardrobe/sec_wardrobe = "SecDrobe",
 		/obj/machinery/vending/wardrobe/det_wardrobe = "DetDrobe",
 		/obj/machinery/vending/wardrobe/medi_wardrobe = "MediDrobe",
 		/obj/machinery/vending/wardrobe/engi_wardrobe = "EngiDrobe",
@@ -544,7 +552,7 @@
 		/obj/machinery/vending/robotics = "Robotech Deluxe",
 		/obj/machinery/vending/engineering = "Robco Tool Maker",
 		/obj/machinery/vending/sovietsoda = "BODA",
-		/obj/machinery/vending/security_peacekeeper = "Armadyne Peacekeeper Equipment Vendor", //SKYRAT EDIT CHANGE - SEC_HUAL - ORIGINAL: /obj/machinery/vending/security = "SecTech",
+		/obj/machinery/vending/security = "Armadyne Peacekeeper Equipment Vendor", //SKYRAT EDIT CHANGE - SEC_HUAL - ORIGINAL: /obj/machinery/vending/security = "SecTech",
 		/obj/machinery/vending/modularpc = "Deluxe Silicate Selections",
 		/obj/machinery/vending/tool = "YouTool",
 		/obj/machinery/vending/custom = "Custom Vendor",
@@ -600,15 +608,6 @@
 		/obj/item/stock_parts/card_reader = 1,
 		/obj/item/stock_parts/scanning_module = 1,
 		/obj/item/stock_parts/micro_laser = 1
-	)
-
-/obj/item/circuitboard/machine/accounting
-	name = "Account Registration Device (Machine Board)"
-	greyscale_colors = CIRCUIT_COLOR_COMMAND
-	build_path = /obj/machinery/accounting
-	req_components = list(
-		/obj/item/stock_parts/card_reader = 1,
-		/obj/item/stock_parts/scanning_module = 1
 	)
 
 //Medical

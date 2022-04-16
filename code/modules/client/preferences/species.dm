@@ -6,7 +6,7 @@
 	randomize_by_default = FALSE
 
 /datum/preference/choiced/species/deserialize(input, datum/preferences/preferences)
-	return GLOB.species_list[sanitize_inlist(input, get_choices_serialized(), "human")]
+	return GLOB.species_list[sanitize_inlist(input, get_choices_serialized(), SPECIES_HUMAN)]
 
 /datum/preference/choiced/species/serialize(input)
 	var/datum/species/species = input
@@ -34,7 +34,7 @@
 /datum/preference/choiced/species/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/prefs)
 	target.set_species(value, FALSE, FALSE, prefs?.features.Copy(), prefs?.mutant_bodyparts.Copy(), prefs?.body_markings.Copy()) // SKYRAT EDIT - Customization
 
-//SKYRAT EDIT ADDITION
+	//SKYRAT EDIT ADDITION
 	target.dna.update_body_size()
 
 	for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS))
@@ -66,6 +66,7 @@
 		data[species_id]["enabled_features"] = species.get_features()
 		data[species_id]["perks"] = species.get_species_perks()
 		data[species_id]["diet"] =  species.get_species_diet()
+		data[species_id]["veteran_only"] = species.veteran_only // SKYRAT EDIT ADDITION - Veteran races
 
 		qdel(species)
 

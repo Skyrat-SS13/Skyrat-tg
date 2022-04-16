@@ -7,7 +7,7 @@
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
 	resistance_flags = FIRE_PROOF
 	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/armor/reagent_clothing/Initialize()
 	. = ..()
@@ -23,7 +23,6 @@
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
 	resistance_flags = FIRE_PROOF
 	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
-	mutant_variants = NONE
 
 /obj/item/clothing/gloves/reagent_clothing/Initialize()
 	. = ..()

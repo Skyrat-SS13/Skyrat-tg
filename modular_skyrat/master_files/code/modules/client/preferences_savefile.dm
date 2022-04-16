@@ -53,6 +53,8 @@
 		migrate_skyrat(S)
 		addtimer(CALLBACK(src, .proc/check_migration), 10 SECONDS)
 
+	READ_FILE(S["headshot"], headshot)
+
 /datum/preferences/proc/check_migration()
 	if(!tgui_prefs_migration)
 		to_chat(parent, examine_block(span_redtext("CRITICAL FAILURE IN PREFERENCE MIGRATION, REPORT THIS IMMEDIATELY.")))
@@ -80,6 +82,7 @@
 	WRITE_FILE(S["alt_job_titles"], alt_job_titles)
 	WRITE_FILE(S["languages"] , languages)
 	WRITE_FILE(S["tgui_prefs_migration"] , tgui_prefs_migration)
+	WRITE_FILE(S["headshot"], headshot)
 
 /datum/preferences/proc/update_mutant_bodyparts(datum/preference/preference)
 	if (!preference.relevant_mutant_bodypart)

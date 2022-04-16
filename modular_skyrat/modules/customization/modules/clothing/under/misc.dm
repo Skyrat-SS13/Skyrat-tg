@@ -5,7 +5,7 @@
 	icon_state = "stripper_p"
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/stripper/green
 	name = "green stripper outfit"
@@ -45,7 +45,7 @@
 	icon_state = "gear_harness"
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/colourable_kilt
 	name = "colourable kilt"
@@ -55,7 +55,7 @@
 	greyscale_config_worn = /datum/greyscale_config/kilt/worn
 	greyscale_colors = "#008000#777777"
 	flags_1 = IS_PLAYER_COLORABLE_1
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/royalkilt
 	name = "royal kilt"
@@ -121,7 +121,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "tac_s"
-	mutant_variants = STYLE_DIGITIGRADE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 /obj/item/clothing/under/misc/bluetracksuit
 	name = "blue tracksuit"
@@ -129,13 +129,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "tracksuit_blue"
-
-/obj/item/clothing/under/misc/hlscience
-	name = "ridiculous scientist outfit"
-	desc = "The tie is mandatory."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "hl_scientist"
 
 /obj/item/clothing/under/enclaveo
 	name = "neo american officer uniform"
@@ -179,7 +172,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "tacticool_hawaiian_orange"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/under/tachawaiian/blue
 	name = "blue tactical hawaiian outfit"
@@ -199,7 +192,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "texas"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/under/doug_dimmadome
 	name = "dimmadome formal outfit"
@@ -207,7 +200,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "doug_dimmadome"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/under/westender
 	name = "westender outfit"
@@ -215,7 +208,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "westender"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/under/rank/pmarsrobe
 	name = "priestess robe"
@@ -262,49 +255,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "checkered"
 
-///FORMAL DEPT
-/obj/item/clothing/under/rank/medical/doctor/formal
-	desc = "A white shirt with blue pants, lined with a protection against some light biohazards."
-	name = "medical doctor's formal wear"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "senior_medical"
-
-/obj/item/clothing/under/rank/medical/doctor/formal/skirt
-	desc = "A white shirt with a blue skirt, lined with a protection against some light biohazards."
-	name = "medical doctor's formal skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "senior_medical_skirt"
-
-/obj/item/clothing/under/rank/medical/chemist/formal
-	desc = "A orange shirt with white pants, lined with protection against chemical spills."
-	name = "chemist's formal wear"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "pharmacist"
-
-/obj/item/clothing/under/rank/medical/chemist/formal/skirt
-	desc = "A orange shirt with a white skirt, lined with protection against chemical spills."
-	name = "chemist's formal skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "pharmacist_skirt"
-
-/obj/item/clothing/under/rank/engineering/engineer/formal
-	desc = "A white shirt with garrish mustard pants, lined with protection against light radiation and fire."
-	name = "engineer's formal wear"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "senior_engineer"
-
-/obj/item/clothing/under/rank/engineering/engineer/formal/skirt
-	desc = "A white shirt with a garrish mustard skirt, lined with protection against light radiation and fire."
-	name = "engineer's formal skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "senior_engineer_skirt"
-
 /obj/item/clothing/under/rank/captain/humble
 	desc = "It's a blue jumpsuit with some small gold markings denoting the rank of \"Captain\", more humble than it's sister."
 	name = "captain's humble jumpsuit"
@@ -344,12 +294,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "cia"
 
-/obj/item/clothing/under/rank/medical/doctor/red/unarm
-	name = "red scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in a deep red."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "scrubsred"
+
 
 /obj/item/clothing/under/suit/white/scarface
 	name = "cuban suit"
@@ -370,6 +315,14 @@
 	body_parts_covered = GROIN
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
+/obj/item/clothing/under/misc/evilcargo
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	name = "black cargo uniform"
+	desc = "Yep, here’s your problem. Someone set this thing to evil."
+	icon_state = "qmsynd"
+	can_adjust = FALSE
+
 /obj/item/clothing/under/rank/medical/doctor/white
 	name = "white scrubs"
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in a cream white colour."
@@ -385,7 +338,7 @@
 	icon_state = "workpants_orange"
 	body_parts_covered = GROIN
 	can_adjust = FALSE
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/civilian/hydroponics/trouser
@@ -396,7 +349,7 @@
 	icon_state = "workpants_green"
 	body_parts_covered = GROIN
 	can_adjust = FALSE
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/security/peacekeeper/trousers
@@ -407,7 +360,7 @@
 	icon_state = "workpants_blue"
 	body_parts_covered = GROIN
 	can_adjust = FALSE
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/security/peacekeeper/trousers/red
