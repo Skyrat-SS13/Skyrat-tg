@@ -13,4 +13,5 @@
 	name = "Nightmare (Preview only)"
 
 /datum/outfit/nightmare/post_equip(mob/living/carbon/human/human, visualsOnly)
-	human.set_species(/datum/species/shadow/nightmare)
+	if(SSoverlays.initialized == TRUE) // SKYRAT EDIT: Fixing CI by delaying this for our custom system.
+		human.set_species(/datum/species/shadow/nightmare) // SKYRAT EDIT
