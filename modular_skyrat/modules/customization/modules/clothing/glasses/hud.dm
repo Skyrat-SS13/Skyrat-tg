@@ -27,7 +27,7 @@
 	name = "mesons eyepatch HUD"
 	desc = "For those that only want to go half insane when staring at the supermatter."
 	icon_state = "mesonpatch"
-	vclothing_traits = list(TRAIT_SUPERMATTER_MADNESS_IMMUNE)
+	clothing_traits = list(TRAIT_SUPERMATTER_MADNESS_IMMUNE)
 	darkness_view = 2
 	vision_flags = SEE_TURFS
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
