@@ -500,7 +500,7 @@
 							break
 				if(ReadHSV(newcolor)[3] >= ReadHSV("#7F7F7F")[3])
 					exposed_human.dna.features["mcolor"] = newcolor
-			exposed_human.regenerate_icons()
+			exposed_human.update_body(is_creating = TRUE)
 
 		if((methods & INGEST) && show_message)
 			to_chat(exposed_mob, span_notice("That tasted horrible."))
@@ -522,7 +522,7 @@
 			N.skin_tone = "orange"
 		else if(MUTCOLORS in N.dna.species.species_traits) //Aliens with custom colors simply get turned orange
 			N.dna.features["mcolor"] = "#ff8800"
-		N.regenerate_icons()
+		N.update_body(is_creating = TRUE)
 		if(DT_PROB(3.5, delta_time))
 			if(N.w_uniform)
 				M.visible_message(pick("<b>[M]</b>'s collar pops up without warning.</span>", "<b>[M]</b> flexes [M.p_their()] arms."))
@@ -1515,11 +1515,12 @@
 	L.SetSleeping(10)
 	return ..()
 
-/datum/reagent/healium/on_mob_life(mob/living/L, delta_time, times_fired)
-	. = ..()
-	L.adjustFireLoss(-2 * REM * delta_time, FALSE)
-	L.adjustToxLoss(-5 * REM * delta_time, FALSE)
-	L.adjustBruteLoss(-2 * REM * delta_time, FALSE)
+/datum/reagent/healium/on_mob_life(mob/living/breather, delta_time, times_fired)
+	breather.adjustFireLoss(-2 * REM * delta_time, FALSE)
+	breather.adjustToxLoss(-5 * REM * delta_time, FALSE)
+	breather.adjustBruteLoss(-2 * REM * delta_time, FALSE)
+	..()
+	return TRUE
 
 /datum/reagent/halon
 	name = "Halon"
