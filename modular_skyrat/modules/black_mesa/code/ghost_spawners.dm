@@ -139,7 +139,7 @@
 	ears = /obj/item/radio/headset/headset_faction
 	shoes = /obj/item/clothing/shoes/combat
 	l_pocket = /obj/item/grenade/smokebomb
-	r_pocket = null
+	r_pocket = /obj/item/handheld_transceiver
 	back = /obj/item/storage/backpack/ert/odst/hecu
 	backpack_contents = list(
 		/obj/item/storage/box/survival/radio,
