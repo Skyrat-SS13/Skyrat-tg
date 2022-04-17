@@ -536,3 +536,13 @@
 	description = "<span class='nicegreen'>Warm cozy bee hugs are the best!</span>\n"
 	mood_change = 0
 	timeout = 2 MINUTES
+
+/obj/item/toy/plush/roselia
+	name = "obscene sergal plushie"
+	desc = "A plush recreation of a pink sergal. The chest is extremely padded and the small plush clothes are barely holding themselves together."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_roselia"
+	attack_verb_continuous = list("hugs", "gropes")
+	attack_verb_simple = list("hug", "grope")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/merp.ogg' = 1)
+	young = 1 //No.
