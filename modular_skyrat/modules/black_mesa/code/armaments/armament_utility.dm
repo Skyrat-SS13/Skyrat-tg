@@ -69,4 +69,4 @@
 /datum/armament_entry/hecu/utility/bowman
 	item_type = /obj/item/radio/headset/headset_faction/bowman
 	max_purchase = 3
-	cost = 2
+	cost = 4

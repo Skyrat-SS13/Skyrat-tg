@@ -138,8 +138,8 @@
 	belt = /obj/item/storage/belt/military/assault/hecu
 	ears = /obj/item/radio/headset/headset_faction
 	shoes = /obj/item/clothing/shoes/combat
-	l_pocket = /obj/item/grenade/smokebomb
-	r_pocket = /obj/item/handheld_transceiver
+	l_pocket = /obj/item/reagent_containers/food/drinks/flask
+	r_pocket = /obj/item/flashlight/flare
 	back = /obj/item/storage/backpack/ert/odst/hecu
 	backpack_contents = list(
 		/obj/item/storage/box/survival/radio,
@@ -195,8 +195,7 @@
 		/obj/item/storage/box/hecu_rations,
 		/obj/item/knife/combat,
 		/obj/item/armament_points_card/assaultops,
-		/obj/item/book/granter/martial/cqc,
-		/obj/item/handheld_transceiver
+		/obj/item/book/granter/martial/cqc
 	)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu_leader
