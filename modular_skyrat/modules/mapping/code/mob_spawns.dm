@@ -121,7 +121,7 @@
 
 /datum/outfit/ds2/syndicate/researcher
 	name = "DS-2 Researcher"
-	uniform = /obj/item/clothing/under/utility/sci/syndicate
+	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/researcher
 
 /datum/outfit/ds2/syndicate/stationmed
@@ -294,7 +294,7 @@
 	outfit = /datum/outfit/tarkon/sci
 
 /datum/outfit/tarkon/sci
-	uniform = /obj/item/clothing/under/utility/sci
+	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility
 	glasses = /obj/item/clothing/glasses/hud/diagnostic
 	id = /obj/item/card/id/away/tarkon/sci
 	l_hand = /obj/item/inducer

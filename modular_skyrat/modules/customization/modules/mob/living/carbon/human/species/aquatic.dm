@@ -80,3 +80,9 @@
 	if(BMS)
 		markings = assemble_body_markings_from_set(BMS, passed_features, src)
 	return markings
+
+/datum/species/aquatic/get_species_description()
+	return placeholder_description
+
+/datum/species/aquatic/get_species_lore()
+	return list(placeholder_lore)

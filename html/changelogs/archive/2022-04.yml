@@ -493,3 +493,124 @@
   - rscadd: 'On MetaStation, IceBoxStation, and DeltaStation: Nanotrasen has formally
       defined the "holding cell" section of the brig.'
   - imageadd: There is now a new area icon for this new "holding cell" section.
+2022-04-14:
+  Cursor:
+  - bugfix: Fixed the Deadspace in the Rabbit (alt) Wag
+  Gandalf2k15:
+  - balance: Replaced the disabler instances in the armory with the CMG-1. An autorifle.
+  - rscadd: CMG-1 cargo packs!
+  - bugfix: More digitigrade clothing should function correctly again.
+  - rscadd: The security medic once again gets their firefly.
+  GoldenAlpharex:
+  - bugfix: Fixed Hemophages being selectable by non-Veteran. If you were a non-Veteran
+      and had a Hemophage, it'll convert them to a human when you spawn in, but I'd
+      still recommend making the change to human yourself, just in case something
+      funky happens. The alternative to that is to become a Veteran if you want to
+      keep your Hemophage :)
+  OrionTheFox:
+  - imageadd: Science's uniform/digi icons have all been moved into clothing/under/rnd.dmi
+      files in a continued organization effort. Please report any Science Uniform
+      icon issues to @Orion_The_Fox#1915.
+  Orion_the_Fox:
+  - bugfix: Powercells will now slot into chargers properly again, as well as show
+      their charge correctly.
+  - imageadd: Single-cell chargers will now show you what kind of powercell is charging
+      in it!
+  RatFromTheJungle:
+  - rscdel: Removes the MCR's undercharger attachment.
+  SkyratBot:
+  - bugfix: Monkeys now can interact with misc(environmental) turfs. Also removed
+      two unused broken turf types.
+  - bugfix: Fixed supply pods not being displayed below their contents when opened
+      or the rubbles effect caused by the impact.
+  - bugfix: You can no longer dupe ants(or any other chemicals) as a janiborg
+  - bugfix: held mice are no longer edible by moths
+  - bugfix: Ghosts can now correctly jump to C4's planted on walls/floors when they
+      get the notification
+  - server: Adds Ukraine's Independence Day as a holiday, since the child attacking
+      our hosting requested goofball PRs.
+  - bugfix: Cleaning strange objects no longer leave behind empty grenade casings.
+      No littering!
+  - bugfix: Fixes facial hair using main hair colour instead of facial hair colour
+  - admin: added logging for supply orders' rare erroneous manifest mechanic
+  - bugfix: After a few mishaps, Nanotrasen fixed a few small area definition errors
+      on MetaStation.
+  Tastyfish:
+  - bugfix: Fixes teshari and vox clothing sprites.
+  - refactor: Redoes how snowflake species do clothing. May cause unforseen edge case
+      issues to look out for.
+  YakumoChen:
+  - bugfix: Fake Announcement now broadcasts to deadchat, just like the real thing.
+  - balance: You can no longer stack some redundant trait combos.
+  nevimer:
+  - bugfix: Maintains the maps with TG's changes, specifically the turbine updates.
+2022-04-15:
+  RealWinterFrost:
+  - rscadd: Added donator Item
+  SkyratBot:
+  - bugfix: traitor logging has its own config flag
+  Tastyfish:
+  - bugfix: Fixed snouts again.
+2022-04-16:
+  ATHATH:
+  - bugfix: Washing someone else's mouth out with soap no longer washes YOUR mouth
+      out with soap instead.
+  GoldenAlpharex:
+  - bugfix: Hemophages are back to the Frontier, for realsies this time.
+  SkyratBot:
+  - bugfix: Brains from HARS victims in a new HARS body will not be revivable anymore.
+  - bugfix: Bluespace golems can no longer spam teleport
+  nevimer:
+  - bugfix: Moth eyes work again.
+  - bugfix: Shadowpeople & nightmares on the preferences no longer cause the game
+      to fail CI & Runtime.
+  - bugfix: Lore and Descriptions no longer runtime from no content. There is still
+      no real content.
+  - bugfix: CI works again.
+2022-04-17:
+  Deek-Za:
+  - bugfix: Fixed security sorting pipe issues on Icebox Station.
+  - bugfix: Put bluespace vendor in its proper place on Metastation
+  - bugfix: fixed AI cryo job release
+  Onule:
+  - imageadd: Resprited all slimes and slime cores
+  - imagedel: Removed unused slime and slime core icons
+  PositiveEntropy:
+  - imageadd: Resprites the soft caps!
+  SkyratBot:
+  - soundadd: A new round-end sound is in rotation.
+  - bugfix: Water slime cookie no longer tastes like /datum/reagent/water
+  - bugfix: Grilling food now makes said food, grilled.
+  - bugfix: You can no longer turn yourself into Spriteless Face Man using the "mask"
+      bandanas in the botany wardrobe on Deltastation. Those have been replaced with
+      proper botany bandanas.
+  - rscadd: You should now be able to rotate bedsheets on yourself as you take restful
+      sleeps.
+  - bugfix: Nanotrasen will no longer place bedsheets the wrong way on beds.
+  - rscadd: Remapped the Pride's Mirror ruin
+  - imageadd: Wrapped parcels now have an overlay when tagged with a destination.
+  - refactor: Refactored wrapped parcels to have a common base type.
+  - bugfix: metal foam now blocks you from falling down a z-level if it's below you
+  - rscadd: Nanotrasen realized that their holodeck simulation of the photobooth was
+      not properly configured, and was showing up with ugly, grouted tiles. This has
+      been rectified to be a pure white backdrop for all your photograph desires.
+  - bugfix: Uncle Pete remembered to order new rollerskates for his rollerdome. 30
+      Skates will now be stocked for rent on his shuttle.
+  - bugfix: Gives the pheromone receptor power an icon.
+  - rscadd: Remaps the gluttony ruin!
+  - rscdel: Remove the free antag syringe from the gluttony ruin.
+  - bugfix: The debug industrial lift usable by admins for testing tram behavior has
+      been fixed, and can now be moved again.
+  - bugfix: turbines don't leak heat. Properly now
+  - bugfix: Wizard immovable rod no longer deletes itself when travelling betwen z-levels
+  - bugfix: Diggable turfs no longer get dug up by any item used on them
+  - bugfix: easter baskets can now hold easter eggs
+  UnderARock:
+  - bugfix: Fixes spraytan not tanning skin color.
+  Wallem:
+  - imageadd: Updates airlock cycling & mass driver buttons.
+  mcmeiler:
+  - bugfix: Xenobiological Slime Hybrid sprites are back to normal.
+  - bugfix: Limbs can now be see-through again.
+  tf-4:
+  - bugfix: Headshots can now properly be removed if you so wish.
