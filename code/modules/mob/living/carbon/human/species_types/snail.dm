@@ -78,6 +78,21 @@
 	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 10, BOMB = 25, BIO = 0, FIRE = 0, ACID = 50)
 	max_integrity = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Conical Shell" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
+			RESKIN_ICON_STATE = "coneshell",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "coneshell"
+		),
+		"Round Shell" = list(
+			RESKIN_ICON = 'icons/obj/storage.dmi',
+			RESKIN_ICON_STATE = "snailshell",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "snailshell"
+		),
+	)
 
 /obj/item/storage/backpack/snail/dropped(mob/user, silent)
 	. = ..()
