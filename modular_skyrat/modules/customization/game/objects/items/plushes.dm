@@ -545,5 +545,5 @@
 	attack_verb_continuous = list("hugs")
 	attack_verb_simple = list("hug")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/merp.ogg' = 1)
-	young = false //I don't even know what this does for plushies
+	young = FALSE
 
