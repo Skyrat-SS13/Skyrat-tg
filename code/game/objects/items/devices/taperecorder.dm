@@ -310,6 +310,20 @@
 	canprint = FALSE
 	addtimer(VARSET_CALLBACK(src, canprint, TRUE), 30 SECONDS)
 
+/obj/item/taperecorder/verb/WipeTapeInRecorder()
+	set name = "Wipe Tape"
+
+	if(!mytape || mytape.unspooled)
+		return
+	if(recording)
+		return
+	if(playing)
+		return
+	else
+		mytape.used_capacity = 0;
+		mytape.storedinfo = new;
+		mytape.timestamp = new;
+		to_chat(usr, "<span class='notice'>You wipe this tape entirely.")
 
 //empty tape recorders
 /obj/item/taperecorder/empty
@@ -402,6 +416,19 @@
 /obj/item/tape/proc/respool()
 	cut_overlay("ribbonoverlay")
 	unspooled = FALSE
+
+/obj/item/tape/proc/wipeproc()
+	used_capacity = 0;
+	storedinfo = new;
+	timestamp = new;
+
+/obj/item/tape/verb/wipeverb()
+	set name = "Wipe Tape";
+	if(unspooled)
+		to_chat(usr, "<span class='notice'>You scrub the magnetic strip clean of its contents.")
+		wipeproc()
+	else if(!unspooled)
+		to_chat(usr, "<span class='notice'>You need to pull out the tape's magnetic strips first.")
 
 /obj/item/tape/proc/tapeflip()
 	//first we save a copy of our current side
