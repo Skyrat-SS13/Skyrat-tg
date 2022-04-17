@@ -3,7 +3,7 @@ GLOBAL_LIST_EMPTY(handheld_transceivers)
 /obj/item/handheld_transceiver
 	name = "handheld transceiver"
 	desc = "A two-way secure communication device used by people to communicate with each other."
-	icon = 'modular_skyrat\modules\black_mesa\icons\walkietalkie.dmi'
+	icon = 'modular_skyrat/modules/black_mesa/icons/walkietalkie.dmi'
 	icon_state = "radio_off"
 	throwforce = 10
 	var/faction = "USMC"
