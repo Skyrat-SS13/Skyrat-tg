@@ -457,7 +457,7 @@
 	desc = "These eyes seem to have a large range, but might be cumbersome with glasses."
 	eye_icon_state = "snail_eyes"
 	icon_state = "snail_eyeballs"
-	eyes_layer = HANDCUFF_LAYER
+	eyes_layer = ABOVE_BODY_FRONT_HEAD_LAYER
 
 /obj/item/organ/eyes/fly
 	name = "fly eyes"
