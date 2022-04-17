@@ -277,7 +277,7 @@
 			start_activation_process(result)
 	else
 		issue_turfs -= checked_turf
-		if(!length(issue_turfs))
+		if(!length(issue_turfs) && alarm_type)
 			start_deactivation_process()
 
 

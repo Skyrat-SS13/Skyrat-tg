@@ -80,7 +80,7 @@
 	/// Does it require the items it takes in to be wrapped in paper wrap? Can have unforeseen consequences, change to FALSE at your own risks.
 	var/whitelisted_contents = TRUE
 	/// What kind of wrapped item can it hold, if `whitelisted_contents` is set to true?
-	var/list/whitelisted_item_types = list(/obj/item/small_delivery, /obj/item/bounty_cube)
+	var/list/whitelisted_item_types = list(/obj/item/delivery/small, /obj/item/bounty_cube)
 	/// A short description used when the check to pick up something has failed.
 	var/whitelisted_item_description = "small wrapped packages"
 	/// Weight limit on the items it can hold. Leave as NONE if there isn't.
@@ -245,8 +245,8 @@
 
 		var/contains_mobs = FALSE
 
-		if(istype(lifting_up, /obj/structure/big_delivery))
-			var/obj/structure/big_delivery/parcel = lifting_up
+		if(istype(lifting_up, /obj/item/delivery/big))
+			var/obj/item/delivery/big/parcel = lifting_up
 			if(parcel.contains_mobs)
 				if(!can_hold_mobs)
 					to_chat(user, span_warning("[src]'s warning light blinks red: There's something with the potential to be alive inside of [parcel]!"))
@@ -278,7 +278,7 @@
 	name = "improved integrated hydraulic clamp"
 	desc = "A neat way to lift and move around a wrapped crate for quick and painless deliveries!"
 	storage_capacity = 1
-	whitelisted_item_types = list(/obj/item/small_delivery, /obj/structure/big_delivery, /obj/item/bounty_cube) // If they want to carry a small package or a bounty cube instead, so be it, honestly.
+	whitelisted_item_types = list(/obj/item/delivery, /obj/item/bounty_cube) // If they want to carry a small package or a bounty cube instead, so be it, honestly.
 	whitelisted_item_description = "wrapped packages"
 	item_weight_limit = NONE
 	clamp_sound_volume = 50
@@ -473,7 +473,7 @@
 
 /// Some override that didn't belong anywhere else.
 
-/obj/structure/big_delivery
+/obj/item/delivery/big
 	/// Does this wrapped package contain at least one mob?
 	var/contains_mobs = FALSE
 
