@@ -542,7 +542,7 @@
 	desc = "A plush recreation of a pink sergal. The chest is extremely padded and the small plush clothes are barely holding themselves together."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_roselia"
-	attack_verb_continuous = list("hugs", "gropes")
-	attack_verb_simple = list("hug", "grope")
+	attack_verb_continuous = list("hugs")
+	attack_verb_simple = list("hug")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/merp.ogg' = 1)
 	young = 1 //No.

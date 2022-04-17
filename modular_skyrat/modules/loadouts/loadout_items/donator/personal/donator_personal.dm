@@ -412,7 +412,7 @@
 	name = "black and red turtleneck"
 	item_path = /obj/item/clothing/under/rank/security/head_of_security/alt/roselia
 	ckeywhitelist = list("ultimarifox")
-	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER)
+	restricted_roles = list(JOB_HEAD_OF_SECURITY)
 
 /datum/loadout_item/glasses/redgigagar
 	name = "red-tinted giga HUD gar glasses"
