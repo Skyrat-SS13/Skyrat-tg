@@ -6,6 +6,7 @@ GLOBAL_LIST_EMPTY(handheld_transceivers)
 	icon = 'modular_skyrat/modules/black_mesa/icons/walkietalkie.dmi'
 	icon_state = "radio_off"
 	throwforce = 10
+	w_class = WEIGHT_CLASS_SMALL
 	var/faction = "USMC"
 	var/activated = FALSE
 
