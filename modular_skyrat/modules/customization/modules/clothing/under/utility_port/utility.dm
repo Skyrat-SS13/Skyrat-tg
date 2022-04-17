@@ -11,18 +11,6 @@
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
 	has_sensor = NO_SENSORS
 
-/obj/item/clothing/under/utility/sci
-	name = "science utility uniform"
-	desc = "A utility uniform worn by NT-certified Science staff."
-	icon_state = "util_sci"
-	permeability_coefficient = 0.5
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 10, BIO = 0, FIRE = 0, ACID = 0) //Same stats as default science jumpsuit
-
-/obj/item/clothing/under/utility/sci/syndicate
-	desc = "A utility uniform worn by Science staff."
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
-	has_sensor = NO_SENSORS
-
 /obj/item/clothing/under/utility/sec
 	name = "security utility uniform"
 	desc = "A utility uniform worn by Security officers."
@@ -45,8 +33,3 @@
 /obj/item/clothing/under/utility/com/syndicate
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
 	has_sensor = NO_SENSORS
-
-/obj/item/clothing/under/utility/robo_sleek
-	name = "sleek roboticst jumpsuit"
-	desc = "A sleek version of the roboticist uniform, complete with sci-fi stripes."
-	icon_state = "robosleek"

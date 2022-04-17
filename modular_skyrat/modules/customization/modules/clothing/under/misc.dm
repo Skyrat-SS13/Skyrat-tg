@@ -130,13 +130,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "tracksuit_blue"
 
-/obj/item/clothing/under/misc/hlscience
-	name = "ridiculous scientist outfit"
-	desc = "The tie is mandatory."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "hl_scientist"
-
 /obj/item/clothing/under/enclaveo
 	name = "neo american officer uniform"
 	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
