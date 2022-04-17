@@ -5,7 +5,6 @@ GLOBAL_LIST_EMPTY(handheld_transceivers)
 	desc = "A two-way secure communication device used by people to communicate with each other."
 	icon = 'modular_skyrat/modules/black_mesa/icons/walkietalkie.dmi'
 	icon_state = "radio_off"
-	throwforce = 10
 	w_class = WEIGHT_CLASS_SMALL
 	var/faction = "USMC"
 	var/activated = FALSE
