@@ -7,6 +7,12 @@
 	learnable_languages = list(/datum/language/common, /datum/language/slime)
 	payday_modifier = 0.75
 
+/datum/species/jelly/get_species_description()
+	return placeholder_description
+
+/datum/species/jelly/get_species_lore()
+	return list(placeholder_lore)
+
 /datum/species/jelly/roundstartslime
 	name = "Xenobiological Slime Hybrid"
 	id = SPECIES_SLIMESTART
@@ -18,6 +24,15 @@
 	burnmod = 1
 	specific_alpha = 155
 	markings_alpha = 130 //This is set lower than the other so that the alpha values don't stack on top of each other so much
+
+	bodypart_overrides = list( //Overriding jelly bodyparts
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/roundstartslime,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/roundstartslime,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/roundstartslime,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/roundstartslime,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/roundstartslime,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/roundstartslime,
+	)
 
 /datum/action/innate/slime_change
 	name = "Alter Form"
