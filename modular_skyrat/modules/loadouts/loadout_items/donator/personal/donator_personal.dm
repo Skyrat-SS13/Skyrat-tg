@@ -409,19 +409,19 @@
 	ckeywhitelist = list("tobjv")
 
 /datum/loadout_item/under/jumpsuit/redhosneck
-	name = "black and red turtleneck"
+	name = "Black and Red Turtleneck"
 	item_path = /obj/item/clothing/under/rank/security/head_of_security/alt/roselia
 	ckeywhitelist = list("ultimarifox")
 	restricted_roles = list(JOB_HEAD_OF_SECURITY)
 
 /datum/loadout_item/glasses/redgigagar
-	name = "red-tinted giga HUD gar glasses"
+	name = "Red-tinted Giga HUD Gar Glasses"
 	item_path = /obj/item/clothing/glasses/hud/security/sunglasses/gars/giga/roselia
 	ckeywhitelist = list("ultimarifox")
 	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER)
 
 /datum/loadout_item/toys/roselia_plush
-	name = "obscene sergal plushie"
+	name = "Obscene Sergal Plushie"
 	item_path = /obj/item/toy/plush/roselia
 	ckeywhitelist = list("ultimarifox")
 
