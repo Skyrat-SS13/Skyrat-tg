@@ -3,7 +3,7 @@
 	id = SPECIES_SNAIL
 	offset_features = list(OFFSET_GLASSES = list(0,4))
 	default_color = "336600" //vomit green
-	species_traits = list(MUTCOLORS,EYECOLOR,HAS_FLESH,HAS_BONE,HAIR,FACEHAIR) //SKYRAT EDIT: Roundstart Snails - Customization
+	species_traits = list(MUTCOLORS,EYECOLOR,HAS_FLESH,HAS_BONE,HAIR,FACEHAIR) //SKYRAT EDIT - Roundstart Snails - Customization
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
@@ -16,9 +16,9 @@
 	coldmod = 0.5 //snails only come out when its cold and wet
 	burnmod = 2
 	speedmod = 6
-	punchdamagehigh = 5 //snails are soft and squishy //SKYRAT EDIT: Roundstart Snails - A Bit More Damage
+	punchdamagehigh = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage
 	siemens_coeff = 2 //snails are mostly water
-	liked_food = VEGETABLES | FRUIT | GROSS | RAW //SKYRAT EDIT: Roundstart Snails - Food Prefs
+	liked_food = VEGETABLES | FRUIT | GROSS | RAW //SKYRAT EDIT - Roundstart Snails - Food Prefs
 	disliked_food = PINEAPPLE | DAIRY | ORANGES | SUGAR //SKYRAT EDIT: Roundstart Snails - As it turns out, you can't give a snail processed sugar or citrus.
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP
 	sexes = FALSE //snails are hermaphrodites
@@ -57,7 +57,7 @@
 		if(C.dropItemToGround(bag)) //returns TRUE even if its null
 			C.equip_to_slot_or_del(new /obj/item/storage/backpack/snail(C), ITEM_SLOT_BACK)
 	C.AddElement(/datum/element/snailcrawl)
-	C.update_icons()
+	C.update_icons() //SKYRAT EDIT: Roundstart Snails
 
 /datum/species/snail/on_species_loss(mob/living/carbon/C)
 	. = ..()
@@ -78,6 +78,7 @@
 	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 10, BOMB = 25, BIO = 0, FIRE = 0, ACID = 50)
 	max_integrity = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	//SKYRAT EDIT BEGIN - Roundstart Snails
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Conical Shell" = list(
@@ -93,6 +94,7 @@
 			RESKIN_WORN_ICON_STATE = "snailshell"
 		),
 	)
+	//SKYRAT EDIT END - Roundstart Snails
 
 /obj/item/storage/backpack/snail/dropped(mob/user, silent)
 	. = ..()
@@ -104,7 +106,9 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, "snailshell")
 
+//SKYRAT EDIT BEGIN - Roundstart Snails
 /obj/item/storage/backpack/snail/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_combined_w_class = 30
+//SKYRAT EDIT END - Roundstart Snails
