@@ -2,8 +2,8 @@ GLOBAL_LIST_EMPTY(handheld_transceivers)
 
 /obj/item/handheld_transceiver
 	name = "handheld transceiver"
-	desc = "A two-way communication device used by people to communicate with each other."
-	icon = 'icons/obj/gang/cell_phone.dmi'
+	desc = "A two-way secure communication device used by people to communicate with each other."
+	icon = 'modular_skyrat\modules\black_mesa\icons\walkietalkie.dmi'
 	icon_state = "radio_off"
 	throwforce = 10
 	var/faction = "USMC"
@@ -48,14 +48,14 @@ GLOBAL_LIST_EMPTY(handheld_transceivers)
 			continue //Remove if underlying cause (likely byond issue) is fixed. See TG PR #49004.
 		if(player_mob.stat != DEAD) //not dead, not important
 			continue
-		if(get_dist(player_mob, src) > 10 || player_mob.z != z) //they're out of range of normal hearing
+		if(get_dist(player_mob, src) > 7 || player_mob.z != z) //they're out of range of normal hearing
 			if(!(player_mob.client.prefs.chat_toggles & CHAT_GHOSTEARS)) //they're talking normally and we have hearing at any range off
 				continue
 		var/link = FOLLOW_LINK(player_mob, src)
-		to_chat(player_mob, span_blue("[link] <b>[speaker.name]</b> \[CELL: [faction]\] says, \"[message]\""))
+		to_chat(player_mob, span_blue("[link] <b>[speaker.name]</b> \[RADIO: [faction]\] says, \"[message]\""))
 
 /obj/item/handheld_transceiver/proc/say_message(message, atom/movable/speaker)
 	for(var/mob/living/carbon/human/transceiver_hearer in get_turf(src))
 		if(HAS_TRAIT(transceiver_hearer, TRAIT_DEAF))
 			continue
-		to_chat(transceiver_hearer, span_blue("<b>[speaker.name]</b> \[CELL: [faction]\] says, \"[message]\""))
+		to_chat(transceiver_hearer, span_blue("<b>[speaker.name]</b> \[RADIO: [faction]\] says, \"[message]\""))

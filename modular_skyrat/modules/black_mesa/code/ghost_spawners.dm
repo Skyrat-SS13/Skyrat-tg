@@ -195,7 +195,8 @@
 		/obj/item/storage/box/hecu_rations,
 		/obj/item/knife/combat,
 		/obj/item/armament_points_card/assaultops,
-		/obj/item/book/granter/martial/cqc
+		/obj/item/book/granter/martial/cqc,
+		/obj/item/handheld_transceiver
 	)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu_leader
