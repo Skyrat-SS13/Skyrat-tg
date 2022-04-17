@@ -546,3 +546,4 @@
 	attack_verb_simple = list("hug")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/merp.ogg' = 1)
 	young = 1 //No.
+
