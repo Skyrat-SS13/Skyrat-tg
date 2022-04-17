@@ -28244,9 +28244,13 @@
 /obj/item/clothing/gloves/color/black,
 /obj/item/clothing/gloves/color/black,
 /obj/machinery/light/directional/west,
-/obj/machinery/camera/autoname/directional/west,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 8
+	},
+/obj/machinery/camera/directional/west{
+	c_tag = "Atmospherics Monitoring";
+	name = "atmospherics camera";
+	network = list("ss13","engine")
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos/office)
@@ -28347,7 +28351,6 @@
 "bUi" = (
 /obj/structure/table,
 /obj/item/book/manual/wiki/security_space_law,
-/obj/machinery/camera/autoname/directional/west,
 /obj/machinery/airalarm/directional/west,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -28357,6 +28360,11 @@
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 8
+	},
+/obj/machinery/camera/directional/west{
+	c_tag = "Engineering Guard Post";
+	name = "engineering camera";
+	network = list("ss13","engine")
 	},
 /turf/open/floor/iron,
 /area/security/checkpoint/engineering)
@@ -28549,12 +28557,16 @@
 "bUJ" = (
 /obj/structure/filingcabinet/chestdrawer,
 /obj/machinery/light/directional/north,
-/obj/machinery/camera/autoname/directional/north,
 /obj/machinery/computer/security/telescreen/ce{
 	pixel_y = 30
 	},
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
+	},
+/obj/machinery/camera/directional/north{
+	c_tag = "Engineering Chief Engineer Office";
+	name = "engineering camera";
+	network = list("ss13","engine")
 	},
 /turf/open/floor/iron,
 /area/command/heads_quarters/ce)
@@ -28604,9 +28616,13 @@
 "bUR" = (
 /obj/structure/tank_dispenser,
 /obj/machinery/airalarm/directional/north,
-/obj/machinery/camera/autoname/directional/north,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
+	},
+/obj/machinery/camera/directional/north{
+	c_tag = "Engineering Power Storage";
+	name = "engineering camera";
+	network = list("ss13","engine")
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/engine_smes)
@@ -29201,13 +29217,6 @@
 /turf/open/floor/iron/dark,
 /area/engineering/engine_smes)
 "bWz" = (
-/obj/machinery/computer/security/telescreen{
-	desc = "Used for watching the engine containment area.";
-	dir = 8;
-	name = "Engine Monitor";
-	network = list("engine");
-	pixel_x = 32
-	},
 /obj/item/stack/sheet/iron/fifty,
 /obj/item/stack/sheet/iron/fifty,
 /obj/item/stack/sheet/iron/fifty,
@@ -29517,7 +29526,8 @@
 /area/hallway/primary/aft)
 "bXz" = (
 /obj/machinery/camera/directional/east{
-	c_tag = "Atmospherics Tank - O2"
+	c_tag = "Atmospherics Tank - O2";
+	network = list("ss13","engine")
 	},
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
@@ -29768,7 +29778,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/camera/autoname/directional/north,
 /obj/structure/sign/map{
 	icon_state = "map-pubby";
 	pixel_y = 32
@@ -29778,6 +29787,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
+	},
+/obj/machinery/camera/directional/north{
+	c_tag = "Engineering Foyer Northwest";
+	name = "engineering camera";
+	network = list("ss13","engine")
 	},
 /turf/open/floor/catwalk_floor/iron,
 /area/engineering/main)
@@ -29858,7 +29872,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/camera/autoname/directional/north,
 /obj/item/radio/intercom{
 	pixel_y = 26
 	},
@@ -29867,6 +29880,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
+	},
+/obj/machinery/camera/directional/north{
+	c_tag = "Engineering Foyer Northeast";
+	name = "engineering camera";
+	network = list("ss13","engine")
 	},
 /turf/open/floor/catwalk_floor/iron,
 /area/engineering/main)
@@ -30544,6 +30562,11 @@
 /obj/structure/reflector/single/anchored{
 	dir = 10
 	},
+/obj/machinery/camera/directional/north{
+	c_tag = "Engineering Laser Room";
+	name = "engineering camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/plating,
 /area/engineering/supermatter/room)
 "ccg" = (
@@ -30849,8 +30872,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/camera/autoname/directional/south,
 /obj/effect/turf_decal/trimline/yellow/filled/line,
+/obj/machinery/camera/directional/south{
+	c_tag = "Engineering Foyer Southwest";
+	name = "engineering camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/iron,
 /area/engineering/main)
 "cdR" = (
@@ -30906,7 +30933,6 @@
 	light_color = "#e8eaff"
 	},
 /obj/structure/cable,
-/obj/machinery/camera/autoname/directional/east,
 /turf/open/floor/plating,
 /area/engineering/supermatter/room)
 "cdX" = (
@@ -31944,7 +31970,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/camera/autoname/directional/west,
+/obj/machinery/camera/directional/west{
+	c_tag = "Atmospherics Crystallizer West";
+	name = "atmospherics camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "cjB" = (
@@ -32374,6 +32404,11 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/camera/directional/west{
+	c_tag = "Telecomms Access";
+	name = "telecomms camera";
+	network = list("ss13","tcomms")
 	},
 /turf/open/floor/plating,
 /area/tcommsat/computer)
@@ -32829,9 +32864,10 @@
 /turf/open/floor/iron/dark/telecomms,
 /area/tcommsat/server)
 "cnu" = (
-/obj/machinery/camera/motion/directional/south{
-	c_tag = "Telecomms Server Room";
-	network = list("tcomms")
+/obj/machinery/camera/directional/south{
+	c_tag = "Telecomms Servers";
+	name = "telecomms camera";
+	network = list("ss13","tcomms")
 	},
 /turf/open/floor/iron/dark/telecomms,
 /area/tcommsat/server)
@@ -34166,6 +34202,17 @@
 /obj/machinery/vending/wardrobe/chap_wardrobe,
 /turf/open/floor/carpet,
 /area/service/chapel/office)
+"cue" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/camera/directional/north{
+	c_tag = "Engineering Engine Northeast";
+	name = "engineering camera";
+	network = list("ss13","engine")
+	},
+/turf/open/floor/engine,
+/area/engineering/supermatter/room)
 "cuk" = (
 /obj/structure/closet{
 	name = "beekeeping wardrobe"
@@ -36648,7 +36695,8 @@
 /area/commons/dorms/barracks)
 "dDm" = (
 /obj/machinery/camera/directional/east{
-	c_tag = "Atmospherics Tank - N2O"
+	c_tag = "Atmospherics Tank - N2O";
+	network = list("ss13","engine")
 	},
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
@@ -38419,7 +38467,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/obj/machinery/camera/autoname/directional/south,
+/obj/machinery/camera/directional/south{
+	c_tag = "Engineering Engine Southwest";
+	name = "engineering camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
 "fhH" = (
@@ -38796,7 +38848,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/camera/autoname/directional/north,
+/obj/machinery/camera/directional/north{
+	c_tag = "Engineering Engine Northwest";
+	name = "engineering camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
 "fwl" = (
@@ -38839,7 +38895,8 @@
 /area/security/execution/education)
 "fwQ" = (
 /obj/machinery/camera/directional/east{
-	c_tag = "Atmospherics Tank - CO2"
+	c_tag = "Atmospherics Tank - CO2";
+	network = list("ss13","engine")
 	},
 /turf/open/floor/engine/co2,
 /area/engineering/atmos)
@@ -38928,7 +38985,11 @@
 	dir = 8;
 	name = "Air to Distro"
 	},
-/obj/machinery/camera/autoname/directional/north,
+/obj/machinery/camera/directional/north{
+	c_tag = "Atmospherics Distribution";
+	name = "atmospherics camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "fBt" = (
@@ -39174,11 +39235,15 @@
 /area/maintenance/department/security/brig)
 "fIR" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/camera/autoname/directional/north,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /obj/machinery/firealarm/directional/north,
+/obj/machinery/camera/directional/north{
+	c_tag = "Atmospherics Mixing - Central";
+	name = "atmospherics camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "fIT" = (
@@ -40243,7 +40308,11 @@
 /area/engineering/supermatter/room)
 "gEP" = (
 /obj/machinery/atmospherics/pipe/smart/simple/purple/visible,
-/obj/machinery/camera/autoname/directional/east,
+/obj/machinery/camera/directional/east{
+	c_tag = "Atmospherics Crystallizer East";
+	name = "atmospherics camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "gEX" = (
@@ -41574,7 +41643,11 @@
 /obj/structure/sign/warning/radiation{
 	pixel_x = 32
 	},
-/obj/machinery/camera/autoname/directional/east,
+/obj/machinery/camera/directional/east{
+	c_tag = "Atmospherics Mixing North #2";
+	name = "atmospherics camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "hFp" = (
@@ -41763,12 +41836,14 @@
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "hNQ" = (
-/obj/machinery/camera/directional/north{
-	c_tag = "Atmospherics - Hypertorus Fusion Reactor Chamber Fore"
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/camera/directional/north{
+	c_tag = "Atmospherics Fusion North";
+	name = "atmospherics camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/iron/dark,
 /area/engineering/atmos/hfr_room)
 "hOe" = (
@@ -42401,7 +42476,11 @@
 /turf/open/floor/iron/dark,
 /area/science/xenobiology)
 "irF" = (
-/obj/machinery/camera/autoname/directional/north,
+/obj/machinery/camera/directional/north{
+	c_tag = "Atmospherics Mixing - East";
+	name = "atmospherics camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "irY" = (
@@ -42594,7 +42673,10 @@
 /turf/open/floor/plating,
 /area/engineering/atmos)
 "iBJ" = (
-/obj/machinery/camera/autoname/directional/south,
+/obj/machinery/camera/motion/directional/south{
+	c_tag = "Telecomms External Access";
+	network = list("tcomms")
+	},
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
 "iCe" = (
@@ -42894,8 +42976,12 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/camera/autoname/directional/east,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/camera/directional/east{
+	c_tag = "Engineering Engine East";
+	name = "engineering camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
 "iLN" = (
@@ -48378,7 +48464,8 @@
 /area/commons/dorms)
 "nwH" = (
 /obj/machinery/camera/directional/east{
-	c_tag = "Atmospherics Tank - Toxins"
+	c_tag = "Atmospherics Tank - Toxins";
+	network = list("ss13","engine")
 	},
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
@@ -48816,7 +48903,6 @@
 /obj/item/radio/intercom{
 	pixel_y = 26
 	},
-/obj/machinery/camera/autoname/directional/north,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
 	},
@@ -48826,6 +48912,11 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/camera/directional/north{
+	c_tag = "Telecomms Moniter";
+	name = "telecomms camera";
+	network = list("ss13","tcomms")
+	},
 /turf/open/floor/iron,
 /area/tcommsat/computer)
 "nMP" = (
@@ -49223,7 +49314,8 @@
 /area/security/range)
 "ocE" = (
 /obj/machinery/camera/directional/east{
-	c_tag = "Atmospherics Tank - N2"
+	c_tag = "Atmospherics Tank - N2";
+	network = list("ss13","engine")
 	},
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
@@ -49342,8 +49434,12 @@
 "ogX" = (
 /obj/machinery/light/directional/south,
 /obj/effect/turf_decal/stripes/line,
-/obj/machinery/camera/autoname/directional/south,
 /obj/effect/turf_decal/trimline/yellow/filled/line,
+/obj/machinery/camera/directional/south{
+	c_tag = "Engineering Foyer Southeast";
+	name = "engineering camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/iron,
 /area/engineering/main)
 "ohm" = (
@@ -49645,7 +49741,11 @@
 /area/engineering/atmos/storage/gas)
 "oui" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/camera/autoname/directional/west,
+/obj/machinery/camera/directional/west{
+	c_tag = "Atmospherics Mixing West";
+	name = "atmospherics camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "ous" = (
@@ -51322,7 +51422,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/obj/machinery/camera/autoname/directional/south,
+/obj/machinery/camera/directional/south{
+	c_tag = "Engineering Engine Southeast";
+	name = "engineering camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
 "pKx" = (
@@ -51498,8 +51602,12 @@
 /turf/open/floor/iron/white,
 /area/medical/psychology)
 "pPI" = (
-/obj/machinery/camera/autoname/directional/north,
 /obj/structure/table,
+/obj/machinery/camera/directional/north{
+	c_tag = "Atmospherics Mixing North #1";
+	name = "atmospherics camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "pPN" = (
@@ -51524,7 +51632,8 @@
 /area/commons/dorms/barracks)
 "pQb" = (
 /obj/machinery/camera/directional/east{
-	c_tag = "Atmospherics Tank - Air"
+	c_tag = "Atmospherics Tank - Air";
+	network = list("ss13","engine")
 	},
 /turf/open/floor/engine/air,
 /area/engineering/atmos)
@@ -51862,8 +51971,8 @@
 /area/medical/medbay/central)
 "qgK" = (
 /obj/effect/turf_decal/bot_blue,
-/obj/effect/spawner/armory_spawn/microfusion,
 /obj/structure/rack/gunrack,
+/obj/effect/spawner/armory_spawn/cmg,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "qgQ" = (
@@ -53393,12 +53502,13 @@
 /turf/open/floor/iron/dark,
 /area/medical/morgue)
 "rsZ" = (
-/obj/machinery/camera/motion/directional/south{
-	c_tag = "Telecomms External Access";
-	network = list("tcomms")
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
+	},
+/obj/machinery/camera/directional/south{
+	c_tag = "Telecomms Access";
+	name = "telecomms camera";
+	network = list("ss13","tcomms")
 	},
 /turf/open/floor/iron,
 /area/tcommsat/computer)
@@ -55184,6 +55294,8 @@
 /area/science/xenobiology)
 "sNS" = (
 /obj/effect/turf_decal/bot_blue,
+/obj/structure/rack/gunrack,
+/obj/effect/spawner/armory_spawn/microfusion,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "sOB" = (
@@ -56880,8 +56992,12 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/camera/autoname/directional/west,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/camera/directional/west{
+	c_tag = "Engineering Engine West";
+	name = "engineering camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
 "ukn" = (
@@ -57793,7 +57909,8 @@
 /area/commons/fitness/recreation)
 "uPu" = (
 /obj/machinery/camera/directional/east{
-	c_tag = "Atmospherics Tank - Mix"
+	c_tag = "Atmospherics Tank - Mix";
+	network = list("ss13","engine")
 	},
 /turf/open/floor/engine/vacuum,
 /area/engineering/atmos)
@@ -58637,9 +58754,13 @@
 /obj/structure/closet/radiation,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/light/directional/west,
-/obj/machinery/camera/autoname/directional/west,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 8
+	},
+/obj/machinery/camera/directional/west{
+	c_tag = "Atmospherics Turbine";
+	name = "atmospherics camera";
+	network = list("ss13","engine")
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/atmospherics_engine)
@@ -59185,9 +59306,13 @@
 	},
 /obj/item/clothing/gloves/color/yellow,
 /obj/machinery/light/directional/north,
-/obj/machinery/camera/autoname/directional/north,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
+	},
+/obj/machinery/camera/directional/north{
+	c_tag = "Engineering Supplies";
+	name = "engineering camera";
+	network = list("ss13","engine")
 	},
 /turf/open/floor/iron,
 /area/engineering/main)
@@ -59243,12 +59368,16 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/obj/machinery/camera/autoname/directional/east,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 4
 	},
 /obj/machinery/light/directional/east,
 /obj/structure/cable,
+/obj/machinery/camera/directional/east{
+	c_tag = "Engineering Lobby";
+	name = "engineering camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/iron,
 /area/engineering/lobby)
 "vSQ" = (
@@ -62246,6 +62375,14 @@
 	icon_state = "platingdmg3"
 	},
 /area/maintenance/department/engine)
+"yhf" = (
+/obj/structure/lattice,
+/obj/machinery/camera/motion/directional/north{
+	c_tag = "Telecomms External Starboard";
+	network = list("tcomms")
+	},
+/turf/open/space,
+/area/space/nearstation)
 "yhB" = (
 /obj/structure/disposaloutlet,
 /obj/structure/disposalpipe/trunk{
@@ -62318,10 +62455,14 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "ymb" = (
-/obj/machinery/camera/autoname/directional/east,
 /obj/machinery/light/directional/east,
 /obj/structure/chair{
 	dir = 8
+	},
+/obj/machinery/camera/directional/east{
+	c_tag = "Engineering Telecomms Access";
+	name = "engineering camera";
+	network = list("ss13","engine")
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/main)
@@ -90063,7 +90204,7 @@ cmB
 cmB
 cmB
 cmB
-cny
+abI
 adR
 abI
 aaa
@@ -91091,7 +91232,7 @@ cmK
 cmK
 cnu
 cmB
-abI
+yhf
 adR
 abI
 aaa
@@ -92119,7 +92260,7 @@ cmB
 cmB
 cmB
 cmB
-cny
+abI
 adR
 abI
 aaa
@@ -95151,7 +95292,7 @@ cci
 cam
 ogX
 cbj
-fwi
+cue
 vPX
 jBn
 kbV
