@@ -58,8 +58,12 @@
 	. = ..()
 	if(.)
 		return
+<<<<<<< HEAD
 	// allowed() doesn't allow for pAIs
 	if((!allowed(usr) || !ispAI(usr)) && locked) // SKYRAT EDIT - pAIs in MODsuits
+=======
+	if(locked && !allowed(usr))
+>>>>>>> db89670d3b3 (makes modsuit locks a bit more clear (#66190))
 		balloon_alert(usr, "insufficient access!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return
