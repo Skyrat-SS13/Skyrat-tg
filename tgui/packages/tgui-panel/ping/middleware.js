@@ -4,13 +4,8 @@
  * @license MIT
  */
 
-<<<<<<< HEAD
 import { pingSuccess } from './actions';
 import { PING_INTERVAL } from './constants';
-=======
-import { pingFail, pingSuccess } from './actions';
-import { PING_INTERVAL, PING_QUEUE_SIZE, PING_TIMEOUT } from './constants';
->>>>>>> b86cf89125a (tgui: API improvements + docs (#65943))
 
 export const pingMiddleware = store => {
   let initialized = false;
@@ -27,16 +22,12 @@ export const pingMiddleware = store => {
     }
     const ping = { index, sentAt: Date.now() };
     pings[index] = ping;
-<<<<<<< HEAD
     sendMessage({
       type: 'ping',
       payload: { index },
     });
-    index = (index + 1) % PING_QUEUE_SIZE;*/ // SKYRAT EDIT END
-=======
     Byond.sendMessage('ping', { index });
-    index = (index + 1) % PING_QUEUE_SIZE;
->>>>>>> b86cf89125a (tgui: API improvements + docs (#65943))
+    index = (index + 1) % PING_QUEUE_SIZE;*/ // SKYRAT EDIT END
   };
   return next => action => {
     const { type, payload } = action;
