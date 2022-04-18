@@ -64,3 +64,9 @@
 
 /datum/species/robotic/get_types_to_preload()
 	return ..() - typesof(/obj/item/organ/cyberimp/arm/power_cord) // Don't cache things that lead to hard deletions.
+
+/datum/species/robotic/get_species_description()
+	return placeholder_description
+
+/datum/species/robotic/get_species_lore()
+	return list(placeholder_lore)

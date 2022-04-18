@@ -168,6 +168,17 @@
 					/obj/item/storage/box/gunset/pepperball)
 	crate_name = "pepperball pistol crate"
 	dangerous = TRUE
+	
+/datum/supply_pack/security/cmg1
+	name = "NT CMG-1 Value-Pack"
+	desc = "Contains two CMG-1 Weapon kits, for all your automatic-fire needs."
+	cost = CARGO_CRATE_VALUE * 15
+	access_view = ACCESS_ARMORY
+	contains = list(
+		/obj/item/storage/box/gunset/cmg,
+		/obj/item/storage/box/gunset/cmg,
+		)
+	dangerous = TRUE
 
 /datum/supply_pack/security/wildcat
 	name = "CFA Wildcat Supply Crate"
