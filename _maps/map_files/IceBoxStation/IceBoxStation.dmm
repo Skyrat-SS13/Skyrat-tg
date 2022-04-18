@@ -214,6 +214,28 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
+"aiX" = (
+/obj/machinery/pdapainter/engineering,
+/obj/effect/turf_decal/tile/neutral/full,
+/obj/machinery/button/door/directional/west{
+	id = "atmos";
+	name = "Atmospherics Lockdown";
+	pixel_y = 10;
+	req_access_txt = "10"
+	},
+/obj/machinery/button/door/directional/west{
+	id = "Secure Storage";
+	name = "Engineering Secure Storage";
+	req_access_txt = "11"
+	},
+/obj/machinery/button/door/directional/west{
+	id = "Engineering";
+	name = "Engineering Lockdown";
+	pixel_y = -10;
+	req_access_txt = "10"
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/command/heads_quarters/ce)
 "ajf" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/sign/warning/gasmask,
@@ -13033,7 +13055,7 @@
 "fuT" = (
 /obj/machinery/suit_storage_unit/ce,
 /obj/effect/turf_decal/stripes/line{
-	dir = 4
+	dir = 6
 	},
 /turf/open/floor/iron/white/textured,
 /area/command/heads_quarters/ce)
@@ -16469,6 +16491,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
 	},
+/obj/machinery/pdapainter/medbay,
 /turf/open/floor/iron/dark,
 /area/command/heads_quarters/cmo)
 "gZY" = (
@@ -17815,23 +17838,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
-/obj/machinery/button/door/directional/west{
-	id = "atmos";
-	name = "Atmospherics Lockdown";
-	pixel_y = 10;
-	req_access_txt = "10"
-	},
-/obj/machinery/button/door/directional/west{
-	id = "Secure Storage";
-	name = "Engineering Secure Storage";
-	req_access_txt = "11"
-	},
-/obj/machinery/button/door/directional/west{
-	id = "Engineering";
-	name = "Engineering Lockdown";
-	pixel_y = -10;
-	req_access_txt = "10"
-	},
 /obj/effect/turf_decal/tile/neutral/full,
 /turf/open/floor/iron/dark/smooth_large,
 /area/command/heads_quarters/ce)
@@ -18782,6 +18788,7 @@
 	name = "Research Director's Requests Console";
 	receive_ore_updates = 1
 	},
+/obj/machinery/pdapainter/research,
 /turf/open/floor/iron/cafeteria,
 /area/command/heads_quarters/rd)
 "ihd" = (
@@ -30156,6 +30163,19 @@
 	dir = 8
 	},
 /obj/item/ai_module/core/full/custom,
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/table/wood/fancy/red,
+/obj/effect/spawner/random/aimodule/harmful,
+/obj/machinery/door/window/brigdoor/left/directional/south{
+	dir = 4;
+	name = "High-Risk Modules";
+	req_access_txt = "20"
+	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "nVg" = (
@@ -31189,6 +31209,10 @@
 	},
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
+"ouq" = (
+/obj/machinery/pdapainter/security,
+/turf/open/floor/wood/large,
+/area/command/heads_quarters/hos)
 "ouM" = (
 /obj/structure/extinguisher_cabinet/directional/east,
 /obj/structure/cable,
@@ -32466,6 +32490,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/item/storage/box/deputy,
+/obj/item/storage/box/seccarts{
+	pixel_x = 9;
+	pixel_y = 9
+	},
 /turf/open/floor/wood/large,
 /area/command/heads_quarters/hos)
 "oZl" = (
@@ -35599,10 +35627,6 @@
 /turf/open/floor/iron,
 /area/hallway/secondary/service)
 "qBw" = (
-/obj/item/storage/box/seccarts{
-	pixel_x = 9;
-	pixel_y = 9
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/wood/large,
 /area/command/heads_quarters/hos)
@@ -42773,6 +42797,16 @@
 /obj/structure/table,
 /obj/machinery/cell_charger,
 /obj/item/radio/intercom/directional/north,
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/obj/item/radio/intercom/directional/north,
+/obj/item/storage/fancy/donut_box{
+	pixel_x = 4;
+	pixel_y = 9
+	},
 /turf/open/floor/iron,
 /area/cargo/storage)
 "uat" = (
@@ -80571,7 +80605,7 @@ cOi
 vFK
 vFK
 gLf
-gLf
+ouq
 qBw
 jVn
 prI
@@ -80671,7 +80705,7 @@ jBb
 eqL
 hSM
 fuT
-hSM
+aiX
 gWp
 xei
 sGu
@@ -80827,7 +80861,7 @@ jnk
 cgW
 jnk
 jnk
-jnk
+gLf
 gLf
 gLf
 gLf
