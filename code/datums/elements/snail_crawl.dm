@@ -29,7 +29,7 @@
 /datum/element/snailcrawl/proc/lubricate(atom/movable/snail)
 	SIGNAL_HANDLER
 
-	var/turf/open/OT = get_turf(snail)
-	if(istype(OT))
-		OT.MakeSlippery(TURF_WET_WATER, 1.5 SECONDS) //SKYRAT EDIT: Roundstart Snails - No more lube
+	var/turf/open/open_turf = get_turf(snail)
+	if(istype(open_turf))
+		open_turf.MakeSlippery(TURF_WET_WATER, 1.5 SECONDS) //SKYRAT EDIT: Roundstart Snails - No more lube
 		return TRUE
