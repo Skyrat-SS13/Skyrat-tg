@@ -8,7 +8,7 @@
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_NOSLIPALL,
-		TRAIT_WATER_BREATHING,
+		TRAIT_WATER_BREATHING, //SKYRAT EDIT - Roundstart Snails
 	)
 	attack_verb = "slap"
 	attack_effect = ATTACK_EFFECT_DISARM
@@ -105,10 +105,3 @@
 /obj/item/storage/backpack/snail/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, "snailshell")
-
-//SKYRAT EDIT BEGIN - Roundstart Snails
-/obj/item/storage/backpack/snail/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_combined_w_class = 30
-//SKYRAT EDIT END - Roundstart Snails
