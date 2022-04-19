@@ -45,11 +45,6 @@
 		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * delta_time)
 		return TRUE
 
-//SKYRAT EDIT: Roundstart Snails
-/datum/species/snail/check_roundstart_eligible()
-	return TRUE
-//SKYRAT EDIT: Roundstart Snails
-
 /datum/species/snail/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
 	. = ..()
 	var/obj/item/storage/backpack/bag = C.get_item_by_slot(ITEM_SLOT_BACK)
