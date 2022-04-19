@@ -23,7 +23,7 @@
 /datum/armament_entry/hecu/medical/medkit/toxin
 	item_type = /obj/item/storage/medkit/toxin
 	max_purchase = 1
-	cost = 3
+	cost = 2
 
 /datum/armament_entry/hecu/medical/medkit/fire
 	item_type = /obj/item/storage/medkit/fire
@@ -33,7 +33,12 @@
 /datum/armament_entry/hecu/medical/medkit/o2
 	item_type = /obj/item/storage/medkit/o2
 	max_purchase = 1
-	cost = 3
+	cost = 2
+
+/datum/armament_entry/hecu/medical/medkit/advanced
+	item_type = /obj/item/storage/medkit/advanced
+	max_purchase = 1
+	cost = 4
 
 /datum/armament_entry/hecu/medical/medkit/expeditionary
 	item_type = /obj/item/storage/medkit/expeditionary
@@ -63,17 +68,12 @@
 	max_purchase = 4
 	cost = 1
 
-/datum/armament_entry/hecu/medical/injector/oxandrolone
-	item_type = /obj/item/reagent_containers/hypospray/medipen/oxandrolone
-	max_purchase = 4
-	cost = 1
-
 /datum/armament_entry/hecu/medical/injector/stimulant
 	item_type = /obj/item/reagent_containers/hypospray/medipen/stimulants
-	max_purchase = 4
-	cost = 1
+	max_purchase = 2
+	cost = 4
 
 /datum/armament_entry/hecu/medical/injector/bag
 	item_type = /obj/item/storage/bag/medpens
 	max_purchase = 2
-	cost = 4
+	cost = 5
