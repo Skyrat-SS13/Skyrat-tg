@@ -12,7 +12,9 @@
 	var/upper_cost = 200
 	/// How much the stock is multiplied by
 	var/stock_mult = 1
-	/// If this is a gun or not
-	var/is_gun = TRUE
+	/// How much will be added to a company's reputation on-buy
+	var/interest_addition
 	/// What interest level is needed to purchase the armament, set to 0 for none
 	var/interest_required = 0
+	/// If this requires a multitooled console to be visible
+	var/contraband = FALSE

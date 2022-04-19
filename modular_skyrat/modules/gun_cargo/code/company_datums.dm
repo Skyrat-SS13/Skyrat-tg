@@ -97,6 +97,13 @@
 	cost_change_upper = 12500 //This is an alternative to R&D, so it's expensive as hell
 	cost = 10000
 
+/datum/gun_company/interdyne
+	name = "Interdyne Pharmaceuticals"
+	company_flag = COMPANY_INTERDYNE
+	cost_change_lower = -4500
+	cost_change_upper = 6500
+	cost = 7500
+
 /datum/gun_company/dynamics
 	name = "Armament Dynamics Inc."
 	can_roundstart_pick = FALSE

@@ -96,8 +96,18 @@
 			for(var/datum/armament_entry/armament_entry as anything in GLOB.armament_entries[armament_category][CATEGORY_ENTRY][subcategory])
 				if(products && !(armament_entry.type in products))
 					continue
+
 				var/datum/armament_entry/cargo_gun/gun_entry = armament_entry
+
+				if(gun_entry.contraband)
+					if(!(console_state == CARGO_CONSOLE))
+						continue
+					var/obj/machinery/computer/cargo/parent_console = parent
+					if(!parent_console.contraband)
+						continue
+
 				var/cant_purchase = FALSE
+
 				if(gun_entry.interest_required)
 					for(var/company_interested as anything in SSgun_companies.companies)
 						if(company_interested != armament_category)
@@ -273,7 +283,7 @@
 		created_order = new(created_pack, name, rank, ckey, paying_account = buyer, reason = reason)
 	else
 		created_order = new(created_pack, name, rank, ckey, reason = reason)
-	created_order.is_gun = armament_entry.is_gun
+	created_order.interest_addition = armament_entry.interest_addition
 	created_order.selected_entry = armament_entry
 	created_order.used_component = src
 	if(console_state == CARGO_CONSOLE)
@@ -290,7 +300,7 @@
 		else
 			SSshuttle.shopping_list += created_order
 
-/datum/component/armament/cargo_gun/buy_ammo(mob/user, datum/armament_entry/armament_entry)
+/datum/component/armament/cargo_gun/buy_ammo(mob/user, datum/armament_entry/cargo_gun/armament_entry)
 	var/datum/bank_account/buyer = SSeconomy.get_dep_account(ACCOUNT_CAR)
 	var/obj/machinery/computer/cargo/possible_console
 	var/obj/item/modular_computer/possible_downloader
@@ -387,7 +397,7 @@
 		created_order = new(created_pack, name, rank, ckey, paying_account = buyer, reason = reason)
 	else
 		created_order = new(created_pack, name, rank, ckey, reason = reason)
-	created_order.is_gun = FALSE
+	created_order.interest_addition = armament_entry.interest_addition
 	var/datum/computer_file/program/budgetorders/file_p = parent_prog
 	if(console_state == CARGO_CONSOLE)
 		if(possible_console.requestonly && !self_paid)

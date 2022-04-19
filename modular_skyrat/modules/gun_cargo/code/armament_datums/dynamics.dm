@@ -3,13 +3,13 @@
 /datum/armament_entry/cargo_gun/dynamics
 	category = ARMAMENT_CATEGORY_DYNAMICS
 	company_bitflag = COMPANY_DYNAMICS
-	is_gun = FALSE
 	stock_mult = 2 //To compensate for their interest being fairly low most of the time
 
 /datum/armament_entry/cargo_gun/dynamics/ammo
 	subcategory = ARMAMENT_SUBCATEGORY_AMMO
 	lower_cost = CARGO_CRATE_VALUE * 1
 	upper_cost = CARGO_CRATE_VALUE * 3
+	interest_addition = COMPANY_INTEREST_AMMO
 
 /datum/armament_entry/cargo_gun/dynamics/ammo/c9mm
 	item_type = /obj/item/ammo_box/c9mm
@@ -86,8 +86,23 @@
 /datum/armament_entry/cargo_gun/dynamics/ammo/c38/trc
 	item_type = /obj/item/ammo_box/c38/trac
 
-/datum/armament_entry/cargo_gun/dynamics/bandolier
+
+/datum/armament_entry/cargo_gun/dynamics/misc
+	subcategory = ARMAMENT_SUBCATEGORY_SPECIAL
+
+/datum/armament_entry/cargo_gun/dynamics/misc/bandolier
 	item_type = /obj/item/storage/belt/bandolier
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 4
 
+/datum/armament_entry/cargo_gun/dynamics/misc/ammo_bench
+	item_type = /obj/item/circuitboard/machine/ammo_workbench
+	lower_cost = CARGO_CRATE_VALUE * 30
+	upper_cost = CARGO_CRATE_VALUE * 35
+	interest_required = PASSED_INTEREST
+
+/datum/armament_entry/cargo_gun/dynamics/misc/lethal_disk
+	item_type = /obj/item/disk/ammo_workbench/lethal
+	lower_cost = CARGO_CRATE_VALUE * 25
+	upper_cost = CARGO_CRATE_VALUE * 30
+	interest_required = HIGH_INTEREST

@@ -19,8 +19,8 @@
 
 /datum/armament_entry/cargo_gun/armadyne/pistol/firefly
 	item_type = /obj/item/gun/ballistic/automatic/pistol/firefly
-	lower_cost = CARGO_CRATE_VALUE * 4
-	upper_cost = CARGO_CRATE_VALUE * 5
+	lower_cost = CARGO_CRATE_VALUE * 3
+	upper_cost = CARGO_CRATE_VALUE * 4
 
 /datum/armament_entry/cargo_gun/armadyne/pistol/pdh6b
 	item_type = /obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper
@@ -55,8 +55,8 @@
 
 /datum/armament_entry/cargo_gun/armadyne/rifle/ripper
 	item_type = /obj/item/gun/ballistic/automatic/dmr
-	lower_cost = CARGO_CRATE_VALUE * 15
-	upper_cost = CARGO_CRATE_VALUE * 18
+	lower_cost = CARGO_CRATE_VALUE * 17
+	upper_cost = CARGO_CRATE_VALUE * 20
 
 /datum/armament_entry/cargo_gun/armadyne/rifle/norwind
 	item_type = /obj/item/gun/energy/norwind

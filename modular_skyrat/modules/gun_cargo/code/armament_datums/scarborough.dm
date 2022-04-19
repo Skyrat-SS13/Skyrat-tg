@@ -40,13 +40,13 @@
 
 /datum/armament_entry/cargo_gun/scarborough/rifle/m90gl // Fucking expensive as hell.
 	item_type = /obj/item/gun/ballistic/automatic/m90/unrestricted
-	lower_cost = CARGO_CRATE_VALUE * 35
-	upper_cost = CARGO_CRATE_VALUE * 40
+	lower_cost = CARGO_CRATE_VALUE * 40
+	upper_cost = CARGO_CRATE_VALUE * 45
 	interest_required = HIGH_INTEREST
 
 /datum/armament_entry/cargo_gun/scarborough/part
 	subcategory = ARMAMENT_SUBCATEGORY_GUNPART
-	is_gun = FALSE
+	interest_addition = COMPANY_INTEREST_ATTACHMENT
 
 /datum/armament_entry/cargo_gun/scarborough/part/suppressor
 	item_type = /obj/item/suppressor
@@ -55,6 +55,7 @@
 
 /datum/armament_entry/cargo_gun/scarborough/ammo
 	subcategory = ARMAMENT_SUBCATEGORY_AMMO
+	interest_addition = COMPANY_INTEREST_AMMO
 
 /datum/armament_entry/cargo_gun/scarborough/ammo/grenade
 	item_type = /obj/item/ammo_casing/a40mm
