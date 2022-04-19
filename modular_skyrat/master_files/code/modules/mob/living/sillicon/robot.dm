@@ -26,46 +26,95 @@
 
 /datum/component/robot_smoke/RegisterWithParent()
 	add_verb(parent, /mob/living/silicon/robot/proc/toggle_smoke)
+	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, .proc/dir_change)
 
 /datum/component/robot_smoke/UnregisterFromParent()
 	remove_verb(parent, /mob/living/silicon/robot/proc/toggle_smoke)
+	UnregisterSignal(parent, COMSIG_ATOM_DIR_CHANGE)
 
 /datum/component/robot_smoke/Destroy()
 	return ..()
+
+/datum/component/robot_smoke/proc/dir_change(datum/source, olddir, newdir)
+	SIGNAL_HANDLER
+
+	var/atom/movable/movable_parent = parent
+
+	if(!movable_parent.particles)
+		return
+
+	var/truedir = movable_parent.dir
+	if(newdir && scandir != newdir)
+		truedir = newdir
+
+	switch(truedir)
+		if(NORTH)
+			movable_parent.particles.position = list(-4, 12, 0)
+			movable_parent.particles.drift = generator("vector", list(0, 0.4), list(0.2, -0.2))
+		if(EAST)
+			movable_parent.particles.position = list(-2, 12, 0)
+			movable_parent.particles.drift = generator("vector", list(0, 0.4), list(-0.8, 0.2))
+		if(SOUTH)
+			movable_parent.particles.position = list(4, 12, 0)
+			movable_parent.particles.drift = generator("vector", list(0, 0.4), list(0.2, -0.2))
+		if(WEST)
+			movable_parent.particles.position = list(2, 12, 0)
+			movable_parent.particles.drift = generator("vector", list(0, 0.4), list(0.8, -0.2))
+
 
 /mob/living/silicon/robot/proc/toggle_smoke()
 	set name = "Toggle smoke"
 	set category = "AI Commands"
 
 	if(particles)
-		QDEL_NULL(particles)
+		smoke_disappear()
 	else if (!stat && !robot_resting)
+		playsound(src, 'modular_skyrat/master_files/sound/effects/robot_smoke.ogg', 50)
 		particles = new /particles/smoke/robot()
+
+/mob/living/silicon/robot/proc/smoke_disappear()
+	particles.spawning = 0
+	addtimer(CALLBACK(src, .proc/smoke_qdel), 1 SECONDS)
+
+/mob/living/silicon/robot/proc/smoke_qdel()
+	QDEL_NULL(particles)
 
 /mob/living/silicon/robot/death()
 	. = ..()
 	if(GetComponent(/datum/component/robot_smoke))
-		QDEL_NULL(particles)
+		smoke_disappear()
 
 /mob/living/silicon/robot/robot_lay_down()
 	. = ..()
 
 	if(GetComponent(/datum/component/robot_smoke))
 		if(robot_resting)
-			QDEL_NULL(particles)
+			smoke_disappear()
 		else
 			return
 
 // The smoke
 /particles/smoke/robot
-	spawning = 1
+	spawning = 0.5
 	lifespan = 1 SECONDS
-	fade = 0.5 SECONDS
+	fadein = 0.5 SECONDS
+	fade = 0.75 SECONDS
 	velocity = list(0, 0.2, 0)
-	position = list(0, 12, 0)
-	drift = generator("sphere", -2, 2, NORMAL_RAND)
 	friction = 0.35
 	scale = 0.5
+	grow = 0.1
+	spin = generator("num", -20, 20)
+
+// Another smoke effect
+/obj/effect/temp_visual/mook_dust/robot
+	icon = 'modular_skyrat/modules/altborgs/icons/tallborg/misc/tallrobot_effects.dmi'
+	icon_state = "impact_cloud"
+	color = "#a9a9a93c"
+
+/obj/effect/temp_visual/mook_dust/robot/table
+	color = "#ffffffc2"
+	pixel_y = -8
+	layer = ABOVE_MOB_LAYER
 
 
 ////
