@@ -64,13 +64,8 @@
 		var/obj/item/borg/upgrade/modkit/M = A
 		M.modify_projectile(K)
 
-<<<<<<< HEAD
-/obj/item/gun/energy/kinetic_accelerator/cyborg
-	icon_state = "kineticgun" // SKYRAT EDIT CHANGE
-=======
 /obj/item/gun/energy/recharge/kinetic_accelerator/cyborg
-	icon_state = "kineticgun_b"
->>>>>>> 61f1c5ee190 ([MDB IGNORE] makes ebows and kinetic accelerators share a parent (#66247))
+	icon_state = "kineticgun" // SKYRAT EDIT CHANGE
 	holds_charge = TRUE
 	unique_frequency = TRUE
 	max_mod_capacity = 80
