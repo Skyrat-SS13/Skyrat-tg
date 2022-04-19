@@ -47,6 +47,7 @@
 	icon = 'modular_skyrat/modules/medical/icons/obj/dartguns.dmi'
 	icon_state = "smartdartgun"
 	has_gun_safety = TRUE
+	item_flags = null
 
 /obj/item/gun/syringe/smartdart/Initialize()
 	. = ..()
