@@ -37,50 +37,50 @@
 		dig_speed = 30
 		return
 	dig_amount = round_dig
-	dig_speed = round_dig
+	dig_speed = round_dig * 0.5
 	to_chat(user, span_notice("You change the hammer's digging depth to [round_dig]cm."))
 
 /obj/item/xenoarch/hammer/cm1
 	name = "hammer (1cm)"
 	icon_state = "hammer1"
 	dig_amount = 1
-	dig_speed = 1 SECONDS
+	dig_speed = 0.5 SECONDS
 
 /obj/item/xenoarch/hammer/cm2
 	name = "hammer (2cm)"
 	icon_state = "hammer2"
 	dig_amount = 2
-	dig_speed = 2 SECONDS
+	dig_speed = 1 SECONDS
 
 /obj/item/xenoarch/hammer/cm3
 	name = "hammer (3cm)"
 	icon_state = "hammer3"
 	dig_amount = 3
-	dig_speed = 3 SECONDS
+	dig_speed = 1.5 SECONDS
 
 /obj/item/xenoarch/hammer/cm4
 	name = "hammer (4cm)"
 	icon_state = "hammer4"
 	dig_amount = 4
-	dig_speed = 4 SECONDS
+	dig_speed = 2 SECONDS
 
 /obj/item/xenoarch/hammer/cm5
 	name = "hammer (5cm)"
 	icon_state = "hammer5"
 	dig_amount = 5
-	dig_speed = 5 SECONDS
+	dig_speed = 2.5 SECONDS
 
 /obj/item/xenoarch/hammer/cm6
 	name = "hammer (6cm)"
 	icon_state = "hammer6"
 	dig_amount = 6
-	dig_speed = 6 SECONDS
+	dig_speed = 3 SECONDS
 
 /obj/item/xenoarch/hammer/cm10
 	name = "hammer (10cm)"
 	icon_state = "hammer10"
 	dig_amount = 10
-	dig_speed = 10 SECONDS
+	dig_speed = 5 SECONDS
 
 /obj/item/xenoarch/hammer/adv
 	name = "advanced hammer"
@@ -94,12 +94,12 @@
 /obj/item/xenoarch/brush
 	name = "brush"
 	desc = "A brush that is used to uncover the secrets of the past from strange rocks."
-	var/dig_speed = 5 SECONDS
+	var/dig_speed = 3 SECONDS
 	icon_state = "brush"
 
 /obj/item/xenoarch/brush/adv
 	name = "advanced brush"
-	dig_speed = 5
+	dig_speed = 0.5 SECONDS
 	icon_state = "adv_brush"
 
 // MISC.
@@ -113,13 +113,13 @@
 	name = "handheld scanner"
 	desc = "A handheld scanner for strange rocks. It tags the depths to the rock."
 	icon_state = "scanner"
-	var/scanning_speed = 5 SECONDS
+	var/scanning_speed = 3 SECONDS
 	var/scan_advanced = FALSE
 
 /obj/item/xenoarch/handheld_scanner/advanced
 	name = "advanced handheld scanner"
 	icon_state = "adv_scanner"
-	scanning_speed = 1 SECONDS
+	scanning_speed = 0.5 SECONDS
 	scan_advanced = TRUE
 
 /obj/item/xenoarch/handheld_recoverer
@@ -217,7 +217,7 @@
 	STR.max_w_class = WEIGHT_CLASS_GIGANTIC
 	STR.allow_quick_empty = TRUE
 	STR.max_combined_w_class = 1000
-	STR.max_items = 20
+	STR.max_items = 25
 	STR.display_numerical_stacking = FALSE
 	STR.can_hold = typecacheof(list(/obj/item/xenoarch/strange_rock))
 
@@ -264,12 +264,12 @@
 /obj/item/storage/bag/xenoarch/adv
 	name = "advanced xenoarch mining satchel"
 	icon_state = "adv_satchel"
-	insert_speed = 1
+	insert_speed = 0.1 SECONDS
 
 /obj/item/storage/bag/xenoarch/adv/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 40
+	STR.max_items = 50
 
 /obj/structure/closet/xenoarch
 	name = "xenoarchaeology equipment locker"
