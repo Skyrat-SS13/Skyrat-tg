@@ -127,26 +127,6 @@
 	contains = list(/obj/item/mod/control/pre_equipped/security)
 	crate_name = "security MODsuit crate"
 
-/datum/supply_pack/costumes_toys/randomised/improvised //If cargo/sec REALLY wants to use guns without the armament system, they *can*
-	name = "Improvised Weapons Crate"
-	desc = "Really hit rock bottom? Well, we've got a few things laying around from a sting-op on pirates we could lend you. (We'll expect these back.)" //they don't, actually.
-	contraband = TRUE
-	cost = CARGO_CRATE_VALUE * 7
-	num_contained = 3
-	contains = list(/obj/item/gun/ballistic/revolver/rifle/improvised,
-					/obj/item/gun/ballistic/revolver/rifle, //Above, but better.
-					/obj/item/gun/ballistic/rifle/irifle, //just a shittier mosin, in a much less statistically valuable crate.
-					/obj/item/gun/ballistic/rifle/ishotgun,
-					/obj/item/gun/ballistic/rifle/ishotgun/sawn, //Why not, helps pad the list.
-					/obj/item/storage/box/beanbag,
-					/obj/item/storage/box/lethalshot,
-					/obj/item/ammo_box/c38, //Revolver rifle ammo.
-					/obj/item/ammo_box/a762, //rifle ammo.
-					/obj/item/gun/ballistic/automatic/surplus, //It's bad
-					/obj/item/ammo_box/magazine/m10mm/rifle,
-					/obj/item/gun/ballistic/automatic/pistol/toy) //they just hate you.
-	crate_name = "dusty crate"
-
 /datum/supply_pack/security/armor
 	name = "Armor Crate"
 	desc = "Three vests of well-rounded, decently-protective armor. Requires Security access to open."

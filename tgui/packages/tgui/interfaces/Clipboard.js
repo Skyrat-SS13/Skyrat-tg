@@ -23,11 +23,7 @@ export const Clipboard = (props, context) => {
     <Window title="Clipboard" width={400} height={500}>
       <Window.Content backgroundColor="#704D25" scrollable>
         <Section>
-          {integrated_pen ? (
-            <Box color="white" align="center">
-              There is a pen integrated into the clipboard&apos;s clip.
-            </Box>
-          ) : (pen ? (
+          {pen ? (
             <LabeledList>
               <LabeledList.Item
                 label="Pen"
@@ -38,6 +34,10 @@ export const Clipboard = (props, context) => {
                 {pen}
               </LabeledList.Item>
             </LabeledList>
+          ) : (integrated_pen ? (
+            <Box color="white" align="center">
+              There is a pen integrated into the clipboard&apos;s clip.
+            </Box>
           ) : (
             <Box color="white" align="center">
               No pen attached!
