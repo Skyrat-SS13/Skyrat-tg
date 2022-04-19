@@ -21,7 +21,7 @@
 	liked_food = VEGETABLES | FRUIT | GROSS | RAW //SKYRAT EDIT - Roundstart Snails - Food Prefs
 	disliked_food = PINEAPPLE | DAIRY | ORANGES | SUGAR //SKYRAT EDIT: Roundstart Snails - As it turns out, you can't give a snail processed sugar or citrus.
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP
-	//sexes = FALSE //snails are hermaphrodites - SKYRAT EDIT REMOVAL - Roundstart Snails
+	sexes = FALSE //snails are hermaphrodites
 	veteran_only = TRUE //SKYRAT EDIT - Roundstart Snails
 
 	mutanteyes = /obj/item/organ/eyes/snail
