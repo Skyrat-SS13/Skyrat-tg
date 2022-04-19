@@ -26,6 +26,7 @@ export const pingMiddleware = store => {
       type: 'ping',
       payload: { index },
     });
+    Byond.sendMessage('ping', { index });
     index = (index + 1) % PING_QUEUE_SIZE;*/ // SKYRAT EDIT END
   };
   return next => action => {

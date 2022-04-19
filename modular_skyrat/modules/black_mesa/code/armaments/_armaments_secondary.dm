@@ -17,7 +17,21 @@
 	max_purchase = 4
 	mags_to_spawn = 3
 
-/datum/armament_entry/hecu/secondary/pistol/deagle
-	item_type = /obj/item/gun/ballistic/automatic/pistol/deagle
-	max_purchase = 1
-	cost = 9
+/datum/armament_entry/hecu/secondary/pistol/revolver
+	item_type = /obj/item/gun/ballistic/revolver/detective
+	max_purchase = 4
+	cost = 3
+	mags_to_spawn = 0
+	magazine = /obj/item/storage/box/ammo_box/revolver
+	magazine_cost = 4
+
+/obj/item/storage/box/ammo_box/revolver
+
+/obj/item/storage/box/ammo_box/revolver/PopulateContents()
+	new /obj/item/ammo_box/c38(src)
+	new /obj/item/ammo_box/c38(src)
+	new /obj/item/ammo_box/c38(src)
+	new /obj/item/ammo_box/c38(src)
+	new /obj/item/ammo_box/c38/dumdum(src)
+	new /obj/item/ammo_box/c38/dumdum(src)
+	new /obj/item/ammo_box/c38/match(src)
