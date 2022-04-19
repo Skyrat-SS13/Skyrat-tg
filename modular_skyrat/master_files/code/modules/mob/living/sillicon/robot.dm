@@ -44,7 +44,7 @@
 		return
 
 	var/truedir = movable_parent.dir
-	if(newdir && scandir != newdir)
+	if(newdir && truedir != newdir)
 		truedir = newdir
 
 	switch(truedir)
