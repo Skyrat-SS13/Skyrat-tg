@@ -1360,3 +1360,19 @@
 	if(isliving(clong))
 		playsound(src, 'sound/effects/bang.ogg', 50, TRUE)
 		return
+
+// Donation reward for ultimarifox
+/obj/item/clothing/under/rank/security/head_of_security/alt/roselia
+	name = "black and red turtleneck"
+	desc = "A black turtleneck with red livery attached. Reminds you of a time before the color blue. It seems padded to hell and back as well."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	icon_state = "hosaltred"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	worn_icon_digi = null
+
+/obj/item/clothing/glasses/hud/security/sunglasses/gars/giga/roselia
+	name = "red-tinted giga HUD gar glasses"
+	desc = "GIGA GAR glasses with a security hud implanted in the lens. Reminds you of a time before the color blue."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
+	icon_state = "supergarsred"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
