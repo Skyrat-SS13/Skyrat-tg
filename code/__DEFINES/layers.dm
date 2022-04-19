@@ -210,6 +210,9 @@
 #define SKYRAT_LOGO 9999
 //SKYRAT EDIT: Lobby Cam
 
+///Layer for screentips
+#define SCREENTIP_LAYER 4
+
 #define LOBBY_BACKGROUND_LAYER 3
 #define LOBBY_BUTTON_LAYER 4
 
