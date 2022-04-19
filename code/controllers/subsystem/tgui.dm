@@ -28,6 +28,13 @@ SUBSYSTEM_DEF(tgui)
 
 /datum/controller/subsystem/tgui/PreInit()
 	basehtml = file2text('tgui/public/tgui.html')
+<<<<<<< HEAD
+=======
+	// Inject inline polyfills
+	var/polyfill = file2text('tgui/public/tgui-polyfill.min.js')
+	polyfill = "<script>\n[polyfill]\n</script>"
+	basehtml = replacetextEx(basehtml, "<!-- tgui:inline-polyfill -->", polyfill)
+>>>>>>> 934ace80989 (Fix: rename suffix for tgui-polyfill to min.js (#66309))
 
 /datum/controller/subsystem/tgui/Shutdown()
 	close_all_uis()
