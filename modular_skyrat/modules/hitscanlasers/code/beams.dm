@@ -9,9 +9,9 @@
 	armor_flag = LASER
 	eyeblur = 2
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/red_laser
-	tracer_type = /obj/effect/projectile/tracer/laser
-	muzzle_type = /obj/effect/projectile/muzzle/laser
-	impact_type = /obj/effect/projectile/impact/laser
+	tracer_type = /obj/effect/projectile/tracer/hitscan/laser
+	muzzle_type = /obj/effect/projectile/muzzle/hitscan/laser
+	impact_type = /obj/effect/projectile/impact/hitscan/laser
 	light_system = MOVABLE_LIGHT
 	hitscan_light_intensity = 2
 	hitscan_light_range = 0.50
@@ -54,6 +54,9 @@
 	hitscan_light_color_override = COLOR_DARK_RED
 	muzzle_flash_color_override = COLOR_DARK_RED
 	impact_light_color_override = COLOR_DARK_RED
+	tracer_type = /obj/effect/projectile/tracer/hitscan/heavy_laser
+	muzzle_type = /obj/effect/projectile/muzzle/hitscan/heavy_laser
+	impact_type = /obj/effect/projectile/impact/hitscan/heavy_laser
 	wound_bonus = 0
 	damage = 25
 	hitscan = TRUE
@@ -62,9 +65,12 @@
 	name = "heavy laser"
 	icon_state = "heavylaser"
 	damage = 40
-	tracer_type = /obj/effect/projectile/tracer/heavy_laser
-	muzzle_type = /obj/effect/projectile/muzzle/heavy_laser
-	impact_type = /obj/effect/projectile/impact/heavy_laser
+	hitscan_light_color_override = LIGHT_COLOR_ORANGE
+	muzzle_flash_color_override = LIGHT_COLOR_ORANGE
+	impact_light_color_override = LIGHT_COLOR_ORANGE
+	tracer_type = /obj/effect/projectile/tracer/hitscan/hellfire
+	muzzle_type = /obj/effect/projectile/muzzle/hitscan/hellfire
+	impact_type = /obj/effect/projectile/impact/hitscan/hellfire
 	hitscan = FALSE
 
 /obj/projectile/beam/laser/on_hit(atom/target, blocked = FALSE)
@@ -107,9 +113,9 @@
 	hitscan_light_color_override = LIGHT_COLOR_GREEN
 	muzzle_flash_color_override = LIGHT_COLOR_GREEN
 	impact_light_color_override = LIGHT_COLOR_GREEN
-	tracer_type = /obj/effect/projectile/tracer/xray
-	muzzle_type = /obj/effect/projectile/muzzle/xray
-	impact_type = /obj/effect/projectile/impact/xray
+	tracer_type = /obj/effect/projectile/tracer/hitscan/xray
+	muzzle_type = /obj/effect/projectile/muzzle/hitscan/xray
+	impact_type = /obj/effect/projectile/impact/hitscan/xray
 
 /obj/projectile/beam/disabler
 	name = "disabler beam"
