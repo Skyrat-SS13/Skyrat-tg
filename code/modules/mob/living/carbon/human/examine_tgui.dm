@@ -68,6 +68,7 @@
 		custom_species = "Silicon"
 		custom_species_lore = "A cyborg unit."
 		ooc_notes += preferences.read_preference(/datum/preference/text/ooc_notes)
+		headshot += preferences.read_preference(/datum/preference/text/headshot)
 
 	if(ishuman(holder))
 		var/mob/living/carbon/human/holder_human = holder

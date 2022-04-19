@@ -19,7 +19,7 @@
 	var/obj/item/part = locate(part_reference) in mod_parts
 	if(!istype(part) || user.incapacitated())
 		return
-	if((active && part != helmet) || activating) // SKYRAT EDIT - Let the hair flow - ORIGINAL: if(active || activating)
+	if(activating) // SKYRAT EDIT - RETRACTABLE EVERYTHING
 		balloon_alert(user, "deactivate the suit first!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return
@@ -41,7 +41,7 @@
 
 /// Quickly deploys all parts (or retracts if all are on the wearer)
 /obj/item/mod/control/proc/quick_deploy(mob/user)
-	if(active || activating)
+	if(activating) // SKYRAT EDIT - RETRACTABLE EVERYTHING
 		balloon_alert(user, "deactivate the suit first!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
@@ -70,6 +70,16 @@
 	if(piece == boots && wearer.shoes)
 		boots.overslot = wearer.shoes
 		wearer.transferItemToLoc(boots.overslot, boots, force = TRUE)
+
+	// SKYRAT EDIT START - DEPLOYABLE EVERYTHING OVER EVERYTHING
+	if(piece == helmet && wearer.head)
+		helmet.overslot = wearer.head
+		wearer.transferItemToLoc(helmet.overslot, helmet, force = TRUE)
+	if(piece == chestplate && wearer.wear_suit)
+		chestplate.overslot = wearer.wear_suit
+		wearer.transferItemToLoc(chestplate.overslot, chestplate, force = TRUE)
+	// SKYRAT EDIT STOP
+
 	if(wearer.equip_to_slot_if_possible(piece, piece.slot_flags, qdel_on_fail = FALSE, disable_warning = TRUE))
 		ADD_TRAIT(piece, TRAIT_NODROP, MOD_TRAIT)
 		if(!user)
@@ -100,6 +110,16 @@
 		gauntlets.show_overslot()
 	if(piece == boots)
 		boots.show_overslot()
+	//SKYRAT EDIT START - DEPLOYABLE EVERYTHING OVER EVERYTHING
+	if(piece == helmet)
+		helmet.show_overslot()
+	if(piece == chestplate)
+		for(var/obj/item/mod/module/module as anything in modules)
+			if(!module.active)
+				continue
+			module.on_deactivation(display_message = FALSE)
+		chestplate.show_overslot()
+	//SKYRAT EDIT END
 	if(!user)
 		return
 	wearer.visible_message(span_notice("[wearer]'s [piece.name] retract[piece.p_s()] back into [src] with a mechanical hiss."),
