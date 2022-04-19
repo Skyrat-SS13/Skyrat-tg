@@ -52,7 +52,7 @@
 	new /obj/item/chameleon(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/loadout/stealthop/PopulateContents()
-	new /obj/item/gun/energy/recharge/kinetic_accelerator/ebow(src)
+	new /obj/item/gun/energy/recharge/ebow(src)
 	new /obj/item/pen/sleepy(src)
 	new /obj/item/healthanalyzer/rad_laser(src)
 	new /obj/item/chameleon(src)
