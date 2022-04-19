@@ -100,15 +100,6 @@
 	ignore += typesof(/turf/open/openspace/ocean)
 	//Baseturf editors can only go up to ten, stop this.
 	ignore += typesof(/obj/effect/baseturf_helper)
-	// I have no idea why this is failing to delete.
-	ignore += list(
-		/obj/item/bodypart/head/shadow,
-		/obj/item/bodypart/chest/shadow,
-		/obj/item/bodypart/l_arm/shadow,
-		/obj/item/bodypart/r_arm/shadow,
-		/obj/item/bodypart/l_leg/shadow,
-		/obj/item/bodypart/r_leg/shadow,
-	)
 	//SKYRAT EDIT END
 
 	var/list/cached_contents = spawn_at.contents.Copy()
