@@ -303,23 +303,13 @@
 	if(harm)
 		weapon.attack(current_target, src)
 	if(ishuman(current_target))
-<<<<<<< HEAD
-		current_target.stuttering = 5
+		current_target.set_timed_status_effect(10 SECONDS, /datum/status_effect/speech/stutter)
 		current_target.StaminaKnockdown(60,TRUE) // SKYRAT EDIT CHANGE
 		var/mob/living/carbon/human/human_target = current_target
 		threat = human_target.assess_threat(judgement_criteria, weaponcheck = CALLBACK(src, .proc/check_for_weapons))
 	else
 		current_target.StaminaKnockdown(60,TRUE) // SKYRAT EDIT CHANGE
-		current_target.stuttering = 5
-=======
 		current_target.set_timed_status_effect(10 SECONDS, /datum/status_effect/speech/stutter)
-		current_target.Paralyze(100)
-		var/mob/living/carbon/human/human_target = current_target
-		threat = human_target.assess_threat(judgement_criteria, weaponcheck = CALLBACK(src, .proc/check_for_weapons))
-	else
-		current_target.Paralyze(100)
-		current_target.set_timed_status_effect(10 SECONDS, /datum/status_effect/speech/stutter)
->>>>>>> ab51d5a00c1 (Refactors speech impeding effects (drunken slurring / suttering) into status effects. Adds heretic slurring in addition to the existing cult slurring. Removes 4 vars from /living in return, which slightly optimizes Life() (wink) (#66031))
 		threat = current_target.assess_threat(judgement_criteria, weaponcheck = CALLBACK(src, .proc/check_for_weapons))
 
 	log_combat(src, target, "stunned")

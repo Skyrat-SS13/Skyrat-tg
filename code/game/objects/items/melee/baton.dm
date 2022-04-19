@@ -563,13 +563,8 @@
  */
 /obj/item/melee/baton/security/additional_effects_non_cyborg(mob/living/target, mob/living/user)
 	target.Jitter(20)
-<<<<<<< HEAD
-//	target.set_confusion(max(10, target.get_confusion())) SKYRAT EDIT - Less CC on an already strong melee weapon.
-	target.stuttering = max(8, target.stuttering)
-=======
-	target.set_confusion(max(10, target.get_confusion()))
+	//target.set_confusion(max(10, target.get_confusion())) SKYRAT EDIT REMOVAL
 	target.set_timed_status_effect(16 SECONDS, /datum/status_effect/speech/stutter, only_if_higher = TRUE)
->>>>>>> ab51d5a00c1 (Refactors speech impeding effects (drunken slurring / suttering) into status effects. Adds heretic slurring in addition to the existing cult slurring. Removes 4 vars from /living in return, which slightly optimizes Life() (wink) (#66031))
 
 	SEND_SIGNAL(target, COMSIG_LIVING_MINOR_SHOCK)
 	addtimer(CALLBACK(src, .proc/apply_stun_effect_end, target), 2 SECONDS)

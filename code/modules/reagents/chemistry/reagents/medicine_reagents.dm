@@ -82,16 +82,10 @@
 	M.silent = FALSE
 	M.dizziness = 0
 	M.disgust = 0
-<<<<<<< HEAD
-	M.set_drowsyness(0)
-	M.stuttering = 0
-	M.slurring = 0
-=======
 	M.drowsyness = 0
 	// Remove all speech related status effects
 	for(var/effect in typesof(/datum/status_effect/speech))
 		M.remove_status_effect(effect)
->>>>>>> ab51d5a00c1 (Refactors speech impeding effects (drunken slurring / suttering) into status effects. Adds heretic slurring in addition to the existing cult slurring. Removes 4 vars from /living in return, which slightly optimizes Life() (wink) (#66031))
 	M.jitteriness = 0
 	M.hallucination = 0
 	REMOVE_TRAITS_NOT_IN(M, list(SPECIES_TRAIT, ROUNDSTART_TRAIT, ORGAN_TRAIT))

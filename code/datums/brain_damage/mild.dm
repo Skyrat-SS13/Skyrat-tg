@@ -49,16 +49,8 @@
 	owner.adjust_timed_status_effect(5 SECONDS * delta_time, /datum/status_effect/speech/stutter/derpspeech, max_duration = 50 SECONDS)
 	if(DT_PROB(1.5, delta_time))
 		owner.emote("drool")
-	//SKYRAT EDIT REMOVAL BEGIN
-	/*
 	else if(owner.stat == CONSCIOUS && DT_PROB(1.5, delta_time))
 		owner.say(pick_list_replacements(BRAIN_DAMAGE_FILE, "brain_damage"), forced = "brain damage")
-<<<<<<< HEAD
-	*/
-	//SKYRAT EDIT REMOVAL END
-	..()
-=======
->>>>>>> ab51d5a00c1 (Refactors speech impeding effects (drunken slurring / suttering) into status effects. Adds heretic slurring in addition to the existing cult slurring. Removes 4 vars from /living in return, which slightly optimizes Life() (wink) (#66031))
 
 /datum/brain_trauma/mild/dumbness/on_lose()
 	REMOVE_TRAIT(owner, TRAIT_DUMB, TRAUMA_TRAIT)
