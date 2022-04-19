@@ -20,7 +20,7 @@
 	ranged = TRUE
 	rapid = 3
 	alert_cooldown = 2 MINUTES
-	harm_intent_damage = 5
+	harm_intent_damage = 50
 	melee_damage_lower = 30
 	melee_damage_upper = 40
 	attack_verb_continuous = "lathes"
@@ -28,7 +28,7 @@
 	attack_sound = 'sound/weapons/punch1.ogg'
 	status_flags = NONE
 	del_on_death = TRUE
-	wander = FALSE
+	wander = TRUE
 	loot = list(/obj/effect/gibspawner/xeno, /obj/item/stack/sheet/bluespace_crystal/fifty, /obj/item/key/gateway, /obj/item/uber_teleporter)
 	movement_type = FLYING
 
@@ -66,13 +66,14 @@
 	. = ..()
 	alert_sound_to_playing('modular_skyrat/modules/black_mesa/sound/mobs/nihilanth/nihilanth_death01.ogg')
 	new /obj/effect/singularity_creation(loc)
-	message_admins("[src] has been defeated, a spacetime cascade will occur in 10 seconds.")
-	addtimer(CALLBACK(src, .proc/endgame_shit),  10 SECONDS)
+	message_admins("[src] has been defeated, a spacetime cascade might occur in 30 seconds.")
+	addtimer(CALLBACK(src, .proc/endgame_shit),  30 SECONDS)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/proc/endgame_shit()
 	to_chat(world, span_danger("You feel as though a powerful force has been defeated..."))
-	var/datum/round_event_control/resonance_cascade/event_to_start = new()
-	event_to_start.runEvent()
+	if(prob(60))
+		var/datum/round_event_control/resonance_cascade/event_to_start = new()
+		event_to_start.runEvent()
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/LoseAggro()
 	. = ..()
