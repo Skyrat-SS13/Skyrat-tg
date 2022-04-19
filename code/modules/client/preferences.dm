@@ -210,7 +210,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if (.)
 		return
 
-	if(SSlag_switch.measures[DISABLE_CREATOR])
+	if(SSlag_switch.measures[DISABLE_CREATOR] && action != "change_slot")
 		to_chat(usr, "The creator has been disabled. Please do not ahelp.")
 		return
 
