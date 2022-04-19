@@ -111,6 +111,7 @@
 	icon_state = "scatterlaser"
 	range = 255
 	damage = 6
+	hitscan = FALSE //SKYRAT EDIT ADDITION - HITSCAN LASERS
 
 /obj/projectile/beam/laser/accelerator/Range()
 	..()

@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR BEAMS.DM
 /obj/projectile/beam
 	name = "laser"
 	icon_state = "laser"
@@ -10,34 +9,54 @@
 	armor_flag = LASER
 	eyeblur = 2
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/red_laser
-	light_system = MOVABLE_LIGHT
-	light_range = 1
-	light_power = 1
-	light_color = COLOR_SOFT_RED
-	ricochets_max = 50 //Honk!
-	ricochet_chance = 80
-	reflectable = REFLECT_NORMAL
-	wound_bonus = -20
-	bare_wound_bonus = 10
-
-
-/obj/projectile/beam/laser
 	tracer_type = /obj/effect/projectile/tracer/laser
 	muzzle_type = /obj/effect/projectile/muzzle/laser
 	impact_type = /obj/effect/projectile/impact/laser
+	light_system = MOVABLE_LIGHT
+	hitscan_light_intensity = 2
+	hitscan_light_range = 0.50
+	hitscan_light_color_override = COLOR_SOFT_RED
+	muzzle_flash_intensity = 4
+	muzzle_flash_range = 1
+	muzzle_flash_color_override = COLOR_SOFT_RED
+	impact_light_intensity = 5
+	impact_light_range = 1.25
+	impact_light_color_override = COLOR_SOFT_RED
+	ricochets_max = 50 //Honk!
+	ricochet_chance = 80
+	range = 15
+	reflectable = REFLECT_NORMAL
+	wound_bonus = -20
+	bare_wound_bonus = 10
+	var/damage_constant = 0.8
+
+/obj/projectile/beam/Range()
+	if(hitscan != TRUE)
+		return ..()
+	var/turf/location = get_turf(src)
+	if(!location)
+		return ..()
+	var/datum/gas_mixture/environment = location.return_air()
+	var/environment_pressure = environment.return_pressure()
+	if(environment_pressure >= 50)
+		if((decayedRange - range) >= 4)
+			damage *= damage_constant
+	. = ..()
+
+/obj/projectile/beam/laser
 	wound_bonus = -30
 	bare_wound_bonus = 40
+	hitscan = TRUE
 
 //overclocked laser, does a bit more damage but has much higher wound power (-0 vs -20)
 /obj/projectile/beam/laser/hellfire
 	name = "hellfire laser"
+	hitscan_light_color_override = COLOR_DARK_RED
+	muzzle_flash_color_override = COLOR_DARK_RED
+	impact_light_color_override = COLOR_DARK_RED
 	wound_bonus = 0
 	damage = 25
-	speed = 0.6 // higher power = faster, that's how light works right
-
-/obj/projectile/beam/laser/hellfire/Initialize(mapload)
-	. = ..()
-	transform *= 2
+	hitscan = TRUE
 
 /obj/projectile/beam/laser/heavylaser
 	name = "heavy laser"
@@ -46,6 +65,7 @@
 	tracer_type = /obj/effect/projectile/tracer/heavy_laser
 	muzzle_type = /obj/effect/projectile/muzzle/heavy_laser
 	impact_type = /obj/effect/projectile/impact/heavy_laser
+	hitscan = FALSE
 
 /obj/projectile/beam/laser/on_hit(atom/target, blocked = FALSE)
 	. = ..()
@@ -57,6 +77,7 @@
 
 /obj/projectile/beam/weak
 	damage = 15
+	hitscan = TRUE
 
 /obj/projectile/beam/weak/penetrator
 	armour_penetration = 50
@@ -65,22 +86,27 @@
 	name = "practice laser"
 	damage = 0
 	nodamage = TRUE
+	hitscan = TRUE
 
 /obj/projectile/beam/scatter
 	name = "laser pellet"
 	icon_state = "scatterlaser"
 	damage = 5
+	hitscan = TRUE
 
 /obj/projectile/beam/xray
 	name = "\improper X-ray beam"
 	icon_state = "xray"
 	damage = 15
-	range = 15
 	armour_penetration = 100
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE | PASSCLOSEDTURF | PASSMACHINE | PASSSTRUCTURE | PASSDOORS
+	hitscan = TRUE
+	damage_constant = 0.9
 
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/green_laser
-	light_color = LIGHT_COLOR_GREEN
+	hitscan_light_color_override = LIGHT_COLOR_GREEN
+	muzzle_flash_color_override = LIGHT_COLOR_GREEN
+	impact_light_color_override = LIGHT_COLOR_GREEN
 	tracer_type = /obj/effect/projectile/tracer/xray
 	muzzle_type = /obj/effect/projectile/muzzle/xray
 	impact_type = /obj/effect/projectile/impact/xray
@@ -88,16 +114,20 @@
 /obj/projectile/beam/disabler
 	name = "disabler beam"
 	icon_state = "omnilaser"
-	damage = 41 // SKYRAT EDIT: 30
+	damage = 30
+	//damage = 41 // SKYRAT EDIT: 30
 	damage_type = STAMINA
 	armor_flag = ENERGY
 	hitsound = 'sound/weapons/tap.ogg'
 	eyeblur = 0
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/blue_laser
-	light_color = LIGHT_COLOR_BLUE
+	hitscan_light_color_override = LIGHT_COLOR_BLUE
+	muzzle_flash_color_override = LIGHT_COLOR_BLUE
+	impact_light_color_override = LIGHT_COLOR_BLUE
 	tracer_type = /obj/effect/projectile/tracer/disabler
 	muzzle_type = /obj/effect/projectile/muzzle/disabler
 	impact_type = /obj/effect/projectile/impact/disabler
+	hitscan = TRUE
 
 /obj/projectile/beam/pulse
 	name = "pulse"
@@ -137,10 +167,12 @@
 	name = "emitter beam"
 	icon_state = "emitter"
 	damage = 30
+	range = 50
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/green_laser
 	light_color = LIGHT_COLOR_GREEN
 	wound_bonus = -40
 	bare_wound_bonus = 70
+	hitscan = FALSE //I dont want to fuck with how emitters work
 
 /obj/projectile/beam/emitter/singularity_pull()
 	return //don't want the emitters to miss
@@ -151,13 +183,13 @@
 	tracer_type = /obj/effect/projectile/tracer/laser/emitter
 	impact_type = /obj/effect/projectile/impact/laser/emitter
 	impact_effect_type = null
-	hitscan_light_intensity = 3
+	hitscan_light_intensity = 2
 	hitscan_light_range = 0.75
 	hitscan_light_color_override = COLOR_LIME
-	muzzle_flash_intensity = 6
+	muzzle_flash_intensity = 4
 	muzzle_flash_range = 2
 	muzzle_flash_color_override = COLOR_LIME
-	impact_light_intensity = 7
+	impact_light_intensity = 5
 	impact_light_range = 2.5
 	impact_light_color_override = COLOR_LIME
 
@@ -218,4 +250,3 @@
 	if(isopenturf(target) || istype(target, /turf/closed/indestructible))//shrunk floors wouldnt do anything except look weird, i-walls shouldn't be bypassable
 		return
 	target.AddComponent(/datum/component/shrink, shrink_time)
-*/
