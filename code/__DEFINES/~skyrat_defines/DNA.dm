@@ -109,7 +109,6 @@
 #define SPECIES_GHOUL "ghoul"
 #define SPECIES_TESHARI "teshari"
 #define SPECIES_HEMOPHAGE "hemophage"
-#define SPECIES_SNAIL "snail"
 
 #define SPECIES_MUTANT "mutant"
 #define SPECIES_MUTANT_INFECTIOUS "infectious_mutant"
