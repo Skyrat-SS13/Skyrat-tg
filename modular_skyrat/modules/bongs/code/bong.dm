@@ -68,7 +68,7 @@
 		var/lighting_text = used_item.ignition_effect(src, user)
 		if(!lighting_text)
 			return ..()
-		if(!(bong_hits > 0))
+		if(bong_hits <= 0)
 			balloon_alert(user, "nothing to smoke!")
 			return ..()
 		light(lighting_text)
@@ -92,12 +92,9 @@
 /obj/item/bong/attack(mob/hit_mob, mob/user, def_zone)
 	if(!packed_item || !lit)
 		return
-	//if(hit_mob == user)
 	hit_mob.visible_message(span_notice("[user] starts [hit_mob == user ? "taking a hit from [src]." : "forcing [hit_mob] to take a hit from [src]!"]"), hit_mob == user ? span_notice("You start taking a hit from [src].") : span_userdanger("[user] starts forcing you to take a hit from [src]!"))
-	//else
-		//hit_mob.visible_message(span_notice("[user] starts forcing [hit_mob] to take a hit from [src]!"), span_userdanger("[user] starts forcing you to take a hit from [src]!"))
 	playsound(src, 'sound/chemistry/heatdam.ogg', 50, TRUE)
-	if(!do_after(user,40))
+	if(!do_after(user, 40))
 		return
 	to_chat(hit_mob, span_notice("You finish taking a hit from the [src]."))
 	if(reagents.total_volume)
