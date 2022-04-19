@@ -134,9 +134,13 @@ export const backendMiddleware = store => {
     }
 
     if (type === 'ping') {
+<<<<<<< HEAD
       sendMessage({
         type: 'pingReply',
       });
+=======
+      Byond.sendMessage('ping/reply');
+>>>>>>> fd0f398d6f9 (tgui-panel: Soft ping (#66299))
       return;
     }
 
