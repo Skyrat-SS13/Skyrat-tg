@@ -133,7 +133,7 @@
 	chameleon_right = initial(mod.righthand_file)
 	RegisterSignal(mod, COMSIG_MOD_ACTIVATE, .proc/reset_chameleon)
 
-/obj/item/mod/module/chameleon/on_uninstall()
+/obj/item/mod/module/chameleon/on_uninstall(deleting = FALSE)
 	UnregisterSignal(mod, COMSIG_MOD_ACTIVATE)
 	reset_chameleon()
 
@@ -220,14 +220,14 @@
 /obj/item/mod/module/springlock/on_suit_activation() // This module is actually *not* a death trap
 	return
 
-/obj/item/mod/module/springlock/on_suit_deactivation()
+/obj/item/mod/module/springlock/on_suit_deactivation(deleting = FALSE)
 	return
 
 
 /obj/item/mod/module/storage/syndicate
 	var/chameleon_disguised = FALSE
 
-/obj/item/mod/module/storage/syndicate/on_uninstall()
+/obj/item/mod/module/storage/syndicate/on_uninstall(deleting = FALSE)
 	if(chameleon_disguised)
 		name = initial(name)
 		chameleon_disguised = FALSE
