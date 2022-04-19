@@ -5,7 +5,7 @@
 	is_dimorphic = TRUE
 	should_draw_greyscale = TRUE
 	uses_mutcolor = TRUE
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_SNOUTED //This is temporary. Ideally the "snout" external organ adds to this.
+	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SNOUTED //This is temporary. Ideally the "snout" external organ adds to this.
 
 /obj/item/bodypart/chest/robot/mutant
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/synthmammal_parts_greyscale.dmi'

@@ -134,6 +134,12 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	///Weakref to our controller
 	var/datum/weakref/control_computer_weakref
 	COOLDOWN_DECLARE(last_no_computer_message)
+	/// if false, plays announcement on cryo
+	var/quiet = FALSE
+
+
+/obj/machinery/cryopod/quiet
+	quiet = TRUE
 
 /obj/machinery/cryopod/Initialize(mapload)
 	..()
@@ -304,8 +310,8 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	else
 		control_computer.frozen_crew += list(crew_member)
 
-	// Make an announcement and log the person entering storage.
-	if(GLOB.announcement_systems.len)
+	// Make an announcement and log the person entering storage. If set to quiet, does not make an announcement.
+	if(GLOB.announcement_systems.len && !quiet)
 		var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
 		announcer.announce("CRYOSTORAGE", mob_occupant.real_name, announce_rank, list())
 

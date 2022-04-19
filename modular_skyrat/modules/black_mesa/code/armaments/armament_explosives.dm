@@ -1,6 +1,6 @@
 /datum/armament_entry/hecu/explosives
 	category = ARMAMENT_CATEGORY_EXPLOSIVES
-	category_item_limit = 16
+	category_item_limit = 8
 
 /datum/armament_entry/hecu/explosives/frag
 	item_type = /obj/item/grenade/frag
