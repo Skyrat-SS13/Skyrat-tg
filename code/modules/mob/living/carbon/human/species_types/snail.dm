@@ -26,7 +26,7 @@
 
 	mutanteyes = /obj/item/organ/eyes/snail
 	mutanttongue = /obj/item/organ/tongue/snail
-	mutantliver = /obj/item/organ/liver/snail
+	mutantliver = /obj/item/organ/liver/snail //SKYRAT EDIT - Roundstart Snails
 	exotic_bloodtype = "L" //SKYRAT EDIT: Roundstart Snails - No more lube
 
 	bodypart_overrides = list(
