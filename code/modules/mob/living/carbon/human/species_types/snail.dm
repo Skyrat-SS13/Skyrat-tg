@@ -93,6 +93,18 @@
 			RESKIN_WORN_ICON = 'icons/mob/clothing/back.dmi',
 			RESKIN_WORN_ICON_STATE = "snailshell"
 		),
+		"Cinnamon Shell" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
+			RESKIN_ICON_STATE = "cinnamonshell",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "cinnamonshell"
+		),
+		"Caramel Shell" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
+			RESKIN_ICON_STATE = "caramelshell",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "caramelshell"
+		),
 	)
 	//SKYRAT EDIT END - Roundstart Snails
 
