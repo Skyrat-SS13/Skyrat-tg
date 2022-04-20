@@ -60,7 +60,7 @@
 	duffelbag = /obj/item/storage/backpack/duffel/blueshield
 	head = /obj/item/clothing/head/beret/blueshield
 	box = /obj/item/storage/box/survival/security
-	belt = /obj/item/pda/security
+	belt = /obj/item/modular_computer/tablet/pda/security
 
 	id_trim = /datum/id_trim/job/blueshield
 
