@@ -56,3 +56,25 @@
 /obj/effect/projectile/impact/hitscan/xray
 	name = "\improper X-ray laser impact"
 	icon_state = "impact_xray"
+
+/obj/effect/projectile/muzzle/hitscan/emitter
+	icon_state = "muzzle_emitter"
+
+/obj/effect/projectile/tracer/hitscan/emitter
+	name = "emitter laser"
+	icon_state = "emitter"
+
+/obj/effect/projectile/impact/hitscan/emitter
+	name = "emitter laser impact"
+	icon_state = "impact_emitter"
+
+/obj/effect/projectile/muzzle/hitscan/disabler
+	icon_state = "muzzle_omni"
+
+/obj/effect/projectile/tracer/hitscan/disabler
+	name = "disabler"
+	icon_state = "beam_omni"
+
+/obj/effect/projectile/impact/hitscan/disabler
+	name = "disabler impact"
+	icon_state = "impact_omni"

@@ -24,10 +24,12 @@
 	impact_light_color_override = COLOR_SOFT_RED
 	ricochets_max = 50 //Honk!
 	ricochet_chance = 80
+	///Range of hitscan lasers
 	range = 15
 	reflectable = REFLECT_NORMAL
 	wound_bonus = -20
 	bare_wound_bonus = 10
+	///Damage multiplier at ranges further then 3 tiles
 	var/damage_constant = 0.8
 
 /obj/projectile/beam/Range()
@@ -68,9 +70,9 @@
 	hitscan_light_color_override = LIGHT_COLOR_ORANGE
 	muzzle_flash_color_override = LIGHT_COLOR_ORANGE
 	impact_light_color_override = LIGHT_COLOR_ORANGE
-	tracer_type = /obj/effect/projectile/tracer/hitscan/hellfire
-	muzzle_type = /obj/effect/projectile/muzzle/hitscan/hellfire
-	impact_type = /obj/effect/projectile/impact/hitscan/hellfire
+	tracer_type = /obj/effect/projectile/tracer/hitscan/heavy_laser
+	muzzle_type = /obj/effect/projectile/muzzle/hitscan/heavy_laser
+	impact_type = /obj/effect/projectile/impact/hitscan/heavy_laser
 	hitscan = FALSE
 
 /obj/projectile/beam/laser/on_hit(atom/target, blocked = FALSE)
@@ -120,7 +122,7 @@
 /obj/projectile/beam/disabler
 	name = "disabler beam"
 	icon_state = "omnilaser"
-	damage = 30
+	damage = 30 //lets try the low damage with hitscans first
 	//damage = 41 // SKYRAT EDIT: 30
 	damage_type = STAMINA
 	armor_flag = ENERGY
@@ -130,9 +132,9 @@
 	hitscan_light_color_override = LIGHT_COLOR_BLUE
 	muzzle_flash_color_override = LIGHT_COLOR_BLUE
 	impact_light_color_override = LIGHT_COLOR_BLUE
-	tracer_type = /obj/effect/projectile/tracer/disabler
-	muzzle_type = /obj/effect/projectile/muzzle/disabler
-	impact_type = /obj/effect/projectile/impact/disabler
+	tracer_type = /obj/effect/projectile/tracer/hitscan/disabler
+	muzzle_type = /obj/effect/projectile/muzzle/hitscan/disabler
+	impact_type = /obj/effect/projectile/impact/hitscan/disabler
 	hitscan = TRUE
 
 /obj/projectile/beam/pulse
@@ -178,16 +180,18 @@
 	light_color = LIGHT_COLOR_GREEN
 	wound_bonus = -40
 	bare_wound_bonus = 70
-	hitscan = FALSE //I dont want to fuck with how emitters work
 
 /obj/projectile/beam/emitter/singularity_pull()
 	return //don't want the emitters to miss
 
 /obj/projectile/beam/emitter/hitscan
 	hitscan = TRUE
-	muzzle_type = /obj/effect/projectile/muzzle/laser/emitter
-	tracer_type = /obj/effect/projectile/tracer/laser/emitter
-	impact_type = /obj/effect/projectile/impact/laser/emitter
+	// muzzle_type = /obj/effect/projectile/muzzle/laser/emitter
+	// tracer_type = /obj/effect/projectile/tracer/laser/emitter
+	// impact_type = /obj/effect/projectile/impact/laser/emitter
+	muzzle_type = /obj/effect/projectile/muzzle/hitscan/emitter
+	tracer_type = /obj/effect/projectile/tracer/hitscan/emitter
+	impact_type = /obj/effect/projectile/impact/hitscan/emitter
 	impact_effect_type = null
 	hitscan_light_intensity = 2
 	hitscan_light_range = 0.75
