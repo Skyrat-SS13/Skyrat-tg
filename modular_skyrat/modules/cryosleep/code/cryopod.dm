@@ -323,10 +323,6 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		if (issilicon(mob_occupant) && istype(item_content, /obj/item/mmi))
 			continue
 		if(control_computer)
-			if(istype(item_content, /obj/item/pda))
-				var/obj/item/pda/pda = item_content
-				pda.toff = TRUE
-				pda.light_on = FALSE
 			item_content.dropped(mob_occupant)
 			mob_occupant.transferItemToLoc(item_content, control_computer, force = TRUE, silent = TRUE)
 			control_computer.frozen_item += item_content
