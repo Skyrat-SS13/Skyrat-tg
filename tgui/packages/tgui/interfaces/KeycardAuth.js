@@ -5,7 +5,7 @@ import { Window } from '../layouts';
 export const KeycardAuth = (props, context) => {
   const { act, data } = useBackend(context);
   return (
-    // SKYRAT EDIT: height 125 -> 150, addition of permit-locked firing pin unrestriction
+    // SKYRAT EDIT: height 125 -> 150, addition of permit-locked firing pin
     <Window
       width={375}
       height={150}>
