@@ -30,9 +30,9 @@
 /mob/living
 	var/list/status_indicators = null // Will become a list as needed.
 
-/mob/living/carbon/proc/is_critical()
+/* /mob/living/carbon/proc/is_critical()
 	if(HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION))
-		return TRUE
+		return TRUE */
 
 /mob/living/carbon/proc/is_weakened()
 	if(HAS_TRAIT_FROM(src, TRAIT_FLOORED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || has_status_effect(/datum/status_effect/incapacitating/knockdown))
@@ -43,7 +43,7 @@
 		return TRUE
 
 /mob/living/carbon/proc/is_paralyzed()
-	if(HAS_TRAIT_FROM(src, TRAIT_FLOORED, CHOKEHOLD_TRAIT) || HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA) || HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) && HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) && HAS_TRAIT_FROM(src, TRAIT_FLOORED, TRAIT_STATUS_EFFECT(STAT_TRAIT)))
+	if(HAS_TRAIT_FROM(src, TRAIT_FLOORED, CHOKEHOLD_TRAIT) || HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION) || HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA) || HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) && HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) && HAS_TRAIT_FROM(src, TRAIT_FLOORED, TRAIT_STATUS_EFFECT(STAT_TRAIT)))
 		return TRUE
 
 /mob/living/carbon/proc/is_unconcious()
@@ -86,7 +86,7 @@
 	is_unconcious() ? add_status_indicator("sleeping") : remove_status_indicator("sleeping")
 	is_confused() ? add_status_indicator("confused") : remove_status_indicator("confused")
 //	is_blind_status() ? add_status_indicator("blinded") : remove_status_indicator("blinded") // Disabled, keeping for IF we decide we want this.
-	is_critical() ? add_status_indicator("critical") : remove_status_indicator("critical")
+//	is_critical() ? add_status_indicator("critical") : remove_status_indicator("critical") // Also disabled. Crosses medhud territory, despite being a shift click examine thing.
 
 /mob/living/proc/add_status_indicator(image/thing)
 	if(get_status_indicator(thing)) // No duplicates, please.
