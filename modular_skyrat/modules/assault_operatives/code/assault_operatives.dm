@@ -27,7 +27,7 @@
 	Use your pinpointer to locate these after you have extracted the GoldenEye key from the head of staff. It will be sent in by droppod. \
 	You must then upload the key to the GoldenEye upload terminal on this GoldenEye station. After you have completed your mission, \
 	The GoldenEye defence network will fall, and we will gain access to Nanotrasen's military systems. Good luck agent. \
-	YOUR PRESENCE WILL BE ANNOUNCED IN APPROXEMATELY 5 MINUTES."
+	YOUR PRESENCE WILL BE ANNOUNCED IN APPROXEMATELY 15 MINUTES."
 	/// A link to our internal pinpointer.
 	var/datum/status_effect/goldeneye_pinpointer/pinpointer
 

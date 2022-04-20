@@ -4,7 +4,7 @@
 //                                          //
 //////////////////////////////////////////////
 
-#define ASSAULT_OPERATIVES_ANNOUNCE_TIME 5 MINUTES
+#define ASSAULT_OPERATIVES_ANNOUNCE_TIME 15 MINUTES
 /datum/dynamic_ruleset/roundstart/assault_operatives
 	name = "Assault Operatives"
 	antag_flag = ROLE_ASSAULT_OPERATIVE
