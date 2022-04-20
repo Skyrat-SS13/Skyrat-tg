@@ -48,6 +48,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	return ..()
 
 /obj/machinery/computer/cryopod/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 

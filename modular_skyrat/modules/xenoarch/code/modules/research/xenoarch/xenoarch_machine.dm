@@ -15,6 +15,7 @@
 	var/world_compare = 0
 
 /obj/machinery/xenoarch/RefreshParts()
+	. = ..()
 	efficiency = -1
 	for(var/obj/item/stock_parts/micro_laser/laser_part in component_parts)
 		efficiency += laser_part.rating
