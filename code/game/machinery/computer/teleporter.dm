@@ -39,11 +39,15 @@
 	return power_station
 
 /obj/machinery/computer/teleporter/ui_interact(mob/user, datum/tgui/ui)
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITON BEGIN - AESTHETICS
 	if(clicksound && world.time > next_clicksound && isliving(user))
 		next_clicksound = world.time + rand(50, 100)
 		playsound(src, get_sfx_skyrat(clicksound), clickvol)
 	//SKYRAT EDIT END
+=======
+	. = ..()
+>>>>>>> ffd1ae5fc0b (Rebalanced Power consumption, increase for machines (#66059))
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "Teleporter", name)

@@ -3,8 +3,12 @@
 	name = "chemical press"
 	desc = "A press that makes pills, patches and bottles."
 	icon_state = "pill_press"
+<<<<<<< HEAD
 	buffer = 60 //SKYRAT EDIT HYPOVIALS. This is needed so it can completely fill the vials up.
 
+=======
+	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 2
+>>>>>>> ffd1ae5fc0b (Rebalanced Power consumption, increase for machines (#66059))
 	///maximum size of a pill
 	var/max_pill_volume = 50
 	///maximum size of a patch
@@ -62,7 +66,7 @@
 		patch_style["class_name"] = patches_assets.icon_class_name(raw_patch_style)
 		patch_styles += list(patch_style)
 
-/obj/machinery/plumbing/pill_press/process()
+/obj/machinery/plumbing/pill_press/process(delta_time)
 	if(machine_stat & NOPOWER)
 		return
 	if(reagents.total_volume >= current_volume)
@@ -108,6 +112,7 @@
 			stored_products -= AM
 			AM.forceMove(drop_location())
 
+	use_power(active_power_usage * delta_time)
 
 /obj/machinery/plumbing/pill_press/ui_assets(mob/user)
 	return list(
