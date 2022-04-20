@@ -4,6 +4,7 @@
 //                                          //
 //////////////////////////////////////////////
 
+#define ASSAULT_OPERATIVES_ANNOUNCE_TIME 5 MINUTES
 /datum/dynamic_ruleset/roundstart/assault_operatives
 	name = "Assault Operatives"
 	antag_flag = ROLE_ASSAULT_OPERATIVE
@@ -51,11 +52,14 @@
 	if(assault_operatives_team.members.len)
 		assault_operatives_team.update_objectives()
 		SSgoldeneye.required_keys = get_goldeneye_key_count()
+		addtimer(CALLBACK(src, .proc/announce_operatives), ASSAULT_OPERATIVES_ANNOUNCE_TIME)
 		return TRUE
 	log_game("DYNAMIC: [ruletype] [name] failed to get any eligible assault operatives. Refunding [cost] threat.")
 	return FALSE
 
-
 /// Returns the required goldeneye keys for activation. This is to make sure we don't have an impossible to achieve goal. However, there has to be at least one key.
 /datum/dynamic_ruleset/roundstart/assault_operatives/proc/get_goldeneye_key_count()
 	return clamp(LAZYLEN(SSjob.get_all_heads()), 1, GOLDENEYE_REQUIRED_KEYS_MAXIMUM)
+
+/datum/dynamic_ruleset/roundstart/assault_operatives/proc/announce_operatives()
+	priority_announce("An unknown and undesignated vessel has been detected in your local sector, we have reports that it is hostile, so expect boarders!")
