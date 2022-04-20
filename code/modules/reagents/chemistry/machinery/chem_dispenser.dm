@@ -475,14 +475,7 @@
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		if (M.rating > 1)
 			dispensable_reagents |= upgrade_reagents
-<<<<<<< HEAD
-		if (M.rating > 2)
-			dispensable_reagents |= upgrade_reagents2
-		if (M.rating > 3)
-			dispensable_reagents |= upgrade_reagents3
-=======
 		parts_rating += M.rating
->>>>>>> ffd1ae5fc0b (Rebalanced Power consumption, increase for machines (#66059))
 	powerefficiency = round(newpowereff, 0.01)
 
 /obj/machinery/chem_dispenser/proc/replace_beaker(mob/living/user, obj/item/reagent_containers/new_beaker)

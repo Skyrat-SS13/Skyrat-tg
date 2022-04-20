@@ -3,12 +3,8 @@
 	name = "chemical press"
 	desc = "A press that makes pills, patches and bottles."
 	icon_state = "pill_press"
-<<<<<<< HEAD
 	buffer = 60 //SKYRAT EDIT HYPOVIALS. This is needed so it can completely fill the vials up.
-
-=======
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 2
->>>>>>> ffd1ae5fc0b (Rebalanced Power consumption, increase for machines (#66059))
 	///maximum size of a pill
 	var/max_pill_volume = 50
 	///maximum size of a patch
