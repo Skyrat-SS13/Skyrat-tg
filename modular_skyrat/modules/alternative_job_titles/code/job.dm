@@ -23,4 +23,4 @@
 	if(!istype(pda))
 		pda = equipping.l_store
 	if(istype(pda))
-		pda.saved_identification = chosen_title
+		pda.saved_job = chosen_title
