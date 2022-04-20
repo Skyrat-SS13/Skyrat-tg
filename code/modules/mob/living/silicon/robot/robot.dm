@@ -97,16 +97,13 @@
 	laws = new /datum/ai_laws/syndicate_override()
 	addtimer(CALLBACK(src, .proc/show_playstyle), 5)
 
-/mob/living/silicon/robot/proc/create_modularInterface()
-	if(!modularInterface)
-		modularInterface = new /obj/item/modular_computer/tablet/integrated(src)
-	modularInterface.layer = ABOVE_HUD_PLANE
-	modularInterface.plane = ABOVE_HUD_PLANE
-
 /mob/living/silicon/robot/model/syndicate/create_modularInterface()
 	if(!modularInterface)
 		modularInterface = new /obj/item/modular_computer/tablet/integrated/syndicate(src)
+		modularInterface.saved_identification = real_name
+		modularInterface.saved_job = "Cyborg"
 	return ..()
+
 
 /**
  * Sets the tablet theme and icon
@@ -711,6 +708,7 @@
 	notify_ai(AI_NOTIFICATION_CYBORG_RENAMED, oldname, newname)
 	if(!QDELETED(builtInCamera))
 		builtInCamera.c_tag = real_name
+		modularInterface.saved_identification = real_name
 	custom_name = newname
 
 
@@ -1004,6 +1002,7 @@
 		lamp_doom = connected_ai.doomsday_device ? TRUE : FALSE
 	toggle_headlamp(FALSE, TRUE)
 
+<<<<<<< HEAD
 /**
  * Records an IC event log entry in the cyborg's internal tablet.
  *
@@ -1034,6 +1033,8 @@
 		aiPDA.name = newname + " (" + aiPDA.ownjob + ")"
 // SKYRAT EDIT ADDITION END
 
+=======
+>>>>>>> cd1b891d79c (Modular Tablets: Converting PDAs to the NtOS System (#65755))
 /mob/living/silicon/robot/get_exp_list(minutes)
 	. = ..()
 
