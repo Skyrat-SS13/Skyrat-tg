@@ -63,4 +63,4 @@
 	return clamp(LAZYLEN(SSjob.get_all_heads()), 1, GOLDENEYE_REQUIRED_KEYS_MAXIMUM)
 
 /datum/dynamic_ruleset/roundstart/assault_operatives/proc/announce_operatives()
-	priority_announce("An unknown and undesignated vessel has been detected in your local sector, we have reports that it is hostile, so expect boarders!")
+	priority_announce("An unknown and undesignated vessel has been detected in your local sector, we have reports that it is hostile, so prepare for boarders!")
