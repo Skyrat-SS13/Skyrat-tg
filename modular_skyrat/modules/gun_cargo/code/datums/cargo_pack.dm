@@ -2,6 +2,7 @@
 
 /datum/supply_pack/armament/generate(atom/A, datum/bank_account/paying_account)
 	. = ..()
+	/*
 	var/obj/structure/container = .
 	for(var/obj/item/gun_maybe in container.contents)
 		if(!istype(gun_maybe, /obj/item/gun))
@@ -12,3 +13,4 @@
 		QDEL_NULL(gun_actually.pin)
 		var/obj/item/firing_pin/permit_pin/new_pin = new(gun_actually)
 		gun_actually.pin = new_pin
+*/
