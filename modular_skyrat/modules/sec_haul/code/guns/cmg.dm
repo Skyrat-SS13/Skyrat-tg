@@ -25,6 +25,7 @@
 	empty_indicator = TRUE
 
 /obj/item/ammo_box/magazine/cmgm45
+	name = "cmg-1 non-lethal magazine"
 	icon_state = "c20r45-24"
 	base_icon_state = "c20r45"
 	ammo_type = /obj/item/ammo_casing/c45/rubber
@@ -36,6 +37,7 @@
 	icon_state = "[base_icon_state]-[round(ammo_count(), 2)]"
 
 /obj/item/ammo_box/magazine/cmgm45/lethal
+	name = "cmg-1 lethal magazine"
 	ammo_type = /obj/item/ammo_casing/c45
 
 /obj/item/ammo_casing/c45/rubber

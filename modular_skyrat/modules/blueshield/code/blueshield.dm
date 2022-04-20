@@ -76,10 +76,14 @@
 	name = "CMG-1 Tactical Gunset"
 	w_class = WEIGHT_CLASS_NORMAL
 
+/obj/item/gun/ballistic/automatic/cmg/nomag
+	spawnwithmagazine = FALSE
+
 /obj/item/storage/box/gunset/blueshield/PopulateContents()
 	. = ..()
-	new /obj/item/gun/ballistic/automatic/cmg(src)
-	new /obj/item/ammo_box/magazine/cmgm45/lethal(src)
+	new /obj/item/gun/ballistic/automatic/cmg/nomag(src)
+	new /obj/item/ammo_box/magazine/cmgm45(src)
+	new /obj/item/ammo_box/magazine/cmgm45(src)
 	new /obj/item/ammo_box/magazine/cmgm45/lethal(src)
 	new /obj/item/ammo_box/magazine/cmgm45/lethal(src)
 	new /obj/item/suppressor(src)
