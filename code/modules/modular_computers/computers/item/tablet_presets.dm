@@ -108,10 +108,7 @@
 	. = ..()
 	var/obj/item/computer_hardware/hard_drive/small/integrated/hard_drive = new // SKYRAT EDIT ADD
 	install_component(new /obj/item/computer_hardware/processor_unit/small)
-<<<<<<< HEAD
 	install_component(hard_drive) // SKYRAT EDIT -- ORIGINAL install_component(new /obj/item/computer_hardware/hard_drive/small/integrated/)
-=======
->>>>>>> cd1b891d79c (Modular Tablets: Converting PDAs to the NtOS System (#65755))
 	install_component(new /obj/item/computer_hardware/recharger/cyborg)
 	install_component(new /obj/item/computer_hardware/network_card/integrated)
 	hard_drive.store_file(new /datum/computer_file/program/crew_manifest) // SKYRAT EDIT ADD

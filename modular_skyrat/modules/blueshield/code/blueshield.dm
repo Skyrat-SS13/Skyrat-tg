@@ -60,7 +60,7 @@
 	duffelbag = /obj/item/storage/backpack/duffel/blueshield
 	head = /obj/item/clothing/head/beret/blueshield
 	box = /obj/item/storage/box/survival/security
-	belt = /obj/item/pda/security
+	belt = /obj/item/modular_computer/tablet/pda/blueshield
 
 	id_trim = /datum/id_trim/job/blueshield
 
@@ -69,6 +69,12 @@
 
 	head = /obj/item/clothing/head/helmet/space/plasmaman/blueshield
 	uniform = /obj/item/clothing/under/plasmaman/blueshield
+
+/obj/item/modular_computer/tablet/pda/blueshield
+	name = "blueshield PDA"
+	default_disk = /obj/item/computer_hardware/hard_drive/role/hos
+	greyscale_config = /datum/greyscale_config/tablet/stripe_thick
+	greyscale_colors = "#a2b4cf#6ab73b#3399cc"
 
 /obj/item/storage/box/gunset/blueshield
 	name = "Allstar SC-3 PDW 'Hellfire' Gunset"

@@ -22,9 +22,3 @@
 /datum/greyscale_config/pda/aesthetics/stripe_thick/head
 	json_config = 'code/datums/greyscale/json_configs/pda_stripe_thick_head.json'
 
-/obj/item/pda/blueshield
-	name = "blueshield PDA"
-	default_cartridge = /obj/item/cartridge/hos
-	greyscale_config = /datum/greyscale_config/pda/aesthetics/stripe_thick
-	greyscale_colors = "#a2b4cf#6ab73b#3399cc"
-

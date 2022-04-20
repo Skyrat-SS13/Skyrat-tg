@@ -107,11 +107,7 @@
 	var/atom/lastloc
 	interaction_range = null
 
-<<<<<<< HEAD
-
-=======
 	var/atom/movable/screen/ai/modpc/interfaceButton
->>>>>>> cd1b891d79c (Modular Tablets: Converting PDAs to the NtOS System (#65755))
 
 /mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, mob/target_ai)
 	. = ..()

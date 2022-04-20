@@ -79,13 +79,6 @@
 	toner = tonermax
 	diag_hud_set_borgcell()
 	logevent("System brought online.")
-	// SKYRAT EDIT ADDITION BEGIN - Cyborg PDA
-	if(!shell)
-		aiPDA = new/obj/item/pda/ai(src)
-		aiPDA.owner = real_name
-		aiPDA.ownjob = "Cyborg"
-		aiPDA.name = real_name + " (" + aiPDA.ownjob + ")"
-	//SKYRAT EDIT ADDITION END
 	alert_control = new(src, list(ALARM_ATMOS, ALARM_FIRE, ALARM_POWER, ALARM_CAMERA, ALARM_BURGLAR, ALARM_MOTION), list(z))
 	RegisterSignal(alert_control.listener, COMSIG_ALARM_TRIGGERED, .proc/alarm_triggered)
 	RegisterSignal(alert_control.listener, COMSIG_ALARM_CLEARED, .proc/alarm_cleared)
@@ -1002,39 +995,6 @@
 		lamp_doom = connected_ai.doomsday_device ? TRUE : FALSE
 	toggle_headlamp(FALSE, TRUE)
 
-<<<<<<< HEAD
-/**
- * Records an IC event log entry in the cyborg's internal tablet.
- *
- * Creates an entry in the borglog list of the cyborg's internal tablet, listing the current
- * in-game time followed by the message given. These logs can be seen by the cyborg in their
- * BorgUI tablet app. By design, logging fails if the cyborg is dead.
- *
- * Arguments:
- * arg1: a string containing the message to log.
- */
-/mob/living/silicon/robot/proc/logevent(string = "")
-	if(!string)
-		return
-	if(stat == DEAD) //Dead borgs log no longer
-		return
-	if(!modularInterface)
-		stack_trace("Cyborg [src] ( [type] ) was somehow missing their integrated tablet. Please make a bug report.")
-		create_modularInterface()
-	modularInterface.borglog += "[station_time_timestamp()] - [string]"
-	var/datum/computer_file/program/robotact/program = modularInterface.get_robotact()
-	if(program)
-		program.force_full_update()
-
-// SKYRAT EDIT ADDITION BEGIN - Cyborg PDA
-/mob/living/silicon/robot/replace_identification_name(oldname,newname)
-	if(aiPDA && !shell)
-		aiPDA.owner = newname
-		aiPDA.name = newname + " (" + aiPDA.ownjob + ")"
-// SKYRAT EDIT ADDITION END
-
-=======
->>>>>>> cd1b891d79c (Modular Tablets: Converting PDAs to the NtOS System (#65755))
 /mob/living/silicon/robot/get_exp_list(minutes)
 	. = ..()
 
