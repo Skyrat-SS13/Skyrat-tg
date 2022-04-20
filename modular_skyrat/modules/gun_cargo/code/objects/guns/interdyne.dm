@@ -4,6 +4,7 @@
 	company_flag = COMPANY_INTERDYNE
 	icon = 'modular_skyrat/modules/gun_cargo/icons/honeybee.dmi'
 	icon_state = "honeybee"
+	company_flag = COMPANY_INTERDYNE
 	var/obj/item/gun/syringe/smartdart/underbarrel/underbarrel
 
 /obj/item/gun/ballistic/automatic/pistol/firefly/smartdart/Initialize()

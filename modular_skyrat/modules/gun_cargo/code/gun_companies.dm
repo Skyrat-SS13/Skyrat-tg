@@ -34,3 +34,6 @@
 
 /obj/item/gun/ballistic/shotgun/automatic/combat
 	company_flag = COMPANY_NANOTRASEN
+
+/obj/item/gun/syringe
+	company_flag = COMPANY_INTERDYNE

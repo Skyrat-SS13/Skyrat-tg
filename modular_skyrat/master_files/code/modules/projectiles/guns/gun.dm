@@ -831,6 +831,8 @@
 			. += "<br>It has <b>[span_red("Allstar Lasers Inc.")]</b> stamped on the front grip."
 		if(COMPANY_MICRON)
 			. += "<br>It has <b>[span_cyan("Micron Control Sys.")]</b> cut in above the cell slot."
+		if(COMPANY_INTERDYNE)
+			. += "<br>It has <b>[span_cyan("Interdyne Pharmaceuticals")]</b> stamped onto the barrel."
 
 /////////////
 // ZOOMING //
