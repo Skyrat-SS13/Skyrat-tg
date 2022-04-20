@@ -1,18 +1,28 @@
 import { sortBy } from 'common/collections';
 import { useBackend } from '../backend';
-import { Box, Button, ColorBox, Section, Table, Icon } from '../components'; // SKYRAT EDIT - ORIGINAL: import { Box, Button, ColorBox, Section, Table }
+import { Box, Button, Section, Table, Icon } from '../components'; // SKYRAT EDIT - ORIGINAL: import { Box, Button, Section, Colorbox Table }
 import { COLORS } from '../constants';
 import { Window } from '../layouts';
 
+
 const HEALTH_COLOR_BY_LEVEL = [
   '#17d568',
-  '#2ecc71',
+  '#c4cf2d', // SKYRAT EDIT - Original'#2ecc71' - moved to make it visually different,
   '#e67e22',
   '#ed5100',
   '#e74c3c',
-  '#ed2814',
+  '#801308', // SKYRAT EDIT - Original'#ed2814' - darker to help distinguish better,
 ];
-
+// SKYRAT ADDITION  - Icon status list
+const HEALTH_ICON_BY_LEVEL = [
+  'heart',
+  'heart',
+  'heart',
+  'heart',
+  'heartbeat',
+  'skull',
+];
+// SKRAY ADDITION - END:
 const jobIsHead = jobId => jobId % 10 === 0;
 
 const jobToColor = jobId => {
@@ -41,11 +51,13 @@ const jobToColor = jobId => {
   return COLORS.department.other;
 };
 
-const healthToColor = (oxy, tox, burn, brute) => {
+// SKYRAT EDIT - START:
+const healthToAttribute = (oxy, tox, burn, brute, attributeList) => {
   const healthSum = oxy + tox + burn + brute;
-  const level = Math.min(Math.max(Math.ceil(healthSum / 25), 0), 5);
-  return HEALTH_COLOR_BY_LEVEL[level];
+  const level = Math.min(Math.max(Math.ceil(healthSum / 31), 0), 5);
+  return attributeList[level];
 };
+// SKRAY EDIT - END:
 
 const HealthStat = props => {
   const { type, value } = props;
@@ -90,11 +102,11 @@ const CrewTable = (props, context) => {
         <Table.Cell bold collapsing textAlign="center">
           Vitals
         </Table.Cell>
-        <Table.Cell bold>
+        <Table.Cell bold collapsing textAlign="center">{/* SKYRAT EDIT - Centers the text*/}
           Position
         </Table.Cell>
-        {!!data.link_allowed && (
-          <Table.Cell bold collapsing>
+        {(
+          <Table.Cell bold collapsing textAlign="center">{/* SKYRAT EDIT - Centers the text and removes old code blocking it from appearing*/}
             Tracking
           </Table.Cell>
         )}
@@ -137,16 +149,29 @@ const CrewTableEntry = (props, context) => {
       </Table.Cell>
       {/* SKYRAT EDIT END */}
       <Table.Cell collapsing textAlign="center">
-        {life_status ? (
-          <ColorBox
-            color={healthToColor(
+        {/* SKYRAT EDIT START - Displaying status Icons */}
+        {oxydam !== undefined ? (
+          <Icon
+            name={healthToAttribute(
               oxydam,
               toxdam,
               burndam,
-              brutedam)} />
+              brutedam,
+              HEALTH_ICON_BY_LEVEL)}
+            color={healthToAttribute(
+              oxydam,
+              toxdam,
+              burndam,
+              brutedam,
+              HEALTH_COLOR_BY_LEVEL)}
+            size={1} />
         ) : (
-          <ColorBox color={'#ed2814'} />
-        )}
+          life_status ? (
+            <Icon name="heart" color="#17d568" size={1} />
+          ) : (
+            <Icon name="skull" color="#B7410E" size={1} />
+          ))}
+        {/* SKYRAT EDIT END */}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
         {oxydam !== undefined ? (
@@ -164,7 +189,7 @@ const CrewTableEntry = (props, context) => {
         )}
       </Table.Cell>
       <Table.Cell>
-        {area !== undefined ? area : 'N/A'}
+        {area !== undefined ? area : <Icon name="question" color="#ffffff" size={1} /> } {/* SKYRAT EDIT - Icon from text 'N/A*/}
       </Table.Cell>
       {!!link_allowed && (
         <Table.Cell collapsing>
