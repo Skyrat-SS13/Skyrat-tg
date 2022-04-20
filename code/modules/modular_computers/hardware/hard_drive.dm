@@ -175,6 +175,7 @@
 
 	store_file(new /datum/computer_file/program/messenger(src))
 	store_file(new /datum/computer_file/program/notepad(src))
+	store_file(new /datum/computer_file/program/crew_manifest(src)) // SKYRAT EDIT ADD
 
 // For borg integrated tablets. No downloader.
 /obj/item/computer_hardware/hard_drive/small/integrated/install_default_programs()
