@@ -49,16 +49,16 @@
 
 	switch(truedir)
 		if(NORTH)
-			movable_parent.particles.position = list(-4, 12, 0)
+			movable_parent.particles.position = list(-6, 12, 0)
 			movable_parent.particles.drift = generator("vector", list(0, 0.4), list(0.2, -0.2))
 		if(EAST)
-			movable_parent.particles.position = list(-2, 12, 0)
+			movable_parent.particles.position = list(-6, 12, 0)
 			movable_parent.particles.drift = generator("vector", list(0, 0.4), list(-0.8, 0.2))
 		if(SOUTH)
-			movable_parent.particles.position = list(4, 12, 0)
+			movable_parent.particles.position = list(5, 12, 0)
 			movable_parent.particles.drift = generator("vector", list(0, 0.4), list(0.2, -0.2))
 		if(WEST)
-			movable_parent.particles.position = list(2, 12, 0)
+			movable_parent.particles.position = list(6, 12, 0)
 			movable_parent.particles.drift = generator("vector", list(0, 0.4), list(0.8, -0.2))
 
 
@@ -95,7 +95,7 @@
 
 // The smoke
 /particles/smoke/robot
-	spawning = 0.5
+	spawning = 0.4
 	lifespan = 1 SECONDS
 	fadein = 0.5 SECONDS
 	fade = 0.75 SECONDS
