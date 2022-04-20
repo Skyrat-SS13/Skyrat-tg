@@ -156,7 +156,8 @@ export const CargoGunConsole = (props, context) => {
                               textAlign="center"
                               width="100%"
                               disabled={item.cost > budget_points
-                                || 0 >= item.quantity}
+                                || 0 >= item.quantity
+                                || !!cant_purchase}
                               onClick={() => act('equip_item', {
                                 armament_ref: item.ref })}
                             />

@@ -192,19 +192,13 @@
 	if(!istype(armament_entry))
 		return
 
-	if(armament_entry.interest_required)
-		for(var/company_interested as anything in SSgun_companies.companies)
-			if(company_interested != armament_category)
-				continue
-			var/datum/gun_company/company_datum = SSgun_companies.companies[company_interested]
-			if(company_datum.interest < gun_entry.interest_required)
-				return
-
 	var/mob/living/carbon/human/the_person = user
 
 	if(!istype(the_person))
 		return
+
 	var/obj/item/card/id/id_card
+
 	if(console_state == IRN_CONSOLE)
 		var/obj/item/computer_hardware/card_slot/card_slot = parent_prog.computer.all_components[MC_CARD]
 		id_card = card_slot.GetID()
