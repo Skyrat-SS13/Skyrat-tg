@@ -97,7 +97,7 @@
 /particles/smoke/robot
 	spawning = 0.4
 	lifespan = 1 SECONDS
-	fadein = 0.5 SECONDS
+//	fadein = 0.5 SECONDS
 	fade = 0.75 SECONDS
 	velocity = list(0, 0.2, 0)
 	friction = 0.35
