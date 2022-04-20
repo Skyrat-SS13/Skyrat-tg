@@ -180,7 +180,6 @@
 
 /datum/component/armament/cargo_gun/select_armament(mob/user, datum/armament_entry/cargo_gun/armament_entry)
 	var/datum/bank_account/buyer = SSeconomy.get_dep_account(ACCOUNT_CAR)
-	//var/datum/computer_file/program/budgetorders/possible_downloader
 	var/obj/item/modular_computer/possible_downloader
 	var/obj/machinery/computer/cargo/possible_console
 
@@ -192,6 +191,14 @@
 
 	if(!istype(armament_entry))
 		return
+
+	if(armament_entry.interest_required)
+		for(var/company_interested as anything in SSgun_companies.companies)
+			if(company_interested != armament_category)
+				continue
+			var/datum/gun_company/company_datum = SSgun_companies.companies[company_interested]
+			if(company_datum.interest < gun_entry.interest_required)
+				return
 
 	var/mob/living/carbon/human/the_person = user
 
