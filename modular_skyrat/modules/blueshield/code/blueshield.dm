@@ -73,7 +73,7 @@
 	uniform = /obj/item/clothing/under/plasmaman/blueshield
 
 /obj/item/storage/box/gunset/blueshield
-	name = "CMG-1 Tactical Gunset"
+	name = "CMG-1 Gunset"
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/ballistic/automatic/cmg/nomag
