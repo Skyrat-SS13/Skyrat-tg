@@ -185,6 +185,10 @@
 
 		if(id)
 			id.UpdateDisplay()
+<<<<<<< HEAD
+=======
+
+>>>>>>> cd1b891d79c (Modular Tablets: Converting PDAs to the NtOS System (#65755))
 
 
 /datum/job/proc/announce_job(mob/living/joining_mob, job_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: /datum/job/proc/announce_job(mob/living/joining_mob)
