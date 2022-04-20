@@ -32,3 +32,4 @@ Makes most laser weeapons hitscan based.
 
 Sparkezel (tg) - for making the original PR
 ErdinyoBarboza
+SojournStation - Sprites for projectiles.dmi
