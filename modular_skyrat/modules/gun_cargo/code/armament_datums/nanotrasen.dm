@@ -56,5 +56,5 @@
 
 /datum/armament_entry/cargo_gun/nanotrasen/rifle/model75
 	item_type = /obj/item/gun/ballistic/automatic/ar/modular/model75
-	lower_cost = CARGO_CRATE_VALUE * 14
-	upper_cost = CARGO_CRATE_VALUE * 20
+	lower_cost = CARGO_CRATE_VALUE * 28
+	upper_cost = CARGO_CRATE_VALUE * 32
