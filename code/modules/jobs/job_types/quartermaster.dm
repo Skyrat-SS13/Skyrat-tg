@@ -49,17 +49,12 @@
 	id = /obj/item/card/id/advanced/silver //SKYRAT EDIT CHANGE
 	id_trim = /datum/id_trim/job/quartermaster
 	uniform = /obj/item/clothing/under/rank/cargo/qm
-<<<<<<< HEAD
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic=1,
 		/obj/item/modular_computer/tablet/preset/cargo/quartermaster = 1
 		) //SKYRAT EDIT CHANGE - ORIGINAL: backpack_contents = list(/obj/item/modular_computer/tablet/preset/cargo/quartermaster = 1)
-	belt = /obj/item/pda/quartermaster
-	ears = /obj/item/radio/headset/heads/qm //SKYRAT EDIT CHANGE - OIGINAL: ears = /obj/item/radio/headset/headset_cargo
-=======
 	belt = /obj/item/modular_computer/tablet/pda/quartermaster
-	ears = /obj/item/radio/headset/headset_cargo
->>>>>>> cd1b891d79c (Modular Tablets: Converting PDAs to the NtOS System (#65755))
+	ears = /obj/item/radio/headset/heads/qm //SKYRAT EDIT CHANGE - OIGINAL: ears = /obj/item/radio/headset/headset_cargo
 	glasses = /obj/item/clothing/glasses/sunglasses
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	l_hand = /obj/item/clipboard

@@ -37,16 +37,10 @@
 		/obj/item/flashlight/seclite = 1,
 		/obj/item/knife/combat/survival = 1,
 		/obj/item/mining_voucher = 1,
-<<<<<<< HEAD
 		/obj/item/suit_voucher = 1,
 		/obj/item/stack/marker_beacon/ten = 1
 		) //SKYRAT EDIT: Suit_Voucher is an addition, one line up
-	belt = /obj/item/pda/shaftminer
-=======
-		/obj/item/stack/marker_beacon/ten = 1,
-		)
 	belt = /obj/item/modular_computer/tablet/pda/shaftminer
->>>>>>> cd1b891d79c (Modular Tablets: Converting PDAs to the NtOS System (#65755))
 	ears = /obj/item/radio/headset/headset_cargo/mining
 	gloves = /obj/item/clothing/gloves/color/black
 	shoes = /obj/item/clothing/shoes/workboots/mining
