@@ -58,7 +58,10 @@
 	suit = /obj/item/clothing/suit/armor/vest/nanotrasen_consultant
 	shoes = /obj/item/clothing/shoes/jackboots
 	head = /obj/item/clothing/head/nanotrasen_consultant
-	backpack_contents = list(/obj/item/melee/baton/telescopic)
+	backpack_contents = list(
+		/obj/item/melee/baton/telescopic = 1,
+		/obj/item/storage/box/gunset/nanotrasen_consultant = 1,
+		)
 
 	skillchips = list(/obj/item/skillchip/disk_verifier)
 
@@ -152,4 +155,3 @@
 	new /obj/item/storage/photo_album/personal(src)
 	new /obj/item/bedsheet/centcom(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/centcom/nt_consultant(src)
-	new /obj/item/gun/energy/e_gun(src)
