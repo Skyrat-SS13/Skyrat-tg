@@ -49,7 +49,7 @@
 		s.start()
 
 		L.Paralyze(30)
-		L.adjustPain(10)
+		//L.adjustPain(10)
 		L.adjust_timed_status_effect(30 SECONDS, /datum/status_effect/speech/stutter)
 
 	if(master)
