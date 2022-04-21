@@ -36,10 +36,8 @@
 					break
 
 		for(var/obj/item/table_contents in items_to_move)
-			var/dist = rand(1, 2)
-			var/sp = rand(1, 2)
 
-			table_contents.throw_at(get_ranged_target_turf(table_contents, pick(GLOB.cardinals), range = dist), range = dist, speed = sp)
+			table_contents.throw_at(get_ranged_target_turf(table_contents, pick(GLOB.cardinals), range = 1), range = 1, speed = 1)
 
 
 /mob/living/silicon/robot/on_standing_up()
