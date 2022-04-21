@@ -35,13 +35,6 @@ export const aphro_pref: FeatureToggle = {
   component: CheckboxInput,
 };
 
-export const noncon_pref: FeatureToggle = {
-  name: "Obsessed Non-con Target",
-  category: "ERP",
-  description: "Toggles whether you wish to be an obsessed target for those with the trait.",
-  component: CheckboxInput,
-};
-
 export const sextoy_pref: FeatureToggle = {
   name: "Sex toy interaction",
   category: "ERP",

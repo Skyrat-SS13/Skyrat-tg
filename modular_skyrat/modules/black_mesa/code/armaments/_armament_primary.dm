@@ -17,8 +17,8 @@
 
 /datum/armament_entry/hecu/primary/submachinegun/mp5
 	item_type = /obj/item/gun/ballistic/automatic/mp5
-	max_purchase = 4
-	cost = 7
+	max_purchase = 2
+	cost = 10
 
 /datum/armament_entry/hecu/primary/assaultrifle
 	subcategory = ARMAMENT_SUBCATEGORY_ASSAULTRIFLE
@@ -27,8 +27,8 @@
 /datum/armament_entry/hecu/primary/assaultrifle/m16
 	item_type = /obj/item/gun/ballistic/automatic/m16
 	max_purchase = 1
-	cost = 12
-	magazine = /obj/item/ammo_box/magazine/m16/extended
+	cost = 14
+	magazine = /obj/item/ammo_box/magazine/m16
 
 /datum/armament_entry/hecu/primary/shotgun
 	subcategory = ARMAMENT_SUBCATEGORY_SHOTGUN
@@ -55,7 +55,15 @@
 /datum/armament_entry/hecu/primary/special/sniper_rifle
 	item_type = /obj/item/gun/ballistic/automatic/cfa_rifle
 	max_purchase = 1
-	cost = 15
+	cost = 18
+
+/datum/armament_entry/hecu/primary/special/hmg
+	item_type = /obj/item/mounted_machine_gun_folded
+	max_purchase = 1
+	cost = 22
+	magazine = /obj/item/ammo_box/magazine/mmg_box
+	mags_to_spawn = 1
+	magazine_cost = 2
 
 /obj/item/storage/box/ammo_box/shotgun_12g
 

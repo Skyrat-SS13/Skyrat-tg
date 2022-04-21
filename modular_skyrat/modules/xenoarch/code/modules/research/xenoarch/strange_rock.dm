@@ -53,18 +53,18 @@
 /obj/item/xenoarch/strange_rock/proc/create_item()
 	choose_tier = rand(1,100)
 	switch(choose_tier)
-		if(1 to 70)
+		if(1 to 60)
 			hidden_item = pick_weight(GLOB.tier1_reward)
 			choose_tier = REWARD_ONE
-		if(71 to 97)
+		if(61 to 87)
 			hidden_item = pick_weight(GLOB.tier2_reward)
 			choose_tier = REWARD_TWO
-		if(98 to 100)
+		if(88 to 100)
 			hidden_item = pick_weight(GLOB.tier3_reward)
 			choose_tier = REWARD_THREE
 
 /obj/item/xenoarch/strange_rock/proc/create_depth()
-	max_depth = rand(21, (30 * choose_tier))
+	max_depth = rand(21, (22 * choose_tier))
 	safe_depth = rand(1, 10)
 	item_depth = rand((max_depth - safe_depth), max_depth)
 	dug_depth = rand(0, 10)

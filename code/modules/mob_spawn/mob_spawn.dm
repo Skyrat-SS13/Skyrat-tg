@@ -160,7 +160,7 @@
 		return
 	// SKYRAT EDIT ADDITION
 	if(restricted_species && !(user.client?.prefs?.read_preference(/datum/preference/choiced/species) in restricted_species))
-		to_chat(user, span_warning("You cannot use this role because you are not the correct species!"))
+		balloon_alert(user, "incorrect species!")
 		return
 	// SKYRAT EDIT END
 	if(prompt_ghost)
@@ -284,9 +284,9 @@
 	. = ..()
 	if(conceal_presence)
 		// We don't want corpse PDAs to show up in the messenger list.
-		var/obj/item/pda/messenger = locate(/obj/item/pda) in spawned_human
+		var/obj/item/modular_computer/tablet/pda/messenger = locate(/obj/item/modular_computer/tablet/pda/) in spawned_human
 		if(messenger)
-			messenger.toff = TRUE
+			messenger.invisible = TRUE
 		// Or on crew monitors
 		var/obj/item/clothing/under/sensor_clothes = spawned_human.w_uniform
 		if(istype(sensor_clothes))
