@@ -1,4 +1,3 @@
-/*
 /obj/item/kinky_shocker
 	name = "kinky shocker"
 	desc = "A small toy that can weakly shock someone."
@@ -285,5 +284,4 @@
 	target.do_jitter_animation()
 	target.adjustStaminaLoss(3)
 	target.adjustPain(9)
-	target.stuttering += 20
-*/
+	target.adjust_timed_status_effect(30 SECONDS, /datum/status_effect/speech/stutter)
