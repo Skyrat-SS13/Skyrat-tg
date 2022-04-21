@@ -396,7 +396,7 @@
 	var/investment_level = 0
 	for(var/i in 1 to length(wealth_brackets))
 		if(account.account_balance >= wealth_brackets[i])
-			investment_level = damage_brackets[i] * (account.account_balance / wealth_brackets[i])
+			investment_level = min(damage_brackets[i] * (account.account_balance / wealth_brackets[i]), damage_brackets[i])
 			continue
 	damage = investment_level
 	. = ..()

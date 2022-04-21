@@ -64,6 +64,9 @@
 		"turbine_part_compressor",
 		"turbine_part_rotor",
 		"turbine_part_stator",
+		// SKYRAT EDIT BEGIN - replace this when i figure out a good way to fix the modular method
+		"security_pistol_magazine_influence",
+		// SKYRAT EDIT END
 	)
 
 /datum/techweb_node/mmi
@@ -1220,6 +1223,9 @@
 		"implantcase",
 		"implanter",
 		"locator",
+		// SKYRAT EDIT BEGIN - replace this when i figure out a good way to fix the modular method
+		"security_pistol_magazine_trac",
+		// SKYRAT EDIT END
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -1523,6 +1529,12 @@
 		"c38_hotshot",
 		"c38_iceblox",
 		"techshotshell",
+		// SKYRAT EDIT BEGIN - replace this when i figure out a good way to fix the modular method
+		"security_pistol_magazine_iceblox",
+		"security_pistol_magazine_cruelty",
+		"security_pistol_magazine_geiger",
+		"security_pistol_magazine_ceo_mindset",
+		// SKYRAT EDIT END
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
