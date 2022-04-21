@@ -320,8 +320,8 @@
 /obj/projectile/bullet/security_pistol/iceblox/on_hit(atom/target, blocked = FALSE)
 	. = ..()
 	if(isliving(target))
-		var/mob/living/M = target
-		M.adjust_bodytemperature(((100-blocked)/100)*(temperature - M.bodytemperature))
+		var/mob/living/perp = target
+		perp.adjust_bodytemperature(((100-blocked)/100)*(temperature - perp.bodytemperature))
 
 // Cruelty rounds. Lower raw damage. Aggressively violent wounds and embeds.
 /obj/item/ammo_box/magazine/security_pistol/cruelty
