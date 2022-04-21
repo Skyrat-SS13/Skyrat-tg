@@ -222,7 +222,7 @@
 	new /obj/item/ammo_box/a357(src)
 	new /obj/item/ammo_box/a357(src)
 	new /obj/item/ammo_box/a357(src)
-	new /obj/item/pda/heads(src)
+	new /obj/item/modular_computer/tablet/pda/heads(src)
 	new /obj/item/clipboard(src)
 	new /obj/item/card/id/advanced/chameleon/impostorsr(src)
 	new /obj/item/stamp/centcom(src)
