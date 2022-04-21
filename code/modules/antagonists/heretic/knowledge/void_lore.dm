@@ -35,12 +35,6 @@
 	next_knowledge = list(/datum/heretic_knowledge/void_grasp)
 	required_atoms = list(/obj/item/knife = 1)
 	result_atoms = list(/obj/item/melee/sickly_blade/void)
-<<<<<<< HEAD
-	limit = 5 //SKYRAT EDIT - ORIGINAL: 2
-	cost = 1
-	priority = MAX_KNOWLEDGE_PRIORITY - 5
-=======
->>>>>>> aea1b5cf145 (Adds a new heretic path: Path of the Blades (#65718))
 	route = PATH_VOID
 
 /datum/heretic_knowledge/limited_amount/starting/base_void/on_research(mob/user)

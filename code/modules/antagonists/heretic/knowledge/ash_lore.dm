@@ -37,12 +37,6 @@
 		/obj/item/match = 1,
 	)
 	result_atoms = list(/obj/item/melee/sickly_blade/ash)
-<<<<<<< HEAD
-	limit = 5 //SKYRAT EDIT - ORIGINAL: 2
-	cost = 1
-	priority = MAX_KNOWLEDGE_PRIORITY - 5
-=======
->>>>>>> aea1b5cf145 (Adds a new heretic path: Path of the Blades (#65718))
 	route = PATH_ASH
 
 /datum/heretic_knowledge/limited_amount/starting/base_ash/on_research(mob/user)

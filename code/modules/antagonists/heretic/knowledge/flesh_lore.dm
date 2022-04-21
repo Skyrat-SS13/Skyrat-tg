@@ -42,13 +42,7 @@
 		/obj/effect/decal/cleanable/blood = 1,
 	)
 	result_atoms = list(/obj/item/melee/sickly_blade/flesh)
-<<<<<<< HEAD
-	limit = 20 // Bumped up so they can arm up their ghouls too. //SKYRAT EDIT - ORIGINAL: 3
-	cost = 1
-	priority = MAX_KNOWLEDGE_PRIORITY - 5
-=======
 	limit = 3 // Bumped up so they can arm up their ghouls too.
->>>>>>> aea1b5cf145 (Adds a new heretic path: Path of the Blades (#65718))
 	route = PATH_FLESH
 
 /datum/heretic_knowledge/limited_amount/starting/base_flesh/on_research(mob/user)
