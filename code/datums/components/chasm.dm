@@ -83,6 +83,7 @@
 				return FALSE
 		if(ishuman(AM))
 			var/mob/living/carbon/human/victim = AM
+			//SKYRAT EDIT: Making Jaunters Better
 			var/obj/item/wormhole_jaunter/found_jaunter = locate() in victim.get_all_contents()
 			if(!found_jaunter)
 				return TRUE
@@ -99,7 +100,7 @@
 				if(!fall_into_chasm)
 					chasm.visible_message(span_boldwarning("[victim] falls into the [chasm]!")) //To freak out any bystanders
 				return fall_into_chasm
-			*/
+			SKYRAT EDIT: Making Jaunters Better */
 	return TRUE
 
 /datum/component/chasm/proc/drop(atom/movable/AM)
