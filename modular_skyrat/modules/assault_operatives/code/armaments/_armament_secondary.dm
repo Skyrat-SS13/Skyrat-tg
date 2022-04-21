@@ -2,6 +2,8 @@
 #define ARMAMENT_CATEGORY_SECONDARY "Secondary Weapons"
 #define ARMAMENT_CATEGORY_SECONDARY_LIMIT 1
 #define ARMAMENT_SUBCATEGORY_PISTOL "Pistols"
+#define ARMAMENT_SUBCATEGORY_CQC "Close Quarters"
+
 
 // SECONDARY WEAPONS
 /datum/armament_entry/assault_operatives/secondary
@@ -15,6 +17,7 @@
 
 /datum/armament_entry/assault_operatives/secondary/pistol/m1911
 	item_type = /obj/item/gun/ballistic/automatic/pistol/m1911
+	cost = 4
 
 /datum/armament_entry/assault_operatives/secondary/pistol/aps
 	item_type = /obj/item/gun/ballistic/automatic/pistol/aps
@@ -40,6 +43,7 @@
 
 /datum/armament_entry/assault_operatives/secondary/pistol/robohand
 	item_type = /obj/item/gun/ballistic/automatic/pistol/robohand
+	description = "The Malorian Arms 3516 is a 14mm heavy pistol, sporting a titanium frame and unique wooden grip."
 	cost = 10
 
 /datum/armament_entry/assault_operatives/secondary/pistol/automag
@@ -54,13 +58,16 @@
 
 /datum/armament_entry/assault_operatives/secondary/pistol/pepperball
 	item_type = /obj/item/gun/ballistic/automatic/pistol/pepperball
-	cost = 4
+	cost = 3
 
-/datum/armament_entry/assault_operatives/secondary/kravmaga
+/datum/armament_entry/assault_operatives/secondary/closequarters
+	subcategory = ARMAMENT_SUBCATEGORY_CQC
+
+/datum/armament_entry/assault_operatives/secondary/closequarters/kravmaga
 	item_type = /obj/item/clothing/gloves/krav_maga/combatglovesplus
 	cost = 5
 
-/datum/armament_entry/assault_operatives/secondary/cqc
+/datum/armament_entry/assault_operatives/secondary/closequarters/cqc
 	name = "CQC Manual"
 	item_type = /obj/item/book/granter/martial/cqc
 	cost = 10

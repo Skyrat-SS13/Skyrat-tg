@@ -14,15 +14,13 @@
 	subcategory = ARMAMENT_SUBCATEGORY_SUBMACHINEGUN
 	mags_to_spawn = 4
 
-/datum/armament_entry/assault_operatives/primary/submachinegun/p90
-	item_type = /obj/item/gun/ballistic/automatic/p90
-
 /datum/armament_entry/assault_operatives/primary/submachinegun/wildcat
 	item_type = /obj/item/gun/ballistic/automatic/cfa_wildcat
 	cost = 5
-
+	
 /datum/armament_entry/assault_operatives/primary/submachinegun/lynx
 	item_type = /obj/item/gun/ballistic/automatic/cfa_lynx
+	cost = 7
 
 /datum/armament_entry/assault_operatives/primary/submachinegun/mp40
 	item_type = /obj/item/gun/ballistic/automatic/mp40
@@ -30,6 +28,9 @@
 
 /datum/armament_entry/assault_operatives/primary/submachinegun/ppsh
 	item_type = /obj/item/gun/ballistic/automatic/ppsh
+
+/datum/armament_entry/assault_operatives/primary/submachinegun/p90
+	item_type = /obj/item/gun/ballistic/automatic/p90
 
 /datum/armament_entry/assault_operatives/primary/submachinegun/c20r
 	item_type = /obj/item/gun/ballistic/automatic/c20r
@@ -52,15 +53,14 @@
 
 /datum/armament_entry/assault_operatives/primary/special
 	subcategory = ARMAMENT_SUBCATEGORY_SPECIAL
+	cost = 15
 
 /datum/armament_entry/assault_operatives/primary/special/l6saw
 	item_type = /obj/item/gun/ballistic/automatic/l6_saw
-	cost = 15
 	mags_to_spawn = 2
 
 /datum/armament_entry/assault_operatives/primary/special/mg9
 	item_type = /obj/item/gun/ballistic/automatic/mg34/mg42
-	cost = 15
 	mags_to_spawn = 2
 
 /datum/armament_entry/assault_operatives/primary/special/smartgun
@@ -69,7 +69,6 @@
 
 /datum/armament_entry/assault_operatives/primary/special/rocket_launcher
 	item_type = /obj/item/gun/ballistic/rocketlauncher/unrestricted
-	cost = 15
 
 /datum/armament_entry/assault_operatives/primary/special/rocket_launcher/after_equip(turf/safe_drop_location, obj/item/item_to_equip)
 	var/obj/item/storage/box/ammo_box/spawned_box = new(safe_drop_location)
