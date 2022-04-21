@@ -18,7 +18,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/firefly/smartdart/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/reagent_containers/syringe/smartdart))
-		..()
+		underbarrel.attackby(attacking_item, user, params)
 	else
 		to_chat(user, span_notice("The [attacking_item] is unable to fit inside of the [src]! Try using a <b>SmartDart</b> instead."))
 		return FALSE
