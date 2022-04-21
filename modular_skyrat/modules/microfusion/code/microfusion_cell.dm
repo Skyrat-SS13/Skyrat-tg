@@ -173,14 +173,14 @@ These are basically advanced cells.
 
 /obj/item/stock_parts/cell/microfusion/advanced
 	name = "advanced microfusion cell"
-	desc = "A third generation microfusion cell, boasting a much higher shot count. Additionally, these come with support for up to three modifications to the cell itself."
+	desc = "A third generation microfusion cell, boasting a much higher shot count. Additionally, these come with support for up to two modifications to the cell itself."
 	icon_state = "microfusion_advanced"
 	maxcharge = 1700
 	max_attachments = 2
 
 /obj/item/stock_parts/cell/microfusion/bluespace
 	name = "bluespace microfusion cell"
-	desc = "A fourth generation microfusion cell, employing bluespace technology to store power in a medium that's bigger on the inside. This has the highest capacity of any man-portable cell, and has flexibility for four different attachments to the cell itself."
+	desc = "A fourth generation microfusion cell, employing bluespace technology to store power in a medium that's bigger on the inside. This has the highest capacity of any man-portable cell, and has flexibility for three different attachments to the cell itself."
 	icon_state = "microfusion_bluespace"
 	maxcharge = 2000
 	max_attachments = 3
