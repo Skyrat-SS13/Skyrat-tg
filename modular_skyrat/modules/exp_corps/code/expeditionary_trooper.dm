@@ -57,14 +57,14 @@
 	id = /obj/item/card/id/advanced/silver/exp_corps
 	id_trim = /datum/id_trim/job/expeditionary_trooper
 
-	belt = /obj/item/pda/expeditionary_corps
+	belt = /obj/item/modular_computer/tablet/pda/expeditionary_corps
 
 /obj/effect/landmark/start/expeditionary_corps
 	name = "Vanguard Operative"
 	icon_state = "Vanguard Operative"
 	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
 
-/obj/item/pda/expeditionary_corps
+/obj/item/modular_computer/tablet/pda/expeditionary_corps
 	greyscale_colors = "#891417#000099"
 	name = "Military PDA"
 
