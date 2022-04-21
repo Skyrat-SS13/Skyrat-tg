@@ -1355,6 +1355,12 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		worn_icon = unique_reskin[pick][RESKIN_WORN_ICON]
 	if(unique_reskin[pick][RESKIN_WORN_ICON_STATE])
 		worn_icon_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
+	if(unique_reskin[pick][RESKIN_INHAND_L])
+		lefthand_file = unique_reskin[pick][RESKIN_INHAND_L]
+	if(unique_reskin[pick][RESKIN_INHAND_R])
+		righthand_file = unique_reskin[pick][RESKIN_INHAND_R]
+	if(unique_reskin[pick][RESKIN_INHAND_STATE])
+		inhand_icon_state = unique_reskin[pick][RESKIN_INHAND_STATE]
 	if(unique_reskin[pick][RESKIN_SUPPORTS_VARIATIONS_FLAGS])
 		supports_variations_flags = unique_reskin[pick][RESKIN_SUPPORTS_VARIATIONS_FLAGS]
 	if(ishuman(M))

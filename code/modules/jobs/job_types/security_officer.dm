@@ -205,10 +205,11 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 	id_trim = /datum/id_trim/job/security_officer
 	uniform = /obj/item/clothing/under/rank/security/officer
 	suit = /obj/item/clothing/suit/armor/vest/security //SKYRAT EDIT CHANGE
-	suit_store = /obj/item/gun/energy/disabler
+	suit_store = /obj/item/gun/ballistic/automatic/pistol/security
 	backpack_contents = list(
 		/obj/item/evidencebag = 1,
 		/obj/item/modular_computer/tablet/preset/advanced/security = 1,
+		/obj/item/ammo_box/magazine/security_pistol/influence = 2, // SKYRAT EDIT ADDITION, 1 mag in gun, 2 in backpack
 		)
 	belt = /obj/item/pda/security
 	ears = /obj/item/radio/headset/headset_sec/alt

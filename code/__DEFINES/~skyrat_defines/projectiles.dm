@@ -15,3 +15,5 @@
 #define CALIBER_14GAUGE "14 Gauge"
 
 #define CALIBER_50BMG ".50 BMG"
+
+#define CALIBER_SECURITYPISTOL "security pistol"

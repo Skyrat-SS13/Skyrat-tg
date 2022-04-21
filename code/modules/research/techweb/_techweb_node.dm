@@ -38,6 +38,10 @@
 	var/list/discount_experiments = list()
 	/// Whether or not this node should show on the wiki
 	var/show_on_wiki = TRUE
+	// SKYRAT EDIT BEGIN
+	/// Design IDs unlocked but for skyrat to avoid editing core files.
+	var/list/skyrat_design_ids = list()
+	// SKYRAT EDIT END
 
 /datum/techweb_node/error_node
 	id = "ERROR"
@@ -53,6 +57,10 @@
 		design_ids[id] = TRUE
 	for(var/id in unlock_ids)
 		unlock_ids[id] = TRUE
+	// SKYRAT EDIT BEGIN
+	for(var/id in skyrat_design_ids)
+		design_ids[id] = TRUE
+	// SKYRAT EDIT END
 
 /datum/techweb_node/Destroy()
 	SSresearch.techweb_nodes -= id
@@ -88,7 +96,7 @@
 			if(actual_costs[booster])
 				var/delta = max(0, actual_costs[booster] - 250)
 				actual_costs[booster] -= min(boostlist[booster], delta)
-	
+
 	return actual_costs
 
 /datum/techweb_node/proc/price_display(datum/techweb/TN)

@@ -496,3 +496,134 @@
 	desc = "A stun baton that doesn't operate outside of the Prison, based off the station's blueprint layout. Can be used outside of the Prison up to three times before needing to return!"
 	icon_state = "prison_baton"
 	valid_areas = list(/area/security/prison, /area/security/processing, /area/shuttle/escape) // love mapping
+
+
+// Borrowed from peacekeeper cyborgs to deal with the gun proliferation.
+/* todo: finish this shit later, pepperballs are working for now but this needs done sooner rather than later, only side-tracking it because the security pistols need done
+/obj/item/departmental_guard_projectile_dampen
+	name = "\improper handheld hyperkinetic dampening projector"
+	desc = "A device that projects a dampening field that weakens kinetic energy above a certain threshold. <span class='boldnotice'>Projects a field that drains power per second while active, that will weaken and slow damaging projectiles inside its field.</span> Still being a prototype, it tends to induce a charge on ungrounded metallic surfaces."
+	icon = 'icons/obj/device.dmi'
+	icon_state = "shield"
+	var/datum/proximity_monitor/advanced/peaceborg_dampener/dampening_field
+	var/projectile_damage_coefficient = 0.25
+	/// Energy cost per tracked projectile damage amount per second
+	var/projectile_damage_tick_ecost_coefficient = 10
+	// Higher the coefficient slower the projectile.
+	var/projectile_speed_coefficient = 2
+	/// Energy cost per tracked projectile per second
+	var/projectile_tick_speed_ecost = 75
+	var/list/obj/projectile/tracked
+	var/image/projectile_effect
+	var/field_radius = 3
+	var/active = FALSE
+	var/cycle_delay = 0
+	var/mob/living/carbon/human/host
+
+/obj/item/departmental_guard_projectile_dampen/Initialize(mapload)
+	. = ..()
+	projectile_effect = image('icons/effects/fields.dmi', "projectile_dampen_effect")
+	tracked = list()
+	icon_state = "shield0"
+	START_PROCESSING(SSfastprocess, src)
+	host = loc
+	RegisterSignal(host, COMSIG_LIVING_DEATH, .proc/on_death)
+
+/obj/item/departmental_guard_projectile_dampen/proc/on_death(datum/source, gibbed)
+	SIGNAL_HANDLER
+
+	deactivate_field()
+
+/obj/item/departmental_guard_projectile_dampen/Destroy()
+	STOP_PROCESSING(SSfastprocess, src)
+	return ..()
+
+/obj/item/departmental_guard_projectile_dampen/attack_self(mob/user)
+	if(cycle_delay > world.time)
+		to_chat(user, span_boldwarning("[src] is still recycling its projectors!"))
+		return
+	cycle_delay = world.time + PKBORG_DAMPEN_CYCLE_DELAY
+	if(!active)
+		activate_field()
+	else
+		deactivate_field()
+	update_appearance()
+	to_chat(user, span_boldnotice("You [active ? "activate" : "deactivate"] [src]."))
+
+/obj/item/departmental_guard_projectile_dampen/update_icon_state()
+	icon_state = "[initial(icon_state)][active]"
+	return ..()
+
+/obj/item/departmental_guard_projectile_dampen/proc/activate_field()
+	if(istype(dampening_field))
+		QDEL_NULL(dampening_field)
+	dampening_field = new(owner, field_radius, TRUE, src)
+	owner?.model.allow_riding = FALSE
+	active = TRUE
+
+/obj/item/departmental_guard_projectile_dampen/proc/deactivate_field()
+	QDEL_NULL(dampening_field)
+	visible_message(span_warning("\The [src] shuts off!"))
+	for(var/P in tracked)
+		restore_projectile(P)
+	active = FALSE
+
+/obj/item/departmental_guard_projectile_dampen/proc/get_host()
+	if(istype(host))
+		return host
+	else
+		if(iscyborg(host.loc))
+			return host.loc
+	return null
+
+/obj/item/departmental_guard_projectile_dampen/dropped()
+	. = ..()
+	deactivate_field()
+
+/obj/item/departmental_guard_projectile_dampen/equipped()
+	. = ..()
+	host = loc
+
+/obj/item/departmental_guard_projectile_dampen/process(delta_time)
+	process_recharge(delta_time)
+	process_usage(delta_time)
+
+/obj/item/departmental_guard_projectile_dampen/proc/process_usage(delta_time)
+	var/usage = 0
+	for(var/I in tracked)
+		var/obj/projectile/P = I
+		if(!P.stun && P.nodamage) //No damage
+			continue
+		usage += projectile_tick_speed_ecost * delta_time
+		usage += tracked[I] * projectile_damage_tick_ecost_coefficient * delta_time
+	energy = clamp(energy - usage, 0, maxenergy)
+	if(energy <= 0)
+		deactivate_field()
+		visible_message(span_warning("[src] blinks \"ENERGY DEPLETED\"."))
+
+/obj/item/departmental_guard_projectile_dampen/proc/process_recharge(delta_time)
+	if(!istype(host))
+		if(iscyborg(host.loc))
+			host = host.loc
+		else
+			energy = clamp(energy + energy_recharge * delta_time, 0, maxenergy)
+			return
+	if(host.cell && (host.cell.charge >= (host.cell.maxcharge * cyborg_cell_critical_percentage)) && (energy < maxenergy))
+		host.cell.use(energy_recharge * delta_time * energy_recharge_cyborg_drain_coefficient)
+		energy += energy_recharge * delta_time
+
+/obj/item/departmental_guard_projectile_dampen/proc/dampen_projectile(obj/projectile/P, track_projectile = TRUE)
+	if(tracked[P])
+		return
+	if(track_projectile)
+		tracked[P] = P.damage
+	P.damage *= projectile_damage_coefficient
+	P.speed *= projectile_speed_coefficient
+	P.add_overlay(projectile_effect)
+
+/obj/item/departmental_guard_projectile_dampen/proc/restore_projectile(obj/projectile/P)
+	tracked -= P
+	P.damage *= (1/projectile_damage_coefficient)
+	P.speed *= (1/projectile_speed_coefficient)
+	P.cut_overlay(projectile_effect)
+*/
