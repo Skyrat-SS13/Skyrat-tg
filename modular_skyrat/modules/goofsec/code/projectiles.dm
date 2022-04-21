@@ -201,10 +201,10 @@
 	damage = 60
 */
 
-/// Bullet security pistol.
+/// The Domestic.
 /obj/item/gun/ballistic/automatic/pistol/security
-	name = "security pistol"
-	desc = "A pistol issued to station security personnel. It's a small, compact pistol, but it packs a punch."
+	name = "Domestic"
+	desc = "A pistol issued to station security personnel by Lopland. It's a small, compact pistol, but it packs a punch."
 	mag_type = /obj/item/ammo_box/magazine/security_pistol
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ladon.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand40x32.dmi'
@@ -218,8 +218,8 @@
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 
 /obj/item/ammo_box/magazine/security_pistol
-	name = "influence security pistol magazine"
-	desc = "A magazine for the security pistol. Loaded with rubberized influence rounds."
+	name = "influence Domestic magazine"
+	desc = "A magazine for the Domestic. Loaded with non-lethal Influence rounds, which bounce around and influence people to comply with arrests."
 	icon = 'modular_skyrat/modules/goofsec/icons/gun_sprites.dmi'
 	icon_state = "security_pistol_influence"
 	base_icon_state = "security_pistol_influence"
@@ -231,35 +231,35 @@
 	. = ..()
 	icon_state = "[base_icon_state][ammo_count() ? "" : "-empty"]"
 
-/// Ammo for the Security Pistol.
+/// Ammo for the Domestic.
 /obj/item/ammo_casing/security_pistol
-	name = "security pistol casing"
-	desc = "A casing for a security pistol magazine."
+	name = "inhumane casing"
+	desc = "A casing for a Domestic magazine."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
 	caliber = CALIBER_SECURITYPISTOL
 	projectile_type = /obj/projectile/bullet/security_pistol
 
 /obj/projectile/bullet/security_pistol
-	name = "security pistol bullet"
+	name = "inhumane bullet"
 	damage = 0 // not supposed to exist
 
 // Influence rounds. Bouncy. Stamina only.
 /obj/item/ammo_box/magazine/security_pistol/influence
-	name = "influence security pistol magazine"
-	desc = "A magazine for the security pistol. Loaded with Influence rounds, which bounce around and influence people to comply with arrests."
+	name = "influence Domestic magazine"
+	desc = "A magazine for the Domestic. Loaded with non-lethal Influence rounds, which bounce around and influence people to comply with arrests."
 	icon_state = "security_pistol_influence"
 	base_icon_state = "security_pistol_influence"
 	ammo_type = /obj/item/ammo_casing/security_pistol/influence
 
 /obj/item/ammo_casing/security_pistol/influence
-	name = "influence security pistol casing"
+	name = "influence inhumane casing"
 	projectile_type = /obj/projectile/bullet/security_pistol/influence
 	harmful = FALSE
 
 /obj/projectile/bullet/security_pistol/influence
-	name = "influence security pistol bullet"
-	damage = 41
+	name = "influence inhumane bullet"
+	damage = 30
 	damage_type = STAMINA
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
@@ -269,18 +269,18 @@
 
 // TRAC rounds. Lower raw damage. Puts a tracking chip in the target, embeds. Penetrates armor.
 /obj/item/ammo_box/magazine/security_pistol/trac
-	name = "trac security pistol magazine"
-	desc = "A magazine for the security pistol. Loaded with TRAC rounds, which embed a tracking chip in the target, while also being handy against armor."
+	name = "trac Domestic magazine"
+	desc = "A magazine for the Domestic. Loaded with TRAC rounds, which embed a tracking chip in the target, while also being handy against armor."
 	icon_state = "security_pistol_trac"
 	base_icon_state = "security_pistol_trac"
 	ammo_type = /obj/item/ammo_casing/security_pistol/trac
 
 /obj/item/ammo_casing/security_pistol/trac
-	name = "trac security pistol casing"
+	name = "trac inhumane casing"
 	projectile_type = /obj/projectile/bullet/security_pistol/trac
 
 /obj/projectile/bullet/security_pistol/trac
-	name = "trac security pistol bullet"
+	name = "trac inhumane bullet"
 	damage = 25
 	armour_penetration = 75
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=1 SECONDS)
@@ -289,31 +289,31 @@
 
 /obj/projectile/bullet/security_pistol/trac/on_hit(atom/target, blocked = FALSE)
 	. = ..()
-	var/mob/living/carbon/M = target
-	if(!istype(M))
+	var/mob/living/carbon/perp = target
+	if(!istype(perp))
 		return
-	var/obj/item/implant/tracking/c38/imp
-	for(var/obj/item/implant/tracking/c38/TI in M.implants) //checks if the target already contains a tracking implant
-		imp = TI
+	var/obj/item/implant/tracking/c38/implant
+	for(var/obj/item/implant/tracking/c38/tracking_implant in perp.implants) //checks if the target already contains a tracking implant
+		implant = tracking_implant
 		return
-	if(!imp)
-		imp = new /obj/item/implant/tracking/c38(M)
-		imp.implant(M)
+	if(!implant)
+		implant = new /obj/item/implant/tracking/c38(perp)
+		implant.implant(perp)
 
 // Iceblox Rounds. Lower raw damage. Makes the target cold.
 /obj/item/ammo_box/magazine/security_pistol/iceblox
-	name = "iceblox security pistol magazine"
-	desc = "A magazine for the security pistol. Loaded with Iceblox rounds, which make the target cold."
+	name = "iceblox Domestic magazine"
+	desc = "A magazine for the Domestic. Loaded with Iceblox rounds, which make the target cold."
 	icon_state = "security_pistol_iceblox"
 	base_icon_state = "security_pistol_iceblox"
 	ammo_type = /obj/item/ammo_casing/security_pistol/iceblox
 
 /obj/item/ammo_casing/security_pistol/iceblox
-	name = "iceblox security pistol casing"
+	name = "iceblox inhumane casing"
 	projectile_type = /obj/projectile/bullet/security_pistol/iceblox
 
 /obj/projectile/bullet/security_pistol/iceblox
-	name = "iceblox security pistol bullet"
+	name = "iceblox inhumane bullet"
 	damage = 25
 	var/temperature = 100
 
@@ -325,18 +325,19 @@
 
 // Cruelty rounds. Lower raw damage. Aggressively violent wounds and embeds.
 /obj/item/ammo_box/magazine/security_pistol/cruelty
-	name = "cruelty security pistol magazine"
-	desc = "A magazine for the security pistol. Loaded with Cruelty rounds, which slice through biological matter in a manner banned by the Geneva Convention."
+	name = "cruelty Domestic magazine"
+	desc = "A magazine for the Domestic. Loaded with Cruelty rounds, which slice through biological matter in a manner banned by the Spinward Stellar Coalition, \
+	after they were used by Lopland contractors to remove a nudist ecological protest from a plasma drilling operation."
 	icon_state = "security_pistol_cruelty"
 	base_icon_state = "security_pistol_cruelty"
 	ammo_type = /obj/item/ammo_casing/security_pistol/cruelty
 
 /obj/item/ammo_casing/security_pistol/cruelty
-	name = "cruelty security pistol casing"
+	name = "cruelty inhumane casing"
 	projectile_type = /obj/projectile/bullet/security_pistol/cruelty
 
 /obj/projectile/bullet/security_pistol/cruelty
-	name = "cruelty security pistol bullet"
+	name = "cruelty inhumane bullet"
 	damage = 25
 	sharpness = SHARP_EDGED
 	wound_bonus = 50
@@ -345,18 +346,18 @@
 
 // Geiger rounds. Reduced damage. Irradiation.
 /obj/item/ammo_box/magazine/security_pistol/geiger
-	name = "geiger security pistol magazine"
-	desc = "A magazine for the security pistol. Loaded with Geiger rounds, which irradiate the target and those around them."
+	name = "geiger Domestic magazine"
+	desc = "A magazine for the Domestic. Loaded with Geiger rounds, which irradiate the target and those around them."
 	icon_state = "security_pistol_rad"
 	base_icon_state = "security_pistol_rad"
 	ammo_type = /obj/item/ammo_casing/security_pistol/geiger
 
 /obj/item/ammo_casing/security_pistol/geiger
-	name = "geiger security pistol casing"
+	name = "geiger inhumane casing"
 	projectile_type = /obj/projectile/bullet/security_pistol/geiger
 
 /obj/projectile/bullet/security_pistol/geiger
-	name = "geiger security pistol bullet"
+	name = "geiger inhumane bullet"
 	damage = 25
 
 /obj/projectile/bullet/security_pistol/geiger/on_hit(atom/target, blocked = FALSE)
@@ -367,20 +368,20 @@
 
 // CEO Mindset rounds. Set goals. Have a ten year plan. Invest. Wake up early. CEO mindset. Good luck.
 /obj/item/ammo_box/magazine/security_pistol/ceo_mindset
-	name = "CEO mindset security pistol magazine"
-	desc = "A magazine for the security pistol. Loaded with CEO mindset rounds, which set goals and have a ten year plan. Invest. Wake up early. CEO mindset. Good luck."
+	name = "CEO mindset Domestic magazine"
+	desc = "A magazine for the Domestic. Loaded with CEO mindset rounds, which set goals and have a ten year plan. Invest. Wake up early. CEO mindset. Good luck."
 	icon_state = "security_pistol_ceo_mindset"
 	base_icon_state = "security_pistol_ceo_mindset"
 	ammo_type = /obj/item/ammo_casing/security_pistol/ceo_mindset
 
 /obj/item/ammo_casing/security_pistol/ceo_mindset
-	name = "CEO mindset security pistol casing"
+	name = "CEO mindset inhumane casing"
 	projectile_type = /obj/projectile/bullet/security_pistol/ceo_mindset
 
 /obj/projectile/bullet/security_pistol/ceo_mindset
-	name = "CEO mindset security pistol bullet"
+	name = "CEO mindset inhumane bullet"
 	damage = 0
-	var/damage_brackets = list(5, 15, 30, 35, 60, 80)
+	var/damage_brackets = list(5, 15, 30, 35, 50, 60)
 	var/wealth_brackets = list(25, 150, 350, 500, 1000, 5000)
 
 /obj/projectile/bullet/security_pistol/ceo_mindset/on_hit(atom/target, blocked = FALSE)
@@ -414,38 +415,38 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/security_pistol_magazine/influence
-	name = "Security Pistol Magazine (Influence)"
-	desc = "Influence rounds for your Security Pistol."
+	name = "Domestic Magazine (Influence)"
+	desc = "Influence rounds for your Domestic."
 	id = "security_pistol_magazine_influence"
 	build_path = /obj/item/ammo_box/magazine/security_pistol/influence
 
 /datum/design/security_pistol_magazine/trac
-	name = "Security Pistol Magazine (TRAC)"
-	desc = "TRAC rounds for your Security Pistol."
+	name = "Domestic Magazine (TRAC)"
+	desc = "TRAC rounds for your Domestic."
 	id = "security_pistol_magazine_trac"
 	build_path = /obj/item/ammo_box/magazine/security_pistol/trac
 
 /datum/design/security_pistol_magazine/iceblox
-	name = "Security Pistol Magazine (Iceblox)"
-	desc = "Iceblox rounds for your Security Pistol."
+	name = "Domestic Magazine (Iceblox)"
+	desc = "Iceblox rounds for your Domestic."
 	id = "security_pistol_magazine_iceblox"
 	build_path = /obj/item/ammo_box/magazine/security_pistol/iceblox
 
 /datum/design/security_pistol_magazine/cruelty
-	name = "Security Pistol Magazine (Cruelty)"
-	desc = "Cruelty rounds for your Security Pistol."
+	name = "Domestic Magazine (Cruelty)"
+	desc = "Cruelty rounds for your Domestic."
 	id = "security_pistol_magazine_cruelty"
 	build_path = /obj/item/ammo_box/magazine/security_pistol/cruelty
 
 /datum/design/security_pistol_magazine/geiger
-	name = "Security Pistol Magazine (Geiger)"
-	desc = "Geiger rounds for your Security Pistol."
+	name = "Domestic Magazine (Geiger)"
+	desc = "Geiger rounds for your Domestic."
 	id = "security_pistol_magazine_geiger"
 	build_path = /obj/item/ammo_box/magazine/security_pistol/geiger
 
 /datum/design/security_pistol_magazine/ceo_mindset
-	name = "Security Pistol Magazine (CEO Mindset)"
-	desc = "CEO Mindset rounds for your Security Pistol."
+	name = "Domestic Magazine (CEO Mindset)"
+	desc = "CEO Mindset rounds for your Domestic."
 	id = "security_pistol_magazine_ceo_mindset"
 	build_path = /obj/item/ammo_box/magazine/security_pistol/ceo_mindset
 
@@ -469,11 +470,11 @@
 	)
 
 /datum/supply_pack/security/security_pistol
-	name = "Security Pistol Crate"
-	desc = "Three security pistols, if your security team gets disarmed."
+	name = "Domestic Crate"
+	desc = "Three Domestics, if your security team gets disarmed."
 	cost = CARGO_CRATE_VALUE * 3
 	access_view = ACCESS_SECURITY
 	contains = list(/obj/item/gun/ballistic/automatic/pistol/security,
 					/obj/item/gun/ballistic/automatic/pistol/security,
 					/obj/item/gun/ballistic/automatic/pistol/security)
-	crate_name = "security pistol crate"
+	crate_name = "Domestic crate"
