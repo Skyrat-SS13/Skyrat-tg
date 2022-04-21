@@ -2,7 +2,7 @@
 	name = "laser"
 	icon_state = "laser"
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
-	damage = 22 // SKYRAT EDIT: 20
+	damage = 17 // SKYRAT EDIT: 20
 	damage_type = BURN
 	hitsound = 'sound/weapons/sear.ogg'
 	hitsound_wall = 'sound/weapons/effects/searwall.ogg'
@@ -56,17 +56,17 @@
 	hitscan_light_color_override = COLOR_DARK_RED
 	muzzle_flash_color_override = COLOR_DARK_RED
 	impact_light_color_override = COLOR_DARK_RED
-	tracer_type = /obj/effect/projectile/tracer/hitscan/heavy_laser
-	muzzle_type = /obj/effect/projectile/muzzle/hitscan/heavy_laser
-	impact_type = /obj/effect/projectile/impact/hitscan/heavy_laser
+	tracer_type = /obj/effect/projectile/tracer/hitscan/hellfire
+	muzzle_type = /obj/effect/projectile/muzzle/hitscan/hellfire
+	impact_type = /obj/effect/projectile/impact/hitscan/hellfire
 	wound_bonus = 0
-	damage = 25
+	damage = 20
 	hitscan = TRUE
 
 /obj/projectile/beam/laser/heavylaser
 	name = "heavy laser"
 	icon_state = "heavylaser"
-	damage = 40
+	damage = 30
 	hitscan_light_color_override = LIGHT_COLOR_ORANGE
 	muzzle_flash_color_override = LIGHT_COLOR_ORANGE
 	impact_light_color_override = LIGHT_COLOR_ORANGE
@@ -84,7 +84,7 @@
 		impact_effect_type = /obj/effect/temp_visual/impact_effect/red_laser/wall
 
 /obj/projectile/beam/weak
-	damage = 15
+	damage = 10
 	hitscan = TRUE
 
 /obj/projectile/beam/weak/penetrator
@@ -122,8 +122,7 @@
 /obj/projectile/beam/disabler
 	name = "disabler beam"
 	icon_state = "omnilaser"
-	damage = 30 //lets try the low damage with hitscans first
-	//damage = 41 // SKYRAT EDIT: 30
+	damage = 41 // SKYRAT EDIT: 30
 	damage_type = STAMINA
 	armor_flag = ENERGY
 	hitsound = 'sound/weapons/tap.ogg'
@@ -135,7 +134,6 @@
 	tracer_type = /obj/effect/projectile/tracer/hitscan/disabler
 	muzzle_type = /obj/effect/projectile/muzzle/hitscan/disabler
 	impact_type = /obj/effect/projectile/impact/hitscan/disabler
-	hitscan = TRUE
 
 /obj/projectile/beam/pulse
 	name = "pulse"

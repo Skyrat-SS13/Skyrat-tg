@@ -17,21 +17,7 @@
 	name = "microfusion laser"
 	icon = 'modular_skyrat/modules/microfusion/icons/projectiles.dmi'
 	damage = 20
-
-/obj/projectile/beam/microfusion_disabler
-	name = "microfusion disabler laser"
-	icon = 'modular_skyrat/modules/microfusion/icons/projectiles.dmi'
-	icon_state = "disabler"
-	damage = 41
-	damage_type = STAMINA
-	armor_flag = ENERGY
-	hitsound = 'sound/weapons/tap.ogg'
-	eyeblur = 0
-	impact_effect_type = /obj/effect/temp_visual/impact_effect/blue_laser
-	light_color = LIGHT_COLOR_BLUE
-	tracer_type = /obj/effect/projectile/tracer/disabler
-	muzzle_type = /obj/effect/projectile/muzzle/disabler
-	impact_type = /obj/effect/projectile/impact/disabler
+	hitscan = FALSE
 
 /obj/projectile/beam/laser/microfusion/superheated
 	name = "superheated microfusion laser"
