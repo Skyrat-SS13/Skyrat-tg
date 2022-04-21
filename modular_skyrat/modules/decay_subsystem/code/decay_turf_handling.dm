@@ -1,6 +1,5 @@
 /turf/open/floor
 	turf_flags = CAN_DECAY_BREAK_1 // We do it this way because we can then easily pick what we don't want to be broken.
-	flags_1 = NO_SCREENTIPS_1 | CAN_BE_DIRTY_1
 
 /turf/closed/wall
 	flags_1 = CAN_BE_DIRTY_1

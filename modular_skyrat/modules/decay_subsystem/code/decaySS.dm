@@ -86,6 +86,8 @@ SUBSYSTEM_DEF(decay)
 			new /obj/effect/decal/cleanable/dirt(iterating_floor)
 
 	for(var/turf/closed/iterating_wall in possible_turfs)
+		if(HAS_TRAIT(iterating_wall, TRAIT_RUSTY))
+			continue
 		if(prob(WALL_RUST_PERCENT_CHANCE * severity_modifier))
 			iterating_wall.AddElement(/datum/element/rust)
 
