@@ -40,6 +40,10 @@
 	desc = "A fancy pair of high heels. Won't compensate for your below average height that much."
 	icon_state = "heels"
 
+/obj/item/clothing/shoes/high_heels/Initialize()
+	. = ..()
+	AddComponent(/datum/component/squeak, list('modular_skyrat/modules/modular_items/lewd_items/sounds/highheel1.ogg' = 1,'modular_skyrat/modules/modular_items/lewd_items/sounds/highheel2.ogg' = 1), 70)
+
 /obj/item/clothing/shoes/discoshoes
 	name = "green snakeskin shoes"
 	desc = "They may have lost some of their lustre over the years, but these green crocodile leather shoes fit you perfectly."
