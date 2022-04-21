@@ -35,6 +35,7 @@
 	/// indication that the eyes are undergoing some negative effect
 	var/damaged = FALSE
 	var/is_emissive = FALSE //SKYRAT EDIT ADDITION
+	var/eyes_layer = BODY_LAYER //SKYRAT EDIT ADDITION
 
 /obj/item/organ/eyes/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = FALSE, initialising)
 	. = ..()
@@ -458,6 +459,7 @@
 	desc = "These eyes seem to have a large range, but might be cumbersome with glasses."
 	eye_icon_state = "snail_eyes"
 	icon_state = "snail_eyeballs"
+	eyes_layer = ABOVE_BODY_FRONT_HEAD_LAYER //SKYRAT EDIT - Roundstart Snails
 
 /obj/item/organ/eyes/fly
 	name = "fly eyes"
