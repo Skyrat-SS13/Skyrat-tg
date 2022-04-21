@@ -83,6 +83,15 @@
 				return FALSE
 		if(ishuman(AM))
 			var/mob/living/carbon/human/victim = AM
+			var/obj/item/wormhole_jaunter/found_jaunter = locate() in victim.get_all_contents()
+			if(!found_jaunter)
+				return TRUE
+			var/turf/chasm = get_turf(victim)
+			var/fall_into_chasm = found_jaunter.chasm_react(victim)
+			if(!fall_into_chasm)
+				chasm.visible_message(span_boldwarning("[victim] falls into the [chasm]!")) //To freak out any bystanders
+			return fall_into_chasm
+			/* SKYRAT EDIT: Original Code
 			if(istype(victim.belt, /obj/item/wormhole_jaunter))
 				var/obj/item/wormhole_jaunter/jaunter = victim.belt
 				var/turf/chasm = get_turf(victim)
@@ -90,6 +99,7 @@
 				if(!fall_into_chasm)
 					chasm.visible_message(span_boldwarning("[victim] falls into the [chasm]!")) //To freak out any bystanders
 				return fall_into_chasm
+			*/
 	return TRUE
 
 /datum/component/chasm/proc/drop(atom/movable/AM)
