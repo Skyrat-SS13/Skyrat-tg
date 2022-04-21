@@ -1,3 +1,4 @@
+#define CALIBER_SECURITYPISTOL "Inhumane"
 /obj/item/ammo_casing/energy/laser/hardlight_bullet
 	name = "hardlight bullet casing"
 	projectile_type = /obj/projectile/beam/laser/hardlight_bullet
