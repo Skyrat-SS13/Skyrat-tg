@@ -324,6 +324,9 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		if (issilicon(mob_occupant) && istype(item_content, /obj/item/mmi))
 			continue
 		if(control_computer)
+			if(istype(item_content, /obj/item/modular_computer))
+				var/obj/item/modular_computer/computer = item_content
+				computer.invisible = TRUE
 			item_content.dropped(mob_occupant)
 			mob_occupant.transferItemToLoc(item_content, control_computer, force = TRUE, silent = TRUE)
 			control_computer.frozen_item += item_content
