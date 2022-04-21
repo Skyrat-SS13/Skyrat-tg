@@ -43,11 +43,10 @@ SUBSYSTEM_DEF(decay)
 		message_admins("SSDecay will not interact with this round.")
 		log_world("SSDecay will not interact with this round.")
 		return ..()
-
 	for(var/turf/iterating_turf in world)
 		if(!is_station_level(iterating_turf.z))
 			continue
-		if(!(iterating_turf.turf_flags & CAN_BE_DIRTY_1))
+		if(!(iterating_turf.flags_1 & CAN_BE_DIRTY_1))
 			continue
 		possible_turfs += iterating_turf
 
