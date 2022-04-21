@@ -209,22 +209,22 @@
 	model_type = list(/obj/item/robot_model/janitor)
 	model_flags = BORG_MODEL_JANITOR
 
-/obj/item/borg/upgrade/wirebrush/action(mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/wirebrush/action(mob/living/silicon/robot/cyborg)
 	. = ..()
 	if(.)
-		for(var/obj/item/wirebrush/B in R.model.modules)
-			R.model.remove_module(B, TRUE)
+		for(var/obj/item/wirebrush/brush in cyborg.model.modules)
+			cyborg.model.remove_module(brush, TRUE)
 
-		var/obj/item/wirebrush/brush = new /obj/item/wirebrush(R.model)
-		R.model.basic_modules += brush
-		R.model.add_module(brush, FALSE, TRUE)
+		var/obj/item/wirebrush/brush = new /obj/item/wirebrush(cyborg.model)
+		cyborg.model.basic_modules += brush
+		cyborg.model.add_module(brush, FALSE, TRUE)
 
-/obj/item/borg/upgrade/wirebrush/deactivate(mob/living/silicon/robot/R, user = usr)
+/obj/item/borg/upgrade/wirebrush/deactivate(mob/living/silicon/robot/cyborg, user = usr)
 	. = ..()
 	if(.)
-		for(var/obj/item/wirebrush/A in R.model.modules)
-			R.model.remove_module(A, TRUE)
+		for(var/obj/item/wirebrush/brush in cyborg.model.modules)
+			cyborg.model.remove_module(brush, TRUE)
 
-		var/obj/item/wirebrush/B = new (R.model)
-		R.model.basic_modules += B
-		R.model.add_module(B, FALSE, TRUE)
+		var/obj/item/wirebrush/brush = new (cyborg.model)
+		cyborg.model.basic_modules += brush
+		cyborg.model.add_module(brush, FALSE, TRUE)
