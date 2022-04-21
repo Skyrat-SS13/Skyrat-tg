@@ -98,6 +98,11 @@
 		if(mod.wearer)
 			balloon_alert(mod.wearer, "not active!")
 		return
+	// SKYRAT EDIT START - DEPLOYABLE EVERYTHING OVER EVERYTHING
+	if(mod.wearer.wear_suit != mod.chestplate)
+		balloon_alert(mod.wearer, "chestplate retracted!")
+		return
+	// SKYRAT EDIT END
 	if(module_type != MODULE_USABLE)
 		if(active)
 			on_deactivation()

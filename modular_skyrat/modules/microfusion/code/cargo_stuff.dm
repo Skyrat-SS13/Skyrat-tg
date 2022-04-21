@@ -52,7 +52,7 @@
 	)
 	crate_name = "MCR-01 Military Attachments Crate Type A"
 
-/datum/supply_pack/security/mcr01_attachments_B
+/datum/supply_pack/security/mcr01_attachments_type_B
 	name = "MCR-01 Military Attachments Crate Type B"
 	desc = "Micron Control Systems Incorporated supplied MCR-01 Military spec attachments! This crate comes in a mixed specialist loadout."
 	cost = CARGO_CRATE_VALUE * 16

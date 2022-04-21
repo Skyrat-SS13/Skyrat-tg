@@ -124,6 +124,11 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	name = "Science Eyepatch"
 	item_path = /obj/item/clothing/glasses/hud/eyepatch/sci
 	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_CHEMIST, JOB_VANGUARD_OPERATIVE)
+	
+/datum/loadout_item/glasses/mesonpatch
+	name = "Meson Eyepatch"
+	item_path = /obj/item/clothing/glasses/hud/eyepatch/meson
+	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT, JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_ENGINEERING_GUARD)
 
 /datum/loadout_item/glasses/sechud
 	name = "Security Hud"
