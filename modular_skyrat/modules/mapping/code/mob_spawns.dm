@@ -26,6 +26,8 @@
 	prompt_name = "DS2 personnel"
 	you_are_text = "You are a syndicate operative, employed in a top secret research facility developing biological weapons."
 	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue operating as best you can, and try to keep a low profile."
+	quirks_enabled = TRUE
+	random_appearance = FALSE
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/prisoner
 	name = "Syndicate Prisoner"
@@ -47,7 +49,6 @@
 	important_text = "You are not an antagonist."
 	outfit = /datum/outfit/ds2/syndicate
 	loadout_enabled = TRUE
-	quirks_enabled = TRUE
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/special(mob/living/new_spawn)
 	. = ..()
@@ -191,6 +192,7 @@
 	you_are_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
 	flavour_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
 	important_text = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew for the ship's Chief. Your job was merely being a deckhand doing freight work and helping with kitchen prep."
+	random_appearance = FALSE
 
 /datum/outfit/freighter_crew
 	name = "Freighter Crew"
@@ -212,6 +214,7 @@
 	you_are_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
 	flavour_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
 	important_text = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew working under the ship Chief. Your role was to be an excavation and salvage worker for the ship."
+	random_appearance = FALSE
 
 /datum/outfit/freighter_excavator
 	name = "Freighter Excavator"
@@ -240,6 +243,7 @@
 	you_are_text = "You and your crew were running a normal freight haul until a pirate attack knocked out the engines. All you can do now is try and survive and keep your crew alive."
 	flavour_text = "You and your crew were running a normal freight haul until a pirate attack knocked out the engines. All you can do now is try and survive and keep your crew alive."
 	important_text = "Do not abandon your crew, lead them and work with them to survive. You are not directly working with NT, you are an independent freighter crew. You are the captain of the ship, which you purchased a while ago, and are in charge of the crew."
+	random_appearance = FALSE
 
 /datum/outfit/freighter_boss
 	name = "Freighter Boss"
@@ -266,6 +270,7 @@
 	outfit = /datum/outfit/tarkon
 	loadout_enabled = TRUE
 	quirks_enabled = TRUE
+	random_appearance = FALSE
 
 /datum/outfit/tarkon
 	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
