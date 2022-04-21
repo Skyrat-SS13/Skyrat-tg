@@ -2656,7 +2656,7 @@
 /obj/machinery/atmospherics/components/unary/outlet_injector/monitored/ordnance_mixing_input{
 	dir = 1
 	},
-/turf/open/floor/engine,
+/turf/open/floor/engine/airless,
 /area/science/mixing/chamber)
 "aDa" = (
 /turf/open/floor/plating,
@@ -6071,7 +6071,7 @@
 /area/security/office)
 "bAH" = (
 /obj/machinery/air_sensor/ordnance_mixing_tank,
-/turf/open/floor/engine,
+/turf/open/floor/engine/airless,
 /area/science/mixing/chamber)
 "bAJ" = (
 /obj/effect/turf_decal/tile/yellow{
@@ -15376,7 +15376,7 @@
 /area/medical/treatment_center)
 "eoI" = (
 /obj/machinery/igniter/incinerator_ordmix,
-/turf/open/floor/engine,
+/turf/open/floor/engine/airless,
 /area/science/mixing/chamber)
 "eoM" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored/nitrous_output{
@@ -17971,7 +17971,7 @@
 /turf/open/floor/carpet,
 /area/medical/psychology)
 "fmA" = (
-/turf/open/floor/engine,
+/turf/open/floor/engine/airless,
 /area/science/mixing/chamber)
 "fmR" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -23268,7 +23268,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
 	},
-/turf/open/floor/engine,
+/turf/open/floor/engine/airless,
 /area/science/mixing/chamber)
 "hnm" = (
 /obj/machinery/status_display/evac/directional/north,
@@ -34473,6 +34473,18 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"lyr" = (
+/obj/structure/chair,
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/structure/chair,
+/obj/machinery/computer/security/telescreen/interrogation{
+	dir = 4;
+	pixel_x = -30
+	},
+/turf/open/floor/iron/grimy,
+/area/security/interrogation)
 "lyP" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -67176,9 +67188,9 @@
 /obj/effect/spawner/random/aimodule/harmful,
 /obj/structure/table/wood/fancy/red,
 /obj/machinery/door/window/brigdoor/left/directional/south{
+	dir = 8;
 	name = "High-Risk Modules";
-	req_access_txt = "20";
-	dir = 8
+	req_access_txt = "20"
 	},
 /turf/open/floor/circuit/red,
 /area/ai_monitored/turret_protected/ai_upload)
@@ -100949,7 +100961,7 @@ vGk
 oSb
 vGk
 tsl
-pLc
+lyr
 rdE
 djw
 hgy
