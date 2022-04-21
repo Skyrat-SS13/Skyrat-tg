@@ -7,12 +7,6 @@
 /datum/armament_entry/cargo_gun/oldarms/pistol
 	subcategory = ARMAMENT_SUBCATEGORY_PISTOL
 
-/datum/armament_entry/cargo_gun/oldarms/pistol/nagant
-	item_type =/obj/item/gun/ballistic/revolver/nagant
-	lower_cost = CARGO_CRATE_VALUE * 11
-	upper_cost = CARGO_CRATE_VALUE * 13
-	interest_required = PASSED_INTEREST
-
 /datum/armament_entry/cargo_gun/oldarms/pistol/luger
 	item_type = /obj/item/gun/ballistic/automatic/pistol/luger
 	lower_cost = CARGO_CRATE_VALUE * 7
@@ -20,7 +14,6 @@
 
 /datum/armament_entry/cargo_gun/oldarms/smg
 	subcategory = ARMAMENT_SUBCATEGORY_SUBMACHINEGUN
-
 
 /datum/armament_entry/cargo_gun/oldarms/smg/mp40
 	item_type = /obj/item/gun/ballistic/automatic/mp40
