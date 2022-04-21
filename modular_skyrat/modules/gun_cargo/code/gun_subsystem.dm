@@ -11,7 +11,6 @@
 #define INTEREST_LOW_MAG_COST 0.1
 #define INTEREST_MED_MAG_COST 0.11
 #define INTEREST_HIGH_MAG_COST 0.125
-#define INTEREST_THRESHOLD_MAX 100
 
 SUBSYSTEM_DEF(gun_companies)
 	name = "Gun Companies"
@@ -73,9 +72,8 @@ SUBSYSTEM_DEF(gun_companies)
 		company_datum.base_cost = company_datum.base_cost <= BASE_COST_MINIMUM ? BASE_COST_MINIMUM : company_datum.base_cost
 		company_datum.cost = round(company_datum.base_cost * company_datum.cost_mult)
 		// knocking down the interest of all companies
-		var/no_max_int_threshold = rand(INTEREST_LOWER_RAND, INTEREST_HIGHER_RAND)
-		var/interest_threshold = min(no_max_int_threshold, INTEREST_THRESHOLD_MAX)
-		var/interest_knockdown = 0.5 * no_max_int_threshold
+		var/interest_threshold = rand(INTEREST_LOWER_RAND, INTEREST_HIGHER_RAND)
+		var/interest_knockdown = 0.5 * interest_threshold
 
 		if(company_datum in unpurchased_companies)
 			interest_knockdown *= 0.5
@@ -151,4 +149,3 @@ SUBSYSTEM_DEF(gun_companies)
 #undef INTEREST_LOW_MAG_COST
 #undef INTEREST_MED_MAG_COST
 #undef INTEREST_HIGH_MAG_COST
-#undef INTEREST_THRESHOLD_MAX
