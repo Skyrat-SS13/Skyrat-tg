@@ -381,11 +381,11 @@
 			update_body()
 	return
 
-//Removes ERP IC Verb depending on config
-/mob/living/carbon/human/New(loc, ...)
+//Removing ERP IC verb depending on config
+/mob/living/carbon/human/Initialize()
 	. = ..()
 	if(CONFIG_GET(flag/disable_erp_preferences))
-		src.verbs -= /mob/living/carbon/human/verb/toggle_genitals
+		verbs -= /mob/living/carbon/human/verb/toggle_genitals
 
 /mob/living/carbon/human/verb/toggle_arousal()
 	set category = "IC"
@@ -417,8 +417,8 @@
 			update_body()
 	return
 
-//Removes ERP IC Verb depending on config
-/mob/living/carbon/human/New(loc, ...)
+//Removing ERP IC verb depending on config
+/mob/living/carbon/human/Initialize()
 	. = ..()
 	if(CONFIG_GET(flag/disable_erp_preferences))
-		src.verbs -= /mob/living/carbon/human/verb/toggle_arousal
+		verbs -= /mob/living/carbon/human/verb/toggle_arousal
