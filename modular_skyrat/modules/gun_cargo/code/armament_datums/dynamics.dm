@@ -89,6 +89,14 @@
 /datum/armament_entry/cargo_gun/dynamics/ammo/c38/trc
 	item_type = /obj/item/ammo_box/c38/trac
 
+/datum/armament_entry/cargo_gun/dynamics/ammo/b10mm
+	item_type = /obj/item/ammo_box/b10mm
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/b10mm_hp
+	item_type = /obj/item/ammo_box/b10mm/hp
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/b10mm_rub
+	item_type = /obj/item/ammo_box/b10mm/rubber
 
 /datum/armament_entry/cargo_gun/dynamics/misc
 	subcategory = ARMAMENT_SUBCATEGORY_SPECIAL
