@@ -28,14 +28,14 @@
 
 /datum/armament_entry/cargo_gun/oldarms/smg/ppsh
 	item_type = /obj/item/gun/ballistic/automatic/ppsh
-	lower_cost = CARGO_CRATE_VALUE * 20
-	upper_cost = CARGO_CRATE_VALUE * 24
+	lower_cost = CARGO_CRATE_VALUE * 32
+	upper_cost = CARGO_CRATE_VALUE * 38
 	interest_required = HIGH_INTEREST
 
 /datum/armament_entry/cargo_gun/oldarms/smg/thompson
 	item_type = /obj/item/gun/ballistic/automatic/tommygun
-	lower_cost = CARGO_CRATE_VALUE * 22
-	upper_cost = CARGO_CRATE_VALUE * 25
+	lower_cost = CARGO_CRATE_VALUE * 30
+	upper_cost = CARGO_CRATE_VALUE * 36
 	interest_required = HIGH_INTEREST
 
 /datum/armament_entry/cargo_gun/oldarms/rifle
@@ -49,10 +49,10 @@
 
 /datum/armament_entry/cargo_gun/oldarms/rifle/stg
 	item_type = /obj/item/gun/ballistic/automatic/stg
-	lower_cost = CARGO_CRATE_VALUE * 18
-	upper_cost = CARGO_CRATE_VALUE * 25
+	lower_cost = CARGO_CRATE_VALUE * 24
+	upper_cost = CARGO_CRATE_VALUE * 28
 
 /datum/armament_entry/cargo_gun/oldarms/rifle/g11
 	item_type = /obj/item/gun/ballistic/automatic/g11
-	lower_cost = CARGO_CRATE_VALUE * 20
-	upper_cost = CARGO_CRATE_VALUE * 25
+	lower_cost = CARGO_CRATE_VALUE * 30
+	upper_cost = CARGO_CRATE_VALUE * 35

@@ -7,8 +7,8 @@
 
 /datum/armament_entry/cargo_gun/dynamics/ammo
 	subcategory = ARMAMENT_SUBCATEGORY_AMMO
-	lower_cost = CARGO_CRATE_VALUE * 1
-	upper_cost = CARGO_CRATE_VALUE * 3
+	lower_cost = CARGO_CRATE_VALUE * 0.75
+	upper_cost = CARGO_CRATE_VALUE * 1.25
 	interest_addition = COMPANY_INTEREST_AMMO
 
 /datum/armament_entry/cargo_gun/dynamics/ammo/c9mm
@@ -70,8 +70,8 @@
 
 /datum/armament_entry/cargo_gun/dynamics/ammo/c38
 	item_type = /obj/item/ammo_box/c38
-	lower_cost = CARGO_CRATE_VALUE * 1
-	upper_cost = CARGO_CRATE_VALUE * 2
+	lower_cost = CARGO_CRATE_VALUE * 0.5
+	upper_cost = CARGO_CRATE_VALUE * 1
 	stock_mult = 3
 
 /datum/armament_entry/cargo_gun/dynamics/ammo/c38/dum
@@ -108,12 +108,12 @@
 
 /datum/armament_entry/cargo_gun/dynamics/misc/ammo_bench
 	item_type = /obj/item/circuitboard/machine/ammo_workbench
-	lower_cost = CARGO_CRATE_VALUE * 30
-	upper_cost = CARGO_CRATE_VALUE * 35
+	lower_cost = CARGO_CRATE_VALUE * 28
+	upper_cost = CARGO_CRATE_VALUE * 33
 	interest_required = PASSED_INTEREST
 
 /datum/armament_entry/cargo_gun/dynamics/misc/lethal_disk
 	item_type = /obj/item/disk/ammo_workbench/lethal
-	lower_cost = CARGO_CRATE_VALUE * 25
-	upper_cost = CARGO_CRATE_VALUE * 30
+	lower_cost = CARGO_CRATE_VALUE * 22
+	upper_cost = CARGO_CRATE_VALUE * 27
 	interest_required = HIGH_INTEREST

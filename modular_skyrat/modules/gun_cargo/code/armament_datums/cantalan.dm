@@ -46,8 +46,8 @@
 
 /datum/armament_entry/cargo_gun/cantalan/rifle/catanheim
 	item_type = /obj/item/gun/ballistic/automatic/cfa_rifle
-	lower_cost = CARGO_CRATE_VALUE * 18
-	upper_cost = CARGO_CRATE_VALUE * 22
+	lower_cost = CARGO_CRATE_VALUE * 28
+	upper_cost = CARGO_CRATE_VALUE * 32
 
 /datum/armament_entry/cargo_gun/cantalan/ammo
 	subcategory = ARMAMENT_SUBCATEGORY_AMMO
