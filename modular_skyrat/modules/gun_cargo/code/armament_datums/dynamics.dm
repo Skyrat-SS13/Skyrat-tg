@@ -44,6 +44,9 @@
 /datum/armament_entry/cargo_gun/dynamics/ammo/c12ga_bean
 	item_type = /obj/item/storage/box/beanbag
 
+/datum/armament_entry/cargo_gun/dynamics/ammo/c12ga_tech
+	item_type = /obj/item/storage/box/techshell
+
 /datum/armament_entry/cargo_gun/dynamics/ammo/c46mm
 	item_type = /obj/item/ammo_box/c46x30mm
 
