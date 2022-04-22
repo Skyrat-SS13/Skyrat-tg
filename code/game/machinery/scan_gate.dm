@@ -31,6 +31,7 @@
 #define SCANGATE_SYNTHHUMAN "synthhuman"
 #define SCANGATE_TESHARI "teshari"
 #define SCANGATE_HEMOPHAGE "hemophage"
+#define SCANGATE_SNAIL "snail"
 
 #define SCANGATE_GENDER "Gender"
 //SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
@@ -205,6 +206,8 @@
 						scan_species = /datum/species/teshari
 					if(SCANGATE_HEMOPHAGE)
 						scan_species = /datum/species/hemophage
+					if(SCANGATE_SNAIL)
+						scan_species = /datum/species/snail
 					//SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
 				if(is_species(H, scan_species))
 					beep = TRUE
@@ -369,6 +372,7 @@
 #undef SCANGATE_SYNTHHUMAN
 #undef SCANGATE_TESHARI
 #undef SCANGATE_HEMOPHAGE
+#undef SCANGATE_SNAIL
 
 #undef SCANGATE_GENDER
 //SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
