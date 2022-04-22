@@ -62,6 +62,46 @@
 	icon_state = "mallcop_helm"
 	worn_icon_state = "mallcop_helm"
 
+/obj/item/clothing/head/beret/sec/engineering
+	name = "engineer officer beret"
+	desc = "A robust beret with a set of Insulated Gloves emblazoned on it. Uses reinforced fabric to offer sufficient protection."
+	icon_state = "beret_badge"
+	greyscale_config = /datum/greyscale_config/beret_badge
+	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_colors = "#FFBC30#F2F2F2"
+
+/obj/item/clothing/head/beret/sec/medical
+	name = "medical officer beret"
+	desc = "A robust beret with a Laser Scalpel emblazoned on it. Uses reinforced fabric to offer sufficient protection."
+	icon_state = "beret_badge"
+	greyscale_config = /datum/greyscale_config/beret_badge
+	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_colors = "#16313D#F2F2F2" //I gave them the Paramed colour because #FFFFFF is ugly. Fight me.
+
+/obj/item/clothing/head/beret/sec/cargo
+	name = "cargo officer beret"
+	desc = "A robust beret with a Crate emblazoned on it. Uses reinforced fabric to offer sufficient protection."
+	icon_state = "beret_badge"
+	greyscale_config = /datum/greyscale_config/beret_badge
+	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_colors = "#714711#F2F2F2"
+
+/obj/item/clothing/head/beret/sec/service
+	name = "bouncer beret"
+	desc = "A robust beret with a Monkey Head emblazoned on it. Uses reinforced fabric to offer sufficient protection."
+	icon_state = "beret_badge"
+	greyscale_config = /datum/greyscale_config/beret_badge
+	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_colors = "#5E8F2D#F2F2F2"
+
+/obj/item/clothing/head/beret/sec/science
+	name = "science guard beret"
+	desc = "A robust beret with a Red Crowbar emblazoned on it. Uses reinforced fabric to offer sufficient protection."
+	icon_state = "beret_badge"
+	greyscale_config = /datum/greyscale_config/beret_badge
+	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_colors = "#8D008F#F2F2F2"
+
 /obj/effect/landmark/start/orderly
 	name = "Orderly"
 	icon_state = "Orderly"
@@ -90,7 +130,7 @@
 		/datum/job_department/medical,
 		)
 
-	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
+	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec/medical)
 
 	mail_goodies = list(
 		/obj/item/food/donut/caramel = 10,
@@ -131,6 +171,7 @@
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CMO, ACCESS_CHANGE_IDS)
 	job = /datum/job/orderly
 
+
 /obj/effect/landmark/start/science_guard
 	name = "Science Guard"
 	icon_state = "Science Guard"
@@ -159,7 +200,7 @@
 		/datum/job_department/science,
 		)
 
-	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
+	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec/science)
 
 	mail_goodies = list(
 		/obj/item/food/donut/caramel = 10,
@@ -229,7 +270,7 @@
 		/datum/job_department/service,
 		)
 
-	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
+	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec/service)
 
 	mail_goodies = list(
 		/obj/item/food/donut/caramel = 10,
@@ -303,7 +344,7 @@
 		/datum/job_department/cargo,
 		)
 
-	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
+	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec/cargo)
 
 	mail_goodies = list(
 		/obj/item/food/donut/caramel = 10,
@@ -371,7 +412,7 @@
 		/datum/job_department/engineering,
 		)
 
-	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
+	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec/engineering)
 
 	mail_goodies = list(
 		/obj/item/food/donut/caramel = 10,
