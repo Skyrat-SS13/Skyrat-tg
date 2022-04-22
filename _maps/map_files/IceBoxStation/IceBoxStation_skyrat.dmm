@@ -1528,12 +1528,12 @@
 /obj/machinery/door/airlock/security{
 	name = "Security Office"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/general,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/access/any/security/brig,
 /turf/open/floor/iron/dark/textured,
 /area/security/office)
 "ayk" = (
@@ -11232,6 +11232,7 @@
 "cyS" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/security/brig/upper)
 "cze" = (
@@ -12695,6 +12696,7 @@
 "diU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/vending/wallmed/directional/east,
 /turf/open/floor/iron/white/textured,
 /area/security/medical)
 "djH" = (
@@ -19352,6 +19354,9 @@
 	},
 /obj/structure/cable,
 /obj/machinery/door/firedoor/border_only,
+/obj/item/melee/hammer,
+/obj/item/melee/hammer,
+/obj/item/melee/hammer,
 /turf/open/floor/iron/dark/textured,
 /area/ai_monitored/security/armory/upper)
 "gQC" = (
@@ -20523,11 +20528,11 @@
 /obj/machinery/door/airlock/security/glass{
 	name = "Equipment Room"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/general,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/any/security/brig,
 /turf/open/floor/iron/dark/textured,
 /area/security/lockers)
 "hxl" = (
@@ -25485,6 +25490,13 @@
 "kiC" = (
 /turf/open/floor/plating,
 /area/ai_monitored/turret_protected/aisat/maint)
+"kiJ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/effect/landmark/start/security_medic,
+/turf/open/floor/iron/white/textured,
+/area/security/medical)
 "kiP" = (
 /obj/machinery/newscaster/directional/west,
 /turf/open/floor/wood,
@@ -26758,6 +26770,10 @@
 /obj/item/reagent_containers/spray/cleaner,
 /obj/structure/table/glass,
 /obj/structure/window/reinforced,
+/obj/item/roller{
+	pixel_x = 13;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/white/textured,
 /area/security/medical)
 "kSl" = (
@@ -35829,10 +35845,9 @@
 /turf/open/floor/plating,
 /area/engineering/supermatter)
 "pWM" = (
-/obj/machinery/iv_drip,
-/obj/item/reagent_containers/blood,
 /obj/machinery/airalarm/directional/north,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/structure/closet/secure_closet/security_medic,
 /turf/open/floor/iron/white/textured,
 /area/security/medical)
 "pXw" = (
@@ -37136,8 +37151,14 @@
 	dir = 4
 	},
 /obj/machinery/light/directional/north,
-/obj/structure/rack/gunrack,
-/obj/effect/spawner/armory_spawn/cmg,
+/obj/structure/rack,
+/obj/item/storage/barricade{
+	pixel_y = -5
+	},
+/obj/item/storage/barricade,
+/obj/item/storage/barricade{
+	pixel_y = 5
+	},
 /turf/open/floor/iron/dark/textured,
 /area/ai_monitored/security/armory/upper)
 "qIn" = (
@@ -41695,6 +41716,8 @@
 /obj/item/clothing/suit/straight_jacket,
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north,
+/obj/item/reagent_containers/blood/universal,
+/obj/machinery/iv_drip,
 /turf/open/floor/iron/white/textured,
 /area/security/medical)
 "tej" = (
@@ -47604,6 +47627,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/iron/white/textured,
 /area/security/medical)
 "wgL" = (
@@ -81487,7 +81511,7 @@ gQb
 gQb
 gDx
 tdU
-kiq
+kiJ
 wgH
 cyS
 ojH
