@@ -40,6 +40,12 @@
 	. = ..()
 	update_sprite_suffix()
 
+//Removes ERP organs depending on config
+/obj/item/organ/genital/Insert(mob/living/carbon/M, special, drop_if_replaced)
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		return
+	. = ..()
+
 /obj/item/organ/genital/Remove(mob/living/carbon/M, special = FALSE)
 	. = ..()
 	update_genital_icon_state()
