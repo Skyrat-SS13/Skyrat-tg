@@ -5,10 +5,13 @@
 	antagpanel_category = "ClownOp"
 	nukeop_outfit = /datum/outfit/syndicate/clownop
 	suicide_cry = "HAPPY BIRTHDAY!!"
+<<<<<<< HEAD
 
 	preview_outfit = /datum/outfit/clown_operative_elite
 	preview_outfit_behind = /datum/outfit/clown_operative
 	nuke_icon_state = "bananiumbomb_base"
+=======
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 
 /datum/antagonist/nukeop/clownop/admin_add(datum/mind/new_owner,mob/admin)
 	new_owner.set_assigned_role(SSjob.GetJobType(/datum/job/clown_operative))

@@ -10,12 +10,61 @@ GLOBAL_LIST_INIT(atmos_components, typecacheof(list(/obj/machinery/atmospherics)
 	device_type = QUATERNARY
 	construction_type = /obj/item/pipe/quaternary
 	pipe_state = "manifold4w"
+<<<<<<< HEAD
 	///Current active connections
 	var/connections = NONE
 
 /obj/machinery/atmospherics/pipe/smart/update_pipe_icon()
 	icon = 'icons/obj/atmospherics/pipes/pipes_bitmask.dmi'
 	connections = NONE
+=======
+	connection_num = 0
+
+/obj/machinery/atmospherics/pipe/smart/update_pipe_icon()
+	icon = 'icons/obj/atmospherics/pipes/pipes_bitmask.dmi'
+	var/bitfield = NONE
+	var/bits = 0
+	for(var/i in 1 to device_type)
+		if(!nodes[i])
+			continue
+		var/obj/machinery/atmospherics/node = nodes[i]
+		var/connected_dir = get_dir(src, node)
+		bits++
+		switch(connected_dir)
+			if(NORTH)
+				bitfield |= NORTH_FULLPIPE
+			if(SOUTH)
+				bitfield |= SOUTH_FULLPIPE
+			if(EAST)
+				bitfield |= EAST_FULLPIPE
+			if(WEST)
+				bitfield |= WEST_FULLPIPE
+	//If we dont have enough bits to make a proper sprite, add some shortpipe bits
+	if(bits < 2)
+		var/list/bits_to_add = list()
+		var/list/iterate_list = list()
+		if(bits == 1)
+			iterate_list += REVERSE_DIR(bitfield)
+		iterate_list += GLOB.cardinals
+		for(var/cardinal in iterate_list)
+			if(!(bitfield & cardinal) && !(cardinal in bits_to_add) && initialize_directions & cardinal)
+				bits_to_add += cardinal
+				bits++
+				if(bits >= 2)
+					break
+		for(var/direction in bits_to_add)
+			switch(direction)
+				if(NORTH)
+					bitfield |= NORTH_SHORTPIPE
+				if(SOUTH)
+					bitfield |= SOUTH_SHORTPIPE
+				if(EAST)
+					bitfield |= EAST_SHORTPIPE
+				if(WEST)
+					bitfield |= WEST_SHORTPIPE
+
+	icon_state = "[bitfield]_[piping_layer]"
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 
 	for(var/i in 1 to device_type)
 		if(!nodes[i])

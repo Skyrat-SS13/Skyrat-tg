@@ -6,9 +6,14 @@
 	antag_moodlet = /datum/mood_event/focused
 	antag_hud_name = "traitor"
 	hijack_speed = 0.5 //10 seconds per hijack stage by default
+<<<<<<< HEAD
 	ui_name = "AntagInfoTraitor"
 	suicide_cry = "FOR THE SYNDICATE!!"
 	preview_outfit = /datum/outfit/traitor
+=======
+	suicide_cry = "FOR THE SYNDICATE!!"
+	var/employer = "The Syndicate"
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 	var/give_objectives = TRUE
 	var/should_give_codewords = TRUE
 	///give this traitor an uplink?

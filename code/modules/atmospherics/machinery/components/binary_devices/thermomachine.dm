@@ -20,10 +20,18 @@
 	vent_movement = NONE
 	pipe_flags = PIPING_ONE_PER_TURF
 
+<<<<<<< HEAD
 	greyscale_config = /datum/greyscale_config/thermomachine
 	greyscale_colors = COLOR_VIBRANT_LIME
 
 	set_dir_on_move = FALSE
+=======
+	set_dir_on_move = FALSE
+
+	var/icon_state_off = "freezer"
+	var/icon_state_on = "freezer_1"
+	var/icon_state_open = "freezer-o"
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 
 	var/min_temperature = T20C //actual temperature will be defined by RefreshParts() and by the cooling var
 	var/max_temperature = T20C //actual temperature will be defined by RefreshParts() and by the cooling var
@@ -135,11 +143,24 @@
 
 /obj/machinery/atmospherics/components/binary/thermomachine/update_overlays()
 	. = ..()
+<<<<<<< HEAD
 	if(!initial(icon))
 		return
 	var/mutable_appearance/thermo_overlay = new(initial(icon))
 	. += get_pipe_image(thermo_overlay, "pipe", dir, COLOR_LIME, piping_layer)
 	. += get_pipe_image(thermo_overlay, "pipe", turn(dir, 180), COLOR_MOSTLY_PURE_RED, piping_layer)
+=======
+	//Doesn't check if the pipes are intact
+	var/mutable_appearance/pipe_appearance1 = mutable_appearance('icons/obj/atmospherics/pipes/pipe_underlays.dmi', "intact_[dir]_[piping_layer]", layer = GAS_SCRUBBER_LAYER)
+	pipe_appearance1.color = COLOR_LIME
+	var/mutable_appearance/pipe_appearance2 = mutable_appearance('icons/obj/atmospherics/pipes/pipe_underlays.dmi', "intact_[turn(dir, 180)]_[piping_layer]", layer = GAS_SCRUBBER_LAYER)
+	pipe_appearance2.color = COLOR_MOSTLY_PURE_RED
+	. += pipe_appearance1
+	. += pipe_appearance2
+	if(skipping_work && on)
+		var/mutable_appearance/skipping = mutable_appearance(icon, "blinking")
+		. += skipping
+>>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 
 /obj/machinery/atmospherics/components/binary/thermomachine/examine(mob/user)
 	. = ..()
