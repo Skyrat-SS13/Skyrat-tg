@@ -199,7 +199,7 @@
 	glass_name = "glass of hotlime miami"
 	glass_desc = "This looks very aesthetically pleasing."
 
-/datum/reagent/consumable/ethanol/hotlime_miami/on_mob_life(mob/living/carbon/M)
+/datum/reagent/consumable/ethanol/hotlime_miami/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	M.set_timed_status_effect(1.5 MINUTES * REM * delta_time, /datum/status_effect/drugginess)
 	M.adjustStaminaLoss(-2)
 	return ..()

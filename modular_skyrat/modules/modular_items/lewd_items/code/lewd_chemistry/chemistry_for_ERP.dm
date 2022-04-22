@@ -185,7 +185,7 @@
 	..()
 
 /datum/reagent/drug/aphrodisiac/dopamine/life_effects(mob/living/carbon/human/exposed_mob)
-	exposed_mob.set_timed_status_effect(drugginess_amount * REM * delta_time, /datum/status_effect/drugginess)
+	exposed_mob.set_timed_status_effect(drugginess_amount, /datum/status_effect/drugginess)
 	if(prob(drugginess_chance))
 		exposed_mob.emote(pick("twitch","drool","moan","giggle","shaking"))
 

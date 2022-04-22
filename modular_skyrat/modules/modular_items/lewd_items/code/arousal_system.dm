@@ -82,7 +82,7 @@
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_start", /datum/mood_event/orgasm, name)
 	..()
 
-/datum/reagent/drug/dopamine/on_mob_life(mob/living/carbon/M)
+/datum/reagent/drug/dopamine/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	M.set_timed_status_effect(2 SECONDS * REM * delta_time, /datum/status_effect/drugginess)
 	if(prob(7))
 		M.emote(pick("shaking","moan"))
