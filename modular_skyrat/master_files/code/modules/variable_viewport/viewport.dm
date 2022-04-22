@@ -25,8 +25,8 @@
 		last_view_y_dim = config.lock_client_view_y
 	else
 		var/winsize_string = winget(src, "mapwindow.map", "size")
-		last_view_x_dim = config.lock_client_view_x || clamp(ceil(text2num(winsize_string) / divisor), 15, config.max_client_view_x || 41)
-		last_view_y_dim = config.lock_client_view_y || clamp(ceil(text2num(copytext(winsize_string,findtext(winsize_string,"x")+1,0)) / divisor), 15, config.max_client_view_y || 41)
+		last_view_x_dim = config.lock_client_view_x || clamp(ceil(text2num(winsize_string) / divisor), 15, (CONFIG_GET(number/max_client_view_x)) || 41)
+		last_view_y_dim = config.lock_client_view_y || clamp(ceil(text2num(copytext(winsize_string,findtext(winsize_string,"x")+1,0)) / divisor), 15, (CONFIG_GET(number/max_client_view_y)) || 41)
 		if(last_view_x_dim % 2 == 0) last_view_x_dim++
 		if(last_view_y_dim % 2 == 0) last_view_y_dim++
 	for(var/check_icon_size in global.valid_icon_sizes)
@@ -96,10 +96,20 @@
 /datum/controller/configuration
 	var/lock_client_view_x
 	var/lock_client_view_y
-
 //Limits for the view range
-	var/max_client_view_x = 50
-	var/max_client_view_y = 50
+	var/max_client_view_x
+	var/max_client_view_y
+
+/datum/config_entry/number/max_client_view_x
+	default = 21
+	min_val = 15
+	max_val = 50 // Byond (the) limits
+/datum/config_entry/number/max_client_view_y
+	default = 15
+	min_val = 15
+	max_val = 50 // Byond (the) limits
+
+
 
 /datum/preferences
 	var/icon_size = 64
