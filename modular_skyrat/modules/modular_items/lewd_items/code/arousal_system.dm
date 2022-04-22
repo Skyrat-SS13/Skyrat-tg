@@ -166,6 +166,12 @@
 	else
 		to_chat(src, span_warning("You can't cum right now!"))
 
+//Removes ERP IC Verb depending on config
+/mob/living/carbon/human/New(loc, ...)
+	. = ..()
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		src.verbs -= /mob/living/carbon/human/verb/arousal_panel
+
 ////////////
 ///FLUIDS///
 ////////////

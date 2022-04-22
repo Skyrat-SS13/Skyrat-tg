@@ -381,6 +381,12 @@
 			update_body()
 	return
 
+//Removes ERP IC Verb depending on config
+/mob/living/carbon/human/New(loc, ...)
+	. = ..()
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		src.verbs -= /mob/living/carbon/human/verb/toggle_genitals
+
 /mob/living/carbon/human/verb/toggle_arousal()
 	set category = "IC"
 	set name = "Toggle Arousal"
@@ -410,3 +416,9 @@
 			picked_organ.update_sprite_suffix()
 			update_body()
 	return
+
+//Removes ERP IC Verb depending on config
+/mob/living/carbon/human/New(loc, ...)
+	. = ..()
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		src.verbs -= /mob/living/carbon/human/verb/toggle_arousal
