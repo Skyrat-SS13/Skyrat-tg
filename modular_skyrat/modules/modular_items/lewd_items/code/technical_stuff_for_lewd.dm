@@ -29,6 +29,7 @@
 	falloff_distance = 1
 	falloff_exponent = 5
 	extra_range = SILENCED_SOUND_EXTRARANGE
+	ignore_walls = FALSE
 
 /datum/looping_sound/vibrator/low
 	volume = 80

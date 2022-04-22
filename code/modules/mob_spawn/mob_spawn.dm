@@ -160,7 +160,7 @@
 		return
 	// SKYRAT EDIT ADDITION
 	if(restricted_species && !(user.client?.prefs?.read_preference(/datum/preference/choiced/species) in restricted_species))
-		to_chat(user, span_warning("You cannot use this role because you are not the correct species!"))
+		balloon_alert(user, "incorrect species!")
 		return
 	// SKYRAT EDIT END
 	if(prompt_ghost)
