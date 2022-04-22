@@ -9,13 +9,13 @@
 
 /datum/armament_entry/cargo_gun/armadyne/pistol/osprey
 	item_type = /obj/item/gun/ballistic/automatic/pistol/pdh
-	lower_cost = CARGO_CRATE_VALUE * 7
-	upper_cost = CARGO_CRATE_VALUE * 12
+	lower_cost = CARGO_CRATE_VALUE * 8
+	upper_cost = CARGO_CRATE_VALUE * 14
 
 /datum/armament_entry/cargo_gun/armadyne/pistol/ladon
 	item_type = /obj/item/gun/ballistic/automatic/pistol/ladon
 	lower_cost = CARGO_CRATE_VALUE * 6
-	upper_cost = CARGO_CRATE_VALUE * 14
+	upper_cost = CARGO_CRATE_VALUE * 13
 
 /datum/armament_entry/cargo_gun/armadyne/pistol/firefly
 	item_type = /obj/item/gun/ballistic/automatic/pistol/firefly
