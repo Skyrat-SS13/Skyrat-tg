@@ -36,7 +36,7 @@
 	name = "Cantalan Federal Arms"
 	can_roundstart_pick = FALSE
 	company_flag = COMPANY_CANTALAN
-	magazine_cost_mult = 3.5 //RIP
+	magazine_cost_mult = 3 //RIP
 	cost = 4500
 	cost_change_lower = -4000
 	cost_change_upper = 7500
