@@ -46,8 +46,10 @@
 		eye = last_eye
 
 	// Recenter skybox and lighting.
-	if(mob)
-		mob.reload_fullscreen()
+	mob?.reload_fullscreen()
+	// What's this batman? A HACK?!
+	change_view(getScreenSize(prefs.read_preference(/datum/preference/toggle/widescreen))) //This is kept around as a hack to fix strange darkness issues when swapping mobs.
+
 /client/verb/force_onresize_view_update()
 	set name = "Force Client View Update"
 	set src = usr
@@ -81,10 +83,10 @@
 	if((!prefs?.read_preference(/datum/preference/toggle/widescreen)))
 		. = ..()
 	else
-		SetWindowIconSize(prefs.icon_size)
-		mob.hud_used.screentip_text.update_view()
+//		SetWindowIconSize(prefs.icon_size)
+		mob?.hud_used?.screentip_text.update_view()
 		apply_clickcatcher()
-		mob.reload_fullscreen()
+		mob?.reload_fullscreen()
 
 /mob/Login()
 	. = ..()
