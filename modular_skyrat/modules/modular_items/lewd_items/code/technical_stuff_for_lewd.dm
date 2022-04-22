@@ -1020,6 +1020,12 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 	GLOB.strippable_human_items += strippable_items
 	return strippable_items
 
+//Disables ERP strippable inventory depending on config
+/datum/element/strippable/Attach(datum/target, list/items, should_strip_proc_path)
+	. = ..()
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		src.items -= GLOB.strippable_human_erp_items
+
 ////////////////////////////////////////////////////////////////////
 // EXTENTIONS FOR SPRITE_ACCESSORY IS_HIDDEN CHECKS FOR ERP STUFF //
 ////////////////////////////////////////////////////////////////////
