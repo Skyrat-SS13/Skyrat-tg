@@ -124,7 +124,7 @@
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
 	max_ammo = 20
 
-/obj/item/ammo_box/b10mm/hp
+/obj/item/ammo_box/b10mm/rubber
 	name = "ammo box (10mm Auto Rubber)"
 	ammo_type = /obj/item/ammo_casing/b10mm/rubber
 	max_ammo = 20
