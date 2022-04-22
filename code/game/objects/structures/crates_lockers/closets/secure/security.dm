@@ -188,7 +188,7 @@
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/melee/baton/security/loaded/departmental/medical(src)
 	new /obj/item/clothing/glasses/hud/security(src)
-// SKYRAT EDIT CHANGE END -- GOOFSEC DEP GUARDs
+// SKYRAT EDIT CHANGE END -- GOOFSEC DEP GUARDS
 
 /obj/structure/closet/secure_closet/detective
 	name = "\improper detective's cabinet"
