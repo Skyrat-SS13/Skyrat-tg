@@ -33,10 +33,7 @@
 	antag_hud_name = "brainwashed"
 	antagpanel_category = "Other"
 	show_name_in_check_antagonists = TRUE
-<<<<<<< HEAD
 	ui_name = "AntagInfoBrainwashed"
-=======
->>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 	suicide_cry = "FOR... SOMEONE!!"
 
 /datum/antagonist/brainwashed/ui_static_data(mob/user)

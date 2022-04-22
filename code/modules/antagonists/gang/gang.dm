@@ -6,10 +6,7 @@
 	antagpanel_category = "Family"
 	show_in_antagpanel = FALSE // i don't *think* this base class is buggy but it's too worthless to test
 	suicide_cry = "FOR THE FAMILY!!"
-<<<<<<< HEAD
 	preview_outfit = /datum/outfit/gangster
-=======
->>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 	/// The overarching family that the owner of this datum is a part of. Family teams are generic and imprinted upon by the per-person antagonist datums.
 	var/datum/team/gang/my_gang
 	/// The name of the family corresponding to this family member datum.

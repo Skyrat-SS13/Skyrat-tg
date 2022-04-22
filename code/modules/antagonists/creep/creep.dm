@@ -8,10 +8,7 @@
 	roundend_category = "obsessed"
 	silent = TRUE //not actually silent, because greet will be called by the trauma anyway.
 	suicide_cry = "FOR MY LOVE!!"
-<<<<<<< HEAD
 	preview_outfit = /datum/outfit/obsessed
-=======
->>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 	var/datum/brain_trauma/special/obsessed/trauma
 
 /datum/antagonist/obsessed/admin_add(datum/mind/new_owner,mob/admin)

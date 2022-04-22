@@ -20,17 +20,9 @@
 	var/rip_and_tear = FALSE
 	var/equip_ert = TRUE
 	var/forge_objectives_for_ert = TRUE
-<<<<<<< HEAD
 	/// Typepath indicating the kind of job datum this ert member will have.
 	var/ert_job_path = /datum/job/ert_generic
 
-=======
-	can_elimination_hijack = ELIMINATION_PREVENT
-	show_in_antagpanel = FALSE
-	show_to_ghosts = TRUE
-	antag_moodlet = /datum/mood_event/focused
-	suicide_cry = "FOR NANOTRASEN!!"
->>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 
 /datum/antagonist/ert/on_gain()
 	if(random_names)

@@ -153,11 +153,7 @@
 	audible_message("<span class='infoplain'>[icon2html(src, hearers(src))] *beep* *beep* *beep*</span>", null, hearing_range)
 	for(var/mob/hearing_mob in get_hearers_in_view(hearing_range, src))
 		hearing_mob.playsound_local(get_turf(src), 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
-<<<<<<< HEAD
 	next_activate = world.time + 30
-=======
-	next_activate =  world.time + 30
->>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 
 /obj/item/assembly/infra/proc/switchListener(turf/newloc)
 	if(listeningTo == newloc)

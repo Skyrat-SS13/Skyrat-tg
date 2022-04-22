@@ -326,14 +326,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				default_value || COLOR_WHITE,
 			) as color | null
 
-<<<<<<< HEAD
 			if (!new_color)
 				return FALSE
-=======
-			if(pref_species.external_organs[/obj/item/organ/external/snout])
-				if(!mutant_category)
-					dat += APPEARANCE_CATEGORY_COLUMN
->>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 
 			default_value_list[index_key] = new_color
 
@@ -342,16 +336,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			return TRUE
 
-<<<<<<< HEAD
 		// For the quirks in the prefs menu.
 		if ("get_quirks_balance")
 			return TRUE
 		//SKYRAT EDIT END
-=======
-			if(pref_species.external_organs[/obj/item/organ/external/horns])
-				if(!mutant_category)
-					dat += APPEARANCE_CATEGORY_COLUMN
->>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 
 
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
@@ -361,16 +349,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	return FALSE
 
-<<<<<<< HEAD
 /datum/preferences/ui_close(mob/user)
 	save_character()
 	save_preferences()
 	QDEL_NULL(character_preview_view)
-=======
-			if(pref_species.external_organs[/obj/item/organ/external/frills])
-				if(!mutant_category)
-					dat += APPEARANCE_CATEGORY_COLUMN
->>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 
 /datum/preferences/Topic(href, list/href_list)
 	. = ..()
@@ -430,18 +412,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 // the atoms SS is done loading.
 INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 
-<<<<<<< HEAD
 /// A preview of a character for use in the preferences menu
 /atom/movable/screen/character_preview_view
 	name = "character_preview"
 	del_on_map_removal = FALSE
 	layer = GAME_PLANE
 	plane = GAME_PLANE
-=======
-			if(pref_species.external_organs[/obj/item/organ/external/wings/moth])
-				if(!mutant_category)
-					dat += APPEARANCE_CATEGORY_COLUMN
->>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 
 	/// The body that is displayed
 	var/mob/living/carbon/human/dummy/body
@@ -451,14 +427,8 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 
 	var/list/plane_masters = list()
 
-<<<<<<< HEAD
 	/// The client that is watching this view
 	var/client/client
-=======
-			if(pref_species.external_organs[/obj/item/organ/external/antennae])
-				if(!mutant_category)
-					dat += APPEARANCE_CATEGORY_COLUMN
->>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 
 /atom/movable/screen/character_preview_view/Initialize(mapload, datum/preferences/preferences, client/client)
 	. = ..()

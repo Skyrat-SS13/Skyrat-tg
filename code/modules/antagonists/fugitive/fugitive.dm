@@ -8,10 +8,7 @@
 	prevent_roundtype_conversion = FALSE
 	antag_hud_name = "fugitive"
 	suicide_cry = "FOR FREEDOM!!"
-<<<<<<< HEAD
 	preview_outfit = /datum/outfit/prisoner
-=======
->>>>>>> ae2b557dccd2b1afe0e4f21cbd6e1233978ac51a
 	var/datum/team/fugitive/fugitive_team
 	var/is_captured = FALSE
 	var/backstory = "error"
