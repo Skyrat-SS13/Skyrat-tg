@@ -200,7 +200,7 @@
 	glass_desc = "This looks very aesthetically pleasing."
 
 /datum/reagent/consumable/ethanol/hotlime_miami/on_mob_life(mob/living/carbon/M)
-	M.set_drugginess(50)
+	M.set_timed_status_effect(1.5 MINUTES * REM * delta_time, /datum/status_effect/drugginess)
 	M.adjustStaminaLoss(-2)
 	return ..()
 

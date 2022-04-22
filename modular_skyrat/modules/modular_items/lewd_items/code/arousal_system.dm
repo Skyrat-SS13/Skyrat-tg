@@ -83,7 +83,7 @@
 	..()
 
 /datum/reagent/drug/dopamine/on_mob_life(mob/living/carbon/M)
-	M.set_drugginess(2)
+	M.set_timed_status_effect(2 SECONDS * REM * delta_time, /datum/status_effect/drugginess)
 	if(prob(7))
 		M.emote(pick("shaking","moan"))
 	..()
