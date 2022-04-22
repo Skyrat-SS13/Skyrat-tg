@@ -230,7 +230,8 @@
 	},
 /mob/living/simple_animal/bot/medbot{
 	faction = list("Syndicate");
-	name = "Kahn"
+	name = "Kahn";
+	radio_channel = "Syndicate"
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/medical)
@@ -2043,18 +2044,19 @@
 	name = "universal blood storage"
 	},
 /obj/machinery/iv_drip,
-/obj/item/reagent_containers/blood/universal{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/reagent_containers/blood/universal,
-/obj/item/reagent_containers/blood/universal{
-	pixel_x = -4;
-	pixel_y = -4
-	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/reagent_containers/blood/universal,
-/obj/item/reagent_containers/blood/universal,
+/obj/item/reagent_containers/blood/o_minus,
+/obj/item/reagent_containers/blood/o_minus,
+/obj/item/reagent_containers/blood/o_minus,
+/obj/item/reagent_containers/blood/o_minus,
+/obj/item/reagent_containers/blood/o_minus,
+/obj/item/reagent_containers/blood/o_minus,
+/obj/item/reagent_containers/blood/o_minus,
+/obj/item/reagent_containers/blood/o_minus,
+/obj/item/reagent_containers/blood/ethereal,
+/obj/item/reagent_containers/blood/ethereal,
+/obj/item/reagent_containers/blood/lizard,
+/obj/item/reagent_containers/blood/lizard,
 /turf/open/floor/pod/dark,
 /area/shuttle/syndicate/cruiser/medical)
 "PZ" = (
@@ -2637,7 +2639,8 @@
 /obj/effect/turf_decal/stripes/line,
 /mob/living/simple_animal/bot/medbot{
 	faction = list("Syndicate");
-	name = "James T. Kirk"
+	name = "James T. Kirk";
+	radio_channel = "Syndicate"
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/cruiser/medical)
