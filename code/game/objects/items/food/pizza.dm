@@ -35,17 +35,9 @@
 	w_class = WEIGHT_CLASS_SMALL
 	decomp_type = /obj/item/food/pizzaslice/moldy
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 /obj/item/food/pizzaslice/MakeProcessable()
-<<<<<<< HEAD
-	AddElement(/datum/element/processable, TOOL_ROLLINGPIN, /obj/item/stack/sheet/pizza, 1, 10)
-*/
-//SKYRAT EDIT REMOVAL END
-=======
 	AddElement(/datum/element/processable, TOOL_ROLLINGPIN, /obj/item/stack/sheet/pizza, 1, 10, table_required = TRUE)
 
->>>>>>> fc20b6e1ea0 (Allows processable to require a table (#66257))
 
 /obj/item/food/pizza/margherita
 	name = "pizza margherita"
