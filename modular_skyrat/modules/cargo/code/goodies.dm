@@ -157,6 +157,26 @@
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/gun/energy/laser)
 
+/datum/supply_pack/goody/cmg
+	name = "NT CMG-1 Single-kit"
+	desc = "Contains a single CMG-1 Weapons kit"
+	cost = PAYCHECK_HARD * 10
+	access_view = ACCESS_ARMORY
+	contains = list(
+		/obj/item/storage/box/gunset/cmg,
+		)
+
+/datum/supply_pack/goody/cmg_lethal_ammo
+	name = "NT CMG-1 Lethal Ammo"
+	desc = "Contains 3 24-round lethal CMG-1 magazines."
+	cost = PAYCHECK_HARD * 15
+	access_view = ACCESS_ARMORY
+	contains = list(
+		/obj/item/ammo_box/magazine/cmgm45,
+		/obj/item/ammo_box/magazine/cmgm45,
+		/obj/item/ammo_box/magazine/cmgm45,
+	)
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Carpet Packs ////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -204,3 +224,4 @@
 /datum/supply_pack/goody/carpet/premium/blue
 	name = "Blue Carpet Single-Pack"
 	contains = list(/obj/item/stack/tile/carpet/blue/fifty)
+

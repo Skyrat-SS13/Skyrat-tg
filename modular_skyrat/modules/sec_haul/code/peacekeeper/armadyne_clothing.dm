@@ -17,7 +17,7 @@
 	greyscale_config_worn = /datum/greyscale_config/beret_badge_fancy/worn
 	greyscale_colors = "#3F3C40#5B2423#491716"
 	icon_state = "beret_badge_fancy_diagonal"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/hos/trenchcoat/peacekeeper/armadyne
 	name = "armored armadyne trenchcoat"
@@ -33,7 +33,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "armadyne_jacket"
 	worn_icon_state = "armadyne_jacket"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne/armor
 	name = "armadyne armor vest"
@@ -85,7 +85,7 @@
 /datum/outfit/armadyne_rep
 	name = "Armadyne Corporate Representative"
 
-	suit_store = /obj/item/pda/security
+	suit_store = /obj/item/modular_computer/tablet/pda/security
 	ears = /obj/item/radio/headset/headset_cent/commander
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
@@ -106,7 +106,7 @@
 /datum/outfit/armadyne_security
 	name = "Armadyne Corporate Security"
 
-	suit_store = /obj/item/pda/security
+	suit_store = /obj/item/modular_computer/tablet/pda/security
 	ears = /obj/item/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne/tactical
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne

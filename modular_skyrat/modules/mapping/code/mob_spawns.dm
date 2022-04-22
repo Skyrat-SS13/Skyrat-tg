@@ -121,7 +121,7 @@
 
 /datum/outfit/ds2/syndicate/researcher
 	name = "DS-2 Researcher"
-	uniform = /obj/item/clothing/under/utility/sci/syndicate
+	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/researcher
 
 /datum/outfit/ds2/syndicate/stationmed
@@ -222,7 +222,7 @@
 		/obj/item/knife/combat/survival=1,
 		/obj/item/mining_voucher=1,
 		/obj/item/t_scanner/adv_mining_scanner/lesser=1,
-		/obj/item/gun/energy/kinetic_accelerator=1,\
+		/obj/item/gun/energy/recharge/kinetic_accelerator=1,\
 		/obj/item/stack/marker_beacon/ten=1,\
 		/obj/item/armament_token/sidearm_blackmarket)
 	r_pocket = /obj/item/storage/bag/ore
@@ -294,7 +294,7 @@
 	outfit = /datum/outfit/tarkon/sci
 
 /datum/outfit/tarkon/sci
-	uniform = /obj/item/clothing/under/utility/sci
+	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility
 	glasses = /obj/item/clothing/glasses/hud/diagnostic
 	id = /obj/item/card/id/away/tarkon/sci
 	l_hand = /obj/item/inducer

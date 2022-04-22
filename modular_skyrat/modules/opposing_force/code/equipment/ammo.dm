@@ -7,7 +7,7 @@
 
 /datum/opposing_force_equipment/ammo/m16
 	item_type = /obj/item/ammo_box/magazine/m16
-	description = "A twenty-round magazine for the M16 assault rifle. Uses 5.56x45mm ammunition."
+	description = "A thirty-round magazine for the M16 assault rifle. Uses 5.56x45mm ammunition."
 
 /datum/opposing_force_equipment/ammo/akm
 	item_type = /obj/item/ammo_box/magazine/akm

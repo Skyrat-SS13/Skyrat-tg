@@ -32,7 +32,7 @@
 	shuttleId = "goldeneye_cruiser"
 	jump_to_ports = list("syndicate_n" = 1, "whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1)
 	view_range = 14
-	whitelist_turfs = list(/turf/open/space, /turf/open/floor/plating, /turf/open/lava, /turf/closed/mineral, /turf/open/misc/ice/icemoon, /turf/open/misc/ice)
+	whitelist_turfs = list(/turf/open/space, /turf/open/floor/plating, /turf/open/lava, /turf/closed/mineral, /turf/open/misc/ice/icemoon, /turf/open/misc/ice, /turf/open/misc/asteroid/snow/icemoon, /turf/closed/mineral/random/snow)
 	see_hidden = TRUE
 	x_offset = -10
 	y_offset = 5

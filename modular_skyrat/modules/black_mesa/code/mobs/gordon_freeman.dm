@@ -20,6 +20,7 @@
 	wander = FALSE
 	attack_sound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
 	loot = list(/obj/item/crowbar/freeman/ultimate, /obj/item/keycard/freeman_boss_exit)
+	gold_core_spawnable = NO_SPAWN
 
 /obj/structure/xen_pylon/freeman
 	shield_range = 30
@@ -39,7 +40,7 @@
 	RegisterSignal(created_beam, COMSIG_PARENT_QDELETING, .proc/beam_died)
 	RegisterSignal(mob_to_register, COMSIG_PARENT_QDELETING, .proc/mob_died)
 
-/obj/machinery/door/keycard/xen/freeman_boss_entry
+/obj/machinery/door/puzzle/keycard/xen/freeman_boss_entry
 	name = "entry door"
 	desc = "Complete the puzzle to open this door."
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_door.dmi'
@@ -51,7 +52,7 @@
 	color = "#1100ff"
 	puzzle_id = "freeman_entry"
 
-/obj/machinery/door/keycard/xen/freeman_boss_exit
+/obj/machinery/door/puzzle/keycard/xen/freeman_boss_exit
 	name = "exit door"
 	desc = "You must defeat him."
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_door.dmi'
@@ -78,7 +79,7 @@
 
 /datum/outfit/gordon_freeman
 	name = "Gordon Freeman"
-	uniform = /obj/item/clothing/under/misc/hlscience
+	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/hlscience
 	head = /obj/item/clothing/head/helmet/space/hev_suit
 	ears = /obj/item/radio/headset/headset_cent/commander
 	belt = /obj/item/storage/belt/utility/full

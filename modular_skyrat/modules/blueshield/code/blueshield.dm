@@ -53,14 +53,16 @@
 	shoes = /obj/item/clothing/shoes/jackboots
 	ears = /obj/item/radio/headset/headset_bs/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-	backpack_contents = list(/obj/item/storage/box/gunset/blueshield, /obj/item/melee/baton/security/loaded = 1)
+	backpack_contents = list(
+		/obj/item/storage/box/gunset/blueshield = 1,
+		/obj/item/melee/baton/security/loaded = 1,)
 	implants = list(/obj/item/implant/mindshield)
 	backpack = /obj/item/storage/backpack/blueshield
 	satchel = /obj/item/storage/backpack/satchel/blueshield
 	duffelbag = /obj/item/storage/backpack/duffel/blueshield
 	head = /obj/item/clothing/head/beret/blueshield
 	box = /obj/item/storage/box/survival/security
-	belt = /obj/item/pda/security
+	belt = /obj/item/modular_computer/tablet/pda/security
 
 	id_trim = /datum/id_trim/job/blueshield
 
@@ -71,12 +73,20 @@
 	uniform = /obj/item/clothing/under/plasmaman/blueshield
 
 /obj/item/storage/box/gunset/blueshield
-	name = "Allstar SC-3 PDW 'Hellfire' Gunset"
+	name = "CMG-1 Gunset"
 	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/gun/ballistic/automatic/cmg/nomag
+	spawnwithmagazine = FALSE
 
 /obj/item/storage/box/gunset/blueshield/PopulateContents()
 	. = ..()
-	new /obj/item/gun/energy/laser/hellgun/blueshield(src)
+	new /obj/item/gun/ballistic/automatic/cmg/nomag(src)
+	new /obj/item/ammo_box/magazine/cmgm45(src)
+	new /obj/item/ammo_box/magazine/cmgm45(src)
+	new /obj/item/ammo_box/magazine/cmgm45/lethal(src)
+	new /obj/item/ammo_box/magazine/cmgm45/lethal(src)
+	new /obj/item/suppressor(src)
 
 /obj/item/ammo_casing/energy/laser/hellfire/bs
 	projectile_type = /obj/projectile/beam/laser/hellfire

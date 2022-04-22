@@ -1,8 +1,34 @@
 /////////
 // Overwrites all the security icons with our own bluesec versions; this means little to no mapping/spawning conflicts!
 // (Also includes 'old' versions at the bottom of the file, for the purpose of crates/vendors/admin shenanigans. Can't remove them ENTIRELY after all!)
-//PLASMA MEN ARE TO BE LEFT ALONE!!! ARMADYNE/LOPLAND DONT MAKE PEACEKEEPER PLASMASUITS!
 /////////
+
+//////////////////////////
+//----- PLASMAMEN ------//
+//////////////////////////
+//This goes first due to simultaneously being easy to do, and complex to organize
+/obj/item/clothing/under/plasmaman/security
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/plasmaman.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/plasmaman.dmi'
+	icon_state = "security_envirosuit_new"
+
+/obj/item/clothing/under/plasmaman/security/warden
+	icon_state = "warden_envirosuit_new"
+
+/obj/item/clothing/under/plasmaman/security/head_of_security
+	icon_state = "hos_envirosuit_new"
+
+/obj/item/clothing/head/helmet/space/plasmaman/security
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/plasmaman_hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/plasmaman_head.dmi'
+	icon_state = "security_envirohelm_new"
+
+/obj/item/clothing/head/helmet/space/plasmaman/security/warden
+	icon_state = "warden_envirohelm_new"
+
+/obj/item/clothing/head/helmet/space/plasmaman/security/head_of_security
+	icon_state = "hos_envirohelm_new"
+
 
 //////////////////////////
 //----- BACKPACKS ------//
@@ -200,7 +226,7 @@
 	uses_advanced_reskins = TRUE
 	armor = list(MELEE = 30, BULLET = 25, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50)
 	strip_delay = 60
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	unique_reskin = list(
 		"Black Variant" = list(
 			RESKIN_ICON_STATE = "garrison_black",
@@ -223,7 +249,7 @@
 	armor = list(MELEE = 30, BULLET = 25, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50)
 	strip_delay = 60
 	dog_fashion = null
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	unique_reskin = list(
 		"Black Variant" = list(
 			RESKIN_ICON_STATE = "security_cap_black",
@@ -553,16 +579,16 @@
 		uniform = /obj/item/clothing/under/rank/security/warden
 
 //PDA Greyscale Overrides
-/obj/item/pda/security
+/obj/item/modular_computer/tablet/pda/security
 	greyscale_colors = "#2B356D#1E1E1E"
 
-/obj/item/pda/detective
+/obj/item/modular_computer/tablet/pda/detective
 	greyscale_colors = "#90714F#1E1E1E"
 
-/obj/item/pda/warden
+/obj/item/modular_computer/tablet/pda/warden
 	greyscale_colors = "#2F416E#1E1E1E#ACACAC"
 
-/obj/item/pda/heads/hos
+/obj/item/modular_computer/tablet/pda/heads/hos
 	greyscale_colors = "#2B356D#1E1E1E"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -632,7 +658,7 @@
 	icon_state = "helmet"
 	actions_types = null
 	can_toggle = FALSE
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	flags_cover = HEADCOVERSEYES
 	flags_inv = HIDEHAIR
 

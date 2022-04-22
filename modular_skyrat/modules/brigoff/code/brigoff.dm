@@ -62,7 +62,7 @@
 	duffelbag = /obj/item/storage/backpack/duffelbag/sec
 	head = /obj/item/clothing/head/brigoff
 	box = /obj/item/storage/box/survival/security
-	belt = /obj/item/pda/security
+	belt = /obj/item/modular_computer/tablet/pda/security
 
 	id_trim = /datum/id_trim/job/brigoff
 

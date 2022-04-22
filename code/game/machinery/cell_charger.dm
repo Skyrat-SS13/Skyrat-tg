@@ -3,15 +3,13 @@
 	desc = "It charges power cells."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "ccharger"
-	use_power = IDLE_POWER_USE
-	idle_power_usage = 5
-	active_power_usage = 60
 	power_channel = AREA_USAGE_EQUIP
 	circuit = /obj/item/circuitboard/machine/cell_charger
 	pass_flags = PASSTABLE
 	var/obj/item/stock_parts/cell/charging = null
 	var/charge_rate = 250
 
+/* OVERWRITTEN IN modular_skyrat\modules\aesthetics\cells\cell.dm
 /obj/machinery/cell_charger/update_overlays()
 	. = ..()
 
@@ -27,6 +25,7 @@
 	. += "ccharger-[charging.connector_type]-on"
 	if((charging.charge > 0.01) && charging.charge_light_type)
 		. += mutable_appearance('icons/obj/power.dmi', "cell-[charging.charge_light_type]-o[(charging.percent() >= 99.5) ? 2 : 1]")
+*/
 
 /obj/machinery/cell_charger/examine(mob/user)
 	. = ..()
@@ -134,6 +133,7 @@
 		charging.emp_act(severity)
 
 /obj/machinery/cell_charger/RefreshParts()
+	. = ..()
 	charge_rate = 250
 	for(var/obj/item/stock_parts/capacitor/C in component_parts)
 		charge_rate *= C.rating

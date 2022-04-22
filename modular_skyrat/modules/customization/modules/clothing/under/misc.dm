@@ -5,7 +5,7 @@
 	icon_state = "stripper_p"
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/stripper/green
 	name = "green stripper outfit"
@@ -45,7 +45,7 @@
 	icon_state = "gear_harness"
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/colourable_kilt
 	name = "colourable kilt"
@@ -55,7 +55,7 @@
 	greyscale_config_worn = /datum/greyscale_config/kilt/worn
 	greyscale_colors = "#008000#777777"
 	flags_1 = IS_PLAYER_COLORABLE_1
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/royalkilt
 	name = "royal kilt"
@@ -129,13 +129,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "tracksuit_blue"
-
-/obj/item/clothing/under/misc/hlscience
-	name = "ridiculous scientist outfit"
-	desc = "The tie is mandatory."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "hl_scientist"
 
 /obj/item/clothing/under/enclaveo
 	name = "neo american officer uniform"

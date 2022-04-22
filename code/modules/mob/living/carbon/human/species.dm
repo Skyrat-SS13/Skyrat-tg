@@ -209,6 +209,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	///Bitflag that controls what in game ways something can select this species as a spawnable source, such as magic mirrors. See [mob defines][code/__DEFINES/mobs.dm] for possible sources.
 	var/changesource_flags = NONE
 
+	///Unique cookie given by admins through prayers
+	var/species_cookie = /obj/item/food/cookie
+
 	///For custom overrides for species ass images
 	var/icon/ass_image
 
@@ -1019,7 +1022,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				if(!disable_warning)
 					to_chat(H, span_warning("The [I.name] is too big to attach!")) //should be src?
 				return FALSE
-			if( istype(I, /obj/item/pda) || istype(I, /obj/item/pen) || is_type_in_list(I, H.wear_suit.allowed) )
+			if( istype(I, /obj/item/modular_computer/tablet) || istype(I, /obj/item/pen) || is_type_in_list(I, H.wear_suit.allowed) )
 				return TRUE
 			return FALSE
 		if(ITEM_SLOT_HANDCUFFED)
@@ -2112,7 +2115,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 /datum/species/proc/get_species_description()
 	SHOULD_CALL_PARENT(FALSE)
 
-	stack_trace("Species [name] ([type]) did not have a description set, and is a selectable roundstart race! Override get_species_description.")
+	//stack_trace("Species [name] ([type]) did not have a description set, and is a selectable roundstart race! Override get_species_description.")
 	return "No species description set, file a bug report!"
 
 /**
@@ -2126,7 +2129,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	SHOULD_CALL_PARENT(FALSE)
 	RETURN_TYPE(/list)
 
-	stack_trace("Species [name] ([type]) did not have lore set, and is a selectable roundstart race! Override get_species_lore.")
+	//stack_trace("Species [name] ([type]) did not have lore set, and is a selectable roundstart race! Override get_species_lore.")
 	return list("No species lore set, file a bug report!")
 
 /**

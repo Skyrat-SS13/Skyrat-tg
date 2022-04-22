@@ -19,7 +19,7 @@
 
 //OUTFITS//
 /datum/outfit/lavaland_syndicate
-	uniform = /obj/item/clothing/under/utility/sci/syndicate
+	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
 	ears = /obj/item/radio/headset/interdyne
 
 /datum/outfit/lavaland_syndicate/post_equip(mob/living/carbon/human/syndicate, visualsOnly = FALSE)
@@ -55,7 +55,7 @@
 		/obj/item/knife/combat/survival=1,
 		/obj/item/mining_voucher=1,
 		/obj/item/t_scanner/adv_mining_scanner/lesser=1,
-		/obj/item/gun/energy/kinetic_accelerator=1,\
+		/obj/item/gun/energy/recharge/kinetic_accelerator=1,\
 		/obj/item/stack/marker_beacon/ten=1)
 
 /datum/outfit/lavaland_syndicate/shaftminer/deckofficer
@@ -79,14 +79,6 @@
 	name = "Icemoon Syndicate Shaft Miner"
 	uniform = /obj/item/clothing/under/syndicate
 	suit = /obj/item/clothing/suit/hooded/wintercoat/syndicate
-	r_pocket = /obj/item/storage/bag/ore
-	backpack_contents = list(
-		/obj/item/flashlight/seclite=1,\
-		/obj/item/knife/combat/survival=1,
-		/obj/item/mining_voucher=1,
-		/obj/item/t_scanner/adv_mining_scanner/lesser=1,
-		/obj/item/gun/energy/kinetic_accelerator=1,\
-		/obj/item/stack/marker_beacon/ten=1)
 
 //ITEMS
 
