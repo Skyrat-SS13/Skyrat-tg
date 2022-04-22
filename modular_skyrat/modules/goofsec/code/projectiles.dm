@@ -218,9 +218,14 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 
+// fucking guncode means i have to have the basetype be the magazine that spawns loaded in the gun if i want it to spawn loaded
+// if I made it spawn loaded with a nonlethal magazine, then it could only load the nonlethal magazines,
+// so instead the base mag type needs to be a mirror of the non-lethal one to pretend to be it
 /obj/item/ammo_box/magazine/security_pistol
-	name = "influence Domestic magazine"
-	desc = "A magazine for the Domestic. Loaded with non-lethal Influence rounds, which bounce around and influence people to comply with arrests."
+	name = "Nonlethal Domestic magazine"
+	desc = "A magazine for the Domestic. Loaded with non-lethal Influence rounds, which bounce around and influence people to comply with arrests.\
+	<br><br>\
+	<i>Fires non-lethal stamina bullets that can ricochet up to 6 times. Pacifist compatible.</i>"
 	icon = 'modular_skyrat/modules/goofsec/icons/gun_sprites.dmi'
 	icon_state = "security_pistol_influence"
 	base_icon_state = "security_pistol_influence"
@@ -233,33 +238,35 @@
 	icon_state = "[base_icon_state][ammo_count() ? "" : "-empty"]"
 
 /// Ammo for the Domestic.
-/obj/item/ammo_casing/security_pistol
-	name = "inhumane casing"
-	desc = "A casing for a Domestic magazine."
+/obj/item/ammo_casing/security_pistol // Abstract type for inheritance to avoid copypaste
+	name = "debug inhumane casing"
+	desc = "A casing for a Domestic magazine. If you see this, file a bug report."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
 	caliber = CALIBER_SECURITYPISTOL
 	projectile_type = /obj/projectile/bullet/security_pistol
 
 /obj/projectile/bullet/security_pistol
-	name = "inhumane bullet"
-	damage = 0 // not supposed to exist
+	name = "debug inhumane bullet"
+	damage = 0 // not supposed to exist, this is an abstract type for inheritance
 
 // Influence rounds. Bouncy. Stamina only.
 /obj/item/ammo_box/magazine/security_pistol/influence
-	name = "influence Domestic magazine"
-	desc = "A magazine for the Domestic. Loaded with non-lethal Influence rounds, which bounce around and influence people to comply with arrests."
+	name = "Nonlethal Domestic magazine"
+	desc = "A magazine for the Domestic. Loaded with Nonlethal rounds, which bounce around and influence people to comply with arrests.\
+	<br><br>\
+	<i>Fires non-lethal stamina bullets that can ricochet up to 6 times. Pacifist compatible.</i>"
 	icon_state = "security_pistol_influence"
 	base_icon_state = "security_pistol_influence"
 	ammo_type = /obj/item/ammo_casing/security_pistol/influence
 
 /obj/item/ammo_casing/security_pistol/influence
-	name = "influence inhumane casing"
+	name = "Nonlethal inhumane casing"
 	projectile_type = /obj/projectile/bullet/security_pistol/influence
 	harmful = FALSE
 
 /obj/projectile/bullet/security_pistol/influence
-	name = "influence inhumane bullet"
+	name = "Nonlethal inhumane bullet"
 	damage = 30
 	damage_type = STAMINA
 	ricochets_max = 6
@@ -271,7 +278,10 @@
 // TRAC rounds. Lower raw damage. Puts a tracking chip in the target, embeds. Penetrates armor.
 /obj/item/ammo_box/magazine/security_pistol/trac
 	name = "trac Domestic magazine"
-	desc = "A magazine for the Domestic. Loaded with TRAC rounds, which embed a tracking chip in the target, while also being handy against armor."
+	desc = "A magazine for the Domestic. Loaded with TRAC rounds, which embed a tracking chip in the target, while also being handy against armor.\
+	<br><br>\
+	<i>Fires armor piercing bullets with a high embed chance that embed a Tracking Implant in the target for a duration of time. \
+	Track them with a Bluespace Locator or the console for tracking implants.</i>"
 	icon_state = "security_pistol_trac"
 	base_icon_state = "security_pistol_trac"
 	ammo_type = /obj/item/ammo_casing/security_pistol/trac
@@ -304,7 +314,9 @@
 // Iceblox Rounds. Lower raw damage. Makes the target cold.
 /obj/item/ammo_box/magazine/security_pistol/iceblox
 	name = "iceblox Domestic magazine"
-	desc = "A magazine for the Domestic. Loaded with Iceblox rounds, which make the target cold."
+	desc = "A magazine for the Domestic. Loaded with Iceblox rounds, which make the target cold.\
+	<br><br>\
+	<i>Fires cold bullets that make the target cold.</i>"
 	icon_state = "security_pistol_iceblox"
 	base_icon_state = "security_pistol_iceblox"
 	ammo_type = /obj/item/ammo_casing/security_pistol/iceblox
@@ -324,21 +336,23 @@
 		var/mob/living/perp = target
 		perp.adjust_bodytemperature(((100-blocked)/100)*(temperature - perp.bodytemperature))
 
-// Cruelty rounds. Lower raw damage. Aggressively violent wounds and embeds.
+// Hyperlethal rounds. Lower raw damage. Aggressively violent wounds and embeds.
 /obj/item/ammo_box/magazine/security_pistol/cruelty
-	name = "cruelty Domestic magazine"
-	desc = "A magazine for the Domestic. Loaded with Cruelty rounds, which slice through biological matter in a manner banned by the Spinward Stellar Coalition, \
-	after they were used by Lopland contractors to remove a nudist ecological protest from a plasma drilling operation."
+	name = "Hyperlethal Domestic magazine"
+	desc = "A magazine for the Domestic. Loaded with Hyperlethal rounds, which slice through biological matter in a manner banned by the Spinward Stellar Coalition, \
+	after they were used by Lopland contractors to remove a nudist ecological protest from a plasma drilling operation.\
+	<br><br>\
+	<i>Fires slicing wound inflicting bullets that have a high wound chance, a <b>very</b> high wound chance against bare limbs, and an <b>extremely> high embed chance.</i>"
 	icon_state = "security_pistol_cruelty"
 	base_icon_state = "security_pistol_cruelty"
 	ammo_type = /obj/item/ammo_casing/security_pistol/cruelty
 
 /obj/item/ammo_casing/security_pistol/cruelty
-	name = "cruelty inhumane casing"
+	name = "Hyperlethal inhumane casing"
 	projectile_type = /obj/projectile/bullet/security_pistol/cruelty
 
 /obj/projectile/bullet/security_pistol/cruelty
-	name = "cruelty inhumane bullet"
+	name = "Hyperlethal inhumane bullet"
 	damage = 25
 	sharpness = SHARP_EDGED
 	wound_bonus = 50
@@ -348,7 +362,9 @@
 // Geiger rounds. Reduced damage. Irradiation.
 /obj/item/ammo_box/magazine/security_pistol/geiger
 	name = "geiger Domestic magazine"
-	desc = "A magazine for the Domestic. Loaded with Geiger rounds, which irradiate the target and those around them."
+	desc = "A magazine for the Domestic. Loaded with Geiger rounds, which irradiate the target and those around them.\
+	<br><br>\
+	<i>Fires radioactive bullets that irradiate both the target hit and everyone adjacent to them, including diagonals.</i>"
 	icon_state = "security_pistol_rad"
 	base_icon_state = "security_pistol_rad"
 	ammo_type = /obj/item/ammo_casing/security_pistol/geiger
@@ -367,20 +383,22 @@
 		target.AddComponent(/datum/component/irradiated)
 		radiation_pulse(target, max_range = 1, threshold = RAD_LIGHT_INSULATION)
 
-// CEO Mindset rounds. Set goals. Have a ten year plan. Invest. Wake up early. CEO mindset. Good luck.
+// Wealth rounds. Set goals. Have a ten year plan. Invest. Wake up early. CEO mindset. Good luck.
 /obj/item/ammo_box/magazine/security_pistol/ceo_mindset
-	name = "CEO mindset Domestic magazine"
-	desc = "A magazine for the Domestic. Loaded with CEO mindset rounds, which set goals and have a ten year plan. Invest. Wake up early. CEO mindset. Good luck."
+	name = "Wealth Domestic magazine"
+	desc = "A magazine for the Domestic. Loaded with Wealth rounds, which set goals and have a ten year plan. Invest. Wake up early. CEO mindset. Good luck.\
+	<br><br>\
+	<i>Fires wealth bullets that do damage based on your current ID card balance. The richer, the more damage they do.</i>"
 	icon_state = "security_pistol_ceo_mindset"
 	base_icon_state = "security_pistol_ceo_mindset"
 	ammo_type = /obj/item/ammo_casing/security_pistol/ceo_mindset
 
 /obj/item/ammo_casing/security_pistol/ceo_mindset
-	name = "CEO mindset inhumane casing"
+	name = "Wealth inhumane casing"
 	projectile_type = /obj/projectile/bullet/security_pistol/ceo_mindset
 
 /obj/projectile/bullet/security_pistol/ceo_mindset
-	name = "CEO mindset inhumane bullet"
+	name = "Wealth inhumane bullet"
 	damage = 0
 	var/damage_brackets = list(5, 15, 30, 35, 50, 60)
 	var/wealth_brackets = list(25, 150, 350, 500, 1000, 5000)
@@ -416,8 +434,8 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/security_pistol_magazine/influence
-	name = "Domestic Magazine (Influence)"
-	desc = "Influence rounds for your Domestic."
+	name = "Domestic Magazine (Nonlethal)"
+	desc = "Nonlethal rounds for your Domestic."
 	id = "security_pistol_magazine_influence"
 	build_path = /obj/item/ammo_box/magazine/security_pistol/influence
 
@@ -434,8 +452,8 @@
 	build_path = /obj/item/ammo_box/magazine/security_pistol/iceblox
 
 /datum/design/security_pistol_magazine/cruelty
-	name = "Domestic Magazine (Cruelty)"
-	desc = "Cruelty rounds for your Domestic."
+	name = "Domestic Magazine (Hyperlethal)"
+	desc = "Hyperlethal rounds for your Domestic."
 	id = "security_pistol_magazine_cruelty"
 	build_path = /obj/item/ammo_box/magazine/security_pistol/cruelty
 
@@ -446,8 +464,8 @@
 	build_path = /obj/item/ammo_box/magazine/security_pistol/geiger
 
 /datum/design/security_pistol_magazine/ceo_mindset
-	name = "Domestic Magazine (CEO Mindset)"
-	desc = "CEO Mindset rounds for your Domestic."
+	name = "Domestic Magazine (Wealth)"
+	desc = "Wealth rounds for your Domestic."
 	id = "security_pistol_magazine_ceo_mindset"
 	build_path = /obj/item/ammo_box/magazine/security_pistol/ceo_mindset
 
