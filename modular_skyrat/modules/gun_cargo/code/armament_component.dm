@@ -401,6 +401,7 @@
 	created_order.interest_addition = armament_entry.interest_addition
 	var/datum/computer_file/program/budgetorders/file_p = parent_prog
 	if(console_state == CARGO_CONSOLE)
+		created_order.generateRequisition(get_turf(parent))
 		if(possible_console.requestonly && !self_paid)
 			SSshuttle.request_list += created_order
 		else
