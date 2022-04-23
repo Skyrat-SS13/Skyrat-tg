@@ -7,6 +7,7 @@
 	you_are_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	flavour_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	restricted_species = list(/datum/species/human)
+	random_appearance = FALSE
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/special(mob/living/carbon/human/spawned_human)
 	. = ..()
