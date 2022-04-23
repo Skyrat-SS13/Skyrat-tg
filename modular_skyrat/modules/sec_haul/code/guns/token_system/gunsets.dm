@@ -260,7 +260,7 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/g18(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/g18(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/g18(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g18(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g18/ihdf(src)
 
 //HOP
 /obj/item/storage/box/gunset/pdh
