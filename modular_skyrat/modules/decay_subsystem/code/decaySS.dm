@@ -43,11 +43,10 @@ SUBSYSTEM_DEF(decay)
 		message_admins("SSDecay will not interact with this round.")
 		log_world("SSDecay will not interact with this round.")
 		return ..()
-
 	for(var/turf/iterating_turf in world)
 		if(!is_station_level(iterating_turf.z))
 			continue
-		if(!(iterating_turf.turf_flags & CAN_BE_DIRTY_1))
+		if(!(iterating_turf.flags_1 & CAN_BE_DIRTY_1))
 			continue
 		possible_turfs += iterating_turf
 
@@ -87,6 +86,8 @@ SUBSYSTEM_DEF(decay)
 			new /obj/effect/decal/cleanable/dirt(iterating_floor)
 
 	for(var/turf/closed/iterating_wall in possible_turfs)
+		if(HAS_TRAIT(iterating_wall, TRAIT_RUSTY))
+			continue
 		if(prob(WALL_RUST_PERCENT_CHANCE * severity_modifier))
 			iterating_wall.AddElement(/datum/element/rust)
 
