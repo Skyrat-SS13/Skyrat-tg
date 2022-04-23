@@ -17,12 +17,7 @@ GLOBAL_VAR_INIT(permit_pin_unrestricted, FALSE)
 	if(GLOB.permit_pin_unrestricted)
 		return TRUE
 
-	if(!ishuman(user))
-		return FALSE
-
-	var/mob/living/carbon/human/user_human = user
-
-	var/obj/item/card/id/the_id = user_human.wear_id
+	var/obj/item/card/id/the_id = user.get_idcard()
 
 	if(!the_id && is_station_level(station_check.z))
 		return FALSE

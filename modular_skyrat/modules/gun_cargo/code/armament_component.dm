@@ -248,8 +248,7 @@
 		to_chat(user, span_warning("Not enough money!"))
 		return
 
-	var/mob/living/carbon/human/human_user = user
-	var/name = human_user.get_authentification_name()
+	var/name = the_person.get_authentification_name()
 	var/reason = ""
 
 	if(possible_console)
@@ -277,8 +276,8 @@
 	created_pack.name = initial(armament_entry.item_type.name)
 	created_pack.cost = cost_calculate(armament_entry.cost) //Paid for seperately
 	created_pack.contains = list(armament_entry.item_type)
-	var/rank = human_user.get_assignment(hand_first = TRUE)
-	var/ckey = human_user.ckey
+	var/rank = the_person.get_assignment(hand_first = TRUE)
+	var/ckey = the_person.ckey
 	var/datum/supply_order/armament/created_order
 	if(buyer != SSeconomy.get_dep_account(ACCOUNT_CAR))
 		created_order = new(created_pack, name, rank, ckey, paying_account = buyer, reason = reason)
@@ -318,6 +317,7 @@
 		return
 
 	var/obj/item/card/id/id_card
+
 	if(console_state == IRN_CONSOLE)
 		var/obj/item/computer_hardware/card_slot/card_slot = parent_prog.computer.all_components[MC_CARD]
 		id_card = card_slot.GetID()
@@ -365,8 +365,7 @@
 		to_chat(user, span_warning("Not enough money!"))
 		return
 
-	var/mob/living/carbon/human/human_user = user
-	var/name = human_user.get_authentification_name()
+	var/name = the_person.get_authentification_name()
 	var/reason = ""
 
 	if(possible_console)
@@ -391,8 +390,8 @@
 	created_pack.contains = list()
 	for(var/i in 1 to ammo_purchase_num)
 		created_pack.contains += armament_entry.magazine
-	var/rank = human_user.get_assignment(hand_first = TRUE)
-	var/ckey = human_user.ckey
+	var/rank = the_person.get_assignment(hand_first = TRUE)
+	var/ckey = the_person.ckey
 	var/datum/supply_order/armament/created_order
 	if(buyer != SSeconomy.get_dep_account(ACCOUNT_CAR))
 		created_order = new(created_pack, name, rank, ckey, paying_account = buyer, reason = reason)
