@@ -8,7 +8,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/cfa_snub
 	name = "CFA Snub"
-	desc = "A small easily-concealable modern pistol chambered in the more rarely seen 4.2x30mm. It's specifically designed to be compact."
+	desc = "An  easily-concealable pistol chambered for 4.2x30mm."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "cfa-snub"
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_snub
@@ -24,7 +24,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/cfa_ruby
 	name = "CFA Ruby"
-	desc = "A large and loud modern handgun that fires a unique cartridge. It's chambered in 12x27mm."
+	desc = "A heavy-duty sidearm chambered in 12x27mm."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "cfa_ruby"
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby

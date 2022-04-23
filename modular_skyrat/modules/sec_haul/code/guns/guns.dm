@@ -56,7 +56,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/g18
 	name = "\improper Glock-18"
-	desc = "A burst-firing special anniversary edition of the Glock-18 from Cantalan Federal Arms. Its heavier barrel negatively affects firerate minimally."
+	desc = "A CFA-made burst firing cheap polymer pistol chambered in 9mm. Its heavy duty barrel affects firerate."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock_spec"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -232,8 +232,8 @@
 
 ///////////////////////LADON 40x32
 /obj/item/gun/ballistic/automatic/pistol/ladon
-	name = "\improper P-3 'Ladon'"
-	desc = "A modern ballistic sidearm based off the PDH models, chambered in 10mm and quite recent on the market."
+	name = "\improper Ladon pistol"
+	desc = "Modern handgun based off the PDH series, chambered in 10mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ladon.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand40x32.dmi'

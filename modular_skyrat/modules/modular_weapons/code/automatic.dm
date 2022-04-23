@@ -37,7 +37,7 @@
 // Fills the role of a low damage, high magazine capacity magdump gun.
 /obj/item/gun/ballistic/automatic/cfa_wildcat
 	name = "\improper CFA Wildcat"
-	desc = "An old SMG, this one is chambered in .34, a rare cartidge that's not often seen."
+	desc = "A robust roller-delayed SMG chambered for .34 ammunition."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile40x32.dmi'
 	icon_state = "mp5"
 	inhand_icon_state = "arg"

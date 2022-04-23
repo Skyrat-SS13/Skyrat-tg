@@ -119,7 +119,7 @@
 
 /obj/item/gun/ballistic/automatic/cfa_rifle
 	name = "Cantanheim 6.8mm rifle"
-	desc = "A faithful reproduction of a semi-automatic rifle used in a war long ago. Uses 6.8mm bullets in a ten round magazine."
+	desc = "A simple semi-automatic rifle chambered in 6.8mm. The letters 'XJP' are crossed out in the receiver." //Different 6.8mm than the FTU's propietary pulse ballistics
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile40x32.dmi'
 	icon_state = "cfa_rifle"
 	inhand_icon_state = "irifle"

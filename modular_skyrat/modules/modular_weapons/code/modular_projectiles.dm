@@ -329,22 +329,22 @@
 
 /obj/item/ammo_casing/c12mm/ap
 	name = "12mm Magnum armor-piercing bullet casing"
-	desc = "A 12mm Magnum bullet casing with an armor-piercing projectile."
+	desc = "A 12mm Magnum bullet casing with a tungsten core tip."
 	projectile_type = /obj/projectile/bullet/c12mm/ap
 
 /obj/item/ammo_casing/c12mm/hp
 	name = "12mm Magnum hollow-point bullet casing"
-	desc = "A 12mm Magnum bullet casing with a hollow-point projectile."
+	desc = "A 12mm Magnum bullet casing with a hollow tip that fragments on contact."
 	projectile_type = /obj/projectile/bullet/c12mm/hp
 
 /obj/item/ammo_casing/c12mm/fire
 	name = "12mm Magnum incendiary bullet casing"
-	desc = "A 12mm Magnum bullet casing. This leaves a burning trail and ignites its target."
+	desc = "A 12mm Magnum bullet casing with a magnesium coated tip meant for setting things on fire."
 	projectile_type = /obj/projectile/bullet/incendiary/c12mm
 
 /obj/item/ammo_casing/c12mm/rubber
 	name = "12mm Magnum rubber bullet casing"
-	desc = "A 12mm Magnum bullet casing. This fires a non-lethal projectile to cause compliance by pain and bruising. Don't aim for the head."
+	desc = "A low powder load 12mm Magnum bullet casing with a flat rubber tip. Headshots heavily discouraged."
 	projectile_type = /obj/projectile/bullet/c12mm/rubber
 	harmful = FALSE
 

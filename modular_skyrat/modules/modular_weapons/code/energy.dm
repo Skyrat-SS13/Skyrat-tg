@@ -5,7 +5,7 @@
 
 /obj/item/gun/energy/disabler/bolt_disabler
 	name = "Bolt Responder"
-	desc = "A pocket-sized self-defense weapon popular with law enforcement due to its safe non-lethal payload that physically exhausts organic targets and cheap pricetag. The size makes it popular with smaller species, however, gives the obvious drawback of a smaller battery."
+	desc = "A pocket-sized non-lethal energy gun with low ammo capacity."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "cfa-disabler"
 	inhand_icon_state = null

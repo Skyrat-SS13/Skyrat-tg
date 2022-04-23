@@ -188,7 +188,7 @@
 
 /obj/item/gun/ballistic/automatic/l6_saw
 	name = "\improper L6 SAW"
-	desc = "A heavily modified 7.12x82mm light machine gun, designated 'L6 SAW'."
+	desc = "A large light machine gun chambered for the 7.12x82mm cartridge."
 	icon_state = "l6"
 	inhand_icon_state = "l6"
 	base_icon_state = "l6"
