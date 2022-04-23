@@ -4,10 +4,7 @@
 	. = ..()
 	/*
 	var/obj/structure/container = .
-	for(var/obj/item/gun_maybe in container.contents)
-		if(!istype(gun_maybe, /obj/item/gun))
-			continue
-		var/obj/item/gun/gun_actually = gun_maybe
+	for(var/obj/item/gun/gun_actually in container.contents)
 		if(gun_actually.company_flag & COMPANY_SCARBOROUGH) //illegal company doesn't care about pins
 			continue
 		QDEL_NULL(gun_actually.pin)
