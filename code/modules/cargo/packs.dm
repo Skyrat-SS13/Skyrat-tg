@@ -305,19 +305,18 @@
 	contains = list(/obj/item/clothing/suit/armor/vest,
 					/obj/item/clothing/suit/armor/vest,
 					/obj/item/clothing/suit/armor/vest)
-	crate_name = "armor crate" */
+	crate_name = "armor crate"
+*/ //SKYRAT EDIT END
 
-/* //SKYRAT EDIT START - CARGO ARMAMENTS
 /datum/supply_pack/security/disabler
 	name = "Disabler Crate"
 	desc = "Three stamina-draining disabler weapons. Requires Security access to open."
-	cost = CARGO_CRATE_VALUE * 3
+	cost = CARGO_CRATE_VALUE * 5 //SKYRAT EDIT 3 -> 5
 	access_view = ACCESS_SECURITY
 	contains = list(/obj/item/gun/energy/disabler,
 					/obj/item/gun/energy/disabler,
 					/obj/item/gun/energy/disabler)
 	crate_name = "disabler crate"
-*/ //SKYRAT EDIT END
 
 /datum/supply_pack/security/forensics
 	name = "Forensics Crate"
