@@ -1,8 +1,3 @@
-
-#define ARMAMENT_CATEGORY_SECONDARY "Secondary Weapons"
-#define ARMAMENT_CATEGORY_SECONDARY_LIMIT 1
-#define ARMAMENT_SUBCATEGORY_PISTOL "Pistols"
-
 // SECONDARY WEAPONS
 /datum/armament_entry/assault_operatives/secondary
 	category = ARMAMENT_CATEGORY_SECONDARY

@@ -57,10 +57,10 @@
 	realistic = TRUE
 	fire_sound = 'modular_skyrat/modules/ERT_Factions/FTU/sound/r37.ogg'
 	emp_damageable = FALSE
-	armadyne = FALSE
 	can_bayonet = FALSE
 	can_flashlight = TRUE
 	mag_type = /obj/item/ammo_box/magazine/pulse/r37
+	company_flag = null
 
 /obj/item/ammo_box/magazine/pulse/r37
 	name = "6.5mm XJP box magazine"
@@ -94,10 +94,10 @@
 	realistic = TRUE
 	fire_sound = 'modular_skyrat/modules/ERT_Factions/FTU/sound/r40.ogg'
 	emp_damageable = FALSE
-	armadyne = FALSE
 	can_bayonet = FALSE
 	can_flashlight = TRUE
 	mag_type = /obj/item/ammo_box/magazine/pulse/r40
+	company_flag = null
 
 /obj/item/ammo_box/magazine/pulse/r40
 	name = "7.2mm XJP belted box"

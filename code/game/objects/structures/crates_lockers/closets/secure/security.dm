@@ -133,6 +133,8 @@
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/melee/baton/security/loaded/departmental/cargo(src)
 	new /obj/item/clothing/glasses/hud/security(src)
+	new /obj/item/clothing/glasses/hud/gun_permit(src)
+	new /obj/item/storage/box/gunset/pepperball(src)
 
 /obj/structure/closet/secure_closet/security/engine
 	name = "\proper engineering guard's locker"
@@ -150,6 +152,7 @@
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/melee/baton/security/loaded/departmental/engineering(src)
 	new /obj/item/clothing/glasses/hud/security(src)
+	new /obj/item/storage/box/gunset/pepperball(src)
 
 /obj/structure/closet/secure_closet/security/science
 	name = "\proper science guard's locker"
@@ -167,6 +170,7 @@
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/melee/baton/security/loaded/departmental/science(src)
 	new /obj/item/clothing/glasses/hud/security(src)
+	new /obj/item/storage/box/gunset/pepperball(src)
 
 /obj/structure/closet/secure_closet/security/med
 	name = "\proper orderly's locker"
@@ -184,6 +188,7 @@
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/melee/baton/security/loaded/departmental/medical(src)
 	new /obj/item/clothing/glasses/hud/security(src)
+	new /obj/item/storage/box/gunset/pepperball(src)
 // SKYRAT EDIT CHANGE END -- GOOFSEC DEP GUARDS
 
 /obj/structure/closet/secure_closet/detective

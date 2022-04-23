@@ -1,8 +1,3 @@
-#define ARMAMENT_CATEGORY_MEDICAL "Medical Supplies"
-#define ARMAMENT_CATEGORY_MEDICAL_LIMIT 5
-#define ARMAMENT_SUBCATEGORY_MEDKIT "Medkits"
-#define ARMAMENT_SUBCATEGORY_INJECTOR "Injectors"
-
 /datum/armament_entry/assault_operatives/medical
 	category = ARMAMENT_CATEGORY_MEDICAL
 	category_item_limit = ARMAMENT_CATEGORY_MEDICAL_LIMIT
