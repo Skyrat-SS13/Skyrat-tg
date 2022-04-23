@@ -27,7 +27,7 @@
 
 /datum/armament_entry/assault_operatives/medical/medkit/tactical
 	item_type = /obj/item/storage/medkit/tactical
-	cost = 5
+	cost = 3
 
 /datum/armament_entry/assault_operatives/medical/surgery_bag
 	item_type = /obj/item/storage/backpack/duffelbag/syndie/surgery
@@ -58,11 +58,11 @@
 
 /datum/armament_entry/assault_operatives/medical/injector/stimulant
 	item_type = /obj/item/reagent_containers/hypospray/medipen/stimulants
-	cost = 3
+	cost = 2
 
 /datum/armament_entry/assault_operatives/medical/injector/bag
 	item_type = /obj/item/storage/bag/medpens
-	cost = 6
+	cost = 4
 
 /datum/armament_entry/assault_operatives/medical/beamgun
 	item_type = /obj/item/gun/medbeam
