@@ -34,6 +34,7 @@
 
 // Low progression
 
+/*	SKYRAT EDIT - DISABLED FOR GUN CARGO
 /datum/uplink_item/badass/syndiecash
 	name = "Syndicate Briefcase Full of Cash"
 	desc = "A secure briefcase containing 5000 space credits. Useful for bribing personnel, or purchasing goods \
@@ -44,6 +45,7 @@
 	progression_minimum = 5 MINUTES
 	restricted = TRUE
 	illegal_tech = FALSE
+*/
 
 // Ultra high progression
 /datum/uplink_item/badass/costumes/clown
