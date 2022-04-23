@@ -199,7 +199,7 @@
 
 ///////////////////////////PDH PEACEKEEPER
 /obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper
-	name = "\improper PDH-6B 'Peacekeeper'"
+	name = "\improper PDH-6B"
 	desc = "A modern ballistic sidearm, used primarily by law enforcement."
 	fire_delay = 1.95
 	icon_state = "pdh_peacekeeper"
