@@ -1,9 +1,5 @@
 
 // MELEE WEAPONS
-#define ARMAMENT_CATEGORY_MELEE "Melee Weapons"
-#define ARMAMENT_CATEGORY_MELEE_LIMIT 1
-#define ARMAMENT_SUBCATEGORY_MELEE_LETHAL "Lethal Weaponry"
-#define ARMAMENT_SUBCATEGORY_MELEE_NONLETHAL "Non-Lethal Weaponry"
 
 /datum/armament_entry/assault_operatives/melee
 	category = ARMAMENT_CATEGORY_MELEE

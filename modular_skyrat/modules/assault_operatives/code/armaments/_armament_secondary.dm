@@ -1,11 +1,3 @@
-
-#define ARMAMENT_CATEGORY_SECONDARY "Secondary Weapons"
-#define ARMAMENT_CATEGORY_SECONDARY_LIMIT 1
-#define ARMAMENT_SUBCATEGORY_PISTOL "Pistols"
-#define ARMAMENT_SUBCATEGORY_CQC "Close Quarters"
-
-
-// SECONDARY WEAPONS
 /datum/armament_entry/assault_operatives/secondary
 	category = ARMAMENT_CATEGORY_SECONDARY
 	category_item_limit = ARMAMENT_CATEGORY_SECONDARY_LIMIT
@@ -71,4 +63,3 @@
 	name = "CQC Manual"
 	item_type = /obj/item/book/granter/martial/cqc
 	cost = 10
-

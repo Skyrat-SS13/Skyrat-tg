@@ -1,9 +1,3 @@
-#define ARMAMENT_CATEGORY_PRIMARY "Primary Weapons"
-#define ARMAMENT_CATEGORY_PRIMARY_LIMIT 1
-#define ARMAMENT_SUBCATEGORY_SUBMACHINEGUN "Submachine Guns"
-#define ARMAMENT_SUBCATEGORY_ASSAULTRIFLE "Assault Rifles"
-#define ARMAMENT_SUBCATEGORY_SPECIAL "Special Weapons"
-
 /datum/armament_entry/assault_operatives/primary
 	category = ARMAMENT_CATEGORY_PRIMARY
 	category_item_limit = ARMAMENT_CATEGORY_PRIMARY_LIMIT

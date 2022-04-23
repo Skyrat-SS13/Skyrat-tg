@@ -106,7 +106,7 @@
 	name = "Orderly" // You forgot your vaccine *flexes muscles*
 	jobtype = /datum/job/orderly
 
-	belt = /obj/item/pda/medical
+	belt = /obj/item/modular_computer/tablet/pda/medical
 	ears = /obj/item/radio/headset/headset_med
 	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/orderly
 	shoes = /obj/item/clothing/shoes/sneakers/white
@@ -125,8 +125,8 @@
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_orderly"
 	sechud_icon_state = SECHUD_ORDERLY
-	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_PHARMACY, ACCESS_CHEMISTRY, ACCESS_VIROLOGY, ACCESS_MECH_MEDICAL, ACCESS_MINERAL_STOREROOM)
-	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_PHARMACY, ACCESS_CHEMISTRY, ACCESS_VIROLOGY, ACCESS_MECH_MEDICAL, ACCESS_MINERAL_STOREROOM)
+	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_PHARMACY, ACCESS_CHEMISTRY, ACCESS_VIROLOGY, ACCESS_MECH_MEDICAL, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
+	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_PHARMACY, ACCESS_CHEMISTRY, ACCESS_VIROLOGY, ACCESS_MECH_MEDICAL, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
 	config_job = "orderly"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CMO, ACCESS_CHANGE_IDS)
 	job = /datum/job/orderly
@@ -174,7 +174,7 @@
 	name = "Science Guard"
 	jobtype = /datum/job/science_guard
 
-	belt = /obj/item/pda/science
+	belt = /obj/item/modular_computer/tablet/pda/science
 	ears = /obj/item/radio/headset/headset_sci
 	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat
 	shoes = /obj/item/clothing/shoes/sneakers/black
@@ -194,9 +194,9 @@
 	trim_state = "trim_calhoun"
 	sechud_icon_state = SECHUD_SCIENCE_GUARD
 	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ROBOTICS, ACCESS_RND, ACCESS_ORDNANCE, ACCESS_ORDNANCE_STORAGE, ACCESS_RESEARCH, ACCESS_XENOBIOLOGY,
-					ACCESS_MECH_SCIENCE, ACCESS_MINERAL_STOREROOM, ACCESS_TECH_STORAGE, ACCESS_GENETICS, ACCESS_AUX_BASE)
+					ACCESS_MECH_SCIENCE, ACCESS_MINERAL_STOREROOM, ACCESS_TECH_STORAGE, ACCESS_GENETICS, ACCESS_AUX_BASE, ACCESS_WEAPONS)
 	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ROBOTICS, ACCESS_RND, ACCESS_ORDNANCE, ACCESS_ORDNANCE_STORAGE, ACCESS_RESEARCH, ACCESS_XENOBIOLOGY,
-					ACCESS_MECH_SCIENCE, ACCESS_MINERAL_STOREROOM, ACCESS_TECH_STORAGE, ACCESS_GENETICS, ACCESS_AUX_BASE)
+					ACCESS_MECH_SCIENCE, ACCESS_MINERAL_STOREROOM, ACCESS_TECH_STORAGE, ACCESS_GENETICS, ACCESS_AUX_BASE, ACCESS_WEAPONS)
 	config_job = "science_guard"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_RD, ACCESS_CHANGE_IDS)
 	job = /datum/job/science_guard
@@ -244,7 +244,7 @@
 	name = "Bouncer" // That ID looks a little suspect, pal. You ain't on the list, beat it.
 	jobtype = /datum/job/bouncer
 
-	belt = /obj/item/pda/bar
+	belt = /obj/item/modular_computer/tablet/pda/bar
 	ears = /obj/item/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/misc/bouncer
 	shoes = /obj/item/clothing/shoes/sneakers/black
@@ -269,8 +269,8 @@
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_bouncer"
 	sechud_icon_state = SECHUD_BOUNCER
-	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
-	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE, ACCESS_SERVICE)
+	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE, ACCESS_WEAPONS)
+	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE, ACCESS_SERVICE, ACCESS_WEAPONS)
 	config_job = "bouncer"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
 	job = /datum/job/bouncer
@@ -318,7 +318,7 @@
 	name = "Customs Agent"
 	jobtype = /datum/job/customs_agent
 
-	belt = /obj/item/pda/cargo
+	belt = /obj/item/modular_computer/tablet/pda/cargo
 	ears = /obj/item/radio/headset/headset_cargo
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent
@@ -337,8 +337,8 @@
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_customs"
 	sechud_icon_state = SECHUD_CUSTOMS_AGENT
-	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM)
-	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM)
+	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
+	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
 	config_job = "customs_agent"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_QM, ACCESS_CHANGE_IDS)
 	job = /datum/job/customs_agent
@@ -386,7 +386,7 @@
 	name = "Engineering Guard"
 	jobtype = /datum/job/engineering_guard
 
-	belt = /obj/item/pda/engineering
+	belt = /obj/item/modular_computer/tablet/pda/engineering
 	ears = /obj/item/radio/headset/headset_eng
 	shoes = /obj/item/clothing/shoes/workboots
 	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard
@@ -406,9 +406,9 @@
 	trim_state = "trim_engiguard"
 	sechud_icon_state = SECHUD_ENGINEERING_GUARD
 	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE, ACCESS_AUX_BASE,
-					ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM)
+					ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
 	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE, ACCESS_AUX_BASE,
-					ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM)
+					ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
 	config_job = "engineering_guard"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CE, ACCESS_CHANGE_IDS)
 	job = /datum/job/engineering_guard

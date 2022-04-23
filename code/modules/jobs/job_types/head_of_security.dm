@@ -52,12 +52,12 @@
 	id_trim = /datum/id_trim/job/head_of_security
 	uniform = /obj/item/clothing/under/rank/security/head_of_security
 	suit = /obj/item/clothing/suit/armor/hos/trenchcoat/black //SKYRAT EDIT CHANGE
-	suit_store = /obj/item/gun/energy/e_gun
+	//suit_store = /obj/item/gun/energy/e_gun SKYRAT EDIT REMOVAL
 	backpack_contents = list(
 		/obj/item/evidencebag = 1,
-		/obj/item/modular_computer/tablet/preset/advanced/command = 1,
+		/obj/item/storage/box/gunset/glock18_hos = 1, // SKYRAT EDIT ADDITION
 		)
-	belt = /obj/item/pda/heads/hos
+	belt = /obj/item/modular_computer/tablet/pda/heads/hos
 	ears = /obj/item/radio/headset/heads/hos/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	gloves = /obj/item/clothing/gloves/color/black/security //SKYRAT EDIT CHANGE

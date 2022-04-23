@@ -344,7 +344,7 @@
 
 	var/lums = holder_turf.get_lumcount()
 
-	if(lums > 0.2)
+	if(lums > LIGHTING_TILE_IS_DARK)
 		SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "nyctophobia")
 		return
 
@@ -794,6 +794,9 @@
 		return
 
 	if(IS_IN_STASIS(quirk_holder))
+		return
+
+	if(quirk_holder.stat == DEAD)
 		return
 
 	var/mob/living/carbon/carbon_quirk_holder = quirk_holder
