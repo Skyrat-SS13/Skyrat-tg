@@ -13,7 +13,7 @@
 	/// How much the stock is multiplied by
 	var/stock_mult = 1
 	/// How much will be added to a company's reputation on-buy
-	var/interest_addition
+	var/interest_addition = COMPANY_INTEREST_GUN
 	/// What interest level is needed to purchase the armament, set to 0 for none
 	var/interest_required = 0
 	/// If this requires a multitooled console to be visible

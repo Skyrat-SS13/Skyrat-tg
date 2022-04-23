@@ -16,8 +16,8 @@
 
 //////////////////GLOCK
 /obj/item/gun/ballistic/automatic/pistol/g17
-	name = "\improper Glock-17"
-	desc = "A weapon from bygone times, this has been made to feel and look exactly like the 21st century version. Let's hope it's more reliable. Chambered in 9mm."
+	name = "\improper GK-17"
+	desc = "A weapon from bygone times, this has been made to look like an old, blocky firearm from the 21st century. Let's hope it's more reliable. Chambered in 9mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -55,7 +55,7 @@
 	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/gun/ballistic/automatic/pistol/g18
-	name = "\improper Glock-18"
+	name = "\improper GK-18"
 	desc = "A CFA-made burst firing cheap polymer pistol chambered in 9mm. Its heavy duty barrel affects firerate."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock_spec"

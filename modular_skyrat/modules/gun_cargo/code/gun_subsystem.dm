@@ -78,9 +78,8 @@ SUBSYSTEM_DEF(gun_companies)
 		if(company_datum in unpurchased_companies)
 			interest_knockdown *= 0.5
 
-		company_datum.interest -= interest_knockdown
-		if(company_datum.interest < 0)
-			company_datum.interest = 0
+		company_datum.interest = max(company_datum.interest - interest_knockdown, 0)
+
 		// determining what heirarchy of interest the company falls in
 		if(company_datum.interest < interest_threshold)
 			passed_interest_tier[company_datum] = FAILED_INTEREST

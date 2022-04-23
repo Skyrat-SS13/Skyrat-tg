@@ -397,7 +397,7 @@
 		created_order = new(created_pack, name, rank, ckey, paying_account = buyer, reason = reason)
 	else
 		created_order = new(created_pack, name, rank, ckey, reason = reason)
-	created_order.interest_addition = armament_entry.interest_addition
+	created_order.interest_addition = 1 * ammo_purchase_num
 	var/datum/computer_file/program/budgetorders/file_p = parent_prog
 	if(console_state == CARGO_CONSOLE)
 		created_order.generateRequisition(get_turf(parent))
