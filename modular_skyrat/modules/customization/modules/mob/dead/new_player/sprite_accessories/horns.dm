@@ -52,9 +52,11 @@
 /datum/sprite_accessory/horns/broken
 	name = "Broken"
 	icon_state = "broken"
+
 /datum/sprite_accessory/horns/broken_right
 	name = "Broken(right)"
 	icon_state = "rbroken"
+
 /datum/sprite_accessory/horns/broken_left
 	name = "Broken(left)"
 	icon_state = "lbroken"
