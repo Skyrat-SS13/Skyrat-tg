@@ -77,7 +77,6 @@
 		/mob/living/carbon/proc/emote_crack,
 		/mob/living/carbon/proc/emote_circle,
 		/mob/living/carbon/proc/emote_moan,
-		///mob/living/carbon/proc/emote_noogie,
 		/mob/living/carbon/proc/emote_slap,
 		/mob/living/carbon/proc/emote_wink
 	)
@@ -86,10 +85,8 @@
 	// code\modules\mob\living\carbon\human\emote.dm
 	var/static/list/human_emotes = list(
 		/mob/living/carbon/human/proc/emote_cry,
-		///mob/living/carbon/human/proc/emote_dap,
 		/mob/living/carbon/human/proc/emote_eyebrow,
 		/mob/living/carbon/human/proc/emote_grumble,
-		///mob/living/carbon/human/proc/emote_hug,
 		/mob/living/carbon/human/proc/emote_mumble,
 		/mob/living/carbon/human/proc/emote_pale,
 		/mob/living/carbon/human/proc/emote_raise,
@@ -186,7 +183,7 @@
 		/mob/living/proc/emote_ping,
 		/mob/living/proc/emote_sad,
 		/mob/living/proc/emote_warn,
-		/mob/living/proc/emote_slowclaps
+		/mob/living/proc/emote_slowclap
 	)
 	all_emotes += synth_emotes
 	var/static/list/allowed_species_synth = list(
@@ -195,6 +192,20 @@
 		/datum/species/robotic/synthetic_human,
 		/datum/species/robotic/synthetic_mammal
 	)
+
+	// modular_skyrat\modules\emotes\code\additionalemotes\overlay_emote.dm
+	var/static/list/skyrat_living_emotes_overlay = list(
+		/mob/living/proc/emote_sweatdrop,
+		/mob/living/proc/emote_exclaim,
+		/mob/living/proc/emote_question,
+		/mob/living/proc/emote_realize,
+		/mob/living/proc/emote_annoyed,
+		/mob/living/proc/emote_glasses
+	)
+	all_emotes += skyrat_living_emotes_overlay
+
+	// modular_skyrat\modules\emotes\code\additionalemotes\turf_emote.dm
+	all_emotes += /mob/living/proc/emote_mark_turf
 
 	// Clearing all emotes before applying new ones
 	verbs -= all_emotes
@@ -215,6 +226,8 @@
 		if(isliving(src))
 			available_emotes += living_emotes
 			available_emotes += skyrat_living_emotes
+			available_emotes += skyrat_living_emotes_overlay
+			available_emotes += /mob/living/proc/emote_mark_turf
 		if(iscarbon(src))
 			available_emotes += carbon_emotes
 		if(ishuman(src))
@@ -476,7 +489,7 @@
 	usr.emote("twitch", intentional = TRUE)
 
 /mob/living/proc/emote_twitch_s()
-	set name = "~ Slight Twitch"
+	set name = "~ Twitch Slightly"
 	set category = "Emotes"
 	usr.emote("twitch_s", intentional = TRUE)
 
@@ -533,7 +546,7 @@
 	usr.emote("blink", intentional = TRUE)
 
 /mob/living/carbon/proc/emote_blink_r()
-	set name = "~ Blink Rapid"
+	set name = "~ Blink Rapidly"
 	set category = "Emotes"
 	usr.emote("blink_r", intentional = TRUE)
 
@@ -552,11 +565,6 @@
 	set category = "Emotes"
 	usr.emote("moan", intentional = TRUE)
 
-/mob/living/carbon/proc/emote_noogie()
-	set name = "~ Noogie"
-	set category = "Emotes"
-	usr.emote("noogie", intentional = TRUE)
-
 /mob/living/carbon/proc/emote_slap()
 	set name = "| Slap |"
 	set category = "Emotes"
@@ -574,11 +582,6 @@
 	set category = "Emotes"
 	usr.emote("cry", intentional = TRUE)
 
-/mob/living/carbon/human/proc/emote_dap()
-	set name = "~ Dap"
-	set category = "Emotes"
-	usr.emote("dap", intentional = TRUE)
-
 /mob/living/carbon/human/proc/emote_eyebrow()
 	set name = "~ Eyebrow"
 	set category = "Emotes"
@@ -588,11 +591,6 @@
 	set name = "~ Grumble"
 	set category = "Emotes"
 	usr.emote("grumble", intentional = TRUE)
-
-/mob/living/carbon/human/proc/emote_hug()
-	set name = "~ Hug"
-	set category = "Emotes"
-	usr.emote("hug", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_mumble()
 	set name = "~ Mumble"
@@ -605,7 +603,7 @@
 	usr.emote("pale", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_raise()
-	set name = "~ Raise hand"
+	set name = "~ Raise Hand"
 	set category = "Emotes"
 	usr.emote("raise", intentional = TRUE)
 
@@ -637,7 +635,7 @@
 	usr.emote("peep", intentional = TRUE)
 
 /mob/living/proc/emote_peep2()
-	set name = "> Peep twice"
+	set name = "> Peep Twice"
 	set category = "Emotes+"
 	usr.emote("peep2", intentional = TRUE)
 
@@ -647,12 +645,12 @@
 	usr.emote("snap", intentional = TRUE)
 
 /mob/living/proc/emote_snap2()
-	set name = "> Snap twice"
+	set name = "> Snap Twice"
 	set category = "Emotes+"
 	usr.emote("snap2", intentional = TRUE)
 
 /mob/living/proc/emote_snap3()
-	set name = "> Snap thrice"
+	set name = "> Snap Thrice"
 	set category = "Emotes+"
 	usr.emote("snap3", intentional = TRUE)
 
@@ -672,12 +670,12 @@
 	usr.emote("weh", intentional = TRUE)
 
 /mob/living/proc/emote_mothsqueak()
-	set name = "> Mothsqueak"
+	set name = "> Moth Squeak"
 	set category = "Emotes+"
 	usr.emote("msqueak", intentional = TRUE)
 
 /mob/living/proc/emote_mousesqueak()
-	set name = "> Mousesqueak"
+	set name = "> Mouse Squeak"
 	set category = "Emotes+"
 	usr.emote("squeak", intentional = TRUE)
 
@@ -727,17 +725,17 @@
 	usr.emote("clap1", intentional = TRUE)
 
 /mob/living/proc/emote_headtilt()
-	set name = "~ Head tilt"
+	set name = "~ Head Hilt"
 	set category = "Emotes+"
 	usr.emote("tilt", intentional = TRUE)
 
 /mob/living/proc/emote_blink2()
-	set name = "~ Blink twice"
+	set name = "~ Blink Twice"
 	set category = "Emotes+"
 	usr.emote("blink2", intentional = TRUE)
 
 /mob/living/proc/emote_rblink()
-	set name = "~ Blink rapid"
+	set name = "~ Blink Rapidly"
 	set category = "Emotes+"
 	usr.emote("rblink", intentional = TRUE)
 
@@ -767,7 +765,7 @@
 	usr.emote("etwitch", intentional = TRUE)
 
 /mob/living/proc/emote_clear()
-	set name = "~ Clear throat"
+	set name = "~ Clear Throat"
 	set category = "Emotes+"
 	usr.emote("clear", intentional = TRUE)
 
@@ -782,7 +780,7 @@
 	usr.emote("caw", intentional = TRUE)
 
 /mob/living/proc/emote_caw2()
-	set name = "> Caw twice"
+	set name = "> Caw-caw"
 	set category = "Emotes+"
 	usr.emote("caw2", intentional = TRUE)
 
@@ -981,7 +979,44 @@
 	set category = "Emotes"
 	usr.emote("warn", intentional = TRUE)
 
-/mob/living/proc/emote_slowclaps()
+/mob/living/proc/emote_slowclap()
 	set name = "< Slow Clap >"
 	set category = "Emotes"
 	usr.emote("slowclap", intentional = TRUE)
+
+// modular_skyrat\modules\emotes\code\additionalemotes\overlay_emote.dm
+/mob/living/proc/emote_sweatdrop()
+	set name = "| Sweatdrop |"
+	set category = "Emotes+"
+	usr.emote("sweatdrop", intentional = TRUE)
+
+/mob/living/proc/emote_exclaim()
+	set name = "| Exclaim |"
+	set category = "Emotes+"
+	usr.emote("exclaim", intentional = TRUE)
+
+/mob/living/proc/emote_question()
+	set name = "| Question |"
+	set category = "Emotes+"
+	usr.emote("question", intentional = TRUE)
+
+/mob/living/proc/emote_realize()
+	set name = "| Realize |"
+	set category = "Emotes+"
+	usr.emote("realize", intentional = TRUE)
+
+/mob/living/proc/emote_annoyed()
+	set name = "| Annoyed |"
+	set category = "Emotes+"
+	usr.emote("annoyed", intentional = TRUE)
+
+/mob/living/proc/emote_glasses()
+	set name = "| Adjust Glasses |"
+	set category = "Emotes+"
+	usr.emote("glasses", intentional = TRUE)
+
+//modular_skyrat\modules\emotes\code\additionalemotes\turf_emote.dm
+/mob/living/proc/emote_mark_turf()
+	set name = "| Mark Turf |"
+	set category = "Emotes+"
+	usr.emote("turf", intentional = TRUE)
