@@ -1,17 +1,38 @@
 import { sortBy } from 'common/collections';
 import { useBackend } from '../backend';
+<<<<<<< HEAD
 import { Box, Button, Section, Table, Icon } from '../components'; // SKYRAT EDIT - ORIGINAL: import { Box, Button, Section, Colorbox Table }
+=======
+import { Box, Button, Section, Table, Icon } from '../components';
+>>>>>>> 2e767c5300d (Adds Icons to Crew Monitor Console (#66433))
 import { COLORS } from '../constants';
 import { Window } from '../layouts';
 
 
 const HEALTH_COLOR_BY_LEVEL = [
   '#17d568',
+<<<<<<< HEAD
   '#c4cf2d', // SKYRAT EDIT - Original'#2ecc71' - moved to make it visually different,
   '#e67e22',
   '#ed5100',
   '#e74c3c',
   '#801308', // SKYRAT EDIT - Original'#ed2814' - darker to help distinguish better,
+=======
+  '#c4cf2d', 
+  '#e67e22',
+  '#ed5100',
+  '#e74c3c',
+  '#801308', 
+];
+
+const HEALTH_ICON_BY_LEVEL = [
+  'heart',
+  'heart',
+  'heart',
+  'heart',
+  'heartbeat',
+  'skull',
+>>>>>>> 2e767c5300d (Adds Icons to Crew Monitor Console (#66433))
 ];
 // SKYRAT ADDITION  - Icon status list
 const HEALTH_ICON_BY_LEVEL = [
@@ -51,10 +72,16 @@ const jobToColor = jobId => {
   return COLORS.department.other;
 };
 
+<<<<<<< HEAD
 // SKYRAT EDIT - START:
 const healthToAttribute = (oxy, tox, burn, brute, attributeList) => {
   const healthSum = oxy + tox + burn + brute;
   const level = Math.min(Math.max(Math.ceil(healthSum / 31), 0), 5);
+=======
+const healthToAttribute = (oxy, tox, burn, brute, attributeList) => {
+  const healthSum = oxy + tox + burn + brute;
+  const level = Math.min(Math.max(Math.ceil(healthSum / 25), 0), 5);
+>>>>>>> 2e767c5300d (Adds Icons to Crew Monitor Console (#66433))
   return attributeList[level];
 };
 // SKRAY EDIT - END:
@@ -102,11 +129,19 @@ const CrewTable = (props, context) => {
         <Table.Cell bold collapsing textAlign="center">
           Vitals
         </Table.Cell>
+<<<<<<< HEAD
         <Table.Cell bold collapsing textAlign="center">{/* SKYRAT EDIT - Centers the text*/}
           Position
         </Table.Cell>
         {(
           <Table.Cell bold collapsing textAlign="center">{/* SKYRAT EDIT - Centers the text and removes old code blocking it from appearing*/}
+=======
+        <Table.Cell bold collapsing textAlign="center">
+          Position
+        </Table.Cell>
+        {!!data.link_allowed && (
+          <Table.Cell bold collapsing textAlign="center">
+>>>>>>> 2e767c5300d (Adds Icons to Crew Monitor Console (#66433))
             Tracking
           </Table.Cell>
         )}
@@ -145,11 +180,14 @@ const CrewTableEntry = (props, context) => {
       </Table.Cell>
       {/* SKYRAT EDIT START - Displaying robotic species Icon */}
       <Table.Cell collapsing textAlign="center">
+<<<<<<< HEAD
         {is_robot ? <Icon name="wrench" color="#B7410E" size={1} /> : ""}
       </Table.Cell>
       {/* SKYRAT EDIT END */}
       <Table.Cell collapsing textAlign="center">
         {/* SKYRAT EDIT START - Displaying status Icons */}
+=======
+>>>>>>> 2e767c5300d (Adds Icons to Crew Monitor Console (#66433))
         {oxydam !== undefined ? (
           <Icon
             name={healthToAttribute(
@@ -169,9 +207,14 @@ const CrewTableEntry = (props, context) => {
           life_status ? (
             <Icon name="heart" color="#17d568" size={1} />
           ) : (
+<<<<<<< HEAD
             <Icon name="skull" color="#B7410E" size={1} />
           ))}
         {/* SKYRAT EDIT END */}
+=======
+            <Icon name="skull" color="#801308" size={1} />
+          ))}
+>>>>>>> 2e767c5300d (Adds Icons to Crew Monitor Console (#66433))
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
         {oxydam !== undefined ? (
@@ -189,7 +232,11 @@ const CrewTableEntry = (props, context) => {
         )}
       </Table.Cell>
       <Table.Cell>
+<<<<<<< HEAD
         {area !== undefined ? area : <Icon name="question" color="#ffffff" size={1} /> } {/* SKYRAT EDIT - Icon from text 'N/A*/}
+=======
+        {area !== undefined ? area : <Icon name="question" color="#ffffff" size={1} />}
+>>>>>>> 2e767c5300d (Adds Icons to Crew Monitor Console (#66433))
       </Table.Cell>
       {!!link_allowed && (
         <Table.Cell collapsing>
