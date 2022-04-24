@@ -185,6 +185,7 @@
 		"spade",
 		"spraycan",
 		"swab",
+		"tile_sprayer",
 		"tscanner",
 		"welding_helmet",
 		"welding_tool",
@@ -219,6 +220,7 @@
 		"dropper",
 		"hemostat",
 		"large_beaker",
+		"pillbottle",
 		"plumbing_rcd",
 		"portable_chem_mixer",
 		"retractor",
@@ -268,6 +270,7 @@
 		"comp_index",
 		"comp_index_assoc",
 		"comp_index_table",
+		"comp_laserpointer",
 		"comp_length",
 		"comp_light",
 		"comp_list_add",
@@ -889,6 +892,7 @@
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
 		"borg_upgrade_clamp",
+		"borg_upgrade_brush",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
@@ -1609,7 +1613,7 @@
 		"mod_plating_security",
 		"mod_visor_sechud",
 		"mod_stealth",
-		"mod_holster",
+		"mod_mag_harness",
 		"mod_pathfinder",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
@@ -2089,8 +2093,8 @@
 
 /datum/techweb_node/syndicate_basic/New() //Crappy way of making syndicate gear decon supported until there's another way.
 	. = ..()
-	if(!SSassets.initialized)
-		RegisterSignal(SSassets, COMSIG_SUBSYSTEM_POST_INITIALIZE, .proc/register_uplink_items)
+	if(!SSearly_assets.initialized)
+		RegisterSignal(SSearly_assets, COMSIG_SUBSYSTEM_POST_INITIALIZE, .proc/register_uplink_items)
 	else
 		register_uplink_items()
 
@@ -2100,7 +2104,7 @@
  */
 /datum/techweb_node/syndicate_basic/proc/register_uplink_items()
 	SIGNAL_HANDLER
-	UnregisterSignal(SSassets, COMSIG_SUBSYSTEM_POST_INITIALIZE)
+	UnregisterSignal(SSearly_assets, COMSIG_SUBSYSTEM_POST_INITIALIZE)
 	boost_item_paths = list()
 	for(var/datum/uplink_item/item_path as anything in SStraitor.uplink_items_by_type)
 		var/datum/uplink_item/item = SStraitor.uplink_items_by_type[item_path]

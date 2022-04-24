@@ -72,9 +72,12 @@
 	..()
 
 /obj/machinery/porta_turret/syndicate/pod/toolbox/mesa
-	max_integrity = 100
+	stun_projectile = /obj/projectile/bullet/advanced/b9mm/rubber
+	lethal_projectile = /obj/projectile/bullet/c9mm/ap
+	max_integrity = 150
+	req_access = list(ACCESS_AWAY_SEC)
 	faction = list(FACTION_HECU)
-	shot_delay = 0.75
+	shot_delay = 0.5
 
 
 /obj/machinery/porta_turret/black_mesa/friendly

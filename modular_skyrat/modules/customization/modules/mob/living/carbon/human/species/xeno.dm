@@ -4,6 +4,7 @@
 	id = SPECIES_XENO
 	say_mod = "hisses"
 	default_color = "#00FF00"
+	family_heirlooms = list(/obj/item/toy/plush/rouny, /obj/item/toy/toy_xeno,)
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -41,3 +42,9 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/xenohybrid,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/xenohybrid,
 	)
+
+/datum/species/xeno/get_species_description()
+	return placeholder_description
+
+/datum/species/xeno/get_species_lore()
+	return list(placeholder_lore)

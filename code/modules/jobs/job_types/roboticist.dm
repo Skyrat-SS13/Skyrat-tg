@@ -50,7 +50,7 @@
 		)
 	belt = /obj/item/storage/belt/utility/full
 	ears = /obj/item/radio/headset/headset_sci
-	l_pocket = /obj/item/pda/roboticist
+	l_pocket = /obj/item/modular_computer/tablet/pda/roboticist
 
 	backpack = /obj/item/storage/backpack/science/robo //SKYRAT CHANGE - Roboticist Bags (CHANGE)
 	satchel = /obj/item/storage/backpack/satchel/tox/robo //SKYRAT CHANGE - Roboticist Bags (CHANGE)

@@ -288,9 +288,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/vampire
 	mutant_bodyparts = list()
 
-/datum/species/hemophage
-	mutant_bodyparts = list()
-
 /datum/species/plasmaman
 	mutant_bodyparts = list()
 	can_have_genitals = FALSE
@@ -435,17 +432,14 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 		// eyes
 		if(!(NOEYESPRITES in species_traits))
-			var/obj/item/organ/eyes/E = species_human.getorganslot(ORGAN_SLOT_EYES)
+			var/obj/item/organ/eyes/eyes = species_human.getorganslot(ORGAN_SLOT_EYES)
 			var/mutable_appearance/eye_overlay
 			var/mutable_appearance/eye_emissive
 			var/eye_icon = eyes_icon || 'icons/mob/human_face.dmi'
-			if(!E)
-				eye_overlay = mutable_appearance(eye_icon, "eyes_missing", -BODY_LAYER)
-			else
-				eye_overlay = mutable_appearance(eye_icon, E.eye_icon_state, -BODY_LAYER)
-				if (E.is_emissive)
-					eye_emissive = emissive_appearance_copy(eye_overlay)
-			if((EYECOLOR in species_traits) && E)
+			eyes ? (eye_overlay = mutable_appearance(eye_icon, eyes.eye_icon_state, -eyes.eyes_layer)) : (eye_overlay = mutable_appearance(eye_icon, "eyes_missing", -eyes?.eyes_layer))
+			if(eyes?.is_emissive)
+				eye_emissive = emissive_appearance_copy(eye_overlay)
+			if((EYECOLOR in species_traits) && eyes)
 				eye_overlay.color = species_human.eye_color
 			if(OFFSET_FACE in species_human.dna.species.offset_features)
 				eye_overlay.pixel_x += species_human.dna.species.offset_features[OFFSET_FACE][1]

@@ -16,7 +16,6 @@
 		FACEHAIR
 	)
 	inherent_traits = list(
-		TRAIT_RESISTCOLD,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
@@ -43,6 +42,11 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	learnable_languages = list(/datum/language/common, /datum/language/vox, /datum/language/schechi)
 	digitigrade_customization = DIGITIGRADE_OPTIONAL
+	
+		// Vox are cold resistant, but also heat sensitive
+	bodytemp_heat_damage_limit = (BODYTEMP_HEAT_DAMAGE_LIMIT - 15) // being cold resistant, should make you heat sensitive actual effect ingame isn't much
+	bodytemp_cold_damage_limit = (BODYTEMP_COLD_DAMAGE_LIMIT + 30)
+	
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/vox,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/vox,
@@ -109,3 +113,9 @@
 
 /datum/species/vox/set_custom_worn_icon(item_slot, obj/item/item, icon/icon)
 	item.worn_icon_vox = icon
+
+/datum/species/vox/get_species_description()
+	return placeholder_description
+
+/datum/species/vox/get_species_lore()
+	return list(placeholder_lore)
