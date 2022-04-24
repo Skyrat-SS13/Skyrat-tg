@@ -1,3 +1,16 @@
+/obj/item/circuitboard/computer/dispatch
+	name = "Warden Dispatch Console (Computer Board)"
+	greyscale_colors = CIRCUIT_COLOR_SECURITY
+	build_path = /obj/machinery/computer/dispatch
+
+/datum/design/board/dispatch
+	name = "Computer Design (Dispatch Console)"
+	desc = "Allows for the construction of circuit boards used to build security dispatch computers."
+	id = "dispatch"
+	build_path = /obj/item/circuitboard/computer/dispatch
+	category = list("Computer Boards")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
 /obj/machinery/computer/dispatch
 	name = "dispatch console"
 	desc = " Used by the warden to monitor the station and assign orders and squads to Security."

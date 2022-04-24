@@ -66,6 +66,7 @@
 		"turbine_part_stator",
 		// SKYRAT EDIT BEGIN - replace this when i figure out a good way to fix the modular method
 		"security_pistol_magazine_influence",
+		"dispatch",
 		// SKYRAT EDIT END
 	)
 

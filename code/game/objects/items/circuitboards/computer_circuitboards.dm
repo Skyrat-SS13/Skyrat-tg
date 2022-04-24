@@ -462,11 +462,6 @@
 	greyscale_colors = CIRCUIT_COLOR_SECURITY
 	build_path = /obj/machinery/computer/camera_advanced/syndie
 
-/obj/item/circuitboard/computer/dispatch
-	name = "Warden Dispatch Console (Computer Board)"
-	greyscale_colors = CIRCUIT_COLOR_SECURITY
-	build_path = /obj/machinery/computer/dispatch
-
 //Service
 
 /obj/item/circuitboard/computer/chef_order
