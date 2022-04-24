@@ -69,6 +69,7 @@
 	if(particles)
 		smoke_disappear()
 	else if (!stat && !robot_resting)
+		do_jitter_animation(10)
 		playsound(src, 'modular_skyrat/master_files/sound/effects/robot_smoke.ogg', 50)
 		particles = new /particles/smoke/robot()
 
@@ -99,6 +100,7 @@
 	lifespan = 1 SECONDS
 //	fadein = 0.5 SECONDS
 	fade = 0.75 SECONDS
+	position = list(5, 12, 0)
 	velocity = list(0, 0.2, 0)
 	friction = 0.35
 	scale = 0.5
