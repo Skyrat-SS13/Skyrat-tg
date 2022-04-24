@@ -68,6 +68,7 @@
 	flavour_text = "Cater to visiting guests with your fellow staff, advertise the hotel, and make sure the manager doesn't fire you. Remember, the customer is always right!"
 	important_text = "Do NOT leave the hotel, as that is grounds for contract termination."
 	spawner_job_path = /datum/job/hotel_staff
+	random_appearance = FALSE // SKYRAT EDIT ADDITION
 
 /datum/outfit/hotelstaff
 	name = "Hotel Staff"
