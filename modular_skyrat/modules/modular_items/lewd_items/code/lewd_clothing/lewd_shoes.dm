@@ -114,7 +114,6 @@
 	worn_icon_digi = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_shoes_digi.dmi'
 	equip_delay_other = 60
 	strip_delay = 60
-	slowdown = 1
 
 //it takes time to put them off, do not touch
 /obj/item/clothing/shoes/dominaheels/attack_hand(mob/user)
