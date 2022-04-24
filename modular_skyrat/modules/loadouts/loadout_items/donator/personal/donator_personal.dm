@@ -145,7 +145,7 @@
 /datum/loadout_item/mask/nightlight_mask
 	name = "FAR-14C IRU"
 	item_path = /obj/item/clothing/mask/gas/nightlight
-	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt")
+	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371")
 
 /datum/loadout_item/mask/kindle_mask
 	name = "Kindle's mask"
@@ -178,19 +178,20 @@
 	ckeywhitelist = list("netrakyram")
 	restricted_roles = list(JOB_CAPTAIN)
 
-/datum/loadout_item/under/jumpsuit/kilano_suit
-	name = "black and gold dress uniform"
-	item_path = /obj/item/clothing/under/custom/kilano
+/datum/loadout_item/under/jumpsuit/netra_dress
+	name = "Black and Silver Armored Dress"
+	item_path = /obj/item/clothing/under/rank/security/blueshield/netra
+	ckeywhitelist = list("netrakyram")
+	restricted_roles = list(JOB_CAPTAIN, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY)
+
+/datum/loadout_item/gloves/netra_gloves
+	name = "Black and Silver Gloves"
+	item_path = /obj/item/clothing/gloves/netra
 	ckeywhitelist = list("netrakyram")
 
-/datum/loadout_item/gloves/kilano_gloves
-	name = "black and gold gloves"
-	item_path = /obj/item/clothing/gloves/kilano
-	ckeywhitelist = list("netrakyram")
-
-/datum/loadout_item/shoes/kilano_boots
-	name = "black and gold boots"
-	item_path = /obj/item/clothing/shoes/winterboots/kilano
+/datum/loadout_item/shoes/metra_boots
+	name = "Polished Jackboots"
+	item_path = /obj/item/clothing/shoes/jackboots/netra
 	ckeywhitelist = list("netrakyram")
 
 /datum/loadout_item/neck/kiaracloak
@@ -344,7 +345,7 @@
 /datum/loadout_item/glasses/roseglasses
 	name = "Rose-Colored Glasses"
 	item_path = /obj/item/clothing/glasses/rosecolored
-	ckeywhitelist = list("1ceres", "irrigoimport", "zeskorion", "wizardlywoz", "duckymomo", "samarai1000", "funkyfetusstrikesback", "m97screwsyourparents", "lynxqueen" , "kaynite", "mahalia", "sapphoqueer" )
+	ckeywhitelist = list("1ceres", "irrigoimport", "zeskorion", "wizardlywoz", "duckymomo", "samarai1000", "funkyfetusstrikesback", "m97screwsyourparents", "lynxqueen", "kaynite", "mahalia", "sapphoqueer", "emmakisst", "ceasethebridge", "valorthix" )
 
 /datum/loadout_item/pocket_items/fuzzy_huglicense
 	name = "License To Hug"
@@ -406,3 +407,22 @@
 	name = "Squish-Me-Tesh Plush"
 	item_path = /obj/item/toy/plush/donator/tesh
 	ckeywhitelist = list("tobjv")
+
+/datum/loadout_item/under/jumpsuit/redhosneck
+	name = "Black and Red Turtleneck"
+	item_path = /obj/item/clothing/under/rank/security/head_of_security/alt/roselia
+	ckeywhitelist = list("ultimarifox")
+	restricted_roles = list(JOB_HEAD_OF_SECURITY)
+
+/datum/loadout_item/glasses/redgigagar
+	name = "Red-tinted Giga HUD Gar Glasses"
+	item_path = /obj/item/clothing/glasses/hud/security/sunglasses/gars/giga/roselia
+	ckeywhitelist = list("ultimarifox")
+	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER)
+
+/datum/loadout_item/toys/roselia_plush
+	name = "Obscene Sergal Plushie"
+	item_path = /obj/item/toy/plush/roselia
+	ckeywhitelist = list("ultimarifox")
+
+

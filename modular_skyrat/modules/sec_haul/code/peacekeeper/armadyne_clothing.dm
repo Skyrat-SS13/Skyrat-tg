@@ -85,7 +85,7 @@
 /datum/outfit/armadyne_rep
 	name = "Armadyne Corporate Representative"
 
-	suit_store = /obj/item/pda/security
+	suit_store = /obj/item/modular_computer/tablet/pda/security
 	ears = /obj/item/radio/headset/headset_cent/commander
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
@@ -106,7 +106,7 @@
 /datum/outfit/armadyne_security
 	name = "Armadyne Corporate Security"
 
-	suit_store = /obj/item/pda/security
+	suit_store = /obj/item/modular_computer/tablet/pda/security
 	ears = /obj/item/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne/tactical
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne

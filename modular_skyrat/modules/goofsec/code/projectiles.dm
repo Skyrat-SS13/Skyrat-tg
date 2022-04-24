@@ -49,6 +49,7 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/vintorez)
 	shaded_charge = TRUE
 	cell_type = /obj/item/stock_parts/cell/super
+	company_flag = COMPANY_OLDARMS
 
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/vintorez
 	name = "hardlight bullet vintorez casing"
@@ -85,6 +86,7 @@
 	fire_delay = 10
 	shaded_charge = TRUE
 	cell_type = /obj/item/stock_parts/cell/super
+	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/norwind
 	name = "hardlight bullet norwind casing"
@@ -113,6 +115,8 @@
 	can_bayonet = TRUE
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/ostwind)
 	cell_type = /obj/item/stock_parts/cell/super
+	company_flag = COMPANY_ARMADYNE
+
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/ostwind
 	name = "hardlight bullet norostwindwind casing"
 	projectile_type = /obj/projectile/beam/laser/hardlight_bullet/ostwind
@@ -143,6 +147,7 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/pitbull)
 	shaded_charge = TRUE
 	cell_type = /obj/item/stock_parts/cell/super
+	company_flag = COMPANY_BOLT
 
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/pitbull
 	name = "hardlight bullet pitbull casing"
@@ -171,6 +176,7 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/pcr)
 	shaded_charge = TRUE
 	cell_type = /obj/item/stock_parts/cell/super
+	company_flag = COMPANY_BOLT
 
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/pcr
 	name = "hardlight bullet pcr casing"

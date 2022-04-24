@@ -545,31 +545,33 @@
 	adjust_goggles(user)
 
 // Donation reward for NetraKyram
-/obj/item/clothing/under/custom/kilano
-	name = "black and gold dress uniform"
-	desc = "A light black and gold dress made out some sort of silky material."
+/obj/item/clothing/under/rank/security/blueshield/netra
+	name = "black and silver armored dress"
+	desc = "An ankle length black and silver dress, made out of some shiny synthetic material with inlaid kevlar shards and silver reinforcements, a silver ring surrounds the collar, and it doesn't appear to have a zipper... How does somebody put this thing on anyways?"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	icon_state = "kilanosuit"
+	icon_state = "silver_dress"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	worn_icon_digi = null
 	supports_variations_flags = NONE
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 // Donation reward for NetraKyram
-/obj/item/clothing/gloves/kilano
-	name = "black and gold gloves"
-	desc = "Some black and gold gloves, It seems like they're made to match something."
+/obj/item/clothing/gloves/netra
+	name = "black and silver gloves"
+	desc = "Some black gloves with silver reinforcements, made of a shiny synthetic material."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
-	icon_state = "kilanogloves"
+	icon_state = "silver_dress_gloves"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/hands.dmi'
 
 // Donation reward for NetraKyram
-/obj/item/clothing/shoes/winterboots/kilano
-	name = "black and gold boots"
-	desc = "Some heavy furred boots, why would you need fur on a space station? Seems redundant."
+/obj/item/clothing/shoes/jackboots/netra
+	name = "polished jackboots"
+	desc = "Some standard issue jackboots, spit-shined to a reflective sheen, wreaking of the scent of silicon parade polish."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/shoes.dmi'
-	icon_state = "kilanoboots"
+	icon_state = "silver_dress_boots"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/feet.dmi'
 	supports_variations_flags = NONE
+	uses_advanced_reskins = FALSE
 
 
 /****************LEGACY REWARDS***************/
@@ -1358,3 +1360,19 @@
 	if(isliving(clong))
 		playsound(src, 'sound/effects/bang.ogg', 50, TRUE)
 		return
+
+// Donation reward for ultimarifox
+/obj/item/clothing/under/rank/security/head_of_security/alt/roselia
+	name = "black and red turtleneck"
+	desc = "A black turtleneck with red livery attached. Reminds you of a time before the color blue. It seems padded to hell and back as well."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	icon_state = "hosaltred"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	worn_icon_digi = null
+
+/obj/item/clothing/glasses/hud/security/sunglasses/gars/giga/roselia
+	name = "red-tinted giga HUD gar glasses"
+	desc = "GIGA GAR glasses with a security hud implanted in the lens. Reminds you of a time before the color blue."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
+	icon_state = "supergarsred"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
