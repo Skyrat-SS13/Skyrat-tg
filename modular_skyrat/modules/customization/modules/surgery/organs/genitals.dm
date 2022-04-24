@@ -40,6 +40,12 @@
 	. = ..()
 	update_sprite_suffix()
 
+//Removes ERP organs depending on config
+/obj/item/organ/genital/Insert(mob/living/carbon/M, special, drop_if_replaced)
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		return
+	. = ..()
+
 /obj/item/organ/genital/Remove(mob/living/carbon/M, special = FALSE)
 	. = ..()
 	update_genital_icon_state()
@@ -351,7 +357,7 @@
 		if(GLOB.balls_size_translation[key] == cup)
 			return text2num(key)
 	return 0
-/*
+
 /mob/living/carbon/human/verb/toggle_genitals()
 	set category = "IC"
 	set name = "Expose/Hide genitals"
@@ -380,6 +386,12 @@
 			picked_organ.visibility_preference = gen_vis_trans[picked_visibility]
 			update_body()
 	return
+
+//Removing ERP IC verb depending on config
+/mob/living/carbon/human/Initialize()
+	. = ..()
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		verbs -= /mob/living/carbon/human/verb/toggle_genitals
 
 /mob/living/carbon/human/verb/toggle_arousal()
 	set category = "IC"
@@ -410,4 +422,9 @@
 			picked_organ.update_sprite_suffix()
 			update_body()
 	return
-*/
+
+//Removing ERP IC verb depending on config
+/mob/living/carbon/human/Initialize()
+	. = ..()
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		verbs -= /mob/living/carbon/human/verb/toggle_arousal
