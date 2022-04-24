@@ -82,6 +82,9 @@ require only minor tweaks.
 /// boolean - does this z prevent xray/meson/thermal vision
 #define ZTRAIT_NOXRAY "No X-Ray"
 
+/// boolean - does this z generate a minimap
+#define ZTRAIT_HAS_MINIMAP "Has Minimap"
+
 // number - bombcap is multiplied by this before being applied to bombs
 #define ZTRAIT_BOMBCAP_MULTIPLIER "Bombcap Multiplier"
 
@@ -108,7 +111,7 @@ require only minor tweaks.
 ///Z level traits for CentCom
 #define ZTRAITS_CENTCOM list(ZTRAIT_CENTCOM = TRUE, ZTRAIT_NOPHASE = TRUE)
 ///Z level traits for Space Station 13
-#define ZTRAITS_STATION list(ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_STATION = TRUE)
+#define ZTRAITS_STATION list(ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_STATION = TRUE, ZTRAIT_HAS_MINIMAP = TRUE) // SKYRAT EDIT: Added ZTRAIT_HAS_MINIMAP = TRUE
 ///Z level traits for Deep Space
 #define ZTRAITS_SPACE list(ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_SPACE_RUINS = TRUE)
 ///Z level traits for Lavaland

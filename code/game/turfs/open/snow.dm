@@ -12,6 +12,7 @@
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	turf_flags = CAN_BE_DIRTY_1 | IS_SOLID | NO_RUST | TURF_MINIMAP_HIDE // SKYRAT EDIT ADDITION
 
 /turf/open/misc/snow/Initialize(mapload)
 	. = ..()

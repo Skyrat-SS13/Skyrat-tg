@@ -58,6 +58,10 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define IS_PLAYER_COLORABLE_1 (1<<21)
 /// Whether or not this atom has contextual screentips when hovered OVER
 #define HAS_CONTEXTUAL_SCREENTIPS_1 (1<<22)
+// SKYRAT EDIT BEGIN
+/// Whether or not this atom shows up during minimap generation.
+#define SHOW_ON_MINIMAP_1 (1<<23)
+// SKYRAT EDIT END
 
 // Update flags for [/atom/proc/update_appearance]
 /// Update the atom's name
@@ -92,6 +96,10 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define NO_RUST (1<<5)
 /// Is this turf is "solid". Space and lava aren't for instance
 #define IS_SOLID (1<<6)
+// SKYRAT EDIT BEGIN
+/// Do we render this turf on the minimap?
+#define TURF_MINIMAP_HIDE (1<<7)
+// SKYRAT EDIT END
 
 ////////////////Area flags\\\\\\\\\\\\\\
 /// If it's a valid territory for cult summoning or the CRAB-17 phone to spawn

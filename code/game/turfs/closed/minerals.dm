@@ -30,6 +30,7 @@
 	var/tool_mine_speed = 4 SECONDS
 	///How long it takes to mine this turf without tools, if it's weak.
 	var/hand_mine_speed = 15 SECONDS
+	turf_flags = IS_SOLID | TURF_MINIMAP_HIDE // SKYRAT EDIT ADDITION
 
 /turf/closed/mineral/Initialize(mapload)
 	. = ..()

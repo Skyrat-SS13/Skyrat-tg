@@ -6,7 +6,7 @@
 	layer = ABOVE_OBJ_LAYER //Just above doors
 	pressure_resistance = 4*ONE_ATMOSPHERE
 	anchored = TRUE //initially is 0 for tile smoothing
-	flags_1 = ON_BORDER_1
+	flags_1 = ON_BORDER_1 | SHOW_ON_MINIMAP_1 // SKYRAT EDIT ADDITION: added SHOW_ON_MINIMAP_1
 	max_integrity = 25
 	can_be_unanchored = TRUE
 	resistance_flags = ACID_PROOF
@@ -589,7 +589,7 @@
 	base_icon_state = "window"
 	max_integrity = 50
 	fulltile = TRUE
-	flags_1 = PREVENT_CLICK_UNDER_1
+	flags_1 = PREVENT_CLICK_UNDER_1 | SHOW_ON_MINIMAP_1 // SKYRAT EDIT ADDITION: added SHOW_ON_MINIMAP_1
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_WINDOW_FULLTILE)
 	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE)
@@ -604,7 +604,7 @@
 	base_icon_state = "plasma_window"
 	max_integrity = 300
 	fulltile = TRUE
-	flags_1 = PREVENT_CLICK_UNDER_1
+	flags_1 = PREVENT_CLICK_UNDER_1 | SHOW_ON_MINIMAP_1 // SKYRAT EDIT ADDITION: added SHOW_ON_MINIMAP_1
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_WINDOW_FULLTILE)
 	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE)
@@ -620,7 +620,7 @@
 	state = RWINDOW_SECURE
 	max_integrity = 1000
 	fulltile = TRUE
-	flags_1 = PREVENT_CLICK_UNDER_1
+	flags_1 = PREVENT_CLICK_UNDER_1 | SHOW_ON_MINIMAP_1 // SKYRAT EDIT ADDITION: added SHOW_ON_MINIMAP_1
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_WINDOW_FULLTILE)
 	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE)
@@ -636,7 +636,7 @@
 	base_icon_state = "reinforced_window"
 	max_integrity = 150
 	fulltile = TRUE
-	flags_1 = PREVENT_CLICK_UNDER_1
+	flags_1 = PREVENT_CLICK_UNDER_1 | SHOW_ON_MINIMAP_1 // SKYRAT EDIT ADDITION: added SHOW_ON_MINIMAP_1
 	state = RWINDOW_SECURE
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_WINDOW_FULLTILE)
@@ -652,7 +652,7 @@
 	icon_state = "tinted_window-0"
 	base_icon_state = "tinted_window"
 	fulltile = TRUE
-	flags_1 = PREVENT_CLICK_UNDER_1
+	flags_1 = PREVENT_CLICK_UNDER_1 | SHOW_ON_MINIMAP_1 // SKYRAT EDIT ADDITION: added SHOW_ON_MINIMAP_1
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_WINDOW_FULLTILE)
 	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE)
@@ -676,7 +676,7 @@
 	wtype = "shuttle"
 	reinf = TRUE
 	fulltile = TRUE
-	flags_1 = PREVENT_CLICK_UNDER_1
+	flags_1 = PREVENT_CLICK_UNDER_1 | SHOW_ON_MINIMAP_1 // SKYRAT EDIT ADDITION: added SHOW_ON_MINIMAP_1
 	reinf = TRUE
 	heat_resistance = 1600
 	armor = list(MELEE = 90, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 50, BIO = 100, FIRE = 80, ACID = 100)
@@ -706,7 +706,7 @@
 	max_integrity = 1200
 	wtype = "shuttle"
 	fulltile = TRUE
-	flags_1 = PREVENT_CLICK_UNDER_1
+	flags_1 = PREVENT_CLICK_UNDER_1 | SHOW_ON_MINIMAP_1 // SKYRAT EDIT ADDITION: added SHOW_ON_MINIMAP_1
 	heat_resistance = 1600
 	armor = list(MELEE = 95, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 50, BIO = 100, FIRE = 80, ACID = 100)
 	smoothing_flags = SMOOTH_BITMASK
@@ -731,7 +731,7 @@
 	opacity = TRUE
 	max_integrity = 15
 	fulltile = TRUE
-	flags_1 = PREVENT_CLICK_UNDER_1
+	flags_1 = PREVENT_CLICK_UNDER_1 | SHOW_ON_MINIMAP_1 // SKYRAT EDIT ADDITION: added SHOW_ON_MINIMAP_1
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_PAPERFRAME)
 	canSmoothWith = list(SMOOTH_GROUP_PAPERFRAME)
@@ -820,7 +820,7 @@
 	smoothing_groups = list(SMOOTH_GROUP_WINDOW_FULLTILE, SMOOTH_GROUP_WINDOW_FULLTILE_BRONZE)
 	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE_BRONZE)
 	fulltile = TRUE
-	flags_1 = PREVENT_CLICK_UNDER_1
+	flags_1 = PREVENT_CLICK_UNDER_1 | SHOW_ON_MINIMAP_1 // SKYRAT EDIT ADDITION: added SHOW_ON_MINIMAP_1
 	max_integrity = 50
 	glass_amount = 2
 

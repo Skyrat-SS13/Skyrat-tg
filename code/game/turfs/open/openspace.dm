@@ -19,6 +19,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	underfloor_accessibility = UNDERFLOOR_INTERACTABLE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	pathing_pass_method = TURF_PATHING_PASS_PROC
+	turf_flags = TURF_MINIMAP_HIDE // SKYRAT EDIT ADDITION
 	var/can_cover_up = TRUE
 	var/can_build_on = TRUE
 
