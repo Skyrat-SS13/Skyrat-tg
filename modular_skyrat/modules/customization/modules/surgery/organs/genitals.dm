@@ -89,6 +89,7 @@
 	slot = ORGAN_SLOT_PENIS
 	mutantpart_key = "penis"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
+	drop_when_organ_spilling = FALSE
 	var/girth = 9
 	var/sheath = SHEATH_NONE
 
@@ -180,6 +181,7 @@
 	slot = ORGAN_SLOT_TESTICLES
 	aroused = AROUSAL_CANT
 	genital_location = GROIN
+	drop_when_organ_spilling = FALSE
 
 /obj/item/organ/genital/testicles/update_genital_icon_state()
 	var/measured_size = clamp(genital_size, 1, 3)
@@ -215,6 +217,7 @@
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_VAGINA
 	genital_location = GROIN
+	drop_when_organ_spilling = FALSE
 
 /obj/item/organ/genital/vagina/get_description_string(datum/sprite_accessory/genital/gas)
 	var/returned_string = "You see a [lowertext(genital_name)] vagina."
@@ -247,6 +250,7 @@
 	visibility_preference = GENITAL_SKIP_VISIBILITY
 	aroused = AROUSAL_CANT
 	genital_location = GROIN
+	drop_when_organ_spilling = FALSE
 
 /obj/item/organ/genital/anus
 	name = "anus"
@@ -258,6 +262,7 @@
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_ANUS
 	genital_location = GROIN
+	drop_when_organ_spilling = FALSE
 
 /obj/item/organ/genital/anus/get_description_string(datum/sprite_accessory/genital/gas)
 	var/returned_string = "You see an [lowertext(genital_name)]."
@@ -278,6 +283,7 @@
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_BREASTS
 	genital_location = CHEST
+	drop_when_organ_spilling = FALSE
 	var/lactates = FALSE
 
 /obj/item/organ/genital/breasts/get_description_string(datum/sprite_accessory/genital/gas)

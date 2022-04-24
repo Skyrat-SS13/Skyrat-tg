@@ -2,6 +2,8 @@
 	///This is for associating an organ with a mutant bodypart. Look at tails for examples
 	var/mutantpart_key
 	var/list/list/mutantpart_info
+	/// Do we drop when organs are spilling?
+	var/drop_when_organ_spilling = TRUE
 
 /obj/item/organ/Initialize()
 	. = ..()
