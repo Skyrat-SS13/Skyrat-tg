@@ -3,9 +3,6 @@
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "computer"
 	density = TRUE
-	use_power = IDLE_POWER_USE
-	idle_power_usage = 300
-	active_power_usage = 300
 	max_integrity = 200
 	integrity_failure = 0.5
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 40, ACID = 20)
@@ -33,18 +30,20 @@
 	. = ..()
 	if(icon_keyboard)
 		if(machine_stat & NOPOWER)
-			return . + "[icon_keyboard]_off"
-		. += icon_keyboard
+			. += "[icon_keyboard]_off"
+		else
+			. += icon_keyboard
 
 	// This whole block lets screens ignore lighting and be visible even in the darkest room
-	var/overlay_state = icon_screen
 	if(machine_stat & BROKEN)
-		overlay_state = "[icon_state]_broken"
-		. += mutable_appearance(icon, overlay_state)
+		. += mutable_appearance(icon, "[icon_state]_broken")
 		return // If we don't do this broken computers glow in the dark.
 
-	. += mutable_appearance(icon, overlay_state)
-	. += emissive_appearance(icon, overlay_state)
+	if(machine_stat & NOPOWER) // Your screen can't be on if you've got no damn charge
+		return
+
+	. += mutable_appearance(icon, icon_screen)
+	. += emissive_appearance(icon, icon_screen)
 */
 
 /obj/machinery/computer/power_change()
@@ -126,3 +125,18 @@
 		return
 	if(!user.canUseTopic(src, !issilicon(user)) || !is_operational)
 		return
+
+/obj/machinery/computer/ui_interact(mob/user, datum/tgui/ui)
+	SHOULD_CALL_PARENT(TRUE)
+	//SKYRAT EDIT ADDITON BEGIN - AESTHETICS
+	if(clicksound && world.time > next_clicksound && isliving(user))
+		next_clicksound = world.time + rand(50, 150)
+		playsound(src, get_sfx_skyrat(clicksound), clickvol)
+	//SKYRAT EDIT END
+	. = ..()
+	update_use_power(ACTIVE_POWER_USE)
+
+/obj/machinery/computer/ui_close(mob/user)
+	SHOULD_CALL_PARENT(TRUE)
+	. = ..()
+	update_use_power(IDLE_POWER_USE)

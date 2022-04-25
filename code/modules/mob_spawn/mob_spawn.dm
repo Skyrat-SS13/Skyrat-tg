@@ -133,7 +133,7 @@
 
 	// SKYRAT EDIT ADDITION
 	/// Do we use a random appearance for this ghost role?
-	var/random_appearance = FALSE
+	var/random_appearance = TRUE
 	/// Can we use our loadout for this role?
 	var/loadout_enabled = FALSE
 	/// Can we use our quirks for this role?
@@ -160,7 +160,7 @@
 		return
 	// SKYRAT EDIT ADDITION
 	if(restricted_species && !(user.client?.prefs?.read_preference(/datum/preference/choiced/species) in restricted_species))
-		to_chat(user, span_warning("You cannot use this role because you are not the correct species!"))
+		balloon_alert(user, "incorrect species!")
 		return
 	// SKYRAT EDIT END
 	if(prompt_ghost)
@@ -192,9 +192,9 @@
 			var/mob/living/carbon/human/spawned_human = spawned_mob
 			mob_possessor?.client?.prefs?.safe_transfer_prefs_to(spawned_human)
 			spawned_human.dna.update_dna_identity()
-			if(loadout_enabled)
-				SSquirks.AssignQuirks(spawned_human, mob_possessor.client)
 			if(quirks_enabled)
+				SSquirks.AssignQuirks(spawned_human, mob_possessor.client)
+			if(loadout_enabled)
 				spawned_human.equip_outfit_and_loadout(outfit, mob_possessor.client.prefs)
 	// SKYRAT EDIT END
 	if(mob_possessor)
@@ -284,9 +284,9 @@
 	. = ..()
 	if(conceal_presence)
 		// We don't want corpse PDAs to show up in the messenger list.
-		var/obj/item/pda/messenger = locate(/obj/item/pda) in spawned_human
+		var/obj/item/modular_computer/tablet/pda/messenger = locate(/obj/item/modular_computer/tablet/pda/) in spawned_human
 		if(messenger)
-			messenger.toff = TRUE
+			messenger.invisible = TRUE
 		// Or on crew monitors
 		var/obj/item/clothing/under/sensor_clothes = spawned_human.w_uniform
 		if(istype(sensor_clothes))

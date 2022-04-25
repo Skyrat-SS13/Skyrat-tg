@@ -10,6 +10,7 @@
 #define DEFAULT_RELIGION "Christianity"
 #define DEFAULT_DEITY "Space Jesus"
 #define DEFAULT_BIBLE "Default Bible Name"
+#define DEFAULT_BIBLE_REPLACE(religion) "The Holy Book of [religion]"
 
 #define JOB_DISPLAY_ORDER_DEFAULT 0
 
@@ -106,9 +107,18 @@
 #define JOB_CENTCOM_RESEARCH_OFFICER "Research Officer"
 #define JOB_CENTCOM_SPECIAL_OFFICER "Special Ops Officer"
 #define JOB_CENTCOM_PRIVATE_SECURITY "Private Security Force"
-#define JOB_BLUESHIELD "Blueshield" // SKYRAT EDIT ADDITION
-#define JOB_NT_REP "Nanotrasen Consultant" // SKYRAT EDIT ADDITION
 // SKYRAT EDIT ADDITION START
+#define JOB_BLUESHIELD "Blueshield"
+#define JOB_NT_REP "Nanotrasen Consultant"
+// Nanotrasen Naval Command jobs
+#define JOB_NAVAL_ENSIGN "Ensign"
+#define JOB_NAVAL_LIEUTENANT "Lieutenant"
+#define JOB_NAVAL_LTCR "Lieutenant Commander"
+#define JOB_NAVAL_COMMANDER "Commander"
+#define JOB_NAVAL_CAPTAIN "Captain"
+#define JOB_NAVAL_REAR_ADMIRAL "Rear Admiral"
+#define JOB_NAVAL_ADMIRAL "Admiral"
+#define JOB_NAVAL_FLEET_ADMIRAL "Fleet Admiral"
 // Off-Station
 #define JOB_SPACE_POLICE "Space Police"
 #define JOB_SOLFED "SolFed"

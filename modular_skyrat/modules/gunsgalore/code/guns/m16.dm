@@ -27,6 +27,15 @@
 /obj/item/ammo_box/magazine/m16
 	name = "m16 magazine (5.56x45mm)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
+	icon_state = "m16e"
+	ammo_type = /obj/item/ammo_casing/a556
+	caliber = "a556"
+	max_ammo = 30
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
+/obj/item/ammo_box/magazine/m16/vintage
+	name = "vintage m16 magazine (5.56x45mm)"
+	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "m16"
 	ammo_type = /obj/item/ammo_casing/a556
 	caliber = "a556"

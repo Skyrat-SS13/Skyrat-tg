@@ -7,7 +7,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "peacekeeper_helmet"
 	worn_icon_state = "peacekeeper"
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/beret/sec/peacekeeper
 	name = "peacekeeper beret"
@@ -15,23 +15,17 @@
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	icon_state = "beret_badge"
-	greyscale_colors = "#3F3C40#333399"
-	mutant_variants = NONE
+	greyscale_colors = "#3F3C40#375989"
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/beret/sec/peacekeeper/white
 	greyscale_config = /datum/greyscale_config/beret
 	greyscale_config_worn = /datum/greyscale_config/beret/worn
+	greyscale_config_worn_teshari = /datum/greyscale_config/beret/worn/teshari
 	icon_state = "beret"
 	greyscale_colors = "#EAEAEA"
 
-/obj/item/clothing/head/soft/black/junior_officer
-	name = "peacekeeper junior officer cap"
-	desc = "A junior officers cap, wearing this increases your robustness, apparently."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "juniorsoft"
-	soft_type = "junior"
-	mutant_variants = NONE
+
 
 /obj/item/clothing/head/sec/peacekeeper/sergeant
 	name = "peacekeeper sergeant hat"
@@ -39,12 +33,12 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "peacekeeper_sergeant_cap"
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/hos/beret/peacekeeper
 	name = "head of security's peacekeeper beret"
 	desc = "A special beret with the Head of Security's insignia emblazoned on it. A symbol of excellence, a badge of courage, a mark of distinction."
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/beret/sec/navywarden/peacekeeper
 	name = "warden's peacekeeper beret"
@@ -53,7 +47,7 @@
 	greyscale_config_worn = /datum/greyscale_config/beret_badge_fancy/worn
 	greyscale_colors = "#3F3C40#FF0000#00AEEF"
 	icon_state = "beret_badge_fancy_twist"
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper
 	name = "peacekeeper hud glasses"
@@ -65,8 +59,8 @@
 /obj/item/clothing/under/rank/security/peacekeeper
 	name = "peacekeeper uniform"
 	desc = "A sleek peacekeeper uniform, made to a price."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "peacekeeper"
 	can_adjust = TRUE
 	sensor_mode = SENSOR_COORDS
@@ -77,18 +71,6 @@
 	desc = "A tactical peacekeeper uniform, woven with a lightweight layer of kevlar to provide minor ballistic and stab protection."
 	icon_state = "peacekeeper_tac"
 
-/obj/item/clothing/under/rank/security/peacekeeper/blue
-	name = "blue peacekeeper uniform"
-	icon_state = "bsecurity"
-
-/obj/item/clothing/under/rank/security/peacekeeper/junior
-	name = "peacekeeper junior officer poloshirt"
-	desc = "A sleek peackeeper poloshirt and pants, this one is special. It's for junior officers."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
-	icon_state = "junior_officer"
-
 /obj/item/clothing/under/rank/security/peacekeeper/sergeant
 	name = "peacekeeper sergeant uniform"
 	desc = "A sleek peackeeper uniform, signifying the rank of Sergeant."
@@ -97,19 +79,20 @@
 /obj/item/clothing/under/rank/security/warden/peacekeeper
 	name = "peacekeeper wardens suit"
 	desc = "A formal security suit for officers complete with Armadyne belt buckle."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "peacekeeper_warden"
 	inhand_icon_state = "peacekeeper_warden"
 
 /obj/item/clothing/under/rank/security/warden
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 
 /obj/item/clothing/under/rank/security/head_of_security/peacekeeper
 	name = "head of security's peacekeeper jumpsuit"
 	desc = "A security jumpsuit decorated for those few with the dedication to achieve the position of Head of Security."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "peacekeeper_hos"
 	inhand_icon_state = "peacekeeper_hos"
 
@@ -121,26 +104,12 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "peacekeeper_armor"
 	worn_icon_state = "peacekeeper"
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/vest/peacekeeper/black
 	name = "black peacekeeper vest"
 	icon_state = "peacekeeper_black"
 	worn_icon_state = "peacekeeper_black"
-
-/obj/item/clothing/suit/toggle/labcoat/junior_officer
-	name = "junior officer coat"
-	desc = "An Armadyne coat that offers very minimal protection."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "juniorjacket"
-	inhand_icon_state = "jacket"
-	blood_overlay_type = "coat"
-	body_parts_covered = CHEST|ARMS
-	allowed = list(/obj/item/gun/ballistic/automatic/pistol/pepperball, /obj/item/melee/baton)
-	armor = list(MELEE = 15, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 0, BIO = 50, FIRE = 50, ACID = 50)
-	toggle_noun = "zipper"
-	mutant_variants = NONE
 
 /obj/item/clothing/suit/armor/hos/trenchcoat/peacekeeper
 	name = "armored peacekeeper trenchcoat"
@@ -149,7 +118,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "peacekeeper_trench_hos"
 	inhand_icon_state = "hostrench"
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/vest/warden/peacekeeper
 	name = "warden's peacekeeper jacket"
@@ -157,7 +126,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "peacekeeper_trench_warden"
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/hooded/wintercoat/security/peacekeeper
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -180,7 +149,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "peacekeeper_spacecoat"
 	worn_icon_state = "peacekeeper_spacecoat"
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 //PEACEKEEPER GLOVES
 /obj/item/clothing/gloves/combat/peacekeeper
@@ -305,7 +274,7 @@
 	icon_state = "peacekeeper_webbing"
 	worn_icon_state = "peacekeeper_webbing"
 	content_overlays = FALSE
-	custom_premium_price = PAYCHECK_HARD * 2
+	custom_premium_price = PAYCHECK_HARD * 3
 	component_type = /datum/component/storage/concrete/peacekeeper
 
 /obj/item/storage/belt/security/webbing/peacekeeper/ComponentInitialize()
@@ -341,7 +310,6 @@
 	desc = "High speed, low drag combat boots."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/feet_digi.dmi'
 	icon_state = "peacekeeper_boots"
 	inhand_icon_state = "jackboots"
 	worn_icon_state = "peacekeeper"

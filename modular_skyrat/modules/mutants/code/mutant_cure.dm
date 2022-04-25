@@ -301,6 +301,7 @@
 	status = STATUS_IDLE
 
 /obj/machinery/rnd/rna_recombinator/RefreshParts()
+	. = ..()
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		if(recombination_step_time > 0 && (recombination_step_time - M.rating) >= 1)
 			recombination_step_time -= M.rating

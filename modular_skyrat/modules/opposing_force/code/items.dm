@@ -9,8 +9,6 @@
 	var/datum/component/uplink/hidden_uplink = GetComponent(/datum/component/uplink)
 	hidden_uplink.name = "old radio"
 
-
-
 /obj/item/reagent_containers/glass/rag/large
     volume = 30
     amount_per_transfer_from_this = 30
@@ -32,15 +30,6 @@
 	new /obj/item/clothing/glasses/sunglasses/robohand(src)
 	new /obj/item/clothing/suit/armor/vest/leather/gunman(src)
 	new /obj/item/clothing/shoes/combat(src)
-
-/obj/item/ammo_box/magazine/m16/extended //i will add custom sprites to this
-	name = "m4a1 magazine (5.56x45mm)"
-	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
-	icon_state = "5.56mm"
-	ammo_type = /obj/item/ammo_casing/a556
-	caliber = "a556"
-	max_ammo = 30
-	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/autosurgeon/organ/syndicate/hackerman
 	starting_organ = /obj/item/organ/cyberimp/arm/hacker

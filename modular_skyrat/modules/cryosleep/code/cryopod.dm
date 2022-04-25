@@ -48,6 +48,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	return ..()
 
 /obj/machinery/computer/cryopod/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
@@ -134,6 +135,12 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	///Weakref to our controller
 	var/datum/weakref/control_computer_weakref
 	COOLDOWN_DECLARE(last_no_computer_message)
+	/// if false, plays announcement on cryo
+	var/quiet = FALSE
+
+
+/obj/machinery/cryopod/quiet
+	quiet = TRUE
 
 /obj/machinery/cryopod/Initialize(mapload)
 	..()
@@ -217,15 +224,20 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 				to_chat(mind.current, "<BR>[span_userdanger("Your target is no longer within reach. Objective removed!")]")
 				mind.announce_objectives()
 		else if(istype(objective.target) && objective.target == mob_occupant.mind)
-			if(istype(objective, /datum/objective/contract))
-				var/datum/opposing_force/affected_traitor = objective.owner.opposing_force
-				var/datum/contractor_hub/affected_contractor_hub = affected_traitor.contractor_hub
-				for(var/datum/syndicate_contract/affected_contract as anything in affected_contractor_hub.assigned_contracts)
-					if(affected_contract.contract == objective)
-						affected_contract.generate(affected_contractor_hub.assigned_targets)
-						affected_contractor_hub.assigned_targets.Add(affected_contract.contract.target)
-						to_chat(objective.owner.current, "<BR>[span_userdanger("Contract target out of reach. Contract rerolled.")]")
-						break
+			if(!istype(objective, /datum/objective/contract))
+				return
+			var/datum/opposing_force/affected_contractor = objective.owner.opposing_force
+			var/datum/contractor_hub/affected_contractor_hub = affected_contractor.contractor_hub
+			for(var/datum/syndicate_contract/affected_contract as anything in affected_contractor_hub.assigned_contracts)
+				if(!(affected_contract.contract == objective))
+					continue
+				var/contract_id = affected_contract.id
+				affected_contractor_hub.create_single_contract(objective.owner, affected_contract.payout_type)
+				affected_contractor_hub.assigned_contracts[contract_id].status = CONTRACT_STATUS_ABORTED
+				if (affected_contractor_hub.current_contract == objective)
+					affected_contractor_hub.current_contract = null
+				to_chat(objective.owner.current, "<BR>[span_userdanger("Contract target out of reach. Contract rerolled.")]")
+				break
 		else if(istype(objective.target) && objective.target == mob_occupant.mind)
 			var/old_target = objective.target
 			objective.target = null
@@ -299,8 +311,8 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	else
 		control_computer.frozen_crew += list(crew_member)
 
-	// Make an announcement and log the person entering storage.
-	if(GLOB.announcement_systems.len)
+	// Make an announcement and log the person entering storage. If set to quiet, does not make an announcement.
+	if(GLOB.announcement_systems.len && !quiet)
 		var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
 		announcer.announce("CRYOSTORAGE", mob_occupant.real_name, announce_rank, list())
 
@@ -312,10 +324,9 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		if (issilicon(mob_occupant) && istype(item_content, /obj/item/mmi))
 			continue
 		if(control_computer)
-			if(istype(item_content, /obj/item/pda))
-				var/obj/item/pda/pda = item_content
-				pda.toff = TRUE
-				pda.light_on = FALSE
+			if(istype(item_content, /obj/item/modular_computer))
+				var/obj/item/modular_computer/computer = item_content
+				computer.invisible = TRUE
 			item_content.dropped(mob_occupant)
 			mob_occupant.transferItemToLoc(item_content, control_computer, force = TRUE, silent = TRUE)
 			control_computer.frozen_item += item_content

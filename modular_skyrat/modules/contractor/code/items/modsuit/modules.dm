@@ -133,13 +133,16 @@
 	chameleon_right = initial(mod.righthand_file)
 	RegisterSignal(mod, COMSIG_MOD_ACTIVATE, .proc/reset_chameleon)
 
-/obj/item/mod/module/chameleon/on_uninstall()
+/obj/item/mod/module/chameleon/on_uninstall(deleting = FALSE)
 	UnregisterSignal(mod, COMSIG_MOD_ACTIVATE)
 	reset_chameleon()
 
 /obj/item/mod/module/chameleon/proc/reset_chameleon()
 	if(on)
 		balloon_alert(mod.wearer, "chameleon module disabled!")
+	for(var/obj/item/mod/module/storage/syndicate/synd_store in mod.modules)
+		synd_store.name = initial(synd_store.name)
+		synd_store.chameleon_disguised = FALSE
 	on = FALSE
 	mod.name = chameleon_name
 	mod.desc = chameleon_desc
@@ -156,6 +159,9 @@
 		return
 
 	update_item(picked_item)
+	for(var/obj/item/mod/module/storage/syndicate/synd_store in mod.modules)
+		synd_store.name = "MOD expanded storage module"
+		synd_store.chameleon_disguised = TRUE
 	var/obj/item/thing = mod
 	thing.update_slot_icon()
 	on = TRUE
@@ -203,3 +209,26 @@
 	desc = "An embedded set of armor plates, allowing the suit's already extremely high protection \
 		to be increased further. However, the plating, while deployed, will slow down the user \
 		and make the suit unable to vacuum seal so this extra armor provides zero ability for extravehicular activity while deployed."
+
+/obj/item/mod/module/springlock/contractor
+	name = "MOD magnetic deployment module"
+	desc = "A much more modern version of a springlock system. \
+	This is a module that uses magnets to speed up the deployment and retraction time of your MODsuit."
+	icon_state = "magnet"
+	icon = 'modular_skyrat/modules/contractor/icons/modsuit_modules.dmi'
+
+/obj/item/mod/module/springlock/on_suit_activation() // This module is actually *not* a death trap
+	return
+
+/obj/item/mod/module/springlock/on_suit_deactivation(deleting = FALSE)
+	return
+
+
+/obj/item/mod/module/storage/syndicate
+	var/chameleon_disguised = FALSE
+
+/obj/item/mod/module/storage/syndicate/on_uninstall(deleting = FALSE)
+	if(chameleon_disguised)
+		name = initial(name)
+		chameleon_disguised = FALSE
+	. = ..()

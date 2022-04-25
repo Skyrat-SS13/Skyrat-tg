@@ -292,7 +292,8 @@ const ParametersSection = (props, context) => {
     complexity_max,
     wearer_name,
     wearer_job,
-    AI,
+    pAI, // SKYRAT EDIT - pAIs in MODsuits
+    ispAI, // SKYRAT EDIT - pAIs in MODsuits
   } = data;
   const status = malfunctioning
     ? 'Malfunctioning' : active
@@ -311,7 +312,7 @@ const ParametersSection = (props, context) => {
           {status}
         </LabeledList.Item>
         <LabeledList.Item
-          label="Lock"
+          label="ID Lock"
           buttons={
             <Button
               icon={locked ? "lock-open" : "lock"}
@@ -332,8 +333,15 @@ const ParametersSection = (props, context) => {
         <LabeledList.Item label="Occupant">
           {wearer_name}, {wearer_job}
         </LabeledList.Item>
-        <LabeledList.Item label="Onboard AI">
-          {AI || 'None'}
+        <LabeledList.Item label="Onboard pAI" buttons={
+          // SKYRAT EDIT START - pAIs in MODsuits
+          (pAI && !ispAI) ? <Button
+            icon="eject"
+            content="Eject pAI"
+            onClick={() => act('remove_pai')}
+          /> : <> </>
+        } >
+          {pAI || 'None'/* SKYRAT EDIT END */}
         </LabeledList.Item>
       </LabeledList>
     </Section>

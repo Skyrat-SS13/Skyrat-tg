@@ -118,6 +118,7 @@
 	env.garbage_collect()
 
 /obj/machinery/electrolyzer/RefreshParts()
+	. = ..()
 	var/manipulator = 0
 	var/cap = 0
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
@@ -146,10 +147,13 @@
 	else
 		update_use_power(NO_POWER_USE)
 
+/obj/machinery/electrolyzer/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	default_unfasten_wrench(user, tool)
+	return TOOL_ACT_TOOLTYPE_SUCCESS
+
 /obj/machinery/electrolyzer/attackby(obj/item/I, mob/user, params)
 	add_fingerprint(user)
-	if(default_unfasten_wrench(user, I))
-		return
 	if(istype(I, /obj/item/stock_parts/cell))
 		if(!panel_open)
 			to_chat(user, span_warning("The hatch must be open to insert a power cell!"))

@@ -816,3 +816,201 @@
   - bugfix: allows changelings to re-enter their body despite DNR ban
   this awesome text:
   - balance: MODsuits have some armor.
+2022-03-25:
+  2cents:
+  - imageadd: Updated security sprites.
+  Gandalf2k15:
+  - rscadd: Security medic sprites have been rearranged.
+  Shiets, Dragomagol:
+  - rscadd: Podpeople now have plant-like growths springing from their heads!
+  - rscadd: Podpeople can style their "hair" with secateurs
+  SkyratBot:
+  - bugfix: Fixed Departmental Techfab machine board for service being named oddly
+      compared to the other ones.
+  - balance: xray lasers now have 100 armor penetration
+  - imageadd: Nanotrasen has upgraded "that machine that prints all of those decals
+      on our station tiles" to now print two corners that face opposite each other
+      at the same time. Very cool!
+  - bugfix: Fixed the size of plaques on the painting UI. They were awfully thin.
+  - bugfix: Fixed 24x24 paintings not being centered inside their frames.
+  - bugfix: Bot's modes have been fixed, Medibots will no longer be on 'arrest' mode.
+2022-03-26:
+  AtoriBirb:
+  - code_imp: swapped a plush sound file to one less red-code inducing
+  ErdinyoBarboza:
+  - bugfix: The construction interns finally installed access restrictions to Icebox
+      Armory.
+  SkyratBot:
+  - bugfix: Fixed double firelocks in Deltastation's fore customs area.
+  - bugfix: Kiosk wands can no longer be put into storage containers
+  - bugfix: Nukies can no longer lock their own uplink.
+  - bugfix: Clicking on airlock with ID Scan wire cut, should not open airlock.
+  - bugfix: Fix an overlooked crystallizer issue where gases wouldn't get consumed
+      because of a fixed rate of removal instead of an percentage based one.
+  Wallem:
+  - bugfix: GPSes don't start deactivated anymore, which also brings back most space
+      ruin GPS signals. Sorry about that.
+2022-03-27:
+  Jolly:
+  - bugfix: SnowCabin.dmm had its active turfs rectified.
+  SkyratBot:
+  - balance: Sentient Diseases now require a minimum playercount of 25 to activate,
+      up from 10.
+  - rscadd: Added command encryption keys to the cargo order console
+  - bugfix: TGUI and Tooltip windows now work with high-dpi web browsers
+  - bugfix: The latejoin menu will now properly close when you join the game
+  - bugfix: IceBox had two washing machines on the same tile, as well as a bit brighter
+      than usual decals. That tile is back to normal.
+  - bugfix: The engineering console on Icebox is once again connected to the station's
+      grid and can see APC status and available power.
+  - imageadd: For those who seek out rarer materials, Runite Bars have a nicer appearance.
+  - bugfix: Fixed airlocks and windoors not being able to be attacked by melee weapons
+      in combat mode.
+  - bugfix: Fix tritium fire releasing more radiation than it should.
+  - rscadd: Nanotrasen has refurbished the Recreation Deck on DeltaStation. Feel free
+      to "ooh" and "aah" at all of the new features that have been added.
+  - bugfix: The chairs on the casino shuttle are now facing the proper directions
+  - bugfix: 'The Zeta shuttle brig now uses the brig shuttle area qol: Shuttle doors
+      that previously had varedited accesses now use preset access helpers'
+  - soundadd: Sound effects for attacking bushes, trees, mushrooms and rocks.
+  - code_imp: Minor code improvements in flora.dm
+  - balance: Airlocks will now autoclose in 8 seconds rather then 15
+  - bugfix: If you were a prisoner on KiloStation and you noticed some abnormally
+      dark rocks, I hope you are pleased to know that they have been brightened up.
+      No compensation is offered.
+  - bugfix: Fixes nonhuman head of departments showing up as their original species
+      in security records.
+  - balance: Destroy the Blackbox is now worth 6-9 TC instead of 4 TC
+  - bugfix: Fixed stray syndicate supply pods not containing any items.
+2022-03-28:
+  Gandalf2k15:
+  - rscadd: Ports Yogstations central command jobs.
+  Inari-Whitebear:
+  - bugfix: Fix pathing issue with Skyrat emergency shuttle causing other emergency
+      shuttles to not be found
+  Orion_the_Fox, Halcyon(Sprites):
+  - rscdel: Armadyne and Lopland have agreed to remove OldPeacekeeper reskins and
+      some straggling Redsec clothes from Security, after several Uniformity complaints
+      from CC.
+  - imageadd: SPLIT THE MASTER UNIFORM FILE TO HAVE A SECURITY SUBTYPE. ONLY SECURITY
+      UNIFORMS SHOULD BE IN HERE. EXPECT THIS TO EXPAND ONTO OTHER DEPARTMENTS AS
+      WELL. (TG already does this, its much easier to maintain than one giant file.)
+  - imagedel: Removed lots of unused Security icons. (Literally, these had no items.
+      Ingame you'll see no change from this.)
+  SkyratBot:
+  - bugfix: Bartenders can throw drinks again, rejoice!
+  - bugfix: Fixes an exploit that allowed players to send unsanitized text to admins.
+2022-03-29:
+  ArcaneMusic ft. sprites by Kryson:
+  - rscadd: 'Newscasters have been moved over to TGUI, and with them several new features.
+      expansion: Newscaster channels can now be given channel descriptions! expansion:
+      Messages can now be censored by crew with brig access from any console.'
+  - rscdel: Standalone bounty boards have been replaced with newscasters, as the two
+      have been merged.
+  - refactor: Bounty boards and newscaster code have been refactored in order to merge
+      the two pieces of content.
+  Ebin-Halcyon:
+  - rscadd: Families WW3 reenactment gear have been added to the loadout. (Yuri, Allies,
+      and Soviet)
+  - rscadd: Crop top turtlenecks have been supplied to clothesmates as well.
+  Gandalf2k15:
+  - code_imp: Some mob spawners have been optimised.
+  - rscadd: A new(old) game mode! Assault operatives.
+  GuiltyNeko:
+  - bugfix: The matter manipulator is now ranged as is intended.
+  Helios7-1:
+  - bugfix: Fixes the Dark Medihound borg skin, allowing it to be selected again.
+  KathrinBailey:
+  - rscadd: Deltastation prison reverted to its old form, which is significantly better
+      suited for high population counts.
+  - rscadd: Deltastation security office reverted to its old form, a big single desk
+      instead of the weird whatever was.
+  Ryll/Shaps and MrDoomBringer:
+  - imageadd: Added new bleeding overlays for humans! People who are losing blood
+      will now have overlays displayed on them that show which bodyparts are bleeding,
+      and how much blood they're losing from that bodypart.
+  - bugfix: Slash wounds now properly retain their bleed rate when being demoted to
+      lower severities, meaning critical slashes will no longer be fully healed after
+      using one suture.
+  - balance: Critical slash wounds have had their initial bloodflow reduced, and existing
+      slash wounds gain less bloodloss when hit with further slash attacks. The cap
+      for how much blood a slash can lose per tick has been raised slightly.
+  - balance: Grabbing your own bleeding limb to staunch the bleeding is quicker and
+      slows you down less
+  SkyratBot:
+  - bugfix: You can no longer create money out of thin air using bounty boards.
+  - bugfix: You can no longer offer things to yourself, choosing instead to take them
+      directly
+  - bugfix: 'Can no longer headpat mobs without heads expansion: Adds screentips for
+      headpatting, hugging and tail pulling'
+  - bugfix: fixes a bug that causes podpeople hair to crash the pref menu
+  - balance: Free Golems are now penalized for leaving their natural habitat
+  - spellcheck: made the reaction list on a few machines' ui (compressor, atmos control)
+      to be newlined.
+  - rscadd: Right-click with a MOD paint now lets you paint the suit's color!
+  - bugfix: charlie station dorms now only has one APC, as god intended
+  - bugfix: cleans up some force-feeding code indentation, and adds some headless
+      flavor
+  - bugfix: Bots blowing up can now be sorted under Info.
+  - bugfix: Gunpowder's reaction can now be sorted under Info.
+  - code_imp: boldnotice messages are now sorted under Info.
+  Tastyfish:
+  - bugfix: 'On Icebox: Medbay orders can now be opened in Medbay Central, the area
+      between the lobby and the treatment center.'
+2022-03-30:
+  Cenrus:
+  - rscadd: Assault ops can now buy MODsuit modules at their vendor
+  - bugfix: Fixed assault ops not dispensing extra ammo for their weapons
+  - rscdel: Removed some useless armament entries
+  SkyratBot:
+  - bugfix: Some areas that were once pitch black are no longer
+  - bugfix: The thunderdome side rooms will now properly reset.
+  - admin: The thunderdome is now a placeable map template.
+  - bugfix: modsuit painting is fixed
+  - balance: Improvements in the smoke powder formula have resulted in a doubling
+      of the maximum possible carry density for the resulting clouds. This brings
+      it to par with the fluorosurfactant formula in this area.
+  - balance: Fluorosurfactant no longer acts as an arbitrarily powerful accelerating
+      catalyst in an emulsified state. Research into foam based thermobaric weaponry
+      has begun.
+  - bugfix: The Zeta emergency shuttle's brig now travels with the rest of the shuttle
+  - bugfix: you can no longer push ash drake corpses into doors
+2022-03-31:
+  AtoriBirb:
+  - imageadd: 4 new plushies!
+  Ebin-Halcyon:
+  - imageadd: Teshari sprites for most Syndicate clothing.
+  ErdinyoBarboza:
+  - bugfix: Makes peacekeeper webbing use its actual price. Increases the amount of
+      them available in the peacekeeper vendor.
+  - bugfix: Re-adds the stormtrooper costumes back to hacked peacekeeper vendor.
+  Gandalf2k15:
+  - rscadd: You can now directly buy ammo from the armaments vendor if your gun has
+      it.
+  - rscdel: Redsec crate from cargo.
+  GuiltyNeko:
+  - bugfix: The shutters on the delta station NT consultant's office can now be opened
+      and closed as normal.
+  - bugfix: Toxins now has power on all three main maps, as well as correct area mapping.
+  Jolly:
+  - bugfix: Lavaland agents rejoice! Theres no longer a missing tile that leads to
+      space! ..Wait, what?
+  SkyratBot:
+  - balance: scrubbers now remove small amounts of gas faster than they used to, without
+      affecting how fast they scrub gases in high concentrations.
+  - bugfix: Fix welders wasting fuel when clicking on tiles
+  - bugfix: The 0.7% charge high capacity power cell (which actually also stored 50%
+      more charge than a regular high capacity power cell, didn't notice that right?)
+      in Metastation engineering has been replaced with a regular high capacity power
+      cell.
+  - bugfix: Reality has downloaded CS Source which fixed the missing texture of a
+      poster in departures security checkpoint
+  - bugfix: Fix plants to not hurt user while using telekinesis
+  Zonespace27:
+  - bugfix: Reputation granting OPFOR services now give correct amount
+  softcerv:
+  - rscadd: Adds in medical smardarts, non-harmful replacements for syringes in syringe
+      guns that can only inject healing chemicals.
+  - rscadd: Adds in Smartdart guns, syringe guns that can only use smartdarts.
+  timothymtorres, lewcc:
+  - bugfix: Fix attack messages appearing when using tools on blast doors

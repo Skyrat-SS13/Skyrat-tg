@@ -174,7 +174,7 @@
 	pain_adjust_amount = -0.5
 
 	/// How druggy the chem will make the mob
-	var/drugginess_amount = 5
+	var/drugginess_amount = 5 SECONDS
 	/// How likely the drug is to make the mob druggy per life process
 	var/drugginess_chance = 7
 
@@ -185,7 +185,7 @@
 	..()
 
 /datum/reagent/drug/aphrodisiac/dopamine/life_effects(mob/living/carbon/human/exposed_mob)
-	exposed_mob.set_drugginess(drugginess_amount)
+	exposed_mob.set_timed_status_effect(drugginess_amount, /datum/status_effect/drugginess)
 	if(prob(drugginess_chance))
 		exposed_mob.emote(pick("twitch","drool","moan","giggle","shaking"))
 
@@ -449,7 +449,7 @@
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
 		if(exposed_mob.gender == MALE)
 			exposed_mob.set_gender(FEMALE)
-			exposed_mob.body_type = exposed_mob.gender
+			exposed_mob.physique = exposed_mob.gender
 			exposed_mob.update_body()
 			exposed_mob.update_mutations_overlay()
 		if(!mob_penis)
@@ -596,7 +596,7 @@
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
 		if(exposed_mob.gender == FEMALE)
 			exposed_mob.set_gender(MALE)
-			exposed_mob.body_type = exposed_mob.gender
+			exposed_mob.physique = exposed_mob.gender
 			exposed_mob.update_body()
 			exposed_mob.update_mutations_overlay()
 		if(!mob_breasts)

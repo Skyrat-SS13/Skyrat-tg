@@ -32,7 +32,15 @@
 	disliked_food = CLOTH | DAIRY
 	toxic_food = TOXIC
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/akula_parts_greyscale.dmi'
+	digitigrade_customization = DIGITIGRADE_OPTIONAL
+	bodypart_overrides = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/akula,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/akula,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant/akula,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant/akula,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/akula,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/akula,
+	)
 
 /datum/species/akula/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
@@ -68,3 +76,9 @@
 	if(BMS)
 		markings = assemble_body_markings_from_set(BMS, passed_features, src)
 	return markings
+
+/datum/species/akula/get_species_description()
+	return placeholder_description
+
+/datum/species/akula/get_species_lore()
+	return list(placeholder_lore)

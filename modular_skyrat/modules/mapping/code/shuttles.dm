@@ -4,6 +4,7 @@
 
 /datum/map_template/shuttle/emergency/outpost
 	suffix = "outpost"
+	prefix = "_maps/shuttles/skyrat/"
 	name = "Outpoststation Emergency Shuttle"
 	description = "The perfect shuttle for rectangle enthuasiasts, this long and slender shuttle has been known for it's incredible(Citation Needed) safety rating."
 	admin_notes = "Has airlocks on both sides of the shuttle and will probably ram deltastation's maint wing below medical. Oh well?"
@@ -117,7 +118,7 @@
 	implants = list(/obj/item/implant/weapons_auth)
 	belt = /obj/item/storage/belt/military
 	r_pocket = /obj/item/storage/bag/ammo
-	l_pocket = /obj/item/gun/energy/disabler/cfa_disabler
+	l_pocket = /obj/item/gun/energy/disabler/bolt_disabler
 	id = /obj/item/card/id/advanced/chameleon
 	id_trim = /datum/id_trim/chameleon/operative
 	skillchips = list(/obj/item/skillchip/job/engineer)
@@ -147,7 +148,7 @@
 	implants = list(/obj/item/implant/weapons_auth)
 	belt = /obj/item/storage/belt/military
 	r_pocket = /obj/item/storage/bag/ammo
-	l_pocket = /obj/item/gun/energy/disabler/cfa_disabler
+	l_pocket = /obj/item/gun/energy/disabler/bolt_disabler
 	id = /obj/item/card/id/advanced/chameleon
 	id_trim = /datum/id_trim/chameleon/operative
 	skillchips = list(/obj/item/skillchip/job/engineer)

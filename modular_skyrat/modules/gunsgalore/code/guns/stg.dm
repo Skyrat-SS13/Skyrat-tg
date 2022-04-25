@@ -1,5 +1,5 @@
 /obj/item/gun/ballistic/automatic/stg
-	name = "\improper Armadyne StG-45"
+	name = "\improper StG-99"
 	desc = "A reproduction of the Sturmgewehr 44 German infantry rifle chambered in 7.92mm, manufactured by the Oldarms division of the Armadyne Corporation."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns40x32.dmi'
 	icon_state = "stg"
@@ -24,6 +24,7 @@
 	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
 	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magout.ogg'
+	company_flag = COMPANY_OLDARMS
 
 /obj/item/ammo_box/magazine/stg
 	name = "stg magazine (7.92x33mm)"

@@ -553,7 +553,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				data["importantActionReady"] = COOLDOWN_FINISHED(src, important_action_cooldown)
 				data["shuttleCalled"] = FALSE
 				data["shuttleLastCalled"] = FALSE
-
+				data["aprilFools"] = SSevents.holidays && SSevents.holidays[APRIL_FOOLS]
 				data["alertLevel"] = get_security_level()
 				data["authorizeName"] = authorize_name
 				data["canLogOut"] = !issilicon(user)
@@ -642,6 +642,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	return data
 
 /obj/machinery/computer/communications/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		ui = new(user, src, "CommunicationsConsole")
@@ -735,7 +736,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		return
 
 	return length(CONFIG_GET(keyed_list/cross_server)) > 0
-/*
+
 /**
  * Call an emergency meeting
  *
@@ -752,7 +753,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		return
 	SScommunications.emergency_meeting(user)
 	deadchat_broadcast(" called an emergency meeting from [span_name("[get_area_name(usr, TRUE)]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
-*/
+
 
 /obj/machinery/computer/communications/proc/make_announcement(mob/living/user)
 	var/is_ai = issilicon(user)
@@ -936,7 +937,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 #undef IMPORTANT_ACTION_COOLDOWN
 #undef EMERGENCY_ACCESS_COOLDOWN
-#undef MAX_STATUS_LINE_LENGTH
 #undef STATE_BUYING_SHUTTLE
 #undef STATE_CHANGING_STATUS
 #undef STATE_MAIN

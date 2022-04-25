@@ -12,8 +12,7 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "mixer0"
 	base_icon_state = "mixer"
-	use_power = IDLE_POWER_USE
-	idle_power_usage = 20
+	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.2
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	circuit = /obj/item/circuitboard/machine/chem_master
 
@@ -73,6 +72,7 @@
 	return ..()
 
 /obj/machinery/chem_master/RefreshParts()
+	. = ..()
 	reagents.maximum_volume = 0
 	for(var/obj/item/reagent_containers/glass/beaker/B in component_parts)
 		reagents.maximum_volume += B.reagents.maximum_volume
@@ -123,6 +123,12 @@
 	if (prob(50))
 		qdel(src)
 
+
+/obj/machinery/chem_master/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	default_unfasten_wrench(user, tool)
+	return TOOL_ACT_TOOLTYPE_SUCCESS
+
 /obj/machinery/chem_master/attackby(obj/item/I, mob/user, params)
 	if(default_deconstruction_screwdriver(user, "mixer0_nopower", "mixer0", I))
 		return
@@ -130,8 +136,6 @@
 	else if(default_deconstruction_crowbar(I))
 		return
 
-	if(default_unfasten_wrench(user, I))
-		return
 	if(istype(I, /obj/item/reagent_containers) && !(I.item_flags & ABSTRACT) && I.is_open_container())
 		. = TRUE // no afterattack
 		if(panel_open)
@@ -157,11 +161,20 @@
 	else
 		return ..()
 
-/obj/machinery/chem_master/AltClick(mob/living/user)
+/obj/machinery/chem_master/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
-	if(!can_interact(user) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	if(!can_interact(user) || !user.canUseTopic(src, !issilicon(user), FALSE, NO_TK))
 		return
 	replace_beaker(user)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/machinery/chem_master/attack_robot_secondary(mob/user, list/modifiers)
+	return attack_hand_secondary(user, modifiers)
+
+/obj/machinery/chem_master/attack_ai_secondary(mob/user, list/modifiers)
+	return attack_hand_secondary(user, modifiers)
 
 /**
  * Handles process of moving input reagents containers in/from machine
@@ -271,6 +284,7 @@
 				name, ""))
 		if (amount == null || amount <= 0)
 			return FALSE
+		use_power(active_power_usage)
 		if (to_container == "beaker" && !mode)
 			reagents.remove_reagent(reagent, amount)
 			return TRUE
@@ -321,17 +335,19 @@
 		var/vol_each_text = params["volume"]
 		var/vol_each_max = reagents.total_volume / amount
 		var/list/style
-
+		use_power(active_power_usage)
 		if (item_type == "pill")
 			vol_each_max = min(50, vol_each_max)
 		else if (item_type == "patch")
 			vol_each_max = min(40, vol_each_max)
 		else if (item_type == "bottle")
 			vol_each_max = min(30, vol_each_max)
-		//SKYRAT EDIT ADDITION START - HYPOVIALS
+		//SKYRAT EDIT ADDITION START
 		else if (item_type == "vial")
 			vol_each_max = min(60, vol_each_max)
-		//SKYRAT EDIT ADDITION END - HYPOVIALS
+		else if (item_type == "smartdart")
+			vol_each_max = min(10, vol_each_max)
+		//SKYRAT EDIT ADDITION END
 		else if (item_type == "condimentPack")
 			vol_each_max = min(10, vol_each_max)
 		else if (item_type == "condimentBottle")
@@ -413,7 +429,8 @@
 				P.name = trim("[name] bottle")
 				adjust_item_drop_location(P)
 				reagents.trans_to(P, vol_each, transfered_by = usr)
-		//SKYRAT EDIT ADDTION HYPOVIALS START
+			return TRUE
+		//SKYRAT EDIT ADDTION START
 		if(item_type == "vial")
 			var/obj/item/reagent_containers/glass/vial/small/P
 			for(var/i = 0; i < amount; i++)
@@ -421,8 +438,15 @@
 				P.name = trim("[name] vial")
 				adjust_item_drop_location(P)
 				reagents.trans_to(P, vol_each, transfered_by = usr)
-		//SKYRAT EDIT ADDTION HYPOVIALS END
 			return TRUE
+		if(item_type == "smartdart")
+			for(var/i in 1 to amount)
+				var/obj/item/reagent_containers/syringe/smartdart/dart = new(drop_location())
+				dart.name = trim("[name] SmartDart")
+				adjust_item_drop_location(dart)
+				reagents.trans_to(dart, vol_each, transfered_by = usr)
+			return TRUE
+		//SKYRAT EDIT ADDTION END
 		if(item_type == "condimentPack")
 			var/obj/item/reagent_containers/food/condiment/pack/P
 			for(var/i in 1 to amount)

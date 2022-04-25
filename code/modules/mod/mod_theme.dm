@@ -59,8 +59,7 @@
 			HELMET_FLAGS = list(
 				UNSEALED_CLOTHING = SNUG_FIT,
 				SEALED_CLOTHING = THICKMATERIAL|STOPSPRESSUREDAMAGE,
-				UNSEALED_INVISIBILITY = HIDEFACIALHAIR,
-				SEALED_INVISIBILITY = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT,
+				SEALED_INVISIBILITY =  HIDEFACIALHAIR|HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT,
 				SEALED_COVER = HEADCOVERSMOUTH|HEADCOVERSEYES|PEPPERPROOF,
 			),
 			CHESTPLATE_FLAGS = list(
@@ -361,7 +360,7 @@
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/mail,
-		/obj/item/small_delivery,
+		/obj/item/delivery/small,
 		/obj/item/paper,
 		/obj/item/storage/bag/mail,
 	)
@@ -598,6 +597,7 @@
 	slowdown_inactive = 1
 	slowdown_active = 0.5
 	allowed_suit_storage = list(
+		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -652,6 +652,7 @@
 	slowdown_inactive = 0.75
 	slowdown_active = 0.25
 	allowed_suit_storage = list(
+		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -708,6 +709,7 @@
 	slowdown_inactive = 0.75
 	slowdown_active = 0.25
 	allowed_suit_storage = list(
+		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -810,6 +812,7 @@
 	ui_theme = "syndicate"
 	inbuilt_modules = list(/obj/item/mod/module/armor_booster)
 	allowed_suit_storage = list(
+		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -887,6 +890,7 @@
 	ui_theme = "syndicate"
 	inbuilt_modules = list(/obj/item/mod/module/armor_booster)
 	allowed_suit_storage = list(
+		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -948,6 +952,7 @@
 		/obj/item/tank/internals,
 		/obj/item/teleportation_scroll,
 		/obj/item/highfrequencyblade/wizard,
+		/obj/item/gun/magic,
 	)
 	skins = list(
 		"enchanted" = list(
@@ -1043,6 +1048,7 @@
 	slowdown_inactive = 0.5
 	slowdown_active = 0
 	allowed_suit_storage = list(
+		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -1116,6 +1122,7 @@
 	siemens_coefficient = 0
 	complexity_max = DEFAULT_MAX_COMPLEXITY + 10
 	allowed_suit_storage = list(
+		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -1169,6 +1176,7 @@
 	slowdown_inactive = 0.5
 	slowdown_active = 0
 	allowed_suit_storage = list(
+		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,

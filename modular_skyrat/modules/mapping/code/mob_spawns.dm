@@ -26,6 +26,8 @@
 	prompt_name = "DS2 personnel"
 	you_are_text = "You are a syndicate operative, employed in a top secret research facility developing biological weapons."
 	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue operating as best you can, and try to keep a low profile."
+	quirks_enabled = TRUE
+	random_appearance = FALSE
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/prisoner
 	name = "Syndicate Prisoner"
@@ -47,7 +49,6 @@
 	important_text = "You are not an antagonist."
 	outfit = /datum/outfit/ds2/syndicate
 	loadout_enabled = TRUE
-	quirks_enabled = TRUE
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/special(mob/living/new_spawn)
 	. = ..()
@@ -94,8 +95,8 @@
 
 /datum/outfit/ds2/prisoner
 	name = "Syndicate Prisoner"
-	uniform = /obj/item/clothing/under/rank/prisoner
-	shoes = /obj/item/clothing/shoes/sneakers/orange
+	uniform = /obj/item/clothing/under/rank/prisoner/syndicate
+	shoes = /obj/item/clothing/shoes/sneakers/crimson
 	id = /obj/item/card/id/advanced/prisoner
 
 /datum/outfit/ds2/syndicate
@@ -115,18 +116,18 @@
 
 /datum/outfit/ds2/syndicate/enginetech
 	name = "DS-2 Engine Technician"
-	uniform = /obj/item/clothing/under/utility/eng/syndicate
+	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/syndicate
 	id_trim = /datum/id_trim/syndicom/skyratnoicon/enginetechnician
 	gloves = /obj/item/clothing/gloves/combat
 
 /datum/outfit/ds2/syndicate/researcher
 	name = "DS-2 Researcher"
-	uniform = /obj/item/clothing/under/utility/sci/syndicate
+	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/researcher
 
 /datum/outfit/ds2/syndicate/stationmed
 	name = "DS-2 Station Medical Officer"
-	uniform = /obj/item/clothing/under/utility/med/syndicate
+	uniform = /obj/item/clothing/under/rank/medical/doctor/skyrat/utility/syndicate
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/stationmedicalofficer
 
 /datum/outfit/ds2/syndicate/masteratarms
@@ -191,10 +192,11 @@
 	you_are_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
 	flavour_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
 	important_text = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew for the ship's Chief. Your job was merely being a deckhand doing freight work and helping with kitchen prep."
+	random_appearance = FALSE
 
 /datum/outfit/freighter_crew
 	name = "Freighter Crew"
-	uniform = /obj/item/clothing/under/rank/cargo/casualman
+	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/casualman
 	shoes = /obj/item/clothing/shoes/workboots
 	back = /obj/item/storage/backpack
 	backpack_contents = list(/obj/item/armament_token/sidearm_blackmarket)
@@ -212,17 +214,18 @@
 	you_are_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
 	flavour_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
 	important_text = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew working under the ship Chief. Your role was to be an excavation and salvage worker for the ship."
+	random_appearance = FALSE
 
 /datum/outfit/freighter_excavator
 	name = "Freighter Excavator"
-	uniform = /obj/item/clothing/under/utility/cargo/gorka
+	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/gorka
 	shoes = /obj/item/clothing/shoes/workboots/mining
 	back = /obj/item/storage/backpack
 	backpack_contents = list(/obj/item/flashlight/seclite=1,\
 		/obj/item/knife/combat/survival=1,
 		/obj/item/mining_voucher=1,
 		/obj/item/t_scanner/adv_mining_scanner/lesser=1,
-		/obj/item/gun/energy/kinetic_accelerator=1,\
+		/obj/item/gun/energy/recharge/kinetic_accelerator=1,\
 		/obj/item/stack/marker_beacon/ten=1,\
 		/obj/item/armament_token/sidearm_blackmarket)
 	r_pocket = /obj/item/storage/bag/ore
@@ -240,10 +243,11 @@
 	you_are_text = "You and your crew were running a normal freight haul until a pirate attack knocked out the engines. All you can do now is try and survive and keep your crew alive."
 	flavour_text = "You and your crew were running a normal freight haul until a pirate attack knocked out the engines. All you can do now is try and survive and keep your crew alive."
 	important_text = "Do not abandon your crew, lead them and work with them to survive. You are not directly working with NT, you are an independent freighter crew. You are the captain of the ship, which you purchased a while ago, and are in charge of the crew."
+	random_appearance = FALSE
 
 /datum/outfit/freighter_boss
 	name = "Freighter Boss"
-	uniform = /obj/item/clothing/under/utility/cargo/turtleneck
+	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck
 	shoes = /obj/item/clothing/shoes/workboots
 	neck = /obj/item/clothing/neck/cloak/qm
 	back = /obj/item/storage/backpack
@@ -266,9 +270,10 @@
 	outfit = /datum/outfit/tarkon
 	loadout_enabled = TRUE
 	quirks_enabled = TRUE
+	random_appearance = FALSE
 
 /datum/outfit/tarkon
-	uniform = /obj/item/clothing/under/utility/cargo
+	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
 	shoes = /obj/item/clothing/shoes/winterboots
 	gloves = /obj/item/clothing/gloves/fingerless
 	glasses = /obj/item/clothing/glasses/sunglasses
@@ -294,7 +299,7 @@
 	outfit = /datum/outfit/tarkon/sci
 
 /datum/outfit/tarkon/sci
-	uniform = /obj/item/clothing/under/utility/sci
+	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility
 	glasses = /obj/item/clothing/glasses/hud/diagnostic
 	id = /obj/item/card/id/away/tarkon/sci
 	l_hand = /obj/item/inducer
@@ -306,7 +311,7 @@
 	outfit = /datum/outfit/tarkon/med
 
 /datum/outfit/tarkon/med
-	uniform = /obj/item/clothing/under/utility/med
+	uniform = /obj/item/clothing/under/rank/medical/doctor/skyrat/utility
 	glasses = /obj/item/clothing/glasses/hud/health
 	id = /obj/item/card/id/away/tarkon/med
 	neck = /obj/item/clothing/neck/stethoscope
@@ -318,7 +323,7 @@
 	outfit = /datum/outfit/tarkon/engi
 
 /datum/outfit/tarkon/engi
-	uniform = /obj/item/clothing/under/utility/eng
+	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility
 	glasses = /obj/item/clothing/glasses/meson/engine/tray
 	id = /obj/item/card/id/away/tarkon/engi
 	gloves = /obj/item/clothing/gloves/combat

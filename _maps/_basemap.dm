@@ -13,7 +13,6 @@
 		#include "map_files\KiloStation\KiloStation.dmm"
 		#include "map_files\MetaStation\MetaStation.dmm"
 		#include "map_files\IceBoxStation\IceBoxStation.dmm"
-		#include "map_files\IceBoxStation\IcemoonUnderground_Above.dmm" // Adding this here now knowing that I'll change it upstream soon
 		#include "map_files\IceBoxStation\IcemoonUnderground_Below.dmm"
 		#include "map_files\tramstation\tramstation.dmm"
 		// SKYRAT EDIT ADDITON START - Compiling our modular maps too!
@@ -21,8 +20,6 @@
 		#include "map_files\KiloStation\KiloStation_skyrat.dmm"
 		#include "map_files\MetaStation\MetaStation_skyrat.dmm"
 		#include "map_files\IceBoxStation\IceBoxStation_skyrat.dmm"
-		#include "map_files\IceBoxStation\IcemoonUnderground_Above_skyrat.dmm"
-		#include "map_files\IceBoxStation\IcemoonUnderground_Below_skyrat.dmm"
 		#include "map_files\tramstation\tramstation_skyrat.dmm"
 		#include "map_files\Blueshift\BlueShift_upper.dmm"
 		#include "map_files\Blueshift\BlueShift_middle.dmm"

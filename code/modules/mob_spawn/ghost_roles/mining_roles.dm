@@ -15,6 +15,7 @@
 	the fresh air of Earth. These thoughts are dispelled by yet another recollection of how you got here... "
 	spawner_job_path = /datum/job/hermit
 	quirks_enabled = TRUE // SKYRAT EDIT ADDITION - ghost role loadouts
+	random_appearance = FALSE // SKYRAT EDIT ADDITION
 
 /obj/effect/mob_spawn/ghost_role/human/hermit/Initialize(mapload)
 	. = ..()
@@ -81,6 +82,7 @@
 	spawner_job_path = /datum/job/beach_bum
 	outfit = /datum/outfit/beachbum
 	quirks_enabled = TRUE // SKYRAT EDIT ADDITION - ghost role loadouts
+	random_appearance = FALSE // SKYRAT EDIT ADDITION
 
 /obj/effect/mob_spawn/ghost_role/human/beach/lifeguard
 	you_are_text = "You're a spunky lifeguard!"
@@ -121,6 +123,7 @@
 	flavour_text = "Time to mix drinks and change lives. Smoking space drugs makes it easier to understand your patrons' odd dialect."
 	spawner_job_path = /datum/job/space_bartender
 	outfit = /datum/outfit/spacebartender
+	random_appearance = FALSE // SKYRAT EDIT ADDITION
 
 /datum/outfit/spacebartender
 	name = "Space Bartender"
@@ -156,6 +159,7 @@
 	Estimated time of last contact: Deployment, 5000 millennia ago."
 	spawner_job_path = /datum/job/lifebringer
 	restricted_species = list(/datum/species/pod) //SKYRAT EDIT ADDITION
+	random_appearance = FALSE // SKYRAT EDIT ADDITION
 
 /obj/effect/mob_spawn/ghost_role/human/seed_vault/Initialize(mapload)
 	. = ..()
@@ -224,6 +228,7 @@
 	var/datum/team/ashwalkers/team
 	var/obj/structure/ash_walker_eggshell/eggshell
 	restricted_species = list(/datum/species/lizard/ashwalker) //SKYRAT EDIT ADDITION
+	random_appearance = FALSE // SKYRAT EDIT ADDITION
 
 /obj/effect/mob_spawn/ghost_role/human/ash_walker/Destroy()
 	eggshell = null
@@ -239,6 +244,7 @@
 	// SKYRAT EDIT MOVE
 	// Moved lizard name randomizer before parent call (so character names are preserved)
 	spawned_human.fully_replace_character_name(null,random_unique_lizard_name(gender))
+	loadout_enabled = TRUE //SKYRAT EDIT ADDITION
 	. = ..()
 	// SKYRAT EDIT END
 	to_chat(spawned_human, "<b>Drag the corpses of men and beasts to your nest. It will absorb them to create more of your kind. Invade the strange structure of the outsiders if you must. Do not cause unnecessary destruction, as littering the wastes with ugly wreckage is certain to not gain you favor. Glory to the Necropolis!</b>")
@@ -280,6 +286,7 @@
 	spawner_job_path = /datum/job/lavaland_syndicate
 	loadout_enabled = TRUE // SKYRAT EDIT ADDITION - ghost role loadouts
 	quirks_enabled = TRUE // SKYRAT EDIT ADDITION - ghost role loadouts
+	random_appearance = FALSE // SKYRAT EDIT ADDITION
 
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/special(mob/living/new_spawn)
 	. = ..()
