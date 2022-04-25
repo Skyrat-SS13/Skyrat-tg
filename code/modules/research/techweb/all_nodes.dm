@@ -185,6 +185,7 @@
 		"spade",
 		"spraycan",
 		"swab",
+		"tile_sprayer",
 		"tscanner",
 		"welding_helmet",
 		"welding_tool",
@@ -219,6 +220,7 @@
 		"dropper",
 		"hemostat",
 		"large_beaker",
+		"pillbottle",
 		"plumbing_rcd",
 		"portable_chem_mixer",
 		"retractor",
@@ -890,6 +892,7 @@
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
 		"borg_upgrade_clamp",
+		"borg_upgrade_brush",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)

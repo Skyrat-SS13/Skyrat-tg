@@ -248,6 +248,11 @@
 				for(var/organ in carbon_target_mob.internal_organs)
 					var/destination = get_edge_target_turf(turf_underneath, pick(GLOB.alldirs)) //Pick a random direction to toss them in
 					var/obj/item/organ/organ_to_yeet = organ
+					// SKYRAT EDIT START - Non-spillable organs
+					if(!organ_to_yeet.drop_when_organ_spilling)
+						qdel(organ_to_yeet)
+						continue
+					// SKYRAT EDIT END
 					organ_to_yeet.Remove(carbon_target_mob) //Note that this isn't the same proc as for lists
 					organ_to_yeet.forceMove(turf_underneath) //Move the organ outta the body
 					organ_to_yeet.throw_at(destination, 2, 3) //Thow the organ at a random tile 3 spots away
