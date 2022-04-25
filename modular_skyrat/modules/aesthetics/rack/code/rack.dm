@@ -31,6 +31,14 @@
 	desc = "A gun rack for storing guns."
 	icon_state = "gunrack"
 
+/obj/structure/rack/gunrack/Initialize(mapload)
+	. = ..()
+	if(mapload)
+		for(var/obj/item/I in loc.contents)
+			if(istype(I, /obj/item/gun))
+				var/obj/item/gun/to_place = I
+				to_place.place_on_rack()
+
 /obj/structure/rack/gunrack/attackby(obj/item/W, mob/living/user, params)
 	var/list/modifiers = params2list(params)
 	if (W.tool_behaviour == TOOL_WRENCH && !(flags_1&NODECONSTRUCT_1) && LAZYACCESS(modifiers, RIGHT_CLICK))

@@ -14,13 +14,13 @@
 /obj/item/mod/module/springlock/on_install()
 	mod.activation_step_time *= 0.5
 
-/obj/item/mod/module/springlock/on_uninstall()
+/obj/item/mod/module/springlock/on_uninstall(deleting = FALSE)
 	mod.activation_step_time *= 2
 
 /obj/item/mod/module/springlock/on_suit_activation()
 	RegisterSignal(mod.wearer, COMSIG_ATOM_EXPOSE_REAGENTS, .proc/on_wearer_exposed)
 
-/obj/item/mod/module/springlock/on_suit_deactivation()
+/obj/item/mod/module/springlock/on_suit_deactivation(deleting = FALSE)
 	UnregisterSignal(mod.wearer, COMSIG_ATOM_EXPOSE_REAGENTS)
 
 ///Signal fired when wearer is exposed to reagents
@@ -52,7 +52,8 @@
 	playsound(mod.wearer, 'sound/effects/splat.ogg', 50, TRUE, frequency = 0.5)
 	mod.wearer.client?.give_award(/datum/award/achievement/misc/springlock, mod.wearer)
 	mod.wearer.apply_damage(500, BRUTE, forced = TRUE, spread_damage = TRUE, sharpness = SHARP_POINTY) //boggers, bogchamp, etc
-	mod.wearer.death() //just in case, for some reason, they're still alive
+	if(!HAS_TRAIT(mod.wearer, TRAIT_NODEATH))
+		mod.wearer.death() //just in case, for some reason, they're still alive
 	flash_color(mod.wearer, flash_color = "#FF0000", flash_time = 10 SECONDS)
 
 ///Rave Visor - Gives you a rainbow visor and plays jukebox music to you.
@@ -106,13 +107,15 @@
 	if(selection)
 		SEND_SOUND(mod.wearer, sound(selection.song_path, volume = 50, channel = CHANNEL_JUKEBOX))
 
-/obj/item/mod/module/visor/rave/on_deactivation()
+/obj/item/mod/module/visor/rave/on_deactivation(display_message = TRUE, deleting = FALSE)
 	. = ..()
 	if(!.)
 		return
 	QDEL_NULL(rave_screen)
 	if(selection)
 		mod.wearer.stop_sound_channel(CHANNEL_JUKEBOX)
+		if(deleting)
+			return
 		SEND_SOUND(mod.wearer, sound('sound/machines/terminal_off.ogg', volume = 50, channel = CHANNEL_JUKEBOX))
 
 /obj/item/mod/module/visor/rave/generate_worn_overlay(mutable_appearance/standing)
@@ -234,6 +237,30 @@
 	drain_power(use_power_cost)
 	num_sheets_dispensed++
 
+/obj/item/mod/module/stamp
+	name = "MOD stamper module"
+	desc = "A module installed into the wrist of the suit, this functions as a high-power stamp, \
+		able to switch between accept and deny modes."
+	icon_state = "stamp"
+	module_type = MODULE_ACTIVE
+	complexity = 1
+	active_power_cost = DEFAULT_CHARGE_DRAIN * 0.3
+	device = /obj/item/stamp/mod
+	incompatible_modules = list(/obj/item/mod/module/stamp)
+	cooldown_time = 0.5 SECONDS
+
+/obj/item/stamp/mod
+	name = "MOD electronic stamp"
+	desc = "A high-power stamp, able to switch between accept and deny mode when used."
+
+/obj/item/stamp/mod/attack_self(mob/user, modifiers)
+	. = ..()
+	if(icon_state == "stamp-ok")
+		icon_state = "stamp-deny"
+	else
+		icon_state = "stamp-ok"
+	balloon_alert(user, "switched mode")
+
 ///Atrocinator - Flips your gravity.
 /obj/item/mod/module/atrocinator
 	name = "MOD atrocinator module"
@@ -261,14 +288,15 @@
 	ADD_TRAIT(mod.wearer, TRAIT_SILENT_FOOTSTEPS, MOD_TRAIT)
 	check_upstairs() //todo at some point flip your screen around
 
-/obj/item/mod/module/atrocinator/on_deactivation()
-	if(you_fucked_up)
+/obj/item/mod/module/atrocinator/on_deactivation(display_message = TRUE, deleting = FALSE)
+	if(you_fucked_up && !deleting)
 		to_chat(mod.wearer, span_danger("It's too late."))
 		return FALSE
 	. = ..()
 	if(!.)
 		return
-	playsound(src, 'sound/effects/curseattack.ogg', 50)
+	if(deleting)
+		playsound(src, 'sound/effects/curseattack.ogg', 50)
 	qdel(mod.wearer.RemoveElement(/datum/element/forced_gravity, NEGATIVE_GRAVITY))
 	UnregisterSignal(mod.wearer, COMSIG_MOVABLE_MOVED)
 	step_count = 0

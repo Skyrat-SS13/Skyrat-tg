@@ -1,15 +1,17 @@
 /datum/religion_rites
-/// name of the religious rite
+	/// name of the religious rite
 	var/name = "religious rite"
-/// Description of the religious rite
+	/// Description of the religious rite
 	var/desc = "immm gonna rooon"
-/// length it takes to complete the ritual
+	/// length it takes to complete the ritual
 	var/ritual_length = (10 SECONDS) //total length it'll take
-/// list of invocations said (strings) throughout the rite
+	/// list of invocations said (strings) throughout the rite
 	var/list/ritual_invocations //strings that are by default said evenly throughout the rite
-/// message when you invoke
+	/// message when you invoke
 	var/invoke_msg
 	var/favor_cost = 0
+	/// does the altar auto-delete the rite
+	var/auto_delete = TRUE
 
 /datum/religion_rites/New()
 	. = ..()
@@ -369,7 +371,7 @@
 		playsound(get_turf(religious_tool), 'sound/effects/pray.ogg', 50, TRUE)
 		joining_now.gib(TRUE)
 		return FALSE
-	var/datum/mutation/human/honorbound/honormut = user.dna.check_mutation(HONORBOUND)
+	var/datum/mutation/human/honorbound/honormut = user.dna.check_mutation(/datum/mutation/human/honorbound)
 	if(joining_now in honormut.guilty)
 		honormut.guilty -= joining_now
 	GLOB.religious_sect.adjust_favor(200, user)
@@ -389,7 +391,7 @@
 /datum/religion_rites/forgive/perform_rite(mob/living/carbon/human/user, atom/religious_tool)
 	if(!ishuman(user))
 		return FALSE
-	var/datum/mutation/human/honorbound/honormut = user.dna.check_mutation(HONORBOUND)
+	var/datum/mutation/human/honorbound/honormut = user.dna.check_mutation(/datum/mutation/human/honorbound)
 	if(!honormut)
 		return FALSE
 	if(!length(honormut.guilty))
@@ -405,7 +407,7 @@
 	..()
 	if(in_range(user, religious_tool))
 		return FALSE
-	var/datum/mutation/human/honorbound/honormut = user.dna.check_mutation(HONORBOUND)
+	var/datum/mutation/human/honorbound/honormut = user.dna.check_mutation(/datum/mutation/human/honorbound)
 	if(!honormut) //edge case
 		return FALSE
 	honormut.guilty -= who

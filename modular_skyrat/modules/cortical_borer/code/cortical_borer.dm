@@ -1,9 +1,12 @@
 GLOBAL_VAR_INIT(objective_egg_borer_number, 5)
 GLOBAL_VAR_INIT(objective_egg_egg_number, 10)
-GLOBAL_VAR_INIT(objective_willing_hosts, 20)
+GLOBAL_VAR_INIT(objective_willing_hosts, 10)
+GLOBAL_VAR_INIT(objective_blood_chem, 5)
+GLOBAL_VAR_INIT(objective_blood_borer, 5)
 
-GLOBAL_VAR_INIT(successful_borer, 0)
+GLOBAL_VAR_INIT(successful_egg_number, 0)
 GLOBAL_LIST_EMPTY(willing_hosts)
+GLOBAL_VAR_INIT(successful_blood_chem, 0)
 
 //we need a way of buffing leg speed... here
 /datum/movespeed_modifier/borer_speed
@@ -19,16 +22,6 @@ GLOBAL_LIST_EMPTY(willing_hosts)
 		if(iscorticalborer(check_content))
 			return check_content
 	return FALSE
-
-//this allows borers to slide under/through a door
-/obj/machinery/door/Bumped(atom/movable/movable_atom)
-	if(iscorticalborer(movable_atom) && density)
-		if(!do_after(movable_atom, 5 SECONDS, src))
-			return ..()
-		movable_atom.forceMove(get_turf(src))
-		to_chat(movable_atom, span_notice("You squeeze through [src]."))
-		return
-	return ..()
 
 //so if a person is debrained, the borer is removed
 /obj/item/organ/brain/Remove(mob/living/carbon/target, special = 0, no_id_transfer = FALSE)
@@ -160,16 +153,7 @@ GLOBAL_LIST_EMPTY(willing_hosts)
 										/datum/reagent/medicine/potass_iodide,
 										/datum/reagent/medicine/diphenhydramine,
 										/datum/reagent/medicine/epinephrine,
-										/datum/reagent/medicine/antihol,
 										/datum/reagent/medicine/haloperidol,
-										/datum/reagent/consumable/nutriment,
-										/datum/reagent/consumable/hell_ramen,
-										/datum/reagent/consumable/tearjuice,
-										/datum/reagent/drug/thc,
-										/datum/reagent/drug/quaalude,
-										/datum/reagent/drug/happiness,
-										/datum/reagent/consumable/tea,
-										/datum/reagent/consumable/hot_coco,
 										/datum/reagent/toxin/formaldehyde,
 										/datum/reagent/impurity/libitoil,
 										/datum/reagent/impurity/mannitol,
@@ -178,15 +162,9 @@ GLOBAL_LIST_EMPTY(willing_hosts)
 										/datum/reagent/medicine/c2/convermol,
 										/datum/reagent/medicine/c2/seiver,
 										/datum/reagent/lithium,
-										/datum/reagent/consumable/orangejuice,
-										/datum/reagent/consumable/tomatojuice,
-										/datum/reagent/consumable/limejuice,
-										/datum/reagent/consumable/carrotjuice,
-										/datum/reagent/consumable/milk,
 										/datum/reagent/medicine/salglu_solution,
 										/datum/reagent/medicine/mutadone,
 										/datum/reagent/toxin/heparin,
-										/datum/reagent/consumable/ethanol/beer,
 										/datum/reagent/medicine/mannitol,
 										/datum/reagent/drug/methamphetamine/borer_version,
 										/datum/reagent/medicine/morphine,
@@ -240,10 +218,16 @@ GLOBAL_LIST_EMPTY(willing_hosts)
 	var/body_focus = null
 	///how many children the borer has produced
 	var/children_produced = 0
+	///how many blood chems have been learned through the blood
+	var/blood_chems_learned = 0
 	///we dont want to spam the chat
 	var/deathgasp_once = FALSE
 	//the limit to the chemical and stat evolution
 	var/limited_borer = 10
+	///borers can only enter biologicals if true
+	var/organic_restricted = TRUE
+	///borers are unable to enter changelings if true
+	var/changeling_restricted = TRUE
 
 /mob/living/simple_animal/cortical_borer/Initialize(mapload)
 	. = ..()
@@ -299,8 +283,9 @@ GLOBAL_LIST_EMPTY(willing_hosts)
 		. += "Sugar detected! Unable to generate resources!"
 		. += ""
 	. += "OBJECTIVES:"
-	. += "1) [GLOB.objective_egg_borer_number] borers producing [GLOB.objective_egg_egg_number] eggs: [GLOB.successful_borer]/[GLOB.objective_egg_borer_number]"
+	. += "1) [GLOB.objective_egg_borer_number] borers producing [GLOB.objective_egg_egg_number] eggs: [GLOB.successful_egg_number]/[GLOB.objective_egg_borer_number]"
 	. += "2) [GLOB.objective_willing_hosts] willing hosts: [length(GLOB.willing_hosts)]/[GLOB.objective_willing_hosts]"
+	. += "3) [GLOB.objective_blood_borer] borers learning [GLOB.objective_blood_chem] from the blood: [GLOB.successful_blood_chem]/[GLOB.objective_blood_borer]"
 
 /mob/living/simple_animal/cortical_borer/Life(delta_time, times_fired)
 	. = ..()
@@ -336,11 +321,13 @@ GLOBAL_LIST_EMPTY(willing_hosts)
 		timed_maturity = world.time + 1 SECONDS
 		maturity_age++
 
-		//no objectives means 20:40; one objective means 15:30; two objectives mean 10:20
+		//20:40, 15:30, 10:20, 5:10
 		var/maturity_threshold = 20
-		if(GLOB.successful_borer >= GLOB.objective_egg_borer_number)
+		if(GLOB.successful_egg_number >= GLOB.objective_egg_borer_number)
 			maturity_threshold -= 5
 		if(length(GLOB.willing_hosts) >= GLOB.objective_willing_hosts)
+			maturity_threshold -= 5
+		if(GLOB.successful_blood_chem >= GLOB.objective_blood_borer)
 			maturity_threshold -= 5
 
 		if(maturity_age == maturity_threshold)

@@ -6,7 +6,7 @@
 	randomize_by_default = FALSE
 
 /datum/preference/choiced/species/deserialize(input, datum/preferences/preferences)
-	return GLOB.species_list[sanitize_inlist(input, get_choices_serialized(), "human")]
+	return GLOB.species_list[sanitize_inlist(input, get_choices_serialized(), SPECIES_HUMAN)]
 
 /datum/preference/choiced/species/serialize(input)
 	var/datum/species/species = input
@@ -34,7 +34,7 @@
 /datum/preference/choiced/species/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/prefs)
 	target.set_species(value, FALSE, FALSE, prefs?.features.Copy(), prefs?.mutant_bodyparts.Copy(), prefs?.body_markings.Copy()) // SKYRAT EDIT - Customization
 
-//SKYRAT EDIT ADDITION
+	//SKYRAT EDIT ADDITION
 	target.dna.update_body_size()
 
 	for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS))
@@ -52,30 +52,22 @@
 /datum/preference/choiced/species/compile_constant_data()
 	var/list/data = list()
 
-	var/list/food_flags = FOOD_FLAGS
-
-	for (var/species_id in (get_selectable_species() + get_customizable_races())) //SKYRAT EDIT CHANGE - ORIGINAL: for (var/species_id in get_selectable_species())
+	for (var/species_id in (get_selectable_species() + get_customizable_races())) //SKYRAT EDIT CHANGE
 		var/species_type = GLOB.species_list[species_id]
-		var/datum/species/species = new species_type
+		var/datum/species/species = new species_type()
 
-		var/list/diet = list()
+		data[species_id] = list()
+		data[species_id]["name"] = species.name
+		data[species_id]["desc"] = species.get_species_description()
+		data[species_id]["lore"] = species.get_species_lore()
+		data[species_id]["icon"] = sanitize_css_class_name(species.name)
+		data[species_id]["use_skintones"] = species.use_skintones
+		data[species_id]["sexes"] = species.sexes
+		data[species_id]["enabled_features"] = species.get_features()
+		data[species_id]["perks"] = species.get_species_perks()
+		data[species_id]["diet"] =  species.get_species_diet()
+		data[species_id]["veteran_only"] = species.veteran_only // SKYRAT EDIT ADDITION - Veteran races
 
-		if (!(TRAIT_NOHUNGER in species.inherent_traits))
-			diet = list(
-				"liked_food" = bitfield_to_list(species.liked_food, food_flags),
-				"disliked_food" = bitfield_to_list(species.disliked_food, food_flags),
-				"toxic_food" = bitfield_to_list(species.toxic_food, food_flags),
-			)
-
-		data[species_id] = list(
-			"name" = species.name,
-			"icon" = sanitize_css_class_name(species.name),
-
-			"use_skintones" = species.use_skintones,
-			"sexes" = species.sexes,
-
-			"enabled_features" = species.get_features(),
-			"veteran_only" = species.veteran_only,
-		) + diet
+		qdel(species)
 
 	return data

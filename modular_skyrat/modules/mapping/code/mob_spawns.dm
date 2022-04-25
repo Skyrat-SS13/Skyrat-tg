@@ -21,6 +21,14 @@
 	shoes = /obj/item/clothing/shoes/laceup
 	id = /obj/item/card/id/away/blackmarket
 
+/obj/effect/mob_spawn/ghost_role/human/ds2
+	name = "DS2 personnel"
+	prompt_name = "DS2 personnel"
+	you_are_text = "You are a syndicate operative, employed in a top secret research facility developing biological weapons."
+	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue operating as best you can, and try to keep a low profile."
+	quirks_enabled = TRUE
+	random_appearance = FALSE
+
 /obj/effect/mob_spawn/ghost_role/human/ds2/prisoner
 	name = "Syndicate Prisoner"
 	prompt_name = "a Syndicate prisoner"
@@ -31,12 +39,6 @@
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/ds2/prisoner
 
-/obj/effect/mob_spawn/ghost_role/human/ds2
-	name = "DS2 personnel"
-	prompt_name = "DS2 personnel"
-	you_are_text = "You are a syndicate operative, employed in a top secret research facility developing biological weapons."
-	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue operating as best you can, and try to keep a low profile."
-
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate
 	name = "Syndicate Operative"
 	prompt_name = "a Syndicate operative"
@@ -46,6 +48,7 @@
 	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue operating as best you can, and try to keep a low profile."
 	important_text = "You are not an antagonist."
 	outfit = /datum/outfit/ds2/syndicate
+	loadout_enabled = TRUE
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/special(mob/living/new_spawn)
 	. = ..()
@@ -92,8 +95,8 @@
 
 /datum/outfit/ds2/prisoner
 	name = "Syndicate Prisoner"
-	uniform = /obj/item/clothing/under/rank/prisoner
-	shoes = /obj/item/clothing/shoes/sneakers/orange
+	uniform = /obj/item/clothing/under/rank/prisoner/syndicate
+	shoes = /obj/item/clothing/shoes/sneakers/crimson
 	id = /obj/item/card/id/advanced/prisoner
 
 /datum/outfit/ds2/syndicate
@@ -113,18 +116,18 @@
 
 /datum/outfit/ds2/syndicate/enginetech
 	name = "DS-2 Engine Technician"
-	uniform = /obj/item/clothing/under/utility/eng/syndicate
+	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/syndicate
 	id_trim = /datum/id_trim/syndicom/skyratnoicon/enginetechnician
 	gloves = /obj/item/clothing/gloves/combat
 
 /datum/outfit/ds2/syndicate/researcher
 	name = "DS-2 Researcher"
-	uniform = /obj/item/clothing/under/utility/sci/syndicate
+	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/researcher
 
 /datum/outfit/ds2/syndicate/stationmed
 	name = "DS-2 Station Medical Officer"
-	uniform = /obj/item/clothing/under/utility/med/syndicate
+	uniform = /obj/item/clothing/under/rank/medical/doctor/skyrat/utility/syndicate
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/stationmedicalofficer
 
 /datum/outfit/ds2/syndicate/masteratarms
@@ -135,6 +138,7 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	head = /obj/item/clothing/head/sec/navywarden/syndicate
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	ears = /obj/item/radio/headset/interdyne
 
 	backpack_contents = list(
@@ -148,8 +152,10 @@
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/brigofficer
 	belt = /obj/item/storage/belt/security/full
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
-	suit = /obj/item/clothing/suit/armor/bulletproof
-	head = /obj/item/clothing/head/helmet/swat
+	suit = /obj/item/clothing/suit/armor/bulletproof/old
+	head = /obj/item/clothing/head/helmet/swat/ds
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+	mask = /obj/item/clothing/mask/gas/syndicate/ds
 	ears = /obj/item/radio/headset/interdyne
 
 	backpack_contents = list(
@@ -179,16 +185,18 @@
 	prompt_name = "a lost cargo tech"
 	desc = "A humming cryo pod. There's a freight hauler inside."
 	mob_name = "Freighter Crew"
+	outfit = /datum/outfit/freighter_crew
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_species = /datum/species/human
 	you_are_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
 	flavour_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
 	important_text = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew for the ship's Chief. Your job was merely being a deckhand doing freight work and helping with kitchen prep."
+	random_appearance = FALSE
 
 /datum/outfit/freighter_crew
 	name = "Freighter Crew"
-	uniform = /obj/item/clothing/under/rank/cargo/casualman
+	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/casualman
 	shoes = /obj/item/clothing/shoes/workboots
 	back = /obj/item/storage/backpack
 	backpack_contents = list(/obj/item/armament_token/sidearm_blackmarket)
@@ -199,23 +207,25 @@
 	prompt_name = "a lost miner"
 	desc = "A humming cryo pod. There's an excavation worker inside."
 	mob_name = "Freighter Excavator"
+	outfit = /datum/outfit/freighter_excavator
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_species = /datum/species/human
 	you_are_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
 	flavour_text = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
 	important_text = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew working under the ship Chief. Your role was to be an excavation and salvage worker for the ship."
+	random_appearance = FALSE
 
 /datum/outfit/freighter_excavator
 	name = "Freighter Excavator"
-	uniform = /obj/item/clothing/under/utility/cargo/gorka
+	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/gorka
 	shoes = /obj/item/clothing/shoes/workboots/mining
 	back = /obj/item/storage/backpack
 	backpack_contents = list(/obj/item/flashlight/seclite=1,\
 		/obj/item/knife/combat/survival=1,
 		/obj/item/mining_voucher=1,
 		/obj/item/t_scanner/adv_mining_scanner/lesser=1,
-		/obj/item/gun/energy/kinetic_accelerator=1,\
+		/obj/item/gun/energy/recharge/kinetic_accelerator=1,\
 		/obj/item/stack/marker_beacon/ten=1,\
 		/obj/item/armament_token/sidearm_blackmarket)
 	r_pocket = /obj/item/storage/bag/ore
@@ -226,16 +236,18 @@
 	prompt_name = "a lost Quartermaster"
 	desc = "A humming cryo pod. You see someone who looks In Charge inside."
 	mob_name = "Freighter Chief"
+	outfit = /datum/outfit/freighter_boss
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_species = /datum/species/human
 	you_are_text = "You and your crew were running a normal freight haul until a pirate attack knocked out the engines. All you can do now is try and survive and keep your crew alive."
 	flavour_text = "You and your crew were running a normal freight haul until a pirate attack knocked out the engines. All you can do now is try and survive and keep your crew alive."
 	important_text = "Do not abandon your crew, lead them and work with them to survive. You are not directly working with NT, you are an independent freighter crew. You are the captain of the ship, which you purchased a while ago, and are in charge of the crew."
+	random_appearance = FALSE
 
 /datum/outfit/freighter_boss
 	name = "Freighter Boss"
-	uniform = /obj/item/clothing/under/utility/cargo/turtleneck
+	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck
 	shoes = /obj/item/clothing/shoes/workboots
 	neck = /obj/item/clothing/neck/cloak/qm
 	back = /obj/item/storage/backpack
@@ -256,9 +268,12 @@
 	flavour_text = "Something went wrong. Morality of experiments went awry, expansions were made before scans were fully done and now you have to deal with the aftermath of your past crews exodus. Bring P-T to the success it was ment to be, or die trying. (OOC note: This ghost role was not designed with Plasmamen or Vox in mind. While there are some accommodations so that they can survive, it should be noted that they were not the focal point whilst designing Port Tarkon. The closet in the middle of the room above contains the 'accommodations' for those species.)"
 	important_text = "DO NOT abandon the port, PERIOD, but using the ship to buy more items or get help is good, if not ideal. Do not trade special equipment to the station. Unwelcomed and uninvited guests are not obligated to your kindness."
 	outfit = /datum/outfit/tarkon
+	loadout_enabled = TRUE
+	quirks_enabled = TRUE
+	random_appearance = FALSE
 
 /datum/outfit/tarkon
-	uniform = /obj/item/clothing/under/utility/cargo
+	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
 	shoes = /obj/item/clothing/shoes/winterboots
 	gloves = /obj/item/clothing/gloves/fingerless
 	glasses = /obj/item/clothing/glasses/sunglasses
@@ -284,31 +299,31 @@
 	outfit = /datum/outfit/tarkon/sci
 
 /datum/outfit/tarkon/sci
-	uniform = /obj/item/clothing/under/utility/sci
+	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility
 	glasses = /obj/item/clothing/glasses/hud/diagnostic
 	id = /obj/item/card/id/away/tarkon/sci
 	l_hand = /obj/item/inducer
 	l_pocket = null
-	r_pocket = /obj/item/stock_parts/cell/high/plus
+	r_pocket = /obj/item/stock_parts/cell/high
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/med
 	prompt_name = "an abandoned medical resident"
 	outfit = /datum/outfit/tarkon/med
 
 /datum/outfit/tarkon/med
-	uniform = /obj/item/clothing/under/utility/med
+	uniform = /obj/item/clothing/under/rank/medical/doctor/skyrat/utility
 	glasses = /obj/item/clothing/glasses/hud/health
 	id = /obj/item/card/id/away/tarkon/med
 	neck = /obj/item/clothing/neck/stethoscope
 	l_pocket = /obj/item/healthanalyzer
-	r_pocket = /obj/item/stack/medical/suture
+	r_pocket = /obj/item/stack/medical/suture/medicated
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/engi
 	prompt_name = "an abandoned maintenance engineer"
 	outfit = /datum/outfit/tarkon/engi
 
 /datum/outfit/tarkon/engi
-	uniform = /obj/item/clothing/under/utility/eng
+	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility
 	glasses = /obj/item/clothing/glasses/meson/engine/tray
 	id = /obj/item/card/id/away/tarkon/engi
 	gloves = /obj/item/clothing/gloves/combat
@@ -322,9 +337,31 @@
 /datum/outfit/tarkon/sec
 	uniform = /obj/item/clothing/under/utility/sec
 	glasses = /obj/item/clothing/glasses/hud/security
+	gloves = /obj/item/clothing/gloves/tackler/combat
 	id = /obj/item/card/id/away/tarkon/sec
 	l_pocket = /obj/item/melee/baton/telescopic
 	r_pocket = /obj/item/grenade/barrier
+	skillchips = list(/obj/item/skillchip/chameleon/reload)
+
+/obj/effect/mob_spawn/ghost_role/human/tarkon/ensign
+	name = "P-T Abandoned Ensign"
+	prompt_name = "an abandoned ensign"
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper-o"
+	you_are_text = "You were tasked by Tarkon Industries to Port Tarkon as a low-level command member, Holding no actual command, but as just another scapegoat to blame should it failed... And failed it did. Scan were never done when the overseer commanded construction, and you were left, forever branded with a task not possible for you"
+	flavour_text = "The rest of command bailed, and left as nothing more than a glorified assistant, you are held responsible should you be unable to wrangle what hopes of success Headquarters has. Find the blueprints and keep them close, Lest looters and raiders plan to seize what isn't theirs. (OOC note: This ghost role was not designed with Plasmamen or Vox in mind. While there are some accommodations so that they can survive, it should be noted that they were not the focal point whilst designing Port Tarkon. The closet in the middle of the room above contains the 'accommodations' for those species.)"
+	important_text = "People aren't obligated to listen to you, and you are, otherwise, just another body with some remnant of control. Make sure important items aren't traded and do your best to survive in the hellscape left for you. Unwelcomed and uninvited guests are not obligated to your kindness."
+	outfit = /datum/outfit/tarkon/ensign
+
+/datum/outfit/tarkon/ensign //jack of all trades, master of none, spent all his credits, every last one
+	uniform = /obj/item/clothing/under/utility
+	ears = /obj/item/radio/headset/tarkon/ensign
+	id = /obj/item/card/id/away/tarkon/ensign
+	neck = /obj/item/clothing/neck/security_cape/armplate
+	gloves = /obj/item/clothing/gloves/combat
+	l_pocket = null
+	r_pocket = null
+	skillchips = list(/obj/item/skillchip/chameleon/reload)
 
 //ITEMS//
 /obj/item/radio/headset/cybersun
@@ -394,6 +431,11 @@
 
 /datum/id_trim/away/tarkon/sci
 	assignment = "P-T Field Researcher"
+	access = list(29, 66, ACCESS_AWAY_GENERAL)
+
+/datum/id_trim/away/tarkon/ensign
+	assignment = "Tarkon Ensign"
+	access = list(5, 29, 66, ACCESS_AWAY_GENERAL, 210)
 
 /obj/item/card/id/away/tarkon/sci  //original tarkon ID is defined in fluff
 	name = "P-T Field Researcher's Access Card"
@@ -412,7 +454,7 @@
 
 /obj/item/card/id/away/tarkon/cargo
 	name = "P-T Cargo Hauler's Access Card"
-	desc = "An access card designated for \"Cargonia's Finest\". You're also a part time space miner, when cargonia is quiet."
+	desc = "An access card designated for \"Cargo's Finest\". You're also a part time space miner, when cargonia is quiet."
 	trim = /datum/id_trim/away/tarkon
 
 
@@ -420,6 +462,11 @@
 	name = "P-T Maintenance Engineer's Access Card"
 	desc = "An access card designated for \"Engineering Staff\". You're going to be the one everyone points at to fix stuff, lets be honest."
 	trim = /datum/id_trim/away/tarkon/eng
+
+/obj/item/card/id/away/tarkon/ensign
+	name = "Tarkon Ensign's Access Card"
+	desc = "An access card designated for \"Tarkon Ensign\". No one has to listen to you... But you're the closest there is for command around here."
+	trim = /datum/id_trim/away/tarkon/ensign
 
 //AREAS//
 /area/ruin/space/has_grav/deepstorage/lostcargo

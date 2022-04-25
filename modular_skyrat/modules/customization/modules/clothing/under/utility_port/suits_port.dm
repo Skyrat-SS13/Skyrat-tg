@@ -5,7 +5,7 @@
 	name = "bartender's winter coat"
 	desc = "A heavy jacket made from wool originally stolen from the chef's goat. This new design is made to fit the classic suit-and-tie aesthetic, but without the hypothermia."
 	icon_state = "coatbar"
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/reagent_containers/food/drinks/shaker, /obj/item/reagent_containers/food/drinks/flask, /obj/item/reagent_containers/glass/rag)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/bartender
 
@@ -25,7 +25,7 @@
 	body_parts_covered = CHEST|ARMS|GROIN
 	cold_protection = CHEST|ARMS|GROIN
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	toggle_noun = "zipper"
 
 //Job Jackets
@@ -56,7 +56,7 @@
 /obj/item/clothing/suit/gorka	//THIS WILL BE MOVED IN THE NEXT PR ADDING PROPER GORKAS (not cargo related so not in this PR), BUT FOR NOW ITS HERE FOR THE SUBTYPE'S FILE LINKS
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/gorka/supply	//Put here for sorting purposes, considering the cargo gorkas are in the utility file too. The base Gorka and Jacket (to be added later) will most likely be elsewhere
 	name = "supply gorka jacket"
@@ -107,7 +107,7 @@
 	name = "high vis labcoat"
 	desc = "A high visibility vest for emergency responders, intended to draw attention away from the blood."
 	icon_state = "labcoat_highvis"
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/toggle/labcoat/para_red
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -115,12 +115,12 @@
 	name = "red paramedic labcoat"
 	desc = "A red vest with reflective strips for First Responsers."
 	icon_state = "labcoat_pmedred"
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/toggle/labcoat/para_red/Initialize()
 	. = ..()
 	allowed += list(
-		/obj/item/storage/firstaid,
+		/obj/item/storage/medkit,
 	)
 
 //Costume-suits are located under other_port.dm, to keep them with their costume sets

@@ -334,7 +334,18 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 	if(!async)
 		start_time = REALTIMEOFDAY
 	Close()
-	. = run_query(async)
+	status = DB_QUERY_STARTED
+	if(async)
+		if(!MC_RUNNING(SSdbcore.init_stage))
+			SSdbcore.run_query_sync(src)
+		else
+			SSdbcore.queue_query(src)
+		sync()
+	else
+		var/job_result_str = rustg_sql_query_blocking(connection, sql, json_encode(arguments))
+		store_data(json_decode(job_result_str))
+
+	. = (status != DB_QUERY_BROKEN)
 	var/timed_out = !. && findtext(last_error, "Operation timed out")
 	if(!. && log_error)
 		log_sql("[last_error] | Query used: [sql] | Arguments: [json_encode(arguments)]")

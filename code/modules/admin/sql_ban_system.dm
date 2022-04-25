@@ -358,6 +358,8 @@
 				ROLE_SYNDICATE,
 				ROLE_TRAITOR,
 				ROLE_WIZARD,
+				ROLE_BORER, //SKYRAT EDIT
+				ROLE_ASSAULT_OPERATIVE, //SKYRAT EDIT
 			),
 			"Skyrat Ban Options" = list(
 				BAN_PACIFICATION,
@@ -366,7 +368,9 @@
 				BAN_MOB_CONTROL,
 				BAN_GHOST_ROLE_SPAWNER,
 				BAN_GHOST_TAKEOVER,
-				BAN_EORG
+				BAN_EORG,
+				BAN_ANTAGONIST,
+				BAN_OPFOR,
 			),//SKYRAT EDIT ADDITION - EXTRA_BANS
 		)
 		for(var/department in long_job_lists)

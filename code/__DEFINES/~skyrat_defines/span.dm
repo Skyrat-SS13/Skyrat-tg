@@ -12,3 +12,8 @@
 #define span_warningplain(str) ("<span class='warningplain'>" + str + "</span>")
 #define span_crossooc(str) ("<span class='crossooc'>" + str + "</span>")
 #define span_crossasay(str) ("<span class='crossasay'>" + str + "</span>")
+#define span_doyourjobidiot(str) ("<span class='doyourjobidiot'>" + str + "</span>")
+#define span_brown(str) ("<span class='brown'>" + str + "</span>")
+#define span_cyan(str) ("<span class='cyan'>" + str + "</span>")
+#define span_orange(str) ("<span class='orange'>" + str + "</span>")
+#define span_yellow(str) ("<span class='yellow'>" + str + "</span>")

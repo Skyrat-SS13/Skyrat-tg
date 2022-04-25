@@ -9,8 +9,11 @@
 /datum/mod_theme/advanced // Chief Engineer
 	armor = list(MELEE = 30, BULLET = 5, LASER = 10, ENERGY = 10, BOMB = 50, BIO = 100, FIRE = 100, ACID = 90, WOUND = 10)
 
-/datum/mod_theme/mining // Shaft Miner
-	armor = list(MELEE = 40, BULLET = 5, LASER = 10, ENERGY = 10, BOMB = 50, BIO = 100, FIRE = 100, ACID = 75, WOUND = 15)
+/datum/mod_theme/loader // Cargo
+	armor = list(MELEE = 20, BULLET = 5, LASER = 10, ENERGY = 10, BOMB = 50, BIO = 100, FIRE = 50, ACID = 25, WOUND = 10)
+
+/datum/mod_theme/mining // Shaft Miner / Other half comes from the ashland booster
+	armor = list(MELEE = 5, BULLET = 5, LASER = 5, ENERGY = 5, BOMB = 25, BIO = 100, FIRE = 100, ACID = 75, WOUND = 15)
 
 /datum/mod_theme/medical // Paramedic / Medical Doctor
 	armor = list(MELEE = 10, BULLET = 5, LASER = 5, ENERGY = 10, BOMB = 10, BIO = 100, FIRE = 60, ACID = 75, WOUND = 10)

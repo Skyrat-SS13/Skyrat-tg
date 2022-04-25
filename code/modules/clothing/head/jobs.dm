@@ -12,7 +12,7 @@
 	desc = "The commander in chef's head wear."
 	strip_delay = 10
 	equip_delay_other = 10
-	dynamic_hair_suffix = ""
+
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/chefhat
 	dog_fashion = /datum/dog_fashion/head/chef
 	///the chance that the movements of a mouse inside of this hat get relayed to the human wearing the hat
@@ -35,7 +35,7 @@
 	if(!istype(user, /mob/living/simple_animal/mouse) || !isliving(loc) || !prob(mouse_control_probability))
 		return
 	var/mob/living/L = loc
-	if(L.incapacitated(TRUE)) //just in case
+	if(L.incapacitated(IGNORE_RESTRAINTS)) //just in case
 		return
 	step_towards(L, get_step(L, direction))
 
@@ -125,7 +125,7 @@
 	desc = "A beret, a mime's favorite headwear."
 	icon_state = "beret"
 	dog_fashion = /datum/dog_fashion/head/beret
-	dynamic_hair_suffix = ""
+
 	greyscale_config = /datum/greyscale_config/beret
 	greyscale_config_worn = /datum/greyscale_config/beret/worn
 	greyscale_colors = "#972A2A"
@@ -140,35 +140,6 @@
 	armor = list(MELEE = 40, BULLET = 30, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 10, FIRE = 50, ACID = 60, WOUND = 10)
 	icon_state = "hoscap"
 	strip_delay = 80
-	dynamic_hair_suffix = ""
-	//SKYRAT EDIT ADDITION START
-	unique_reskin = list(
-		"Sheriff" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi',
-			RESKIN_ICON_STATE = "cowboyhat_sec",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi',
-			RESKIN_WORN_ICON_STATE = "cowboyhat_sec"
-		),
-		"Sol" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi',
-			RESKIN_ICON_STATE = "policechiefcap",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi',
-			RESKIN_WORN_ICON_STATE = "policechiefcap"
-		),
-		"Imperial" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi',
-			RESKIN_ICON_STATE = "policechiefcap",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi',
-			RESKIN_WORN_ICON_STATE = "policechiefcap"
-		),
-		"Wide Sheriff" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi',
-			RESKIN_ICON_STATE = "cowboy_black_sec",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi',
-			RESKIN_WORN_ICON_STATE = "cowboy_black_sec"
-		)
-	)
-	/// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/head/hos/syndicate
 	name = "syndicate cap"
@@ -181,6 +152,7 @@
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#3F3C40#FFCE5B"
+	current_skin = "beret_badge"	//SKYRAT EDIT ADDITION - prevents reskinning the hat; a bit hacky to say its already reskinned but its better than a code rewrite
 
 /obj/item/clothing/head/hos/beret/navyhos
 	name = "head of security's formal beret"
@@ -198,6 +170,14 @@
 	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 30, ACID = 60, WOUND = 6)
 	strip_delay = 60
 	dog_fashion = /datum/dog_fashion/head/warden
+
+/obj/item/clothing/head/warden/red
+	name = "warden's hat"
+	desc = "A warden's red hat. Looking at it gives you the feeling of wanting to keep people in cells for as long as possible."
+	icon_state = "wardenhat"
+	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 30, ACID = 60, WOUND = 6)
+	strip_delay = 60
+	dog_fashion = /datum/dog_fashion/head/warden_red
 
 /obj/item/clothing/head/warden/drill
 	name = "warden's campaign hat"
@@ -320,6 +300,11 @@
 	name = "paramedic beret"
 	desc = "For finding corpses in style!"
 	greyscale_colors = "#16313D"
+
+/obj/item/clothing/head/beret/medical/cmo
+	name = "chief medical officer beret"
+	desc = "A beret in a distinct surgical turquoise!"
+	greyscale_colors = "#5EB8B8"
 
 
 //Engineering

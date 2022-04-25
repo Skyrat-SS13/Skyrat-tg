@@ -64,42 +64,45 @@
 		to_chat(owner, span_warning("You do not have 5 upgrade points for a focus!"))
 		return
 	cortical_owner.stat_evolution -= 5
-	var/focus_choice = tgui_input_list(cortical_owner, "Choose your focus!", "Focus Choice", list("Head focus", "Chest focus", "Arm focus", "Leg focus"))
+	var/list/focus_list = list("Head focus", "Chest focus", "Arm focus", "Leg focus")
+	for(var/focus in focus_list)
+		switch(focus)
+			if("Head focus")
+				if(cortical_owner.body_focus & FOCUS_HEAD)
+					focus_list -= focus
+			if("Chest focus")
+				if(cortical_owner.body_focus & FOCUS_CHEST)
+					focus_list -= focus
+			if("Arm focus")
+				if(cortical_owner.body_focus & FOCUS_ARMS)
+					focus_list -= focus
+			if("Leg focus")
+				if(cortical_owner.body_focus & FOCUS_LEGS)
+					focus_list -= focus
+	if(!length(focus_list))
+		to_chat(owner, span_warning("You already have all focuses!"))
+		cortical_owner.stat_evolution += 5
+		return
+	var/focus_choice = tgui_input_list(cortical_owner, "Choose your focus!", "Focus Choice", focus_list)
 	if(!focus_choice)
-		to_chat(owner, span_warning("You did not choose a focus"))
+		to_chat(owner, span_warning("You did not choose a focus."))
 		cortical_owner.stat_evolution += 5
 		return
 	switch(focus_choice)
 		if("Head focus")
-			if(cortical_owner.body_focus & FOCUS_HEAD)
-				to_chat(cortical_owner, span_warning("You already have this focus!"))
-				cortical_owner.stat_evolution += 5
-				return
 			cortical_owner.body_focus |= FOCUS_HEAD
 		if("Chest focus")
-			if(cortical_owner.body_focus & FOCUS_CHEST)
-				to_chat(cortical_owner, span_warning("You already have this focus!"))
-				cortical_owner.stat_evolution += 5
-				return
 			cortical_owner.body_focus |= FOCUS_CHEST
 		if("Arm focus")
-			if(cortical_owner.body_focus & FOCUS_ARMS)
-				to_chat(cortical_owner, span_warning("You already have this focus!"))
-				cortical_owner.stat_evolution += 5
-				return
 			cortical_owner.body_focus |= FOCUS_ARMS
 		if("Leg focus")
-			if(cortical_owner.body_focus & FOCUS_LEGS)
-				to_chat(cortical_owner, span_warning("You already have this focus!"))
-				cortical_owner.stat_evolution += 5
-				return
 			cortical_owner.body_focus |= FOCUS_LEGS
 	borer_focus_remove(cortical_owner.human_host)
 	borer_focus_add(cortical_owner.human_host)
 	StartCooldown()
 
 /datum/action/cooldown/learn_bloodchemical
-	name = "Learn Chemical from Blood (5 stat points)"
+	name = "Learn Chemical from Blood (5 chemical points)"
 	cooldown_time = 1 SECONDS
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "bloodchem"
@@ -135,6 +138,9 @@
 		cortical_owner.chemical_evolution += 5
 		return
 	cortical_owner.known_chemicals += reagent_choice.type
+	cortical_owner.blood_chems_learned++
+	if(cortical_owner.blood_chems_learned == 5)
+		GLOB.successful_blood_chem += 1
 	to_chat(owner, span_notice("You have learned [initial(reagent_choice.name)]"))
 	StartCooldown()
 
@@ -477,7 +483,7 @@
 
 		// Species and body temperature
 		var/datum/species/targetspecies = humantarget.dna.species
-		var/mutant = humantarget.dna.check_mutation(HULK) \
+		var/mutant = humantarget.dna.check_mutation(/datum/mutation/human/hulk) \
 			|| targetspecies.mutantlungs != initial(targetspecies.mutantlungs) \
 			|| targetspecies.mutantbrain != initial(targetspecies.mutantbrain) \
 			|| targetspecies.mutantheart != initial(targetspecies.mutantheart) \
@@ -624,6 +630,9 @@
 
 	//having a host means we need to leave them then
 	if(cortical_owner.human_host)
+		if(cortical_owner.host_sugar())
+			to_chat(owner, span_warning("Sugar inhibits your abilities to function!"))
+			return
 		to_chat(cortical_owner, span_notice("You forcefully detach from the host."))
 		to_chat(cortical_owner.human_host, span_notice("Something carefully tickles your inner ear..."))
 		var/obj/item/organ/borer_body/borer_organ = locate() in cortical_owner.human_host.internal_organs
@@ -648,15 +657,15 @@
 		if(listed_human.has_borer())
 			continue
 		// hosts need to be organic
-		if(!(listed_human.dna.species.inherent_biotypes & MOB_ORGANIC))
+		if(!(listed_human.dna.species.inherent_biotypes & MOB_ORGANIC) && cortical_owner.organic_restricted)
 			continue
 		// hosts need to be organic
-		if(!(listed_human.mob_biotypes & MOB_ORGANIC))
+		if(!(listed_human.mob_biotypes & MOB_ORGANIC) && cortical_owner.organic_restricted)
 			continue
 		//hosts cannot be changelings
 		if(listed_human.mind)
 			var/datum/antagonist/changeling/changeling = listed_human.mind.has_antag_datum(/datum/antagonist/changeling)
-			if(changeling)
+			if(changeling && cortical_owner.changeling_restricted)
 				continue
 		usable_hosts += listed_human
 
@@ -773,8 +782,8 @@
 	var/obj/effect/mob_spawn/ghost_role/borer_egg/spawned_egg = new /obj/effect/mob_spawn/ghost_role/borer_egg(borer_turf)
 	spawned_egg.generation = (cortical_owner.generation + 1)
 	cortical_owner.children_produced++
-	if(cortical_owner.children_produced >= GLOB.objective_egg_egg_number)
-		GLOB.successful_borer += 1
+	if(cortical_owner.children_produced == GLOB.objective_egg_egg_number)
+		GLOB.successful_egg_number += 1
 	if(prob(25))
 		cortical_owner.human_host.gain_trauma_type(BRAIN_TRAUMA_MILD, TRAUMA_RESILIENCE_BASIC)
 		to_chat(cortical_owner.human_host, span_warning("Your brain begins to hurt..."))
@@ -852,44 +861,47 @@
 		to_chat(owner, span_warning("You do not have 2 stat points for an ability!"))
 		return
 	cortical_owner.stat_evolution -= 2
-	var/ability_choice = tgui_input_list(cortical_owner, "Choose your ability!", "Ability Choice", list("Produce Offspring", "Learn Chemical from Blood", "Revive Host", "Willing Host"))
+	var/list/abil_list = list("Produce Offspring", "Learn Chemical from Blood", "Revive Host", "Willing Host")
+	for(var/ability in abil_list)
+		switch(ability)
+			if("Produce Offspring")
+				if(locate(/datum/action/cooldown/produce_offspring) in cortical_owner.known_abilities)
+					abil_list.Remove("Produce Offspring")
+			if("Learn Chemical from Blood")
+				if(locate(/datum/action/cooldown/learn_bloodchemical) in cortical_owner.known_abilities)
+					abil_list.Remove("Learn Chemical from Blood")
+			if("Revive Host")
+				if(locate(/datum/action/cooldown/revive_host) in cortical_owner.known_abilities)
+					abil_list.Remove("Revive Host")
+			if("Willing Host")
+				if(locate(/datum/action/cooldown/willing_host) in cortical_owner.known_abilities)
+					abil_list.Remove("Willing Host")
+	if(!length(abil_list))
+		to_chat(owner, span_warning("You already have all abilities!"))
+		cortical_owner.stat_evolution += 2
+		return
+	var/ability_choice = tgui_input_list(cortical_owner, "Choose your ability!", "Ability Choice", abil_list)
 	if(!ability_choice)
-		to_chat(owner, span_warning("You did not choose an ability"))
+		to_chat(owner, span_warning("You did not choose an ability."))
 		cortical_owner.stat_evolution += 2
 		return
 	switch(ability_choice)
 		if("Produce Offspring")
-			if(locate(/datum/action/cooldown/produce_offspring) in cortical_owner.known_abilities)
-				to_chat(cortical_owner, span_warning("You already have this ability!"))
-				cortical_owner.stat_evolution += 2
-				return
 			var/datum/action/attack_action = new /datum/action/cooldown/produce_offspring()
 			attack_action.Grant(cortical_owner)
 			cortical_owner.known_abilities += /datum/action/cooldown/produce_offspring
 			return
 		if("Learn Chemical from Blood")
-			if(locate(/datum/action/cooldown/learn_bloodchemical) in cortical_owner.known_abilities)
-				to_chat(cortical_owner, span_warning("You already have this ability!"))
-				cortical_owner.stat_evolution += 2
-				return
 			var/datum/action/attack_action = new /datum/action/cooldown/learn_bloodchemical()
 			attack_action.Grant(cortical_owner)
 			cortical_owner.known_abilities += /datum/action/cooldown/learn_bloodchemical
 			return
 		if("Revive Host")
-			if(locate(/datum/action/cooldown/revive_host) in cortical_owner.known_abilities)
-				to_chat(cortical_owner, span_warning("You already have this ability!"))
-				cortical_owner.stat_evolution += 2
-				return
 			var/datum/action/attack_action = new /datum/action/cooldown/revive_host()
 			attack_action.Grant(cortical_owner)
 			cortical_owner.known_abilities += /datum/action/cooldown/revive_host
 			return
 		if("Willing Host")
-			if(locate(/datum/action/cooldown/willing_host) in cortical_owner.known_abilities)
-				to_chat(cortical_owner, span_warning("You already have this ability!"))
-				cortical_owner.stat_evolution += 2
-				return
 			var/datum/action/attack_action = new /datum/action/cooldown/willing_host()
 			attack_action.Grant(cortical_owner)
 			cortical_owner.known_abilities += /datum/action/cooldown/willing_host
@@ -918,12 +930,13 @@
 		to_chat(owner, span_warning("Sugar inhibits your abilities to function!"))
 		return
 	if(cortical_owner.chemical_storage < 300)
-		to_chat(cortical_owner, span_warning("You require at least 200 chemical units before you can revive your host!"))
+		to_chat(cortical_owner, span_warning("You require at least 300 chemical units before you can ask your host!"))
 		return
 	cortical_owner.chemical_storage -= 300
-	if(locate(cortical_owner.human_host) in GLOB.willing_hosts)
-		to_chat(cortical_owner, span_warning("This host is already willing, try another host!"))
-		return
+	for(var/ckey_check in GLOB.willing_hosts)
+		if(ckey_check == cortical_owner.human_host.ckey)
+			to_chat(cortical_owner, span_warning("This host is already willing, try another host!"))
+			return
 	to_chat(cortical_owner, span_notice("The host is being asked..."))
 	var/host_choice = tgui_input_list(cortical_owner.human_host,"Do you accept to be a willing host?", "Willing Host Request", list("Yes", "No"))
 	if(host_choice != "Yes")
@@ -932,5 +945,5 @@
 		return
 	to_chat(cortical_owner, span_notice("The host was willing!"))
 	to_chat(cortical_owner.human_host, span_notice("You have accepted being a willing host!"))
-	GLOB.willing_hosts += cortical_owner.human_host
+	GLOB.willing_hosts += cortical_owner.human_host.ckey
 	StartCooldown()

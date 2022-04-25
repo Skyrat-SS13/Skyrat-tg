@@ -14,39 +14,44 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	hitsound = 'sound/weapons/whip.ogg'
 	moth_edible = FALSE
-	//Customization
-	var/color_changed = FALSE
-	var/form_changed = FALSE
-	var/current_whip_color = "pink"
-	var/current_whip_form = "whip"
-	var/current_whip_type = "hard"
-	var/static/list/whip_designs
-	var/static/list/whip_forms
-	var/static/list/whip_types
-
-	var/mutable_appearance/whip_overlay
-
-	//Changing pain mode
-	var/list/modes = list("hard" = "weak", "weak" = "hard")
-	var/mode = "hard"
-
 	//When taking that thing in mouth
 	modifies_speech = TRUE
 	flags_cover = MASKCOVERSMOUTH
-	var/list/moans ///phrases to be said when the player attempts to talk when speech modification
-	var/list/moans_alt ///lower probability phrases to be said when talking.
-	var/moans_alt_probability
-	moans = list("Mmmph...", "Hmmphh", "Mmmfhg", "Gmmmh...")
-	moans_alt = list("Mhgm...", "Hmmmp!...", "GMmmhp!")
-	moans_alt_probability = 5
+	/// If the color of the toy has been changed before
+	var/color_changed = FALSE
+	/// If the form (or size) of the toy has been changed before
+	var/form_changed = FALSE
+	/// Current color of the toy, can be changed, affects sprite
+	var/current_whip_color = "pink"
+	/// Current form of the toy, can be changed, affects sprite
+	var/current_whip_form = "whip"
+	/// If the whip is hitting weak or hard
+	var/current_whip_type = "hard"
+	/// A list of designs of the whip for use in the radial selection menu
+	var/static/list/whip_designs
+	/// A list of forms of the whip for use in the radial selection menu
+	var/static/list/whip_forms
+	/// A list of types of the whip for use in the radial selection menu
+	var/static/list/whip_types
+	/// Mutable appearance containing the whip's overlay
+	var/mutable_appearance/whip_overlay
+
+	/// Assoc list of pain modes
+	var/list/modes = list("hard" = "weak", "weak" = "hard")
+	/// Phrases to be said when the player attempts to talk when their speech is being modified
+	var/list/moans = list("Mmmph...", "Hmmphh", "Mmmfhg", "Gmmmh...")
+	/// Lower probability phrases to be said when talking.
+	var/list/moans_alt = list("Mhgm...", "Hmmmp!...", "GMmmhp!")
+	/// Probabilty that `moans_alt` is used instead of `moans`
+	var/moans_alt_probability = 5
 
 /obj/item/clothing/mask/leatherwhip/worn_overlays(isinhands = FALSE)
-	.=..()
+	. = ..()
 	. = list()
 	if(!isinhands)
 		. += whip_overlay
 
-//No speaking
+// Speech handler for moansing when talking
 /obj/item/clothing/mask/leatherwhip/handle_speech(datum/source, list/speech_args)
 	speech_args[SPEECH_MESSAGE] = pick((prob(moans_alt_probability) && LAZYLEN(moans_alt)) ? moans_alt : moans)
 	playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f1.ogg',
@@ -54,19 +59,19 @@
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f3.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f4.ogg'), 70, 1, -1)
 
-//create radial menu
+/// Radial menu helper
 /obj/item/clothing/mask/leatherwhip/proc/populate_whip_designs()
 	whip_designs = list(
 		"pink" = image (icon = src.icon, icon_state = "leather_whip_pink_hard"),
 		"teal" = image(icon = src.icon, icon_state = "leather_whip_teal_hard"))
 
-//radial menu for changing form
+/// Radial menu helper
 /obj/item/clothing/mask/leatherwhip/proc/populate_whip_forms()
 	whip_forms = list(
 		"whip" = image (icon = src.icon, icon_state = "leather_whip_pink_hard"),
 		"crotch" = image(icon = src.icon, icon_state = "leather_crotch_pink_hard"))
 
-//radial menu for changing type
+/// Radial menu helper
 /obj/item/clothing/mask/leatherwhip/proc/populate_whip_types()
 	whip_types = list(
 		"weak" = image (icon = src.icon, icon_state = "leather_whip_pink_weak"),
@@ -77,7 +82,7 @@
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 
-/obj/item/clothing/mask/leatherwhip/equipped(mob/M, slot)
+/obj/item/clothing/mask/leatherwhip/equipped(mob/target, slot)
 	. = ..()
 
 	update_icon_state()
@@ -90,7 +95,7 @@
 
 //to change color
 /obj/item/clothing/mask/leatherwhip/AltClick(mob/user, obj/item/I)
-	if(color_changed == FALSE)
+	if(!color_changed)
 		. = ..()
 		if(.)
 			return
@@ -102,22 +107,21 @@
 		update_icon_state()
 		color_changed = TRUE
 
-	if(color_changed == TRUE)
-		if(form_changed == FALSE)
-			. = ..()
-			if(.)
-				return
-			var/choice = show_radial_menu(user,src, whip_forms, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
-			if(!choice)
-				return FALSE
-			current_whip_form = choice
-			update_icon()
-			update_icon_state()
-			form_changed = TRUE
 	else
-		return
+		if(form_changed)
+			return
+		. = ..()
+		if(.)
+			return
+		var/choice = show_radial_menu(user,src, whip_forms, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+		if(!choice)
+			return FALSE
+		current_whip_form = choice
+		update_icon()
+		update_icon_state()
+		form_changed = TRUE
 
-//to check if we can change whip's model
+/// A check to see if the radial menu can be used
 /obj/item/clothing/mask/leatherwhip/proc/check_menu(mob/living/user)
 	if(!istype(user))
 		return FALSE
@@ -151,155 +155,142 @@
 	worn_icon_state = "[initial(icon_state)]_[current_whip_form]"
 
 //safely discipline someone without damage
-/obj/item/clothing/mask/leatherwhip/attack(mob/living/carbon/human/M, mob/living/carbon/human/user)
+/obj/item/clothing/mask/leatherwhip/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	. = ..()
-	if(!istype(M, /mob/living/carbon/human))
+	if(!istype(target))
 		return
 
 	var/message = ""
+	var/targetedsomewhere = FALSE
 //and there is code for successful check, so we are whipping someone
-	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
-		switch(user.zone_selected) //to let code know what part of body we gonna whip
-			if(BODY_ZONE_L_LEG)
-				if(M.has_feet())
-					if(current_whip_type == "hard")
-						message = (user == M) ? pick("Knocks [M.p_them()]self down with [src]", "Uses [src] to knock [M.p_them()]self on the ground") : pick("drops [M] to the ground with [src]", "uses [src] to put [M] on [M.p_their()] knees")
-						if(M.stat != DEAD)
-							if(prob(60))
-								M.emote(pick("gasp","shiver"))
-							if(prob(10))
-								M.apply_status_effect(/datum/status_effect/subspace)
-						M.Paralyze(1)//don't touch it. It's domination tool, it should have ability to put someone on kneels. I already inserted check for PREF YOU CAN'T ABUSE THIS ITEM
-						M.adjustPain(5)
-						user.visible_message(span_purple("[user] [message]!"))
-						playsound(loc, 'sound/weapons/whip.ogg', 100)
+	if(!target.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+		to_chat(user, span_danger("[target] doesn't want you to do that."))
+		return
+	switch(user.zone_selected) //to let code know what part of body we gonna whip
+		if(BODY_ZONE_L_LEG)
+			targetedsomewhere = TRUE
+			if(!target.has_feet())
+				to_chat(user, span_danger("[target] is missing their left leg!"))
+				return
+			if(current_whip_type == "hard")
+				message = (user == target) ? pick("Knocks [target.p_them()]self down with [src]", "Uses [src] to knock [target.p_them()]self on the ground") : pick("drops [target] to the ground with [src]", "uses [src] to put [target] on [target.p_their()] knees")
+				if(target.stat != DEAD)
+					if(prob(60))
+						target.emote(pick("gasp","shiver"))
+					if(prob(10))
+						target.apply_status_effect(/datum/status_effect/subspace)
+				target.Paralyze(1)//don't touch it. It's domination tool, it should have ability to put someone on kneels. I already inserted check for PREF YOU CAN'T ABUSE THIS ITEM
+				target.adjustPain(5)
+				playsound(loc, 'sound/weapons/whip.ogg', 100)
+			else
+				message = (user == target) ? pick("knocks [target.p_them()]self down with [src]", "gently uses [src] to knock [target.p_them()]self on the ground") : pick("drops [target] to the ground with [src]", "uses [src] to put [target] on [target.p_their()] knees")
+				if(target.stat != DEAD)
+					if(prob(30))
+						target.emote(pick("gasp","shiver"))
+					if(prob(10))
+						target.apply_status_effect(/datum/status_effect/subspace)
+				target.Paralyze(1)
+				target.adjustPain(3)
+				playsound(loc, 'sound/weapons/whip.ogg', 60)
 
-					if(current_whip_type == "weak")
-						message = (user == M) ? pick("knocks [M.p_them()]self down with [src]", "gently uses [src] to knock [M.p_them()]self on the ground") : pick("drops [M] to the ground with [src]", "uses [src] to put [M] on [M.p_their()] knees")
-						if(M.stat != DEAD)
-							if(prob(30))
-								M.emote(pick("gasp","shiver"))
-							if(prob(10))
-								M.apply_status_effect(/datum/status_effect/subspace)
-						M.Paralyze(1)
-						M.adjustPain(3)
-						user.visible_message(span_purple("[user] [message]!"))
-						playsound(loc, 'sound/weapons/whip.ogg', 60)
-				else
-					to_chat(user, span_danger("[M] is missing their left leg!"))
-					return
+		if(BODY_ZONE_R_LEG)
+			targetedsomewhere = TRUE
+			if(!target.has_feet())
+				to_chat(user, span_danger("[target] is missing their right leg!"))
+				return
+			if(current_whip_type == "hard")
+				message = (user == target) ? pick("knocks [target.p_them()]self down with [src]", "uses [src] to knock [target.p_them()]self on the ground") : pick("Hardly drops [target] on the ground with [src]", "uses [src] to put [target] on [target.p_their()] knees")
+				if(target.stat != DEAD)
+					if(prob(60))
+						target.emote(pick("gasp","shiver"))
+					if(prob(10))
+						target.apply_status_effect(/datum/status_effect/subspace)
+				target.Paralyze(1)//don't touch it. It's domination tool, it should have ability to put someone on kneels. I already inserted check for PREF YOU CAN'T ABUSE THIS ITEM
+				target.adjustPain(5)
+				playsound(loc, 'sound/weapons/whip.ogg', 100)
+			else
+				message = (user == target) ? pick("Knocks [target.p_them()]self down with [src]", "gently uses [src] to knock [target.p_them()]self on the ground") : pick("drops [target] to the ground with [src]", "uses [src] to put [target] on [target.p_their()] knees")
+				if(target.stat != DEAD)
+					if(prob(30))
+						target.emote(pick("gasp","shiver"))
+					if(prob(10))
+						target.apply_status_effect(/datum/status_effect/subspace)
+				target.Paralyze(1)
+				target.adjustPain(3)
+				playsound(loc, 'sound/weapons/whip.ogg', 60)
 
-			if(BODY_ZONE_R_LEG)
-				if(M.has_feet())
-					if(current_whip_type == "hard")
-						message = (user == M) ? pick("knocks [M.p_them()]self down with [src]", "uses [src] to knock [M.p_them()]self on the ground") : pick("Hardly drops [M] on the ground with [src]", "uses [src] to put [M] on [M.p_their()] knees")
-						if(M.stat != DEAD)
-							if(prob(60))
-								M.emote(pick("gasp","shiver"))
-							if(prob(10))
-								M.apply_status_effect(/datum/status_effect/subspace)
-						M.Paralyze(1)//don't touch it. It's domination tool, it should have ability to put someone on kneels. I already inserted check for PREF YOU CAN'T ABUSE THIS ITEM
-						M.adjustPain(5)
-						user.visible_message(span_purple("[user] [message]!"))
-						playsound(loc, 'sound/weapons/whip.ogg', 100)
+		if(BODY_ZONE_HEAD)
+			targetedsomewhere = TRUE
+			message = (user == target) ? pick("wraps [src] around [target.p_their()] neck, choking [target.p_them()]self", "chokes [target.p_them()]self with [src]") : pick("chokes [target] with [src]", "twines [src] around [target]'s neck!")
+			if(prob(70) && (target.stat != DEAD))
+				target.emote(pick("gasp","choke", "moan"))
+			target.adjustArousal(3)
+			target.adjustPain(5)
+			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 80)
 
-					if(current_whip_type == "weak")
-						message = (user == M) ? pick("Knocks [M.p_them()]self down with [src]", "gently uses [src] to knock [M.p_them()]self on the ground") : pick("drops [M] to the ground with [src]", "uses [src] to put [M] on [M.p_their()] knees")
-						if(M.stat != DEAD)
-							if(prob(30))
-								M.emote(pick("gasp","shiver"))
-							if(prob(10))
-								M.apply_status_effect(/datum/status_effect/subspace)
-						M.Paralyze(1)
-						M.adjustPain(3)
-						user.visible_message(span_purple("[user] [message]!"))
-						playsound(loc, 'sound/weapons/whip.ogg', 60)
-				else
-					to_chat(user, span_danger("[M] is missing their right leg!"))
-					return
+		if(BODY_ZONE_PRECISE_GROIN)
+			targetedsomewhere = TRUE
+			if(!target.is_bottomless())
+				to_chat(user, span_danger("[target]'s butt is covered!"))
+				return
+			if(current_whip_type == "weak")
+				message = (user == target) ? pick("whips [target.p_them()]self with [src]", "flogs [target.p_them()]self with [src]") :pick("playfully flogs [target]'s thighs with [src]","flogs [target] with [src]","mercilessly flogs [target] with [src]")
+				if(target.stat != DEAD)
+					if(prob(70))
+						target.emote(pick("moan","twitch"))
+					if(prob(10))
+						target.apply_status_effect(/datum/status_effect/subspace)
+				target.adjustArousal(5)
+				target.adjustPain(5)
+				target.apply_status_effect(/datum/status_effect/spanked)
+				if(HAS_TRAIT(target, TRAIT_MASOCHISM || TRAIT_BIMBO))
+					SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "pervert spanked", /datum/mood_event/perv_spanked)
+				playsound(loc, 'sound/weapons/whip.ogg', 60)
 
-			if(BODY_ZONE_HEAD)
-				message = (user == M) ? pick("wraps [src] around [M.p_their()] neck, choking [M.p_them()]self", "chokes [M.p_them()]self with [src]") : pick("chokes [M] with [src]", "twines [src] around [M]'s neck!")
-				if(prob(70) && (M.stat != DEAD))
-					M.emote(pick("gasp","choke", "moan"))
-				M.adjustArousal(3)
-				M.adjustPain(5)
-				M.adjustOxyLoss(2)//DON'T TOUCH THIS TOO, IT DEALS REALLY LOW DAMAGE. I DARE YOU!
-				user.visible_message(span_purple("[user] [message]!"))
-				playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 80)
-
-			if(BODY_ZONE_PRECISE_GROIN)
-				if(M.is_bottomless())
-					if(current_whip_type == "weak")
-						message = (user == M) ? pick("whips [M.p_them()]self with [src]", "flogs [M.p_them()]self with [src]") :pick("playfully flogs [M]'s thighs with [src]","flogs [M] with [src]","mercilessly flogs [M] with [src]")
-						if(M.stat != DEAD)
-							if(prob(70))
-								M.emote(pick("moan","twitch"))
-							if(prob(10))
-								M.apply_status_effect(/datum/status_effect/subspace)
-						M.adjustArousal(5)
-						M.adjustPain(5)
-						M.apply_status_effect(/datum/status_effect/spanked)
-						if(HAS_TRAIT(M, TRAIT_MASOCHISM || TRAIT_BIMBO))
-							SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "pervert spanked", /datum/mood_event/perv_spanked)
-						user.visible_message(span_purple("[user] [message]!"))
-						playsound(loc, 'sound/weapons/whip.ogg', 60)
-
-					if(current_whip_type == "hard")
-						message = (user == M) ? pick("roughly flogs [M.p_them()]self with [src]", "flogs [M.p_them()]self with [src]") : pick("playfully flogs [M]'s thighs with [src]","flogs [M] with [src]","mercilessly flogs [M] with [src]")
-						if(M.stat != DEAD)
-							if(prob(70))
-								M.emote(pick("moan","twitch","twitch_s","scream"))
-							if(prob(10))
-								M.apply_status_effect(/datum/status_effect/subspace)
-						M.adjustArousal(3)
-						M.adjustPain(8)
-						M.apply_status_effect(/datum/status_effect/spanked)
-						if(HAS_TRAIT(M, TRAIT_MASOCHISM || TRAIT_BIMBO))
-							SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "pervert spanked", /datum/mood_event/perv_spanked)
-						user.visible_message(span_purple("[user] [message]!"))
-						playsound(loc, 'sound/weapons/whip.ogg', 100)
-					else
-						return
-				else
-					to_chat(user, span_danger("[M]'s butt is covered!"))
-					return
+			if(current_whip_type == "hard")
+				message = (user == target) ? pick("roughly flogs [target.p_them()]self with [src]", "flogs [target.p_them()]self with [src]") : pick("playfully flogs [target]'s thighs with [src]","flogs [target] with [src]","mercilessly flogs [target] with [src]")
+				if(target.stat != DEAD)
+					if(prob(70))
+						target.emote(pick("moan","twitch","twitch_s","scream"))
+					if(prob(10))
+						target.apply_status_effect(/datum/status_effect/subspace)
+				target.adjustArousal(3)
+				target.adjustPain(8)
+				target.apply_status_effect(/datum/status_effect/spanked)
+				if(HAS_TRAIT(target, TRAIT_MASOCHISM || TRAIT_BIMBO))
+					SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "pervert spanked", /datum/mood_event/perv_spanked)
+				playsound(loc, 'sound/weapons/whip.ogg', 100)
+		else
+			if(current_whip_type == "hard")
+				message = (user == target) ? pick("disciplines [target.p_them()]self with [src]","lashes [target.p_them()]self with [src]") : pick("lashes [target] with [src]","Uses [src] to discipline [target]", "disciplines [target] with [src]")
+				if(target.stat != DEAD)
+					if(prob(50))
+						target.emote(pick("moan","twitch","twitch_s","scream"))
+					if(prob(10))
+						target.apply_status_effect(/datum/status_effect/subspace)
+					target.do_jitter_animation()
+				target.adjustPain(7)
+				playsound(loc, 'sound/weapons/whip.ogg', 100)
 
 			else
-				if(current_whip_type == "hard")
-					message = (user == M) ? pick("disciplines [M.p_them()]self with [src]","lashes [M.p_them()]self with [src]") : pick("lashes [M] with [src]","Uses [src] to discipline [M]", "disciplines [M] with [src]")
-					if(M.stat != DEAD)
-						if(prob(50))
-							M.emote(pick("moan","twitch","twitch_s","scream"))
-						if(prob(10))
-							M.apply_status_effect(/datum/status_effect/subspace)
-						M.do_jitter_animation()
-					M.adjustPain(7)
-					user.visible_message(span_purple("[user] [message]!"))
-					playsound(loc, 'sound/weapons/whip.ogg', 100)
-
-				if(current_whip_type == "weak")
-					message = (user == M) ? pick("whips [M.p_them()]self with [src]","lashes [M.p_them()]self with [src]") : pick("playfully lashes [M] with [src]","disciplines [M] with [src]", "gently lashes [M] with [src]")
-					if(M.stat != DEAD)
-						if(prob(30))
-							M.emote(pick("moan","twitch"))
-						if(prob(10))
-							M.apply_status_effect(/datum/status_effect/subspace)
-						M.do_jitter_animation()
-					M.adjustPain(4)
-					M.adjustArousal(5)
-					user.visible_message(span_purple("[user] [message]!"))
-					playsound(loc, 'sound/weapons/whip.ogg', 60)
-				else
-					return
-	else
-		to_chat(user, span_danger("[M] doesn't want you to do that."))
+				message = (user == target) ? pick("whips [target.p_them()]self with [src]","lashes [target.p_them()]self with [src]") : pick("playfully lashes [target] with [src]","disciplines [target] with [src]", "gently lashes [target] with [src]")
+				if(target.stat != DEAD)
+					if(prob(30))
+						target.emote(pick("moan","twitch"))
+					if(prob(10))
+						target.apply_status_effect(/datum/status_effect/subspace)
+					target.do_jitter_animation()
+				target.adjustPain(4)
+				target.adjustArousal(5)
+				playsound(loc, 'sound/weapons/whip.ogg', 60)
+	if(!targetedsomewhere)
 		return
+	user.visible_message(span_purple("[user] [message]!"))
 
 //toggle low pain mode. Because sometimes screaming isn't good
 /obj/item/clothing/mask/leatherwhip/attack_self(mob/user)
 	toggle_mode()
-	switch(mode)
+	switch(current_whip_type)
 		if("hard")
 			to_chat(user, span_notice("[src] is now hard. Someone need to be punished!"))
 		if("weak")
@@ -307,11 +298,6 @@
 	update_icon()
 	update_icon_state()
 
-//pain mode switch
+/// Switches between hard and weak mode
 /obj/item/clothing/mask/leatherwhip/proc/toggle_mode()
-	mode = modes[mode]
-	switch(mode)
-		if("hard")
-			current_whip_type = "hard"
-		if("weak")
-			current_whip_type = "weak"
+	current_whip_type = modes[current_whip_type]

@@ -1,3 +1,9 @@
+//stack recipe placement check types
+/// Checks if there is an object of the result type in any of the cardinal directions
+#define STACK_CHECK_CARDINALS "cardinals"
+/// Checks if there is an object of the result type within one tile
+#define STACK_CHECK_ADJACENT "adjacent"
+
 /* Stack type objects!
  * Contains:
  * Stacks
@@ -280,6 +286,7 @@
 			if(O)
 				O.setDir(usr.dir)
 			use(recipe.req_amount * multiplier)
+			usr.investigate_log("[key_name(usr)] crafted [recipe.title]", INVESTIGATE_CRAFTING)
 
 			if(recipe.applies_mats && LAZYLEN(mats_per_unit))
 				if(isstack(O))
@@ -331,6 +338,11 @@
 	if(recipe.one_per_turf && (locate(recipe.result_type) in dest_turf))
 		to_chat(usr, span_warning("There is another [recipe.title] here!"))
 		return FALSE
+
+	if(recipe.on_tram)
+		if(!locate(/obj/structure/industrial_lift/tram) in dest_turf)
+			to_chat(usr, span_warning("\The [recipe.title] must be constructed on a tram floor!"))
+			return FALSE
 
 	if(recipe.on_floor)
 		if(!isfloorturf(dest_turf))
@@ -516,12 +528,9 @@
 	if(is_zero_amount(delete_if_zero = TRUE))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	var/max = get_amount()
-	var/stackmaterial = round(tgui_input_number(user, "How many sheets do you wish to take out of this stack?", "Stack Split", max_value = max))
-	if(isnull(stackmaterial))
+	var/stackmaterial = tgui_input_number(user, "How many sheets do you wish to take out of this stack?", "Stack Split", max_value = max)
+	if(!stackmaterial || QDELETED(user) || QDELETED(src) || !usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK, !iscyborg(user)))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	stackmaterial = min(max, stackmaterial)
-	if(stackmaterial <= 0 || !user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, !iscyborg(user)))
-		return SECONDARY_ATTACK_CONTINUE_CHAIN
 	split_stack(user, stackmaterial)
 	to_chat(user, span_notice("You take [stackmaterial] sheets out of the stack."))
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -577,12 +586,13 @@
 	var/time = 0
 	var/one_per_turf = FALSE
 	var/on_floor = FALSE
+	var/on_tram = FALSE
 	var/placement_checks = FALSE
 	var/applies_mats = FALSE
 	var/trait_booster = null
 	var/trait_modifier = 1
 
-/datum/stack_recipe/New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1,time = 0, one_per_turf = FALSE, on_floor = FALSE, window_checks = FALSE, placement_checks = FALSE, applies_mats = FALSE, trait_booster = null, trait_modifier = 1)
+/datum/stack_recipe/New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1,time = 0, one_per_turf = FALSE, on_floor = FALSE, on_tram = FALSE, window_checks = FALSE, placement_checks = FALSE, applies_mats = FALSE, trait_booster = null, trait_modifier = 1)
 	src.title = title
 	src.result_type = result_type
 	src.req_amount = req_amount
@@ -591,6 +601,7 @@
 	src.time = time
 	src.one_per_turf = one_per_turf
 	src.on_floor = on_floor
+	src.on_tram = on_tram
 	src.placement_checks = placement_checks
 	src.applies_mats = applies_mats
 	src.trait_booster = trait_booster
@@ -605,3 +616,6 @@
 /datum/stack_recipe_list/New(title, recipes)
 	src.title = title
 	src.recipes = recipes
+
+#undef STACK_CHECK_CARDINALS
+#undef STACK_CHECK_ADJACENT

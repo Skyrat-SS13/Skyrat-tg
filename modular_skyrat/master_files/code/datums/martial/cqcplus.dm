@@ -10,7 +10,7 @@
 	if(!(hit_mob.mobility_flags & MOBILITY_USE)) //NO UNABLE TO USE
 		return BULLET_ACT_HIT
 	var/datum/dna/dna = hit_mob.has_dna()
-	if(dna?.check_mutation(HULK)) //NO HULK
+	if(dna?.check_mutation(/datum/mutation/human/hulk)) //NO HULK
 		return BULLET_ACT_HIT
 	if(!isturf(hit_mob.loc)) //NO MOTHERFLIPPIN MECHS!
 		return BULLET_ACT_HIT

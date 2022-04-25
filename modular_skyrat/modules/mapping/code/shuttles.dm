@@ -4,6 +4,7 @@
 
 /datum/map_template/shuttle/emergency/outpost
 	suffix = "outpost"
+	prefix = "_maps/shuttles/skyrat/"
 	name = "Outpoststation Emergency Shuttle"
 	description = "The perfect shuttle for rectangle enthuasiasts, this long and slender shuttle has been known for it's incredible(Citation Needed) safety rating."
 	admin_notes = "Has airlocks on both sides of the shuttle and will probably ram deltastation's maint wing below medical. Oh well?"
@@ -29,7 +30,7 @@
 	shuttleId = "blackmarket_chevvy"
 	lock_override = NONE
 	shuttlePortId = "blackmarket_chevvy_custom"
-	jumpto_ports = list("blackmarket_chevvy_home" = 1, "whiteship_home" = 1)
+	jump_to_ports = list("blackmarket_chevvy_home" = 1, "whiteship_home" = 1)
 	view_range = 0
 	x_offset = 2
 	y_offset = 0
@@ -52,7 +53,7 @@
 	shuttleId = "slaver_syndie"
 	lock_override = NONE
 	shuttlePortId = "slaver"
-	jumpto_ports = list("whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1, "syndicate_ne" = 1, "syndicate_nw" = 1, "syndicate_n" = 1, "syndicate_se" = 1, "syndicate_sw" = 1, "syndicate_s" = 1)
+	jump_to_ports = list("whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1, "syndicate_ne" = 1, "syndicate_nw" = 1, "syndicate_n" = 1, "syndicate_se" = 1, "syndicate_sw" = 1, "syndicate_s" = 1)
 	view_range = 10
 	x_offset = 0
 	y_offset = 0
@@ -117,7 +118,7 @@
 	implants = list(/obj/item/implant/weapons_auth)
 	belt = /obj/item/storage/belt/military
 	r_pocket = /obj/item/storage/bag/ammo
-	l_pocket = /obj/item/gun/energy/disabler/cfa_disabler
+	l_pocket = /obj/item/gun/energy/disabler/bolt_disabler
 	id = /obj/item/card/id/advanced/chameleon
 	id_trim = /datum/id_trim/chameleon/operative
 	skillchips = list(/obj/item/skillchip/job/engineer)
@@ -147,7 +148,7 @@
 	implants = list(/obj/item/implant/weapons_auth)
 	belt = /obj/item/storage/belt/military
 	r_pocket = /obj/item/storage/bag/ammo
-	l_pocket = /obj/item/gun/energy/disabler/cfa_disabler
+	l_pocket = /obj/item/gun/energy/disabler/bolt_disabler
 	id = /obj/item/card/id/advanced/chameleon
 	id_trim = /datum/id_trim/chameleon/operative
 	skillchips = list(/obj/item/skillchip/job/engineer)
@@ -181,7 +182,7 @@
 	shuttleId = "tarkon_driver"
 	lock_override = NONE
 	shuttlePortId = "tarkon_driver_custom"
-	jumpto_ports = list("port_tarkon" = 1, "whiteship_home" = 1)
+	jump_to_ports = list("port_tarkon" = 1, "whiteship_home" = 1)
 	view_range = 0
 
 /obj/item/circuitboard/computer/tarkon_driver

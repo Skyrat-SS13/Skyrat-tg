@@ -17,9 +17,9 @@
 	///Can this console approve purchase requests?
 	var/can_approve_requests = FALSE
 	///What do we say when the shuttle moves with living beings on it.
-	var/safety_warning = "For safety and ethical reasons, the automated supply shuttle \
-		cannot transport live organisms, human remains, classified nuclear weaponry, mail, \
-		homing beacons, unstable eigenstates or machinery housing any form of artificial intelligence."
+	var/safety_warning = "For safety and ethical reasons, the automated supply shuttle cannot transport live organisms, \
+		human remains, classified nuclear weaponry, mail, undelivered departmental order crates, syndicate bombs, \
+		homing beacons, unstable eigenstates, or machinery housing any form of artificial intelligence."
 	///If you're being raided by pirates, what do you tell the crew?
 	var/blockade_warning = "Bluespace instability detected. Shuttle movement impossible."
 	///The name of the shuttle template being used as the cargo shuttle. 'supply' is default and contains critical code. Don't change this unless you know what you're doing.
@@ -278,6 +278,16 @@
 		if("toggleprivate")
 			self_paid = !self_paid
 			. = TRUE
+		//SKYRAT EDIT START
+		if("gun_window")
+			var/datum/component/armament/cargo_gun/gun_comp = holder.holder.GetComponent(/datum/component/armament/cargo_gun)
+			if(!gun_comp)
+				holder.holder.AddComponent(/datum/component/armament/cargo_gun, subtypesof(/datum/armament_entry/cargo_gun), 0)
+			gun_comp = holder.holder.GetComponent(/datum/component/armament/cargo_gun)
+			gun_comp.parent_prog ||= src
+			gun_comp.ui_interact(usr)
+			. = TRUE
+		//SKYRAT EDIT END
 	if(.)
 		post_signal(cargo_shuttle)
 

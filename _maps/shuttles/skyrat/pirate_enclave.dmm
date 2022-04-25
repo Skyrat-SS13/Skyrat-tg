@@ -237,7 +237,7 @@
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 4
 	},
-/obj/machinery/stasissleeper{
+/obj/machinery/stasis{
 	dir = 4
 	},
 /turf/open/floor/iron/dark/blue,
@@ -531,8 +531,9 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "iZ" = (
-/obj/structure/bed,
-/obj/item/bedsheet/brown,
+/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/gunner{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/shuttle/syndicate/slaver)
 "jd" = (
@@ -697,10 +698,6 @@
 /turf/open/floor/pod/dark,
 /area/shuttle/syndicate/slaver)
 "lW" = (
-/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/gunner{
-	dir = 4;
-	uses = 3
-	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},
@@ -783,10 +780,6 @@
 /turf/open/floor/pod/light,
 /area/shuttle/syndicate/slaver)
 "nv" = (
-/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/gunner{
-	dir = 8;
-	uses = 2
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
 	dir = 4
 	},
@@ -829,7 +822,6 @@
 "nV" = (
 /obj/item/storage/box,
 /obj/item/storage/box/handcuffs,
-/obj/item/gun/energy/e_gun/cfa_phalanx,
 /obj/structure/closet/secure_closet{
 	icon_state = "cargo";
 	name = "Crew Locker";
@@ -878,7 +870,7 @@
 "oO" = (
 /obj/effect/turf_decal/trimline/darkblue/warning,
 /obj/structure/table/glass,
-/obj/item/storage/firstaid/regular{
+/obj/item/storage/medkit/regular{
 	pixel_y = 3
 	},
 /obj/item/healthanalyzer,
@@ -1975,10 +1967,11 @@
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver)
 "Lm" = (
-/obj/structure/bed,
-/obj/item/bedsheet/brown,
 /obj/structure/sign/poster/contraband/secborg_vale{
 	pixel_x = 32
+	},
+/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/gunner{
+	dir = 8
 	},
 /turf/open/floor/iron,
 /area/shuttle/syndicate/slaver)
@@ -2208,7 +2201,7 @@
 /obj/machinery/power/apc/syndicate{
 	dir = 1;
 	name = "Ship Power Controller";
-	pixel_y = 22
+	pixel_y = 25
 	},
 /obj/structure/table/reinforced,
 /obj/item/storage/box/lights/bulbs{
@@ -2242,11 +2235,6 @@
 /obj/item/grenade/flashbang,
 /obj/item/grenade/flashbang,
 /obj/item/grenade/c4,
-/obj/item/gun/ballistic/automatic/cfa_lynx,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/rubber,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/ap,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/ap,
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
@@ -2764,14 +2752,14 @@
 	dir = 6
 	},
 /obj/structure/closet/crate/medical,
-/obj/item/storage/firstaid/brute{
+/obj/item/storage/medkit/brute{
 	pixel_y = 3
 	},
-/obj/item/storage/firstaid/fire,
-/obj/item/storage/firstaid/toxin{
+/obj/item/storage/medkit/fire,
+/obj/item/storage/medkit/toxin{
 	pixel_y = -2
 	},
-/obj/item/storage/firstaid/o2{
+/obj/item/storage/medkit/o2{
 	pixel_y = -7
 	},
 /obj/structure/railing{
@@ -3355,7 +3343,7 @@ ZH
 iZ
 Lm
 iZ
-iZ
+An
 ZH
 "}
 (26,1,1) = {"

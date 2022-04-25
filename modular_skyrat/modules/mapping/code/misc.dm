@@ -16,7 +16,7 @@
 
 /obj/item/mod/control/pre_equipped/prototype/hauler
 	theme = /datum/mod_theme/prototype/hauler
-	applied_cell = /obj/item/stock_parts/cell/high/plus
+	applied_cell = /obj/item/stock_parts/cell/high
 	initial_modules = list(/obj/item/mod/module/storage/large_capacity, /obj/item/mod/module/welding, /obj/item/mod/module/clamp, /obj/item/mod/module/flashlight, /obj/item/mod/module/tether)
 
 /obj/machinery/suit_storage_unit/industrial/hauler

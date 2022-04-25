@@ -50,7 +50,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 
 	hairdresser.hairstyle = new_style
 
-	hairdresser.update_hair()
+	hairdresser.update_hair(is_creating = TRUE)
 */
 
 /obj/structure/mirror/examine_status(mob/user)
@@ -83,7 +83,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 		return
 	icon_state = "mirror_broke"
 	if(!mapload)
-		playsound(src, "shatter", 70, TRUE)
+		playsound(src, SFX_SHATTER, 70, TRUE)
 	if(desc == initial(desc))
 		desc = "Oh no, seven years of bad luck!"
 	broken = TRUE
@@ -150,8 +150,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 		return TRUE
 
 	var/mob/living/carbon/human/amazed_human = user
+// SKYRAT EDIT BEGIN - Magic Mirror Character Application
+	var/choice
+	var/ask = tgui_alert(user, "Would you like to apply your loaded character?","Confirm", list("Yes!", "No, I want to manually edit my character here."))
 
-	var/choice = tgui_input_list(user, "Something to change?", "Magical Grooming", list("name", "race", "gender", "hair", "eyes"))
+	if(ask == "Yes!")
+		user?.client?.prefs?.safe_transfer_prefs_to(amazed_human)
+	else
+		choice = tgui_input_list(user, "Something to change?", "Magical Grooming", list("name", "race", "gender", "hair", "eyes"))
+// SKYRAT EDIT END
 	if(isnull(choice))
 		return TRUE
 
@@ -218,7 +225,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 					if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 						return TRUE
 					amazed_human.gender = FEMALE
-					amazed_human.body_type = FEMALE
+					amazed_human.physique = FEMALE
 					to_chat(amazed_human, span_notice("Man, you feel like a woman!"))
 				else
 					return TRUE
@@ -228,7 +235,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 					if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 						return TRUE
 					amazed_human.gender = MALE
-					amazed_human.body_type = MALE
+					amazed_human.physique = MALE
 					to_chat(amazed_human, span_notice("Whoa man, you feel like a man!"))
 				else
 					return TRUE

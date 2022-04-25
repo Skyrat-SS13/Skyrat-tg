@@ -71,7 +71,7 @@
 	ini_dir = dir
 
 	AddElement(/datum/element/climbable, climb_time = 20, climb_stun = 0)
-	AddComponent(/datum/component/simple_rotation,ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS ,null,CALLBACK(src, .proc/can_be_rotated),CALLBACK(src,.proc/after_rotation))
+	AddComponent(/datum/component/simple_rotation, ROTATION_NEEDS_ROOM)
 
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_enter,
@@ -130,17 +130,9 @@
 			return TRUE
 	return . || mover.throwing || mover.movement_type & (FLYING | FLOATING)
 
-/obj/structure/wrestling_corner/proc/can_be_rotated(mob/user,rotation_type)
-	if(anchored)
-		to_chat(user, span_warning("[src] cannot be rotated while it is fastened to the floor!"))
-		return FALSE
-	return TRUE
 
 /obj/structure/wrestling_corner/proc/check_anchored(checked_anchored)
 	return anchored == checked_anchored
-
-/obj/structure/wrestling_corner/proc/after_rotation(mob/user,rotation_type)
-	add_fingerprint(user)
 
 /obj/structure/wrestling_corner/proc/on_enter(datum/source, atom/movable/movable)
 	SIGNAL_HANDLER

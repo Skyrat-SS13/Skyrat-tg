@@ -11,6 +11,8 @@
 #define COMSIG_MOB_CUMFACED "mob_cumfaced" //from /datum/component/cumfaced/Initialize(), when you get covered in cum
 ///Fired in combat_indicator.dm, used for syncing CI between mech and pilot
 #define COMSIG_MOB_CI_TOGGLED "mob_ci_toggled"
+/// When a hostile simple mob loses it's target.
+#define COMSIG_HOSTILE_MOB_LOST_TARGET "hostile_mob_lost_target"
 
 //Gun signals
 ///When a gun is switched to automatic fire mode
@@ -58,15 +60,6 @@
 #define COMSIG_TURF_MOB_FALL "turf_mob_fall"
 ///from base of /obj/effect/abstract/liquid_turf/Initialize() (/obj/effect/abstract/liquid_turf/liquids)
 #define COMSIG_TURF_LIQUIDS_CREATION "turf_liquids_creation"
-
-// Firealarm signals
-/// /obj/machinery/firealarm/proc/trigger_effects(manual = FALSE)
-#define COMSIG_FIREALARM_TRIGGERED_ON "firealarm_triggered_on"
-#define COMSIG_FIREALARM_TRIGGER_DOORS "firealarm_trigger_doors"
-/// /obj/machinery/firealarm/proc/untrigger_effects()
-#define COMSIG_FIREALARM_TRIGGERED_OFF "firealarm_triggered_off"
-/// /obj/machinery/door/firedoor/proc/trigger_hot()
-#define COMSIG_FIREDOOR_CLOSED_FIRE "firedoor_closed_fire"
 
 //when someone casts their fishing rod
 #define COMSIG_START_FISHING "start_fishing"

@@ -137,7 +137,7 @@
 	desc = "A 10mm Auto casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
-	caliber = CALIBER_10MM
+	caliber = CALIBER_10MMAUTO
 	projectile_type = /obj/projectile/bullet/advanced/b10mm
 
 /obj/projectile/bullet/advanced/b10mm
@@ -147,15 +147,15 @@
 	wound_bonus = 5
 
 /obj/item/ammo_casing/b10mm/hp
-	name = "10x25mm JHP casing"
-	desc = "A 10x25mm JHP bullet casing."
+	name = "10mm Auto JHP casing"
+	desc = "A 10mm Auto JHP bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sh-casing"
-	caliber = CALIBER_10MM
+	caliber = CALIBER_10MMAUTO
 	projectile_type = /obj/projectile/bullet/advanced/b10mm/hp
 
 /obj/projectile/bullet/advanced/b10mm/hp
-	name = "10mm JHP bullet"
+	name = "10mm Auto JHP bullet"
 	icon_state = "bullet_h"
 	damage = 30
 	wound_bonus = 35
@@ -163,16 +163,16 @@
 	weak_against_armour = TRUE
 
 /obj/item/ammo_casing/b10mm/rubber
-	name = "10mm rubber bullet casing"
+	name = "10mm Auto rubber bullet casing"
 	desc = "A 10mm rubber bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sr-casing"
-	caliber = CALIBER_10MM
+	caliber = CALIBER_10MMAUTO
 	projectile_type = /obj/projectile/bullet/advanced/b10mm/rubber
 	harmful = FALSE
 
 /obj/projectile/bullet/advanced/b10mm/rubber
-	name = "10mm rubber bullet"
+	name = "10mm Auto rubber bullet"
 	icon_state = "bullet_r"
 	damage = 5
 	stamina = 25
@@ -185,16 +185,16 @@
 	embedding = null
 
 /obj/item/ammo_casing/b10mm/ihdf
-	name = "10mm IHDF bullet casing"
+	name = "10mm Auto IHDF bullet casing"
 	desc = "A 10mm intelligent high-impact dispersal foam bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "si-casing"
-	caliber = CALIBER_10MM
+	caliber = CALIBER_10MMAUTO
 	projectile_type = /obj/projectile/bullet/advanced/b10mm/ihdf
 	harmful = FALSE
 
 /obj/projectile/bullet/advanced/b10mm/ihdf
-	name = "10mm ihdf bullet"
+	name = "10mm Auto ihdf bullet"
 	icon_state = "bullet_i"
 	damage = 30
 	damage_type = STAMINA
@@ -213,7 +213,8 @@
 
 /obj/projectile/bullet/advanced/b12mm
 	name = "12.7x30mm bullet"
-	damage = 45
+	damage = 35
+	wound_bonus = 30
 	speed = 1
 
 /obj/item/ammo_casing/b12mm/rubber
@@ -229,7 +230,7 @@
 	name = "12.7x30mm beanbag slug"
 	icon_state = "bullet_r"
 	damage = 10
-	stamina = 50
+	stamina = 35
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
@@ -250,7 +251,7 @@
 /obj/projectile/bullet/advanced/b12mm/hp
 	name = "12mm hollowpoint bullet"
 	icon_state = "bullet_h"
-	damage = 47
+	damage = 35
 	wound_bonus = 40
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE

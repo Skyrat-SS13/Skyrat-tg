@@ -15,10 +15,11 @@
 	var/world_compare = 0
 
 /obj/machinery/xenoarch/RefreshParts()
+	. = ..()
 	efficiency = -1
 	for(var/obj/item/stock_parts/micro_laser/laser_part in component_parts)
 		efficiency += laser_part.rating
-	process_speed = initial(process_speed) - (5 SECONDS * efficiency)
+	process_speed = initial(process_speed) - (6 SECONDS * efficiency)
 
 /obj/machinery/xenoarch/Initialize()
 	. = ..()
@@ -61,7 +62,7 @@
 	name = "xenoarch researcher"
 	desc = "A machine that is used to condense strange rocks, useless relics, and broken objects into bigger artifacts."
 	icon_state = "researcher"
-	circuit = /obj/item/circuitboard/machine/xenoarch_researcher
+	circuit = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_researcher
 	///A variable that goes from 0 to 100. Depending on what is processed, increases the value. Once 100, spawns an anomalous crystal.
 	var/current_research = 0
 
@@ -127,7 +128,7 @@
 	name = "xenoarch scanner"
 	desc = "A machine that is used to scan strange rocks, making it easier to extract the item inside."
 	icon_state = "scanner"
-	circuit = /obj/item/circuitboard/machine/xenoarch_scanner
+	circuit = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_scanner
 
 /obj/machinery/xenoarch/scanner/attackby(obj/item/weapon, mob/user, params)
 	var/scan_speed = 4 SECONDS - (1 SECONDS * efficiency)
@@ -147,7 +148,7 @@
 	name = "xenoarch recoverer"
 	desc = "A machine that will recover the damaged, destroyed objects found within the strange rocks."
 	icon_state = "recoverer"
-	circuit = /obj/item/circuitboard/machine/xenoarch_recoverer
+	circuit = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_recoverer
 
 /obj/machinery/xenoarch/recoverer/attackby(obj/item/weapon, mob/user, params)
 	if(istype(weapon, /obj/item/xenoarch/broken_item))
@@ -206,3 +207,49 @@
 			new spawn_item(src_turf)
 		recover_item(spawn_item, content_obj)
 		return
+
+/obj/machinery/xenoarch/digger
+	name = "xenoarch digger"
+	desc = "A machine that is used to slowly uncover items within strange rocks."
+	icon_state = "digger"
+	circuit = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_digger
+
+/obj/machinery/xenoarch/digger/attackby(obj/item/weapon, mob/user, params)
+	if(istype(weapon, /obj/item/storage/bag/xenoarch))
+		var/obj/item/storage/bag/xenoarch/xenoarch_bag = weapon
+		for(var/check_item in xenoarch_bag.contents)
+			if(!istype(check_item, /obj/item/xenoarch/strange_rock))
+				continue
+			var/obj/item/xenoarch/strange_rock/strange_rock = check_item
+			if(!do_after(user, 1 SECONDS, target = src))
+				world_compare = world.time + (process_speed * 4)
+				addtimer(CALLBACK(src, .proc/do_machine_process), (process_speed * 4))
+				return
+			strange_rock.forceMove(holding_storage)
+			to_chat(user, span_notice("The strange rock has been inserted into [src]."))
+		world_compare = world.time + (process_speed * 4)
+		addtimer(CALLBACK(src, .proc/do_machine_process), (process_speed * 4))
+		return
+	else if(istype(weapon, /obj/item/xenoarch/strange_rock))
+		insert_xeno_item(weapon, user)
+		return
+	return ..()
+
+/obj/machinery/xenoarch/digger/do_machine_process()
+	if(!holding_storage.contents.len)
+		return
+	if(world_compare > world.time)
+		return
+	var/turf/src_turf = get_turf(src)
+	var/obj/item/content_obj = holding_storage.contents[1]
+	if(!content_obj)
+		return
+	if(!istype(content_obj, /obj/item/xenoarch/strange_rock))
+		qdel(content_obj)
+		return
+	var/obj/item/xenoarch/strange_rock/strange_rock = content_obj
+	new strange_rock.hidden_item(src_turf)
+	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
+	qdel(strange_rock)
+	world_compare = world.time + (process_speed * 4)
+	addtimer(CALLBACK(src, .proc/do_machine_process), (process_speed * 4))

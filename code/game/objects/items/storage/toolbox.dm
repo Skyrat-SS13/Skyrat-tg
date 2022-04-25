@@ -1,11 +1,11 @@
 /obj/item/storage/toolbox
 	name = "toolbox"
 	desc = "Danger. Very robust."
-	icon = 'goon/icons/obj/toolbox.dmi'
+	icon = 'icons/obj/storage.dmi'
 	icon_state = "toolbox_default"
 	inhand_icon_state = "toolbox_default"
-	lefthand_file = 'goon/icons/mob/inhands/equipment/toolbox_lefthand.dmi'
-	righthand_file = 'goon/icons/mob/inhands/equipment/toolbox_righthand.dmi'
+	lefthand_file = 'icons/mob/inhands/equipment/toolbox_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/toolbox_righthand.dmi'
 	flags_1 = CONDUCT_1
 	force = 12
 	throwforce = 12
@@ -111,8 +111,8 @@
 
 /obj/item/storage/toolbox/mechanical/old/clean/proc/calc_damage()
 	var/power = 0
-	for (var/obj/item/stack/telecrystal/TC in get_all_contents())
-		power += TC.amount
+	for (var/obj/item/stack/telecrystal/stored_crystals in get_all_contents())
+		power += (stored_crystals.amount / 2)
 	force = 19 + power
 	throwforce = 22 + power
 

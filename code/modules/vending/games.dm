@@ -27,15 +27,13 @@
 		/obj/item/skillchip/bonsai=2,
 		/obj/item/skillchip/wine_taster=2,
 		/obj/item/skillchip/light_remover=2,
-		/obj/item/skillchip/glassblowing_master = 2,
-		/obj/item/skillchip/ceramic_master = 2,
-		/obj/item/skillchip/fishing_master = 2,
 		/obj/item/skillchip/useless_adapter=5,
 		/obj/item/razor=3,
 		/obj/item/canvas/nineteen_nineteen = 5,
 		/obj/item/canvas/twentythree_nineteen = 5,
 		/obj/item/canvas/twentythree_twentythree = 5,
-		/obj/item/paint_palette = 3
+		/obj/item/paint_palette = 3,
+		/obj/item/wallframe/painting/large = 5,
 	)
 	//SKYRAT EDIT: Adds Ceramic, Glassblowing, and Fishing Skillchips
 	contraband = list(
@@ -47,6 +45,8 @@
 		/obj/item/disk/holodisk = 5,
 		/obj/item/toy/crayon/spraycan = 3,
 		/obj/item/canvas/twentyfour_twentyfour = 5,
+		/obj/item/canvas/thirtysix_twentyfour = 3,
+		/obj/item/canvas/fortyfive_twentyseven = 3,
 		/obj/item/rcl = 2,
 		/obj/item/airlock_painter = 1,
 		/obj/item/melee/skateboard/pro = 3,

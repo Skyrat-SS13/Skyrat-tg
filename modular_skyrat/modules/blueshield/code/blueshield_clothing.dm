@@ -15,7 +15,7 @@
 	name = "blueshield's skivvy"
 	desc = "A cozier alternative to the normal blueshield's suit. It's made out of an expensive, all-natural wool."
 	icon_state = "bs_turtleneck"
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/security/blueshield/turtleneck/skirt
 	name = "blueshield's skirtleneck"
@@ -26,16 +26,7 @@
 	desc = "A \"tactical\" skirt seemingly outfitted in Nanotrasen's standard corporate-chic."
 	name = "blueshield's skirt"
 	icon_state = "blueshieldskirt"
-	fitted = FEMALE_UNIFORM_TOP
-
-/obj/item/clothing/head/helmet/space/plasmaman/blueshield
-	name = "blueshield envirosuit helmet"
-	desc = "A plasmaman envirohelm designed for the blueshield."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "bs_envirohelm"
-	armor = list("melee" = 30, "bullet" = 20, "laser" = 20,"energy" = 20, "bomb" = 25, "bio" = 100, "fire" = 100, "acid" = 90)
-	resistance_flags = FIRE_PROOF
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/gloves/tackler/combat/insulated/blueshield
     name = "combat gloves"
@@ -57,15 +48,24 @@
 /obj/item/radio/headset/headset_bs/alt
 	icon_state = "bshield_headset_alt"
 
-/obj/item/radio/headset/headset_sec/alt/ComponentInitialize()
+/obj/item/radio/headset/headset_bs/alt/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
+
+/obj/item/clothing/head/helmet/space/plasmaman/blueshield
+	name = "blueshield envirosuit helmet"
+	desc = "A plasmaman containment helmet designed for certified blueshields, who's job guarding heads should not include self-combustion... most of the time."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/plasmaman_hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/plasmaman_head.dmi'
+	icon_state = "bs_envirohelm"
+	armor = list("melee" = 30, "bullet" = 20, "laser" = 20,"energy" = 20, "bomb" = 25, "bio" = 100, "fire" = 100, "acid" = 90)
+
 /obj/item/clothing/under/plasmaman/blueshield
 	name = "blueshield envirosuit"
-	desc = "An envirosuit designed for plasmamen employed as the blueshield."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	desc = "A plasmaman containment suit designed for certified blueshields, offering a limited amount of extra protection."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/plasmaman.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/plasmaman.dmi'
 	icon_state = "bs_envirosuit"
 	armor = list("melee" = 10, "bullet" = 0, "laser" = 10,"energy" = 0, "bomb" = 5, "bio" = 100, "fire" = 95, "acid" = 95)
 	sensor_mode = SENSOR_COORDS

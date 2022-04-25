@@ -13,16 +13,16 @@
 
 	//STUFF SOLD HERE//
 	products = list(//Sex toys
-					/obj/item/clothing/sextoy/signalvib = 8,
+					/obj/item/clothing/sextoy/eggvib/signalvib = 8,
 					/obj/item/assembly/signaler = 8,
 					/obj/item/clothing/sextoy/eggvib = 8,
 					/obj/item/clothing/sextoy/buttplug = 6,
 					/obj/item/clothing/sextoy/nipple_clamps = 4,
-					/obj/item/clothing/sextoy/double_dildo = 3,
+					/obj/item/clothing/sextoy/dildo/double_dildo = 3,
 					/obj/item/clothing/sextoy/vibroring = 6,
 					/obj/item/condom_pack = 20,
 					/obj/item/clothing/sextoy/dildo = 8,
-					/obj/item/clothing/sextoy/custom_dildo = 8,
+					/obj/item/clothing/sextoy/dildo/custom_dildo = 8,
 					/obj/item/tickle_feather = 8,
 					/obj/item/clothing/sextoy/fleshlight = 8,
 					/obj/item/kinky_shocker = 4,
@@ -35,6 +35,8 @@
 					/obj/item/restraints/handcuffs/lewd = 8,
 					/obj/item/key/collar = 48,
 					/obj/item/pillow = 32, //cmon, why there is always 0 pillows, where do you guys stuff it.
+					/obj/item/stack/shibari_rope/full = 10,
+					/obj/item/stack/shibari_rope/glow/full = 10,
 
 					//clothing facial/head
 					/obj/item/clothing/mask/ballgag = 8,
@@ -56,10 +58,10 @@
 					/obj/item/clothing/neck/kink_collar = 8,
 					/obj/item/clothing/neck/human_petcollar = 8,
 					/obj/item/clothing/neck/human_petcollar/choker = 8,
-					/obj/item/clothing/neck/human_petcollar/locked/cowcollar = 8,
-					/obj/item/clothing/neck/human_petcollar/locked/bellcollar = 8,
+					/obj/item/clothing/neck/human_petcollar/locked/cow = 8,
+					/obj/item/clothing/neck/human_petcollar/locked/bell = 8,
 					/obj/item/clothing/neck/human_petcollar/locked/cross = 8,
-					/obj/item/clothing/neck/human_petcollar/locked/spikecollar = 8,
+					/obj/item/clothing/neck/human_petcollar/locked/spike = 8,
 
 					//torso clothing
 					/obj/item/clothing/under/misc/latex_catsuit = 8,
@@ -104,12 +106,13 @@
 					/obj/item/storage/box/bdsmbed_kit = 4,
 					/obj/item/storage/box/strippole_kit = 4,
 					/obj/item/storage/box/xstand_kit = 4,
-					/obj/item/storage/box/milking_kit = 4)
+					/obj/item/storage/box/milking_kit = 4,
+					/obj/item/storage/box/shibari_stand = 4)
 
 	premium = list(
 		/obj/item/clothing/under/dress/corset = 4,
 		/obj/item/clothing/under/pants/chaps = 4,
-		/obj/item/clothing/neck/human_petcollar/locked/holocollar = 3)
+		/obj/item/clothing/neck/human_petcollar/locked/holo = 3)
 
 	contraband = list(
 					/obj/item/electropack/shockcollar = 4,

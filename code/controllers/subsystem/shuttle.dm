@@ -140,6 +140,10 @@ SUBSYSTEM_DEF(shuttle)
 	while(length(pack_processing))
 		var/datum/supply_pack/pack = pack_processing[length(pack_processing)]
 		pack_processing.len--
+		//SKYRAT EDIT START
+		if(pack == /datum/supply_pack/armament)
+			continue
+		//SKYRAT EDIT END
 		if(ispath(pack, /datum/supply_pack))
 			pack = new pack
 
@@ -778,8 +782,7 @@ SUBSYSTEM_DEF(shuttle)
 	// but we can ignore the someone else docked error because we'll
 	// be moving into their place shortly
 	if((result != SHUTTLE_CAN_DOCK) && (result != SHUTTLE_SOMEONE_ELSE_DOCKED))
-		WARNING("Template shuttle [preview_shuttle] cannot dock at [D] ([result]).")
-		return
+		CRASH("Template shuttle [preview_shuttle] cannot dock at [D] ([result]).")
 
 	if(existing_shuttle && replace)
 		existing_shuttle.jumpToNullSpace()

@@ -6,6 +6,10 @@
 #define BRUSH_UNCOVER	(2<<1) //when the strange rock is brushed and the strange rock reveals what it held.
 #define BRUSH_NONE		(2<<2) //when the strange rock is brushed, with no additional effects.
 
+#define REWARD_ONE 1
+#define REWARD_TWO 2
+#define REWARD_THREE 3
+
 /obj/item/xenoarch/strange_rock
 	name = "strange rock"
 	desc = "A mysterious, strange rock that has the potential to have a wonderful item. Also possible for it to have our disposed garbage."
@@ -29,6 +33,8 @@
 	var/adv_scanned = FALSE
 	///The scan state for when encountering the strange rock ore in mining.
 	var/scan_state = "rock_Strange"
+	///The tier of the item that was chosen, 1-100 then 1-3
+	var/choose_tier
 
 /obj/item/xenoarch/strange_rock/Initialize()
 	. = ..()
@@ -45,17 +51,20 @@
 		. += span_warning("The rock is crumbling, even just brushing it will destroy it!")
 
 /obj/item/xenoarch/strange_rock/proc/create_item()
-	var/choose_tier = rand(1,100)
+	choose_tier = rand(1,100)
 	switch(choose_tier)
-		if(1 to 70)
+		if(1 to 60)
 			hidden_item = pick_weight(GLOB.tier1_reward)
-		if(71 to 97)
+			choose_tier = REWARD_ONE
+		if(61 to 87)
 			hidden_item = pick_weight(GLOB.tier2_reward)
-		if(98 to 100)
+			choose_tier = REWARD_TWO
+		if(88 to 100)
 			hidden_item = pick_weight(GLOB.tier3_reward)
+			choose_tier = REWARD_THREE
 
 /obj/item/xenoarch/strange_rock/proc/create_depth()
-	max_depth = rand(21, 100)
+	max_depth = rand(21, (22 * choose_tier))
 	safe_depth = rand(1, 10)
 	item_depth = rand((max_depth - safe_depth), max_depth)
 	dug_depth = rand(0, 10)
@@ -168,16 +177,14 @@
 	mineralType = /obj/item/xenoarch/strange_rock
 
 /turf/closed/mineral/strange_rock/volcanic
-	environment_type = "basalt"
-	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
-	baseturfs = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
+	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
+	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	defer_change = TRUE
 
 /turf/closed/mineral/random/volcanic
-	environment_type = "basalt"
-	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
-	baseturfs = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
+	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
+	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	defer_change = TRUE
 
@@ -188,19 +195,18 @@
 		/turf/closed/mineral/gibtonite/volcanic = 4, /obj/item/stack/ore/bluespace_crystal = 1)
 
 /turf/closed/mineral/strange_rock/ice
-	environment_type = "snow_cavern"
 	icon_state = "icerock_strange"
 	smooth_icon = 'icons/turf/walls/icerock_wall.dmi'
 	base_icon_state = "icerock_wall"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	turf_type = /turf/open/floor/plating/asteroid/snow/ice
-	baseturfs = /turf/open/floor/plating/asteroid/snow/ice
+	turf_type = /turf/open/misc/asteroid/snow/ice
+	baseturfs = /turf/open/misc/asteroid/snow/ice
 	initial_gas_mix = FROZEN_ATMOS
 	defer_change = TRUE
 
 /turf/closed/mineral/strange_rock/ice/icemoon
-	turf_type = /turf/open/floor/plating/asteroid/snow/ice/icemoon
-	baseturfs = /turf/open/floor/plating/asteroid/snow/ice/icemoon
+	turf_type = /turf/open/misc/asteroid/snow/ice/icemoon
+	baseturfs = /turf/open/misc/asteroid/snow/ice/icemoon
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 
 /turf/closed/mineral/random/snow
@@ -210,7 +216,7 @@
 		/turf/closed/mineral/gibtonite/ice/icemoon = 4, /obj/item/stack/ore/bluespace_crystal = 1)
 
 /turf/closed/mineral/random/snow/underground
-	baseturfs = /turf/open/floor/plating/asteroid/snow/icemoon
+	baseturfs = /turf/open/misc/asteroid/snow/icemoon
 	// abundant ore
 	mineralChance = 20
 	mineralSpawnChanceList = list(
@@ -220,30 +226,28 @@
 
 //small gibonite fix
 /turf/closed/mineral/gibtonite/asteroid
-	environment_type = "asteroid"
 	icon_state = "redrock_Gibonite"
 	smooth_icon = 'icons/turf/walls/red_wall.dmi'
 	base_icon_state = "red_wall"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	turf_type = /turf/open/floor/plating/asteroid
-	baseturfs = /turf/open/floor/plating/asteroid
+	turf_type = /turf/open/misc/asteroid
+	baseturfs = /turf/open/misc/asteroid
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	defer_change = TRUE
 
 /turf/closed/mineral/strange_rock/asteroid
-	environment_type = "asteroid"
 	icon_state = "redrock_strange"
 	smooth_icon = 'icons/turf/walls/red_wall.dmi'
 	base_icon_state = "red_wall"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	turf_type = /turf/open/floor/plating/asteroid
-	baseturfs = /turf/open/floor/plating/asteroid
+	turf_type = /turf/open/misc/asteroid
+	baseturfs = /turf/open/misc/asteroid
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	defer_change = TRUE
 
 /turf/closed/mineral/random/stationside/asteroid/rockplanet
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
-	turf_type = /turf/open/floor/plating/asteroid
+	turf_type = /turf/open/misc/asteroid
 	mineralSpawnChanceList = list(/obj/item/stack/ore/uranium = 5, /obj/item/stack/ore/diamond = 1, /obj/item/stack/ore/gold = 10,
 		/obj/item/stack/ore/silver = 12, /obj/item/stack/ore/plasma = 20, /obj/item/stack/ore/iron = 40, /obj/item/stack/ore/titanium = 11,
 		/turf/closed/mineral/gibtonite/asteroid = 4, /obj/item/stack/ore/bluespace_crystal = 1, /turf/closed/mineral/strange_rock/asteroid = 10)
@@ -256,3 +260,7 @@
 #undef BRUSH_DELETE
 #undef BRUSH_UNCOVER
 #undef BRUSH_NONE
+
+#undef REWARD_ONE
+#undef REWARD_TWO
+#undef REWARD_THREE

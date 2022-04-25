@@ -3,7 +3,9 @@ SUBSYSTEM_DEF(economy)
 	wait = 5 MINUTES
 	init_order = INIT_ORDER_ECONOMY
 	runlevels = RUNLEVEL_GAME
+	///How many paychecks should players start out the round with?
 	var/roundstart_paychecks = 5
+	///How many credits does the in-game economy have in circulation at round start? Divided up by 6 of the 7 department budgets evenly, where cargo starts with nothing.
 	var/budget_pool = 35000
 	var/list/department_accounts = list(ACCOUNT_CIV = ACCOUNT_CIV_NAME,
 										ACCOUNT_ENG = ACCOUNT_ENG_NAME,
@@ -15,8 +17,12 @@ SUBSYSTEM_DEF(economy)
 										ACCOUNT_CMD = ACCOUNT_CMD_NAME, // SKYRAT EDIT
 										)
 	var/list/generated_accounts = list()
-	var/full_ancap = FALSE // Enables extra money charges for things that normally would be free, such as sleepers/cryo/cloning.
-							//Take care when enabling, as players will NOT respond well if the economy is set up for low cash flows.
+	/**
+	 * Enables extra money charges for things that normally would be free, such as sleepers/cryo/beepsky.
+	 * Take care when enabling, as players will NOT respond well if the economy is set up for low cash flows.
+	 */
+	var/full_ancap = FALSE
+
 	/// Departmental cash provided to science when a node is researched in specific configs.
 	var/techweb_bounty = 250
 	/**
@@ -24,6 +30,7 @@ SUBSYSTEM_DEF(economy)
 	  * A list of sole account datums can be obtained with flatten_list(), another variable would be redundant rn.
 	  */
 	var/list/bank_accounts_by_id = list()
+	///List of the departmental budget cards in existance.
 	var/list/dep_cards = list()
 	/// A var that collects the total amount of credits owned in player accounts on station, reset and recounted on fire()
 	var/station_total = 0
@@ -59,9 +66,9 @@ SUBSYSTEM_DEF(economy)
 		mail_blocked = TRUE
 	for(var/dep_id in department_accounts)
 		if(dep_id == ACCOUNT_CAR) //cargo starts with NOTHING
-			new /datum/bank_account/department(dep_id, 0)
+			new /datum/bank_account/department(dep_id, 0, player_account = FALSE)
 			continue
-		new /datum/bank_account/department(dep_id, budget_to_hand_out)
+		new /datum/bank_account/department(dep_id, budget_to_hand_out, player_account = FALSE)
 	return ..()
 
 /datum/controller/subsystem/economy/Recover()
@@ -126,8 +133,8 @@ SUBSYSTEM_DEF(economy)
 		if(!is_station_level(V.z))
 			continue
 		V.reset_prices(V.product_records, V.coin_records)
-	earning_report = "Sector Economic Report<br /> Sector vendor prices is currently at [SSeconomy.inflation_value()*100]%.<br /> The station spending power is currently <b>[station_total] Credits</b>, and the crew's targeted allowance is at <b>[station_target] Credits</b>.<br /> That's all from the <i>Nanotrasen Economist Division</i>."
-	GLOB.news_network.SubmitArticle(earning_report, "Station Earnings Report", "Station Announcements", null, update_alert = FALSE)
+	earning_report = "<b>Sector Economic Report</b><br><br> Sector vendor prices is currently at <b>[SSeconomy.inflation_value()*100]%</b>.<br><br> The station spending power is currently <b>[station_total] Credits</b>, and the crew's targeted allowance is at <b>[station_target] Credits</b>.<br><br> That's all from the <i>Nanotrasen Economist Division</i>."
+	GLOB.news_network.submit_article(earning_report, "Station Earnings Report", "Station Announcements", null, update_alert = FALSE)
 
 /**
  * Proc that returns a value meant to shift inflation values in vendors, based on how much money exists on the station.

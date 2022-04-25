@@ -50,19 +50,6 @@
 //////////////////////////// Weapons or Ammo /////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-/datum/supply_pack/goody/makarov
-	name = "Makarov Self Defense Pistol"
-	desc = "A small, slow firing and low capacity pistol, but hey, it's better then a crowbar, right? (Does not include a weapons permit.)"
-	cost = PAYCHECK_MEDIUM * 28
-	contraband = TRUE
-	contains = list(/obj/item/storage/box/gunset/makarov)
-
-/datum/supply_pack/goody/pepperball
-	name = "PepperBall Self Defense Weapon"
-	desc = "A 'state of the art' self defense weapon, firing balls of condensed pepperspray, don't aim for the face."
-	cost = PAYCHECK_MEDIUM * 17
-	contains = list(/obj/item/storage/box/gunset/pepperball)
-
 /datum/supply_pack/goody/gunmaint
 	name = "Gun Maintenance Kits"
 	desc = "Keep your pa's rifle in best condition, with two sets of cleaning supplies. Or your standard issue pistol if you're an itchy trigger, we're not here to judge."
@@ -117,3 +104,4 @@
 /datum/supply_pack/goody/carpet/premium/blue
 	name = "Blue Carpet Single-Pack"
 	contains = list(/obj/item/stack/tile/carpet/blue/fifty)
+

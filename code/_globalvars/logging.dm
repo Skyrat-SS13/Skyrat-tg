@@ -4,6 +4,8 @@ GLOBAL_VAR(world_game_log)
 GLOBAL_PROTECT(world_game_log)
 GLOBAL_VAR(world_silicon_log)
 GLOBAL_PROTECT(world_silicon_log)
+GLOBAL_VAR(world_tool_log)
+GLOBAL_PROTECT(world_tool_log)
 /// Log associated with [/proc/log_suspicious_login()] - Intended to hold all logins that failed due to suspicious circumstances such as ban detection, CID randomisation etc.
 GLOBAL_VAR(world_suspicious_login_log)
 GLOBAL_PROTECT(world_suspicious_login_log)
@@ -53,6 +55,9 @@ GLOBAL_VAR(tgui_log)
 GLOBAL_PROTECT(tgui_log)
 GLOBAL_VAR(world_shuttle_log)
 GLOBAL_PROTECT(world_shuttle_log)
+
+GLOBAL_VAR(filter_log)
+GLOBAL_PROTECT(filter_log)
 
 GLOBAL_VAR(perf_log)
 GLOBAL_PROTECT(perf_log)

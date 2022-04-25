@@ -306,6 +306,7 @@ const PageMain = (props, context) => {
   const {
     alertLevel,
     alertLevelTick,
+    aprilFools,
     callShuttleReasonMinLength,
     canBuyShuttles,
     canMakeAnnouncement,
@@ -442,6 +443,11 @@ const PageMain = (props, context) => {
             content="Make Priority Announcement"
             onClick={() => act("makePriorityAnnouncement")}
           />}
+          {!!aprilFools && !!canMakeAnnouncement && <Button
+            icon="bullhorn"
+            content="Call Emergency Meeting"
+            onClick={() => act("emergency_meeting")}
+          />}
           {!!canToggleEmergencyAccess && <Button.Confirm
             icon="id-card-o"
             content={`${emergencyAccess ? "Disable" : "Enable"} Emergency Maintenance Access`}
@@ -503,8 +509,8 @@ const PageMain = (props, context) => {
           />}
           {!!canMakeAnnouncement && <Button
             icon="bullhorn"
-            content="Call Sol Federation 911: Firefighter Response"
-            onClick={() => act("callTheFireDep")}
+            content="Call Sol Federation 811: Breach Control Response"
+            onClick={() => act("callBreachControl")}
           />}
           {!!canMakeAnnouncement && <Button
             icon="bullhorn"

@@ -16,6 +16,14 @@
 			candidates.Remove(P)
 		else if (!((antag_preference || antag_flag) in P.client.prefs.be_special) || is_banned_from(P.ckey, list(antag_flag_override || antag_flag, ROLE_SYNDICATE)))
 			candidates.Remove(P)
+		// SKYRAT EDIT ADDITION - PROTECTED JOBS
+		else if(P.client?.prefs && !P.client.prefs.read_preference(/datum/preference/toggle/be_antag))
+			candidates.Remove(P)
+			continue
+		else if(is_banned_from(P.client?.ckey, BAN_ANTAGONIST))
+			candidates.Remove(P)
+			continue
+		// SKYRAT EDIT END
 
 /datum/dynamic_ruleset/latejoin/ready(forced = 0)
 	if (!forced)
@@ -57,25 +65,6 @@
 		JOB_HEAD_OF_SECURITY,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
-		// SKYRAT EDIT START - More protected roles
-		JOB_NT_REP,
-		JOB_CHIEF_ENGINEER,
-		JOB_CHIEF_MEDICAL_OFFICER,
-		JOB_RESEARCH_DIRECTOR,
-		JOB_QUARTERMASTER,
-		JOB_BLUESHIELD,
-		JOB_SECURITY_SERGEANT,
-		JOB_SECURITY_MEDIC,
-		JOB_CORRECTIONS_OFFICER,
-		JOB_CIVIL_DISPUTES_OFFICER,
-		JOB_ORDERLY,
-		JOB_BOUNCER,
-		JOB_CUSTOMS_AGENT,
-		JOB_ENGINEERING_GUARD,
-		JOB_SCIENCE_GUARD,
-		JOB_VANGUARD_OPERATIVE,
-		JOB_PRISONER,
-		// SKYRAT EDIT END
 	)
 	restricted_roles = list(
 		JOB_AI,
@@ -112,21 +101,6 @@
 		JOB_RESEARCH_DIRECTOR,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
-		// SKYRAT EDIT START - More protected roles
-		JOB_NT_REP,
-		JOB_QUARTERMASTER,
-		JOB_BLUESHIELD,
-		JOB_SECURITY_SERGEANT,
-		JOB_SECURITY_MEDIC,
-		JOB_CORRECTIONS_OFFICER,
-		JOB_CIVIL_DISPUTES_OFFICER,
-		JOB_ORDERLY,
-		JOB_BOUNCER,
-		JOB_CUSTOMS_AGENT,
-		JOB_ENGINEERING_GUARD,
-		JOB_SCIENCE_GUARD,
-		JOB_VANGUARD_OPERATIVE,
-		// SKYRAT EDIT END
 	)
 	enemy_roles = list(
 		JOB_AI,
@@ -219,24 +193,6 @@
 		JOB_PRISONER,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
-		// SKYRAT EDIT START - More protected roles
-		JOB_NT_REP,
-		JOB_CHIEF_ENGINEER,
-		JOB_CHIEF_MEDICAL_OFFICER,
-		JOB_RESEARCH_DIRECTOR,
-		JOB_QUARTERMASTER,
-		JOB_BLUESHIELD,
-		JOB_SECURITY_SERGEANT,
-		JOB_SECURITY_MEDIC,
-		JOB_CORRECTIONS_OFFICER,
-		JOB_CIVIL_DISPUTES_OFFICER,
-		JOB_ORDERLY,
-		JOB_BOUNCER,
-		JOB_CUSTOMS_AGENT,
-		JOB_ENGINEERING_GUARD,
-		JOB_SCIENCE_GUARD,
-		JOB_VANGUARD_OPERATIVE,
-		// SKYRAT EDIT END
 	)
 	restricted_roles = list(
 		JOB_AI,
@@ -247,3 +203,20 @@
 	cost = 10
 	requirements = list(101,101,101,10,10,10,10,10,10,10)
 	repeatable = TRUE
+
+/datum/dynamic_ruleset/latejoin/heretic_smuggler/execute()
+	var/mob/picked_mob = pick(candidates)
+	assigned += picked_mob.mind
+	picked_mob.mind.special_role = antag_flag
+	var/datum/antagonist/heretic/new_heretic = picked_mob.mind.add_antag_datum(antag_datum)
+
+	// Heretics passively gain influence over time.
+	// As a consequence, latejoin heretics start out at a massive
+	// disadvantage if the round's been going on for a while.
+	// Let's give them some influence points when they arrive.
+	new_heretic.knowledge_points += round((world.time - SSticker.round_start_time) / new_heretic.passive_gain_timer)
+	// BUT let's not give smugglers a million points on arrival.
+	// Limit it to four missed passive gain cycles (4 points).
+	new_heretic.knowledge_points = min(new_heretic.knowledge_points, 5)
+
+	return TRUE

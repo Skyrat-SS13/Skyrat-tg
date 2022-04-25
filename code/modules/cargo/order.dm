@@ -1,3 +1,14 @@
+/// The chance for a manifest or crate to be created with errors 
+#define MANIFEST_ERROR_CHANCE 5
+
+// MANIFEST BITFLAGS
+/// Determines if the station name will be incorrect on the manifest
+#define MANIFEST_ERROR_NAME (1 << 0)
+/// Determines if contents will be deleted from the manifest but still be present in the crate
+#define MANIFEST_ERROR_CONTENTS (1 << 1)
+/// Determines if contents will be deleted from the crate but still be present in the manifest 
+#define MANIFEST_ERROR_ITEM (1 << 2)
+
 /obj/item/paper/fluff/jobs/cargo/manifest
 	var/order_cost = 0
 	var/order_id = 0
@@ -10,10 +21,13 @@
 
 	if(prob(MANIFEST_ERROR_CHANCE))
 		errors |= MANIFEST_ERROR_NAME
+		investigate_log("Supply order #[order_id] generated a manifest with an incorrect station name.", INVESTIGATE_CARGO)
 	if(prob(MANIFEST_ERROR_CHANCE))
 		errors |= MANIFEST_ERROR_CONTENTS
+		investigate_log("Supply order #[order_id] generated a manifest missing listed contents.", INVESTIGATE_CARGO)
 	if(prob(MANIFEST_ERROR_CHANCE))
 		errors |= MANIFEST_ERROR_ITEM
+		investigate_log("Supply order #[order_id] generated with incorrect contents shipped.", INVESTIGATE_CARGO)
 
 /obj/item/paper/fluff/jobs/cargo/manifest/proc/is_approved()
 	return stamped?.len && !is_denied()
@@ -128,3 +142,8 @@
 		new I(miscbox)
 	generateManifest(miscbox, misc_own, "", misc_cost)
 	return
+
+#undef MANIFEST_ERROR_CHANCE
+#undef MANIFEST_ERROR_NAME
+#undef MANIFEST_ERROR_CONTENTS
+#undef MANIFEST_ERROR_ITEM

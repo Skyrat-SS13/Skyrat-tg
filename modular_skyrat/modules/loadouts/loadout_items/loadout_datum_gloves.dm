@@ -75,16 +75,20 @@ GLOBAL_LIST_INIT(loadout_gloves, generate_loadout_items(/datum/loadout_item/glov
 	name = "Evening Gloves"
 	item_path = /obj/item/clothing/gloves/evening
 
+/datum/loadout_item/gloves/maid
+	name = "Maid Arm Covers"
+	item_path = /obj/item/clothing/gloves/maid
+
 /datum/loadout_item/gloves/goldring
-	name = "A gold ring"
+	name = "Gold ring"
 	item_path = /obj/item/clothing/gloves/ring
 
 /datum/loadout_item/gloves/silverring
-	name = "A silver ring"
+	name = "Silver ring"
 	item_path = /obj/item/clothing/gloves/ring/silver
 
 /datum/loadout_item/gloves/diamondring
-	name = "A diamond ring"
+	name = "Diamond ring"
 	item_path = /obj/item/clothing/gloves/ring/diamond
 
 //Donator gloves down here
