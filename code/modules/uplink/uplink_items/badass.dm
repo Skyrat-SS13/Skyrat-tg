@@ -34,18 +34,16 @@
 
 // Low progression
 
-/*	SKYRAT EDIT - DISABLED FOR GUN CARGO
 /datum/uplink_item/badass/syndiecash
 	name = "Syndicate Briefcase Full of Cash"
 	desc = "A secure briefcase containing 5000 space credits. Useful for bribing personnel, or purchasing goods \
 			and services at lucrative prices. The briefcase also feels a little heavier to hold; it has been \
 			manufactured to pack a little bit more of a punch if your client needs some convincing."
 	item = /obj/item/storage/secure/briefcase/syndie
-	cost = 1
+	cost = 5 // SKYRAT EDIT - ORIGINAL: 1
 	progression_minimum = 5 MINUTES
 	restricted = TRUE
 	illegal_tech = FALSE
-*/
 
 // Ultra high progression
 /datum/uplink_item/badass/costumes/clown
