@@ -17,7 +17,7 @@ GLOBAL_VAR(economy_collapse) // SKYRAT EDIT ADDITION
 		to_chat(user, span_warning("You already activated Protocol CRAB-17."))
 		return FALSE
 	// SKYRAT EDIT BEGIN
-	if(economy_collapse)
+	if(GLOB.economy_collapse)
 		to_chat(user, span_warning("The economy has already collapsed once, a second collapse would end society as we know it."))
 		return
 	// SKYRAT EDIT END
