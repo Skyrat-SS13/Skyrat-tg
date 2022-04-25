@@ -51,7 +51,7 @@
 	projectile_type = /obj/projectile/bullet/advanced/b6mm/ihdf
 	harmful = TRUE
 
-/obj/projectile/bullet/advanced/b6mm/ihdf
+/obj/projectile/bullet/advanced/b6mm/frag
 	name = "6mm fragmentation pellet"
 	icon_state = "bullet_i"
 	damage = 25
