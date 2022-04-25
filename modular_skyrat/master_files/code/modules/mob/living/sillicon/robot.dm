@@ -44,7 +44,7 @@
 		return
 
 	var/truedir = movable_parent.dir
-	if(newdir && truedir != newdir)
+	if(newdir && (truedir != newdir))
 		truedir = newdir
 
 	switch(truedir)
@@ -98,7 +98,6 @@
 /particles/smoke/robot
 	spawning = 0.4
 	lifespan = 1 SECONDS
-//	fadein = 0.5 SECONDS
 	fade = 0.75 SECONDS
 	position = list(5, 12, 0)
 	velocity = list(0, 0.2, 0)
