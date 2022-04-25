@@ -67,30 +67,30 @@
 	set category = "AI Commands"
 
 	if(particles)
-		smoke_disappear()
+		dissipate()
 	else if (!stat && !robot_resting)
 		do_jitter_animation(10)
 		playsound(src, 'modular_skyrat/master_files/sound/effects/robot_smoke.ogg', 50)
 		particles = new /particles/smoke/robot()
 
-/mob/living/silicon/robot/proc/smoke_disappear()
+/mob/living/silicon/robot/proc/dissipate()
 	particles.spawning = 0
-	addtimer(CALLBACK(src, .proc/smoke_qdel), 1 SECONDS)
+	addtimer(CALLBACK(src, .proc/particles_qdel), 1.5 SECONDS)
 
-/mob/living/silicon/robot/proc/smoke_qdel()
+/mob/living/silicon/robot/proc/particles_qdel()
 	QDEL_NULL(particles)
 
 /mob/living/silicon/robot/death()
 	. = ..()
 	if(GetComponent(/datum/component/robot_smoke))
-		smoke_disappear()
+		dissipate()
 
 /mob/living/silicon/robot/robot_lay_down()
 	. = ..()
 
 	if(GetComponent(/datum/component/robot_smoke))
 		if(robot_resting)
-			smoke_disappear()
+			dissipate()
 		else
 			return
 
