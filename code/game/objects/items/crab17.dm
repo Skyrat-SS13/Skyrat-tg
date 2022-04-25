@@ -1,3 +1,4 @@
+GLOBAL_VAR(economy_collapse) // SKYRAT EDIT ADDITION
 /obj/item/suspiciousphone
 	name = "suspicious phone"
 	desc = "This device raises pink levels to unknown highs."
@@ -15,6 +16,11 @@
 	if(dumped)
 		to_chat(user, span_warning("You already activated Protocol CRAB-17."))
 		return FALSE
+	// SKYRAT EDIT BEGIN
+	if(economy_collapse)
+		to_chat(user, span_warning("The economy has already collapsed once, a second collapse would end society as we know it."))
+		return
+	// SKYRAT EDIT END
 	if(tgui_alert(user, "Are you sure you want to crash this market with no survivors?", "Protocol CRAB-17", list("Yes", "No")) == "Yes")
 		if(dumped || QDELETED(src)) //Prevents fuckers from cheesing alert
 			return FALSE
@@ -31,6 +37,7 @@
 			B.being_dumped = TRUE
 		new /obj/effect/dumpeet_target(targetturf, L)
 		dumped = TRUE
+		economy_collapse = TRUE
 
 /obj/structure/checkoutmachine
 	name = "\improper Nanotrasen Space-Coin Market"
