@@ -9,7 +9,7 @@
 	desc = "This jacket is for those special occasions when a security officer isn't required to wear their armor."
 	icon_state = "officerbluejacket"
 	body_parts_covered = CHEST|ARMS
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 // HEAD OF SECURITY
 
@@ -29,16 +29,8 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "trenchcloak"
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	body_parts_covered = CHEST|ARMS|LEGS
-
-/obj/item/clothing/suit/armor/hos/parade/female
-	name = "head of security's female parade jacket"
-	desc = "A luxurious jacket for the head of security, woven in a deep red. This one comes with white trousers. On the lapel is a small pin in the shape of a deer's head."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "hos_parade_fem"
-	inhand_icon_state = "hos_parade_fem"
 
 // WARDEN
 

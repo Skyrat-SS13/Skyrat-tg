@@ -7,11 +7,16 @@
 	learnable_languages = list(/datum/language/common, /datum/language/slime)
 	payday_modifier = 0.75
 
+/datum/species/jelly/get_species_description()
+	return placeholder_description
+
+/datum/species/jelly/get_species_lore()
+	return list(placeholder_lore)
+
 /datum/species/jelly/roundstartslime
 	name = "Xenobiological Slime Hybrid"
 	id = SPECIES_SLIMESTART
-	limbs_id = SPECIES_SLIMEPERSON
-	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/slime_parts_greyscale.dmi'
+	examine_limb_id = SPECIES_SLIMEPERSON
 	default_color = "#00FFFF"
 	say_mod = "says"
 	coldmod = 3
@@ -19,6 +24,15 @@
 	burnmod = 1
 	specific_alpha = 155
 	markings_alpha = 130 //This is set lower than the other so that the alpha values don't stack on top of each other so much
+
+	bodypart_overrides = list( //Overriding jelly bodyparts
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/roundstartslime,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/roundstartslime,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/roundstartslime,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/roundstartslime,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/roundstartslime,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/roundstartslime,
+	)
 
 /datum/action/innate/slime_change
 	name = "Alter Form"
@@ -90,7 +104,6 @@
 						if(BD.always_color_customizable)
 							continue
 						DNA.species.body_markings[zone][key] = BD.get_default_color(DNA.features, DNA.species)
-				H.icon_render_key = "" //Currently the render key doesnt recognize the markings colors
 			if(mutantpart_reset && mutantpart_reset == "Yes")
 				H.mutant_renderkey = "" //Just in case
 				for(var/mutant_key in DNA.species.mutant_bodyparts)
@@ -157,16 +170,6 @@
 					DNA.species.mutant_bodyparts[chosen_key] = new_acc_list
 					DNA.mutant_bodyparts[chosen_key] = new_acc_list.Copy()
 				DNA.update_uf_block(GLOB.dna_mutant_bodypart_blocks[chosen_key])
-			if (chosen_key == "legs" && chosen_name_key != "Cancel")
-				if (chosen_name_key == "Digitigrade Legs" && !(DIGITIGRADE in DNA.species.species_traits))
-					DNA.species.species_traits += DIGITIGRADE
-				if (chosen_name_key == "Normal Legs" && (DIGITIGRADE in DNA.species.species_traits))
-					DNA.species.species_traits -= DIGITIGRADE
-				H.Digitigrade_Leg_Swap(chosen_name_key == "Normal Legs")
-				H.update_body()
-				H.update_inv_w_uniform()
-				H.update_inv_wear_suit()
-				H.update_inv_shoes()
 			H.update_mutant_bodyparts()
 		if("Markings")
 			var/list/candidates = GLOB.body_marking_sets
@@ -175,7 +178,6 @@
 				return
 			var/datum/body_marking_set/BMS = GLOB.body_marking_sets[chosen_name]
 			DNA.species.body_markings = assemble_body_markings_from_set(BMS, DNA.features, DNA.species)
-			H.icon_render_key = "" //Just in case
 			H.update_body()
 		if("DNA Specifics")
 			var/dna_alteration = input(H, "Select what part of your DNA you'd like to alter", "DNA Alteration", "cancel") in list("Penis Size","Penis Girth", "Penis Sheath", "Penis Taur Mode", "Balls Size", "Breasts Size", "Breasts Lactation", "Body Size", "Cancel")

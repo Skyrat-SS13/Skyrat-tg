@@ -1,5 +1,5 @@
 /obj/item/gun/ballistic/automatic/ppsh
-	name = "\improper PPSh-41"
+	name = "\improper Asha 76"
 	desc = "A reproduction of a simple Soviet SMG chambered in 7.62x25 Tokarev rounds. Its heavy wooden stock and leather breech buffer help absorb the bolt’s heavy recoil, making it great for spraying and praying. Uraaaa!"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns40x32.dmi'
 	icon_state = "ppsh"
@@ -24,9 +24,10 @@
 	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
 	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
+	company_flag = COMPANY_OLDARMS
 
 /obj/item/ammo_box/magazine/ppsh
-	name = "ppsh-41 magazine (7.62x25mm)"
+	name = "Asha 76 magazine (7.62x25mm)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "ppsh"
 	ammo_type = /obj/item/ammo_casing/realistic/a762x25

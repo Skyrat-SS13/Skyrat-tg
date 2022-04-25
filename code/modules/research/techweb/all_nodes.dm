@@ -61,6 +61,9 @@
 		"titaniumglass",
 		"toner",
 		"toner_large",
+		"turbine_part_compressor",
+		"turbine_part_rotor",
+		"turbine_part_stator",
 	)
 
 /datum/techweb_node/mmi
@@ -182,6 +185,7 @@
 		"spade",
 		"spraycan",
 		"swab",
+		"tile_sprayer",
 		"tscanner",
 		"welding_helmet",
 		"welding_tool",
@@ -216,6 +220,7 @@
 		"dropper",
 		"hemostat",
 		"large_beaker",
+		"pillbottle",
 		"plumbing_rcd",
 		"portable_chem_mixer",
 		"retractor",
@@ -265,6 +270,7 @@
 		"comp_index",
 		"comp_index_assoc",
 		"comp_index_table",
+		"comp_laserpointer",
 		"comp_length",
 		"comp_light",
 		"comp_list_add",
@@ -304,6 +310,7 @@
 		"comp_trigonometry",
 		"comp_typecast",
 		"comp_typecheck",
+		"comp_view_sensor",
 		"compact_remote_shell",
 		"component_printer",
 		"integrated_circuit",
@@ -325,6 +332,9 @@
 		"chem_dispenser",
 		"chem_heater",
 		"chem_mass_spec",
+		//SKYRAT EDIT - RESEARCH DESIGNS
+		"smartdartgun",
+		//SKYRAT EDIT - END
 		"chem_master",
 		"chem_pack",
 		"crewpinpointerprox",
@@ -371,6 +381,7 @@
 		"burn2medicell",
 		"toxin2medicell",
 		"oxy2medicell",
+		"relocatemedicell",
 		"tempmedicell",
 		"bodymedicell",
 		"clotmedicell",
@@ -543,7 +554,7 @@
 		"stack_machine",
 		"tesla_coil",
 		"thermomachine",
-		"w-recycler", 
+		"w-recycler",
 		"emitter",
 		"welding_goggles",
 		"anomaly_refinery",
@@ -615,13 +626,14 @@
 	prereq_ids = list("engineering")
 	design_ids = list(
 		"hyper_cell",
-		"power_compressor",
-		"power_turbine",
 		"power_turbine_console",
 		"smes",
 		"super_capacitor",
 		"super_cell",
 		"superpacman",
+		"turbine_compressor",
+		"turbine_rotor",
+		"turbine_stator",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3500)
 	discount_experiments = list(/datum/experiment/scanning/points/machinery_pinpoint_scan/tier2_capacitors = 2500)
@@ -789,9 +801,11 @@
 		"bci_shell",
 		"comp_bar_overlay",
 		"comp_bci_action",
-		"comp_target_intercept",
 		"comp_counter_overlay",
 		"comp_object_overlay",
+		"comp_target_intercept",
+		"comp_thought_listener",
+		"comp_vox",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 500)
 
@@ -878,6 +892,7 @@
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
 		"borg_upgrade_clamp",
+		"borg_upgrade_brush",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
@@ -1101,7 +1116,6 @@
 	description = "Organized record databases and how they're used."
 	prereq_ids = list("comptech")
 	design_ids = list(
-		"accounting",
 		"automated_announcement",
 		"med_data",
 		"prisonmanage",
@@ -1166,6 +1180,7 @@
 		"health_hud_night",
 		"night_visision_goggles",
 		"nvgmesons",
+		"nv_scigoggles",
 		"security_hud_night",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
@@ -1598,7 +1613,7 @@
 		"mod_plating_security",
 		"mod_visor_sechud",
 		"mod_stealth",
-		"mod_holster",
+		"mod_mag_harness",
 		"mod_pathfinder",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
@@ -1798,7 +1813,6 @@
 	prereq_ids = list("adv_mecha", "bluespace_power")
 	design_ids = list(
 		"mech_ccw_armor",
-		"mech_energy_relay",
 		"mech_proj_armor",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
@@ -2079,8 +2093,8 @@
 
 /datum/techweb_node/syndicate_basic/New() //Crappy way of making syndicate gear decon supported until there's another way.
 	. = ..()
-	if(!SSassets.initialized)
-		RegisterSignal(SSassets, COMSIG_SUBSYSTEM_POST_INITIALIZE, .proc/register_uplink_items)
+	if(!SSearly_assets.initialized)
+		RegisterSignal(SSearly_assets, COMSIG_SUBSYSTEM_POST_INITIALIZE, .proc/register_uplink_items)
 	else
 		register_uplink_items()
 
@@ -2090,7 +2104,7 @@
  */
 /datum/techweb_node/syndicate_basic/proc/register_uplink_items()
 	SIGNAL_HANDLER
-	UnregisterSignal(SSassets, COMSIG_SUBSYSTEM_POST_INITIALIZE)
+	UnregisterSignal(SSearly_assets, COMSIG_SUBSYSTEM_POST_INITIALIZE)
 	boost_item_paths = list()
 	for(var/datum/uplink_item/item_path as anything in SStraitor.uplink_items_by_type)
 		var/datum/uplink_item/item = SStraitor.uplink_items_by_type[item_path]

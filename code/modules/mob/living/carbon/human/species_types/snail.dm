@@ -3,11 +3,12 @@
 	id = SPECIES_SNAIL
 	offset_features = list(OFFSET_GLASSES = list(0,4))
 	default_color = "336600" //vomit green
-	species_traits = list(MUTCOLORS, NO_UNDERWEAR, HAS_FLESH, HAS_BONE)
+	species_traits = list(MUTCOLORS, EYECOLOR, HAS_FLESH, HAS_BONE, HAIR, FACEHAIR) //SKYRAT EDIT - Roundstart Snails - Customization
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_NOSLIPALL,
+		TRAIT_WATER_BREATHING, //SKYRAT EDIT - Roundstart Snails
 	)
 	attack_verb = "slap"
 	attack_effect = ATTACK_EFFECT_DISARM
@@ -15,14 +16,28 @@
 	coldmod = 0.5 //snails only come out when its cold and wet
 	burnmod = 2
 	speedmod = 6
-	punchdamagehigh = 0.5 //snails are soft and squishy
+	punchdamagelow = 1 //SKYRAT EDIT - Roundstart Snails - Lowest possible punch damage. if this is set to 0, punches will always miss
+	punchdamagehigh = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage
 	siemens_coeff = 2 //snails are mostly water
+	liked_food = VEGETABLES | FRUIT | GROSS | RAW //SKYRAT EDIT - Roundstart Snails - Food Prefs
+	disliked_food = DAIRY | ORANGES | SUGAR //SKYRAT EDIT: Roundstart Snails - As it turns out, you can't give a snail processed sugar or citrus.
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP
 	sexes = FALSE //snails are hermaphrodites
+	veteran_only = TRUE //SKYRAT EDIT - Roundstart Snails
 
 	mutanteyes = /obj/item/organ/eyes/snail
 	mutanttongue = /obj/item/organ/tongue/snail
-	exotic_blood = /datum/reagent/lube
+	mutantliver = /obj/item/organ/liver/snail //SKYRAT EDIT - Roundstart Snails
+	//exotic_bloodtype = /datum/reagent/lube //SKYRAT EDIT REMOVAL: Roundstart Snails - No more lube
+
+	bodypart_overrides = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/snail,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/snail,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/snail,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/snail,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/snail,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/snail
+	)
 
 /datum/species/snail/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)
 	if(istype(chem,/datum/reagent/consumable/salt))
@@ -38,6 +53,7 @@
 		if(C.dropItemToGround(bag)) //returns TRUE even if its null
 			C.equip_to_slot_or_del(new /obj/item/storage/backpack/snail(C), ITEM_SLOT_BACK)
 	C.AddElement(/datum/element/snailcrawl)
+	C.update_icons() //SKYRAT EDIT: Roundstart Snails
 
 /datum/species/snail/on_species_loss(mob/living/carbon/C)
 	. = ..()
@@ -58,6 +74,35 @@
 	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 10, BOMB = 25, BIO = 0, FIRE = 0, ACID = 50)
 	max_integrity = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	//SKYRAT EDIT BEGIN - Roundstart Snails
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Conical Shell" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
+			RESKIN_ICON_STATE = "coneshell",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "coneshell"
+		),
+		"Round Shell" = list(
+			RESKIN_ICON = 'icons/obj/storage.dmi',
+			RESKIN_ICON_STATE = "snailshell",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "snailshell"
+		),
+		"Cinnamon Shell" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
+			RESKIN_ICON_STATE = "cinnamonshell",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "cinnamonshell"
+		),
+		"Caramel Shell" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
+			RESKIN_ICON_STATE = "caramelshell",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "caramelshell"
+		),
+	)
+	//SKYRAT EDIT END - Roundstart Snails
 
 /obj/item/storage/backpack/snail/dropped(mob/user, silent)
 	. = ..()

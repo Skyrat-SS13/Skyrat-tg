@@ -18,7 +18,12 @@
 	if(uses != -1 && uses)
 		uses--
 	priority_announce(html_decode(user.treat_message(input)), null, ANNOUNCER_CAPTAIN, JOB_CAPTAIN, has_important_message = TRUE)
+	deadchat_broadcast(" made a fake priority announcement from [span_name("[get_area_name(usr, TRUE)]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
 	user.log_talk(input, LOG_SAY, tag = "priority announcement")
-	message_admins("[ADMIN_LOOKUPFLW(user)] has purchased a priority announement from their uplink.")
+	message_admins("[ADMIN_LOOKUPFLW(user)] has used [src] to make a fake announcement of [input].")
 	if(!uses)
 		qdel(src)
+
+// Adminbus
+/obj/item/device/traitor_announcer/infinite
+	uses = -1

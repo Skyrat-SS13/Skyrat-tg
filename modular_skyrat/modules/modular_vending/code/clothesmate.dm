@@ -84,6 +84,7 @@
 		/obj/item/clothing/head/fedora/white = 5,
 		/obj/item/clothing/head/fedora/fedblack = 5,
 		/obj/item/clothing/head/fedora/fedbrown = 5,
+		/obj/item/clothing/suit/croptop = 5,
 	)
 
 	skyrat_premium = list( //being here means you're artificially rare, congratulations

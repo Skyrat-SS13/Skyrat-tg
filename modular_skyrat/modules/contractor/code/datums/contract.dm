@@ -74,6 +74,9 @@
 /// Launch the pod to collect our victim.
 /datum/syndicate_contract/proc/launch_extraction_pod(turf/empty_pod_turf)
 	var/obj/structure/closet/supplypod/extractionpod/empty_pod = new()
+	empty_pod.contract_hub = contract.owner?.opposing_force?.contractor_hub
+	empty_pod.tied_contract = src
+	empty_pod.recieving = TRUE
 
 	RegisterSignal(empty_pod, COMSIG_ATOM_ENTERED, .proc/enter_check)
 
@@ -125,6 +128,7 @@
 			victim_belongings.Add(sent_mob_item)
 
 	var/obj/structure/closet/supplypod/extractionpod/pod = source
+	pod.recieving = FALSE
 
 	// Handle the pod returning
 	pod.startExitSequence(pod)

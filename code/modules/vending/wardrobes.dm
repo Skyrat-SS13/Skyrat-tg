@@ -15,24 +15,26 @@
 	icon_state = "secdrobe"
 	product_ads = "Beat perps in style!;It's red so you can't see the blood!;You have the right to be fashionable!;Now you can be the fashion police you always wanted to be!"
 	vend_reply = "Thank you for using the SecDrobe!"
+	/* SKYRAT EDIT - LISTS OVERRIDDEN IN 'modular_skyrat\modules\sec_haul\code\misc\vending.dm'
 	products = list(/obj/item/clothing/suit/hooded/wintercoat/security = 3,
 					/obj/item/storage/backpack/security = 3,
 					/obj/item/storage/backpack/satchel/sec = 3,
 					/obj/item/storage/backpack/duffelbag/sec = 3,
 					/obj/item/clothing/under/rank/security/officer = 3,
-					///obj/item/clothing/shoes/jackboots = 3, SKYRAT EDIT REMOVAL
+					/obj/item/clothing/shoes/jackboots = 3,
 					/obj/item/clothing/head/beret/sec = 3,
-					///obj/item/clothing/head/soft/sec = 3, SKYRAT EDIT REMOVAL
-					///obj/item/clothing/mask/bandana/red = 3, SKYRAT EDIT REMOVAL
+					/obj/item/clothing/head/soft/sec = 3,
+					/obj/item/clothing/mask/bandana/red = 3,
 					/obj/item/clothing/gloves/color/black = 3,
-					///obj/item/clothing/under/rank/security/officer/skirt = 3, SKYRAT EDIT REMOVAL
-					///obj/item/clothing/under/rank/security/officer/grey = 3, SKYRAT EDIT REMOVAL
+					/obj/item/clothing/under/rank/security/officer/skirt = 3,
+					/obj/item/clothing/under/rank/security/officer/grey = 3,
 					/obj/item/clothing/under/pants/khaki = 3,
 					/obj/item/clothing/under/rank/security/officer/blueshirt = 3)
-
-	premium = list(///obj/item/clothing/under/rank/security/officer/formal = 3, SKYRAT EDIT REMOVAL
-					///obj/item/clothing/suit/security/officer = 3, SKYRAT EDIT REMOVAL
+	premium = list(/obj/item/clothing/under/rank/security/officer/formal = 3,
+					/obj/item/clothing/suit/security/officer = 3,
 					/obj/item/clothing/head/beret/sec/navyofficer = 3)
+	*/
+
 	refill_canister = /obj/item/vending_refill/wardrobe/sec_wardrobe
 	payment_department = ACCOUNT_SEC
 	light_color = COLOR_MOSTLY_PURE_RED
@@ -165,9 +167,10 @@
 					/obj/item/clothing/shoes/sneakers/black = 2,
 					/obj/item/clothing/gloves/fingerless = 2,
 					/obj/item/clothing/head/soft/black = 2,
-					/obj/item/clothing/mask/bandana/skull = 2)
+					/obj/item/clothing/mask/bandana/color/skull = 2)
 	contraband = list(/obj/item/clothing/suit/hooded/techpriest = 2,
-					/obj/item/organ/tongue/robot = 2)
+					  /obj/item/clothing/under/costume/mech_suit = 2,
+					  /obj/item/organ/tongue/robot = 2)
 	refill_canister = /obj/item/vending_refill/wardrobe/robo_wardrobe
 	extra_price = PAYCHECK_HARD * 1.2
 	payment_department = ACCOUNT_SCI
@@ -314,7 +317,6 @@
 	product_ads = "Come and get your janitorial clothing, now endorsed by lizard janitors everywhere!"
 	vend_reply = "Thank you for using the JaniDrobe!"
 	products = list(/obj/item/clothing/under/rank/civilian/janitor = 2,
-					/obj/item/cartridge/janitor = 2,
 					/obj/item/clothing/under/rank/civilian/janitor/skirt = 2,
 					/obj/item/clothing/suit/hooded/wintercoat/janitor = 2,
 					/obj/item/clothing/gloves/color/black = 2,

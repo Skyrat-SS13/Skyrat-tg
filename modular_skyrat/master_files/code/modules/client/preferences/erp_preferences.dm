@@ -71,9 +71,6 @@
 /datum/preference/toggle/erp/gender_change
 	savefile_key = "gender_change_pref"
 
-/datum/preference/toggle/erp/noncon
-	savefile_key = "noncon_pref"
-
 /datum/preference/toggle/erp/autocum
 	savefile_key = "autocum_pref"
 

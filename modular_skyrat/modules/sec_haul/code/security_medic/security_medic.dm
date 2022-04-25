@@ -53,16 +53,16 @@
 	name = "Security Medic"
 	jobtype = /datum/job/security_medic
 
-	belt = /obj/item/pda/security
+	belt = /obj/item/modular_computer/tablet/pda/security
 	ears = /obj/item/radio/headset/headset_medsec
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/security_medic
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
-	shoes = /obj/item/clothing/shoes/jackboots
+	shoes = /obj/item/clothing/shoes/jackboots/security
 	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/security_medic
 	l_hand = /obj/item/storage/medkit/brute
 	head = /obj/item/clothing/head/beret/sec/peacekeeper/security_medic
-	backpack_contents = list(/obj/item/gun/energy/disabler = 1)
+	backpack_contents = list(/obj/item/storage/box/gunset/firefly = 1)
 	backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec
 	duffelbag = /obj/item/storage/backpack/duffelbag/sec
@@ -95,26 +95,14 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/lockers/closet.dmi'
 	icon_state = "secmed"
 
-/obj/item/storage/belt/security/medic
-	name = "security medic's belt"
-	desc = "A fancy looking security belt emblazoned with markings of the security medic. Sadly only holds security gear."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
-	worn_icon_state = "belt_medic"
-	icon_state = "belt_medic"
 
-/obj/item/storage/belt/security/medic/full/PopulateContents()
-	new /obj/item/reagent_containers/spray/pepper(src)
-	new /obj/item/restraints/handcuffs(src)
-	new /obj/item/grenade/flashbang(src)
-	new /obj/item/assembly/flash/handheld(src)
-	new /obj/item/melee/baton/security/loaded(src)
-	update_appearance()
 
 /obj/structure/closet/secure_closet/security_medic/PopulateContents()
 	..()
 	new /obj/item/clothing/suit/toggle/labcoat/security_medic(src)
 	new /obj/item/clothing/suit/hazardvest/security_medic(src)
+	new /obj/item/clothing/suit/toggle/labcoat/security_medic/blue(src)
+	new /obj/item/clothing/suit/hazardvest/security_medic/blue(src)
 	new /obj/item/clothing/head/helmet/sec/peacekeeper/security_medic(src)
 	new /obj/item/clothing/under/rank/security/peacekeeper/tactical(src)
 	new /obj/item/radio/headset/headset_medsec(src)
@@ -122,5 +110,5 @@
 	new /obj/item/clothing/suit/straight_jacket(src)
 	new /obj/item/storage/belt/medical(src)
 	new /obj/item/storage/belt/security/medic/full(src)
-	new /obj/item/clothing/under/rank/medical/doctor/red(src)
-	new /obj/item/clothing/under/rank/security/peacekeeper/security_medic/old
+	new /obj/item/clothing/under/rank/medical/scrubs/skyrat/red/sec(src)
+	new /obj/item/clothing/under/rank/security/peacekeeper/security_medic/alternate

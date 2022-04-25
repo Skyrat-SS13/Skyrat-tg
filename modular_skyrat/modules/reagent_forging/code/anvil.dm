@@ -15,6 +15,15 @@
 		primitive = TRUE
 		icon_state = "primitive_anvil_empty"
 
+/obj/structure/reagent_anvil/update_appearance()
+	. = ..()
+	cut_overlays()
+	if(!length(contents))
+		return
+	var/image/overlayed_item = image(icon = contents[1].icon, icon_state = contents[1].icon_state)
+	overlayed_item.transform = matrix(1.5, 0, 0, 0, 0.8, 0)
+	add_overlay(overlayed_item)
+
 /obj/structure/reagent_anvil/wrench_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src)
 	new /obj/item/stack/sheet/iron/ten(get_turf(src))
@@ -30,17 +39,17 @@
 	var/obj/item/forging/incomplete/search_incomplete_item = locate(/obj/item/forging/incomplete) in forge_item.contents
 	if(search_incomplete_src && !search_incomplete_item)
 		search_incomplete_src.forceMove(forge_item)
-		icon_state = "[primitive ? "primitive_" : ""]anvil_empty"
+		update_appearance()
 		forge_item.icon_state = "tong_full"
 		return FALSE
 	if(!search_incomplete_src && search_incomplete_item)
 		search_incomplete_item.forceMove(src)
-		icon_state = "[primitive ? "primitive_" : ""]anvil_full"
+		update_appearance()
 		forge_item.icon_state = "tong_empty"
 		return FALSE
 
 /obj/structure/reagent_anvil/hammer_act(mob/living/user, obj/item/tool)
-	playsound(src, 'modular_skyrat/modules/reagent_forging/sound/forge.ogg', 50, TRUE)
+	playsound(src, 'modular_skyrat/modules/reagent_forging/sound/forge.ogg', 50, TRUE, ignore_walls = FALSE)
 	var/obj/item/forging/incomplete/search_incomplete_src = locate(/obj/item/forging/incomplete) in contents
 	if(!search_incomplete_src)
 		return FALSE
@@ -61,8 +70,8 @@
 	balloon_alert(user, "bad hit!")
 	if(search_incomplete_src?.times_hit <= -(search_incomplete_src.average_hits))
 		to_chat(user, span_warning("The hits were too inconsistent-- the metal breaks!"))
-		icon_state = "[primitive ? "primitive_" : ""]anvil_empty"
 		qdel(search_incomplete_src)
+		update_appearance()
 	return FALSE
 
 /obj/structure/reagent_anvil/hammer_act_secondary(mob/living/user, obj/item/tool)

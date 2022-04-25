@@ -185,21 +185,21 @@
 	switch(vibration_mode)
 		if("low")
 			toy_on = TRUE
-			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE, ignore_walls = FALSE)
 			soundloop1.start()
 		if("medium")
 			toy_on = TRUE
-			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE, ignore_walls = FALSE)
 			soundloop1.stop()
 			soundloop2.start()
 		if("hard")
 			toy_on = TRUE
-			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE, ignore_walls = FALSE)
 			soundloop2.stop()
 			soundloop3.start()
 		if("off")
 			toy_on = FALSE
-			playsound(loc, 'sound/weapons/magout.ogg', 20, TRUE)
+			playsound(loc, 'sound/weapons/magout.ogg', 20, TRUE, ignore_walls = FALSE)
 			soundloop3.stop()
 
 #undef DEFAULT_AROUSAL_INCREASE

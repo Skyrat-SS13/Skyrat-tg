@@ -82,8 +82,8 @@
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_start", /datum/mood_event/orgasm, name)
 	..()
 
-/datum/reagent/drug/dopamine/on_mob_life(mob/living/carbon/M)
-	M.set_drugginess(2)
+/datum/reagent/drug/dopamine/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
+	M.set_timed_status_effect(2 SECONDS * REM * delta_time, /datum/status_effect/drugginess)
 	if(prob(7))
 		M.emote(pick("shaking","moan"))
 	..()
@@ -165,6 +165,12 @@
 				climax(TRUE)
 	else
 		to_chat(src, span_warning("You can't cum right now!"))
+
+//Removing ERP IC verb depending on config
+/mob/living/carbon/human/Initialize()
+	. = ..()
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		verbs -= /mob/living/carbon/human/verb/arousal_panel
 
 ////////////
 ///FLUIDS///
@@ -735,9 +741,9 @@
 
 	if(ishuman(parent))
 		var/mob/living/carbon/human/H = parent
-		if(H.dna.species.limbs_id == SPECIES_LIZARD)
+		if(H.dna.species.id == SPECIES_LIZARD)
 			cumface.icon_state = "cumface_lizard"
-		else if(H.dna.species.limbs_id == SPECIES_MONKEY)
+		else if(H.dna.species.id == SPECIES_MONKEY)
 			cumface.icon_state = "cumface_monkey"
 		else if(H.dna.species.id == SPECIES_VOX)
 			cumface.icon_state = "cumface_vox"
@@ -792,9 +798,9 @@
 
 	if(ishuman(parent))
 		var/mob/living/carbon/human/H = parent
-		if(H.dna.species.limbs_id == "lizard")
+		if(H.dna.species.id == "lizard")
 			bigcumface.icon_state = "bigcumface_lizard"
-		else if(H.dna.species.limbs_id == "monkey")
+		else if(H.dna.species.id == "monkey")
 			bigcumface.icon_state = "bigcumface_monkey"
 		else if(H.dna.species.id == "vox")
 			bigcumface.icon_state = "bigcumface_vox"

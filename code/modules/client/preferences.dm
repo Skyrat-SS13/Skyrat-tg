@@ -210,6 +210,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if (.)
 		return
 
+	if(SSlag_switch.measures[DISABLE_CREATOR] && action != "change_slot")
+		to_chat(usr, "The creator has been disabled. Please do not ahelp.")
+		return
+
+	log_creator("[key_name(usr)] ACTED [action] | PREFERENCE: [params["preference"]] | VALUE: [params["value"]]")
+
 	switch (action)
 		if ("change_slot")
 			// Save existing character
@@ -507,9 +513,16 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 		return FALSE
 
 	if (level == JP_HIGH)
+		var/datum/job/overflow_role = SSjob.overflow_role
+		var/overflow_role_title = initial(overflow_role.title)
+
 		for(var/other_job in job_preferences)
 			if(job_preferences[other_job] == JP_HIGH)
-				job_preferences[other_job] = JP_MEDIUM
+				// Overflow role needs to go to NEVER, not medium!
+				if(other_job == overflow_role_title)
+					job_preferences[other_job] = null
+				else
+					job_preferences[other_job] = JP_MEDIUM
 
 	job_preferences[job.title] = level
 
@@ -559,10 +572,8 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 	character.dna.real_name = character.real_name
 
 	if(icon_updates)
-		character.icon_render_key = null //turns out if you don't set this to null update_body_parts does nothing, since it assumes the operation was cached
-		character.update_body()
-		character.update_hair()
-		character.update_body_parts()
+		character.icon_render_keys = list()
+		character.update_body(is_creating = TRUE)
 
 
 /// Returns whether the parent mob should have the random hardcore settings enabled. Assumes it has a mind.

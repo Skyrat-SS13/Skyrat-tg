@@ -63,6 +63,10 @@
 		to_chat(occupant, span_notice("You enter [src]."))
 		update_appearance()
 
+/obj/machinery/self_actualization_device/examine(mob/user)
+	. = ..()
+	. += span_notice("ALT-Click to turn ON when closed.")
+
 /obj/machinery/self_actualization_device/open_machine(mob/user)
 	playsound(src, 'sound/machines/click.ogg', 50)
 	..()

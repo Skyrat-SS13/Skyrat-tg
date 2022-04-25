@@ -10,22 +10,24 @@
 	if(!istype(Target, /obj/item/mod/control))
 		qdel(src)
 		return
-	if(ai_action)
-		background_icon_state = ACTION_BUTTON_DEFAULT_BACKGROUND
+	// SKYRAT EDIT START - pAIs in MODsuits
+	if(pai_action)
+		background_icon_state = "bg_tech"
+	// SKYRAT EDIT END
 
 /datum/action/item_action/mod/Grant(mob/user)
 	var/obj/item/mod/control/mod = target
-	if(ai_action && user != mod.ai)
+	if(pai_action && user != mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
 		return
-	else if(!ai_action && user == mod.ai)
+	else if(!pai_action && user == mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
 		return
 	return ..()
 
 /datum/action/item_action/mod/Remove(mob/user)
 	var/obj/item/mod/control/mod = target
-	if(ai_action && user != mod.ai)
+	if(pai_action && user != mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
 		return
-	else if(!ai_action && user == mod.ai)
+	else if(!pai_action && user == mod.mod_pai) // SKYRAT EDIT - pAIs in MODsuits
 		return
 	return ..()
 
@@ -70,9 +72,9 @@
 	if(!(trigger_flags & TRIGGER_SECONDARY_ACTION) && !ready)
 		ready = TRUE
 		button_icon_state = "activate-ready"
-		if(!ai_action)
+		if(!pai_action) // SKYRAT EDIT - pAIs in MODsuits
 			background_icon_state = "bg_tech"
-		UpdateButtonIcon()
+		UpdateButtons()
 		addtimer(CALLBACK(src, .proc/reset_ready), 3 SECONDS)
 		return
 	var/obj/item/mod/control/mod = target
@@ -83,9 +85,9 @@
 /datum/action/item_action/mod/activate/proc/reset_ready()
 	ready = FALSE
 	button_icon_state = initial(button_icon_state)
-	if(!ai_action)
+	if(!pai_action) // SKYRAT EDIT START - pAIs in MODsuits
 		background_icon_state = initial(background_icon_state)
-	UpdateButtonIcon()
+	UpdateButtons()
 
 /datum/action/item_action/mod/activate/ai
 	ai_action = TRUE
@@ -130,8 +132,11 @@
 	var/pinner_ref
 
 /datum/action/item_action/mod/pinned_module/New(Target, obj/item/mod/module/linked_module, mob/user)
-	if(isAI(user))
-		ai_action = TRUE
+	// SKYRAT EDIT START - pAIs in MODsuits
+	var/obj/item/mod/control/mod  = Target // We have to do this otherwise it's going to runtime
+	if(user == mod.mod_pai)
+		pai_action = TRUE
+	// SKYRAT EDIT END
 	..()
 	module = linked_module
 	name = "Activate [capitalize(linked_module.name)]"
@@ -180,14 +185,14 @@
 /datum/action/item_action/mod/pinned_module/proc/on_module_activate(datum/source)
 	SIGNAL_HANDLER
 
-	UpdateButtonIcon()
+	UpdateButtons()
 
 /datum/action/item_action/mod/pinned_module/proc/on_module_deactivate(datum/source)
 	SIGNAL_HANDLER
 
-	UpdateButtonIcon()
+	UpdateButtons()
 
 /datum/action/item_action/mod/pinned_module/proc/on_module_use(datum/source)
 	SIGNAL_HANDLER
 
-	UpdateButtonIcon()
+	UpdateButtons()

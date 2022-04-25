@@ -27,7 +27,10 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Bad Touch", "Friendly"),
 		list("Extrovert", "Introvert"),
 		//SKYRAT EDIT ADDITION BEGIN
-		list("Nerve Stapled", "Pacifist", "Nearsighted")
+		list("Nerve Stapled", "Pacifist", "Nearsighted"),
+		list("No Guns", "Chunky Fingers", "Stormtrooper Aim"),
+		list("Mute", "Social Anxiety"),
+		list("No Guns", "Pacifist")
 		//SKYRAT EDIT ADDITION END
 	)
 
@@ -76,11 +79,6 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 	if(badquirk)
 		cli.prefs.save_character()
 
-	// Assign wayfinding pinpointer granting quirk if they're new
-	if(cli.get_exp_living(TRUE) < EXP_ASSIGN_WAYFINDER && !user.has_quirk(/datum/quirk/item_quirk/needswayfinder))
-		var/datum/quirk/wayfinder = /datum/quirk/item_quirk/needswayfinder
-		if(user.add_quirk(wayfinder))
-			SSblackbox.record_feedback("nested tally", "quirks_taken", 1, list(initial(wayfinder.name)))
 /*
  *Randomises the quirks for a specified mob
  */

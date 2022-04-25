@@ -26,7 +26,7 @@
 	var/datum/uplink_handler/handler = the_uplink.uplink_handler
 	if(!handler)
 		return
-	handler.progression_points += rep_count
+	handler.progression_points += (rep_count * 60)
 
 /datum/opposing_force_equipment/service/power_outage
 	name = "Power Outage"
@@ -60,3 +60,19 @@
 /datum/opposing_force_equipment/service/market_crash/on_issue()
 	var/datum/round_event_control/event = locate(/datum/round_event_control/market_crash) in SSevents.control
 	event.runEvent()
+
+/datum/opposing_force_equipment/service/give_exploitables
+	name = "Exploitables Access"
+	description = "You will be given access to a network of exploitable information of certain crewmates, viewable using either a verb or on examine."
+	item_type = /obj/effect/gibspawner/generic
+	admin_note = "Same effect as using the traitor panel Toggle Exploitables Override button. Usually safe to give."
+
+/datum/opposing_force_equipment/service/give_exploitables/on_issue(mob/living/target)
+	target.mind.has_exploitables_override = TRUE
+	target.mind.handle_exploitables()
+
+/datum/opposing_force_equipment/service/fake_announcer
+	name = "Fake Announcement"
+	item_type = /obj/item/device/traitor_announcer
+	description = "A one-use device that lets you make an announcement of your choice, sending it to the station under the guise of the captain's authority."
+

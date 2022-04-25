@@ -40,11 +40,7 @@
 	return APC.z == z && !APC.malfhack && !APC.aidisabled && !(APC.obj_flags & EMAGGED) && !APC.machine_stat && !istype(APC.area, /area/ai_monitored) && !(APC.area.area_flags & NO_ALERTS)
 
 /obj/machinery/computer/apc_control/ui_interact(mob/user, datum/tgui/ui)
-	//SKYRAT EDIT ADDITON BEGIN - AESTHETICS
-	if(clicksound && world.time > next_clicksound && isliving(user))
-		next_clicksound = world.time + rand(50, 100)
-		playsound(src, get_sfx_skyrat(clicksound), clickvol)
-	//SKYRAT EDIT END
+	. = ..()
 	operator = user
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -166,8 +162,8 @@
 				if("equipment", "lighting", "environ")
 					target.vars[type] = value
 				else
-					message_admins("Warning: possible href exploit by [key_name(usr)] - attempted to set [type] on [target] to [value]")
-					log_game("Warning: possible href exploit by [key_name(usr)] - attempted to set [type] on [target] to [value]")
+					message_admins("Warning: possible href exploit by [key_name(usr)] - attempted to set [html_encode(type)] on [target] to [html_encode(value)]")
+					log_game("Warning: possible href exploit by [key_name(usr)] - attempted to set [html_encode(type)] on [target] to [html_encode(value)]")
 					return
 
 			target.update_appearance()

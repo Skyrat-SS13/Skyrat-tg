@@ -751,6 +751,18 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 		ruleset.restricted_roles |= ruleset.protected_roles
 	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
 		ruleset.restricted_roles |= JOB_ASSISTANT
+	// SKYRAT EDIT ADDITION
+	for(var/datum/job/iterating_job as anything in subtypesof(/datum/job))
+		if(!initial(iterating_job.antagonist_restricted))
+			continue
+		if(initial(iterating_job.restricted_antagonists))
+			var/list/restricted_antagonists = initial(iterating_job.restricted_antagonists)
+			if(!(ruleset.antag_flag in restricted_antagonists))
+				continue
+			ruleset.restricted_roles |= initial(iterating_job.title)
+		else
+			ruleset.restricted_roles |= initial(iterating_job.title)
+	// SKYRAT EDIT END
 
 /// Refund threat, but no more than threat_level.
 /datum/game_mode/dynamic/proc/refund_threat(regain)
