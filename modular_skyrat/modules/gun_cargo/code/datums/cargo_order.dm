@@ -5,8 +5,6 @@
 	var/datum/component/armament/cargo_gun/used_component
 	/// How much it'll add to a company's interest on-buy
 	var/interest_addition
-	/// If the order has multiple items in it, how many? Is null by default, set only if there's more than one item.
-	var/item_amount
 
 /datum/supply_order/armament/Destroy(force, ...)
 	selected_entry = null
