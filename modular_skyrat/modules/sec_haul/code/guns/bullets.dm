@@ -6,7 +6,7 @@
 //FLECHETTE | FRAGMENTING | DISSUASIVE//
 //////////////////////////
 /obj/item/ammo_casing/b6mm
-	name = "6.3mm flechette casing"
+	name = "6mm flechette casing"
 	desc = "A spent flechette."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
@@ -14,15 +14,15 @@
 	projectile_type = /obj/projectile/bullet/advanced/b6mm
 
 /obj/projectile/bullet/advanced/b6mm
-	name = "6.3mm flechette"
-	damage = 10
+	name = "6mm flechette"
+	damage = 20
 	speed = 1
 	embedding = list(embed_chance=10, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
-	armour_penetration = 50
+	armour_penetration = 40
 
 /obj/item/ammo_casing/b6mm/rubber
-	name = "6.3mm dissuasive pellet casing"
-	desc = "A 6.3mm dissuasive pellet casing."
+	name = "6mm dissuasive pellet casing"
+	desc = "A dissuasive pellet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sr-casing"
 	caliber = CALIBER_6MM
@@ -32,8 +32,8 @@
 /obj/projectile/bullet/advanced/b6mm/rubber
 	name = "6mm dissuasive pellet"
 	icon_state = "bullet_r"
-	damage = 2
-	stamina = 15
+	damage = 1
+	stamina = 18
 	ricochets_max = 2
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
@@ -54,16 +54,16 @@
 /obj/projectile/bullet/advanced/b6mm/ihdf
 	name = "6.3mm fragmentation pellet"
 	icon_state = "bullet_i"
-	damage = 15
-	bare_wound_bonus = 50
-	embedding = list(embed_chance=60, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
+	damage = 25
+	bare_wound_bonus = 20
+	embedding = list(embed_chance=40, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
 
 ///////////9x19mm/////////////////
 //FMJ | JHP | IHDF | RUBBER//
 ///////////////////////////////
 /obj/item/ammo_casing/b9mm
-	name = "9x19mm peacekeeper FMJ casing"
+	name = "9mm peacekeeper casing"
 	desc = "A 9x19mm bullet casing with a low powder load to prevent breaches."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
@@ -71,28 +71,28 @@
 	projectile_type = /obj/projectile/bullet/advanced/b9mm
 
 /obj/projectile/bullet/advanced/b9mm
-	name = "9x19mm FMJ bullet"
-	damage = 15
-	speed = 0.8
+	name = "9mm peacekeeper bullet"
+	damage = 25
+	speed = 1.2
 
 /obj/item/ammo_casing/b9mm/hp
-	name = "9x19mm JHP bullet casing"
-	desc = "A 9x19mm jacketed hollowpoint casing."
+	name = "9mm peacekeeper frangible bullet casing"
+	desc = "A 9x19mm frangible casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sh-casing"
 	caliber = CALIBER_9MM
 	projectile_type = /obj/projectile/bullet/advanced/b9mm/hp
 
 /obj/projectile/bullet/advanced/b9mm/hp
-	name = "9x19mm JHP bullet"
+	name = "9mm peacekeeper frangible bullet"
 	icon_state = "bullet_h"
-	damage = 20
-	wound_bonus = 35
-	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
+	damage = 25
+	wound_bonus = 30
+	embedding = list(embed_chance=60, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
 
 /obj/item/ammo_casing/b9mm/ihdf
-	name = "9mm IHDF bullet casing"
+	name = "9mm peacekeeper non-lethal bullet casing"
 	desc = "A 9mm intelligent high-impact dispersal foam bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "si-casing"
@@ -101,7 +101,7 @@
 	harmful = FALSE
 
 /obj/projectile/bullet/advanced/b9mm/ihdf
-	name = "9mm ihdf bullet"
+	name = "9mm non-lethal bullet"
 	icon_state = "bullet_i"
 	damage = 25
 	damage_type = STAMINA
@@ -141,30 +141,29 @@
 	projectile_type = /obj/projectile/bullet/advanced/b10mm
 
 /obj/projectile/bullet/advanced/b10mm
-	name = "10mm Auto bullet"
-	damage = 27
-	speed = 1
-	wound_bonus = 5
+	name = "10mm peacekeeper bullet"
+	damage = 35
+	speed = 1.6
 
 /obj/item/ammo_casing/b10mm/hp
-	name = "10mm Auto JHP casing"
-	desc = "A 10mm Auto JHP bullet casing."
+	name = "10mm peacekeeper frangible casing"
+	desc = "A 10mm peacekeeper frangible bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sh-casing"
 	caliber = CALIBER_10MMAUTO
 	projectile_type = /obj/projectile/bullet/advanced/b10mm/hp
 
 /obj/projectile/bullet/advanced/b10mm/hp
-	name = "10mm Auto JHP bullet"
+	name = "10mm peacekeeper frangible bullet"
 	icon_state = "bullet_h"
-	damage = 30
+	damage = 35
 	wound_bonus = 35
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
 
 /obj/item/ammo_casing/b10mm/rubber
-	name = "10mm Auto rubber bullet casing"
-	desc = "A 10mm rubber bullet casing."
+	name = "10mm peacekeeper rubber bullet casing"
+	desc = "A 10mm peacekeeper rubber bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sr-casing"
 	caliber = CALIBER_10MMAUTO
@@ -174,8 +173,8 @@
 /obj/projectile/bullet/advanced/b10mm/rubber
 	name = "10mm Auto rubber bullet"
 	icon_state = "bullet_r"
-	damage = 5
-	stamina = 25
+	damage = 3
+	stamina = 30
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
@@ -185,7 +184,7 @@
 	embedding = null
 
 /obj/item/ammo_casing/b10mm/ihdf
-	name = "10mm Auto IHDF bullet casing"
+	name = "10mm peacekeeper non-lethal bullet casing"
 	desc = "A 10mm intelligent high-impact dispersal foam bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "si-casing"
@@ -194,9 +193,9 @@
 	harmful = FALSE
 
 /obj/projectile/bullet/advanced/b10mm/ihdf
-	name = "10mm Auto ihdf bullet"
+	name = "10mm peacekeeper non-lethal bullet"
 	icon_state = "bullet_i"
-	damage = 30
+	damage = 35
 	damage_type = STAMINA
 	embedding = list(embed_chance=0, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 
@@ -204,22 +203,22 @@
 //FMJ | JHP | BEANBAG//
 ////////////////////////
 /obj/item/ammo_casing/b12mm
-	name = "12.7x30mm FMJ casing"
-	desc = "A 12.7x30mm FMJ casing."
+	name = "12mm peacekeeper casing"
+	desc = "A 12mm peacekeeper casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
 	caliber = CALIBER_12MM
 	projectile_type = /obj/projectile/bullet/advanced/b12mm
 
 /obj/projectile/bullet/advanced/b12mm
-	name = "12.7x30mm bullet"
-	damage = 35
-	wound_bonus = 30
-	speed = 1
+	name = "12mm peacekeeper bullet"
+	damage = 40
+	wound_bonus = 15
+	speed = 2
 
 /obj/item/ammo_casing/b12mm/rubber
-	name = "12.7x30mm beanbag slug casing"
-	desc = "A 12.7x30mm beanbag slug casing."
+	name = "12mm peacekeeper beanbag casing"
+	desc = "A 12mm peacekeeper beanbag casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sr-casing"
 	caliber = CALIBER_12MM
@@ -229,8 +228,8 @@
 /obj/projectile/bullet/advanced/b12mm/rubber
 	name = "12.7x30mm beanbag slug"
 	icon_state = "bullet_r"
-	damage = 10
-	stamina = 35
+	damage = 5
+	stamina = 40
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
@@ -241,19 +240,19 @@
 
 
 /obj/item/ammo_casing/b12mm/hp
-	name = "12.7x30mm JHP casing"
-	desc = "A 12.7x30mm JHP bullet casing."
+	name = "12mm peacekeeper frangible casing"
+	desc = "A 12mm peacekeeper frangible bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sh-casing"
 	caliber = CALIBER_12MM
 	projectile_type = /obj/projectile/bullet/advanced/b12mm/hp
 
 /obj/projectile/bullet/advanced/b12mm/hp
-	name = "12mm hollowpoint bullet"
+	name = "12mm peacekeeper frangible bullet"
 	icon_state = "bullet_h"
-	damage = 35
-	wound_bonus = 40
-	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
+	damage = 45
+	wound_bonus = 30
+	embedding = list(embed_chance=50, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
 
 ///////////.577S/////////
@@ -316,8 +315,8 @@
 //FMJ | JHP | IHDF | RUBBER//
 ///////////////////////////////
 /obj/item/ammo_casing/caseless/b473
-	name = "4.73x33mm FMJ bullet"
-	desc = "A 4.73x33mm FMJ bullet."
+	name = "4.7mm bullet"
+	desc = "A 4.7mm bullet."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
 	caliber = CALIBER_473MM
@@ -325,20 +324,20 @@
 	projectile_type = /obj/projectile/bullet/advanced/b473
 
 /obj/projectile/bullet/advanced/b473
-	name = "4.73x33mm FMJ bullet"
+	name = "4.7mm bullet"
 	damage = 20
 	speed = 0.7
 
 /obj/item/ammo_casing/caseless/b473/hp
-	name = "4.73x33mm JHP bullet"
-	desc = "A 4.73x33mm JHP bullet."
+	name = "4.7mm frangible bullet"
+	desc = "A 4.7mm frangible bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sh-casing"
 	caliber = CALIBER_473MM
 	projectile_type = /obj/projectile/bullet/advanced/b473/hp
 
 /obj/projectile/bullet/advanced/b473/hp
-	name = "4.73x33mm JHP bullet"
+	name = "4.7mm frangible bullet"
 	icon_state = "bullet_h"
 	damage = 20
 	wound_bonus = 30
@@ -346,8 +345,8 @@
 	weak_against_armour = TRUE
 
 /obj/item/ammo_casing/caseless/b473/rubber
-	name = "4.73x33mm rubber bullet"
-	desc = "A 4.73x33mm rubber bullet."
+	name = "4.7mm rubber bullet"
+	desc = "A 4.7mm rubber bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sr-casing"
 	caliber = CALIBER_473MM
@@ -355,7 +354,7 @@
 	harmful = FALSE
 
 /obj/projectile/bullet/advanced/b473/rubber
-	name = "4.73x33mm rubber bullet"
+	name = "4.7mm rubber bullet"
 	icon_state = "bullet_r"
 	damage = 5
 	stamina = 20
@@ -368,8 +367,8 @@
 	embedding = null
 
 /obj/item/ammo_casing/caseless/b473/ihdf
-	name = "4.73x33mm IHDF bullet"
-	desc = "A 4.73x33mm intelligent high-impact dispersal foam bullet."
+	name = "4.7mm non-lethal bullet"
+	desc = "A 4.73x33mm intelligent high-impact dispersal foam bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "si-casing"
 	caliber = CALIBER_473MM
@@ -377,7 +376,7 @@
 	harmful = FALSE
 
 /obj/projectile/bullet/advanced/b473/ihdf
-	name = "4.73x33mm ihdf bullet"
+	name = "4.7mm non-lethal bullet"
 	icon_state = "bullet_i"
 	damage = 25
 	damage_type = STAMINA
