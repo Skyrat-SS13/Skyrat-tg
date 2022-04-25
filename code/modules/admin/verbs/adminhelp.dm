@@ -673,7 +673,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		if("reply")
 			// SKYRAT EDIT START - ADMIN HANDLE
 			if(handle_issue())
-				usr.client.cmd_ahelp_reply(initiator)
+				usr?.client.cmd_ahelp_reply(initiator)
 			// SKYRAT EDIT END
 		if("icissue")
 			ICIssue()
