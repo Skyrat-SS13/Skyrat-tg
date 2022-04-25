@@ -13,7 +13,7 @@
 	var/canalarm = FALSE
 
 	for(var/list/player_record as anything in GLOB.crewmonitor.update_data(src.z))
-		if(player_record["health"] <= MAX_LIVING_HEALTH / 2)
+		if(player_record["health"] <= HEALTH_THRESHOLD_CRIT)
 
 			canalarm = TRUE
 
