@@ -52,7 +52,7 @@
 	new /obj/item/chameleon(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/loadout/stealthop/PopulateContents()
-	new /obj/item/gun/energy/kinetic_accelerator/crossbow(src)
+	new /obj/item/gun/energy/recharge/ebow(src)
 	new /obj/item/pen/sleepy(src)
 	new /obj/item/healthanalyzer/rad_laser(src)
 	new /obj/item/chameleon(src)
@@ -222,7 +222,7 @@
 	new /obj/item/ammo_box/a357(src)
 	new /obj/item/ammo_box/a357(src)
 	new /obj/item/ammo_box/a357(src)
-	new /obj/item/pda/heads(src)
+	new /obj/item/modular_computer/tablet/pda/heads(src)
 	new /obj/item/clipboard(src)
 	new /obj/item/card/id/advanced/chameleon/impostorsr(src)
 	new /obj/item/stamp/centcom(src)

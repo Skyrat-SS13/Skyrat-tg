@@ -186,7 +186,25 @@
 /turf/open/floor/iron/dark,
 /area/service/hydroponics)
 "aaL" = (
-/obj/machinery/recharge_station,
+/obj/structure/rack,
+/obj/item/clothing/head/helmet/sec{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/head/helmet/sec,
+/obj/item/clothing/head/helmet/sec{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/clothing/suit/armor/vest/security{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/clothing/suit/armor/vest/security,
+/obj/item/clothing/suit/armor/vest/security{
+	pixel_x = -3;
+	pixel_y = 3
+	},
 /obj/effect/turf_decal/tile/red/half{
 	dir = 8
 	},
@@ -828,16 +846,6 @@
 /turf/open/floor/iron/freezer,
 /area/security/prison)
 "adb" = (
-/obj/structure/rack,
-/obj/item/storage/box/rubbershot{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/rubbershot,
-/obj/item/storage/box/rubbershot{
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 2.9
@@ -845,6 +853,11 @@
 /obj/effect/turf_decal/tile/red/half{
 	dir = 8
 	},
+/obj/structure/closet/ammunitionlocker/useful,
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
 /turf/open/floor/iron/dark/textured,
 /area/ai_monitored/security/armory)
 "adc" = (
@@ -2123,7 +2136,7 @@
 "agU" = (
 /obj/machinery/camera/directional/east{
 	c_tag = "Sec - Permabrig Exercise";
-	network = ssssssssssssss
+	network = list("ss13","prison")
 	},
 /turf/open/floor/iron/dark/side{
 	dir = 4
@@ -3749,8 +3762,21 @@
 /area/science/xenobiology)
 "amH" = (
 /obj/structure/table/reinforced,
-/obj/structure/reagent_dispensers/servingdish,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/item/reagent_containers/food/condiment/enzyme{
+	pixel_x = 9;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/food/condiment/saltshaker{
+	layer = 3.1;
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/food/condiment/peppermill{
+	desc = "Often used to flavor food or make people sneeze. Fashionably moved to the left side of the table.";
+	pixel_x = -8;
+	pixel_y = 2
+	},
 /turf/open/floor/iron/white,
 /area/security/prison)
 "amK" = (
@@ -8953,6 +8979,9 @@
 "aEa" = (
 /obj/structure/table,
 /obj/item/book/manual/chef_recipes,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/rice,
+/obj/item/storage/fancy/egg_box,
 /turf/open/floor/iron/white,
 /area/security/prison)
 "aEb" = (
@@ -11456,10 +11485,8 @@
 /area/mine/storage)
 "aLX" = (
 /obj/structure/table,
-/obj/item/storage/fancy/egg_box,
-/obj/item/reagent_containers/food/condiment/flour,
-/obj/item/reagent_containers/food/condiment/rice,
 /obj/machinery/light/directional/east,
+/obj/structure/reagent_dispensers/servingdish,
 /turf/open/floor/iron/white,
 /area/security/prison)
 "aLY" = (
@@ -12496,16 +12523,9 @@
 /turf/open/floor/iron,
 /area/mine/eva)
 "aPu" = (
-/obj/structure/rack,
-/obj/item/gun/energy/disabler{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/gun/energy/disabler,
-/obj/item/gun/energy/disabler{
-	pixel_x = 3;
-	pixel_y = -3
-	},
+/obj/machinery/light/directional/north,
+/obj/structure/rack/gunrack,
+/obj/effect/spawner/armory_spawn/cmg,
 /obj/effect/turf_decal/tile/red/half,
 /turf/open/floor/iron/dark/textured,
 /area/ai_monitored/security/armory)
@@ -13151,10 +13171,6 @@
 	},
 /turf/open/floor/wood,
 /area/hallway/secondary/service)
-"aRA" = (
-/obj/machinery/airalarm/directional/east,
-/turf/open/floor/iron/dark/textured,
-/area/security/prison)
 "aRB" = (
 /obj/structure/chair/pew/left{
 	dir = 1
@@ -16323,6 +16339,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/primary/central/fore)
+"crB" = (
+/obj/machinery/computer/secure_data/laptop,
+/obj/structure/table,
+/turf/open/floor/iron/dark/blue/side{
+	dir = 5
+	},
+/area/brigofficer)
 "css" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -16335,6 +16358,15 @@
 	},
 /turf/open/floor/carpet/executive,
 /area/blueshield)
+"cxa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/structure/table,
+/obj/machinery/processor{
+	pixel_y = 8
+	},
+/turf/open/floor/iron/white,
+/area/security/prison)
 "cyH" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
@@ -16372,6 +16404,13 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/security/prison/visit)
+"cMB" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/sign/poster/official/random/directional/south,
+/turf/open/floor/iron/dark/blue/side,
+/area/brigofficer)
 "cMF" = (
 /obj/machinery/door/airlock/external{
 	name = "External Access"
@@ -16431,6 +16470,21 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/textured,
 /area/security/brig)
+"cZu" = (
+/obj/structure/cable,
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/effect/turf_decal/delivery/white{
+	color = "#00ff00";
+	name = "green"
+	},
+/obj/machinery/computer/cryopod{
+	dir = 4;
+	pixel_x = -24
+	},
+/turf/open/floor/iron,
+/area/security/prison)
 "dbP" = (
 /obj/structure/table/wood,
 /obj/item/coin/antagtoken,
@@ -16452,6 +16506,9 @@
 /obj/effect/mapping_helpers/airlock/access/all/service/lawyer,
 /turf/open/floor/wood,
 /area/service/lawoffice)
+"dcP" = (
+/turf/closed/wall/r_wall,
+/area/brigofficer)
 "ddb" = (
 /obj/machinery/door/airlock/corporate{
 	name = "Nanotrasen Consultant's Office";
@@ -16681,6 +16738,14 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/iron/cafeteria,
 /area/security/prison)
+"eiO" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/effect/landmark/start/brigoff,
+/turf/open/floor/iron/dark,
+/area/brigofficer)
 "ejr" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/west,
@@ -16727,6 +16792,12 @@
 /obj/structure/sign/departments/holy,
 /turf/closed/wall,
 /area/service/chapel)
+"eBO" = (
+/obj/machinery/computer/security,
+/turf/open/floor/iron/dark/blue/side{
+	dir = 1
+	},
+/area/brigofficer)
 "eCy" = (
 /obj/machinery/computer/secure_data,
 /obj/machinery/power/apc/auto_name/directional/north,
@@ -16777,6 +16848,17 @@
 	icon_state = "platingdmg1"
 	},
 /area/maintenance/fore)
+"eMY" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/security/glass{
+	name = "Perma Higher Officer";
+	req_access_txt = "2"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/dark/textured,
+/area/brigofficer)
 "eNa" = (
 /obj/structure/table/wood,
 /obj/item/storage/fancy/cigarettes/cigars/cohiba{
@@ -16893,6 +16975,11 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain/private/nt_rep)
+"fDF" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/brigofficer)
 "fDO" = (
 /obj/structure/table/wood,
 /obj/item/paper_bin/carbon{
@@ -16916,21 +17003,8 @@
 /area/command/heads_quarters/captain/private/nt_rep)
 "fPI" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/condiment/saltshaker{
-	layer = 3.1;
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/item/reagent_containers/food/condiment/peppermill{
-	desc = "Often used to flavor food or make people sneeze. Fashionably moved to the left side of the table.";
-	pixel_x = -8;
-	pixel_y = 2
-	},
-/obj/item/reagent_containers/food/condiment/enzyme{
-	pixel_x = 9;
-	pixel_y = 3
-	},
 /obj/structure/cable,
+/obj/machinery/microwave,
 /turf/open/floor/iron/white,
 /area/security/prison)
 "fQj" = (
@@ -16954,6 +17028,15 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark,
 /area/security/prison)
+"gaE" = (
+/obj/machinery/computer/security,
+/obj/structure/sign/poster/official/random{
+	pixel_x = -32
+	},
+/turf/open/floor/iron/dark/blue/side{
+	dir = 9
+	},
+/area/brigofficer)
 "gdB" = (
 /obj/structure/table,
 /obj/item/toy/cards/deck,
@@ -17058,6 +17141,12 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/security/prison/safe)
+"gCf" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark/textured,
+/area/security/prison)
 "gCN" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tile/red,
@@ -17087,9 +17176,8 @@
 /turf/open/floor/wood,
 /area/service/lawoffice)
 "gHv" = (
-/obj/structure/table,
-/obj/machinery/microwave,
 /obj/structure/cable,
+/obj/machinery/oven,
 /turf/open/floor/iron/white,
 /area/security/prison)
 "gIi" = (
@@ -17162,7 +17250,7 @@
 "hmF" = (
 /obj/structure/table/wood,
 /obj/item/taperecorder,
-/obj/item/cartridge/lawyer,
+/obj/item/computer_hardware/hard_drive/role/lawyer,
 /obj/machinery/computer/security/telescreen/prison{
 	pixel_y = 32
 	},
@@ -17447,6 +17535,7 @@
 	dir = 4
 	},
 /obj/machinery/light/small/directional/west,
+/obj/machinery/airalarm/directional/west,
 /turf/open/floor/iron/dark/textured,
 /area/security/prison)
 "jAp" = (
@@ -17541,6 +17630,16 @@
 "jUT" = (
 /turf/closed/wall,
 /area/ai_monitored/security/armory)
+"jVr" = (
+/obj/machinery/newscaster/directional/south,
+/obj/structure/closet/secure_closet/evidence{
+	name = "Brig Officer's Locker";
+	req_one_access_txt = "2"
+	},
+/obj/item/clothing/mask/whistle,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark/blue/side,
+/area/brigofficer)
 "jXo" = (
 /turf/closed/wall,
 /area/service/lawoffice)
@@ -17613,6 +17712,7 @@
 /obj/effect/turf_decal/tile/red/half{
 	dir = 8
 	},
+/obj/item/gun/grenadelauncher,
 /turf/open/floor/iron/dark/textured,
 /area/ai_monitored/security/armory)
 "kCa" = (
@@ -17627,9 +17727,25 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/security/prison)
+"kMi" = (
+/obj/structure/closet/secure_closet/brigoff,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron/dark/blue/side{
+	dir = 6
+	},
+/area/brigofficer)
 "kOq" = (
 /turf/open/floor/carpet/green,
 /area/command/heads_quarters/captain/private/nt_rep)
+"kPq" = (
+/obj/structure/table,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/item/radio/intercom/directional/east,
+/turf/open/floor/iron/dark/blue/side{
+	dir = 4
+	},
+/area/brigofficer)
 "kQI" = (
 /obj/structure/chair/stool/directional/north,
 /turf/open/floor/iron,
@@ -17841,6 +17957,19 @@
 /obj/structure/window/reinforced/spawner/west,
 /turf/open/floor/plating,
 /area/security/courtroom)
+"njF" = (
+/obj/structure/sink/kitchen{
+	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
+	dir = 8;
+	name = "old sink";
+	pixel_x = 12
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/security/prison)
 "nlC" = (
 /obj/machinery/door/airlock/corporate/glass{
 	name = "Blueshield's Office";
@@ -18271,6 +18400,16 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/security/prison/safe)
+"rgG" = (
+/obj/structure/rack,
+/obj/item/storage/toolbox/drone,
+/obj/item/restraints/handcuffs,
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/blue/side{
+	dir = 4
+	},
+/area/brigofficer)
 "riV" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
@@ -18349,6 +18488,15 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/security/detectives_office)
+"rYh" = (
+/obj/machinery/light_switch/directional/south,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/obj/effect/landmark/start/brigoff,
+/turf/open/floor/iron/dark/blue/side,
+/area/brigofficer)
 "saJ" = (
 /turf/closed/wall/r_wall,
 /area/service/lawoffice)
@@ -18394,18 +18542,6 @@
 /obj/item/camera,
 /obj/structure/cable,
 /turf/open/floor/iron,
-/area/security/prison)
-"sna" = (
-/obj/structure/sink/kitchen{
-	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
-	dir = 8;
-	name = "old sink";
-	pixel_x = 12
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron/white,
 /area/security/prison)
 "stT" = (
 /obj/structure/rack,
@@ -18529,6 +18665,12 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/security/prison)
+"tFJ" = (
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/iron/dark/blue/side{
+	dir = 9
+	},
+/area/brigofficer)
 "tGs" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -18572,6 +18714,13 @@
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/wood,
 /area/service/lawoffice)
+"tWz" = (
+/obj/structure/cable,
+/obj/effect/landmark/start/brigoff,
+/turf/open/floor/iron/dark/blue/side{
+	dir = 1
+	},
+/area/brigofficer)
 "tXN" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -18632,6 +18781,17 @@
 /obj/item/reagent_containers/food/drinks/drinkingglass,
 /turf/open/floor/iron,
 /area/security/prison)
+"uoa" = (
+/obj/structure/cable,
+/obj/machinery/camera{
+	c_tag = "Security - CO Lounge";
+	dir = 9;
+	network = list("ss13","Security","prison")
+	},
+/turf/open/floor/iron/dark/blue/side{
+	dir = 1
+	},
+/area/brigofficer)
 "utH" = (
 /turf/closed/wall/r_wall,
 /area/command/heads_quarters/captain/private/nt_rep)
@@ -18662,6 +18822,20 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/blueshield)
+"uDb" = (
+/obj/machinery/computer/security/telescreen/prison{
+	pixel_x = -28
+	},
+/obj/structure/table,
+/obj/item/book/manual/wiki/security_space_law,
+/obj/item/clothing/glasses/sunglasses{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/turf/open/floor/iron/dark/blue/side{
+	dir = 8
+	},
+/area/brigofficer)
 "uLl" = (
 /obj/structure/table/wood,
 /obj/item/folder/blue,
@@ -18766,6 +18940,11 @@
 /obj/machinery/airalarm/directional/south,
 /turf/open/floor/wood,
 /area/blueshield)
+"voE" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/brigofficer)
 "vrw" = (
 /obj/machinery/door/airlock/corporate{
 	name = "Blueshield's Quarters";
@@ -18804,16 +18983,9 @@
 /turf/closed/wall/ice,
 /area/icemoon/underground/explored)
 "vIu" = (
-/obj/structure/closet/crate,
-/obj/item/food/breadslice/plain,
-/obj/item/food/breadslice/plain,
-/obj/item/food/breadslice/plain,
-/obj/item/food/grown/potato,
-/obj/item/food/grown/potato,
-/obj/item/food/grown/onion,
-/obj/item/food/grown/onion,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
+/obj/machinery/griddle,
 /turf/open/floor/iron/white,
 /area/security/prison)
 "vKF" = (
@@ -18873,6 +19045,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/hallway/primary/central/fore)
+"vZj" = (
+/obj/structure/closet/secure_closet/evidence{
+	name = "Brig Officer's Locker";
+	req_one_access_txt = "2"
+	},
+/obj/item/clothing/mask/whistle,
+/obj/machinery/light/directional/south,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark/blue/side,
+/area/brigofficer)
 "vZp" = (
 /obj/machinery/flasher/directional/north{
 	id = "Cell 1"
@@ -18883,6 +19065,12 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/security/brig)
+"waj" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark/blue/corner{
+	dir = 1
+	},
+/area/brigofficer)
 "wat" = (
 /obj/structure/chair/stool/directional/west,
 /turf/open/floor/iron,
@@ -19059,6 +19247,15 @@
 	c_tag = "Sec - Permabrig Cafe";
 	network = list("ss13","prison")
 	},
+/obj/item/food/breadslice/plain,
+/obj/item/food/breadslice/plain,
+/obj/item/food/breadslice/plain,
+/obj/item/food/grown/potato,
+/obj/item/food/grown/potato,
+/obj/item/food/grown/potato,
+/obj/item/food/grown/onion,
+/obj/item/food/grown/onion,
+/obj/item/food/grown/onion,
 /turf/open/floor/iron/white,
 /area/security/prison)
 "xbc" = (
@@ -19174,6 +19371,18 @@
 /obj/structure/table/wood,
 /turf/open/floor/carpet/executive,
 /area/blueshield)
+"yfN" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/button/flasher{
+	id = "transferflash";
+	pixel_y = -20
+	},
+/turf/open/floor/iron/dark/blue/side{
+	dir = 10
+	},
+/area/brigofficer)
 "yfV" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -40083,7 +40292,7 @@ skR
 kQI
 aIK
 aIK
-aIK
+cZu
 aSo
 iIl
 dBz
@@ -47802,8 +48011,8 @@ adz
 aFS
 aOQ
 aQg
-aRA
 rsx
+gCf
 erM
 kWg
 dGI
@@ -48059,8 +48268,8 @@ amH
 aEa
 aXb
 afA
-afA
-afA
+voE
+eMY
 agc
 awW
 ahL
@@ -48316,8 +48525,8 @@ alw
 akD
 aXb
 afA
-aak
-aak
+tFJ
+yfN
 agc
 avj
 aiv
@@ -48569,12 +48778,12 @@ aYH
 aYH
 aYH
 vIu
-sna
+alw
 aLX
 xaF
 afA
-aak
-aak
+tWz
+cMB
 agc
 acd
 ovA
@@ -48825,13 +49034,13 @@ aak
 aak
 aak
 afA
-apw
+cxa
+njF
 afA
 afA
 afA
-afA
-aak
-aak
+uoa
+rYh
 agc
 aRO
 ary
@@ -49081,14 +49290,14 @@ afA
 aak
 aak
 aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
+afA
+apw
+apw
+afA
+gaE
+uDb
+waj
+vZj
 agc
 ava
 aQQ
@@ -49341,11 +49550,11 @@ aak
 aak
 aak
 aak
-aak
-aak
-aak
-aak
-aak
+dcP
+eBO
+eiO
+fDF
+jVr
 agc
 aZl
 aQQ
@@ -49598,11 +49807,11 @@ aak
 aak
 aak
 aak
-aak
-aak
-aak
-aak
-aak
+dcP
+crB
+kPq
+rgG
+kMi
 agc
 bTp
 awh
@@ -49855,11 +50064,11 @@ aak
 aak
 aak
 aak
-aak
-aak
-aak
-aak
-aak
+dcP
+dcP
+dcP
+dcP
+dcP
 agc
 iFe
 agc

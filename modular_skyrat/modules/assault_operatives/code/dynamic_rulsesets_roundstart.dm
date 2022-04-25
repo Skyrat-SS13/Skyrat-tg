@@ -4,6 +4,8 @@
 //                                          //
 //////////////////////////////////////////////
 
+#define ASSAULT_OPERATIVES_COUNT 6
+
 /datum/dynamic_ruleset/roundstart/assault_operatives
 	name = "Assault Operatives"
 	antag_flag = ROLE_ASSAULT_OPERATIVE
@@ -31,8 +33,7 @@
 /datum/dynamic_ruleset/roundstart/assault_operatives/pre_execute(population)
 	. = ..()
 	// If ready() did its job, candidates should have 5 or more members in it
-	var/operatives = get_antag_cap(population)
-	for(var/operatives_number in 1 to operatives)
+	for(var/operatives_number in 1 to ASSAULT_OPERATIVES_COUNT)
 		if(candidates.len <= 0)
 			break
 		var/mob/candidate = pick_n_take(candidates)
@@ -54,7 +55,6 @@
 		return TRUE
 	log_game("DYNAMIC: [ruletype] [name] failed to get any eligible assault operatives. Refunding [cost] threat.")
 	return FALSE
-
 
 /// Returns the required goldeneye keys for activation. This is to make sure we don't have an impossible to achieve goal. However, there has to be at least one key.
 /datum/dynamic_ruleset/roundstart/assault_operatives/proc/get_goldeneye_key_count()

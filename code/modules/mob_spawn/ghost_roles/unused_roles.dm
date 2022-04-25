@@ -68,6 +68,7 @@
 	flavour_text = "Cater to visiting guests with your fellow staff, advertise the hotel, and make sure the manager doesn't fire you. Remember, the customer is always right!"
 	important_text = "Do NOT leave the hotel, as that is grounds for contract termination."
 	spawner_job_path = /datum/job/hotel_staff
+	random_appearance = FALSE // SKYRAT EDIT ADDITION
 
 /datum/outfit/hotelstaff
 	name = "Hotel Staff"
@@ -216,7 +217,7 @@
 /obj/effect/mob_spawn/ghost_role/human/doctor/alive/equip(mob/living/carbon/human/doctor)
 	. = ..()
 	// Remove radio and PDA so they wouldn't annoy station crew.
-	var/list/del_types = list(/obj/item/pda, /obj/item/radio/headset)
+	var/list/del_types = list(/obj/item/modular_computer/tablet, /obj/item/radio/headset)
 	for(var/del_type in del_types)
 		var/obj/item/unwanted_item = locate(del_type) in doctor
 		qdel(unwanted_item)

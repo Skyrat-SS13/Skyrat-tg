@@ -451,7 +451,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 */
 #define BALLMER_POINTS 5
 
-//this updates all special effects: stun, sleeping, knockdown, druggy, stuttering, etc..
+// This updates all special effects that really should be status effect datums: Druggy, Hallucinations, Drunkenness, Mute, etc..
 /mob/living/carbon/handle_status_effects(delta_time, times_fired)
 	..()
 
@@ -504,9 +504,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	else
 		SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "jittery")
 
-	if(druggy)
-		adjust_drugginess(-0.5 * delta_time)
-
 	if(silent)
 		silent = max(silent - (0.5 * delta_time), 0)
 
@@ -519,7 +516,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		if(drunkenness >= 6)
 			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "drunk", /datum/mood_event/drunk)
 			if(DT_PROB(16, delta_time))
-				slurring += 2
+				adjust_timed_status_effect(4 SECONDS, /datum/status_effect/speech/slurring/drunk)
 			jitteriness = max(jitteriness - (1.5 * delta_time), 0)
 			throw_alert(ALERT_DRUNK, /atom/movable/screen/alert/drunk)
 			sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
@@ -530,8 +527,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 			REMOVE_TRAIT(src, TRAIT_NUMBED, src) //SKYRAT EDIT START - ANESTHETIC EFFECT REMOVAL
 			clear_alert("numbed") //SKYRAT EDIT END
 
-		if(drunkenness >= 11 && slurring < 5)
-			slurring += 0.6 * delta_time
+		if(drunkenness >= 11)
+			var/datum/status_effect/speech/slurring/drunk/already_slurring = has_status_effect(/datum/status_effect/speech/slurring/drunk)
+			if(!already_slurring || already_slurring.duration - world.time <= 10 SECONDS)
+				adjust_timed_status_effect(1.2 SECONDS * delta_time, /datum/status_effect/speech/slurring/drunk)
 
 		if(mind && (is_scientist_job(mind.assigned_role) || is_research_director_job(mind.assigned_role)))
 			if(SSresearch.science_tech)

@@ -213,7 +213,8 @@
 
 /obj/projectile/bullet/advanced/b12mm
 	name = "12.7x30mm bullet"
-	damage = 45
+	damage = 35
+	wound_bonus = 30
 	speed = 1
 
 /obj/item/ammo_casing/b12mm/rubber
@@ -229,7 +230,7 @@
 	name = "12.7x30mm beanbag slug"
 	icon_state = "bullet_r"
 	damage = 10
-	stamina = 50
+	stamina = 35
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
@@ -250,7 +251,7 @@
 /obj/projectile/bullet/advanced/b12mm/hp
 	name = "12mm hollowpoint bullet"
 	icon_state = "bullet_h"
-	damage = 47
+	damage = 35
 	wound_bonus = 40
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
