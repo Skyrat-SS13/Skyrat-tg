@@ -25,4 +25,5 @@
 		set_light((initial(light_range)), initial(light_power), initial(light_color), TRUE)
 	addtimer(CALLBACK(src, .proc/alarm), SENSORS_UPDATE_PERIOD)
 	return canalarm
+
 #undef SENSORS_UPDATE_PERIOD
