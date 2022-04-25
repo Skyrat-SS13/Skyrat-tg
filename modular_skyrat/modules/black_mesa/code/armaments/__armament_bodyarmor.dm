@@ -22,7 +22,7 @@
 	description = "Contains a set of two hazardous environment armor pieces. This armor gives you a robust all-around protection, as well as mild regeneration."
 	item_type = /obj/item/storage/box/armor_set/pcv
 	max_purchase = 4
-	cost = 18
+	cost = 20
 
 /obj/item/storage/box/armor_set
 	name = "box of armor"
@@ -41,16 +41,16 @@
 	desc = "Box containing a basic armor vest and helmet."
 
 /obj/item/storage/box/armor_set/normal/PopulateContents()
-	new /obj/item/clothing/suit/armor/vest/security(src)
-	new /obj/item/clothing/head/helmet/sec(src)
+	new /obj/item/clothing/suit/armor/vest/hecu(src)
+	new /obj/item/clothing/head/helmet/hecu(src)
 
 /obj/item/storage/box/armor_set/bulletproof
 	name = "bulletproof armor set"
 	desc = "Box containing a bulletproof armor vest and helmet."
 
 /obj/item/storage/box/armor_set/bulletproof/PopulateContents()
-	new /obj/item/clothing/suit/armor/bulletproof(src)
-	new /obj/item/clothing/head/helmet/alt(src)
+	new /obj/item/clothing/suit/armor/bulletproof/hecu(src)
+	new /obj/item/clothing/head/helmet/alt/hecu(src)
 
 /obj/item/storage/box/armor_set/pcv
 	name = "PCV Mk. II armor set"

@@ -145,7 +145,7 @@
 /datum/loadout_item/mask/nightlight_mask
 	name = "FAR-14C IRU"
 	item_path = /obj/item/clothing/mask/gas/nightlight
-	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt")
+	ckeywhitelist = list("farsightednightlight", "raxraus", "1ceres", "marcoalbaredaa", "itzshift_yt", "drifter7371")
 
 /datum/loadout_item/mask/kindle_mask
 	name = "Kindle's mask"
@@ -345,7 +345,7 @@
 /datum/loadout_item/glasses/roseglasses
 	name = "Rose-Colored Glasses"
 	item_path = /obj/item/clothing/glasses/rosecolored
-	ckeywhitelist = list("1ceres", "irrigoimport", "zeskorion", "wizardlywoz", "duckymomo", "samarai1000", "funkyfetusstrikesback", "m97screwsyourparents", "lynxqueen" , "kaynite", "mahalia", "sapphoqueer" )
+	ckeywhitelist = list("1ceres", "irrigoimport", "zeskorion", "wizardlywoz", "duckymomo", "samarai1000", "funkyfetusstrikesback", "m97screwsyourparents", "lynxqueen", "kaynite", "mahalia", "sapphoqueer", "emmakisst", "ceasethebridge", "valorthix" )
 
 /datum/loadout_item/pocket_items/fuzzy_huglicense
 	name = "License To Hug"
@@ -407,3 +407,22 @@
 	name = "Squish-Me-Tesh Plush"
 	item_path = /obj/item/toy/plush/donator/tesh
 	ckeywhitelist = list("tobjv")
+
+/datum/loadout_item/under/jumpsuit/redhosneck
+	name = "Black and Red Turtleneck"
+	item_path = /obj/item/clothing/under/rank/security/head_of_security/alt/roselia
+	ckeywhitelist = list("ultimarifox")
+	restricted_roles = list(JOB_HEAD_OF_SECURITY)
+
+/datum/loadout_item/glasses/redgigagar
+	name = "Red-tinted Giga HUD Gar Glasses"
+	item_path = /obj/item/clothing/glasses/hud/security/sunglasses/gars/giga/roselia
+	ckeywhitelist = list("ultimarifox")
+	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER)
+
+/datum/loadout_item/toys/roselia_plush
+	name = "Obscene Sergal Plushie"
+	item_path = /obj/item/toy/plush/roselia
+	ckeywhitelist = list("ultimarifox")
+
+

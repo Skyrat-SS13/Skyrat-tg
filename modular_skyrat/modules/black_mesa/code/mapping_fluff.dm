@@ -24,7 +24,7 @@
 	openSound = 'modular_skyrat/modules/black_mesa/sound/xen_door.ogg'
 	closeSound = 'modular_skyrat/modules/black_mesa/sound/xen_door.ogg'
 
-/obj/machinery/door/keycard/xen
+/obj/machinery/door/puzzle/keycard/xen
 	name = "locktight organic door"
 	desc = "An oddly robust organic looking door."
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_door.dmi'

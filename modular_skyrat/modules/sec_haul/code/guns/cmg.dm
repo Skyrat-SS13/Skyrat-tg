@@ -1,7 +1,7 @@
 /**
  * The CMG-1,
  *
- * A simple three round burst security rifle that is chambered in 10mm Auto. It's a well rounded sidearm.
+ * A simple two round burst security rifle that is chambered in 10mm Auto. It's a well rounded sidearm.
  */
 
 /obj/item/gun/ballistic/automatic/cmg
