@@ -52,7 +52,7 @@
 	harmful = TRUE
 
 /obj/projectile/bullet/advanced/b6mm/ihdf
-	name = "6.3mm fragmentation pellet"
+	name = "6mm fragmentation pellet"
 	icon_state = "bullet_i"
 	damage = 25
 	bare_wound_bonus = 20
