@@ -37,7 +37,7 @@ GLOBAL_VAR(economy_collapse) // SKYRAT EDIT ADDITION
 			B.being_dumped = TRUE
 		new /obj/effect/dumpeet_target(targetturf, L)
 		dumped = TRUE
-		economy_collapse = TRUE
+		GLOB.economy_collapse = TRUE
 
 /obj/structure/checkoutmachine
 	name = "\improper Nanotrasen Space-Coin Market"
