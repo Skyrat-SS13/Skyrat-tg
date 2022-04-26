@@ -26,6 +26,7 @@
 	var/list/officer_icons = list() // list(REF(officer_human) = icon_url)
 	var/list/officer_icon_md5s = list()
 	var/list/officer_names = list() // list(REF(officer_human) = name)
+	plays_click_sound = FALSE // wow this is annoying as SHIT.
 
 
 /obj/machinery/computer/dispatch/ui_data(mob/user)
@@ -106,28 +107,28 @@
 
 /obj/machinery/computer/dispatch/ui_interact(mob/user, datum/tgui/ui, map = FALSE)
 	. = ..()
-	if(!current_map)
-		var/turf/T = get_turf(src)
-		for(var/datum/game_map/potential_map as anything in SSminimap.minimaps)
-			if(potential_map.zlevel.z_value == T.z)
-				current_map = potential_map
-				break
-
-	for(var/mob/living/carbon/human/H as anything in GLOB.human_list) // this is slow, replace this
-		if(H.z != current_map.zlevel.z_value)
-			continue
-		var/datum/job/job_ref = SSjob.GetJob(H.job)
-		if(!job_ref)
-			continue
-		if(job_ref.departments_bitflags & DEPARTMENT_BITFLAG_SECURITY)
-			if(!officer_icons[REF(H)])
-				render_officer(H)
-
-	if(!istype(SSassets.transport, /datum/asset_transport/webroot)) // SET UP A GODDAMN CDN.
-		SSassets.transport.send_assets(user, list(current_map.current_map_md5))
-		SSassets.transport.send_assets(user, officer_icon_md5s)
-
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
+		if(!current_map)
+			var/turf/T = get_turf(src)
+			for(var/datum/game_map/potential_map as anything in SSminimap.minimaps)
+				if(potential_map.zlevel.z_value == T.z)
+					current_map = potential_map
+					break
+
+		for(var/mob/living/carbon/human/H as anything in GLOB.human_list) // this is slow, replace this
+			if(H.z != current_map.zlevel.z_value)
+				continue
+			var/datum/job/job_ref = SSjob.GetJob(H.job)
+			if(!job_ref)
+				continue
+			if(job_ref.departments_bitflags & DEPARTMENT_BITFLAG_SECURITY)
+				if(!officer_icons[REF(H)])
+					render_officer(H)
+
+		if(!istype(SSassets.transport, /datum/asset_transport/webroot)) // SET UP A GODDAMN CDN.
+			var/list/md5s_to_send = officer_icon_md5s.Copy()
+			md5s_to_send.Add(current_map.current_map_md5)
+			SSassets.transport.send_assets(user, md5s_to_send)
 		ui = new(user, src, "DispatchConsole", "DispatchConsole")
 		ui.open()

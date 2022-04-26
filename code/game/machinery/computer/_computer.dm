@@ -11,6 +11,9 @@
 	var/icon_screen = "generic"
 	var/time_to_screwdrive = 20
 	var/authenticated = 0
+	// SKYRAT EDIT BEGIN
+	var/plays_click_sound = TRUE
+	// SKYRAT EDIT END
 
 /obj/machinery/computer/Initialize(mapload, obj/item/circuitboard/C)
 	. = ..()
@@ -129,7 +132,7 @@
 /obj/machinery/computer/ui_interact(mob/user, datum/tgui/ui)
 	SHOULD_CALL_PARENT(TRUE)
 	//SKYRAT EDIT ADDITON BEGIN - AESTHETICS
-	if(clicksound && world.time > next_clicksound && isliving(user))
+	if(clicksound && world.time > next_clicksound && isliving(user) && plays_click_sound)
 		next_clicksound = world.time + rand(50, 150)
 		playsound(src, get_sfx_skyrat(clicksound), clickvol)
 	//SKYRAT EDIT END
