@@ -48,11 +48,13 @@ export const KeycardAuth = (props, context) => {
                       fluid
                       onClick={() => act('bsa_unlock')}
                       content="Bluespace Artillery Unlock" />
-                    <Button
-                      icon="key"
-                      fluid
-                      onClick={() => act('pin_unrestrict')}
-                      content="Permit-Locked Firing Pin Unrestriction" />
+                    {!!data.permit_pins && (
+                      <Button
+                        icon="key"
+                        fluid
+                        onClick={() => act('pin_unrestrict')}
+                        content="Permit-Locked Firing Pin Unrestriction" />
+                    )}
                   </>
                 )}
               </>
