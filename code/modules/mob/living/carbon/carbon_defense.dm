@@ -729,13 +729,9 @@
 		return ..()
 
 	var/obj/item/bodypart/grasped_part = get_bodypart(zone_selected)
-<<<<<<< HEAD
 	//SKYRAT EDIT CHANGE BEGIN - MEDICAL
 	/*
-	if(!grasped_part?.get_part_bleed_rate())
-=======
 	if(!grasped_part?.get_modified_bleed_rate())
->>>>>>> 364d4bd9870 (Human Life Optimization: Citrus Flavored (#66037))
 		return
 	var/starting_hand_index = active_hand_index
 	if(starting_hand_index == grasped_part.held_index)
