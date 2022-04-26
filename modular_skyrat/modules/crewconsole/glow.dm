@@ -25,7 +25,7 @@
 		if(uniform.sensor_mode >= SENSOR_VITALS && HAS_TRAIT(mob, TRAIT_CRITICAL_CONDITION) || mob.stat == DEAD)
 			injuredcount++
 			canalarm = TRUE
-		if(uniform.sensor_mode == SENSOR_LIVING && mob.stat == DEAD)
+		else if(uniform.sensor_mode == SENSOR_LIVING && mob.stat == DEAD)
 			injuredcount++
 			canalarm = TRUE
 
