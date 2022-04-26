@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/p90
-	name = "\improper P-90"
-	desc = "The P90 is a selective fire, straight blowback-operated weapon with a cyclic rate of fire of around 850–1,100 rounds per minute. Modified to .32 ACP caliber."
+	name = "\improper P90-02"
+	desc = "A compact, top-loaded bullpup PDW chambered in .32 ammo."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns40x32.dmi'
 	icon_state = "p90"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_lefthand.dmi'
@@ -23,7 +23,7 @@
 	realistic = TRUE
 
 /obj/item/ammo_box/magazine/p90
-	name = "p90 magazine (.32)"
+	name = "\improper P90-02 magazine"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "p90"
 	ammo_type = /obj/item/ammo_casing/c32
