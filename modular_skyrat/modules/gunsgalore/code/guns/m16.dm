@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/m16
-	name = "\improper M16A4 rifle"
-	desc = "The fourth iteration of the M16 series of infantry rifles, firing the extremely old (yet strangely stil in use) 5.56x45mm cartridge. This seems to be a reproduction, as the model was phased out in the early 2030's to accomodate for more modern designs."
+	name = "\improper XM-2537 rifle"
+	desc = "A relatively new infantry rifle chambered for the .277 Aestus round, designed for use by private security and freight crews. \"Armentarium Centrale\" is printed on the side of the receiver, right next to a yellow sun."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns40x32.dmi'
 	icon_state = "m16"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_lefthand.dmi'
@@ -25,7 +25,8 @@
 	realistic = TRUE
 
 /obj/item/ammo_box/magazine/m16
-	name = "m16 magazine (5.56x45mm)"
+	name = "\improper XM-2537 magazine"
+	desc = "A double-stack translucent polymer magazine for use with the XM-2537 rifles. Holds 30 rounds of .277 Aestus."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "m16e"
 	ammo_type = /obj/item/ammo_casing/a556
@@ -34,7 +35,8 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/m16/vintage
-	name = "vintage m16 magazine (5.56x45mm)"
+	name = "outdated .277 magazine"
+	desc = "A double-stack solid magazine that looks rather dated. Holds 20 rounds of .277 Aestus."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "m16"
 	ammo_type = /obj/item/ammo_casing/a556
@@ -43,8 +45,8 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/gun/ballistic/automatic/m16/modern
-	name = "\improper AR-25T"
-	desc = "An M16 pattern infantry rifle, this one is a modern sporting/self defense model filled to the brim with aftermarket parts. Come and take it."
+	name = "\improper XM-2537 SOPMOD rifle"
+	desc = "A heavily tweaked carbine version of the XM-2537 rifle made for tactically operating in tactical environments. This doesn't smell \"authentic military hardware\" to you."
 	icon_state = "m16_modern"
 	inhand_icon_state = "m16"
 	worn_icon_state = "m16"
@@ -53,10 +55,21 @@
 	fire_delay = 1.90
 
 /obj/item/gun/ballistic/automatic/m16/modern/v2
-	name = "\improper AR-24 'Patriot'"
-	desc = "An M16 pattern infantry rifle with a short barrel and modified cycling mechanism that allows it to fire it significantly faster, with no care for accuracy or effectiveness. There's only room for one snake and one boss."
+	name = "\improper XM-2537 'Amans Patriae' rifle"
+	desc = "An expertly modified, super-compact XM-2537 rifle designed for operating in tight corridors and fields full of Bethlehem flowers. You're a soldier, finish your mission!"
 	icon_state = "m16_modern2"
 	inhand_icon_state = "m16"
 	worn_icon_state = "m16"
+	mag_type = /obj/item/ammo_box/magazine/m16/patriot
 	burst_size = 4
-	fire_delay = 1
+	fire_delay = 0.5
+
+/obj/item/ammo_box/magazine/m16/patriot
+	name = "\improper XM-2537 drum magazine"
+	desc = "A double-stack solid polymer drum made for use with the Amans Patriae rifle. Holds 50 rounds of .277 ammo."
+	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
+	icon_state = "m16"
+	ammo_type = /obj/item/ammo_casing/a556
+	caliber = "a556"
+	max_ammo = 50
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
