@@ -653,6 +653,18 @@
 /obj/item/gun/ballistic/automatic/smartgun/nomag
 	spawnwithmagazine = FALSE
 
+/obj/item/gun/ballistic/automatic/smartgun/scoped
+	name = "\improper OP-10 'S.M.A.R.T.' Rifle";
+	desc = "Suppressive Manual Action Reciprocating Taser rifle. A gauss rifle fitted to fire miniature shock-bolts. Looks like this one is prety heavy, but it has a scope on it.";
+	recharge_time = 6 SECONDS;
+	recoil = 3;
+	slowdown = 0.25;
+
+/obj/item/gun/ballistic/automatic/smartgun/scoped/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/scope, range_modifier = 1.5)
+
+
 /obj/structure/closet/secure_closet/smartgun
 	name = "smartgun locker"
 	req_access = list(ACCESS_ARMORY)
