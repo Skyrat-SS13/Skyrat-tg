@@ -17,6 +17,7 @@
 	new /obj/item/clothing/head/soft(src) // Why does the QM spawn with a generic soft cap
 	*/
 	// new /obj/item/radio/headset/headset_cargo(src) //ORIGINAL
+	new	/obj/item/radio/headset/heads/qm(src) //SKYRAT EDIT ADDITION
 	new /obj/item/clothing/suit/fire/firefighter(src)
 	new /obj/item/megaphone/cargo(src)
 	new /obj/item/tank/internals/emergency_oxygen(src)
@@ -29,3 +30,4 @@
 	new /obj/item/clothing/suit/hooded/wintercoat/qm(src)
 	new /obj/item/gun/ballistic/rifle/boltaction/brand_new/quartermaster(src) // SKYRAT EDIT - The QM's 'special' head item. It spawns loaded, but you have to find more ammo if you run out and get ready to manually load rounds in!
 	new /obj/item/cargo_teleporter(src) // SKYRAT EDIT - Adds a cargo teleporter to QM locker, so they can intice others to research it
+	new /obj/item/clothing/glasses/hud/gun_permit(src) //SKYRAT EDIT - GUN CARGO

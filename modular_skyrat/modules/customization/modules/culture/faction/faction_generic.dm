@@ -18,6 +18,7 @@
 	technology, means their installations are often considered unsafe and hazardous."
 	economic_power = 1.2
 
+//To-Do: change to SolFed
 /datum/cultural_info/faction/solgov
 	name = "Sol Central Government"
 	description = "The Sol Central Government, commonly referred to as SolGov or the SCG, is a federal republic \

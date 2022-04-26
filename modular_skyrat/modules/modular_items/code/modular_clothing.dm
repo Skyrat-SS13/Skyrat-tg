@@ -41,5 +41,5 @@
 	icon_state = "skirt"
 	can_adjust = FALSE
 	body_parts_covered = GROIN|LEGS
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 

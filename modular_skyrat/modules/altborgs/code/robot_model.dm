@@ -6,6 +6,28 @@
 	/// Traits unique to this model, i.e. having a unique dead sprite, being wide or being small enough to reject shrinker modules. Leverages defines in code\__DEFINES\~skyrat_defines\robot_defines.dm
 	var/list/model_features = list()
 
+/obj/item/robot_model/proc/update_tallborg()
+	var/mob/living/silicon/robot/cyborg = robot || loc
+	if (!istype(robot))
+		return
+	if (model_features && (R_TRAIT_TALL in model_features))
+		cyborg.maptext_height = 48 //Runechat blabla
+		cyborg.AddElement(/datum/element/footstep, FOOTSTEP_MOB_SHOE, 2, -6, sound_vary = TRUE)
+		add_verb(cyborg, /mob/living/silicon/robot/proc/robot_lay_down)
+		switch(cyborg_base_icon)
+			if("mekamine")
+				cyborg.AddComponent(/datum/component/robot_smoke)
+			else
+
+	else
+		cyborg.maptext_height = initial(cyborg.maptext_height)
+		cyborg.RemoveElement(/datum/element/footstep, FOOTSTEP_MOB_SHOE, 2, -6, sound_vary = TRUE)
+		remove_verb(cyborg, /mob/living/silicon/robot/proc/robot_lay_down)
+		if(cyborg.GetComponent(/datum/component/robot_smoke))
+			qdel(cyborg.GetComponent(/datum/component/robot_smoke))
+			QDEL_NULL(cyborg.particles)	// Removing left over particles
+
+
 /obj/item/robot_model/proc/update_dogborg()
 	var/mob/living/silicon/robot/cyborg = robot || loc
 	if (!istype(robot))
@@ -42,6 +64,8 @@
 	borg_skins = list(
 		"Waitress" = list(SKIN_ICON_STATE = "service_f", SKIN_LIGHT_KEY = "service"),
 		"Butler" = list(SKIN_ICON_STATE = "service_m", SKIN_LIGHT_KEY = "service"),
+		"Meka" = list(SKIN_ICON_STATE = "mekaserve", SKIN_ICON = CYBORG_ICON_SERVICE_TALL, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_UNIQUETIP, R_TRAIT_TALL), SKIN_HAT_OFFSET = 15),
+		"Meka (Alt)" = list(SKIN_ICON_STATE = "mekaserve_alt", SKIN_LIGHT_KEY = "mekaserve", SKIN_ICON = CYBORG_ICON_SERVICE_TALL, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_UNIQUETIP, R_TRAIT_TALL), SKIN_HAT_OFFSET = 15),
 		"Bro" = list(SKIN_ICON_STATE = "brobot", SKIN_LIGHT_KEY = "service"),
 		"Kent" = list(SKIN_ICON_STATE = "kent", SKIN_LIGHT_KEY = "medical", SKIN_HAT_OFFSET = 3),
 		"Can" = list(SKIN_ICON_STATE = "kent", SKIN_LIGHT_KEY = "medical", SKIN_HAT_OFFSET = 3),
@@ -49,6 +73,7 @@
 		"Sleek" = list(SKIN_ICON_STATE = "sleekserv", SKIN_ICON = CYBORG_ICON_SERVICE),
 		"Heavy" = list(SKIN_ICON_STATE = "heavyserv", SKIN_ICON = CYBORG_ICON_SERVICE),
 		"Bootyborg" = list(SKIN_ICON_STATE = "bootyservice", SKIN_ICON = CYBORG_ICON_SERVICE),
+		"Birdborg" = list(SKIN_ICON_STATE = "bird_serv", SKIN_ICON = CYBORG_ICON_SERVICE),
 		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootyservice", SKIN_ICON = CYBORG_ICON_SERVICE),
 		"Protectron" = list(SKIN_ICON_STATE = "protectron_service", SKIN_ICON = CYBORG_ICON_SERVICE),
 		"Miss M" = list(SKIN_ICON_STATE = "missm_service", SKIN_ICON = CYBORG_ICON_SERVICE),
@@ -68,6 +93,7 @@
 	borg_skins = list(
 		"Lavaland" = list(SKIN_ICON_STATE = "miner", SKIN_LIGHT_KEY = "miner"),
 		"Asteroid" = list(SKIN_ICON_STATE = "minerOLD", SKIN_LIGHT_KEY = "miner"),
+		"Meka" = list(SKIN_ICON_STATE = "mekamine", SKIN_ICON = CYBORG_ICON_MINING_TALL, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_UNIQUETIP, R_TRAIT_TALL), SKIN_HAT_OFFSET = 15),
 		"Spider Miner" = list(SKIN_ICON_STATE = "spidermin", SKIN_LIGHT_KEY = "miner"),
 		"Droid" = list(SKIN_ICON_STATE = "miner", SKIN_ICON = CYBORG_ICON_MINING, SKIN_HAT_OFFSET = 4),
 		"Sleek" = list(SKIN_ICON_STATE = "sleekmin", SKIN_ICON = CYBORG_ICON_MINING),
@@ -76,6 +102,7 @@
 		"Spider" = list(SKIN_ICON_STATE = "spidermin", SKIN_ICON = CYBORG_ICON_MINING),
 		"Heavy" = list(SKIN_ICON_STATE = "heavymin", SKIN_ICON = CYBORG_ICON_MINING),
 		"Bootyborg" = list(SKIN_ICON_STATE = "bootyminer", SKIN_ICON = CYBORG_ICON_MINING),
+		"Birdborg" = list(SKIN_ICON_STATE = "bird_mine", SKIN_ICON = CYBORG_ICON_MINING),
 		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootyminer", SKIN_ICON = CYBORG_ICON_MINING),
 		"Protectron" = list(SKIN_ICON_STATE = "protectron_miner", SKIN_ICON = CYBORG_ICON_MINING),
 		"Miss M" = list(SKIN_ICON_STATE = "missm_miner", SKIN_ICON = CYBORG_ICON_MINING),
@@ -116,6 +143,7 @@
 		"Spider" = list(SKIN_ICON_STATE = "spidereng", SKIN_ICON = CYBORG_ICON_ENG),
 		"Heavy" = list(SKIN_ICON_STATE = "heavyeng", SKIN_ICON = CYBORG_ICON_ENG),
 		"Bootyborg" = list(SKIN_ICON_STATE = "bootyeng", SKIN_ICON = CYBORG_ICON_ENG),
+		"Birdborg" = list(SKIN_ICON_STATE = "bird_eng", SKIN_ICON = CYBORG_ICON_ENG),
 		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootyeng", SKIN_ICON = CYBORG_ICON_ENG),
 		"Protectron" = list(SKIN_ICON_STATE = "protectron_eng", SKIN_ICON = CYBORG_ICON_ENG),
 		"Miss M" = list(SKIN_ICON_STATE = "missm_eng", SKIN_ICON = CYBORG_ICON_ENG),
@@ -135,12 +163,14 @@
 /obj/item/robot_model/janitor
 	borg_skins = list(
 		"Default" = list(SKIN_ICON_STATE = "janitor"),
+		"Meka" = list(SKIN_ICON_STATE = "mekajani", SKIN_ICON = CYBORG_ICON_JANI_TALL, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_UNIQUETIP, R_TRAIT_TALL), SKIN_HAT_OFFSET = 15),
 		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_jani", SKIN_ICON = CYBORG_ICON_JANI, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL), SKIN_HAT_OFFSET = -13),
 		"Marina" = list(SKIN_ICON_STATE = "marinajan", SKIN_ICON = CYBORG_ICON_JANI),
 		"Sleek" = list(SKIN_ICON_STATE = "sleekjan", SKIN_ICON = CYBORG_ICON_JANI),
 		"Can" = list(SKIN_ICON_STATE = "canjan", SKIN_ICON = CYBORG_ICON_JANI),
 		"Heavy" = list(SKIN_ICON_STATE = "heavyres", SKIN_ICON = CYBORG_ICON_JANI),
 		"Bootyborg" = list(SKIN_ICON_STATE = "bootyjanitor", SKIN_ICON = CYBORG_ICON_JANI),
+		"Birdborg" = list(SKIN_ICON_STATE = "bird_jani", SKIN_ICON = CYBORG_ICON_JANI),
 		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootyjanitor", SKIN_ICON = CYBORG_ICON_JANI),
 		"Protectron" = list(SKIN_ICON_STATE = "protectron_janitor", SKIN_ICON = CYBORG_ICON_JANI),
 		"Miss M" = list(SKIN_ICON_STATE = "missm_janitor", SKIN_ICON = CYBORG_ICON_JANI),
@@ -161,6 +191,7 @@
 	borg_skins = list(
 		"Machinified Doctor" = list(SKIN_ICON_STATE = "medical", SKIN_TRAITS = list(R_TRAIT_SMALL)),
 		"Qualified Doctor" = list(SKIN_ICON_STATE = "qualified_doctor"),
+		"Meka" = list(SKIN_ICON_STATE = "mekamed", SKIN_ICON = CYBORG_ICON_MED_TALL, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_UNIQUETIP, R_TRAIT_TALL), SKIN_HAT_OFFSET = 15),
 		"Zoomba" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "zoomba_med", SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL), SKIN_HAT_OFFSET = -13),
 		"Droid" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "medical", SKIN_HAT_OFFSET = 4),
 		"Sleek" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "sleekmed"),
@@ -168,6 +199,7 @@
 		"Eyebot" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "eyebotmed", SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
 		"Heavy" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "heavymed"),
 		"Bootyborg" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "bootymedical"),
+		"Birdborg" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "bird_med"),
 		"Male Bootyborg" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "male_bootymedical"),
 		// PLEASE ASSUME THE POSITION
 		"Protectron" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "protectron_medical"),
@@ -176,6 +208,7 @@
 		"Insekt" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "insekt-Med"),
 		"Mech" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "gibbs"),
 		"Hound" = list(SKIN_ICON = CYBORG_ICON_MED_WIDE, SKIN_ICON_STATE = "medihound", SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
+		"DarkHound" = list(SKIN_ICON = CYBORG_ICON_MED_WIDE, SKIN_ICON_STATE = "medihounddark", SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
 		"Vale" = list(SKIN_ICON = CYBORG_ICON_MED_WIDE, SKIN_ICON_STATE = "valemed", SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
 		"Alina" = list(SKIN_ICON = CYBORG_ICON_MED_WIDE, SKIN_ICON_STATE = "alina-med", SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
 		"Drake" = list(SKIN_ICON = CYBORG_ICON_MED_WIDE, SKIN_ICON_STATE = "drakemed", SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
@@ -186,10 +219,12 @@
 /obj/item/robot_model/peacekeeper
 	borg_skins = list(
 		"Default" = list(SKIN_ICON_STATE = "peace"),
+		"Meka" = list(SKIN_ICON_STATE = "mekapeace", SKIN_ICON = CYBORG_ICON_PEACEKEEPER_TALL, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_UNIQUETIP, R_TRAIT_TALL), SKIN_HAT_OFFSET = 15),
 		"Sleek" = list(SKIN_ICON_STATE = "sleekpeace", SKIN_ICON = CYBORG_ICON_PEACEKEEPER, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK)),
 		"Spider" = list(SKIN_ICON_STATE = "whitespider", SKIN_ICON = CYBORG_ICON_PEACEKEEPER, SKIN_FEATURES = list(R_TRAIT_SMALL)),
 		"Marina" = list(SKIN_ICON_STATE = "marinapeace", SKIN_ICON = CYBORG_ICON_PEACEKEEPER, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK)),
 		"Bootyborg" = list(SKIN_ICON_STATE = "bootypeace", SKIN_ICON = CYBORG_ICON_PEACEKEEPER),
+		"Birdborg" = list(SKIN_ICON_STATE = "bird_pk", SKIN_ICON = CYBORG_ICON_PEACEKEEPER),
 		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootypeace", SKIN_ICON = CYBORG_ICON_PEACEKEEPER),
 		"Protectron" = list(SKIN_ICON_STATE = "protectron_peacekeeper", SKIN_ICON = CYBORG_ICON_PEACEKEEPER),
 		"Insekt" = list(SKIN_ICON_STATE = "insekt-Default", SKIN_ICON = CYBORG_ICON_PEACEKEEPER),
@@ -234,7 +269,7 @@
 		/obj/item/extinguisher,
 		/obj/item/weldingtool/electric,
 		/obj/item/screwdriver/cyborg/power,
-		/obj/item/crowbar/cyborg/power, 
+		/obj/item/crowbar/cyborg/power,
 		/obj/item/multitool/cyborg,
 		/obj/item/construction/rcd/borg/syndicate,
 		/obj/item/lightreplacer/cyborg,
@@ -268,11 +303,13 @@
 		"Saboteur" = list(SKIN_ICON_STATE = "synd_engi", SKIN_ICON = 'icons/mob/robots.dmi'),
 		"Medical" = list(SKIN_ICON_STATE = "synd_medical", SKIN_ICON = 'icons/mob/robots.dmi'),
 		"Assault" = list(SKIN_ICON_STATE = "synd_sec", SKIN_ICON = 'icons/mob/robots.dmi'),
+		"Meka" = list(SKIN_ICON_STATE = "mekasyndi", SKIN_ICON = CYBORG_ICON_SYNDIE_TALL, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_UNIQUETIP, R_TRAIT_TALL), SKIN_HAT_OFFSET = 15),
 		"Heavy" = list(SKIN_ICON_STATE = "syndieheavy", SKIN_ICON = CYBORG_ICON_SYNDIE),
 		"Miss M" = list(SKIN_ICON_STATE = "missm_syndie", SKIN_ICON = CYBORG_ICON_SYNDIE),
 		"Spider" = list(SKIN_ICON_STATE = "spidersyndi", SKIN_ICON = CYBORG_ICON_SYNDIE),
 		"Booty Striker" = list(SKIN_ICON_STATE = "bootynukie", SKIN_ICON = CYBORG_ICON_SYNDIE),
 		"Booty Syndicate" = list(SKIN_ICON_STATE = "bootysyndie", SKIN_ICON = CYBORG_ICON_SYNDIE),
+		"Bird Syndicate" = list(SKIN_ICON_STATE = "bird_synd", SKIN_ICON = CYBORG_ICON_SYNDIE),
 		"Male Booty Striker" = list(SKIN_ICON_STATE = "male_bootynukie", SKIN_ICON = CYBORG_ICON_SYNDIE),
 		"Male Booty Syndicate" = list(SKIN_ICON_STATE = "male_bootysyndie", SKIN_ICON = CYBORG_ICON_SYNDIE),
 		"Mech" = list(SKIN_ICON_STATE = "chesty", SKIN_ICON = CYBORG_ICON_SYNDIE)
@@ -311,6 +348,7 @@
 		"Medical" = list(SKIN_ICON_STATE = "ninja_medical", SKIN_ICON = CYBORG_ICON_NINJA),
 		"Assault" = list(SKIN_ICON_STATE = "ninja_sec", SKIN_ICON = CYBORG_ICON_NINJA),
 		"Heavy" = list(SKIN_ICON_STATE = "ninjaheavy", SKIN_ICON = CYBORG_ICON_NINJA),
+		"Meka" = list(SKIN_ICON_STATE = "mekaninja", SKIN_ICON = CYBORG_ICON_NINJA_TALL, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_UNIQUETIP, R_TRAIT_TALL), SKIN_HAT_OFFSET = 15),
 		"Miss M" = list(SKIN_ICON_STATE = "missm_ninja", SKIN_ICON = CYBORG_ICON_NINJA),
 		"Spider" = list(SKIN_ICON_STATE = "ninjaspider", SKIN_ICON = CYBORG_ICON_NINJA),
 		"BootyBorg" = list(SKIN_ICON_STATE = "bootyninja", SKIN_ICON = CYBORG_ICON_NINJA),
@@ -391,6 +429,7 @@
 		"Medical" = list(SKIN_ICON_STATE = "ninja_medical", SKIN_ICON = CYBORG_ICON_NINJA),
 		"Assault" = list(SKIN_ICON_STATE = "ninja_sec", SKIN_ICON = CYBORG_ICON_NINJA),
 		"Heavy" = list(SKIN_ICON_STATE = "ninjaheavy", SKIN_ICON = CYBORG_ICON_NINJA),
+		"Meka" = list(SKIN_ICON_STATE = "mekaninja", SKIN_ICON = CYBORG_ICON_NINJA_TALL, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_UNIQUETIP, R_TRAIT_TALL), SKIN_HAT_OFFSET = 15),
 		"Miss M" = list(SKIN_ICON_STATE = "missm_ninja", SKIN_ICON = CYBORG_ICON_NINJA),
 		"Spider" = list(SKIN_ICON_STATE = "ninjaspider", SKIN_ICON = CYBORG_ICON_NINJA),
 		"BootyBorg" = list(SKIN_ICON_STATE = "bootyninja", SKIN_ICON = CYBORG_ICON_NINJA),

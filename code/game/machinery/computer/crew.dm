@@ -8,9 +8,6 @@
 	desc = "Used to monitor active health sensors built into most of the crew's uniforms."
 	icon_screen = "crew"
 	icon_keyboard = "med_key"
-	use_power = IDLE_POWER_USE
-	idle_power_usage = 250
-	active_power_usage = 500
 	circuit = /obj/item/circuitboard/computer/crew
 	light_color = LIGHT_COLOR_BLUE
 
@@ -47,6 +44,7 @@
 	. += create_table_notices(list(
 		"name",
 		"job",
+		"is_robot", //SKYRAT EDIT ADDITION - Displaying robotic species Icon
 		"life_status",
 		"suffocation",
 		"toxin",
@@ -67,6 +65,7 @@
 		var/list/entry = list()
 		entry["name"] = player_record["name"]
 		entry["job"] = player_record["assignment"]
+		entry["is_robot"] = player_record["is_robot"] //SKYRAT EDIT ADDITION - Displaying robotic species Icon
 		entry["life_status"] = player_record["life_status"]
 		entry["suffocation"] = player_record["oxydam"]
 		entry["toxin"] = player_record["toxdam"]
@@ -82,6 +81,7 @@
 	icon_keyboard = "syndie_key"
 
 /obj/machinery/computer/crew/ui_interact(mob/user)
+	. = ..()
 	GLOB.crewmonitor.show(user,src)
 
 GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
@@ -108,10 +108,9 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_SECURITY_OFFICER_SCIENCE = 15,
 		JOB_SECURITY_OFFICER_SUPPLY = 16,
 		*/
-		JOB_SECURITY_SERGEANT = 13, // SKYRAT EDIT ADDITION
-		JOB_SECURITY_MEDIC = 14, // SKYRAT EDIT ADDITION
-		JOB_CORRECTIONS_OFFICER = 15, // SKYRAT EDIT ADDITION
-		JOB_DETECTIVE = 17,
+		JOB_SECURITY_MEDIC = 13, // SKYRAT EDIT ADDITION
+		JOB_CORRECTIONS_OFFICER = 14, // SKYRAT EDIT ADDITION
+		JOB_DETECTIVE = 15,
 		// 20-29: Medbay
 		JOB_CHIEF_MEDICAL_OFFICER = 20,
 		JOB_CHEMIST = 21,
@@ -219,7 +218,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 			continue
 
 		// Machinery and the target should be on the same level or different levels of the same station
-		if(pos.z != z && (!is_station_level(pos.z) || !is_station_level(z)))
+		if(pos.z != z && (!is_station_level(pos.z) || !is_station_level(z)) && !HAS_TRAIT(tracked_living_mob, TRAIT_MULTIZ_SUIT_SENSORS))
 			continue
 
 		var/mob/living/carbon/human/tracked_human = tracked_living_mob
@@ -257,6 +256,11 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 			var/trim_assignment = id_card.get_trim_assignment()
 			if (jobs[trim_assignment] != null)
 				entry["ijob"] = jobs[trim_assignment]
+
+		// SKYRAT EDIT BEGIN: Checking for robotic race
+		if (isrobotic(tracked_human))
+			entry["is_robot"] = TRUE
+		// SKYRAT EDIT END
 
 		// Binary living/dead status
 		if (sensor_mode >= SENSOR_LIVING)

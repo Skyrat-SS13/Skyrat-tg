@@ -63,6 +63,8 @@
 	dir = NORTH
 	///the parent conveyor sorter lister item, used for deletion
 	var/obj/item/conveyor_sorter/parent_item
+	/// To prevent spam
+	COOLDOWN_DECLARE(use_cooldown)
 
 	light_range = 3
 	light_color = COLOR_RED_LIGHT
@@ -118,7 +120,8 @@
 
 /obj/effect/decal/cleanable/conveyor_sorter/on_entered(datum/source, atom/movable/AM)
 	. = ..()
-	if(is_type_in_list(AM, sorting_list) && !AM.anchored)
+	if(is_type_in_list(AM, sorting_list) && !AM.anchored && COOLDOWN_FINISHED(src, use_cooldown))
+		COOLDOWN_START(src, use_cooldown, 1 SECONDS)
 		AM.Move(get_step(src, dir))
 
 /datum/design/conveyor_sorter

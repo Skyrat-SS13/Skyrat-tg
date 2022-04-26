@@ -356,3 +356,9 @@
 	icon_state = "stubby"
 	color_src = USE_MATRIXED_COLORS
 	use_muzzled_sprites = FALSE
+
+/datum/sprite_accessory/snouts/mammal/leporid
+	name = "Leporid"
+	icon_state = "leporid"
+	color_src = USE_MATRIXED_COLORS
+	use_muzzled_sprites = FALSE

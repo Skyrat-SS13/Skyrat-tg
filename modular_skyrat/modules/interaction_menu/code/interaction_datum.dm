@@ -49,7 +49,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	/// What color should the interaction button be?
 	var/color = "blue"
 	/// What sexuality preference do we display for.
-	var/sexuality = "None"
+	var/sexuality = ""
 
 /datum/interaction/proc/allow_act(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target == user && usage == INTERACTION_OTHER)

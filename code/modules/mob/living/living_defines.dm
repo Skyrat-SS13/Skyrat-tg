@@ -4,7 +4,7 @@
 	see_in_dark = 2
 	hud_possible = list(HEALTH_HUD,STATUS_HUD,ANTAG_HUD)
 	pressure_resistance = 10
-	plane = GAME_PLANE //SKYRAT EDIT CHANGE
+	plane = GAME_PLANE //SKYRAT EDIT ADD
 
 	hud_type = /datum/hud/living
 
@@ -125,12 +125,6 @@
 
 	var/list/status_effects ///a list of all status effects the mob has
 	var/druggy = 0
-
-	//Speech
-	var/stuttering = 0
-	var/slurring = 0
-	var/cultslurring = 0
-	var/derpspeech = 0
 
 	var/list/implants = null
 

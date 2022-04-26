@@ -155,7 +155,8 @@
 	switch(activation_type)
 		if(SLIME_ACTIVATE_MINOR)
 			var/food_type = get_random_food()
-			var/obj/item/food_item = new food_type
+			var/obj/item/food/food_item = new food_type
+			food_item.food_flags |= FOOD_SILVER_SPAWNED
 			if(!user.put_in_active_hand(food_item))
 				food_item.forceMove(user.drop_location())
 			playsound(user, 'sound/effects/splat.ogg', 50, TRUE)
@@ -331,8 +332,8 @@
 			to_chat(user, span_notice("You activate [src]. You start feeling colder!"))
 			user.extinguish_mob()
 			user.adjust_fire_stacks(-20)
-			user.reagents.add_reagent(/datum/reagent/consumable/frostoil,4)
-			user.reagents.add_reagent(/datum/reagent/medicine/cryoxadone,5)
+			user.reagents.add_reagent(/datum/reagent/consumable/frostoil,6)
+			user.reagents.add_reagent(/datum/reagent/medicine/regen_jelly,7)
 			return 100
 
 		if(SLIME_ACTIVATE_MAJOR)

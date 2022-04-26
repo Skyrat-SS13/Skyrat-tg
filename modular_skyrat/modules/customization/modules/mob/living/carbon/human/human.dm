@@ -80,8 +80,9 @@
 		update_body()
 	return
 
-/mob/living/carbon/human/revive(full_heal = 0, admin_revive = 0)
-	if(..())
+/mob/living/carbon/human/revive(full_heal = FALSE, admin_revive = FALSE)
+	. = ..()
+	if(.)
 		if(dna && dna.species)
 			dna.species.spec_revival(src)
 
@@ -109,27 +110,18 @@
 		return
 
 	var/list/choices = list("Drunkenness", "Stuttering", "Jittering")
-	if(slurring >= 10 || stuttering >= 10 || jitteriness >= 10) //Give the option to end the impairment if there's one ongoing.
-		var/disable = input(src, "Stop performing existing impairment?", "Impairments") as null|anything in choices
+	if(jitteriness >= 10) //Give the option to end the impairment if there's one ongoing.
+		var/disable = tgui_input_list(src, "Stop performing existing impairment?", "Impairments", choices)
 		if(disable)
 			acting_expiry(disable)
 			return
 
-	var/impairment = input(src, "Select an impairment to perform:", "Impairments") as null|anything in choices
+	var/impairment = tgui_input_list(src, "Select an impairment to perform:", "Impairments", choices)
 	if(!impairment)
 		return
 
-	var/duration = input(src, "Enter how long you will feign [impairment]. (1 - 60 seconds)", "Duration in seconds", 25) as num|null
-	if(!isnum(duration))
-		return
-	if(duration > 60)
-		to_chat(src, "Please choose a duration in seconds between 1 to 60.")
-		return
+	var/duration = tgui_input_number(src, "How long would you like to feign [impairment] for?", "Duration in seconds", 25, 36000)
 	switch(impairment)
-		if("Drunkenness")
-			slurring = duration
-		if("Stuttering")
-			stuttering = duration
 		if("Jittering")
 			jitteriness = duration
 
@@ -140,10 +132,6 @@
 /mob/living/carbon/human/proc/acting_expiry(var/impairment) //End only the impairment we're affected by.
 	if(impairment)
 		switch(impairment)
-			if("Drunkenness")
-				slurring = 0
-			if("Stuttering")
-				stuttering = 0
 			if("Jittering")
 				jitteriness = 0
 		to_chat(src, "You are no longer feigning [impairment].")

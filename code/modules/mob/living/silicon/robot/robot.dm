@@ -79,13 +79,6 @@
 	toner = tonermax
 	diag_hud_set_borgcell()
 	logevent("System brought online.")
-	// SKYRAT EDIT ADDITION BEGIN - Cyborg PDA
-	if(!shell)
-		aiPDA = new/obj/item/pda/ai(src)
-		aiPDA.owner = real_name
-		aiPDA.ownjob = "Cyborg"
-		aiPDA.name = real_name + " (" + aiPDA.ownjob + ")"
-	//SKYRAT EDIT ADDITION END
 	alert_control = new(src, list(ALARM_ATMOS, ALARM_FIRE, ALARM_POWER, ALARM_CAMERA, ALARM_BURGLAR, ALARM_MOTION), list(z))
 	RegisterSignal(alert_control.listener, COMSIG_ALARM_TRIGGERED, .proc/alarm_triggered)
 	RegisterSignal(alert_control.listener, COMSIG_ALARM_CLEARED, .proc/alarm_cleared)
@@ -97,16 +90,13 @@
 	laws = new /datum/ai_laws/syndicate_override()
 	addtimer(CALLBACK(src, .proc/show_playstyle), 5)
 
-/mob/living/silicon/robot/proc/create_modularInterface()
-	if(!modularInterface)
-		modularInterface = new /obj/item/modular_computer/tablet/integrated(src)
-	modularInterface.layer = ABOVE_HUD_PLANE
-	modularInterface.plane = ABOVE_HUD_PLANE
-
 /mob/living/silicon/robot/model/syndicate/create_modularInterface()
 	if(!modularInterface)
 		modularInterface = new /obj/item/modular_computer/tablet/integrated/syndicate(src)
+		modularInterface.saved_identification = real_name
+		modularInterface.saved_job = "Cyborg"
 	return ..()
+
 
 /**
  * Sets the tablet theme and icon
@@ -186,6 +176,10 @@
 
 	if(wires.is_cut(WIRE_RESET_MODEL))
 		to_chat(src,span_userdanger("ERROR: Model installer reply timeout. Please check internal connections."))
+		return
+
+	if(lockcharge == TRUE)
+		to_chat(src,span_userdanger("ERROR: Lockdown is engaged. Please disengage lockdown to pick module."))
 		return
 
 	// SKYRAT EDIT START - Making the cyborg model list static to reduce how many times it's generated.
@@ -439,9 +433,9 @@
 	if(wires?.is_cut(WIRE_LOCKDOWN))
 		state = TRUE
 	if(state)
-		throw_alert("locked", /atom/movable/screen/alert/locked)
+		throw_alert(ALERT_HACKED, /atom/movable/screen/alert/locked)
 	else
-		clear_alert("locked")
+		clear_alert(ALERT_HACKED)
 	set_lockcharge(state)
 
 
@@ -464,9 +458,9 @@
 	model.rebuild_modules()
 	update_icons()
 	if(emagged)
-		throw_alert("hacked", /atom/movable/screen/alert/hacked)
+		throw_alert(ALERT_HACKED, /atom/movable/screen/alert/hacked)
 	else
-		clear_alert("hacked")
+		clear_alert(ALERT_HACKED)
 	set_modularInterface_theme()
 
 /// Special handling for getting hit with a light eater
@@ -707,6 +701,7 @@
 	notify_ai(AI_NOTIFICATION_CYBORG_RENAMED, oldname, newname)
 	if(!QDELETED(builtInCamera))
 		builtInCamera.c_tag = real_name
+		modularInterface.saved_identification = real_name
 	custom_name = newname
 
 
@@ -999,36 +994,6 @@
 		connected_ai.connected_robots |= src
 		lamp_doom = connected_ai.doomsday_device ? TRUE : FALSE
 	toggle_headlamp(FALSE, TRUE)
-
-/**
- * Records an IC event log entry in the cyborg's internal tablet.
- *
- * Creates an entry in the borglog list of the cyborg's internal tablet, listing the current
- * in-game time followed by the message given. These logs can be seen by the cyborg in their
- * BorgUI tablet app. By design, logging fails if the cyborg is dead.
- *
- * Arguments:
- * arg1: a string containing the message to log.
- */
-/mob/living/silicon/robot/proc/logevent(string = "")
-	if(!string)
-		return
-	if(stat == DEAD) //Dead borgs log no longer
-		return
-	if(!modularInterface)
-		stack_trace("Cyborg [src] ( [type] ) was somehow missing their integrated tablet. Please make a bug report.")
-		create_modularInterface()
-	modularInterface.borglog += "[station_time_timestamp()] - [string]"
-	var/datum/computer_file/program/robotact/program = modularInterface.get_robotact()
-	if(program)
-		program.force_full_update()
-
-// SKYRAT EDIT ADDITION BEGIN - Cyborg PDA
-/mob/living/silicon/robot/replace_identification_name(oldname,newname)
-	if(aiPDA && !shell)
-		aiPDA.owner = newname
-		aiPDA.name = newname + " (" + aiPDA.ownjob + ")"
-// SKYRAT EDIT ADDITION END
 
 /mob/living/silicon/robot/get_exp_list(minutes)
 	. = ..()

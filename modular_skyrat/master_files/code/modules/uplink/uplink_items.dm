@@ -142,6 +142,16 @@
 	cost = 2 //These are taken nearly exactly from Goon, very fun tool.
 	restricted_roles = list(JOB_BARTENDER)
 
+/datum/uplink_item/stealthy_tools/announcement
+	name = "Fake Announcement"
+	desc = "A device that allows you to spoof an announcement to the station of your choice."
+	item = /obj/item/device/traitor_announcer
+	surplus = 0
+	progression_minimum = 20 MINUTES
+	cost = 3
+	restricted = TRUE
+	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
+
 //EXPLOSIVES
 /datum/uplink_item/explosives/buzzkill_traitor
 	name = "Buzzkill Grenade Box"
@@ -188,7 +198,7 @@
 	desc = "This first aid kit is a suspicious brown and red. Included is a combat stimulant injector \
 			for rapid healing, a medical night vision HUD for quick identification of injured personnel, \
 			and other supplies helpful for a field medic."
-	item = /obj/item/storage/firstaid/tactical
+	item = /obj/item/storage/medkit/tactical
 	cost = 4
 	progression_minimum = 15 MINUTES
 

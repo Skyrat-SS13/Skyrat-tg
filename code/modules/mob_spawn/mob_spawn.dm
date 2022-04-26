@@ -133,11 +133,13 @@
 
 	// SKYRAT EDIT ADDITION
 	/// Do we use a random appearance for this ghost role?
-	var/random_appearance = FALSE
+	var/random_appearance = TRUE
 	/// Can we use our loadout for this role?
 	var/loadout_enabled = FALSE
 	/// Can we use our quirks for this role?
 	var/quirks_enabled = FALSE
+	/// Are we limited to a certain species type? LISTED TYPE
+	var/restricted_species
 	// SKYRAT EDIT END
 
 /obj/effect/mob_spawn/ghost_role/Initialize(mapload)
@@ -156,6 +158,11 @@
 /obj/effect/mob_spawn/ghost_role/attack_ghost(mob/user)
 	if(!SSticker.HasRoundStarted() || !loc)
 		return
+	// SKYRAT EDIT ADDITION
+	if(restricted_species && !(user.client?.prefs?.read_preference(/datum/preference/choiced/species) in restricted_species))
+		balloon_alert(user, "incorrect species!")
+		return
+	// SKYRAT EDIT END
 	if(prompt_ghost)
 		var/ghost_role = tgui_alert(usr, "Become [prompt_name]? (Warning, You can no longer be revived!)",, list("Yes", "No"))
 		if(ghost_role != "Yes" || !loc || QDELETED(user))
@@ -185,9 +192,9 @@
 			var/mob/living/carbon/human/spawned_human = spawned_mob
 			mob_possessor?.client?.prefs?.safe_transfer_prefs_to(spawned_human)
 			spawned_human.dna.update_dna_identity()
-			if(loadout_enabled)
-				SSquirks.AssignQuirks(spawned_human, mob_possessor.client)
 			if(quirks_enabled)
+				SSquirks.AssignQuirks(spawned_human, mob_possessor.client)
+			if(loadout_enabled)
 				spawned_human.equip_outfit_and_loadout(outfit, mob_possessor.client.prefs)
 	// SKYRAT EDIT END
 	if(mob_possessor)
@@ -277,9 +284,9 @@
 	. = ..()
 	if(conceal_presence)
 		// We don't want corpse PDAs to show up in the messenger list.
-		var/obj/item/pda/messenger = locate(/obj/item/pda) in spawned_human
+		var/obj/item/modular_computer/tablet/pda/messenger = locate(/obj/item/modular_computer/tablet/pda/) in spawned_human
 		if(messenger)
-			messenger.toff = TRUE
+			messenger.invisible = TRUE
 		// Or on crew monitors
 		var/obj/item/clothing/under/sensor_clothes = spawned_human.w_uniform
 		if(istype(sensor_clothes))

@@ -27,6 +27,11 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/shuttle/tarkon_driver)
+"i" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/toolbox/emergency,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/tarkon_driver)
 "l" = (
 /obj/machinery/light/dim/directional/west,
 /obj/structure/table/reinforced,
@@ -35,6 +40,9 @@
 /area/shuttle/tarkon_driver)
 "p" = (
 /obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/machinery/door/poddoor{
+	id = "driverwindows"
+	},
 /turf/open/floor/mineral/titanium,
 /area/shuttle/tarkon_driver)
 "q" = (
@@ -60,7 +68,7 @@
 /turf/open/floor/mineral/titanium,
 /area/shuttle/tarkon_driver)
 "t" = (
-/obj/structure/chair/office{
+/obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
 /turf/open/floor/mineral/titanium,
@@ -74,15 +82,15 @@
 "v" = (
 /obj/structure/window/reinforced/tinted,
 /obj/structure/table/reinforced,
-/obj/item/storage/toolbox/emergency,
+/obj/item/tank/internals/emergency_oxygen/engi,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/tarkon_driver)
 "x" = (
-/obj/machinery/door/window/southright,
+/obj/machinery/door/window/right/directional/south,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/tarkon_driver)
 "A" = (
-/obj/machinery/door/window/southleft,
+/obj/machinery/door/window/left/directional/south,
 /obj/structure/alien/weeds/node,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/tarkon_driver)
@@ -108,7 +116,7 @@
 /turf/open/floor/mineral/titanium,
 /area/shuttle/tarkon_driver)
 "G" = (
-/obj/machinery/door/window/eastright{
+/obj/machinery/door/window/right/directional/east{
 	opacity = 1
 	},
 /turf/open/floor/mineral/titanium,
@@ -142,11 +150,19 @@
 /obj/structure/closet/crate/internals,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/tarkon_driver)
+"P" = (
+/obj/structure/table/reinforced,
+/obj/machinery/button/door{
+	id = "driverwindows";
+	name = "Blast Shield Control"
+	},
+/turf/open/floor/mineral/titanium,
+/area/shuttle/tarkon_driver)
 "Q" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/tarkon_driver)
 "R" = (
-/obj/machinery/door/window/westleft{
+/obj/machinery/door/window/left/directional/west{
 	opacity = 1
 	},
 /turf/open/floor/mineral/titanium,
@@ -213,7 +229,7 @@ r
 "}
 (5,1,1) = {"
 p
-p
+P
 l
 v
 F
@@ -243,7 +259,7 @@ q
 "}
 (8,1,1) = {"
 p
-p
+i
 u
 d
 E

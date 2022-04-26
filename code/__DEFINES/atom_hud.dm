@@ -44,9 +44,12 @@
 #define ANTAG_HUD "23"
 // for fans to identify pins
 #define FAN_HUD "24"
-//SKYRAT EDIT ADDITION - GUNHUD
-// ammo of guns
+//SKYRAT EDIT START
+/// ammo of guns
 #define AMMO_HUD	"25"
+/// if they have a gun permit
+#define PERMIT_HUD "26"
+//SKYRAT EDIT END
 
 //by default everything in the hud_list of an atom is an image
 //a value in hud_list with one of these will change that behavior
@@ -64,6 +67,7 @@
 #define DATA_HUD_SENTIENT_DISEASE 8
 #define DATA_HUD_AI_DETECT 9
 #define DATA_HUD_FAN 10
+#define DATA_HUD_PERMIT 11 //SKYRAT EDIT
 
 // Notification action types
 #define NOTIFY_JUMP "jump"
@@ -79,6 +83,7 @@
 #define SECHUD_NO_ID "hudno_id"
 #define SECHUD_UNKNOWN "hudunknown"
 #define SECHUD_CENTCOM "hudcentcom"
+#define SECHUD_SYNDICATE "hudsyndicate"
 
 #define SECHUD_ASSISTANT "hudassistant"
 #define SECHUD_ATMOSPHERIC_TECHNICIAN "hudatmospherictechnician"
@@ -115,6 +120,29 @@
 #define SECHUD_WARDEN "hudwarden"
 
 #define SECHUD_CHEF "hudchef"
+
+///SKYRAT EDIT ADDITION - (Semi)MODULAR JOBS
+//SR Security
+#define SECHUD_CORRECTIONS_OFFICER "hudcorrectionsofficer"
+#define SECHUD_SECURITY_MEDIC "hudsecuritymedic"
+//SR Departmental Guards
+#define SECHUD_ENGINEERING_GUARD "hudengineeringguard"
+#define SECHUD_ORDERLY "hudorderly"
+#define SECHUD_CUSTOMS_AGENT "hudcustomsagent"
+#define SECHUD_BOUNCER "hudbouncer"
+#define SECHUD_SCIENCE_GUARD "hudscienceguard"
+//SR Nanotrasen
+#define SECHUD_BLUESHIELD "hudblueshield"
+#define SECHUD_NT_CONSULTANT "hudnanotrasenconsultant"
+//SR SolFed
+#define SECHUD_SPACE_POLICE "hudspacepolice"
+#define SECHUD_SOLFED "hudsolfed"
+#define SECHUD_SOLFED_LIASON "hudsolfedliasion"
+//SR Misc
+#define SECHUD_BARBER "hudbarber"
+#define SECHUD_VANGUARD_OPERATIVE "hudexpeditionarytrooper"
+#define SECHUD_SCRAMBLED "hudscrambled"
+///SKYRAT EDIT ADDITION END
 
 #define SECHUD_DEATH_COMMANDO "huddeathcommando"
 

@@ -3,15 +3,16 @@
 	desc = "A helmet for a MODsuit."
 	icon = 'icons/obj/clothing/modsuit/mod_clothing.dmi'
 	icon_state = "helmet"
-	worn_icon = 'icons/mob/clothing/mod.dmi'
+	worn_icon = 'icons/mob/clothing/modsuit/mod_clothing.dmi'
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 0)
 	body_parts_covered = HEAD
 	heat_protection = HEAD
 	cold_protection = HEAD
-	dynamic_hair_suffix = ""
+
 	obj_flags = IMMUTABLE_SLOW
 	var/alternate_layer = NECK_LAYER
 	var/obj/item/mod/control/mod
+	var/obj/item/clothing/overslot //SKYRAT EDIT - DEPLOYABLE EVERYTHING OVER EVERYTHING
 
 /obj/item/clothing/head/mod/Destroy()
 	if(!QDELETED(mod))
@@ -23,12 +24,22 @@
 /obj/item/clothing/head/mod/atom_destruction(damage_flag)
 	return mod.atom_destruction(damage_flag)
 
+//SKYRAT EDIT START - DEPLOYABLE EVERYTHING OVER EVERYTHING
+
+/obj/item/clothing/head/mod/proc/show_overslot()
+	if(!overslot)
+		return
+	if(!mod.wearer.equip_to_slot_if_possible(overslot, overslot.slot_flags, qdel_on_fail = FALSE, disable_warning = TRUE))
+		mod.wearer.dropItemToGround(overslot, force = TRUE, silent = TRUE)
+	overslot = null
+
+//SKYRAT EDIT END
 /obj/item/clothing/suit/mod
 	name = "MOD chestplate"
 	desc = "A chestplate for a MODsuit."
 	icon = 'icons/obj/clothing/modsuit/mod_clothing.dmi'
 	icon_state = "chestplate"
-	worn_icon = 'icons/mob/clothing/mod.dmi'
+	worn_icon = 'icons/mob/clothing/modsuit/mod_clothing.dmi'
 	blood_overlay_type = "armor"
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 0)
 	body_parts_covered = CHEST|GROIN
@@ -36,6 +47,7 @@
 	cold_protection = CHEST|GROIN
 	obj_flags = IMMUTABLE_SLOW
 	var/obj/item/mod/control/mod
+	var/obj/item/clothing/overslot //SKYRAT EDIT - DEPLOYABLE EVERYTHING OVER EVERYTHING
 
 /obj/item/clothing/suit/mod/Destroy()
 	if(!QDELETED(mod))
@@ -47,12 +59,23 @@
 /obj/item/clothing/suit/mod/atom_destruction(damage_flag)
 	return mod.atom_destruction(damage_flag)
 
+//SKYRAT EDIT START - DEPLOYABLE EVERYTHING OVER EVERYTHING
+
+/obj/item/clothing/suit/mod/proc/show_overslot()
+	if(!overslot)
+		return
+	if(!mod.wearer.equip_to_slot_if_possible(overslot, overslot.slot_flags, qdel_on_fail = FALSE, disable_warning = TRUE))
+		mod.wearer.dropItemToGround(overslot, force = TRUE, silent = TRUE)
+	overslot = null
+
+//SKYRAT EDIT END
+
 /obj/item/clothing/gloves/mod
 	name = "MOD gauntlets"
 	desc = "A pair of gauntlets for a MODsuit."
 	icon = 'icons/obj/clothing/modsuit/mod_clothing.dmi'
 	icon_state = "gauntlets"
-	worn_icon = 'icons/mob/clothing/mod.dmi'
+	worn_icon = 'icons/mob/clothing/modsuit/mod_clothing.dmi'
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 0)
 	body_parts_covered = HANDS|ARMS
 	heat_protection = HANDS|ARMS
@@ -86,7 +109,7 @@
 	desc = "A pair of boots for a MODsuit."
 	icon = 'icons/obj/clothing/modsuit/mod_clothing.dmi'
 	icon_state = "boots"
-	worn_icon = 'icons/mob/clothing/mod.dmi'
+	worn_icon = 'icons/mob/clothing/modsuit/mod_clothing.dmi'
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 0)
 	body_parts_covered = FEET|LEGS
 	heat_protection = FEET|LEGS

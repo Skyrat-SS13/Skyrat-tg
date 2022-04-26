@@ -1,16 +1,16 @@
 //Gateway Medkit, no more combat defibs!
-/obj/item/storage/firstaid/expeditionary
+/obj/item/storage/medkit/expeditionary
 	name = "combat medical kit"
 	desc = "Now with 100% less bullshit."
-	icon_state = "bezerk"
+	icon_state = "medkit_tactical"
 	damagetype_healed = "all"
 
-/obj/item/storage/firstaid/expeditionary/ComponentInitialize()
+/obj/item/storage/medkit/expeditionary/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/firstaid/expeditionary/PopulateContents()
+/obj/item/storage/medkit/expeditionary/PopulateContents()
 	if(empty)
 		return
 	new /obj/item/stack/medical/gauze(src)

@@ -42,7 +42,7 @@
 	icon_door = "wallcloset_med"
 
 /obj/structure/closet/shuttle/medical/PopulateContents()
-	new /obj/item/storage/firstaid/emergency(src)
+	new /obj/item/storage/medkit/emergency(src)
 	new /obj/item/healthanalyzer(src)
 	new /obj/item/reagent_containers/hypospray(src)
 

@@ -172,6 +172,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			var/obj/item/gangster_cellphone/phone = new() // biggest gang in the city
 			phone.gang_id = cell_phone_number
 			phone.name = "[cell_phone_number] branded cell phone"
+			phone.w_class = WEIGHT_CLASS_SMALL	//They get that COMPACT phone hell yea
 			var/phone_equipped = phone.equip_to_best_slot(cop)
 			if(!phone_equipped)
 				to_chat(cop, "Your [phone.name] has been placed at your feet.")
@@ -315,14 +316,14 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	belt = /obj/item/gun/energy/disabler
 	r_pocket = /obj/item/lighter
 	l_pocket = /obj/item/restraints/handcuffs
-	id = /obj/item/card/id/advanced/solgov
+	id = /obj/item/card/id/advanced/solfed
 	backpack_contents = list(/obj/item/storage/box/survival = 1,
 		/obj/item/storage/box/handcuffs = 1,
 		/obj/item/melee/baton/security/loaded = 1,
 		/obj/item/solfed_reporter/swat_caller = 1,
 		/obj/item/beamout_tool = 1)
 
-	id_trim = /datum/id_trim/solgov
+	id_trim = /datum/id_trim/solfed
 
 /datum/antagonist/ert/request_911/atmos
 	name = "Breach Control Technician"
@@ -336,23 +337,22 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	uniform = /obj/item/clothing/under/rank/engineering/engineer/hazard
 	shoes = /obj/item/clothing/shoes/workboots
 	ears = /obj/item/radio/headset/headset_eng
-	head = /obj/item/clothing/head/hardhat/red
 	mask = /obj/item/clothing/mask/gas/atmos
 	belt = /obj/item/storage/belt/utility/full
 	suit_store = /obj/item/tank/internals/oxygen/yellow
-	id = /obj/item/card/id/advanced/solgov
+	id = /obj/item/card/id/advanced/solfed
+	l_pocket = /obj/item/extinguisher/mini
 	backpack_contents = list(/obj/item/storage/box/survival = 1,
-		/obj/item/extinguisher = 2,
+		/obj/item/extinguisher = 1,
 		/obj/item/storage/box/smart_metal_foam = 2,
 		/obj/item/solfed_reporter/swat_caller = 1,
 		/obj/item/beamout_tool = 1)
-	id_trim = /datum/id_trim/solgov
+	id_trim = /datum/id_trim/solfed
 
 //////////////////////////////
 /// Breach Control MODsuit ///
 /obj/item/mod/control/pre_equipped/atmospheric/breach_control //Just a different kit as 811 wont be raiding Robotics; otherwise the same look (For now???)
-	theme = /datum/mod_theme/atmospheric
-	ui_theme = "neutral"	//Le yellow Sol
+	theme = /datum/mod_theme/atmospheric/breach_control
 	applied_cell = /obj/item/stock_parts/cell/super
 	initial_modules = list(
 		/obj/item/mod/module/storage/large_capacity,
@@ -363,6 +363,9 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		/obj/item/mod/module/tether,
 		/obj/item/mod/module/visor/meson,
 	)
+
+/datum/mod_theme/atmospheric/breach_control	//Implement a unique skin for this eventually
+	ui_theme = "neutral"	//Le yellow Sol
 //////////////////////////////
 //////////////////////////////
 
@@ -379,18 +382,18 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	ears = /obj/item/radio/headset/headset_med
 	head = /obj/item/clothing/head/soft/paramedic
-	id = /obj/item/card/id/advanced/solgov
+	id = /obj/item/card/id/advanced/solfed
 	suit =  /obj/item/clothing/suit/toggle/labcoat/paramedic
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
 	belt = /obj/item/storage/belt/medical/paramedic
 	suit_store = /obj/item/flashlight/pen/paramedic
 	backpack_contents = list(/obj/item/storage/box/survival = 1,
 		/obj/item/roller = 1,
-		/obj/item/storage/firstaid/medical = 1,
+		/obj/item/storage/medkit/surgery = 1,
 		/obj/item/solfed_reporter/swat_caller = 1,
 		/obj/item/beamout_tool = 1)
 
-	id_trim = /datum/id_trim/solgov
+	id_trim = /datum/id_trim/solfed
 
 /datum/antagonist/ert/request_911/condom_destroyer
 	name = "Armed S.W.A.T. Officer"
@@ -426,7 +429,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	suit = /obj/item/clothing/suit/armor/riot
 	r_pocket = /obj/item/lighter
 	l_pocket = /obj/item/restraints/handcuffs
-	id = /obj/item/card/id/advanced/solgov
+	id = /obj/item/card/id/advanced/solfed
 	l_hand = /obj/item/gun/ballistic/shotgun/riot
 	backpack_contents = list(/obj/item/storage/box/survival = 1,
 		/obj/item/storage/box/handcuffs = 1,
@@ -435,7 +438,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		/obj/item/solfed_reporter/treason_reporter = 1,
 		/obj/item/beamout_tool = 1)
 
-	id_trim = /datum/id_trim/solgov
+	id_trim = /datum/id_trim/solfed
 
 /datum/antagonist/ert/request_911/treason_destroyer
 	name = "Sol Federation Military"
@@ -471,14 +474,14 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/headset_sec/alt
 	l_pocket = /obj/item/restraints/handcuffs
-	id = /obj/item/card/id/advanced/solgov
-	r_hand = /obj/item/gun/ballistic/automatic/assault_rifle/m16
+	id = /obj/item/card/id/advanced/solfed
+	r_hand = /obj/item/gun/ballistic/automatic/m16
 	backpack_contents = list(/obj/item/storage/box/handcuffs = 1,
 		/obj/item/melee/baton/security/loaded = 1,
 		/obj/item/ammo_box/magazine/m16 = 4
 	)
 
-	id_trim = /datum/id_trim/solgov
+	id_trim = /datum/id_trim/solfed
 
 /obj/item/solfed_reporter
 	name = "SolFed Reporter"

@@ -13,13 +13,13 @@
 	alt_titles = list("AI", "Station Intelligence", "Automated Overseer")
 
 /datum/job/assistant
-	alt_titles = list("Assistant", "Civilian", "Tourist", "Businessman", "Businesswoman", "Trader", "Entertainer", "Freelancer", "Artist", "Off-Duty Staff")
+	alt_titles = list("Assistant", "Civilian", "Tourist", "Businessman", "Businesswoman", "Trader", "Entertainer", "Freelancer", "Artist", "Off-Duty Staff", "Off-Duty Crew")
 
 /datum/job/atmospheric_technician
-	alt_titles = list("Atmospheric Technician", "Life Support Technician", "Emergency Fire Technician")
+	alt_titles = list("Atmospheric Technician", "Life Support Technician", "Emergency Fire Technician", "Firefighter")
 
 /datum/job/barber
-	alt_titles = list("Salon Manager", "Salon Technician", "Stylist", "Colorist")
+	alt_titles = list("Barber", "Salon Manager", "Salon Technician", "Stylist", "Colorist")
 
 /datum/job/bartender
 	alt_titles = list("Bartender", "Mixologist", "Barkeeper")
@@ -99,8 +99,8 @@
 /datum/job/mime
 	alt_titles = list("Mime", "Pantomimist")
 
-/datum/job/nanotrasen_representative
-	alt_titles = list("Nanotrasen Representative", "Nanotrasen Diplomat", "Central Command Representative")
+/datum/job/nanotrasen_consultant
+	alt_titles = list("Nanotrasen Consultant", "Nanotrasen Diplomat", "Central Command Consultant", "Nanotrasen Representative", "Central Command Representative")
 
 /datum/job/orderly
 	alt_titles = list("Orderly", "Medical Guard") // departmental guards alt-titles should be kept to [department] guard to avoid confusion
@@ -145,9 +145,6 @@
 
 /datum/job/security_officer
 	alt_titles = list("Security Officer", "Security Operative", "Peacekeeper")
-
-/datum/job/security_sergeant
-	alt_titles = list("Security Sergeant", "Security Squad Leader", "Security Task Force Leader", "Security Fireteam Leader", "Security Enforcer") //why are these all so edgy, you're a mall cop
 
 /datum/job/shaft_miner
 	alt_titles = list("Shaft Miner", "Excavator", "Spelunker", "Drill Technician", "Prospector")

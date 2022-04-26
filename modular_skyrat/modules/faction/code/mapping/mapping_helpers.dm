@@ -73,9 +73,9 @@
 			name = "internals crate"
 			icon_state = "o2crate"
 		if(4)
-			new /obj/item/storage/firstaid/regular(src)
-			new /obj/item/storage/firstaid/o2(src)
-			new /obj/item/storage/firstaid/toxin(src)
+			new /obj/item/storage/medkit/regular(src)
+			new /obj/item/storage/medkit/o2(src)
+			new /obj/item/storage/medkit/toxin(src)
 			new /obj/item/reagent_containers/hypospray/medipen(src)
 			new /obj/item/reagent_containers/hypospray/medipen/ekit(src)
 			desc = "A medical crate."
@@ -158,7 +158,7 @@
 			new /obj/item/gun/energy/e_gun(src)
 			new /obj/item/gun/energy/e_gun(src)
 			new /obj/item/gun/energy/e_gun/mini(src)
-			new /obj/item/gun/energy/kinetic_accelerator/crossbow(src)
+			new /obj/item/gun/energy/recharge/ebow(src)
 			new /obj/item/gun/energy/e_gun/nuclear(src)
 			new /obj/item/melee/energy/sword(src)
 			new /obj/item/melee/energy/sword(src)
@@ -172,13 +172,13 @@
 			for(var/i in 1 to 2)
 				new /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat(src)
 				new /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat(src)
-			new /obj/item/gun/ballistic/automatic/assault_rifle/akm(src)
+			new /obj/item/gun/ballistic/automatic/akm(src)
 			for(var/i in 1 to 2)
 				new /obj/item/ammo_box/magazine/akm(src)
-			new /obj/item/gun/ballistic/automatic/submachine_gun/ppsh(src)
+			new /obj/item/gun/ballistic/automatic/ppsh(src)
 			for(var/i in 1 to 2)
 				new /obj/item/ammo_box/magazine/ppsh(src)
-			new /obj/item/gun/ballistic/automatic/assault_rifle/stg(src)
+			new /obj/item/gun/ballistic/automatic/stg(src)
 			for(var/i in 1 to 2)
 				new /obj/item/ammo_box/magazine/stg(src)
 

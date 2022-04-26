@@ -53,6 +53,7 @@
 		/obj/item/clothing/suit/modernwintercoatthing = 5,
 		/obj/item/clothing/suit/fallsparka = 5,
 		/obj/item/clothing/suit/toggle/lawyer/white = 5,
+		/obj/item/clothing/under/suit/fancy = 5,
 		/obj/item/clothing/under/misc/bluetracksuit = 5,
 		/obj/item/clothing/under/suit/black/female/skirt = 5,
 		/obj/item/clothing/under/suit/black/female = 5,
@@ -83,6 +84,7 @@
 		/obj/item/clothing/head/fedora/white = 5,
 		/obj/item/clothing/head/fedora/fedblack = 5,
 		/obj/item/clothing/head/fedora/fedbrown = 5,
+		/obj/item/clothing/suit/croptop = 5,
 	)
 
 	skyrat_premium = list( //being here means you're artificially rare, congratulations

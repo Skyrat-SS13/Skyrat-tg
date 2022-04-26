@@ -114,7 +114,7 @@
 	icon_state = "purified_soulstone"
 	theme = THEME_HOLY
 
-/obj/item/soulstone/anybody/sparring/Initialize(mapload)
+/obj/item/soulstone/anybody/chaplain/sparring/Initialize(mapload)
 	. = ..()
 	name = "[GLOB.deity]'s punishment"
 	desc = "A prison for those who lost [GLOB.deity]'s game."
@@ -172,6 +172,11 @@
 	if(HAS_TRAIT(M, TRAIT_NO_SOUL))
 		to_chat(user, span_warning("This body does not possess a soul to capture."))
 		return
+	// SKYRAT EDIT START
+	if(!do_after(user, 5 SECONDS, M))
+		to_chat(user, span_warning("You must stand still to capture their soul!"))
+		return
+	// SKYRAT EDIT END
 	log_combat(user, M, "captured [M.name]'s soul", src)
 	capture_soul(M, user)
 

@@ -190,7 +190,6 @@ GLOBAL_LIST_INIT(leather_recipes, list ( \
 	new/datum/stack_recipe("saddle", /obj/item/saddle, 5), \
 	//SKYRAT EDIT ADDITION BEGIN
 	new/datum/stack_recipe("gear harness", /obj/item/clothing/under/misc/gear_harness, 6), \
-	new/datum/stack_recipe("loincloth", /obj/item/clothing/under/costume/loincloth, 2), \
 	new/datum/stack_recipe("xenoarch belt", /obj/item/storage/belt/utility/xenoarch, 4), \
 	//SKYRAT EDIT ADDITION END
 	new/datum/stack_recipe("sheriff vest", /obj/item/clothing/accessory/vest_sheriff, 4), \
@@ -302,7 +301,7 @@ GLOBAL_LIST_INIT(sinew_recipes, list ( \
 /obj/item/stack/sheet/animalhide/carp
 	name = "carp scales"
 	desc = "The scaly skin of a space carp. It looks quite beatiful when detached from the foul creature who once wore it."
-	singular_name = "carp scales"
+	singular_name = "carp scale"
 	icon_state = "sheet-carp"
 	inhand_icon_state = "sheet-carp"
 	merge_type = /obj/item/stack/sheet/animalhide/carp

@@ -11,40 +11,65 @@
 	if(is_mining_level(z))
 		icon_state = "primitive_water_basin"
 
-/obj/structure/reagent_water_basin/attackby(obj/item/I, mob/living/user, params)
-	if(istype(I, /obj/item/forging/tongs))
-		var/obj/item/forging/incomplete/searchIncomplete = locate(/obj/item/forging/incomplete) in I.contents
-		if(searchIncomplete?.times_hit < searchIncomplete.average_hits)
-			to_chat(user, span_warning("You cool down the metal-- it wasn't ready yet."))
-			searchIncomplete.heat_world_compare = 0
-			playsound(src, 'modular_skyrat/modules/reagent_forging/sound/hot_hiss.ogg', 50, TRUE)
-			return
-		if(searchIncomplete?.times_hit >= searchIncomplete.average_hits)
-			to_chat(user, span_notice("You cool down the metal-- it is ready."))
-			playsound(src, 'modular_skyrat/modules/reagent_forging/sound/hot_hiss.ogg', 50, TRUE)
-			var/obj/item/forging/complete/spawnItem = searchIncomplete.spawn_item
-			new spawnItem(get_turf(src))
-			qdel(searchIncomplete)
-			I.icon_state = "tong_empty"
+/obj/structure/reagent_water_basin/examine(mob/user)
+	. = ..()
+	var/check_fishable = GetComponent(/datum/component/fishing)
+	if(!check_fishable)
+		. += span_notice("[src] can be upgraded through a bluespace crystal or a journeyman smithy!")
+	else
+		. += span_notice("[src] has been upgraded! There is a strange orb that floats within the water... it seems to be replacing the water slowly.")
+
+/obj/structure/reagent_water_basin/attack_hand(mob/living/user, list/modifiers)
+	. = ..()
+	var/smithing_skill = user.mind.get_skill_level(/datum/skill/smithing)
+	var/check_fishable = GetComponent(/datum/component/fishing)
+	if(smithing_skill < SKILL_LEVEL_JOURNEYMAN || check_fishable)
 		return
-	if(I.tool_behaviour == TOOL_WRENCH)
-		for(var/i in 1 to 5)
-			new /obj/item/stack/sheet/mineral/wood(get_turf(src))
-		qdel(src)
-		return
-	if(istype(I, /obj/item/stack/ore/glass))
-		var/obj/item/stack/ore/glass/glass_obj = I
+	balloon_alert(user, "the water deepens!")
+	AddComponent(/datum/component/fishing, set_loot = GLOB.fishing_weights, allow_fishes = TRUE)
+
+/obj/structure/reagent_water_basin/attackby(obj/item/attacking_item, mob/living/user, params)
+	if(istype(attacking_item, /obj/item/stack/ore/glass))
+		var/obj/item/stack/ore/glass/glass_obj = attacking_item
 		if(!glass_obj.use(1))
 			return
-		new /obj/item/ceramic/clay(get_turf(src))
+		new /obj/item/stack/clay(get_turf(src))
+		user.mind.adjust_experience(/datum/skill/production, 1)
 		return
-	if(istype(I, /obj/item/stack/ore/bluespace_crystal))
+
+	if(istype(attacking_item, /obj/item/stack/ore/bluespace_crystal))
 		var/check_fishable = GetComponent(/datum/component/fishing)
 		if(check_fishable)
 			return
-		var/obj/item/stack/ore/bluespace_crystal/bs_crystal = I
+		var/obj/item/stack/ore/bluespace_crystal/bs_crystal = attacking_item
 		if(!bs_crystal.use(1))
 			return
-		to_chat(user, span_notice("You connect [src], through bluespace, to a distant ocean."))
+		balloon_alert(user, "the water deepens!")
 		AddComponent(/datum/component/fishing, set_loot = GLOB.fishing_weights, allow_fishes = TRUE)
+		return
+
 	return ..()
+
+/obj/structure/reagent_water_basin/wrench_act(mob/living/user, obj/item/tool)
+	tool.play_tool_sound(src)
+	for(var/i in 1 to 5)
+		new /obj/item/stack/sheet/mineral/wood(get_turf(src))
+	qdel(src)
+	return TRUE
+
+/obj/structure/reagent_water_basin/tong_act(mob/living/user, obj/item/tool)
+	var/obj/item/forging/incomplete/search_incomplete = locate(/obj/item/forging/incomplete) in tool.contents
+	if(!search_incomplete)
+		return FALSE
+	playsound(src, 'modular_skyrat/modules/reagent_forging/sound/hot_hiss.ogg', 50, TRUE)
+	if(search_incomplete?.times_hit < search_incomplete.average_hits)
+		to_chat(user, span_warning("You cool down the metal-- it wasn't ready yet."))
+		COOLDOWN_RESET(search_incomplete, heating_remainder)
+		return FALSE
+	if(search_incomplete?.times_hit >= search_incomplete.average_hits)
+		to_chat(user, span_notice("You cool down the metal-- it is ready."))
+		user.mind.adjust_experience(/datum/skill/smithing, 10) //using the water basin on a ready item gives decent experience.
+		new search_incomplete.spawn_item(get_turf(src))
+		qdel(search_incomplete)
+		tool.icon_state = "tong_empty"
+	return FALSE

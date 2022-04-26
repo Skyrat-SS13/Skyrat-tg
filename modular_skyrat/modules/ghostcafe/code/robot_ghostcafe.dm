@@ -39,11 +39,18 @@
 		/obj/item/stack/cable_coil,
 		/obj/item/restraints/handcuffs/cable/zipties,
 		/obj/item/rsf/cyborg,
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/juice, // They can make glasses, and have their own, let them serve drinks!
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/soda,
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/alcohol,
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/misc,
 		/obj/item/reagent_containers/food/drinks/drinkingglass,
 		/obj/item/soap/nanotrasen,
+		/obj/item/mop/cyborg, // Soap's good and all, but a mop is good, too
+		/obj/item/lightreplacer, // Lights go out sometimes, or get broken, let the Borg help fix them
 		/obj/item/borg/cyborghug,
 		/obj/item/dogborg_nose,
 		/obj/item/dogborg_tongue,
+		/obj/item/reagent_containers/borghypo, // Let Roleplay Borgs heal visitors
 		/obj/item/borg_shapeshifter/stable)
 	hat_offset = -3
 
@@ -51,3 +58,10 @@
 	signalCache = list()
 	activationCost = 0
 	activationUpkeep = 0
+
+/obj/item/robot_model/roleplay/respawn_consumable(mob/living/silicon/robot/cyborg, coeff = 1)
+	..()
+	var/obj/item/lightreplacer/light_replacer = locate(/obj/item/lightreplacer) in basic_modules
+	if(light_replacer)
+		for(var/charge in 1 to coeff)
+			light_replacer.Charge(cyborg) // Make Roleplay Borg Light Replacer recharge, isntead of requiring Glass

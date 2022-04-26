@@ -14,12 +14,13 @@
 	var/buildstacktype = /obj/item/stack/sheet/iron
 	var/buildstackamount = 1
 	var/item_chair = /obj/item/chair // if null it can't be picked up
+	var/buckle_message = TRUE //SKYRAT EDIT ADDITION -- chair buckle messages
 
 
 /obj/structure/chair/examine(mob/user)
 	. = ..()
 	. += span_notice("It's held together by a couple of <b>bolts</b>.")
-	if(!has_buckled_mobs() && can_buckle)
+	if(!has_buckled_mobs() && can_buckle && buckle_message)  //SKYRAT EDIT ADDITION -- chair buckle messages
 		. += span_notice("While standing on [src], drag and drop your sprite onto [src] to buckle to it.")
 
 /obj/structure/chair/Initialize(mapload)
@@ -68,6 +69,9 @@
 		return
 	. = ..()
 
+/obj/structure/chair/AltClick(mob/user)
+	return ..() // This hotkey is BLACKLISTED since it's used by /datum/component/simple_rotation
+
 ///allows each chair to request the electrified_buckle component with overlays that dont look ridiculous
 /obj/structure/chair/proc/electrify_self(obj/item/assembly/shock_kit/input_shock_kit, mob/user, list/overlays_from_child_procs)
 	SHOULD_CALL_PARENT(TRUE)
@@ -111,8 +115,10 @@
 /obj/structure/chair/proc/handle_layer()
 	if(has_buckled_mobs() && dir == NORTH)
 		layer = ABOVE_MOB_LAYER
+		plane = GAME_PLANE_UPPER
 	else
 		layer = OBJ_LAYER
+		plane = GAME_PLANE
 
 /obj/structure/chair/post_buckle_mob(mob/living/M)
 	. = ..()
@@ -172,7 +178,7 @@
 /obj/structure/chair/comfy/Initialize(mapload)
 	armrest = GetArmrest()
 	armrest.layer = ABOVE_MOB_LAYER
-	armrest.plane = ABOVE_GAME_PLANE
+	armrest.plane = GAME_PLANE_UPPER
 	return ..()
 
 /obj/structure/chair/comfy/proc/GetArmrest()
@@ -222,6 +228,9 @@
 		overlays_from_child_procs = list(image('icons/obj/chairs.dmi', loc, "echair_over", pixel_x = -1))
 	. = ..()
 
+/obj/structure/chair/comfy/shuttle/tactical
+	name = "tactical chair"
+
 /obj/structure/chair/comfy/carp
 	name = "carpskin chair"
 	desc = "A luxurious chair, the many purple scales reflect the light in a most pleasing manner."
@@ -244,6 +253,9 @@
 	if(!overlays_from_child_procs)
 		overlays_from_child_procs = list(image('icons/obj/chairs.dmi', loc, "echair_over", pixel_x = -1))
 	. = ..()
+
+/obj/structure/chair/office/tactical
+	name = "tactical swivel chair"
 
 /obj/structure/chair/office/light
 	icon_state = "officechair_white"
@@ -533,3 +545,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	custom_materials = list(/datum/material/plastic = 2000)
 	break_chance = 25
 	origin_type = /obj/structure/chair/plastic
+
+/obj/structure/chair/musical
+	name = "musical chair"
+	desc = "You listen to this. Either by will or by force."
+	item_chair = /obj/item/chair/musical
+	particles = new /particles/musical_notes
+
+/obj/item/chair/musical
+	name = "musical chair"
+	desc = "Oh, so this is like the fucked up Monopoly rules where there are no rules and you can pick up and place the musical chairs as you please."
+	particles = new /particles/musical_notes
+	origin_type = /obj/structure/chair/musical

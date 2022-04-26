@@ -1,18 +1,28 @@
-/obj/item/clothing/suit/armor/vest/capcarapace/syndicate_winter
+//DS-2/Syndicate clothing.
+
+/obj/item/clothing/suit/armor/vest/capcarapace/syndicate
+	icon = 'modular_skyrat/modules/syndie_edits/icons/obj.dmi'
+	worn_icon = 'modular_skyrat/modules/syndie_edits/icons/worn.dmi'
+	icon_state = "syndievest"
+
+/obj/item/clothing/suit/armor/vest/capcarapace/syndicate/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/toggle_icon)
+
+/obj/item/clothing/suit/armor/vest/capcarapace/syndicate/winter
 	name = "syndicate captain's winter vest"
-	desc = "A sinister yet comfortable looking vest of advanced armor worn over a black and red fireproof jacket. The fur is said to be from genuine wolves on the icemoon!"
-	icon = 'modular_skyrat/modules/syndie_edits/icons/syndievest_winter_items.dmi'
-	worn_icon = 'modular_skyrat/modules/syndie_edits/icons/syndievest_winter.dmi'
+	desc = "A sinister yet comfortable looking vest of advanced armor worn over a black and red fireproof jacket. The fur is said to be from wolves on the icemoon."
+	icon = 'modular_skyrat/modules/syndie_edits/icons/obj.dmi'
+	worn_icon = 'modular_skyrat/modules/syndie_edits/icons/worn.dmi'
 	icon_state = "syndievest_winter"
-	inhand_icon_state = "armor"
 	body_parts_covered = CHEST|GROIN
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	armor = list(MELEE = 50, BULLET = 40, LASER = 50, ENERGY = 50, BOMB = 25, BIO = 0, FIRE = 100, ACID = 90, WOUND = 10)
-	dog_fashion = null
 	resistance_flags = FIRE_PROOF
 
-//DS2 items
+/obj/item/clothing/suit/armor/vest/capcarapace/syndicate/winter/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/toggle_icon)
 
 /obj/item/clothing/head/helmet/swat/ds
 	name = "SWAT helmet"
@@ -27,7 +37,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "balaclava_ds"
-	flags_inv = HIDEHAIR | HIDEFACIALHAIR | HIDEEARS
+	flags_inv = HIDEHAIR | HIDEFACE | HIDEEARS | HIDEFACIALHAIR
 
 /obj/item/clothing/shoes/combat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
@@ -55,8 +65,15 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 	icon_state = "webbingds"
 	worn_icon_state = "webbingds"
+	uses_advanced_reskins = FALSE
 
 /obj/item/clothing/suit/armor/bulletproof/old
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "bulletproof"
+
+/obj/item/clothing/suit/hooded/wintercoat/syndicate/short
+	desc = "A shorter than usual sinister black coat with red accents and a fancy mantle, it feels like it can take a hit. The zipper tab looks like a triple headed snake in the shape of an S, spooky."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "coatsyndie_short"

@@ -98,11 +98,15 @@
 #define HIDEHEADGEAR (1<<11)
 ///for lizard snouts, because some HIDEFACE clothes don't actually conceal that portion of the head.
 #define HIDESNOUT (1<<12)
-///SKYRAT EDIT ADDITION: CUSTOM EAR TOGGLE FOR ANTHRO/ETC EAR SHOWING - Manually set this on items you want anthro ears to show on!
+///hides mutant/moth wings, does not apply to functional wings
+#define HIDEMUTWINGS (1<<13)
+
+//SKYRAT EDIT ADDITION: CUSTOM EAR TOGGLE FOR ANTHRO/ETC EAR SHOWING -
+/// Manually set this on items you want anthro ears to show on!
 #define SHOWSPRITEEARS (1<<13)
 /// Does this sprite also hide the spine on tails? Realistically only useful for the clothes that have a special tail overlay, like MODsuits
 #define HIDESPINE (1<<14)
-//SKYRAT EDIT ADDITION BEGIN - ERP UPDATE
+/// Does this sprite hide devious devices?
 #define HIDESEXTOY (1<<15)
 //SKYRAT EDIT ADDITION END
 
@@ -130,22 +134,37 @@
 #define RIGHT_HANDS 2
 
 //flags for female outfits: How much the game can safely "take off" the uniform without it looking weird
+/// For when there's simply no need for a female version of this uniform.
 #define NO_FEMALE_UNIFORM 0
-#define FEMALE_UNIFORM_FULL 1
-#define FEMALE_UNIFORM_TOP 2
+/// For the game to take off everything, disregards other flags.
+#define FEMALE_UNIFORM_FULL (1<<0)
+/// For when you really need to avoid the game cutting off that one pixel between the legs, to avoid the comeback of the infamous "dixel".
+#define FEMALE_UNIFORM_TOP_ONLY (1<<1)
+/// For when you don't want the "breast" effect to be applied (the one that cuts two pixels in the middle of the front of the uniform when facing east or west).
+#define FEMALE_UNIFORM_NO_BREASTS (1<<2)
 
 //flags for alternate styles: These are hard sprited so don't set this if you didn't put the effort in
 #define NORMAL_STYLE 0
 #define ALT_STYLE 1
 #define DIGITIGRADE_STYLE 2
 
-//flags for outfits that have mutantrace variants (try not to use this): Currently only needed if you're trying to add tight fitting bootyshorts
-#define NO_MUTANTRACE_VARIATION 0
-#define MUTANTRACE_VARIATION 1
-
-#define NOT_DIGITIGRADE 0
-#define FULL_DIGITIGRADE 1
-#define SQUISHED_DIGITIGRADE 2
+//Flags (actual flags, fucker ^) for /obj/item/var/supports_variations_flags
+///No alternative sprites based on bodytype
+#define CLOTHING_NO_VARIATION (1<<0)
+///Has a sprite for digitigrade legs specifically.
+#define CLOTHING_DIGITIGRADE_VARIATION (1<<1)
+///The sprite works fine for digitigrade legs as-is.
+#define CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON (1<<2)
+// SKYRAT EDIT ADDITION
+/// The sprite works fine for snouts.
+#define CLOTHING_SNOUTED_VARIATION (1<<3)
+/// The sprite works fine for snouts as-is.
+#define CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON (1<<4)
+/// The sprite works fine for vox snouts.
+#define CLOTHING_SNOUTED_VOX_VARIATION (1<<5)
+/// The sprite works fine for vox snouts as is.
+#define CLOTHING_SNOUTED_VOX_VARIATION_NO_NEW_ICON (1<<6)
+// SKYRAT EDIT END
 
 //flags for covering body parts
 #define GLASSESCOVERSEYES (1<<0)
@@ -189,6 +208,7 @@ GLOBAL_LIST_INIT(detective_vest_allowed, typecacheof(list(
 	/obj/item/tank/internals/plasmaman,
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
+	/obj/item/storage/belt/holster/thermal,
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 	)))
 
@@ -206,6 +226,7 @@ GLOBAL_LIST_INIT(security_vest_allowed, typecacheof(list(
 	/obj/item/tank/internals/plasmaman,
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
+	/obj/item/storage/belt/holster/thermal,
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 	)))
 
@@ -219,6 +240,7 @@ GLOBAL_LIST_INIT(security_wintercoat_allowed, typecacheof(list(
 	/obj/item/restraints/handcuffs,
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
+	/obj/item/storage/belt/holster/thermal,
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 	)))
 

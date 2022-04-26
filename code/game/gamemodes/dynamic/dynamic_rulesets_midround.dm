@@ -67,16 +67,6 @@
 			if (M.mind.assigned_role.title in restricted_roles) // Does their job allow it?
 				trimmed_list.Remove(M)
 				continue
-			// SKYRAT EDIT ADDITION - PROTECTED JOBS
-			if(M.mind.assigned_role.antagonist_restricted)
-				if(M.mind.assigned_role.restricted_antagonists)
-					if(antag_flag in M.mind.assigned_role.restricted_antagonists)
-						trimmed_list.Remove(M)
-						continue
-				else //Assume it's all antagonist roles.
-					trimmed_list.Remove(M)
-					continue
-			// SKYRAT EDIT END
 			if ((exclusive_roles.len > 0) && !(M.mind.assigned_role.title in exclusive_roles)) // Is the rule exclusive to their job?
 				trimmed_list.Remove(M)
 				continue
@@ -1001,7 +991,7 @@
 		ROLE_POSITRONIC_BRAIN,
 	)
 	required_candidates = 1
-	weight = 5
+	weight = 0 // Disabled until Dynamic midround rolling handles minor threats better
 	cost = 3 //Worth less than obsessed, but there's more of them.
 	requirements = list(10,10,10,10,10,10,10,10,10,10)
 	repeatable = TRUE

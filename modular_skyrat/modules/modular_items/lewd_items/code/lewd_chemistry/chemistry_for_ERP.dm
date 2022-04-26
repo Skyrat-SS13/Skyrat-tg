@@ -150,18 +150,16 @@
 		to_chat(exposed_mob, span_purple("[displayed_extreme_thought]"))
 
 /datum/reagent/drug/aphrodisiac/crocin/hexacrocin/overdose_effects(mob/living/carbon/human/exposed_mob)
-	if(HAS_TRAIT(exposed_mob, TRAIT_BIMBO) || HAS_TRAIT(exposed_mob, TRAIT_SOBSESSED))
+	if(prob(95) || HAS_TRAIT(exposed_mob, TRAIT_BIMBO))
 		return ..()
 
-	if(prob(5))
-		to_chat(exposed_mob, span_purple("Your libido is going haywire! Speaking gets much harder..."))
-		exposed_mob.gain_trauma(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_BASIC)
-		ADD_TRAIT(exposed_mob, TRAIT_BIMBO, LEWDCHEM_TRAIT)
-
+	to_chat(exposed_mob, span_purple("Your libido is going haywire! It feels like speaking is much harder..."))
+	exposed_mob.gain_trauma(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_BASIC)
+	ADD_TRAIT(exposed_mob, TRAIT_BIMBO, LEWDCHEM_TRAIT)
 
 //Dopamine. Generates in character after orgasm.
 /datum/reagent/drug/aphrodisiac/dopamine
-	name = "dopamine"
+	name = "dopamine...?"
 	description = "Pure happiness"
 	taste_description = "an indescribable, slightly sour taste. Something in it relaxes you, filling you with pleasure."
 	color = "#97ffee"
@@ -176,7 +174,7 @@
 	pain_adjust_amount = -0.5
 
 	/// How druggy the chem will make the mob
-	var/drugginess_amount = 5
+	var/drugginess_amount = 5 SECONDS
 	/// How likely the drug is to make the mob druggy per life process
 	var/drugginess_chance = 7
 
@@ -187,7 +185,7 @@
 	..()
 
 /datum/reagent/drug/aphrodisiac/dopamine/life_effects(mob/living/carbon/human/exposed_mob)
-	exposed_mob.set_drugginess(drugginess_amount)
+	exposed_mob.set_timed_status_effect(drugginess_amount, /datum/status_effect/drugginess)
 	if(prob(drugginess_chance))
 		exposed_mob.emote(pick("twitch","drool","moan","giggle","shaking"))
 
@@ -315,16 +313,15 @@
 	if(exposed_mob.reagents.has_reagent(/datum/reagent/drug/aphrodisiac/crocin/hexacrocin))
 		exposed_mob.reagents.remove_reagent(/datum/reagent/drug/aphrodisiac/crocin/hexacrocin, reagent_reduction_amount)
 
-/datum/reagent/drug/aphrodisiac/camphor/pentacamphor/overdose_effects(mob/living/carbon/human/exposed_mob)
-	if(!HAS_TRAIT(exposed_mob, TRAIT_BIMBO) && !HAS_TRAIT(exposed_mob, TRAIT_NEVERBONER))
+/datum/reagent/drug/aphrodisiac/camphor/pentacamphor/overdose_start(mob/living/carbon/human/exposed_mob)
+	if(!HAS_TRAIT(exposed_mob, TRAIT_NEVERBONER))
 		to_chat(exposed_mob, span_notice("You feel like you'll never feel aroused again..."))
-		ADD_TRAIT(exposed_mob,TRAIT_NEVERBONER, LEWDCHEM_TRAIT)
-
-	if(HAS_TRAIT(exposed_mob, TRAIT_BIMBO))
-		if(prob(30))
-			exposed_mob.cure_trauma_type(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_BASIC)
-			to_chat(exposed_mob, span_notice("Your mind is free. Your thoughts are pure and innocent once more."))
-			REMOVE_TRAIT(exposed_mob, TRAIT_BIMBO, LEWDCHEM_TRAIT)
+		ADD_TRAIT(exposed_mob, TRAIT_NEVERBONER, LEWDCHEM_TRAIT)
+	if(!HAS_TRAIT(exposed_mob, TRAIT_BIMBO))
+		return
+	exposed_mob.cure_trauma_type(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_ABSOLUTE)
+	to_chat(exposed_mob, span_notice("Your mind is free. Your thoughts are pure and innocent once more."))
+	REMOVE_TRAIT(exposed_mob, TRAIT_BIMBO, LEWDCHEM_TRAIT)
 
 /*
 * GENITAL ENLARGEMENT CHEMICALS
@@ -452,7 +449,7 @@
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
 		if(exposed_mob.gender == MALE)
 			exposed_mob.set_gender(FEMALE)
-			exposed_mob.body_type = exposed_mob.gender
+			exposed_mob.physique = exposed_mob.gender
 			exposed_mob.update_body()
 			exposed_mob.update_mutations_overlay()
 		if(!mob_penis)
@@ -599,7 +596,7 @@
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
 		if(exposed_mob.gender == FEMALE)
 			exposed_mob.set_gender(MALE)
-			exposed_mob.body_type = exposed_mob.gender
+			exposed_mob.physique = exposed_mob.gender
 			exposed_mob.update_body()
 			exposed_mob.update_mutations_overlay()
 		if(!mob_breasts)

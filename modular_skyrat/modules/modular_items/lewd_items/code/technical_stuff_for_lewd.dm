@@ -29,6 +29,7 @@
 	falloff_distance = 1
 	falloff_exponent = 5
 	extra_range = SILENCED_SOUND_EXTRARANGE
+	ignore_walls = FALSE
 
 /datum/looping_sound/vibrator/low
 	volume = 80
@@ -83,6 +84,21 @@
 		/obj/item/polepack = 1)
 	generate_items_inside(items_inside,src)
 
+//Shibari stand
+/obj/item/storage/box/shibari_stand
+	name = "DIY Shibari stand kit"
+	desc = "Contains everything you need to build your own shibari stand!"
+
+/obj/item/storage/box/shibari_stand/PopulateContents()
+	var/static/items_inside = list(
+		/obj/item/shibari_stand_kit = 1,
+		/obj/item/paper/shibari_kit_instructions = 1)
+	generate_items_inside(items_inside,src)
+
+//Paper instructions for shibari kit
+
+/obj/item/paper/shibari_kit_instructions
+	info = "Hello! Congratulations on your purchase of the shibari kit by LustWish! Some newbies may get confused by our ropes, so we prepared a small instructions for you! First of all, you have to have a wrench to construct the stand itself. Secondly, you can use screwdrivers to change the color of your shibari stand. Just replace the plastic fittings! Thirdly, if you want to tie somebody to a bondage stand you need to fully tie their body, on both groin and chest!. To do that you need to use rope on body and then on groin of character, then you can just buckle them to the stand like any chair. Don't forget to have some ropes on your hand to actually tie them to the stand, as there's no ropes included with it! And that's it!"
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////This code is supposed to be placed in "code/modules/mob/living/carbon/human/inventory.dm"/////////////
 //If you are nice person you can transfer this part of code to it, but i didn't for modularisation reasons//
@@ -615,7 +631,6 @@
 	drop_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg'
 	pickup_sound =  'sound/items/handling/cloth_pickup.ogg'
 	slot_flags = ITEM_SLOT_VAGINA | ITEM_SLOT_ANUS | ITEM_SLOT_PENIS | ITEM_SLOT_NIPPLES
-	var/mutantrace_variation = NO_MUTANTRACE_VARIATION //Are there special sprites for specific situations? Don't use this unless you need to.
 
 /obj/item/clothing/sextoy/dropped(mob/user)
 	..()
@@ -630,6 +645,14 @@
 	holder.update_inv_nipples()
 	holder.update_inv_penis()
 	holder.fan_hud_set_fandom()
+
+/// A check to confirm if you can open the toy's color/design radial menu
+/obj/item/clothing/sextoy/proc/check_menu(mob/living/user)
+	if(!istype(user))
+		return FALSE
+	if(user.incapacitated())
+		return FALSE
+	return TRUE
 
 /////////////////////////////
 // ICON UPDATING EXTENTION //
@@ -672,7 +695,7 @@
 	var/mutable_appearance/vagina_overlay
 
 	if(!vagina_overlay)
-		vagina_overlay = U?.build_worn_icon(default_layer = VAGINA_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_icon = icon_file)
+		vagina_overlay = U?.build_worn_icon(default_layer = VAGINA_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
 	if(OFFSET_UNIFORM in dna.species.offset_features)
 		vagina_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
@@ -711,7 +734,7 @@
 	var/mutable_appearance/anus_overlay
 
 	if(!anus_overlay)
-		anus_overlay = U?.build_worn_icon(default_layer = ANUS_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_icon = icon_file)
+		anus_overlay = U?.build_worn_icon(default_layer = ANUS_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
 	if(OFFSET_UNIFORM in dna.species.offset_features)
 		anus_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
@@ -750,7 +773,7 @@
 	var/mutable_appearance/nipples_overlay
 
 	if(!nipples_overlay)
-		nipples_overlay = U?.build_worn_icon(default_layer = NIPPLES_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_icon = icon_file)
+		nipples_overlay = U?.build_worn_icon(default_layer = NIPPLES_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
 	if(OFFSET_UNIFORM in dna.species.offset_features)
 		nipples_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
@@ -789,7 +812,7 @@
 	var/mutable_appearance/penis_overlay
 
 	if(!penis_overlay)
-		penis_overlay = U?.build_worn_icon(default_layer = PENIS_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_icon = icon_file)
+		penis_overlay = U?.build_worn_icon(default_layer = PENIS_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
 	if(OFFSET_UNIFORM in dna.species.offset_features)
 		penis_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
@@ -799,6 +822,7 @@
 	apply_overlay(PENIS_LAYER)
 	update_mutant_bodyparts()
 
+/*
 // Shoes update extention for supporting correctt removing shoe in sleepbag
 /mob/living/carbon/human/update_inv_shoes()
 
@@ -824,12 +848,10 @@
 					client.screen += shoes					//add it to client's screen
 			update_observer_view(shoes,1)
 			var/icon_file = shoes.worn_icon
-			var/applied_styles = NONE
-			if((DIGITIGRADE in dna.species.species_traits) && (shoes.mutant_variants & STYLE_DIGITIGRADE))
-				applied_styles |= STYLE_DIGITIGRADE
+			if((shoes.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && (shoes.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 				icon_file = shoes.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/feet_digi.dmi'
 
-			overlays_standing[SHOES_LAYER] = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', override_icon = icon_file, mutant_styles = applied_styles)
+			overlays_standing[SHOES_LAYER] = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', override_file = icon_file)
 			var/mutable_appearance/shoes_overlay = overlays_standing[SHOES_LAYER]
 			if(OFFSET_SHOES in dna.species.offset_features)
 				shoes_overlay.pixel_x += dna.species.offset_features[OFFSET_SHOES][1]
@@ -841,7 +863,7 @@
 		return
 	else
 		..()
-
+*/
 // Updating vagina hud slot
 /mob/living/carbon/human/update_hud_vagina(obj/item/I)
 	I.screen_loc = ui_vagina
@@ -998,6 +1020,12 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 		strippable_items[strippable_item.key] = strippable_item
 	GLOB.strippable_human_items += strippable_items
 	return strippable_items
+
+//Disables ERP strippable inventory depending on config
+/datum/element/strippable/Attach(datum/target, list/items, should_strip_proc_path)
+	. = ..()
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		src.items -= GLOB.strippable_human_erp_items
 
 ////////////////////////////////////////////////////////////////////
 // EXTENTIONS FOR SPRITE_ACCESSORY IS_HIDDEN CHECKS FOR ERP STUFF //
@@ -1215,3 +1243,6 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 
 	client.mob.hud_used.hidden_inventory_update(client.mob)
 	client.mob.hud_used.persistent_inventory_update(client.mob)
+
+/obj/item/proc/is_in_genital(mob/living/carbon/human/the_guy)
+	return !!(src == the_guy.penis || src == the_guy.vagina || src == the_guy.anus || src == the_guy.nipples)

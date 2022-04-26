@@ -71,7 +71,7 @@
 	user.dropItemToGround(src, TRUE)
 	user.Stun(100, ignore_canstun = TRUE)
 	sleep(20)
-	playsound(src, "rustle", 50, TRUE, -5)
+	playsound(src, SFX_RUSTLE, 50, TRUE, -5)
 	qdel(user)
 
 /obj/item/storage/backpack/santabag
@@ -313,7 +313,7 @@
 
 /obj/item/storage/backpack/satchel/flat/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE, INVISIBILITY_OBSERVER, use_anchor = TRUE)
+	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE, INVISIBILITY_MAXIMUM, use_anchor = TRUE) // SKYRAT EDIT - ORIGINAL: INVISIBILITY_OBSERVER
 
 /obj/item/storage/backpack/satchel/flat/ComponentInitialize()
 	. = ..()
@@ -630,7 +630,7 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/med/medicalbundle/PopulateContents()
 	new /obj/item/clothing/shoes/magboots/syndie(src)
-	new /obj/item/storage/firstaid/tactical(src)
+	new /obj/item/storage/medkit/tactical(src)
 	new /obj/item/gun/ballistic/automatic/l6_saw/toy(src)
 	new /obj/item/ammo_box/foambox/riot(src)
 
@@ -661,8 +661,7 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/firestarter/PopulateContents()
 	new /obj/item/clothing/under/syndicate/soviet(src)
-	new /obj/item/watertank/op(src)
-	new /obj/item/mod/control/pre_equipped/elite(src)
+	new /obj/item/mod/control/pre_equipped/elite/flamethrower(src)
 	new /obj/item/gun/ballistic/automatic/pistol/aps(src)
 	new /obj/item/ammo_box/magazine/m9mm_aps/fire(src)
 	new /obj/item/ammo_box/magazine/m9mm_aps/fire(src)
@@ -678,7 +677,7 @@
 	STR.silent = TRUE
 
 /obj/item/storage/backpack/duffelbag/clown/syndie/PopulateContents()
-	new /obj/item/pda/clown(src)
+	new /obj/item/modular_computer/tablet/pda/clown(src)
 	new /obj/item/clothing/under/rank/civilian/clown(src)
 	new /obj/item/clothing/shoes/clown_shoes(src)
 	new /obj/item/clothing/mask/gas/clown_hat(src)

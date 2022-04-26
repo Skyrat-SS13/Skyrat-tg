@@ -23,16 +23,6 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 			return check_content
 	return FALSE
 
-//this allows borers to slide under/through a door
-/obj/machinery/door/Bumped(atom/movable/movable_atom)
-	if(iscorticalborer(movable_atom) && density)
-		if(!do_after(movable_atom, 5 SECONDS, src))
-			return ..()
-		movable_atom.forceMove(get_turf(src))
-		to_chat(movable_atom, span_notice("You squeeze through [src]."))
-		return
-	return ..()
-
 //so if a person is debrained, the borer is removed
 /obj/item/organ/brain/Remove(mob/living/carbon/target, special = 0, no_id_transfer = FALSE)
 	. = ..()

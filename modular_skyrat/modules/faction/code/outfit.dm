@@ -44,7 +44,7 @@
 	id = /obj/item/card/id/faction_crew
 	l_pocket = /obj/item/melee/energy/sword
 	l_hand = /obj/item/storage/backpack/duffelbag/med/surgery
-	backpack_contents = list(/obj/item/storage/box/survival/engineer=1, /obj/item/storage/firstaid/tactical=1,/obj/item/storage/firstaid/regular=1,/obj/item/storage/firstaid/toxin=1, /obj/item/ammo_box/magazine/m45=2, /obj/item/gun/ballistic/automatic/pistol/m1911=1,/obj/item/healthanalyzer=1,/obj/item/stack/spacecash/c1000=1)
+	backpack_contents = list(/obj/item/storage/box/survival/engineer=1, /obj/item/storage/medkit/tactical=1,/obj/item/storage/medkit/regular=1,/obj/item/storage/medkit/toxin=1, /obj/item/ammo_box/magazine/m45=2, /obj/item/gun/ballistic/automatic/pistol/m1911=1,/obj/item/healthanalyzer=1,/obj/item/stack/spacecash/c1000=1)
 
 /datum/outfit/faction_tech
 	name = "Faction - Tech"

@@ -12,7 +12,7 @@
 
 /proc/randomize_human(mob/living/carbon/human/H)
 	H.gender = pick(MALE, FEMALE)
-	H.body_type = H.gender
+	H.physique = H.gender
 	H.real_name = random_unique_name(H.gender)
 	H.name = H.real_name
 	H.underwear = random_underwear(H.gender)
@@ -47,7 +47,7 @@
 	H.dna.species.mutant_bodyparts = H.dna.mutant_bodyparts.Copy()
 	H.dna.species.body_markings = H.dna.body_markings.Copy()
 	//SKYRAT EDIT ADDITION END
+	H.dna.features["pod_hair"] = pick(GLOB.pod_hair_list)
 
-	H.update_body()
-	H.update_hair()
-	H.update_body_parts()
+	H.update_body(is_creating = TRUE)
+	H.update_hair(is_creating = TRUE)

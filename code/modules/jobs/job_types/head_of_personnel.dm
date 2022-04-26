@@ -1,7 +1,7 @@
 /datum/job/head_of_personnel
 	title = JOB_HEAD_OF_PERSONNEL
-	description = "Alter access on ID cards, manage civil and supply departments, \
-		protect Ian, run the station when the captain dies."
+	description = "Alter access on ID cards, manage the civilian department, \
+		protect Ian, run the station when the captain dies." //SKYRAT EDIT: HOP ISN'T HEAD OF SUPPLY
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	department_head = list(JOB_CAPTAIN)
 	//head_announce = list(RADIO_CHANNEL_SUPPLY, RADIO_CHANNEL_SERVICE) //ORIGINAL
@@ -58,10 +58,9 @@
 	uniform = /obj/item/clothing/under/rank/civilian/head_of_personnel
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic = 1,
-		/obj/item/modular_computer/tablet/preset/advanced/command = 1,
 		/obj/item/storage/box/ids = 1,
 		)
-	belt = /obj/item/pda/heads/hop
+	belt = /obj/item/modular_computer/tablet/pda/heads/hop
 	ears = /obj/item/radio/headset/heads/hop
 	head = /obj/item/clothing/head/hopcap
 	shoes = /obj/item/clothing/shoes/sneakers/brown

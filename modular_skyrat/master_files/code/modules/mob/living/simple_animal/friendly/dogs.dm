@@ -182,7 +182,7 @@
 	var/datum/ai_controller/dog/EN = ai_controller
 	LAZYCLEARLIST(EN.current_behaviors)
 
-/mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_emag_act(mob/user)
+/mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_emag_act(mob/living/simple_animal/pet/dog/target, mob/user)
 	if(!emagged)
 		emagged = 1
 
@@ -190,9 +190,9 @@
 		set_light_on(TRUE)
 
 		add_fingerprint(user, TRUE)
-		visible_message(span_boldwarning("[user] swipes a card through [src]!"), span_notice("You overload [src]s internal reactor..."))
+		visible_message(span_boldwarning("[user] swipes a card through [target]!"), span_notice("You overload [target]s internal reactor..."))
 
-		notify_ghosts("[user] has shortcircuited [src] to explode in 60 seconds!", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Borgi Emagged")
+		notify_ghosts("[user] has shortcircuited [target] to explode in 60 seconds!", source = target, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Borgi Emagged")
 		addtimer(CALLBACK(src, .proc/explode_imminent), 50 SECONDS)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/explode_imminent()

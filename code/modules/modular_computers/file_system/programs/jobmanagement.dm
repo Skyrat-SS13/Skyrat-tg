@@ -7,7 +7,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 	category = PROGRAM_CATEGORY_CREW
 	program_icon_state = "id"
 	extended_desc = "Program for viewing and changing job slot availability."
-	transfer_access = ACCESS_HEADS
+	transfer_access = list(ACCESS_HEADS)
 	requires_ntnet = TRUE
 	size = 4
 	tgui_id = "NtosJobManager"
@@ -20,8 +20,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		JOB_HEAD_OF_PERSONNEL,
 		JOB_HEAD_OF_SECURITY,
 		JOB_RESEARCH_DIRECTOR,
-		JOB_SECURITY_SERGEANT, // SKYRAT EDIT ADD START
-		JOB_SECURITY_MEDIC,
+		JOB_SECURITY_MEDIC, // SKYRAT EDIT ADD START
 		JOB_CLOWN,
 		JOB_BLUESHIELD,
 		JOB_NT_REP, // SKYRAT EDIT ADD END

@@ -40,7 +40,7 @@
 	allowed += list(
 		/obj/item/melee/baton/telescopic,
 		/obj/item/gun/energy/cell_loaded/medigun, //SKYRAT EDIT MEDIGUNS
-		/obj/item/storage/firstaid //SKYRAT EDIT - ADDITION
+		/obj/item/storage/medkit //SKYRAT EDIT - ADDITION
 	)
 
 /obj/item/clothing/suit/toggle/labcoat/paramedic
@@ -53,7 +53,7 @@
 /obj/item/clothing/suit/toggle/labcoat/paramedic/Initialize()
 	. = ..()
 	allowed += list(
-		/obj/item/storage/firstaid,
+		/obj/item/storage/medkit,
 	)
 //END SKYRAT EDIT- ADDITION
 
@@ -93,7 +93,7 @@
 
 /obj/item/clothing/suit/toggle/labcoat/science/Initialize(mapload)
 	. = ..()
-	allowed += /obj/item/storage/bag/bio
+	allowed += /obj/item/storage/bag/xeno
 
 /obj/item/clothing/suit/toggle/labcoat/roboticist
 	name = "roboticist labcoat"

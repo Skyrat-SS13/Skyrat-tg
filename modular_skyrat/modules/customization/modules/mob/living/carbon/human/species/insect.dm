@@ -39,4 +39,18 @@
 	toxic_food = DAIRY
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/insect_parts_greyscale.dmi'
+	examine_limb_id = SPECIES_INSECT
+	bodypart_overrides = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/insect,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/insect,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant/insect,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant/insect,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/insect,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/insect,
+	)
+
+/datum/species/insect/get_species_description()
+	return placeholder_description
+
+/datum/species/insect/get_species_lore()
+	return list(placeholder_lore)

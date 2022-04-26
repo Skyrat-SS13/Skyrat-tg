@@ -10,6 +10,7 @@
 	datum_flags = DF_USE_TAG
 	density = TRUE
 	layer = MOB_LAYER
+	plane = GAME_PLANE_FOV_HIDDEN
 	animate_movement = SLIDE_STEPS
 	hud_possible = list(ANTAG_HUD)
 	pressure_resistance = 8
@@ -148,8 +149,6 @@
 	var/datum/component/storage/active_storage
 	/// Active hud
 	var/datum/hud/hud_used = null
-	/// I have no idea tbh
-	var/research_scanner = FALSE
 
 	/// Is the mob throw intent on
 	var/throw_mode = THROW_MODE_DISABLED
@@ -238,4 +237,4 @@
 	/// A mock client, provided by tests and friends
 	var/datum/client_interface/mock_client
 
-	var/interaction_range = 1 //how far a mob has to be to interact with something, defaulted to 1 tile
+	var/interaction_range = 0 //how far a mob has to be to interact with something without caring about obsctruction, defaulted to 0 tiles

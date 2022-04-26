@@ -5,10 +5,11 @@
 	icon_state = "tube"
 	desc = "A lighting fixture."
 	layer = WALL_OBJ_LAYER
+	plane = GAME_PLANE_UPPER
 	max_integrity = 100
 	use_power = ACTIVE_POWER_USE
-	idle_power_usage = 2
-	active_power_usage = 20
+	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.02
+	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.02
 	power_channel = AREA_USAGE_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
 	///What overlay the light should use
 	var/overlay_icon = 'icons/obj/lighting_overlay.dmi'
@@ -90,11 +91,9 @@
 	. = ..()
 	switch(fitting)
 		if("tube")
-			brightness = 8
 			if(prob(2))
 				break_light_tube(TRUE)
 		if("bulb")
-			brightness = 4
 			if(prob(5))
 				break_light_tube(TRUE)
 	addtimer(CALLBACK(src, .proc/update, FALSE), 0.1 SECONDS)
@@ -201,7 +200,6 @@
 		set_light(l_range = 0)
 	update_appearance()
 
-	active_power_usage = (brightness * 10)
 	if(on != on_gs)
 		on_gs = on
 		if(on)
@@ -222,7 +220,7 @@
 	update()
 
 /obj/machinery/light/proc/broken_sparks(start_only=FALSE)
-	if(!QDELETED(src) && status == LIGHT_BROKEN && has_power() && Master.current_runlevel)
+	if(!QDELETED(src) && status == LIGHT_BROKEN && has_power() && MC_RUNNING())
 		if(!start_only)
 			do_sparks(3, TRUE, src)
 		var/delay = rand(BROKEN_SPARKS_MIN, BROKEN_SPARKS_MAX)
@@ -640,6 +638,7 @@
 	base_state = "floor" // base description and icon_state
 	icon_state = "floor"
 	brightness = 4
-	layer = 2.5
+	layer = LOW_OBJ_LAYER
+	plane = FLOOR_PLANE
 	light_type = /obj/item/light/bulb
 	fitting = "bulb"

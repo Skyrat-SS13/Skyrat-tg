@@ -9,8 +9,6 @@
 	var/datum/component/uplink/hidden_uplink = GetComponent(/datum/component/uplink)
 	hidden_uplink.name = "old radio"
 
-
-
 /obj/item/reagent_containers/glass/rag/large
     volume = 30
     amount_per_transfer_from_this = 30
@@ -33,17 +31,22 @@
 	new /obj/item/clothing/suit/armor/vest/leather/gunman(src)
 	new /obj/item/clothing/shoes/combat(src)
 
-/obj/item/ammo_box/magazine/m16/extended //i will add custom sprites to this
-	name = "m4a1 magazine (5.56×45mm)"
-	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/m16/m16.dmi'
-	icon_state = "5.56mm"
-	ammo_type = /obj/item/ammo_casing/a556
-	caliber = "a556"
-	max_ammo = 30
-	multiple_sprites = AMMO_BOX_FULL_EMPTY
-
-
-
-
 /obj/item/autosurgeon/organ/syndicate/hackerman
 	starting_organ = /obj/item/organ/cyberimp/arm/hacker
+
+/obj/item/storage/box/syndie_kit/insurgent
+	name = "Syndicate Insurgent Bundle"
+	desc = "A box containing everything you need to LARP as your favorite syndicate operative!"
+
+/obj/item/storage/box/syndie_kit/insurgent/PopulateContents()
+	new /obj/item/clothing/under/syndicate(src)
+	new /obj/item/clothing/gloves/tackler/combat(src)
+	new /obj/item/clothing/shoes/combat(src)
+	new /obj/item/clothing/glasses/sunglasses(src)
+	new /obj/item/clothing/mask/gas/sechailer/swat(src)
+	new /obj/item/storage/belt/military(src)
+	new /obj/item/card/id/advanced/chameleon(src)
+	new /obj/item/mod/control/pre_equipped/nuclear(src)
+
+/obj/item/guardiancreator/tech/choose/traitor/opfor
+	allowling = TRUE

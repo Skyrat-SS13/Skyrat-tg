@@ -15,6 +15,7 @@
 		/obj/item/dest_tagger,
 		/obj/item/crowbar/cyborg,
 		/obj/item/extinguisher,
+		/obj/item/export_scanner,
 	)
 	radio_channels = list(RADIO_CHANNEL_SUPPLY)
 	emag_modules = list(
@@ -28,8 +29,10 @@
 	borg_skins = list(
 		"Technician" = list(SKIN_ICON_STATE = "cargoborg", SKIN_ICON = CYBORG_ICON_CARGO),
 		"Miss M" = list(SKIN_ICON_STATE = "missm_cargo", SKIN_ICON = CYBORG_ICON_CARGO),
-		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_cargo", SKIN_ICON = CYBORG_ICON_CARGO, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
+		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_cargo", SKIN_ICON = CYBORG_ICON_CARGO, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL), SKIN_HAT_OFFSET = -13),
+		"Meka" = list(SKIN_ICON_STATE = "mekacargo", SKIN_ICON = CYBORG_ICON_CARGO_TALL, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_UNIQUETIP, R_TRAIT_TALL), SKIN_HAT_OFFSET = 15),
 		"Drake" = list(SKIN_ICON_STATE =  "drakecargo", SKIN_ICON = CYBORG_ICON_CARGO_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
+		"Birdborg" = list(SKIN_ICON_STATE =  "bird_cargo", SKIN_ICON = CYBORG_ICON_CARGO),
 		"Vale" = list(SKIN_ICON_STATE =  "valecargo", SKIN_ICON = CYBORG_ICON_CARGO_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
 		"Hound" = list(SKIN_ICON_STATE =  "cargohound", SKIN_ICON = CYBORG_ICON_CARGO_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
 		"Darkhound" = list(SKIN_ICON_STATE =  "cargohounddark", SKIN_ICON = CYBORG_ICON_CARGO_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),

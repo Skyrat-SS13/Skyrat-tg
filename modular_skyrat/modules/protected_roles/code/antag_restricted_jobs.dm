@@ -6,7 +6,7 @@
  * then the job will be restricted from all antagonists.
  */
 
-/datum/job/nanotrasen_representative
+/datum/job/nanotrasen_consultant
 	antagonist_restricted = TRUE
 
 /datum/job/head_of_personnel
@@ -27,16 +27,10 @@
 /datum/job/blueshield
 	antagonist_restricted = TRUE
 
-/datum/job/security_sergeant
-	antagonist_restricted = TRUE
-
 /datum/job/security_medic
 	antagonist_restricted = TRUE
 
 /datum/job/brigoff
-	antagonist_restricted = TRUE
-
-/datum/job/junior_officer
 	antagonist_restricted = TRUE
 
 /datum/job/orderly

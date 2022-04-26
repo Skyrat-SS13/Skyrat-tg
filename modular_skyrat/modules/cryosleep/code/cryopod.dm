@@ -31,6 +31,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	var/storage_type = "crewmembers"
 	var/storage_name = "Cryogenic Oversight Control"
 
+
 /obj/machinery/computer/cryopod/Initialize(mapload)
 	. = ..()
 	GLOB.cryopod_computers += src
@@ -47,6 +48,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	return ..()
 
 /obj/machinery/computer/cryopod/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
@@ -75,13 +77,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	data["item_ref_name"] = item_ref_name
 
 	// Check Access for item dropping.
-	var/item_retrieval_allowed = FALSE
-	if(isliving(user))
-		var/mob/living/living_user = user
-		var/obj/item/card/id/id = living_user.get_idcard()
-		if(id)
-			if((ACCESS_HEADS in id.access) || (ACCESS_ARMORY in id.access))
-				item_retrieval_allowed = TRUE
+	var/item_retrieval_allowed = allowed(user)
 	data["item_retrieval_allowed"] = item_retrieval_allowed
 
 	var/obj/item/card/id/id_card
@@ -126,6 +122,10 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 	var/on_store_message = "has entered long-term storage."
 	var/on_store_name = "Cryogenic Oversight"
+	/// Whether the cryopod respects the minimum time someone has to be disconnected before they can be put into cryo by another player
+	var/allow_timer_override = FALSE
+	/// Minimum time for someone to be SSD before another player can cryo them.
+	var/ssd_time = 30 MINUTES //Replace with "cryo_min_ssd_time" CONFIG
 
 	/// Time until despawn when a mob enters a cryopod. You cannot other people in pods unless they're catatonic.
 	var/time_till_despawn = 30 SECONDS
@@ -135,6 +135,12 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	///Weakref to our controller
 	var/datum/weakref/control_computer_weakref
 	COOLDOWN_DECLARE(last_no_computer_message)
+	/// if false, plays announcement on cryo
+	var/quiet = FALSE
+
+
+/obj/machinery/cryopod/quiet
+	quiet = TRUE
 
 /obj/machinery/cryopod/Initialize(mapload)
 	..()
@@ -218,6 +224,21 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 				to_chat(mind.current, "<BR>[span_userdanger("Your target is no longer within reach. Objective removed!")]")
 				mind.announce_objectives()
 		else if(istype(objective.target) && objective.target == mob_occupant.mind)
+			if(!istype(objective, /datum/objective/contract))
+				return
+			var/datum/opposing_force/affected_contractor = objective.owner.opposing_force
+			var/datum/contractor_hub/affected_contractor_hub = affected_contractor.contractor_hub
+			for(var/datum/syndicate_contract/affected_contract as anything in affected_contractor_hub.assigned_contracts)
+				if(!(affected_contract.contract == objective))
+					continue
+				var/contract_id = affected_contract.id
+				affected_contractor_hub.create_single_contract(objective.owner, affected_contract.payout_type)
+				affected_contractor_hub.assigned_contracts[contract_id].status = CONTRACT_STATUS_ABORTED
+				if (affected_contractor_hub.current_contract == objective)
+					affected_contractor_hub.current_contract = null
+				to_chat(objective.owner.current, "<BR>[span_userdanger("Contract target out of reach. Contract rerolled.")]")
+				break
+		else if(istype(objective.target) && objective.target == mob_occupant.mind)
 			var/old_target = objective.target
 			objective.target = null
 			if(!objective)
@@ -290,8 +311,8 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	else
 		control_computer.frozen_crew += list(crew_member)
 
-	// Make an announcement and log the person entering storage.
-	if(GLOB.announcement_systems.len)
+	// Make an announcement and log the person entering storage. If set to quiet, does not make an announcement.
+	if(GLOB.announcement_systems.len && !quiet)
 		var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
 		announcer.announce("CRYOSTORAGE", mob_occupant.real_name, announce_rank, list())
 
@@ -303,10 +324,9 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		if (issilicon(mob_occupant) && istype(item_content, /obj/item/mmi))
 			continue
 		if(control_computer)
-			if(istype(item_content, /obj/item/pda))
-				var/obj/item/pda/pda = item_content
-				pda.toff = TRUE
-				pda.light_on = FALSE
+			if(istype(item_content, /obj/item/modular_computer))
+				var/obj/item/modular_computer/computer = item_content
+				computer.invisible = TRUE
 			item_content.dropped(mob_occupant)
 			mob_occupant.transferItemToLoc(item_content, control_computer, force = TRUE, silent = TRUE)
 			control_computer.frozen_item += item_content
@@ -329,8 +349,40 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		to_chat(user, span_notice("Dead people can not be put into cryo."))
 		return
 
+// Allows admins to enable players to override SSD Time check.
+	if(allow_timer_override)
+		if(tgui_alert(user, "Would you like to place [target] into [src]?", "Place into Cryopod?", list("Yes", "No")) != "No")
+			to_chat(user, span_danger("You put [target] into [src]. [target.p_theyre(capitalized = TRUE)] in the cryopod."))
+			log_admin("[key_name(user)] has put [key_name(target)] into a overridden stasis pod.")
+			message_admins("[key_name(user)] has put [key_name(target)] into a overridden stasis pod. [ADMIN_JMP(src)]")
+
+			add_fingerprint(target)
+
+			close_machine(target)
+			name = "[name] ([target.name])"
+
+// Allows players to cryo others. Checks if they have been AFK for 30 minutes.
 	if(target.key && user != target)
-		if(iscyborg(target))
+		if (target.getorgan(/obj/item/organ/brain) ) //Target the Brain
+			if(!target.mind || target.ssd_indicator ) // Is the character empty / AI Controlled
+				if(target.lastclienttime + ssd_time >= world.time)
+					to_chat(user, span_notice("You can't put [target] into [src] for another [ssd_time - round(((world.time - target.lastclienttime) / (1 MINUTES)), 1)] minutes."))
+					log_admin("[key_name(user)] has attempted to put [key_name(target)] into a stasis pod, but they were only disconnected for [round(((world.time - target.lastclienttime) / (1 MINUTES)), 1)] minutes..")
+					message_admins("[key_name(user)] has attempted to put [key_name(target)] into a stasis pod. [ADMIN_JMP(src)]")
+					return
+				else if(tgui_alert(user, "Would you like to place [target] into [src]?", "Place into Cryopod?", list("Yes", "No")) == "Yes")
+					if(target.mind.assigned_role.req_admin_notify)
+						tgui_alert(user, "They are an important role! [AHELP_FIRST_MESSAGE]")
+					to_chat(user, span_danger("You put [target] into [src]. [target.p_theyre(capitalized = TRUE)] in the cryopod."))
+					log_admin("[key_name(user)] has put [key_name(target)] into a stasis pod.")
+					message_admins("[key_name(user)] has put [key_name(target)] into a stasis pod. [ADMIN_JMP(src)]")
+
+					add_fingerprint(target)
+
+					close_machine(target)
+					name = "[name] ([target.name])"
+
+		else if(iscyborg(target))
 			to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] online."))
 		else
 			to_chat(user, span_danger("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] conscious."))

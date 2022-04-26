@@ -14,7 +14,7 @@
 	throw_range = 5
 	sharpness = SHARP_EDGED
 	w_class = WEIGHT_CLASS_SMALL
-	hitsound = "swing_hit"
+	hitsound = SFX_SWING_HIT
 	armour_penetration = 35
 	light_system = MOVABLE_LIGHT
 	light_range = 6 //TWICE AS BRIGHT AS A REGULAR ESWORD
@@ -22,7 +22,7 @@
 	light_on = FALSE
 	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
-	block_chance = 75
+	block_chance = 45 //SKYRAT EDIT - Lowered ORIGINAL:75
 	max_integrity = 200
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 100, ACID = 70)
 	resistance_flags = FIRE_PROOF
@@ -64,7 +64,7 @@
 
 	wielded = FALSE
 	w_class = initial(w_class)
-	hitsound = "swing_hit"
+	hitsound = SFX_SWING_HIT
 	STOP_PROCESSING(SSobj, src)
 	set_light_on(FALSE)
 
