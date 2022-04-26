@@ -34,23 +34,23 @@
 	if(HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION))
 		return TRUE */
 
-/mob/living/carbon/proc/is_weakened()
+/mob/living/proc/is_weakened()
 	if(HAS_TRAIT_FROM(src, TRAIT_FLOORED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || has_status_effect(/datum/status_effect/incapacitating/knockdown))
 		return TRUE
 
-/mob/living/carbon/proc/is_stunned()
+/mob/living/proc/is_stunned()
 	if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, CHOKEHOLD_TRAIT))
 		return TRUE
 
-/mob/living/carbon/proc/is_paralyzed()
+/mob/living/proc/is_paralyzed()
 	if(HAS_TRAIT_FROM(src, TRAIT_FLOORED, CHOKEHOLD_TRAIT) || HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION) || HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA) || HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) && HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) && HAS_TRAIT_FROM(src, TRAIT_FLOORED, TRAIT_STATUS_EFFECT(STAT_TRAIT)))
 		return TRUE
 
-/mob/living/carbon/proc/is_unconcious()
+/mob/living/proc/is_unconcious()
 	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 		return TRUE
 
-/mob/living/carbon/proc/is_confused()
+/mob/living/proc/is_confused()
 	if(has_status_effect(/datum/status_effect/confusion))
 		return TRUE
 
@@ -63,24 +63,30 @@
 	for(var/iteration in status_indicators) // When we die, clear the indicators.
 		remove_status_indicator(icon_state) // The indicators are named after their icon_state and type
 
-/* /datum/status_effect/on_apply()
+/* /datum/status_effect/incapacitating/on_apply()
 	. = ..()
-	owner.immediate_combat_update(owner)
-
-/datum/status_effect/on_remove()
+	addtimer(CALLBACK(owner, /mob/living/.proc/status_sanity), 100 MILLISECONDS)
+/datum/status_effect/incapacitating/on_remove()
 	. = ..()
-	owner.immediate_combat_update(owner) */
-/mob/living/apply_effect()
+	addtimer(CALLBACK(owner, /mob/living/.proc/status_sanity), 1000 MILLISECONDS) */
+
+/* /mob/living/carbon/apply_effect()
 	. = ..()
-	handle_status_effects()
+	status_sanity() */
 
-/mob/living/proc/immediate_combat_update(owner)
-	if(iscarbon(owner))
-		handle_status_effects()
+/mob/living/carbon/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_CARBON_HEALTH_UPDATE, .proc/status_sanity)
 
-/mob/living/carbon/handle_status_effects()
-	..() // Yea, this makes it so the OG proc is called too! Do not . = ..()!
-	is_weakened() ? add_status_indicator("weakened") : remove_status_indicator("weakened") // Critical condition handling - Jank, but otherwise it doesn't show up when you are critical!
+/* /mob/living/updatehealth()
+	. = ..()
+	status_sanity() */
+/mob/living/proc/status_sanity()
+	SIGNAL_HANDLER
+	if(stat == DEAD)
+		for(var/iteration in status_indicators) // When we die, clear the indicators.
+			remove_status_indicator(icon_state) // The indicators are named after their icon_state and type
+	is_weakened() ? add_status_indicator("weakened") : remove_status_indicator("weakened")
 	is_paralyzed() ? add_status_indicator("paralysis") : remove_status_indicator("paralysis")
 	is_stunned() ? add_status_indicator("stunned") : remove_status_indicator("stunned")
 	is_unconcious() ? add_status_indicator("sleeping") : remove_status_indicator("sleeping")
