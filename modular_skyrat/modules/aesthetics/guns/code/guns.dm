@@ -324,3 +324,166 @@
 	ammo_type = /obj/item/ammo_casing/a762
 	caliber = CALIBER_A762
 	max_ammo = 20
+	
+// BULLET UN-RETROFUTIRIZATION PR
+
+/obj/item/ammo_casing/a762
+	name = "5.8mm polymer casing"
+	desc = "A 5.8x42mm bullet casing."
+	
+/obj/item/ammo_casing/a556
+	name = ".277 Aestus polymer casing"
+	desc = "A .277 bullet casing."
+	
+/obj/item/ammo_casing/a556/phasic
+	name = ".277 Aestus phasic polymer casing"
+	desc = "A .277 Aestus bullet casing.\
+	<br><br>\
+	<i>PHASIC: Ignores all surfaces except organic matter.</i>"
+	
+/obj/item/ammo_casing/shotgun
+	name = "shotgun slug"
+	desc = "A 12 gauge tungsten slug."
+	
+/obj/item/ammo_casing/shotgun/executioner
+	name = "expanding shotgun slug"
+	desc = "A 12 gauge fragmenting slug purpose built to annihilate flesh on impact."
+	
+/obj/item/ammo_casing/shotgun/pulverizer
+	name = "pulverizer shotgun slug"
+	desc = "A 12 gauge uranium slug purpose built to break bones on impact."
+	
+/obj/item/ammo_casing/shotgun/incendiary
+	name = "incendiary slug"
+	desc = "A 12 gauge magnesium slug meant for \"setting shit on fire and looking cool while you do it\".\
+	<br><br>\
+	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
+	
+/obj/item/ammo_casing/shotgun/stunslug
+	name = "taser slug"
+	desc = "A 12 gauge silver slug with electrical microcomponents meant to incapacitate targets."
+	
+/obj/item/ammo_casing/shotgun/meteorslug
+	name = "meteor slug"
+	desc = "A 12 gauge shell rigged with CMC technology, which launches a heap of matter with great force when fired.\
+	<br><br>\
+	<i>METEOR: Fires a meteor-like projectile that knocks back movable objects like people and airlocks.</i>"
+
+/obj/item/ammo_casing/shotgun/frag12
+	name = "FRAG-12 slug"
+	desc = "A 12 gauge shell containing high explosives, made for defeating some barriers, defeat light vehicles, and disrupt IEDs. Or intercept assistants.\
+	<br><br>\
+	<i>HIGH EXPLOSIVE: Explodes on impact.</i>"
+	
+/obj/item/ammo_casing/shotgun/incapacitate
+	name = "hornet's nest shell"
+	desc = "A 12 gauge shell filled with some kind of material that excels at incapacitating targets. Contains a lot of pellets.\
+	<br><br>\
+	<i>HORNET'S NEST: Fire an overwhelming amount of projectiles in a single shot.</i>"
+	
+/obj/item/ammo_casing/p50
+	name = ".416 Stabilis polymer casing"
+	desc = "A .416 bullet casing."
+	
+/obj/item/ammo_casing/p50/soporific
+	name = ".416 Stabilis tranquilizer casing"
+	desc = "A .416 bullet casing, specialised in sending the target to sleep, instead of hell.\
+	<br><br>\
+	<i>SOPORIFIC: Forces targets to sleep, deals no damage.</i>"
+	
+/obj/item/ammo_casing/p50/penetrator
+	name = ".416 Stabilis APFSDS ++P bullet casing"
+	desc = "A .416 round casing designed to go through basically everything. A label warns not to use the round if the weapon cannot handle pressures greater than 85000 PSI.\
+	<br><br>\
+	<i>PENETRATOR: Goes through every surface, and every mob. Goes through everything. Yes, really.</i>"
+	
+/obj/item/ammo_casing/c46x30mm
+	name = "6.5x25mm bullet casing"
+	desc = "A 6.5x25mm bullet casing."
+	
+/obj/item/ammo_casing/c46x30mm/ap
+	name = "6.5x25mm AP bullet casing"
+	desc = "A 6.5x25mm armor-piercing bullet casing.\
+	<br><br>\
+	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?</i>"
+	
+/obj/item/ammo_casing/c46x30mm/inc
+	name = "6.5x25mm IND bullet casing"
+	desc = "A 6.5x25mm incendiary bullet casing.\
+	<br><br>\
+	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
+	
+/obj/item/ammo_casing/c45
+	name = ".460 Ceres polymer casing"
+	desc = "A .460 bullet casing."
+
+/obj/item/ammo_casing/c45/ap
+	name = ".460 Ceres AP polymer casing"
+	desc = "An Armor Piercing .460 bullet casing.\
+	<br><br>\
+	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?</i>"
+	
+/obj/item/ammo_casing/c45/inc
+	name = ".460 Ceres IND casing"
+	desc = "An Incendiary .460 bullet casing.\
+	<br><br>\
+	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
+	
+/obj/item/ammo_casing/a50ae
+	name = ".454 Trucidator polymer casing"
+	desc = "A .454 Trucidator bullet casing. Extremely powerful.\
+	<br><br>\
+	<i>HAND CANNON: Fired out of a handgun, deals disproportionately large damage.</i>"
+	
+// The ones above are the casings for the ammo, whereas the ones below are the actual projectiles that give you feedback when you're shot
+	
+/obj/projectile/bullet/a556
+	name = ".277 Aestus bullet"
+	
+/obj/projectile/bullet/a556/phasic
+	name = ".277 PHASE bullet"
+	
+/obj/projectile/bullet/a762
+	name = "5.8mm bullet"
+	
+/obj/projectile/bullet/a762/enchanted
+	name = "enchanted 5.8mm bullet"
+	
+/obj/projectile/bullet/c9mm
+	name = "9x25mm bullet"
+	
+/obj/projectile/bullet/c9mm/ap
+	name = "9x25mm armor-piercing bullet"
+	
+/obj/projectile/bullet/c9mm/hp
+	name = "9x25mm fragmenting bullet"
+	
+/obj/projectile/bullet/incendiary/c9mm
+	name = "9x25mm incendiary bullet"
+	
+/obj/projectile/bullet/c45
+	name = ".460 bullet"
+	
+/obj/projectile/bullet/c45/ap
+	name = ".460 armor-piercing bullet"
+	
+/obj/projectile/bullet/incendiary/c45
+	name = ".460 incendiary bullet"
+	
+/obj/projectile/bullet/c46x30mm
+	name = "6.5x25mm bullet"
+	
+/obj/projectile/bullet/c46x30mm/ap
+	name = "6.5x25mm armor-piercing bullet"
+	
+/obj/projectile/bullet/incendiary/c46x30mm
+	name = "6.5x25mm incendiary bullet"
+	
+/obj/projectile/bullet/p50/soporific   // COMMON BULLET IS ALREADY OVERRIDEN IN MODULAR > BULLETREBALANCE > CODE > sniper.dm
+	name =".416 tranquilizer"
+	
+/obj/projectile/bullet/p50/penetrator
+	name = ".416 pentrator bullet"
+	
+/obj/projectile/bullet/a50ae
+	name = ".454 Trucidator bullet"
