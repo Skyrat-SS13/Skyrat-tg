@@ -13,10 +13,7 @@
 		#include "map_files\KiloStation\KiloStation.dmm"
 		#include "map_files\MetaStation\MetaStation.dmm"
 		#include "map_files\IceBoxStation\IceBoxStation.dmm"
-<<<<<<< HEAD
-=======
 		#include "map_files\IceBoxStation\IcemoonUnderground_Above.dmm"
->>>>>>> ce0aff75261 (Fixed Icebox's lower two z-levels not being included in the Map Compile action (#66503))
 		#include "map_files\IceBoxStation\IcemoonUnderground_Below.dmm"
 		#include "map_files\tramstation\tramstation.dmm"
 		// SKYRAT EDIT ADDITON START - Compiling our modular maps too!
