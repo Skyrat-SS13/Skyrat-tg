@@ -1,13 +1,18 @@
 import { FeatureDropdownInput, Feature, FeatureNumberInput, CheckboxInput, FeatureTriColorInput, FeatureTriBoolInput, FeatureNumeric, FeatureToggle, FeatureChoiced } from "../../base";
 
-export const penis_toggle: FeatureToggle = {
-  name: "Penis",
-  component: CheckboxInput,
-};
-
 export const feature_penis: Feature<string> = {
   name: "Penis Choice",
   component: FeatureDropdownInput,
+};
+
+export const penis_skin_tone: FeatureToggle = {
+  name: "Penis uses Skin Tone",
+  component: CheckboxInput,
+};
+
+export const penis_skin_color: FeatureToggle = {
+  name: "Penis uses Skin Color",
+  component: CheckboxInput,
 };
 
 export const penis_color: Feature<string[]> = {
@@ -40,14 +45,19 @@ export const penis_taur_mode_toggle: FeatureToggle = {
   component: CheckboxInput,
 };
 
-export const testicles_toggle: FeatureToggle = {
-  name: "Testicles",
-  component: CheckboxInput,
-};
-
 export const feature_testicles: Feature<string> = {
   name: "Testicles Choice",
   component: FeatureDropdownInput,
+};
+
+export const testicles_skin_tone: FeatureToggle = {
+  name: "Testicles uses Skin Tone",
+  component: CheckboxInput,
+};
+
+export const testicles_skin_color: FeatureToggle = {
+  name: "Testicles uses Skin Color",
+  component: CheckboxInput,
 };
 
 export const testicles_color: Feature<string[]> = {
@@ -65,14 +75,19 @@ export const balls_size: FeatureNumeric = {
   component: FeatureNumberInput,
 };
 
-export const vagina_toggle: FeatureToggle = {
-  name: "Vagina",
-  component: CheckboxInput,
-};
-
 export const feature_vagina: Feature<string> = {
   name: "Vagina Choice",
   component: FeatureDropdownInput,
+};
+
+export const vagina_skin_tone: FeatureToggle = {
+  name: "Vagina uses Skin Tone",
+  component: CheckboxInput,
+};
+
+export const vagina_skin_color: FeatureToggle = {
+  name: "Vagina uses Skin Color",
+  component: CheckboxInput,
 };
 
 export const vagina_color: Feature<string[]> = {
@@ -85,24 +100,24 @@ export const vagina_emissive: Feature<boolean[]> = {
   component: FeatureTriBoolInput,
 };
 
-export const womb_toggle: FeatureToggle = {
-  name: "Womb",
-  component: CheckboxInput,
-};
-
 export const feature_womb: Feature<string> = {
   name: "Womb Choice",
   component: FeatureDropdownInput,
 };
 
-export const breasts_toggle: FeatureToggle = {
-  name: "Breasts",
-  component: CheckboxInput,
-};
-
 export const feature_breasts: Feature<string> = {
   name: "Breasts Choice",
   component: FeatureDropdownInput,
+};
+
+export const breasts_skin_tone: FeatureToggle = {
+  name: "Breasts uses Skin Tone",
+  component: CheckboxInput,
+};
+
+export const breasts_skin_color: FeatureToggle = {
+  name: "Breasts uses Skin Color",
+  component: CheckboxInput,
 };
 
 export const breasts_color: Feature<string[]> = {
@@ -123,11 +138,6 @@ export const breasts_lactation_toggle: FeatureToggle = {
 export const breasts_size: FeatureNumeric = {
   name: "Breasts Size",
   component: FeatureNumberInput,
-};
-
-export const anus_toggle: FeatureToggle = {
-  name: "Anus",
-  component: CheckboxInput,
 };
 
 export const feature_anus: Feature<string> = {
@@ -159,4 +169,3 @@ export const erp_status_pref_mechanics: FeatureChoiced = {
   name: "ERP Mechanical Status",
   component: FeatureDropdownInput,
 };
-
