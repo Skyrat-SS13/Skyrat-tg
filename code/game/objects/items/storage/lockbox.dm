@@ -241,7 +241,7 @@
 	if(iscarbon(user))
 		add_fingerprint(user)
 
-	if((id_card.registered_account != buyer_account) && !(department_purchase && (id_card.registered_account?.account_job?.paycheck_department) == (department_account.department_id)))
+	if((id_card.registered_account != buyer_account) && !(department_purchase && (id_card.registered_account?.account_job?.paycheck_department) == (department_account.department_id))) //SKYRAT EDIT
 		to_chat(user, span_warning("Bank account does not match with buyer!"))
 		return
 
