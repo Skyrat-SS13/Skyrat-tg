@@ -33,6 +33,11 @@
 	caliber = "a762x39"
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	
+/obj/item/ammo_box/magazine/akm/banana
+	name = "\improper Krinkov extended magazine"
+	desc = "a banana-shaped double-stack magazine able to hold 45 rounds of 5.6x40mm ammunition. It's meant to be used on a light machine gun, but it's just a longer Krinkov magazine."
+	max_ammo = 45
 
 /obj/item/gun/ballistic/automatic/akm/modern
 	name = "\improper Bubba's Krinkov"
