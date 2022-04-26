@@ -1,13 +1,15 @@
-Current version: v0
+Current version: v0.8
 
 ### Credits:
 TheOOZ (https://github.com/theOOZ), AKA ghostsheep (https://twitter.com/_ghostsheep)
 MekaNIKA skinline
  -	Peacekeeper
  -	Service
+ -	Service (Alt)
  -	Janitor
  -	Medical
- -	Cargotechnician
+ -	Cargo-technician
+ -	Miner
  -	Syndicate
  -	Ninja
 

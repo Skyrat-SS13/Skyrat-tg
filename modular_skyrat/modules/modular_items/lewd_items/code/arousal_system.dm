@@ -82,8 +82,8 @@
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_start", /datum/mood_event/orgasm, name)
 	..()
 
-/datum/reagent/drug/dopamine/on_mob_life(mob/living/carbon/M)
-	M.set_drugginess(2)
+/datum/reagent/drug/dopamine/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
+	M.set_timed_status_effect(2 SECONDS * REM * delta_time, /datum/status_effect/drugginess)
 	if(prob(7))
 		M.emote(pick("shaking","moan"))
 	..()
@@ -152,7 +152,6 @@
 		apply_status_effect(/datum/status_effect/body_fluid_regen)
 
 ///////////-----Verbs------///////////
-/*
 /mob/living/carbon/human/verb/arousal_panel()
 	set name = "Climax"
 	set category = "IC"
@@ -166,7 +165,13 @@
 				climax(TRUE)
 	else
 		to_chat(src, span_warning("You can't cum right now!"))
- */
+
+//Removing ERP IC verb depending on config
+/mob/living/carbon/human/Initialize()
+	. = ..()
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		verbs -= /mob/living/carbon/human/verb/arousal_panel
+
 ////////////
 ///FLUIDS///
 ////////////
