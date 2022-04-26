@@ -68,7 +68,7 @@
 			if(!(target.is_bottomless() || penis.visibility_preference == GENITAL_ALWAYS_SHOW))
 				to_chat(user, span_danger("[target]'s groin is covered!"))
 				return
-			message = (user == target) ? pick("moans in ecstasy as [target.p_they()] use the [src]","slowly moves [src] up and down on [target]'s penis, causing [target.p_them()] to bend in pleasure","slightly shivers in pleasure as [target.p_they()] use [src].") : pick("uses [src] on [target]'s penis","fucks [target] with [src]","masturbates [target] with [src], causing [target.p_them()] to moan in ecstasy")
+			message = (user == target) ? pick("moans in ecstasy as [target.p_they()] use the [src]","slowly moves [src] up and down on [target]'s penis, causing [target.p_them()] to bend in pleasure","slightly shivers in pleasure as [target.p_they()] use [src]") : pick("uses [src] on [target]'s penis","fucks [target] with [src]","masturbates [target] with [src], causing [target.p_them()] to moan in ecstasy")
 			if(!(prob(40) && (target.stat != DEAD)))
 				return
 			target.emote(pick("twitch_s","moan","blush"))

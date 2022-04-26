@@ -663,7 +663,7 @@
 		dmg_overlay_type = initial(dmg_overlay_type)
 		is_husked = FALSE
 
-	if(!dropping_limb && owner.dna?.check_mutation(/datum/mutation/human/hulk)) //Please remove hulk from the game. I beg you.
+	if(!dropping_limb && owner.dna?.check_mutation(/datum/mutation/human/hulk))
 		mutation_color = "#00aa00"
 	else
 		mutation_color = null
@@ -804,9 +804,11 @@
 		draw_color ||= (species_color) || (skin_tone && skintone2hex(skin_tone))
 
 	if(draw_color)
-		limb.color = "[draw_color]"
+		//SKYRAT EDIT BEGIN - Alpha values on limbs //We check if the limb is attached and if the owner has an alpha value to append
+		limb.color = owner?.dna.species ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
 		if(aux_zone)
-			aux.color = "[draw_color]"
+			aux.color = owner?.dna.species ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
+		//SKYRAT EDIT END
 
 	//EMISSIVE CODE START
 	if(blocks_emissive)

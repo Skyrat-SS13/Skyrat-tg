@@ -21,6 +21,7 @@
 	station_goal_cache = subtypesof(/datum/station_goal)
 
 /obj/machinery/computer/station_goal/ui_interact(mob/user)
+	. = ..()
 	var/list/dat = list("<b>STATION GOAL SELECTION - OFFICIAL USE ONLY</b>")
 	if(!goal_assigned)
 		dat += "Please select ONE goal to assign to [station_name()]"

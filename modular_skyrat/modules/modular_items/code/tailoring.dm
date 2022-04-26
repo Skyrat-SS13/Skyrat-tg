@@ -50,6 +50,20 @@
 	reqs = list(/obj/item/clothing/glasses/hud/eyepatch/med = 1)
 	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
 	category = CAT_CLOTHING
+	
+/datum/crafting_recipe/mesonpatch
+	name = "Meson Eyepatch HUD"
+	result = /obj/item/clothing/glasses/hud/eyepatch/meson
+	reqs = list(/obj/item/clothing/glasses/meson = 1, /obj/item/clothing/glasses/eyepatch = 1, /obj/item/stack/cable_coil = 5)
+	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/mesonpatchremoval
+	name = "Meson Eyepatch HUD removal"
+	result = /obj/item/clothing/glasses/eyepatch
+	reqs = list(/obj/item/clothing/glasses/hud/eyepatch/meson = 1)
+	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	category = CAT_CLOTHING
 
 /datum/crafting_recipe/robopatch
 	name = "Diagnostic Eyepatch HUD"

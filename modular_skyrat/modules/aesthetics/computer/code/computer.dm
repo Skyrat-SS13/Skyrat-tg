@@ -10,9 +10,3 @@
 		next_clicksound = world.time + 5
 		playsound(src, get_sfx_skyrat(clicksound), clickvol)
 
-/obj/machinery/computer/ui_interact(mob/user, datum/tgui/ui)
-	if(clicksound && world.time > next_clicksound && isliving(user))
-		next_clicksound = world.time + 5
-		playsound(src, get_sfx_skyrat(clicksound), clickvol)
-	. = ..()
-

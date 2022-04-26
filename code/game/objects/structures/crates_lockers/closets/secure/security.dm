@@ -12,12 +12,12 @@
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
 	new /obj/item/storage/bag/garment/captain(src)
-	new /obj/item/cartridge/captain(src)
+	new /obj/item/computer_hardware/hard_drive/role/captain(src)
 	new /obj/item/storage/box/silver_ids(src)
 	new /obj/item/radio/headset/heads/captain/alt(src)
 	new /obj/item/radio/headset/heads/captain(src)
 	new /obj/item/storage/belt/sabre(src)
-	new /obj/item/gun/energy/e_gun(src)
+	new /obj/item/storage/box/gunset/pdh_captain(src) // SKYRAT EDIT ADDITION
 	new /obj/item/door_remote/captain(src)
 	new /obj/item/storage/photo_album/captain(src)
 
@@ -31,13 +31,13 @@
 	..()
 	new /obj/item/storage/bag/garment/hop(src)
 	new /obj/item/storage/lockbox/medal/service(src)
-	new /obj/item/cartridge/hop(src)
+	new /obj/item/computer_hardware/hard_drive/role/hop(src)
 	new /obj/item/radio/headset/heads/hop(src)
 	new /obj/item/storage/box/ids(src)
 	new /obj/item/storage/box/ids(src)
 	new /obj/item/megaphone/command(src)
 	new /obj/item/assembly/flash/handheld(src)
-	new /obj/item/gun/energy/e_gun(src)
+	new /obj/item/storage/box/gunset/pdh(src) // SKYRAT EDIT ADDITION
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
 	new /obj/item/door_remote/civilian(src)
@@ -53,7 +53,7 @@
 /obj/structure/closet/secure_closet/hos/PopulateContents()
 	..()
 
-	new /obj/item/cartridge/hos(src)
+	new /obj/item/computer_hardware/hard_drive/role/hos(src)
 	new /obj/item/radio/headset/heads/hos(src)
 	new /obj/item/storage/bag/garment/hos(src)
 	new /obj/item/storage/lockbox/medal/sec(src)
@@ -128,11 +128,14 @@
 	new /obj/item/clothing/shoes/sneakers/black(src)
 	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent(src)
 	new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
+	new /obj/item/clothing/head/beret/sec/cargo(src)
 	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent(src)
 	new /obj/item/restraints/handcuffs/cable/orange(src)
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/melee/baton/security/loaded/departmental/cargo(src)
 	new /obj/item/clothing/glasses/hud/security(src)
+	new /obj/item/clothing/glasses/hud/gun_permit(src)
+	new /obj/item/storage/box/gunset/pepperball(src)
 
 /obj/structure/closet/secure_closet/security/engine
 	name = "\proper engineering guard's locker"
@@ -145,11 +148,13 @@
 	new /obj/item/clothing/shoes/workboots(src)
 	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard(src)
 	new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
+	new /obj/item/clothing/head/beret/sec/engineering(src)
 	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard(src)
 	new /obj/item/restraints/handcuffs/cable/yellow(src)
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/melee/baton/security/loaded/departmental/engineering(src)
 	new /obj/item/clothing/glasses/hud/security(src)
+	new /obj/item/storage/box/gunset/pepperball(src)
 
 /obj/structure/closet/secure_closet/security/science
 	name = "\proper science guard's locker"
@@ -162,11 +167,13 @@
 	new /obj/item/clothing/shoes/sneakers/black(src)
 	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat(src)
 	new /obj/item/clothing/head/helmet/blueshirt/skyrat(src)
+	new /obj/item/clothing/head/beret/sec/science(src)
 	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat(src)
 	new /obj/item/restraints/handcuffs/cable/pink(src)
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/melee/baton/security/loaded/departmental/science(src)
 	new /obj/item/clothing/glasses/hud/security(src)
+	new /obj/item/storage/box/gunset/pepperball(src)
 
 /obj/structure/closet/secure_closet/security/med
 	name = "\proper orderly's locker"
@@ -179,11 +186,13 @@
 	new /obj/item/clothing/shoes/sneakers/white(src)
 	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/orderly(src)
 	new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
+	new /obj/item/clothing/head/beret/sec/medical(src)
 	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly(src)
 	new /obj/item/restraints/handcuffs/cable/blue(src)
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/melee/baton/security/loaded/departmental/medical(src)
 	new /obj/item/clothing/glasses/hud/security(src)
+	new /obj/item/storage/box/gunset/pepperball(src)
 // SKYRAT EDIT CHANGE END -- GOOFSEC DEP GUARDS
 
 /obj/structure/closet/secure_closet/detective
