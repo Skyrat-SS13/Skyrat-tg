@@ -53,11 +53,6 @@
 	subcategory = ARMAMENT_SUBCATEGORY_ASSAULTRIFLE
 	interest_required = HIGH_INTEREST
 
-/datum/armament_entry/cargo_gun/armadyne/rifle/ripper
-	item_type = /obj/item/gun/ballistic/automatic/dmr
-	lower_cost = CARGO_CRATE_VALUE * 24
-	upper_cost = CARGO_CRATE_VALUE * 28
-
 /datum/armament_entry/cargo_gun/armadyne/rifle/norwind
 	item_type = /obj/item/gun/energy/norwind
 	lower_cost = CARGO_CRATE_VALUE * 10

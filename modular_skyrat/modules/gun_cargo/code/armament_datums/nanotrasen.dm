@@ -48,8 +48,3 @@
 	lower_cost = CARGO_CRATE_VALUE * 12
 	upper_cost = CARGO_CRATE_VALUE * 16
 	interest_required = PASSED_INTEREST
-
-/datum/armament_entry/cargo_gun/nanotrasen/rifle/boarder
-	item_type = /obj/item/gun/ballistic/automatic/ar
-	lower_cost = CARGO_CRATE_VALUE * 28
-	upper_cost = CARGO_CRATE_VALUE * 32
