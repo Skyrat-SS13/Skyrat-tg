@@ -182,6 +182,7 @@
 			var/datum/bank_account/our_acc = card.registered_account
 			if(our_acc.account_job && SSeconomy.get_dep_account(our_acc.account_job?.paycheck_department) == SSeconomy.get_dep_account(payment_department))
 				total_cost = 0 //We are not charging crew for printing their own supplies and equipment.
+	total_cost = (is_station_level(z) ? total_cost : 0) //SKYRAT EDIT
 	if(attempt_charge(src, usr, total_cost) & COMPONENT_OBJ_CANCEL_CHARGE)
 		return FALSE
 
