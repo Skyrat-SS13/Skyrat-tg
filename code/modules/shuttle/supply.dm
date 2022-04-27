@@ -214,7 +214,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 				continue
 			buying_acc_order_num += the_order.item_amount - 1
 
-		if(buying_acc_order_num > GOODY_FREE_SHIPPING_MAX) // no free shipping, send a crate
+		if(buying_acc_order_num > 2) // no free shipping, send a crate
 			var/obj/structure/closet/crate/secure/owned/our_crate = new /obj/structure/closet/crate/secure/owned(pick_n_take(empty_turfs))
 			our_crate.buyer_account = buying_account
 			our_crate.name = "armament crate - purchased by [buyer]"
