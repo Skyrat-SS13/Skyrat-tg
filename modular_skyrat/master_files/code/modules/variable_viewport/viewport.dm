@@ -91,7 +91,8 @@
 /mob/Login()
 	. = ..()
 //	if(client)
-	client?.change_view(getScreenSize(client.prefs.read_preference(/datum/preference/toggle/widescreen)))  //This is kept around as a hack to fix strange darkness issues when swapping mobs. Yeah, you can notice this when aghosting. Also done on /client/new
+	if((client?.prefs?.read_preference(/datum/preference/toggle/widescreen)))
+		client.SetWindowIconSize(client.prefs.icon_size)
 	//	client.SetWindowIconSize(client.prefs.icon_size)
 /datum/controller/configuration
 	var/lock_client_view_x

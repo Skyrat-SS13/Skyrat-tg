@@ -1,3 +1,8 @@
+
+/datum/component/storage
+	screen_start_x = 3 //These two are where the storage starts being rendered, screen_loc wise.
+	screen_start_y = 1
+
 /datum/action_group/ButtonNumberToScreenCoords(number, landing = FALSE) // THIS IS THE TG PROC AS OF APRIL 21st 2022. DO NOT . = ..()
 	var/row = round(number / column_max)
 	row -= row_offset // If you're less then 0, you don't get to render, this lets us "scroll" rows ya feel?
@@ -63,7 +68,7 @@
 	var/atom/real_location = real_location()
 	var/cx = tx
 	var/cy = ty
-	boxes.screen_loc = "LEFT+[tx],BOTTOM+[ty] to LEFT+[mx],BOTTOM+[my]"
+	boxes.screen_loc = "LEFT+[tx]:,BOTTOM+[ty] to LEFT+[mx],BOTTOM+[my]"
 	for(var/obj/O in real_location)
 		if(QDELETED(O))
 			continue
