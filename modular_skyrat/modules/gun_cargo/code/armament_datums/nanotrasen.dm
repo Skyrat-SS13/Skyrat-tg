@@ -11,6 +11,11 @@
 	item_type = /obj/item/storage/belt/holster/thermal
 	lower_cost = CARGO_CRATE_VALUE * 8
 	upper_cost = CARGO_CRATE_VALUE * 12
+	
+/datum/armament_entry/cargo_gun/nanotrasen/pistol/revolver/detective
+	item_type = /obj/item/gun/ballistic/revolver/detective
+	lower_cost = CARGO_CRATE_VALUE * 9
+	upper_cost = CARGO_CRATE_VALUE * 11
 
 /datum/armament_entry/cargo_gun/nanotrasen/shotgun
 	subcategory = ARMAMENT_SUBCATEGORY_SHOTGUN
@@ -20,6 +25,11 @@
 	lower_cost = CARGO_CRATE_VALUE * 8
 	upper_cost = CARGO_CRATE_VALUE * 12
 
+/datum/armament_entry/cargo_gun/nanotrasen/shotgun/doublebarrel
+	item_type = /obj/item/gun/ballistic/shotgun/doublebarrel
+	lower_cost = CARGO_CRATE_VALUE * 10
+	upper_cost = CARGO_CRATE_VALUE * 12
+	
 /datum/armament_entry/cargo_gun/nanotrasen/shotgun/combat
 	item_type = /obj/item/gun/ballistic/shotgun/automatic/combat
 	lower_cost = CARGO_CRATE_VALUE * 10
