@@ -645,9 +645,11 @@
 		part.visor_flags_cover = category[SEALED_COVER] || NONE
 		part.alternate_worn_layer = category[UNSEALED_LAYER]
 		mod_parts[part] = part.alternate_worn_layer
+		/* SKYRAT EDIT START - All MODsuit parts can be worn as overslots.
 		if(!category[CAN_OVERSLOT])
 			overslotting_parts -= part
 			continue
+		*/ // SKYRAT EDIT END
 		overslotting_parts[part] = null
 	wearer?.regenerate_icons()
 
