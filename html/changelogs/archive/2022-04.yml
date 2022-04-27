@@ -744,3 +744,94 @@
   - balance: removes armor pen and wound bonus from ppsh ammo, 22 -> 20 damage
   - balance: STG damage 40 -> 32
   - spellcheck: Suppressor no longer mentions the syndicate
+2022-04-27:
+  Arkatos:
+  - qol: Civilian Bounty Console will now always bring up its UI when you insert the
+      ID.
+  - qol: Air Alarm and APC will now always bring up its UI when you unlock their controls.
+  - qol: Portable Chem Mixer, Chem Dispenser, Chem Heater, Improvised Chem Heater,
+      Chem Spectometer and Chem Master will now always bring up their UI when you
+      add or replace beaker to them.
+  BebeYoshi:
+  - rscadd: Adds more health HUDs, nitrile gloves and medical belts to locker in Tramstation
+      medbay
+  Ducky-Momo:
+  - rscadd: Freezer of racial and otherwise unobtainable ingredients to the back of
+      the kitchen
+  - rscadd: Chemistry bay above the surgical bay with indestructible wooden walls,
+      proper turfs and appropriate chemistry tools.
+  Fikou, sprite modified by Zhost:
+  - qol: the sniper rifle has a new zoom system, activated by right-clicking
+  Ghommie:
+  - refactor: Genital prefs have been refactored. As a result, redundant toggle prefs
+      of these organs have been removed.
+  - qol: '"Uses Skin Tone" pref has been split: each visible genital now has its own
+      "Skin Tone" and "Skin Color" pref. This means that human-er characters can now
+      have their bits roughly of the same color of their skin without having to guess
+      it through the color input.'
+  GoldenAlpharex:
+  - bugfix: Fixed Blueshift spawning space that couldn't be interacted with on its
+      bottom-most level, when a plating turf is removed.
+  - bugfix: The Black Mesa Smartgun now uses the new scope component, which also conveniently
+      fixes our repo's CI.
+  - bugfix: Ensured that the lower levels of Icebox would also get considered during
+      the Map Compile option, so we don't get broken maps in production.
+  SkyratBot:
+  - bugfix: papers are now scannable again after an oversight, and techweb now appears
+      on all head pdas
+  - rscdel: removes round start tablets
+  - rscadd: NT Investors have built a new perma brig on IceBoxStation for the purpose
+      of press releases.
+  - bugfix: Nanotrasen has declared a recall on all item stacks, due to the fact the
+      fact they kept merging in hands and pockets. All stacks will now instead only
+      merge in your storage containers, or on the floor.
+  - bugfix: Removed a stray pixel in the energy shield module sprite
+  - bugfix: The lit up rocks in the crashed ship space ruin are now dark like the
+      others.
+  - rscadd: The accounting console has been added to the HOP's office, allowing them
+      to track purchases, and bank balances of the crew on station. It's not illegal,
+      it's the competitive advantage!
+  - bugfix: Stabilized extracts now work when placed inside modsuits
+  - bugfix: Fixed a very rare chance for the pressure on lavaland and icebox to be
+      just low enough for wings to not work. Ra'Sep rejoice!
+  - bugfix: Obsesseds don't fail the hug objective if they headpat/tail pull instead,
+  - bugfix: fixed a krokodil zombie transformation
+  - bugfix: trying to store a plasma cutter while holding plasma should no longer
+      blow you up.
+  - balance: Getting your eardrums blown out will now properly have a low chance to
+      make you go fully deaf, until you find some earmuffs or get a transplant
+  - refactor: Cached some redundant operations in Life(), speeding it up by ~22%.
+      I know that doesn't mean much to you, but cpu time go brrr ok?
+  - bugfix: Prop atmos mask now uses the correct worn sprite
+  - rscadd: N-Spects to the Security techfab (with Basic Security Equipment)
+  - bugfix: RnD servers will no longer permanently stop working when depowered.
+  - bugfix: Jumpsuit no longer able to burn while wearing nuke op mod suit
+  - bugfix: Prevent bullets (most notably those fired aimed at the mouth when intended
+      for executions) from sometimes missing if you're firing at a target diagonally
+      adjacent to you and there's an obstacle (eg. person) between you two.
+  - bugfix: Turning glasses colors on/off with AltClick now properly tells you that
+      you turned it on or off.
+  - bugfix: The 3rd Level of IceBox is now counted as being a part of the station.
+  Zonespace27:
+  - config: Added a config option to enable or disable automatic permit pins
+  - bugfix: Skyrat guns now use the scope component
+  - bugfix: Guncargo crates should appear again.
+  - bugfix: You can now unload the honeybee's underbarrel by right clicking on it
+      with an empty hand
+  larentoun:
+  - code_imp: ERP items are now disabled with DISABLE_LEWD_ITEMS config entry instead
+      of DISABLE_ERP_PREFERENCES
+  - config: DISABLE_LEWD_ITEMS entry added
+  softcerv:
+  - qol: pillows are now craftable for 3 cloth.
+  tf-4:
+  - balance: the cash briefcase now costs 5 TC instead of 1
+  theOOZ:
+  - imageadd: Miner model for the MekaNIKA series
+  - rscadd: Vfx for borgs resting, resting on tables launches items sat upon
+  - bugfix: Hats work on resting borgs
+  - bugfix: Meka Cargotech now actually has the UNIQUETIP flag
+  - soundadd: Sfx for borg resting and smoking
+  - code_imp: Finished a component which adds a particle effect
+  timothymtorres, TheBonded:
+  - bugfix: Fixes prescription glasses not clearing blurry vison
