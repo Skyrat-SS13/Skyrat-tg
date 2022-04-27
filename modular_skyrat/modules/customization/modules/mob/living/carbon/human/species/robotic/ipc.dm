@@ -32,7 +32,7 @@
 
 /datum/species/robotic/ipc/spec_revival(mob/living/carbon/human/transformer)
 	. = ..()
-	switch_to_screen(transformer, "BSOD")
+	switch_to_screen(transformer, "Console")
 	addtimer(CALLBACK(src, .proc/switch_to_screen, transformer, saved_screen), 5 SECONDS)
 
 /datum/species/robotic/ipc/spec_death(gibbed, mob/living/carbon/human/transformer)
