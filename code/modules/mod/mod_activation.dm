@@ -62,28 +62,6 @@
 	return TRUE
 
 /// Deploys a part of the suit onto the user.
-<<<<<<< HEAD
-/obj/item/mod/control/proc/deploy(mob/user, part)
-	var/obj/item/piece = part
-	if(piece == gauntlets && wearer.gloves)
-		gauntlets.overslot = wearer.gloves
-		wearer.transferItemToLoc(gauntlets.overslot, gauntlets, force = TRUE)
-	if(piece == boots && wearer.shoes)
-		boots.overslot = wearer.shoes
-		wearer.transferItemToLoc(boots.overslot, boots, force = TRUE)
-
-	// SKYRAT EDIT START - DEPLOYABLE EVERYTHING OVER EVERYTHING
-	if(piece == helmet && wearer.head)
-		helmet.overslot = wearer.head
-		wearer.transferItemToLoc(helmet.overslot, helmet, force = TRUE)
-	if(piece == chestplate && wearer.wear_suit)
-		chestplate.overslot = wearer.wear_suit
-		wearer.transferItemToLoc(chestplate.overslot, chestplate, force = TRUE)
-	// SKYRAT EDIT STOP
-
-	if(wearer.equip_to_slot_if_possible(piece, piece.slot_flags, qdel_on_fail = FALSE, disable_warning = TRUE))
-		ADD_TRAIT(piece, TRAIT_NODROP, MOD_TRAIT)
-=======
 /obj/item/mod/control/proc/deploy(mob/user, obj/item/part)
 	if(part in overslotting_parts)
 		var/obj/item/overslot = wearer.get_item_by_slot(part.slot_flags)
@@ -92,7 +70,6 @@
 			wearer.transferItemToLoc(overslot, part, force = TRUE)
 	if(wearer.equip_to_slot_if_possible(part, part.slot_flags, qdel_on_fail = FALSE, disable_warning = TRUE))
 		ADD_TRAIT(part, TRAIT_NODROP, MOD_TRAIT)
->>>>>>> 1f6b7b328df (genericizes modsuit parts more (#66520))
 		if(!user)
 			return TRUE
 		wearer.visible_message(span_notice("[wearer]'s [part.name] deploy[part.p_s()] with a mechanical hiss."),
@@ -113,26 +90,6 @@
 	return FALSE
 
 /// Retract a part of the suit from the user
-<<<<<<< HEAD
-/obj/item/mod/control/proc/conceal(mob/user, part)
-	var/obj/item/piece = part
-	REMOVE_TRAIT(piece, TRAIT_NODROP, MOD_TRAIT)
-	wearer.transferItemToLoc(piece, src, force = TRUE)
-	if(piece == gauntlets)
-		gauntlets.show_overslot()
-	if(piece == boots)
-		boots.show_overslot()
-	//SKYRAT EDIT START - DEPLOYABLE EVERYTHING OVER EVERYTHING
-	if(piece == helmet)
-		helmet.show_overslot()
-	if(piece == chestplate)
-		for(var/obj/item/mod/module/module as anything in modules)
-			if(!module.active)
-				continue
-			module.on_deactivation(display_message = FALSE)
-		chestplate.show_overslot()
-	//SKYRAT EDIT END
-=======
 /obj/item/mod/control/proc/conceal(mob/user, obj/item/part)
 	REMOVE_TRAIT(part, TRAIT_NODROP, MOD_TRAIT)
 	wearer.transferItemToLoc(part, src, force = TRUE)
@@ -141,7 +98,6 @@
 		if(!wearer.equip_to_slot_if_possible(overslot, overslot.slot_flags, qdel_on_fail = FALSE, disable_warning = TRUE))
 			wearer.dropItemToGround(overslot, force = TRUE, silent = TRUE)
 		overslotting_parts[part] = null
->>>>>>> 1f6b7b328df (genericizes modsuit parts more (#66520))
 	if(!user)
 		return
 	wearer.visible_message(span_notice("[wearer]'s [part.name] retract[part.p_s()] back into [src] with a mechanical hiss."),
@@ -191,7 +147,7 @@
 	if(mod_pai)
 		to_chat(mod_pai, span_notice("MODsuit [active ? "shutting down" : "starting up"]."))
 	// SKYRAT EDIT END
-	
+
 	if(do_after(wearer, activation_step_time, wearer, MOD_ACTIVATION_STEP_FLAGS, extra_checks = CALLBACK(src, .proc/has_wearer)))
 		to_chat(wearer, span_notice("[boots] [active ? "relax their grip on your legs" : "seal around your feet"]."))
 		playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)

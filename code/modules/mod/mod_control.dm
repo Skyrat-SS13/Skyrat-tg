@@ -183,23 +183,13 @@
 		for(var/obj/item/item in module)
 			item.forceMove(drop_location())
 		uninstall(module)
-<<<<<<< HEAD
-	remove_pai(forced = TRUE) // SKYRAT EDIT - pAIs in MODsuits
-=======
 	for(var/obj/item/part as anything in mod_parts)
 		if(!overslotting_parts[part])
 			continue
 		var/obj/item/overslot = overslotting_parts[part]
 		overslot.forceMove(drop_location())
 		overslotting_parts[part] = null
-	if(ai)
-		ai.controlled_equipment = null
-		ai.remote_control = null
-		for(var/datum/action/action as anything in actions)
-			if(action.owner == ai)
-				action.Remove(ai)
-		new /obj/item/mod/ai_minicard(drop_location(), ai)
->>>>>>> 1f6b7b328df (genericizes modsuit parts more (#66520))
+	remove_pai(forced = TRUE, feedback = FALSE) // SKYRAT EDIT - pAIs in MODsuits
 	return ..()
 
 /obj/item/mod/control/examine(mob/user)

@@ -10,32 +10,7 @@
 	cold_protection = HEAD
 	obj_flags = IMMUTABLE_SLOW
 	var/alternate_layer = NECK_LAYER
-<<<<<<< HEAD
-	var/obj/item/mod/control/mod
-	var/obj/item/clothing/overslot //SKYRAT EDIT - DEPLOYABLE EVERYTHING OVER EVERYTHING
 
-/obj/item/clothing/head/mod/Destroy()
-	if(!QDELETED(mod))
-		mod.helmet = null
-		mod.mod_parts -= src
-		QDEL_NULL(mod)
-	return ..()
-
-/obj/item/clothing/head/mod/atom_destruction(damage_flag)
-	return mod.atom_destruction(damage_flag)
-=======
->>>>>>> 1f6b7b328df (genericizes modsuit parts more (#66520))
-
-//SKYRAT EDIT START - DEPLOYABLE EVERYTHING OVER EVERYTHING
-
-/obj/item/clothing/head/mod/proc/show_overslot()
-	if(!overslot)
-		return
-	if(!mod.wearer.equip_to_slot_if_possible(overslot, overslot.slot_flags, qdel_on_fail = FALSE, disable_warning = TRUE))
-		mod.wearer.dropItemToGround(overslot, force = TRUE, silent = TRUE)
-	overslot = null
-
-//SKYRAT EDIT END
 /obj/item/clothing/suit/mod
 	name = "MOD chestplate"
 	desc = "A chestplate for a MODsuit."
@@ -48,32 +23,6 @@
 	heat_protection = CHEST|GROIN
 	cold_protection = CHEST|GROIN
 	obj_flags = IMMUTABLE_SLOW
-<<<<<<< HEAD
-	var/obj/item/mod/control/mod
-	var/obj/item/clothing/overslot //SKYRAT EDIT - DEPLOYABLE EVERYTHING OVER EVERYTHING
-
-/obj/item/clothing/suit/mod/Destroy()
-	if(!QDELETED(mod))
-		mod.chestplate = null
-		mod.mod_parts -= src
-		QDEL_NULL(mod)
-	return ..()
-
-/obj/item/clothing/suit/mod/atom_destruction(damage_flag)
-	return mod.atom_destruction(damage_flag)
-=======
->>>>>>> 1f6b7b328df (genericizes modsuit parts more (#66520))
-
-//SKYRAT EDIT START - DEPLOYABLE EVERYTHING OVER EVERYTHING
-
-/obj/item/clothing/suit/mod/proc/show_overslot()
-	if(!overslot)
-		return
-	if(!mod.wearer.equip_to_slot_if_possible(overslot, overslot.slot_flags, qdel_on_fail = FALSE, disable_warning = TRUE))
-		mod.wearer.dropItemToGround(overslot, force = TRUE, silent = TRUE)
-	overslot = null
-
-//SKYRAT EDIT END
 
 /obj/item/clothing/gloves/mod
 	name = "MOD gauntlets"

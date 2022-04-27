@@ -1283,12 +1283,7 @@
 		/obj/item/restraints/handcuffs,
 	)
 	skins = list(
-<<<<<<< HEAD
-		"timeline" = list(
-			HELMET_LAYER = NECK_LAYER,
-=======
 		"chrono" = list(
->>>>>>> 1f6b7b328df (genericizes modsuit parts more (#66520))
 			HELMET_FLAGS = list(
 				UNSEALED_LAYER = NECK_LAYER,
 				UNSEALED_CLOTHING = SNUG_FIT,

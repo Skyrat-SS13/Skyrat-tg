@@ -471,14 +471,7 @@ BLIND     // can't see anything
 			var/mob/living/possessing_mob = loc
 			possessing_mob.visible_message(span_danger("[src] is consumed until naught but shreds remains!"), span_boldwarning("[src] falls apart into little bits!"))
 		deconstruct(FALSE)
-<<<<<<< HEAD
-	//SKYRAT EDIT CHANGE BEGIN
-	//else if(!(damage_flag in list(ACID, FIRE))) - SKYRAT EDIT - ORIGINAL
-	else if(!(damage_flag in list(ACID)))
-	//SKYRAT EDIT CHANGE END
-=======
 	else
->>>>>>> 1f6b7b328df (genericizes modsuit parts more (#66520))
 		body_parts_covered = NONE
 		slot_flags = NONE
 		update_clothes_damaged_state(CLOTHING_SHREDDED)
