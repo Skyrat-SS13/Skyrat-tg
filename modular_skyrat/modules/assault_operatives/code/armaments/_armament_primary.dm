@@ -64,7 +64,6 @@
 /datum/armament_entry/assault_operatives/primary/special/rocket_launcher
 	item_type = /obj/item/gun/ballistic/rocketlauncher/unrestricted
 	magazine = /obj/item/ammo_casing/caseless/rocket
-	magazine_cost = 2
 
 /datum/armament_entry/assault_operatives/primary/special/rocket_launcher/after_equip(turf/safe_drop_location, obj/item/item_to_equip)
 	var/obj/item/storage/box/ammo_box/spawned_box = new(safe_drop_location)
