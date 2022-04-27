@@ -202,7 +202,7 @@
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular/syndicate
 	name = "'Caracal' anti-materiel rifle"  //we flop out
-	desc = "A sleek, light bullpup .50 BMG sniper rifle with a reciprocating barrel, nicknamed 'Caracal' by Scarborough Arms. Its compact folding parts make it able to fit into a backpack, and its modular barrel can have a suppressor installed within it rather than as a muzzle extension. Its advanced scope accounts for all ballistic inaccuracies of a reciprocating barrel."
+	desc = "A sleek, light bullpup .416 Stabilis sniper rifle with a reciprocating barrel, nicknamed 'Caracal' by Scarborough Arms. Its compact folding parts make it able to fit into a backpack, and its modular barrel can have a suppressor installed within it rather than as a muzzle extension. Its advanced scope accounts for all ballistic inaccuracies of a reciprocating barrel."
 	icon_state = "sysniper"
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
 	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle_s.ogg'
@@ -216,7 +216,7 @@
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular/blackmarket  //Normal sniper but epic
 	name = "SA-107 anti-materiel rifle"
-	desc = "An illegal Scarborough Arms rendition of an Aussec Armory sniper rifle. This one has been fitted with a heavier duty scope, a sturdier stock, and has a removable muzzle brake that allows easy attachment of suppressors."
+	desc = "An illegal Scarborough Arms rendition of an Aussec Armory sniper rifle. This one has been fitted with a heavy duty scope, a sturdier stock, and has a removable muzzle brake that allows easy attachment of suppressors."
 	icon_state = "sniper2"
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
 	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle_s.ogg'
@@ -237,27 +237,14 @@
 	mag_display = TRUE
 
 /obj/item/gun/ballistic/automatic/ar/modular
-	name = "NT ARG-63"
+	name = "\improper NT ARG-63"
 	desc = "Nanotrasen's prime ballistic option based on the Stoner design, fitted with a light polymer frame and other tactical furniture - nicknamed 'Boarder' by Special Operations teams."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = "arg"
 	inhand_icon_state = "arg"
 	can_suppress = FALSE
 
-/obj/item/gun/ballistic/automatic/ar/modular/solrifle
-	name = "MCRS-5B ICWS"
-	desc = "State of the art expensive combat rifle used by the SFMC. This one is a lighter model that fires 5.56, designed for use by pilots. Do it for her."
-	icon_state = "mcrs"
-	inhand_icon_state = "arg"
-	selector_switch_icon = TRUE
-	mag_type = /obj/item/ammo_box/magazine/m556
-	can_suppress = FALSE
-	burst_size = 5
-	fire_delay = 0.4
-	spread = 1
-	w_class = WEIGHT_CLASS_NORMAL
-	can_suppress = FALSE
-	weapon_weight = WEAPON_HEAVY
+//SOLFED PILOT RIFLE GONE, TO BE ADDED TO ERT FACTIONS FOLDER
 
 /obj/item/gun/energy/kinetic_accelerator
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
@@ -448,10 +435,10 @@
 	name = ".277 PHASE bullet"
 	
 /obj/projectile/bullet/a762
-	name = "5.8mm bullet"
+	name = ".244 bullet"
 	
 /obj/projectile/bullet/a762/enchanted
-	name = "enchanted 5.8mm bullet"
+	name = "enchanted .244 bullet"
 	
 /obj/projectile/bullet/c9mm
 	name = "9x25mm bullet"
@@ -475,13 +462,13 @@
 	name = ".460 incendiary bullet"
 	
 /obj/projectile/bullet/c46x30mm
-	name = "6.5x25mm bullet"
+	name = "8mm Usurpator bullet"
 	
 /obj/projectile/bullet/c46x30mm/ap
-	name = "6.5x25mm armor-piercing bullet"
+	name = "8mm armor-piercing bullet"
 	
 /obj/projectile/bullet/incendiary/c46x30mm
-	name = "6.5x25mm incendiary bullet"
+	name = "8mm incendiary bullet"
 	
 /obj/projectile/bullet/p50/soporific   // COMMON BULLET IS ALREADY OVERRIDEN IN MODULAR > BULLETREBALANCE > CODE > sniper.dm
 	name =".416 tranquilizer"
