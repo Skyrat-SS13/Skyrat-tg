@@ -21,3 +21,6 @@
 	new /obj/item/reagent_containers/hypospray/medipen/salbutamol(src)
 	new /obj/item/reagent_containers/hypospray/medipen/stimulants(src)
 
+/obj/item/storage/backpack/duffelbag/syndie/smoke/PopulateContents()
+	for(var/i in 1 to 8)
+		new /obj/item/grenade/smokebomb(src)

@@ -14,7 +14,9 @@
 	///Whether the organ is aroused, matters for sprites, use AROUSAL_CANT, AROUSAL_NONE, AROUSAL_PARTIAL or AROUSAL_FULL
 	var/aroused = AROUSAL_NONE
 	///Whether the organ is supposed to use a skintoned variant of the sprite
-	var/uses_skintones
+	var/uses_skintones = FALSE
+	///Whether the organ is supposed to use the color of the holder's skin tone.
+	var/uses_skin_color = FALSE
 	/// Where the genital is actually located, for clothing checks.
 	var/genital_location = GROIN
 
@@ -40,18 +42,27 @@
 	. = ..()
 	update_sprite_suffix()
 
+//Removes ERP organs depending on config
+/obj/item/organ/genital/Insert(mob/living/carbon/M, special, drop_if_replaced)
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		return
+	. = ..()
+
 /obj/item/organ/genital/Remove(mob/living/carbon/M, special = FALSE)
 	. = ..()
 	update_genital_icon_state()
 
 /obj/item/organ/genital/build_from_dna(datum/dna/DNA, associated_key)
 	..()
-	var/datum/sprite_accessory/genital/SA = GLOB.sprite_accessories[associated_key][DNA.mutant_bodyparts[associated_key][MUTANT_INDEX_NAME]]
-	genital_name = SA.name
-	genital_type = SA.icon_state
-	if(DNA.features["uses_skintones"])
-		uses_skintones = SA.uses_skintones
+	var/datum/sprite_accessory/genital/accessory = GLOB.sprite_accessories[associated_key][DNA.mutant_bodyparts[associated_key][MUTANT_INDEX_NAME]]
+	genital_name = accessory.name
+	genital_type = accessory.icon_state
+	build_from_accessory(accessory, DNA)
 	update_sprite_suffix()
+
+/// for specific build_from_dna behavior that also checks the genital accessory.
+/obj/item/organ/genital/proc/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
+	return
 
 /obj/item/organ/genital/proc/is_exposed()
 	if(!owner)
@@ -83,6 +94,7 @@
 	slot = ORGAN_SLOT_PENIS
 	mutantpart_key = "penis"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
+	drop_when_organ_spilling = FALSE
 	var/girth = 9
 	var/sheath = SHEATH_NONE
 
@@ -158,10 +170,15 @@
 /obj/item/organ/genital/penis/build_from_dna(datum/dna/DNA, associated_key)
 	..()
 	girth = DNA.features["penis_girth"]
-	var/datum/sprite_accessory/genital/penis/PS = GLOB.sprite_accessories[associated_key][DNA.mutant_bodyparts[associated_key][MUTANT_INDEX_NAME]]
-	if(PS.can_have_sheath)
-		sheath = DNA.features["penis_sheath"]
+	uses_skin_color = DNA.features["penis_uses_skincolor"]
 	set_size(DNA.features["penis_size"])
+
+/obj/item/organ/genital/penis/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
+	var/datum/sprite_accessory/genital/penis/snake = accessory
+	if(snake.can_have_sheath)
+		sheath = DNA.features["penis_sheath"]
+	if(DNA.features["penis_uses_skintones"])
+		uses_skintones = accessory.has_skintone_shading
 
 /obj/item/organ/genital/testicles
 	name = "testicles"
@@ -174,6 +191,7 @@
 	slot = ORGAN_SLOT_TESTICLES
 	aroused = AROUSAL_CANT
 	genital_location = GROIN
+	drop_when_organ_spilling = FALSE
 
 /obj/item/organ/genital/testicles/update_genital_icon_state()
 	var/measured_size = clamp(genital_size, 1, 3)
@@ -190,7 +208,12 @@
 
 /obj/item/organ/genital/testicles/build_from_dna(datum/dna/DNA, associated_key)
 	..()
+	uses_skin_color = DNA.features["testicles_uses_skincolor"]
 	set_size(DNA.features["balls_size"])
+
+/obj/item/organ/genital/testicles/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
+	if(DNA.features["testicles_uses_skintones"])
+		uses_skintones = accessory.has_skintone_shading
 
 /obj/item/organ/genital/testicles/get_sprite_size_string()
 	var/measured_size = FLOOR(genital_size,1)
@@ -209,6 +232,7 @@
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_VAGINA
 	genital_location = GROIN
+	drop_when_organ_spilling = FALSE
 
 /obj/item/organ/genital/vagina/get_description_string(datum/sprite_accessory/genital/gas)
 	var/returned_string = "You see a [lowertext(genital_name)] vagina."
@@ -229,6 +253,14 @@
 		is_dripping = 1
 	return "[genital_type]_[is_dripping]"
 
+/obj/item/organ/genital/vagina/build_from_dna(datum/dna/DNA, associated_key)
+	uses_skin_color = DNA.features["vagina_uses_skincolor"]
+	return ..() // will update the sprite suffix
+
+/obj/item/organ/genital/vagina/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
+	if(DNA.features["vagina_uses_skintones"])
+		uses_skintones = accessory.has_skintone_shading
+
 /obj/item/organ/genital/womb
 	name = "womb"
 	desc = "A female reproductive organ."
@@ -241,6 +273,7 @@
 	visibility_preference = GENITAL_SKIP_VISIBILITY
 	aroused = AROUSAL_CANT
 	genital_location = GROIN
+	drop_when_organ_spilling = FALSE
 
 /obj/item/organ/genital/anus
 	name = "anus"
@@ -252,6 +285,7 @@
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_ANUS
 	genital_location = GROIN
+	drop_when_organ_spilling = FALSE
 
 /obj/item/organ/genital/anus/get_description_string(datum/sprite_accessory/genital/gas)
 	var/returned_string = "You see an [lowertext(genital_name)]."
@@ -272,6 +306,7 @@
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_BREASTS
 	genital_location = CHEST
+	drop_when_organ_spilling = FALSE
 	var/lactates = FALSE
 
 /obj/item/organ/genital/breasts/get_description_string(datum/sprite_accessory/genital/gas)
@@ -322,7 +357,12 @@
 /obj/item/organ/genital/breasts/build_from_dna(datum/dna/DNA, associated_key)
 	..()
 	lactates = DNA.features["breasts_lactation"]
+	uses_skin_color = DNA.features["breasts_uses_skincolor"]
 	set_size(DNA.features["breasts_size"])
+
+/obj/item/organ/genital/breasts/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
+	if(DNA.features["breasts_uses_skintones"])
+		uses_skintones = accessory.has_skintone_shading
 
 /proc/breasts_size_to_cup(number)
 	if(number < 0)
@@ -381,6 +421,12 @@
 			update_body()
 	return
 
+//Removing ERP IC verb depending on config
+/mob/living/carbon/human/Initialize()
+	. = ..()
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		verbs -= /mob/living/carbon/human/verb/toggle_genitals
+
 /mob/living/carbon/human/verb/toggle_arousal()
 	set category = "IC"
 	set name = "Toggle Arousal"
@@ -410,3 +456,9 @@
 			picked_organ.update_sprite_suffix()
 			update_body()
 	return
+
+//Removing ERP IC verb depending on config
+/mob/living/carbon/human/Initialize()
+	. = ..()
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		verbs -= /mob/living/carbon/human/verb/toggle_arousal

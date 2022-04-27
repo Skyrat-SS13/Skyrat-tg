@@ -48,6 +48,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	return ..()
 
 /obj/machinery/computer/cryopod/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
@@ -134,6 +135,12 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	///Weakref to our controller
 	var/datum/weakref/control_computer_weakref
 	COOLDOWN_DECLARE(last_no_computer_message)
+	/// if false, plays announcement on cryo
+	var/quiet = FALSE
+
+
+/obj/machinery/cryopod/quiet
+	quiet = TRUE
 
 /obj/machinery/cryopod/Initialize(mapload)
 	..()
@@ -304,8 +311,8 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	else
 		control_computer.frozen_crew += list(crew_member)
 
-	// Make an announcement and log the person entering storage.
-	if(GLOB.announcement_systems.len)
+	// Make an announcement and log the person entering storage. If set to quiet, does not make an announcement.
+	if(GLOB.announcement_systems.len && !quiet)
 		var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
 		announcer.announce("CRYOSTORAGE", mob_occupant.real_name, announce_rank, list())
 
@@ -317,10 +324,9 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		if (issilicon(mob_occupant) && istype(item_content, /obj/item/mmi))
 			continue
 		if(control_computer)
-			if(istype(item_content, /obj/item/pda))
-				var/obj/item/pda/pda = item_content
-				pda.toff = TRUE
-				pda.light_on = FALSE
+			if(istype(item_content, /obj/item/modular_computer))
+				var/obj/item/modular_computer/computer = item_content
+				computer.invisible = TRUE
 			item_content.dropped(mob_occupant)
 			mob_occupant.transferItemToLoc(item_content, control_computer, force = TRUE, silent = TRUE)
 			control_computer.frozen_item += item_content

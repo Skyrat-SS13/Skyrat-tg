@@ -342,6 +342,7 @@
 //MISC MACHINE PROCS
 
 /obj/machinery/ammo_workbench/RefreshParts()
+	. = ..()
 	var/time_efficiency = 20
 	for(var/obj/item/stock_parts/micro_laser/new_laser in component_parts)
 		time_efficiency -= new_laser.rating * 2

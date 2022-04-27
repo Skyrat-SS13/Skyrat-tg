@@ -60,9 +60,8 @@
 	suit = /obj/item/clothing/suit/toggle/labcoat/rd //SKYRAT EDIT CHANGE
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic = 1,
-		/obj/item/modular_computer/tablet/preset/advanced/command = 1,
 		)
-	belt = /obj/item/pda/heads/rd
+	belt = /obj/item/modular_computer/tablet/pda/heads/rd
 	ears = /obj/item/radio/headset/heads/rd
 	shoes = /obj/item/clothing/shoes/jackboots //SKYRAT EDIT CHANGE
 	l_pocket = /obj/item/laser_pointer

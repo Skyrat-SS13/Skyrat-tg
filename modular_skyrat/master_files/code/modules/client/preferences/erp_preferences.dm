@@ -1,6 +1,9 @@
 /datum/config_entry/flag/disable_erp_preferences
 	default = FALSE
 
+/datum/config_entry/flag/disable_lewd_items
+	default = FALSE
+
 /datum/config_entry/str_list/erp_emotes_to_disable
 
 /datum/config_entry/str_list/erp_emotes_to_disable/ValidateAndSet(str_val)
@@ -70,9 +73,6 @@
 
 /datum/preference/toggle/erp/gender_change
 	savefile_key = "gender_change_pref"
-
-/datum/preference/toggle/erp/noncon
-	savefile_key = "noncon_pref"
 
 /datum/preference/toggle/erp/autocum
 	savefile_key = "autocum_pref"

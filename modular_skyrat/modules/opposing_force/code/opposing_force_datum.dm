@@ -846,8 +846,13 @@
 /datum/opposing_force/proc/roundend_report()
 	var/list/report = list("<br>")
 	report += span_greentext(mind_reference.current.real_name)
+
+	if(set_backstory)
+		report += "<b>Had an approved OPFOR application with the following backstory:</b><br>"
+		report += "[set_backstory]<br>"
+
 	if(objectives.len)
-		report += "<b>Had an approved OPFOR application with the following objectives:</b><br>"
+		report += "<b>And with the following objectives:</b><br>"
 		for(var/datum/opposing_force_objective/opfor_objective in objectives)
 			if(opfor_objective.status != OPFOR_OBJECTIVE_STATUS_APPROVED)
 				continue

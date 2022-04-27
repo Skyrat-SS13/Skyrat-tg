@@ -22,13 +22,14 @@
 	pin = null
 	bolt_type = BOLT_TYPE_LOCKING
 	show_bolt_icon = FALSE
+	company_flag = COMPANY_NANOTRASEN
 
 /obj/item/gun/ballistic/automatic/proto/unrestricted
 	pin = /obj/item/firing_pin
 
 /obj/item/gun/ballistic/automatic/c20r
 	name = "\improper C-20r SMG"
-	desc = "A bullpup three-round burst .45 SMG, designated 'C-20r'. Has a 'Scarborough Arms - Per falcis, per pravitas' buttstamp."
+	desc = "A bullpup three-round burst .45 SMG, designated 'C-20r'."
 	icon_state = "c20r"
 	inhand_icon_state = "c20r"
 	selector_switch_icon = TRUE
@@ -42,6 +43,7 @@
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	empty_indicator = TRUE
+	company_flag = COMPANY_SCARBOROUGH
 
 /obj/item/gun/ballistic/automatic/c20r/update_overlays()
 	. = ..()
@@ -72,6 +74,7 @@
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	empty_indicator = TRUE
+	company_flag = COMPANY_NANOTRASEN
 
 /obj/item/gun/ballistic/automatic/plastikov
 	name = "\improper PP-95 SMG"
@@ -86,6 +89,8 @@
 	mag_display = TRUE
 	empty_indicator = TRUE
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
+	company_flag = COMPANY_IZHEVSK
+	dirt_modifier = 0.75
 
 /obj/item/gun/ballistic/automatic/mini_uzi
 	name = "\improper type U3 uzi"
@@ -97,6 +102,7 @@
 	show_bolt_icon = FALSE
 	mag_display = TRUE
 	rack_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
+	company_flag = COMPANY_OLDARMS
 
 /obj/item/gun/ballistic/automatic/m90
 	name = "\improper M-90gl carbine"
@@ -115,6 +121,7 @@
 	mag_display = TRUE
 	empty_indicator = TRUE
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
+	company_flag = COMPANY_SCARBOROUGH
 
 /obj/item/gun/ballistic/automatic/m90/Initialize()
 	. = ..()
@@ -157,9 +164,12 @@
 	bolt_type = BOLT_TYPE_OPEN
 	empty_indicator = TRUE
 	show_bolt_icon = FALSE
+	company_flag = COMPANY_OLDARMS
 
 /obj/item/gun/ballistic/automatic/tommygun/therealtommy
 	name = "Tommy gun"
+	desc = "The classic 'Chicago Typewriter'."
+	company_flag = null //This is the real deal, you hear?
 
 /obj/item/gun/ballistic/automatic/ar
 	name = "\improper NT-ARG 'Boarder'"
@@ -171,13 +181,14 @@
 	can_suppress = FALSE
 	burst_size = 3
 	fire_delay = 1
+	company_flag = COMPANY_NANOTRASEN
 
 
 // L6 SAW //
 
 /obj/item/gun/ballistic/automatic/l6_saw
 	name = "\improper L6 SAW"
-	desc = "A heavily modified 7.12x82mm light machine gun, designated 'L6 SAW'. Has 'Aussec Armoury - 2531' engraved on the receiver below the designation."
+	desc = "A large light machine gun chambered for the 7.12x82mm cartridge."
 	icon_state = "l6"
 	inhand_icon_state = "l6"
 	base_icon_state = "l6"
@@ -199,6 +210,7 @@
 	rack_sound = 'sound/weapons/gun/l6/l6_rack.ogg'
 	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
 	var/cover_open = FALSE
+	company_flag = COMPANY_SCARBOROUGH
 
 /obj/item/gun/ballistic/automatic/l6_saw/unrestricted
 	pin = /obj/item/firing_pin
@@ -276,14 +288,15 @@
 	fire_delay = 40
 	burst_size = 1
 	w_class = WEIGHT_CLASS_NORMAL
-	zoomable = TRUE
-	zoom_amt = 10 //Long range, enough to see in front of you, but no tiles behind you.
-	zoom_out_amt = 5
 	slot_flags = ITEM_SLOT_BACK
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	mag_display = TRUE
 	suppressor_x_offset = 3
 	suppressor_y_offset = 3
+
+/obj/item/gun/ballistic/automatic/sniper_rifle/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/scope, range_modifier = 2)
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/syndicate
 	name = "syndicate sniper rifle"
@@ -291,6 +304,7 @@
 	can_suppress = TRUE
 	can_unsuppress = TRUE
 	pin = /obj/item/firing_pin/implant/pindicate
+	company_flag = COMPANY_SCARBOROUGH
 
 // Old Semi-Auto Rifle //
 
@@ -308,9 +322,10 @@
 	can_suppress = TRUE
 	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = ITEM_SLOT_BACK
-	//actions_types = list() SKYRAT EDIT REMOVAL
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	mag_display = TRUE
+	company_flag = COMPANY_IZHEVSK
+	dirt_modifier = 0.75
 
 // Laser rifle (rechargeable magazine) //
 
@@ -329,3 +344,4 @@
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	fire_sound = 'sound/weapons/laser.ogg'
 	casing_ejector = FALSE
+	company_flag = COMPANY_NANOTRASEN

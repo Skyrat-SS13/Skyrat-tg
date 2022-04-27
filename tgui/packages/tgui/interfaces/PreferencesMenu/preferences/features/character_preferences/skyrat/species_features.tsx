@@ -608,11 +608,6 @@ export const xenohead_emissive: Feature<boolean[]> = {
   component: FeatureTriBoolInput,
 };
 
-export const skin_tone_toggle: FeatureToggle = {
-  name: "Uses skintone",
-  component: CheckboxInput,
-};
-
 export const undershirt_color: Feature<string> = {
   name: "Undershirt color",
   component: FeatureColorInput,

@@ -1582,7 +1582,7 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/testlab)
 "tD" = (
-/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on{
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on{
 	dir = 4;
 	initialize_directions = 4;
 	name = "euthanization chamber freezer"
@@ -2400,7 +2400,7 @@
 	},
 /obj/structure/table/reinforced,
 /obj/item/fakeartefact{
-	possible = list(/obj/item/gun/energy/kinetic_accelerator)
+	possible = list(/obj/item/gun/energy/recharge/kinetic_accelerator)
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/cargo)
@@ -3457,13 +3457,13 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "Qa" = (
-/obj/machinery/cryopod{
-	dir = 4
-	},
 /obj/machinery/computer/cryopod{
 	dir = 4;
 	pixel_x = -32;
 	req_one_access = list(150)
+	},
+/obj/machinery/cryopod/quiet{
+	dir = 4
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)

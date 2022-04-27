@@ -9,7 +9,7 @@
 		/obj/item/mod/module/tether,
 		/obj/item/mod/module/flashlight,
 		/obj/item/mod/module/dna_lock,
-		/obj/item/mod/module/holster,
+		/obj/item/mod/module/magnetic_harness,
 	)
 
 /obj/item/mod/control/pre_equipped/contractor/upgraded
@@ -18,7 +18,7 @@
 		/obj/item/mod/module/storage/syndicate,
 		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/dna_lock,
-		/obj/item/mod/module/holster,
+		/obj/item/mod/module/magnetic_harness,
 		/obj/item/mod/module/baton_holster/preloaded,
 	)
 
