@@ -325,11 +325,11 @@
 	caliber = CALIBER_A762
 	max_ammo = 20
 	
-// BULLET UN-RETROFUTIRIZATION PR
+// GUBMAN3 - FULL BULLET RENAME
 
 /obj/item/ammo_casing/a762
-	name = "5.8mm polymer casing"
-	desc = "A 5.8x42mm bullet casing."
+	name = ".244 polymer casing"
+	desc = "A .244 bullet casing."
 	
 /obj/item/ammo_casing/a556
 	name = ".277 Aestus polymer casing"
