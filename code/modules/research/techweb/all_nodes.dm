@@ -1013,7 +1013,7 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	discount_experiments = list(/datum/experiment/scanning/points/machinery_pinpoint_scan/tier3_microlaser = 4000)
-	required_experiments = list(/datum/experiment/ordnance/gaseous/noblium)
+	// required_experiments = list(/datum/experiment/ordnance/gaseous/noblium) SKYRAT EDIT - Commented out
 
 /////////////////////////Clown tech/////////////////////////
 /datum/techweb_node/clown
@@ -1256,7 +1256,7 @@
 		"cybernetic_stomach_tier3",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
-	required_experiments = list(/datum/experiment/ordnance/gaseous/bz)
+	// required_experiments = list(/datum/experiment/ordnance/gaseous/bz) SKYRAT EDIT - Commented out
 
 /datum/techweb_node/cyber_implants
 	id = "cyber_implants"
@@ -1286,7 +1286,7 @@
 		"ci-toolset",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-	required_experiments = list(/datum/experiment/ordnance/gaseous/nitrium)
+	// required_experiments = list(/datum/experiment/ordnance/gaseous/nitrium) SKYRAT EDIT - Commented out
 
 /datum/techweb_node/combat_cyber_implants
 	id = "combat_cyber_implants"
