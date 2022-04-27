@@ -45,20 +45,25 @@
 	sleep(3 SECONDS)*/
 	H.dna.mutant_bodyparts["ipc_screen"][MUTANT_INDEX_NAME] = "Blank"
 
-/datum/species/robotic/ipc/on_species_gain(mob/living/carbon/human/C)
+/datum/species/robotic/ipc/on_species_gain(mob/living/carbon/human/transformer)
 	. = ..()
 	if(!screen)
 		screen = new
-		screen.Grant(C)
-	var/chassis = C.dna.mutant_bodyparts["ipc_chassis"]
+		screen.Grant(transformer)
+	var/chassis = transformer.dna.mutant_bodyparts["ipc_chassis"]
 	if(!chassis)
 		return
-	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.sprite_accessories["ipc_chassis"][chassis]
+	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.sprite_accessories["ipc_chassis"][chassis["name"]]
 	if(chassis_of_choice)
 		examine_limb_id = chassis_of_choice.icon_state
+		// We want to ensure that the IPC gets their chassis correctly.
+		for(var/obj/item/bodypart/limb as anything in transformer.bodyparts)
+			if(limb.body_part == CHEST)
+				limb.limb_id = chassis_of_choice.icon_state != "None" ? chassis_of_choice.icon_state : "ipc"
+
 		if(chassis_of_choice.color_src)
 			species_traits += MUTCOLORS
-		C.update_body()
+		transformer.update_body()
 
 /datum/species/robotic/ipc/replace_body(mob/living/carbon/target, datum/species/new_species)
 	..()
