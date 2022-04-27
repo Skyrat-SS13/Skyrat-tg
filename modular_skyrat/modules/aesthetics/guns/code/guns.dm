@@ -389,17 +389,17 @@
 	<i>PENETRATOR: Goes through every surface, and every mob. Goes through everything. Yes, really.</i>"
 	
 /obj/item/ammo_casing/c46x30mm
-	name = "6.5x25mm bullet casing"
-	desc = "A 6.5x25mm bullet casing."
+	name = "8mm Usurpator bullet casing"
+	desc = "An 8mm bullet casing."
 	
 /obj/item/ammo_casing/c46x30mm/ap
-	name = "6.5x25mm AP bullet casing"
-	desc = "A 6.5x25mm armor-piercing bullet casing.\
+	name = "8mm Usurpator armor-piercing bullet casing"
+	desc = "An 8mm armor-piercing bullet casing.\
 	<br><br>\
 	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?</i>"
 	
 /obj/item/ammo_casing/c46x30mm/inc
-	name = "6.5x25mm IND bullet casing"
+	name = "8mm Usurpator incendiary bullet casing"
 	desc = "A 6.5x25mm incendiary bullet casing.\
 	<br><br>\
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
@@ -409,13 +409,13 @@
 	desc = "A .460 bullet casing."
 
 /obj/item/ammo_casing/c45/ap
-	name = ".460 Ceres AP polymer casing"
+	name = ".460 Ceres armor-piercing polymer casing"
 	desc = "An Armor Piercing .460 bullet casing.\
 	<br><br>\
 	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?</i>"
 	
 /obj/item/ammo_casing/c45/inc
-	name = ".460 Ceres IND casing"
+	name = ".460 Ceres incendiary bullet casing"
 	desc = "An Incendiary .460 bullet casing.\
 	<br><br>\
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
@@ -425,6 +425,18 @@
 	desc = "A .454 Trucidator bullet casing. Extremely powerful.\
 	<br><br>\
 	<i>HAND CANNON: Fired out of a handgun, deals disproportionately large damage.</i>"
+	
+/obj/item/ammo_casing/a357    //We can keep the Magnum classic.
+	name = ".357 bullet casing"
+	desc = "A .357 bullet casing.\
+	<br><br>\
+	<i>HAND CANNON: Fired out of a handgun, deals disproportionately large damage.</i>"
+	
+/obj/item/ammo_casing/a357/match
+	name = ".357 match bullet casing"
+	desc = "A .357 bullet casing, manufactured to exceedingly high standards.\
+	<br><br>\
+	<i>MATCH: Ricochets everywhere. Like crazy.</i>"
 	
 // The ones above are the casings for the ammo, whereas the ones below are the actual projectiles that give you feedback when you're shot
 	
