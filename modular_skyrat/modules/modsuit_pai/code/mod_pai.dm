@@ -35,18 +35,21 @@
  *
  * user - The person trying to take out the pAI from the MODsuit.
  * forced - Whether or not we skip the checks and just eject the pAI. Defaults to FALSE.
+ * feedback - Whether to give feedback via balloon alerts or not. Defaults to TRUE.
  */
-/obj/item/mod/control/proc/remove_pai(mob/user, forced = FALSE)
+/obj/item/mod/control/proc/remove_pai(mob/user, forced = FALSE, feedback = TRUE)
 	if(!mod_pai)
-		if(user)
+		if(user && feedback)
 			balloon_alert(user, "no pAI to remove!")
 		return
 	if(!forced)
 		if(!open)
-			balloon_alert(user, "open the suit panel!")
+			if(user && feedback)
+				balloon_alert(user, "open the suit panel!")
 			return FALSE
 		if(!do_after(user, 5 SECONDS, target = src))
-			balloon_alert(user, "interrupted!")
+			if(user && feedback)
+				balloon_alert(user, "interrupted!")
 			return FALSE
 
 	var/turf/drop_off = get_turf(src)
@@ -56,9 +59,10 @@
 	for(var/datum/action/action as anything in actions)
 		if(action.owner == mod_pai)
 			action.Remove(mod_pai)
-	if(user)
-		balloon_alert(user, "pAI removed from the suit")
-	balloon_alert(mod_pai, "removed from a suit")
+	if(feedback)
+		if(user)
+			balloon_alert(user, "pAI removed from the suit")
+		balloon_alert(mod_pai, "removed from a suit")
 	mod_pai.remote_control = null
 	mod_pai.canholo = TRUE
 	mod_pai = null
