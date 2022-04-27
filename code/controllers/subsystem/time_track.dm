@@ -43,6 +43,12 @@ SUBSYSTEM_DEF(time_track)
 
 /datum/controller/subsystem/time_track/Initialize(start_timeofday)
 	. = ..()
+	// SKYRAT EDIT ADDITION
+	if(CONFIG_GET(flag/forbid_all_profiling))
+		to_chat(world, span_danger("The automatic profiler has been disabled in config."))
+		flags = SS_NO_FIRE
+		return
+	// SKYRAT EDIT END
 	GLOB.perf_log = "[GLOB.log_directory]/perf-[GLOB.round_id ? GLOB.round_id : "NULL"]-[SSmapping.config?.map_name].csv"
 	world.Profile(PROFILE_RESTART, type = "sendmaps")
 	//Need to do the sendmaps stuff in its own file, since it works different then everything else
@@ -81,6 +87,10 @@ SUBSYSTEM_DEF(time_track)
 
 
 /datum/controller/subsystem/time_track/fire()
+	// SKYRAT EDIT ADDITION
+	if(CONFIG_GET(flag/forbid_all_profiling))
+		return
+	// SKYRAT EDIT END
 
 	var/current_realtime = REALTIMEOFDAY
 	var/current_byondtime = world.time
