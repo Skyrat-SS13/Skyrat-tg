@@ -49,9 +49,5 @@
 	allowed_department_flags = DEPARTMENTAL_FLAG_SECURITY
 	department_tag = "Security"
 	circuit = /obj/item/circuitboard/machine/techfab/department/security
-<<<<<<< HEAD
 	stripe_color = "#486091" //SKYRAT EDIT - ORIGINAL "#DE3A3A"
-=======
-	stripe_color = "#DE3A3A"
 	payment_department = ACCOUNT_SEC
->>>>>>> 5f4d5a42d44 (Arconomy: The bigger balance PR (REVISED EDITION) (#65795))

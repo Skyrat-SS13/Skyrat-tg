@@ -40,11 +40,7 @@
 			and services at lucrative prices. The briefcase also feels a little heavier to hold; it has been \
 			manufactured to pack a little bit more of a punch if your client needs some convincing."
 	item = /obj/item/storage/secure/briefcase/syndie
-<<<<<<< HEAD
-	cost = 5 // SKYRAT EDIT - ORIGINAL: 1
-=======
 	cost = 5
->>>>>>> 5f4d5a42d44 (Arconomy: The bigger balance PR (REVISED EDITION) (#65795))
 	progression_minimum = 5 MINUTES
 	restricted = TRUE
 	illegal_tech = FALSE

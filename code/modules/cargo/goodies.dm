@@ -41,13 +41,8 @@
 
 /datum/supply_pack/goody/Survivalknives_single
 	name = "Survival Knife Single-Pack"
-<<<<<<< HEAD
-	desc = "Contains one sharpened survival knive. Guaranteed to fit snugly inside any Nanotrasen-standard boot. Weapons permit not included." //SKYRAT EDIT - CONTRABAND CLARIFICATION
-	cost = PAYCHECK_HARD * 1.75
-=======
 	desc = "Contains one sharpened survival knive. Guaranteed to fit snugly inside any Nanotrasen-standard boot."
 	cost = PAYCHECK_COMMAND * 1.75
->>>>>>> 5f4d5a42d44 (Arconomy: The bigger balance PR (REVISED EDITION) (#65795))
 	contains = list(/obj/item/knife/combat/survival)
 /* //SKYRAT EDIT START - GUN CARGO
 /datum/supply_pack/goody/ballistic_single
@@ -87,13 +82,8 @@
 
 /datum/supply_pack/goody/gripper_single
 	name = "Gripper Gloves Single-Pack"
-<<<<<<< HEAD
-	desc = "A spare pair of gripper gloves. Perfect for when the security vendor is empty (or when you're not actually a security officer). Contraband permit not included." //SKYRAT EDIT - CONTRABAND CLARIFICATION
-	cost = PAYCHECK_HARD * 6
-=======
 	desc = "A spare pair of gripper gloves. Perfect for when the security vendor is empty (or when you're not actually a security officer)."
 	cost = PAYCHECK_COMMAND * 6
->>>>>>> 5f4d5a42d44 (Arconomy: The bigger balance PR (REVISED EDITION) (#65795))
 	contains = list(/obj/item/clothing/gloves/tackler)
 
 /datum/supply_pack/goody/firstaidbruises_single

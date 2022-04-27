@@ -18,11 +18,7 @@
 	outfit = /datum/outfit/job/quartermaster
 	plasmaman_outfit = /datum/outfit/plasmaman/cargo
 
-<<<<<<< HEAD
-	paycheck = PAYCHECK_COMMAND //SKYRAT EDIT CHANGE - ORIGINAL: PAYCHECK_MEDIUM
-=======
-	paycheck = PAYCHECK_CREW
->>>>>>> 5f4d5a42d44 (Arconomy: The bigger balance PR (REVISED EDITION) (#65795))
+	paycheck = PAYCHECK_COMMAND //SKYRAT EDIT CHANGE - ORIGINAL: PAYCHECK_CREW
 	paycheck_department = ACCOUNT_CAR
 
 	//liver_traits = list(TRAIT_PRETENDER_ROYAL_METABOLISM) //ORIGINAL

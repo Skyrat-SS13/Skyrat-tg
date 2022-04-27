@@ -27,13 +27,8 @@
 	drop_sound = 'sound/items/handling/multitool_drop.ogg'
 	pickup_sound = 'sound/items/handling/multitool_pickup.ogg'
 	custom_materials = list(/datum/material/iron=50, /datum/material/glass=20)
-<<<<<<< HEAD
-	custom_premium_price = PAYCHECK_HARD * 3
-	toolspeed = 0.7 //SKYRAT EDIT CHANGE - ORIGINAL: 1
-=======
 	custom_premium_price = PAYCHECK_COMMAND * 3
-	toolspeed = 1
->>>>>>> 5f4d5a42d44 (Arconomy: The bigger balance PR (REVISED EDITION) (#65795))
+	toolspeed = 0.7 //SKYRAT EDIT CHANGE - ORIGINAL: 1
 	usesound = 'sound/weapons/empty.ogg'
 	var/obj/machinery/buffer // simple machine buffer for device linkage
 	var/mode = 0
