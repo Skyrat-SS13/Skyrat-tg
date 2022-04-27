@@ -948,7 +948,6 @@
 ////////////////////////////////////
 // STRIPPING ERP SYSTEM EXTENTION //
 ////////////////////////////////////
-/* Removed by Tannhauser-Gate
 // Extend stripping menus with ERP slots
 /datum/strippable_item/mob_item_slot/vagina
 	key = STRIPPABLE_ITEM_VAGINA
@@ -1020,7 +1019,6 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 		strippable_items[strippable_item.key] = strippable_item
 	GLOB.strippable_human_items += strippable_items
 	return strippable_items
-*/
 
 //Disables ERP strippable inventory depending on config
 /datum/element/strippable/Attach(datum/target, list/items, should_strip_proc_path)

@@ -392,7 +392,6 @@
 			return text2num(key)
 	return 0
 
-/*  Tannhauser-Gate Removal
 /mob/living/carbon/human/verb/toggle_genitals()
 	set category = "IC"
 	set name = "Expose/Hide genitals"
@@ -457,7 +456,6 @@
 			picked_organ.update_sprite_suffix()
 			update_body()
 	return
- */ //Tannhauser-Gate Removal End
 
 //Removing ERP IC verb depending on config
 /mob/living/carbon/human/Initialize()
