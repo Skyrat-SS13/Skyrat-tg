@@ -189,7 +189,7 @@
 		var/obj/item/overslot = overslotting_parts[part]
 		overslot.forceMove(drop_location())
 		overslotting_parts[part] = null
-	remove_pai(forced = TRUE, feedback = FALSE) // SKYRAT EDIT - pAIs in MODsuits
+	remove_pai() // SKYRAT EDIT - pAIs in MODsuits
 	return ..()
 
 /obj/item/mod/control/examine(mob/user)

@@ -31,13 +31,14 @@
 	return TRUE
 
 /**
- * Simple proc to remove the pAI from the MODsuit.
+ * Simple proc to extract the pAI from the MODsuit. It's the proc to call if you want to take it out,
+ * remove_pai() is there so atom_destruction() doesn't have any risk of sleeping.
  *
  * user - The person trying to take out the pAI from the MODsuit.
  * forced - Whether or not we skip the checks and just eject the pAI. Defaults to FALSE.
  * feedback - Whether to give feedback via balloon alerts or not. Defaults to TRUE.
  */
-/obj/item/mod/control/proc/remove_pai(mob/user, forced = FALSE, feedback = TRUE)
+/obj/item/mod/control/proc/extract_pai(mob/user, forced = FALSE, feedback = TRUE)
 	if(!mod_pai)
 		if(user && feedback)
 			balloon_alert(user, "no pAI to remove!")
@@ -52,6 +53,19 @@
 				balloon_alert(user, "interrupted!")
 			return FALSE
 
+	remove_pai(feedback)
+
+	if(feedback)
+		if(user)
+			balloon_alert(user, "pAI removed from the suit")
+
+/**
+ * Simple proc that handles the safe removal of the pAI from a MOD control unit.
+ *
+ * Arguments:
+ * * feedback - Whether or not we want to give balloon alert feedback to the mod_pai. Defaults to FALSE.
+ */
+/obj/item/mod/control/proc/remove_pai(feedback = FALSE)
 	var/turf/drop_off = get_turf(src)
 	if(drop_off) // In case there's no drop_off, the pAI will simply get deleted.
 		mod_pai.card.forceMove(drop_off)
@@ -59,13 +73,13 @@
 	for(var/datum/action/action as anything in actions)
 		if(action.owner == mod_pai)
 			action.Remove(mod_pai)
+
 	if(feedback)
-		if(user)
-			balloon_alert(user, "pAI removed from the suit")
 		balloon_alert(mod_pai, "removed from a suit")
 	mod_pai.remote_control = null
 	mod_pai.canholo = TRUE
 	mod_pai = null
+
 
 #define MOVE_DELAY 2
 #define WEARER_DELAY 1
