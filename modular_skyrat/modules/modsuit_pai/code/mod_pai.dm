@@ -55,9 +55,8 @@
 
 	remove_pai(feedback)
 
-	if(feedback)
-		if(user)
-			balloon_alert(user, "pAI removed from the suit")
+	if(feedback && user)
+		balloon_alert(user, "pAI removed from the suit")
 
 /**
  * Simple proc that handles the safe removal of the pAI from a MOD control unit.
