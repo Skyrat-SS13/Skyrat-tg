@@ -3,17 +3,17 @@
 	var/list/_interactions_player
 
 //Let the initiator know their ahelp is being handled
-/datum/admin_help/proc/HandleIssue(key_name = key_name_admin(usr))
+/datum/admin_help/proc/handle_issue(key_name = key_name_admin(usr))
 	if(state != AHELP_ACTIVE)
-		return
+		return FALSE
 
 	if(handler && handler == usr.ckey) // No need to handle it twice as the same person ;)
-		return
+		return TRUE
 
 	if(handler && handler != usr.ckey)
 		var/response = tgui_alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", list("Yes", "No"))
 		if(!response || response == "No")
-			return
+			return FALSE
 
 	var/msg = span_adminhelp("Your ticket is now being handled by [usr?.client?.holder?.fakekey ? usr?.client?.holder?.fakekey : "an administrator"]! Please wait while they type their response and/or gather relevant information.")
 
@@ -28,6 +28,7 @@
 	AddInteractionPlayer("Being handled by [key_name_admin(usr, FALSE)]")
 
 	handler = "[usr.ckey]"
+	return TRUE
 
 /datum/admin_help/proc/PlayerTicketPanel()
 	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Player Ticket</title></head>")

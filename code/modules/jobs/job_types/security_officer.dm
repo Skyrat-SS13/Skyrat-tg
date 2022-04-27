@@ -208,7 +208,6 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 	suit_store = /obj/item/gun/ballistic/automatic/pistol/security // SKYRAT EDIT CHANGE
 	backpack_contents = list(
 		/obj/item/evidencebag = 1,
-		/obj/item/modular_computer/tablet/preset/advanced/security = 1,
 		/obj/item/ammo_box/magazine/security_pistol/influence = 2, // SKYRAT EDIT ADDITION, 1 mag in gun, 2 in backpack
 		)
 	belt = /obj/item/modular_computer/tablet/pda/security
