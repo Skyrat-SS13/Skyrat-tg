@@ -118,8 +118,6 @@ GLOBAL_LIST_EMPTY(gas_handbook)
 		GLOB.reaction_handbook += list(reaction_info)
 		qdel(reaction)
 
-<<<<<<< HEAD
-=======
 	for (var/datum/electrolyzer_reaction/reaction_path as anything in subtypesof(/datum/electrolyzer_reaction))
 		var/datum/electrolyzer_reaction/reaction = new reaction_path
 		var/list/reaction_info = list()
@@ -151,7 +149,6 @@ GLOBAL_LIST_EMPTY(gas_handbook)
 		GLOB.reaction_handbook += list(reaction_info)
 		qdel(reaction)
 
->>>>>>> c71757394ac (add halon formation to electrolyzer, remove normal one (#65884))
 	for (var/gas_info_index in momentary_gas_list)
 		GLOB.gas_handbook += list(momentary_gas_list[gas_info_index])
 
