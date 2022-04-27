@@ -319,7 +319,7 @@
 // GUBMAN3 - FULL BULLET RENAME
 
 /obj/item/ammo_casing/a762
-	name = ".244 polymer casing"
+	name = ".244 Acia polymer casing"
 	desc = "A .244 bullet casing."
 	
 /obj/item/ammo_casing/a556
