@@ -96,6 +96,7 @@ SUBSYSTEM_DEF(economy)
 		//SKYRAT EDIT ADDITION END
 		if(bank_account?.account_job && !ispath(bank_account.account_job))
 			temporary_total += (bank_account.account_job.paycheck * STARTING_PAYCHECKS)
+		bank_account.payday(1)
 		station_total += bank_account.account_balance
 	//SKYRAT EDIT ADDITION BEGIN
 	if(fire_counter_for_paycheck >= PAYCHECK_CYCLE_WAIT) //30 minutes per each paycheck
