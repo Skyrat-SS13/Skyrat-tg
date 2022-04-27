@@ -279,7 +279,7 @@
 	group = "Security"
 	access = ACCESS_SECURITY
 	crate_type = /obj/structure/closet/crate/secure/gear
-
+/* //SKYRAT EDIT START - CARGO ARMAMENTS
 /datum/supply_pack/security/ammo
 	name = "Ammo Crate"
 	desc = "Contains three boxes of beanbag shotgun shells, three boxes of rubbershot shotgun shells and one of each special .38 speedloarders. Requires Security access to open."
@@ -295,7 +295,7 @@
 					/obj/item/ammo_box/c38/hotshot,
 					/obj/item/ammo_box/c38/iceblox)
 	crate_name = "ammo crate"
-
+*/ //SKYRAT EDIT END
 /* SKYRAT EDIT: Moved to Bloat.dm	name = "Armor Crate"
 /datum/supply_pack/security/armor
 	name = "Armor Crate"
@@ -305,19 +305,18 @@
 	contains = list(/obj/item/clothing/suit/armor/vest,
 					/obj/item/clothing/suit/armor/vest,
 					/obj/item/clothing/suit/armor/vest)
-	crate_name = "armor crate" */
-
+	crate_name = "armor crate"
+*/ //SKYRAT EDIT END
 
 /datum/supply_pack/security/disabler
 	name = "Disabler Crate"
 	desc = "Three stamina-draining disabler weapons. Requires Security access to open."
-	cost = CARGO_CRATE_VALUE * 3
+	cost = CARGO_CRATE_VALUE * 5 //SKYRAT EDIT 3 -> 5
 	access_view = ACCESS_SECURITY
 	contains = list(/obj/item/gun/energy/disabler,
 					/obj/item/gun/energy/disabler,
 					/obj/item/gun/energy/disabler)
 	crate_name = "disabler crate"
-
 
 /datum/supply_pack/security/forensics
 	name = "Forensics Crate"
@@ -341,7 +340,7 @@
 					/obj/item/clothing/head/helmet/sec)
 	crate_name = "helmet crate"
 
-
+/* //SKYRAT EDIT START - CARGO ARMAMENTS
 /datum/supply_pack/security/laser
 	name = "Lasers Crate"
 	desc = "Contains three lethal, high-energy laser guns. Requires Security access to open."
@@ -351,7 +350,7 @@
 					/obj/item/gun/energy/laser,
 					/obj/item/gun/energy/laser)
 	crate_name = "laser crate"
-
+*/ //SKYRAT EDIT END
 
 /datum/supply_pack/security/securitybarriers
 	name = "Security Barrier Grenades"
@@ -496,7 +495,7 @@
 	cost = CARGO_CRATE_VALUE * 3.5
 	contains = list(/obj/item/storage/box/chemimp)
 	crate_name = "chemical implant crate"
-
+/* //SKYRAT EDIT START - CARGO ARMAMENTS
 /datum/supply_pack/security/armory/ballistic
 	name = "Combat Shotguns Crate"
 	desc = "For when the enemy absolutely needs to be replaced with lead. Contains three Aussec-designed Combat Shotguns, and three Shotgun Bandoliers. Requires Armory access to open."
@@ -527,7 +526,7 @@
 					/obj/item/gun/energy/e_gun)
 	crate_name = "energy gun crate"
 	crate_type = /obj/structure/closet/crate/secure/plasma
-
+*/ //SKYRAT EDIT END
 
 /datum/supply_pack/security/armory/exileimp
 	name = "Exile Implants Crate"
@@ -651,7 +650,7 @@
 					/obj/item/clothing/gloves/tackler/combat,
 					/obj/item/clothing/gloves/tackler/combat)
 	crate_name = "swat crate"
-
+/* //SKYRAT EDIT START - CARGO ARMAMENTS
 /datum/supply_pack/security/armory/thermal
 	name = "Thermal Pistol Crate"
 	desc = "Contains a pair of holsters each with two experimental thermal pistols, using nanites as the basis for their ammo. Requires Armory access to open."
@@ -659,7 +658,7 @@
 	contains = list(/obj/item/storage/belt/holster/thermal,
 					/obj/item/storage/belt/holster/thermal)
 	crate_name = "thermal pistol crate"
-
+*/ //SKYRAT EDIT END
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Engineering /////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////

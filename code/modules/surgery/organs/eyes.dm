@@ -35,6 +35,7 @@
 	/// indication that the eyes are undergoing some negative effect
 	var/damaged = FALSE
 	var/is_emissive = FALSE //SKYRAT EDIT ADDITION
+	var/eyes_layer = BODY_LAYER //SKYRAT EDIT ADDITION
 
 /obj/item/organ/eyes/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = FALSE, initialising)
 	. = ..()
@@ -102,16 +103,23 @@
 		damaged = TRUE
 		if((organ_flags & ORGAN_FAILING))
 			eye_owner.become_blind(EYE_DAMAGE)
-		else if(damage > 30)
-			eye_owner.overlay_fullscreen("eye_damage", /atom/movable/screen/fullscreen/impaired, 2)
-		else
-			eye_owner.overlay_fullscreen("eye_damage", /atom/movable/screen/fullscreen/impaired, 1)
+			return
+
+		var/obj/item/clothing/glasses/eyewear = eye_owner.glasses
+		var/has_prescription_glasses = istype(eyewear) && eyewear.vision_correction
+
+		if(has_prescription_glasses)
+			return
+
+		var/severity = damage > 30 ? 2 : 1
+		eye_owner.overlay_fullscreen("eye_damage", /atom/movable/screen/fullscreen/impaired, severity)
+		return
+
 	//called once since we don't want to keep clearing the screen of eye damage for people who are below 20 damage
-	else if(damaged)
+	if(damaged)
 		damaged = FALSE
 		eye_owner.clear_fullscreen("eye_damage")
 		eye_owner.cure_blind(EYE_DAMAGE)
-	return
 
 /obj/item/organ/eyes/night_vision
 	name = "shadow eyes"
@@ -182,7 +190,7 @@
 	if(. & EMP_PROTECT_SELF)
 		return
 	if(prob(10 * severity))
-		damage += 20 * severity
+		applyOrganDamage(20 * severity)
 		to_chat(owner, span_warning("Your eyes start to fizzle in their sockets!"))
 		do_sparks(2, TRUE, owner)
 		owner.emote("scream")
@@ -458,6 +466,7 @@
 	desc = "These eyes seem to have a large range, but might be cumbersome with glasses."
 	eye_icon_state = "snail_eyes"
 	icon_state = "snail_eyeballs"
+	eyes_layer = ABOVE_BODY_FRONT_HEAD_LAYER //SKYRAT EDIT - Roundstart Snails
 
 /obj/item/organ/eyes/fly
 	name = "fly eyes"
