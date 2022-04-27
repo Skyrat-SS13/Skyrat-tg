@@ -14,7 +14,8 @@
 	default_mutant_bodyparts = list(
 		"ipc_antenna" = ACC_RANDOM,
 		"ipc_screen" = ACC_RANDOM,
-		"ipc_chassis" = ACC_RANDOM
+		"ipc_chassis" = ACC_RANDOM,
+		"ipc_head" = ACC_RANDOM
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	hair_alpha = 210
@@ -58,15 +59,21 @@
 		screen = new
 		screen.Grant(transformer)
 	var/chassis = transformer.dna.mutant_bodyparts["ipc_chassis"]
-	if(!chassis)
+	var/head = transformer.dna.mutant_bodyparts["ipc_head"]
+	if(!chassis && !head)
 		return
 	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.sprite_accessories["ipc_chassis"][chassis["name"]]
-	if(chassis_of_choice)
-		examine_limb_id = chassis_of_choice.icon_state
-		// We want to ensure that the IPC gets their chassis correctly.
+	var/datum/sprite_accessory/ipc_head/head_of_choice = GLOB.sprite_accessories["ipc_head"][head["name"]]
+	if(chassis_of_choice || head_of_choice)
+		examine_limb_id = chassis_of_choice?.icon_state ? chassis_of_choice.icon_state : head_of_choice.icon_state
+		// We want to ensure that the IPC gets their chassis and their head correctly.
 		for(var/obj/item/bodypart/limb as anything in transformer.bodyparts)
-			if(limb.body_part == CHEST)
-				limb.limb_id = chassis_of_choice.icon_state != "None" ? chassis_of_choice.icon_state : "ipc"
+			if(chassis && limb.body_part == CHEST)
+				limb.limb_id = chassis_of_choice.icon_state != "none" ? chassis_of_choice.icon_state : "ipc"
+				continue
+
+			if(head && limb.body_part == HEAD)
+				limb.limb_id = head_of_choice.icon_state != "none" ? head_of_choice.icon_state : "ipc"
 
 		if(chassis_of_choice.color_src)
 			species_traits += MUTCOLORS
@@ -75,9 +82,10 @@
 /datum/species/robotic/ipc/replace_body(mob/living/carbon/target, datum/species/new_species)
 	..()
 	var/chassis = target.dna.mutant_bodyparts["ipc_chassis"]
-	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.sprite_accessories["ipc_chassis"][chassis]
 	if(!chassis)
 		return
+	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.sprite_accessories["ipc_chassis"][chassis["name"]]
+
 	for(var/obj/item/bodypart/iterating_bodypart as anything in target.bodyparts) //Override bodypart data as necessary
 		iterating_bodypart.uses_mutcolor = chassis_of_choice.color_src ? TRUE : FALSE
 		if(iterating_bodypart.uses_mutcolor)
