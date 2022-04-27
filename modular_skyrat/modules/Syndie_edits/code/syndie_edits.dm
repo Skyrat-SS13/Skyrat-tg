@@ -1,15 +1,28 @@
 //DS-2/Syndicate clothing.
 
-/obj/item/clothing/suit/armor/vest/capcarapace/syndicate_winter
+/obj/item/clothing/suit/armor/vest/capcarapace/syndicate
+	icon = 'modular_skyrat/modules/syndie_edits/icons/obj.dmi'
+	worn_icon = 'modular_skyrat/modules/syndie_edits/icons/worn.dmi'
+	icon_state = "syndievest"
+
+/obj/item/clothing/suit/armor/vest/capcarapace/syndicate/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/toggle_icon)
+
+/obj/item/clothing/suit/armor/vest/capcarapace/syndicate/winter
 	name = "syndicate captain's winter vest"
-	desc = "A sinister yet comfortable looking vest of advanced armor worn over a black and red fireproof jacket. The fur is said to be from genuine wolves on the icemoon!"
-	icon = 'modular_skyrat/modules/syndie_edits/icons/syndievest_winter_items.dmi'
-	worn_icon = 'modular_skyrat/modules/syndie_edits/icons/syndievest_winter.dmi'
+	desc = "A sinister yet comfortable looking vest of advanced armor worn over a black and red fireproof jacket. The fur is said to be from wolves on the icemoon."
+	icon = 'modular_skyrat/modules/syndie_edits/icons/obj.dmi'
+	worn_icon = 'modular_skyrat/modules/syndie_edits/icons/worn.dmi'
 	icon_state = "syndievest_winter"
 	body_parts_covered = CHEST|GROIN
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF
+
+/obj/item/clothing/suit/armor/vest/capcarapace/syndicate/winter/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/toggle_icon)
 
 /obj/item/clothing/head/helmet/swat/ds
 	name = "SWAT helmet"

@@ -32,7 +32,7 @@
 			icon_state = "water"
 			src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects.dmi', "water_top", EXTRA_ABOVE_MOB_LAYER))
 			flick_overlay_static(image('modular_skyrat/modules/liquids/icons/obj/effects/splash.dmi', "splash", EXTRA_ABOVE_MOB_LAYER), src, 20)
-			playsound(get_turf(src), 'modular_skyrat/sound/effects/watersplash.ogg', 25, TRUE)
+			playsound(get_turf(src), 'modular_skyrat/master_files/sound/effects/watersplash.ogg', 25, TRUE)
 
 		if("smoke")
 			name = "blazing mist"
