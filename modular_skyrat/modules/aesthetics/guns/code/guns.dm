@@ -263,20 +263,24 @@
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 
 /obj/item/gun/ballistic/rifle/boltaction
-	name = "\improper Mosin Nagant 91-30"
-	desc = "This piece of junk looks like something that could have been used 700 years ago. It feels slightly moist."
-	sawn_desc = "An extremely sawn-off Mosin Nagant, popularly known as an \"obrez\". There was probably a reason it wasn't manufactured this short to begin with."
+	name = "\improper Sportiv precision rifle"
+	desc = "A rather antique sporting rifle dating back to the 2400s. 'НРИ - Коллегия обороны' is etched on the bolt."
+	sawn_desc = "An extremely sawn-off Sportiv rifle, popularly known as an \"obrez\". There was probably a reason it wasn't manufactured this short to begin with."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
 /obj/item/gun/ballistic/rifle/boltaction/brand_new
-	name = "\improper Mosin Nagant M39"
-	desc = "A freshly-produced Mosin Nagant variant issued by Nanotrasen for their interns. You would rather not damage it."
+	name = "\improper NT Sportsman rifle"
+	desc = "A freshly-produced Sportiv precision rifle variant issued by Nanotrasen for their interns.\
+	<br><br>\
+	<i>BRAND NEW: Cannot be sawn off.</i>"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	company_flag = COMPANY_NANOTRASEN
 
 /obj/item/gun/ballistic/rifle/boltaction/brand_new/quartermaster
-	name = "\improper FTU 'Archangel' Mosin"
-	desc = "A very... Modernized MN91-30 rifle, the frame even feels a little flimsy. This thing was probably built with a conversion kit from spaceBay."
+	name = "\improper FTU 'Archangel' precision rifle"
+	desc = "A very... Modernized Sportiv rifle, the frame even feels a little flimsy. This thing was probably built with a conversion kit from a shady NTnet site.\
+	<br><br>\
+	<i>BRAND NEW: Cannot be sawn off.</i>"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	icon_state = "bubba"
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
@@ -287,7 +291,7 @@
 	company_flag = null //Cargonia's own
 
 /obj/item/ammo_box/magazine/internal/boltaction/bubba
-	name = "mosin nagant extended internal magazine"
+	name = "sportiv extended internal magazine"
 	desc = "How did you get it out?"
 	ammo_type = /obj/item/ammo_casing/a762
 	caliber = CALIBER_A762
@@ -301,14 +305,14 @@
 
 /obj/item/gun/ballistic/automatic/c20r/unrestricted/cmg1
 	name = "\improper NT CMG-1"
-	desc = "A bullpup three-round burst .45 PDW with an eerily familiar design. It has a foldable stock and a dot sight."
+	desc = "A bullpup three-round burst .460C PDW with an eerily familiar design. It has a foldable stock and a dot sight."
 	icon_state = "cmg1"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	company_flag = COMPANY_NANOTRASEN
 
 /obj/item/gun/ballistic/automatic/ar/modular/model75
 	name = "\improper NT ARG-75"
-	desc = "A contemporary rifle that just exited its prototype phase and has started production, a rare sight for now. It's equipped with a heavy duty integrally suppressed barrel, 1.4 times scope and a topmounted laser sight."
+	desc = "A contemporary rifle manufactured by NT. It's equipped with a heavy duty integrally suppressed barrel, 1.4 times scope and a topmounted laser sight."
 	icon_state = "arg75"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	fire_sound = 'sound/weapons/gun/pistol/shot_suppressed.ogg'
@@ -318,7 +322,7 @@
 	company_flag = COMPANY_NANOTRASEN
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
-	name = "7.62mm straight magazine"
+	name = "\improper ARG-75 magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/a762
