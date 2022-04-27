@@ -34,6 +34,11 @@
 	item_type = /obj/item/gun/ballistic/shotgun/automatic/combat
 	lower_cost = CARGO_CRATE_VALUE * 10
 	upper_cost = CARGO_CRATE_VALUE * 14
+	
+/datum/armament_entry/cargo_gun/nanotrasen/shotgun/dualtube
+	item_type = /obj/item/gun/ballistic/shotgun/automatic/dual_tube
+	lower_cost = CARGO_CRATE_VALUE * 14
+	upper_cost = CARGO_CRATE_VALUE * 16
 
 /datum/armament_entry/cargo_gun/nanotrasen/smg
 	subcategory = ARMAMENT_SUBCATEGORY_SUBMACHINEGUN
