@@ -131,9 +131,10 @@
 	if(stat == DEAD)
 		return
 	var/mob/living/carbon/carbon = src
+	var/icon_scale = get_icon_scale(carbon)
 	// Now put them back on in the right spot.
-	var/our_sprite_x = 16 * carbon.dna.current_body_size
-	var/our_sprite_y = 24 * carbon.dna.current_body_size
+	var/our_sprite_x = 16 * icon_scale
+	var/our_sprite_y = 24 * icon_scale
 
 	var/x_offset = our_sprite_x // Add your own offset here later if you want.
 	var/y_offset = our_sprite_y + STATUS_INDICATOR_Y_OFFSET
@@ -145,7 +146,7 @@
 
 	// In /mob/living's `update_transform()`, the sprite is horizontally shifted when scaled up, so that the center of the sprite doesn't move to the right.
 	// Because of that, this adjustment needs to happen with the future indicator row as well, or it will look bad.
-	current_x_position -= (32 / 2) * (get_icon_scale() - 1)
+	current_x_position -= (32 / 2) * (icon_scale - 1)
 
 	// Now the indicator row can actually be built.
 	for(var/thing in status_indicators)
@@ -163,12 +164,12 @@
 		// and it won't cause any issues since no more icons will be added, and the var is not used for anything else.
 		current_x_position += STATUS_INDICATOR_ICON_X_SIZE + STATUS_INDICATOR_ICON_MARGIN
 
-/mob/living/proc/get_icon_scale()
-	if(!iscarbon(src)) // normal mobs are always 1 for scale - not borg compatible but ok
+/mob/living/proc/get_icon_scale(carbon)
+	if(!iscarbon(carbon)) // normal mobs are always 1 for scale - not borg compatible but ok
 		return 1
-	var/mob/living/carbon/carbon = src // we're possibly a player! We have size prefs!
-
-	return carbon?.dna.current_body_size
+	var/mob/living/carbon/passed_mob = carbon // we're possibly a player! We have size prefs!
+	var/mysize = (passed_mob.dna.current_body_size ? passed_mob.dna.current_body_size : 1)
+	return mysize
 
 /atom/movable/screen/plane_master/runechat/status
 	name = "status plane master"
