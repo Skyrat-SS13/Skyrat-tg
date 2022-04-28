@@ -342,7 +342,7 @@
 	
 /obj/item/ammo_casing/shotgun/pulverizer
 	name = "pulverizer shotgun slug"
-	desc = "A 12 gauge uranium slug purpose built to break bones on impact."
+	desc = "A 12 gauge uranium slug purpose-built to break bones on impact."
 	
 /obj/item/ammo_casing/shotgun/incendiary
 	name = "incendiary slug"
@@ -356,13 +356,13 @@
 	
 /obj/item/ammo_casing/shotgun/meteorslug
 	name = "meteor slug"
-	desc = "A 12 gauge shell rigged with CMC technology, which launches a heap of matter with great force when fired.\
+	desc = "A 12 gauge shell rigged with CMC technology which launches a heap of matter with great force when fired.\
 	<br><br>\
 	<i>METEOR: Fires a meteor-like projectile that knocks back movable objects like people and airlocks.</i>"
 
 /obj/item/ammo_casing/shotgun/frag12
 	name = "FRAG-12 slug"
-	desc = "A 12 gauge shell containing high explosives, made for defeating some barriers, defeat light vehicles, and disrupt IEDs. Or intercept assistants.\
+	desc = "A 12 gauge shell containing high explosives designed for defeating some barriers and light vehicles, disrupting IEDs, or intercepting assistants.\
 	<br><br>\
 	<i>HIGH EXPLOSIVE: Explodes on impact.</i>"
 	
@@ -378,7 +378,7 @@
 	
 /obj/item/ammo_casing/p50/soporific
 	name = ".416 Stabilis tranquilizer casing"
-	desc = "A .416 bullet casing, specialised in sending the target to sleep, instead of hell.\
+	desc = "A .416 bullet casing that specialises in sending the target to sleep rather than hell.\
 	<br><br>\
 	<i>SOPORIFIC: Forces targets to sleep, deals no damage.</i>"
 	
@@ -400,7 +400,7 @@
 	
 /obj/item/ammo_casing/c46x30mm/inc
 	name = "8mm Usurpator incendiary bullet casing"
-	desc = "A 6.5x25mm incendiary bullet casing.\
+	desc = "An 8mm incendiary bullet casing.\
 	<br><br>\
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
 	
@@ -410,13 +410,13 @@
 
 /obj/item/ammo_casing/c45/ap
 	name = ".460 Ceres armor-piercing polymer casing"
-	desc = "An Armor Piercing .460 bullet casing.\
+	desc = "An armor-piercing .460 bullet casing.\
 	<br><br>\
 	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?</i>"
 	
 /obj/item/ammo_casing/c45/inc
 	name = ".460 Ceres incendiary bullet casing"
-	desc = "An Incendiary .460 bullet casing.\
+	desc = "An incendiary .460 bullet casing.\
 	<br><br>\
 	<i>INCENDIARY: Leaves a trail of fire when shot, sets targets aflame.</i>"
 	
@@ -486,7 +486,7 @@
 	name =".416 tranquilizer"
 	
 /obj/projectile/bullet/p50/penetrator
-	name = ".416 pentrator bullet"
+	name = ".416 penetrator bullet"
 	
 /obj/projectile/bullet/a50ae
 	name = ".454 Trucidator bullet"

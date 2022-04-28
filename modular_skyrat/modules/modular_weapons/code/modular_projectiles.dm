@@ -157,7 +157,7 @@
 
 /obj/item/ammo_casing/a556/ap
 	name = ".277 Aestus armor-piercing polymer casing"
-	desc = "A .277 armor piercing bullet casing.\
+	desc = "A .277 armor-piercing bullet casing.\
 	<br><br>\
 	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?"
 	caliber = CALIBER_A556

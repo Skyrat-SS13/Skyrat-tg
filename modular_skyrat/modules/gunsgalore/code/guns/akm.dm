@@ -41,7 +41,7 @@
 
 /obj/item/gun/ballistic/automatic/akm/modern
 	name = "\improper Bubba's Krinkov"
-	desc = "A modified version of the most iconic human firearm ever made. With most of the original parts being gone in favor of aftermarket replacements."
+	desc = "A modified version of the most iconic human firearm ever made. Most of the original parts are gone in favor of aftermarket replacements."
 	icon_state = "akm_modern"
 	inhand_icon_state = "akm"
 	worn_icon_state = "akm"
