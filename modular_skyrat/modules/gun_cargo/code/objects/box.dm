@@ -8,7 +8,7 @@
 
 /obj/item/storage/box/syringes/bluespace
 	name = "bluespace syringe box"
-	desc = "A three-pack of piercing syringes."
+	desc = "A three-pack of bluespace syringes."
 
 /obj/item/storage/box/syringes/piercing/PopulateContents()
 	for(var/i in 1 to 3)
