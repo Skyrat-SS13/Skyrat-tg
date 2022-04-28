@@ -338,7 +338,7 @@
 	
 /obj/item/ammo_casing/shotgun/executioner
 	name = "expanding shotgun slug"
-	desc = "A 12 gauge fragmenting slug purpose built to annihilate flesh on impact."
+	desc = "A 12 gauge fragmenting slug purpose-built to annihilate flesh on impact."
 	
 /obj/item/ammo_casing/shotgun/pulverizer
 	name = "pulverizer shotgun slug"
