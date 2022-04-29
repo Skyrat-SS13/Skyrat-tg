@@ -10,7 +10,7 @@
 	name = "bluespace syringe box"
 	desc = "A three-pack of bluespace syringes."
 
-/obj/item/storage/box/syringes/piercing/PopulateContents()
+/obj/item/storage/box/syringes/bluespace/PopulateContents()
 	for(var/i in 1 to 3)
 		new /obj/item/reagent_containers/syringe/bluespace(src)
 

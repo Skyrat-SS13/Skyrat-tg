@@ -66,6 +66,11 @@
 	lower_cost = CARGO_CRATE_VALUE * 1
 	upper_cost = CARGO_CRATE_VALUE * 1.5
 
+/datum/armament_entry/cargo_gun/interdyne/chemical/ephedrine
+	item_type = /obj/item/reagent_containers/glass/bottle/ephedrine
+	lower_cost = CARGO_CRATE_VALUE * 3
+	upper_cost = CARGO_CRATE_VALUE * 4
+
 /datum/armament_entry/cargo_gun/interdyne/chemical_contra
 	subcategory = ARMAMENT_SUBCATEGORY_CHEMICAL
 	interest_addition = COMPANY_INTEREST_CHEMICAL
