@@ -53,7 +53,7 @@
 /datum/armament_entry/hecu/primary/special/sniper_rifle
 	item_type = /obj/item/gun/ballistic/automatic/cfa_rifle
 	max_purchase = 1
-	cost = 18
+	cost = 16
 
 /datum/armament_entry/hecu/primary/special/hmg
 	item_type = /obj/item/mounted_machine_gun_folded

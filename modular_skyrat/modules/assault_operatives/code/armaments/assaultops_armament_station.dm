@@ -10,6 +10,9 @@
 /obj/item/armament_points_card/assaultops
 	points = 50
 
+/obj/item/armament_points_card/hecu
+	points = 35
+
 // ARMAMENT ENTRIES
 
 #define ARMAMENT_CATEGORY_OTHER "Miscellaneous"
