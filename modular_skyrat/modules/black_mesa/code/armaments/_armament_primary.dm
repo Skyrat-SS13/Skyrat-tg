@@ -58,7 +58,7 @@
 /datum/armament_entry/hecu/primary/special/hmg
 	item_type = /obj/item/mounted_machine_gun_folded
 	max_purchase = 1
-	cost = 22
+	cost = 20
 	magazine = /obj/item/ammo_box/magazine/mmg_box
 	mags_to_spawn = 1
 	magazine_cost = 2
