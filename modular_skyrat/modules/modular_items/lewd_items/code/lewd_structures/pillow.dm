@@ -1,4 +1,3 @@
-/*
 //WARNING - Lot's of shitcode here. I'm not the best coder but this stuff works and i'm happy. Improve it if you want, but don't break anything.
 
 //////////////////////////
@@ -254,7 +253,7 @@
 	desc = "A small pile of pillows. A comfortable seat, especially for taurs or nagas."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillowpile_small"
-	pseudo_z_axis = 4
+//	pseudo_z_axis = 4
 	var/current_color = "pink"
 	var/mutable_appearance/armrest
 
@@ -379,7 +378,7 @@
 	desc = "A large pile of pillows. Jump on it!"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillowpile_large"
-	pseudo_z_axis = 4
+//	pseudo_z_axis = 4
 	var/current_color = "pink"
 	var/mutable_appearance/armrest
 	//Containing pillows that we have here
@@ -465,4 +464,3 @@
 	C.update_icon_state()
 	C.update_icon()
 	qdel(src)
-*/
