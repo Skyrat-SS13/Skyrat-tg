@@ -122,6 +122,7 @@
 	boots = new /obj/item/clothing/shoes/mod(src)
 	boots.mod = src
 	mod_parts += boots
+<<<<<<< HEAD
 	var/list/all_parts = mod_parts.Copy() + src
 	for(var/obj/item/piece as anything in all_parts)
 		piece.name = "[theme.name] [piece.name]"
@@ -135,6 +136,24 @@
 		piece.min_cold_protection_temperature = theme.min_cold_protection_temperature
 		piece.permeability_coefficient = theme.permeability_coefficient
 		piece.siemens_coefficient = theme.siemens_coefficient
+=======
+	var/list/all_parts = mod_parts + src
+	for(var/obj/item/part as anything in all_parts)
+		part.name = "[theme.name] [part.name]"
+		part.desc = "[part.desc] [theme.desc]"
+		part.armor = getArmor(arglist(theme.armor))
+		part.resistance_flags = theme.resistance_flags
+		part.flags_1 |= theme.atom_flags //flags like initialization or admin spawning are here, so we cant set, have to add
+		part.heat_protection = NONE
+		part.cold_protection = NONE
+		part.max_heat_protection_temperature = theme.max_heat_protection_temperature
+		part.min_cold_protection_temperature = theme.min_cold_protection_temperature
+		part.permeability_coefficient = theme.permeability_coefficient
+		part.siemens_coefficient = theme.siemens_coefficient
+	for(var/obj/item/part as anything in mod_parts)
+		RegisterSignal(part, COMSIG_ATOM_DESTRUCTION, .proc/on_part_destruction)
+		RegisterSignal(part, COMSIG_PARENT_QDELETING, .proc/on_part_deletion)
+>>>>>>> 8b6bdc87b45 (fixes some modsuit bugs (#66574))
 	set_mod_skin(new_skin || theme.default_skin)
 	update_speed()
 	for(var/obj/item/mod/module/module as anything in initial_modules)
@@ -256,10 +275,12 @@
 		for(var/obj/item/part as anything in mod_parts)
 			seal_part(part, seal = FALSE)
 	for(var/obj/item/part as anything in mod_parts)
-		conceal(null, part)
+		retract(null, part)
 	if(active)
 		finish_activation(on = FALSE)
 	unset_wearer()
+	var/mob/old_wearer = old_loc
+	old_wearer.temporarilyRemoveItemFromInventory(src)
 
 /obj/item/mod/control/allow_attack_hand_drop(mob/user)
 	if(user != wearer)
@@ -438,7 +459,7 @@
 	for(var/obj/item/part as anything in mod_parts)
 		if(part.loc == src)
 			continue
-		conceal(null, part)
+		retract(null, part)
 	return ..()
 
 /obj/item/mod/control/worn_overlays(mutable_appearance/standing, isinhands = FALSE, icon_file)
@@ -457,6 +478,7 @@
 	wearer = user
 	SEND_SIGNAL(src, COMSIG_MOD_WEARER_SET, wearer)
 	RegisterSignal(wearer, COMSIG_ATOM_EXITED, .proc/on_exit)
+	RegisterSignal(wearer, COMSIG_SPECIES_GAIN, .proc/on_species_gain)
 	update_charge_alert()
 	for(var/obj/item/mod/module/module as anything in modules)
 		module.on_equip()
@@ -464,11 +486,12 @@
 /obj/item/mod/control/proc/unset_wearer()
 	for(var/obj/item/mod/module/module as anything in modules)
 		module.on_unequip()
-	UnregisterSignal(wearer, list(COMSIG_ATOM_EXITED, COMSIG_PROCESS_BORGCHARGER_OCCUPANT))
+	UnregisterSignal(wearer, list(COMSIG_ATOM_EXITED, COMSIG_SPECIES_GAIN))
 	wearer.clear_alert(ALERT_MODSUIT_CHARGE)
 	SEND_SIGNAL(src, COMSIG_MOD_WEARER_UNSET, wearer)
 	wearer = null
 
+<<<<<<< HEAD
 /obj/item/mod/control/proc/update_flags()
 	var/list/used_skin = theme.skins[skin]
 	for(var/obj/item/clothing/part as anything in mod_parts)
@@ -490,6 +513,17 @@
 		part.visor_flags_inv = category[SEALED_INVISIBILITY] || NONE
 		part.flags_cover = category[UNSEALED_COVER] || NONE
 		part.visor_flags_cover = category[SEALED_COVER] || NONE
+=======
+/obj/item/mod/control/proc/on_species_gain(datum/source, datum/species/new_species, datum/species/old_species)
+	SIGNAL_HANDLER
+
+	var/list/all_parts = mod_parts + src
+	for(var/obj/item/part in all_parts)
+		if(!(part.slot_flags in new_species.no_equip) || is_type_in_list(new_species, part.species_exception))
+			continue
+		forceMove(drop_location())
+		return
+>>>>>>> 8b6bdc87b45 (fixes some modsuit bugs (#66574))
 
 /obj/item/mod/control/proc/quick_module(mob/user)
 	if(!length(modules))
@@ -624,7 +658,7 @@
 	toggle_activate(wearer, force_deactivate = TRUE)
 
 /obj/item/mod/control/proc/set_mod_color(new_color)
-	var/list/all_parts = mod_parts.Copy() + src
+	var/list/all_parts = mod_parts + src
 	for(var/obj/item/part as anything in all_parts)
 		part.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 		part.add_atom_colour(new_color, FIXED_COLOUR_PRIORITY)
@@ -632,6 +666,7 @@
 
 /obj/item/mod/control/proc/set_mod_skin(new_skin)
 	skin = new_skin
+<<<<<<< HEAD
 	var/list/skin_updating = mod_parts.Copy() + src
 	var/list/selected_skin = theme.skins[new_skin]
 	for(var/obj/item/piece as anything in skin_updating)
@@ -641,6 +676,43 @@
 			piece.worn_icon = selected_skin[MOD_WORN_ICON_OVERRIDE]
 		piece.icon_state = "[skin]-[initial(piece.icon_state)]"
 	update_flags()
+=======
+	var/list/used_skin = theme.skins[new_skin]
+	alternate_worn_layer = used_skin[CONTROL_LAYER]
+	var/list/skin_updating = mod_parts + src
+	for(var/obj/item/part as anything in skin_updating)
+		if(used_skin[MOD_ICON_OVERRIDE])
+			part.icon = used_skin[MOD_ICON_OVERRIDE]
+		if(used_skin[MOD_WORN_ICON_OVERRIDE])
+			part.worn_icon = used_skin[MOD_WORN_ICON_OVERRIDE]
+		part.icon_state = "[skin]-[initial(part.icon_state)]"
+	for(var/obj/item/clothing/part as anything in mod_parts)
+		var/used_category
+		if(part == helmet)
+			used_category = HELMET_FLAGS
+		if(part == chestplate)
+			used_category = CHESTPLATE_FLAGS
+		if(part == gauntlets)
+			used_category = GAUNTLETS_FLAGS
+		if(part == boots)
+			used_category = BOOTS_FLAGS
+		var/list/category = used_skin[used_category]
+		part.clothing_flags = category[UNSEALED_CLOTHING] || NONE
+		part.visor_flags = category[SEALED_CLOTHING] || NONE
+		part.flags_inv = category[UNSEALED_INVISIBILITY] || NONE
+		part.visor_flags_inv = category[SEALED_INVISIBILITY] || NONE
+		part.flags_cover = category[UNSEALED_COVER] || NONE
+		part.visor_flags_cover = category[SEALED_COVER] || NONE
+		part.alternate_worn_layer = category[UNSEALED_LAYER]
+		mod_parts[part] = part.alternate_worn_layer
+		if(!category[CAN_OVERSLOT])
+			if(overslotting_parts[part])
+				var/obj/item/overslot = overslotting_parts[part]
+				overslot.forceMove(drop_location())
+			overslotting_parts -= part
+			continue
+		overslotting_parts |= part
+>>>>>>> 8b6bdc87b45 (fixes some modsuit bugs (#66574))
 	wearer?.regenerate_icons()
 
 /obj/item/mod/control/proc/on_exit(datum/source, atom/movable/part, direction)
@@ -658,11 +730,39 @@
 		uninstall(part)
 		return
 	if(part in mod_parts)
-		conceal(wearer, part)
+		retract(wearer, part)
 		if(active)
 			INVOKE_ASYNC(src, .proc/toggle_activate, wearer, TRUE)
 		return
 
+<<<<<<< HEAD
+=======
+/obj/item/mod/control/proc/on_part_destruction(obj/item/part, damage_flag)
+	SIGNAL_HANDLER
+
+	if(overslotting_parts[part])
+		var/obj/item/overslot = overslotting_parts[part]
+		overslot.forceMove(drop_location())
+		overslotting_parts[part] = null
+	if(QDELETED(src))
+		return
+	atom_destruction(damage_flag)
+
+/obj/item/mod/control/proc/on_part_deletion(obj/item/part)
+	SIGNAL_HANDLER
+
+	if(QDELETED(src))
+		return
+	qdel(src)
+
+/obj/item/mod/control/proc/on_overslot_exit(datum/source, atom/movable/overslot, direction)
+	SIGNAL_HANDLER
+
+	if(overslot != overslotting_parts[source])
+		return
+	overslotting_parts[source] = null
+
+>>>>>>> 8b6bdc87b45 (fixes some modsuit bugs (#66574))
 /obj/item/mod/control/proc/on_potion(atom/movable/source, obj/item/slimepotion/speed/speed_potion, mob/living/user)
 	SIGNAL_HANDLER
 
