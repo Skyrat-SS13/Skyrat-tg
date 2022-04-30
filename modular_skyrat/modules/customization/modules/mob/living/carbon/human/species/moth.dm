@@ -1,9 +1,26 @@
 /datum/species/moth
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("fluff" = "None","wings" = ACC_RANDOM,"moth_antennae" = ACC_RANDOM)
-	species_traits = list(LIPS,HAS_FLESH,HAS_BONE,HAS_MARKINGS,MUTCOLORS)
-	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,TRAIT_CAN_STRIP,TRAIT_CAN_USE_FLIGHT_POTION)
-	learnable_languages = list(/datum/language/common, /datum/language/moffic)
+	default_mutant_bodyparts = list(
+		"fluff" = "None",
+		"wings" = ACC_RANDOM,
+		"moth_antennae" = ACC_RANDOM,
+	)
+	species_traits = list(
+		LIPS,
+		HAS_FLESH,
+		HAS_BONE,
+		HAS_MARKINGS,
+		MUTCOLORS,
+	)
+	inherent_traits = list(
+		TRAIT_ADVANCEDTOOLUSER,
+		TRAIT_CAN_STRIP,
+		TRAIT_CAN_USE_FLIGHT_POTION,
+	)
+	learnable_languages = list(
+		/datum/language/common,
+		/datum/language/moffic,
+	)
 	payday_modifier = 0.75
 
 /datum/species/moth/get_random_body_markings(list/passed_features)
