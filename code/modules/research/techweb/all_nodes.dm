@@ -1011,8 +1011,8 @@
 	design_ids = list(
 		"quadultra_micro_laser",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
-	discount_experiments = list(/datum/experiment/scanning/points/machinery_pinpoint_scan/tier3_microlaser = 4000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000) // SKYRAT EDIT - ORIGINAL: 5000
+	discount_experiments = list(/datum/experiment/scanning/points/machinery_pinpoint_scan/tier3_microlaser = 4000) // SKYRAT EDIT - Original: discount_experiments = list(/datum/experiment/scanning/points/machinery_pinpoint_scan/tier3_microlaser = 4000)
 	// required_experiments = list(/datum/experiment/ordnance/gaseous/noblium) SKYRAT EDIT - Commented out
 
 /////////////////////////Clown tech/////////////////////////
@@ -1255,7 +1255,8 @@
 		"cybernetic_lungs_tier3",
 		"cybernetic_stomach_tier3",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 8000) // Skyrat Edit - original: 1500
+	discount_experiments = list(/datum/experiment/ordnance/gaseous/bz = 4000) // Skyrat edit: Addition
 	// required_experiments = list(/datum/experiment/ordnance/gaseous/bz) SKYRAT EDIT - Commented out
 
 /datum/techweb_node/cyber_implants
@@ -1285,7 +1286,8 @@
 		"ci-surgery",
 		"ci-toolset",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500) // Skyrat Edit - original: 2500
+	discount_experiments = list(/datum/experiment/ordnance/gaseous/nitrium) // Skyrat Edit - Addition
 	// required_experiments = list(/datum/experiment/ordnance/gaseous/nitrium) SKYRAT EDIT - Commented out
 
 /datum/techweb_node/combat_cyber_implants
