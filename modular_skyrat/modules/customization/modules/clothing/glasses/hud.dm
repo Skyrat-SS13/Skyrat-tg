@@ -55,3 +55,28 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
 	icon_state = "obseletefold"
 	can_switch_eye = TRUE
+
+/obj/item/clothing/glasses/hud/eyepatch/sec/blindfold
+	name = "sec blindfold HUD"
+	desc = "a fake blindfold with a security HUD inside, helps you look like blind justice. This won't provide the same protection that you'd get from sunglasses."
+	icon_state =  "secfold"
+
+/obj/item/clothing/glasses/hud/eyepatch/med/blindfold
+	name = "medical blindfold HUD"
+	desc = "a fake blindfold with a medical HUD inside, great for helping keep a poker face when dealing with patients."
+	icon_state =  "medfold"
+
+/obj/item/clothing/glasses/hud/eyepatch/meson/blindfold
+	name = "meson blindfold HUD"
+	desc = "a fake blindfold with meson lenses inside. Doesn't shield against welding."
+	icon_state =  "mesonfold"
+
+/obj/item/clothing/glasses/hud/eyepatch/diagnostic/blindfold
+	name = "diagnostic blindfold HUD"
+	desc = "a fake blindfold with a diagnostic HUD inside, excellent for working on androids."
+	icon_state =  "robofold"
+
+/obj/item/clothing/glasses/hud/eyepatch/sci/blindfold
+	name = "science blindfold HUD"
+	desc = "a fake blindfold with a science HUD inside, provides a way to get used to blindfolds before you eventually end up needing the real thing."
+	icon_state =  "scifold"
