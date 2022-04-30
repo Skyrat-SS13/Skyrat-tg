@@ -1286,8 +1286,8 @@
 		"ci-surgery",
 		"ci-toolset",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500) // Skyrat Edit - original: 2500
-	discount_experiments = list(/datum/experiment/ordnance/gaseous/nitrium) // Skyrat Edit - Addition
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500) // Skyrat Edit - original: 2500
+	discount_experiments = list(/datum/experiment/ordnance/gaseous/nitrium = 4500) // Skyrat Edit - Addition
 	// required_experiments = list(/datum/experiment/ordnance/gaseous/nitrium) SKYRAT EDIT - Commented out
 
 /datum/techweb_node/combat_cyber_implants
