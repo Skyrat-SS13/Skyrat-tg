@@ -8,7 +8,7 @@
 	possible_transfer_amounts = list()
 	list_reagents = list(/datum/reagent/drug/nicotine = 50)
 	fill_icon_thresholds = list(0, 5, 20, 40)
-	custom_price = PAYCHECK_ASSISTANT
+	custom_price = PAYCHECK_CREW
 
 /obj/item/reagent_containers/vapecart/afterattack(atom/target, mob/user, proximity)
 	. = ..()
@@ -67,28 +67,28 @@
 	name = "Dr. Breen's Blue Kush Reserve cart"
 	desc = "Don't smoke the carts... They put something in it... t-to make you forget! I don't even remember how I got here..."
 	list_reagents = list(/datum/reagent/drug/thc = 20, /datum/reagent/consumable/berryjuice = 10)
-	custom_price = PAYCHECK_MEDIUM
+	custom_price = PAYCHECK_LOWER
 
 /obj/item/reagent_containers/vapecart/reddiesel
 	name = "Resistance Red Diesel cart"
 	desc = "Seems to be endorsed by a real scientist!"
 	list_reagents = list(/datum/reagent/drug/thc = 20, /datum/reagent/consumable/dr_gibb = 10)
-	custom_price = PAYCHECK_MEDIUM
+	custom_price = PAYCHECK_LOWER
 
 /obj/item/reagent_containers/vapecart/pwrgame
 	name = "Pwr Haze cart"
 	desc = "When did Pwr Game get into the cart business?"
 	list_reagents = list(/datum/reagent/drug/thc = 20, /datum/reagent/consumable/pwr_game = 10)
-	custom_price = PAYCHECK_MEDIUM
+	custom_price = PAYCHECK_LOWER
 
 /obj/item/reagent_containers/vapecart/cheese
 	name = "Cheesie Honker OG Kush cart"
 	desc = "*Contains no real cheese."
 	list_reagents = list(/datum/reagent/drug/thc = 20, /datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/sugar = 3)
-	custom_price = PAYCHECK_MEDIUM
+	custom_price = PAYCHECK_LOWER
 
 /obj/item/reagent_containers/vapecart/syndicate
 	name = "Syndikush Green Crack cart"
 	desc = "Green Crack is a strain of sativa, not actual crack."
 	list_reagents = list(/datum/reagent/drug/thc = 20, /datum/reagent/medicine/stimulants = 10)
-	custom_price = PAYCHECK_MEDIUM
+	custom_price = PAYCHECK_LOWER

@@ -11,7 +11,7 @@
 /datum/armament_entry/assault_operatives/primary/submachinegun/wildcat
 	item_type = /obj/item/gun/ballistic/automatic/cfa_wildcat
 	cost = 5
-	
+
 /datum/armament_entry/assault_operatives/primary/submachinegun/lynx
 	item_type = /obj/item/gun/ballistic/automatic/cfa_lynx
 	cost = 7
@@ -63,9 +63,10 @@
 
 /datum/armament_entry/assault_operatives/primary/special/rocket_launcher
 	item_type = /obj/item/gun/ballistic/rocketlauncher/unrestricted
+	magazine = /obj/item/ammo_casing/caseless/rocket
 
 /datum/armament_entry/assault_operatives/primary/special/rocket_launcher/after_equip(turf/safe_drop_location, obj/item/item_to_equip)
 	var/obj/item/storage/box/ammo_box/spawned_box = new(safe_drop_location)
 	spawned_box.name = "ROCKETS - [item_to_equip.name]"
-	for(var/i in 1 to 5)
+	for(var/i in 1 to 3)
 		new /obj/item/ammo_casing/caseless/rocket(spawned_box)

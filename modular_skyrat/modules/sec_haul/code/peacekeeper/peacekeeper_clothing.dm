@@ -274,7 +274,7 @@
 	icon_state = "peacekeeper_webbing"
 	worn_icon_state = "peacekeeper_webbing"
 	content_overlays = FALSE
-	custom_premium_price = PAYCHECK_HARD * 3
+	custom_premium_price = PAYCHECK_CREW * 3
 	component_type = /datum/component/storage/concrete/peacekeeper
 
 /obj/item/storage/belt/security/webbing/peacekeeper/ComponentInitialize()
