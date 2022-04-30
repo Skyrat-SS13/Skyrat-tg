@@ -494,8 +494,13 @@
 	//SKYRAT EDIT ADDITION
 	if(result.len)
 		for(var/i = 1, i <= result.len, i++)
-			if(!findtext(result[i], "<hr>"))
+			if(result[i] != EXAMINE_SECTION_BREAK)
 				result[i] += "\n"
+			else
+				// remove repeated <hr's> and ones on the ends.
+				if(i == 1 || i == result.len || result[i - 1] == EXAMINE_SECTION_BREAK)
+					result.Cut(i, i + 1)
+					i--
 	//SKYRAT EDIT END
 
 	to_chat(src, "<div class='examine_block'><span class='infoplain'>[result.Join()]</span></div>") //SKYRAT EDIT CHANGE
