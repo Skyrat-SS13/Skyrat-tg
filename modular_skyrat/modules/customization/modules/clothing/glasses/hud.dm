@@ -34,6 +34,17 @@
 	hud_trait = TRAIT_MEDICAL_HUD
 	glass_colour_type = /datum/client_colour/glass_colour/lightblue
 
+	unique_reskin = list(
+		"Eyepatch" = list(
+			RESKIN_ICON_STATE = "medpatch",
+			RESKIN_WORN_ICON_STATE = "medpatch"
+		),
+		"Blindfold" = list(
+			RESKIN_ICON_STATE = "medfold",
+			RESKIN_WORN_ICON_STATE = "medfold"
+		)
+	)
+
 /obj/item/clothing/glasses/hud/eyepatch/meson
 	name = "mesons eyepatch HUD"
 	desc = "For those that only want to go half insane when staring at the supermatter."
@@ -44,6 +55,17 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	glass_colour_type = /datum/client_colour/glass_colour/lightgreen
 
+	unique_reskin = list(
+		"Eyepatch" = list(
+			RESKIN_ICON_STATE = "mesonpatch",
+			RESKIN_WORN_ICON_STATE = "mesonpatch"
+		),
+		"Blindfold" = list(
+			RESKIN_ICON_STATE = "mesonfold",
+			RESKIN_WORN_ICON_STATE = "mesonfold"
+		)
+	)
+
 /obj/item/clothing/glasses/hud/eyepatch/diagnostic
 	name = "diagnostic eyepatch HUD"
 	desc = "Lost your eyeball to a rogue borg? Dare to tell a Dogborg to do it's job? Got bored? Whatever the reason, this bit of tech will help you still repair borgs, they'll never need it since they usually do it themselves, but its the thought that counts."
@@ -51,6 +73,17 @@
 	hud_type = DATA_HUD_DIAGNOSTIC_BASIC
 	hud_trait = TRAIT_DIAGNOSTIC_HUD
 	glass_colour_type = /datum/client_colour/glass_colour/lightorange
+
+	unique_reskin = list(
+		"Eyepatch" = list(
+			RESKIN_ICON_STATE = "robopatch",
+			RESKIN_WORN_ICON_STATE = "robopatch"
+		),
+		"Blindfold" = list(
+			RESKIN_ICON_STATE = "robofold",
+			RESKIN_WORN_ICON_STATE = "robofold"
+		)
+	)
 
 /obj/item/clothing/glasses/hud/eyepatch/sci
 	name = "science eyepatch HUD"
