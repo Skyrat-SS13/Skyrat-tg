@@ -320,7 +320,8 @@
 /datum/uplink_item/suits/energy_shield_traitor
 	name = "MODsuit Energy Shield Module"
 	desc = "An energy shield module for a MODsuit. The shields can handle up to three impacts \
-			within a short duration and will rapidly recharge while not under fire."
+			within a short duration and will rapidly recharge while not under fire. \
+			Costs 3 complexity to use in a MODsuit."
 	item = /obj/item/mod/module/energy_shield
 	cost = 12
 

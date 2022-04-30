@@ -26,7 +26,7 @@
 			with suppressors."
 	progression_minimum = 10 MINUTES
 	item = /obj/item/gun/ballistic/automatic/pistol
-	cost = 6 //SKYRAT EDIT: ORIGINAL COST 7
+	cost = 5 //SKYRAT EDIT: ORIGINAL COST 7
 	purchasable_from = ~UPLINK_CLOWN_OPS
 
 /datum/uplink_item/dangerous/throwingweapons
