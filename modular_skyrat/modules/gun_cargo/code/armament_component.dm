@@ -435,7 +435,8 @@
 				if(possible_console.requestonly && !self_paid)
 					return
 			else if(console_state == IRN_CONSOLE)
-				if(parent_prog.requestonly && !self_paid)
+				if(!self_paid)
+					to_chat(usr, span_warning("You cannot purchase companies on a tablet without privately ordering them!"))
 					return
 
 			for(var/find_company in SSgun_companies.unpurchased_companies)
@@ -489,6 +490,7 @@
 				if(do_payment)
 					if(!buyer.adjust_money(assigned_cost))
 						return
+				possible_console.radio_wrapper(possible_console, "[find_company] has been purchased by [user] on [self_paid ? "[buyer.account_holder]'s balance" : "Cargo Budget"] for [abs(assigned_cost)].", RADIO_CHANNEL_SUPPLY)
 
 				SSgun_companies.purchased_companies[find_company] = found_company
 				SSgun_companies.unpurchased_companies.Remove(find_company)
