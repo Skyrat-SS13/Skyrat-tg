@@ -37,3 +37,6 @@
 
 /obj/item/gun/syringe
 	company_flag = COMPANY_INTERDYNE
+
+/obj/item/gun/ballistic/automatic/pistol
+	company_flag = COMPANY_SCARBOROUGH
