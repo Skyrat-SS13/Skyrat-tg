@@ -25,3 +25,8 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 /datum/config_entry/flag/log_event_votes
 
 /datum/config_entry/flag/low_chaos_event_system
+
+/datum/config_entry/number/max_catastrophic_events
+	default = 5
+	min_val = 1
+	max_val = 10
