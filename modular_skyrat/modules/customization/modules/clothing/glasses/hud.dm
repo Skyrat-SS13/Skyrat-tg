@@ -46,3 +46,12 @@
 	desc = "Every few years, the aspiring mad scientist says to themselves 'I've got the castle, the evil laugh and equipment, but what I need is a look', thankfully, Dr. Galox has already covered that for you dear friend - while it doesn't do much beyond scan chemicals, what it lacks in use it makes up for in style."
 	icon_state = "scipatch"
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
+
+/// BLINDFOLD HUDS ///
+/obj/item/clothing/glasses/trickblindfold/obselete
+	name = "obselete fake blindfold"
+	desc = "An ornate fake blindfold, devoid of any electronics. It's belived to be originally worn by members of bygone military force that sought to protect humanity."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
+	icon_state = "obseletefold"
+	can_switch_eye = TRUE
