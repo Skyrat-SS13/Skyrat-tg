@@ -5,6 +5,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
 	icon_state = "hudpatch"
 	inhand_icon_state = "eyepatch"
+	uses_advanced_reskins = TRUE
 	can_switch_eye = TRUE	//See modular_skyrat\modules\customization\modules\clothing\glasses\glasses.dm
 
 /obj/item/clothing/glasses/hud/eyepatch/sec
@@ -15,6 +16,16 @@
 	hud_trait = TRAIT_SECURITY_HUD
 	glass_colour_type = /datum/client_colour/glass_colour/blue
 
+	unique_reskin = list(
+		"Eyepatch" = list(
+			RESKIN_ICON_STATE = "hudpatch",
+			RESKIN_WORN_ICON_STATE = "hudpatch"
+		),
+		"Blindfold" = list(
+			RESKIN_ICON_STATE = "secfold",
+			RESKIN_WORN_ICON_STATE = "secfold"
+		)
+	)
 /obj/item/clothing/glasses/hud/eyepatch/med
 	name = "medical eyepatch HUD"
 	desc = "Do no harm, maybe harm has befell to you, or your poor eyeball, thankfully there's a way to continue your oath, thankfully it didn't mention sleepdarts or monkey men."
@@ -46,6 +57,18 @@
 	desc = "Every few years, the aspiring mad scientist says to themselves 'I've got the castle, the evil laugh and equipment, but what I need is a look', thankfully, Dr. Galox has already covered that for you dear friend - while it doesn't do much beyond scan chemicals, what it lacks in use it makes up for in style."
 	icon_state = "scipatch"
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
+
+	unique_reskin = list(
+		"Eyepatch" = list(
+			RESKIN_ICON_STATE = "scipatch",
+			RESKIN_WORN_ICON_STATE = "scipatch"
+		),
+		"Blindfold" = list(
+			RESKIN_ICON_STATE = "scifold",
+			RESKIN_WORN_ICON_STATE = "scifold"
+		)
+	)
+
 
 /// BLINDFOLD HUDS ///
 /obj/item/clothing/glasses/trickblindfold/obselete
