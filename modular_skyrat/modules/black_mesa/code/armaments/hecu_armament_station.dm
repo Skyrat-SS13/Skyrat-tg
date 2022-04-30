@@ -4,6 +4,11 @@
 
 	armament_type = /datum/armament_entry/hecu
 
+// POINTS CARDS
+
+/obj/item/armament_points_card/hecu
+	points = 35
+
 // ARMAMENT ENTRIES
 
 /datum/armament_entry/hecu
