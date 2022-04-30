@@ -529,14 +529,19 @@
 	if(!length(reagent_list))
 		return
 
-	if(examiner.can_see_reagents()) //Show each individual reagent
-		examine_text += "<hr>"
+	if(examiner.can_see_reagents())
+		// Show each individual reagent
+		examine_text += EXAMINE_SECTION_BREAK
 		examine_text += "\The [source] [liquid_state_messages["[liquid_state]"]]:"
+
 		for(var/datum/reagent/current_reagent as anything in reagent_list)
 			var/volume = reagent_list[current_reagent]
-			examine_text += "[round(volume, 0.01)] units of [initial(current_reagent.name)]"
+			examine_text += "&bull; [round(volume, 0.01)] units of [initial(current_reagent.name)]"
+
 		examine_text += span_notice("The solution has a temperature of [temp]K.")
-	else //Otherwise, just show the total volume
+		examine_text += EXAMINE_SECTION_BREAK
+	else
+		 // Otherwise, just show the total volume
 		examine_text += span_notice("\The [source] [liquid_state_messages["[liquid_state]"]] various reagents.")
 
 /obj/effect/temp_visual/liquid_splash
