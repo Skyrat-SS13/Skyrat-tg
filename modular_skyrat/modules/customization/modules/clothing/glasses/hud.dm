@@ -21,7 +21,7 @@
 			RESKIN_ICON_STATE = "hudpatch",
 			RESKIN_WORN_ICON_STATE = "hudpatch"
 		),
-		"Blindfold" = list(
+		"Fake Blindfold" = list(
 			RESKIN_ICON_STATE = "secfold",
 			RESKIN_WORN_ICON_STATE = "secfold"
 		)
@@ -39,7 +39,7 @@
 			RESKIN_ICON_STATE = "medpatch",
 			RESKIN_WORN_ICON_STATE = "medpatch"
 		),
-		"Blindfold" = list(
+		"Fake Blindfold" = list(
 			RESKIN_ICON_STATE = "medfold",
 			RESKIN_WORN_ICON_STATE = "medfold"
 		)
@@ -60,7 +60,7 @@
 			RESKIN_ICON_STATE = "mesonpatch",
 			RESKIN_WORN_ICON_STATE = "mesonpatch"
 		),
-		"Blindfold" = list(
+		"Fake Blindfold" = list(
 			RESKIN_ICON_STATE = "mesonfold",
 			RESKIN_WORN_ICON_STATE = "mesonfold"
 		)
@@ -79,7 +79,7 @@
 			RESKIN_ICON_STATE = "robopatch",
 			RESKIN_WORN_ICON_STATE = "robopatch"
 		),
-		"Blindfold" = list(
+		"Fake Blindfold" = list(
 			RESKIN_ICON_STATE = "robofold",
 			RESKIN_WORN_ICON_STATE = "robofold"
 		)
@@ -96,7 +96,7 @@
 			RESKIN_ICON_STATE = "scipatch",
 			RESKIN_WORN_ICON_STATE = "scipatch"
 		),
-		"Blindfold" = list(
+		"Fake Blindfold" = list(
 			RESKIN_ICON_STATE = "scifold",
 			RESKIN_WORN_ICON_STATE = "scifold"
 		)
