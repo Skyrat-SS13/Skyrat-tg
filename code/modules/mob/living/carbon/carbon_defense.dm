@@ -468,6 +468,30 @@
 						null, span_hear("You hear the rustling of clothes."), DEFAULT_MESSAGE_RANGE, list(M, src))
 		to_chat(M, span_notice("You shake [src] trying to pick [p_them()] up!"))
 		to_chat(src, span_notice("[M] shakes you to get you up!"))
+	else if(check_zone(M.zone_selected) == BODY_ZONE_HEAD && get_bodypart(BODY_ZONE_HEAD)) //Headpats!
+		M.visible_message(span_notice("[M] gives [src] a pat on the head to make [p_them()] feel better!"), \
+					null, span_hear("You hear a soft patter."), DEFAULT_MESSAGE_RANGE, list(M, src))
+		to_chat(M, span_notice("You give [src] a pat on the head to make [p_them()] feel better!"))
+		to_chat(src, span_notice("[M] gives you a pat on the head to make you feel better! "))
+
+		if(HAS_TRAIT(src, TRAIT_BADTOUCH))
+			to_chat(M, span_warning("[src] looks visibly upset as you pat [p_them()] on the head."))
+
+		//SKYRAT EDIT ADDITION BEGIN - EMOTES
+		if(HAS_TRAIT(src, TRAIT_EXCITABLE))
+			if(!src.dna.species.is_wagging_tail(src))
+				src.emote("wag")
+		//SKYRAT EDIT ADDITION END
+
+	else if ((M.zone_selected == BODY_ZONE_PRECISE_GROIN) && !isnull(src.getorgan(/obj/item/organ/tail)))
+		M.visible_message(span_notice("[M] pulls on [src]'s tail!"), \
+					null, span_hear("You hear a soft patter."), DEFAULT_MESSAGE_RANGE, list(M, src))
+		to_chat(M, span_notice("You pull on [src]'s tail!"))
+		to_chat(src, span_notice("[M] pulls on your tail!"))
+		if(HAS_TRAIT(src, TRAIT_BADTOUCH)) //How dare they!
+			to_chat(M, span_warning("[src] makes a grumbling noise as you pull on [p_their()] tail."))
+		else
+			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "tailpulled", /datum/mood_event/tailpulled)
 
 	//SKYRAT EDIT ADDITION BEGIN - EMOTES -- SENSITIVE SNOUT TRAIT ADDITION
 	else if(M.zone_selected == BODY_ZONE_PRECISE_MOUTH)
@@ -481,39 +505,7 @@
 		"<span class='notice'>You boop [src] on the nose.</span>")
 	//SKYRAT EDIT ADDITION END
 
-	else if(check_zone(M.zone_selected) == BODY_ZONE_HEAD && get_bodypart(BODY_ZONE_HEAD)) //Headpats!
-		//SKYRAT EDIT ADDITION
-		if(HAS_TRAIT(src, TRAIT_OVERSIZED) && !HAS_TRAIT(M, TRAIT_OVERSIZED))
-			visible_message(span_warning("[M] tries to pat [src] on the head, but can't reach!"))
-		else //SKYRAT EDIT END
-			SEND_SIGNAL(src, COMSIG_CARBON_HEADPAT, M)
-			M.visible_message(span_notice("[M] gives [src] a pat on the head to make [p_them()] feel better!"), \
-						null, span_hear("You hear a soft patter."), DEFAULT_MESSAGE_RANGE, list(M, src))
-			to_chat(M, span_notice("You give [src] a pat on the head to make [p_them()] feel better!"))
-			to_chat(src, span_notice("[M] gives you a pat on the head to make you feel better! "))
-
-			//SKYRAT EDIT ADDITION BEGIN - EMOTES
-			if(HAS_TRAIT(src, TRAIT_EXCITABLE))
-				if(!src.dna.species.is_wagging_tail(src))
-					src.emote("wag")
-			//SKYRAT EDIT ADDITION END
-
-			if(HAS_TRAIT(src, TRAIT_BADTOUCH))
-				to_chat(M, span_warning("[src] looks visibly upset as you pat [p_them()] on the head."))
-
-	else if ((M.zone_selected == BODY_ZONE_PRECISE_GROIN) && !isnull(src.getorgan(/obj/item/organ/tail)))
-		SEND_SIGNAL(src, COMSIG_CARBON_TAILPULL, M)
-		M.visible_message(span_notice("[M] pulls on [src]'s tail!"), \
-					null, span_hear("You hear a soft patter."), DEFAULT_MESSAGE_RANGE, list(M, src))
-		to_chat(M, span_notice("You pull on [src]'s tail!"))
-		to_chat(src, span_notice("[M] pulls on your tail!"))
-		if(HAS_TRAIT(src, TRAIT_BADTOUCH)) //How dare they!
-			to_chat(M, span_warning("[src] makes a grumbling noise as you pull on [p_their()] tail."))
-		else
-			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "tailpulled", /datum/mood_event/tailpulled)
 	else
-		SEND_SIGNAL(src, COMSIG_CARBON_HUGGED, M)
-		SEND_SIGNAL(M, COMSIG_CARBON_HUG, M, src)
 		M.visible_message(span_notice("[M] hugs [src] to make [p_them()] feel better!"), \
 					null, span_hear("You hear the rustling of clothes."), DEFAULT_MESSAGE_RANGE, list(M, src))
 		to_chat(M, span_notice("You hug [src] to make [p_them()] feel better!"))
@@ -553,6 +545,8 @@
 		if(HAS_TRAIT(src, TRAIT_BADTOUCH))
 			to_chat(M, span_warning("[src] looks visibly upset as you hug [p_them()]."))
 
+	SEND_SIGNAL(src, COMSIG_CARBON_HUGGED, M)
+	SEND_SIGNAL(M, COMSIG_CARBON_HUG, M, src)
 	adjust_status_effects_on_shake_up()
 	set_resting(FALSE)
 	if(body_position != STANDING_UP && !resting && !buckled && !HAS_TRAIT(src, TRAIT_FLOORED))
@@ -659,8 +653,9 @@
 				to_chat(src, span_warning("Your ears start to ring badly!"))
 				if(prob(ears.damage - 5))
 					to_chat(src, span_userdanger("You can't hear anything!"))
-					ears.damage = min(ears.damage, ears.maxHealth) // does this actually do anything useful? all this would do is set an upper bound on damage, is this supposed to be a max?
+					// Makes you deaf, enough that you need a proper source of healing, it won't self heal
 					// you need earmuffs, inacusiate, or replacement
+					ears.setOrganDamage(ears.maxHealth)
 			else if(ears.damage >= 5)
 				to_chat(src, span_warning("Your ears start to ring!"))
 			SEND_SOUND(src, sound('sound/weapons/flash_ring.ogg',0,1,0,250))
@@ -730,7 +725,7 @@
 	var/obj/item/bodypart/grasped_part = get_bodypart(zone_selected)
 	//SKYRAT EDIT CHANGE BEGIN - MEDICAL
 	/*
-	if(!grasped_part?.get_part_bleed_rate())
+	if(!grasped_part?.get_modified_bleed_rate())
 		return
 	var/starting_hand_index = active_hand_index
 	if(starting_hand_index == grasped_part.held_index)
@@ -772,6 +767,7 @@
 	if(grasped_part)
 		UnregisterSignal(grasped_part, list(COMSIG_CARBON_REMOVE_LIMB, COMSIG_PARENT_QDELETING))
 		grasped_part.grasped_by = null
+		grasped_part.refresh_bleed_rate()
 	grasped_part = null
 	user = null
 	return ..()
@@ -791,6 +787,7 @@
 
 	grasped_part = grasping_part
 	grasped_part.grasped_by = src
+	grasped_part.refresh_bleed_rate()
 	RegisterSignal(user, COMSIG_PARENT_QDELETING, .proc/qdel_void)
 	RegisterSignal(grasped_part, list(COMSIG_CARBON_REMOVE_LIMB, COMSIG_PARENT_QDELETING), .proc/qdel_void)
 

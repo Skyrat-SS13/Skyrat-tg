@@ -14,7 +14,7 @@
 	exp_required_type_department = EXP_TYPE_COMMAND
 	exp_granted_type = EXP_TYPE_CREW
 
-	paycheck = PAYCHECK_HARD
+	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_CMD
 
 	outfit = /datum/outfit/job/blueshield

@@ -6,7 +6,7 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_ears.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_ears.dmi'
 	strip_delay = 15
-	custom_price = PAYCHECK_ASSISTANT * 2
+	custom_price = PAYCHECK_CREW * 2
 	/// If the headphones are on or off
 	var/kinky_headphones_on = FALSE
 	/// Current color of the headphones, can affect sprite and can change

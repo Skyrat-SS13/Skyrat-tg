@@ -20,7 +20,7 @@
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "mutant_colors_color"
-	actually_check = FALSE
+	check_mode = TRICOLOR_NO_CHECK
 
 /datum/preference/tri_color/mutant_colors/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["mcolor"] = sanitize_hexcolor(value[1])
@@ -868,6 +868,56 @@
 	savefile_key = "ipc_chassis_color"
 	relevant_mutant_bodypart = "ipc_chassis"
 	type_to_check = /datum/preference/toggle/ipc_chassis
+
+
+/// IPC Head
+
+/datum/preference/toggle/ipc_head
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "ipc_head_toggle"
+	relevant_mutant_bodypart = "ipc_head"
+	default_value = FALSE
+
+/datum/preference/toggle/ipc_head/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return TRUE // we dont actually want this to do anything
+
+/datum/preference/toggle/ipc_head/is_accessible(datum/preferences/preferences)
+	var/passed_initial_check = ..(preferences)
+	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	return passed_initial_check || allowed
+
+/datum/preference/choiced/ipc_head
+	savefile_key = "feature_ipc_head"
+	savefile_identifier = PREFERENCE_CHARACTER
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	relevant_mutant_bodypart = "ipc_head"
+
+/datum/preference/choiced/ipc_head/is_accessible(datum/preferences/preferences)
+	var/passed_initial_check = ..(preferences)
+	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	var/part_enabled = preferences.read_preference(/datum/preference/toggle/ipc_head)
+	return ((passed_initial_check || allowed) && part_enabled)
+
+/datum/preference/choiced/ipc_head/init_possible_values()
+	return assoc_to_keys(GLOB.sprite_accessories["ipc_head"])
+
+/datum/preference/choiced/ipc_head/apply_to_human(mob/living/carbon/human/target, value)
+	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
+		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
+	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_NAME] = value
+
+/datum/preference/choiced/ipc_head/create_default_value()
+	var/datum/sprite_accessory/ipc_head/default = /datum/sprite_accessory/ipc_head/none
+	return initial(default.name)
+
+/datum/preference/tri_color/ipc_head
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "ipc_head_color"
+	relevant_mutant_bodypart = "ipc_head"
+	type_to_check = /datum/preference/toggle/ipc_head
+
 
 /// Skrell Hair
 

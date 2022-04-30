@@ -1116,6 +1116,7 @@
 	description = "Organized record databases and how they're used."
 	prereq_ids = list("comptech")
 	design_ids = list(
+		"account_console",
 		"automated_announcement",
 		"med_data",
 		"prisonmanage",
@@ -1407,6 +1408,7 @@
 		"pepperspray",
 		"seclite",
 		"zipties",
+		"inspector",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 
