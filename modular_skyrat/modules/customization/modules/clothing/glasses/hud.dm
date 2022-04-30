@@ -104,12 +104,12 @@
 
 
 /// BLINDFOLD HUDS ///
-/obj/item/clothing/glasses/trickblindfold/obselete
-	name = "obselete fake blindfold"
+/obj/item/clothing/glasses/trickblindfold/obsolete
+	name = "obsolete fake blindfold"
 	desc = "An ornate fake blindfold, devoid of any electronics. It's belived to be originally worn by members of bygone military force that sought to protect humanity."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
-	icon_state = "obseletefold"
+	icon_state = "obsoletefold"
 	can_switch_eye = TRUE
 
 /obj/item/clothing/glasses/hud/eyepatch/sec/blindfold

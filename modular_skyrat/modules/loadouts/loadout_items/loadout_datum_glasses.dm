@@ -110,9 +110,9 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	name = "Biker Goggles"
 	item_path = /obj/item/clothing/glasses/biker
 
-/datum/loadout_item/glasses/obseleteblindfold
-	name = "obselete fake blindfold"
-	item_path = /obj/item/clothing/glasses/trickblindfold/obselete
+/datum/loadout_item/glasses/obsoleteblindfold
+	name = "Obselete Fake Blindfold"
+	item_path = /obj/item/clothing/glasses/trickblindfold/obsolete
 
 /datum/loadout_item/glasses/medicpatch
 	name = "Medical Eyepatch"
