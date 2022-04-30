@@ -62,7 +62,6 @@
 	..() // Call the TG death. Do not . = ..()!
 	for(var/iteration in status_indicators) // When we die, clear the indicators.
 		remove_status_indicator(icon_state) // The indicators are named after their icon_state and type
-
 /* /datum/status_effect/incapacitating/on_apply()
 	. = ..()
 	addtimer(CALLBACK(owner, /mob/living/.proc/status_sanity), 100 MILLISECONDS)
@@ -118,12 +117,27 @@
 				return I
 	return LAZYACCESS(status_indicators, LAZYFIND(status_indicators, thing))
 
+/mob/living/proc/cut_indicators_overlays()
+	if(!status_indicators) // sometimes the overlay cutting misses, so if theres nothing when its called, lets just clear them all!
+		var/list/static/potential_indicators = list(
+			"weakened",
+			"paralysis",
+			"stunnded",
+			"sleeping",
+			"confused",
+			"blinded",
+			"critical")
+		for(var/thing in potential_indicators)
+			cut_overlay(thing)
+	else
+		for(var/thing in status_indicators)
+			cut_overlay(thing)
+
 // Refreshes the indicators over a mob's head. Should only be called when adding or removing a status indicator with the above procs,
 // or when the mob changes size visually for some reason.
 /mob/living/proc/handle_status_indicators()
 	// First, get rid of all the overlays.
-	for(var/thing in status_indicators)
-		cut_overlay(thing)
+	cut_indicators_overlays()
 
 	if(!LAZYLEN(status_indicators))
 		return
