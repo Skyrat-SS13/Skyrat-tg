@@ -1012,7 +1012,7 @@
 		"quadultra_micro_laser",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000) // SKYRAT EDIT - ORIGINAL: 5000
-	discount_experiments = list(/datum/experiment/scanning/points/machinery_pinpoint_scan/tier3_microlaser = 4000) // SKYRAT EDIT - Original: discount_experiments = list(/datum/experiment/scanning/points/machinery_pinpoint_scan/tier3_microlaser = 4000)
+	discount_experiments = list(/datum/experiment/ordnance/gaseous/noblium = 6000) // SKYRAT EDIT - Original: discount_experiments = list(/datum/experiment/scanning/points/machinery_pinpoint_scan/tier3_microlaser = 4000)
 	// required_experiments = list(/datum/experiment/ordnance/gaseous/noblium) SKYRAT EDIT - Commented out
 
 /////////////////////////Clown tech/////////////////////////
