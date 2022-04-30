@@ -24,7 +24,7 @@
 	coldmod = 1.2
 	heatmod = 2
 	siemens_coeff = 1.4 //Not more because some shocks will outright crit you, which is very unfun
-	payday_modifier = 0.5 //Robots are cheep labor
+	payday_modifier = 0.75 // Matches the rest of the pay penalties the non-human crew have
 	species_language_holder = /datum/language_holder/machine
 	mutant_organs = list(/obj/item/organ/cyberimp/arm/power_cord)
 	mutantbrain = /obj/item/organ/brain/ipc_positron
