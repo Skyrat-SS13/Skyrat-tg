@@ -119,7 +119,7 @@
 
 /mob/living/proc/cut_indicators_overlays()
 	if(!status_indicators) // sometimes the overlay cutting misses, so if theres nothing when its called, lets just clear them all!
-		var/list/static/potential_indicators = list(
+		var/list/static/potential_indicator = list(
 			"weakened",
 			"paralysis",
 			"stunnded",
@@ -127,8 +127,9 @@
 			"confused",
 			"blinded",
 			"critical")
-		for(var/thing in potential_indicators)
-			cut_overlay(thing)
+		for(potential_indicator in overlays)
+			cut_overlay(potential_indicator)
+
 	else
 		for(var/thing in status_indicators)
 			cut_overlay(thing)
