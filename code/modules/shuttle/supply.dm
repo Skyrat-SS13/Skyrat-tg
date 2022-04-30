@@ -215,15 +215,18 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 				continue
 			buying_acc_order_num += the_order.item_amount - 1
 
-		if(buying_acc_order_num > GOODY_FREE_SHIPPING_MAX) // no free shipping, send a crate
+		if(buying_acc_order_num > 2) // no free shipping, send a crate
 			var/obj/structure/closet/crate/secure/owned/our_crate = new /obj/structure/closet/crate/secure/owned(pick_n_take(empty_turfs))
 			our_crate.buyer_account = buying_account
-			our_crate.name = "armament case - purchased by [buyer]"
+			our_crate.name = "armament crate - purchased by [buyer]"
 			miscboxes[buyer] = our_crate
 		else //free shipping in a case
 			miscboxes[buyer] = new /obj/item/storage/lockbox/order(pick_n_take(empty_turfs))
 			var/obj/item/storage/lockbox/order/our_case = miscboxes[buyer]
 			our_case.buyer_account = buying_account
+			if(istype(our_case.buyer_account, /datum/bank_account/department))
+				our_case.department_purchase = TRUE
+				our_case.department_account = our_case.buyer_account
 			miscboxes[buyer].name = "armament case - purchased by [buyer]"
 		misc_contents[buyer] = list()
 
