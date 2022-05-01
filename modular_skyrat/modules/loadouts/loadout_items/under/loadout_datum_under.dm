@@ -568,27 +568,27 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/casualman
 	restricted_roles = list(JOB_CARGO_TECHNICIAN)
 
-/datum/loadout_item/under/miscellaneous/cargo_casual
+/datum/loadout_item/under/miscellaneous/cargo_black
 	name = "Black Cargo Uniform"
 	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/evil
 	restricted_roles = list(JOB_CARGO_TECHNICIAN)
 	
-/datum/loadout_item/under/miscellaneous/cargo_casual
+/datum/loadout_item/under/miscellaneous/cargo_turtle
 	name = "Cargo Turtleneck"
 	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck
 	restricted_roles = list(JOB_CARGO_TECHNICIAN)
 	
-/datum/loadout_item/under/miscellaneous/cargo_casual
+/datum/loadout_item/under/miscellaneous/cargo_skirtle
 	name = "Cargo Skirtleneck"
 	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck/skirt
 	restricted_roles = list(JOB_CARGO_TECHNICIAN)
 	
-/datum/loadout_item/under/miscellaneous/cargo_casual
+/datum/loadout_item/under/miscellaneous/qm_skirtle
 	name = "Quartermaster's Skirtleneck"
 	item_path = /obj/item/clothing/under/rank/cargo/qm/skyrat/turtleneck/skirt
 	restricted_roles = list(JOB_QUARTERMASTER)
 	
-/datum/loadout_item/under/miscellaneous/cargo_casual
+/datum/loadout_item/under/miscellaneous/qm_gorka
 	name = "Quartermaster's Gorka Uniform"
 	item_path = /obj/item/clothing/under/rank/cargo/qm/skyrat/gorka
 	restricted_roles = list(JOB_QUARTERMASTER)
