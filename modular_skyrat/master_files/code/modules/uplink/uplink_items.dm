@@ -24,13 +24,13 @@
 	name = "Toy Submachine Gun"
 	desc = "A fully-loaded Donksoft bullpup submachine gun that fires riot grade darts with a 20-round magazine."
 	item = /obj/item/gun/ballistic/automatic/c20r/toy/unrestricted/riot
-	cost = 5
+	cost = 4
 
 /datum/uplink_item/dangerous/revolver_alt
 	name = "Unica Six Revolver"
 	desc = "A retro high-powered autorevolver typically used by officers of the New Russia military. Uses .357 ammo."
 	item = /obj/item/gun/ballistic/revolver/mateba
-	cost = 13
+	cost = 12
 	surplus = 50
 	progression_minimum = 30 MINUTES
 
@@ -49,7 +49,7 @@
 	desc = "A fully-loaded Scarborough Arms bullpup submachine gun. The C-20r fires .45 rounds with a \
 			24-round magazine and is compatible with suppressors."
 	item = /obj/item/gun/ballistic/automatic/c20r/unrestricted
-	cost = 14
+	cost = 12
 	progression_minimum = 35 MINUTES
 
 /datum/uplink_item/dangerous/shotgun_traitor
@@ -57,7 +57,7 @@
 	desc = "A fully-loaded semi-automatic drum-fed shotgun. Compatible with all 12g rounds. Designed for close \
 			quarter anti-personnel engagements."
 	item = /obj/item/gun/ballistic/shotgun/bulldog/unrestricted
-	cost = 13
+	cost = 12
 	progression_minimum = 35 MINUTES
 
 /datum/uplink_item/dangerous/shield_traitor
@@ -284,7 +284,6 @@
 	desc = "An alternative 8-round meteorslug magazine for use in the Bulldog shotgun. \
 		Great for blasting airlocks off their frames and knocking down enemies."
 	item = /obj/item/ammo_box/magazine/m12g/meteor
-	cost = 3
 	purchasable_from = ALL
 
 /datum/uplink_item/ammo/shotgun/slug_traitor
@@ -292,7 +291,6 @@
 	desc = "An additional 8-round slug magazine for use with the Bulldog shotgun. \
 			Now 8 times less likely to shoot your pals."
 	item = /obj/item/ammo_box/magazine/m12g/slug
-	cost = 3
 	purchasable_from = ALL
 
 /datum/uplink_item/ammo/shotgun/empty_traitor
@@ -318,6 +316,14 @@
 	item = /obj/item/clothing/suit/armor/bulletproof
 	cost = 1
 	progression_minimum = 15 MINUTES
+
+/datum/uplink_item/suits/energy_shield_traitor
+	name = "MODsuit Energy Shield Module"
+	desc = "An energy shield module for a MODsuit. The shields can handle up to three impacts \
+			within a short duration and will rapidly recharge while not under fire. \
+			Costs 3 complexity to use in a MODsuit."
+	item = /obj/item/mod/module/energy_shield
+	cost = 12
 
 //HELMETS
 /datum/uplink_item/suits/swathelmet_traitor
