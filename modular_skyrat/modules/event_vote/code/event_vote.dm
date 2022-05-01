@@ -38,8 +38,8 @@
 	var/low_chaos_timer_lower = LOW_CHAOS_TIMER_LOWER
 	/// Ditto, but max
 	var/low_chaos_timer_upper = LOW_CHAOS_TIMER_UPPER
-	/// How many catastrophic events have run?
-	var/high_event_count = 0
+	/// What was the last chaos level run?
+	var/last_event_chaos_level
 
 /// Reschedules our low-chaos event timer
 /datum/controller/subsystem/events/proc/reschedule_low_chaos(time)
@@ -261,8 +261,7 @@
 		for(var/mob/iterating_user in get_eligible_players())
 			vote_message(iterating_user, "Vote ended! Winning Event: [winner.name]")
 
-	if(winner.chaos_level == EVENT_CHAOS_HIGH)
-		high_event_count++
+	last_event_chaos_level = winner.chaos_level
 	winner.runEvent(TRUE)
 	reset()
 
@@ -330,7 +329,7 @@
 		return FALSE
 	if(ispath(typepath, /datum/round_event/ghost_role) && !(GLOB.ghost_role_flags & GHOSTROLE_MIDROUND_EVENT))
 		return FALSE
-	if(chaos_level == EVENT_CHAOS_HIGH && SSevents.high_event_count >= CONFIG_GET(number/max_catastrophic_events))
+	if(!CONFIG_GET(flag/allow_consecutive_catastropic_events) && chaos_level == EVENT_CHAOS_HIGH && SSevents.last_event_chaos_level == EVENT_CHAOS_HIGH)
 		return FALSE
 
 	var/datum/game_mode/dynamic/dynamic = SSticker.mode

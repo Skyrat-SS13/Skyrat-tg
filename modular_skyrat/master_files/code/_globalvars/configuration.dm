@@ -26,7 +26,5 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 
 /datum/config_entry/flag/low_chaos_event_system
 
-/datum/config_entry/number/max_catastrophic_events
-	default = 5
-	min_val = 1
-	max_val = 10
+/datum/config_entry/flag/allow_consecutive_catastropic_events
+
