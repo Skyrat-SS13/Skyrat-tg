@@ -173,12 +173,12 @@
 	name = "security medal box"
 	desc = "A locked box used to store medals to be given to members of the security department."
 	req_access = list(ACCESS_HOS)
-	
+
 /obj/item/storage/lockbox/medal/med
 	name = "medical medal box"
 	desc = "A locked box used to store medals to be given to members of the medical department."
 	req_access = list(ACCESS_CMO)
-	
+
 /obj/item/storage/lockbox/medal/med/PopulateContents()
 	new /obj/item/clothing/accessory/medal/med_medal(src)
 	new /obj/item/clothing/accessory/medal/med_medal2(src)
@@ -227,6 +227,11 @@
 /obj/item/storage/lockbox/order/Initialize(mapload, datum/bank_account/_buyer_account)
 	. = ..()
 	buyer_account = _buyer_account
+	//SKYRAT EDIT START
+	if(istype(buyer_account, /datum/bank_account/department))
+		department_purchase = TRUE
+		department_account = buyer_account
+	//SKYRAT EDIT END
 
 /obj/item/storage/lockbox/order/attackby(obj/item/W, mob/user, params)
 	if(!istype(W, /obj/item/card/id))
@@ -236,7 +241,7 @@
 	if(iscarbon(user))
 		add_fingerprint(user)
 
-	if(id_card.registered_account != buyer_account)
+	if((id_card.registered_account != buyer_account) && !(department_purchase && (id_card.registered_account?.account_job?.paycheck_department) == (department_account.department_id))) //SKYRAT EDIT
 		to_chat(user, span_warning("Bank account does not match with buyer!"))
 		return
 

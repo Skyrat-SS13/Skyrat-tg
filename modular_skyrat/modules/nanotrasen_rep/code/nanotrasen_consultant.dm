@@ -23,7 +23,7 @@
 	outfit = /datum/outfit/job/nanotrasen_consultant
 	plasmaman_outfit = /datum/outfit/plasmaman/nanotrasen_consultant
 
-	paycheck = PAYCHECK_HARD
+	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_CMD
 
 	display_order = JOB_DISPLAY_ORDER_NANOTRASEN_CONSULTANT
