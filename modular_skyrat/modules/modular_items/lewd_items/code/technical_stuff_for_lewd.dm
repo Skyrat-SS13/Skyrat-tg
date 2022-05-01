@@ -29,6 +29,7 @@
 	falloff_distance = 1
 	falloff_exponent = 5
 	extra_range = SILENCED_SOUND_EXTRARANGE
+	ignore_walls = FALSE
 
 /datum/looping_sound/vibrator/low
 	volume = 80
@@ -1019,6 +1020,12 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 		strippable_items[strippable_item.key] = strippable_item
 	GLOB.strippable_human_items += strippable_items
 	return strippable_items
+
+//Disables ERP strippable inventory depending on config
+/datum/element/strippable/Attach(datum/target, list/items, should_strip_proc_path)
+	. = ..()
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		src.items -= GLOB.strippable_human_erp_items
 
 ////////////////////////////////////////////////////////////////////
 // EXTENTIONS FOR SPRITE_ACCESSORY IS_HIDDEN CHECKS FOR ERP STUFF //

@@ -15,7 +15,7 @@
 	desc = "An innocent-looking toy pistol designed to fire foam darts. Comes loaded with riot-grade \
 			darts effective at incapacitating a target."
 	item = /obj/item/gun/ballistic/automatic/pistol/toy/riot
-	cost = 2
+	cost = 1 //SKYRAT EDIT: ORIGINAL COST 2
 	surplus = 10
 
 // Low progression cost
@@ -26,7 +26,7 @@
 			with suppressors."
 	progression_minimum = 10 MINUTES
 	item = /obj/item/gun/ballistic/automatic/pistol
-	cost = 7
+	cost = 5 //SKYRAT EDIT: ORIGINAL COST 7
 	purchasable_from = ~UPLINK_CLOWN_OPS
 
 /datum/uplink_item/dangerous/throwingweapons
@@ -96,6 +96,6 @@
 	desc = "A brutally simple Syndicate revolver that fires .357 Magnum rounds and has 7 chambers."
 	item = /obj/item/gun/ballistic/revolver
 	progression_minimum = 30 MINUTES
-	cost = 13
+	cost = 12 //SKYRAT EDIT: ORIGINAL COST 13
 	surplus = 50
 	purchasable_from = ~UPLINK_CLOWN_OPS

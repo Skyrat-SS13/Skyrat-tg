@@ -7,6 +7,7 @@
 	you_are_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	flavour_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	restricted_species = list(/datum/species/human)
+	random_appearance = FALSE
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/special(mob/living/carbon/human/spawned_human)
 	. = ..()
@@ -146,7 +147,7 @@
 		/obj/item/storage/medkit/emergency,
 		/obj/item/storage/box/hecu_rations,
 		/obj/item/knife/combat,
-		/obj/item/armament_points_card/assaultops
+		/obj/item/armament_points_card/hecu
 	)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu
@@ -194,7 +195,7 @@
 		/obj/item/storage/medkit/emergency,
 		/obj/item/storage/box/hecu_rations,
 		/obj/item/knife/combat,
-		/obj/item/armament_points_card/assaultops,
+		/obj/item/armament_points_card/hecu,
 		/obj/item/book/granter/martial/cqc
 	)
 	id = /obj/item/card/id
