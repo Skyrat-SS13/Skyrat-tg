@@ -472,19 +472,37 @@ export const ipc_antenna_emissive: Feature<boolean[]> = {
 
 export const ipc_chassis_toggle: FeatureToggle = {
   name: "IPC Chassis",
-  description: "Add some lore for your species! Won't show up if there's no custom species.",
+  description: "Allows customization of an IPC's chassis! Only works for IPCs.",
   component: CheckboxInput,
 };
 
 export const feature_ipc_chassis: Feature<string> = {
   name: "IPC Chassis Selection",
-  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  description: "Allows customization of an IPC's chassis! Only works for IPCs.",
   component: FeatureDropdownInput,
 };
 
 export const ipc_chassis_color: Feature<string[]> = {
   name: "IPC Chassis Colors",
-  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  description: "Allows customization of an IPC's chassis! Only works for IPCs, for chassis that support greyscale coloring.",
+  component: FeatureTriColorInput,
+};
+
+export const ipc_head_toggle: FeatureToggle = {
+  name: "IPC Head",
+  description: "Allows customization of an IPC's head! Only works for IPCs.",
+  component: CheckboxInput,
+};
+
+export const feature_ipc_head: Feature<string> = {
+  name: "IPC Head Selection",
+  description: "Allows customization of an IPC's head! Only works for IPCs.",
+  component: FeatureDropdownInput,
+};
+
+export const ipc_head_color: Feature<string[]> = {
+  name: "IPC Head Colors",
+  description: "Allows customization of an IPC's head! Only works for IPCs, for heads that support greyscale coloring.",
   component: FeatureTriColorInput,
 };
 
