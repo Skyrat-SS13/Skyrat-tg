@@ -57,7 +57,7 @@
 
 /datum/round_event_control/preset/high
 	name = "Catastrophic Random Event"
-	max_occurrences = 1
+	max_occurrences = 10
 	earliest_start = 30 MINUTES
 	selectable_chaos_level = EVENT_CHAOS_HIGH
 	min_players = 70
@@ -253,4 +253,4 @@
 	chaos_level = EVENT_CHAOS_DISABLED
 
 /datum/round_event_control/pirates/rogues
-		chaos_level = EVENT_CHAOS_DISABLED
+	chaos_level = EVENT_CHAOS_DISABLED
