@@ -429,7 +429,7 @@
 	desc = "A minutely toothed, chitious ribbon, which as a side effect, makes all snails talk IINNCCRREEDDIIBBLLYY SSLLOOWWLLYY."
 	modifies_speech = TRUE
 
-/obj/item/organ/tongue/snail/modify_speech(datum/source, list/speech_args)
+/*/obj/item/organ/tongue/snail/modify_speech(datum/source, list/speech_args) //SKYRAT EDIT - Roundstart Snails: Less annoying speech.
 	var/new_message
 	var/message = speech_args[SPEECH_MESSAGE]
 	for(var/i in 1 to length(message))
@@ -437,7 +437,7 @@
 			new_message += message[i] + message[i] + message[i] //aaalllsssooo ooopppeeennn tttooo sssuuuggggggeeessstttiiiooonsss
 		else
 			new_message += message[i]
-	speech_args[SPEECH_MESSAGE] = new_message
+	speech_args[SPEECH_MESSAGE] = new_message*/
 
 /obj/item/organ/tongue/ethereal
 	name = "electric discharger"
