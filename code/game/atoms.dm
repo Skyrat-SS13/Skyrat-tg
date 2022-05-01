@@ -636,7 +636,7 @@
 
 	if(custom_materials)
 		// SKYRAT EDIT ADDITION BEGIN - HR sections
-		if(custom_materials.len > 1)
+		if(length(custom_materials) > 1)
 			. += EXAMINE_SECTION_BREAK //SKYRAT EDIT ADDITION
 		//SKYRAT EDIT ADDITION END
 
@@ -646,7 +646,7 @@
 		. += "<u>It is made out of [english_list(materials_list)]</u>."
 
 		// SKYRAT EDIT ADDITION BEGIN - HR sections
-		if(custom_materials.len > 1)
+		if(length(custom_materials) > 1)
 			. += EXAMINE_SECTION_BREAK //SKYRAT EDIT ADDITION
 		//SKYRAT EDIT ADDITION END
 	if(reagents)
