@@ -87,6 +87,8 @@
 
 /obj/machinery/computer/dispatch/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
+	if(.)
+		return
 	switch(action)
 		if("ping_officer")
 			var/mob/living/carbon/human/target = locate(params["ref"])
