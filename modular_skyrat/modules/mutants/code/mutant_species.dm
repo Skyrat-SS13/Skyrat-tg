@@ -45,7 +45,14 @@
 		'sound/hallucinations/veryfar_noise.ogg',
 		'sound/hallucinations/wail.ogg'
 		)
-	species_coo
+	bodypart_overrides = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant_zombie,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant_zombie,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant_zombie,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant_zombie,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant_zombie,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant_zombie
+	)
 
 /datum/species/mutant/check_roundstart_eligible()
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
