@@ -110,6 +110,10 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	name = "Biker Goggles"
 	item_path = /obj/item/clothing/glasses/biker
 
+/datum/loadout_item/glasses/obsoleteblindfold
+	name = "Obselete Fake Blindfold"
+	item_path = /obj/item/clothing/glasses/trickblindfold/obsolete
+
 /datum/loadout_item/glasses/medicpatch
 	name = "Medical Eyepatch"
 	item_path = /obj/item/clothing/glasses/hud/eyepatch/med
@@ -124,7 +128,7 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	name = "Science Eyepatch"
 	item_path = /obj/item/clothing/glasses/hud/eyepatch/sci
 	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_CHEMIST, JOB_VANGUARD_OPERATIVE)
-	
+
 /datum/loadout_item/glasses/mesonpatch
 	name = "Meson Eyepatch"
 	item_path = /obj/item/clothing/glasses/hud/eyepatch/meson
