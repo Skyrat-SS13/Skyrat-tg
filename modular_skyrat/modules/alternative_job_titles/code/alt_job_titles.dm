@@ -147,7 +147,7 @@
 	alt_titles = list("Security Officer", "Security Operative", "Peacekeeper")
 
 /datum/job/shaft_miner
-	alt_titles = list("FTU Shaft Miner", "FTU Excavator", "FTU Spelunker", "FTU Drill Technician", "FTU Prospector")
+	alt_titles = list("Union Miner", "Union Excavator", "Union Spelunker", "Union Drill Technician", "Union Prospector")
 
 /datum/job/station_engineer
 	alt_titles = list("Station Engineer", "Emergency Damage Control Technician", "Electrician", "Engine Technician", "EVA Technician", "Mechanic")
