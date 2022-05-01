@@ -43,6 +43,7 @@
 		'sound/hallucinations/veryfar_noise.ogg',
 		'sound/hallucinations/wail.ogg'
 		)
+	species_coo
 
 /datum/species/mutant/check_roundstart_eligible()
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
@@ -135,6 +136,9 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "bloodhand_left"
+	inhand_icon_state = "mutant"
+	lefthand_file = 'modular_skyrat/modules/mutants/icons/mutant_hand_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/mutants/icons/mutant_hand_righthand.dmi'
 	hitsound = 'sound/hallucinations/growl1.ogg'
 	force = 26
 	sharpness = SHARP_EDGED

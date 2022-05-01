@@ -13,6 +13,7 @@
 	Hindering your fellow zombies will result in punishment."
 
 /datum/antagonist/mutant/on_gain()
+	. = ..()
 	var/component = owner.current?.GetComponent(/datum/component/mutant_infection)
 	if(!component)
 		owner.current?.AddComponent(/datum/component/mutant_infection)
