@@ -147,14 +147,13 @@
 	network_id = NETWORK_DOOR_AIRLOCKS
 
 /obj/machinery/door/airlock/Initialize(mapload)
-	. = ..()
 	//SKYRAT EDIT ADDITION BEGIN
+	vis_overlay1 = new()
+	vis_overlay1.icon = overlays_file
+	. = ..()
 	if(multi_tile)
 		SetBounds()
 	//overlay2
-	vis_overlay1 = new()
-	vis_overlay1.icon = overlays_file
-	//overlay1
 	vis_overlay2 = new()
 	vis_overlay2.icon = overlays_file
 	vis_overlay2.layer = layer
