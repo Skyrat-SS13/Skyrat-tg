@@ -24,8 +24,12 @@ SUBSYSTEM_DEF(events)
 		control += E //add it to the list of all events (controls)
 	reschedule()
 	getHoliday()
-	if(CONFIG_GET(flag/low_chaos_event_system)) // SKYRAT EDIT ADDITION
-		reschedule_low_chaos() // SKYRAT EDIT ADDITION
+	// SKYRAT EDIT ADDITION
+	if(CONFIG_GET(flag/low_chaos_event_system))
+		reschedule_low_chaos()
+	frequency_lower = CONFIG_GET(number/event_frequency_lower)
+	frequency_upper = CONFIG_GET(number/event_frequency_upper)
+	// SKYRAT EDIT END
 	return ..()
 
 
