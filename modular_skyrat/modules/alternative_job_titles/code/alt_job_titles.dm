@@ -40,7 +40,7 @@
 	alt_titles = list("Captain", "Station Commander", "Commanding Officer", "Site Manager")
 
 /datum/job/cargo_technician
-	alt_titles = list("FTU Supply Technician", "FTU Deck Worker", "FTU Mailman", "FTU Merchant", "FTU Supply Operative")
+	alt_titles = list("Union Supply Technician", "Union Deck Worker", "Union Mailman", "Union Merchant", "UnionSupply Operative")
 
 /datum/job/chaplain
 	alt_titles = list("Chaplain", "Priest", "Preacher", "Reverend", "Oracle", "Pontifex", "Magister", "High Priest", "Imam", "Rabbi", "Monk") //i would add OT III but honestly, thats way too specific
