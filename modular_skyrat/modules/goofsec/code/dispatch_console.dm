@@ -68,7 +68,7 @@
 
 	icon.Crop(1, 1, ANTAGONIST_PREVIEW_ICON_SIZE, ANTAGONIST_PREVIEW_ICON_SIZE)
 	icon = icon(icon, frame=1)
-	var/icon_path = "data/security_icons/[target.real_name]_icon.png"
+	var/icon_path = "data\\security_icons\\[target.real_name]_icon.png"
 	fcopy(icon, icon_path)
 	var/md5_hash = md5filepath(icon_path)
 

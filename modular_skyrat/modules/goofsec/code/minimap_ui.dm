@@ -70,10 +70,8 @@
 		first_map = SSmapping.config.map_file
 	else if(islist(SSmapping.config.map_file))
 		first_map = SSmapping.config.map_file[1] // fuck it, use the first map
-	to_chat(world, "_maps/[SSmapping.config.map_path]/[first_map]")
-	var/map_hash = md5filepath("_maps/[SSmapping.config.map_path]/[first_map]")
-	to_chat(world, map_hash)
-	var/minimap_path = "data/minimaps/minimap.[map_hash].[zlevel.z_value].png"
+	var/map_hash = md5filepath("_maps\\[SSmapping.config.map_path]\\[first_map]")
+	var/minimap_path = "data\\minimaps\\minimap.[map_hash].[zlevel.z_value].png"
 	if(!fexists(minimap_path))
 		to_chat(world, span_notice("Generating Z-level [zlevel.z_value]..."))
 		generated_map = icon('modular_skyrat/modules/goofsec/icons/minimap_template.dmi', "template")
