@@ -1,11 +1,6 @@
 /datum/language/selenian
 	name = "Sol Common"
 	desc = "A mixture of Esperanto and Modern Latin established as \"The language of Humanity\" by the Sol Federation in its early days. "
-	speech_verb = "proclaims"
-	ask_verb = "queries"
-	exclaim_verb = "declares"
-	whisper_verb = "hushes"
-	sing_verb = "sings"
 	key = "sol"
 	flags = TONGUELESS_SPEECH
 	space_chance = 60
