@@ -97,7 +97,11 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 	if(width == 480) // 480x480 is nonwidescreen
 		pixel_x = 0
 	else if(width == 608) // 608x480 is widescreen
-		pixel_x = 0 // SKYRAT EDIT - Re-centering the title screen - ORIGINAL: pixel_x = -64
+		pixel_x = -64
+	// SKYRAT EDIT START - Wider widescreen
+	else if(width == 672) // Skyrat's widescreen is slightly wider than /tg/'s, so we need to accomodate that too.
+		pixel_x = -96
+	// SKYRAT EDIT END
 
 /turf/closed/indestructible/splashscreen/vv_edit_var(var_name, var_value)
 	. = ..()

@@ -11,35 +11,33 @@
 	/// A generalisation of the tail-type, e.g. lizard or feline, for MODsuit or other sprites
 	var/general_type
 
-/datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/H)
+/datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/wearer)
 	// MODsuit tail spriting
-	if(general_type && H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/mod))
-		var/obj/item/clothing/suit/mod/modsuit_chest = H.wear_suit
-		var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
-		var/datum/mod_theme/mod_theme = modsuit_control.theme
-		if(mod_theme.modsuit_tail_colors)
-			return "[general_type]_modsuit"
+	if(general_type && wearer.wear_suit && istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
+		if(wearer.back && istype(wearer.back, /obj/item/mod/control)) // If this fails, honestly, something's really wrong, but just to be safe...
+			var/obj/item/mod/control/modsuit_control = wearer.back
+			var/datum/mod_theme/mod_theme = modsuit_control.theme
+			if(mod_theme.modsuit_tail_colors)
+				return "[general_type]_modsuit"
 
-	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
-	if(T && T.wagging)
+	var/obj/item/organ/tail/tail = wearer.getorganslot(ORGAN_SLOT_TAIL)
+	if(tail && tail.wagging)
 		return "[icon_state]_wagging"
 
 	return icon_state
 
-/datum/sprite_accessory/tails/get_special_icon(mob/living/carbon/human/H, passed_state)
+/datum/sprite_accessory/tails/get_special_icon(mob/living/carbon/human/wearer, passed_state)
 	var/returned = icon
 	if(passed_state == "[general_type]_modsuit") //Guarantees we're wearing a MODsuit, skip checks
-		var/obj/item/clothing/suit/mod/modsuit_chest = H.wear_suit
-		var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
+		var/obj/item/mod/control/modsuit_control = wearer.back
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
 		if(mod_theme.modsuit_tail_colors)
 			returned = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails_modsuit.dmi'
 	return returned
 
-/datum/sprite_accessory/tails/get_special_render_colour(mob/living/carbon/human/H, passed_state)
+/datum/sprite_accessory/tails/get_special_render_colour(mob/living/carbon/human/wearer, passed_state)
 	if(passed_state == "[general_type]_modsuit") //Guarantees we're wearing a MODsuit, skip checks
-		var/obj/item/clothing/suit/mod/modsuit_chest = H.wear_suit
-		var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
+		var/obj/item/mod/control/modsuit_control = wearer.back
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
 		if(mod_theme.modsuit_tail_colors)
 			//Currently this way, when I have more time I'll write a hex -> matrix converter to pre-bake them instead
@@ -70,21 +68,20 @@
 	color_src = FALSE
 	organ_type = /obj/item/organ/tail/monkey
 
-/datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.wear_suit)
-		if(H.try_hide_mutant_parts)
+/datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/HD)
+	if(wearer.wear_suit)
+		if(wearer.try_hide_mutant_parts)
 			return TRUE
-		if(H.wear_suit.flags_inv & HIDEJUMPSUIT)
-			if(istype(H.wear_suit, /obj/item/clothing/suit/mod))
-				var/obj/item/clothing/suit/mod/modsuit_chest = H.wear_suit
-				var/obj/item/mod/control/modsuit_control = modsuit_chest.mod
+		if(wearer.wear_suit.flags_inv & HIDEJUMPSUIT)
+			if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod) && wearer.back && istype(wearer.back, /obj/item/mod/control))
+				var/obj/item/mod/control/modsuit_control = wearer.back
 				var/datum/mod_theme/mod_theme = modsuit_control.theme
 				if(mod_theme.modsuit_tail_colors)
 					return FALSE
 			return TRUE
-	if(H.owned_turf)  //we do a lil' emoting
+	if(wearer.owned_turf)  //we do a lil' emoting
 		var/list/used_in_turf = list("tail")
-		if(H.owned_turf.name in used_in_turf)
+		if(wearer.owned_turf.name in used_in_turf)
 			return TRUE
 	return FALSE
 
