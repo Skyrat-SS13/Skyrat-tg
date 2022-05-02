@@ -563,8 +563,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 		if (preference.savefile_identifier != PREFERENCE_CHARACTER)
 			continue
 	// SKYRAT EDIT
-		if(preference.is_accessible(src)) // Only apply preferences you can actually access.
-			preference.apply_to_human(character, read_preference(preference.type), src)
+		preference.apply_to_human(character, read_preference(preference.type), src)
 
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		preference_middleware.apply_to_human(character, src)
