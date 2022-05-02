@@ -52,10 +52,11 @@
 
 /datum/species/skrell/get_species_lore()
 	return list(placeholder_lore)
+
 /obj/item/organ/tongue/skrell
 	name = "internal vocal sacs"
 	desc = "An Strange looking sac."
-	icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/species/skrell_organ.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/species/skrell_organ.dmi'
 	icon_state = "tongue"
 	taste_sensitivity = 5
 	var/static/list/languages_possible_skrell = typecacheof(list(
@@ -82,24 +83,24 @@
 
 /obj/item/organ/heart/skrell
 	name = "Skrellian Heart"
-	icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/species/skrell_organ.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/species/skrell_organ.dmi'
 	icon_state = "heart"
 
 /obj/item/organ/brain/skrell
 	name = "spongy brain"
-	icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/species/skrell_organ.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/species/skrell_organ.dmi'
 	icon_state = "brain2"
 
 /obj/item/organ/eyes/skrell
 	name = "amphibian eyes"
 	desc = "Large black orbs."
-	icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/species/skrell_organ.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/species/skrell_organ.dmi'
 	icon_state = "eyes"
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 
 /obj/item/organ/lungs/skrell
 	name = "skrell lungs"
-	icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/species/skrell_organ.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/species/skrell_organ.dmi'
 	icon_state = "lungs"
 	safe_plasma_max = 40
 	safe_co2_max = 40
@@ -126,7 +127,7 @@
 /obj/item/organ/liver/skrell
 	name = "skrell liver"
 	icon_state = "liver"
-	icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/species/skrell_organ.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/species/skrell_organ.dmi'
 	alcohol_tolerance = 5
 	toxTolerance = 10 //can shrug off up to 10u of toxins.
 	toxLethality = 0.8 * LIVER_DEFAULT_TOX_LETHALITY //20% less damage than a normal liver
