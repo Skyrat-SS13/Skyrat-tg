@@ -82,7 +82,7 @@
 				break
 
 			var/obj/machinery/computer/cargo/cargo_comp = parent
-			if(selected_company.illegal && !cargo_comp.contraband)
+			if(selected_company.illegal && !(cargo_comp.obj_flags & EMAGGED))
 				illegal_failure = TRUE
 				break
 
