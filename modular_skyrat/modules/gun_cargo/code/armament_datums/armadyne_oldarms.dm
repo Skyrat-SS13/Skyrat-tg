@@ -32,12 +32,6 @@
 	upper_cost = CARGO_CRATE_VALUE * 38
 	interest_required = HIGH_INTEREST
 
-/datum/armament_entry/cargo_gun/oldarms/smg/thompson
-	item_type = /obj/item/gun/ballistic/automatic/tommygun
-	lower_cost = CARGO_CRATE_VALUE * 30
-	upper_cost = CARGO_CRATE_VALUE * 36
-	interest_required = HIGH_INTEREST
-
 /datum/armament_entry/cargo_gun/oldarms/rifle
 	subcategory = ARMAMENT_SUBCATEGORY_ASSAULTRIFLE
 	interest_required = HIGH_INTEREST
