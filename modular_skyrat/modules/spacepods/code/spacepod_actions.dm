@@ -64,7 +64,7 @@
 /datum/action/spacepod/exit
 	name = "Exit pod"
 
-/datum/action/spacepod/exit/Trigger()
+/datum/action/spacepod/exit/Trigger(trigger_flags)
 	if(!owner)
 		return
 	if(!spacepod_target || !(owner in spacepod_target.occupants))
@@ -75,7 +75,7 @@
 	name = "Spacepod controls"
 	button_icon_state = "mech_view_stats"
 
-/datum/action/spacepod/controls/Trigger()
+/datum/action/spacepod/controls/Trigger(trigger_flags)
 	if(!owner)
 		return
 	if(!spacepod_target || !(owner in spacepod_target.occupants))
