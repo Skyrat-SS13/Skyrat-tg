@@ -493,7 +493,7 @@
 
 	//SKYRAT EDIT ADDITION
 	if(result.len)
-		for(var/i in 1 to length(result))
+		for(var/i = 1; i <= length(result); i++)
 			if(result[i] != EXAMINE_SECTION_BREAK)
 				result[i] += "\n"
 			else
