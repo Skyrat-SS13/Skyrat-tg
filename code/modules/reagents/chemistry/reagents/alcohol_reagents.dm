@@ -1732,8 +1732,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	//Securidrink in line with the Screwdriver for engineers or Nothing for mimes
 	var/obj/item/organ/liver/liver = drinker.getorganslot(ORGAN_SLOT_LIVER)
 	if(liver && HAS_TRAIT(liver, TRAIT_LAW_ENFORCEMENT_METABOLISM))
-		drinker.heal_bodypart_damage(1 * REM * delta_time, 1 * REM * delta_time)
-		. = TRUE
+		if(istype(get_area(drinker), /area/security)) // Skyrat edit , it checks for area now - Start
+			drinker.heal_bodypart_damage(1 * REM * delta_time, 1 * REM * delta_time)
+			. = TRUE
+		return ..() // SKYRAT EDIT: End - This line and the above few have only indentation changes.
 	return ..()
 
 /datum/reagent/consumable/ethanol/quintuple_sec
@@ -1752,8 +1754,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	//Securidrink in line with the Screwdriver for engineers or Nothing for mimes but STRONG..
 	var/obj/item/organ/liver/liver = drinker.getorganslot(ORGAN_SLOT_LIVER)
 	if(liver && HAS_TRAIT(liver, TRAIT_LAW_ENFORCEMENT_METABOLISM))
-		drinker.heal_bodypart_damage(2 * REM * delta_time, 2 * REM *  delta_time, 2 * REM * delta_time)
-		. = TRUE
+		if(istype(get_area(drinker), /area/security)) // Skyrat edit , it checks for area now - Start
+			drinker.heal_bodypart_damage(2 * REM * delta_time, 2 * REM *  delta_time, 2 * REM * delta_time)
+			. = TRUE
+		return ..() // SKYRAT EDIT: End - This line and the above few have only indentation changes.	
 	return ..()
 
 /datum/reagent/consumable/ethanol/grasshopper
