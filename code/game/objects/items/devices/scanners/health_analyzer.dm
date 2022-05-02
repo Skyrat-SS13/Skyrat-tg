@@ -387,6 +387,11 @@
 			render_list += "<span class='notice ml-2'>[cyberimp_detect]</span>\n"
 	// we handled the last <br> so we don't need handholding
 
+	// SKYRAT EDIT ADDITION - Mutant stuff
+	if(target.GetComponent(/datum/component/mutant_infection))
+		render_list += span_userdanger("UNKNOWN PROTO-VIRAL INFECTION DETECTED. ISOLATE IMMEDIATELY.")
+	// SKYRAT EDIT END
+
 	if(tochat)
 		to_chat(user, jointext(render_list, ""), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO)
 	else

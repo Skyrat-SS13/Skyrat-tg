@@ -157,8 +157,6 @@ There are several things that need to be remembered:
 
 		var/mutable_appearance/uniform_overlay
 
-		//Change check_adjustable_clothing.dm if you change this
-		var/handled_by_bodytype = TRUE
 		var/icon_file
 		var/woman
 		if(!uniform_overlay)
@@ -177,7 +175,6 @@ There are several things that need to be remembered:
 
 			if(!icon_exists(icon_file, RESOLVE_ICON_STATE(U)))
 				icon_file = DEFAULT_UNIFORM_FILE
-				handled_by_bodytype = FALSE
 			//END SPECIES HANDLING
 			uniform_overlay = U.build_worn_icon(
 				default_layer = UNIFORM_LAYER,
@@ -185,10 +182,9 @@ There are several things that need to be remembered:
 				isinhands = FALSE,
 				femaleuniform = woman ? U.adjusted : null,
 				override_state = target_overlay,
-				override_file = handled_by_bodytype ? icon_file : null
 			)
 
-		if(OFFSET_UNIFORM in dna.species.offset_features && !handled_by_bodytype)
+		if(OFFSET_UNIFORM in dna.species.offset_features)
 			uniform_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
 			uniform_overlay?.pixel_y += dna.species.offset_features[OFFSET_UNIFORM][2]
 		overlays_standing[UNIFORM_LAYER] = uniform_overlay
@@ -208,18 +204,16 @@ There are several things that need to be remembered:
 	if(wear_id)
 		var/obj/item/worn_item = wear_id
 		update_hud_id(worn_item)
-		var/handled_by_bodytype
 		var/icon_file
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/mob.dmi'
-			handled_by_bodytype = FALSE
 
 		id_overlay = wear_id.build_worn_icon(default_layer = ID_LAYER, default_icon_file = icon_file)
 
 		if(!id_overlay)
 			return
-		if(OFFSET_ID in dna.species.offset_features && !handled_by_bodytype)
+		if(OFFSET_ID in dna.species.offset_features)
 			id_overlay.pixel_x += dna.species.offset_features[OFFSET_ID][1]
 			id_overlay.pixel_y += dna.species.offset_features[OFFSET_ID][2]
 		overlays_standing[ID_LAYER] = id_overlay
@@ -252,22 +246,19 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = gloves
 		update_hud_gloves(worn_item)
 		var/icon_file
-		var/handled_by_bodytype = TRUE
-
 		// SKYRAT EDIT ADDITION
 		if(dna.species.bodytype & BODYTYPE_CUSTOM)
 			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_GLOVES, gloves)
-		// SKYRAT EDIT END
+		// SKYRAT EDIT END86e (Fixes offset features (#66477))
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/hands.dmi'
-			handled_by_bodytype = FALSE
 
-		gloves_overlay = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = icon_file, override_file = handled_by_bodytype ? icon_file : null) // SKYRAT EDIT CHANGE
+		gloves_overlay = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = icon_file)
 
 		if(!gloves_overlay)
 			return
-		if(OFFSET_GLOVES in dna.species.offset_features && !handled_by_bodytype)
+		if(OFFSET_GLOVES in dna.species.offset_features)
 			gloves_overlay.pixel_x += dna.species.offset_features[OFFSET_GLOVES][1]
 			gloves_overlay.pixel_y += dna.species.offset_features[OFFSET_GLOVES][2]
 		overlays_standing[GLOVES_LAYER] = gloves_overlay
@@ -288,8 +279,6 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = glasses
 		var/mutable_appearance/glasses_overlay
 		update_hud_glasses(worn_item)
-
-		var/handled_by_bodytype = TRUE
 		var/icon_file
 		// SKYRAT EDIT ADDITION
 		if(dna.species.bodytype & BODYTYPE_CUSTOM)
@@ -299,13 +288,12 @@ There are several things that need to be remembered:
 
 			if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 				icon_file = 'icons/mob/clothing/eyes.dmi'
-				handled_by_bodytype = FALSE
 
-			glasses_overlay = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = icon_file, override_file = handled_by_bodytype ? icon_file : null) // SKYRAT EDIT CHANGE
+			glasses_overlay = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = icon_file)
 
 		if(!glasses_overlay)
 			return
-		if(OFFSET_GLASSES in dna.species.offset_features && !handled_by_bodytype)
+		if(OFFSET_GLASSES in dna.species.offset_features)
 			glasses_overlay.pixel_x += dna.species.offset_features[OFFSET_GLASSES][1]
 			glasses_overlay.pixel_y += dna.species.offset_features[OFFSET_GLASSES][2]
 		overlays_standing[GLASSES_LAYER] = glasses_overlay
@@ -327,7 +315,6 @@ There are several things that need to be remembered:
 		var/mutable_appearance/ears_overlay
 		update_hud_ears(worn_item)
 
-		var/handled_by_bodytype = TRUE
 		var/icon_file
 
 		// SKYRAT EDIT ADDITION
@@ -336,14 +323,13 @@ There are several things that need to be remembered:
 		// SKYRAT EDIT END
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
-			handled_by_bodytype = FALSE
 			icon_file = 'icons/mob/clothing/ears.dmi'
 
 		ears_overlay = ears.build_worn_icon(default_layer = EARS_LAYER, default_icon_file = icon_file)
 
 		if(!ears_overlay)
 			return
-		if(OFFSET_EARS in dna.species.offset_features && !handled_by_bodytype)
+		if(OFFSET_EARS in dna.species.offset_features)
 			ears_overlay.pixel_x += dna.species.offset_features[OFFSET_EARS][1]
 			ears_overlay.pixel_y += dna.species.offset_features[OFFSET_EARS][2]
 		overlays_standing[EARS_LAYER] = ears_overlay
@@ -363,7 +349,6 @@ There are several things that need to be remembered:
 		if(!(ITEM_SLOT_NECK in check_obscured_slots()))
 			var/mutable_appearance/neck_overlay
 			var/icon_file
-			var/handled_by_bodytype = TRUE
 
 			// SKYRAT EDIT ADDITION
 			if(dna.species.bodytype & BODYTYPE_CUSTOM)
@@ -371,14 +356,13 @@ There are several things that need to be remembered:
 			// SKYRAT EDIT END
 
 			if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
-				handled_by_bodytype = FALSE
 				icon_file = 'icons/mob/clothing/neck.dmi'
 
-			neck_overlay = worn_item.build_worn_icon(default_layer = NECK_LAYER, default_icon_file = icon_file, override_file = handled_by_bodytype ? icon_file : null) // SKYRAT EDIT CHANGE
+			neck_overlay = worn_item.build_worn_icon(default_layer = NECK_LAYER, default_icon_file = icon_file)
 
 			if(!neck_overlay)
 				return
-			if(OFFSET_NECK in dna.species.offset_features && !handled_by_bodytype)
+			if(OFFSET_NECK in dna.species.offset_features)
 				neck_overlay.pixel_x += dna.species.offset_features[OFFSET_NECK][1]
 				neck_overlay.pixel_y += dna.species.offset_features[OFFSET_NECK][2]
 			overlays_standing[NECK_LAYER] = neck_overlay
@@ -401,26 +385,27 @@ There are several things that need to be remembered:
 		var/mutable_appearance/shoes_overlay
 		var/icon_file
 		update_hud_shoes(worn_item)
-		var/handled_by_bodytype = TRUE
+
+		var/mutant_override = FALSE // SKYRAT EDIT ADDITION
 
 		if((dna.species.bodytype & BODYTYPE_DIGITIGRADE) && (worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 			var/obj/item/bodypart/leg = src.get_bodypart(BODY_ZONE_L_LEG)
 			if(leg.limb_id == "digitigrade")//Snowflakey and bad. But it makes it look consistent.
 				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SHOES_FILE // SKYRAT EDIT CHANGE
+				mutant_override = TRUE // SKYRAT EDIT ADDITION
 		// SKYRAT EDIT ADDITION
 		else if(dna.species.bodytype & BODYTYPE_CUSTOM)
 			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_SHOES, shoes)
 		// SKYRAT EDIT END
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
-			handled_by_bodytype = FALSE
 			icon_file = DEFAULT_SHOES_FILE
 
-		shoes_overlay = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = icon_file, override_file = handled_by_bodytype ? icon_file : null) // SKYRAT EDIT CHANGE
+		shoes_overlay = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
 
 		if(!shoes_overlay)
 			return
-		if(!(handled_by_bodytype) && (OFFSET_SHOES in dna.species.offset_features))
+		if(OFFSET_SHOES in dna.species.offset_features)
 			shoes_overlay.pixel_x += dna.species.offset_features[OFFSET_SHOES][1]
 			shoes_overlay.pixel_y += dna.species.offset_features[OFFSET_SHOES][2]
 		overlays_standing[SHOES_LAYER] = shoes_overlay
@@ -460,25 +445,25 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = head
 		var/mutable_appearance/head_overlay
 		update_hud_head(worn_item)
-		var/handled_by_bodytype = TRUE
 		var/icon_file
 
 		// SKYRAT EDIT ADDITION - This needs to be refactored.
+		var/mutant_override = FALSE
 		if(dna.species.bodytype & BODYTYPE_CUSTOM)
 			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_HEAD, head)
 		if(!icon_file && (dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			icon_file = worn_item.worn_icon_muzzled || SNOUTED_HEAD_FILE
+			mutant_override = TRUE
 		// SKYRAT EDIT END
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
-			handled_by_bodytype = FALSE
 			icon_file = 'icons/mob/clothing/head.dmi'
 
-		head_overlay = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = icon_file, override_file = handled_by_bodytype ? icon_file : null) // SKYRAT EDIT CHANGE
+		head_overlay = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
 
 		if(!head_overlay)
 			return
-		if(!(handled_by_bodytype) && (OFFSET_HEAD in dna.species.offset_features))
+		if(OFFSET_HEAD in dna.species.offset_features)
 			head_overlay.pixel_x += dna.species.offset_features[OFFSET_HEAD][1]
 			head_overlay.pixel_y += dna.species.offset_features[OFFSET_HEAD][2]
 		overlays_standing[HEAD_LAYER] = head_overlay
@@ -497,23 +482,23 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = belt
 		var/mutable_appearance/belt_overlay
 		update_hud_belt(worn_item)
-		var/handled_by_bodytype = TRUE
 		var/icon_file
 
 		// SKYRAT EDIT ADDITION
+		var/mutant_override = FALSE
 		if(dna.species.bodytype & BODYTYPE_CUSTOM)
 			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_BELT, belt)
+			mutant_override = TRUE
 		// SKYRAT EDIT END
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
-			handled_by_bodytype = FALSE
 			icon_file = 'icons/mob/clothing/belt.dmi'
 
-		belt_overlay = belt.build_worn_icon(default_layer = BELT_LAYER, default_icon_file = icon_file, override_file = handled_by_bodytype ? icon_file : null) // SKYRAT EDIT CHANGE
+		belt_overlay = belt.build_worn_icon(default_layer = BELT_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
 
 		if(!belt_overlay)
 			return
-		if(OFFSET_BELT in dna.species.offset_features && !handled_by_bodytype)
+		if(OFFSET_BELT in dna.species.offset_features)
 			belt_overlay.pixel_x += dna.species.offset_features[OFFSET_BELT][1]
 			belt_overlay.pixel_y += dna.species.offset_features[OFFSET_BELT][2]
 		overlays_standing[BELT_LAYER] = belt_overlay
@@ -533,12 +518,12 @@ There are several things that need to be remembered:
 		update_hud_wear_suit(worn_item)
 		var/icon_file
 
-		var/handled_by_bodytype = TRUE
-
+		var/mutant_override = FALSE // SKYRAT EDIT ADDITION
 		//More currently unused digitigrade handling
 		if(dna.species.bodytype & BODYTYPE_DIGITIGRADE)
 			if(worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION)
 				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SUIT_FILE // SKYRAT EDIT CHANGE
+				mutant_override = TRUE // SKYRAT EDIT ADDITION
 
 		// SKYRAT EDIT ADDITION
 		else if(dna.species.bodytype & BODYTYPE_CUSTOM)
@@ -546,14 +531,13 @@ There are several things that need to be remembered:
 		// SKYRAT EDIT END
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
-			handled_by_bodytype = FALSE
 			icon_file = DEFAULT_SUIT_FILE
 
-		suit_overlay = wear_suit.build_worn_icon(default_layer = SUIT_LAYER, default_icon_file = icon_file, override_file = handled_by_bodytype ? icon_file : null) // SKYRAT EDIT CHANGE
+		suit_overlay = wear_suit.build_worn_icon(default_layer = SUIT_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
 
 		if(!suit_overlay)
 			return
-		if((!handled_by_bodytype) && (OFFSET_SUIT in dna.species.offset_features))
+		if(OFFSET_SUIT in dna.species.offset_features)
 			suit_overlay.pixel_x += dna.species.offset_features[OFFSET_SUIT][1]
 			suit_overlay.pixel_y += dna.species.offset_features[OFFSET_SUIT][2]
 		overlays_standing[SUIT_LAYER] = suit_overlay
@@ -598,26 +582,26 @@ There are several things that need to be remembered:
 		update_hud_wear_mask(worn_item)
 		var/mutable_appearance/mask_overlay
 		var/icon_file // SKYRATE EDIT CHANGE - replace mask icon path with default null, which is standard for these procs
-		var/handled_by_bodytype = TRUE
 
 		// SKYRAT EDIT ADDITION
+		var/mutant_override = FALSE
 		if(dna.species.bodytype & BODYTYPE_CUSTOM)
 			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_MASK, wear_mask)
 		if(!icon_file && (dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			icon_file = worn_item.worn_icon_muzzled || SNOUTED_MASK_FILE
+			mutant_override = TRUE
 		// SKYRAT EDIT END
 
 		if(!(ITEM_SLOT_MASK in check_obscured_slots()))
 
 			if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
 				icon_file = 'icons/mob/clothing/mask.dmi'
-				handled_by_bodytype = FALSE
 
-			mask_overlay = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = icon_file, override_file = handled_by_bodytype ? icon_file : null) // SKYRAT EDIT CHANGE
+			mask_overlay = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
 
 		if(!mask_overlay)
 			return
-		if((!handled_by_bodytype) && (OFFSET_FACEMASK in dna.species.offset_features))
+		if(OFFSET_FACEMASK in dna.species.offset_features)
 			mask_overlay.pixel_x += dna.species.offset_features[OFFSET_FACEMASK][1]
 			mask_overlay.pixel_y += dna.species.offset_features[OFFSET_FACEMASK][2]
 		overlays_standing[FACEMASK_LAYER] = mask_overlay
@@ -637,7 +621,6 @@ There are several things that need to be remembered:
 		var/mutable_appearance/back_overlay
 		update_hud_back(worn_item)
 		var/icon_file = 'icons/mob/clothing/back.dmi'
-		var/handled_by_bodytype = TRUE
 
 		// SKYRAT EDIT ADDITION
 		if(dna.species.bodytype & BODYTYPE_CUSTOM)
@@ -646,13 +629,12 @@ There are several things that need to be remembered:
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/back.dmi'
-			handled_by_bodytype = FALSE
 
-		back_overlay = back.build_worn_icon(default_layer = BACK_LAYER, default_icon_file = icon_file, override_file = handled_by_bodytype ? icon_file : null) // SKYRAT EDIT CHANGE
+		back_overlay = back.build_worn_icon(default_layer = BACK_LAYER, default_icon_file = icon_file)
 
 		if(!back_overlay)
 			return
-		if((!handled_by_bodytype) && (OFFSET_BACK in dna.species.offset_features))
+		if(OFFSET_BACK in dna.species.offset_features)
 			back_overlay.pixel_x += dna.species.offset_features[OFFSET_BACK][1]
 			back_overlay.pixel_y += dna.species.offset_features[OFFSET_BACK][2]
 		overlays_standing[BACK_LAYER] = back_overlay
