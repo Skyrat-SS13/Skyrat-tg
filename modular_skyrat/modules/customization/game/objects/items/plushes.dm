@@ -163,7 +163,6 @@
 	storage.max_items = 2
 	storage.max_w_class = WEIGHT_CLASS_SMALL
 	storage.set_holdable(list(
-		/obj/item/toy/plush/pintaplush,
 		/obj/item/toy/plush/arcplush
 		))
 //End of storage component//
