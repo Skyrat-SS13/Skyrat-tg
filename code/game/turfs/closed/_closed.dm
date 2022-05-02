@@ -1,5 +1,6 @@
 /turf/closed
 	layer = CLOSED_TURF_LAYER
+	turf_flags = IS_SOLID
 	opacity = TRUE
 	density = TRUE
 	blocks_air = TRUE
@@ -74,7 +75,7 @@
 /turf/closed/indestructible/splashscreen
 	name = "Space Station 13"
 	desc = null
-	icon = 'icons/blank_title.png'
+	icon = 'icons/blanks/blank_title.png'
 	icon_state = ""
 	pixel_x = 0 // SKYRAT EDIT - Re-centering the title screen - ORIGINAL: pixel_x = -64
 	plane = SPLASHSCREEN_PLANE
@@ -96,7 +97,11 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 	if(width == 480) // 480x480 is nonwidescreen
 		pixel_x = 0
 	else if(width == 608) // 608x480 is widescreen
-		pixel_x = 0 // SKYRAT EDIT - Re-centering the title screen - ORIGINAL: pixel_x = -64
+		pixel_x = -64
+	// SKYRAT EDIT START - Wider widescreen
+	else if(width == 672) // Skyrat's widescreen is slightly wider than /tg/'s, so we need to accomodate that too.
+		pixel_x = -96
+	// SKYRAT EDIT END
 
 /turf/closed/indestructible/splashscreen/vv_edit_var(var_name, var_value)
 	. = ..()
@@ -151,6 +156,12 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 	icon_state = "plastinum_wall-0"
 	base_icon_state = "plastinum_wall"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_DIAGONAL_CORNERS
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_PLASTINUM_WALLS)
+	canSmoothWith = list(SMOOTH_GROUP_PLASTINUM_WALLS)
+
+/turf/closed/indestructible/riveted/plastinum/nodiagonal
+	icon_state = "map-shuttle_nd"
+	smoothing_flags = SMOOTH_BITMASK
 
 /turf/closed/indestructible/wood
 	icon = 'icons/turf/walls/wood_wall.dmi'

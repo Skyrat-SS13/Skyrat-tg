@@ -31,6 +31,7 @@
 #define SCANGATE_SYNTHHUMAN "synthhuman"
 #define SCANGATE_TESHARI "teshari"
 #define SCANGATE_HEMOPHAGE "hemophage"
+#define SCANGATE_SNAIL "snail"
 
 #define SCANGATE_GENDER "Gender"
 //SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
@@ -40,8 +41,6 @@
 	desc = "A gate able to perform mid-depth scans on any organisms who pass under it."
 	icon = 'icons/obj/machines/scangate.dmi'
 	icon_state = "scangate"
-	use_power = IDLE_POWER_USE
-	idle_power_usage = 50
 	circuit = /obj/item/circuitboard/machine/scanner_gate
 
 	var/scanline_timer
@@ -207,6 +206,8 @@
 						scan_species = /datum/species/teshari
 					if(SCANGATE_HEMOPHAGE)
 						scan_species = /datum/species/hemophage
+					if(SCANGATE_SNAIL)
+						scan_species = /datum/species/snail
 					//SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
 				if(is_species(H, scan_species))
 					beep = TRUE
@@ -250,6 +251,8 @@
 			var/obj/item/assembly/assembly = wires.get_attached(color)
 			assembly?.activate()
 		set_scanline("scanning", 10)
+
+	use_power(active_power_usage)
 
 /obj/machinery/scanner_gate/proc/alarm_beep()
 	if(next_beep <= world.time)
@@ -369,6 +372,7 @@
 #undef SCANGATE_SYNTHHUMAN
 #undef SCANGATE_TESHARI
 #undef SCANGATE_HEMOPHAGE
+#undef SCANGATE_SNAIL
 
 #undef SCANGATE_GENDER
 //SKYRAT EDIT END - MORE SCANNER GATE OPTIONS

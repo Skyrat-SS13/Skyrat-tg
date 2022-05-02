@@ -142,15 +142,7 @@
 	name = "Machine Design (Xenoarch Researcher)"
 	desc = "Allows for the construction of circuit boards used to build a new xenoarch researcher."
 	id = "xeno_researcher"
-	build_path = /obj/item/circuitboard/machine/xenoarch_researcher
-	category = list("Research Machinery")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
-
-/datum/design/board/xeno_digger
-	name = "Machine Design (Xenoarch Digger)"
-	desc = "Allows for the construction of circuit boards used to build a new xenoarch digger."
-	id = "xeno_digger"
-	build_path = /obj/item/circuitboard/machine/xenoarch_digger
+	build_path = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_researcher
 	category = list("Research Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
@@ -158,7 +150,7 @@
 	name = "Machine Design (Xenoarch Scanner)"
 	desc = "Allows for the construction of circuit boards used to build a new xenoarch scanner."
 	id = "xeno_scanner"
-	build_path = /obj/item/circuitboard/machine/xenoarch_scanner
+	build_path = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_scanner
 	category = list("Research Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
@@ -166,7 +158,15 @@
 	name = "Machine Design (Xenoarch Recoverer)"
 	desc = "Allows for the construction of circuit boards used to build a new xenoarch recoverer."
 	id = "xeno_recoverer"
-	build_path = /obj/item/circuitboard/machine/xenoarch_recoverer
+	build_path = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_recoverer
+	category = list("Research Machinery")
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/board/xeno_digger
+	name = "Machine Design (Xenoarch Digger)"
+	desc = "Allows for the construction of circuit boards used to build a new xenoarch digger."
+	id = "xeno_digger"
+	build_path = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_digger
 	category = list("Research Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
@@ -206,7 +206,6 @@
 	prereq_ids = list("basic_xenoarch")
 	design_ids = list(
 		"xeno_researcher",
-		"xeno_digger",
 		"xeno_scanner",
 		"xeno_recoverer",
 	)
@@ -223,5 +222,16 @@
 		"adv_bag",
 		"xeno_hh_scanner_advanced",
 		"xeno_hh_recoverer",
+		"xeno_digger",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
+	required_experiments = list(/datum/experiment/scanning/points/xenoarch)
+
+/datum/experiment/scanning/points/xenoarch
+	name = "Advanced Xenoarchaeology Tools"
+	description = "It is possible to create even more advanced tools for xenoarchaeoloy."
+	required_points = 10
+	required_atoms = list(
+		/obj/item/xenoarch/useless_relic = 1,
+		/obj/item/xenoarch/broken_item = 2,
+	)

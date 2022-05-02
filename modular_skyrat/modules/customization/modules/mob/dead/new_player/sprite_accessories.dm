@@ -15,8 +15,8 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 
 	color_src = USE_ONE_COLOR
 
-	///Which layers does this accessory affect (BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
-	var/relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	///Which layers does this accessory affect (BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER, BODY_FRONT_UNDER_CLOTHES)
+	var/relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER, BODY_FRONT_UNDER_CLOTHES)
 
 	///This is used to determine whether an accessory gets added to someone. This is important for accessories that are "None", which should have this set to false
 	var/factual = TRUE
@@ -128,7 +128,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 
 /datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
-	if(!T || (H.wear_suit && (H.try_hide_mutant_parts || H.wear_suit.flags_inv & HIDEJUMPSUIT)))
+	if(!T || (H.wear_suit && (H.try_hide_mutant_parts || H.wear_suit.flags_inv & HIDEJUMPSUIT || H.wear_suit.flags_inv & HIDESPINE)))
 		return TRUE
 	return FALSE
 
@@ -247,6 +247,10 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "Pantyhose - Ripped"
 	icon_state = "pantyhose_ripped"
 	use_static = null
+
+/datum/sprite_accessory/socks/stockings_ripped
+	name = "Stockings - Ripped"
+	icon_state = "stockings_ripped"
 
 /datum/sprite_accessory/underwear
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
@@ -385,6 +389,10 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "LIZARED Underwear"
 	icon_state = "lizared"
 	use_static = TRUE
+
+/datum/sprite_accessory/underwear/digibriefs
+	name = "Digi Briefs"
+	icon_state = "briefs_d"
 
 /datum/sprite_accessory/underwear/male_briefs
 	has_digitigrade = TRUE

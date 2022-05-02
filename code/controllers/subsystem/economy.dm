@@ -3,7 +3,9 @@ SUBSYSTEM_DEF(economy)
 	wait = 5 MINUTES
 	init_order = INIT_ORDER_ECONOMY
 	runlevels = RUNLEVEL_GAME
+	///How many paychecks should players start out the round with?
 	var/roundstart_paychecks = 5
+	///How many credits does the in-game economy have in circulation at round start? Divided up by 6 of the 7 department budgets evenly, where cargo starts with nothing.
 	var/budget_pool = 35000
 	var/list/department_accounts = list(ACCOUNT_CIV = ACCOUNT_CIV_NAME,
 										ACCOUNT_ENG = ACCOUNT_ENG_NAME,
@@ -11,12 +13,15 @@ SUBSYSTEM_DEF(economy)
 										ACCOUNT_MED = ACCOUNT_MED_NAME,
 										ACCOUNT_SRV = ACCOUNT_SRV_NAME,
 										ACCOUNT_CAR = ACCOUNT_CAR_NAME,
-										ACCOUNT_SEC = ACCOUNT_SEC_NAME,
 										ACCOUNT_CMD = ACCOUNT_CMD_NAME, // SKYRAT EDIT
-										)
+										ACCOUNT_SEC = ACCOUNT_SEC_NAME)
 	var/list/generated_accounts = list()
-	var/full_ancap = FALSE // Enables extra money charges for things that normally would be free, such as sleepers/cryo/cloning.
-							//Take care when enabling, as players will NOT respond well if the economy is set up for low cash flows.
+	/**
+	 * Enables extra money charges for things that normally would be free, such as sleepers/cryo/beepsky.
+	 * Take care when enabling, as players will NOT respond well if the economy is set up for low cash flows.
+	 */
+	var/full_ancap = FALSE
+
 	/// Departmental cash provided to science when a node is researched in specific configs.
 	var/techweb_bounty = 250
 	/**
@@ -24,6 +29,7 @@ SUBSYSTEM_DEF(economy)
 	  * A list of sole account datums can be obtained with flatten_list(), another variable would be redundant rn.
 	  */
 	var/list/bank_accounts_by_id = list()
+	///List of the departmental budget cards in existance.
 	var/list/dep_cards = list()
 	/// A var that collects the total amount of credits owned in player accounts on station, reset and recounted on fire()
 	var/station_total = 0
@@ -41,7 +47,11 @@ SUBSYSTEM_DEF(economy)
 	var/bounty_modifier = 1
 	///The modifier multiplied to the value of cargo pack prices.
 	var/pack_price_modifier = 1
-	var/fire_counter_for_paycheck = 0 //SKYRAT EDIT ADDITION
+	/**
+	 * A list of strings containing a basic transaction history of purchases on the station.
+	 * Added to any time when player accounts purchase something.
+	 */
+	var/list/audit_log = list()
 
 	/// Total value of exported materials.
 	var/export_total = 0
@@ -59,9 +69,9 @@ SUBSYSTEM_DEF(economy)
 		mail_blocked = TRUE
 	for(var/dep_id in department_accounts)
 		if(dep_id == ACCOUNT_CAR) //cargo starts with NOTHING
-			new /datum/bank_account/department(dep_id, 0)
+			new /datum/bank_account/department(dep_id, 0, player_account = FALSE)
 			continue
-		new /datum/bank_account/department(dep_id, budget_to_hand_out)
+		new /datum/bank_account/department(dep_id, budget_to_hand_out, player_account = FALSE)
 	return ..()
 
 /datum/controller/subsystem/economy/Recover()
@@ -70,7 +80,6 @@ SUBSYSTEM_DEF(economy)
 	dep_cards = SSeconomy.dep_cards
 
 /datum/controller/subsystem/economy/fire(resumed = 0)
-	fire_counter_for_paycheck++ //SKYRAT EDIT ADDITION
 	var/temporary_total = 0
 	var/delta_time = wait / (5 MINUTES)
 	departmental_payouts()
@@ -78,17 +87,10 @@ SUBSYSTEM_DEF(economy)
 	station_target_buffer += STATION_TARGET_BUFFER
 	for(var/account in bank_accounts_by_id)
 		var/datum/bank_account/bank_account = bank_accounts_by_id[account]
-		//SKYRAT EDIT ADDITION BEGIN
-		if(fire_counter_for_paycheck >= PAYCHECK_CYCLE_WAIT)
-			bank_account.payday(PAYCHECK_CYCLE_AMOUNT)
-		//SKYRAT EDIT ADDITION END
 		if(bank_account?.account_job && !ispath(bank_account.account_job))
 			temporary_total += (bank_account.account_job.paycheck * STARTING_PAYCHECKS)
+		bank_account.payday(1)
 		station_total += bank_account.account_balance
-	//SKYRAT EDIT ADDITION BEGIN
-	if(fire_counter_for_paycheck >= PAYCHECK_CYCLE_WAIT) //30 minutes per each paycheck
-		fire_counter_for_paycheck = 0
-	//SKYRAT EDIT ADDITION END
 	station_target = max(round(temporary_total / max(bank_accounts_by_id.len * 2, 1)) + station_target_buffer, 1)
 	if(!HAS_TRAIT(SSeconomy, TRAIT_MARKET_CRASHING))
 		price_update()
@@ -126,8 +128,8 @@ SUBSYSTEM_DEF(economy)
 		if(!is_station_level(V.z))
 			continue
 		V.reset_prices(V.product_records, V.coin_records)
-	earning_report = "Sector Economic Report<br /> Sector vendor prices is currently at [SSeconomy.inflation_value()*100]%.<br /> The station spending power is currently <b>[station_total] Credits</b>, and the crew's targeted allowance is at <b>[station_target] Credits</b>.<br /> That's all from the <i>Nanotrasen Economist Division</i>."
-	GLOB.news_network.SubmitArticle(earning_report, "Station Earnings Report", "Station Announcements", null, update_alert = FALSE)
+	earning_report = "<b>Sector Economic Report</b><br><br> Sector vendor prices is currently at <b>[SSeconomy.inflation_value()*100]%</b>.<br><br> The station spending power is currently <b>[station_total] Credits</b>, and the crew's targeted allowance is at <b>[station_target] Credits</b>.<br><br> That's all from the <i>Nanotrasen Economist Division</i>."
+	GLOB.news_network.submit_article(earning_report, "Station Earnings Report", "Station Announcements", null, update_alert = FALSE)
 
 /**
  * Proc that returns a value meant to shift inflation values in vendors, based on how much money exists on the station.
@@ -141,3 +143,20 @@ SUBSYSTEM_DEF(economy)
 		return 1
 	inflation_value = max(round(((station_total / bank_accounts_by_id.len) / station_target), 0.1), 1.0)
 	return inflation_value
+
+/**
+ * Proc that adds a set of strings and ints to the audit log, tracked by the economy SS.
+ *
+ * * account: The bank account of the person purchasing the item.
+ * * price_to_use: The cost of the purchase made for this transaction.
+ * * vendor: The object or structure medium that is charging the user. For Vending machines that's the machine, for payment component that's the parent, cargo that's the crate, etc.
+ */
+/datum/controller/subsystem/economy/proc/track_purchase(datum/bank_account/account, price_to_use, vendor)
+	if(!account || !price_to_use || !vendor)
+		CRASH("Track purchases was missing an argument! (Account, Price, or Vendor.)")
+
+	audit_log += list(list(
+		"account" = account.account_holder,
+		"cost" = price_to_use,
+		"vendor" = vendor,
+	))

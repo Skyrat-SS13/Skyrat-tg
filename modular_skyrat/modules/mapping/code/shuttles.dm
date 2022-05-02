@@ -4,6 +4,7 @@
 
 /datum/map_template/shuttle/emergency/outpost
 	suffix = "outpost"
+	prefix = "_maps/shuttles/skyrat/"
 	name = "Outpoststation Emergency Shuttle"
 	description = "The perfect shuttle for rectangle enthuasiasts, this long and slender shuttle has been known for it's incredible(Citation Needed) safety rating."
 	admin_notes = "Has airlocks on both sides of the shuttle and will probably ram deltastation's maint wing below medical. Oh well?"
@@ -29,7 +30,7 @@
 	shuttleId = "blackmarket_chevvy"
 	lock_override = NONE
 	shuttlePortId = "blackmarket_chevvy_custom"
-	jumpto_ports = list("blackmarket_chevvy_home" = 1, "whiteship_home" = 1)
+	jump_to_ports = list("blackmarket_chevvy_home" = 1, "whiteship_home" = 1)
 	view_range = 0
 	x_offset = 2
 	y_offset = 0
@@ -52,7 +53,7 @@
 	shuttleId = "slaver_syndie"
 	lock_override = NONE
 	shuttlePortId = "slaver"
-	jumpto_ports = list("whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1, "syndicate_ne" = 1, "syndicate_nw" = 1, "syndicate_n" = 1, "syndicate_se" = 1, "syndicate_sw" = 1, "syndicate_s" = 1)
+	jump_to_ports = list("whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1, "syndicate_ne" = 1, "syndicate_nw" = 1, "syndicate_n" = 1, "syndicate_se" = 1, "syndicate_sw" = 1, "syndicate_s" = 1)
 	view_range = 10
 	x_offset = 0
 	y_offset = 0
@@ -90,8 +91,6 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/guild/slaver
-	can_use_alias = TRUE
-	any_station_species = TRUE
 
 /obj/effect/mob_spawn/ghost_role/human/guild/slaver/captain
 	name = "Privateer Slaver Captain"
@@ -119,7 +118,7 @@
 	implants = list(/obj/item/implant/weapons_auth)
 	belt = /obj/item/storage/belt/military
 	r_pocket = /obj/item/storage/bag/ammo
-	l_pocket = /obj/item/gun/energy/disabler/cfa_disabler
+	l_pocket = /obj/item/gun/energy/disabler/bolt_disabler
 	id = /obj/item/card/id/advanced/chameleon
 	id_trim = /datum/id_trim/chameleon/operative
 	skillchips = list(/obj/item/skillchip/job/engineer)
@@ -149,7 +148,7 @@
 	implants = list(/obj/item/implant/weapons_auth)
 	belt = /obj/item/storage/belt/military
 	r_pocket = /obj/item/storage/bag/ammo
-	l_pocket = /obj/item/gun/energy/disabler/cfa_disabler
+	l_pocket = /obj/item/gun/energy/disabler/bolt_disabler
 	id = /obj/item/card/id/advanced/chameleon
 	id_trim = /datum/id_trim/chameleon/operative
 	skillchips = list(/obj/item/skillchip/job/engineer)
@@ -163,3 +162,30 @@
 		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/rubber,
 		/obj/item/megaphone/command
 	)
+
+/*----- Tarkon Shuttle Datum + related code -----*/
+/datum/map_template/shuttle/ruin/tarkon_driver
+	prefix = "_maps/skyrat/shuttles/"
+	suffix = "tarkon_driver"
+	name = "Tarkon Drill Driver"
+
+/obj/machinery/computer/shuttle/tarkon_driver
+	name = "Tarkon Driver Control"
+	desc = "Used to control the Tarkon Driver."
+	circuit = /obj/item/circuitboard/computer/tarkon_driver
+	shuttleId = "tarkon_driver"
+	possible_destinations = "tarkon_driver_custom;port_tarkon;whiteship_home"
+
+/obj/machinery/computer/camera_advanced/shuttle_docker/tarkon_driver
+	name = "Tarkon Driver Navigation Computer"
+	desc = "The Navigation console for the Tarkon Driver. A broken \"Engage Drill\" button seems to dimly blink in a yellow colour"
+	shuttleId = "tarkon_driver"
+	lock_override = NONE
+	shuttlePortId = "tarkon_driver_custom"
+	jump_to_ports = list("port_tarkon" = 1, "whiteship_home" = 1)
+	view_range = 0
+
+/obj/item/circuitboard/computer/tarkon_driver
+	name = "Chevvy Control Console (Computer Board)"
+	build_path = /obj/machinery/computer/shuttle/tarkon_driver
+/*----- End of Tarkon Shuttle Code -----*/

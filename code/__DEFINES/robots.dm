@@ -19,6 +19,14 @@
 ///Alert when a Cyborg gets disconnected from their AI.
 #define AI_NOTIFICATION_CYBORG_DISCONNECTED 5
 
+//transfer_ai() defines. Main proc in ai_core.dm
+///Downloading AI to InteliCard
+#define AI_TRANS_TO_CARD 1
+///Uploading AI from InteliCard
+#define AI_TRANS_FROM_CARD 2
+///Malfunctioning AI hijacking mecha
+#define AI_MECH_HACK 3
+
 /** Cyborg defines */
 
 /// Special value to reset cyborg's lamp_cooldown
@@ -40,6 +48,15 @@
 ///Third Borg module slot.
 #define BORG_CHOOSE_MODULE_THREE 3
 
+// SKYRAT EDIT START - TODO - Move this upstream later
+/// To store all the different cyborg models, instead of creating that for each cyborg.
+GLOBAL_LIST_EMPTY(cyborg_model_list)
+/// To store all of the different base cyborg model icons, instead of creating them every time the pick_module() proc is called.
+GLOBAL_LIST_EMPTY(cyborg_base_models_icon_list)
+/// To store all of the different cyborg model icons, instead of creating them every time the be_transformed_to() proc is called.
+GLOBAL_LIST_EMPTY(cyborg_all_models_icon_list)
+// SKYRAT EDIT END
+
 #define SKIN_ICON "skin_icon"
 #define SKIN_ICON_STATE "skin_icon_state"
 #define SKIN_PIXEL_X "skin_pixel_x"
@@ -47,7 +64,6 @@
 #define SKIN_LIGHT_KEY "skin_light_key"
 #define SKIN_HAT_OFFSET "skin_hat_offset"
 #define SKIN_TRAITS "skin_traits"
-#define SKIN_STAT_ICONS "stat_icons"
 
 /** Simple Animal BOT defines */
 
@@ -114,51 +130,49 @@
 /// Vibe bots
 #define VIBE_BOT "Vibebot"
 
-//Mode defines. If you add a new one make sure you update mode_name in /mob/living/simple_animal/bot
-
 // General Bot modes //
 /// Idle
-#define BOT_IDLE 0
+#define BOT_IDLE "Idle"
 /// Found target, hunting
-#define BOT_HUNT 1
+#define BOT_HUNT "In Pursuit"
 /// Currently tipped over.
-#define BOT_TIPPED 2
+#define BOT_TIPPED "Tipped"
 /// Start patrol
-#define BOT_START_PATROL 3
+#define BOT_START_PATROL "Beginning Patrol"
 /// Patrolling
-#define BOT_PATROL 4
+#define BOT_PATROL "Patrolling"
 /// Summoned to a location
-#define BOT_SUMMON 5
+#define BOT_SUMMON "Summoned by PDA"
+/// Responding to a call from the AI
+#define BOT_RESPONDING "Proceeding to AI waypoint"
 /// Currently moving
-#define BOT_MOVING 6
+#define BOT_MOVING "Moving"
 
 // Unique modes //
 /// Secbot - At target, preparing to arrest
-#define BOT_PREP_ARREST 7
+#define BOT_PREP_ARREST "Preparing to Arrest"
 /// Secbot - Arresting target
-#define BOT_ARREST 8
+#define BOT_ARREST "Arresting"
 /// Cleanbot - Cleaning
-#define BOT_CLEANING 9
+#define BOT_CLEANING "Cleaning"
 /// Hygienebot - Cleaning unhygienic humans
-#define BOT_SHOWERSTANCE 10
+#define BOT_SHOWERSTANCE "Chasing filth"
 /// Floorbots - Repairing hull breaches
-#define BOT_REPAIRING 11
+#define BOT_REPAIRING "Repairing"
 /// Medibots - Healing people
-#define BOT_HEALING 12
-/// Responding to a call from the AI
-#define BOT_RESPONDING 13
+#define BOT_HEALING "Healing"
 /// MULEbot - Moving to deliver
-#define BOT_DELIVER 14
+#define BOT_DELIVER "Navigating to Delivery Location"
 /// MULEbot - Returning to home
-#define BOT_GO_HOME 15
+#define BOT_GO_HOME "Proceeding to work site"
 /// MULEbot - Blocked
-#define BOT_BLOCKED 16
+#define BOT_BLOCKED "No Route"
 /// MULEbot - Computing navigation
-#define BOT_NAV 17
+#define BOT_NAV "Unable to reach destination"
 /// MULEbot - Waiting for nav computation
-#define BOT_WAIT_FOR_NAV 18
+#define BOT_WAIT_FOR_NAV "Calculating navigation path"
 /// MULEbot - No destination beacon found (or no route)
-#define BOT_NO_ROUTE 19
+#define BOT_NO_ROUTE "Navigating to Home"
 
 //SecBOT defines on arresting
 ///Whether arrests should be broadcasted over the Security radio

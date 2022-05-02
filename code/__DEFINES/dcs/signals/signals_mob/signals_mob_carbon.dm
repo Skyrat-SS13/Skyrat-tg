@@ -2,10 +2,6 @@
 #define COMSIG_CARBON_HUG "carbon_hug"
 ///When a carbon mob is hugged, this is called on the carbon that is hugged. (mob/living/hugger)
 #define COMSIG_CARBON_HUGGED "carbon_hugged"
-///When a carbon mob is headpatted, this is called on the carbon that is headpatted. (mob/living/headpatter)
-#define COMSIG_CARBON_HEADPAT "carbon_headpatted"
-///When a carbon mob has their tail pulled, this is called on the carbon that is the target. (mob/living/tailpuller)
-#define COMSIG_CARBON_TAILPULL "carbon_tailpulled"
 ///Before a carbon mob is shoved, sent to the turf we're trying to shove onto (mob/living/carbon/shover, mob/living/carbon/target)
 #define COMSIG_CARBON_DISARM_PRESHOVE "carbon_disarm_preshove"
 	#define COMSIG_CARBON_ACT_SOLID (1<<0) //Tells disarm code to act as if the mob was shoved into something solid, even we we're not
@@ -23,7 +19,7 @@
 ///from base of /obj/item/bodypart/proc/attach_limb(): (new_limb, special) allows you to fail limb attachment
 #define COMSIG_CARBON_ATTACH_LIMB "carbon_attach_limb"
 	#define COMPONENT_NO_ATTACH (1<<0)
-#define COMSIG_CARBON_REMOVE_LIMB "carbon_remove_limb" //from base of /obj/item/bodypart/proc/drop_limb(special, dismembered)
+#define COMSIG_CARBON_REMOVE_LIMB "carbon_remove_limb" //from base of /obj/item/bodypart/proc/drop_limb(lost_limb, dismembered)
 #define COMSIG_BODYPART_GAUZED "bodypart_gauzed" // from /obj/item/bodypart/proc/apply_gauze(/obj/item/stack/gauze)
 #define COMSIG_BODYPART_GAUZE_DESTROYED "bodypart_degauzed" // from [/obj/item/bodypart/proc/seep_gauze] when it runs out of absorption
 
@@ -79,3 +75,12 @@
 //from /mob/living/carbon/human/proc/check_shields(): (atom/hit_by, damage, attack_text, attack_type, armour_penetration)
 #define COMSIG_HUMAN_CHECK_SHIELDS "human_check_shields"
 	#define SHIELD_BLOCK (1<<0)
+
+// Mob transformation signals
+///Called when a human turns into a monkey, from /mob/living/carbon/proc/finish_monkeyize()
+#define COMSIG_HUMAN_MONKEYIZE "human_monkeyize"
+///Called when a monkey turns into a human, from /mob/living/carbon/proc/finish_humanize(species)
+#define COMSIG_MONKEY_HUMANIZE "monkey_humanize"
+
+///From mob/living/carbon/human/suicide()
+#define COMSIG_HUMAN_SUICIDE_ACT "human_suicide_act"

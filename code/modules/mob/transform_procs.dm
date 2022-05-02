@@ -25,6 +25,7 @@
 	icon = initial(icon)
 	invisibility = 0
 	set_species(/datum/species/monkey)
+	SEND_SIGNAL(src, COMSIG_HUMAN_MONKEYIZE)
 	uncuff()
 	return src
 
@@ -55,9 +56,10 @@
 	icon = initial(icon)
 	invisibility = 0
 	set_species(species)
+	SEND_SIGNAL(src, COMSIG_MONKEY_HUMANIZE)
 	return src
 
-/mob/proc/AIize(transfer_after = TRUE, client/preference_source, move = TRUE)
+/mob/proc/AIize(client/preference_source, move = TRUE)
 	var/list/turf/landmark_loc = list()
 
 	if(!move)
@@ -71,12 +73,12 @@
 				landmark_loc += sloc.loc
 				break
 			landmark_loc += sloc.loc
-		if(!landmark_loc.len)
+		if(!length(landmark_loc))
 			to_chat(src, "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone.")
 			for(var/obj/effect/landmark/start/ai/sloc in GLOB.landmarks_list)
 				landmark_loc += sloc.loc
 
-	if(!landmark_loc.len)
+	if(!length(landmark_loc))
 		message_admins("Could not find ai landmark for [src]. Yell at a mapper! We are spawning them at their current location.")
 		landmark_loc += loc
 
@@ -85,13 +87,6 @@
 
 	var/mob/living/silicon/ai/our_AI = new /mob/living/silicon/ai(pick(landmark_loc), null, src)
 	. = our_AI
-
-	if(mind)
-		if(!transfer_after)
-			mind.active = FALSE
-		mind.transfer_to(our_AI)
-	else if(transfer_after)
-		our_AI.key = key
 
 	if(preference_source)
 		apply_pref_name(/datum/preference/name/ai, preference_source)
@@ -305,7 +300,8 @@
 
 	var/list/mobtypes = typesof(/mob/living/simple_animal)
 	var/mobpath = tgui_input_list(usr, "Which type of mob should [src] turn into?", "Choose a type", sort_list(mobtypes, /proc/cmp_typepaths_asc))
-
+	if(isnull(mobpath))
+		return
 	if(!safe_animal(mobpath))
 		to_chat(usr, span_danger("Sorry but this mob type is currently unavailable."))
 		return
@@ -338,7 +334,8 @@
 
 	var/list/mobtypes = typesof(/mob/living/simple_animal)
 	var/mobpath = tgui_input_list(usr, "Which type of mob should [src] turn into?", "Choose a type", sort_list(mobtypes, /proc/cmp_typepaths_asc))
-
+	if(isnull(mobpath))
+		return
 	if(!safe_animal(mobpath))
 		to_chat(usr, span_danger("Sorry but this mob type is currently unavailable."))
 		return

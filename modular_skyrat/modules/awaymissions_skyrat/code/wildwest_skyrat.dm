@@ -22,12 +22,10 @@
 	You have... a gun with you; one shot. Just in case nobody comes for you. \
 	At this point, you don't care who it is, you need to escape."
 	outfit = /datum/outfit/wildwest_syndicate
-	can_use_alias = TRUE
-	any_station_species = TRUE
 
 /datum/outfit/wildwest_syndicate
 	name = "Abandoned Syndicate"
-	uniform = /obj/item/clothing/under/utility/sci/syndicate
+	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
 	shoes = /obj/item/clothing/shoes/combat
 	back = /obj/item/storage/backpack
 	id = /obj/item/card/id/advanced/black
@@ -35,4 +33,4 @@
 	r_pocket = /obj/item/radio
 
 /turf/closed/mineral/wildwest
-	baseturfs = /turf/open/floor/plating/ironsand
+	baseturfs = /turf/open/misc/ironsand

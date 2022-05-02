@@ -1,11 +1,11 @@
 //////////////////////
-//   CFA Defender   //
+//  Bolt Responder  //
 //////////////////////
 // A mini disabler with 12 shot capacity in comparison to the normal disabler's 20.
 
-/obj/item/gun/energy/disabler/cfa_disabler
-	name = "CFA Responder"
-	desc = "A pocket-sized self-defense weapon popular with law enforcement due to its safe non-lethal payload that physically exhausts organic targets and cheap pricetag. The size makes it popular with smaller species, however, gives the obvious drawback of a smaller battery. It has <b><span style='color:purple'>Cantalan Federal Arms</span></b> eteched into the grip."
+/obj/item/gun/energy/disabler/bolt_disabler
+	name = "Bolt Responder"
+	desc = "A pocket-sized non-lethal energy gun with low ammo capacity."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "cfa-disabler"
 	inhand_icon_state = null
@@ -18,8 +18,9 @@
 	can_flashlight = FALSE // Can't attach or detach the flashlight, and override it's icon update
 	gunlight_state = "cfa-disabler-light"
 	has_gun_safety = FALSE
+	company_flag = COMPANY_BOLT
 
-/obj/item/gun/energy/disabler/cfa_disabler/Initialize()
+/obj/item/gun/energy/disabler/bolt_disabler/Initialize()
 	set_gun_light(new /obj/item/flashlight/seclite(src))
 	return ..()
 
@@ -79,7 +80,7 @@
 	icon_state = "bouncebeam"
 	damage = 30
 	damage_type = STAMINA
-	flag = ENERGY
+	armor_flag = ENERGY
 	eyeblur = 1
 	tracer_type = /obj/effect/projectile/tracer/disabler/bounce
 	light_range = 5
@@ -110,7 +111,7 @@
 	icon_state = "bouncebeam_red"
 	damage = 20
 	damage_type = BURN
-	flag = LASER
+	armor_flag = LASER
 	light_range = 5
 	light_power = 0.75
 	speed = 1.4

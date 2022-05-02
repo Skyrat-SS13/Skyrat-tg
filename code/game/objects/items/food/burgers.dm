@@ -13,7 +13,7 @@
 	desc = "The cornerstone of every nutritious breakfast."
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/nutriment/protein = 6, /datum/reagent/consumable/nutriment/vitamin = 1)
 	foodtypes = GRAIN | MEAT
-	custom_price = PAYCHECK_ASSISTANT * 0.8
+	custom_price = PAYCHECK_CREW * 0.8
 	venue_value = FOOD_PRICE_CHEAP
 
 /obj/item/food/burger/plain/Initialize(mapload)
@@ -119,7 +119,7 @@
 	name = "clown burger"
 	desc = "This tastes funny..."
 	icon_state = "clownburger"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/protein = 6, /datum/reagent/medicine/mannitol = 6, /datum/reagent/consumable/nutriment/vitamin = 6)
+	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/protein = 6, /datum/reagent/consumable/nutriment/vitamin = 6)
 	foodtypes = GRAIN | FRUIT
 	venue_value = FOOD_PRICE_NORMAL
 
@@ -297,6 +297,12 @@
 	foodtypes = GRAIN | MEAT | DAIRY
 	venue_value = FOOD_PRICE_EXOTIC
 
+/obj/item/food/burger/superbite/suicide_act(mob/user)
+	user.visible_message(span_suicide("[user] starts to eat [src] in one bite, it looks like [user.p_theyre()] trying to commit suicide!"))
+	var/datum/component/edible/component = GetComponent(/datum/component/edible)
+	component?.TakeBite(user, user)
+	return OXYLOSS
+
 /obj/item/food/burger/fivealarm
 	name = "five alarm burger"
 	desc = "HOT! HOT!"
@@ -319,7 +325,7 @@
 	icon_state = "baseball"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/protein = 5, /datum/reagent/consumable/nutriment/vitamin = 2)
 	foodtypes = GRAIN | GROSS
-	custom_price = PAYCHECK_ASSISTANT * 0.8
+	custom_price = PAYCHECK_CREW * 0.8
 	venue_value = FOOD_PRICE_NORMAL
 
 /obj/item/food/burger/baconburger
@@ -329,7 +335,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/protein = 6, /datum/reagent/consumable/nutriment/vitamin = 2)
 	tastes = list("bacon" = 4, "bun" = 2)
 	foodtypes = GRAIN | MEAT
-	custom_premium_price = PAYCHECK_ASSISTANT * 1.6
+	custom_premium_price = PAYCHECK_CREW * 1.6
 	venue_value = FOOD_PRICE_NORMAL
 
 /obj/item/food/burger/empoweredburger

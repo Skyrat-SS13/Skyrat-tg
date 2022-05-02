@@ -155,7 +155,8 @@
 	switch(activation_type)
 		if(SLIME_ACTIVATE_MINOR)
 			var/food_type = get_random_food()
-			var/obj/item/food_item = new food_type
+			var/obj/item/food/food_item = new food_type
+			food_item.food_flags |= FOOD_SILVER_SPAWNED
 			if(!user.put_in_active_hand(food_item))
 				food_item.forceMove(user.drop_location())
 			playsound(user, 'sound/effects/splat.ogg', 50, TRUE)
@@ -331,8 +332,8 @@
 			to_chat(user, span_notice("You activate [src]. You start feeling colder!"))
 			user.extinguish_mob()
 			user.adjust_fire_stacks(-20)
-			user.reagents.add_reagent(/datum/reagent/consumable/frostoil,4)
-			user.reagents.add_reagent(/datum/reagent/medicine/cryoxadone,5)
+			user.reagents.add_reagent(/datum/reagent/consumable/frostoil,6)
+			user.reagents.add_reagent(/datum/reagent/medicine/regen_jelly,7)
 			return 100
 
 		if(SLIME_ACTIVATE_MAJOR)
@@ -886,8 +887,9 @@
 	if(!proximity)
 		return
 	if(!istype(C))
-		// applying this to vehicles is handled in the ridable element, see [/datum/element/ridable/proc/check_potion]
-		to_chat(user, span_warning("The potion can only be used on items or vehicles!"))
+		to_chat(user, span_warning("The potion can only be used on objects!"))
+		return
+	if(SEND_SIGNAL(C, COMSIG_SPEED_POTION_APPLIED, src, user) & SPEED_POTION_STOP)
 		return
 	if(isitem(C))
 		var/obj/item/I = C
@@ -900,6 +902,15 @@
 	C.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 	C.add_atom_colour("#FF0000", FIXED_COLOUR_PRIORITY)
 	qdel(src)
+
+/obj/item/slimepotion/speed/attackby_storage_insert(datum/component/storage, atom/storage_holder, mob/user)
+	if(!isitem(storage_holder))
+		return TRUE
+	if(istype(storage_holder, /obj/item/mod/control))
+		var/obj/item/mod/control/mod = storage_holder
+		return mod.slowdown_inactive <= 0
+	var/obj/item/storage_item = storage_holder
+	return storage_item.slowdown <= 0
 
 /obj/item/slimepotion/fireproof
 	name = "slime chill potion"

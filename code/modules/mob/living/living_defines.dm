@@ -4,7 +4,7 @@
 	see_in_dark = 2
 	hud_possible = list(HEALTH_HUD,STATUS_HUD,ANTAG_HUD)
 	pressure_resistance = 10
-	plane = GAME_PLANE //SKYRAT EDIT CHANGE
+	plane = GAME_PLANE //SKYRAT EDIT ADD
 
 	hud_type = /datum/hud/living
 
@@ -77,6 +77,8 @@
 	var/tod = null
 
 	var/on_fire = FALSE ///The "Are we on fire?" var
+	/// Weak reference to the light our fire is causing, if there is one
+	var/datum/weakref/firelight_ref
 	var/fire_stacks = 0 ///Tracks how many stacks of fire we have on, max is usually 20
 
 	var/limb_destroyer = 0 //1 Sets AI behavior that allows mobs to target and dismember limbs with their basic attack.
@@ -84,7 +86,7 @@
 	var/mob_size = MOB_SIZE_HUMAN
 	var/mob_biotypes = MOB_ORGANIC
 	var/metabolism_efficiency = 1 ///more or less efficiency to metabolize helpful/harmful reagents and regulate body temperature..
-	var/has_limbs = 0 ///does the mob have distinct limbs?(arms,legs, chest,head)
+	var/has_limbs = FALSE ///does the mob have distinct limbs?(arms,legs, chest,head)
 
 	///How many legs does this mob have by default. This shouldn't change at runtime.
 	var/default_num_legs = 2
@@ -125,12 +127,6 @@
 
 	var/list/status_effects ///a list of all status effects the mob has
 	var/druggy = 0
-
-	//Speech
-	var/stuttering = 0
-	var/slurring = 0
-	var/cultslurring = 0
-	var/derpspeech = 0
 
 	var/list/implants = null
 

@@ -14,6 +14,17 @@
 	var/hit_probability = 2 //%
 	var/obj/item/paper/internalPaper
 
+	// SKYRAT EDIT START - Better paper planes
+	/// How long does getting shot in the eyes knock you down for?
+	var/knockdown_duration = 4 SECONDS
+	/// How much eye damage does it deal at minimum on eye impact?
+	var/impact_eye_damage_lower = 6
+	/// How much eye damage does it deal at maximum on eye impact?
+	var/impact_eye_damage_higher = 8
+	/// Does it get deleted when hitting anything or landing?
+	var/delete_on_impact = FALSE
+	// SKYRAT EDIT END
+
 /obj/item/paperplane/syndicate
 	desc = "Paper, masterfully folded in the shape of a plane."
 	throwforce = 20 //same as throwing stars, but no chance of embedding.
@@ -51,7 +62,7 @@
 	user.visible_message(span_suicide("[user] jams [src] in [user.p_their()] nose. It looks like [user.p_theyre()] trying to commit suicide!"))
 	user.adjust_blurriness(6)
 	if(eyes)
-		eyes.applyOrganDamage(rand(6,8))
+		eyes.applyOrganDamage(rand(impact_eye_damage_lower, impact_eye_damage_higher)) // SKYRAT EDIT START - Better paper planes
 	sleep(10)
 	return (BRUTELOSS)
 
@@ -99,17 +110,30 @@
 				C.throw_mode_on(THROW_MODE_TOGGLE)
 
 	if(..() || !ishuman(hit_atom))//if the plane is caught or it hits a nonhuman
+		// SKYRAT EDIT START - Better paper planes
+		if(delete_on_impact)
+			qdel(src)
+		// SKYRAT EDIT END
 		return
 	var/mob/living/carbon/human/H = hit_atom
 	var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
 	if(prob(hit_probability))
 		if(H.is_eyes_covered())
+			// SKYRAT EDIT START - Better paper planes
+			if(delete_on_impact)
+				qdel(src)
+			// SKYRAT EDIT END
 			return
 		visible_message(span_danger("\The [src] hits [H] in the eye[eyes ? "" : " socket"]!"))
 		H.adjust_blurriness(6)
-		eyes?.applyOrganDamage(rand(6,8))
-		H.Paralyze(40)
+		// SKYRAT EDIT START - Better paper planes
+		eyes?.applyOrganDamage(rand(impact_eye_damage_lower, impact_eye_damage_higher))
+		H.Knockdown(knockdown_duration)
 		H.emote("scream")
+
+	if(delete_on_impact)
+		qdel(src)
+	// SKYRAT EDIT END
 
 /obj/item/paper/examine(mob/user)
 	. = ..()

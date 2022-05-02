@@ -19,8 +19,19 @@
 
 //OUTFITS//
 /datum/outfit/lavaland_syndicate
-	uniform = /obj/item/clothing/under/utility/sci/syndicate
+	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
 	ears = /obj/item/radio/headset/interdyne
+
+/datum/outfit/lavaland_syndicate/post_equip(mob/living/carbon/human/syndicate, visualsOnly = FALSE)
+	syndicate.faction |= ROLE_SYNDICATE
+
+	var/obj/item/card/id/id_card = syndicate.wear_id
+	if(istype(id_card))
+		id_card.registered_name = syndicate.real_name
+		id_card.update_label()
+		id_card.update_icon()
+
+	return ..()
 
 /datum/outfit/lavaland_syndicate/ice
 	uniform = /obj/item/clothing/under/syndicate
@@ -36,7 +47,7 @@
 
 /datum/outfit/lavaland_syndicate/shaftminer
 	name = "Lavaland Syndicate Shaft Miner"
-	uniform = /obj/item/clothing/under/utility/cargo/syndicate
+	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility/syndicate
 	suit = null //Subtype moment
 	r_pocket = /obj/item/storage/bag/ore
 	backpack_contents = list(
@@ -44,12 +55,12 @@
 		/obj/item/knife/combat/survival=1,
 		/obj/item/mining_voucher=1,
 		/obj/item/t_scanner/adv_mining_scanner/lesser=1,
-		/obj/item/gun/energy/kinetic_accelerator=1,\
+		/obj/item/gun/energy/recharge/kinetic_accelerator=1,\
 		/obj/item/stack/marker_beacon/ten=1)
 
 /datum/outfit/lavaland_syndicate/shaftminer/deckofficer
 	name = "Lavaland Syndicate Deck Officer"
-	uniform = /obj/item/clothing/under/rank/cargo/qm/syndie
+	uniform = /obj/item/clothing/under/rank/cargo/qm/skyrat/syndie
 	neck = /obj/item/clothing/neck/cloak/qm/syndie
 	ears = /obj/item/radio/headset/interdyne/command
 	id = /obj/item/card/id/advanced/silver/generic
@@ -68,14 +79,6 @@
 	name = "Icemoon Syndicate Shaft Miner"
 	uniform = /obj/item/clothing/under/syndicate
 	suit = /obj/item/clothing/suit/hooded/wintercoat/syndicate
-	r_pocket = /obj/item/storage/bag/ore
-	backpack_contents = list(
-		/obj/item/flashlight/seclite=1,\
-		/obj/item/knife/combat/survival=1,
-		/obj/item/mining_voucher=1,
-		/obj/item/t_scanner/adv_mining_scanner/lesser=1,
-		/obj/item/gun/energy/kinetic_accelerator=1,\
-		/obj/item/stack/marker_beacon/ten=1)
 
 //ITEMS
 

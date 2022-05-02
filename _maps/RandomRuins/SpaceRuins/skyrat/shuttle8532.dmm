@@ -193,8 +193,6 @@
 "dX" = (
 /obj/structure/table/reinforced,
 /obj/structure/cable,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
 /obj/effect/spawner/random/food_or_drink/three_course_meal,
@@ -268,10 +266,6 @@
 	},
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/shuttle8532bridge)
-"eY" = (
-/obj/effect/decal/cleanable/glass,
-/turf/open/floor/plating,
-/area/template_noop)
 "fc" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 4
@@ -587,6 +581,11 @@
 	},
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/shuttle8532researchbay)
+"lw" = (
+/obj/structure/table/reinforced,
+/obj/item/ammo_box/c38,
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/shuttle8532crewquarters)
 "lD" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -715,7 +714,6 @@
 "oN" = (
 /obj/structure/lattice,
 /obj/structure/grille,
-/obj/structure/lattice,
 /turf/template_noop,
 /area/template_noop)
 "oR" = (
@@ -820,6 +818,7 @@
 /obj/structure/table/reinforced,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/item/ammo_box/c38,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/shuttle8532crewquarters)
 "ro" = (
@@ -921,7 +920,6 @@
 	dir = 8;
 	icon_state = "tube"
 	},
-/obj/item/ammo_box/c38,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/shuttle8532crewquarters)
 "tA" = (
@@ -976,7 +974,8 @@
 /area/ruin/space/has_grav/shuttle8532researchbay)
 "ul" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/layer4{
-	dir = 8
+	dir = 8;
+	on = 1
 	},
 /turf/template_noop,
 /area/template_noop)
@@ -1662,6 +1661,11 @@
 	},
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/shuttle8532cargohall)
+"Gv" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/mob_spawn/corpse/human/syndicatecommando,
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/shuttle8532bridge)
 "Gz" = (
 /obj/structure/railing/corner{
 	dir = 1
@@ -1691,11 +1695,6 @@
 /obj/effect/turf_decal/vg_decals/numbers/three,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/shuttle8532engineering)
-"Hb" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/template_noop,
-/area/template_noop)
 "Hf" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
@@ -1773,7 +1772,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
-/turf/open/floor/plating,
+/turf/open/floor/plating/airless,
 /area/template_noop)
 "Iv" = (
 /turf/open/floor/plating/airless,
@@ -1894,8 +1893,8 @@
 	},
 /obj/structure/table/optable,
 /obj/effect/decal/cleanable/cobweb,
-/obj/effect/mob_spawn/corpse/human/syndicatecommando,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/mob_spawn/corpse/human,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/shuttle8532researchbay)
 "Lz" = (
@@ -2477,9 +2476,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/shuttle8532engineering)
 "XD" = (
 /obj/item/shard{
@@ -3284,7 +3281,7 @@ qb
 (11,1,1) = {"
 HP
 eV
-ZU
+Gv
 Vi
 BS
 pu
@@ -3617,7 +3614,7 @@ uG
 yz
 Nx
 oh
-Zj
+lw
 TM
 Qx
 he
@@ -3977,7 +3974,7 @@ qb
 qb
 qb
 qb
-Hb
+OQ
 Lf
 oe
 wP
@@ -4282,7 +4279,7 @@ qb
 qb
 OQ
 dE
-eY
+hj
 OQ
 OQ
 OQ
@@ -4345,7 +4342,7 @@ qb
 qb
 qb
 qb
-Hb
+OQ
 OQ
 qb
 qb
@@ -4410,7 +4407,7 @@ qb
 qb
 qb
 qb
-Hb
+OQ
 OQ
 qb
 qb

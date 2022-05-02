@@ -2,7 +2,7 @@
 #define PROB_SPECIAL 30
 
 /datum/antagonist/malf_ai
-	name = "Malfunctioning AI"
+	name = "\improper Malfunctioning AI"
 	roundend_category = "traitors"
 	antagpanel_category = "Malf AI"
 	job_rank = ROLE_MALF
@@ -61,9 +61,6 @@
 		// SKYRAT EDIT END
 		QDEL_NULL(malf_ai.malf_picker)
 
-	if(!silent && owner.current)
-		to_chat(owner.current,span_userdanger("You are no longer the [job_rank]!"))
-
 	owner.special_role = null
 
 	return ..()
@@ -92,7 +89,7 @@
 
 /// Generates a special objective and adds it to the objective list.
 /datum/antagonist/malf_ai/proc/forge_special_objective()
-	var/special_pick = rand(1,4)
+	var/special_pick = rand(3,4) // SKYRAT EDIT - REMOVING PURGE/BLOCK
 	switch(special_pick)
 		if(1)
 			var/datum/objective/block/block_objective = new
@@ -118,6 +115,7 @@
 			objectives += yandere_two
 
 /datum/antagonist/malf_ai/greet()
+	. = ..()
 	if(should_give_codewords)
 		give_codewords()
 

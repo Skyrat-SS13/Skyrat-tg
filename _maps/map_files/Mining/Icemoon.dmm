@@ -51,7 +51,7 @@
 /area/mine/laborcamp)
 "au" = (
 /obj/structure/table,
-/obj/machinery/computer/bookmanagement,
+/obj/machinery/computer/libraryconsole/bookmanagement,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
@@ -67,19 +67,6 @@
 "aw" = (
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
-"ax" = (
-/obj/effect/turf_decal/tile/brown{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/brown{
-	dir = 8
-	},
-/obj/machinery/bounty_board{
-	dir = 4;
-	pixel_x = -32
-	},
-/turf/open/floor/iron,
-/area/mine/production)
 "ay" = (
 /obj/structure/sink/kitchen{
 	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
@@ -110,7 +97,7 @@
 /turf/open/floor/iron/freezer,
 /area/mine/laborcamp)
 "aD" = (
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
 "aE" = (
 /obj/machinery/vending/sustenance,
@@ -206,7 +193,7 @@
 /area/mine/laborcamp)
 "aX" = (
 /obj/structure/closet/crate,
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
 "aY" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -391,7 +378,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/mine/eva)
 "bw" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -409,11 +396,7 @@
 /area/mine/laborcamp)
 "by" = (
 /obj/structure/cable,
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "Labor Camp APC";
-	pixel_y = 23
-	},
+/obj/machinery/power/apc/auto_name/directional/north,
 /turf/open/floor/plating,
 /area/mine/laborcamp)
 "bB" = (
@@ -694,11 +677,6 @@
 /turf/open/floor/iron,
 /area/mine/production)
 "co" = (
-/obj/machinery/power/apc{
-	name = "Mining EVA APC";
-	pixel_x = 1;
-	pixel_y = -23
-	},
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
@@ -708,6 +686,7 @@
 /obj/item/stack/package_wrap,
 /obj/item/stack/package_wrap,
 /obj/item/hand_labeler,
+/obj/machinery/power/apc/auto_name/directional/south,
 /turf/open/floor/iron,
 /area/mine/eva)
 "cp" = (
@@ -740,11 +719,11 @@
 /area/mine/eva)
 "cu" = (
 /obj/item/pickaxe,
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
 "cv" = (
 /obj/structure/ore_box,
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
 "cB" = (
 /obj/structure/chair/office{
@@ -887,12 +866,6 @@
 /turf/open/floor/plating,
 /area/mine/living_quarters)
 "cX" = (
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "Mining Station Starboard Wing APC";
-	pixel_x = -25;
-	pixel_y = 2
-	},
 /obj/machinery/light{
 	dir = 8
 	},
@@ -903,6 +876,7 @@
 	dir = 8
 	},
 /obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/west,
 /turf/open/floor/iron,
 /area/mine/production)
 "cZ" = (
@@ -954,14 +928,9 @@
 /turf/open/floor/circuit,
 /area/mine/maintenance)
 "dh" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "Mining Communications APC";
-	pixel_x = 1;
-	pixel_y = 23
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/machinery/power/apc/auto_name/directional/north,
 /turf/open/floor/iron/dark,
 /area/mine/maintenance)
 "di" = (
@@ -1019,7 +988,7 @@
 /area/mine/living_quarters)
 "dn" = (
 /obj/structure/table,
-/obj/item/storage/firstaid/toxin{
+/obj/item/storage/medkit/toxin{
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -1164,7 +1133,7 @@
 /area/mine/living_quarters)
 "dE" = (
 /obj/structure/table,
-/obj/item/storage/firstaid/regular,
+/obj/item/storage/medkit/regular,
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -1370,13 +1339,8 @@
 /turf/open/floor/iron,
 /area/mine/living_quarters)
 "eg" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "Mining Station Port Wing APC";
-	pixel_x = 1;
-	pixel_y = 23
-	},
 /obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/north,
 /turf/open/floor/iron,
 /area/mine/living_quarters)
 "eh" = (
@@ -2096,7 +2060,7 @@
 /turf/closed/mineral/random/snow/high_chance,
 /area/icemoon/underground/unexplored)
 "fS" = (
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/unexplored)
 "gd" = (
 /obj/effect/turf_decal/tile/purple{
@@ -2134,7 +2098,7 @@
 	name = "labor camp";
 	width = 9
 	},
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
 "hz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
@@ -2341,11 +2305,7 @@
 "nA" = (
 /obj/machinery/computer/mech_bay_power_console,
 /obj/structure/cable,
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "Mining Station Mech Bay APC";
-	pixel_y = 23
-	},
+/obj/machinery/power/apc/auto_name/directional/north,
 /turf/open/floor/iron,
 /area/mine/mechbay)
 "nF" = (
@@ -2371,7 +2331,7 @@
 	c_tag = "Labor Camp External South";
 	network = list("labor")
 	},
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/mine/laborcamp)
 "nI" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -2442,7 +2402,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/mine/production)
 "pr" = (
 /obj/structure/toilet{
@@ -2712,7 +2672,7 @@
 /turf/open/floor/plating,
 /area/mine/living_quarters)
 "vb" = (
-/obj/machinery/door/window/southleft,
+/obj/machinery/door/window/left/directional/south,
 /obj/machinery/shower{
 	pixel_y = 22
 	},
@@ -2904,12 +2864,8 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "Labor Camp Security APC";
-	pixel_y = 23
-	},
 /obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/north,
 /turf/open/floor/iron,
 /area/mine/laborcamp/security)
 "zn" = (
@@ -2984,7 +2940,7 @@
 	c_tag = "Labor Camp External West";
 	network = list("labor")
 	},
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/mine/laborcamp)
 "Be" = (
 /obj/structure/cable,
@@ -3058,7 +3014,7 @@
 /area/mine/living_quarters)
 "Dr" = (
 /obj/machinery/light/small,
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/mine/laborcamp)
 "Dv" = (
 /obj/structure/sign/poster/official/obey{
@@ -3096,7 +3052,7 @@
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "Es" = (
-/obj/machinery/door/window/southright,
+/obj/machinery/door/window/right/directional/south,
 /obj/machinery/shower{
 	pixel_y = 22
 	},
@@ -3215,7 +3171,7 @@
 /area/mine/laborcamp/security)
 "GJ" = (
 /obj/effect/decal/remains/plasma,
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
 "GN" = (
 /obj/structure/table,
@@ -3300,7 +3256,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
 "IK" = (
 /obj/structure/toilet{
@@ -3375,7 +3331,7 @@
 	c_tag = "Labor Camp External North";
 	network = list("labor")
 	},
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/mine/laborcamp)
 "KD" = (
 /obj/effect/turf_decal/tile/blue{
@@ -3450,7 +3406,7 @@
 	name = "Mining base public dock";
 	width = 7
 	},
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
 "NS" = (
 /obj/effect/turf_decal/tile/purple{
@@ -3608,7 +3564,6 @@
 /area/mine/laborcamp)
 "Qi" = (
 /obj/structure/table,
-/obj/machinery/xenoarch/digger,
 /obj/effect/turf_decal/tile/purple/anticorner{
 	dir = 8
 	},
@@ -3691,7 +3646,6 @@
 /area/mine/production)
 "RL" = (
 /obj/structure/table,
-/obj/machinery/xenoarch/digger,
 /obj/effect/turf_decal/tile/purple/anticorner{
 	dir = 1
 	},
@@ -3819,7 +3773,7 @@
 	name = "icemoon wastes";
 	width = 35
 	},
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
 "Ur" = (
 /obj/structure/bookcase,
@@ -3841,7 +3795,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/mine/living_quarters)
 "UC" = (
 /obj/machinery/door/airlock/research/glass{
@@ -3944,7 +3898,7 @@
 /area/mine/laborcamp)
 "Vb" = (
 /obj/structure/table,
-/obj/item/storage/firstaid/regular,
+/obj/item/storage/medkit/regular,
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
@@ -3995,10 +3949,10 @@
 /area/mine/living_quarters)
 "VY" = (
 /obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer2{
+/obj/machinery/atmospherics/components/unary/passive_vent/layer2{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/mine/living_quarters)
 "We" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4022,7 +3976,7 @@
 	name = "icemoon mine";
 	width = 7
 	},
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
 "WB" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -4129,7 +4083,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/mining,
-/turf/open/floor/plating/asteroid/snow/icemoon,
+/turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
 "YJ" = (
 /obj/structure/table,
@@ -19344,7 +19298,7 @@ cl
 cH
 cO
 cX
-ax
+ck
 dJ
 ia
 cn

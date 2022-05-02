@@ -68,6 +68,7 @@
 	flavour_text = "Cater to visiting guests with your fellow staff, advertise the hotel, and make sure the manager doesn't fire you. Remember, the customer is always right!"
 	important_text = "Do NOT leave the hotel, as that is grounds for contract termination."
 	spawner_job_path = /datum/job/hotel_staff
+	random_appearance = FALSE // SKYRAT EDIT ADDITION
 
 /datum/outfit/hotelstaff
 	name = "Hotel Staff"
@@ -99,61 +100,6 @@
 /obj/effect/mob_spawn/ghost_role/human/hotel_staff/Destroy()
 	new/obj/structure/fluff/empty_sleeper/syndicate(get_turf(src))
 	return ..()
-
-//battlecruiser stuff, i suppose
-
-/obj/effect/mob_spawn/ghost_role/human/syndicate/battlecruiser
-	name = "Syndicate Battlecruiser Ship Operative"
-	you_are_text = "You are a crewmember aboard the syndicate flagship: the SBC Starfury."
-	flavour_text = "Your job is to follow your captain's orders, maintain the ship, and keep the engine running. If you are not familiar with how the supermatter engine functions: do not attempt to start it."
-	important_text = "The armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives."
-	prompt_name = "a battlecruiser crewmember"
-	outfit = /datum/outfit/syndicate_empty/battlecruiser
-
-/datum/outfit/syndicate_empty/battlecruiser
-	name = "Syndicate Battlecruiser Ship Operative"
-	l_pocket = /obj/item/gun/ballistic/automatic/pistol
-	r_pocket = /obj/item/knife/combat/survival
-	belt = /obj/item/storage/belt/military/assault
-
-/obj/effect/mob_spawn/ghost_role/human/syndicate/battlecruiser/assault
-	name = "Syndicate Battlecruiser Assault Operative"
-	you_are_text = "You are an assault operative aboard the syndicate flagship: the SBC Starfury."
-	flavour_text = "Your job is to follow your captain's orders, keep intruders out of the ship, and assault Space Station 13. There is an armory, multiple assault ships, and beam cannons to attack the station with."
-	important_text = "Work as a team with your fellow operatives and work out a plan of attack. If you are overwhelmed, escape back to your ship!"
-	prompt_name = "a battlecruiser operative"
-	outfit = /datum/outfit/syndicate_empty/battlecruiser/assault
-
-/datum/outfit/syndicate_empty/battlecruiser/assault
-	name = "Syndicate Battlecruiser Assault Operative"
-	uniform = /obj/item/clothing/under/syndicate/combat
-	l_pocket = /obj/item/ammo_box/magazine/m9mm
-	r_pocket = /obj/item/knife/combat/survival
-	belt = /obj/item/storage/belt/military
-	suit = /obj/item/clothing/suit/armor/vest
-	suit_store = /obj/item/gun/ballistic/automatic/pistol
-	back = /obj/item/storage/backpack/security
-	mask = /obj/item/clothing/mask/gas/syndicate
-
-/obj/effect/mob_spawn/ghost_role/human/syndicate/battlecruiser/captain
-	name = "Syndicate Battlecruiser Captain"
-	you_are_text = "You are the captain aboard the syndicate flagship: the SBC Starfury."
-	flavour_text = "Your job is to oversee your crew, defend the ship, and destroy Space Station 13. The ship has an armory, multiple ships, beam cannons, and multiple crewmembers to accomplish this goal."
-	important_text = "As the captain, this whole operation falls on your shoulders. You do not need to nuke the station, causing sufficient damage and preventing your ship from being destroyed will be enough."
-	prompt_name = "a battlecruiser captain"
-	outfit = /datum/outfit/syndicate_empty/battlecruiser/assault/captain
-
-/datum/outfit/syndicate_empty/battlecruiser/assault/captain
-	name = "Syndicate Battlecruiser Captain"
-	l_pocket = /obj/item/melee/energy/sword/saber/red
-	r_pocket = /obj/item/melee/baton/telescopic
-	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
-	suit_store = /obj/item/gun/ballistic/revolver/mateba
-	back = /obj/item/storage/backpack/satchel/leather
-	head = /obj/item/clothing/head/hos/syndicate
-	mask = /obj/item/clothing/mask/cigarette/cigar/havana
-	glasses = /obj/item/clothing/glasses/thermal/eyepatch
-	id_trim = /datum/id_trim/battlecruiser/captain
 
 /obj/effect/mob_spawn/ghost_role/human/syndicate
 	name = "Syndicate Operative"
@@ -271,7 +217,7 @@
 /obj/effect/mob_spawn/ghost_role/human/doctor/alive/equip(mob/living/carbon/human/doctor)
 	. = ..()
 	// Remove radio and PDA so they wouldn't annoy station crew.
-	var/list/del_types = list(/obj/item/pda, /obj/item/radio/headset)
+	var/list/del_types = list(/obj/item/modular_computer/tablet, /obj/item/radio/headset)
 	for(var/del_type in del_types)
 		var/obj/item/unwanted_item = locate(del_type) in doctor
 		qdel(unwanted_item)

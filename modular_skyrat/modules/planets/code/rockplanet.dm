@@ -1,7 +1,7 @@
 ////////////////////////MAP GENERATOR////////////////////////////////
 
 /datum/map_generator/cave_generator/rockplanet
-	open_turf_types = list(/turf/open/floor/plating/asteroid/lowpressure = 1)
+	open_turf_types = list(/turf/open/misc/asteroid/lowpressure = 1)
 	closed_turf_types =  list(/turf/closed/mineral/random/asteroid/rockplanet = 1)
 
 	mob_spawn_chance = 3
@@ -36,7 +36,7 @@
 
 /turf/closed/mineral/random/stationside/asteroid/rockplanet
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
-	turf_type = /turf/open/floor/plating/asteroid
+	turf_type = /turf/open/misc/asteroid
 	mineralSpawnChanceList = list(
 		/obj/item/stack/ore/uranium = 5,
 		/obj/item/stack/ore/diamond = 1,

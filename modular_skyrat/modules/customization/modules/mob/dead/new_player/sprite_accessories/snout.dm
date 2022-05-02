@@ -36,9 +36,17 @@
 	name = "Beak"
 	icon_state = "bird"
 
+/datum/sprite_accessory/snouts/mammal/birdsmall
+	name = "Beak (small)"
+	icon_state = "birdsmall"
+
 /datum/sprite_accessory/snouts/mammal/bigbeak
 	name = "Big Beak"
 	icon_state = "bigbeak"
+
+/datum/sprite_accessory/snouts/mammal/corvidbeak
+	name = "Corvid Beak"
+	icon_state = "corvidbeak"
 
 /datum/sprite_accessory/snouts/mammal/bug
 	name = "Bug"
@@ -329,11 +337,9 @@
 	name = "Zebra"
 	icon_state = "hzebra"
 
-/datum/sprite_accessory/snouts/mammal/sbeak
-	name = "Corvid Beak"
-	icon_state = "sbeak"
-	extra = TRUE
-	//extra_color_src = MATRIXED
+/datum/sprite_accessory/snouts/mammal/fcorvidbeak
+	name = "Corvid Beak (Top)"
+	icon_state = "fcorvidbeak"
 
 /datum/sprite_accessory/snouts/mammal/akula/shark_light
 	name = "Shark Light"
@@ -348,5 +354,11 @@
 /datum/sprite_accessory/snouts/mammal/stubby
 	name = "Stubby"
 	icon_state = "stubby"
+	color_src = USE_MATRIXED_COLORS
+	use_muzzled_sprites = FALSE
+
+/datum/sprite_accessory/snouts/mammal/leporid
+	name = "Leporid"
+	icon_state = "leporid"
 	color_src = USE_MATRIXED_COLORS
 	use_muzzled_sprites = FALSE

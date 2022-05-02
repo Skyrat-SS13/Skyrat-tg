@@ -117,14 +117,10 @@
 	unit_name = "of ammonia crystal"
 	export_types = list(/obj/item/stack/ammonia_crystals)
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 /datum/export/stack/pizza
 	cost = CARGO_CRATE_VALUE * 0.06
 	unit_name = "of sheetza"
 	export_types = list(/obj/item/stack/sheet/pizza)
-*/
-//SKYRAT EDIT REMOVAL END
 
 /datum/export/stack/meat
 	cost = CARGO_CRATE_VALUE * 0.04

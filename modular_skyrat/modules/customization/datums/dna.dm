@@ -180,6 +180,7 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	var/translate = ((change_multiplier-1) * 32)/2
 	holder.transform = holder.transform.Scale(change_multiplier)
 	holder.transform = holder.transform.Translate(0, translate)
+	holder.maptext_height = 32 * features["body_size"] // Adjust runechat height
 	current_body_size = features["body_size"]
 
 /mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE)

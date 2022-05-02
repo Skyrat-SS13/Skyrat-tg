@@ -146,6 +146,7 @@
 	. = ..()
 	if(. || (bot_cover_flags & BOT_COVER_LOCKED && !usr.has_unlimited_silicon_privilege))
 		return
+
 	switch(action)
 		if("place_custom")
 			replacetiles = !replacetiles
@@ -161,7 +162,9 @@
 			if(tilestack)
 				tilestack.forceMove(drop_location())
 		if("line_mode")
-			var/setdir = input("Select construction direction:") as null|anything in list("north","east","south","west","disable")
+			var/setdir = tgui_input_list(usr, "Select construction direction", "Direction", list("north", "east", "south", "west", "disable"))
+			if(isnull(setdir))
+				return
 			switch(setdir)
 				if("north")
 					targetdirection = 1
@@ -173,7 +176,6 @@
 					targetdirection = 8
 				if("disable")
 					targetdirection = null
-	return
 
 /mob/living/simple_animal/bot/floorbot/handle_automated_action()
 	if(!..())
@@ -218,11 +220,11 @@
 	if(!target)
 
 		if(bot_mode_flags & BOT_MODE_AUTOPATROL)
-			if(mode == BOT_IDLE || mode == BOT_START_PATROL)
-				start_patrol()
-
-			if(mode == BOT_PATROL)
-				bot_patrol()
+			switch(mode)
+				if(BOT_IDLE, BOT_START_PATROL)
+					start_patrol()
+				if(BOT_PATROL)
+					bot_patrol()
 
 	if(target)
 		if(loc == target || loc == get_turf(target))
@@ -246,7 +248,7 @@
 				addtimer(CALLBACK(src, .proc/go_idle), 0.5 SECONDS)
 			path = list()
 			return
-		if(path.len == 0)
+		if(!length(path))
 			if(!isturf(target))
 				var/turf/TL = get_turf(target)
 				path = get_path_to(src, TL, 30, id=access_card,simulated_only = FALSE)
@@ -334,7 +336,7 @@
 			if(autotile) //Build the floor and include a tile.
 				if(replacetiles && tilestack)
 					target_turf.PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)	//make sure a hull is actually below the floor tile
-					tilestack.place_tile(target_turf)
+					tilestack.place_tile(target_turf, src)
 					if(!tilestack)
 						speak("Requesting refill of custom floor tiles to continue replacing.")
 				else
@@ -366,7 +368,7 @@
 			var/area/is_this_maints = get_area(F)
 			if(was_replacing && tilestack)	//turn the tile into plating (if needed), then replace it
 				F = F.make_plating(TRUE) || F
-				tilestack.place_tile(F)
+				tilestack.place_tile(F, src)
 				if(!tilestack)
 					speak("Requesting refill of custom floor tiles to continue replacing.")
 			else if(F.broken || F.burnt)	//repair the tile and reset it to be undamaged (rather than replacing it)
@@ -387,9 +389,7 @@
 	icon_state = "[toolbox_color]floorbot[get_bot_flag(bot_mode_flags, BOT_MODE_ON)]"
 
 /mob/living/simple_animal/bot/floorbot/explode()
-	bot_mode_flags &= ~BOT_MODE_ON
 	target = null
-	visible_message(span_boldannounce("[src] blows apart!"))
 	var/atom/Tsec = drop_location()
 
 	drop_part(toolbox, Tsec)
@@ -400,9 +400,7 @@
 		tilestack.forceMove(drop_location())
 
 	new /obj/item/stack/tile/iron/base(Tsec, 1)
-
-	do_sparks(3, TRUE, src)
-	..()
+	return ..()
 
 /mob/living/simple_animal/bot/floorbot/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
 	if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))

@@ -78,17 +78,15 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "blackjack"
 
-/obj/item/clothing/shoes/wraps/poly
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+/obj/item/clothing/shoes/wraps/colourable
 	name = "cloth foot wraps"
 	desc = "Boxer tape or bandages wrapped like a mummy, all left up to the choice of the wearer."
 	icon_state = "clothwrap"
+	greyscale_config = /datum/greyscale_config/wraps
+	greyscale_config_worn = /datum/greyscale_config/wraps/worn
+	greyscale_colors = "#FFFFFF"
 	body_parts_covered = FALSE
-
-/obj/item/clothing/shoes/wraps/poly/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#FFFFFF"))
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/shoes/sports
 	name = "sport shoes"

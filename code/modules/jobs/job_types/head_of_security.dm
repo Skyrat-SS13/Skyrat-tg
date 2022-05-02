@@ -35,7 +35,7 @@
 
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law)
 	rpg_title = "Guard Leader"
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 
 	voice_of_god_power = 1.4 //Command staff has authority
 
@@ -51,17 +51,16 @@
 	id = /obj/item/card/id/advanced/silver
 	id_trim = /datum/id_trim/job/head_of_security
 	uniform = /obj/item/clothing/under/rank/security/head_of_security
-	suit = /obj/item/clothing/suit/armor/hos/trenchcoat
-	suit_store = /obj/item/gun/energy/e_gun
+	suit = /obj/item/clothing/suit/armor/hos/trenchcoat/black //SKYRAT EDIT CHANGE
+	//suit_store = /obj/item/gun/energy/e_gun SKYRAT EDIT REMOVAL
 	backpack_contents = list(
-		/obj/item/melee/baton/security/loaded = 1,
 		/obj/item/evidencebag = 1,
-		/obj/item/modular_computer/tablet/preset/advanced/command = 1,
+		/obj/item/storage/box/gunset/glock18_hos = 1, // SKYRAT EDIT ADDITION
 		)
-	belt = /obj/item/pda/heads/hos
+	belt = /obj/item/modular_computer/tablet/pda/heads/hos
 	ears = /obj/item/radio/headset/heads/hos/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-	gloves = /obj/item/clothing/gloves/security //SKYRAT EDIT CHANGE
+	gloves = /obj/item/clothing/gloves/color/black/security //SKYRAT EDIT CHANGE
 	head = /obj/item/clothing/head/hos/beret
 	shoes = /obj/item/clothing/shoes/jackboots/security //SKYRAT EDIT CHANGE
 	l_pocket = /obj/item/restraints/handcuffs
@@ -86,3 +85,4 @@
 	suit = null
 	head = null
 	mask = /obj/item/clothing/mask/gas/sechailer
+	internals_slot = ITEM_SLOT_SUITSTORE

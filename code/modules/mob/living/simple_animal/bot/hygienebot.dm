@@ -6,7 +6,7 @@
 	icon_state = "hygienebot"
 	base_icon_state = "hygienebot"
 	pass_flags = PASSMOB | PASSFLAPS | PASSTABLE
-	layer = ABOVE_MOB_LAYER
+	layer = MOB_UPPER_LAYER
 	density = FALSE
 	anchored = FALSE
 	health = 100
@@ -50,14 +50,12 @@
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
 
+	ADD_TRAIT(src, TRAIT_SPRAY_PAINTABLE, INNATE_TRAIT)
+
 /mob/living/simple_animal/bot/hygienebot/explode()
-	walk_to(src,0)
-	visible_message(span_boldannounce("[src] blows apart in a foamy explosion!"))
-	do_sparks(3, TRUE, src)
-	bot_mode_flags &= ~BOT_MODE_ON
 	new /obj/effect/particle_effect/foam(loc)
 
-	..()
+	return ..()
 
 /mob/living/simple_animal/bot/hygienebot/proc/on_entered(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER
@@ -86,7 +84,7 @@
 	..()
 	target = null
 	oldtarget_name = null
-	walk_to(src,0)
+	SSmove_manager.stop_looping(src)
 	last_found = world.time
 
 /mob/living/simple_animal/bot/hygienebot/handle_automated_action()
@@ -96,6 +94,8 @@
 	if(washing)
 		do_wash(loc)
 		for(var/AM in loc)
+			if (AM == src)
+				continue
 			do_wash(AM)
 		if(isopenturf(loc) && !(bot_cover_flags & BOT_COVER_EMAGGED))
 			var/turf/open/tile = loc
@@ -103,7 +103,7 @@
 
 	switch(mode)
 		if(BOT_IDLE) // idle
-			walk_to(src,0)
+			SSmove_manager.stop_looping(src)
 			look_for_lowhygiene() // see if any disgusting fucks are in range
 			if(!mode && bot_mode_flags & BOT_MODE_AUTOPATROL) // still idle, and set to patrol
 				mode = BOT_START_PATROL // switch to patrol mode
@@ -135,7 +135,7 @@
 					if(olddist > 20 || frustration > 100) // Focus on something else
 						back_to_idle()
 						return
-					walk_to(src, target,0, currentspeed)
+					SSmove_manager.move_to(src, target, 0, currentspeed)
 					if(mad && prob(min(frustration * 2, 60)))
 						playsound(loc, 'sound/effects/hygienebot_angry.ogg', 60, 1)
 						speak(pick("Get back here you foul smelling fucker.", "STOP RUNNING OR I WILL CUT YOUR ARTERIES!", "Just fucking let me clean you you arsehole!", "STOP. RUNNING.", "Either you stop running or I will fucking drag you out of an airlock.", "I just want to fucking clean you you troglodyte.", "If you don't come back here I'll put a green cloud around you cunt."))
@@ -167,7 +167,7 @@
 
 /mob/living/simple_animal/bot/hygienebot/proc/back_to_idle()
 	mode = BOT_IDLE
-	walk_to(src,0)
+	SSmove_manager.stop_looping(src)
 	target = null
 	frustration = 0
 	last_found = world.time

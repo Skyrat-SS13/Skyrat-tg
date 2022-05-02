@@ -76,11 +76,6 @@
 	var/flight_y_offset = 0
 
 	//Zooming
-	var/zoomable = FALSE //whether the gun generates a Zoom action on creation
-	var/zoomed = FALSE //Zoom toggle
-	var/zoom_amt = 3 //Distance in TURFs to move the user's screen forward (the "zoom" effect)
-	var/zoom_out_amt = 0
-	var/datum/action/toggle_scope_zoom/azoom
 	var/pb_knockback = 0
 
 	var/safety = FALSE ///Internal variable for keeping track whether the safety is on or off
@@ -95,6 +90,8 @@
 	var/list/fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	///if i`1t has an icon for a selector switch indicating current firemode.
 	var/selector_switch_icon = FALSE
+	/// Bitflags for the company that produces the gun, do not give more than one company.
+	var/company_flag
 
 /datum/action/item_action/toggle_safety
 	name = "Toggle Safety"
@@ -117,8 +114,6 @@
 	if(gun_light)
 		alight = new(src)
 
-	build_zooming()
-
 	if(has_gun_safety)
 		safety = TRUE
 		tsafety = new(src)
@@ -135,7 +130,7 @@
 	if(fire_select_modes.len > 1)
 		firemode_action = new(src)
 		firemode_action.button_icon_state = "fireselect_[fire_select]"
-		firemode_action.UpdateButtonIcon()
+		firemode_action.UpdateButtons()
 
 /obj/item/gun/ComponentInitialize()
 	. = ..()
@@ -151,8 +146,6 @@
 		QDEL_NULL(bayonet)
 	if(chambered) //Not all guns are chambered (EMP'ed energy guns etc)
 		QDEL_NULL(chambered)
-	if(azoom)
-		QDEL_NULL(azoom)
 	if(isatom(suppressed))
 		QDEL_NULL(suppressed)
 	if(tsafety)
@@ -207,11 +200,6 @@
 	if(has_gun_safety)
 		. += "<span>The safety is [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].</span>"
 
-/obj/item/gun/equipped(mob/living/user, slot)
-	. = ..()
-	if(zoomed && user.get_active_held_item() != src)
-		zoom(user, user.dir, FALSE) //we can only stay zoomed in if it's in our hands //yeah and we only unzoom if we're actually zoomed using the gun!!
-
 /obj/item/gun/proc/fire_select()
 	var/mob/living/carbon/human/user = usr
 
@@ -244,7 +232,7 @@
 	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
 	update_appearance()
 	firemode_action.button_icon_state = "fireselect_[fire_select]"
-	firemode_action.UpdateButtonIcon()
+	firemode_action.UpdateButtons()
 	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
 	return TRUE
 
@@ -317,6 +305,8 @@
 	if(QDELETED(target))
 		return
 	if(firing_burst)
+		return
+	if(SEND_SIGNAL(src, COMSIG_GUN_TRY_FIRE, user, target, flag, params) & COMPONENT_CANCEL_GUN_FIRE)
 		return
 	if(flag) //It's adjacent, is the user, or is on the user's person
 		if(target in user.contents) //can't shoot stuff inside us.
@@ -397,7 +387,7 @@
 	else
 		safety = !safety
 	tsafety.button_icon_state = "safety_[safety ? "on" : "off"]"
-	tsafety.UpdateButtonIcon()
+	tsafety.UpdateButtons()
 	playsound(src, 'sound/weapons/empty.ogg', 100, TRUE)
 	user.visible_message(span_notice("[user] toggles [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"]."),
 	span_notice("You toggle [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"]."))
@@ -573,8 +563,10 @@
 		return
 	if((can_flashlight && gun_light) && (can_bayonet && bayonet)) //give them a choice instead of removing both
 		var/list/possible_items = list(gun_light, bayonet)
-		var/obj/item/item_to_remove = input(user, "Select an attachment to remove", "Attachment Removal") as null|obj in sort_names(possible_items)
-		if(!item_to_remove || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+		var/obj/item/item_to_remove = tgui_input_list(user, "Attachment to remove", "Attachment Removal", sort_names(possible_items))
+		if(isnull(item_to_remove))
+			return
+		if(user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 			return
 		return remove_gun_attachment(user, tool, item_to_remove)
 
@@ -585,6 +577,9 @@
 		return remove_gun_attachment(user, tool, bayonet, "unfix")
 
 	else if(pin && user.is_holding(src))
+		if(!pin.can_remove)
+			to_chat(user, span_warning("You can't remove this firing pin!"))
+			return
 		user.visible_message(span_warning("[user] attempts to remove [pin] from [src] with [tool]."),
 		span_notice("You attempt to remove [pin] from [src]. (It will take [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)"), null, 3)
 		if(tool.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, volume = 50))
@@ -598,6 +593,9 @@
 /obj/item/gun/welder_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(.)
+		return
+	if(!pin.can_remove)
+		to_chat(user, span_warning("You can't remove this firing pin!"))
 		return
 	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
@@ -617,6 +615,9 @@
 	if(.)
 		return
 	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+		return
+	if(!pin.can_remove)
+		to_chat(user, span_warning("You can't remove this firing pin!"))
 		return
 	if(pin && user.is_holding(src))
 		user.visible_message(span_warning("[user] attempts to remove [pin] from [src] with [tool]."),
@@ -713,18 +714,9 @@
 
 /obj/item/gun/pickup(mob/user)
 	. = ..()
-	if(azoom)
-		azoom.Grant(user)
 	if(w_class > WEIGHT_CLASS_SMALL && !suppressed)
 		user.visible_message(span_warning("[user] grabs <b>[src]</b>!"),
 		span_warning("You grab [src]!"))
-
-/obj/item/gun/dropped(mob/user)
-	. = ..()
-	if(azoom)
-		azoom.Remove(user)
-	if(zoomed)
-		zoom(user, user.dir, FALSE)
 
 /obj/item/gun/update_overlays()
 	. = ..()
@@ -797,66 +789,37 @@
 /obj/item/gun/proc/before_firing(atom/target, mob/user)
 	return
 
-/////////////
-// ZOOMING //
-/////////////
-
-/datum/action/toggle_scope_zoom
-	name = "Toggle Scope"
-	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_LYING
-	icon_icon = 'icons/mob/actions/actions_items.dmi'
-	button_icon_state = "sniper_zoom"
-	var/obj/item/gun/gun = null
-
-/datum/action/toggle_scope_zoom/Trigger()
+/obj/item/gun/examine_more(mob/user)
 	. = ..()
-	if(!.)
-		return
-	gun.zoom(owner, owner.dir)
+	switch(company_flag)
+		if(COMPANY_CANTALAN)
+			. += "<br>It has <b>[span_purple("Cantalan Federal Arms")]</b> etched into the grip."
+		if(COMPANY_ARMADYNE)
+			. += "<br>It has <b>[span_red("Armadyne Corporation")]</b> etched into the barrel."
+		if(COMPANY_SCARBOROUGH)
+			. += "<br>It has <b>[span_orange("Scarborough Arms")]</b> stamped onto the grip."
+		if(COMPANY_BOLT)
+			. += "<br>It has <b>[span_yellow("Bolt Fabrications")]</b> stamped onto the reciever."
+		if(COMPANY_OLDARMS)
+			. += "<br>It has <b><i>[span_red("Armadyne Oldarms")]</i></b> etched into the barrel."
+		if(COMPANY_IZHEVSK)
+			. += "<br>It has <b>[span_brown("Izhevsk Coalition")]</b> cut in above the magwell."
+		if(COMPANY_NANOTRASEN)
+			. += "<br>It has <b>[span_blue("Nanotrasen Armories")]</b> etched into the reciever."
+		if(COMPANY_ALLSTAR)
+			. += "<br>It has <b>[span_red("Allstar Lasers Inc.")]</b> stamped on the front grip."
+		if(COMPANY_MICRON)
+			. += "<br>It has <b>[span_cyan("Micron Control Sys.")]</b> cut in above the cell slot."
+		if(COMPANY_INTERDYNE)
+			. += "<br>It has <b>[span_cyan("Interdyne Pharmaceuticals")]</b> stamped onto the barrel."
 
-/datum/action/toggle_scope_zoom/IsAvailable()
+/obj/item/gun/emag_act(mob/user, obj/item/card/emag/emag_card)
 	. = ..()
-	if(owner.get_active_held_item() != gun)
-		. = FALSE
-	if(!. && gun)
-		gun.zoom(owner, owner.dir, FALSE)
-
-/datum/action/toggle_scope_zoom/Remove(mob/living/user)
-	gun.zoom(user, user.dir, FALSE)
-	..()
-
-/obj/item/gun/proc/rotate(atom/thing, old_dir, new_dir)
-	SIGNAL_HANDLER
-
-	if(ismob(thing))
-		var/mob/lad = thing
-		lad.client?.view_size.zoomOut(zoom_out_amt, zoom_amt, new_dir)
-
-/obj/item/gun/proc/zoom(mob/living/user, direc, forced_zoom)
-	if(!user || !user.client)
-		return
-
-	if(isnull(forced_zoom))
-		zoomed = !zoomed
-	else
-		zoomed = forced_zoom
-
-	if(zoomed)
-		RegisterSignal(user, COMSIG_ATOM_DIR_CHANGE, .proc/rotate)
-		user.client?.view_size.zoomOut(zoom_out_amt, zoom_amt, direc)
-	else
-		UnregisterSignal(user, COMSIG_ATOM_DIR_CHANGE)
-		user.client?.view_size.zoomIn()
-	return zoomed
-
-//Proc, so that gun accessories/scopes/etc. can easily add zooming.
-/obj/item/gun/proc/build_zooming()
-	if(azoom)
-		return
-
-	if(zoomable)
-		azoom = new()
-		azoom.gun = src
+	if(!pin.can_remove)
+		to_chat(user, span_notice("You short out the gun's firing pin, allowing it to be removed!"))
+		pin.can_remove = TRUE
+		if(!(pin.obj_flags & EMAGGED))
+			pin.obj_flags |= EMAGGED
 
 #undef FIRING_PIN_REMOVAL_DELAY
 #undef DUALWIELD_PENALTY_EXTRA_MULTIPLIER

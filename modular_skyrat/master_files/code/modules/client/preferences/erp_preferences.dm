@@ -1,6 +1,9 @@
 /datum/config_entry/flag/disable_erp_preferences
 	default = FALSE
 
+/datum/config_entry/flag/disable_lewd_items
+	default = FALSE
+
 /datum/config_entry/str_list/erp_emotes_to_disable
 
 /datum/config_entry/str_list/erp_emotes_to_disable/ValidateAndSet(str_val)
@@ -70,9 +73,6 @@
 
 /datum/preference/toggle/erp/gender_change
 	savefile_key = "gender_change_pref"
-
-/datum/preference/toggle/erp/noncon
-	savefile_key = "noncon_pref"
 
 /datum/preference/toggle/erp/autocum
 	savefile_key = "autocum_pref"
@@ -195,4 +195,34 @@
 	. = ..()
 
 /datum/preference/choiced/erp_status_mechanics/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return FALSE
+
+/datum/preference/choiced/erp_sexuality
+	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
+	savefile_identifier = PREFERENCE_PLAYER
+	savefile_key = "erp_sexuality_pref"
+
+/datum/preference/choiced/erp_sexuality/init_possible_values()
+	return list("Gay", "Straight", "None") // For simplicity's sake we only have 3 options.
+
+/datum/preference/choiced/erp_sexuality/create_default_value()
+	return "None"
+
+/datum/preference/choiced/erp_sexuality/is_accessible(datum/preferences/preferences)
+	if (!..(preferences))
+		return FALSE
+
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		return FALSE
+
+	return preferences.read_preference(/datum/preference/toggle/master_erp_preferences)
+
+/datum/preference/choiced/erp_sexuality/deserialize(input, datum/preferences/preferences)
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		return "None"
+	if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
+		return "None"
+	. = ..()
+
+/datum/preference/choiced/erp_sexuality/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE

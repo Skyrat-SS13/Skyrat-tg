@@ -7,3 +7,6 @@
 /area/shuttle/syndicate/slaver
 	name = "Slave Ship"
 	requires_power = TRUE
+
+/area/shuttle/tarkon_driver
+	name = "Tarkon Driver"

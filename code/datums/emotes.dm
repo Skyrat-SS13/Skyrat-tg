@@ -69,16 +69,14 @@
 	//SKYRAT EDIT ADDITION END
 
 /datum/emote/New()
-	if (ispath(mob_type_allowed_typecache))
-		switch (mob_type_allowed_typecache)
-			if (/mob)
-				mob_type_allowed_typecache = GLOB.typecache_mob
-			if (/mob/living)
-				mob_type_allowed_typecache = GLOB.typecache_living
-			else
-				mob_type_allowed_typecache = typecacheof(mob_type_allowed_typecache)
-	else
-		mob_type_allowed_typecache = typecacheof(mob_type_allowed_typecache)
+	switch(mob_type_allowed_typecache)
+		if(/mob)
+			mob_type_allowed_typecache = GLOB.typecache_mob
+		if(/mob/living)
+			mob_type_allowed_typecache = GLOB.typecache_living
+		else
+			mob_type_allowed_typecache = typecacheof(mob_type_allowed_typecache)
+
 	mob_type_blacklist_typecache = typecacheof(mob_type_blacklist_typecache)
 	mob_type_ignore_stat_typecache = typecacheof(mob_type_ignore_stat_typecache)
 

@@ -161,9 +161,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	bound_y = 0
 	density = TRUE
 
-	use_power = IDLE_POWER_USE
-	idle_power_usage = 100
-	active_power_usage = 5000
+	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 5
 
 	var/calibrated = TRUE
 	/// Type of instanced gateway destination, needs to be subtype of /datum/gateway_destination/gateway
@@ -178,6 +176,8 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	var/obj/effect/gateway_portal_bumper/portal
 	/// Visual object for handling the viscontents
 	var/obj/effect/gateway_portal_effect/portal_visuals
+	/// Overlay of the lights. They light up fully when it charges fully.
+	var/image/light_overlay
 
 	//SKYRAT EDIT ADDITION
 	var/requires_key = FALSE
@@ -225,6 +225,15 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 		if(target)
 			deactivate()
 		return
+	if(light_overlay)
+		return
+	for(var/datum/gateway_destination/destination as anything in GLOB.gateway_destinations)
+		if(!destination.is_available())
+			continue
+		light_overlay = image(icon, "portal_light")
+		light_overlay.alpha = 0
+		animate(light_overlay, 3 SECONDS, alpha = 255)
+		add_overlay(light_overlay)
 
 /obj/machinery/gateway/safe_throw_at(atom/target, range, speed, mob/thrower, spin = TRUE, diagonals_first = FALSE, datum/callback/callback, force = MOVE_FORCE_STRONG, gentle = FALSE)
 	return
@@ -308,6 +317,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	try_to_linkup()
 
 /obj/machinery/computer/gateway_control/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "Gateway", name)

@@ -23,9 +23,9 @@
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#666666", "#CCBBAA", "#0000FF"))
 
-//SOLGOV//
-/obj/item/card/id/advanced/solgov
-	name = "solgov identification card"
+//SOLFED//
+/obj/item/card/id/advanced/solfed
+	name = "solfed identification card"
 	icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-	icon_state = "card_solgov"
-	assigned_icon_state = "assigned_solgov"
+	icon_state = "card_solfed"
+	assigned_icon_state = "assigned_solfed"

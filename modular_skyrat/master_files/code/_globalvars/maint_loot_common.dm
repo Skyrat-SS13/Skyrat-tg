@@ -92,6 +92,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/stack/sheet/sinew = 10
 	) = 50,
 	list( //Medical stuff
+		/obj/item/stock_parts/cell/lead = 25,
 		/obj/item/healthanalyzer = 25,
 		/obj/item/healthanalyzer/wound = 50,
 		/obj/item/reagent_containers/blood/random = 50,
@@ -104,14 +105,15 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/stack/medical/splint/twelve = 5,
 		/obj/item/stack/medical/suture = 5,
 		/obj/item/stack/sticky_tape/surgical = 5,
-		/obj/item/storage/firstaid = 100,
-		/obj/item/storage/firstaid/advanced = 25,
-		/obj/item/storage/firstaid/brute = 25,
-		/obj/item/storage/firstaid/fire = 25,
-		/obj/item/storage/firstaid/medical = 25,
-		/obj/item/storage/firstaid/o2 = 25,
-		/obj/item/storage/firstaid/regular = 25,
-		/obj/item/storage/firstaid/toxin = 25
+		/obj/item/storage/medkit = 100,
+		/obj/item/storage/medkit/advanced = 25,
+		/obj/item/storage/medkit/brute = 25,
+		/obj/item/storage/medkit/fire = 25,
+		/obj/item/storage/medkit/surgery = 25,
+		/obj/item/storage/medkit/o2 = 25,
+		/obj/item/storage/medkit/regular = 25,
+		/obj/item/storage/medkit/toxin = 25,
+		/obj/item/lead_pipe = 25,
 	) = 100,
 	list( //Tools you'd get in tool storage and elsewhere
 		/obj/item/screwdriver = 100,
@@ -333,7 +335,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/clothing/under/dress/skirt/polychromic = 100,
 		/obj/item/clothing/under/dress/skirt/polychromic/pleated = 100,
 		/obj/item/clothing/under/misc/poly_bottomless = 100,
-		/obj/item/clothing/under/misc/poly_kilt = 100,
+		/obj/item/clothing/under/misc/colourable_kilt = 100,
 		/obj/item/clothing/under/misc/poly_shirt = 100,
 		/obj/item/clothing/under/misc/poly_tanktop = 100,
 		/obj/item/clothing/under/misc/poly_tanktop/female = 100,
@@ -353,6 +355,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/food/meat/slab/human/mutant/shadow = 1,
 		/obj/item/food/meat/slab/human/mutant/skeleton = 1,
 		/obj/item/food/meat/slab/human/mutant/slime = 1,
-		/obj/item/food/meat/slab/human/mutant/zombie = 1
+		/obj/item/food/meat/slab/human/mutant/zombie = 1,
+		/obj/item/seeds/kronkus = 1,
 	) = 25
 ))

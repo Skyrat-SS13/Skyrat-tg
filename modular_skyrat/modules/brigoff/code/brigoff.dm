@@ -13,7 +13,7 @@
 	exp_required_type = EXP_TYPE_CREW
 	exp_granted_type = EXP_TYPE_CREW
 
-	paycheck = PAYCHECK_HARD
+	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_SEC
 
 	outfit = /datum/outfit/job/brigoff
@@ -36,7 +36,7 @@
 	rpg_title = "Bailiff"
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
 
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 
 /datum/job/brigoff/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
@@ -55,14 +55,14 @@
 	shoes = /obj/item/clothing/shoes/laceup
 	ears = /obj/item/radio/headset/headset_sec
 	glasses = /obj/item/clothing/glasses/sunglasses
-	backpack_contents = list(/obj/item/melee/baton, /obj/item/restraints/handcuffs = 2, /obj/item/gun/energy/taser/armadyne)
+	backpack_contents = list(/obj/item/melee/baton/security/loaded/departmental/prison, /obj/item/restraints/handcuffs = 2, /obj/item/clothing/mask/whistle, /obj/item/gun/energy/disabler)
 	implants = list(/obj/item/implant/mindshield)
-	backpack = /obj/item/storage/backpack/security/peacekeeper
-	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
-	duffelbag = /obj/item/storage/backpack/duffelbag/sec/peacekeeper
+	backpack = /obj/item/storage/backpack/security
+	satchel = /obj/item/storage/backpack/satchel/sec
+	duffelbag = /obj/item/storage/backpack/duffelbag/sec
 	head = /obj/item/clothing/head/brigoff
 	box = /obj/item/storage/box/survival/security
-	belt = /obj/item/pda/security
+	belt = /obj/item/modular_computer/tablet/pda/security
 
 	id_trim = /datum/id_trim/job/brigoff
 

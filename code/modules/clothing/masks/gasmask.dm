@@ -100,7 +100,6 @@
 	icon_state = "gas_atmos"
 	inhand_icon_state = "gas_atmos"
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 20, ACID = 10)
-	w_class = WEIGHT_CLASS_SMALL
 	permeability_coefficient = 0.001
 	resistance_flags = FIRE_PROOF
 	max_filters = 3
@@ -157,6 +156,8 @@
 	icon_state = "plaguedoctor"
 	inhand_icon_state = "gas_mask"
 	armor = list(MELEE = 0, BULLET = 0, LASER = 2,ENERGY = 2, BOMB = 0, BIO = 75, FIRE = 0, ACID = 0)
+	has_fov = FALSE
+	flags_cover = MASKCOVERSEYES
 
 /obj/item/clothing/mask/gas/syndicate
 	name = "syndicate mask"
@@ -165,6 +166,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	strip_delay = 60
 	w_class = WEIGHT_CLASS_SMALL
+	has_fov = FALSE
 
 /obj/item/clothing/mask/gas/clown_hat
 	name = "clown wig and mask"
@@ -270,7 +272,21 @@
 		return FALSE
 
 	if(src && choice && !user.incapacitated() && in_range(user,src))
+		// SKYRAT ADDITION - More mask variations
+		var/mob/living/carbon/human/human_user = user
+		if(human_user.dna.species.mutant_bodyparts["snout"])
+			icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
+			worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask_muzzled.dmi'
+			var/list/avian_snouts = list("Beak", "Big Beak", "Corvid Beak")
+			if(human_user.dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME] in avian_snouts)
+				icon_state = "[options[choice]]_b"
+		else
+			icon = 'icons/obj/clothing/masks.dmi'
+			worn_icon = 'icons/mob/clothing/mask.dmi'
+			icon_state = options[choice]
+		/* SKYRAT ADDITION END
 		icon_state = options[choice]
+		*/
 		user.update_inv_wear_mask()
 		update_action_buttons()
 		to_chat(user, span_notice("Your Mime Mask has now morphed into [choice]!"))
@@ -284,6 +300,7 @@
 	inhand_icon_state = "monkeymask"
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FLAMMABLE
+	has_fov = FALSE
 
 /obj/item/clothing/mask/gas/sexymime
 	name = "sexy mime mask"
@@ -301,6 +318,8 @@
 	desc = "Beep boop."
 	icon_state = "death"
 	resistance_flags = FLAMMABLE
+	has_fov = FALSE
+	flags_cover = MASKCOVERSEYES
 
 /obj/item/clothing/mask/gas/owl_mask
 	name = "owl mask"
@@ -309,11 +328,14 @@
 	clothing_flags = MASKINTERNALS
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FLAMMABLE
+	has_fov = FALSE
 
 /obj/item/clothing/mask/gas/carp
 	name = "carp mask"
 	desc = "Gnash gnash."
 	icon_state = "carp_mask"
+	has_fov = FALSE
+	flags_cover = MASKCOVERSEYES
 
 /obj/item/clothing/mask/gas/tiki_mask
 	name = "tiki mask"
@@ -322,6 +344,8 @@
 	inhand_icon_state = "tiki_eyebrow"
 	custom_materials = list(/datum/material/wood = MINERAL_MATERIAL_AMOUNT * 1.25)
 	resistance_flags = FLAMMABLE
+	has_fov = FALSE
+	flags_cover = MASKCOVERSEYES
 	max_integrity = 100
 	actions_types = list(/datum/action/item_action/adjust)
 	dog_fashion = null
@@ -367,6 +391,7 @@
 	inhand_icon_state = "hunter"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	flags_inv = HIDEFACIALHAIR|HIDEFACE|HIDEEYES|HIDEEARS|HIDEHAIR|HIDESNOUT
+	has_fov = FALSE
 
 /obj/item/clothing/mask/gas/driscoll
 	name = "driscoll mask"
@@ -375,3 +400,20 @@
 	flags_inv = HIDEFACIALHAIR
 	w_class = WEIGHT_CLASS_NORMAL
 	inhand_icon_state = "driscoll_mask"
+
+/obj/item/clothing/mask/gas/prop
+	name = "prop gas mask"
+	desc = "A prop gas mask designed for appearance. Unlike a normal gas mask this does not filter gasses or protect against pepper spray."
+	icon_state = "gas_prop"
+	inhand_icon_state = "gas_prop"
+	flags_cover = MASKCOVERSMOUTH
+	has_fov = FALSE
+
+/obj/item/clothing/mask/gas/atmosprop
+	name = "prop atmospheric gas mask"
+	desc = "A prop atmospheric gas mask designed for appearance. Unlike a normal atmospheric gas mask this does not filter gasses or protect against pepper spray."
+	worn_icon_state = "gas_prop_atmos"
+	icon_state = "gas_atmos"
+	inhand_icon_state = "gas_atmos"
+	flags_cover = MASKCOVERSMOUTH
+	has_fov = FALSE

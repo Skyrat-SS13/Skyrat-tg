@@ -49,8 +49,8 @@
 	ammo_x_offset = 2
 
 /obj/item/gun/ballistic/shotgun/riot
-	name = "\improper AS-1 'Peacekeeper' shotgun"
-	desc = "An Aussec-made 12 gauge riot control pump shotgun fitted with an extended tube and a fixed tactical stock."
+	name = "\improper Peacekeeper shotgun"
+	desc = "A Nanotrasen-made riot control shotgun fitted with an extended tube and a fixed tactical stock."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
@@ -65,8 +65,8 @@
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/shotgun_light.ogg'
 
 /obj/item/gun/ballistic/shotgun/automatic/combat
-	name = "\improper PK12 Mod 2 shotgun"
-	desc = "A modified Aussec Peacekeeper shotgun, this one has a pistol grip with a guard, hardlight front sight, and fitted with a heavier pin and parts for sustained fire, sadly it cannot be suppressed like its cousin. Atleast you can slamfire with it."
+	name = "\improper Peacekeeper combat shotgun"
+	desc = "A semi-automatic Nanotrasen Peacekeeper shotgun with tactical furnishing and heavier internals meant for sustained fire. Lacks a threaded barrel."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
@@ -110,6 +110,11 @@
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 	worn_icon_state = "gun"
 	worn_icon = null
+
+/obj/item/gun/energy/laser/thermal
+	icon = 'icons/obj/guns/energy.dmi'
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 
 /obj/item/gun/energy/lasercannon
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
@@ -207,6 +212,7 @@
 	can_suppress = TRUE
 	can_unsuppress = TRUE
 	weapon_weight = WEAPON_LIGHT
+	company_flag = COMPANY_SCARBOROUGH
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular/blackmarket  //Normal sniper but epic
 	name = "SA-107 anti-materiel rifle"
@@ -226,9 +232,6 @@
 	mag_type = /obj/item/ammo_box/magazine/sniper_rounds
 	fire_delay = 55 //Slightly smaller than standard sniper
 	burst_size = 1
-	zoomable = TRUE
-	zoom_amt = 10 //Long range, enough to see in front of you, but no tiles behind you.
-	zoom_out_amt = 5
 	slot_flags = ITEM_SLOT_BACK
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC) //SKYRAT EDIT CHANGE
 	mag_display = TRUE
@@ -269,6 +272,7 @@
 	name = "\improper Mosin Nagant M39"
 	desc = "A freshly-produced Mosin Nagant variant issued by Nanotrasen for their interns. You would rather not damage it."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+	company_flag = COMPANY_NANOTRASEN
 
 /obj/item/gun/ballistic/rifle/boltaction/brand_new/quartermaster
 	name = "\improper FTU 'Archangel' Mosin"
@@ -280,6 +284,7 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	can_be_sawn_off = FALSE
 	realistic = TRUE
+	company_flag = null //Cargonia's own
 
 /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	name = "mosin nagant extended internal magazine"
@@ -299,6 +304,7 @@
 	desc = "A bullpup three-round burst .45 PDW with an eerily familiar design. It has a foldable stock and a dot sight."
 	icon_state = "cmg1"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+	company_flag = COMPANY_NANOTRASEN
 
 /obj/item/gun/ballistic/automatic/ar/modular/model75
 	name = "\improper NT ARG-75"
@@ -309,6 +315,7 @@
 	fire_delay = 5
 	fire_sound_volume = 90
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
+	company_flag = COMPANY_NANOTRASEN
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
 	name = "7.62mm straight magazine"

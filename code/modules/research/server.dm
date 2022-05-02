@@ -40,6 +40,7 @@
 	return ..()
 
 /obj/machinery/rnd/server/RefreshParts()
+	. = ..()
 	var/tot_rating = 0
 	for(var/obj/item/stock_parts/SP in src)
 		tot_rating += SP.rating
@@ -53,15 +54,15 @@
 	return ..()
 
 /obj/machinery/rnd/server/power_change()
-	. = ..()
 	refresh_working()
-	return
+	return ..()
 
 /obj/machinery/rnd/server/proc/refresh_working()
 	if(machine_stat & EMPED || research_disabled || machine_stat & NOPOWER)
 		working = FALSE
 	else
 		working = TRUE
+	update_current_power_usage()
 	update_appearance()
 
 /obj/machinery/rnd/server/emp_act()
@@ -76,8 +77,9 @@
 	set_machine_stat(machine_stat & ~EMPED)
 	refresh_working()
 
-/obj/machinery/rnd/server/proc/toggle_disable()
+/obj/machinery/rnd/server/proc/toggle_disable(mob/user)
 	research_disabled = !research_disabled
+	log_game("[key_name(user)] [research_disabled ? "shut off" : "turned on"] [src] at [loc_name(user)]")
 	refresh_working()
 
 /obj/machinery/rnd/server/proc/get_env_temp()
@@ -151,7 +153,7 @@
 	if (href_list["toggle"])
 		if(allowed(usr) || obj_flags & EMAGGED)
 			var/obj/machinery/rnd/server/S = locate(href_list["toggle"]) in SSresearch.servers
-			S.toggle_disable()
+			S.toggle_disable(usr)
 		else
 			to_chat(usr, span_danger("Access Denied."))
 
@@ -195,7 +197,7 @@
 /obj/machinery/computer/rdservercontrol/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
-	playsound(src, "sparks", 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+	playsound(src, SFX_SPARKS, 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	obj_flags |= EMAGGED
 	to_chat(user, span_notice("You disable the security protocols."))
 

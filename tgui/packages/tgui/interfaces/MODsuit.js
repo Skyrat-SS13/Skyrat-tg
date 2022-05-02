@@ -89,6 +89,7 @@ const RadCounter = (props, context) => {
     active,
     userradiated,
     usertoxins,
+    usermaxtoxins,
     threatlevel,
   } = props;
   return (
@@ -101,7 +102,7 @@ const RadCounter = (props, context) => {
       <Stack.Item grow>
         <Section title="Toxins Level">
           <ProgressBar
-            value={active ? usertoxins / 100 : 0}
+            value={active ? usertoxins / usermaxtoxins : 0}
             ranges={{
               good: [-Infinity, 0.2],
               average: [0.2, 0.5],
@@ -120,8 +121,90 @@ const RadCounter = (props, context) => {
   );
 };
 
+const HealthAnalyzer = (props, context) => {
+  const {
+    active,
+    userhealth,
+    usermaxhealth,
+    userbrute,
+    userburn,
+    usertoxin,
+    useroxy,
+  } = props;
+  return (
+    <>
+      <Section title="Health">
+        <ProgressBar
+          value={active ? userhealth / usermaxhealth : 0}
+          ranges={{
+            good: [0.5, Infinity],
+            average: [0.2, 0.5],
+            bad: [-Infinity, 0.2],
+          }} >
+          <AnimatedNumber value={userhealth} />
+        </ProgressBar>
+      </Section>
+      <Stack fill textAlign="center">
+        <Stack.Item grow>
+          <Section title="Brute">
+            <ProgressBar
+              value={active ? userbrute / usermaxhealth : 0}
+              ranges={{
+                good: [-Infinity, 0.2],
+                average: [0.2, 0.5],
+                bad: [0.5, Infinity],
+              }} >
+              <AnimatedNumber value={userbrute} />
+            </ProgressBar>
+          </Section>
+        </Stack.Item>
+        <Stack.Item grow>
+          <Section title="Burn">
+            <ProgressBar
+              value={active ? userburn / usermaxhealth : 0}
+              ranges={{
+                good: [-Infinity, 0.2],
+                average: [0.2, 0.5],
+                bad: [0.5, Infinity],
+              }} >
+              <AnimatedNumber value={userburn} />
+            </ProgressBar>
+          </Section>
+        </Stack.Item>
+        <Stack.Item grow>
+          <Section title="Toxin">
+            <ProgressBar
+              value={active ? usertoxin / usermaxhealth : 0}
+              ranges={{
+                good: [-Infinity, 0.2],
+                average: [0.2, 0.5],
+                bad: [0.5, Infinity],
+              }} >
+              <AnimatedNumber value={usertoxin} />
+            </ProgressBar>
+          </Section>
+        </Stack.Item>
+        <Stack.Item grow>
+          <Section title="Suffocation">
+            <ProgressBar
+              value={active ? useroxy / usermaxhealth : 0}
+              ranges={{
+                good: [-Infinity, 0.2],
+                average: [0.2, 0.5],
+                bad: [0.5, Infinity],
+              }} >
+              <AnimatedNumber value={useroxy} />
+            </ProgressBar>
+          </Section>
+        </Stack.Item>
+      </Stack>
+    </>
+  );
+};
+
 const ID2MODULE = {
   rad_counter: RadCounter,
+  health_analyzer: HealthAnalyzer,
 };
 
 const LockedInterface = () => (
@@ -209,7 +292,8 @@ const ParametersSection = (props, context) => {
     complexity_max,
     wearer_name,
     wearer_job,
-    AI,
+    pAI, // SKYRAT EDIT - pAIs in MODsuits
+    ispAI, // SKYRAT EDIT - pAIs in MODsuits
   } = data;
   const status = malfunctioning
     ? 'Malfunctioning' : active
@@ -228,7 +312,7 @@ const ParametersSection = (props, context) => {
           {status}
         </LabeledList.Item>
         <LabeledList.Item
-          label="Lock"
+          label="ID Lock"
           buttons={
             <Button
               icon={locked ? "lock-open" : "lock"}
@@ -249,8 +333,15 @@ const ParametersSection = (props, context) => {
         <LabeledList.Item label="Occupant">
           {wearer_name}, {wearer_job}
         </LabeledList.Item>
-        <LabeledList.Item label="Onboard AI">
-          {AI || 'None'}
+        <LabeledList.Item label="Onboard pAI" buttons={
+          // SKYRAT EDIT START - pAIs in MODsuits
+          (pAI && !ispAI) ? <Button
+            icon="eject"
+            content="Eject pAI"
+            onClick={() => act('remove_pai')}
+          /> : <> </>
+        } >
+          {pAI || 'None'/* SKYRAT EDIT END */}
         </LabeledList.Item>
       </LabeledList>
     </Section>
@@ -266,7 +357,7 @@ const HardwareSection = (props, context) => {
     chestplate,
     gauntlets,
     boots,
-    cell,
+    core,
     charge,
   } = data;
   return (
@@ -290,13 +381,13 @@ const HardwareSection = (props, context) => {
           </LabeledList.Item>
         </LabeledList>
       </Collapsible>
-      <Collapsible title="Cell">
-        {cell && (
+      <Collapsible title="Core">
+        {core && (
           <LabeledList>
-            <LabeledList.Item label="Cell Type">
-              {cell}
+            <LabeledList.Item label="Core Type">
+              {core}
             </LabeledList.Item>
-            <LabeledList.Item label="Cell Charge">
+            <LabeledList.Item label="Core Charge">
               <ProgressBar
                 value={charge / 100}
                 content={charge + '%'}
@@ -308,7 +399,7 @@ const HardwareSection = (props, context) => {
             </LabeledList.Item>
           </LabeledList>
         ) || (
-          <Box color="bad" textAlign="center">No Cell Detected</Box>
+          <Box color="bad" textAlign="center">No Core Detected</Box>
         )}
       </Collapsible>
     </Section>
@@ -446,11 +537,18 @@ const ModuleSection = (props, context) => {
                           disabled={!module.module_type} />
                         <Button
                           onClick={() => setConfigureState(module.ref)}
-                          selected={configureState === module.ref}
                           icon="cog"
+                          selected={configureState === module.ref}
                           tooltip="Configure"
                           tooltipPosition="left"
                           disabled={module.configuration_data.length === 0} />
+                        <Button
+                          onClick={() => act('pin', { "ref": module.ref })}
+                          icon="thumbtack"
+                          selected={module.pinned}
+                          tooltip="Pin"
+                          tooltipPosition="left"
+                          disabled={!module.module_type} />
                       </Table.Cell>
                     </Table.Row>
                   </Table>

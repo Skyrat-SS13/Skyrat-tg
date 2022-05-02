@@ -1,15 +1,17 @@
 /datum/religion_rites
-/// name of the religious rite
+	/// name of the religious rite
 	var/name = "religious rite"
-/// Description of the religious rite
+	/// Description of the religious rite
 	var/desc = "immm gonna rooon"
-/// length it takes to complete the ritual
+	/// length it takes to complete the ritual
 	var/ritual_length = (10 SECONDS) //total length it'll take
-/// list of invocations said (strings) throughout the rite
+	/// list of invocations said (strings) throughout the rite
 	var/list/ritual_invocations //strings that are by default said evenly throughout the rite
-/// message when you invoke
+	/// message when you invoke
 	var/invoke_msg
 	var/favor_cost = 0
+	/// does the altar auto-delete the rite
+	var/auto_delete = TRUE
 
 /datum/religion_rites/New()
 	. = ..()
@@ -44,12 +46,12 @@
 			user.say(i)
 			first_invoke = FALSE
 			continue
-		if(!ritual_invocations.len) //we divide so we gotta protect
+		if(!length(ritual_invocations)) //we divide so we gotta protect
 			return FALSE
-		if(!do_after(user, target = user, delay = ritual_length/ritual_invocations.len))
+		if(!do_after(user, target = user, delay = ritual_length/length(ritual_invocations)))
 			return FALSE
 		user.say(i)
-	if(!do_after(user, target = user, delay = ritual_length/ritual_invocations.len)) //because we start at 0 and not the first fraction in invocations, we still have another fraction of ritual_length to complete
+	if(!do_after(user, target = user, delay = ritual_length/length(ritual_invocations))) //because we start at 0 and not the first fraction in invocations, we still have another fraction of ritual_length to complete
 		return FALSE
 	if(invoke_msg)
 		user.say(invoke_msg)
@@ -369,7 +371,7 @@
 		playsound(get_turf(religious_tool), 'sound/effects/pray.ogg', 50, TRUE)
 		joining_now.gib(TRUE)
 		return FALSE
-	var/datum/mutation/human/honorbound/honormut = user.dna.check_mutation(HONORBOUND)
+	var/datum/mutation/human/honorbound/honormut = user.dna.check_mutation(/datum/mutation/human/honorbound)
 	if(joining_now in honormut.guilty)
 		honormut.guilty -= joining_now
 	GLOB.religious_sect.adjust_favor(200, user)
@@ -389,14 +391,14 @@
 /datum/religion_rites/forgive/perform_rite(mob/living/carbon/human/user, atom/religious_tool)
 	if(!ishuman(user))
 		return FALSE
-	var/datum/mutation/human/honorbound/honormut = user.dna.check_mutation(HONORBOUND)
+	var/datum/mutation/human/honorbound/honormut = user.dna.check_mutation(/datum/mutation/human/honorbound)
 	if(!honormut)
 		return FALSE
-	if(!honormut.guilty.len)
+	if(!length(honormut.guilty))
 		to_chat(user, span_warning("[GLOB.deity] is holding no grudges to forgive."))
 		return FALSE
-	var/forgiven_choice = tgui_input_list(user, "Choose one of [GLOB.deity]'s guilty to forgive.", "Forgive", honormut.guilty)
-	if(!forgiven_choice)
+	var/forgiven_choice = tgui_input_list(user, "Choose one of [GLOB.deity]'s guilty to forgive", "Forgive", honormut.guilty)
+	if(isnull(forgiven_choice))
 		return FALSE
 	who = forgiven_choice
 	return ..()
@@ -405,7 +407,7 @@
 	..()
 	if(in_range(user, religious_tool))
 		return FALSE
-	var/datum/mutation/human/honorbound/honormut = user.dna.check_mutation(HONORBOUND)
+	var/datum/mutation/human/honorbound/honormut = user.dna.check_mutation(/datum/mutation/human/honorbound)
 	if(!honormut) //edge case
 		return FALSE
 	honormut.guilty -= who
@@ -660,7 +662,7 @@
 		if(!(unfiltered_area.area_flags & HIDDEN_AREA))
 			filtered += unfiltered_area
 	area_instance = tgui_input_list(user, "Choose an area to mark as an arena!", "Arena Declaration", filtered)
-	if(!area_instance)
+	if(isnull(area_instance))
 		return FALSE
 	. = ..()
 

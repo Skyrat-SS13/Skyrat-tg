@@ -56,28 +56,21 @@
 		deltimer(flicker_timer)
 		flicker_timer = null
 
-/obj/machinery/light/proc/flicker_on()
+	set_on(has_power())
+
+/obj/machinery/light/proc/alter_flicker(enable = TRUE)
 	if(!constant_flickering)
 		return
-
-	var/area/A = get_area(src)
-
-	if(A.lightswitch && A.power_light)
-		on = TRUE
+	if(has_power())
+		on = enable
 		update(FALSE, TRUE, FALSE)
 
+/obj/machinery/light/proc/flicker_on()
+	alter_flicker(TRUE)
 	flicker_timer = addtimer(CALLBACK(src, .proc/flicker_off), rand(5, 10))
 
 /obj/machinery/light/proc/flicker_off()
-	if(!constant_flickering)
-		return
-
-	var/area/A = get_area(src)
-
-	if(A.lightswitch && A.power_light)
-		on = FALSE
-		update(FALSE, TRUE, FALSE)
-
+	alter_flicker(FALSE)
 	flicker_timer = addtimer(CALLBACK(src, .proc/flicker_on), rand(5, 50))
 
 /obj/machinery/light/proc/firealarm_on()

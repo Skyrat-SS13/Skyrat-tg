@@ -3,9 +3,7 @@
 	desc = "It produces items using iron, glass, plastic and maybe some more."
 	icon_state = "autolathe"
 	density = TRUE
-	use_power = IDLE_POWER_USE
-	idle_power_usage = 10
-	active_power_usage = 100
+	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.5
 	circuit = /obj/item/circuitboard/machine/autolathe
 	layer = BELOW_OBJ_LAYER
 
@@ -47,7 +45,6 @@
 /obj/machinery/autolathe/Initialize(mapload)
 	AddComponent(/datum/component/material_container, SSmaterials.materials_by_category[MAT_CATEGORY_ITEM_MATERIAL], 0, MATCONTAINER_EXAMINE, _after_insert = CALLBACK(src, .proc/AfterMaterialInsert))
 	. = ..()
-
 	wires = new /datum/wires/autolathe(src)
 	stored_research = new /datum/techweb/specialized/autounlocking/autolathe
 	matching_designs = list()
@@ -190,7 +187,7 @@
 			for(var/MAT in being_built.materials)
 				total_amount += being_built.materials[MAT]
 
-			var/power = max(2000, (total_amount)*multiplier/5) //Change this to use all materials
+			var/power = max(active_power_usage, (total_amount)*multiplier/5) //Change this to use all materials
 
 			var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
 
@@ -207,7 +204,7 @@
 							list_to_show += i
 
 					used_material = tgui_input_list(usr, "Choose [used_material]", "Custom Material", sort_list(list_to_show, /proc/cmp_typepaths_asc))
-					if(!used_material)
+					if(isnull(used_material))
 						return //Didn't pick any material, so you can't build shit either.
 					custom_materials[used_material] += amount_needed
 
@@ -230,15 +227,15 @@
 	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
 	materials.retrieve_all()
 
-/obj/machinery/autolathe/attackby(obj/item/O, mob/living/user, params)
+/obj/machinery/autolathe/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(busy)
 		balloon_alert(user, "it's busy!")
 		return TRUE
 
-	if(default_deconstruction_crowbar(O))
+	if(default_deconstruction_crowbar(attacking_item))
 		return TRUE
 
-	if(panel_open && is_wire_tool(O))
+	if(panel_open && is_wire_tool(attacking_item))
 		wires.interact(user)
 		return TRUE
 
@@ -248,13 +245,13 @@
 	if(machine_stat)
 		return TRUE
 
-	if(istype(O, /obj/item/disk/design_disk))
-		user.visible_message(span_notice("[user] begins to load \the [O] in \the [src]..."),
+	if(istype(attacking_item, /obj/item/disk/design_disk))
+		user.visible_message(span_notice("[user] begins to load \the [attacking_item] in \the [src]..."),
 			balloon_alert(user, "uploading design..."),
 			span_hear("You hear the chatter of a floppy drive."))
 		busy = TRUE
 		if(do_after(user, 14.4, target = src))
-			var/obj/item/disk/design_disk/disky = O
+			var/obj/item/disk/design_disk/disky = attacking_item
 			var/list/not_imported
 			for(var/datum/design/blueprint as anything in disky.blueprints)
 				if(!blueprint)
@@ -264,13 +261,20 @@
 				else
 					LAZYADD(not_imported, blueprint.name)
 			if(not_imported)
-				to_chat(user, span_warning("The following design[not_imported.len > 1 ? "s" : ""] couldn't be imported: [english_list(not_imported)]"))
+				to_chat(user, span_warning("The following design[length(not_imported) > 1 ? "s" : ""] couldn't be imported: [english_list(not_imported)]"))
 		busy = FALSE
 		return TRUE
 
 	if(panel_open)
 		balloon_alert(user, "close the panel first!")
 		return FALSE
+
+	if(istype(attacking_item, /obj/item/storage/bag/trash))
+		for(var/obj/item/content_item in attacking_item.contents)
+			if(!do_after(user, 0.5 SECONDS, src))
+				return FALSE
+			attackby(content_item, user)
+		return TRUE
 
 	return ..()
 
@@ -300,7 +304,7 @@
 	else
 		flick("autolathe_o", src)//plays metal insertion animation
 
-		use_power(min(1000, amount_inserted / 100))
+		use_power(min(active_power_usage * 0.25, amount_inserted / 100))
 
 /obj/machinery/autolathe/proc/make_item(power, list/materials_used, list/picked_materials, multiplier, coeff, is_stack, mob/user)
 	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
@@ -330,6 +334,7 @@
 	busy = FALSE
 
 /obj/machinery/autolathe/RefreshParts()
+	. = ..()
 	var/mat_capacity = 0
 	for(var/obj/item/stock_parts/matter_bin/new_matter_bin in component_parts)
 		mat_capacity += new_matter_bin.rating*75000
@@ -348,7 +353,7 @@
 		. += span_notice("The status display reads: Storing up to <b>[materials.max_amount]</b> material units.<br>Material consumption at <b>[creation_efficiency*100]%</b>.")
 
 /obj/machinery/autolathe/proc/can_build(datum/design/D, amount = 1)
-	if(D.make_reagents.len)
+	if(length(D.make_reagents))
 		return FALSE
 
 	var/coeff = (ispath(D.build_path, /obj/item/stack) ? 1 : creation_efficiency)

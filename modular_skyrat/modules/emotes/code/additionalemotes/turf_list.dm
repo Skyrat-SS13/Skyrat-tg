@@ -1,7 +1,10 @@
+#define EXTRA_ABOVE_MOB_LAYER ABOVE_MOB_LAYER + 0.01
+
 /obj/structure/mark_turf
 	name = "turf"
 	icon = 'modular_skyrat/master_files/icons/effects/turf_effects.dmi'
 	desc = "It's turf." //Debug stuff, won't be seen
+	layer = ABOVE_OBJ_LAYER
 	anchored = TRUE
 	density = FALSE
 	max_integrity = 15
@@ -27,15 +30,15 @@
 			name = "puddle of water"
 			desc = "It's a patch of water."
 			icon_state = "water"
-			src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects.dmi', "water_top", ABOVE_MOB_LAYER))
-			flick_overlay_static(image('modular_skyrat/modules/liquids/icons/obj/effects/splash.dmi', "splash", ABOVE_MOB_LAYER), src, 20)
-			playsound(get_turf(src), 'modular_skyrat/sound/effects/watersplash.ogg', 25, TRUE)
+			src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects.dmi', "water_top", EXTRA_ABOVE_MOB_LAYER))
+			flick_overlay_static(image('modular_skyrat/modules/liquids/icons/obj/effects/splash.dmi', "splash", EXTRA_ABOVE_MOB_LAYER), src, 20)
+			playsound(get_turf(src), 'modular_skyrat/master_files/sound/effects/watersplash.ogg', 25, TRUE)
 
 		if("smoke")
 			name = "blazing mist"
 			desc = "It's a storm of smoke."
 			icon_state = "smoke"
-			src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects.dmi', "smoke_top", ABOVE_MOB_LAYER))
+			src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects.dmi', "smoke_top", EXTRA_ABOVE_MOB_LAYER))
 			playsound(get_turf(src), 'sound/effects/wounds/sizzle2.ogg', 25, TRUE)
 
 		if("xenoresin")
@@ -54,7 +57,7 @@
 			name = "physical hologram"
 			desc = "It's a hologram of a barstool."
 			icon_state = "holoseat"
-			src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects.dmi', "holoseat_top", ABOVE_MOB_LAYER))
+			src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects.dmi', "holoseat_top", EXTRA_ABOVE_MOB_LAYER))
 			playsound(get_turf(src), 'sound/misc/compiler-stage2.ogg', 25, TRUE)
 
 		if("slime")
@@ -65,13 +68,13 @@
 			switch(rand(1,1000))
 				if(-INFINITY to 400)
 					icon_state = "slimeobj1"
-					src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects.dmi', "slimeobj1_top", ABOVE_MOB_LAYER))
+					src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects.dmi', "slimeobj1_top", EXTRA_ABOVE_MOB_LAYER))
 				if(400 to 800)
 					icon_state = "slimeobj2"
-					src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects.dmi', "slimeobj2_top", ABOVE_MOB_LAYER))
+					src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects.dmi', "slimeobj2_top", EXTRA_ABOVE_MOB_LAYER))
 				if(800 to 980)
 					icon_state = "slimeobj3"
-					src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects.dmi', "slimeobj3_top", ABOVE_MOB_LAYER))
+					src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects.dmi', "slimeobj3_top", EXTRA_ABOVE_MOB_LAYER))
 				if(980 to INFINITY)
 					name = "slime bust" //rare obj/item/statuebust
 					desc = "A priceless slime bust, the kind that belongs in a museum."
@@ -86,7 +89,7 @@
 			icon = 'modular_skyrat/master_files/icons/effects/turf_effects_64.dmi'
 			icon_state = "dust"
 			pixel_x = -16
-			src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "dust_top", ABOVE_MOB_LAYER))
+			src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "dust_top", EXTRA_ABOVE_MOB_LAYER))
 			playsound(get_turf(src), 'modular_skyrat/master_files/sound/effects/wing_flap.ogg', 25, TRUE)
 
 		if("borgmat")
@@ -105,8 +108,9 @@
 			icon = 'modular_skyrat/master_files/icons/effects/turf_effects_64.dmi'
 			icon_state = "tails"
 			pixel_x = -16 //correcting the offset for 64
-			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "tails_top", ABOVE_MOB_LAYER)
+			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "tails_top", EXTRA_ABOVE_MOB_LAYER)
 			overlay.appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
+			overlay.plane = GAME_PLANE_UPPER
 			src.add_overlay(overlay)
 			playsound(get_turf(src), 'sound/weapons/thudswoosh.ogg', 25, TRUE)
 
@@ -116,8 +120,9 @@
 			icon = 'modular_skyrat/master_files/icons/effects/turf_effects_64.dmi'
 			icon_state = "naga"
 			pixel_x = -16
-			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "naga_top", ABOVE_MOB_LAYER)
+			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "naga_top", EXTRA_ABOVE_MOB_LAYER)
 			overlay.appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
+			overlay.plane = GAME_PLANE_UPPER
 			src.add_overlay(overlay)
 			playsound(get_turf(src), 'modular_skyrat/modules/emotes/sound/emotes/hiss.ogg', 25, TRUE)
 
@@ -190,3 +195,5 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		human_user.update_mutant_bodyparts()
+
+#undef EXTRA_ABOVE_MOB_LAYER

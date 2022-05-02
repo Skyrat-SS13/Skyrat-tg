@@ -530,7 +530,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 			to_chat(M, span_warning("[parent] seems to be locked!"))
 			return FALSE
 		if(dump_destination.storage_contents_dump_act(src, M))
-			playsound(A, "rustle", 50, TRUE, -5)
+			playsound(A, SFX_RUSTLE, 50, TRUE, -5)
 			A.do_squish(0.8, 1.2) //SKYRAT EDIT ADDITION - AESTHETICS
 			return TRUE
 	return FALSE
@@ -545,10 +545,8 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 /datum/component/storage/proc/attackby(datum/source, obj/item/I, mob/M, params)
 	SIGNAL_HANDLER
 
-	if(istype(I, /obj/item/hand_labeler))
-		var/obj/item/hand_labeler/labeler = I
-		if(labeler.mode)
-			return FALSE
+	if(!I.attackby_storage_insert(src, parent, M))
+		return FALSE
 	. = TRUE //no afterattack
 	if(iscyborg(M))
 		return
@@ -615,7 +613,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		return
 	if(A.loc != M)
 		return
-	//playsound(A, "rustle", 50, TRUE, -5) //SKYRAT EDIT REMOVAL - AESTHETICS
+	//playsound(A, SFX_RUSTLE, 50, TRUE, -5) //SKYRAT EDIT REMOVAL - AESTHETICS
 	if(istype(over_object, /atom/movable/screen/inventory/hand))
 		var/atom/movable/screen/inventory/hand/H = over_object
 		M.putItemFromInventoryInHandIfPossible(A, H.held_index)
@@ -726,7 +724,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	if(silent && !override)
 		return
 	if(rustle_sound)
-		playsound(parent, "rustle", 50, TRUE, -5)
+		playsound(parent, SFX_RUSTLE, 50, TRUE, -5)
 	var/atom/A = parent  //SKYRAT EDIT ADDITION - AESTHETICS
 	A.do_squish() //SKYRAT EDIT ADDITION - AESTHETICS
 	for(var/mob/viewing in viewers(user, null))
@@ -824,7 +822,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		return
 
 	if(rustle_sound)
-		playsound(A, "rustle", 50, TRUE, -5)
+		playsound(A, SFX_RUSTLE, 50, TRUE, -5)
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -873,7 +871,10 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 
 
 /datum/component/storage/proc/open_storage(mob/user)
-	if(!isliving(user) || !user.CanReach(parent) || user.incapacitated())
+	if(!user.CanReach(parent))
+		user.balloon_alert(user, "can't reach!")
+		return FALSE
+	if(!isliving(user) || user.incapacitated())
 		return FALSE
 	if(locked)
 		to_chat(user, span_warning("[parent] seems to be locked!"))
@@ -884,7 +885,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	if(!quickdraw)
 		A.add_fingerprint(user)
 		user_show_to_mob(user)
-		playsound(A, "rustle", 50, TRUE, -5)
+		playsound(A, SFX_RUSTLE, 50, TRUE, -5)
 		A.do_jiggle() //SKYRAT EDIT ADDITION - AESTHETICS
 		return
 
@@ -899,6 +900,8 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 
 	if(open_storage(user))
 		return COMPONENT_CANCEL_ATTACK_CHAIN
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		return COMPONENT_SECONDARY_CANCEL_ATTACK_CHAIN
 
 /datum/component/storage/proc/on_open_storage_attackby(datum/source, obj/item/weapon, mob/user, params)
 	SIGNAL_HANDLER

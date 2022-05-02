@@ -1,5 +1,7 @@
 /obj/machinery/door/firedoor/AltClick(mob/user)
 	. = ..()
+	if(!user.canUseTopic(src, BE_CLOSE))
+		return
 	try_manual_override(user)
 
 /obj/machinery/door/firedoor/examine(mob/user)

@@ -25,24 +25,26 @@
 	var/list/allowed_containers = list(/obj/item/reagent_containers/glass/vial/small)
 	/// Is the hypospray only able to use small vials. Relates to the loaded overlays
 	var/small_only = TRUE
-	//Inject or spray?
+	/// Inject or spray?
 	var/mode = HYPO_INJECT
 	var/obj/item/reagent_containers/glass/vial/vial
-	var/start_vial = /obj/item/reagent_containers/glass/vial/small
-	var/spawnwithvial = TRUE
+	/// If the Hypospray starts with a vial, which vial does it start with?
+	var/start_vial
+	/// Does the Hypospray start with a vial?
+	var/spawnwithvial = FALSE
 
-	//Time taken to inject others
+	/// Time taken to inject others
 	var/inject_wait = WAIT_INJECT
-	//Time taken to spray others
+	/// Time taken to spray others
 	var/spray_wait = WAIT_SPRAY
-	//Time taken to inject self
+	/// Time taken to inject self
 	var/inject_self = SELF_INJECT
-	//Time taken to spray self
+	/// Time taken to spray self
 	var/spray_self = SELF_SPRAY
 
-	//Can you hotswap vials? - now all hyposprays can!
+	/// Can you hotswap vials? - now all hyposprays can!
 	var/quickload = TRUE
-	//Does it penetrate clothing?
+	/// Does it penetrate clothing?
 	var/penetrates = null
 
 /obj/item/hypospray/mkii/cmo
@@ -52,11 +54,13 @@
 	desc = "The deluxe hypospray can take larger 120-unit vials. It also acts faster and can deliver more reagents per spray."
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	start_vial = /obj/item/reagent_containers/glass/vial/large/deluxe
+	spawnwithvial = TRUE
 	small_only = FALSE
 	inject_wait = DELUXE_WAIT_INJECT
 	spray_wait = DELUXE_WAIT_SPRAY
 	spray_self = DELUXE_SELF_SPRAY
 	inject_self = DELUXE_SELF_INJECT
+	penetrates = INJECT_CHECK_PENETRATE_THICK
 
 /obj/item/hypospray/mkii/Initialize()
 	. = ..()
@@ -201,7 +205,7 @@
 			to_chat(user, span_warning("The limb is missing!"))
 			return
 	//Always log attemped injections for admins
-	var/contained = vial.reagents.log_list()
+	var/contained = vial.reagents.get_reagent_log_string()
 	log_combat(user, injectee, "attemped to inject", src, addition="which had [contained]")
 
 	if(!vial)
@@ -229,7 +233,7 @@
 
 	switch(mode)
 		if(HYPO_INJECT)
-			vial.reagents.trans_to(injectee, vial.amount_per_transfer_from_this)
+			vial.reagents.trans_to(injectee, vial.amount_per_transfer_from_this, methods = INJECT)
 		if(HYPO_SPRAY)
 			vial.reagents.trans_to(injectee, vial.amount_per_transfer_from_this, methods = PATCH)
 

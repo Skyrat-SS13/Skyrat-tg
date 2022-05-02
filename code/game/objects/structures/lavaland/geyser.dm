@@ -178,9 +178,10 @@
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE))
 		return
 
-	var/new_layer = input("Select a layer", "Layer") as null|anything in layers
-	if(new_layer)
-		target_layer = layers[new_layer]
+	var/new_layer = tgui_input_list(user, "Select a layer", "Layer", layers)
+	if(isnull(new_layer))
+		return
+	target_layer = layers[new_layer]
 
 ///A faster reinforced plunger
 /obj/item/plunger/reinforced
@@ -192,4 +193,4 @@
 	plunge_mod = 0.5
 	layer_mode_sprite = "reinforced_plunger_layer"
 
-	custom_premium_price = PAYCHECK_MEDIUM * 8
+	custom_premium_price = PAYCHECK_CREW * 8
