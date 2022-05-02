@@ -172,7 +172,7 @@
 		if(!reagents.has_reagent(R, D.reagents_list[R]*print_quantity/coeff))
 			say("Not enough reagents to complete prototype[print_quantity > 1? "s" : ""].")
 			return FALSE
-/* 	var/total_cost = LATHE_TAX // SKYRAT EDIT BEGIN - Lathe Tax Un-fucking
+/* 	var/total_cost = LATHE_TAX // SKYRAT EDIT BEGIN - Lathe Tax un-scuffing
 	if(is_station_level(z) && isliving(usr)) //We don't block purchases off station Z.
 		var/mob/living/user = usr
 		var/obj/item/card/id/card = user.get_idcard(TRUE)
