@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/scar
 	name = "SCAR-L"
-	desc = "Part of the SCAR family rifles. This one is SCAR-L, which is for 'Light'. Chambered in 5.56."
+	desc = "Part of the SCAR family rifles. This one is SCAR-L, which is for 'Light'. Chambered in .277 Aestus."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns40x32.dmi'
 	icon_state = "scar"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_lefthand.dmi'
