@@ -172,7 +172,7 @@
 		if(!reagents.has_reagent(R, D.reagents_list[R]*print_quantity/coeff))
 			say("Not enough reagents to complete prototype[print_quantity > 1? "s" : ""].")
 			return FALSE
-	var/total_cost = LATHE_TAX
+/* 	var/total_cost = LATHE_TAX // SKYRAT EDIT BEGIN - Lathe Tax Un-fucking
 	if(is_station_level(z) && isliving(usr)) //We don't block purchases off station Z.
 		var/mob/living/user = usr
 		var/obj/item/card/id/card = user.get_idcard(TRUE)
@@ -189,8 +189,8 @@
 		var/mob/living/silicon/robot/borg = usr
 		if(!borg.cell)
 			return
-		borg.cell.use(SILICON_LATHE_TAX)
-
+		borg.cell.use(SILICON_LATHE_TAX) */
+	skyrat_lathe_tax() // SKYRAT EDIT ADDITION
 	materials.mat_container.use_materials(efficient_mats, print_quantity)
 	materials.silo_log(src, "built", -print_quantity, "[D.name]", efficient_mats)
 	for(var/R in D.reagents_list)
