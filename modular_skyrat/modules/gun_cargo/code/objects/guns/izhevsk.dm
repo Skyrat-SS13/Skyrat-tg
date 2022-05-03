@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/ak25
 	name = "\improper AK-25 rifle"
-	desc = "A cheap reproduction of the timeless AK rifle. Cheaper than usual, but expect it to blow up in your hands."
+	desc = "A cheap reproduction of the timeless AK rifle. The price tag is lower than usual, but expect it to blow up in your hands."
 	icon = 'modular_skyrat/modules/gun_cargo/icons/ak25/ak25.dmi'
 	icon_state = "ak25"
 	lefthand_file = 'modular_skyrat/modules/gun_cargo/icons/ak25/ak25_lefthand.dmi'
