@@ -4,6 +4,7 @@
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "extractor"
 	custom_materials = list(/datum/material/iron = 3000, /datum/material/gold = 3000, /datum/material/uranium = 1000, /datum/material/diamond = 1000)
+	/// Our loaded vial.
 	var/obj/item/rna_vial/loaded_vial
 
 /obj/item/rna_extractor/attackby(obj/item/O, mob/living/user)
