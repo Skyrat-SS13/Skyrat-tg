@@ -1950,15 +1950,16 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard)
 "bGh" = (
-/obj/machinery/conveyor/inverted{
-	id = "cargoload"
-	},
 /obj/structure/disposaloutlet{
 	dir = 1;
 	name = "Cargo Deliveries"
 	},
 /obj/structure/disposalpipe/trunk{
 	dir = 8
+	},
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "cargoload"
 	},
 /turf/open/floor/iron/dark,
 /area/cargo/storage)
@@ -2309,16 +2310,15 @@
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
 "bPu" = (
-/obj/machinery/conveyor/inverted{
-	dir = 1;
-	id = "cargoload"
-	},
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/conveyor{
+	id = "cargoload"
 	},
 /turf/open/floor/iron,
 /area/cargo/storage)
@@ -12335,13 +12335,12 @@
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "lcU" = (
-/obj/machinery/conveyor/inverted{
-	dir = 1;
-	id = "cargoload"
-	},
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
+	},
+/obj/machinery/conveyor{
+	id = "cargoload"
 	},
 /turf/open/floor/iron,
 /area/cargo/storage)
@@ -12750,10 +12749,6 @@
 /turf/open/floor/plating,
 /area/maintenance/port)
 "lxv" = (
-/obj/machinery/conveyor/inverted{
-	dir = 1;
-	id = "cargoload"
-	},
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -12763,6 +12758,9 @@
 	name = "cargo camera"
 	},
 /obj/machinery/light/directional/east,
+/obj/machinery/conveyor{
+	id = "cargoload"
+	},
 /turf/open/floor/iron,
 /area/cargo/storage)
 "lxG" = (
