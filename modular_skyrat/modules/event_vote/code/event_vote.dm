@@ -40,21 +40,25 @@
 	var/low_chaos_timer_upper = LOW_CHAOS_TIMER_UPPER
 	/// What was the last chaos level run?
 	var/last_event_chaos_level
+	/// Have we run the low chaos event system, meaning we need reset?
+	var/low_chaos_needs_reset = FALSE
 
 /// Reschedules our low-chaos event timer
 /datum/controller/subsystem/events/proc/reschedule_low_chaos(time)
 	if(time)
 		scheduled_low_chaos = world.time + time
 	else
-		scheduled_low_chaos = world.time + rand(low_chaos_timer_lower, low_chaos_timer_upper)
+		scheduled_low_chaos = scheduled * 0.5 // We want it to be perfectly in the middle!
+	low_chaos_needs_reset = FALSE
 
 /// Triggers a random low chaos event
 /datum/controller/subsystem/events/proc/triger_low_chaos_event()
-	if(vote_in_progress) // No two events at once.
+	if(vote_in_progress || low_chaos_needs_reset) // No two events at once.
 		return
 	for(var/datum/round_event_control/preset/preset_event in control)
 		if(preset_event.selectable_chaos_level == EVENT_CHAOS_LOW)
 			preset_event.runEvent(TRUE)
+			low_chaos_needs_reset = TRUE
 			return
 
 /// Starts a vote.
@@ -213,6 +217,8 @@
 				vote_message(iterating_user, "No votes cast, spawning random event!")
 		reset()
 		spawnEvent()
+		if(CONFIG_GET(flag/low_chaos_event_system))
+			reschedule_low_chaos()
 		return
 
 	var/list/event_weighted_list = list() //We convert the list of votes into a weighted list.
@@ -266,6 +272,8 @@
 
 	last_event_chaos_level = winner.chaos_level
 	winner.runEvent(TRUE)
+	if(CONFIG_GET(flag/low_chaos_event_system))
+		reschedule_low_chaos()
 	reset()
 
 /// Sends the user a formatted message

@@ -56,7 +56,6 @@ SUBSYSTEM_DEF(events)
 	// SKYRAT EDIT ADDITION
 	if(scheduled_low_chaos <= world.time && CONFIG_GET(flag/low_chaos_event_system))
 		triger_low_chaos_event()
-		reschedule_low_chaos()
 	// SKYRAT EDIT END
 	if(scheduled <= world.time)
 		//spawnEvent() //SKYRAT EDIT CHANGE
