@@ -249,7 +249,7 @@ There are several things that need to be remembered:
 		// SKYRAT EDIT ADDITION
 		if(dna.species.bodytype & BODYTYPE_CUSTOM)
 			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_GLOVES, gloves)
-		// SKYRAT EDIT END86e (Fixes offset features (#66477))
+		// SKYRAT EDIT END
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/hands.dmi'
