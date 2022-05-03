@@ -239,7 +239,7 @@
 	for(var/datum/round_event_control/control in event_weighted_list)
 		log_data += "Event vote: [control.name] | VOTES: [event_weighted_list[control]]"
 		if(admin_only)
-			for(var/admin as anything in votes[iterating_event])
+			for(var/admin as anything in votes[control])
 				log_data += " - - [admin]"
 		total_votes += event_weighted_list[control]
 
