@@ -1,6 +1,8 @@
-#define SUPERMATTER_SURGE_POWER_LIMIT_UPPER 4000
-#define SUPERMATTER_SURGE_POWER_LIMIT_LOWER 200
-#define SUPERMATTER_SURGE_ANNOUNCE_THRESHOLD 800
+#define SUPERMATTER_SURGE_BULLET_ENERGY_FACTOR_UPPER 10
+#define SUPERMATTER_SURGE_BULLET_ENERGY_FACTOR_LOWER 4
+#define SUPERMATTER_SURGE_TIME_UPPER 5 MINUTES
+#define SUPERMATTER_SURGE_TIME_LOWER 2 MINUTES
+#define SUPERMATTER_SURGE_ANNOUNCE_THRESHOLD 6
 
 /**
  * Supermatter Surge
@@ -24,18 +26,25 @@
 
 /datum/round_event/supermatter_surge
 	announceWhen = 1
+	endWhen = SUPERMATTER_SURGE_TIME_LOWER
 	/// How powerful is the supermatter surge going to be? Set in setup.
-	var/surge_power = SUPERMATTER_SURGE_POWER_LIMIT_LOWER
+	var/surge_power = SUPERMATTER_SURGE_BULLET_ENERGY_FACTOR_LOWER
+	var/starting_surge_power = 0
 
 /datum/round_event/supermatter_surge/setup()
-	surge_power = rand(SUPERMATTER_SURGE_POWER_LIMIT_LOWER, SUPERMATTER_SURGE_POWER_LIMIT_UPPER)
+	surge_power = rand(SUPERMATTER_SURGE_BULLET_ENERGY_FACTOR_LOWER, SUPERMATTER_SURGE_BULLET_ENERGY_FACTOR_UPPER)
+	starting_surge_power = GLOB.main_supermatter_engine?.bullet_energy
+	endWhen = rand(SUPERMATTER_SURGE_TIME_LOWER, SUPERMATTER_SURGE_TIME_UPPER)
 
 /datum/round_event/supermatter_surge/announce()
-	if(surge_power > SUPERMATTER_SURGE_ANNOUNCE_THRESHOLD || prob(round(surge_power/8)))
-		priority_announce("Class [round(surge_power/500) + 1] supermatter surge detected. Intervention may be required.", "Anomaly Alert", ANNOUNCER_KLAXON)
+	if(surge_power > SUPERMATTER_SURGE_ANNOUNCE_THRESHOLD || prob(round(surge_power)))
+		priority_announce("Class [surge_power] supermatter surge detected. Intervention may be required.", "Anomaly Alert", ANNOUNCER_KLAXON)
 
 /datum/round_event/supermatter_surge/start()
-	GLOB.main_supermatter_engine?.matter_power += surge_power
+	GLOB.main_supermatter_engine?.bullet_energy *= surge_power
+
+/datum/round_event/supermatter_surge/end()
+	GLOB.main_supermatter_engine?.bullet_energy = starting_surge_power
 
 #undef SUPERMATTER_SURGE_POWER_LIMIT_UPPER
 #undef SUPERMATTER_SURGE_POWER_LIMIT_LOWER
