@@ -66,7 +66,10 @@ SUBSYSTEM_DEF(events)
 			if(CONFIG_GET(flag/events_public_voting))
 				start_player_vote_chaos(FALSE)
 			else
-				start_vote_admin()
+				if(CONFIG_GET(flag/admin_event_uses_chaos))
+					start_vote_admin_chaos()
+				else
+					start_vote_admin()
 		// SKYRAT EDIT END
 		reschedule()
 

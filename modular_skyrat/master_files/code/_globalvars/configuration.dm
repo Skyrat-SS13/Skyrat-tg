@@ -33,3 +33,5 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 
 /datum/config_entry/number/event_frequency_lower
 	default = 15 MINUTES
+
+/datum/config_entry/flag/admin_event_uses_chaos
