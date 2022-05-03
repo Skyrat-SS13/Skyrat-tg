@@ -1,5 +1,6 @@
 #define SUPERMATTER_SURGE_POWER_LIMIT_UPPER 4000
 #define SUPERMATTER_SURGE_POWER_LIMIT_LOWER 200
+#define SUPERMATTER_SURGE_ANNOUNCE_THRESHOLD 800
 
 /**
  * Supermatter Surge
@@ -14,7 +15,7 @@
 	typepath = /datum/round_event/supermatter_surge
 	weight = 20
 	max_occurrences = 4
-	earliest_start = 10 MINUTES
+	earliest_start = 20 MINUTES
 
 /datum/round_event_control/supermatter_surge/canSpawnEvent()
 	if(!GLOB.main_supermatter_engine?.has_been_powered) // We don't want to cause a deadly delam if the engineers haven't started the engine yet.
@@ -30,7 +31,7 @@
 	surge_power = rand(SUPERMATTER_SURGE_POWER_LIMIT_LOWER, SUPERMATTER_SURGE_POWER_LIMIT_UPPER)
 
 /datum/round_event/supermatter_surge/announce()
-	if(surge_power > 800 || prob(round(surge_power/8)))
+	if(surge_power > SUPERMATTER_SURGE_ANNOUNCE_THRESHOLD || prob(round(surge_power/8)))
 		priority_announce("Class [round(surge_power/500) + 1] supermatter surge detected. Intervention may be required.", "Anomaly Alert", ANNOUNCER_KLAXON)
 
 /datum/round_event/supermatter_surge/start()
@@ -38,3 +39,4 @@
 
 #undef SUPERMATTER_SURGE_POWER_LIMIT_UPPER
 #undef SUPERMATTER_SURGE_POWER_LIMIT_LOWER
+#undef SUPERMATTER_SURGE_ANNOUNCE_THRESHOLD
