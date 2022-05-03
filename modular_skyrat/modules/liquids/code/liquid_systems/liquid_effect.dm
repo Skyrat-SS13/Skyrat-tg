@@ -545,7 +545,6 @@
 			examine_list += span_notice("There is [replacetext(liquid_state_template, "$", "[volume] units of [reagent_name]")] here.")
 		else
 			// Show each individual reagent
-			examine_list += EXAMINE_SECTION_BREAK
 			examine_list += "There is [replacetext(liquid_state_template, "$", "the following")] here:"
 
 			for(var/datum/reagent/reagent_type as anything in reagent_list)
