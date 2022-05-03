@@ -110,7 +110,7 @@
 				addtimer(CALLBACK(user, /mob/proc/emote, "laugh"), 5 SECONDS)
 				addtimer(CALLBACK(user, /mob/proc/emote, "laugh"), 10 SECONDS)
 
-/datum/quirk/feline_aspect
+/datum/quirk/item_quirk/feline_aspect
 	name = "Feline Traits"
 	desc = "You happen to act like a feline, for whatever reason."
 	gain_text = span_notice("Nya could go for some catnip right about now...")
@@ -119,6 +119,16 @@
 	value = 0
 	mob_trait = TRAIT_FELINE
 	icon = "cat"
+
+/datum/quirk/item_quirk/feline_aspect/add_unique()
+	var/mob/living/carbon/human/human_holder = quirk_holder
+	var/obj/item/organ/tongue/old_tongue = human_holder.getorganslot(ORGAN_SLOT_TONGUE)
+	old_tongue.Remove(human_holder)
+	qdel(old_tongue)
+
+	var/obj/item/organ/tongue/cat/new_tongue = new(get_turf(human_holder))
+	new_tongue.Insert(human_holder)
+
 
 /datum/quirk/item_quirk/canine
 	name = "Canidae Traits"

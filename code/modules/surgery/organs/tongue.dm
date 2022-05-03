@@ -518,6 +518,13 @@
 		signer.visible_message(span_notice("[signer] lowers [signer.p_their()] eyebrows."))
 
 //SKYRAT MODULAR EDIT BEGIN
+/obj/item/organ/tongue/cat
+	name = "coarse tongue"
+	desc = "A tongue like sandpaper. It must be of a feline-like species."
+	say_mod = "meows"
+	icon_state = "tonguenormal"
+	modifies_speech = TRUE
+
 /obj/item/organ/tongue/dog
 	name = "long tongue"
 	desc = "A long and wet tongue. It seems to jump when it's called good, oddly enough."
