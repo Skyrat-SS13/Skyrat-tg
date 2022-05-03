@@ -74,7 +74,13 @@ SUBSYSTEM_DEF(events)
 
 //decides which world.time we should select another random event at.
 /datum/controller/subsystem/events/proc/reschedule()
-	scheduled = world.time + rand(frequency_lower, max(frequency_lower,frequency_upper))
+	// SKYRAT EDIT CHANGE
+	var/next_event_time = rand(frequency_lower, max(frequency_lower, frequency_upper))
+	if(CONFIG_GET(flag/low_chaos_event_system))
+		reschedule_low_chaos(next_event_time / 2)
+	scheduled = world.time + next_event_time
+	// SKYRAT EDIT END
+
 
 //selects a random event based on whether it can occur and it's 'weight'(probability)
 /datum/controller/subsystem/events/proc/spawnEvent(threat_override = FALSE) //SKYRAT EDIT CHANGE

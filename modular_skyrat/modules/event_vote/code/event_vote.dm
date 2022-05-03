@@ -7,7 +7,7 @@
 #define LOW_CHAOS_TIMER_UPPER 15 MINUTES
 
 /// How long does the vote last?
-#define EVENT_VOTE_TIME 2 MINUTES
+#define EVENT_VOTE_TIME 1 MINUTES
 
 /// Public vote amount
 #define EVENT_PUBLIC_VOTE_AMOUNT 5
@@ -48,7 +48,7 @@
 	if(time)
 		scheduled_low_chaos = world.time + time
 	else
-		scheduled_low_chaos = scheduled * 0.5 // We want it to be perfectly in the middle!
+		scheduled_low_chaos = world.time + rand(LOW_CHAOS_TIMER_LOWER, LOW_CHAOS_TIMER_UPPER)
 	low_chaos_needs_reset = FALSE
 
 /// Triggers a random low chaos event
@@ -217,8 +217,6 @@
 				vote_message(iterating_user, "No votes cast, spawning random event!")
 		reset()
 		spawnEvent()
-		if(CONFIG_GET(flag/low_chaos_event_system))
-			reschedule_low_chaos()
 		return
 
 	var/list/event_weighted_list = list() //We convert the list of votes into a weighted list.
@@ -272,8 +270,6 @@
 
 	last_event_chaos_level = winner.chaos_level
 	winner.runEvent(TRUE)
-	if(CONFIG_GET(flag/low_chaos_event_system))
-		reschedule_low_chaos()
 	reset()
 
 /// Sends the user a formatted message
