@@ -1,8 +1,8 @@
-#define SUPERMATTER_SURGE_BULLET_ENERGY_FACTOR_UPPER 20
-#define SUPERMATTER_SURGE_BULLET_ENERGY_FACTOR_LOWER 10
+#define SUPERMATTER_SURGE_BULLET_ENERGY_FACTOR_UPPER 40
+#define SUPERMATTER_SURGE_BULLET_ENERGY_FACTOR_LOWER 20
 #define SUPERMATTER_SURGE_TIME_UPPER 360 * 0.5
 #define SUPERMATTER_SURGE_TIME_LOWER 180 * 0.5
-#define SUPERMATTER_SURGE_ANNOUNCE_THRESHOLD 12
+#define SUPERMATTER_SURGE_ANNOUNCE_THRESHOLD 25
 
 /**
  * Supermatter Surge
@@ -38,7 +38,7 @@
 
 /datum/round_event/supermatter_surge/announce()
 	if(surge_power > SUPERMATTER_SURGE_ANNOUNCE_THRESHOLD || prob(round(surge_power)))
-		priority_announce("Class [surge_power] supermatter surge detected. Intervention may be required.", "Anomaly Alert", ANNOUNCER_KLAXON)
+		priority_announce("Class [round(surge_power / 10) + 1] supermatter surge detected. Intervention may be required.", "Anomaly Alert", ANNOUNCER_KLAXON)
 
 /datum/round_event/supermatter_surge/start()
 	GLOB.main_supermatter_engine?.bullet_energy *= surge_power
