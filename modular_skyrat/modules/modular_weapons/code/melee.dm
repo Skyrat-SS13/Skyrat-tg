@@ -10,3 +10,4 @@
 
 /obj/item/melee/sabre/cargo
 	block_chance = 20
+	armour_penetration = 25
