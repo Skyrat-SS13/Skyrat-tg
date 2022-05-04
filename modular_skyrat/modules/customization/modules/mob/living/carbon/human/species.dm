@@ -2,6 +2,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 /datum/species
 	mutant_bodyparts = list()
+	digitigrade_customization = DIGITIGRADE_OPTIONAL // Doing this so that the legs preference actually works for everyone.
 	///Self explanatory
 	var/can_have_genitals = TRUE
 	///A list of actual body markings on the owner of the species. Associative lists with keys named by limbs defines, pointing to a list with names and colors for the marking to be rendered. This is also stored in the DNA
