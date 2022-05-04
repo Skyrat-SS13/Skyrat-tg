@@ -16,7 +16,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	///Notable things that have it set to FALSE are things that need special setup, such as genitals
 	var/generic
 
-	/// For all the flags that you need to pass from a sprite_accessory to an external_organ, when it's linked to one.
+	/// For all the flags that you need to pass from a sprite_accessory to an organ, when it's linked to one.
 	/// (i.e. passing through the fact that a snout should or shouldn't use a muzzled sprite for head worn items)
 	var/flags_for_organ = NONE
 
