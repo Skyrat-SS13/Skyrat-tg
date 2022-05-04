@@ -33,6 +33,13 @@
 	ashies = null
 	QDEL_NULL(linked_objective)
 	STOP_PROCESSING(SSprocessing, src)
+	//SKYRAT EDIT START
+	var/mob/living/carbon/nearest_person
+	for(var/mob/living/carbon/carbons_nearby in range(5))
+		nearest_person = carbons_nearby
+		break
+	log_game("The [src] has been destroyed at [loc_name(src.loc)], nearest mob is [key_name(nearest_person)].")
+	//SKYRAT EDIT END
 	return ..()
 
 /obj/structure/lavaland/ash_walker/deconstruct(disassembled)
