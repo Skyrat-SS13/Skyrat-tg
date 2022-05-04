@@ -34,9 +34,9 @@ GLOBAL_LIST(end_titles)
 
 	LAZYINITLIST(credits)
 
-	if(mob)
-		mob.overlay_fullscreen("meeting",/atom/movable/screen/fullscreen/emergency_meeting)
-	sound_to_playing_players('modular_skyrat/master_files/sound/music/elibao.ogg', volume = 100, vary = FALSE, frequency = 0, channel = 0, pressure_affected = FALSE)
+/* 	if(mob)
+		mob.overlay_fullscreen("meeting",/atom/movable/screen/fullscreen/emergency_meeting) */
+//	sound_to_playing_players('modular_skyrat/master_files/sound/music/elibao.ogg', volume = 100, vary = FALSE, frequency = 0, channel = 0, pressure_affected = FALSE)
 
 	var/list/_credits = credits
 	verbs += /client/proc/ClearCredits
@@ -57,7 +57,7 @@ GLOBAL_LIST(end_titles)
 	set category = "OOC"
 	verbs -= /client/proc/ClearCredits
 	QDEL_NULL(credits)
-	mob.clear_fullscreen("meeting")
+//	mob.clear_fullscreen("meeting")
 
 /atom/movable/screen/credit
 	icon_state = "blank"
@@ -93,9 +93,9 @@ GLOBAL_LIST(end_titles)
 	var/client/P = parent
 	if(parent)
 		P.screen -= src
-	LAZYREMOVE(P.credits, src)
+	LAZYREMOVE(P?.credits, src)
 	parent = null
-	return ..()
+	return . = ..()
 
 /proc/generate_titles()
 	var/list/titles = list()
