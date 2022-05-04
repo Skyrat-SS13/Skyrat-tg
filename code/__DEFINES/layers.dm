@@ -203,12 +203,18 @@
 
 #define ADMIN_POPUP_LAYER 1
 
+
 //SKYRAT EDIT: Lobby Cam
 ///Plane of the "splash" icon used that shows on the lobby screen. Nothing should ever be above this. (Except the logo)
 #define BLACK_FADE 9997
 #define SPLASHSCREEN_PLANE 9998 //Previous value: 9999
 #define SKYRAT_LOGO 9999
 //SKYRAT EDIT: Lobby Cam
+
+//SKYRAT EDIT: Chat Indicator
+#define CHAT_INDICATOR_LAYER 6 // 1 above BYOND's FLY_LAYER
+//SKYRAT EDIT: Chat Indicator
+
 
 ///Layer for screentips
 #define SCREENTIP_LAYER 4
