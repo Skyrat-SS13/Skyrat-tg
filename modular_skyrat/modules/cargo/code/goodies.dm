@@ -59,7 +59,7 @@
 
 /datum/supply_pack/goody/sabre
 	name = "Authentic Samshir Sabre"
-	desc = "a shamshir sabre that comes tucked inside of a black leather sheath."
+	desc = "A shamshir sabre that comes tucked inside of a black leather sheath. Provides a stylish way to exert your authority."
 	cost = PAYCHECK_CREW * 30
 	contains = list(/obj/item/storage/belt/sabre/cargo)
 
