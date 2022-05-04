@@ -127,7 +127,6 @@
 		/obj/item/clothing/suit/toggle/labcoat/highvis = 2,
 		/obj/item/clothing/under/rank/security/detective/cowboy = 2,
 		/obj/item/clothing/suit/det_suit/cowboyvest = 2,
-		/obj/item/taperoll/police = 2,
 	)
 
 /obj/machinery/vending/wardrobe/law_wardrobe

@@ -154,9 +154,9 @@
 	illegal_tech = FALSE
 
 /datum/uplink_item/dangerous/machinegun
-	name = "L6 Squad Automatic Weapon"
-	desc = "A fully-loaded Aussec Armoury belt-fed machine gun. \
-			This deadly weapon has a massive 50-round magazine of devastating 7.12x82mm ammunition."
+	name = "L6 Machine Gun"
+	desc = "A fully-loaded Scarborough Arms belt-fed machine gun. \
+			This deadly weapon has a 50-round box chambered for 7.12x82mm ammunition." //SKYRAT EDIT - AUSSEC TO SCARBOROUGH
 	item = /obj/item/gun/ballistic/automatic/l6_saw
 	cost = 18
 	surplus = 0
@@ -330,6 +330,12 @@
 	desc = "A 3-round magazine of soporific ammo designed for use with .50 sniper rifles. Put your enemies to sleep today!"
 	item = /obj/item/ammo_box/magazine/sniper_rounds/soporific
 	cost = 6
+
+/datum/uplink_item/ammo/sniper/marksman
+	name = ".50 Marksman Magazine"
+	desc = "A 5-round magazine of marksman ammo designed for use with .50 sniper rifles. Blast your enemies with instant shots!"
+	item = /obj/item/ammo_box/magazine/sniper_rounds/marksman
+	cost = 5
 
 /datum/uplink_item/ammo/carbine
 	name = "5.56mm Toploader Magazine"

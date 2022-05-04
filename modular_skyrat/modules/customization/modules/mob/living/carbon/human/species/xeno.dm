@@ -4,6 +4,7 @@
 	id = SPECIES_XENO
 	say_mod = "hisses"
 	default_color = "#00FF00"
+	family_heirlooms = list(/obj/item/toy/plush/rouny, /obj/item/toy/toy_xeno,)
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -30,6 +31,7 @@
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	liked_food = MEAT
 	learnable_languages = list(/datum/language/common, /datum/language/xenoknockoff)
+	digitigrade_customization = DIGITIGRADE_OPTIONAL
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	damage_overlay_type = SPECIES_XENO

@@ -6,10 +6,12 @@
 	mag_type = /obj/item/ammo_box/magazine/recharge/marksman
 	force = 15
 	weapon_weight = WEAPON_HEAVY
-	zoomable = 1
-	zoom_amt = 5
 	fire_delay = 4 SECONDS
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/chaingun_fire.ogg'
+
+/obj/item/gun/ballistic/automatic/laser/marksman/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/scope, range_modifier = 1.5)
 
 /obj/item/ammo_box/magazine/recharge/marksman
 	ammo_type = /obj/item/ammo_casing/caseless/laser/marksman

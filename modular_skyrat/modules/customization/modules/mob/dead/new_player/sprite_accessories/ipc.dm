@@ -234,3 +234,61 @@
 /datum/sprite_accessory/ipc_chassis/e3n
 	name = "E3N AI"
 	icon_state = "e3n"
+
+//Heads - snowflake phantom accessory for choosing IPC heads (hell yeah!)
+/datum/sprite_accessory/ipc_head
+	icon = null
+	icon_state = "ipc"
+	color_src = null
+	factual = FALSE
+	key = "ipc_head"
+	generic = "Head Type"
+
+/datum/sprite_accessory/ipc_head/none
+	name = "None"
+	icon_state = "none"
+
+/datum/sprite_accessory/ipc_head/mcgreyscale
+	name = "Morpheus Cyberkinetics(Greyscale)"
+	icon_state = "mcgipc"
+	color_src = 1 //Here it's used to tell apart greyscalling
+
+/datum/sprite_accessory/ipc_head/bishopcyberkinetics
+	name = "Bishop Cyberkinetics"
+	icon_state = "bshipc"
+
+/datum/sprite_accessory/ipc_head/bishopcyberkinetics2
+	name = "Bishop Cyberkinetics 2.0"
+	icon_state = "bs2ipc"
+
+/datum/sprite_accessory/ipc_head/hephaestussindustries
+	name = "Hephaestus Industries"
+	icon_state = "hsiipc"
+
+/datum/sprite_accessory/ipc_head/hephaestussindustries2
+	name = "Hephaestus Industries 2.0"
+	icon_state = "hi2ipc"
+
+/datum/sprite_accessory/ipc_head/shellguardmunitions
+	name = "Shellguard Munitions Standard Series"
+	icon_state = "sgmipc"
+
+/datum/sprite_accessory/ipc_head/wardtakahashimanufacturing
+	name = "Ward-Takahashi Manufacturing"
+	icon_state = "wtmipc"
+
+/datum/sprite_accessory/ipc_head/xionmanufacturinggroup
+	name = "Xion Manufacturing Group"
+	icon_state = "xmgipc"
+
+/datum/sprite_accessory/ipc_head/xionmanufacturinggroup2
+	name = "Xion Manufacturing Group 2.0"
+	icon_state = "xm2ipc"
+
+/datum/sprite_accessory/ipc_head/zenghupharmaceuticals
+	name = "Zeng-Hu Pharmaceuticals"
+	icon_state = "zhpipc"
+
+/datum/sprite_accessory/ipc_head/e3n
+	name = "E3N AI"
+	icon_state = "e3n"

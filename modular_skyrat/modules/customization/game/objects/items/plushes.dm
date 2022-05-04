@@ -164,7 +164,6 @@
 	storage.max_w_class = WEIGHT_CLASS_SMALL
 	storage.set_holdable(list(
 		/obj/item/toy/plush/pintaplush,
-		/obj/item/toy/plush/arcplush
 		))
 //End of storage component//
 
@@ -178,29 +177,6 @@
 	attack_verb_simple = list("bonk", "snug")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg' = 1)
 	young = 1 //No.
-
-/obj/item/toy/plush/arcplush
-	name = "familiar lizard plushie"
-	desc = "A small plushie that resembles a lizard-- Or, not a lizard, it's mouth seems to go horizontally too.. Are those limbs in it's maw?"
-	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
-	icon_state = "plushie_arc"
-	inhand_icon_state = "plushie_arc"
-	attack_verb_continuous = list("claws", "bites", "wehs")
-	attack_verb_simple = list("claw", "bite", "weh")
-	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
-	young = 1 //No.
-
-/obj/item/toy/plush/oleplush
-	name = "irritable goat plushie"
-	desc = "A plush recreation of a purple ovine. Made with 100% real, all natural wool from the creator herself."
-	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
-	icon_state = "plushie_ole"
-	inhand_icon_state = "plushie_ole"
-	attack_verb_continuous = list("headbutts", "plaps")
-	attack_verb_simple = list("headbutt", "plap")
-	squeak_override = list('sound/weapons/punch1.ogg'= 1)
-	young = 1 //No.
-	gender = FEMALE
 
 /obj/item/toy/plush/szaplush
 	name = "suspicious spider"

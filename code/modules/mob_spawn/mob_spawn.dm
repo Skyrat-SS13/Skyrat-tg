@@ -133,7 +133,7 @@
 
 	// SKYRAT EDIT ADDITION
 	/// Do we use a random appearance for this ghost role?
-	var/random_appearance = FALSE
+	var/random_appearance = TRUE
 	/// Can we use our loadout for this role?
 	var/loadout_enabled = FALSE
 	/// Can we use our quirks for this role?

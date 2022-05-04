@@ -190,3 +190,41 @@
 
 /obj/item/inducer/cyborg/attack_self(mob/user)
 	return
+
+// Wirebrush for janiborg
+/datum/design/borg_wirebrush
+	name = "Cyborg Upgrade (Wire-brush)"
+	id = "borg_upgrade_brush"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/wirebrush
+	materials = list(/datum/material/iron = 4000)
+	construction_time = 40
+	category = list("Cyborg Upgrade Modules")
+
+/obj/item/borg/upgrade/wirebrush
+	name = "janitor cyborg wire-brush"
+	desc = "A tool to remove rust from walls."
+	icon_state = "cyborg_upgrade3"
+	require_model = TRUE
+	model_type = list(/obj/item/robot_model/janitor)
+	model_flags = BORG_MODEL_JANITOR
+
+/obj/item/borg/upgrade/wirebrush/action(mob/living/silicon/robot/cyborg)
+	. = ..()
+	if(.)
+		for(var/obj/item/wirebrush/brush in cyborg.model.modules)
+			cyborg.model.remove_module(brush, TRUE)
+
+		var/obj/item/wirebrush/brush = new /obj/item/wirebrush(cyborg.model)
+		cyborg.model.basic_modules += brush
+		cyborg.model.add_module(brush, FALSE, TRUE)
+
+/obj/item/borg/upgrade/wirebrush/deactivate(mob/living/silicon/robot/cyborg, user = usr)
+	. = ..()
+	if(.)
+		for(var/obj/item/wirebrush/brush in cyborg.model.modules)
+			cyborg.model.remove_module(brush, TRUE)
+
+		var/obj/item/wirebrush/brush = new (cyborg.model)
+		cyborg.model.basic_modules += brush
+		cyborg.model.add_module(brush, FALSE, TRUE)

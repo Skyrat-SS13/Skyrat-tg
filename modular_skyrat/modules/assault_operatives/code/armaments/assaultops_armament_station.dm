@@ -7,8 +7,9 @@
 	armament_type = /datum/armament_entry/assault_operatives
 
 // POINTS CARDS
+
 /obj/item/armament_points_card/assaultops
-	points = 40
+	points = 50
 
 // ARMAMENT ENTRIES
 
