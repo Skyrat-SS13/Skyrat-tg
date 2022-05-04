@@ -161,7 +161,6 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	matter_amount = 4
 	cost = 500
 	source = /datum/robot_energy_storage/iron
-	tram_wall_type = /obj/structure/tramwall
 
 /obj/item/stack/sheet/iron/examine(mob/user)
 	. = ..()
@@ -413,6 +412,7 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	new/datum/stack_recipe("white beanie", /obj/item/clothing/head/beanie, 2), \
 	null, \
 	new/datum/stack_recipe("blindfold", /obj/item/clothing/glasses/blindfold, 2), \
+	new/datum/stack_recipe("pillow", /obj/item/pillow, 3), /*SKYRAT EDIT ADDITION*/ \
 	new/datum/stack_recipe("eyepatch wrap", /obj/item/clothing/glasses/eyepatch/wrap, 2), /*SKYRAT EDIT ADDITION*/ \
 	new/datum/stack_recipe("eyepatch", /obj/item/clothing/glasses/eyepatch, 2), /*SKYRAT EDIT ADDITION*/ \
 	null, \

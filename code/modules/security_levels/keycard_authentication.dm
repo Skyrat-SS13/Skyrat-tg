@@ -47,6 +47,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth, 26)
 	data["red_alert"] = (seclevel2num(get_security_level()) >= SEC_LEVEL_RED) ? 1 : 0
 	data["emergency_maint"] = GLOB.emergency_access
 	data["bsa_unlock"] = GLOB.bsa_unlock
+	data["permit_pins"] = (CONFIG_GET(flag/permit_pins) ? TRUE : FALSE) //SKYRAT EDIT
 	return data
 
 /obj/machinery/keycard_auth/ui_status(mob/user)
