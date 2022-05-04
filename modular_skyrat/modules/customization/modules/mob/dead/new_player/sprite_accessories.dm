@@ -187,6 +187,11 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "socks_thigh"
 	use_static = null
 
+/datum/sprite_accessory/socks/striped_thigh
+	name = "Thigh-high (Striped)"
+	icon_state = "striped_thigh"
+	use_static = null
+
 /datum/sprite_accessory/socks/bee_thigh
 	name = "Thigh-high - Bee (Old)"
 	icon_state = "bee_thigh_old"
