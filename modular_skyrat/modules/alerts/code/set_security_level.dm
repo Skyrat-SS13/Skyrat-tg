@@ -116,7 +116,7 @@ GLOBAL_VAR_INIT(sec_level_cooldown, FALSE)
 			minor_announce(CONFIG_GET(string/alert_green), "Attention! Alert level lowered to green:", sound = 'modular_skyrat/modules/alerts/sound/security_levels/green.ogg')
 		if(SEC_LEVEL_BLUE)
 			if(SSsecurity_level.current_level < SEC_LEVEL_BLUE)
-				minor_announce(CONFIG_GET(string/alert_blue_upto), "Attention! Alert level elevated to blue:", sound = 'modular_skyrat/modules/alerts/sound/misc/blue.ogg')
+				minor_announce(CONFIG_GET(string/alert_blue_upto), "Attention! Alert level elevated to blue:", sound = 'modular_skyrat/modules/alerts/sound/security_levels/blue.ogg')
 			else
 				minor_announce(CONFIG_GET(string/alert_blue_downto), "Attention! Alert level lowered to blue:", sound = 'modular_skyrat/modules/alerts/sound/security_levels/blue.ogg')
 		if(SEC_LEVEL_VIOLET)
@@ -147,7 +147,7 @@ GLOBAL_VAR_INIT(sec_level_cooldown, FALSE)
 			SSsecurity_level.current_level = level //Snowflake shit to make sue they actually loop.
 			delta_alarm()
 		if(SEC_LEVEL_GAMMA)
-			minor_announce(CONFIG_GET(string/alert_gamma), "Attention! ZK-Class Reality Failure Scenario Detected, GAMMA Alert Level Reached!", TRUE, sound = 'modular_skyrat/modules/alerts/sound/security_levels/gamma.ogg')
+			minor_announce(CONFIG_GET(string/alert_gamma), "Attention! ZK-Class Reality Failure Scenario Detected, GAMMA Alert Level Reached!", TRUE, sound = 'modular_skyrat/modules/alerts/sound/security_levels/gamma_alert.ogg')
 			SSsecurity_level.current_level = level
 			gamma_loop()
 

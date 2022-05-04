@@ -6,7 +6,7 @@
 		ANNOUNCER_AIMALF = 'sound/ai/default/aimalf.ogg',
 		ANNOUNCER_ALIENS = 'modular_skyrat/modules/alerts/sound/alerts/lifesigns.ogg',
 		ANNOUNCER_ANIMES = 'modular_skyrat/modules/alerts/sound/alerts/animes.ogg',
-		ANNOUNCER_INTERCEPT = 'modular_skyrat/modules/alerts/sound/alert2.ogg',
+		ANNOUNCER_INTERCEPT = 'modular_skyrat/modules/alerts/sound/alerts/alert2.ogg',
 		ANNOUNCER_IONSTORM = 'modular_skyrat/modules/alerts/sound/alerts/ionstorm.ogg',
 		ANNOUNCER_METEORS = 'modular_skyrat/modules/alerts/sound/alerts/meteors.ogg',
 		ANNOUNCER_OUTBREAK5 = 'modular_skyrat/modules/alerts/sound/alerts/outbreak5.ogg',
