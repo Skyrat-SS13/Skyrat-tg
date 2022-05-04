@@ -42,5 +42,6 @@
 		. += "briefcase_open"
 
 /obj/item/storage/secure/briefcase/white
-	icon_state = "briefcase_secure_black"
+	name = "white secure briefcase"
+	icon_state = "briefcase_secure_white"
 	inhand_icon_state = "lockbox"
