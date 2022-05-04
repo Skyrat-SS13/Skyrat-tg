@@ -14,6 +14,7 @@ GLOBAL_LIST(end_titles)
 		var/client/C = thing
 		if (!C)
 			continue
+	. = ..()
 
 /datum/controller/subsystem/ticker/show_roundend_report(client/C, report_type = null)
 	. = ..()
