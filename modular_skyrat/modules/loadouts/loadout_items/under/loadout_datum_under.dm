@@ -419,6 +419,18 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Tactitool Turtleneck"
 	item_path = /obj/item/clothing/under/syndicate/tacticool/sensors
 
+/datum/loadout_item/under/miscellaneous/tactical_skirt
+	name = "Tactitool Skirtleneck"
+	item_path = /obj/item/clothing/under/syndicate/tacticool/skirt/sensors
+
+/datum/loadout_item/under/miscellaneous/centcool_turtleneck
+	name = "Replica CentCom Turtleneck"
+	item_path = /obj/item/clothing/under/rank/centcom/officer/replica
+
+/datum/loadout_item/under/miscellaneous/centcool_skirtleneck
+	name = "Replica CentCom Skirtleneck"
+	item_path = /obj/item/clothing/under/rank/centcom/officer_skirt/replica
+
 /datum/loadout_item/under/miscellaneous/tactical_pants
 	name = "Tactical Pants"
 	item_path = /obj/item/clothing/under/pants/tactical
@@ -451,10 +463,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/tactical_british
 	name = "British Tactical Sweater"
 	item_path = /obj/item/clothing/under/uvf
-
-/datum/loadout_item/under/miscellaneous/tactical_skirt
-	name = "Tactitool Skirtleneck"
-	item_path = /obj/item/clothing/under/syndicate/tacticool/skirt/sensors
 
 /datum/loadout_item/under/miscellaneous/cream_sweater
 	name = "Cream Sweater"
@@ -572,22 +580,22 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Black Cargo Uniform"
 	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/evil
 	restricted_roles = list(JOB_CARGO_TECHNICIAN)
-	
+
 /datum/loadout_item/under/miscellaneous/cargo_turtle
 	name = "Cargo Turtleneck"
 	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck
 	restricted_roles = list(JOB_CARGO_TECHNICIAN)
-	
+
 /datum/loadout_item/under/miscellaneous/cargo_skirtle
 	name = "Cargo Skirtleneck"
 	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck/skirt
 	restricted_roles = list(JOB_CARGO_TECHNICIAN)
-	
+
 /datum/loadout_item/under/miscellaneous/qm_skirtle
 	name = "Quartermaster's Skirtleneck"
 	item_path = /obj/item/clothing/under/rank/cargo/qm/skyrat/turtleneck/skirt
 	restricted_roles = list(JOB_QUARTERMASTER)
-	
+
 /datum/loadout_item/under/miscellaneous/qm_gorka
 	name = "Quartermaster's Gorka Uniform"
 	item_path = /obj/item/clothing/under/rank/cargo/qm/skyrat/gorka
