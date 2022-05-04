@@ -6,8 +6,7 @@
 		/obj/item/ammo_box/magazine/multi_sprite/firefly = 2,
 	), src)
 
-/obj/item/storage/belt/military/assault/full/dozer/PopulateContents()
+/obj/item/storage/belt/military/assault/full/cmg/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/ammo_box/magazine/multi_sprite/dozer/hp = 2,
-		/obj/item/ammo_box/magazine/multi_sprite/dozer = 4,
+		/obj/item/ammo_box/magazine/cmgm45/lethal = 6,
 	), src)
