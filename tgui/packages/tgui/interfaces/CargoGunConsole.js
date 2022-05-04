@@ -12,6 +12,7 @@ export const CargoGunConsole = (props, context) => {
     budget_name,
     ammo_amount,
     self_paid,
+    cant_buy_restricted,
   } = data;
   return (
     <Window
@@ -136,6 +137,12 @@ export const CargoGunConsole = (props, context) => {
                               {'Company interest needs to be higher to buy this item!'}
                             </Stack.Item>
                           )}
+                          {!!cant_buy_restricted && !!item.restricted && (
+                            <Stack.Item
+                              textColor={"red"}>
+                              {'You cannot buy a restricted weapon from this console!'}
+                            </Stack.Item>
+                          )}
                           <Stack.Item
                             textColor={(item.quantity) <= 0 ? "red" : "green"}>
                             {'Quantity Remaining: ' + (item.quantity)}
@@ -157,7 +164,9 @@ export const CargoGunConsole = (props, context) => {
                               width="100%"
                               disabled={item.cost > budget_points
                                 || 0 >= item.quantity
-                                || !!item.cant_purchase}
+                                || !!item.cant_purchase
+                                || (!!cant_buy_restricted
+                                  && !!item.restricted)}
                               onClick={() => act('equip_item', {
                                 armament_ref: item.ref })}
                             />
