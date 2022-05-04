@@ -1,5 +1,6 @@
 /obj/item/bodypart/head/lizard
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/lizard_parts_greyscale.dmi'
+	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC // You're too slow Kapu, I did it myself ;)
 
 /obj/item/bodypart/chest/lizard
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/lizard_parts_greyscale.dmi'
