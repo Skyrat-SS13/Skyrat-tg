@@ -1,21 +1,38 @@
-GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organs, for any mass "animation"
+/**
+ * Mutant Component
+ *
+ * This component is used to handle all of the intermediate processes for transforming someone from a human
+ * into a zombie.
+ */
+
 
 #define CURE_TIME 10 SECONDS
 #define REVIVE_TIME_LOWER 2 MINUTES
 #define REVIVE_TIME_UPPER 3 MINUTES
-#define IMMUNITY_LOWER 2 MINUTES
-#define IMMUNITY_UPPER 4 MINUTES
-#define RNA_REFRESH_TIME 2 MINUTES //How soon can we extract more RNA?
+#define IMMUNITY_LOWER 5 MINUTES
+#define IMMUNITY_UPPER 10 MINUTES
+#define RNA_REFRESH_TIME 2 MINUTES // How soon can we extract more RNA?
 
 /datum/component/mutant_infection
+	/// The reference to our host body.
 	var/mob/living/carbon/human/host
+	/// The previous species of the person infected. Used when they are uninfected.
 	var/datum/species/old_species = /datum/species/human
+	/// A list of possible mutant species we can choose from when someone is converted.
 	var/list/mutant_species = list(/datum/species/mutant/infectious/fast, /datum/species/mutant/infectious/slow)
+	/// The species we have selected after we have converted.
 	var/datum/species/selected_type
-	/// The stage of infection
-	var/list/insanity_phrases = list("You feel too hot! Something isn't right!", "You can't think straight, please end the suffering!", "AAAAAAAAAAAAAAAGHHHHHHHH!")
+	/// A list of phrases people are sent while they are being converted.
+	var/list/insanity_phrases = list(
+		"You feel too hot! Something isn't right!",
+		"You can't think straight, please end the suffering!",
+		"AAAAAAAAAAAAAAAGHHHHHHHH!"
+		)
+	/// Our timer ID used for seperate parts of the infection.
 	var/timer_id
+	/// Have we have our RNA extracted? If so, we can't have it extracted again.
 	var/rna_extracted = FALSE
+	/// How much toxin damage we take per tick. - Can probably be a define.
 	var/tox_loss_mod = 0.5
 
 /datum/component/mutant_infection/Initialize()
@@ -23,8 +40,6 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
 	host = parent
-
-	GLOB.mutant_infection_list += src
 
 	if(host.stat == DEAD)
 		var/revive_time = rand(REVIVE_TIME_LOWER, REVIVE_TIME_UPPER)
@@ -36,23 +51,26 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 	START_PROCESSING(SSobj, src)
 
 /datum/component/mutant_infection/Destroy(force, silent)
-	GLOB.mutant_infection_list -= src
 	STOP_PROCESSING(SSobj, src)
 	UnregisterSignal(parent, list(COMSIG_MUTANT_CURED, COMSIG_LIVING_DEATH))
 	if(timer_id)
 		deltimer(timer_id)
 		timer_id = null
 	if(host)
-		if(ismutant(host) && old_species)
-			host.set_species(old_species)
-		host.grab_ghost()
-		host.revive(TRUE, TRUE)
-		to_chat(host, span_greentext("You feel like you're free of that foul disease!"))
-		ADD_TRAIT(host, TRAIT_MUTANT_IMMUNE, "mutant_virus")
-		var/cure_time = rand(IMMUNITY_LOWER, IMMUNITY_UPPER)
-		addtimer(CALLBACK(host, /mob/living/carbon/human/proc/remove_mutant_immunity), cure_time, TIMER_STOPPABLE)
+		remove_mutant_datum()
 		host = null
 	return ..()
+
+/datum/component/mutant_infection/proc/remove_mutant_datum()
+	if(ismutant(host) && old_species)
+		host.set_species(old_species)
+	host.grab_ghost()
+	host.revive(TRUE, TRUE)
+	to_chat(host, span_greentext("You feel like you're free of that foul disease!"))
+	ADD_TRAIT(host, TRAIT_MUTANT_IMMUNE, "mutant_virus")
+	host.mind?.remove_antag_datum(/datum/antagonist/mutant)
+	var/cure_time = rand(IMMUNITY_LOWER, IMMUNITY_UPPER)
+	addtimer(CALLBACK(host, /mob/living/carbon/human/proc/remove_mutant_immunity), cure_time, TIMER_STOPPABLE)
 
 /datum/component/mutant_infection/proc/extract_rna()
 	if(rna_extracted)
@@ -115,7 +133,6 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 	var/stand_up = (host.stat == DEAD) || (host.stat == UNCONSCIOUS)
 
 	//Fully heal the mutant's damage the first time they rise
-
 	regenerate()
 
 	host.do_jitter_animation(30)
@@ -126,6 +143,7 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 	else
 		to_chat(host, span_redtext("You are a SLOW zombie. You walk slowly and hit more slowly and harder. However, you are far more resilient to most damage types."))
 	to_chat(host, span_alertalien("You are now a mutant! Do not seek to be cured, do not help any non-mutants in any way, do not harm your mutant brethren. You retain some higher functions and can reason to an extent."))
+	host.mind?.add_antag_datum(/datum/antagonist/mutant)
 	RegisterSignal(parent, COMSIG_LIVING_DEATH, .proc/mutant_death)
 
 /datum/component/mutant_infection/proc/mutant_death()
