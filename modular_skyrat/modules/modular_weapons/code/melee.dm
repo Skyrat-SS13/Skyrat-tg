@@ -11,6 +11,6 @@
 
 /obj/item/melee/sabre/cargo
 	name = "authentic shamshir sabre"
-	desc = "An "expertly crafted" historical human sword once used by the Persians which has recently gained traction due to Venusian historal recreation sports. One small flaw, the Taj-based company who produces these has mistaken them for British cavalry sabres akin to those used by high ranking Nanotrasen officials. Atleast it cuts the same way!"
+	desc = "An expertly crafted historical human sword once used by the Persians which has recently gained traction due to Venusian historal recreation sports. One small flaw, the Taj-based company who produces these has mistaken them for British cavalry sabres akin to those used by high ranking Nanotrasen officials. Atleast it cuts the same way!"
 	block_chance = 20
 	armour_penetration = 25
