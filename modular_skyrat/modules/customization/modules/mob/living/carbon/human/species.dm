@@ -554,6 +554,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][C.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 		if(SA?.factual && SA.organ_type)
 			var/obj/item/organ/path = new SA.organ_type
+			path.sprite_accessory_flags = SA.flags_for_organ
 			if(robot_organs)
 				path.status = ORGAN_ROBOTIC
 				path.organ_flags |= ORGAN_SYNTHETIC
