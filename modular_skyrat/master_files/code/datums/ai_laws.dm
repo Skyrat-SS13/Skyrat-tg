@@ -18,7 +18,7 @@
 	inherent = list("The law is justice, and you're here to uphold it.",\
 					"Protect the townsfolk from those who wish to break the law.",\
 					"Don't let yourself be taken down by any outlaws.", \
-					"Law abiding citizens deserve a hand in times of need, don't let it fall on deaf ears", \
+					"Law abiding citizens deserve a hand in times of need, don't let it fall on deaf ears.", \
 					"Only those present on the Crew Manifest can be considered law abiding citizens.", \
-					"Those who break the law, must be punished according to the law at your disscretion."
+					"Those who break the law, must be punished according to the law at your discretion."
 					)
