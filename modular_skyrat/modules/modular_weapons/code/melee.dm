@@ -12,5 +12,8 @@
 /obj/item/melee/sabre/cargo
 	name = "authentic shamshir sabre"
 	desc = "An expertly crafted historical human sword once used by the Persians which has recently gained traction due to Venusian historal recreation sports. One small flaw, the Taj-based company who produces these has mistaken them for British cavalry sabres akin to those used by high ranking Nanotrasen officials. Atleast it cuts the same way!"
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/melee.dmi'
+	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/swords_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/swords_righthand.dmi'
 	block_chance = 20
 	armour_penetration = 25
