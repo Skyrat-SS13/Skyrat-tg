@@ -34,7 +34,7 @@
 	QDEL_NULL(linked_objective)
 	STOP_PROCESSING(SSprocessing, src)
 	//SKYRAT EDIT START
-	var/compiled_string = "The [src] has been destroyed at [loc_name(src.loc)], nearest mobs are"
+	var/compiled_string = "The [src] has been destroyed at [loc_name(src.loc)], nearest mobs are "
 	var/found_anyone = FALSE
 	for(var/mob/living/carbon/carbons_nearby in range(7))
 		compiled_string += "[key_name(carbons_nearby)],"
