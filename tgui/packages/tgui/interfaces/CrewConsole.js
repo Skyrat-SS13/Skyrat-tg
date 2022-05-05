@@ -189,7 +189,7 @@ const CrewTableEntry = (props, context) => {
         )}
       </Table.Cell>
       <Table.Cell>
-        {area !== undefined ? area : <Icon name="question" color="#ffffff" size={1} /> } {/* SKYRAT EDIT - Icon from text 'N/A*/}
+        {area !== undefined ? area : <Icon name="question" color="#ffffff" size={1} /> } {/* SKYRAT EDIT - Icon from text 'N/A'*/}
       </Table.Cell>
       {!!link_allowed && (
         <Table.Cell collapsing>
