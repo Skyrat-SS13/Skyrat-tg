@@ -238,10 +238,10 @@
 	fixedtype = /obj/item/inflatable/door
 
 /obj/item/storage/inflatable
-	icon = 'modular_skyrat/modules/inflatables/icons/inflatable.dmi'
+	icon = 'modular_skyrat/modules/more_briefcases/icons/briefcases.dmi'
 	name = "inflatable barrier box"
 	desc = "Contains inflatable walls and doors."
-	icon_state = "inf"
+	icon_state = "briefcase_inflate"
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/inflatable/ComponentInitialize()
