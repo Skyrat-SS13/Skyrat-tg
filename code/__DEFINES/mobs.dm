@@ -573,13 +573,17 @@
 /// Total number of layers for mob overlays
 #define TOTAL_LAYERS 39 //KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
 /// Mutations layer - Tk headglows, cold resistance glow, etc
-#define MUTATIONS_LAYER 38
+#define MUTATIONS_LAYER 39
 /// Mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODY_BEHIND_LAYER 37
+#define BODY_BEHIND_LAYER 38
 /// Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
-#define BODYPARTS_LAYER 36
+#define BODYPARTS_LAYER 37
 /// Mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_ADJ_LAYER 35
+#define BODY_ADJ_LAYER 36
+// SKYRAT EDIT ADDITION - BUMPED UP ^
+/// A secondary layer for fire, used in human fires.
+#define FIRE_SECONDARY_LAYER 35
+// SKYRAT EDIT END
 /// Underwear, undershirts, socks, eyes, lips(makeup)
 #define BODY_LAYER 34
 /// Mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)

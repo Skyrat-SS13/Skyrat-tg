@@ -67,10 +67,10 @@ There are several things that need to be remembered:
 /mob/living/carbon/human/update_body(is_creating = FALSE)
 	dna.species.handle_body(src)
 	..()
-
+/* SKYRAT EDIT REMOVAL
 /mob/living/carbon/human/update_fire()
 	..((fire_stacks > HUMAN_FIRE_STACK_ICON_NUM) ? "Standing" : "Generic_mob_burning")
-
+*/
 
 /* --------------------------------------- */
 //For legacy support.
