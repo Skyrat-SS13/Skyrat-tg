@@ -34,11 +34,14 @@
 	QDEL_NULL(linked_objective)
 	STOP_PROCESSING(SSprocessing, src)
 	//SKYRAT EDIT START
-	var/mob/living/carbon/nearest_person
-	for(var/mob/living/carbon/carbons_nearby in range(5))
-		nearest_person = carbons_nearby
-		break
-	log_game("The [src] has been destroyed at [loc_name(src.loc)], nearest mob is [key_name(nearest_person)].")
+	var/compiled_string = "The [src] has been destroyed at [loc_name(src.loc)], nearest mobs are"
+	var/found_anyone = FALSE
+	for(var/mob/living/carbon/carbons_nearby in range(7))
+		compiled_string += "[key_name(carbons_nearby)],"
+		found_anyone = TRUE
+	if(!found_anyone)
+		compiled_string += "nobody."
+	log_game(compiled_string)
 	//SKYRAT EDIT END
 	return ..()
 
