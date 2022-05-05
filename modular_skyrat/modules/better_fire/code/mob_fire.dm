@@ -2,7 +2,7 @@
 	remove_overlay(FIRE_LAYER)
 	remove_overlay(FIRE_SECONDARY_LAYER)
 	if(on_fire || HAS_TRAIT(src, TRAIT_PERMANENTLY_ONFIRE))
-		var/mutable_appearance/fire_overlay = mutable_appearance('modular_skyrat/modules/better_fire/icons/onfire.dmi', "human_underlay", -FIRE_LAYER)
+		var/mutable_appearance/fire_overlay = mutable_appearance('modular_skyrat/modules/better_fire/icons/onfire.dmi', "human_overlay", -FIRE_LAYER)
 		fire_overlay.appearance_flags = RESET_COLOR
 		overlays_standing[FIRE_LAYER] = fire_overlay
 		apply_overlay(FIRE_LAYER)
