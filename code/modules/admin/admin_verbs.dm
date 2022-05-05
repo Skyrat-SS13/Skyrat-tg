@@ -96,6 +96,7 @@ GLOBAL_PROTECT(admin_verbs_sounds)
 GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/one_click_antag, // SKYRAT EDIT ADDITION - ONE CLICK ANTAG
 	/client/proc/spawn_mob_spawner, // SKYRAT EDIT ADDITION
+	/client/proc/event_panel, // SKYRAT EDIT ADDITION
 	/client/proc/request_more_opfor, //SKYRAT EDIT ADDITION
 	/client/proc/fix_say, // SKYRAT EDIT ADDITION
 	/client/proc/spawn_sunbeam, // SKYRAT EDIT ADDITION
@@ -299,7 +300,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	if(holder)
 		control_freak = CONTROL_FREAK_SKIN | CONTROL_FREAK_MACROS
 
-		var/rights = holder.rank.rights
+		var/rights = holder.rank_flags()
 		add_verb(src, GLOB.admin_verbs_default)
 		if(rights & R_BUILD)
 			add_verb(src, /client/proc/togglebuildmodeself)
@@ -753,7 +754,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 /client/proc/togglebuildmodeself()
 	set name = "Toggle Build Mode Self"
 	set category = "Admin.Events"
-	if (!(holder.rank.rights & R_BUILD))
+	if (!(holder.rank_flags() & R_BUILD))
 		return
 	if(src.mob)
 		togglebuildmode(src.mob)

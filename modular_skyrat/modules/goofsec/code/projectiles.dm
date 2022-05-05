@@ -38,7 +38,7 @@
 	worn_icon_state = "norwind_worn"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
-	inhand_icon_state = "vintorez"
+	inhand_icon_state = "vintorez_worn"
 	burst_size = 2
 	fire_delay = 4
 	fire_sound = null
@@ -71,7 +71,7 @@
 	icon_state = "norwind"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
-	inhand_icon_state = "norwind"
+	inhand_icon_state = "norwind_worn"
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
 	worn_icon_state = "norwind_worn"
 	can_bayonet = TRUE
@@ -105,7 +105,7 @@
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
 	inhand_icon_state = "ostwind"
-	icon_state = "ostwind"
+	icon_state = "ostwind_worn"
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
 	worn_icon_state = "ostwind_worn"
 	w_class = WEIGHT_CLASS_BULKY
