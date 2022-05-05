@@ -5,7 +5,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 
-/obj/item/storage/belt/sabre/PopulateContents()
+/obj/item/storage/belt/sabre/cargo/PopulateContents()
 	new /obj/item/melee/sabre/cargo(src)
 	update_appearance()
 
@@ -17,3 +17,7 @@
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/swords_righthand.dmi'
 	block_chance = 20
 	armour_penetration = 25
+
+// This is here so that people can't buy the Sabres and craft them into powercrepes
+/datum/crafting_recipe/food/powercrepe
+	blacklist = list(/obj/item/melee/sabre/cargo)
