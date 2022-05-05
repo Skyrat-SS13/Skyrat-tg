@@ -176,7 +176,7 @@ GLOBAL_VAR(station_nuke_source)
 
 /obj/machinery/nuclearbomb/ui_state(mob/user)
 	if(HAS_TRAIT(user, TRAIT_CAN_USE_NUKE))
-		return GLOB.conscious_state
+		return GLOB.physical_state
 	return ..()
 
 /obj/machinery/nuclearbomb/proc/get_nuke_state()
@@ -481,7 +481,7 @@ GLOBAL_VAR(station_nuke_source)
 	safety = TRUE
 	update_appearance()
 	sound_to_playing_players('sound/machines/alarm.ogg')
-	sound_to_playing_players('modular_skyrat/modules/alerts/sound/ai/default/DeltaBOOM.ogg') //SKYRAT EDIT ADDITION
+	sound_to_playing_players('modular_skyrat/modules/alerts/sound/misc/delta_countdown.ogg') //SKYRAT EDIT ADDITION
 	if(SSticker?.mode)
 		SSticker.roundend_check_paused = TRUE
 	addtimer(CALLBACK(src, .proc/actually_explode), 100)

@@ -22,10 +22,8 @@
 		if(mod.chestplate && (mod.chestplate.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && (mod.wearer.dna.species.bodytype & BODYTYPE_DIGITIGRADE))
 			suit_supports_variations_flags |= CLOTHING_DIGITIGRADE_VARIATION
 
-		if(mod.helmet && (mod.helmet.supports_variations_flags & CLOTHING_SNOUTED_VARIATION) && mod.wearer.dna.species.mutant_bodyparts["snout"])
-			var/datum/sprite_accessory/snouts/snout = GLOB.sprite_accessories["snout"][mod.wearer.dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME]]
-			if(snout.use_muzzled_sprites)
-				suit_supports_variations_flags |= CLOTHING_SNOUTED_VARIATION
+		if(mod.helmet && (mod.helmet.supports_variations_flags & CLOTHING_SNOUTED_VARIATION) && mod.wearer.dna.species.bodytype & BODYTYPE_SNOUTED)
+			suit_supports_variations_flags |= CLOTHING_SNOUTED_VARIATION
 
 	var/icon_to_use = 'icons/mob/clothing/modsuit/mod_modules.dmi'
 	var/icon_state_to_use = module_icon_state
