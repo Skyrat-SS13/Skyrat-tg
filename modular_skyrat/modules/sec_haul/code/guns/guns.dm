@@ -38,7 +38,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g17"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_9MMPEACE
 	max_ammo = 17
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -80,7 +80,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g18"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_9MMPEACE
 	max_ammo = 33
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -214,7 +214,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_9MMPEACE
 	max_ammo = 16
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -335,7 +335,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g17"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_9MMPEACE
 	max_ammo = 12
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -374,7 +374,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_9MMPEACE
 	max_ammo = 12
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -469,7 +469,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "croon"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_9MMPEACE
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -568,7 +568,7 @@
 /obj/item/ammo_box/magazine/internal/cylinder/revolution
 	name = "revolver cylinder"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_9MMPEACE
 	max_ammo = 8
 
 /obj/item/ammo_box/revolver/revolution
@@ -578,7 +578,7 @@
 	ammo_type = /obj/item/ammo_casing/b9mm
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	caliber = CALIBER_9MM
+	caliber = CALIBER_9MMPEACE
 	start_empty = TRUE
 
 /obj/item/ammo_box/revolver/revolution/full
