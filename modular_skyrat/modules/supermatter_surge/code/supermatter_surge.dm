@@ -56,7 +56,7 @@
 
 /datum/round_event/supermatter_surge/end()
 	GLOB.main_supermatter_engine?.bullet_energy = starting_surge_power
-	priority_announce("Supermatter surge has dissipated.", "Anomaly Cleared")
+	priority_announce("The supermatter surge has dissipated.", "Anomaly Cleared")
 
 #undef SUPERMATTER_SURGE_BULLET_ENERGY_FACTOR_UPPER
 #undef SUPERMATTER_SURGE_BULLET_ENERGY_FACTOR_LOWER
