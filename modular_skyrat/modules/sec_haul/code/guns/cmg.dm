@@ -35,11 +35,11 @@
 	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/cmg/inc
-	ammo_type = /obj/projectile/bullet/incendiary/c45
+	ammo_type = /obj/item/ammo_casing/c45/inc
 	round_type = AMMO_TYPE_INCENDIARY
 
 /obj/item/ammo_box/magazine/multi_sprite/cmg/ap
-	ammo_type = /obj/projectile/bullet/c45/ap
+	ammo_type = /obj/item/ammo_casing/c45/ap
 	round_type = AMMO_TYPE_AP
 
 /obj/item/ammo_box/magazine/multi_sprite/cmg/lethal

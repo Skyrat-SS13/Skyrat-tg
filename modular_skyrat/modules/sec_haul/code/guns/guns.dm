@@ -17,7 +17,7 @@
 //////////////////GLOCK
 /obj/item/gun/ballistic/automatic/pistol/g17
 	name = "\improper GK-17"
-	desc = "A weapon from bygone times, this has been made to look like an old, blocky firearm from the 21st century. Let's hope it's more reliable. Chambered in 9mm."
+	desc = "A weapon from bygone times, this has been made to look like an old, blocky firearm from the 21st century. Let's hope it's more reliable. Chambered in 9x19mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -56,7 +56,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/g18
 	name = "\improper GK-18"
-	desc = "A CFA-made burst firing cheap polymer pistol chambered in 9mm. Its heavy duty barrel affects firerate."
+	desc = "A CFA-made burst firing cheap polymer pistol chambered in 9x19mm. Its heavy duty barrel affects firerate."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock_spec"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -98,7 +98,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/g17/mesa
 	name = "\improper Glock-17"
-	desc = "A weapon from bygone times, and this is the exact 21st century version. In fact, even more reliable. Chambered in 9mm."
+	desc = "A weapon from bygone times, and this is the exact 21st century version. In fact, even more reliable. Chambered in 9x19mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock_mesa"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -461,25 +461,25 @@
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer
-	name = "9x19mm small PDW magazine"
+	name = "9x25mm small PDW magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "croon"
-	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MMPEACE
+	ammo_type = /obj/item/ammo_casing/c9mm
+	caliber = CALIBER_9MM
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer/hp
-	ammo_type = /obj/item/ammo_casing/b9mm/hp
+	ammo_type = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/magazine/multi_sprite/dozer/ihdf
-	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
-	round_type = AMMO_TYPE_IHDF
+/obj/item/ammo_box/magazine/multi_sprite/dozer/ap
+	ammo_type = /obj/item/ammo_casing/c9mm/ap
+	round_type = AMMO_TYPE_AP
 
-/obj/item/ammo_box/magazine/multi_sprite/dozer/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	round_type = AMMO_TYPE_RUBBER
+/obj/item/ammo_box/magazine/multi_sprite/dozer/inc
+	ammo_type = /obj/projectile/bullet/incendiary/c9mm
+	round_type = AMMO_TYPE_INCENDIARY
 
 /////////////////DMR 40x32
 /obj/item/gun/ballistic/automatic/dmr
@@ -847,15 +847,16 @@
 	mag_display_ammo = TRUE
 	actions_types = null
 	realistic = TRUE
-	zoomable = TRUE
-	zoom_amt = 7
-	zoom_out_amt = 5
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/ltrifle_fire.ogg'
 	emp_damageable = TRUE
-	armadyne = TRUE
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	burst_size = 1
 	fire_delay = 10
+	company_flag = COMPANY_ARMADYNE
+
+/obj/item/gun/ballistic/automatic/norwind/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/scope, range_modifier = 1.75)
 
 /obj/item/ammo_box/magazine/multi_sprite/norwind
 	name = "12.7x30mm DMR Magazine"
@@ -878,7 +879,7 @@
 /////////////////////VINTOREZ
 /obj/item/gun/ballistic/automatic/vintorez
 	name = "\improper VKC 'Vintorez'"
-	desc = "The VKC Vintorez is a lightweight integrally-suppressed scoped carbine usually employed in stealth operations. It was rechambered to 9mm for peacekeeping work."
+	desc = "The VKC Vintorez is a lightweight integrally-suppressed scoped carbine usually employed in stealth operations. It was rechambered to 9x19mm for peacekeeping work."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/vintorez.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -900,19 +901,20 @@
 	burst_size = 2
 	fire_delay = 4
 	spread = 10
-	zoomable = TRUE
-	zoom_amt = 7
-	zoom_out_amt = 5
 	fire_sound = 'sound/weapons/gun/smg/shot_suppressed.ogg'
 	emp_damageable = TRUE
-	armadyne = TRUE
+	company_flag = COMPANY_OLDARMS
+
+/obj/item/gun/ballistic/automatic/vintorez/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/scope, range_modifier = 1.5)
 
 /obj/item/ammo_box/magazine/multi_sprite/vintorez
 	name = "9x19mm carbine magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "norwind"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_9MMPEACE
 	max_ammo = 20
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -953,15 +955,15 @@
 	realistic = TRUE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/smg_fire.ogg'
 	emp_damageable = TRUE
-	armadyne = TRUE
 	can_flashlight = TRUE
+	company_flag = COMPANY_BOLT
 
 /obj/item/ammo_box/magazine/multi_sprite/pcr
 	name = "9mm SMG magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_9MMPEACE
 	max_ammo = 32
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -999,16 +1001,16 @@
 	realistic = TRUE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sfrifle_fire.ogg'
 	emp_damageable = TRUE
-	armadyne = TRUE
 	can_bayonet = TRUE
 	can_flashlight = TRUE
+	company_flag = COMPANY_BOLT
 
 /obj/item/ammo_box/magazine/multi_sprite/pitbull
 	name = "10mm SMG magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = CALIBER_10MM
+	caliber = CALIBER_10MMAUTO
 	max_ammo = 24
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -1049,7 +1051,6 @@
 	realistic = TRUE
 	fire_sound = 'sound/weapons/gun/smg/shot.ogg'
 	emp_damageable = TRUE
-	armadyne = TRUE
 	can_bayonet = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind
