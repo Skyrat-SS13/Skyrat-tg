@@ -59,7 +59,7 @@ const jobToColor = jobId => {
 const healthToAttribute = (oxy, tox, burn, brute, attributeList) => {
   const healthSum = oxy + tox + burn + brute;
   const level = Math.min(Math.max(Math.ceil(healthSum / 31), 0), 5);
-// SKRAY EDIT - END:
+  // SKRAY EDIT - END:
   return attributeList[level];
 };
 
