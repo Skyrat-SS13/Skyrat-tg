@@ -44,6 +44,7 @@ const jobToColor = jobId => {
   if (jobId >= 50 && jobId < 60) {
     return COLORS.department.cargo;
   }
+  // SKYRAT EDIT - Crew Monitor Updates to add Service Dept
   if (jobId >= 60 && jobId < 80) {
     return COLORS.department.service;
   }
@@ -95,13 +96,13 @@ const CrewTable = (props, context) => {
   const sensors = sortBy(
     s => s.ijob
   )(data.sensors ?? []);
-  return (
-    <Table cellpadding="3" >
+  return ( // SKYRAT EDIT START - Various adjustments to re-align columns - removal of obsolete Datalink
+    <Table cellpadding="3" >{/* SKYRAT EDIT - gives a buffer to flush text*/}
       <Table.Row>
-        <Table.Cell bold colspan="2" >
+        <Table.Cell bold colspan="2" > {/* SKYRAT EDIT - Expands the first column to account for robotic wrench*/}
           Name
         </Table.Cell>
-        <Table.Cell bold collapsing textAlign="center">
+        <Table.Cell bold collapsing textAlign="center"> {/* SKYRAT EDIT - Removal of false column and changes to alignment*/}
           Status
         </Table.Cell>
         <Table.Cell bold collapsing textAlign="center">
@@ -113,7 +114,7 @@ const CrewTable = (props, context) => {
       </Table.Row>
       {sensors.map(sensor => (
         <CrewTableEntry sensor_data={sensor} key={sensor.ref} />
-      ))}
+      ))} // // SKYRAT END - Various adjustments to re-align columns - removal of obsolete Datalink
     </Table>
   );
 };
