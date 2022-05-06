@@ -5,13 +5,10 @@
 		"wings" = ACC_RANDOM,
 		"moth_antennae" = ACC_RANDOM,
 	)
-	species_traits = list(
-		LIPS,
-		HAS_FLESH,
-		HAS_BONE,
-		HAS_MARKINGS,
-		MUTCOLORS,
-	)
+
+/datum/species/moth/New()
+	. = ..()
+	species_traits |= MUTCOLORS
 
 /datum/species/moth/get_random_body_markings(list/passed_features)
 	var/name = "None"
