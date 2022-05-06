@@ -1,7 +1,26 @@
 /datum/species/lizard
 	mutant_bodyparts = list()
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR,FACEHAIR)
-	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "spines" = ACC_RANDOM, "frills" = ACC_RANDOM, "horns" = ACC_RANDOM, "body_markings" = ACC_RANDOM, "legs" = "Digitigrade Legs", "taur" = "None", "wings" = "None")
+	external_organs = list()
+	species_traits = list(
+		MUTCOLORS,
+		EYECOLOR,
+		LIPS,
+		HAS_FLESH,
+		HAS_BONE,
+		HAIR,
+		FACEHAIR,
+	)
+	default_mutant_bodyparts = list(
+		"tail" = ACC_RANDOM,
+		"snout" = ACC_RANDOM,
+		"spines" = ACC_RANDOM,
+		"frills" = ACC_RANDOM,
+		"horns" = ACC_RANDOM,
+		"body_markings" = ACC_RANDOM,
+		"legs" = "Digitigrade Legs",
+		"taur" = "None",
+		"wings" = "None",
+	)
 	learnable_languages = list(/datum/language/common, /datum/language/draconic)
 	payday_modifier = 0.75
 

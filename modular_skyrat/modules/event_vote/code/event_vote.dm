@@ -7,7 +7,7 @@
 #define LOW_CHAOS_TIMER_UPPER 15 MINUTES
 
 /// How long does the vote last?
-#define EVENT_VOTE_TIME 2 MINUTES
+#define EVENT_VOTE_TIME 1 MINUTES
 
 /// Public vote amount
 #define EVENT_PUBLIC_VOTE_AMOUNT 5
@@ -38,21 +38,27 @@
 	var/low_chaos_timer_lower = LOW_CHAOS_TIMER_LOWER
 	/// Ditto, but max
 	var/low_chaos_timer_upper = LOW_CHAOS_TIMER_UPPER
+	/// What was the last chaos level run?
+	var/last_event_chaos_level
+	/// Have we run the low chaos event system, meaning we need reset?
+	var/low_chaos_needs_reset = FALSE
 
 /// Reschedules our low-chaos event timer
 /datum/controller/subsystem/events/proc/reschedule_low_chaos(time)
 	if(time)
 		scheduled_low_chaos = world.time + time
 	else
-		scheduled_low_chaos = world.time + rand(low_chaos_timer_lower, low_chaos_timer_upper)
+		scheduled_low_chaos = world.time + rand(LOW_CHAOS_TIMER_LOWER, LOW_CHAOS_TIMER_UPPER)
+	low_chaos_needs_reset = FALSE
 
 /// Triggers a random low chaos event
 /datum/controller/subsystem/events/proc/triger_low_chaos_event()
-	if(vote_in_progress) // No two events at once.
+	if(vote_in_progress || low_chaos_needs_reset) // No two events at once.
 		return
 	for(var/datum/round_event_control/preset/preset_event in control)
 		if(preset_event.selectable_chaos_level == EVENT_CHAOS_LOW)
 			preset_event.runEvent(TRUE)
+			low_chaos_needs_reset = TRUE
 			return
 
 /// Starts a vote.
@@ -236,6 +242,9 @@
 	var/list/log_data = list("EVENT VOTE LOG ([world.time])")
 	for(var/datum/round_event_control/control in event_weighted_list)
 		log_data += "Event vote: [control.name] | VOTES: [event_weighted_list[control]]"
+		if(admin_only)
+			for(var/admin as anything in votes[control])
+				log_data += " - - [admin]"
 		total_votes += event_weighted_list[control]
 
 	log_data += "TOTAL VOTES: [total_votes]"
@@ -258,6 +267,8 @@
 	if(show_votes && !admin_only)
 		for(var/mob/iterating_user in get_eligible_players())
 			vote_message(iterating_user, "Vote ended! Winning Event: [winner.name]")
+
+	last_event_chaos_level = winner.chaos_level
 	winner.runEvent(TRUE)
 	reset()
 
@@ -324,6 +335,8 @@
 	if(EMERGENCY_ESCAPED_OR_ENDGAMED)
 		return FALSE
 	if(ispath(typepath, /datum/round_event/ghost_role) && !(GLOB.ghost_role_flags & GHOSTROLE_MIDROUND_EVENT))
+		return FALSE
+	if(!CONFIG_GET(flag/allow_consecutive_catastropic_events) && chaos_level == EVENT_CHAOS_HIGH && SSevents.last_event_chaos_level == EVENT_CHAOS_HIGH)
 		return FALSE
 
 	var/datum/game_mode/dynamic/dynamic = SSticker.mode
@@ -414,27 +427,27 @@
 			register_vote(usr, selected_event)
 			return
 		if("end_vote")
-			if(!check_rights(R_ADMIN))
+			if(!check_rights(R_PERMISSIONS))
 				return
 			end_vote(usr)
 			return
 		if("cancel_vote")
-			if(!check_rights(R_ADMIN))
+			if(!check_rights(R_PERMISSIONS))
 				return
 			cancel_vote(usr)
 			return
 		if("start_vote_admin")
-			if(!check_rights(R_ADMIN))
+			if(!check_rights(R_PERMISSIONS))
 				return
 			start_vote_admin()
 			return
 		if("start_vote_admin_chaos")
-			if(!check_rights(R_ADMIN))
+			if(!check_rights(R_PERMISSIONS))
 				return
 			start_vote_admin_chaos()
 			return
 		if("start_player_vote")
-			if(!check_rights(R_ADMIN))
+			if(!check_rights(R_PERMISSIONS))
 				return
 			var/alert_vote = tgui_alert(usr, "Do you want to show the vote outcome?", "Vote outcome", list("Yes", "No"))
 			if(!alert_vote)
@@ -445,7 +458,7 @@
 			start_player_vote(public_vote)
 			return
 		if("start_player_vote_chaos")
-			if(!check_rights(R_ADMIN))
+			if(!check_rights(R_PERMISSIONS))
 				return
 			var/alert_vote = tgui_alert(usr, "Do you want to show the vote outcome?", "Vote outcome", list("Yes", "No"))
 			if(!alert_vote)
@@ -456,7 +469,7 @@
 			start_player_vote_chaos(public_vote)
 			return
 		if("reschedule")
-			if(!check_rights(R_ADMIN))
+			if(!check_rights(R_PERMISSIONS))
 				return
 			var/alert = tgui_alert(usr, "Set custom time?", "Custom time", list("Yes", "No"))
 			if(!alert)
@@ -474,7 +487,7 @@
 			var/time
 			if(alert == "Yes")
 				time = tgui_input_number(usr, "Input custom time in seconds", "Custom time", 60, 6000, 1) * 10
-			if(!check_rights(R_ADMIN))
+			if(!check_rights(R_PERMISSIONS))
 				return
 			reschedule_low_chaos(time)
 			message_admins("[key_name_admin(usr)] has rescheduled the LOW CHAOS event system.")

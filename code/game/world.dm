@@ -160,6 +160,8 @@ GLOBAL_VAR(restart_counter)
 
 	GLOB.demo_log = "[GLOB.log_directory]/demo.log"
 
+	GLOB.event_vote_log = "[GLOB.log_directory]/event_vote.log" // SKYRAT EDIT ADDITION
+
 #ifdef UNIT_TESTS
 	GLOB.test_log = "[GLOB.log_directory]/tests.log"
 	start_log(GLOB.test_log)
@@ -182,8 +184,10 @@ GLOBAL_VAR(restart_counter)
 	start_log(GLOB.world_job_debug_log)
 	start_log(GLOB.tgui_log)
 	start_log(GLOB.world_shuttle_log)
-
-	start_log(GLOB.character_creation_log) // SKYRAT EDIT ADDITION
+	// SKYRAT EDIT ADDITION
+	start_log(GLOB.event_vote_log)
+	start_log(GLOB.character_creation_log)
+	// SKYRAT EDIT END
 
 	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
 	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently

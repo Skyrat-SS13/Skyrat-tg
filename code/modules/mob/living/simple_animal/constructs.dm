@@ -90,7 +90,7 @@
 			text_span = "purple"
 		if(THEME_HOLY)
 			text_span = "blue"
-	. = list("<span class='[text_span]'>This is [icon2html(src, user)] \a <b>[src]</b>!\n[desc]<hr>") //SKYRAT EDIT CHANGE
+	. = list("<span class='[text_span]'>This is [icon2html(src, user)] \a <b>[src]</b>!\n[desc]", EXAMINE_SECTION_BREAK) //SKYRAT EDIT CHANGE
 	if(health < maxHealth)
 		if(health >= maxHealth/2)
 			. += span_warning("[t_He] look[t_s] slightly dented.")
