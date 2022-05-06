@@ -58,10 +58,11 @@ const jobToColor = jobId => {
 // SKYRAT EDIT - START:
 const healthToAttribute = (oxy, tox, burn, brute, attributeList) => {
   const healthSum = oxy + tox + burn + brute;
-  const level = Math.min(Math.max(Math.ceil(healthSum / 31), 0), 5);{/* SKYRAT EDIT - Increased Health to account for SR's higher hp pool*/}
+  const level = Math.min(Math.max(Math.ceil(healthSum / 31), 0), 5);
+// SKRAY EDIT - END:
   return attributeList[level];
 };
-// SKRAY EDIT - END:
+
 
 const HealthStat = props => {
   const { type, value } = props;
@@ -96,7 +97,8 @@ const CrewTable = (props, context) => {
   const sensors = sortBy(
     s => s.ijob
   )(data.sensors ?? []);
-  return ( // SKYRAT EDIT START - Various adjustments to re-align columns - removal of obsolete Datalink
+  return (
+  // SKYRAT EDIT START - Various adjustments to re-align columns
     <Table cellpadding="3" >{/* SKYRAT EDIT - gives a buffer to flush text*/}
       <Table.Row>
         <Table.Cell bold colspan="2" > {/* SKYRAT EDIT - Expands the first column to account for robotic wrench*/}
@@ -114,8 +116,10 @@ const CrewTable = (props, context) => {
       </Table.Row>
       {sensors.map(sensor => (
         <CrewTableEntry sensor_data={sensor} key={sensor.ref} />
-      ))} // // SKYRAT END - Various adjustments to re-align columns - removal of obsolete Datalink
+      ))}
+
     </Table>
+  // SKYRAT EDIT START - Various adjustments to re-align columns
   );
 };
 
