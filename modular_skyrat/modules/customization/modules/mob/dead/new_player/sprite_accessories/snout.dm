@@ -2,7 +2,8 @@
 	key = "snout"
 	generic = "Snout"
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/lizard_snouts.dmi'
-	var/use_muzzled_sprites = TRUE
+	flags_for_organ = SPRITE_ACCESSORY_USE_MUZZLED_SPRITE
+	organ_type = /obj/item/organ/external/snout
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_LIZARD, SPECIES_UNATHI, SPECIES_LIZARD_ASH, SPECIES_LIZARD_SILVER)
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
@@ -12,10 +13,30 @@
 		return TRUE
 	return FALSE
 
+/obj/item/organ/external/snout
+	mutantpart_key = "snout"
+	mutantpart_info = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
+
+/obj/item/organ/external/snout/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
+	if(sprite_accessory_flags & SPRITE_ACCESSORY_USE_MUZZLED_SPRITE)
+		var/obj/item/bodypart/limb = reciever.get_bodypart(zone)
+
+		if(limb)
+			limb.bodytype |= BODYTYPE_SNOUTED
+			limb.synchronize_bodytypes(reciever)
+
+	return ..()
+
+
+/obj/item/organ/external/snout/Remove(mob/living/carbon/organ_owner, special)
+	if(ownerlimb)
+		ownerlimb.bodytype &= ~BODYTYPE_SNOUTED
+	return ..()
+
 /datum/sprite_accessory/snouts/none
 	name = "None"
 	icon_state = "none"
-	use_muzzled_sprites = FALSE
+	flags_for_organ = NONE
 	factual = FALSE
 
 /datum/sprite_accessory/snouts/mammal
@@ -355,10 +376,10 @@
 	name = "Stubby"
 	icon_state = "stubby"
 	color_src = USE_MATRIXED_COLORS
-	use_muzzled_sprites = FALSE
+	flags_for_organ = NONE
 
 /datum/sprite_accessory/snouts/mammal/leporid
 	name = "Leporid"
 	icon_state = "leporid"
 	color_src = USE_MATRIXED_COLORS
-	use_muzzled_sprites = FALSE
+	flags_for_organ = NONE

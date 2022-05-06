@@ -11,7 +11,7 @@
 	item_type = /obj/item/storage/belt/holster/thermal
 	lower_cost = CARGO_CRATE_VALUE * 8
 	upper_cost = CARGO_CRATE_VALUE * 12
-	
+
 /datum/armament_entry/cargo_gun/nanotrasen/pistol/revolver/detective
 	item_type = /obj/item/gun/ballistic/revolver/detective
 	lower_cost = CARGO_CRATE_VALUE * 9
@@ -29,12 +29,12 @@
 	item_type = /obj/item/gun/ballistic/shotgun/doublebarrel
 	lower_cost = CARGO_CRATE_VALUE * 10
 	upper_cost = CARGO_CRATE_VALUE * 12
-	
+
 /datum/armament_entry/cargo_gun/nanotrasen/shotgun/combat
 	item_type = /obj/item/gun/ballistic/shotgun/automatic/combat
 	lower_cost = CARGO_CRATE_VALUE * 10
 	upper_cost = CARGO_CRATE_VALUE * 14
-	
+
 /datum/armament_entry/cargo_gun/nanotrasen/shotgun/dualtube
 	item_type = /obj/item/gun/ballistic/shotgun/automatic/dual_tube
 	lower_cost = CARGO_CRATE_VALUE * 14
@@ -43,11 +43,12 @@
 /datum/armament_entry/cargo_gun/nanotrasen/smg
 	subcategory = ARMAMENT_SUBCATEGORY_SUBMACHINEGUN
 	interest_required = PASSED_INTEREST
+	restricted = TRUE
 
 /datum/armament_entry/cargo_gun/nanotrasen/smg/saber
 	item_type = /obj/item/gun/ballistic/automatic/proto
-	lower_cost = CARGO_CRATE_VALUE * 12
-	upper_cost = CARGO_CRATE_VALUE * 18
+	lower_cost = CARGO_CRATE_VALUE * 16
+	upper_cost = CARGO_CRATE_VALUE * 20
 
 /datum/armament_entry/cargo_gun/nanotrasen/smg/cmg
 	item_type = /obj/item/gun/ballistic/automatic/cmg
@@ -57,6 +58,7 @@
 /datum/armament_entry/cargo_gun/nanotrasen/rifle
 	subcategory = ARMAMENT_SUBCATEGORY_ASSAULTRIFLE
 	interest_required = HIGH_INTEREST
+	restricted = TRUE
 
 /datum/armament_entry/cargo_gun/nanotrasen/rifle/wtrifle
 	item_type = /obj/item/gun/ballistic/automatic/wt550
