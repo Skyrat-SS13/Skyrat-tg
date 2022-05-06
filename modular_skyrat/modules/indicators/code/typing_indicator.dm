@@ -1,5 +1,5 @@
-GLOBAL_VAR_INIT(typing_indicator_overlay, mutable_appearance('modular_skyrat/modules/indicators/icons/typing_indicator.dmi', "default0", FLY_LAYER))
-GLOBAL_VAR_INIT(emote_indicator_overlay, mutable_appearance('modular_skyrat/modules/indicators/icons/emote_indicator.dmi', "default0", FLY_LAYER))
+GLOBAL_VAR_INIT(typing_indicator_overlay, mutable_appearance('modular_skyrat/modules/indicators/icons/typing_indicator.dmi', "default0", CHAT_INDICATOR_LAYER))
+GLOBAL_VAR_INIT(emote_indicator_overlay, mutable_appearance('modular_skyrat/modules/indicators/icons/emote_indicator.dmi', "default0", CHAT_INDICATOR_LAYER))
 
 /mob
 	var/typing_indicator = FALSE

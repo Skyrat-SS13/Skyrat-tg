@@ -196,7 +196,7 @@
 	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_NAME] = value
 	var/obj/item/bodypart/head/our_head = target.get_bodypart(BODY_ZONE_HEAD)
 	our_head.bodytype |= BODYTYPE_SNOUTED
-	target.dna.species.bodytype |= BODYTYPE_SNOUTED // Snowflake code alert
+	our_head.synchronize_bodytypes(target)
 
 /datum/preference/choiced/snout/create_default_value()
 	var/datum/sprite_accessory/snouts/none/default = /datum/sprite_accessory/snouts/none
