@@ -79,7 +79,7 @@
 				if(mod_theme.modsuit_tail_colors)
 					return FALSE
 			//Hardsuit?
-			if(istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
+			if(istype(wearer.wear_suit, /obj/item/clothing/suit/space/hardsuit))
 				return FALSE
 			return TRUE
 	if(wearer.owned_turf)  //we do a lil' emoting
