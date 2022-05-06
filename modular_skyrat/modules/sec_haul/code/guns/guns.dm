@@ -517,7 +517,7 @@
 /////////////////////////////////////////////ZETA
 /obj/item/gun/ballistic/revolver/zeta
 	name = "\improper Zeta-6 'Spurchamber'"
-	desc = "A fairly common double-action six-shooter chambered for 10mm Auto."
+	desc = "A fairly common double-action six-shooter chambered for 10mm Magnum."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/zeta.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -530,18 +530,18 @@
 
 /obj/item/ammo_box/magazine/internal/cylinder/zeta
 	name = "10mm Auto revolver cylinder"
-	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = CALIBER_10MMAUTO
+	ammo_type = /obj/item/ammo_casing/c10mm
+	caliber = CALIBER_10MM
 	max_ammo = 6
 
 /obj/item/ammo_box/revolver/zeta
-	name = "10mm Auto speedloader"
+	name = "10mm Magnum speedloader"
 	desc = "Designed to quickly reload the Zeta-6."
 	icon_state = "speedloader"
-	ammo_type = /obj/item/ammo_casing/b10mm
+	ammo_type = /obj/item/ammo_casing/c10mm
 	max_ammo = 6
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	caliber = CALIBER_10MMAUTO
+	caliber = CALIBER_10MM
 	start_empty = TRUE
 
 /obj/item/ammo_box/revolver/zeta/full

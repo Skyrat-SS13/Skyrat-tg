@@ -161,7 +161,7 @@
 
 //ZETA
 /obj/item/storage/box/gunset/zeta
-	name = "10mm Auto revolver supply box"
+	name = "10mm Magnum revolver supply box"
 	desc = "Ideally contains a slow-firing revolver that packs a punch."
 
 /obj/item/storage/box/gunset/zeta/PopulateContents()
@@ -170,7 +170,7 @@
 	new /obj/item/ammo_box/revolver/zeta(src) //These start empty.
 	new /obj/item/ammo_box/revolver/zeta(src)
 	new /obj/item/ammo_box/revolver/zeta(src)
-	new /obj/item/ammo_box/advanced/b10mm(src)
+	new /obj/item/ammo_box/c10mm(src)
 
 //REVOLUTION
 /obj/item/storage/box/gunset/revolution

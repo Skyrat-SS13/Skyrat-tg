@@ -47,11 +47,11 @@
 	item_type = /obj/item/gun/ballistic/automatic/croon
 
 /datum/opposing_force_equipment/submachine_gun/pcr
-	item_type = /obj/item/gun/energy/pcr
+	item_type = /obj/item/gun/ballistic/automatic/pcr
 	description = "An accurate, fast-firing SMG chambered in 9x19mm. Fires hardlight bullets."
 
 /datum/opposing_force_equipment/submachine_gun/pitbull
-	item_type = /obj/item/gun/energy/pitbull
+	item_type = /obj/item/gun/ballistic/automatic/pitbull
 	description = "A sturdy personal defense weapon designed to fire 10mm Auto rounds. Fires hardlight bullets."
 
 /datum/opposing_force_equipment/submachine_gun/c20r
