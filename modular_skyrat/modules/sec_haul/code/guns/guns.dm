@@ -442,7 +442,7 @@
 ///////////////////////////Dozer
 /obj/item/gun/ballistic/automatic/dozer
 	name = "\improper DZR-9 'Dozer'"
-	desc = "The DZR-9, a notorious 9mm PDW that lives up to its nickname."
+	desc = "The DZR-9, a notorious 9x25mm PDW that lives up to its nickname."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/dozer.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -821,3 +821,119 @@
 
 /obj/item/ammo_box/magazine/sas14/stunslug
 	ammo_type = /obj/item/ammo_casing/s14gauge/stunslug
+
+/////////////////////////////////////////////////
+///////////////Un-Goofed Guns////////////////////
+/////////////////////////////////////////////////
+
+/// Vintorez
+/obj/item/gun/ballistic/automatic/vintorez
+	name = "\improper VKC 'Vintorez'"
+	desc = "The VKC Vintorez is a lightweight integrally-suppressed scoped carbine usually employed in stealth operations from the long since past 20th century."
+	icon = 'modular_skyrat/modules/goofsec/icons/gun_sprites.dmi'
+	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
+	icon_state = "vintorez"
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
+	worn_icon_state = "norwind_worn"
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
+	inhand_icon_state = "vintorez_worn"
+	burst_size = 2
+	fire_delay = 4
+	fire_sound = 'sound/weapons/gun/smg/shot_suppressed.ogg'
+	suppressed = TRUE
+	can_unsuppress = FALSE
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/vintorez
+	cell_type = /obj/item/stock_parts/cell/super
+	company_flag = COMPANY_OLDARMS
+
+/obj/item/gun/ballistic/automatic/vintorez/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/scope, range_modifier = 1.5)
+
+/obj/item/gun/ballistic/automatic/norwind
+	name = "\improper M112 'Norwind'"
+	desc = "A rare M112 DMR rechambered to 12.7x30mm for peacekeeping work, it comes with a scope for medium-long range engagements. A bayonet lug is visible."
+	icon = 'modular_skyrat/modules/goofsec/icons/gun_sprites.dmi'
+	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
+	worn_icon_state = "norwind_worn"
+	icon_state = "norwind"
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
+	inhand_icon_state = "norwind_worn"
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
+	worn_icon_state = "norwind_worn"
+	can_bayonet = TRUE
+	can_flashlight = TRUE
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/ltrifle_fire.ogg'
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/norwind
+	burst_size = 1
+	fire_delay = 10
+	company_flag = COMPANY_ARMADYNE
+
+/obj/item/gun/ballistic/automatic/norwind/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/scope, range_modifier = 1.75)
+
+/obj/item/gun/ballistic/automatic/ostwind
+	name = "\improper DTR-6 rifle"
+	desc = "A 6.3mm special-purpose rifle designed for specific situations."
+	icon = 'modular_skyrat/modules/goofsec/icons/gun_sprites.dmi'
+	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
+	inhand_icon_state = "ostwind"
+	icon_state = "ostwind_worn"
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
+	worn_icon_state = "ostwind_worn"
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
+	fire_delay = 2
+	burst_size = 2
+	fire_sound = 'sound/weapons/gun/smg/shot.ogg'
+	can_bayonet = TRUE
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind
+	company_flag = COMPANY_ARMADYNE
+
+/obj/item/gun/ballistic/automatic/pitbull
+	name = "\improper Pitbull PDW"
+	desc = "A sturdy personal defense weapon designed to fire 10mm Auto rounds."
+	icon = 'modular_skyrat/modules/goofsec/icons/gun_sprites.dmi'
+	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
+	inhand_icon_state = "pitbull"
+	icon_state = "pitbull"
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
+	worn_icon_state = "ostwind_worn"
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
+	fire_delay = 4.20
+	burst_size = 3
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sfrifle_fire.ogg'
+	can_bayonet = TRUE
+	can_flashlight = TRUE
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pitbull
+	company_flag = COMPANY_BOLT
+
+
+/obj/item/gun/ballistic/automatic/pcr
+	name = "\improper PCR-9 SMG"
+	desc = "An accurate, fast-firing SMG chambered in 9x19mm."
+	icon = 'modular_skyrat/modules/goofsec/icons/gun_sprites.dmi'
+	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
+	worn_icon_state = "ostwind_worn"
+	inhand_icon_state = "pcr"
+	icon_state = "pcr"
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
+	fire_delay = 1.80
+	burst_size = 5
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/smg_fire.ogg'
+	can_flashlight = TRUE
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pcr
+	company_flag = COMPANY_BOLT
