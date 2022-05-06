@@ -163,7 +163,7 @@ There are several things that need to be remembered:
 		if(!uniform_overlay)
 			//BEGIN SPECIES HANDLING
 			if((dna?.species.bodytype & BODYTYPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
-				icon_file = U.worn_icon_digi || DIGITIGRADE_UNIFORM_FILE // SKYRAT EDIT CHANGE
+				icon_file = uniform.worn_icon_digi || DIGITIGRADE_UNIFORM_FILE // SKYRAT EDIT CHANGE
 				mutant_override = TRUE
 
 			// SKYRAT EDIT ADDITION
