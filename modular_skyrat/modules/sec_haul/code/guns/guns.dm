@@ -478,7 +478,7 @@
 	round_type = AMMO_TYPE_AP
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer/inc
-	ammo_type = /obj/projectile/bullet/incendiary/c9mm
+	ammo_type = /obj/item/ammo_casing/c9mm/fire
 	round_type = AMMO_TYPE_INCENDIARY
 
 /////////////////DMR 40x32
