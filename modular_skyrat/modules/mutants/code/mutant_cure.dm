@@ -4,6 +4,7 @@
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "extractor"
 	custom_materials = list(/datum/material/iron = 3000, /datum/material/gold = 3000, /datum/material/uranium = 1000, /datum/material/diamond = 1000)
+	/// Our loaded vial.
 	var/obj/item/rna_vial/loaded_vial
 
 /obj/item/rna_extractor/attackby(obj/item/O, mob/living/user)
@@ -351,15 +352,13 @@
 	list_reagents = list(/datum/reagent/hnz = 1)
 
 
-/obj/item/storage/briefcase/hnz
-	name = "HNZ-1 biocontainer"
+/obj/item/storage/briefcase/virology/hnz
+	name = "\improper HNZ-1 Biocontainer"
 	desc = "An airtight biosealed box containing the highly reactive substance, HNZ1. Authorised personnel only."
-	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
-	icon_state = "tvirus_box"
 	w_class = WEIGHT_CLASS_SMALL
 	max_integrity = 500
 
-/obj/item/storage/briefcase/hnz/PopulateContents()
+/obj/item/storage/briefcase/virology/hnz/PopulateContents()
 	new /obj/item/reagent_containers/glass/bottle/hnz/one(src)
 	new /obj/item/reagent_containers/glass/bottle/hnz/one(src)
 	new /obj/item/circuitboard/machine/rna_recombinator(src)

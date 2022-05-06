@@ -34,7 +34,7 @@
 	else
 		species_name_string = ", [prefix_a_or_an(dna.species.name)] <EM>[dna.species.name]</EM>!"
 
-	. = list("<span class='info'>This is <EM>[!obscure_name ? name : "Unknown"]</EM>[species_name_string]<hr>") //SKYRAT EDIT CHANGE
+	. = list("<span class='info'>This is <EM>[!obscure_name ? name : "Unknown"]</EM>[species_name_string]", EXAMINE_SECTION_BREAK) //SKYRAT EDIT CHANGE
 	if(species_visible) //If they have a custom species shown, show the real one too
 		if(dna.features["custom_species"])
 			. += "[t_He] [t_is] [prefix_a_or_an(dna.species.name)] [dna.species.name]!"
@@ -47,13 +47,13 @@
 	if(dna?.species && !skipface)
 		apparent_species = ", \an [dna.species.name]"
 	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"][apparent_species]</EM>!")
-	
+
 	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"]</EM>!")
 
 	var/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
 	*/ //SKYRAT EDIT END
-	
+
 	//uniform
 	if(w_uniform && !(obscured & ITEM_SLOT_ICLOTHING) && !(w_uniform.item_flags & EXAMINE_SKIP))
 		//accessory
@@ -130,6 +130,8 @@
 		. += "[t_He] [t_is] wearing [wear_id.get_examine_string(user)]."
 
 		. += wear_id.get_id_examine_strings(user)
+
+	. += EXAMINE_SECTION_BREAK // SKYRAT EDIT ADDITION - hr sections
 
 	//Status effects
 	var/list/status_examines = status_effect_examines()

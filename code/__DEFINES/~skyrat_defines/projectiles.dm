@@ -21,3 +21,6 @@
 
 /// The caliber used by the Catanheim.
 #define CALIBER_A68 "a68"
+
+/// The caliber used by the AK-25
+#define CALIBER_732x29 "a732x29"

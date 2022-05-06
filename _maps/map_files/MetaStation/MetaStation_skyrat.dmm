@@ -2708,7 +2708,7 @@
 	height = 5;
 	id = "mining_home";
 	name = "mining shuttle bay";
-	roundstart_template = /datum/map_template/shuttle/mining/box;
+	roundstart_template = /datum/map_template/shuttle/mining/skyrat;
 	width = 7
 	},
 /turf/open/space/basic,
@@ -6390,7 +6390,7 @@
 	height = 5;
 	id = "commonmining_home";
 	name = "SS13: Common Mining Dock";
-	roundstart_template = /datum/map_template/shuttle/mining_common/meta;
+	roundstart_template = /datum/map_template/shuttle/mining_common/skyrat;
 	width = 7
 	},
 /turf/open/floor/plating,
@@ -36617,10 +36617,6 @@
 /area/commons/dorms)
 "lWE" = (
 /obj/item/radio/intercom/directional/west,
-/obj/machinery/button/door/directional/west{
-	id_tag = "MedbayFoyer";
-	pixel_y = -9
-	},
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 10
 	},
@@ -36630,6 +36626,12 @@
 /obj/item/book/manual/wiki/security_space_law{
 	pixel_x = 3;
 	pixel_y = 4
+	},
+/obj/machinery/button/door/directional/west{
+	pixel_y = -9;
+	name = "Medbay Doors Control";
+	normaldoorcontrol = 1;
+	id = "MedbayFoyer"
 	},
 /turf/open/floor/iron/white,
 /area/security/checkpoint/medical)

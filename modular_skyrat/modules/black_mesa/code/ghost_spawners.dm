@@ -147,7 +147,7 @@
 		/obj/item/storage/medkit/emergency,
 		/obj/item/storage/box/hecu_rations,
 		/obj/item/knife/combat,
-		/obj/item/armament_points_card/assaultops
+		/obj/item/armament_points_card/hecu
 	)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu
@@ -195,7 +195,7 @@
 		/obj/item/storage/medkit/emergency,
 		/obj/item/storage/box/hecu_rations,
 		/obj/item/knife/combat,
-		/obj/item/armament_points_card/assaultops,
+		/obj/item/armament_points_card/hecu,
 		/obj/item/book/granter/martial/cqc
 	)
 	id = /obj/item/card/id

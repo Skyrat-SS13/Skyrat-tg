@@ -1106,9 +1106,6 @@
 /turf/open/floor/iron,
 /area/science/research/abandoned)
 "bfO" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 6
 	},
@@ -1953,15 +1950,16 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard)
 "bGh" = (
-/obj/machinery/conveyor/inverted{
-	id = "cargoload"
-	},
 /obj/structure/disposaloutlet{
 	dir = 1;
 	name = "Cargo Deliveries"
 	},
 /obj/structure/disposalpipe/trunk{
 	dir = 8
+	},
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "cargoload"
 	},
 /turf/open/floor/iron/dark,
 /area/cargo/storage)
@@ -2070,7 +2068,7 @@
 /obj/structure/reagent_dispensers/foamtank,
 /obj/machinery/camera{
 	c_tag = "Atmospherics - Upper Fore";
-	dir = 10;
+	dir = 5;
 	name = "atmospherics camera"
 	},
 /turf/open/floor/iron/dark,
@@ -2135,7 +2133,7 @@
 	},
 /obj/machinery/camera{
 	c_tag = "Cargo Bay - Sorting";
-	dir = 9;
+	dir = 10;
 	name = "cargo camera"
 	},
 /turf/open/floor/iron/dark,
@@ -2312,16 +2310,15 @@
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
 "bPu" = (
-/obj/machinery/conveyor/inverted{
-	dir = 1;
-	id = "cargoload"
-	},
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/conveyor{
+	id = "cargoload"
 	},
 /turf/open/floor/iron,
 /area/cargo/storage)
@@ -2681,7 +2678,7 @@
 	},
 /obj/machinery/camera{
 	c_tag = "Engineering Hallway - Atmos Hallway";
-	dir = 10;
+	dir = 9;
 	name = "hallway camera"
 	},
 /obj/machinery/light/directional/north,
@@ -3220,6 +3217,14 @@
 /obj/structure/shuttle/engine/router,
 /turf/open/floor/plating,
 /area/maintenance/aft)
+"cwi" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/iron/stairs{
+	dir = 4
+	},
+/area/cargo/storage)
 "cwI" = (
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/hidden{
 	dir = 4
@@ -5568,10 +5573,10 @@
 /turf/open/floor/glass/reinforced,
 /area/engineering/atmos)
 "eES" = (
-/obj/structure/railing{
-	dir = 4
+/obj/structure/railing/corner{
+	dir = 8
 	},
-/turf/open/floor/iron/stairs,
+/turf/open/floor/iron,
 /area/cargo/storage)
 "eFl" = (
 /obj/structure/chair/office,
@@ -7198,11 +7203,11 @@
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
 "gjf" = (
-/obj/effect/turf_decal/delivery,
 /obj/structure/railing{
 	dir = 1
 	},
 /obj/machinery/newscaster/directional/west,
+/obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/cargo/storage)
 "gjt" = (
@@ -7385,6 +7390,13 @@
 	dir = 8
 	},
 /area/hallway/secondary/entry)
+"gry" = (
+/obj/machinery/button/elevator{
+	id = "publicElevator";
+	pixel_x = 25
+	},
+/turf/open/floor/iron/dark,
+/area/maintenance/port)
 "grN" = (
 /obj/machinery/computer/atmos_control/nitrous_tank{
 	dir = 8
@@ -7687,7 +7699,7 @@
 "gIs" = (
 /obj/machinery/camera{
 	c_tag = "Departures Hallway - Escape Pods";
-	dir = 5;
+	dir = 6;
 	name = "hallway camera"
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -8352,7 +8364,7 @@
 	},
 /obj/machinery/camera{
 	c_tag = "Security Post - Arrivals";
-	dir = 9
+	dir = 10
 	},
 /obj/machinery/light/directional/west,
 /obj/machinery/status_display/ai/directional/west,
@@ -8570,11 +8582,11 @@
 	},
 /area/space/nearstation)
 "hCl" = (
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
+	},
+/obj/structure/railing{
+	dir = 6
 	},
 /turf/open/floor/iron/dark/side,
 /area/cargo/storage)
@@ -8827,7 +8839,7 @@
 	},
 /obj/machinery/camera{
 	c_tag = "Atmospherics - Project Room Lower";
-	dir = 6;
+	dir = 5;
 	name = "atmospherics camera"
 	},
 /obj/machinery/status_display/evac/directional/south,
@@ -9541,9 +9553,9 @@
 	id = "CargoElevator";
 	pixel_x = -25
 	},
-/obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/light/directional/west,
+/obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/cargo/storage)
 "iDm" = (
@@ -9573,11 +9585,6 @@
 /obj/machinery/drone_dispenser,
 /turf/open/floor/iron,
 /area/science/research/abandoned)
-"iEC" = (
-/obj/effect/turf_decal/bot,
-/obj/machinery/power/floodlight,
-/turf/open/floor/iron/dark,
-/area/cargo/storage)
 "iFn" = (
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 8
@@ -10196,15 +10203,16 @@
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
 "jfp" = (
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /obj/effect/turf_decal/caution{
 	dir = 4
 	},
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/obj/structure/railing/corner,
 /turf/open/floor/iron,
 /area/cargo/storage)
 "jfC" = (
@@ -11035,8 +11043,6 @@
 /turf/open/floor/iron/dark/corner,
 /area/engineering/atmos)
 "jWy" = (
-/obj/effect/turf_decal/bot,
-/obj/effect/spawner/random/maintenance,
 /obj/machinery/camera/directional/west{
 	c_tag = "Cargo Bay - Port Upper";
 	name = "cargo camera"
@@ -11311,6 +11317,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/cargo/storage)
 "kiX" = (
@@ -12328,13 +12335,12 @@
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "lcU" = (
-/obj/machinery/conveyor/inverted{
-	dir = 1;
-	id = "cargoload"
-	},
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
+	},
+/obj/machinery/conveyor{
+	id = "cargoload"
 	},
 /turf/open/floor/iron,
 /area/cargo/storage)
@@ -12743,10 +12749,6 @@
 /turf/open/floor/plating,
 /area/maintenance/port)
 "lxv" = (
-/obj/machinery/conveyor/inverted{
-	dir = 1;
-	id = "cargoload"
-	},
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -12756,6 +12758,9 @@
 	name = "cargo camera"
 	},
 /obj/machinery/light/directional/east,
+/obj/machinery/conveyor{
+	id = "cargoload"
+	},
 /turf/open/floor/iron,
 /area/cargo/storage)
 "lxG" = (
@@ -16240,6 +16245,13 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
+"opq" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/open/floor/iron/dark,
+/area/cargo/storage)
 "opw" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -17228,18 +17240,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
-"plW" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/cargo/storage)
 "pmi" = (
 /obj/structure/ladder,
 /obj/effect/decal/cleanable/dirt,
@@ -17262,6 +17262,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/cargo/storage)
 "pnz" = (
@@ -18206,7 +18207,6 @@
 /turf/open/floor/iron,
 /area/science/research/abandoned)
 "qhj" = (
-/obj/effect/turf_decal/delivery,
 /obj/structure/railing,
 /turf/open/floor/iron/dark,
 /area/cargo/storage)
@@ -20211,10 +20211,10 @@
 /turf/open/floor/iron/dark,
 /area/maintenance/disposal/incinerator)
 "sej" = (
-/obj/effect/turf_decal/bot,
 /obj/structure/railing{
 	dir = 5
 	},
+/obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/cargo/storage)
 "seL" = (
@@ -20527,7 +20527,7 @@
 /obj/machinery/disposal/bin,
 /obj/machinery/camera{
 	c_tag = "Departures Hallway - Escape Pods";
-	dir = 5;
+	dir = 6;
 	name = "hallway camera"
 	},
 /obj/machinery/status_display/evac/directional/east,
@@ -21485,9 +21485,8 @@
 	},
 /area/cargo/storage)
 "tpO" = (
-/obj/effect/turf_decal/bot,
-/obj/effect/spawner/random/structure/crate,
 /obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/cargo/storage)
 "tqv" = (
@@ -24462,7 +24461,7 @@
 	},
 /obj/machinery/camera{
 	c_tag = "Atmospherics - Bottom Port";
-	dir = 5;
+	dir = 6;
 	name = "atmospherics camera"
 	},
 /obj/structure/extinguisher_cabinet/directional/east,
@@ -25713,11 +25712,10 @@
 /turf/open/floor/plating,
 /area/maintenance/port)
 "wPR" = (
-/obj/effect/turf_decal/bot,
-/obj/effect/spawner/random/structure/crate,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/structure/railing/corner,
 /turf/open/floor/iron/dark,
 /area/cargo/storage)
 "wQj" = (
@@ -26293,12 +26291,10 @@
 /turf/open/floor/plating,
 /area/cargo/miningoffice)
 "xsO" = (
-/obj/effect/turf_decal/bot,
-/obj/effect/spawner/random/maintenance,
-/obj/structure/railing{
-	dir = 6
+/obj/structure/railing,
+/turf/open/floor/iron/stairs{
+	dir = 4
 	},
-/turf/open/floor/iron/dark,
 /area/cargo/storage)
 "xta" = (
 /obj/effect/turf_decal/stripes/line{
@@ -27023,12 +27019,6 @@
 "xUR" = (
 /turf/open/floor/iron,
 /area/engineering/atmos/project)
-"xVr" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/cargo/storage)
 "xVv" = (
 /obj/item/crowbar,
 /turf/open/floor/iron,
@@ -60060,7 +60050,7 @@ ylQ
 xKG
 ylb
 dUT
-ylO
+gry
 oRL
 vDO
 aeJ
@@ -67768,14 +67758,14 @@ yad
 kiK
 aBo
 sej
-qqN
+qvj
 tpO
 omM
 eQG
 omM
-mmj
+opq
 xsO
-xVr
+xPI
 bhr
 rtX
 vwX
@@ -68283,13 +68273,13 @@ jve
 hBQ
 mpG
 wHB
-iEC
-iOO
 wHB
+iOO
+cwi
 uap
 ezE
 knl
-plW
+qGV
 bhr
 rtX
 biz
@@ -68542,7 +68532,7 @@ qqN
 tHg
 wHB
 jKS
-wHB
+qqN
 fRN
 oQZ
 qCM

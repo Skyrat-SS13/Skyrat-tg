@@ -50,7 +50,7 @@
 	if(id_card?.registered_account && (console_state == IRN_CONSOLE))
 		if((ACCESS_HEADS in id_card.access) || (ACCESS_QM in id_card.access))
 			parent_prog.requestonly = FALSE
-			buyer = SSeconomy.get_dep_account(id_card.registered_account.account_job.paycheck_department)
+			buyer = SSeconomy.get_dep_account(id_card.registered_account?.account_job.paycheck_department)
 			parent_prog.can_approve_requests = TRUE
 		else
 			parent_prog.requestonly = TRUE
@@ -63,6 +63,19 @@
 
 	data["budget_name"] = budget_name
 
+	var/cant_buy_restricted = TRUE
+
+	if(console_state == CARGO_CONSOLE)
+		var/obj/machinery/computer/cargo/console = parent
+		if(!console.requestonly)
+			cant_buy_restricted = FALSE
+
+	else if((console_state == IRN_CONSOLE) && id_card?.registered_account)
+		if((ACCESS_HEADS in id_card.access) || (ACCESS_QM in id_card.access))
+			if((buyer == SSeconomy.get_dep_account(id_card.registered_account.account_job.paycheck_department)) && !self_paid)
+				cant_buy_restricted = FALSE
+
+	data["cant_buy_restricted"] = !!cant_buy_restricted
 	data["budget_points"] = self_paid ? id_card?.registered_account?.account_balance : buyer?.account_balance
 	data["ammo_amount"] = ammo_purchase_num
 	data["self_paid"] = !!self_paid
@@ -82,7 +95,7 @@
 				break
 
 			var/obj/machinery/computer/cargo/cargo_comp = parent
-			if(selected_company.illegal && !cargo_comp.contraband)
+			if(selected_company.illegal && !(cargo_comp.obj_flags & EMAGGED))
 				illegal_failure = TRUE
 				break
 
@@ -129,6 +142,7 @@
 					"armament_category" = armament_entry.category,
 					"equipment_subcategory" = armament_entry.subcategory,
 					"cant_purchase" = !!cant_purchase,
+					"restricted" = !!armament_entry.restricted,
 				))
 
 			if(!LAZYLEN(subcategory_items))
@@ -435,7 +449,8 @@
 				if(possible_console.requestonly && !self_paid)
 					return
 			else if(console_state == IRN_CONSOLE)
-				if(parent_prog.requestonly && !self_paid)
+				if(!self_paid)
+					to_chat(usr, span_warning("You cannot purchase companies on a tablet without privately ordering them!"))
 					return
 
 			for(var/find_company in SSgun_companies.unpurchased_companies)
@@ -489,6 +504,8 @@
 				if(do_payment)
 					if(!buyer.adjust_money(assigned_cost))
 						return
+				if(possible_console)
+					possible_console.radio_wrapper(possible_console, "[find_company] has been purchased by [user] on [self_paid ? "[buyer.account_holder]'s balance" : "Cargo Budget"] for [abs(assigned_cost)].", RADIO_CHANNEL_SUPPLY)
 
 				SSgun_companies.purchased_companies[find_company] = found_company
 				SSgun_companies.unpurchased_companies.Remove(find_company)

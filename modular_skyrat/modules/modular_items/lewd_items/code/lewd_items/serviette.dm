@@ -95,7 +95,7 @@
 	update_icon()
 
 /obj/item/serviette_pack/attack_self(mob/user, obj/item/I)
-	if(!servleft)
+	if(servleft)
 		to_chat(user, span_notice("You take a serviette from [src]."))
 		servleft--
 		var/obj/item/serviette/used_serviette = new /obj/item/serviette

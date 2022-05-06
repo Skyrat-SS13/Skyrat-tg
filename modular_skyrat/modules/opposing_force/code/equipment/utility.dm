@@ -60,10 +60,12 @@
 	item_type = /obj/item/reagent_containers/syringe/mulligan
 	description = "A syringe containing a chemical that can completely change the user's identity."
 
+/* Removing it for lag-related reason, for now. Might make it permanent later.
 /datum/opposing_force_equipment/gear/dump_eet
 	name = "Crab-17 Phone"
 	item_type = /obj/item/suspiciousphone
 	description = "\"Bogdanoff, he did it.\" \"He bought?\" \"He went all in.\" \"Dump it.\"" // I'm sorry
+*/
 
 /datum/opposing_force_equipment/gear/borer_egg
 	name = "Cortical Borer Egg"

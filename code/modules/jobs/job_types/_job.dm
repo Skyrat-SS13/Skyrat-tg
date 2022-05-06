@@ -183,13 +183,6 @@
 		for(var/i in roundstart_experience)
 			experiencer.mind.adjust_experience(i, roundstart_experience[i], TRUE)
 
-	var/obj/item/modular_computer/tablet/pda/PDA = spawned.get_item_by_slot(ITEM_SLOT_BELT)
-	if(istype(PDA))
-		var/obj/item/computer_hardware/identifier/id = PDA.all_components[MC_IDENTIFY]
-
-		if(id)
-			id.UpdateDisplay()
-
 /datum/job/proc/announce_job(mob/living/joining_mob, job_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: /datum/job/proc/announce_job(mob/living/joining_mob)
 	if(head_announce)
 		announce_head(joining_mob, head_announce, job_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: announce_head(joining_mob, head_announce)
@@ -336,6 +329,10 @@
 	if(istype(PDA))
 		PDA.saved_identification = H.real_name
 		PDA.saved_job = J.title
+
+		var/obj/item/computer_hardware/identifier/id = PDA.all_components[MC_IDENTIFY]
+		if(id)
+			id.UpdateDisplay()
 
 
 /datum/outfit/job/get_chameleon_disguise_info()

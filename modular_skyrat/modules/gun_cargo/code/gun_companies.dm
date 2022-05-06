@@ -37,3 +37,18 @@
 
 /obj/item/gun/syringe
 	company_flag = COMPANY_INTERDYNE
+
+/obj/item/gun/ballistic/automatic/pistol
+	company_flag = COMPANY_SCARBOROUGH
+
+/obj/item/gun/ballistic/revolver/detective
+	company_flag = COMPANY_NANOTRASEN
+
+/obj/item/gun/ballistic/shotgun/doublebarrel
+	company_flag = COMPANY_NANOTRASEN
+
+/obj/item/gun/ballistic/shotgun/automatic/dual_tube
+	company_flag = COMPANY_NANOTRASEN
+
+/obj/item/gun/ballistic/rifle/boltaction/brand_new
+	company_flag = COMPANY_IZHEVSK

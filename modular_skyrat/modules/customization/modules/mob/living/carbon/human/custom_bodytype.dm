@@ -61,7 +61,7 @@
 /datum/species/proc/generate_custom_worn_icon(item_slot, obj/item/item)
 	// If already set (possibly by us, or manually, use it.)
 	var/icon/final_icon = get_custom_worn_icon(item_slot, item)
-	if(final_icon)
+	if(final_icon && icon_exists(final_icon, item.worn_icon_state || item.icon_state))
 		return final_icon
 
 	// Else check if in custom icon.

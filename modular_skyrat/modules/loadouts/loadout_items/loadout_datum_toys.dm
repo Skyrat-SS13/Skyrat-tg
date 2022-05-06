@@ -127,10 +127,6 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	name = "Cosplayer plushie"
 	item_path = /obj/item/toy/plush/sarmieplush
 
-/datum/loadout_item/toys/arcplush
-	name = "Familiar Lizard plushie"
-	item_path = /obj/item/toy/plush/arcplush
-
 /datum/loadout_item/toys/sharknet
 	name = "Gluttonous Shark plushie"
 	item_path = /obj/item/toy/plush/sharknet
@@ -138,10 +134,6 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 /datum/loadout_item/toys/pintaplush
 	name = "Smaller Deer plushie"
 	item_path = /obj/item/toy/plush/pintaplush
-
-/datum/loadout_item/toys/oleplush
-	name = "Irritable Goat plushie"
-	item_path = /obj/item/toy/plush/oleplush
 
 /datum/loadout_item/toys/szaplush
 	name = "Suspicious spider plushie"

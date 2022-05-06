@@ -4,6 +4,4 @@
 		/obj/item/construction/rcd/loaded = 3,
 		/obj/item/storage/bag/material = 2,
 		/obj/item/storage/bag/construction = 2,
-		/obj/item/taperoll/engi = 2,
-		/obj/item/taperoll/atmos = 2,
 	)

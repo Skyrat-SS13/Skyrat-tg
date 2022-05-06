@@ -43,6 +43,7 @@
 /datum/armament_entry/cargo_gun/armadyne/smg
 	subcategory = ARMAMENT_SUBCATEGORY_SUBMACHINEGUN
 	interest_required = PASSED_INTEREST
+	restricted = TRUE
 
 /datum/armament_entry/cargo_gun/armadyne/smg/dozer
 	item_type = /obj/item/gun/ballistic/automatic/dozer
@@ -52,6 +53,7 @@
 /datum/armament_entry/cargo_gun/armadyne/rifle
 	subcategory = ARMAMENT_SUBCATEGORY_ASSAULTRIFLE
 	interest_required = HIGH_INTEREST
+	restricted = TRUE
 
 /datum/armament_entry/cargo_gun/armadyne/rifle/norwind
 	item_type = /obj/item/gun/energy/norwind

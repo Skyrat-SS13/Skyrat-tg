@@ -254,7 +254,7 @@
 
 			if(mode == SCANNER_VERBOSE)
 				for(var/obj/item/bodypart/limb as anything in damaged)
-					dmgreport += "<tr><td><font color='#cc3333'>[capitalize(parse_zone(limb.body_zone))]:</font></td>"
+					dmgreport += "<tr><td><font color='#cc3333'>[capitalize(limb.plaintext_zone)]:</font></td>"
 					dmgreport += "<td><font color='#cc3333'>[(limb.brute_dam > 0) ? "[CEILING(limb.brute_dam,1)]" : "0"]</font></td>"
 					dmgreport += "<td><font color='#ff9933'>[(limb.burn_dam > 0) ? "[CEILING(limb.burn_dam,1)]" : "0"]</font></td></tr>"
 			dmgreport += "</font></table>"
@@ -388,6 +388,11 @@
 			render_list += "<span class='notice ml-1'>Detected cybernetic modifications:</span>\n"
 			render_list += "<span class='notice ml-2'>[cyberimp_detect]</span>\n"
 	// we handled the last <br> so we don't need handholding
+
+	// SKYRAT EDIT ADDITION - Mutant stuff
+	if(target.GetComponent(/datum/component/mutant_infection))
+		render_list += span_userdanger("UNKNOWN PROTO-VIRAL INFECTION DETECTED. ISOLATE IMMEDIATELY.")
+	// SKYRAT EDIT END
 
 	if(tochat)
 		to_chat(user, jointext(render_list, ""), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO)
