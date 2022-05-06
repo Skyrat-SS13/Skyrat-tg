@@ -58,8 +58,7 @@ const jobToColor = jobId => {
 // SKYRAT EDIT - START:
 const healthToAttribute = (oxy, tox, burn, brute, attributeList) => {
   const healthSum = oxy + tox + burn + brute;
-  const level = Math.min(Math.max(Math.ceil(healthSum / 31), 0), 5);
-  // SKRAY EDIT - END:
+  const level = Math.min(Math.max(Math.ceil(healthSum / 31), 0), 5); {/* SKYRAT EDIT END - Health bump from 25 to 31 for SR's health pool*/}
   return attributeList[level];
 };
 
