@@ -104,6 +104,9 @@ require only minor tweaks.
 // string - type path of the z-level's baseturf (defaults to space)
 #define ZTRAIT_BASETURF "Baseturf"
 
+///boolean - does this z disable parallax?
+#define ZTRAIT_NOPARALLAX "No Parallax"
+
 // default trait definitions, used by SSmapping
 ///Z level traits for CentCom
 #define ZTRAITS_CENTCOM list(ZTRAIT_CENTCOM = TRUE, ZTRAIT_NOPHASE = TRUE)
@@ -114,6 +117,7 @@ require only minor tweaks.
 ///Z level traits for Lavaland
 #define ZTRAITS_LAVALAND list(\
 	ZTRAIT_MINING = TRUE, \
+	ZTRAIT_NOPARALLAX = TRUE, \
 	ZTRAIT_ASHSTORM = TRUE, \
 	ZTRAIT_LAVA_RUINS = TRUE, \
 	ZTRAIT_BOMBCAP_MULTIPLIER = 2, \
