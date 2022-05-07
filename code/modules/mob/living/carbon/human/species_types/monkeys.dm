@@ -54,7 +54,11 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/monkey,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/monkey,
 	)
+<<<<<<< HEAD
 	fire_overlay = "Monkey_burning"
+=======
+	fire_overlay = "monkey"
+>>>>>>> c07fcb4cd87 (New mob fire! (#66746))
 	dust_anim = "dust-m"
 	gib_anim = "gibbed-m"
 
