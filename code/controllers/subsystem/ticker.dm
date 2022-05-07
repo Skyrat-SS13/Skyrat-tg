@@ -192,6 +192,7 @@ SUBSYSTEM_DEF(ticker)
 				SEND_SIGNAL(src, COMSIG_TICKER_ENTER_SETTING_UP)
 				current_state = GAME_STATE_SETTING_UP
 				Master.SetRunLevel(RUNLEVEL_SETUP)
+				SSevents.reschedule() // SKYRAT EDIT ADDITION
 				if(start_immediately)
 					fire()
 

@@ -19,7 +19,6 @@
 		"wings" = "None"
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	digitigrade_customization = DIGITIGRADE_OPTIONAL
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/robot/mutant/lizard,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/robot/mutant/lizard,

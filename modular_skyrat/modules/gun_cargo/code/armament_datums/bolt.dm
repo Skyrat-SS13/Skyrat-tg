@@ -48,6 +48,7 @@
 /datum/armament_entry/cargo_gun/bolt/smg
 	subcategory = ARMAMENT_SUBCATEGORY_SUBMACHINEGUN
 	interest_required = PASSED_INTEREST
+	restricted = TRUE
 
 /datum/armament_entry/cargo_gun/bolt/smg/pcr
 	item_type = /obj/item/gun/energy/pcr

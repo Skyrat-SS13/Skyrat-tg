@@ -475,6 +475,12 @@
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		if (M.rating > 1)
 			dispensable_reagents |= upgrade_reagents
+		//SKYRAT EDIT START
+		if (M.rating > 2)
+			dispensable_reagents |= upgrade_reagents2
+		if (M.rating > 3)
+			dispensable_reagents |= upgrade_reagents3
+		//SKYRAT EDIT END
 		parts_rating += M.rating
 	powerefficiency = round(newpowereff, 0.01)
 

@@ -1,5 +1,6 @@
 /datum/species/lizard
 	mutant_bodyparts = list()
+	external_organs = list()
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
