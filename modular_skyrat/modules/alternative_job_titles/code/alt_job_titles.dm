@@ -40,7 +40,7 @@
 	alt_titles = list("Captain", "Station Commander", "Commanding Officer", "Site Manager")
 
 /datum/job/cargo_technician
-	alt_titles = list("Union Technician", "Union Deck Worker", "Union Mailman", "Union Merchant", "Union Supply Operative", "Union Warehouse Stocker")
+	alt_titles = list("FTU Cargo Technician", "Union Deck Worker", "Union Mailman", "Union Merchant", "Union Supply Operative", "Union Warehouse Stocker")
 
 /datum/job/chaplain
 	alt_titles = list("Chaplain", "Priest", "Preacher", "Reverend", "Oracle", "Pontifex", "Magister", "High Priest", "Imam", "Rabbi", "Monk") //i would add OT III but honestly, thats way too specific
@@ -64,7 +64,7 @@
 	alt_titles = list("Curator", "Librarian", "Journalist", "Archivist")
 
 /datum/job/customs_agent
-	alt_titles = list("Customs Agent", "Customs Guard", "Supply Guard")
+	alt_titles = list("Customs Agent", "Union Guard", "Supply Guard")
 
 /datum/job/cyborg
 	alt_titles = list("Cyborg", "Robot", "Android")
@@ -115,7 +115,7 @@
 	alt_titles = list("Psychologist", "Psychiatrist", "Therapist", "Counsellor")
 
 /datum/job/quartermaster
-	alt_titles = list("Union Quartermaster", "Union Deck Chief", "Union Supply Foreman", "Union Head of Supply", "Union Chief Requisitions Officer", "Union Logistics Officer")
+	alt_titles = list("FTU Quartermaster", "Union Deck Chief", "Union Supply Foreman", "Union Head of Supply", "Union Chief Requisitions Officer", "Union Logistics Officer")
 
 /datum/job/research_director
 	alt_titles = list("Research Director", "Silicon Administrator", "Lead Researcher", "Biorobotics Director", "Research Supervisor", "Chief Science Officer")
@@ -147,7 +147,7 @@
 	alt_titles = list("Security Officer", "Security Operative", "Peacekeeper")
 
 /datum/job/shaft_miner
-	alt_titles = list("Union Miner", "Union Excavator", "Union Spelunker", "Union Drill Technician", "Union Prospector")
+	alt_titles = list("FTU Shaft Miner", "Union Excavator", "Union Spelunker", "Union Drill Technician", "Union Prospector")
 
 /datum/job/station_engineer
 	alt_titles = list("Station Engineer", "Emergency Damage Control Technician", "Electrician", "Engine Technician", "EVA Technician", "Mechanic")
