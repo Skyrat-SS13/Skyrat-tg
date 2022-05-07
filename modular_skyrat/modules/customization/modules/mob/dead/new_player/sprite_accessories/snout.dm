@@ -64,6 +64,30 @@
 /datum/sprite_accessory/snouts/mammal/bigbeak
 	name = "Big Beak"
 	icon_state = "bigbeak"
+	
+/datum/sprite_accessory/snouts/mammal/bigbeakshort
+	name = "Big Beak Short"
+	icon_state = "bigbeakshort"
+	
+/datum/sprite_accessory/snouts/mammal/slimbeak
+	name = "Slim Beak"
+	icon_state = "slimbeak"
+	
+/datum/sprite_accessory/snouts/mammal/slimbeakshort
+	name = "Slim Beak Short"
+	icon_state = "slimbeakshort"
+	
+/datum/sprite_accessory/snouts/mammal/slimbeakalt
+	name = "Slim Beak Alt"
+	icon_state = "slimbeakalt"
+	
+/datum/sprite_accessory/snouts/mammal/hookbeak
+	name = "Hook Beak"
+	icon_state = "hookbeak"
+	
+/datum/sprite_accessory/snouts/mammal/hookbeakbig
+	name = "Hook Beak Big"
+	icon_state = "hookbeakbig"
 
 /datum/sprite_accessory/snouts/mammal/corvidbeak
 	name = "Corvid Beak"
