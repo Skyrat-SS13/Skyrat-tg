@@ -165,7 +165,7 @@ GLOBAL_VAR_INIT(sec_level_cooldown, FALSE)
 /proc/alert_sound_to_playing(soundin, vary = FALSE, frequency = 0, falloff = FALSE, channel = 0, pressure_affected = FALSE, sound/S, override_volume = FALSE, list/players)
 	if(!S)
 		S = sound(get_sfx(soundin))
-	var/static/list/quiet_areas = typecacheof(typesof(/area/maintenance) + typesof(/area/space) + typesof(/area/commons/dorms))
+	var/static/list/quiet_areas = typecacheof(typesof(/area/station/maintenance) + typesof(/area/space) + typesof(/area/station/commons/dorms))
 	if(!players)
 		players = GLOB.player_list
 	for(var/m in players)

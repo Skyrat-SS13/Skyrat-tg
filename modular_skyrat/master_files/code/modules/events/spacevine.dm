@@ -52,7 +52,7 @@
 
 	var/obj/structure/spacevine/vine = new()
 
-	for(var/area/maintenance/maint_area in world)
+	for(var/area/station/maintenance/maint_area in world)
 		for(var/turf/floor in maint_area)
 			if(floor.Enter(vine))
 				turfs += floor
