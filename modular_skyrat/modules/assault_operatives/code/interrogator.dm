@@ -204,7 +204,7 @@
 
 	var/obj/structure/test_structure = new() // This is apparently the most intuative way to check if a turf is able to support entering.
 
-	for(var/area/maintenance/maint_area in world)
+	for(var/area/station/maintenance/maint_area in world)
 		for(var/turf/floor in maint_area)
 			if(!is_station_level(floor.z))
 				continue

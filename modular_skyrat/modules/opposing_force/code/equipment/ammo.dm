@@ -42,9 +42,9 @@
 /datum/opposing_force_equipment/ammo/mg42
 	item_type = /obj/item/ammo_box/magazine/mg42
 
-/datum/opposing_force_equipment/ammo/cm762
-	item_type = /obj/item/ammo_box/magazine/cm762
-	description = "7.62 bullets in a ten round magazine for Cantanheim 7.62 rifle."
+/datum/opposing_force_equipment/ammo/cm68
+	item_type = /obj/item/ammo_box/magazine/cm68
+	description = "6.8mm bullets in a ten round magazine for a Cantanheim 6.8 rifle."
 
 /datum/opposing_force_equipment/ammo/makarov
 	item_type = /obj/item/ammo_box/magazine/m9mm
