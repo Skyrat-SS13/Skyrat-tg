@@ -48,3 +48,13 @@
 	build_path = /obj/item/gun/syringe/smartdart
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+/datum/design/smartdartrevolver
+	name = "Rapid SmartDart Revolver"
+	desc = "An upgraded version of the standard SmartDart pistol that can chamber 6 SmartDarts"
+	id = "smartdartrevolver"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 10000, /datum/material/glass = 10000, /datum/material/silver = 4000, /datum/material/plastic = 4000)
+	build_path = /obj/item/gun/syringe/smartdart/revolver
+	category = list("Weapons")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL

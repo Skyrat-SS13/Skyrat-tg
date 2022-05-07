@@ -377,6 +377,7 @@
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
 		"monkey_helmet",
+		"smartdartrevolver",
 		"brute2medicell",
 		"burn2medicell",
 		"toxin2medicell",
