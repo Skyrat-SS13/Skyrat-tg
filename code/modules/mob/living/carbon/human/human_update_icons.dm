@@ -950,11 +950,11 @@ generate/load female uniform sprites matching all previously decided variables
 
 		// eyes
 		if(!(NOEYESPRITES in dna.species.species_traits))
-			var/obj/item/organ/eyes/E = getorganslot(ORGAN_SLOT_EYES)
-			var/mutable_appearance/eye_overlay
-			if(!E)
-				eye_overlay = mutable_appearance('icons/mob/human_face.dmi', "eyes_missing", -BODY_LAYER)
+			var/obj/item/organ/eyes/parent_eyes = getorganslot(ORGAN_SLOT_EYES)
+			if(parent_eyes)
+				add_overlay(parent_eyes.generate_body_overlay(src))
 			else
+<<<<<<< HEAD
 				eye_overlay = mutable_appearance('icons/mob/human_face.dmi', E.eye_icon_state, -BODY_LAYER)
 			if((EYECOLOR in dna.species.species_traits) && E)
 				eye_overlay.color = "#" + eye_color
@@ -972,6 +972,13 @@ generate/load female uniform sprites matching all previously decided variables
 				add_overlay(emissive_appearance)
 			//SKYRAT EDIT END
 
+=======
+				var/mutable_appearance/missing_eyes = mutable_appearance('icons/mob/human_face.dmi', "eyes_missing", -BODY_LAYER)
+				if(OFFSET_FACE in dna.species.offset_features)
+					missing_eyes.pixel_x += dna.species.offset_features[OFFSET_FACE][1]
+					missing_eyes.pixel_y += dna.species.offset_features[OFFSET_FACE][2]
+				add_overlay(missing_eyes)
+>>>>>>> 87d2703af47 (Splits eye color into two vars | Heterochromia Quirk (#66164))
 
 	update_inv_head()
 	update_inv_wear_mask()
