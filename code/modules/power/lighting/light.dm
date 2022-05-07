@@ -139,12 +139,12 @@
 		return
 	. += mutable_appearance(overlay_icon, base_state)
 
-<<<<<<< HEAD
+
 //SKYRAT EDIT ADDITION BEGIN - AESTHETICS
 #define LIGHT_ON_DELAY_UPPER 3 SECONDS
 #define LIGHT_ON_DELAY_LOWER 1 SECONDS
 //SKYRAT EDIT END
-=======
+
 // Area sensitivity is traditionally tied directly to power use, as an optimization
 // But since we want it for fire reacting, we disregard that
 /obj/machinery/light/setup_area_power_relationship()
@@ -166,7 +166,6 @@
 /obj/machinery/light/proc/handle_fire(area/source, new_fire)
 	SIGNAL_HANDLER
 	update()
->>>>>>> 1f51bd797e1 (Firelock optimization and behavior changes (#66250))
 
 // update the icon_state and luminosity of the light depending on its state
 /obj/machinery/light/proc/update(trigger = TRUE, instant = FALSE, play_sound = TRUE) //SKYRAT EDIT CHANGE
