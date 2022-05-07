@@ -118,9 +118,11 @@
 
 //The tail
 /datum/sprite_accessory/tails/vox
-	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/vox_tails.dmi'
+	icon = 'modular_skyrat/modules/better_vox/icons/accessories/vox_tail.dmi'
 	name = "Vox Tail"
 	icon_state = "vox"
+	color_src = 0
+	gender_specific = FALSE
 	recommended_species = list(SPECIES_VOX)
 
 //The tail markings

@@ -1,11 +1,10 @@
 /datum/species/vox
-	// Bird-like humanoids
 	name = "Vox"
 	id = SPECIES_VOX
-	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/vox_eyes.dmi'
+	eyes_icon = 'modular_skyrat/modules/better_vox/icons/bodyparts/vox_eyes.dmi'
 	say_mod = "skrees"
-	default_color = "#00FF00"
 	can_augment = FALSE
+	digitigrade_customization = DIGITIGRADE_NEVER // We have our own unique sprites!
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -13,7 +12,7 @@
 		HAS_FLESH,
 		HAS_BONE,
 		HAIR,
-		FACEHAIR
+		FACEHAIR,
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
@@ -27,9 +26,6 @@
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
 		"tail" = "Vox Tail",
-		"legs" = "Digitigrade Legs",
-		"snout" = "Vox Snout",
-		"spines" = ACC_RANDOM
 	)
 	attack_verb = "slash"
 	attack_effect = ATTACK_EFFECT_CLAW
@@ -42,7 +38,7 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	learnable_languages = list(/datum/language/common, /datum/language/vox, /datum/language/schechi)
 
-		// Vox are cold resistant, but also heat sensitive
+	// Vox are cold resistant, but also heat sensitive
 	bodytemp_heat_damage_limit = (BODYTEMP_HEAT_DAMAGE_LIMIT - 15) // being cold resistant, should make you heat sensitive actual effect ingame isn't much
 	bodytemp_cold_damage_limit = (BODYTEMP_COLD_DAMAGE_LIMIT - 30)
 
@@ -64,17 +60,18 @@
 		LOADOUT_ITEM_GLASSES = VOX_EYES_ICON,
 		LOADOUT_ITEM_BELT = VOX_BELT_ICON,
 		LOADOUT_ITEM_MISC = VOX_BACK_ICON,
-		LOADOUT_ITEM_EARS = VOX_EARS_ICON
+		LOADOUT_ITEM_EARS = VOX_EARS_ICON,
 	)
+
 
 /datum/species/vox/pre_equip_species_outfit(datum/job/job, mob/living/carbon/human/equipping, visuals_only)
 	. = ..()
-	var/datum/outfit/vox/O = new /datum/outfit/vox
-	equipping.equipOutfit(O, visuals_only)
+	var/datum/outfit/vox/vox_outfit = new /datum/outfit/vox
+	equipping.equipOutfit(vox_outfit, visuals_only)
 	equipping.internal = equipping.get_item_for_held_index(2)
 	equipping.update_internals_hud_icon(1)
 
-/datum/species/vox/random_name(gender,unique,lastname)
+/datum/species/vox/random_name(gender, unique, lastname)
 	if(unique)
 		return random_unique_vox_name()
 
@@ -85,29 +82,7 @@
 
 	return randname
 
-/datum/species/vox/get_random_features()
-	var/list/returned = MANDATORY_FEATURE_LIST
-	returned["mcolor"] = pick("#77DD88", "#77DDAA", "#77CCDD", "#77DDCC")
-	returned["mcolor2"] = pick("#EEDD88", "#EECC88")
-	returned["mcolor3"] = pick("#222222", "#44EEFF", "#44FFBB", "#8844FF", "#332233")
-	return returned
-
-/datum/species/vox/get_random_body_markings(list/passed_features)
-	var/name = pick(list("Vox", "Vox Hive", "Vox Nightling", "Vox Heart", "Vox Tiger"))
-	var/datum/body_marking_set/BMS = GLOB.body_marking_sets[name]
-	var/list/markings = list()
-	if(BMS)
-		markings = assemble_body_markings_from_set(BMS, passed_features, src)
-	return markings
-
 /datum/species/vox/get_custom_worn_icon(item_slot, obj/item/item)
-	// snowflakey but vox legs weird.
-	if(item_slot == LOADOUT_ITEM_SHOES)
-		var/obj/item/bodypart/leg = bodypart_overrides[BODY_ZONE_L_LEG] || bodypart_overrides[BODY_ZONE_R_LEG]
-		if(initial(leg?.limb_id) != "digitigrade")
-			// normal legs, force using human shoes
-			return item.worn_icon || item.icon
-
 	return item.worn_icon_vox
 
 /datum/species/vox/set_custom_worn_icon(item_slot, obj/item/item, icon/icon)
