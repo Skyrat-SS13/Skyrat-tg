@@ -60,6 +60,15 @@
 		to_chat(user, span_notice("The [container] is unable to fit inside of the [src]! Try using a <b>SmartDart</b> instead."))
 		return FALSE
 
+//Rapid Smartdart Revolver
+/obj/item/gun/syringe/smartdart/revolver
+	name = "Rapid SmartDart revolver"
+	desc = "an upgraded version of the standard SmartDart pistol that can chamber 6 SmartDarts"
+	icon_state = "revolver"
+	worn_icon_state = "gun"
+	max_syringes = 6
+	has_syringe_overlay = FALSE
+
 //Smartdart projectiles
 /obj/item/ammo_casing/syringegun/dart
 	harmful = FALSE
