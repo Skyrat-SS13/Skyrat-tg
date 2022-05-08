@@ -32,7 +32,7 @@
 	. += "<br>You can unload the underbarrel device by [span_bold("right clicking with an empty hand")]."
 
 	for(var/obj/item/reagent_containers/syringe/dart in underbarrel.syringes)
-		. += "There is a [dart] loaded"
+		. += "There is a [dart] loaded."
 
 /obj/item/gun/syringe/smartdart/underbarrel
 	name = "SmartDart underbarrel device"
