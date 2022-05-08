@@ -731,7 +731,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, hit_atom, throwingdatum)
 		if(get_temperature() && isliving(hit_atom))
 			var/mob/living/L = hit_atom
-			L.IgniteMob()
+			L.ignite_mob()
 		var/itempush = 1
 		if(w_class < 4)
 			itempush = 0 //too light to push anything
@@ -1383,9 +1383,9 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(unique_reskin[pick][RESKIN_WORN_ICON_STATE])
 		if(is_swappable)
 			reskinned_glasses.current_worn_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
-			icon_state = reskinned_glasses.current_worn_state + "_R"
+			worn_icon_state = reskinned_glasses.current_worn_state + "_R"
 		else
-			icon_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
+			worn_icon_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
 
 	if(unique_reskin[pick][RESKIN_INHAND_L])
 		lefthand_file = unique_reskin[pick][RESKIN_INHAND_L]
