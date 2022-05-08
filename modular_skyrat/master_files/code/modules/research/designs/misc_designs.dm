@@ -51,7 +51,7 @@
 
 /datum/design/smartdartrevolver
 	name = "Rapid SmartDart Revolver"
-	desc = "An upgraded version of the standard SmartDart pistol that can chamber 6 SmartDarts"
+	desc = "An upgraded version of the standard SmartDart pistol that can chamber 6 SmartDarts."
 	id = "smartdartrevolver"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 10000, /datum/material/glass = 10000, /datum/material/silver = 4000, /datum/material/plastic = 4000)
