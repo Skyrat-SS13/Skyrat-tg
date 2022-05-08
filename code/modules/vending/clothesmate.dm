@@ -25,6 +25,12 @@
 		/obj/item/clothing/head/beret/black = 3,
 		/obj/item/clothing/head/kippah = 3,
 		/obj/item/clothing/head/taqiyahred = 3,
+<<<<<<< HEAD
+=======
+		/obj/item/clothing/mask/bandana = 3,
+		/obj/item/clothing/mask/bandana/striped = 3,
+		/obj/item/clothing/mask/bandana/skull = 3,
+>>>>>>> e5909ce7388 (Bandana GAGS follow-up (#66605))
 		/obj/item/clothing/gloves/fingerless = 2,
 		/obj/item/clothing/neck/scarf/pink = 3,
 		/obj/item/clothing/neck/scarf/red = 3,
