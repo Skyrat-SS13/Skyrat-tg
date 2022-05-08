@@ -63,7 +63,7 @@
 //Rapid Smartdart Revolver
 /obj/item/gun/syringe/smartdart/revolver
 	name = "Rapid SmartDart Revolver"
-	desc = "An upgraded version of the standard SmartDart pistol that can chamber 6 SmartDarts"
+	desc = "An upgraded version of the standard SmartDart pistol that can chamber 6 SmartDarts."
 	icon_state = "revolver"
 	worn_icon_state = "gun"
 	max_syringes = 6
