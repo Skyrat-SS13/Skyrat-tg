@@ -1378,7 +1378,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
 
 //Donation reward for Konstyantyn
-	/obj/item/clothing/accessory/badge/holo/jade
+/obj/item/clothing/accessory/badge/holo/jade
     name = "jade holobadge"
     desc = "A strangely green holobadge. 'Lieutenant Uriah' is stamped onto it, above the letters JS."
     icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
