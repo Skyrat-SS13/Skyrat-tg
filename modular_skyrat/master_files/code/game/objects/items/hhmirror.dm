@@ -126,15 +126,15 @@
 				human_user.update_hair()
 
 		if(BODY_ZONE_PRECISE_EYES)
-			var/new_eye_color = input(amazed_human, "Choose your eye color", "Eye Color", amazed_human.eye_color_left) as color|null
+			var/new_eye_color = input(human_user, "Choose your eye color", "Eye Color", human_user.eye_color_left) as color|null
 			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 				return TRUE
 			if(new_eye_color)
-				amazed_human.eye_color_left = sanitize_hexcolor(new_eye_color)
-				amazed_human.eye_color_right = sanitize_hexcolor(new_eye_color)
-				amazed_human.dna.update_ui_block(DNA_EYE_COLOR_LEFT_BLOCK)
-				amazed_human.dna.update_ui_block(DNA_EYE_COLOR_RIGHT_BLOCK)
-				amazed_human.update_body()
+				human_user.eye_color_left = sanitize_hexcolor(new_eye_color)
+				human_user.eye_color_right = sanitize_hexcolor(new_eye_color)
+				human_user.dna.update_ui_block(DNA_EYE_COLOR_LEFT_BLOCK)
+				human_user.dna.update_ui_block(DNA_EYE_COLOR_RIGHT_BLOCK)
+				human_user.update_body()
 
 /obj/item/hhmirror/wracemagic
 	name = "raceless handheld magic mirror"
@@ -209,16 +209,16 @@
 							human_user.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
 					human_user.update_hair()
 
-		if(BODY_ZONE_PRECISE_EYES)
-			var/new_eye_color = input(amazed_human, "Choose your eye color", "Eye Color", amazed_human.eye_color_left) as color|null
-			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-				return TRUE
-			if(new_eye_color)
-				amazed_human.eye_color_left = sanitize_hexcolor(new_eye_color)
-				amazed_human.eye_color_right = sanitize_hexcolor(new_eye_color)
-				amazed_human.dna.update_ui_block(DNA_EYE_COLOR_LEFT_BLOCK)
-				amazed_human.dna.update_ui_block(DNA_EYE_COLOR_RIGHT_BLOCK)
-				amazed_human.update_body()
+			if(BODY_ZONE_PRECISE_EYES)
+				var/new_eye_color = input(human_user, "Choose your eye color", "Eye Color", human_user.eye_color_left) as color|null
+				if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+					return TRUE
+				if(new_eye_color)
+					human_user.eye_color_left = sanitize_hexcolor(new_eye_color)
+					human_user.eye_color_right = sanitize_hexcolor(new_eye_color)
+					human_user.dna.update_ui_block(DNA_EYE_COLOR_LEFT_BLOCK)
+					human_user.dna.update_ui_block(DNA_EYE_COLOR_RIGHT_BLOCK)
+					human_user.update_body()
 		charges--
 	if(charges == 0)
 		qdel(src)

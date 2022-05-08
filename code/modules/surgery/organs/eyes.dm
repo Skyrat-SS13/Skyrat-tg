@@ -42,12 +42,11 @@
 /obj/item/organ/eyes/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = FALSE, initialising)
 	. = ..()
 	if(ishuman(eye_owner))
-		// SKYRAT EDIT ADDITION
 		var/mob/living/carbon/human/human_owner = eye_owner
+		// SKYRAT EDIT ADDITION
 		if(human_owner.emissive_eyes)
 			is_emissive = TRUE
 		// SKYRAT EDIT END
-		var/mob/living/carbon/human/human_owner = eye_owner
 		old_eye_color_left = human_owner.eye_color_left
 		old_eye_color_right = human_owner.eye_color_right
 		if(eye_color_left)
