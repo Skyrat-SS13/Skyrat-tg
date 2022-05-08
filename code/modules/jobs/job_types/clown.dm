@@ -99,6 +99,7 @@
 		M.mutadone_proof = TRUE
 	var/datum/atom_hud/fan = GLOB.huds[DATA_HUD_FAN]
 	fan.add_hud_to(H)
+	H.faction |= FACTION_CLOWN
 
 //Skyrat Edit Start: Floor Demon
 /datum/outfit/job/clown_free
