@@ -427,5 +427,5 @@
 /datum/loadout_item/accessories/mercbadge
 	name = "Jade Badge"
 	item_path = /obj/item/clothing/accessory/badge/holo/jade
-	ckeywhitelist = list("Konstyantyn")
+	ckeywhitelist = list("konstyantyn")
 
