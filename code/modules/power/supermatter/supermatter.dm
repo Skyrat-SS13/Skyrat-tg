@@ -250,6 +250,19 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	var/freonbonus = 0
 	///Can the crystal trigger the station wide anomaly spawn?
 	var/anomaly_event = TRUE
+<<<<<<< HEAD
+=======
+	///Hue shift of the zaps color based on the power of the crystal
+	var/hue_angle_shift = 0
+	///If an admin wants a sure cascade with the delamination just set this to true (don't be a badmin)
+	var/admin_cascade = FALSE
+	///Do we have a destabilizing crystal attached?
+	var/has_destabilizing_crystal = FALSE
+	///Has the cascade been triggered?
+	var/cascade_initiated = FALSE
+	///Reference to the warp effect
+	var/atom/movable/supermatter_warp_effect/warp
+>>>>>>> b7bd579dee1 (Supermatter zaps now are colored based on the power (#66639))
 
 /obj/machinery/power/supermatter_crystal/Initialize(mapload)
 	. = ..()
@@ -532,7 +545,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 		if(VORTEX_ANOMALY)
 			new /obj/effect/anomaly/bhole(local_turf, 20, FALSE)
 
-/obj/machinery/proc/supermatter_zap(atom/zapstart = src, range = 5, zap_str = 4000, zap_flags = ZAP_SUPERMATTER_FLAGS, list/targets_hit = list(), zap_cutoff = 1500, power_level = 0, zap_icon = DEFAULT_ZAP_ICON_STATE)
+/obj/machinery/proc/supermatter_zap(atom/zapstart = src, range = 5, zap_str = 4000, zap_flags = ZAP_SUPERMATTER_FLAGS, list/targets_hit = list(), zap_cutoff = 1500, power_level = 0, zap_icon = DEFAULT_ZAP_ICON_STATE, color = null)
 	if(QDELETED(zapstart))
 		return
 	. = zapstart.dir
@@ -621,7 +634,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	//Do the animation to zap to it from here
 	if(!(zap_flags & ZAP_ALLOW_DUPLICATES))
 		LAZYSET(targets_hit, target, TRUE)
-	zapstart.Beam(target, icon_state=zap_icon, time = 0.5 SECONDS)
+	zapstart.Beam(target, icon_state=zap_icon, time = 0.5 SECONDS, beam_color = color)
 	var/zapdir = get_dir(zapstart, target)
 	if(zapdir)
 		. = zapdir
@@ -670,7 +683,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 		var/child_targets_hit = targets_hit
 		if(zap_count > 1)
 			child_targets_hit = targets_hit.Copy() //Pass by ref begone
-		supermatter_zap(target, new_range, zap_str, zap_flags, child_targets_hit, zap_cutoff, power_level, zap_icon)
+		supermatter_zap(target, new_range, zap_str, zap_flags, child_targets_hit, zap_cutoff, power_level, zap_icon, color)
 
 /obj/machinery/power/supermatter_crystal/engine
 	is_main_engine = TRUE
