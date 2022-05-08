@@ -42,19 +42,16 @@
 /obj/item/organ/eyes/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = FALSE, initialising)
 	. = ..()
 	if(ishuman(eye_owner))
+		// SKYRAT EDIT ADDITION
 		var/mob/living/carbon/human/human_owner = eye_owner
-<<<<<<< HEAD
-		if (human_owner.emissive_eyes)
+		if(human_owner.emissive_eyes)
 			is_emissive = TRUE
-		old_eye_color = human_owner.eye_color
-		if(eye_color)
-			human_owner.eye_color = eye_color
-=======
+		// SKYRAT EDIT END
+		var/mob/living/carbon/human/human_owner = eye_owner
 		old_eye_color_left = human_owner.eye_color_left
 		old_eye_color_right = human_owner.eye_color_right
 		if(eye_color_left)
 			human_owner.eye_color_left = eye_color_left
->>>>>>> 87d2703af47 (Splits eye color into two vars | Heterochromia Quirk (#66164))
 		else
 			eye_color_left = human_owner.eye_color_left
 		if(eye_color_right)
@@ -71,18 +68,14 @@
 /obj/item/organ/eyes/proc/refresh()
 	if(ishuman(owner))
 		var/mob/living/carbon/human/affected_human = owner
-<<<<<<< HEAD
-		old_eye_color = affected_human.eye_color
+		// SKYRAT EDIT ADDITION
 		if (affected_human.emissive_eyes)
 			is_emissive = TRUE
-		if(eye_color)
-			affected_human.eye_color = eye_color
-=======
+		// SKYRAT EDIT END
 		old_eye_color_left = affected_human.eye_color_left
 		old_eye_color_right = affected_human.eye_color_right
 		if(eye_color_left)
 			affected_human.eye_color_left = eye_color_left
->>>>>>> 87d2703af47 (Splits eye color into two vars | Heterochromia Quirk (#66164))
 		else
 			eye_color_left = affected_human.eye_color_left
 		if(eye_color_right)
@@ -377,12 +370,8 @@
 
 /obj/item/organ/eyes/robotic/glow/proc/assume_rgb(newcolor)
 	current_color_string = newcolor
-<<<<<<< HEAD
-	eye_color = current_color_string //SKYRAT EDIT CHANGE
-=======
 	eye_color_left = RGB2EYECOLORSTRING(current_color_string)
 	eye_color_right = eye_color_left
->>>>>>> 87d2703af47 (Splits eye color into two vars | Heterochromia Quirk (#66164))
 	if(!QDELETED(owner) && ishuman(owner)) //Other carbon mobs don't have eye color.
 		owner.dna.species.handle_body(owner)
 

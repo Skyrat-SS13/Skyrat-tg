@@ -31,11 +31,7 @@
 	if (!..(preferences))
 		return FALSE
 
-<<<<<<< HEAD
-	return preferences.parent?.get_exp_living(pure_numeric = TRUE) >= PLAYTIME_HARDCORE_RANDOM // SKYRAT EDIT - ORIGINAL: return preferences.parent.get_exp_living(pure_numeric = TRUE) >= PLAYTIME_HARDCORE_RANDOM
-=======
 	return preferences.parent && (preferences.parent.get_exp_living(pure_numeric = TRUE) >= PLAYTIME_HARDCORE_RANDOM)
->>>>>>> 87d2703af47 (Splits eye color into two vars | Heterochromia Quirk (#66164))
 
 /datum/preference/choiced/random_name
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
