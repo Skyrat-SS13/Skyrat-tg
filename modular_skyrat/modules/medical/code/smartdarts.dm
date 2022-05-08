@@ -62,6 +62,7 @@
 
 /obj/item/gun/syringe/smartdart/examine(mob/user)
 	. = ..()
+
 	for(var/obj/item/reagent_containers/syringe/dart in syringes)
 		. += "There is a [dart] loaded"
 
