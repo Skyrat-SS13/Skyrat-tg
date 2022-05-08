@@ -80,7 +80,7 @@
 		to_chat(vampire, span_warning("You don't belong here!"))
 		vampire.adjustFireLoss(10 * delta_time)
 		vampire.adjust_fire_stacks(3 * delta_time)
-		vampire.IgniteMob()
+		vampire.ignite_mob()
 
 /datum/species/hemophage/get_species_description()
 	return "Oftentimes feared for the different bits of folklore surrounding their condition, \
