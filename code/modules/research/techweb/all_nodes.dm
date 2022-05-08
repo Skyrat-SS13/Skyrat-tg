@@ -377,7 +377,6 @@
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
 		"monkey_helmet",
-		"smartdartrevolver",
 		"brute2medicell",
 		"burn2medicell",
 		"toxin2medicell",
@@ -1458,7 +1457,10 @@
 	prereq_ids = list("adv_engi", "weaponry")
 	design_ids = list(
 		"pin_loyalty",
-		"ammo_workbench", //SKYRAT EDIT ADDITION
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"smartdartrevolver",
+		"ammo_workbench",
+		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	required_experiments = list(/datum/experiment/ordnance/explosive/highyieldbomb)
