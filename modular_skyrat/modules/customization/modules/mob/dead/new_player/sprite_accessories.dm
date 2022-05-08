@@ -1,5 +1,8 @@
 GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 
+/// The flag to show that snouts should use the muzzled sprite.
+#define SPRITE_ACCESSORY_USE_MUZZLED_SPRITE (1<<0)
+
 /datum/sprite_accessory
 	///Unique key of an accessroy. All tails should have "tail", ears "ears" etc.
 	var/key = null
@@ -12,6 +15,10 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	///Set this to a name, then the accessory will be shown in preferences, if a species can have it. Most accessories have this
 	///Notable things that have it set to FALSE are things that need special setup, such as genitals
 	var/generic
+
+	/// For all the flags that you need to pass from a sprite_accessory to an organ, when it's linked to one.
+	/// (i.e. passing through the fact that a snout should or shouldn't use a muzzled sprite for head worn items)
+	var/flags_for_organ = NONE
 
 	color_src = USE_ONE_COLOR
 
@@ -185,6 +192,11 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/socks/socks_thigh
 	name = "Thigh-high"
 	icon_state = "socks_thigh"
+	use_static = null
+
+/datum/sprite_accessory/socks/striped_thigh
+	name = "Thigh-high (Striped)"
+	icon_state = "striped_thigh"
 	use_static = null
 
 /datum/sprite_accessory/socks/bee_thigh

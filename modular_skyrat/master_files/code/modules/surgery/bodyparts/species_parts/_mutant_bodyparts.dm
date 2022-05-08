@@ -40,7 +40,7 @@
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/mammal_parts_greyscale.dmi'
 	limb_id = SPECIES_MAMMAL
 	uses_mutcolor = TRUE
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_SNOUTED //This is temporary. Ideally the "snout" external organ adds to this.
+	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC
 
 /obj/item/bodypart/chest/mutant
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/mammal_parts_greyscale.dmi'

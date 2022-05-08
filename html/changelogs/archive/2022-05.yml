@@ -75,3 +75,285 @@
   - imageadd: added in icons for blindfold HUDs
   - code_imp: changes reskinning code to allow for glasses with swapable icons to
       be reskinned.
+2022-05-03:
+  Arkatos and wiki contributors:
+  - qol: Mining voucher redeem selection now uses a radial menu and provides additional
+      information about the voucher sets. Literally years in the making, enjoy!
+  Gandalf2k15:
+  - rscadd: Mutants have been overhauled!
+  GoldenAlpharex:
+  - bugfix: Lizard limbs are now back to their uniformized color, from the pre-Kapulimbs
+      era.
+  - bugfix: Lizard digitigrade legs now use the proper sprite.
+  - bugfix: Humanoids can now have digitigrade legs again.
+  - bugfix: Xenomorph Hybrids can now have digitigrade legs again.
+  LeonY24:
+  - rscadd: SCAR-L assault rifle.
+  Nerev4r:
+  - rscdel: Removes snail speech modifier. Try using a lot of ellipses instead!
+  - rscdel: Lowers the amount of water that snails leave behind.
+  Ryll/Shaps:
+  - balance: Armored bounty hunters are no longer being issued flamethrowers. Instead,
+      they are now issued dual-tube shotguns filled with rubbershot and trailless
+      incendiary slugs, as well as a 9mm Makarov loaded with fire bullets.
+  SkyratBot:
+  - qol: Adds radio messages to the delaminating HFR to let atmosians know what's
+      wrong with it. Unless the HFR has been emped
+  - refactor: Wizard casting clothes now use a bitflag instead of a typecache. This
+      allows for nonstandard headwear and suits to be varedited into casting clothes.
+  - balance: The enchanted modsuit's chestplate and helmet must now be deployed in
+      order to cast robed spells.
+  - bugfix: Fixed being able to ride dead space carp.
+  - bugfix: Fixes an issue with service borg apparatuses getting multiple beakers
+      in it's contents.
+  - rscadd: adds the "how to charge your PDA" poster
+  - bugfix: Cryo cell overlay should properly display above mobs now
+  - bugfix: Drones can no longer give themselves access to machines/wires through
+      consoles.
+  - bugfix: H.E.C.K. suit now once again prevents your clothes from burning and your
+      hair from sticking out.
+  - bugfix: pAIs can now use Newscaster UIs, and all Silicon can now use Newscasters
+      in general (except the Bounty board, as they have no money to payout).
+  - bugfix: Cayenne can no longer use the nuke from anywhere.
+  - bugfix: Drones are exempt from the lathe tax, off and on station.
+  Tastyfish:
+  - refactor: Examine block HR section breaks are now handled such that they don't
+      repeat or show up at the bottom.
+  Zonespace27:
+  - rscdel: Removed Tommy Gun from Armadyne oldarms
+  - spellcheck: Fixed bluespace syringe box name
+  - balance: CFA weapons are cheaper
+  - rscadd: 4 permit huds can be bought from the cargodrobe
+  - rscadd: interdyne now sells more contraband-and-not chemicals
+  - balance: AMMO_BULK category now adds 4 interest instead of 3
+  - bugfix: Serviettes now can be taken out of their packs
+  softcerv:
+  - bugfix: can now research scan like normal sci-goggles.
+  tf-4:
+  - balance: Scarborough Arms now needs an emagged supply console to purchase.
+2022-05-04:
+  IsaacTheSharkWolf:
+  - bugfix: fixed (most of) the wrong facing cameras.
+  - bugfix: fixed the misplaced airlock button in the toxin incinerator.
+  - bugfix: fixed prison visitation shutters having no working button.
+  - bugfix: fixed some access issues with medbay maintenance doors.
+  - bugfix: fixed missing disposal pipe section in NTR's office.
+  - bugfix: fixed missing tank compressor in toxin lab.
+  SkyratBot:
+  - rscadd: Replaced secborg sprite
+  - rscadd: 'Mechs now have a weapons safety, which can be toggled with the Middle
+      Mouse button. Don''t worry, it defaults to off. expansion: All mechs now use
+      the mouse reticle, and the reticle is disabled when weapons safety is turned
+      on.'
+  - bugfix: AIs can use mech equipment again. With weapons safety off, equipment is
+      used. With weapons safety on, AI clicks are used.
+  - bugfix: MODsuit plasma stabilizers no longer protect plasmamen from self-combustion
+      if they aren't wearing an envirosuit or gloves.
+  - rscadd: Hey did you know you can charge your tablet by microwaving it?
+  - bugfix: fix oversight with prop gasmasks having some of the features of normal
+      ones but without fov
+  Tastyfish:
+  - imageadd: Teshari sprites for skill reward cloaks.
+  - bugfix: Fixes teshari again.
+  - qol: You can now identify what liquid a floor is covered in, if you have a reagent
+      scanner / reagent glasses.
+  Zonespace27:
+  - balance: Guncargo AKM removed and replaced with a worse version
+2022-05-05:
+  Arctaisia:
+  - rscdel: Removes the Arc plushie and Ole plushie, as well as removing them from
+      the loadout selection.
+  - rscdel: Removes the nerd plushie from the ghost cafe.
+  - rscadd: Adds a note to the Ghost cafe where the Nerd plushie used to be.
+  Gandalf2k15:
+  - bugfix: You can now adjust jumpsuits correctly.
+  - rscadd: The events system now uses an internal voting system, where possible.
+  - rscadd: Fire doors now have a sound when they open/close again.
+  - soundadd: Alerts have been updated(retrospectively).
+  GoldenAlpharex:
+  - rscdel: Nanotrasen managed to stabilize its assets, so much so that market crashes
+      related to massive asset movements are no longer possible, even through crab-related
+      phones.
+  - bugfix: Synthetics being will finally be able to recolor their right leg properly.
+  - refactor: Refactored how snouts worked, ensuring that they are linked to an actual
+      external organ now, which allows for much more dynamic management of snouted
+      variants of articles of clothing.
+  - bugfix: Lizards, mammals and synthetics are no longer forced to use snouted sprites
+      for headgear 24/7, and will now only use them when necessary.
+  - code_imp: Improved slightly the code for MODsuit module snout detection, making
+      it slightly better.
+  KasparoVy:
+  - rscadd: You can now colour thigh-highs in the socks selection of the character
+      creator.
+  Paxilmaniac:
+  - bugfix: marines of the ert variety will now have 70% less missing clothing if
+      the soldier is not a baseline human
+  - balance: The marine response teams near the station have finally been given weapons
+      to replace their horribly outdated armory
+  - bugfix: Fixed the Norwind, Vintorez, and DTR rifles all missing inhand sprites
+  - bugfix: The skyrat custom versions of the mining shuttles have returned to stations
+  - qol: The assault ops shuttle has been retrofit, with many improvements over the
+      old design
+  Ryll/Shaps:
+  - spellcheck: Wound and combat messages will no longer mention the species of an
+      attacked bodypart when not appropriate
+  SingingSpock:
+  - rscadd: All Heads now have weapons permits.
+  SkyratBot:
+  - balance: The janiborg's drying spray bottle will now always clean a wet turf that's
+      been washed once
+  - balance: The further you are from a radiation pulse, and the more objects that
+      block it, the lower your odds are to get irradiated.
+  - balance: Most radiating emitting things have their radiation pulses functionality
+      changed. Being near them is more dangerous, and being far away is less dangerous.
+  - server: Admin ranks can now be combined with a plus sign (for example, Game Master+Coder).
+      Single admin ranks with a plus sign in their name are no longer supported.
+  - server: You can no longer edit rank permissions, temporarily or permanently, from
+      the permissions panel. Please use the admin_ranks database table or admin_ranks.txt
+      instead.
+  Zergspower:
+  - balance: Changes the point generation from 2 to 2.5
+  Zonespace27:
+  - balance: Uzi, glock, saber SMGs are more expensive.
+  - balance: MCRs are cheaper
+  - balance: Long-arms and automatic weaponry now cannot be ordered from request consoles
+      and IRN tablets, you must use a regular cargo console or a head's ID in an IRN
+      tablet to do so.
+  - rscdel: Removed g11 from guncargo.
+  - bugfix: Companies can be ordered from IRN tablets again.
+  - bugfix: Chemical dispensers now add reagents for manipulators past tier 2
+  theOOZ:
+  - qol: Raises the chat indicator's layer for better visual clarity
+2022-05-06:
+  Gandalf2k15:
+  - rscadd: New briefcase sprites have been added!
+  GoldenAlpharex:
+  - bugfix: Lizards can now have snouts again.
+  ORCACommander:
+  - bugfix: Assault Operatives have now completed basic flight training and can dock
+      the shuttle.
+  Zonespace27:
+  - admin: Ashwalker tendril destruction is now logged
+2022-05-07:
+  Deek-Za:
+  - bugfix: Moth's can color themselves again
+  Gandalf2k15:
+  - rscadd: The Makarov sprite has been updated.
+  - rscadd: A new engineering-type event has been added, the supermatter surge!
+  GoldenAlpharex:
+  - bugfix: Every species that doesn't have its own unique legs will now be able to
+      use digitigrade legs again, when Allow Mismatched Bodyparts is toggled.
+  Melbert:
+  - bugfix: Medical coagulants work as they are expected to now, but the difference
+      shouldn't be very noticeable, since their primarily function worked anyways
+  RatFromTheJungle:
+  - rscadd: DagothBot (God Complex) lawset
+  - rscadd: Texas Ranger (Frontier Ranger) lawset
+  - config: added them to the config laws aswell
+  SkyratBot:
+  - bugfix: demonic watchers will now drop their crusher trophy properly
+  - bugfix: Luminescents once again have proper bodyparts
+  - imageadd: Added new icons for the DNA injectors
+  - imageadd: Added new icons for the DNA implanters and their cases
+  - bugfix: The bluespace icon syringe is now more animated
+  - bugfix: Fixes Life(Friendly) reaction spawning hostile mobs
+  - code_imp: changed how the gas pressure calculation work very slightly, report
+      if things are bugged.
+  - bugfix: drones should be able to do stuff next to other drones
+  - rscadd: A number of new tiles are available for construction. Check out the small,
+      diagonal and herringbone variants of your favourite grey, dark and white tiles.
+      Also, check out the new terracotta and kitchen tiles- they're fancy!
+  - bugfix: fixed NT frontier being downloadble by non scientists.
+  - bugfix: The HoP is now considered part of Supply (Supply bans apply to HoP, they
+      get Supply deathrattle, cannot get smuggle objective, ect).
+  - bugfix: Admin Nation-creating event can now properly trigger and work.
+  - bugfix: Plants like Deathnettle will no longer use durability when clicking on
+      someone from a distance.
+  - qol: Made the tank compressor input pipe green color to be in line with the current
+      atmos machines color scheme, increased by 100 kPa the window for tank ejection
+      to allow more flexibility when filling up the tank
+  - code_imp: cleaned up some of the code for disconnecting pipes and removed repeated
+      code
+  - bugfix: Atmos techs now have general engineering access
+  - bugfix: Id cards, when having their job template changed, will change that job's
+      payment department as they used to.
+  - qol: mech construction now has balloon alerts!
+  - code_imp: mecha_construction_paths.dm is now has significantly less copy/paste
+      code
+  - bugfix: Department budgets can no longer be spent in roulette. Their ability to
+      act as the house is unaffected.
+  - bugfix: You no longer have to enter text to succumb. A blank value works.
+  Wallem:
+  - imageadd: The book binder has gotten a fresh coat of paint.
+  Zestybastard, Azlan and PositiveEntropy:
+  - imageadd: Resprites the old space suits!
+  - imageadd: Resprites the sleepers!
+  - rscdel: Removes unused orange and black engi light attachment helmet sprites.
+  itseasytosee:
+  - balance: You can now pull bulky things in zero gravity at full speed
+  - bugfix: The slowdown from neck grabs is now properly negated in zero gravity.
+  jjpark-kb:
+  - rscdel: removed the skyrat logo in the lobby
+2022-05-08:
+  AtoriBirb:
+  - imageadd: 6 new beak sprites to snouts.dmi
+  Deek-Za:
+  - bugfix: Fixes glass_large door lighting.
+  Melbert:
+  - qol: Heretic ghoul recipes are more descriptive when failing
+  - bugfix: Fixes a missing span on heretic ghoul deconversion
+  - bugfix: Managing to escape the area of a blade heretic's mark will no longer constantly
+      burden you as if you never left.
+  - bugfix: There should be less ways of escaping the area of a blade heretic's mark
+      now.
+  - qol: Heretics can drag people marked by a blade heretic out of the area they are
+      trapped within.
+  - qol: Being thrown back by a blade heretic's mark will be slightly less awkward
+      now, and less dangerous.
+  SkyratBot:
+  - qol: Space Parallax will now smoothly animate between steps, based off your movement
+      speed. Please report any jitter.
+  - bugfix: Parallax will no longer "freeze" when you cross some area boundaries.
+      Looks better now.
+  - bugfix: Dragging objects diagonally will no longer cause them to visually "jump"
+      to catch up to you. Seriously how did none report this, are we just collectively
+      blind?
+  - imageadd: On the mapping end, we've removed some duplicate names for different
+      icons.
+  - balance: lowered overall max tesla coil power conversion at all parts tiers (at
+      t4 it went from 85% to 50%)
+  - code_imp: Some things that were hyper undeletable are now just normal undeletable.
+      Please report any unexpected behavior, mostly in away missions, or on lavaland.
+  - rscadd: Random Job button in Latejoin panel.
+  - bugfix: You can now recycle unused mutators and activators in dna console.
+  - bugfix: 'Genetic scanner now shows all mutations. expansion: Genetic scanner will
+      highlight active mutations.'
+  - qol: Deadchat control on anarchy mode will now alert you when you can enter another
+      command
+  - bugfix: Modular computers work again, allowing you to put your ID in to download/use
+      programs.
+  - qol: the gas analyzer now shows the heat capacity and thermal energy of a mix
+  - qol: the gas analyzer now shows the volume of empty pipe networks
+  - balance: Firelocks now take 3 seconds to auto-close after opening, rather then
+      5
+  - bugfix: Firelocks on top of normal doors will now no longer fail to re-close for
+      seemingly random reasons
+  Spc-Dragonfruits:
+  - spellcheck: 'Pan Slavic description changed to match the lore. tweak: Replaced
+      "Selenian" with "Sol Common", use ",sol" to speak. The directory is the same,
+      so you don''t need to re-select it.'
+  - spellcheck: Dwarf no longer has an odd chance to drop a syllable with a percentage
+      symbol in it.
+  - imageadd: Sol Common language icon, replaced red star with proposed NRI flag (thanks
+      Russian community), gave the Skrell icon a little uplifting
+  YakumoChen:
+  - bugfix: Fixes stray pixel on one of the utility uniforms
+  Zonespace27:
+  - rscadd: Ashwalkers can now appear on icebox
+  - bugfix: Freighter crew gun vendor no longer alert locked
+  - bugfix: Cargo freighter boss now gets the correct ammunition.
+  - bugfix: Elite modsuit on cargodise lost no longer requires hacking to use
+  jjpark-kb:
+  - bugfix: adds back the xenoarch base
+  theOOZ:
+  - imageadd: Adds a roomba model to the peacekeeper cyborg line

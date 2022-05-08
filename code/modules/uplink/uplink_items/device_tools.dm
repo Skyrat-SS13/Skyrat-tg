@@ -151,6 +151,7 @@
 	cost = 3
 
 
+/* SKYRAT EDIT REMOVAL - It's laggy and doesn't really add much roleplay value
 /datum/uplink_item/device_tools/suspiciousphone
 	name = "Protocol CRAB-17 Phone"
 	desc = "The Protocol CRAB-17 Phone, a phone borrowed from an unknown third party, it can be used to crash the space market, funneling the losses of the crew to your bank account.\
@@ -159,6 +160,7 @@
 	restricted = TRUE
 	cost = 7
 	limited_stock = 1
+*/ // SKYRAT EDIT REMOVAL END
 
 /datum/uplink_item/device_tools/binary
 	name = "Binary Translator Key"
