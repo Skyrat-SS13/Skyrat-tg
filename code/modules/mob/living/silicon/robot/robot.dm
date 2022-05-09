@@ -1004,8 +1004,7 @@
 
 /mob/living/silicon/robot/proc/untip_roleplay()
 	to_chat(src, span_notice("Your frustration has empowered you! You can now right yourself faster!"))
-<<<<<<< HEAD
-=======
+
 
 /mob/living/silicon/robot/update_fire_overlay(stacks, on_fire, last_icon_state, suffix = "")
 	var/fire_icon = "generic_fire[suffix]"
@@ -1026,4 +1025,4 @@
 
 	cut_overlay(GLOB.fire_appearances[fire_icon])
 	return null
->>>>>>> c07fcb4cd87 (New mob fire! (#66746))
+

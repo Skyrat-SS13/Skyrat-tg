@@ -1,6 +1,6 @@
 /datum/language/neorusskya
 	name = "Pan-Slavic"
-	desc = "The official language of the Independent Colonial Confederation of Gilgamesh, originally established in 2122 by the short-lived United Slavic Confederation on Earth."
+	desc = "A mish-mash of Eastern European and Balkan languages with similar properties that has since become the official language of the NRI, with a good amount of relevance in SolFed colonies with slavic descendance and trading posts across charted territory."
 	key = "r"
 	flags = TONGUELESS_SPEECH
 	syllables = list(
