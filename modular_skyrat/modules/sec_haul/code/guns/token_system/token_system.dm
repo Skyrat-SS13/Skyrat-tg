@@ -12,6 +12,8 @@
 	circuit = /obj/item/circuitboard/machine/gun_vendor
 	max_integrity = 2000
 	density = TRUE
+	/// If FALSE, does not require an alert level to redeem the token.
+	var/requires_alert = TRUE
 
 /obj/item/circuitboard/machine/gun_vendor
 	name = "Weapons Dispenser (Machine Board)"
@@ -31,7 +33,7 @@
 		return
 
 /obj/machinery/gun_vendor/proc/RedeemToken(obj/item/armament_token/token, mob/redeemer)
-	if(seclevel2num(get_security_level()) < token.minimum_sec_level)
+	if((seclevel2num(get_security_level()) < token.minimum_sec_level) && requires_alert)
 		to_chat(redeemer, span_redtext("Warning, this holochip is locked to [num2seclevel(token.minimum_sec_level)]!"))
 		message_admins("ARMAMENT LOG: [redeemer] attempted to redeem a [token.name] on the incorrect security level!")
 		return
@@ -54,6 +56,9 @@
 	to_chat(redeemer, "Thank you for redeeming your token. Remember. Do NOT take lethal ammo without permission or good reasoning.")
 	SSblackbox.record_feedback("tally", "armament_token_redeemed", 1, dispensed)
 	qdel(token)
+
+/obj/machinery/gun_vendor/no_alert
+	requires_alert = FALSE
 
 ////////////////////
 //TOKENS
