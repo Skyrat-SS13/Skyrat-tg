@@ -35,11 +35,11 @@
 
 /datum/opposing_force_equipment/rifle/norwind
 	item_type = /obj/item/gun/ballistic/automatic/norwind
-	description = "A rare M112 DMR rechambered to 12.7x30mm for peacekeeping work, it comes with a scope for medium-long range engagements. A bayonet lug is visible. Fires hardlight bullets."
+	description = "A rare M112 DMR rechambered to 12.7x30mm for peacekeeping work, it comes with a scope for medium-long range engagements. A bayonet lug is visible."
 
 /datum/opposing_force_equipment/rifle/ostwind
 	item_type = /obj/item/gun/ballistic/automatic/ostwind
-	description = "A 6.3mm special-purpose rifle designed for specific situations. Fires hardlight bullets."
+	description = "A 6.3mm special-purpose rifle designed for specific situations."
 
 /datum/opposing_force_equipment/rifle/g11
 	item_type = /obj/item/gun/ballistic/automatic/g11

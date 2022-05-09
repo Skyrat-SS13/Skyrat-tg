@@ -189,6 +189,10 @@
 ////////////////
 
 ///////PCR-9
+/obj/item/storage/box/gunset/pcr
+	name = "9mm SMG supply box"
+	desc = "Ideally contains a 9x19mm SMG with decent firerate."
+
 /obj/item/gun/ballistic/automatic/pcr/nomag
 	spawnwithmagazine = FALSE
 

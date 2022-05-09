@@ -48,11 +48,11 @@
 
 /datum/opposing_force_equipment/submachine_gun/pcr
 	item_type = /obj/item/gun/ballistic/automatic/pcr
-	description = "An accurate, fast-firing SMG chambered in 9x19mm. Fires hardlight bullets."
+	description = "An accurate, fast-firing SMG chambered in 9x19mm."
 
 /datum/opposing_force_equipment/submachine_gun/pitbull
 	item_type = /obj/item/gun/ballistic/automatic/pitbull
-	description = "A sturdy personal defense weapon designed to fire 10mm Auto rounds. Fires hardlight bullets."
+	description = "A sturdy personal defense weapon designed to fire 10mm Auto rounds."
 
 /datum/opposing_force_equipment/submachine_gun/c20r
 	item_type = /obj/item/gun/ballistic/automatic/c20r/unrestricted
