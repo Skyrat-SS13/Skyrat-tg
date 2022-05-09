@@ -1,15 +1,10 @@
 /datum/supermatter_delamination
+	///Power amount of the SM at the moment of death
 	var/supermatter_power = 0
+	///Amount of total gases interacting with the SM
+	var/supermatter_gas_amount = 0
+	///Base number of anomalies to spawn (can go up or down with a random small amount)
 	var/anomalies_to_spawn = 10
-<<<<<<< HEAD
-
-/datum/supermatter_delamination/New(power)
-	. = ..()
-	if(power)
-		supermatter_power = power
-	setup_anomalies()
-
-=======
 	///Can we spawn anomalies after dealing with the delamination type?
 	var/should_spawn_anomalies = TRUE
 	///Reference to the supermatter turf
@@ -127,7 +122,6 @@
 /**
  * Setups how many anomalies to spawn
  */
->>>>>>> c8f27896c08 (Supermatter cascade round-end (#66659))
 /datum/supermatter_delamination/proc/setup_anomalies()
 	anomalies_to_spawn = max(round(0.004 * supermatter_power, 1) + rand(-2, 2), 1)
 	spawn_anomalies()
@@ -136,7 +130,7 @@
  * Spawns the first half anomalies instantly and calls the second half
  */
 /datum/supermatter_delamination/proc/spawn_anomalies()
-	var/list/anomaly_types = list(GRAVITATIONAL_ANOMALY = 55, HALLUCINATION_ANOMALY = 45, FLUX_ANOMALY = 35, PYRO_ANOMALY = 5, VORTEX_ANOMALY = 1)
+	var/list/anomaly_types = list(GRAVITATIONAL_ANOMALY = 55, HALLUCINATION_ANOMALY = 45, DELIMBER_ANOMALY = 35, FLUX_ANOMALY = 25, PYRO_ANOMALY = 5, VORTEX_ANOMALY = 1)
 	var/list/anomaly_places = GLOB.generic_event_spawns
 	var/currently_spawning_anomalies = round(anomalies_to_spawn * 0.5, 1)
 	anomalies_to_spawn -= currently_spawning_anomalies
@@ -152,7 +146,7 @@
  */
 /datum/supermatter_delamination/proc/spawn_overtime()
 
-	var/list/anomaly_types = list(GRAVITATIONAL_ANOMALY = 55, HALLUCINATION_ANOMALY = 45, FLUX_ANOMALY = 35, PYRO_ANOMALY = 5, VORTEX_ANOMALY = 1)
+	var/list/anomaly_types = list(GRAVITATIONAL_ANOMALY = 55, HALLUCINATION_ANOMALY = 45, DELIMBER_ANOMALY = 35, FLUX_ANOMALY = 25, PYRO_ANOMALY = 5, VORTEX_ANOMALY = 1)
 	var/list/anomaly_places = GLOB.generic_event_spawns
 
 	var/current_spawn = rand(5 SECONDS, 10 SECONDS)

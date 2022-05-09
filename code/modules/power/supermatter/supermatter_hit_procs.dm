@@ -71,68 +71,8 @@
 /obj/machinery/power/supermatter_crystal/attackby(obj/item/item, mob/user, params)
 	if(istype(item, /obj/item/scalpel/supermatter))
 		var/obj/item/scalpel/supermatter/scalpel = item
-<<<<<<< HEAD
-		to_chat(user, span_notice("You carefully begin to scrape \the [src] with \the [item]..."))
-		if(item.use_tool(src, user, 60, volume=100))
-			if (scalpel.usesLeft)
-				to_chat(user, span_danger("You extract a sliver from \the [src]. \The [src] begins to react violently!"))
-				new /obj/item/nuke_core/supermatter_sliver(drop_location())
-				matter_power += 800
-				scalpel.usesLeft--
-				if (!scalpel.usesLeft)
-					to_chat(user, span_notice("A tiny piece of \the [item] falls off, rendering it useless!"))
-			else
-				to_chat(user, span_warning("You fail to extract a sliver from \The [src]! \the [item] isn't sharp enough anymore."))
-	else if(user.dropItemToGround(item))
-		user.visible_message(span_danger("As [user] touches \the [src] with \a [item], silence fills the room..."),\
-			span_userdanger("You touch \the [src] with \the [item], and everything suddenly goes silent.</span>\n<span class='notice'>\The [item] flashes into dust as you flinch away from \the [src]."),\
-			span_hear("Everything suddenly goes silent."))
-		investigate_log("has been attacked ([item]) by [key_name(user)]", INVESTIGATE_ENGINE)
-		Consume(item)
-		playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, TRUE)
-
-		radiation_pulse(src, max_range = 3, threshold = 0.1, chance = 50)
-
-	else if(Adjacent(user)) //if the item is stuck to the person, kill the person too instead of eating just the item.
-		var/vis_msg = span_danger("[user] reaches out and touches [src] with [item], inducing a resonance... [item] starts to glow briefly before the light continues up to [user]'s body. [user.p_they(TRUE)] bursts into flames before flashing into dust!")
-		var/mob_msg = span_userdanger("You reach out and touch [src] with [item]. Everything starts burning and all you can hear is ringing. Your last thought is \"That was not a wise decision.\"")
-		dust_mob(user, vis_msg, mob_msg)
-
-/obj/machinery/power/supermatter_crystal/wrench_act(mob/user, obj/item/tool)
-	. = ..()
-	if (moveable)
-		default_unfasten_wrench(user, tool)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
-
-/obj/machinery/power/supermatter_crystal/Bumped(atom/movable/hit_object)
-	// SKYRAT EDIT ADDITION
-	if(istype(hit_object, /obj/item/goldeneye_key))
-		return FALSE
-	// SKYRAT EDIT ADDITION
-	if(isliving(hit_object))
-		hit_object.visible_message(span_danger("\The [hit_object] slams into \the [src] inducing a resonance... [hit_object.p_their()] body starts to glow and burst into flames before flashing into dust!"),
-			span_userdanger("You slam into \the [src] as your ears are filled with unearthly ringing. Your last thought is \"Oh, fuck.\""),
-			span_hear("You hear an unearthly noise as a wave of heat washes over you."))
-	else if(isobj(hit_object) && !iseffect(hit_object))
-		hit_object.visible_message(span_danger("\The [hit_object] smacks into \the [src] and rapidly flashes to ash."), null,
-			span_hear("You hear a loud crack as you are washed with a wave of heat."))
-	else
-		return
-
-	playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, TRUE)
-	Consume(hit_object)
-
-/obj/machinery/power/supermatter_crystal/Bump(atom/bumped_atom)
-	. = ..()
-	if(isturf(bumped_atom))
-		var/turf/bumped_turf = bumped_atom
-		var/bumped_name = "\the [bumped_atom]"
-		var/bumped_text = span_danger("\The [src] smacks into [bumped_name] and [bumped_atom.p_they()] rapidly flashes to ash!")
-		if(!bumped_turf.Melt())
-=======
 		to_chat(user, span_notice("You carefully begin to scrape \the [src] with \the [scalpel]..."))
 		if(!scalpel.use_tool(src, user, 60, volume=100))
->>>>>>> c8f27896c08 (Supermatter cascade round-end (#66659))
 			return
 		if (scalpel.usesLeft)
 			to_chat(user, span_danger("You extract a sliver from \the [src]. \The [src] begins to react violently!"))
