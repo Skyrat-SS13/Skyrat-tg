@@ -17,6 +17,7 @@
 	matter_amount = 0
 //	cost = 500
 	source = null
+	walltype = /turf/closed/wall/mineral/stone
 
 /datum/material/stone
 	name = "stone"
