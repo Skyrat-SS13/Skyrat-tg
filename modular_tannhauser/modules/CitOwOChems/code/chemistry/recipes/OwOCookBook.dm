@@ -49,7 +49,7 @@
 	message_admins("OwO explosion at [T], with a temperature of [temp], ph of [ph], Impurity tot of [ImpureTot].")
 	log_game("OwO explosion at [T], with a temperature of [temp], ph of [ph], Impurity tot of [ImpureTot].")
 	var/datum/reagents/R = new/datum/reagents(3000)//Hey, just in case.
-	var/datum/effect_system/smoke_spread/chem/s = new()
+	var/datum/effect_system/fluid_spread/smoke/chem/s = new()
 	R.my_atom = my_atom //Give the gas a fingerprint
 
 	for (var/A in R0.reagent_list) //make gas for reagents, has to be done this way, otherwise it never stops Exploding
