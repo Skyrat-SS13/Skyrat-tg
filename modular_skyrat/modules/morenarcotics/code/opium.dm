@@ -140,7 +140,7 @@
 	ph = 6
 	taste_description = "flowers"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-	failed_chem = /datum/reagent/drug/opium/blacktar
+	failed_chem = /datum/reagent/drug/opium/blacktar/liquid
 
 /datum/reagent/drug/opium/heroin/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel like nothing can stop you.", "You feel like God.")
@@ -169,8 +169,10 @@
 	M.adjustToxLoss(0.5 * REM * delta_time, 0) //toxin damage
 	..()
 
-/datum/chemical_reaction/freebase_blacktar
-	required_reagents = list(/datum/reagent/drug/opium/blacktar = 5)
+/datum/reagent/drug/opium/blacktar/liquid //prevents self-duplication by going one step down when mixed
+
+/datum/chemical_reaction/blacktar
+	required_reagents = list(/datum/reagent/drug/opium/blacktar/liquid = 5)
 	required_temp = 480
 	reaction_flags = REACTION_INSTANT
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_CHEMICAL
@@ -179,8 +181,6 @@
 	var/location = get_turf(holder.my_atom)
 	for(var/i in 1 to created_volume)
 		new /obj/item/reagent_containers/blacktar(location)
-
-/datum/reagent/drug/opium/blacktar/freebase_blacktar //just prevents self-duping.
 
 //Exports
 /datum/export/heroin

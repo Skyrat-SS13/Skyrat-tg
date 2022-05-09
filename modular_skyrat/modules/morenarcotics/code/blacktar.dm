@@ -5,4 +5,4 @@
 	icon_state = "blacktar"
 	volume = 5
 	possible_transfer_amounts = list()
-	list_reagents = list(/datum/reagent/drug/opium/blacktar/freebase_blacktar = 5)
+	list_reagents = list(/datum/reagent/drug/opium/blacktar = 5)
