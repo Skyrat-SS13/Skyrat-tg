@@ -97,13 +97,13 @@
 		switch(blob_type)
 			if(BIO_BLOB_TYPE_FUNGUS)
 				visible_message(span_warning("The [src] emitts a cloud!"))
-				var/datum/reagents/R = new/datum/reagents(300)
-				R.my_atom = src
-				R.add_reagent(/datum/reagent/cordycepsspores, 50)
-				var/datum/effect_system/smoke_spread/chem/smoke = new()
-				smoke.set_up(R, 5)
-				smoke.attach(src)
-				smoke.start()
+				var/datum/reagents/reagents = new/datum/reagents(300)
+				reagents.my_atom = src
+				reagents.add_reagent(/datum/reagent/cordycepsspores, 50)
+				var/datum/effect_system/fluid_spread/smoke/chem/smoke_machine/puff = new
+				puff.set_up(4, location = my_turf, carry = reagents, efficiency = 24)
+				puff.attach(src)
+				puff.start()
 			if(BIO_BLOB_TYPE_FIRE)
 				visible_message(span_warning("The [src] puffs a cloud of flames!"))
 				my_turf.atmos_spawn_air("o2=20;plasma=20;TEMP=600")
@@ -124,8 +124,8 @@
 				var/datum/reagents/R = new/datum/reagents(300)
 				R.my_atom = src
 				R.add_reagent(/datum/reagent/toxin, 30)
-				var/datum/effect_system/foam_spread/foam = new
-				foam.set_up(40, my_turf, R)
+				var/datum/effect_system/fluid_spread/foam/foam = new
+				foam.set_up(200, location = my_turf, carry = R)
 				foam.start()
 			if(BIO_BLOB_TYPE_RADIOACTIVE)
 				visible_message(span_warning("The [src] emits a strong radiation pulse!"))
@@ -133,8 +133,8 @@
 				var/datum/reagents/R = new/datum/reagents(300)
 				R.my_atom = src
 				R.add_reagent(/datum/reagent/toxin/mutagen, 50)
-				var/datum/effect_system/foam_spread/foam = new
-				foam.set_up(50, my_turf, R)
+				var/datum/effect_system/fluid_spread/foam/foam = new
+				foam.set_up(200, location = my_turf, carry = R)
 				foam.start()
 	return ..()
 
@@ -293,10 +293,10 @@
 			var/datum/reagents/R = new/datum/reagents(300)
 			R.my_atom = src
 			R.add_reagent(/datum/reagent/cordycepsspores, 50)
-			var/datum/effect_system/smoke_spread/chem/smoke = new()
-			smoke.set_up(R, 5)
-			smoke.attach(src)
-			smoke.start()
+			var/datum/effect_system/fluid_spread/smoke/chem/smoke_machine/puff = new
+			puff.set_up(4, location = T, carry = reagents, efficiency = 24)
+			puff.attach(src)
+			puff.start()
 		if(BIO_BLOB_TYPE_FIRE)
 			T.atmos_spawn_air("o2=20;plasma=20;TEMP=600")
 		if(BIO_BLOB_TYPE_EMP)
@@ -313,8 +313,8 @@
 			var/datum/reagents/R = new/datum/reagents(300)
 			R.my_atom = src
 			R.add_reagent(/datum/reagent/toxin, 30)
-			var/datum/effect_system/foam_spread/foam = new
-			foam.set_up(40, T, R)
+			var/datum/effect_system/fluid_spread/foam/foam = new
+			foam.set_up(200, location = T, carry = R)
 			foam.start()
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
 			radiation_pulse(src, 1500, 15, FALSE, TRUE)
@@ -323,8 +323,8 @@
 			var/datum/reagents/R = new/datum/reagents(300)
 			R.my_atom = src
 			R.add_reagent(/datum/reagent/toxin/mutagen, 50)
-			var/datum/effect_system/foam_spread/foam = new
-			foam.set_up(50, T, R)
+			var/datum/effect_system/fluid_spread/foam/foam = new
+			foam.set_up(200, location = T, carry = R)
 			foam.start()
 	is_full = FALSE
 	name = "empty bulb"

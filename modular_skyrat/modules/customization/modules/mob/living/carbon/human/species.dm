@@ -2,6 +2,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 /datum/species
 	mutant_bodyparts = list()
+	digitigrade_customization = DIGITIGRADE_OPTIONAL // Doing this so that the legs preference actually works for everyone.
 	///Self explanatory
 	var/can_have_genitals = TRUE
 	///A list of actual body markings on the owner of the species. Associative lists with keys named by limbs defines, pointing to a list with names and colors for the marking to be rendered. This is also stored in the DNA
@@ -154,7 +155,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 						if(FACEHAIR)
 							accessory_overlay.color = H.facial_hair_color
 						if(EYECOLOR)
-							accessory_overlay.color = H.eye_color
+							accessory_overlay.color = H.eye_color_left
 			else
 				accessory_overlay.color = override_color
 			if (accessories)
@@ -209,7 +210,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 					if(FACEHAIR)
 						extra_accessory_overlay.color = H.facial_hair_color
 					if(EYECOLOR)
-						extra_accessory_overlay.color = H.eye_color
+						extra_accessory_overlay.color = H.eye_color_left
 
 				standing += extra_accessory_overlay
 
@@ -440,7 +441,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			if(eyes?.is_emissive)
 				eye_emissive = emissive_appearance_copy(eye_overlay)
 			if((EYECOLOR in species_traits) && eyes)
-				eye_overlay.color = species_human.eye_color
+				eye_overlay.color = species_human.eye_color_left
 			if(OFFSET_FACE in species_human.dna.species.offset_features)
 				eye_overlay.pixel_x += species_human.dna.species.offset_features[OFFSET_FACE][1]
 				eye_overlay.pixel_y += species_human.dna.species.offset_features[OFFSET_FACE][2]

@@ -31,7 +31,7 @@ SUBSYSTEM_DEF(autotransfer)
 	if(world.realtime < targettime) // Skyrat edit
 		return
 	if(maxvotes == NO_MAXVOTES_CAP || maxvotes > curvotes)
-		SSvote.initiate_vote("transfer","server")
+		SSvote.initiate_vote(/datum/vote/transfer_vote, "automatic transfer")
 		targettime = targettime + voteinterval
 		curvotes++
 	else
