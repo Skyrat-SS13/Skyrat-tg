@@ -1,0 +1,5 @@
+#define STUNNED "stunned"
+#define WEAKEN "weakened"
+#define PARALYSIS "paralysis"
+#define SLEEPING "sleeping"
+#define CONFUSED "confused"

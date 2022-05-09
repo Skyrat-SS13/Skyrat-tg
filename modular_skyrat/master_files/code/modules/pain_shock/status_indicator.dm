@@ -25,117 +25,87 @@
 		status.alpha = 255
 	else
 		status.alpha = 0
-/mob
-	var/status_enabled = TRUE
+
 /mob/living
-	var/list/status_indicators = null // Will become a list as needed.
-
-/* /mob/living/carbon/proc/is_critical()
-	if(HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION))
-		return TRUE */
-
+	var/list/status_indicators = null // Will become a list as needed. Contains our status indicator objects. Note, they are actually added to overlays, this just keeps track of what exists.
+/// Returns true if the mob is weakened.
 /mob/living/proc/is_weakened()
 	if(HAS_TRAIT_FROM(src, TRAIT_FLOORED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || has_status_effect(/datum/status_effect/incapacitating/knockdown))
 		return TRUE
-
+/// Returns true if the mob is stunned.
 /mob/living/proc/is_stunned()
 	if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, CHOKEHOLD_TRAIT))
 		return TRUE
-
+/// Returns true if the mob is paralyzed - for can't fight back purposes.
 /mob/living/proc/is_paralyzed()
 	if(HAS_TRAIT_FROM(src, TRAIT_FLOORED, CHOKEHOLD_TRAIT) || HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION) || HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA) || HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) && HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) && HAS_TRAIT_FROM(src, TRAIT_FLOORED, TRAIT_STATUS_EFFECT(STAT_TRAIT)))
 		return TRUE
-
+// Returns true if the mob is unconcious for any reason.
 /mob/living/proc/is_unconcious()
 	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 		return TRUE
-
+// Returns true if the mob has confusion.
 /mob/living/proc/is_confused()
 	if(has_status_effect(/datum/status_effect/confusion))
 		return TRUE
 
-/* /mob/living/carbon/proc/is_blind_status()
-	if(HAS_TRAIT_FROM(src, TRAIT_BLIND, STATUS_EFFECT_TRAIT) || HAS_TRAIT_FROM(src, TRAIT_BLIND, EYES_COVERED) && !HAS_TRAIT_FROM(src, TRAIT_BLIND, QUIRK_TRAIT)) // We don't want permanently blind users (those who took the trait) to have this forever.
-		return TRUE */ // Disabled, uncomment if we want this.
 
 /mob/living/carbon/death(gibbed) // On death, we clear the indiciators
 	..() // Call the TG death. Do not . = ..()!
 	for(var/iteration in status_indicators) // When we die, clear the indicators.
 		remove_status_indicator(icon_state) // The indicators are named after their icon_state and type
-/* /datum/status_effect/incapacitating/on_apply()
-	. = ..()
-	addtimer(CALLBACK(owner, /mob/living/.proc/status_sanity), 100 MILLISECONDS)
-/datum/status_effect/incapacitating/on_remove()
-	. = ..()
-	addtimer(CALLBACK(owner, /mob/living/.proc/status_sanity), 1000 MILLISECONDS) */
-
-/* /mob/living/carbon/apply_effect()
-	. = ..()
-	status_sanity() */
 
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_CARBON_HEALTH_UPDATE, .proc/status_sanity)
-
-/* /mob/living/updatehealth()
-	. = ..()
-	status_sanity() */
+/// Receives signals to update on carbon health updates. Checks if the mob is dead - if true, removes all the indicators. Then, we determine what status indicators the mob should carry or remove.
 /mob/living/proc/status_sanity()
 	SIGNAL_HANDLER
 	if(stat == DEAD)
 		for(var/iteration in status_indicators) // When we die, clear the indicators.
 			remove_status_indicator(icon_state) // The indicators are named after their icon_state and type
+		return
 	is_weakened() ? add_status_indicator("weakened") : remove_status_indicator("weakened")
 	is_paralyzed() ? add_status_indicator("paralysis") : remove_status_indicator("paralysis")
 	is_stunned() ? add_status_indicator("stunned") : remove_status_indicator("stunned")
 	is_unconcious() ? add_status_indicator("sleeping") : remove_status_indicator("sleeping")
 	is_confused() ? add_status_indicator("confused") : remove_status_indicator("confused")
-//	is_blind_status() ? add_status_indicator("blinded") : remove_status_indicator("blinded") // Disabled, keeping for IF we decide we want this.
-//	is_critical() ? add_status_indicator("critical") : remove_status_indicator("critical") // Also disabled. Crosses medhud territory, despite being a shift click examine thing.
-
-/mob/living/proc/add_status_indicator(image/thing)
-	if(get_status_indicator(thing)) // No duplicates, please.
+/// Adds a status indicator to the mob. Takes an image as an argument. If it exists, it won't dupe it.
+/mob/living/proc/add_status_indicator(image/prospective_indicator)
+	if(get_status_indicator(prospective_indicator)) // No duplicates, please.
 		return
-	if(!istype(thing, /image))
-		thing = image(icon = 'modular_skyrat/master_files/icons/mob/status_indicators.dmi', loc = src, icon_state = thing)
+	if(!istype(prospective_indicator, /image))
+		prospective_indicator = image(icon = 'modular_skyrat/master_files/icons/mob/status_indicators.dmi', loc = src, icon_state = prospective_indicator)
 
-	LAZYADD(status_indicators, thing)
+	LAZYADD(status_indicators, prospective_indicator)
 	handle_status_indicators()
 
-// Similar to above but removes it instead, and nulls the list if it becomes empty as a result.
-/mob/living/proc/remove_status_indicator(image/thing)
-	thing = get_status_indicator(thing)
+/// Similar to add_status_indicator() but removes it instead, and nulls the list if it becomes empty as a result.
+/mob/living/proc/remove_status_indicator(image/prospective_indicator)
+	prospective_indicator = get_status_indicator(prospective_indicator)
 
-	cut_overlay(thing)
-	LAZYREMOVE(status_indicators, thing)
+	cut_overlay(prospective_indicator)
+	LAZYREMOVE(status_indicators, prospective_indicator)
 	handle_status_indicators()
-
-/mob/living/proc/get_status_indicator(image/thing)
-	if(!istype(thing, /image))
+/// Finds a status indicator on a mob.
+/mob/living/proc/get_status_indicator(image/prospective_indicator)
+	if(!istype(prospective_indicator, /image))
 		for(var/image/I in status_indicators)
-			if(I.icon_state == thing)
+			if(I.icon_state == prospective_indicator)
 				return I
-	return LAZYACCESS(status_indicators, LAZYFIND(status_indicators, thing))
-
+	return LAZYACCESS(status_indicators, LAZYFIND(status_indicators, prospective_indicator))
+/// Cuts all the indicators on a mob. Does not remove the status_indicator objects, just the overlays. Useful for race conditions.
 /mob/living/proc/cut_indicators_overlays()
 	if(!status_indicators) // sometimes the overlay cutting misses, so if theres nothing when its called, lets just clear them all!
-		var/list/static/potential_indicator = list(
-			"weakened",
-			"paralysis",
-			"stunnded",
-			"sleeping",
-			"confused",
-			"blinded",
-			"critical")
-		for(potential_indicator in overlays)
-			cut_overlay(potential_indicator)
+		for(var/image/iteration in overlays) // Check all the images.
+			if(iteration.plane == PLANE_STATUS) // If we got here, we got status indicator overlays with no attached indicator objects. We should clear those so they don't last.
+				cut_overlay(iteration)
+	else // We have status indicator objects, lets only clear ones we know exist with overlays.
+		for(var/prospective_indicator in status_indicators)
+			cut_overlay(prospective_indicator)
 
-	else
-		for(var/thing in status_indicators)
-			cut_overlay(thing)
-
-// Refreshes the indicators over a mob's head. Should only be called when adding or removing a status indicator with the above procs,
-// or when the mob changes size visually for some reason.
+/// Refreshes the indicators over a mob's head. Should only be called when adding or removing a status indicator with the above procs,
+/// or when the mob changes size visually for some reason.
 /mob/living/proc/handle_status_indicators()
 	// First, get rid of all the overlays.
 	cut_indicators_overlays()
@@ -164,8 +134,8 @@
 	current_x_position -= (32 / 2) * (icon_scale - 1)
 
 	// Now the indicator row can actually be built.
-	for(var/thing in status_indicators)
-		var/image/I = thing
+	for(var/prospective_indicator in status_indicators)
+		var/image/I = prospective_indicator
 
 		// This is a semi-HUD element, in a similar manner as medHUDs, in that they're 'above' everything else in the world,
 		// but don't pierce obfuscation layers such as blindness or darkness, unlike actual HUD elements like inventory slots.
