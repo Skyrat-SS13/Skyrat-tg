@@ -1026,3 +1026,9 @@
 	cut_overlay(GLOB.fire_appearances[fire_icon])
 	return null
 
+<<<<<<< HEAD
+=======
+/// Draw power from the robot
+/mob/living/silicon/robot/proc/draw_power(power_to_draw)
+	cell?.use(power_to_draw)
+>>>>>>> 3f094d417d8 (Refactors cyborg drink refilling into a component (#66795))
