@@ -283,12 +283,9 @@
 	group = "Security"
 	access = ACCESS_SECURITY
 	crate_type = /obj/structure/closet/crate/secure/gear
-<<<<<<< HEAD
-/* //SKYRAT EDIT START - CARGO ARMAMENTS
-=======
 	authorization_stamps = HOS_STAMP_SET
 
->>>>>>> f021767645f (Add stamped requisition forms now give bonus credits (#66230))
+/* //SKYRAT EDIT START - CARGO ARMAMENTS
 /datum/supply_pack/security/ammo
 	name = "Ammo Crate"
 	desc = "Contains three boxes of beanbag shotgun shells, three boxes of rubbershot shotgun shells and one of each special .38 speedloarders. Requires Security access to open."
