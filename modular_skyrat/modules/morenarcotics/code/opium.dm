@@ -97,7 +97,7 @@
 	color = "#444444"
 
 /datum/reagent/drug/opium
-	name = "Opium"
+	name = "opium"
 	description = "A extract from opium poppies. Puts the user in a slightly euphoric state."
 	reagent_state = LIQUID
 	color = "#ffe669"
@@ -170,7 +170,7 @@
 	..()
 
 /datum/reagent/drug/opium/blacktar/liquid //prevents self-duplication by going one step down when mixed
-	name - "liquid black tar heroin"
+	name = "liquid black tar heroin"
 
 /datum/chemical_reaction/blacktar
 	required_reagents = list(/datum/reagent/drug/opium/blacktar/liquid = 5)
