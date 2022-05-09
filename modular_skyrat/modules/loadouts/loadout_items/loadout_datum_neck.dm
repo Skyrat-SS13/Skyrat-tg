@@ -1,4 +1,6 @@
-// --- Loadout item datums for neck items ---
+/*
+*	LOADOUT ITEM DATUMS FOR THE NECK SLOT
+*/
 
 /// Neck Slot Items (Deletes overrided items)
 GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck))
@@ -15,6 +17,10 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 		outfit.neck = item_path
 
 
+/*
+*	SCARVES
+*/
+
 /datum/loadout_item/neck/scarf_black
 	name = "Black Scarf"
 	item_path = /obj/item/clothing/neck/scarf/black
@@ -28,7 +34,7 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	item_path = /obj/item/clothing/neck/scarf/cyan
 
 /datum/loadout_item/neck/scarf_dark_blue
-	name = "Darkblue Scarf"
+	name = "Dark Blue Scarf"
 	item_path = /obj/item/clothing/neck/scarf/darkblue
 
 /datum/loadout_item/neck/scarf_green
@@ -75,6 +81,10 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Zebra Scarf"
 	item_path = /obj/item/clothing/neck/scarf/zebra
 
+/*
+*	NECKTIES
+*/
+
 /datum/loadout_item/neck/necktie_black
 	name = "Black Necktie"
 	item_path = /obj/item/clothing/neck/tie/black
@@ -100,14 +110,9 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	item_path = /obj/item/clothing/neck/tie/disco
 	restricted_roles = list(JOB_DETECTIVE)
 
-/datum/loadout_item/neck/stethoscope
-	name = "Stethoscope"
-	item_path = /obj/item/clothing/neck/stethoscope
-	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER,JOB_SECURITY_MEDIC)
-
-/datum/loadout_item/neck/maid
-	name = "Maid Neck Cover"
-	item_path = /obj/item/clothing/neck/maid
+/*
+*	COLLARS
+*/
 
 /datum/loadout_item/neck/choker
 	name = "Choker"
@@ -141,6 +146,14 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Cross Collar"
 	item_path = /obj/item/clothing/neck/human_petcollar/locked/cross
 
+/datum/loadout_item/neck/kinkycollar
+	name = "Kinky Collar"
+	item_path = /obj/item/clothing/neck/kink_collar
+
+/*
+*	PONCHOS
+*/
+
 /datum/loadout_item/neck/ponchocowboy
 	name = "Green cowboy poncho"
 	item_path = /obj/item/clothing/neck/cowboylea
@@ -148,6 +161,10 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/ranger_poncho_greyscale
 	name = "Greyscale ranger poncho"
 	item_path = /obj/item/clothing/neck/ranger_poncho
+
+/*
+*	GAGS
+*/
 
 /datum/loadout_item/neck/gags_cloak
 	name = "Colourable Cloak"
@@ -164,6 +181,10 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/gags_boat
 	name = "Colourable Boatcloak"
 	item_path = /obj/item/clothing/neck/cloak/colourable/boat
+
+/*
+*	MANTLES
+*/
 
 /datum/loadout_item/neck/mantle
 	name = "Mantle"
@@ -204,11 +225,23 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	item_path = /obj/item/clothing/neck/mantle/capmantle
 	restricted_roles = list(JOB_CAPTAIN)
 
-/datum/loadout_item/neck/kinkycollar
-	name = "Kinky collar"
-	item_path = /obj/item/clothing/neck/kink_collar
+/*
+*	MISC
+*/
 
-//Donator neck items here
+/datum/loadout_item/neck/stethoscope
+	name = "Stethoscope"
+	item_path = /obj/item/clothing/neck/stethoscope
+	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER,JOB_SECURITY_MEDIC)
+
+/datum/loadout_item/neck/maid
+	name = "Maid Neck Cover"
+	item_path = /obj/item/clothing/neck/maid
+
+/*
+*	DONATOR
+*/
+
 /datum/loadout_item/neck/donator
 	donator_only = TRUE
 
